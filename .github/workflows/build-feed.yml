@@ -1,0 +1,50 @@
+name: Build RSS
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"   # alle 30 Minuten (UTC)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-rss
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build feed
+        env:
+          OUT_PATH: docs/feed.xml
+          FEED_TITLE: "ÖPNV Störungen Wien & Umgebung"
+          FEED_LINK: "https://www.wienerlinien.at/open-data"
+          FEED_DESC: "Nur aktive Meldungen, dedupliziert (WL; ÖBB/VOR optional)"
+          LOG_LEVEL: INFO
+          # Für spätere Aktivierung (offizielle Zugänge hinterlegen):
+          # OEBB_API_BASE_URL: ${{ secrets.OEBB_API_BASE_URL }}
+          # OEBB_API_TOKEN:     ${{ secrets.OEBB_API_TOKEN }}
+          # VOR_API_BASE_URL:   ${{ secrets.VOR_API_BASE_URL }}
+          # VOR_API_TOKEN:      ${{ secrets.VOR_API_TOKEN }}
+        run: python -u src/build_feed.py
+
+      - name: Commit & push feed (only if changed)
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(feed): update"
+          file_pattern: docs/feed.xml
+          branch: ${{ github.ref_name }}
