@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import hashlib, html, logging, re
 from datetime import datetime, timezone, timedelta
 from typing import Any, Dict, Iterable, List, Optional, Tuple, Set
@@ -38,17 +41,17 @@ KW_EXCLUDE = re.compile(
     re.IGNORECASE
 )
 
+# --- Parsing/Normalisierung ----------------------------------------------------
 def _iso(s: Optional[str]) -> Optional[datetime]:
     if not s:
         return None
     s = s.replace("Z", "+00:00")
-    # 2025-09-13T21:37:14+0000 -> +00:00
     if len(s) >= 5 and (s[-5] in "+-") and s[-3] != ":":
         s = s[:-2] + ":" + s[-2:]
     return dtparser.isoparse(s)
 
 def _best_ts(obj: Dict[str, Any]) -> Optional[datetime]:
-    """Robuster Zeitstempel (Start/Update) für pubDate."""
+    """Robuster Zeitstempel (Start/Update) als Fallback für pubDate."""
     t = obj.get("time") or {}
     cand = [
         _iso(t.get("start")), _iso(t.get("end")),
@@ -57,6 +60,10 @@ def _best_ts(obj: Dict[str, Any]) -> Optional[datetime]:
         _iso((obj.get("attributes") or {}).get("created")),
     ]
     return next((x for x in cand if x), None)
+
+def _times(obj: Dict[str, Any]) -> Tuple[Optional[datetime], Optional[datetime]]:
+    t = obj.get("time") or {}
+    return _iso(t.get("start")), _iso(t.get("end"))
 
 def _is_active(start: Optional[datetime], end: Optional[datetime], now: datetime) -> bool:
     # aktiv: begonnen & nicht beendet; 10-min-Gnade verhindert Flackern
@@ -81,18 +88,20 @@ def _guid(*parts: str) -> str:
     base = "|".join(p or "" for p in parts)
     return hashlib.md5(base.encode("utf-8")).hexdigest()
 
-def _fetch_traffic_infos(timeout: int = 20):
+# --- Fetch --------------------------------------------------------------------
+def _fetch_traffic_infos(timeout: int = 20) -> Iterable[Dict[str, Any]]:
     params = [("name","stoerunglang"),("name","stoerungkurz"),
               ("name","aufzugsinfo"),("name","fahrtreppeninfo")]
     r = S.get(f"{BASE}/trafficInfoList", params=params, timeout=timeout)
     r.raise_for_status()
     return (r.json().get("data", {}) or {}).get("trafficInfos", []) or []
 
-def _fetch_news(timeout: int = 20):
+def _fetch_news(timeout: int = 20) -> Iterable[Dict[str, Any]]:
     r = S.get(f"{BASE}/newsList", timeout=timeout)
     r.raise_for_status()
     return (r.json().get("data", {}) or {}).get("pois", []) or []
 
+# --- Hauptfunktion -------------------------------------------------------------
 def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     """
     Liefert NUR aktive Beeinträchtigungen. Dedupe über (Kategorie, Titel, Linien).
@@ -223,7 +232,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             "source": "Wiener Linien",
             "category": b["category"],
             "title": title,  # bereits escapt
-            "description": desc,  # HTML, wird später für TV gekürzt/gestrippt
+            "description": desc,  # HTML; wird in build_feed.py zu Plain-Text konvertiert
             "link": "https://www.wienerlinien.at/open-data",
             "guid": guid,
             "pubDate": b["pubDate"],
