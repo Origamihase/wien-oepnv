@@ -4,11 +4,11 @@
 Builds a single RSS 2.0 feed for active ÖPNV-Beeinträchtigungen im Großraum Wien.
 - Quelle: Wiener Linien (OGD Realtime) via providers.wiener_linien
 - TV-tauglich: Beschreibung -> kompakter Klartext, keine Bilder/HTML
-- Stabil: pubDate-Fallback vermeidet 'Jitter'
+- Stabil: pubDate-Fallback (niemals in Zukunft gegenüber Build-Zeit)
 - Altersfilter:
     * Behalte Items mit zukünftigem Enddatum (befristete Langläufer)
-    * Entferne unbefristete Items älter als MAX_ITEM_AGE_DAYS
-    * Absolute Schranke für unbefristete Altlasten: ABSOLUTE_MAX_AGE_DAYS
+    * Entferne Items ohne zukünftiges Enddatum, die älter als MAX_ITEM_AGE_DAYS sind
+    * Harte Schranke für unbefristete Altlasten: ABSOLUTE_MAX_AGE_DAYS
 - Dedupe: GUID-weit eindeutig
 """
 
@@ -36,11 +36,8 @@ DESCRIPTION_CHAR_LIMIT   = int(os.getenv("DESCRIPTION_CHAR_LIMIT", "170"))
 FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5"))
 
 # Altersfilter
-# 1) Normale Schwelle: unbefristete Items > MAX_ITEM_AGE_DAYS werden entfernt
 MAX_ITEM_AGE_DAYS        = int(os.getenv("MAX_ITEM_AGE_DAYS", "365"))
-# 2) Harte Schranke für unbefristete Altlasten (sicherer Cut, z. B. 540 Tage)
-ABSOLUTE_MAX_AGE_DAYS    = int(os.getenv("ABSOLUTE_MAX_AGE_DAYS", "540"))
-# Gnadenzeit analog Provider
+ABSOLUTE_MAX_AGE_DAYS    = int(os.getenv("ABSOLUTE_MAX_AGE_DAYS", "540"))  # 18 Monate
 ACTIVE_GRACE_MIN         = int(os.getenv("ACTIVE_GRACE_MIN", "10"))
 
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
@@ -51,7 +48,7 @@ log = logging.getLogger("build_feed")
 
 # ------------------------- Hilfsfunktionen -------------------------
 def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
-    """Klartext für TV – doppelt unescapen, HTML/IMG raus, NBSP→Space, kompakt."""
+    """Klartext für TV – doppelt unescapen, HTML/IMG raus, NBSP→Space, Klammern neutralisieren, kompakt."""
     if not s:
         return ""
     s = html.unescape(html.unescape(s))
@@ -64,6 +61,8 @@ def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
                s)
     s = re.sub(r"\bStops:\s*\[[^\]]*\]", " ", s)
     s = re.sub(r"\bBetroffene Haltestellen:\s*[0-9, …]+", " ", s)
+    # Restliche spitze Klammern (keine Tags mehr) neutralisieren
+    s = s.replace("<", "‹").replace(">", "›")
     s = re.sub(r"\s{2,}", " ", s)
     s = re.sub(r"(?:\s*·\s*){2,}", " · ", s).strip()
     s = s.strip("· ,;:-")
@@ -88,22 +87,29 @@ def _rss_root(title: str, link: str, description: str):
     SubElement(ch, "generator").text = "wien-oepnv (GitHub Actions)"
     return rss, ch
 
-def _stable_pubdate_fallback(guid: str, now_local: datetime) -> datetime:
+def _stable_pubdate_base(guid: str, now_local: datetime) -> datetime:
+    """Tagesstabil: Heute 06:00 + GUID-Offset (<= 1h)."""
     base = now_local.replace(hour=6, minute=0, second=0, microsecond=0)
     h = int(hashlib.md5(guid.encode("utf-8")).hexdigest()[:8], 16)
-    offset_sec = h % 3600
-    return base + timedelta(seconds=offset_sec)
+    return base + timedelta(seconds=(h % 3600))
 
 def _normalize_pubdate(ev: Dict[str, Any], build_now_local: datetime) -> datetime:
+    """
+    Verwendet Provider-pubDate. Wenn 'zu frisch' (nahe Build-Zeit),
+    nutze tagesstabilen Fallback – ABER niemals in der Zukunft gegenüber Build-Zeit.
+    """
     dt = ev.get("pubDate")
-    if not isinstance(dt, datetime):
-        return _stable_pubdate_fallback(ev["guid"], build_now_local)
-    if dt.tzinfo is None:
-        dt = dt.replace(tzinfo=timezone.utc)
-    window = timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN)
-    if (build_now_local.astimezone(timezone.utc) - dt) < window:
-        return _stable_pubdate_fallback(ev["guid"], build_now_local)
-    return dt
+    if isinstance(dt, datetime):
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        window = timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN)
+        if (build_now_local.astimezone(timezone.utc) - dt) >= window:
+            return dt  # ausreichend weit entfernt -> nehmen
+    # Fallback: tagesstabil & nicht in Zukunft
+    fb = _stable_pubdate_base(ev["guid"], build_now_local)
+    if fb > build_now_local:
+        fb = build_now_local - timedelta(seconds=1)
+    return fb
 
 def _has_future_end(ev: Dict[str, Any], now_local: datetime) -> bool:
     """True, wenn Enddatum existiert und (mit Gnadenzeit) > jetzt ist."""
@@ -116,16 +122,16 @@ def _has_future_end(ev: Dict[str, Any], now_local: datetime) -> bool:
 
 def _apply_age_filter(items: List[Dict[str, Any]], build_now_local: datetime) -> List[Dict[str, Any]]:
     """
-    Entfernt nur Items, die:
-      - älter als MAX_ITEM_AGE_DAYS sind UND
-      - KEIN Enddatum in der Zukunft haben.
-    Harte Schranke: unbefristete Items > ABSOLUTE_MAX_AGE_DAYS immer entfernen.
+    Entfernt Items ohne zukünftiges Enddatum, die älter sind als:
+      - ABSOLUTE_MAX_AGE_DAYS (harte Schranke) oder
+      - MAX_ITEM_AGE_DAYS (normale Schranke).
+    Begründung: unbefristete/abgelaufene Hinweise sollen nicht ewig bleiben.
     """
     if MAX_ITEM_AGE_DAYS <= 0 and ABSOLUTE_MAX_AGE_DAYS <= 0:
         return items
 
-    threshold_norm = build_now_local - timedelta(days=MAX_ITEM_AGE_DAYS)
-    threshold_abs  = build_now_local - timedelta(days=ABSOLUTE_MAX_AGE_DAYS)
+    thr_norm = build_now_local - timedelta(days=MAX_ITEM_AGE_DAYS)
+    thr_abs  = build_now_local - timedelta(days=ABSOLUTE_MAX_AGE_DAYS)
 
     kept = []
     for ev in items:
@@ -136,16 +142,13 @@ def _apply_age_filter(items: List[Dict[str, Any]], build_now_local: datetime) ->
         if pd.tzinfo is None:
             pd = pd.replace(tzinfo=timezone.utc)
         pd_local = pd.astimezone(VIENNA_TZ)
-
         future_end = _has_future_end(ev, build_now_local)
-        unbounded  = not future_end and not isinstance(ev.get("ends_at"), datetime)
 
-        # absolute Schranke für unbefristete Altlasten
-        if unbounded and ABSOLUTE_MAX_AGE_DAYS > 0 and pd_local < threshold_abs:
+        # harte Schranke zuerst
+        if not future_end and ABSOLUTE_MAX_AGE_DAYS > 0 and pd_local < thr_abs:
             continue
-
-        # normale Altersgrenze für unbefristete Items
-        if unbounded and MAX_ITEM_AGE_DAYS > 0 and pd_local < threshold_norm:
+        # normale Schranke
+        if not future_end and MAX_ITEM_AGE_DAYS > 0 and pd_local < thr_norm:
             continue
 
         kept.append(ev)
@@ -153,18 +156,13 @@ def _apply_age_filter(items: List[Dict[str, Any]], build_now_local: datetime) ->
 
 def _add_item(ch, ev: Dict[str, Any], build_now_local: datetime) -> None:
     it = SubElement(ch, "item")
-    # Titel NICHT un-escapen (damit '<' sicher bleibt)
-    title = str(ev["title"]).strip()
+    title = str(ev["title"]).strip()  # nicht un-escapen
     SubElement(it, "title").text = f"[{ev['source']}/{ev['category']}] {title}"
-    # TV ohne Interaktion -> neutraler Link
-    SubElement(it, "link").text = FEED_LINK
-    # TV-Kurztext
+    SubElement(it, "link").text = FEED_LINK  # TV ohne Interaktion
     short = _to_plain_for_signage(ev.get("description") or "")
     SubElement(it, "description").text = short or title
-    # Datum stabilisieren
     stable_dt = _normalize_pubdate(ev, build_now_local)
     SubElement(it, "pubDate").text = _fmt_date(stable_dt)
-    # GUID + Kategorien
     SubElement(it, "guid").text = ev["guid"]
     for c in (ev.get("source"), ev.get("category")):
         if c:
@@ -201,7 +199,7 @@ def main() -> None:
 
     build_now_local = datetime.now(VIENNA_TZ)
 
-    # Altlasten-Filter anwenden (bewahrt befristete Langläufer)
+    # Altlasten-Filter (bewahrt befristete Langläufer)
     all_events = _apply_age_filter(all_events, build_now_local)
 
     # Sortieren & deckeln
