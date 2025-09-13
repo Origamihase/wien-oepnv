@@ -1,7 +1,6 @@
 import hashlib, html, logging, re
 from datetime import datetime, timezone, timedelta
-from email.utils import format_datetime
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -11,7 +10,6 @@ from dateutil import parser as dtparser
 BASE = "https://www.wienerlinien.at/ogd_realtime"
 
 def _session() -> requests.Session:
-    """Robuste HTTP-Session mit Retries & sauberem User-Agent."""
     s = requests.Session()
     retry = Retry(
         total=4,
@@ -23,24 +21,30 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/1.0 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/1.1 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
 S = _session()
 
-# --- Hilfen --------------------------------------------------------------------
-
+# --- Heuristiken ---------------------------------------------------------------
+# Positiv: nur Meldungen mit klarer Einschränkung (auch in News)
 KW_RESTRICTION = [
-    # sichere, restriktionsnahe Schlüsselwörter für News/Hinweise
     r"\bumleitung\b", r"\bersatzverkehr\b", r"\bunterbrech", r"\bsperr", r"\bgesperrt\b",
     r"\bstörung\b", r"\baufzug\b", r"\bfahrtreppe\b", r"\barbeiten\b", r"\bbaustell",
-    r"\bbeeinträchtig", r"\beinschränkung", r"\bverspät", r"\bausfall\b",
+    r"\bbeeinträchtig", r"\beinschränk", r"\bverspät", r"\bausfall\b",
 ]
 KW_RE = re.compile("|".join(KW_RESTRICTION), re.IGNORECASE)
 
+# Negativ: rein informative/marketing Begriffe → nur dann ausschließen,
+# wenn KEIN Restriktions-Schlüsselwort vorkommt.
+KW_EXCLUDE = re.compile(
+    r"\b(willkommen|gewinnspiel|anzeiger|eröffnung|service|info(?:rmation)?|fest)\b",
+    re.IGNORECASE
+)
+
+# --- Parsing/Normalisierung ----------------------------------------------------
 def _iso(s: Optional[str]) -> Optional[datetime]:
-    """ISO-Zeit robust parsen (Z, +0200, +02:00)."""
     if not s:
         return None
     s = s.replace("Z", "+00:00")
@@ -53,44 +57,33 @@ def _times(obj: Dict[str, Any]) -> Tuple[Optional[datetime], Optional[datetime]]
     return _iso(t.get("start")), _iso(t.get("end"))
 
 def _is_active(start: Optional[datetime], end: Optional[datetime], now: datetime) -> bool:
-    """
-    „Aktiv“ = begonnen & nicht beendet.
-    Kleine Kulanz: Ende +10 Min bleibt sichtbar (Race-Conditions bei Updates).
-    """
+    # aktiv: begonnen & nicht beendet; 10-min-Gnade gegen Flackern
     if start and start > now:
         return False
     if end and end < (now - timedelta(minutes=10)):
         return False
     return True
 
-def _norm_list(val: Any) -> str:
-    """
-    Linien/Stops vereinheitlichen: sortierte, kleingeschriebene Liste als String.
-    """
-    if not val:
-        return ""
-    if isinstance(val, (list, tuple)):
-        items = [str(x).strip().lower() for x in val if str(x).strip()]
-    else:
-        items = [str(val).strip().lower()]
-    return ",".join(sorted(set(items)))
+def _as_list(val: Any) -> List[Any]:
+    if val is None:
+        return []
+    if isinstance(val, (list, tuple, set)):
+        return list(val)
+    return [val]
 
-def _normalize_title(s: str) -> str:
-    s = s.strip().lower()
-    s = re.sub(r"\s+", " ", s)
+def _tok(v: Any) -> str:
+    s = re.sub(r"[^A-Za-z0-9+]", "", str(v)).upper()
     return s
+
+def _norm_title(s: str) -> str:
+    return re.sub(r"\s+", " ", (s or "").strip().lower())
 
 def _guid(*parts: str) -> str:
     base = "|".join(p or "" for p in parts)
     return hashlib.md5(base.encode("utf-8")).hexdigest()
 
-# --- Kernlogik -----------------------------------------------------------------
-
+# --- Fetch --------------------------------------------------------------------
 def _fetch_traffic_infos(timeout: int = 20) -> Iterable[Dict[str, Any]]:
-    """
-    Holt restriktive Meldungen: Störungen (lang/kurz), Aufzug, Fahrtreppe.
-    Quelle ist offiziell & maschinenlesbar.
-    """
     params = [("name","stoerunglang"),("name","stoerungkurz"),
               ("name","aufzugsinfo"),("name","fahrtreppeninfo")]
     r = S.get(f"{BASE}/trafficInfoList", params=params, timeout=timeout)
@@ -98,27 +91,22 @@ def _fetch_traffic_infos(timeout: int = 20) -> Iterable[Dict[str, Any]]:
     return (r.json().get("data", {}) or {}).get("trafficInfos", []) or []
 
 def _fetch_news(timeout: int = 20) -> Iterable[Dict[str, Any]]:
-    """
-    Holt allgemeine Hinweise; wir filtern anschließend nur restriktionsrelevante.
-    """
     r = S.get(f"{BASE}/newsList", timeout=timeout)
     r.raise_for_status()
     return (r.json().get("data", {}) or {}).get("pois", []) or []
 
+# --- Hauptfunktion -------------------------------------------------------------
 def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     """
-    Rückgabe-Format je Event:
-      {source, category, title, description, link, guid, pubDate(datetime)}
-    - nur aktive Meldungen
-    - dedupliziert (intern & gegen News)
-    - nur Großraum Wien: gegeben (WL-Betriebsgebiet)
+    Liefert nur aktive Störungen/Baustellen/Einschränkungen.
+    Duplikate (gleiches Thema an mehreren Stops) werden zusammengeführt.
+    Rückgabe je Item:
+      {source, category, title, description, link, guid, pubDate}
     """
     now = datetime.now(timezone.utc)
+    raw: List[Dict[str, Any]] = []
 
-    items: List[Dict[str, Any]] = []
-    seen_keys: set[str] = set()  # Cross-source-Dedup (Traffic vs. News)
-
-    # ---- A) Traffic-Infos: immer restriktiv -----------------------------------
+    # A) TrafficInfos (grundsätzlich restriktiv; dennoch Spam-Filter anwenden)
     try:
         for ti in _fetch_traffic_infos(timeout=timeout):
             start, end = _times(ti)
@@ -129,43 +117,36 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             desc = html.escape(ti.get("description") or "")
             attrs = ti.get("attributes") or {}
 
-            rel_lines = ti.get("relatedLines") or attrs.get("relatedLines")
-            rel_stops = ti.get("relatedStops") or attrs.get("relatedStops")
+            # Spam-Infos (z.B. Fest/Anzeiger) aussortieren, wenn keine Restriktionsbegriffe
+            fulltext = " ".join([title, ti.get("description") or "", str(attrs.get("status") or "")])
+            if KW_EXCLUDE.search(fulltext) and not KW_RE.search(fulltext):
+                continue
 
-            parts = []
+            rel_lines = _as_list(ti.get("relatedLines") or attrs.get("relatedLines"))
+            rel_stops = _as_list(ti.get("relatedStops") or attrs.get("relatedStops"))
+
+            extras = []
             for k in ("status","station","location","reason","towards"):
                 if attrs.get(k):
-                    parts.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
-            if rel_lines: parts.append(f"Linien: {html.escape(str(rel_lines))}")
-            if rel_stops: parts.append(f"Stops: {html.escape(str(rel_stops))}")
-            if parts:
-                desc = (desc + ("<br/>" if desc else "") + "<br/>".join(parts))
+                    extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
+            if rel_lines:
+                extras.append(f"Linien: {html.escape(str(rel_lines))}")
+            if rel_stops:
+                extras.append(f"Stops: {html.escape(str(rel_stops))}")
 
-            # Dedup-Key: Titel+Linien+Stops+Start~Stunde
-            key = _guid(
-                "wl-traffic",
-                _normalize_title(title),
-                _norm_list(rel_lines),
-                _norm_list(rel_stops),
-                (start or now).replace(minute=0, second=0, microsecond=0).isoformat()
-            )
-            if key in seen_keys:
-                continue
-            seen_keys.add(key)
-
-            items.append({
-                "source": "Wiener Linien",
+            raw.append({
                 "category": "Störung",
                 "title": title,
-                "description": desc,
-                "link": "https://www.wienerlinien.at/open-data",
-                "guid": key,  # stabil, kollisionsarm
+                "desc": desc,
+                "extras": extras,
+                "lines": { _tok(x) for x in rel_lines if str(x).strip() },
+                "stops": { _tok(x) for x in rel_stops if str(x).strip() },
                 "pubDate": start or now,
             })
     except Exception as e:
         logging.exception("WL trafficInfoList fehlgeschlagen: %s", e)
 
-    # ---- B) News/Hinweise: nur wenn restriktionsrelevant ----------------------
+    # B) News/Hinweise (nur mit echter Einschränkung)
     try:
         for poi in _fetch_news(timeout=timeout):
             start, end = _times(poi)
@@ -173,54 +154,89 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 continue
 
             title = (poi.get("title") or "Hinweis").strip()
+            attrs = poi.get("attributes") or {}
             text_for_filter = " ".join([
                 title,
                 poi.get("subtitle") or "",
                 poi.get("description") or "",
-                str((poi.get("attributes") or {}).get("status") or "")
+                str(attrs.get("status") or "")
             ])
             if not KW_RE.search(text_for_filter):
                 continue  # kein klarer Restriktionsbezug
 
             desc = html.escape(poi.get("description") or "")
-            attrs = poi.get("attributes") or {}
-            rel_lines = poi.get("relatedLines") or attrs.get("relatedLines")
-            rel_stops = poi.get("relatedStops") or attrs.get("relatedStops")
+            rel_lines = _as_list(poi.get("relatedLines") or attrs.get("relatedLines"))
+            rel_stops = _as_list(poi.get("relatedStops") or attrs.get("relatedStops"))
 
-            parts = []
+            extras = []
             if poi.get("subtitle"):
-                parts.append(html.escape(poi["subtitle"]))
+                extras.append(html.escape(poi["subtitle"]))
             for k in ("station","location","towards"):
                 if attrs.get(k):
-                    parts.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
-            if rel_lines: parts.append(f"Linien: {html.escape(str(rel_lines))}")
-            if rel_stops: parts.append(f"Stops: {html.escape(str(rel_stops))}")
-            if parts:
-                desc = (desc + ("<br/>" if desc else "") + "<br/>".join(parts))
+                    extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
+            if rel_lines:
+                extras.append(f"Linien: {html.escape(str(rel_lines))}")
+            if rel_stops:
+                extras.append(f"Stops: {html.escape(str(rel_stops))}")
 
-            key = _guid(
-                "wl-news",
-                _normalize_title(title),
-                _norm_list(rel_lines),
-                _norm_list(rel_stops),
-                (start or now).replace(minute=0, second=0, microsecond=0).isoformat()
-            )
-            if key in seen_keys:
-                continue
-            seen_keys.add(key)
-
-            items.append({
-                "source": "Wiener Linien",
+            raw.append({
                 "category": "Hinweis",
                 "title": title,
-                "description": desc,
-                "link": "https://www.wienerlinien.at/open-data",
-                "guid": key,
+                "desc": desc,
+                "extras": extras,
+                "lines": { _tok(x) for x in rel_lines if str(x).strip() },
+                "stops": { _tok(x) for x in rel_stops if str(x).strip() },
                 "pubDate": start or now,
             })
     except Exception as e:
         logging.exception("WL newsList fehlgeschlagen: %s", e)
 
-    # Sortierung: neuestes oben
+    # C) Duplikate zusammenfassen (gleiches Thema/Linien, Stops aggregieren)
+    buckets: Dict[str, Dict[str, Any]] = {}
+    for ev in raw:
+        key = _guid("wl", ev["category"], _norm_title(ev["title"]), ",".join(sorted(ev["lines"])))
+        b = buckets.get(key)
+        if not b:
+            buckets[key] = {
+                "source": "Wiener Linien",
+                "category": ev["category"],
+                "title": ev["title"],
+                "desc_base": ev["desc"],
+                "extras": list(ev["extras"]),
+                "lines": set(ev["lines"]),
+                "stops": set(ev["stops"]),
+                "pubDate": ev["pubDate"],
+            }
+        else:
+            b["stops"].update(ev["stops"])
+            b["lines"].update(ev["lines"])
+            if ev["pubDate"] and ev["pubDate"] < b["pubDate"]:
+                b["pubDate"] = ev["pubDate"]
+            # Extras zusammenführen (ohne Doppler)
+            for x in ev["extras"]:
+                if x not in b["extras"]:
+                    b["extras"].append(x)
+
+    # D) finale Items bauen
+    items: List[Dict[str, Any]] = []
+    for b in buckets.values():
+        desc = b["desc_base"]
+        if b["extras"]:
+            desc = (desc + ("<br/>" if desc else "") + "<br/>".join(b["extras"]))
+        if b["stops"]:
+            stops_list = sorted(b["stops"])
+            stops_str = ", ".join(stops_list[:15]) + (" …" if len(stops_list) > 15 else "")
+            desc += ("<br/>Betroffene Haltestellen: " + html.escape(stops_str))
+        guid = _guid("wl", b["category"], _norm_title(b["title"]), ",".join(sorted(b["lines"])))
+        items.append({
+            "source": "Wiener Linien",
+            "category": b["category"],
+            "title": b["title"],
+            "description": desc,
+            "link": "https://www.wienerlinien.at/open-data",
+            "guid": guid,
+            "pubDate": b["pubDate"],
+        })
+
     items.sort(key=lambda x: x["pubDate"], reverse=True)
     return items
