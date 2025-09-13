@@ -5,6 +5,7 @@ Builds a single RSS 2.0 feed for active ÖPNV-Beeinträchtigungen im Großraum W
 - Primäre Quelle: Wiener Linien (OGD Realtime) via providers.wiener_linien
 - ÖBB/VOR sind vorbereitet (Provider liefern leer, bis Credentials/Implementierung vorhanden)
 - TV-tauglich: Beschreibung wird zu kurzem Klartext ohne HTML/IMGs gekürzt
+- Stabil: pubDate-Fallback vermeidet 'Jitter' durch Build-Zeit
 - Dedupe über GUID quer über alle Provider
 """
 
@@ -15,7 +16,8 @@ import sys
 import re
 import html
 import logging
-from datetime import datetime, timezone
+import hashlib
+from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 from xml.etree.ElementTree import Element, SubElement, tostring
 from zoneinfo import ZoneInfo
@@ -33,6 +35,10 @@ OUT_PATH   = os.getenv("OUT_PATH",   "docs/feed.xml")
 MAX_ITEMS  = int(os.getenv("MAX_ITEMS", "200"))
 LOG_LEVEL  = os.getenv("LOG_LEVEL",  "INFO")
 
+# TV/Signage-Einstellungen
+DESCRIPTION_CHAR_LIMIT = int(os.getenv("DESCRIPTION_CHAR_LIMIT", "240"))  # Zeichenlimit für Klartext
+FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5"))  # 'zu frisch' wenn innerhalb der letzten X Minuten
+
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
 
@@ -44,7 +50,7 @@ log = logging.getLogger("build_feed")
 
 # --------------------------------- Hilfsfunktionen ---------------------------------
 
-def _to_plain_for_signage(s: str, limit: int = 240) -> str:
+def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
     """
     Macht aus evtl. reichhaltigem HTML einen kurzen, gut lesbaren TV-Text.
     - entfernt <img>
@@ -69,11 +75,13 @@ def _to_plain_for_signage(s: str, limit: int = 240) -> str:
     s = html.unescape(re.sub(r"\s+", " ", s)).strip()
 
     # 5) Schönere "Linien:"-Notation aus evtl. WL-Listen
-    s = re.sub(r"Linien:\s*\[([^\]]+)\]",
-               lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")),
-               s)
+    s = re.sub(
+        r"Linien:\s*\[([^\]]+)\]",
+        lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")),
+        s,
+    )
 
-    # 6) Stops/ID-Listen am TV weglassen
+    # 6) Stops/ID-Listen am TV weglassen (nicht klickbar, wenig Mehrwert)
     s = re.sub(r"\bStops:\s*\[[^\]]*\]", " ", s)
     s = re.sub(r"\bBetroffene Haltestellen:\s*[0-9, …]+", " ", s)
 
@@ -105,23 +113,66 @@ def _rss_root(title: str, link: str, description: str):
     return rss, ch
 
 
-def _add_item(ch, ev: Dict[str, Any]) -> None:
+def _stable_pubdate_fallback(guid: str, now_local: datetime) -> datetime:
+    """
+    Deterministischer, tagesstabiler Fallback für pubDate:
+    - Basis: Heute 06:00 Europe/Vienna
+    - Offset: Hash aus GUID (Sekunden innerhalb der ersten Stunde)
+    So bleibt die Reihenfolge stabil ohne bei jedem Build 'neu' zu wirken.
+    """
+    base = now_local.replace(hour=6, minute=0, second=0, microsecond=0)
+    h = int(hashlib.md5(guid.encode("utf-8")).hexdigest()[:8], 16)
+    offset_sec = h % 3600  # innerhalb der ersten Stunde
+    return base + timedelta(seconds=offset_sec)
+
+
+def _normalize_pubdate(ev: Dict[str, Any], build_now_local: datetime) -> datetime:
+    """
+    Verwendet den vom Provider gelieferten pubDate.
+    Falls der 'zu frisch' ist (innerhalb FRESH_PUBDATE_WINDOW_MIN vor Build-Zeit),
+    setzen wir einen stabilen Fallback, um Jitter zu vermeiden.
+    """
+    dt = ev.get("pubDate")
+    if not isinstance(dt, datetime):
+        return _stable_pubdate_fallback(ev["guid"], build_now_local)
+
+    # Wenn dt ohne TZ kommt -> als UTC interpretieren, dann in Wien ausgeben
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+
+    # Jitter-Vermeidung: wenn zu nah an "jetzt" (oft Build-Zeit mangels Quell-TS)
+    window = timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN)
+    if (build_now_local.astimezone(timezone.utc) - dt) < window:
+        return _stable_pubdate_fallback(ev["guid"], build_now_local)
+    return dt
+
+
+def _add_item(ch, ev: Dict[str, Any], build_now_local: datetime) -> None:
     """
     Erwartet ev mit Schlüsseln:
     source, category, title, description, link, guid, pubDate
     """
     it = SubElement(ch, "item")
-    SubElement(it, "title").text = f"[{ev['source']}/{ev['category']}] {ev['title']}"
-    SubElement(it, "link").text = ev.get("link") or FEED_LINK
+
+    # Kurzer, klarer Titel: bereits aus Provider, aber sicherheitshalber unescape/strip
+    title = html.unescape(str(ev["title"])).strip()
+    SubElement(it, "title").text = f"[{ev['source']}/{ev['category']}] {title}"
+
+    # Auf TVs kann man nicht klicken -> neutrales Link-Target (Channel-Link)
+    SubElement(it, "link").text = FEED_LINK
 
     # TV-Kurztext (HTML entfernen/kürzen). Fallback auf Titel.
     short = _to_plain_for_signage(ev.get("description") or "")
-    SubElement(it, "description").text = short or ev["title"]
+    SubElement(it, "description").text = short or title
 
-    SubElement(it, "pubDate").text = _fmt_date(ev["pubDate"])
+    # Stabilisiertes pubDate
+    stable_dt = _normalize_pubdate(ev, build_now_local)
+    SubElement(it, "pubDate").text = _fmt_date(stable_dt)
+
+    # GUID beibehalten (Reader verwenden diese zur Dupe-Erkennung)
     SubElement(it, "guid").text = ev["guid"]
 
-    # Kategorien helfen beim Filtern im Reader
+    # Kategorien helfen beim Filtern (auch wenn TV es ignoriert)
     for c in (ev.get("source"), ev.get("category")):
         if c:
             SubElement(it, "category").text = c
@@ -162,15 +213,17 @@ def main() -> None:
         except Exception as e:
             log.exception("Provider-Fehler bei %s: %s", p.__name__, e)
 
-    # 2) Sortieren & deckeln
+    # 2) Sortieren (neuestes zuerst) & deckeln
     all_events.sort(key=lambda x: x["pubDate"], reverse=True)
     if MAX_ITEMS > 0 and len(all_events) > MAX_ITEMS:
         all_events = all_events[:MAX_ITEMS]
 
     # 3) RSS bauen
     rss, ch = _rss_root(FEED_TITLE, FEED_LINK, FEED_DESC)
+    build_now_local = datetime.now(VIENNA_TZ)
+
     for ev in all_events:
-        _add_item(ch, ev)
+        _add_item(ch, ev, build_now_local)
 
     # 4) Schreiben
     _write_xml(rss, OUT_PATH)
