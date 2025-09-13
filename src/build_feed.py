@@ -6,6 +6,7 @@ Builds a single RSS 2.0 feed for active ÖPNV-Beeinträchtigungen im Großraum W
 - ÖBB/VOR sind vorbereitet (Provider liefern leer, bis Credentials/Implementierung vorhanden)
 - TV-tauglich: Beschreibung wird zu kurzem Klartext ohne HTML/IMGs gekürzt
 - Stabil: pubDate-Fallback vermeidet 'Jitter' durch Build-Zeit
+- Altersfilter: MAX_ITEM_AGE_DAYS entfernt nur, wenn Item alt UND nicht mehr aktiv
 - Dedupe über GUID quer über alle Provider
 """
 
@@ -32,12 +33,16 @@ FEED_TITLE = os.getenv("FEED_TITLE", "ÖPNV Störungen Wien & Umgebung")
 FEED_LINK  = os.getenv("FEED_LINK",  "https://github.com/Origamihase/wien-oepnv")
 FEED_DESC  = os.getenv("FEED_DESC",  "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen")
 OUT_PATH   = os.getenv("OUT_PATH",   "docs/feed.xml")
-MAX_ITEMS  = int(os.getenv("MAX_ITEMS", "200"))
+MAX_ITEMS  = int(os.getenv("MAX_ITEMS", "60"))  # schlank & performant
 LOG_LEVEL  = os.getenv("LOG_LEVEL",  "INFO")
 
 # TV/Signage-Einstellungen
-DESCRIPTION_CHAR_LIMIT = int(os.getenv("DESCRIPTION_CHAR_LIMIT", "170"))   # Zeichenlimit für Klartext
-FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5")) # 'zu frisch' = innerhalb der letzten X Minuten
+DESCRIPTION_CHAR_LIMIT = int(os.getenv("DESCRIPTION_CHAR_LIMIT", "170"))
+FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5"))
+
+# Altersfilter (0 = aus). Achtung: nur "alt UND inaktiv" wird entfernt.
+MAX_ITEM_AGE_DAYS = int(os.getenv("MAX_ITEM_AGE_DAYS", "0"))
+ACTIVE_GRACE_MIN = int(os.getenv("ACTIVE_GRACE_MIN", "10"))  # Konsistenz mit Provider
 
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
@@ -51,49 +56,19 @@ log = logging.getLogger("build_feed")
 # --------------------------------- Hilfsfunktionen ---------------------------------
 
 def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
-    """
-    Macht aus evtl. reichhaltigem HTML einen kurzen, gut lesbaren TV-Text.
-    Reihenfolge ist wichtig:
-      1) Entities lösen (html.unescape) — zweimal (gegen doppelt encodete Entities)
-      2) <img> entfernen
-      3) Block-Tags (p/br/li/ul/ol/h*) zu " · " umwandeln
-      4) übrige HTML-Tags entfernen
-      5) NBSP zu Leerzeichen
-      6) WL-Listen ("Linien: [...]") verschönern
-      7) Stops/ID-Listen entfernen
-      8) Whitespace normalisieren, End-Trenner abwerfen, Kürzen
-    """
+    """Klartext für TV – doppelt unescapen, HTML/IMG raus, NBSP→Space, kompakt."""
     if not s:
         return ""
-
-    # 1) Entities zuerst lösen – zweifach, um &amp;szlig; -> &szlig; -> ß abzudecken
-    s = html.unescape(s)
-    s = html.unescape(s)
-
-    # 2) Bilder hart entfernen
+    s = html.unescape(html.unescape(s))
     s = re.sub(r"<img\b[^>]*>", " ", s, flags=re.I)
-
-    # 3) Semantische Umbrüche zu " · "
     s = re.sub(r"</?(p|br|li|ul|ol|h\d)[^>]*>", " · ", s, flags=re.I)
-
-    # 4) Restliches HTML strippen
     s = re.sub(r"<[^>]+>", " ", s)
-
-    # 5) NBSP zu normalem Leerzeichen
     s = s.replace("\u00A0", " ")
-
-    # 6) "Linien: ['U6','U4']" -> "Linien: U6, U4"
-    s = re.sub(
-        r"Linien:\s*\[([^\]]+)\]",
-        lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")),
-        s,
-    )
-
-    # 7) Stops/ID-Listen am TV weglassen (nicht klickbar, wenig Mehrwert)
+    s = re.sub(r"Linien:\s*\[([^\]]+)\]",
+               lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")),
+               s)
     s = re.sub(r"\bStops:\s*\[[^\]]*\]", " ", s)
     s = re.sub(r"\bBetroffene Haltestellen:\s*[0-9, …]+", " ", s)
-
-    # 8) Whitespace, Trenner & Kürzung
     s = re.sub(r"\s{2,}", " ", s)
     s = re.sub(r"(?:\s*·\s*){2,}", " · ", s).strip()
     s = s.strip("· ,;:-")
@@ -103,7 +78,6 @@ def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
 
 
 def _fmt_date(dt: datetime) -> str:
-    """RFC 2822 Datum für RSS, immer in Europe/Vienna ausgeben."""
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
     return format_datetime(dt.astimezone(VIENNA_TZ))
@@ -117,70 +91,81 @@ def _rss_root(title: str, link: str, description: str):
     SubElement(ch, "description").text = description
     SubElement(ch, "language").text = "de-AT"
     SubElement(ch, "lastBuildDate").text = _fmt_date(datetime.now(timezone.utc))
-    SubElement(ch, "ttl").text = "15"  # Reader-Hinweis: alle 15 Min aktualisieren
+    SubElement(ch, "ttl").text = "15"
     SubElement(ch, "generator").text = "wien-oepnv (GitHub Actions)"
     return rss, ch
 
 
 def _stable_pubdate_fallback(guid: str, now_local: datetime) -> datetime:
-    """
-    Deterministischer, tagesstabiler Fallback für pubDate:
-    - Basis: Heute 06:00 Europe/Vienna
-    - Offset: Hash aus GUID (Sekunden innerhalb der ersten Stunde)
-    So bleibt die Reihenfolge stabil ohne bei jedem Build 'neu' zu wirken.
-    """
     base = now_local.replace(hour=6, minute=0, second=0, microsecond=0)
     h = int(hashlib.md5(guid.encode("utf-8")).hexdigest()[:8], 16)
-    offset_sec = h % 3600  # innerhalb der ersten Stunde
+    offset_sec = h % 3600
     return base + timedelta(seconds=offset_sec)
 
 
 def _normalize_pubdate(ev: Dict[str, Any], build_now_local: datetime) -> datetime:
-    """
-    Verwendet den vom Provider gelieferten pubDate.
-    Falls der 'zu frisch' ist (innerhalb FRESH_PUBDATE_WINDOW_MIN vor Build-Zeit),
-    setzen wir einen stabilen Fallback, um Jitter zu vermeiden.
-    """
     dt = ev.get("pubDate")
     if not isinstance(dt, datetime):
         return _stable_pubdate_fallback(ev["guid"], build_now_local)
-
-    # Wenn dt ohne TZ kommt -> als UTC interpretieren, dann in Wien ausgeben
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
-
     window = timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN)
     if (build_now_local.astimezone(timezone.utc) - dt) < window:
         return _stable_pubdate_fallback(ev["guid"], build_now_local)
     return dt
 
 
+def _is_still_active(ev: Dict[str, Any], now_local: datetime) -> bool:
+    """Aktiv, falls ends_at fehlt (offen) ODER in der Zukunft (mit Gnadenzeit)."""
+    end = ev.get("ends_at")
+    if not isinstance(end, datetime):
+        return True  # kein Enddatum => als fortdauernd betrachten
+    # Zeiten ohne TZ als UTC interpretieren
+    if end.tzinfo is None:
+        end = end.replace(tzinfo=timezone.utc)
+    return end >= (now_local - timedelta(minutes=ACTIVE_GRACE_MIN)).astimezone(end.tzinfo)
+
+
+def _apply_age_filter(items: List[Dict[str, Any]], build_now_local: datetime) -> List[Dict[str, Any]]:
+    """Entfernt nur Items, die (a) älter als MAX_ITEM_AGE_DAYS sind UND (b) nicht mehr aktiv."""
+    if MAX_ITEM_AGE_DAYS <= 0:
+        return items
+    threshold_local = build_now_local - timedelta(days=MAX_ITEM_AGE_DAYS)
+    kept = []
+    for ev in items:
+        pd = ev.get("pubDate")
+        if not isinstance(pd, datetime):
+            kept.append(ev)  # ohne Datum nicht hart filtern
+            continue
+        # für Vergleich in lokale TZ
+        if pd.tzinfo is None:
+            pd = pd.replace(tzinfo=timezone.utc)
+        pd_local = pd.astimezone(VIENNA_TZ)
+        if pd_local < threshold_local and not _is_still_active(ev, build_now_local):
+            # alt und inaktiv => ausblenden
+            continue
+        kept.append(ev)
+    return kept
+
+
 def _add_item(ch, ev: Dict[str, Any], build_now_local: datetime) -> None:
-    """
-    Erwartet ev mit Schlüsseln:
-    source, category, title, description, link, guid, pubDate
-    """
     it = SubElement(ch, "item")
 
-    # Titel NICHT un-escapen (damit '<' sicher bleibt, s. St. Marx)
+    # Titel NICHT un-escapen (damit '<' sicher bleibt)
     title = str(ev["title"]).strip()
     SubElement(it, "title").text = f"[{ev['source']}/{ev['category']}] {title}"
 
-    # Auf TVs kann man nicht klicken -> neutrales Link-Target (Channel-Link)
+    # TV ohne Interaktion -> neutraler Link
     SubElement(it, "link").text = FEED_LINK
 
-    # TV-Kurztext (HTML entfernen/kürzen). Fallback auf Titel.
     short = _to_plain_for_signage(ev.get("description") or "")
     SubElement(it, "description").text = short or title
 
-    # Stabilisiertes pubDate
     stable_dt = _normalize_pubdate(ev, build_now_local)
     SubElement(it, "pubDate").text = _fmt_date(stable_dt)
 
-    # GUID beibehalten (Reader verwenden diese zur Dupe-Erkennung)
     SubElement(it, "guid").text = ev["guid"]
 
-    # Kategorien helfen beim Filtern (auch wenn TV es ignoriert)
     for c in (ev.get("source"), ev.get("category")):
         if c:
             SubElement(it, "category").text = c
@@ -206,6 +191,7 @@ def main() -> None:
             events = p.fetch_events()
             cleaned: List[Dict[str, Any]] = []
             for ev in events:
+                # Basisschema prüfen
                 if not {"source","category","title","description","link","guid","pubDate"} <= ev.keys():
                     continue
                 if not ev.get("guid"):
@@ -219,13 +205,17 @@ def main() -> None:
         except Exception as e:
             log.exception("Provider-Fehler bei %s: %s", p.__name__, e)
 
+    # Altersfilter anwenden (bewahrt aktive Langläufer wie U5-Bau)
+    build_now_local = datetime.now(VIENNA_TZ)
+    all_events = _apply_age_filter(all_events, build_now_local)
+
+    # Sortieren & deckeln
     all_events.sort(key=lambda x: x["pubDate"], reverse=True)
     if MAX_ITEMS > 0 and len(all_events) > MAX_ITEMS:
         all_events = all_events[:MAX_ITEMS]
 
+    # RSS bauen
     rss, ch = _rss_root(FEED_TITLE, FEED_LINK, FEED_DESC)
-    build_now_local = datetime.now(VIENNA_TZ)
-
     for ev in all_events:
         _add_item(ch, ev, build_now_local)
 
