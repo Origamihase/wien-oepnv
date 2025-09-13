@@ -24,7 +24,7 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/1.3 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
@@ -106,7 +106,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     """
     Liefert NUR aktive Beeinträchtigungen. Dedupe über (Kategorie, Titel, Linien).
     Ergebnis-Item:
-      {source, category, title, description, link, guid, pubDate}
+      {source, category, title, description, link, guid, pubDate, starts_at?, ends_at?}
     """
     now = datetime.now(timezone.utc)
     raw: List[Dict[str, Any]] = []
@@ -146,6 +146,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "lines": { _tok(x) for x in rel_lines if str(x).strip() },
                 "stops": { _tok(x) for x in rel_stops if str(x).strip() },
                 "pubDate": start or ts_best or now,
+                "starts_at": start,
+                "ends_at": end,
             })
     except Exception as e:
         logging.exception("WL trafficInfoList fehlgeschlagen: %s", e)
@@ -186,6 +188,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "lines": { _tok(x) for x in rel_lines if str(x).strip() },
                 "stops": { _tok(x) for x in rel_stops if str(x).strip() },
                 "pubDate": start or ts_best or now,
+                "starts_at": start,
+                "ends_at": end,
             })
     except Exception as e:
         logging.exception("WL newsList fehlgeschlagen: %s", e)
@@ -205,12 +209,18 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "lines": set(ev["lines"]),
                 "stops": set(ev["stops"]),
                 "pubDate": ev["pubDate"],
+                "starts_at": ev["starts_at"],
+                "ends_at": ev["ends_at"],
             }
         else:
             b["stops"].update(ev["stops"])
             b["lines"].update(ev["lines"])
+            # frühestes Start als pubDate beibehalten
             if ev["pubDate"] and ev["pubDate"] < b["pubDate"]:
                 b["pubDate"] = ev["pubDate"]
+            # Ends zusammenführen: wenn irgendeines None -> offen; sonst max()
+            be, ee = b["ends_at"], ev["ends_at"]
+            b["ends_at"] = None if (be is None or ee is None) else max(be, ee)
             for x in ev["extras"]:
                 if x not in b["extras"]:
                     b["extras"].append(x)
@@ -236,6 +246,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             "link": "https://www.wienerlinien.at/open-data",
             "guid": guid,
             "pubDate": b["pubDate"],
+            "starts_at": b["starts_at"],
+            "ends_at": b["ends_at"],
         })
 
     items.sort(key=lambda x: x["pubDate"], reverse=True)
