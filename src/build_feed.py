@@ -36,8 +36,8 @@ MAX_ITEMS  = int(os.getenv("MAX_ITEMS", "200"))
 LOG_LEVEL  = os.getenv("LOG_LEVEL",  "INFO")
 
 # TV/Signage-Einstellungen
-DESCRIPTION_CHAR_LIMIT = int(os.getenv("DESCRIPTION_CHAR_LIMIT", "240"))  # Zeichenlimit für Klartext
-FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5"))  # 'zu frisch' wenn innerhalb der letzten X Minuten
+DESCRIPTION_CHAR_LIMIT = int(os.getenv("DESCRIPTION_CHAR_LIMIT", "170"))   # Zeichenlimit für Klartext
+FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5")) # 'zu frisch' = innerhalb der letzten X Minuten
 
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
@@ -140,7 +140,6 @@ def _normalize_pubdate(ev: Dict[str, Any], build_now_local: datetime) -> datetim
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
 
-    # Jitter-Vermeidung: wenn zu nah an "jetzt" (oft Build-Zeit mangels Quell-TS)
     window = timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN)
     if (build_now_local.astimezone(timezone.utc) - dt) < window:
         return _stable_pubdate_fallback(ev["guid"], build_now_local)
@@ -154,7 +153,7 @@ def _add_item(ch, ev: Dict[str, Any], build_now_local: datetime) -> None:
     """
     it = SubElement(ch, "item")
 
-    # Kurzer, klarer Titel: bereits aus Provider, aber sicherheitshalber unescape/strip
+    # Kurzer, klarer Titel: unescape/strip (Provider escaped bereits spitze Klammern)
     title = html.unescape(str(ev["title"])).strip()
     SubElement(it, "title").text = f"[{ev['source']}/{ev['category']}] {title}"
 
@@ -189,7 +188,6 @@ def _write_xml(elem, path: str) -> None:
 # -------------------------------------- Main --------------------------------------
 
 def main() -> None:
-    # 1) Events von allen aktivierten Providern einsammeln
     providers = (wiener_linien, oebb, vor)
     all_events: List[Dict[str, Any]] = []
     seen_guids: set[str] = set()
@@ -197,7 +195,6 @@ def main() -> None:
     for p in providers:
         try:
             events = p.fetch_events()
-            # Defensive: nur akzeptieren, was das erwartete Schema erfüllt
             cleaned: List[Dict[str, Any]] = []
             for ev in events:
                 if not {"source","category","title","description","link","guid","pubDate"} <= ev.keys():
@@ -213,19 +210,16 @@ def main() -> None:
         except Exception as e:
             log.exception("Provider-Fehler bei %s: %s", p.__name__, e)
 
-    # 2) Sortieren (neuestes zuerst) & deckeln
     all_events.sort(key=lambda x: x["pubDate"], reverse=True)
     if MAX_ITEMS > 0 and len(all_events) > MAX_ITEMS:
         all_events = all_events[:MAX_ITEMS]
 
-    # 3) RSS bauen
     rss, ch = _rss_root(FEED_TITLE, FEED_LINK, FEED_DESC)
     build_now_local = datetime.now(VIENNA_TZ)
 
     for ev in all_events:
         _add_item(ch, ev, build_now_local)
 
-    # 4) Schreiben
     _write_xml(rss, OUT_PATH)
     log.info("Fertig: %d Items im Feed", len(all_events))
 
