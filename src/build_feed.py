@@ -53,28 +53,31 @@ log = logging.getLogger("build_feed")
 def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
     """
     Macht aus evtl. reichhaltigem HTML einen kurzen, gut lesbaren TV-Text.
-    - entfernt <img>
-    - konvertiert Zeilenumbrüche/Listen/Headings zu Trennpunkten
-    - entfernt restliches HTML
-    - kürzt auf 'limit' Zeichen mit Auslassungspunkten
-    - säubert WL-typische Listen (Linien/Stops)
+    Reihenfolge ist wichtig:
+      1) Entities lösen (html.unescape)
+      2) <img> entfernen
+      3) Block-Tags (p/br/li/ul/ol/h*) zu " · " umwandeln
+      4) übrige HTML-Tags entfernen
+      5) WL-Listen ("Linien: [...]") verschönern
+      6) Stops/ID-Listen entfernen
+      7) Whitespace normalisieren, End-Trenner abwerfen, Kürzen
     """
     if not s:
         return ""
 
-    # 1) Bilder hart entfernen
+    # 1) Entities zuerst lösen (damit danach echte Tags entfernt werden können)
+    s = html.unescape(s)
+
+    # 2) Bilder hart entfernen
     s = re.sub(r"<img\b[^>]*>", " ", s, flags=re.I)
 
-    # 2) Semantische Umbrüche zu " · "
+    # 3) Semantische Umbrüche zu " · "
     s = re.sub(r"</?(p|br|li|ul|ol|h\d)[^>]*>", " · ", s, flags=re.I)
 
-    # 3) Restliches HTML strippen
+    # 4) Restliches HTML strippen
     s = re.sub(r"<[^>]+>", " ", s)
 
-    # 4) Entities lösen & whitespaces normalisieren
-    s = html.unescape(re.sub(r"\s+", " ", s)).strip()
-
-    # 5) Schönere "Linien:"-Notation aus evtl. WL-Listen
+    # 5) "Linien: ['U6','U4']" -> "Linien: U6, U4"
     s = re.sub(
         r"Linien:\s*\[([^\]]+)\]",
         lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")),
@@ -85,9 +88,10 @@ def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
     s = re.sub(r"\bStops:\s*\[[^\]]*\]", " ", s)
     s = re.sub(r"\bBetroffene Haltestellen:\s*[0-9, …]+", " ", s)
 
-    s = re.sub(r"\s{2,}", " ", s).strip()
-
-    # 7) Kürzen
+    # 7) Whitespace, Trenner & Kürzung
+    s = re.sub(r"\s{2,}", " ", s)
+    s = re.sub(r"(?:\s*·\s*){2,}", " · ", s).strip()
+    s = s.strip("· ,;:-")  # unschöne Endzeichen weg
     if len(s) > limit:
         s = s[:limit - 1].rstrip() + "…"
     return s
@@ -153,8 +157,8 @@ def _add_item(ch, ev: Dict[str, Any], build_now_local: datetime) -> None:
     """
     it = SubElement(ch, "item")
 
-    # Kurzer, klarer Titel: unescape/strip (Provider escaped bereits spitze Klammern)
-    title = html.unescape(str(ev["title"])).strip()
+    # Titel NICHT un-escapen (damit '<' sicher bleibt, s. St. Marx)
+    title = str(ev["title"]).strip()
     SubElement(it, "title").text = f"[{ev['source']}/{ev['category']}] {title}"
 
     # Auf TVs kann man nicht klicken -> neutrales Link-Target (Channel-Link)
