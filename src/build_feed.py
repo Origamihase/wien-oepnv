@@ -6,7 +6,7 @@ Builds a single RSS 2.0 feed for active ÖPNV-Beeinträchtigungen im Großraum W
 - ÖBB/VOR sind vorbereitet (Provider liefern leer, bis Credentials/Implementierung vorhanden)
 - TV-tauglich: Beschreibung wird zu kurzem Klartext ohne HTML/IMGs gekürzt
 - Stabil: pubDate-Fallback vermeidet 'Jitter' durch Build-Zeit
-- Altersfilter: MAX_ITEM_AGE_DAYS entfernt nur, wenn Item alt UND nicht mehr aktiv
+- Altersfilter: MAX_ITEM_AGE_DAYS entfernt nur, wenn Item alt UND nicht klar befristet aktiv ist
 - Dedupe über GUID quer über alle Provider
 """
 
@@ -40,9 +40,11 @@ LOG_LEVEL  = os.getenv("LOG_LEVEL",  "INFO")
 DESCRIPTION_CHAR_LIMIT = int(os.getenv("DESCRIPTION_CHAR_LIMIT", "170"))
 FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5"))
 
-# Altersfilter (0 = aus). Achtung: nur "alt UND inaktiv" wird entfernt.
-MAX_ITEM_AGE_DAYS = int(os.getenv("MAX_ITEM_AGE_DAYS", "0"))
-ACTIVE_GRACE_MIN = int(os.getenv("ACTIVE_GRACE_MIN", "10"))  # Konsistenz mit Provider
+# Altersfilter:
+# - Nur Items entfernen, die älter als MAX_ITEM_AGE_DAYS sind UND
+#   KEIN Enddatum in der Zukunft haben.
+MAX_ITEM_AGE_DAYS = int(os.getenv("MAX_ITEM_AGE_DAYS", "365"))
+ACTIVE_GRACE_MIN = int(os.getenv("ACTIVE_GRACE_MIN", "10"))  # Konsistenz zum Provider
 
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
@@ -115,19 +117,24 @@ def _normalize_pubdate(ev: Dict[str, Any], build_now_local: datetime) -> datetim
     return dt
 
 
-def _is_still_active(ev: Dict[str, Any], now_local: datetime) -> bool:
-    """Aktiv, falls ends_at fehlt (offen) ODER in der Zukunft (mit Gnadenzeit)."""
+def _has_future_end(ev: Dict[str, Any], now_local: datetime) -> bool:
+    """True, wenn ein Enddatum existiert und (mit Gnadenzeit) in der Zukunft liegt."""
     end = ev.get("ends_at")
     if not isinstance(end, datetime):
-        return True  # kein Enddatum => als fortdauernd betrachten
-    # Zeiten ohne TZ als UTC interpretieren
+        return False
     if end.tzinfo is None:
         end = end.replace(tzinfo=timezone.utc)
     return end >= (now_local - timedelta(minutes=ACTIVE_GRACE_MIN)).astimezone(end.tzinfo)
 
 
 def _apply_age_filter(items: List[Dict[str, Any]], build_now_local: datetime) -> List[Dict[str, Any]]:
-    """Entfernt nur Items, die (a) älter als MAX_ITEM_AGE_DAYS sind UND (b) nicht mehr aktiv."""
+    """
+    Entfernt nur Items, die:
+      - älter als MAX_ITEM_AGE_DAYS sind UND
+      - KEIN Enddatum in der Zukunft haben.
+    Heißt: Langfristige, befristete Maßnahmen (z. B. U5-Bau) bleiben erhalten.
+    Uralte, unbefristete Hinweise verschwinden.
+    """
     if MAX_ITEM_AGE_DAYS <= 0:
         return items
     threshold_local = build_now_local - timedelta(days=MAX_ITEM_AGE_DAYS)
@@ -137,12 +144,12 @@ def _apply_age_filter(items: List[Dict[str, Any]], build_now_local: datetime) ->
         if not isinstance(pd, datetime):
             kept.append(ev)  # ohne Datum nicht hart filtern
             continue
-        # für Vergleich in lokale TZ
         if pd.tzinfo is None:
             pd = pd.replace(tzinfo=timezone.utc)
         pd_local = pd.astimezone(VIENNA_TZ)
-        if pd_local < threshold_local and not _is_still_active(ev, build_now_local):
-            # alt und inaktiv => ausblenden
+
+        if pd_local < threshold_local and not _has_future_end(ev, build_now_local):
+            # alt UND kein zukünftiges Enddatum -> Altlast, raus
             continue
         kept.append(ev)
     return kept
@@ -205,8 +212,9 @@ def main() -> None:
         except Exception as e:
             log.exception("Provider-Fehler bei %s: %s", p.__name__, e)
 
-    # Altersfilter anwenden (bewahrt aktive Langläufer wie U5-Bau)
     build_now_local = datetime.now(VIENNA_TZ)
+
+    # Altersfilter anwenden (bewahrt befristete Langläufer)
     all_events = _apply_age_filter(all_events, build_now_local)
 
     # Sortieren & deckeln
