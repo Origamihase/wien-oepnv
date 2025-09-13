@@ -38,6 +38,7 @@ jobs:
           LOG_LEVEL: INFO
           DESCRIPTION_CHAR_LIMIT: 170
           FRESH_PUBDATE_WINDOW_MIN: 5
+          MAX_ITEMS: 60             # <- übersichtlich & performant
           # Für spätere Aktivierung (offizielle Zugänge hinterlegen):
           # OEBB_API_BASE_URL: ${{ secrets.OEBB_API_BASE_URL }}
           # OEBB_API_TOKEN:     ${{ secrets.OEBB_API_TOKEN }}
