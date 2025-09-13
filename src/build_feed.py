@@ -54,18 +54,20 @@ def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
     """
     Macht aus evtl. reichhaltigem HTML einen kurzen, gut lesbaren TV-Text.
     Reihenfolge ist wichtig:
-      1) Entities lösen (html.unescape)
+      1) Entities lösen (html.unescape) — zweimal (gegen doppelt encodete Entities)
       2) <img> entfernen
       3) Block-Tags (p/br/li/ul/ol/h*) zu " · " umwandeln
       4) übrige HTML-Tags entfernen
-      5) WL-Listen ("Linien: [...]") verschönern
-      6) Stops/ID-Listen entfernen
-      7) Whitespace normalisieren, End-Trenner abwerfen, Kürzen
+      5) NBSP zu Leerzeichen
+      6) WL-Listen ("Linien: [...]") verschönern
+      7) Stops/ID-Listen entfernen
+      8) Whitespace normalisieren, End-Trenner abwerfen, Kürzen
     """
     if not s:
         return ""
 
-    # 1) Entities zuerst lösen (damit danach echte Tags entfernt werden können)
+    # 1) Entities zuerst lösen – zweifach, um &amp;szlig; -> &szlig; -> ß abzudecken
+    s = html.unescape(s)
     s = html.unescape(s)
 
     # 2) Bilder hart entfernen
@@ -77,21 +79,24 @@ def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
     # 4) Restliches HTML strippen
     s = re.sub(r"<[^>]+>", " ", s)
 
-    # 5) "Linien: ['U6','U4']" -> "Linien: U6, U4"
+    # 5) NBSP zu normalem Leerzeichen
+    s = s.replace("\u00A0", " ")
+
+    # 6) "Linien: ['U6','U4']" -> "Linien: U6, U4"
     s = re.sub(
         r"Linien:\s*\[([^\]]+)\]",
         lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")),
         s,
     )
 
-    # 6) Stops/ID-Listen am TV weglassen (nicht klickbar, wenig Mehrwert)
+    # 7) Stops/ID-Listen am TV weglassen (nicht klickbar, wenig Mehrwert)
     s = re.sub(r"\bStops:\s*\[[^\]]*\]", " ", s)
     s = re.sub(r"\bBetroffene Haltestellen:\s*[0-9, …]+", " ", s)
 
-    # 7) Whitespace, Trenner & Kürzung
+    # 8) Whitespace, Trenner & Kürzung
     s = re.sub(r"\s{2,}", " ", s)
     s = re.sub(r"(?:\s*·\s*){2,}", " · ", s).strip()
-    s = s.strip("· ,;:-")  # unschöne Endzeichen weg
+    s = s.strip("· ,;:-")
     if len(s) > limit:
         s = s[:limit - 1].rstrip() + "…"
     return s
