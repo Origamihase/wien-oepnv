@@ -23,6 +23,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          # Optional: beschleunigt Builds
+          cache: "pip"
 
       - name: Install deps
         run: |
@@ -38,12 +40,9 @@ jobs:
           LOG_LEVEL: INFO
           DESCRIPTION_CHAR_LIMIT: 170
           FRESH_PUBDATE_WINDOW_MIN: 5
-          MAX_ITEMS: 60             # <- übersichtlich & performant
-          # Für spätere Aktivierung (offizielle Zugänge hinterlegen):
-          # OEBB_API_BASE_URL: ${{ secrets.OEBB_API_BASE_URL }}
-          # OEBB_API_TOKEN:     ${{ secrets.OEBB_API_TOKEN }}
-          # VOR_API_BASE_URL:   ${{ secrets.VOR_API_BASE_URL }}
-          # VOR_API_TOKEN:      ${{ secrets.VOR_API_TOKEN }}
+          MAX_ITEMS: 60
+          MAX_ITEM_AGE_DAYS: 365      # alt & inaktiv ausblenden, aktive Langläufer (z. B. U5) bleiben
+          ACTIVE_GRACE_MIN: 10
         run: python -u src/build_feed.py
 
       - name: Validate feed (XML + GUID uniqueness)
