@@ -33,7 +33,6 @@ def _add_item(ch, ev):
     SubElement(it, "description").text = ev.get("description") or ""
     SubElement(it, "pubDate").text = format_datetime(ev["pubDate"])
     SubElement(it, "guid").text = ev["guid"]
-    # Kategorien helfen beim Filtern im Reader
     for c in (ev.get("source"), ev.get("category")):
         if c:
             SubElement(it, "category").text = c
