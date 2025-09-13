@@ -48,27 +48,46 @@ log = logging.getLogger("build_feed")
 
 # ------------------------- Hilfsfunktionen -------------------------
 def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
-    """Klartext für TV – doppelt unescapen, HTML/IMG raus, NBSP→Space, Klammern neutralisieren, kompakt."""
+    """Klartext für TV – doppelt unescapen, HTML/IMG raus, NBSP→Space, Klammern entfernen, kompakt."""
     if not s:
         return ""
     s = html.unescape(html.unescape(s))
     s = re.sub(r"<img\b[^>]*>", " ", s, flags=re.I)
     s = re.sub(r"</?(p|br|li|ul|ol|h\d)[^>]*>", " · ", s, flags=re.I)
-    s = re.sub(r"<[^>]+>", " ", s)
+    s = re.sub(r"<[^>]+>", " ", s)  # restliche Tags weg
     s = s.replace("\u00A0", " ")
     s = re.sub(r"Linien:\s*\[([^\]]+)\]",
                lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")),
                s)
     s = re.sub(r"\bStops:\s*\[[^\]]*\]", " ", s)
     s = re.sub(r"\bBetroffene Haltestellen:\s*[0-9, …]+", " ", s)
-    # Restliche spitze Klammern (keine Tags mehr) neutralisieren
-    s = s.replace("<", "‹").replace(">", "›")
+    # Alle spitzen/chevron-Klammern entfernen (keine Tags mehr vorhanden)
+    s = s.replace("‹", "").replace("›", "").replace("<", "").replace(">", "")
     s = re.sub(r"\s{2,}", " ", s)
     s = re.sub(r"(?:\s*·\s*){2,}", " · ", s).strip()
     s = s.strip("· ,;:-")
     if len(s) > limit:
         s = s[:limit - 1].rstrip() + "…"
     return s
+
+def _clean_title(raw: str) -> str:
+    """
+    Entfernt Präfixe, Tags und Sonderklammern aus Titeln und normalisiert Whitespace.
+    - keine '[Quelle/Kategorie]' Präfixe
+    - unescapen -> Tags (falls vorhanden) raus -> ‹ › < > entfernen
+    """
+    t = str(raw or "").strip()
+    # 1) Doppelt unescapen (wandelt &lt; … &gt; in reale Zeichen, die wir gleich entfernen)
+    t = html.unescape(html.unescape(t))
+    # 2) Falls irgendwo HTML im Titel steckt: Tags strippen
+    t = re.sub(r"<[^>]+>", " ", t)
+    # 3) Präfixe wie "[Wiener Linien/Störung] " entfernen (aus älteren Feeds)
+    t = re.sub(r"^\[[^\]]+\]\s*", "", t)
+    # 4) spitze/chevron-Klammern entfernen
+    t = t.replace("‹", "").replace("›", "").replace("<", "").replace(">", "")
+    # 5) Whitespace normalisieren
+    t = re.sub(r"\s{2,}", " ", t).strip(" ·,;:- ").strip()
+    return t
 
 def _fmt_date(dt: datetime) -> str:
     if dt.tzinfo is None:
@@ -156,13 +175,18 @@ def _apply_age_filter(items: List[Dict[str, Any]], build_now_local: datetime) ->
 
 def _add_item(ch, ev: Dict[str, Any], build_now_local: datetime) -> None:
     it = SubElement(ch, "item")
-    title = str(ev["title"]).strip()  # nicht un-escapen
-    SubElement(it, "title").text = f"[{ev['source']}/{ev['category']}] {title}"
-    SubElement(it, "link").text = FEED_LINK  # TV ohne Interaktion
+    # Titel SCHÖN & LESBAR (ohne Präfix, ohne ‹ › < >)
+    title = _clean_title(ev["title"])
+    SubElement(it, "title").text = title
+    # TV ohne Interaktion -> neutraler Link
+    SubElement(it, "link").text = FEED_LINK
+    # TV-Kurztext
     short = _to_plain_for_signage(ev.get("description") or "")
     SubElement(it, "description").text = short or title
+    # Datum stabilisieren
     stable_dt = _normalize_pubdate(ev, build_now_local)
     SubElement(it, "pubDate").text = _fmt_date(stable_dt)
+    # GUID + Kategorien
     SubElement(it, "guid").text = ev["guid"]
     for c in (ev.get("source"), ev.get("category")):
         if c:
