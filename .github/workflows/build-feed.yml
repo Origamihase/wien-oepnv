@@ -23,7 +23,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          # Optional: beschleunigt Builds
           cache: "pip"
 
       - name: Install deps
@@ -41,7 +40,8 @@ jobs:
           DESCRIPTION_CHAR_LIMIT: 170
           FRESH_PUBDATE_WINDOW_MIN: 5
           MAX_ITEMS: 60
-          MAX_ITEM_AGE_DAYS: 365      # alt & inaktiv ausblenden, aktive Langläufer (z. B. U5) bleiben
+          MAX_ITEM_AGE_DAYS: 365      # alt & unbefristet nach 12 Monaten ausblenden
+          ABSOLUTE_MAX_AGE_DAYS: 540   # harter Cut für unbefristete Altlasten (18 Monate)
           ACTIVE_GRACE_MIN: 10
         run: python -u src/build_feed.py
 
