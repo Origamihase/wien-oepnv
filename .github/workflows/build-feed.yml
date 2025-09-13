@@ -16,7 +16,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -32,9 +33,11 @@ jobs:
         env:
           OUT_PATH: docs/feed.xml
           FEED_TITLE: "ÖPNV Störungen Wien & Umgebung"
-          FEED_LINK: "https://www.wienerlinien.at/open-data"
-          FEED_DESC: "Nur aktive Meldungen, dedupliziert (WL; ÖBB/VOR optional)"
+          FEED_LINK: "https://github.com/Origamihase/wien-oepnv"
+          FEED_DESC: "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen"
           LOG_LEVEL: INFO
+          DESCRIPTION_CHAR_LIMIT: 170
+          FRESH_PUBDATE_WINDOW_MIN: 5
           # Für spätere Aktivierung (offizielle Zugänge hinterlegen):
           # OEBB_API_BASE_URL: ${{ secrets.OEBB_API_BASE_URL }}
           # OEBB_API_TOKEN:     ${{ secrets.OEBB_API_TOKEN }}
