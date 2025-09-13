@@ -1,20 +1,24 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Builds a single RSS 2.0 feed for active ÖPNV-Beeinträchtigungen im Großraum Wien.
+Builds a single RSS 2.0 feed für aktive ÖPNV-Beeinträchtigungen im Großraum Wien.
 - Quelle: Wiener Linien (OGD Realtime) via providers.wiener_linien
-- TV-tauglich: Beschreibung -> kompakter Klartext, keine Bilder/HTML
-- Stabil: pubDate-Fallback (niemals in Zukunft gegenüber Build-Zeit)
+- TV-tauglich: Beschreibung -> kompakter Klartext, keine Bilder/HTML, Kürzung an Wortgrenzen
+- Stabil: pubDate-Fallback (nie in der Zukunft gegenüber Build-Zeit)
 - Altersfilter:
-    * Behalte Items mit zukünftigem Enddatum (befristete Langläufer)
-    * Entferne Items ohne zukünftiges Enddatum, die älter als MAX_ITEM_AGE_DAYS sind
-    * Harte Schranke für unbefristete Altlasten: ABSOLUTE_MAX_AGE_DAYS
+    * Behalte befristete Langläufer (Ende in der Zukunft)
+    * Entferne unbefristete Items nach MAX_ITEM_AGE_DAYS / ABSOLUTE_MAX_AGE_DAYS
 - Dedupe: GUID-weit eindeutig
 """
 
 from __future__ import annotations
 
-import os, sys, re, html, logging, hashlib
+import os
+import sys
+import re
+import html
+import logging
+import hashlib
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 from xml.etree.ElementTree import Element, SubElement, tostring
@@ -23,76 +27,106 @@ from typing import List, Dict, Any
 
 from providers import wiener_linien, oebb, vor
 
-# ------------------------- Konfiguration -------------------------
+
+# ------------------------- Konfiguration (per ENV überschreibbar) -------------------------
+
 FEED_TITLE = os.getenv("FEED_TITLE", "ÖPNV Störungen Wien & Umgebung")
 FEED_LINK  = os.getenv("FEED_LINK",  "https://github.com/Origamihase/wien-oepnv")
 FEED_DESC  = os.getenv("FEED_DESC",  "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen")
 OUT_PATH   = os.getenv("OUT_PATH",   "docs/feed.xml")
-MAX_ITEMS  = int(os.getenv("MAX_ITEMS", "60"))
+MAX_ITEMS  = int(os.getenv("MAX_ITEMS", "60"))  # schlank & performant
 LOG_LEVEL  = os.getenv("LOG_LEVEL",  "INFO")
 
-# TV/Signage
+# TV/Signage-Einstellungen
 DESCRIPTION_CHAR_LIMIT   = int(os.getenv("DESCRIPTION_CHAR_LIMIT", "170"))
 FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5"))
 
-# Altersfilter
-MAX_ITEM_AGE_DAYS        = int(os.getenv("MAX_ITEM_AGE_DAYS", "365"))
-ABSOLUTE_MAX_AGE_DAYS    = int(os.getenv("ABSOLUTE_MAX_AGE_DAYS", "540"))  # 18 Monate
-ACTIVE_GRACE_MIN         = int(os.getenv("ACTIVE_GRACE_MIN", "10"))
+# Altersfilter (0 = aus). Nur Items ohne zukünftiges Enddatum werden nach Alter entfernt.
+MAX_ITEM_AGE_DAYS     = int(os.getenv("MAX_ITEM_AGE_DAYS", "365"))
+ABSOLUTE_MAX_AGE_DAYS = int(os.getenv("ABSOLUTE_MAX_AGE_DAYS", "540"))  # 18 Monate
+ACTIVE_GRACE_MIN      = int(os.getenv("ACTIVE_GRACE_MIN", "10"))
 
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
-# ------------------------- Logging -------------------------
+
+# --------------------------------- Logging-Setup ---------------------------------
+
 logging.basicConfig(level=LOG_LEVEL)
 log = logging.getLogger("build_feed")
 
-# ------------------------- Hilfsfunktionen -------------------------
+
+# --------------------------------- Hilfsfunktionen ---------------------------------
+
+def _smart_ellipsis(text: str, limit: int) -> str:
+    """Kürzt an der Wortgrenze; fällt auf hartes Limit zurück, wenn nötig."""
+    if len(text) <= limit:
+        return text
+    # Platz für Ellipsis lassen
+    base = text[:max(0, limit - 1)]
+    # Bis zur letzten Wortgrenze zurück
+    cut = re.sub(r"\s+\S*$", "", base).rstrip()
+    if len(cut) >= int(limit * 0.6):
+        return cut + "…"
+    return base.rstrip() + "…"
+
+
 def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
-    """Klartext für TV – doppelt unescapen, HTML/IMG raus, NBSP→Space, Klammern entfernen, kompakt."""
+    """
+    Klartext für TV:
+    - doppelt unescapen
+    - <img> entfernen
+    - Block-Tags => " · "
+    - restliche HTML-Tags entfernen
+    - NBSP zu Space
+    - WL-Listen säubern
+    - spitze/chevron-Klammern entfernen
+    - Whitespace normalisieren, Kürzung an Wortgrenze
+    """
     if not s:
         return ""
     s = html.unescape(html.unescape(s))
     s = re.sub(r"<img\b[^>]*>", " ", s, flags=re.I)
     s = re.sub(r"</?(p|br|li|ul|ol|h\d)[^>]*>", " · ", s, flags=re.I)
-    s = re.sub(r"<[^>]+>", " ", s)  # restliche Tags weg
+    s = re.sub(r"<[^>]+>", " ", s)
     s = s.replace("\u00A0", " ")
-    s = re.sub(r"Linien:\s*\[([^\]]+)\]",
-               lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")),
-               s)
+    s = re.sub(
+        r"Linien:\s*\[([^\]]+)\]",
+        lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")),
+        s,
+    )
     s = re.sub(r"\bStops:\s*\[[^\]]*\]", " ", s)
     s = re.sub(r"\bBetroffene Haltestellen:\s*[0-9, …]+", " ", s)
-    # Alle spitzen/chevron-Klammern entfernen (keine Tags mehr vorhanden)
     s = s.replace("‹", "").replace("›", "").replace("<", "").replace(">", "")
     s = re.sub(r"\s{2,}", " ", s)
     s = re.sub(r"(?:\s*·\s*){2,}", " · ", s).strip()
     s = s.strip("· ,;:-")
-    if len(s) > limit:
-        s = s[:limit - 1].rstrip() + "…"
-    return s
+    return _smart_ellipsis(s, limit) if len(s) > limit else s
+
 
 def _clean_title(raw: str) -> str:
     """
-    Entfernt Präfixe, Tags und Sonderklammern aus Titeln und normalisiert Whitespace.
-    - keine '[Quelle/Kategorie]' Präfixe
-    - unescapen -> Tags (falls vorhanden) raus -> ‹ › < > entfernen
+    Titel schön & lesbar:
+    - doppelt unescapen
+    - evtl. HTML-Tags entfernen
+    - alte Präfixe wie "[Quelle/Kategorie] " entfernen
+    - ‹ › < > entfernen
+    - Whitespace normalisieren
     """
     t = str(raw or "").strip()
-    # 1) Doppelt unescapen (wandelt &lt; … &gt; in reale Zeichen, die wir gleich entfernen)
     t = html.unescape(html.unescape(t))
-    # 2) Falls irgendwo HTML im Titel steckt: Tags strippen
     t = re.sub(r"<[^>]+>", " ", t)
-    # 3) Präfixe wie "[Wiener Linien/Störung] " entfernen (aus älteren Feeds)
     t = re.sub(r"^\[[^\]]+\]\s*", "", t)
-    # 4) spitze/chevron-Klammern entfernen
     t = t.replace("‹", "").replace("›", "").replace("<", "").replace(">", "")
-    # 5) Whitespace normalisieren
     t = re.sub(r"\s{2,}", " ", t).strip(" ·,;:- ").strip()
     return t
 
+
 def _fmt_date(dt: datetime) -> str:
+    """RFC 2822 Datum für RSS, immer in Europe/Vienna ausgeben."""
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
     return format_datetime(dt.astimezone(VIENNA_TZ))
+
 
 def _rss_root(title: str, link: str, description: str):
     rss = Element("rss", version="2.0")
@@ -106,16 +140,18 @@ def _rss_root(title: str, link: str, description: str):
     SubElement(ch, "generator").text = "wien-oepnv (GitHub Actions)"
     return rss, ch
 
+
 def _stable_pubdate_base(guid: str, now_local: datetime) -> datetime:
     """Tagesstabil: Heute 06:00 + GUID-Offset (<= 1h)."""
     base = now_local.replace(hour=6, minute=0, second=0, microsecond=0)
     h = int(hashlib.md5(guid.encode("utf-8")).hexdigest()[:8], 16)
     return base + timedelta(seconds=(h % 3600))
 
+
 def _normalize_pubdate(ev: Dict[str, Any], build_now_local: datetime) -> datetime:
     """
-    Verwendet Provider-pubDate. Wenn 'zu frisch' (nahe Build-Zeit),
-    nutze tagesstabilen Fallback – ABER niemals in der Zukunft gegenüber Build-Zeit.
+    Provider-pubDate verwenden, wenn nicht 'zu frisch'.
+    Sonst tagesstabiler Fallback – niemals in der Zukunft gegenüber Build-Zeit.
     """
     dt = ev.get("pubDate")
     if isinstance(dt, datetime):
@@ -123,12 +159,12 @@ def _normalize_pubdate(ev: Dict[str, Any], build_now_local: datetime) -> datetim
             dt = dt.replace(tzinfo=timezone.utc)
         window = timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN)
         if (build_now_local.astimezone(timezone.utc) - dt) >= window:
-            return dt  # ausreichend weit entfernt -> nehmen
-    # Fallback: tagesstabil & nicht in Zukunft
+            return dt
     fb = _stable_pubdate_base(ev["guid"], build_now_local)
     if fb > build_now_local:
         fb = build_now_local - timedelta(seconds=1)
     return fb
+
 
 def _has_future_end(ev: Dict[str, Any], now_local: datetime) -> bool:
     """True, wenn Enddatum existiert und (mit Gnadenzeit) > jetzt ist."""
@@ -139,12 +175,13 @@ def _has_future_end(ev: Dict[str, Any], now_local: datetime) -> bool:
         end = end.replace(tzinfo=timezone.utc)
     return end >= (now_local - timedelta(minutes=ACTIVE_GRACE_MIN)).astimezone(end.tzinfo)
 
+
 def _apply_age_filter(items: List[Dict[str, Any]], build_now_local: datetime) -> List[Dict[str, Any]]:
     """
-    Entfernt Items ohne zukünftiges Enddatum, die älter sind als:
+    Entfernt nur Items ohne zukünftiges Enddatum, die älter sind als:
       - ABSOLUTE_MAX_AGE_DAYS (harte Schranke) oder
       - MAX_ITEM_AGE_DAYS (normale Schranke).
-    Begründung: unbefristete/abgelaufene Hinweise sollen nicht ewig bleiben.
+    Befristete Langläufer (Ende in der Zukunft) bleiben erhalten.
     """
     if MAX_ITEM_AGE_DAYS <= 0 and ABSOLUTE_MAX_AGE_DAYS <= 0:
         return items
@@ -156,14 +193,14 @@ def _apply_age_filter(items: List[Dict[str, Any]], build_now_local: datetime) ->
     for ev in items:
         pd = ev.get("pubDate")
         if not isinstance(pd, datetime):
-            kept.append(ev)
+            kept.append(ev)  # ohne Datum nicht hart filtern
             continue
         if pd.tzinfo is None:
             pd = pd.replace(tzinfo=timezone.utc)
         pd_local = pd.astimezone(VIENNA_TZ)
         future_end = _has_future_end(ev, build_now_local)
 
-        # harte Schranke zuerst
+        # harte Schranke
         if not future_end and ABSOLUTE_MAX_AGE_DAYS > 0 and pd_local < thr_abs:
             continue
         # normale Schranke
@@ -173,24 +210,31 @@ def _apply_age_filter(items: List[Dict[str, Any]], build_now_local: datetime) ->
         kept.append(ev)
     return kept
 
+
 def _add_item(ch, ev: Dict[str, Any], build_now_local: datetime) -> None:
     it = SubElement(ch, "item")
-    # Titel SCHÖN & LESBAR (ohne Präfix, ohne ‹ › < >)
+
+    # Schöner Titel (ohne Präfix/Klammern)
     title = _clean_title(ev["title"])
     SubElement(it, "title").text = title
+
     # TV ohne Interaktion -> neutraler Link
     SubElement(it, "link").text = FEED_LINK
-    # TV-Kurztext
+
+    # Kurzbeschreibung
     short = _to_plain_for_signage(ev.get("description") or "")
     SubElement(it, "description").text = short or title
-    # Datum stabilisieren
+
+    # Stabilisiertes Datum
     stable_dt = _normalize_pubdate(ev, build_now_local)
     SubElement(it, "pubDate").text = _fmt_date(stable_dt)
-    # GUID + Kategorien
+
+    # GUID + Kategorien (optional hilfreich für Filter)
     SubElement(it, "guid").text = ev["guid"]
     for c in (ev.get("source"), ev.get("category")):
         if c:
             SubElement(it, "category").text = c
+
 
 def _write_xml(elem, path: str) -> None:
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -199,7 +243,9 @@ def _write_xml(elem, path: str) -> None:
         f.write(data)
     log.info("Feed geschrieben: %s", path)
 
-# ------------------------- Main -------------------------
+
+# -------------------------------------- Main --------------------------------------
+
 def main() -> None:
     providers = (wiener_linien, oebb, vor)
     all_events: List[Dict[str, Any]] = []
@@ -210,6 +256,7 @@ def main() -> None:
             events = p.fetch_events()
             cleaned: List[Dict[str, Any]] = []
             for ev in events:
+                # Basisschema prüfen
                 if not {"source","category","title","description","link","guid","pubDate"} <= ev.keys():
                     continue
                 if not ev.get("guid") or ev["guid"] in seen_guids:
@@ -223,7 +270,7 @@ def main() -> None:
 
     build_now_local = datetime.now(VIENNA_TZ)
 
-    # Altlasten-Filter (bewahrt befristete Langläufer)
+    # Altlasten-Filter anwenden (bewahrt befristete Langläufer)
     all_events = _apply_age_filter(all_events, build_now_local)
 
     # Sortieren & deckeln
@@ -238,6 +285,7 @@ def main() -> None:
 
     _write_xml(rss, OUT_PATH)
     log.info("Fertig: %d Items im Feed", len(all_events))
+
 
 if __name__ == "__main__":
     try:
