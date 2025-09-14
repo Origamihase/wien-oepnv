@@ -18,6 +18,11 @@ from zoneinfo import ZoneInfo
 from typing import Any, Dict, Iterable, List, Optional
 from defusedxml import ElementTree as ET
 
+try:  # pragma: no cover - support both package layouts
+    from utils.ids import make_guid
+except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.ids import make_guid  # type: ignore
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -63,9 +68,6 @@ def _parse_dt(date_str: str | None, time_str: str | None) -> Optional[datetime]:
     if len(t)==5: t += ":00"
     try: return datetime.fromisoformat(f"{d}T{t}").replace(tzinfo=timezone.utc)
     except Exception: return None
-
-def _guid(*parts: str) -> str:
-    return hashlib.md5("|".join(p or "" for p in parts).encode("utf-8")).hexdigest()
 
 def _normalize_spaces(s: str) -> str:
     return re.sub(r"\s{2,}", " ", s).strip()
@@ -159,7 +161,7 @@ def _collect_from_board(station_id: str, root: ET.Element) -> List[Dict[str, Any
         description_html = text or head
         if extras: description_html += "<br/>" + "<br/>".join(extras)
 
-        guid = _guid("vao", msg_id)
+        guid = make_guid("vao", msg_id)
         items.append({
             "source": "VOR/VAO",
             "category": "Störung",

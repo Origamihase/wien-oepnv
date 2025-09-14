@@ -31,6 +31,11 @@ try:  # pragma: no cover - support both package layouts
 except ModuleNotFoundError:  # pragma: no cover
     from src.utils.text import html_to_text  # type: ignore
 
+try:  # pragma: no cover - support both package layouts
+    from utils.ids import make_guid
+except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.ids import make_guid  # type: ignore
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -522,7 +527,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     buckets: Dict[str, Dict[str, Any]] = {}
     for ev in raw:
         line_toks_sorted = ",".join(sorted(_line_tokens_from_pairs(ev["lines_pairs"])))
-        key = _guid(
+        key = make_guid(
             "wl",
             ev["category"],
             ev["topic_key"],
@@ -586,7 +591,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
         desc = re.sub(r"[<>]+", "", desc)
         desc = re.sub(r"\s{2,}", " ", desc).strip()
 
-        guid = _guid(
+        guid = make_guid(
             "wl",
             b["category"],
             b["topic_key"],
@@ -632,7 +637,3 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     return filtered
 
 
-# ---------------- Hilfsfunktionen ----------------
-
-def _guid(*parts: str) -> str:
-    return hashlib.md5("|".join(p or "" for p in parts).encode("utf-8")).hexdigest()
