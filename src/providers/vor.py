@@ -77,8 +77,11 @@ def _parse_dt(date_str: str | None, time_str: str | None) -> Optional[datetime]:
     if not date_str: return None
     d = date_str.strip(); t = (time_str or "00:00:00").strip()
     if len(t)==5: t += ":00"
-    try: return datetime.fromisoformat(f"{d}T{t}").replace(tzinfo=timezone.utc)
-    except Exception: return None
+    try:
+        local = datetime.fromisoformat(f"{d}T{t}").replace(tzinfo=ZoneInfo("Europe/Vienna"))
+        return local.astimezone(timezone.utc)
+    except Exception:
+        return None
 
 def _normalize_spaces(s: str) -> str:
     return re.sub(r"\s{2,}", " ", s).strip()
