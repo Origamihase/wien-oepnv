@@ -36,3 +36,12 @@ def test_html_to_text_edge_cases(html, expected):
 ])
 def test_preposition_bullet_stripping(html, expected):
     assert html_to_text(html) == expected
+
+
+@pytest.mark.parametrize("html,expected", [
+    ("10A", "10A"),
+    ("U6", "U6"),
+    ("2m", "2 m"),
+])
+def test_line_codes_and_units(html, expected):
+    assert html_to_text(html) == expected
