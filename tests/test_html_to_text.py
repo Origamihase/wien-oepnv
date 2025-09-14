@@ -1,4 +1,5 @@
 import pytest
+
 from src.utils.text import html_to_text
 
 
