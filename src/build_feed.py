@@ -342,7 +342,10 @@ def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[
 
     # State nur für *aktuelle* Items speichern (kein Anwachsen)
     pruned = {k: state[k] for k in identities_in_feed if k in state}
-    _save_state(pruned)
+    try:
+        _save_state(pruned)
+    except Exception as e:
+        log.warning("State speichern fehlgeschlagen (%s) – Feed wird trotzdem zurückgegeben.", e)
 
     return "\n".join(out)
 
