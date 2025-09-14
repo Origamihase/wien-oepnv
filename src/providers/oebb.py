@@ -5,8 +5,11 @@
 ÖBB/VOR-RSS (Fahrplan-Portal) – Meldungen für Wien & nahe Pendelstrecken.
 
 - Secret OEBB_RSS_URL (Fallback: offizielle ÖBB-RSS-URL)
-- Titel-Kosmetik: Kategorie-Vorspann (bis Doppelpunkt) weg, Pfeile → „↔“,
-  „Bahnhof (U)/Bahnhst/Hbf/Bf“ entfernen
+- Titel-Kosmetik:
+  • Kategorie-Vorspann (bis Doppelpunkt) entfernen
+  • „Wien X und Wien Y“ → „Wien X ↔ Wien Y“
+  • Pfeile normalisieren (ein „↔“), Bahnhof/Hbf/Bf entfernen
+  • Spitze Klammern etc. entfernen
 - Plain-Text-Description (HTML/Word raus, Entities decodiert; Trenner „ • “)
 - Strenger GEO-Filter: Behalte NUR Meldungen, deren Endpunkte in Wien
   oder definierter Pendler-Region (Whitelist) liegen
@@ -39,7 +42,7 @@ def _session() -> requests.Session:
     retry = Retry(total=4, backoff_factor=0.6, status_forcelist=(429,500,502,503,504),
                   allowed_methods=("GET",))
     s.mount("https://", HTTPAdapter(max_retries=retry))
-    s.headers.update({"User-Agent":"Origamihase-wien-oepnv/3.0 (+https://github.com/Origamihase/wien-oepnv)"})
+    s.headers.update({"User-Agent":"Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"})
     return s
 
 S = _session()
@@ -81,8 +84,10 @@ MULTI_ARROW_RE  = re.compile(r"(?:\s*↔\s*){2,}")
 
 def _clean_title_keep_places(t: str) -> str:
     t = (t or "").strip()
-    # Vorspann bis zum letzten Doppelpunkt entfernen
+    # Vorspann bis zum Doppelpunkt entfernen
     t = COLON_PREFIX_RE.sub("", t)
+    # Sonderfall: „Wien X und Wien Y“ → „Wien X ↔ Wien Y“
+    t = re.sub(r"\b(Wien [^,;|]+?)\s+und\s+(Wien [^,;|]+?)\b", r"\1 ↔ \2", t)
     # Pfeile normalisieren
     parts = [p for p in ARROW_ANY_RE.split(t) if p.strip()]
     if len(parts) >= 2:
@@ -133,11 +138,11 @@ W_VIENNA_RAW = [
 ]
 W_VIENNA = {_norm(x) for x in W_VIENNA_RAW}
 
-# Pendelraum (deine Liste + sinnvolle Ergänzungen)
+# Pendelraum: Nutzerliste + Ergänzungen (normalisiert)
 W_NEAR_RAW = [
-    # Deine gewünschten Bahnhöfe (alphabetisch grob gruppiert)
+    # Nutzerwunsch (alphabetisch gruppiert)
     "Baden bei Wien",
-    "Bruck an der Leitha",          # „Bruck/Leitha Bahnhof“
+    "Bruck an der Leitha",            # deckt „Bruck/Leitha Bahnhof“
     "Ebreichsdorf",
     "Eisenstadt",
     "Flughafen Wien",
@@ -159,12 +164,12 @@ W_NEAR_RAW = [
     "Wolkersdorf",
     "Wulkaprodersdorf",
 
-    # Bereits bisher genutzte nahe Orte (zur Sicherheit beibehalten)
-    "Deutsch Wagram", "Strasshof", "Gerasdorf", "Marchegg", "Wolkersdorf",
+    # bisherige nahe Orte (zur Sicherheit beibehalten)
+    "Deutsch Wagram", "Strasshof", "Gerasdorf", "Marchegg",
     "Kritzendorf", "Greifenstein-Altenberg", "Langenzersdorf",
-    "Purkersdorf", "Rekawinkel", "Tulln", "Bruck an der Leitha",
-    "Schwechat", "Fischamend", "Hainburg", "Wolfsthal", "Petronell-Carnuntum",
-    "Bad Deutsch-Altenburg",
+    "Purkersdorf", "Rekawinkel", "Tulln",
+    "Schwechat", "Fischamend", "Hainburg", "Wolfsthal",
+    "Petronell-Carnuntum", "Bad Deutsch-Altenburg",
 ]
 W_NEAR = {_norm(x) for x in W_NEAR_RAW}
 
@@ -179,7 +184,7 @@ def _keep_by_region(title: str, desc: str) -> bool:
     if endpoints:
         # Nur behalten, wenn ALLE genannten Endpunkte „nah“ sind
         return all(_is_near(x) for x in endpoints)
-    # Fallback: wenn keine Pfeile erkannt, heuristisch auf Wien-Bezug prüfen
+    # Fallback: heuristisch auf Wien-Bezug prüfen
     blob = f"{title} {desc}"
     tokens = re.split(r"\W+", blob)
     if any(_is_near(w) for w in tokens):
