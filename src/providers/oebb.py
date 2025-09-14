@@ -118,7 +118,9 @@ def _split_endpoints(title: str) -> Optional[List[str]]:
             if n:
                 names.append(n)
         return names
-    return explode(left) + explode(right)
+    # Links/Rechts zusammenführen und Duplikate entfernen
+    endpoints = explode(left) + explode(right)
+    return list(dict.fromkeys(endpoints))
 
 # ---------------- Pendler-Region (Whitelist) ----------------
 def _norm(s: str) -> str:
