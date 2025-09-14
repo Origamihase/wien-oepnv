@@ -2,8 +2,11 @@
 # -*- coding: utf-8 -*-
 
 """
-ÖBB-RSS-Provider (HAFAS „Weginformationen“), streng auf Wien + unmittelbare Nachbarorte
-UND ohne Facility-Only-Meldungen (Aufzug/Lift/Fahr-/Rolltreppe).
+ÖBB-RSS-Provider (HAFAS „Weginformationen“), streng auf Wien + unmittelbare Nachbarorte.
+Titelkürzung:
+- Entfernt vorne generische Label (z. B. „Bauarbeiten - Zugausfall/geänderte Fahrzeiten:“).
+- Entfernt Bahnhof-Rauschen: „Bahnhof“, „Bhf.“, Klammern wie „(U)“, „(U6)“, „(S)“.
+- Normalisiert Relationen: „–/—/-“ → „↔“, „bzw.“ → „/“, bei „/“ wird vor dem ersten Slash „↔“ eingefügt.
 
 Env:
   OEBB_RSS_URL          (Secret empfohlen; fallback intern)
@@ -67,7 +70,7 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.1",
-        "User-Agent": "Origamihase-wien-oepnv/1.4 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/1.6 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
@@ -114,24 +117,48 @@ _FAR_PATTERNS = [
 ]
 _FAR_RE = re.compile("|".join(_FAR_PATTERNS), re.IGNORECASE)
 
-# Facility-ONLY: Aufzug/Lift/Fahr-/Rolltreppe – vollständig ausschließen
-FACILITY_ONLY = re.compile(
-    r"\b(aufzug|aufzüge|lift|fahrstuhl|fahrtreppe|fahrtreppen|rolltreppe|rolltreppen)\b",
-    re.IGNORECASE
-)
+# --- Titelkürzung ------------------------------------------------------------
 
-def _is_wien_and_near_only(title: str, desc: str) -> bool:
-    text = f"{title}\n{desc}"
-    if not _CORE_RE.search(text):
-        return False
-    if _FAR_RE.search(text):
-        return False
-    if re.search(r"[=\/–—\-]", text) and not _NEAR_RE.search(text):
-        return False
-    return True
+_LABELS = [
+    r"bauarbeiten", r"zugausfall(?:e)?", r"geänderte\s*fahrzeiten", r"fahrplanänderung",
+    r"einschränkungen?", r"störung", r"verkehrsmeldung", r"baustelle", r"verkehrsinfo",
+]
+_LABEL_RE = re.compile(r"^\s*(?:(?:" + "|".join(_LABELS) + r")\s*(?:[-:–—]|/\s*)\s*)+", re.IGNORECASE)
 
-def _is_facility_only(*texts: str) -> bool:
-    return bool(FACILITY_ONLY.search(" ".join([t for t in texts if t]) or ""))
+# Bahnhof-/Klammer-Rauschen
+PAREN_U_S_RE   = re.compile(r"\s*\((?:U\d*|S\d*)\)", re.IGNORECASE)  # (U), (U6), (S), (S45) ...
+BAHNHOF_RE     = re.compile(r"\bBahnhof\b\.?", re.IGNORECASE)        # „Bahnhof“
+BHF_RE         = re.compile(r"\bBhf\.?\b", re.IGNORECASE)            # „Bhf“ (nicht „Hbf“!)
+DASH_RE        = re.compile(r"\s[-–—]\s")                             # -, –, —
+BZW_RE         = re.compile(r"\s*bzw\.?\s*", re.IGNORECASE)
+SPACES_RE      = re.compile(r"\s{2,}")
+
+def _tidy_title(title: str) -> str:
+    t = title or ""
+    # 1) Führende Labels entfernen
+    t = _LABEL_RE.sub("", t)
+
+    # 2) Bahnhof-/Klammer-Rauschen entfernen
+    t = PAREN_U_S_RE.sub("", t)        # (U), (U6), (S), (S45) ...
+    t = BAHNHOF_RE.sub("", t)          # Bahnhof
+    t = BHF_RE.sub("", t)              # Bhf (Hbf bleibt erhalten)
+
+    # 3) Relationen & Verbinder normalisieren
+    t = DASH_RE.sub(" ↔ ", t)          # -/–/— → ↔
+    t = BZW_RE.sub("/", t)             # bzw. → /
+
+    # 4) Wenn ein Slash vorkommt, vor dem ersten Slash einen Pfeil einfügen
+    if "/" in t and "↔" not in t:
+        idx = t.find("/")
+        left = t[:idx]
+        if " " in left:
+            li = left.rfind(" ")
+            if li >= 0:
+                t = left[:li] + " ↔ " + left[li+1:] + t[idx:]
+
+    # 5) Aufräumen von Mehrfach-Leerzeichen & Rändern
+    t = SPACES_RE.sub(" ", t).strip(" -–—:/\t")
+    return t or (title or "ÖBB Meldung")
 
 # --- Utils -------------------------------------------------------------------
 
@@ -177,6 +204,26 @@ def _iter_items(root: ET.Element) -> List[ET.Element]:
     ch = root.find("./channel")
     return list(ch.findall("./item")) if ch is not None else list(root.findall(".//item"))
 
+# --- Wien + Facility Filter --------------------------------------------------
+
+FACILITY_ONLY = re.compile(
+    r"\b(aufzug|aufzüge|lift|fahrstuhl|fahrtreppe|fahrtreppen|rolltreppe|rolltreppen)\b",
+    re.IGNORECASE
+)
+
+def _is_wien_and_near_only(title: str, desc: str) -> bool:
+    text = f"{title}\n{desc}"
+    if not _CORE_RE.search(text):
+        return False
+    if _FAR_RE.search(text):
+        return False
+    if re.search(r"[=\/–—\-]", text) and not _NEAR_RE.search(text):
+        return False
+    return True
+
+def _is_facility_only(*texts: str) -> bool:
+    return bool(FACILITY_ONLY.search(" ".join([t for t in texts if t]) or ""))
+
 # --- Public ------------------------------------------------------------------
 
 def fetch_events() -> List[Dict[str, Any]]:
@@ -188,7 +235,8 @@ def fetch_events() -> List[Dict[str, Any]]:
     seen_guids: set[str] = set()
 
     for it in _iter_items(root):
-        title = html.unescape(_txt(it, "title"))
+        raw_title = _txt(it, "title")
+        title = _tidy_title(html.unescape(raw_title))
         desc  = _txt(it, "description") or _txt(it, "{http://purl.org/rss/1.0/modules/content/}encoded")
         desc  = desc.strip()
         link  = _txt(it, "link") or "https://www.oebb.at/"
@@ -198,7 +246,7 @@ def fetch_events() -> List[Dict[str, Any]]:
         pub_dt = _parse_pubdate(pub_s)
 
         # Ausschlüsse
-        if _is_facility_only(title, desc):   # Facility-Only strikt verwerfen
+        if _is_facility_only(title, desc):
             continue
         if not _is_wien_and_near_only(title, desc):
             continue
