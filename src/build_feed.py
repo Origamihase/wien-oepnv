@@ -225,7 +225,7 @@ def _sort_key(item: Dict[str, Any]) -> Tuple[int, float, str]:
 def _emit_channel_header(now: datetime) -> List[str]:
     h = []
     h.append('<?xml version="1.0" encoding="UTF-8"?>')
-    h.append('<rss version="2.0">')
+    h.append('<rss version="2.0" xmlns:ext="https://wien-oepnv.example/schema">')
     h.append("<channel>")
     h.append(f"<title>{html.escape(FEED_TITLE)}</title>")
     h.append(f"<link>{html.escape(FEED_LINK)}</link>")
@@ -276,11 +276,11 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     if isinstance(pubDate, datetime):
         parts.append(f"<pubDate>{_fmt_rfc2822(pubDate)}</pubDate>")
 
-    parts.append(f"<first_seen>{_fmt_rfc2822(fs_dt)}</first_seen>")
+    parts.append(f"<ext:first_seen>{_fmt_rfc2822(fs_dt)}</ext:first_seen>")
     if isinstance(starts_at, datetime):
-        parts.append(f"<starts_at>{_fmt_rfc2822(starts_at)}</starts_at>")
+        parts.append(f"<ext:starts_at>{_fmt_rfc2822(starts_at)}</ext:starts_at>")
     if isinstance(ends_at, datetime):
-        parts.append(f"<ends_at>{_fmt_rfc2822(ends_at)}</ends_at>")
+        parts.append(f"<ext:ends_at>{_fmt_rfc2822(ends_at)}</ext:ends_at>")
 
     parts.append(f"<description>{_cdata(desc_out)}</description>")
     parts.append("</item>")
