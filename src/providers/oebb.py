@@ -18,13 +18,17 @@
 from __future__ import annotations
 
 import hashlib
-import html
 import logging
 import os
 import re
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 from email.utils import parsedate_to_datetime
+
+try:  # pragma: no cover - support both package layouts
+    from utils.text import html_to_text
+except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.text import html_to_text  # type: ignore
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -46,30 +50,6 @@ def _session() -> requests.Session:
     return s
 
 S = _session()
-
-# ---------------- HTML → Text ----------------
-_BR_RE = re.compile(r"(?i)<\s*br\s*/?\s*>")
-_BLOCK_CLOSE_RE = re.compile(r"(?is)</\s*(p|div|li|ul|ol|h\d|table|tr|td)\s*>")
-_BLOCK_OPEN_RE  = re.compile(r"(?is)<\s*(p|div|ul|ol|h\d|table|tr|td)\b[^>]*>")
-_LI_OPEN_RE     = re.compile(r"(?is)<\s*li\b[^>]*>")
-_TAG_RE         = re.compile(r"(?is)<[^>]+>")
-_WS_RE          = re.compile(r"[ \t\r\f\v]+")
-
-def _html_to_text(s: str) -> str:
-    if not s:
-        return ""
-    txt = html.unescape(s)
-    txt = _BR_RE.sub("\n", txt)
-    txt = _BLOCK_CLOSE_RE.sub("\n", txt)
-    txt = _LI_OPEN_RE.sub("• ", txt)
-    txt = _BLOCK_OPEN_RE.sub("", txt)
-    txt = _TAG_RE.sub("", txt)
-    # Einheitlicher Trenner:
-    txt = re.sub(r"\s*\n\s*", " • ", txt)
-    # „2025Wegen“ -> „2025 Wegen“
-    txt = re.sub(r"(\d)([A-Za-zÄÖÜäöüß])", r"\1 \2", txt)
-    txt = _WS_RE.sub(" ", txt)
-    return re.sub(r"\s{2,}", " ", txt).strip()
 
 # ---------------- Titel + Endpunkte ----------------
 BAHNHOF_TRIM_RE = re.compile(r"\s*(?:Bahnhof|Bahnhst|Hbf|Bf)(?:\s*\(U\))?", re.IGNORECASE)
@@ -244,7 +224,7 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         link  = _get_text(item, "link").strip() or OEBB_URL
         guid  = _get_text(item, "guid").strip() or hashlib.md5((title+link).encode("utf-8")).hexdigest()
         desc_html = _get_text(item, "description")
-        desc = _html_to_text(desc_html)
+        desc = html_to_text(desc_html)
         pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
 
         # Region-Filter: nur Wien + definierter Pendelraum

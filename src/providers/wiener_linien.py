@@ -20,12 +20,16 @@ Highlights
 from __future__ import annotations
 
 import hashlib
-import html
 import logging
 import os
 import re
 from datetime import datetime, timezone, timedelta
 from typing import Any, Dict, Iterable, List, Optional, Tuple
+
+try:  # pragma: no cover - support both package layouts
+    from utils.text import html_to_text
+except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.text import html_to_text  # type: ignore
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -114,39 +118,6 @@ def _tidy_title_wl(title: str) -> str:
         t = stripped
     t = re.sub(r"[<>«»‹›]+", "", t)  # spitze Klammern/Anführungen
     return re.sub(r"\s{2,}", " ", t).strip(" -–—:/\t")
-
-
-# ---------------- HTML → Plain-Text (Beschreibung) ----------------
-
-_BR_RE = re.compile(r"(?i)<\s*br\s*/?\s*>")
-_BLOCK_CLOSE_RE = re.compile(r"(?is)</\s*(p|div|li|ul|ol)\s*>")
-_BLOCK_OPEN_RE = re.compile(r"(?is)<\s*(p|div|ul|ol)\b[^>]*>")
-_LI_OPEN_RE = re.compile(r"(?is)<\s*li\b[^>]*>")
-_TAG_RE = re.compile(r"(?is)<[^>]+>")
-_WS_RE = re.compile(r"[ \t\r\f\v]+")
-_PREP_BULLET_RE = re.compile(r"\b(bei|in|an|auf)\s*•\s*", re.IGNORECASE)
-
-
-def _html_to_text(s: str) -> str:
-    """
-    Robust: Entities decodieren, Block-/BR-Tags in Trenner verwandeln,
-    restliche Tags strippen, Whitespace konsolidieren.
-    Einheitlicher Trenner: „ • “.
-    """
-    if not s:
-        return ""
-    txt = html.unescape(s)
-    txt = _BR_RE.sub("\n", txt)
-    txt = _BLOCK_CLOSE_RE.sub("\n", txt)
-    txt = _LI_OPEN_RE.sub("• ", txt)
-    txt = _BLOCK_OPEN_RE.sub("", txt)
-    txt = _TAG_RE.sub("", txt)
-    txt = re.sub(r"\s*\n\s*", " • ", txt)  # einheitlicher Trenner
-    txt = _WS_RE.sub(" ", txt)
-    txt = re.sub(r"\s{2,}", " ", txt).strip()
-    # Kosmetik: „bei • …“ / „in • …“ → „bei …“ / „in …“
-    txt = _PREP_BULLET_RE.sub(r"\1 ", txt)
-    return txt
 
 
 # ---------------- Zeit & Utils ----------------
@@ -424,7 +395,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             title_raw = (ti.get("title") or ti.get("name") or "Meldung").strip()
             title = _tidy_title_wl(title_raw)
             desc_raw = (ti.get("description") or "").strip()
-            desc = _html_to_text(desc_raw)
+            desc = html_to_text(desc_raw)
             if _is_facility_only(title_raw, desc_raw):
                 continue
 
@@ -493,7 +464,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             title_raw = (poi.get("title") or "Hinweis").strip()
             title = _tidy_title_wl(title_raw)
             desc_raw = (poi.get("description") or "").strip()
-            desc = _html_to_text(desc_raw)
+            desc = html_to_text(desc_raw)
             if _is_facility_only(title_raw, desc_raw, poi.get("subtitle") or ""):
                 continue
 
