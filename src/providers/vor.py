@@ -30,14 +30,25 @@ from urllib3.util.retry import Retry
 
 log = logging.getLogger(__name__)
 
+def _get_int_env(name: str, default: int) -> int:
+    val = os.getenv(name)
+    if val is None:
+        return default
+    try:
+        return int(val)
+    except ValueError:
+        log.warning("%s='%s' ist kein int – verwende %s", name, val, default)
+        return default
+
+
 VOR_ACCESS_ID: str | None = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip() or None
 VOR_STATION_IDS: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_IDS") or "").split(",") if s.strip()]
 VOR_BASE = os.getenv("VOR_BASE", "https://routenplaner.verkehrsauskunft.at/vao/restproxy")
 VOR_VERSION = os.getenv("VOR_VERSION", "v1.3")
-BOARD_DURATION_MIN = int(os.getenv("VOR_BOARD_DURATION_MIN", "60"))
-HTTP_TIMEOUT = int(os.getenv("VOR_HTTP_TIMEOUT", "15"))
-MAX_STATIONS_PER_RUN = int(os.getenv("VOR_MAX_STATIONS_PER_RUN", "2"))
-ROTATION_INTERVAL_SEC = int(os.getenv("VOR_ROTATION_INTERVAL_SEC", "1800"))
+BOARD_DURATION_MIN = _get_int_env("VOR_BOARD_DURATION_MIN", 60)
+HTTP_TIMEOUT = _get_int_env("VOR_HTTP_TIMEOUT", 15)
+MAX_STATIONS_PER_RUN = _get_int_env("VOR_MAX_STATIONS_PER_RUN", 2)
+ROTATION_INTERVAL_SEC = _get_int_env("VOR_ROTATION_INTERVAL_SEC", 1800)
 
 ALLOW_BUS = (os.getenv("VOR_ALLOW_BUS", "0").strip() == "1")
 BUS_INCLUDE_RE = re.compile(os.getenv("VOR_BUS_INCLUDE_REGEX", r"(?:\b[2-9]\d{2,4}\b)"))
