@@ -40,7 +40,8 @@ def test_preposition_bullet_stripping(html, expected):
 
 
 @pytest.mark.parametrize("html,expected", [
-    ("10A", "10A"),
+    ("10A", "10 A"),
+    ("12A", "12 A"),
     ("U6", "U6"),
     ("2m", "2 m"),
 ])
