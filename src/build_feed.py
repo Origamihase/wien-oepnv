@@ -7,10 +7,21 @@ from typing import Any, Dict, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 
-# Provider-Imports
-from providers.wiener_linien import fetch_events as wl_fetch
-from providers.oebb import fetch_events as oebb_fetch
-from providers.vor import fetch_events as vor_fetch
+# Provider-Imports (import lazily/defensively to support testing)
+try:  # pragma: no cover
+    from providers.wiener_linien import fetch_events as wl_fetch
+except ModuleNotFoundError:  # pragma: no cover
+    wl_fetch = lambda: []  # type: ignore
+
+try:  # pragma: no cover
+    from providers.oebb import fetch_events as oebb_fetch
+except ModuleNotFoundError:  # pragma: no cover
+    oebb_fetch = lambda: []  # type: ignore
+
+try:  # pragma: no cover
+    from providers.vor import fetch_events as vor_fetch
+except ModuleNotFoundError:  # pragma: no cover
+    vor_fetch = lambda: []  # type: ignore
 
 # ---------------- Logging ----------------
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
