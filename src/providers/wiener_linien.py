@@ -5,10 +5,14 @@
 Wiener Linien Provider (OGD) – nur betriebsrelevante Störungen/Hinweise,
 keine Roll-/Fahrtreppen- oder Aufzugs-Meldungen.
 
-Änderungen:
-- Aufruf von /trafficInfoList OHNE 'aufzugsinfo' und 'fahrtreppeninfo'.
-- Expliziter Facility-Filter (Aufzug/Lift/Fahrtreppe/Rolltreppe) für alle Items.
-- Titel/Beschreibung gereinigt; pubDate bleibt quellenrein (keine Fallbacks).
+NEU:
+- Dedupe-Regel „Sammel vs. Einzel“:
+  Wenn es zu *allen* in einer Sammelmeldung genannten Linien bereits
+  *mindestens eine* Einzelmeldung gibt (je Linie genau eine), wird die
+  Sammelmeldung verworfen. So bleiben nur die einzelnen, genauer datierten
+  Items, die auch unabhängig enden können.
+
+- Facility-Only (Aufzug/Lift/Fahr-/Rolltreppe) wird vollständig ausgeschlossen.
 
 Env:
   WL_RSS_URL   (Basis-URL, Secret empfohlen; Fallback: https://www.wienerlinien.at/ogd_realtime)
@@ -42,7 +46,7 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/1.8 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/1.9 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
@@ -270,7 +274,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     except Exception as e:
         logging.exception("WL newsList fehlgeschlagen: %s", e)
 
-    # C) Dedupe: Thema (Titel normalisiert) + Linien
+    # C) Thematische Bündelung (Dedupe innerhalb gleicher Titel+Linien)
     buckets: Dict[str, Dict[str, Any]] = {}
     for ev in raw:
         key = _guid("wl", ev["category"], _norm_title(ev["title"]), ",".join(sorted(ev["lines"])))
@@ -299,7 +303,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 if x not in b["extras"]:
                     b["extras"].append(x)
 
-    # D) finale Items
+    # D) Finale Items vorbereiten (mit interner lines_set für spätere Dedupe)
     items: List[Dict[str, Any]] = []
     for b in buckets.values():
         title = html.escape(b["title"])
@@ -321,8 +325,33 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             "pubDate": b["pubDate"],      # None erlaubt
             "starts_at": b["starts_at"],
             "ends_at": b["ends_at"],
+            "_lines_set": set(b["lines"]),   # INTERN für Sammel-vs-Einzel
         })
 
-    # Sortierstrategie: bevorzugt Items mit Datum; sonst stabiler Hash
-    items.sort(key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, hashlib.md5(x["guid"].encode()).hexdigest()))
-    return items
+    # E) Sammel-vs-Einzel: Aggregat entfernen, wenn *alle* Linien als Einzel vorliegen
+    # Einzel = Item mit genau 1 Linie im _lines_set
+    single_line_coverage = {}
+    for it in items:
+        ls = it.get("_lines_set") or set()
+        if len(ls) == 1:
+            ln = next(iter(ls))
+            single_line_coverage.setdefault(ln, 0)
+            single_line_coverage[ln] += 1
+
+    filtered: List[Dict[str, Any]] = []
+    for it in items:
+        ls = it.get("_lines_set") or set()
+        if len(ls) >= 2:
+            # Aggregat: nur behalten, wenn mindestens eine Linie NICHT durch Einzelevents abgedeckt ist
+            all_covered = all(single_line_coverage.get(ln, 0) > 0 for ln in ls)
+            if all_covered:
+                continue  # Aggregat raus
+        filtered.append(it)
+
+    # F) Aufräumen interner Felder + finale Sortierung
+    for it in filtered:
+        if "_lines_set" in it:
+            del it["_lines_set"]
+
+    filtered.sort(key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, hashlib.md5(x["guid"].encode()).hexdigest()))
+    return filtered
