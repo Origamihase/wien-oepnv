@@ -4,12 +4,18 @@
 RSS 2.0 Feed für aktive ÖPNV-Beeinträchtigungen (Wien & nahe Umgebung), TV-tauglich.
 
 Wichtig:
-- <pubDate> wird ausschließlich aus der QUELLE übernommen (nie künstlich gesetzt).
-- Items OHNE pubDate bleiben im Feed; für Sortierung/Altersfilter nutzen wir intern:
-    ref_dt = pubDate oder starts_at oder first_seen (erstmals gesehen).
+- <pubDate> kommt ausschließlich aus der Quelle (nie künstlich).
+- Items OHNE pubDate bleiben im Feed; intern nutzen wir:
+      ref_dt = pubDate oder starts_at oder first_seen (erstmals gesehen).
 - Befristete Langläufer (Ende in der Zukunft) bleiben erhalten (ACTIVE_GRACE_MIN).
-- Duplikate werden über GUID unterdrückt.
-- State-Datei 'first_seen'/'last_seen' wird gepflegt (JSON).
+- GUID-basierte Duplikatsunterdrückung.
+- Persistenter State (JSON) für first_seen / last_seen.
+- Optionales Metadatum <first_seen> je Item (nur Metadaten; für TV unsichtbar).
+
+Spezialfall:
+- Der WL-Altfall „Busse halten bei Neubaugasse 69“ erhält einen forcierten
+  first_seen-Zeitpunkt (2023-08-08 00:00 Europe/Vienna), damit er sicher
+  durch den Altersfilter fällt.
 
 ENV:
   FEED_TITLE, FEED_LINK, FEED_DESC, OUT_PATH
@@ -18,16 +24,12 @@ ENV:
   WL_ENABLE, OEBB_ENABLE, VOR_ENABLE
   STATE_PATH                (Default: data/first_seen.json)
   STATE_RETENTION_DAYS      (Default: 1095 = 3 Jahre)
-
-Provider liefern Events als Dict mit Keys:
-  source, category, title, description, link, guid,
-  pubDate (datetime|None), starts_at (datetime|None), ends_at (datetime|None)
 """
 
 from __future__ import annotations
 
 import os, re, html, json, logging, hashlib, sys
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Tuple
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 from xml.etree.ElementTree import Element, SubElement, tostring
@@ -120,6 +122,23 @@ def _touch_seen(guid: str, now_utc: datetime) -> None:
         _STATE["first_seen"][guid] = now_utc
     _STATE["last_seen"][guid] = now_utc
 
+# ------------------------- Forcierte first_seen-Overrides -------------------------
+# Titelbasierte Sonderfälle: (Regex, fixed_dt_utc)
+_FORCED_FS: Tuple[Tuple[re.Pattern, datetime], ...] = (
+    # Setzt das first_seen künstlich alt, damit der Altfall aus dem Feed fällt.
+    (
+        re.compile(r"^Busse\s+halten\s+bei\s+Neubaugasse\s+69\b", re.IGNORECASE),
+        # 2023-08-08 00:00 Europe/Vienna → UTC
+        datetime(2023, 8, 8, 0, 0, tzinfo=VIENNA_TZ).astimezone(timezone.utc)
+    ),
+)
+
+def _forced_first_seen_for_title(title: str) -> Optional[datetime]:
+    for rx, dt_utc in _FORCED_FS:
+        if rx.search(title or ""):
+            return dt_utc
+    return None
+
 # ------------------------- Text-Utils -------------------------
 def _smart_ellipsis(text: str, limit: int) -> str:
     if len(text) <= limit:
@@ -138,8 +157,11 @@ def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
     s = re.sub(r"</?(p|br|li|ul|ol|h\d)[^>]*>", " · ", s, flags=re.I)
     s = re.sub(r"<[^>]+>", " ", s)
     s = s.replace("\u00A0", " ")
-    s = re.sub(r"Linien:\s*\[([^\]]+)\]",
-               lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")), s)
+    s = re.sub(
+        r"Linien:\s*\[([^\]]+)\]",
+        lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")),
+        s,
+    )
     s = re.sub(r"\bStops:\s*\[[^\]]*\]", " ", s)
     s = re.sub(r"\bBetroffene Haltestellen:\s*[0-9, …]+", " ", s)
     s = s.replace("‹", "").replace("›", "").replace("<", "").replace(">", "")
@@ -227,9 +249,17 @@ def _add_item(ch, ev: Dict[str, Any]) -> None:
     SubElement(it, "link").text = FEED_LINK
     short = _to_plain_for_signage(ev.get("description") or "")
     SubElement(it, "description").text = short or title
+
+    # pubDate nur, wenn aus Quelle vorhanden
     pd = _get_dt(ev.get("pubDate"))
     if pd:
         SubElement(it, "pubDate").text = _fmt_date(pd)
+
+    # Metadatum: first_seen (falls vorhanden) – für TV unsichtbar
+    fs = _first_seen(ev["guid"])
+    if fs:
+        SubElement(it, "first_seen").text = _fmt_date(fs)
+
     SubElement(it, "guid").text = ev["guid"]
     for c in (ev.get("source"), ev.get("category")):
         if c:
@@ -276,6 +306,7 @@ def main() -> None:
     all_events: List[Dict[str, Any]] = []
     seen_guids: set[str] = set()
 
+    # 1) Provider abfragen
     for p in providers:
         try:
             events = p.fetch_events()
@@ -299,24 +330,30 @@ def main() -> None:
     now_utc = datetime.now(timezone.utc)
     now_local = now_utc.astimezone(VIENNA_TZ)
 
-    # *** WICHTIG: first_seen/last_seen vor dem Altersfilter pflegen ***
+    # 2) Forcierte first_seen-Overrides per Titel anwenden (vor dem Touch!)
+    for ev in all_events:
+        forced = _forced_first_seen_for_title(html.unescape(ev.get("title") or ""))
+        if forced is not None:
+            _STATE["first_seen"][ev["guid"]] = forced  # bewusst überschreiben
+
+    # 3) first_seen/last_seen pflegen
     for ev in all_events:
         _touch_seen(ev["guid"], now_utc)
 
-    # Altersfilter anwenden (bewahrt befristete Langläufer)
+    # 4) Altersfilter anwenden (bewahrt befristete Langläufer)
     all_events = _apply_age_filter(all_events, now_local)
 
-    # Sortieren & deckeln
+    # 5) Sortieren & deckeln
     all_events.sort(key=_stable_order_key)
     if MAX_ITEMS > 0 and len(all_events) > MAX_ITEMS:
         all_events = all_events[:MAX_ITEMS]
 
-    # RSS bauen
+    # 6) RSS bauen
     rss, ch = _rss_root(FEED_TITLE, FEED_LINK, FEED_DESC)
     for ev in all_events:
         _add_item(ch, ev)
 
-    # Schreiben
+    # 7) Schreiben
     _write_xml(rss, OUT_PATH)
     _save_state(now_utc)
     log.info("Fertig: %d Items im Feed", len(all_events))
