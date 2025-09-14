@@ -33,9 +33,12 @@ PROVIDERS: List[Tuple[str, Any]] = [
 ]
 
 # ---------------- Logging ----------------
-LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").strip().upper()
+if LOG_LEVEL not in logging._nameToLevel:
+    LOG_LEVEL = "INFO"
+
 logging.basicConfig(
-    level=getattr(logging, LOG_LEVEL, logging.INFO),
+    level=logging._nameToLevel.get(LOG_LEVEL, logging.INFO),
     format="%(asctime)s %(levelname)s %(name)s: %(message)s",
 )
 log = logging.getLogger("build_feed")
