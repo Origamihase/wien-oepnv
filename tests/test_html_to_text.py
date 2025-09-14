@@ -21,3 +21,11 @@ def test_html_to_text_examples(html, expected):
 ])
 def test_html_to_text_edge_cases(html, expected):
     assert html_to_text(html) == expected
+
+
+@pytest.mark.parametrize("html,expected", [
+    ("bei<br>Station", "bei Station"),
+    ("An<br>der Haltestelle", "An der Haltestelle"),
+])
+def test_preposition_bullet_stripping(html, expected):
+    assert html_to_text(html) == expected

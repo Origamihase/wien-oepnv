@@ -8,7 +8,18 @@ from html.parser import HTMLParser
 
 
 _WS_RE = re.compile(r"[ \t\r\f\v]+")
-_PREP_BULLET_RE = re.compile(r"\b(bei|in|an|auf)\s*•\s*", re.IGNORECASE)
+
+# Common German prepositions that should not be followed by a bullet.
+PREPOSITIONS = {"bei", "in", "an", "auf"}
+
+_PREP_BULLET_RE = re.compile(
+    rf"\b({'|'.join(map(re.escape, PREPOSITIONS))})\s*•\s*", re.IGNORECASE
+)
+
+
+def normalize_bullets(text: str) -> str:
+    """Remove bullets that directly follow known prepositions."""
+    return _PREP_BULLET_RE.sub(r"\1 ", text)
 
 
 class _HTMLToTextParser(HTMLParser):
@@ -75,7 +86,7 @@ def html_to_text(s: str) -> str:
     txt = re.sub(r"\s*\n\s*", " • ", txt)
     txt = re.sub(r"(\d)([A-Za-zÄÖÜäöüß])", r"\1 \2", txt)
     txt = _WS_RE.sub(" ", txt)
-    txt = _PREP_BULLET_RE.sub(r"\1 ", txt)
+    txt = normalize_bullets(txt)
     txt = re.sub(r"(?:\s*•\s*){2,}", " • ", txt)
     txt = txt.strip()
     txt = re.sub(r"^•\s*", "", txt)
