@@ -1,4 +1,5 @@
 from src.providers import wiener_linien as wl
+from src.utils.ids import make_guid
 
 
 def test_dedupe_topic_shorter_title():
@@ -31,7 +32,7 @@ def test_dedupe_topic_shorter_title():
 
     buckets = {}
     for ev in (ev1, ev2):
-        key = wl._guid(
+        key = make_guid(
             "wl",
             ev["category"],
             ev["topic_key"],
