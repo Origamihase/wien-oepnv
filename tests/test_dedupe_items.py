@@ -53,3 +53,14 @@ def test_main_dedupes_items(monkeypatch, tmp_path):
         {"guid": "gb", "title": "B"},
         {"guid": "gc", "title": "C"},
     ]
+
+
+def test_items_without_identifier_are_unique(monkeypatch):
+    build_feed = _import_build_feed(monkeypatch)
+
+    items = [
+        {"title": "A", "description": "desc1"},
+        {"title": "B", "description": "desc2"},
+    ]
+
+    assert build_feed._dedupe_items(items) == items
