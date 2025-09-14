@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import json, os, sys, html, logging, re
+import json, os, sys, html, logging, re, hashlib
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from datetime import datetime, timezone
@@ -143,7 +143,15 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     seen = set()
     out = []
     for it in items:
-        key = it.get("_identity") or it.get("guid")
+        key: Optional[str]
+        if it.get("_identity"):
+            key = it.get("_identity")
+        elif it.get("guid"):
+            key = it.get("guid")
+        else:
+            raw = f"{it.get('title') or ''}|{it.get('description') or ''}"
+            key = hashlib.sha1(raw.encode("utf-8")).hexdigest()
+            log.warning("Item ohne guid/_identity – Fallback-Schlüssel %s", key)
         if key in seen:
             continue
         seen.add(key)
