@@ -190,7 +190,11 @@ def _collect_items() -> List[Dict[str, Any]]:
         for env, f in PROVIDERS
         if os.getenv(env, "1").lower() not in {"0", "false"}
     ]
-    with ThreadPoolExecutor(max_workers=len(active)) as executor:
+    if not active:
+        return []
+
+    # ThreadPoolExecutor erlaubt max_workers nicht als 0; daher mindestens 1
+    with ThreadPoolExecutor(max_workers=max(1, len(active))) as executor:
         for fetch in active:
             futures[executor.submit(fetch)] = fetch
         for future in as_completed(futures):
