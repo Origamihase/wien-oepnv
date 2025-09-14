@@ -473,7 +473,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "_identity": identity,
             })
     except Exception as e:
-        logging.exception("WL trafficInfoList fehlgeschlagen: %s", e)
+        log.exception("WL trafficInfoList fehlgeschlagen: %s", e)
 
     # B) News/Hinweise
     try:
@@ -545,7 +545,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "_identity": identity,
             })
     except Exception as e:
-        logging.exception("WL newsList fehlgeschlagen: %s", e)
+        log.exception("WL newsList fehlgeschlagen: %s", e)
 
     # C) Bündelung: LINIEN-SET + TOPIC
     buckets: Dict[str, Dict[str, Any]] = {}
