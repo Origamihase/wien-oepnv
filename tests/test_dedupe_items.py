@@ -67,3 +67,14 @@ def test_items_without_identifier_are_unique(monkeypatch):
     ]
 
     assert build_feed._dedupe_items(items) == items
+
+
+def test_items_with_same_text_but_different_source(monkeypatch):
+    build_feed = _import_build_feed(monkeypatch)
+
+    items = [
+        {"title": "A", "description": "desc", "source": "S1"},
+        {"title": "A", "description": "desc", "source": "S2"},
+    ]
+
+    assert build_feed._dedupe_items(items) == items
