@@ -51,6 +51,7 @@ FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5"))
 MAX_ITEMS = max(int(os.getenv("MAX_ITEMS", "60")), 0)
 MAX_ITEM_AGE_DAYS = max(int(os.getenv("MAX_ITEM_AGE_DAYS", "45")), 0)
 ABSOLUTE_MAX_AGE_DAYS = max(int(os.getenv("ABSOLUTE_MAX_AGE_DAYS", "365")), 0)
+ENDS_AT_GRACE_MINUTES = max(int(os.getenv("ENDS_AT_GRACE_MINUTES", "10")), 0)
 
 STATE_FILE = Path(os.getenv("STATE_PATH", "data/first_seen.json"))  # nur Einträge aus *aktuellem* Feed
 STATE_RETENTION_DAYS = max(int(os.getenv("STATE_RETENTION_DAYS", "60")), 0)
@@ -199,9 +200,14 @@ def _collect_items() -> List[Dict[str, Any]]:
 
 
 def _drop_old_items(items: List[Dict[str, Any]], now: datetime) -> List[Dict[str, Any]]:
-    """Entferne Items, die zu alt sind."""
+    """Entferne Items, die zu alt sind oder bereits beendet wurden."""
     out: List[Dict[str, Any]] = []
     for it in items:
+        ends_at = it.get("ends_at")
+        if isinstance(ends_at, datetime):
+            if _to_utc(ends_at) < _to_utc(now) - timedelta(minutes=ENDS_AT_GRACE_MINUTES):
+                continue
+
         dt = it.get("pubDate") or it.get("starts_at")
         if isinstance(dt, datetime):
             age_days = (_to_utc(now) - _to_utc(dt)).total_seconds() / 86400.0
