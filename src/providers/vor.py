@@ -16,7 +16,7 @@ import os, re, html, hashlib, logging
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 from typing import Any, Dict, Iterable, List, Optional
-from xml.etree import ElementTree as ET
+from defusedxml import ElementTree as ET
 
 import requests
 from requests.adapters import HTTPAdapter

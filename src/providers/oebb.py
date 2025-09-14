@@ -29,7 +29,7 @@ from email.utils import parsedate_to_datetime
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from xml.etree import ElementTree as ET
+from defusedxml import ElementTree as ET
 
 log = logging.getLogger(__name__)
 
