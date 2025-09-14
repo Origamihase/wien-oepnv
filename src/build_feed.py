@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import json, os, sys, html, logging, re, hashlib
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
@@ -180,11 +181,16 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
 
 def _collect_items() -> List[Dict[str, Any]]:
     items: List[Dict[str, Any]] = []
+    futures: Dict[Any, str] = {}
 
-    for env_var, fetch in PROVIDERS:
-        if os.getenv(env_var, "1").strip().lower() not in {"0", "false"}:
+    with ThreadPoolExecutor() as executor:
+        for env_var, fetch in PROVIDERS:
+            if os.getenv(env_var, "1").strip().lower() not in {"0", "false"}:
+                futures[executor.submit(fetch)] = env_var
+        for future in as_completed(futures):
+            env_var = futures[future]
             try:
-                items += fetch()
+                items += future.result()
             except Exception as e:
                 log.exception("%s fetch fehlgeschlagen: %s", env_var, e)
 
