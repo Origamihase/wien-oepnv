@@ -44,6 +44,7 @@ OUT_PATH = os.getenv("OUT_PATH", "docs/feed.xml")
 FEED_TITLE = os.getenv("FEED_TITLE", "ÖPNV Störungen Wien & Umgebung")
 FEED_LINK = os.getenv("FEED_LINK", "https://github.com/Origamihase/wien-oepnv")
 FEED_DESC = os.getenv("FEED_DESC", "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen")
+FEED_TTL = max(int(os.getenv("FEED_TTL", "30")), 0)
 
 DESCRIPTION_CHAR_LIMIT = max(int(os.getenv("DESCRIPTION_CHAR_LIMIT", "170")), 0)
 FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5"))
@@ -247,7 +248,7 @@ def _emit_channel_header(now: datetime) -> List[str]:
     h.append(f"<link>{html.escape(FEED_LINK)}</link>")
     h.append(f"<description>{html.escape(FEED_DESC)}</description>")
     h.append(f"<lastBuildDate>{_fmt_rfc2822(now)}</lastBuildDate>")
-    h.append("<ttl>15</ttl>")
+    h.append(f"<ttl>{FEED_TTL}</ttl>")
     return h
 
 def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any]]) -> Tuple[str, str]:
