@@ -1,8 +1,10 @@
 import src.providers.oebb as oebb
+import pytest
 
 
-def test_whitelist_deutsch_wagram():
-    assert oebb._keep_by_region("Wien ↔ Deutsch Wagram Bahnhof", "")
+@pytest.mark.parametrize("arrow", ["↔", "<->", "->", "—", "–", "→"])
+def test_whitelist_deutsch_wagram(arrow: str) -> None:
+    assert oebb._keep_by_region(f"Wien {arrow} Deutsch Wagram Bahnhof", "")
 
 
 def test_whitelist_ebenfurth():
