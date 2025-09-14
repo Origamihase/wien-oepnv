@@ -187,8 +187,8 @@ def _keep_by_region(title: str, desc: str) -> bool:
     return False
 
 # ---------------- Fetch/Parse ----------------
-def _fetch_xml(url: str) -> ET.Element:
-    r = S.get(url, timeout=25)
+def _fetch_xml(url: str, timeout: int = 25) -> ET.Element:
+    r = S.get(url, timeout=timeout)
     r.raise_for_status()
     return ET.fromstring(r.content)
 
@@ -208,7 +208,7 @@ def _parse_dt_rfc2822(s: str) -> Optional[datetime]:
 # ---------------- Public ----------------
 def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
     try:
-        root = _fetch_xml(OEBB_URL)
+        root = _fetch_xml(OEBB_URL, timeout=timeout)
     except Exception as e:
         log.exception("ÖBB RSS abruf fehlgeschlagen: %s", e)
         return []
