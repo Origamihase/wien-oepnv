@@ -28,6 +28,8 @@ FEED_DESC = os.getenv("FEED_DESC", "Aktive Störungen/Baustellen/Einschränkunge
 DESCRIPTION_CHAR_LIMIT = max(int(os.getenv("DESCRIPTION_CHAR_LIMIT", "170")), 0)
 FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5"))
 MAX_ITEMS = max(int(os.getenv("MAX_ITEMS", "60")), 0)
+MAX_ITEM_AGE_DAYS = max(int(os.getenv("MAX_ITEM_AGE_DAYS", "45")), 0)
+ABSOLUTE_MAX_AGE_DAYS = max(int(os.getenv("ABSOLUTE_MAX_AGE_DAYS", "365")), 0)
 
 STATE_FILE = Path("data/first_seen.json")  # nur Einträge aus *aktuellem* Feed
 
