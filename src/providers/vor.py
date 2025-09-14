@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import os, re, html, hashlib, logging
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from typing import Any, Dict, Iterable, List, Optional
 from xml.etree import ElementTree as ET
 
@@ -180,7 +181,7 @@ def fetch_events() -> List[Dict[str, Any]]:
         log.info("VOR: keine VOR_STATION_IDS gesetzt – Provider inaktiv.")
         return []
 
-    now_local = datetime.now(timezone.utc)
+    now_local = datetime.now().astimezone(ZoneInfo("Europe/Vienna"))
     station_chunk = _select_stations_round_robin(VOR_STATION_IDS, MAX_STATIONS_PER_RUN, ROTATION_INTERVAL_SEC)
 
     seen: set[str] = set()
