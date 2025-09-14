@@ -27,7 +27,6 @@ jobs:
       MAX_ITEMS: "60"
       MAX_ITEM_AGE_DAYS: "365"
       ABSOLUTE_MAX_AGE_DAYS: "540"
-      ACTIVE_GRACE_MIN: "10"
 
       # --- Persistenter State ---
       STATE_PATH: "data/first_seen.json"
@@ -145,7 +144,6 @@ jobs:
           MAX_ITEMS: ${{ env.MAX_ITEMS }}
           MAX_ITEM_AGE_DAYS: ${{ env.MAX_ITEM_AGE_DAYS }}
           ABSOLUTE_MAX_AGE_DAYS: ${{ env.ABSOLUTE_MAX_AGE_DAYS }}
-          ACTIVE_GRACE_MIN: ${{ env.ACTIVE_GRACE_MIN }}
           STATE_PATH: ${{ env.STATE_PATH }}
           STATE_RETENTION_DAYS: ${{ env.STATE_RETENTION_DAYS }}
 
