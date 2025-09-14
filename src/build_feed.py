@@ -23,6 +23,13 @@ try:  # pragma: no cover
 except ModuleNotFoundError:  # pragma: no cover
     vor_fetch = lambda: []  # type: ignore
 
+# Mapping of environment variables to provider fetch functions
+PROVIDERS: List[Tuple[str, Any]] = [
+    ("WL_ENABLE", wl_fetch),
+    ("OEBB_ENABLE", oebb_fetch),
+    ("VOR_ENABLE", vor_fetch),
+]
+
 # ---------------- Logging ----------------
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
 logging.basicConfig(
@@ -164,23 +171,12 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
 def _collect_items() -> List[Dict[str, Any]]:
     items: List[Dict[str, Any]] = []
 
-    if os.getenv("WL_ENABLE", "1").strip().lower() not in {"0", "false"}:
-        try:
-            items += wl_fetch()
-        except Exception as e:
-            log.exception("WL fetch fehlgeschlagen: %s", e)
-
-    if os.getenv("OEBB_ENABLE", "1").strip().lower() not in {"0", "false"}:
-        try:
-            items += oebb_fetch()
-        except Exception as e:
-            log.exception("ÖBB fetch fehlgeschlagen: %s", e)
-
-    if os.getenv("VOR_ENABLE", "1").strip().lower() not in {"0", "false"}:
-        try:
-            items += vor_fetch()
-        except Exception as e:
-            log.exception("VOR fetch fehlgeschlagen: %s", e)
+    for env_var, fetch in PROVIDERS:
+        if os.getenv(env_var, "1").strip().lower() not in {"0", "false"}:
+            try:
+                items += fetch()
+            except Exception as e:
+                log.exception("%s fetch fehlgeschlagen: %s", env_var, e)
 
     return items
 

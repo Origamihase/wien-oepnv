@@ -36,9 +36,15 @@ def _import_build_feed(monkeypatch):
 def test_disabling_provider_suppresses_items(monkeypatch, disabled_env, expected):
     build_feed = _import_build_feed(monkeypatch)
 
-    monkeypatch.setattr(build_feed, "wl_fetch", lambda: [{"p": "wl"}])
-    monkeypatch.setattr(build_feed, "oebb_fetch", lambda: [{"p": "oebb"}])
-    monkeypatch.setattr(build_feed, "vor_fetch", lambda: [{"p": "vor"}])
+    monkeypatch.setattr(
+        build_feed,
+        "PROVIDERS",
+        [
+            ("WL_ENABLE", lambda: [{"p": "wl"}]),
+            ("OEBB_ENABLE", lambda: [{"p": "oebb"}]),
+            ("VOR_ENABLE", lambda: [{"p": "vor"}]),
+        ],
+    )
 
     monkeypatch.setenv("WL_ENABLE", "1")
     monkeypatch.setenv("OEBB_ENABLE", "1")
@@ -52,9 +58,15 @@ def test_disabling_provider_suppresses_items(monkeypatch, disabled_env, expected
 def test_enabling_vor_yields_items(monkeypatch):
     build_feed = _import_build_feed(monkeypatch)
 
-    monkeypatch.setattr(build_feed, "wl_fetch", lambda: [])
-    monkeypatch.setattr(build_feed, "oebb_fetch", lambda: [])
-    monkeypatch.setattr(build_feed, "vor_fetch", lambda: [{"p": "vor"}])
+    monkeypatch.setattr(
+        build_feed,
+        "PROVIDERS",
+        [
+            ("WL_ENABLE", lambda: []),
+            ("OEBB_ENABLE", lambda: []),
+            ("VOR_ENABLE", lambda: [{"p": "vor"}]),
+        ],
+    )
 
     monkeypatch.setenv("WL_ENABLE", "0")
     monkeypatch.setenv("OEBB_ENABLE", "0")
