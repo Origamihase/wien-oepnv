@@ -16,7 +16,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # Job-weite ENV (für alle Steps verfügbar)
     env:
       # --- Allgemein / Feed ---
       OUT_PATH: docs/feed.xml
@@ -26,35 +25,30 @@ jobs:
       LOG_LEVEL: INFO
       DESCRIPTION_CHAR_LIMIT: "170"
       MAX_ITEMS: "60"
-      MAX_ITEM_AGE_DAYS: "365"       # unbefristete Altmeldungen nach 12 Monaten ausblenden
-      ABSOLUTE_MAX_AGE_DAYS: "540"   # harter Cut nach 18 Monaten
+      MAX_ITEM_AGE_DAYS: "365"
+      ABSOLUTE_MAX_AGE_DAYS: "540"
       ACTIVE_GRACE_MIN: "10"
 
       # --- Provider-Schalter ---
-      WL_ENABLE: "1"                 # Wiener Linien aktiv
-      OEBB_ENABLE: "1"               # ÖBB-RSS aktiv
-      VOR_ENABLE: "1"                # VOR/VAO vorbereitet (Discovery läuft nur mit Zugang)
+      WL_ENABLE: "1"       # Wiener Linien
+      OEBB_ENABLE: "1"     # ÖBB-RSS
+      VOR_ENABLE: "1"      # VOR/VAO optional, nur wenn Zugang vorhanden
 
-      # --- ÖBB-RSS (HAFAS Weginformationen) ---
-      OEBB_RSS_URL: "https://fahrplan.oebb.at/bin/help.exe/dnl?protocol=https:&tpl=rss_WI_oebb&"
-      OEBB_ONLY_VIENNA: "1"          # nur Großraum Wien (Keyword-Filter in oebb.py)
+      # --- ÖBB-RSS (aus Secret) ---
+      OEBB_RSS_URL: ${{ secrets.OEBB_RSS_URL }}
+      OEBB_ONLY_VIENNA: "1"  # Provider filtert ohnehin streng, bleibt aber gesetzt
 
-      # --- VOR/VAO Zugang (Discovery-Step ist 'if: VOR_ACCESS_ID != ""') ---
-      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}        # leer = Discovery wird übersprungen
+      # --- VOR/VAO Zugang (Discovery nur wenn gesetzt) ---
+      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}    # leer = Discovery übersprungen
       VOR_BASE: "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
       VOR_VERSION: "v1.3"
 
-      # --- VOR Provider-Feintuning ---
-      # Rail (S-Bahn/Regio) immer; ÖBB-/Regionalbus hier AKTIVIERT:
+      # --- VOR Feintuning ---
       VOR_ALLOW_BUS: "1"
-      # Bus-Aufnahme: 3–4-stellige Liniennummern; WL-typische Muster ausschließen
       VOR_BUS_INCLUDE_REGEX: "(?:\\b[2-9]\\d{2,4}\\b)"
       VOR_BUS_EXCLUDE_REGEX: "^(?:N?\\d{1,2}[A-Z]?)$"
-      # Rate-Limit Schutz (wie viele Stationen pro Lauf via vor.py)
       VOR_MAX_STATIONS_PER_RUN: "3"
-      VOR_ROTATION_INTERVAL_SEC: "1800"  # 30 Minuten, passend zu deinem Cron
-
-      # Wird im Discovery-Step gesetzt (oder bleibt leer)
+      VOR_ROTATION_INTERVAL_SEC: "1800"
       VOR_STATION_IDS: ""
 
     steps:
@@ -73,10 +67,7 @@ jobs:
           pip install -r requirements.txt
 
       # ------------------------------------------------------------
-      # (Optional) VOR Stationen für Wien automatisch ermitteln
-      # Läuft nur, wenn VOR_ACCESS_ID gesetzt ist.
-      # Erzeugt/aktualisiert data/vor_station_ids_wien.txt
-      # und exportiert VOR_STATION_IDS ins Laufzeit-ENV.
+      # (Optional) VOR Stationen (nur falls Zugang vorhanden)
       # ------------------------------------------------------------
       - name: Discover VOR Station IDs for Vienna (PLZ 1010–1230)
         if: ${{ env.VOR_ACCESS_ID != '' }}
@@ -85,80 +76,48 @@ jobs:
           set -euo pipefail
           FILE="data/vor_station_ids_wien.txt"
           mkdir -p data
-
           if [[ -f "$FILE" ]]; then
-            echo "Found existing $FILE – reusing."
             IDS="$(tr -d '\r\n ' < "$FILE")"
             echo "VOR_STATION_IDS=$IDS" >> "$GITHUB_ENV"
             exit 0
           fi
-
           python - <<'PY'
           import os, sys, time, xml.etree.ElementTree as ET
           import requests
-
-          ACCESS = os.environ.get("VOR_ACCESS_ID", "").strip()
-          BASE   = os.environ.get("VOR_BASE", "").rstrip("/")
-          VER    = os.environ.get("VOR_VERSION", "v1.3").strip()
+          ACCESS = os.environ.get("VOR_ACCESS_ID","").strip()
+          BASE   = os.environ.get("VOR_BASE","").rstrip("/")
+          VER    = os.environ.get("VOR_VERSION","v1.3").strip()
           OUT    = "data/vor_station_ids_wien.txt"
-
-          if not ACCESS:
-              sys.exit(0)
-
+          if not ACCESS: sys.exit(0)
           session = requests.Session()
           session.headers.update({"Accept":"application/xml","User-Agent":"origamihase-wien-oepnv/auto-discover"})
           url = f"{BASE}/{VER}/location.name"
-
-          # Wiener Postleitzahlen: vierstellig, beginnen mit 1 → 1010..1230
-          plz_list = [
-              "1010","1020","1030","1040","1050","1060","1070","1080","1090",
-              "1100","1110","1120","1130","1140","1150","1160","1170","1180","1190",
-              "1200","1210","1220","1230",
-          ]
-
+          plz_list = ["1010","1020","1030","1040","1050","1060","1070","1080","1090",
+                      "1100","1110","1120","1130","1140","1150","1160","1170","1180","1190",
+                      "1200","1210","1220","1230"]
           ext_ids = set()
           for plz in plz_list:
-              params = {
-                  "accessId": ACCESS,
-                  "format": "xml",
-                  "input": f"{plz} Wien",
-                  "type": "S",       # nur Stop/Station
-                  "stations": "49",  # Bundesland Wien
-                  "maxNo": "200",
-              }
+              params = {"accessId":ACCESS,"format":"xml","input":f"{plz} Wien","type":"S","stations":"49","maxNo":"200"}
               try:
                   r = session.get(url, params=params, timeout=12)
-                  if r.status_code >= 400 or not r.content:
-                      continue
+                  if r.status_code >= 400 or not r.content: continue
                   root = ET.fromstring(r.content)
-                  # <StopLocation name="Wien ..." extId="..." id="..."/>
                   for sl in root.findall(".//StopLocation"):
-                      ext = sl.get("extId") or sl.get("id")
+                      ext = (sl.get("extId") or sl.get("id") or "").strip()
                       name = (sl.get("name") or "").strip()
-                      # grobe Heuristik: nur Haltestellen, die mit "Wien" beginnen
-                      if not name or not name.startswith("Wien"):
-                          continue
-                      if ext:
-                          ext_ids.add(ext.strip())
+                      if name.startswith("Wien") and ext: ext_ids.add(ext)
               except Exception:
                   continue
-              time.sleep(0.2)  # höflich bleiben
-
-          if not ext_ids:
-              sys.exit(0)
-
-          ids_csv = ",".join(sorted(ext_ids))
-          os.makedirs("data", exist_ok=True)
-          with open(OUT, "w", encoding="utf-8") as f:
-              f.write(ids_csv + "\n")
+              time.sleep(0.2)
+          if not ext_ids: sys.exit(0)
+          with open(OUT,"w",encoding="utf-8") as f:
+              f.write(",".join(sorted(ext_ids)) + "\n")
           PY
-
           if [[ -f "$FILE" ]]; then
             IDS="$(tr -d '\r\n ' < "$FILE")"
             echo "VOR_STATION_IDS=$IDS" >> "$GITHUB_ENV"
           else
             echo "VOR_STATION_IDS=" >> "$GITHUB_ENV"
-          fi
 
       - name: Commit discovered VOR stations (if any)
         if: ${{ env.VOR_ACCESS_ID != '' }}
@@ -169,7 +128,7 @@ jobs:
           branch: ${{ github.ref_name }}
 
       # ------------------------------------------------------------
-      # Feed bauen (WL + ÖBB-RSS + optional VOR), inkl. TV-Optimierungen
+      # Feed bauen (WL + ÖBB-RSS + optional VOR)
       # ------------------------------------------------------------
       - name: Build feed
         env:
@@ -183,17 +142,11 @@ jobs:
           MAX_ITEM_AGE_DAYS: ${{ env.MAX_ITEM_AGE_DAYS }}
           ABSOLUTE_MAX_AGE_DAYS: ${{ env.ABSOLUTE_MAX_AGE_DAYS }}
           ACTIVE_GRACE_MIN: ${{ env.ACTIVE_GRACE_MIN }}
-
-          # Provider-Schalter
           WL_ENABLE: ${{ env.WL_ENABLE }}
           OEBB_ENABLE: ${{ env.OEBB_ENABLE }}
           VOR_ENABLE: ${{ env.VOR_ENABLE }}
-
-          # ÖBB-RSS
           OEBB_RSS_URL: ${{ env.OEBB_RSS_URL }}
           OEBB_ONLY_VIENNA: ${{ env.OEBB_ONLY_VIENNA }}
-
-          # VOR/VAO
           VOR_ACCESS_ID: ${{ env.VOR_ACCESS_ID }}
           VOR_BASE: ${{ env.VOR_BASE }}
           VOR_VERSION: ${{ env.VOR_VERSION }}
@@ -213,12 +166,10 @@ jobs:
           try:
               tree = ET.parse(p)
           except ET.ParseError as e:
-              print("XML parse error:", e)
-              sys.exit(2)
+              print("XML parse error:", e); sys.exit(2)
           root = tree.getroot()
           assert root.tag == "rss", "Root is not <rss>"
-          ch = root.find("channel")
-          assert ch is not None, "Missing <channel>"
+          ch = root.find("channel"); assert ch is not None, "Missing <channel>"
           items = ch.findall("item")
           guids = [i.findtext("guid") or "" for i in items]
           if len(guids) != len(set(guids)):
