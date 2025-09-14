@@ -215,7 +215,7 @@ def _collect_items() -> List[Dict[str, Any]]:
     active = [
         f
         for env, f in PROVIDERS
-        if os.getenv(env, "1").lower() not in {"0", "false"}
+        if os.getenv(env, "1").strip().lower() not in {"0", "false"}
     ]
     if not active:
         return []

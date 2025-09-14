@@ -55,6 +55,26 @@ def test_disabling_provider_suppresses_items(monkeypatch, disabled_env, expected
     assert items == expected
 
 
+@pytest.mark.parametrize(
+    "value",
+    ["0", " 0 ", "false", " False ", "FALSE", "\t0\n", "\nfalse\t"],
+)
+def test_env_disabling_ignores_whitespace_and_case(monkeypatch, value):
+    build_feed = _import_build_feed(monkeypatch)
+
+    monkeypatch.setattr(
+        build_feed,
+        "PROVIDERS",
+        [("WL_ENABLE", lambda: [{"p": "wl"}]), ("OEBB_ENABLE", lambda: [{"p": "oebb"}])],
+    )
+
+    monkeypatch.setenv("WL_ENABLE", value)
+    monkeypatch.setenv("OEBB_ENABLE", "1")
+
+    items = build_feed._collect_items()
+    assert items == [{"p": "oebb"}]
+
+
 def test_enabling_vor_yields_items(monkeypatch):
     build_feed = _import_build_feed(monkeypatch)
 
