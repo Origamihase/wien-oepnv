@@ -30,7 +30,7 @@ from urllib3.util.retry import Retry
 
 log = logging.getLogger(__name__)
 
-VOR_ACCESS_ID: str | None = os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID")
+VOR_ACCESS_ID: str | None = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip() or None
 VOR_STATION_IDS: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_IDS") or "").split(",") if s.strip()]
 VOR_BASE = os.getenv("VOR_BASE", "https://routenplaner.verkehrsauskunft.at/vao/restproxy")
 VOR_VERSION = os.getenv("VOR_VERSION", "v1.3")

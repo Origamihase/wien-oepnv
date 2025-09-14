@@ -61,7 +61,7 @@ Der erzeugte Feed liegt unter `docs/feed.xml`.
 
 | Variable | Typ | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
-| `VOR_ACCESS_ID` / `VAO_ACCESS_ID` | str | – | API-Zugangsschlüssel. Ohne Wert bleibt der Provider inaktiv. |
+| `VOR_ACCESS_ID` / `VAO_ACCESS_ID` | str | – | API-Zugangsschlüssel. Leere Werte werden ignoriert; ohne Wert bleibt der Provider inaktiv. |
 | `VOR_STATION_IDS` | Liste (kommagetrennt) | – | Stations-IDs für Abfragen. Ohne Angabe bleibt der Provider inaktiv. |
 | `VOR_BASE` | str | `"https://routenplaner.verkehrsauskunft.at/vao/restproxy"` | Basis-URL der VAO-API. |
 | `VOR_VERSION` | str | `"v1.3"` | API-Version. |
