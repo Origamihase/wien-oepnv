@@ -97,9 +97,14 @@ def _clean_title_keep_places(t: str) -> str:
 
 def _split_endpoints(title: str) -> Optional[List[str]]:
     """Extrahiert Endpunktnamen links/rechts (ohne Bahnhof/Hbf/Klammern)."""
-    if "↔" not in title and "<=>" not in title and "=>" not in title:
+    arrow_markers = (
+        "↔", "<=>", "<->", "→", "=>", "->", "—", "–",
+    )
+    if not any(a in title for a in arrow_markers):
         return None
-    parts = [p for p in re.split(r"\s*(?:↔|<=>|=>|<|->|—|-)\s*", title) if p.strip()]
+    parts = [
+        p for p in re.split(r"\s*(?:↔|<=>|<->|→|=>|->|—|–|-)\s*", title) if p.strip()
+    ]
     if len(parts) < 2:
         return None
     left, right = parts[0], parts[1]
