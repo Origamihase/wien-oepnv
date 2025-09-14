@@ -40,6 +40,8 @@ WL_BASE = (
 
 log = logging.getLogger(__name__)
 
+ACTIVE_GRACE_MIN = int(os.getenv("ACTIVE_GRACE_MIN", "10"))
+
 
 # ---------------- HTTP-Session mit Retry ----------------
 
@@ -177,7 +179,7 @@ def _best_ts(obj: Dict[str, Any]) -> Optional[datetime]:
 def _is_active(start: Optional[datetime], end: Optional[datetime], now: datetime) -> bool:
     if start and start > now:
         return False
-    if end and end < (now - timedelta(minutes=10)):
+    if end and end < (now - timedelta(minutes=ACTIVE_GRACE_MIN)):
         return False
     return True
 
