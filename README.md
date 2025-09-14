@@ -31,6 +31,7 @@ Der erzeugte Feed liegt unter `docs/feed.xml`.
 | `FEED_TITLE` | str | `"ÖPNV Störungen Wien & Umgebung"` | Titel des RSS-Feeds. |
 | `FEED_LINK` | str | `"https://github.com/Origamihase/wien-oepnv"` | Link zur Projektseite. |
 | `FEED_DESC` | str | `"Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen"` | Beschreibung des RSS-Feeds. |
+| `FEED_TTL` | int | `30` | Minuten, die Clients den Feed im Cache halten dürfen. |
 | `DESCRIPTION_CHAR_LIMIT` | int | `170` | Maximale Länge der Item-Beschreibung. |
 | `FRESH_PUBDATE_WINDOW_MIN` | int | `5` | Zeitfenster (Minuten), in dem Meldungen ohne Datum als „frisch“ gelten und mit aktuellem `pubDate` versehen werden. |
 | `MAX_ITEMS` | int | `60` | Maximale Anzahl an Items im Feed. |
