@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import json, os, sys, html, logging, re, hashlib
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, TimeoutError
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
@@ -52,6 +52,7 @@ MAX_ITEMS = max(int(os.getenv("MAX_ITEMS", "60")), 0)
 MAX_ITEM_AGE_DAYS = max(int(os.getenv("MAX_ITEM_AGE_DAYS", "45")), 0)
 ABSOLUTE_MAX_AGE_DAYS = max(int(os.getenv("ABSOLUTE_MAX_AGE_DAYS", "365")), 0)
 ENDS_AT_GRACE_MINUTES = max(int(os.getenv("ENDS_AT_GRACE_MINUTES", "10")), 0)
+PROVIDER_TIMEOUT = max(float(os.getenv("PROVIDER_TIMEOUT", "10")), 0.0)
 
 STATE_FILE = Path(os.getenv("STATE_PATH", "data/first_seen.json"))  # nur Einträge aus *aktuellem* Feed
 STATE_RETENTION_DAYS = max(int(os.getenv("STATE_RETENTION_DAYS", "60")), 0)
@@ -197,15 +198,17 @@ def _collect_items() -> List[Dict[str, Any]]:
     with ThreadPoolExecutor(max_workers=max(1, len(active))) as executor:
         for fetch in active:
             futures[executor.submit(fetch)] = fetch
-        for future in as_completed(futures):
-            fetch = futures[future]
+        for future, fetch in futures.items():
             name = getattr(fetch, "__name__", str(fetch))
             try:
-                result = future.result()
+                result = future.result(timeout=PROVIDER_TIMEOUT)
                 if not isinstance(result, list):
                     log.error("%s fetch gab keine Liste zurück: %r", name, result)
                     continue
                 items += result
+            except TimeoutError:
+                future.cancel()
+                log.warning("%s fetch Timeout nach %s s", name, PROVIDER_TIMEOUT)
             except Exception as e:
                 log.exception("%s fetch fehlgeschlagen: %s", name, e)
 

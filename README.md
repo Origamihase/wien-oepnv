@@ -38,6 +38,7 @@ Der erzeugte Feed liegt unter `docs/feed.xml`.
 | `MAX_ITEM_AGE_DAYS` | int | `45` | Entfernt Items, die älter als diese Anzahl an Tagen sind. |
 | `ABSOLUTE_MAX_AGE_DAYS` | int | `365` | Harte Obergrenze für das Alter von Items. |
 | `ENDS_AT_GRACE_MINUTES` | int | `10` | Kulanzfenster (Minuten), in dem Meldungen nach `ends_at` noch gezeigt werden. |
+| `PROVIDER_TIMEOUT` | float | `10` | Timeout (Sekunden) pro Provider-Fetch. |
 | `STATE_PATH` | str | `"data/first_seen.json"` | Speicherort der `first_seen`-Daten. |
 | `STATE_RETENTION_DAYS` | int | `60` | Aufbewahrungsdauer der `first_seen`-Daten. |
 | `WL_ENABLE` | bool (`"1"`/`"0"`) | `"1"` | Provider „Wiener Linien“ aktivieren/deaktivieren. |
