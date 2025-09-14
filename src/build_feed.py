@@ -1,295 +1,222 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Builds a single RSS 2.0 feed für aktive ÖPNV-Beeinträchtigungen im Großraum Wien.
-- Quelle: Wiener Linien (OGD Realtime) via providers.wiener_linien
-- TV-tauglich: Beschreibung -> kompakter Klartext, keine Bilder/HTML, Kürzung an Wortgrenzen
-- Stabil: pubDate-Fallback (nie in der Zukunft gegenüber Build-Zeit)
-- Altersfilter:
-    * Behalte befristete Langläufer (Ende in der Zukunft)
-    * Entferne unbefristete Items nach MAX_ITEM_AGE_DAYS / ABSOLUTE_MAX_AGE_DAYS
-- Dedupe: GUID-weit eindeutig
-"""
+name: Build RSS
 
-from __future__ import annotations
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"   # alle 30 Minuten (UTC)
 
-import os
-import sys
-import re
-import html
-import logging
-import hashlib
-from datetime import datetime, timezone, timedelta
-from email.utils import format_datetime
-from xml.etree.ElementTree import Element, SubElement, tostring
-from zoneinfo import ZoneInfo
-from typing import List, Dict, Any
+permissions:
+  contents: write
 
-from providers import wiener_linien, oebb, vor
+concurrency:
+  group: build-rss
+  cancel-in-progress: true
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-# ------------------------- Konfiguration (per ENV überschreibbar) -------------------------
+    env:
+      # ---- Allgemein ----
+      PYTHONUNBUFFERED: "1"
+      OUT_PATH: docs/feed.xml
+      FEED_TITLE: "ÖPNV Störungen Wien & Umgebung"
+      FEED_LINK: "https://github.com/${{ github.repository }}"
+      FEED_DESC: "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen"
+      LOG_LEVEL: INFO
+      DESCRIPTION_CHAR_LIMIT: "170"
+      FRESH_PUBDATE_WINDOW_MIN: "5"
+      MAX_ITEMS: "60"
+      MAX_ITEM_AGE_DAYS: "365"
+      ABSOLUTE_MAX_AGE_DAYS: "540"
+      ACTIVE_GRACE_MIN: "10"
 
-FEED_TITLE = os.getenv("FEED_TITLE", "ÖPNV Störungen Wien & Umgebung")
-FEED_LINK  = os.getenv("FEED_LINK",  "https://github.com/Origamihase/wien-oepnv")
-FEED_DESC  = os.getenv("FEED_DESC",  "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen")
-OUT_PATH   = os.getenv("OUT_PATH",   "docs/feed.xml")
-MAX_ITEMS  = int(os.getenv("MAX_ITEMS", "60"))  # schlank & performant
-LOG_LEVEL  = os.getenv("LOG_LEVEL",  "INFO")
+      # ---- Wiener Linien (bleibt wie gehabt) ----
+      WL_ENABLE: "1"
 
-# TV/Signage-Einstellungen
-DESCRIPTION_CHAR_LIMIT   = int(os.getenv("DESCRIPTION_CHAR_LIMIT", "170"))
-FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5"))
+      # ---- VOR/VAO (Rail + Regional-/Schnellbus; kein WL-Stadtbus, keine U-Bahn/Tram) ----
+      VOR_ENABLE: "1"
+      VAO_ACCESS_ID: ${{ secrets.VAO_ACCESS_ID }}
+      VAO_API_BASE: "https://routenplaner.verkehrsauskunft.at/vao/restproxy/1.0"
+      # products= 2^0 (Zug) + 2^1 (S-Bahn) + 2^5 (Schnellbus) + 2^6 (Regionalbus) = 99
+      VOR_PRODUCTS_MASK: "99"
+      # Umkreissuche: nur Stationen (type=S), 2 km Radius pro Gitterpunkt
+      VOR_NEARBY_TYPE: "S"
+      VOR_NEARBY_R: "2000"
+      # Bounding Box Wien (inkl. Speckgürtel): lon 16.18–16.65, lat 48.10–48.35
+      VOR_LON_MIN: "16.18"
+      VOR_LON_MAX: "16.65"
+      VOR_LAT_MIN: "48.10"
+      VOR_LAT_MAX: "48.35"
+      # Gitter-Auflösung in Grad (~0.02 ≈ 2.2 km in N-S)
+      VOR_GRID_STEP: "0.02"
+      # Sicherheits-Limits
+      VOR_MAX_PER_CELL: "200"
+      VOR_MAX_STATIONS_PER_RUN: "2000"
+      # Datei, die an build_feed.py übergeben wird
+      VOR_STATION_IDS_FILE: "cache/vor_station_ids.json"
 
-# Altersfilter (0 = aus). Nur Items ohne zukünftiges Enddatum werden nach Alter entfernt.
-MAX_ITEM_AGE_DAYS     = int(os.getenv("MAX_ITEM_AGE_DAYS", "365"))
-ABSOLUTE_MAX_AGE_DAYS = int(os.getenv("ABSOLUTE_MAX_AGE_DAYS", "540"))  # 18 Monate
-ACTIVE_GRACE_MIN      = int(os.getenv("ACTIVE_GRACE_MIN", "10"))
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-VIENNA_TZ = ZoneInfo("Europe/Vienna")
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-# --------------------------------- Logging-Setup ---------------------------------
+      - name: Discover VOR station IDs (Rail + Regional-/Schnellbus)
+        if: env.VOR_ENABLE == '1'
+        env:
+          VAO_ACCESS_ID: ${{ env.VAO_ACCESS_ID }}
+          VAO_API_BASE: ${{ env.VAO_API_BASE }}
+          VOR_PRODUCTS_MASK: ${{ env.VOR_PRODUCTS_MASK }}
+          VOR_NEARBY_TYPE: ${{ env.VOR_NEARBY_TYPE }}
+          VOR_NEARBY_R: ${{ env.VOR_NEARBY_R }}
+          VOR_LON_MIN: ${{ env.VOR_LON_MIN }}
+          VOR_LON_MAX: ${{ env.VOR_LON_MAX }}
+          VOR_LAT_MIN: ${{ env.VOR_LAT_MIN }}
+          VOR_LAT_MAX: ${{ env.VOR_LAT_MAX }}
+          VOR_GRID_STEP: ${{ env.VOR_GRID_STEP }}
+          VOR_MAX_PER_CELL: ${{ env.VOR_MAX_PER_CELL }}
+          VOR_MAX_STATIONS_PER_RUN: ${{ env.VOR_MAX_STATIONS_PER_RUN }}
+          VOR_STATION_IDS_FILE: ${{ env.VOR_STATION_IDS_FILE }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$(dirname "${VOR_STATION_IDS_FILE}")"
 
-logging.basicConfig(level=LOG_LEVEL)
-log = logging.getLogger("build_feed")
+          if [ -z "${VAO_ACCESS_ID:-}" ]; then
+            echo "VAO_ACCESS_ID nicht gesetzt – VOR-Discovery wird übersprungen."
+            echo '{"extIds":[]}' > "${VOR_STATION_IDS_FILE}"
+            exit 0
+          fi
 
+          python - << 'PY'
+          import os, sys, math, json, time
+          import xml.etree.ElementTree as ET
+          import urllib.parse, urllib.request
 
-# --------------------------------- Hilfsfunktionen ---------------------------------
+          base   = os.environ["VAO_API_BASE"].rstrip("/")
+          acc    = os.environ["VAO_ACCESS_ID"]
+          prod   = os.environ["VOR_PRODUCTS_MASK"]
+          typ    = os.environ.get("VOR_NEARBY_TYPE","S")
+          rad    = int(os.environ.get("VOR_NEARBY_R","2000"))
+          lon0   = float(os.environ["VOR_LON_MIN"])
+          lon1   = float(os.environ["VOR_LON_MAX"])
+          lat0   = float(os.environ["VOR_LAT_MIN"])
+          lat1   = float(os.environ["VOR_LAT_MAX"])
+          step   = float(os.environ.get("VOR_GRID_STEP","0.02"))
+          max_cell = int(os.environ.get("VOR_MAX_PER_CELL","200"))
+          per_run = int(os.environ.get("VOR_MAX_STATIONS_PER_RUN","2000"))
+          outp   = os.environ["VOR_STATION_IDS_FILE"]
 
-def _smart_ellipsis(text: str, limit: int) -> str:
-    """Kürzt an der Wortgrenze; fällt auf hartes Limit zurück, wenn nötig."""
-    if len(text) <= limit:
-        return text
-    # Platz für Ellipsis lassen
-    base = text[:max(0, limit - 1)]
-    # Bis zur letzten Wortgrenze zurück
-    cut = re.sub(r"\s+\S*$", "", base).rstrip()
-    if len(cut) >= int(limit * 0.6):
-        return cut + "…"
-    return base.rstrip() + "…"
+          def q(url, params):
+            u = f"{url}?{urllib.parse.urlencode(params)}"
+            req = urllib.request.Request(u, headers={"Accept":"application/xml"})
+            with urllib.request.urlopen(req, timeout=25) as r:
+              return r.read()
 
+          ext_ids = set()
+          lats = []
+          cur = lat0
+          while cur <= lat1 + 1e-9:
+            lats.append(round(cur, 6))
+            cur += step
+          lons = []
+          cur = lon0
+          while cur <= lon1 + 1e-9:
+            lons.append(round(cur, 6))
+            cur += step
 
-def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
-    """
-    Klartext für TV:
-    - doppelt unescapen
-    - <img> entfernen
-    - Block-Tags => " · "
-    - restliche HTML-Tags entfernen
-    - NBSP zu Space
-    - WL-Listen säubern
-    - spitze/chevron-Klammern entfernen
-    - Whitespace normalisieren, Kürzung an Wortgrenze
-    """
-    if not s:
-        return ""
-    s = html.unescape(html.unescape(s))
-    s = re.sub(r"<img\b[^>]*>", " ", s, flags=re.I)
-    s = re.sub(r"</?(p|br|li|ul|ol|h\d)[^>]*>", " · ", s, flags=re.I)
-    s = re.sub(r"<[^>]+>", " ", s)
-    s = s.replace("\u00A0", " ")
-    s = re.sub(
-        r"Linien:\s*\[([^\]]+)\]",
-        lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")),
-        s,
-    )
-    s = re.sub(r"\bStops:\s*\[[^\]]*\]", " ", s)
-    s = re.sub(r"\bBetroffene Haltestellen:\s*[0-9, …]+", " ", s)
-    s = s.replace("‹", "").replace("›", "").replace("<", "").replace(">", "")
-    s = re.sub(r"\s{2,}", " ", s)
-    s = re.sub(r"(?:\s*·\s*){2,}", " · ", s).strip()
-    s = s.strip("· ,;:-")
-    return _smart_ellipsis(s, limit) if len(s) > limit else s
+          for la in lats:
+            for lo in lons:
+              try:
+                xml = q(f"{base}/location.nearbystops", {
+                  "accessId": acc,
+                  "format": "xml",
+                  "originCoordLat": f"{la:.6f}",
+                  "originCoordLong": f"{lo:.6f}",
+                  "type": typ,
+                  "products": prod,
+                  "r": str(rad),
+                  "maxNo": str(max_cell),
+                })
+                # Parse StopLocation extId / mainMastExtId
+                root = ET.fromstring(xml)
+                for sl in root.findall(".//StopLocation"):
+                  ext = sl.attrib.get("mainMastExtId") or sl.attrib.get("extId")
+                  if ext:
+                    ext_ids.add(ext.strip())
+              except Exception as e:
+                # Robust weiter – Grid ist redundant
+                print(f"[warn] nearbystops @ {la},{lo}: {e}", file=sys.stderr)
+                time.sleep(0.2)
 
+          ext_list = sorted(ext_ids)
+          if per_run and len(ext_list) > per_run:
+            # deterministische Auswahl (rollierend via Tageszahl)
+            day_of_year = int(time.strftime("%j"))
+            start = (day_of_year * 997) % len(ext_list)
+            sel = ext_list[start:] + ext_list[:start]
+            ext_list = sel[:per_run]
 
-def _clean_title(raw: str) -> str:
-    """
-    Titel schön & lesbar:
-    - doppelt unescapen
-    - evtl. HTML-Tags entfernen
-    - alte Präfixe wie "[Quelle/Kategorie] " entfernen
-    - ‹ › < > entfernen
-    - Whitespace normalisieren
-    """
-    t = str(raw or "").strip()
-    t = html.unescape(html.unescape(t))
-    t = re.sub(r"<[^>]+>", " ", t)
-    t = re.sub(r"^\[[^\]]+\]\s*", "", t)
-    t = t.replace("‹", "").replace("›", "").replace("<", "").replace(">", "")
-    t = re.sub(r"\s{2,}", " ", t).strip(" ·,;:- ").strip()
-    return t
+          os.makedirs(os.path.dirname(outp), exist_ok=True)
+          with open(outp, "w", encoding="utf-8") as f:
+            json.dump({"extIds": ext_list}, f, ensure_ascii=False, indent=2)
 
+          print(f"VOR discovery: {len(ext_list)} extIds -> {outp}")
+          PY
 
-def _fmt_date(dt: datetime) -> str:
-    """RFC 2822 Datum für RSS, immer in Europe/Vienna ausgeben."""
-    if dt.tzinfo is None:
-        dt = dt.replace(tzinfo=timezone.utc)
-    return format_datetime(dt.astimezone(VIENNA_TZ))
+      - name: Build feed
+        env:
+          OUT_PATH: ${{ env.OUT_PATH }}
+          FEED_TITLE: ${{ env.FEED_TITLE }}
+          FEED_LINK: ${{ env.FEED_LINK }}
+          FEED_DESC: ${{ env.FEED_DESC }}
+          LOG_LEVEL: ${{ env.LOG_LEVEL }}
+          DESCRIPTION_CHAR_LIMIT: ${{ env.DESCRIPTION_CHAR_LIMIT }}
+          FRESH_PUBDATE_WINDOW_MIN: ${{ env.FRESH_PUBDATE_WINDOW_MIN }}
+          MAX_ITEMS: ${{ env.MAX_ITEMS }}
+          MAX_ITEM_AGE_DAYS: ${{ env.MAX_ITEM_AGE_DAYS }}
+          ABSOLUTE_MAX_AGE_DAYS: ${{ env.ABSOLUTE_MAX_AGE_DAYS }}
+          ACTIVE_GRACE_MIN: ${{ env.ACTIVE_GRACE_MIN }}
+          WL_ENABLE: ${{ env.WL_ENABLE }}
+          VOR_ENABLE: ${{ env.VOR_ENABLE }}
+          VAO_ACCESS_ID: ${{ env.VAO_ACCESS_ID }}
+          VAO_API_BASE: ${{ env.VAO_API_BASE }}
+          VOR_STATION_IDS_FILE: ${{ env.VOR_STATION_IDS_FILE }}
+        run: python -u src/build_feed.py
 
+      - name: Validate feed (XML + GUID uniqueness)
+        run: |
+          python - <<'PY'
+          import sys, xml.etree.ElementTree as ET
+          p = "docs/feed.xml"
+          try:
+              tree = ET.parse(p)
+          except ET.ParseError as e:
+              print("XML parse error:", e)
+              sys.exit(2)
+          root = tree.getroot()
+          assert root.tag == "rss", "Root is not <rss>"
+          ch = root.find("channel")
+          assert ch is not None, "Missing <channel>"
+          items = ch.findall("item")
+          guids = [i.findtext("guid") or "" for i in items]
+          if len(guids) != len(set(guids)):
+              dupes = [g for g in set(guids) if guids.count(g) > 1]
+              raise SystemExit(f"Duplicate GUIDs detected: {dupes}")
+          print(f"Feed OK: {len(items)} items, GUIDs unique.")
+          PY
 
-def _rss_root(title: str, link: str, description: str):
-    rss = Element("rss", version="2.0")
-    ch  = SubElement(rss, "channel")
-    SubElement(ch, "title").text = title
-    SubElement(ch, "link").text = link
-    SubElement(ch, "description").text = description
-    SubElement(ch, "language").text = "de-AT"
-    SubElement(ch, "lastBuildDate").text = _fmt_date(datetime.now(timezone.utc))
-    SubElement(ch, "ttl").text = "15"
-    SubElement(ch, "generator").text = "wien-oepnv (GitHub Actions)"
-    return rss, ch
-
-
-def _stable_pubdate_base(guid: str, now_local: datetime) -> datetime:
-    """Tagesstabil: Heute 06:00 + GUID-Offset (<= 1h)."""
-    base = now_local.replace(hour=6, minute=0, second=0, microsecond=0)
-    h = int(hashlib.md5(guid.encode("utf-8")).hexdigest()[:8], 16)
-    return base + timedelta(seconds=(h % 3600))
-
-
-def _normalize_pubdate(ev: Dict[str, Any], build_now_local: datetime) -> datetime:
-    """
-    Provider-pubDate verwenden, wenn nicht 'zu frisch'.
-    Sonst tagesstabiler Fallback – niemals in der Zukunft gegenüber Build-Zeit.
-    """
-    dt = ev.get("pubDate")
-    if isinstance(dt, datetime):
-        if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
-        window = timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN)
-        if (build_now_local.astimezone(timezone.utc) - dt) >= window:
-            return dt
-    fb = _stable_pubdate_base(ev["guid"], build_now_local)
-    if fb > build_now_local:
-        fb = build_now_local - timedelta(seconds=1)
-    return fb
-
-
-def _has_future_end(ev: Dict[str, Any], now_local: datetime) -> bool:
-    """True, wenn Enddatum existiert und (mit Gnadenzeit) > jetzt ist."""
-    end = ev.get("ends_at")
-    if not isinstance(end, datetime):
-        return False
-    if end.tzinfo is None:
-        end = end.replace(tzinfo=timezone.utc)
-    return end >= (now_local - timedelta(minutes=ACTIVE_GRACE_MIN)).astimezone(end.tzinfo)
-
-
-def _apply_age_filter(items: List[Dict[str, Any]], build_now_local: datetime) -> List[Dict[str, Any]]:
-    """
-    Entfernt nur Items ohne zukünftiges Enddatum, die älter sind als:
-      - ABSOLUTE_MAX_AGE_DAYS (harte Schranke) oder
-      - MAX_ITEM_AGE_DAYS (normale Schranke).
-    Befristete Langläufer (Ende in der Zukunft) bleiben erhalten.
-    """
-    if MAX_ITEM_AGE_DAYS <= 0 and ABSOLUTE_MAX_AGE_DAYS <= 0:
-        return items
-
-    thr_norm = build_now_local - timedelta(days=MAX_ITEM_AGE_DAYS)
-    thr_abs  = build_now_local - timedelta(days=ABSOLUTE_MAX_AGE_DAYS)
-
-    kept = []
-    for ev in items:
-        pd = ev.get("pubDate")
-        if not isinstance(pd, datetime):
-            kept.append(ev)  # ohne Datum nicht hart filtern
-            continue
-        if pd.tzinfo is None:
-            pd = pd.replace(tzinfo=timezone.utc)
-        pd_local = pd.astimezone(VIENNA_TZ)
-        future_end = _has_future_end(ev, build_now_local)
-
-        # harte Schranke
-        if not future_end and ABSOLUTE_MAX_AGE_DAYS > 0 and pd_local < thr_abs:
-            continue
-        # normale Schranke
-        if not future_end and MAX_ITEM_AGE_DAYS > 0 and pd_local < thr_norm:
-            continue
-
-        kept.append(ev)
-    return kept
-
-
-def _add_item(ch, ev: Dict[str, Any], build_now_local: datetime) -> None:
-    it = SubElement(ch, "item")
-
-    # Schöner Titel (ohne Präfix/Klammern)
-    title = _clean_title(ev["title"])
-    SubElement(it, "title").text = title
-
-    # TV ohne Interaktion -> neutraler Link
-    SubElement(it, "link").text = FEED_LINK
-
-    # Kurzbeschreibung
-    short = _to_plain_for_signage(ev.get("description") or "")
-    SubElement(it, "description").text = short or title
-
-    # Stabilisiertes Datum
-    stable_dt = _normalize_pubdate(ev, build_now_local)
-    SubElement(it, "pubDate").text = _fmt_date(stable_dt)
-
-    # GUID + Kategorien (optional hilfreich für Filter)
-    SubElement(it, "guid").text = ev["guid"]
-    for c in (ev.get("source"), ev.get("category")):
-        if c:
-            SubElement(it, "category").text = c
-
-
-def _write_xml(elem, path: str) -> None:
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    data = b'<?xml version="1.0" encoding="UTF-8"?>\n' + tostring(elem, encoding="utf-8")
-    with open(path, "wb") as f:
-        f.write(data)
-    log.info("Feed geschrieben: %s", path)
-
-
-# -------------------------------------- Main --------------------------------------
-
-def main() -> None:
-    providers = (wiener_linien, oebb, vor)
-    all_events: List[Dict[str, Any]] = []
-    seen_guids: set[str] = set()
-
-    for p in providers:
-        try:
-            events = p.fetch_events()
-            cleaned: List[Dict[str, Any]] = []
-            for ev in events:
-                # Basisschema prüfen
-                if not {"source","category","title","description","link","guid","pubDate"} <= ev.keys():
-                    continue
-                if not ev.get("guid") or ev["guid"] in seen_guids:
-                    continue
-                seen_guids.add(ev["guid"])
-                cleaned.append(ev)
-            all_events.extend(cleaned)
-            log.info("%s lieferte %d Items", p.__name__, len(cleaned))
-        except Exception as e:
-            log.exception("Provider-Fehler bei %s: %s", p.__name__, e)
-
-    build_now_local = datetime.now(VIENNA_TZ)
-
-    # Altlasten-Filter anwenden (bewahrt befristete Langläufer)
-    all_events = _apply_age_filter(all_events, build_now_local)
-
-    # Sortieren & deckeln
-    all_events.sort(key=lambda x: x["pubDate"], reverse=True)
-    if MAX_ITEMS > 0 and len(all_events) > MAX_ITEMS:
-        all_events = all_events[:MAX_ITEMS]
-
-    # RSS bauen
-    rss, ch = _rss_root(FEED_TITLE, FEED_LINK, FEED_DESC)
-    for ev in all_events:
-        _add_item(ch, ev, build_now_local)
-
-    _write_xml(rss, OUT_PATH)
-    log.info("Fertig: %d Items im Feed", len(all_events))
-
-
-if __name__ == "__main__":
-    try:
-        main()
-    except Exception as e:
-        logging.exception("Abbruch: %s", e)
-        sys.exit(1)
+      - name: Commit & push feed (only if changed)
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(feed): update"
+          file_pattern: docs/feed.xml
+          branch: ${{ github.ref_name }}
