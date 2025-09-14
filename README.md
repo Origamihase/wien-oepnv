@@ -70,3 +70,7 @@ Der erzeugte Feed liegt unter `docs/feed.xml`.
 | `VOR_ALLOW_BUS` | bool (`"1"`/`"0"`) | `"0"` | Auch Buslinien berücksichtigen. |
 | `VOR_BUS_INCLUDE_REGEX` | Regex | `"(?:\\b[2-9]\\d{2,4}\\b)"` | Muster für zusätzliche Buslinien. |
 | `VOR_BUS_EXCLUDE_REGEX` | Regex | `"^(?:N?\\d{1,2}[A-Z]?)$"` | Muster zum Ausschließen von Buslinien. |
+
+## License
+
+Dieses Projekt steht unter der [MIT License](LICENSE).
