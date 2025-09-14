@@ -29,17 +29,24 @@ jobs:
       ABSOLUTE_MAX_AGE_DAYS: "540"
       ACTIVE_GRACE_MIN: "10"
 
+      # --- Persistenter State ---
+      STATE_PATH: "data/first_seen.json"
+      STATE_RETENTION_DAYS: "1095"
+
       # --- Provider-Schalter ---
-      WL_ENABLE: "1"       # Wiener Linien
-      OEBB_ENABLE: "1"     # ÖBB-RSS
-      VOR_ENABLE: "1"      # VOR/VAO optional, nur wenn Zugang vorhanden
+      WL_ENABLE: "1"
+      OEBB_ENABLE: "1"
+      VOR_ENABLE: "1"
+
+      # --- Wiener Linien (Basis aus Secret; Fallback im Code) ---
+      WL_RSS_URL: ${{ secrets.WL_RSS_URL }}
 
       # --- ÖBB-RSS (aus Secret) ---
       OEBB_RSS_URL: ${{ secrets.OEBB_RSS_URL }}
-      OEBB_ONLY_VIENNA: "1"  # Provider filtert ohnehin streng, bleibt aber gesetzt
+      OEBB_ONLY_VIENNA: "1"
 
       # --- VOR/VAO Zugang (Discovery nur wenn gesetzt) ---
-      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}    # leer = Discovery übersprungen
+      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
       VOR_BASE: "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
       VOR_VERSION: "v1.3"
 
@@ -66,9 +73,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # ------------------------------------------------------------
-      # (Optional) VOR Stationen (nur falls Zugang vorhanden)
-      # ------------------------------------------------------------
+      # (Optional) VOR Stationen ermitteln – nur wenn Zugang vorhanden
       - name: Discover VOR Station IDs for Vienna (PLZ 1010–1230)
         if: ${{ env.VOR_ACCESS_ID != '' }}
         shell: bash
@@ -127,9 +132,6 @@ jobs:
           file_pattern: data/vor_station_ids_wien.txt
           branch: ${{ github.ref_name }}
 
-      # ------------------------------------------------------------
-      # Feed bauen (WL + ÖBB-RSS + optional VOR)
-      # ------------------------------------------------------------
       - name: Build feed
         env:
           OUT_PATH: ${{ env.OUT_PATH }}
@@ -142,11 +144,17 @@ jobs:
           MAX_ITEM_AGE_DAYS: ${{ env.MAX_ITEM_AGE_DAYS }}
           ABSOLUTE_MAX_AGE_DAYS: ${{ env.ABSOLUTE_MAX_AGE_DAYS }}
           ACTIVE_GRACE_MIN: ${{ env.ACTIVE_GRACE_MIN }}
+          STATE_PATH: ${{ env.STATE_PATH }}
+          STATE_RETENTION_DAYS: ${{ env.STATE_RETENTION_DAYS }}
+
           WL_ENABLE: ${{ env.WL_ENABLE }}
           OEBB_ENABLE: ${{ env.OEBB_ENABLE }}
           VOR_ENABLE: ${{ env.VOR_ENABLE }}
+
+          WL_RSS_URL: ${{ env.WL_RSS_URL }}
           OEBB_RSS_URL: ${{ env.OEBB_RSS_URL }}
           OEBB_ONLY_VIENNA: ${{ env.OEBB_ONLY_VIENNA }}
+
           VOR_ACCESS_ID: ${{ env.VOR_ACCESS_ID }}
           VOR_BASE: ${{ env.VOR_BASE }}
           VOR_VERSION: ${{ env.VOR_VERSION }}
@@ -178,9 +186,11 @@ jobs:
           print(f"Feed OK: {len(items)} items, GUIDs unique.")
           PY
 
-      - name: Commit & push feed (only if changed)
+      - name: Commit & push feed + state (only if changed)
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore(feed): update"
-          file_pattern: docs/feed.xml
+          commit_message: "chore(feed): update feed & first_seen state"
+          file_pattern: |
+            docs/feed.xml
+            data/first_seen.json
           branch: ${{ github.ref_name }}
