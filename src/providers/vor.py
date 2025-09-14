@@ -88,16 +88,16 @@ def _normalize_spaces(s: str) -> str:
 
 def _accept_product(prod: ET.Element) -> bool:
     catOutS = _text(prod, "catOutS").strip()
-    catOutL = _text(prod, "catOutL").strip()
-    operator = _text(prod, "operator").strip()
+    catOutL = _text(prod, "catOutL").strip().lower()
+    operator = _text(prod, "operator").strip().lower()
     line = _text(prod, "line").strip() or _text(prod, "displayNumber").strip() or _text(prod, "name").strip()
-    if operator in EXCLUDE_OPERATORS: return False
-    if any(h in catOutL for h in EXCLUDE_LONG_HINTS): return False
+    if operator in (o.lower() for o in EXCLUDE_OPERATORS): return False
+    if any(h.lower() in catOutL for h in EXCLUDE_LONG_HINTS): return False
     if catOutS.upper() == "U": return False
-    if (catOutS.upper() in RAIL_SHORT) or any(h in catOutL for h in RAIL_LONG_HINTS): return True
+    if (catOutS.upper() in RAIL_SHORT) or any(h.lower() in catOutL for h in RAIL_LONG_HINTS): return True
     if not ALLOW_BUS: return False
     if BUS_EXCLUDE_RE.match(line): return False
-    if BUS_INCLUDE_RE.search(line) or ("Regionalbus" in catOutL) or ("Postbus" in operator) or ("Österreichische Postbus" in operator):
+    if BUS_INCLUDE_RE.search(line) or ("regionalbus" in catOutL) or ("postbus" in operator) or ("österreichische postbus" in operator):
         return True
     return False
 
