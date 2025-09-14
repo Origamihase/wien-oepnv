@@ -1,4 +1,4 @@
-import time
+import threading
 import xml.etree.ElementTree as ET
 
 import src.providers.vor as vor
@@ -9,20 +9,27 @@ def test_fetch_events_parallel(monkeypatch):
     vor.VOR_STATION_IDS = ["1", "2"]
     vor.MAX_STATIONS_PER_RUN = 2
 
-    # deterministischer Auswahl der Stationen
+    # deterministische Auswahl der Stationen
     monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk, period: ids[:chunk])
 
-    def slow_fetch(station_id, now_local):
-        time.sleep(0.1)
+    barrier = threading.Barrier(2)
+
+    def blocking_fetch(station_id, now_local):
+        try:
+            barrier.wait(timeout=1)
+        except threading.BrokenBarrierError as e:
+            raise AssertionError("stationboards not fetched in parallel") from e
         return ET.Element("root")
 
-    monkeypatch.setattr(vor, "_fetch_stationboard", slow_fetch)
-    monkeypatch.setattr(vor, "_collect_from_board", lambda sid, root: [])
+    monkeypatch.setattr(vor, "_fetch_stationboard", blocking_fetch)
+    monkeypatch.setattr(
+        vor,
+        "_collect_from_board",
+        lambda sid, root: [{"guid": sid, "pubDate": None}],
+    )
 
-    start = time.perf_counter()
-    vor.fetch_events()
-    duration = time.perf_counter() - start
-    assert duration < 0.18
+    items = vor.fetch_events()
+    assert {it["guid"] for it in items} == {"1", "2"}
 
 
 def test_fetch_events_logs_and_continues(monkeypatch, caplog):
