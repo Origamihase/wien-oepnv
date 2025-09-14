@@ -5,7 +5,6 @@
 Wiener Linien Provider (OGD) – nur betriebsrelevante Störungen/Hinweise,
 keine Roll-/Fahrtreppen- oder Aufzugs-Meldungen.
 
-Features:
 - Titelkürzung am Anfang: generische Label wie „Bauarbeiten/…“ werden nur entfernt,
   wenn danach informativer Inhalt folgt (z. B. „Züge halten …“).
 - Linien-Präfix: Titel beginnen – wenn vorhanden – mit den betroffenen Linien
@@ -15,6 +14,10 @@ Features:
   bereits als Einzelmeldungen existieren.
 - Erweiterte Keywords (u. a. „kurzführung“, „teilbetrieb“, „pendelverkehr“, „kurzstrecke“),
   um seltene, aber betriebsrelevante Hinweise sicher durchzulassen.
+- **Neu**: „Rufbus <ID>“ im Titel wird für das Linienpräfix zu **<ID>** normalisiert.
+- **Neu**: Fallback – wenn `relatedLines` leer ist, werden Liniencodes robust aus Titeltext
+  erkannt (inkl. „Rufbus Nxx“), damit das Präfix trotzdem entsteht.
+- **Neu**: Liefert `_identity` (stabile Identität) für `first_seen`.
 """
 
 from __future__ import annotations
@@ -47,7 +50,7 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/2.4 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/2.5 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
@@ -55,20 +58,17 @@ S = _session()
 
 # ---------------- Filter & Textregeln ----------------
 
-# „Betriebsrelevante“ Wörter (erweitert)
 KW_RESTRICTION = re.compile(
     r"\b(umleitung|ersatzverkehr|unterbrech|sperr|gesperrt|störung|arbeiten|baustell|einschränk|verspät|ausfall|verkehr"
     r"|kurzführung|teilbetrieb|pendelverkehr|kurzstrecke)\b",
     re.IGNORECASE
 )
 
-# Nicht-betriebsrelevantes/Allgemeines (schwaches Ausschluss-Signal)
 KW_EXCLUDE = re.compile(
     r"\b(willkommen|gewinnspiel|anzeiger|eröffnung|service(?:-info)?|info(?:rmation)?|fest|keine\s+echtzeitinfo)\b",
     re.IGNORECASE
 )
 
-# Facility-ONLY: Aufzug/Lift/Fahrtreppe/Rolltreppe – vollständig ausschließen
 FACILITY_ONLY = re.compile(
     r"\b(aufzug|aufzüge|lift|fahrstuhl|fahrtreppe|fahrtreppen|rolltreppe|rolltreppen|aufzugsinfo|fahrtreppeninfo)\b",
     re.IGNORECASE
@@ -134,11 +134,18 @@ def _as_list(val) -> List[Any]:
     if val is None: return []
     return list(val) if isinstance(val, (list, tuple, set)) else [val]
 
+# Linien-Normalisierung (inkl. Rufbus)
+def _clean_line_token(s: str) -> str:
+    s = str(s or "")
+    s = re.sub(r"^\s*Rufbus\s+", "", s, flags=re.IGNORECASE)  # Rufbus entfernen
+    s = re.sub(r"\s+", "", s).upper()
+    return s
+
 def _tok(v: Any) -> str:
-    return re.sub(r"[^A-Za-z0-9+]", "", str(v)).upper()
+    return _clean_line_token(re.sub(r"[^A-Za-z0-9+]", "", str(v)))
 
 def _display_line(s: str) -> str:
-    return re.sub(r"\s+", "", str(s or "").strip()).upper()
+    return _clean_line_token(s)
 
 def _norm_title(s: str) -> str:
     return re.sub(r"\s+", " ", (s or "").strip().lower())
@@ -148,8 +155,7 @@ def _guid(*parts: str) -> str:
 
 # ---------- Linien-Paare (tok, disp) robust erzeugen & mergen ----------
 
-def _make_line_pairs(rel_lines: List[Any]) -> List[Tuple[str, str]]:
-    """Erzeugt geordnete (tok, display)-Paare ohne Duplikate."""
+def _make_line_pairs_from_related(rel_lines: List[Any]) -> List[Tuple[str, str]]:
     pairs: List[Tuple[str, str]] = []
     seen: set[str] = set()
     for x in rel_lines:
@@ -160,8 +166,31 @@ def _make_line_pairs(rel_lines: List[Any]) -> List[Tuple[str, str]]:
         pairs.append((tok, _display_line(x)))
     return pairs
 
+# Fallback: Linien aus Titeltext erkennen (inkl. "Rufbus Nxx")
+LINE_CODE_RE = re.compile(
+    r"\b(?:U\d{1,2}|S\d{1,2}|N\d{1,3}|[0-9]{1,3}[A-Z]?|[A-Z])\b",
+    re.IGNORECASE
+)
+RUF_BUS_RE = re.compile(r"Rufbus\s+([A-Za-z0-9]+)", re.IGNORECASE)
+
+def _detect_line_pairs_from_text(text: str) -> List[Tuple[str, str]]:
+    pairs: List[Tuple[str, str]] = []
+    seen: set[str] = set()
+    # Rufbus zuerst (liefert „N81“ etc.)
+    for m in RUF_BUS_RE.findall(text or ""):
+        tok = _tok(m)
+        if tok and tok not in seen:
+            seen.add(tok)
+            pairs.append((tok, _display_line(m)))
+    # Generische Codes
+    for m in LINE_CODE_RE.findall(text or ""):
+        tok = _tok(m)
+        if tok and tok not in seen:
+            seen.add(tok)
+            pairs.append((tok, _display_line(m)))
+    return pairs
+
 def _merge_line_pairs(base_pairs: List[Tuple[str, str]], add_pairs: List[Tuple[str, str]]) -> List[Tuple[str, str]]:
-    """Fügt neue Paare hinten an, wenn deren Token noch nicht enthalten ist (Reihenfolge bewahren)."""
     existing = {tok for tok, _ in base_pairs}
     out = list(base_pairs)
     for tok, disp in add_pairs:
@@ -178,33 +207,29 @@ def _line_display_from_pairs(pairs: List[Tuple[str, str]]) -> List[str]:
 
 # Präfix-Erkennung/Entfernung:
 LINE_PREFIX_STRIP_RE = re.compile(r"^\s*[A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20}\s*:\s*", re.IGNORECASE)
-# Erweitert: entfernt Komma-/Rufbus-/Klammer-Listen am Titelanfang, z. B.
-# "D, 1, 2, 31, 71, 1A, 2A, 3A, 74A:", "95A, 97A (Schulkurs):", "29A, 29B und Rufbus N30:"
 LINES_COMPLEX_PREFIX_RE = re.compile(
     r"""^\s*                                   # Start
         [A-Za-z0-9]+                           # erste Linie
         (?:\s*,\s*[A-Za-z0-9]+){1,}            # weitere per Komma
-        (?:\s*(?:und)?\s*(?:Rufbus\s+[A-Za-z0-9]+|\([^)]+\))\s*)*  # optionale Zusätze
+        (?:\s*(?:und)?\s*(?:Rufbus\s+[A-Za-z0-9]+|\([^)]+\))\s*)*  # Zusätze
         \s*:\s*                                 # Doppelpunkt
     """,
     re.IGNORECASE | re.VERBOSE
 )
+RUF_BUS_PREFIX_RE = re.compile(r"^\s*Rufbus\s+([A-Za-z0-9]+)\s*:\s*", re.IGNORECASE)
 
 def _strip_existing_line_block(title: str) -> str:
-    """Entfernt vorhandene Linienblöcke am Anfang (Slash- oder komplexe Komma-Varianten)."""
     t = LINE_PREFIX_STRIP_RE.sub("", title)
     t = LINES_COMPLEX_PREFIX_RE.sub("", t)
-    # Zusätzlich: wenn vor dem ersten ':' noch einmal ein kurzer Linien-/Rufbus-Block steht, entferne ihn.
+    t = RUF_BUS_PREFIX_RE.sub("", t)
+    # Falls vor dem ersten ':' noch eine Rest-Liste steckt, entfernen
     if ":" in t:
         pre, post = t.split(":", 1)
         if ("," in pre) or ("Rufbus" in pre) or ("(" in pre):
-            # enthält vermutlich wieder eine Linienliste – entfernen
             t = post.strip()
     return t
 
 def _ensure_line_prefix(title: str, lines_disp: List[str]) -> str:
-    """Sorgt für „L1/L2: …“. Entfernt vorhandene Slash-/Komma-/Rufbus-Präfixe zuerst,
-       um Dopplungen wie „95A/97A: 95A, 97A (Schulkurs): …“ zu vermeiden."""
     if not lines_disp:
         return title
     wanted = "/".join(lines_disp)
@@ -256,14 +281,17 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             if not _is_active(start, end, now):
                 continue
 
-            # schwaches „Thema passt nicht“-Signal
             blob = " ".join([title_raw, desc])
             if KW_EXCLUDE.search(blob) and not KW_RESTRICTION.search(blob):
                 continue
 
             rel_lines = _as_list(ti.get("relatedLines") or attrs.get("relatedLines"))
+            line_pairs = _make_line_pairs_from_related(rel_lines)
+            if not line_pairs:
+                # Fallback: aus Titeltext (inkl. "Rufbus Nxx")
+                line_pairs = _detect_line_pairs_from_text(title_raw)
+
             rel_stops = _as_list(ti.get("relatedStops") or attrs.get("relatedStops"))
-            line_pairs = _make_line_pairs(rel_lines)
 
             lines_str = ", ".join(str(x).strip() for x in rel_lines if str(x).strip())
             extras = []
@@ -272,6 +300,11 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                     extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
             if lines_str:
                 extras.append(f"Linien: {html.escape(lines_str)}")
+
+            # stabile Identity für first_seen
+            id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
+            id_day = start.date().isoformat() if isinstance(start, datetime) else "None"
+            identity = f"wl|{('störung').lower()}|L={id_lines}|D={id_day}"
 
             raw.append({
                 "source": "Wiener Linien",
@@ -284,6 +317,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "pubDate": start,                           # ggf. None
                 "starts_at": start,
                 "ends_at": end,
+                "_identity": identity,
             })
     except Exception as e:
         logging.exception("WL trafficInfoList fehlgeschlagen: %s", e)
@@ -316,8 +350,11 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 continue
 
             rel_lines = _as_list(poi.get("relatedLines") or attrs.get("relatedLines"))
+            line_pairs = _make_line_pairs_from_related(rel_lines)
+            if not line_pairs:
+                line_pairs = _detect_line_pairs_from_text(title_raw)
+
             rel_stops = _as_list(poi.get("relatedStops") or attrs.get("relatedStops"))
-            line_pairs = _make_line_pairs(rel_lines)
 
             lines_str = ", ".join(str(x).strip() for x in rel_lines if str(x).strip())
             extras = []
@@ -328,6 +365,10 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                     extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
             if lines_str:
                 extras.append(f"Linien: {html.escape(lines_str)}")
+
+            id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
+            id_day = start.date().isoformat() if isinstance(start, datetime) else "None"
+            identity = f"wl|{('hinweis').lower()}|L={id_lines}|D={id_day}"
 
             raw.append({
                 "source": "Wiener Linien",
@@ -340,6 +381,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "pubDate": start,
                 "starts_at": start,
                 "ends_at": end,
+                "_identity": identity,
             })
     except Exception as e:
         logging.exception("WL newsList fehlgeschlagen: %s", e)
@@ -347,12 +389,12 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     # C) Bündelung gleicher Themen (Titel + Linien-Token)
     buckets: Dict[str, Dict[str, Any]] = {}
     for ev in raw:
-        line_toks = ",".join(sorted(_line_tokens_from_pairs(ev["lines_pairs"])))
-        key = _guid("wl", ev["category"], _norm_title(ev["title"]), line_toks)
+        line_toks_sorted = ",".join(sorted(_line_tokens_from_pairs(ev["lines_pairs"])))
+        key = _guid("wl", ev["category"], _norm_title(ev["title"]), line_toks_sorted)
         b = buckets.get(key)
         if not b:
             buckets[key] = {
-                "source": "Wiener Linien",
+                "source": ev["source"],
                 "category": ev["category"],
                 "title": ev["title"],
                 "desc_base": ev["desc"],
@@ -362,6 +404,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "pubDate": ev["pubDate"],
                 "starts_at": ev["starts_at"],
                 "ends_at": ev["ends_at"],
+                "_identity": ev["_identity"],             # stabil weiterreichen
             }
         else:
             b["stops"].update(ev["stops"])
@@ -394,7 +437,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
         guid = _guid("wl", b["category"], _norm_title(title_with_lines), ",".join(sorted(lines_tok)))
         items.append({
-            "source": "Wiener Linien",
+            "source": b["source"],
             "category": b["category"],
             "title": title_final,
             "description": desc,
@@ -403,6 +446,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             "pubDate": b["pubDate"],      # None erlaubt
             "starts_at": b["starts_at"],
             "ends_at": b["ends_at"],
+            "_identity": b["_identity"],  # stabil für first_seen
             "_lines_set": lines_tok,      # für Sammel-vs.-Einzel
         })
 
