@@ -5,16 +5,16 @@
 Wiener Linien Provider (OGD) – nur betriebsrelevante Störungen/Hinweise,
 keine Roll-/Fahrtreppen- oder Aufzugs-Meldungen.
 
-Fix:
-- Linien werden als geordnete Paare (tok, display) geführt und sauber gemergt.
-- Kein zip() mehr mit Sets (verlorene Reihenfolge/Zuordnung).
-- Titel beginnen – wenn vorhanden – mit den betroffenen Linien (z. B. "18: …", "49/52: …").
-
-Features:
+Fixes/Features:
 - Titelkürzung am Anfang: generische Label wie „Bauarbeiten/…“ werden nur entfernt,
   wenn danach informativer Inhalt folgt (z. B. „Züge halten …“).
+- Linien-Präfix: Titel beginnen – wenn vorhanden – mit den betroffenen Linien
+  (z. B. "18: …", "49/52: …"). Vorhandene, uneinheitliche Präfixe oder
+  Komma-Listen am Titelanfang werden entfernt, um Dopplungen zu vermeiden.
 - Sammel vs. Einzel: Aggregat wird entfernt, wenn *alle* genannten Linien
   bereits als Einzelmeldungen existieren.
+- Keyword-Set erweitert (u. a. „kurzführung“, „teilbetrieb“, „pendelverkehr“, „kurzstrecke“),
+  um seltene, aber betriebsrelevante Hinweise sicher durchzulassen.
 """
 
 from __future__ import annotations
@@ -47,7 +47,7 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/2.2 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/2.3 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
@@ -55,16 +55,20 @@ S = _session()
 
 # ---------------- Filter & Textregeln ----------------
 
+# „Betriebsrelevante“ Wörter (erweitert)
 KW_RESTRICTION = re.compile(
-    r"\b(umleitung|ersatzverkehr|unterbrech|sperr|gesperrt|störung|arbeiten|baustell|einschränk|verspät|ausfall|verkehr)\b",
+    r"\b(umleitung|ersatzverkehr|unterbrech|sperr|gesperrt|störung|arbeiten|baustell|einschränk|verspät|ausfall|verkehr"
+    r"|kurzführung|teilbetrieb|pendelverkehr|kurzstrecke)\b",
     re.IGNORECASE
 )
 
+# Nicht-betriebsrelevantes/Allgemeines (schwaches Ausschluss-Signal)
 KW_EXCLUDE = re.compile(
     r"\b(willkommen|gewinnspiel|anzeiger|eröffnung|service(?:-info)?|info(?:rmation)?|fest|keine\s+echtzeitinfo)\b",
     re.IGNORECASE
 )
 
+# Facility-ONLY: Aufzug/Lift/Fahrtreppe/Rolltreppe – vollständig ausschließen
 FACILITY_ONLY = re.compile(
     r"\b(aufzug|aufzüge|lift|fahrstuhl|fahrtreppe|fahrtreppen|rolltreppe|rolltreppen|aufzugsinfo|fahrtreppeninfo)\b",
     re.IGNORECASE
@@ -84,6 +88,7 @@ _LABEL_HEAD_RE = re.compile(
     r"^\s*(?:(?:" + "|".join(_LABELS) + r")\s*(?:[-:–—/]\s*|\s+))+",
     re.IGNORECASE
 )
+
 def _is_informative(rest: str) -> bool:
     return bool(rest and re.search(r"[A-Za-zÄÖÜäöüß0-9]{3,}", rest))
 
@@ -171,15 +176,21 @@ def _line_tokens_from_pairs(pairs: List[Tuple[str, str]]) -> List[str]:
 def _line_display_from_pairs(pairs: List[Tuple[str, str]]) -> List[str]:
     return [disp for _, disp in pairs]
 
+# Präfix-Erkennung/Entfernung:
 LINE_PREFIX_STRIP_RE = re.compile(r"^\s*[A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20}\s*:\s*", re.IGNORECASE)
+# NEU: entfernt Komma-Listen wie "D, 1, 2, 31, 71, 1A, 2A, 3A, 74A:" am Titelanfang
+LINES_COMMA_PREFIX_RE = re.compile(r"^\s*[A-Za-z0-9]+(?:\s*,\s*[A-Za-z0-9]+){1,}\s*:\s*", re.IGNORECASE)
 
 def _ensure_line_prefix(title: str, lines_disp: List[str]) -> str:
+    """Sorgt für „L1/L2: …“. Entfernt vorhandene Slash- oder Komma-Präfixe zuerst,
+       um Dopplungen wie „1/1A/…: D, 1, 2, …:“ zu vermeiden."""
     if not lines_disp:
         return title
     wanted = "/".join(lines_disp)
     if re.match(rf"^\s*{re.escape(wanted)}\s*:\s*", title, re.IGNORECASE):
         return title
     stripped = LINE_PREFIX_STRIP_RE.sub("", title)
+    stripped = LINES_COMMA_PREFIX_RE.sub("", stripped)  # <- neu
     return f"{wanted}: {stripped}".strip()
 
 # ---------------- API Calls ----------------
@@ -208,7 +219,6 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     # A) TrafficInfos
     try:
         for ti in _fetch_traffic_infos(timeout=timeout):
-            # optionales "geschlossen"-Heuristik
             attrs = ti.get("attributes") or {}
             status_blob = " ".join([str(ti.get("status") or ""), str(attrs.get("status") or ""), str(attrs.get("state") or "")]).lower()
             if any(x in status_blob for x in ("finished","inactive","inaktiv","done","closed","nicht aktiv","ended","ende","abgeschlossen","beendet","geschlossen")):
@@ -227,7 +237,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 continue
 
             # schwaches „Thema passt nicht“-Signal
-            if KW_EXCLUDE.search(" ".join([title_raw, desc])) and not KW_RESTRICTION.search(" ".join([title_raw, desc])):
+            blob = " ".join([title_raw, desc])
+            if KW_EXCLUDE.search(blob) and not KW_RESTRICTION.search(blob):
                 continue
 
             rel_lines = _as_list(ti.get("relatedLines") or attrs.get("relatedLines"))
@@ -335,10 +346,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
         else:
             b["stops"].update(ev["stops"])
             b["lines_pairs"] = _merge_line_pairs(b["lines_pairs"], ev["lines_pairs"])
-            # frühestes pubDate/Start beibehalten
             if ev["pubDate"] and (not b["pubDate"] or ev["pubDate"] < b["pubDate"]):
                 b["pubDate"] = ev["pubDate"]
-            # spätestes Ende (wenn beidseits vorhanden)
             be, ee = b["ends_at"], ev["ends_at"]
             b["ends_at"] = None if (be is None or ee is None) else max(be, ee)
             for x in ev["extras"]:
