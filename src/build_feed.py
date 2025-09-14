@@ -10,6 +10,7 @@ from email.utils import format_datetime
 # Provider-Imports
 from providers.wiener_linien import fetch_events as wl_fetch
 from providers.oebb import fetch_events as oebb_fetch
+from providers.vor import fetch_events as vor_fetch
 
 # ---------------- Logging ----------------
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
@@ -127,14 +128,25 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
 
 def _collect_items() -> List[Dict[str, Any]]:
     items: List[Dict[str, Any]] = []
-    try:
-        items += wl_fetch()
-    except Exception as e:
-        log.exception("WL fetch fehlgeschlagen: %s", e)
-    try:
-        items += oebb_fetch()
-    except Exception as e:
-        log.exception("ÖBB fetch fehlgeschlagen: %s", e)
+
+    if os.getenv("WL_ENABLE", "1").strip().lower() not in {"0", "false"}:
+        try:
+            items += wl_fetch()
+        except Exception as e:
+            log.exception("WL fetch fehlgeschlagen: %s", e)
+
+    if os.getenv("OEBB_ENABLE", "1").strip().lower() not in {"0", "false"}:
+        try:
+            items += oebb_fetch()
+        except Exception as e:
+            log.exception("ÖBB fetch fehlgeschlagen: %s", e)
+
+    if os.getenv("VOR_ENABLE", "1").strip().lower() not in {"0", "false"}:
+        try:
+            items += vor_fetch()
+        except Exception as e:
+            log.exception("VOR fetch fehlgeschlagen: %s", e)
+
     return items
 
 

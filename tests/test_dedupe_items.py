@@ -15,9 +15,12 @@ def _import_build_feed(monkeypatch):
     wl.fetch_events = lambda: []
     oebb = types.ModuleType("providers.oebb")
     oebb.fetch_events = lambda: []
+    vor = types.ModuleType("providers.vor")
+    vor.fetch_events = lambda: []
     monkeypatch.setitem(sys.modules, "providers", providers)
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
+    monkeypatch.setitem(sys.modules, "providers.vor", vor)
     sys.modules.pop(module_name, None)
     return importlib.import_module(module_name)
 
