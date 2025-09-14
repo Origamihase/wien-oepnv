@@ -54,8 +54,15 @@ def _get_int_env(name: str, default: int) -> int:
         return default
     try:
         return int(raw)
-    except Exception:
-        log.warning("Ungültiger Wert für %s=%r – verwende Default %d", name, raw, default)
+    except (ValueError, TypeError) as e:
+        log.warning(
+            "Ungültiger Wert für %s=%r – verwende Default %d (%s: %s)",
+            name,
+            raw,
+            default,
+            type(e).__name__,
+            e,
+        )
         return default
 
 # ---------------- ENV ----------------
