@@ -7,9 +7,9 @@
 - Secret OEBB_RSS_URL (Fallback: offizielle ÖBB-RSS-URL)
 - Titel-Kosmetik: Kategorie-Vorspann (bis Doppelpunkt) weg, Pfeile → „↔“,
   „Bahnhof (U)/Bahnhst/Hbf/Bf“ entfernen
-- Plain-Text-Description (HTML/Word raus, Entities decodiert)
+- Plain-Text-Description (HTML/Word raus, Entities decodiert; Trenner „ • “)
 - Strenger GEO-Filter: Behalte NUR Meldungen, deren Endpunkte in Wien
-  oder definierter Pendler-Region liegen
+  oder definierter Pendler-Region (Whitelist) liegen
 """
 
 from __future__ import annotations
@@ -39,7 +39,7 @@ def _session() -> requests.Session:
     retry = Retry(total=4, backoff_factor=0.6, status_forcelist=(429,500,502,503,504),
                   allowed_methods=("GET",))
     s.mount("https://", HTTPAdapter(max_retries=retry))
-    s.headers.update({"User-Agent":"Origamihase-wien-oepnv/2.9 (+https://github.com/Origamihase/wien-oepnv)"})
+    s.headers.update({"User-Agent":"Origamihase-wien-oepnv/3.0 (+https://github.com/Origamihase/wien-oepnv)"})
     return s
 
 S = _session()
@@ -81,19 +81,23 @@ MULTI_ARROW_RE  = re.compile(r"(?:\s*↔\s*){2,}")
 
 def _clean_title_keep_places(t: str) -> str:
     t = (t or "").strip()
-    t = COLON_PREFIX_RE.sub("", t)  # Vorspann bis Doppelpunkt entfernen
+    # Vorspann bis zum letzten Doppelpunkt entfernen
+    t = COLON_PREFIX_RE.sub("", t)
+    # Pfeile normalisieren
     parts = [p for p in ARROW_ANY_RE.split(t) if p.strip()]
     if len(parts) >= 2:
         t = f"{parts[0].strip()} ↔ {parts[1].strip()}"
         if len(parts) > 2:
             t += " " + " ".join(parts[2:]).strip()
     t = MULTI_ARROW_RE.sub(" ↔ ", t)
+    # Bahnhof-Suffixe aus den Namen entfernen
     t = BAHNHOF_TRIM_RE.sub("", t)
     t = re.sub(r"\s{2,}", " ", t)
     t = re.sub(r"[<>«»‹›]+", "", t)
     return t.strip()
 
 def _split_endpoints(title: str) -> Optional[List[str]]:
+    """Extrahiert Endpunktnamen links/rechts (ohne Bahnhof/Hbf/Klammern)."""
     if "↔" not in title and "<=>" not in title and "=>" not in title:
         return None
     parts = [p for p in re.split(r"\s*(?:↔|<=>|=>|<|->|—|-)\s*", title) if p.strip()]
@@ -105,41 +109,64 @@ def _split_endpoints(title: str) -> Optional[List[str]]:
         names: List[str] = []
         for n in tmp:
             n = BAHNHOF_TRIM_RE.sub("", n)
-            n = re.sub(r"\s*\([^)]*\)\s*", "", n)
+            n = re.sub(r"\s*\([^)]*\)\s*", "", n)  # Klammern-Inhalte weg
             n = re.sub(r"\s{2,}", " ", n).strip(" .")
             if n:
                 names.append(n)
         return names
     return explode(left) + explode(right)
 
-# ---------------- Pendler-Region ----------------
+# ---------------- Pendler-Region (Whitelist) ----------------
 def _norm(s: str) -> str:
     s = (s or "").casefold()
     for a,b in (("ä","a"),("ö","o"),("ü","u"),("ß","ss")):
         s = s.replace(a,b)
-    return re.sub(r"[^a-z0-9 ]+", " ", s).strip()
+    s = re.sub(r"(?:bahnhof|bahnhst|hbf|bf)\b", "", s).strip()
+    s = re.sub(r"[^a-z0-9 ]+", " ", s)
+    return re.sub(r"\s{2,}", " ", s).strip()
 
-W_VIENNA = {
-    "wien", "wien hbf", "wien meidling", "wien floridsdorf", "wien praterstern",
-    "wien handelskai", "wien heiligenstadt", "wien spittelau", "wien mitte",
-    "wien simmering", "wien stadlau", "wien huetteldorf", "wien liesing",
-}
+# Wien-Knoten (roh → normalisiert)
+W_VIENNA_RAW = [
+    "Wien", "Wien Hbf", "Wien Meidling", "Wien Floridsdorf", "Wien Praterstern",
+    "Wien Handelskai", "Wien Heiligenstadt", "Wien Spittelau", "Wien Mitte",
+    "Wien Simmering", "Wien Stadlau", "Wien Hütteldorf", "Wien Liesing",
+]
+W_VIENNA = {_norm(x) for x in W_VIENNA_RAW}
 
-# Ergänzt: Korneuburg/Stockerau-Ast (+ 2–3 typische Nachbarn)
-W_NEAR = {
-    # Nördlicher/östlicher Gürtel
-    "gaenserndorf", "strasshof", "deutsch wagram", "gerasdorf", "marchegg", "wolkersdorf",
-    # Donau/Nordwest
-    "klosterneuburg", "kritzendorf", "greifenstein altenberg", "langenzersdorf",
-    "korneuburg", "bisamberg", "leobendorf", "spillern", "stockerau",
-    # West/Süd
-    "purkersdorf", "pressbaum", "rekawinkel", "tulln", "tullnerfeld",
-    "moedling", "wiener neudorf", "guntramsdorf", "baden", "bad voeslau",
-    "leobersdorf", "wr neustadt", "wiener neustadt",
-    # Südost
-    "schwechat", "flughafen wien", "fischamend", "bruck an der leitha", "bruck leitha",
-    "hainburg", "wolfsthal", "neusiedl am see", "petronell carnuntum", "bad deutsch altenburg",
-}
+# Pendelraum (deine Liste + sinnvolle Ergänzungen)
+W_NEAR_RAW = [
+    # Deine gewünschten Bahnhöfe (alphabetisch grob gruppiert)
+    "Baden bei Wien",
+    "Bruck an der Leitha",          # „Bruck/Leitha Bahnhof“
+    "Ebreichsdorf",
+    "Eisenstadt",
+    "Flughafen Wien",
+    "Gänserndorf",
+    "Hollabrunn",
+    "Korneuburg",
+    "Mistelbach",
+    "Mödling",
+    "Neulengbach",
+    "Neusiedl am See",
+    "Parndorf",
+    "Pressbaum",
+    "Purkersdorf Zentrum",
+    "St. Pölten",
+    "Stockerau",
+    "Tulln an der Donau",
+    "Tullnerfeld",
+    "Wiener Neustadt",
+    "Wolkersdorf",
+    "Wulkaprodersdorf",
+
+    # Bereits bisher genutzte nahe Orte (zur Sicherheit beibehalten)
+    "Deutsch Wagram", "Strasshof", "Gerasdorf", "Marchegg", "Wolkersdorf",
+    "Kritzendorf", "Greifenstein-Altenberg", "Langenzersdorf",
+    "Purkersdorf", "Rekawinkel", "Tulln", "Bruck an der Leitha",
+    "Schwechat", "Fischamend", "Hainburg", "Wolfsthal", "Petronell-Carnuntum",
+    "Bad Deutsch-Altenburg",
+]
+W_NEAR = {_norm(x) for x in W_NEAR_RAW}
 
 def _is_near(name: str) -> bool:
     n = _norm(name)
@@ -150,9 +177,12 @@ def _is_near(name: str) -> bool:
 def _keep_by_region(title: str, desc: str) -> bool:
     endpoints = _split_endpoints(title)
     if endpoints:
+        # Nur behalten, wenn ALLE genannten Endpunkte „nah“ sind
         return all(_is_near(x) for x in endpoints)
+    # Fallback: wenn keine Pfeile erkannt, heuristisch auf Wien-Bezug prüfen
     blob = f"{title} {desc}"
-    if any(_is_near(w) for w in re.split(r"\W+", blob)):
+    tokens = re.split(r"\W+", blob)
+    if any(_is_near(w) for w in tokens):
         if re.search(r"\b(salzburg|innsbruck|villach|bregenz|linz|graz|klagenfurt|bratislava|muenchen|passau|freilassing)\b",
                      blob, re.IGNORECASE):
             return False
@@ -200,14 +230,15 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         desc = _html_to_text(desc_html)
         pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
 
+        # Region-Filter: nur Wien + definierter Pendelraum
         if not _keep_by_region(title, desc):
             continue
 
         out.append({
             "source": "ÖBB",
             "category": "Störung",
-            "title": title,
-            "description": desc,
+            "title": title,          # bereits kurz & ohne Bahnhof/Hbf
+            "description": desc,     # plain
             "link": link,
             "guid": guid,
             "pubDate": pub,
