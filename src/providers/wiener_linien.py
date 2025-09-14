@@ -124,6 +124,7 @@ _BLOCK_OPEN_RE = re.compile(r"(?is)<\s*(p|div|ul|ol)\b[^>]*>")
 _LI_OPEN_RE = re.compile(r"(?is)<\s*li\b[^>]*>")
 _TAG_RE = re.compile(r"(?is)<[^>]+>")
 _WS_RE = re.compile(r"[ \t\r\f\v]+")
+_PREP_BULLET_RE = re.compile(r"\b(bei|in|an|auf)\s*•\s*", re.IGNORECASE)
 
 
 def _html_to_text(s: str) -> str:
@@ -143,8 +144,8 @@ def _html_to_text(s: str) -> str:
     txt = re.sub(r"\s*\n\s*", " • ", txt)  # einheitlicher Trenner
     txt = _WS_RE.sub(" ", txt)
     txt = re.sub(r"\s{2,}", " ", txt).strip()
-    # Kosmetik: „bei • “ / „in • “ → „bei “ / „in “
-    txt = re.sub(r"\b(bei|in|an|auf)\s*•\s*", r"\1 ", txt, flags=re.IGNORECASE)
+    # Kosmetik: „bei • …“ / „in • …“ → „bei …“ / „in …“
+    txt = _PREP_BULLET_RE.sub(r"\1 ", txt)
     return txt
 
 
@@ -343,9 +344,18 @@ def _stop_names_from_related(rel_stops: List[Any]) -> List[str]:
 # ---------------- „Kernbegriff/Topic“ für Dedupe ----------------
 
 TITLE_TOPIC_TOKENS = {
-    "falschparker", "polizeieinsatz", "rettungseinsatz", "unfall",
-    "signalstörung", "signalstoerung", "stromausfall", "umleitung",
-    "ersatzverkehr", "kurzführung", "kurzfuehrung", "sperre", "gesperrt",
+    "falschparker",
+    "polizeieinsatz",
+    "rettungseinsatz",
+    "unfall",
+    "signalstörung",
+    "signalstoerung",
+    "umleitung",
+    "ersatzverkehr",
+    "kurzführung",
+    "kurzfuehrung",
+    "sperre",
+    "gesperrt",
 }
 
 _GENERIC_FILLER = re.compile(
@@ -364,7 +374,9 @@ def _topic_key_from_title(raw: str) -> str:
     t = _GENERIC_FILLER.sub(" ", raw or "")
     t = re.sub(r"[^\wäöüÄÖÜß]+", " ", t, flags=re.UNICODE).casefold()
     toks = {w for w in t.split() if w in TITLE_TOPIC_TOKENS}
-    return " ".join(sorted(toks))  # kann leer sein
+    if toks:
+        return " ".join(sorted(toks))
+    return _title_core(raw)
 
 
 # ---------------- API Calls ----------------
@@ -535,14 +547,14 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     except Exception as e:
         logging.exception("WL newsList fehlgeschlagen: %s", e)
 
-    # C) Bündelung: LINIEN-SET + TOPIC/TITLE_CORE
+    # C) Bündelung: LINIEN-SET + TOPIC
     buckets: Dict[str, Dict[str, Any]] = {}
     for ev in raw:
         line_toks_sorted = ",".join(sorted(_line_tokens_from_pairs(ev["lines_pairs"])))
         key = _guid(
             "wl",
             ev["category"],
-            ev.get("topic_key", "") or ev.get("title_core", ""),
+            ev["topic_key"],
             line_toks_sorted,
         )
         b = buckets.get(key)
@@ -552,7 +564,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "category": ev["category"],
                 "title": ev["title"],
                 "title_core": ev.get("title_core", ""),
-                "topic_key": ev.get("topic_key", ""),
+                "topic_key": ev["topic_key"],
                 "desc_base": ev["desc"],
                 "extras": list(ev["extras"]),
                 "lines_pairs": list(ev["lines_pairs"]),   # geordnete Paare
@@ -606,7 +618,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
         guid = _guid(
             "wl",
             b["category"],
-            b.get("topic_key", "") or _norm_title(title_final),
+            b["topic_key"],
             ",".join(sorted(lines_tok)),
         )
         items.append({

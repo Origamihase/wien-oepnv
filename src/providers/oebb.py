@@ -73,7 +73,7 @@ def _html_to_text(s: str) -> str:
 
 # ---------------- Titel + Endpunkte ----------------
 BAHNHOF_TRIM_RE = re.compile(r"\s*(?:Bahnhof|Bahnhst|Hbf|Bf)(?:\s*\(U\))?", re.IGNORECASE)
-ARROW_ANY_RE    = re.compile(r"\s*(?:<=>|<->|<>|→|↔|=>|=|–|-)\s*")
+ARROW_ANY_RE    = re.compile(r"\s*(?:<=>|<->|<>|→|↔|=>|=|–|—|-)\s*")
 COLON_PREFIX_RE = re.compile(
     r"""^\s*(?:Update\s*\d+\s*\([^)]*\)\s*)?
         (?:DB\s*↔\s*)?
@@ -81,6 +81,15 @@ COLON_PREFIX_RE = re.compile(
     """, re.IGNORECASE | re.VERBOSE
 )
 MULTI_ARROW_RE  = re.compile(r"(?:\s*↔\s*){2,}")
+_MULTI_SLASH_RE = re.compile(r"\s*/{2,}\s*")
+_MULTI_COMMA_RE = re.compile(r"\s*,{2,}\s*")
+
+def _clean_endpoint(p: str) -> str:
+    p = BAHNHOF_TRIM_RE.sub("", p)
+    p = _MULTI_SLASH_RE.sub("/", p)
+    p = _MULTI_COMMA_RE.sub(", ", p)
+    p = re.sub(r"\s{2,}", " ", p)
+    return p.strip(" ,/")
 
 def _clean_title_keep_places(t: str) -> str:
     t = (t or "").strip()
@@ -88,15 +97,18 @@ def _clean_title_keep_places(t: str) -> str:
     t = COLON_PREFIX_RE.sub("", t)
     # Sonderfall: „Wien X und Wien Y“ → „Wien X ↔ Wien Y“
     t = re.sub(r"\b(Wien [^,;|]+?)\s+und\s+(Wien [^,;|]+?)\b", r"\1 ↔ \2", t)
-    # Pfeile normalisieren
+    # Pfeile und Trennzeichen normalisieren
     parts = [p for p in ARROW_ANY_RE.split(t) if p.strip()]
+    parts = [_clean_endpoint(p) for p in parts if p.strip()]
     if len(parts) >= 2:
-        t = f"{parts[0].strip()} ↔ {parts[1].strip()}"
+        t = f"{parts[0]} ↔ {parts[1]}"
         if len(parts) > 2:
-            t += " " + " ".join(parts[2:]).strip()
+            rest = " ".join(parts[2:]).strip()
+            if rest:
+                t += f" {rest}"
+    elif parts:
+        t = parts[0]
     t = MULTI_ARROW_RE.sub(" ↔ ", t)
-    # Bahnhof-Suffixe aus den Namen entfernen
-    t = BAHNHOF_TRIM_RE.sub("", t)
     t = re.sub(r"\s{2,}", " ", t)
     t = re.sub(r"[<>«»‹›]+", "", t)
     return t.strip()
