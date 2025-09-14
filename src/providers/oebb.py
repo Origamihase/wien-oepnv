@@ -40,6 +40,10 @@ log = logging.getLogger(__name__)
 OEBB_URL = (os.getenv("OEBB_RSS_URL", "").strip()
             or "https://fahrplan.oebb.at/bin/help.exe/dnl?protocol=https:&tpl=rss_WI_oebb&")
 
+# Optional strenger Filter: Nur Meldungen mit Endpunkten in Wien behalten.
+# Aktiviert durch Umgebungsvariable ``OEBB_ONLY_VIENNA`` ("1"/"0").
+OEBB_ONLY_VIENNA = os.getenv("OEBB_ONLY_VIENNA", "").strip() not in {"", "0", "false", "False"}
+
 # ---------------- HTTP ----------------
 def _session() -> requests.Session:
     s = requests.Session()
@@ -171,6 +175,8 @@ def _is_near(name: str) -> bool:
     n = _norm(name)
     if not n:
         return False
+    if OEBB_ONLY_VIENNA:
+        return n in W_VIENNA or n.startswith("wien ")
     return n in W_VIENNA or n in W_NEAR or n.startswith("wien ")
 
 def _keep_by_region(title: str, desc: str) -> bool:
