@@ -25,7 +25,18 @@ def html_to_text(s: str) -> str:
     txt = _LI_OPEN_RE.sub("• ", txt)
     txt = _BLOCK_OPEN_RE.sub("", txt)
     txt = _TAG_RE.sub("", txt)
-    txt = re.sub(r"\s*\n\s*", " • ", txt)
+    txt = re.sub(r"(?<=\S)•", " •", txt)
+    lines = [line.strip() for line in txt.split("\n") if line.strip()]
+    if lines:
+        txt = lines[0]
+        for line in lines[1:]:
+            if line.startswith("•"):
+                txt += " " + line
+            else:
+                txt += " • " + line
+    else:
+        txt = ""
+    txt = txt.lstrip("• ")
     txt = re.sub(r"(\d)([A-Za-zÄÖÜäöüß])", r"\1 \2", txt)
     txt = _WS_RE.sub(" ", txt)
     txt = re.sub(r"\s{2,}", " ", txt).strip()
