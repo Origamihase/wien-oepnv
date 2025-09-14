@@ -124,6 +124,7 @@ jobs:
             echo "VOR_STATION_IDS=$IDS" >> "$GITHUB_ENV"
           else
             echo "VOR_STATION_IDS=" >> "$GITHUB_ENV"
+          fi
 
       - name: Commit discovered VOR stations (if any)
         if: ${{ env.VOR_ACCESS_ID != '' }}
