@@ -7,6 +7,10 @@ from src.utils.text import html_to_text
     ("<div>foo</div><p>bar</p>baz", "foo • bar • baz"),
     ("<ul><li>foo</li><li>bar</li></ul>baz", "foo • bar • baz"),
     ("<ul><li>Parent<br><ul><li>Child</li></ul></li></ul>End", "Parent • Child • End"),
+    (
+        "<ul><li>A<ul><li>B</li><li>C</li></ul></li><li>D</li></ul>",
+        "A • B • C • D",
+    ),
     ("<th>Head1</th><th>Head2</th>End", "Head1 • Head2 • End"),
 ])
 def test_html_to_text_examples(html, expected):
@@ -18,6 +22,7 @@ def test_html_to_text_examples(html, expected):
     ("   ", ""),
     ("Tom &amp; Jerry", "Tom & Jerry"),
     ("<div>&nbsp; A &nbsp; &amp; B  </div>End", "A & B • End"),
+    ("• foo • • bar •", "foo • bar"),
 ])
 def test_html_to_text_edge_cases(html, expected):
     assert html_to_text(html) == expected
@@ -26,6 +31,8 @@ def test_html_to_text_edge_cases(html, expected):
 @pytest.mark.parametrize("html,expected", [
     ("bei<br>Station", "bei Station"),
     ("An<br>der Haltestelle", "An der Haltestelle"),
+    ("bei<br>• foo", "bei foo"),
+    ("In<br>• der Station", "In der Station"),
 ])
 def test_preposition_bullet_stripping(html, expected):
     assert html_to_text(html) == expected
