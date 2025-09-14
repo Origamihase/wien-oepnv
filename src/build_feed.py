@@ -137,6 +137,19 @@ def _collect_items() -> List[Dict[str, Any]]:
         log.exception("ÖBB fetch fehlgeschlagen: %s", e)
     return items
 
+
+def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Behalte nur das erste Item je Identität (oder guid)."""
+    seen = set()
+    out = []
+    for it in items:
+        key = it.get("_identity") or it.get("guid")
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(it)
+    return out
+
 def _sort_key(item: Dict[str, Any]) -> Tuple[int, float, str]:
     pd = item.get("pubDate")
     if isinstance(pd, datetime):
@@ -229,6 +242,7 @@ def main() -> int:
     now = datetime.now(timezone.utc)
     state = _load_state()
     items = _collect_items()
+    items = _dedupe_items(items)
     if not items:
         log.warning("Keine Items gesammelt.")
         items = []
