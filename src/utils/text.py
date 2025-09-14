@@ -4,30 +4,83 @@
 
 import html
 import re
+from html.parser import HTMLParser
 
-# Precompiled regular expressions for HTML-to-text conversion
-_BR_RE = re.compile(r"(?i)<\s*br\s*/?\s*>")
-_BLOCK_CLOSE_RE = re.compile(r"(?is)</\s*(p|div|li|ul|ol|h\d|table|tr|td|th)\s*>")
-_BLOCK_OPEN_RE = re.compile(r"(?is)<\s*(p|div|ul|ol|h\d|table|tr|td|th)\b[^>]*>")
-_LI_OPEN_RE = re.compile(r"(?is)<\s*li\b[^>]*>")
-_TAG_RE = re.compile(r"(?is)<[^>]+>")
+
 _WS_RE = re.compile(r"[ \t\r\f\v]+")
 _PREP_BULLET_RE = re.compile(r"\b(bei|in|an|auf)\s*•\s*", re.IGNORECASE)
+
+
+class _HTMLToTextParser(HTMLParser):
+    """Lightweight HTML-to-text parser that inserts newlines and bullets."""
+
+    _BLOCK_TAGS = {
+        "p",
+        "div",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "table",
+        "tr",
+        "td",
+        "th",
+    }
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.parts: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs) -> None:  # noqa: D401, ANN001
+        tag = tag.lower()
+        if tag == "br":
+            self.parts.append("\n")
+        elif tag == "li":
+            self.parts.append("\n• ")
+        elif tag in self._BLOCK_TAGS:
+            self.parts.append("\n")
+        # ul/ol are structural containers; no separator on start
+
+    def handle_endtag(self, tag: str) -> None:  # noqa: D401, ANN001
+        tag = tag.lower()
+        if tag == "li":
+            self.parts.append("\n")
+        elif tag in self._BLOCK_TAGS or tag in {"ul", "ol"}:
+            self.parts.append("\n")
+
+    def handle_startendtag(self, tag: str, attrs) -> None:  # noqa: D401, ANN001
+        tag = tag.lower()
+        if tag == "br":
+            self.parts.append("\n")
+        elif tag in self._BLOCK_TAGS:
+            self.parts.append("\n")
+
+    def handle_data(self, data: str) -> None:  # noqa: D401
+        self.parts.append(data)
 
 
 def html_to_text(s: str) -> str:
     """Convert HTML fragments to plain text with a uniform bullet separator."""
     if not s:
         return ""
-    txt = html.unescape(s)
-    txt = _BR_RE.sub("\n", txt)
-    txt = _BLOCK_CLOSE_RE.sub("\n", txt)
-    txt = _LI_OPEN_RE.sub("• ", txt)
-    txt = _BLOCK_OPEN_RE.sub("", txt)
-    txt = _TAG_RE.sub("", txt)
+
+    parser = _HTMLToTextParser()
+    parser.feed(s)
+    parser.close()
+
+    txt = "".join(parser.parts)
+    txt = html.unescape(txt)
     txt = re.sub(r"\s*\n\s*", " • ", txt)
     txt = re.sub(r"(\d)([A-Za-zÄÖÜäöüß])", r"\1 \2", txt)
     txt = _WS_RE.sub(" ", txt)
-    txt = re.sub(r"\s{2,}", " ", txt).strip()
     txt = _PREP_BULLET_RE.sub(r"\1 ", txt)
+    txt = re.sub(r"(?:\s*•\s*){2,}", " • ", txt)
+    txt = txt.strip()
+    txt = re.sub(r"^•\s*", "", txt)
+    txt = re.sub(r"\s*•$", "", txt)
+    txt = _WS_RE.sub(" ", txt)
+    txt = re.sub(r"\s{2,}", " ", txt).strip()
     return txt
+
