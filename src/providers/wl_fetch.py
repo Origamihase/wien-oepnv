@@ -81,7 +81,10 @@ def _iso(s: Optional[str]) -> Optional[datetime]:
     s = s.replace("Z", "+00:00")
     if len(s) >= 5 and (s[-5] in "+-") and s[-3] != ":":
         s = s[:-2] + ":" + s[-2:]
-    return dtparser.isoparse(s)
+    dt = dtparser.isoparse(s)
+    if not dt.tzinfo:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt
 
 
 def _best_ts(obj: Dict[str, Any]) -> Optional[datetime]:
