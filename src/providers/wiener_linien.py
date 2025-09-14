@@ -40,7 +40,8 @@ WL_BASE = (
 
 log = logging.getLogger(__name__)
 
-ACTIVE_GRACE_MIN = int(os.getenv("ACTIVE_GRACE_MIN", "10"))
+# Nachlaufzeit für beendete Meldungen in Minuten (nicht-negativ)
+ACTIVE_GRACE_MIN = max(int(os.getenv("ACTIVE_GRACE_MIN", "10")), 0)
 
 
 # ---------------- HTTP-Session mit Retry ----------------
