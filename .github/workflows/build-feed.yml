@@ -16,7 +16,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # Job-weite ENV (damit 'if:' darauf zugreifen kann)
+    # Job-weite ENV
     env:
       # --- VOR/VAO Zugang ---
       VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}        # leer = VOR-Schritte werden übersprungen
@@ -24,13 +24,15 @@ jobs:
       VOR_VERSION: "v1.3"
 
       # --- VOR Provider-Feintuning ---
-      # S-Bahn & Regionalzüge immer, ÖBB-/Regionalbus optional einschalten:
-      VOR_ALLOW_BUS: "1"                          # "1" = ÖBB-/Regionalbus zusätzlich einbeziehen
-      VOR_BUS_INCLUDE_REGEX: "(?:\\b[2-9]\\d{2,4}\\b)"   # 3–4-stellige Buslinien
-      VOR_BUS_EXCLUDE_REGEX: "^(?:N?\\d{1,2}[A-Z]?)$"    # typische WL-Bus-/Nightline-Patterns ausschließen
-      VOR_MAX_STATIONS_PER_RUN: "3"               # Rate-Limit-Schutz (anheben, wenn dein Tarif das erlaubt)
+      # Rail (S-Bahn/Regio) immer; ÖBB-/Regionalbus hier AKTIVIERT:
+      VOR_ALLOW_BUS: "1"
+      # Bus-Aufnahme: 3–4-stellige Liniennummern; WL-typische Muster ausschließen
+      VOR_BUS_INCLUDE_REGEX: "(?:\\b[2-9]\\d{2,4}\\b)"
+      VOR_BUS_EXCLUDE_REGEX: "^(?:N?\\d{1,2}[A-Z]?)$"
+      # Rate-Limit Schutz (anheben, wenn dein Tarif das erlaubt)
+      VOR_MAX_STATIONS_PER_RUN: "3"
 
-      # Platzhalter – wird im Discovery-Step gesetzt (oder bleibt leer)
+      # Wird im Discovery-Step gesetzt (oder bleibt leer)
       VOR_STATION_IDS: ""
 
     steps:
@@ -54,7 +56,7 @@ jobs:
       # Erzeugt/aktualisiert data/vor_station_ids_wien.txt
       # und exportiert VOR_STATION_IDS ins Laufzeit-ENV.
       # ------------------------------------------------------------
-      - name: Discover VOR Station IDs for Vienna (PLZ 10xx–12xx)
+      - name: Discover VOR Station IDs for Vienna (PLZ 1010–1230)
         if: ${{ env.VOR_ACCESS_ID != '' }}
         shell: bash
         run: |
@@ -64,7 +66,6 @@ jobs:
 
           if [[ -f "$FILE" ]]; then
             echo "Found existing $FILE – reusing."
-            # In eine Zeile bringen und ins ENV exportieren
             IDS="$(tr -d '\r\n ' < "$FILE")"
             echo "VOR_STATION_IDS=$IDS" >> "$GITHUB_ENV"
             exit 0
@@ -86,7 +87,7 @@ jobs:
           session.headers.update({"Accept":"application/xml","User-Agent":"origamihase-wien-oepnv/auto-discover"})
           url = f"{BASE}/{VER}/location.name"
 
-          # Wiener PLZ 1010..1230 (vierstellig, beginnen mit 1)
+          # Wiener Postleitzahlen: vierstellig, beginnen mit 1 → 1010..1230
           plz_list = [
               "1010","1020","1030","1040","1050","1060","1070","1080","1090",
               "1100","1110","1120","1130","1140","1150","1160","1170","1180","1190",
@@ -112,7 +113,7 @@ jobs:
                   for sl in root.findall(".//StopLocation"):
                       ext = sl.get("extId") or sl.get("id")
                       name = (sl.get("name") or "").strip()
-                      # Nur Wiener Stops (S-Bahn/Regio-Umfeld) – grobe Heuristik auf Name:
+                      # grobe Heuristik: nur Haltestellen, die mit "Wien" beginnen
                       if not name or not name.startswith("Wien"):
                           continue
                       if ext:
@@ -122,20 +123,14 @@ jobs:
               time.sleep(0.2)  # höflich bleiben
 
           if not ext_ids:
-              # Kein Fund -> nichts exportieren
               sys.exit(0)
 
           ids_csv = ",".join(sorted(ext_ids))
           os.makedirs("data", exist_ok=True)
           with open(OUT, "w", encoding="utf-8") as f:
               f.write(ids_csv + "\n")
-
-          # Für folgende Steps ins ENV exportieren
-          print(f"::set-output name=ids::{ids_csv}")  # (legacy noop)
-          print(ids_csv)
           PY
 
-          # exportiere in GITHUB_ENV, falls Datei erzeugt
           if [[ -f "$FILE" ]]; then
             IDS="$(tr -d '\r\n ' < "$FILE")"
             echo "VOR_STATION_IDS=$IDS" >> "$GITHUB_ENV"
