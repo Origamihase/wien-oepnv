@@ -185,7 +185,7 @@ def _collect_items() -> List[Dict[str, Any]]:
     items: List[Dict[str, Any]] = []
     futures: Dict[Any, str] = {}
 
-    with ThreadPoolExecutor() as executor:
+    with ThreadPoolExecutor(max_workers=len(PROVIDERS)) as executor:
         for env_var, fetch in PROVIDERS:
             if os.getenv(env_var, "1").strip().lower() not in {"0", "false"}:
                 futures[executor.submit(fetch)] = env_var
