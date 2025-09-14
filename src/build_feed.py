@@ -4,7 +4,7 @@
 import json, os, sys, html, logging, re, hashlib
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 
 # Provider-Imports
@@ -183,6 +183,13 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
         st = {"first_seen": _to_utc(now).isoformat()}
         state[ident] = st
 
+    try:
+        fs_dt = datetime.fromisoformat(st["first_seen"])
+    except Exception:
+        log.warning("first_seen Parsefehler: %r – fallback to now", st.get("first_seen"))
+        fs_dt = _to_utc(now)
+        st["first_seen"] = fs_dt.isoformat()
+
     # Felder holen
     raw_title = it.get("title") or "Mitteilung"
     raw_desc  = it.get("description") or ""
@@ -191,6 +198,11 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     pubDate   = it.get("pubDate")
     starts_at = it.get("starts_at")
     ends_at   = it.get("ends_at")
+
+    if not isinstance(pubDate, datetime) and FRESH_PUBDATE_WINDOW_MIN > 0:
+        age = _to_utc(now) - _to_utc(fs_dt)
+        if age <= timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN):
+            pubDate = now
 
     # TV-freundliche Kürzung (Beschreibung darf HTML enthalten)
     desc_out = _clip_text_html(raw_desc, DESCRIPTION_CHAR_LIMIT)
@@ -206,12 +218,6 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     if isinstance(pubDate, datetime):
         parts.append(f"<pubDate>{_fmt_rfc2822(pubDate)}</pubDate>")
 
-    try:
-        fs_dt = datetime.fromisoformat(st["first_seen"])
-    except Exception:
-        log.warning("first_seen Parsefehler: %r – fallback to now", st.get("first_seen"))
-        fs_dt = _to_utc(now)
-        st["first_seen"] = fs_dt.isoformat()
     parts.append(f"<first_seen>{_fmt_rfc2822(fs_dt)}</first_seen>")
     if isinstance(starts_at, datetime):
         parts.append(f"<starts_at>{_fmt_rfc2822(starts_at)}</starts_at>")
