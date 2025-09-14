@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import inspect
 import json, os, sys, html, logging, re, hashlib
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
@@ -70,6 +71,7 @@ MAX_ITEMS = max(_get_int_env("MAX_ITEMS", 60), 0)
 MAX_ITEM_AGE_DAYS = max(_get_int_env("MAX_ITEM_AGE_DAYS", 45), 0)
 ABSOLUTE_MAX_AGE_DAYS = max(_get_int_env("ABSOLUTE_MAX_AGE_DAYS", 365), 0)
 ENDS_AT_GRACE_MINUTES = max(_get_int_env("ENDS_AT_GRACE_MINUTES", 10), 0)
+PROVIDER_TIMEOUT = max(_get_int_env("PROVIDER_TIMEOUT", 25), 0)
 
 STATE_FILE = Path(os.getenv("STATE_PATH", "data/first_seen.json"))  # nur Einträge aus *aktuellem* Feed
 STATE_RETENTION_DAYS = max(_get_int_env("STATE_RETENTION_DAYS", 60), 0)
@@ -212,20 +214,31 @@ def _collect_items() -> List[Dict[str, Any]]:
         return []
 
     # ThreadPoolExecutor erlaubt max_workers nicht als 0; daher mindestens 1
-    with ThreadPoolExecutor(max_workers=max(1, len(active))) as executor:
+    executor = ThreadPoolExecutor(max_workers=max(1, len(active)))
+    try:
         for fetch in active:
-            futures[executor.submit(fetch)] = fetch
-        for future in as_completed(futures):
-            fetch = futures[future]
-            name = getattr(fetch, "__name__", str(fetch))
-            try:
-                result = future.result()
-                if not isinstance(result, list):
-                    log.error("%s fetch gab keine Liste zurück: %r", name, result)
-                    continue
-                items += result
-            except Exception as e:
-                log.exception("%s fetch fehlgeschlagen: %s", name, e)
+            if "timeout" in inspect.signature(fetch).parameters:
+                futures[executor.submit(fetch, timeout=PROVIDER_TIMEOUT)] = fetch
+            else:
+                futures[executor.submit(fetch)] = fetch
+        try:
+            for future in as_completed(futures, timeout=PROVIDER_TIMEOUT):
+                fetch = futures[future]
+                name = getattr(fetch, "__name__", str(fetch))
+                try:
+                    result = future.result()
+                    if not isinstance(result, list):
+                        log.error("%s fetch gab keine Liste zurück: %r", name, result)
+                        continue
+                    items += result
+                except TimeoutError:
+                    log.warning("%s fetch Timeout nach %ss", name, PROVIDER_TIMEOUT)
+                except Exception as e:
+                    log.exception("%s fetch fehlgeschlagen: %s", name, e)
+        except TimeoutError:
+            log.warning("Provider-Timeout nach %ss", PROVIDER_TIMEOUT)
+    finally:
+        executor.shutdown(wait=False, cancel_futures=True)
 
     return items
 
