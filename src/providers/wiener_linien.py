@@ -5,14 +5,16 @@
 Wiener Linien Provider (OGD) – nur betriebsrelevante Störungen/Hinweise,
 keine Roll-/Fahrtreppen- oder Aufzugs-Meldungen.
 
-NEU:
+Neu:
+- Titelkürzung am Anfang: generische Label wie „Bauarbeiten“, „Straßenbauarbeiten“,
+  „Gleisbauarbeiten“, „Verkehrsinfo/-meldung“, „Störung“, „Hinweis“, „Serviceinfo“
+  werden nur entfernt, wenn danach ein informativer Titelteil folgt.
+  Beispiel: „Bauarbeiten Züge halten Alszeile 126“ → „Züge halten Alszeile 126“.
+  „14A: Straßenbauarbeiten“ bleibt unverändert.
+
 - Dedupe-Regel „Sammel vs. Einzel“:
   Wenn es zu *allen* in einer Sammelmeldung genannten Linien bereits
-  *mindestens eine* Einzelmeldung gibt (je Linie genau eine), wird die
-  Sammelmeldung verworfen. So bleiben nur die einzelnen, genauer datierten
-  Items, die auch unabhängig enden können.
-
-- Facility-Only (Aufzug/Lift/Fahr-/Rolltreppe) wird vollständig ausgeschlossen.
+  *mindestens eine* Einzelmeldung gibt, wird die Sammelmeldung verworfen.
 
 Env:
   WL_RSS_URL   (Basis-URL, Secret empfohlen; Fallback: https://www.wienerlinien.at/ogd_realtime)
@@ -46,7 +48,7 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/1.9 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/2.0 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
@@ -75,6 +77,38 @@ FACILITY_ONLY = re.compile(
 def _is_facility_only(*texts: str) -> bool:
     t = " ".join([x for x in texts if x]).lower()
     return bool(FACILITY_ONLY.search(t))
+
+# --- Titel-Kosmetik (nur vorn) ----------------------------------------------
+
+_LABELS = [
+    r"bauarbeiten", r"straßenbauarbeiten", r"gleisbauarbeiten",
+    r"verkehrsinfo", r"verkehrsinformation", r"verkehrsmeldung",
+    r"störung", r"hinweis", r"serviceinfo", r"service\-info", r"information"
+]
+# Muster: (Label)(Trenner) … (Label kann mehrfach vorkommen)
+_LABEL_HEAD_RE = re.compile(
+    r"^\s*(?:(?:" + "|".join(_LABELS) + r")\s*(?:[-:–—/]\s*|\s+))+",
+    re.IGNORECASE
+)
+
+# Hilfs-Check: Ist „Rest“ wirklich informativer Inhalt?
+def _is_informative(rest: str) -> bool:
+    if not rest:
+        return False
+    # Enthält der Rest irgendein „echtes“ Wort/Zahl (mehr als nur Label/Leerzeichen)?
+    # z. B. „Züge halten Alszeile 126“, „49: Umleitung Gudrunstraße“
+    if re.search(r"[A-Za-zÄÖÜäöüß0-9]{3,}", rest):
+        return True
+    return False
+
+def _tidy_title_wl(title: str) -> str:
+    t = (title or "").strip()
+    if not t:
+        return t
+    stripped = _LABEL_HEAD_RE.sub("", t)
+    if stripped and _is_informative(stripped):
+        return re.sub(r"\s{2,}", " ", stripped).strip(" -–—:/\t")
+    return t  # unverändert lassen, wenn der Rest nicht informativer ist
 
 # --- Zeit-Utils --------------------------------------------------------------
 
@@ -175,13 +209,14 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             if _is_closed(ti):
                 continue
 
-            title = (ti.get("title") or ti.get("name") or "Meldung").strip()
+            title_raw = (ti.get("title") or ti.get("name") or "Meldung").strip()
+            title = _tidy_title_wl(title_raw)
             desc  = (ti.get("description") or "").strip()
             attrs = ti.get("attributes") or {}
-            fulltext = " ".join([title, desc, str(attrs.get("status") or ""), str(attrs.get("state") or "")])
+            fulltext = " ".join([title_raw, desc, str(attrs.get("status") or ""), str(attrs.get("state") or "")])
 
             # Facility-Only strikt verwerfen
-            if _is_facility_only(title, desc):
+            if _is_facility_only(title_raw, desc):
                 continue
 
             ts_best = _best_ts(ti)
@@ -225,16 +260,17 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             if _is_closed(poi):
                 continue
 
-            title = (poi.get("title") or "Hinweis").strip()
+            title_raw = (poi.get("title") or "Hinweis").strip()
+            title = _tidy_title_wl(title_raw)
             desc  = (poi.get("description") or "").strip()
             attrs = poi.get("attributes") or {}
             text_for_filter = " ".join([
-                title, poi.get("subtitle") or "", desc,
+                title_raw, poi.get("subtitle") or "", desc,
                 str(attrs.get("status") or ""), str(attrs.get("state") or ""),
             ])
 
             # Facility-Only strikt verwerfen
-            if _is_facility_only(title, desc, poi.get("subtitle") or ""):
+            if _is_facility_only(title_raw, desc, poi.get("subtitle") or ""):
                 continue
 
             ts_best = _best_ts(poi)
@@ -329,7 +365,6 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
         })
 
     # E) Sammel-vs-Einzel: Aggregat entfernen, wenn *alle* Linien als Einzel vorliegen
-    # Einzel = Item mit genau 1 Linie im _lines_set
     single_line_coverage = {}
     for it in items:
         ls = it.get("_lines_set") or set()
@@ -342,7 +377,6 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     for it in items:
         ls = it.get("_lines_set") or set()
         if len(ls) >= 2:
-            # Aggregat: nur behalten, wenn mindestens eine Linie NICHT durch Einzelevents abgedeckt ist
             all_covered = all(single_line_coverage.get(ln, 0) > 0 for ln in ls)
             if all_covered:
                 continue  # Aggregat raus
