@@ -9,13 +9,13 @@ Wichtig:
       ref_dt = pubDate oder starts_at oder first_seen (erstmals gesehen).
 - Befristete Langläufer (Ende in der Zukunft) bleiben erhalten (ACTIVE_GRACE_MIN).
 - GUID-basierte Duplikatsunterdrückung.
-- Persistenter State (JSON) für first_seen / last_seen.
+- Persistenter State (JSON) nur für 'first_seen'.
+- State enthält NUR noch Items, die im finalen Feed sind (alles andere wird entfernt).
 - Optionales Metadatum <first_seen> je Item (nur Metadaten; für TV unsichtbar).
 
 Spezialfall:
-- Der WL-Altfall „Busse halten bei Neubaugasse 69“ erhält einen forcierten
-  first_seen-Zeitpunkt (2023-08-08 00:00 Europe/Vienna), damit er sicher
-  durch den Altersfilter fällt.
+- „Busse halten bei Neubaugasse 69“ erhält ein forciertes first_seen (2023-08-08 Europe/Vienna),
+  solange die Meldung im Feed vorkommt (nur dann wird es gespeichert/ausgegeben).
 
 ENV:
   FEED_TITLE, FEED_LINK, FEED_DESC, OUT_PATH
@@ -23,7 +23,6 @@ ENV:
   DESCRIPTION_CHAR_LIMIT, LOG_LEVEL
   WL_ENABLE, OEBB_ENABLE, VOR_ENABLE
   STATE_PATH                (Default: data/first_seen.json)
-  STATE_RETENTION_DAYS      (Default: 1095 = 3 Jahre)
 """
 
 from __future__ import annotations
@@ -57,9 +56,8 @@ WL_ENABLE   = os.getenv("WL_ENABLE", "1") == "1"
 OEBB_ENABLE = os.getenv("OEBB_ENABLE", "1") == "1"
 VOR_ENABLE  = os.getenv("VOR_ENABLE", "1") == "1"
 
-# Persistenter State für first_seen / last_seen
+# Persistenter State für first_seen (schlank)
 STATE_PATH = os.getenv("STATE_PATH", "data/first_seen.json")
-STATE_RETENTION_DAYS = int(os.getenv("STATE_RETENTION_DAYS", "1095"))
 
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
@@ -67,8 +65,9 @@ VIENNA_TZ = ZoneInfo("Europe/Vienna")
 logging.basicConfig(level=LOG_LEVEL)
 log = logging.getLogger("build_feed")
 
-# ------------------------- State-Handling -------------------------
-_STATE: Dict[str, Dict[str, datetime]] = {"first_seen": {}, "last_seen": {}}
+# ------------------------- State-Handling (nur first_seen) -------------------------
+# Struktur: { "<guid>": "2025-09-13T21:04:00Z", ... }
+_STATE: Dict[str, datetime] = {}
 
 def _parse_iso(s: str | None) -> Optional[datetime]:
     if not s:
@@ -86,49 +85,45 @@ def _load_state() -> None:
     try:
         with open(STATE_PATH, "r", encoding="utf-8") as f:
             raw = json.load(f)
-        fs = {k: _parse_iso(v) for k, v in (raw.get("first_seen") or {}).items()}
-        ls = {k: _parse_iso(v) for k, v in (raw.get("last_seen") or {}).items()}
-        _STATE = {"first_seen": {k: v for k, v in fs.items() if v},
-                  "last_seen":  {k: v for k, v in ls.items() if v}}
+        _STATE = {k: _parse_iso(v) for k, v in (raw or {}).items() if _parse_iso(v)}
     except FileNotFoundError:
-        _STATE = {"first_seen": {}, "last_seen": {}}
+        _STATE = {}
     except Exception as e:
         log.warning("State konnte nicht geladen werden (%s) – starte leer.", e)
-        _STATE = {"first_seen": {}, "last_seen": {}}
+        _STATE = {}
 
-def _save_state(now_utc: datetime) -> None:
-    # alte Einträge aufräumen (optional)
-    if STATE_RETENTION_DAYS > 0:
-        cutoff = now_utc - timedelta(days=STATE_RETENTION_DAYS)
-        drop = [g for g, dt in _STATE["last_seen"].items() if dt and dt < cutoff]
-        for g in drop:
-            _STATE["last_seen"].pop(g, None)
-            _STATE["first_seen"].pop(g, None)
+def _save_state(visible_guids: List[str], now_utc: datetime, forced_map: Dict[str, datetime]) -> None:
+    """
+    Speichert nur first_seen für GUIDs, die im finalen Feed (visible_guids) enthalten sind.
+    - Für neue GUIDs: first_seen = forced_map.get(guid) oder now_utc
+    - Für bestehende GUIDs: first_seen bleibt, außer forced_map liefert einen Override
+    - Alle GUIDs, die nicht sichtbar sind, werden entfernt (State bleibt schlank)
+    """
+    keep: Dict[str, datetime] = {}
+    for g in visible_guids:
+        if g in forced_map:
+            keep[g] = forced_map[g]
+        elif g in _STATE and isinstance(_STATE[g], datetime):
+            keep[g] = _STATE[g]
+        else:
+            keep[g] = now_utc
 
     os.makedirs(os.path.dirname(STATE_PATH), exist_ok=True)
-    out = {
-        "first_seen": {g: _iso_utc(dt) for g, dt in _STATE["first_seen"].items() if dt},
-        "last_seen":  {g: _iso_utc(dt) for g, dt in _STATE["last_seen"].items() if dt},
-    }
+    out = {g: _iso_utc(dt) for g, dt in keep.items()}
     with open(STATE_PATH, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2, sort_keys=True)
-    log.info("State gespeichert: %s (first_seen=%d)", STATE_PATH, len(out["first_seen"]))
+    # internen State aktualisieren
+    _STATE.clear()
+    _STATE.update(keep)
+    log.info("State gespeichert: %s (first_seen=%d)", STATE_PATH, len(out))
 
 def _first_seen(guid: str) -> Optional[datetime]:
-    return _STATE["first_seen"].get(guid)
-
-def _touch_seen(guid: str, now_utc: datetime) -> None:
-    if guid not in _STATE["first_seen"]:
-        _STATE["first_seen"][guid] = now_utc
-    _STATE["last_seen"][guid] = now_utc
+    return _STATE.get(guid)
 
 # ------------------------- Forcierte first_seen-Overrides -------------------------
-# Titelbasierte Sonderfälle: (Regex, fixed_dt_utc)
 _FORCED_FS: Tuple[Tuple[re.Pattern, datetime], ...] = (
-    # Setzt das first_seen künstlich alt, damit der Altfall aus dem Feed fällt.
     (
         re.compile(r"^Busse\s+halten\s+bei\s+Neubaugasse\s+69\b", re.IGNORECASE),
-        # 2023-08-08 00:00 Europe/Vienna → UTC
         datetime(2023, 8, 8, 0, 0, tzinfo=VIENNA_TZ).astimezone(timezone.utc)
     ),
 )
@@ -157,11 +152,8 @@ def _to_plain_for_signage(s: str, limit: int = DESCRIPTION_CHAR_LIMIT) -> str:
     s = re.sub(r"</?(p|br|li|ul|ol|h\d)[^>]*>", " · ", s, flags=re.I)
     s = re.sub(r"<[^>]+>", " ", s)
     s = s.replace("\u00A0", " ")
-    s = re.sub(
-        r"Linien:\s*\[([^\]]+)\]",
-        lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")),
-        s,
-    )
+    s = re.sub(r"Linien:\s*\[([^\]]+)\]",
+               lambda m: "Linien: " + ", ".join(t.strip().strip("'\"") for t in m.group(1).split(",")), s)
     s = re.sub(r"\bStops:\s*\[[^\]]*\]", " ", s)
     s = re.sub(r"\bBetroffene Haltestellen:\s*[0-9, …]+", " ", s)
     s = s.replace("‹", "").replace("›", "").replace("<", "").replace(">", "")
@@ -206,8 +198,13 @@ def _get_dt(val: Any) -> Optional[datetime]:
     return None
 
 def _event_ref_dt(ev: Dict[str, Any]) -> Optional[datetime]:
-    # Reihenfolge: pubDate → starts_at → first_seen
-    return _get_dt(ev.get("pubDate")) or _get_dt(ev.get("starts_at")) or _first_seen(ev.get("guid", ""))
+    # Reihenfolge: pubDate → starts_at → forced_first_seen → saved first_seen
+    return (
+        _get_dt(ev.get("pubDate"))
+        or _get_dt(ev.get("starts_at"))
+        or _get_dt(ev.get("forced_first_seen"))
+        or _first_seen(ev.get("guid", ""))
+    )
 
 def _has_future_end(ev: Dict[str, Any], now_local: datetime) -> bool:
     end = _get_dt(ev.get("ends_at"))
@@ -242,7 +239,7 @@ def _stable_order_key(ev: Dict[str, Any]) -> tuple:
     return (1, h)
 
 # ------------------------- RSS Item -------------------------
-def _add_item(ch, ev: Dict[str, Any]) -> None:
+def _add_item(ch, ev: Dict[str, Any], fs_map: Dict[str, datetime]) -> None:
     it = SubElement(ch, "item")
     title = _clean_title(ev["title"])
     SubElement(it, "title").text = title
@@ -255,8 +252,8 @@ def _add_item(ch, ev: Dict[str, Any]) -> None:
     if pd:
         SubElement(it, "pubDate").text = _fmt_date(pd)
 
-    # Metadatum: first_seen (falls vorhanden) – für TV unsichtbar
-    fs = _first_seen(ev["guid"])
+    # Metadatum: first_seen (nur für im Feed sichtbare Items)
+    fs = fs_map.get(ev["guid"])
     if fs:
         SubElement(it, "first_seen").text = _fmt_date(fs)
 
@@ -306,7 +303,7 @@ def main() -> None:
     all_events: List[Dict[str, Any]] = []
     seen_guids: set[str] = set()
 
-    # 1) Provider abfragen
+    # 1) Provider abfragen und Events einsammeln
     for p in providers:
         try:
             events = p.fetch_events()
@@ -320,6 +317,10 @@ def main() -> None:
                 for k in ("pubDate","starts_at","ends_at"):
                     if not isinstance(ev.get(k), datetime):
                         ev[k] = None
+                # evtl. forcierter first_seen (nur an ev angehängt; Speicherung später)
+                forced = _forced_first_seen_for_title(html.unescape(ev.get("title") or ""))
+                if forced is not None:
+                    ev["forced_first_seen"] = forced
                 seen_guids.add(ev["guid"])
                 all_events.append(ev)
                 added += 1
@@ -330,32 +331,32 @@ def main() -> None:
     now_utc = datetime.now(timezone.utc)
     now_local = now_utc.astimezone(VIENNA_TZ)
 
-    # 2) Forcierte first_seen-Overrides per Titel anwenden (vor dem Touch!)
-    for ev in all_events:
-        forced = _forced_first_seen_for_title(html.unescape(ev.get("title") or ""))
-        if forced is not None:
-            _STATE["first_seen"][ev["guid"]] = forced  # bewusst überschreiben
-
-    # 3) first_seen/last_seen pflegen
-    for ev in all_events:
-        _touch_seen(ev["guid"], now_utc)
-
-    # 4) Altersfilter anwenden (bewahrt befristete Langläufer)
+    # 2) Altersfilter anwenden (nutzt pubDate/starts_at/forced_first_seen/_STATE)
     all_events = _apply_age_filter(all_events, now_local)
 
-    # 5) Sortieren & deckeln
+    # 3) Sortieren & deckeln
     all_events.sort(key=_stable_order_key)
     if MAX_ITEMS > 0 and len(all_events) > MAX_ITEMS:
         all_events = all_events[:MAX_ITEMS]
 
-    # 6) RSS bauen
-    rss, ch = _rss_root(FEED_TITLE, FEED_LINK, FEED_DESC)
-    for ev in all_events:
-        _add_item(ch, ev)
+    # 4) State NUR für sichtbare Items aktualisieren
+    visible_guids = [ev["guid"] for ev in all_events]
+    forced_map = {
+        ev["guid"]: ev["forced_first_seen"]  # nur dort, wo gesetzt
+        for ev in all_events
+        if ev.get("forced_first_seen") is not None
+    }
+    _save_state(visible_guids, now_utc, forced_map)
 
-    # 7) Schreiben
+    # 5) RSS bauen
+    rss, ch = _rss_root(FEED_TITLE, FEED_LINK, FEED_DESC)
+    # Map für Ausgabe (nur sichtbare Items)
+    fs_out_map: Dict[str, datetime] = {g: _STATE[g] for g in visible_guids if g in _STATE}
+    for ev in all_events:
+        _add_item(ch, ev, fs_out_map)
+
+    # 6) Schreiben
     _write_xml(rss, OUT_PATH)
-    _save_state(now_utc)
     log.info("Fertig: %d Items im Feed", len(all_events))
 
 if __name__ == "__main__":
