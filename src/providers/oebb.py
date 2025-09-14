@@ -53,8 +53,6 @@ def _session() -> requests.Session:
     s.headers.update({"User-Agent":"Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"})
     return s
 
-S = _session()
-
 # ---------------- Titel + Endpunkte ----------------
 BAHNHOF_TRIM_RE = re.compile(r"\s*(?:Bahnhof|Bahnhst|Hbf|Bf)(?:\s*\(U\))?", re.IGNORECASE)
 ARROW_ANY_RE    = re.compile(r"\s*(?:<=>|<->|<>|→|↔|=>|=|–|—|-)\s*")
@@ -196,9 +194,10 @@ def _keep_by_region(title: str, desc: str) -> bool:
 
 # ---------------- Fetch/Parse ----------------
 def _fetch_xml(url: str, timeout: int = 25) -> ET.Element:
-    r = S.get(url, timeout=timeout)
-    r.raise_for_status()
-    return ET.fromstring(r.content)
+    with _session() as s:
+        r = s.get(url, timeout=timeout)
+        r.raise_for_status()
+        return ET.fromstring(r.content)
 
 def _get_text(elem: Optional[ET.Element], tag: str) -> str:
     e = elem.find(tag) if elem is not None else None
