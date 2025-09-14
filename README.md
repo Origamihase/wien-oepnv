@@ -54,6 +54,7 @@ Der erzeugte Feed liegt unter `docs/feed.xml`.
 | Variable | Typ | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
 | `OEBB_RSS_URL` | str | `"https://fahrplan.oebb.at/bin/help.exe/dnl?protocol=https:&tpl=rss_WI_oebb&"` | RSS-Quelle der ÖBB (kann über Secret überschrieben werden). |
+| `OEBB_ONLY_VIENNA` | bool (`"1"`/`"0"`) | `"0"` | Nur Meldungen mit Endpunkten in Wien behalten. |
 
 ### VOR / VAO (`src/providers/vor.py`)
 
