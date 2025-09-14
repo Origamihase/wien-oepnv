@@ -2,14 +2,11 @@
 # -*- coding: utf-8 -*-
 
 """
-ÖBB-RSS-Provider (HAFAS „Weginformationen“):
-- Quelle: RSS 2.0, URL über OEBB_RSS_URL (Secret) – fallback auf Standard.
-- STRIKTER Filter: nur Wien ODER Wien <-> unmittelbare Nachbarorte.
-- Fernrelationen (AT & international) werden explizit ausgeschlossen.
-- pubDate bleibt quellenrein; Build-Optimierungen passieren global.
+ÖBB-RSS-Provider (HAFAS „Weginformationen“), streng auf Wien + unmittelbare Nachbarorte
+UND ohne Facility-Only-Meldungen (Aufzug/Lift/Fahr-/Rolltreppe).
 
 Env:
-  OEBB_RSS_URL          (empfohlen: Secret, s. build-feed.yml)
+  OEBB_RSS_URL          (Secret empfohlen; fallback intern)
   OEBB_HTTP_TIMEOUT     (Default 15)
 """
 
@@ -31,8 +28,6 @@ from urllib3.util.retry import Retry
 
 log = logging.getLogger(__name__)
 
-# ------------------ Konfig ------------------
-
 HTTP_TIMEOUT = int(os.getenv("OEBB_HTTP_TIMEOUT", "15"))
 
 def _default_rss_url() -> str:
@@ -42,8 +37,6 @@ def _candidate_urls() -> List[str]:
     urls: List[str] = []
     env = (os.getenv("OEBB_RSS_URL") or "").strip()
     urls.append(env if env else _default_rss_url())
-
-    # Fallback-Varianten, falls die Instanz umleitet/andere Query erwartet
     base = "https://fahrplan.oebb.at/bin/help.exe/dnl"
     for v in [
         "?tpl=rss_WI_oebb&protocol=https:",
@@ -53,19 +46,14 @@ def _candidate_urls() -> List[str]:
         "?L=vs_oebb&tpl=rss_WI_oebb",
     ]:
         urls.append(base + v)
-
-    # zusätzliche, optional per ENV
     alt = (os.getenv("OEBB_RSS_ALT_URLS") or "").strip()
     if alt:
         urls += [u.strip() for u in alt.split(",") if u.strip()]
-
     out: List[str] = []
     for u in urls:
         if u not in out:
             out.append(u)
     return out
-
-# ------------------ HTTP ------------------
 
 def _session() -> requests.Session:
     s = requests.Session()
@@ -79,15 +67,14 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.1",
-        "User-Agent": "Origamihase-wien-oepnv/1.3 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/1.4 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
 S = _session()
 
-# ------------------ Wien + unmittelbare Nachbarschaft ------------------
+# --- Wien + unmittelbare Nachbarschaft ---------------------------------------
 
-# HARTE Pflicht: Ein klarer Wien-Bezug muss vorkommen
 _CORE_PATTERNS = [
     r"\bWien\b",
     r"\bWien\s*Hbf\b", r"\bWien\s*Hauptbahnhof\b",
@@ -101,7 +88,6 @@ _CORE_PATTERNS = [
 ]
 _CORE_RE = re.compile("|".join(_CORE_PATTERNS), re.IGNORECASE)
 
-# Unmittelbare Nachbarorte (Allow-List)
 _NEAR_PATTERNS = [
     r"\bSchwechat\b", r"\bFlughafen\s+Wien\b", r"\bVienna\s*Airport\b",
     r"\bGerasdorf\b", r"\bLangenzersdorf\b",
@@ -112,48 +98,42 @@ _NEAR_PATTERNS = [
 ]
 _NEAR_RE = re.compile("|".join(_NEAR_PATTERNS), re.IGNORECASE)
 
-# Fernziele (explizit ausschließen – ergänzt um typische national/internationale Destinationen)
 _FAR_PATTERNS = [
-    # OÖ/Salzburg/Tirol/Vbg:
     r"\bAttnang[- ]?Puchheim\b", r"\bVöcklabruck\b", r"\bWels\b", r"\bLinz\b",
-    r"\bSt\.?\s*Valentin\b", r"\bAmstetten\b", r"\bEnns\b", r"\bYbbs\b", r"\bMelk\b",
+    r"\bSt\.?\s*Pölten\b", r"\bAmstetten\b", r"\bEnns\b", r"\bYbbs\b", r"\bMelk\b",
     r"\bSalzburg\b", r"\bInnsbruck\b", r"\bBregenz\b",
-    # NÖ/Steiermark/Kärnten:
-    r"\bSt\.?\s*Pölten\b", r"\bKrems\b", r"\bTulln(?:erfeld)?\b",
+    r"\bKrems\b", r"\bTulln(?:erfeld)?\b",
     r"\bWiener\s*Neustadt\b", r"\bWr\.?\s*Neustadt\b", r"\bBaden\b",
-    r"\bGraz\b", r"\bBruck/?\s*an\s*der\s*Mur\b", r"\bBruck\s*/?\s*Mur\b", r"\bMürzzuschlag\b", r"\bLeoben\b",
+    r"\bGraz\b", r"\bBruck\b.*\bMur\b", r"\bMürzzuschlag\b", r"\bLeoben\b",
     r"\bVillach\b", r"\bKlagenfurt\b",
-    # International / Fernverkehr:
     r"\bHamburg\b", r"\bBerlin\b", r"\bMünchen\b", r"\bNürnberg\b",
     r"\bZürich\b", r"\bBasel\b",
     r"\bPrag\b", r"\bBrno\b", r"\bBudapest\b",
     r"\bAmsterdam\b", r"\bFrankfurt\b", r"\bStuttgart\b",
-    r"\bBratislava\b",  # für „sehr nahe“ hier bewusst ausgeschlossen
+    r"\bBratislava\b",
 ]
 _FAR_RE = re.compile("|".join(_FAR_PATTERNS), re.IGNORECASE)
 
+# Facility-ONLY: Aufzug/Lift/Fahr-/Rolltreppe – vollständig ausschließen
+FACILITY_ONLY = re.compile(
+    r"\b(aufzug|aufzüge|lift|fahrstuhl|fahrtreppe|fahrtreppen|rolltreppe|rolltreppen)\b",
+    re.IGNORECASE
+)
+
 def _is_wien_and_near_only(title: str, desc: str) -> bool:
-    """
-    Zulassen, wenn:
-      - ein WIEN-Kern-Treffer vorhanden ist UND
-      - KEIN Fernziel vorkommt.
-    Der Text darf zusätzlich Nachbarorte enthalten (Allow-List). Alles andere wird verworfen.
-    """
     text = f"{title}\n{desc}"
     if not _CORE_RE.search(text):
         return False
     if _FAR_RE.search(text):
         return False
-    # Optional: wenn explizit ein zweiter Ort genannt ist, soll er „near“ sein.
-    # Heuristik: Wenn Bindestriche/Slashes vorkommen und KEIN Near-Treffer gefunden wird, verwerfen.
     if re.search(r"[=\/–—\-]", text) and not _NEAR_RE.search(text):
-        # „Wien Hbf – Flughafen Wien“ bleibt wegen Near-Treffer drin;
-        # „Wien Hbf – Linz“ fällt oben durch FAR_RE schon raus.
-        # Ohne Near-Treffer und ohne FAR_RE (z. B. exotisches Ziel) → lieber verwerfen.
         return False
     return True
 
-# ------------------ Utils ------------------
+def _is_facility_only(*texts: str) -> bool:
+    return bool(FACILITY_ONLY.search(" ".join([t for t in texts if t]) or ""))
+
+# --- Utils -------------------------------------------------------------------
 
 def _txt(el: Optional[ET.Element], path: str) -> str:
     t = el.findtext(path) if el is not None else None
@@ -176,7 +156,7 @@ def _hash_guid(*parts: str) -> str:
     base = "|".join(p or "" for p in parts)
     return hashlib.md5(base.encode("utf-8")).hexdigest()
 
-# ------------------ Parser ------------------
+# --- Fetch/Parse -------------------------------------------------------------
 
 def _fetch_rss_xml() -> Optional[ET.Element]:
     for url in _candidate_urls():
@@ -197,18 +177,11 @@ def _iter_items(root: ET.Element) -> List[ET.Element]:
     ch = root.find("./channel")
     return list(ch.findall("./item")) if ch is not None else list(root.findall(".//item"))
 
-# ------------------ Public API ------------------
+# --- Public ------------------------------------------------------------------
 
 def fetch_events() -> List[Dict[str, Any]]:
-    """
-    Liest ÖBB-Weginformationen aus einem RSS-Feed, filtert STRIKT auf
-    Wien bzw. Wien <-> unmittelbare Nachbarorte und liefert das
-    Standard-Event-Schema:
-      source, category, title, description, link, guid, pubDate, starts_at, ends_at
-    """
     root = _fetch_rss_xml()
     if root is None:
-        log.info("ÖBB-RSS: keine Daten erhalten.")
         return []
 
     items_out: List[Dict[str, Any]] = []
@@ -224,7 +197,9 @@ def fetch_events() -> List[Dict[str, Any]]:
         pub_s = _txt(it, "pubDate")
         pub_dt = _parse_pubdate(pub_s)
 
-        # *** STRIKTER Filter ***
+        # Ausschlüsse
+        if _is_facility_only(title, desc):   # Facility-Only strikt verwerfen
+            continue
         if not _is_wien_and_near_only(title, desc):
             continue
 
@@ -233,7 +208,6 @@ def fetch_events() -> List[Dict[str, Any]]:
             continue
         seen_guids.add(guid)
 
-        # Beschreibung minimal säubern (build_feed.py kürzt/entschlackt für TV)
         description_html = html.escape(desc) if ("<" not in desc and ">" not in desc) else desc
 
         items_out.append({
@@ -248,6 +222,5 @@ def fetch_events() -> List[Dict[str, Any]]:
             "ends_at": None,
         })
 
-    # Lokale Sortierung (global wird erneut sortiert)
     items_out.sort(key=lambda x: (0, -int(x["pubDate"].timestamp())) if x["pubDate"] else (1, x["guid"]))
     return items_out
