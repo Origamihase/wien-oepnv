@@ -1,6 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+"""
+Wiener Linien Provider (OGD):
+- Basis-URL kommt aus WL_RSS_URL (Secret) oder fällt zurück auf das offizielle
+  OGD-Verzeichnis: https://www.wienerlinien.at/ogd_realtime
+- Endpunkte:
+    /trafficInfoList?name=stoerunglang&name=stoerungkurz&name=aufzugsinfo&name=fahrtreppeninfo
+    /newsList
+- pubDate ausschließlich quellenbasiert (time.start / bestes Timestamp-Feld)
+"""
+
 import hashlib, html, logging, os, re
 from datetime import datetime, timezone, timedelta
 from typing import Any, Dict, Iterable, List, Optional, Tuple
@@ -10,8 +20,10 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from dateutil import parser as dtparser
 
-WL_BASE = os.getenv("WL_BASE", "https://www.wienerlinien.at/ogd_realtime").rstrip("/")
-WL_API_KEY = os.getenv("WL_API_KEY", "").strip()  # optional Secret
+WL_BASE = (
+    os.getenv("WL_RSS_URL", "").strip()
+    or "https://www.wienerlinien.at/ogd_realtime"
+).rstrip("/")
 
 log = logging.getLogger(__name__)
 
@@ -27,7 +39,7 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/1.6 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/1.7 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
@@ -103,14 +115,8 @@ def _is_closed(obj: Dict[str, Any]) -> bool:
     return any(h in val for h in _CLOSED_HINTS)
 
 def _get_json(path: str, params: Optional[List[tuple]] = None, timeout: int = 20) -> Dict[str, Any]:
-    """
-    Ruft WL_BASE/<path> ab. Hängt optional 'sender=<WL_API_KEY>' an.
-    """
     url = f"{WL_BASE.rstrip('/')}/{path.lstrip('/')}"
-    p = list(params or [])
-    if WL_API_KEY:
-        p.append(("sender", WL_API_KEY))
-    r = S.get(url, params=p or None, timeout=timeout)
+    r = S.get(url, params=params or None, timeout=timeout)
     r.raise_for_status()
     return r.json()
 
@@ -127,7 +133,7 @@ def _fetch_news(timeout: int = 20) -> Iterable[Dict[str, Any]]:
 def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     """
     Liefert NUR aktive Beeinträchtigungen (Störung/Hinweis mit echter Wirkung).
-    pubDate: ausschließlich quellenbasiert (start/best_ts). Kein 'now' Fallback.
+    pubDate: ausschließlich quellenbasiert (start/best_ts). Kein 'now'-Fallback.
     """
     now = datetime.now(timezone.utc)
     raw: List[Dict[str, Any]] = []
@@ -152,10 +158,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             lines_str = ", ".join(str(x).strip() for x in rel_lines if str(x).strip())
             extras = []
             for k in ("status","state","station","location","reason","towards"):
-                if attrs.get(k):
-                    extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
-            if lines_str:
-                extras.append(f"Linien: {html.escape(lines_str)}")
+                if attrs.get(k): extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
+            if lines_str: extras.append(f"Linien: {html.escape(lines_str)}")
 
             raw.append({
                 "category": "Störung",
@@ -258,7 +262,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             "category": b["category"],
             "title": title,
             "description": desc,
-            "link": "https://www.wienerlinien.at/open-data",
+            "link": f"{WL_BASE}",
             "guid": guid,
             "pubDate": b["pubDate"],      # None erlaubt
             "starts_at": b["starts_at"],
