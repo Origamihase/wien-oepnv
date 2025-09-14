@@ -2,13 +2,16 @@
 # -*- coding: utf-8 -*-
 
 """
-Wiener Linien Provider (OGD):
-- Basis-URL kommt aus WL_RSS_URL (Secret) oder fällt zurück auf das offizielle
-  OGD-Verzeichnis: https://www.wienerlinien.at/ogd_realtime
-- Endpunkte:
-    /trafficInfoList?name=stoerunglang&name=stoerungkurz&name=aufzugsinfo&name=fahrtreppeninfo
-    /newsList
-- pubDate ausschließlich quellenbasiert (time.start / bestes Timestamp-Feld)
+Wiener Linien Provider (OGD) – nur betriebsrelevante Störungen/Hinweise,
+keine Roll-/Fahrtreppen- oder Aufzugs-Meldungen.
+
+Änderungen:
+- Aufruf von /trafficInfoList OHNE 'aufzugsinfo' und 'fahrtreppeninfo'.
+- Expliziter Facility-Filter (Aufzug/Lift/Fahrtreppe/Rolltreppe) für alle Items.
+- Titel/Beschreibung gereinigt; pubDate bleibt quellenrein (keine Fallbacks).
+
+Env:
+  WL_RSS_URL   (Basis-URL, Secret empfohlen; Fallback: https://www.wienerlinien.at/ogd_realtime)
 """
 
 import hashlib, html, logging, os, re
@@ -39,20 +42,37 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/1.7 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/1.8 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
 S = _session()
 
+# --- Filterlogik -------------------------------------------------------------
+
+# „Betriebsrelevante“ Wörter (lassen wir durch, wenn grundsätzlich aktiv)
 KW_RESTRICTION = re.compile(
-    r"\b(umleitung|ersatzverkehr|unterbrech|sperr|gesperrt|störung|aufzug|fahrtreppe|arbeiten|baustell|einschränk|verspät|ausfall)\b",
+    r"\b(umleitung|ersatzverkehr|unterbrech|sperr|gesperrt|störung|arbeiten|baustell|einschränk|verspät|ausfall|verkehr)\b",
     re.IGNORECASE
 )
+
+# Nicht-betriebsrelevante/Allgemeines (nur als schwaches Ausschluss-Signal)
 KW_EXCLUDE = re.compile(
-    r"\b(willkommen|gewinnspiel|anzeiger|eröffnung|service|info(?:rmation)?|fest|keine\s+echtzeitinfo)\b",
+    r"\b(willkommen|gewinnspiel|anzeiger|eröffnung|service(?:-info)?|info(?:rmation)?|fest|keine\s+echtzeitinfo)\b",
     re.IGNORECASE
 )
+
+# Facility-ONLY: Aufzug/Lift/Fahrtreppe/Rolltreppe – vollständig ausschließen
+FACILITY_ONLY = re.compile(
+    r"\b(aufzug|aufzüge|lift|fahrstuhl|fahrtreppe|fahrtreppen|rolltreppe|rolltreppen|aufzugsinfo|fahrtreppeninfo)\b",
+    re.IGNORECASE
+)
+
+def _is_facility_only(*texts: str) -> bool:
+    t = " ".join([x for x in texts if x]).lower()
+    return bool(FACILITY_ONLY.search(t))
+
+# --- Zeit-Utils --------------------------------------------------------------
 
 def _iso(s: Optional[str]) -> Optional[datetime]:
     if not s:
@@ -82,6 +102,8 @@ def _is_active(start: Optional[datetime], end: Optional[datetime], now: datetime
     if end and end < (now - timedelta(minutes=10)):
         return False
     return True
+
+# --- Hilfsfunktionen ---------------------------------------------------------
 
 def _as_list(val) -> List[Any]:
     if val is None: return []
@@ -114,6 +136,8 @@ def _is_closed(obj: Dict[str, Any]) -> bool:
     val = " ".join(candidates).strip().lower()
     return any(h in val for h in _CLOSED_HINTS)
 
+# --- API-Calls ----------------------------------------------------------------
+
 def _get_json(path: str, params: Optional[List[tuple]] = None, timeout: int = 20) -> Dict[str, Any]:
     url = f"{WL_BASE.rstrip('/')}/{path.lstrip('/')}"
     r = S.get(url, params=params or None, timeout=timeout)
@@ -121,8 +145,8 @@ def _get_json(path: str, params: Optional[List[tuple]] = None, timeout: int = 20
     return r.json()
 
 def _fetch_traffic_infos(timeout: int = 20) -> Iterable[Dict[str, Any]]:
-    params = [("name","stoerunglang"),("name","stoerungkurz"),
-              ("name","aufzugsinfo"),("name","fahrtreppeninfo")]
+    # WICHTIG: Aufzug/Fahrtreppe nicht mehr anfragen
+    params = [("name","stoerunglang"),("name","stoerungkurz")]
     data = _get_json("trafficInfoList", params=params, timeout=timeout)
     return (data.get("data", {}) or {}).get("trafficInfos", []) or []
 
@@ -130,26 +154,39 @@ def _fetch_news(timeout: int = 20) -> Iterable[Dict[str, Any]]:
     data = _get_json("newsList", timeout=timeout)
     return (data.get("data", {}) or {}).get("pois", []) or []
 
+# --- Public API ---------------------------------------------------------------
+
 def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     """
-    Liefert NUR aktive Beeinträchtigungen (Störung/Hinweis mit echter Wirkung).
+    Liefert NUR aktive betriebsrelevante Beeinträchtigungen.
+    Facility-Only (Aufzug/Lift/Fahrtreppe/Rolltreppe) wird konsequent ausgeschlossen.
     pubDate: ausschließlich quellenbasiert (start/best_ts). Kein 'now'-Fallback.
     """
     now = datetime.now(timezone.utc)
     raw: List[Dict[str, Any]] = []
 
-    # A) TrafficInfos
+    # A) TrafficInfos (ohne Facility)
     try:
         for ti in _fetch_traffic_infos(timeout=timeout):
-            if _is_closed(ti): continue
+            if _is_closed(ti):
+                continue
+
+            title = (ti.get("title") or ti.get("name") or "Meldung").strip()
+            desc  = (ti.get("description") or "").strip()
+            attrs = ti.get("attributes") or {}
+            fulltext = " ".join([title, desc, str(attrs.get("status") or ""), str(attrs.get("state") or "")])
+
+            # Facility-Only strikt verwerfen
+            if _is_facility_only(title, desc):
+                continue
+
             ts_best = _best_ts(ti)
             start = _iso((ti.get("time") or {}).get("start")) or ts_best
             end   = _iso((ti.get("time") or {}).get("end"))
-            if not _is_active(start, end, now): continue
+            if not _is_active(start, end, now):
+                continue
 
-            title = (ti.get("title") or ti.get("name") or "Meldung").strip()
-            attrs = ti.get("attributes") or {}
-            fulltext = " ".join([title, ti.get("description") or "", str(attrs.get("status") or ""), str(attrs.get("state") or "")])
+            # schwaches „Thema passt nicht“-Signal
             if KW_EXCLUDE.search(fulltext) and not KW_RESTRICTION.search(fulltext):
                 continue
 
@@ -158,13 +195,16 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             lines_str = ", ".join(str(x).strip() for x in rel_lines if str(x).strip())
             extras = []
             for k in ("status","state","station","location","reason","towards"):
-                if attrs.get(k): extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
-            if lines_str: extras.append(f"Linien: {html.escape(lines_str)}")
+                if attrs.get(k):
+                    extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
+            if lines_str:
+                extras.append(f"Linien: {html.escape(lines_str)}")
 
             raw.append({
+                "source": "Wiener Linien",
                 "category": "Störung",
                 "title": title,
-                "desc": html.escape(ti.get("description") or ""),
+                "desc": html.escape(desc),
                 "extras": extras,
                 "lines": { _tok(x) for x in rel_lines if str(x).strip() },
                 "stops": { _tok(x) for x in rel_stops if str(x).strip() },
@@ -175,21 +215,31 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     except Exception as e:
         logging.exception("WL trafficInfoList fehlgeschlagen: %s", e)
 
-    # B) News/Hinweise (mit echter Einschränkung)
+    # B) News/Hinweise (nur betriebsrelevant, ohne Facility)
     try:
         for poi in _fetch_news(timeout=timeout):
-            if _is_closed(poi): continue
+            if _is_closed(poi):
+                continue
+
+            title = (poi.get("title") or "Hinweis").strip()
+            desc  = (poi.get("description") or "").strip()
+            attrs = poi.get("attributes") or {}
+            text_for_filter = " ".join([
+                title, poi.get("subtitle") or "", desc,
+                str(attrs.get("status") or ""), str(attrs.get("state") or ""),
+            ])
+
+            # Facility-Only strikt verwerfen
+            if _is_facility_only(title, desc, poi.get("subtitle") or ""):
+                continue
+
             ts_best = _best_ts(poi)
             start = _iso((poi.get("time") or {}).get("start")) or ts_best
             end   = _iso((poi.get("time") or {}).get("end"))
-            if not _is_active(start, end, now): continue
+            if not _is_active(start, end, now):
+                continue
 
-            title = (poi.get("title") or "Hinweis").strip()
-            attrs = poi.get("attributes") or {}
-            text_for_filter = " ".join([
-                title, poi.get("subtitle") or "", poi.get("description") or "",
-                str(attrs.get("status") or ""), str(attrs.get("state") or ""),
-            ])
+            # nur betriebsrelevante Themen
             if not KW_RESTRICTION.search(text_for_filter):
                 continue
 
@@ -197,15 +247,19 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             rel_stops = _as_list(poi.get("relatedStops") or attrs.get("relatedStops"))
             lines_str = ", ".join(str(x).strip() for x in rel_lines if str(x).strip())
             extras = []
-            if poi.get("subtitle"): extras.append(html.escape(poi["subtitle"]))
+            if poi.get("subtitle"):
+                extras.append(html.escape(poi["subtitle"]))
             for k in ("station","location","towards"):
-                if attrs.get(k): extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
-            if lines_str: extras.append(f"Linien: {html.escape(lines_str)}")
+                if attrs.get(k):
+                    extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
+            if lines_str:
+                extras.append(f"Linien: {html.escape(lines_str)}")
 
             raw.append({
+                "source": "Wiener Linien",
                 "category": "Hinweis",
                 "title": title,
-                "desc": html.escape(poi.get("description") or ""),
+                "desc": html.escape(desc),
                 "extras": extras,
                 "lines": { _tok(x) for x in rel_lines if str(x).strip() },
                 "stops": { _tok(x) for x in rel_stops if str(x).strip() },
@@ -269,5 +323,6 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             "ends_at": b["ends_at"],
         })
 
+    # Sortierstrategie: bevorzugt Items mit Datum; sonst stabiler Hash
     items.sort(key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, hashlib.md5(x["guid"].encode()).hexdigest()))
     return items
