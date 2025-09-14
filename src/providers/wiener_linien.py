@@ -3,7 +3,7 @@
 
 import hashlib, html, logging, re
 from datetime import datetime, timezone, timedelta
-from typing import Any, Dict, Iterable, List, Optional, Tuple, Set
+from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -24,7 +24,7 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/1.3 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/1.4 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
@@ -88,6 +88,37 @@ def _guid(*parts: str) -> str:
     base = "|".join(p or "" for p in parts)
     return hashlib.md5(base.encode("utf-8")).hexdigest()
 
+# --- Status-Erkennung ----------------------------------------------------------
+_CLOSED_HINTS = (
+    "beendet","abgeschlossen","geschlossen","geschlossenes","fertig","resolved",
+    "finished","inactive","inaktiv","done","closed","nicht aktiv","ended","ende"
+)
+
+def _is_closed(obj: Dict[str, Any]) -> bool:
+    """
+    Versucht robuste Erkennung 'beendet/inaktiv' über mehrere Felder.
+    Viele WL-Objekte haben Status unter attributes.status / attributes.state,
+    teils top-level 'status' oder booleans wie 'active'/'isActive'.
+    """
+    attrs = obj.get("attributes") or {}
+    candidates = [
+        str(obj.get("status") or ""),
+        str(attrs.get("status") or ""),
+        str(attrs.get("state") or ""),
+    ]
+    # bool-Flags
+    active_flags = []
+    for key in ("active","isActive","is_active","enabled"):
+        if key in obj:
+            active_flags.append(bool(obj.get(key)))
+        if key in attrs:
+            active_flags.append(bool(attrs.get(key)))
+    # Wenn irgendein Active-Flag explizit False ist -> geschlossen
+    if any(flag is False for flag in active_flags):
+        return True
+    val = " ".join(candidates).strip().lower()
+    return any(h in val for h in _CLOSED_HINTS)
+
 # --- Fetch --------------------------------------------------------------------
 def _fetch_traffic_infos(timeout: int = 20) -> Iterable[Dict[str, Any]]:
     params = [("name","stoerunglang"),("name","stoerungkurz"),
@@ -114,6 +145,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     # A) TrafficInfos (Störungen/Aufzug/Fahrtreppe)
     try:
         for ti in _fetch_traffic_infos(timeout=timeout):
+            if _is_closed(ti):
+                continue
             ts_best = _best_ts(ti)
             start = _iso((ti.get("time") or {}).get("start")) or ts_best
             end   = _iso((ti.get("time") or {}).get("end"))
@@ -122,7 +155,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
             title = (ti.get("title") or ti.get("name") or "Meldung").strip()
             attrs = ti.get("attributes") or {}
-            fulltext = " ".join([title, ti.get("description") or "", str(attrs.get("status") or "")])
+            fulltext = " ".join([title, ti.get("description") or "", str(attrs.get("status") or ""), str(attrs.get("state") or "")])
 
             if KW_EXCLUDE.search(fulltext) and not KW_RESTRICTION.search(fulltext):
                 continue
@@ -132,7 +165,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
             lines_str = ", ".join(str(x).strip() for x in rel_lines if str(x).strip())
             extras = []
-            for k in ("status","station","location","reason","towards"):
+            for k in ("status","state","station","location","reason","towards"):
                 if attrs.get(k):
                     extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
             if lines_str:
@@ -155,6 +188,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     # B) News/Hinweise (nur mit echter Einschränkung)
     try:
         for poi in _fetch_news(timeout=timeout):
+            if _is_closed(poi):
+                continue
             ts_best = _best_ts(poi)
             start = _iso((poi.get("time") or {}).get("start")) or ts_best
             end   = _iso((poi.get("time") or {}).get("end"))
@@ -163,7 +198,13 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
             title = (poi.get("title") or "Hinweis").strip()
             attrs = poi.get("attributes") or {}
-            text_for_filter = " ".join([title, poi.get("subtitle") or "", poi.get("description") or "", str(attrs.get("status") or "")])
+            text_for_filter = " ".join([
+                title,
+                poi.get("subtitle") or "",
+                poi.get("description") or "",
+                str(attrs.get("status") or ""),
+                str(attrs.get("state") or ""),
+            ])
             if not KW_RESTRICTION.search(text_for_filter):
                 continue
 
