@@ -8,7 +8,7 @@
 - Titel-Kosmetik:
   • Kategorie-Vorspann (bis Doppelpunkt) entfernen
   • „Wien X und Wien Y“ → „Wien X ↔ Wien Y“
-  • Pfeile normalisieren (ein „↔“), Bahnhof/Hbf/Bf entfernen
+  • Pfeile/Bindestriche normalisieren (ein „↔“), Bahnhof/Hbf/Bf entfernen
   • Spitze Klammern etc. entfernen
 - Plain-Text-Description (HTML/Word raus, Entities decodiert; Trenner „ • “)
 - Strenger GEO-Filter: Behalte NUR Meldungen, deren Endpunkte in Wien
@@ -79,7 +79,7 @@ def _clean_title_keep_places(t: str) -> str:
     t = COLON_PREFIX_RE.sub("", t)
     # Sonderfall: „Wien X und Wien Y“ → „Wien X ↔ Wien Y“
     t = re.sub(r"\b(Wien [^,;|]+?)\s+und\s+(Wien [^,;|]+?)\b", r"\1 ↔ \2", t)
-    # Pfeile und Trennzeichen normalisieren
+    # Pfeile/Bindestriche und Trennzeichen normalisieren
     parts = [p for p in ARROW_ANY_RE.split(t) if p.strip()]
     parts = [_clean_endpoint(p) for p in parts if p.strip()]
     if len(parts) >= 2:
@@ -98,8 +98,8 @@ def _clean_title_keep_places(t: str) -> str:
 def _split_endpoints(title: str) -> Optional[List[str]]:
     """Extrahiert Endpunktnamen links/rechts (ohne Bahnhof/Hbf/Klammern)."""
     arrow_markers = (
-        "↔", "<=>", "<->", "→", "=>", "->", "—", "–",
-    )
+        "↔", "<=>", "<->", "→", "=>", "->", "—", "–", "-",
+    )  # treat hyphen as arrow indicator as well
     if not any(a in title for a in arrow_markers):
         return None
     parts = [
