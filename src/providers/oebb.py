@@ -135,6 +135,8 @@ W_NEAR_RAW = [
     # Nutzerwunsch (alphabetisch gruppiert)
     "Baden bei Wien",
     "Bruck an der Leitha",            # deckt „Bruck/Leitha Bahnhof“
+    "Deutsch Wagram Bahnhof",
+    "Ebenfurth Bahnhof",
     "Ebreichsdorf",
     "Eisenstadt",
     "Flughafen Wien",
