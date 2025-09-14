@@ -2,33 +2,27 @@
 # -*- coding: utf-8 -*-
 
 """
-Provider: VOR / VAO ReST-API – nur Beeinträchtigungen (IMS/HIM) für
-S-Bahn & Regionalzüge (Default) sowie optional ÖBB-/Regionalbus.
+Provider: VOR / VAO ReST-API – Beeinträchtigungen (IMS/HIM) für
+S-Bahn & Regionalzüge (Default) plus ÖBB-/Regionalbus (wenn VOR_ALLOW_BUS="1").
 
-Ziel:
+Ziele:
 - KEINE Dubletten mit Wiener Linien:
   * Exkludiere U-Bahn & Straßenbahn und WL-Bus
-  * Standard: nur Rail (S, R, REX, RJ/RJX, IC/EC/EN/D)
-  * Optional: ÖBB-/Regionalbus via ENV VOR_ALLOW_BUS=1
+  * Rail (S, R/REX, RJ/RJX, IC/EC/EN/D) immer zulassen
+  * ÖBB-/Regionalbus nur bei VOR_ALLOW_BUS=1
 - dedupe über messageID (VAO-weit stabil)
-- nur aktive Meldungen, mit sDate/eDate + sTime/eTime
+- nur aktive Meldungen; setzt starts_at/ends_at
 
-ENV-Variablen:
-  VOR_ACCESS_ID        (oder VAO_ACCESS_ID)  -> Zugang
-  VOR_STATION_IDS      -> kommasepariert, z. B. "490118400,490146800"
-  VOR_BOARD_DURATION_MIN   -> Minuten-Fenster (Default 60)
-  VOR_HTTP_TIMEOUT         -> Sekunden (Default 15)
-  VOR_ALLOW_BUS            -> "0"/"1" (Default "0")
-  VOR_BUS_INCLUDE_REGEX    -> Regex für Regionalbus-Linien (Default: r"(?:\\b[2-9]\\d{2,4}\\b)")
-  VOR_BUS_EXCLUDE_REGEX    -> Regex zum Ausschluss WL-Bus (Default: r"^(?:N?\\d{1,2}[A-Z]?)$")
-  VOR_MAX_STATIONS_PER_RUN -> Schutzlimit pro Lauf (Default 2)
-
-Dok-Belege:
-- <Messages><Message ... category=... head=... text=... sDate/sTime/eDate/eTime products/company … />
-  in StationBoard/JourneyDetails. :contentReference[oaicite:0]{index=0}
-- <Product … catOutS="RJ" catOutL="Railjet" operator="OEBB" …> (Produkt-Attribute) :contentReference[oaicite:1]{index=1}
-- Beispiel für Regionalbus-Produkt inkl. operator="Österreichische Postbus …" :contentReference[oaicite:2]{index=2}
-- DepartureBoard-Parameter (accessId, id, date, time, duration, rtMode …) :contentReference[oaicite:3]{index=3}
+ENV:
+  VOR_ACCESS_ID / VAO_ACCESS_ID
+  VOR_STATION_IDS                 (kommasepariert)
+  VOR_BASE / VOR_VERSION
+  VOR_BOARD_DURATION_MIN          (Default 60)
+  VOR_HTTP_TIMEOUT                (Default 15)
+  VOR_ALLOW_BUS                   ("0"|"1"; Default "0")
+  VOR_BUS_INCLUDE_REGEX           (Default r"(?:\\b[2-9]\\d{2,4}\\b)")
+  VOR_BUS_EXCLUDE_REGEX           (Default r"^(?:N?\\d{1,2}[A-Z]?)$")
+  VOR_MAX_STATIONS_PER_RUN        (Default 2)
 """
 
 from __future__ import annotations
@@ -40,11 +34,11 @@ import hashlib
 import logging
 from datetime import datetime, timezone
 from typing import Any, Dict, Iterable, List, Optional
+from xml.etree import ElementTree as ET
 
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from xml.etree import ElementTree as ET
 
 log = logging.getLogger(__name__)
 
@@ -63,14 +57,13 @@ ALLOW_BUS = (os.getenv("VOR_ALLOW_BUS", "0").strip() == "1")
 BUS_INCLUDE_RE = re.compile(os.getenv("VOR_BUS_INCLUDE_REGEX", r"(?:\b[2-9]\d{2,4}\b)"))
 BUS_EXCLUDE_RE = re.compile(os.getenv("VOR_BUS_EXCLUDE_REGEX", r"^(?:N?\d{1,2}[A-Z]?)$"))
 
-# Rail-Produktkürzel (catOutS) / -Namen (catOutL), die wir akzeptieren
+# Rail-Produktkürzel / -Namen
 RAIL_SHORT = {"S", "R", "REX", "RJ", "RJX", "IC", "EC", "EN", "D"}
 RAIL_LONG_HINTS = {"S-Bahn", "Regionalzug", "Regionalexpress", "Railjet", "Railjet Express", "EuroNight"}
 
-# Dinge, die wir zwecks Dublettenvermeidung (WL) grundsätzlich ausschließen
-EXCLUDE_OPERATORS = {"Wiener Linien"}         # siehe Beispiel in Arrival/DepartureBoard :contentReference[oaicite:4]{index=4}
-EXCLUDE_LONG_HINTS = {"Straßenbahn", "U-Bahn"}  # Tram/U-Bahn nicht über VOR liefern
-
+# Dublettenvermeidung gegenüber WL
+EXCLUDE_OPERATORS = {"Wiener Linien"}
+EXCLUDE_LONG_HINTS = {"Straßenbahn", "U-Bahn"}
 
 # ----------------------------- HTTP Session -----------------------------
 
@@ -92,15 +85,10 @@ def _session() -> requests.Session:
 
 S = _session()
 
-
 # ----------------------------- Helpers -----------------------------
 
 def _stationboard_url() -> str:
     return f"{VOR_BASE}/{VOR_VERSION}/DepartureBoard"
-
-def _get(root: ET.Element, path: str) -> Optional[ET.Element]:
-    el = root.find(path)
-    return el if el is not None else None
 
 def _text(el: Optional[ET.Element], attr: str, default: str = "") -> str:
     return (el.get(attr) if el is not None else None) or default
@@ -126,17 +114,16 @@ def _normalize_spaces(s: str) -> str:
 
 def _accept_product(prod: ET.Element) -> bool:
     """
-    Entscheidet, ob ein <Product> zur VOR-Ausgabe zugelassen wird.
-    - Exkludiere WL/Tram/U-Bahn.
-    - Rail immer zulassen (S, R/REX, RJ/RJX, IC/EC/EN/D).
-    - Bus nur wenn ALLOW_BUS=1 UND kein WL-Bus (per Operator + Muster).
+    Entscheidet, ob ein <Product> zugelassen wird.
+    - Exkludiere WL/U/Tram
+    - Rail immer zulassen
+    - Bus nur wenn ALLOW_BUS=1, WL-typische Linien ausschließen
     """
     catOutS = _text(prod, "catOutS").strip()
     catOutL = _text(prod, "catOutL").strip()
     operator = _text(prod, "operator").strip()
     line = _text(prod, "line").strip() or _text(prod, "displayNumber").strip() or _text(prod, "name").strip()
 
-    # WL/Tram/U-Bahn grundsätzlich ausschließen (Dublettenschutz)
     if operator in EXCLUDE_OPERATORS:
         return False
     if any(h in catOutL for h in EXCLUDE_LONG_HINTS):
@@ -144,23 +131,20 @@ def _accept_product(prod: ET.Element) -> bool:
     if catOutS.upper() == "U":
         return False
 
-    # Rail: immer zulassen
     if (catOutS.upper() in RAIL_SHORT) or any(h in catOutL for h in RAIL_LONG_HINTS):
         return True
 
-    # Bus: optional + heuristisch
     if not ALLOW_BUS:
         return False
 
-    # Nur ÖBB-/Regionalbus (Postbus etc.). WL-Bus-typische Muster ausschließen:
+    # WL-typische Linienmuster (z. B. 13A, 26A, N60) rauskippen
     if BUS_EXCLUDE_RE.match(line):
         return False
-    # Einschluss: dreistellig/viertstellig oder "Regionalbus …"
+    # Regionale/ÖBB-Busse zulassen (z. B. 400er/500er/700er, Postbus etc.)
     if BUS_INCLUDE_RE.search(line) or ("Regionalbus" in catOutL) or ("Postbus" in operator) or ("Österreichische Postbus" in operator):
         return True
 
     return False
-
 
 # ----------------------------- Fetch/Parse -----------------------------
 
@@ -172,7 +156,7 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[ET.Ele
         "date": now_local.strftime("%Y-%m-%d"),
         "time": now_local.strftime("%H:%M"),
         "duration": str(BOARD_DURATION_MIN),
-        "rtMode": "SERVER_DEFAULT",  # Echtzeit berücksichtigen :contentReference[oaicite:5]{index=5}
+        "rtMode": "SERVER_DEFAULT",
     }
     try:
         resp = S.get(_stationboard_url(), params=params, timeout=HTTP_TIMEOUT)
@@ -208,43 +192,30 @@ def _collect_from_board(station_id: str, root: ET.Element) -> List[Dict[str, Any
         if not msg_id:
             continue
 
-        # inaktive Meldungen ignorieren
         active = _text(m, "act").strip().lower()
         if active in ("false", "0", "no"):
             continue
 
-        # HIM-Kategorie → Klartext
-        try:
-            cat_code = int(_text(m, "category", ""))
-        except Exception:
-            continue
-        # Wir lassen alle IMS-Kategorien passieren – die Produktfilter sorgen für Dublettenschutz
-
-        # akzeptierte Produkte ermitteln (ohne WL/U/Tram; optional Bus)
         prods = _accepted_products(m)
         if not prods:
-            # keine passenden Produktklassen -> überspringen (vermeidet Überschneidung mit WL)
             continue
 
         head = _normalize_spaces(html.escape(_text(m, "head")))
         text = _normalize_spaces(html.escape(_text(m, "text")))
 
-        # Zeitfenster
         starts_at = _parse_dt(_text(m, "sDate"), _text(m, "sTime"))
         ends_at   = _parse_dt(_text(m, "eDate"), _text(m, "eTime"))
 
-        # Betroffene Linien/Produkte (für Info)
         lines: List[str] = []
         operators: List[str] = []
         for p in prods:
-            # Bezeichnung aufbereiten (z. B. "RJ 649", "S 1", "Regionalbus 645")
             name = _text(p, "name") or (_text(p, "catOutS") + " " + _text(p, "displayNumber"))
-            lines.append(name.strip())
+            if name:
+                lines.append(name.strip())
             op = _text(p, "operator")
             if op:
                 operators.append(op.strip())
 
-        # Betroffene Haltestellen (optional vorhanden)
         affected_stops: List[str] = []
         aff = m.find("./affectedStops")
         if aff is not None:
@@ -253,22 +224,21 @@ def _collect_from_board(station_id: str, root: ET.Element) -> List[Dict[str, Any
                 if nm:
                     affected_stops.append(nm)
 
-        # Beschreibung (HTML; build_feed.py macht Klartext)
         extra_bits: List[str] = []
         if lines:
             extra_bits.append(f"Linien: {html.escape(', '.join(sorted(set(lines))))}")
         if affected_stops:
             extra_bits.append(f"Betroffene Haltestellen: {html.escape(', '.join(sorted(set(affected_stops))[:20]))}")
+
         description_html = text or head
         if extra_bits:
             description_html += "<br/>" + "<br/>".join(extra_bits)
 
-        # GUID: VAO messageID reicht für Dedupe innerhalb VOR
         guid = _guid("vao", msg_id)
 
         items.append({
             "source": "VOR/VAO",
-            "category": "Störung",  # einheitliche Kategorie; Detail steckt im Text/Kopf
+            "category": "Störung",
             "title": head or "Meldung",
             "description": description_html,
             "link": "https://www.vor.at/",
@@ -280,12 +250,11 @@ def _collect_from_board(station_id: str, root: ET.Element) -> List[Dict[str, Any
 
     return items
 
-
 # ----------------------------- Public API -----------------------------
 
 def fetch_events() -> List[Dict[str, Any]]:
     """
-    Liefert Schema-kompatible Ereignisse aus VAO (nur Rail + optional Bus),
+    Liefert Schema-kompatible Ereignisse aus VAO (Rail + optional Bus),
     mit Dublettenschutz gegenüber Wiener Linien durch Produktfilter.
     """
     if not VOR_ACCESS_ID:
