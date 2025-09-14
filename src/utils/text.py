@@ -7,8 +7,8 @@ import re
 
 # Precompiled regular expressions for HTML-to-text conversion
 _BR_RE = re.compile(r"(?i)<\s*br\s*/?\s*>")
-_BLOCK_CLOSE_RE = re.compile(r"(?is)</\s*(p|div|li|ul|ol|h\d|table|tr|td)\s*>")
-_BLOCK_OPEN_RE = re.compile(r"(?is)<\s*(p|div|ul|ol|h\d|table|tr|td)\b[^>]*>")
+_BLOCK_CLOSE_RE = re.compile(r"(?is)</\s*(p|div|li|ul|ol|h\d|table|tr|td|th)\s*>")
+_BLOCK_OPEN_RE = re.compile(r"(?is)<\s*(p|div|ul|ol|h\d|table|tr|td|th)\b[^>]*>")
 _LI_OPEN_RE = re.compile(r"(?is)<\s*li\b[^>]*>")
 _TAG_RE = re.compile(r"(?is)<[^>]+>")
 _WS_RE = re.compile(r"[ \t\r\f\v]+")
