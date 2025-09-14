@@ -13,7 +13,7 @@ Der RSS-Feed deklariert den Namespace `ext` (`xmlns:ext="https://wien-oepnv.exam
 ## Entwicklung/Tests lokal
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install -r requirements.txt  # installiert auch pytest
 python -m pytest -q
 python -u src/build_feed.py  # erzeugt docs/feed.xml
 ```
