@@ -183,18 +183,23 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
 
 def _collect_items() -> List[Dict[str, Any]]:
     items: List[Dict[str, Any]] = []
-    futures: Dict[Any, str] = {}
+    futures: Dict[Any, Any] = {}
 
-    with ThreadPoolExecutor(max_workers=len(PROVIDERS)) as executor:
-        for env_var, fetch in PROVIDERS:
-            if os.getenv(env_var, "1").strip().lower() not in {"0", "false"}:
-                futures[executor.submit(fetch)] = env_var
+    active = [
+        f
+        for env, f in PROVIDERS
+        if os.getenv(env, "1").lower() not in {"0", "false"}
+    ]
+    with ThreadPoolExecutor(max_workers=len(active)) as executor:
+        for fetch in active:
+            futures[executor.submit(fetch)] = fetch
         for future in as_completed(futures):
-            env_var = futures[future]
+            fetch = futures[future]
             try:
                 items += future.result()
             except Exception as e:
-                log.exception("%s fetch fehlgeschlagen: %s", env_var, e)
+                name = getattr(fetch, "__name__", str(fetch))
+                log.exception("%s fetch fehlgeschlagen: %s", name, e)
 
     return items
 
