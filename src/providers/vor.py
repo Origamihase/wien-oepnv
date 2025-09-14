@@ -7,11 +7,12 @@ S-Bahn & Regionalzüge (Default) plus ÖBB-/Regionalbus (wenn VOR_ALLOW_BUS="1")
 
 Ziele:
 - KEINE Dubletten mit Wiener Linien:
-  * Exkludiere U-Bahn & Straßenbahn und WL-Bus
+  * Exkludiere U-Bahn & Straßenbahn sowie WL-Bus
   * Rail (S, R/REX, RJ/RJX, IC/EC/EN/D) immer zulassen
-  * ÖBB-/Regionalbus nur bei VOR_ALLOW_BUS=1
+  * ÖBB-/Regionalbus optional (VOR_ALLOW_BUS=1)
 - dedupe über messageID (VAO-weit stabil)
 - nur aktive Meldungen; setzt starts_at/ends_at
+- Round-Robin-Auswahl der Stationen über Zeit (stateless)
 
 ENV:
   VOR_ACCESS_ID / VAO_ACCESS_ID
@@ -23,6 +24,7 @@ ENV:
   VOR_BUS_INCLUDE_REGEX           (Default r"(?:\\b[2-9]\\d{2,4}\\b)")
   VOR_BUS_EXCLUDE_REGEX           (Default r"^(?:N?\\d{1,2}[A-Z]?)$")
   VOR_MAX_STATIONS_PER_RUN        (Default 2)
+  VOR_ROTATION_INTERVAL_SEC       (Default 1800 = 30 min; steuert Round-Robin-Schrittweite)
 """
 
 from __future__ import annotations
@@ -52,6 +54,7 @@ VOR_VERSION = os.getenv("VOR_VERSION", "v1.3")
 BOARD_DURATION_MIN = int(os.getenv("VOR_BOARD_DURATION_MIN", "60"))
 HTTP_TIMEOUT = int(os.getenv("VOR_HTTP_TIMEOUT", "15"))
 MAX_STATIONS_PER_RUN = int(os.getenv("VOR_MAX_STATIONS_PER_RUN", "2"))
+ROTATION_INTERVAL_SEC = int(os.getenv("VOR_ROTATION_INTERVAL_SEC", "1800"))  # 30 min
 
 ALLOW_BUS = (os.getenv("VOR_ALLOW_BUS", "0").strip() == "1")
 BUS_INCLUDE_RE = re.compile(os.getenv("VOR_BUS_INCLUDE_REGEX", r"(?:\b[2-9]\d{2,4}\b)"))
@@ -79,7 +82,7 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/xml",
-        "User-Agent": "Origamihase-wien-oepnv/1.1 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
@@ -145,6 +148,28 @@ def _accept_product(prod: ET.Element) -> bool:
         return True
 
     return False
+
+def _select_stations_round_robin(ids: List[str], chunk_size: int, period_sec: int) -> List[str]:
+    """
+    Stateless Round-Robin über Zeit:
+      - Teilt die ID-Liste in Blöcke à chunk_size.
+      - Wählt je Lauf den Block anhand des 'Zeitslots' (epoch // period_sec).
+    So kommen nach und nach alle Stationen dran – ohne Cursor-Datei.
+    """
+    if not ids:
+        return []
+    m = len(ids)
+    n = max(1, min(chunk_size, m))
+    # Index basierend auf der Anzahl vergangener Zeitfenster
+    slot = int(datetime.now(timezone.utc).timestamp()) // max(1, period_sec)
+    total_chunks = (m + n - 1) // n
+    chunk_index = int(slot) % total_chunks
+    start = chunk_index * n
+    end = start + n
+    if end <= m:
+        return ids[start:end]
+    # Wrap-around
+    return ids[start:] + ids[: end - m]
 
 # ----------------------------- Fetch/Parse -----------------------------
 
@@ -256,6 +281,7 @@ def fetch_events() -> List[Dict[str, Any]]:
     """
     Liefert Schema-kompatible Ereignisse aus VAO (Rail + optional Bus),
     mit Dublettenschutz gegenüber Wiener Linien durch Produktfilter.
+    Verwendet Round-Robin, damit nach und nach alle Stationen abgefragt werden.
     """
     if not VOR_ACCESS_ID:
         log.info("VOR: kein VOR_ACCESS_ID gesetzt – Provider inaktiv.")
@@ -266,10 +292,13 @@ def fetch_events() -> List[Dict[str, Any]]:
 
     now_local = datetime.now(timezone.utc)
 
+    # Round-Robin-Auswahl der Stationen (stateless, zeitbasiert)
+    station_chunk = _select_stations_round_robin(VOR_STATION_IDS, MAX_STATIONS_PER_RUN, ROTATION_INTERVAL_SEC)
+
     seen: set[str] = set()
     out: List[Dict[str, Any]] = []
 
-    for sid in VOR_STATION_IDS[:max(1, MAX_STATIONS_PER_RUN)]:
+    for sid in station_chunk:
         root = _fetch_stationboard(sid, now_local)
         if root is None:
             continue
