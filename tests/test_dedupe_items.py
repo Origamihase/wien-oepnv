@@ -27,9 +27,9 @@ def test_main_dedupes_items(monkeypatch, tmp_path):
 
     sample_items = [
         {"_identity": "a", "guid": "ga", "title": "A"},
-        {"_identity": "a", "guid": "ga_dup", "title": "A2"},
-        {"guid": "gb", "title": "B"},
-        {"guid": "gb", "title": "B2"},
+        {"_identity": "a2", "guid": "ga", "title": "A2"},
+        {"_identity": "b", "title": "B"},
+        {"_identity": "b", "title": "B2"},
         {"guid": "gc", "title": "C"},
     ]
 
@@ -49,7 +49,20 @@ def test_main_dedupes_items(monkeypatch, tmp_path):
     build_feed.main()
 
     assert captured["items"] == [
+        {"_identity": "b", "title": "B"},
         {"_identity": "a", "guid": "ga", "title": "A"},
-        {"guid": "gb", "title": "B"},
         {"guid": "gc", "title": "C"},
+    ]
+
+
+def test_guid_takes_precedence_over_identity(monkeypatch):
+    build_feed = _import_build_feed(monkeypatch)
+
+    sample_items = [
+        {"guid": "same", "_identity": "id1"},
+        {"guid": "same", "_identity": "id2"},
+    ]
+
+    assert build_feed._dedupe_items(sample_items) == [
+        {"guid": "same", "_identity": "id1"}
     ]

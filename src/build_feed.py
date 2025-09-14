@@ -139,11 +139,12 @@ def _collect_items() -> List[Dict[str, Any]]:
 
 
 def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Behalte nur das erste Item je Identität (oder guid)."""
+    """Behalte nur das erste Item je guid (oder _identity)."""
     seen = set()
     out = []
     for it in items:
-        key = it.get("_identity") or it.get("guid")
+        guid = it.get("guid")
+        key = guid or it.get("_identity")
         if key in seen:
             continue
         seen.add(key)
