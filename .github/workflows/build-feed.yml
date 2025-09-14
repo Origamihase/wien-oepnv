@@ -15,6 +15,24 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    # Job-weite ENV (damit 'if:' darauf zugreifen kann)
+    env:
+      # --- VOR/VAO Zugang ---
+      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}        # leer = VOR-Schritte werden übersprungen
+      VOR_BASE: "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
+      VOR_VERSION: "v1.3"
+
+      # --- VOR Provider-Feintuning ---
+      # S-Bahn & Regionalzüge immer, ÖBB-/Regionalbus optional einschalten:
+      VOR_ALLOW_BUS: "1"                          # "1" = ÖBB-/Regionalbus zusätzlich einbeziehen
+      VOR_BUS_INCLUDE_REGEX: "(?:\\b[2-9]\\d{2,4}\\b)"   # 3–4-stellige Buslinien
+      VOR_BUS_EXCLUDE_REGEX: "^(?:N?\\d{1,2}[A-Z]?)$"    # typische WL-Bus-/Nightline-Patterns ausschließen
+      VOR_MAX_STATIONS_PER_RUN: "3"               # Rate-Limit-Schutz (anheben, wenn dein Tarif das erlaubt)
+
+      # Platzhalter – wird im Discovery-Step gesetzt (oder bleibt leer)
+      VOR_STATION_IDS: ""
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,6 +48,112 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # ------------------------------------------------------------
+      # (Optional) VOR Stationen für Wien automatisch ermitteln
+      # Läuft nur, wenn VOR_ACCESS_ID gesetzt ist.
+      # Erzeugt/aktualisiert data/vor_station_ids_wien.txt
+      # und exportiert VOR_STATION_IDS ins Laufzeit-ENV.
+      # ------------------------------------------------------------
+      - name: Discover VOR Station IDs for Vienna (PLZ 10xx–12xx)
+        if: ${{ env.VOR_ACCESS_ID != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          FILE="data/vor_station_ids_wien.txt"
+          mkdir -p data
+
+          if [[ -f "$FILE" ]]; then
+            echo "Found existing $FILE – reusing."
+            # In eine Zeile bringen und ins ENV exportieren
+            IDS="$(tr -d '\r\n ' < "$FILE")"
+            echo "VOR_STATION_IDS=$IDS" >> "$GITHUB_ENV"
+            exit 0
+          fi
+
+          python - <<'PY'
+          import os, sys, time, xml.etree.ElementTree as ET
+          import requests
+
+          ACCESS = os.environ.get("VOR_ACCESS_ID", "").strip()
+          BASE   = os.environ.get("VOR_BASE", "").rstrip("/")
+          VER    = os.environ.get("VOR_VERSION", "v1.3").strip()
+          OUT    = "data/vor_station_ids_wien.txt"
+
+          if not ACCESS:
+              sys.exit(0)
+
+          session = requests.Session()
+          session.headers.update({"Accept":"application/xml","User-Agent":"origamihase-wien-oepnv/auto-discover"})
+          url = f"{BASE}/{VER}/location.name"
+
+          # Wiener PLZ 1010..1230 (vierstellig, beginnen mit 1)
+          plz_list = [
+              "1010","1020","1030","1040","1050","1060","1070","1080","1090",
+              "1100","1110","1120","1130","1140","1150","1160","1170","1180","1190",
+              "1200","1210","1220","1230",
+          ]
+
+          ext_ids = set()
+          for plz in plz_list:
+              params = {
+                  "accessId": ACCESS,
+                  "format": "xml",
+                  "input": f"{plz} Wien",
+                  "type": "S",       # nur Stop/Station
+                  "stations": "49",  # Bundesland Wien
+                  "maxNo": "200",
+              }
+              try:
+                  r = session.get(url, params=params, timeout=12)
+                  if r.status_code >= 400 or not r.content:
+                      continue
+                  root = ET.fromstring(r.content)
+                  # <StopLocation name="Wien ..." extId="..." id="..."/>
+                  for sl in root.findall(".//StopLocation"):
+                      ext = sl.get("extId") or sl.get("id")
+                      name = (sl.get("name") or "").strip()
+                      # Nur Wiener Stops (S-Bahn/Regio-Umfeld) – grobe Heuristik auf Name:
+                      if not name or not name.startswith("Wien"):
+                          continue
+                      if ext:
+                          ext_ids.add(ext.strip())
+              except Exception:
+                  continue
+              time.sleep(0.2)  # höflich bleiben
+
+          if not ext_ids:
+              # Kein Fund -> nichts exportieren
+              sys.exit(0)
+
+          ids_csv = ",".join(sorted(ext_ids))
+          os.makedirs("data", exist_ok=True)
+          with open(OUT, "w", encoding="utf-8") as f:
+              f.write(ids_csv + "\n")
+
+          # Für folgende Steps ins ENV exportieren
+          print(f"::set-output name=ids::{ids_csv}")  # (legacy noop)
+          print(ids_csv)
+          PY
+
+          # exportiere in GITHUB_ENV, falls Datei erzeugt
+          if [[ -f "$FILE" ]]; then
+            IDS="$(tr -d '\r\n ' < "$FILE")"
+            echo "VOR_STATION_IDS=$IDS" >> "$GITHUB_ENV"
+          else
+            echo "VOR_STATION_IDS=" >> "$GITHUB_ENV"
+          fi
+
+      - name: Commit discovered VOR stations (if any)
+        if: ${{ env.VOR_ACCESS_ID != '' }}
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(vor): add/update Vienna station IDs"
+          file_pattern: data/vor_station_ids_wien.txt
+          branch: ${{ github.ref_name }}
+
+      # ------------------------------------------------------------
+      # Feed bauen (WL + VOR), inkl. TV-Optimierungen
+      # ------------------------------------------------------------
       - name: Build feed
         env:
           OUT_PATH: docs/feed.xml
@@ -40,9 +164,19 @@ jobs:
           DESCRIPTION_CHAR_LIMIT: 170
           FRESH_PUBDATE_WINDOW_MIN: 5
           MAX_ITEMS: 60
-          MAX_ITEM_AGE_DAYS: 365      # alt & unbefristet nach 12 Monaten ausblenden
-          ABSOLUTE_MAX_AGE_DAYS: 540   # harter Cut für unbefristete Altlasten (18 Monate)
+          MAX_ITEM_AGE_DAYS: 365       # alt & unbefristet nach 12 Monaten ausblenden
+          ABSOLUTE_MAX_AGE_DAYS: 540   # harter Cut (18 Monate) für unbefristete Altlasten
           ACTIVE_GRACE_MIN: 10
+
+          # Provider-Vars (werden aus Job-ENV geerbt oder im Discover-Step gesetzt)
+          VOR_ACCESS_ID: ${{ env.VOR_ACCESS_ID }}
+          VOR_BASE: ${{ env.VOR_BASE }}
+          VOR_VERSION: ${{ env.VOR_VERSION }}
+          VOR_STATION_IDS: ${{ env.VOR_STATION_IDS }}
+          VOR_ALLOW_BUS: ${{ env.VOR_ALLOW_BUS }}
+          VOR_BUS_INCLUDE_REGEX: ${{ env.VOR_BUS_INCLUDE_REGEX }}
+          VOR_BUS_EXCLUDE_REGEX: ${{ env.VOR_BUS_EXCLUDE_REGEX }}
+          VOR_MAX_STATIONS_PER_RUN: ${{ env.VOR_MAX_STATIONS_PER_RUN }}
         run: python -u src/build_feed.py
 
       - name: Validate feed (XML + GUID uniqueness)
