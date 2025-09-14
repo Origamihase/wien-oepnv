@@ -185,7 +185,12 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     if isinstance(pubDate, datetime):
         parts.append(f"<pubDate>{_fmt_rfc2822(pubDate)}</pubDate>")
 
-    fs_dt = datetime.fromisoformat(st["first_seen"])
+    try:
+        fs_dt = datetime.fromisoformat(st["first_seen"])
+    except Exception:
+        log.warning("first_seen Parsefehler: %r – fallback to now", st.get("first_seen"))
+        fs_dt = _to_utc(now)
+        st["first_seen"] = fs_dt.isoformat()
     parts.append(f"<first_seen>{_fmt_rfc2822(fs_dt)}</first_seen>")
     if isinstance(starts_at, datetime):
         parts.append(f"<starts_at>{_fmt_rfc2822(starts_at)}</starts_at>")
