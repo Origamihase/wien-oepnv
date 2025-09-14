@@ -2,18 +2,19 @@
 # -*- coding: utf-8 -*-
 
 """
-Wiener Linien Provider (OGD) – betriebsrelevante Störungen/Hinweise für Wien.
-Ausschlüsse: Aufzüge/Fahrtreppen (Facility-only).
+Wiener Linien Provider (OGD) – betriebsrelevante Störungen/Hinweise.
+Ausschlüsse: reine Facility-Meldungen (Aufzüge/Fahrtreppen).
 
-Highlights:
-- Titelkürzung (nur sinnvolle Labels weg)
-- Robustes Linien-Präfix (keine Dopplungen/„Rufbus“ im Titel)
-- Fallback-Linien aus Text (ohne Datums-/Zeit-/Adress-Fallen)
-- Sammel vs. Einzel (Aggregat raus, wenn alle Einzel vorhanden)
+Highlights
+- Titelkürzung (generische Label am Anfang entfernen)
+- Robustes Linien-Präfix („L1/L2: …“), keine Hausnummern als Linien
+- Fallback-Linien aus Titeltext (Datum/Zeit/Adressen werden maskiert)
+- Sammel vs. Einzel: Aggregat raus, wenn alle Einzel vorhanden
 - Plain-Text-Beschreibung (TV-tauglich) mit Trenner „ • “
-- Stop-Namen: in der Beschreibung gelistet; Anzahl im Titel als „(X Halte)“
-- Stabile `_identity` für first_seen
-- NEU: „Kernbegriff“-Dedupe innerhalb gleicher Linien (z. B. „Fahrtbehinderung Falschparker“ ~ „Falschparker“)
+- Stop-Namen in der Description, Anzahl der Halte im Titel
+- Stabile `_identity` (für first_seen im Build)
+- Dedupe per „Topic-Key“ (z. B. „Falschparker“, „Polizeieinsatz“) + Linien-Set:
+  kürzerer Titel gewinnt (z. B. „5: Falschparker“ statt „5: Fahrtbehinderung Falschparker“)
 """
 
 from __future__ import annotations
@@ -39,7 +40,9 @@ WL_BASE = (
 
 log = logging.getLogger(__name__)
 
+
 # ---------------- HTTP-Session mit Retry ----------------
+
 def _session() -> requests.Session:
     s = requests.Session()
     retry = Retry(
@@ -52,43 +55,54 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/2.10 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
+
 S = _session()
 
+
 # ---------------- Relevanz-/Ausschluss-Filter ----------------
+
 KW_RESTRICTION = re.compile(
-    r"\b(umleitung|ersatzverkehr|unterbrech|sperr|gesperrt|störung|arbeiten|baustell|einschränk|verspät|ausfall|verkehr"
-    r"|kurzführung|teilbetrieb|pendelverkehr|kurzstrecke)\b",
+    r"\b(umleitung|ersatzverkehr|unterbrech|sperr|gesperrt|störung|stoerung|arbeiten|baustell|einschränk|verspät|ausfall|verkehr"
+    r"|kurzführung|kurzfuehrung|teilbetrieb|pendelverkehr|kurzstrecke)\b",
     re.IGNORECASE
 )
+
 KW_EXCLUDE = re.compile(
-    r"\b(willkommen|gewinnspiel|anzeiger|eröffnung|service(?:-info)?|info(?:rmation)?|fest|keine\s+echtzeitinfo)\b",
+    r"\b(willkommen|gewinnspiel|anzeiger|eröffnung|eroeffnung|service(?:-info)?|info(?:rmation)?|fest|keine\s+echtzeitinfo)\b",
     re.IGNORECASE
 )
+
 FACILITY_ONLY = re.compile(
-    r"\b(aufzug|aufzüge|lift|fahrstuhl|fahrtreppe|fahrtreppen|rolltreppe|rolltreppen|aufzugsinfo|fahrtreppeninfo)\b",
+    r"\b(aufzug|aufzüge|aufzuege|lift|fahrstuhl|fahrtreppe|fahrtreppen|rolltreppe|rolltreppen|aufzugsinfo|fahrtreppeninfo)\b",
     re.IGNORECASE
 )
+
+
 def _is_facility_only(*texts: str) -> bool:
     t = " ".join([x for x in texts if x]).lower()
     return bool(FACILITY_ONLY.search(t))
 
+
 # ---------------- Titel-Kosmetik ----------------
+
 _LABELS = [
-    r"bauarbeiten", r"straßenbauarbeiten", r"gleisbauarbeiten",
+    r"bauarbeiten", r"straßenbauarbeiten", r"strassenbauarbeiten", r"gleisbauarbeiten",
     r"verkehrsinfo", r"verkehrsinformation", r"verkehrsmeldung",
-    r"störung", r"hinweis", r"serviceinfo", r"service\-info", r"information"
+    r"störung", r"stoerung", r"hinweis", r"serviceinfo", r"service\-info", r"information"
 ]
 _LABEL_HEAD_RE = re.compile(
     r"^\s*(?:(?:" + "|".join(_LABELS) + r")\s*(?:[-:–—/]\s*|\s+))+",
     re.IGNORECASE
 )
 
+
 def _is_informative(rest: str) -> bool:
     return bool(rest and re.search(r"[A-Za-zÄÖÜäöüß0-9]{3,}", rest))
+
 
 def _tidy_title_wl(title: str) -> str:
     """Entfernt generische Label am Anfang, wenn danach informativer Text steht."""
@@ -98,16 +112,19 @@ def _tidy_title_wl(title: str) -> str:
     stripped = _LABEL_HEAD_RE.sub("", t)
     if stripped and _is_informative(stripped):
         t = stripped
-    t = re.sub(r"[<>«»‹›]+", "", t)          # spitze Klammern u. ä. raus
+    t = re.sub(r"[<>«»‹›]+", "", t)  # spitze Klammern/Anführungen
     return re.sub(r"\s{2,}", " ", t).strip(" -–—:/\t")
 
+
 # ---------------- HTML → Plain-Text (Beschreibung) ----------------
+
 _BR_RE = re.compile(r"(?i)<\s*br\s*/?\s*>")
 _BLOCK_CLOSE_RE = re.compile(r"(?is)</\s*(p|div|li|ul|ol)\s*>")
 _BLOCK_OPEN_RE = re.compile(r"(?is)<\s*(p|div|ul|ol)\b[^>]*>")
 _LI_OPEN_RE = re.compile(r"(?is)<\s*li\b[^>]*>")
 _TAG_RE = re.compile(r"(?is)<[^>]+>")
 _WS_RE = re.compile(r"[ \t\r\f\v]+")
+
 
 def _html_to_text(s: str) -> str:
     """
@@ -125,16 +142,23 @@ def _html_to_text(s: str) -> str:
     txt = _TAG_RE.sub("", txt)
     txt = re.sub(r"\s*\n\s*", " • ", txt)  # einheitlicher Trenner
     txt = _WS_RE.sub(" ", txt)
-    return re.sub(r"\s{2,}", " ", txt).strip()
+    txt = re.sub(r"\s{2,}", " ", txt).strip()
+    # Kosmetik: „bei • “ / „in • “ → „bei “ / „in “
+    txt = re.sub(r"\b(bei|in|an|auf)\s*•\s*", r"\1 ", txt, flags=re.IGNORECASE)
+    return txt
+
 
 # ---------------- Zeit & Utils ----------------
+
 def _iso(s: Optional[str]) -> Optional[datetime]:
+    """Parst ISO (inkl. 'Z' / TZ ohne Doppelpunkt) robust zu aware datetime."""
     if not s:
         return None
     s = s.replace("Z", "+00:00")
     if len(s) >= 5 and (s[-5] in "+-") and s[-3] != ":":
         s = s[:-2] + ":" + s[-2:]
     return dtparser.isoparse(s)
+
 
 def _best_ts(obj: Dict[str, Any]) -> Optional[datetime]:
     t = obj.get("time") or {}
@@ -148,6 +172,7 @@ def _best_ts(obj: Dict[str, Any]) -> Optional[datetime]:
             return cand
     return None
 
+
 def _is_active(start: Optional[datetime], end: Optional[datetime], now: datetime) -> bool:
     if start and start > now:
         return False
@@ -155,26 +180,33 @@ def _is_active(start: Optional[datetime], end: Optional[datetime], now: datetime
         return False
     return True
 
+
 def _as_list(val) -> List[Any]:
     if val is None:
         return []
     return list(val) if isinstance(val, (list, tuple, set)) else [val]
 
+
 # ---------------- Linien-Aufbereitung ----------------
+
 def _clean_line_token(s: str) -> str:
     s = str(s or "")
     s = re.sub(r"^\s*Rufbus\s+", "", s, flags=re.IGNORECASE)  # „Rufbus “ strippen
     s = re.sub(r"\s+", "", s).upper()
     return s
 
+
 def _tok(v: Any) -> str:
     return _clean_line_token(re.sub(r"[^A-Za-z0-9+]", "", str(v)))
+
 
 def _display_line(s: str) -> str:
     return _clean_line_token(s)
 
+
 def _norm_title(s: str) -> str:
     return re.sub(r"\s+", " ", (s or "").strip().lower())
+
 
 # Präfix-Erkennung/Entfernung:
 LINE_PREFIX_STRIP_RE = re.compile(r"^\s*[A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20}\s*:\s*", re.IGNORECASE)
@@ -189,7 +221,9 @@ LINES_COMPLEX_PREFIX_RE = re.compile(
 )
 RUF_BUS_PREFIX_RE = re.compile(r"^\s*Rufbus\s+([A-Za-z0-9]+)\s*:\s*", re.IGNORECASE)
 
+
 def _strip_existing_line_block(title: str) -> str:
+    """Entfernt vorhandene Linienblöcke am Anfang (Slash-/Komma-/Rufbus-Varianten)."""
     t = LINE_PREFIX_STRIP_RE.sub("", title)
     t = LINES_COMPLEX_PREFIX_RE.sub("", t)
     t = RUF_BUS_PREFIX_RE.sub("", t)
@@ -199,7 +233,9 @@ def _strip_existing_line_block(title: str) -> str:
             t = post.strip()
     return t
 
+
 def _ensure_line_prefix(title: str, lines_disp: List[str]) -> str:
+    """Sorgt für „L1/L2: …“. Entfernt vorhandene Präfixe zuerst."""
     if not lines_disp:
         return title
     wanted = "/".join(lines_disp)
@@ -208,8 +244,12 @@ def _ensure_line_prefix(title: str, lines_disp: List[str]) -> str:
     stripped = _strip_existing_line_block(title)
     return f"{wanted}: {stripped}".strip()
 
+
 # Fallback-Linien aus Titeltext — vorher Datum/Zeit/Adressen maskieren
-LINE_CODE_RE = re.compile(r"\b(?:U\d{1,2}|S\d{1,2}|N\d{1,3}|[0-9]{1,3}[A-Z]?|[A-Z])\b", re.IGNORECASE)
+LINE_CODE_RE = re.compile(
+    r"\b(?:U\d{1,2}|S\d{1,2}|N\d{1,3}|[0-9]{1,3}[A-Z]?|[A-Z])\b",
+    re.IGNORECASE
+)
 RUF_BUS_RE = re.compile(r"Rufbus\s+([A-Za-z0-9]+)", re.IGNORECASE)
 DATE_FULL_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\.(?:\d{2}|\d{4})\b")
 DATE_SHORT_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\b")
@@ -219,6 +259,7 @@ ADDRESS_NO_RE = re.compile(
     re.IGNORECASE
 )
 
+
 def _mask_dates_times_addresses(t: str) -> str:
     t = DATE_FULL_RE.sub(" ", t)
     t = DATE_SHORT_RE.sub(" ", t)
@@ -226,43 +267,58 @@ def _mask_dates_times_addresses(t: str) -> str:
     t = ADDRESS_NO_RE.sub(r"\1", t)  # Zahl nach Straßentyp entfernen
     return t
 
+
 def _detect_line_pairs_from_text(text: str) -> List[Tuple[str, str]]:
     t = _mask_dates_times_addresses(text or "")
     pairs: List[Tuple[str, str]] = []
     seen: set[str] = set()
+    # „Rufbus Nxx“ zuerst
     for m in RUF_BUS_RE.findall(t):
         tok = _tok(m)
         if tok and tok not in seen:
-            seen.add(tok); pairs.append((tok, _display_line(m)))
+            seen.add(tok)
+            pairs.append((tok, _display_line(m)))
+    # generische Codes
     for m in LINE_CODE_RE.findall(t):
         tok = _tok(m)
         if tok and tok not in seen:
-            seen.add(tok); pairs.append((tok, _display_line(m)))
+            seen.add(tok)
+            pairs.append((tok, _display_line(m)))
     return pairs
 
+
 def _make_line_pairs_from_related(rel_lines: List[Any]) -> List[Tuple[str, str]]:
-    pairs: List[Tuple[str, str]] = []; seen: set[str] = set()
+    pairs: List[Tuple[str, str]] = []
+    seen: set[str] = set()
     for x in rel_lines:
         tok = _tok(x)
-        if not tok or tok in seen: continue
-        seen.add(tok); pairs.append((tok, _display_line(x)))
+        if not tok or tok in seen:
+            continue
+        seen.add(tok)
+        pairs.append((tok, _display_line(x)))
     return pairs
+
 
 def _merge_line_pairs(base_pairs: List[Tuple[str, str]], add_pairs: List[Tuple[str, str]]) -> List[Tuple[str, str]]:
     existing = {tok for tok, _ in base_pairs}
     out = list(base_pairs)
     for tok, disp in add_pairs:
         if tok not in existing:
-            out.append((tok, disp)); existing.add(tok)
+            out.append((tok, disp))
+            existing.add(tok)
     return out
+
 
 def _line_tokens_from_pairs(pairs: List[Tuple[str, str]]) -> List[str]:
     return [tok for tok, _ in pairs]
 
+
 def _line_display_from_pairs(pairs: List[Tuple[str, str]]) -> List[str]:
     return [disp for _, disp in pairs]
 
+
 # ---------------- Stop-Namen extrahieren ----------------
+
 def _stop_names_from_related(rel_stops: List[Any]) -> List[str]:
     names: List[str] = []
     for s in rel_stops:
@@ -270,46 +326,70 @@ def _stop_names_from_related(rel_stops: List[Any]) -> List[str]:
             for key in ("name", "stopName", "title"):
                 val = s.get(key)
                 if val and re.search(r"[A-Za-zÄÖÜäöüß]", str(val)):
-                    names.append(str(val).strip()); break
+                    names.append(str(val).strip())
+                    break
         elif isinstance(s, str):
             if re.search(r"[A-Za-zÄÖÜäöüß]", s):
                 names.append(s.strip())
+    # dedupe (case-insensitiv), sortiert
     dedup: Dict[str, str] = {}
     for n in names:
         k = re.sub(r"\s+", " ", n).strip().casefold()
         dedup.setdefault(k, n)
-    return sorted(dedup.values(), key=lambda x: x.casefold())
+    out = sorted(dedup.values(), key=lambda x: x.casefold())
+    return out
 
-# ---------------- „Kernbegriff“ für Titel (Dedupe) ----------------
-# Entfernt sehr generische Wörter; „polizeieinsatz“, „unfall“ etc. bleiben erhalten!
-_TITLE_CORE_STOPWORDS = re.compile(
-    r"\b(fahrtbehinderung|verkehrsbehinderung|behinderung|stoerung|störung|hinweis|information|meldung|serviceinfo|service\-info)\b",
+
+# ---------------- „Kernbegriff/Topic“ für Dedupe ----------------
+
+TITLE_TOPIC_TOKENS = {
+    "falschparker", "polizeieinsatz", "rettungseinsatz", "unfall",
+    "signalstörung", "signalstoerung", "stromausfall", "umleitung",
+    "ersatzverkehr", "kurzführung", "kurzfuehrung", "sperre", "gesperrt",
+}
+
+_GENERIC_FILLER = re.compile(
+    r"\b(fahrtbehinderung|verkehrsbehinderung|behinderung|störung|stoerung|hinweis|meldung|serviceinfo|service\-info|"
+    r"betrieb\s+ab.*|betrieb\s+nur.*)\b",
     re.IGNORECASE
 )
+
 def _title_core(t: str) -> str:
-    t = _tidy_title_wl(t)
-    t = _TITLE_CORE_STOPWORDS.sub(" ", t)
-    t = re.sub(r"[^\wäöüÄÖÜß]+", " ", t, flags=re.UNICODE)
-    t = re.sub(r"\s{2,}", " ", t).strip().casefold()
-    return t or _norm_title(t)
+    t2 = _tidy_title_wl(t)
+    t2 = re.sub(r"[^\wäöüÄÖÜß]+", " ", t2, flags=re.UNICODE)
+    t2 = re.sub(r"\s{2,}", " ", t2).strip().casefold()
+    return t2
+
+def _topic_key_from_title(raw: str) -> str:
+    t = _GENERIC_FILLER.sub(" ", raw or "")
+    t = re.sub(r"[^\wäöüÄÖÜß]+", " ", t, flags=re.UNICODE).casefold()
+    toks = {w for w in t.split() if w in TITLE_TOPIC_TOKENS}
+    return " ".join(sorted(toks))  # kann leer sein
+
 
 # ---------------- API Calls ----------------
+
 def _get_json(path: str, params: Optional[List[tuple]] = None, timeout: int = 20) -> Dict[str, Any]:
     url = f"{WL_BASE.rstrip('/')}/{path.lstrip('/')}"
     r = S.get(url, params=params or None, timeout=timeout)
     r.raise_for_status()
     return r.json()
 
+
 def _fetch_traffic_infos(timeout: int = 20) -> Iterable[Dict[str, Any]]:
-    params = [("name","stoerunglang"),("name","stoerungkurz")]
+    # explizit KEINE Facility-Feeds
+    params = [("name", "stoerunglang"), ("name", "stoerungkurz")]
     data = _get_json("trafficInfoList", params=params, timeout=timeout)
     return (data.get("data", {}) or {}).get("trafficInfos", []) or []
+
 
 def _fetch_news(timeout: int = 20) -> Iterable[Dict[str, Any]]:
     data = _get_json("newsList", timeout=timeout)
     return (data.get("data", {}) or {}).get("pois", []) or []
 
+
 # ---------------- Public API ----------------
+
 def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     now = datetime.now(timezone.utc)
     raw: List[Dict[str, Any]] = []
@@ -318,8 +398,15 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     try:
         for ti in _fetch_traffic_infos(timeout=timeout):
             attrs = ti.get("attributes") or {}
-            status_blob = " ".join([str(ti.get("status") or ""), str(attrs.get("status") or ""), str(attrs.get("state") or "")]).lower()
-            if any(x in status_blob for x in ("finished","inactive","inaktiv","done","closed","nicht aktiv","ended","ende","abgeschlossen","beendet","geschlossen")):
+            status_blob = " ".join([
+                str(ti.get("status") or ""),
+                str(attrs.get("status") or ""),
+                str(attrs.get("state") or ""),
+            ]).lower()
+            if any(x in status_blob for x in (
+                "finished", "inactive", "inaktiv", "done", "closed",
+                "nicht aktiv", "ended", "ende", "abgeschlossen", "beendet", "geschlossen"
+            )):
                 continue
 
             title_raw = (ti.get("title") or ti.get("name") or "Meldung").strip()
@@ -331,23 +418,29 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
             tinfo = ti.get("time") or {}
             start = _iso(tinfo.get("start")) or _best_ts(ti)
-            end   = _iso(tinfo.get("end"))
+            end = _iso(tinfo.get("end"))
             if not _is_active(start, end, now):
                 continue
 
-            blob = " ".join([title_raw, desc_raw])
-            if KW_EXCLUDE.search(blob) and not KW_RESTRICTION.search(blob):
+            blob_for_relevance = " ".join([title_raw, desc_raw])
+            if KW_EXCLUDE.search(blob_for_relevance) and not KW_RESTRICTION.search(blob_for_relevance):
                 continue
 
             rel_lines = _as_list(ti.get("relatedLines") or attrs.get("relatedLines"))
-            line_pairs = _make_line_pairs_from_related(rel_lines) or _detect_line_pairs_from_text(title_raw)
+            line_pairs = _make_line_pairs_from_related(rel_lines)
+            if not line_pairs:
+                # Fallback: aus Titeltext (inkl. „Rufbus Nxx“, aber ohne Datum/Zeit/Adresse)
+                line_pairs = _detect_line_pairs_from_text(title_raw)
+
             rel_stops = _as_list(ti.get("relatedStops") or attrs.get("relatedStops"))
             stop_names = _stop_names_from_related(rel_stops)
 
             extras = []
-            for k in ("status","state","station","location","reason","towards"):
-                if attrs.get(k): extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
+            for k in ("status", "state", "station", "location", "reason", "towards"):
+                if attrs.get(k):
+                    extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
 
+            # stabile Identity für first_seen
             id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
             id_day = start.date().isoformat() if isinstance(start, datetime) else "None"
             identity = f"wl|störung|L={id_lines}|D={id_day}"
@@ -357,11 +450,12 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "category": "Störung",
                 "title": title,
                 "title_core": _title_core(title_raw),
+                "topic_key": _topic_key_from_title(title_raw),
                 "desc": desc,
                 "extras": extras,
-                "lines_pairs": line_pairs,
+                "lines_pairs": line_pairs,                  # [(tok, disp), …]
                 "stop_names": set(stop_names),
-                "pubDate": start,
+                "pubDate": start,                           # ggf. None
                 "starts_at": start,
                 "ends_at": end,
                 "_identity": identity,
@@ -373,8 +467,15 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     try:
         for poi in _fetch_news(timeout=timeout):
             attrs = poi.get("attributes") or {}
-            status_blob = " ".join([str(poi.get("status") or ""), str(attrs.get("status") or ""), str(attrs.get("state") or "")]).lower()
-            if any(x in status_blob for x in ("finished","inactive","inaktiv","done","closed","nicht aktiv","ended","ende","abgeschlossen","beendet","geschlossen")):
+            status_blob = " ".join([
+                str(poi.get("status") or ""),
+                str(attrs.get("status") or ""),
+                str(attrs.get("state") or ""),
+            ]).lower()
+            if any(x in status_blob for x in (
+                "finished", "inactive", "inaktiv", "done", "closed",
+                "nicht aktiv", "ended", "ende", "abgeschlossen", "beendet", "geschlossen"
+            )):
                 continue
 
             title_raw = (poi.get("title") or "Hinweis").strip()
@@ -386,23 +487,31 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
             tinfo = poi.get("time") or {}
             start = _iso(tinfo.get("start")) or _best_ts(poi)
-            end   = _iso(tinfo.get("end"))
+            end = _iso(tinfo.get("end"))
             if not _is_active(start, end, now):
                 continue
 
-            text_for_filter = " ".join([title_raw, poi.get("subtitle") or "", desc_raw, str(attrs.get("status") or ""), str(attrs.get("state") or "")])
+            text_for_filter = " ".join([
+                title_raw, poi.get("subtitle") or "", desc_raw,
+                str(attrs.get("status") or ""), str(attrs.get("state") or ""),
+            ])
             if not KW_RESTRICTION.search(text_for_filter):
                 continue
 
             rel_lines = _as_list(poi.get("relatedLines") or attrs.get("relatedLines"))
-            line_pairs = _make_line_pairs_from_related(rel_lines) or _detect_line_pairs_from_text(title_raw)
+            line_pairs = _make_line_pairs_from_related(rel_lines)
+            if not line_pairs:
+                line_pairs = _detect_line_pairs_from_text(title_raw)
+
             rel_stops = _as_list(poi.get("relatedStops") or attrs.get("relatedStops"))
             stop_names = _stop_names_from_related(rel_stops)
 
             extras = []
-            if poi.get("subtitle"): extras.append(str(poi["subtitle"]).strip())
-            for k in ("station","location","towards"):
-                if attrs.get(k): extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
+            if poi.get("subtitle"):
+                extras.append(str(poi["subtitle"]).strip())
+            for k in ("station", "location", "towards"):
+                if attrs.get(k):
+                    extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
 
             id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
             id_day = start.date().isoformat() if isinstance(start, datetime) else "None"
@@ -413,9 +522,10 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "category": "Hinweis",
                 "title": title,
                 "title_core": _title_core(title_raw),
+                "topic_key": _topic_key_from_title(title_raw),
                 "desc": desc,
                 "extras": extras,
-                "lines_pairs": line_pairs,
+                "lines_pairs": line_pairs,                  # [(tok, disp), …]
                 "stop_names": set(stop_names),
                 "pubDate": start,
                 "starts_at": start,
@@ -425,48 +535,61 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     except Exception as e:
         logging.exception("WL newsList fehlgeschlagen: %s", e)
 
-    # C) Bündelung gleicher Themen (LINIEN-SET + KERNBEGRIFF)
+    # C) Bündelung: LINIEN-SET + TOPIC/TITLE_CORE
     buckets: Dict[str, Dict[str, Any]] = {}
     for ev in raw:
         line_toks_sorted = ",".join(sorted(_line_tokens_from_pairs(ev["lines_pairs"])))
-        # WICHTIG: key nutzt title_core (Kernbegriff) statt Volltitel
-        key = _guid("wl", ev["category"], ev.get("title_core",""), line_toks_sorted)
+        key = _guid(
+            "wl",
+            ev["category"],
+            ev.get("topic_key", "") or ev.get("title_core", ""),
+            line_toks_sorted,
+        )
         b = buckets.get(key)
         if not b:
             buckets[key] = {
-                "source": ev["source"], "category": ev["category"],
-                "title": ev["title"], "title_core": ev.get("title_core",""),
-                "desc_base": ev["desc"], "extras": list(ev["extras"]),
-                "lines_pairs": list(ev["lines_pairs"]),
+                "source": ev["source"],
+                "category": ev["category"],
+                "title": ev["title"],
+                "title_core": ev.get("title_core", ""),
+                "topic_key": ev.get("topic_key", ""),
+                "desc_base": ev["desc"],
+                "extras": list(ev["extras"]),
+                "lines_pairs": list(ev["lines_pairs"]),   # geordnete Paare
                 "stop_names": set(ev["stop_names"]),
-                "pubDate": ev["pubDate"], "starts_at": ev["starts_at"], "ends_at": ev["ends_at"],
-                "_identity": ev["_identity"],
+                "pubDate": ev["pubDate"],
+                "starts_at": ev["starts_at"],
+                "ends_at": ev["ends_at"],
+                "_identity": ev["_identity"],             # stabil weiterreichen
             }
         else:
-            # Besseren Titel wählen: der KÜRZERE cleaned title gewinnt
+            # Kürzeren Titel bevorzugen (klarer)
             if len(ev["title"]) < len(b["title"]):
                 b["title"] = ev["title"]
             b["lines_pairs"] = _merge_line_pairs(b["lines_pairs"], ev["lines_pairs"])
             b["stop_names"].update(ev["stop_names"])
             if ev["pubDate"] and (not b["pubDate"] or ev["pubDate"] < b["pubDate"]):
                 b["pubDate"] = ev["pubDate"]
-            be, ee = b["ends_at"], ev["ends_at"]; b["ends_at"] = None if (be is None or ee is None) else max(be, ee)
+            be, ee = b["ends_at"], ev["ends_at"]
+            b["ends_at"] = None if (be is None or ee is None) else max(be, ee)
             for x in ev["extras"]:
-                if x not in b["extras"]: b["extras"].append(x)
+                if x not in b["extras"]:
+                    b["extras"].append(x)
 
     # D) Finale Items mit Linien-Präfix im Titel
     items: List[Dict[str, Any]] = []
     for b in buckets.values():
         lines_disp = _line_display_from_pairs(b["lines_pairs"])
-        lines_tok  = set(_line_tokens_from_pairs(b["lines_pairs"]))
+        lines_tok = set(_line_tokens_from_pairs(b["lines_pairs"]))
 
         base_title = b["title"]
         title_with_lines = _ensure_line_prefix(base_title, lines_disp)
 
-        # Anzahl Halte (falls wir Namen kennen) ins Titelende
+        # Anzahl Halte ins Titelende
         halt_cnt = len(b["stop_names"])
         if halt_cnt > 0 and not re.search(r"\(\d+\s+Halt(?:e)?\)$", title_with_lines):
             title_with_lines += f" ({halt_cnt} Halt{'e' if halt_cnt != 1 else ''})"
+
         title_final = re.sub(r"[<>«»‹›]+", "", title_with_lines).strip()
 
         # Beschreibung aufbauen (ohne „Linien: …“ in extras)
@@ -480,32 +603,53 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
         desc = re.sub(r"[<>]+", "", desc)
         desc = re.sub(r"\s{2,}", " ", desc).strip()
 
-        guid = _guid("wl", b["category"], b.get("title_core","") or _norm_title(title_final), ",".join(sorted(lines_tok)))
+        guid = _guid(
+            "wl",
+            b["category"],
+            b.get("topic_key", "") or _norm_title(title_final),
+            ",".join(sorted(lines_tok)),
+        )
         items.append({
-            "source": b["source"], "category": b["category"],
-            "title": title_final, "description": desc, "link": f"{WL_BASE}",
-            "guid": guid, "pubDate": b["pubDate"], "starts_at": b["starts_at"], "ends_at": b["ends_at"],
-            "_identity": b["_identity"], "_lines_set": lines_tok,
+            "source": b["source"],
+            "category": b["category"],
+            "title": title_final,          # plain text
+            "description": desc,           # plain text
+            "link": f"{WL_BASE}",
+            "guid": guid,
+            "pubDate": b["pubDate"],      # None erlaubt
+            "starts_at": b["starts_at"],
+            "ends_at": b["ends_at"],
+            "_identity": b["_identity"],  # stabil für first_seen
+            "_lines_set": lines_tok,      # für Sammel-vs.-Einzel
         })
 
     # E) Sammel-vs.-Einzel: Aggregat entfernen, wenn *alle* Linien als Einzel vorliegen
-    single_cov: Dict[str, int] = {}
+    single_line_coverage: Dict[str, int] = {}
     for it in items:
         ls = it.get("_lines_set") or set()
         if len(ls) == 1:
-            ln = next(iter(ls)); single_cov[ln] = single_cov.get(ln, 0) + 1
+            ln = next(iter(ls))
+            single_line_coverage[ln] = single_line_coverage.get(ln, 0) + 1
+
     filtered: List[Dict[str, Any]] = []
     for it in items:
         ls = it.get("_lines_set") or set()
-        if len(ls) >= 2 and all(single_cov.get(ln, 0) > 0 for ln in ls):
-            continue
+        if len(ls) >= 2 and all(single_line_coverage.get(ln, 0) > 0 for ln in ls):
+            continue  # Aggregat raus
         filtered.append(it)
-    for it in filtered: it.pop("_lines_set", None)
 
-    filtered.sort(key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, hashlib.md5(x["guid"].encode()).hexdigest()))
+    # Aufräumen interner Felder + Sortierung
+    for it in filtered:
+        it.pop("_lines_set", None)
+
+    filtered.sort(
+        key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, hashlib.md5(x["guid"].encode()).hexdigest())
+    )
     log.info("WL: %d Items nach Filter/Dedupe", len(filtered))
     return filtered
 
+
 # ---------------- Hilfsfunktionen ----------------
+
 def _guid(*parts: str) -> str:
     return hashlib.md5("|".join(p or "" for p in parts).encode("utf-8")).hexdigest()
