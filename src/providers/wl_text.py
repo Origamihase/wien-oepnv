@@ -7,9 +7,29 @@ import re
 # ---------------- Relevanz-/Ausschluss-Filter ----------------
 
 KW_RESTRICTION = re.compile(
-    r"\b(umleitung|ersatzverkehr|unterbrech|sperr|gesperrt|störung|stoerung|arbeiten|baustell|einschränk|verspät|ausfall|verkehr"
-    r"|kurzführung|kurzfuehrung|teilbetrieb|pendelverkehr|kurzstrecke)\b",
-    re.IGNORECASE,
+    r"""
+    \b(
+        umleitung       # detour
+        | ersatzverkehr  # replacement service
+        | unterbrech     # interruption
+        | sperr          # closure prefix
+        | gesperrt       # blocked
+        | störung        # disruption (umlaut)
+        | stoerung       # disruption (oe)
+        | arbeiten       # works
+        | baustell       # construction site
+        | einschränk     # restriction (umlaut)
+        | verspät        # delay
+        | ausfall        # outage
+        | verkehr        # traffic
+        | kurzführung    # short service (umlaut)
+        | kurzfuehrung   # short service (ue)
+        | teilbetrieb    # partial service
+        | pendelverkehr  # shuttle service
+        | kurzstrecke    # short route
+    )\b
+    """,
+    re.IGNORECASE | re.VERBOSE,
 )
 
 KW_EXCLUDE = re.compile(
