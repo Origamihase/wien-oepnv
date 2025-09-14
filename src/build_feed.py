@@ -58,7 +58,17 @@ RFC = "%a, %d %b %Y %H:%M:%S %z"
 # ---------------- Helpers ----------------
 
 def _to_utc(dt: datetime) -> datetime:
-    return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+    """Return a timezone-aware datetime in UTC.
+
+    If ``dt`` already contains timezone information, it is converted to UTC
+    using ``astimezone``.  Previously, aware datetimes were returned as-is,
+    which meant that values in non-UTC zones stayed in their original
+    timezone.  With this change all consumers receive a true UTC value.
+    Naive datetimes are assumed to already represent UTC and will simply be
+    tagged accordingly.
+    """
+
+    return dt.astimezone(timezone.utc) if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
 
 def _fmt_rfc2822(dt: datetime) -> str:
     try:
