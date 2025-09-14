@@ -34,9 +34,8 @@ jobs:
       OEBB_ENABLE: "1"     # ÖBB-RSS
       VOR_ENABLE: "1"      # VOR/VAO optional
 
-      # --- Wiener Linien (Secret optional) ---
-      WL_API_KEY: ${{ secrets.WL_API_KEY }}       # leer = Requests ohne 'sender' (funktioniert weiterhin)
-      WL_BASE: "https://www.wienerlinien.at/ogd_realtime"
+      # --- Wiener Linien (Basis-URL aus Secret, Fallback im Code) ---
+      WL_RSS_URL: ${{ secrets.WL_RSS_URL }}
 
       # --- ÖBB-RSS (aus Secret) ---
       OEBB_RSS_URL: ${{ secrets.OEBB_RSS_URL }}
@@ -151,9 +150,8 @@ jobs:
           OEBB_ENABLE: ${{ env.OEBB_ENABLE }}
           VOR_ENABLE: ${{ env.VOR_ENABLE }}
 
-          # Wiener Linien (Secret & Basis-URL)
-          WL_API_KEY: ${{ env.WL_API_KEY }}
-          WL_BASE: ${{ env.WL_BASE }}
+          # Wiener Linien (Basis-URL aus Secret)
+          WL_RSS_URL: ${{ env.WL_RSS_URL }}
 
           # ÖBB-RSS
           OEBB_RSS_URL: ${{ env.OEBB_RSS_URL }}
