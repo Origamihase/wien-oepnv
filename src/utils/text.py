@@ -84,7 +84,7 @@ def html_to_text(s: str) -> str:
     txt = "".join(parser.parts)
     txt = html.unescape(txt)
     txt = re.sub(r"\s*\n\s*", " • ", txt)
-    txt = re.sub(r"(\d)([A-Za-zÄÖÜäöüß])", r"\1 \2", txt)
+    txt = re.sub(r"(\d)([a-zäöüß])", r"\1 \2", txt)
     txt = _WS_RE.sub(" ", txt)
     # Collapse any repeated bullet separators before removing those after prepositions
     txt = re.sub(r"(?:\s*•\s*){2,}", " • ", txt)
