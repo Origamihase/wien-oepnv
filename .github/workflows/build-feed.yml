@@ -88,7 +88,8 @@ jobs:
             exit 0
           fi
           python - <<'PY'
-          import os, sys, time, xml.etree.ElementTree as ET
+          import os, sys, time
+          from defusedxml import ElementTree as ET
           import requests
           ACCESS = os.environ.get("VOR_ACCESS_ID","").strip()
           BASE   = os.environ.get("VOR_BASE","").rstrip("/")
@@ -170,7 +171,8 @@ jobs:
       - name: Validate feed (XML + GUID uniqueness)
         run: |
           python - <<'PY'
-          import sys, xml.etree.ElementTree as ET
+          import sys
+          from defusedxml import ElementTree as ET
           p = "docs/feed.xml"
           try:
               tree = ET.parse(p)
