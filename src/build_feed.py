@@ -32,7 +32,8 @@ ACTIVE_GRACE_MIN = int(os.getenv("ACTIVE_GRACE_MIN", "10"))
 MAX_ITEM_AGE_DAYS = max(int(os.getenv("MAX_ITEM_AGE_DAYS", "45")), 0)
 ABSOLUTE_MAX_AGE_DAYS = max(int(os.getenv("ABSOLUTE_MAX_AGE_DAYS", "365")), 0)
 
-STATE_FILE = Path("data/first_seen.json")  # nur Einträge aus *aktuellem* Feed
+STATE_FILE = Path(os.getenv("STATE_PATH", "data/first_seen.json"))  # nur Einträge aus *aktuellem* Feed
+STATE_RETENTION_DAYS = max(int(os.getenv("STATE_RETENTION_DAYS", "60")), 0)
 
 RFC = "%a, %d %b %Y %H:%M:%S %z"
 
@@ -92,16 +93,38 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
     try:
         with STATE_FILE.open("r", encoding="utf-8") as f:
             data = json.load(f)
-        return data if isinstance(data, dict) else {}
+        data = data if isinstance(data, dict) else {}
     except Exception as e:
         log.warning("State laden fehlgeschlagen (%s) – starte leer.", e)
         return {}
 
+    threshold = datetime.now(timezone.utc) - timedelta(days=STATE_RETENTION_DAYS)
+    out: Dict[str, Dict[str, Any]] = {}
+    for k, v in data.items():
+        try:
+            fs_dt = datetime.fromisoformat(v.get("first_seen", ""))
+            fs_dt = _to_utc(fs_dt)
+            if fs_dt >= threshold:
+                out[k] = v
+        except Exception:
+            continue
+    return out
+
 def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    threshold = datetime.now(timezone.utc) - timedelta(days=STATE_RETENTION_DAYS)
+    pruned: Dict[str, Dict[str, Any]] = {}
+    for k, v in state.items():
+        try:
+            fs_dt = datetime.fromisoformat(v.get("first_seen", ""))
+            fs_dt = _to_utc(fs_dt)
+            if fs_dt >= threshold:
+                pruned[k] = v
+        except Exception:
+            continue
     tmp = STATE_FILE.with_suffix(".tmp")
     with tmp.open("w", encoding="utf-8") as f:
-        json.dump(state, f, ensure_ascii=False, indent=2, sort_keys=True)
+        json.dump(pruned, f, ensure_ascii=False, indent=2, sort_keys=True)
     tmp.replace(STATE_FILE)
 
 def _identity_for_item(item: Dict[str, Any]) -> str:
