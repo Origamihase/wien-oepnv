@@ -29,6 +29,8 @@ DESCRIPTION_CHAR_LIMIT = max(int(os.getenv("DESCRIPTION_CHAR_LIMIT", "170")), 0)
 FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5"))
 MAX_ITEMS = max(int(os.getenv("MAX_ITEMS", "60")), 0)
 ACTIVE_GRACE_MIN = int(os.getenv("ACTIVE_GRACE_MIN", "10"))
+MAX_ITEM_AGE_DAYS = max(int(os.getenv("MAX_ITEM_AGE_DAYS", "45")), 0)
+ABSOLUTE_MAX_AGE_DAYS = max(int(os.getenv("ABSOLUTE_MAX_AGE_DAYS", "365")), 0)
 
 STATE_FILE = Path("data/first_seen.json")  # nur Einträge aus *aktuellem* Feed
 
@@ -136,6 +138,21 @@ def _collect_items() -> List[Dict[str, Any]]:
     except Exception as e:
         log.exception("ÖBB fetch fehlgeschlagen: %s", e)
     return items
+
+
+def _drop_old_items(items: List[Dict[str, Any]], now: datetime) -> List[Dict[str, Any]]:
+    """Entferne Items, die zu alt sind."""
+    out: List[Dict[str, Any]] = []
+    for it in items:
+        dt = it.get("pubDate") or it.get("starts_at")
+        if isinstance(dt, datetime):
+            age_days = (_to_utc(now) - _to_utc(dt)).total_seconds() / 86400.0
+            if age_days > ABSOLUTE_MAX_AGE_DAYS:
+                continue
+            if age_days > MAX_ITEM_AGE_DAYS:
+                continue
+        out.append(it)
+    return out
 
 
 def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -250,6 +267,7 @@ def main() -> int:
     now = datetime.now(timezone.utc)
     state = _load_state()
     items = _collect_items()
+    items = _drop_old_items(items, now)
     items = _dedupe_items(items)
     if not items:
         log.warning("Keine Items gesammelt.")
