@@ -2,24 +2,19 @@
 # -*- coding: utf-8 -*-
 
 """
-ÖBB-RSS-Provider (HAFAS „Weginformationen“), streng auf Wien + unmittelbare Nachbarorte.
-Titelkürzung:
-- Entfernt vorne generische Label (z. B. „Bauarbeiten - Zugausfall/geänderte Fahrzeiten:“).
-- Entfernt Bahnhof-Rauschen: „Bahnhof“, „Bhf.“, Klammern wie „(U)“, „(U6)“, „(S)“.
-- Normalisiert Relationen: „–/—/-“ → „↔“, „bzw.“ → „/“, bei „/“ wird vor dem ersten Slash „↔“ eingefügt.
-
-Env:
-  OEBB_RSS_URL          (Secret empfohlen; fallback intern)
-  OEBB_HTTP_TIMEOUT     (Default 15)
+ÖBB-RSS-Provider (HAFAS „Weginformationen“) – Wien + unmittelbare Nachbarorte.
+Titelkürzung & Liniendarstellung:
+- Entfernt generische Präfixe („Bauarbeiten …:“).
+- Entfernt „Bahnhof“, „Bhf.“, Klammern wie „(U)“, „(S45)“.
+- Normalisiert Relationen (–/—/- → ↔, „bzw.“ → /).
+- NEU: Erkennt S-Bahn-Linien (S1, S2, S7, S40, S45, S50, S80, …) aus Titel/Beschreibung
+       und stellt sie als Präfix voran, z. B. „S1/S7: Wien Floridsdorf ↔ …“.
+       Wenn keine S-Linie erkennbar ist, bleibt der Titel unverändert (Relation).
 """
 
 from __future__ import annotations
 
-import os
-import re
-import html
-import hashlib
-import logging
+import os, re, html, hashlib, logging
 from typing import Any, Dict, List, Optional
 from datetime import datetime, timezone
 from xml.etree import ElementTree as ET
@@ -41,42 +36,32 @@ def _candidate_urls() -> List[str]:
     env = (os.getenv("OEBB_RSS_URL") or "").strip()
     urls.append(env if env else _default_rss_url())
     base = "https://fahrplan.oebb.at/bin/help.exe/dnl"
-    for v in [
-        "?tpl=rss_WI_oebb&protocol=https:",
-        "?protocol=https:&tpl=rss_WI_oebb",
-        "?tpl=rss_WI_oebb",
-        "?L=vs_scotty&tpl=rss_WI_oebb",
-        "?L=vs_oebb&tpl=rss_WI_oebb",
-    ]:
+    for v in ["?tpl=rss_WI_oebb&protocol=https:", "?protocol=https:&tpl=rss_WI_oebb",
+              "?tpl=rss_WI_oebb", "?L=vs_scotty&tpl=rss_WI_oebb", "?L=vs_oebb&tpl=rss_WI_oebb"]:
         urls.append(base + v)
     alt = (os.getenv("OEBB_RSS_ALT_URLS") or "").strip()
     if alt:
         urls += [u.strip() for u in alt.split(",") if u.strip()]
     out: List[str] = []
     for u in urls:
-        if u not in out:
-            out.append(u)
+        if u not in out: out.append(u)
     return out
 
 def _session() -> requests.Session:
     s = requests.Session()
-    retry = Retry(
-        total=3,
-        backoff_factor=0.5,
-        status_forcelist=(429, 500, 502, 503, 504),
-        allowed_methods=("GET",),
-        raise_on_status=False,
-    )
+    retry = Retry(total=3, backoff_factor=0.5,
+                  status_forcelist=(429,500,502,503,504),
+                  allowed_methods=("GET",), raise_on_status=False)
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.1",
-        "User-Agent": "Origamihase-wien-oepnv/1.6 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/1.7 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
 S = _session()
 
-# --- Wien + unmittelbare Nachbarschaft ---------------------------------------
+# --- Wien + Umfeld -----------------------------------------------------------
 
 _CORE_PATTERNS = [
     r"\bWien\b",
@@ -90,7 +75,6 @@ _CORE_PATTERNS = [
     r"\bMatzleinsdorf(?:er)?\s*Platz\b",
 ]
 _CORE_RE = re.compile("|".join(_CORE_PATTERNS), re.IGNORECASE)
-
 _NEAR_PATTERNS = [
     r"\bSchwechat\b", r"\bFlughafen\s+Wien\b", r"\bVienna\s*Airport\b",
     r"\bGerasdorf\b", r"\bLangenzersdorf\b",
@@ -100,7 +84,6 @@ _NEAR_PATTERNS = [
     r"\bPurkersdorf\b",
 ]
 _NEAR_RE = re.compile("|".join(_NEAR_PATTERNS), re.IGNORECASE)
-
 _FAR_PATTERNS = [
     r"\bAttnang[- ]?Puchheim\b", r"\bVöcklabruck\b", r"\bWels\b", r"\bLinz\b",
     r"\bSt\.?\s*Pölten\b", r"\bAmstetten\b", r"\bEnns\b", r"\bYbbs\b", r"\bMelk\b",
@@ -117,7 +100,7 @@ _FAR_PATTERNS = [
 ]
 _FAR_RE = re.compile("|".join(_FAR_PATTERNS), re.IGNORECASE)
 
-# --- Titelkürzung ------------------------------------------------------------
+# --- Titel-Kosmetik & Linienpräfix ------------------------------------------
 
 _LABELS = [
     r"bauarbeiten", r"zugausfall(?:e)?", r"geänderte\s*fahrzeiten", r"fahrplanänderung",
@@ -125,29 +108,23 @@ _LABELS = [
 ]
 _LABEL_RE = re.compile(r"^\s*(?:(?:" + "|".join(_LABELS) + r")\s*(?:[-:–—]|/\s*)\s*)+", re.IGNORECASE)
 
-# Bahnhof-/Klammer-Rauschen
-PAREN_U_S_RE   = re.compile(r"\s*\((?:U\d*|S\d*)\)", re.IGNORECASE)  # (U), (U6), (S), (S45) ...
-BAHNHOF_RE     = re.compile(r"\bBahnhof\b\.?", re.IGNORECASE)        # „Bahnhof“
-BHF_RE         = re.compile(r"\bBhf\.?\b", re.IGNORECASE)            # „Bhf“ (nicht „Hbf“!)
-DASH_RE        = re.compile(r"\s[-–—]\s")                             # -, –, —
+PAREN_U_S_RE   = re.compile(r"\s*\((?:U\d*|S\d*)\)", re.IGNORECASE)
+BAHNHOF_RE     = re.compile(r"\bBahnhof\b\.?", re.IGNORECASE)
+BHF_RE         = re.compile(r"\bBhf\.?\b", re.IGNORECASE)   # Hbf bleibt
+DASH_RE        = re.compile(r"\s[-–—]\s")
 BZW_RE         = re.compile(r"\s*bzw\.?\s*", re.IGNORECASE)
 SPACES_RE      = re.compile(r"\s{2,}")
+LINE_PREFIX_STRIP_RE = re.compile(r"^\s*[A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20}\s*:\s*", re.IGNORECASE)
+S_LINE_RE      = re.compile(r"\bS(?:[0-9]{1,2}|[0-9]{2})\b")  # S1..S9, S40, S45, S50, S80 ...
 
 def _tidy_title(title: str) -> str:
     t = title or ""
-    # 1) Führende Labels entfernen
     t = _LABEL_RE.sub("", t)
-
-    # 2) Bahnhof-/Klammer-Rauschen entfernen
-    t = PAREN_U_S_RE.sub("", t)        # (U), (U6), (S), (S45) ...
-    t = BAHNHOF_RE.sub("", t)          # Bahnhof
-    t = BHF_RE.sub("", t)              # Bhf (Hbf bleibt erhalten)
-
-    # 3) Relationen & Verbinder normalisieren
-    t = DASH_RE.sub(" ↔ ", t)          # -/–/— → ↔
-    t = BZW_RE.sub("/", t)             # bzw. → /
-
-    # 4) Wenn ein Slash vorkommt, vor dem ersten Slash einen Pfeil einfügen
+    t = PAREN_U_S_RE.sub("", t)
+    t = BAHNHOF_RE.sub("", t)
+    t = BHF_RE.sub("", t)
+    t = DASH_RE.sub(" ↔ ", t)
+    t = BZW_RE.sub("/", t)
     if "/" in t and "↔" not in t:
         idx = t.find("/")
         left = t[:idx]
@@ -155,10 +132,28 @@ def _tidy_title(title: str) -> str:
             li = left.rfind(" ")
             if li >= 0:
                 t = left[:li] + " ↔ " + left[li+1:] + t[idx:]
-
-    # 5) Aufräumen von Mehrfach-Leerzeichen & Rändern
     t = SPACES_RE.sub(" ", t).strip(" -–—:/\t")
     return t or (title or "ÖBB Meldung")
+
+def _extract_s_lines(text: str) -> List[str]:
+    # Einfache, robuste Erkennung von S-Bahn-Linien
+    found = []
+    seen = set()
+    for m in S_LINE_RE.findall(text or ""):
+        u = m.upper()
+        if u not in seen:
+            seen.add(u)
+            found.append(u)
+    return found
+
+def _ensure_line_prefix(title: str, lines: List[str]) -> str:
+    if not lines:
+        return title
+    wanted = "/".join(lines)
+    if re.match(rf"^\s*{re.escape(wanted)}\s*:\s*", title, re.IGNORECASE):
+        return title
+    stripped = LINE_PREFIX_STRIP_RE.sub("", title)
+    return f"{wanted}: {stripped}".strip()
 
 # --- Utils -------------------------------------------------------------------
 
@@ -167,21 +162,17 @@ def _txt(el: Optional[ET.Element], path: str) -> str:
     return (t or "").strip()
 
 def _parse_pubdate(s: str | None) -> Optional[datetime]:
-    if not s:
-        return None
+    if not s: return None
     try:
         dt = parsedate_to_datetime(s)
-        if dt is None:
-            return None
-        if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
+        if dt is None: return None
+        if dt.tzinfo is None: dt = dt.replace(tzinfo=timezone.utc)
         return dt
     except Exception:
         return None
 
 def _hash_guid(*parts: str) -> str:
-    base = "|".join(p or "" for p in parts)
-    return hashlib.md5(base.encode("utf-8")).hexdigest()
+    return hashlib.md5("|".join(p or "" for p in parts).encode("utf-8")).hexdigest()
 
 # --- Fetch/Parse -------------------------------------------------------------
 
@@ -190,8 +181,7 @@ def _fetch_rss_xml() -> Optional[ET.Element]:
         try:
             r = S.get(url, timeout=HTTP_TIMEOUT)
             if r.status_code >= 400 or not r.content:
-                log.info("ÖBB-RSS: %s -> HTTP %s", url, r.status_code)
-                continue
+                log.info("ÖBB-RSS: %s -> HTTP %s", url, r.status_code); continue
             root = ET.fromstring(r.content)
             if root.tag.lower().endswith("rss") or root.find("./channel") is not None:
                 log.info("ÖBB-RSS geladen: %s (len=%d)", url, len(r.content))
@@ -213,12 +203,9 @@ FACILITY_ONLY = re.compile(
 
 def _is_wien_and_near_only(title: str, desc: str) -> bool:
     text = f"{title}\n{desc}"
-    if not _CORE_RE.search(text):
-        return False
-    if _FAR_RE.search(text):
-        return False
-    if re.search(r"[=\/–—\-]", text) and not _NEAR_RE.search(text):
-        return False
+    if not _CORE_RE.search(text): return False
+    if _FAR_RE.search(text): return False
+    if re.search(r"[=\/–—\-]", text) and not _NEAR_RE.search(text): return False
     return True
 
 def _is_facility_only(*texts: str) -> bool:
@@ -236,7 +223,7 @@ def fetch_events() -> List[Dict[str, Any]]:
 
     for it in _iter_items(root):
         raw_title = _txt(it, "title")
-        title = _tidy_title(html.unescape(raw_title))
+        title0 = html.unescape(raw_title)
         desc  = _txt(it, "description") or _txt(it, "{http://purl.org/rss/1.0/modules/content/}encoded")
         desc  = desc.strip()
         link  = _txt(it, "link") or "https://www.oebb.at/"
@@ -245,15 +232,18 @@ def fetch_events() -> List[Dict[str, Any]]:
         pub_s = _txt(it, "pubDate")
         pub_dt = _parse_pubdate(pub_s)
 
-        # Ausschlüsse
-        if _is_facility_only(title, desc):
-            continue
-        if not _is_wien_and_near_only(title, desc):
-            continue
+        # Filter
+        if _is_facility_only(title0, desc): continue
+        # (Titelsäuberung vor dem Wien-Check, damit Schlüsselwörter bleiben)
+        title_tidy = _tidy_title(title0)
+        if not _is_wien_and_near_only(title_tidy, desc): continue
 
-        guid = guid_val or _hash_guid("oebb_rss", title, pub_s, link)
-        if guid in seen_guids:
-            continue
+        # S-Bahn-Linien extrahieren und ggf. Präfix voranstellen
+        s_lines = _extract_s_lines(title_tidy + " " + desc)
+        title_final = _ensure_line_prefix(title_tidy, s_lines)
+
+        guid = guid_val or _hash_guid("oebb_rss", title_final, pub_s, link)
+        if guid in seen_guids: continue
         seen_guids.add(guid)
 
         description_html = html.escape(desc) if ("<" not in desc and ">" not in desc) else desc
@@ -261,7 +251,7 @@ def fetch_events() -> List[Dict[str, Any]]:
         items_out.append({
             "source": "ÖBB (RSS)",
             "category": "Störung",
-            "title": title or "ÖBB Meldung",
+            "title": title_final or "ÖBB Meldung",
             "description": description_html,
             "link": link,
             "guid": guid,
