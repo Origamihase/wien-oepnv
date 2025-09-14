@@ -5,15 +5,15 @@
 Wiener Linien Provider (OGD) – nur betriebsrelevante Störungen/Hinweise,
 keine Roll-/Fahrtreppen- oder Aufzugs-Meldungen.
 
-Fixes/Features:
+Features:
 - Titelkürzung am Anfang: generische Label wie „Bauarbeiten/…“ werden nur entfernt,
   wenn danach informativer Inhalt folgt (z. B. „Züge halten …“).
 - Linien-Präfix: Titel beginnen – wenn vorhanden – mit den betroffenen Linien
-  (z. B. "18: …", "49/52: …"). Vorhandene, uneinheitliche Präfixe oder
-  Komma-Listen am Titelanfang werden entfernt, um Dopplungen zu vermeiden.
+  (z. B. "18: …", "49/52: …"). Vorhandene uneinheitliche Präfixe oder
+  Komma-/Rufbus-Präfixe am Titelanfang werden entfernt, um Dopplungen zu vermeiden.
 - Sammel vs. Einzel: Aggregat wird entfernt, wenn *alle* genannten Linien
   bereits als Einzelmeldungen existieren.
-- Keyword-Set erweitert (u. a. „kurzführung“, „teilbetrieb“, „pendelverkehr“, „kurzstrecke“),
+- Erweiterte Keywords (u. a. „kurzführung“, „teilbetrieb“, „pendelverkehr“, „kurzstrecke“),
   um seltene, aber betriebsrelevante Hinweise sicher durchzulassen.
 """
 
@@ -47,7 +47,7 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/2.3 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/2.4 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
@@ -178,19 +178,39 @@ def _line_display_from_pairs(pairs: List[Tuple[str, str]]) -> List[str]:
 
 # Präfix-Erkennung/Entfernung:
 LINE_PREFIX_STRIP_RE = re.compile(r"^\s*[A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20}\s*:\s*", re.IGNORECASE)
-# NEU: entfernt Komma-Listen wie "D, 1, 2, 31, 71, 1A, 2A, 3A, 74A:" am Titelanfang
-LINES_COMMA_PREFIX_RE = re.compile(r"^\s*[A-Za-z0-9]+(?:\s*,\s*[A-Za-z0-9]+){1,}\s*:\s*", re.IGNORECASE)
+# Erweitert: entfernt Komma-/Rufbus-/Klammer-Listen am Titelanfang, z. B.
+# "D, 1, 2, 31, 71, 1A, 2A, 3A, 74A:", "95A, 97A (Schulkurs):", "29A, 29B und Rufbus N30:"
+LINES_COMPLEX_PREFIX_RE = re.compile(
+    r"""^\s*                                   # Start
+        [A-Za-z0-9]+                           # erste Linie
+        (?:\s*,\s*[A-Za-z0-9]+){1,}            # weitere per Komma
+        (?:\s*(?:und)?\s*(?:Rufbus\s+[A-Za-z0-9]+|\([^)]+\))\s*)*  # optionale Zusätze
+        \s*:\s*                                 # Doppelpunkt
+    """,
+    re.IGNORECASE | re.VERBOSE
+)
+
+def _strip_existing_line_block(title: str) -> str:
+    """Entfernt vorhandene Linienblöcke am Anfang (Slash- oder komplexe Komma-Varianten)."""
+    t = LINE_PREFIX_STRIP_RE.sub("", title)
+    t = LINES_COMPLEX_PREFIX_RE.sub("", t)
+    # Zusätzlich: wenn vor dem ersten ':' noch einmal ein kurzer Linien-/Rufbus-Block steht, entferne ihn.
+    if ":" in t:
+        pre, post = t.split(":", 1)
+        if ("," in pre) or ("Rufbus" in pre) or ("(" in pre):
+            # enthält vermutlich wieder eine Linienliste – entfernen
+            t = post.strip()
+    return t
 
 def _ensure_line_prefix(title: str, lines_disp: List[str]) -> str:
-    """Sorgt für „L1/L2: …“. Entfernt vorhandene Slash- oder Komma-Präfixe zuerst,
-       um Dopplungen wie „1/1A/…: D, 1, 2, …:“ zu vermeiden."""
+    """Sorgt für „L1/L2: …“. Entfernt vorhandene Slash-/Komma-/Rufbus-Präfixe zuerst,
+       um Dopplungen wie „95A/97A: 95A, 97A (Schulkurs): …“ zu vermeiden."""
     if not lines_disp:
         return title
     wanted = "/".join(lines_disp)
     if re.match(rf"^\s*{re.escape(wanted)}\s*:\s*", title, re.IGNORECASE):
         return title
-    stripped = LINE_PREFIX_STRIP_RE.sub("", title)
-    stripped = LINES_COMMA_PREFIX_RE.sub("", stripped)  # <- neu
+    stripped = _strip_existing_line_block(title)
     return f"{wanted}: {stripped}".strip()
 
 # ---------------- API Calls ----------------
