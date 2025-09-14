@@ -8,5 +8,5 @@ __all__ = ["make_guid"]
 
 
 def make_guid(*parts: str) -> str:
-    """Return a stable MD5-based GUID for the given parts."""
-    return hashlib.md5("|".join(p or "" for p in parts).encode("utf-8")).hexdigest()
+    """Return a stable SHA256-based GUID for the given parts."""
+    return hashlib.sha256("|".join(p or "" for p in parts).encode("utf-8")).hexdigest()
