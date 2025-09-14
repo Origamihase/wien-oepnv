@@ -48,14 +48,24 @@ RAIL_LONG_HINTS = {"S-Bahn", "Regionalzug", "Regionalexpress", "Railjet", "Railj
 EXCLUDE_OPERATORS = {"Wiener Linien"}
 EXCLUDE_LONG_HINTS = {"Straßenbahn", "U-Bahn"}
 
+def _retry() -> Retry:
+    return Retry(
+        total=3,
+        backoff_factor=0.5,
+        status_forcelist=(429, 500, 502, 503, 504),
+        allowed_methods=("GET",),
+        raise_on_status=False,
+    )
+
+
 def _session() -> requests.Session:
     s = requests.Session()
-    retry = Retry(total=3, backoff_factor=0.5, status_forcelist=(429,500,502,503,504), allowed_methods=("GET",), raise_on_status=False)
-    s.mount("https://", HTTPAdapter(max_retries=retry))
-    s.headers.update({"Accept":"application/xml", "User-Agent":"Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wien-oepnv)"})
+    s.mount("https://", HTTPAdapter(max_retries=_retry()))
+    s.headers.update({
+        "Accept": "application/xml",
+        "User-Agent": "Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wien-oepnv)",
+    })
     return s
-
-S = _session()
 
 def _stationboard_url() -> str:
     return f"{VOR_BASE}/{VOR_VERSION}/DepartureBoard"
@@ -104,8 +114,9 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[ET.Ele
         "duration": str(BOARD_DURATION_MIN), "rtMode": "SERVER_DEFAULT",
     }
     try:
-        resp = S.get(_stationboard_url(), params=params, timeout=HTTP_TIMEOUT)
-        if resp.status_code >= 400: 
+        with _session() as session:
+            resp = session.get(_stationboard_url(), params=params, timeout=HTTP_TIMEOUT)
+        if resp.status_code >= 400:
             log.warning("VOR StationBoard %s -> HTTP %s", station_id, resp.status_code)
             return None
         return ET.fromstring(resp.content)
