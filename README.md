@@ -42,7 +42,7 @@ Der erzeugte Feed liegt unter `docs/feed.xml`.
 | `OEBB_ENABLE` | bool (`"1"`/`"0"`) | `"1"` | Provider „ÖBB“ aktivieren/deaktivieren. |
 | `VOR_ENABLE` | bool (`"1"`/`"0"`) | `"1"` | Provider „VOR/VAO“ aktivieren/deaktivieren. |
 
-### Wiener Linien (`src/providers/wiener_linien.py`)
+### Wiener Linien (`src/providers/wl_fetch.py`)
 
 | Variable | Typ | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
