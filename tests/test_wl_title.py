@@ -1,4 +1,9 @@
-from src.providers import wiener_linien as wl
+from src.providers.wl_lines import (
+    _detect_line_pairs_from_text,
+    _ensure_line_prefix,
+    _line_tokens_from_pairs,
+)
+from src.providers.wl_text import _tidy_title_wl, _topic_key_from_title
 from src.utils.ids import make_guid
 
 
@@ -6,7 +11,7 @@ def test_dedupe_topic_shorter_title():
     ev1 = {
         "category": "Störung",
         "title": "5: Falschparker",
-        "topic_key": wl._topic_key_from_title("Falschparker"),
+        "topic_key": _topic_key_from_title("Falschparker"),
         "lines_pairs": [("5", "5")],
         "desc": "",
         "extras": [],
@@ -19,7 +24,7 @@ def test_dedupe_topic_shorter_title():
     ev2 = {
         "category": "Störung",
         "title": "5: Fahrtbehinderung Falschparker",
-        "topic_key": wl._topic_key_from_title("Fahrtbehinderung Falschparker"),
+        "topic_key": _topic_key_from_title("Fahrtbehinderung Falschparker"),
         "lines_pairs": [("5", "5")],
         "desc": "",
         "extras": [],
@@ -36,7 +41,7 @@ def test_dedupe_topic_shorter_title():
             "wl",
             ev["category"],
             ev["topic_key"],
-            ",".join(sorted(wl._line_tokens_from_pairs(ev["lines_pairs"]))),
+            ",".join(sorted(_line_tokens_from_pairs(ev["lines_pairs"]))),
         )
         b = buckets.get(key)
         if not b:
@@ -50,6 +55,10 @@ def test_dedupe_topic_shorter_title():
 
 
 def test_line_prefix_and_house_number_false_positive():
-    assert wl._ensure_line_prefix("Falschparker", ["5"]) == "5: Falschparker"
-    assert wl._detect_line_pairs_from_text("Neubaugasse 69") == []
+    assert _ensure_line_prefix("Falschparker", ["5"]) == "5: Falschparker"
+    assert _detect_line_pairs_from_text("Neubaugasse 69") == []
+
+
+def test_tidy_title_wl_strips_label():
+    assert _tidy_title_wl("Störung: U1 steht") == "U1 steht"
 
