@@ -39,22 +39,40 @@ logging.basicConfig(
 )
 log = logging.getLogger("build_feed")
 
+# ---------------- Helpers: ENV ----------------
+
+def _get_int_env(name: str, default: int) -> int:
+    """Read integer environment variables safely.
+
+    Returns the provided default if the variable is unset or cannot be
+    converted to ``int``. On invalid values, a warning is logged.
+    """
+
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    try:
+        return int(raw)
+    except Exception:
+        log.warning("Ungültiger Wert für %s=%r – verwende Default %d", name, raw, default)
+        return default
+
 # ---------------- ENV ----------------
 OUT_PATH = os.getenv("OUT_PATH", "docs/feed.xml")
 FEED_TITLE = os.getenv("FEED_TITLE", "ÖPNV Störungen Wien & Umgebung")
 FEED_LINK = os.getenv("FEED_LINK", "https://github.com/Origamihase/wien-oepnv")
 FEED_DESC = os.getenv("FEED_DESC", "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen")
-FEED_TTL = max(int(os.getenv("FEED_TTL", "30")), 0)
+FEED_TTL = max(_get_int_env("FEED_TTL", 30), 0)
 
-DESCRIPTION_CHAR_LIMIT = max(int(os.getenv("DESCRIPTION_CHAR_LIMIT", "170")), 0)
-FRESH_PUBDATE_WINDOW_MIN = int(os.getenv("FRESH_PUBDATE_WINDOW_MIN", "5"))
-MAX_ITEMS = max(int(os.getenv("MAX_ITEMS", "60")), 0)
-MAX_ITEM_AGE_DAYS = max(int(os.getenv("MAX_ITEM_AGE_DAYS", "45")), 0)
-ABSOLUTE_MAX_AGE_DAYS = max(int(os.getenv("ABSOLUTE_MAX_AGE_DAYS", "365")), 0)
-ENDS_AT_GRACE_MINUTES = max(int(os.getenv("ENDS_AT_GRACE_MINUTES", "10")), 0)
+DESCRIPTION_CHAR_LIMIT = max(_get_int_env("DESCRIPTION_CHAR_LIMIT", 170), 0)
+FRESH_PUBDATE_WINDOW_MIN = _get_int_env("FRESH_PUBDATE_WINDOW_MIN", 5)
+MAX_ITEMS = max(_get_int_env("MAX_ITEMS", 60), 0)
+MAX_ITEM_AGE_DAYS = max(_get_int_env("MAX_ITEM_AGE_DAYS", 45), 0)
+ABSOLUTE_MAX_AGE_DAYS = max(_get_int_env("ABSOLUTE_MAX_AGE_DAYS", 365), 0)
+ENDS_AT_GRACE_MINUTES = max(_get_int_env("ENDS_AT_GRACE_MINUTES", 10), 0)
 
 STATE_FILE = Path(os.getenv("STATE_PATH", "data/first_seen.json"))  # nur Einträge aus *aktuellem* Feed
-STATE_RETENTION_DAYS = max(int(os.getenv("STATE_RETENTION_DAYS", "60")), 0)
+STATE_RETENTION_DAYS = max(_get_int_env("STATE_RETENTION_DAYS", 60), 0)
 
 RFC = "%a, %d %b %Y %H:%M:%S %z"
 
