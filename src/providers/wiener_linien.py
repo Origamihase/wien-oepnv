@@ -13,7 +13,7 @@ Funktionen/Logik:
   Komma-/Rufbus-Varianten) werden entfernt, um Dopplungen zu vermeiden.
 - „Rufbus“ wird für das Präfix auf die Linien-ID normalisiert (z. B. „Rufbus N81“ → „N81“).
 - Fallback: Fehlen `relatedLines`, werden Liniencodes robust aus dem Titeltext
-  erkannt (inkl. „Rufbus Nxx“), damit trotzdem ein sauberes Präfix entsteht.
+  erkannt (inkl. „Rufbus Nxx“) – **ohne** Datums-/Zeitteile zu erwischen.
 - Sammel vs. Einzel: Aggregatsmeldungen werden entfernt, wenn *alle* darin
   genannten Linien als Einzelmeldungen existieren.
 - Erweiterte Keywords (u. a. „kurzführung“, „teilbetrieb“, „pendelverkehr“, „kurzstrecke“),
@@ -59,7 +59,7 @@ def _session() -> requests.Session:
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({
         "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/2.5 (+https://github.com/Origamihase/wien-oepnv)"
+        "User-Agent": "Origamihase-wien-oepnv/2.6 (+https://github.com/Origamihase/wien-oepnv)"
     })
     return s
 
@@ -69,20 +69,17 @@ S = _session()
 
 # ---------------- Filter & Textregeln ----------------
 
-# „Betriebsrelevante“ Wörter (erweitert)
 KW_RESTRICTION = re.compile(
     r"\b(umleitung|ersatzverkehr|unterbrech|sperr|gesperrt|störung|arbeiten|baustell|einschränk|verspät|ausfall|verkehr"
     r"|kurzführung|teilbetrieb|pendelverkehr|kurzstrecke)\b",
     re.IGNORECASE
 )
 
-# Nicht-betriebsrelevantes/Allgemeines (schwaches Ausschluss-Signal)
 KW_EXCLUDE = re.compile(
     r"\b(willkommen|gewinnspiel|anzeiger|eröffnung|service(?:-info)?|info(?:rmation)?|fest|keine\s+echtzeitinfo)\b",
     re.IGNORECASE
 )
 
-# Facility-ONLY: Aufzug/Lift/Fahrtreppe/Rolltreppe – vollständig ausschließen
 FACILITY_ONLY = re.compile(
     r"\b(aufzug|aufzüge|lift|fahrstuhl|fahrtreppe|fahrtreppen|rolltreppe|rolltreppen|aufzugsinfo|fahrtreppeninfo)\b",
     re.IGNORECASE
@@ -117,8 +114,39 @@ def _tidy_title_wl(title: str) -> str:
         return t
     stripped = _LABEL_HEAD_RE.sub("", t)
     if stripped and _is_informative(stripped):
-        return re.sub(r"\s{2,}", " ", stripped).strip(" -–—:/\t")
-    return t
+        t = stripped
+    # unschöne Klammern/Spitzenklammern entfernen
+    t = re.sub(r"[<>«»‹›]+", "", t)
+    # Mehrfach-Leerzeichen normalisieren
+    return re.sub(r"\s{2,}", " ", t).strip(" -–—:/\t")
+
+
+# ---------------- HTML → Plain-Text ----------------
+
+_BR_RE = re.compile(r"(?i)<\s*br\s*/?\s*>")
+_BLOCK_CLOSE_RE = re.compile(r"(?is)</\s*(p|div|li|ul|ol)\s*>")
+_BLOCK_OPEN_RE = re.compile(r"(?is)<\s*(p|div|ul|ol)\b[^>]*>")
+_LI_OPEN_RE = re.compile(r"(?is)<\s*li\b[^>]*>")
+_TAG_RE = re.compile(r"(?is)<[^>]+>")
+_WS_RE = re.compile(r"[ \t\r\f\v]+")
+
+def _html_to_text(s: str) -> str:
+    """
+    Robust: Entities decodieren, Block-/BR-Tags in Trennzeichen umwandeln,
+    restliche Tags strippen, Whitespace konsolidieren.
+    """
+    if not s:
+        return ""
+    txt = html.unescape(s)
+    txt = _BR_RE.sub("\n", txt)
+    txt = _BLOCK_CLOSE_RE.sub("\n", txt)
+    txt = _LI_OPEN_RE.sub("• ", txt)
+    txt = _BLOCK_OPEN_RE.sub("", txt)
+    txt = _TAG_RE.sub("", txt)
+    # neue Zeilen auf " | " zusammenziehen (TV-geeignet, keine HTML-Breaks)
+    txt = re.sub(r"\s*\n\s*", " | ", txt)
+    txt = _WS_RE.sub(" ", txt)
+    return re.sub(r"\s{2,}", " ", txt).strip()
 
 
 # ---------------- Zeit & Utils ----------------
@@ -128,14 +156,12 @@ def _iso(s: Optional[str]) -> Optional[datetime]:
     if not s:
         return None
     s = s.replace("Z", "+00:00")
-    # 2025-09-14T12:34:56+0200 -> +02:00
     if len(s) >= 5 and (s[-5] in "+-") and s[-3] != ":":
         s = s[:-2] + ":" + s[-2:]
     return dtparser.isoparse(s)
 
 
 def _best_ts(obj: Dict[str, Any]) -> Optional[datetime]:
-    """Fallback-Zeit aus mehreren Feldern."""
     t = obj.get("time") or {}
     for cand in (
         _iso(t.get("start")), _iso(t.get("end")),
@@ -149,8 +175,6 @@ def _best_ts(obj: Dict[str, Any]) -> Optional[datetime]:
 
 
 def _is_active(start: Optional[datetime], end: Optional[datetime], now: datetime) -> bool:
-    """Aktivitätslogik: Start darf nicht in der Zukunft liegen; Ende (falls gesetzt)
-    darf nicht deutlich in der Vergangenheit liegen (Grace 10 Min)."""
     if start and start > now:
         return False
     if end and end < (now - timedelta(minutes=10)):
@@ -202,25 +226,33 @@ def _make_line_pairs_from_related(rel_lines: List[Any]) -> List[Tuple[str, str]]
     return pairs
 
 
-# Fallback: Linien aus Titeltext erkennen (inkl. "Rufbus Nxx")
+# Fallback: Linien aus Titeltext erkennen (inkl. "Rufbus Nxx") – ohne Datum/Zeit
 LINE_CODE_RE = re.compile(
     r"\b(?:U\d{1,2}|S\d{1,2}|N\d{1,3}|[0-9]{1,3}[A-Z]?|[A-Z])\b",
     re.IGNORECASE
 )
 RUF_BUS_RE = re.compile(r"Rufbus\s+([A-Za-z0-9]+)", re.IGNORECASE)
-
+DATE_FULL_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\.(?:\d{2}|\d{4})\b")
+DATE_SHORT_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\b")
+TIME_RE = re.compile(r"\b\d{1,2}:\d{2}\b")
 
 def _detect_line_pairs_from_text(text: str) -> List[Tuple[str, str]]:
+    t = text or ""
+    # Datum/Zeit entfernen, damit z. B. 17.04.2025 nicht als "17" / "04" erkannt wird
+    t = DATE_FULL_RE.sub(" ", t)
+    t = DATE_SHORT_RE.sub(" ", t)
+    t = TIME_RE.sub(" ", t)
+
     pairs: List[Tuple[str, str]] = []
     seen: set[str] = set()
     # Rufbus zuerst (liefert „N81“ etc.)
-    for m in RUF_BUS_RE.findall(text or ""):
+    for m in RUF_BUS_RE.findall(t):
         tok = _tok(m)
         if tok and tok not in seen:
             seen.add(tok)
             pairs.append((tok, _display_line(m)))
     # Generische Codes
-    for m in LINE_CODE_RE.findall(text or ""):
+    for m in LINE_CODE_RE.findall(t):
         tok = _tok(m)
         if tok and tok not in seen:
             seen.add(tok)
@@ -248,14 +280,13 @@ def _line_display_from_pairs(pairs: List[Tuple[str, str]]) -> List[str]:
 
 # Präfix-Erkennung/Entfernung:
 LINE_PREFIX_STRIP_RE = re.compile(r"^\s*[A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20}\s*:\s*", re.IGNORECASE)
-# Erweitert: entfernt Komma-/Rufbus-/Klammer-Listen am Titelanfang, z. B.
-# "D, 1, 2, 31, 71, 1A, 2A, 3A, 74A:", "95A, 97A (Schulkurs):", "29A, 29B und Rufbus N30:"
+# Erweitert: entfernt Komma-/Rufbus-/Klammer-Listen am Titelanfang
 LINES_COMPLEX_PREFIX_RE = re.compile(
-    r"""^\s*                                   # Start
-        [A-Za-z0-9]+                           # erste Linie
-        (?:\s*,\s*[A-Za-z0-9]+){1,}            # weitere per Komma
-        (?:\s*(?:und)?\s*(?:Rufbus\s+[A-Za-z0-9]+|\([^)]+\))\s*)*  # Zusätze
-        \s*:\s*                                 # Doppelpunkt
+    r"""^\s*
+        [A-Za-z0-9]+
+        (?:\s*,\s*[A-Za-z0-9]+){1,}
+        (?:\s*(?:und)?\s*(?:Rufbus\s+[A-Za-z0-9]+|\([^)]+\))\s*)*
+        \s*:\s*
     """,
     re.IGNORECASE | re.VERBOSE
 )
@@ -276,8 +307,7 @@ def _strip_existing_line_block(title: str) -> str:
 
 
 def _ensure_line_prefix(title: str, lines_disp: List[str]) -> str:
-    """Sorgt für „L1/L2: …“. Entfernt vorhandene Slash-/Komma-/Rufbus-Präfixe zuerst,
-       um Dopplungen wie „95A/97A: 95A, 97A (Schulkurs): …“ zu vermeiden."""
+    """Sorgt für „L1/L2: …“. Entfernt vorhandene Slash-/Komma-/Rufbus-Präfixe zuerst."""
     if not lines_disp:
         return title
     wanted = "/".join(lines_disp)
@@ -331,8 +361,9 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
             title_raw = (ti.get("title") or ti.get("name") or "Meldung").strip()
             title = _tidy_title_wl(title_raw)
-            desc = (ti.get("description") or "").strip()
-            if _is_facility_only(title_raw, desc):
+            desc_raw = (ti.get("description") or "").strip()
+            desc = _html_to_text(desc_raw)
+            if _is_facility_only(title_raw, desc_raw):
                 continue
 
             tinfo = ti.get("time") or {}
@@ -341,14 +372,14 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             if not _is_active(start, end, now):
                 continue
 
-            blob = " ".join([title_raw, desc])
-            if KW_EXCLUDE.search(blob) and not KW_RESTRICTION.search(blob):
+            blob_for_relevance = " ".join([title_raw, desc_raw])
+            if KW_EXCLUDE.search(blob_for_relevance) and not KW_RESTRICTION.search(blob_for_relevance):
                 continue
 
             rel_lines = _as_list(ti.get("relatedLines") or attrs.get("relatedLines"))
             line_pairs = _make_line_pairs_from_related(rel_lines)
             if not line_pairs:
-                # Fallback: aus Titeltext (inkl. "Rufbus Nxx")
+                # Fallback: aus Titeltext (inkl. "Rufbus Nxx", aber ohne Datum/Zeit)
                 line_pairs = _detect_line_pairs_from_text(title_raw)
 
             rel_stops = _as_list(ti.get("relatedStops") or attrs.get("relatedStops"))
@@ -357,9 +388,9 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             extras = []
             for k in ("status", "state", "station", "location", "reason", "towards"):
                 if attrs.get(k):
-                    extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
+                    extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
             if lines_str:
-                extras.append(f"Linien: {html.escape(lines_str)}")
+                extras.append(f"Linien: {lines_str}")
 
             # stabile Identity für first_seen
             id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
@@ -370,7 +401,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "source": "Wiener Linien",
                 "category": "Störung",
                 "title": title,
-                "desc": html.escape(desc),
+                "desc": desc,
                 "extras": extras,
                 "lines_pairs": line_pairs,                  # [(tok, disp), …]
                 "stops": { _tok(x) for x in rel_stops if str(x).strip() },
@@ -399,8 +430,9 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
             title_raw = (poi.get("title") or "Hinweis").strip()
             title = _tidy_title_wl(title_raw)
-            desc = (poi.get("description") or "").strip()
-            if _is_facility_only(title_raw, desc, poi.get("subtitle") or ""):
+            desc_raw = (poi.get("description") or "").strip()
+            desc = _html_to_text(desc_raw)
+            if _is_facility_only(title_raw, desc_raw, poi.get("subtitle") or ""):
                 continue
 
             tinfo = poi.get("time") or {}
@@ -410,7 +442,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 continue
 
             text_for_filter = " ".join([
-                title_raw, poi.get("subtitle") or "", desc,
+                title_raw, poi.get("subtitle") or "", desc_raw,
                 str(attrs.get("status") or ""), str(attrs.get("state") or ""),
             ])
             if not KW_RESTRICTION.search(text_for_filter):
@@ -426,12 +458,12 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             lines_str = ", ".join(str(x).strip() for x in rel_lines if str(x).strip())
             extras = []
             if poi.get("subtitle"):
-                extras.append(html.escape(poi["subtitle"]))
+                extras.append(str(poi["subtitle"]).strip())
             for k in ("station", "location", "towards"):
                 if attrs.get(k):
-                    extras.append(f"{k.capitalize()}: {html.escape(str(attrs[k]))}")
+                    extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
             if lines_str:
-                extras.append(f"Linien: {html.escape(lines_str)}")
+                extras.append(f"Linien: {lines_str}")
 
             id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
             id_day = start.date().isoformat() if isinstance(start, datetime) else "None"
@@ -441,7 +473,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "source": "Wiener Linien",
                 "category": "Hinweis",
                 "title": title,
-                "desc": html.escape(desc),
+                "desc": desc,
                 "extras": extras,
                 "lines_pairs": line_pairs,                  # [(tok, disp), …]
                 "stops": { _tok(x) for x in rel_stops if str(x).strip() },
@@ -476,17 +508,15 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
         else:
             b["stops"].update(ev["stops"])
             b["lines_pairs"] = _merge_line_pairs(b["lines_pairs"], ev["lines_pairs"])
-            # frühestes pubDate/Start beibehalten
             if ev["pubDate"] and (not b["pubDate"] or ev["pubDate"] < b["pubDate"]):
                 b["pubDate"] = ev["pubDate"]
-            # spätestes Ende (wenn beidseits vorhanden)
             be, ee = b["ends_at"], ev["ends_at"]
             b["ends_at"] = None if (be is None or ee is None) else max(be, ee)
             for x in ev["extras"]:
                 if x not in b["extras"]:
                     b["extras"].append(x)
 
-    # D) Finale Items mit Linien-Präfix im Titel
+    # D) Finale Items mit Linien-Präfix im Titel (ohne HTML in Beschreibung)
     items: List[Dict[str, Any]] = []
     for b in buckets.values():
         lines_disp = _line_display_from_pairs(b["lines_pairs"])
@@ -494,22 +524,23 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
         base_title = b["title"]
         title_with_lines = _ensure_line_prefix(base_title, lines_disp)
-        title_final = html.escape(title_with_lines)
+        title_final = re.sub(r"[<>«»‹›]+", "", title_with_lines).strip()
 
         desc = b["desc_base"]
         if b["extras"]:
-            desc = (desc + ("<br/>" if desc else "") + "<br/>".join(b["extras"]))
+            desc = (desc + (" • " if desc else "") + " • ".join(b["extras"]))
         if b["stops"]:
             stops_list = sorted(b["stops"])
             stops_str = ", ".join(stops_list[:15]) + (" …" if len(stops_list) > 15 else "")
-            desc += ("<br/>Betroffene Haltestellen: " + html.escape(stops_str))
+            desc += (" • Betroffene Haltestellen: " + stops_str)
+        desc = re.sub(r"\s{2,}", " ", desc).strip()
 
-        guid = _guid("wl", b["category"], _norm_title(title_with_lines), ",".join(sorted(lines_tok)))
+        guid = _guid("wl", b["category"], _norm_title(title_final), ",".join(sorted(lines_tok)))
         items.append({
             "source": b["source"],
             "category": b["category"],
-            "title": title_final,
-            "description": desc,
+            "title": title_final,          # plain text
+            "description": desc,           # plain text
             "link": f"{WL_BASE}",
             "guid": guid,
             "pubDate": b["pubDate"],      # None erlaubt
