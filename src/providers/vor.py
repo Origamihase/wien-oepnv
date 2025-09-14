@@ -158,11 +158,10 @@ def _collect_from_board(station_id: str, root: ET.Element) -> List[Dict[str, Any
 
         lines: List[str] = []
         affected_stops: List[str] = []
-        prods_el = m.find("./products")
-        if prods_el is not None:
-            for p in prods:
-                name = _text(p, "name") or (_text(p, "catOutS") + " " + _text(p, "displayNumber"))
-                if name: lines.append(name.strip())
+        for p in prods:
+            name = _text(p, "name") or (_text(p, "catOutS") + " " + _text(p, "displayNumber"))
+            if name:
+                lines.append(name.strip())
         aff = m.find("./affectedStops")
         if aff is not None:
             for st in aff.findall("./Stop"):
