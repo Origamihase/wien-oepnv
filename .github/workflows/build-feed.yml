@@ -31,14 +31,14 @@ jobs:
 
       # --- Persistenter State ---
       STATE_PATH: "data/first_seen.json"
-      STATE_RETENTION_DAYS: "1095"
+      STATE_RETENTION_DAYS: "540"   # 18 Monate – passend zu ABSOLUTE_MAX_AGE_DAYS
 
       # --- Provider-Schalter ---
       WL_ENABLE: "1"
       OEBB_ENABLE: "1"
       VOR_ENABLE: "1"
 
-      # --- Wiener Linien (Basis aus Secret; Fallback im Code) ---
+      # --- Wiener Linien (Basis-URL aus Secret; Fallback im Code) ---
       WL_RSS_URL: ${{ secrets.WL_RSS_URL }}
 
       # --- ÖBB-RSS (aus Secret) ---
@@ -73,7 +73,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # ------------------------------------------------------------
       # (Optional) VOR Stationen ermitteln – nur wenn Zugang vorhanden
+      # ------------------------------------------------------------
       - name: Discover VOR Station IDs for Vienna (PLZ 1010–1230)
         if: ${{ env.VOR_ACCESS_ID != '' }}
         shell: bash
