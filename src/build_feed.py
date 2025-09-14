@@ -199,10 +199,14 @@ def _collect_items() -> List[Dict[str, Any]]:
             futures[executor.submit(fetch)] = fetch
         for future in as_completed(futures):
             fetch = futures[future]
+            name = getattr(fetch, "__name__", str(fetch))
             try:
-                items += future.result()
+                result = future.result()
+                if not isinstance(result, list):
+                    log.error("%s fetch gab keine Liste zurück: %r", name, result)
+                    continue
+                items += result
             except Exception as e:
-                name = getattr(fetch, "__name__", str(fetch))
                 log.exception("%s fetch fehlgeschlagen: %s", name, e)
 
     return items
