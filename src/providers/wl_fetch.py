@@ -71,9 +71,6 @@ def _session() -> requests.Session:
     return s
 
 
-S = _session()
-
-
 # ---------------- Zeit & Utils ----------------
 
 def _iso(s: Optional[str]) -> Optional[datetime]:
@@ -143,9 +140,10 @@ def _stop_names_from_related(rel_stops: List[Any]) -> List[str]:
 
 def _get_json(path: str, params: Optional[List[tuple]] = None, timeout: int = 20) -> Dict[str, Any]:
     url = f"{WL_BASE.rstrip('/')}/{path.lstrip('/')}"
-    r = S.get(url, params=params or None, timeout=timeout)
-    r.raise_for_status()
-    return r.json()
+    with _session() as s:
+        r = s.get(url, params=params or None, timeout=timeout)
+        r.raise_for_status()
+        return r.json()
 
 
 def _fetch_traffic_infos(timeout: int = 20) -> Iterable[Dict[str, Any]]:
