@@ -16,6 +16,7 @@ import os, re, html, hashlib, logging
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 from typing import Any, Dict, Iterable, List, Optional
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from defusedxml import ElementTree as ET
 
 try:  # pragma: no cover - support both package layouts
@@ -188,23 +189,36 @@ def fetch_events() -> List[Dict[str, Any]]:
 
     seen: set[str] = set()
     out: List[Dict[str, Any]] = []
-    for sid in station_chunk:
-        root = _fetch_stationboard(sid, now_local)
-        if root is None: continue
-        for it in _collect_from_board(sid, root):
-            if it["guid"] in seen:
-                for x in out:
-                    if x["guid"] == it["guid"]:
-                        if it["pubDate"] and (not x["pubDate"] or it["pubDate"] < x["pubDate"]):
-                            x["pubDate"] = it["pubDate"]
-                        be, ee = x.get("ends_at"), it.get("ends_at")
-                        x["ends_at"] = None if (be is None or ee is None) else max(be, ee)
-                        if it["description"] and it["description"] not in x["description"]:
-                            x["description"] += "<br/>" + it["description"]
-                        break
+
+    if not station_chunk:
+        return out
+
+    max_workers = min(MAX_STATIONS_PER_RUN, len(station_chunk)) or 1
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        futures = {pool.submit(_fetch_stationboard, sid, now_local): sid for sid in station_chunk}
+        for fut in as_completed(futures):
+            sid = futures[fut]
+            try:
+                root = fut.result()
+            except Exception as e:  # pragma: no cover - defensive
+                log.exception("VOR StationBoard Fehler (%s): %s", sid, e)
                 continue
-            seen.add(it["guid"])
-            out.append(it)
+            if root is None:
+                continue
+            for it in _collect_from_board(sid, root):
+                if it["guid"] in seen:
+                    for x in out:
+                        if x["guid"] == it["guid"]:
+                            if it["pubDate"] and (not x["pubDate"] or it["pubDate"] < x["pubDate"]):
+                                x["pubDate"] = it["pubDate"]
+                            be, ee = x.get("ends_at"), it.get("ends_at")
+                            x["ends_at"] = None if (be is None or ee is None) else max(be, ee)
+                            if it["description"] and it["description"] not in x["description"]:
+                                x["description"] += "<br/>" + it["description"]
+                            break
+                    continue
+                seen.add(it["guid"])
+                out.append(it)
 
     out.sort(key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, hashlib.md5(x["guid"].encode()).hexdigest()))
     return out
