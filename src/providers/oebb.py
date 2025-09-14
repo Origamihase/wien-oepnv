@@ -41,8 +41,8 @@ OEBB_URL = (os.getenv("OEBB_RSS_URL", "").strip()
             or "https://fahrplan.oebb.at/bin/help.exe/dnl?protocol=https:&tpl=rss_WI_oebb&")
 
 # Optional strenger Filter: Nur Meldungen mit Endpunkten in Wien behalten.
-# Aktiviert durch Umgebungsvariable ``OEBB_ONLY_VIENNA`` ("1"/"0").
-OEBB_ONLY_VIENNA = os.getenv("OEBB_ONLY_VIENNA", "").strip() not in {"", "0", "false", "False"}
+# Aktiviert durch Umgebungsvariable ``OEBB_ONLY_VIENNA`` ("1"/"true" vs "0"/"false", case-insens).
+OEBB_ONLY_VIENNA = os.getenv("OEBB_ONLY_VIENNA", "").strip().lower() not in {"", "0", "false"}
 
 # ---------------- HTTP ----------------
 def _session() -> requests.Session:
