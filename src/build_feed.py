@@ -274,9 +274,12 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         elif it.get("guid"):
             key = it.get("guid")
         else:
-            raw = f"{it.get('title') or ''}|{it.get('description') or ''}"
+            raw = f"{it.get('source') or ''}|{it.get('title') or ''}|{it.get('description') or ''}"
             key = hashlib.sha1(raw.encode("utf-8")).hexdigest()
-            log.warning("Item ohne guid/_identity – Fallback-Schlüssel %s", key)
+            log.warning(
+                "Item ohne guid/_identity – Fallback-Schlüssel (source|title|description) %s",
+                key,
+            )
         if key in seen:
             continue
         seen.add(key)
