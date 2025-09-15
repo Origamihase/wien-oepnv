@@ -155,7 +155,14 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[ET.Ele
         retry_after = resp.headers.get("Retry-After")
         if resp.status_code == 429 and retry_after:
             log.warning("VOR StationBoard %s -> HTTP 429, Retry-After %s", station_id, retry_after)
-            time.sleep(int(retry_after))
+            try:
+                delay = float(retry_after)
+            except ValueError:
+                log.warning(
+                    "VOR StationBoard %s -> ungültiges Retry-After '%s'", station_id, retry_after
+                )
+            else:
+                time.sleep(delay)
             return None
         if resp.status_code >= 400:
             log.warning("VOR StationBoard %s -> HTTP %s", station_id, resp.status_code)
