@@ -90,9 +90,8 @@ def html_to_text(s: str) -> str:
     # Collapse any repeated bullet separators before removing those after prepositions
     txt = re.sub(r"(?:\s*•\s*){2,}", " • ", txt)
     txt = normalize_bullets(txt)
-    txt = txt.strip()
-    txt = re.sub(r"^•\s*", "", txt)
-    txt = re.sub(r"\s*•$", "", txt)
+    txt = re.sub(r"^\s*•\s*", "", txt)
+    txt = re.sub(r"\s*•\s*$", "", txt)
     txt = _WS_RE.sub(" ", txt)
     txt = re.sub(r"\s{2,}", " ", txt).strip()
     return txt
