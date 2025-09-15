@@ -343,7 +343,11 @@ def _drop_old_items(items: List[Dict[str, Any]], now: datetime) -> List[Dict[str
             if age_days > ABSOLUTE_MAX_AGE_DAYS:
                 continue
             if age_days > MAX_ITEM_AGE_DAYS:
-                continue
+                if not (
+                    isinstance(ends_at, datetime)
+                    and _to_utc(ends_at) > _to_utc(now)
+                ):
+                    continue
         out.append(it)
     return out
 
