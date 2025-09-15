@@ -25,14 +25,43 @@ Da die Cache-Dateien versioniert im Repository liegen, steht der Feed auch dann 
 ## Stationsverzeichnis
 
 `data/stations.json` enthält eine vereinfachte Zuordnung der ÖBB-Verkehrsstationen
-(`bst_id`, `bst_code`, `name`, `in_vienna`, `pendler`). Die Daten stammen aus dem Datensatz
-„[Verzeichnis der Verkehrsstationen](https://data.oebb.at/de/datensaetze~verzeichnis-der-verkehrsstationen~)“
-auf dem ÖBB-Open-Data-Portal (Excel-Datei „Verzeichnis der Verkehrsstationen.xlsx“).
+(`bst_id`, `bst_code`, `name`, `in_vienna`, `pendler`). Die Daten stammen aus dem
+Datensatz „[Verzeichnis der Verkehrsstationen](https://data.oebb.at/de/datensaetze~verzeichnis-der-verkehrsstationen~)“
+auf dem ÖBB-Open-Data-Portal (Excel-Datei „Verzeichnis der Verkehrsstationen.xlsx“)
+und stehen unter [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/).
+Die empfohlene Namensnennung lautet laut Portal „Datenquelle: ÖBB-Infrastruktur AG“.
 
-Zusätzlich sind Wiener-Linien-Haltestellen enthalten. Die Quelldateien (`wienerlinien-ogd-haltestellen.csv`
-und `wienerlinien-ogd-haltepunkte.csv`) basieren auf dem OGD-Angebot der Stadt Wien und
-werden in `stations.json` mit `source = "wl"` markiert. Die Einträge enthalten pro Station
-die DIVA-ID, alle bekannten StopIDs sowie die jeweiligen WGS84-Koordinaten.
+Zusätzlich sind Wiener-Linien-Haltestellen enthalten. Die Quelldateien
+(`wienerlinien-ogd-haltestellen.csv` und `wienerlinien-ogd-haltepunkte.csv`)
+basieren auf dem OGD-Angebot der Stadt Wien (Lizenz
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) und werden in
+`stations.json` mit `source = "wl"` markiert. Die Einträge enthalten pro Station die
+DIVA-ID, alle bekannten StopIDs sowie die jeweiligen WGS84-Koordinaten.
+
+### Weitere Datengrundlagen
+
+Das Stationsverzeichnis lässt sich mit zusätzlichen ÖBB-Geodaten anreichern, die
+ebenfalls regelmäßig aktualisiert werden:
+
+- **ÖBB Fahrplandaten (GTFS)**: Kompletter Fahrplanexport mit Linien-, Fahrt- und
+  Halteinformationen (`stop.txt`, `routes.txt`, …). Die ZIP-Datei steht im
+  Open-Data-Portal unter
+  `https://data.oebb.at/de/datensaetze~fahrplandaten-gtfs~` bereit und fällt unter
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Attribution laut
+  Portal: „Datenquelle: ÖBB-Personenverkehr AG“.
+- **ÖBB Streckendaten Personenverkehr**: Geometriedaten der von ÖBB PV bedienten
+  Streckenabschnitte (Shape/GeoJSON), abrufbar über
+  `https://data.oebb.at/de/datensaetze~streckendaten-personenverkehr~` (Lizenz
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), Namensnennung
+  „ÖBB-Infrastruktur AG“).
+- **ÖBB GeoNetz**: Topologisch aufbereitete Gleisabschnitte mit Kilometrierung
+  (`https://data.oebb.at/de/datensaetze~geonetz~`), veröffentlicht unter
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) mit demselben
+  Attributionshinweis.
+
+Die Datensätze sind nicht im Repository enthalten. Für lokale Experimente können
+sie in `data/` abgelegt werden (z. B. `data/gtfs/`, `data/strecken.geojson`,
+`data/geonetz/`).
 
 ### Automatische Aktualisierung
 
@@ -65,6 +94,13 @@ abgelegt werden (`wienerlinien-ogd-haltestellen.csv` und
 StopIDs und DIVA, berechnet einheitliche Namen und ergänzt die Einträge in
 `stations.json`. Bereits vorhandene WL-Einträge (`"source": "wl"`) werden dabei ersetzt.
 
+Für Auswertungen in Kombination mit GTFS- oder Geodaten lohnt es sich, die
+entpackten GTFS-Dateien (z. B. aus dem ÖBB- oder WL-Export) parallel in
+`data/gtfs/` abzulegen. Die vom Skript erzeugten Felder `wl_diva` und
+`wl_stops[].stop_id` lassen sich direkt mit den `stop_id`/`stop_code`-Spalten der
+GTFS-Dateien verknüpfen, und die WGS84-Koordinaten aus den CSVs erleichtern das
+Matching mit Streckendaten oder dem GeoNetz.
+
 ### Pendlerstationen
 
 Die Datei `data/pendler_bst_ids.json` enthält eine manuell gepflegte Liste an
@@ -72,6 +108,21 @@ BST-IDs für Pendlerstationen. Änderungen an der Auswahl (z. B. neue oder
 wegfallende Stationen) müssen von Hand in dieser Datei nachgezogen werden, damit
 das Aktualisierungsskript die entsprechenden Einträge in `data/stations.json`
 über das Feld `pendler` markieren kann.
+
+### Richtlinien für Änderungen an Aktualisierungsskripten
+
+- Änderungen an `scripts/update_station_directory.py` und
+  `scripts/update_wl_stations.py` sollten rückwärtskompatibel bleiben. Neue
+  Optionen stets mit sinnvollen Standardwerten versehen und in der README
+  dokumentieren.
+- Wenn sich die Struktur von `stations.json` oder den WL-Einträgen ändert,
+  müssen die begleitenden Tests in `tests/` sowie die GitHub Actions angepasst
+  werden.
+- Zusätzliche Datenquellen oder Lizenzen unbedingt im Abschnitt
+  „Stationsverzeichnis“ nachziehen und Quellen/Attributionen ergänzen.
+- Nach Codeänderungen beide Skripte lokal gegen die aktuellen Rohdaten laufen
+  lassen und das Ergebnis per `python -m pytest` absichern, bevor Änderungen
+  committed werden.
 
 ## Entwicklung/Tests lokal
 
