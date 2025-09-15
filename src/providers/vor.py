@@ -134,6 +134,10 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[ET.Ele
             log.warning("VOR StationBoard %s -> HTTP %s", station_id, resp.status_code)
             return None
         return ET.fromstring(resp.content)
+    except requests.RequestException as e:
+        msg = re.sub(r"accessId=[^&]+", "accessId=***", str(e))
+        log.error("VOR StationBoard Fehler (%s): %s", station_id, msg)
+        return None
     except Exception as e:
         log.exception("VOR StationBoard Fehler (%s): %s", station_id, e)
         return None
