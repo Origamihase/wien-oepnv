@@ -13,7 +13,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  update_wl_cache:
+    uses: ./.github/workflows/update-wl-cache.yml
+    secrets: inherit
+
+  update_oebb_cache:
+    uses: ./.github/workflows/update-oebb-cache.yml
+    secrets: inherit
+
+  update_vor_cache:
+    uses: ./.github/workflows/update-vor-cache.yml
+    secrets: inherit
+
   build:
+    needs:
+      - update_wl_cache
+      - update_oebb_cache
+      - update_vor_cache
     runs-on: ubuntu-latest
 
     env:
@@ -61,6 +77,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Sync repository
+        run: git pull --ff-only
 
       - name: Set up Python
         uses: actions/setup-python@v5

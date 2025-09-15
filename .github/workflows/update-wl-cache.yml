@@ -1,6 +1,7 @@
 name: Update Wiener Linien cache
 
 on:
+  workflow_call:
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
