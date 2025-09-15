@@ -127,14 +127,11 @@ def _strip_html(s: str) -> str:
     return re.sub(r"<[^>]*>", "", s or "")
 
 def _clip_text_html(text: str, limit: int) -> str:
-    """Für TV knapper machen. Wenn HTML enthalten ist, clippen wir auf Plaintext und escapen."""
-    if limit <= 0:
-        return text or ""
-    plain = _strip_html(text)
-    if len(plain) <= limit:
-        return text or ""
-    clipped = plain[:limit].rstrip() + " …"
-    return html.escape(clipped)
+    """Für TV knapper machen. Gibt immer Plaintext zurück und kürzt falls nötig."""
+    plain = html.unescape(_strip_html(text or ""))
+    if limit <= 0 or len(plain) <= limit:
+        return plain
+    return plain[:limit].rstrip() + " …"
 
 def _parse_lines_from_title(title: str) -> List[str]:
     m = re.match(r"^\s*([A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20})\s*:\s*", title or "")
@@ -352,7 +349,7 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     desc_out = _clip_text_html(raw_desc, DESCRIPTION_CHAR_LIMIT)
     # Für XML robust aufbereiten
     title_out = _sanitize_text(html.unescape(raw_title))
-    desc_out  = _sanitize_text(html.unescape(desc_out))
+    desc_out  = html.escape(_sanitize_text(desc_out))
 
     parts: List[str] = []
     parts.append("<item>")
