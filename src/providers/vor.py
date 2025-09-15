@@ -12,7 +12,7 @@ KEIN <pubDate> und ordnet solche Items hinter datierten ein.
 
 from __future__ import annotations
 
-import os, re, html, logging, time, hashlib, json
+import os, re, html, logging, time, hashlib, json, tempfile
 import threading
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -87,12 +87,27 @@ def save_request_count(now_local: datetime) -> int:
         if stored_date != today:
             stored_count = 0
         new_count = stored_count + 1
+        tmp_path: str | None = None
         try:
             REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
-            with REQUEST_COUNT_FILE.open("w", encoding="utf-8") as fh:
+            fd, tmp_path = tempfile.mkstemp(
+                prefix=f"{REQUEST_COUNT_FILE.stem}-",
+                suffix=REQUEST_COUNT_FILE.suffix or ".tmp",
+                dir=str(REQUEST_COUNT_FILE.parent),
+            )
+            with os.fdopen(fd, "w", encoding="utf-8") as fh:
                 json.dump({"date": today, "count": new_count}, fh)
+            os.replace(tmp_path, REQUEST_COUNT_FILE)
         except OSError as exc:
             log.warning("VOR: Konnte Request-Zähler nicht speichern: %s", exc)
+            if tmp_path is not None:
+                try:
+                    os.unlink(tmp_path)
+                except OSError as cleanup_exc:
+                    log.debug(
+                        "VOR: Temporäre Request-Zähler-Datei konnte nicht gelöscht werden: %s",
+                        cleanup_exc,
+                    )
         return new_count
 
 
