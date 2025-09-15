@@ -417,7 +417,12 @@ def main() -> int:
 
     out_path = Path(OUT_PATH)
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(rss, encoding="utf-8")
+    tmp = out_path.with_suffix('.tmp')
+    with tmp.open('w', encoding='utf-8') as f:
+        f.write(rss)
+        f.flush()
+        os.fsync(f.fileno())
+    tmp.replace(out_path)
     log.info("Feed geschrieben: %s (%d Items)", out_path, min(len(items), MAX_ITEMS))
     return 0
 
