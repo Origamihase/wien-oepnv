@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import re
 import unicodedata
 from functools import lru_cache
@@ -10,6 +11,9 @@ from pathlib import Path
 from typing import Dict, Iterable, List, NamedTuple, Sequence, Tuple
 
 __all__ = ["canonical_name", "is_in_vienna", "is_pendler", "station_info"]
+
+
+logger = logging.getLogger(__name__)
 
 
 class WLStop(NamedTuple):
@@ -325,8 +329,19 @@ def _station_lookup() -> Dict[str, StationInfo]:
             key = _normalize_token(alias)
             if not key:
                 continue
-            if key not in mapping:
+            existing = mapping.get(key)
+            if existing is None:
                 mapping[key] = record
+                continue
+            if existing is record or existing.name == record.name:
+                continue
+            logger.warning(
+                "Duplicate station alias %r normalized to %r for %s conflicts with %s",
+                alias,
+                key,
+                record.name,
+                existing.name,
+            )
     return mapping
 
 
