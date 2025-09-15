@@ -105,7 +105,7 @@ LOG_MAX_BYTES=2097152 LOG_BACKUP_COUNT=10 python -u src/build_feed.py
 | `VOR_ACCESS_ID` / `VAO_ACCESS_ID` | str | – | API-Zugangsschlüssel. Leere Werte werden ignoriert; ohne Wert bleibt der Provider inaktiv. |
 | `VOR_STATION_IDS` | Liste (kommagetrennt) | – | Stations-IDs für Abfragen. Ohne Angabe bleibt der Provider inaktiv. |
 | `VOR_BASE` | str | `"https://routenplaner.verkehrsauskunft.at/vao/restproxy"` | Basis-URL der VAO-API. |
-| `VOR_VERSION` | str | `"v1.3"` | API-Version. |
+| `VOR_VERSION` | str | `"v1.11.0"` | API-Version. |
 | `VOR_BOARD_DURATION_MIN` | int | `60` | Zeitraum (Minuten) für die DepartureBoard-Abfrage. |
 | `VOR_HTTP_TIMEOUT` | int | `15` | Timeout (Sekunden) für HTTP-Anfragen. |
 | `VOR_MAX_STATIONS_PER_RUN` | int | `2` | Anzahl der Stations-IDs pro Durchlauf. |
