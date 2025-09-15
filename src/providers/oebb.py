@@ -28,9 +28,11 @@ from email.utils import parsedate_to_datetime
 try:  # pragma: no cover - support both package layouts
     from utils.ids import make_guid
     from utils.text import html_to_text
+    from utils import stations as station_utils
 except ModuleNotFoundError:  # pragma: no cover
     from src.utils.ids import make_guid  # type: ignore
     from src.utils.text import html_to_text  # type: ignore
+    from src.utils import stations as station_utils  # type: ignore
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -134,13 +136,11 @@ def _norm(s: str) -> str:
     s = re.sub(r"[^a-z0-9 ]+", " ", s)
     return re.sub(r"\s{2,}", " ", s).strip()
 
-# Wien-Knoten (roh → normalisiert)
-W_VIENNA_RAW = [
-    "Wien", "Wien Hbf", "Wien Meidling", "Wien Floridsdorf", "Wien Praterstern",
-    "Wien Handelskai", "Wien Heiligenstadt", "Wien Spittelau", "Wien Mitte",
-    "Wien Simmering", "Wien Stadlau", "Wien Hütteldorf", "Wien Liesing",
-]
-W_VIENNA = {_norm(x) for x in W_VIENNA_RAW}
+# Wien-Knoten aus dem Stationsverzeichnis (BST-IDs mit ``in_vienna``)
+_VIENNA_NAME_INDEX = station_utils.normalized_name_index(_norm, only_vienna=True)
+W_VIENNA = {name for name in _VIENNA_NAME_INDEX if name}
+# Zusätzliche Kürzel für generische Formulierungen
+W_VIENNA.update({_norm("Wien"), _norm("Wien Hbf")})
 
 # Pendelraum: Nutzerliste + Ergänzungen (normalisiert)
 W_NEAR_RAW = [

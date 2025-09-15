@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """Download and parse the ÖBB station directory Excel file.
 
-The script exports a simplified JSON mapping (bst_id, bst_code, name) that is used
-throughout the project. The data is obtained from the official ÖBB Open-Data
-portal.
+The script exports a simplified JSON mapping (bst_id, bst_code, name,
+``in_vienna``) that is used throughout the project. The data is obtained from the
+official ÖBB Open-Data portal.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import logging
+import re
 from dataclasses import dataclass
 from io import BytesIO
 from pathlib import Path
@@ -22,7 +23,9 @@ DEFAULT_SOURCE_URL = (
     "https://data.oebb.at/dam/jcr:fce22daf-0dd8-4a15-80b4-dbca6e80ce38/"
     "Verzeichnis%20der%20Verkehrsstationen.xlsx"
 )
-DEFAULT_OUTPUT_PATH = Path(__file__).resolve().parents[1] / "data" / "stations.json"
+BASE_DIR = Path(__file__).resolve().parents[1]
+DEFAULT_OUTPUT_PATH = BASE_DIR / "data" / "stations.json"
+DEFAULT_VIENNA_IDS_PATH = BASE_DIR / "data" / "vienna_bst_ids.json"
 REQUEST_TIMEOUT = 30  # seconds
 USER_AGENT = (
     "wien-oepnv station updater "
@@ -45,9 +48,15 @@ class Station:
     bst_id: int
     bst_code: str
     name: str
+    in_vienna: bool
 
     def as_dict(self) -> dict[str, object]:
-        return {"bst_id": self.bst_id, "bst_code": self.bst_code, "name": self.name}
+        return {
+            "bst_id": self.bst_id,
+            "bst_code": self.bst_code,
+            "name": self.name,
+            "in_vienna": self.in_vienna,
+        }
 
 
 def parse_args() -> argparse.Namespace:
@@ -64,6 +73,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=DEFAULT_OUTPUT_PATH,
         help="Path to the JSON file that will be written",
+    )
+    parser.add_argument(
+        "--vienna-ids",
+        type=Path,
+        default=DEFAULT_VIENNA_IDS_PATH,
+        help="Path to the JSON file containing BST-IDs for stations in Vienna",
     )
     parser.add_argument(
         "-v",
@@ -117,20 +132,53 @@ def _find_header_row(rows: Iterable[tuple[object, ...]]) -> tuple[int, dict[str,
     raise ValueError("Could not identify the header row in the workbook")
 
 
-def _coerce_bst_id(value: object | None) -> int | None:
+def _parse_bst_ids(value: object | None) -> list[int]:
     if value is None:
-        return None
-    if isinstance(value, str):
-        digits = value.strip()
-        if not digits.isdigit():
-            return None
-        return int(digits)
+        return []
     if isinstance(value, (int, float)):
-        return int(value)
-    return None
+        return [int(value)]
+    if isinstance(value, str):
+        tokens = re.split(r"[;,]", value)
+        ids: list[int] = []
+        for token in tokens:
+            digits = token.strip()
+            if digits.isdigit():
+                ids.append(int(digits))
+        return ids
+    return []
 
 
-def extract_stations(workbook_stream: BytesIO) -> list[Station]:
+def _split_bst_codes(value: object | None) -> list[str]:
+    if value is None:
+        return []
+    text = str(value).strip()
+    if not text:
+        return []
+    parts = [part.strip() for part in text.split(";")]
+    return [part for part in parts if part]
+
+
+def load_vienna_ids(path: Path) -> set[int]:
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            payload = json.load(handle)
+    except FileNotFoundError:
+        logger.warning("Vienna BST-ID list %s not found; treating as empty", path)
+        return set()
+    if not isinstance(payload, list):
+        raise ValueError(f"Invalid Vienna BST-ID list: expected list, got {type(payload)!r}")
+    ids: set[int] = set()
+    for item in payload:
+        if isinstance(item, bool):  # avoid treating booleans as integers
+            continue
+        try:
+            ids.add(int(item))
+        except (TypeError, ValueError) as exc:  # pragma: no cover - defensive
+            raise ValueError(f"Invalid BST-ID {item!r} in {path}") from exc
+    return ids
+
+
+def extract_stations(workbook_stream: BytesIO, vienna_ids: set[int]) -> list[Station]:
     workbook = openpyxl.load_workbook(workbook_stream, data_only=True, read_only=True)
     try:
         worksheet = workbook.active
@@ -148,16 +196,26 @@ def extract_stations(workbook_stream: BytesIO) -> list[Station]:
             id_cell = row[column_map["bst_id"]] if column_map["bst_id"] < len(row) else None
             if name_cell is None or code_cell is None:
                 continue
-            parsed_id = _coerce_bst_id(id_cell)
-            if parsed_id is None or parsed_id in seen_ids:
+            bst_ids = _parse_bst_ids(id_cell)
+            if not bst_ids:
                 continue
-            station = Station(
-                bst_id=parsed_id,
-                bst_code=str(code_cell).strip(),
-                name=str(name_cell).strip(),
-            )
-            seen_ids.add(parsed_id)
-            stations.append(station)
+            bst_codes = _split_bst_codes(code_cell) or [str(code_cell).strip()]
+            if len(bst_codes) == len(bst_ids):
+                code_pairs = zip(bst_ids, bst_codes)
+            else:
+                default_code = bst_codes[0] if bst_codes else ""
+                code_pairs = ((bst_id, default_code) for bst_id in bst_ids)
+            for bst_id, bst_code in code_pairs:
+                if bst_id in seen_ids:
+                    continue
+                station = Station(
+                    bst_id=bst_id,
+                    bst_code=bst_code,
+                    name=str(name_cell).strip(),
+                    in_vienna=bst_id in vienna_ids,
+                )
+                seen_ids.add(bst_id)
+                stations.append(station)
         stations.sort(key=lambda item: item.bst_id)
         logger.info("Extracted %d stations", len(stations))
         return stations
@@ -178,7 +236,8 @@ def main() -> None:
     args = parse_args()
     configure_logging(args.verbose)
     workbook_stream = download_workbook(args.source_url)
-    stations = extract_stations(workbook_stream)
+    vienna_ids = load_vienna_ids(args.vienna_ids)
+    stations = extract_stations(workbook_stream, vienna_ids)
     write_json(stations, args.output)
 
 
