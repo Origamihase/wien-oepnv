@@ -361,9 +361,9 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
 
     # TV-freundliche Kürzung (Beschreibung darf HTML enthalten)
     desc_out = _clip_text_html(raw_desc, DESCRIPTION_CHAR_LIMIT)
-    # Für XML robust aufbereiten
+    # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(html.unescape(raw_title))
-    desc_out  = html.escape(_sanitize_text(desc_out))
+    desc_out  = _sanitize_text(desc_out)
 
     parts: List[str] = []
     parts.append("<item>")
