@@ -187,30 +187,48 @@ def _collect_from_board(station_id: str, root: ET.Element) -> List[Dict[str, Any
         starts_at = _parse_dt(_text(m, "sDate"), _text(m, "sTime"))
         ends_at   = _parse_dt(_text(m, "eDate"), _text(m, "eTime"))
 
-        lines: List[str] = []
+        lines_set: set[str] = set()
         affected_stops: List[str] = []
         for p in prods:
-            name = _text(p, "name") or (_text(p, "catOutS") + " " + _text(p, "displayNumber"))
+            name = _text(p, "name") or (_text(p, "catOutS") + _text(p, "displayNumber"))
             if name:
-                lines.append(name.strip())
+                name = re.sub(r"\s*\([^)]*\)", "", name)
+                name = name.replace(" ", "").strip()
+                if name:
+                    lines_set.add(name)
         aff = m.find("./affectedStops")
         if aff is not None:
             for st in aff.findall("./Stop"):
                 nm = (st.get("name") or st.get("stop") or "").strip()
                 if nm: affected_stops.append(nm)
+        lines = sorted(lines_set)
 
         extras: List[str] = []
-        if lines: extras.append(f"Linien: {html.escape(', '.join(sorted(set(lines))))}")
-        if affected_stops: extras.append(f"Betroffene Haltestellen: {html.escape(', '.join(sorted(set(affected_stops))[:20]))}")
+        if lines:
+            extras.append(f"Linien: {html.escape(', '.join(lines))}")
+        if affected_stops:
+            extras.append(
+                f"Betroffene Haltestellen: {html.escape(', '.join(sorted(set(affected_stops))[:20]))}"
+            )
 
         description_html = text or head
-        if extras: description_html += "<br/>" + "<br/>".join(extras)
+        if extras:
+            description_html += "<br/>" + "<br/>".join(extras)
+
+        prefix = "/".join(lines)
+        title = head or "Meldung"
+        if prefix:
+            if re.match(rf"^\s*{re.escape(prefix)}\s*:\s*", title, re.IGNORECASE):
+                rest = re.sub(rf"^\s*{re.escape(prefix)}\s*:\s*", "", title, flags=re.IGNORECASE).strip()
+                title = f"{prefix}: {rest}" if rest else prefix
+            else:
+                title = f"{prefix}: {title}" if title else prefix
 
         guid = make_guid("vao", msg_id)
         items.append({
             "source": "VOR/VAO",
             "category": "Störung",
-            "title": head or "Meldung",
+            "title": title,
             "description": description_html,
             "link": "https://www.vor.at/",
             "guid": guid,
