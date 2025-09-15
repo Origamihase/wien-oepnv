@@ -5,9 +5,7 @@ from __future__ import annotations
 
 import logging
 import sys
-from datetime import datetime
 from pathlib import Path
-from typing import Any
 
 from requests.exceptions import RequestException
 
@@ -19,24 +17,10 @@ if str(SRC_DIR) not in sys.path:
 
 from providers.oebb import fetch_events  # noqa: E402  (import after path setup)
 from utils.cache import write_cache  # noqa: E402
+from utils.serialize import serialize_for_cache  # noqa: E402
 
 
 logger = logging.getLogger("update_oebb_cache")
-
-
-def _serialize(value: Any) -> Any:
-    """Recursively convert unsupported types into JSON serializable values."""
-
-    if isinstance(value, datetime):
-        return value.isoformat()
-    if isinstance(value, dict):
-        return {key: _serialize(val) for key, val in value.items()}
-    if isinstance(value, (list, tuple)):
-        return [_serialize(item) for item in value]
-    if isinstance(value, set):
-        serialized = [_serialize(item) for item in value]
-        return sorted(serialized, key=str)
-    return value
 
 
 def configure_logging() -> None:
@@ -71,7 +55,7 @@ def main() -> int:
         )
         return 1
 
-    serialized_items = [_serialize(item) for item in items]
+    serialized_items = [serialize_for_cache(item) for item in items]
     write_cache("oebb", serialized_items)
     logger.info("Updated ÖBB cache with %d events.", len(serialized_items))
     return 0

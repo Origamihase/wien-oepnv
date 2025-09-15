@@ -7,7 +7,6 @@ import logging
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Any
 from zoneinfo import ZoneInfo
 
 from requests.exceptions import RequestException
@@ -25,24 +24,10 @@ from providers.vor import (  # noqa: E402  (import after path setup)
     save_request_count,
 )
 from utils.cache import write_cache  # noqa: E402
+from utils.serialize import serialize_for_cache  # noqa: E402
 
 
 logger = logging.getLogger("update_vor_cache")
-
-
-def _serialize(value: Any) -> Any:
-    """Recursively convert unsupported types into JSON serializable values."""
-
-    if isinstance(value, datetime):
-        return value.isoformat()
-    if isinstance(value, dict):
-        return {key: _serialize(val) for key, val in value.items()}
-    if isinstance(value, (list, tuple)):
-        return [_serialize(item) for item in value]
-    if isinstance(value, set):
-        serialized = [_serialize(item) for item in value]
-        return sorted(serialized, key=str)
-    return value
 
 
 def configure_logging() -> None:
@@ -107,7 +92,7 @@ def main() -> int:
     if _limit_reached(now_local):
         return 0
 
-    serialized_items = [_serialize(item) for item in items]
+    serialized_items = [serialize_for_cache(item) for item in items]
     write_cache("vor", serialized_items)
     save_request_count(now_local)
     logger.info("VOR: Cache mit %d Einträgen aktualisiert.", len(serialized_items))
