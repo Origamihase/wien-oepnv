@@ -29,6 +29,9 @@ class StationInfo(NamedTuple):
     pendler: bool
     wl_diva: str | None = None
     wl_stops: tuple[WLStop, ...] = ()
+    vor_id: str | None = None
+    latitude: float | None = None
+    longitude: float | None = None
 
 _STATIONS_PATH = Path(__file__).resolve().parents[2] / "data" / "stations.json"
 
@@ -141,9 +144,13 @@ def _station_lookup() -> Dict[str, StationInfo]:
         code = str(code_raw).strip() if code_raw is not None else ""
         wl_diva_raw = entry.get("wl_diva")
         wl_diva = str(wl_diva_raw).strip() if wl_diva_raw is not None else ""
+        vor_id_raw = entry.get("vor_id")
+        vor_id = str(vor_id_raw).strip() if vor_id_raw is not None else ""
         extra_aliases: set[str] = set()
         if wl_diva:
             extra_aliases.add(wl_diva)
+        if vor_id:
+            extra_aliases.add(vor_id)
         aliases_field = entry.get("aliases")
         if isinstance(aliases_field, list):
             for alias in aliases_field:
@@ -176,12 +183,17 @@ def _station_lookup() -> Dict[str, StationInfo]:
                         longitude=longitude,
                     )
                 )
+        station_latitude = _coerce_float(entry.get("latitude"))
+        station_longitude = _coerce_float(entry.get("longitude"))
         record = StationInfo(
             name=name,
             in_vienna=bool(entry.get("in_vienna")),
             pendler=bool(entry.get("pendler")),
             wl_diva=wl_diva or None,
             wl_stops=tuple(stop_records),
+            vor_id=vor_id or None,
+            latitude=station_latitude,
+            longitude=station_longitude,
         )
         for alias in _iter_aliases(name, code or None, extra_aliases):
             key = _normalize_token(alias)

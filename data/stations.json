@@ -7238,6 +7238,49 @@
     "pendler": false
   },
   {
+    "name": "Flughafen Wien Bahnhof (VOR)",
+    "in_vienna": false,
+    "pendler": false,
+    "vor_id": "900200",
+    "latitude": 48.120027,
+    "longitude": 16.561749,
+    "aliases": [
+      "900200",
+      "Flughafen Wien Bahnhof",
+      "Schwechat Flughafen Wien Bahnhof",
+      "Vienna Airport"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Wien Aspern Nord (VOR)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "900100",
+    "latitude": 48.234567,
+    "longitude": 16.520123,
+    "aliases": [
+      "900100",
+      "Aspern Nord S U",
+      "Wien Aspern Nord"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Wiener Neustadt Hbf (VOR)",
+    "in_vienna": false,
+    "pendler": false,
+    "vor_id": "900300",
+    "latitude": 47.810231,
+    "longitude": 16.235204,
+    "aliases": [
+      "900300",
+      "Wiener Neustadt Hbf",
+      "Wr. Neustadt Hbf"
+    ],
+    "source": "vor"
+  },
+  {
     "name": "Wien Karlsplatz (WL)",
     "in_vienna": true,
     "pendler": false,
