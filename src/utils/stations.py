@@ -7,9 +7,17 @@ import re
 import unicodedata
 from functools import lru_cache
 from pathlib import Path
-from typing import Dict, Iterable, List
+from typing import Dict, Iterable, List, NamedTuple
 
-__all__ = ["canonical_name"]
+__all__ = ["canonical_name", "is_in_vienna", "is_pendler"]
+
+
+class StationInfo(NamedTuple):
+    """Normalized metadata for a single station entry."""
+
+    name: str
+    in_vienna: bool
+    pendler: bool
 
 _STATIONS_PATH = Path(__file__).resolve().parents[2] / "data" / "stations.json"
 
@@ -31,6 +39,7 @@ def _normalize_token(value: str) -> str:
     text = _strip_accents(value)
     text = text.replace("ß", "ss")
     text = text.casefold()
+    text = re.sub(r"\ba\s*(?:[./]\s*)?d(?:[./]\s*)?\b", "an der ", text)
     text = text.replace("ae", "a").replace("oe", "o").replace("ue", "u")
     text = re.sub(r"\bst[. ]?\b", "sankt ", text)
     text = re.sub(r"\b(?:bahnhof|bahnhst|bhf|hbf|bf)\b", "", text)
@@ -75,8 +84,8 @@ def _iter_aliases(name: str, code: str | None) -> Iterable[str]:
 
 
 @lru_cache(maxsize=1)
-def _station_lookup() -> Dict[str, str]:
-    """Return a mapping from normalized aliases to canonical station names."""
+def _station_lookup() -> Dict[str, StationInfo]:
+    """Return a mapping from normalized aliases to station metadata."""
 
     try:
         with _STATIONS_PATH.open("r", encoding="utf-8") as handle:
@@ -84,7 +93,7 @@ def _station_lookup() -> Dict[str, str]:
     except (OSError, json.JSONDecodeError):  # pragma: no cover - defensive
         return {}
 
-    mapping: Dict[str, str] = {}
+    mapping: Dict[str, StationInfo] = {}
     if not isinstance(entries, list):
         return mapping
 
@@ -96,11 +105,16 @@ def _station_lookup() -> Dict[str, str]:
             continue
         code_raw = entry.get("bst_code")
         code = str(code_raw).strip() if code_raw is not None else ""
+        info = StationInfo(
+            name=name,
+            in_vienna=bool(entry.get("in_vienna")),
+            pendler=bool(entry.get("pendler")),
+        )
         for alias in _iter_aliases(name, code or None):
             key = _normalize_token(alias)
             if not key:
                 continue
-            mapping.setdefault(key, name)
+            mapping.setdefault(key, info)
     return mapping
 
 
@@ -120,11 +134,28 @@ def _candidate_values(value: str) -> List[str]:
         if cleaned and cleaned not in seen:
             seen.add(cleaned)
             candidates.append(cleaned)
+    extras: List[str] = []
+    for variant in candidates:
+        if re.search(r"\b(?:bei|b[./-]?)\s*wien\b", variant, re.IGNORECASE):
+            stripped = re.sub(r"\b(?:bei|b[./-]?)\s*wien\b", "", variant, flags=re.IGNORECASE)
+            extras.append(stripped)
+    for extra in extras:
+        cleaned = re.sub(r"\s{2,}", " ", extra.strip())
+        if cleaned and cleaned not in seen:
+            seen.add(cleaned)
+            candidates.append(cleaned)
     return candidates
 
 
 def canonical_name(name: str) -> str | None:
     """Return the canonical ÖBB station name for *name* or ``None`` if unknown."""
+
+    info = _station_info(name)
+    return info.name if info else None
+
+
+def _station_info(name: str) -> StationInfo | None:
+    """Return :class:`StationInfo` for *name* or ``None`` if the station is unknown."""
 
     if not isinstance(name, str):  # pragma: no cover - defensive
         return None
@@ -135,6 +166,29 @@ def canonical_name(name: str) -> str | None:
 
     for candidate in _candidate_values(name):
         key = _normalize_token(candidate)
-        if key and key in lookup:
-            return lookup[key]
+        if not key:
+            continue
+        info = lookup.get(key)
+        if info:
+            return info
     return None
+
+
+def is_in_vienna(name: str) -> bool:
+    """Return ``True`` if *name* refers to a station located in Vienna."""
+
+    info = _station_info(name)
+    if info:
+        return bool(info.in_vienna)
+    if isinstance(name, str):
+        token = _normalize_token(name)
+        if token == "wien" or token.startswith("wien "):
+            return True
+    return False
+
+
+def is_pendler(name: str) -> bool:
+    """Return ``True`` if *name* is part of the configured commuter belt."""
+
+    info = _station_info(name)
+    return bool(info and info.pendler)

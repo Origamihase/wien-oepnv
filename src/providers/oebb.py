@@ -28,11 +28,11 @@ from email.utils import parsedate_to_datetime
 try:  # pragma: no cover - support both package layouts
     from utils.ids import make_guid
     from utils.text import html_to_text
-    from utils.stations import canonical_name
+    from utils.stations import canonical_name, is_in_vienna, is_pendler
 except ModuleNotFoundError:  # pragma: no cover
     from src.utils.ids import make_guid  # type: ignore
     from src.utils.text import html_to_text  # type: ignore
-    from src.utils.stations import canonical_name  # type: ignore
+    from src.utils.stations import canonical_name, is_in_vienna, is_pendler  # type: ignore
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -132,82 +132,45 @@ def _split_endpoints(title: str) -> Optional[List[str]]:
     endpoints = explode(left) + explode(right)
     return list(dict.fromkeys(endpoints))
 
-# ---------------- Pendler-Region (Whitelist) ----------------
-def _norm(s: str) -> str:
-    s = (s or "").casefold()
-    for a,b in (("ä","a"),("ö","o"),("ü","u"),("ß","ss")):
-        s = s.replace(a,b)
-    s = re.sub(r"(?:bahnhof|bahnhst|hbf|bf)\b", "", s).strip()
-    s = re.sub(r"[^a-z0-9 ]+", " ", s)
-    return re.sub(r"\s{2,}", " ", s).strip()
+# ---------------- Region helpers ----------------
+_MAX_STATION_WINDOW = 4
+_FAR_AWAY_RE = re.compile(
+    r"\b(salzburg|innsbruck|villach|bregenz|linz|graz|klagenfurt|bratislava|muenchen|passau|freilassing)\b",
+    re.IGNORECASE,
+)
 
-# Wien-Knoten (roh → normalisiert)
-W_VIENNA_RAW = [
-    "Wien", "Wien Hbf", "Wien Meidling", "Wien Floridsdorf", "Wien Praterstern",
-    "Wien Handelskai", "Wien Heiligenstadt", "Wien Spittelau", "Wien Mitte",
-    "Wien Simmering", "Wien Stadlau", "Wien Hütteldorf", "Wien Liesing",
-]
-W_VIENNA = {_norm(x) for x in W_VIENNA_RAW}
 
-# Pendelraum: Nutzerliste + Ergänzungen (normalisiert)
-W_NEAR_RAW = [
-    # Nutzerwunsch (alphabetisch gruppiert)
-    "Baden bei Wien",
-    "Bruck an der Leitha",            # deckt „Bruck/Leitha Bahnhof“
-    "Deutsch Wagram Bahnhof",
-    "Ebenfurth Bahnhof",
-    "Ebreichsdorf",
-    "Eisenstadt",
-    "Flughafen Wien",
-    "Gänserndorf",
-    "Hollabrunn",
-    "Korneuburg",
-    "Mistelbach",
-    "Mödling",
-    "Neulengbach",
-    "Neusiedl am See",
-    "Parndorf",
-    "Pressbaum",
-    "Purkersdorf Zentrum",
-    "St. Pölten",
-    "Stockerau",
-    "Tulln an der Donau",
-    "Tullnerfeld",
-    "Wiener Neustadt",
-    "Wolkersdorf",
-    "Wulkaprodersdorf",
-
-    # bisherige nahe Orte (zur Sicherheit beibehalten)
-    "Deutsch Wagram", "Strasshof", "Gerasdorf", "Marchegg",
-    "Kritzendorf", "Greifenstein-Altenberg", "Langenzersdorf",
-    "Purkersdorf", "Rekawinkel", "Tulln",
-    "Schwechat", "Fischamend", "Hainburg", "Wolfsthal",
-    "Petronell-Carnuntum", "Bad Deutsch-Altenburg",
-]
-W_NEAR = {_norm(x) for x in W_NEAR_RAW}
-
-def _is_near(name: str) -> bool:
-    n = _norm(name)
-    if not n:
-        return False
+def _is_allowed_station(name: str) -> bool:
+    if is_in_vienna(name):
+        return True
     if OEBB_ONLY_VIENNA:
-        return n in W_VIENNA or n.startswith("wien ")
-    return n in W_VIENNA or n in W_NEAR or n.startswith("wien ")
+        return False
+    return is_pendler(name)
+
+
+def _has_allowed_station(blob: str) -> bool:
+    tokens = [t for t in re.split(r"\W+", blob) if t]
+    if not tokens:
+        return False
+    window = min(_MAX_STATION_WINDOW, len(tokens))
+    for size in range(window, 0, -1):
+        for idx in range(len(tokens) - size + 1):
+            candidate = " ".join(tokens[idx : idx + size])
+            if _is_allowed_station(candidate):
+                return True
+    return False
+
 
 def _keep_by_region(title: str, desc: str) -> bool:
     endpoints = _split_endpoints(title)
     if endpoints:
-        # Nur behalten, wenn ALLE genannten Endpunkte „nah“ sind
-        return all(_is_near(x) for x in endpoints)
-    # Fallback: heuristisch auf Wien-Bezug prüfen
-    blob = f"{title} {desc}"
-    tokens = re.split(r"\W+", blob)
-    if any(_is_near(w) for w in tokens):
-        if re.search(r"\b(salzburg|innsbruck|villach|bregenz|linz|graz|klagenfurt|bratislava|muenchen|passau|freilassing)\b",
-                     blob, re.IGNORECASE):
-            return False
-        return True
-    return False
+        return all(_is_allowed_station(x) for x in endpoints)
+    blob = f"{title or ''} {desc or ''}"
+    if not _has_allowed_station(blob):
+        return False
+    if _FAR_AWAY_RE.search(blob):
+        return False
+    return True
 
 # ---------------- Fetch/Parse ----------------
 def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
