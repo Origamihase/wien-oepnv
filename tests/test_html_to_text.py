@@ -13,6 +13,7 @@ from src.utils.text import html_to_text
         "A • B • C • D",
     ),
     ("<th>Head1</th><th>Head2</th>End", "Head1 • Head2 • End"),
+    ("Zeitraum:<br>Ab Montag", "Zeitraum: Ab Montag"),
 ])
 def test_html_to_text_examples(html, expected):
     assert html_to_text(html) == expected
