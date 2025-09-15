@@ -18,6 +18,7 @@ from zoneinfo import ZoneInfo
 from typing import Any, Dict, Iterable, List, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from defusedxml import ElementTree as ET
+from email.utils import parsedate_to_datetime
 
 try:  # pragma: no cover - support both package layouts
     from utils.ids import make_guid
@@ -153,16 +154,44 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[ET.Ele
         with _session() as session:
             resp = session.get(_stationboard_url(), params=params, timeout=HTTP_TIMEOUT)
         retry_after = resp.headers.get("Retry-After")
-        if resp.status_code == 429 and retry_after:
-            log.warning("VOR StationBoard %s -> HTTP 429, Retry-After %s", station_id, retry_after)
-            try:
-                delay = float(retry_after)
-            except ValueError:
+        if resp.status_code == 429:
+            wait_seconds: Optional[float] = None
+            if retry_after:
                 log.warning(
-                    "VOR StationBoard %s -> ungültiges Retry-After '%s'", station_id, retry_after
+                    "VOR StationBoard %s -> HTTP 429, Retry-After %s",
+                    station_id,
+                    retry_after,
                 )
+                try:
+                    wait_seconds = float(retry_after)
+                except (TypeError, ValueError):
+                    try:
+                        retry_dt = parsedate_to_datetime(str(retry_after))
+                    except (TypeError, ValueError, OverflowError):
+                        log.warning(
+                            "VOR StationBoard %s -> ungültiges Retry-After '%s'",
+                            station_id,
+                            retry_after,
+                        )
+                    else:
+                        if retry_dt is not None:
+                            if retry_dt.tzinfo is None:
+                                retry_dt = retry_dt.replace(tzinfo=timezone.utc)
+                            delta = (
+                                retry_dt - datetime.now(timezone.utc)
+                            ).total_seconds()
+                            wait_seconds = max(0.0, delta)
             else:
-                time.sleep(delay)
+                log.warning("VOR StationBoard %s -> HTTP 429", station_id)
+            if wait_seconds and wait_seconds > 0:
+                try:
+                    time.sleep(wait_seconds)
+                except Exception as sleep_err:
+                    log.warning(
+                        "VOR StationBoard %s -> Wartezeit fehlgeschlagen: %s",
+                        station_id,
+                        sleep_err,
+                    )
             return None
         if resp.status_code >= 400:
             log.warning("VOR StationBoard %s -> HTTP %s", station_id, resp.status_code)

@@ -49,8 +49,13 @@ OEBB_ONLY_VIENNA = os.getenv("OEBB_ONLY_VIENNA", "").strip().lower() not in {"",
 # ---------------- HTTP ----------------
 def _session() -> requests.Session:
     s = requests.Session()
-    retry = Retry(total=4, backoff_factor=0.6, status_forcelist=(429,500,502,503,504),
-                  allowed_methods=("GET",))
+    retry = Retry(
+        total=4,
+        backoff_factor=0.6,
+        status_forcelist=(429, 500, 502, 503, 504),
+        allowed_methods=("GET",),
+        raise_on_status=False,
+    )
     s.mount("https://", HTTPAdapter(max_retries=retry))
     s.headers.update({"User-Agent":"Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"})
     return s
@@ -256,7 +261,7 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         root = _fetch_xml(OEBB_URL, timeout=timeout)
     except Exception as e:
         msg = str(e).replace(OEBB_URL, "***")
-        log.exception("ÖBB RSS abruf fehlgeschlagen: %s", msg)
+        log.error("ÖBB RSS abruf fehlgeschlagen: %s", msg, exc_info=False)
         return []
 
     if root is None:
