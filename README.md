@@ -2,6 +2,8 @@
 
 Störungen und Einschränkungen für den Großraum Wien aus offiziellen Quellen.
 
+Die `<description>`-Elemente des Feeds enthalten höchstens zwei Zeilen; redundante Überschriften wie „Bauarbeiten“ oder das Label „Zeitraum:“ werden automatisch entfernt.
+
 ## Erweiterungen
 
 Der RSS-Feed deklariert den Namespace `ext` (`xmlns:ext="https://wien-oepnv.example/schema"`) für zusätzliche Metadaten:
