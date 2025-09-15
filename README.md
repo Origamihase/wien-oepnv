@@ -299,6 +299,13 @@ Weitere Details folgen …]]></description>
 | `OEBB_RSS_URL` | str | `"https://fahrplan.oebb.at/bin/help.exe/dnl?protocol=https:&tpl=rss_WI_oebb&"` | RSS-Quelle der ÖBB (kann über Secret überschrieben werden). |
 | `OEBB_ONLY_VIENNA` | bool (`"1"`/`"0"` oder `"true"`/`"false"`, case-insens) | `"0"` | Nur Meldungen mit Endpunkten in Wien behalten. |
 
+> **Hinweis:** Bevorzugt wird der RSS-Endpunkt unter `https://fahrplan.oebb.at`,
+> da der bisher genutzte Host `https://verkehrsauskunft.oebb.at` aus manchen
+> Netzen (u. a. den GitHub-Actions-Runnern) nur eingeschränkt erreichbar ist.
+> Falls eigene Deployments weiterhin Zugriff auf `verkehrsauskunft.oebb.at`
+> haben, kann die Umgebungsvariable `OEBB_RSS_URL` auf den alternativen Host
+> zeigen.
+
 ### VOR / VAO (`src/providers/vor.py`)
 
 | Variable | Typ | Standardwert | Beschreibung |
