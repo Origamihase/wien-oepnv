@@ -44,7 +44,9 @@ def test_slow_provider_does_not_block(monkeypatch):
     )
     monkeypatch.setenv("SLOW", "1")
     monkeypatch.setenv("FAST", "1")
-
+    start = time.time()
     items = build_feed._collect_items()
+    elapsed = time.time() - start
 
+    assert elapsed < 1.5, f"_collect_items blocked for {elapsed:.2f}s"
     assert items == [{"guid": "fast"}]
