@@ -10,6 +10,30 @@ Der RSS-Feed deklariert den Namespace `ext` (`xmlns:ext="https://wien-oepnv.exam
 - `ext:starts_at`: Beginn der Störung bzw. Maßnahme.
 - `ext:ends_at`: Ende der Störung bzw. Maßnahme.
 
+## Stationsverzeichnis
+
+`data/stations.json` enthält eine vereinfachte Zuordnung der ÖBB-Verkehrsstationen
+(`bst_id`, `bst_code`, `name`). Die Daten stammen aus dem Datensatz
+„[Verzeichnis der Verkehrsstationen](https://data.oebb.at/de/datensaetze~verzeichnis-der-verkehrsstationen~)“
+auf dem ÖBB-Open-Data-Portal (Excel-Datei „Verzeichnis der Verkehrsstationen.xlsx“).
+
+### Automatische Aktualisierung
+
+Die GitHub Action [`.github/workflows/update-stations.yml`](.github/workflows/update-stations.yml)
+lädt monatlich (Cron `0 0 1 * *`) die aktuelle Excel-Datei und schreibt daraus eine
+aktualisierte `data/stations.json`. Änderungen werden automatisch in den Hauptzweig
+committet.
+
+### Manuelle Aktualisierung
+
+```bash
+python scripts/update_station_directory.py
+```
+
+Das Skript lädt die Excel-Datei herunter, extrahiert die benötigten Spalten und
+aktualisiert `data/stations.json`. Optional lassen sich Quelle und Ziel per
+Argumenten anpassen (`--source-url`, `--output`).
+
 ## Entwicklung/Tests lokal
 
 ```bash
