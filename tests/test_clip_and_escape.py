@@ -15,7 +15,14 @@ def test_clip_text_html_plain_and_clips(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     html_in = "<b>foo &amp; bar</b>"
     assert bf._clip_text_html(html_in, 100) == "foo & bar"
-    assert bf._clip_text_html(html_in, 7) == "foo & b …"
+    assert bf._clip_text_html(html_in, 7) == "foo & …"
+
+
+def test_clip_text_html_avoids_half_words(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    assert bf._clip_text_html("foo bar baz", 8) == "foo bar …"
+    assert bf._clip_text_html("Tom & Jerry", 5) == "Tom & …"
+    assert bf._clip_text_html("Satz eins. Satz zwei.", 12) == "Satz eins. …"
 
 
 def test_emit_item_sanitizes_description(monkeypatch):

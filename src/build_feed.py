@@ -175,6 +175,10 @@ _LINE_PREFIX_RE = re.compile(
     r"^\s*([A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20})\s*:\s*"
 )
 
+_ELLIPSIS = " …"
+_SENTENCE_END_RE = re.compile(r"[.!?…](?=\s|$)")
+_WHITESPACE_RE = re.compile(r"\s+")
+
 def _sanitize_text(s: str) -> str:
     return _CONTROL_RE.sub("", s or "")
 
@@ -191,7 +195,36 @@ def _clip_text_html(text: str, limit: int) -> str:
     plain = html.unescape(_strip_html(text or ""))
     if limit <= 0 or len(plain) <= limit:
         return plain
-    return plain[:limit].rstrip() + " …"
+    prefix = plain[:limit]
+    candidates = []
+
+    # Satzende bevorzugt, z. B. "...!" oder "...?"
+    for match in _SENTENCE_END_RE.finditer(prefix):
+        end = match.end()
+        if end:
+            candidates.append(end)
+
+    # Wortgrenzen (Whitespace) als Fallback
+    for match in _WHITESPACE_RE.finditer(prefix):
+        start = match.start()
+        if start:
+            candidates.append(start)
+
+    # Wenn das nächste Zeichen bereits eine Grenze ist, darf der aktuelle Block stehen bleiben
+    next_char = plain[limit] if limit < len(plain) else ""
+    if next_char and (next_char.isspace() or next_char in ".,;:!?…"):
+        candidates.append(limit)
+
+    clip_pos = max((pos for pos in candidates if 0 < pos <= limit), default=None)
+
+    if clip_pos is None:
+        truncated = prefix.rstrip()
+    else:
+        truncated = prefix[:clip_pos].rstrip()
+        if not truncated:
+            truncated = prefix.rstrip()
+
+    return truncated + _ELLIPSIS
 
 def _parse_lines_from_title(title: str) -> List[str]:
     m = _LINE_PREFIX_RE.match(title or "")
