@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import os, re, html, logging, time, hashlib
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
 from typing import Any, Dict, Iterable, List, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -230,13 +231,22 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[ET.Ele
         retry_after = resp.headers.get("Retry-After")
         if resp.status_code == 429 and retry_after:
             log.warning("VOR StationBoard %s -> HTTP 429, Retry-After %s", station_id, retry_after)
+            delay: Optional[float] = None
             try:
                 delay = float(retry_after)
             except ValueError:
-                log.warning(
-                    "VOR StationBoard %s -> ungültiges Retry-After '%s'", station_id, retry_after
-                )
-            else:
+                try:
+                    retry_dt = parsedate_to_datetime(retry_after)
+                except (TypeError, ValueError, IndexError):
+                    log.warning(
+                        "VOR StationBoard %s -> ungültiges Retry-After '%s'", station_id, retry_after
+                    )
+                else:
+                    if retry_dt.tzinfo is None:
+                        retry_dt = retry_dt.replace(tzinfo=timezone.utc)
+                    now_utc = datetime.now(timezone.utc)
+                    delay = (retry_dt.astimezone(timezone.utc) - now_utc).total_seconds()
+            if delay is not None and delay > 0:
                 time.sleep(delay)
             return None
         if resp.status_code >= 400:
