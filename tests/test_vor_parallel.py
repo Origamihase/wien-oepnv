@@ -1,5 +1,4 @@
 import threading
-import xml.etree.ElementTree as ET
 
 import src.providers.vor as vor
 
@@ -19,7 +18,7 @@ def test_fetch_events_parallel(monkeypatch):
             barrier.wait(timeout=1)
         except threading.BrokenBarrierError as e:
             raise AssertionError("stationboards not fetched in parallel") from e
-        return ET.Element("root")
+        return {}
 
     monkeypatch.setattr(vor, "_fetch_stationboard", blocking_fetch)
     monkeypatch.setattr(
@@ -42,7 +41,7 @@ def test_fetch_events_logs_and_continues(monkeypatch, caplog):
     def failing_fetch(station_id, now_local):
         if station_id == "1":
             raise RuntimeError("boom")
-        return ET.Element("root")
+        return {}
 
     monkeypatch.setattr(vor, "_fetch_stationboard", failing_fetch)
     monkeypatch.setattr(vor, "_collect_from_board", lambda sid, root: [{"guid": sid, "pubDate": None}])
