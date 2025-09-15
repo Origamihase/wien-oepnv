@@ -59,3 +59,19 @@ def test_state_retention_drops_old_entries(monkeypatch, tmp_path):
             f,
         )
     assert build_feed._load_state() == {"new": {"first_seen": new_dt.isoformat()}}
+
+
+def test_state_cleared_when_feed_empty(monkeypatch, tmp_path):
+    state_file = tmp_path / "state.json"
+    monkeypatch.setenv("STATE_PATH", str(state_file))
+    build_feed = _import_build_feed(monkeypatch)
+    now = datetime.now(timezone.utc)
+    build_feed._save_state({"id": {"first_seen": now.isoformat()}})
+
+    # ensure state file has content before running
+    assert json.loads(state_file.read_text()) != {}
+
+    state = build_feed._load_state()
+    build_feed._make_rss([], now, state)
+
+    assert json.loads(state_file.read_text()) == {}

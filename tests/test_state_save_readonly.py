@@ -46,20 +46,24 @@ def test_make_rss_logs_warning_when_state_readonly(monkeypatch, caplog):
     assert any("State speichern fehlgeschlagen" in r.message for r in caplog.records)
 
 
-def test_make_rss_skips_state_save_when_no_identities(monkeypatch, caplog):
+def test_make_rss_saves_empty_state_when_no_identities(monkeypatch, caplog):
     build_feed = _import_build_feed(monkeypatch)
 
-    called = {"val": False}
+    captured = {"state": None}
 
-    def marker(_):  # pragma: no cover - trivial
-        called["val"] = True
+    def marker(state):  # pragma: no cover - trivial
+        captured["state"] = state
 
     monkeypatch.setattr(build_feed, "_save_state", marker)
 
     with caplog.at_level(logging.WARNING):
-        rss = build_feed._make_rss([], datetime.now(timezone.utc), {})
+        rss = build_feed._make_rss(
+            [],
+            datetime.now(timezone.utc),
+            {"old": {"first_seen": datetime.now(timezone.utc).isoformat()}},
+        )
 
     assert "</rss>" in rss
-    assert called["val"] is False
+    assert captured["state"] == {}
     assert not any("State speichern fehlgeschlagen" in r.message for r in caplog.records)
 
