@@ -7,6 +7,7 @@ import os
 import sys
 import html
 import logging
+from logging.handlers import RotatingFileHandler
 import re
 import hashlib
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
@@ -44,10 +45,18 @@ _level = getattr(logging, LOG_LEVEL, logging.INFO)
 if not isinstance(_level, int):
     _level = logging.INFO
 
+os.makedirs("log", exist_ok=True)
+fmt = "%(asctime)s %(levelname)s %(name)s: %(message)s"
 logging.basicConfig(
     level=_level,
-    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+    format=fmt,
 )
+error_handler = RotatingFileHandler(
+    "log/errors.log", maxBytes=1_000_000, backupCount=5, encoding="utf-8"
+)
+error_handler.setLevel(logging.ERROR)
+error_handler.setFormatter(logging.Formatter(fmt))
+logging.getLogger().addHandler(error_handler)
 log = logging.getLogger("build_feed")
 
 # ---------------- Helpers: ENV ----------------
