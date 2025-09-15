@@ -12,7 +12,7 @@ KEIN <pubDate> und ordnet solche Items hinter datierten ein.
 
 from __future__ import annotations
 
-import os, re, html, hashlib, logging
+import os, re, html, logging
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 from typing import Any, Dict, Iterable, List, Optional
@@ -244,5 +244,5 @@ def fetch_events() -> List[Dict[str, Any]]:
                 seen.add(it["guid"])
                 out.append(it)
 
-    out.sort(key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, hashlib.md5(x["guid"].encode()).hexdigest()))
+    out.sort(key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, x["guid"]))
     return out
