@@ -85,3 +85,28 @@ def test_main_runs_without_network(monkeypatch, tmp_path, caplog):
         "Cache für Provider 'oebb' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'vor' leer – generiere Feed ohne aktuelle Daten.",
     }
+
+
+def test_collect_items_reads_from_cache(monkeypatch):
+    build_feed = _import_build_feed_without_providers(monkeypatch)
+
+    calls = []
+
+    def fake_read_cache(provider):
+        calls.append(provider)
+        return [{"provider": provider}]
+
+    monkeypatch.setattr(build_feed, "read_cache", fake_read_cache)
+    monkeypatch.setenv("WL_ENABLE", "1")
+    monkeypatch.setenv("OEBB_ENABLE", "1")
+    monkeypatch.setenv("VOR_ENABLE", "1")
+
+    items = build_feed._collect_items()
+
+    assert len(calls) == 3
+    assert set(calls) == {"wl", "oebb", "vor"}
+    assert sorted(items, key=lambda item: item["provider"]) == [
+        {"provider": "oebb"},
+        {"provider": "vor"},
+        {"provider": "wl"},
+    ]
