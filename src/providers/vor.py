@@ -24,6 +24,11 @@ try:  # pragma: no cover - support both package layouts
 except ModuleNotFoundError:  # pragma: no cover
     from src.utils.ids import make_guid  # type: ignore
 
+try:
+    from utils.text import html_to_text
+except ModuleNotFoundError:
+    from src.utils.text import html_to_text  # type: ignore
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -187,8 +192,10 @@ def _collect_from_board(station_id: str, root: ET.Element) -> List[Dict[str, Any
         prods = _accepted_products(m)
         if not prods: continue
 
-        head = _normalize_spaces(html.escape(_text(m, "head")))
-        text = _normalize_spaces(html.escape(_text(m, "text")))
+        head_raw = html_to_text(_text(m, "head"))
+        text_raw = html_to_text(_text(m, "text"))
+        head = _normalize_spaces(head_raw)
+        text = _normalize_spaces(text_raw)
 
         starts_at = _parse_dt(_text(m, "sDate"), _text(m, "sTime"))
         ends_at   = _parse_dt(_text(m, "eDate"), _text(m, "eTime"))
