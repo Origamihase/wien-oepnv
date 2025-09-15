@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import hashlib
 import logging
 import os
 import re
@@ -459,7 +458,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
         it.pop("_lines_set", None)
 
     filtered.sort(
-        key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, hashlib.md5(x["guid"].encode()).hexdigest())
+        key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, x["guid"])
     )
     log.info("WL: %d Items nach Filter/Dedupe", len(filtered))
     return filtered
