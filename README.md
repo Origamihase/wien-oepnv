@@ -145,6 +145,27 @@ abgelegt werden (`wienerlinien-ogd-haltestellen.csv` und
 StopIDs und DIVA, berechnet einheitliche Namen und ergänzt die Einträge in
 `stations.json`. Bereits vorhandene WL-Einträge (`"source": "wl"`) werden dabei ersetzt.
 
+### VOR ergänzen
+
+```bash
+python scripts/update_vor_stations.py --verbose
+```
+
+Die Haltestellendaten des Verkehrsverbund Ost-Region (VOR) stehen nach
+Freischaltung im Open-Data-Portal als GTFS- bzw. CSV-Export zur Verfügung
+(z. B. das GTFS-`stops.txt` oder die Datei „Haltestellen“). Die Rohdatei wird
+lokal nach `data/vor-haltestellen.csv` kopiert (alternativ lässt sich der Pfad
+über `--source` anpassen). Die Daten sind unter
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) veröffentlicht; laut
+Portal lautet die empfohlene Namensnennung „Datenquelle: Verkehrsverbund
+Ost-Region (VOR) GmbH“.
+
+Das Skript extrahiert Stop-ID, Namen und WGS84-Koordinaten, markiert die
+Einträge mit `"source": "vor"` und erweitert `stations.json` um Felder wie
+`vor_id`, `latitude` und `longitude`. Bereits vorhandene VOR-Einträge werden
+beim Lauf entfernt und anschließend gemeinsam mit den ÖBB- und WL-Daten in die
+JSON-Datei geschrieben.
+
 Für Auswertungen in Kombination mit GTFS- oder Geodaten lohnt es sich, die
 entpackten GTFS-Dateien (z. B. aus dem ÖBB- oder WL-Export) parallel in
 `data/gtfs/` abzulegen. Die vom Skript erzeugten Felder `wl_diva` und
