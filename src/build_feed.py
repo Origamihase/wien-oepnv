@@ -165,6 +165,8 @@ _CONTROL_RE = re.compile(
 )
 
 # Prefix pattern for line identifiers like "U1/U2: "
+_LINE_TOKEN_RE = re.compile(r"^(?:N\d{1,2}|\d{1,3}[A-Z]?|[A-Z])$")
+
 _LINE_PREFIX_RE = re.compile(
     r"^\s*([A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20})\s*:\s*"
 )
@@ -191,7 +193,11 @@ def _parse_lines_from_title(title: str) -> List[str]:
     m = _LINE_PREFIX_RE.match(title or "")
     if not m:
         return []
-    return m.group(1).split("/")
+    return [
+        token
+        for token in m.group(1).split("/")
+        if _LINE_TOKEN_RE.match(token)
+    ]
 
 def _ymd_or_none(dt: Optional[datetime]) -> str:
     if isinstance(dt, datetime):
