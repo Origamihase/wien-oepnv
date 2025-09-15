@@ -18,10 +18,10 @@ def test_clip_text_html_plain_and_clips(monkeypatch):
     assert bf._clip_text_html(html_in, 7) == "foo & b …"
 
 
-def test_emit_item_escapes_description(monkeypatch):
+def test_emit_item_sanitizes_description(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     monkeypatch.setattr(bf, "DESCRIPTION_CHAR_LIMIT", 5)
     now = datetime(2024, 1, 1)
     ident, xml = bf._emit_item({"title": "X", "description": "<b>Tom & Jerry</b>"}, now, {})
-    assert "<description><![CDATA[Tom &amp; …]]></description>" in xml
+    assert "<description><![CDATA[Tom & …]]></description>" in xml
     assert "Jerry" not in xml
