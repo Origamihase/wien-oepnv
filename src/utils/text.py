@@ -21,6 +21,12 @@ PREPOSITIONS = (
     "zur",
     "zum",
     "nach",
+    "über",
+    "ueber",
+    "gegen",
+    "durch",
+    "bis",
+    "ab",
 )
 
 _PREP_BULLET_RE = re.compile(
