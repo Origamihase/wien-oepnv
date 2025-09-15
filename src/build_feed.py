@@ -73,21 +73,28 @@ error_handler.setLevel(logging.ERROR)
 error_handler.setFormatter(logging.Formatter(fmt))
 logging.getLogger().addHandler(error_handler)
 log = logging.getLogger("build_feed")
+# Mapping of environment variables to provider cache loaders
+PROVIDER_CACHE_KEYS: Dict[str, str] = {
+    "WL_ENABLE": "wl",
+    "OEBB_ENABLE": "oebb",
+    "VOR_ENABLE": "vor",
+}
 
-
-def _make_cache_loader(provider: str):
-    loader = lambda: read_cache(provider)
-    loader.__name__ = f"read_cache_{provider}"
-    setattr(loader, "_provider_cache_name", provider)
-    return loader
-
-
-# Mapping of environment variables to provider fetch functions
 PROVIDERS: List[Tuple[str, Any]] = [
-    ("WL_ENABLE", _make_cache_loader("wl")),
-    ("OEBB_ENABLE", _make_cache_loader("oebb")),
-    ("VOR_ENABLE", _make_cache_loader("vor")),
+    ("WL_ENABLE", lambda: read_cache("wl")),
+    ("OEBB_ENABLE", lambda: read_cache("oebb")),
+    ("VOR_ENABLE", lambda: read_cache("vor")),
 ]
+
+for env, loader in PROVIDERS:
+    provider_name = PROVIDER_CACHE_KEYS.get(env)
+    if provider_name is None:
+        continue
+    try:
+        loader.__name__ = f"read_cache_{provider_name}"
+    except (AttributeError, TypeError):  # pragma: no cover - defensive only
+        pass
+    setattr(loader, "_provider_cache_name", provider_name)
 
 # ---------------- Paths ----------------
 _ALLOWED_ROOTS = {"docs", "data"}
