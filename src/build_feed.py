@@ -388,7 +388,7 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     desc_out = _clip_text_html(raw_desc, DESCRIPTION_CHAR_LIMIT)
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(html.unescape(raw_title))
-    desc_out  = _sanitize_text(desc_out)
+    desc_out  = _sanitize_text(desc_out).replace(" • ", "\n")
 
     parts: List[str] = []
     parts.append("<item>")
