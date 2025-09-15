@@ -353,26 +353,51 @@ def _drop_old_items(items: List[Dict[str, Any]], now: datetime) -> List[Dict[str
 
 
 def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Behalte nur das erste Item je Identität (oder guid)."""
-    seen = set()
-    out = []
-    for it in items:
-        key: Optional[str]
+    """Deduplicate items by identity/guid and prefer later ends or longer descriptions."""
+
+    def _key_for_item(it: Dict[str, Any]) -> str:
         if it.get("_identity"):
-            key = it.get("_identity")
-        elif it.get("guid"):
-            key = it.get("guid")
-        else:
-            raw = f"{it.get('source') or ''}|{it.get('title') or ''}|{it.get('description') or ''}"
-            key = hashlib.sha1(raw.encode("utf-8")).hexdigest()
-            log.warning(
-                "Item ohne guid/_identity – Fallback-Schlüssel (source|title|description) %s",
-                key,
-            )
+            return str(it.get("_identity"))
+        if it.get("guid"):
+            return str(it.get("guid"))
+        raw = f"{it.get('source') or ''}|{it.get('title') or ''}|{it.get('description') or ''}"
+        key = hashlib.sha1(raw.encode("utf-8")).hexdigest()
+        log.warning(
+            "Item ohne guid/_identity – Fallback-Schlüssel (source|title|description) %s",
+            key,
+        )
+        return key
+
+    def _better(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
+        """Return True if ``a`` is better than ``b`` according to ends_at and description length."""
+
+        def _end_value(it: Dict[str, Any]) -> datetime:
+            ends = it.get("ends_at")
+            if isinstance(ends, datetime):
+                return _to_utc(ends)
+            return datetime.min.replace(tzinfo=timezone.utc)
+
+        a_end = _end_value(a)
+        b_end = _end_value(b)
+        if a_end > b_end:
+            return True
+        if a_end < b_end:
+            return False
+        a_len = len(a.get("description") or "")
+        b_len = len(b.get("description") or "")
+        return a_len > b_len
+
+    seen: Dict[str, int] = {}
+    out: List[Dict[str, Any]] = []
+    for it in items:
+        key = _key_for_item(it)
         if key in seen:
-            continue
-        seen.add(key)
-        out.append(it)
+            idx = seen[key]
+            if _better(it, out[idx]):
+                out[idx] = it
+        else:
+            seen[key] = len(out)
+            out.append(it)
     return out
 
 def _sort_key(item: Dict[str, Any]) -> Tuple[int, float, str]:
