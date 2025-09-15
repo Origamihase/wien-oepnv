@@ -56,7 +56,8 @@ def _session() -> requests.Session:
 
 # ---------------- Titel + Endpunkte ----------------
 BAHNHOF_TRIM_RE = re.compile(r"\s*(?:Bahnhof|Bahnhst|Hbf|Bf)(?:\s*\(U\))?", re.IGNORECASE)
-ARROW_ANY_RE    = re.compile(r"\s*(?:<=>|<->|<>|→|↔|=>|=|–|—|-)\s*")
+# treat simple hyphen as separator only when surrounded by spaces
+ARROW_ANY_RE    = re.compile(r"\s*(?:<=>|<->|<>|→|↔|=>|=|–|—|\s-\s)\s*")
 COLON_PREFIX_RE = re.compile(
     r"""^\s*(?:Update\s*\d+\s*\([^)]*\)\s*)?
         (?:DB\s*↔\s*)?
@@ -99,12 +100,12 @@ def _clean_title_keep_places(t: str) -> str:
 def _split_endpoints(title: str) -> Optional[List[str]]:
     """Extrahiert Endpunktnamen links/rechts (ohne Bahnhof/Hbf/Klammern)."""
     arrow_markers = (
-        "↔", "<=>", "<->", "→", "=>", "->", "—", "–", "-",
-    )  # treat hyphen as arrow indicator as well
-    if not any(a in title for a in arrow_markers):
+        "↔", "<=>", "<->", "→", "=>", "->", "—", "–",
+    )
+    if not any(a in title for a in arrow_markers) and not re.search(r"\s-\s", title):
         return None
     parts = [
-        p for p in re.split(r"\s*(?:↔|<=>|<->|→|=>|->|—|–|-)\s*", title) if p.strip()
+        p for p in re.split(r"\s*(?:↔|<=>|<->|→|=>|->|—|–|\s-\s)\s*", title) if p.strip()
     ]
     if len(parts) < 2:
         return None
