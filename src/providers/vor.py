@@ -56,6 +56,7 @@ BOARD_DURATION_MIN = _get_int_env("VOR_BOARD_DURATION_MIN", 60)
 HTTP_TIMEOUT = _get_int_env("VOR_HTTP_TIMEOUT", 15)
 MAX_STATIONS_PER_RUN = _get_int_env("VOR_MAX_STATIONS_PER_RUN", 2)
 ROTATION_INTERVAL_SEC = _get_int_env("VOR_ROTATION_INTERVAL_SEC", 1800)
+RETRY_AFTER_FALLBACK_SEC = 5.0
 
 ALLOW_BUS = (os.getenv("VOR_ALLOW_BUS", "0").strip() == "1")
 BUS_INCLUDE_RE = re.compile(os.getenv("VOR_BUS_INCLUDE_REGEX", r"(?:\b[2-9]\d{2,4}\b)"))
@@ -301,26 +302,48 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[s
     try:
         with _session() as session:
             resp = session.get(_stationboard_url(), params=params, timeout=HTTP_TIMEOUT)
-        retry_after = resp.headers.get("Retry-After")
-        if resp.status_code == 429 and retry_after:
-            log.warning("VOR StationBoard %s -> HTTP 429, Retry-After %s", station_id, retry_after)
+        if resp.status_code == 429:
+            retry_after = resp.headers.get("Retry-After")
             delay: Optional[float] = None
-            try:
-                delay = float(retry_after)
-            except ValueError:
+            if retry_after:
+                log.warning(
+                    "VOR StationBoard %s -> HTTP 429, Retry-After %s", station_id, retry_after
+                )
                 try:
-                    retry_dt = parsedate_to_datetime(retry_after)
-                except (TypeError, ValueError, IndexError):
-                    log.warning(
-                        "VOR StationBoard %s -> ungültiges Retry-After '%s'", station_id, retry_after
-                    )
-                else:
-                    if retry_dt.tzinfo is None:
-                        retry_dt = retry_dt.replace(tzinfo=timezone.utc)
-                    now_utc = datetime.now(timezone.utc)
-                    delay = (retry_dt.astimezone(timezone.utc) - now_utc).total_seconds()
+                    delay = float(retry_after)
+                except ValueError:
+                    try:
+                        retry_dt = parsedate_to_datetime(retry_after)
+                    except (TypeError, ValueError, IndexError):
+                        log.warning(
+                            "VOR StationBoard %s -> ungültiges Retry-After '%s'",
+                            station_id,
+                            retry_after,
+                        )
+                    else:
+                        if retry_dt.tzinfo is None:
+                            retry_dt = retry_dt.replace(tzinfo=timezone.utc)
+                        now_utc = datetime.now(timezone.utc)
+                        delay = (retry_dt.astimezone(timezone.utc) - now_utc).total_seconds()
+            else:
+                log.warning("VOR StationBoard %s -> HTTP 429 ohne Retry-After", station_id)
             if delay is not None and delay > 0:
                 time.sleep(delay)
+            else:
+                if retry_after:
+                    log.warning(
+                        "VOR StationBoard %s -> Fallback-Verzögerung %.1fs (Retry-After '%s' nicht nutzbar)",
+                        station_id,
+                        RETRY_AFTER_FALLBACK_SEC,
+                        retry_after,
+                    )
+                else:
+                    log.warning(
+                        "VOR StationBoard %s -> Fallback-Verzögerung %.1fs (Retry-After fehlt)",
+                        station_id,
+                        RETRY_AFTER_FALLBACK_SEC,
+                    )
+                time.sleep(RETRY_AFTER_FALLBACK_SEC)
             return None
         if resp.status_code >= 400:
             log.warning("VOR StationBoard %s -> HTTP %s", station_id, resp.status_code)
