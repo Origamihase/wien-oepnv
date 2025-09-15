@@ -97,6 +97,21 @@ def _parse_dt(date_str: str | None, time_str: str | None) -> Optional[datetime]:
 def _normalize_spaces(s: str) -> str:
     return re.sub(r"\s{2,}", " ", s).strip()
 
+
+def _strip_ns(root: ET.Element) -> ET.Element:
+    """Remove XML namespace prefixes in-place and return ``root``.
+
+    The VOR endpoint sometimes wraps elements in a namespace such as
+    ``<ns:Messages>``/``<ns:Message>`` which breaks simple ``find`` calls.
+    This helper normalises tags by stripping any ``{namespace}`` prefix from
+    them, allowing the rest of the module to operate namespace‑agnostic.
+    """
+
+    for el in root.iter():
+        if "}" in el.tag:
+            el.tag = el.tag.split("}", 1)[1]
+    return root
+
 def _accept_product(prod: ET.Element) -> bool:
     catOutS = _text(prod, "catOutS").strip()
     catOutL = _text(prod, "catOutL").strip().lower()
@@ -133,7 +148,8 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[ET.Ele
         if resp.status_code >= 400:
             log.warning("VOR StationBoard %s -> HTTP %s", station_id, resp.status_code)
             return None
-        return ET.fromstring(resp.content)
+        root = ET.fromstring(resp.content)
+        return _strip_ns(root)
     except requests.RequestException as e:
         msg = re.sub(r"accessId=[^&]+", "accessId=***", str(e))
         log.error("VOR StationBoard Fehler (%s): %s", station_id, msg)
