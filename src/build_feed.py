@@ -16,28 +16,10 @@ from typing import Any, Dict, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 
-# Provider-Imports (import lazily/defensively to support testing)
-try:  # pragma: no cover
-    from providers.wiener_linien import fetch_events as wl_fetch
+try:  # pragma: no cover - allow running as package and as script
+    from utils.cache import read_cache
 except ModuleNotFoundError:  # pragma: no cover
-    wl_fetch = lambda: []  # type: ignore
-
-try:  # pragma: no cover
-    from providers.oebb import fetch_events as oebb_fetch
-except ModuleNotFoundError:  # pragma: no cover
-    oebb_fetch = lambda: []  # type: ignore
-
-try:  # pragma: no cover
-    from providers.vor import fetch_events as vor_fetch
-except ModuleNotFoundError:  # pragma: no cover
-    vor_fetch = lambda: []  # type: ignore
-
-# Mapping of environment variables to provider fetch functions
-PROVIDERS: List[Tuple[str, Any]] = [
-    ("WL_ENABLE", wl_fetch),
-    ("OEBB_ENABLE", oebb_fetch),
-    ("VOR_ENABLE", vor_fetch),
-]
+    from .utils.cache import read_cache  # type: ignore
 
 # ---------------- Helpers: ENV ----------------
 
@@ -91,6 +73,21 @@ error_handler.setLevel(logging.ERROR)
 error_handler.setFormatter(logging.Formatter(fmt))
 logging.getLogger().addHandler(error_handler)
 log = logging.getLogger("build_feed")
+
+
+def _make_cache_loader(provider: str):
+    loader = lambda: read_cache(provider)
+    loader.__name__ = f"read_cache_{provider}"
+    setattr(loader, "_provider_cache_name", provider)
+    return loader
+
+
+# Mapping of environment variables to provider fetch functions
+PROVIDERS: List[Tuple[str, Any]] = [
+    ("WL_ENABLE", _make_cache_loader("wl")),
+    ("OEBB_ENABLE", _make_cache_loader("oebb")),
+    ("VOR_ENABLE", _make_cache_loader("vor")),
+]
 
 # ---------------- Paths ----------------
 _ALLOWED_ROOTS = {"docs", "data"}
@@ -325,6 +322,12 @@ def _collect_items() -> List[Dict[str, Any]]:
                     if not isinstance(result, list):
                         log.error("%s fetch gab keine Liste zurück: %r", name, result)
                         continue
+                    provider_name = getattr(fetch, "_provider_cache_name", None)
+                    if provider_name and not result:
+                        log.warning(
+                            "Cache für Provider '%s' leer – generiere Feed ohne aktuelle Daten.",
+                            provider_name,
+                        )
                     items += result
                 except TimeoutError:
                     log.warning("%s fetch Timeout nach %ss", name, PROVIDER_TIMEOUT)
