@@ -12,7 +12,7 @@ KEIN <pubDate> und ordnet solche Items hinter datierten ein.
 
 from __future__ import annotations
 
-import os, re, html, logging, time
+import os, re, html, logging, time, hashlib
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 from typing import Any, Dict, Iterable, List, Optional
@@ -181,7 +181,6 @@ def _collect_from_board(station_id: str, root: ET.Element) -> List[Dict[str, Any
     items: List[Dict[str, Any]] = []
     for m in _iter_messages(root):
         msg_id = _text(m, "id").strip()
-        if not msg_id: continue
         active = _text(m, "act").strip().lower()
         if active in ("false","0","no"): continue
 
@@ -209,6 +208,10 @@ def _collect_from_board(station_id: str, root: ET.Element) -> List[Dict[str, Any
                 nm = (st.get("name") or st.get("stop") or "").strip()
                 if nm: affected_stops.append(nm)
         lines = sorted(lines_set)
+
+        if not msg_id:
+            raw = f"{head}|{text}|{starts_at}|{','.join(affected_stops)}"
+            msg_id = hashlib.sha1(raw.encode("utf-8")).hexdigest()
 
         extras: List[str] = []
         if lines:
