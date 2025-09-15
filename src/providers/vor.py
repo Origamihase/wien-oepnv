@@ -12,13 +12,15 @@ KEIN <pubDate> und ordnet solche Items hinter datierten ein.
 
 from __future__ import annotations
 
-import os, re, html, logging, time, hashlib
+import os, re, html, logging, time, hashlib, json
+import threading
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
 from collections.abc import Mapping
 from typing import Any, Dict, Iterable, List, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
 
 try:  # pragma: no cover - support both package layouts
     from utils.ids import make_guid
@@ -40,6 +42,53 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 log = logging.getLogger(__name__)
+
+REQUEST_COUNT_FILE = Path(__file__).resolve().parents[2] / "data" / "vor_request_count.json"
+REQUEST_COUNT_LOCK = threading.Lock()
+MAX_REQUESTS_PER_DAY = 100
+
+
+def load_request_count() -> tuple[Optional[str], int]:
+    try:
+        with REQUEST_COUNT_FILE.open("r", encoding="utf-8") as fh:
+            data = json.load(fh)
+    except FileNotFoundError:
+        return None, 0
+    except (OSError, ValueError, TypeError) as exc:
+        log.debug("VOR: konnte Request-Zähler nicht lesen (%s)", exc)
+        return None, 0
+
+    if not isinstance(data, Mapping):
+        return None, 0
+
+    date_raw = data.get("date")
+    date_str = str(date_raw).strip() if isinstance(date_raw, str) else None
+
+    count_raw = data.get("count", 0)
+    try:
+        count_int = int(count_raw)
+    except (TypeError, ValueError):
+        count_int = 0
+    count_int = max(0, count_int)
+
+    return date_str, count_int
+
+
+def save_request_count(now_local: datetime) -> int:
+    today = now_local.date().isoformat()
+
+    with REQUEST_COUNT_LOCK:
+        stored_date, stored_count = load_request_count()
+        if stored_date != today:
+            stored_count = 0
+        new_count = stored_count + 1
+        try:
+            REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
+            with REQUEST_COUNT_FILE.open("w", encoding="utf-8") as fh:
+                json.dump({"date": today, "count": new_count}, fh)
+        except OSError as exc:
+            log.warning("VOR: Konnte Request-Zähler nicht speichern: %s", exc)
+        return new_count
 
 def _get_int_env(name: str, default: int) -> int:
     val = os.getenv(name)
@@ -359,6 +408,7 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[s
         if not isinstance(payload, dict):
             log.warning("VOR StationBoard %s -> ungültige JSON-Antwort", station_id)
             return None
+        save_request_count(now_local)
         return payload
     except requests.RequestException as e:
         msg = re.sub(r"accessId=[^&]+", "accessId=***", str(e))
@@ -511,6 +561,15 @@ def fetch_events() -> List[Dict[str, Any]]:
 
     if not station_chunk:
         return out
+
+    stored_date, stored_count = load_request_count()
+    todays_count = stored_count if stored_date == now_local.date().isoformat() else 0
+    if todays_count >= MAX_REQUESTS_PER_DAY:
+        log.info(
+            "VOR: Tageslimit von %s StationBoard-Anfragen erreicht – überspringe Abruf.",
+            MAX_REQUESTS_PER_DAY,
+        )
+        return []
 
     max_workers = min(MAX_STATIONS_PER_RUN, len(station_chunk)) or 1
     with ThreadPoolExecutor(max_workers=max_workers) as pool:
