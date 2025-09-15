@@ -7,7 +7,7 @@ import re
 import unicodedata
 from functools import lru_cache
 from pathlib import Path
-from typing import Dict, Iterable, List, NamedTuple
+from typing import Dict, Iterable, List, NamedTuple, Sequence, Tuple
 
 __all__ = ["canonical_name", "is_in_vienna", "is_pendler", "station_info"]
 
@@ -31,6 +31,7 @@ class StationInfo(NamedTuple):
     wl_stops: tuple[WLStop, ...] = ()
 
 _STATIONS_PATH = Path(__file__).resolve().parents[2] / "data" / "stations.json"
+_VIENNA_POLYGON_PATH = Path(__file__).resolve().parents[2] / "data" / "vienna_boundary.geojson"
 
 
 def _strip_accents(value: str) -> str:
@@ -74,6 +75,131 @@ def _coerce_float(value: object | None) -> float | None:
         return float(text)
     except ValueError:
         return None
+
+
+def _point_on_segment(
+    lat: float,
+    lon: float,
+    start: Tuple[float, float],
+    end: Tuple[float, float],
+    tolerance: float = 1e-9,
+) -> bool:
+    """Return ``True`` if *lat*, *lon* lies on the line segment (*start*, *end*)."""
+
+    lat1, lon1 = start
+    lat2, lon2 = end
+    if abs(lat - lat1) <= tolerance and abs(lon - lon1) <= tolerance:
+        return True
+    if abs(lat - lat2) <= tolerance and abs(lon - lon2) <= tolerance:
+        return True
+    if not (
+        min(lat1, lat2) - tolerance <= lat <= max(lat1, lat2) + tolerance
+        and min(lon1, lon2) - tolerance <= lon <= max(lon1, lon2) + tolerance
+    ):
+        return False
+    dx_segment = lon2 - lon1
+    dy_segment = lat2 - lat1
+    dx_point = lon - lon1
+    dy_point = lat - lat1
+    cross = dx_point * dy_segment - dy_point * dx_segment
+    if abs(cross) > tolerance:
+        return False
+    dot = dx_point * dx_segment + dy_point * dy_segment
+    length_sq = dx_segment * dx_segment + dy_segment * dy_segment
+    return -tolerance <= dot <= length_sq + tolerance
+
+
+def _point_in_ring(lat: float, lon: float, ring: Sequence[Tuple[float, float]]) -> bool:
+    """Return ``True`` if *lat*, *lon* is inside the polygon *ring*."""
+
+    if len(ring) < 3:
+        return False
+    inside = False
+    for index in range(len(ring)):
+        start = ring[index]
+        end = ring[(index + 1) % len(ring)]
+        if _point_on_segment(lat, lon, start, end):
+            return True
+        lat1, lon1 = start
+        lat2, lon2 = end
+        if (lat1 > lat) != (lat2 > lat):
+            try:
+                intersect_lon = lon1 + (lon2 - lon1) * (lat - lat1) / (lat2 - lat1)
+            except ZeroDivisionError:
+                intersect_lon = lon1
+            if lon < intersect_lon:
+                inside = not inside
+    return inside
+
+
+def _point_in_polygon(lat: float, lon: float, rings: Sequence[Sequence[Tuple[float, float]]]) -> bool:
+    """Return ``True`` if *lat*, *lon* lies within the polygon defined by *rings*."""
+
+    if not rings:
+        return False
+    if not _point_in_ring(lat, lon, rings[0]):
+        return False
+    for hole in rings[1:]:
+        if _point_in_ring(lat, lon, hole):
+            return False
+    return True
+
+
+@lru_cache(maxsize=1)
+def _vienna_polygons() -> Tuple[Tuple[Tuple[float, float], ...], ...]:
+    """Return a tuple of polygon rings representing Vienna's city limits."""
+
+    try:
+        with _VIENNA_POLYGON_PATH.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except (OSError, json.JSONDecodeError):
+        return ()
+
+    polygons: list[tuple[tuple[float, float], ...]] = []
+
+    def add_polygon(coords: Iterable[Iterable[Iterable[float]]]) -> None:
+        parsed_rings: list[tuple[Tuple[float, float], ...]] = []
+        for raw_ring in coords:
+            ring_points: list[Tuple[float, float]] = []
+            for pair in raw_ring:
+                if not isinstance(pair, (list, tuple)) or len(pair) < 2:
+                    continue
+                lon = _coerce_float(pair[0])
+                lat = _coerce_float(pair[1])
+                if lat is None or lon is None:
+                    continue
+                ring_points.append((lat, lon))
+            if len(ring_points) >= 3:
+                parsed_rings.append(tuple(ring_points))
+        if parsed_rings:
+            polygons.append(tuple(parsed_rings))
+
+    def handle_geometry(payload: object) -> None:
+        if not isinstance(payload, dict):
+            return
+        geometry_type = payload.get("type")
+        coordinates = payload.get("coordinates")
+        if geometry_type == "Polygon" and isinstance(coordinates, list):
+            add_polygon(coordinates)
+        elif geometry_type == "MultiPolygon" and isinstance(coordinates, list):
+            for polygon in coordinates:
+                if isinstance(polygon, list):
+                    add_polygon(polygon)
+
+    if isinstance(data, dict):
+        data_type = data.get("type")
+        if data_type == "FeatureCollection":
+            features = data.get("features")
+            if isinstance(features, list):
+                for feature in features:
+                    if isinstance(feature, dict):
+                        handle_geometry(feature.get("geometry"))
+        elif data_type == "Feature":
+            handle_geometry(data.get("geometry"))
+        else:
+            handle_geometry(data)
+
+    return tuple(polygons)
 
 
 def _iter_aliases(
@@ -248,15 +374,25 @@ def station_info(name: str) -> StationInfo | None:
     return None
 
 
-def is_in_vienna(name: str) -> bool:
-    """Return ``True`` if *name* refers to a station located in Vienna."""
+def is_in_vienna(lat: object, lon: object | None = None) -> bool:
+    """Return ``True`` if the supplied coordinates or station name lie in Vienna."""
 
-    info = station_info(name)
-    if info:
-        return bool(info.in_vienna)
-    if isinstance(name, str):
-        token = _normalize_token(name)
+    if lon is None and isinstance(lat, str):
+        info = station_info(lat)
+        if info:
+            return bool(info.in_vienna)
+        token = _normalize_token(lat)
         if token == "wien" or token.startswith("wien "):
+            return True
+        return False
+
+    latitude = _coerce_float(lat)
+    longitude = _coerce_float(lon)
+    if latitude is None or longitude is None:
+        return False
+
+    for polygon in _vienna_polygons():
+        if _point_in_polygon(latitude, longitude, polygon):
             return True
     return False
 

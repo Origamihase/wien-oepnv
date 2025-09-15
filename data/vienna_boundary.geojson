@@ -1,0 +1,32 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wien",
+        "source": "Simplified boundary derived from open data"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [16.18, 48.12],
+            [16.3, 48.08],
+            [16.45, 48.08],
+            [16.56, 48.1],
+            [16.6, 48.2],
+            [16.6, 48.28],
+            [16.54, 48.34],
+            [16.42, 48.36],
+            [16.31, 48.36],
+            [16.22, 48.32],
+            [16.18, 48.25],
+            [16.17, 48.18],
+            [16.18, 48.12]
+          ]
+        ]
+      }
+    }
+  ]
+}
