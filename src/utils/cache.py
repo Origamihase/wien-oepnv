@@ -1,0 +1,78 @@
+"""Utility functions for reading and writing provider caches."""
+
+from __future__ import annotations
+
+import json
+import logging
+import os
+from pathlib import Path
+import tempfile
+from typing import Any, List
+
+_CACHE_DIR = Path("cache")
+_CACHE_FILENAME = "events.json"
+
+log = logging.getLogger(__name__)
+
+
+def _cache_file(provider: str) -> Path:
+    return _CACHE_DIR / provider / _CACHE_FILENAME
+
+
+def read_cache(provider: str) -> List[Any]:
+    """Return cached events for *provider*.
+
+    If the cache is missing or cannot be read, an empty list is returned and a
+    warning is logged.
+    """
+
+    cache_file = _cache_file(provider)
+
+    try:
+        with cache_file.open("r", encoding="utf-8") as fh:
+            return json.load(fh)
+    except FileNotFoundError:
+        log.warning("Cache for provider '%s' not found at %s", provider, cache_file)
+    except json.JSONDecodeError as exc:
+        log.warning(
+            "Cache for provider '%s' at %s contains invalid JSON: %s",
+            provider,
+            cache_file,
+            exc,
+        )
+    except OSError as exc:
+        log.warning(
+            "Could not read cache for provider '%s' at %s: %s",
+            provider,
+            cache_file,
+            exc,
+        )
+
+    return []
+
+
+def write_cache(provider: str, items: List[Any]) -> None:
+    """Write *items* to the cache for *provider* atomically."""
+
+    cache_file = _cache_file(provider)
+    cache_file.parent.mkdir(parents=True, exist_ok=True)
+
+    fd, tmp_path = tempfile.mkstemp(
+        dir=str(cache_file.parent),
+        prefix="events.",
+        suffix=".json.tmp",
+    )
+
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            json.dump(items, fh, ensure_ascii=False, indent=2)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(tmp_path, cache_file)
+    finally:
+        # If anything went wrong before os.replace, ensure the temporary file is removed.
+        if os.path.exists(tmp_path):
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
