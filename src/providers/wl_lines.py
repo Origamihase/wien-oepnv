@@ -14,7 +14,11 @@ def _clean_line_token(s: str) -> str:
 
 
 def _tok(v: Any) -> str:
-    return _clean_line_token(re.sub(r"[^A-Za-z0-9+]", "", str(v)))
+    if v is None:
+        return ""
+    token = re.sub(r"[^A-Za-z0-9+]", "", str(v))
+    token = _clean_line_token(token)
+    return token if token else ""
 
 
 def _display_line(s: str) -> str:
