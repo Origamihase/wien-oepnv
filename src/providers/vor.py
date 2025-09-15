@@ -12,7 +12,7 @@ KEIN <pubDate> und ordnet solche Items hinter datierten ein.
 
 from __future__ import annotations
 
-import os, re, html, logging
+import os, re, html, logging, time
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 from typing import Any, Dict, Iterable, List, Optional
@@ -142,9 +142,16 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[ET.Ele
         "date": now_local.strftime("%Y-%m-%d"), "time": now_local.strftime("%H:%M"),
         "duration": str(BOARD_DURATION_MIN), "rtMode": "SERVER_DEFAULT",
     }
+    req_id = f"sb-{station_id}-{int(now_local.timestamp())}"
+    params["requestId"] = req_id
     try:
         with _session() as session:
             resp = session.get(_stationboard_url(), params=params, timeout=HTTP_TIMEOUT)
+        retry_after = resp.headers.get("Retry-After")
+        if resp.status_code == 429 and retry_after:
+            log.warning("VOR StationBoard %s -> HTTP 429, Retry-After %s", station_id, retry_after)
+            time.sleep(int(retry_after))
+            return None
         if resp.status_code >= 400:
             log.warning("VOR StationBoard %s -> HTTP %s", station_id, resp.status_code)
             return None
