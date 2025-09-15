@@ -8,12 +8,16 @@ portal.
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import logging
+import re
+import sys
+import unicodedata
 from dataclasses import dataclass
 from io import BytesIO
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, Mapping
 
 import openpyxl
 import requests
@@ -22,8 +26,19 @@ DEFAULT_SOURCE_URL = (
     "https://data.oebb.at/dam/jcr:fce22daf-0dd8-4a15-80b4-dbca6e80ce38/"
     "Verzeichnis%20der%20Verkehrsstationen.xlsx"
 )
-DEFAULT_OUTPUT_PATH = Path(__file__).resolve().parents[1] / "data" / "stations.json"
-DEFAULT_PENDLER_PATH = Path(__file__).resolve().parents[1] / "data" / "pendler_bst_ids.json"
+_ROOT = Path(__file__).resolve().parents[1]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
+try:  # pragma: no cover - convenience for module execution
+    from src.utils.stations import is_in_vienna as _is_point_in_vienna
+except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
+    from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore
+
+DEFAULT_OUTPUT_PATH = _ROOT / "data" / "stations.json"
+DEFAULT_PENDLER_PATH = _ROOT / "data" / "pendler_bst_ids.json"
+DEFAULT_GTFS_STOPS_PATH = _ROOT / "data" / "gtfs" / "stops.txt"
+DEFAULT_WL_HALTEPUNKTE_PATH = _ROOT / "data" / "wienerlinien-ogd-haltepunkte.csv"
 REQUEST_TIMEOUT = 30  # seconds
 USER_AGENT = (
     "wien-oepnv station updater "
@@ -59,6 +74,128 @@ class Station:
         }
 
 
+def _strip_accents(value: str) -> str:
+    return "".join(ch for ch in unicodedata.normalize("NFKD", value) if not unicodedata.combining(ch))
+
+
+def _normalize_location_keys(name: str | None) -> list[str]:
+    if not name:
+        return []
+
+    candidates = [name]
+    without_parens = re.sub(r"\s*\([^)]*\)\s*", " ", name)
+    if without_parens not in candidates:
+        candidates.append(without_parens)
+    stripped_suffix = re.sub(
+        r"\b(?:Bahnsteig|Bahnsteige|Gleis)\b[^,;/]*",
+        " ",
+        without_parens,
+        flags=re.IGNORECASE,
+    )
+    if stripped_suffix not in candidates:
+        candidates.append(stripped_suffix)
+
+    tokens: list[str] = []
+    seen: set[str] = set()
+    for candidate in candidates:
+        token = _strip_accents(candidate)
+        token = token.replace("ß", "ss")
+        token = token.casefold()
+        token = re.sub(r"\b(?:bahnhof|bahnhst|bhf|hbf|bf)\b", "", token)
+        token = re.sub(r"\b(?:bahnsteig|bahnsteige|gleis)\b", "", token)
+        token = token.replace("-", " ").replace("/", " ")
+        token = re.sub(r"[^a-z0-9]+", " ", token)
+        token = re.sub(r"\s{2,}", " ", token).strip()
+        if token and token not in seen:
+            seen.add(token)
+            tokens.append(token)
+        numeric_stripped = re.sub(r"\d+", "", token).strip()
+        if numeric_stripped and numeric_stripped not in seen:
+            seen.add(numeric_stripped)
+            tokens.append(numeric_stripped)
+    return tokens
+
+
+def _coerce_float_value(value: object | None) -> float | None:
+    if value is None:
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    text = str(value).strip()
+    if not text:
+        return None
+    text = text.replace(",", ".")
+    try:
+        return float(text)
+    except ValueError:
+        return None
+
+
+def _load_gtfs_locations(path: Path) -> dict[str, tuple[float, float]]:
+    locations: dict[str, tuple[float, float]] = {}
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            reader = csv.DictReader(handle)
+            for row in reader:
+                stop_name = row.get("stop_name")
+                if not stop_name:
+                    continue
+                lat = _coerce_float_value(row.get("stop_lat"))
+                lon = _coerce_float_value(row.get("stop_lon"))
+                if lat is None or lon is None:
+                    continue
+                location_type = (row.get("location_type") or "").strip()
+                is_station = location_type == "1"
+                for key in _normalize_location_keys(stop_name):
+                    if not key:
+                        continue
+                    if is_station or key not in locations:
+                        locations[key] = (lat, lon)
+    except FileNotFoundError:
+        logger.warning("GTFS stops file not found: %s", path)
+    except csv.Error as exc:
+        logger.warning("Could not parse GTFS stops file %s: %s", path, exc)
+    else:
+        if locations:
+            logger.info("Loaded %d GTFS stop coordinates", len(locations))
+    return locations
+
+
+def _load_wienerlinien_locations(path: Path) -> dict[str, tuple[float, float]]:
+    locations: dict[str, tuple[float, float]] = {}
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            reader = csv.DictReader(handle, delimiter=";")
+            for row in reader:
+                name = row.get("NAME")
+                lat = _coerce_float_value(row.get("WGS84_LAT"))
+                lon = _coerce_float_value(row.get("WGS84_LON"))
+                if not name or lat is None or lon is None:
+                    continue
+                for key in _normalize_location_keys(name):
+                    if key and key not in locations:
+                        locations[key] = (lat, lon)
+    except FileNotFoundError:
+        logger.warning("Wiener Linien haltepunkte file not found: %s", path)
+    except csv.Error as exc:
+        logger.warning("Could not parse Wiener Linien haltepunkte file %s: %s", path, exc)
+    else:
+        if locations:
+            logger.info("Loaded %d Wiener Linien coordinates", len(locations))
+    return locations
+
+
+def _build_location_index(gtfs_path: Path | None, wl_path: Path | None) -> dict[str, tuple[float, float]]:
+    locations: dict[str, tuple[float, float]] = {}
+    if gtfs_path:
+        locations.update(_load_gtfs_locations(gtfs_path))
+    if wl_path:
+        wl_locations = _load_wienerlinien_locations(wl_path)
+        for key, value in wl_locations.items():
+            locations.setdefault(key, value)
+    return locations
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Download the ÖBB station directory and export a JSON mapping",
@@ -80,6 +217,20 @@ def parse_args() -> argparse.Namespace:
         metavar="PATH",
         default=DEFAULT_PENDLER_PATH,
         help="Path to the JSON file containing pendler station IDs",
+    )
+    parser.add_argument(
+        "--gtfs-stops",
+        type=Path,
+        metavar="PATH",
+        default=DEFAULT_GTFS_STOPS_PATH,
+        help="Path to a GTFS stops.txt file for coordinate lookup",
+    )
+    parser.add_argument(
+        "--wl-haltepunkte",
+        type=Path,
+        metavar="PATH",
+        default=DEFAULT_WL_HALTEPUNKTE_PATH,
+        help="Path to the Wiener Linien haltepunkte CSV for coordinate lookup",
     )
     parser.add_argument(
         "-v",
@@ -190,9 +341,21 @@ def _is_vienna_station(name: str) -> bool:
     return len(text) > 4 and text[4] in {" ", "-", "/", "("}
 
 
-def _annotate_station_flags(stations: list[Station], pendler_ids: set[int]) -> None:
+def _annotate_station_flags(
+    stations: list[Station],
+    pendler_ids: set[int],
+    locations: Mapping[str, tuple[float, float]],
+) -> None:
     for station in stations:
-        station.in_vienna = _is_vienna_station(station.name)
+        coords: tuple[float, float] | None = None
+        for key in _normalize_location_keys(station.name):
+            coords = locations.get(key)
+            if coords:
+                break
+        if coords:
+            station.in_vienna = _is_point_in_vienna(coords[0], coords[1])
+        else:
+            station.in_vienna = _is_vienna_station(station.name)
         station.pendler = station.bst_id in pendler_ids
 
 
@@ -244,7 +407,10 @@ def main() -> None:
     workbook_stream = download_workbook(args.source_url)
     stations = extract_stations(workbook_stream)
     pendler_ids = load_pendler_station_ids(path=args.pendler)
-    _annotate_station_flags(stations, pendler_ids)
+    location_index = _build_location_index(args.gtfs_stops, args.wl_haltepunkte)
+    if not location_index:
+        logger.warning("No coordinate data available; falling back to name heuristic")
+    _annotate_station_flags(stations, pendler_ids, location_index)
     write_json(stations, args.output)
 
 
