@@ -17,7 +17,6 @@
 
 from __future__ import annotations
 
-import hashlib
 import logging
 import os
 import re
@@ -26,8 +25,10 @@ from typing import Any, Dict, List, Optional
 from email.utils import parsedate_to_datetime
 
 try:  # pragma: no cover - support both package layouts
+    from utils.ids import make_guid
     from utils.text import html_to_text
 except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.ids import make_guid  # type: ignore
     from src.utils.text import html_to_text  # type: ignore
 
 import requests
@@ -236,7 +237,7 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         raw_title = _get_text(item, "title")
         title = _clean_title_keep_places(raw_title)
         link  = _get_text(item, "link").strip() or OEBB_URL
-        guid  = _get_text(item, "guid").strip() or hashlib.md5((title+link).encode("utf-8")).hexdigest()
+        guid  = _get_text(item, "guid").strip() or make_guid(title, link)
         desc_html = _get_text(item, "description")
         desc = html_to_text(desc_html)
         pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
