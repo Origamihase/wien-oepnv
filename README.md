@@ -27,12 +27,13 @@ committet.
 ### Manuelle Aktualisierung
 
 ```bash
-python scripts/update_station_directory.py
+python scripts/update_station_directory.py --verbose
 ```
 
 Das Skript lädt die Excel-Datei herunter, extrahiert die benötigten Spalten und
-aktualisiert `data/stations.json`. Optional lassen sich Quelle und Ziel per
-Argumenten anpassen (`--source-url`, `--output`).
+aktualisiert `data/stations.json`. Über `-v/--verbose` lässt sich eine etwas
+ausführlichere Protokollierung aktivieren. Optional können auch Quelle und Ziel
+per Argumenten angepasst werden (`--source-url`, `--output`).
 
 ## Entwicklung/Tests lokal
 
