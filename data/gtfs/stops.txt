@@ -1,0 +1,6 @@
+stop_id,stop_code,stop_name,stop_lat,stop_lon,location_type,parent_station,platform_code
+8103000,,Wien Hbf (Bahnsteige 1-2),48.185013,16.374582,1,,
+8103000:1,1299,Wien Hbf (Bahnsteig 1),48.185750,16.375120,0,8103000,1
+8103000:2,1300,Wien Hbf (Bahnsteig 2),48.185820,16.375330,0,8103000,2
+8103001,,Wien Quartier Belvedere,48.186719,16.377046,1,,
+8103001:1,,Quartier Belvedere Gleis 1,48.186950,16.377240,,8103001,1

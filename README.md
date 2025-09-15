@@ -144,6 +144,21 @@ entpackten GTFS-Dateien (z. B. aus dem ÖBB- oder WL-Export) parallel in
 GTFS-Dateien verknüpfen, und die WGS84-Koordinaten aus den CSVs erleichtern das
 Matching mit Streckendaten oder dem GeoNetz.
 
+Für automatisierte Tests liegt im Repository eine stark verkleinerte GTFS-Datei
+`data/gtfs/stops.txt`, die nur einige Wiener Beispiele enthält. Wer mit dem
+vollständigen GTFS-Export arbeiten möchte, lädt das ZIP-Archiv
+„Fahrplandaten GTFS“ aus dem ÖBB-Open-Data-Portal herunter (kostenlose Anmeldung
+erforderlich) und entpackt die benötigten Dateien nach `data/gtfs/`, zum Beispiel:
+
+```bash
+mkdir -p data/gtfs
+# heruntergeladenes Archiv ablegen, z. B. data/gtfs/oebb-gtfs.zip
+unzip data/gtfs/oebb-gtfs.zip "stops.txt" "routes.txt" "trips.txt" "stop_times.txt" -d data/gtfs
+```
+
+Damit stehen die vollständigen Stop-Informationen für lokale Experimente zur
+Verfügung.
+
 ### Pendlerstationen
 
 Die Datei `data/pendler_bst_ids.json` enthält eine manuell gepflegte Liste an
