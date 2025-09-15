@@ -374,6 +374,7 @@ def _candidate_values(value: str) -> List[str]:
     return candidates
 
 
+@lru_cache(maxsize=2048)
 def canonical_name(name: str) -> str | None:
     """Return the canonical ÖBB station name for *name* or ``None`` if unknown."""
 
@@ -381,6 +382,7 @@ def canonical_name(name: str) -> str | None:
     return info.name if info else None
 
 
+@lru_cache(maxsize=2048)
 def station_info(name: str) -> StationInfo | None:
     """Return :class:`StationInfo` for *name* or ``None`` if the station is unknown."""
 
