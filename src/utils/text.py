@@ -5,6 +5,7 @@
 import html
 import re
 from html.parser import HTMLParser
+from typing import Match
 
 
 _WS_RE = re.compile(r"[ \t\r\f\v]+")
@@ -30,7 +31,15 @@ _PREP_BULLET_RE = re.compile(
 
 def normalize_bullets(text: str) -> str:
     """Remove bullets that directly follow known prepositions."""
-    return _PREP_BULLET_RE.sub(r"\1 ", text)
+
+    def _repl(match: Match[str]) -> str:
+        prefix = match.group(1)
+        tail = match.group(0)[len(prefix) :]
+        if "\n" in tail:
+            return prefix + "\n"
+        return prefix + " "
+
+    return _PREP_BULLET_RE.sub(_repl, text)
 
 
 class _HTMLToTextParser(HTMLParser):
@@ -83,8 +92,12 @@ class _HTMLToTextParser(HTMLParser):
         self.parts.append(data)
 
 
-def html_to_text(s: str) -> str:
-    """Convert HTML fragments to plain text with a uniform bullet separator."""
+def html_to_text(s: str, *, collapse_newlines: bool = False) -> str:
+    """Convert HTML fragments to plain text.
+
+    ``collapse_newlines`` can be set to ``True`` to restore the legacy behaviour
+    where line breaks were replaced by the ``" • "`` separator.
+    """
     if not s:
         return ""
 
@@ -94,16 +107,33 @@ def html_to_text(s: str) -> str:
 
     txt = "".join(parser.parts)
     txt = html.unescape(txt)
-    txt = re.sub(r"\s*\n\s*", " • ", txt)
-    txt = re.sub(r":\s*•\s*", ": ", txt)
+    txt = txt.replace("\xa0", " ")
+
+    newline_replacement = " • " if collapse_newlines else "\n"
+    txt = re.sub(r"[ \t\r\f\v]*\n[ \t\r\f\v]*", newline_replacement, txt)
+    if collapse_newlines:
+        txt = re.sub(r":\s*•\s*", ": ", txt)
+    else:
+        txt = re.sub(r":\s*\n", ":\n", txt)
     txt = re.sub(r"(\d)([A-Za-zÄÖÜäöüß])", r"\1 \2", txt)
     txt = _WS_RE.sub(" ", txt)
     # Collapse any repeated bullet separators before removing those after prepositions
     txt = re.sub(r"(?:\s*•\s*){2,}", " • ", txt)
     txt = normalize_bullets(txt)
-    txt = re.sub(r"^\s*•\s*", "", txt)
-    txt = re.sub(r"\s*•\s*$", "", txt)
-    txt = _WS_RE.sub(" ", txt)
-    txt = re.sub(r"\s{2,}", " ", txt).strip()
+
+    strip_border_bullets = collapse_newlines or " • " in txt
+    if strip_border_bullets:
+        txt = re.sub(r"^\s*•\s*", "", txt)
+        txt = re.sub(r"\s*•\s*$", "", txt)
+
+    if collapse_newlines:
+        txt = _WS_RE.sub(" ", txt)
+        txt = re.sub(r"\s{2,}", " ", txt).strip()
+    else:
+        txt = re.sub(r"[ \t\r\f\v]*\n[ \t\r\f\v]*", "\n", txt)
+        txt = re.sub(r"\n{2,}", "\n", txt)
+        lines = [line.strip() for line in txt.split("\n")]
+        txt = "\n".join(line for line in lines if line)
+
     return txt
 
