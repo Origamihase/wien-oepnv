@@ -63,6 +63,49 @@ Die Datensätze sind nicht im Repository enthalten. Für lokale Experimente kön
 sie in `data/` abgelegt werden (z. B. `data/gtfs/`, `data/strecken.geojson`,
 `data/geonetz/`).
 
+### Weitere Datenquellen
+
+Darüber hinaus stehen zahlreiche offene Verwaltungs- und Fachdaten zur Verfügung,
+die sich mit dem Stationsverzeichnis oder den Feed-Ergebnissen kombinieren lassen:
+
+- **[data.wien.gv.at](https://data.wien.gv.at/)** – Open-Government-Data-Portal der
+  Stadt Wien mit zahlreichen Infrastruktur-, Verkehrs- und Sensordaten. Lizenz:
+  Creative Commons Namensnennung 4.0 International (CC BY 4.0).
+- **[digitales.wien.gv.at](https://digitales.wien.gv.at/)** – Überblick über
+  Digitalisierungs- und Smart-City-Projekte der Stadt, inklusive Datenzugängen und
+  APIs; Veröffentlichungen folgen in der Regel der Wiener OGD-Lizenz
+  (CC BY 4.0).
+- **[mobilitaetsdaten.gv.at](https://www.mobilitaetsdaten.gv.at/)** – Nationale
+  Mobilitätsdatenplattform des BMK mit Verkehrszählungen, Echtzeit- und
+  Planungsdaten. Die Datensätze sind überwiegend unter CC BY 4.0 oder der
+  Datenlizenz Österreich – Namensnennung 2.0 verfügbar.
+- **[geoportal.inspire.gv.at](https://geoportal.inspire.gv.at/)** – Zugangspunkt zu
+  INSPIRE-konformen Geodaten und OGC-Diensten (z. B. Verkehrsflächen,
+  Schutzgebiete), meist unter der Datenlizenz Österreich – Namensnennung 2.0 oder
+  spezifischen Fachlizenzen.
+- **[bmk.gv.at](https://www.bmk.gv.at/)** – Fachinformationen, Studien und
+  Verkehrsdaten des Klimaschutzministeriums; offene Publikationen stehen häufig
+  unter CC BY 4.0 oder ausgewiesenen Sonderlizenzen.
+- **[statistik.at](https://www.statistik.at/)** – Statistik Austria mit
+  Bevölkerungs-, Pendler- und Wirtschaftskennzahlen. Die offenen Datensätze
+  („Open Data Österreich“) werden in der Regel unter CC BY 4.0 angeboten.
+- **[umweltbundesamt.at](https://www.umweltbundesamt.at/)** – Umwelt- und
+  Emissionsdaten, Luftgütemessungen sowie Lärmkarten. Der offene Datenbereich
+  (data.umweltbundesamt.at) nutzt vorwiegend CC BY 4.0 oder DL-AT-2.0.
+- **[viennaairport.com](https://www.viennaairport.com/)** – Betriebsinformationen
+  und Verkehrsdaten des Flughafens Wien; die Inhalte unterliegen den
+  Nutzungsbedingungen des Flughafens und sind meist nur mit Quellenangabe für
+  redaktionelle Zwecke freigegeben.
+
+Solche Daten lassen sich nutzen, um den Feed mit zusätzlichen Kontexten zu
+bereichern: Luftqualitäts- oder Lärmmesswerte können bei Bau- und
+Verkehrsmaßnahmen die Auswirkungen auf Anrainer:innen illustrieren, und
+Flughafen-Betriebsdaten helfen dabei, ÖPNV-Störungen mit Flugbewegungen oder
+Reisendenströmen zu korrelieren. Flächen- und Sensordaten aus den genannten
+Portalen erleichtern zudem die räumliche Verknüpfung der Stationsinformationen mit
+weiteren Infrastrukturen (z. B. Park&Ride, Radwege, Umweltzonen) und ermöglichen
+Auswertungen zu Pendlerströmen oder multimodalen Umsteigepunkten.
+
 ### Automatische Aktualisierung
 
 Die GitHub Action [`.github/workflows/update-stations.yml`](.github/workflows/update-stations.yml)
