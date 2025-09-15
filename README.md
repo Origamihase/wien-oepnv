@@ -69,12 +69,11 @@ Darüber hinaus stehen zahlreiche offene Verwaltungs- und Fachdaten zur Verfügu
 die sich mit dem Stationsverzeichnis oder den Feed-Ergebnissen kombinieren lassen:
 
 - **[data.wien.gv.at](https://data.wien.gv.at/)** – Open-Government-Data-Portal der
-  Stadt Wien mit zahlreichen Infrastruktur-, Verkehrs- und Sensordaten. Lizenz:
-  Creative Commons Namensnennung 4.0 International (CC BY 4.0).
+  Stadt Wien mit zahlreichen Infrastruktur-, Verkehrs- und Sensordaten auf Basis
+  der Creative-Commons-Lizenz [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.de).
 - **[digitales.wien.gv.at](https://digitales.wien.gv.at/)** – Überblick über
   Digitalisierungs- und Smart-City-Projekte der Stadt, inklusive Datenzugängen und
-  APIs; Veröffentlichungen folgen in der Regel der Wiener OGD-Lizenz
-  (CC BY 4.0).
+  APIs; Veröffentlichungen folgen in der Regel der Wiener OGD-Lizenz (CC BY 4.0).
 - **[mobilitaetsdaten.gv.at](https://www.mobilitaetsdaten.gv.at/)** – Nationale
   Mobilitätsdatenplattform des BMK mit Verkehrszählungen, Echtzeit- und
   Planungsdaten. Die Datensätze sind überwiegend unter CC BY 4.0 oder der
@@ -87,8 +86,8 @@ die sich mit dem Stationsverzeichnis oder den Feed-Ergebnissen kombinieren lasse
   Verkehrsdaten des Klimaschutzministeriums; offene Publikationen stehen häufig
   unter CC BY 4.0 oder ausgewiesenen Sonderlizenzen.
 - **[statistik.at](https://www.statistik.at/)** – Statistik Austria mit
-  Bevölkerungs-, Pendler- und Wirtschaftskennzahlen. Die offenen Datensätze
-  („Open Data Österreich“) werden in der Regel unter CC BY 4.0 angeboten.
+  Bevölkerungs-, Pendler- und Wirtschaftskennzahlen. Die offenen Datensätze („Open
+  Data Österreich“) werden in der Regel unter CC BY 4.0 angeboten.
 - **[umweltbundesamt.at](https://www.umweltbundesamt.at/)** – Umwelt- und
   Emissionsdaten, Luftgütemessungen sowie Lärmkarten. Der offene Datenbereich
   (data.umweltbundesamt.at) nutzt vorwiegend CC BY 4.0 oder DL-AT-2.0.
@@ -97,14 +96,23 @@ die sich mit dem Stationsverzeichnis oder den Feed-Ergebnissen kombinieren lasse
   Nutzungsbedingungen des Flughafens und sind meist nur mit Quellenangabe für
   redaktionelle Zwecke freigegeben.
 
-Solche Daten lassen sich nutzen, um den Feed mit zusätzlichen Kontexten zu
-bereichern: Luftqualitäts- oder Lärmmesswerte können bei Bau- und
-Verkehrsmaßnahmen die Auswirkungen auf Anrainer:innen illustrieren, und
-Flughafen-Betriebsdaten helfen dabei, ÖPNV-Störungen mit Flugbewegungen oder
-Reisendenströmen zu korrelieren. Flächen- und Sensordaten aus den genannten
-Portalen erleichtern zudem die räumliche Verknüpfung der Stationsinformationen mit
-weiteren Infrastrukturen (z. B. Park&Ride, Radwege, Umweltzonen) und ermöglichen
-Auswertungen zu Pendlerströmen oder multimodalen Umsteigepunkten.
+Hinweise zur Kombination mit dem ÖPNV-Feed:
+
+- **Umwelt- und Sensordaten (data.wien.gv.at, umweltbundesamt.at)** bieten
+  ergänzende Werte wie Luftgüte, Temperatur oder Lärm, die bei Baustellen- und
+  Störungsmeldungen zusätzliche Auswirkungen auf Anrainer:innen sichtbar machen.
+- **Verkehrs- und Bewegungsdaten (mobilitaetsdaten.gv.at, bmk.gv.at)** helfen, die
+  Netzbelastung während Störungen zu quantifizieren und alternative Routen oder
+  Kapazitäten zu planen.
+- **Geodaten (geoportal.inspire.gv.at, data.wien.gv.at)** erleichtern das Matching
+  mit Stationskoordinaten, um betroffene Flächen, Schutzgebiete oder angrenzende
+  Infrastrukturen (Park&Ride, Radwege) zu identifizieren.
+- **Strukturdaten (statistik.at)** liefern Kontext zu Pendlerströmen und
+  Bevölkerungsdichte, wodurch Priorisierungen oder Zielgruppen-Kommunikation
+  verbessert werden können.
+- **Flughafeninformationen (viennaairport.com)** lassen sich mit S-Bahn- und
+  Bus-Störungen verknüpfen, um Auswirkungen auf Flugreisende oder Spitzenzeiten am
+  Flughafen zu beurteilen.
 
 ### Automatische Aktualisierung
 
