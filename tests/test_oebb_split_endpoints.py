@@ -10,3 +10,8 @@ def test_split_endpoints_hyphen():
     title = "Wien - Linz"
     assert oebb._split_endpoints(title) == ["Wien", "Linz"]
 
+
+def test_split_endpoints_inner_hyphen():
+    title = "Graz Ostbahnhof-Messe - Wien"
+    assert oebb._split_endpoints(title) == ["Graz Ost-Messe", "Wien"]
+
