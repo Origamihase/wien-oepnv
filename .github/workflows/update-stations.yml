@@ -25,7 +25,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Refresh station directory
-        run: python scripts/update_station_directory.py
+        run: python scripts/update_station_directory.py --verbose
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
