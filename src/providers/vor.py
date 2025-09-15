@@ -246,3 +246,7 @@ def fetch_events() -> List[Dict[str, Any]]:
 
     out.sort(key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, x["guid"]))
     return out
+
+
+__all__ = ["fetch_events"]
+

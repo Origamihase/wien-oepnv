@@ -262,3 +262,7 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
 
     log.info("ÖBB: %d Items nach Region/Titel-Kosmetik", len(out))
     return out
+
+
+__all__ = ["fetch_events"]
+
