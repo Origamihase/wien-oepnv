@@ -47,12 +47,12 @@ LOG_MAX_BYTES=2097152 LOG_BACKUP_COUNT=10 python -u src/build_feed.py
 | `FEED_TITLE` | str | `"ÖPNV Störungen Wien & Umgebung"` | Titel des RSS-Feeds. |
 | `FEED_LINK` | str | `"https://github.com/Origamihase/wien-oepnv"` | Link zur Projektseite. |
 | `FEED_DESC` | str | `"Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen"` | Beschreibung des RSS-Feeds. |
-| `FEED_TTL` | int | `30` | Minuten, die Clients den Feed im Cache halten dürfen. |
+| `FEED_TTL` | int | `15` | Minuten, die Clients den Feed im Cache halten dürfen. |
 | `DESCRIPTION_CHAR_LIMIT` | int | `170` | Maximale Länge der Item-Beschreibung. |
 | `FRESH_PUBDATE_WINDOW_MIN` | int | `5` | Zeitfenster (Minuten), in dem Meldungen ohne Datum als „frisch“ gelten und mit aktuellem `pubDate` versehen werden. |
 | `MAX_ITEMS` | int | `60` | Maximale Anzahl an Items im Feed. |
-| `MAX_ITEM_AGE_DAYS` | int | `45` | Entfernt Items, die älter als diese Anzahl an Tagen sind. |
-| `ABSOLUTE_MAX_AGE_DAYS` | int | `365` | Harte Obergrenze für das Alter von Items. |
+| `MAX_ITEM_AGE_DAYS` | int | `365` | Entfernt Items, die älter als diese Anzahl an Tagen sind. |
+| `ABSOLUTE_MAX_AGE_DAYS` | int | `540` | Harte Obergrenze für das Alter von Items. |
 | `ENDS_AT_GRACE_MINUTES` | int | `10` | Kulanzfenster (Minuten), in dem Meldungen nach `ends_at` noch gezeigt werden. |
 | `PROVIDER_TIMEOUT` | int | `25` | Timeout (Sekunden) für Provider-Aufrufe. |
 | `STATE_PATH` | str | `"data/first_seen.json"` | Speicherort der `first_seen`-Daten. |
