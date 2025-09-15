@@ -48,6 +48,10 @@ WL_BASE = (
 
 log = logging.getLogger(__name__)
 
+# Precompiled regex patterns
+_ALPHA_RE = re.compile(r"[A-Za-zÄÖÜäöüß]")
+_HALT_SUFFIX_RE = re.compile(r"\(\d+\s+Halt(?:e)?\)$")
+
 
 # ---------------- HTTP-Session mit Retry ----------------
 
@@ -123,11 +127,11 @@ def _stop_names_from_related(rel_stops: List[Any]) -> List[str]:
         if isinstance(s, dict):
             for key in ("name", "stopName", "title"):
                 val = s.get(key)
-                if val and re.search(r"[A-Za-zÄÖÜäöüß]", str(val)):
+                if val and _ALPHA_RE.search(str(val)):
                     names.append(str(val).strip())
                     break
         elif isinstance(s, str):
-            if re.search(r"[A-Za-zÄÖÜäöüß]", s):
+            if _ALPHA_RE.search(s):
                 names.append(s.strip())
     # dedupe (case-insensitiv), sortiert
     dedup: Dict[str, str] = {}
@@ -400,7 +404,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
         # Anzahl Halte ins Titelende
         halt_cnt = len(b["stop_names"])
-        if halt_cnt > 0 and not re.search(r"\(\d+\s+Halt(?:e)?\)$", title_with_lines):
+        if halt_cnt > 0 and not _HALT_SUFFIX_RE.search(title_with_lines):
             title_with_lines += f" ({halt_cnt} Halt{'e' if halt_cnt != 1 else ''})"
 
         title_final = re.sub(r"[<>«»‹›]+", "", title_with_lines).strip()
