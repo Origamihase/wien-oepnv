@@ -59,6 +59,11 @@ def test_line_prefix_and_house_number_false_positive():
     assert _detect_line_pairs_from_text("Neubaugasse 69") == []
 
 
+def test_line_prefix_empty_title():
+    assert _ensure_line_prefix("5:", ["5"]) == "5"
+    assert _ensure_line_prefix("5: ", ["5"]) == "5"
+
+
 def test_tidy_title_wl_strips_label():
     assert _tidy_title_wl("Störung: U1 steht") == "U1 steht"
 

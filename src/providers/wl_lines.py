@@ -55,9 +55,10 @@ def _ensure_line_prefix(title: str, lines_disp: List[str]) -> str:
         return title
     wanted = "/".join(lines_disp)
     if re.match(rf"^\s*{re.escape(wanted)}\s*:\s*", title, re.IGNORECASE):
-        return title
-    stripped = _strip_existing_line_block(title)
-    return f"{wanted}: {stripped}".strip()
+        rest = re.sub(rf"^\s*{re.escape(wanted)}\s*:\s*", "", title, flags=re.IGNORECASE).strip()
+        return title if rest else wanted
+    stripped = _strip_existing_line_block(title).strip()
+    return f"{wanted}: {stripped}" if stripped else wanted
 
 
 # Fallback-Linien aus Titeltext — vorher Datum/Zeit/Adressen maskieren
