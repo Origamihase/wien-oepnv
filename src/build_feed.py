@@ -254,31 +254,38 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
     if item.get("_identity"):
         return str(item["_identity"])
 
+    title = item.get("title") or ""
+    sa = item.get("starts_at")
+    ea = item.get("ends_at")
+    sa_str = _to_utc(sa).isoformat() if isinstance(sa, datetime) else "None"
+    ea_str = _to_utc(ea).isoformat() if isinstance(ea, datetime) else "None"
+    fuzzy_raw = f"{title}|{sa_str}|{ea_str}"
+    fuzzy_hash = hashlib.sha1(fuzzy_raw.encode("utf-8")).hexdigest()
+
     source = (item.get("source") or "").lower()
     category = (item.get("category") or "").lower()
     if "öbb" in source or "oebb" in source:
-        base = item.get("guid") or item.get("link") or item.get("title") or ""
-        return f"oebb|{base}"
+        return f"oebb|F={fuzzy_hash}"
 
-    lines = _parse_lines_from_title(item.get("title") or "")
+    lines = _parse_lines_from_title(title)
     lines_part = "L=" + "/".join([l.upper() for l in lines]) if lines else "L="
-    start_day = _ymd_or_none(item.get("starts_at"))
+    start_day = _ymd_or_none(sa)
     base = f"{source}|{category}|{lines_part}|D={start_day}"
     if source and category:
         if not lines:
             if item.get("title"):
-                return f"{base}|T={item['title']}"
-        
+                return f"{base}|T={item['title']}|F={fuzzy_hash}"
+
             raw = json.dumps(item, sort_keys=True, default=str)
             hashed = hashlib.sha1(raw.encode("utf-8")).hexdigest()
-            return f"{base}|H={hashed}"
-        return base
+            return f"{base}|H={hashed}|F={fuzzy_hash}"
+        return f"{base}|F={fuzzy_hash}"
     # Fallback: Ohne Quelle/Kategorie Titel oder vollständigen Hash anhängen
     if item.get("title"):
-        return f"{base}|T={item['title']}"
+        return f"{base}|T={item['title']}|F={fuzzy_hash}"
     raw = json.dumps(item, sort_keys=True, default=str)
     hashed = hashlib.sha1(raw.encode("utf-8")).hexdigest()
-    return f"{base}|H={hashed}"
+    return f"{base}|H={hashed}|F={fuzzy_hash}"
 
 # ---------------- Pipeline ----------------
 
