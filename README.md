@@ -20,6 +20,11 @@ python -u src/build_feed.py  # erzeugt docs/feed.xml
 
 Der erzeugte Feed liegt unter `docs/feed.xml`.
 
+Fehlerprotokolle landen in `log/errors.log`. Das Verzeichnis `log/` wird bei Bedarf
+automatisch angelegt. Wird die Datei größer als `LOG_MAX_BYTES`, rotiert sie und
+ältere Versionen werden als `errors.log.1` usw. (max. `LOG_BACKUP_COUNT`) im selben
+Ordner abgelegt.
+
 ## Umgebungsvariablen
 
 ### Allgemein (`src/build_feed.py`)
@@ -27,6 +32,9 @@ Der erzeugte Feed liegt unter `docs/feed.xml`.
 | Variable | Typ | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
 | `LOG_LEVEL` | str | `"INFO"` | Log-Level für Ausgaben. |
+| `LOG_DIR` | str | `"log"` | Basisverzeichnis für Log-Dateien. |
+| `LOG_MAX_BYTES` | int | `1000000` | Maximale Größe von `errors.log` bevor rotiert wird. |
+| `LOG_BACKUP_COUNT` | int | `5` | Anzahl der Vorversionen von `errors.log`, die behalten werden. |
 | `OUT_PATH` | str | `"docs/feed.xml"` | Zielpfad für den erzeugten Feed. |
 | `FEED_TITLE` | str | `"ÖPNV Störungen Wien & Umgebung"` | Titel des RSS-Feeds. |
 | `FEED_LINK` | str | `"https://github.com/Origamihase/wien-oepnv"` | Link zur Projektseite. |

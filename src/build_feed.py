@@ -45,14 +45,32 @@ _level = getattr(logging, LOG_LEVEL, logging.INFO)
 if not isinstance(_level, int):
     _level = logging.INFO
 
-os.makedirs("log", exist_ok=True)
+LOG_DIR = os.getenv("LOG_DIR", "log")
+try:
+    LOG_MAX_BYTES = int(os.getenv("LOG_MAX_BYTES", "1000000"))
+    if LOG_MAX_BYTES < 0:
+        LOG_MAX_BYTES = 0
+except (ValueError, TypeError):
+    LOG_MAX_BYTES = 1_000_000
+
+try:
+    LOG_BACKUP_COUNT = int(os.getenv("LOG_BACKUP_COUNT", "5"))
+    if LOG_BACKUP_COUNT < 0:
+        LOG_BACKUP_COUNT = 0
+except (ValueError, TypeError):
+    LOG_BACKUP_COUNT = 5
+
+os.makedirs(LOG_DIR, exist_ok=True)
 fmt = "%(asctime)s %(levelname)s %(name)s: %(message)s"
 logging.basicConfig(
     level=_level,
     format=fmt,
 )
 error_handler = RotatingFileHandler(
-    "log/errors.log", maxBytes=1_000_000, backupCount=5, encoding="utf-8"
+    Path(LOG_DIR) / "errors.log",
+    maxBytes=LOG_MAX_BYTES,
+    backupCount=LOG_BACKUP_COUNT,
+    encoding="utf-8",
 )
 error_handler.setLevel(logging.ERROR)
 error_handler.setFormatter(logging.Formatter(fmt))
