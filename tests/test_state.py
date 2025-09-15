@@ -24,8 +24,9 @@ def _import_build_feed(monkeypatch):
 
 
 def test_state_path_override(monkeypatch, tmp_path):
-    state_file = tmp_path / "custom_state.json"
-    monkeypatch.setenv("STATE_PATH", str(state_file))
+    state_file = tmp_path / "data" / "custom_state.json"
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("STATE_PATH", "data/custom_state.json")
     build_feed = _import_build_feed(monkeypatch)
     now = datetime.now(timezone.utc).isoformat()
     build_feed._save_state({"id": {"first_seen": now}})
@@ -34,8 +35,9 @@ def test_state_path_override(monkeypatch, tmp_path):
 
 
 def test_state_retention_drops_old_entries(monkeypatch, tmp_path):
-    state_file = tmp_path / "state.json"
-    monkeypatch.setenv("STATE_PATH", str(state_file))
+    state_file = tmp_path / "data" / "state.json"
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("STATE_PATH", "data/state.json")
     monkeypatch.setenv("STATE_RETENTION_DAYS", "1")
     build_feed = _import_build_feed(monkeypatch)
 
@@ -62,8 +64,9 @@ def test_state_retention_drops_old_entries(monkeypatch, tmp_path):
 
 
 def test_state_cleared_when_feed_empty(monkeypatch, tmp_path):
-    state_file = tmp_path / "state.json"
-    monkeypatch.setenv("STATE_PATH", str(state_file))
+    state_file = tmp_path / "data" / "state.json"
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("STATE_PATH", "data/state.json")
     build_feed = _import_build_feed(monkeypatch)
     now = datetime.now(timezone.utc)
     build_feed._save_state({"id": {"first_seen": now.isoformat()}})

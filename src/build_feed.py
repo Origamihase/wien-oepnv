@@ -92,8 +92,24 @@ error_handler.setFormatter(logging.Formatter(fmt))
 logging.getLogger().addHandler(error_handler)
 log = logging.getLogger("build_feed")
 
+# ---------------- Paths ----------------
+_ALLOWED_ROOTS = {"docs", "data"}
+
+
+def _validate_path(path: Path, name: str) -> Path:
+    """Ensure ``path`` stays within whitelisted directories."""
+
+    try:
+        rel = path.resolve().relative_to(Path.cwd().resolve())
+    except Exception:
+        raise ValueError(f"{name} outside allowed directories")
+    if rel.parts and rel.parts[0] in _ALLOWED_ROOTS:
+        return path
+    raise ValueError(f"{name} outside allowed directories")
+
 # ---------------- ENV ----------------
 OUT_PATH = os.getenv("OUT_PATH", "docs/feed.xml")
+_validate_path(Path(OUT_PATH), "OUT_PATH")
 FEED_TITLE = os.getenv("FEED_TITLE", "ÖPNV Störungen Wien & Umgebung")
 FEED_LINK = os.getenv("FEED_LINK", "https://github.com/Origamihase/wien-oepnv")
 FEED_DESC = os.getenv("FEED_DESC", "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen")
@@ -117,6 +133,7 @@ ENDS_AT_GRACE_MINUTES = max(_get_int_env("ENDS_AT_GRACE_MINUTES", 10), 0)
 PROVIDER_TIMEOUT = max(_get_int_env("PROVIDER_TIMEOUT", 25), 0)
 
 STATE_FILE = Path(os.getenv("STATE_PATH", "data/first_seen.json"))  # nur Einträge aus *aktuellem* Feed
+STATE_FILE = _validate_path(STATE_FILE, "STATE_PATH")
 STATE_RETENTION_DAYS = max(_get_int_env("STATE_RETENTION_DAYS", 60), 0)
 
 RFC = "%a, %d %b %Y %H:%M:%S %z"
@@ -179,10 +196,11 @@ def _ymd_or_none(dt: Optional[datetime]) -> str:
 # ---------------- State (first_seen) ----------------
 
 def _load_state() -> Dict[str, Dict[str, Any]]:
-    if not STATE_FILE.exists():
+    path = _validate_path(STATE_FILE, "STATE_PATH")
+    if not path.exists():
         return {}
     try:
-        with STATE_FILE.open("r", encoding="utf-8") as f:
+        with path.open("r", encoding="utf-8") as f:
             data = json.load(f)
         data = data if isinstance(data, dict) else {}
     except Exception as e:
@@ -202,7 +220,8 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
     return out
 
 def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
-    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    path = _validate_path(STATE_FILE, "STATE_PATH")
+    path.parent.mkdir(parents=True, exist_ok=True)
     threshold = datetime.now(timezone.utc) - timedelta(days=STATE_RETENTION_DAYS)
     pruned: Dict[str, Dict[str, Any]] = {}
     for k, v in state.items():
@@ -213,12 +232,12 @@ def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
                 pruned[k] = v
         except Exception:
             continue
-    tmp = STATE_FILE.with_suffix(".tmp")
+    tmp = path.with_suffix(".tmp")
     with tmp.open("w", encoding="utf-8") as f:
         json.dump(pruned, f, ensure_ascii=False, indent=2, sort_keys=True)
         f.flush()
         os.fsync(f.fileno())
-    tmp.replace(STATE_FILE)
+    tmp.replace(path)
 
 def _identity_for_item(item: Dict[str, Any]) -> str:
     """
@@ -460,7 +479,7 @@ def main() -> int:
     items.sort(key=_sort_key)
     rss = _make_rss(items, now, state)
 
-    out_path = Path(OUT_PATH)
+    out_path = _validate_path(Path(OUT_PATH), "OUT_PATH")
     out_path.parent.mkdir(parents=True, exist_ok=True)
     tmp = out_path.with_suffix('.tmp')
     with tmp.open('w', encoding='utf-8') as f:

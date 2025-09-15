@@ -43,7 +43,7 @@ LOG_MAX_BYTES=2097152 LOG_BACKUP_COUNT=10 python -u src/build_feed.py
 | `LOG_DIR` | str | `"log"` | Basisverzeichnis für Log-Dateien. |
 | `LOG_MAX_BYTES` | int | `1000000` | Maximale Größe von `errors.log` bevor rotiert wird. |
 | `LOG_BACKUP_COUNT` | int | `5` | Anzahl der Vorversionen von `errors.log`, die behalten werden. |
-| `OUT_PATH` | str | `"docs/feed.xml"` | Zielpfad für den erzeugten Feed. |
+| `OUT_PATH` | str | `"docs/feed.xml"` | Zielpfad für den erzeugten Feed (muss unter `docs/` liegen). |
 | `FEED_TITLE` | str | `"ÖPNV Störungen Wien & Umgebung"` | Titel des RSS-Feeds. |
 | `FEED_LINK` | str | `"https://github.com/Origamihase/wien-oepnv"` | Link zur Projektseite. |
 | `FEED_DESC` | str | `"Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen"` | Beschreibung des RSS-Feeds. |
@@ -55,7 +55,7 @@ LOG_MAX_BYTES=2097152 LOG_BACKUP_COUNT=10 python -u src/build_feed.py
 | `ABSOLUTE_MAX_AGE_DAYS` | int | `540` | Harte Obergrenze für das Alter von Items. |
 | `ENDS_AT_GRACE_MINUTES` | int | `10` | Kulanzfenster (Minuten), in dem Meldungen nach `ends_at` noch gezeigt werden. |
 | `PROVIDER_TIMEOUT` | int | `25` | Timeout (Sekunden) für Provider-Aufrufe. |
-| `STATE_PATH` | str | `"data/first_seen.json"` | Speicherort der `first_seen`-Daten. |
+| `STATE_PATH` | str | `"data/first_seen.json"` | Speicherort der `first_seen`-Daten (muss unter `data/` liegen). |
 | `STATE_RETENTION_DAYS` | int | `60` | Aufbewahrungsdauer der `first_seen`-Daten. |
 | `WL_ENABLE` | bool (`"1"`/`"0"`) | `"1"` | Provider „Wiener Linien“ aktivieren/deaktivieren. |
 | `OEBB_ENABLE` | bool (`"1"`/`"0"`) | `"1"` | Provider „ÖBB“ aktivieren/deaktivieren. |
