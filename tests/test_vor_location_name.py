@@ -25,18 +25,26 @@ def test_resolve_station_ids_looks_up_stop_ids(monkeypatch):
     responses.add(
         responses.GET,
         url,
-        json={"StopLocation": [{"id": "42", "name": "Wien"}]},
+        json={"StopLocation": [{"id": "42", "name": "Wien Franz-Josefs-Bf"}]},
         status=200,
         match=[
             matchers.query_param_matcher(
-                {"format": "json", "input": "Wien", "type": "stop", "accessId": "token"}
+                {
+                    "format": "json",
+                    "input": "Wien Franz-Josefs-Bf",
+                    "type": "stop",
+                    "accessId": "token",
+                }
             )
         ],
     )
 
-    ids = vor.resolve_station_ids(["Wien"])
+    ids = vor.resolve_station_ids(
+        ["Wien Franz Josefs Bahnhof", " Wien Franz-Josefs-Bf "]
+    )
 
     assert ids == ["42"]
+    assert len(responses.calls) == 1
 
 
 def test_fetch_events_prefers_configured_station_ids(monkeypatch):
@@ -81,3 +89,38 @@ def test_fetch_events_uses_station_names_when_ids_missing(monkeypatch):
 
     assert items == []
     assert calls == [["Wien"]]
+
+
+def test_collect_from_board_canonicalizes_stop_names():
+    payload = {
+        "Messages": {
+            "Message": [
+                {
+                    "id": "1",
+                    "act": "true",
+                    "head": "Test",
+                    "text": "Test text",
+                    "sDate": "2024-01-01",
+                    "sTime": "08:15",
+                    "products": {
+                        "Product": [
+                            {"catOutS": "S", "name": "S1"},
+                        ]
+                    },
+                    "affectedStops": {
+                        "Stop": [
+                            {"name": "Wien Franz Josefs Bahnhof"},
+                            {"name": "Wien Franz-Josefs-Bf"},
+                        ]
+                    },
+                }
+            ]
+        }
+    }
+
+    items = vor._collect_from_board("123", payload)
+
+    assert items
+    description = items[0]["description"]
+    assert "Wien Franz-Josefs-Bf" in description
+    assert "Franz Josefs Bahnhof" not in description

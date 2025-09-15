@@ -30,6 +30,11 @@ try:
 except ModuleNotFoundError:
     from src.utils.text import html_to_text  # type: ignore
 
+try:  # pragma: no cover - support both package layouts
+    from utils.stations import canonical_name
+except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.stations import canonical_name  # type: ignore
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -132,14 +137,16 @@ def resolve_station_ids(names: List[str]) -> List[str]:
     wanted: List[str] = []
 
     for raw in names:
-        name = raw.strip()
+        name = (raw or "").strip()
         if not name:
             continue
-        key = name.lower()
+        canonical = canonical_name(name)
+        query = canonical or name
+        key = query.casefold()
         if key in seen:
             continue
         seen.add(key)
-        wanted.append(name)
+        wanted.append(query)
 
     if not wanted:
         return resolved
@@ -436,7 +443,11 @@ def _collect_from_board(station_id: str, payload: Mapping[str, Any]) -> List[Dic
         aff = m.get("affectedStops")
         if aff is not None:
             for st in _extract_mapping_items(aff, ("Stop", "stop", "Stops", "stops")):
-                nm = _text(st, "name").strip() or _text(st, "stop").strip()
+                nm_raw = _text(st, "name").strip() or _text(st, "stop").strip()
+                if not nm_raw:
+                    continue
+                nm_canonical = canonical_name(nm_raw)
+                nm = re.sub(r"\s{2,}", " ", (nm_canonical or nm_raw)).strip()
                 if nm:
                     affected_stops.append(nm)
         lines = sorted(lines_set)

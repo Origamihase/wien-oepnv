@@ -23,6 +23,11 @@ try:  # pragma: no cover - support both package layouts
 except ModuleNotFoundError:  # pragma: no cover
     from src.utils.ids import make_guid  # type: ignore
 
+try:  # pragma: no cover - support both package layouts
+    from utils.stations import canonical_name
+except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.stations import canonical_name  # type: ignore
+
 from .wl_lines import (
     _detect_line_pairs_from_text,
     _ensure_line_prefix,
@@ -122,24 +127,27 @@ def _as_list(val) -> List[Any]:
 # ---------------- Stop-Namen extrahieren ----------------
 
 def _stop_names_from_related(rel_stops: List[Any]) -> List[str]:
-    names: List[str] = []
+    dedup: Dict[str, str] = {}
     for s in rel_stops:
+        raw: str | None = None
         if isinstance(s, dict):
             for key in ("name", "stopName", "title"):
                 val = s.get(key)
                 if val and _ALPHA_RE.search(str(val)):
-                    names.append(str(val).strip())
+                    raw = str(val).strip()
                     break
         elif isinstance(s, str):
             if _ALPHA_RE.search(s):
-                names.append(s.strip())
-    # dedupe (case-insensitiv), sortiert
-    dedup: Dict[str, str] = {}
-    for n in names:
-        k = re.sub(r"\s+", " ", n).strip().casefold()
-        dedup.setdefault(k, n)
-    out = sorted(dedup.values(), key=lambda x: x.casefold())
-    return out
+                raw = s.strip()
+        if not raw:
+            continue
+        canonical = canonical_name(raw)
+        final = re.sub(r"\s{2,}", " ", (canonical or raw)).strip()
+        if not final:
+            continue
+        key = final.casefold()
+        dedup.setdefault(key, final)
+    return sorted(dedup.values(), key=lambda x: x.casefold())
 
 
 # ---------------- API Calls ----------------
