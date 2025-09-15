@@ -27,6 +27,11 @@ try:  # pragma: no cover - support both package layouts
 except ModuleNotFoundError:  # pragma: no cover
     from src.utils.ids import make_guid  # type: ignore
 
+try:  # pragma: no cover - support both package layouts
+    from utils.env import get_int_env
+except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.env import get_int_env  # type: ignore
+
 try:
     from utils.text import html_to_text
 except ModuleNotFoundError:
@@ -90,27 +95,17 @@ def save_request_count(now_local: datetime) -> int:
             log.warning("VOR: Konnte Request-Zähler nicht speichern: %s", exc)
         return new_count
 
-def _get_int_env(name: str, default: int) -> int:
-    val = os.getenv(name)
-    if val is None:
-        return default
-    try:
-        return int(val)
-    except ValueError:
-        log.warning("%s='%s' ist kein int – verwende %s", name, val, default)
-        return default
-
 
 VOR_ACCESS_ID: str | None = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip() or None
 VOR_STATION_IDS: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_IDS") or "").split(",") if s.strip()]
 VOR_STATION_NAMES: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_NAMES") or "").split(",") if s.strip()]
 VOR_BASE = os.getenv("VOR_BASE", "https://routenplaner.verkehrsauskunft.at/vao/restproxy")
 VOR_VERSION = os.getenv("VOR_VERSION", "v1.11.0")
-BOARD_DURATION_MIN = _get_int_env("VOR_BOARD_DURATION_MIN", 60)
-HTTP_TIMEOUT = _get_int_env("VOR_HTTP_TIMEOUT", 15)
+BOARD_DURATION_MIN = get_int_env("VOR_BOARD_DURATION_MIN", 60)
+HTTP_TIMEOUT = get_int_env("VOR_HTTP_TIMEOUT", 15)
 DEFAULT_MAX_STATIONS_PER_RUN = 2
-MAX_STATIONS_PER_RUN = _get_int_env("VOR_MAX_STATIONS_PER_RUN", DEFAULT_MAX_STATIONS_PER_RUN)
-ROTATION_INTERVAL_SEC = _get_int_env("VOR_ROTATION_INTERVAL_SEC", 1800)
+MAX_STATIONS_PER_RUN = get_int_env("VOR_MAX_STATIONS_PER_RUN", DEFAULT_MAX_STATIONS_PER_RUN)
+ROTATION_INTERVAL_SEC = get_int_env("VOR_ROTATION_INTERVAL_SEC", 1800)
 RETRY_AFTER_FALLBACK_SEC = 5.0
 
 ALLOW_BUS = (os.getenv("VOR_ALLOW_BUS", "0").strip() == "1")
