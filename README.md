@@ -25,6 +25,14 @@ automatisch angelegt. Wird die Datei größer als `LOG_MAX_BYTES`, rotiert sie u
 ältere Versionen werden als `errors.log.1` usw. (max. `LOG_BACKUP_COUNT`) im selben
 Ordner abgelegt.
 
+Die Werte lassen sich über die Umgebungsvariablen `LOG_MAX_BYTES` (in Byte)
+und `LOG_BACKUP_COUNT` anpassen. Beispiel: eine Rotation ab 2 MB und das
+Behalten von zehn Backups:
+
+```bash
+LOG_MAX_BYTES=2097152 LOG_BACKUP_COUNT=10 python -u src/build_feed.py
+```
+
 ## Umgebungsvariablen
 
 ### Allgemein (`src/build_feed.py`)
