@@ -10,6 +10,16 @@ Der RSS-Feed deklariert den Namespace `ext` (`xmlns:ext="https://wien-oepnv.exam
 - `ext:starts_at`: Beginn der Störung bzw. Maßnahme.
 - `ext:ends_at`: Ende der Störung bzw. Maßnahme.
 
+## Cache-Dateien
+
+Drei GitHub Actions pflegen die Zwischenstände der Provider-Abfragen und legen sie im Repository ab:
+
+- [`.github/workflows/update-wl-cache.yml`](.github/workflows/update-wl-cache.yml) schreibt `cache/wl/events.json`.
+- [`.github/workflows/update-oebb-cache.yml`](.github/workflows/update-oebb-cache.yml) schreibt `cache/oebb/events.json`.
+- [`.github/workflows/update-vor-cache.yml`](.github/workflows/update-vor-cache.yml) schreibt `cache/vor/events.json`.
+
+Der Feed-Workflow wartet vor dem Build auf diese Jobs (`needs`) und kann dadurch direkt auf die aktuellen JSON-Dateien zugreifen. Da die Cache-Dateien versioniert im Repository liegen, steht der Feed auch dann zur Verfügung, wenn einer der Upstream-Dienste vorübergehend offline ist.
+
 ## Stationsverzeichnis
 
 `data/stations.json` enthält eine vereinfachte Zuordnung der ÖBB-Verkehrsstationen

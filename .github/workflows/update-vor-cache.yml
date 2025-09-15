@@ -1,6 +1,7 @@
 name: Update VOR cache
 
 on:
+  workflow_call:
   schedule:
     - cron: "*/30 * * * *"
   workflow_dispatch:
