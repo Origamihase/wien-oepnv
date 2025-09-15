@@ -75,6 +75,12 @@ def parse_args() -> argparse.Namespace:
         help="Path to the JSON file that will be written",
     )
     parser.add_argument(
+        "--pendler",
+        type=Path,
+        default=DEFAULT_PENDLER_PATH,
+        help="Path to the JSON file containing pendler station IDs",
+    )
+    parser.add_argument(
         "-v",
         "--verbose",
         action="store_true",
@@ -236,7 +242,7 @@ def main() -> None:
     configure_logging(args.verbose)
     workbook_stream = download_workbook(args.source_url)
     stations = extract_stations(workbook_stream)
-    pendler_ids = load_pendler_station_ids(DEFAULT_PENDLER_PATH)
+    pendler_ids = load_pendler_station_ids(args.pendler)
     _annotate_station_flags(stations, pendler_ids)
     write_json(stations, args.output)
 
