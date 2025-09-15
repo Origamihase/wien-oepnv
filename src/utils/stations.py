@@ -12,12 +12,23 @@ from typing import Dict, Iterable, List, NamedTuple
 __all__ = ["canonical_name", "is_in_vienna", "is_pendler", "station_info"]
 
 
+class WLStop(NamedTuple):
+    """Coordinates for a Wiener Linien stop/platform."""
+
+    stop_id: str
+    name: str | None = None
+    latitude: float | None = None
+    longitude: float | None = None
+
+
 class StationInfo(NamedTuple):
     """Normalized metadata for a single station entry."""
 
     name: str
     in_vienna: bool
     pendler: bool
+    wl_diva: str | None = None
+    wl_stops: tuple[WLStop, ...] = ()
 
 _STATIONS_PATH = Path(__file__).resolve().parents[2] / "data" / "stations.json"
 
@@ -48,7 +59,26 @@ def _normalize_token(value: str) -> str:
     return text.strip()
 
 
-def _iter_aliases(name: str, code: str | None) -> Iterable[str]:
+def _coerce_float(value: object | None) -> float | None:
+    """Return *value* as float if possible (accepting comma decimal separators)."""
+
+    if value is None:
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    text = str(value).strip()
+    if not text:
+        return None
+    text = text.replace(",", ".")
+    try:
+        return float(text)
+    except ValueError:
+        return None
+
+
+def _iter_aliases(
+    name: str, code: str | None, extras: Iterable[str] | None = None
+) -> Iterable[str]:
     """Yield alias strings for a station entry (canonical name first)."""
 
     variants: List[str] = []
@@ -80,6 +110,10 @@ def _iter_aliases(name: str, code: str | None) -> Iterable[str]:
         add(re.sub(r"\bSankt\b", "St ", name))
         add(re.sub(r"\bSankt\b", "St", name))
 
+    if extras:
+        for extra in extras:
+            add(str(extra))
+
     return variants
 
 
@@ -105,12 +139,51 @@ def _station_lookup() -> Dict[str, StationInfo]:
             continue
         code_raw = entry.get("bst_code")
         code = str(code_raw).strip() if code_raw is not None else ""
+        wl_diva_raw = entry.get("wl_diva")
+        wl_diva = str(wl_diva_raw).strip() if wl_diva_raw is not None else ""
+        extra_aliases: set[str] = set()
+        if wl_diva:
+            extra_aliases.add(wl_diva)
+        aliases_field = entry.get("aliases")
+        if isinstance(aliases_field, list):
+            for alias in aliases_field:
+                if alias is None:
+                    continue
+                alias_text = str(alias).strip()
+                if alias_text:
+                    extra_aliases.add(alias_text)
+        stop_records: list[WLStop] = []
+        stops_field = entry.get("wl_stops")
+        if isinstance(stops_field, list):
+            for stop in stops_field:
+                if not isinstance(stop, dict):
+                    continue
+                stop_id_raw = stop.get("stop_id")
+                stop_id = str(stop_id_raw).strip() if stop_id_raw is not None else ""
+                name_raw = stop.get("name")
+                stop_name = str(name_raw).strip() if name_raw is not None else ""
+                latitude = _coerce_float(stop.get("latitude"))
+                longitude = _coerce_float(stop.get("longitude"))
+                if stop_id:
+                    extra_aliases.add(stop_id)
+                if stop_name:
+                    extra_aliases.add(stop_name)
+                stop_records.append(
+                    WLStop(
+                        stop_id=stop_id,
+                        name=stop_name or None,
+                        latitude=latitude,
+                        longitude=longitude,
+                    )
+                )
         record = StationInfo(
             name=name,
             in_vienna=bool(entry.get("in_vienna")),
             pendler=bool(entry.get("pendler")),
+            wl_diva=wl_diva or None,
+            wl_stops=tuple(stop_records),
         )
-        for alias in _iter_aliases(name, code or None):
+        for alias in _iter_aliases(name, code or None, extra_aliases):
             key = _normalize_token(alias)
             if not key:
                 continue

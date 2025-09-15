@@ -7236,5 +7236,84 @@
     "name": "Rohrbach-Vorau",
     "in_vienna": false,
     "pendler": false
+  },
+  {
+    "name": "Wien Karlsplatz (WL)",
+    "in_vienna": true,
+    "pendler": false,
+    "wl_diva": "60201076",
+    "wl_stops": [
+      {
+        "stop_id": "60201076",
+        "name": "Karlsplatz U (Richtung Reumannplatz)",
+        "latitude": 48.19868,
+        "longitude": 16.36945
+      },
+      {
+        "stop_id": "60201077",
+        "name": "Karlsplatz U (Richtung Leopoldau)",
+        "latitude": 48.1992,
+        "longitude": 16.371
+      }
+    ],
+    "aliases": [
+      "60201076",
+      "60201077",
+      "Karlsplatz",
+      "Karlsplatz U (Richtung Leopoldau)",
+      "Karlsplatz U (Richtung Reumannplatz)",
+      "Wien Karlsplatz"
+    ],
+    "source": "wl"
+  },
+  {
+    "name": "Wien Schottentor (WL)",
+    "in_vienna": true,
+    "pendler": false,
+    "wl_diva": "60201002",
+    "wl_stops": [
+      {
+        "stop_id": "60201002",
+        "name": "Schottentor U (Richtung Heiligenstadt)",
+        "latitude": 48.21406,
+        "longitude": 16.36031
+      },
+      {
+        "stop_id": "60201003",
+        "name": "Schottentor U (Richtung Karlsplatz)",
+        "latitude": 48.2135,
+        "longitude": 16.3609
+      }
+    ],
+    "aliases": [
+      "60201002",
+      "60201003",
+      "Schottentor",
+      "Schottentor U (Richtung Heiligenstadt)",
+      "Schottentor U (Richtung Karlsplatz)",
+      "Wien Schottentor"
+    ],
+    "source": "wl"
+  },
+  {
+    "name": "Wien Stephansplatz (WL)",
+    "in_vienna": true,
+    "pendler": false,
+    "wl_diva": "60201001",
+    "wl_stops": [
+      {
+        "stop_id": "60201001",
+        "name": "Stephansplatz U",
+        "latitude": 48.20826,
+        "longitude": 16.37327
+      }
+    ],
+    "aliases": [
+      "60201001",
+      "Stephansplatz",
+      "Stephansplatz U",
+      "Wien Stephansplatz"
+    ],
+    "source": "wl"
   }
 ]
