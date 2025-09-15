@@ -2,7 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import inspect
-import json, os, sys, html, logging, re, hashlib
+import json
+import os
+import sys
+import html
+import logging
+import re
+import hashlib
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
