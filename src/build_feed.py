@@ -506,6 +506,11 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     desc_out = _clip_text_html(raw_desc, DESCRIPTION_CHAR_LIMIT)
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(html.unescape(raw_title))
+    desc_lines = desc_out.split("\n")
+    if desc_lines and desc_lines[0].lower() in title_out.lower():
+        desc_lines = desc_lines[1:]
+    desc_lines = [l for l in desc_lines if l.strip().lower() != "zeitraum:"]
+    desc_out = "\n".join(desc_lines[:2])
     desc_out  = _sanitize_text(desc_out)
     title_out = re.sub(r"\s+", " ", title_out).strip()
     desc_out  = re.sub(r"[ \t\r\f\v]+", " ", desc_out).strip()

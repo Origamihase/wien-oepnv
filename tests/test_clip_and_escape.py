@@ -83,3 +83,21 @@ def test_emit_item_trims_wrapping_whitespace(monkeypatch):
     desc_match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml)
     assert desc_match, xml
     assert desc_match.group(1) == "Foo bar"
+
+
+def test_emit_item_removes_category_and_limits_lines(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 1, 1)
+    item = {
+        "title": "Bauarbeiten U6",
+        "description": "Bauarbeiten\nWegen …\nZeitraum:\nMontag …",
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml)
+    assert desc_match, xml
+    desc_text = desc_match.group(1)
+    assert desc_text == "Wegen …<br/>Montag …"
+    assert "Bauarbeiten" not in desc_text
+    assert "Zeitraum" not in desc_text
