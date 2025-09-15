@@ -10,7 +10,17 @@ from html.parser import HTMLParser
 _WS_RE = re.compile(r"[ \t\r\f\v]+")
 
 # Common German prepositions that should not be followed by a bullet.
-PREPOSITIONS = ("bei", "in", "an", "auf")
+PREPOSITIONS = (
+    "bei",
+    "in",
+    "an",
+    "auf",
+    "am",
+    "vom",
+    "zur",
+    "zum",
+    "nach",
+)
 
 _PREP_BULLET_RE = re.compile(
     rf"\b({'|'.join(re.escape(p) for p in PREPOSITIONS)})\s*•\s*",

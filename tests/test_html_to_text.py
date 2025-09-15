@@ -34,6 +34,11 @@ def test_html_to_text_edge_cases(html, expected):
     ("An<br>der Haltestelle", "An der Haltestelle"),
     ("bei<br>• foo", "bei foo"),
     ("In<br>• der Station", "In der Station"),
+    ("Am<br>Bahnhof", "Am Bahnhof"),
+    ("Vom<br>• Bahnsteig", "Vom Bahnsteig"),
+    ("Zur<br>• Station", "Zur Station"),
+    ("Zum<br>• Ausgang", "Zum Ausgang"),
+    ("Nach<br>• Wien", "Nach Wien"),
 ])
 def test_preposition_bullet_stripping(html, expected):
     assert html_to_text(html) == expected
