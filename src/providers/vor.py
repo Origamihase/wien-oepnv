@@ -44,7 +44,7 @@ def _get_int_env(name: str, default: int) -> int:
 VOR_ACCESS_ID: str | None = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip() or None
 VOR_STATION_IDS: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_IDS") or "").split(",") if s.strip()]
 VOR_BASE = os.getenv("VOR_BASE", "https://routenplaner.verkehrsauskunft.at/vao/restproxy")
-VOR_VERSION = os.getenv("VOR_VERSION", "v1.3")
+VOR_VERSION = os.getenv("VOR_VERSION", "v1.11.0")
 BOARD_DURATION_MIN = _get_int_env("VOR_BOARD_DURATION_MIN", 60)
 HTTP_TIMEOUT = _get_int_env("VOR_HTTP_TIMEOUT", 15)
 MAX_STATIONS_PER_RUN = _get_int_env("VOR_MAX_STATIONS_PER_RUN", 2)
