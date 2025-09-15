@@ -23,9 +23,13 @@ def test_aggregate_removed_when_all_singles_present(monkeypatch):
     single2 = _make_event("Single2", ["U2"])
 
     monkeypatch.setattr(
-        wl_fetch, "_fetch_traffic_infos", lambda timeout=20: [aggregate, single1, single2]
+        wl_fetch,
+        "_fetch_traffic_infos",
+        lambda timeout=20, session=None: [aggregate, single1, single2],
     )
-    monkeypatch.setattr(wl_fetch, "_fetch_news", lambda timeout=20: [])
+    monkeypatch.setattr(
+        wl_fetch, "_fetch_news", lambda timeout=20, session=None: []
+    )
 
     items = wl_fetch.fetch_events()
     titles = [it["title"] for it in items]
@@ -40,9 +44,13 @@ def test_aggregate_retained_when_single_missing(monkeypatch):
     single1 = _make_event("Single1", ["U1"])
 
     monkeypatch.setattr(
-        wl_fetch, "_fetch_traffic_infos", lambda timeout=20: [aggregate, single1]
+        wl_fetch,
+        "_fetch_traffic_infos",
+        lambda timeout=20, session=None: [aggregate, single1],
     )
-    monkeypatch.setattr(wl_fetch, "_fetch_news", lambda timeout=20: [])
+    monkeypatch.setattr(
+        wl_fetch, "_fetch_news", lambda timeout=20, session=None: []
+    )
 
     items = wl_fetch.fetch_events()
     titles = [it["title"] for it in items]

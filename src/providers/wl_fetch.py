@@ -152,23 +152,39 @@ def _stop_names_from_related(rel_stops: List[Any]) -> List[str]:
 
 # ---------------- API Calls ----------------
 
-def _get_json(path: str, params: Optional[List[tuple]] = None, timeout: int = 20) -> Dict[str, Any]:
+def _get_json(
+    path: str,
+    params: Optional[List[tuple]] = None,
+    timeout: int = 20,
+    session: Optional[requests.Session] = None,
+) -> Dict[str, Any]:
     url = f"{WL_BASE.rstrip('/')}/{path.lstrip('/')}"
-    with _session() as s:
+
+    def _fetch(s: requests.Session) -> Dict[str, Any]:
         r = s.get(url, params=params or None, timeout=timeout)
         r.raise_for_status()
         return r.json()
 
+    if session is not None:
+        return _fetch(session)
 
-def _fetch_traffic_infos(timeout: int = 20) -> Iterable[Dict[str, Any]]:
+    with _session() as s:
+        return _fetch(s)
+
+
+def _fetch_traffic_infos(
+    timeout: int = 20, session: Optional[requests.Session] = None
+) -> Iterable[Dict[str, Any]]:
     # explizit KEINE Facility-Feeds
     params = [("name", "stoerunglang"), ("name", "stoerungkurz")]
-    data = _get_json("trafficInfoList", params=params, timeout=timeout)
+    data = _get_json("trafficInfoList", params=params, timeout=timeout, session=session)
     return (data.get("data", {}) or {}).get("trafficInfos", []) or []
 
 
-def _fetch_news(timeout: int = 20) -> Iterable[Dict[str, Any]]:
-    data = _get_json("newsList", timeout=timeout)
+def _fetch_news(
+    timeout: int = 20, session: Optional[requests.Session] = None
+) -> Iterable[Dict[str, Any]]:
+    data = _get_json("newsList", timeout=timeout, session=session)
     return (data.get("data", {}) or {}).get("pois", []) or []
 
 
@@ -178,185 +194,186 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     now = datetime.now(timezone.utc)
     raw: List[Dict[str, Any]] = []
 
-    # A) TrafficInfos (Störungen)
-    try:
-        for ti in _fetch_traffic_infos(timeout=timeout):
-            attrs = ti.get("attributes") or {}
-            status_blob = " ".join(
-                [
-                    str(ti.get("status") or ""),
-                    str(attrs.get("status") or ""),
-                    str(attrs.get("state") or ""),
-                ]
-            ).lower()
-            if any(
-                x in status_blob
-                for x in (
-                    "finished",
-                    "inactive",
-                    "inaktiv",
-                    "done",
-                    "closed",
-                    "nicht aktiv",
-                    "ended",
-                    "ende",
-                    "abgeschlossen",
-                    "beendet",
-                    "geschlossen",
+    with _session() as session:
+        # A) TrafficInfos (Störungen)
+        try:
+            for ti in _fetch_traffic_infos(timeout=timeout, session=session):
+                attrs = ti.get("attributes") or {}
+                status_blob = " ".join(
+                    [
+                        str(ti.get("status") or ""),
+                        str(attrs.get("status") or ""),
+                        str(attrs.get("state") or ""),
+                    ]
+                ).lower()
+                if any(
+                    x in status_blob
+                    for x in (
+                        "finished",
+                        "inactive",
+                        "inaktiv",
+                        "done",
+                        "closed",
+                        "nicht aktiv",
+                        "ended",
+                        "ende",
+                        "abgeschlossen",
+                        "beendet",
+                        "geschlossen",
+                    )
+                ):
+                    continue
+
+                title_raw = (ti.get("title") or ti.get("name") or "Meldung").strip()
+                title = _tidy_title_wl(title_raw)
+                desc_raw = (ti.get("description") or "").strip()
+                desc = html_to_text(desc_raw)
+                if _is_facility_only(title_raw, desc_raw):
+                    continue
+
+                tinfo = ti.get("time") or {}
+                start = _iso(tinfo.get("start")) or _best_ts(ti)
+                end = _iso(tinfo.get("end"))
+                if not _is_active(start, end, now):
+                    continue
+
+                blob_for_relevance = " ".join([title_raw, desc_raw])
+                if KW_EXCLUDE.search(blob_for_relevance) and not KW_RESTRICTION.search(
+                    blob_for_relevance
+                ):
+                    continue
+
+                rel_lines = _as_list(ti.get("relatedLines") or attrs.get("relatedLines"))
+                line_pairs = _make_line_pairs_from_related(rel_lines)
+                if not line_pairs:
+                    # Fallback: aus Titeltext (inkl. „Rufbus Nxx“, aber ohne Datum/Zeit/Adresse)
+                    line_pairs = _detect_line_pairs_from_text(title_raw)
+
+                rel_stops = _as_list(ti.get("relatedStops") or attrs.get("relatedStops"))
+                stop_names = _stop_names_from_related(rel_stops)
+
+                extras = []
+                for k in ("status", "state", "station", "location", "reason", "towards"):
+                    if attrs.get(k):
+                        extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
+
+                # stabile Identity für first_seen
+                id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
+                id_day = start.date().isoformat() if isinstance(start, datetime) else "None"
+                identity = f"wl|störung|L={id_lines}|D={id_day}"
+
+                raw.append(
+                    {
+                        "source": "Wiener Linien",
+                        "category": "Störung",
+                        "title": title,
+                        "title_core": _title_core(title_raw),
+                        "topic_key": _topic_key_from_title(title_raw),
+                        "desc": desc,
+                        "extras": extras,
+                        "lines_pairs": line_pairs,  # [(tok, disp), …]
+                        "stop_names": set(stop_names),
+                        "pubDate": start,  # ggf. None
+                        "starts_at": start,
+                        "ends_at": end,
+                        "_identity": identity,
+                    }
                 )
-            ):
-                continue
+        except requests.RequestException as e:  # pragma: no cover - network errors
+            log.exception("WL trafficInfoList fehlgeschlagen: %s", e)
 
-            title_raw = (ti.get("title") or ti.get("name") or "Meldung").strip()
-            title = _tidy_title_wl(title_raw)
-            desc_raw = (ti.get("description") or "").strip()
-            desc = html_to_text(desc_raw)
-            if _is_facility_only(title_raw, desc_raw):
-                continue
+        # B) News/Hinweise
+        try:
+            for poi in _fetch_news(timeout=timeout, session=session):
+                attrs = poi.get("attributes") or {}
+                status_blob = " ".join(
+                    [
+                        str(poi.get("status") or ""),
+                        str(attrs.get("status") or ""),
+                        str(attrs.get("state") or ""),
+                    ]
+                ).lower()
+                if any(
+                    x in status_blob
+                    for x in (
+                        "finished",
+                        "inactive",
+                        "inaktiv",
+                        "done",
+                        "closed",
+                        "nicht aktiv",
+                        "ended",
+                        "ende",
+                        "abgeschlossen",
+                        "beendet",
+                        "geschlossen",
+                    )
+                ):
+                    continue
 
-            tinfo = ti.get("time") or {}
-            start = _iso(tinfo.get("start")) or _best_ts(ti)
-            end = _iso(tinfo.get("end"))
-            if not _is_active(start, end, now):
-                continue
+                title_raw = (poi.get("title") or "Hinweis").strip()
+                title = _tidy_title_wl(title_raw)
+                desc_raw = (poi.get("description") or "").strip()
+                desc = html_to_text(desc_raw)
+                if _is_facility_only(title_raw, desc_raw, poi.get("subtitle") or ""):
+                    continue
 
-            blob_for_relevance = " ".join([title_raw, desc_raw])
-            if KW_EXCLUDE.search(blob_for_relevance) and not KW_RESTRICTION.search(
-                blob_for_relevance
-            ):
-                continue
+                tinfo = poi.get("time") or {}
+                start = _iso(tinfo.get("start")) or _best_ts(poi)
+                end = _iso(tinfo.get("end"))
+                if not _is_active(start, end, now):
+                    continue
 
-            rel_lines = _as_list(ti.get("relatedLines") or attrs.get("relatedLines"))
-            line_pairs = _make_line_pairs_from_related(rel_lines)
-            if not line_pairs:
-                # Fallback: aus Titeltext (inkl. „Rufbus Nxx“, aber ohne Datum/Zeit/Adresse)
-                line_pairs = _detect_line_pairs_from_text(title_raw)
-
-            rel_stops = _as_list(ti.get("relatedStops") or attrs.get("relatedStops"))
-            stop_names = _stop_names_from_related(rel_stops)
-
-            extras = []
-            for k in ("status", "state", "station", "location", "reason", "towards"):
-                if attrs.get(k):
-                    extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
-
-            # stabile Identity für first_seen
-            id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
-            id_day = start.date().isoformat() if isinstance(start, datetime) else "None"
-            identity = f"wl|störung|L={id_lines}|D={id_day}"
-
-            raw.append(
-                {
-                    "source": "Wiener Linien",
-                    "category": "Störung",
-                    "title": title,
-                    "title_core": _title_core(title_raw),
-                    "topic_key": _topic_key_from_title(title_raw),
-                    "desc": desc,
-                    "extras": extras,
-                    "lines_pairs": line_pairs,  # [(tok, disp), …]
-                    "stop_names": set(stop_names),
-                    "pubDate": start,  # ggf. None
-                    "starts_at": start,
-                    "ends_at": end,
-                    "_identity": identity,
-                }
-            )
-    except requests.RequestException as e:  # pragma: no cover - network errors
-        log.exception("WL trafficInfoList fehlgeschlagen: %s", e)
-
-    # B) News/Hinweise
-    try:
-        for poi in _fetch_news(timeout=timeout):
-            attrs = poi.get("attributes") or {}
-            status_blob = " ".join(
-                [
-                    str(poi.get("status") or ""),
-                    str(attrs.get("status") or ""),
-                    str(attrs.get("state") or ""),
-                ]
-            ).lower()
-            if any(
-                x in status_blob
-                for x in (
-                    "finished",
-                    "inactive",
-                    "inaktiv",
-                    "done",
-                    "closed",
-                    "nicht aktiv",
-                    "ended",
-                    "ende",
-                    "abgeschlossen",
-                    "beendet",
-                    "geschlossen",
+                text_for_filter = " ".join(
+                    [
+                        title_raw,
+                        poi.get("subtitle") or "",
+                        desc_raw,
+                        str(attrs.get("status") or ""),
+                        str(attrs.get("state") or ""),
+                    ]
                 )
-            ):
-                continue
+                if not KW_RESTRICTION.search(text_for_filter):
+                    continue
 
-            title_raw = (poi.get("title") or "Hinweis").strip()
-            title = _tidy_title_wl(title_raw)
-            desc_raw = (poi.get("description") or "").strip()
-            desc = html_to_text(desc_raw)
-            if _is_facility_only(title_raw, desc_raw, poi.get("subtitle") or ""):
-                continue
+                rel_lines = _as_list(poi.get("relatedLines") or attrs.get("relatedLines"))
+                line_pairs = _make_line_pairs_from_related(rel_lines)
+                if not line_pairs:
+                    line_pairs = _detect_line_pairs_from_text(title_raw)
 
-            tinfo = poi.get("time") or {}
-            start = _iso(tinfo.get("start")) or _best_ts(poi)
-            end = _iso(tinfo.get("end"))
-            if not _is_active(start, end, now):
-                continue
+                rel_stops = _as_list(poi.get("relatedStops") or attrs.get("relatedStops"))
+                stop_names = _stop_names_from_related(rel_stops)
 
-            text_for_filter = " ".join(
-                [
-                    title_raw,
-                    poi.get("subtitle") or "",
-                    desc_raw,
-                    str(attrs.get("status") or ""),
-                    str(attrs.get("state") or ""),
-                ]
-            )
-            if not KW_RESTRICTION.search(text_for_filter):
-                continue
+                extras = []
+                if poi.get("subtitle"):
+                    extras.append(str(poi["subtitle"]).strip())
+                for k in ("station", "location", "towards"):
+                    if attrs.get(k):
+                        extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
 
-            rel_lines = _as_list(poi.get("relatedLines") or attrs.get("relatedLines"))
-            line_pairs = _make_line_pairs_from_related(rel_lines)
-            if not line_pairs:
-                line_pairs = _detect_line_pairs_from_text(title_raw)
+                id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
+                id_day = start.date().isoformat() if isinstance(start, datetime) else "None"
+                identity = f"wl|hinweis|L={id_lines}|D={id_day}"
 
-            rel_stops = _as_list(poi.get("relatedStops") or attrs.get("relatedStops"))
-            stop_names = _stop_names_from_related(rel_stops)
-
-            extras = []
-            if poi.get("subtitle"):
-                extras.append(str(poi["subtitle"]).strip())
-            for k in ("station", "location", "towards"):
-                if attrs.get(k):
-                    extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
-
-            id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
-            id_day = start.date().isoformat() if isinstance(start, datetime) else "None"
-            identity = f"wl|hinweis|L={id_lines}|D={id_day}"
-
-            raw.append(
-                {
-                    "source": "Wiener Linien",
-                    "category": "Hinweis",
-                    "title": title,
-                    "title_core": _title_core(title_raw),
-                    "topic_key": _topic_key_from_title(title_raw),
-                    "desc": desc,
-                    "extras": extras,
-                    "lines_pairs": line_pairs,  # [(tok, disp), …]
-                    "stop_names": set(stop_names),
-                    "pubDate": start,
-                    "starts_at": start,
-                    "ends_at": end,
-                    "_identity": identity,
-                }
-            )
-    except requests.RequestException as e:  # pragma: no cover - network errors
-        log.exception("WL newsList fehlgeschlagen: %s", e)
+                raw.append(
+                    {
+                        "source": "Wiener Linien",
+                        "category": "Hinweis",
+                        "title": title,
+                        "title_core": _title_core(title_raw),
+                        "topic_key": _topic_key_from_title(title_raw),
+                        "desc": desc,
+                        "extras": extras,
+                        "lines_pairs": line_pairs,  # [(tok, disp), …]
+                        "stop_names": set(stop_names),
+                        "pubDate": start,
+                        "starts_at": start,
+                        "ends_at": end,
+                        "_identity": identity,
+                    }
+                )
+        except requests.RequestException as e:  # pragma: no cover - network errors
+            log.exception("WL newsList fehlgeschlagen: %s", e)
 
     # C) Bündelung: LINIEN-SET + TOPIC
     buckets: Dict[str, Dict[str, Any]] = {}
