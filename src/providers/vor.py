@@ -66,6 +66,28 @@ RAIL_LONG_HINTS = {"S-Bahn", "Regionalzug", "Regionalexpress", "Railjet", "Railj
 EXCLUDE_OPERATORS = {"Wiener Linien"}
 EXCLUDE_LONG_HINTS = {"Straßenbahn", "U-Bahn"}
 
+RAIL_PRODUCT_CLASSES: tuple[int, ...] = (0, 1)
+BUS_PRODUCT_CLASSES: tuple[int, ...] = (5, 6, 7, 11)
+
+
+def _bitmask_from_classes(classes: Iterable[int]) -> int:
+    mask = 0
+    for cls in classes:
+        if isinstance(cls, int) and cls >= 0:
+            mask |= 1 << cls
+    return mask
+
+
+RAIL_PRODUCTS_MASK = _bitmask_from_classes(RAIL_PRODUCT_CLASSES)
+BUS_PRODUCTS_MASK = _bitmask_from_classes(BUS_PRODUCT_CLASSES)
+
+
+def _desired_products_mask(allow_bus: bool) -> int:
+    mask = RAIL_PRODUCTS_MASK
+    if allow_bus:
+        mask |= BUS_PRODUCTS_MASK
+    return mask
+
 def _retry() -> Retry:
     return Retry(
         total=3,
@@ -193,7 +215,25 @@ def _ensure_list(value: Any) -> List[Any]:
     return [value]
 
 
+def _product_class(prod: Mapping[str, Any]) -> Optional[int]:
+    for key in ("cls", "class", "prodClass"):
+        if key not in prod:
+            continue
+        raw = prod.get(key)
+        if raw is None:
+            continue
+        try:
+            value = int(str(raw).strip())
+        except (TypeError, ValueError):
+            continue
+        else:
+            if value >= 0:
+                return value
+    return None
+
+
 def _accept_product(prod: Mapping[str, Any]) -> bool:
+    cls = _product_class(prod)
     catOutS = _text(prod, "catOutS").strip()
     catOutL = _text(prod, "catOutL").strip().lower()
     operator = _text(prod, "operator").strip().lower()
@@ -201,6 +241,13 @@ def _accept_product(prod: Mapping[str, Any]) -> bool:
     if operator in (o.lower() for o in EXCLUDE_OPERATORS): return False
     if any(h.lower() in catOutL for h in EXCLUDE_LONG_HINTS): return False
     if catOutS.upper() == "U": return False
+    if cls is not None:
+        if cls in RAIL_PRODUCT_CLASSES:
+            return True
+        if not ALLOW_BUS and cls in BUS_PRODUCT_CLASSES:
+            return False
+        if cls not in BUS_PRODUCT_CLASSES:
+            return False
     if (catOutS.upper() in RAIL_SHORT) or any(h.lower() in catOutL for h in RAIL_LONG_HINTS): return True
     if not ALLOW_BUS: return False
     if BUS_EXCLUDE_RE.match(line): return False
@@ -222,6 +269,7 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[s
         "accessId": VOR_ACCESS_ID, "format":"json", "id": station_id,
         "date": now_local.strftime("%Y-%m-%d"), "time": now_local.strftime("%H:%M"),
         "duration": str(BOARD_DURATION_MIN), "rtMode": "SERVER_DEFAULT",
+        "products": str(_desired_products_mask(ALLOW_BUS)),
     }
     req_id = f"sb-{station_id}-{int(now_local.timestamp())}"
     params["requestId"] = req_id

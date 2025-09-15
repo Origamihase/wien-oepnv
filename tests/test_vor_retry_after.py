@@ -10,6 +10,8 @@ def test_retry_after_invalid_value(monkeypatch, caplog):
         headers = {"Retry-After": "not-a-number"}
         content = b""
 
+    captured_params: dict = {}
+
     class DummySession:
         def __enter__(self):
             return self
@@ -18,6 +20,7 @@ def test_retry_after_invalid_value(monkeypatch, caplog):
             pass
 
         def get(self, url, params, timeout):
+            captured_params.update(params)
             return DummyResponse()
 
     monkeypatch.setattr(vor, "_session", lambda: DummySession())
@@ -32,6 +35,7 @@ def test_retry_after_invalid_value(monkeypatch, caplog):
     result = vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
+    assert captured_params.get("products") == str(vor._desired_products_mask(vor.ALLOW_BUS))
     assert any("ungültiges Retry-After" in message for message in caplog.messages)
 
 
@@ -41,6 +45,8 @@ def test_retry_after_numeric_value(monkeypatch):
         headers = {"Retry-After": "3.5"}
         content = b""
 
+    captured_params: dict = {}
+
     class DummySession:
         def __enter__(self):
             return self
@@ -49,6 +55,7 @@ def test_retry_after_numeric_value(monkeypatch):
             pass
 
         def get(self, url, params, timeout):
+            captured_params.update(params)
             return DummyResponse()
 
     monkeypatch.setattr(vor, "_session", lambda: DummySession())
@@ -63,6 +70,7 @@ def test_retry_after_numeric_value(monkeypatch):
     result = vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
+    assert captured_params.get("products") == str(vor._desired_products_mask(vor.ALLOW_BUS))
     assert sleep_calls == [3.5]
 
 
@@ -76,6 +84,8 @@ def test_retry_after_http_date(monkeypatch):
         headers = {"Retry-After": retry_dt.strftime("%a, %d %b %Y %H:%M:%S GMT")}
         content = b""
 
+    captured_params: dict = {}
+
     class DummySession:
         def __enter__(self):
             return self
@@ -84,6 +94,7 @@ def test_retry_after_http_date(monkeypatch):
             pass
 
         def get(self, url, params, timeout):
+            captured_params.update(params)
             return DummyResponse()
 
     class FixedDateTime(datetime):
@@ -105,4 +116,36 @@ def test_retry_after_http_date(monkeypatch):
     result = vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
+    assert captured_params.get("products") == str(vor._desired_products_mask(vor.ALLOW_BUS))
     assert sleep_calls == [delay.total_seconds()]
+
+
+def test_fetch_stationboard_includes_bus_products_when_enabled(monkeypatch):
+    class DummyResponse:
+        status_code = 200
+        headers = {}
+
+        @staticmethod
+        def json():
+            return {}
+
+    captured_params: dict = {}
+
+    class DummySession:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            pass
+
+        def get(self, url, params, timeout):
+            captured_params.update(params)
+            return DummyResponse()
+
+    monkeypatch.setattr(vor, "_session", lambda: DummySession())
+    monkeypatch.setattr(vor, "ALLOW_BUS", True)
+
+    result = vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
+
+    assert result == {}
+    assert captured_params.get("products") == str(vor._desired_products_mask(True))
