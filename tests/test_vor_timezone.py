@@ -1,4 +1,3 @@
-import xml.etree.ElementTree as ET
 from zoneinfo import ZoneInfo
 
 import src.providers.vor as vor
@@ -12,7 +11,7 @@ def test_fetch_events_passes_local_timezone(monkeypatch):
 
     def fake_fetch_stationboard(station_id, now_local):
         recorded["tz"] = now_local.tzinfo
-        return ET.Element("root")
+        return {}
 
     monkeypatch.setattr(vor, "_fetch_stationboard", fake_fetch_stationboard)
 

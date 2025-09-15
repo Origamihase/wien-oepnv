@@ -16,9 +16,9 @@ import os, re, html, logging, time, hashlib
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
+from collections.abc import Mapping
 from typing import Any, Dict, Iterable, List, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from defusedxml import ElementTree as ET
 
 try:  # pragma: no cover - support both package layouts
     from utils.ids import make_guid
@@ -80,7 +80,7 @@ def _session() -> requests.Session:
     s = requests.Session()
     s.mount("https://", HTTPAdapter(max_retries=_retry()))
     s.headers.update({
-        "Accept": "application/xml",
+        "Accept": "application/json",
         "User-Agent": "Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wien-oepnv)",
     })
     return s
@@ -162,8 +162,13 @@ def resolve_station_ids(names: List[str]) -> List[str]:
 
     return resolved
 
-def _text(el: Optional[ET.Element], attr: str, default: str = "") -> str:
-    return (el.get(attr) if el is not None else None) or default
+def _text(obj: Optional[Mapping[str, Any]], attr: str, default: str = "") -> str:
+    if not isinstance(obj, Mapping):
+        return default
+    value = obj.get(attr, default)
+    if value is None:
+        return default
+    return str(value)
 
 def _parse_dt(date_str: str | None, time_str: str | None) -> Optional[datetime]:
     if not date_str: return None
@@ -178,22 +183,17 @@ def _parse_dt(date_str: str | None, time_str: str | None) -> Optional[datetime]:
 def _normalize_spaces(s: str) -> str:
     return re.sub(r"\s{2,}", " ", s).strip()
 
+def _ensure_list(value: Any) -> List[Any]:
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return value
+    if isinstance(value, tuple):
+        return list(value)
+    return [value]
 
-def _strip_ns(root: ET.Element) -> ET.Element:
-    """Remove XML namespace prefixes in-place and return ``root``.
 
-    The VOR endpoint sometimes wraps elements in a namespace such as
-    ``<ns:Messages>``/``<ns:Message>`` which breaks simple ``find`` calls.
-    This helper normalises tags by stripping any ``{namespace}`` prefix from
-    them, allowing the rest of the module to operate namespace‑agnostic.
-    """
-
-    for el in root.iter():
-        if "}" in el.tag:
-            el.tag = el.tag.split("}", 1)[1]
-    return root
-
-def _accept_product(prod: ET.Element) -> bool:
+def _accept_product(prod: Mapping[str, Any]) -> bool:
     catOutS = _text(prod, "catOutS").strip()
     catOutL = _text(prod, "catOutL").strip().lower()
     operator = _text(prod, "operator").strip().lower()
@@ -217,9 +217,9 @@ def _select_stations_round_robin(ids: List[str], chunk_size: int, period_sec: in
     start = idx * n; end = start + n
     return ids[start:end] if end <= m else (ids[start:] + ids[:end-m])
 
-def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[ET.Element]:
+def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[str, Any]]:
     params = {
-        "accessId": VOR_ACCESS_ID, "format":"xml", "id": station_id,
+        "accessId": VOR_ACCESS_ID, "format":"json", "id": station_id,
         "date": now_local.strftime("%Y-%m-%d"), "time": now_local.strftime("%H:%M"),
         "duration": str(BOARD_DURATION_MIN), "rtMode": "SERVER_DEFAULT",
     }
@@ -252,8 +252,11 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[ET.Ele
         if resp.status_code >= 400:
             log.warning("VOR StationBoard %s -> HTTP %s", station_id, resp.status_code)
             return None
-        root = ET.fromstring(resp.content)
-        return _strip_ns(root)
+        payload = resp.json()
+        if not isinstance(payload, dict):
+            log.warning("VOR StationBoard %s -> ungültige JSON-Antwort", station_id)
+            return None
+        return payload
     except requests.RequestException as e:
         msg = re.sub(r"accessId=[^&]+", "accessId=***", str(e))
         log.error("VOR StationBoard Fehler (%s): %s", station_id, msg)
@@ -262,21 +265,54 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[ET.Ele
         log.exception("VOR StationBoard Fehler (%s): %s", station_id, e)
         return None
 
-def _iter_messages(root: ET.Element) -> Iterable[ET.Element]:
-    parent = root.find(".//Messages")
-    return [] if parent is None else list(parent.findall("./Message"))
+def _extract_mapping_items(value: Any, nested_keys: tuple[str, ...]) -> List[Mapping[str, Any]]:
+    if isinstance(value, Mapping):
+        for key in nested_keys:
+            if key in value:
+                return _extract_mapping_items(value[key], nested_keys)
+        return [value]
+    items: List[Mapping[str, Any]] = []
+    for item in _ensure_list(value):
+        if isinstance(item, Mapping):
+            items.extend(_extract_mapping_items(item, nested_keys))
+    return items
 
-def _accepted_products(m: ET.Element) -> List[ET.Element]:
-    out: List[ET.Element] = []
-    prods = m.find("./products")
-    if prods is None: return out
-    for p in prods.findall("./Product"):
-        if _accept_product(p): out.append(p)
+
+def _iter_messages(payload: Mapping[str, Any]) -> Iterable[Mapping[str, Any]]:
+    if not isinstance(payload, Mapping):
+        return []
+    data: Mapping[str, Any] = payload
+    board = payload.get("DepartureBoard")
+    if isinstance(board, Mapping):
+        data = board
+    messages_container: Any = data.get("Messages")
+    if messages_container is None:
+        messages_container = data.get("messages")
+    if messages_container is None:
+        for key in ("Message", "message"):
+            if key in data:
+                messages_container = data[key]
+                break
+    if messages_container is None:
+        return []
+    return _extract_mapping_items(messages_container, ("Message", "message", "Messages", "messages"))
+
+
+def _accepted_products(message: Mapping[str, Any]) -> List[Mapping[str, Any]]:
+    products_container = message.get("products")
+    if products_container is None:
+        return []
+    products = _extract_mapping_items(products_container, ("Product", "product", "Products", "products"))
+    out: List[Mapping[str, Any]] = []
+    for prod in products:
+        if _accept_product(prod):
+            out.append(prod)
     return out
 
-def _collect_from_board(station_id: str, root: ET.Element) -> List[Dict[str, Any]]:
+
+def _collect_from_board(station_id: str, payload: Mapping[str, Any]) -> List[Dict[str, Any]]:
     items: List[Dict[str, Any]] = []
-    for m in _iter_messages(root):
+    for m in _iter_messages(payload):
         msg_id = _text(m, "id").strip()
         active = _text(m, "act").strip().lower()
         if active in ("false","0","no"): continue
@@ -301,11 +337,12 @@ def _collect_from_board(station_id: str, root: ET.Element) -> List[Dict[str, Any
                 name = name.replace(" ", "").strip()
                 if name:
                     lines_set.add(name)
-        aff = m.find("./affectedStops")
+        aff = m.get("affectedStops")
         if aff is not None:
-            for st in aff.findall("./Stop"):
-                nm = (st.get("name") or st.get("stop") or "").strip()
-                if nm: affected_stops.append(nm)
+            for st in _extract_mapping_items(aff, ("Stop", "stop", "Stops", "stops")):
+                nm = _text(st, "name").strip() or _text(st, "stop").strip()
+                if nm:
+                    affected_stops.append(nm)
         lines = sorted(lines_set)
 
         if not msg_id:
