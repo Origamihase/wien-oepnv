@@ -18,34 +18,10 @@ from email.utils import format_datetime
 
 try:  # pragma: no cover - allow running as package and as script
     from utils.cache import read_cache
+    from utils.env import get_int_env
 except ModuleNotFoundError:  # pragma: no cover
     from .utils.cache import read_cache  # type: ignore
-
-# ---------------- Helpers: ENV ----------------
-
-def _get_int_env(name: str, default: int) -> int:
-    """Read integer environment variables safely.
-
-    Returns the provided default if the variable is unset or cannot be
-    converted to ``int``. On invalid values, a warning is logged using the
-    ``build_feed`` logger.
-    """
-
-    raw = os.getenv(name)
-    if raw is None:
-        return default
-    try:
-        return int(raw)
-    except (ValueError, TypeError) as e:
-        logging.getLogger("build_feed").warning(
-            "Ungültiger Wert für %s=%r – verwende Default %d (%s: %s)",
-            name,
-            raw,
-            default,
-            type(e).__name__,
-            e,
-        )
-        return default
+    from .utils.env import get_int_env  # type: ignore
 
 # ---------------- Logging ----------------
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").strip().upper()
@@ -54,8 +30,8 @@ if not isinstance(_level, int):
     _level = logging.INFO
 
 LOG_DIR = os.getenv("LOG_DIR", "log")
-LOG_MAX_BYTES = max(_get_int_env("LOG_MAX_BYTES", 1_000_000), 0)
-LOG_BACKUP_COUNT = max(_get_int_env("LOG_BACKUP_COUNT", 5), 0)
+LOG_MAX_BYTES = max(get_int_env("LOG_MAX_BYTES", 1_000_000), 0)
+LOG_BACKUP_COUNT = max(get_int_env("LOG_BACKUP_COUNT", 5), 0)
 
 os.makedirs(LOG_DIR, exist_ok=True)
 fmt = "%(asctime)s %(levelname)s %(name)s: %(message)s"
@@ -122,23 +98,23 @@ DEFAULT_FEED_TTL = 15
 DEFAULT_MAX_ITEM_AGE_DAYS = 365
 DEFAULT_ABSOLUTE_MAX_AGE_DAYS = 540
 
-FEED_TTL = max(_get_int_env("FEED_TTL", DEFAULT_FEED_TTL), 0)
+FEED_TTL = max(get_int_env("FEED_TTL", DEFAULT_FEED_TTL), 0)
 
-DESCRIPTION_CHAR_LIMIT = max(_get_int_env("DESCRIPTION_CHAR_LIMIT", 170), 0)
-FRESH_PUBDATE_WINDOW_MIN = _get_int_env("FRESH_PUBDATE_WINDOW_MIN", 5)
-MAX_ITEMS = max(_get_int_env("MAX_ITEMS", 10), 0)
+DESCRIPTION_CHAR_LIMIT = max(get_int_env("DESCRIPTION_CHAR_LIMIT", 170), 0)
+FRESH_PUBDATE_WINDOW_MIN = get_int_env("FRESH_PUBDATE_WINDOW_MIN", 5)
+MAX_ITEMS = max(get_int_env("MAX_ITEMS", 10), 0)
 MAX_ITEM_AGE_DAYS = max(
-    _get_int_env("MAX_ITEM_AGE_DAYS", DEFAULT_MAX_ITEM_AGE_DAYS), 0
+    get_int_env("MAX_ITEM_AGE_DAYS", DEFAULT_MAX_ITEM_AGE_DAYS), 0
 )
 ABSOLUTE_MAX_AGE_DAYS = max(
-    _get_int_env("ABSOLUTE_MAX_AGE_DAYS", DEFAULT_ABSOLUTE_MAX_AGE_DAYS), 0
+    get_int_env("ABSOLUTE_MAX_AGE_DAYS", DEFAULT_ABSOLUTE_MAX_AGE_DAYS), 0
 )
-ENDS_AT_GRACE_MINUTES = max(_get_int_env("ENDS_AT_GRACE_MINUTES", 10), 0)
-PROVIDER_TIMEOUT = max(_get_int_env("PROVIDER_TIMEOUT", 25), 0)
+ENDS_AT_GRACE_MINUTES = max(get_int_env("ENDS_AT_GRACE_MINUTES", 10), 0)
+PROVIDER_TIMEOUT = max(get_int_env("PROVIDER_TIMEOUT", 25), 0)
 
 STATE_FILE = Path(os.getenv("STATE_PATH", "data/first_seen.json"))  # nur Einträge aus *aktuellem* Feed
 STATE_FILE = _validate_path(STATE_FILE, "STATE_PATH")
-STATE_RETENTION_DAYS = max(_get_int_env("STATE_RETENTION_DAYS", 60), 0)
+STATE_RETENTION_DAYS = max(get_int_env("STATE_RETENTION_DAYS", 60), 0)
 
 RFC = "%a, %d %b %Y %H:%M:%S %z"
 
