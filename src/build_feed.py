@@ -208,7 +208,15 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
     lines = _parse_lines_from_title(item.get("title") or "")
     lines_part = "L=" + "/".join([l.upper() for l in lines]) if lines else "L="
     start_day = _ymd_or_none(item.get("starts_at"))
-    return f"{source}|{category}|{lines_part}|D={start_day}"
+    base = f"{source}|{category}|{lines_part}|D={start_day}"
+    if source and category:
+        return base
+    # Fallback: Ohne Quelle/Kategorie Titel oder vollständigen Hash anhängen
+    if item.get("title"):
+        return f"{base}|T={item['title']}"
+    raw = json.dumps(item, sort_keys=True, default=str)
+    hashed = hashlib.sha1(raw.encode("utf-8")).hexdigest()
+    return f"{base}|H={hashed}"
 
 # ---------------- Pipeline ----------------
 
