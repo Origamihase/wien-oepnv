@@ -25,3 +25,11 @@ def test_emit_item_sanitizes_description(monkeypatch):
     ident, xml = bf._emit_item({"title": "X", "description": "<b>Tom & Jerry</b>"}, now, {})
     assert "<description><![CDATA[Tom & …]]></description>" in xml
     assert "Jerry" not in xml
+
+
+def test_emit_item_keeps_bullet_separator(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 1, 1)
+    ident, xml = bf._emit_item({"title": "X", "description": "foo • bar"}, now, {})
+    assert "foo • bar" in xml
+    assert "foo\nbar" not in xml
