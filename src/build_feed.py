@@ -435,16 +435,16 @@ def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[
     out.append("</channel>")
     out.append("</rss>")
 
-    # State nur für *aktuelle* Items speichern (kein Anwachsen)
-    if identities_in_feed:
-        pruned = {k: state[k] for k in identities_in_feed if k in state}
-        try:
-            _save_state(pruned)
-        except Exception as e:
-            log.warning(
-                "State speichern fehlgeschlagen (%s) – Feed wird trotzdem zurückgegeben.",
-                e,
-            )
+    # State nur für *aktuelle* Items speichern (kein Anwachsen). Ist der Feed
+    # leer, speichern wir einen leeren State, um veraltete GUIDs zu entfernen.
+    pruned = {k: state[k] for k in identities_in_feed if k in state} if identities_in_feed else {}
+    try:
+        _save_state(pruned)
+    except Exception as e:
+        log.warning(
+            "State speichern fehlgeschlagen (%s) – Feed wird trotzdem zurückgegeben.",
+            e,
+        )
 
     return "\n".join(out)
 
