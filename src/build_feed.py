@@ -207,6 +207,13 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
     start_day = _ymd_or_none(item.get("starts_at"))
     base = f"{source}|{category}|{lines_part}|D={start_day}"
     if source and category:
+        if not lines:
+            if item.get("title"):
+                return f"{base}|T={item['title']}"
+        
+            raw = json.dumps(item, sort_keys=True, default=str)
+            hashed = hashlib.sha1(raw.encode("utf-8")).hexdigest()
+            return f"{base}|H={hashed}"
         return base
     # Fallback: Ohne Quelle/Kategorie Titel oder vollständigen Hash anhängen
     if item.get("title"):
