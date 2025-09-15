@@ -123,6 +123,10 @@ LOG_MAX_BYTES=2097152 LOG_BACKUP_COUNT=10 python -u src/build_feed.py
 | `VOR_BUS_INCLUDE_REGEX` | Regex | `"(?:\\b[2-9]\\d{2,4}\\b)"` | Muster für zusätzliche Buslinien. |
 | `VOR_BUS_EXCLUDE_REGEX` | Regex | `"^(?:N?\\d{1,2}[A-Z]?)$"` | Muster zum Ausschließen von Buslinien. |
 
+**Hinweis:** Standardmäßig werden pro Durchlauf höchstens zwei Stations-IDs abgefragt
+(`VOR_MAX_STATIONS_PER_RUN = 2`), um API-Limits einzuhalten und Requests besser zu
+verteilen.
+
 ## License
 
 Dieses Projekt steht unter der [MIT License](LICENSE).

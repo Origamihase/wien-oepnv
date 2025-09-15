@@ -36,7 +36,8 @@ def test_invalid_int_env_uses_defaults(monkeypatch, caplog):
 
     assert vor.BOARD_DURATION_MIN == 60
     assert vor.HTTP_TIMEOUT == 15
-    assert vor.MAX_STATIONS_PER_RUN == 2
+    assert vor.DEFAULT_MAX_STATIONS_PER_RUN == 2
+    assert vor.MAX_STATIONS_PER_RUN == vor.DEFAULT_MAX_STATIONS_PER_RUN
     assert vor.ROTATION_INTERVAL_SEC == 1800
 
     for name in [
