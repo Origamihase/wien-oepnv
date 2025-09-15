@@ -106,3 +106,36 @@ def test_retry_after_http_date(monkeypatch):
 
     assert result is None
     assert sleep_calls == [delay.total_seconds()]
+
+
+def test_fetch_stationboard_sends_products_param(monkeypatch):
+    captured_params: dict[str, object] = {}
+
+    class DummyResponse:
+        status_code = 200
+        headers: dict[str, str] = {}
+
+        @staticmethod
+        def json():
+            return {}
+
+    class DummySession:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            pass
+
+        def get(self, url, params, timeout):
+            captured_params.update(params)
+            return DummyResponse()
+
+    monkeypatch.setattr(vor, "_session", lambda: DummySession())
+    monkeypatch.setattr(vor, "ALLOW_BUS", False)
+
+    result = vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
+
+    assert result == {}
+    assert "products" in captured_params
+    expected_mask = vor._product_class_bitmask(vor._desired_product_classes())
+    assert captured_params["products"] == str(expected_mask)

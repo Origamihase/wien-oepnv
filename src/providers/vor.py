@@ -65,6 +65,8 @@ RAIL_SHORT = {"S", "R", "REX", "RJ", "RJX", "IC", "EC", "EN", "D"}
 RAIL_LONG_HINTS = {"S-Bahn", "Regionalzug", "Regionalexpress", "Railjet", "Railjet Express", "EuroNight"}
 EXCLUDE_OPERATORS = {"Wiener Linien"}
 EXCLUDE_LONG_HINTS = {"Straßenbahn", "U-Bahn"}
+RAIL_PRODUCT_CLASSES: tuple[int, ...] = (0, 1, 2, 3, 4)
+BUS_PRODUCT_CLASSES: tuple[int, ...] = (7,)
 
 def _retry() -> Retry:
     return Retry(
@@ -90,6 +92,38 @@ def _stationboard_url() -> str:
 
 def _location_name_url() -> str:
     return f"{VOR_BASE}/{VOR_VERSION}/location.name"
+
+
+def _desired_product_classes() -> List[int]:
+    classes: set[int] = set(RAIL_PRODUCT_CLASSES)
+    if ALLOW_BUS:
+        classes.update(BUS_PRODUCT_CLASSES)
+    return sorted(cls for cls in classes if isinstance(cls, int) and cls >= 0)
+
+
+def _product_class_bitmask(classes: Iterable[int]) -> int:
+    bitmask = 0
+    for cls in classes:
+        try:
+            cls_int = int(cls)
+        except (TypeError, ValueError):
+            continue
+        if cls_int < 0:
+            continue
+        bitmask |= 1 << cls_int
+    return bitmask
+
+
+def _product_class_from(prod: Mapping[str, Any]) -> Optional[int]:
+    for key in ("productClass", "productclass", "prodClass", "class", "cls"):
+        value = prod.get(key)
+        if value is None:
+            continue
+        try:
+            return int(str(value).strip())
+        except (TypeError, ValueError):
+            continue
+    return None
 
 def resolve_station_ids(names: List[str]) -> List[str]:
     resolved: List[str] = []
@@ -196,15 +230,51 @@ def _ensure_list(value: Any) -> List[Any]:
 def _accept_product(prod: Mapping[str, Any]) -> bool:
     catOutS = _text(prod, "catOutS").strip()
     catOutL = _text(prod, "catOutL").strip().lower()
-    operator = _text(prod, "operator").strip().lower()
+    operator = _text(prod, "operator").strip()
+    operator_lower = operator.lower()
     line = _text(prod, "line").strip() or _text(prod, "displayNumber").strip() or _text(prod, "name").strip()
-    if operator in (o.lower() for o in EXCLUDE_OPERATORS): return False
-    if any(h.lower() in catOutL for h in EXCLUDE_LONG_HINTS): return False
-    if catOutS.upper() == "U": return False
-    if (catOutS.upper() in RAIL_SHORT) or any(h.lower() in catOutL for h in RAIL_LONG_HINTS): return True
-    if not ALLOW_BUS: return False
-    if BUS_EXCLUDE_RE.match(line): return False
-    if BUS_INCLUDE_RE.search(line) or ("regionalbus" in catOutL) or ("postbus" in operator) or ("österreichische postbus" in operator):
+    if operator_lower in (o.lower() for o in EXCLUDE_OPERATORS):
+        return False
+    if any(h.lower() in catOutL for h in EXCLUDE_LONG_HINTS):
+        return False
+
+    desired_classes = set(_desired_product_classes())
+    prod_class = _product_class_from(prod)
+    if prod_class is not None:
+        if prod_class not in desired_classes:
+            return False
+        if prod_class in BUS_PRODUCT_CLASSES:
+            if not ALLOW_BUS:
+                return False
+            if BUS_EXCLUDE_RE.match(line):
+                return False
+            if (
+                BUS_INCLUDE_RE.search(line)
+                or ("regionalbus" in catOutL)
+                or ("postbus" in operator_lower)
+                or ("österreichische postbus" in operator_lower)
+            ):
+                return True
+            return False
+        if catOutS.upper() == "U":
+            return False
+        return True
+
+    catOutS_upper = catOutS.upper()
+    if catOutS_upper == "U":
+        return False
+    if (catOutS_upper in RAIL_SHORT) or any(h.lower() in catOutL for h in RAIL_LONG_HINTS):
+        return True
+    if not ALLOW_BUS:
+        return False
+    if BUS_EXCLUDE_RE.match(line):
+        return False
+    if (
+        BUS_INCLUDE_RE.search(line)
+        or ("regionalbus" in catOutL)
+        or ("postbus" in operator_lower)
+        or ("österreichische postbus" in operator_lower)
+    ):
         return True
     return False
 
@@ -223,6 +293,9 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[s
         "date": now_local.strftime("%Y-%m-%d"), "time": now_local.strftime("%H:%M"),
         "duration": str(BOARD_DURATION_MIN), "rtMode": "SERVER_DEFAULT",
     }
+    products_mask = _product_class_bitmask(_desired_product_classes())
+    if products_mask:
+        params["products"] = str(products_mask)
     req_id = f"sb-{station_id}-{int(now_local.timestamp())}"
     params["requestId"] = req_id
     try:
