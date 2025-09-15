@@ -9,7 +9,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Dict, Iterable, List, NamedTuple
 
-__all__ = ["canonical_name", "is_in_vienna", "is_pendler"]
+__all__ = ["canonical_name", "is_in_vienna", "is_pendler", "station_info"]
 
 
 class StationInfo(NamedTuple):
@@ -85,7 +85,7 @@ def _iter_aliases(name: str, code: str | None) -> Iterable[str]:
 
 @lru_cache(maxsize=1)
 def _station_lookup() -> Dict[str, StationInfo]:
-    """Return a mapping from normalized aliases to station metadata."""
+    """Return a mapping from normalized aliases to :class:`StationInfo` records."""
 
     try:
         with _STATIONS_PATH.open("r", encoding="utf-8") as handle:
@@ -105,7 +105,7 @@ def _station_lookup() -> Dict[str, StationInfo]:
             continue
         code_raw = entry.get("bst_code")
         code = str(code_raw).strip() if code_raw is not None else ""
-        info = StationInfo(
+        record = StationInfo(
             name=name,
             in_vienna=bool(entry.get("in_vienna")),
             pendler=bool(entry.get("pendler")),
@@ -114,7 +114,8 @@ def _station_lookup() -> Dict[str, StationInfo]:
             key = _normalize_token(alias)
             if not key:
                 continue
-            mapping.setdefault(key, info)
+            if key not in mapping:
+                mapping[key] = record
     return mapping
 
 
@@ -150,11 +151,11 @@ def _candidate_values(value: str) -> List[str]:
 def canonical_name(name: str) -> str | None:
     """Return the canonical ÖBB station name for *name* or ``None`` if unknown."""
 
-    info = _station_info(name)
+    info = station_info(name)
     return info.name if info else None
 
 
-def _station_info(name: str) -> StationInfo | None:
+def station_info(name: str) -> StationInfo | None:
     """Return :class:`StationInfo` for *name* or ``None`` if the station is unknown."""
 
     if not isinstance(name, str):  # pragma: no cover - defensive
@@ -177,7 +178,7 @@ def _station_info(name: str) -> StationInfo | None:
 def is_in_vienna(name: str) -> bool:
     """Return ``True`` if *name* refers to a station located in Vienna."""
 
-    info = _station_info(name)
+    info = station_info(name)
     if info:
         return bool(info.in_vienna)
     if isinstance(name, str):
@@ -190,5 +191,5 @@ def is_in_vienna(name: str) -> bool:
 def is_pendler(name: str) -> bool:
     """Return ``True`` if *name* is part of the configured commuter belt."""
 
-    info = _station_info(name)
+    info = station_info(name)
     return bool(info and info.pendler)
