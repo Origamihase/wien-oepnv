@@ -56,9 +56,30 @@ def test_emit_item_collapses_whitespace(monkeypatch):
     assert title_match, xml
     assert "  " not in title_match.group(1)
     assert "\t" not in title_match.group(1)
+    assert title_match.group(1) == title_match.group(1).strip()
 
     desc_match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml)
     assert desc_match, xml
     desc_text = desc_match.group(1)
     assert "  " not in desc_text
     assert "\t" not in desc_text
+    assert desc_text == desc_text.strip()
+
+
+def test_emit_item_trims_wrapping_whitespace(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 1, 1)
+    item = {
+        "title": "\t  Foo  ",
+        "description": " \t Foo  bar \n ",
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    title_match = re.search(r"<title><!\[CDATA\[(.*)]]></title>", xml)
+    assert title_match, xml
+    assert title_match.group(1) == "Foo"
+
+    desc_match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml)
+    assert desc_match, xml
+    assert desc_match.group(1) == "Foo bar"
