@@ -225,8 +225,7 @@ def _collect_items() -> List[Dict[str, Any]]:
         return []
 
     # ThreadPoolExecutor erlaubt max_workers nicht als 0; daher mindestens 1
-    executor = ThreadPoolExecutor(max_workers=max(1, len(active)))
-    try:
+    with ThreadPoolExecutor(max_workers=max(1, len(active))) as executor:
         for fetch in active:
             if "timeout" in inspect.signature(fetch).parameters:
                 futures[executor.submit(fetch, timeout=PROVIDER_TIMEOUT)] = fetch
@@ -248,8 +247,9 @@ def _collect_items() -> List[Dict[str, Any]]:
                     log.exception("%s fetch fehlgeschlagen: %s", name, e)
         except TimeoutError:
             log.warning("Provider-Timeout nach %ss", PROVIDER_TIMEOUT)
-    finally:
         executor.shutdown(wait=False, cancel_futures=True)
+        # Prevent __exit__ from blocking on unfinished threads
+        executor._threads.clear()
 
     return items
 
