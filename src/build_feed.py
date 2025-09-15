@@ -164,6 +164,11 @@ _CONTROL_RE = re.compile(
     r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]"
 )
 
+# Prefix pattern for line identifiers like "U1/U2: "
+_LINE_PREFIX_RE = re.compile(
+    r"^\s*([A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20})\s*:\s*"
+)
+
 def _sanitize_text(s: str) -> str:
     return _CONTROL_RE.sub("", s or "")
 
@@ -183,7 +188,7 @@ def _clip_text_html(text: str, limit: int) -> str:
     return plain[:limit].rstrip() + " …"
 
 def _parse_lines_from_title(title: str) -> List[str]:
-    m = re.match(r"^\s*([A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20})\s*:\s*", title or "")
+    m = _LINE_PREFIX_RE.match(title or "")
     if not m:
         return []
     return m.group(1).split("/")
