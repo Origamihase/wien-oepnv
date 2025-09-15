@@ -15,6 +15,8 @@ from src.utils.text import normalize_bullets
         ("zur • Station", "zur Station"),
         ("zum • Ausgang", "zum Ausgang"),
         ("Nach • Wien", "Nach Wien"),
+        ("bei\n• Station", "bei\nStation"),
+        ("In •\n der Station", "In\nder Station"),
     ],
 )
 def test_normalize_bullets_prepositions(text, expected):

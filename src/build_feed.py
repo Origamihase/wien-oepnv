@@ -507,6 +507,7 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(html.unescape(raw_title))
     desc_out  = _sanitize_text(desc_out)
+    desc_cdata = desc_out.replace("\n", "<br/>")
 
     parts: List[str] = []
     parts.append("<item>")
@@ -522,7 +523,7 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     if isinstance(ends_at, datetime):
         parts.append(f"<ext:ends_at>{_fmt_rfc2822(ends_at)}</ext:ends_at>")
 
-    parts.append(f"<description>{_cdata(desc_out)}</description>")
+    parts.append(f"<description>{_cdata(desc_cdata)}</description>")
     parts.append("</item>")
     return ident, "\n".join(parts)
 
