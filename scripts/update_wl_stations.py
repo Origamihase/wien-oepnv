@@ -16,11 +16,16 @@ import csv
 import json
 import logging
 import re
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Iterator, List, Sequence
 
 BASE_DIR = Path(__file__).resolve().parents[1]
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+from src.utils.stations import is_in_vienna
 DEFAULT_HALTEPUNKTE = BASE_DIR / "data" / "wienerlinien-ogd-haltepunkte.csv"
 DEFAULT_HALTESTELLEN = BASE_DIR / "data" / "wienerlinien-ogd-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
@@ -195,6 +200,7 @@ def build_wl_entries(
         station = haltestellen.get(stops[0].station_id)
         if station is None:
             continue
+        station_identifier = station.diva or station.station_id
         aliases = {station.name}
         stops_payload = []
         for stop in stops:
@@ -212,11 +218,27 @@ def build_wl_entries(
             aliases.add(station.diva)
         aliases.add(f"Wien {station.name}")
         canonical = _canonical_name(station.name)
+        coords_checked = False
+        in_vienna = False
+        for stop in stops:
+            if stop.latitude is None or stop.longitude is None:
+                continue
+            coords_checked = True
+            if is_in_vienna(stop.latitude, stop.longitude):
+                in_vienna = True
+                break
+        if not coords_checked:
+            log.warning(
+                "WL station %s (%s) lacks coordinates; falling back to name lookup",
+                station.name,
+                station_identifier,
+            )
+            in_vienna = is_in_vienna(station.name)
         entry = {
             "name": canonical,
-            "in_vienna": True,
+            "in_vienna": in_vienna,
             "pendler": False,
-            "wl_diva": station.diva or station.station_id,
+            "wl_diva": station_identifier,
             "wl_stops": sorted(
                 stops_payload,
                 key=lambda item: item["stop_id"],
