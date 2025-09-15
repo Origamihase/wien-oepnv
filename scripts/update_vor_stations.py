@@ -7,11 +7,19 @@ import csv
 import json
 import logging
 import re
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Iterator, Sequence
 
 BASE_DIR = Path(__file__).resolve().parents[1]
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+try:  # pragma: no cover - convenience for module execution
+    from src.utils.stations import is_in_vienna
+except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
+    from utils.stations import is_in_vienna  # type: ignore
 DEFAULT_SOURCE = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 
@@ -222,9 +230,18 @@ def build_vor_entries(stops: Iterable[VORStop]) -> list[dict[str, object]]:
     entries: list[dict[str, object]] = []
     for stop in stops:
         canonical = _canonical_vor_name(stop.name)
+        if stop.latitude is not None and stop.longitude is not None:
+            in_vienna = is_in_vienna(stop.latitude, stop.longitude)
+        else:
+            in_vienna = _looks_like_vienna(stop.municipality) or _looks_like_vienna(stop.name)
+            log.warning(
+                "Missing coordinates for VOR stop %s (%s); falling back to heuristics",
+                stop.name,
+                stop.vor_id,
+            )
         entry = {
             "name": canonical,
-            "in_vienna": _looks_like_vienna(stop.municipality) or _looks_like_vienna(stop.name),
+            "in_vienna": in_vienna,
             "pendler": False,
             "vor_id": stop.vor_id,
             "latitude": stop.latitude,
