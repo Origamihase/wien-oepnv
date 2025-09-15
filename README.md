@@ -220,7 +220,7 @@ LOG_MAX_BYTES=2097152 LOG_BACKUP_COUNT=10 python -u src/build_feed.py
 | `FEED_LINK` | str | `"https://github.com/Origamihase/wien-oepnv"` | Link zur Projektseite. |
 | `FEED_DESC` | str | `"Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen"` | Beschreibung des RSS-Feeds. |
 | `FEED_TTL` | int | `15` | Minuten, die Clients den Feed im Cache halten dürfen. |
-| `DESCRIPTION_CHAR_LIMIT` | int | `170` | Maximale Länge der Item-Beschreibung (Kürzung erfolgt an Wort-/Satzgrenzen, danach `…`). |
+| `DESCRIPTION_CHAR_LIMIT` | int | `170` | Maximale Länge der Item-Beschreibung. Die Kürzung achtet auf Wort-/Satzgrenzen und ergänzt eine Ellipsis (`…`), damit keine halben Wörter im Feed landen. |
 | `FRESH_PUBDATE_WINDOW_MIN` | int | `5` | Zeitfenster (Minuten), in dem Meldungen ohne Datum als „frisch“ gelten und mit aktuellem `pubDate` versehen werden. |
 | `MAX_ITEMS` | int | `60` | Maximale Anzahl an Items im Feed. |
 | `MAX_ITEM_AGE_DAYS` | int | `365` | Entfernt Items, die älter als diese Anzahl an Tagen sind. |
@@ -238,6 +238,17 @@ LOG_MAX_BYTES=2097152 LOG_BACKUP_COUNT=10 python -u src/build_feed.py
 | Variable | Typ | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
 | `WL_RSS_URL` | str | `"https://www.wienerlinien.at/ogd_realtime"` | Basis-URL für den OGD-Endpunkt der Wiener Linien. |
+
+Die Hilfsfunktion `html_to_text` bewahrt Zeilenumbrüche im `<description>`-Feld, sodass mehrzeilige Texte auf EasySignage-Displays (Full HD) ohne zusätzliche `<br>`-Tags sauber gerendert werden. Ein gekürztes Beispiel (Ellipsis auf der letzten Zeile):
+
+```xml
+<item>
+  <title>U4: Betriebseinschränkung</title>
+  <description><![CDATA[U4: Zwischen Hütteldorf und Hietzing Ersatzverkehr.
+Weitere Details folgen …]]></description>
+  <pubDate>Tue, 14 May 2024 07:25:00 +0200</pubDate>
+</item>
+```
 
 ### ÖBB (`src/providers/oebb.py`)
 
@@ -265,6 +276,10 @@ LOG_MAX_BYTES=2097152 LOG_BACKUP_COUNT=10 python -u src/build_feed.py
 **Hinweis:** Standardmäßig werden pro Durchlauf höchstens zwei Stations-IDs abgefragt
 (`VOR_MAX_STATIONS_PER_RUN = 2`), um API-Limits einzuhalten und Requests besser zu
 verteilen.
+
+## Lesbarkeit des Feeds
+
+Der Feed ist auf großformatige Anzeigeoberflächen wie Info-Screens oder Fernseher zugeschnitten. Kürzere Textzeilen mit Zeilenumbrüchen erleichtern das Erfassen aus größerer Entfernung, während die kombinierte Begrenzung durch `DESCRIPTION_CHAR_LIMIT` und die Ellipsis (`…`) dafür sorgt, dass längere Meldungen auf einen prägnanten Kern reduziert werden. Mehrzeilige Beschreibungen erlauben es, komplexere Situationen (z. B. Linienersatz oder Umleitungen) dennoch in mehreren Stichsätzen darzustellen, ohne dass der Bildschirm mit Fließtext überfüllt wird.
 
 ## License
 
