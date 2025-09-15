@@ -251,7 +251,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                     "_identity": identity,
                 }
             )
-    except Exception as e:  # pragma: no cover - network errors
+    except requests.RequestException as e:  # pragma: no cover - network errors
         log.exception("WL trafficInfoList fehlgeschlagen: %s", e)
 
     # B) News/Hinweise
@@ -344,7 +344,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                     "_identity": identity,
                 }
             )
-    except Exception as e:  # pragma: no cover - network errors
+    except requests.RequestException as e:  # pragma: no cover - network errors
         log.exception("WL newsList fehlgeschlagen: %s", e)
 
     # C) Bündelung: LINIEN-SET + TOPIC
