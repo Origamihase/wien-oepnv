@@ -20,6 +20,7 @@ from __future__ import annotations
 import logging
 import os
 import re
+import time
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 from email.utils import parsedate_to_datetime
@@ -202,11 +203,33 @@ def _keep_by_region(title: str, desc: str) -> bool:
     return False
 
 # ---------------- Fetch/Parse ----------------
-def _fetch_xml(url: str, timeout: int = 25) -> ET.Element:
+def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
     with _session() as s:
         r = s.get(url, timeout=timeout)
-        r.raise_for_status()
-        return ET.fromstring(r.content)
+
+    retry_after = r.headers.get("Retry-After")
+    if r.status_code == 429:
+        if retry_after:
+            log.warning("ÖBB RSS 429, Retry-After %s", retry_after)
+            try:
+                delay = float(retry_after)
+            except (TypeError, ValueError):
+                log.warning("ÖBB RSS ungültiges Retry-After %r – überspringe Sleep", retry_after)
+            else:
+                if delay > 0:
+                    try:
+                        time.sleep(delay)
+                    except Exception as exc:
+                        log.warning("ÖBB RSS Sleep fehlgeschlagen (%s)", exc)
+        else:
+            log.warning("ÖBB RSS 429 ohne Retry-After")
+        return None
+
+    if r.status_code >= 400:
+        log.warning("ÖBB RSS HTTP %s", r.status_code)
+        return None
+
+    return ET.fromstring(r.content)
 
 def _get_text(elem: Optional[ET.Element], tag: str) -> str:
     e = elem.find(tag) if elem is not None else None
@@ -226,7 +249,11 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
     try:
         root = _fetch_xml(OEBB_URL, timeout=timeout)
     except Exception as e:
-        log.exception("ÖBB RSS abruf fehlgeschlagen: %s", e)
+        msg = str(e).replace(OEBB_URL, "***")
+        log.exception("ÖBB RSS abruf fehlgeschlagen: %s", msg)
+        return []
+
+    if root is None:
         return []
 
     channel = root.find("channel")

@@ -23,10 +23,9 @@ def test_fetch_xml_passes_timeout_to_session(monkeypatch):
     recorded = {}
 
     class DummyResponse:
+        status_code = 200
+        headers = {}
         content = b"<rss/>"
-
-        def raise_for_status(self):
-            pass
 
     class DummySession:
         def __enter__(self):
