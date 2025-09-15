@@ -508,7 +508,7 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     title_out = _sanitize_text(html.unescape(raw_title))
     desc_out  = _sanitize_text(desc_out)
     title_out = re.sub(r"\s+", " ", title_out).strip()
-    desc_out  = re.sub(r"[ \t\r\f\v]+", " ", desc_out)
+    desc_out  = re.sub(r"[ \t\r\f\v]+", " ", desc_out).strip()
     desc_cdata = desc_out.replace("\n", "<br/>")
 
     parts: List[str] = []
