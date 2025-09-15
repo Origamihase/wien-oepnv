@@ -1,5 +1,6 @@
 import requests
 import responses
+from responses import matchers
 
 import src.providers.vor as vor
 
@@ -15,3 +16,68 @@ def test_location_name_contains_stoplocation():
 
     assert isinstance(data.get("StopLocation"), list)
     assert len(data["StopLocation"]) >= 1
+
+
+@responses.activate
+def test_resolve_station_ids_looks_up_stop_ids(monkeypatch):
+    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token")
+    url = f"{vor.VOR_BASE}/{vor.VOR_VERSION}/location.name"
+    responses.add(
+        responses.GET,
+        url,
+        json={"StopLocation": [{"id": "42", "name": "Wien"}]},
+        status=200,
+        match=[
+            matchers.query_param_matcher(
+                {"format": "json", "input": "Wien", "type": "stop", "accessId": "token"}
+            )
+        ],
+    )
+
+    ids = vor.resolve_station_ids(["Wien"])
+
+    assert ids == ["42"]
+
+
+def test_fetch_events_prefers_configured_station_ids(monkeypatch):
+    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token")
+    monkeypatch.setattr(vor, "VOR_STATION_IDS", ["override"])
+    monkeypatch.setattr(vor, "VOR_STATION_NAMES", ["Wien"])
+
+    called: list[list[str]] = []
+
+    def fail_if_called(names):
+        called.append(names)
+        return []
+
+    monkeypatch.setattr(vor, "resolve_station_ids", fail_if_called)
+    monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk, period: ids[:chunk])
+    monkeypatch.setattr(vor, "_fetch_stationboard", lambda sid, now_local: None)
+    monkeypatch.setattr(vor, "_collect_from_board", lambda sid, root: [])
+
+    items = vor.fetch_events()
+
+    assert items == []
+    assert called == []
+
+
+def test_fetch_events_uses_station_names_when_ids_missing(monkeypatch):
+    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token")
+    monkeypatch.setattr(vor, "VOR_STATION_IDS", [])
+    monkeypatch.setattr(vor, "VOR_STATION_NAMES", ["Wien"])
+
+    calls: list[list[str]] = []
+
+    def fake_resolver(names: list[str]) -> list[str]:
+        calls.append(names)
+        return ["123"]
+
+    monkeypatch.setattr(vor, "resolve_station_ids", fake_resolver)
+    monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk, period: ids[:chunk])
+    monkeypatch.setattr(vor, "_fetch_stationboard", lambda sid, now_local: None)
+    monkeypatch.setattr(vor, "_collect_from_board", lambda sid, root: [])
+
+    items = vor.fetch_events()
+
+    assert items == []
+    assert calls == [["Wien"]]
