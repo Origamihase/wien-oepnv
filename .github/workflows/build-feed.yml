@@ -97,7 +97,7 @@ jobs:
           import requests
           ACCESS = os.environ.get("VOR_ACCESS_ID","").strip()
           BASE   = os.environ.get("VOR_BASE","").rstrip("/")
-          VER    = os.environ.get("VOR_VERSION","v1.3").strip()
+          VER    = os.environ.get("VOR_VERSION","v1.11.0").strip()
           OUT    = "data/vor_station_ids_wien.txt"
           if not ACCESS: sys.exit(0)
           session = requests.Session()
