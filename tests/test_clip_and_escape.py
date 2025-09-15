@@ -1,4 +1,5 @@
 import importlib
+import re
 import sys
 from pathlib import Path
 from datetime import datetime
@@ -40,3 +41,24 @@ def test_emit_item_keeps_bullet_separator(monkeypatch):
     ident, xml = bf._emit_item({"title": "X", "description": "foo • bar"}, now, {})
     assert "foo • bar" in xml
     assert "foo\nbar" not in xml
+
+
+def test_emit_item_collapses_whitespace(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 1, 1)
+    messy = {
+        "title": "  Mehrfach\t  Leerzeichen   ",
+        "description": "Zeile\t\tEins  mit   Tabs\nZeile Zwei\t  mit   Spaces",
+    }
+    ident, xml = bf._emit_item(messy, now, {})
+
+    title_match = re.search(r"<title><!\[CDATA\[(.*)]]></title>", xml)
+    assert title_match, xml
+    assert "  " not in title_match.group(1)
+    assert "\t" not in title_match.group(1)
+
+    desc_match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml)
+    assert desc_match, xml
+    desc_text = desc_match.group(1)
+    assert "  " not in desc_text
+    assert "\t" not in desc_text
