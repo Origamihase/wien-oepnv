@@ -3,13 +3,20 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 import unicodedata
 from functools import lru_cache
 from pathlib import Path
-from typing import Dict, Iterable, List, NamedTuple
+from typing import Dict, Iterable, List, NamedTuple, Sequence, Tuple
 
-__all__ = ["canonical_name", "is_in_vienna", "is_pendler", "station_info"]
+__all__ = [
+    "canonical_name",
+    "is_in_vienna",
+    "is_pendler",
+    "is_station_in_vienna",
+    "station_info",
+]
 
 
 class WLStop(NamedTuple):
@@ -31,6 +38,156 @@ class StationInfo(NamedTuple):
     wl_stops: tuple[WLStop, ...] = ()
 
 _STATIONS_PATH = Path(__file__).resolve().parents[2] / "data" / "stations.json"
+_VIENNA_BOUNDARY_PATH = (
+    Path(__file__).resolve().parents[2] / "data" / "vienna_boundary.geojson"
+)
+
+_Ring = Tuple[Tuple[float, float], ...]
+_Polygon = Tuple[_Ring, Tuple[_Ring, ...]]
+
+
+def _normalize_boundary_ring(raw: Sequence[Sequence[object]]) -> _Ring:
+    """Return a normalized linear ring from raw GeoJSON coordinates."""
+
+    coords: List[Tuple[float, float]] = []
+    for point in raw:
+        if not isinstance(point, Sequence) or len(point) < 2:
+            continue
+        lon, lat = point[0], point[1]
+        try:
+            x = float(lon)
+            y = float(lat)
+        except (TypeError, ValueError):
+            continue
+        coords.append((x, y))
+    if len(coords) < 3:
+        return ()
+    if coords[0] != coords[-1]:
+        coords.append(coords[0])
+    return tuple(coords)
+
+
+def _iter_boundary_polygons(payload: object) -> Iterable[Sequence[Sequence[Sequence[object]]]]:
+    """Yield polygon coordinate arrays from a GeoJSON payload."""
+
+    if not isinstance(payload, dict):
+        return
+    gtype = payload.get("type")
+    if gtype == "FeatureCollection":
+        features = payload.get("features")
+        if isinstance(features, list):
+            for feature in features:
+                yield from _iter_boundary_polygons(feature)
+        return
+    if gtype == "Feature":
+        yield from _iter_boundary_polygons(payload.get("geometry"))
+        return
+    if gtype == "MultiPolygon":
+        polygons = payload.get("coordinates")
+        if isinstance(polygons, list):
+            for polygon in polygons:
+                yield polygon
+        return
+    if gtype == "Polygon":
+        coords = payload.get("coordinates")
+        if isinstance(coords, list):
+            yield coords
+
+
+@lru_cache(maxsize=1)
+def _vienna_polygons() -> Tuple[_Polygon, ...]:
+    """Return simplified Vienna boundary polygons from the GeoJSON file."""
+
+    try:
+        with _VIENNA_BOUNDARY_PATH.open("r", encoding="utf-8") as handle:
+            payload = json.load(handle)
+    except (OSError, json.JSONDecodeError):  # pragma: no cover - defensive
+        return ()
+
+    polygons: List[_Polygon] = []
+    for polygon in _iter_boundary_polygons(payload):
+        if not polygon:
+            continue
+        outer_raw = polygon[0]
+        outer = _normalize_boundary_ring(outer_raw) if isinstance(outer_raw, Sequence) else ()
+        if not outer:
+            continue
+        holes: List[_Ring] = []
+        for ring in polygon[1:]:
+            if not isinstance(ring, Sequence):
+                continue
+            normalized = _normalize_boundary_ring(ring)
+            if normalized:
+                holes.append(normalized)
+        polygons.append((outer, tuple(holes)))
+    return tuple(polygons)
+
+
+def _point_on_segment(
+    x: float, y: float, x1: float, y1: float, x2: float, y2: float, *, eps: float = 1e-9
+) -> bool:
+    """Return ``True`` if the point lies on the given line segment."""
+
+    if not (
+        min(x1, x2) - eps <= x <= max(x1, x2) + eps
+        and min(y1, y2) - eps <= y <= max(y1, y2) + eps
+    ):
+        return False
+    dx = x2 - x1
+    dy = y2 - y1
+    if abs(dx) <= eps and abs(dy) <= eps:
+        return abs(x - x1) <= eps and abs(y - y1) <= eps
+    cross = (x - x1) * dy - (y - y1) * dx
+    if abs(cross) > eps * max(abs(dx), abs(dy), 1.0):
+        return False
+    return True
+
+
+def _point_in_ring(lat: float, lon: float, ring: _Ring) -> bool:
+    """Return ``True`` if the point lies inside the closed linear *ring*."""
+
+    x = lon
+    y = lat
+    inside = False
+    for index in range(len(ring) - 1):
+        x1, y1 = ring[index]
+        x2, y2 = ring[index + 1]
+        if _point_on_segment(x, y, x1, y1, x2, y2):
+            return True
+        if y1 == y2:
+            continue
+        intersects = ((y1 > y) != (y2 > y))
+        if intersects:
+            try:
+                x_at_y = x1 + (y - y1) * (x2 - x1) / (y2 - y1)
+            except ZeroDivisionError:  # pragma: no cover - defensive
+                x_at_y = x1
+            if math.isclose(x_at_y, x, rel_tol=0.0, abs_tol=1e-9):
+                return True
+            if x_at_y > x:
+                inside = not inside
+    return inside
+
+
+def is_in_vienna(lat: object, lon: object) -> bool:
+    """Return ``True`` if the coordinate lies within the Vienna city boundary."""
+
+    polygons = _vienna_polygons()
+    if not polygons:
+        return False
+    try:
+        latitude = float(lat)
+        longitude = float(lon)
+    except (TypeError, ValueError):
+        return False
+    if not (-90.0 <= latitude <= 90.0 and -180.0 <= longitude <= 180.0):
+        return False
+    for outer, holes in polygons:
+        if _point_in_ring(latitude, longitude, outer):
+            if any(_point_in_ring(latitude, longitude, hole) for hole in holes):
+                continue
+            return True
+    return False
 
 
 def _strip_accents(value: str) -> str:
@@ -248,7 +405,7 @@ def station_info(name: str) -> StationInfo | None:
     return None
 
 
-def is_in_vienna(name: str) -> bool:
+def is_station_in_vienna(name: str) -> bool:
     """Return ``True`` if *name* refers to a station located in Vienna."""
 
     info = station_info(name)

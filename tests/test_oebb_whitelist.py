@@ -45,8 +45,8 @@ def vienna_station(station_entries):
 
 def test_station_flags_match_utils(pendler_station, vienna_station):
     assert station_utils.is_pendler(pendler_station)
-    assert not station_utils.is_in_vienna(pendler_station)
-    assert station_utils.is_in_vienna(vienna_station)
+    assert not station_utils.is_station_in_vienna(pendler_station)
+    assert station_utils.is_station_in_vienna(vienna_station)
 
 
 @pytest.mark.parametrize("arrow", ["↔", "<->", "->", "—", "–", "→"])

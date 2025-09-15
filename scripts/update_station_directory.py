@@ -10,13 +10,22 @@ from __future__ import annotations
 import argparse
 import json
 import logging
-from dataclasses import dataclass
+import re
+import unicodedata
+from dataclasses import dataclass, field
 from io import BytesIO
 from pathlib import Path
-from typing import Iterable
+from typing import Dict, Iterable, Tuple
 
 import openpyxl
 import requests
+
+from scripts.gtfs import DEFAULT_GTFS_STOP_PATH, read_gtfs_stops
+
+try:  # pragma: no cover - imported for script execution
+    from src.utils.stations import is_in_vienna as is_point_in_vienna  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover - fallback when running as module
+    from utils.stations import is_in_vienna as is_point_in_vienna  # type: ignore
 
 DEFAULT_SOURCE_URL = (
     "https://data.oebb.at/dam/jcr:fce22daf-0dd8-4a15-80b4-dbca6e80ce38/"
@@ -57,6 +66,117 @@ class Station:
             "in_vienna": self.in_vienna,
             "pendler": self.pendler,
         }
+
+
+@dataclass(slots=True)
+class CoordinateIndex:
+    """Coordinate lookup tables for station metadata."""
+
+    by_id: Dict[str, Tuple[float, float]] = field(default_factory=dict)
+    by_code: Dict[str, Tuple[float, float]] = field(default_factory=dict)
+    by_name: Dict[str, Tuple[float, float]] = field(default_factory=dict)
+
+    def lookup(self, station: Station) -> Tuple[float, float] | None:
+        """Return coordinates for *station* if available."""
+
+        coord = self.by_id.get(str(station.bst_id))
+        if coord:
+            return coord
+        code = _normalize_code(station.bst_code)
+        if code:
+            coord = self.by_code.get(code)
+            if coord:
+                return coord
+        for token in _name_variants(station.name):
+            coord = self.by_name.get(token)
+            if coord:
+                return coord
+        return None
+
+
+_NAME_PAREN_RE = re.compile(r"\s*\([^)]*\)\s*")
+_WHITESPACE_RE = re.compile(r"\s{2,}")
+_NON_ALNUM_RE = re.compile(r"[^a-z0-9 ]+")
+_CODE_RE = re.compile(r"\s+")
+
+
+def _strip_accents(text: str) -> str:
+    return "".join(ch for ch in unicodedata.normalize("NFKD", text) if not unicodedata.combining(ch))
+
+
+def _normalize_name_token(value: str) -> str:
+    text = _strip_accents(value).replace("ß", "ss").lower()
+    text = text.replace("hauptbahnhof", "hbf")
+    text = _NAME_PAREN_RE.sub(" ", text)
+    text = text.replace("-", " ").replace("/", " ")
+    text = _NON_ALNUM_RE.sub(" ", text)
+    text = _WHITESPACE_RE.sub(" ", text)
+    return text.strip()
+
+
+def _name_variants(value: str) -> list[str]:
+    base = _normalize_name_token(value)
+    if not base:
+        return []
+    variants: set[str] = {base}
+    tokens = base.split()
+    if tokens and tokens[0] == "wien":
+        variants.add(" ".join(tokens[1:]).strip())
+    if tokens and tokens[-1] == "wien":
+        variants.add(" ".join(tokens[:-1]).strip())
+    removal_terms = {"bahnhof", "bahnhst", "bahnhst.", "bhf", "hbf"}
+    for term in removal_terms.copy():
+        removal_terms.add(term.rstrip("."))
+    for term in removal_terms:
+        for variant in list(variants):
+            parts = [part for part in variant.split() if part != term]
+            if len(parts) != len(variant.split()):
+                candidate = " ".join(parts).strip()
+                if candidate:
+                    variants.add(candidate)
+    cleaned = {_WHITESPACE_RE.sub(" ", variant).strip() for variant in variants}
+    return [variant for variant in cleaned if variant]
+
+
+def _normalize_code(value: str) -> str:
+    text = _strip_accents(value).lower()
+    return _CODE_RE.sub("", text)
+
+
+def load_coordinate_index() -> CoordinateIndex:
+    """Load coordinates from reference data for use during annotation."""
+
+    index = CoordinateIndex()
+    try:
+        stops = read_gtfs_stops()
+    except FileNotFoundError:
+        logger.warning("GTFS stops.txt not found: %s", DEFAULT_GTFS_STOP_PATH)
+        return index
+    except Exception as exc:  # pragma: no cover - defensive
+        logger.warning("Could not read GTFS stops: %s", exc)
+        return index
+
+    for stop in stops.values():
+        lat = stop.stop_lat
+        lon = stop.stop_lon
+        if lat is None or lon is None:
+            continue
+        if stop.parent_station and (":" in stop.stop_id or stop.location_type == 0):
+            continue
+        if stop.stop_id and stop.stop_id not in index.by_id:
+            index.by_id[stop.stop_id] = (lat, lon)
+        if stop.stop_code:
+            code = _normalize_code(stop.stop_code)
+            if code and code not in index.by_code:
+                index.by_code[code] = (lat, lon)
+        for token in _name_variants(stop.stop_name):
+            if token and token not in index.by_name:
+                index.by_name[token] = (lat, lon)
+
+    logger.debug(
+        "Loaded %d GTFS reference coordinates", len(index.by_name) or len(index.by_id)
+    )
+    return index
 
 
 def parse_args() -> argparse.Namespace:
@@ -183,9 +303,16 @@ def _is_vienna_station(name: str) -> bool:
     return len(text) > 4 and text[4] in {" ", "-", "/", "("}
 
 
-def _annotate_station_flags(stations: list[Station], pendler_ids: set[int]) -> None:
+def _annotate_station_flags(
+    stations: list[Station], pendler_ids: set[int], coordinates: CoordinateIndex
+) -> None:
     for station in stations:
-        station.in_vienna = _is_vienna_station(station.name)
+        coord = coordinates.lookup(station)
+        if coord is not None:
+            latitude, longitude = coord
+            station.in_vienna = is_point_in_vienna(latitude, longitude)
+        else:
+            station.in_vienna = _is_vienna_station(station.name)
         station.pendler = station.bst_id in pendler_ids
 
 
@@ -237,7 +364,8 @@ def main() -> None:
     workbook_stream = download_workbook(args.source_url)
     stations = extract_stations(workbook_stream)
     pendler_ids = load_pendler_station_ids(DEFAULT_PENDLER_PATH)
-    _annotate_station_flags(stations, pendler_ids)
+    coordinate_index = load_coordinate_index()
+    _annotate_station_flags(stations, pendler_ids, coordinate_index)
     write_json(stations, args.output)
 
 

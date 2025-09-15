@@ -28,11 +28,11 @@ from email.utils import parsedate_to_datetime
 try:  # pragma: no cover - support both package layouts
     from utils.ids import make_guid
     from utils.text import html_to_text
-    from utils.stations import canonical_name, is_in_vienna, is_pendler
+    from utils.stations import canonical_name, is_pendler, is_station_in_vienna
 except ModuleNotFoundError:  # pragma: no cover
     from src.utils.ids import make_guid  # type: ignore
     from src.utils.text import html_to_text  # type: ignore
-    from src.utils.stations import canonical_name, is_in_vienna, is_pendler  # type: ignore
+    from src.utils.stations import canonical_name, is_pendler, is_station_in_vienna  # type: ignore
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -141,7 +141,7 @@ _FAR_AWAY_RE = re.compile(
 
 
 def _is_allowed_station(name: str) -> bool:
-    if is_in_vienna(name):
+    if is_station_in_vienna(name):
         return True
     if OEBB_ONLY_VIENNA:
         return False
