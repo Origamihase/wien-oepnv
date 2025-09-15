@@ -28,9 +28,11 @@ from email.utils import parsedate_to_datetime
 try:  # pragma: no cover - support both package layouts
     from utils.ids import make_guid
     from utils.text import html_to_text
+    from utils.stations import canonical_name
 except ModuleNotFoundError:  # pragma: no cover
     from src.utils.ids import make_guid  # type: ignore
     from src.utils.text import html_to_text  # type: ignore
+    from src.utils.stations import canonical_name  # type: ignore
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -85,6 +87,11 @@ def _clean_title_keep_places(t: str) -> str:
     # Pfeile/Bindestriche und Trennzeichen normalisieren
     parts = [p for p in ARROW_ANY_RE.split(t) if p.strip()]
     parts = [_clean_endpoint(p) for p in parts if p.strip()]
+    canonical_parts: List[str] = []
+    for part in parts:
+        canon = canonical_name(part)
+        canonical_parts.append(canon or part)
+    parts = canonical_parts
     if len(parts) >= 2:
         t = f"{parts[0]} ↔ {parts[1]}"
         if len(parts) > 2:
