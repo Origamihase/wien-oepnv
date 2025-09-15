@@ -126,7 +126,7 @@ FEED_TTL = max(_get_int_env("FEED_TTL", DEFAULT_FEED_TTL), 0)
 
 DESCRIPTION_CHAR_LIMIT = max(_get_int_env("DESCRIPTION_CHAR_LIMIT", 170), 0)
 FRESH_PUBDATE_WINDOW_MIN = _get_int_env("FRESH_PUBDATE_WINDOW_MIN", 5)
-MAX_ITEMS = max(_get_int_env("MAX_ITEMS", 60), 0)
+MAX_ITEMS = max(_get_int_env("MAX_ITEMS", 10), 0)
 MAX_ITEM_AGE_DAYS = max(
     _get_int_env("MAX_ITEM_AGE_DAYS", DEFAULT_MAX_ITEM_AGE_DAYS), 0
 )

@@ -251,7 +251,7 @@ LOG_MAX_BYTES=2097152 LOG_BACKUP_COUNT=10 python -u src/build_feed.py
 | `FEED_TTL` | int | `15` | Minuten, die Clients den Feed im Cache halten dürfen. |
 | `DESCRIPTION_CHAR_LIMIT` | int | `170` | Maximale Länge der Item-Beschreibung. Die Kürzung achtet auf Wort-/Satzgrenzen und ergänzt eine Ellipsis (`…`), damit keine halben Wörter im Feed landen. |
 | `FRESH_PUBDATE_WINDOW_MIN` | int | `5` | Zeitfenster (Minuten), in dem Meldungen ohne Datum als „frisch“ gelten und mit aktuellem `pubDate` versehen werden. |
-| `MAX_ITEMS` | int | `60` | Maximale Anzahl an Items im Feed. |
+| `MAX_ITEMS` | int | `10` | Maximale Anzahl an Items im Feed. |
 | `MAX_ITEM_AGE_DAYS` | int | `365` | Entfernt Items, die älter als diese Anzahl an Tagen sind. |
 | `ABSOLUTE_MAX_AGE_DAYS` | int | `540` | Harte Obergrenze für das Alter von Items. |
 | `ENDS_AT_GRACE_MINUTES` | int | `10` | Kulanzfenster (Minuten), in dem Meldungen nach `ends_at` noch gezeigt werden. |
