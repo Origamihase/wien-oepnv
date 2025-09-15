@@ -13,7 +13,7 @@ Der RSS-Feed deklariert den Namespace `ext` (`xmlns:ext="https://wien-oepnv.exam
 ## Stationsverzeichnis
 
 `data/stations.json` enthält eine vereinfachte Zuordnung der ÖBB-Verkehrsstationen
-(`bst_id`, `bst_code`, `name`). Die Daten stammen aus dem Datensatz
+(`bst_id`, `bst_code`, `name`, `in_vienna`, `pendler`). Die Daten stammen aus dem Datensatz
 „[Verzeichnis der Verkehrsstationen](https://data.oebb.at/de/datensaetze~verzeichnis-der-verkehrsstationen~)“
 auf dem ÖBB-Open-Data-Portal (Excel-Datei „Verzeichnis der Verkehrsstationen.xlsx“).
 
@@ -34,6 +34,14 @@ Das Skript lädt die Excel-Datei herunter, extrahiert die benötigten Spalten un
 aktualisiert `data/stations.json`. Über `-v/--verbose` lässt sich eine etwas
 ausführlichere Protokollierung aktivieren. Optional können auch Quelle und Ziel
 per Argumenten angepasst werden (`--source-url`, `--output`).
+
+### Pendlerstationen
+
+Die Datei `data/pendler_bst_ids.json` enthält eine manuell gepflegte Liste an
+BST-IDs für Pendlerstationen. Änderungen an der Auswahl (z. B. neue oder
+wegfallende Stationen) müssen von Hand in dieser Datei nachgezogen werden, damit
+das Aktualisierungsskript die entsprechenden Einträge in `data/stations.json`
+über das Feld `pendler` markieren kann.
 
 ## Entwicklung/Tests lokal
 
