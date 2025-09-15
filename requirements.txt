@@ -2,3 +2,4 @@ requests>=2.32.0,<3
 python-dateutil>=2.9,<3
 defusedxml>=0.7.1,<1
 pytest>=8.0,<9
+responses>=0.25,<1
