@@ -121,6 +121,19 @@ lädt monatlich (Cron `0 0 1 * *`) die aktuelle Excel-Datei und schreibt daraus 
 aktualisierte `data/stations.json`. Änderungen werden automatisch in den Hauptzweig
 committet.
 
+### Stationsverzeichnis komplett aktualisieren
+
+```bash
+python scripts/update_all_stations.py --verbose
+```
+
+Der Sammelbefehl führt nacheinander `update_station_directory.py`,
+`update_vor_stations.py` und `update_wl_stations.py` aus. Damit entsteht das
+vollständige `stations.json` in einem Durchlauf – Voraussetzung ist, dass die
+benötigten Quelldateien (VOR-Export sowie die Wiener-Linien-CSV-Dateien) wie in
+den folgenden Abschnitten beschrieben lokal vorliegen. Die Einzelskripte lassen
+sich weiterhin separat starten, um gezielt Teilmengen zu aktualisieren.
+
 ### Manuelle Aktualisierung
 
 ```bash
