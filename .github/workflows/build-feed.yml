@@ -22,12 +22,12 @@ jobs:
       FEED_TITLE: "ÖPNV Störungen Wien & Umgebung"
       FEED_LINK: "https://github.com/${{ github.repository }}"
       FEED_DESC: "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen"
-      FEED_TTL: "15"
+      FEED_TTL: "15"               # Cache-Haltbarkeit in Minuten
       LOG_LEVEL: INFO
       DESCRIPTION_CHAR_LIMIT: "170"
       MAX_ITEMS: "60"
-      MAX_ITEM_AGE_DAYS: "365"
-      ABSOLUTE_MAX_AGE_DAYS: "540"
+      MAX_ITEM_AGE_DAYS: "365"     # Entferne Items älter als diese Tage
+      ABSOLUTE_MAX_AGE_DAYS: "540" # Harte Obergrenze für Item-Alter
 
       # --- Persistenter State ---
       STATE_PATH: "data/first_seen.json"

@@ -2,6 +2,7 @@ import importlib
 import sys
 from pathlib import Path
 import types
+import pytest
 
 
 def _import_build_feed(monkeypatch):
@@ -24,11 +25,17 @@ def _import_build_feed(monkeypatch):
     return importlib.import_module(module_name)
 
 
-def test_default_age_and_ttl(monkeypatch):
+@pytest.mark.parametrize(
+    "attr, expected",
+    [
+        ("FEED_TTL", 15),
+        ("MAX_ITEM_AGE_DAYS", 365),
+        ("ABSOLUTE_MAX_AGE_DAYS", 540),
+    ],
+)
+def test_default_age_and_ttl(monkeypatch, attr, expected):
     monkeypatch.delenv("FEED_TTL", raising=False)
     monkeypatch.delenv("MAX_ITEM_AGE_DAYS", raising=False)
     monkeypatch.delenv("ABSOLUTE_MAX_AGE_DAYS", raising=False)
     build_feed = _import_build_feed(monkeypatch)
-    assert build_feed.FEED_TTL == 15
-    assert build_feed.MAX_ITEM_AGE_DAYS == 365
-    assert build_feed.ABSOLUTE_MAX_AGE_DAYS == 540
+    assert getattr(build_feed, attr) == expected
