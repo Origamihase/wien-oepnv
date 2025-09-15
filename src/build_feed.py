@@ -184,6 +184,8 @@ def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
     tmp = STATE_FILE.with_suffix(".tmp")
     with tmp.open("w", encoding="utf-8") as f:
         json.dump(pruned, f, ensure_ascii=False, indent=2, sort_keys=True)
+        f.flush()
+        os.fsync(f.fileno())
     tmp.replace(STATE_FILE)
 
 def _identity_for_item(item: Dict[str, Any]) -> str:
