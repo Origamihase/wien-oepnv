@@ -48,7 +48,7 @@ jobs:
       # --- VOR/VAO Zugang (Discovery nur wenn gesetzt) ---
       VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
       VOR_BASE: "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
-      VOR_VERSION: "v1.3"
+      VOR_VERSION: "v1.11.0"
 
       # --- VOR Feintuning ---
       VOR_ALLOW_BUS: "1"
