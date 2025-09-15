@@ -65,10 +65,27 @@ def write_cache(provider: str, items: List[Any]) -> None:
 
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as fh:
-            json.dump(items, fh, ensure_ascii=False, indent=2)
-            fh.flush()
-            os.fsync(fh.fileno())
-        os.replace(tmp_path, cache_file)
+            try:
+                json.dump(items, fh, ensure_ascii=False, indent=2)
+                fh.flush()
+                os.fsync(fh.fileno())
+            except Exception:
+                log.exception(
+                    "Failed to write cache for provider '%s' to temporary file %s",
+                    provider,
+                    tmp_path,
+                )
+                raise
+        try:
+            os.replace(tmp_path, cache_file)
+        except OSError:
+            log.exception(
+                "Failed to replace cache for provider '%s' at %s with temporary file %s",
+                provider,
+                cache_file,
+                tmp_path,
+            )
+            raise
     finally:
         # If anything went wrong before os.replace, ensure the temporary file is removed.
         if os.path.exists(tmp_path):
