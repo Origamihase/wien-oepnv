@@ -48,6 +48,7 @@ def _get_int_env(name: str, default: int) -> int:
 
 VOR_ACCESS_ID: str | None = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip() or None
 VOR_STATION_IDS: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_IDS") or "").split(",") if s.strip()]
+VOR_STATION_NAMES: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_NAMES") or "").split(",") if s.strip()]
 VOR_BASE = os.getenv("VOR_BASE", "https://routenplaner.verkehrsauskunft.at/vao/restproxy")
 VOR_VERSION = os.getenv("VOR_VERSION", "v1.11.0")
 BOARD_DURATION_MIN = _get_int_env("VOR_BOARD_DURATION_MIN", 60)
@@ -85,6 +86,80 @@ def _session() -> requests.Session:
 
 def _stationboard_url() -> str:
     return f"{VOR_BASE}/{VOR_VERSION}/DepartureBoard"
+
+def _location_name_url() -> str:
+    return f"{VOR_BASE}/{VOR_VERSION}/location.name"
+
+def resolve_station_ids(names: List[str]) -> List[str]:
+    resolved: List[str] = []
+    seen: set[str] = set()
+    wanted: List[str] = []
+
+    for raw in names:
+        name = raw.strip()
+        if not name:
+            continue
+        key = name.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        wanted.append(name)
+
+    if not wanted:
+        return resolved
+
+    with _session() as session:
+        for name in wanted:
+            params = {"format": "json", "input": name, "type": "stop"}
+            if VOR_ACCESS_ID:
+                params["accessId"] = VOR_ACCESS_ID
+            try:
+                resp = session.get(
+                    _location_name_url(),
+                    params=params,
+                    timeout=HTTP_TIMEOUT,
+                    headers={"Accept": "application/json"},
+                )
+            except requests.RequestException as e:
+                log.warning("VOR location.name %s -> %s", name, e)
+                continue
+
+            if resp.status_code >= 400:
+                log.warning("VOR location.name %s -> HTTP %s", name, resp.status_code)
+                continue
+
+            try:
+                payload = resp.json()
+            except ValueError:
+                log.warning("VOR location.name %s -> ungültige Antwort", name)
+                continue
+
+            stops = payload.get("StopLocation")
+            if isinstance(stops, dict):
+                stops = [stops]
+            if not isinstance(stops, list):
+                log.info("VOR location.name %s -> keine StopLocation", name)
+                continue
+
+            station_id: Optional[str] = None
+            for stop in stops:
+                if not isinstance(stop, dict):
+                    continue
+                sid = stop.get("id") or stop.get("extId")
+                if sid:
+                    sid_str = str(sid).strip()
+                    if sid_str:
+                        station_id = sid_str
+                        break
+
+            if not station_id:
+                log.info("VOR location.name %s -> keine Station-ID gefunden", name)
+                continue
+
+            if station_id not in resolved:
+                resolved.append(station_id)
+
+    return resolved
 
 def _text(el: Optional[ET.Element], attr: str, default: str = "") -> str:
     return (el.get(attr) if el is not None else None) or default
@@ -266,12 +341,16 @@ def fetch_events() -> List[Dict[str, Any]]:
     if not VOR_ACCESS_ID:
         log.info("VOR: kein VOR_ACCESS_ID gesetzt – Provider inaktiv.")
         return []
-    if not VOR_STATION_IDS:
-        log.info("VOR: keine VOR_STATION_IDS gesetzt – Provider inaktiv.")
+    station_ids = VOR_STATION_IDS or resolve_station_ids(VOR_STATION_NAMES)
+    if not station_ids:
+        if VOR_STATION_NAMES:
+            log.info("VOR: keine Station-IDs für VOR_STATION_NAMES gefunden – Provider inaktiv.")
+        else:
+            log.info("VOR: keine VOR_STATION_IDS gesetzt – Provider inaktiv.")
         return []
 
     now_local = datetime.now().astimezone(ZoneInfo("Europe/Vienna"))
-    station_chunk = _select_stations_round_robin(VOR_STATION_IDS, MAX_STATIONS_PER_RUN, ROTATION_INTERVAL_SEC)
+    station_chunk = _select_stations_round_robin(station_ids, MAX_STATIONS_PER_RUN, ROTATION_INTERVAL_SEC)
 
     seen: set[str] = set()
     out: List[Dict[str, Any]] = []
