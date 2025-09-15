@@ -11,22 +11,24 @@ from typing import Match
 _WS_RE = re.compile(r"[ \t\r\f\v]+")
 
 # Common German prepositions that should not be followed by a bullet.
-PREPOSITIONS = (
-    "bei",
-    "in",
+PREPOSITIONS: tuple[str, ...] = (
+    # Alphabetical order for easier maintenance; keep umlaut/ASCII pairs
+    # together for readability.
+    "ab",
+    "am",
     "an",
     "auf",
-    "am",
-    "vom",
-    "zur",
-    "zum",
-    "nach",
-    "über",
-    "ueber",
-    "gegen",
-    "durch",
+    "bei",
     "bis",
-    "ab",
+    "durch",
+    "gegen",
+    "in",
+    "nach",
+    "ueber",
+    "über",
+    "vom",
+    "zum",
+    "zur",
 )
 
 _PREP_BULLET_RE = re.compile(
