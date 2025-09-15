@@ -29,6 +29,11 @@ Da die Cache-Dateien versioniert im Repository liegen, steht der Feed auch dann 
 „[Verzeichnis der Verkehrsstationen](https://data.oebb.at/de/datensaetze~verzeichnis-der-verkehrsstationen~)“
 auf dem ÖBB-Open-Data-Portal (Excel-Datei „Verzeichnis der Verkehrsstationen.xlsx“).
 
+Zusätzlich sind Wiener-Linien-Haltestellen enthalten. Die Quelldateien (`wienerlinien-ogd-haltestellen.csv`
+und `wienerlinien-ogd-haltepunkte.csv`) basieren auf dem OGD-Angebot der Stadt Wien und
+werden in `stations.json` mit `source = "wl"` markiert. Die Einträge enthalten pro Station
+die DIVA-ID, alle bekannten StopIDs sowie die jeweiligen WGS84-Koordinaten.
+
 ### Automatische Aktualisierung
 
 Die GitHub Action [`.github/workflows/update-stations.yml`](.github/workflows/update-stations.yml)
@@ -46,6 +51,19 @@ Das Skript lädt die Excel-Datei herunter, extrahiert die benötigten Spalten un
 aktualisiert `data/stations.json`. Über `-v/--verbose` lässt sich eine etwas
 ausführlichere Protokollierung aktivieren. Optional können auch Quelle und Ziel
 per Argumenten angepasst werden (`--source-url`, `--output`).
+
+### Wiener Linien ergänzen
+
+```bash
+python scripts/update_wl_stations.py --verbose
+```
+
+Die CSV-Dateien der Wiener Linien werden nicht automatisch heruntergeladen. Nach
+dem Aktualisieren der offiziellen OGD-Exporte müssen beide Dateien in `data/`
+abgelegt werden (`wienerlinien-ogd-haltestellen.csv` und
+`wienerlinien-ogd-haltepunkte.csv`). Das Skript liest beide CSVs ein, verknüpft
+StopIDs und DIVA, berechnet einheitliche Namen und ergänzt die Einträge in
+`stations.json`. Bereits vorhandene WL-Einträge (`"source": "wl"`) werden dabei ersetzt.
 
 ### Pendlerstationen
 
