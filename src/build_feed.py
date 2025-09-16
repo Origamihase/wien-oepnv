@@ -499,26 +499,61 @@ def _collect_items() -> List[Dict[str, Any]]:
     return items
 
 
-def _drop_old_items(items: List[Dict[str, Any]], now: datetime) -> List[Dict[str, Any]]:
-    """Entferne Items, die zu alt sind oder bereits beendet wurden."""
+def _drop_old_items(
+    items: List[Dict[str, Any]],
+    now: datetime,
+    state: Dict[str, Dict[str, Any]],
+) -> List[Dict[str, Any]]:
+    """Entferne Items, die zu alt sind oder bereits beendet wurden.
+
+    Neben ``pubDate``/``starts_at`` wird – falls vorhanden – ``first_seen`` aus dem
+    geladenen State als Altersreferenz verwendet. Das betrifft Items ohne
+    Datumsangaben, die andernfalls ewig im Feed verbleiben würden.
+    """
+
     out: List[Dict[str, Any]] = []
+    now_utc = _to_utc(now)
     for it in items:
+        if not isinstance(it, dict):
+            continue
+
+        ident = _identity_for_item(it)
+        state_entry = state.get(ident) if isinstance(state, dict) else None
+
         ends_at = it.get("ends_at")
         if isinstance(ends_at, datetime):
-            if _to_utc(ends_at) < _to_utc(now) - timedelta(minutes=ENDS_AT_GRACE_MINUTES):
+            if _to_utc(ends_at) < now_utc - timedelta(minutes=ENDS_AT_GRACE_MINUTES):
                 continue
 
         dt = it.get("pubDate") or it.get("starts_at")
+        age_days: Optional[float] = None
         if isinstance(dt, datetime):
-            age_days = (_to_utc(now) - _to_utc(dt)).total_seconds() / 86400.0
+            age_days = (now_utc - _to_utc(dt)).total_seconds() / 86400.0
+        elif isinstance(state_entry, dict):
+            raw_first_seen = state_entry.get("first_seen")
+            if raw_first_seen is not None:
+                try:
+                    first_seen_dt = datetime.fromisoformat(str(raw_first_seen))
+                except Exception:
+                    log.warning(
+                        "first_seen Parsefehler: %r – ignoriere für %s",
+                        raw_first_seen,
+                        ident,
+                    )
+                else:
+                    if first_seen_dt.tzinfo is None:
+                        first_seen_dt = first_seen_dt.replace(tzinfo=timezone.utc)
+                    age_days = (now_utc - _to_utc(first_seen_dt)).total_seconds() / 86400.0
+
+        if age_days is not None:
             if age_days > ABSOLUTE_MAX_AGE_DAYS:
                 continue
             if age_days > MAX_ITEM_AGE_DAYS:
                 if not (
-                    isinstance(ends_at, datetime)
-                    and _to_utc(ends_at) > _to_utc(now)
+                    isinstance(ends_at, datetime) and _to_utc(ends_at) > now_utc
                 ):
                     continue
+
         out.append(it)
     return out
 
@@ -702,7 +737,7 @@ def main() -> int:
     state = _load_state()
     items = _collect_items()
     _normalize_item_datetimes(items)
-    items = _drop_old_items(items, now)
+    items = _drop_old_items(items, now, state)
     items = _dedupe_items(items)
     if not items:
         log.warning("Keine Items gesammelt.")
