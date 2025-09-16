@@ -166,10 +166,23 @@ def format_local_times(
     if isinstance(end, datetime):
         end_local = _to_utc(end).astimezone(_VIENNA_TZ)
 
+    today = datetime.now(_VIENNA_TZ)
+
     if start_local:
-        if not end_local or end_local <= start_local:
-            return f"seit {start_local:%d.%m.%Y}"
-        return f"{start_local:%d.%m.%Y}–{end_local:%d.%m.%Y}"
+        if end_local:
+            if (
+                start_local.date() == end_local.date()
+                and start_local.date() > today.date()
+            ):
+                return f"Am {start_local:%d.%m.%Y}"
+            if end_local <= start_local:
+                if start_local.date() > today.date():
+                    return f"Ab {start_local:%d.%m.%Y}"
+                return f"Seit {start_local:%d.%m.%Y}"
+            return f"{start_local:%d.%m.%Y}–{end_local:%d.%m.%Y}"
+        if start_local.date() > today.date():
+            return f"Ab {start_local:%d.%m.%Y}"
+        return f"Seit {start_local:%d.%m.%Y}"
     if end_local:
         return f"bis {end_local:%d.%m.%Y}"
     return ""
