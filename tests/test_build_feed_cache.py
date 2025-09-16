@@ -3,6 +3,7 @@ import importlib
 import logging
 import sys
 from pathlib import Path
+from datetime import datetime, timezone
 
 def _import_build_feed_without_providers(monkeypatch):
     module_name = "src.build_feed"
@@ -110,3 +111,27 @@ def test_collect_items_reads_from_cache(monkeypatch):
         {"provider": "vor"},
         {"provider": "wl"},
     ]
+
+
+def test_fmt_rfc2822_logs_and_uses_fallback(monkeypatch, caplog):
+    build_feed = _import_build_feed_without_providers(monkeypatch)
+
+    def broken_formatter(_):
+        raise RuntimeError("kaputtes Datum")
+
+    monkeypatch.setattr(build_feed, "format_datetime", broken_formatter)
+
+    caplog.set_level(logging.WARNING, logger="build_feed")
+
+    dt = datetime(2023, 1, 1, tzinfo=timezone.utc)
+
+    result = build_feed._fmt_rfc2822(dt)
+
+    assert result == build_feed._to_utc(dt).strftime(build_feed.RFC)
+    log_records = [
+        record
+        for record in caplog.records
+        if record.name == "build_feed"
+        and "strftime-Fallback" in record.getMessage()
+    ]
+    assert log_records, "Fehlender Logeintrag für strftime-Fallback"

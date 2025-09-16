@@ -158,6 +158,10 @@ def _fmt_rfc2822(dt: datetime) -> str:
     try:
         return format_datetime(_to_utc(dt))
     except Exception:
+        log.exception(
+            "Konnte Datum %r nicht per format_datetime formatieren – nutze strftime-Fallback.",
+            dt,
+        )
         return _to_utc(dt).strftime(RFC)
 
 
