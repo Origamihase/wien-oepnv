@@ -748,14 +748,14 @@ def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[
 
     body_parts: List[str] = []
     identities_in_feed: List[str] = []
-    count = 0
+    emitted = 0
     for it in items:
+        if emitted >= MAX_ITEMS:
+            break
         ident, xml_item = _emit_item(it, now, state)
         body_parts.append(xml_item)
         identities_in_feed.append(ident)
-        count += 1
-        if count >= MAX_ITEMS:
-            break
+        emitted += 1
 
     out.extend(body_parts)
     out.append("</channel>")
