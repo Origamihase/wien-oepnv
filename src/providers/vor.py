@@ -12,13 +12,14 @@ KEIN <pubDate> und ordnet solche Items hinter datierten ein.
 
 from __future__ import annotations
 
-import os, re, html, logging, time, hashlib, json, tempfile
+import os, re, html, logging, time, hashlib, json, errno
 import threading
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
 from collections.abc import Mapping
-from typing import Any, Dict, Iterable, List, Optional
+from typing import Any, Dict, Iterable, List, Optional, TextIO
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -49,11 +50,110 @@ except ModuleNotFoundError:  # pragma: no cover
 
 import requests
 
+try:  # pragma: no cover - Windows support
+    import msvcrt  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover
+    msvcrt = None  # type: ignore
+
+try:  # pragma: no cover - Unix support
+    import fcntl  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover
+    fcntl = None  # type: ignore
+
 log = logging.getLogger(__name__)
 
 REQUEST_COUNT_FILE = Path(__file__).resolve().parents[2] / "data" / "vor_request_count.json"
 REQUEST_COUNT_LOCK = threading.Lock()
 MAX_REQUESTS_PER_DAY = 100
+
+_MSVCRT_LOCK_LENGTH = 1
+_LOCK_RETRY_DELAY_SEC = 0.05
+
+
+@contextmanager
+def _locked_file(file_obj: TextIO, exclusive: bool) -> Iterable[TextIO]:
+    """Context manager applying a cross-platform lock to ``file_obj``."""
+
+    if fcntl is not None:
+        lock_type = fcntl.LOCK_EX if exclusive else fcntl.LOCK_SH
+        while True:
+            try:
+                fcntl.flock(file_obj.fileno(), lock_type)
+                break
+            except OSError as exc:
+                if exc.errno != errno.EINTR:
+                    raise
+        try:
+            yield file_obj
+        finally:
+            fcntl.flock(file_obj.fileno(), fcntl.LOCK_UN)
+        return
+
+    if msvcrt is not None:
+        lock_flag = msvcrt.LK_LOCK if exclusive else msvcrt.LK_RLCK
+        unlock_flag = msvcrt.LK_UNLCK
+        start_pos = file_obj.tell()
+        file_obj.seek(0)
+        while True:
+            try:
+                msvcrt.locking(file_obj.fileno(), lock_flag, _MSVCRT_LOCK_LENGTH)
+                break
+            except OSError as exc:  # pragma: no cover - Windows specific paths
+                if exc.errno in (errno.EACCES, errno.EDEADLK):
+                    time.sleep(_LOCK_RETRY_DELAY_SEC)
+                    continue
+                raise
+        try:
+            file_obj.seek(start_pos)
+            yield file_obj
+        finally:  # pragma: no cover - Windows specific paths
+            current_pos = file_obj.tell()
+            file_obj.seek(0)
+            msvcrt.locking(file_obj.fileno(), unlock_flag, _MSVCRT_LOCK_LENGTH)
+            file_obj.seek(current_pos)
+        return
+
+    # Fallback: no platform specific locking available.
+    yield file_obj
+
+
+def _parse_request_count_payload(data: Any) -> tuple[Optional[str], int]:
+    if not isinstance(data, Mapping):
+        return None, 0
+
+    date_raw = data.get("date")
+    date_str = str(date_raw).strip() if isinstance(date_raw, str) else None
+
+    count_raw = data.get("count", 0)
+    try:
+        count_int = int(count_raw)
+    except (TypeError, ValueError):
+        count_int = 0
+    count_int = max(0, count_int)
+
+    return date_str, count_int
+
+
+def _read_request_count_from_handle(file_obj: TextIO, *, log_errors: bool) -> tuple[Optional[str], int]:
+    file_obj.seek(0)
+    try:
+        content = file_obj.read()
+    except OSError as exc:
+        if log_errors:
+            log.debug("VOR: konnte Request-Zähler nicht lesen (%s)", exc)
+        return None, 0
+
+    if not content:
+        return None, 0
+
+    try:
+        data = json.loads(content)
+    except (TypeError, ValueError) as exc:
+        if log_errors:
+            log.debug("VOR: konnte Request-Zähler nicht lesen (%s)", exc)
+        return None, 0
+
+    return _parse_request_count_payload(data)
 
 
 def load_request_count() -> tuple[Optional[str], int]:
@@ -75,39 +175,24 @@ def load_request_count() -> tuple[Optional[str], int]:
     """
     try:
         with REQUEST_COUNT_FILE.open("r", encoding="utf-8") as fh:
-            data = json.load(fh)
+            with _locked_file(fh, exclusive=False):
+                return _read_request_count_from_handle(fh, log_errors=True)
     except FileNotFoundError:
         return None, 0
-    except (OSError, ValueError, TypeError) as exc:
+    except OSError as exc:
         log.debug("VOR: konnte Request-Zähler nicht lesen (%s)", exc)
         return None, 0
-
-    if not isinstance(data, Mapping):
-        return None, 0
-
-    date_raw = data.get("date")
-    date_str = str(date_raw).strip() if isinstance(date_raw, str) else None
-
-    count_raw = data.get("count", 0)
-    try:
-        count_int = int(count_raw)
-    except (TypeError, ValueError):
-        count_int = 0
-    count_int = max(0, count_int)
-
-    return date_str, count_int
 
 
 def save_request_count(now_local: datetime) -> int:
     """Erhöhe und speichere den Tageszähler für VOR-Anfragen.
 
-    Die Funktion verwendet ``REQUEST_COUNT_LOCK``, um gleichzeitige Zugriffe
-    abzusichern, liest den bestehenden Wert mit :func:`load_request_count`
-    ein und erhöht ihn für das übergebene lokale Datum. Der aktualisierte
-    Zähler wird atomar in ``REQUEST_COUNT_FILE`` geschrieben, indem zunächst
-    eine temporäre Datei erzeugt und anschließend ersetzt wird. Tritt beim
-    Schreiben ein ``OSError`` auf, bleibt der bisherige Zähler erhalten und
-    es wird eine Warnung geloggt.
+    Die Funktion verwendet ``REQUEST_COUNT_LOCK`` sowie einen Datei-Lock, um
+    gleichzeitige Zugriffe abzusichern, liest den bestehenden Wert aus
+    ``REQUEST_COUNT_FILE`` und erhöht ihn für das übergebene lokale Datum.
+    Der aktualisierte Zähler wird nach dem Trunkieren direkt in die
+    Zieldatei geschrieben. Tritt beim Schreiben ein ``OSError`` auf, bleibt
+    der bisherige Zähler erhalten und es wird eine Warnung geloggt.
 
     Args:
         now_local: Ein datetime-Objekt mit lokalem Datum, das für den
@@ -123,40 +208,33 @@ def save_request_count(now_local: datetime) -> int:
     today = now_local.date().isoformat()
 
     with REQUEST_COUNT_LOCK:
-        stored_date, stored_count = load_request_count()
-        if stored_date != today:
-            stored_count = 0
-        new_count = stored_count + 1
-        tmp_path: str | None = None
+        new_count = 1
         try:
             REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
-            fd, tmp_path = tempfile.mkstemp(
-                prefix=f"{REQUEST_COUNT_FILE.stem}-",
-                suffix=REQUEST_COUNT_FILE.suffix or ".tmp",
-                dir=str(REQUEST_COUNT_FILE.parent),
-            )
-            with os.fdopen(fd, "w", encoding="utf-8") as fh:
-                json.dump({"date": today, "count": new_count}, fh)
-                fh.flush()
-                try:
-                    os.fsync(fh.fileno())
-                except OSError as sync_exc:
-                    log.warning(
-                        "VOR: Konnte Request-Zähler nicht synchronisieren: %s",
-                        sync_exc,
+            with REQUEST_COUNT_FILE.open("a+", encoding="utf-8") as fh:
+                with _locked_file(fh, exclusive=True):
+                    stored_date, stored_count = _read_request_count_from_handle(
+                        fh, log_errors=True
                     )
-                    raise
-            os.replace(tmp_path, REQUEST_COUNT_FILE)
+                    if stored_date != today:
+                        stored_count = 0
+                    new_count = stored_count + 1
+
+                    fh.seek(0)
+                    fh.truncate()
+                    fh.seek(0)
+                    json.dump({"date": today, "count": new_count}, fh)
+                    fh.flush()
+                    try:
+                        os.fsync(fh.fileno())
+                    except OSError as sync_exc:
+                        log.warning(
+                            "VOR: Konnte Request-Zähler nicht synchronisieren: %s",
+                            sync_exc,
+                        )
+                        raise
         except OSError as exc:
             log.warning("VOR: Konnte Request-Zähler nicht speichern: %s", exc)
-            if tmp_path is not None:
-                try:
-                    os.unlink(tmp_path)
-                except OSError as cleanup_exc:
-                    log.debug(
-                        "VOR: Temporäre Request-Zähler-Datei konnte nicht gelöscht werden: %s",
-                        cleanup_exc,
-                    )
         return new_count
 
 
