@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import inspect
 import json
 import os
 import sys
@@ -56,10 +55,22 @@ PROVIDER_CACHE_KEYS: Dict[str, str] = {
     "VOR_ENABLE": "vor",
 }
 
+def read_cache_wl(timeout: int | None = None) -> List[Any]:
+    return read_cache("wl")
+
+
+def read_cache_oebb(timeout: int | None = None) -> List[Any]:
+    return read_cache("oebb")
+
+
+def read_cache_vor(timeout: int | None = None) -> List[Any]:
+    return read_cache("vor")
+
+
 PROVIDERS: List[Tuple[str, Any]] = [
-    ("WL_ENABLE", lambda: read_cache("wl")),
-    ("OEBB_ENABLE", lambda: read_cache("oebb")),
-    ("VOR_ENABLE", lambda: read_cache("vor")),
+    ("WL_ENABLE", read_cache_wl),
+    ("OEBB_ENABLE", read_cache_oebb),
+    ("VOR_ENABLE", read_cache_vor),
 ]
 
 for env, loader in PROVIDERS:
@@ -325,10 +336,7 @@ def _collect_items() -> List[Dict[str, Any]]:
     timed_out = False
     try:
         for fetch in active:
-            if "timeout" in inspect.signature(fetch).parameters:
-                futures[executor.submit(fetch, timeout=PROVIDER_TIMEOUT)] = fetch
-            else:
-                futures[executor.submit(fetch)] = fetch
+            futures[executor.submit(fetch, timeout=PROVIDER_TIMEOUT)] = fetch
         try:
             for future in as_completed(futures, timeout=PROVIDER_TIMEOUT):
                 fetch = futures[future]
