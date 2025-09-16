@@ -122,6 +122,32 @@ def test_emit_item_appends_since_time(monkeypatch):
     assert desc_text == "Wegen Bauarbeiten<br/>seit 05.01.2024"
 
 
+def test_emit_item_since_line_for_missing_or_nonadvancing_end(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 1, 10, tzinfo=timezone.utc)
+    base_item = {
+        "title": "Störung",
+        "description": "Wegen Bauarbeiten",
+        "starts_at": datetime(2024, 1, 5, 10, 0, tzinfo=timezone.utc),
+    }
+
+    scenarios = [
+        {},
+        {"ends_at": datetime(2024, 1, 5, 10, 0, tzinfo=timezone.utc)},
+    ]
+
+    for extra in scenarios:
+        item = dict(base_item)
+        item.update(extra)
+        _, xml = bf._emit_item(item, now, {})
+
+        desc_text = _extract_description(xml)
+        assert desc_text.split("<br/>") == [
+            "Wegen Bauarbeiten",
+            "seit 05.01.2024",
+        ]
+
+
 def test_emit_item_appends_same_day_range(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     now = datetime(2024, 3, 10, tzinfo=timezone.utc)
