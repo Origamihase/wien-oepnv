@@ -54,6 +54,22 @@ MAX_REQUESTS_PER_DAY = 100
 
 
 def load_request_count() -> tuple[Optional[str], int]:
+    """Lese den persistierten Tageszähler für VOR-Anfragen.
+
+    Der Zähler wird aus ``REQUEST_COUNT_FILE`` geladen und liefert das
+    gespeicherte Datum (ISO-Format) und den bereits verbrauchten
+    Request-Wert zurück. Kann die Datei nicht geöffnet oder der Inhalt nicht
+    interpretiert werden (fehlend, beschädigt oder unerwarteter Typ), wird
+    ``(None, 0)`` zurückgegeben und ein Debug-Logeintrag vermerkt. Es werden
+    keine Ausnahmen weitergereicht.
+
+    Returns:
+        tuple[str | None, int]: Das gespeicherte Datum und der Zählerstand;
+        bei Problemen ``(None, 0)``.
+
+    Nebenwirkungen:
+        Greift lesend auf ``REQUEST_COUNT_FILE`` zu.
+    """
     try:
         with REQUEST_COUNT_FILE.open("r", encoding="utf-8") as fh:
             data = json.load(fh)
@@ -80,6 +96,27 @@ def load_request_count() -> tuple[Optional[str], int]:
 
 
 def save_request_count(now_local: datetime) -> int:
+    """Erhöhe und speichere den Tageszähler für VOR-Anfragen.
+
+    Die Funktion verwendet ``REQUEST_COUNT_LOCK``, um gleichzeitige Zugriffe
+    abzusichern, liest den bestehenden Wert mit :func:`load_request_count`
+    ein und erhöht ihn für das übergebene lokale Datum. Der aktualisierte
+    Zähler wird atomar in ``REQUEST_COUNT_FILE`` geschrieben, indem zunächst
+    eine temporäre Datei erzeugt und anschließend ersetzt wird. Tritt beim
+    Schreiben ein ``OSError`` auf, bleibt der bisherige Zähler erhalten und
+    es wird eine Warnung geloggt.
+
+    Args:
+        now_local: Ein datetime-Objekt mit lokalem Datum, das für den
+            Tageswechsel herangezogen wird.
+
+    Returns:
+        int: Der neue Zählerstand nach der Erhöhung.
+
+    Nebenwirkungen:
+        Greift schreibend auf ``REQUEST_COUNT_FILE`` zu und hält dabei
+        ``REQUEST_COUNT_LOCK``.
+    """
     today = now_local.date().isoformat()
 
     with REQUEST_COUNT_LOCK:
