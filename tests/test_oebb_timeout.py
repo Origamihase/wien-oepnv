@@ -31,6 +31,9 @@ def test_fetch_xml_passes_timeout_to_session(monkeypatch):
             pass
 
     class DummySession:
+        def __init__(self):
+            self.headers: dict[str, str] = {}
+
         def __enter__(self):
             return self
 
@@ -40,7 +43,7 @@ def test_fetch_xml_passes_timeout_to_session(monkeypatch):
         def get(self, url, timeout):
             recorded["timeout"] = timeout
             return DummyResponse()
-    monkeypatch.setattr(oebb, "_session", lambda: DummySession())
+    monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession())
 
     oebb._fetch_xml("http://example.com", timeout=3)
     assert recorded["timeout"] == 3

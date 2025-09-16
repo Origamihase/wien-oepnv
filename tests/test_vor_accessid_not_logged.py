@@ -12,6 +12,9 @@ def test_accessid_not_logged(monkeypatch, caplog):
     importlib.reload(vor)
 
     class DummySession:
+        def __init__(self):
+            self.headers: dict[str, str] = {}
+
         def __enter__(self):
             return self
 
@@ -21,7 +24,7 @@ def test_accessid_not_logged(monkeypatch, caplog):
         def get(self, *args, **kwargs):
             raise requests.RequestException(f"boom accessId={vor.VOR_ACCESS_ID}")
 
-    monkeypatch.setattr(vor, "_session", lambda: DummySession())
+    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
     now_local = datetime.now(ZoneInfo("Europe/Vienna"))
 
     with caplog.at_level(logging.ERROR):

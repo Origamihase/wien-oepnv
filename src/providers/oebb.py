@@ -39,9 +39,10 @@ except ModuleNotFoundError:  # pragma: no cover
     from src.utils.text import html_to_text  # type: ignore
     from src.utils.stations import canonical_name, is_in_vienna, is_pendler  # type: ignore
 
-import requests
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
+try:  # pragma: no cover - support both package layouts
+    from utils.http import session_with_retries
+except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.http import session_with_retries  # type: ignore
 from defusedxml import ElementTree as ET
 
 log = logging.getLogger(__name__)
@@ -54,13 +55,7 @@ OEBB_URL = (os.getenv("OEBB_RSS_URL", "").strip()
 OEBB_ONLY_VIENNA = get_bool_env("OEBB_ONLY_VIENNA", False)
 
 # ---------------- HTTP ----------------
-def _session() -> requests.Session:
-    s = requests.Session()
-    retry = Retry(total=4, backoff_factor=0.6, status_forcelist=(429,500,502,503,504),
-                  allowed_methods=("GET",))
-    s.mount("https://", HTTPAdapter(max_retries=retry))
-    s.headers.update({"User-Agent":"Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"})
-    return s
+USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"
 
 # ---------------- Titel + Endpunkte ----------------
 BAHNHOF_TRIM_RE = re.compile(r"\s*(?:Bahnhof|Bahnhst|Hbf|Bf)(?:\s*\(U\))?", re.IGNORECASE)
@@ -179,7 +174,7 @@ def _keep_by_region(title: str, desc: str) -> bool:
 
 # ---------------- Fetch/Parse ----------------
 def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
-    with _session() as s:
+    with session_with_retries(USER_AGENT) as s:
         for attempt in range(2):
             r = s.get(url, timeout=timeout)
             status = getattr(r, "status_code", None)

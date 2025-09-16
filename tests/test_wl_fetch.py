@@ -24,6 +24,9 @@ def test_fetch_events_handles_invalid_json(monkeypatch, caplog):
             raise ValueError("invalid JSON")
 
     class DummySession:
+        def __init__(self):
+            self.headers: dict[str, str] = {}
+
         def __enter__(self):
             return self
 
@@ -33,7 +36,7 @@ def test_fetch_events_handles_invalid_json(monkeypatch, caplog):
         def get(self, url, params=None, timeout=None):
             return DummyResponse()
 
-    monkeypatch.setattr("src.providers.wl_fetch._session", lambda: DummySession())
+    monkeypatch.setattr("src.providers.wl_fetch.session_with_retries", lambda *a, **kw: DummySession())
 
     with caplog.at_level(logging.WARNING):
         events = fetch_events(timeout=0)

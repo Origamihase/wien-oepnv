@@ -11,8 +11,11 @@ from typing import Any, Dict, Iterable, List, Optional
 
 import requests
 from dateutil import parser as dtparser
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
+
+try:  # pragma: no cover - support both package layouts
+    from utils.http import session_with_retries
+except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.http import session_with_retries  # type: ignore
 
 try:  # pragma: no cover - support both package layouts
     from utils.text import html_to_text
@@ -61,23 +64,8 @@ _HALT_SUFFIX_RE = re.compile(r"\(\d+\s+Halt(?:e)?\)$")
 
 # ---------------- HTTP-Session mit Retry ----------------
 
-def _session() -> requests.Session:
-    s = requests.Session()
-    retry = Retry(
-        total=4,
-        backoff_factor=0.6,
-        status_forcelist=(429, 500, 502, 503, 504),
-        allowed_methods=("GET",),
-        raise_on_status=False,
-    )
-    s.mount("https://", HTTPAdapter(max_retries=retry))
-    s.headers.update(
-        {
-            "Accept": "application/json",
-            "User-Agent": "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)",
-        }
-    )
-    return s
+WL_USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"
+WL_SESSION_HEADERS = {"Accept": "application/json"}
 
 
 # ---------------- Zeit & Utils ----------------
@@ -173,7 +161,8 @@ def _get_json(
     if session is not None:
         return _fetch(session)
 
-    with _session() as s:
+    with session_with_retries(WL_USER_AGENT, raise_on_status=False) as s:
+        s.headers.update(WL_SESSION_HEADERS)
         return _fetch(s)
 
 
@@ -199,7 +188,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     now = datetime.now(timezone.utc)
     raw: List[Dict[str, Any]] = []
 
-    with _session() as session:
+    with session_with_retries(WL_USER_AGENT, raise_on_status=False) as session:
+        session.headers.update(WL_SESSION_HEADERS)
         # A) TrafficInfos (Störungen)
         try:
             for ti in _fetch_traffic_infos(timeout=timeout, session=session):
