@@ -356,34 +356,28 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
         log.warning("State laden fehlgeschlagen (%s) – starte leer.", e)
         return {}
 
-    threshold = datetime.now(timezone.utc) - timedelta(days=STATE_RETENTION_DAYS)
     out: Dict[str, Dict[str, Any]] = {}
-    for k, v in data.items():
-        try:
-            fs_dt = datetime.fromisoformat(v.get("first_seen", ""))
-            fs_dt = _to_utc(fs_dt)
-            if fs_dt >= threshold:
-                out[k] = v
-        except Exception:
+    for ident, entry in data.items():
+        if not isinstance(entry, dict):
             continue
+        try:
+            raw_first_seen = entry.get("first_seen", "")
+            fs_dt = datetime.fromisoformat(str(raw_first_seen))
+            _to_utc(fs_dt)
+        except Exception:
+            log.warning(
+                "State-Eintrag %s hat unparsebares first_seen: %r", ident, entry.get("first_seen")
+            )
+            continue
+        out[ident] = entry
     return out
 
 def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
     path = _validate_path(STATE_FILE, "STATE_PATH")
     path.parent.mkdir(parents=True, exist_ok=True)
-    threshold = datetime.now(timezone.utc) - timedelta(days=STATE_RETENTION_DAYS)
-    pruned: Dict[str, Dict[str, Any]] = {}
-    for k, v in state.items():
-        try:
-            fs_dt = datetime.fromisoformat(v.get("first_seen", ""))
-            fs_dt = _to_utc(fs_dt)
-            if fs_dt >= threshold:
-                pruned[k] = v
-        except Exception:
-            continue
     tmp = path.with_suffix(".tmp")
     with tmp.open("w", encoding="utf-8") as f:
-        json.dump(pruned, f, ensure_ascii=False, indent=2, sort_keys=True)
+        json.dump(state, f, ensure_ascii=False, indent=2, sort_keys=True)
         f.flush()
         os.fsync(f.fileno())
     tmp.replace(path)
