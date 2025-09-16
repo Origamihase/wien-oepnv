@@ -56,15 +56,15 @@ PROVIDER_CACHE_KEYS: Dict[str, str] = {
     "VOR_ENABLE": "vor",
 }
 
-def read_cache_wl(timeout: int | None = None) -> List[Any]:
+def read_cache_wl() -> List[Any]:
     return read_cache("wl")
 
 
-def read_cache_oebb(timeout: int | None = None) -> List[Any]:
+def read_cache_oebb() -> List[Any]:
     return read_cache("oebb")
 
 
-def read_cache_vor(timeout: int | None = None) -> List[Any]:
+def read_cache_vor() -> List[Any]:
     return read_cache("vor")
 
 
@@ -358,7 +358,7 @@ def _collect_items() -> List[Dict[str, Any]]:
     timed_out = False
     try:
         for fetch in active:
-            futures[executor.submit(fetch, timeout=PROVIDER_TIMEOUT)] = fetch
+            futures[executor.submit(fetch)] = fetch
         try:
             for future in as_completed(futures, timeout=PROVIDER_TIMEOUT):
                 fetch = futures[future]
