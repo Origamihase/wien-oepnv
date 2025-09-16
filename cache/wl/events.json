@@ -303,7 +303,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "95A/97A: Straßenbauarbeiten",
-    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Pfalzgasse werden die Linien 95 A und 97 A umgeleitet.\nZeitraum:\nAb Montag, 22. September 2025, etwa 07:00 Uhr auf Dauer von etwa acht Wochen.\nMaßnahmen:\nLinie 95 A in Richtung Aspern Nord S U\nUmleitung ab Hausfeldstraße # Pfalzgasse über Hausfeldstraße – Lackenjöchelgasse – Schukowitzgasse – Pfalzgasse.\nLinie 95 A in Richtung Großer Biberhaufen\nUmleitung ab Fuchsenzeile # Schukowitzgasse über Schukowitzgasse – Lackenjöchelgasse – Hausfeldstraße.\nHaltestellen in Richtung Großer Biberhaufen:\nPODHAGSKYGASSE\nSchukowitzgasse nach Podhagskygasse\nPFALZGASSE\nSchukowitzgasse vor Pfalzgasse\nNEUBREITENLEE\nPfalzgasse 1-5\nErsatz- und provisorische Haltestellen:\nPODHAGSKYGASSE Schukowitzgasse 30\nNEUBREITENLEE Hausfeldstraße gegenüber 76-78\nLinie 97 A (Schulkurs) in Richtung Mayredergasse\nUmleitung ab Hausfeldstraße # Lackenjöchelgasse über Lackenjöchelgasse – Schukowitzgasse – Pfalzgasse.\nHaltestellen:\nLACKENJÖCHELGASSE\nHausfeldstraße nach Lackenjöchelgasse\nLinie 97 A in Richtung Breitenlee, Schule\nUmleitung ab Fuchsenzeile # Schukowitzgasse über Schukowitzgasse – Lackenjöchelgasse – Hausfeldstraße.\nHaltestellen:\nPODHAGSKYGASSE\nSchukowitzgasse nach Podhagskygasse\nPFALZGASSE\nSchukowitzgasse vor Pfalzgasse\nNEUBREITENLEE\nPfalzgasse 1-5\nErsatz- und provisorische Haltestellen:\nPODHAGSKYGASSE Schukowitzgasse 30\nNEUBREITENLEE Hausfeldstraße gegenüber 76-78",
+    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Pfalzgasse werden die Linien 95 A und 97 A umgeleitet.\nZeitraum:\nAb Montag, 22. September 2025, etwa 07:00 Uhr auf Dauer von etwa acht Wochen.\nMaßnahmen:\nLinie 95 A in Richtung Aspern Nord S U\nUmleitung ab Hausfeldstraße # Pfalzgasse über Hausfeldstraße – Lackenjöchelgasse – Schukowitzgasse – Pfalzgasse.\nLinie 95 A in Richtung Großer Biberhaufen\nUmleitung ab Fuchsenzeile # Schukowitzgasse über Schukowitzgasse – Lackenjöchelgasse – Hausfeldstraße.\nHaltestellen in Richtung Großer Biberhaufen:\nPODHAGSKYGASSE\nSchukowitzgasse nach Podhagskygasse\nPFALZGASSE\nSchukowitzgasse vor Pfalzgasse\nNEUBREITENLEE\nPfalzgasse 1-5\nErsatz- und provisorische Haltestellen:\nPODHAGSKYGASSE Schukowitzgasse 30\nNEUBREITENLEE Hausfeldstraße gegenüber 84\nLinie 97 A (Schulkurs) in Richtung Mayredergasse\nUmleitung ab Hausfeldstraße # Lackenjöchelgasse über Lackenjöchelgasse – Schukowitzgasse – Pfalzgasse.\nHaltestellen:\nLACKENJÖCHELGASSE\nHausfeldstraße nach Lackenjöchelgasse\nLinie 97 A in Richtung Breitenlee, Schule\nUmleitung ab Fuchsenzeile # Schukowitzgasse über Schukowitzgasse – Lackenjöchelgasse – Hausfeldstraße.\nHaltestellen:\nPODHAGSKYGASSE\nSchukowitzgasse nach Podhagskygasse\nPFALZGASSE\nSchukowitzgasse vor Pfalzgasse\nNEUBREITENLEE\nPfalzgasse 1-5\nErsatz- und provisorische Haltestellen:\nPODHAGSKYGASSE Schukowitzgasse 30\nNEUBREITENLEE Hausfeldstraße gegenüber 76-78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2b36bd83c76e9b3875ef8db91fdcf612018122efc252eefcfaa4627f1b8fb247",
     "pubDate": "2025-09-11T13:00:00+02:00",
@@ -418,5 +418,17 @@
     "starts_at": "2025-09-16T09:00:00+02:00",
     "ends_at": "2025-11-02T23:59:00+02:00",
     "_identity": "wl|hinweis|L=U4|D=2025-09-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Falschparker",
+    "description": "Die Linie 60 ist derzeit in Richtung Westbahnhof an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 12:40 Uhr. Grund dafür ist ein Falschparker im Bereich Preyergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093",
+    "pubDate": "2025-09-16T12:10:00+02:00",
+    "starts_at": "2025-09-16T12:10:00+02:00",
+    "ends_at": "2025-09-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=60|D=2025-09-16"
   }
 ]
