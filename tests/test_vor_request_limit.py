@@ -1,4 +1,5 @@
 import json
+import multiprocessing
 import os
 import threading
 from datetime import datetime
@@ -7,6 +8,19 @@ import pytest
 from zoneinfo import ZoneInfo
 
 import src.providers.vor as vor
+
+
+def _save_request_count_in_process(count_file: str, iso_timestamp: str, iterations: int, start_event) -> None:
+    from datetime import datetime
+    from pathlib import Path
+
+    import src.providers.vor as vor_module
+
+    vor_module.REQUEST_COUNT_FILE = Path(count_file)
+    moment = datetime.fromisoformat(iso_timestamp)
+    start_event.wait()
+    for _ in range(iterations):
+        vor_module.save_request_count(moment)
 
 
 def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
@@ -89,6 +103,37 @@ def test_save_request_count_flushes_and_fsyncs(monkeypatch, tmp_path):
 
     assert flush_called
     assert fsync_called
+
+
+def test_save_request_count_is_safe_across_processes(monkeypatch, tmp_path):
+    count_file = tmp_path / "vor_request_count.json"
+    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", count_file)
+
+    ctx = multiprocessing.get_context("spawn")
+    start_event = ctx.Event()
+    timestamp = datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna"))
+    iterations = 5
+
+    processes = [
+        ctx.Process(
+            target=_save_request_count_in_process,
+            args=(str(count_file), timestamp.isoformat(), iterations, start_event),
+        )
+        for _ in range(2)
+    ]
+
+    for proc in processes:
+        proc.start()
+
+    start_event.set()
+
+    for proc in processes:
+        proc.join(10)
+        assert not proc.is_alive()
+        assert proc.exitcode == 0
+
+    data = json.loads(count_file.read_text(encoding="utf-8"))
+    assert data["count"] == iterations * len(processes)
 
 
 def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path):

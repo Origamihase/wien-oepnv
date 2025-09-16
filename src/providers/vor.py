@@ -123,38 +123,92 @@ def save_request_count(now_local: datetime) -> int:
     today = now_local.date().isoformat()
 
     with REQUEST_COUNT_LOCK:
-        stored_date, stored_count = load_request_count()
-        if stored_date != today:
-            stored_count = 0
-        new_count = stored_count + 1
+        lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
+        lock_fd: int | None = None
+        lock_acquired = False
         tmp_path: str | None = None
+
         try:
-            REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
-            fd, tmp_path = tempfile.mkstemp(
-                prefix=f"{REQUEST_COUNT_FILE.stem}-",
-                suffix=REQUEST_COUNT_FILE.suffix or ".tmp",
-                dir=str(REQUEST_COUNT_FILE.parent),
-            )
-            with os.fdopen(fd, "w", encoding="utf-8") as fh:
-                json.dump({"date": today, "count": new_count}, fh)
-                fh.flush()
+            while True:
                 try:
-                    os.fsync(fh.fileno())
-                except OSError as sync_exc:
-                    log.warning(
-                        "VOR: Konnte Request-Zähler nicht synchronisieren: %s",
-                        sync_exc,
+                    lock_fd = os.open(
+                        lock_path,
+                        os.O_CREAT | os.O_EXCL | os.O_WRONLY,
+                        0o600,
                     )
-                    raise
-            os.replace(tmp_path, REQUEST_COUNT_FILE)
-        except OSError as exc:
-            log.warning("VOR: Konnte Request-Zähler nicht speichern: %s", exc)
-            if tmp_path is not None:
+                    lock_acquired = True
+                    break
+                except FileExistsError:
+                    time.sleep(0.05)
+                    continue
+                except FileNotFoundError:
+                    try:
+                        REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
+                    except OSError as mkdir_exc:
+                        log.warning(
+                            "VOR: Konnte Request-Zähler-Lock nicht erstellen: %s",
+                            mkdir_exc,
+                        )
+                        break
+                    continue
+                except OSError as lock_exc:
+                    log.warning(
+                        "VOR: Konnte Request-Zähler-Lock nicht erstellen: %s",
+                        lock_exc,
+                    )
+                    break
+
+            stored_date, stored_count = load_request_count()
+            if stored_date != today:
+                stored_count = 0
+            new_count = stored_count + 1
+
+            try:
+                REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
+                fd, tmp_path = tempfile.mkstemp(
+                    prefix=f"{REQUEST_COUNT_FILE.stem}-",
+                    suffix=REQUEST_COUNT_FILE.suffix or ".tmp",
+                    dir=str(REQUEST_COUNT_FILE.parent),
+                )
+                with os.fdopen(fd, "w", encoding="utf-8") as fh:
+                    json.dump({"date": today, "count": new_count}, fh)
+                    fh.flush()
+                    try:
+                        os.fsync(fh.fileno())
+                    except OSError as sync_exc:
+                        log.warning(
+                            "VOR: Konnte Request-Zähler nicht synchronisieren: %s",
+                            sync_exc,
+                        )
+                        raise
+                os.replace(tmp_path, REQUEST_COUNT_FILE)
+            except OSError as exc:
+                log.warning("VOR: Konnte Request-Zähler nicht speichern: %s", exc)
+                if tmp_path is not None:
+                    try:
+                        os.unlink(tmp_path)
+                    except OSError as cleanup_exc:
+                        log.debug(
+                            "VOR: Temporäre Request-Zähler-Datei konnte nicht gelöscht werden: %s",
+                            cleanup_exc,
+                        )
+        finally:
+            if lock_fd is not None:
                 try:
-                    os.unlink(tmp_path)
+                    os.close(lock_fd)
+                except OSError as close_exc:
+                    log.debug(
+                        "VOR: Konnte Request-Zähler-Lock nicht schließen: %s",
+                        close_exc,
+                    )
+            if lock_acquired:
+                try:
+                    os.unlink(lock_path)
+                except FileNotFoundError:
+                    pass
                 except OSError as cleanup_exc:
                     log.debug(
-                        "VOR: Temporäre Request-Zähler-Datei konnte nicht gelöscht werden: %s",
+                        "VOR: Konnte Request-Zähler-Lock nicht entfernen: %s",
                         cleanup_exc,
                     )
         return new_count
