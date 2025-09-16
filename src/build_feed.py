@@ -347,17 +347,51 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
 
 def _collect_items() -> List[Dict[str, Any]]:
     items: List[Dict[str, Any]] = []
-    futures: Dict[Any, Any] = {}
 
-    active = [f for env, f in PROVIDERS if get_bool_env(env, True)]
-    if not active:
+    cache_fetchers: List[Any] = []
+    network_fetchers: List[Any] = []
+    for env, fetch in PROVIDERS:
+        if not get_bool_env(env, True):
+            continue
+        if getattr(fetch, "_provider_cache_name", None):
+            cache_fetchers.append(fetch)
+        else:
+            network_fetchers.append(fetch)
+
+    if not cache_fetchers and not network_fetchers:
         return []
 
+    def _merge_result(fetch: Any, result: Any) -> None:
+        name = getattr(fetch, "__name__", str(fetch))
+        if not isinstance(result, list):
+            log.error("%s fetch gab keine Liste zurück: %r", name, result)
+            return
+        provider_name = getattr(fetch, "_provider_cache_name", None)
+        if provider_name and not result:
+            log.warning(
+                "Cache für Provider '%s' leer – generiere Feed ohne aktuelle Daten.",
+                provider_name,
+            )
+        items.extend(result)
+
+    for fetch in cache_fetchers:
+        name = getattr(fetch, "__name__", str(fetch))
+        try:
+            result = fetch()
+        except Exception as exc:
+            log.exception("%s fetch fehlgeschlagen: %s", name, exc)
+            continue
+        _merge_result(fetch, result)
+
+    if not network_fetchers:
+        return items
+
+    futures: Dict[Any, Any] = {}
     # ThreadPoolExecutor erlaubt max_workers nicht als 0; daher mindestens 1
-    executor = ThreadPoolExecutor(max_workers=max(1, len(active)))
+    executor = ThreadPoolExecutor(max_workers=max(1, len(network_fetchers)))
     timed_out = False
     try:
-        for fetch in active:
+        for fetch in network_fetchers:
             futures[executor.submit(fetch)] = fetch
         try:
             for future in as_completed(futures, timeout=PROVIDER_TIMEOUT):
@@ -365,20 +399,12 @@ def _collect_items() -> List[Dict[str, Any]]:
                 name = getattr(fetch, "__name__", str(fetch))
                 try:
                     result = future.result()
-                    if not isinstance(result, list):
-                        log.error("%s fetch gab keine Liste zurück: %r", name, result)
-                        continue
-                    provider_name = getattr(fetch, "_provider_cache_name", None)
-                    if provider_name and not result:
-                        log.warning(
-                            "Cache für Provider '%s' leer – generiere Feed ohne aktuelle Daten.",
-                            provider_name,
-                        )
-                    items += result
                 except TimeoutError:
                     log.warning("%s fetch Timeout nach %ss", name, PROVIDER_TIMEOUT)
-                except Exception as e:
-                    log.exception("%s fetch fehlgeschlagen: %s", name, e)
+                except Exception as exc:
+                    log.exception("%s fetch fehlgeschlagen: %s", name, exc)
+                else:
+                    _merge_result(fetch, result)
         except TimeoutError:
             timed_out = True
             log.warning("Provider-Timeout nach %ss", PROVIDER_TIMEOUT)
