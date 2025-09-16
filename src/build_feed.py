@@ -667,7 +667,10 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
         for line in desc_lines
         if line.strip() and line.strip().lower() != "zeitraum:"
     ]
-    desc_line = desc_lines[0] if desc_lines else ""
+    desc_line = next(
+        (line for line in desc_lines if any(ch.isalpha() for ch in line)),
+        desc_lines[0] if desc_lines else "",
+    )
     desc_line = _sanitize_text(desc_line)
     title_out = re.sub(r"\s+", " ", title_out).strip()
     desc_line = re.sub(r"[ \t\r\f\v]+", " ", desc_line).strip()

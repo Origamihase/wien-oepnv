@@ -126,6 +126,20 @@ def test_emit_item_removes_category_and_limits_lines(monkeypatch):
     assert "Zeitraum" not in desc_text
 
 
+def test_emit_item_skips_leading_date_line(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 1, 1, tzinfo=timezone.utc)
+    item = {
+        "title": "Info",
+        "description": "24.01.2024\nErsatzverkehr eingerichtet",
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_text = _extract_description(xml)
+    assert desc_text == "Ersatzverkehr eingerichtet"
+
+
 def test_emit_item_appends_since_time(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     _freeze_vienna_now(
