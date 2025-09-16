@@ -166,6 +166,9 @@ def format_local_times(
     if isinstance(end, datetime):
         end_local = _to_utc(end).astimezone(_VIENNA_TZ)
 
+    if start_local and end_local and (end_local - start_local).days > 180:
+        end_local = None
+
     today = datetime.now(_VIENNA_TZ)
 
     if start_local:
