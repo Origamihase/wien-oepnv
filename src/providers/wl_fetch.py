@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import os
 import re
@@ -163,7 +164,11 @@ def _get_json(
     def _fetch(s: requests.Session) -> Dict[str, Any]:
         r = s.get(url, params=params or None, timeout=timeout)
         r.raise_for_status()
-        return r.json()
+        try:
+            return r.json()
+        except (ValueError, json.JSONDecodeError) as exc:
+            log.warning("Ungültige JSON-Antwort von %s: %s", url, exc)
+            return {}
 
     if session is not None:
         return _fetch(session)
