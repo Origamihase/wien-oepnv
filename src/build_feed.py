@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
+from zoneinfo import ZoneInfo
 
 try:  # pragma: no cover - allow running as package and as script
     from utils.cache import read_cache
@@ -149,6 +150,31 @@ def _fmt_rfc2822(dt: datetime) -> str:
         return format_datetime(_to_utc(dt))
     except Exception:
         return _to_utc(dt).strftime(RFC)
+
+
+_VIENNA_TZ = ZoneInfo("Europe/Vienna")
+
+
+def format_local_times(
+    start: Optional[datetime], end: Optional[datetime]
+) -> str:
+    start_local: Optional[datetime] = None
+    end_local: Optional[datetime] = None
+
+    if isinstance(start, datetime):
+        start_local = _to_utc(start).astimezone(_VIENNA_TZ)
+    if isinstance(end, datetime):
+        end_local = _to_utc(end).astimezone(_VIENNA_TZ)
+
+    if start_local and end_local:
+        if start_local.date() == end_local.date():
+            return f"{start_local:%H:%M}-{end_local:%H:%M} {start_local:%d.%m.%Y}"
+        return f"{start_local:%d.%m.%Y %H:%M}-{end_local:%d.%m.%Y %H:%M}"
+    if start_local:
+        return f"seit: {start_local:%d.%m.%Y %H:%M}"
+    if end_local:
+        return f"bis: {end_local:%d.%m.%Y %H:%M}"
+    return ""
 
 # Entfernt XML-unerlaubte Kontrollzeichen (außer \t, \n, \r)
 _CONTROL_RE = re.compile(
@@ -487,17 +513,30 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
             pubDate = now
 
     # TV-freundliche Kürzung (Beschreibung darf HTML enthalten)
-    desc_out = _clip_text_html(raw_desc, DESCRIPTION_CHAR_LIMIT)
+    desc_clipped = _clip_text_html(raw_desc, DESCRIPTION_CHAR_LIMIT)
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(html.unescape(raw_title))
-    desc_lines = desc_out.split("\n")
+    desc_lines = desc_clipped.split("\n")
     if desc_lines and desc_lines[0].lower() in title_out.lower():
         desc_lines = desc_lines[1:]
-    desc_lines = [l for l in desc_lines if l.strip().lower() != "zeitraum:"]
-    desc_out = "\n".join(desc_lines[:2])
-    desc_out  = _sanitize_text(desc_out)
+    desc_lines = [
+        line
+        for line in desc_lines
+        if line.strip() and line.strip().lower() != "zeitraum:"
+    ]
+    desc_line = desc_lines[0] if desc_lines else ""
+    desc_line = _sanitize_text(desc_line)
     title_out = re.sub(r"\s+", " ", title_out).strip()
-    desc_out  = re.sub(r"[ \t\r\f\v]+", " ", desc_out).strip()
+    desc_line = re.sub(r"[ \t\r\f\v]+", " ", desc_line).strip()
+
+    time_line = format_local_times(
+        starts_at if isinstance(starts_at, datetime) else None,
+        ends_at if isinstance(ends_at, datetime) else None,
+    )
+    time_line = _sanitize_text(time_line)
+    time_line = re.sub(r"[ \t\r\f\v]+", " ", time_line).strip()
+
+    desc_out = "\n".join(filter(None, [desc_line, time_line]))
     desc_cdata = desc_out.replace("\n", "<br/>")
 
     parts: List[str] = []
