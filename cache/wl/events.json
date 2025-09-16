@@ -398,25 +398,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Polizeieinsatz",
-    "description": "Die Linie 7 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Kundratstraße.",
+    "title": "11A/12: Polizeieinsatz",
+    "description": "Die Linie 12 fährt derzeit nur zwischen Josefstädter Straße und Bruno-Marek-Allee. Die Linie 11 A fährt derzeit nicht zwischen Hillerstraße und Pensionsversicherungsanstalt. Ersatzweise benützen Sie die Linie U1. Grund dafür ist ein Polizeieinsatz im Bereich Vorgartenstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "64c168750858c631c7a91ad91fc35cce1827e9d8a3c84eff3d5bc5adb3221722",
-    "pubDate": "2025-09-16T22:10:00+02:00",
-    "starts_at": "2025-09-16T22:10:00+02:00",
-    "ends_at": "2025-09-17T00:30:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2025-09-16"
+    "guid": "bd34e414d9f1a7f3180f82c08d2ee8799c0028f7ba13d566f242447bf0096f76",
+    "pubDate": "2025-09-16T20:00:00+02:00",
+    "starts_at": "2025-09-16T20:00:00+02:00",
+    "ends_at": "2025-09-17T00:51:00+02:00",
+    "_identity": "wl|störung|L=11A,12|D=2025-09-16"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "N8: Signalstörung",
+    "description": "Die Linie N8 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Signalstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb8f37a153e49e1b9fce9bbe197d868b0f2104c567dea861959f72bf49ba88a7",
-    "pubDate": "2025-09-17T00:07:46+02:00",
-    "starts_at": "2025-09-17T00:07:46+02:00",
-    "ends_at": "2025-09-17T01:07:00+02:00",
-    "_identity": "wl|störung|L=12|D=2025-09-17"
+    "guid": "e29ae94d06ec29d4f572e6225257a2a6c564ab5115668a769b2c69afd1332292",
+    "pubDate": "2025-09-17T00:25:00+02:00",
+    "starts_at": "2025-09-17T00:25:00+02:00",
+    "ends_at": "2025-09-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=N8|D=2025-09-17"
   }
 ]
