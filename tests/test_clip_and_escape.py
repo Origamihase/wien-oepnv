@@ -2,7 +2,7 @@ import importlib
 import re
 import sys
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 
 def _load_build_feed(monkeypatch):
@@ -235,6 +235,49 @@ def test_emit_item_future_start_without_end_shows_ab(monkeypatch):
         "Eingeschränkter Betrieb",
         "Ab 20.01.2024",
     ]
+
+
+def test_emit_item_long_range_treated_as_open(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+
+    scenarios = [
+        (
+            datetime(2024, 1, 10, tzinfo=bf._VIENNA_TZ),
+            (2024, 1, 5, 10, 0),
+            "Seit 05.01.2024",
+        ),
+        (
+            datetime(2024, 1, 1, tzinfo=bf._VIENNA_TZ),
+            (2024, 1, 20, 6, 0),
+            "Ab 20.01.2024",
+        ),
+    ]
+
+    for now_local, start_args, expected_line in scenarios:
+        _freeze_vienna_now(monkeypatch, bf, now_local)
+        now = now_local.astimezone(timezone.utc)
+        start_dt = bf.datetime(*start_args, tzinfo=timezone.utc)
+        end_dt = start_dt + timedelta(days=190)
+        item = {
+            "title": "Langfristige Einschränkung",
+            "description": "Langer Zeitraum",
+            "starts_at": start_dt,
+            "ends_at": end_dt,
+        }
+
+        _, xml = bf._emit_item(item, now, {})
+
+        desc_text = _extract_description(xml)
+        assert desc_text.split("<br/>") == [
+            "Langer Zeitraum",
+            expected_line,
+        ]
+
+        content_html = _extract_content_encoded(xml)
+        assert content_html.split("<br/>") == [
+            "Langer Zeitraum",
+            expected_line,
+        ]
 
 
 def test_emit_item_appends_same_day_range(monkeypatch):
