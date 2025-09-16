@@ -173,8 +173,28 @@ ROTATION_INTERVAL_SEC = get_int_env("VOR_ROTATION_INTERVAL_SEC", 1800)
 RETRY_AFTER_FALLBACK_SEC = 5.0
 
 ALLOW_BUS = get_bool_env("VOR_ALLOW_BUS", False)
-BUS_INCLUDE_RE = re.compile(os.getenv("VOR_BUS_INCLUDE_REGEX", r"(?:\b[2-9]\d{2,4}\b)"))
-BUS_EXCLUDE_RE = re.compile(os.getenv("VOR_BUS_EXCLUDE_REGEX", r"^(?:N?\d{1,2}[A-Z]?)$"))
+DEFAULT_BUS_INCLUDE_PATTERN = r"(?:\b[2-9]\d{2,4}\b)"
+DEFAULT_BUS_EXCLUDE_PATTERN = r"^(?:N?\d{1,2}[A-Z]?)$"
+
+
+def _compile_bus_regex(env_var: str, default_pattern: str) -> re.Pattern[str]:
+    pattern = os.getenv(env_var)
+    if pattern is None:
+        return re.compile(default_pattern)
+    try:
+        return re.compile(pattern)
+    except re.error as exc:
+        log.warning(
+            "VOR: Ungültige Regex in %s (%r): %s – verwende Standard-Regex.",
+            env_var,
+            pattern,
+            exc,
+        )
+        return re.compile(default_pattern)
+
+
+BUS_INCLUDE_RE = _compile_bus_regex("VOR_BUS_INCLUDE_REGEX", DEFAULT_BUS_INCLUDE_PATTERN)
+BUS_EXCLUDE_RE = _compile_bus_regex("VOR_BUS_EXCLUDE_REGEX", DEFAULT_BUS_EXCLUDE_PATTERN)
 
 RAIL_SHORT = {"S", "R", "REX", "RJ", "RJX", "IC", "EC", "EN", "D"}
 RAIL_LONG_HINTS = {"S-Bahn", "Regionalzug", "Regionalexpress", "Railjet", "Railjet Express", "EuroNight"}

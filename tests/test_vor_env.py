@@ -57,3 +57,21 @@ def test_invalid_int_env_uses_defaults(monkeypatch, caplog):
         monkeypatch.delenv(name, raising=False)
     importlib.reload(vor)
 
+
+def test_invalid_bus_regex_falls_back_to_defaults(monkeypatch, caplog):
+    monkeypatch.setenv("VOR_BUS_INCLUDE_REGEX", "(")
+    monkeypatch.setenv("VOR_BUS_EXCLUDE_REGEX", "(")
+
+    with caplog.at_level(logging.WARNING):
+        importlib.reload(vor)
+
+    assert vor.BUS_INCLUDE_RE.pattern == vor.DEFAULT_BUS_INCLUDE_PATTERN
+    assert vor.BUS_EXCLUDE_RE.pattern == vor.DEFAULT_BUS_EXCLUDE_PATTERN
+
+    assert any("VOR_BUS_INCLUDE_REGEX" in record.getMessage() for record in caplog.records)
+    assert any("VOR_BUS_EXCLUDE_REGEX" in record.getMessage() for record in caplog.records)
+
+    monkeypatch.delenv("VOR_BUS_INCLUDE_REGEX", raising=False)
+    monkeypatch.delenv("VOR_BUS_EXCLUDE_REGEX", raising=False)
+    importlib.reload(vor)
+
