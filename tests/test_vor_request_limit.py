@@ -11,6 +11,9 @@ def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
     monkeypatch.setattr(vor, "VOR_STATION_IDS", ["1"])
     monkeypatch.setattr(vor, "MAX_STATIONS_PER_RUN", 1)
 
+    # Die neuen Docstrings von ``load_request_count`` und
+    # ``save_request_count`` dokumentieren das zugrunde liegende Limit und die
+    # Persistenz, auf die sich dieser Test stützt.
     monkeypatch.setattr(
         vor,
         "_select_stations_round_robin",
