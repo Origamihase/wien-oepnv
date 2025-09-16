@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Download and parse the ÖBB station directory Excel file.
 
-The script exports a simplified JSON mapping (bst_id, bst_code, name) that is used
-throughout the project. The data is obtained from the official ÖBB Open-Data
-portal.
+The script exports a simplified JSON mapping (``bst_id``, ``bst_code``, ``name``,
+``in_vienna`` and ``pendler``) that is used throughout the project. Station names
+are harmonized with the previous export, geodata is used to flag Vienna
+locations and commuter belt entries, and stations outside this area are omitted.
+The data is obtained from the official ÖBB Open-Data portal.
 """
 from __future__ import annotations
 
@@ -74,6 +76,18 @@ class Station:
         }
 
 
+@dataclass
+class LocationInfo:
+    """Coordinates collected from auxiliary data sources."""
+
+    latitude: float
+    longitude: float
+    sources: set[str]
+
+    def add_source(self, source: str) -> None:
+        self.sources.add(source)
+
+
 def _strip_accents(value: str) -> str:
     return "".join(ch for ch in unicodedata.normalize("NFKD", value) if not unicodedata.combining(ch))
 
@@ -116,6 +130,14 @@ def _normalize_location_keys(name: str | None) -> list[str]:
     return tokens
 
 
+def _harmonize_station_name(name: str) -> str:
+    """Return *name* with unified whitespace for consistent lookups."""
+
+    text = "".join(" " if ch in {"\u00a0", "\u2007", "\u202f"} else ch for ch in str(name))
+    text = re.sub(r"\s{2,}", " ", text)
+    return text.strip()
+
+
 def _coerce_float_value(value: object | None) -> float | None:
     if value is None:
         return None
@@ -131,8 +153,26 @@ def _coerce_float_value(value: object | None) -> float | None:
         return None
 
 
-def _load_gtfs_locations(path: Path) -> dict[str, tuple[float, float]]:
-    locations: dict[str, tuple[float, float]] = {}
+def _store_location(
+    locations: dict[str, LocationInfo],
+    key: str,
+    lat: float,
+    lon: float,
+    source: str,
+) -> None:
+    info = locations.get(key)
+    if info is None:
+        locations[key] = LocationInfo(latitude=lat, longitude=lon, sources={source})
+        return
+    info.add_source(source)
+    # Prefer coordinates from station level data when replacing placeholder zeros
+    if (info.latitude, info.longitude) == (0.0, 0.0):
+        info.latitude = lat
+        info.longitude = lon
+
+
+def _load_gtfs_locations(path: Path) -> dict[str, LocationInfo]:
+    locations: dict[str, LocationInfo] = {}
     try:
         with path.open("r", encoding="utf-8") as handle:
             reader = csv.DictReader(handle)
@@ -140,6 +180,7 @@ def _load_gtfs_locations(path: Path) -> dict[str, tuple[float, float]]:
                 stop_name = row.get("stop_name")
                 if not stop_name:
                     continue
+                stop_name = _harmonize_station_name(stop_name)
                 lat = _coerce_float_value(row.get("stop_lat"))
                 lon = _coerce_float_value(row.get("stop_lon"))
                 if lat is None or lon is None:
@@ -150,7 +191,7 @@ def _load_gtfs_locations(path: Path) -> dict[str, tuple[float, float]]:
                     if not key:
                         continue
                     if is_station or key not in locations:
-                        locations[key] = (lat, lon)
+                        _store_location(locations, key, lat, lon, source="gtfs")
     except FileNotFoundError:
         logger.warning("GTFS stops file not found: %s", path)
     except csv.Error as exc:
@@ -161,20 +202,23 @@ def _load_gtfs_locations(path: Path) -> dict[str, tuple[float, float]]:
     return locations
 
 
-def _load_wienerlinien_locations(path: Path) -> dict[str, tuple[float, float]]:
-    locations: dict[str, tuple[float, float]] = {}
+def _load_wienerlinien_locations(path: Path) -> dict[str, LocationInfo]:
+    locations: dict[str, LocationInfo] = {}
     try:
         with path.open("r", encoding="utf-8") as handle:
             reader = csv.DictReader(handle, delimiter=";")
             for row in reader:
                 name = row.get("NAME")
+                if name:
+                    name = _harmonize_station_name(name)
                 lat = _coerce_float_value(row.get("WGS84_LAT"))
                 lon = _coerce_float_value(row.get("WGS84_LON"))
                 if not name or lat is None or lon is None:
                     continue
                 for key in _normalize_location_keys(name):
-                    if key and key not in locations:
-                        locations[key] = (lat, lon)
+                    if not key:
+                        continue
+                    _store_location(locations, key, lat, lon, source="wl")
     except FileNotFoundError:
         logger.warning("Wiener Linien haltepunkte file not found: %s", path)
     except csv.Error as exc:
@@ -185,15 +229,70 @@ def _load_wienerlinien_locations(path: Path) -> dict[str, tuple[float, float]]:
     return locations
 
 
-def _build_location_index(gtfs_path: Path | None, wl_path: Path | None) -> dict[str, tuple[float, float]]:
-    locations: dict[str, tuple[float, float]] = {}
+def _build_location_index(
+    gtfs_path: Path | None,
+    wl_path: Path | None,
+) -> dict[str, LocationInfo]:
+    locations: dict[str, LocationInfo] = {}
     if gtfs_path:
         locations.update(_load_gtfs_locations(gtfs_path))
     if wl_path:
         wl_locations = _load_wienerlinien_locations(wl_path)
         for key, value in wl_locations.items():
-            locations.setdefault(key, value)
+            existing = locations.get(key)
+            if existing is None:
+                locations[key] = value
+                continue
+            existing.add_source("wl")
     return locations
+
+
+def _load_existing_station_entries(path: Path) -> dict[int, Mapping[str, object]]:
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            payload = json.load(handle)
+    except FileNotFoundError:
+        return {}
+    except json.JSONDecodeError as exc:  # pragma: no cover - defensive
+        logger.warning("Could not parse existing station directory %s: %s", path, exc)
+        return {}
+
+    mapping: dict[int, Mapping[str, object]] = {}
+    if isinstance(payload, list):
+        for entry in payload:
+            if not isinstance(entry, dict):
+                continue
+            bst_id = entry.get("bst_id")
+            if isinstance(bst_id, int):
+                mapping[bst_id] = entry
+    return mapping
+
+
+def _harmonize_station_names(
+    stations: list[Station],
+    existing_entries: Mapping[int, Mapping[str, object]],
+) -> None:
+    if not existing_entries:
+        for station in stations:
+            station.name = _harmonize_station_name(station.name)
+        return
+
+    for station in stations:
+        existing = existing_entries.get(station.bst_id)
+        if existing:
+            name_raw = existing.get("name")
+            if isinstance(name_raw, str) and name_raw.strip():
+                canonical = _harmonize_station_name(name_raw)
+                if canonical and canonical != station.name:
+                    logger.debug(
+                        "Using existing name for %s: %s -> %s",
+                        station.bst_id,
+                        station.name,
+                        canonical,
+                    )
+                station.name = canonical or station.name
+                continue
+        station.name = _harmonize_station_name(station.name)
 
 
 def parse_args() -> argparse.Namespace:
@@ -344,19 +443,30 @@ def _is_vienna_station(name: str) -> bool:
 def _annotate_station_flags(
     stations: list[Station],
     pendler_ids: set[int],
-    locations: Mapping[str, tuple[float, float]],
+    locations: Mapping[str, LocationInfo],
 ) -> None:
     for station in stations:
-        coords: tuple[float, float] | None = None
+        info: LocationInfo | None = None
         for key in _normalize_location_keys(station.name):
-            coords = locations.get(key)
-            if coords:
+            info = locations.get(key)
+            if info:
                 break
-        if coords:
-            station.in_vienna = _is_point_in_vienna(coords[0], coords[1])
+        if info:
+            station.in_vienna = _is_point_in_vienna(info.latitude, info.longitude)
         else:
             station.in_vienna = _is_vienna_station(station.name)
-        station.pendler = station.bst_id in pendler_ids
+        pendler = station.bst_id in pendler_ids
+        if info and not station.in_vienna and "wl" in info.sources:
+            pendler = True
+        station.pendler = pendler
+
+
+def _filter_relevant_stations(stations: list[Station]) -> list[Station]:
+    filtered = [station for station in stations if station.in_vienna or station.pendler]
+    removed = len(stations) - len(filtered)
+    if removed:
+        logger.info("Dropping %d stations outside Vienna and commuter belt", removed)
+    return filtered
 
 
 def load_pendler_station_ids(path: Path) -> set[int]:
@@ -404,13 +514,16 @@ def write_json(stations: list[Station], output_path: Path) -> None:
 def main() -> None:
     args = parse_args()
     configure_logging(args.verbose)
+    existing_entries = _load_existing_station_entries(args.output)
     workbook_stream = download_workbook(args.source_url)
     stations = extract_stations(workbook_stream)
+    _harmonize_station_names(stations, existing_entries)
     pendler_ids = load_pendler_station_ids(path=args.pendler)
     location_index = _build_location_index(args.gtfs_stops, args.wl_haltepunkte)
     if not location_index:
         logger.warning("No coordinate data available; falling back to name heuristic")
     _annotate_station_flags(stations, pendler_ids, location_index)
+    stations = _filter_relevant_stations(stations)
     write_json(stations, args.output)
 
 

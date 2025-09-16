@@ -232,6 +232,15 @@ def build_vor_entries(stops: Iterable[VORStop]) -> list[dict[str, object]]:
         canonical = _canonical_vor_name(stop.name)
         if stop.latitude is not None and stop.longitude is not None:
             in_vienna = is_in_vienna(stop.latitude, stop.longitude)
+            if in_vienna and not (
+                _looks_like_vienna(stop.municipality) or _looks_like_vienna(stop.name)
+            ):
+                log.debug(
+                    "Overriding Vienna flag for VOR stop %s (%s) based on municipality",
+                    stop.name,
+                    stop.vor_id,
+                )
+                in_vienna = False
         else:
             in_vienna = _looks_like_vienna(stop.municipality) or _looks_like_vienna(stop.name)
             log.warning(

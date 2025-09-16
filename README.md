@@ -32,6 +32,11 @@ Datensatz „[Verzeichnis der Verkehrsstationen](https://data.oebb.at/de/datensa
 auf dem ÖBB-Open-Data-Portal (Excel-Datei „Verzeichnis der Verkehrsstationen.xlsx“)
 und stehen unter [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/).
 Die empfohlene Namensnennung lautet laut Portal „Datenquelle: ÖBB-Infrastruktur AG“.
+Beim Aktualisieren gleicht das Skript die Stationsnamen mit dem bestehenden
+Verzeichnis ab, nutzt GTFS- sowie Wiener-Linien-Geodaten zur Bestimmung von
+`in_vienna` und markiert Haltepunkte außerhalb der Stadtgrenze als
+`pendler`. Einträge, die weder in Wien liegen noch zum Pendlergürtel gehören,
+werden automatisch entfernt.
 
 Zusätzlich sind Wiener-Linien-Haltestellen enthalten. Die Quelldateien
 (`wienerlinien-ogd-haltestellen.csv` und `wienerlinien-ogd-haltepunkte.csv`)
@@ -120,8 +125,10 @@ Hinweise zur Kombination mit dem ÖPNV-Feed:
 
 Die GitHub Action [`.github/workflows/update-stations.yml`](.github/workflows/update-stations.yml)
 lädt monatlich (Cron `0 0 1 * *`) die aktuelle Excel-Datei und schreibt daraus eine
-aktualisierte `data/stations.json`. Änderungen werden automatisch in den Hauptzweig
-committet.
+aktualisierte `data/stations.json`. Dabei werden bestehende Stationsnamen
+harmonisiert, die `in_vienna`- und `pendler`-Flags anhand der Geodaten
+neu berechnet und nicht relevante Einträge verworfen. Änderungen werden automatisch
+in den Hauptzweig committet.
 
 ### Stationsverzeichnis komplett aktualisieren
 
@@ -145,7 +152,17 @@ python scripts/update_station_directory.py --verbose
 Das Skript lädt die Excel-Datei herunter, extrahiert die benötigten Spalten und
 aktualisiert `data/stations.json`. Über `-v/--verbose` lässt sich eine etwas
 ausführlichere Protokollierung aktivieren. Optional können auch Quelle und Ziel
-per Argumenten angepasst werden (`--source-url`, `--output`).
+per Argumenten angepasst werden (`--source-url`, `--output`). Neue Pendler:innen-
+Haltestellen werden vorab in `data/pendler_bst_ids.json` eingetragen, damit sie
+beim Lauf nicht herausgefiltert werden.
+
+### Pendler-Whitelist pflegen
+
+`data/pendler_bst_ids.json` enthält eine einfache Liste der `bst_id`-Werte, die
+auch außerhalb der Stadtgrenze im Verzeichnis bleiben sollen (z. B. WL-Endpunkte
+oder wichtige Umsteigepunkte). Bei Erweiterungen des Pendlergürtels wird die Liste
+ergänzt; anschließend sorgt `update_station_directory.py` automatisch dafür, dass
+die markierten Stationen als `pendler = true` ausgegeben werden.
 
 ### Wiener Linien ergänzen
 
