@@ -50,3 +50,43 @@ def test_slow_provider_does_not_block(monkeypatch):
 
     assert elapsed < 1.5, f"_collect_items blocked for {elapsed:.2f}s"
     assert items == [{"guid": "fast"}]
+
+
+def test_cache_providers_run_sequentially(monkeypatch):
+    build_feed = _import_build_feed(monkeypatch)
+
+    calls = []
+
+    def make_cache_provider(name):
+        def _provider(timeout=None):
+            calls.append(name)
+            return [{"provider": name}]
+
+        _provider.__name__ = f"cache_{name}"
+        setattr(_provider, "_provider_cache_name", name)
+        return _provider
+
+    cache_a = make_cache_provider("wl")
+    cache_b = make_cache_provider("oebb")
+
+    monkeypatch.setattr(
+        build_feed,
+        "PROVIDERS",
+        [
+            ("WL_ENABLE", cache_a),
+            ("OEBB_ENABLE", cache_b),
+        ],
+    )
+
+    monkeypatch.setenv("WL_ENABLE", "1")
+    monkeypatch.setenv("OEBB_ENABLE", "1")
+
+    def fail_executor(*args, **kwargs):
+        raise AssertionError("ThreadPoolExecutor should not be used for cache providers")
+
+    monkeypatch.setattr(build_feed, "ThreadPoolExecutor", fail_executor)
+
+    items = build_feed._collect_items()
+
+    assert items == [{"provider": "wl"}, {"provider": "oebb"}]
+    assert calls == ["wl", "oebb"]
