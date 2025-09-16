@@ -24,6 +24,19 @@ def _extract_content_encoded(xml: str) -> str:
     return match.group(1)
 
 
+def _freeze_vienna_now(monkeypatch, bf, moment: datetime) -> None:
+    real_datetime = bf.datetime
+
+    class FrozenDateTime(real_datetime):  # type: ignore[misc]
+        @classmethod
+        def now(cls, tz=None):
+            if tz is None:
+                return moment.replace(tzinfo=None)
+            return moment.astimezone(tz)
+
+    monkeypatch.setattr(bf, "datetime", FrozenDateTime)
+
+
 def test_clip_text_html_plain_and_clips(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     html_in = "<b>foo &amp; bar</b>"
@@ -115,34 +128,40 @@ def test_emit_item_removes_category_and_limits_lines(monkeypatch):
 
 def test_emit_item_appends_since_time(monkeypatch):
     bf = _load_build_feed(monkeypatch)
+    _freeze_vienna_now(
+        monkeypatch, bf, datetime(2024, 1, 10, tzinfo=bf._VIENNA_TZ)
+    )
     now = datetime(2024, 1, 1, tzinfo=timezone.utc)
     item = {
         "title": "Störung",
         "description": "Wegen Bauarbeiten",
-        "starts_at": datetime(2024, 1, 5, 10, 0, tzinfo=timezone.utc),
+        "starts_at": bf.datetime(2024, 1, 5, 10, 0, tzinfo=timezone.utc),
     }
 
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text == "Wegen Bauarbeiten\nseit 05.01.2024"
+    assert desc_text == "Wegen Bauarbeiten\nSeit 05.01.2024"
 
     content_html = _extract_content_encoded(xml)
-    assert content_html == "Wegen Bauarbeiten<br/>seit 05.01.2024"
+    assert content_html == "Wegen Bauarbeiten<br/>Seit 05.01.2024"
 
 
 def test_emit_item_since_line_for_missing_or_nonadvancing_end(monkeypatch):
     bf = _load_build_feed(monkeypatch)
+    _freeze_vienna_now(
+        monkeypatch, bf, datetime(2024, 1, 10, tzinfo=bf._VIENNA_TZ)
+    )
     now = datetime(2024, 1, 10, tzinfo=timezone.utc)
     base_item = {
         "title": "Störung",
         "description": "Wegen Bauarbeiten",
-        "starts_at": datetime(2024, 1, 5, 10, 0, tzinfo=timezone.utc),
+        "starts_at": bf.datetime(2024, 1, 5, 10, 0, tzinfo=timezone.utc),
     }
 
     scenarios = [
         {},
-        {"ends_at": datetime(2024, 1, 5, 10, 0, tzinfo=timezone.utc)},
+        {"ends_at": bf.datetime(2024, 1, 5, 10, 0, tzinfo=timezone.utc)},
     ]
 
     for extra in scenarios:
@@ -153,24 +172,82 @@ def test_emit_item_since_line_for_missing_or_nonadvancing_end(monkeypatch):
         desc_text = _extract_description(xml)
         assert desc_text.split("\n") == [
             "Wegen Bauarbeiten",
-            "seit 05.01.2024",
+            "Seit 05.01.2024",
         ]
 
         content_html = _extract_content_encoded(xml)
         assert content_html.split("<br/>") == [
             "Wegen Bauarbeiten",
-            "seit 05.01.2024",
+            "Seit 05.01.2024",
         ]
+
+
+def test_emit_item_future_same_day_shows_am(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    _freeze_vienna_now(
+        monkeypatch, bf, datetime(2024, 1, 1, tzinfo=bf._VIENNA_TZ)
+    )
+    now = datetime(2024, 1, 1, tzinfo=timezone.utc)
+    item = {
+        "title": "Störung",
+        "description": "Wegen Bauarbeiten",
+        "starts_at": bf.datetime(2024, 1, 10, 8, 0, tzinfo=timezone.utc),
+        "ends_at": bf.datetime(2024, 1, 10, 12, 0, tzinfo=timezone.utc),
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_text = _extract_description(xml)
+    assert desc_text.split("\n") == [
+        "Wegen Bauarbeiten",
+        "Am 10.01.2024",
+    ]
+
+    content_html = _extract_content_encoded(xml)
+    assert content_html.split("<br/>") == [
+        "Wegen Bauarbeiten",
+        "Am 10.01.2024",
+    ]
+
+
+def test_emit_item_future_start_without_end_shows_ab(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    _freeze_vienna_now(
+        monkeypatch, bf, datetime(2024, 1, 1, tzinfo=bf._VIENNA_TZ)
+    )
+    now = datetime(2024, 1, 1, tzinfo=timezone.utc)
+    item = {
+        "title": "Info",
+        "description": "Eingeschränkter Betrieb",
+        "starts_at": bf.datetime(2024, 1, 20, 6, 0, tzinfo=timezone.utc),
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_text = _extract_description(xml)
+    assert desc_text.split("\n") == [
+        "Eingeschränkter Betrieb",
+        "Ab 20.01.2024",
+    ]
+
+    content_html = _extract_content_encoded(xml)
+    assert content_html.split("<br/>") == [
+        "Eingeschränkter Betrieb",
+        "Ab 20.01.2024",
+    ]
 
 
 def test_emit_item_appends_same_day_range(monkeypatch):
     bf = _load_build_feed(monkeypatch)
+    _freeze_vienna_now(
+        monkeypatch, bf, datetime(2024, 3, 11, tzinfo=bf._VIENNA_TZ)
+    )
     now = datetime(2024, 3, 10, tzinfo=timezone.utc)
     item = {
         "title": "Sperre",
         "description": "Zug verkehrt nicht",
-        "starts_at": datetime(2024, 3, 10, 8, 0, tzinfo=timezone.utc),
-        "ends_at": datetime(2024, 3, 10, 12, 30, tzinfo=timezone.utc),
+        "starts_at": bf.datetime(2024, 3, 10, 8, 0, tzinfo=timezone.utc),
+        "ends_at": bf.datetime(2024, 3, 10, 12, 30, tzinfo=timezone.utc),
     }
 
     _, xml = bf._emit_item(item, now, {})

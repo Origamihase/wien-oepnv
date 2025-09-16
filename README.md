@@ -2,7 +2,7 @@
 
 Störungen und Einschränkungen für den Großraum Wien aus offiziellen Quellen.
 
-Die `<description>`-Elemente des Feeds bestehen aus zwei Zeilen: Der erste Satz fasst den Inhalt zusammen, die zweite Zeile nennt den Zeitraum (z. B. „seit 05.01.2024“ oder „01.06.2024–03.06.2024“). Fehlt ein sinnvolles Enddatum oder liegt es nicht nach dem Beginn, erscheint dort automatisch „seit <Datum>“. Redundante Überschriften wie „Bauarbeiten“ oder das Label „Zeitraum:“ werden automatisch entfernt. Die `<description>`-Elemente enthalten rohe Zeilenumbrüche; wer HTML-Breaks benötigt, kann stattdessen `<content:encoded>` mit `<br/>`-Trennzeichen nutzen.
+Die `<description>`-Elemente des Feeds bestehen aus zwei Zeilen: Der erste Satz fasst den Inhalt zusammen, die zweite Zeile nennt den Zeitraum (z. B. „Seit 05.01.2024“, „Ab 20.01.2024“, „Am 10.01.2024“ oder „01.06.2024–03.06.2024“). Fehlt ein sinnvolles Enddatum oder liegt es nicht nach dem Beginn, erscheint abhängig vom Datum automatisch „Seit <Datum>“ (Vergangenheit) bzw. „Ab <Datum>“ (zukünftig). Für zukünftige eintägige Intervalle wird „Am <Datum>“ verwendet. Redundante Überschriften wie „Bauarbeiten“ oder das Label „Zeitraum:“ werden automatisch entfernt. Die `<description>`-Elemente enthalten rohe Zeilenumbrüche; wer HTML-Breaks benötigt, kann stattdessen `<content:encoded>` mit `<br/>`-Trennzeichen nutzen.
 
 ## Erweiterungen
 
