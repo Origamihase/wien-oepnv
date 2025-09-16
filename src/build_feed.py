@@ -23,13 +23,37 @@ except ModuleNotFoundError:  # pragma: no cover
     from .utils.cache import read_cache  # type: ignore
     from .utils.env import get_int_env, get_bool_env  # type: ignore
 
+# ---------------- Paths ----------------
+_ALLOWED_ROOTS = {"docs", "data", "log"}
+
+
+def _validate_path(path: Path, name: str) -> Path:
+    """Ensure ``path`` stays within whitelisted directories."""
+
+    try:
+        rel = path.resolve().relative_to(Path.cwd().resolve())
+    except Exception:
+        raise ValueError(f"{name} outside allowed directories")
+    if rel.parts and rel.parts[0] in _ALLOWED_ROOTS:
+        return path
+    raise ValueError(f"{name} outside allowed directories")
+
 # ---------------- Logging ----------------
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").strip().upper()
 _level = getattr(logging, LOG_LEVEL, logging.INFO)
 if not isinstance(_level, int):
     _level = logging.INFO
 
-LOG_DIR = os.getenv("LOG_DIR", "log")
+_DEFAULT_LOG_DIR = Path("log")
+_LOG_DIR_ENV = os.getenv("LOG_DIR")
+if _LOG_DIR_ENV is None:
+    LOG_DIR_PATH = _validate_path(_DEFAULT_LOG_DIR, "LOG_DIR")
+else:
+    try:
+        LOG_DIR_PATH = _validate_path(Path(_LOG_DIR_ENV), "LOG_DIR")
+    except ValueError:
+        LOG_DIR_PATH = _validate_path(_DEFAULT_LOG_DIR, "LOG_DIR")
+LOG_DIR = str(LOG_DIR_PATH)
 LOG_MAX_BYTES = max(get_int_env("LOG_MAX_BYTES", 1_000_000), 0)
 LOG_BACKUP_COUNT = max(get_int_env("LOG_BACKUP_COUNT", 5), 0)
 
@@ -83,21 +107,6 @@ for env, loader in PROVIDERS:
     except (AttributeError, TypeError):  # pragma: no cover - defensive only
         pass
     setattr(loader, "_provider_cache_name", provider_name)
-
-# ---------------- Paths ----------------
-_ALLOWED_ROOTS = {"docs", "data"}
-
-
-def _validate_path(path: Path, name: str) -> Path:
-    """Ensure ``path`` stays within whitelisted directories."""
-
-    try:
-        rel = path.resolve().relative_to(Path.cwd().resolve())
-    except Exception:
-        raise ValueError(f"{name} outside allowed directories")
-    if rel.parts and rel.parts[0] in _ALLOWED_ROOTS:
-        return path
-    raise ValueError(f"{name} outside allowed directories")
 
 # ---------------- ENV ----------------
 OUT_PATH = os.getenv("OUT_PATH", "docs/feed.xml")
