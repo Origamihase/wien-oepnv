@@ -671,25 +671,36 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     desc_clipped = _clip_text_html(raw_desc, DESCRIPTION_CHAR_LIMIT)
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(html.unescape(raw_title))
-    desc_lines = desc_clipped.split("\n")
+    desc_lines_raw = desc_clipped.split("\n")
 
     date_range_line: Optional[str] = None
-    for line in desc_lines:
+    for line in desc_lines_raw:
         match = DATE_RANGE_RE.match(line)
         if match:
             date_range_line = f"{match.group(1)} – {match.group(2)}"
             break
 
-    if desc_lines and desc_lines[0].lower() in title_out.lower():
-        desc_lines = desc_lines[1:]
-    desc_lines = [
-        line
-        for line in desc_lines
+    if desc_lines_raw and desc_lines_raw[0].lower() in title_out.lower():
+        desc_lines_raw = desc_lines_raw[1:]
+    filtered_lines = [
+        line.strip()
+        for line in desc_lines_raw
         if line.strip() and line.strip().lower() != "zeitraum:"
     ]
 
+    extra_prefixes = ("linien:", "betroffene haltestellen:")
+    extra_lines_raw: List[str] = []
+    desc_lines: List[str] = []
+    for line in filtered_lines:
+        lower_line = line.lower()
+        if any(lower_line.startswith(prefix) for prefix in extra_prefixes):
+            extra_lines_raw.append(line)
+        else:
+            desc_lines.append(line)
+
     first_alpha_idx: Optional[int] = None
-    fallback_line = desc_lines[0] if desc_lines else ""
+    fallback_candidates = desc_lines if desc_lines else extra_lines_raw
+    fallback_line = fallback_candidates[0] if fallback_candidates else ""
     for idx, line in enumerate(desc_lines):
         if any(ch.isalpha() for ch in line):
             first_alpha_idx = idx
@@ -716,6 +727,13 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     title_out = re.sub(r"\s+", " ", title_out).strip()
     desc_line = re.sub(r"[ \t\r\f\v]+", " ", desc_line).strip()
 
+    sanitized_extras: List[str] = []
+    for extra_line in extra_lines_raw:
+        sanitized = _sanitize_text(extra_line)
+        sanitized = re.sub(r"[ \t\r\f\v]+", " ", sanitized).strip()
+        if sanitized and sanitized != desc_line:
+            sanitized_extras.append(sanitized)
+
     time_line = format_local_times(
         starts_at if isinstance(starts_at, datetime) else None,
         ends_at if isinstance(ends_at, datetime) else None,
@@ -726,7 +744,13 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     time_line = _sanitize_text(time_line)
     time_line = re.sub(r"[ \t\r\f\v]+", " ", time_line).strip()
 
-    desc_out = "\n".join(filter(None, [desc_line, time_line]))
+    desc_parts: List[str] = []
+    if desc_line:
+        desc_parts.append(desc_line)
+    desc_parts.extend(sanitized_extras)
+    if time_line:
+        desc_parts.append(time_line)
+    desc_out = "\n".join(desc_parts)
     desc_cdata = desc_out.replace("\n", "<br/>")
 
     parts: List[str] = []

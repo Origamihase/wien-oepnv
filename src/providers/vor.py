@@ -648,9 +648,13 @@ def _collect_from_board(station_id: str, payload: Mapping[str, Any]) -> List[Dic
                 f"Betroffene Haltestellen: {html.escape(', '.join(sorted(set(affected_stops))[:20]))}"
             )
 
-        description_html = text or head
+        description_html = text or head or ""
         if extras:
-            description_html += "<br/>" + "<br/>".join(extras)
+            extras_block = "\n".join(extras)
+            if description_html:
+                description_html = f"{description_html}\n{extras_block}"
+            else:
+                description_html = extras_block
 
         prefix = "/".join(lines)
         title = head or "Meldung"
