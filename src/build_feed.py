@@ -211,7 +211,7 @@ _CONTROL_RE = re.compile(
 )
 
 # Prefix pattern for line identifiers like "U1/U2: "
-_LINE_TOKEN_RE = re.compile(r"^(?:N\d{1,2}|\d{1,3}[A-Z]?|[A-Z])$")
+_LINE_TOKEN_RE = re.compile(r"^(?:\d{1,3}[A-Z]?|[A-Z]{1,4}\d{0,3})$")
 
 _LINE_PREFIX_RE = re.compile(
     r"^\s*([A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20})\s*:\s*"
@@ -278,11 +278,16 @@ def _parse_lines_from_title(title: str) -> List[str]:
     m = _LINE_PREFIX_RE.match(title or "")
     if not m:
         return []
-    return [
-        token
-        for token in m.group(1).split("/")
-        if _LINE_TOKEN_RE.match(token)
-    ]
+
+    tokens: List[str] = []
+    for raw in m.group(1).split("/"):
+        token = raw.strip()
+        if not token:
+            continue
+        normalized = token.upper()
+        if _LINE_TOKEN_RE.match(normalized):
+            tokens.append(normalized)
+    return tokens
 
 def _ymd_or_none(dt: Optional[datetime]) -> str:
     if isinstance(dt, datetime):
@@ -413,7 +418,7 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
         return f"oebb|F={fuzzy_hash}"
 
     lines = _parse_lines_from_title(title)
-    lines_part = "L=" + "/".join([l.upper() for l in lines]) if lines else "L="
+    lines_part = "L=" + "/".join(lines) if lines else "L="
     start_day = _ymd_or_none(sa)
     base = f"{source}|{category}|{lines_part}|D={start_day}"
     if source and category:
