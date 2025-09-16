@@ -167,13 +167,11 @@ def format_local_times(
         end_local = _to_utc(end).astimezone(_VIENNA_TZ)
 
     if start_local and end_local:
-        if start_local.date() == end_local.date():
-            return f"{start_local:%H:%M}-{end_local:%H:%M} {start_local:%d.%m.%Y}"
-        return f"{start_local:%d.%m.%Y %H:%M}-{end_local:%d.%m.%Y %H:%M}"
+        return f"{start_local:%d.%m.%Y}–{end_local:%d.%m.%Y}"
     if start_local:
-        return f"seit: {start_local:%d.%m.%Y %H:%M}"
+        return f"seit {start_local:%d.%m.%Y}"
     if end_local:
-        return f"bis: {end_local:%d.%m.%Y %H:%M}"
+        return f"bis {end_local:%d.%m.%Y}"
     return ""
 
 # Entfernt XML-unerlaubte Kontrollzeichen (außer \t, \n, \r)
@@ -528,6 +526,19 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     pubDate   = it.get("pubDate")
     starts_at = it.get("starts_at")
     ends_at   = it.get("ends_at")
+
+    if isinstance(starts_at, str):
+        try:
+            starts_at = datetime.fromisoformat(starts_at)
+        except ValueError:
+            log.warning("starts_at Parsefehler: %r", starts_at)
+            starts_at = None
+    if isinstance(ends_at, str):
+        try:
+            ends_at = datetime.fromisoformat(ends_at)
+        except ValueError:
+            log.warning("ends_at Parsefehler: %r", ends_at)
+            ends_at = None
 
     if not isinstance(pubDate, datetime) and FRESH_PUBDATE_WINDOW_MIN > 0:
         age = _to_utc(now) - _to_utc(fs_dt)
