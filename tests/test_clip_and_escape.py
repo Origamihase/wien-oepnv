@@ -296,10 +296,10 @@ def test_emit_item_appends_same_day_range(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text == "Zug verkehrt nicht<br/>10.03.2024–10.03.2024"
+    assert desc_text == "Zug verkehrt nicht<br/>10.03.2024\u202f–\u202f10.03.2024"
 
     content_html = _extract_content_encoded(xml)
-    assert content_html == "Zug verkehrt nicht<br/>10.03.2024–10.03.2024"
+    assert content_html == "Zug verkehrt nicht<br/>10.03.2024\u202f–\u202f10.03.2024"
 
 
 def test_emit_item_appends_multi_day_range(monkeypatch):
@@ -315,10 +315,10 @@ def test_emit_item_appends_multi_day_range(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text == "Ersatzverkehr eingerichtet<br/>01.06.2024–03.06.2024"
+    assert desc_text == "Ersatzverkehr eingerichtet<br/>01.06.2024\u202f–\u202f03.06.2024"
 
     content_html = _extract_content_encoded(xml)
-    assert content_html == "Ersatzverkehr eingerichtet<br/>01.06.2024–03.06.2024"
+    assert content_html == "Ersatzverkehr eingerichtet<br/>01.06.2024\u202f–\u202f03.06.2024"
 
 
 def test_emit_item_description_two_lines(monkeypatch):
@@ -336,13 +336,13 @@ def test_emit_item_description_two_lines(monkeypatch):
     desc_text = _extract_description(xml)
     assert desc_text.split("<br/>") == [
         "Ersatzverkehr eingerichtet",
-        "01.07.2024–02.07.2024",
+        "01.07.2024\u202f–\u202f02.07.2024",
     ]
 
     content_html = _extract_content_encoded(xml)
     assert content_html.split("<br/>") == [
         "Ersatzverkehr eingerichtet",
-        "01.07.2024–02.07.2024",
+        "01.07.2024\u202f–\u202f02.07.2024",
     ]
 
 
