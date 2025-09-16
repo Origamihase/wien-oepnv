@@ -218,6 +218,7 @@ _LINE_PREFIX_RE = re.compile(
 _ELLIPSIS = " …"
 _SENTENCE_END_RE = re.compile(r"[.!?…](?=\s|$)")
 _WHITESPACE_RE = re.compile(r"\s+")
+_ISO_TZ_FIX_RE = re.compile(r"([+-]\d{2})(\d{2})$")
 
 def _sanitize_text(s: str) -> str:
     return _CONTROL_RE.sub("", s or "")
@@ -280,6 +281,66 @@ def _ymd_or_none(dt: Optional[datetime]) -> str:
     if isinstance(dt, datetime):
         return _to_utc(dt).date().isoformat()
     return "None"
+
+
+def _parse_datetime(value: Any) -> Optional[datetime]:
+    """Parse ISO8601 timestamps (incl. ``Z`` suffix and compact offsets)."""
+
+    if isinstance(value, datetime):
+        if value.tzinfo:
+            return value
+        return value.replace(tzinfo=timezone.utc)
+
+    if isinstance(value, str):
+        candidate = value.strip()
+        if not candidate:
+            return None
+
+        attempts = [candidate]
+        if candidate.endswith("Z"):
+            attempts.append(candidate[:-1] + "+00:00")
+        match = _ISO_TZ_FIX_RE.search(candidate)
+        if match:
+            attempts.append(candidate[: match.start()] + f"{match.group(1)}:{match.group(2)}")
+
+        for attempt in attempts:
+            try:
+                parsed = datetime.fromisoformat(attempt)
+            except ValueError:
+                continue
+            if parsed.tzinfo is None:
+                parsed = parsed.replace(tzinfo=timezone.utc)
+            return parsed
+
+    return None
+
+
+def _coerce_datetime_field(it: Dict[str, Any], field: str) -> Optional[datetime]:
+    value = it.get(field)
+    if value is None:
+        return None
+
+    parsed = _parse_datetime(value)
+    if parsed is None:
+        if isinstance(value, str):
+            log.warning("%s Parsefehler: %r", field, value)
+        it[field] = None
+        return None
+
+    it[field] = parsed
+    return parsed
+
+
+def _normalize_item_datetimes(
+    items: List[Dict[str, Any]],
+    fields: Tuple[str, ...] = ("pubDate", "starts_at", "ends_at"),
+) -> List[Dict[str, Any]]:
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        for field in fields:
+            _coerce_datetime_field(item, field)
+    return items
 
 # ---------------- State (first_seen) ----------------
 
@@ -399,6 +460,7 @@ def _collect_items() -> List[Dict[str, Any]]:
                 "Cache für Provider '%s' leer – generiere Feed ohne aktuelle Daten.",
                 provider_name,
             )
+        _normalize_item_datetimes(result)
         items.extend(result)
 
     for fetch in cache_fetchers:
@@ -537,6 +599,10 @@ def _emit_channel_header(now: datetime) -> List[str]:
     return h
 
 def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any]]) -> Tuple[str, str]:
+    pubDate = _coerce_datetime_field(it, "pubDate")
+    starts_at = _coerce_datetime_field(it, "starts_at")
+    ends_at = _coerce_datetime_field(it, "ends_at")
+
     ident = _identity_for_item(it)
     st = state.get(ident)
     if not st:
@@ -555,23 +621,6 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     raw_desc  = it.get("description") or ""
     link      = it.get("link") or FEED_LINK
     guid      = it.get("guid") or ident
-    pubDate   = it.get("pubDate")
-    starts_at = it.get("starts_at")
-    ends_at   = it.get("ends_at")
-
-    if isinstance(starts_at, str):
-        try:
-            starts_at = datetime.fromisoformat(starts_at)
-        except ValueError:
-            log.warning("starts_at Parsefehler: %r", starts_at)
-            starts_at = None
-    if isinstance(ends_at, str):
-        try:
-            ends_at = datetime.fromisoformat(ends_at)
-        except ValueError:
-            log.warning("ends_at Parsefehler: %r", ends_at)
-            ends_at = None
-
     if not isinstance(pubDate, datetime) and FRESH_PUBDATE_WINDOW_MIN > 0:
         age = _to_utc(now) - _to_utc(fs_dt)
         if age <= timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN):
@@ -658,6 +707,7 @@ def main() -> int:
     now = datetime.now(timezone.utc)
     state = _load_state()
     items = _collect_items()
+    _normalize_item_datetimes(items)
     items = _drop_old_items(items, now)
     items = _dedupe_items(items)
     if not items:

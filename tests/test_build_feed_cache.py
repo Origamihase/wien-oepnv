@@ -135,3 +135,70 @@ def test_fmt_rfc2822_logs_and_uses_fallback(monkeypatch, caplog):
         and "strftime-Fallback" in record.getMessage()
     ]
     assert log_records, "Fehlender Logeintrag für strftime-Fallback"
+
+
+def test_cache_iso_items_sorted_and_emit_pubdate(monkeypatch):
+    build_feed = _import_build_feed_without_providers(monkeypatch)
+
+    now = datetime(2024, 1, 2, 9, 0, tzinfo=timezone.utc)
+    cache_items = [
+        {
+            "title": "Ältere Meldung",
+            "description": "Ältere Beschreibung",
+            "link": "https://example.com/older",
+            "guid": "older-guid",
+            "pubDate": "2024-01-01T23:30:00+0100",
+            "starts_at": "2024-01-01T20:00:00Z",
+            "ends_at": "2024-01-02T20:00:00+01:00",
+            "source": "Testquelle",
+            "category": "Info",
+        },
+        {
+            "title": "Neuere Meldung",
+            "description": "Neuere Beschreibung",
+            "link": "https://example.com/new",
+            "guid": "new-guid",
+            "pubDate": "2024-01-02T08:30:00Z",
+            "starts_at": "2024-01-02T07:30:00+0100",
+            "ends_at": "2024-01-03T10:00:00+01:00",
+            "source": "Testquelle",
+            "category": "Info",
+        },
+        {
+            "title": "Veraltete Meldung",
+            "description": "Alte Beschreibung",
+            "link": "https://example.com/old",
+            "guid": "old-guid",
+            "pubDate": "2021-01-01T12:00:00+0000",
+            "starts_at": "2021-01-01T12:00:00Z",
+            "ends_at": "2021-01-02T12:00:00+0000",
+            "source": "Testquelle",
+            "category": "Info",
+        },
+    ]
+
+    build_feed._normalize_item_datetimes(cache_items)
+
+    for idx in (0, 1):
+        for field in ("pubDate", "starts_at", "ends_at"):
+            assert isinstance(cache_items[idx][field], datetime)
+            assert cache_items[idx][field].tzinfo is not None
+
+    filtered = build_feed._drop_old_items(cache_items, now)
+    assert {it["guid"] for it in filtered} == {"new-guid", "older-guid"}
+
+    deduped = build_feed._dedupe_items(filtered)
+    deduped.sort(key=build_feed._sort_key)
+
+    assert [it["guid"] for it in deduped] == ["new-guid", "older-guid"]
+
+    state = {}
+    monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
+    rss = build_feed._make_rss(deduped, now, state)
+
+    assert rss.count("<item>") == 2
+    assert rss.count("<pubDate>") == 2
+    assert "Veraltete Meldung" not in rss
+    assert rss.index("Neuere Meldung") < rss.index("Ältere Meldung")
+    assert "<pubDate>Tue, 02 Jan 2024 08:30:00 +0000</pubDate>" in rss
+    assert "<pubDate>Mon, 01 Jan 2024 22:30:00 +0000</pubDate>" in rss
