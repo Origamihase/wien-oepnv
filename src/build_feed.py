@@ -495,7 +495,10 @@ def _sort_key(item: Dict[str, Any]) -> Tuple[int, float, str]:
 def _emit_channel_header(now: datetime) -> List[str]:
     h = []
     h.append('<?xml version="1.0" encoding="UTF-8"?>')
-    h.append('<rss version="2.0" xmlns:ext="https://wien-oepnv.example/schema">')
+    h.append(
+        '<rss version="2.0" xmlns:ext="https://wien-oepnv.example/schema" '
+        'xmlns:content="http://purl.org/rss/1.0/modules/content/">'
+    )
     h.append("<channel>")
     h.append(f"<title>{html.escape(FEED_TITLE)}</title>")
     h.append(f"<link>{html.escape(FEED_LINK)}</link>")
@@ -570,7 +573,8 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     time_line = re.sub(r"[ \t\r\f\v]+", " ", time_line).strip()
 
     desc_out = "\n".join(filter(None, [desc_line, time_line]))
-    desc_cdata = desc_out.replace("\n", "<br/>")
+    desc_cdata = desc_out
+    desc_html = desc_out.replace("\n", "<br/>")
 
     parts: List[str] = []
     parts.append("<item>")
@@ -587,6 +591,7 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
         parts.append(f"<ext:ends_at>{_fmt_rfc2822(ends_at)}</ext:ends_at>")
 
     parts.append(f"<description>{_cdata(desc_cdata)}</description>")
+    parts.append(f"<content:encoded>{_cdata(desc_html)}</content:encoded>")
     parts.append("</item>")
     return ident, "\n".join(parts)
 
