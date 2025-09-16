@@ -421,62 +421,14 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[s
         params["products"] = str(products_mask)
     req_id = f"sb-{station_id}-{int(now_local.timestamp())}"
     params["requestId"] = req_id
+
+    resp: Optional[requests.Response] = None
+    request_attempted = False
     try:
         with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
             session.headers.update(VOR_SESSION_HEADERS)
+            request_attempted = True
             resp = session.get(_stationboard_url(), params=params, timeout=HTTP_TIMEOUT)
-        if resp.status_code == 429:
-            retry_after = resp.headers.get("Retry-After")
-            delay: Optional[float] = None
-            if retry_after:
-                log.warning(
-                    "VOR StationBoard %s -> HTTP 429, Retry-After %s", station_id, retry_after
-                )
-                try:
-                    delay = float(retry_after)
-                except ValueError:
-                    try:
-                        retry_dt = parsedate_to_datetime(retry_after)
-                    except (TypeError, ValueError, IndexError):
-                        log.warning(
-                            "VOR StationBoard %s -> ungültiges Retry-After '%s'",
-                            station_id,
-                            retry_after,
-                        )
-                    else:
-                        if retry_dt.tzinfo is None:
-                            retry_dt = retry_dt.replace(tzinfo=timezone.utc)
-                        now_utc = datetime.now(timezone.utc)
-                        delay = (retry_dt.astimezone(timezone.utc) - now_utc).total_seconds()
-            else:
-                log.warning("VOR StationBoard %s -> HTTP 429 ohne Retry-After", station_id)
-            if delay is not None and delay > 0:
-                time.sleep(delay)
-            else:
-                if retry_after:
-                    log.warning(
-                        "VOR StationBoard %s -> Fallback-Verzögerung %.1fs (Retry-After '%s' nicht nutzbar)",
-                        station_id,
-                        RETRY_AFTER_FALLBACK_SEC,
-                        retry_after,
-                    )
-                else:
-                    log.warning(
-                        "VOR StationBoard %s -> Fallback-Verzögerung %.1fs (Retry-After fehlt)",
-                        station_id,
-                        RETRY_AFTER_FALLBACK_SEC,
-                    )
-                time.sleep(RETRY_AFTER_FALLBACK_SEC)
-            return None
-        if resp.status_code >= 400:
-            log.warning("VOR StationBoard %s -> HTTP %s", station_id, resp.status_code)
-            return None
-        payload = resp.json()
-        if not isinstance(payload, dict):
-            log.warning("VOR StationBoard %s -> ungültige JSON-Antwort", station_id)
-            return None
-        save_request_count(now_local)
-        return payload
     except requests.RequestException as e:
         msg = re.sub(r"accessId=[^&]+", "accessId=***", str(e))
         log.error("VOR StationBoard Fehler (%s): %s", station_id, msg)
@@ -484,6 +436,67 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[s
     except Exception as e:
         log.exception("VOR StationBoard Fehler (%s): %s", station_id, e)
         return None
+    finally:
+        if request_attempted:
+            save_request_count(now_local)
+
+    if resp is None:
+        return None
+
+    if resp.status_code == 429:
+        retry_after = resp.headers.get("Retry-After")
+        delay: Optional[float] = None
+        if retry_after:
+            log.warning(
+                "VOR StationBoard %s -> HTTP 429, Retry-After %s", station_id, retry_after
+            )
+            try:
+                delay = float(retry_after)
+            except ValueError:
+                try:
+                    retry_dt = parsedate_to_datetime(retry_after)
+                except (TypeError, ValueError, IndexError):
+                    log.warning(
+                        "VOR StationBoard %s -> ungültiges Retry-After '%s'",
+                        station_id,
+                        retry_after,
+                    )
+                else:
+                    if retry_dt.tzinfo is None:
+                        retry_dt = retry_dt.replace(tzinfo=timezone.utc)
+                    now_utc = datetime.now(timezone.utc)
+                    delay = (retry_dt.astimezone(timezone.utc) - now_utc).total_seconds()
+        else:
+            log.warning("VOR StationBoard %s -> HTTP 429 ohne Retry-After", station_id)
+        if delay is not None and delay > 0:
+            time.sleep(delay)
+        else:
+            if retry_after:
+                log.warning(
+                    "VOR StationBoard %s -> Fallback-Verzögerung %.1fs (Retry-After '%s' nicht nutzbar)",
+                    station_id,
+                    RETRY_AFTER_FALLBACK_SEC,
+                    retry_after,
+                )
+            else:
+                log.warning(
+                    "VOR StationBoard %s -> Fallback-Verzögerung %.1fs (Retry-After fehlt)",
+                    station_id,
+                    RETRY_AFTER_FALLBACK_SEC,
+                )
+            time.sleep(RETRY_AFTER_FALLBACK_SEC)
+        return None
+
+    if resp.status_code >= 400:
+        log.warning("VOR StationBoard %s -> HTTP %s", station_id, resp.status_code)
+        return None
+
+    payload = resp.json()
+    if not isinstance(payload, dict):
+        log.warning("VOR StationBoard %s -> ungültige JSON-Antwort", station_id)
+        return None
+
+    return payload
 
 def _extract_mapping_items(value: Any, nested_keys: tuple[str, ...]) -> List[Mapping[str, Any]]:
     if isinstance(value, Mapping):
@@ -629,8 +642,9 @@ def fetch_events() -> List[Dict[str, Any]]:
     if not station_chunk:
         return out
 
+    today_iso = now_local.date().isoformat()
     stored_date, stored_count = load_request_count()
-    todays_count = stored_count if stored_date == now_local.date().isoformat() else 0
+    todays_count = stored_count if stored_date == today_iso else 0
     if todays_count >= MAX_REQUESTS_PER_DAY:
         log.info(
             "VOR: Tageslimit von %s StationBoard-Anfragen erreicht – überspringe Abruf.",
@@ -639,8 +653,41 @@ def fetch_events() -> List[Dict[str, Any]]:
         return []
 
     max_workers = min(MAX_STATIONS_PER_RUN, len(station_chunk)) or 1
+    requests_inflight = 0
+    last_seen_count = todays_count
+    limit_reached_during_run = False
+
     with ThreadPoolExecutor(max_workers=max_workers) as pool:
-        futures = {pool.submit(_fetch_stationboard, sid, now_local): sid for sid in station_chunk}
+        futures: dict[Any, str] = {}
+
+        for sid in station_chunk:
+            current_date, current_count = load_request_count()
+            current_todays = current_count if current_date == today_iso else 0
+
+            if current_todays < last_seen_count:
+                requests_inflight = 0
+            else:
+                delta = current_todays - last_seen_count
+                if delta > 0:
+                    requests_inflight = max(0, requests_inflight - delta)
+            last_seen_count = current_todays
+
+            effective_count = current_todays + requests_inflight
+            if effective_count >= MAX_REQUESTS_PER_DAY:
+                limit_reached_during_run = True
+                break
+
+            futures[pool.submit(_fetch_stationboard, sid, now_local)] = sid
+            requests_inflight += 1
+
+        if limit_reached_during_run:
+            log.info(
+                "VOR: Tageslimit von %s StationBoard-Anfragen erreicht – überspringe Abruf.",
+                MAX_REQUESTS_PER_DAY,
+            )
+            if not futures:
+                return []
+
         for fut in as_completed(futures):
             sid = futures[fut]
             try:
