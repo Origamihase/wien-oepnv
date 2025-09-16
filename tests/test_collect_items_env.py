@@ -12,11 +12,11 @@ def _import_build_feed(monkeypatch):
     monkeypatch.syspath_prepend(str(root / "src"))
     providers = types.ModuleType("providers")
     wl = types.ModuleType("providers.wiener_linien")
-    wl.fetch_events = lambda: []
+    wl.fetch_events = lambda timeout=None: []
     oebb = types.ModuleType("providers.oebb")
-    oebb.fetch_events = lambda: []
+    oebb.fetch_events = lambda timeout=None: []
     vor = types.ModuleType("providers.vor")
-    vor.fetch_events = lambda: []
+    vor.fetch_events = lambda timeout=None: []
     monkeypatch.setitem(sys.modules, "providers", providers)
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
@@ -40,9 +40,9 @@ def test_disabling_provider_suppresses_items(monkeypatch, disabled_env, expected
         build_feed,
         "PROVIDERS",
         [
-            ("WL_ENABLE", lambda: [{"p": "wl"}]),
-            ("OEBB_ENABLE", lambda: [{"p": "oebb"}]),
-            ("VOR_ENABLE", lambda: [{"p": "vor"}]),
+            ("WL_ENABLE", lambda timeout=None: [{"p": "wl"}]),
+            ("OEBB_ENABLE", lambda timeout=None: [{"p": "oebb"}]),
+            ("VOR_ENABLE", lambda timeout=None: [{"p": "vor"}]),
         ],
     )
 
@@ -65,7 +65,10 @@ def test_env_disabling_ignores_whitespace_and_case(monkeypatch, value):
     monkeypatch.setattr(
         build_feed,
         "PROVIDERS",
-        [("WL_ENABLE", lambda: [{"p": "wl"}]), ("OEBB_ENABLE", lambda: [{"p": "oebb"}])],
+        [
+            ("WL_ENABLE", lambda timeout=None: [{"p": "wl"}]),
+            ("OEBB_ENABLE", lambda timeout=None: [{"p": "oebb"}]),
+        ],
     )
 
     monkeypatch.setenv("WL_ENABLE", value)
@@ -82,9 +85,9 @@ def test_enabling_vor_yields_items(monkeypatch):
         build_feed,
         "PROVIDERS",
         [
-            ("WL_ENABLE", lambda: []),
-            ("OEBB_ENABLE", lambda: []),
-            ("VOR_ENABLE", lambda: [{"p": "vor"}]),
+            ("WL_ENABLE", lambda timeout=None: []),
+            ("OEBB_ENABLE", lambda timeout=None: []),
+            ("VOR_ENABLE", lambda timeout=None: [{"p": "vor"}]),
         ],
     )
 
