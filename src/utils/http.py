@@ -29,6 +29,7 @@ def session_with_retries(user_agent: str, **retry_opts: Any) -> requests.Session
     session = requests.Session()
     retry = Retry(**options)
     adapter = HTTPAdapter(max_retries=retry)
+    session.mount("http://", adapter)
     session.mount("https://", adapter)
     session.headers.update({"User-Agent": user_agent})
     return session
