@@ -140,6 +140,32 @@ def test_emit_item_skips_leading_date_line(monkeypatch):
     assert desc_text == "Ersatzverkehr eingerichtet"
 
 
+def test_emit_item_oebb_multiline_sentence(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 1, 1)
+    item = {
+        "title": "Ebenfurth",
+        "description": (
+            "06.12.2025 - 09.12.2025\n"
+            "Wegen Bauarbeiten können\n"
+            "in Ebenfurth Bahnhof\n"
+            "von 06.12.2025 (06:10 Uhr) bis 09.12.2025 (04:40 Uhr)\n"
+            "die S60-Züge nicht halten.\n"
+            "Wir bitten um Entschuldigung.\n"
+            "Details finden Sie hier..."
+        ),
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_text = _extract_description(xml)
+    assert (
+        desc_text
+        == "Wegen Bauarbeiten können in Ebenfurth Bahnhof von 06.12.2025 "
+        "(06:10 Uhr) bis 09.12.2025 (04:40 Uhr) die S60-Züge nicht halten."
+    )
+
+
 def test_emit_item_appends_since_time(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     _freeze_vienna_now(

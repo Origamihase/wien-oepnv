@@ -667,11 +667,32 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
         for line in desc_lines
         if line.strip() and line.strip().lower() != "zeitraum:"
     ]
-    desc_line = next(
-        (line for line in desc_lines if any(ch.isalpha() for ch in line)),
-        desc_lines[0] if desc_lines else "",
-    )
-    desc_line = _sanitize_text(desc_line)
+
+    first_alpha_idx: Optional[int] = None
+    fallback_line = desc_lines[0] if desc_lines else ""
+    for idx, line in enumerate(desc_lines):
+        if any(ch.isalpha() for ch in line):
+            first_alpha_idx = idx
+            fallback_line = line
+            break
+
+    desc_sentence = fallback_line
+    if first_alpha_idx is not None:
+        sentence_text = ""
+        sentence_found = False
+        for line in desc_lines[first_alpha_idx:]:
+            part = line.strip()
+            if not part:
+                continue
+            sentence_text = f"{sentence_text} {part}".strip() if sentence_text else part
+            if _SENTENCE_END_RE.search(sentence_text):
+                sentence_found = True
+                break
+
+        if sentence_found and sentence_text:
+            desc_sentence = sentence_text
+
+    desc_line = _sanitize_text(desc_sentence)
     title_out = re.sub(r"\s+", " ", title_out).strip()
     desc_line = re.sub(r"[ \t\r\f\v]+", " ", desc_line).strip()
 
