@@ -289,7 +289,7 @@ LOG_MAX_BYTES=2097152 LOG_BACKUP_COUNT=10 python -u src/build_feed.py
 | `ENDS_AT_GRACE_MINUTES` | int | `10` | Kulanzfenster (Minuten), in dem Meldungen nach `ends_at` noch gezeigt werden. |
 | `PROVIDER_TIMEOUT` | int | `25` | Timeout (Sekunden) für Provider-Aufrufe. |
 | `STATE_PATH` | str | `"data/first_seen.json"` | Speicherort der `first_seen`-Daten (muss unter `data/` liegen). |
-| `STATE_RETENTION_DAYS` | int | `60` | Aufbewahrungsdauer der `first_seen`-Daten. |
+| `STATE_RETENTION_DAYS` | int | `60` | Historischer Parameter – aktuell wird nur für gültige, aktive IDs gespeichert; ungültige `first_seen`-Einträge werden verworfen. |
 | `WL_ENABLE` | bool (`"1"`/`"0"`) | `"1"` | Provider „Wiener Linien“ aktivieren/deaktivieren. |
 | `OEBB_ENABLE` | bool (`"1"`/`"0"`) | `"1"` | Provider „ÖBB“ aktivieren/deaktivieren. |
 | `VOR_ENABLE` | bool (`"1"`/`"0"`) | `"1"` | Provider „VOR/VAO“ aktivieren/deaktivieren. |

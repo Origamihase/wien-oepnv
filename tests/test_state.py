@@ -34,7 +34,7 @@ def test_state_path_override(monkeypatch, tmp_path):
     assert build_feed._load_state() == {"id": {"first_seen": now}}
 
 
-def test_state_retention_drops_old_entries(monkeypatch, tmp_path):
+def test_state_keeps_valid_entries_and_drops_malformed(monkeypatch, tmp_path):
     state_file = tmp_path / "data" / "state.json"
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("STATE_PATH", "data/state.json")
@@ -43,24 +43,26 @@ def test_state_retention_drops_old_entries(monkeypatch, tmp_path):
 
     old_dt = datetime.now(timezone.utc) - timedelta(days=2)
     new_dt = datetime.now(timezone.utc)
-    build_feed._save_state(
-        {
-            "old": {"first_seen": old_dt.isoformat()},
-            "new": {"first_seen": new_dt.isoformat()},
-        }
-    )
+    state_payload = {
+        "old": {"first_seen": old_dt.isoformat()},
+        "new": {"first_seen": new_dt.isoformat()},
+    }
+    build_feed._save_state(state_payload)
     data = json.loads(state_file.read_text())
-    assert "old" not in data and "new" in data
+    assert data == state_payload
 
     with state_file.open("w", encoding="utf-8") as f:
         json.dump(
             {
-                "old": {"first_seen": old_dt.isoformat()},
-                "new": {"first_seen": new_dt.isoformat()},
+                **state_payload,
+                "broken": {"first_seen": "not-a-date"},
+                "missing": {},
+                "none": {"first_seen": None},
             },
             f,
         )
-    assert build_feed._load_state() == {"new": {"first_seen": new_dt.isoformat()}}
+
+    assert build_feed._load_state() == state_payload
 
 
 def test_state_cleared_when_feed_empty(monkeypatch, tmp_path):
