@@ -14,6 +14,7 @@ class DummySession:
     def __init__(self, responses, calls):
         self._responses = iter(responses)
         self._calls = calls
+        self.headers: dict[str, str] = {}
 
     def __enter__(self):
         return self
@@ -32,7 +33,7 @@ def test_rate_limit_retries_once_after_wait(monkeypatch, caplog):
         DummyResponse(200, {}, b"<root></root>"),
     ]
     calls = []
-    monkeypatch.setattr(oebb, "_session", lambda: DummySession(responses, calls))
+    monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession(responses, calls))
 
     slept = []
 
@@ -62,7 +63,7 @@ def test_rate_limit_returns_none_after_retry(monkeypatch):
         DummyResponse(429, {"Retry-After": "2"}),
     ]
     calls = []
-    monkeypatch.setattr(oebb, "_session", lambda: DummySession(responses, calls))
+    monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession(responses, calls))
 
     slept = []
 

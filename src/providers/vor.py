@@ -42,9 +42,12 @@ try:  # pragma: no cover - support both package layouts
 except ModuleNotFoundError:  # pragma: no cover
     from src.utils.stations import canonical_name  # type: ignore
 
+try:  # pragma: no cover - support both package layouts
+    from utils.http import session_with_retries
+except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.http import session_with_retries  # type: ignore
+
 import requests
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
 
 log = logging.getLogger(__name__)
 
@@ -180,24 +183,9 @@ EXCLUDE_LONG_HINTS = {"Straßenbahn", "U-Bahn"}
 RAIL_PRODUCT_CLASSES: tuple[int, ...] = (0, 1, 2, 3, 4)
 BUS_PRODUCT_CLASSES: tuple[int, ...] = (7,)
 
-def _retry() -> Retry:
-    return Retry(
-        total=3,
-        backoff_factor=0.5,
-        status_forcelist=(429, 500, 502, 503, 504),
-        allowed_methods=("GET",),
-        raise_on_status=False,
-    )
-
-
-def _session() -> requests.Session:
-    s = requests.Session()
-    s.mount("https://", HTTPAdapter(max_retries=_retry()))
-    s.headers.update({
-        "Accept": "application/json",
-        "User-Agent": "Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wien-oepnv)",
-    })
-    return s
+VOR_USER_AGENT = "Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wien-oepnv)"
+VOR_SESSION_HEADERS = {"Accept": "application/json"}
+VOR_RETRY_OPTIONS = {"total": 3, "backoff_factor": 0.5, "raise_on_status": False}
 
 def _stationboard_url() -> str:
     return f"{VOR_BASE}/{VOR_VERSION}/DepartureBoard"
@@ -257,7 +245,8 @@ def resolve_station_ids(names: List[str]) -> List[str]:
     if not wanted:
         return resolved
 
-    with _session() as session:
+    with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
+        session.headers.update(VOR_SESSION_HEADERS)
         for name in wanted:
             params = {"format": "json", "input": name, "type": "stop"}
             if VOR_ACCESS_ID:
@@ -413,7 +402,8 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[s
     req_id = f"sb-{station_id}-{int(now_local.timestamp())}"
     params["requestId"] = req_id
     try:
-        with _session() as session:
+        with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
+            session.headers.update(VOR_SESSION_HEADERS)
             resp = session.get(_stationboard_url(), params=params, timeout=HTTP_TIMEOUT)
         if resp.status_code == 429:
             retry_after = resp.headers.get("Retry-After")

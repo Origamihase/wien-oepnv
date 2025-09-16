@@ -11,6 +11,9 @@ def test_retry_after_invalid_value(monkeypatch, caplog):
         content = b""
 
     class DummySession:
+        def __init__(self):
+            self.headers: dict[str, str] = {}
+
         def __enter__(self):
             return self
 
@@ -20,7 +23,7 @@ def test_retry_after_invalid_value(monkeypatch, caplog):
         def get(self, url, params, timeout):
             return DummyResponse()
 
-    monkeypatch.setattr(vor, "_session", lambda: DummySession())
+    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
     sleep_calls: list[float] = []
 
@@ -45,6 +48,9 @@ def test_retry_after_missing_header(monkeypatch, caplog):
         content = b""
 
     class DummySession:
+        def __init__(self):
+            self.headers: dict[str, str] = {}
+
         def __enter__(self):
             return self
 
@@ -54,7 +60,7 @@ def test_retry_after_missing_header(monkeypatch, caplog):
         def get(self, url, params, timeout):
             return DummyResponse()
 
-    monkeypatch.setattr(vor, "_session", lambda: DummySession())
+    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
     sleep_calls: list[float] = []
 
@@ -80,6 +86,9 @@ def test_retry_after_numeric_value(monkeypatch):
         content = b""
 
     class DummySession:
+        def __init__(self):
+            self.headers: dict[str, str] = {}
+
         def __enter__(self):
             return self
 
@@ -89,7 +98,7 @@ def test_retry_after_numeric_value(monkeypatch):
         def get(self, url, params, timeout):
             return DummyResponse()
 
-    monkeypatch.setattr(vor, "_session", lambda: DummySession())
+    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
     sleep_calls: list[float] = []
 
@@ -115,6 +124,9 @@ def test_retry_after_http_date(monkeypatch):
         content = b""
 
     class DummySession:
+        def __init__(self):
+            self.headers: dict[str, str] = {}
+
         def __enter__(self):
             return self
 
@@ -130,7 +142,7 @@ def test_retry_after_http_date(monkeypatch):
             assert tz == timezone.utc
             return fixed_now
 
-    monkeypatch.setattr(vor, "_session", lambda: DummySession())
+    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
     monkeypatch.setattr(vor, "datetime", FixedDateTime)
 
     sleep_calls: list[float] = []
@@ -158,6 +170,9 @@ def test_fetch_stationboard_sends_products_param(monkeypatch):
             return {}
 
     class DummySession:
+        def __init__(self):
+            self.headers: dict[str, str] = {}
+
         def __enter__(self):
             return self
 
@@ -168,7 +183,7 @@ def test_fetch_stationboard_sends_products_param(monkeypatch):
             captured_params.update(params)
             return DummyResponse()
 
-    monkeypatch.setattr(vor, "_session", lambda: DummySession())
+    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
     monkeypatch.setattr(vor, "ALLOW_BUS", False)
 
     result = vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
