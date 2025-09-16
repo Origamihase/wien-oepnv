@@ -2,7 +2,7 @@ import importlib
 import re
 import sys
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 def _load_build_feed(monkeypatch):
@@ -10,6 +10,12 @@ def _load_build_feed(monkeypatch):
     monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1] / "src"))
     sys.modules.pop(module_name, None)
     return importlib.import_module(module_name)
+
+
+def _extract_description(xml: str) -> str:
+    match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml)
+    assert match, xml
+    return match.group(1)
 
 
 def test_clip_text_html_plain_and_clips(monkeypatch):
@@ -95,9 +101,68 @@ def test_emit_item_removes_category_and_limits_lines(monkeypatch):
 
     _, xml = bf._emit_item(item, now, {})
 
-    desc_match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml)
-    assert desc_match, xml
-    desc_text = desc_match.group(1)
-    assert desc_text == "Wegen …<br/>Montag …"
+    desc_text = _extract_description(xml)
+    assert desc_text == "Wegen …"
     assert "Bauarbeiten" not in desc_text
     assert "Zeitraum" not in desc_text
+
+
+def test_emit_item_appends_since_time(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 1, 1, tzinfo=timezone.utc)
+    item = {
+        "title": "Störung",
+        "description": "Wegen Bauarbeiten",
+        "starts_at": datetime(2024, 1, 5, 10, 0, tzinfo=timezone.utc),
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_text = _extract_description(xml)
+    assert desc_text == "Wegen Bauarbeiten<br/>seit: 05.01.2024 11:00"
+
+
+def test_emit_item_appends_same_day_range(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 3, 10, tzinfo=timezone.utc)
+    item = {
+        "title": "Sperre",
+        "description": "Zug verkehrt nicht",
+        "starts_at": datetime(2024, 3, 10, 8, 0, tzinfo=timezone.utc),
+        "ends_at": datetime(2024, 3, 10, 12, 30, tzinfo=timezone.utc),
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_text = _extract_description(xml)
+    assert desc_text == "Zug verkehrt nicht<br/>09:00-13:30 10.03.2024"
+
+
+def test_emit_item_appends_multi_day_range(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 6, 1, tzinfo=timezone.utc)
+    item = {
+        "title": "Sperre",
+        "description": "Ersatzverkehr eingerichtet",
+        "starts_at": datetime(2024, 6, 1, 12, 0, tzinfo=timezone.utc),
+        "ends_at": datetime(2024, 6, 3, 15, 0, tzinfo=timezone.utc),
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_text = _extract_description(xml)
+    assert desc_text == "Ersatzverkehr eingerichtet<br/>01.06.2024 14:00-03.06.2024 17:00"
+
+
+def test_emit_item_no_times_only_description(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 2, 1, tzinfo=timezone.utc)
+    item = {
+        "title": "Info",
+        "description": "Kurzinfo",
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_text = _extract_description(xml)
+    assert desc_text == "Kurzinfo"
