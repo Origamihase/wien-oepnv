@@ -252,12 +252,12 @@ def test_emit_item_since_line_for_missing_or_nonadvancing_end(monkeypatch):
         ]
 
 
-def test_emit_item_future_same_day_shows_am(monkeypatch):
+def test_emit_item_same_day_shows_since(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     _freeze_vienna_now(
-        monkeypatch, bf, datetime(2024, 1, 1, tzinfo=bf._VIENNA_TZ)
+        monkeypatch, bf, datetime(2024, 1, 12, tzinfo=bf._VIENNA_TZ)
     )
-    now = datetime(2024, 1, 1, tzinfo=timezone.utc)
+    now = datetime(2024, 1, 12, tzinfo=timezone.utc)
     item = {
         "title": "Störung",
         "description": "Wegen Bauarbeiten",
@@ -270,13 +270,13 @@ def test_emit_item_future_same_day_shows_am(monkeypatch):
     desc_text = _extract_description(xml)
     assert desc_text.split("<br/>") == [
         "Wegen Bauarbeiten",
-        "Am 10.01.2024",
+        "Seit 10.01.2024",
     ]
 
     content_html = _extract_content_encoded(xml)
     assert content_html.split("<br/>") == [
         "Wegen Bauarbeiten",
-        "Am 10.01.2024",
+        "Seit 10.01.2024",
     ]
 
 
@@ -350,7 +350,7 @@ def test_emit_item_long_range_treated_as_open(monkeypatch):
         ]
 
 
-def test_emit_item_appends_same_day_range(monkeypatch):
+def test_emit_item_same_day_range_shows_since(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     _freeze_vienna_now(
         monkeypatch, bf, datetime(2024, 3, 11, tzinfo=bf._VIENNA_TZ)
@@ -366,10 +366,44 @@ def test_emit_item_appends_same_day_range(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text == "Zug verkehrt nicht<br/>10.03.2024\u202f–\u202f10.03.2024"
+    assert desc_text.split("<br/>") == [
+        "Zug verkehrt nicht",
+        "Seit 10.03.2024",
+    ]
 
     content_html = _extract_content_encoded(xml)
-    assert content_html == "Zug verkehrt nicht<br/>10.03.2024\u202f–\u202f10.03.2024"
+    assert content_html.split("<br/>") == [
+        "Zug verkehrt nicht",
+        "Seit 10.03.2024",
+    ]
+
+
+def test_emit_item_multi_day_range_still_shows_range(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    _freeze_vienna_now(
+        monkeypatch, bf, datetime(2024, 3, 15, tzinfo=bf._VIENNA_TZ)
+    )
+    now = datetime(2024, 3, 15, tzinfo=timezone.utc)
+    item = {
+        "title": "Sperre",
+        "description": "Zug verkehrt eingeschränkt",
+        "starts_at": bf.datetime(2024, 3, 10, 8, 0, tzinfo=timezone.utc),
+        "ends_at": bf.datetime(2024, 3, 12, 12, 0, tzinfo=timezone.utc),
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_text = _extract_description(xml)
+    assert desc_text.split("<br/>") == [
+        "Zug verkehrt eingeschränkt",
+        "10.03.2024\u202f–\u202f12.03.2024",
+    ]
+
+    content_html = _extract_content_encoded(xml)
+    assert content_html.split("<br/>") == [
+        "Zug verkehrt eingeschränkt",
+        "10.03.2024\u202f–\u202f12.03.2024",
+    ]
 
 
 def test_emit_item_appends_multi_day_range(monkeypatch):

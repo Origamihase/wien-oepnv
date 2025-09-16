@@ -195,6 +195,8 @@ def format_local_times(
                 if start_local.date() > today.date():
                     return f"Ab {start_local:%d.%m.%Y}"
                 return f"Seit {start_local:%d.%m.%Y}"
+            if start_local.date() == end_local.date():
+                return f"Seit {start_local:%d.%m.%Y}"
             return f"{start_local:%d.%m.%Y} – {end_local:%d.%m.%Y}"
         if start_local.date() > today.date():
             return f"Ab {start_local:%d.%m.%Y}"
