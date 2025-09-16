@@ -26,6 +26,11 @@ from typing import Any, Dict, List, Optional
 from email.utils import parsedate_to_datetime
 
 try:  # pragma: no cover - support both package layouts
+    from utils.env import get_bool_env
+except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.env import get_bool_env  # type: ignore
+
+try:  # pragma: no cover - support both package layouts
     from utils.ids import make_guid
     from utils.text import html_to_text
     from utils.stations import canonical_name, is_in_vienna, is_pendler
@@ -46,7 +51,7 @@ OEBB_URL = (os.getenv("OEBB_RSS_URL", "").strip()
 
 # Optional strenger Filter: Nur Meldungen mit Endpunkten in Wien behalten.
 # Aktiviert durch Umgebungsvariable ``OEBB_ONLY_VIENNA`` ("1"/"true" vs "0"/"false", case-insens).
-OEBB_ONLY_VIENNA = os.getenv("OEBB_ONLY_VIENNA", "").strip().lower() not in {"", "0", "false"}
+OEBB_ONLY_VIENNA = get_bool_env("OEBB_ONLY_VIENNA", False)
 
 # ---------------- HTTP ----------------
 def _session() -> requests.Session:
