@@ -184,7 +184,8 @@ def test_cache_iso_items_sorted_and_emit_pubdate(monkeypatch):
             assert isinstance(cache_items[idx][field], datetime)
             assert cache_items[idx][field].tzinfo is not None
 
-    filtered = build_feed._drop_old_items(cache_items, now)
+    state = {}
+    filtered = build_feed._drop_old_items(cache_items, now, state)
     assert {it["guid"] for it in filtered} == {"new-guid", "older-guid"}
 
     deduped = build_feed._dedupe_items(filtered)
@@ -192,7 +193,6 @@ def test_cache_iso_items_sorted_and_emit_pubdate(monkeypatch):
 
     assert [it["guid"] for it in deduped] == ["new-guid", "older-guid"]
 
-    state = {}
     monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
     rss = build_feed._make_rss(deduped, now, state)
 
