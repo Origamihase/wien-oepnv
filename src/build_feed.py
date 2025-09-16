@@ -215,6 +215,11 @@ _LINE_PREFIX_RE = re.compile(
     r"^\s*([A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20})\s*:\s*"
 )
 
+DATE_RANGE_RE = re.compile(
+    r"^\s*(\d{2}\.\d{2}\.\d{4})\s*(?:-|–|bis)\s*(\d{2}\.\d{2}\.\d{4})\s*$",
+    re.IGNORECASE,
+)
+
 _ELLIPSIS = " …"
 _SENTENCE_END_RE = re.compile(r"[.!?…](?=\s|$)")
 _WHITESPACE_RE = re.compile(r"\s+")
@@ -660,6 +665,14 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(html.unescape(raw_title))
     desc_lines = desc_clipped.split("\n")
+
+    date_range_line: Optional[str] = None
+    for line in desc_lines:
+        match = DATE_RANGE_RE.match(line)
+        if match:
+            date_range_line = f"{match.group(1)} – {match.group(2)}"
+            break
+
     if desc_lines and desc_lines[0].lower() in title_out.lower():
         desc_lines = desc_lines[1:]
     desc_lines = [
@@ -700,6 +713,9 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
         starts_at if isinstance(starts_at, datetime) else None,
         ends_at if isinstance(ends_at, datetime) else None,
     )
+    normalized_time_line = (time_line or "").strip()
+    if date_range_line and (not normalized_time_line or normalized_time_line in {"Seit", "Ab"}):
+        time_line = date_range_line
     time_line = _sanitize_text(time_line)
     time_line = re.sub(r"[ \t\r\f\v]+", " ", time_line).strip()
 

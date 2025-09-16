@@ -159,11 +159,41 @@ def test_emit_item_oebb_multiline_sentence(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert (
-        desc_text
-        == "Wegen Bauarbeiten können in Ebenfurth Bahnhof von 06.12.2025 "
-        "(06:10 Uhr) bis 09.12.2025 (04:40 Uhr) die S60-Züge nicht halten."
-    )
+    assert desc_text.split("<br/>") == [
+        "Wegen Bauarbeiten können in Ebenfurth Bahnhof von 06.12.2025 "
+        "(06:10 Uhr) bis 09.12.2025 (04:40 Uhr) die S60-Züge nicht halten.",
+        "06.12.2025 – 09.12.2025",
+    ]
+
+    content_html = _extract_content_encoded(xml)
+    assert content_html.split("<br/>") == [
+        "Wegen Bauarbeiten können in Ebenfurth Bahnhof von 06.12.2025 "
+        "(06:10 Uhr) bis 09.12.2025 (04:40 Uhr) die S60-Züge nicht halten.",
+        "06.12.2025 – 09.12.2025",
+    ]
+
+
+def test_emit_item_uses_date_range_from_description(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 1, 1)
+    item = {
+        "title": "Ebenfurth",
+        "description": "06.12.2025 - 09.12.2025\nWegen Bauarbeiten",
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_text = _extract_description(xml)
+    assert desc_text.split("<br/>") == [
+        "Wegen Bauarbeiten",
+        "06.12.2025 – 09.12.2025",
+    ]
+
+    content_html = _extract_content_encoded(xml)
+    assert content_html.split("<br/>") == [
+        "Wegen Bauarbeiten",
+        "06.12.2025 – 09.12.2025",
+    ]
 
 
 def test_emit_item_appends_since_time(monkeypatch):
