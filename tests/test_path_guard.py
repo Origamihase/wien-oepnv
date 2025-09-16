@@ -40,3 +40,12 @@ def test_state_path_rejects_outside_whitelist(monkeypatch, tmp_path):
     with pytest.raises(ValueError):
         _import_build_feed(monkeypatch)
 
+
+def test_log_dir_outside_whitelist_falls_back(monkeypatch, tmp_path):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("LOG_DIR", "../evil")
+    build_feed = _import_build_feed(monkeypatch)
+
+    assert build_feed.LOG_DIR == "log"
+    assert (tmp_path / "log").is_dir()
+
