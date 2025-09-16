@@ -134,6 +134,15 @@ def save_request_count(now_local: datetime) -> int:
             )
             with os.fdopen(fd, "w", encoding="utf-8") as fh:
                 json.dump({"date": today, "count": new_count}, fh)
+                fh.flush()
+                try:
+                    os.fsync(fh.fileno())
+                except OSError as sync_exc:
+                    log.warning(
+                        "VOR: Konnte Request-Zähler nicht synchronisieren: %s",
+                        sync_exc,
+                    )
+                    raise
             os.replace(tmp_path, REQUEST_COUNT_FILE)
         except OSError as exc:
             log.warning("VOR: Konnte Request-Zähler nicht speichern: %s", exc)

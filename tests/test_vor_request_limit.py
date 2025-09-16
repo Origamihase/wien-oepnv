@@ -1,4 +1,5 @@
 import json
+import os
 from datetime import datetime
 
 from zoneinfo import ZoneInfo
@@ -38,3 +39,51 @@ def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
 
     assert items == []
     assert any("Tageslimit" in record.getMessage() for record in caplog.records)
+
+
+def test_save_request_count_flushes_and_fsyncs(monkeypatch, tmp_path):
+    target_file = tmp_path / "vor_request_count.json"
+    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
+
+    flush_called = False
+    fsync_called = False
+
+    original_fdopen = os.fdopen
+    original_fsync = os.fsync
+
+    def tracking_fdopen(*args, **kwargs):
+        file_obj = original_fdopen(*args, **kwargs)
+
+        class TrackingFile:
+            def __init__(self, wrapped):
+                self._wrapped = wrapped
+
+            def flush(self):
+                nonlocal flush_called
+                flush_called = True
+                return self._wrapped.flush()
+
+            def __getattr__(self, name):
+                return getattr(self._wrapped, name)
+
+            def __enter__(self):
+                self._wrapped.__enter__()
+                return self
+
+            def __exit__(self, exc_type, exc, tb):
+                return self._wrapped.__exit__(exc_type, exc, tb)
+
+        return TrackingFile(file_obj)
+
+    def tracking_fsync(fd):
+        nonlocal fsync_called
+        fsync_called = True
+        return original_fsync(fd)
+
+    monkeypatch.setattr(vor.os, "fdopen", tracking_fdopen)
+    monkeypatch.setattr(vor.os, "fsync", tracking_fsync)
+
+    vor.save_request_count(datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna")))
+
+    assert flush_called
+    assert fsync_called
