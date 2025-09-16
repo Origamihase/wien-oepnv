@@ -21,7 +21,6 @@ from providers.vor import (  # noqa: E402  (import after path setup)
     MAX_REQUESTS_PER_DAY,
     fetch_events,
     load_request_count,
-    save_request_count,
 )
 from utils.cache import write_cache  # noqa: E402
 from utils.serialize import serialize_for_cache  # noqa: E402
@@ -88,13 +87,8 @@ def main() -> int:
         )
         return 1
 
-    now_local = _now_local()
-    if _limit_reached(now_local):
-        return 0
-
     serialized_items = [serialize_for_cache(item) for item in items]
     write_cache("vor", serialized_items)
-    save_request_count(now_local)
     logger.info("VOR: Cache mit %d Einträgen aktualisiert.", len(serialized_items))
     return 0
 
