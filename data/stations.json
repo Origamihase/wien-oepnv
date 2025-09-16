@@ -355,5 +355,127 @@
     "name": "Wien Aspern Nord",
     "in_vienna": true,
     "pendler": false
+  },
+  {
+    "name": "Flughafen Wien Bahnhof (VOR)",
+    "in_vienna": false,
+    "pendler": false,
+    "vor_id": "900200",
+    "latitude": 48.120027,
+    "longitude": 16.561749,
+    "aliases": [
+      "900200",
+      "Flughafen Wien Bahnhof",
+      "Schwechat Flughafen Wien Bahnhof",
+      "Vienna Airport"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Wien Aspern Nord (VOR)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "900100",
+    "latitude": 48.234567,
+    "longitude": 16.520123,
+    "aliases": [
+      "900100",
+      "Aspern Nord S U",
+      "Wien Aspern Nord"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Wiener Neustadt Hbf (VOR)",
+    "in_vienna": false,
+    "pendler": false,
+    "vor_id": "900300",
+    "latitude": 47.810231,
+    "longitude": 16.235204,
+    "aliases": [
+      "900300",
+      "Wiener Neustadt Hbf",
+      "Wr. Neustadt Hbf"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Wien Karlsplatz (WL)",
+    "in_vienna": true,
+    "pendler": false,
+    "wl_diva": "60201076",
+    "wl_stops": [
+      {
+        "stop_id": "60201076",
+        "name": "Karlsplatz U (Richtung Reumannplatz)",
+        "latitude": 48.19868,
+        "longitude": 16.36945
+      },
+      {
+        "stop_id": "60201077",
+        "name": "Karlsplatz U (Richtung Leopoldau)",
+        "latitude": 48.1992,
+        "longitude": 16.371
+      }
+    ],
+    "aliases": [
+      "60201076",
+      "60201077",
+      "Karlsplatz",
+      "Karlsplatz U (Richtung Leopoldau)",
+      "Karlsplatz U (Richtung Reumannplatz)",
+      "Wien Karlsplatz"
+    ],
+    "source": "wl"
+  },
+  {
+    "name": "Wien Schottentor (WL)",
+    "in_vienna": true,
+    "pendler": false,
+    "wl_diva": "60201002",
+    "wl_stops": [
+      {
+        "stop_id": "60201002",
+        "name": "Schottentor U (Richtung Heiligenstadt)",
+        "latitude": 48.21406,
+        "longitude": 16.36031
+      },
+      {
+        "stop_id": "60201003",
+        "name": "Schottentor U (Richtung Karlsplatz)",
+        "latitude": 48.2135,
+        "longitude": 16.3609
+      }
+    ],
+    "aliases": [
+      "60201002",
+      "60201003",
+      "Schottentor",
+      "Schottentor U (Richtung Heiligenstadt)",
+      "Schottentor U (Richtung Karlsplatz)",
+      "Wien Schottentor"
+    ],
+    "source": "wl"
+  },
+  {
+    "name": "Wien Stephansplatz (WL)",
+    "in_vienna": true,
+    "pendler": false,
+    "wl_diva": "60201001",
+    "wl_stops": [
+      {
+        "stop_id": "60201001",
+        "name": "Stephansplatz U",
+        "latitude": 48.20826,
+        "longitude": 16.37327
+      }
+    ],
+    "aliases": [
+      "60201001",
+      "Stephansplatz",
+      "Stephansplatz U",
+      "Wien Stephansplatz"
+    ],
+    "source": "wl"
   }
 ]
