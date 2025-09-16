@@ -18,10 +18,10 @@ from zoneinfo import ZoneInfo
 
 try:  # pragma: no cover - allow running as package and as script
     from utils.cache import read_cache
-    from utils.env import get_int_env
+    from utils.env import get_int_env, get_bool_env
 except ModuleNotFoundError:  # pragma: no cover
     from .utils.cache import read_cache  # type: ignore
-    from .utils.env import get_int_env  # type: ignore
+    from .utils.env import get_int_env, get_bool_env  # type: ignore
 
 # ---------------- Logging ----------------
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").strip().upper()
@@ -349,11 +349,7 @@ def _collect_items() -> List[Dict[str, Any]]:
     items: List[Dict[str, Any]] = []
     futures: Dict[Any, Any] = {}
 
-    active = [
-        f
-        for env, f in PROVIDERS
-        if os.getenv(env, "1").strip().lower() not in {"0", "false"}
-    ]
+    active = [f for env, f in PROVIDERS if get_bool_env(env, True)]
     if not active:
         return []
 

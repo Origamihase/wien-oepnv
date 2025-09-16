@@ -28,9 +28,9 @@ except ModuleNotFoundError:  # pragma: no cover
     from src.utils.ids import make_guid  # type: ignore
 
 try:  # pragma: no cover - support both package layouts
-    from utils.env import get_int_env
+    from utils.env import get_int_env, get_bool_env
 except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.env import get_int_env  # type: ignore
+    from src.utils.env import get_int_env, get_bool_env  # type: ignore
 
 try:
     from utils.text import html_to_text
@@ -123,7 +123,7 @@ MAX_STATIONS_PER_RUN = get_int_env("VOR_MAX_STATIONS_PER_RUN", DEFAULT_MAX_STATI
 ROTATION_INTERVAL_SEC = get_int_env("VOR_ROTATION_INTERVAL_SEC", 1800)
 RETRY_AFTER_FALLBACK_SEC = 5.0
 
-ALLOW_BUS = (os.getenv("VOR_ALLOW_BUS", "0").strip() == "1")
+ALLOW_BUS = get_bool_env("VOR_ALLOW_BUS", False)
 BUS_INCLUDE_RE = re.compile(os.getenv("VOR_BUS_INCLUDE_REGEX", r"(?:\b[2-9]\d{2,4}\b)"))
 BUS_EXCLUDE_RE = re.compile(os.getenv("VOR_BUS_EXCLUDE_REGEX", r"^(?:N?\d{1,2}[A-Z]?)$"))
 
