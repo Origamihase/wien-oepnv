@@ -422,18 +422,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N20: Busse halten bei Hoßplatz 4-5",
-    "description": "Gleisbauarbeiten Busse halten bei Hoßplatz 4-5",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a19de5d51953a6980449181f710dccf7c52937a0e0365fa3f006acf34eeb8266",
-    "pubDate": "2025-09-17T01:00:21+02:00",
-    "starts_at": "2025-09-17T01:00:21+02:00",
-    "ends_at": "2025-09-17T04:30:00+02:00",
-    "_identity": "wl|störung|L=N20|D=2025-09-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N43: Busse halten Ottakringer Straße 38-40",
     "description": "Gleisbauarbeiten Busse halten Ottakringer Straße 38-40",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -454,5 +442,17 @@
     "starts_at": "2025-09-17T01:20:21+02:00",
     "ends_at": "2025-09-17T05:05:00+02:00",
     "_identity": "wl|störung|L=N38|D=2025-09-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cb8f37a153e49e1b9fce9bbe197d868b0f2104c567dea861959f72bf49ba88a7",
+    "pubDate": "2025-09-17T04:36:18+02:00",
+    "starts_at": "2025-09-17T04:36:18+02:00",
+    "ends_at": "2025-09-17T23:45:00+02:00",
+    "_identity": "wl|störung|L=12|D=2025-09-17"
   }
 ]
