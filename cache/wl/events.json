@@ -430,5 +430,29 @@
     "starts_at": "2025-09-17T11:50:00+02:00",
     "ends_at": "2025-09-17T23:55:00+02:00",
     "_identity": "wl|störung|L=10A|D=2025-09-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Verkehrsunfall",
+    "description": "Die Linie 12 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35",
+    "pubDate": "2025-09-17T12:25:00+02:00",
+    "starts_at": "2025-09-17T12:25:00+02:00",
+    "ends_at": "2025-09-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2025-09-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49A/50B: Schadhafter LKW",
+    "description": "Die Linie 50 B ist derzeit in Richtung Auhof an der Weiterfahrt gehindert. Die Linie 49 A ist derzeit in Richtung Wolfersberg, Schöffelplatz an der Weiterfahrt gehindert. Grund dafür ist ein schadhafter LKW im Bereich Wolfersberggasse 16.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bf7c540b8155301e08e66db0651a8994c4a7d7218e08ceca2d5b88d3f2bdb6be",
+    "pubDate": "2025-09-17T12:25:00+02:00",
+    "starts_at": "2025-09-17T12:25:00+02:00",
+    "ends_at": "2025-09-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=49A,50B|D=2025-09-17"
   }
 ]
