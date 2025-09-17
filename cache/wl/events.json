@@ -158,18 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "29A/29B: Umleitung ab 04.08.2025",
-    "description": "Straßenbauarbeiten\nWegen Straßenbauarbeiten in der Leopoldauer Straße müssen die Busse neuerlich umgeleitet werden.\nZeitraum:\nMontag, 4. August 2025 Betriebsbeginn bis voraussichtlich Mitte November 2025.\nMaßnahmen:\nLinien 29 A, 29 B und Rufbus N30 in Richtung Floridsdorf S U\nUmleitung ab Leopoldauer Straße # Katsushikastraße über Katsushikastraße - Brünner Straße - Angerer Straße - Freytaggasse.\nHaltestelle:\nSebastian-Kohl-Gasse (Leopoldauer Straße 37): Ersatzlos aufgelassen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6e4177e16bcc0a2b04b0dc1cfd337a16495b81def430bbc4f8018d760528e3c7",
-    "pubDate": "2025-07-28T14:40:00+02:00",
-    "starts_at": "2025-07-28T14:40:00+02:00",
-    "ends_at": "2026-07-28T11:11:00+02:00",
-    "_identity": "wl|hinweis|L=29A,29B|D=2025-07-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "N20: Umleitung Schlosshofer Straße ab 11.08.2025",
     "description": "Umleitung\nWegen Gleisbauarbeiten in der Schlosshofer Straße müssen die Busse der Linie N20 umgeleitet werden.\nZeitraum:\nAb 11. August 2025 (Nacht von 10. auf 11. August) für ungefähr fünf Wochen.\nMaßnahme:\nLinie N20\nUmleitung in beiden Richtungen über Hoßplatz - Patrizigasse - Freytaggasse\nHaltestelle Hoßplatz:\nVerlegung in beiden Richtungen\nVon: Hoßplatz 12 (bzw. gegenüber)\nNach: Hoßplatz 4-5 (bzw. gegenüber).",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -422,50 +410,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49A: Schadhafter LKW",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 A zu unterschiedlichen Intervallen.",
+    "title": "38: Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 38 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5a6bed0fdf60c8785f851da8dc0b872efc96a924d97d1ccb4b762554c2fc18e6",
-    "pubDate": "2025-09-17T12:25:00+02:00",
-    "starts_at": "2025-09-17T12:25:00+02:00",
+    "guid": "a71fc169a65218e40e97e38cf1216a0530e03cb41823f0f6e351949dbeea8a98",
+    "pubDate": "2025-09-17T14:20:00+02:00",
+    "starts_at": "2025-09-17T14:20:00+02:00",
     "ends_at": "2025-09-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=49A|D=2025-09-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
-    "pubDate": "2025-09-17T13:00:00+02:00",
-    "starts_at": "2025-09-17T13:00:00+02:00",
-    "ends_at": "2025-09-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-09-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "44: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 44 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c14ad7374d16f14cd0154afd971ba66872a46e7f70c45ab6156ec3ada2b6a22a",
-    "pubDate": "2025-09-17T13:10:00+02:00",
-    "starts_at": "2025-09-17T13:10:00+02:00",
-    "ends_at": "2025-09-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=44|D=2025-09-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2A: Betriebsstörung",
-    "description": "Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ea5410be950e5f7b7b6144550bb8f7dd262eee55c9543f022a28aefcd2e7e5a2",
-    "pubDate": "2025-09-17T13:40:00+02:00",
-    "starts_at": "2025-09-17T13:40:00+02:00",
-    "ends_at": "2025-09-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=2A|D=2025-09-17"
+    "_identity": "wl|störung|L=38|D=2025-09-17"
   },
   {
     "source": "Wiener Linien",
@@ -482,13 +434,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29B: Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 29 B zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "926698c2f961fc28e72bfea5a39121734c681178bdca0f0904afd2b0b22ae1d0",
+    "pubDate": "2025-09-17T14:30:00+02:00",
+    "starts_at": "2025-09-17T14:30:00+02:00",
+    "ends_at": "2025-09-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=29B|D=2025-09-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 29 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fd28b60b0d399a255267aca8e0564e4a131b7ccaa011c57449a8324ef18484f3",
+    "pubDate": "2025-09-17T14:30:00+02:00",
+    "starts_at": "2025-09-17T14:30:00+02:00",
+    "ends_at": "2025-09-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=29A|D=2025-09-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "39A: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0518218dfef9e7890832a59bcff40a1613b435e219141c5586ffa406ab24313a",
     "pubDate": "2025-09-17T14:30:41+02:00",
     "starts_at": "2025-09-17T14:30:41+02:00",
-    "ends_at": "2025-09-17T15:30:00+02:00",
+    "ends_at": "2025-09-17T15:46:00+02:00",
     "_identity": "wl|störung|L=39A|D=2025-09-17"
   },
   {
@@ -502,5 +478,29 @@
     "starts_at": "2025-09-17T14:31:39+02:00",
     "ends_at": "2025-09-17T15:30:00+02:00",
     "_identity": "wl|störung|L=10A|D=2025-09-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Verkehrsunfall Umleitung über Brünner Straße / Katsushikastr.",
+    "description": "Verkehrsunfall Umleitung über Brünner Straße / Katsushikastr.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c264fa5d64e51cdcac2ed0f8e325875aabe7cecb7d0a1d743139358b9a18707a",
+    "pubDate": "2025-09-17T14:40:50+02:00",
+    "starts_at": "2025-09-17T14:40:50+02:00",
+    "ends_at": "2025-09-17T15:38:00+02:00",
+    "_identity": "wl|störung|L=|D=2025-09-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
+    "pubDate": "2025-09-17T14:41:48+02:00",
+    "starts_at": "2025-09-17T14:41:48+02:00",
+    "ends_at": "2025-09-17T15:45:00+02:00",
+    "_identity": "wl|störung|L=38|D=2025-09-17"
   }
 ]
