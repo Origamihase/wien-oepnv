@@ -751,7 +751,8 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     if time_line:
         desc_parts.append(time_line)
     desc_out = "\n".join(desc_parts)
-    desc_cdata = desc_out.replace("\n", "<br/>")
+    desc_cdata = desc_out
+    content_cdata = desc_out.replace("\n", "<br/>")
 
     parts: List[str] = []
     parts.append("<item>")
@@ -768,7 +769,7 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
         parts.append(f"<ext:ends_at>{_fmt_rfc2822(ends_at)}</ext:ends_at>")
 
     parts.append(f"<description>{_cdata(desc_cdata)}</description>")
-    parts.append(f"<content:encoded>{_cdata(desc_cdata)}</content:encoded>")
+    parts.append(f"<content:encoded>{_cdata(content_cdata)}</content:encoded>")
     parts.append("</item>")
     return ident, "\n".join(parts)
 
