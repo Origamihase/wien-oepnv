@@ -458,25 +458,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
-    "pubDate": "2025-09-17T20:07:34+02:00",
-    "starts_at": "2025-09-17T20:07:34+02:00",
-    "ends_at": "2025-09-17T21:07:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-09-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "9: Rettungseinsatz",
+    "description": "Die Linie 9 fährt derzeit nur zwischen Westbahnhof und Rosensteingasse und weiter bis Hernals, Wattgasse. Ersatzweise benützen Sie bitte die Linie 10 A . Die Störung dauert voraussichtlich bis 21:30 Uhr . Grund dafür ist ein Rettungseinsatz im Bereich Blumengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
     "pubDate": "2025-09-17T20:08:03+02:00",
-    "starts_at": "2025-09-17T20:08:03+02:00",
-    "ends_at": "2025-09-17T21:07:00+02:00",
+    "starts_at": "2025-09-17T21:00:00+02:00",
+    "ends_at": "2025-09-17T23:55:00+02:00",
     "_identity": "wl|störung|L=9|D=2025-09-17"
   },
   {
@@ -502,5 +490,53 @@
     "starts_at": "2025-09-17T20:25:00+02:00",
     "ends_at": "2025-09-17T23:55:00+02:00",
     "_identity": "wl|störung|L=71A|D=2025-09-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "24A: Betriebsstörung",
+    "description": "Die Linie 24 A ist derzeit in Richtung Kagraner Platz an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 21:15 Uhr. Grund dafür ist eine Betriebsstörung im Bereich Huflattichweg .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2de760181a65c454c954cecfd6900e8ee65cf9734b8542a79d3db454877da735",
+    "pubDate": "2025-09-17T20:45:00+02:00",
+    "starts_at": "2025-09-17T20:45:00+02:00",
+    "ends_at": "2025-09-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=24A|D=2025-09-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Polizeieinsatz",
+    "description": "Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Kaiserebersdorf, Zinnergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d",
+    "pubDate": "2025-09-17T20:50:00+02:00",
+    "starts_at": "2025-09-17T20:50:00+02:00",
+    "ends_at": "2025-09-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=71|D=2025-09-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "24A: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung Betriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "779c8415a8254108d67eae2278e53e89600f6c171714e76bb695da4e22efbe45",
+    "pubDate": "2025-09-17T20:52:50+02:00",
+    "starts_at": "2025-09-17T20:52:50+02:00",
+    "ends_at": "2025-09-17T21:52:00+02:00",
+    "_identity": "wl|störung|L=24A|D=2025-09-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Falschparker Betrieb ab Rosensteingasse",
+    "description": "Falschparker Betrieb ab Rosensteingasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2025-09-17T21:07:47+02:00",
+    "starts_at": "2025-09-17T21:07:47+02:00",
+    "ends_at": "2025-09-17T22:06:00+02:00",
+    "_identity": "wl|störung|L=9|D=2025-09-17"
   }
 ]
