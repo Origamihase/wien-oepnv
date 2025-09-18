@@ -135,7 +135,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "1/1A/2/2A/31/3A/71/74A/D: Vienna Night Run am 25.09.2025",
-    "description": "Veranstaltung\nWegen einer Laufveranstaltung kommt es zu Einschränkungen bei den Linien D, 1, 2, 31, 71, 1 A, 2 A, 3 A und 74 A.\nZeitraum:\nDonnerstag, 25. September 2025 von 18:30 Uhr bis Betriebsschluss.\nMaßnahmen:\nLinie D\nUmleitung in beiden Richtungen\nzwischen Schwarzenbergplatz und Börse\nüber Schwedenplatz U.\nLinie 1\nUmleitung in beiden Richtungen\nzwischen Kliebergasse und Hintere Zollamtsstraße\nüber Hauptbahnhof und Landstraße\nLinie 2\nKein Betrieb zwischen Ring, Volkstheater U und Taborstraße, Heinestraße, die Züge fahren weiter zum Praterstern S U.\nLinie 31\nBetrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße.\nWeiterfahrt bis Wallensteinplatz.\nLinie 71\nBetrieb nur zwischen Kaiserebersdorf, Zinnergasse und Schwarzenbergplatz.\nLinien 1 A, 2 A und 3 A\nBetrieb eingestellt.\nLinie 74 A\nBetrieb nur zwischen St. Marx S und Landstraße S U.",
+    "description": "Veranstaltung\nWegen einer Laufveranstaltung kommt es zu Einschränkungen bei den Linien D, 1, 2, 31, 71, 1 A, 2 A, 3 A und 74 A.\nZeitraum:\nDonnerstag, 25. September 2025 von 18:30 Uhr bis Betriebsschluss.\nMaßnahmen:\nLinie D\nKein Betrieb zwischen Schwarzenbergplatz und Börse.\nLinie 1\nUmleitung in beiden Richtungen\nzwischen Kliebergasse und Hintere Zollamtsstraße\nüber Hauptbahnhof und Landstraße\nLinie 2\nKein Betrieb zwischen Ring, Volkstheater U und Taborstraße, Heinestraße, die Züge fahren weiter zum Praterstern S U.\nLinie 31\nBetrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße.\nWeiterfahrt bis Wallensteinplatz.\nLinie 71\nBetrieb nur zwischen Kaiserebersdorf, Zinnergasse und Schwarzenbergplatz.\nLinien 1 A, 2 A und 3 A\nBetrieb eingestellt.\nLinie 74 A\nBetrieb nur zwischen St. Marx S und Landstraße S U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "21a4b95df14ea5792c7b8f93440e57bc726c599ee02eec407e794de996587897",
     "pubDate": "2025-07-09T14:00:00+02:00",
@@ -350,6 +350,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5: Bauarbeiten",
+    "description": "Die Linie 5 fährt nur zwischen Praterstern und Josefstädter Straße. Ersatzweise benützen Sie bitte die Linie U6. Die Störung dauert voraussichtlich bis inklusive 1. Oktober 2025. Grund dafür sind Bauarbeiten im Bereich Blindengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c6b1998ef7f34abd716aca5b6a9e1eff4f901b6489602bf2863cfb4a83cf741c",
+    "pubDate": "2025-09-15T04:30:00+02:00",
+    "starts_at": "2025-09-15T04:30:00+02:00",
+    "ends_at": "2025-10-02T04:30:00+02:00",
+    "_identity": "wl|störung|L=5|D=2025-09-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5: Kein Betrieb",
     "description": "Gleisbauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -422,18 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "93A: Rettungseinsatz",
-    "description": "Die Linie 93 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Kagran U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9139b858cc5b32fdae2329398eff2f761358a89ef3a321b858732fb73e5850fa",
-    "pubDate": "2025-09-18T05:00:00+02:00",
-    "starts_at": "2025-09-18T05:00:00+02:00",
-    "ends_at": "2025-09-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=93A|D=2025-09-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U2: Verspätungen",
     "description": "Die Linie U2 kann derzeit in Richtung Seestadt nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Karlsplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -442,17 +442,5 @@
     "starts_at": "2025-09-18T05:05:00+02:00",
     "ends_at": "2025-09-18T23:55:00+02:00",
     "_identity": "wl|störung|L=U2|D=2025-09-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "15A: Polizeieinsatz",
-    "description": "Die Linie 15 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Bhf. Meidling , Schedifkaplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "71842f84405f237b1ca92ed099f0b8a763b7094e4c58c8d1a7947727dcdc5496",
-    "pubDate": "2025-09-18T05:25:00+02:00",
-    "starts_at": "2025-09-18T05:25:00+02:00",
-    "ends_at": "2025-09-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=15A|D=2025-09-18"
   }
 ]
