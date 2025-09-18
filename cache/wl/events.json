@@ -363,7 +363,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "5: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "description": "Gleisbauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "3eec659231d431c492a4c3fa40012777e023a9b2087e37bcbd20d84a40334d33",
     "pubDate": "2025-09-15T04:38:13+02:00",
@@ -446,30 +446,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "02c4debcee098748fa75676bf40a24358248b63e659fb31ec11f1f4e7b5354f0",
-    "pubDate": "2025-09-18T19:57:02+02:00",
-    "starts_at": "2025-09-18T19:57:02+02:00",
-    "ends_at": "2025-09-18T21:13:00+02:00",
-    "_identity": "wl|störung|L=|D=2025-09-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "63A: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "18e21c18dfc9a0e6df49bd46e1fa3a31a4b968e7008d0927359620c50dd246a8",
-    "pubDate": "2025-09-18T20:14:48+02:00",
-    "starts_at": "2025-09-18T20:14:48+02:00",
-    "ends_at": "2025-09-18T21:14:00+02:00",
-    "_identity": "wl|störung|L=63A|D=2025-09-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "63A: Feuerwehreinsatz",
     "description": "Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Feuerwehreinsatz im Bereich .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -518,13 +494,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "WLB: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie WLB zu unterschiedlichen Intervallen.",
+    "title": "WLB: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a3824cf2b28862393f00e8184f6eb157409bebc3b6b373abb3ac3f67960f6454",
-    "pubDate": "2025-09-18T20:55:00+02:00",
-    "starts_at": "2025-09-18T20:55:00+02:00",
-    "ends_at": "2025-09-18T23:55:00+02:00",
+    "pubDate": "2025-09-18T21:03:32+02:00",
+    "starts_at": "2025-09-18T21:03:32+02:00",
+    "ends_at": "2025-09-18T22:03:00+02:00",
     "_identity": "wl|störung|L=WLB|D=2025-09-18"
   },
   {
