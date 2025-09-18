@@ -86,20 +86,16 @@ def test_vor_description_keeps_extra_lines():
     desc_html = desc_match.group(1)
     content_html = content_match.group(1)
 
-    desc_lines = desc_html.splitlines()
-    assert desc_lines[0] == "Ersatzverkehr zwischen Floridsdorf und Praterstern."
-    assert desc_lines[1] == "Linien: S1"
-    assert (
-        desc_lines[2]
-        == "Betroffene Haltestellen: Wien Floridsdorf, Wien Praterstern"
-    )
-    assert desc_lines[-1] == "Seit 15.07.2023"
-
+    desc_lines = desc_html.split("<br/>")
     content_lines = content_html.split("<br/>")
-    assert content_lines[0] == "Ersatzverkehr zwischen Floridsdorf und Praterstern."
-    assert content_lines[1] == "Linien: S1"
-    assert (
-        content_lines[2]
-        == "Betroffene Haltestellen: Wien Floridsdorf, Wien Praterstern"
-    )
-    assert content_lines[-1] == "Seit 15.07.2023"
+
+    assert desc_html == content_html
+
+    for lines in (desc_lines, content_lines):
+        assert lines[0] == "Ersatzverkehr zwischen Floridsdorf und Praterstern."
+        assert lines[1] == "Linien: S1"
+        assert (
+            lines[2]
+            == "Betroffene Haltestellen: Wien Floridsdorf, Wien Praterstern"
+        )
+        assert lines[-1] == "Seit 15.07.2023"
