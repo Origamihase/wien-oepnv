@@ -224,6 +224,34 @@ def test_emit_item_since_line_replaced_by_description_range(monkeypatch):
     ]
 
 
+def test_emit_item_since_line_replaced_by_description_range_after_text(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    _freeze_vienna_now(
+        monkeypatch, bf, datetime(2025, 9, 20, tzinfo=bf._VIENNA_TZ)
+    )
+    now = datetime(2025, 9, 20, tzinfo=timezone.utc)
+    item = {
+        "title": "Ebenfurth",
+        "description": "Wegen Bauarbeiten.\n06.12.2025 - 09.12.2025",
+        "starts_at": bf.datetime(2025, 9, 16, 6, 0, tzinfo=timezone.utc),
+        "ends_at": bf.datetime(2025, 9, 16, 6, 0, tzinfo=timezone.utc),
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_text = _extract_description(xml)
+    assert desc_text.splitlines() == [
+        "Wegen Bauarbeiten.",
+        "06.12.2025 – 09.12.2025",
+    ]
+
+    content_html = _extract_content_encoded(xml)
+    assert content_html.split("<br/>") == [
+        "Wegen Bauarbeiten.",
+        "06.12.2025 – 09.12.2025",
+    ]
+
+
 def test_emit_item_appends_since_time(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     _freeze_vienna_now(
