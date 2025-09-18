@@ -739,9 +739,12 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
         ends_at if isinstance(ends_at, datetime) else None,
     )
     normalized_time_line = (time_line or "").strip()
+    normalized_time_line_first = (
+        normalized_time_line.split(" ", 1)[0] if normalized_time_line else ""
+    )
     if date_range_line and (
         not normalized_time_line
-        or normalized_time_line.split(" ", 1)[0] in {"Seit", "Ab"}
+        or normalized_time_line_first in {"Seit", "Ab"}
     ):
         time_line = date_range_line
     time_line = _sanitize_text(time_line)
