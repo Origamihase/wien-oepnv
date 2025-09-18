@@ -758,7 +758,7 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
         desc_parts.append(time_line)
     desc_out = "\n".join(desc_parts)
     desc_html = desc_out.replace("\n", "<br/>")
-    desc_cdata = desc_out
+    desc_cdata = desc_out.replace("\n", "<br>")
 
     parts: List[str] = []
     parts.append("<item>")
