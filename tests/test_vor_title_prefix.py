@@ -86,10 +86,10 @@ def test_vor_description_keeps_extra_lines():
     desc_html = desc_match.group(1)
     content_html = content_match.group(1)
 
-    desc_lines = desc_html.split("<br/>")
+    desc_lines = desc_html.split("\n")
     content_lines = content_html.split("<br/>")
 
-    assert desc_html == content_html
+    assert content_html == desc_html.replace("\n", "<br/>")
 
     for lines in (desc_lines, content_lines):
         assert lines[0] == "Ersatzverkehr zwischen Floridsdorf und Praterstern."
