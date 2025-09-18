@@ -314,42 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Betrieb ab St. Marx",
-    "description": "Gleisbauarbeiten Betrieb ab St. Marx",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
-    "pubDate": "2025-09-15T00:00:10+02:00",
-    "starts_at": "2025-09-15T00:00:10+02:00",
-    "ends_at": "2025-09-18T23:59:59+02:00",
-    "_identity": "wl|störung|L=18|D=2025-09-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40A: Busse halten Währinger Straße 48-50",
-    "description": "Bauarbeiten Busse halten Währinger Straße 48-50",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2664a84bd7bb35a6f0aba982e3c561700607eccff2b9b90413246f273c30c1cd",
-    "pubDate": "2025-09-15T00:00:20+02:00",
-    "starts_at": "2025-09-15T00:00:20+02:00",
-    "ends_at": "2025-09-18T23:59:59+02:00",
-    "_identity": "wl|störung|L=40A|D=2025-09-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N38: Busse halten bei Liechtensteinstr. 68-72",
-    "description": "Bauarbeiten Busse halten bei Liechtensteinstr. 68-72",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a6a987a32b38d85f3d0dcaceba01b7e03ecd4a1b44249076de8bb39e7c3f35b",
-    "pubDate": "2025-09-15T00:00:24+02:00",
-    "starts_at": "2025-09-15T00:00:24+02:00",
-    "ends_at": "2025-09-18T23:59:59+02:00",
-    "_identity": "wl|störung|L=N38|D=2025-09-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5: Bauarbeiten",
     "description": "Die Linie 5 fährt nur zwischen Praterstern und Josefstädter Straße. Ersatzweise benützen Sie bitte die Linie U6. Die Störung dauert voraussichtlich bis inklusive 1. Oktober 2025. Grund dafür sind Bauarbeiten im Bereich Blindengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -357,30 +321,6 @@
     "pubDate": "2025-09-15T04:30:00+02:00",
     "starts_at": "2025-09-15T04:30:00+02:00",
     "ends_at": "2025-10-02T04:30:00+02:00",
-    "_identity": "wl|störung|L=5|D=2025-09-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3eec659231d431c492a4c3fa40012777e023a9b2087e37bcbd20d84a40334d33",
-    "pubDate": "2025-09-15T04:38:13+02:00",
-    "starts_at": "2025-09-15T04:38:13+02:00",
-    "ends_at": "2025-09-18T23:59:59+02:00",
-    "_identity": "wl|störung|L=5|D=2025-09-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Betrieb ab Albertgasse",
-    "description": "Bauarbeiten Betrieb ab Albertgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "48094c83c49089f4aba6b83711b9e7916deffcd1bb38dd75d5f55cee9eaf69a2",
-    "pubDate": "2025-09-15T04:38:41+02:00",
-    "starts_at": "2025-09-15T04:38:41+02:00",
-    "ends_at": "2025-09-18T23:59:59+02:00",
     "_identity": "wl|störung|L=5|D=2025-09-15"
   },
   {
@@ -410,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Züge halten Alszeile 126",
-    "description": "Bauarbeiten Züge halten Alszeile 126",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
-    "pubDate": "2025-09-18T04:45:07+02:00",
-    "starts_at": "2025-09-18T04:45:07+02:00",
-    "ends_at": "2025-09-19T00:00:00+02:00",
-    "_identity": "wl|störung|L=43|D=2025-09-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -442,5 +370,65 @@
     "starts_at": "2025-09-18T12:00:00+02:00",
     "ends_at": "2025-09-22T11:00:00+02:00",
     "_identity": "wl|hinweis|L=1A,2A|D=2025-09-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Busse halten Währinger Straße 48-50",
+    "description": "Bauarbeiten Busse halten Währinger Straße 48-50",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2664a84bd7bb35a6f0aba982e3c561700607eccff2b9b90413246f273c30c1cd",
+    "pubDate": "2025-09-19T00:00:11+02:00",
+    "starts_at": "2025-09-19T00:00:11+02:00",
+    "ends_at": "2025-09-19T23:59:59+02:00",
+    "_identity": "wl|störung|L=40A|D=2025-09-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Betrieb ab St. Marx",
+    "description": "Gleisbauarbeiten Betrieb ab St. Marx",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
+    "pubDate": "2025-09-19T00:00:12+02:00",
+    "starts_at": "2025-09-19T00:00:12+02:00",
+    "ends_at": "2025-09-19T23:59:59+02:00",
+    "_identity": "wl|störung|L=18|D=2025-09-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Betrieb ab Albertgasse",
+    "description": "Bauarbeiten Betrieb ab Albertgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "48094c83c49089f4aba6b83711b9e7916deffcd1bb38dd75d5f55cee9eaf69a2",
+    "pubDate": "2025-09-19T00:00:27+02:00",
+    "starts_at": "2025-09-19T00:00:27+02:00",
+    "ends_at": "2025-09-19T23:59:59+02:00",
+    "_identity": "wl|störung|L=5|D=2025-09-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3eec659231d431c492a4c3fa40012777e023a9b2087e37bcbd20d84a40334d33",
+    "pubDate": "2025-09-19T00:00:27+02:00",
+    "starts_at": "2025-09-19T00:00:27+02:00",
+    "ends_at": "2025-09-19T23:59:59+02:00",
+    "_identity": "wl|störung|L=5|D=2025-09-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N38: Busse halten bei Liechtensteinstr. 68-72",
+    "description": "Bauarbeiten Busse halten bei Liechtensteinstr. 68-72",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0a6a987a32b38d85f3d0dcaceba01b7e03ecd4a1b44249076de8bb39e7c3f35b",
+    "pubDate": "2025-09-19T00:00:28+02:00",
+    "starts_at": "2025-09-19T00:00:28+02:00",
+    "ends_at": "2025-09-19T23:59:59+02:00",
+    "_identity": "wl|störung|L=N38|D=2025-09-19"
   }
 ]
