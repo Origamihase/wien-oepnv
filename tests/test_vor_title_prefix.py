@@ -101,4 +101,4 @@ def test_vor_description_keeps_extra_lines():
             lines[2]
             == "Betroffene Haltestellen: Wien Floridsdorf, Wien Praterstern"
         )
-        assert lines[-1] == "Seit 15.07.2023"
+        assert lines[-1] == "[Seit 15.07.2023]"

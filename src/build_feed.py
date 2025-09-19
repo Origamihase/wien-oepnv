@@ -749,6 +749,11 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
         time_line = date_range_line
     time_line = _sanitize_text(time_line)
     time_line = re.sub(r"[ \t\r\f\v]+", " ", time_line).strip()
+    if time_line:
+        if not time_line.startswith("["):
+            time_line = f"[{time_line}"
+        if not time_line.endswith("]"):
+            time_line = f"{time_line}]"
 
     desc_parts: List[str] = []
     if desc_line:
