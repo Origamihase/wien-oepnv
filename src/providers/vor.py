@@ -54,6 +54,9 @@ log = logging.getLogger(__name__)
 REQUEST_COUNT_FILE = Path(__file__).resolve().parents[2] / "data" / "vor_request_count.json"
 REQUEST_COUNT_LOCK = threading.Lock()
 MAX_REQUESTS_PER_DAY = 100
+# Nach welcher Zeit (Sekunden) ein Lock als veraltet gilt und übernommen
+# wird. Über ``VOR_REQUEST_LOCK_TIMEOUT_SEC`` konfigurierbar.
+REQUEST_LOCK_TIMEOUT_SEC = max(0.0, float(get_int_env("VOR_REQUEST_LOCK_TIMEOUT_SEC", 10)))
 
 
 def load_request_count() -> tuple[Optional[str], int]:
@@ -105,9 +108,12 @@ def save_request_count(now_local: datetime) -> int:
     abzusichern, liest den bestehenden Wert mit :func:`load_request_count`
     ein und erhöht ihn für das übergebene lokale Datum. Der aktualisierte
     Zähler wird atomar in ``REQUEST_COUNT_FILE`` geschrieben, indem zunächst
-    eine temporäre Datei erzeugt und anschließend ersetzt wird. Tritt beim
-    Schreiben ein ``OSError`` auf, bleibt der bisherige Zähler erhalten und
-    es wird eine Warnung geloggt.
+    eine temporäre Datei erzeugt und anschließend ersetzt wird. Bleibt eine
+    Lock-Datei liegen, wird sie nach ``REQUEST_LOCK_TIMEOUT_SEC`` als veraltet
+    betrachtet, protokolliert und entfernt beziehungsweise übernommen, damit
+    die Funktion nicht dauerhaft blockiert. Tritt beim Schreiben ein
+    ``OSError`` auf, bleibt der bisherige Zähler erhalten und es wird eine
+    Warnung geloggt.
 
     Args:
         now_local: Ein datetime-Objekt mit lokalem Datum, das für den
@@ -129,6 +135,7 @@ def save_request_count(now_local: datetime) -> int:
         tmp_path: str | None = None
 
         try:
+            wait_started = time.monotonic()
             while True:
                 try:
                     lock_fd = os.open(
@@ -139,6 +146,46 @@ def save_request_count(now_local: datetime) -> int:
                     lock_acquired = True
                     break
                 except FileExistsError:
+                    if REQUEST_LOCK_TIMEOUT_SEC > 0:
+                        elapsed = time.monotonic() - wait_started
+                        if elapsed >= REQUEST_LOCK_TIMEOUT_SEC:
+                            try:
+                                stat = lock_path.stat()
+                            except FileNotFoundError:
+                                wait_started = time.monotonic()
+                                continue
+                            lock_age = max(0.0, time.time() - stat.st_mtime)
+                            if lock_age >= REQUEST_LOCK_TIMEOUT_SEC:
+                                log.warning(
+                                    "VOR: Request-Zähler-Lock seit %.2fs veraltet – entferne.",
+                                    lock_age,
+                                )
+                                try:
+                                    os.unlink(lock_path)
+                                except FileNotFoundError:
+                                    wait_started = time.monotonic()
+                                    continue
+                                except OSError as cleanup_exc:
+                                    log.warning(
+                                        "VOR: Konnte veraltetes Request-Zähler-Lock nicht entfernen: %s",
+                                        cleanup_exc,
+                                    )
+                                    try:
+                                        lock_fd = os.open(lock_path, os.O_WRONLY)
+                                    except OSError as steal_exc:
+                                        log.warning(
+                                            "VOR: Konnte veraltetes Request-Zähler-Lock nicht übernehmen: %s",
+                                            steal_exc,
+                                        )
+                                        break
+                                    else:
+                                        lock_acquired = True
+                                        break
+                                else:
+                                    wait_started = time.monotonic()
+                                    continue
+                            else:
+                                wait_started = time.monotonic()
                     time.sleep(0.05)
                     continue
                 except FileNotFoundError:
