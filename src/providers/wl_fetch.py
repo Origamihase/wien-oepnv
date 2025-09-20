@@ -7,7 +7,7 @@ import logging
 import os
 import re
 from datetime import datetime, timedelta, timezone
-from typing import Any, Dict, Iterable, List, Optional
+from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 import requests
 from dateutil import parser as dtparser
@@ -137,6 +137,103 @@ def _stop_names_from_related(rel_stops: List[Any]) -> List[str]:
         key = final.casefold()
         dedup.setdefault(key, final)
     return sorted(dedup.values(), key=lambda x: x.casefold())
+
+
+# ---------------- Kontext für Titel ----------------
+
+def _normalize_whitespace(value: str) -> str:
+    return re.sub(r"\s{2,}", " ", value or "").strip()
+
+
+def _split_extra(extra: str) -> Optional[Tuple[str, str]]:
+    if not extra or ":" not in extra:
+        return None
+    head, tail = extra.split(":", 1)
+    head = head.strip()
+    tail = _normalize_whitespace(tail)
+    if not head or not tail:
+        return None
+    return head, tail
+
+
+def _context_values_from_stop_names(
+    stop_names: Iterable[str], base_title: str
+) -> List[str]:
+    base_cf = base_title.casefold()
+    seen: set[str] = set()
+    values: List[str] = []
+    for name in sorted(stop_names, key=lambda x: x.casefold()):
+        clean = _normalize_whitespace(str(name))
+        if not clean:
+            continue
+        key = clean.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        if key in base_cf:
+            continue
+        values.append(clean)
+    return values
+
+
+def _context_values_from_extras(
+    extras: Sequence[str], base_title: str
+) -> Tuple[List[str], List[str]]:
+    base_cf = base_title.casefold()
+    values: List[str] = []
+    used: List[str] = []
+    seen: set[str] = set()
+    for extra in extras:
+        parsed = _split_extra(extra)
+        if not parsed:
+            continue
+        label, value = parsed
+        if label.casefold() not in {"station", "location"}:
+            continue
+        key = value.casefold()
+        if not value or key in seen or key in base_cf:
+            continue
+        seen.add(key)
+        values.append(value)
+        used.append(extra)
+    return values, used
+
+
+def _format_context(values: Sequence[str], limit: int = 2) -> Tuple[str, int]:
+    if not values:
+        return "", 0
+    trimmed = list(values[:limit])
+    if not trimmed:
+        return "", 0
+    context = ", ".join(trimmed)
+    if len(values) > limit:
+        context += " …"
+    return context, len(trimmed)
+
+
+def _build_context_suffix(
+    bucket: Dict[str, Any], base_title: str, lines_disp: Sequence[str]
+) -> Tuple[Optional[str], List[str]]:
+    if lines_disp:
+        return None, []
+
+    stop_context = _context_values_from_stop_names(
+        bucket.get("stop_names", []), base_title
+    )
+    if stop_context:
+        context, _ = _format_context(stop_context)
+        if context:
+            return context, []
+
+    extras_context, used_extras = _context_values_from_extras(
+        bucket.get("extras", []), base_title
+    )
+    if extras_context:
+        context, used_count = _format_context(extras_context)
+        if context:
+            return context, used_extras[:used_count]
+
+    return None, []
 
 
 # ---------------- API Calls ----------------
@@ -420,7 +517,14 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
         lines_tok = set(_line_tokens_from_pairs(b["lines_pairs"]))
 
         base_title = b["title"]
+        context_suffix, extras_for_context = _build_context_suffix(
+            b, base_title, lines_disp
+        )
         title_with_lines = _ensure_line_prefix(base_title, lines_disp)
+        if context_suffix:
+            title_with_lines = (
+                f"{title_with_lines} – {context_suffix}" if title_with_lines else context_suffix
+            )
 
         # Anzahl Halte ins Titelende
         halt_cnt = len(b["stop_names"])
@@ -431,7 +535,11 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
         # Beschreibung aufbauen (ohne „Linien: …“ in extras)
         desc = b["desc_base"]
-        extras_clean = [x for x in b["extras"] if not x.lower().startswith("linien:")]
+        extras_clean = [
+            x
+            for x in b["extras"]
+            if not x.lower().startswith("linien:") and x not in extras_for_context
+        ]
         if extras_clean:
             desc = (desc + (" • " if desc else "") + " • ".join(extras_clean))
         if b["stop_names"]:
