@@ -470,18 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Demonstration Betrieb ab Schwedenplatz",
-    "description": "Demonstration Betrieb ab Schwedenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "99497f667984c242f0b49239bc0bc529d80e10510e894e37c252b75583a4b7d3",
-    "pubDate": "2025-09-20T00:18:56+02:00",
-    "starts_at": "2025-09-20T00:18:56+02:00",
-    "ends_at": "2025-09-20T23:30:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Demonstration Betrieb ab Rathaus",
     "description": "Demonstration Betrieb ab Rathaus",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -542,90 +530,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Demonstration Betrieb ab Neubaugasse",
-    "description": "Demonstration Betrieb ab Neubaugasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2587622106f28827f48021bb3096f96d2f147181d853320661fb7693c7ca4f75",
-    "pubDate": "2025-09-20T16:18:10+02:00",
-    "starts_at": "2025-09-20T16:18:10+02:00",
-    "ends_at": "2025-09-20T23:30:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Demonstration Busse halten bei Linie 14A",
-    "description": "Demonstration Busse halten bei Linie 14 A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb00d1fd235dfab6dd185139397deebe273f1b6dc60a024e9e643fc813062b2b",
-    "pubDate": "2025-09-20T16:19:16+02:00",
-    "starts_at": "2025-09-20T16:19:16+02:00",
-    "ends_at": "2025-09-20T23:15:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "57A: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung wegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1509f5ba6f26dd9c5fcdc7f0a99732acc8f0399b8bc8c7d7e774c41e908f5142",
-    "pubDate": "2025-09-20T16:25:28+02:00",
-    "starts_at": "2025-09-20T16:25:28+02:00",
-    "ends_at": "2025-09-20T23:15:00+02:00",
-    "_identity": "wl|störung|L=57A|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Demonstration Betrieb ab Börse",
-    "description": "Demonstration Betrieb ab Börse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bd2bbc492fa41191c2ba11d0c2b48db31149a36909ebf7486dc05890a079f7ac",
-    "pubDate": "2025-09-20T16:39:00+02:00",
-    "starts_at": "2025-09-20T16:39:00+02:00",
-    "ends_at": "2025-09-20T23:15:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Betrieb ab Börse",
-    "description": "Demonstration Betrieb ab Börse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d651f21483cd1d9dd9109527a3dd8776f2dd5eb47e34c6e2354a303472fb9d1c",
-    "pubDate": "2025-09-20T16:42:23+02:00",
-    "starts_at": "2025-09-20T16:42:23+02:00",
-    "ends_at": "2025-09-20T23:15:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Züge halten bei Schottenring 19",
-    "description": "Demonstration Züge halten bei Schottenring 19",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e542798ef5f6c0fc6ebf0f29f910c30ff5698baccc7fa745f4f1bfccb7e68dc",
-    "pubDate": "2025-09-20T16:43:21+02:00",
-    "starts_at": "2025-09-20T16:43:21+02:00",
-    "ends_at": "2025-09-20T23:30:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Demonstration Züge halten am inneren Gleis bei der U-Bahn",
-    "description": "Demonstration Züge halten am inneren Gleis bei der U-Bahn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "82ed24c5a7ebce80f62b74cab9557085321cd7fd1a09090669d236963d869947",
-    "pubDate": "2025-09-20T16:45:17+02:00",
-    "starts_at": "2025-09-20T16:45:17+02:00",
-    "ends_at": "2025-09-20T23:15:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "9: Fahrtbehinderung Falschparker",
     "description": "Fahrtbehinderung Falschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -638,25 +542,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 18 zu unterschiedlichen Intervallen.",
+    "title": "15A: Rettungseinsatz",
+    "description": "Die Linie 15 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Swatoschgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46",
-    "pubDate": "2025-09-20T22:15:00+02:00",
-    "starts_at": "2025-09-20T22:15:00+02:00",
-    "ends_at": "2025-09-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=18|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 7 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "64c168750858c631c7a91ad91fc35cce1827e9d8a3c84eff3d5bc5adb3221722",
-    "pubDate": "2025-09-20T22:30:00+02:00",
-    "starts_at": "2025-09-20T22:30:00+02:00",
-    "ends_at": "2025-09-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2025-09-20"
+    "guid": "bc65efc0eaddbdf7e05327a802d1b0275625e76f2f1601244d8cb88fec910412",
+    "pubDate": "2025-09-20T23:20:00+02:00",
+    "starts_at": "2025-09-20T23:20:00+02:00",
+    "ends_at": "2025-09-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=15A|D=2025-09-20"
   }
 ]
