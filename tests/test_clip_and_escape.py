@@ -140,6 +140,20 @@ def test_emit_item_skips_leading_date_line(monkeypatch):
     assert desc_text == "Ersatzverkehr eingerichtet"
 
 
+def test_emit_item_wl_identical_title_description_fallback(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    now = datetime(2024, 1, 1)
+    item = {
+        "title": "WL Störung auf Linie U2",
+        "description": "WL Störung auf Linie U2",
+    }
+
+    _, xml = bf._emit_item(item, now, {})
+
+    desc_text = _extract_description(xml)
+    assert desc_text == "WL Störung auf Linie U2"
+
+
 def test_emit_item_oebb_multiline_sentence(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     now = datetime(2024, 1, 1)

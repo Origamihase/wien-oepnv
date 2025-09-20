@@ -680,7 +680,9 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
             date_range_line = f"{match.group(1)} – {match.group(2)}"
             break
 
+    removed_title_line: Optional[str] = None
     if desc_lines_raw and desc_lines_raw[0].lower() in title_out.lower():
+        removed_title_line = desc_lines_raw[0]
         desc_lines_raw = desc_lines_raw[1:]
     filtered_lines = [
         line.strip()
@@ -700,7 +702,13 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
 
     first_alpha_idx: Optional[int] = None
     fallback_candidates = desc_lines if desc_lines else extra_lines_raw
-    fallback_line = fallback_candidates[0] if fallback_candidates else ""
+    if fallback_candidates:
+        fallback_line = fallback_candidates[0]
+    else:
+        sanitized_removed = (
+            _sanitize_text(removed_title_line) if removed_title_line else ""
+        )
+        fallback_line = sanitized_removed or title_out
     for idx, line in enumerate(desc_lines):
         if any(ch.isalpha() for ch in line):
             first_alpha_idx = idx
