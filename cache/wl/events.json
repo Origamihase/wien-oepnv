@@ -578,37 +578,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49A: Fremder Verkehrsunfall",
-    "description": "Die Linie 49 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein fremder Verkehrsunfall.",
+    "title": "O: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "462389118ed20adbaab96951a47d1bdf5ff6ea616723435219921d631ba7de6d",
-    "pubDate": "2025-09-20T12:55:00+02:00",
-    "starts_at": "2025-09-20T12:55:00+02:00",
-    "ends_at": "2025-09-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=49A|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "52: Verspätungen",
-    "description": "Die Linie 52 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "347bf9ad635bed065df985f7e527768d84656a8f32637791368fa2d47a92883c",
-    "pubDate": "2025-09-20T13:10:00+02:00",
-    "starts_at": "2025-09-20T13:10:00+02:00",
-    "ends_at": "2025-09-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=52|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "84A: Fremder Verkehrsunfall",
-    "description": "Die Linie 84 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f0734148ab1da055a9e19c6d42b75b92c43c941bcf8a76ce37fc8fefe36cdf7e",
-    "pubDate": "2025-09-20T13:20:00+02:00",
-    "starts_at": "2025-09-20T13:20:00+02:00",
-    "ends_at": "2025-09-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=84A|D=2025-09-20"
+    "guid": "0e2084edd6699e44093619883a762c6a22fd797c02b1018ff3d072aff9dd8127",
+    "pubDate": "2025-09-20T13:53:17+02:00",
+    "starts_at": "2025-09-20T13:53:17+02:00",
+    "ends_at": "2025-09-20T14:52:00+02:00",
+    "_identity": "wl|störung|L=O|D=2025-09-20"
   }
 ]
