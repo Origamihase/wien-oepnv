@@ -199,6 +199,68 @@ def _context_values_from_extras(
     return values, used
 
 
+def _title_quality_key(title: str, title_core: str) -> Tuple[int, int, int]:
+    """Score titles so that informative variants win over short generics."""
+
+    normalized_title = _normalize_whitespace(title)
+    core = _normalize_whitespace(title_core)
+    tokens = [tok for tok in core.split() if tok]
+    informative_tokens = [tok for tok in tokens if len(tok) >= 4]
+    return (
+        len(informative_tokens),
+        len(core),
+        -len(normalized_title),
+    )
+
+
+def _description_info_score(
+    desc: str,
+    *,
+    title: str,
+    stop_names: Iterable[str],
+    extras: Sequence[str],
+) -> Tuple[int, int, int, int]:
+    """Return a tuple describing how informative a description is."""
+
+    normalized = _normalize_whitespace(desc)
+    if not normalized:
+        return (0, 0, 0, 0)
+
+    desc_cf = normalized.casefold()
+    title_norm = _normalize_whitespace(title).casefold()
+    non_title = 0 if desc_cf and desc_cf == title_norm else 1
+
+    info_hits = 0
+    seen: set[str] = set()
+
+    for name in stop_names:
+        clean = _normalize_whitespace(str(name))
+        if len(clean) < 3:
+            continue
+        key = clean.casefold()
+        if key in seen:
+            continue
+        if key and key in desc_cf:
+            info_hits += 1
+            seen.add(key)
+
+    for extra in extras:
+        parsed = _split_extra(extra)
+        value = parsed[1] if parsed else _normalize_whitespace(str(extra))
+        if len(value) < 3:
+            continue
+        key = value.casefold()
+        if key in seen:
+            continue
+        if key and key in desc_cf:
+            info_hits += 1
+            seen.add(key)
+
+    length = len(normalized)
+    word_count = len(re.findall(r"\w+", normalized, flags=re.UNICODE))
+    return (non_title, info_hits, length, word_count)
+
+
 def _format_context(values: Sequence[str], limit: int = 2) -> Tuple[str, int]:
     if not values:
         return "", 0
@@ -495,9 +557,32 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 "_identity": ev["_identity"],  # stabil weiterreichen
             }
         else:
-            # Kürzeren Titel bevorzugen (klarer)
-            if len(ev["title"]) < len(b["title"]):
+            current_title = b["title"]
+            current_core = b.get("title_core", "")
+            current_desc = b.get("desc_base", "")
+
+            base_score = _description_info_score(
+                current_desc,
+                title=current_title,
+                stop_names=b["stop_names"],
+                extras=b["extras"],
+            )
+            candidate_score = _description_info_score(
+                ev.get("desc", ""),
+                title=ev["title"],
+                stop_names=ev["stop_names"],
+                extras=ev["extras"],
+            )
+
+            if _title_quality_key(ev["title"], ev.get("title_core", "")) > _title_quality_key(
+                current_title, current_core
+            ):
                 b["title"] = ev["title"]
+                b["title_core"] = ev.get("title_core", "")
+
+            if candidate_score > base_score:
+                b["desc_base"] = ev.get("desc", "")
+
             b["lines_pairs"] = _merge_line_pairs(b["lines_pairs"], ev["lines_pairs"])
             b["stop_names"].update(ev["stop_names"])
             if ev["pubDate"] and (
