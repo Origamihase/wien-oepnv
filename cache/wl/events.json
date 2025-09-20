@@ -326,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "1/13A/2/5/57A/71/D: Demonstration am 20.09.2025",
-    "description": "Demonstration\nWegen einer Demonstration im Bereich Innenstadt und Mariahilfer Straße kommt es zu Verkehrsmaßnahmen.\nZeitraum:\nSamstag, 20. September 2025, zwischen 14:30 Uhr und 20:00 Uhr.\nMaßnahmen:\nLinie D\nUmleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über den Franz-Josefs-Kai.\nLinie 1\nKein Betrieb zwischen Börse und Karlsplatz U.\nDie Züge Richtung Stefan-Fadinger-Platz fahren bis zur Börse, wenden dort, kehren zurück zum Julius-Raab-Platz und fahren über die Strecke der Linie 2, den Schwarzenbergplatz und die Lothringerstraße zur Haltestelle Resselgasse (Zustieg am Karlsplatz möglich).\nIn Richtung Prater Hauptallee werden die Züge direkt zwischen Karlsplatz und Julius-Raab-Platz über die Lothringerstraße, den Schwarzenbergplatz und die Linie 2 umgeleitet.\nSomit kein Betrieb zwischen Karlsplatz und Börse, Fahrgäste ab Börse mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen.\nLinie 2\nKein Betrieb zwischen Ring, Volkstheater U und Schwedenplatz U. Fahrgäste Richtung Dornbach finden die Züge in der Haltestelle der Linien 46, 49 und 48 A.\nLinie 71\nKein Betrieb zwischen Schwarzenbergplatz und Schottenring U.\nBetrieb nur zwischen Kaiserebersdorf, Zinnergasse und Schwarzenbergplatz.\nLinie 13 A\nKein Betrieb zwischen Burggasse, Neubaugasse und Esterházygasse.\nLinie 57 A\nKein Betrieb zwischen Esterházygasse und Burgring.\nBetrieb nur zwischen Haus des Meeres und Rudolfsheim.\nWeiteres:\nBeachten Sie bitte, dass die genannten Verkehrsmaßnahmen nicht alle gleichzeitig auftreten müssen. Je nach Fortschritt der Demonstration und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf www.wienerlinien.at.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e3efe7e33d8d5ab5ec430335189ee7155c0bed15ee7261fa006a265a03923dbc",
-    "pubDate": "2025-09-17T16:30:00+02:00",
-    "starts_at": "2025-09-17T16:30:00+02:00",
-    "ends_at": "2025-09-20T20:00:00+02:00",
-    "_identity": "wl|hinweis|L=1,13A,2,5,57A,71,D|D=2025-09-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "1A/2A: polizeiliche Streckensperre am 22.09.2025",
     "description": "Pollerübing\nWegen einer Pollerübung werden die Strauchgasse und Herrengasse polizeilich gesperrt.\nZeitraum:\nMontag, 22. September 2025 von ca. 10:00 bis 11:00 Uhr.\nMaßnahmen:\nLinie 1 A\nBetrieb eingestellt.\nLinie 2 A\nBetrieb eingestellt.\nErsatz:\nDie U-Bahnen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -482,18 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Demonstration Betrieb ab Schwarzenbergplatz",
-    "description": "Demonstration Betrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "765574ef0399f84ef88bb0b2bd5cbe3ed6672c5bce9bb05cf34a46a29e20e6e4",
-    "pubDate": "2025-09-20T00:18:56+02:00",
-    "starts_at": "2025-09-20T00:18:56+02:00",
-    "ends_at": "2025-09-20T17:33:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Demonstration Betrieb ab Ring, Volkstheater",
     "description": "Demonstration Betrieb ab Ring, Volkstheater",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -501,6 +477,18 @@
     "pubDate": "2025-09-20T00:18:56+02:00",
     "starts_at": "2025-09-20T00:18:56+02:00",
     "ends_at": "2025-09-20T22:45:00+02:00",
+    "_identity": "wl|störung|L=2|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Demonstration Betrieb ab Schwedenplatz",
+    "description": "Demonstration Betrieb ab Schwedenplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "99497f667984c242f0b49239bc0bc529d80e10510e894e37c252b75583a4b7d3",
+    "pubDate": "2025-09-20T00:18:56+02:00",
+    "starts_at": "2025-09-20T00:18:56+02:00",
+    "ends_at": "2025-09-20T23:30:00+02:00",
     "_identity": "wl|störung|L=2|D=2025-09-20"
   },
   {
@@ -590,38 +578,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/13A/2/57A/71/D: Demonstration",
-    "description": "Die Linie 1 fährt derzeit nicht zwischen Börse und Resselgasse. Die Linie 2 fährt derzeit nicht zwischen Ring, Volkstheater und Schwedenplatz. Die Linie D wird in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz umgeleitet. Die Linie 71 fährt derzeit nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Die Linie 13 A fährt derzeit nicht zwischen Neubaugasse und Burggasse, Neubaugasse. Die Linie 57 A fährt derzeit nur zwischen Rudolfsheim, Anschützgasse und Esterházygasse. Ersatzweise benützen Sie bitte die U-Bahn Linien. Die Störung dauert voraussichtlich bis 19:30 Uhr. Grund dafür ist eine Demonstration im Bereich Innere Stadt und Mariahilfer Straße.",
+    "title": "10A/12A/63A: Demonstration",
+    "description": "Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 12 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Demonstration im Bereich .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1d8d277d0de9a9fef3d90550b17dc12939afa818cb0184a09aa668e2f6d50d17",
-    "pubDate": "2025-09-20T14:00:00+02:00",
-    "starts_at": "2025-09-20T14:00:00+02:00",
-    "ends_at": "2025-09-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=1,13A,2,57A,71,D|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Die Linie U3 kann derzeit in Richtung Ottakring nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2025-09-20T14:45:00+02:00",
-    "starts_at": "2025-09-20T14:45:00+02:00",
-    "ends_at": "2025-09-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2025-09-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10A/12A/14A/63A: Demonstration",
-    "description": "Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 12 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 14 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Demonstration im Bereich .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "760348c552fb32c548314f18c86246403c28caf43ceb4b273069bad0ab960d08",
+    "guid": "eddf877c9a8f9b2bc92e688e259fb879b0ac0404de0a7290dfed30b0ebf9f9fc",
     "pubDate": "2025-09-20T16:05:00+02:00",
     "starts_at": "2025-09-20T16:05:00+02:00",
     "ends_at": "2025-09-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=10A,12A,14A,63A|D=2025-09-20"
+    "_identity": "wl|störung|L=10A,12A,63A|D=2025-09-20"
   },
   {
     "source": "Wiener Linien",
@@ -694,5 +658,137 @@
     "starts_at": "2025-09-20T16:32:39+02:00",
     "ends_at": "2025-09-20T23:00:00+02:00",
     "_identity": "wl|störung|L=57A|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fahrtbehinderung wegen Demonstration",
+    "description": "Fahrtbehinderung wegen Demonstration",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4e2427e61bec98c160f61c806cf29a33a0eeb03e82e5fa7ffabf042a02249147",
+    "pubDate": "2025-09-20T16:38:02+02:00",
+    "starts_at": "2025-09-20T16:38:02+02:00",
+    "ends_at": "2025-09-20T23:00:00+02:00",
+    "_identity": "wl|störung|L=71|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Demonstration Betrieb ab Resselgasse",
+    "description": "Demonstration Betrieb ab Resselgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a3904226e11e2eaa01222749b08821d53ed1cdb9f1a41de4e9b274034872a123",
+    "pubDate": "2025-09-20T16:38:31+02:00",
+    "starts_at": "2025-09-20T16:38:31+02:00",
+    "ends_at": "2025-09-20T22:15:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Demonstration Betrieb ab Börse",
+    "description": "Demonstration Betrieb ab Börse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bd2bbc492fa41191c2ba11d0c2b48db31149a36909ebf7486dc05890a079f7ac",
+    "pubDate": "2025-09-20T16:39:00+02:00",
+    "starts_at": "2025-09-20T16:39:00+02:00",
+    "ends_at": "2025-09-20T23:15:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Demonstration Betrieb ab Schwarzenbergplatz",
+    "description": "Demonstration Betrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c026b000b202d288cf3bec2c812e718351d4c37b0196152e41c269e70771cadc",
+    "pubDate": "2025-09-20T16:40:56+02:00",
+    "starts_at": "2025-09-20T16:40:56+02:00",
+    "ends_at": "2025-09-20T23:00:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Demonstration Betrieb ab Börse",
+    "description": "Demonstration Betrieb ab Börse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d651f21483cd1d9dd9109527a3dd8776f2dd5eb47e34c6e2354a303472fb9d1c",
+    "pubDate": "2025-09-20T16:42:23+02:00",
+    "starts_at": "2025-09-20T16:42:23+02:00",
+    "ends_at": "2025-09-20T23:15:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Demonstration Züge halten bei Schottenring 19",
+    "description": "Demonstration Züge halten bei Schottenring 19",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2e542798ef5f6c0fc6ebf0f29f910c30ff5698baccc7fa745f4f1bfccb7e68dc",
+    "pubDate": "2025-09-20T16:43:21+02:00",
+    "starts_at": "2025-09-20T16:43:21+02:00",
+    "ends_at": "2025-09-20T23:30:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "24A: Betriebsstörung",
+    "description": "Die Linie 24 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2de760181a65c454c954cecfd6900e8ee65cf9734b8542a79d3db454877da735",
+    "pubDate": "2025-09-20T16:45:00+02:00",
+    "starts_at": "2025-09-20T16:45:00+02:00",
+    "ends_at": "2025-09-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=24A|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Demonstration Züge halten am inneren Gleis bei der U-Bahn",
+    "description": "Demonstration Züge halten am inneren Gleis bei der U-Bahn",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "82ed24c5a7ebce80f62b74cab9557085321cd7fd1a09090669d236963d869947",
+    "pubDate": "2025-09-20T16:45:17+02:00",
+    "starts_at": "2025-09-20T16:45:17+02:00",
+    "ends_at": "2025-09-20T23:15:00+02:00",
+    "_identity": "wl|störung|L=2|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2025-09-20T16:50:00+02:00",
+    "starts_at": "2025-09-20T16:50:00+02:00",
+    "ends_at": "2025-09-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Demonstration Betrieb ab Schwarzenbergplatz",
+    "description": "Demonstration Betrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7b5445a18fe825f2c2505c326e546fd306ae6d46f226760d813ee1afcf1097bc",
+    "pubDate": "2025-09-20T16:51:35+02:00",
+    "starts_at": "2025-09-20T16:51:35+02:00",
+    "ends_at": "2025-09-20T23:00:00+02:00",
+    "_identity": "wl|störung|L=71|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71A: Verkehrsunfall",
+    "description": "Die Linie 71 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36725abc8472e53a450d5a7529d9585150c8d3b6f933fd3dc0ee13dcd8082a4d",
+    "pubDate": "2025-09-20T17:00:00+02:00",
+    "starts_at": "2025-09-20T17:00:00+02:00",
+    "ends_at": "2025-09-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=71A|D=2025-09-20"
   }
 ]
