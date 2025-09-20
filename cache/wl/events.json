@@ -578,13 +578,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "title": "38A: Verunreinigung",
+    "description": "Die Linie 38 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0e2084edd6699e44093619883a762c6a22fd797c02b1018ff3d072aff9dd8127",
-    "pubDate": "2025-09-20T13:53:17+02:00",
-    "starts_at": "2025-09-20T13:53:17+02:00",
-    "ends_at": "2025-09-20T14:52:00+02:00",
-    "_identity": "wl|störung|L=O|D=2025-09-20"
+    "guid": "cc9412e0ad103835f513e072a8517d4fbc8cb147f555ad4f61249eeebae8b990",
+    "pubDate": "2025-09-20T14:35:00+02:00",
+    "starts_at": "2025-09-20T14:35:00+02:00",
+    "ends_at": "2025-09-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=38A|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Die Linie U3 kann derzeit in Richtung Ottakring nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2025-09-20T14:45:00+02:00",
+    "starts_at": "2025-09-20T14:45:00+02:00",
+    "ends_at": "2025-09-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2025-09-20T14:54:54+02:00",
+    "starts_at": "2025-09-20T14:54:54+02:00",
+    "ends_at": "2025-09-20T15:53:00+02:00",
+    "_identity": "wl|störung|L=41|D=2025-09-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
+    "pubDate": "2025-09-20T14:55:20+02:00",
+    "starts_at": "2025-09-20T14:55:20+02:00",
+    "ends_at": "2025-09-20T15:54:00+02:00",
+    "_identity": "wl|störung|L=40|D=2025-09-20"
   }
 ]
