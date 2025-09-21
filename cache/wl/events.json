@@ -206,6 +206,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "77A/80A: Gleisbauarbeiten ab 01.09.2025",
+    "description": "Gleisbauarbeiten\nWegen Voranschreitens der Gleisbauarbeiten für die Verlängerung der Linie 18 müssen die Linien 77 A und 80 A abermals anders umgeleitet werden.\nZeitraum:\nAb Montag, 01. September 2025 für voraussichtlich zwei Wochen.\nMaßnahmen:\nLinie 77 A in Richtung Lusthaus\nUmleitung ab Erdbergstraße # Schlachthausgasse über Schlachthausgasse - Barthgasse - Würtzlerstraße - Erdbergstraße - Schlachthausgasse.\nVerlegte Haltestellen\nSchlachthausgasse U\nVerlegt von: Markhofgasse gegenüber 6-8\nVerlegt nach: Würtzlerstraße 17-21*\nLudwig-Koeßler-Platz\nVerlegt von: Schlachthausgasse 3\nVerlegt nach: Schlachthausgasse 11-13\nLinie 77 A in Richtung Rennweg\nUmleitung ab Schlachthausgasse # Schnirchgasse über Schlachthausgasse - Barthgasse - Würtzlerstraße - Erdbergstraße.\nVerlegte Haltestellen\nLudwig-Koeßler-Platz\nVerlegt von: Schnirchgasse 2-4\nVerlegt nach: Schlachthausgasse 2-6\nSchlachthausgasse U\nVerlegt von: Markhofgasse gegenüber 2-4\nVerlegt nach: Würtzlerstraße 17-21*\n*Achtung: In dieser Haltestelle halten die Busse in beiden Fahrtrichtungen! Bitte beachten Sie das Fahrtziel am Fahrzeug!\nLinie 80 A in Richtung Neu Marx\nUmleitung ab Schlachthausgasse # Schnirchgasse über Schlachthausgasse - Barthgasse.\nVerlegte Haltestellen\nLudwig-Koeßler-Platz\nVerlegt von: Schnirchgasse 2-4\nVerlegt nach: Schlachthausgasse 2-6\nSchlachthausgasse U\nVerlegt von: Würtzlerstraße 20\nVerlegt nach: Schlachthausgasse 24-24 A\nBarthgasse\nVerlegt von: Würtzlerstraße gegenüber 23\nVerlegt nach: Barthgasse gegenüber 9\nLinie 80 A in Richtung Praterstern S U\nUmleitung ab Baumgasse # Nottendorfer Gasse über Nottendorfer Gasse - Erdbergstraße - Schlachthausgasse.\nVerlegte Haltestellen\nBaumgasse\nVerlegt von: Baumgasse 77\nVerlegt nach: Nottendorfer Gasse 11\nSchlachthausgasse U\nVerlegt von: Schlachthausgasse 23-29\nVerlegt nach: Erdbergstraße 129\nLudwig-Koeßler-Platz\nVerlegt von: Schlachthausgasse 3\nVerlegt nach Schlachthausgasse 11-13\nLinie 80 A, Kurse nur bis bzw. ab Schlachthausgasse\nUmleitung über Schlachthausgasse - Barthgasse - Würtzlerstraße - Erdbergstraße - Schlachthausgasse.\nVerlegte Haltestelle:\nSchlachthausgasse U\nDiese Haltestelle wird in der Würtzlerstraße 17-21 eingehalten.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b512b96e8ccf2a9f5bda7dcba5bc8167202f473c189749c84c57d16d9c55eca1",
+    "pubDate": "2025-08-27T15:35:00+02:00",
+    "starts_at": "2025-08-27T15:35:00+02:00",
+    "ends_at": "2026-08-27T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=77A,80A|D=2025-08-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "61A: Straßenbauarbeiten Leo-Mathauser-Gasse",
     "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Leo-Mathauser-Gasse wird die Linie 61 A umgeleitet.\nZeitraum:\nAb Dienstag, 2. September 2025, etwa 07:00 Uhr auf Dauer von voraussichtlich vier Wochen.\nMaßnahmen:\nLinie 61 A in Richtung Vösendorf-Siebenhirten\nUmleitung ab Akaziengasse # Atzlergasse über Atzlergasse – Anton-Freunschlag-Gasse.\nHaltestellen:\nATZLERGASSE\nAkaziengasse 48-50\nSEVCIKGASSE\nSevcikgasse vor Leo-Mathauser-Gasse\nErsatz- und provisorische Haltestellen:\nATZLERGASSE\nAtzlergasse 35, provisorische Haltestelle\nSEVCIKGASSE\nAtzlergasse 17-19, provisorische Haltestelle\nLinie 61 A in Richtung Liesing S\nUmleitung ab Leo-Mathauser-Gasse # Basler Gasse über Basler Gasse – Anton-Freunschlag-Gasse – Karl-Tornay-Gasse.\nHaltestellen:\nSEVCIKGASSE\nLeo-Mathauser-Gasse 51-53\nErsatz- und provisorische Haltestellen:\nSEVCIKGASSE\nAnton-Freunschlag-Gasse 75-77, provisorische Haltestelle",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -490,18 +502,6 @@
     "starts_at": "2025-09-21T17:29:02+02:00",
     "ends_at": "2025-09-21T23:00:00+02:00",
     "_identity": "wl|störung|L=43|D=2025-09-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "80A: Rettungseinsatz",
-    "description": "Die Linie 80 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "069aba09df142f6a6489dabd6c3f0d85a2a086a50f01ad1aa7b3c7875ad29d2b",
-    "pubDate": "2025-09-21T18:25:00+02:00",
-    "starts_at": "2025-09-21T18:25:00+02:00",
-    "ends_at": "2025-09-21T23:55:00+02:00",
-    "_identity": "wl|störung|L=80A|D=2025-09-21"
   },
   {
     "source": "Wiener Linien",
