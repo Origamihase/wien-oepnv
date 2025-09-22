@@ -434,78 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Stromstörung Betrieb ab Oper, Karlsplatz U",
-    "description": "Stromstörung Betrieb ab Oper, Karlsplatz U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0fc08440a8db7adbf753641de2d8b627c8b28834eb74430d3802ed6f64eac210",
-    "pubDate": "2025-09-22T08:32:16+02:00",
-    "starts_at": "2025-09-22T08:32:16+02:00",
-    "ends_at": "2025-09-22T12:00:00+02:00",
-    "_identity": "wl|störung|L=71|D=2025-09-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Stromstörung Betrieb ab Enkplatz U, Grillgasse",
-    "description": "Stromstörung Betrieb ab Enkplatz U, Grillgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "730f87819f48c866259caea455aa695c0c1a04419c94c44a937a700242dce9c7",
-    "pubDate": "2025-09-22T08:33:22+02:00",
-    "starts_at": "2025-09-22T08:33:22+02:00",
-    "ends_at": "2025-09-22T12:00:00+02:00",
-    "_identity": "wl|störung|L=71|D=2025-09-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Fahrtbehinderung wegen Stromstörung",
-    "description": "Fahrtbehinderung wegen Stromstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "faa7515363efc4e5a4f804f3db9aaeb8cec74d4149ea2a4819233aa214b79f0e",
-    "pubDate": "2025-09-22T08:33:47+02:00",
-    "starts_at": "2025-09-22T08:33:47+02:00",
-    "ends_at": "2025-09-22T12:00:00+02:00",
-    "_identity": "wl|störung|L=18|D=2025-09-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
-    "pubDate": "2025-09-22T08:35:00+02:00",
-    "starts_at": "2025-09-22T08:35:00+02:00",
-    "ends_at": "2025-09-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-09-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Stromstörung Betrieb ab Quartier Belvedere",
-    "description": "Stromstörung Betrieb ab Quartier Belvedere",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "34472b67d83451c54eb4a1d6f6d055c9d19cf8f08833bba4d43739ca284d14fe",
-    "pubDate": "2025-09-22T08:35:14+02:00",
-    "starts_at": "2025-09-22T08:35:14+02:00",
-    "ends_at": "2025-09-22T12:00:00+02:00",
-    "_identity": "wl|störung|L=18|D=2025-09-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43: Demonstration",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dc7cfa6d421c1ed561005bbc835c81d0c2029253f05607cc6fa260464fedde79",
-    "pubDate": "2025-09-22T09:50:00+02:00",
-    "starts_at": "2025-09-22T09:50:00+02:00",
-    "ends_at": "2025-09-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=43|D=2025-09-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "43: Demonstration Betrieb ab Dornbach",
     "description": "Demonstration Betrieb ab Dornbach",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -529,18 +457,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2A: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f00bcae17764f62582458ff81855410216ab3b96f1a4443be49d05c1dcfefa76",
-    "pubDate": "2025-09-22T10:05:00+02:00",
-    "starts_at": "2025-09-22T10:05:00+02:00",
-    "ends_at": "2025-09-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=2A|D=2025-09-22"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "56A/56B/58A/58B: Umleitung am 23.09.2025",
     "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Kennedybrücke werden die Linien 56 A, 56 B, 58 A und 58 B bei Einziehfahrten umgeleitet.\nZeitraum:\nAb Dienstag, 23. September 2025, etwa 19:00 Uhr bis ca. 21:00 Uhr\nMaßnahmen:\nLinien 56 A, 56 B, 58 A und 58 B in Richtung Hietzing U:\nUmleitung ab Schönbrunner Schloßstraße # Kennedybrücke über Schönbrunner Schloßstraße – Schönbrunner Schloßbrücke – Hadikgasse – Kennedybrücke\nHaltestelle:\nHietzing U\n13., Schönbrunner Schloßstraße nach Kennedybrücke\nENDSTATION bei Einziehfahrten wird AUFGELASSEN",
@@ -550,5 +466,29 @@
     "starts_at": "2025-09-22T11:27:00+02:00",
     "ends_at": "2025-09-23T21:00:00+02:00",
     "_identity": "wl|hinweis|L=56A,56B,58A,58B|D=2025-09-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9",
+    "pubDate": "2025-09-22T11:48:22+02:00",
+    "starts_at": "2025-09-22T11:48:22+02:00",
+    "ends_at": "2025-09-22T12:47:00+02:00",
+    "_identity": "wl|störung|L=60|D=2025-09-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2025-09-22T11:55:00+02:00",
+    "starts_at": "2025-09-22T11:55:00+02:00",
+    "ends_at": "2025-09-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2025-09-22"
   }
 ]
