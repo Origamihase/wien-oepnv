@@ -374,10 +374,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Betrieb ab Albertgasse",
-    "description": "Bauarbeiten Betrieb ab Albertgasse",
+    "title": "5: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "48094c83c49089f4aba6b83711b9e7916deffcd1bb38dd75d5f55cee9eaf69a2",
+    "guid": "3eec659231d431c492a4c3fa40012777e023a9b2087e37bcbd20d84a40334d33",
     "pubDate": "2025-09-23T00:00:17+02:00",
     "starts_at": "2025-09-23T00:00:17+02:00",
     "ends_at": "2025-09-23T23:59:59+02:00",
@@ -386,10 +386,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "5: Betrieb ab Albertgasse",
+    "description": "Bauarbeiten Betrieb ab Albertgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3eec659231d431c492a4c3fa40012777e023a9b2087e37bcbd20d84a40334d33",
+    "guid": "48094c83c49089f4aba6b83711b9e7916deffcd1bb38dd75d5f55cee9eaf69a2",
     "pubDate": "2025-09-23T00:00:17+02:00",
     "starts_at": "2025-09-23T00:00:17+02:00",
     "ends_at": "2025-09-23T23:59:59+02:00",
@@ -446,13 +446,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Betriebsstörung",
-    "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Quellenplatz.",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Die Linie U1 kann derzeit in Richtung Oberlaa nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Großfeldsiedlung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "031185cc617d1370557e65b800e69f3976fc946bf7b245cd8a46f5593d5a3bba",
-    "pubDate": "2025-09-23T05:50:00+02:00",
-    "starts_at": "2025-09-23T05:50:00+02:00",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2025-09-23T07:00:00+02:00",
+    "starts_at": "2025-09-23T07:00:00+02:00",
     "ends_at": "2025-09-23T23:55:00+02:00",
-    "_identity": "wl|störung|L=O|D=2025-09-23"
+    "_identity": "wl|störung|L=U1|D=2025-09-23"
   }
 ]
