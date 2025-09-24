@@ -562,5 +562,41 @@
     "starts_at": "2025-09-24T18:05:00+02:00",
     "ends_at": "2025-09-24T23:55:00+02:00",
     "_identity": "wl|störung|L=D|D=2025-09-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10/60: Rettungseinsatz",
+    "description": "Die Linie 10 fährt derzeit nicht zwischen Hietzing und Penzinger Straße. Die Linie 60 fährt derzeit nicht zwischen Anschützgasse und Hietzing. Ersatzweise benützen Sie bitte die Linien U4 und 10 A. Die Störung dauert voraussichtlich bis 19:00 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Schloss Schönbrunn.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97b262e2afbf19e88cac0259abbffdd9497fb91208b408ea8dd6779d09a90898",
+    "pubDate": "2025-09-24T18:35:00+02:00",
+    "starts_at": "2025-09-24T18:35:00+02:00",
+    "ends_at": "2025-09-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=10,60|D=2025-09-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Rettungseinsatz Betrieb ab Anschützgasse",
+    "description": "Rettungseinsatz Betrieb ab Anschützgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
+    "pubDate": "2025-09-24T18:38:22+02:00",
+    "starts_at": "2025-09-24T18:38:22+02:00",
+    "ends_at": "2025-09-24T19:44:00+02:00",
+    "_identity": "wl|störung|L=|D=2025-09-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Rettungseinsatz Betrieb nur bis Anschützgasse",
+    "description": "Rettungseinsatz Betrieb nur bis Anschützgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789",
+    "pubDate": "2025-09-24T18:42:12+02:00",
+    "starts_at": "2025-09-24T18:42:12+02:00",
+    "ends_at": "2025-09-24T19:42:00+02:00",
+    "_identity": "wl|störung|L=60|D=2025-09-24"
   }
 ]
