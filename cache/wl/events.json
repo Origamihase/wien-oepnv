@@ -471,7 +471,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "11: Verkehrsunfall",
-    "description": "Die Linie 11 fährt derzeit nur zwischen Kaiserebersdorf und Frödenplatz. Die Störung dauert voraussichtlich bis 10:20 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Otto-Probst-Straße.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46",
     "pubDate": "2025-09-25T09:10:00+02:00",
@@ -494,7 +494,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Rettungseinsatz Züge halten bei Linie 62 Richtung Oper, Karlsplatz",
+    "title": "1: Fahrtbehinderung wegen Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
@@ -506,7 +506,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Rettungseinsatz Züge halten bei Linie O, Richtung Raxstraße",
+    "title": "6: Rettungseinsatz Betrieb ab Quellenplatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
@@ -514,18 +514,6 @@
     "starts_at": "2025-09-25T09:20:00+02:00",
     "ends_at": "2025-09-25T23:55:00+02:00",
     "_identity": "wl|störung|L=6|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "30A: Fahrtbehinderung Schadhafter Bus",
-    "description": "Fahrtbehinderung Schadhafter Bus",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7bdc5a1942ec28fe124bd930a27e08272d311d2cdcea7e1dbe27dc7dbdf79b2f",
-    "pubDate": "2025-09-25T09:45:33+02:00",
-    "starts_at": "2025-09-25T09:45:33+02:00",
-    "ends_at": "2025-09-25T10:44:00+02:00",
-    "_identity": "wl|störung|L=30A|D=2025-09-25"
   },
   {
     "source": "Wiener Linien",
@@ -538,5 +526,125 @@
     "starts_at": "2025-09-25T09:46:02+02:00",
     "ends_at": "2025-09-25T10:45:00+02:00",
     "_identity": "wl|störung|L=36A|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "de57d7fc844121db03d0e532febfd7d62faf7f8cc5ced1951f3e1470fcd4d6c8",
+    "pubDate": "2025-09-25T10:20:00+02:00",
+    "starts_at": "2025-09-25T10:20:00+02:00",
+    "ends_at": "2025-09-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=43|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cc281c6508ba062820ee6ec97a11514a795c1ba829397c43d3f8f6719026c771",
+    "pubDate": "2025-09-25T10:26:23+02:00",
+    "starts_at": "2025-09-25T10:26:23+02:00",
+    "ends_at": "2025-09-25T11:25:00+02:00",
+    "_identity": "wl|störung|L=43|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40/41: Falschparker",
+    "description": "Die Linie 40 wird in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper und Gersthof über Michelbeuern-AKH umgeleitet. Die Linie 41 wird in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper und Gersthof über Michelbeuern-AKH umgeleitet. Die Störung dauert voraussichtlich bis 11:00 Uhr. Grund dafür ist ein Falschparker im Bereich Währinger Straße 140.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130",
+    "pubDate": "2025-09-25T10:35:00+02:00",
+    "starts_at": "2025-09-25T10:35:00+02:00",
+    "ends_at": "2025-09-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=40,41|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "S: Falschparker Betrieb ab Gersthof S",
+    "description": "Falschparker Betrieb ab Gersthof S",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "56b79c9c3df20aa40017a9a7c463a53f0fc3c8051849779561b3e8db079ada17",
+    "pubDate": "2025-09-25T10:38:03+02:00",
+    "starts_at": "2025-09-25T10:38:03+02:00",
+    "ends_at": "2025-09-25T11:40:00+02:00",
+    "_identity": "wl|störung|L=S|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
+    "pubDate": "2025-09-25T10:38:09+02:00",
+    "starts_at": "2025-09-25T10:38:09+02:00",
+    "ends_at": "2025-09-25T11:37:00+02:00",
+    "_identity": "wl|störung|L=|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "90f3e9ae80b1ced372efb169e9553a734be9ad86fa0539d9008f2c17a5442faf",
+    "pubDate": "2025-09-25T10:39:16+02:00",
+    "starts_at": "2025-09-25T10:39:16+02:00",
+    "ends_at": "2025-09-25T11:38:00+02:00",
+    "_identity": "wl|störung|L=5|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
+    "pubDate": "2025-09-25T10:39:45+02:00",
+    "starts_at": "2025-09-25T10:39:45+02:00",
+    "ends_at": "2025-09-25T11:39:00+02:00",
+    "_identity": "wl|störung|L=12|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33/D: Verkehrsunfall",
+    "description": "Die Linie 33 ist derzeit in Richtung Augasse an der Weiterfahrt gehindert. Die Linie D ist derzeit in Richtung Nußdorf an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 11:00 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Franz-Josefs-Bahnhof S.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4b545981309923323c1540dece20451ebaaca09ceb3583140431599f37a9fb2e",
+    "pubDate": "2025-09-25T10:40:00+02:00",
+    "starts_at": "2025-09-25T10:40:00+02:00",
+    "ends_at": "2025-09-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=33,D|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42/9: Falschparker Betrieb über Li. 42+9",
+    "description": "Falschparker Betrieb über Li. 42+9",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9ded21edd54ec0e3a1f351b48d66193d9727ef9573d767e7aba342b65021d51a",
+    "pubDate": "2025-09-25T10:40:57+02:00",
+    "starts_at": "2025-09-25T10:40:57+02:00",
+    "ends_at": "2025-09-25T11:39:00+02:00",
+    "_identity": "wl|störung|L=42,9|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Falschparker Züge halten bei Linie 40 Richtung Herbeckstraße",
+    "description": "Falschparker Züge halten bei Linie 40 Richtung Herbeckstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2025-09-25T10:41:55+02:00",
+    "starts_at": "2025-09-25T10:41:55+02:00",
+    "ends_at": "2025-09-25T11:41:00+02:00",
+    "_identity": "wl|störung|L=41|D=2025-09-25"
   }
 ]
