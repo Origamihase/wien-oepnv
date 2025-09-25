@@ -350,10 +350,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Betrieb ab Albertgasse",
-    "description": "Bauarbeiten Betrieb ab Albertgasse",
+    "title": "5: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "48094c83c49089f4aba6b83711b9e7916deffcd1bb38dd75d5f55cee9eaf69a2",
+    "guid": "3eec659231d431c492a4c3fa40012777e023a9b2087e37bcbd20d84a40334d33",
     "pubDate": "2025-09-23T00:00:17+02:00",
     "starts_at": "2025-09-23T00:00:17+02:00",
     "ends_at": "2025-09-25T23:59:59+02:00",
@@ -362,10 +362,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "5: Betrieb ab Albertgasse",
+    "description": "Bauarbeiten Betrieb ab Albertgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3eec659231d431c492a4c3fa40012777e023a9b2087e37bcbd20d84a40334d33",
+    "guid": "48094c83c49089f4aba6b83711b9e7916deffcd1bb38dd75d5f55cee9eaf69a2",
     "pubDate": "2025-09-23T00:00:17+02:00",
     "starts_at": "2025-09-23T00:00:17+02:00",
     "ends_at": "2025-09-25T23:59:59+02:00",
@@ -466,30 +466,6 @@
     "starts_at": "2025-09-25T17:25:00+02:00",
     "ends_at": "2025-09-25T21:30:00+02:00",
     "_identity": "wl|störung|L=1A,2A,3A|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Gleisschaden Betrieb nur bis Josef-Baumann.-G. / Kagran",
-    "description": "Gleisschaden Betrieb nur bis Josef-Baumann.-G. / Kagran",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fb160abaa478e32513fb62d0491be296687794e45215da365c5c4a7fafbb9c22",
-    "pubDate": "2025-09-25T17:59:09+02:00",
-    "starts_at": "2025-09-25T17:59:09+02:00",
-    "ends_at": "2025-09-25T18:58:00+02:00",
-    "_identity": "wl|störung|L=26|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Fahrtbehinderung Gleisschaden",
-    "description": "Fahrtbehinderung Gleisschaden",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "524a28cdb8d2abbd081d901147f80ed8552a7e8e1745091f960ba5a6ddaff36b",
-    "pubDate": "2025-09-25T18:00:36+02:00",
-    "starts_at": "2025-09-25T18:00:36+02:00",
-    "ends_at": "2025-09-25T19:00:00+02:00",
-    "_identity": "wl|störung|L=26|D=2025-09-25"
   },
   {
     "source": "Wiener Linien",
@@ -694,5 +670,17 @@
     "starts_at": "2025-09-25T18:40:59+02:00",
     "ends_at": "2025-09-25T20:30:00+02:00",
     "_identity": "wl|störung|L=3A|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Veranstaltung Betrieb ab Schwarzenbergplatz",
+    "description": "Veranstaltung Betrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8b1e2f187f18995bbf65eba67f26d4902602640fca1243e0baf4e442d8812f93",
+    "pubDate": "2025-09-25T18:48:53+02:00",
+    "starts_at": "2025-09-25T18:48:53+02:00",
+    "ends_at": "2025-09-25T23:45:00+02:00",
+    "_identity": "wl|störung|L=71|D=2025-09-25"
   }
 ]
