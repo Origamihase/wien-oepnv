@@ -296,7 +296,7 @@
     "guid": "2664a84bd7bb35a6f0aba982e3c561700607eccff2b9b90413246f273c30c1cd",
     "pubDate": "2025-09-19T00:00:11+02:00",
     "starts_at": "2025-09-19T00:00:11+02:00",
-    "ends_at": "2025-09-25T23:59:59+02:00",
+    "ends_at": "2025-09-26T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2025-09-19"
   },
   {
@@ -338,37 +338,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Betrieb ab Albertgasse",
-    "description": "Bauarbeiten Betrieb ab Albertgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "48094c83c49089f4aba6b83711b9e7916deffcd1bb38dd75d5f55cee9eaf69a2",
-    "pubDate": "2025-09-23T00:00:17+02:00",
-    "starts_at": "2025-09-23T00:00:17+02:00",
-    "ends_at": "2025-09-25T23:59:59+02:00",
-    "_identity": "wl|störung|L=5|D=2025-09-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3eec659231d431c492a4c3fa40012777e023a9b2087e37bcbd20d84a40334d33",
-    "pubDate": "2025-09-23T00:00:17+02:00",
-    "starts_at": "2025-09-23T00:00:17+02:00",
-    "ends_at": "2025-09-25T23:59:59+02:00",
-    "_identity": "wl|störung|L=5|D=2025-09-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Betrieb ab St. Marx",
     "description": "Gleisbauarbeiten Betrieb ab St. Marx",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
     "pubDate": "2025-09-23T00:00:21+02:00",
     "starts_at": "2025-09-23T00:00:21+02:00",
-    "ends_at": "2025-09-25T23:59:59+02:00",
+    "ends_at": "2025-09-26T23:59:59+02:00",
     "_identity": "wl|störung|L=18|D=2025-09-23"
   },
   {
@@ -380,7 +356,7 @@
     "guid": "0a6a987a32b38d85f3d0dcaceba01b7e03ecd4a1b44249076de8bb39e7c3f35b",
     "pubDate": "2025-09-23T00:00:27+02:00",
     "starts_at": "2025-09-23T00:00:27+02:00",
-    "ends_at": "2025-09-25T23:59:59+02:00",
+    "ends_at": "2025-09-26T23:59:59+02:00",
     "_identity": "wl|störung|L=N38|D=2025-09-23"
   },
   {
@@ -406,18 +382,6 @@
     "starts_at": "2025-09-24T20:00:00+02:00",
     "ends_at": "2026-09-24T11:11:00+02:00",
     "_identity": "wl|hinweis|L=38A|D=2025-09-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43: Züge halten Alszeile 126",
-    "description": "Bauarbeiten Züge halten Alszeile 126",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
-    "pubDate": "2025-09-25T04:45:07+02:00",
-    "starts_at": "2025-09-25T04:45:07+02:00",
-    "ends_at": "2025-09-26T00:00:00+02:00",
-    "_identity": "wl|störung|L=43|D=2025-09-25"
   },
   {
     "source": "Wiener Linien",
@@ -452,7 +416,7 @@
     "guid": "c35fc9c43015f9386e73c03cfe6d7fba59e887594514dbeb9fb6d74f13738251",
     "pubDate": "2025-09-25T18:07:51+02:00",
     "starts_at": "2025-09-25T18:07:51+02:00",
-    "ends_at": "2025-09-25T23:59:59+02:00",
+    "ends_at": "2025-09-26T01:00:00+02:00",
     "_identity": "wl|störung|L=71|D=2025-09-25"
   },
   {
@@ -464,152 +428,8 @@
     "guid": "3f7ca9d2dddd979dcffcf7549ad72bae2007242e5a6b4a1216f569c850245b8f",
     "pubDate": "2025-09-25T18:20:54+02:00",
     "starts_at": "2025-09-25T18:20:54+02:00",
-    "ends_at": "2025-09-25T23:59:59+02:00",
+    "ends_at": "2025-09-26T01:00:00+02:00",
     "_identity": "wl|störung|L=71|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Veranstaltung Betrieb nur bis Börse",
-    "description": "Veranstaltung Betrieb nur bis Börse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "361c7d11c4aab528f69cec713432f54214b6a2af55e7d8cedf82b79f857caca2",
-    "pubDate": "2025-09-25T18:21:23+02:00",
-    "starts_at": "2025-09-25T18:21:23+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Veranstaltung Betrieb ab Schwarzenbergplatz",
-    "description": "Veranstaltung Betrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9998fdc2c4c9aa5874b09849f4aea58b20b1307c12b9ac0282cd1b5db73d2243",
-    "pubDate": "2025-09-25T18:21:23+02:00",
-    "starts_at": "2025-09-25T18:21:23+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fahrtbehinderung Veranstaltung",
-    "description": "Fahrtbehinderung Veranstaltung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7a20f10541f3ecc1930821219843143fc0796e227daaa20f20a8c1e3aac4bbd",
-    "pubDate": "2025-09-25T18:21:52+02:00",
-    "starts_at": "2025-09-25T18:21:52+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Veranstaltung Betrieb nur bis Schwarzenbergplatz",
-    "description": "Veranstaltung Betrieb nur bis Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "31edaea8a08c1f740dda0d99e52cdb7bb40c507f58a63d99ebc3ea4cab24b3c0",
-    "pubDate": "2025-09-25T18:21:52+02:00",
-    "starts_at": "2025-09-25T18:21:52+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Veranstaltung Betrieb ab Rathaus U",
-    "description": "Veranstaltung Betrieb ab Rathaus U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f4a1cbacfc405404205e0834586cbcf9ffa8111f04b0b32a85fe736ba66a4967",
-    "pubDate": "2025-09-25T18:23:19+02:00",
-    "starts_at": "2025-09-25T18:23:19+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Veranstaltung Betrieb ab Heinestraße",
-    "description": "Veranstaltung Betrieb ab Heinestraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bbdbbe78581394becdf6d1e8bbb610855c74fa8b756a4b9c8d7f6613e4f59f65",
-    "pubDate": "2025-09-25T18:23:19+02:00",
-    "starts_at": "2025-09-25T18:23:19+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Veranstaltung Betrieb nur bis Schwedenplatz",
-    "description": "Veranstaltung Betrieb nur bis Schwedenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "625f53b858a21c498a7302eb60505ab436d616fa6e2443a4a83a46f77cb8b882",
-    "pubDate": "2025-09-25T18:23:27+02:00",
-    "starts_at": "2025-09-25T18:23:27+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Veranstaltung Betrieb ab Hintere Zollamtsstraße",
-    "description": "Veranstaltung Betrieb ab Hintere Zollamtsstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2a8fdc57bb950d4c8920b577557aa6dd5a47f002d58b56c3c045c54237b6191a",
-    "pubDate": "2025-09-25T18:23:37+02:00",
-    "starts_at": "2025-09-25T18:23:37+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Veranstaltung Betrieb nur bis Ring, Volkstheater",
-    "description": "Veranstaltung Betrieb nur bis Ring, Volkstheater",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "09e360db984c6248cd747d1632c18d6f3645e0942bbcd76bb2b98a01bf21d55a",
-    "pubDate": "2025-09-25T18:23:38+02:00",
-    "starts_at": "2025-09-25T18:23:38+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Veranstaltung Züge Richtung F.-Engels-Platz halten vis-a-vis",
-    "description": "Veranstaltung Züge Richtung F.-Engels-Platz halten vis-a-vis",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9f6e68bc8f156b5811e7b1e16b4ace9dad4aaa5bac97a56477c6454505e80450",
-    "pubDate": "2025-09-25T18:23:48+02:00",
-    "starts_at": "2025-09-25T18:23:48+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Veranstaltung Betrieb ab Kliebergasse",
-    "description": "Veranstaltung Betrieb ab Kliebergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5d42b050ca8e86e64b4e130a4dafb7189b11911669503f0e4d4580b59c3378ae",
-    "pubDate": "2025-09-25T18:24:06+02:00",
-    "starts_at": "2025-09-25T18:24:06+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Veranstaltung Umleitung ab Kliebergasse über Linien 18 und O",
-    "description": "Veranstaltung Umleitung ab Hintere Zollamtsstr. über O und 18",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
-    "pubDate": "2025-09-25T18:24:07+02:00",
-    "starts_at": "2025-09-25T18:24:07+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-09-25"
   },
   {
     "source": "Wiener Linien",
@@ -620,43 +440,31 @@
     "guid": "8b1e2f187f18995bbf65eba67f26d4902602640fca1243e0baf4e442d8812f93",
     "pubDate": "2025-09-25T18:48:53+02:00",
     "starts_at": "2025-09-25T18:48:53+02:00",
-    "ends_at": "2025-09-25T23:59:59+02:00",
+    "ends_at": "2025-09-26T01:00:00+02:00",
     "_identity": "wl|störung|L=71|D=2025-09-25"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Veranstaltung Betrieb nur bis Wallensteinstraße",
-    "description": "Veranstaltung Betrieb nur bis Wallensteinstraße",
+    "title": "5: Betrieb ab Albertgasse",
+    "description": "Bauarbeiten Betrieb ab Albertgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c521dcc258c665bf5ab0a57ffeb25b84e251f025859b3d4d56d1f0ea559d11c8",
-    "pubDate": "2025-09-25T19:44:27+02:00",
-    "starts_at": "2025-09-25T19:44:27+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=31|D=2025-09-25"
+    "guid": "48094c83c49089f4aba6b83711b9e7916deffcd1bb38dd75d5f55cee9eaf69a2",
+    "pubDate": "2025-09-26T00:00:26+02:00",
+    "starts_at": "2025-09-26T00:00:26+02:00",
+    "ends_at": "2025-09-26T23:59:59+02:00",
+    "_identity": "wl|störung|L=5|D=2025-09-26"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Veranstaltung Betrieb ab Wallensteinstraße",
-    "description": "Veranstaltung Betrieb ab Wallensteinstraße",
+    "title": "5: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06fc734ba835378115efb88e9be952f745da3a713cd6c03f28516f8b05d6aea6",
-    "pubDate": "2025-09-25T19:44:45+02:00",
-    "starts_at": "2025-09-25T19:44:45+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=31|D=2025-09-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "74A: Veranstaltung Betrieb ab Landstraße",
-    "description": "Veranstaltung Betrieb ab Landstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fb4c0753b383c833bc940838e7d5193ad18d65173100c2986868ae8a6e001359",
-    "pubDate": "2025-09-25T19:48:48+02:00",
-    "starts_at": "2025-09-25T19:48:48+02:00",
-    "ends_at": "2025-09-25T23:45:00+02:00",
-    "_identity": "wl|störung|L=74A|D=2025-09-25"
+    "guid": "3eec659231d431c492a4c3fa40012777e023a9b2087e37bcbd20d84a40334d33",
+    "pubDate": "2025-09-26T00:00:26+02:00",
+    "starts_at": "2025-09-26T00:00:26+02:00",
+    "ends_at": "2025-09-26T23:59:59+02:00",
+    "_identity": "wl|störung|L=5|D=2025-09-26"
   }
 ]
