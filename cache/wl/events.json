@@ -350,10 +350,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Betrieb ab Albertgasse",
-    "description": "Bauarbeiten Betrieb ab Albertgasse",
+    "title": "5: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "48094c83c49089f4aba6b83711b9e7916deffcd1bb38dd75d5f55cee9eaf69a2",
+    "guid": "3eec659231d431c492a4c3fa40012777e023a9b2087e37bcbd20d84a40334d33",
     "pubDate": "2025-09-23T00:00:17+02:00",
     "starts_at": "2025-09-23T00:00:17+02:00",
     "ends_at": "2025-09-25T23:59:59+02:00",
@@ -362,10 +362,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "5: Betrieb ab Albertgasse",
+    "description": "Bauarbeiten Betrieb ab Albertgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3eec659231d431c492a4c3fa40012777e023a9b2087e37bcbd20d84a40334d33",
+    "guid": "48094c83c49089f4aba6b83711b9e7916deffcd1bb38dd75d5f55cee9eaf69a2",
     "pubDate": "2025-09-23T00:00:17+02:00",
     "starts_at": "2025-09-23T00:00:17+02:00",
     "ends_at": "2025-09-25T23:59:59+02:00",
@@ -482,13 +482,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "60: Schadhafter Zug Betrieb ab Hofwiesengasse",
+    "description": "Schadhafter Zug Betrieb ab Hofwiesengasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3ba4c6494be8dc0e55d7daa610f5f3b2f958bae603c38cf922f86623dddd062b",
+    "pubDate": "2025-09-25T08:46:50+02:00",
+    "starts_at": "2025-09-25T08:46:50+02:00",
+    "ends_at": "2025-09-25T09:48:00+02:00",
+    "_identity": "wl|störung|L=60|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "60: Fahrtbehinderung Schadhafter Zug",
     "description": "Fahrtbehinderung Schadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4ebfcdeecb63555a7d3eeda6e1144843992faaa428a94f9ee9f79f89dc91e33f",
     "pubDate": "2025-09-25T08:46:50+02:00",
     "starts_at": "2025-09-25T08:46:50+02:00",
-    "ends_at": "2025-09-25T09:46:00+02:00",
+    "ends_at": "2025-09-25T09:48:00+02:00",
+    "_identity": "wl|störung|L=60|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Polizeieinsatz",
+    "description": "Die Linie U2 fährt derzeit in der Station Hausfeldstraße in beiden Richtungen über Gleis 2. Die Störung dauert voraussichtlich bis 15:00 Uhr. Grund dafür ist eine Polizeiübung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3dd0ec36f6dc8594c9e37e23580bdcf5f82555521c07875e9f83c718912578fc",
+    "pubDate": "2025-09-25T08:50:00+02:00",
+    "starts_at": "2025-09-25T08:50:00+02:00",
+    "ends_at": "2025-09-25T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2025-09-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhafter Zug Züge halten bei Linie 62 Richtung Lainz",
+    "description": "Schadhafter Zug Züge halten bei Linie 62 Richtung Lainz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0e7ed03f3bc55349aea4ca724b7ad72282fb14291ceaf1b0d5b35a533488ab89",
+    "pubDate": "2025-09-25T08:59:53+02:00",
+    "starts_at": "2025-09-25T08:59:53+02:00",
+    "ends_at": "2025-09-25T09:49:00+02:00",
     "_identity": "wl|störung|L=60|D=2025-09-25"
   }
 ]
