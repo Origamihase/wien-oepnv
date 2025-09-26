@@ -446,30 +446,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2025-09-26T20:50:00+02:00",
-    "starts_at": "2025-09-26T20:50:00+02:00",
-    "ends_at": "2025-09-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=9|D=2025-09-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 42 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2025-09-26T20:50:00+02:00",
-    "starts_at": "2025-09-26T20:50:00+02:00",
-    "ends_at": "2025-09-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=42|D=2025-09-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10A: Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -482,20 +458,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "301864fe661402a234c7e28ce57d515a8b73dbea9b2393b14e61bea5451c769d",
-    "pubDate": "2025-09-26T21:40:43+02:00",
-    "starts_at": "2025-09-26T21:40:43+02:00",
-    "ends_at": "2025-09-26T22:40:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2025-09-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "31: Rettungseinsatz Betrieb nur bis Hanreitergasse",
-    "description": "Die Linie 31 fährt derzeit nur zwischen Schottenring und Brünner Straße, Hanreitergasse. Die Störung dauert voraussichtlich bis 22:50 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Van-Swieten-Kaserne.",
+    "description": "Die Linie 31 fährt derzeit nur zwischen Schottenring und Brünner Straße, Hanreitergasse. Die Störung dauert voraussichtlich bis 23:10 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Van-Swieten-Kaserne.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "93779f2373f8195241c5ab62df54f31689b7c4f93a9f65654658fd3b67c3a983",
     "pubDate": "2025-09-26T21:45:00+02:00",
@@ -506,25 +470,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Verkehrsunfall Betrieb nur bis Dänenstraße",
-    "description": "Verkehrsunfall Betrieb nur bis Dänenstraße",
+    "title": "13A: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "40624ad7be6da7346995c8901e803c320a6e3f04131c657120a0106dcabcb5e6",
-    "pubDate": "2025-09-26T21:55:37+02:00",
-    "starts_at": "2025-09-26T21:55:37+02:00",
-    "ends_at": "2025-09-26T22:54:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2025-09-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10A: Verkehrsunfall Betrieb nur bis Gersthof",
-    "description": "Verkehrsunfall Betrieb nur bis Gersthof",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3e38391102cb7443108efd01b534c42cc5299be59b2defc09109db8d89f30448",
-    "pubDate": "2025-09-26T21:56:07+02:00",
-    "starts_at": "2025-09-26T21:56:07+02:00",
-    "ends_at": "2025-09-26T22:55:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2025-09-26"
+    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
+    "pubDate": "2025-09-26T22:42:02+02:00",
+    "starts_at": "2025-09-26T22:42:02+02:00",
+    "ends_at": "2025-09-26T23:41:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2025-09-26"
   }
 ]
