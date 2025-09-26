@@ -181,18 +181,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "77A/80A: Gleisbauarbeiten ab 01.09.2025",
-    "description": "Gleisbauarbeiten\nWegen Voranschreitens der Gleisbauarbeiten für die Verlängerung der Linie 18 müssen die Linien 77 A und 80 A abermals anders umgeleitet werden.\nZeitraum:\nAb Montag, 01. September 2025 für voraussichtlich zwei Wochen.\nMaßnahmen:\nLinie 77 A in Richtung Lusthaus\nUmleitung ab Erdbergstraße # Schlachthausgasse über Schlachthausgasse - Barthgasse - Würtzlerstraße - Erdbergstraße - Schlachthausgasse.\nVerlegte Haltestellen\nSchlachthausgasse U\nVerlegt von: Markhofgasse gegenüber 6-8\nVerlegt nach: Würtzlerstraße 17-21*\nLudwig-Koeßler-Platz\nVerlegt von: Schlachthausgasse 3\nVerlegt nach: Schlachthausgasse 11-13\nLinie 77 A in Richtung Rennweg\nUmleitung ab Schlachthausgasse # Schnirchgasse über Schlachthausgasse - Barthgasse - Würtzlerstraße - Erdbergstraße.\nVerlegte Haltestellen\nLudwig-Koeßler-Platz\nVerlegt von: Schnirchgasse 2-4\nVerlegt nach: Schlachthausgasse 2-6\nSchlachthausgasse U\nVerlegt von: Markhofgasse gegenüber 2-4\nVerlegt nach: Würtzlerstraße 17-21*\n*Achtung: In dieser Haltestelle halten die Busse in beiden Fahrtrichtungen! Bitte beachten Sie das Fahrtziel am Fahrzeug!\nLinie 80 A in Richtung Neu Marx\nUmleitung ab Schlachthausgasse # Schnirchgasse über Schlachthausgasse - Barthgasse.\nVerlegte Haltestellen\nLudwig-Koeßler-Platz\nVerlegt von: Schnirchgasse 2-4\nVerlegt nach: Schlachthausgasse 2-6\nSchlachthausgasse U\nVerlegt von: Würtzlerstraße 20\nVerlegt nach: Schlachthausgasse 24-24 A\nBarthgasse\nVerlegt von: Würtzlerstraße gegenüber 23\nVerlegt nach: Barthgasse gegenüber 9\nLinie 80 A in Richtung Praterstern S U\nUmleitung ab Baumgasse # Nottendorfer Gasse über Nottendorfer Gasse - Erdbergstraße - Schlachthausgasse.\nVerlegte Haltestellen\nBaumgasse\nVerlegt von: Baumgasse 77\nVerlegt nach: Nottendorfer Gasse 11\nSchlachthausgasse U\nVerlegt von: Schlachthausgasse 23-29\nVerlegt nach: Erdbergstraße 129\nLudwig-Koeßler-Platz\nVerlegt von: Schlachthausgasse 3\nVerlegt nach Schlachthausgasse 11-13\nLinie 80 A, Kurse nur bis bzw. ab Schlachthausgasse\nUmleitung über Schlachthausgasse - Barthgasse - Würtzlerstraße - Erdbergstraße - Schlachthausgasse.\nVerlegte Haltestelle:\nSchlachthausgasse U\nDiese Haltestelle wird in der Würtzlerstraße 17-21 eingehalten.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b512b96e8ccf2a9f5bda7dcba5bc8167202f473c189749c84c57d16d9c55eca1",
-    "pubDate": "2025-08-27T15:35:00+02:00",
-    "starts_at": "2025-08-27T15:35:00+02:00",
-    "ends_at": "2026-08-27T11:11:00+02:00",
-    "_identity": "wl|hinweis|L=77A,80A|D=2025-08-27"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "18: Gleisbauarbeiten",
     "description": "Die Linie 18 fährt bis Ende des Jahres nur zwischen Burggasse, Stadthalle und St. Marx. Weichen Sie auf die Linien U3, O, 71, 74 A, 77 A und die S-Bahn aus. Grund dafür sind Gleisbauarbeiten im Bereich Schlachthausgasse.",
@@ -494,18 +482,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "73357b6320dfec1f26a86c63469d119b40e8f17ed69fcf1491dd8ae09deab193",
-    "pubDate": "2025-09-26T10:45:00+02:00",
-    "starts_at": "2025-09-26T10:45:00+02:00",
-    "ends_at": "2025-09-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-09-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62: Schadhaftes Fahrzeug",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -530,14 +506,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "77A/80A: Fremder Verkehrsunfall",
-    "description": "Die Linie 77 A wird derzeit in beiden Richtungen zwischen Erdbergstraße, Schlachthausgasse und Donaumarina über die A23 umgeleitet. Die Linie 80 A wird in beiden Richtungen zwischen Maria-Jacobi-Gasse und Schüttelstraße über A23 umgeleitet. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein fremder Verkehrsunfall im Bereich Schlachthausgasse U.",
+    "title": "77A: Fremder Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 77 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "74c948c57de042f12d5b3c8af0419206316d3aa827755348c1577ef952f8fb33",
+    "guid": "b9189e326850aa92915899ca534af48c14968292d4a8ae6c7010cf3729512dc3",
     "pubDate": "2025-09-26T11:10:00+02:00",
     "starts_at": "2025-09-26T11:10:00+02:00",
     "ends_at": "2025-09-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=77A,80A|D=2025-09-26"
+    "_identity": "wl|störung|L=77A|D=2025-09-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "80A: Fremder Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 80 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f32c7334aa245a2d8f67f35f036dbdc40bdbe5c04d7c7cd8cc8141410323a9ec",
+    "pubDate": "2025-09-26T11:10:00+02:00",
+    "starts_at": "2025-09-26T11:10:00+02:00",
+    "ends_at": "2025-09-26T23:55:00+02:00",
+    "_identity": "wl|störung|L=80A|D=2025-09-26"
   },
   {
     "source": "Wiener Linien",
@@ -550,18 +538,6 @@
     "starts_at": "2025-09-26T11:40:00+02:00",
     "ends_at": "2025-09-26T23:55:00+02:00",
     "_identity": "wl|störung|L=U3|D=2025-09-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9",
-    "pubDate": "2025-09-26T11:49:25+02:00",
-    "starts_at": "2025-09-26T11:49:25+02:00",
-    "ends_at": "2025-09-26T12:48:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-09-26"
   },
   {
     "source": "Wiener Linien",
@@ -586,5 +562,17 @@
     "starts_at": "2025-09-26T12:39:56+02:00",
     "ends_at": "2025-09-26T13:35:00+02:00",
     "_identity": "wl|störung|L=O|D=2025-09-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bb250e2c43de487577251bcb8b73b4c5de0652ba27d3f9aacc8555f08612408d",
+    "pubDate": "2025-09-26T13:00:00+02:00",
+    "starts_at": "2025-09-26T13:00:00+02:00",
+    "ends_at": "2025-09-26T23:55:00+02:00",
+    "_identity": "wl|störung|L=40A|D=2025-09-26"
   }
 ]
