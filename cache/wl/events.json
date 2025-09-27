@@ -482,38 +482,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "323b6d41bc08e7d3945f4aa8067c0e597583bf7a47eaa65565deef81eb290eca",
-    "pubDate": "2025-09-27T09:32:29+02:00",
-    "starts_at": "2025-09-27T09:32:29+02:00",
-    "ends_at": "2025-09-27T10:32:00+02:00",
-    "_identity": "wl|störung|L=9|D=2025-09-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Verkehrsunfall",
-    "description": "Die Linie 71 wird derzeit in beiden Richtungen zwischen Schwarzenbergplatz und St. Marx über Quartier Belvedere umgeleitet. Die Störung dauert voraussichtlich bis 10:30 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Oberzellergasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
     "pubDate": "2025-09-27T09:40:00+02:00",
     "starts_at": "2025-09-27T09:40:00+02:00",
     "ends_at": "2025-09-27T23:55:00+02:00",
     "_identity": "wl|störung|L=71|D=2025-09-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "24A: Verspätungen",
-    "description": "Die Linie 24 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3ae9ff888a67996a9f331c655284810d480df1b797004e01e44699f339e15fd3",
-    "pubDate": "2025-09-27T09:40:00+02:00",
-    "starts_at": "2025-09-27T09:40:00+02:00",
-    "ends_at": "2025-09-27T23:55:00+02:00",
-    "_identity": "wl|störung|L=24A|D=2025-09-27"
   },
   {
     "source": "Wiener Linien",
@@ -550,5 +526,53 @@
     "starts_at": "2025-09-27T09:48:30+02:00",
     "ends_at": "2025-09-27T10:47:00+02:00",
     "_identity": "wl|störung|L=71|D=2025-09-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Rettungseinsatz Betrieb ab Rosensteingasse",
+    "description": "Die Linie 43 wird in Richtung Neuwaldegg zwischen Brünnlbadgasse und Rosensteingasse über die Strecke der Linien 44 und 9 umgeleitet. Die Störung dauert voraussichtlich bis 11:00 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Palffygasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
+    "pubDate": "2025-09-27T10:20:00+02:00",
+    "starts_at": "2025-09-27T10:20:00+02:00",
+    "ends_at": "2025-09-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=43|D=2025-09-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972",
+    "pubDate": "2025-09-27T10:25:00+02:00",
+    "starts_at": "2025-09-27T10:25:00+02:00",
+    "ends_at": "2025-09-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-09-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Rettungseinsatz Umleitung über 44 und 9",
+    "description": "Rettungseinsatz Umleitung über 44 und 9",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ef3e455c0f95a349815eed0618d36c09aa81fdc42b8c7a450e1982a535d67fa8",
+    "pubDate": "2025-09-27T10:27:03+02:00",
+    "starts_at": "2025-09-27T10:27:03+02:00",
+    "ends_at": "2025-09-27T11:25:00+02:00",
+    "_identity": "wl|störung|L=43|D=2025-09-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "16A/17A: Signalstörung",
+    "description": "Die Linie 16 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 17 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "378a9cf89ffe600002aac121669e34fc86ed82ec91e04747ed1f3f39e83a8e56",
+    "pubDate": "2025-09-27T10:35:00+02:00",
+    "starts_at": "2025-09-27T10:35:00+02:00",
+    "ends_at": "2025-09-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=16A,17A|D=2025-09-27"
   }
 ]
