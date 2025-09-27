@@ -446,18 +446,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Veranstaltung Kein Betrieb bis ca. 22:00 Uhr",
-    "description": "Veranstaltung Kein Betrieb bis ca. 22:00 Uhr",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "72af310315b6eb0a9476c013cbe84ff6afd759a20a537e82c6839897262cf522",
-    "pubDate": "2025-09-27T05:00:11+02:00",
-    "starts_at": "2025-09-27T05:00:11+02:00",
-    "ends_at": "2025-09-27T22:00:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2025-09-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Veranstaltung Busse halten - Amerlingstraße 8-10",
     "description": "Veranstaltung Busse halten - Amerlingstraße 8-10",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -470,26 +458,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Fremdunfall Betrieb ab Gesundheitszentrum Süd",
-    "description": "Fremdunfall Betrieb ab Gesundheitszentrum Süd",
+    "title": "13A: Veranstaltung Kein Betrieb bis ca. 22:00 Uhr",
+    "description": "Veranstaltung Kein Betrieb bis ca. 22:00 Uhr",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "09f414e16278feacd7d1ac46b6d6530211fa274cf26234e367b6f8f8142604a5",
-    "pubDate": "2025-09-27T09:03:34+02:00",
-    "starts_at": "2025-09-27T09:03:34+02:00",
-    "ends_at": "2025-09-27T10:02:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2025-09-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Fremdunfall Betrieb ab Davidgasse, Knöllgasse",
-    "description": "Fremdunfall Betrieb ab Davidgasse, Knöllgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "809ddab42082c37238ae71af103a55e68227e01f386d186f438a35e4a4719e1f",
-    "pubDate": "2025-09-27T09:04:32+02:00",
-    "starts_at": "2025-09-27T09:04:32+02:00",
-    "ends_at": "2025-09-27T10:03:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2025-09-27"
+    "guid": "72af310315b6eb0a9476c013cbe84ff6afd759a20a537e82c6839897262cf522",
+    "pubDate": "2025-09-27T05:00:11+02:00",
+    "starts_at": "2025-09-27T05:00:11+02:00",
+    "ends_at": "2025-09-27T22:00:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2025-09-27"
   },
   {
     "source": "Wiener Linien",
@@ -514,5 +490,65 @@
     "starts_at": "2025-09-27T09:32:29+02:00",
     "ends_at": "2025-09-27T10:32:00+02:00",
     "_identity": "wl|störung|L=9|D=2025-09-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Verkehrsunfall",
+    "description": "Die Linie 71 wird derzeit in beiden Richtungen zwischen Schwarzenbergplatz und St. Marx über Quartier Belvedere umgeleitet. Die Störung dauert voraussichtlich bis 10:30 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Oberzellergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
+    "pubDate": "2025-09-27T09:40:00+02:00",
+    "starts_at": "2025-09-27T09:40:00+02:00",
+    "ends_at": "2025-09-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=71|D=2025-09-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "24A: Verspätungen",
+    "description": "Die Linie 24 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3ae9ff888a67996a9f331c655284810d480df1b797004e01e44699f339e15fd3",
+    "pubDate": "2025-09-27T09:40:00+02:00",
+    "starts_at": "2025-09-27T09:40:00+02:00",
+    "ends_at": "2025-09-27T23:55:00+02:00",
+    "_identity": "wl|störung|L=24A|D=2025-09-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fremdunfall Umleitung über D und 18",
+    "description": "Fremdunfall Umleitung über D und 18",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dfe4fd4e5c0cba0b4e46c05f3e00b5c6d881a2a4c7fb2b273c499631d215463f",
+    "pubDate": "2025-09-27T09:46:27+02:00",
+    "starts_at": "2025-09-27T09:46:27+02:00",
+    "ends_at": "2025-09-27T10:47:00+02:00",
+    "_identity": "wl|störung|L=71|D=2025-09-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fremdunfall Betrieb ab St. Marx",
+    "description": "Fremdunfall Betrieb ab St. Marx",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bf3bd23886676f32fc137744d204c807016f12e7766569b7c858cbb400aef7c9",
+    "pubDate": "2025-09-27T09:47:33+02:00",
+    "starts_at": "2025-09-27T09:47:33+02:00",
+    "ends_at": "2025-09-27T10:46:00+02:00",
+    "_identity": "wl|störung|L=71|D=2025-09-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fremdunfall Betrieb ab Schwarzenbergplatz",
+    "description": "Fremdunfall Betrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4414bbdca0d0ddd98f061a6e67d3edd1a9042ebd9562cb2b16c4a6f05b8dd0bd",
+    "pubDate": "2025-09-27T09:48:30+02:00",
+    "starts_at": "2025-09-27T09:48:30+02:00",
+    "ends_at": "2025-09-27T10:47:00+02:00",
+    "_identity": "wl|störung|L=71|D=2025-09-27"
   }
 ]
