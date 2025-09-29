@@ -478,5 +478,101 @@
     "starts_at": "2025-09-29T07:10:08+02:00",
     "ends_at": "2025-09-29T08:25:00+02:00",
     "_identity": "wl|störung|L=52|D=2025-09-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "73A: Rettungseinsatz",
+    "description": "Die Linie 73 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "aeb0b84ae5e8a62af5d84641c15f91257543dc2b7569bb960589eb875b2fd4cc",
+    "pubDate": "2025-09-29T07:45:00+02:00",
+    "starts_at": "2025-09-29T07:45:00+02:00",
+    "ends_at": "2025-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=73A|D=2025-09-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
+    "pubDate": "2025-09-29T07:47:31+02:00",
+    "starts_at": "2025-09-29T07:47:31+02:00",
+    "ends_at": "2025-09-29T08:47:00+02:00",
+    "_identity": "wl|störung|L=12|D=2025-09-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Verkehrsunfall Züge halten bei Linie 31 Richtung Stammersdorf",
+    "description": "Verkehrsunfall Züge halten bei Linie 31 Richtung Stammersdorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "17bd688928104f7f0ab77f94bccf4d209f1841f99411d78d40615da1846ef199",
+    "pubDate": "2025-09-29T07:47:31+02:00",
+    "starts_at": "2025-09-29T07:47:31+02:00",
+    "ends_at": "2025-09-29T08:50:00+02:00",
+    "_identity": "wl|störung|L=12|D=2025-09-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Verkehrsunfall Umleitung bis Jägerstraße über Linie 31",
+    "description": "Verkehrsunfall Umleitung bis Jägerstraße über Linie 31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8197ecc1d5e132b0518259b9864122b4c6d7c6c5003678b5f8243507485dfd73",
+    "pubDate": "2025-09-29T07:49:56+02:00",
+    "starts_at": "2025-09-29T07:49:56+02:00",
+    "ends_at": "2025-09-29T08:49:00+02:00",
+    "_identity": "wl|störung|L=12|D=2025-09-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33: Verkehrsunfall Umleitung bis Jägerstraße über Linie 31",
+    "description": "Verkehrsunfall Umleitung bis Jägerstraße über Linie 31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13a43a56ce658a1b844394905a07c7ac535772a832bb9080e62ea8582b000447",
+    "pubDate": "2025-09-29T07:51:02+02:00",
+    "starts_at": "2025-09-29T07:51:02+02:00",
+    "ends_at": "2025-09-29T08:50:00+02:00",
+    "_identity": "wl|störung|L=33|D=2025-09-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33: Verkehrsunfall Züge halten bei Linie 31 Richtung Stammersdorf",
+    "description": "Verkehrsunfall Züge halten bei Linie 31 Richtung Stammersdorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1ce595502257f01b15acd7660e030aeccc8bbb38bdc8bbe67cbe609d71da0ad8",
+    "pubDate": "2025-09-29T07:51:23+02:00",
+    "starts_at": "2025-09-29T07:51:23+02:00",
+    "ends_at": "2025-09-29T08:50:00+02:00",
+    "_identity": "wl|störung|L=33|D=2025-09-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "94A: Verkehrsunfall",
+    "description": "Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f0d634e8c64b753a861add399e7138caa8409a34cbca6326b25b7324feb41ede",
+    "pubDate": "2025-09-29T07:55:00+02:00",
+    "starts_at": "2025-09-29T07:55:00+02:00",
+    "ends_at": "2025-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=94A|D=2025-09-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Betriebsstörung",
+    "description": "Die Linie U3 ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 08:30 Uhr. Grund dafür ist eine Betriebsstörung im Bereich Johnstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2025-09-29T08:10:00+02:00",
+    "starts_at": "2025-09-29T08:10:00+02:00",
+    "ends_at": "2025-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2025-09-29"
   }
 ]
