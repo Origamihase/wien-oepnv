@@ -442,5 +442,41 @@
     "starts_at": "2025-09-29T06:10:00+02:00",
     "ends_at": "2025-09-29T23:55:00+02:00",
     "_identity": "wl|störung|L=17A|D=2025-09-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Verkehrsunfall",
+    "description": "Die Linie 52 ist derzeit in Richtung Baumgarten an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 07:25 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Linzer Straße 248.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "01c1edad0db092aed085d667951c6be88cf791b9631f3f4007cfee702ab02beb",
+    "pubDate": "2025-09-29T07:00:00+02:00",
+    "starts_at": "2025-09-29T07:00:00+02:00",
+    "ends_at": "2025-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=52|D=2025-09-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Verkehrsunfall Betrieb ab Linzer Straße, Reinlgasse",
+    "description": "Verkehrsunfall Betrieb ab Linzer Straße, Reinlgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "db41bcbcf3d70331138ac389e5e773a06424af858bc2d077136b722a3cb0d572",
+    "pubDate": "2025-09-29T07:05:43+02:00",
+    "starts_at": "2025-09-29T07:05:43+02:00",
+    "ends_at": "2025-09-29T08:10:00+02:00",
+    "_identity": "wl|störung|L=52|D=2025-09-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "538e3537ccddfddb6ed2a2bea6bb7128afece95871c03e3c9b06dde002cf7d72",
+    "pubDate": "2025-09-29T07:10:08+02:00",
+    "starts_at": "2025-09-29T07:10:08+02:00",
+    "ends_at": "2025-09-29T08:09:00+02:00",
+    "_identity": "wl|störung|L=52|D=2025-09-29"
   }
 ]
