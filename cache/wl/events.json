@@ -478,5 +478,29 @@
     "starts_at": "2025-09-30T06:00:00+02:00",
     "ends_at": "2026-09-30T11:11:00+02:00",
     "_identity": "wl|hinweis|L=2A|D=2025-09-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "3A: Verspätungen",
+    "description": "Die Linie 3 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87",
+    "pubDate": "2025-09-30T06:40:00+02:00",
+    "starts_at": "2025-09-30T06:40:00+02:00",
+    "ends_at": "2025-09-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=3A|D=2025-09-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Busse halten Laxenburger Straße 24 (N66)",
+    "description": "Bauarbeiten Busse halten Laxenburger Straße 24 (N66)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9b6c15f7f8c97c9c009c15fced84942a5e16da4bdbf55afe521e2339b11828d",
+    "pubDate": "2025-09-30T07:00:16+02:00",
+    "starts_at": "2025-09-30T07:00:16+02:00",
+    "ends_at": "2025-09-30T07:59:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2025-09-30"
   }
 ]
