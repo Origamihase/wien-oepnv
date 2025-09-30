@@ -446,13 +446,85 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Verkehrsüberlastung",
-    "description": "Die Linie 59 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "6: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
-    "pubDate": "2025-09-30T09:25:00+02:00",
-    "starts_at": "2025-09-30T09:25:00+02:00",
+    "guid": "0db792f9373b33394ac9cbd54fe89c56f58770700c324d59539bd75f7e841cff",
+    "pubDate": "2025-09-30T10:50:00+02:00",
+    "starts_at": "2025-09-30T10:50:00+02:00",
     "ends_at": "2025-09-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=59A|D=2025-09-30"
+    "_identity": "wl|störung|L=6|D=2025-09-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46",
+    "pubDate": "2025-09-30T10:50:00+02:00",
+    "starts_at": "2025-09-30T10:50:00+02:00",
+    "ends_at": "2025-09-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=11|D=2025-09-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8d027bd0136563db15b013c0aa4de03c0f2ff6b7c33eb3469e64b319bd6a584c",
+    "pubDate": "2025-09-30T10:50:30+02:00",
+    "starts_at": "2025-09-30T10:50:30+02:00",
+    "ends_at": "2025-09-30T11:50:00+02:00",
+    "_identity": "wl|störung|L=6|D=2025-09-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "faa2c75b2aaa3d9a162d6003d0bcec7e9a0d0132a2c6c3f2e5ebd42f317d3882",
+    "pubDate": "2025-09-30T10:51:53+02:00",
+    "starts_at": "2025-09-30T10:51:53+02:00",
+    "ends_at": "2025-09-30T11:54:00+02:00",
+    "_identity": "wl|störung|L=11|D=2025-09-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Verkehrsunfall Umleitung ab Absberggasse über Linien D und O",
+    "description": "Verkehrsunfall Umleitung ab Absberggasse über Linien D und O",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ddfa904cfc2ce8c19b1dd67283667d1d174ce0e24cc6d51c25b850b50f782c9d",
+    "pubDate": "2025-09-30T11:00:39+02:00",
+    "starts_at": "2025-09-30T11:00:39+02:00",
+    "ends_at": "2025-09-30T11:58:00+02:00",
+    "_identity": "wl|störung|L=6|D=2025-09-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Verkehrsunfall Umleitung ab Absberggasse über Linien D und O",
+    "description": "Verkehrsunfall Umleitung ab Absberggasse über Linien D und O",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3f8ab97ce2dcdfd701fc120edd5d7bb297db0fedd9ad8c74328903f240bf2761",
+    "pubDate": "2025-09-30T11:01:06+02:00",
+    "starts_at": "2025-09-30T11:01:06+02:00",
+    "ends_at": "2025-09-30T12:00:00+02:00",
+    "_identity": "wl|störung|L=11|D=2025-09-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "98667687253bc639656a963907dc9d6e4d87dbc4735242bb2b985799eaecefeb",
+    "pubDate": "2025-09-30T11:01:37+02:00",
+    "starts_at": "2025-09-30T11:01:37+02:00",
+    "ends_at": "2025-09-30T12:01:00+02:00",
+    "_identity": "wl|störung|L=|D=2025-09-30"
   }
 ]
