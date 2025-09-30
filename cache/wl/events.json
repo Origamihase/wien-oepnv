@@ -457,18 +457,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26A: Verkehrsunfall",
-    "description": "Die Linie 26 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Erzherzog-Karl-Straße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b3dcbbc6e19d96361d56bc3f3ee29d72b2f90f08ddab0ffb34e6788945fb613c",
-    "pubDate": "2025-09-30T06:00:00+02:00",
-    "starts_at": "2025-09-30T06:00:00+02:00",
-    "ends_at": "2025-09-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=26A|D=2025-09-30"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "2A: Kurzführung ab 06.10.25",
     "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Franz-Josefs-Kai wird die Linie 2 A kurzgeführt.\nZeitraum:\nAb Montag, 06. Oktober 2025 Betriebsbeginn, für etwa vier Wochen\nMaßnahmen:\nBetrieb nur zwischen Schwarzenbergplatz und Hoher Markt.\nAufgelassene Haltestellen:\nROTENTURMSTRASSE\n(Rotenturmstr. 8 nach Lugeck=\nSCHWEDENPLATZ U\n(Rotenturmstraße # Franz-Josefs-Kai)\nErsatz- und provisorische Haltestellen:\nROTENTURMSTRASSE\n(Lichtensteg 2, prov. Haltestelle)\nHOHER MARKT\nprov. End- und Anfangshaltestelle\n(Hoher Markt 8 vor Marc-Aurel-Str.)",
@@ -502,5 +490,29 @@
     "starts_at": "2025-09-30T07:00:16+02:00",
     "ends_at": "2025-09-30T07:59:00+02:00",
     "_identity": "wl|störung|L=14A|D=2025-09-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Verkehrsunfall",
+    "description": "Die Linie 40 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Linneplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f",
+    "pubDate": "2025-09-30T07:15:00+02:00",
+    "starts_at": "2025-09-30T07:15:00+02:00",
+    "ends_at": "2025-09-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=40A|D=2025-09-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Schadhafter Zug Züge halten bei Linie 71",
+    "description": "Schadhafter Zug Züge halten bei Linie 71",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b2804ab060c4582a7bf91b69714e42d18f411e35bd396ff061a896a3311118ee",
+    "pubDate": "2025-09-30T07:30:51+02:00",
+    "starts_at": "2025-09-30T07:30:51+02:00",
+    "ends_at": "2025-09-30T08:30:00+02:00",
+    "_identity": "wl|störung|L=11|D=2025-09-30"
   }
 ]
