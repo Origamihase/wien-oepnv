@@ -422,14 +422,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
+    "title": "38A: Gleisbauarbeiten",
+    "description": "Die Linie 38 A wird im Bereich Grinzinger Straße # Heiligenstädter Straße lokal umgeleitet. Die Haltestelle Grinzinger Straße in Richtung Leopoldsberg ist verlegt nach: Greinergasse 1. Die Haltestelle Grinzinger Straße in Richtung Bhf. Heiligenstadt ist verlegt nach: Heiligenstädter Straße gegenüber 90. Die Umleitung dauert voraussichtlich bis Ende November.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
-    "pubDate": "2025-10-01T10:15:00+02:00",
-    "starts_at": "2025-10-01T10:15:00+02:00",
-    "ends_at": "2025-10-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2025-10-01"
+    "guid": "6e2fb62692accd2a17b52ffff6ef2d60193d187426e7b0e5e312b3a10427174b",
+    "pubDate": "2025-10-01T10:50:00+02:00",
+    "starts_at": "2025-10-01T10:50:00+02:00",
+    "ends_at": "2025-11-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=38A|D=2025-10-01"
   },
   {
     "source": "Wiener Linien",
@@ -442,5 +442,29 @@
     "starts_at": "2025-10-01T11:05:00+02:00",
     "ends_at": "2025-10-01T23:55:00+02:00",
     "_identity": "wl|störung|L=U6|D=2025-10-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Rettungseinsatz Betrieb ab Strozzigasse",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 13 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
+    "pubDate": "2025-10-01T11:30:00+02:00",
+    "starts_at": "2025-10-01T11:30:00+02:00",
+    "ends_at": "2025-10-01T23:55:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "38A: Gleisbauarbeiten ab 01.10.2025",
+    "description": "Gleisbauarbeiten\nWegen Gleisbauarbeiten im Bereich Heiligenstädter Straße # Grinzinger Straße müssen die Linien 38 A und N36 umgeleitet werden.\nZeitraum:\n01. Oktober 2025, etwa 09:20 Uhr für voraussichtlich sieben Wochen.\nMaßnahmen:\nLinie 38 A in Richtung Kahlenberg / Leopoldsberg / Wagenwiese\nUmleitung ab Boschstraße # Grinzinger Straße über Boschstraße - Diemgasse - Greinergasse zur Grinzinger Straße.\nDie Haltestelle Grinzinger Straße wurde\nverlegt von: Grinzinger Straße 139-141\nverlegt nach: Greinergasse 1\nLinie 38 A in Richtung Heiligenstadt\nUmleitung ab Grinzinger Straße Höhe Greinergasse direkt zur Heiligenstädter Straße.\nDie Haltestelle Grinzinger Straße wurde\nverlegt von: Heiligenstädter Straße gegenüber 92\nverlegt nach: Heiligenstädter Straße gegenüber 90\nLinie N36 in Richtung Nußdorf\nUmleitung ab Heiligenstädter Straße # Halteraugasse über Halteraugasse - Boschstraße - Diemgasse zur Heiligenstädter Straße.\nDie Haltestelle Grinzinger Straße wird\nverlegt von: Heiligenstädter Straße 92 (Gleiskörper)\nverlegt nach: Boschstraße vor Grinzinger Straße (Haltestelle Kreilplatz der Linien 38 A und 5 B).\nLinie N36 in Richtung Nußdorfer Straße\nUmleitung ab Heiligenstädter Straße # Diemgasse über Diemgasse - Greinergasse - Heiligenstädter Straße\nDie Haltestelle Grinzinger Straße wird\nverlegt von: Heiligenstädter Straße nach Grinzinger Straße (Gleiskörper)\nverlegt nach: Heiligenstädter Straße gegenüber 90\nSkizzen:",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "adefbf9788a1ff933cb9d5438dc36d2040ff4206bb660ab78ef22f596805e97e",
+    "pubDate": "2025-10-01T11:30:00+02:00",
+    "starts_at": "2025-10-01T11:30:00+02:00",
+    "ends_at": "2026-10-01T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=38A|D=2025-10-01"
   }
 ]
