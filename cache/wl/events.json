@@ -434,49 +434,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
+    "title": "59A: Verkehrsüberlastung",
+    "description": "Die Linie 59 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
-    "pubDate": "2025-10-01T07:35:00+02:00",
-    "starts_at": "2025-10-01T07:35:00+02:00",
+    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
+    "pubDate": "2025-10-01T10:05:00+02:00",
+    "starts_at": "2025-10-01T10:05:00+02:00",
     "ends_at": "2025-10-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=43|D=2025-10-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "14A: Verkehrsüberlastung",
-    "description": "Die Linie 14 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich Gudrunstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "00805e247214cfaf545982b4b95007ea8a2466b38c0eaf2e743fa342ce44e36c",
-    "pubDate": "2025-10-01T08:00:00+02:00",
-    "starts_at": "2025-10-01T08:00:00+02:00",
-    "ends_at": "2025-10-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=14A|D=2025-10-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
-    "pubDate": "2025-10-01T08:10:00+02:00",
-    "starts_at": "2025-10-01T08:10:00+02:00",
-    "ends_at": "2025-10-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2025-10-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "69A: Verkehrsunfall",
-    "description": "Die Linie 69 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Unter der Kirche.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0fc85d27689d90831656e0a962f5ee55294a7b1a7fac9f6b82c5a3b2f65b4ae1",
-    "pubDate": "2025-10-01T08:40:00+02:00",
-    "starts_at": "2025-10-01T08:40:00+02:00",
-    "ends_at": "2025-10-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=69A|D=2025-10-01"
+    "_identity": "wl|störung|L=59A|D=2025-10-01"
   }
 ]
