@@ -301,18 +301,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "38A: Gleisbauarbeiten ab 01.10.2025",
-    "description": "Gleisbauarbeiten\nWegen Gleisbauarbeiten im Bereich der Heiligenstädter Straße.\nZeitraum:\nAb Mittwoch, 1. Oktober 2025, auf Dauer von voraussichtlich sieben Wochen\nMaßnahmen:\nLinie N36:\nUmleitung in Richtung Nußdorf\nab Heiligenstädter Straße # Halteraugasse über Halteraugasse - Boschstraße – Diemgasse – Heiligenstädter Straße.\nAufgelassene Haltestelle:\nGRINZINGER STRASSE\nHeiligenstädter Straße 92\nErsatzhaltestelle\nKREILPLATZ\nBoschstraße vor Grinzinger Straße\nUmleitung in Richtung Nußdorfer Straße\nab Heiligenstädter Straße # Diemgasse über Diemgasse – Greinergasse – Heiligenstädter Straße.\nAufgelassene Haltestelle:\nGRINZINGER STRASSE\nHeiligenstädter Straße nach Grinzinger Straße\nErsatzhaltestelle\nGRINZINGER STRASSE\nHeligenstädter Straße vor ONr. 90\nLinie 38 A:\nUmleitung in Richtung Kahlenberg bzw. Leopoldsberg\nab Heiligenstadt S U über die Strecke der Linie 10 A - Barawitzkagasse - Hohe Warte - Grinzinger Straße\nAufgelassene Haltestellen:\nHALTERAUGASSE\nBoschstraße nach Halterausgasse\nKREILPLATZ\nBoschstraße gegenüber 94\nGRINZINGER STRASSE\nHeiligenstädter Straße 139-141\nFERNSPRECHAMT HEILIGENSTADT\nGrinzinger Straße nach 109\nUmleitung in Richtung Bhf. Heiligenstadt S U\nab Grinzinger Straße # Höhe Greinergasse über Heiligenstädter Straße\nAufgelassene Haltestelle:\nGRINZINGER STRASSE\nHeiligenstädter Straße gegenüber ONr. 92\nErsatzhaltestelle\nGRINZINGER STRASSE\nHeiligenstädter Straße gegenüber ONr. 90",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "adefbf9788a1ff933cb9d5438dc36d2040ff4206bb660ab78ef22f596805e97e",
-    "pubDate": "2025-09-24T20:00:00+02:00",
-    "starts_at": "2025-09-24T20:00:00+02:00",
-    "ends_at": "2026-09-30T11:11:00+02:00",
-    "_identity": "wl|hinweis|L=38A|D=2025-09-24"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "40A: Busse halten Währinger Straße 48-50",
     "description": "Bauarbeiten Busse halten Währinger Straße 48-50",
@@ -446,7 +434,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Rettungseinsatz Züge halten bei Linie 9 Richtung Gersthof!",
+    "title": "43: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
@@ -502,5 +490,17 @@
     "starts_at": "2025-10-01T08:10:00+02:00",
     "ends_at": "2025-10-01T23:55:00+02:00",
     "_identity": "wl|störung|L=12A|D=2025-10-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "69A: Verkehrsunfall",
+    "description": "Die Linie 69 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Unter der Kirche.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0fc85d27689d90831656e0a962f5ee55294a7b1a7fac9f6b82c5a3b2f65b4ae1",
+    "pubDate": "2025-10-01T08:40:00+02:00",
+    "starts_at": "2025-10-01T08:40:00+02:00",
+    "ends_at": "2025-10-01T23:55:00+02:00",
+    "_identity": "wl|störung|L=69A|D=2025-10-01"
   }
 ]
