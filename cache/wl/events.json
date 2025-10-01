@@ -490,5 +490,29 @@
     "starts_at": "2025-10-01T15:05:00+02:00",
     "ends_at": "2025-10-01T23:55:00+02:00",
     "_identity": "wl|störung|L=26|D=2025-10-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Tiere im Gleis",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U2 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d508c150afc70829f95e57a120c6d4437e9b7a65cc36b2b364370cc0c2e0691c",
+    "pubDate": "2025-10-01T15:25:00+02:00",
+    "starts_at": "2025-10-01T15:25:00+02:00",
+    "ends_at": "2025-10-01T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2025-10-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "42A: Umleitung im Beriech Kreuzgassenbrücke ab 09.10.25",
+    "description": "Straßenbauarbeiten\nWegen Bauarbeiten auf der Kreuzgassenbrücke muss die Linie 42 A an mehreren Tagen örtlich umgeleitet werden.\nZeiträume:\nDonnerstag, 09. Oktober 2025,\nMontag, 13. Oktober 2025,\nDienstag, 14. Oktober 2025,\njeweils in der Zeit von 20:00 Uhr bis 05:00 Uhr des Folgetages.\nMaßnahmen:\nLinie 42 A\nUmleitung in Richtung Schafberghöhe: Ab Währinger Straße # Simonygasse über Simonygasse - Gentzgasse - Gersthofer Straße - Czartoryskigasse.\nUmleitung in Richtung Hernals: Ab Währinger Straße # Simonygasse über Simonygasse - Gentzgasse - Gersthofer Straße.\nHaltestelle in beiden Richtungen:\nDie Haltestelle Simonygasse (Simonygasse gegenüber 2) wird ersatzlos aufgelassen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8ec0c86a0762262a5d57ef6c556dbc137041bd0667d25fdd35ffc92db7c97ec0",
+    "pubDate": "2025-10-01T15:30:00+02:00",
+    "starts_at": "2025-10-01T15:30:00+02:00",
+    "ends_at": "2025-10-15T05:00:00+02:00",
+    "_identity": "wl|hinweis|L=42A|D=2025-10-01"
   }
 ]
