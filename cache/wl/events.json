@@ -526,5 +526,29 @@
     "starts_at": "2025-10-01T16:00:00+02:00",
     "ends_at": "2025-10-01T23:55:00+02:00",
     "_identity": "wl|störung|L=66A|D=2025-10-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Polizeieinsatz",
+    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
+    "pubDate": "2025-10-01T16:20:00+02:00",
+    "starts_at": "2025-10-01T16:20:00+02:00",
+    "ends_at": "2025-10-01T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2025-10-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Verkehrsüberlastung",
+    "description": "Die Linie 7 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
+    "pubDate": "2025-10-01T16:30:00+02:00",
+    "starts_at": "2025-10-01T16:30:00+02:00",
+    "ends_at": "2025-10-01T23:55:00+02:00",
+    "_identity": "wl|störung|L=7A|D=2025-10-01"
   }
 ]
