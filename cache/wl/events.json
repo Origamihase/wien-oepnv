@@ -469,18 +469,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Gleisschaden",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6",
-    "pubDate": "2025-10-02T05:00:00+02:00",
-    "starts_at": "2025-10-02T05:00:00+02:00",
-    "ends_at": "2025-10-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-10-02"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "60: Wasserrohrgebrechen",
     "description": "Wasserrohrgebrechen\nWegen eines Wasserrohrgebrechens im Bereich der Geßlgasse wird die Linie 60 kurzgeführt.\nZeitraum:\nAb Donnerstag, 2. Oktober Betriebsbeginn, Dauer derzeit unbekannt\nMaßnahmen:\nLinie 60:\nBetrieb nur zwischen Westbahnhof S U und Speising, Hermesstraße und weiter bis Laint.\nErsatzverkehr:\nErsatzbusse fahren zwischen Speising, Hermesstraße und Rodaun.\nDie Busse fahren die selbe Strecke wie die Nachtbuslinie N60!\nHaltestellen des Ersatzverkehrs:\nSPEISING, HERMESSTRASSE\n(Haltestelle Linie 60)\nRIEDELGASSE\n(Haltestelle Linie 60)\nFRANZ-ASENBAUER-GASSE\n(Haltestelle Linie 60)\nMAURER HAUPTPLATZ\n(Haltestelle Linien 56 A, 60 A)\nVALENTINGASSE\n(Maurer Lange Gasse 100-102 bzw. 105-107, Haltestelle Linie N60)\nMAURER BERG\n(Rodauner Str. nach Anton-Krieger-G., Haltestelle Linie N60)\nRUDOLF-WAISENHORN-GASSE\n(Rodauner Straße 45 bzw. ggü. 47, Haltestelle Linie N60)\nRODAUNER STRASSE\n(Rodauner Straße 53, Haltestelle Linie N60)\nWILLERBRÜCKE\n(Willergasse 14, Haltestelle Linie N60)\nWILLERGASSE, SCHULE\n(Willergasse 24, Haltestelle Linie N60)\nRODAUN\n(Ketzergasse 439-443)\nKAISER-FRANZ-JOSEF-STRASSE\n(Haltestelle Linie 60)\nRODAUNBRÜCKE\n(Kaiser-Franz-Josef-Straße 1, Haltestelle Linie N60)\nAN DER LIESING\n(Breitenfurter Straße 426-432, Haltestelle Linie N60)",
@@ -530,13 +518,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Verspätungen",
-    "description": "Die Linie 18 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "71: Fremder Verkehrsunfall",
+    "description": "Die Linie 71 wird derzeit in Richtung Kaiserebersdorf zwischen Schwarzenbergplatz und St. Marx über Quartier Belvedere umgeleitet. Die Störung dauert voraussichtlich bis 08:00 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Rennweg # Oberzellergasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "08245d776c6086aeb34234d104f1c9a7c93bccf3eb8915fc23bc32028143c544",
-    "pubDate": "2025-10-02T05:45:00+02:00",
-    "starts_at": "2025-10-02T05:45:00+02:00",
+    "guid": "358388ed9cce33f9f3e1b29e2cd0946d5c73b2e74dc535752c3c8a6b57b85f25",
+    "pubDate": "2025-10-02T07:05:00+02:00",
+    "starts_at": "2025-10-02T07:05:00+02:00",
     "ends_at": "2025-10-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=18|D=2025-10-02"
+    "_identity": "wl|störung|L=71|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fremdunfall Betrieb ab St. Marx",
+    "description": "Fremdunfall Betrieb ab St. Marx",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bf3bd23886676f32fc137744d204c807016f12e7766569b7c858cbb400aef7c9",
+    "pubDate": "2025-10-02T07:11:09+02:00",
+    "starts_at": "2025-10-02T07:11:09+02:00",
+    "ends_at": "2025-10-02T08:10:00+02:00",
+    "_identity": "wl|störung|L=71|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fremdunfall Umleitung ab Schwarzenbergplatz nach St. Marx über Linien D und 18",
+    "description": "Fremdunfall Umleitung ab Schwarzenbergplatz nach St. Marx über Linien D und 18",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dfe4fd4e5c0cba0b4e46c05f3e00b5c6d881a2a4c7fb2b273c499631d215463f",
+    "pubDate": "2025-10-02T07:11:52+02:00",
+    "starts_at": "2025-10-02T07:11:52+02:00",
+    "ends_at": "2025-10-02T08:10:00+02:00",
+    "_identity": "wl|störung|L=71|D=2025-10-02"
   }
 ]
