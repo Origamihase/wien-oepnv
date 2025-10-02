@@ -494,18 +494,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Gleisschaden Umleitung zum Reumannplatz",
-    "description": "Gleisschaden Umleitung zum Reumannplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
-    "pubDate": "2025-10-02T05:03:39+02:00",
-    "starts_at": "2025-10-02T05:03:39+02:00",
-    "ends_at": "2025-10-02T09:00:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-10-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Fremder Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -542,18 +530,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Rettungseinsatz Einstieg am Lerchenfelder Gürtel",
-    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
-    "pubDate": "2025-10-02T08:12:59+02:00",
-    "starts_at": "2025-10-02T08:30:00+02:00",
-    "ends_at": "2025-10-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Rettungseinsatz",
     "description": "Die Linie 12 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Josefstädter Straße U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -562,5 +538,29 @@
     "starts_at": "2025-10-02T08:15:00+02:00",
     "ends_at": "2025-10-02T23:55:00+02:00",
     "_identity": "wl|störung|L=12|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Rettungseinsatz Betrieb ab Albertgasse",
+    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
+    "pubDate": "2025-10-02T08:21:05+02:00",
+    "starts_at": "2025-10-02T08:30:00+02:00",
+    "ends_at": "2025-10-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=2|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 42 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2025-10-02T08:45:00+02:00",
+    "starts_at": "2025-10-02T08:45:00+02:00",
+    "ends_at": "2025-10-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=42|D=2025-10-02"
   }
 ]
