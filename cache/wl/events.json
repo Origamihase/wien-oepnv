@@ -411,7 +411,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "60: Wasserrohrgebrechen",
-    "description": "Die Linie 60 fährt derzeit nur zwischen Westbahnhof und Hofwiesengasse. Ein Ersatzverkehr mit Bussen zwischen Speising, Hermesstraße und Rodaun wurde eingerichtet. Die Ersatzbusse halten die Haltestellen der Nachtbuslinie N60 ein. Weichen Sie auch auf die Linien 56 A, 56 B und 60 A aus. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein Wasserrohrgebrechen im Bereich Geßlgasse.",
+    "description": "Die Linie 60 fährt derzeit nur zwischen Westbahnhof und Speising, Hermesstraße. Ein Ersatzverkehr mit Bussen zwischen Speising, Hermesstraße und Rodaun wurde eingerichtet. Die Ersatzbusse halten die Haltestellen der Nachtbuslinie N60 ein. Weichen Sie auch auf die Linien 56 A, 56 B und 60 A aus. Grund dafür ist ein Wasserrohrgebrechen im Bereich Geßlgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8007dab35faafcbbaa056633ba0e5b8f30a7f93c32e3fd39571eb91cf0eb79a4",
     "pubDate": "2025-10-02T04:35:00+02:00",
@@ -478,6 +478,18 @@
     "starts_at": "2025-10-02T05:00:00+02:00",
     "ends_at": "2025-10-02T23:55:00+02:00",
     "_identity": "wl|störung|L=1|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "60: Wasserrohrgebrechen",
+    "description": "Wasserrohrgebrechen\nWegen eines Wasserrohrgebrechens im Bereich der Geßlgasse wird die Linie 60 kurzgeführt.\nZeitraum:\nAb Donnerstag, 2. Oktober Betriebsbeginn, Dauer derzeit unbekannt\nMaßnahmen:\nLinie 60:\nBetrieb nur zwischen Westbahnhof S U und Speising, Hermesstraße und weiter bis Laint.\nErsatzverkehr:\nErsatzbusse fahren zwischen Speising, Hermesstraße und Rodaun.\nDie Busse fahren die selbe Strecke wie die Nachtbuslinie N60!\nHaltestellen des Ersatzverkehrs:\nSPEISING, HERMESSTRASSE\n(Haltestelle Linie 60)\nRIEDELGASSE\n(Haltestelle Linie 60)\nFRANZ-ASENBAUER-GASSE\n(Haltestelle Linie 60)\nMAURER HAUPTPLATZ\n(Haltestelle Linien 56 A, 60 A)\nVALENTINGASSE\n(Maurer Lange Gasse 100-102 bzw. 105-107, Haltestelle Linie N60)\nMAURER BERG\n(Rodauner Str. nach Anton-Krieger-G., Haltestelle Linie N60)\nRUDOLF-WAISENHORN-GASSE\n(Rodauner Straße 45 bzw. ggü. 47, Haltestelle Linie N60)\nRODAUNER STRASSE\n(Rodauner Straße 53, Haltestelle Linie N60)\nWILLERBRÜCKE\n(Willergasse 14, Haltestelle Linie N60)\nWILLERGASSE, SCHULE\n(Willergasse 24, Haltestelle Linie N60)\nRODAUN\n(Ketzergasse 439-443)\nKAISER-FRANZ-JOSEF-STRASSE\n(Haltestelle Linie 60)\nRODAUNBRÜCKE\n(Kaiser-Franz-Josef-Straße 1, Haltestelle Linie N60)\nAN DER LIESING\n(Breitenfurter Straße 426-432, Haltestelle Linie N60)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4564cf02e36e56c877e30d08f8c0385af1eb5ed7cde43b0e0923775272734b9",
+    "pubDate": "2025-10-02T05:00:00+02:00",
+    "starts_at": "2025-10-02T05:00:00+02:00",
+    "ends_at": "2025-10-02T23:59:00+02:00",
+    "_identity": "wl|hinweis|L=60|D=2025-10-02"
   },
   {
     "source": "Wiener Linien",
