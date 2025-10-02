@@ -243,12 +243,12 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "12A: Schanzstraße",
-    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Schanzstraße wird die Linie 12 A umgeleitet.\nZeitraum:\nAb Montag, 29. September 2025, etwa 08:00 Uhr auf Dauer von ewta zwei Wochen\nMaßnahmen:\nLinie 12 A in Richtung Schmelz, Gablenzgasse\nUmleitung ab Schanzstraße # Matthias-Schönerer-Gasse über Matthias-Schönerer-Gasse – Tautenhayngasse – Minciostraße.\nHaltestellen:\nAKKONPLATZ\nSchanzstraße 30-32\nErsatz- und provisorische Haltestellen:\nAKKONPLATZ\nTautenhayngasse 20",
+    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Schanzstraße wird die Linie 12 A umgeleitet.\nZeitraum:\nAb Montag, 29. September 2025, etwa 08:00 Uhr bis 04. Oktober 2025, etwa 09:00 Uhr\nMaßnahmen:\nLinie 12 A in Richtung Schmelz, Gablenzgasse\nUmleitung ab Schanzstraße # Matthias-Schönerer-Gasse über Matthias-Schönerer-Gasse – Tautenhayngasse – Minciostraße.\nHaltestellen:\nAKKONPLATZ\nSchanzstraße 30-32\nErsatz- und provisorische Haltestellen:\nAKKONPLATZ\nTautenhayngasse 20",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "054740dedd408c1792b5ede92f17729e78ba6449557272a5359ebb8df6bdf13f",
     "pubDate": "2025-09-19T12:15:00+02:00",
     "starts_at": "2025-09-19T12:15:00+02:00",
-    "ends_at": "2026-09-19T11:11:00+02:00",
+    "ends_at": "2025-10-04T09:00:00+02:00",
     "_identity": "wl|hinweis|L=12A|D=2025-09-19"
   },
   {
@@ -506,18 +506,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40A: Verspätungen",
-    "description": "Die Linie 40 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "11aa33c68f3b235c869f74bc1c41192a0d48a3b681bedab9ef96a1e7b5d4a0d8",
-    "pubDate": "2025-10-02T09:45:00+02:00",
-    "starts_at": "2025-10-02T09:45:00+02:00",
-    "ends_at": "2025-10-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=40A|D=2025-10-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10A: Verspätungen",
     "description": "Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -531,12 +519,48 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "9: Rettungseinsatz Betrieb ab Vinzenzgasse",
-    "description": "Die Linie 9 fährt derzeit nur zwischen Westbahnhof und Antonigasse. Die Störung dauert voraussichtlich bis 10:45 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Simonygasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
     "pubDate": "2025-10-02T10:15:00+02:00",
     "starts_at": "2025-10-02T10:15:00+02:00",
     "ends_at": "2025-10-02T23:55:00+02:00",
     "_identity": "wl|störung|L=9|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f",
+    "pubDate": "2025-10-02T10:20:00+02:00",
+    "starts_at": "2025-10-02T10:20:00+02:00",
+    "ends_at": "2025-10-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=40A|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Rettungseinsatz",
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Kagraner Platz und Kagran in beiden Richtungen über Gleis 2. Die Störung dauert voraussichtlich bis 10:50 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Kagran.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
+    "pubDate": "2025-10-02T10:20:00+02:00",
+    "starts_at": "2025-10-02T10:20:00+02:00",
+    "ends_at": "2025-10-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2138817ce7dee6c1ab9ec27b0e566a638feb7edc33c7812f5c58764e8b4aa7bc",
+    "pubDate": "2025-10-02T10:26:40+02:00",
+    "starts_at": "2025-10-02T10:26:40+02:00",
+    "ends_at": "2025-10-02T11:30:00+02:00",
+    "_identity": "wl|störung|L=40A|D=2025-10-02"
   }
 ]
