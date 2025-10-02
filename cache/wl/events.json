@@ -555,7 +555,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U1: Feuerwehreinsatz",
-    "description": "Die Linie U1 fährt derzeit nicht zwischen Stephansplatz und Donauinsel. Ersatzweise benützen Sie bitte die Linie U2, U3, U4, 25, 26, 5 A, 26 A sowie die S-Bahn Die Störung dauert voraussichtlich bis 19:00 Uhr. Grund dafür ist ein Feuerwehreinsatz im Bereich Praterstern.",
+    "description": "Die Linie U1 fährt derzeit nicht zwischen Stephansplatz und Donauinsel. Ersatzweise benützen Sie bitte die Linie U2, U3, U4, O, 25, 26, 5 A, 26 A sowie die S-Bahn Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein Feuerwehreinsatz im Bereich Praterstern.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "3e8dcb89490f474fe916c72c3536a6cefaf6a6d645b1d00dfac85cedc718d02b",
     "pubDate": "2025-10-02T17:40:00+02:00",
@@ -590,66 +590,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Feuerwehreinsatz Betrieb ab Nordbahnstraße",
-    "description": "Feuerwehreinsatz Betrieb ab Nordbahnstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cfb1309c2760671aa6d3b1073c6ee433b493344bb2c1a44bb0d428df336778e0",
-    "pubDate": "2025-10-02T18:06:15+02:00",
-    "starts_at": "2025-10-02T18:06:15+02:00",
-    "ends_at": "2025-10-02T19:05:00+02:00",
-    "_identity": "wl|störung|L=5|D=2025-10-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Feuerwehreinsatz Züge halten bei Linie O Richtung Prater",
-    "description": "Feuerwehreinsatz Züge halten bei Linie O Richtung Prater",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4f815b816f2a6d7edd20d9ba704c6551a81506c77e2a7689b4029d22249ab848",
-    "pubDate": "2025-10-02T18:07:13+02:00",
-    "starts_at": "2025-10-02T18:07:13+02:00",
-    "ends_at": "2025-10-02T19:06:00+02:00",
-    "_identity": "wl|störung|L=5|D=2025-10-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Feuerwehreinsatz Betrieb ab Hintere Zollamtsstraße",
-    "description": "Feuerwehreinsatz Betrieb ab Hintere Zollamtsstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f55b2ac5168f96f525299eb8ca254625402e6005f91f18233ae78dfebf210d13",
-    "pubDate": "2025-10-02T18:07:58+02:00",
-    "starts_at": "2025-10-02T18:07:58+02:00",
-    "ends_at": "2025-10-02T19:07:00+02:00",
-    "_identity": "wl|störung|L=O|D=2025-10-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "817562aa4abf4a2ae71dbf2855aa218d5ad9ff8d87863a4132d70b6dcc28ecef",
-    "pubDate": "2025-10-02T18:08:27+02:00",
-    "starts_at": "2025-10-02T18:08:27+02:00",
-    "ends_at": "2025-10-02T19:07:00+02:00",
-    "_identity": "wl|störung|L=O|D=2025-10-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Feuerwehreinsatz Betrieb nur bis Hintere Zollamtsstraße",
-    "description": "Feuerwehreinsatz Betrieb nur bis Hintere Zollamtsstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d071adea86f82a472a63af6a4842f7e07bb359350d691386d077fb5d24c82764",
-    "pubDate": "2025-10-02T18:09:07+02:00",
-    "starts_at": "2025-10-02T18:09:07+02:00",
-    "ends_at": "2025-10-02T19:08:00+02:00",
-    "_identity": "wl|störung|L=O|D=2025-10-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5: Feuerwehreinsatz Betrieb nur bis Nordbahnstraße",
     "description": "Feuerwehreinsatz Betrieb nur bis Nordbahnstraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -658,5 +598,17 @@
     "starts_at": "2025-10-02T18:10:09+02:00",
     "ends_at": "2025-10-02T19:09:00+02:00",
     "_identity": "wl|störung|L=5|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 9 ist derzeit in Richtung Westbahnhof an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 19:20 Uhr. Grund dafür ist ein Falschparker im Bereich Hormayrgasse .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2025-10-02T19:00:00+02:00",
+    "starts_at": "2025-10-02T19:00:00+02:00",
+    "ends_at": "2025-10-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2025-10-02"
   }
 ]
