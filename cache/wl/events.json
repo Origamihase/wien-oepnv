@@ -542,18 +542,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "WLB: Verkehrsunfall",
-    "description": "Die Badner Bahn ist derzeit in Richtung Oper, Karlsplatz an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 12:15 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Wiedner Hauptstraße 15.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8aad1a058a9cf53651f22f7ae70469136496ce8577ed241e07c46f5c5699b4b1",
-    "pubDate": "2025-10-02T11:50:00+02:00",
-    "starts_at": "2025-10-02T11:50:00+02:00",
-    "ends_at": "2025-10-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=WLB|D=2025-10-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -610,5 +598,17 @@
     "starts_at": "2025-10-02T12:00:18+02:00",
     "ends_at": "2025-10-02T12:59:00+02:00",
     "_identity": "wl|störung|L=|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "16A: Rettungseinsatz",
+    "description": "Die Linie 16 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5a34fd9d1d85761937e73cc1505db5c332e3d5fe85c5450ebb4c6466c12885ea",
+    "pubDate": "2025-10-02T12:15:00+02:00",
+    "starts_at": "2025-10-02T12:15:00+02:00",
+    "ends_at": "2025-10-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=16A|D=2025-10-02"
   }
 ]
