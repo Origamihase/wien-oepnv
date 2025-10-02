@@ -386,18 +386,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N38: Busse halten bei Liechtensteinstr. 50",
-    "description": "Bauarbeiten Busse halten bei Liechtensteinstr. 50",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "739cc5e9096d6373cf06f791f142fe6c98cac1445fc5363723feece7bbff56c2",
-    "pubDate": "2025-10-02T01:20:01+02:00",
-    "starts_at": "2025-10-02T01:20:01+02:00",
-    "ends_at": "2025-10-02T05:05:00+02:00",
-    "_identity": "wl|störung|L=N38|D=2025-10-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "60: Wasserrohrbruch Ersatzverkehr ab Speising, Hermesstraße",
     "description": "Wasserrohrbruch Ersatzverkehr ab Speising, Hermesstraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -454,5 +442,77 @@
     "starts_at": "2025-10-02T04:36:09+02:00",
     "ends_at": "2025-10-02T23:45:00+02:00",
     "_identity": "wl|störung|L=60|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62A: Busse halten Breitenfurter Straße 236-238",
+    "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3",
+    "pubDate": "2025-10-02T04:45:15+02:00",
+    "starts_at": "2025-10-02T04:45:15+02:00",
+    "ends_at": "2025-10-03T00:35:00+02:00",
+    "_identity": "wl|störung|L=62A|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Züge halten Alszeile 126",
+    "description": "Bauarbeiten Züge halten Alszeile 126",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
+    "pubDate": "2025-10-02T04:45:23+02:00",
+    "starts_at": "2025-10-02T04:45:23+02:00",
+    "ends_at": "2025-10-03T00:00:00+02:00",
+    "_identity": "wl|störung|L=43|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Gleisschaden",
+    "description": "Die Linie 1 fährt derzeit nur zwischen Prater Hauptallee und Knöllgasse und weiter zum Reumannplatz. Weichen Sie ersatzweise auf die Linien O, 11, 7 A und 15 A aus. Die Störung dauert voraussichtlich bis 06:00 Uhr. Grund dafür ist ein Gleisschaden im Bereich Knöllgasse # Franz-Schuh-Gasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6",
+    "pubDate": "2025-10-02T05:00:00+02:00",
+    "starts_at": "2025-10-02T05:00:00+02:00",
+    "ends_at": "2025-10-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Gleisschaden Betrieb ab Knöllgasse",
+    "description": "Gleisschaden Betrieb ab Knöllgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c17ed37d4345167b3c6523f076e4bc04099d50e6bf9199b63801aa7632576d03",
+    "pubDate": "2025-10-02T05:03:08+02:00",
+    "starts_at": "2025-10-02T05:03:08+02:00",
+    "ends_at": "2025-10-02T08:30:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Gleisschaden Kein Betrieb",
+    "description": "Gleisschaden Kein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "39ca7263aa38ffe55d886a5fb7d7bbade2252ac30fe91ed364b55322ed0d35a6",
+    "pubDate": "2025-10-02T05:03:37+02:00",
+    "starts_at": "2025-10-02T05:03:37+02:00",
+    "ends_at": "2025-10-02T09:30:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Gleisschaden Umleitung zum Reumannplatz",
+    "description": "Gleisschaden Umleitung zum Reumannplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
+    "pubDate": "2025-10-02T05:03:39+02:00",
+    "starts_at": "2025-10-02T05:03:39+02:00",
+    "ends_at": "2025-10-02T09:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-10-02"
   }
 ]
