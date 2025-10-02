@@ -506,18 +506,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f36bfd0bb4774d14d71eac6889b393ad5dd3511aecc7a72a6d56cbd25c43546f",
-    "pubDate": "2025-10-02T15:21:15+02:00",
-    "starts_at": "2025-10-02T15:21:15+02:00",
-    "ends_at": "2025-10-02T16:25:00+02:00",
-    "_identity": "wl|störung|L=26|D=2025-10-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "34A: Polizeieinsatz",
     "description": "Die Linie 34 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -538,5 +526,41 @@
     "starts_at": "2025-10-02T15:55:00+02:00",
     "ends_at": "2025-10-02T23:55:00+02:00",
     "_identity": "wl|störung|L=U1|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Feuerwehreinsatz",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Westbahnhof und Schweglerstraße in beiden Richtungen über Gleis 1. Die Störung dauert voraussichtlich bis 16:50 Uhr. Grund dafür ist ein Feuerwehreinsatz im Bereich Westbahnhof.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6f575cf23d077697c67aa447be9d766ebe1fe3bb28281ff1b5ae9b6d0ed1f39e",
+    "pubDate": "2025-10-02T16:20:00+02:00",
+    "starts_at": "2025-10-02T16:20:00+02:00",
+    "ends_at": "2025-10-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Verkehrsunfall",
+    "description": "Die Linie 10 ist derzeit in Richtung Unter St. Veit an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 16:55 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Dommayergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "61b24b179dc99eec46268642e5c4452102c4449a15d1457fb096c76204442f5f",
+    "pubDate": "2025-10-02T16:30:00+02:00",
+    "starts_at": "2025-10-02T16:30:00+02:00",
+    "ends_at": "2025-10-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=10|D=2025-10-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7091f5ceb189603887edeb672707027ab0765bd9fd7a0fa2d67f934f96a2ae34",
+    "pubDate": "2025-10-02T16:34:09+02:00",
+    "starts_at": "2025-10-02T16:34:09+02:00",
+    "ends_at": "2025-10-02T17:33:00+02:00",
+    "_identity": "wl|störung|L=10|D=2025-10-02"
   }
 ]
