@@ -85,30 +85,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "77A: Gleisbauarbeiten",
-    "description": "Die Linie 77 A wird in beiden Richtungen zwischen Ludwig-Koeßler-Platz und Donaumarina über die Südosttangente A23 umgeleitet. Das Stadion erreichen Sie mit der U2. Die Bauarbeiten dauern bis Herbst 2026. Grund dafür sind Gleisbauarbeiten im Bereich Stadionallee und Meiereistraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3dcf0210270641b46748f117a05cae54687efe642e0a4fa99f7baa012c5385a0",
-    "pubDate": "2025-06-11T12:10:00+02:00",
-    "starts_at": "2025-06-11T12:10:00+02:00",
-    "ends_at": "2026-09-05T01:00:00+02:00",
-    "_identity": "wl|störung|L=77A|D=2025-06-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "77A: Bauarbeiten, Umleitung über A23",
-    "description": "Bauarbeiten\nWegen großräumigen Bauarbeiten wird die Linie 77 A umgeleitet.\nUpdate (25.06.2025)!\nÜber die Sommermonate kommt es zu einer geänderten Umleitung.\nZeitraum:\nAb Samstag, 28. Juni 2025, bis inklusive 21. September 2025.\nMaßnahmen:\nLinie 77 A in Richtung Lusthaus\nUmleitung in Richtung Lusthaus zwischen Ludwig-Koeßler-Platz und Donaumarina über die A23.\nDie Haltestellen Stadionbrücke, Klaschkaweg, Stadionbad, Pierre-de-Coubertin-Platz, Ernst-Happel-Stadion, Stadion U und Marathonweg können dadurch nicht eingehalten werden.\nDie Haltestelle STADION U ist über die U2 von der Haltestelle Donaumarina U erreichbar.\nLinie 77 A in Richtung Rennweg\nIn Richtung Rennweg wird über die normale Route gefahren (Wehlistraße - Marathonweg - Stephanie-Endres-Straße - Olympiaplatz - Meiereistraße - Stadionallee)\nDie Haltestellen Ernst-Happel-Stadion, Pierre-de-Coubertin-Platz und Stadionbad können baustellenbedingt nicht eingehalten werden.\nFür die Haltestelle Stadionbad wird eine Ersatzhaltestelle errichtet (Meiereistraße vor Hauptallee).\nFür die Verkehrsmaßnahmen bis 27. Juni 2025 und ab 22. September 2025 siehe weiter unten.\nSkizze:\nZeitraum:\nDienstag 10. Juni 2025 bis Freitag, 27. Juni 2025 und ab Montag, 22. September 2025 auf Dauer von etwa einem Jahr.\nMaßnahmen:\nLinie 77 A\nUmleitung in beiden Richtungen zwischen Ludwig-Koeßler-Platz und Donaumarina über die A23.\nDie Haltestellen Stadionbrücke, Klaschkaweg, Stadionbad, Pierre-de-Coubertin-Platz, Ernst-Happel-Stadion, Stadion U und Marathonweg können dadurch nicht eingehalten werden.\nDie Haltestelle STADION U ist über die U2 von der Haltestelle DONAUMARINA U erreichbar.\nSkizze:",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d1297817ee10718651d484a8940d921a33ea574775f089682c8b7548d336d46d",
-    "pubDate": "2025-06-25T00:00:00+02:00",
-    "starts_at": "2025-06-25T00:00:00+02:00",
-    "ends_at": "2025-10-03T22:00:00+02:00",
-    "_identity": "wl|hinweis|L=77A|D=2025-06-25"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "2A: Bauarbeiten Renngasse ab 14.07.2025",
     "description": "Bauarbeiten\nWegen Rohrlegungsarbeiten in der Renngasse wir die Linie 2 A umgeleitet.\nZeitraum:\nMontag, 14. Juli 2025, 06:30 Uhr bis voraussichtlich Ende November 2025.\nMaßnahmen:\nLinie 2 A Richtung Schwarzenbergplatz\nUmleitung ab Renngasse # Wipplingerstraße über Wipplingerstraße - Helferstorferstraße - Schottengasse - Freyung.\nHaltestelle Renngasse\nVerlegt von: Renngasse 9\nVerlegt nach: Wipplingerstraße 30",
@@ -478,5 +454,17 @@
     "starts_at": "2025-10-03T13:00:00+02:00",
     "ends_at": "2026-10-03T11:11:00+02:00",
     "_identity": "wl|hinweis|L=22A,95A,95B|D=2025-10-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "77A: Bauarbeiten",
+    "description": "Die Linie 77 A wird in beiden Richtungen zwischen Ludwig-Koeßler-Platz und Donaumarina U über A4, Simmeringer Haide, 11. Haidequerstraße, Seitenhafenstraße, Hafenzufahrtsstraße und Handelskai umgeleitet. Die Störung dauert voraussichtlich bis 06.10.2025 ca. 05:00 Uhr. Grund dafür sind Bauarbeiten im Bereich Handelskai.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1280828ac20f9a0ec3bf7b6337ca6a57e3a911c71a410e6e18804f04166fb080",
+    "pubDate": "2025-10-03T21:50:00+02:00",
+    "starts_at": "2025-10-03T21:50:00+02:00",
+    "ends_at": "2025-10-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=77A|D=2025-10-03"
   }
 ]
