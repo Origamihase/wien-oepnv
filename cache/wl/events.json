@@ -253,18 +253,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "76A/76B: Simmeringer Straßenfest am 04.10.2025",
-    "description": "Veranstaltung\nWegen Abhaltung des Festes in der Simmeringer Haupstraße werden die Busse der Linien 76 A und 76 B umgeleitet.\nZeitraum:\nSamstag, 04. Oktober 2025, etwa 07:00 Uhr bis 21:00 Uhr\nMaßnahmen:\n76 A und 76 B in Richtung Albern\nUmleitung ab Mautner-Markhof-Gasse # Krausegasse über Krausegasse - Rappachgasse.\nAufgelassene Haltestellen:\n- Enjkplatz U, Grillgasse\n- Hauffgasse\n- Simoningplatz (FR Alberner Hafen)\n- Rappachgasse (FR Alberner Hafen)\nErsatz:\nBenutzen Sie bitte die Haltestelle Krausegasse in der Mautner-Markhof-Gasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dbefb1315347a0399739ccd7ac96be91e2e7052bdc0cba26527ec23d3388ca57",
-    "pubDate": "2025-09-30T15:30:00+02:00",
-    "starts_at": "2025-09-30T15:30:00+02:00",
-    "ends_at": "2025-10-04T21:30:00+02:00",
-    "_identity": "wl|hinweis|L=76A,76B|D=2025-09-30"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "38A: Gleisbauarbeiten",
     "description": "Die Linie 38 A wird im Bereich Grinzinger Straße # Heiligenstädter Straße lokal umgeleitet. Die Haltestelle Grinzinger Straße in Richtung Leopoldsberg ist verlegt nach: Greinergasse 1. Die Haltestelle Grinzinger Straße in Richtung Bhf. Heiligenstadt ist verlegt nach: Heiligenstädter Straße gegenüber 90. Die Umleitung dauert voraussichtlich bis Ende November.",
@@ -418,5 +406,17 @@
     "starts_at": "2025-10-04T19:00:00+02:00",
     "ends_at": "2025-10-04T23:55:00+02:00",
     "_identity": "wl|störung|L=71|D=2025-10-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "28A: Verunreinigung",
+    "description": "Die Linie 28 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "705ba1a21f7e3f2813eb01e3741547602dacf07f89a503f6ec168531589aa374",
+    "pubDate": "2025-10-04T19:30:00+02:00",
+    "starts_at": "2025-10-04T19:30:00+02:00",
+    "ends_at": "2025-10-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=28A|D=2025-10-04"
   }
 ]
