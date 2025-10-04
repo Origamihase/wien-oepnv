@@ -326,42 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40A: Busse halten Währinger Straße 48-50",
-    "description": "Bauarbeiten Busse halten Währinger Straße 48-50",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2664a84bd7bb35a6f0aba982e3c561700607eccff2b9b90413246f273c30c1cd",
-    "pubDate": "2025-10-04T00:00:16+02:00",
-    "starts_at": "2025-10-04T00:00:16+02:00",
-    "ends_at": "2025-10-04T23:59:59+02:00",
-    "_identity": "wl|störung|L=40A|D=2025-10-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Betrieb ab St. Marx",
-    "description": "Gleisbauarbeiten Betrieb ab St. Marx",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
-    "pubDate": "2025-10-04T00:00:21+02:00",
-    "starts_at": "2025-10-04T00:00:21+02:00",
-    "ends_at": "2025-10-04T23:59:59+02:00",
-    "_identity": "wl|störung|L=18|D=2025-10-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N38: Busse halten bei Liechtensteinstr. 68-72",
-    "description": "Bauarbeiten Busse halten bei Liechtensteinstr. 68-72",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a6a987a32b38d85f3d0dcaceba01b7e03ecd4a1b44249076de8bb39e7c3f35b",
-    "pubDate": "2025-10-04T00:00:23+02:00",
-    "starts_at": "2025-10-04T00:00:23+02:00",
-    "ends_at": "2025-10-04T23:59:59+02:00",
-    "_identity": "wl|störung|L=N38|D=2025-10-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -378,9 +342,45 @@
     "description": "Fahrplanaushang bitte beachten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "32f2e4c360590a948d4fe9388e37ff1b8ca9838198b94a8c736304132a6fb68b",
-    "pubDate": "2025-10-04T20:46:54+02:00",
-    "starts_at": "2025-10-04T20:46:54+02:00",
-    "ends_at": "2025-10-04T23:59:59+02:00",
-    "_identity": "wl|störung|L=48A|D=2025-10-04"
+    "pubDate": "2025-10-05T00:00:03+02:00",
+    "starts_at": "2025-10-05T00:00:03+02:00",
+    "ends_at": "2025-10-05T00:32:00+02:00",
+    "_identity": "wl|störung|L=48A|D=2025-10-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Busse halten Währinger Straße 48-50",
+    "description": "Bauarbeiten Busse halten Währinger Straße 48-50",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2664a84bd7bb35a6f0aba982e3c561700607eccff2b9b90413246f273c30c1cd",
+    "pubDate": "2025-10-05T00:00:09+02:00",
+    "starts_at": "2025-10-05T00:00:09+02:00",
+    "ends_at": "2025-10-05T23:59:59+02:00",
+    "_identity": "wl|störung|L=40A|D=2025-10-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Betrieb ab St. Marx",
+    "description": "Gleisbauarbeiten Betrieb ab St. Marx",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
+    "pubDate": "2025-10-05T00:00:10+02:00",
+    "starts_at": "2025-10-05T00:00:10+02:00",
+    "ends_at": "2025-10-05T23:59:59+02:00",
+    "_identity": "wl|störung|L=18|D=2025-10-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N38: Busse halten bei Liechtensteinstr. 68-72",
+    "description": "Bauarbeiten Busse halten bei Liechtensteinstr. 68-72",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0a6a987a32b38d85f3d0dcaceba01b7e03ecd4a1b44249076de8bb39e7c3f35b",
+    "pubDate": "2025-10-05T00:00:24+02:00",
+    "starts_at": "2025-10-05T00:00:24+02:00",
+    "ends_at": "2025-10-05T23:59:59+02:00",
+    "_identity": "wl|störung|L=N38|D=2025-10-05"
   }
 ]
