@@ -398,30 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38A: Laufveranstaltung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 38 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6edaaa92195a49eea250b7c56a4f8be3919277bf4227929398f2fee4e8ee7cbc",
-    "pubDate": "2025-10-04T13:39:00+02:00",
-    "starts_at": "2025-10-04T13:39:00+02:00",
-    "ends_at": "2025-10-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=38A|D=2025-10-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43A: Laufveranstaltung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f0354837448d616fd3e1cd701cc61a39f1e39a5a9f750840c06b26791ae33501",
-    "pubDate": "2025-10-04T13:39:00+02:00",
-    "starts_at": "2025-10-04T13:39:00+02:00",
-    "ends_at": "2025-10-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=43A|D=2025-10-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "59A: Demonstration",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 59 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -494,18 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A: Demonstration",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 4 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eb0fb71756eee130ba68f797fd74a8628435176e9a9290528f6cc6ec7806d48b",
-    "pubDate": "2025-10-04T13:50:00+02:00",
-    "starts_at": "2025-10-04T13:50:00+02:00",
-    "ends_at": "2025-10-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=4A|D=2025-10-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Demonstration In Richtung Prater: Umstieg am Schwedenplatz notwendig",
     "description": "Demonstration In Richtung Prater: Umstieg am Schwedenplatz notwendig",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -566,10 +530,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Demonstration Züge Richtung Dornbach halten vor dem Parlament",
-    "description": "Demonstration Züge Richtung Dornbach halten vor dem Parlament",
+    "title": "2: Demonstration Betrieb ab Ring, Volkstheater",
+    "description": "Demonstration Betrieb ab Ring, Volkstheater",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1c9e52570b7605bb9623350ea4a97356638ba7ee185fac9688e7230e9889c088",
+    "guid": "56efdee6d024abacd36240318e62e642b355c434d845f56aebdd91507e6d33a1",
     "pubDate": "2025-10-04T13:54:51+02:00",
     "starts_at": "2025-10-04T13:54:51+02:00",
     "ends_at": "2025-10-04T17:00:00+02:00",
@@ -578,10 +542,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Demonstration Betrieb ab Ring, Volkstheater",
-    "description": "Demonstration Betrieb ab Ring, Volkstheater",
+    "title": "2: Demonstration Züge Richtung Dornbach halten vor dem Parlament",
+    "description": "Demonstration Züge Richtung Dornbach halten vor dem Parlament",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "56efdee6d024abacd36240318e62e642b355c434d845f56aebdd91507e6d33a1",
+    "guid": "1c9e52570b7605bb9623350ea4a97356638ba7ee185fac9688e7230e9889c088",
     "pubDate": "2025-10-04T13:54:51+02:00",
     "starts_at": "2025-10-04T13:54:51+02:00",
     "ends_at": "2025-10-04T17:00:00+02:00",
@@ -826,17 +790,5 @@
     "starts_at": "2025-10-04T14:41:40+02:00",
     "ends_at": "2025-10-04T17:00:00+02:00",
     "_identity": "wl|störung|L=59A|D=2025-10-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 25 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a366c32c65098559124d9098d458131cf3e677c92ae8069e81b721bb4295db1a",
-    "pubDate": "2025-10-04T15:10:00+02:00",
-    "starts_at": "2025-10-04T15:10:00+02:00",
-    "ends_at": "2025-10-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=25|D=2025-10-04"
   }
 ]
