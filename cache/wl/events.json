@@ -482,18 +482,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Demonstration Betrieb ab Schwedenplatz",
-    "description": "Demonstration Betrieb ab Schwedenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "99497f667984c242f0b49239bc0bc529d80e10510e894e37c252b75583a4b7d3",
-    "pubDate": "2025-10-04T13:54:51+02:00",
-    "starts_at": "2025-10-04T13:54:51+02:00",
-    "ends_at": "2025-10-04T17:00:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Demonstration Betrieb ab Ring, Volkstheater",
     "description": "Demonstration Betrieb ab Ring, Volkstheater",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -522,6 +510,18 @@
     "description": "Demonstration Züge halten gegenüber (Innenring)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "026856b2b2954c0152fc61869649162867695ca52534d32ec9479fcf27eb3756",
+    "pubDate": "2025-10-04T13:54:51+02:00",
+    "starts_at": "2025-10-04T13:54:51+02:00",
+    "ends_at": "2025-10-04T17:00:00+02:00",
+    "_identity": "wl|störung|L=2|D=2025-10-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Demonstration Betrieb ab Schwedenplatz",
+    "description": "Demonstration Betrieb ab Schwedenplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "99497f667984c242f0b49239bc0bc529d80e10510e894e37c252b75583a4b7d3",
     "pubDate": "2025-10-04T13:54:51+02:00",
     "starts_at": "2025-10-04T13:54:51+02:00",
     "ends_at": "2025-10-04T17:00:00+02:00",
@@ -729,18 +729,6 @@
     "pubDate": "2025-10-04T14:30:00+02:00",
     "starts_at": "2025-10-04T14:30:00+02:00",
     "ends_at": "2025-10-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=74A|D=2025-10-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "74A: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung wegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8dc56d928161cbfd19b6981843708a0098d27b8e8248529260befbf1bff03a63",
-    "pubDate": "2025-10-04T14:32:07+02:00",
-    "starts_at": "2025-10-04T14:32:07+02:00",
-    "ends_at": "2025-10-04T15:31:00+02:00",
     "_identity": "wl|störung|L=74A|D=2025-10-04"
   },
   {
