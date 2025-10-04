@@ -230,18 +230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "38A/43A: Höhenstraßenlauf am 04.10.2025",
-    "description": "Laufveranstaltung\nWegen dem Höhenstraßenlauf im Bereich der Höhenstraße kommt es zu Verkehrsmaßnahmen.\nZeitraum:\nSamstag, 04. Oktober 2025, zwischen 13:30 Uhr und etwa 16:30 Uhr.\nMaßnahmen:\nLinie 38 A\nBetrieb nur zwischen Heiligenstadt S U und Wagenwiese möglich.\nLinie 43 A\nBetrieb nur zwischen Neuwaldegg und Keylwerthgasse möglich.\nUmleitung in Richtung Neuwaldegg ab Höhenstraße # Keylwerthgasse über Höhenstraße - Sommerhaidenweg.\nWeiteres:\nBeachten Sie unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf www.wienerlinien.at.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6a0a3d89697f668b0da9ff9a629db51dafa033ffe1e10831eb46b1bc4b964c82",
-    "pubDate": "2025-09-24T09:30:00+02:00",
-    "starts_at": "2025-09-24T09:30:00+02:00",
-    "ends_at": "2025-10-04T16:30:00+02:00",
-    "_identity": "wl|hinweis|L=38A,43A|D=2025-09-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "N31: Umleitung ab 04.10.25",
     "description": "Gleisbauarbeiten\nWegen Bauarbeiten im Bereich Obere Augartenstraße # Rembrandtgasse wird die Linie N31 umgeleitet.\nZeitraum:\nAb 04. Oktober (Nacht von 3. auf 3.) Betriebsbeginn bis 06. Oktober etwa 05:00 Uhr\nMaßnahmen:\nLinie N31 in Richtung Schwedenplatz U\nUmleitung ab Obere Augartenstraße # Rembrandtgasse über Obere Augartenstraße - Taborstraße - Gredlerstraße - Marienbrücke - Franz-Josefs-Kai zur Stammstrecke.\nAufgelassene Haltestellen:\nOBERE AUGARTENSTRASSE\n(Rembrandtg. nach Obere Augartenstr.)\nSCHOTTENRING U\n(Franz-Josefs-Kai # Zelinkag.)\nErsatzhaltestelle:\nOBERE AUGARTENSTRASSE\n(Obere Augartenstr. 34, bei 5 A, 5 B)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -458,19 +446,31 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38A/43A: Laufveranstaltung",
-    "description": "Die Linie 38 A fährt derzeit nur zwischen Bahnhof Heiligenstadt S U und Wagenwiese. Die Linie 43 A fährt derzeit nur zwischen Neuwaldegg und Keylwerthgasse. Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist eine Laufveranstaltung im Bereich Höhenstraße.",
+    "title": "38A: Laufveranstaltung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 38 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "156b3de109657b1fee8d68f3da9c171a1cd0f0471f1ea057b160bfe523ba93d7",
+    "guid": "6edaaa92195a49eea250b7c56a4f8be3919277bf4227929398f2fee4e8ee7cbc",
     "pubDate": "2025-10-04T13:39:00+02:00",
     "starts_at": "2025-10-04T13:39:00+02:00",
     "ends_at": "2025-10-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=38A,43A|D=2025-10-04"
+    "_identity": "wl|störung|L=38A|D=2025-10-04"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Fahrtbehinderung Falschparker",
+    "title": "43A: Laufveranstaltung",
+    "description": "Die Linie 43 A fährt derzeit nur zwischen Neuwaldegg und Keylwerthgasse. Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist eine Laufveranstaltung im Bereich Höhenstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f0354837448d616fd3e1cd701cc61a39f1e39a5a9f750840c06b26791ae33501",
+    "pubDate": "2025-10-04T13:39:00+02:00",
+    "starts_at": "2025-10-04T13:39:00+02:00",
+    "ends_at": "2025-10-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=43A|D=2025-10-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Falschparker",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 42 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
@@ -494,10 +494,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Demonstration Einstieg Steig B (bei Linien 1, 6)",
-    "description": "Demonstration Einstieg Steig B (bei Linien 1, 6)",
+    "title": "62: Demonstration Betrieb ab Matzleinsdorfer Platz",
+    "description": "Demonstration Betrieb ab Matzleinsdorfer Platz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ed29675c6b4eefe1383ec5f48005f0950a8911723a1716da13915694ac90b810",
+    "guid": "1ae3688eb371660ee2812181021bb078c3e0fa84e3111601ce71a41dd90d8095",
     "pubDate": "2025-10-04T13:54:24+02:00",
     "starts_at": "2025-10-04T13:54:24+02:00",
     "ends_at": "2025-10-04T17:00:00+02:00",
@@ -518,10 +518,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Demonstration Betrieb ab Matzleinsdorfer Platz",
-    "description": "Demonstration Betrieb ab Matzleinsdorfer Platz",
+    "title": "62: Demonstration Einstieg Steig B (bei Linien 1, 6)",
+    "description": "Demonstration Einstieg Steig B (bei Linien 1, 6)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1ae3688eb371660ee2812181021bb078c3e0fa84e3111601ce71a41dd90d8095",
+    "guid": "ed29675c6b4eefe1383ec5f48005f0950a8911723a1716da13915694ac90b810",
     "pubDate": "2025-10-04T13:54:24+02:00",
     "starts_at": "2025-10-04T13:54:24+02:00",
     "ends_at": "2025-10-04T17:00:00+02:00",
@@ -542,6 +542,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Demonstration Züge halten gegenüber (Innenring)",
+    "description": "Demonstration Züge halten gegenüber (Innenring)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "026856b2b2954c0152fc61869649162867695ca52534d32ec9479fcf27eb3756",
+    "pubDate": "2025-10-04T13:54:51+02:00",
+    "starts_at": "2025-10-04T13:54:51+02:00",
+    "ends_at": "2025-10-04T17:00:00+02:00",
+    "_identity": "wl|störung|L=2|D=2025-10-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "2: Demonstration Betrieb ab Ring, Volkstheater",
     "description": "Demonstration Betrieb ab Ring, Volkstheater",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -554,14 +566,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Demonstration Betrieb ab Börse",
-    "description": "Demonstration Betrieb ab Börse",
+    "title": "2: Demonstration Züge Richtung Dornbach halten vor dem Parlament",
+    "description": "Demonstration Züge Richtung Dornbach halten vor dem Parlament",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d651f21483cd1d9dd9109527a3dd8776f2dd5eb47e34c6e2354a303472fb9d1c",
+    "guid": "1c9e52570b7605bb9623350ea4a97356638ba7ee185fac9688e7230e9889c088",
     "pubDate": "2025-10-04T13:54:51+02:00",
     "starts_at": "2025-10-04T13:54:51+02:00",
     "ends_at": "2025-10-04T17:00:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-10-04"
+    "_identity": "wl|störung|L=2|D=2025-10-04"
   },
   {
     "source": "Wiener Linien",
@@ -574,30 +586,6 @@
     "starts_at": "2025-10-04T13:54:51+02:00",
     "ends_at": "2025-10-04T17:00:00+02:00",
     "_identity": "wl|störung|L=2|D=2025-10-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Demonstration Wende über Börse, Umleitung über Stubentor",
-    "description": "Demonstration Wende über Börse, Umleitung über Stubentor",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
-    "pubDate": "2025-10-04T13:54:51+02:00",
-    "starts_at": "2025-10-04T13:54:51+02:00",
-    "ends_at": "2025-10-04T17:00:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-10-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung wegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4e2427e61bec98c160f61c806cf29a33a0eeb03e82e5fa7ffabf042a02249147",
-    "pubDate": "2025-10-04T13:54:51+02:00",
-    "starts_at": "2025-10-04T13:54:51+02:00",
-    "ends_at": "2025-10-04T17:00:00+02:00",
-    "_identity": "wl|störung|L=71|D=2025-10-04"
   },
   {
     "source": "Wiener Linien",
@@ -626,14 +614,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Demonstration Umleitung! Züge halten gegenüber!",
-    "description": "Demonstration Umleitung! Züge halten gegenüber!",
+    "title": "D: Demonstration Betrieb ab Börse",
+    "description": "Demonstration Betrieb ab Börse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e4ea8aacde43cecdf7f75a6d4fe1f5b28b6d8f81143e1c1769f3a8d6195d98a5",
+    "guid": "d651f21483cd1d9dd9109527a3dd8776f2dd5eb47e34c6e2354a303472fb9d1c",
     "pubDate": "2025-10-04T13:54:51+02:00",
     "starts_at": "2025-10-04T13:54:51+02:00",
     "ends_at": "2025-10-04T17:00:00+02:00",
     "_identity": "wl|störung|L=D|D=2025-10-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Demonstration Wende über Börse, Umleitung über Stubentor",
+    "description": "Demonstration Wende über Börse, Umleitung über Stubentor",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
+    "pubDate": "2025-10-04T13:54:51+02:00",
+    "starts_at": "2025-10-04T13:54:51+02:00",
+    "ends_at": "2025-10-04T17:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-10-04"
   },
   {
     "source": "Wiener Linien",
@@ -650,26 +650,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Demonstration Züge Richtung Dornbach halten vor dem Parlament",
-    "description": "Demonstration Züge Richtung Dornbach halten vor dem Parlament",
+    "title": "D: Demonstration Umleitung! Züge halten gegenüber!",
+    "description": "Demonstration Umleitung! Züge halten gegenüber!",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1c9e52570b7605bb9623350ea4a97356638ba7ee185fac9688e7230e9889c088",
+    "guid": "e4ea8aacde43cecdf7f75a6d4fe1f5b28b6d8f81143e1c1769f3a8d6195d98a5",
     "pubDate": "2025-10-04T13:54:51+02:00",
     "starts_at": "2025-10-04T13:54:51+02:00",
     "ends_at": "2025-10-04T17:00:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-04"
+    "_identity": "wl|störung|L=D|D=2025-10-04"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Demonstration Züge halten gegenüber (Innenring)",
-    "description": "Demonstration Züge halten gegenüber (Innenring)",
+    "title": "71: Fahrtbehinderung wegen Demonstration",
+    "description": "Fahrtbehinderung wegen Demonstration",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "026856b2b2954c0152fc61869649162867695ca52534d32ec9479fcf27eb3756",
+    "guid": "4e2427e61bec98c160f61c806cf29a33a0eeb03e82e5fa7ffabf042a02249147",
     "pubDate": "2025-10-04T13:54:51+02:00",
     "starts_at": "2025-10-04T13:54:51+02:00",
     "ends_at": "2025-10-04T17:00:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-04"
+    "_identity": "wl|störung|L=71|D=2025-10-04"
   },
   {
     "source": "Wiener Linien",
@@ -766,5 +766,65 @@
     "starts_at": "2025-10-04T14:23:08+02:00",
     "ends_at": "2025-10-04T17:00:00+02:00",
     "_identity": "wl|störung|L=4A|D=2025-10-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A/2A/3A: Demonstration",
+    "description": "Wegen einer Demonstration im Bereich Innere Stadt ist ein Betrieb der Linie 1 A derzeit nicht möglich. Wegen einer Demonstration im Bereich Innere Stadt ist ein Betrieb der Linie 2 A derzeit nicht möglich. Wegen einer Demonstration im Bereich Innere Stadt ist ein Betrieb der Linie 3 A derzeit nicht möglich. Die Störung dauert voraussichtlich bis 17:00 Uhr. Grund dafür ist eine Demonstration im Bereich Innenstadt .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c0df134f11f9ffbb76833cb3f3d3e21f3ac38dd721681b21790d60a958b9591e",
+    "pubDate": "2025-10-04T14:30:00+02:00",
+    "starts_at": "2025-10-04T14:30:00+02:00",
+    "ends_at": "2025-10-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=1A,2A,3A|D=2025-10-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Demonstration",
+    "description": "Die Linie 74 A fährt derzeit nur zwischen Sankt Marx und Landstraße. Ersatzweise benützen Sie bitte die Linie U3. Die Störung dauert voraussichtlich bis 16:30 Uhr. Grund dafür ist eine Demonstration im Bereich Stubentor.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b6ea6b1f35ed15d5e91c766202fbe856d89c96d29207729947cb634492e4bfed",
+    "pubDate": "2025-10-04T14:30:00+02:00",
+    "starts_at": "2025-10-04T14:30:00+02:00",
+    "ends_at": "2025-10-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=74A|D=2025-10-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Fahrtbehinderung wegen Demonstration",
+    "description": "Fahrtbehinderung wegen Demonstration",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8dc56d928161cbfd19b6981843708a0098d27b8e8248529260befbf1bff03a63",
+    "pubDate": "2025-10-04T14:32:07+02:00",
+    "starts_at": "2025-10-04T14:32:07+02:00",
+    "ends_at": "2025-10-04T15:31:00+02:00",
+    "_identity": "wl|störung|L=74A|D=2025-10-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Demonstration Betrieb ab Landstraße",
+    "description": "Demonstration Betrieb ab Landstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ab94aae7b121b9bec5e26e9c0b99d27145186820aa00a7d110a5a6df319cf284",
+    "pubDate": "2025-10-04T14:32:17+02:00",
+    "starts_at": "2025-10-04T14:32:17+02:00",
+    "ends_at": "2025-10-04T17:00:00+02:00",
+    "_identity": "wl|störung|L=74A|D=2025-10-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Demonstration Betrieb ab Bärenmühldurchgang",
+    "description": "Demonstration Betrieb ab Bärenmühldurchgang",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "736f71855b66e15dcb71393b98107316c160008d90ede78fd29f17ea17d81afe",
+    "pubDate": "2025-10-04T14:41:40+02:00",
+    "starts_at": "2025-10-04T14:41:40+02:00",
+    "ends_at": "2025-10-04T17:00:00+02:00",
+    "_identity": "wl|störung|L=59A|D=2025-10-04"
   }
 ]
