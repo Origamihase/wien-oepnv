@@ -375,7 +375,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "44: Feuerwehreinsatz",
-    "description": "Die Linie 44 ist derzeit in Richtung Ottakring, Maroltingergasse an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 06:00 Uhr. Grund dafür ist ein Feuerwehreinsatz im Bereich Yppengasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 44 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ea5b095a77f1d0ae54d57f6944fc398dc421747a2e992caa1b9f4dd678e1e2ec",
     "pubDate": "2025-10-05T05:25:00+02:00",
@@ -387,7 +387,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "14A: Fremder Verkehrsunfall",
-    "description": "Die Linie 14 A wird in Richtung Neubaugasse U zwischen Matzleinsdorfer Platz S und Pilgramgasse U über die Strecke der Linie 13 A umgeleitet. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein fremder Verkehrsunfall im Bereich Ramperstorffergasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 14 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "42270d028cd443977f582a2b48222c38c0603b64b1f2d3ae98143b310e12046e",
     "pubDate": "2025-10-05T05:25:00+02:00",
@@ -404,7 +404,7 @@
     "guid": "eb3ae377882744c1a6127826e6cb0ae2ba7766d6adb0b21111f11baa29343229",
     "pubDate": "2025-10-05T05:32:25+02:00",
     "starts_at": "2025-10-05T05:32:25+02:00",
-    "ends_at": "2025-10-05T06:32:00+02:00",
+    "ends_at": "2025-10-05T06:34:00+02:00",
     "_identity": "wl|störung|L=44|D=2025-10-05"
   },
   {
@@ -417,6 +417,18 @@
     "pubDate": "2025-10-05T05:33:27+02:00",
     "starts_at": "2025-10-05T05:33:27+02:00",
     "ends_at": "2025-10-05T06:32:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2025-10-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Fremdunfall Betrieb ab Pilgramgasse U",
+    "description": "Fremdunfall Betrieb ab Pilgramgasse U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ae20c2cb58df03094fdb5953d21c00313ae9e7f5deb805277d7841b18b6ff2f8",
+    "pubDate": "2025-10-05T05:34:24+02:00",
+    "starts_at": "2025-10-05T05:34:24+02:00",
+    "ends_at": "2025-10-05T06:33:00+02:00",
     "_identity": "wl|störung|L=14A|D=2025-10-05"
   }
 ]
