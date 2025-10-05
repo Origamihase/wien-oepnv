@@ -382,5 +382,17 @@
     "starts_at": "2025-10-05T06:15:00+02:00",
     "ends_at": "2025-10-05T23:55:00+02:00",
     "_identity": "wl|störung|L=15A|D=2025-10-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verunreinigung",
+    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "55a6d2210edf7006a86ba29cb1618fa5f1c07d264c2f291e173729f4b9f779d9",
+    "pubDate": "2025-10-05T07:05:00+02:00",
+    "starts_at": "2025-10-05T07:05:00+02:00",
+    "ends_at": "2025-10-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2025-10-05"
   }
 ]
