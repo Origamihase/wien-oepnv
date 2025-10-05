@@ -362,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N38: Busse halten bei Liechtensteinstr. 50",
-    "description": "Bauarbeiten Busse halten bei Liechtensteinstr. 50",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "739cc5e9096d6373cf06f791f142fe6c98cac1445fc5363723feece7bbff56c2",
-    "pubDate": "2025-10-05T01:20:11+02:00",
-    "starts_at": "2025-10-05T01:20:11+02:00",
-    "ends_at": "2025-10-05T05:05:00+02:00",
-    "_identity": "wl|störung|L=N38|D=2025-10-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -382,5 +370,29 @@
     "starts_at": "2025-10-05T04:45:06+02:00",
     "ends_at": "2025-10-06T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2025-10-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Feuerwehreinsatz",
+    "description": "Die Linie 44 ist derzeit in Richtung Ottakring, Maroltingergasse an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 06:00 Uhr. Grund dafür ist ein Feuerwehreinsatz im Bereich Yppengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ea5b095a77f1d0ae54d57f6944fc398dc421747a2e992caa1b9f4dd678e1e2ec",
+    "pubDate": "2025-10-05T05:25:00+02:00",
+    "starts_at": "2025-10-05T05:25:00+02:00",
+    "ends_at": "2025-10-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=44|D=2025-10-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Fremder Verkehrsunfall",
+    "description": "Die Linie 14 A wird in Richtung Neubaugasse U zwischen Matzleinsdorfer Platz S und Pilgramgasse U über die Strecke der Linie 13 A umgeleitet. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein fremder Verkehrsunfall im Bereich Ramperstorffergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "42270d028cd443977f582a2b48222c38c0603b64b1f2d3ae98143b310e12046e",
+    "pubDate": "2025-10-05T05:25:00+02:00",
+    "starts_at": "2025-10-05T05:25:00+02:00",
+    "ends_at": "2025-10-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2025-10-05"
   }
 ]
