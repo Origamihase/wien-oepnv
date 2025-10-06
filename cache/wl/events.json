@@ -363,7 +363,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "9A: Verkehrsunfall",
-    "description": "Die Linie 9 A ist derzeit in Richtung Bahnhof Meidling, Eichenstraße an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 11:50 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Pohlgasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1919cd6e27075dd1d78aef98e5007d07958daeec1b66c2535357bc252850c2bc",
     "pubDate": "2025-10-06T11:30:00+02:00",
@@ -382,5 +382,53 @@
     "starts_at": "2025-10-06T11:34:22+02:00",
     "ends_at": "2025-10-06T12:33:00+02:00",
     "_identity": "wl|störung|L=9A|D=2025-10-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Gleisschaden",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 38 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "41232b9b5d5ab52f719f4572ad52256886f455c6583c496fed86188ccc4c5100",
+    "pubDate": "2025-10-06T11:45:00+02:00",
+    "starts_at": "2025-10-06T11:45:00+02:00",
+    "ends_at": "2025-10-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=38|D=2025-10-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Busse halten Gudrunstraße 148",
+    "description": "Bauarbeiten Busse halten Gudrunstraße 148",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "942822865c5b411078a9d78701922303fd124410c2a322f0295b8594f37d248c",
+    "pubDate": "2025-10-06T11:46:03+02:00",
+    "starts_at": "2025-10-06T11:46:03+02:00",
+    "ends_at": "2025-10-06T23:59:59+02:00",
+    "_identity": "wl|störung|L=14A|D=2025-10-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung Gleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36291a8913f4c0e64cf9c131c1cabf9164a01e3b26a8d92b61ce6d4817630b30",
+    "pubDate": "2025-10-06T11:49:26+02:00",
+    "starts_at": "2025-10-06T11:49:26+02:00",
+    "ends_at": "2025-10-06T12:48:00+02:00",
+    "_identity": "wl|störung|L=38|D=2025-10-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Gleisschaden Betrieb ab Nußdorfer Straße U",
+    "description": "Gleisschaden Betrieb ab Nußdorfer Straße U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4be3605d7d6d585821a604accbcd6956a54b0a21d93dd5696ca4e0657077cce6",
+    "pubDate": "2025-10-06T11:54:26+02:00",
+    "starts_at": "2025-10-06T11:54:26+02:00",
+    "ends_at": "2025-10-06T12:49:00+02:00",
+    "_identity": "wl|störung|L=38|D=2025-10-06"
   }
 ]
