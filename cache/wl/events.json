@@ -399,12 +399,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "32A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 32 A zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61",
-    "pubDate": "2025-10-06T17:25:00+02:00",
-    "starts_at": "2025-10-06T17:25:00+02:00",
-    "ends_at": "2025-10-06T23:55:00+02:00",
+    "pubDate": "2025-10-06T17:30:24+02:00",
+    "starts_at": "2025-10-06T17:30:24+02:00",
+    "ends_at": "2025-10-06T18:29:00+02:00",
     "_identity": "wl|störung|L=32A|D=2025-10-06"
   },
   {
@@ -418,5 +418,29 @@
     "starts_at": "2025-10-06T17:35:00+02:00",
     "ends_at": "2025-10-06T23:55:00+02:00",
     "_identity": "wl|störung|L=77A|D=2025-10-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 18 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
+    "pubDate": "2025-10-06T17:45:00+02:00",
+    "starts_at": "2025-10-06T17:45:00+02:00",
+    "ends_at": "2025-10-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=18|D=2025-10-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "22A: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 22 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "24f3e8ed4b406112c71c820943058faeb5e6f2942ac26ea1686d40f72cd4f36c",
+    "pubDate": "2025-10-06T17:50:00+02:00",
+    "starts_at": "2025-10-06T17:50:00+02:00",
+    "ends_at": "2025-10-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=22A|D=2025-10-06"
   }
 ]
