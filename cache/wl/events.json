@@ -38,6 +38,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "N54: Straßenbauarbeiten",
+    "description": "Straßenbauarbeiten im Bereich Mariahilfer Straße\nZeitraum:\nAb 10. September 2024, etwa 00:30 Uhr\nMaßnahmen:\nUmleitung in Richtung Ober St. Veit U ab Europaplatz # Mariahilfer Straße über Mariahilfer Straße Gleiskörper zur Stammstrecke.\nUmleitung in Richtung Westbahnhof U ab Mariahilfer Straße # Grenzgasse über Grenzgasse – Schmelzbrückenrampe – Schmelzbrücke – Felberstraße – Europaplatz zur Stammstrecke\nHaltestellen:\nDie Haltestellen Mariahilfer Straße, Geibelgasse, Staglgasse, Westbahnhof U, Gerstnerstraße und Westbahnhof U werden in Richtung Westbahnhof auf Ablenkungsdauer aufgelassen und stattdessen die provisorischen Haltestellen in der Grenzgasse 2 und in der Grenzgasse 14 eingehalten.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "864b8699fbe4cf072d650b24d8e1e9387dd6c5641e3de1d680fec605b7c7ff8a",
+    "pubDate": "2024-09-06T14:00:00+02:00",
+    "starts_at": "2024-09-06T14:00:00+02:00",
+    "ends_at": "2026-09-10T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=N54|D=2024-09-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "N81: Rohrleitungsarbeiten ab 17.04.2025",
     "description": "Rohrleitungsarbeiten im Bereich Engerthstraße\nZeitraum:\nAb Donnerstag, den 17. April 2025, etwa 07:00 Uhr auf Dauer von etwa zehn Wochen\nMaßnahmen:\nLinie N81\nUmleitung ab Engerthstraße # Sturgasse über Sturgasse - Vorgartenstraße - Olympiaplatz - Stephanie-Endres-Straße.\nAufgelassene Haltestelle:\nPENSIONISTENWOHNHAUS PRATER\n2., Engerthstraße 232-238, Stiege 9\nProvisorische Haltestelle:\nPENSIONISTENWOHNHAUS PRATER\n2., Vorgartenstraße vor Stella-Klein-Löw-Weg",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -386,37 +398,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "50A: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 50 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d8237ec6ad4aa37e360bd01d080083b93bf5aad5bba8399c6b4e72de49b31dd8",
-    "pubDate": "2025-10-06T16:00:00+02:00",
-    "starts_at": "2025-10-06T16:00:00+02:00",
-    "ends_at": "2025-10-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=50A|D=2025-10-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "44: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 44 zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c14ad7374d16f14cd0154afd971ba66872a46e7f70c45ab6156ec3ada2b6a22a",
-    "pubDate": "2025-10-06T16:15:00+02:00",
-    "starts_at": "2025-10-06T16:15:00+02:00",
-    "ends_at": "2025-10-06T23:55:00+02:00",
+    "pubDate": "2025-10-06T16:18:14+02:00",
+    "starts_at": "2025-10-06T16:18:14+02:00",
+    "ends_at": "2025-10-06T17:17:00+02:00",
     "_identity": "wl|störung|L=44|D=2025-10-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "88A: Schadhaftes Fahrzeug",
-    "description": "Die Linie 88 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "105b775a13ca9082d3f22361b19993369d359956332f856e47c75bfb651d42a4",
-    "pubDate": "2025-10-06T16:25:00+02:00",
-    "starts_at": "2025-10-06T16:25:00+02:00",
-    "ends_at": "2025-10-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=88A|D=2025-10-06"
   }
 ]
