@@ -301,18 +301,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "22A/95A/95B: Sperre Quadenstraße beide Richtungen",
-    "description": "Straßensperre\nWegen der Sperre der Quadenstraße werden die Linien 22 A, 95 A und 95 B umgeleitet.\nZeitraum:\nAb Montag, 06. Oktober 2025, etwa 22:30 Uhr auf derzeit unbekannte Zeit.\nMaßnahmen:\nLinie 22 A in Richtung Aspernstraße U\nUmleitung ab Hirschstettner Straße # Hirschstettner Platz über Hirschstettner Platz – Hirschstettner Straße – Guido-Lammer-Gasse – Contiweg.\nAufgelassene Haltestellen:\nBlumengärten Hirschstetten (Quadenstraße vor Emichgasse)\nFritz-Feigel-Weg (Emichgasse gegenüber 4)\nErsatz- und provisorische Haltestellen:\nHirschstetten S - (Hirschstettner Straße 112 (95 B))\nGuido-Lammer-Gasse - (Contiweg nach Guido-Lammer-Gasse, ÖBB-Unterführung, prov. Haltestelle)\nLinie 22 A in Richtung Kagran U bzw. Kagraner Platz U\nUmleitung ab Contiweg # Guido-Lammer-Gasse über Guido-Lammer-Gasse – Hirschstettner Straße – Hirschstettner Platz – Quadenstraße.\nAufgelassene Haltestellen:\nFritz-Feigel-Weg (Emichgasse 4)\nBlumengärten Hirschstetten (Quadenstraße nach Emichgasse)\nErsatz- und provisorische Haltestellen:\nGuido-Lammer-Gasse (Contiweg vor Guido-Lammer-Gasse, ÖBB-Unterführung, prov. Haltestelle)\nHirschstetten S (Guido-Lammer-Gasse vor Hirschstettner Straße, prov. Haltestelle)\nSkizze:\nLinie 95 A in Richtung Aspern Nord S U\nUmleitung ab Hirschstettner Straße # Hirschstettner Platz über Hirschstettner Platz – Hirschstettner Straße – Guido-Lammer-Gasse – Emichgasse – Quadenstraße.\nAufgelassene Haltestellen:\nBlumengärten Hirschstetten (Quadenstraße vor Emichgasse)\nErsatz- und provisorische Haltestellen:\nBlumengärten Hirschstetten (Quadenstraße gegenüber 15, prov. Haltestelle)\nLinie 95 A in Richtung Großer Biberhaufen\nUmleitung ab Quadenstraße # Emichgasse über Emichgasse – Guido-Lammer-Gasse – Hirschstettner Straße – Am Krautgarten.\nAufgelassene Haltestellen:\nBlumengärten Hirschstetten (Quadenstraße nach Emichgasse)\nHirschstetten, Ort (Hirschstettner Platz vor Hirschstettner Straße)\nErsatz- und provisorische Haltestellen:\nBlumengärten Hirschstetten (Quadenstraße 15, prov. Haltestelle)\nHirschstetten, Ort (Am Krautgarten vor Hirschstettner Straße)\nSkizze:\nLinie 95 B in Richtung Hirschstetten, Ort (bzw. Hirschstetten S)\nUmleitung ab Quadenstraße # Emichgasse über Emichgasse – Guido-Lammer-Gasse zur prov. End- und Anfangstation Hirschstetten S.\nAufgelassene Haltestellen:\nBlumengärten Hirschstetten (Quadenstraße vor Emichgasse)\nErsatz- und provisorische Haltestellen:\nBlumengärten Hirschstetten (Quadenstraße gegenüber 15, prov. Haltestelle)\nLinie 95 B in Richtung Hausfeldstraße U\nUmleitung ab der prov. End- und Anfangstation Hirschstetten S über Guido-Lammer-Gasse – Hirschstettner Straße.\nAufgelassene Haltestellen:\nHirschstetten, Ort (Hirschstettner Platz vor Hirschstettner Straße)\nHirschstetten S (Hirschstettner Straße 112)\nErsatz- und provisorische Haltestellen:\nHirschstetten S (Guido-Lammer-Gasse vor Hirschstettner Straße, prov. Haltestelle)\nSkizze:",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "44da70f9cf244883d54ce4a030c7796e0d7d8d26ef970e517638ac6419a6193c",
-    "pubDate": "2025-10-03T13:00:00+02:00",
-    "starts_at": "2025-10-03T13:00:00+02:00",
-    "ends_at": "2026-10-03T11:11:00+02:00",
-    "_identity": "wl|hinweis|L=22A,95A,95B|D=2025-10-03"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "40A: Busse halten Währinger Straße 48-50",
     "description": "Bauarbeiten Busse halten Währinger Straße 48-50",
@@ -434,6 +422,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "27: Stromstörung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 27 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "24ca313ff60b8a81b9235dfdfbb099fcfeec9b4c1e5b3462f3d4f1d733230a49",
+    "pubDate": "2025-10-07T07:35:00+02:00",
+    "starts_at": "2025-10-07T07:35:00+02:00",
+    "ends_at": "2025-10-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=27|D=2025-10-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Stromstörung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 26 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c76769337d1ebad15068555be6906c1722166dd1d468f2cc80bda3621df626bc",
+    "pubDate": "2025-10-07T07:35:00+02:00",
+    "starts_at": "2025-10-07T07:35:00+02:00",
+    "ends_at": "2025-10-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=26|D=2025-10-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Stromstörung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 25 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b961ecbeb2b3b310aea6a8f1ead3b3dd6c29a5f4fc8dade51eb9e8f77ed3dcaf",
+    "pubDate": "2025-10-07T07:35:00+02:00",
+    "starts_at": "2025-10-07T07:35:00+02:00",
+    "ends_at": "2025-10-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=25|D=2025-10-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25: Fahrtbehinderung wegen Stromstörung",
     "description": "Fahrtbehinderung wegen Stromstörung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -482,18 +506,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Signalstörung Betrieb ab Josef-Baumann-Gasse",
-    "description": "Signalstörung Betrieb ab Floridsdorf",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d181af5e303219e8a9902182bf958920050b8c374b8def743f51143ee197aff3",
-    "pubDate": "2025-10-07T07:41:22+02:00",
-    "starts_at": "2025-10-07T07:41:22+02:00",
-    "ends_at": "2025-10-07T10:00:00+02:00",
-    "_identity": "wl|störung|L=27|D=2025-10-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26: Stromstörung Einstieg bei Linie 31",
     "description": "Stromstörung Einstieg bei Linie 31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -502,6 +514,18 @@
     "starts_at": "2025-10-07T07:41:22+02:00",
     "ends_at": "2025-10-07T10:00:00+02:00",
     "_identity": "wl|störung|L=26|D=2025-10-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Signalstörung Betrieb ab Josef-Baumann-Gasse",
+    "description": "Signalstörung Betrieb ab Floridsdorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d181af5e303219e8a9902182bf958920050b8c374b8def743f51143ee197aff3",
+    "pubDate": "2025-10-07T07:41:22+02:00",
+    "starts_at": "2025-10-07T07:41:22+02:00",
+    "ends_at": "2025-10-07T10:00:00+02:00",
+    "_identity": "wl|störung|L=27|D=2025-10-07"
   },
   {
     "source": "Wiener Linien",
@@ -518,26 +542,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Verkehrsunfall Betrieb nur zwischen Aspern Nord und Hausfeldstr.",
-    "description": "Verkehrsunfall Betrieb nur zwischen Aspern Nord und Hausfeldstr.",
+    "title": "G: Stromstörung Betrieb nur bis Josef-Baumann-G. - Kagran",
+    "description": "Stromstörung Betrieb nur bis Josef-Baumann-G. - Kagran",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e573f900030fcaafae622a15536de13a26e0b1fd327acbf3a223a9db114fda9",
+    "guid": "81195799762eaa753b2977ef1e7a5ec767e2af31eb8020843cbbf6b951d973db",
     "pubDate": "2025-10-07T07:43:46+02:00",
     "starts_at": "2025-10-07T07:43:46+02:00",
     "ends_at": "2025-10-07T10:00:00+02:00",
-    "_identity": "wl|störung|L=|D=2025-10-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "98667687253bc639656a963907dc9d6e4d87dbc4735242bb2b985799eaecefeb",
-    "pubDate": "2025-10-07T07:43:47+02:00",
-    "starts_at": "2025-10-07T07:43:47+02:00",
-    "ends_at": "2025-10-07T10:00:00+02:00",
-    "_identity": "wl|störung|L=|D=2025-10-07"
+    "_identity": "wl|störung|L=G|D=2025-10-07"
   },
   {
     "source": "Wiener Linien",
@@ -574,5 +586,29 @@
     "starts_at": "2025-10-07T07:58:17+02:00",
     "ends_at": "2025-10-07T10:15:00+02:00",
     "_identity": "wl|störung|L=|D=2025-10-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27A: Verkehrsstörung",
+    "description": "Die Linie 27 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verkehrsstörung im Bereich Josef-Baumann-Gasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1eb02b71746634a4892b0fa410b9d3a689675d1f9642d25f250cd06d812f8c6c",
+    "pubDate": "2025-10-07T08:25:00+02:00",
+    "starts_at": "2025-10-07T08:25:00+02:00",
+    "ends_at": "2025-10-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=27A|D=2025-10-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "95A: Verkehrsstörung",
+    "description": "Die Linie 95 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verkehrsstörung im Bereich Erzherzog-Karl-Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "99ab34c56580c402fb3142d9981303beebe72cbd05e3484f468cbc666b93c1b0",
+    "pubDate": "2025-10-07T08:25:00+02:00",
+    "starts_at": "2025-10-07T08:25:00+02:00",
+    "ends_at": "2025-10-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=95A|D=2025-10-07"
   }
 ]
