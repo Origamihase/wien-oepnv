@@ -382,5 +382,29 @@
     "starts_at": "2025-10-07T04:45:27+02:00",
     "ends_at": "2025-10-08T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2025-10-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Verspätungen",
+    "description": "Die Linie 44 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f714cd20f750fe0c07303a5815dd640c3ac9acf442fd015cdc36bc6d2041675a",
+    "pubDate": "2025-10-07T06:20:00+02:00",
+    "starts_at": "2025-10-07T06:20:00+02:00",
+    "ends_at": "2025-10-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=44|D=2025-10-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Test Test Test Test Test Test",
+    "description": "Test Test Test Test Test Test",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "54242df1a5442a0e7b596e84832812028e2fa95a0741aae1123e07f9f7c93cc3",
+    "pubDate": "2025-10-07T06:34:51+02:00",
+    "starts_at": "2025-10-07T06:34:51+02:00",
+    "ends_at": "2025-10-07T07:34:00+02:00",
+    "_identity": "wl|störung|L=|D=2025-10-07"
   }
 ]
