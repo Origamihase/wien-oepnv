@@ -514,5 +514,29 @@
     "starts_at": "2025-10-07T23:00:00+02:00",
     "ends_at": "2025-10-07T23:55:00+02:00",
     "_identity": "wl|störung|L=U1|D=2025-10-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Verkehrsunfall",
+    "description": "Die Linie 12 fährt derzeit nur zwischen Josefstädter Straße und Bruno-Marek-Allee. Ersatzweise benutzen Sie die Linie 11 A. Die Störung dauert voraussichtlich bis 00:00 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Vorgartenstrasse 110.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e5660a0ab66e8052c66ac62caa273ee692ce56758d8e16e3324e16b86881f37a",
+    "pubDate": "2025-10-07T23:25:00+02:00",
+    "starts_at": "2025-10-07T23:25:00+02:00",
+    "ends_at": "2025-10-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=12|D=2025-10-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
+    "pubDate": "2025-10-07T23:27:53+02:00",
+    "starts_at": "2025-10-07T23:27:53+02:00",
+    "ends_at": "2025-10-07T23:59:59+02:00",
+    "_identity": "wl|störung|L=12|D=2025-10-07"
   }
 ]
