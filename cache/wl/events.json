@@ -482,18 +482,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Stromstörung Einstieg bei Linie 31",
-    "description": "Stromstörung Einstieg bei Linie 31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "237c1bfe5f6b76d20c03a8bc287e9e4b03986ec29a57c77b6bcea1be2b42e2e4",
-    "pubDate": "2025-10-07T07:41:22+02:00",
-    "starts_at": "2025-10-07T07:41:22+02:00",
-    "ends_at": "2025-10-07T10:00:00+02:00",
-    "_identity": "wl|störung|L=26|D=2025-10-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "27: Signalstörung Betrieb ab Josef-Baumann-Gasse",
     "description": "Signalstörung Betrieb ab Floridsdorf",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -502,6 +490,18 @@
     "starts_at": "2025-10-07T07:41:22+02:00",
     "ends_at": "2025-10-07T10:00:00+02:00",
     "_identity": "wl|störung|L=27|D=2025-10-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Stromstörung Einstieg bei Linie 31",
+    "description": "Stromstörung Einstieg bei Linie 31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "237c1bfe5f6b76d20c03a8bc287e9e4b03986ec29a57c77b6bcea1be2b42e2e4",
+    "pubDate": "2025-10-07T07:41:22+02:00",
+    "starts_at": "2025-10-07T07:41:22+02:00",
+    "ends_at": "2025-10-07T10:00:00+02:00",
+    "_identity": "wl|störung|L=26|D=2025-10-07"
   },
   {
     "source": "Wiener Linien",
