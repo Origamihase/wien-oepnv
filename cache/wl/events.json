@@ -320,20 +320,8 @@
     "guid": "2664a84bd7bb35a6f0aba982e3c561700607eccff2b9b90413246f273c30c1cd",
     "pubDate": "2025-10-05T00:00:09+02:00",
     "starts_at": "2025-10-05T00:00:09+02:00",
-    "ends_at": "2025-10-07T23:59:59+02:00",
+    "ends_at": "2025-10-08T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2025-10-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Betrieb ab St. Marx",
-    "description": "Gleisbauarbeiten Betrieb ab St. Marx",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
-    "pubDate": "2025-10-06T00:00:12+02:00",
-    "starts_at": "2025-10-06T00:00:12+02:00",
-    "ends_at": "2025-10-07T23:59:59+02:00",
-    "_identity": "wl|störung|L=18|D=2025-10-06"
   },
   {
     "source": "Wiener Linien",
@@ -344,7 +332,7 @@
     "guid": "0a6a987a32b38d85f3d0dcaceba01b7e03ecd4a1b44249076de8bb39e7c3f35b",
     "pubDate": "2025-10-06T00:00:19+02:00",
     "starts_at": "2025-10-06T00:00:19+02:00",
-    "ends_at": "2025-10-07T23:59:59+02:00",
+    "ends_at": "2025-10-08T23:59:59+02:00",
     "_identity": "wl|störung|L=N38|D=2025-10-06"
   },
   {
@@ -358,18 +346,6 @@
     "starts_at": "2025-10-06T05:00:00+02:00",
     "ends_at": "2027-06-25T11:11:00+02:00",
     "_identity": "wl|hinweis|L=77A|D=2025-10-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "14A: Busse halten Gudrunstraße 148",
-    "description": "Bauarbeiten Busse halten Gudrunstraße 148",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "942822865c5b411078a9d78701922303fd124410c2a322f0295b8594f37d248c",
-    "pubDate": "2025-10-06T11:46:03+02:00",
-    "starts_at": "2025-10-06T11:46:03+02:00",
-    "ends_at": "2025-10-07T23:59:59+02:00",
-    "_identity": "wl|störung|L=14A|D=2025-10-06"
   },
   {
     "source": "Wiener Linien",
@@ -422,121 +398,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung Weichenschaden",
-    "description": "Fahrtbehinderung Weichenschaden",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "949d106316137c76894071dc5244e4bfd398645feb09e3a9e70215cf3520bf40",
-    "pubDate": "2025-10-07T19:38:03+02:00",
-    "starts_at": "2025-10-07T19:38:03+02:00",
-    "ends_at": "2025-10-07T23:59:59+02:00",
-    "_identity": "wl|störung|L=9|D=2025-10-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Weichenschaden Betrieb ab Rosensteingasse",
-    "description": "Weichenschaden Betrieb ab Rosensteingasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5bf81ae587b91a2787ded572d2f4448c44a5246da2bf94507638b1550cf58c4e",
-    "pubDate": "2025-10-07T19:47:14+02:00",
-    "starts_at": "2025-10-07T19:47:14+02:00",
-    "ends_at": "2025-10-07T23:59:59+02:00",
-    "_identity": "wl|störung|L=9|D=2025-10-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Weichenschaden Betrieb ab Josefstädter Straße U",
-    "description": "Weichenschaden Betrieb ab Josefstädter Straße U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a3e8a3917c6066fae690bd599590ecfb9b9685ddae0f2d99ce83e61a57e13168",
-    "pubDate": "2025-10-07T20:02:15+02:00",
-    "starts_at": "2025-10-07T20:02:15+02:00",
-    "ends_at": "2025-10-07T23:59:59+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Weichenstörung Züge halten bei Linie 12",
-    "description": "Weichenstörung Züge halten bei Linie 12",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "18ce5c364640560e991989e025bc3107a8060adae93523763b9dc3ed244f3da0",
-    "pubDate": "2025-10-07T20:06:40+02:00",
-    "starts_at": "2025-10-07T20:06:40+02:00",
-    "ends_at": "2025-10-07T23:59:59+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung Weichenschaden",
-    "description": "Fahrtbehinderung Weichenschaden",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "35fa38d6640393369dd0e058f79ef8be2c9545065e7c97100444f5d5f342d4e7",
-    "pubDate": "2025-10-07T20:44:47+02:00",
-    "starts_at": "2025-10-07T20:44:47+02:00",
-    "ends_at": "2025-10-07T23:59:59+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Schadhaftes Fahrzeug",
-    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
-    "pubDate": "2025-10-07T21:55:00+02:00",
-    "starts_at": "2025-10-07T21:55:00+02:00",
-    "ends_at": "2025-10-07T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2025-10-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Schadhaftes Fahrzeug",
-    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
-    "pubDate": "2025-10-07T21:55:00+02:00",
-    "starts_at": "2025-10-07T21:55:00+02:00",
-    "ends_at": "2025-10-07T23:55:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2025-10-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
-    "pubDate": "2025-10-07T23:00:00+02:00",
-    "starts_at": "2025-10-07T23:00:00+02:00",
-    "ends_at": "2025-10-07T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2025-10-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Verkehrsunfall",
-    "description": "Die Linie 12 fährt derzeit nur zwischen Josefstädter Straße und Bruno-Marek-Allee. Ersatzweise benutzen Sie die Linie 11 A. Die Störung dauert voraussichtlich bis 00:00 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Vorgartenstrasse 110.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e5660a0ab66e8052c66ac62caa273ee692ce56758d8e16e3324e16b86881f37a",
-    "pubDate": "2025-10-07T23:25:00+02:00",
-    "starts_at": "2025-10-07T23:25:00+02:00",
-    "ends_at": "2025-10-07T23:55:00+02:00",
-    "_identity": "wl|störung|L=12|D=2025-10-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
-    "pubDate": "2025-10-07T23:27:53+02:00",
-    "starts_at": "2025-10-07T23:27:53+02:00",
-    "ends_at": "2025-10-07T23:59:59+02:00",
-    "_identity": "wl|störung|L=12|D=2025-10-07"
+    "pubDate": "2025-10-08T00:00:12+02:00",
+    "starts_at": "2025-10-08T00:00:12+02:00",
+    "ends_at": "2025-10-08T00:27:00+02:00",
+    "_identity": "wl|störung|L=12|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Verkehrsunfall Betrieb ab Bruno Marek -Allee",
+    "description": "Verkehrsunfall Betrieb ab Bruno Marek -Allee",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d8b7fe9c07226c5f7a1bbe0c321b1eebda3dae49f67b02fd7b033473548e1b41",
+    "pubDate": "2025-10-08T00:00:12+02:00",
+    "starts_at": "2025-10-08T00:00:12+02:00",
+    "ends_at": "2025-10-08T00:37:00+02:00",
+    "_identity": "wl|störung|L=12|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Verkehrsunfall Züge halten bei Linie O",
+    "description": "Verkehrsunfall Züge halten bei Linie O",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1e130568edb85f4ca1a0d05ce7ddd19b7d9ea50ba37c2f290f2073fb4f33c543",
+    "pubDate": "2025-10-08T00:00:12+02:00",
+    "starts_at": "2025-10-08T00:00:12+02:00",
+    "ends_at": "2025-10-08T00:40:00+02:00",
+    "_identity": "wl|störung|L=12|D=2025-10-08"
   }
 ]
