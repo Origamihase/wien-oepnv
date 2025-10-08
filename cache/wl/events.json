@@ -398,66 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung wegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4e2427e61bec98c160f61c806cf29a33a0eeb03e82e5fa7ffabf042a02249147",
-    "pubDate": "2025-10-08T11:29:00+02:00",
-    "starts_at": "2025-10-08T11:29:00+02:00",
-    "ends_at": "2025-10-08T13:23:00+02:00",
-    "_identity": "wl|störung|L=71|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Demonstration Betrieb ab Börse",
-    "description": "Demonstration Betrieb ab Börse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bd2bbc492fa41191c2ba11d0c2b48db31149a36909ebf7486dc05890a079f7ac",
-    "pubDate": "2025-10-08T11:30:27+02:00",
-    "starts_at": "2025-10-08T11:30:27+02:00",
-    "ends_at": "2025-10-08T13:26:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Betrieb ab Börse",
-    "description": "Demonstration Betrieb ab Börse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d651f21483cd1d9dd9109527a3dd8776f2dd5eb47e34c6e2354a303472fb9d1c",
-    "pubDate": "2025-10-08T11:30:56+02:00",
-    "starts_at": "2025-10-08T11:30:56+02:00",
-    "ends_at": "2025-10-08T13:24:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Einstieg Richtung Nußdorf bei Schottenring 19",
-    "description": "Demonstration Einstieg Richtung Nußdorf bei Schottenring 19",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a2a04cd0fe1576433cf176b123a25d5c349802d4a283a7cf6ac713900d96fefc",
-    "pubDate": "2025-10-08T11:30:56+02:00",
-    "starts_at": "2025-10-08T11:30:56+02:00",
-    "ends_at": "2025-10-08T13:24:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Demonstration Betrieb ab Schwarzenbergplatz",
-    "description": "Demonstration Betrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7b5445a18fe825f2c2505c326e546fd306ae6d46f226760d813ee1afcf1097bc",
-    "pubDate": "2025-10-08T11:38:11+02:00",
-    "starts_at": "2025-10-08T11:38:11+02:00",
-    "ends_at": "2025-10-08T13:23:00+02:00",
-    "_identity": "wl|störung|L=71|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2A: Falschparker",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -506,50 +446,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Demonstration Betrieb ab Schwarzenbergplatz",
-    "description": "Demonstration Betrieb ab Schwarzenbergplatz",
+    "title": "6: Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c026b000b202d288cf3bec2c812e718351d4c37b0196152e41c269e70771cadc",
-    "pubDate": "2025-10-08T12:24:46+02:00",
-    "starts_at": "2025-10-08T12:24:46+02:00",
-    "ends_at": "2025-10-08T13:23:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Umleitung über Schwedenplatz",
-    "description": "Demonstration Umleitung über Schwedenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e4ea8aacde43cecdf7f75a6d4fe1f5b28b6d8f81143e1c1769f3a8d6195d98a5",
-    "pubDate": "2025-10-08T12:25:16+02:00",
-    "starts_at": "2025-10-08T12:25:16+02:00",
-    "ends_at": "2025-10-08T13:25:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Demonstration Betrieb ab Resselgasse",
-    "description": "Demonstration Betrieb ab Resselgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a3904226e11e2eaa01222749b08821d53ed1cdb9f1a41de4e9b274034872a123",
-    "pubDate": "2025-10-08T12:26:43+02:00",
-    "starts_at": "2025-10-08T12:26:43+02:00",
-    "ends_at": "2025-10-08T13:26:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18/6: Rettungseinsatz",
-    "description": "Die Linie 6 fährt derzeit nur zwischen Geiereckstraße und Eichenstraße und weiter bis Bahnhof Meidling, Dörfelstraße. Die Linie 18 fährt derzeit nur zwischen Schlachthausgasse und Eichenstraße und weiter bis Bahnhof Meidling, Dörfelstraße. Alternative: Linie U6 Die Störung dauert voraussichtlich bis 13:15 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Westbahnhof S U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1def9461b8655d7b6f67bdc914523256dd51eef4cde802a2417942e6aeda9a74",
+    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
     "pubDate": "2025-10-08T12:50:00+02:00",
     "starts_at": "2025-10-08T12:50:00+02:00",
     "ends_at": "2025-10-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=18,6|D=2025-10-08"
+    "_identity": "wl|störung|L=6|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 18 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
+    "pubDate": "2025-10-08T12:50:00+02:00",
+    "starts_at": "2025-10-08T12:50:00+02:00",
+    "ends_at": "2025-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=18|D=2025-10-08"
   },
   {
     "source": "Wiener Linien",
@@ -584,14 +500,14 @@
     "guid": "538e3537ccddfddb6ed2a2bea6bb7128afece95871c03e3c9b06dde002cf7d72",
     "pubDate": "2025-10-08T12:59:06+02:00",
     "starts_at": "2025-10-08T12:59:06+02:00",
-    "ends_at": "2025-10-08T13:58:00+02:00",
+    "ends_at": "2025-10-08T14:15:00+02:00",
     "_identity": "wl|störung|L=52|D=2025-10-08"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Die Linie 9 ist derzeit in Richtung Westbahnhof an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 13:25 Uhr. Grund dafür ist ein Falschparker im Bereich Hormayrgasse 49.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
     "pubDate": "2025-10-08T13:00:00+02:00",
@@ -610,5 +526,17 @@
     "starts_at": "2025-10-08T13:05:00+02:00",
     "ends_at": "2025-10-08T23:55:00+02:00",
     "_identity": "wl|störung|L=61A|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Rettungseinsatz",
+    "description": "Die Linie 66 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Oberlaaer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
+    "pubDate": "2025-10-08T13:20:00+02:00",
+    "starts_at": "2025-10-08T13:20:00+02:00",
+    "ends_at": "2025-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2025-10-08"
   }
 ]
