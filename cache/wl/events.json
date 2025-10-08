@@ -398,50 +398,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
+    "title": "2/5B: Rettungseinsatz",
+    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 5 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Heinestraße, Taborstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
-    "pubDate": "2025-10-08T12:50:00+02:00",
-    "starts_at": "2025-10-08T12:50:00+02:00",
+    "guid": "e023cd46e47f55c2693c8a9e7bdf47d0078616cfc7af2162e52d90c0ba1a758f",
+    "pubDate": "2025-10-08T15:30:00+02:00",
+    "starts_at": "2025-10-08T15:30:00+02:00",
     "ends_at": "2025-10-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=6|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
-    "pubDate": "2025-10-08T15:28:30+02:00",
-    "starts_at": "2025-10-08T15:28:30+02:00",
-    "ends_at": "2025-10-08T16:27:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5B: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "026034b61e72b8d6446ed6a38d301b8d35dab3ccc028632401c2c456a02db76a",
-    "pubDate": "2025-10-08T15:29:26+02:00",
-    "starts_at": "2025-10-08T15:29:26+02:00",
-    "ends_at": "2025-10-08T16:28:00+02:00",
-    "_identity": "wl|störung|L=5B|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2025-10-08T15:45:00+02:00",
-    "starts_at": "2025-10-08T15:45:00+02:00",
-    "ends_at": "2025-10-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2025-10-08"
+    "_identity": "wl|störung|L=2,5B|D=2025-10-08"
   },
   {
     "source": "Wiener Linien",
@@ -466,5 +430,53 @@
     "starts_at": "2025-10-08T16:05:00+02:00",
     "ends_at": "2025-10-10T19:00:00+02:00",
     "_identity": "wl|hinweis|L=1,2,71,74A,D,O|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9",
+    "pubDate": "2025-10-08T16:15:00+02:00",
+    "starts_at": "2025-10-08T16:15:00+02:00",
+    "ends_at": "2025-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 42 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fb8ee4d5a29493e27f80e3db638fbbff263fc1757a809406ca73ec8b5d665786",
+    "pubDate": "2025-10-08T16:15:00+02:00",
+    "starts_at": "2025-10-08T16:15:00+02:00",
+    "ends_at": "2025-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=42|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97d36012e56b1e5a07124d6ea367507c8e56424a01571c10477b0691d91eaa87",
+    "pubDate": "2025-10-08T16:22:21+02:00",
+    "starts_at": "2025-10-08T16:22:21+02:00",
+    "ends_at": "2025-10-08T17:22:00+02:00",
+    "_identity": "wl|störung|L=9|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "930d80e075929cf21fe799fda5426fd5228d64088925dc7f7064542f79ff0bc7",
+    "pubDate": "2025-10-08T16:22:41+02:00",
+    "starts_at": "2025-10-08T16:22:41+02:00",
+    "ends_at": "2025-10-08T17:22:00+02:00",
+    "_identity": "wl|störung|L=42|D=2025-10-08"
   }
 ]
