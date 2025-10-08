@@ -183,7 +183,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "14A: Straßenbauarbeiten bis 09.10.2025",
-    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Gudrunstraße wird die Linie 14 A umgeleitet.\nZeitraum:\nAb Dienstag, 30. September 2025, etwa 07:00 Uhr bis Donnerstag, 9. Oktober 2025, etwa 10:00 Uhr.\nMaßnahmen:\nLinie 14 A in Richtung Reumannplatz U:\nUmleitung ab Gudrunstraße # Van-der-Nüll-Gasse über Van-der-Nüll-Gasse – Landgutgasse – Laxenburger Straße – Gudrunstraße.\nAufgelassene Haltestelle:\nLaxenburger straße, Gudrunstraße (Gudrunstraße gegenüber 138)\nErsatzhaltestelle:\nLaxenburger Straße, Gudrunstraße (Laxenburger Straße 24, Haltestelle der Linie N66)",
+    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Gudrunstraße wird die Linie 14 A umgeleitet.\nZeitraum:\nAb Dienstag, 30. September 2025, etwa 07:00 Uhr bis Donnerstag, 9. Oktober 2025, etwa 10:00 Uhr.\nMaßnahmen:\nLinie 14 A in Richtung Reumannplatz U:\nUmleitung ab Gudrunstraße # Van-der-Nüll-Gasse über Van-der-Nüll-Gasse – Landgutgasse – Laxenburger Straße – Gudrunstraße.\nAufgelassene Haltestelle:\nLaxenburger Straße, Gudrunstraße (Gudrunstraße gegenüber 138)\nErsatzhaltestelle:\nLaxenburger Straße, Gudrunstraße (Laxenburger Straße 24, Haltestelle der Linie N66)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "d1b995fa295e2f5f81468cebbb52b2762f00408f9a2e2f278d91e94cb37bac64",
     "pubDate": "2025-09-10T16:00:00+02:00",
@@ -398,19 +398,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2/5B: Rettungseinsatz",
-    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 5 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Heinestraße, Taborstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e023cd46e47f55c2693c8a9e7bdf47d0078616cfc7af2162e52d90c0ba1a758f",
-    "pubDate": "2025-10-08T15:30:00+02:00",
-    "starts_at": "2025-10-08T15:30:00+02:00",
-    "ends_at": "2025-10-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=2,5B|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Falschparker Betrieb ab Hintere Zollamtsstraße",
+    "title": "1: Falschparker",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
@@ -446,18 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 42 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fb8ee4d5a29493e27f80e3db638fbbff263fc1757a809406ca73ec8b5d665786",
-    "pubDate": "2025-10-08T16:15:00+02:00",
-    "starts_at": "2025-10-08T16:15:00+02:00",
-    "ends_at": "2025-10-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=42|D=2025-10-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "9: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -478,5 +454,41 @@
     "starts_at": "2025-10-08T16:22:41+02:00",
     "ends_at": "2025-10-08T17:22:00+02:00",
     "_identity": "wl|störung|L=42|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Betriebsstörung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
+    "pubDate": "2025-10-08T16:45:00+02:00",
+    "starts_at": "2025-10-08T16:45:00+02:00",
+    "ends_at": "2025-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
+    "pubDate": "2025-10-08T16:50:00+02:00",
+    "starts_at": "2025-10-08T16:50:00+02:00",
+    "ends_at": "2025-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Verkehrsunfall",
+    "description": "Die Linie 66 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Breitenfurter Straße 360.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "74d7957440840d3e04ef7e63c6b0e84924838c4a84cdab001ac77313773a37b5",
+    "pubDate": "2025-10-08T17:00:00+02:00",
+    "starts_at": "2025-10-08T17:00:00+02:00",
+    "ends_at": "2025-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2025-10-08"
   }
 ]
