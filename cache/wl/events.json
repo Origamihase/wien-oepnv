@@ -171,7 +171,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "73A/73B: Pantucekgasse Straßenbauarbeiten",
-    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Pantucekgasse werden die Linien 73 A und 73 B umgeleitet.\nZeitraum:\nAb Mittwoch, 10. September 2025, etwa 07:00 Uhr auf Dauer von etwa acht Wochen.\nMaßnahmen:\nLinie 73 A in Richtung Simmering S U\nUmleitung ab Kaiser-Ebersdorfer-Straße # Meidlgasse über Meidlgasse.\nBzw.: Linie 73 A in Richtung Pantucekgasse\nUmleitung ab Kaiser-Ebersdorfer-Straße # Pantucekgasse über Kaiser-Ebersdorfer-Straße – Meidlgasse.\nHaltestellen:\nPANTUCEKGASSE\nPantucekgasse vor Meidlgasse\nErsatz- und provisorische Haltestellen:\nPANTUCEKGASSE\nMeidlgasse 61\nLinie 73 B in Richtung Zentralfriedhof, 3. Tor\nUmleitung ab Kaiser-Ebersdorfer-Straße # Meidlgasse über Meidlgasse.\nHaltestellen:\nPANTUCEKGASSE\nPantucekgasse vor Meidlgasse\nErsatz- und provisorische Haltestellen:\nPANTUCEKGASSE\nMeidlgasse 61",
+    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Pantucekgasse werden die Linien 73 A und 73 B umgeleitet.\nZeitraum:\nAb Mittwoch, 10. September 2025, etwa 07:00 Uhr auf Dauer von etwa acht Wochen.\nMaßnahmen:\nLinie 73 A in Richtung Simmering S U:\nUmleitung ab Kaiser-Ebersdorfer-Straße # Meidlgasse über Meidlgasse.\nBzw.: Linie 73 A in Richtung Pantucekgasse:\nUmleitung ab Kaiser-Ebersdorfer-Straße # Pantucekgasse über Kaiser-Ebersdorfer-Straße – Meidlgasse.\nAufgelassene Haltestelle:\nPantucekgasse (Pantucekgasse vor Meidlgasse)\nErsatzhaltestelle:\nPantucekgasse (Meidlgasse 61)\nLinie 73 B in Richtung Zentralfriedhof, 3. Tor:\nUmleitung ab Kaiser-Ebersdorfer-Straße # Meidlgasse über Meidlgasse.\nAufgelassene Haltestelle:\nPantucekgasse (Pantucekgasse vor Meidlgasse)\nErsatzhaltestelle:\nPantucekgasse (Meidlgasse 61)\nSkizze:",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2303367fff580a248c65ce744ec4c1248c455c28bd8d0a516fe7e3aad5729a5e",
     "pubDate": "2025-09-05T09:15:00+02:00",
@@ -394,5 +394,17 @@
     "starts_at": "2025-10-08T04:45:17+02:00",
     "ends_at": "2025-10-09T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2025-10-08T06:10:00+02:00",
+    "starts_at": "2025-10-08T06:10:00+02:00",
+    "ends_at": "2025-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2025-10-08"
   }
 ]
