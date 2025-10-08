@@ -446,6 +446,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U1: Betriebsstörung",
+    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
+    "pubDate": "2025-10-08T08:15:00+02:00",
+    "starts_at": "2025-10-08T08:15:00+02:00",
+    "ends_at": "2025-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2025-10-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U3: Rettungseinsatz",
     "description": "Die Linie U3 fährt derzeit zwischen den Stationen Schlachthausgasse und Gasometer in beiden Richtungen über Gleis 2. Die Störung dauert voraussichtlich bis 08:45 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Schlachthausgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
