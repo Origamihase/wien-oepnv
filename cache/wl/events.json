@@ -502,5 +502,29 @@
     "starts_at": "2025-10-09T17:21:11+02:00",
     "ends_at": "2025-10-09T18:20:00+02:00",
     "_identity": "wl|störung|L=44|D=2025-10-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Rettungseinsatz",
+    "description": "Die Linie 38 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "67cf05ce8846177e4f3d143c88b0e0c7b91c475498b9731a9668e78e4fae4a88",
+    "pubDate": "2025-10-09T17:50:00+02:00",
+    "starts_at": "2025-10-09T17:50:00+02:00",
+    "ends_at": "2025-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=38A|D=2025-10-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Verkehrsüberlastung",
+    "description": "Die Linie 66 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f2cbc6549fef70caa0f51c5227108c1fa69f01446f6e45fbf2428f34f3c9ccc9",
+    "pubDate": "2025-10-09T18:10:00+02:00",
+    "starts_at": "2025-10-09T18:10:00+02:00",
+    "ends_at": "2025-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2025-10-09"
   }
 ]
