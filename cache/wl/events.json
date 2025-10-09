@@ -458,30 +458,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Rettungseinsatz",
-    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
-    "pubDate": "2025-10-09T17:10:00+02:00",
-    "starts_at": "2025-10-09T17:10:00+02:00",
-    "ends_at": "2025-10-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2025-10-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "44: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 44 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e78eaae06ed5d3cf090d4186a3c0813bd59271e475fa87f71ff2ee4b48e3d505",
-    "pubDate": "2025-10-09T17:15:00+02:00",
-    "starts_at": "2025-10-09T17:15:00+02:00",
-    "ends_at": "2025-10-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=44|D=2025-10-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "57A: Verkehrsüberlastung",
     "description": "Die Linie 57 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -514,5 +490,41 @@
     "starts_at": "2025-10-09T18:10:00+02:00",
     "ends_at": "2025-10-09T23:55:00+02:00",
     "_identity": "wl|störung|L=66A|D=2025-10-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42A/47B/60A: Verkehrsüberlastung",
+    "description": "Die Linie 47 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 42 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2112893529e88cb9243ed2c027eed683363219c3fd382e8bb4f4499aa739f9a7",
+    "pubDate": "2025-10-09T18:25:00+02:00",
+    "starts_at": "2025-10-09T18:25:00+02:00",
+    "ends_at": "2025-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=42A,47B,60A|D=2025-10-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
+    "pubDate": "2025-10-09T18:30:00+02:00",
+    "starts_at": "2025-10-09T18:30:00+02:00",
+    "ends_at": "2025-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2025-10-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Rettungseinsatz",
+    "description": "Die Linie 1 ist derzeit in Richtung Prater Hauptallee an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 19:15 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Stefan-Fadinger-Platz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
+    "pubDate": "2025-10-09T18:45:00+02:00",
+    "starts_at": "2025-10-09T18:45:00+02:00",
+    "ends_at": "2025-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-10-09"
   }
 ]
