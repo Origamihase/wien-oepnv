@@ -410,25 +410,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Stellwerksstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
+    "title": "U1: U1 Störung Eingeschränkter Betrieb zwischen Nestroyplatz und Stephansplatz",
+    "description": "U1 Störung Eingeschränkter Betrieb zwischen Nestroyplatz und Stephansplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d264cf297118f15193acf542540f7ba8a223f20092400da6f3686e026fb42613",
-    "pubDate": "2025-10-09T08:25:00+02:00",
-    "starts_at": "2025-10-09T08:25:00+02:00",
-    "ends_at": "2025-10-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2025-10-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: U1 Störung Kein Betrieb zwischen Stephansplatz und Vorgartenstraße",
-    "description": "U1 Störung Kein Betrieb zwischen Stephansplatz und Vorgartenstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "791d010be52aea1c14330a08fff54d9b114d4d8eddb8236204c93a8de3b2d518",
+    "guid": "34aa4313205753ba8c60767e1b79bf5e98339e1b889953acbb931c7e01a574d8",
     "pubDate": "2025-10-09T08:37:29+02:00",
     "starts_at": "2025-10-09T08:37:29+02:00",
-    "ends_at": "2025-10-09T11:00:00+02:00",
+    "ends_at": "2025-10-09T11:56:00+02:00",
     "_identity": "wl|störung|L=U1|D=2025-10-09"
   },
   {
@@ -442,5 +430,17 @@
     "starts_at": "2025-10-09T10:25:00+02:00",
     "ends_at": "2025-10-09T23:55:00+02:00",
     "_identity": "wl|störung|L=U6|D=2025-10-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Stellwerksstörung",
+    "description": "Die Linie U1 ist derzeit zwischen den Stationen Stephansplatz und Nestroyplatz unterbrochen. Ein Pendelzug wurde in diesem Bereich auf Gleis 1 eingerichtet. Bitte beachten Sie, dass Sie in den Stationen Stephansplatz und Nestroyplatz jeweils in einen Zug am gegenüberliegenden Bahnsteig umsteigen müssen. Es kann auf der gesamten Linie U1 zu längeren Wartezeiten und Verzögerungen kommen. Weichen Sie nach Möglichkeit auf andere Linien aus. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist eine Stellwerksstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d264cf297118f15193acf542540f7ba8a223f20092400da6f3686e026fb42613",
+    "pubDate": "2025-10-09T10:45:00+02:00",
+    "starts_at": "2025-10-09T10:45:00+02:00",
+    "ends_at": "2025-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2025-10-09"
   }
 ]
