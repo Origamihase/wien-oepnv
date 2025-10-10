@@ -482,7 +482,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "12A: Polizeieinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "374069ccf0ff3be5104dd31d6813256c9eea30537579d930288c2ea1f81eccd9",
@@ -518,6 +518,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0db792f9373b33394ac9cbd54fe89c56f58770700c324d59539bd75f7e841cff",
+    "pubDate": "2025-10-10T12:10:00+02:00",
+    "starts_at": "2025-10-10T12:10:00+02:00",
+    "ends_at": "2025-10-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=6|D=2025-10-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46",
+    "pubDate": "2025-10-10T12:10:00+02:00",
+    "starts_at": "2025-10-10T12:10:00+02:00",
+    "ends_at": "2025-10-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=11|D=2025-10-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "6: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -530,6 +554,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2025-10-10T12:15:00+02:00",
+    "starts_at": "2025-10-10T12:15:00+02:00",
+    "ends_at": "2025-10-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2025-10-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11: Verkehrsunfall Umleitung bis Absberggasse über Linien O und D",
     "description": "Verkehrsunfall Umleitung bis Absberggasse über Linien O und D",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -537,6 +573,18 @@
     "pubDate": "2025-10-10T12:16:10+02:00",
     "starts_at": "2025-10-10T12:16:10+02:00",
     "ends_at": "2025-10-10T13:14:00+02:00",
+    "_identity": "wl|störung|L=11|D=2025-10-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Verkehrsunfall Betrieb ab Absberggasse",
+    "description": "Verkehrsunfall Betrieb ab Absberggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d6154e1d5cb0d807dce49a5ff5881d12d6461f6c6421b467583e5f2b8124603d",
+    "pubDate": "2025-10-10T12:17:52+02:00",
+    "starts_at": "2025-10-10T12:17:52+02:00",
+    "ends_at": "2025-10-10T13:16:00+02:00",
     "_identity": "wl|störung|L=11|D=2025-10-10"
   }
 ]
