@@ -514,5 +514,29 @@
     "starts_at": "2025-10-10T11:59:51+02:00",
     "ends_at": "2025-10-10T20:00:00+02:00",
     "_identity": "wl|störung|L=|D=2025-10-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8d027bd0136563db15b013c0aa4de03c0f2ff6b7c33eb3469e64b319bd6a584c",
+    "pubDate": "2025-10-10T12:13:58+02:00",
+    "starts_at": "2025-10-10T12:13:58+02:00",
+    "ends_at": "2025-10-10T13:13:00+02:00",
+    "_identity": "wl|störung|L=6|D=2025-10-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Verkehrsunfall Umleitung bis Absberggasse über Linien O und D",
+    "description": "Verkehrsunfall Umleitung bis Absberggasse über Linien O und D",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3f8ab97ce2dcdfd701fc120edd5d7bb297db0fedd9ad8c74328903f240bf2761",
+    "pubDate": "2025-10-10T12:16:10+02:00",
+    "starts_at": "2025-10-10T12:16:10+02:00",
+    "ends_at": "2025-10-10T13:14:00+02:00",
+    "_identity": "wl|störung|L=11|D=2025-10-10"
   }
 ]
