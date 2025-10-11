@@ -386,18 +386,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f1ccf4d6b1a6d1d510b41cb2c10a04e3bb077aef3d27f0c5f99cad2a9c11f584",
-    "pubDate": "2025-10-12T00:25:32+02:00",
-    "starts_at": "2025-10-12T00:25:32+02:00",
-    "ends_at": "2025-10-12T01:25:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-10-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U2: Verunreinigung",
     "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -430,5 +418,17 @@
     "starts_at": "2025-10-12T01:00:13+02:00",
     "ends_at": "2025-10-12T04:30:00+02:00",
     "_identity": "wl|störung|L=N20|D=2025-10-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N38: Busse halten bei Liechtensteinstr. 50",
+    "description": "Bauarbeiten Busse halten bei Liechtensteinstr. 50",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "739cc5e9096d6373cf06f791f142fe6c98cac1445fc5363723feece7bbff56c2",
+    "pubDate": "2025-10-12T01:20:05+02:00",
+    "starts_at": "2025-10-12T01:20:05+02:00",
+    "ends_at": "2025-10-12T05:05:00+02:00",
+    "_identity": "wl|störung|L=N38|D=2025-10-12"
   }
 ]
