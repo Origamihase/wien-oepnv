@@ -301,18 +301,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N38: Busse halten bei Liechtensteinstr. 68-72",
-    "description": "Bauarbeiten Busse halten bei Liechtensteinstr. 68-72",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a6a987a32b38d85f3d0dcaceba01b7e03ecd4a1b44249076de8bb39e7c3f35b",
-    "pubDate": "2025-10-06T00:00:19+02:00",
-    "starts_at": "2025-10-06T00:00:19+02:00",
-    "ends_at": "2025-10-11T23:59:59+02:00",
-    "_identity": "wl|störung|L=N38|D=2025-10-06"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "77A: Bauarbeiten, Umleitung über A23",
     "description": "Bauarbeiten\nWegen großräumigen Bauarbeiten wird die Linie 77 A umgeleitet.\nZeitraum:\nDienstag, 10. Juni 2025 bis Freitag, 27. Juni 2025 und ab Montag, 22. September 2025 auf Dauer von etwa einem Jahr.\nMaßnahmen:\nLinie 77 A\nUmleitung in beiden Richtungen zwischen Ludwig-Koeßler-Platz und Donaumarina über die A23.\nDie Haltestellen Stadionbrücke, Klaschkaweg, Stadionbad, Pierre-de-Coubertin-Platz, Ernst-Happel-Stadion, Stadion U und Marathonweg können dadurch nicht eingehalten werden.\nDie Haltestelle STADION U ist über die U2 von der Haltestelle DONAUMARINA U erreichbar.\nSkizze:",
@@ -368,7 +356,7 @@
     "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
     "pubDate": "2025-10-10T06:59:51+02:00",
     "starts_at": "2025-10-10T06:59:51+02:00",
-    "ends_at": "2025-10-11T23:59:59+02:00",
+    "ends_at": "2025-10-12T23:59:59+02:00",
     "_identity": "wl|störung|L=12A|D=2025-10-10"
   },
   {
@@ -380,7 +368,7 @@
     "guid": "2664a84bd7bb35a6f0aba982e3c561700607eccff2b9b90413246f273c30c1cd",
     "pubDate": "2025-10-11T00:00:20+02:00",
     "starts_at": "2025-10-11T00:00:20+02:00",
-    "ends_at": "2025-10-11T23:59:59+02:00",
+    "ends_at": "2025-10-12T23:59:59+02:00",
     "_identity": "wl|störung|L=40A|D=2025-10-11"
   },
   {
@@ -398,25 +386,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Polizeieinsatz Betrieb ab Johann-Nepomuk-Berger-Platz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 44 zu unterschiedlichen Intervallen.",
+    "title": "44: Polizeieinsatz",
+    "description": "Die Linie 44 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Ottakringer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201",
     "pubDate": "2025-10-11T23:00:00+02:00",
     "starts_at": "2025-10-11T23:00:00+02:00",
-    "ends_at": "2025-10-11T23:59:59+02:00",
+    "ends_at": "2025-10-12T00:55:00+02:00",
     "_identity": "wl|störung|L=44|D=2025-10-11"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Polizeieinsatz Umleitung bis Johann-Nepomuk-Berger-Platz",
-    "description": "Polizeieinsatz Umleitung bis Brünnlbadgasse über Linie 9+43",
+    "title": "N38: Busse halten bei Liechtensteinstr. 68-72",
+    "description": "Bauarbeiten Busse halten bei Liechtensteinstr. 68-72",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c6e457401d63ef49206f3d64851676247969eebb489d32e131a1f2f557a2d3d1",
-    "pubDate": "2025-10-11T23:10:43+02:00",
-    "starts_at": "2025-10-11T23:10:43+02:00",
-    "ends_at": "2025-10-11T23:59:59+02:00",
-    "_identity": "wl|störung|L=44|D=2025-10-11"
+    "guid": "0a6a987a32b38d85f3d0dcaceba01b7e03ecd4a1b44249076de8bb39e7c3f35b",
+    "pubDate": "2025-10-12T00:00:27+02:00",
+    "starts_at": "2025-10-12T00:00:27+02:00",
+    "ends_at": "2025-10-12T23:59:59+02:00",
+    "_identity": "wl|störung|L=N38|D=2025-10-12"
   }
 ]
