@@ -374,18 +374,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Polizeieinsatz",
-    "description": "Die Linie 44 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Ottakringer Straße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201",
-    "pubDate": "2025-10-11T23:00:00+02:00",
-    "starts_at": "2025-10-11T23:00:00+02:00",
-    "ends_at": "2025-10-12T00:55:00+02:00",
-    "_identity": "wl|störung|L=44|D=2025-10-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N38: Busse halten bei Liechtensteinstr. 68-72",
     "description": "Bauarbeiten Busse halten bei Liechtensteinstr. 68-72",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -399,12 +387,48 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "D: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Die Linie D ist derzeit in Richtung Nußdorf an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 00:40 Uhr. Grund dafür ist ein Polizeieinsatz im Bereich .",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "f1ccf4d6b1a6d1d510b41cb2c10a04e3bb077aef3d27f0c5f99cad2a9c11f584",
-    "pubDate": "2025-10-12T00:20:00+02:00",
-    "starts_at": "2025-10-12T00:20:00+02:00",
-    "ends_at": "2025-10-12T23:55:00+02:00",
+    "pubDate": "2025-10-12T00:25:32+02:00",
+    "starts_at": "2025-10-12T00:25:32+02:00",
+    "ends_at": "2025-10-12T01:25:00+02:00",
     "_identity": "wl|störung|L=D|D=2025-10-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verunreinigung",
+    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "55a6d2210edf7006a86ba29cb1618fa5f1c07d264c2f291e173729f4b9f779d9",
+    "pubDate": "2025-10-12T00:50:00+02:00",
+    "starts_at": "2025-10-12T00:50:00+02:00",
+    "ends_at": "2025-10-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2025-10-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Betriebsstörung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
+    "pubDate": "2025-10-12T00:55:00+02:00",
+    "starts_at": "2025-10-12T00:55:00+02:00",
+    "ends_at": "2025-10-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2025-10-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Busse halten bei Hoßplatz 4-5",
+    "description": "Gleisbauarbeiten Busse halten bei Hoßplatz 4-5",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a19de5d51953a6980449181f710dccf7c52937a0e0365fa3f006acf34eeb8266",
+    "pubDate": "2025-10-12T01:00:13+02:00",
+    "starts_at": "2025-10-12T01:00:13+02:00",
+    "ends_at": "2025-10-12T04:30:00+02:00",
+    "_identity": "wl|störung|L=N20|D=2025-10-12"
   }
 ]
