@@ -398,13 +398,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Betriebsstörung",
-    "description": "Die Linie 48 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich .",
+    "title": "14A: Fremder Verkehrsunfall",
+    "description": "Die Linie 14 A wird in Richtung Reumannplatz U zwischen Reinprechtsdorfer Brücke und Evangelischer Friedhof über Margaretengürtel umgeleitet. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein fremder Verkehrsunfall im Bereich Reinprechtsdorfer Straße .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "40abe8015540dc340a7006b7131e0f8abed33a83dfde5af7bcbdf50c13a4eeb9",
-    "pubDate": "2025-10-12T14:35:00+02:00",
-    "starts_at": "2025-10-12T14:35:00+02:00",
+    "guid": "42270d028cd443977f582a2b48222c38c0603b64b1f2d3ae98143b310e12046e",
+    "pubDate": "2025-10-12T15:05:00+02:00",
+    "starts_at": "2025-10-12T15:05:00+02:00",
     "ends_at": "2025-10-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=48A|D=2025-10-12"
+    "_identity": "wl|störung|L=14A|D=2025-10-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3906e11c18aa9333980e1532d7e8005bacd160684c6330d6142359502ccfc2a5",
+    "pubDate": "2025-10-12T15:07:02+02:00",
+    "starts_at": "2025-10-12T15:07:02+02:00",
+    "ends_at": "2025-10-12T16:06:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2025-10-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Fremdunfall Örtlich umgeleitet bis Evangelischer Friedhof",
+    "description": "Fremdunfall Örtlich umgeleitet bis Evangelischer Friedhof",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "060a34ffa027293bec076ef0f6f980e8d04b64b1f707822f40d7d97b72164462",
+    "pubDate": "2025-10-12T15:07:02+02:00",
+    "starts_at": "2025-10-12T15:07:02+02:00",
+    "ends_at": "2025-10-12T16:12:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2025-10-12"
   }
 ]
