@@ -296,7 +296,11 @@ if not VOR_STATION_IDS:
     _fallback_ids = _load_station_ids_from_file()
     if _fallback_ids:
         VOR_STATION_IDS = _fallback_ids
-VOR_BASE = os.getenv("VOR_BASE", "https://routenplaner.verkehrsauskunft.at/vao/restproxy")
+_env_base_url = os.getenv("VOR_BASE_URL")
+_env_base = os.getenv("VOR_BASE")
+VOR_BASE = (_env_base_url or _env_base or "https://routenplaner.verkehrsauskunft.at/vao/restproxy").strip()
+if not VOR_BASE:
+    VOR_BASE = "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
 VOR_VERSION = os.getenv("VOR_VERSION", "v1.11.0")
 BOARD_DURATION_MIN = get_int_env("VOR_BOARD_DURATION_MIN", 60)
 HTTP_TIMEOUT = get_int_env("VOR_HTTP_TIMEOUT", 15)
