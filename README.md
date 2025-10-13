@@ -350,10 +350,12 @@ Weitere Details folgen …]]></description>
 (`VOR_MAX_STATIONS_PER_RUN = 2`), um API-Limits einzuhalten und Requests besser zu
 verteilen.
 
-Existiert im Repository eine Datei `data/vor_station_ids_wien.txt`, wird ihr Inhalt
-automatisch als Fallback für `VOR_STATION_IDS` verwendet, wenn die Variable nicht über
-die Umgebung gesetzt ist. Dadurch können automatisierte Abläufe wie der Cache-Update-Workflow
-die gespeicherten IDs wiederverwenden, ohne sie explizit hinterlegen zu müssen.
+Standardmäßig liest der Provider die Stationsliste aus der zentralen Datei
+`data/stations.json` und verwendet alle dort hinterlegten `vor_id`-Einträge als
+Fallback für `VOR_STATION_IDS`. Existiert zusätzlich eine Datei
+`data/vor_station_ids_wien.txt`, bleibt diese als alternative Quelle erhalten
+und kann bei Bedarf genutzt werden, um projektspezifische Konfigurationen zu
+überschreiben.
 
 ## Lesbarkeit des Feeds
 

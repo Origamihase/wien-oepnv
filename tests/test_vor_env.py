@@ -94,6 +94,16 @@ def test_station_ids_fallback_from_file(monkeypatch, tmp_path):
     importlib.reload(vor)
 
 
+def test_station_ids_fallback_from_directory(monkeypatch):
+    monkeypatch.delenv("VOR_STATION_IDS", raising=False)
+    monkeypatch.delenv("VOR_STATION_NAMES", raising=False)
+    monkeypatch.delenv("VOR_STATION_IDS_FILE", raising=False)
+
+    importlib.reload(vor)
+
+    assert {"900100", "900200", "900300"}.issubset(set(vor.VOR_STATION_IDS))
+
+
 def test_base_url_prefers_secret(monkeypatch):
     monkeypatch.setenv("VOR_BASE", "https://example.com/base")
     monkeypatch.setenv("VOR_BASE_URL", "https://secret.example.com/base")

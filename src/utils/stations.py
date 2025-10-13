@@ -10,7 +10,13 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Dict, Iterable, List, NamedTuple, Sequence, Tuple
 
-__all__ = ["canonical_name", "is_in_vienna", "is_pendler", "station_info"]
+__all__ = [
+    "canonical_name",
+    "is_in_vienna",
+    "is_pendler",
+    "station_info",
+    "vor_station_ids",
+]
 
 
 logger = logging.getLogger(__name__)
@@ -251,22 +257,32 @@ def _iter_aliases(
 
 
 @lru_cache(maxsize=1)
-def _station_lookup() -> Dict[str, StationInfo]:
-    """Return a mapping from normalized aliases to :class:`StationInfo` records."""
+def _station_entries() -> tuple[dict, ...]:
+    """Return the raw station entries from :mod:`data/stations.json`."""
 
     try:
         with _STATIONS_PATH.open("r", encoding="utf-8") as handle:
             entries = json.load(handle)
     except (OSError, json.JSONDecodeError):  # pragma: no cover - defensive
-        return {}
+        return ()
+
+    if not isinstance(entries, list):
+        return ()
+
+    result: list[dict] = []
+    for entry in entries:
+        if isinstance(entry, dict):
+            result.append(entry)
+    return tuple(result)
+
+
+@lru_cache(maxsize=1)
+def _station_lookup() -> Dict[str, StationInfo]:
+    """Return a mapping from normalized aliases to :class:`StationInfo` records."""
 
     mapping: Dict[str, StationInfo] = {}
-    if not isinstance(entries, list):
-        return mapping
 
-    for entry in entries:
-        if not isinstance(entry, dict):
-            continue
+    for entry in _station_entries():
         name = str(entry.get("name", "")).strip()
         if not name:
             continue
@@ -431,3 +447,26 @@ def is_pendler(name: str) -> bool:
 
     info = station_info(name)
     return bool(info and info.pendler)
+
+
+@lru_cache(maxsize=1)
+def vor_station_ids() -> tuple[str, ...]:
+    """Return the configured VOR station IDs from ``stations.json``.
+
+    The function collects all entries that provide a ``vor_id`` and returns a
+    sorted tuple of distinct identifiers. This centralizes the list of
+    departure board locations that should be queried by the VOR provider and is
+    used as a repository default when no explicit ``VOR_STATION_IDS``
+    environment variable is configured.
+    """
+
+    ids: set[str] = set()
+    for entry in _station_entries():
+        vor_id_raw = entry.get("vor_id")
+        if vor_id_raw is None:
+            continue
+        vor_id = str(vor_id_raw).strip()
+        if not vor_id:
+            continue
+        ids.add(vor_id)
+    return tuple(sorted(ids))
