@@ -19,11 +19,13 @@ def test_station_alias_collision_logs_warning(tmp_path, caplog, monkeypatch):
     temp_file.write_text(json.dumps(data), encoding="utf-8")
 
     monkeypatch.setattr(stations, "_STATIONS_PATH", temp_file)
+    stations._station_entries.cache_clear()
     stations._station_lookup.cache_clear()
     try:
         with caplog.at_level(logging.WARNING):
             stations._station_lookup()
     finally:
+        stations._station_entries.cache_clear()
         stations._station_lookup.cache_clear()
 
     warnings = [record.message for record in caplog.records if record.levelno == logging.WARNING]

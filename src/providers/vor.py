@@ -38,9 +38,9 @@ except ModuleNotFoundError:
     from src.utils.text import html_to_text  # type: ignore
 
 try:  # pragma: no cover - support both package layouts
-    from utils.stations import canonical_name
+    from utils.stations import canonical_name, vor_station_ids
 except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.stations import canonical_name  # type: ignore
+    from src.utils.stations import canonical_name, vor_station_ids  # type: ignore
 
 try:  # pragma: no cover - support both package layouts
     from utils.http import session_with_retries
@@ -284,7 +284,7 @@ VOR_STATION_NAMES: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_NAMES
 
 
 def _load_station_ids_from_file() -> List[str]:
-    """Load VOR station IDs from a text file if configured."""
+    """Load VOR station IDs from configured sources."""
 
     candidates: List[Path] = []
     env_path = os.getenv("VOR_STATION_IDS_FILE")
@@ -300,6 +300,10 @@ def _load_station_ids_from_file() -> List[str]:
         ids = [part.strip() for part in re.split(r"[\s,]+", raw) if part.strip()]
         if ids:
             return ids
+
+    directory_ids = list(vor_station_ids())
+    if directory_ids:
+        return directory_ids
     return []
 
 

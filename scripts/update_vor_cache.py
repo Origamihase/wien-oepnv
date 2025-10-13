@@ -20,17 +20,25 @@ if str(SRC_DIR) not in sys.path:
 
 
 def _seed_station_ids_from_file() -> None:
-    """Populate ``VOR_STATION_IDS`` from the repository cache if unset."""
+    """Populate ``VOR_STATION_IDS`` from repository defaults if unset."""
 
     if os.getenv("VOR_STATION_IDS"):
+        return
+
+    try:
+        from utils.stations import vor_station_ids
+    except ModuleNotFoundError:  # pragma: no cover - fallback for src layout
+        from src.utils.stations import vor_station_ids  # type: ignore
+
+    ids_from_directory = ",".join(vor_station_ids())
+    if ids_from_directory:
+        os.environ["VOR_STATION_IDS"] = ids_from_directory
         return
 
     station_file = REPO_ROOT / "data" / "vor_station_ids_wien.txt"
     try:
         raw = station_file.read_text(encoding="utf-8")
-    except FileNotFoundError:
-        return
-    except OSError:
+    except (FileNotFoundError, OSError):
         return
 
     parts = [segment.strip() for segment in raw.replace("\n", ",").split(",")]
