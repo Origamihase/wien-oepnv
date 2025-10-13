@@ -27,6 +27,34 @@ except ModuleNotFoundError:  # pragma: no cover
 _ALLOWED_ROOTS = {"docs", "data", "log"}
 
 
+def _resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: bool = False) -> Path:
+    """Return a repository-internal path for ``env_name``.
+
+    Empty or whitespace-only values fall back to ``default``.  Invalid
+    non-empty values propagate the :class:`ValueError` raised by
+    :func:`_validate_path`.
+    """
+
+    default_path = Path(default)
+    raw = os.getenv(env_name)
+    candidate_str = (raw or "").strip()
+
+    if not candidate_str:
+        resolved_default = _validate_path(default_path, env_name)
+        os.environ[env_name] = resolved_default.as_posix()
+        return resolved_default
+
+    candidate_path = Path(candidate_str)
+    try:
+        resolved = _validate_path(candidate_path, env_name)
+    except ValueError:
+        if not allow_fallback:
+            raise
+        resolved = _validate_path(default_path, env_name)
+    os.environ[env_name] = resolved.as_posix()
+    return resolved
+
+
 def _validate_path(path: Path, name: str) -> Path:
     """Ensure ``path`` stays within whitelisted directories."""
 
@@ -45,15 +73,8 @@ if not isinstance(_level, int):
     _level = logging.INFO
 
 _DEFAULT_LOG_DIR = Path("log")
-_LOG_DIR_ENV = os.getenv("LOG_DIR")
-if _LOG_DIR_ENV is None:
-    LOG_DIR_PATH = _validate_path(_DEFAULT_LOG_DIR, "LOG_DIR")
-else:
-    try:
-        LOG_DIR_PATH = _validate_path(Path(_LOG_DIR_ENV), "LOG_DIR")
-    except ValueError:
-        LOG_DIR_PATH = _validate_path(_DEFAULT_LOG_DIR, "LOG_DIR")
-LOG_DIR = str(LOG_DIR_PATH)
+LOG_DIR_PATH = _resolve_env_path("LOG_DIR", _DEFAULT_LOG_DIR, allow_fallback=True)
+LOG_DIR = LOG_DIR_PATH.as_posix()
 LOG_MAX_BYTES = max(get_int_env("LOG_MAX_BYTES", 1_000_000), 0)
 LOG_BACKUP_COUNT = max(get_int_env("LOG_BACKUP_COUNT", 5), 0)
 
@@ -109,8 +130,7 @@ for env, loader in PROVIDERS:
     setattr(loader, "_provider_cache_name", provider_name)
 
 # ---------------- ENV ----------------
-OUT_PATH = os.getenv("OUT_PATH", "docs/feed.xml")
-_validate_path(Path(OUT_PATH), "OUT_PATH")
+OUT_PATH = _resolve_env_path("OUT_PATH", Path("docs/feed.xml")).as_posix()
 FEED_TITLE = os.getenv("FEED_TITLE", "ÖPNV Störungen Wien & Umgebung")
 FEED_LINK = os.getenv("FEED_LINK", "https://github.com/Origamihase/wien-oepnv")
 FEED_DESC = os.getenv("FEED_DESC", "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen")
@@ -133,8 +153,7 @@ ABSOLUTE_MAX_AGE_DAYS = max(
 ENDS_AT_GRACE_MINUTES = max(get_int_env("ENDS_AT_GRACE_MINUTES", 10), 0)
 PROVIDER_TIMEOUT = max(get_int_env("PROVIDER_TIMEOUT", 25), 0)
 
-STATE_FILE = Path(os.getenv("STATE_PATH", "data/first_seen.json"))  # nur Einträge aus *aktuellem* Feed
-STATE_FILE = _validate_path(STATE_FILE, "STATE_PATH")
+STATE_FILE = _resolve_env_path("STATE_PATH", Path("data/first_seen.json"))  # nur Einträge aus *aktuellem* Feed
 STATE_RETENTION_DAYS = max(get_int_env("STATE_RETENTION_DAYS", 60), 0)
 
 RFC = "%a, %d %b %Y %H:%M:%S %z"
