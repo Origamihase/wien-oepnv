@@ -3,7 +3,7 @@ name: Build RSS
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/30 * * * *"   # -alle 30 Minuten (UTC)
+    - cron: "*/30 * * * *"   # alle 30 Minuten (UTC)
 
 permissions:
   contents: write
