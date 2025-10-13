@@ -106,6 +106,48 @@ def test_save_request_count_flushes_and_fsyncs(monkeypatch, tmp_path):
     assert fsync_called
 
 
+def test_save_request_count_returns_previous_on_lock_failure(monkeypatch, tmp_path):
+    target_file = tmp_path / "vor_request_count.json"
+    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
+
+    target_file.write_text(
+        json.dumps({"date": "2023-01-02", "count": 7}),
+        encoding="utf-8",
+    )
+
+    def failing_open(*args, **kwargs):
+        raise OSError("boom")
+
+    monkeypatch.setattr(vor.os, "open", failing_open)
+
+    result = vor.save_request_count(datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna")))
+
+    assert result == 7
+    stored = json.loads(target_file.read_text(encoding="utf-8"))
+    assert stored["count"] == 7
+
+
+def test_save_request_count_returns_previous_on_replace_failure(monkeypatch, tmp_path):
+    target_file = tmp_path / "vor_request_count.json"
+    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
+
+    target_file.write_text(
+        json.dumps({"date": "2023-01-02", "count": 3}),
+        encoding="utf-8",
+    )
+
+    def failing_replace(src, dst):
+        raise OSError("replace failed")
+
+    monkeypatch.setattr(vor.os, "replace", failing_replace)
+
+    result = vor.save_request_count(datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna")))
+
+    assert result == 3
+    stored = json.loads(target_file.read_text(encoding="utf-8"))
+    assert stored["count"] == 3
+
+
 def test_save_request_count_clears_stale_lock(monkeypatch, tmp_path):
     target_file = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
