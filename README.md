@@ -348,6 +348,11 @@ Weitere Details folgen …]]></description>
 (`VOR_MAX_STATIONS_PER_RUN = 2`), um API-Limits einzuhalten und Requests besser zu
 verteilen.
 
+Existiert im Repository eine Datei `data/vor_station_ids_wien.txt`, wird ihr Inhalt
+automatisch als Fallback für `VOR_STATION_IDS` verwendet, wenn die Variable nicht über
+die Umgebung gesetzt ist. Dadurch können automatisierte Abläufe wie der Cache-Update-Workflow
+die gespeicherten IDs wiederverwenden, ohne sie explizit hinterlegen zu müssen.
+
 ## Lesbarkeit des Feeds
 
 Der Feed ist auf großformatige Anzeigeoberflächen wie Info-Screens oder Fernseher zugeschnitten. Kürzere Textzeilen mit Zeilenumbrüchen erleichtern das Erfassen aus größerer Entfernung, während die kombinierte Begrenzung durch `DESCRIPTION_CHAR_LIMIT` und die Ellipsis (`…`) dafür sorgt, dass längere Meldungen auf einen prägnanten Kern reduziert werden. Mehrzeilige Beschreibungen erlauben es, komplexere Situationen (z. B. Linienersatz oder Umleitungen) dennoch in mehreren Stichsätzen darzustellen, ohne dass der Bildschirm mit Fließtext überfüllt wird.

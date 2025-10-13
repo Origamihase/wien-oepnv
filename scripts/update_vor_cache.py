@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import logging
 import sys
+import os
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -16,6 +17,29 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_DIR = REPO_ROOT / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
+
+
+def _seed_station_ids_from_file() -> None:
+    """Populate ``VOR_STATION_IDS`` from the repository cache if unset."""
+
+    if os.getenv("VOR_STATION_IDS"):
+        return
+
+    station_file = REPO_ROOT / "data" / "vor_station_ids_wien.txt"
+    try:
+        raw = station_file.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        return
+    except OSError:
+        return
+
+    parts = [segment.strip() for segment in raw.replace("\n", ",").split(",")]
+    station_ids = ",".join(part for part in parts if part)
+    if station_ids:
+        os.environ["VOR_STATION_IDS"] = station_ids
+
+
+_seed_station_ids_from_file()
 
 from providers.vor import (  # noqa: E402  (import after path setup)
     MAX_REQUESTS_PER_DAY,
