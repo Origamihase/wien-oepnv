@@ -5,16 +5,16 @@ import src.providers.vor as vor
 
 
 def test_access_id_env_normalization(monkeypatch):
-    # VOR_ACCESS_ID mit Leerzeichen sollte als None interpretiert werden
+    # VOR_ACCESS_ID mit Leerzeichen fällt auf den Dokumentations-Standard zurück
     monkeypatch.setenv("VOR_ACCESS_ID", "   ")
     importlib.reload(vor)
-    assert vor.VOR_ACCESS_ID is None
+    assert vor.VOR_ACCESS_ID == vor.DEFAULT_ACCESS_ID
 
-    # Fallback auf VAO_ACCESS_ID, ebenfalls Leerzeichen -> None
+    # Fallback auf VAO_ACCESS_ID, ebenfalls Leerzeichen -> Dokumentations-Standard
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     monkeypatch.setenv("VAO_ACCESS_ID", "   ")
     importlib.reload(vor)
-    assert vor.VOR_ACCESS_ID is None
+    assert vor.VOR_ACCESS_ID == vor.DEFAULT_ACCESS_ID
 
     # VAO_ACCESS_ID mit zusätzlichen Leerzeichen wird getrimmt
     monkeypatch.setenv("VAO_ACCESS_ID", " token ")
@@ -24,6 +24,7 @@ def test_access_id_env_normalization(monkeypatch):
     # Aufräumen
     monkeypatch.delenv("VAO_ACCESS_ID", raising=False)
     importlib.reload(vor)
+    assert vor.VOR_ACCESS_ID == vor.DEFAULT_ACCESS_ID
 
 
 def test_invalid_int_env_uses_defaults(monkeypatch, caplog):

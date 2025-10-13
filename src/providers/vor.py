@@ -267,7 +267,18 @@ def save_request_count(now_local: datetime) -> int:
         return result
 
 
-VOR_ACCESS_ID: str | None = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip() or None
+DEFAULT_ACCESS_ID = "VAO"
+"""Fallback access token recommended by the VAO REST documentation."""
+
+
+def _determine_access_id() -> str:
+    raw = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip()
+    if raw:
+        return raw
+    return DEFAULT_ACCESS_ID
+
+
+VOR_ACCESS_ID: str = _determine_access_id()
 VOR_STATION_IDS: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_IDS") or "").split(",") if s.strip()]
 VOR_STATION_NAMES: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_NAMES") or "").split(",") if s.strip()]
 
