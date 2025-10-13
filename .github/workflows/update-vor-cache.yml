@@ -26,6 +26,8 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Refresh VOR cache
+        env:
+          VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
         run: python scripts/update_vor_cache.py
 
       - name: Commit and push changes
