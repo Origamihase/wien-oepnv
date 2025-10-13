@@ -133,6 +133,7 @@ def save_request_count(now_local: datetime) -> int:
         lock_fd: int | None = None
         lock_acquired = False
         tmp_path: str | None = None
+        result = 0
 
         try:
             wait_started = time.monotonic()
@@ -208,37 +209,42 @@ def save_request_count(now_local: datetime) -> int:
             stored_date, stored_count = load_request_count()
             if stored_date != today:
                 stored_count = 0
-            new_count = stored_count + 1
+            result = stored_count
 
-            try:
-                REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
-                fd, tmp_path = tempfile.mkstemp(
-                    prefix=f"{REQUEST_COUNT_FILE.stem}-",
-                    suffix=REQUEST_COUNT_FILE.suffix or ".tmp",
-                    dir=str(REQUEST_COUNT_FILE.parent),
-                )
-                with os.fdopen(fd, "w", encoding="utf-8") as fh:
-                    json.dump({"date": today, "count": new_count}, fh)
-                    fh.flush()
-                    try:
-                        os.fsync(fh.fileno())
-                    except OSError as sync_exc:
-                        log.warning(
-                            "VOR: Konnte Request-Zähler nicht synchronisieren: %s",
-                            sync_exc,
-                        )
-                        raise
-                os.replace(tmp_path, REQUEST_COUNT_FILE)
-            except OSError as exc:
-                log.warning("VOR: Konnte Request-Zähler nicht speichern: %s", exc)
-                if tmp_path is not None:
-                    try:
-                        os.unlink(tmp_path)
-                    except OSError as cleanup_exc:
-                        log.debug(
-                            "VOR: Temporäre Request-Zähler-Datei konnte nicht gelöscht werden: %s",
-                            cleanup_exc,
-                        )
+            if lock_acquired:
+                new_count = stored_count + 1
+                try:
+                    REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
+                    fd, tmp_path = tempfile.mkstemp(
+                        prefix=f"{REQUEST_COUNT_FILE.stem}-",
+                        suffix=REQUEST_COUNT_FILE.suffix or ".tmp",
+                        dir=str(REQUEST_COUNT_FILE.parent),
+                    )
+                    with os.fdopen(fd, "w", encoding="utf-8") as fh:
+                        json.dump({"date": today, "count": new_count}, fh)
+                        fh.flush()
+                        try:
+                            os.fsync(fh.fileno())
+                        except OSError as sync_exc:
+                            log.warning(
+                                "VOR: Konnte Request-Zähler nicht synchronisieren: %s",
+                                sync_exc,
+                            )
+                            raise
+                    os.replace(tmp_path, REQUEST_COUNT_FILE)
+                    tmp_path = None
+                except OSError as exc:
+                    log.warning("VOR: Konnte Request-Zähler nicht speichern: %s", exc)
+                    if tmp_path is not None:
+                        try:
+                            os.unlink(tmp_path)
+                        except OSError as cleanup_exc:
+                            log.debug(
+                                "VOR: Temporäre Request-Zähler-Datei konnte nicht gelöscht werden: %s",
+                                cleanup_exc,
+                            )
+                else:
+                    result = new_count
         finally:
             if lock_fd is not None:
                 try:
@@ -258,7 +264,7 @@ def save_request_count(now_local: datetime) -> int:
                         "VOR: Konnte Request-Zähler-Lock nicht entfernen: %s",
                         cleanup_exc,
                     )
-        return new_count
+        return result
 
 
 VOR_ACCESS_ID: str | None = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip() or None
