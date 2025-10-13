@@ -12,6 +12,8 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
 
     steps:
       - name: Check out repository
@@ -24,6 +26,18 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Load VOR station IDs from repository (if available)
+        shell: bash
+        run: |
+          set -euo pipefail
+          FILE="data/vor_station_ids_wien.txt"
+          if [[ -f "$FILE" ]]; then
+            IDS="$(tr -d '\r\n ' < "$FILE")"
+            if [[ -n "$IDS" ]]; then
+              echo "VOR_STATION_IDS=$IDS" >> "$GITHUB_ENV"
+            fi
+          fi
 
       - name: Refresh VOR cache
         env:
