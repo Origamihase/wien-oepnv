@@ -156,7 +156,12 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/vor_station_ids_wien.txt
+          file="data/vor_station_ids_wien.txt"
+          if [[ ! -f "$file" ]]; then
+            echo "No discovered station IDs to commit."
+            exit 0
+          fi
+          git add "$file"
           if git diff --cached --quiet; then
             echo "No station ID changes to commit."
             exit 0
