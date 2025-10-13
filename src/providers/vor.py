@@ -264,6 +264,32 @@ def save_request_count(now_local: datetime) -> int:
 VOR_ACCESS_ID: str | None = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip() or None
 VOR_STATION_IDS: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_IDS") or "").split(",") if s.strip()]
 VOR_STATION_NAMES: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_NAMES") or "").split(",") if s.strip()]
+
+
+def _load_station_ids_from_file() -> List[str]:
+    """Load VOR station IDs from a text file if configured."""
+
+    candidates: List[Path] = []
+    env_path = os.getenv("VOR_STATION_IDS_FILE")
+    if env_path:
+        candidates.append(Path(env_path).expanduser())
+    candidates.append(Path(__file__).resolve().parents[2] / "data" / "vor_station_ids_wien.txt")
+
+    for candidate in candidates:
+        try:
+            raw = candidate.read_text(encoding="utf-8")
+        except (FileNotFoundError, OSError):
+            continue
+        ids = [part.strip() for part in re.split(r"[\s,]+", raw) if part.strip()]
+        if ids:
+            return ids
+    return []
+
+
+if not VOR_STATION_IDS:
+    _fallback_ids = _load_station_ids_from_file()
+    if _fallback_ids:
+        VOR_STATION_IDS = _fallback_ids
 VOR_BASE = os.getenv("VOR_BASE", "https://routenplaner.verkehrsauskunft.at/vao/restproxy")
 VOR_VERSION = os.getenv("VOR_VERSION", "v1.11.0")
 BOARD_DURATION_MIN = get_int_env("VOR_BOARD_DURATION_MIN", 60)

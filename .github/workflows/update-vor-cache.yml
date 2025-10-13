@@ -29,6 +29,8 @@ jobs:
         env:
           VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
         run: python scripts/update_vor_cache.py
+        env:
+          VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5

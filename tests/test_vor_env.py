@@ -1,5 +1,6 @@
 import importlib
 import logging
+
 import src.providers.vor as vor
 
 
@@ -73,5 +74,21 @@ def test_invalid_bus_regex_falls_back_to_defaults(monkeypatch, caplog):
 
     monkeypatch.delenv("VOR_BUS_INCLUDE_REGEX", raising=False)
     monkeypatch.delenv("VOR_BUS_EXCLUDE_REGEX", raising=False)
+    importlib.reload(vor)
+
+
+def test_station_ids_fallback_from_file(monkeypatch, tmp_path):
+    monkeypatch.delenv("VOR_STATION_IDS", raising=False)
+    monkeypatch.delenv("VOR_STATION_NAMES", raising=False)
+
+    ids_file = tmp_path / "ids.txt"
+    ids_file.write_text("  1001,1002\n1003  ", encoding="utf-8")
+    monkeypatch.setenv("VOR_STATION_IDS_FILE", str(ids_file))
+
+    importlib.reload(vor)
+
+    assert vor.VOR_STATION_IDS == ["1001", "1002", "1003"]
+
+    monkeypatch.delenv("VOR_STATION_IDS_FILE", raising=False)
     importlib.reload(vor)
 
