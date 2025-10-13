@@ -334,6 +334,22 @@ VOR_USER_AGENT = "Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wi
 VOR_SESSION_HEADERS = {"Accept": "application/json"}
 VOR_RETRY_OPTIONS = {"total": 3, "backoff_factor": 0.5, "raise_on_status": False}
 
+_ACCESS_ID_KEY_VALUE_RE = re.compile(r"(accessId\s*[=:]\s*)([\"']?)([^\"',\s&]+)(\2)", re.IGNORECASE)
+_ACCESS_ID_URLENC_RE = re.compile(r"(accessId%3D)([^&]+)", re.IGNORECASE)
+
+
+def _sanitize_access_id(message: str) -> str:
+    """Mask occurrences of the VOR access token in log messages."""
+
+    sanitized = _ACCESS_ID_KEY_VALUE_RE.sub(
+        lambda match: f"{match.group(1)}{match.group(2)}***{match.group(4)}",
+        message,
+    )
+    sanitized = _ACCESS_ID_URLENC_RE.sub(lambda match: f"{match.group(1)}***", sanitized)
+    if VOR_ACCESS_ID:
+        sanitized = sanitized.replace(VOR_ACCESS_ID, "***")
+    return sanitized
+
 def _stationboard_url() -> str:
     return f"{VOR_BASE}/{VOR_VERSION}/DepartureBoard"
 
@@ -406,7 +422,11 @@ def resolve_station_ids(names: List[str]) -> List[str]:
                     headers={"Accept": "application/json"},
                 )
             except requests.RequestException as e:
-                log.warning("VOR location.name %s -> %s", name, e)
+                log.warning(
+                    "VOR location.name %s -> %s",
+                    name,
+                    _sanitize_access_id(str(e)),
+                )
                 continue
 
             if resp.status_code >= 400:
@@ -557,11 +577,18 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[s
             request_attempted = True
             resp = session.get(_stationboard_url(), params=params, timeout=HTTP_TIMEOUT)
     except requests.RequestException as e:
-        msg = re.sub(r"accessId=[^&]+", "accessId=***", str(e))
-        log.error("VOR StationBoard Fehler (%s): %s", station_id, msg)
+        log.error(
+            "VOR StationBoard Fehler (%s): %s",
+            station_id,
+            _sanitize_access_id(str(e)),
+        )
         return None
     except Exception as e:
-        log.exception("VOR StationBoard Fehler (%s): %s", station_id, e)
+        log.exception(
+            "VOR StationBoard Fehler (%s): %s",
+            station_id,
+            _sanitize_access_id(str(e)),
+        )
         return None
     finally:
         if request_attempted:
@@ -824,7 +851,11 @@ def fetch_events() -> List[Dict[str, Any]]:
             try:
                 root = fut.result()
             except Exception as e:  # pragma: no cover - defensive
-                log.exception("VOR StationBoard Fehler (%s): %s", sid, e)
+                log.exception(
+                    "VOR StationBoard Fehler (%s): %s",
+                    sid,
+                    _sanitize_access_id(str(e)),
+                )
                 continue
             if root is None:
                 continue
