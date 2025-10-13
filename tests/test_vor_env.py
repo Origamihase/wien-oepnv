@@ -92,3 +92,23 @@ def test_station_ids_fallback_from_file(monkeypatch, tmp_path):
     monkeypatch.delenv("VOR_STATION_IDS_FILE", raising=False)
     importlib.reload(vor)
 
+
+def test_base_url_prefers_secret(monkeypatch):
+    monkeypatch.setenv("VOR_BASE", "https://example.com/base")
+    monkeypatch.setenv("VOR_BASE_URL", "https://secret.example.com/base")
+
+    importlib.reload(vor)
+
+    assert vor.VOR_BASE == "https://secret.example.com/base"
+
+    monkeypatch.delenv("VOR_BASE_URL", raising=False)
+    importlib.reload(vor)
+    assert vor.VOR_BASE == "https://example.com/base"
+
+    monkeypatch.delenv("VOR_BASE", raising=False)
+    importlib.reload(vor)
+    assert (
+        vor.VOR_BASE
+        == "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
+    )
+
