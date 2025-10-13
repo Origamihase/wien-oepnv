@@ -47,31 +47,31 @@ jobs:
         run: |
           set -euo pipefail
           cat >>"$GITHUB_ENV" <<'EOF'
-OUT_PATH=docs/feed.xml
-FEED_TITLE=ÖPNV Störungen Wien & Umgebung
-FEED_LINK=https://github.com/${{ github.repository }}
-FEED_DESC=Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen
-FEED_TTL=15
-LOG_LEVEL=INFO
-DESCRIPTION_CHAR_LIMIT=170
-MAX_ITEMS=60
-MAX_ITEM_AGE_DAYS=365
-ABSOLUTE_MAX_AGE_DAYS=540
-STATE_PATH=data/first_seen.json
-STATE_RETENTION_DAYS=540
-WL_ENABLE=1
-OEBB_ENABLE=1
-VOR_ENABLE=1
-OEBB_ONLY_VIENNA=1
-VOR_BASE=https://routenplaner.verkehrsauskunft.at/vao/restproxy
-VOR_VERSION=v1.11.0
-VOR_ALLOW_BUS=1
-VOR_BUS_INCLUDE_REGEX=(?:\b[2-9]\d{2,4}\b)
-VOR_BUS_EXCLUDE_REGEX=^(?:N?\d{1,2}[A-Z]?)$
-VOR_MAX_STATIONS_PER_RUN=2
-VOR_ROTATION_INTERVAL_SEC=1800
-VOR_STATION_IDS=
-EOF
+            OUT_PATH=docs/feed.xml
+            FEED_TITLE=ÖPNV Störungen Wien & Umgebung
+            FEED_LINK=https://github.com/${{ github.repository }}
+            FEED_DESC=Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen
+            FEED_TTL=15
+            LOG_LEVEL=INFO
+            DESCRIPTION_CHAR_LIMIT=170
+            MAX_ITEMS=60
+            MAX_ITEM_AGE_DAYS=365
+            ABSOLUTE_MAX_AGE_DAYS=540
+            STATE_PATH=data/first_seen.json
+            STATE_RETENTION_DAYS=540
+            WL_ENABLE=1
+            OEBB_ENABLE=1
+            VOR_ENABLE=1
+            OEBB_ONLY_VIENNA=1
+            VOR_BASE=https://routenplaner.verkehrsauskunft.at/vao/restproxy
+            VOR_VERSION=v1.11.0
+            VOR_ALLOW_BUS=1
+            VOR_BUS_INCLUDE_REGEX=(?:\b[2-9]\d{2,4}\b)
+            VOR_BUS_EXCLUDE_REGEX=^(?:N?\d{1,2}[A-Z]?)$
+            VOR_MAX_STATIONS_PER_RUN=2
+            VOR_ROTATION_INTERVAL_SEC=1800
+            VOR_STATION_IDS=
+          EOF
           {
             echo "WL_RSS_URL=${{ secrets.WL_RSS_URL }}"
             echo "OEBB_RSS_URL=${{ secrets.OEBB_RSS_URL }}"
