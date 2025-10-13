@@ -330,7 +330,7 @@ Weitere Details folgen …]]></description>
 
 | Variable | Typ | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
-| `VOR_ACCESS_ID` / `VAO_ACCESS_ID` | str | – | API-Zugangsschlüssel. Leere Werte werden ignoriert; ohne Wert bleibt der Provider inaktiv. |
+| `VOR_ACCESS_ID` / `VAO_ACCESS_ID` | str | `"VAO"` | API-Zugangsschlüssel. Leere Werte fallen auf den in der VAO-Dokumentation genannten Standard zurück. |
 | `VOR_STATION_IDS` | Liste (kommagetrennt) | – | Stations-IDs für Abfragen. Ohne Angabe bleibt der Provider inaktiv. |
 | `VOR_STATION_NAMES` | Liste (kommagetrennt) | – | Stationsnamen für Abfragen. Löst Stationen anhand ihrer Namen auf, wenn keine `VOR_STATION_IDS` gesetzt sind; ansonsten erfolgt die Abfrage über IDs. |
 | `VOR_BASE_URL` / `VOR_BASE` | str | `"https://routenplaner.verkehrsauskunft.at/vao/restproxy"` | Basis-URL der VAO-API. `VOR_BASE_URL` (z. B. aus GitHub-Secrets) überschreibt `VOR_BASE`. |
@@ -344,7 +344,7 @@ Weitere Details folgen …]]></description>
 | `VOR_BUS_INCLUDE_REGEX` | Regex | `"(?:\\b[2-9]\\d{2,4}\\b)"` | Muster für zusätzliche Buslinien. |
 | `VOR_BUS_EXCLUDE_REGEX` | Regex | `"^(?:N?\\d{1,2}[A-Z]?)$"` | Muster zum Ausschließen von Buslinien. |
 
-> **Status:** Der Zugriffsschlüssel `VOR_ACCESS_ID` wurde hinterlegt; der Provider ist damit bereit für Anfragen.
+> **Status:** Der Zugriffsschlüssel `VOR_ACCESS_ID` fällt ohne weitere Konfiguration auf den in der VAO-Dokumentation veröffentlichten Wert `VAO` zurück; der Provider ist damit bereit für Anfragen.
 
 **Hinweis:** Standardmäßig werden pro Durchlauf höchstens zwei Stations-IDs abgefragt
 (`VOR_MAX_STATIONS_PER_RUN = 2`), um API-Limits einzuhalten und Requests besser zu
