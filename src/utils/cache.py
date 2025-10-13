@@ -30,7 +30,7 @@ def read_cache(provider: str) -> List[Any]:
 
     try:
         with cache_file.open("r", encoding="utf-8") as fh:
-            return json.load(fh)
+            payload = json.load(fh)
     except FileNotFoundError:
         log.warning("Cache for provider '%s' not found at %s", provider, cache_file)
     except json.JSONDecodeError as exc:
@@ -46,6 +46,15 @@ def read_cache(provider: str) -> List[Any]:
             provider,
             cache_file,
             exc,
+        )
+    else:
+        if isinstance(payload, list):
+            return payload
+        log.warning(
+            "Cache for provider '%s' at %s does not contain a JSON array (found %s)",
+            provider,
+            cache_file,
+            type(payload).__name__,
         )
 
     return []
