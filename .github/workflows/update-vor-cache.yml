@@ -40,11 +40,7 @@ jobs:
           fi
 
       - name: Refresh VOR cache
-        env:
-          VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
         run: python scripts/update_vor_cache.py
-        env:
-          VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
 
       - name: Commit and push changes
         shell: bash
