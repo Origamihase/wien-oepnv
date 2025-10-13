@@ -14,15 +14,15 @@ concurrency:
 
 jobs:
   update_wl_cache:
-    uses: ./.github/workflows/update-wl-cache.yml
+    uses: ./.github/workflows/reusable-update-wl-cache.yml
     secrets: inherit
 
   update_oebb_cache:
-    uses: ./.github/workflows/update-oebb-cache.yml
+    uses: ./.github/workflows/reusable-update-oebb-cache.yml
     secrets: inherit
 
   update_vor_cache:
-    uses: ./.github/workflows/update-vor-cache.yml
+    uses: ./.github/workflows/reusable-update-vor-cache.yml
     secrets: inherit
 
   build:
