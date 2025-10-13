@@ -410,30 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fremdunfall Umleitung bis Höchstädtplatz über 5 und 31",
-    "description": "Fremdunfall Umleitung bis Höchstädtplatz über 5 und 31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "33fdabf789891aa6f1a137e1d006228c6016d6d5cf7dfa77be2f13e5cd8a19d9",
-    "pubDate": "2025-10-13T07:23:38+02:00",
-    "starts_at": "2025-10-13T07:23:38+02:00",
-    "ends_at": "2025-10-13T08:28:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fremdunfall Züge halten bei Linie 31 Richtung Stammersdorf",
-    "description": "Fremdunfall Züge halten bei Linie 31 Richtung Stammersdorf",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0e4c45f3b2eefe881182d0aef790cd029dac93a67de44038d5d370d1ede26ebc",
-    "pubDate": "2025-10-13T07:23:38+02:00",
-    "starts_at": "2025-10-13T07:23:38+02:00",
-    "ends_at": "2025-10-13T08:28:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10: Störung an einem Bahnübergang",
     "description": "Die Linie 10 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Störung an einem Bahnübergang im Bereich Hietzinger Hauptstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -454,5 +430,17 @@
     "starts_at": "2025-10-13T08:05:00+02:00",
     "ends_at": "2025-10-13T23:55:00+02:00",
     "_identity": "wl|störung|L=60A|D=2025-10-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
+    "pubDate": "2025-10-13T08:30:00+02:00",
+    "starts_at": "2025-10-13T08:30:00+02:00",
+    "ends_at": "2025-10-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-10-13"
   }
 ]
