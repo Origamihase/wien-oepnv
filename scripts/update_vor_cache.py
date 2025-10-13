@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch and cache VOR events."""
+"""Fetch and cache VOR events"""
 
 from __future__ import annotations
 
