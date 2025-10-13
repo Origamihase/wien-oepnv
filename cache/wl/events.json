@@ -410,30 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0d5c2f44bc946cae1973b47ffcc7414ad5ac749ed21a16d031ca436f698459e1",
-    "pubDate": "2025-10-13T14:15:00+02:00",
-    "starts_at": "2025-10-13T14:15:00+02:00",
-    "ends_at": "2025-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=49|D=2025-10-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4bccd270d21771774d4ca838728725fa0ea7e820f6df0daa4fda5461b7a78c07",
-    "pubDate": "2025-10-13T14:15:00+02:00",
-    "starts_at": "2025-10-13T14:15:00+02:00",
-    "ends_at": "2025-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2025-10-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Fremder Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -446,7 +422,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Rettungseinsatz Züge halten bei Linie 9",
+    "title": "43: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
@@ -454,5 +430,53 @@
     "starts_at": "2025-10-13T14:35:00+02:00",
     "ends_at": "2025-10-13T23:55:00+02:00",
     "_identity": "wl|störung|L=43|D=2025-10-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Polizeieinsatz Betrieb ab Matzleindsdorfer Platz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972",
+    "pubDate": "2025-10-13T15:50:00+02:00",
+    "starts_at": "2025-10-13T15:50:00+02:00",
+    "ends_at": "2025-10-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-10-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
+    "pubDate": "2025-10-13T15:50:00+02:00",
+    "starts_at": "2025-10-13T15:50:00+02:00",
+    "ends_at": "2025-10-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=6|D=2025-10-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
+    "pubDate": "2025-10-13T15:55:00+02:00",
+    "starts_at": "2025-10-13T15:55:00+02:00",
+    "ends_at": "2025-10-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2025-10-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "1/13A/2/5/57A/71/D: Demonstration am 18.10.2025",
+    "description": "Demonstration\nWegen einer Demonstration kommt es zu Verkehrseinschränkungen.\nZeitraum:\nSamstag, 18.10.2025, von ca. 13:30 bis 18:30 Uhr.\nMaßnahmen:\nLinie D:\nUmleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über den Franz-Josefs-Kai.\n(Schottenring, Schwedenplatz, Julius-Raab-Platz, Stubentor).\nLinie 1:\nKein Betrieb zwischen Börse und Reselgasse (Zustieg am Karlsplatz möglich).\nDie Züge ab Prater Hauptallee fahren bis Börse, wenden dort, fahren zurück bis Julius-Raab-Platz und ab dort über die Strecke der Linie 2 zum Schwedenplatz und über die Lothringer Straße zum Karlsplatz.\nIn Richtung Prater Hauptallee wird direkt ab Karlsplatz zum Schwarzenbergplatz und die Linie 2 zum Julius-Raab-Platz und dann weiter zur Prater Hauptallee gefahren.\nLinie 2:\nLinienteilung: Kein Betrieb zwischen Ring, Volkstheater und Schwedenplatz.\nDie Haltestelle Parlament kann nicht eingehalten werden, im Bereich Ring, Volkstheater halten die Züge bei den Linien 46, 49 und 48 A.\nAm Schwedenplatz halten die Züge Richtung Friedrich-Engels-Platz am gegenüberliegenden Gleis.\nLinie 5:\nKurzführung Josefstädter Straße.\nDie Züge fahren zwischen Praterstern und Blindengasse und wenden über die U6-Station Josefstädter Straße.\nLinie 71:\nKurzführung Schwarzenbergplatz.\nBetrieb nur zwischen Kaiserebersdorf, Zinnergasse und Schwarzenbergplatz.\nLinie 13 A:\nLinienteilung: Kein Betrieb zwischen Neubaugasse U und Burggasse, Neubaugasse.\nLinie 57 A:\nKurzführung Neubaugasse U.\nDie Busse fahren nur zwischen Rudolfsheim, Anschützgasse und Esterházygasse, bzw. in Gegenrichtung ab Haus des Meeres.\nErsatz:\nWeichen Sie ersatzweise auf die U-Bahn Linien aus.\nHinweis:\nDie genannten Betriebsstörungen werden wahrscheinlich nicht alle gleichzeitig auftreten. Die betroffenen Linien werden sofort nach Freiwerden der betroffenen Straßenabschnitte wieder normalisiert. Beachten Sie daher bitte unsere Lautsprecherdurchsagen sowie unsere Echtzeitinformationen unter www.wienmobil.at.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4f4fdf0b9b7f858f947978cae00d277bedf7e3a78248da7bed2e887e10f77b9d",
+    "pubDate": "2025-10-13T16:00:00+02:00",
+    "starts_at": "2025-10-13T16:00:00+02:00",
+    "ends_at": "2025-10-18T18:30:00+02:00",
+    "_identity": "wl|hinweis|L=1,13A,2,5,57A,71,D|D=2025-10-13"
   }
 ]
