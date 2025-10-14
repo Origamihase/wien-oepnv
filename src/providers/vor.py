@@ -644,12 +644,55 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[s
     params["requestId"] = req_id
 
     resp: Optional[requests.Response] = None
-    request_attempted = False
+    retry_total = 0
+    retry_backoff = 0.0
+    session_retry_options: dict[str, Any] = {}
+    if isinstance(VOR_RETRY_OPTIONS, Mapping):
+        try:
+            retry_total = int(VOR_RETRY_OPTIONS.get("total", 0))
+        except (TypeError, ValueError):
+            retry_total = 0
+        retry_total = max(0, retry_total)
+        try:
+            retry_backoff = float(VOR_RETRY_OPTIONS.get("backoff_factor", 0.0))
+        except (TypeError, ValueError):
+            retry_backoff = 0.0
+        retry_backoff = max(0.0, retry_backoff)
+        session_retry_options = dict(VOR_RETRY_OPTIONS)
+    session_retry_options.update({"total": 0, "connect": 0, "read": 0, "status": 0})
+
+    max_attempts = 1 + retry_total
     try:
-        with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
+        with session_with_retries(VOR_USER_AGENT, **session_retry_options) as session:
             session.headers.update(VOR_SESSION_HEADERS)
-            request_attempted = True
-            resp = session.get(_stationboard_url(), params=params, timeout=HTTP_TIMEOUT)
+            attempt = 0
+            while attempt < max_attempts:
+                attempt += 1
+                # Zähler für jeden tatsächlichen HTTP-Versuch erhöhen – auch bei Retries.
+                save_request_count(now_local)
+                try:
+                    resp = session.get(_stationboard_url(), params=params, timeout=HTTP_TIMEOUT)
+                except requests.RequestException as e:
+                    if attempt >= max_attempts:
+                        log.error(
+                            "VOR StationBoard Fehler (%s): %s",
+                            station_id,
+                            _sanitize_access_id(str(e)),
+                        )
+                        return None
+                    delay = retry_backoff * (2 ** (attempt - 1))
+                    if delay > 0:
+                        time.sleep(delay)
+                    continue
+                except Exception as e:
+                    log.exception(
+                        "VOR StationBoard Fehler (%s): %s",
+                        station_id,
+                        _sanitize_access_id(str(e)),
+                    )
+                    return None
+                else:
+                    break
     except requests.RequestException as e:
         log.error(
             "VOR StationBoard Fehler (%s): %s",
@@ -664,9 +707,6 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[s
             _sanitize_access_id(str(e)),
         )
         return None
-    finally:
-        if request_attempted:
-            save_request_count(now_local)
 
     if resp is None:
         return None
