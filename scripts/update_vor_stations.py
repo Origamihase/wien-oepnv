@@ -564,28 +564,54 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
     if not isinstance(existing, list):
         raise ValueError("stations.json must contain a JSON array")
 
-    non_vor: list[dict[str, object]] = []
-    wl_entries: list[dict[str, object]] = []
+    vor_map: dict[str, dict[str, object]] = {}
+    for entry in vor_entries:
+        if not isinstance(entry, dict):
+            continue
+        vor_id_raw = entry.get("vor_id")
+        if vor_id_raw is None:
+            continue
+        vor_id = str(vor_id_raw).strip()
+        if not vor_id:
+            continue
+        vor_map[vor_id] = entry
+
+    merged: list[dict[str, object]] = []
+    updated = 0
     for entry in existing:
         if not isinstance(entry, dict):
             continue
-        source = entry.get("source")
-        if source == "vor":
+        vor_id_raw = entry.get("vor_id")
+        vor_id = str(vor_id_raw).strip() if isinstance(vor_id_raw, str) else ""
+        if not vor_id and isinstance(vor_id_raw, (int, float)):
+            vor_id = str(int(vor_id_raw))
+        if vor_id and vor_id in vor_map and entry.get("bst_id") is not None:
+            vor_data = vor_map.pop(vor_id)
+            merged_entry = dict(entry)
+            for key in ("latitude", "longitude", "aliases"):
+                value = vor_data.get(key)
+                if value in (None, "", []):
+                    continue
+                merged_entry[key] = value
+            updated += 1
+            merged.append(merged_entry)
             continue
-        if source == "wl":
-            wl_entries.append(entry)
-        else:
-            non_vor.append(entry)
+        merged.append(entry)
 
-    merged = non_vor + vor_entries + wl_entries
+    additional_vor = sorted(
+        (entry for entry in vor_map.values() if isinstance(entry, dict)),
+        key=lambda item: (str(item.get("name")), str(item.get("vor_id"))),
+    )
+    merged.extend(additional_vor)
 
     with stations_path.open("w", encoding="utf-8") as handle:
         json.dump(merged, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     log.info(
-        "Wrote %d total stations (%d VOR entries)",
+        "Wrote %d total stations (%d updated, %d added VOR entries)",
         len(merged),
-        len(vor_entries),
+        updated,
+        len(additional_vor),
     )
 
 
