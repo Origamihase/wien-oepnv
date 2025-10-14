@@ -406,11 +406,9 @@ def fetch_vor_stops_from_api(
 
     stops: list[VORStop] = []
     with session_with_retries(vor_provider.VOR_USER_AGENT, **vor_provider.VOR_RETRY_OPTIONS) as session:
-        session.headers.update(vor_provider.VOR_SESSION_HEADERS)
+        vor_provider.apply_authentication(session)
         for station_id in ids:
             params = {"format": "json", "input": station_id, "type": "stop", "maxNo": 8}
-            if vor_provider.VOR_ACCESS_ID:
-                params["accessId"] = vor_provider.VOR_ACCESS_ID
             try:
                 response = session.get(
                     f"{vor_provider.VOR_BASE_URL}location.name",

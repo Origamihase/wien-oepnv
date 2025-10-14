@@ -15,6 +15,7 @@ import src.providers.vor as vor
         ("boom {'accessId': 'secret'}", "'accessId': '***'"),
         ('boom "accessId":"secret"', '"accessId":"***"'),
         ("boom accessId%3Dsecret&foo", "accessId%3D***"),
+        ("boom Authorization: Bearer secret", "Authorization: Bearer ***"),
     ],
 )
 def test_accessid_not_logged(monkeypatch, caplog, raw_message, expected_fragment):
@@ -32,8 +33,11 @@ def test_accessid_not_logged(monkeypatch, caplog, raw_message, expected_fragment
             def __exit__(self, exc_type, exc, tb):
                 return False
 
-            def get(self, *args, **kwargs):
+            def request(self, method, url, **kwargs):
                 raise requests.RequestException(raw_message)
+
+            def get(self, url, **kwargs):
+                return self.request("GET", url, **kwargs)
 
         return DummySession()
 
