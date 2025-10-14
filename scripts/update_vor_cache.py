@@ -105,7 +105,7 @@ def main() -> int:
             "VOR: API nicht erreichbar – behalte bestehenden Cache bei.",
             exc_info=True,
         )
-        return 1
+        return 0
     except Exception:  # pragma: no cover - defensive
         logger.exception(
             "VOR: Fehler beim Abrufen der Daten – behalte bestehenden Cache bei.",

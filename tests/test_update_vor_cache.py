@@ -7,6 +7,7 @@ from unittest.mock import Mock
 from zoneinfo import ZoneInfo
 
 from scripts import update_vor_cache
+from requests.exceptions import RequestException
 
 
 def test_cache_written_when_limit_reached(monkeypatch) -> None:
@@ -50,3 +51,18 @@ def test_cache_written_when_limit_reached(monkeypatch) -> None:
     assert calls == [update_vor_cache.MAX_REQUESTS_PER_DAY]
     assert remaining_state["count"] == update_vor_cache.MAX_REQUESTS_PER_DAY
     save_request_count_mock.assert_not_called()
+
+
+def test_main_returns_success_when_fetch_fails(monkeypatch) -> None:
+    """Network failures must not cause a non-zero exit status."""
+
+    monkeypatch.setattr(update_vor_cache, "_limit_reached", lambda now: False)
+    monkeypatch.setattr(
+        update_vor_cache,
+        "fetch_events",
+        lambda: (_ for _ in ()).throw(RequestException("boom")),
+    )
+
+    exit_code = update_vor_cache.main()
+
+    assert exit_code == 0
