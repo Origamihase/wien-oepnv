@@ -44,6 +44,9 @@ class StationInfo(NamedTuple):
     longitude: float | None = None
 
 _STATIONS_PATH = Path(__file__).resolve().parents[2] / "data" / "stations.json"
+_VOR_MAPPING_PATH = (
+    Path(__file__).resolve().parents[2] / "data" / "vor-haltestellen.mapping.json"
+)
 _VIENNA_POLYGON_PATH = Path(__file__).resolve().parents[2] / "data" / "vienna_boundary.geojson"
 
 
@@ -269,11 +272,153 @@ def _station_entries() -> tuple[dict, ...]:
     if not isinstance(entries, list):
         return ()
 
+    vor_overrides = _vor_overrides()
+    additional_vor_entries = _vor_additional_entries()
     result: list[dict] = []
     for entry in entries:
         if isinstance(entry, dict):
-            result.append(entry)
+            merged = dict(entry)
+            bst_id = merged.get("bst_id")
+            bst_key: int | None
+            if isinstance(bst_id, int):
+                bst_key = bst_id
+            else:
+                try:
+                    bst_key = int(str(bst_id))
+                except (TypeError, ValueError):
+                    bst_key = None
+            if bst_key is not None and bst_key in vor_overrides:
+                override = vor_overrides[bst_key]
+                alias_values: list[str] = []
+                existing_aliases = merged.get("aliases")
+                if isinstance(existing_aliases, list):
+                    alias_values.extend(str(item) for item in existing_aliases if item is not None)
+                override_aliases = override.get("aliases")
+                if isinstance(override_aliases, list):
+                    alias_values.extend(str(item) for item in override_aliases if item is not None)
+                cleaned_aliases = sorted({alias.strip() for alias in alias_values if alias and alias.strip()})
+                if cleaned_aliases:
+                    merged["aliases"] = cleaned_aliases
+                elif "aliases" in merged:
+                    merged.pop("aliases")
+                for key in ("vor_id", "latitude", "longitude"):
+                    if key in override:
+                        merged[key] = override[key]
+            result.append(merged)
+    for extra in additional_vor_entries:
+        if isinstance(extra, dict):
+            result.append(dict(extra))
     return tuple(result)
+
+
+@lru_cache(maxsize=1)
+def _vor_mapping_entries() -> tuple[dict[str, object], ...]:
+    try:
+        with _VOR_MAPPING_PATH.open("r", encoding="utf-8") as handle:
+            payload = json.load(handle)
+    except (OSError, json.JSONDecodeError):  # pragma: no cover - defensive
+        return ()
+
+    if not isinstance(payload, list):
+        return ()
+
+    entries: list[dict[str, object]] = []
+    for entry in payload:
+        if isinstance(entry, dict):
+            entries.append(dict(entry))
+    return tuple(entries)
+
+
+@lru_cache(maxsize=1)
+def _vor_overrides() -> dict[int, dict[str, object]]:
+    """Return VOR-specific metadata keyed by ``bst_id``.
+
+    The information is maintained separately to avoid merge conflicts when
+    updating the ÖBB station directory. Each entry may provide a ``vor_id``,
+    coordinates and additional aliases derived from the VAO name resolution.
+    """
+
+    overrides: dict[int, dict[str, object]] = {}
+    for entry in _vor_mapping_entries():
+        bst_raw = entry.get("bst_id")
+        try:
+            bst_id = int(str(bst_raw))
+        except (TypeError, ValueError):
+            continue
+        vor_id_raw = entry.get("vor_id")
+        vor_id = str(vor_id_raw).strip() if vor_id_raw is not None else ""
+        if not vor_id:
+            continue
+        alias_candidates: set[str] = {vor_id}
+        resolved_name_raw = entry.get("resolved_name")
+        resolved_name = str(resolved_name_raw).strip() if resolved_name_raw is not None else ""
+        if resolved_name:
+            alias_candidates.add(resolved_name)
+        override: dict[str, object] = {"vor_id": vor_id}
+        latitude = _coerce_float(entry.get("latitude"))
+        longitude = _coerce_float(entry.get("longitude"))
+        if latitude is not None:
+            override["latitude"] = latitude
+        if longitude is not None:
+            override["longitude"] = longitude
+        aliases = sorted(alias for alias in alias_candidates if alias)
+        if aliases:
+            override["aliases"] = aliases
+        overrides[bst_id] = override
+    return overrides
+
+
+@lru_cache(maxsize=1)
+def _vor_additional_entries() -> tuple[dict[str, object], ...]:
+    entries: list[dict[str, object]] = []
+    polygons = _vienna_polygons()
+    for entry in _vor_mapping_entries():
+        bst_raw = entry.get("bst_id")
+        try:
+            bst_id = int(str(bst_raw))
+        except (TypeError, ValueError):
+            bst_id = None
+        if bst_id is not None:
+            continue
+        vor_id_raw = entry.get("vor_id")
+        vor_id = str(vor_id_raw).strip() if vor_id_raw is not None else ""
+        if not vor_id:
+            continue
+        resolved_name_raw = entry.get("resolved_name")
+        station_name_raw = entry.get("station_name")
+        resolved_name = (
+            str(resolved_name_raw).strip() if resolved_name_raw is not None else ""
+        )
+        station_name = (
+            str(station_name_raw).strip() if station_name_raw is not None else ""
+        )
+        name = resolved_name or station_name or vor_id
+        latitude = _coerce_float(entry.get("latitude"))
+        longitude = _coerce_float(entry.get("longitude"))
+        in_vienna = False
+        if latitude is not None and longitude is not None:
+            for polygon in polygons:
+                if _point_in_polygon(latitude, longitude, polygon):
+                    in_vienna = True
+                    break
+        alias_candidates = {
+            alias.strip()
+            for alias in {vor_id, resolved_name, station_name}
+            if alias and alias.strip()
+        }
+        entries.append(
+            {
+                "name": name,
+                "in_vienna": in_vienna,
+                "pendler": False,
+                "vor_id": vor_id,
+                "latitude": latitude,
+                "longitude": longitude,
+                "aliases": sorted(alias_candidates),
+                "source": "vor",
+            }
+        )
+    return tuple(entries)
 
 
 @lru_cache(maxsize=1)
