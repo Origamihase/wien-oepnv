@@ -1,6 +1,9 @@
 import requests
 import responses
 from responses import matchers
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from types import SimpleNamespace
 
 import src.providers.vor as vor
 
@@ -124,3 +127,62 @@ def test_collect_from_board_canonicalizes_stop_names():
     description = items[0]["description"]
     assert "Wien Franz-Josefs-Bf" in description
     assert "Franz Josefs Bahnhof" not in description
+
+
+def test_stationboard_uses_configured_base_url_and_access_id(monkeypatch):
+    monkeypatch.setattr(vor, "VOR_BASE_URL", "https://example.test/custom/")
+    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token")
+    monkeypatch.setattr(vor, "save_request_count", lambda now: 0)
+
+    captured: dict[str, object] = {}
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.headers: dict[str, str] = {}
+            self.calls: list[dict[str, object]] = []
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def get(self, url, params=None, timeout=None):
+            call = {"url": url, "params": params, "timeout": timeout}
+            self.calls.append(call)
+            captured.update(call)
+            return SimpleNamespace(
+                status_code=200,
+                headers={},
+                json=lambda: {"DepartureBoard": {}},
+            )
+
+    dummy_session = DummySession()
+
+    def fake_session_with_retries(user_agent, **retry_options):
+        assert user_agent == vor.VOR_USER_AGENT
+        assert retry_options == vor.VOR_RETRY_OPTIONS
+        return dummy_session
+
+    monkeypatch.setattr(vor, "session_with_retries", fake_session_with_retries)
+
+    now = datetime(2024, 1, 1, 8, 30, tzinfo=ZoneInfo("Europe/Vienna"))
+
+    payload = vor._fetch_stationboard("123", now)
+
+    assert payload == {"DepartureBoard": {}}
+    assert dummy_session.calls
+    assert dummy_session.headers["Accept"] == "application/json"
+
+    params = captured["params"]
+    assert isinstance(params, dict)
+    assert captured["url"] == "https://example.test/custom/DepartureBoard"
+    assert captured["timeout"] == vor.HTTP_TIMEOUT
+    assert params["accessId"] == "token"
+    assert params["format"] == "json"
+    assert params["id"] == "123"
+    assert params["duration"] == str(vor.BOARD_DURATION_MIN)
+    assert params["rtMode"] == "SERVER_DEFAULT"
+    assert params["date"] == now.strftime("%Y-%m-%d")
+    assert params["time"] == now.strftime("%H:%M")
+    assert params["requestId"].startswith("sb-123-")
