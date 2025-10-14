@@ -52,11 +52,14 @@ def run_test() -> Dict[str, Any]:
     access_id = vor.refresh_access_credentials()
     before = vor.load_request_count()
 
+    uses_default = access_id == vor.DEFAULT_ACCESS_ID
+    has_token = bool(access_id and not uses_default)
+
     result: Dict[str, Any] = {
         "access_id": {
-            "configured": bool(access_id),
+            "configured": has_token,
             "masked": _mask_token(access_id),
-            "uses_default": access_id == vor.DEFAULT_ACCESS_ID,
+            "uses_default": uses_default,
         },
         "request_count": {"before": _serialize_count(before)},
     }
@@ -65,14 +68,20 @@ def run_test() -> Dict[str, Any]:
     success = False
     error: str | None = None
 
-    try:
-        events = vor.fetch_events()
-        success = True
-    except RequestException as exc:
-        error = str(exc)
-    except Exception as exc:  # pragma: no cover - defensive guard
-        error = f"{exc.__class__.__name__}: {exc}"
-        result["traceback"] = traceback.format_exc()
+    if not has_token:
+        error = (
+            "VOR_ACCESS_ID muss gesetzt sein – Abbruch, um nicht den Fallback-Zugang "
+            "ohne Berechtigung zu verwenden."
+        )
+    else:
+        try:
+            events = vor.fetch_events()
+            success = True
+        except RequestException as exc:
+            error = str(exc)
+        except Exception as exc:  # pragma: no cover - defensive guard
+            error = f"{exc.__class__.__name__}: {exc}"
+            result["traceback"] = traceback.format_exc()
 
     after = vor.load_request_count()
     result["request_count"]["after"] = _serialize_count(after)
@@ -88,6 +97,7 @@ def run_test() -> Dict[str, Any]:
         "success": success and bool(events),
         "events_returned": len(events),
         "error": None if success and events else error,
+        "skipped": not has_token,
     }
 
     return result
