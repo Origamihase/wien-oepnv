@@ -110,16 +110,20 @@ def test_base_url_prefers_secret(monkeypatch):
 
     importlib.reload(vor)
 
-    assert vor.VOR_BASE == "https://secret.example.com/base"
+    assert vor.VOR_BASE_URL == "https://secret.example.com/base/"
+    assert vor.VOR_VERSION == "v1.11.0"
 
     monkeypatch.delenv("VOR_BASE_URL", raising=False)
     importlib.reload(vor)
-    assert vor.VOR_BASE == "https://example.com/base"
+    assert (
+        vor.VOR_BASE_URL
+        == "https://example.com/base/v1.11.0/"
+    )
 
     monkeypatch.delenv("VOR_BASE", raising=False)
     importlib.reload(vor)
     assert (
-        vor.VOR_BASE
-        == "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
+        vor.VOR_BASE_URL
+        == "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"
     )
 

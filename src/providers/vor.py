@@ -312,12 +312,51 @@ if not VOR_STATION_IDS:
     _fallback_ids = _load_station_ids_from_file()
     if _fallback_ids:
         VOR_STATION_IDS = _fallback_ids
-_env_base_url = os.getenv("VOR_BASE_URL")
-_env_base = os.getenv("VOR_BASE")
-VOR_BASE = (_env_base_url or _env_base or "https://routenplaner.verkehrsauskunft.at/vao/restproxy").strip()
-if not VOR_BASE:
-    VOR_BASE = "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
-VOR_VERSION = os.getenv("VOR_VERSION", "v1.11.0")
+_DEFAULT_VOR_BASE = "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
+_DEFAULT_VOR_VERSION = "v1.11.0"
+
+
+def _normalize_base_url(url: str) -> str:
+    url = url.strip()
+    if not url:
+        return ""
+    return url if url.endswith("/") else f"{url}/"
+
+
+_VERSION_RE = re.compile(r"^v\d+\.\d+\.\d+$", re.IGNORECASE)
+
+
+def _infer_version_from_url(url: str) -> Optional[str]:
+    path = re.sub(r"[?#].*$", "", url).rstrip("/")
+    if not path:
+        return None
+    candidate = path.split("/")[-1]
+    if _VERSION_RE.match(candidate):
+        return candidate
+    return None
+
+
+def _determine_base_url_and_version() -> tuple[str, str]:
+    env_base_url = (os.getenv("VOR_BASE_URL") or "").strip()
+    if env_base_url:
+        normalized = _normalize_base_url(env_base_url)
+        version = (
+            (os.getenv("VOR_VERSION") or "").strip()
+            or _infer_version_from_url(normalized)
+            or _DEFAULT_VOR_VERSION
+        )
+        return normalized, version
+
+    base = (os.getenv("VOR_BASE") or _DEFAULT_VOR_BASE).strip().rstrip("/")
+    version = (os.getenv("VOR_VERSION") or _DEFAULT_VOR_VERSION).strip().strip("/")
+    combined = _normalize_base_url(f"{base}/{version}" if version else base)
+    if not version:
+        inferred = _infer_version_from_url(combined)
+        version = inferred or _DEFAULT_VOR_VERSION
+    return combined, version
+
+
+VOR_BASE_URL, VOR_VERSION = _determine_base_url_and_version()
 BOARD_DURATION_MIN = get_int_env("VOR_BOARD_DURATION_MIN", 60)
 HTTP_TIMEOUT = get_int_env("VOR_HTTP_TIMEOUT", 15)
 DEFAULT_MAX_STATIONS_PER_RUN = 2
@@ -377,10 +416,11 @@ def _sanitize_access_id(message: str) -> str:
     return sanitized
 
 def _stationboard_url() -> str:
-    return f"{VOR_BASE}/{VOR_VERSION}/DepartureBoard"
+    return f"{VOR_BASE_URL}DepartureBoard"
+
 
 def _location_name_url() -> str:
-    return f"{VOR_BASE}/{VOR_VERSION}/location.name"
+    return f"{VOR_BASE_URL}location.name"
 
 
 def _desired_product_classes() -> List[int]:
