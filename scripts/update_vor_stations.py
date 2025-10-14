@@ -10,15 +10,21 @@ import re
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Iterator, Sequence
+from typing import Iterable, Iterator, Mapping, Sequence
+
+import requests
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
 try:  # pragma: no cover - convenience for module execution
+    from src.providers import vor as vor_provider
+    from src.utils.http import session_with_retries
     from src.utils.stations import is_in_vienna
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
+    from providers import vor as vor_provider  # type: ignore
+    from utils.http import session_with_retries  # type: ignore
     from utils.stations import is_in_vienna  # type: ignore
 DEFAULT_SOURCE = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
@@ -35,6 +41,23 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         type=Path,
         default=DEFAULT_SOURCE,
         help="Path to the VOR CSV/GTFS export",
+    )
+    parser.add_argument(
+        "--use-api",
+        action="store_true",
+        help="Fetch stop metadata from the VOR API instead of relying solely on CSV data",
+    )
+    parser.add_argument(
+        "--station-id",
+        dest="station_ids",
+        action="append",
+        default=[],
+        help="Additional VOR station ID to fetch when --use-api is supplied (can be repeated)",
+    )
+    parser.add_argument(
+        "--station-id-file",
+        type=Path,
+        help="Optional file with one VOR station ID per line for --use-api",
     )
     parser.add_argument(
         "--stations",
@@ -182,6 +205,275 @@ def load_vor_stops(path: Path) -> list[VORStop]:
     return list(stops.values())
 
 
+def _read_station_ids_from_file(path: Path) -> list[str]:
+    try:
+        raw = path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        return []
+    except OSError as exc:  # pragma: no cover - defensive
+        log.warning("Could not read station ID file %s: %s", path, exc)
+        return []
+    ids: list[str] = []
+    for segment in raw.replace(",", "\n").splitlines():
+        text = segment.strip()
+        if text and text not in ids:
+            ids.append(text)
+    return ids
+
+
+def _build_property_map(data: Mapping[str, object]) -> dict[str, str]:
+    props: dict[str, str] = {}
+    raw = data.get("properties")
+    if isinstance(raw, Mapping):
+        raw_items = raw.get("property") or raw.get("properties")
+        if isinstance(raw_items, list):
+            candidates = raw_items
+        else:
+            candidates = [raw_items] if raw_items else []
+    else:
+        candidates = raw if isinstance(raw, list) else []
+    for item in candidates:
+        if not isinstance(item, Mapping):
+            continue
+        key = str(item.get("name") or item.get("key") or item.get("type") or "").strip()
+        value = item.get("value") or item.get("valueString") or item.get("val")
+        if not key or value is None:
+            continue
+        text = str(value).strip()
+        if text:
+            props[key.casefold()] = text
+    return props
+
+
+def _extract_from_mapping(data: Mapping[str, object], *candidates: str) -> str:
+    for candidate in candidates:
+        value = data.get(candidate)
+        if value is None:
+            continue
+        text = str(value).strip()
+        if text:
+            return text
+    return ""
+
+
+def _extract_from_properties(props: Mapping[str, str], *candidates: str) -> str:
+    for candidate in candidates:
+        key = candidate.casefold()
+        value = props.get(key)
+        if value:
+            return value
+    return ""
+
+
+def _extract_coordinate(data: Mapping[str, object], axis: str) -> float | None:
+    axis_lower = axis.casefold()
+    candidates: list[object] = []
+    coord = data.get("coord")
+    if isinstance(coord, Mapping):
+        candidates.extend(
+            coord.get(key)
+            for key in (axis_lower, axis_lower[:1], axis_lower.upper(), axis.title())
+        )
+        candidates.extend(coord.get(key) for key in (f"{axis_lower}itude", f"{axis_lower}Coord"))
+    candidates.extend(
+        data.get(key)
+        for key in (
+            axis_lower,
+            axis_lower[:1],
+            axis_lower.upper(),
+            axis.title(),
+            f"{axis_lower}itude",
+            f"{axis_lower}Coord",
+            f"geo{axis.title()}",
+            f"{axis_lower}_wgs84",
+        )
+    )
+    props = _build_property_map(data)
+    candidates.extend(props.get(key) for key in (axis_lower, f"{axis_lower}itude"))
+    for candidate in candidates:
+        if candidate is None:
+            continue
+        text = str(candidate).strip().replace(",", ".")
+        if not text:
+            continue
+        try:
+            return float(text)
+        except ValueError:
+            continue
+    return None
+
+
+def _parse_api_stop(data: Mapping[str, object], wanted_id: str | None = None) -> VORStop | None:
+    props = _build_property_map(data)
+    vor_id = _extract_from_mapping(
+        data,
+        "id",
+        "extId",
+        "stopId",
+        "stop_id",
+        "StopPointId",
+        "StopID",
+    )
+    if not vor_id:
+        vor_id = _extract_from_properties(
+            props,
+            "id",
+            "extid",
+            "stopid",
+            "stop_id",
+            "stoppointid",
+        )
+    if not vor_id:
+        return None
+    vor_id = vor_id.strip()
+    if wanted_id and vor_id != wanted_id:
+        # some APIs may prefix zeros or provide related stops; prefer exact matches
+        if vor_id.lstrip("0") != wanted_id.lstrip("0"):
+            return None
+        vor_id = wanted_id
+
+    name = _extract_from_mapping(
+        data,
+        "name",
+        "StopPointName",
+        "stopPointName",
+        "value",
+    )
+    if not name:
+        name = _extract_from_properties(props, "name", "stoppointname")
+    if not name:
+        return None
+
+    municipality = _extract_from_mapping(
+        data,
+        "municipality",
+        "place",
+        "city",
+        "ort",
+    )
+    if not municipality:
+        municipality = _extract_from_properties(
+            props,
+            "municipality",
+            "place",
+            "city",
+            "ort",
+        )
+
+    short_name = _extract_from_mapping(data, "shortName", "shortname", "StopPointShortName")
+    if not short_name:
+        short_name = _extract_from_properties(props, "shortname", "stoppointshortname")
+
+    global_id = _extract_from_mapping(data, "globalId", "globalID", "StopPointGlobalId")
+    if not global_id:
+        global_id = _extract_from_properties(
+            props,
+            "globalid",
+            "stoppointglobalid",
+            "gid",
+        )
+
+    gtfs_stop_id = _extract_from_mapping(data, "gtfsStopId", "gtfs_stop_id")
+    if not gtfs_stop_id:
+        gtfs_stop_id = _extract_from_properties(props, "gtfsstopid", "gtfs_stop_id", "stopid")
+
+    latitude = _extract_coordinate(data, "lat")
+    longitude = _extract_coordinate(data, "lon")
+
+    return VORStop(
+        vor_id=vor_id,
+        name=name,
+        latitude=latitude,
+        longitude=longitude,
+        municipality=municipality or None,
+        short_name=short_name or None,
+        global_id=global_id or None,
+        gtfs_stop_id=gtfs_stop_id or None,
+    )
+
+
+def fetch_vor_stops_from_api(
+    station_ids: Iterable[str],
+    fallback: Mapping[str, VORStop] | None = None,
+) -> list[VORStop]:
+    ids = [str(station_id).strip() for station_id in station_ids if str(station_id).strip()]
+    if not ids:
+        return []
+
+    fallback_map: dict[str, VORStop] = {}
+    if fallback:
+        fallback_map = {key: value for key, value in fallback.items()}
+
+    stops: list[VORStop] = []
+    with session_with_retries(vor_provider.VOR_USER_AGENT, **vor_provider.VOR_RETRY_OPTIONS) as session:
+        session.headers.update(vor_provider.VOR_SESSION_HEADERS)
+        for station_id in ids:
+            params = {"format": "json", "input": station_id, "type": "stop", "maxNo": 8}
+            if vor_provider.VOR_ACCESS_ID:
+                params["accessId"] = vor_provider.VOR_ACCESS_ID
+            try:
+                response = session.get(
+                    f"{vor_provider.VOR_BASE_URL}location.name",
+                    params=params,
+                    timeout=vor_provider.HTTP_TIMEOUT,
+                    headers={"Accept": "application/json"},
+                )
+            except requests.RequestException as exc:
+                log.warning("VOR API request for %s failed: %s", station_id, exc)
+                stop = fallback_map.get(station_id)
+                if stop:
+                    stops.append(stop)
+                continue
+
+            if response.status_code >= 400:
+                log.warning(
+                    "VOR API returned HTTP %s for station %s", response.status_code, station_id
+                )
+                stop = fallback_map.get(station_id)
+                if stop:
+                    stops.append(stop)
+                continue
+
+            try:
+                payload = response.json()
+            except ValueError:
+                log.warning("VOR API returned invalid JSON for station %s", station_id)
+                stop = fallback_map.get(station_id)
+                if stop:
+                    stops.append(stop)
+                continue
+
+            raw_stops = payload.get("StopLocation")
+            if isinstance(raw_stops, Mapping):
+                candidates = [raw_stops]
+            elif isinstance(raw_stops, list):
+                candidates = [item for item in raw_stops if isinstance(item, Mapping)]
+            else:
+                candidates = []
+
+            parsed_stop: VORStop | None = None
+            for candidate in candidates:
+                parsed_stop = _parse_api_stop(candidate, wanted_id=station_id)
+                if parsed_stop:
+                    break
+
+            if parsed_stop is None and candidates:
+                # fall back to the first candidate even if the ID mismatched to avoid data loss
+                parsed_stop = _parse_api_stop(candidates[0])
+
+            if parsed_stop is None:
+                stop = fallback_map.get(station_id)
+                if stop:
+                    stops.append(stop)
+                else:
+                    log.info("VOR API did not return usable data for station %s", station_id)
+                continue
+
+            stops.append(parsed_stop)
+
+    return stops
+
+
 def _looks_like_vienna(text: str | None) -> bool:
     if not text:
         return False
@@ -301,9 +593,51 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
     configure_logging(args.verbose)
 
-    log.info("Reading VOR stops: %s", args.source)
-    vor_stops = load_vor_stops(args.source)
-    log.info("Found %d VOR stops", len(vor_stops))
+    fallback_stops: list[VORStop] = []
+    fallback_map: dict[str, VORStop] = {}
+
+    if args.use_api:
+        station_ids: list[str] = []
+        if args.station_id_file:
+            station_ids.extend(_read_station_ids_from_file(args.station_id_file))
+        if args.station_ids:
+            for raw in args.station_ids:
+                text = (raw or "").strip()
+                if text and text not in station_ids:
+                    station_ids.append(text)
+
+        if args.source:
+            try:
+                fallback_stops = load_vor_stops(args.source)
+            except FileNotFoundError:
+                log.info("CSV source %s not found – continuing without fallback data", args.source)
+                fallback_stops = []
+            fallback_map = {stop.vor_id: stop for stop in fallback_stops}
+            if not station_ids and fallback_stops:
+                station_ids = [stop.vor_id for stop in fallback_stops]
+
+        if not station_ids:
+            log.error(
+                "No station IDs available for API import. Provide --station-id/--station-id-file or a CSV source."
+            )
+            return 1
+
+        if not vor_provider.VOR_ACCESS_ID:
+            log.error(
+                "VOR_ACCESS_ID (or VAO_ACCESS_ID) must be configured when --use-api is supplied."
+            )
+            return 1
+
+        log.info("Fetching %d VOR stops via API", len(station_ids))
+        vor_stops = fetch_vor_stops_from_api(station_ids, fallback=fallback_map)
+        log.info("Fetched %d VOR stops via API", len(vor_stops))
+    else:
+        if not args.source.exists():
+            log.error("CSV source %s not found", args.source)
+            return 1
+        log.info("Reading VOR stops: %s", args.source)
+        vor_stops = load_vor_stops(args.source)
+        log.info("Found %d VOR stops", len(vor_stops))
 
     vor_entries = build_vor_entries(vor_stops)
     log.info("Prepared %d VOR station entries", len(vor_entries))
