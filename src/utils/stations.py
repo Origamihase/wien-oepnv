@@ -454,7 +454,9 @@ def vor_station_ids() -> tuple[str, ...]:
     """Return the configured VOR station IDs from ``stations.json``.
 
     The function collects all entries that provide a ``vor_id`` and returns a
-    sorted tuple of distinct identifiers. This centralizes the list of
+    sorted tuple of distinct identifiers. Numeric aliases are also included to
+    preserve legacy identifiers that may still be referenced externally. This
+    centralizes the list of
     departure board locations that should be queried by the VOR provider and is
     used as a repository default when no explicit ``VOR_STATION_IDS``
     environment variable is configured.
@@ -463,10 +465,16 @@ def vor_station_ids() -> tuple[str, ...]:
     ids: set[str] = set()
     for entry in _station_entries():
         vor_id_raw = entry.get("vor_id")
-        if vor_id_raw is None:
-            continue
-        vor_id = str(vor_id_raw).strip()
-        if not vor_id:
-            continue
-        ids.add(vor_id)
+        if vor_id_raw is not None:
+            vor_id = str(vor_id_raw).strip()
+            if vor_id:
+                ids.add(vor_id)
+        aliases_field = entry.get("aliases")
+        if isinstance(aliases_field, list):
+            for alias in aliases_field:
+                if alias is None:
+                    continue
+                alias_text = str(alias).strip()
+                if alias_text.isdigit():
+                    ids.add(alias_text)
     return tuple(sorted(ids))

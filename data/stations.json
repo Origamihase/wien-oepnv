@@ -103,12 +103,16 @@
     "name": "Flughafen Wien",
     "in_vienna": false,
     "pendler": true,
-    "vor_id": "430470800",
-    "latitude": 48.12056,
-    "longitude": 16.563659,
+    "vor_id": "900200",
+    "latitude": 48.120027,
+    "longitude": 16.561749,
     "aliases": [
       "430470800",
-      "Flughafen Wien Bahnhof"
+      "900200",
+      "Flughafen Wien",
+      "Flughafen Wien Bahnhof",
+      "Schwechat Flughafen Wien Bahnhof",
+      "Vienna Airport"
     ]
   },
   {
@@ -369,11 +373,12 @@
     "name": "Wiener Neustadt Hbf",
     "in_vienna": false,
     "pendler": true,
-    "vor_id": "430521000",
+    "vor_id": "900300",
     "latitude": 47.811304,
     "longitude": 16.23362,
     "aliases": [
       "430521000",
+      "900300",
       "Wiener Neustadt Hauptbahnhof"
     ]
   },
@@ -705,11 +710,12 @@
     "name": "Wien Aspern Nord",
     "in_vienna": true,
     "pendler": false,
-    "vor_id": "490091000",
-    "latitude": 48.234669,
-    "longitude": 16.504456,
+    "vor_id": "900100",
+    "latitude": 48.234567,
+    "longitude": 16.520123,
     "aliases": [
       "490091000",
+      "900100",
       "Wien Aspern Nord"
     ]
   },
