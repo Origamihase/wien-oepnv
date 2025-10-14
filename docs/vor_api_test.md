@@ -24,3 +24,9 @@
   - `1` – Fehlerhafte oder leere Antwort.
   - `2` – Testlauf wurde übersprungen (z. B. fehlendes Token).
 - Die Ausgabe listet den maskierten Access Key, den gewählten Basis-Endpunkt und den Delta-Wert des Request-Zählers, damit nachvollziehbar bleibt, ob ein Test den Tageszähler erhöht hat.
+
+## Update 18. Oktober 2025
+
+- Wiederholter Aufruf von `python scripts/test_vor_api.py` ohne vorhandenes `VOR_ACCESS_ID` führte erneut zu einem übersprungenen Lauf (`skipped = true`).【571846†L1-L24】
+- Der Request-Zähler blieb unverändert bei zwei Anfragen vom 15. Oktober 2025 (`delta = 0`).【571846†L1-L24】【F:log/2025-10-18_vor_api_test.md†L1-L6】
+- Für eine valide Aussage über die Datenlage muss vor dem nächsten Test ein gültiges Secret bereitgestellt werden (z. B. via `.env`).【F:README.md†L363-L377】
