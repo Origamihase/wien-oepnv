@@ -12,7 +12,7 @@ KEIN <pubDate> und ordnet solche Items hinter datierten ein.
 
 from __future__ import annotations
 
-import os, re, html, logging, time, hashlib, json, tempfile
+import os, re, html, logging, time, hashlib, json, tempfile, base64
 import threading
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -281,19 +281,26 @@ def _determine_access_id() -> str:
 
 
 VOR_ACCESS_ID: str = _determine_access_id()
+_VOR_ACCESS_TOKEN_RAW: str = VOR_ACCESS_ID
+_VOR_AUTHORIZATION_HEADER: Optional[str] = None
 
 
 def refresh_access_credentials() -> str:
     """Reload the VOR access token from the environment variables."""
 
-    global VOR_ACCESS_ID
+    global VOR_ACCESS_ID, _VOR_ACCESS_TOKEN_RAW, _VOR_AUTHORIZATION_HEADER
 
     configured = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip()
-    token = configured or VOR_ACCESS_ID or DEFAULT_ACCESS_ID
-    if not token:
-        token = DEFAULT_ACCESS_ID
+    candidate = configured or _VOR_ACCESS_TOKEN_RAW or VOR_ACCESS_ID or DEFAULT_ACCESS_ID
 
-    VOR_ACCESS_ID = token
+    access_id, header = _parse_access_credentials(candidate)
+    if not access_id:
+        candidate = DEFAULT_ACCESS_ID
+        access_id, header = _parse_access_credentials(candidate)
+
+    VOR_ACCESS_ID = access_id or DEFAULT_ACCESS_ID
+    _VOR_ACCESS_TOKEN_RAW = candidate
+    _VOR_AUTHORIZATION_HEADER = header
     return VOR_ACCESS_ID
 VOR_STATION_IDS: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_IDS") or "").split(",") if s.strip()]
 VOR_STATION_NAMES: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_NAMES") or "").split(",") if s.strip()]
@@ -413,13 +420,53 @@ BUS_PRODUCT_CLASSES: tuple[int, ...] = (7,)
 VOR_USER_AGENT = "Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wien-oepnv)"
 VOR_SESSION_HEADERS = {"Accept": "application/json"}
 _AUTH_HEADER_RE = re.compile(
-    r"((?:[\"']?)Authorization(?:[\"']?)\s*:\s*(?:[\"']?)Bearer\s+)([^\s\"']+)",
+    r"((?:[\"']?)Authorization(?:[\"']?)\s*:\s*(?:[\"']?)(?:Bearer|Basic)\s+)([^\s\"']+)",
     re.IGNORECASE,
 )
 VOR_RETRY_OPTIONS = {"total": 3, "backoff_factor": 0.5, "raise_on_status": False}
 
 _ACCESS_ID_KEY_VALUE_RE = re.compile(r"(accessId\s*[=:]\s*)([\"']?)([^\"',\s&]+)(\2)", re.IGNORECASE)
 _ACCESS_ID_URLENC_RE = re.compile(r"(accessId%3D)([^&]+)", re.IGNORECASE)
+
+
+def _parse_access_credentials(token: str) -> tuple[str, Optional[str]]:
+    """Return the access id and header value derived from *token*."""
+
+    normalized = (token or "").strip()
+    if not normalized:
+        return "", None
+
+    lowered = normalized.lower()
+    if lowered.startswith("bearer "):
+        payload = normalized[7:].strip()
+        if not payload:
+            return "", None
+        return payload, f"Bearer {payload}"
+
+    if lowered.startswith("basic "):
+        payload = normalized[6:].strip()
+        if not payload:
+            return "", None
+        if ":" in payload:
+            encoded = base64.b64encode(payload.encode("utf-8")).decode("ascii")
+            return payload, f"Basic {encoded}"
+        return payload, f"Basic {payload}"
+
+    if ":" in normalized:
+        encoded = base64.b64encode(normalized.encode("utf-8")).decode("ascii")
+        return normalized, f"Basic {encoded}"
+
+    return normalized, f"Bearer {normalized}"
+
+
+def _authorization_header_value(token: str) -> Optional[str]:
+    """Return the appropriate ``Authorization`` header value for *token*."""
+
+    if _VOR_AUTHORIZATION_HEADER is not None:
+        return _VOR_AUTHORIZATION_HEADER
+
+    _, header = _parse_access_credentials(token)
+    return header
 
 
 def _sanitize_access_id(message: str) -> str:
@@ -433,6 +480,8 @@ def _sanitize_access_id(message: str) -> str:
     sanitized = _AUTH_HEADER_RE.sub(lambda match: f"{match.group(1)}***", sanitized)
     if VOR_ACCESS_ID:
         sanitized = sanitized.replace(VOR_ACCESS_ID, "***")
+    if _VOR_ACCESS_TOKEN_RAW and _VOR_ACCESS_TOKEN_RAW != VOR_ACCESS_ID:
+        sanitized = sanitized.replace(_VOR_ACCESS_TOKEN_RAW, "***")
     return sanitized
 
 
@@ -474,8 +523,9 @@ def apply_authentication(session: requests.Session) -> None:
     session.headers.update(VOR_SESSION_HEADERS)
 
     access_id = refresh_access_credentials()
-    if access_id:
-        session.headers["Authorization"] = f"Bearer {access_id}"
+    header_value = _authorization_header_value(access_id)
+    if header_value:
+        session.headers["Authorization"] = header_value
     else:
         session.headers.pop("Authorization", None)
 
@@ -490,7 +540,11 @@ def apply_authentication(session: requests.Session) -> None:
             token = refresh_access_credentials()
             if token:
                 params = _inject_access_id(params, token)
-                self.headers["Authorization"] = f"Bearer {token}"
+                header = _authorization_header_value(token)
+                if header:
+                    self.headers["Authorization"] = header
+                else:
+                    self.headers.pop("Authorization", None)
             else:
                 self.headers.pop("Authorization", None)
             return original_request(method, url, params=params, **kwargs)

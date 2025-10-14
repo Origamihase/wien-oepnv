@@ -1,3 +1,4 @@
+import base64
 import importlib
 import logging
 from typing import Any
@@ -168,6 +169,60 @@ def test_apply_authentication_sets_header(monkeypatch):
     response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
     assert response["params"]["accessId"] == "secret"
     assert session.calls[0][2]["accessId"] == "secret"
+
+    monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    importlib.reload(vor)
+
+
+def test_apply_authentication_basic_auth(monkeypatch):
+    monkeypatch.setenv("VOR_ACCESS_ID", "user:secret")
+    importlib.reload(vor)
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.headers: dict[str, str] = {}
+            self.calls: list[tuple[str, str, Any]] = []
+
+        def request(self, method: str, url: str, params: Any = None, **kwargs: Any) -> Any:
+            self.calls.append((method, url, params))
+            return {"method": method, "url": url, "params": params, **kwargs}
+
+    session = DummySession()
+    vor.apply_authentication(session)  # type: ignore[arg-type]
+
+    expected = base64.b64encode(b"user:secret").decode("ascii")
+    assert session.headers["Authorization"] == f"Basic {expected}"
+
+    response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
+    assert response["params"]["accessId"] == "user:secret"
+    assert session.calls[0][2]["accessId"] == "user:secret"
+
+    monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    importlib.reload(vor)
+
+
+def test_apply_authentication_basic_with_prefix(monkeypatch):
+    monkeypatch.setenv("VOR_ACCESS_ID", "Basic user:secret")
+    importlib.reload(vor)
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.headers: dict[str, str] = {}
+            self.calls: list[tuple[str, str, Any]] = []
+
+        def request(self, method: str, url: str, params: Any = None, **kwargs: Any) -> Any:
+            self.calls.append((method, url, params))
+            return {"method": method, "url": url, "params": params, **kwargs}
+
+    session = DummySession()
+    vor.apply_authentication(session)  # type: ignore[arg-type]
+
+    expected = base64.b64encode(b"user:secret").decode("ascii")
+    assert session.headers["Authorization"] == f"Basic {expected}"
+
+    response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
+    assert response["params"]["accessId"] == "user:secret"
+    assert session.calls[0][2]["accessId"] == "user:secret"
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)
