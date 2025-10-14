@@ -154,7 +154,11 @@ aktualisiert `data/stations.json`. Über `-v/--verbose` lässt sich eine etwas
 ausführlichere Protokollierung aktivieren. Optional können auch Quelle und Ziel
 per Argumenten angepasst werden (`--source-url`, `--output`). Neue Pendler:innen-
 Haltestellen werden vorab in `data/pendler_bst_ids.json` eingetragen, damit sie
-beim Lauf nicht herausgefiltert werden.
+beim Lauf nicht herausgefiltert werden. Liegt zusätzlich eine VOR-Haltestellen-
+Liste (`data/vor-haltestellen.csv` oder `--vor-stops`) vor, werden die passenden
+`vor_id`-Einträge automatisch den Wiener und Pendler-Stationen zugeordnet. Damit
+steht ohne weitere Schritte ein vollständiger Fallback für `VOR_STATION_IDS`
+bereit.
 
 ### Pendler-Whitelist pflegen
 
@@ -191,18 +195,16 @@ lokal nach `data/vor-haltestellen.csv` kopiert (alternativ lässt sich der Pfad
 über `--source` anpassen). Wer die API verwenden möchte, übergibt `--use-api`
 und stellt die benötigten Station-IDs entweder über `--station-id` bzw.
 `--station-id-file` bereit oder lässt sie weiterhin aus der CSV-Datei
-extrahieren. In beiden Fällen werden die Einträge mit `"source": "vor"`
-markiert, mit dem VOR-Zugangstoken (`VOR_ACCESS_ID` oder `VAO_ACCESS_ID`)
-abgerufen und anschließend in `stations.json` übernommen. Die Daten sind unter
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) veröffentlicht; laut
-Portal lautet die empfohlene Namensnennung „Datenquelle: Verkehrsverbund
-Ost-Region (VOR) GmbH“.
+extrahieren. Die Daten sind unter [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+veröffentlicht; laut Portal lautet die empfohlene Namensnennung „Datenquelle:
+Verkehrsverbund Ost-Region (VOR) GmbH“.
 
-Das Skript extrahiert Stop-ID, Namen und WGS84-Koordinaten, markiert die
-Einträge mit `"source": "vor"` und erweitert `stations.json` um Felder wie
-`vor_id`, `latitude` und `longitude`. Bereits vorhandene VOR-Einträge werden
-beim Lauf entfernt und anschließend gemeinsam mit den ÖBB- und WL-Daten in die
-JSON-Datei geschrieben.
+Das Skript extrahiert Stop-ID, Namen und WGS84-Koordinaten und aktualisiert die
+bereits in `stations.json` hinterlegten Einträge um zusätzliche VOR-Metadaten
+(z. B. `latitude`, `longitude`, `aliases`). Für Haltestellen, die nicht im
+ÖBB-Verzeichnis enthalten sind, werden weiterhin eigene Einträge mit
+`"source": "vor"` ergänzt. Damit bleibt das Verzeichnis frei von Dubletten,
+liefert aber dennoch vollständige Koordinaten für alle VOR-Stationen.
 
 Für Auswertungen in Kombination mit GTFS- oder Geodaten lohnt es sich, die
 entpackten GTFS-Dateien (z. B. aus dem ÖBB- oder WL-Export) parallel in
