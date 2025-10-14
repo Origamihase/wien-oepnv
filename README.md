@@ -364,6 +364,14 @@ python scripts/check_vor_auth.py
 Die Ausgabe enthält HTTP-Status, Fehlercode und ein `authenticated`-Flag. Der Prozess endet mit Exit-Code `1`, falls die Zugangsdaten von der API abgewiesen werden.
 Die in der Ausgabe protokollierte URL sowie etwaige `Authorization`-Header maskieren den hinterlegten Zugangsschlüssel automatisch.
 
+#### Produktivlauf inklusive Request-Zähler prüfen
+
+```bash
+python scripts/test_vor_api.py
+```
+
+Das Skript führt einen kompletten Fetch über `providers.vor.fetch_events` aus, protokolliert die Anzahl der gelieferten Ereignisse und dokumentiert den Tageszähler aus `data/vor_request_count.json` vor und nach dem Aufruf. Fällt der Lauf mit HTTP-Fehlern aus, endet der Prozess mit Exit-Code `1`, wodurch sich die Auswirkungen der Anfrage auf das Tageslimit dennoch nachvollziehen lassen.
+
 **Hinweis:** Standardmäßig werden pro Durchlauf höchstens zwei Stations-IDs abgefragt
 (`VOR_MAX_STATIONS_PER_RUN = 2`), um API-Limits einzuhalten und Requests besser zu
 verteilen.
