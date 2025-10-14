@@ -106,6 +106,21 @@ def test_station_ids_fallback_from_directory(monkeypatch):
     assert {"490009400", "430310100", "430470800"}.issubset(ids)
 
 
+def test_refresh_access_credentials_reloads_from_env(monkeypatch):
+    monkeypatch.setenv("VOR_ACCESS_ID", "first")
+    importlib.reload(vor)
+    assert vor.VOR_ACCESS_ID == "first"
+
+    monkeypatch.setenv("VOR_ACCESS_ID", "second")
+    refreshed = vor.refresh_access_credentials()
+
+    assert refreshed == "second"
+    assert vor.VOR_ACCESS_ID == "second"
+
+    monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    importlib.reload(vor)
+
+
 def test_base_url_prefers_secret(monkeypatch):
     monkeypatch.setenv("VOR_BASE", "https://example.com/base")
     monkeypatch.setenv("VOR_BASE_URL", "https://secret.example.com/base")
@@ -128,4 +143,22 @@ def test_base_url_prefers_secret(monkeypatch):
         vor.VOR_BASE_URL
         == "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"
     )
+
+
+def test_apply_authentication_sets_header(monkeypatch):
+    monkeypatch.setenv("VOR_ACCESS_ID", "secret")
+    importlib.reload(vor)
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.headers: dict[str, str] = {}
+
+    session = DummySession()
+    vor.apply_authentication(session)  # type: ignore[arg-type]
+
+    assert session.headers["Accept"] == "application/json"
+    assert session.headers["Authorization"] == "Bearer secret"
+
+    monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    importlib.reload(vor)
 

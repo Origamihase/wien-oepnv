@@ -25,7 +25,8 @@ def _save_request_count_in_process(count_file: str, iso_timestamp: str, iteratio
 
 
 def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
-    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "test")
+    monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "test")
+    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "test", raising=False)
     monkeypatch.setattr(vor, "VOR_STATION_IDS", ["1"])
     monkeypatch.setattr(vor, "MAX_STATIONS_PER_RUN", 1)
 
@@ -219,7 +220,8 @@ def test_save_request_count_is_safe_across_processes(monkeypatch, tmp_path):
 
 
 def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path):
-    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "test")
+    monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "test")
+    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "test", raising=False)
     monkeypatch.setattr(vor, "VOR_STATION_IDS", ["1", "2", "3"])
     monkeypatch.setattr(vor, "MAX_STATIONS_PER_RUN", 3)
     monkeypatch.setattr(
