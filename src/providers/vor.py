@@ -416,11 +416,13 @@ def _sanitize_access_id(message: str) -> str:
     return sanitized
 
 def _stationboard_url() -> str:
-    return f"{VOR_BASE_URL}DepartureBoard"
+    base = _normalize_base_url(VOR_BASE_URL)
+    return f"{base}DepartureBoard"
 
 
 def _location_name_url() -> str:
-    return f"{VOR_BASE_URL}location.name"
+    base = _normalize_base_url(VOR_BASE_URL)
+    return f"{base}location.name"
 
 
 def _desired_product_classes() -> List[int]:
