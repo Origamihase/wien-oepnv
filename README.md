@@ -185,9 +185,15 @@ python scripts/update_vor_stations.py --verbose
 
 Die Haltestellendaten des Verkehrsverbund Ost-Region (VOR) stehen nach
 Freischaltung im Open-Data-Portal als GTFS- bzw. CSV-Export zur Verfügung
-(z. B. das GTFS-`stops.txt` oder die Datei „Haltestellen“). Die Rohdatei wird
+(z. B. das GTFS-`stops.txt` oder die Datei „Haltestellen“) und lassen sich nun
+alternativ direkt über die VOR-API abrufen. Für den CSV-Weg wird die Rohdatei
 lokal nach `data/vor-haltestellen.csv` kopiert (alternativ lässt sich der Pfad
-über `--source` anpassen). Die Daten sind unter
+über `--source` anpassen). Wer die API verwenden möchte, übergibt `--use-api`
+und stellt die benötigten Station-IDs entweder über `--station-id` bzw.
+`--station-id-file` bereit oder lässt sie weiterhin aus der CSV-Datei
+extrahieren. In beiden Fällen werden die Einträge mit `"source": "vor"`
+markiert, mit dem VOR-Zugangstoken (`VOR_ACCESS_ID` oder `VAO_ACCESS_ID`)
+abgerufen und anschließend in `stations.json` übernommen. Die Daten sind unter
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) veröffentlicht; laut
 Portal lautet die empfohlene Namensnennung „Datenquelle: Verkehrsverbund
 Ost-Region (VOR) GmbH“.
