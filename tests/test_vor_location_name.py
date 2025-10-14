@@ -7,7 +7,7 @@ import src.providers.vor as vor
 
 @responses.activate
 def test_location_name_contains_stoplocation():
-    url = f"{vor.VOR_BASE}/{vor.VOR_VERSION}/location.name"
+    url = f"{vor.VOR_BASE_URL}location.name"
     payload = {"StopLocation": [{"id": "1", "name": "Wien"}]}
     responses.add(responses.GET, url, json=payload, status=200)
 
@@ -21,7 +21,7 @@ def test_location_name_contains_stoplocation():
 @responses.activate
 def test_resolve_station_ids_looks_up_stop_ids(monkeypatch):
     monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token")
-    url = f"{vor.VOR_BASE}/{vor.VOR_VERSION}/location.name"
+    url = f"{vor.VOR_BASE_URL}location.name"
     responses.add(
         responses.GET,
         url,
