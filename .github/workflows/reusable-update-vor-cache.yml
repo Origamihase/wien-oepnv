@@ -6,10 +6,25 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
+      VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
+      VOR_BASE: ${{ secrets.VOR_BASE }}
+      VOR_VERSION: ${{ secrets.VOR_VERSION }}
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Validate VOR secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "${VOR_ACCESS_ID:-}" ]]; then
+            echo "Secret VOR_ACCESS_ID steht im Workflow-Lauf nicht zur Verfügung." >&2
+            echo "Bei PRs aus Forks oder nicht freigegebenen Environments werden Secrets nicht injiziert." >&2
+            exit 1
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
