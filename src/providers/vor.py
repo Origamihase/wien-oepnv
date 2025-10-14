@@ -29,9 +29,9 @@ except ModuleNotFoundError:  # pragma: no cover
     from src.utils.ids import make_guid  # type: ignore
 
 try:  # pragma: no cover - support both package layouts
-    from utils.env import get_int_env, get_bool_env
+    from utils.env import get_int_env, get_bool_env, load_default_env_files
 except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.env import get_int_env, get_bool_env  # type: ignore
+    from src.utils.env import get_int_env, get_bool_env, load_default_env_files  # type: ignore
 
 try:
     from utils.text import html_to_text
@@ -50,6 +50,8 @@ except ModuleNotFoundError:  # pragma: no cover
 
 import requests
 from requests.exceptions import RequestException
+
+load_default_env_files()
 
 log = logging.getLogger(__name__)
 
