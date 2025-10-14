@@ -48,6 +48,7 @@ except ModuleNotFoundError:  # pragma: no cover
     from src.utils.http import session_with_retries  # type: ignore
 
 import requests
+from requests.exceptions import RequestException
 
 log = logging.getLogger(__name__)
 
@@ -842,6 +843,8 @@ def fetch_events() -> List[Dict[str, Any]]:
 
     with ThreadPoolExecutor(max_workers=max_workers) as pool:
         futures: dict[Any, str] = {}
+        error_count = 0
+        success_count = 0
 
         for sid in station_chunk:
             current_date, current_count = load_request_count()
@@ -881,9 +884,12 @@ def fetch_events() -> List[Dict[str, Any]]:
                     sid,
                     _sanitize_access_id(str(e)),
                 )
+                error_count += 1
                 continue
             if root is None:
+                error_count += 1
                 continue
+            success_count += 1
             for it in _collect_from_board(sid, root):
                 if it["guid"] in seen:
                     for x in out:
@@ -898,6 +904,14 @@ def fetch_events() -> List[Dict[str, Any]]:
                     continue
                 seen.add(it["guid"])
                 out.append(it)
+
+    if futures and success_count == 0:
+        log.warning(
+            "VOR: Alle %d StationBoard-Anfragen schlugen fehl (zuletzt %d Fehler).",
+            len(futures),
+            error_count,
+        )
+        raise RequestException("VOR StationBoard: keine erfolgreichen Antworten")
 
     out.sort(key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, x["guid"]))
     return out

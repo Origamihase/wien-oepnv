@@ -247,7 +247,7 @@ def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path)
         with call_lock:
             call_count += 1
         vor.save_request_count(now_local)
-        return None
+        return {}
 
     monkeypatch.setattr(vor, "_fetch_stationboard", fake_fetch)
 
