@@ -281,6 +281,20 @@ def _determine_access_id() -> str:
 
 
 VOR_ACCESS_ID: str = _determine_access_id()
+
+
+def refresh_access_credentials() -> str:
+    """Reload the VOR access token from the environment variables."""
+
+    global VOR_ACCESS_ID
+
+    configured = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip()
+    token = configured or VOR_ACCESS_ID or DEFAULT_ACCESS_ID
+    if not token:
+        token = DEFAULT_ACCESS_ID
+
+    VOR_ACCESS_ID = token
+    return VOR_ACCESS_ID
 VOR_STATION_IDS: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_IDS") or "").split(",") if s.strip()]
 VOR_STATION_NAMES: List[str] = [s.strip() for s in (os.getenv("VOR_STATION_NAMES") or "").split(",") if s.strip()]
 
@@ -419,12 +433,67 @@ def _sanitize_access_id(message: str) -> str:
     return sanitized
 
 
+def _inject_access_id(params: Any, access_id: str) -> Any:
+    """Return *params* with the ``accessId`` query argument enforced."""
+
+    if params is None:
+        return {"accessId": access_id}
+
+    if isinstance(params, Mapping):
+        updated = dict(params)
+        updated["accessId"] = access_id
+        return updated
+
+    if isinstance(params, (list, tuple)):
+        found = False
+        updated_list = []
+        for item in params:
+            if isinstance(item, tuple) and len(item) == 2 and item[0] == "accessId":
+                updated_list.append((item[0], access_id))
+                found = True
+            else:
+                updated_list.append(item)
+        if not found:
+            updated_list.append(("accessId", access_id))
+        return updated_list
+
+    try:
+        iterable = list(params)  # type: ignore[arg-type]
+    except TypeError:
+        return {"accessId": access_id}
+
+    return _inject_access_id(iterable, access_id)
+
+
 def apply_authentication(session: requests.Session) -> None:
-    """Attach the configured authentication headers to a session."""
+    """Attach authentication headers and ensure the access token query param."""
 
     session.headers.update(VOR_SESSION_HEADERS)
-    if VOR_ACCESS_ID:
-        session.headers["Authorization"] = f"Bearer {VOR_ACCESS_ID}"
+
+    access_id = refresh_access_credentials()
+    if access_id:
+        session.headers["Authorization"] = f"Bearer {access_id}"
+    else:
+        session.headers.pop("Authorization", None)
+
+    if not hasattr(session, "request"):
+        return
+
+    original_request = getattr(session, "_vor_original_request", None)
+    if original_request is None:
+        original_request = session.request
+
+        def _request(self: requests.Session, method: str, url: str, params: Any = None, **kwargs: Any):
+            token = refresh_access_credentials()
+            if token:
+                params = _inject_access_id(params, token)
+                self.headers["Authorization"] = f"Bearer {token}"
+            else:
+                self.headers.pop("Authorization", None)
+            return original_request(method, url, params=params, **kwargs)
+
+        session.request = MethodType(_request, session)
+        setattr(session, "_vor_original_request", original_request)
 
 def _stationboard_url() -> str:
     """Return the fully qualified StationBoard endpoint.
