@@ -1,6 +1,9 @@
 import requests
 import responses
 from responses import matchers
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from urllib.parse import parse_qs, urlparse
 
 import src.providers.vor as vor
 
@@ -124,3 +127,34 @@ def test_collect_from_board_canonicalizes_stop_names():
     description = items[0]["description"]
     assert "Wien Franz-Josefs-Bf" in description
     assert "Franz Josefs Bahnhof" not in description
+
+
+@responses.activate
+def test_stationboard_uses_configured_base_url_and_access_id(monkeypatch):
+    monkeypatch.setattr(vor, "VOR_BASE_URL", "https://example.test/custom/")
+    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token")
+    monkeypatch.setattr(vor, "save_request_count", lambda now: 0)
+
+    now = datetime(2024, 1, 1, 8, 30, tzinfo=ZoneInfo("Europe/Vienna"))
+    responses.add(
+        responses.GET,
+        "https://example.test/custom/DepartureBoard",
+        json={"DepartureBoard": {}},
+        status=200,
+    )
+
+    payload = vor._fetch_stationboard("123", now)
+
+    assert payload == {"DepartureBoard": {}}
+    assert len(responses.calls) == 1
+
+    request = responses.calls[0].request
+    parsed = urlparse(request.url)
+    assert parsed.scheme == "https"
+    assert parsed.netloc == "example.test"
+    assert parsed.path == "/custom/DepartureBoard"
+
+    query = parse_qs(parsed.query)
+    assert query["accessId"] == ["token"]
+    assert query["format"] == ["json"]
+    assert query["id"] == ["123"]
