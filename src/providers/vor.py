@@ -412,7 +412,10 @@ BUS_PRODUCT_CLASSES: tuple[int, ...] = (7,)
 
 VOR_USER_AGENT = "Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wien-oepnv)"
 VOR_SESSION_HEADERS = {"Accept": "application/json"}
-_AUTH_HEADER_RE = re.compile(r"(Authorization\s*:\s*Bearer\s+)([^\s]+)", re.IGNORECASE)
+_AUTH_HEADER_RE = re.compile(
+    r"((?:[\"']?)Authorization(?:[\"']?)\s*:\s*(?:[\"']?)Bearer\s+)([^\s\"']+)",
+    re.IGNORECASE,
+)
 VOR_RETRY_OPTIONS = {"total": 3, "backoff_factor": 0.5, "raise_on_status": False}
 
 _ACCESS_ID_KEY_VALUE_RE = re.compile(r"(accessId\s*[=:]\s*)([\"']?)([^\"',\s&]+)(\2)", re.IGNORECASE)
