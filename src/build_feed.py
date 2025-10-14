@@ -25,6 +25,7 @@ except ModuleNotFoundError:  # pragma: no cover
 
 # ---------------- Paths ----------------
 _ALLOWED_ROOTS = {"docs", "data", "log"}
+_REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 def _resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: bool = False) -> Path:
@@ -40,7 +41,8 @@ def _resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: boo
     candidate_str = (raw or "").strip()
 
     if not candidate_str:
-        resolved_default = _validate_path(default_path, env_name)
+        _validate_path(default_path, env_name)
+        resolved_default = Path(default_path)
         os.environ[env_name] = resolved_default.as_posix()
         return resolved_default
 
@@ -50,7 +52,10 @@ def _resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: boo
     except ValueError:
         if not allow_fallback:
             raise
-        resolved = _validate_path(default_path, env_name)
+        _validate_path(default_path, env_name)
+        fallback_path = Path(default_path)
+        os.environ[env_name] = fallback_path.as_posix()
+        return fallback_path
     os.environ[env_name] = resolved.as_posix()
     return resolved
 
@@ -58,12 +63,15 @@ def _resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: boo
 def _validate_path(path: Path, name: str) -> Path:
     """Ensure ``path`` stays within whitelisted directories."""
 
-    try:
-        rel = path.resolve().relative_to(Path.cwd().resolve())
-    except Exception:
-        raise ValueError(f"{name} outside allowed directories")
-    if rel.parts and rel.parts[0] in _ALLOWED_ROOTS:
-        return path
+    resolved = path.resolve()
+    bases = {Path.cwd().resolve(), _REPO_ROOT}
+    for base in bases:
+        try:
+            rel = resolved.relative_to(base)
+        except Exception:
+            continue
+        if rel.parts and rel.parts[0] in _ALLOWED_ROOTS:
+            return resolved
     raise ValueError(f"{name} outside allowed directories")
 
 # ---------------- Logging ----------------
