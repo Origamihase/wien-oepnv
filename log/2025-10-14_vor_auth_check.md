@@ -32,3 +32,10 @@ unverändert fehlschlägt.
   neue Sicherheitsanforderungen der API erfüllt werden, ohne dass der Token in Logs oder Testausgaben sichtbar ist.
 - Sobald der gültige Schlüssel über `VOR_ACCESS_ID` bereitsteht, sollte `scripts/check_vor_auth.py` mit Exit-Code `0`
   abschließen und ein erfolgreiches `authenticated: true` melden.
+
+## Produktivtest (20:48 UTC)
+
+- **Tool:** `scripts/test_vor_api.py`
+- **Ergebnis:** Beide StationBoard-Aufrufe liefern HTTP 401 `API_AUTH`; keine Störungsdaten empfangen.
+- **Request-Zähler:** von `count = 6` auf `count = 8` gestiegen (Δ = 2) trotz fehlender Daten.
+- **Hinweis:** Das Skript spiegelt die produktive Logik wider und eignet sich zur Überwachung der täglichen Request-Limits.
