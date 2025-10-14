@@ -30,3 +30,9 @@
 - Wiederholter Aufruf von `python scripts/test_vor_api.py` ohne vorhandenes `VOR_ACCESS_ID` führte erneut zu einem übersprungenen Lauf (`skipped = true`).【571846†L1-L24】
 - Der Request-Zähler blieb unverändert bei zwei Anfragen vom 15. Oktober 2025 (`delta = 0`).【571846†L1-L24】【F:log/2025-10-18_vor_api_test.md†L1-L6】
 - Für eine valide Aussage über die Datenlage muss vor dem nächsten Test ein gültiges Secret bereitgestellt werden (z. B. via `.env`).【F:README.md†L363-L377】
+
+## Update 19. Oktober 2025
+
+- Testlauf mit bewusst gesetztem Fallback-Token `VAO`; die API antwortete mit `HTTP 401`, es wurden keine Events geliefert (`success = false`).【F:log/2025-10-19_vor_api_test.md†L1-L7】
+- Trotz Fehlers erhöhte sich der Tageszähler für den 15. Oktober 2025 von 2 auf 4 (`delta = 2`).【F:log/2025-10-19_vor_api_test.md†L1-L7】【F:data/vor_request_count.json†L1-L1】
+- Schlussfolgerung: Ohne gültigen `VOR_ACCESS_ID`-Schlüssel bleiben Abrufe erfolglos, verbrauchen aber dennoch das Request-Kontingent; ein produktiver Token ist daher zwingend erforderlich.【F:scripts/test_vor_api.py†L102-L149】

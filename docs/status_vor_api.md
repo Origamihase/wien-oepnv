@@ -1,7 +1,7 @@
 # VOR API Status
 
-Stand: 2025-10-18T09:20:00Z
+Stand: 2025-10-19T09:30:00Z
 
 * `python scripts/test_vor_api.py` lädt Secrets jetzt automatisch aus `.env`, `data/secrets.env` oder `config/secrets.env`, sofern vorhanden. Damit steht `VOR_ACCESS_ID` unmittelbar beim Start zur Verfügung, ohne dass vorab ein `export` nötig ist.【F:src/utils/env.py†L85-L136】【F:scripts/test_vor_api.py†L162-L181】
-* Beim erneuten Test am 2025-10-18 war weiterhin kein `VOR_ACCESS_ID` vorhanden, daher wurde der Abruf übersprungen und `data/vor_request_count.json` blieb unverändert (`delta = 0`, Stand 2 Requests am 2025-10-15).【571846†L1-L24】【F:log/2025-10-18_vor_api_test.md†L1-L6】
-* Sobald ein gültiges Secret bereitsteht, den Test erneut ausführen: Ungültige Tokens führen zu HTTP 401 (`API_AUTH`) und erhöhen den lokalen Tageszähler trotzdem, valide Zugänge liefern Events und dokumentieren den Request-Verbrauch transparent im Report.【F:scripts/test_vor_api.py†L102-L149】
+* Am 2025-10-19 wurde ein Testlauf mit bewusst gesetztem Fallback-Token `VAO` durchgeführt; die API verweigerte den Zugriff mit `HTTP 401`, es kamen keine Events zurück und der Tageszähler erhöhte sich trotzdem um zwei Anfragen (2 → 4 am 2025-10-15).【F:log/2025-10-19_vor_api_test.md†L1-L7】【F:data/vor_request_count.json†L1-L1】
+* Für aussagekräftige Ergebnisse ist ein gültiger Schlüssel über `VOR_ACCESS_ID` erforderlich; fehlgeschlagene Tests verbrauchen das Kontingent dennoch, wie der oben dokumentierte Lauf zeigt.【F:log/2025-10-19_vor_api_test.md†L1-L7】【F:scripts/test_vor_api.py†L102-L149】
