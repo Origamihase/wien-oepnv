@@ -58,6 +58,8 @@ def test_check_authentication_success(monkeypatch: pytest.MonkeyPatch) -> None:
     response = _make_response(200, {"stationBoard": []})
     session = DummySession(response)
     monkeypatch.setattr(module.vor, "VOR_ACCESS_ID", "token")
+    monkeypatch.setattr(module.vor, "_VOR_ACCESS_TOKEN_RAW", "token")
+    monkeypatch.setattr(module.vor, "_VOR_AUTHORIZATION_HEADER", "Bearer token")
     monkeypatch.setattr(module.vor, "refresh_access_credentials", lambda: "token")
     monkeypatch.setattr(module.vor, "VOR_BASE_URL", "https://example.test/")
     monkeypatch.setattr(module.vor, "VOR_RETRY_OPTIONS", {})
@@ -84,6 +86,8 @@ def test_check_authentication_http_error(monkeypatch: pytest.MonkeyPatch) -> Non
     response = _make_response(401, {"errorCode": "API_AUTH", "errorText": "access denied"})
     session = DummySession(response)
     monkeypatch.setattr(module.vor, "VOR_ACCESS_ID", "token")
+    monkeypatch.setattr(module.vor, "_VOR_ACCESS_TOKEN_RAW", "token")
+    monkeypatch.setattr(module.vor, "_VOR_AUTHORIZATION_HEADER", "Bearer token")
     monkeypatch.setattr(module.vor, "refresh_access_credentials", lambda: "token")
     monkeypatch.setattr(module.vor, "VOR_BASE_URL", "https://example.test/")
     monkeypatch.setattr(module.vor, "VOR_RETRY_OPTIONS", {})
@@ -101,7 +105,11 @@ def test_check_authentication_http_error(monkeypatch: pytest.MonkeyPatch) -> Non
 def test_check_authentication_uses_basic_header(monkeypatch: pytest.MonkeyPatch) -> None:
     response = _make_response(200, {"stationBoard": []})
     session = DummySession(response)
+    expected_header = base64.b64encode(b"user:secret").decode("ascii")
     monkeypatch.setattr(module.vor, "VOR_ACCESS_ID", "user:secret")
+    monkeypatch.setattr(module.vor, "_VOR_ACCESS_TOKEN_RAW", "user:secret")
+    monkeypatch.setattr(module.vor, "_VOR_AUTHORIZATION_HEADER", f"Basic {expected_header}")
+    monkeypatch.setattr(module.vor, "refresh_access_credentials", lambda: "user:secret")
     monkeypatch.setattr(module.vor, "VOR_BASE_URL", "https://example.test/")
     monkeypatch.setattr(module.vor, "VOR_RETRY_OPTIONS", {})
     monkeypatch.setattr(module, "session_with_retries", lambda *args, **kwargs: session)
@@ -110,6 +118,26 @@ def test_check_authentication_uses_basic_header(monkeypatch: pytest.MonkeyPatch)
 
     assert result["authenticated"] is True
     assert session.last_request is not None
-    expected_header = base64.b64encode(b"user:secret").decode("ascii")
     assert session.last_request["headers"]["Authorization"] == f"Basic {expected_header}"
+    assert session.last_request["params"]["accessId"] == "user:secret"
+
+
+def test_check_authentication_accepts_prefixed_basic(monkeypatch: pytest.MonkeyPatch) -> None:
+    response = _make_response(200, {"stationBoard": []})
+    session = DummySession(response)
+    raw_token = "Basic user:secret"
+    encoded = base64.b64encode(b"user:secret").decode("ascii")
+    monkeypatch.setattr(module.vor, "VOR_ACCESS_ID", "user:secret")
+    monkeypatch.setattr(module.vor, "_VOR_ACCESS_TOKEN_RAW", raw_token)
+    monkeypatch.setattr(module.vor, "_VOR_AUTHORIZATION_HEADER", f"Basic {encoded}")
+    monkeypatch.setattr(module.vor, "refresh_access_credentials", lambda: "user:secret")
+    monkeypatch.setattr(module.vor, "VOR_BASE_URL", "https://example.test/")
+    monkeypatch.setattr(module.vor, "VOR_RETRY_OPTIONS", {})
+    monkeypatch.setattr(module, "session_with_retries", lambda *args, **kwargs: session)
+
+    result = module.check_authentication("900100")
+
+    assert result["authenticated"] is True
+    assert session.last_request is not None
+    assert session.last_request["headers"]["Authorization"] == f"Basic {encoded}"
     assert session.last_request["params"]["accessId"] == "user:secret"
