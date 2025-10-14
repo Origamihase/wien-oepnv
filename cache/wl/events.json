@@ -398,14 +398,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2A/3A: Verspätungen",
-    "description": "Die Linien 2 A und 3 A können derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "title": "2A: Verspätungen",
+    "description": "Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5cfb4ccfa7270a50a556dd998ba6a1c012972908453056076b31a629e40a4516",
+    "guid": "57d004da43aa922d23ef17d2febd4d27e41c86903650f7772a81a3838692e289",
     "pubDate": "2025-10-14T07:25:00+02:00",
     "starts_at": "2025-10-14T07:25:00+02:00",
     "ends_at": "2025-10-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=2A,3A|D=2025-10-14"
+    "_identity": "wl|störung|L=2A|D=2025-10-14"
   },
   {
     "source": "Wiener Linien",
@@ -429,30 +429,6 @@
     "pubDate": "2025-10-14T07:40:00+02:00",
     "starts_at": "2025-10-14T07:40:00+02:00",
     "ends_at": "2025-10-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=49|D=2025-10-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "972443a84bef38907e648365270e082ade8490d1232911f459dc022db35b72ac",
-    "pubDate": "2025-10-14T07:42:57+02:00",
-    "starts_at": "2025-10-14T07:42:57+02:00",
-    "ends_at": "2025-10-14T08:47:00+02:00",
-    "_identity": "wl|störung|L=49|D=2025-10-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Schadhafter Zug Betrieb ab Urban-Loritz-Platz",
-    "description": "Schadhafter Zug Betrieb ab Urban-Loritz-Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d2419dc93c7d12ba5163b0983f5da28243f27f75079e3cff1beb55da6349d1a0",
-    "pubDate": "2025-10-14T07:42:57+02:00",
-    "starts_at": "2025-10-14T07:42:57+02:00",
-    "ends_at": "2025-10-14T08:44:00+02:00",
     "_identity": "wl|störung|L=49|D=2025-10-14"
   },
   {
