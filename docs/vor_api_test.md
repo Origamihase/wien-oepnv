@@ -15,11 +15,11 @@
 ## Interpretation
 - Ein Testlauf ohne gültiges `VOR_ACCESS_ID`-Secret liefert keine verwertbaren Ergebnisse und würde nur den täglichen Request-Zähler erhöhen.
 - Um aussagekräftige Daten zu erhalten, muss vor dem Aufruf das produktive Zugangstoken über die Umgebung bereitgestellt werden.
-- Das Skript verhindert unbeabsichtigte Abrufe mit dem nicht mehr akzeptierten Fallback-Zugang.
+- Das Skript verhindert unbeabsichtigte Abrufe, solange kein Secret bereitsteht, und vermeidet damit den gesperrten Fallback-Zugang.
 - Optional lassen sich Token (`--access-id`) und API-Endpunkt (`--base-url`) zur Laufzeit überschreiben, sofern die VAO-Dokumentation aus Abschnitt 4 (Authentifizierung & Ergebnisformat) beachtet wird: Jeder Request benötigt `accessId=<your_key_here>` sowie `format=json` für JSON-Antworten.
 
 ## Nutzungshinweise
-- Aufruf: `python scripts/test_vor_api.py [--access-id TOKEN] [--base-url https://…/] [--allow-default-token]`
+- Aufruf: `python scripts/test_vor_api.py [--access-id TOKEN] [--base-url https://…/]`
 - Exit-Codes:
   - `0` – Abruf erfolgreich und hat Events geliefert.
   - `1` – Fehlerhafte oder leere Antwort.

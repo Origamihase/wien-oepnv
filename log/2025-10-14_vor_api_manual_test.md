@@ -7,8 +7,8 @@
 
 ## Diagnose (15.10.2025)
 
-- Wiederholung des Laufs im Container bestätigt die Sperre: Der Report meldet `configured = false` und `uses_default = true`,
-  womit der Provider nur den dokumentierten Fallback `VAO` sieht und den Abruf stoppt.【568d23†L1-L27】
+- Wiederholung des Laufs im Container bestätigt die Sperre: Der Report meldet `configured = false`,
+  womit der Provider kein Secret findet und den Abruf stoppt.【568d23†L1-L27】
 - Ein direkter Umgebungscheck zeigt, dass weder `VOR_ACCESS_ID` noch `VAO_ACCESS_ID` gesetzt sind (`{"VOR_ACCESS_ID": null,
   "VAO_ACCESS_ID": null}`); das Secret steht im aktuellen Workspace also nicht zur Verfügung und muss vor weiteren Tests
   exportiert werden.【6877a4†L1-L8】

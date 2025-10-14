@@ -338,7 +338,7 @@ Weitere Details folgen …]]></description>
 
 | Variable | Typ | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
-| `VOR_ACCESS_ID` / `VAO_ACCESS_ID` | str | `"VAO"` | API-Zugangsschlüssel. Leere Werte fallen auf den in der VAO-Dokumentation genannten Standard zurück. |
+| `VOR_ACCESS_ID` / `VAO_ACCESS_ID` | str | – | API-Zugangsschlüssel. Muss als Secret hinterlegt werden; ohne Wert bleibt der Provider inaktiv. |
 | `VOR_STATION_IDS` | Liste (kommagetrennt) | – | Stations-IDs für Abfragen. Ohne Angabe bleibt der Provider inaktiv. |
 | `VOR_STATION_NAMES` | Liste (kommagetrennt) | – | Stationsnamen für Abfragen. Löst Stationen anhand ihrer Namen auf, wenn keine `VOR_STATION_IDS` gesetzt sind; ansonsten erfolgt die Abfrage über IDs. |
 | `VOR_BASE_URL` | str | `"https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"` | Versionierte Basis-URL der VAO-API (z. B. aus GitHub-Secrets). |

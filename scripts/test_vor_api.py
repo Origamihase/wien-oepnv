@@ -71,7 +71,6 @@ def run_test(
     *,
     access_id_override: Optional[str] = None,
     base_url_override: Optional[str] = None,
-    allow_default_token: bool = False,
 ) -> Dict[str, Any]:
     """Execute the VOR provider once and collect diagnostic data."""
 
@@ -89,20 +88,17 @@ def run_test(
         if access_id_override is not None:
             stack.enter_context(_temporary_env("VOR_ACCESS_ID", access_id_override))
 
-        vor.VOR_BASE_URL, vor.VOR_VERSION = vor._determine_base_url_and_version()
+        vor.refresh_base_configuration()
         access_id = vor.refresh_access_credentials()
         before = vor.load_request_count()
 
-        uses_default = access_id == vor.DEFAULT_ACCESS_ID
-        has_token = bool(access_id and (allow_default_token or not uses_default))
+        has_token = bool(access_id)
 
         report = {
             "access_id": {
                 "configured": has_token,
                 "masked": _mask_token(access_id),
-                "uses_default": uses_default,
                 "override": access_id_override is not None,
-                "allow_default_token": allow_default_token,
             },
             "base_url": {
                 "value": vor.VOR_BASE_URL,
@@ -166,17 +162,10 @@ def main(argv: list[str]) -> int:
         "--base-url",
         help="Überschreibt die Basis-URL der VOR-API (Standard: Wert aus VOR_BASE_URL/VOR_BASE).",
     )
-    parser.add_argument(
-        "--allow-default-token",
-        action="store_true",
-        help="Erlaubt den Fallback-Zugang 'VAO' ausdrücklich (nur zu Dokumentationszwecken).",
-    )
-
     args = parser.parse_args(argv[1:])
     report = run_test(
         access_id_override=args.access_id,
         base_url_override=args.base_url,
-        allow_default_token=args.allow_default_token,
     )
     json.dump(report, sys.stdout, ensure_ascii=False, indent=2, sort_keys=True)
     sys.stdout.write("\n")
