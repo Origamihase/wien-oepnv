@@ -99,9 +99,8 @@ def check_authentication(station_id: str | None = None) -> Dict[str, Any]:
 
     sid = (station_id or os.getenv("VOR_AUTH_TEST_STATION") or DEFAULT_STATION_ID).strip()
     params: Dict[str, Any] = {"format": "json", "id": sid}
-    access_id = vor.refresh_access_credentials()
-    if access_id:
-        params["accessId"] = access_id
+    if vor.VOR_ACCESS_ID:
+        params["accessId"] = vor.VOR_ACCESS_ID
 
     url = f"{vor.VOR_BASE_URL}departureboard"
 

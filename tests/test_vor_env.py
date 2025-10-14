@@ -146,46 +146,19 @@ def test_base_url_prefers_secret(monkeypatch):
     )
 
 
-def test_apply_authentication_adds_access_id(monkeypatch):
+def test_apply_authentication_sets_header(monkeypatch):
     monkeypatch.setenv("VOR_ACCESS_ID", "secret")
     importlib.reload(vor)
 
     class DummySession:
         def __init__(self) -> None:
             self.headers: dict[str, str] = {}
-            self.calls: list[dict[str, Any]] = []
-
-        def request(self, method: str, url: str, **kwargs: Any) -> Any:
-            record = {
-                "method": method,
-                "url": url,
-                "params": kwargs.get("params"),
-                "timeout": kwargs.get("timeout"),
-            }
-            self.calls.append(record)
-            return record
-
-        def get(
-            self,
-            url: str,
-            *,
-            params: dict[str, Any] | None = None,
-            timeout: int | None = None,
-            headers: dict[str, str] | None = None,
-        ) -> Any:
-            return self.request("GET", url, params=params, timeout=timeout, headers=headers)
 
     session = DummySession()
     vor.apply_authentication(session)  # type: ignore[arg-type]
 
     assert session.headers["Accept"] == "application/json"
-
-    session.get("https://example.test/location.name", params={"format": "json"}, timeout=5)
-    assert session.calls[-1]["params"]["accessId"] == "secret"
-
-    monkeypatch.setenv("VOR_ACCESS_ID", "rotated")
-    session.get("https://example.test/location.name", params={"format": "json"}, timeout=5)
-    assert session.calls[-1]["params"]["accessId"] == "rotated"
+    assert session.headers["Authorization"] == "Bearer secret"
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)

@@ -398,17 +398,6 @@ BUS_PRODUCT_CLASSES: tuple[int, ...] = (7,)
 
 VOR_USER_AGENT = "Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wien-oepnv)"
 VOR_SESSION_HEADERS = {"Accept": "application/json"}
-
-
-def refresh_access_credentials() -> str:
-    """Re-read the VOR credentials from the environment."""
-
-    global VOR_ACCESS_ID
-
-    latest = _determine_access_id()
-    if latest != VOR_ACCESS_ID:
-        VOR_ACCESS_ID = latest
-    return VOR_ACCESS_ID
 _AUTH_HEADER_RE = re.compile(r"(Authorization\s*:\s*Bearer\s+)([^\s]+)", re.IGNORECASE)
 VOR_RETRY_OPTIONS = {"total": 3, "backoff_factor": 0.5, "raise_on_status": False}
 
@@ -430,55 +419,12 @@ def _sanitize_access_id(message: str) -> str:
     return sanitized
 
 
-def _inject_access_id(params: Any, access_id: str) -> Any:
-    """Return parameters with the required ``accessId`` attached."""
-
-    if not access_id:
-        return params
-
-    if params is None:
-        return {"accessId": access_id}
-
-    if isinstance(params, Mapping):
-        merged = dict(params)
-        merged["accessId"] = access_id
-        return merged
-
-    if isinstance(params, (list, tuple)):
-        filtered: list[Any] = []
-        for item in params:
-            if (
-                isinstance(item, (list, tuple))
-                and len(item) == 2
-                and item[0] == "accessId"
-            ):
-                continue
-            filtered.append(item)
-        filtered.append(("accessId", access_id))
-        return filtered
-
-    return params
-
-
 def apply_authentication(session: requests.Session) -> None:
-    """Attach the configured authentication parameters to a session."""
+    """Attach the configured authentication headers to a session."""
 
     session.headers.update(VOR_SESSION_HEADERS)
-
-    if getattr(session, "_vor_auth_wrapped", False):
-        return
-
-    original_request = session.request
-
-    def _request(self: requests.Session, method: str, url: str, **kwargs: Any) -> requests.Response:
-        access_id = refresh_access_credentials()
-        if access_id:
-            params = kwargs.get("params")
-            kwargs["params"] = _inject_access_id(params, access_id)
-        return original_request(method, url, **kwargs)
-
-    session.request = MethodType(_request, session)
-    setattr(session, "_vor_auth_wrapped", True)
+    if VOR_ACCESS_ID:
+        session.headers["Authorization"] = f"Bearer {VOR_ACCESS_ID}"
 
 def _stationboard_url() -> str:
     """Return the fully qualified StationBoard endpoint.

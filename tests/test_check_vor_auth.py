@@ -25,29 +25,16 @@ class DummySession:
     def __exit__(self, *exc_info: object) -> None:
         return None
 
-    def request(self, method: str, url: str, **kwargs: Any) -> requests.Response:
-        params = kwargs.get("params") or {}
-        timeout = kwargs.get("timeout")
-        headers = kwargs.get("headers") or {}
+    def get(self, url: str, *, params: Dict[str, Any], timeout: int) -> requests.Response:
         self.last_request = {
             "url": url,
             "params": params,
             "timeout": timeout,
-            "headers": dict(self.headers | headers),
+            "headers": dict(self.headers),
         }
-        prepared = requests.Request(method, url, params=params).prepare()
+        prepared = requests.Request("GET", url, params=params).prepare()
         self._response.url = prepared.url
         return self._response
-
-    def get(
-        self,
-        url: str,
-        *,
-        params: Dict[str, Any],
-        timeout: int,
-        headers: Dict[str, str] | None = None,
-    ) -> requests.Response:
-        return self.request("GET", url, params=params, timeout=timeout, headers=headers or {})
 
 
 def _make_response(status_code: int, body: Dict[str, Any] | None = None) -> requests.Response:
@@ -69,8 +56,7 @@ def test_sanitize_url_masks_access_id() -> None:
 def test_check_authentication_success(monkeypatch: pytest.MonkeyPatch) -> None:
     response = _make_response(200, {"stationBoard": []})
     session = DummySession(response)
-    monkeypatch.setattr(module.vor, "refresh_access_credentials", lambda: "token")
-    monkeypatch.setattr(module.vor, "VOR_ACCESS_ID", "token", raising=False)
+    monkeypatch.setattr(module.vor, "VOR_ACCESS_ID", "token")
     monkeypatch.setattr(module.vor, "VOR_BASE_URL", "https://example.test/")
     monkeypatch.setattr(module.vor, "VOR_RETRY_OPTIONS", {})
     monkeypatch.setattr(module, "session_with_retries", lambda *args, **kwargs: session)
@@ -85,15 +71,17 @@ def test_check_authentication_success(monkeypatch: pytest.MonkeyPatch) -> None:
         "url": "https://example.test/departureboard",
         "params": {"format": "json", "id": "123", "accessId": "token"},
         "timeout": module.vor.HTTP_TIMEOUT,
-        "headers": {"Accept": "application/json"},
+        "headers": {
+            "Accept": "application/json",
+            "Authorization": "Bearer token",
+        },
     }
 
 
 def test_check_authentication_http_error(monkeypatch: pytest.MonkeyPatch) -> None:
     response = _make_response(401, {"errorCode": "API_AUTH", "errorText": "access denied"})
     session = DummySession(response)
-    monkeypatch.setattr(module.vor, "refresh_access_credentials", lambda: "token")
-    monkeypatch.setattr(module.vor, "VOR_ACCESS_ID", "token", raising=False)
+    monkeypatch.setattr(module.vor, "VOR_ACCESS_ID", "token")
     monkeypatch.setattr(module.vor, "VOR_BASE_URL", "https://example.test/")
     monkeypatch.setattr(module.vor, "VOR_RETRY_OPTIONS", {})
     monkeypatch.setattr(module, "session_with_retries", lambda *args, **kwargs: session)
