@@ -155,10 +155,11 @@ ausführlichere Protokollierung aktivieren. Optional können auch Quelle und Zie
 per Argumenten angepasst werden (`--source-url`, `--output`). Neue Pendler:innen-
 Haltestellen werden vorab in `data/pendler_bst_ids.json` eingetragen, damit sie
 beim Lauf nicht herausgefiltert werden. Liegt zusätzlich eine VOR-Haltestellen-
-Liste (`data/vor-haltestellen.csv` oder `--vor-stops`) vor, werden die passenden
-`vor_id`-Einträge automatisch den Wiener und Pendler-Stationen zugeordnet. Damit
-steht ohne weitere Schritte ein vollständiger Fallback für `VOR_STATION_IDS`
-bereit.
+Liste (`data/vor-haltestellen.csv` oder `--vor-stops`) vor, erzeugt das Skript
+eine Zuordnung in `data/vor-haltestellen.mapping.json`. Diese Datei wird zur
+Laufzeit mit `stations.json` zusammengeführt, sodass `station_info` und
+`vor_station_ids()` automatisch alle bekannten VOR-Einträge sehen – ein
+manuelles Nachpflegen entfällt.
 
 ### Pendler-Whitelist pflegen
 
@@ -199,12 +200,13 @@ extrahieren. Die Daten sind unter [CC BY 4.0](https://creativecommons.org/licens
 veröffentlicht; laut Portal lautet die empfohlene Namensnennung „Datenquelle:
 Verkehrsverbund Ost-Region (VOR) GmbH“.
 
-Das Skript extrahiert Stop-ID, Namen und WGS84-Koordinaten und aktualisiert die
-bereits in `stations.json` hinterlegten Einträge um zusätzliche VOR-Metadaten
-(z. B. `latitude`, `longitude`, `aliases`). Für Haltestellen, die nicht im
-ÖBB-Verzeichnis enthalten sind, werden weiterhin eigene Einträge mit
-`"source": "vor"` ergänzt. Damit bleibt das Verzeichnis frei von Dubletten,
-liefert aber dennoch vollständige Koordinaten für alle VOR-Stationen.
+Das Skript extrahiert Stop-ID, Namen und WGS84-Koordinaten und schreibt die
+aufgelösten Zuordnungen nach `data/vor-haltestellen.mapping.json`. Die im
+ÖBB-Verzeichnis vorhandenen Stationen werden beim Laden aus `stations.json`
+angereichert; zusätzliche VOR-Only-Haltestellen (z. B. WL-Umsteigepunkte) landen
+ebenfalls in der Mapping-Datei und werden von `station_info` automatisch
+bereitgestellt. Dadurch bleibt `stations.json` konfliktarm, ohne dass auf
+Koordinaten oder Aliasse verzichtet werden muss.
 
 Für Auswertungen in Kombination mit GTFS- oder Geodaten lohnt es sich, die
 entpackten GTFS-Dateien (z. B. aus dem ÖBB- oder WL-Export) parallel in

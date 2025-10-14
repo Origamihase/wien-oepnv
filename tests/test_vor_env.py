@@ -101,7 +101,9 @@ def test_station_ids_fallback_from_directory(monkeypatch):
 
     importlib.reload(vor)
 
-    assert {"900100", "900200", "900300"}.issubset(set(vor.VOR_STATION_IDS))
+    ids = set(vor.VOR_STATION_IDS)
+    assert len(ids) >= 50
+    assert {"490009400", "430310100", "430470800"}.issubset(ids)
 
 
 def test_base_url_prefers_secret(monkeypatch):

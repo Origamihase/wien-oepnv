@@ -1,0 +1,434 @@
+[
+  {
+    "station_name": "Wien Atzgersdorf",
+    "bst_id": 115,
+    "vor_id": "490009400",
+    "resolved_name": "Wien Atzgersdorf",
+    "latitude": 48.147141,
+    "longitude": 16.288634
+  },
+  {
+    "station_name": "Baden",
+    "bst_id": 149,
+    "vor_id": "430310100",
+    "resolved_name": "Baden bei Wien Bahnhof",
+    "latitude": 48.00406,
+    "longitude": 16.242735
+  },
+  {
+    "station_name": "Bad Vöslau",
+    "bst_id": 253,
+    "vor_id": "430309000",
+    "resolved_name": "Bad Vöslau Bahnhof",
+    "latitude": 47.969533,
+    "longitude": 16.223929
+  },
+  {
+    "station_name": "Ebreichsdorf",
+    "bst_id": 309,
+    "vor_id": "430365300",
+    "resolved_name": "Ebreichsdorf Bahnhof",
+    "latitude": 47.964148,
+    "longitude": 16.419319
+  },
+  {
+    "station_name": "Ebenfurth",
+    "bst_id": 325,
+    "vor_id": "430331800",
+    "resolved_name": "Ebenfurth Bahnhof",
+    "latitude": 47.877573,
+    "longitude": 16.361851
+  },
+  {
+    "station_name": "Wien Praterkai",
+    "bst_id": 353,
+    "vor_id": "490130100",
+    "resolved_name": "Wien Praterkai",
+    "latitude": 48.199602,
+    "longitude": 16.441172
+  },
+  {
+    "station_name": "Wien Brünner Straße",
+    "bst_id": 400,
+    "vor_id": "490017600",
+    "resolved_name": "Wien Brünner Straße",
+    "latitude": 48.267777,
+    "longitude": 16.403588
+  },
+  {
+    "station_name": "Flughafen Wien",
+    "bst_id": 528,
+    "vor_id": "430470800",
+    "resolved_name": "Flughafen Wien Bahnhof",
+    "latitude": 48.12056,
+    "longitude": 16.563659
+  },
+  {
+    "station_name": "Gänserndorf",
+    "bst_id": 547,
+    "vor_id": "430362200",
+    "resolved_name": "Gänserndorf Bahnhof",
+    "latitude": 48.340239,
+    "longitude": 16.732314
+  },
+  {
+    "station_name": "Wien Hütteldorf",
+    "bst_id": 804,
+    "vor_id": "490056000",
+    "resolved_name": "Wien Hütteldorf",
+    "latitude": 48.197391,
+    "longitude": 16.261073
+  },
+  {
+    "station_name": "Wien Hadersdorf",
+    "bst_id": 805,
+    "vor_id": "490046000",
+    "resolved_name": "Wien Hadersdorf",
+    "latitude": 48.210345,
+    "longitude": 16.223552
+  },
+  {
+    "station_name": "Wien Speising",
+    "bst_id": 806,
+    "vor_id": "490129500",
+    "resolved_name": "Wien Speising",
+    "latitude": 48.173705,
+    "longitude": 16.283321
+  },
+  {
+    "station_name": "Wien Weidlingau",
+    "bst_id": 807,
+    "vor_id": "490145800",
+    "resolved_name": "Wien Weidlingau S",
+    "latitude": 48.21047,
+    "longitude": 16.212288
+  },
+  {
+    "station_name": "Purkersdorf Sanatorium",
+    "bst_id": 808,
+    "vor_id": "430460500",
+    "resolved_name": "Purkersdorf bei Wien Bahnhof",
+    "latitude": 48.207738,
+    "longitude": 16.189752
+  },
+  {
+    "station_name": "Wien Heiligenstadt",
+    "bst_id": 901,
+    "vor_id": "490049100",
+    "resolved_name": "Wien Heiligenstadt",
+    "latitude": 48.24907,
+    "longitude": 16.365716
+  },
+  {
+    "station_name": "Wien Oberdöbling",
+    "bst_id": 902,
+    "vor_id": "490095900",
+    "resolved_name": "Wien Oberdöbling",
+    "latitude": 48.24445,
+    "longitude": 16.344277
+  },
+  {
+    "station_name": "Wien Blumental",
+    "bst_id": 934,
+    "vor_id": "490058200",
+    "resolved_name": "Wien Blumental",
+    "latitude": 48.138826,
+    "longitude": 16.369249
+  },
+  {
+    "station_name": "Klosterneuburg-Weidling",
+    "bst_id": 1019,
+    "vor_id": "430395300",
+    "resolved_name": "Klosterneuburg Weidling Bahnhof",
+    "latitude": 48.297585,
+    "longitude": 16.334586
+  },
+  {
+    "station_name": "Korneuburg",
+    "bst_id": 1066,
+    "vor_id": "430396300",
+    "resolved_name": "Korneuburg Bahnhof",
+    "latitude": 48.343574,
+    "longitude": 16.328474
+  },
+  {
+    "station_name": "Leobersdorf",
+    "bst_id": 1161,
+    "vor_id": "430408400",
+    "resolved_name": "Leobersdorf Bahnhof",
+    "latitude": 47.937864,
+    "longitude": 16.2313
+  },
+  {
+    "station_name": "Perchtoldsdorf",
+    "bst_id": 1206,
+    "vor_id": "430450000",
+    "resolved_name": "Perchtoldsdorf Bahnhof",
+    "latitude": 48.123023,
+    "longitude": 16.285559
+  },
+  {
+    "station_name": "Wien Hetzendorf",
+    "bst_id": 1348,
+    "vor_id": "490051100",
+    "resolved_name": "Wien Hetzendorf",
+    "latitude": 48.166226,
+    "longitude": 16.314478
+  },
+  {
+    "station_name": "Wien Matzleinsdorfer Platz",
+    "bst_id": 1349,
+    "vor_id": "490084900",
+    "resolved_name": "Wien Matzleinsdorfer Platz",
+    "latitude": 48.180419,
+    "longitude": 16.358821
+  },
+  {
+    "station_name": "Wien Quartier Belvedere",
+    "bst_id": 1351,
+    "vor_id": "490134600",
+    "resolved_name": "Wien Quartier Belvedere",
+    "latitude": 48.188024,
+    "longitude": 16.381366
+  },
+  {
+    "station_name": "Mödling",
+    "bst_id": 1377,
+    "vor_id": "430423900",
+    "resolved_name": "Mödling Bahnhof",
+    "latitude": 48.085628,
+    "longitude": 16.295474
+  },
+  {
+    "station_name": "Wien Meidling",
+    "bst_id": 1410,
+    "vor_id": "490101500",
+    "resolved_name": "Wien Meidling",
+    "latitude": 48.174271,
+    "longitude": 16.331899
+  },
+  {
+    "station_name": "Wiener Neustadt Hbf",
+    "bst_id": 1499,
+    "vor_id": "430521000",
+    "resolved_name": "Wiener Neustadt Hauptbahnhof",
+    "latitude": 47.811304,
+    "longitude": 16.23362
+  },
+  {
+    "station_name": "Neulengbach",
+    "bst_id": 1558,
+    "vor_id": "430433700",
+    "resolved_name": "Neulengbach Bahnhof",
+    "latitude": 48.199504,
+    "longitude": 15.892875
+  },
+  {
+    "station_name": "Wien Praterstern",
+    "bst_id": 1584,
+    "vor_id": "490104000",
+    "resolved_name": "Wien Praterstern",
+    "latitude": 48.218767,
+    "longitude": 16.392171
+  },
+  {
+    "station_name": "Wien Traisengasse",
+    "bst_id": 1585,
+    "vor_id": "490138500",
+    "resolved_name": "Wien Traisengasse",
+    "latitude": 48.234274,
+    "longitude": 16.383955
+  },
+  {
+    "station_name": "St.Pölten Hbf",
+    "bst_id": 1669,
+    "vor_id": "430484800",
+    "resolved_name": "St. Pölten Hauptbahnhof",
+    "latitude": 48.208196,
+    "longitude": 15.624034
+  },
+  {
+    "station_name": "Pressbaum",
+    "bst_id": 1719,
+    "vor_id": "430457400",
+    "resolved_name": "Pressbaum Bahnhof",
+    "latitude": 48.181184,
+    "longitude": 16.077441
+  },
+  {
+    "station_name": "Wien Penzing",
+    "bst_id": 1797,
+    "vor_id": "490100300",
+    "resolved_name": "Wien Penzing",
+    "latitude": 48.192654,
+    "longitude": 16.305327
+  },
+  {
+    "station_name": "Wien Strebersdorf",
+    "bst_id": 1969,
+    "vor_id": "490133300",
+    "resolved_name": "Wien Strebersdorf",
+    "latitude": 48.286061,
+    "longitude": 16.381079
+  },
+  {
+    "station_name": "Wien Erzherzog Karl-Straße",
+    "bst_id": 2095,
+    "vor_id": "490028800",
+    "resolved_name": "Wien Erzherzog-Karl-Straße",
+    "latitude": 48.229564,
+    "longitude": 16.453226
+  },
+  {
+    "station_name": "Wien Hirschstetten",
+    "bst_id": 2096,
+    "vor_id": "490053200",
+    "resolved_name": "Wien Hirschstetten",
+    "latitude": 48.232683,
+    "longitude": 16.468445
+  },
+  {
+    "station_name": "Stockerau",
+    "bst_id": 2140,
+    "vor_id": "430488400",
+    "resolved_name": "Stockerau Bahnhof",
+    "latitude": 48.382308,
+    "longitude": 16.213016
+  },
+  {
+    "station_name": "Wien Süßenbrunn",
+    "bst_id": 2145,
+    "vor_id": "490135700",
+    "resolved_name": "Wien Süßenbrunn",
+    "latitude": 48.285315,
+    "longitude": 16.484365
+  },
+  {
+    "station_name": "Ternitz",
+    "bst_id": 2232,
+    "vor_id": "430875900",
+    "resolved_name": "Ternitz Bahnhof",
+    "latitude": 47.713753,
+    "longitude": 16.033385
+  },
+  {
+    "station_name": "Purkersdorf Zentrum",
+    "bst_id": 2290,
+    "vor_id": "430460300",
+    "resolved_name": "Purkersdorf bei Wien Zentrum Bahnhof",
+    "latitude": 48.206138,
+    "longitude": 16.175774
+  },
+  {
+    "station_name": "Wien Haidestraße",
+    "bst_id": 2396,
+    "vor_id": "490046500",
+    "resolved_name": "Wien Haidestraße",
+    "latitude": 48.179512,
+    "longitude": 16.42669
+  },
+  {
+    "station_name": "Wien Franz-Josefs-Bf",
+    "bst_id": 2444,
+    "vor_id": "490034500",
+    "resolved_name": "Wien Franz-Josefs-Bahnhof",
+    "latitude": 48.22622,
+    "longitude": 16.361222
+  },
+  {
+    "station_name": "Wien Spittelau",
+    "bst_id": 2446,
+    "vor_id": "490106200",
+    "resolved_name": "Wien Spittelau",
+    "latitude": 48.235604,
+    "longitude": 16.358201
+  },
+  {
+    "station_name": "Deutsch Wagram",
+    "bst_id": 2447,
+    "vor_id": "430327900",
+    "resolved_name": "Deutsch-Wagram Bahnhof",
+    "latitude": 48.303014,
+    "longitude": 16.563982
+  },
+  {
+    "station_name": "Wolkersdorf",
+    "bst_id": 2497,
+    "vor_id": "430527400",
+    "resolved_name": "Wolkersdorf Bahnhof",
+    "latitude": 48.378434,
+    "longitude": 16.512672
+  },
+  {
+    "station_name": "Wien Westbf",
+    "bst_id": 2511,
+    "vor_id": "490146800",
+    "resolved_name": "Wien Westbahnhof",
+    "latitude": 48.196654,
+    "longitude": 16.337652
+  },
+  {
+    "station_name": "Wien Wolf in der Au",
+    "bst_id": 2968384,
+    "vor_id": "490148200",
+    "resolved_name": "Wien Wolf in der Au",
+    "latitude": 48.204735,
+    "longitude": 16.236406
+  },
+  {
+    "station_name": "Tullnerfeld",
+    "bst_id": 4384321,
+    "vor_id": "430575900",
+    "resolved_name": "Tullnerfeld Bahnhof",
+    "latitude": 48.29514,
+    "longitude": 15.996736
+  },
+  {
+    "station_name": "Wien Stadlau",
+    "bst_id": 4407597,
+    "vor_id": "490129900",
+    "resolved_name": "Wien Stadlau",
+    "latitude": 48.219298,
+    "longitude": 16.448534
+  },
+  {
+    "station_name": "Wien Simmering",
+    "bst_id": 4741048,
+    "vor_id": "490126000",
+    "resolved_name": "Wien Simmering",
+    "latitude": 48.170253,
+    "longitude": 16.419867
+  },
+  {
+    "station_name": "Wien Aspern Nord",
+    "bst_id": 4773541,
+    "vor_id": "490091000",
+    "resolved_name": "Wien Aspern Nord",
+    "latitude": 48.234669,
+    "longitude": 16.504456
+  },
+  {
+    "station_name": "Wien Karlsplatz (WL)",
+    "bst_id": null,
+    "vor_id": "490065700",
+    "resolved_name": "Wien Karlsplatz U",
+    "latitude": 48.200888,
+    "longitude": 16.368907
+  },
+  {
+    "station_name": "Wien Schottentor (WL)",
+    "bst_id": null,
+    "vor_id": "490118400",
+    "resolved_name": "Wien Schottentor U",
+    "latitude": 48.214489,
+    "longitude": 16.361905
+  },
+  {
+    "station_name": "Wien Stephansplatz (WL)",
+    "bst_id": null,
+    "vor_id": "490132000",
+    "resolved_name": "Wien Stephansplatz U",
+    "latitude": 48.208088,
+    "longitude": 16.371604
+  }
+]
