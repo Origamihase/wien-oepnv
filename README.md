@@ -355,6 +355,23 @@ Weitere Details folgen …]]></description>
 
 > **Status:** Der historische Standardzugang `VAO` wird inzwischen vom Backend mit `API_AUTH` abgelehnt. Hinterlege daher zwingend einen gültigen Schlüssel via `VOR_ACCESS_ID` oder `VAO_ACCESS_ID`. Die Abfragen übermitteln den Token sowohl als `accessId`-Parameter als auch im Header `Authorization: Bearer …`, sodass neue Backend-Anforderungen automatisch erfüllt werden. Mit `scripts/check_vor_auth.py` lässt sich die Konfiguration vorab testen (siehe unten).
 
+#### Secrets bequem laden
+
+Lokale Entwicklungsumgebungen können sensible Werte in einer `.env`-Datei ablegen, die automatisch eingelesen wird. Standardmäßig sucht das Projekt nach folgenden Dateien (in dieser Reihenfolge) und setzt alle darin definierten Variablen, sofern sie noch nicht in der Umgebung vorhanden sind:
+
+1. `.env`
+2. `data/secrets.env`
+3. `config/secrets.env`
+
+Weitere Dateien lassen sich über die Umgebungsvariable `WIEN_OEPNV_ENV_FILES` (Pfadangaben per `:` getrennt) oder direkt beim Testskript ergänzen: `python scripts/test_vor_api.py --env-file path/to/local.env`. Ein Beispielinhalt für `data/secrets.env` könnte so aussehen:
+
+```env
+VOR_ACCESS_ID=mein-geheimer-token
+VOR_BASE_URL=https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/
+```
+
+Werte in bestehenden Umgebungssitzungen behalten Priorität. So lässt sich sicherstellen, dass Secrets wie `VOR_ACCESS_ID` automatisch zur Verfügung stehen, ohne sie in Git zu committen.
+
 #### Authentifizierung prüfen
 
 ```bash

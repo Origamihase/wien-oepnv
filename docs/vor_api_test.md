@@ -3,8 +3,7 @@
 ## Vorgehen
 - Befehl: `python scripts/test_vor_api.py`
 - Umgebung: gültiger Zugangsschlüssel muss als Secret `VOR_ACCESS_ID` vorhanden sein.
-- Im aktuellen Container ist weder `VOR_ACCESS_ID` noch `VAO_ACCESS_ID` gesetzt (`{"VOR_ACCESS_ID": null, "VAO_ACCESS_ID": null}`).
-  Ohne vorheriges `export VOR_ACCESS_ID=…` blockiert das Testszenario daher bewusst den Abruf.【6877a4†L1-L8】
+- Die Umgebung lädt Secrets jetzt automatisch aus `.env`, `data/secrets.env` oder `config/secrets.env`, sofern vorhanden. Ohne entsprechende Datei bleibt der Test weiterhin blockiert.【F:src/utils/env.py†L85-L136】【F:scripts/test_vor_api.py†L162-L181】
 
 ## Ergebnisse
 - Der Test wurde **abgebrochen**, weil kein `VOR_ACCESS_ID` gesetzt war und somit kein autorisierter Abruf erfolgen konnte.
@@ -25,3 +24,15 @@
   - `1` – Fehlerhafte oder leere Antwort.
   - `2` – Testlauf wurde übersprungen (z. B. fehlendes Token).
 - Die Ausgabe listet den maskierten Access Key, den gewählten Basis-Endpunkt und den Delta-Wert des Request-Zählers, damit nachvollziehbar bleibt, ob ein Test den Tageszähler erhöht hat.
+
+## Update 18. Oktober 2025
+
+- Wiederholter Aufruf von `python scripts/test_vor_api.py` ohne vorhandenes `VOR_ACCESS_ID` führte erneut zu einem übersprungenen Lauf (`skipped = true`).【571846†L1-L24】
+- Der Request-Zähler blieb unverändert bei zwei Anfragen vom 15. Oktober 2025 (`delta = 0`).【571846†L1-L24】【F:log/2025-10-18_vor_api_test.md†L1-L6】
+- Für eine valide Aussage über die Datenlage muss vor dem nächsten Test ein gültiges Secret bereitgestellt werden (z. B. via `.env`).【F:README.md†L363-L377】
+
+## Update 19. Oktober 2025
+
+- Testlauf mit bewusst gesetztem Fallback-Token `VAO`; die API antwortete mit `HTTP 401`, es wurden keine Events geliefert (`success = false`).【F:log/2025-10-19_vor_api_test.md†L1-L7】
+- Trotz Fehlers erhöhte sich der Tageszähler für den 15. Oktober 2025 von 2 auf 4 (`delta = 2`).【F:log/2025-10-19_vor_api_test.md†L1-L7】【F:data/vor_request_count.json†L1-L1】
+- Schlussfolgerung: Ohne gültigen `VOR_ACCESS_ID`-Schlüssel bleiben Abrufe erfolglos, verbrauchen aber dennoch das Request-Kontingent; ein produktiver Token ist daher zwingend erforderlich.【F:scripts/test_vor_api.py†L102-L149】

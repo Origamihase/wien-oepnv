@@ -28,8 +28,10 @@ if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 try:  # pragma: no cover - allow flat and src layouts
+    from utils.env import load_env_file
     from providers import vor
 except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.env import load_env_file  # type: ignore
     from src.providers import vor  # type: ignore
 
 
@@ -159,10 +161,25 @@ def main(argv: list[str]) -> int:
         help="Überschreibt das Zugriffstoken (statt aus der Umgebung VOR_ACCESS_ID zu lesen).",
     )
     parser.add_argument(
+        "--env-file",
+        action="append",
+        help=(
+            "Lädt zusätzliche .env-Dateien, bevor die Provider-Konfiguration neu eingelesen wird. "
+            "Relative Pfade beziehen sich auf den Projektstamm."
+        ),
+    )
+    parser.add_argument(
         "--base-url",
         help="Überschreibt die Basis-URL der VOR-API (Standard: Wert aus VOR_BASE_URL/VOR_BASE).",
     )
     args = parser.parse_args(argv[1:])
+
+    for env_entry in args.env_file or []:
+        env_path = Path(env_entry)
+        if not env_path.is_absolute():
+            env_path = BASE_DIR / env_path
+        load_env_file(env_path)
+
     report = run_test(
         access_id_override=args.access_id,
         base_url_override=args.base_url,

@@ -1,14 +1,30 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""Helpers for reading environment variables in a safe way."""
+"""Helpers for reading environment variables in a safe way.
+
+The module now also provides lightweight helpers to populate environment
+variables from ``.env`` style files.  This allows local development setups to
+store API credentials alongside the repository without committing them to
+version control.  Consumers can call :func:`load_default_env_files` before
+importing provider modules to ensure secrets such as ``VOR_ACCESS_ID`` are
+available.
+"""
 
 from __future__ import annotations
 
 import logging
 import os
+import re
+from pathlib import Path
+from typing import Dict, Iterable, Mapping, MutableMapping
 
-__all__ = ["get_int_env", "get_bool_env"]
+__all__ = [
+    "get_int_env",
+    "get_bool_env",
+    "load_env_file",
+    "load_default_env_files",
+]
 
 _TRUE_VALUES = {"1", "true", "t", "yes", "y", "on"}
 _FALSE_VALUES = {"0", "false", "f", "no", "n", "off"}
@@ -71,4 +87,103 @@ def get_int_env(name: str, default: int) -> int:
             e,
         )
         return default
+
+
+ENV_ASSIGNMENT_RE = re.compile(r"^(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)=(.*)$")
+
+
+def _strip_quotes(value: str) -> str:
+    """Return ``value`` without surrounding single or double quotes."""
+
+    if len(value) >= 2 and ((value[0] == value[-1]) and value[0] in {'"', "'"}):
+        return value[1:-1]
+    return value
+
+
+def _parse_env_file(content: str) -> Dict[str, str]:
+    """Parse the given env file ``content`` into a mapping."""
+
+    parsed: Dict[str, str] = {}
+    for raw_line in content.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+
+        match = ENV_ASSIGNMENT_RE.match(line)
+        if not match:
+            continue
+
+        key, value = match.groups()
+        parsed[key] = _strip_quotes(value.strip())
+
+    return parsed
+
+
+def load_env_file(
+    path: Path,
+    *,
+    override: bool = False,
+    environ: MutableMapping[str, str] | None = None,
+) -> Dict[str, str]:
+    """Load environment variables from ``path`` into ``environ``.
+
+    Returns a mapping containing the parsed assignments. Existing variables are
+    left untouched unless ``override`` is set to ``True``.
+    """
+
+    env: MutableMapping[str, str]
+    env = environ if environ is not None else os.environ
+
+    if not path.exists() or not path.is_file():
+        return {}
+
+    content = path.read_text(encoding="utf-8")
+    parsed = _parse_env_file(content)
+
+    for key, value in parsed.items():
+        if override or key not in env:
+            env[key] = value
+
+    return parsed
+
+
+def _default_env_file_candidates(base_dir: Path) -> Iterable[Path]:
+    """Return default env files that should be considered for loading."""
+
+    candidates = [
+        base_dir / ".env",
+        base_dir / "data" / "secrets.env",
+        base_dir / "config" / "secrets.env",
+    ]
+
+    extra = os.getenv("WIEN_OEPNV_ENV_FILES")
+    if extra:
+        for part in extra.split(os.pathsep):
+            item = part.strip()
+            if not item:
+                continue
+            candidate = Path(item).expanduser()
+            if not candidate.is_absolute():
+                candidate = base_dir / candidate
+            candidates.append(candidate)
+
+    return candidates
+
+
+def load_default_env_files(
+    *,
+    override: bool = False,
+    environ: MutableMapping[str, str] | None = None,
+) -> Mapping[Path, Dict[str, str]]:
+    """Load standard env files relative to the project root."""
+
+    base_dir = Path(__file__).resolve().parents[1]
+
+    loaded: Dict[Path, Dict[str, str]] = {}
+    for candidate in _default_env_file_candidates(base_dir):
+        parsed = load_env_file(candidate, override=override, environ=environ)
+        if parsed:
+            loaded[candidate] = parsed
+
+    return loaded
 
