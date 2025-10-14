@@ -20,6 +20,7 @@ import os
 import sys
 from pathlib import Path
 from typing import Any, Dict
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import requests
 
@@ -38,6 +39,32 @@ except ModuleNotFoundError:  # pragma: no cover
 AUTH_ERROR_CODES = {"API_AUTH", "HCI_AUTH", "HAFAS_AUTH"}
 AUTH_ERROR_PREFIXES = ("access denied", "invalid authorization")
 DEFAULT_STATION_ID = "430470800"
+
+
+def _sanitize_url(url: str | None) -> str | None:
+    """Mask sensitive query parameters like ``accessId`` in URLs."""
+
+    if not url:
+        return url
+
+    parsed = urlsplit(url)
+    if not parsed.query:
+        return url
+
+    sanitized = []
+    modified = False
+    for key, value in parse_qsl(parsed.query, keep_blank_values=True):
+        if key.lower() == "accessid" and value:
+            sanitized.append((key, "***"))
+            modified = True
+        else:
+            sanitized.append((key, value))
+
+    if not modified:
+        return url
+
+    new_query = urlencode(sanitized, doseq=True, safe="*")
+    return urlunsplit((parsed.scheme, parsed.netloc, parsed.path, new_query, parsed.fragment))
 
 
 def _parse_payload(response: requests.Response) -> Dict[str, Any]:
@@ -77,9 +104,22 @@ def check_authentication(station_id: str | None = None) -> Dict[str, Any]:
 
     url = f"{vor.VOR_BASE_URL}departureboard"
 
-    with session_with_retries(vor.VOR_USER_AGENT, **vor.VOR_RETRY_OPTIONS) as session:
-        session.headers.update(vor.VOR_SESSION_HEADERS)
-        response = session.get(url, params=params, timeout=vor.HTTP_TIMEOUT)
+    prepared = requests.Request("GET", url, params=params).prepare()
+    request_url = prepared.url or url
+
+    try:
+        with session_with_retries(vor.VOR_USER_AGENT, **vor.VOR_RETRY_OPTIONS) as session:
+            session.headers.update(vor.VOR_SESSION_HEADERS)
+            response = session.get(url, params=params, timeout=vor.HTTP_TIMEOUT)
+    except requests.RequestException as exc:
+        return {
+            "url": _sanitize_url(request_url),
+            "status_code": None,
+            "error_code": None,
+            "error_text": str(exc),
+            "authenticated": False,
+            "payload": None,
+        }
 
     payload = _parse_payload(response)
     error_code = str(payload.get("errorCode") or "").strip() if isinstance(payload, dict) else ""
@@ -94,7 +134,7 @@ def check_authentication(station_id: str | None = None) -> Dict[str, Any]:
             authenticated = False
 
     return {
-        "url": response.url,
+        "url": _sanitize_url(response.url) or _sanitize_url(request_url),
         "status_code": response.status_code,
         "error_code": error_code or None,
         "error_text": error_text or None,

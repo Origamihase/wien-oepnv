@@ -362,6 +362,7 @@ python scripts/check_vor_auth.py
 ```
 
 Die Ausgabe enthält HTTP-Status, Fehlercode und ein `authenticated`-Flag. Der Prozess endet mit Exit-Code `1`, falls die Zugangsdaten von der API abgewiesen werden.
+Die in der Ausgabe protokollierte URL maskiert den hinterlegten `accessId`-Wert automatisch.
 
 **Hinweis:** Standardmäßig werden pro Durchlauf höchstens zwei Stations-IDs abgefragt
 (`VOR_MAX_STATIONS_PER_RUN = 2`), um API-Limits einzuhalten und Requests besser zu
