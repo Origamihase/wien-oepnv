@@ -269,15 +269,8 @@ def save_request_count(now_local: datetime) -> int:
         return result
 
 
-DEFAULT_ACCESS_ID = "VAO"
-"""Fallback access token recommended by the VAO REST documentation."""
-
-
 def _determine_access_id() -> str:
-    raw = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip()
-    if raw:
-        return raw
-    return DEFAULT_ACCESS_ID
+    return (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip()
 
 
 VOR_ACCESS_ID: str = _determine_access_id()
@@ -291,14 +284,16 @@ def refresh_access_credentials() -> str:
     global VOR_ACCESS_ID, _VOR_ACCESS_TOKEN_RAW, _VOR_AUTHORIZATION_HEADER
 
     configured = (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip()
-    candidate = configured or _VOR_ACCESS_TOKEN_RAW or VOR_ACCESS_ID or DEFAULT_ACCESS_ID
+    candidate = configured or _VOR_ACCESS_TOKEN_RAW or VOR_ACCESS_ID or ""
 
     access_id, header = _parse_access_credentials(candidate)
     if not access_id:
-        candidate = DEFAULT_ACCESS_ID
-        access_id, header = _parse_access_credentials(candidate)
+        VOR_ACCESS_ID = ""
+        _VOR_ACCESS_TOKEN_RAW = ""
+        _VOR_AUTHORIZATION_HEADER = None
+        return VOR_ACCESS_ID
 
-    VOR_ACCESS_ID = access_id or DEFAULT_ACCESS_ID
+    VOR_ACCESS_ID = access_id
     _VOR_ACCESS_TOKEN_RAW = candidate
     _VOR_AUTHORIZATION_HEADER = header
     return VOR_ACCESS_ID
@@ -379,6 +374,15 @@ def _determine_base_url_and_version() -> tuple[str, str]:
 
 
 VOR_BASE_URL, VOR_VERSION = _determine_base_url_and_version()
+
+
+def refresh_base_configuration() -> tuple[str, str]:
+    """Reload the base URL and version from the environment variables."""
+
+    global VOR_BASE_URL, VOR_VERSION
+
+    VOR_BASE_URL, VOR_VERSION = _determine_base_url_and_version()
+    return VOR_BASE_URL, VOR_VERSION
 BOARD_DURATION_MIN = get_int_env("VOR_BOARD_DURATION_MIN", 60)
 HTTP_TIMEOUT = get_int_env("VOR_HTTP_TIMEOUT", 15)
 DEFAULT_MAX_STATIONS_PER_RUN = 2
@@ -1034,6 +1038,8 @@ def _collect_from_board(station_id: str, payload: Mapping[str, Any]) -> List[Dic
     return items
 
 def fetch_events() -> List[Dict[str, Any]]:
+    refresh_base_configuration()
+
     if not refresh_access_credentials():
         log.info("VOR: kein VOR_ACCESS_ID gesetzt – Provider inaktiv.")
         return []
