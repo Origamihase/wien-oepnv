@@ -317,10 +317,26 @@ _DEFAULT_VOR_VERSION = "v1.11.0"
 
 
 def _normalize_base_url(url: str) -> str:
-    url = url.strip()
-    if not url:
+    """Return a deterministic base URL with exactly one trailing slash.
+
+    Previous implementations simply appended ``"/"`` when the provided value
+    did not already end with one. That approach breaks when the secret includes
+    a query string or fragment because the slash would be inserted after the
+    query (``https://…?foo=bar/``), yielding an invalid endpoint.  Using
+    :func:`urllib.parse.urlsplit` allows us to operate on the path component
+    directly and preserve any additional parts of the URL while still ensuring
+    a single trailing slash.
+    """
+
+    cleaned = url.strip()
+    if not cleaned:
         return ""
-    return url if url.endswith("/") else f"{url}/"
+
+    from urllib.parse import urlsplit, urlunsplit
+
+    parts = urlsplit(cleaned)
+    path = parts.path.rstrip("/") + "/"
+    return urlunsplit((parts.scheme, parts.netloc, path, parts.query, parts.fragment))
 
 
 _VERSION_RE = re.compile(r"^v\d+\.\d+\.\d+$", re.IGNORECASE)
@@ -416,11 +432,13 @@ def _sanitize_access_id(message: str) -> str:
     return sanitized
 
 def _stationboard_url() -> str:
-    return f"{VOR_BASE_URL}DepartureBoard"
+    base = _normalize_base_url(VOR_BASE_URL)
+    return f"{base}DepartureBoard"
 
 
 def _location_name_url() -> str:
-    return f"{VOR_BASE_URL}location.name"
+    base = _normalize_base_url(VOR_BASE_URL)
+    return f"{base}location.name"
 
 
 def _desired_product_classes() -> List[int]:
