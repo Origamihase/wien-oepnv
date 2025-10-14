@@ -25,3 +25,10 @@ werden.
 Auch nach dem Eintrag eines angeblich neuen Tokens meldet `src.providers.vor.VOR_ACCESS_ID` weiterhin den Fallback-Wert `VAO`.
 Die Umgebungsvariable `VOR_ACCESS_ID` scheint im aktuellen Laufzeitkontext nicht gesetzt zu sein, wodurch die Authentifizierung
 unverändert fehlschlägt.
+
+## Nachbereitung (15.10.2025)
+
+- Die VOR-Anfragen ergänzen den hinterlegten Zugangsschlüssel nun zusätzlich im HTTP-Header `Authorization: Bearer …`, sodass
+  neue Sicherheitsanforderungen der API erfüllt werden, ohne dass der Token in Logs oder Testausgaben sichtbar ist.
+- Sobald der gültige Schlüssel über `VOR_ACCESS_ID` bereitsteht, sollte `scripts/check_vor_auth.py` mit Exit-Code `0`
+  abschließen und ein erfolgreiches `authenticated: true` melden.

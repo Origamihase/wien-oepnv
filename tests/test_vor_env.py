@@ -129,3 +129,21 @@ def test_base_url_prefers_secret(monkeypatch):
         == "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"
     )
 
+
+def test_apply_authentication_sets_header(monkeypatch):
+    monkeypatch.setenv("VOR_ACCESS_ID", "secret")
+    importlib.reload(vor)
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.headers: dict[str, str] = {}
+
+    session = DummySession()
+    vor.apply_authentication(session)  # type: ignore[arg-type]
+
+    assert session.headers["Accept"] == "application/json"
+    assert session.headers["Authorization"] == "Bearer secret"
+
+    monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    importlib.reload(vor)
+

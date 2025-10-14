@@ -26,7 +26,12 @@ class DummySession:
         return None
 
     def get(self, url: str, *, params: Dict[str, Any], timeout: int) -> requests.Response:
-        self.last_request = {"url": url, "params": params, "timeout": timeout}
+        self.last_request = {
+            "url": url,
+            "params": params,
+            "timeout": timeout,
+            "headers": dict(self.headers),
+        }
         prepared = requests.Request("GET", url, params=params).prepare()
         self._response.url = prepared.url
         return self._response
@@ -66,6 +71,10 @@ def test_check_authentication_success(monkeypatch: pytest.MonkeyPatch) -> None:
         "url": "https://example.test/departureboard",
         "params": {"format": "json", "id": "123", "accessId": "token"},
         "timeout": module.vor.HTTP_TIMEOUT,
+        "headers": {
+            "Accept": "application/json",
+            "Authorization": "Bearer token",
+        },
     }
 
 

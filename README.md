@@ -353,7 +353,7 @@ Weitere Details folgen …]]></description>
 | `VOR_BUS_INCLUDE_REGEX` | Regex | `"(?:\\b[2-9]\\d{2,4}\\b)"` | Muster für zusätzliche Buslinien. |
 | `VOR_BUS_EXCLUDE_REGEX` | Regex | `"^(?:N?\\d{1,2}[A-Z]?)$"` | Muster zum Ausschließen von Buslinien. |
 
-> **Status:** Der historische Standardzugang `VAO` wird inzwischen vom Backend mit `API_AUTH` abgelehnt. Hinterlege daher zwingend einen gültigen Schlüssel via `VOR_ACCESS_ID` oder `VAO_ACCESS_ID`. Mit `scripts/check_vor_auth.py` lässt sich die Konfiguration vorab testen (siehe unten).
+> **Status:** Der historische Standardzugang `VAO` wird inzwischen vom Backend mit `API_AUTH` abgelehnt. Hinterlege daher zwingend einen gültigen Schlüssel via `VOR_ACCESS_ID` oder `VAO_ACCESS_ID`. Die Abfragen übermitteln den Token sowohl als `accessId`-Parameter als auch im Header `Authorization: Bearer …`, sodass neue Backend-Anforderungen automatisch erfüllt werden. Mit `scripts/check_vor_auth.py` lässt sich die Konfiguration vorab testen (siehe unten).
 
 #### Authentifizierung prüfen
 
@@ -362,7 +362,7 @@ python scripts/check_vor_auth.py
 ```
 
 Die Ausgabe enthält HTTP-Status, Fehlercode und ein `authenticated`-Flag. Der Prozess endet mit Exit-Code `1`, falls die Zugangsdaten von der API abgewiesen werden.
-Die in der Ausgabe protokollierte URL maskiert den hinterlegten `accessId`-Wert automatisch.
+Die in der Ausgabe protokollierte URL sowie etwaige `Authorization`-Header maskieren den hinterlegten Zugangsschlüssel automatisch.
 
 **Hinweis:** Standardmäßig werden pro Durchlauf höchstens zwei Stations-IDs abgefragt
 (`VOR_MAX_STATIONS_PER_RUN = 2`), um API-Limits einzuhalten und Requests besser zu

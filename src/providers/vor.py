@@ -397,6 +397,7 @@ BUS_PRODUCT_CLASSES: tuple[int, ...] = (7,)
 
 VOR_USER_AGENT = "Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wien-oepnv)"
 VOR_SESSION_HEADERS = {"Accept": "application/json"}
+_AUTH_HEADER_RE = re.compile(r"(Authorization\s*:\s*Bearer\s+)([^\s]+)", re.IGNORECASE)
 VOR_RETRY_OPTIONS = {"total": 3, "backoff_factor": 0.5, "raise_on_status": False}
 
 _ACCESS_ID_KEY_VALUE_RE = re.compile(r"(accessId\s*[=:]\s*)([\"']?)([^\"',\s&]+)(\2)", re.IGNORECASE)
@@ -411,9 +412,18 @@ def _sanitize_access_id(message: str) -> str:
         message,
     )
     sanitized = _ACCESS_ID_URLENC_RE.sub(lambda match: f"{match.group(1)}***", sanitized)
+    sanitized = _AUTH_HEADER_RE.sub(lambda match: f"{match.group(1)}***", sanitized)
     if VOR_ACCESS_ID:
         sanitized = sanitized.replace(VOR_ACCESS_ID, "***")
     return sanitized
+
+
+def apply_authentication(session: requests.Session) -> None:
+    """Attach the configured authentication headers to a session."""
+
+    session.headers.update(VOR_SESSION_HEADERS)
+    if VOR_ACCESS_ID:
+        session.headers["Authorization"] = f"Bearer {VOR_ACCESS_ID}"
 
 def _stationboard_url() -> str:
     """Return the fully qualified StationBoard endpoint.
@@ -483,7 +493,7 @@ def resolve_station_ids(names: List[str]) -> List[str]:
         return resolved
 
     with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
-        session.headers.update(VOR_SESSION_HEADERS)
+        apply_authentication(session)
         for name in wanted:
             params = {"format": "json", "input": name, "type": "stop"}
             if VOR_ACCESS_ID:
@@ -664,7 +674,7 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[s
     max_attempts = 1 + retry_total
     try:
         with session_with_retries(VOR_USER_AGENT, **session_retry_options) as session:
-            session.headers.update(VOR_SESSION_HEADERS)
+            apply_authentication(session)
             attempt = 0
             while attempt < max_attempts:
                 attempt += 1

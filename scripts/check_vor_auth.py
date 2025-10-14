@@ -109,7 +109,7 @@ def check_authentication(station_id: str | None = None) -> Dict[str, Any]:
 
     try:
         with session_with_retries(vor.VOR_USER_AGENT, **vor.VOR_RETRY_OPTIONS) as session:
-            session.headers.update(vor.VOR_SESSION_HEADERS)
+            vor.apply_authentication(session)
             response = session.get(url, params=params, timeout=vor.HTTP_TIMEOUT)
     except requests.RequestException as exc:
         return {
