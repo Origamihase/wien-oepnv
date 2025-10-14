@@ -1,28 +1,25 @@
-# Projekt-Audit: wien-oepnv
+# Auditbericht
 
-## Vorgehen
-- Vollständige Test-Suite mit `pytest` ausgeführt.
-- Quellcode der Kernmodule (`src/build_feed.py`, `src/providers/*`, `src/utils/*`) sowie die begleitenden Tests und Dokumentation geprüft.
-- Fokus auf Zuverlässigkeit, Effizienz und sicheren Umgang mit Secrets.
+## Zusammenfassung
+- Alle 233 automatisierten Tests laufen fehlerfrei durch. Damit sind u. a. Cache-Verarbeitung, Feed-Erzeugung, Stationsabgleich und Fehlerbehandlung abgedeckt.
+- Die Feed-Generierung arbeitet ausschließlich mit Repository-internen Cache-Dateien, greift kontrolliert auf Umgebungsvariablen zu und schützt Dateipfade vor Ausbrüchen aus dem Projektverzeichnis.
+- Es sind keine hartcodierten Secrets im Repository hinterlegt; alle sensiblen Einstellungen werden per Umgebungsvariablen erwartet und validiert.
 
-## Beobachtungen
+## Teststatus
+`pytest` wurde im Container ausgeführt; alle Tests bestanden ohne Fehler. Damit sind Funktionen wie `_collect_items`, das Schreiben des Feed-Files ohne Netzwerkzugriff sowie die Validierung von Stationsdaten abgedeckt.
 
-### Zuverlässigkeit
-- Pfadzugriffe für Ausgabedateien und Logs werden strikt auf die erlaubten Wurzeln `docs/`, `data/` und `log/` beschränkt. Dies verhindert unbeabsichtigte Schreibzugriffe außerhalb des Repos, selbst wenn Umgebungsvariablen manipuliert werden.【F:src/build_feed.py†L27-L139】
-- Provider-Datenquellen aus Cache und Netzwerk werden parallel geladen; Fehler einzelner Quellen werden protokolliert und blockieren den Feed nicht. Netzwerkzugriffe sind in einen konfigurierbaren Timeout eingebettet, wodurch das Gesamtsystem robust gegen hängende Provider bleibt.【F:src/build_feed.py†L442-L511】
-- Die Testsuite deckt 226 Tests ab und verifiziert u. a. Datumshandhabung, State-Management, Provider-Limits und Fehlerpfade. In der aktuellen Revision laufen alle Tests erfolgreich durch.【9c08e0†L1-L14】
+## Sicherheit und Secrets
+- Pfadangaben werden durch `_resolve_env_path` und `_validate_path` auf erlaubte Verzeichnisse begrenzt, wodurch unbeabsichtigte Dateizugriffe verhindert werden.【F:src/build_feed.py†L30-L68】
+- Umgebungsvariablen für Betriebsparameter werden mit `get_int_env` bzw. `get_bool_env` eingelesen, invaliden Werte protokolliert und sichere Defaults verwendet.【F:src/build_feed.py†L132-L157】【F:src/utils/env.py†L17-L74】
+- In der Codebasis befinden sich keine hart hinterlegten API-Schlüssel oder anderen Secrets; API-Zugänge werden ausschließlich über env-Variablen aktiviert (`*_ENABLE`).【F:src/build_feed.py†L97-L120】
 
-### Effizienz
-- Netzwerk-Provider werden in einem `ThreadPoolExecutor` mit dynamischer Worker-Anzahl ausgeführt; dadurch werden langsame Quellen parallelisiert und die Laufzeit verkürzt, ohne unnötige Threads zu starten.【F:src/build_feed.py†L484-L511】
-- Datumsnormalisierung, Deduplikation und Altersprüfungen erfolgen in-place auf den geladenen Items. Dadurch werden Mehrfachdurchläufe vermieden und die Feedgröße kontrolliert.【F:src/build_feed.py†L514-L603】
+## Zuverlässigkeit der Provider- und Feed-Logik
+- Die Feed-Erzeugung greift auf lokal versionierte Cache-Dateien zurück und kann auch ohne aktuelle Providerdaten einen gültigen Feed erzeugen, wobei Warnungen protokolliert werden.【F:tests/test_build_feed_cache.py†L35-L88】
+- Tests stellen sicher, dass Cache-Inhalte korrekt geladen und sortiert werden und dass Datumsformate robust gegen Formatierungsfehler sind.【F:tests/test_build_feed_cache.py†L91-L140】
 
-### Sicherheit & Secrets
-- Zugriffsdaten für die VOR-API werden ausschließlich über Umgebungsvariablen bezogen. Vor dem Logging werden `accessId`-Werte aus allen bekannten Formaten maskiert; begleitende Tests stellen sicher, dass keine Klartexte im Log landen.【F:src/providers/vor.py†L270-L361】【F:tests/test_vor_accessid_not_logged.py†L1-L53】
-- Für Wiener Linien lässt sich eine alternative Basis-URL per Secret setzen; der Code fällt ansonsten auf den öffentlichen OGD-Endpunkt zurück und speichert keine sensiblen Daten im Repo.【F:src/providers/wl_fetch.py†L52-L68】
+## Stationsabgleich
+- Die Stations-Hilfsfunktionen erkennen Alias-Kollisionen und melden diese per Log, sodass Inkonsistenzen beim Abgleich auffallen.【F:tests/test_station_alias_collision.py†L7-L33】
+- Weitere Tests (z. B. `tests/test_vor_*`, `tests/test_wl_*`) validieren das Zusammenspiel mit VOR- und Wiener-Linien-Daten sowie die Aktualisierung der Stationsverzeichnisse.
 
 ## Handlungsempfehlungen
-- Tests regelmäßig in der Zielumgebung (z. B. CI/CD) ausführen, um die hohe Abdeckung beizubehalten.
-- Beim Hinzufügen weiterer Provider auf die vorhandenen Muster achten (Timeouts, Secret-Maskierung), um die etablierten Sicherheits- und Robustheitsstandards zu halten.
-- Das Logging der Request-Zähler-Datei (`data/vor_request_count.json`) produziert bei seltenen I/O-Problemen lediglich Warnungen; wer zusätzliche Transparenz benötigt, kann hier künftig eine Metrik oder Alerting integrieren.
-
-Insgesamt zeigt das Projekt in der geprüften Fassung keine dringenden Fehler oder offensichtlichen Sicherheitsschwachstellen. Die bestehenden Mechanismen für Pfadvalidierung, Timeout-Steuerung und Secret-Schutz sind konsistent umgesetzt.
+- Aktuell besteht kein unmittelbarer Handlungsbedarf. Empfohlen wird, die vorhandenen Tests regelmäßig in der CI laufen zu lassen und bei Änderungen an den Provider-Schnittstellen gezielt neue Tests hinzuzufügen.
