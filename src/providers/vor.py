@@ -416,7 +416,15 @@ def _sanitize_access_id(message: str) -> str:
     return sanitized
 
 def _stationboard_url() -> str:
-    return f"{VOR_BASE_URL}DepartureBoard"
+    """Return the fully qualified StationBoard endpoint.
+
+    The VAO/VOR REST documentation defines endpoints in lowercase
+    (``…/departureboard``). Using the lowercase variant ensures
+    compatibility with case-sensitive servers while keeping response
+    parsing unchanged (responses still use the ``DepartureBoard`` key).
+    """
+
+    return f"{VOR_BASE_URL}departureboard"
 
 
 def _location_name_url() -> str:
