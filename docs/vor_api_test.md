@@ -3,6 +3,8 @@
 ## Vorgehen
 - Befehl: `python scripts/test_vor_api.py`
 - Umgebung: gültiger Zugangsschlüssel muss als Secret `VOR_ACCESS_ID` vorhanden sein.
+- Im aktuellen Container ist weder `VOR_ACCESS_ID` noch `VAO_ACCESS_ID` gesetzt (`{"VOR_ACCESS_ID": null, "VAO_ACCESS_ID": null}`).
+  Ohne vorheriges `export VOR_ACCESS_ID=…` blockiert das Testszenario daher bewusst den Abruf.【6877a4†L1-L8】
 
 ## Ergebnisse
 - Der Test wurde **abgebrochen**, weil kein `VOR_ACCESS_ID` gesetzt war und somit kein autorisierter Abruf erfolgen konnte.
