@@ -41,6 +41,7 @@ DEFAULT_OUTPUT_PATH = _ROOT / "data" / "stations.json"
 DEFAULT_PENDLER_PATH = _ROOT / "data" / "pendler_bst_ids.json"
 DEFAULT_GTFS_STOPS_PATH = _ROOT / "data" / "gtfs" / "stops.txt"
 DEFAULT_WL_HALTEPUNKTE_PATH = _ROOT / "data" / "wienerlinien-ogd-haltepunkte.csv"
+DEFAULT_VOR_STOPS_PATH = _ROOT / "data" / "vor-haltestellen.csv"
 REQUEST_TIMEOUT = 30  # seconds
 USER_AGENT = (
     "wien-oepnv station updater "
@@ -65,6 +66,7 @@ class Station:
     name: str
     in_vienna: bool = False
     pendler: bool = False
+    vor_id: str | None = None
 
     def as_dict(self) -> dict[str, object]:
         return {
@@ -73,7 +75,18 @@ class Station:
             "name": self.name,
             "in_vienna": self.in_vienna,
             "pendler": self.pendler,
+            **({"vor_id": self.vor_id} if self.vor_id else {}),
         }
+
+
+@dataclass
+class VORStop:
+    """Minimal representation of a VOR stop for ID matching."""
+
+    vor_id: str
+    name: str
+    municipality: str | None = None
+    short_name: str | None = None
 
 
 @dataclass
@@ -268,6 +281,209 @@ def _load_existing_station_entries(path: Path) -> dict[int, Mapping[str, object]
     return mapping
 
 
+def _restore_existing_metadata(
+    stations: Iterable[Station], existing_entries: Mapping[int, Mapping[str, object]]
+) -> None:
+    for station in stations:
+        existing = existing_entries.get(station.bst_id)
+        if not existing:
+            continue
+        vor_id_raw = existing.get("vor_id")
+        if isinstance(vor_id_raw, str):
+            vor_id = vor_id_raw.strip()
+            if vor_id:
+                station.vor_id = vor_id
+
+
+def _looks_like_vienna(text: str | None) -> bool:
+    if not text:
+        return False
+    normalized = text.strip().casefold()
+    if not normalized.startswith("wien"):
+        return False
+    if len(normalized) == 4:
+        return True
+    return not normalized[4].isalpha()
+
+
+def _detect_csv_delimiter(sample: str) -> str:
+    semicolons = sample.count(";")
+    commas = sample.count(",")
+    if semicolons >= commas and semicolons:
+        return ";"
+    if commas:
+        return ","
+    return ";"
+
+
+def _normalize_csv_key(value: str | None) -> str:
+    if value is None:
+        return ""
+    return re.sub(r"[^a-z0-9]+", "", value.casefold())
+
+
+class _NormalizedCSVRow:
+    def __init__(self, row: Mapping[str, str | None]):
+        self._row = row
+        self._map = {_normalize_csv_key(key): key for key in row if key}
+
+    def get(self, *candidates: str) -> str:
+        for candidate in candidates:
+            key = self._map.get(_normalize_csv_key(candidate))
+            if key is None:
+                continue
+            value = self._row.get(key)
+            if value is None:
+                continue
+            text = str(value).strip()
+            if text:
+                return text
+        return ""
+
+
+def _iter_vor_rows(path: Path) -> Iterable[_NormalizedCSVRow]:
+    with path.open("r", encoding="utf-8-sig", newline="") as handle:
+        sample = handle.read(4096)
+        handle.seek(0)
+        delimiter = _detect_csv_delimiter(sample)
+        reader = csv.DictReader(handle, delimiter=delimiter)
+        for row in reader:
+            if not isinstance(row, dict):
+                continue
+            yield _NormalizedCSVRow({key or "": value for key, value in row.items()})
+
+
+def load_vor_stops(path: Path) -> list[VORStop]:
+    try:
+        rows = list(_iter_vor_rows(path))
+    except FileNotFoundError:
+        logger.info("VOR stops file not found: %s", path)
+        return []
+    except csv.Error as exc:
+        logger.warning("Could not parse VOR stops file %s: %s", path, exc)
+        return []
+
+    stops: dict[str, VORStop] = {}
+    for row in rows:
+        vor_id = row.get(
+            "StopPointId",
+            "StopID",
+            "Stop_Id",
+            "StopPoint",
+            "ID",
+        )
+        if not vor_id:
+            continue
+        name = row.get("StopPointName", "Name", "StopName", "Bezeichnung")
+        if not name:
+            continue
+        municipality = row.get("Municipality", "Gemeinde", "City", "Ort") or None
+        short_name = row.get("StopPointShortName", "ShortName", "Kurzname") or None
+        stops[vor_id] = VORStop(
+            vor_id=vor_id,
+            name=name,
+            municipality=municipality,
+            short_name=short_name,
+        )
+
+    if not stops:
+        logger.info("No VOR stops extracted from %s", path)
+    else:
+        logger.info("Loaded %d VOR stops from %s", len(stops), path)
+    return list(stops.values())
+
+
+def _vor_alias_candidates(stop: VORStop) -> set[str]:
+    aliases: set[str] = {stop.name, stop.vor_id}
+    if stop.short_name:
+        aliases.add(stop.short_name)
+    if stop.municipality:
+        combined = f"{stop.municipality} {stop.name}".strip()
+        aliases.add(combined)
+    return {alias for alias in aliases if alias}
+
+
+def _build_vor_index(stops: Iterable[VORStop]) -> dict[str, list[VORStop]]:
+    index: dict[str, list[VORStop]] = {}
+    for stop in stops:
+        tokens: set[str] = set()
+        for alias in _vor_alias_candidates(stop):
+            tokens.update(_normalize_location_keys(alias))
+        for token in tokens:
+            if not token:
+                continue
+            index.setdefault(token, []).append(stop)
+    return index
+
+
+def _select_vor_stop(station: Station, candidates: list[VORStop]) -> VORStop | None:
+    unique: dict[str, VORStop] = {}
+    for stop in candidates:
+        if stop.vor_id not in unique:
+            unique[stop.vor_id] = stop
+    stops = list(unique.values())
+    if not stops:
+        return None
+    if len(stops) == 1:
+        return stops[0]
+
+    def _is_vienna_stop(stop: VORStop) -> bool:
+        return _looks_like_vienna(stop.municipality) or _looks_like_vienna(stop.name)
+
+    if station.in_vienna:
+        vienna_stops = [stop for stop in stops if _is_vienna_stop(stop)]
+        if len(vienna_stops) == 1:
+            return vienna_stops[0]
+        if vienna_stops:
+            stops = vienna_stops
+    else:
+        outside = [stop for stop in stops if not _is_vienna_stop(stop)]
+        if len(outside) == 1:
+            return outside[0]
+        if outside:
+            stops = outside
+
+    normalized_station = _harmonize_station_name(station.name).casefold()
+    name_matches = [
+        stop for stop in stops if _harmonize_station_name(stop.name).casefold() == normalized_station
+    ]
+    if len(name_matches) == 1:
+        return name_matches[0]
+    return None
+
+
+def _assign_vor_ids(stations: list[Station], vor_stops: list[VORStop]) -> None:
+    if not vor_stops:
+        return
+    index = _build_vor_index(vor_stops)
+    for station in stations:
+        tokens = _normalize_location_keys(station.name)
+        if not tokens:
+            continue
+        candidates: list[VORStop] = []
+        for token in tokens:
+            candidates.extend(index.get(token, []))
+        if not candidates:
+            continue
+        selected = _select_vor_stop(station, candidates)
+        if not selected:
+            logger.debug(
+                "Ambiguous VOR stop candidates for %s (%s)", station.name, station.bst_id
+            )
+            continue
+        if station.vor_id == selected.vor_id:
+            continue
+        if station.vor_id:
+            logger.debug(
+                "Updating VOR ID for %s (%s): %s -> %s",
+                station.name,
+                station.bst_id,
+                station.vor_id,
+                selected.vor_id,
+            )
+        station.vor_id = selected.vor_id
+
+
 def _harmonize_station_names(
     stations: list[Station],
     existing_entries: Mapping[int, Mapping[str, object]],
@@ -316,6 +532,13 @@ def parse_args() -> argparse.Namespace:
         metavar="PATH",
         default=DEFAULT_PENDLER_PATH,
         help="Path to the JSON file containing pendler station IDs",
+    )
+    parser.add_argument(
+        "--vor-stops",
+        type=Path,
+        metavar="PATH",
+        default=DEFAULT_VOR_STOPS_PATH,
+        help="Path to the VOR stop CSV used for VOR_STATION_IDS",
     )
     parser.add_argument(
         "--gtfs-stops",
@@ -518,11 +741,15 @@ def main() -> None:
     workbook_stream = download_workbook(args.source_url)
     stations = extract_stations(workbook_stream)
     _harmonize_station_names(stations, existing_entries)
+    _restore_existing_metadata(stations, existing_entries)
     pendler_ids = load_pendler_station_ids(path=args.pendler)
     location_index = _build_location_index(args.gtfs_stops, args.wl_haltepunkte)
     if not location_index:
         logger.warning("No coordinate data available; falling back to name heuristic")
     _annotate_station_flags(stations, pendler_ids, location_index)
+    vor_stops = load_vor_stops(args.vor_stops) if args.vor_stops else []
+    if vor_stops:
+        _assign_vor_ids(stations, vor_stops)
     stations = _filter_relevant_stations(stations)
     write_json(stations, args.output)
 
