@@ -4,49 +4,98 @@
     "bst_code": "Lga",
     "name": "Wien Atzgersdorf",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490009400",
+    "latitude": 48.147141,
+    "longitude": 16.288634,
+    "aliases": [
+      "490009400",
+      "Wien Atzgersdorf"
+    ]
   },
   {
     "bst_id": 149,
     "bst_code": "Bf  H1",
     "name": "Baden",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430310100",
+    "latitude": 48.00406,
+    "longitude": 16.242735,
+    "aliases": [
+      "430310100",
+      "Baden bei Wien Bahnhof"
+    ]
   },
   {
     "bst_id": 253,
     "bst_code": "Bvs",
     "name": "Bad Vöslau",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430309000",
+    "latitude": 47.969533,
+    "longitude": 16.223929,
+    "aliases": [
+      "430309000",
+      "Bad Vöslau Bahnhof"
+    ]
   },
   {
     "bst_id": 309,
     "bst_code": "Ebr",
     "name": "Ebreichsdorf",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430365300",
+    "latitude": 47.964148,
+    "longitude": 16.419319,
+    "aliases": [
+      "430365300",
+      "Ebreichsdorf Bahnhof"
+    ]
   },
   {
     "bst_id": 325,
     "bst_code": "Ef",
     "name": "Ebenfurth",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430331800",
+    "latitude": 47.877573,
+    "longitude": 16.361851,
+    "aliases": [
+      "430331800",
+      "Ebenfurth Bahnhof"
+    ]
   },
   {
     "bst_id": 353,
     "bst_code": "El  H1",
     "name": "Wien Praterkai",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490130100",
+    "latitude": 48.199602,
+    "longitude": 16.441172,
+    "aliases": [
+      "490130100",
+      "Wien Praterkai"
+    ]
   },
   {
     "bst_id": 400,
     "bst_code": "Bse",
     "name": "Wien Brünner Straße",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490017600",
+    "latitude": 48.267777,
+    "longitude": 16.403588,
+    "aliases": [
+      "490017600",
+      "Wien Brünner Straße"
+    ]
   },
   {
     "bst_id": 528,
@@ -54,14 +103,12 @@
     "name": "Flughafen Wien",
     "in_vienna": false,
     "pendler": true,
-    "vor_id": "900200",
-    "latitude": 48.120027,
-    "longitude": 16.561749,
+    "vor_id": "430470800",
+    "latitude": 48.12056,
+    "longitude": 16.563659,
     "aliases": [
-      "900200",
-      "Flughafen Wien Bahnhof",
-      "Schwechat Flughafen Wien Bahnhof",
-      "Vienna Airport"
+      "430470800",
+      "Flughafen Wien Bahnhof"
     ]
   },
   {
@@ -69,126 +116,252 @@
     "bst_code": "Gae",
     "name": "Gänserndorf",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430362200",
+    "latitude": 48.340239,
+    "longitude": 16.732314,
+    "aliases": [
+      "430362200",
+      "Gänserndorf Bahnhof"
+    ]
   },
   {
     "bst_id": 804,
     "bst_code": "Hf",
     "name": "Wien Hütteldorf",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490056000",
+    "latitude": 48.197391,
+    "longitude": 16.261073,
+    "aliases": [
+      "490056000",
+      "Wien Hütteldorf"
+    ]
   },
   {
     "bst_id": 805,
     "bst_code": "Hf  H2",
     "name": "Wien Hadersdorf",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490046000",
+    "latitude": 48.210345,
+    "longitude": 16.223552,
+    "aliases": [
+      "490046000",
+      "Wien Hadersdorf"
+    ]
   },
   {
     "bst_id": 806,
     "bst_code": "Hf  H1A",
     "name": "Wien Speising",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490129500",
+    "latitude": 48.173705,
+    "longitude": 16.283321,
+    "aliases": [
+      "490129500",
+      "Wien Speising"
+    ]
   },
   {
     "bst_id": 807,
     "bst_code": "Hf  H3",
     "name": "Wien Weidlingau",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490145800",
+    "latitude": 48.21047,
+    "longitude": 16.212288,
+    "aliases": [
+      "490145800",
+      "Wien Weidlingau S"
+    ]
   },
   {
     "bst_id": 808,
     "bst_code": "Hf  H4",
     "name": "Purkersdorf Sanatorium",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430460500",
+    "latitude": 48.207738,
+    "longitude": 16.189752,
+    "aliases": [
+      "430460500",
+      "Purkersdorf bei Wien Bahnhof"
+    ]
   },
   {
     "bst_id": 901,
     "bst_code": "Ht",
     "name": "Wien Heiligenstadt",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490049100",
+    "latitude": 48.24907,
+    "longitude": 16.365716,
+    "aliases": [
+      "490049100",
+      "Wien Heiligenstadt"
+    ]
   },
   {
     "bst_id": 902,
     "bst_code": "Ht  H1",
     "name": "Wien Oberdöbling",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490095900",
+    "latitude": 48.24445,
+    "longitude": 16.344277,
+    "aliases": [
+      "490095900",
+      "Wien Oberdöbling"
+    ]
   },
   {
     "bst_id": 934,
     "bst_code": "Id",
     "name": "Wien Blumental",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490058200",
+    "latitude": 48.138826,
+    "longitude": 16.369249,
+    "aliases": [
+      "490058200",
+      "Wien Blumental"
+    ]
   },
   {
     "bst_id": 1019,
     "bst_code": "Ken",
     "name": "Klosterneuburg-Weidling",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430395300",
+    "latitude": 48.297585,
+    "longitude": 16.334586,
+    "aliases": [
+      "430395300",
+      "Klosterneuburg Weidling Bahnhof"
+    ]
   },
   {
     "bst_id": 1066,
     "bst_code": "Ko",
     "name": "Korneuburg",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430396300",
+    "latitude": 48.343574,
+    "longitude": 16.328474,
+    "aliases": [
+      "430396300",
+      "Korneuburg Bahnhof"
+    ]
   },
   {
     "bst_id": 1161,
     "bst_code": "Lb",
     "name": "Leobersdorf",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430408400",
+    "latitude": 47.937864,
+    "longitude": 16.2313,
+    "aliases": [
+      "430408400",
+      "Leobersdorf Bahnhof"
+    ]
   },
   {
     "bst_id": 1206,
     "bst_code": "Lg  H1",
     "name": "Perchtoldsdorf",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430450000",
+    "latitude": 48.123023,
+    "longitude": 16.285559,
+    "aliases": [
+      "430450000",
+      "Perchtoldsdorf Bahnhof"
+    ]
   },
   {
     "bst_id": 1348,
     "bst_code": "Het",
     "name": "Wien Hetzendorf",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490051100",
+    "latitude": 48.166226,
+    "longitude": 16.314478,
+    "aliases": [
+      "490051100",
+      "Wien Hetzendorf"
+    ]
   },
   {
     "bst_id": 1349,
     "bst_code": "Wbf H1S",
     "name": "Wien Matzleinsdorfer Platz",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490084900",
+    "latitude": 48.180419,
+    "longitude": 16.358821,
+    "aliases": [
+      "490084900",
+      "Wien Matzleinsdorfer Platz"
+    ]
   },
   {
     "bst_id": 1351,
     "bst_code": "Wwb",
     "name": "Wien Quartier Belvedere",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490134600",
+    "latitude": 48.188024,
+    "longitude": 16.381366,
+    "aliases": [
+      "490134600",
+      "Wien Quartier Belvedere"
+    ]
   },
   {
     "bst_id": 1377,
     "bst_code": "Md",
     "name": "Mödling",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430423900",
+    "latitude": 48.085628,
+    "longitude": 16.295474,
+    "aliases": [
+      "430423900",
+      "Mödling Bahnhof"
+    ]
   },
   {
     "bst_id": 1410,
     "bst_code": "Mi",
     "name": "Wien Meidling",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490101500",
+    "latitude": 48.174271,
+    "longitude": 16.331899,
+    "aliases": [
+      "490101500",
+      "Wien Meidling"
+    ]
   },
   {
     "bst_id": 1499,
@@ -196,13 +369,12 @@
     "name": "Wiener Neustadt Hbf",
     "in_vienna": false,
     "pendler": true,
-    "vor_id": "900300",
-    "latitude": 47.810231,
-    "longitude": 16.235204,
+    "vor_id": "430521000",
+    "latitude": 47.811304,
+    "longitude": 16.23362,
     "aliases": [
-      "900300",
-      "Wiener Neustadt Hbf",
-      "Wr. Neustadt Hbf"
+      "430521000",
+      "Wiener Neustadt Hauptbahnhof"
     ]
   },
   {
@@ -210,161 +382,322 @@
     "bst_code": "Nl",
     "name": "Neulengbach",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430433700",
+    "latitude": 48.199504,
+    "longitude": 15.892875,
+    "aliases": [
+      "430433700",
+      "Neulengbach Bahnhof"
+    ]
   },
   {
     "bst_id": 1584,
     "bst_code": "Nw",
     "name": "Wien Praterstern",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490104000",
+    "latitude": 48.218767,
+    "longitude": 16.392171,
+    "aliases": [
+      "490104000",
+      "Wien Praterstern"
+    ]
   },
   {
     "bst_id": 1585,
     "bst_code": "Nw  H1",
     "name": "Wien Traisengasse",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490138500",
+    "latitude": 48.234274,
+    "longitude": 16.383955,
+    "aliases": [
+      "490138500",
+      "Wien Traisengasse"
+    ]
   },
   {
     "bst_id": 1669,
     "bst_code": "Pb",
     "name": "St.Pölten Hbf",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430484800",
+    "latitude": 48.208196,
+    "longitude": 15.624034,
+    "aliases": [
+      "430484800",
+      "St. Pölten Hauptbahnhof"
+    ]
   },
   {
     "bst_id": 1719,
     "bst_code": "Pm  H1",
     "name": "Pressbaum",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430457400",
+    "latitude": 48.181184,
+    "longitude": 16.077441,
+    "aliases": [
+      "430457400",
+      "Pressbaum Bahnhof"
+    ]
   },
   {
     "bst_id": 1797,
     "bst_code": "Pz",
     "name": "Wien Penzing",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490100300",
+    "latitude": 48.192654,
+    "longitude": 16.305327,
+    "aliases": [
+      "490100300",
+      "Wien Penzing"
+    ]
   },
   {
     "bst_id": 1969,
     "bst_code": "Sdf",
     "name": "Wien Strebersdorf",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490133300",
+    "latitude": 48.286061,
+    "longitude": 16.381079,
+    "aliases": [
+      "490133300",
+      "Wien Strebersdorf"
+    ]
   },
   {
     "bst_id": 2095,
     "bst_code": "Stk",
     "name": "Wien Erzherzog Karl-Straße",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490028800",
+    "latitude": 48.229564,
+    "longitude": 16.453226,
+    "aliases": [
+      "490028800",
+      "Wien Erzherzog-Karl-Straße"
+    ]
   },
   {
     "bst_id": 2096,
     "bst_code": "Stc",
     "name": "Wien Hirschstetten",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490053200",
+    "latitude": 48.232683,
+    "longitude": 16.468445,
+    "aliases": [
+      "490053200",
+      "Wien Hirschstetten"
+    ]
   },
   {
     "bst_id": 2140,
     "bst_code": "Su",
     "name": "Stockerau",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430488400",
+    "latitude": 48.382308,
+    "longitude": 16.213016,
+    "aliases": [
+      "430488400",
+      "Stockerau Bahnhof"
+    ]
   },
   {
     "bst_id": 2145,
     "bst_code": "Sue",
     "name": "Wien Süßenbrunn",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490135700",
+    "latitude": 48.285315,
+    "longitude": 16.484365,
+    "aliases": [
+      "490135700",
+      "Wien Süßenbrunn"
+    ]
   },
   {
     "bst_id": 2232,
     "bst_code": "Tn",
     "name": "Ternitz",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430875900",
+    "latitude": 47.713753,
+    "longitude": 16.033385,
+    "aliases": [
+      "430875900",
+      "Ternitz Bahnhof"
+    ]
   },
   {
     "bst_id": 2290,
     "bst_code": "Upz",
     "name": "Purkersdorf Zentrum",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430460300",
+    "latitude": 48.206138,
+    "longitude": 16.175774,
+    "aliases": [
+      "430460300",
+      "Purkersdorf bei Wien Zentrum Bahnhof"
+    ]
   },
   {
     "bst_id": 2396,
     "bst_code": "Wbf H2",
     "name": "Wien Haidestraße",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490046500",
+    "latitude": 48.179512,
+    "longitude": 16.42669,
+    "aliases": [
+      "490046500",
+      "Wien Haidestraße"
+    ]
   },
   {
     "bst_id": 2444,
     "bst_code": "Wf",
     "name": "Wien Franz-Josefs-Bf",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490034500",
+    "latitude": 48.22622,
+    "longitude": 16.361222,
+    "aliases": [
+      "490034500",
+      "Wien Franz-Josefs-Bahnhof"
+    ]
   },
   {
     "bst_id": 2446,
     "bst_code": "Wf  H1",
     "name": "Wien Spittelau",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490106200",
+    "latitude": 48.235604,
+    "longitude": 16.358201,
+    "aliases": [
+      "490106200",
+      "Wien Spittelau"
+    ]
   },
   {
     "bst_id": 2447,
     "bst_code": "Wg",
     "name": "Deutsch Wagram",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430327900",
+    "latitude": 48.303014,
+    "longitude": 16.563982,
+    "aliases": [
+      "430327900",
+      "Deutsch-Wagram Bahnhof"
+    ]
   },
   {
     "bst_id": 2497,
     "bst_code": "Wol",
     "name": "Wolkersdorf",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430527400",
+    "latitude": 48.378434,
+    "longitude": 16.512672,
+    "aliases": [
+      "430527400",
+      "Wolkersdorf Bahnhof"
+    ]
   },
   {
     "bst_id": 2511,
     "bst_code": "Ws",
     "name": "Wien Westbf",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490146800",
+    "latitude": 48.196654,
+    "longitude": 16.337652,
+    "aliases": [
+      "490146800",
+      "Wien Westbahnhof"
+    ]
   },
   {
     "bst_id": 2968384,
     "bst_code": "Hf  H1",
     "name": "Wien Wolf in der Au",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490148200",
+    "latitude": 48.204735,
+    "longitude": 16.236406,
+    "aliases": [
+      "490148200",
+      "Wien Wolf in der Au"
+    ]
   },
   {
     "bst_id": 4384321,
     "bst_code": "Tfd",
     "name": "Tullnerfeld",
     "in_vienna": false,
-    "pendler": true
+    "pendler": true,
+    "vor_id": "430575900",
+    "latitude": 48.29514,
+    "longitude": 15.996736,
+    "aliases": [
+      "430575900",
+      "Tullnerfeld Bahnhof"
+    ]
   },
   {
     "bst_id": 4407597,
     "bst_code": "El  H3",
     "name": "Wien Stadlau",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490129900",
+    "latitude": 48.219298,
+    "longitude": 16.448534,
+    "aliases": [
+      "490129900",
+      "Wien Stadlau"
+    ]
   },
   {
     "bst_id": 4741048,
     "bst_code": "Wbf H1",
     "name": "Wien Simmering",
     "in_vienna": true,
-    "pendler": false
+    "pendler": false,
+    "vor_id": "490126000",
+    "latitude": 48.170253,
+    "longitude": 16.419867,
+    "aliases": [
+      "490126000",
+      "Wien Simmering"
+    ]
   },
   {
     "bst_id": 4773541,
@@ -372,14 +705,52 @@
     "name": "Wien Aspern Nord",
     "in_vienna": true,
     "pendler": false,
-    "vor_id": "900100",
-    "latitude": 48.234567,
-    "longitude": 16.520123,
+    "vor_id": "490091000",
+    "latitude": 48.234669,
+    "longitude": 16.504456,
     "aliases": [
-      "900100",
-      "Aspern Nord S U",
+      "490091000",
       "Wien Aspern Nord"
     ]
+  },
+  {
+    "name": "Wien Karlsplatz U (VOR)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490065700",
+    "latitude": 48.200888,
+    "longitude": 16.368907,
+    "aliases": [
+      "490065700",
+      "Wien Karlsplatz U"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Wien Schottentor U (VOR)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490118400",
+    "latitude": 48.214489,
+    "longitude": 16.361905,
+    "aliases": [
+      "490118400",
+      "Wien Schottentor U"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Wien Stephansplatz U (VOR)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490132000",
+    "latitude": 48.208088,
+    "longitude": 16.371604,
+    "aliases": [
+      "490132000",
+      "Wien Stephansplatz U"
+    ],
+    "source": "vor"
   },
   {
     "name": "Wien Karlsplatz (WL)",
