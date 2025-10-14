@@ -12,7 +12,7 @@ KEIN <pubDate> und ordnet solche Items hinter datierten ein.
 
 from __future__ import annotations
 
-import os, re, html, logging, time, hashlib, json, tempfile
+import os, re, html, logging, time, hashlib, json, tempfile, base64
 import threading
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -413,13 +413,31 @@ BUS_PRODUCT_CLASSES: tuple[int, ...] = (7,)
 VOR_USER_AGENT = "Origamihase-wien-oepnv/1.2 (+https://github.com/Origamihase/wien-oepnv)"
 VOR_SESSION_HEADERS = {"Accept": "application/json"}
 _AUTH_HEADER_RE = re.compile(
-    r"((?:[\"']?)Authorization(?:[\"']?)\s*:\s*(?:[\"']?)Bearer\s+)([^\s\"']+)",
+    r"((?:[\"']?)Authorization(?:[\"']?)\s*:\s*(?:[\"']?)(?:Bearer|Basic)\s+)([^\s\"']+)",
     re.IGNORECASE,
 )
 VOR_RETRY_OPTIONS = {"total": 3, "backoff_factor": 0.5, "raise_on_status": False}
 
 _ACCESS_ID_KEY_VALUE_RE = re.compile(r"(accessId\s*[=:]\s*)([\"']?)([^\"',\s&]+)(\2)", re.IGNORECASE)
 _ACCESS_ID_URLENC_RE = re.compile(r"(accessId%3D)([^&]+)", re.IGNORECASE)
+
+
+def _authorization_header_value(token: str) -> Optional[str]:
+    """Return the appropriate ``Authorization`` header value for *token*."""
+
+    normalized = token.strip()
+    if not normalized:
+        return None
+
+    lowered = normalized.lower()
+    if lowered.startswith("bearer ") or lowered.startswith("basic "):
+        return normalized
+
+    if ":" in normalized:
+        encoded = base64.b64encode(normalized.encode("utf-8")).decode("ascii")
+        return f"Basic {encoded}"
+
+    return f"Bearer {normalized}"
 
 
 def _sanitize_access_id(message: str) -> str:
@@ -474,8 +492,9 @@ def apply_authentication(session: requests.Session) -> None:
     session.headers.update(VOR_SESSION_HEADERS)
 
     access_id = refresh_access_credentials()
-    if access_id:
-        session.headers["Authorization"] = f"Bearer {access_id}"
+    header_value = _authorization_header_value(access_id)
+    if header_value:
+        session.headers["Authorization"] = header_value
     else:
         session.headers.pop("Authorization", None)
 
@@ -490,7 +509,11 @@ def apply_authentication(session: requests.Session) -> None:
             token = refresh_access_credentials()
             if token:
                 params = _inject_access_id(params, token)
-                self.headers["Authorization"] = f"Bearer {token}"
+                header = _authorization_header_value(token)
+                if header:
+                    self.headers["Authorization"] = header
+                else:
+                    self.headers.pop("Authorization", None)
             else:
                 self.headers.pop("Authorization", None)
             return original_request(method, url, params=params, **kwargs)

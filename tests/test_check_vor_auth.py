@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import base64
 import json
 from typing import Any, Dict
 
@@ -93,3 +94,20 @@ def test_check_authentication_http_error(monkeypatch: pytest.MonkeyPatch) -> Non
     assert result["error_code"] == "API_AUTH"
     assert result["error_text"] == "access denied"
     assert result["url"].endswith("format=json&id=123&accessId=***")
+
+
+def test_check_authentication_uses_basic_header(monkeypatch: pytest.MonkeyPatch) -> None:
+    response = _make_response(200, {"stationBoard": []})
+    session = DummySession(response)
+    monkeypatch.setattr(module.vor, "VOR_ACCESS_ID", "user:secret")
+    monkeypatch.setattr(module.vor, "VOR_BASE_URL", "https://example.test/")
+    monkeypatch.setattr(module.vor, "VOR_RETRY_OPTIONS", {})
+    monkeypatch.setattr(module, "session_with_retries", lambda *args, **kwargs: session)
+
+    result = module.check_authentication("900100")
+
+    assert result["authenticated"] is True
+    assert session.last_request is not None
+    expected_header = base64.b64encode(b"user:secret").decode("ascii")
+    assert session.last_request["headers"]["Authorization"] == f"Basic {expected_header}"
+    assert session.last_request["params"]["accessId"] == "user:secret"
