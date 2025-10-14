@@ -1,5 +1,6 @@
 import importlib
 import logging
+from typing import Any
 
 import src.providers.vor as vor
 
@@ -104,6 +105,21 @@ def test_station_ids_fallback_from_directory(monkeypatch):
     ids = set(vor.VOR_STATION_IDS)
     assert len(ids) >= 50
     assert {"490009400", "430310100", "430470800"}.issubset(ids)
+
+
+def test_refresh_access_credentials_reloads_from_env(monkeypatch):
+    monkeypatch.setenv("VOR_ACCESS_ID", "first")
+    importlib.reload(vor)
+    assert vor.VOR_ACCESS_ID == "first"
+
+    monkeypatch.setenv("VOR_ACCESS_ID", "second")
+    refreshed = vor.refresh_access_credentials()
+
+    assert refreshed == "second"
+    assert vor.VOR_ACCESS_ID == "second"
+
+    monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    importlib.reload(vor)
 
 
 def test_base_url_prefers_secret(monkeypatch):

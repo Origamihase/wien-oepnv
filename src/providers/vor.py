@@ -19,6 +19,7 @@ from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
 from collections.abc import Mapping
 from typing import Any, Dict, Iterable, List, Optional
+from types import MethodType
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -496,8 +497,9 @@ def resolve_station_ids(names: List[str]) -> List[str]:
         apply_authentication(session)
         for name in wanted:
             params = {"format": "json", "input": name, "type": "stop"}
-            if VOR_ACCESS_ID:
-                params["accessId"] = VOR_ACCESS_ID
+            access_id = refresh_access_credentials()
+            if access_id:
+                params["accessId"] = access_id
             try:
                 resp = session.get(
                     _location_name_url(),
@@ -643,7 +645,9 @@ def _select_stations_round_robin(ids: List[str], chunk_size: int, period_sec: in
 
 def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[str, Any]]:
     params = {
-        "accessId": VOR_ACCESS_ID, "format":"json", "id": station_id,
+        "accessId": refresh_access_credentials(),
+        "format": "json",
+        "id": station_id,
         "date": now_local.strftime("%Y-%m-%d"), "time": now_local.strftime("%H:%M"),
         "duration": str(BOARD_DURATION_MIN), "rtMode": "SERVER_DEFAULT",
     }
@@ -904,7 +908,7 @@ def _collect_from_board(station_id: str, payload: Mapping[str, Any]) -> List[Dic
     return items
 
 def fetch_events() -> List[Dict[str, Any]]:
-    if not VOR_ACCESS_ID:
+    if not refresh_access_credentials():
         log.info("VOR: kein VOR_ACCESS_ID gesetzt – Provider inaktiv.")
         return []
     station_ids = VOR_STATION_IDS or resolve_station_ids(VOR_STATION_NAMES)

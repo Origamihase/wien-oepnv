@@ -50,11 +50,22 @@ class _FakeSession:
         self.headers: dict[str, str] = {}
         self.calls: list[tuple[str, dict[str, str]]] = []
 
-    def get(self, url: str, *, params: dict, timeout: object, headers: dict) -> _FakeResponse:
-        station_id = params["input"]
+    def request(self, method: str, url: str, **kwargs: object) -> _FakeResponse:
+        params = kwargs.get("params") or {}
+        station_id = params["input"]  # type: ignore[index]
         self.calls.append((url, params))
         status, payload = self.payloads[station_id]
         return _FakeResponse(status_code=status, payload=payload)
+
+    def get(
+        self,
+        url: str,
+        *,
+        params: dict,
+        timeout: object,
+        headers: dict,
+    ) -> _FakeResponse:
+        return self.request("GET", url, params=params, timeout=timeout, headers=headers)
 
     def __enter__(self) -> "_FakeSession":  # pragma: no cover - context management helper
         return self
@@ -82,7 +93,8 @@ def test_fetch_vor_stops_from_api_uses_fallback(monkeypatch: pytest.MonkeyPatch)
     fake_session = _FakeSession(payloads)
 
     monkeypatch.setattr(module, "session_with_retries", lambda *args, **kwargs: fake_session)
-    monkeypatch.setattr(module.vor_provider, "VOR_ACCESS_ID", "token")
+    monkeypatch.setattr(module.vor_provider, "refresh_access_credentials", lambda: "token")
+    monkeypatch.setattr(module.vor_provider, "VOR_ACCESS_ID", "token", raising=False)
 
     fallback = {
         "900200": module.VORStop(
@@ -97,5 +109,5 @@ def test_fetch_vor_stops_from_api_uses_fallback(monkeypatch: pytest.MonkeyPatch)
 
     assert [stop.vor_id for stop in stops] == ["900100", "900200"]
     assert any("location.name" in call[0] for call in fake_session.calls)
-    assert module.vor_provider.VOR_ACCESS_ID == "token"
+    assert module.vor_provider.refresh_access_credentials() == "token"
 
