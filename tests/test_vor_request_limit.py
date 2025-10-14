@@ -306,3 +306,53 @@ def test_fetch_stationboard_counts_unsuccessful_requests(monkeypatch, status_cod
 
     assert result is None
     assert called == 1
+
+
+def test_fetch_stationboard_retries_increment_counter(monkeypatch):
+    from requests import ConnectionError
+
+    call_count = 0
+
+    def fake_save(now_local):
+        nonlocal call_count
+        call_count += 1
+        return call_count
+
+    monkeypatch.setattr(vor, "save_request_count", fake_save)
+    monkeypatch.setattr(vor.time, "sleep", lambda *_args, **_kwargs: None)
+
+    retry_options = {"total": 1, "backoff_factor": 0.0, "raise_on_status": False}
+    monkeypatch.setattr(vor, "VOR_RETRY_OPTIONS", retry_options)
+
+    class DummyResponse:
+        def __init__(self):
+            self.status_code = 200
+            self.headers: dict[str, str] = {}
+
+        def json(self):
+            return {}
+
+    class DummySession:
+        def __init__(self):
+            self.calls = 0
+            self.headers: dict[str, str] = {}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def get(self, *args, **kwargs):
+            self.calls += 1
+            if self.calls == 1:
+                raise ConnectionError("boom")
+            return DummyResponse()
+
+    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
+
+    now_local = datetime.now().astimezone(ZoneInfo("Europe/Vienna"))
+    payload = vor._fetch_stationboard("123", now_local)
+
+    assert payload == {}
+    assert call_count == 2
