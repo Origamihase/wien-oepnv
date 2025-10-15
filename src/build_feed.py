@@ -9,9 +9,11 @@ import logging
 from logging.handlers import RotatingFileHandler
 import re
 import hashlib
+import errno
+from contextlib import contextmanager
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, Iterator, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 from zoneinfo import ZoneInfo
@@ -22,6 +24,16 @@ try:  # pragma: no cover - allow running as package and as script
 except ModuleNotFoundError:  # pragma: no cover
     from .utils.cache import read_cache  # type: ignore
     from .utils.env import get_int_env, get_bool_env  # type: ignore
+
+try:  # pragma: no cover - platform dependent
+    import fcntl  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover
+    fcntl = None  # type: ignore
+
+try:  # pragma: no cover - platform dependent
+    import msvcrt  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover
+    msvcrt = None  # type: ignore
 
 # ---------------- Paths ----------------
 _ALLOWED_ROOTS = {"docs", "data", "log"}
@@ -160,6 +172,7 @@ ABSOLUTE_MAX_AGE_DAYS = max(
 )
 ENDS_AT_GRACE_MINUTES = max(get_int_env("ENDS_AT_GRACE_MINUTES", 10), 0)
 PROVIDER_TIMEOUT = max(get_int_env("PROVIDER_TIMEOUT", 25), 0)
+PROVIDER_MAX_WORKERS = max(get_int_env("PROVIDER_MAX_WORKERS", 0), 0)
 
 STATE_FILE = _resolve_env_path("STATE_PATH", Path("data/first_seen.json"))  # nur Einträge aus *aktuellem* Feed
 STATE_RETENTION_DAYS = max(get_int_env("STATE_RETENTION_DAYS", 60), 0)
@@ -342,14 +355,19 @@ def _parse_datetime(value: Any) -> Optional[datetime]:
         if match:
             attempts.append(candidate[: match.start()] + f"{match.group(1)}:{match.group(2)}")
 
+        last_error: Optional[Exception] = None
         for attempt in attempts:
             try:
                 parsed = datetime.fromisoformat(attempt)
-            except ValueError:
+            except ValueError as exc:
+                last_error = exc
                 continue
             if parsed.tzinfo is None:
                 parsed = parsed.replace(tzinfo=timezone.utc)
             return parsed
+
+        if last_error is not None:
+            log.debug("Datetime-Parsing fehlgeschlagen für %r (%s)", value, last_error)
 
     return None
 
@@ -383,13 +401,105 @@ def _normalize_item_datetimes(
 
 # ---------------- State (first_seen) ----------------
 
+def _lock_length(fileobj: Any) -> int:
+    try:
+        fileno = fileobj.fileno()
+    except (AttributeError, OSError):
+        return 1
+
+    try:
+        size = os.fstat(fileno).st_size
+    except OSError:
+        try:
+            current = fileobj.tell()
+            fileobj.seek(0, os.SEEK_END)
+            size = fileobj.tell()
+            fileobj.seek(current, os.SEEK_SET)
+        except Exception:
+            return 1
+    return max(int(size), 1)
+
+
+def _acquire_file_lock(fileobj: Any, exclusive: bool) -> None:
+    if fcntl is not None:  # pragma: no branch - simple POSIX case
+        flag = fcntl.LOCK_EX if exclusive else fcntl.LOCK_SH
+        while True:
+            try:
+                fcntl.flock(fileobj.fileno(), flag)
+                return
+            except OSError as exc:  # pragma: no cover - rare EINTR handling
+                if exc.errno != errno.EINTR:
+                    raise
+    elif msvcrt is not None:  # pragma: no cover - Windows fallback
+        length = _lock_length(fileobj)
+        shared_flag = getattr(msvcrt, "LK_RLCK", getattr(msvcrt, "LK_LOCK"))
+        mode = msvcrt.LK_LOCK if exclusive else shared_flag
+        current = None
+        try:
+            current = fileobj.tell()
+        except Exception:
+            current = None
+        fileobj.seek(0)
+        try:
+            msvcrt.locking(fileobj.fileno(), mode, length)
+        finally:
+            if current is not None:
+                fileobj.seek(current)
+
+
+def _release_file_lock(fileobj: Any) -> None:
+    if fcntl is not None:  # pragma: no branch - simple POSIX case
+        while True:
+            try:
+                fcntl.flock(fileobj.fileno(), fcntl.LOCK_UN)
+                return
+            except OSError as exc:  # pragma: no cover - rare EINTR handling
+                if exc.errno != errno.EINTR:
+                    raise
+    elif msvcrt is not None:  # pragma: no cover - Windows fallback
+        length = _lock_length(fileobj)
+        unlock_flag = getattr(msvcrt, "LK_UNLCK", getattr(msvcrt, "LK_UNLOCK", None))
+        if unlock_flag is None:  # pragma: no cover - extremely unlikely
+            return
+        current = None
+        try:
+            current = fileobj.tell()
+        except Exception:
+            current = None
+        fileobj.seek(0)
+        try:
+            msvcrt.locking(fileobj.fileno(), unlock_flag, length)
+        finally:
+            if current is not None:
+                fileobj.seek(current)
+
+
+@contextmanager
+def _file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
+    locked = False
+    try:
+        _acquire_file_lock(fileobj, exclusive)
+        locked = True
+    except Exception as exc:  # pragma: no cover - lock failures are rare
+        log.debug("Dateisperre fehlgeschlagen (%s) – fahre ohne Lock fort.", exc)
+    try:
+        yield
+    finally:
+        if locked:
+            try:
+                _release_file_lock(fileobj)
+            except Exception as exc:  # pragma: no cover - release failures are rare
+                log.debug("Dateisperre konnte nicht gelöst werden: %s", exc)
+
+
 def _load_state() -> Dict[str, Dict[str, Any]]:
     path = _validate_path(STATE_FILE, "STATE_PATH")
     if not path.exists():
         return {}
     try:
         with path.open("r", encoding="utf-8") as f:
-            data = json.load(f)
+            with _file_lock(f, exclusive=False):
+                data = json.load(f)
         data = data if isinstance(data, dict) else {}
     except Exception as e:
         log.warning("State laden fehlgeschlagen (%s) – starte leer.", e)
@@ -430,11 +540,13 @@ def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
     path = _validate_path(STATE_FILE, "STATE_PATH")
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(".tmp")
-    with tmp.open("w", encoding="utf-8") as f:
-        json.dump(state, f, ensure_ascii=False, indent=2, sort_keys=True)
-        f.flush()
-        os.fsync(f.fileno())
-    tmp.replace(path)
+    with path.open("a+", encoding="utf-8") as lock_file:
+        with _file_lock(lock_file, exclusive=True):
+            with tmp.open("w", encoding="utf-8") as f:
+                json.dump(state, f, ensure_ascii=False, indent=2, sort_keys=True)
+                f.flush()
+                os.fsync(f.fileno())
+            tmp.replace(path)
 
 def _identity_for_item(item: Dict[str, Any]) -> str:
     """
@@ -524,8 +636,15 @@ def _collect_items() -> List[Dict[str, Any]]:
         return items
 
     futures: Dict[Any, Any] = {}
+    desired_workers = len(network_fetchers)
+    if PROVIDER_MAX_WORKERS > 0:
+        if desired_workers > PROVIDER_MAX_WORKERS:
+            log.debug(
+                "Begrenze Provider-Threads von %s auf %s", desired_workers, PROVIDER_MAX_WORKERS
+            )
+        desired_workers = min(desired_workers, PROVIDER_MAX_WORKERS)
     # ThreadPoolExecutor erlaubt max_workers nicht als 0; daher mindestens 1
-    executor = ThreadPoolExecutor(max_workers=max(1, len(network_fetchers)))
+    executor = ThreadPoolExecutor(max_workers=max(1, desired_workers))
     timed_out = False
     try:
         for fetch in network_fetchers:
