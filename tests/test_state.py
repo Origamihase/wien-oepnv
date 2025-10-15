@@ -11,6 +11,8 @@ def _import_build_feed(monkeypatch):
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
     monkeypatch.syspath_prepend(str(root / "src"))
+    monkeypatch.delenv("OUT_PATH", raising=False)
+    monkeypatch.delenv("LOG_DIR", raising=False)
     providers = types.ModuleType("providers")
     wl = types.ModuleType("providers.wiener_linien")
     wl.fetch_events = lambda: []
@@ -38,7 +40,7 @@ def test_state_keeps_valid_entries_and_drops_malformed(monkeypatch, tmp_path):
     state_file = tmp_path / "data" / "state.json"
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("STATE_PATH", "data/state.json")
-    monkeypatch.setenv("STATE_RETENTION_DAYS", "1")
+    monkeypatch.setenv("STATE_RETENTION_DAYS", "0")
     build_feed = _import_build_feed(monkeypatch)
 
     old_dt = datetime.now(timezone.utc) - timedelta(days=2)
@@ -63,6 +65,31 @@ def test_state_keeps_valid_entries_and_drops_malformed(monkeypatch, tmp_path):
         )
 
     assert build_feed._load_state() == state_payload
+
+
+def test_state_retention_discards_old_entries(monkeypatch, tmp_path):
+    state_file = tmp_path / "data" / "state.json"
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("STATE_PATH", "data/state.json")
+    monkeypatch.setenv("STATE_RETENTION_DAYS", "1")
+    build_feed = _import_build_feed(monkeypatch)
+
+    old_dt = datetime.now(timezone.utc) - timedelta(days=2)
+    fresh_dt = datetime.now(timezone.utc)
+    state_file.parent.mkdir(parents=True, exist_ok=True)
+    with state_file.open("w", encoding="utf-8") as handle:
+        json.dump(
+            {
+                "old": {"first_seen": old_dt.isoformat()},
+                "fresh": {"first_seen": fresh_dt.isoformat()},
+            },
+            handle,
+        )
+
+    state = build_feed._load_state()
+
+    assert "old" not in state
+    assert state == {"fresh": {"first_seen": fresh_dt.isoformat()}}
 
 
 def test_state_cleared_when_feed_empty(monkeypatch, tmp_path):
