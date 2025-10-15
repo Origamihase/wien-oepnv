@@ -6,15 +6,17 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-    env:
-      PIP_CACHE_DIR: "${{ runner.temp }}/pip-cache"
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
       - name: Ensure pip cache directory exists
-        run: mkdir -p "$PIP_CACHE_DIR"
+        shell: bash
+        run: |
+          set -euo pipefail
+          cache_dir="${RUNNER_TEMP}/pip-cache"
+          mkdir -p "$cache_dir"
+          echo "PIP_CACHE_DIR=$cache_dir" >> "$GITHUB_ENV"
 
       - name: Set up Python
         uses: actions/setup-python@v5
