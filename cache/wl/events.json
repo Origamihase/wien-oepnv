@@ -410,26 +410,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Fremder Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie O zu unterschiedlichen Intervallen.",
+    "title": "52: Feuerwehreinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 52 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "36ad6a7c30b68d7345880b54bf25d283a433758da75c3a0fa4127d22d410a937",
-    "pubDate": "2025-10-15T23:30:00+02:00",
-    "starts_at": "2025-10-15T23:30:00+02:00",
-    "ends_at": "2025-10-16T01:00:00+02:00",
-    "_identity": "wl|störung|L=O|D=2025-10-15"
+    "guid": "3f86886b555d7056de7a7b4762c1e700d24dad5c50cc8ca7fbd1c1214ae5d9d6",
+    "pubDate": "2025-10-16T00:30:00+02:00",
+    "starts_at": "2025-10-16T00:30:00+02:00",
+    "ends_at": "2025-10-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=52|D=2025-10-16"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Fremder Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
+    "title": "60: Feuerwehreinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "85ef2a0baf69650a1a8085cc90d290ed25d87e7295927f37db4a458c23e43499",
-    "pubDate": "2025-10-15T23:30:00+02:00",
-    "starts_at": "2025-10-15T23:30:00+02:00",
-    "ends_at": "2025-10-16T01:00:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-10-15"
+    "guid": "1c3f5e26993cde0aee7f0c6af4e3c0932840f73409de8fcbd9cb46c9b848499a",
+    "pubDate": "2025-10-16T00:30:00+02:00",
+    "starts_at": "2025-10-16T00:30:00+02:00",
+    "ends_at": "2025-10-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=60|D=2025-10-16"
   },
   {
     "source": "Wiener Linien",
@@ -476,7 +476,19 @@
     "guid": "4a03b6676118bf0090edf56d72ebb4ee5d7f9437564da42395f29c779198544d",
     "pubDate": "2025-10-16T00:35:20+02:00",
     "starts_at": "2025-10-16T00:35:20+02:00",
-    "ends_at": "2025-10-16T01:35:00+02:00",
+    "ends_at": "2025-10-16T01:37:00+02:00",
     "_identity": "wl|störung|L=60|D=2025-10-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Busse halten bei Hoßplatz 4-5",
+    "description": "Gleisbauarbeiten Busse halten bei Hoßplatz 4-5",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a19de5d51953a6980449181f710dccf7c52937a0e0365fa3f006acf34eeb8266",
+    "pubDate": "2025-10-16T01:00:05+02:00",
+    "starts_at": "2025-10-16T01:00:05+02:00",
+    "ends_at": "2025-10-16T04:30:00+02:00",
+    "_identity": "wl|störung|L=N20|D=2025-10-16"
   }
 ]
