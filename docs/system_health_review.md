@@ -11,7 +11,7 @@
 - Veraltete oder doppelte Items werden durch `_drop_old_items` und `_dedupe_items` zuverlässig entfernt. Dabei werden Enddaten, First-Seen-State und Beschreibungslängen verglichen, um inhaltlich sinnvollere Einträge zu priorisieren.【F:src/build_feed.py†L533-L638】
 
 ## Zuverlässigkeit & Effizienz
-- Netzwerkabrufe laufen parallel in einem `ThreadPoolExecutor`, Timeout-Überschreitungen führen zu sauberem Abbruch und Logging ohne das Gesamtergebnis zu verlieren.【F:src/build_feed.py†L469-L538】
+- Netzwerkabrufe laufen parallel in einem `ThreadPoolExecutor`, Timeout-Überschreitungen führen zu sauberem Abbruch und Logging ohne das Gesamtergebnis zu verlieren. Über die ENV-Variable `PROVIDER_MAX_WORKERS` lässt sich die gleichzeitige Thread-Anzahl begrenzen, um Ressourcen zu schonen.【F:src/build_feed.py†L469-L551】
 - Provider-spezifische Clients nutzen gemeinsame Retry-Sessions (`session_with_retries`) und JSON-Validierungen; ungültige Antworten lösen Warnungen statt Abstürzen aus.【F:src/providers/wl_fetch.py†L303-L419】【F:src/providers/vor.py†L485-L520】
 - Stations-Hilfsfunktionen normalisieren Aliasnamen, prüfen auf Wiener Stadtgebiet und verknüpfen Wiener-Linien- sowie VOR-IDs, was den Abgleich stabilisiert.【F:src/utils/stations.py†L13-L200】
 
