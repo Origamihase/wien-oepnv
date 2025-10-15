@@ -12,3 +12,5 @@ jobs:
   update:
     uses: ./.github/workflows/reusable-update-vor-cache.yml
     secrets: inherit
+    with:
+      runner: ubuntu-latest
