@@ -3,9 +3,10 @@
 
 """
 VOR/VAO – Board & Hinweise (IMS/HIM) – korrekter Abruf
-- Auth nur über Query-Parameter: accessId=<VOR_ACCESS_ID>
-- Endpunkte: .../location.name und .../DepartureBoard (Groß-/Kleinschreibung!)
-- Keine Verwendung von Authorization-Headern
+- Auth über Query-Parameter: ``accessId=<VOR_ACCESS_ID>``
+- Zusätzlich ``Authorization: Bearer``-Header ergänzen, sofern das Backend ihn
+  verlangt (neuere Deployments setzen dies für REST-Zugriffe voraus).
+- Endpunkte: ``.../location.name`` und ``.../DepartureBoard`` (Groß-/Kleinschreibung!)
 
 Erforderliche Umgebungsvariablen:
   VOR_BASE_URL   z.B. https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/
@@ -59,7 +60,8 @@ def desired_product_classes() -> List[int]:
 def get_session() -> requests.Session:
     s = requests.Session()
     s.headers.update({"Accept": "application/json", "User-Agent": UA})
-    # bewusst KEIN Authorization-Header – VAO authentifiziert via accessId
+    # Neuere VAO-Backends verlangen zusätzlich einen Bearer-Token im Header.
+    s.headers.setdefault("Authorization", f"Bearer {ACCESS_ID}")
     return s
 
 def get_json(session: requests.Session, endpoint: str, params: Dict[str, str]) -> Dict[str, Any]:
