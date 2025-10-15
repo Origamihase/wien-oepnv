@@ -22,6 +22,7 @@ import re
 import tempfile
 import time
 import threading
+from urllib.parse import unquote
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
@@ -441,6 +442,10 @@ VOR_RETRY_OPTIONS = {"total": 3, "backoff_factor": 0.5, "raise_on_status": False
 
 _ACCESS_ID_KEY_VALUE_RE = re.compile(r"(accessId\s*[=:]\s*)([\"']?)([^\"',\s&]+)(\2)", re.IGNORECASE)
 _ACCESS_ID_URLENC_RE = re.compile(r"(accessId%3D)([^&]+)", re.IGNORECASE)
+_AUTH_SNIPPET_RE = re.compile(
+    r"[\"']?Authorization[\"']?\s*[:=]\s*[\"']?(Bearer|Basic)\s+([^\"']+)[\"']?",
+    re.IGNORECASE,
+)
 
 
 def _parse_access_credentials(token: str) -> tuple[str, Optional[str]]:
@@ -449,6 +454,31 @@ def _parse_access_credentials(token: str) -> tuple[str, Optional[str]]:
     normalized = (token or "").strip()
     if not normalized:
         return "", None
+
+    snippet_match = _AUTH_SNIPPET_RE.search(normalized)
+    if snippet_match:
+        scheme = snippet_match.group(1).strip()
+        value = snippet_match.group(2).strip()
+        if scheme and value:
+            normalized = f"{scheme} {value}"
+
+    access_match = _ACCESS_ID_KEY_VALUE_RE.search(normalized)
+    if access_match:
+        candidate = access_match.group(3).strip()
+        if candidate:
+            normalized = candidate
+    else:
+        urlenc_match = _ACCESS_ID_URLENC_RE.search(normalized)
+        if urlenc_match:
+            decoded = unquote(urlenc_match.group(2))
+            decoded = decoded.strip()
+            if decoded:
+                access_match = _ACCESS_ID_KEY_VALUE_RE.search(decoded)
+                normalized = (
+                    access_match.group(3).strip()
+                    if access_match
+                    else decoded
+                )
 
     lowered = normalized.lower()
     if lowered.startswith("bearer "):
