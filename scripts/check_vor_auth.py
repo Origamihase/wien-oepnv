@@ -100,9 +100,17 @@ def check_authentication(station_id: str | None = None) -> Dict[str, Any]:
     sid = (station_id or os.getenv("VOR_AUTH_TEST_STATION") or DEFAULT_STATION_ID).strip()
     token = vor.refresh_access_credentials()
 
-    params: Dict[str, Any] = {"format": "json", "id": sid}
-    if token:
-        params["accessId"] = token
+    if not token:
+        return {
+            "url": None,
+            "status_code": None,
+            "error_code": "MISSING_CREDENTIALS",
+            "error_text": "No VOR access token configured in the environment.",
+            "authenticated": False,
+            "payload": None,
+        }
+
+    params: Dict[str, Any] = {"format": "json", "id": sid, "accessId": token}
 
     url = f"{vor.VOR_BASE_URL}departureboard"
 
