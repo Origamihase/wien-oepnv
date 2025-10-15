@@ -7,7 +7,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     env:
-      PIP_CACHE_DIR: ${{ runner.temp }}/pip-cache
+      PIP_CACHE_DIR: "${{ runner.temp }}/pip-cache"
 
     steps:
       - name: Check out repository
