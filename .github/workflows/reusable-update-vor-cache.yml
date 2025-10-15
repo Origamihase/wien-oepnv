@@ -11,7 +11,7 @@ jobs:
       VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
       VOR_BASE: ${{ secrets.VOR_BASE }}
       VOR_VERSION: ${{ secrets.VOR_VERSION }}
-      PIP_CACHE_DIR: ${{ runner.temp }}/pip-cache
+      PIP_CACHE_DIR: /tmp/pip-cache
 
     steps:
       - name: Check out repository
