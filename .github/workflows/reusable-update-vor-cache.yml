@@ -11,10 +11,14 @@ jobs:
       VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
       VOR_BASE: ${{ secrets.VOR_BASE }}
       VOR_VERSION: ${{ secrets.VOR_VERSION }}
+      PIP_CACHE_DIR: ${{ runner.temp }}/pip-cache
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Ensure pip cache directory exists
+        run: mkdir -p "$PIP_CACHE_DIR"
 
       - name: Validate VOR secrets
         shell: bash
