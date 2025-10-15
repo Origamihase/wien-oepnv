@@ -6,7 +6,7 @@
 - Alle Provider nutzen gemeinsam konfigurierte HTTP-Sessions mit Retries und individuellen Timeouts, sodass API-Ausfälle oder Rate Limits robuste Wiederholversuche auslösen.【F:src/utils/http.py†L15-L34】【F:src/providers/wl_fetch.py†L323-L356】【F:src/providers/oebb.py†L101-L151】【F:src/providers/vor.py†L398-L406】
 - Secrets wie die VOR `accessId` werden ausschließlich per Umgebung bereitgestellt, vor dem Logging maskiert und optional über eine Whitelist von Stations-IDs eingeschränkt. Ein Fallback-Token wird nicht mehr verwendet.【F:src/providers/vor.py†L260-L415】
 - Stationsdaten werden zentral normalisiert, Polygone für Wien ausgewertet und Aliasnamen kanonisiert. So bleibt der Abgleich zwischen Feed-Meldungen und Verzeichnis konsistent.【F:src/utils/stations.py†L46-L188】
-- Die vollständige Testsuite (`pytest`) läuft fehlerfrei und deckt Parser, Filter, State-Handling sowie Provider-spezifische Sonderfälle ab (233 Tests).【91d887†L1-L4】
+- Die vollständige Testsuite (`pytest`) läuft fehlerfrei und deckt Parser, Filter, State-Handling sowie Provider-spezifische Sonderfälle ab (267 Tests).【fa60a0†L1-L38】
 
 ## Beobachtungen & Empfehlungen
 1. **Pfad-Validierung & Logs** – Die Whitelist für Ausgabepfade umfasst `docs`, `data` und `log`. Falls zukünftige Artefakte (z. B. temporäre Debug-Dateien) benötigt werden, sollte die Liste gezielt erweitert werden, statt die Validierung zu lockern.【F:src/build_feed.py†L26-L68】
@@ -16,5 +16,5 @@
 5. **Feed-Abdeckung** – Durch `_drop_old_items` werden Einträge nach Ablauf oder Maximalalter entfernt. Für sehr langfristige Baustellen sollte sichergestellt werden, dass `ABSOLUTE_MAX_AGE_DAYS` ausreichend groß bleibt, sonst fallen sie trotz aktiver `ends_at`-Werte heraus.【F:src/build_feed.py†L533-L589】
 
 ## Tests & Checks
-- ✅ `pytest -q` – komplette Testsuite (233 Tests).【91d887†L1-L4】
+- ✅ `pytest` – komplette Testsuite (267 Tests).【fa60a0†L1-L38】
 
