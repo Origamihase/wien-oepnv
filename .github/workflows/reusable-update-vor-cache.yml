@@ -31,14 +31,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          miss=()
-          [[ -z "${VOR_ACCESS_ID:-}" ]] && miss+=("VOR_ACCESS_ID")
-          if [[ -z "${VOR_BASE_URL:-}" ]]; then
-            [[ -z "${VOR_BASE:-}" ]] && miss+=("VOR_BASE (oder VOR_BASE_URL)")
-            [[ -z "${VOR_VERSION:-}" ]] && miss+=("VOR_VERSION (oder VOR_BASE_URL)")
-          fi
-          if (( ${#miss[@]} )); then
-            printf 'Fehlende Variablen: %s\n' "${miss[*]}" >&2; exit 1
+          if [[ -z "${VOR_ACCESS_ID:-}" || -z "${VOR_BASE_URL:-}" ]]; then
+            echo "Secrets fehlen (VOR_ACCESS_ID/VOR_BASE_URL)." >&2
+            exit 1
           fi
 
       - name: Set up Python
