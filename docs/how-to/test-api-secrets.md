@@ -56,3 +56,58 @@ gh run watch
 ```
 
 Die CLI nutzt dabei ebenfalls die in GitHub gespeicherten Secrets. Auf diese Weise lässt sich der Abruf automatisiert und reproduzierbar testen, ohne die Geheimnisse lokal offenlegen zu müssen.
+
+## 4. Beispiel: VOR API mit Secrets prüfen
+
+Die VOR-Integration verwendet die Secrets `VOR_ACCESS_ID` (Access Token) und `VOR_BASE_URL` (Basis-URL inkl. Version). Beide Werte werden beim Laden der Provider-Konfiguration direkt aus der Umgebung gelesen und für Requests ergänzt.【F:src/providers/vor.py†L274-L301】【F:src/providers/vor.py†L358-L378】
+
+Legen Sie im Repository zusätzlich einen aufrufbaren Workflow wie `.github/workflows/test-vor-api.yml` an:
+
+```yaml
+name: Test VOR API
+
+on:
+  workflow_dispatch:
+    inputs:
+      station_id:
+        description: Optionale StationBoard-ID (Standard siehe Skript)
+        required: false
+
+jobs:
+  vor-auth:
+    runs-on: ubuntu-latest
+    env:
+      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
+      VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
+      VOR_AUTH_TEST_STATION: ${{ github.event.inputs.station_id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Check VOR authentication
+        run: python scripts/check_vor_auth.py
+```
+
+Das Skript `scripts/check_vor_auth.py` führt einen einzelnen `departureboard`-Request aus, hängt das Secret automatisch als `accessId` bzw. `Authorization`-Header an und gibt ein JSON-Ergebnis mit Statuscode und `authenticated`-Flag aus.【F:scripts/check_vor_auth.py†L1-L145】 Über `station_id` können Sie optional die getestete Station über die Umgebungsvariable `VOR_AUTH_TEST_STATION` überschreiben; ohne Eingabe greift das Skript auf die Standard-ID zurück.【F:scripts/check_vor_auth.py†L97-L105】
+
+### Workflow ausführen und Ergebnis interpretieren
+
+1. Öffnen Sie in GitHub den Reiter **Actions**, wählen Sie **Test VOR API** und klicken Sie auf **Run workflow**. Optional geben Sie eine `station_id` ein.
+2. Prüfen Sie im Log den Schritt **Check VOR authentication**. Eine erfolgreiche Authentifizierung erkennen Sie daran, dass `authenticated` auf `true` steht und der HTTP-Status < 400 ist.【F:scripts/check_vor_auth.py†L126-L145】
+3. Bei Fehlern zeigt das JSON `error_code`/`error_text` sowie den HTTP-Status – diese Informationen helfen beim Nachschärfen der Secrets.
+
+Alternativ lässt sich der Workflow auch per CLI starten:
+
+```bash
+# Optional andere Station testen
+gh workflow run "Test VOR API" --field station_id=430470800
+
+gh run watch
+```
+
+Mit dieser Vorgehensweise verifizieren Sie die hinterlegten VOR-Secrets ohne lokalen Zugriff auf die Klarwerte und sehen unmittelbar, ob die API-Anmeldung funktioniert.
