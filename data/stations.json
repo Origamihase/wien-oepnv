@@ -103,17 +103,7 @@
     "name": "Flughafen Wien",
     "in_vienna": false,
     "pendler": true,
-    "vor_id": "900200",
-    "latitude": 48.120027,
-    "longitude": 16.561749,
-    "aliases": [
-      "430470800",
-      "900200",
-      "Flughafen Wien",
-      "Flughafen Wien Bahnhof",
-      "Schwechat Flughafen Wien Bahnhof",
-      "Vienna Airport"
-    ]
+    "vor_id": "900200"
   },
   {
     "bst_id": 547,
@@ -373,14 +363,7 @@
     "name": "Wiener Neustadt Hbf",
     "in_vienna": false,
     "pendler": true,
-    "vor_id": "900300",
-    "latitude": 47.811304,
-    "longitude": 16.23362,
-    "aliases": [
-      "430521000",
-      "900300",
-      "Wiener Neustadt Hauptbahnhof"
-    ]
+    "vor_id": "900300"
   },
   {
     "bst_id": 1558,
@@ -710,14 +693,33 @@
     "name": "Wien Aspern Nord",
     "in_vienna": true,
     "pendler": false,
-    "vor_id": "900100",
-    "latitude": 48.234567,
-    "longitude": 16.520123,
+    "vor_id": "900100"
+  },
+  {
+    "name": "Flughafen Wien Bahnhof (VOR)",
+    "in_vienna": false,
+    "pendler": false,
+    "vor_id": "430470800",
+    "latitude": 48.12056,
+    "longitude": 16.563659,
+    "aliases": [
+      "430470800",
+      "Flughafen Wien Bahnhof"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Wien Aspern Nord (VOR)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490091000",
+    "latitude": 48.234669,
+    "longitude": 16.504456,
     "aliases": [
       "490091000",
-      "900100",
       "Wien Aspern Nord"
-    ]
+    ],
+    "source": "vor"
   },
   {
     "name": "Wien Karlsplatz U (VOR)",
@@ -759,10 +761,22 @@
     "source": "vor"
   },
   {
+    "name": "Wiener Neustadt Hauptbahnhof (VOR)",
+    "in_vienna": false,
+    "pendler": false,
+    "vor_id": "430521000",
+    "latitude": 47.811304,
+    "longitude": 16.23362,
+    "aliases": [
+      "430521000",
+      "Wiener Neustadt Hauptbahnhof"
+    ],
+    "source": "vor"
+  },
+  {
     "name": "Wien Karlsplatz (WL)",
     "in_vienna": true,
     "pendler": false,
-    "vor_id": "490065700",
     "wl_diva": "60201076",
     "wl_stops": [
       {
@@ -792,7 +806,6 @@
     "name": "Wien Schottentor (WL)",
     "in_vienna": true,
     "pendler": false,
-    "vor_id": "490118400",
     "wl_diva": "60201002",
     "wl_stops": [
       {
@@ -822,7 +835,6 @@
     "name": "Wien Stephansplatz (WL)",
     "in_vienna": true,
     "pendler": false,
-    "vor_id": "490132000",
     "wl_diva": "60201001",
     "wl_stops": [
       {
