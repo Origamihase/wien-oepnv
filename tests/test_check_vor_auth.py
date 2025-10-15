@@ -72,7 +72,7 @@ def test_check_authentication_success(monkeypatch: pytest.MonkeyPatch) -> None:
     assert result["error_code"] is None
     assert result["url"].endswith("format=json&id=123&accessId=***")
     assert session.last_request == {
-        "url": "https://example.test/departureboard",
+        "url": "https://example.test/DepartureBoard",
         "params": {"format": "json", "id": "123", "accessId": "token"},
         "timeout": module.vor.HTTP_TIMEOUT,
         "headers": {

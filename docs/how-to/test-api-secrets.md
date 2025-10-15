@@ -93,7 +93,7 @@ jobs:
         run: python scripts/check_vor_auth.py
 ```
 
-Das Skript `scripts/check_vor_auth.py` führt einen einzelnen `departureboard`-Request aus, hängt das Secret automatisch als `accessId` bzw. `Authorization`-Header an und gibt ein JSON-Ergebnis mit Statuscode und `authenticated`-Flag aus.【F:scripts/check_vor_auth.py†L1-L145】 Über `station_id` können Sie optional die getestete Station über die Umgebungsvariable `VOR_AUTH_TEST_STATION` überschreiben; ohne Eingabe greift das Skript auf die Standard-ID zurück.【F:scripts/check_vor_auth.py†L97-L105】
+Das Skript `scripts/check_vor_auth.py` führt einen einzelnen `DepartureBoard`-Request aus, hängt das Secret automatisch als `accessId` bzw. `Authorization`-Header an und gibt ein JSON-Ergebnis mit Statuscode und `authenticated`-Flag aus.【F:scripts/check_vor_auth.py†L1-L147】 Über `station_id` können Sie optional die getestete Station über die Umgebungsvariable `VOR_AUTH_TEST_STATION` überschreiben; ohne Eingabe greift das Skript auf die Standard-ID zurück.【F:scripts/check_vor_auth.py†L99-L107】
 
 ### Workflow ausführen und Ergebnis interpretieren
 
@@ -109,7 +109,7 @@ Wenn der Workflow – wie im Screenshot zu sehen – ohne Fehler endet und der J
 {
   "authenticated": true,
   "status_code": 200,
-  "url": "https://.../departureboard?accessId=***&format=json&id=430470800",
+  "url": "https://.../DepartureBoard?accessId=***&format=json&id=430470800",
   "payload": {
     "stopLocationOrCoordLocation": [...]
   }

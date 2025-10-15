@@ -112,7 +112,9 @@ def check_authentication(station_id: str | None = None) -> Dict[str, Any]:
 
     params: Dict[str, Any] = {"format": "json", "id": sid, "accessId": token}
 
-    url = f"{vor.VOR_BASE_URL}departureboard"
+    # Die VAO-API unterscheidet die Groß-/Kleinschreibung der Endpunkte;
+    # laut Handbuch lautet der Pfad deshalb ``DepartureBoard``.
+    url = f"{vor.VOR_BASE_URL}DepartureBoard"
 
     prepared = requests.Request("GET", url, params=params).prepare()
     request_url = prepared.url or url
