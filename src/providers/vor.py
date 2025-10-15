@@ -12,7 +12,15 @@ KEIN <pubDate> und ordnet solche Items hinter datierten ein.
 
 from __future__ import annotations
 
-import os, re, html, logging, time, hashlib, json, tempfile, base64
+import base64
+import hashlib
+import html
+import json
+import logging
+import os
+import re
+import tempfile
+import time
 import threading
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -693,9 +701,12 @@ def _text(obj: Optional[Mapping[str, Any]], attr: str, default: str = "") -> str
     return str(value)
 
 def _parse_dt(date_str: str | None, time_str: str | None) -> Optional[datetime]:
-    if not date_str: return None
-    d = date_str.strip(); t = (time_str or "00:00:00").strip()
-    if len(t)==5: t += ":00"
+    if not date_str:
+        return None
+    d = date_str.strip()
+    t = (time_str or "00:00:00").strip()
+    if len(t) == 5:
+        t += ":00"
     try:
         local = datetime.fromisoformat(f"{d}T{t}").replace(tzinfo=ZoneInfo("Europe/Vienna"))
         return local.astimezone(timezone.utc)
@@ -767,13 +778,16 @@ def _accept_product(prod: Mapping[str, Any]) -> bool:
     return False
 
 def _select_stations_round_robin(ids: List[str], chunk_size: int, period_sec: int) -> List[str]:
-    if not ids: return []
-    m = len(ids); n = max(1, min(chunk_size, m))
+    if not ids:
+        return []
+    m = len(ids)
+    n = max(1, min(chunk_size, m))
     slot = int(datetime.now(timezone.utc).timestamp()) // max(1, period_sec)
     total = (m + n - 1) // n
     idx = int(slot) % total
-    start = idx * n; end = start + n
-    return ids[start:end] if end <= m else (ids[start:] + ids[:end-m])
+    start = idx * n
+    end = start + n
+    return ids[start:end] if end <= m else (ids[start:] + ids[: end - m])
 
 def _fetch_stationboard(station_id: str, now_local: datetime) -> Optional[Dict[str, Any]]:
     params = {
@@ -962,10 +976,12 @@ def _collect_from_board(station_id: str, payload: Mapping[str, Any]) -> List[Dic
     for m in _iter_messages(payload):
         msg_id = _text(m, "id").strip()
         active = _text(m, "act").strip().lower()
-        if active in ("false","0","no"): continue
+        if active in ("false", "0", "no"):
+            continue
 
         prods = _accepted_products(m)
-        if not prods: continue
+        if not prods:
+            continue
 
         head_raw = html_to_text(_text(m, "head"))
         text_raw = html_to_text(_text(m, "text"))
