@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for proper merging
+          fetch-depth: 0
       
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -37,11 +37,25 @@ jobs:
         env:
           VOR_API_KEY: ${{ secrets.VOR_API_KEY }}
           
-      - name: Commit and push changes
+      - name: Configure Git
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git pull --rebase origin main  # Fetch and rebase latest changes
+          
+      - name: Commit and push changes
+        run: |
+          # Stash any changes first
+          git stash
+          
+          # Get latest changes
+          git pull origin main
+          
+          # Apply stashed changes
+          git stash pop
+          
+          # Stage and commit changes
           git add docs/feed.xml
-          git commit -m "Update feed" || exit 0
+          git diff --staged --quiet || git commit -m "Update feed"
+          
+          # Push if there are changes
           git push origin main
