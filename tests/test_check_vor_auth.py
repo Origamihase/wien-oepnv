@@ -99,6 +99,21 @@ def test_check_authentication_missing_token(monkeypatch: pytest.MonkeyPatch) -> 
     }
 
 
+def test_check_authentication_missing_token(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(module.vor, "refresh_access_credentials", lambda: "")
+
+    result = module.check_authentication("123")
+
+    assert result == {
+        "url": None,
+        "status_code": None,
+        "error_code": "MISSING_CREDENTIALS",
+        "error_text": "No VOR access token configured in the environment.",
+        "authenticated": False,
+        "payload": None,
+    }
+
+
 def test_check_authentication_http_error(monkeypatch: pytest.MonkeyPatch) -> None:
     response = _make_response(401, {"errorCode": "API_AUTH", "errorText": "access denied"})
     session = DummySession(response)
