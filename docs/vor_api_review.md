@@ -1,6 +1,7 @@
 # VOR API Implementation Review
 
 ## Ergebnis
+- Die aktuelle Implementierung erfüllt die im Handbuch dokumentierten Anforderungen: Secrets werden geladen, Endpunkte korrekt zusammengesetzt und die Authentifizierung wird automatisch an Requests angehängt, wie durch die begleitenden Unit-Tests abgesichert wird.【F:src/providers/vor.py†L274-L378】【F:src/providers/vor.py†L526-L680】【F:tests/test_vor_env.py†L9-L118】【F:tests/test_vor_location_name.py†L9-L78】
 - Die Zugangsdaten werden ausschließlich aus den Secrets `VOR_ACCESS_ID` bzw. `VAO_ACCESS_ID` geladen.【F:src/providers/vor.py†L268-L286】
 - Der frühere Fallback-Wert `VAO` wird vom Produktivsystem inzwischen konsequent mit `API_AUTH` abgewiesen. Verwende das neue Hilfsskript `scripts/check_vor_auth.py`, um die eigene Konfiguration zu validieren.【F:scripts/check_vor_auth.py†L1-L117】
 - Der erneute Test vom 14.10.2025 bestätigt den Fehlerstatus `API_AUTH`, weil im aktuellen Laufzeitkontext kein Secret gesetzt war und deshalb kein Token übertragen wurde.【F:log/2025-10-14_vor_auth_check.md†L1-L23】【F:src/providers/vor.py†L268-L286】
