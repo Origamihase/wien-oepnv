@@ -25,7 +25,7 @@
 - Feed-Ausgabe erfolgt in `docs/feed.xml`; Text wird sanitisiert (z. B. Kontrollzeichen, CDATA) und optional gekürzt, damit Konsumenten valides XML erhalten.【F:src/build_feed.py†L182-L288】【F:src/build_feed.py†L640-L734】
 
 ## Tests & Monitoring
-- Die automatisierte Testsuite deckt Parser, State-Verwaltung, Secret-Maskierung und Provider-Kantenfälle ab; aktueller Lauf: 240 erfolgreiche Tests in 17.07 s.【20256c†L1-L22】
+- Die automatisierte Testsuite deckt Parser, State-Verwaltung, Secret-Maskierung und Provider-Kantenfälle ab; aktueller Lauf: 257 erfolgreiche Tests in 30.90 s.【aed3bc†L1-L14】
 - Logging richtet einen rotierenden Fehler-Handler ein (`log/errors.log`), sodass auffällige Situationen nachvollziehbar bleiben.【F:src/build_feed.py†L69-L103】
 
 ## Handlungsempfehlungen
