@@ -363,15 +363,51 @@ def _infer_version_from_url(url: str) -> Optional[str]:
     return None
 
 
+def _remove_trailing_segment(url: str, segment: str) -> str:
+    """Return *url* without the trailing *segment* (case-insensitive)."""
+
+    cleaned = url.rstrip("/")
+    wanted = segment.strip("/")
+    if not cleaned or not wanted:
+        return cleaned
+
+    suffix = f"/{wanted}"
+    if cleaned.lower().endswith(suffix.lower()):
+        cleaned = cleaned[: -len(suffix)]
+    return cleaned
+
+
+def _ensure_version_segment(base_url: str, version: str, original: Optional[str]) -> str:
+    """Ensure that *base_url* ends with */version/*."""
+
+    normalized = _normalize_base_url(base_url)
+    desired = version.strip("/")
+    if not desired:
+        return normalized
+
+    normalized_no_slash = normalized.rstrip("/")
+    suffix = f"/{desired}"
+    if normalized_no_slash.lower().endswith(suffix.lower()):
+        return _normalize_base_url(normalized_no_slash)
+
+    if original:
+        normalized_no_slash = _remove_trailing_segment(normalized_no_slash, original)
+
+    normalized_no_slash = normalized_no_slash.rstrip("/")
+    return _normalize_base_url(f"{normalized_no_slash}/{desired}")
+
+
 def _determine_base_url_and_version() -> tuple[str, str]:
     env_base_url = (os.getenv("VOR_BASE_URL") or "").strip()
     if env_base_url:
         normalized = _normalize_base_url(env_base_url)
+        inferred_version = _infer_version_from_url(normalized)
         version = (
-            (os.getenv("VOR_VERSION") or "").strip()
-            or _infer_version_from_url(normalized)
+            (os.getenv("VOR_VERSION") or "").strip().strip("/")
+            or (inferred_version or "").strip("/")
             or _DEFAULT_VOR_VERSION
         )
+        normalized = _ensure_version_segment(normalized, version, inferred_version)
         return normalized, version
 
     base = (os.getenv("VOR_BASE") or _DEFAULT_VOR_BASE).strip().rstrip("/")
