@@ -2,16 +2,15 @@ name: Build Feed
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # Run every 30 minutes
-  workflow_dispatch:  # Allow manual triggers
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
   push:
     paths:
       - 'src/**'
       - '.github/workflows/build-feed.yml'
 
-# Add permissions block
 permissions:
-  contents: write  # This gives permission to push to the repository
+  contents: write
 
 jobs:
   build:
@@ -19,6 +18,8 @@ jobs:
     
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for proper merging
       
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -36,15 +37,11 @@ jobs:
         env:
           VOR_API_KEY: ${{ secrets.VOR_API_KEY }}
           
-      - name: Commit changes
+      - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          git pull --rebase origin main  # Fetch and rebase latest changes
           git add docs/feed.xml
           git commit -m "Update feed" || exit 0
-          
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          git push origin main
