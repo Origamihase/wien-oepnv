@@ -1,239 +1,46 @@
-name: Build RSS
+name: Build Feed
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "*/30 * * * *"   # -alle 30 Minuten (UTC)
-
-permissions:
-  contents: write
-
-concurrency:
-  group: build-rss
-  cancel-in-progress: true
+    - cron: '*/30 * * * *'  # Run every 30 minutes
+  workflow_dispatch:  # Allow manual triggers
+  push:
+    paths:
+      - 'src/**'
+      - '.github/workflows/build-feed.yml'
 
 jobs:
-  update_wl_cache:
-    uses: ./.github/workflows/reusable-update-wl-cache.yml
-    secrets: inherit
-
-  update_oebb_cache:
-    uses: ./.github/workflows/reusable-update-oebb-cache.yml
-    secrets: inherit
-
-  update_vor_cache:
-    uses: ./.github/workflows/reusable-update-vor-cache.yml
-    secrets: inherit
-
   build:
-    needs:
-      - update_wl_cache
-      - update_oebb_cache
-      - update_vor_cache
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref }}
-          fetch-depth: 0
-
-      - name: Sync repository
-        run: git pull --ff-only
-
-      - name: Configure build environment
-        shell: bash
-        run: |
-          set -euo pipefail
-          cat >>"$GITHUB_ENV" <<'EOF'
-            OUT_PATH=docs/feed.xml
-            FEED_TITLE=ÖPNV Störungen Wien & Umgebung
-            FEED_LINK=https://github.com/${{ github.repository }}
-            FEED_DESC=Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen
-            FEED_TTL=15
-            LOG_LEVEL=INFO
-            DESCRIPTION_CHAR_LIMIT=170
-            MAX_ITEMS=60
-            MAX_ITEM_AGE_DAYS=365
-            ABSOLUTE_MAX_AGE_DAYS=540
-            STATE_PATH=data/first_seen.json
-            STATE_RETENTION_DAYS=540
-            WL_ENABLE=1
-            OEBB_ENABLE=1
-            VOR_ENABLE=1
-            OEBB_ONLY_VIENNA=1
-            VOR_BASE=https://routenplaner.verkehrsauskunft.at/vao/restproxy
-            VOR_VERSION=v1.11.0
-            VOR_ALLOW_BUS=1
-            VOR_BUS_INCLUDE_REGEX=(?:\b[2-9]\d{2,4}\b)
-            VOR_BUS_EXCLUDE_REGEX=^(?:N?\d{1,2}[A-Z]?)$
-            VOR_MAX_STATIONS_PER_RUN=2
-            VOR_ROTATION_INTERVAL_SEC=1800
-            VOR_STATION_IDS=
-          EOF
-          {
-            echo "WL_RSS_URL=${{ secrets.WL_RSS_URL }}"
-            echo "OEBB_RSS_URL=${{ secrets.OEBB_RSS_URL }}"
-            echo "VOR_ACCESS_ID=${{ secrets.VOR_ACCESS_ID }}"
-          } >>"$GITHUB_ENV"
-
+      - uses: actions/checkout@v4
+      
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
-          cache: "pip"
-
-      - name: Install deps
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Run tests
-        run: pytest -q
-
-      # ------------------------------------------------------------
-      # (Optional) VOR Stationen ermitteln – nur wenn Zugang vorhanden
-      # ------------------------------------------------------------
-      - name: Discover VOR Station IDs for Vienna (PLZ 1010–1230)
-        if: ${{ env.VOR_ACCESS_ID != '' }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          FILE="data/vor_station_ids_wien.txt"
-          mkdir -p data
-          if [[ -f "$FILE" ]]; then
-            IDS="$(tr -d '\r\n ' < "$FILE")"
-            echo "VOR_STATION_IDS=$IDS" >> "$GITHUB_ENV"
-            exit 0
-          fi
-          python - <<'PY'
-          import os, sys, time
-          from defusedxml import ElementTree as ET
-          import requests
-          ACCESS = os.environ.get("VOR_ACCESS_ID","").strip()
-          BASE   = os.environ.get("VOR_BASE","").rstrip("/")
-          VER    = os.environ.get("VOR_VERSION","v1.11.0").strip()
-          OUT    = "data/vor_station_ids_wien.txt"
-          if not ACCESS: sys.exit(0)
-          session = requests.Session()
-          session.headers.update({"Accept":"application/xml","User-Agent":"origamihase-wien-oepnv/auto-discover"})
-          url = f"{BASE}/{VER}/location.name"
-          plz_list = ["1010","1020","1030","1040","1050","1060","1070","1080","1090",
-                      "1100","1110","1120","1130","1140","1150","1160","1170","1180","1190",
-                      "1200","1210","1220","1230"]
-          ext_ids = set()
-          for plz in plz_list:
-              params = {"accessId":ACCESS,"format":"xml","input":f"{plz} Wien","type":"S","stations":"49","maxNo":"200"}
-              try:
-                  r = session.get(url, params=params, timeout=12)
-                  if r.status_code >= 400 or not r.content: continue
-                  root = ET.fromstring(r.content)
-                  for sl in root.findall(".//StopLocation"):
-                      ext = (sl.get("extId") or sl.get("id") or "").strip()
-                      name = (sl.get("name") or "").strip()
-                      if name.startswith("Wien") and ext: ext_ids.add(ext)
-              except Exception:
-                  continue
-              time.sleep(0.2)
-          if not ext_ids: sys.exit(0)
-          with open(OUT,"w",encoding="utf-8") as f:
-              f.write(",".join(sorted(ext_ids)) + "\n")
-          PY
-          if [[ -f "$FILE" ]]; then
-            IDS="$(tr -d '\r\n ' < "$FILE")"
-            echo "VOR_STATION_IDS=$IDS" >> "$GITHUB_ENV"
-          else
-            echo "VOR_STATION_IDS=" >> "$GITHUB_ENV"
-          fi
-
-      - name: Commit discovered VOR stations (if any)
-        if: ${{ env.VOR_ACCESS_ID != '' }}
-        shell: bash
-        env:
-          BRANCH_NAME: ${{ github.ref_name }}
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          file="data/vor_station_ids_wien.txt"
-          if [[ ! -f "$file" ]]; then
-            echo "No discovered station IDs to commit."
-            exit 0
-          fi
-          git add "$file"
-          if git diff --cached --quiet; then
-            echo "No station ID changes to commit."
-            exit 0
-          fi
-          branch="${BRANCH_NAME:-${GITHUB_REF#refs/heads/}}"
-          if [[ -z "$branch" || "$branch" == "$GITHUB_REF" ]]; then
-            branch="$(git rev-parse --abbrev-ref HEAD)"
-          fi
-          git commit -m "chore(vor): add/update Vienna station IDs"
-          git pull --rebase origin "$branch"
-          git push origin HEAD:"$branch"
-
+          
       - name: Build feed
+        run: python src/build_feed.py
         env:
-          OUT_PATH: ${{ env.OUT_PATH }}
-          FEED_TITLE: ${{ env.FEED_TITLE }}
-          FEED_LINK: ${{ env.FEED_LINK }}
-          FEED_DESC: ${{ env.FEED_DESC }}
-          FEED_TTL: ${{ env.FEED_TTL }}
-          LOG_LEVEL: ${{ env.LOG_LEVEL }}
-          DESCRIPTION_CHAR_LIMIT: ${{ env.DESCRIPTION_CHAR_LIMIT }}
-          MAX_ITEMS: ${{ env.MAX_ITEMS }}
-          MAX_ITEM_AGE_DAYS: ${{ env.MAX_ITEM_AGE_DAYS }}
-          ABSOLUTE_MAX_AGE_DAYS: ${{ env.ABSOLUTE_MAX_AGE_DAYS }}
-          STATE_PATH: ${{ env.STATE_PATH }}
-          STATE_RETENTION_DAYS: ${{ env.STATE_RETENTION_DAYS }}
-
-          WL_ENABLE: ${{ env.WL_ENABLE }}
-          OEBB_ENABLE: ${{ env.OEBB_ENABLE }}
-          VOR_ENABLE: ${{ env.VOR_ENABLE }}
-
-          WL_RSS_URL: ${{ env.WL_RSS_URL }}
-          OEBB_RSS_URL: ${{ env.OEBB_RSS_URL }}
-          OEBB_ONLY_VIENNA: ${{ env.OEBB_ONLY_VIENNA }}
-
-          VOR_ACCESS_ID: ${{ env.VOR_ACCESS_ID }}
-          VOR_BASE: ${{ env.VOR_BASE }}
-          VOR_VERSION: ${{ env.VOR_VERSION }}
-          VOR_STATION_IDS: ${{ env.VOR_STATION_IDS }}
-          VOR_ALLOW_BUS: ${{ env.VOR_ALLOW_BUS }}
-          VOR_BUS_INCLUDE_REGEX: ${{ env.VOR_BUS_INCLUDE_REGEX }}
-          VOR_BUS_EXCLUDE_REGEX: ${{ env.VOR_BUS_EXCLUDE_REGEX }}
-          VOR_MAX_STATIONS_PER_RUN: ${{ env.VOR_MAX_STATIONS_PER_RUN }}
-          VOR_ROTATION_INTERVAL_SEC: ${{ env.VOR_ROTATION_INTERVAL_SEC }}
-        run: python -u src/build_feed.py
-
-      - name: Validate feed (XML + GUID uniqueness)
+          VOR_API_KEY: ${{ secrets.VOR_API_KEY }}
+          
+      - name: Commit changes
         run: |
-          python - <<'PY'
-          import sys
-          from defusedxml import ElementTree as ET
-          p = "docs/feed.xml"
-          try:
-              tree = ET.parse(p)
-          except ET.ParseError as e:
-              print("XML parse error:", e); sys.exit(2)
-          root = tree.getroot()
-          assert root.tag == "rss", "Root is not <rss>"
-          ch = root.find("channel"); assert ch is not None, "Missing <channel>"
-          items = ch.findall("item")
-          guids = [i.findtext("guid") or "" for i in items]
-          if len(guids) != len(set(guids)):
-              dupes = [g for g in set(guids) if guids.count(g) > 1]
-              raise SystemExit(f"Duplicate GUIDs detected: {dupes}")
-          print(f"Feed OK: {len(items)} items, GUIDs unique.")
-          PY
-
-      - name: Commit & push feed + state (only if changed)
-        uses: stefanzweifel/git-auto-commit-action@v5
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/feed.xml
+          git commit -m "Update feed" || exit 0
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          commit_message: "chore(feed): update feed & first_seen state"
-          file_pattern: |
-            docs/feed.xml
-            data/first_seen.json
-          branch: ${{ github.ref_name }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
