@@ -22,6 +22,7 @@ import re
 import tempfile
 import time
 import threading
+from urllib.parse import unquote
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
@@ -441,36 +442,107 @@ VOR_RETRY_OPTIONS = {"total": 3, "backoff_factor": 0.5, "raise_on_status": False
 
 _ACCESS_ID_KEY_VALUE_RE = re.compile(r"(accessId\s*[=:]\s*)([\"']?)([^\"',\s&]+)(\2)", re.IGNORECASE)
 _ACCESS_ID_URLENC_RE = re.compile(r"(accessId%3D)([^&]+)", re.IGNORECASE)
+_AUTH_SNIPPET_RE = re.compile(
+    r"[\"']?Authorization[\"']?\s*[:=]\s*[\"']?(?P<scheme>Bearer|Basic)\s+"
+    r"(?P<value>[^\s\"',]+)[\"']?",
+    re.IGNORECASE,
+)
 
 
 def _parse_access_credentials(token: str) -> tuple[str, Optional[str]]:
     """Return the access id and header value derived from *token*."""
 
     normalized = (token or "").strip()
+    if "%" in normalized:
+        decoded = unquote(normalized)
+        if decoded:
+            normalized = decoded.strip()
     if not normalized:
         return "", None
 
+    header_value: Optional[str] = None
+    header_payload: Optional[str] = None
+
+    snippet_match = _AUTH_SNIPPET_RE.search(normalized)
+    if snippet_match:
+        scheme = snippet_match.group("scheme").strip()
+        value = snippet_match.group("value").strip()
+        if "%" in value:
+            decoded_value = unquote(value)
+            if decoded_value:
+                value = decoded_value.strip()
+        scheme_lower = scheme.lower()
+        if scheme_lower == "bearer" and value:
+            header_payload = value
+            header_value = f"Bearer {value}"
+        elif scheme_lower == "basic" and value:
+            header_payload = value
+            if ":" in value:
+                encoded = base64.b64encode(value.encode("utf-8")).decode("ascii")
+                header_value = f"Basic {encoded}"
+            else:
+                header_value = f"Basic {value}"
+
+    access_candidate: Optional[str] = None
+
+    access_match = _ACCESS_ID_KEY_VALUE_RE.search(normalized)
+    if access_match:
+        candidate = access_match.group(3).strip()
+        if candidate:
+            access_candidate = candidate
+    else:
+        urlenc_match = _ACCESS_ID_URLENC_RE.search(normalized)
+        if urlenc_match:
+            decoded = unquote(urlenc_match.group(2)).strip()
+            if decoded:
+                access_match = _ACCESS_ID_KEY_VALUE_RE.search(decoded)
+                if access_match:
+                    candidate = access_match.group(3).strip()
+                    if candidate:
+                        access_candidate = candidate
+                else:
+                    access_candidate = decoded
+
     lowered = normalized.lower()
-    if lowered.startswith("bearer "):
+
+    if header_value is None and lowered.startswith("bearer "):
         payload = normalized[7:].strip()
         if not payload:
             return "", None
-        return payload, f"Bearer {payload}"
+        header_payload = payload
+        header_value = f"Bearer {payload}"
 
-    if lowered.startswith("basic "):
+    if header_value is None and lowered.startswith("basic "):
         payload = normalized[6:].strip()
         if not payload:
             return "", None
+        header_payload = payload
         if ":" in payload:
             encoded = base64.b64encode(payload.encode("utf-8")).decode("ascii")
-            return payload, f"Basic {encoded}"
-        return payload, f"Basic {payload}"
+            header_value = f"Basic {encoded}"
+        else:
+            header_value = f"Basic {payload}"
 
-    if ":" in normalized:
+    if header_value is None and ":" in normalized:
         encoded = base64.b64encode(normalized.encode("utf-8")).decode("ascii")
-        return normalized, f"Basic {encoded}"
+        header_payload = normalized
+        header_value = f"Basic {encoded}"
 
-    return normalized, f"Bearer {normalized}"
+    if header_value is None:
+        header_payload = normalized
+        header_value = f"Bearer {normalized}"
+
+    if access_candidate and (header_payload is None or header_payload == normalized):
+        header_payload = access_candidate
+        if header_value and header_value.lower().startswith("bearer "):
+            header_value = f"Bearer {access_candidate}"
+
+    access_id = access_candidate or header_payload or ""
+    access_id = access_id.strip()
+    if not access_id:
+        return "", None
+
+    return access_id, header_value
 
 
 def _authorization_header_value(token: str) -> Optional[str]:
