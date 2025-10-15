@@ -3,9 +3,11 @@
 
 """
 VOR/VAO – Board & Hinweise (IMS/HIM) – korrekter Abruf
-- Auth nur über Query-Parameter: accessId=<VOR_ACCESS_ID>
+- Auth via Query-Parameter ``accessId=<VOR_ACCESS_ID>`` **und**
+  ``Authorization``-Header.
 - Endpunkte: .../location.name und .../DepartureBoard (Groß-/Kleinschreibung!)
-- Keine Verwendung von Authorization-Headern
+- "Bearer"-Authentifizierung, optional "Basic" wenn ``VOR_ACCESS_ID`` die Form
+  ``user:secret`` hat.
 
 Erforderliche Umgebungsvariablen:
   VOR_BASE_URL   z.B. https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/
@@ -56,10 +58,26 @@ def desired_product_classes() -> List[int]:
     bus  = [7]                  # Regionalbus (optional)
     return rail + (bus if ALLOW_BUS else [])
 
+def _build_authorization_header(token: str) -> str:
+    token = token.strip()
+    if not token:
+        raise ValueError("missing token for Authorization header")
+    if ":" in token:
+        import base64
+
+        encoded = base64.b64encode(token.encode("utf-8")).decode("ascii")
+        return f"Basic {encoded}"
+    return f"Bearer {token}"
+
+
 def get_session() -> requests.Session:
     s = requests.Session()
-    s.headers.update({"Accept": "application/json", "User-Agent": UA})
-    # bewusst KEIN Authorization-Header – VAO authentifiziert via accessId
+    headers = {"Accept": "application/json", "User-Agent": UA}
+    try:
+        headers["Authorization"] = _build_authorization_header(ACCESS_ID)
+    except ValueError:
+        pass
+    s.headers.update(headers)
     return s
 
 def get_json(session: requests.Session, endpoint: str, params: Dict[str, str]) -> Dict[str, Any]:
