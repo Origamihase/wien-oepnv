@@ -101,6 +101,27 @@ Das Skript `scripts/check_vor_auth.py` führt einen einzelnen `departureboard`-R
 2. Prüfen Sie im Log den Schritt **Check VOR authentication**. Eine erfolgreiche Authentifizierung erkennen Sie daran, dass `authenticated` auf `true` steht und der HTTP-Status < 400 ist.【F:scripts/check_vor_auth.py†L126-L145】
 3. Bei Fehlern zeigt das JSON `error_code`/`error_text` sowie den HTTP-Status – diese Informationen helfen beim Nachschärfen der Secrets.
 
+### Was bedeutet eine erfolgreiche Ausführung?
+
+Wenn der Workflow – wie im Screenshot zu sehen – ohne Fehler endet und der JSON-Block unter **Check VOR authentication** in etwa wie folgt aussieht, sind mehrere Punkte gleichzeitig bestätigt:
+
+```json
+{
+  "authenticated": true,
+  "status_code": 200,
+  "url": "https://.../departureboard?accessId=***&format=json&id=430470800",
+  "payload": {
+    "stopLocationOrCoordLocation": [...]
+  }
+}
+```
+
+* **Secrets werden aufgelöst:** Sowohl `VOR_ACCESS_ID` als auch `VOR_BASE_URL` wurden vom Runner entschlüsselt und in das Skript injiziert. Andernfalls könnte keine Anfrage gestellt werden.【F:scripts/check_vor_auth.py†L72-L123】
+* **Anmeldung bei der VOR API funktioniert:** Der HTTP-Status ist < 400, das Skript meldet `authenticated: true` und es werden keine Auth-Fehlercodes gemeldet. Damit ist der Access Token gültig und hat Zugriff auf den gewünschten Endpunkt.【F:scripts/check_vor_auth.py†L126-L145】
+* **Netzwerkpfad ist offen:** Der Runner konnte die VOR-API über das Internet erreichen. Wäre die API blockiert oder die Basis-URL falsch, würde der Request scheitern und `error_text` gefüllt sein.【F:scripts/check_vor_auth.py†L103-L145】
+
+Die Response im Feld `payload` zeigt außerdem bereits Live-Daten (z. B. Abfahrts-Events), sodass Sie auf einen Blick sehen, ob die erwarteten Informationen zurückgeliefert werden.
+
 Alternativ lässt sich der Workflow auch per CLI starten:
 
 ```bash
