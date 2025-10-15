@@ -363,15 +363,35 @@ def _infer_version_from_url(url: str) -> Optional[str]:
     return None
 
 
+def _append_version_segment(base_url: str, version: str) -> str:
+    """Ensure that *base_url* ends with ``/<version>/`` when *version* is set."""
+
+    normalized = _normalize_base_url(base_url)
+    version_segment = version.strip().strip("/")
+    if not version_segment:
+        return normalized
+
+    stripped = normalized.rstrip("/")
+    if stripped.endswith(f"/{version_segment}"):
+        return _normalize_base_url(stripped)
+
+    inferred = _infer_version_from_url(normalized)
+    if inferred and stripped.endswith(f"/{inferred.strip()}"):
+        prefix = stripped[: -(len(inferred.strip()) + 1)]
+        if prefix:
+            stripped = prefix
+
+    return _normalize_base_url(f"{stripped}/{version_segment}")
+
+
 def _determine_base_url_and_version() -> tuple[str, str]:
     env_base_url = (os.getenv("VOR_BASE_URL") or "").strip()
     if env_base_url:
         normalized = _normalize_base_url(env_base_url)
-        version = (
-            (os.getenv("VOR_VERSION") or "").strip()
-            or _infer_version_from_url(normalized)
-            or _DEFAULT_VOR_VERSION
-        )
+        explicit_version = (os.getenv("VOR_VERSION") or "").strip().strip("/")
+        inferred_version = _infer_version_from_url(normalized)
+        version = explicit_version or inferred_version or _DEFAULT_VOR_VERSION
+        normalized = _append_version_segment(normalized, version)
         return normalized, version
 
     base = (os.getenv("VOR_BASE") or _DEFAULT_VOR_BASE).strip().rstrip("/")

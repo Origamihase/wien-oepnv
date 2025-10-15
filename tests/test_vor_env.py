@@ -129,7 +129,7 @@ def test_base_url_prefers_secret(monkeypatch):
 
     importlib.reload(vor)
 
-    assert vor.VOR_BASE_URL == "https://secret.example.com/base/"
+    assert vor.VOR_BASE_URL == "https://secret.example.com/base/v1.11.0/"
     assert vor.VOR_VERSION == "v1.11.0"
 
     monkeypatch.delenv("VOR_BASE_URL", raising=False)
@@ -145,6 +145,32 @@ def test_base_url_prefers_secret(monkeypatch):
         vor.VOR_BASE_URL
         == "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"
     )
+
+
+def test_base_url_secret_without_version_uses_explicit_override(monkeypatch):
+    monkeypatch.setenv("VOR_BASE_URL", "https://secret.example.com/base")
+    monkeypatch.setenv("VOR_VERSION", "v9.9.9")
+
+    importlib.reload(vor)
+
+    assert vor.VOR_BASE_URL == "https://secret.example.com/base/v9.9.9/"
+    assert vor.VOR_VERSION == "v9.9.9"
+
+    monkeypatch.delenv("VOR_BASE_URL", raising=False)
+    monkeypatch.delenv("VOR_VERSION", raising=False)
+
+
+def test_base_url_secret_replaces_existing_version(monkeypatch):
+    monkeypatch.setenv("VOR_BASE_URL", "https://secret.example.com/base/v1.2.3/")
+    monkeypatch.setenv("VOR_VERSION", "v9.9.9")
+
+    importlib.reload(vor)
+
+    assert vor.VOR_BASE_URL == "https://secret.example.com/base/v9.9.9/"
+    assert vor.VOR_VERSION == "v9.9.9"
+
+    monkeypatch.delenv("VOR_BASE_URL", raising=False)
+    monkeypatch.delenv("VOR_VERSION", raising=False)
 
 
 def test_apply_authentication_sets_header(monkeypatch):
