@@ -103,7 +103,15 @@
     "name": "Flughafen Wien",
     "in_vienna": false,
     "pendler": true,
-    "vor_id": "900200"
+    "vor_id": "900200",
+    "latitude": 48.120027,
+    "longitude": 16.561749,
+    "aliases": [
+      "900200",
+      "Vienna Airport",
+      "Flughafen Wien Bahnhof",
+      "Schwechat Flughafen Wien Bahnhof"
+    ]
   },
   {
     "bst_id": 547,
@@ -693,7 +701,13 @@
     "name": "Wien Aspern Nord",
     "in_vienna": true,
     "pendler": false,
-    "vor_id": "900100"
+    "vor_id": "900100",
+    "latitude": 48.234567,
+    "longitude": 16.520123,
+    "aliases": [
+      "900100",
+      "Wien Aspern Nord"
+    ]
   },
   {
     "name": "Flughafen Wien Bahnhof (VOR)",
