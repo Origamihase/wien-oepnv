@@ -7,7 +7,7 @@
 - Der erneute Test vom 14.10.2025 bestätigt den Fehlerstatus `API_AUTH`, weil im aktuellen Laufzeitkontext kein Secret gesetzt war und deshalb kein Token übertragen wurde.【F:log/2025-10-14_vor_auth_check.md†L1-L23】【F:src/providers/vor.py†L268-L286】
 - Die Basis-URL der API wird priorisiert aus dem Secret `VOR_BASE_URL` eingelesen; Version und Pfad werden dabei automatisch normalisiert, sodass sowohl versionierte als auch unversionierte Werte korrekt funktionieren.【F:src/providers/vor.py†L315-L360】
 - Bei allen API-Aufrufen (z. B. `DepartureBoard` und `location.name`) werden die Secrets angehängt und der konfigurierte Basis-Pfad verwendet, wodurch die Requests die geschützten Zugangsdaten nutzen.【F:src/providers/vor.py†L399-L508】【F:src/providers/vor.py†L626-L720】
-- Zusätzlich wird der Zugangsschlüssel als `Authorization: Bearer …` an die Sitzungen angehängt, damit aktualisierte Sicherheitsrichtlinien der VAO-Backend-Systeme eingehalten werden, ohne dass Logs den Klartext enthalten.【F:src/providers/vor.py†L398-L433】【F:tests/test_vor_accessid_not_logged.py†L1-L46】
+- Zusätzlich wird der Zugangsschlüssel als `Authorization: Bearer …` an die Sitzungen angehängt, damit aktualisierte Sicherheitsrichtlinien der VAO-Backend-Systeme eingehalten werden, ohne dass Logs den Klartext enthalten.【F:src/providers/vor.py†L398-L433】【F:tests/test_vor_accessid_not_logged.py†L1-L46】 Für historische Integrationen kann per `VOR_AUTH_SCHEME` weiterhin auf HTTP Basic Auth umgestellt werden, ohne dass Codeänderungen erforderlich sind.【F:src/providers/vor.py†L268-L301】【F:src/providers/vor.py†L432-L463】
 
 ## Tests
 - `pytest tests/test_vor_env.py tests/test_vor_default_version.py tests/test_vor_location_name.py`

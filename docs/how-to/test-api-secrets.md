@@ -59,7 +59,7 @@ Die CLI nutzt dabei ebenfalls die in GitHub gespeicherten Secrets. Auf diese Wei
 
 ## 4. Beispiel: VOR API mit Secrets prüfen
 
-Die VOR-Integration verwendet die Secrets `VOR_ACCESS_ID` (Access Token) und `VOR_BASE_URL` (Basis-URL inkl. Version). Beide Werte werden beim Laden der Provider-Konfiguration direkt aus der Umgebung gelesen und für Requests ergänzt.【F:src/providers/vor.py†L274-L301】【F:src/providers/vor.py†L358-L378】
+Die VOR-Integration verwendet die Secrets `VOR_ACCESS_ID` (Access Token) und `VOR_BASE_URL` (Basis-URL inkl. Version). Beide Werte werden beim Laden der Provider-Konfiguration direkt aus der Umgebung gelesen und für Requests ergänzt.【F:src/providers/vor.py†L274-L301】【F:src/providers/vor.py†L358-L378】 Standardmäßig werden Tokens dabei als Bearer-Token interpretiert; für Alt-Zugänge, die weiterhin HTTP Basic Auth benötigen, kann das Verhalten über `VOR_AUTH_SCHEME=basic` oder ein Secret mit dem Präfix `Basic ` umgeschaltet werden.【F:src/providers/vor.py†L268-L301】【F:src/providers/vor.py†L432-L463】
 
 Legen Sie im Repository zusätzlich einen aufrufbaren Workflow wie `.github/workflows/test-vor-api.yml` an:
 

@@ -283,6 +283,24 @@ def _determine_access_id() -> str:
     return (os.getenv("VOR_ACCESS_ID") or os.getenv("VAO_ACCESS_ID") or "").strip()
 
 
+_VALID_AUTH_SCHEMES = {"auto", "basic", "bearer"}
+
+
+def _resolve_auth_scheme() -> str:
+    """Return the configured authentication scheme.
+
+    Operators can override the default behaviour (``Bearer``) by setting the
+    ``VOR_AUTH_SCHEME`` environment variable to ``basic`` or ``auto``.  The
+    ``auto`` mode preserves the legacy heuristic that treated tokens containing
+    a colon as Basic Auth credentials.  Invalid values fall back to ``bearer``.
+    """
+
+    value = (os.getenv("VOR_AUTH_SCHEME") or "").strip().lower()
+    if value in _VALID_AUTH_SCHEMES:
+        return value
+    return "bearer"
+
+
 VOR_ACCESS_ID: str = _determine_access_id()
 _VOR_ACCESS_TOKEN_RAW: str = VOR_ACCESS_ID
 _VOR_AUTHORIZATION_HEADER: Optional[str] = None
@@ -466,7 +484,14 @@ def _parse_access_credentials(token: str) -> tuple[str, Optional[str]]:
             return payload, f"Basic {encoded}"
         return payload, f"Basic {payload}"
 
-    if ":" in normalized:
+    scheme = _resolve_auth_scheme()
+    if scheme == "basic":
+        if ":" in normalized:
+            encoded = base64.b64encode(normalized.encode("utf-8")).decode("ascii")
+            return normalized, f"Basic {encoded}"
+        return normalized, f"Basic {normalized}"
+
+    if scheme == "auto" and ":" in normalized:
         encoded = base64.b64encode(normalized.encode("utf-8")).decode("ascii")
         return normalized, f"Basic {encoded}"
 

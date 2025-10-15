@@ -175,6 +175,7 @@ def test_apply_authentication_sets_header(monkeypatch):
 
 
 def test_apply_authentication_basic_auth(monkeypatch):
+    monkeypatch.setenv("VOR_AUTH_SCHEME", "basic")
     monkeypatch.setenv("VOR_ACCESS_ID", "user:secret")
     importlib.reload(vor)
 
@@ -198,6 +199,7 @@ def test_apply_authentication_basic_auth(monkeypatch):
     assert session.calls[0][2]["accessId"] == "user:secret"
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    monkeypatch.delenv("VOR_AUTH_SCHEME", raising=False)
     importlib.reload(vor)
 
 
