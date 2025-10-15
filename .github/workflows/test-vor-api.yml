@@ -10,6 +10,7 @@ on:
 jobs:
   vor-auth:
     name: Check VOR authentication
+    if: ${{ secrets.VOR_ACCESS_ID != '' && secrets.VOR_BASE_URL != '' }}
     runs-on: ubuntu-latest
     env:
       VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
@@ -31,3 +32,12 @@ jobs:
 
       - name: Run VOR authentication check
         run: python scripts/check_vor_auth.py
+
+  vor-auth-missing-secrets:
+    name: Skip VOR authentication (missing secrets)
+    if: ${{ secrets.VOR_ACCESS_ID == '' || secrets.VOR_BASE_URL == '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report missing VOR configuration
+        run: |
+          echo "Skipping authentication test because the VOR_ACCESS_ID or VOR_BASE_URL secrets are not available. Ensure both secrets and the configured daily request limit are provided before rerunning this workflow."
