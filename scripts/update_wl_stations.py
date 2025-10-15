@@ -18,14 +18,25 @@ import logging
 import re
 import sys
 from dataclasses import dataclass
+from importlib import import_module
 from pathlib import Path
-from typing import Iterable, Iterator, List, Sequence
+from typing import Callable, Iterable, Iterator, List, Sequence
 
-BASE_DIR = Path(__file__).resolve().parents[1]
-if str(BASE_DIR) not in sys.path:
-    sys.path.insert(0, str(BASE_DIR))
 
-from src.utils.stations import is_in_vienna
+def _project_root() -> Path:
+    return Path(__file__).resolve().parents[1]
+
+
+def _load_is_in_vienna() -> Callable[..., bool]:
+    base_dir = _project_root()
+    if str(base_dir) not in sys.path:
+        sys.path.insert(0, str(base_dir))
+    module = import_module("src.utils.stations")
+    return module.is_in_vienna
+
+
+BASE_DIR = _project_root()
+is_in_vienna = _load_is_in_vienna()
 DEFAULT_HALTEPUNKTE = BASE_DIR / "data" / "wienerlinien-ogd-haltepunkte.csv"
 DEFAULT_HALTESTELLEN = BASE_DIR / "data" / "wienerlinien-ogd-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"

@@ -1,5 +1,3 @@
-from zoneinfo import ZoneInfo
-
 import src.providers.vor as vor
 
 

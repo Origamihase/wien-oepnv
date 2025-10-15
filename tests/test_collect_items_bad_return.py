@@ -2,8 +2,6 @@ import importlib
 import sys
 from pathlib import Path
 import types
-import pytest
-
 
 def _import_build_feed(monkeypatch):
     module_name = "src.build_feed"
