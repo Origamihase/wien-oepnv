@@ -227,3 +227,79 @@ def test_apply_authentication_basic_with_prefix(monkeypatch):
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)
 
+
+def test_apply_authentication_with_authorization_snippet(monkeypatch):
+    monkeypatch.setenv("VOR_ACCESS_ID", "Authorization: Bearer secret")
+    importlib.reload(vor)
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.headers: dict[str, str] = {}
+            self.calls: list[tuple[str, str, Any]] = []
+
+        def request(self, method: str, url: str, params: Any = None, **kwargs: Any) -> Any:
+            self.calls.append((method, url, params))
+            return {"method": method, "url": url, "params": params, **kwargs}
+
+    session = DummySession()
+    vor.apply_authentication(session)  # type: ignore[arg-type]
+
+    assert session.headers["Authorization"] == "Bearer secret"
+
+    response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
+    assert response["params"]["accessId"] == "secret"
+
+    monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    importlib.reload(vor)
+
+
+def test_apply_authentication_with_access_id_snippet(monkeypatch):
+    monkeypatch.setenv("VOR_ACCESS_ID", "accessId=secret")
+    importlib.reload(vor)
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.headers: dict[str, str] = {}
+            self.calls: list[tuple[str, str, Any]] = []
+
+        def request(self, method: str, url: str, params: Any = None, **kwargs: Any) -> Any:
+            self.calls.append((method, url, params))
+            return {"method": method, "url": url, "params": params, **kwargs}
+
+    session = DummySession()
+    vor.apply_authentication(session)  # type: ignore[arg-type]
+
+    assert session.headers["Authorization"] == "Bearer secret"
+
+    response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
+    assert response["params"]["accessId"] == "secret"
+
+    monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    importlib.reload(vor)
+
+
+def test_apply_authentication_with_authorization_and_access_id_snippet(monkeypatch):
+    token = "Authorization: Bearer header-token\naccessId=param-token"
+    monkeypatch.setenv("VOR_ACCESS_ID", token)
+    importlib.reload(vor)
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.headers: dict[str, str] = {}
+            self.calls: list[tuple[str, str, Any]] = []
+
+        def request(self, method: str, url: str, params: Any = None, **kwargs: Any) -> Any:
+            self.calls.append((method, url, params))
+            return {"method": method, "url": url, "params": params, **kwargs}
+
+    session = DummySession()
+    vor.apply_authentication(session)  # type: ignore[arg-type]
+
+    assert session.headers["Authorization"] == "Bearer header-token"
+
+    response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
+    assert response["params"]["accessId"] == "param-token"
+
+    monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    importlib.reload(vor)
+
