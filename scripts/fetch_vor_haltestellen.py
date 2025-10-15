@@ -8,12 +8,11 @@ import difflib
 import json
 import logging
 import re
-import sys
 import time
 import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Mapping, Sequence, Tuple
+from typing import Iterable, Mapping, Sequence
 
 import requests
 
