@@ -80,6 +80,23 @@ def test_check_authentication_success(monkeypatch: pytest.MonkeyPatch) -> None:
             "Authorization": "Bearer token",
         },
     }
+    assert result["skipped"] is False
+
+
+def test_check_authentication_missing_token(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(module.vor, "refresh_access_credentials", lambda: "")
+
+    result = module.check_authentication("123")
+
+    assert result == {
+        "url": None,
+        "status_code": None,
+        "error_code": "MISSING_CREDENTIALS",
+        "error_text": "No VOR access token configured in the environment.",
+        "authenticated": False,
+        "payload": None,
+        "skipped": True,
+    }
 
 
 def test_check_authentication_http_error(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -100,6 +117,7 @@ def test_check_authentication_http_error(monkeypatch: pytest.MonkeyPatch) -> Non
     assert result["error_code"] == "API_AUTH"
     assert result["error_text"] == "access denied"
     assert result["url"].endswith("format=json&id=123&accessId=***")
+    assert result["skipped"] is False
 
 
 def test_check_authentication_uses_basic_header(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -120,6 +138,7 @@ def test_check_authentication_uses_basic_header(monkeypatch: pytest.MonkeyPatch)
     assert session.last_request is not None
     assert session.last_request["headers"]["Authorization"] == f"Basic {expected_header}"
     assert session.last_request["params"]["accessId"] == "user:secret"
+    assert result["skipped"] is False
 
 
 def test_check_authentication_accepts_prefixed_basic(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -141,3 +160,4 @@ def test_check_authentication_accepts_prefixed_basic(monkeypatch: pytest.MonkeyP
     assert session.last_request is not None
     assert session.last_request["headers"]["Authorization"] == f"Basic {encoded}"
     assert session.last_request["params"]["accessId"] == "user:secret"
+    assert result["skipped"] is False
