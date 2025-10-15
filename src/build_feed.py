@@ -395,6 +395,11 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
         log.warning("State laden fehlgeschlagen (%s) – starte leer.", e)
         return {}
 
+    retention_cutoff: Optional[datetime] = None
+    if STATE_RETENTION_DAYS > 0:
+        now_utc = _to_utc(datetime.now(timezone.utc))
+        retention_cutoff = now_utc - timedelta(days=STATE_RETENTION_DAYS)
+
     out: Dict[str, Dict[str, Any]] = {}
     for ident, entry in data.items():
         if not isinstance(entry, dict):
@@ -402,12 +407,22 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
         try:
             raw_first_seen = entry.get("first_seen", "")
             fs_dt = datetime.fromisoformat(str(raw_first_seen))
-            _to_utc(fs_dt)
+            fs_utc = _to_utc(fs_dt)
         except Exception:
             log.warning(
                 "State-Eintrag %s hat unparsebares first_seen: %r", ident, entry.get("first_seen")
             )
             continue
+
+        if retention_cutoff and fs_utc < retention_cutoff:
+            log.debug(
+                "State-Eintrag %s älter als %s Tage – entferne Eintrag.",
+                ident,
+                STATE_RETENTION_DAYS,
+            )
+            continue
+
+        entry["first_seen"] = fs_utc.isoformat()
         out[ident] = entry
     return out
 
