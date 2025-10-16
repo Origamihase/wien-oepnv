@@ -143,8 +143,11 @@ logging.basicConfig(
 )
 
 root_logger = logging.getLogger()
+root_logger.setLevel(min(_level, logging.WARNING))
 for handler in root_logger.handlers:
     handler.setFormatter(_make_formatter())
+    if isinstance(handler, logging.StreamHandler):
+        handler.setLevel(_level)
 
 error_log_path = Path(LOG_DIR) / "errors.log"
 error_log_path.touch(exist_ok=True)
