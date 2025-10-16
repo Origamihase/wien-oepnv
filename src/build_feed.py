@@ -102,6 +102,28 @@ def _validate_path(path: Path, name: str) -> Path:
     raise ValueError(f"{name} outside allowed directories")
 
 # ---------------- Logging ----------------
+LOG_TIMEZONE = ZoneInfo("Europe/Vienna")
+
+
+def _vienna_time_converter(timestamp: float):
+    return datetime.fromtimestamp(timestamp, LOG_TIMEZONE).timetuple()
+
+
+class _MaxLevelFilter(logging.Filter):
+    def __init__(self, max_level: int) -> None:
+        super().__init__()
+        self._max_level = max_level
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        return record.levelno <= self._max_level
+
+
+def _make_formatter() -> logging.Formatter:
+    formatter = logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s")
+    formatter.converter = _vienna_time_converter
+    return formatter
+
+
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").strip().upper()
 _level = getattr(logging, LOG_LEVEL, logging.INFO)
 if not isinstance(_level, int):
@@ -114,12 +136,18 @@ LOG_MAX_BYTES = max(get_int_env("LOG_MAX_BYTES", 1_000_000), 0)
 LOG_BACKUP_COUNT = max(get_int_env("LOG_BACKUP_COUNT", 5), 0)
 
 os.makedirs(LOG_DIR, exist_ok=True)
-fmt = "%(asctime)s %(levelname)s %(name)s: %(message)s"
+
 logging.basicConfig(
     level=_level,
-    format=fmt,
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
 )
+
+root_logger = logging.getLogger()
+for handler in root_logger.handlers:
+    handler.setFormatter(_make_formatter())
+
 error_log_path = Path(LOG_DIR) / "errors.log"
+error_log_path.touch(exist_ok=True)
 error_handler = RotatingFileHandler(
     error_log_path,
     maxBytes=LOG_MAX_BYTES,
@@ -127,9 +155,11 @@ error_handler = RotatingFileHandler(
     encoding="utf-8",
 )
 error_handler.setLevel(logging.ERROR)
-error_handler.setFormatter(logging.Formatter(fmt))
-logging.getLogger().addHandler(error_handler)
+error_handler.setFormatter(_make_formatter())
+root_logger.addHandler(error_handler)
+
 diagnostics_log_path = Path(LOG_DIR) / "diagnostics.log"
+diagnostics_log_path.touch(exist_ok=True)
 diagnostics_handler = RotatingFileHandler(
     diagnostics_log_path,
     maxBytes=LOG_MAX_BYTES,
@@ -137,8 +167,10 @@ diagnostics_handler = RotatingFileHandler(
     encoding="utf-8",
 )
 diagnostics_handler.setLevel(logging.INFO)
-diagnostics_handler.setFormatter(logging.Formatter(fmt))
-logging.getLogger().addHandler(diagnostics_handler)
+diagnostics_handler.addFilter(_MaxLevelFilter(logging.ERROR - 1))
+diagnostics_handler.setFormatter(_make_formatter())
+root_logger.addHandler(diagnostics_handler)
+
 log = logging.getLogger("build_feed")
 
 _LOG_TIMESTAMP_RE = re.compile(r"^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2}),(\d{3})")
@@ -156,6 +188,10 @@ def _prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
     if not path.exists():
         return
 
+    if now.tzinfo is None:
+        now = now.replace(tzinfo=LOG_TIMEZONE)
+    else:
+        now = now.astimezone(LOG_TIMEZONE)
     cutoff = now - timedelta(days=keep_days)
     try:
         raw_lines = path.read_text(encoding="utf-8").splitlines(keepends=True)
@@ -190,7 +226,10 @@ def _prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
         except ValueError:
             filtered.extend(record_lines)
             continue
-        ts = ts.replace(tzinfo=timezone.utc)
+        if ts.tzinfo is None:
+            ts = ts.replace(tzinfo=LOG_TIMEZONE)
+        else:
+            ts = ts.astimezone(LOG_TIMEZONE)
         if ts >= cutoff:
             filtered.extend(record_lines)
 
