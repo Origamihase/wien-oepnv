@@ -7,30 +7,45 @@ import logging
 import os
 import re
 from datetime import datetime, timedelta, timezone
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
+from importlib import import_module
+from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 import requests
 from dateutil import parser as dtparser
 
-try:  # pragma: no cover - support both package layouts
-    from utils.http import session_with_retries
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.http import session_with_retries  # type: ignore
+if TYPE_CHECKING:
+    from ..utils.http import session_with_retries
+    from ..utils.ids import make_guid
+    from ..utils.stations import canonical_name
+    from ..utils.text import html_to_text
+else:  # pragma: no cover - support both package layouts
+    try:
+        from utils.http import session_with_retries  # type: ignore
+    except ModuleNotFoundError:
+        session_with_retries = getattr(  # type: ignore[attr-defined]
+            import_module("src.utils.http"), "session_with_retries"
+        )
 
-try:  # pragma: no cover - support both package layouts
-    from utils.text import html_to_text
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.text import html_to_text  # type: ignore
+    try:
+        from utils.text import html_to_text  # type: ignore
+    except ModuleNotFoundError:
+        html_to_text = getattr(  # type: ignore[attr-defined]
+            import_module("src.utils.text"), "html_to_text"
+        )
 
-try:  # pragma: no cover - support both package layouts
-    from utils.ids import make_guid
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.ids import make_guid  # type: ignore
+    try:
+        from utils.ids import make_guid  # type: ignore
+    except ModuleNotFoundError:
+        make_guid = getattr(  # type: ignore[attr-defined]
+            import_module("src.utils.ids"), "make_guid"
+        )
 
-try:  # pragma: no cover - support both package layouts
-    from utils.stations import canonical_name
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.stations import canonical_name  # type: ignore
+    try:
+        from utils.stations import canonical_name  # type: ignore
+    except ModuleNotFoundError:
+        canonical_name = getattr(  # type: ignore[attr-defined]
+            import_module("src.utils.stations"), "canonical_name"
+        )
 
 from .wl_lines import (
     _detect_line_pairs_from_text,

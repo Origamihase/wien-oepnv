@@ -13,17 +13,22 @@ import errno
 from contextlib import contextmanager
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
 from pathlib import Path
-from typing import Any, Dict, Iterator, List, Optional, Tuple
+from time import perf_counter
+from typing import TYPE_CHECKING, Any, Dict, Iterator, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 from zoneinfo import ZoneInfo
 
-try:  # pragma: no cover - allow running as package and as script
-    from utils.cache import read_cache
-    from utils.env import get_int_env, get_bool_env
-except ModuleNotFoundError:  # pragma: no cover
-    from .utils.cache import read_cache  # type: ignore
-    from .utils.env import get_int_env, get_bool_env  # type: ignore
+if TYPE_CHECKING:
+    from .utils.cache import read_cache
+    from .utils.env import get_bool_env, get_int_env
+else:  # pragma: no cover - allow running as package and as script
+    try:
+        from utils.cache import read_cache
+        from utils.env import get_bool_env, get_int_env
+    except ModuleNotFoundError:
+        from .utils.cache import read_cache  # type: ignore
+        from .utils.env import get_bool_env, get_int_env  # type: ignore
 
 try:  # pragma: no cover - platform dependent
     import fcntl  # type: ignore
@@ -178,6 +183,68 @@ STATE_FILE = _resolve_env_path("STATE_PATH", Path("data/first_seen.json"))  # nu
 STATE_RETENTION_DAYS = max(get_int_env("STATE_RETENTION_DAYS", 60), 0)
 
 RFC = "%a, %d %b %Y %H:%M:%S %z"
+
+# ---------------- Startup diagnostics ----------------
+
+def _provider_label(env_name: str) -> str:
+    """Return a short human readable label for a provider environment variable."""
+
+    label = PROVIDER_CACHE_KEYS.get(env_name)
+    return label or env_name.lower()
+
+
+def _read_provider_flags() -> Dict[str, bool]:
+    """Collect the enabled/disabled state for configured providers from the environment."""
+
+    flags: Dict[str, bool] = {}
+    for env, _ in PROVIDERS:
+        try:
+            flags[env] = get_bool_env(env, True)
+        except Exception as exc:  # pragma: no cover - defensive, env parsing already validated
+            log.warning("Kann Provider-Flag %s nicht lesen: %s – aktiviere als Fallback.", env, exc)
+            flags[env] = True
+    return flags
+
+
+def _log_startup_context(now: datetime, provider_flags: Dict[str, bool]) -> None:
+    """Emit a summary of the current configuration when starting the feed build."""
+
+    enabled = sorted(_provider_label(env) for env, enabled in provider_flags.items() if enabled)
+    disabled = sorted(_provider_label(env) for env, enabled in provider_flags.items() if not enabled)
+    enabled_display = ", ".join(enabled) if enabled else "keine"
+    disabled_display = ", ".join(disabled) if disabled else "keine"
+    log.info(
+        "Starte Feed-Build um %s – aktivierte Provider: %s; deaktiviert: %s",
+        now.isoformat(),
+        enabled_display,
+        disabled_display,
+    )
+    log.info(
+        "Konfiguration: MAX_ITEMS=%d, MAX_ITEM_AGE_DAYS=%d, ABSOLUTE_MAX_AGE_DAYS=%d, "
+        "PROVIDER_TIMEOUT=%ds, PROVIDER_MAX_WORKERS=%s",
+        MAX_ITEMS,
+        MAX_ITEM_AGE_DAYS,
+        ABSOLUTE_MAX_AGE_DAYS,
+        PROVIDER_TIMEOUT,
+        "unbegrenzt" if PROVIDER_MAX_WORKERS == 0 else str(PROVIDER_MAX_WORKERS),
+    )
+
+
+def _validate_configuration(provider_flags: Dict[str, bool]) -> None:
+    """Log warnings for potentially problematic configuration combinations."""
+
+    if not any(provider_flags.values()):
+        log.warning("Alle Provider sind deaktiviert – der Feed bleibt leer.")
+    if MAX_ITEMS == 0:
+        log.warning("MAX_ITEMS=0 – es werden keine Items in den Feed übernommen.")
+    if 0 < ABSOLUTE_MAX_AGE_DAYS < MAX_ITEM_AGE_DAYS:
+        log.warning(
+            "ABSOLUTE_MAX_AGE_DAYS (%d) liegt unter MAX_ITEM_AGE_DAYS (%d) – nutze den kleineren Wert.",
+            ABSOLUTE_MAX_AGE_DAYS,
+            MAX_ITEM_AGE_DAYS,
+        )
+    if PROVIDER_TIMEOUT == 0:
+        log.warning("PROVIDER_TIMEOUT=0 – Netzwerkprovider können direkt in ein Timeout laufen.")
 
 # ---------------- Helpers ----------------
 
@@ -985,17 +1052,44 @@ def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[
     return "\n".join(out)
 
 def main() -> int:
+    start_ts = perf_counter()
     now = datetime.now(timezone.utc)
+    provider_flags = _read_provider_flags()
+    _log_startup_context(now, provider_flags)
+    _validate_configuration(provider_flags)
+
     state = _load_state()
+
+    collect_start = perf_counter()
     items = _collect_items()
+    collect_duration = perf_counter() - collect_start
+    collected_count = len(items)
+
+    normalize_start = perf_counter()
     _normalize_item_datetimes(items)
+    normalize_duration = perf_counter() - normalize_start
+
+    drop_start = perf_counter()
     items = _drop_old_items(items, now, state)
+    drop_duration = perf_counter() - drop_start
+    after_drop_count = len(items)
+
+    dedupe_start = perf_counter()
     items = _dedupe_items(items)
+    dedupe_duration = perf_counter() - dedupe_start
+    after_dedupe_count = len(items)
+
     if not items:
         log.warning("Keine Items gesammelt.")
         items = []
+
+    sort_start = perf_counter()
     items.sort(key=_sort_key)
+    sort_duration = perf_counter() - sort_start
+
+    rss_start = perf_counter()
     rss = _make_rss(items, now, state)
+    rss_duration = perf_counter() - rss_start
 
     out_path = _validate_path(Path(OUT_PATH), "OUT_PATH")
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -1005,7 +1099,29 @@ def main() -> int:
         f.flush()
         os.fsync(f.fileno())
     tmp.replace(out_path)
-    log.info("Feed geschrieben: %s (%d Items)", out_path, min(len(items), MAX_ITEMS))
+
+    total_duration = perf_counter() - start_ts
+    emitted_count = min(len(items), MAX_ITEMS)
+
+    log.info(
+        "Pipeline-Metriken: total=%.3fs, collect=%.3fs, normalize=%.3fs, drop=%.3fs, "
+        "dedupe=%.3fs, sort=%.3fs, rss=%.3fs",
+        total_duration,
+        collect_duration,
+        normalize_duration,
+        drop_duration,
+        dedupe_duration,
+        sort_duration,
+        rss_duration,
+    )
+    log.info(
+        "Item-Zusammenfassung: gesammelt=%d, nach Filtern=%d, nach Dedupe=%d, ausgeliefert=%d",
+        collected_count,
+        after_drop_count,
+        after_dedupe_count,
+        emitted_count,
+    )
+    log.info("Feed geschrieben: %s (%d Items)", out_path, emitted_count)
     return 0
 
 if __name__ == "__main__":

@@ -283,6 +283,19 @@ curl -G -sS "${VOR_BASE_URL}/location.name" \
   -H "Accept: application/json" || true
 ```
 
+### Statische Analysen
+
+Zusätzliche Qualitätschecks lassen sich mit `ruff` (Linting) und `mypy` (Typhinweise) durchführen. Die
+benötigten Werkzeuge sind im separaten `requirements-dev.txt` hinterlegt:
+
+```bash
+pip install -r requirements-dev.txt
+scripts/run_quality_checks.py
+```
+
+Das Skript ruft beide Tools nacheinander auf und bricht mit dem ersten Fehlercode ab. Bei fehlenden
+Installationen weist es darauf hin, die Dev-Abhängigkeiten zu installieren.
+
 ## Authentifizierung & Sicherheit
 
 - Die VAO ReST API verwendet einen Access Token (`accessId`) zur Authentifizierung. Dieser wird als Query-Parameter übertragen und darf ausschließlich aus sicheren Umgebungsvariablen stammen.

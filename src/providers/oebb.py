@@ -22,27 +22,46 @@ import os
 import re
 import time
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from importlib import import_module
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 from email.utils import parsedate_to_datetime
 
-try:  # pragma: no cover - support both package layouts
-    from utils.env import get_bool_env
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.env import get_bool_env  # type: ignore
+if TYPE_CHECKING:
+    from ..utils.env import get_bool_env
+    from ..utils.http import session_with_retries
+    from ..utils.ids import make_guid
+    from ..utils.stations import canonical_name, is_in_vienna, is_pendler
+    from ..utils.text import html_to_text
+else:  # pragma: no cover - support both package layouts
+    try:
+        from utils.env import get_bool_env  # type: ignore
+    except ModuleNotFoundError:
+        get_bool_env = getattr(  # type: ignore[attr-defined]
+            import_module("src.utils.env"), "get_bool_env"
+        )
 
-try:  # pragma: no cover - support both package layouts
-    from utils.ids import make_guid
-    from utils.text import html_to_text
-    from utils.stations import canonical_name, is_in_vienna, is_pendler
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.ids import make_guid  # type: ignore
-    from src.utils.text import html_to_text  # type: ignore
-    from src.utils.stations import canonical_name, is_in_vienna, is_pendler  # type: ignore
+    try:
+        from utils.ids import make_guid  # type: ignore
+        from utils.text import html_to_text  # type: ignore
+        from utils.stations import canonical_name, is_in_vienna, is_pendler  # type: ignore
+    except ModuleNotFoundError:
+        make_guid = getattr(  # type: ignore[attr-defined]
+            import_module("src.utils.ids"), "make_guid"
+        )
+        html_to_text = getattr(  # type: ignore[attr-defined]
+            import_module("src.utils.text"), "html_to_text"
+        )
+        stations_mod = import_module("src.utils.stations")
+        canonical_name = getattr(stations_mod, "canonical_name")  # type: ignore[attr-defined]
+        is_in_vienna = getattr(stations_mod, "is_in_vienna")  # type: ignore[attr-defined]
+        is_pendler = getattr(stations_mod, "is_pendler")  # type: ignore[attr-defined]
 
-try:  # pragma: no cover - support both package layouts
-    from utils.http import session_with_retries
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.http import session_with_retries  # type: ignore
+    try:
+        from utils.http import session_with_retries  # type: ignore
+    except ModuleNotFoundError:
+        session_with_retries = getattr(  # type: ignore[attr-defined]
+            import_module("src.utils.http"), "session_with_retries"
+        )
 from defusedxml import ElementTree as ET
 
 log = logging.getLogger(__name__)
