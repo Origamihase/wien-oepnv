@@ -13,17 +13,22 @@ import errno
 from contextlib import contextmanager
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
 from pathlib import Path
-from typing import Any, Dict, Iterator, List, Optional, Tuple
+from time import perf_counter
+from typing import TYPE_CHECKING, Any, Dict, Iterator, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 from zoneinfo import ZoneInfo
 
-try:  # pragma: no cover - allow running as package and as script
-    from utils.cache import read_cache
-    from utils.env import get_int_env, get_bool_env
-except ModuleNotFoundError:  # pragma: no cover
-    from .utils.cache import read_cache  # type: ignore
-    from .utils.env import get_int_env, get_bool_env  # type: ignore
+if TYPE_CHECKING:  # pragma: no cover - make mypy prefer package imports
+    from .utils.cache import read_cache
+    from .utils.env import get_bool_env, get_int_env
+else:  # pragma: no cover - allow running as package and as script
+    try:
+        from utils.cache import read_cache
+        from utils.env import get_int_env, get_bool_env
+    except ModuleNotFoundError:
+        from .utils.cache import read_cache  # type: ignore
+        from .utils.env import get_int_env, get_bool_env  # type: ignore
 
 try:  # pragma: no cover - platform dependent
     import fcntl  # type: ignore
@@ -148,6 +153,67 @@ for env, loader in PROVIDERS:
     except (AttributeError, TypeError):  # pragma: no cover - defensive only
         pass
     setattr(loader, "_provider_cache_name", provider_name)
+
+
+def _provider_statuses() -> List[Tuple[str, bool]]:
+    statuses: List[Tuple[str, bool]] = []
+    seen_envs: set[str] = set()
+    for env, fetch in PROVIDERS:
+        if env in seen_envs:
+            continue
+        seen_envs.add(env)
+        provider_name = getattr(fetch, "_provider_cache_name", None)
+        if not provider_name:
+            provider_name = PROVIDER_CACHE_KEYS.get(env)
+        if not provider_name:
+            provider_name = getattr(fetch, "__name__", env.lower())
+        provider_display = str(provider_name)
+        statuses.append((provider_display, bool(get_bool_env(env, True))))
+    return statuses
+
+
+def _log_startup_summary(statuses: List[Tuple[str, bool]]) -> None:
+    enabled = sorted(name for name, is_enabled in statuses if is_enabled)
+    disabled = sorted(name for name, is_enabled in statuses if not is_enabled)
+
+    enabled_display = ", ".join(enabled) if enabled else "keine"
+    log.info(
+        "Starte Feed-Bau: %s aktiv (Timeout=%ss, MaxItems=%d, Worker=%s)",
+        enabled_display,
+        PROVIDER_TIMEOUT,
+        MAX_ITEMS,
+        PROVIDER_MAX_WORKERS or "auto",
+    )
+    if disabled:
+        log.info("Deaktivierte Provider: %s", ", ".join(disabled))
+
+
+def _validate_configuration(statuses: List[Tuple[str, bool]]) -> None:
+    enabled_count = sum(1 for _, is_enabled in statuses if is_enabled)
+    if not statuses:
+        log.warning("Keine Provider registriert – es werden keine Items gesammelt.")
+    elif enabled_count == 0:
+        log.error(
+            "Alle Provider deaktiviert – Feed bleibt leer, bitte Konfiguration prüfen."
+        )
+
+    if MAX_ITEMS == 0:
+        log.warning("MAX_ITEMS ist 0 – der Feed wird ohne Einträge erzeugt.")
+    if FEED_TTL == 0:
+        log.warning(
+            "FEED_TTL ist 0 – Clients werten den Feed unmittelbar als abgelaufen."
+        )
+    if PROVIDER_TIMEOUT == 0 and enabled_count:
+        log.warning(
+            "PROVIDER_TIMEOUT ist 0 – Netzwerkprovider haben keine Zeit für Antworten."
+        )
+    if MAX_ITEM_AGE_DAYS > ABSOLUTE_MAX_AGE_DAYS:
+        log.warning(
+            "MAX_ITEM_AGE_DAYS (%s) übersteigt ABSOLUTE_MAX_AGE_DAYS (%s) – ältere Items "
+            "werden dennoch durch den absoluten Grenzwert verworfen.",
+            MAX_ITEM_AGE_DAYS,
+            ABSOLUTE_MAX_AGE_DAYS,
+        )
 
 # ---------------- ENV ----------------
 OUT_PATH = _resolve_env_path("OUT_PATH", Path("docs/feed.xml")).as_posix()
@@ -985,17 +1051,55 @@ def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[
     return "\n".join(out)
 
 def main() -> int:
+    statuses = _provider_statuses()
+    _log_startup_summary(statuses)
+    _validate_configuration(statuses)
+
+    job_start = perf_counter()
     now = datetime.now(timezone.utc)
     state = _load_state()
+
+    collect_start = perf_counter()
     items = _collect_items()
+    collect_duration = perf_counter() - collect_start
+    raw_count = len(items)
+    log.info("Provider-Abfrage abgeschlossen: %d Items in %.2fs", raw_count, collect_duration)
+
+    normalize_start = perf_counter()
     _normalize_item_datetimes(items)
+    normalize_duration = perf_counter() - normalize_start
+    log.debug("Zeitstempel normalisiert in %.2fs", normalize_duration)
+
+    filter_start = perf_counter()
     items = _drop_old_items(items, now, state)
-    items = _dedupe_items(items)
+    filter_duration = perf_counter() - filter_start
+    log.info(
+        "Altersfilter angewendet: %d Items nach %.2fs (vorher: %d)",
+        len(items),
+        filter_duration,
+        raw_count,
+    )
+
+    dedupe_start = perf_counter()
+    deduped = _dedupe_items(items)
+    dedupe_duration = perf_counter() - dedupe_start
+    log.info(
+        "Duplikate entfernt: %d eindeutige Items nach %.2fs (vorher: %d)",
+        len(deduped),
+        dedupe_duration,
+        len(items),
+    )
+    items = deduped
     if not items:
         log.warning("Keine Items gesammelt.")
         items = []
+    else:
+        log.debug("Sortiere %d Items nach Priorität.", len(items))
     items.sort(key=_sort_key)
+
+    rss_start = perf_counter()
     rss = _make_rss(items, now, state)
+    rss_duration = perf_counter() - rss_start
 
     out_path = _validate_path(Path(OUT_PATH), "OUT_PATH")
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -1005,7 +1109,15 @@ def main() -> int:
         f.flush()
         os.fsync(f.fileno())
     tmp.replace(out_path)
-    log.info("Feed geschrieben: %s (%d Items)", out_path, min(len(items), MAX_ITEMS))
+
+    total_duration = perf_counter() - job_start
+    log.info(
+        "Feed geschrieben: %s (%d Items) in %.2fs (RSS-Erzeugung: %.2fs)",
+        out_path,
+        min(len(items), MAX_ITEMS),
+        total_duration,
+        rss_duration,
+    )
     return 0
 
 if __name__ == "__main__":

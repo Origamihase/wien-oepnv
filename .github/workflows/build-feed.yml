@@ -38,24 +38,26 @@ jobs:
           VOR_API_KEY: ${{ secrets.VOR_API_KEY }}
           
       - name: Configure Git
+        if: github.ref == 'refs/heads/main'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          
+
       - name: Commit and push changes
+        if: github.ref == 'refs/heads/main'
         run: |
           # Stash any changes first
           git stash
-          
+
           # Get latest changes
           git pull origin main
-          
+
           # Apply stashed changes
           git stash pop
-          
+
           # Stage and commit changes
           git add docs/feed.xml
           git diff --staged --quiet || git commit -m "Update feed"
-          
+
           # Push if there are changes
           git push origin main

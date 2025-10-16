@@ -7,30 +7,36 @@ import logging
 import os
 import re
 from datetime import datetime, timedelta, timezone
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 import requests
 from dateutil import parser as dtparser
 
-try:  # pragma: no cover - support both package layouts
-    from utils.http import session_with_retries
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.http import session_with_retries  # type: ignore
+if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
+    from ..utils.http import session_with_retries
+    from ..utils.ids import make_guid
+    from ..utils.stations import canonical_name
+    from ..utils.text import html_to_text
+else:  # pragma: no cover - support both package layouts at runtime
+    try:
+        from utils.http import session_with_retries
+    except ModuleNotFoundError:
+        from ..utils.http import session_with_retries  # type: ignore
 
-try:  # pragma: no cover - support both package layouts
-    from utils.text import html_to_text
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.text import html_to_text  # type: ignore
+    try:
+        from utils.text import html_to_text
+    except ModuleNotFoundError:
+        from ..utils.text import html_to_text  # type: ignore
 
-try:  # pragma: no cover - support both package layouts
-    from utils.ids import make_guid
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.ids import make_guid  # type: ignore
+    try:
+        from utils.ids import make_guid
+    except ModuleNotFoundError:
+        from ..utils.ids import make_guid  # type: ignore
 
-try:  # pragma: no cover - support both package layouts
-    from utils.stations import canonical_name
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.stations import canonical_name  # type: ignore
+    try:
+        from utils.stations import canonical_name
+    except ModuleNotFoundError:
+        from ..utils.stations import canonical_name  # type: ignore
 
 from .wl_lines import (
     _detect_line_pairs_from_text,

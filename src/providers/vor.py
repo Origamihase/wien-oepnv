@@ -10,16 +10,19 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
-from typing import Any, Dict, Iterable, Iterator, List, Mapping, MutableMapping, Sequence
+from typing import TYPE_CHECKING, Any, Dict, Iterable, Iterator, List, Mapping, MutableMapping, Sequence
 
 import requests
 from requests import RequestException, Session
 from zoneinfo import ZoneInfo
 
-try:  # pragma: no cover - allow running via package or src layout
-    from utils.http import session_with_retries
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.http import session_with_retries  # type: ignore
+if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
+    from ..utils.http import session_with_retries
+else:  # pragma: no cover - allow running via package or src layout
+    try:
+        from utils.http import session_with_retries
+    except ModuleNotFoundError:
+        from ..utils.http import session_with_retries  # type: ignore
 
 log = logging.getLogger(__name__)
 
