@@ -109,8 +109,9 @@ logging.basicConfig(
     level=_level,
     format=fmt,
 )
+error_log_path = Path(LOG_DIR) / "errors.log"
 error_handler = RotatingFileHandler(
-    Path(LOG_DIR) / "errors.log",
+    error_log_path,
     maxBytes=LOG_MAX_BYTES,
     backupCount=LOG_BACKUP_COUNT,
     encoding="utf-8",
@@ -118,6 +119,16 @@ error_handler = RotatingFileHandler(
 error_handler.setLevel(logging.ERROR)
 error_handler.setFormatter(logging.Formatter(fmt))
 logging.getLogger().addHandler(error_handler)
+diagnostics_log_path = Path(LOG_DIR) / "diagnostics.log"
+diagnostics_handler = RotatingFileHandler(
+    diagnostics_log_path,
+    maxBytes=LOG_MAX_BYTES,
+    backupCount=LOG_BACKUP_COUNT,
+    encoding="utf-8",
+)
+diagnostics_handler.setLevel(logging.INFO)
+diagnostics_handler.setFormatter(logging.Formatter(fmt))
+logging.getLogger().addHandler(diagnostics_handler)
 log = logging.getLogger("build_feed")
 # Mapping of environment variables to provider cache loaders
 PROVIDER_CACHE_KEYS: Dict[str, str] = {
