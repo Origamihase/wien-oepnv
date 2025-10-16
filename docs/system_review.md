@@ -5,7 +5,14 @@
 - Relevante Infrastrukturmodule (`build_feed.py`, `utils/cache.py`, `utils/env.py`) wurden auf Sicherheit, Fehlertoleranz und Effizienz geprüft.
 
 ## Testergebnisse
-- `pytest` führt 257 Tests aus, die alle erfolgreich bestanden. Dies bestätigt die Stabilität der bestehenden Funktionalität im aktuellen Projektstand.
+- Testkommando: `pytest`
+- Letzte Ausführung (2025-10-16):
+
+  ```text
+  ===================================================== 270 passed in 8.52s =====================================================
+  ```
+
+- Aktualisierung: `pytest` ausführen und die Zusammenfassungszeile oben ersetzen.
 
 ## Bewertung zentraler Komponenten
 - **Pfad- und Logging-Konfiguration** – `_resolve_env_path` in `build_feed.py` stellt sicher, dass per Umgebungsvariablen gesetzte Ausgabepfade strikt innerhalb der freigegebenen Verzeichnisse `docs`, `data` und `log` bleiben. Fehlerhafte Eingaben werden validiert und auf sichere Defaults zurückgesetzt, wodurch Path-Traversal-Angriffe effektiv verhindert werden. Gleichzeitig sorgt die Kombination aus `RotatingFileHandler` und defensiver Fallback-Logik für belastbares Fehler-Logging mit begrenzter Dateigröße.【F:src/build_feed.py†L26-L105】
