@@ -12,6 +12,11 @@ from zoneinfo import ZoneInfo
 
 from requests.exceptions import RequestException
 
+try:  # pragma: no cover - support editable installs
+    from utils.logging_setup import ensure_rotating_file_logging
+except ModuleNotFoundError:  # pragma: no cover
+    from src.utils.logging_setup import ensure_rotating_file_logging  # type: ignore
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_DIR = REPO_ROOT / "src"
@@ -64,7 +69,15 @@ logger = logging.getLogger("update_vor_cache")
 def configure_logging() -> None:
     """Configure root logging for the update run."""
 
-    logging.basicConfig(level=logging.INFO, format="%(message)s")
+    ensure_rotating_file_logging()
+
+    root = logging.getLogger()
+    for handler in root.handlers:
+        if isinstance(handler, logging.StreamHandler) and not isinstance(
+            handler, logging.FileHandler
+        ):
+            handler.setLevel(logging.INFO)
+            handler.setFormatter(logging.Formatter("%(message)s"))
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 

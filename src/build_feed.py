@@ -6,7 +6,6 @@ import os
 import sys
 import html
 import logging
-from logging.handlers import RotatingFileHandler
 import re
 import hashlib
 import errno
@@ -22,13 +21,31 @@ from zoneinfo import ZoneInfo
 if TYPE_CHECKING:  # pragma: no cover - make mypy prefer package imports
     from .utils.cache import read_cache
     from .utils.env import get_bool_env, get_int_env
+    from .utils.logging_setup import (
+        RotatingLoggingConfig,
+        ensure_rotating_file_logging,
+        _resolve_env_path as _resolve_env_path,
+        _validate_path as _validate_path,
+    )
 else:  # pragma: no cover - allow running as package and as script
     try:
         from utils.cache import read_cache
         from utils.env import get_int_env, get_bool_env
+        from utils.logging_setup import (
+            RotatingLoggingConfig,
+            ensure_rotating_file_logging,
+            _resolve_env_path as _resolve_env_path,
+            _validate_path as _validate_path,
+        )
     except ModuleNotFoundError:
         from .utils.cache import read_cache  # type: ignore
         from .utils.env import get_int_env, get_bool_env  # type: ignore
+        from .utils.logging_setup import (  # type: ignore
+            RotatingLoggingConfig,
+            ensure_rotating_file_logging,
+            _resolve_env_path as _resolve_env_path,
+            _validate_path as _validate_path,
+        )
 
 try:  # pragma: no cover - platform dependent
     import fcntl  # type: ignore
@@ -40,84 +57,13 @@ try:  # pragma: no cover - platform dependent
 except ModuleNotFoundError:  # pragma: no cover
     msvcrt = None  # type: ignore
 
-# ---------------- Paths ----------------
-_ALLOWED_ROOTS = {"docs", "data", "log"}
-_REPO_ROOT = Path(__file__).resolve().parents[1]
-
-
-def _resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: bool = False) -> Path:
-    """Return a repository-internal path for ``env_name``.
-
-    Empty or whitespace-only values fall back to ``default``.  Invalid
-    non-empty values propagate the :class:`ValueError` raised by
-    :func:`_validate_path`.
-    """
-
-    default_path = Path(default)
-    raw = os.getenv(env_name)
-    candidate_str = (raw or "").strip()
-
-    if not candidate_str:
-        _validate_path(default_path, env_name)
-        resolved_default = Path(default_path)
-        os.environ[env_name] = resolved_default.as_posix()
-        return resolved_default
-
-    candidate_path = Path(candidate_str)
-    try:
-        resolved = _validate_path(candidate_path, env_name)
-    except ValueError:
-        if not allow_fallback:
-            raise
-        _validate_path(default_path, env_name)
-        fallback_path = Path(default_path)
-        os.environ[env_name] = fallback_path.as_posix()
-        return fallback_path
-    os.environ[env_name] = resolved.as_posix()
-    return resolved
-
-
-def _validate_path(path: Path, name: str) -> Path:
-    """Ensure ``path`` stays within whitelisted directories."""
-
-    resolved = path.resolve()
-    bases = {Path.cwd().resolve(), _REPO_ROOT}
-    for base in bases:
-        try:
-            rel = resolved.relative_to(base)
-        except Exception:
-            continue
-        if rel.parts and rel.parts[0] in _ALLOWED_ROOTS:
-            return resolved
-    raise ValueError(f"{name} outside allowed directories")
-
 # ---------------- Logging ----------------
-LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").strip().upper()
-_level = getattr(logging, LOG_LEVEL, logging.INFO)
-if not isinstance(_level, int):
-    _level = logging.INFO
-
-_DEFAULT_LOG_DIR = Path("log")
-LOG_DIR_PATH = _resolve_env_path("LOG_DIR", _DEFAULT_LOG_DIR, allow_fallback=True)
+_LOGGING_CONFIG = ensure_rotating_file_logging()
+LOG_LEVEL = logging.getLevelName(_LOGGING_CONFIG.level)
+LOG_DIR_PATH = _LOGGING_CONFIG.log_dir
 LOG_DIR = LOG_DIR_PATH.as_posix()
-LOG_MAX_BYTES = max(get_int_env("LOG_MAX_BYTES", 1_000_000), 0)
-LOG_BACKUP_COUNT = max(get_int_env("LOG_BACKUP_COUNT", 5), 0)
-
-os.makedirs(LOG_DIR, exist_ok=True)
-fmt = "%(asctime)s %(levelname)s %(name)s: %(message)s"
-logging.basicConfig(
-    level=_level,
-    format=fmt,
-)
-error_handler = RotatingFileHandler(
-    Path(LOG_DIR) / "errors.log",
-    maxBytes=LOG_MAX_BYTES,
-    backupCount=LOG_BACKUP_COUNT,
-    encoding="utf-8",
-)
-error_handler.setLevel(logging.ERROR)
-error_handler.setFormatter(logging.Formatter(fmt))
-logging.getLogger().addHandler(error_handler)
+LOG_MAX_BYTES = _LOGGING_CONFIG.max_bytes
+LOG_BACKUP_COUNT = _LOGGING_CONFIG.backup_count
 log = logging.getLogger("build_feed")
 # Mapping of environment variables to provider cache loaders
 PROVIDER_CACHE_KEYS: Dict[str, str] = {
