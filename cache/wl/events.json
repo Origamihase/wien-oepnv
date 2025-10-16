@@ -434,7 +434,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung Falschparker",
+    "title": "9: Falschparker",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
@@ -478,5 +478,29 @@
     "starts_at": "2025-10-16T18:40:00+02:00",
     "ends_at": "2025-10-16T23:55:00+02:00",
     "_identity": "wl|störung|L=38A|D=2025-10-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Verunreinigung",
+    "description": "Die Linie D kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung im Bereich Plößlgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "28dd617e135ca8c10e6ad9cda709d30d6392210e846e91e8bdbb3b2e72457757",
+    "pubDate": "2025-10-16T19:20:00+02:00",
+    "starts_at": "2025-10-16T19:20:00+02:00",
+    "ends_at": "2025-10-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-10-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Rettungseinsatz",
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Josefstädter Straße und Alser Straße in beiden Richtungen über Gleis 2. Die Störung dauert voraussichtlich bis 19:40 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Alser Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2025-10-16T19:25:00+02:00",
+    "starts_at": "2025-10-16T19:25:00+02:00",
+    "ends_at": "2025-10-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2025-10-16"
   }
 ]
