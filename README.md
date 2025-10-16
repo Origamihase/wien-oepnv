@@ -283,6 +283,23 @@ curl -G -sS "${VOR_BASE_URL}/location.name" \
   -H "Accept: application/json" || true
 ```
 
+## Qualitätssicherung
+
+Für lokale Qualitätsprüfungen stehen nun optionale statische Analysen bereit. Nach der Installation der benötigten Pakete –
+beispielsweise über `python -m pip install ruff mypy` – lassen sich die Checks direkt im Projektstamm ausführen:
+
+```bash
+# Stil- und Konsistenzprüfungen (Ruff)
+ruff check
+
+# Typüberprüfung des Anwendungscodes
+mypy
+```
+
+`ruff` respektiert die in `pyproject.toml` hinterlegte Konfiguration (u. a. maximale Zeilenlänge und ignorierte Verzeichnisse).
+`mypy` fokussiert sich in der Grundeinstellung auf den Feed-Builder (`src/build_feed.py`) und blendet übrige Pakete sowie Tests
+aus. Beide Werkzeuge liefern so vor Commits schnelle Hinweise auf mögliche Fehler oder Inkonsistenzen.
+
 ## Authentifizierung & Sicherheit
 
 - Die VAO ReST API verwendet einen Access Token (`accessId`) zur Authentifizierung. Dieser wird als Query-Parameter übertragen und darf ausschließlich aus sicheren Umgebungsvariablen stammen.

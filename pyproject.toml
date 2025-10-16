@@ -1,0 +1,44 @@
+[tool.ruff]
+line-length = 140
+target-version = "py311"
+src = ["src"]
+exclude = [
+  ".git",
+  "cache",
+  "data",
+  "docs",
+  "log",
+  "scripts",
+  "tests",
+]
+
+[tool.ruff.lint]
+select = [
+  "E",
+  "F",
+]
+
+[tool.mypy]
+python_version = "3.11"
+warn_unused_configs = true
+warn_unused_ignores = false
+warn_return_any = false
+show_error_codes = true
+pretty = true
+ignore_missing_imports = true
+files = ["src/build_feed.py"]
+mypy_path = ["src"]
+explicit_package_bases = true
+disable_error_code = ["import-untyped"]
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "src.providers.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = ["src.utils.stations", "src.utils.stations.*"]
+ignore_errors = true
