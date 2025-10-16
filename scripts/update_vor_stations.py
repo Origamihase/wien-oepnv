@@ -553,6 +553,34 @@ def build_vor_entries(stops: Iterable[VORStop]) -> list[dict[str, object]]:
     return entries
 
 
+def _collect_aliases(entry: Mapping[str, object]) -> list[str]:
+    """Return all textual aliases defined for *entry* without duplicates."""
+
+    aliases: list[str] = []
+    seen: set[str] = set()
+
+    def add(value: object | None) -> None:
+        if value is None:
+            return
+        text = str(value).strip()
+        if not text or text in seen:
+            return
+        seen.add(text)
+        aliases.append(text)
+
+    raw_aliases = entry.get("aliases")
+    if isinstance(raw_aliases, list):
+        for alias in raw_aliases:
+            add(alias)
+
+    add(entry.get("name"))
+    add(entry.get("bst_code"))
+    add(entry.get("vor_id"))
+    add(entry.get("wl_diva"))
+
+    return aliases
+
+
 def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]]) -> None:
     try:
         with stations_path.open("r", encoding="utf-8") as handle:
@@ -579,21 +607,74 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
     for entry in existing:
         if not isinstance(entry, dict):
             continue
+        if entry.get("source") == "vor":
+            entry_vor_id = entry.get("vor_id")
+            key = str(entry_vor_id).strip() if isinstance(entry_vor_id, str) else ""
+            if not key and isinstance(entry_vor_id, (int, float)):
+                key = str(int(entry_vor_id))
+            if key:
+                vor_entry = vor_map.get(key)
+                if vor_entry is not None:
+                    aliases = _collect_aliases(entry)
+                    vor_aliases = vor_entry.get("aliases")
+                    if not isinstance(vor_aliases, list):
+                        vor_entry["aliases"] = list(aliases)
+                    else:
+                        existing_aliases = set(str(a).strip() for a in vor_aliases if a)
+                        for alias in aliases:
+                            text = str(alias).strip()
+                            if text and text not in existing_aliases:
+                                vor_aliases.append(text)
+                                existing_aliases.add(text)
+            continue
         vor_id_raw = entry.get("vor_id")
-        vor_id = str(vor_id_raw).strip() if isinstance(vor_id_raw, str) else ""
-        if not vor_id and isinstance(vor_id_raw, (int, float)):
+        vor_id = ""
+        if isinstance(vor_id_raw, str):
+            vor_id = vor_id_raw.strip()
+        elif isinstance(vor_id_raw, (int, float)):
             vor_id = str(int(vor_id_raw))
-        if vor_id and vor_id in vor_map and entry.get("bst_id") is not None:
-            vor_data = vor_map.pop(vor_id)
+
+        aliases = _collect_aliases(entry)
+        alias_set = set(aliases)
+
+        matched_id: str | None = None
+        if vor_id and vor_id in vor_map:
+            matched_id = vor_id
+        else:
+            for candidate in list(vor_map):
+                if candidate in alias_set:
+                    matched_id = candidate
+                    break
+
+        if matched_id is not None:
+            vor_data = vor_map.pop(matched_id)
             merged_entry = dict(entry)
-            for key in ("latitude", "longitude", "aliases"):
-                value = vor_data.get(key)
-                if value in (None, "", []):
-                    continue
-                merged_entry[key] = value
+
+            # Fill missing coordinates with VOR data; keep existing explicit values.
+            for key in ("latitude", "longitude"):
+                current = merged_entry.get(key)
+                vor_value = vor_data.get(key)
+                if current in (None, "") and vor_value not in (None, ""):
+                    merged_entry[key] = vor_value
+
+            vor_aliases = vor_data.get("aliases")
+            if isinstance(vor_aliases, list):
+                for alias in vor_aliases:
+                    text = str(alias).strip()
+                    if text and text not in alias_set:
+                        aliases.append(text)
+                        alias_set.add(text)
+            merged_entry["aliases"] = aliases
+
+            if not vor_id:
+                vor_value = vor_data.get("vor_id")
+                if vor_value:
+                    merged_entry["vor_id"] = vor_value
+
             updated += 1
             merged.append(merged_entry)
             continue
+
         merged.append(entry)
 
     additional_vor = sorted(
