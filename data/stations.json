@@ -35,7 +35,8 @@
       "Baden",
       "Baden Bahnhof",
       "Bahnhof Baden",
-      "Baden Station"
+      "Baden Station",
+      "Bf  H1"
     ]
   },
   {
@@ -110,7 +111,8 @@
       "Vienna Praterkai",
       "Wien Praterkai Bahnhof",
       "Bahnhof Wien Praterkai",
-      "Wien Praterkai Station"
+      "Wien Praterkai Station",
+      "El  H1"
     ]
   },
   {
@@ -214,7 +216,8 @@
       "Vienna Hadersdorf",
       "Wien Hadersdorf Bahnhof",
       "Bahnhof Wien Hadersdorf",
-      "Wien Hadersdorf Station"
+      "Wien Hadersdorf Station",
+      "Hf  H2"
     ]
   },
   {
@@ -234,7 +237,8 @@
       "Vienna Speising",
       "Wien Speising Bahnhof",
       "Bahnhof Wien Speising",
-      "Wien Speising Station"
+      "Wien Speising Station",
+      "Hf  H1A"
     ]
   },
   {
@@ -255,7 +259,8 @@
       "Vienna Weidlingau",
       "Wien Weidlingau Bahnhof",
       "Bahnhof Wien Weidlingau",
-      "Wien Weidlingau Station"
+      "Wien Weidlingau Station",
+      "Hf  H3"
     ]
   },
   {
@@ -275,7 +280,8 @@
       "Purkersdorf-Sanatorium",
       "Purkersdorf Sanatorium Bahnhof",
       "Bahnhof Purkersdorf Sanatorium",
-      "Purkersdorf Sanatorium Station"
+      "Purkersdorf Sanatorium Station",
+      "Hf  H4"
     ]
   },
   {
@@ -315,7 +321,8 @@
       "Vienna Oberdöbling",
       "Wien Oberdöbling Bahnhof",
       "Bahnhof Wien Oberdöbling",
-      "Wien Oberdöbling Station"
+      "Wien Oberdöbling Station",
+      "Ht  H1"
     ]
   },
   {
@@ -408,7 +415,8 @@
       "Lg H1",
       "Perchtoldsdorf",
       "Bahnhof Perchtoldsdorf",
-      "Perchtoldsdorf Station"
+      "Perchtoldsdorf Station",
+      "Lg  H1"
     ]
   },
   {
@@ -607,7 +615,8 @@
       "Vienna Traisengasse",
       "Wien Traisengasse Bahnhof",
       "Bahnhof Wien Traisengasse",
-      "Wien Traisengasse Station"
+      "Wien Traisengasse Station",
+      "Nw  H1"
     ]
   },
   {
@@ -647,7 +656,8 @@
       "Pm H1",
       "Pressbaum",
       "Bahnhof Pressbaum",
-      "Pressbaum Station"
+      "Pressbaum Station",
+      "Pm  H1"
     ]
   },
   {
@@ -866,7 +876,8 @@
       "Vienna Spittelau",
       "Wien Spittelau Bahnhof",
       "Bahnhof Wien Spittelau",
-      "Wien Spittelau Station"
+      "Wien Spittelau Station",
+      "Wf  H1"
     ]
   },
   {
@@ -946,7 +957,8 @@
       "Wien-Wolf in der Au",
       "Wien Wolf in der Au Bahnhof",
       "Bahnhof Wien Wolf in der Au",
-      "Wien Wolf in der Au Station"
+      "Wien Wolf in der Au Station",
+      "Hf  H1"
     ]
   },
   {
@@ -984,7 +996,8 @@
       "Vienna Stadlau",
       "Wien Stadlau Bahnhof",
       "Bahnhof Wien Stadlau",
-      "Wien Stadlau Station"
+      "Wien Stadlau Station",
+      "El  H3"
     ]
   },
   {
@@ -1031,135 +1044,6 @@
     ]
   },
   {
-    "bst_id": 528,
-    "bst_code": "Fws",
-    "name": "Flughafen Wien Bahnhof (VOR)",
-    "in_vienna": false,
-    "pendler": true,
-    "vor_id": "430470800",
-    "latitude": 48.12056,
-    "longitude": 16.563659,
-    "aliases": [
-      "430470800",
-      "Flughafen Wien Bahnhof",
-      "Flughafen Wien Bahnhof (VOR)",
-      "Flughafen-Wien-Bahnhof-(VOR)",
-      "Flughafen Vienna Bahnhof (VOR)",
-      "Flughafen Wien-Bahnhof (VOR)",
-      "Flughafen Wien (VOR)",
-      "Flughafen Wien Station (VOR)",
-      "Airport Wien Bahnhof (VOR)",
-      "International Airport Wien Bahnhof (VOR)"
-    ],
-    "source": "vor"
-  },
-  {
-    "bst_id": 4773541,
-    "bst_code": "Sty",
-    "name": "Wien Aspern Nord (VOR)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490091000",
-    "latitude": 48.234669,
-    "longitude": 16.504456,
-    "aliases": [
-      "490091000",
-      "Wien Aspern Nord",
-      "Wien Aspern Nord (VOR)",
-      "Wien-Aspern-Nord-(VOR)",
-      "Vienna Aspern Nord (VOR)",
-      "Wien-Aspern Nord (VOR)",
-      "Wien Aspern Nord (VOR) Bahnhof",
-      "Bahnhof Wien Aspern Nord (VOR)",
-      "Wien Aspern Nord (VOR) Station"
-    ],
-    "source": "vor"
-  },
-  {
-    "name": "Wien Karlsplatz U (VOR)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490065700",
-    "latitude": 48.200888,
-    "longitude": 16.368907,
-    "aliases": [
-      "490065700",
-      "Wien Karlsplatz U",
-      "Wien Karlsplatz U (VOR)",
-      "Wien-Karlsplatz-U-(VOR)",
-      "Vienna Karlsplatz U (VOR)",
-      "Wien-Karlsplatz U (VOR)",
-      "Wien Karlsplatz U (VOR) Bahnhof",
-      "Bahnhof Wien Karlsplatz U (VOR)",
-      "Wien Karlsplatz U (VOR) Station"
-    ],
-    "source": "vor"
-  },
-  {
-    "name": "Wien Schottentor U (VOR)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490118400",
-    "latitude": 48.214489,
-    "longitude": 16.361905,
-    "aliases": [
-      "490118400",
-      "Wien Schottentor U",
-      "Wien Schottentor U (VOR)",
-      "Wien-Schottentor-U-(VOR)",
-      "Vienna Schottentor U (VOR)",
-      "Wien-Schottentor U (VOR)",
-      "Wien Schottentor U (VOR) Bahnhof",
-      "Bahnhof Wien Schottentor U (VOR)",
-      "Wien Schottentor U (VOR) Station"
-    ],
-    "source": "vor"
-  },
-  {
-    "name": "Wien Stephansplatz U (VOR)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490132000",
-    "latitude": 48.208088,
-    "longitude": 16.371604,
-    "aliases": [
-      "490132000",
-      "Wien Stephansplatz U",
-      "Wien Stephansplatz U (VOR)",
-      "Wien-Stephansplatz-U-(VOR)",
-      "Vienna Stephansplatz U (VOR)",
-      "Wien-Stephansplatz U (VOR)",
-      "Wien Stephansplatz U (VOR) Bahnhof",
-      "Bahnhof Wien Stephansplatz U (VOR)",
-      "Wien Stephansplatz U (VOR) Station"
-    ],
-    "source": "vor"
-  },
-  {
-    "bst_id": 1499,
-    "bst_code": "Nb",
-    "name": "Wiener Neustadt Hauptbahnhof (VOR)",
-    "in_vienna": false,
-    "pendler": true,
-    "vor_id": "430521000",
-    "latitude": 47.811304,
-    "longitude": 16.23362,
-    "aliases": [
-      "430521000",
-      "Wiener Neustadt Hauptbahnhof",
-      "Wiener Neustadt Hauptbahnhof (VOR)",
-      "Wiener-Neustadt-Hauptbahnhof-(VOR)",
-      "Vienna Neustadt Hauptbahnhof (VOR)",
-      "Wr. Neustadt Hauptbahnhof (VOR)",
-      "Wiener Neustadt Hauptbahnhof (VOR) Bahnhof",
-      "Bahnhof Wiener Neustadt Hauptbahnhof (VOR)",
-      "Wiener Neustadt Hbf (VOR)",
-      "Wiener Neustadt Main Station (VOR)",
-      "Wiener Neustadt Hauptbahnhof (VOR) Station"
-    ],
-    "source": "vor"
-  },
-  {
     "name": "Wien Karlsplatz (WL)",
     "in_vienna": true,
     "pendler": false,
@@ -1194,11 +1078,18 @@
       "Wien-Karlsplatz (WL)",
       "Wien Karlsplatz (WL) Bahnhof",
       "Bahnhof Wien Karlsplatz (WL)",
-      "Wien Karlsplatz (WL) Station"
+      "Wien Karlsplatz (WL) Station",
+      "Wien-Karlsplatz-U-(VOR)",
+      "Vienna Karlsplatz U (VOR)",
+      "Wien-Karlsplatz U (VOR)",
+      "Wien Karlsplatz U (VOR) Bahnhof",
+      "Bahnhof Wien Karlsplatz U (VOR)",
+      "Wien Karlsplatz U (VOR) Station"
     ],
     "source": "wl",
     "latitude": 48.19894,
-    "longitude": 16.370225
+    "longitude": 16.370225,
+    "vor_id": "490065700"
   },
   {
     "name": "Wien Schottentor (WL)",
@@ -1235,11 +1126,18 @@
       "Wien-Schottentor (WL)",
       "Wien Schottentor (WL) Bahnhof",
       "Bahnhof Wien Schottentor (WL)",
-      "Wien Schottentor (WL) Station"
+      "Wien Schottentor (WL) Station",
+      "Wien-Schottentor-U-(VOR)",
+      "Vienna Schottentor U (VOR)",
+      "Wien-Schottentor U (VOR)",
+      "Wien Schottentor U (VOR) Bahnhof",
+      "Bahnhof Wien Schottentor U (VOR)",
+      "Wien Schottentor U (VOR) Station"
     ],
     "source": "wl",
     "latitude": 48.21378,
-    "longitude": 16.360605
+    "longitude": 16.360605,
+    "vor_id": "490118400"
   },
   {
     "name": "Wien Stephansplatz (WL)",
@@ -1268,10 +1166,17 @@
       "Wien-Stephansplatz (WL)",
       "Wien Stephansplatz (WL) Bahnhof",
       "Bahnhof Wien Stephansplatz (WL)",
-      "Wien Stephansplatz (WL) Station"
+      "Wien Stephansplatz (WL) Station",
+      "Wien-Stephansplatz-U-(VOR)",
+      "Vienna Stephansplatz U (VOR)",
+      "Wien-Stephansplatz U (VOR)",
+      "Wien Stephansplatz U (VOR) Bahnhof",
+      "Bahnhof Wien Stephansplatz U (VOR)",
+      "Wien Stephansplatz U (VOR) Station"
     ],
     "source": "wl",
     "latitude": 48.20826,
-    "longitude": 16.37327
+    "longitude": 16.37327,
+    "vor_id": "490132000"
   }
 ]
