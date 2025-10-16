@@ -24,6 +24,7 @@
     "longitude": 16.242735,
     "aliases": [
       "430310100",
+      "Baden",
       "Baden bei Wien Bahnhof"
     ]
   },
@@ -38,6 +39,7 @@
     "longitude": 16.223929,
     "aliases": [
       "430309000",
+      "Bad Vöslau",
       "Bad Vöslau Bahnhof"
     ]
   },
@@ -52,6 +54,7 @@
     "longitude": 16.419319,
     "aliases": [
       "430365300",
+      "Ebreichsdorf",
       "Ebreichsdorf Bahnhof"
     ]
   },
@@ -66,6 +69,7 @@
     "longitude": 16.361851,
     "aliases": [
       "430331800",
+      "Ebenfurth",
       "Ebenfurth Bahnhof"
     ]
   },
@@ -107,8 +111,11 @@
     "latitude": 48.120027,
     "longitude": 16.561749,
     "aliases": [
-      "Vienna Airport",
-      "Schwechat Flughafen Wien Bahnhof"
+      "900200",
+      "Flughafen Wien",
+      "Flughafen Wien Bahnhof",
+      "Schwechat Flughafen Wien Bahnhof",
+      "Vienna Airport"
     ]
   },
   {
@@ -122,6 +129,7 @@
     "longitude": 16.732314,
     "aliases": [
       "430362200",
+      "Gänserndorf",
       "Gänserndorf Bahnhof"
     ]
   },
@@ -178,6 +186,7 @@
     "longitude": 16.212288,
     "aliases": [
       "490145800",
+      "Wien Weidlingau",
       "Wien Weidlingau S"
     ]
   },
@@ -192,6 +201,7 @@
     "longitude": 16.189752,
     "aliases": [
       "430460500",
+      "Purkersdorf Sanatorium",
       "Purkersdorf bei Wien Bahnhof"
     ]
   },
@@ -248,6 +258,8 @@
     "longitude": 16.334586,
     "aliases": [
       "430395300",
+      "Klosterneuburg-Weidling",
+      "Klosterneuburg Weidling",
       "Klosterneuburg Weidling Bahnhof"
     ]
   },
@@ -262,6 +274,7 @@
     "longitude": 16.328474,
     "aliases": [
       "430396300",
+      "Korneuburg",
       "Korneuburg Bahnhof"
     ]
   },
@@ -276,6 +289,7 @@
     "longitude": 16.2313,
     "aliases": [
       "430408400",
+      "Leobersdorf",
       "Leobersdorf Bahnhof"
     ]
   },
@@ -290,6 +304,7 @@
     "longitude": 16.285559,
     "aliases": [
       "430450000",
+      "Perchtoldsdorf",
       "Perchtoldsdorf Bahnhof"
     ]
   },
@@ -346,6 +361,7 @@
     "longitude": 16.295474,
     "aliases": [
       "430423900",
+      "Mödling",
       "Mödling Bahnhof"
     ]
   },
@@ -369,7 +385,12 @@
     "name": "Wiener Neustadt Hbf",
     "in_vienna": false,
     "pendler": true,
-    "vor_id": "900300"
+    "vor_id": "900300",
+    "aliases": [
+      "900300",
+      "Wiener Neustadt Hbf",
+      "Wiener Neustadt Hauptbahnhof"
+    ]
   },
   {
     "bst_id": 1558,
@@ -382,6 +403,7 @@
     "longitude": 15.892875,
     "aliases": [
       "430433700",
+      "Neulengbach",
       "Neulengbach Bahnhof"
     ]
   },
@@ -424,6 +446,7 @@
     "longitude": 15.624034,
     "aliases": [
       "430484800",
+      "St.Pölten Hbf",
       "St. Pölten Hauptbahnhof"
     ]
   },
@@ -438,6 +461,7 @@
     "longitude": 16.077441,
     "aliases": [
       "430457400",
+      "Pressbaum",
       "Pressbaum Bahnhof"
     ]
   },
@@ -480,6 +504,8 @@
     "longitude": 16.453226,
     "aliases": [
       "490028800",
+      "Wien Erzherzog Karl-Straße",
+      "Wien Erzherzog Karl Straße",
       "Wien Erzherzog-Karl-Straße"
     ]
   },
@@ -508,6 +534,7 @@
     "longitude": 16.213016,
     "aliases": [
       "430488400",
+      "Stockerau",
       "Stockerau Bahnhof"
     ]
   },
@@ -536,6 +563,7 @@
     "longitude": 16.033385,
     "aliases": [
       "430875900",
+      "Ternitz",
       "Ternitz Bahnhof"
     ]
   },
@@ -550,6 +578,7 @@
     "longitude": 16.175774,
     "aliases": [
       "430460300",
+      "Purkersdorf Zentrum",
       "Purkersdorf bei Wien Zentrum Bahnhof"
     ]
   },
@@ -578,6 +607,8 @@
     "longitude": 16.361222,
     "aliases": [
       "490034500",
+      "Wien Franz-Josefs-Bf",
+      "Wien Franz Josefs Bf",
       "Wien Franz-Josefs-Bahnhof"
     ]
   },
@@ -606,6 +637,7 @@
     "longitude": 16.563982,
     "aliases": [
       "430327900",
+      "Deutsch Wagram",
       "Deutsch-Wagram Bahnhof"
     ]
   },
@@ -620,6 +652,7 @@
     "longitude": 16.512672,
     "aliases": [
       "430527400",
+      "Wolkersdorf",
       "Wolkersdorf Bahnhof"
     ]
   },
@@ -634,6 +667,7 @@
     "longitude": 16.337652,
     "aliases": [
       "490146800",
+      "Wien Westbf",
       "Wien Westbahnhof"
     ]
   },
@@ -662,6 +696,7 @@
     "longitude": 15.996736,
     "aliases": [
       "430575900",
+      "Tullnerfeld",
       "Tullnerfeld Bahnhof"
     ]
   },
@@ -701,7 +736,11 @@
     "pendler": false,
     "vor_id": "900100",
     "latitude": 48.234567,
-    "longitude": 16.520123
+    "longitude": 16.520123,
+    "aliases": [
+      "900100",
+      "Wien Aspern Nord"
+    ]
   },
   {
     "name": "Flughafen Wien Bahnhof (VOR)",
@@ -712,6 +751,7 @@
     "longitude": 16.563659,
     "aliases": [
       "430470800",
+      "Flughafen Wien Bahnhof (VOR)",
       "Flughafen Wien Bahnhof"
     ],
     "source": "vor"
@@ -725,6 +765,7 @@
     "longitude": 16.504456,
     "aliases": [
       "490091000",
+      "Wien Aspern Nord (VOR)",
       "Wien Aspern Nord"
     ],
     "source": "vor"
@@ -738,6 +779,7 @@
     "longitude": 16.368907,
     "aliases": [
       "490065700",
+      "Wien Karlsplatz U (VOR)",
       "Wien Karlsplatz U"
     ],
     "source": "vor"
@@ -751,6 +793,7 @@
     "longitude": 16.361905,
     "aliases": [
       "490118400",
+      "Wien Schottentor U (VOR)",
       "Wien Schottentor U"
     ],
     "source": "vor"
@@ -764,6 +807,7 @@
     "longitude": 16.371604,
     "aliases": [
       "490132000",
+      "Wien Stephansplatz U (VOR)",
       "Wien Stephansplatz U"
     ],
     "source": "vor"
@@ -777,6 +821,7 @@
     "longitude": 16.23362,
     "aliases": [
       "430521000",
+      "Wiener Neustadt Hauptbahnhof (VOR)",
       "Wiener Neustadt Hauptbahnhof"
     ],
     "source": "vor"
@@ -801,6 +846,7 @@
       }
     ],
     "aliases": [
+      "Wien Karlsplatz (WL)",
       "60201076",
       "60201077",
       "Karlsplatz",
@@ -830,6 +876,7 @@
       }
     ],
     "aliases": [
+      "Wien Schottentor (WL)",
       "60201002",
       "60201003",
       "Schottentor",
@@ -853,6 +900,7 @@
       }
     ],
     "aliases": [
+      "Wien Stephansplatz (WL)",
       "60201001",
       "Stephansplatz",
       "Stephansplatz U",
