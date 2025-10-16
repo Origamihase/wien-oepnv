@@ -177,7 +177,7 @@ def load_default_env_files(
 ) -> Mapping[Path, Dict[str, str]]:
     """Load standard env files relative to the project root."""
 
-    base_dir = Path(__file__).resolve().parents[1]
+    base_dir = Path(__file__).resolve().parents[2]
 
     loaded: Dict[Path, Dict[str, str]] = {}
     for candidate in _default_env_file_candidates(base_dir):
