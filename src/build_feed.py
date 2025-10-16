@@ -1299,24 +1299,50 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         )
         return key
 
-    def _better(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
-        """Return True if ``a`` is better than ``b`` according to ends_at and description length."""
+    def _recency_value(it: Dict[str, Any]) -> datetime:
+        """Return a comparable timestamp describing how recent ``it`` is."""
 
-        def _end_value(it: Dict[str, Any]) -> datetime:
-            ends = it.get("ends_at")
-            if isinstance(ends, datetime):
-                return _to_utc(ends)
-            return datetime.min.replace(tzinfo=timezone.utc)
+        candidates: List[datetime] = []
+        for field in ("pubDate", "first_seen", "starts_at"):
+            value = it.get(field)
+            if isinstance(value, datetime):
+                candidates.append(_to_utc(value))
+            else:
+                parsed = _parse_datetime(value)
+                if isinstance(parsed, datetime):
+                    candidates.append(_to_utc(parsed))
+
+        if candidates:
+            return max(candidates)
+
+        return datetime.min.replace(tzinfo=timezone.utc)
+
+    def _end_value(it: Dict[str, Any]) -> datetime:
+        ends = it.get("ends_at")
+        if isinstance(ends, datetime):
+            return _to_utc(ends)
+        return datetime.min.replace(tzinfo=timezone.utc)
+
+    def _better(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
+        """Return True if ``a`` is better than ``b`` according to recency and content."""
 
         a_end = _end_value(a)
         b_end = _end_value(b)
         if a_end > b_end:
             return True
         if a_end < b_end:
+            if _recency_value(a) > _recency_value(b):
+                return True
             return False
+
         a_len = len(a.get("description") or "")
         b_len = len(b.get("description") or "")
-        return a_len > b_len
+        if a_len > b_len:
+            return True
+        if a_len < b_len:
+            return _recency_value(a) > _recency_value(b)
+
+        return _recency_value(a) > _recency_value(b)
 
     seen: Dict[str, int] = {}
     out: List[Dict[str, Any]] = []
