@@ -860,6 +860,7 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Mapping[str, An
 def fetch_events() -> List[Dict[str, Any]]:
     token = refresh_access_credentials()
     if not token:
+        log.warning("Kein VOR Access Token konfiguriert – überspringe Abruf.")
         return []
 
     now_local = datetime.now(ZONE_VIENNA)
@@ -870,6 +871,12 @@ def fetch_events() -> List[Dict[str, Any]]:
         return []
 
     remaining_requests = max(MAX_REQUESTS_PER_DAY - stored_count, 0)
+    if remaining_requests == 0:
+        log.info(
+            "Tageslimit von %s VOR-Anfragen bereits ausgeschöpft – überspringe Abruf.",
+            MAX_REQUESTS_PER_DAY,
+        )
+        return []
 
     station_ids = list(VOR_STATION_IDS)
     if not station_ids and VOR_STATION_NAMES:
@@ -883,9 +890,13 @@ def fetch_events() -> List[Dict[str, Any]]:
         selected_ids = station_ids[: MAX_STATIONS_PER_RUN or 1]
 
     if remaining_requests and len(selected_ids) > remaining_requests:
+        log.info(
+            "Begrenze Abruf auf %s von %s Station(en) wegen Request-Limit (%s übrig).",
+            remaining_requests,
+            len(selected_ids),
+            remaining_requests,
+        )
         selected_ids = selected_ids[:remaining_requests]
-    elif remaining_requests == 0:
-        return []
 
     results: List[Dict[str, Any]] = []
     failures = 0

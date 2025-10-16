@@ -78,6 +78,11 @@ Der Feed-Bau folgt einem klaren Ablauf:
 
 Alle Pfade werden durch `_resolve_env_path` auf `docs/`, `data/` oder `log/` beschränkt, um Path-Traversal zu verhindern.
 
+### Fehlerprotokolle
+
+- Läuft der Feed-Build über `src/build_feed.py`, landen Fehler- und Traceback-Ausgaben automatisch in `log/errors.log` (rotierende Log-Datei, konfigurierbar über `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`).
+- Beim manuellen Aufruf der Hilfsskripte, z. B. `scripts/update_vor_cache.py`, erscheinen Warnungen und Fehler direkt auf `stdout`. Für nachträgliche Analysen kannst du den jeweiligen Lauf zusätzlich mit `LOG_DIR` auf ein separates Verzeichnis umleiten.
+
 ## Provider-spezifische Workflows
 
 ### Wiener Linien (WL)
