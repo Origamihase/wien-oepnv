@@ -65,7 +65,12 @@ OEBB_ONLY_VIENNA = get_bool_env("OEBB_ONLY_VIENNA", False)
 USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"
 
 # ---------------- Titel + Endpunkte ----------------
-BAHNHOF_TRIM_RE = re.compile(r"\s*(?:Bahnhof|Bahnhst|Hbf|Bf)(?:\s*\(U\))?", re.IGNORECASE)
+# remove generic suffixes like "Bahnhof" or "Hbf" when they appear as standalone
+# tokens (optionally followed by "(U)", "(S)" or similar short indicators)
+BAHNHOF_TRIM_RE = re.compile(
+    r"\s*\b(?:Bahnhof|Bahnhst|Hbf|Bf)\b(?:\s*\(\s*[US]\d*\s*\))?",
+    re.IGNORECASE,
+)
 # treat simple hyphen as separator only when surrounded by spaces
 ARROW_ANY_RE    = re.compile(r"\s*(?:<=>|<->|<>|→|↔|=>|=|–|—|\s-\s)\s*")
 COLON_PREFIX_RE = re.compile(
@@ -92,12 +97,17 @@ def _clean_title_keep_places(t: str) -> str:
     # Sonderfall: „Wien X und Wien Y“ → „Wien X ↔ Wien Y“
     t = re.sub(r"\b(Wien [^,;|]+?)\s+und\s+(Wien [^,;|]+?)\b", r"\1 ↔ \2", t)
     # Pfeile/Bindestriche und Trennzeichen normalisieren
-    parts = [p for p in ARROW_ANY_RE.split(t) if p.strip()]
-    parts = [_clean_endpoint(p) for p in parts if p.strip()]
+    raw_parts = [p for p in ARROW_ANY_RE.split(t) if p.strip()]
     canonical_parts: List[str] = []
-    for part in parts:
-        canon = canonical_name(part)
-        canonical_parts.append(canon or part)
+    for part in raw_parts:
+        segment = part.strip()
+        if not segment:
+            continue
+        canon = canonical_name(segment)
+        if not canon:
+            cleaned = _clean_endpoint(segment)
+            canon = canonical_name(cleaned) or cleaned
+        canonical_parts.append(canon)
     parts = canonical_parts
     if len(parts) >= 2:
         t = f"{parts[0]} ↔ {parts[1]}"
