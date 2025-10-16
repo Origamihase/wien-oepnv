@@ -10,20 +10,25 @@ from logging.handlers import RotatingFileHandler
 import re
 import hashlib
 import errno
+import time
 from contextlib import contextmanager
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
 from pathlib import Path
-from typing import Any, Dict, Iterator, List, Optional, Tuple
+from typing import Any, Dict, Iterator, List, Optional, Tuple, TYPE_CHECKING
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 from zoneinfo import ZoneInfo
 
-try:  # pragma: no cover - allow running as package and as script
-    from utils.cache import read_cache
-    from utils.env import get_int_env, get_bool_env
-except ModuleNotFoundError:  # pragma: no cover
-    from .utils.cache import read_cache  # type: ignore
-    from .utils.env import get_int_env, get_bool_env  # type: ignore
+if TYPE_CHECKING:  # pragma: no cover - used only for type checking
+    from .utils.cache import read_cache
+    from .utils.env import get_int_env, get_bool_env
+else:  # pragma: no cover - allow running as package and as script
+    try:
+        from utils.cache import read_cache
+        from utils.env import get_int_env, get_bool_env
+    except ModuleNotFoundError:
+        from .utils.cache import read_cache  # type: ignore
+        from .utils.env import get_int_env, get_bool_env  # type: ignore
 
 try:  # pragma: no cover - platform dependent
     import fcntl  # type: ignore
@@ -148,6 +153,18 @@ for env, loader in PROVIDERS:
     except (AttributeError, TypeError):  # pragma: no cover - defensive only
         pass
     setattr(loader, "_provider_cache_name", provider_name)
+
+
+def _provider_display_name(fetch: Any) -> str:
+    """Return a human friendly name for ``fetch``."""
+
+    provider_name = getattr(fetch, "_provider_cache_name", None)
+    if provider_name:
+        return str(provider_name)
+    name = getattr(fetch, "__name__", None)
+    if isinstance(name, str):
+        return name
+    return str(fetch)
 
 # ---------------- ENV ----------------
 OUT_PATH = _resolve_env_path("OUT_PATH", Path("docs/feed.xml")).as_posix()
@@ -598,19 +615,40 @@ def _collect_items() -> List[Dict[str, Any]]:
 
     cache_fetchers: List[Any] = []
     network_fetchers: List[Any] = []
+    enabled_providers: List[str] = []
+    disabled_providers: List[str] = []
+    provider_counts: Dict[str, int] = {}
+    provider_timings: List[Tuple[str, float, str]] = []
+
     for env, fetch in PROVIDERS:
+        provider_key = PROVIDER_CACHE_KEYS.get(env, env)
         if not get_bool_env(env, True):
+            disabled_providers.append(provider_key)
             continue
+        enabled_providers.append(provider_key)
         if getattr(fetch, "_provider_cache_name", None):
             cache_fetchers.append(fetch)
         else:
             network_fetchers.append(fetch)
 
+    if enabled_providers:
+        log.info(
+            "Aktive Provider (%d): %s",
+            len(enabled_providers),
+            ", ".join(sorted(enabled_providers)),
+        )
+    if disabled_providers:
+        log.warning(
+            "Deaktivierte Provider: %s",
+            ", ".join(sorted(disabled_providers)),
+        )
+
     if not cache_fetchers and not network_fetchers:
+        log.error("Keine Provider aktiviert – Feed bleibt leer.")
         return []
 
     def _merge_result(fetch: Any, result: Any) -> None:
-        name = getattr(fetch, "__name__", str(fetch))
+        name = _provider_display_name(fetch)
         if not isinstance(result, list):
             log.error("%s fetch gab keine Liste zurück: %r", name, result)
             return
@@ -622,20 +660,39 @@ def _collect_items() -> List[Dict[str, Any]]:
             )
         _normalize_item_datetimes(result)
         items.extend(result)
+        provider_counts[name] = provider_counts.get(name, 0) + len(result)
 
     for fetch in cache_fetchers:
-        name = getattr(fetch, "__name__", str(fetch))
+        name = _provider_display_name(fetch)
+        started = time.perf_counter()
         try:
             result = fetch()
         except Exception as exc:
             log.exception("%s fetch fehlgeschlagen: %s", name, exc)
             continue
+        finally:
+            duration = time.perf_counter() - started
+            provider_timings.append((name, duration, "cache"))
         _merge_result(fetch, result)
 
     if not network_fetchers:
+        if provider_counts:
+            summary = ", ".join(
+                f"{provider}: {count}"
+                for provider, count in sorted(provider_counts.items())
+            )
+            log.info("Provider-Ausbeute: %s", summary)
+        if provider_timings:
+            provider_timings.sort(key=lambda entry: entry[1], reverse=True)
+            summary = ", ".join(
+                f"{provider} {duration:.2f}s ({kind})"
+                for provider, duration, kind in provider_timings
+            )
+            log.info("Provider-Laufzeiten: %s", summary)
         return items
 
     futures: Dict[Any, Any] = {}
+    start_times: Dict[Any, float] = {}
     desired_workers = len(network_fetchers)
     if PROVIDER_MAX_WORKERS > 0:
         if desired_workers > PROVIDER_MAX_WORKERS:
@@ -648,11 +705,13 @@ def _collect_items() -> List[Dict[str, Any]]:
     timed_out = False
     try:
         for fetch in network_fetchers:
-            futures[executor.submit(fetch)] = fetch
+            future = executor.submit(fetch)
+            futures[future] = fetch
+            start_times[future] = time.perf_counter()
         try:
             for future in as_completed(futures, timeout=PROVIDER_TIMEOUT):
                 fetch = futures[future]
-                name = getattr(fetch, "__name__", str(fetch))
+                name = _provider_display_name(fetch)
                 try:
                     result = future.result()
                 except TimeoutError:
@@ -661,6 +720,11 @@ def _collect_items() -> List[Dict[str, Any]]:
                     log.exception("%s fetch fehlgeschlagen: %s", name, exc)
                 else:
                     _merge_result(fetch, result)
+                finally:
+                    start = start_times.pop(future, None)
+                    end = time.perf_counter()
+                    duration = end - start if start is not None else 0.0
+                    provider_timings.append((name, duration, "netz"))
         except TimeoutError:
             timed_out = True
             log.warning("Provider-Timeout nach %ss", PROVIDER_TIMEOUT)
@@ -668,6 +732,29 @@ def _collect_items() -> List[Dict[str, Any]]:
     finally:
         if not timed_out:
             executor.shutdown(wait=True)
+
+    if start_times:
+        now = time.perf_counter()
+        for future, started in list(start_times.items()):
+            fetch = futures.get(future)
+            if fetch is None:
+                continue
+            name = _provider_display_name(fetch)
+            provider_timings.append((name, max(now - started, 0.0), "netz-timeout"))
+
+    if provider_counts:
+        summary = ", ".join(
+            f"{provider}: {count}"
+            for provider, count in sorted(provider_counts.items())
+        )
+        log.info("Provider-Ausbeute: %s", summary)
+    if provider_timings:
+        provider_timings.sort(key=lambda entry: entry[1], reverse=True)
+        summary = ", ".join(
+            f"{provider} {duration:.2f}s ({kind})"
+            for provider, duration, kind in provider_timings
+        )
+        log.info("Provider-Laufzeiten: %s", summary)
 
     return items
 
@@ -987,10 +1074,26 @@ def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[
 def main() -> int:
     now = datetime.now(timezone.utc)
     state = _load_state()
+    collect_started = time.perf_counter()
     items = _collect_items()
+    collect_duration = time.perf_counter() - collect_started
+    log.info(
+        "Sammeln abgeschlossen in %.2fs (%d Items vor Normalisierung)",
+        collect_duration,
+        len(items),
+    )
     _normalize_item_datetimes(items)
-    items = _drop_old_items(items, now, state)
-    items = _dedupe_items(items)
+    filtering_started = time.perf_counter()
+    items_after_age = _drop_old_items(items, now, state)
+    items_after_dedupe = _dedupe_items(items_after_age)
+    filter_duration = time.perf_counter() - filtering_started
+    log.info(
+        "Filter angewendet in %.2fs (nach Alter: %d, nach Deduplizierung: %d)",
+        filter_duration,
+        len(items_after_age),
+        len(items_after_dedupe),
+    )
+    items = items_after_dedupe
     if not items:
         log.warning("Keine Items gesammelt.")
         items = []
