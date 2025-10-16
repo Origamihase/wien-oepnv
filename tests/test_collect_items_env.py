@@ -97,3 +97,51 @@ def test_enabling_vor_yields_items(monkeypatch):
 
     items = build_feed._collect_items()
     assert items == [{"p": "vor"}]
+
+
+def test_collect_items_logs_provider_summary(monkeypatch, caplog):
+    build_feed = _import_build_feed(monkeypatch)
+
+    cache_fetch = lambda timeout=None: []
+    setattr(cache_fetch, "_provider_cache_name", "wl")
+    monkeypatch.setattr(build_feed, "PROVIDERS", [("WL_ENABLE", cache_fetch)])
+
+    monkeypatch.delenv("WL_ENABLE", raising=False)
+    caplog.set_level("INFO", logger="build_feed")
+
+    items = build_feed._collect_items()
+
+    assert items == []
+    assert "Aktive Provider (1): wl" in caplog.text
+    assert "Provider wl (Cache) erledigt in" in caplog.text
+
+
+def test_collect_items_warns_when_all_disabled(monkeypatch, caplog):
+    build_feed = _import_build_feed(monkeypatch)
+
+    cache_fetch = lambda timeout=None: []
+    setattr(cache_fetch, "_provider_cache_name", "wl")
+    monkeypatch.setattr(build_feed, "PROVIDERS", [("WL_ENABLE", cache_fetch)])
+
+    monkeypatch.setenv("WL_ENABLE", "0")
+    caplog.set_level("INFO", logger="build_feed")
+
+    items = build_feed._collect_items()
+
+    assert items == []
+    assert "Keine Provider aktiviert – Feed bleibt leer." in caplog.text
+    assert "Deaktivierte Provider: wl" in caplog.text
+
+
+def test_collect_items_reports_invalid_flags(monkeypatch, caplog):
+    build_feed = _import_build_feed(monkeypatch)
+
+    network_fetch = lambda timeout=None: []
+    monkeypatch.setattr(build_feed, "PROVIDERS", [("OEBB_ENABLE", network_fetch)])
+
+    monkeypatch.setenv("OEBB_ENABLE", "definitely")
+    caplog.set_level("INFO", logger="build_feed")
+
+    build_feed._collect_items()
+
+    assert "Ungültige Provider-Flags: oebb=definitely" in caplog.text

@@ -23,6 +23,23 @@ Der RSS-Feed deklariert den Namespace `ext` (`xmlns:ext="https://wien-oepnv.exam
 - `ext:starts_at`: Beginn der Störung bzw. Maßnahme.
 - `ext:ends_at`: Ende der Störung bzw. Maßnahme.
 
+## Qualitätssicherung & lokale Checks
+
+Für lokale Qualitätsprüfungen stehen optionale Tools bereit. Die benötigten Pakete
+lassen sich per
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+installieren. Anschließend können folgende Befehle ausgeführt werden:
+
+- `ruff check src tests scripts` – Schnelltest auf Stil- und Logikfehler
+- `mypy src` – Statistische Typprüfung der Feed- und Provider-Module
+
+Die Checks erweitern die bestehende Testabdeckung (`pytest`) und helfen dabei,
+Abweichungen frühzeitig zu erkennen.
+
 ## Cache-Dateien
 
 Drei GitHub Actions pflegen die Zwischenstände der Provider-Abfragen und legen sie im Repository ab:

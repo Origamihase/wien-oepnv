@@ -13,6 +13,7 @@ import errno
 from contextlib import contextmanager
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
 from pathlib import Path
+from time import perf_counter
 from typing import Any, Dict, Iterator, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
@@ -38,6 +39,10 @@ except ModuleNotFoundError:  # pragma: no cover
 # ---------------- Paths ----------------
 _ALLOWED_ROOTS = {"docs", "data", "log"}
 _REPO_ROOT = Path(__file__).resolve().parents[1]
+
+_TRUE_VALUES = {"1", "true", "t", "yes", "y", "on"}
+_FALSE_VALUES = {"0", "false", "f", "no", "n", "off"}
+_VALID_BOOL_VALUES = _TRUE_VALUES | _FALSE_VALUES
 
 
 def _resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: bool = False) -> Path:
@@ -148,6 +153,111 @@ for env, loader in PROVIDERS:
     except (AttributeError, TypeError):  # pragma: no cover - defensive only
         pass
     setattr(loader, "_provider_cache_name", provider_name)
+
+
+def _provider_label(env: str, fetch: Any) -> str:
+    """Return a human readable label for ``fetch``."""
+
+    provider_name = PROVIDER_CACHE_KEYS.get(env)
+    if provider_name:
+        return provider_name
+
+    provider_name = getattr(fetch, "_provider_cache_name", None)
+    if isinstance(provider_name, str) and provider_name:
+        return provider_name
+
+    module = getattr(fetch, "__module__", "")
+    if module.startswith("providers."):
+        suffix = module.split(".", 1)[1]
+        if suffix:
+            return suffix
+
+    name = getattr(fetch, "__name__", None)
+    if isinstance(name, str) and name and name != "<lambda>":
+        return name
+
+    return env.lower()
+
+
+def _read_provider_flag(env: str, default: bool = True) -> Tuple[bool, Optional[str], bool]:
+    """Return the boolean value for a provider flag.
+
+    The function mirrors :func:`get_bool_env` but also reports whether a value was
+    invalid so callers can provide aggregated diagnostics.
+    """
+
+    raw = os.getenv(env)
+    if raw is None:
+        return default, None, False
+
+    stripped = raw.strip()
+    if not stripped:
+        return default, "", False
+
+    lowered = stripped.casefold()
+    if lowered in _TRUE_VALUES:
+        return True, stripped, False
+    if lowered in _FALSE_VALUES:
+        return False, stripped, False
+
+    log.warning(
+        "Ungültiger boolescher Wert für %s=%r – verwende Default %s (erlaubt: 1/0, true/false, yes/no, on/off)",
+        env,
+        raw,
+        default,
+    )
+    return default, stripped, True
+
+
+def _log_provider_duration(
+    provider_label: str,
+    kind: str,
+    duration_seconds: Optional[float],
+    *,
+    count: Optional[int] = None,
+    outcome: str = "ok",
+) -> None:
+    """Emit a standardized log message for provider execution times."""
+
+    duration_text = "unbekannt"
+    if isinstance(duration_seconds, (int, float)):
+        duration_text = f"{duration_seconds:.2f}s"
+
+    scope = "Cache" if kind == "cache" else "Netzwerk"
+
+    if outcome == "ok":
+        if count is not None:
+            log.info(
+                "Provider %s (%s) erledigt in %s (%d Items)",
+                provider_label,
+                scope,
+                duration_text,
+                count,
+            )
+        else:
+            log.info(
+                "Provider %s (%s) erledigt in %s",
+                provider_label,
+                scope,
+                duration_text,
+            )
+        return
+
+    if outcome == "timeout":
+        log.warning(
+            "Provider %s (%s) abgebrochen nach %s (Timeout)",
+            provider_label,
+            scope,
+            duration_text,
+        )
+        return
+
+    log.warning(
+        "Provider %s (%s) abgebrochen nach %s",
+        provider_label,
+        scope,
+        duration_text,
+    )
 
 # ---------------- ENV ----------------
 OUT_PATH = _resolve_env_path("OUT_PATH", Path("docs/feed.xml")).as_posix()
@@ -596,46 +706,79 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
 def _collect_items() -> List[Dict[str, Any]]:
     items: List[Dict[str, Any]] = []
 
-    cache_fetchers: List[Any] = []
-    network_fetchers: List[Any] = []
+    cache_fetchers: List[Tuple[Any, str]] = []
+    network_fetchers: List[Tuple[Any, str]] = []
+    disabled_labels: set[str] = set()
+    invalid_flags: List[str] = []
+    enabled_labels: set[str] = set()
+
     for env, fetch in PROVIDERS:
-        if not get_bool_env(env, True):
+        enabled, raw_value, invalid = _read_provider_flag(env, True)
+        label = _provider_label(env, fetch)
+
+        if invalid and raw_value:
+            invalid_flags.append(f"{label}={raw_value}")
+
+        if not enabled:
+            disabled_labels.add(label)
             continue
+
         if getattr(fetch, "_provider_cache_name", None):
-            cache_fetchers.append(fetch)
+            cache_fetchers.append((fetch, label))
         else:
-            network_fetchers.append(fetch)
+            network_fetchers.append((fetch, label))
+        enabled_labels.add(label)
+
+    if enabled_labels:
+        log.info(
+            "Aktive Provider (%d): %s",
+            len(enabled_labels),
+            ", ".join(sorted(enabled_labels)),
+        )
+    else:
+        log.warning("Keine Provider aktiviert – Feed bleibt leer.")
+
+    if disabled_labels:
+        log.info("Deaktivierte Provider: %s", ", ".join(sorted(disabled_labels)))
+    if invalid_flags:
+        log.warning("Ungültige Provider-Flags: %s", ", ".join(sorted(invalid_flags)))
 
     if not cache_fetchers and not network_fetchers:
         return []
 
-    def _merge_result(fetch: Any, result: Any) -> None:
+    def _merge_result(fetch: Any, result: Any, provider_label: str) -> int:
         name = getattr(fetch, "__name__", str(fetch))
         if not isinstance(result, list):
             log.error("%s fetch gab keine Liste zurück: %r", name, result)
-            return
-        provider_name = getattr(fetch, "_provider_cache_name", None)
-        if provider_name and not result:
+            return 0
+        if getattr(fetch, "_provider_cache_name", None) and not result:
             log.warning(
                 "Cache für Provider '%s' leer – generiere Feed ohne aktuelle Daten.",
-                provider_name,
+                provider_label,
             )
         _normalize_item_datetimes(result)
         items.extend(result)
+        return len(result)
 
-    for fetch in cache_fetchers:
+    for fetch, label in cache_fetchers:
         name = getattr(fetch, "__name__", str(fetch))
+        started = perf_counter()
         try:
             result = fetch()
         except Exception as exc:
             log.exception("%s fetch fehlgeschlagen: %s", name, exc)
+            duration = perf_counter() - started
+            _log_provider_duration(label, "cache", duration, outcome="error")
             continue
-        _merge_result(fetch, result)
+        duration = perf_counter() - started
+        count = _merge_result(fetch, result, label)
+        _log_provider_duration(label, "cache", duration, count=count)
 
     if not network_fetchers:
         return items
 
-    futures: Dict[Any, Any] = {}
+    futures: Dict[Any, Tuple[Any, str]] = {}
+    start_times: Dict[Any, float] = {}
     desired_workers = len(network_fetchers)
     if PROVIDER_MAX_WORKERS > 0:
         if desired_workers > PROVIDER_MAX_WORKERS:
@@ -647,23 +790,37 @@ def _collect_items() -> List[Dict[str, Any]]:
     executor = ThreadPoolExecutor(max_workers=max(1, desired_workers))
     timed_out = False
     try:
-        for fetch in network_fetchers:
-            futures[executor.submit(fetch)] = fetch
+        for fetch, label in network_fetchers:
+            future = executor.submit(fetch)
+            futures[future] = (fetch, label)
+            start_times[future] = perf_counter()
         try:
             for future in as_completed(futures, timeout=PROVIDER_TIMEOUT):
-                fetch = futures[future]
+                fetch, label = futures[future]
                 name = getattr(fetch, "__name__", str(fetch))
+                started = start_times.pop(future, None)
+                duration = perf_counter() - started if started is not None else None
                 try:
                     result = future.result()
                 except TimeoutError:
                     log.warning("%s fetch Timeout nach %ss", name, PROVIDER_TIMEOUT)
+                    _log_provider_duration(label, "network", duration, outcome="timeout")
                 except Exception as exc:
                     log.exception("%s fetch fehlgeschlagen: %s", name, exc)
+                    _log_provider_duration(label, "network", duration, outcome="error")
                 else:
-                    _merge_result(fetch, result)
+                    count = _merge_result(fetch, result, label)
+                    _log_provider_duration(label, "network", duration, count=count)
         except TimeoutError:
             timed_out = True
             log.warning("Provider-Timeout nach %ss", PROVIDER_TIMEOUT)
+            now = perf_counter()
+            for future, (_, label) in futures.items():
+                if future.done():
+                    continue
+                started = start_times.get(future)
+                duration = now - started if started is not None else None
+                _log_provider_duration(label, "network", duration, outcome="timeout")
             executor.shutdown(wait=False, cancel_futures=True)
     finally:
         if not timed_out:
