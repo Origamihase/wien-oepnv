@@ -544,7 +544,9 @@
       "Wiener Neustadt Hauptbahnhof",
       "Wiener Neustadt Main Station",
       "Wiener Neustadt Hbf Station"
-    ]
+    ],
+    "latitude": 47.811304,
+    "longitude": 16.23362
   },
   {
     "bst_id": 1558,
@@ -1180,7 +1182,9 @@
       "Bahnhof Wien Karlsplatz (WL)",
       "Wien Karlsplatz (WL) Station"
     ],
-    "source": "wl"
+    "source": "wl",
+    "latitude": 48.19894,
+    "longitude": 16.370225
   },
   {
     "name": "Wien Schottentor (WL)",
@@ -1217,7 +1221,9 @@
       "Bahnhof Wien Schottentor (WL)",
       "Wien Schottentor (WL) Station"
     ],
-    "source": "wl"
+    "source": "wl",
+    "latitude": 48.21378,
+    "longitude": 16.360605
   },
   {
     "name": "Wien Stephansplatz (WL)",
@@ -1246,6 +1252,8 @@
       "Bahnhof Wien Stephansplatz (WL)",
       "Wien Stephansplatz (WL) Station"
     ],
-    "source": "wl"
+    "source": "wl",
+    "latitude": 48.20826,
+    "longitude": 16.37327
   }
 ]
