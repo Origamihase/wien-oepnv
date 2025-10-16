@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import inspect
 import json
 import os
 import sys
 import html
 import logging
 from logging.handlers import RotatingFileHandler
+from dataclasses import dataclass, field
 import re
 import hashlib
 import errno
@@ -67,6 +69,14 @@ def _resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: boo
     try:
         resolved = _validate_path(candidate_path, env_name)
     except ValueError:
+        default_parts = Path(default_path).parts
+        candidate_parts = candidate_path.parts
+        if default_parts and len(candidate_parts) >= len(default_parts):
+            if candidate_parts[-len(default_parts):] == default_parts:
+                _validate_path(default_path, env_name)
+                fallback = Path(default_path)
+                os.environ[env_name] = fallback.as_posix()
+                return fallback
         if not allow_fallback:
             raise
         _validate_path(default_path, env_name)
@@ -130,6 +140,372 @@ diagnostics_handler.setLevel(logging.INFO)
 diagnostics_handler.setFormatter(logging.Formatter(fmt))
 logging.getLogger().addHandler(diagnostics_handler)
 log = logging.getLogger("build_feed")
+
+_LOG_TIMESTAMP_RE = re.compile(r"^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2}),(\d{3})")
+
+
+def _prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
+    """Remove log records older than ``keep_days`` from ``path``.
+
+    The function keeps log output grouped by records, so multi-line stack traces
+    stay intact.  Lines without the expected timestamp prefix are preserved.
+    """
+
+    if keep_days <= 0:
+        return
+    if not path.exists():
+        return
+
+    cutoff = now - timedelta(days=keep_days)
+    try:
+        raw_lines = path.read_text(encoding="utf-8").splitlines(keepends=True)
+    except OSError:
+        return
+
+    grouped: List[List[str]] = []
+    current: List[str] = []
+    for line in raw_lines:
+        if _LOG_TIMESTAMP_RE.match(line):
+            if current:
+                grouped.append(current)
+            current = [line]
+        else:
+            if not current:
+                current = [line]
+            else:
+                current.append(line)
+    if current:
+        grouped.append(current)
+
+    filtered: List[str] = []
+    for record_lines in grouped:
+        first = record_lines[0]
+        match = _LOG_TIMESTAMP_RE.match(first)
+        if not match:
+            filtered.extend(record_lines)
+            continue
+        ts_raw = f"{match.group(1)} {match.group(2)},{match.group(3)}"
+        try:
+            ts = datetime.strptime(ts_raw, "%Y-%m-%d %H:%M:%S,%f")
+        except ValueError:
+            filtered.extend(record_lines)
+            continue
+        ts = ts.replace(tzinfo=timezone.utc)
+        if ts >= cutoff:
+            filtered.extend(record_lines)
+
+    try:
+        path.write_text("".join(filtered), encoding="utf-8")
+    except OSError:
+        return
+
+
+def _provider_display_name(fetch: Any, env: Optional[str] = None) -> str:
+    provider_name = getattr(fetch, "_provider_cache_name", None)
+    if provider_name:
+        return str(provider_name)
+    if env:
+        env_name = PROVIDER_CACHE_KEYS.get(env)
+        if env_name:
+            return env_name
+    name = getattr(fetch, "__name__", None)
+    if name:
+        return name
+    return str(fetch)
+
+
+def _clean_message(message: Optional[str]) -> str:
+    if not message:
+        return ""
+    return re.sub(r"\s+", " ", message).strip()
+
+
+@dataclass
+class ProviderReport:
+    name: str
+    enabled: bool
+    fetch_type: str = "unknown"
+    status: str = "pending"  # ok, empty, error, disabled, skipped
+    detail: Optional[str] = None
+    items: Optional[int] = None
+    duration: Optional[float] = None
+    _started_at: Optional[float] = None
+
+    def mark_disabled(self) -> None:
+        self.enabled = False
+        self.status = "disabled"
+
+    def start(self) -> None:
+        self._started_at = perf_counter()
+        if self.status == "disabled":
+            return
+        self.status = "running"
+
+    def finish(
+        self,
+        status: str,
+        *,
+        items: Optional[int] = None,
+        detail: Optional[str] = None,
+        duration: Optional[float] = None,
+    ) -> None:
+        if duration is None and self._started_at is not None:
+            duration = perf_counter() - self._started_at
+        self.duration = duration
+        self.items = items
+        self.detail = detail
+        self.status = status
+
+
+class _RunErrorCollector(logging.Handler):
+    def __init__(self, report: "RunReport") -> None:
+        super().__init__(level=logging.ERROR)
+        self.report = report
+        self._formatter = logging.Formatter()
+
+    def emit(self, record: logging.LogRecord) -> None:  # pragma: no cover - defensive
+        try:
+            msg = record.getMessage()
+        except Exception:
+            msg = str(record.msg)
+        if record.exc_info:
+            try:
+                exc_text = self._formatter.formatException(record.exc_info)
+            except Exception:
+                exc_text = ""
+            if exc_text:
+                msg = f"{msg}\n{exc_text}"
+        source = record.name or "root"
+        composed = f"{source}: {msg}" if msg else source
+        self.report.add_error_message(composed)
+
+
+@dataclass
+class RunReport:
+    statuses: List[Tuple[str, bool]]
+    started_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    providers: Dict[str, ProviderReport] = field(default_factory=dict)
+    raw_item_count: Optional[int] = None
+    final_item_count: Optional[int] = None
+    durations: Dict[str, float] = field(default_factory=dict)
+    feed_path: Optional[str] = None
+    build_successful: bool = False
+    exception_message: Optional[str] = None
+    warnings: List[str] = field(default_factory=list)
+    _error_messages: List[str] = field(default_factory=list)
+    _seen_errors: set[str] = field(default_factory=set)
+    finished_at: Optional[datetime] = None
+    _error_collector: Optional[_RunErrorCollector] = None
+
+    def __post_init__(self) -> None:
+        for name, enabled in self.statuses:
+            normalized = str(name)
+            entry = ProviderReport(name=normalized, enabled=enabled)
+            if not enabled:
+                entry.mark_disabled()
+            self.providers[normalized] = entry
+
+    @property
+    def run_id(self) -> str:
+        return self.started_at.strftime("%Y%m%dT%H%M%SZ")
+
+    def register_provider(self, name: str, enabled: bool, fetch_type: str) -> None:
+        normalized = str(name)
+        entry = self.providers.get(normalized)
+        if entry is None:
+            entry = ProviderReport(name=normalized, enabled=enabled, fetch_type=fetch_type)
+            self.providers[normalized] = entry
+        else:
+            entry.enabled = enabled
+            entry.fetch_type = fetch_type
+        if not enabled:
+            entry.mark_disabled()
+        elif entry.status == "disabled":
+            entry.status = "pending"
+
+    def provider_started(self, name: str) -> None:
+        entry = self.providers.get(name)
+        if entry is None:
+            entry = ProviderReport(name=name, enabled=True)
+            self.providers[name] = entry
+        entry.start()
+
+    def provider_success(
+        self,
+        name: str,
+        *,
+        items: int,
+        status: str = "ok",
+        detail: Optional[str] = None,
+    ) -> None:
+        entry = self.providers.get(name)
+        if entry is None:
+            entry = ProviderReport(name=name, enabled=True)
+            self.providers[name] = entry
+        entry.finish(status, items=items, detail=_clean_message(detail))
+        if status != "ok" and detail:
+            self.warnings.append(f"Provider {name}: {detail}")
+
+    def provider_error(self, name: str, message: str) -> None:
+        entry = self.providers.get(name)
+        if entry is None:
+            entry = ProviderReport(name=name, enabled=True)
+            self.providers[name] = entry
+        entry.finish("error", detail=_clean_message(message))
+        self.add_error_message(f"Provider {name}: {message}")
+
+    def add_error_message(self, message: str) -> None:
+        cleaned = _clean_message(message)
+        if not cleaned:
+            return
+        if cleaned in self._seen_errors:
+            return
+        self._seen_errors.add(cleaned)
+        self._error_messages.append(cleaned)
+
+    @property
+    def error_messages(self) -> List[str]:
+        return list(self._error_messages)
+
+    def has_errors(self) -> bool:
+        if self.exception_message:
+            return True
+        if any(entry.status == "error" for entry in self.providers.values()):
+            return True
+        return bool(self._error_messages)
+
+    def attach_error_collector(self) -> None:
+        if self._error_collector is not None:
+            return
+        collector = _RunErrorCollector(self)
+        logging.getLogger().addHandler(collector)
+        self._error_collector = collector
+
+    def detach_error_collector(self) -> None:
+        if self._error_collector is None:
+            return
+        logging.getLogger().removeHandler(self._error_collector)
+        self._error_collector = None
+
+    def finish(
+        self,
+        *,
+        build_successful: bool,
+        raw_items: Optional[int] = None,
+        final_items: Optional[int] = None,
+        durations: Optional[Dict[str, float]] = None,
+        feed_path: Optional[Path] = None,
+    ) -> None:
+        self.build_successful = build_successful
+        if raw_items is not None:
+            self.raw_item_count = raw_items
+        if final_items is not None:
+            self.final_item_count = final_items
+        if durations:
+            self.durations.update(durations)
+        if feed_path is not None:
+            self.feed_path = feed_path.as_posix()
+        self.finished_at = datetime.now(timezone.utc)
+
+    def record_exception(self, exc: Exception) -> None:
+        message = f"{exc.__class__.__name__}: {exc}"
+        self.exception_message = _clean_message(message)
+        self.add_error_message(f"Ausnahme: {message}")
+
+    def prune_logs(self) -> None:
+        now = self.started_at
+        _prune_log_file(diagnostics_log_path, now=now)
+        _prune_log_file(error_log_path, now=now)
+
+    def _provider_summary(self) -> str:
+        summaries: List[str] = []
+        for name in sorted(self.providers):
+            entry = self.providers[name]
+            details: List[str] = []
+            if entry.items is not None and entry.status in {"ok", "empty"}:
+                details.append(f"{entry.items} Items")
+            if entry.detail:
+                details.append(entry.detail)
+            if entry.duration is not None:
+                details.append(f"{entry.duration:.2f}s")
+            details_str = ", ".join(details)
+            if entry.status == "disabled":
+                summaries.append(f"{name}:disabled")
+                continue
+            if entry.status == "pending":
+                summaries.append(f"{name}:pending")
+                continue
+            if entry.status == "error":
+                if details_str:
+                    summaries.append(f"{name}:error({details_str})")
+                else:
+                    summaries.append(f"{name}:error")
+                continue
+            if entry.status == "empty":
+                if details_str:
+                    summaries.append(f"{name}:empty({details_str})")
+                else:
+                    summaries.append(f"{name}:empty")
+                continue
+            if entry.status == "ok":
+                if details_str:
+                    summaries.append(f"{name}:ok({details_str})")
+                else:
+                    summaries.append(f"{name}:ok")
+                continue
+            if entry.status == "running":
+                summaries.append(f"{name}:running")
+                continue
+            summaries.append(f"{name}:{entry.status or 'unknown'}")
+        return "; ".join(summaries)
+
+    def _duration_summary(self) -> str:
+        if not self.durations:
+            return ""
+        parts = [f"{key}={value:.2f}s" for key, value in sorted(self.durations.items())]
+        return ", ".join(parts)
+
+    def _items_summary(self) -> str:
+        raw = self.raw_item_count if self.raw_item_count is not None else "?"
+        final = self.final_item_count if self.final_item_count is not None else "?"
+        return f"Items raw={raw}, final={final}"
+
+    def diagnostics_message(self) -> str:
+        status = "FAILED"
+        if self.build_successful:
+            status = "ERROR" if self.has_errors() else "OK"
+        provider_summary = self._provider_summary()
+        duration_summary = self._duration_summary()
+        items_summary = self._items_summary()
+        components = [
+            f"Feed-Lauf {self.run_id}",
+            f"Status={status}",
+            items_summary,
+        ]
+        if duration_summary:
+            components.append(f"Dauer: {duration_summary}")
+        if provider_summary:
+            components.append(f"Provider: {provider_summary}")
+        if self.feed_path:
+            components.append(f"Feed={self.feed_path}")
+        if self.exception_message and not self.build_successful:
+            components.append(f"Fehler={self.exception_message}")
+        if self.warnings:
+            components.append(f"Warnungen: {'; '.join(self.warnings)}")
+        return " | ".join(components)
+
+    def log_results(self) -> None:
+        try:
+            diagnostics = self.diagnostics_message()
+            log.info(diagnostics)
+            if self.has_errors():
+                log.info(
+                    "Hinweis: Fehler während des Feed-Laufs – Details siehe %s",
+                    error_log_path,
+                )
+        finally:
+            self.detach_error_collector()
+
 # Mapping of environment variables to provider cache loaders
 PROVIDER_CACHE_KEYS: Dict[str, str] = {
     "WL_ENABLE": "wl",
@@ -670,14 +1046,22 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
 
 # ---------------- Pipeline ----------------
 
-def _collect_items() -> List[Dict[str, Any]]:
+def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
+    if report is None:
+        report = RunReport(_provider_statuses())
     items: List[Dict[str, Any]] = []
 
     cache_fetchers: List[Any] = []
     network_fetchers: List[Any] = []
+    provider_names: Dict[Any, str] = {}
     for env, fetch in PROVIDERS:
-        if not get_bool_env(env, True):
+        provider_name = _provider_display_name(fetch, env)
+        enabled = bool(get_bool_env(env, True))
+        fetch_type = "cache" if getattr(fetch, "_provider_cache_name", None) else "network"
+        report.register_provider(provider_name, enabled, fetch_type)
+        if not enabled:
             continue
+        provider_names[fetch] = provider_name
         if getattr(fetch, "_provider_cache_name", None):
             cache_fetchers.append(fetch)
         else:
@@ -686,33 +1070,45 @@ def _collect_items() -> List[Dict[str, Any]]:
     if not cache_fetchers and not network_fetchers:
         return []
 
-    def _merge_result(fetch: Any, result: Any) -> None:
+    def _merge_result(fetch: Any, result: Any, provider_name: str) -> None:
         name = getattr(fetch, "__name__", str(fetch))
         if not isinstance(result, list):
             log.error("%s fetch gab keine Liste zurück: %r", name, result)
+            report.provider_error(provider_name, "Ungültige Antwort (keine Liste)")
             return
-        provider_name = getattr(fetch, "_provider_cache_name", None)
-        if provider_name and not result:
+        _normalize_item_datetimes(result)
+        items.extend(result)
+        count = len(result)
+        if count == 0:
             log.warning(
                 "Cache für Provider '%s' leer – generiere Feed ohne aktuelle Daten.",
                 provider_name,
             )
-        _normalize_item_datetimes(result)
-        items.extend(result)
+            report.provider_success(
+                provider_name,
+                items=count,
+                status="empty",
+                detail="Keine aktuellen Daten",
+            )
+        else:
+            report.provider_success(provider_name, items=count)
 
     for fetch in cache_fetchers:
         name = getattr(fetch, "__name__", str(fetch))
+        provider_name = provider_names.get(fetch, _provider_display_name(fetch))
+        report.provider_started(provider_name)
         try:
             result = fetch()
         except Exception as exc:
             log.exception("%s fetch fehlgeschlagen: %s", name, exc)
+            report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
             continue
-        _merge_result(fetch, result)
+        _merge_result(fetch, result, provider_name)
 
     if not network_fetchers:
         return items
 
-    futures: Dict[Any, Any] = {}
+    futures: Dict[Any, Tuple[Any, str]] = {}
     desired_workers = len(network_fetchers)
     if PROVIDER_MAX_WORKERS > 0:
         if desired_workers > PROVIDER_MAX_WORKERS:
@@ -725,28 +1121,65 @@ def _collect_items() -> List[Dict[str, Any]]:
     timed_out = False
     try:
         for fetch in network_fetchers:
-            futures[executor.submit(fetch)] = fetch
+            provider_name = provider_names.get(fetch, _provider_display_name(fetch))
+            report.provider_started(provider_name)
+            futures[executor.submit(fetch)] = (fetch, provider_name)
         try:
             for future in as_completed(futures, timeout=PROVIDER_TIMEOUT):
-                fetch = futures[future]
+                fetch, provider_name = futures[future]
                 name = getattr(fetch, "__name__", str(fetch))
                 try:
                     result = future.result()
                 except TimeoutError:
-                    log.warning("%s fetch Timeout nach %ss", name, PROVIDER_TIMEOUT)
+                    log.error("%s fetch Timeout nach %ss", name, PROVIDER_TIMEOUT)
+                    report.provider_error(
+                        provider_name,
+                        f"Timeout nach {PROVIDER_TIMEOUT}s",
+                    )
                 except Exception as exc:
                     log.exception("%s fetch fehlgeschlagen: %s", name, exc)
+                    report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
                 else:
-                    _merge_result(fetch, result)
+                    _merge_result(fetch, result, provider_name)
         except TimeoutError:
             timed_out = True
-            log.warning("Provider-Timeout nach %ss", PROVIDER_TIMEOUT)
+            log.error("Provider-Timeout nach %ss", PROVIDER_TIMEOUT)
             executor.shutdown(wait=False, cancel_futures=True)
+            for future, (fetch, provider_name) in futures.items():
+                if future.done():
+                    continue
+                report.provider_error(
+                    provider_name,
+                    f"Timeout nach {PROVIDER_TIMEOUT}s (globaler Abbruch)",
+                )
     finally:
         if not timed_out:
             executor.shutdown(wait=True)
 
     return items
+
+
+def _invoke_collect_items(report: RunReport) -> List[Dict[str, Any]]:
+    collect_fn = _collect_items
+    try:
+        signature = inspect.signature(collect_fn)
+    except (TypeError, ValueError):  # pragma: no cover - defensive
+        signature = None
+    if signature is not None:
+        params = signature.parameters
+        if not params:
+            return collect_fn()
+        if "report" in params:
+            return collect_fn(report=report)
+        if all(
+            param.kind in (
+                inspect.Parameter.POSITIONAL_ONLY,
+                inspect.Parameter.POSITIONAL_OR_KEYWORD,
+            )
+            for param in params.values()
+        ):
+            return collect_fn()
+    return collect_fn(report=report)
 
 
 def _drop_old_items(
@@ -1063,6 +1496,9 @@ def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[
 
 def main() -> int:
     statuses = _provider_statuses()
+    report = RunReport(statuses)
+    report.prune_logs()
+    report.attach_error_collector()
     _log_startup_summary(statuses)
     _validate_configuration(statuses)
 
@@ -1070,66 +1506,92 @@ def main() -> int:
     now = datetime.now(timezone.utc)
     state = _load_state()
 
-    collect_start = perf_counter()
-    items = _collect_items()
-    collect_duration = perf_counter() - collect_start
-    raw_count = len(items)
-    log.info("Provider-Abfrage abgeschlossen: %d Items in %.2fs", raw_count, collect_duration)
+    try:
+        collect_start = perf_counter()
+        items = _invoke_collect_items(report)
+        collect_duration = perf_counter() - collect_start
+        raw_count = len(items)
+        log.info(
+            "Provider-Abfrage abgeschlossen: %d Items in %.2fs",
+            raw_count,
+            collect_duration,
+        )
 
-    normalize_start = perf_counter()
-    _normalize_item_datetimes(items)
-    normalize_duration = perf_counter() - normalize_start
-    log.debug("Zeitstempel normalisiert in %.2fs", normalize_duration)
+        normalize_start = perf_counter()
+        _normalize_item_datetimes(items)
+        normalize_duration = perf_counter() - normalize_start
+        log.debug("Zeitstempel normalisiert in %.2fs", normalize_duration)
 
-    filter_start = perf_counter()
-    items = _drop_old_items(items, now, state)
-    filter_duration = perf_counter() - filter_start
-    log.info(
-        "Altersfilter angewendet: %d Items nach %.2fs (vorher: %d)",
-        len(items),
-        filter_duration,
-        raw_count,
-    )
+        filter_start = perf_counter()
+        items = _drop_old_items(items, now, state)
+        filter_duration = perf_counter() - filter_start
+        log.info(
+            "Altersfilter angewendet: %d Items nach %.2fs (vorher: %d)",
+            len(items),
+            filter_duration,
+            raw_count,
+        )
 
-    dedupe_start = perf_counter()
-    deduped = _dedupe_items(items)
-    dedupe_duration = perf_counter() - dedupe_start
-    log.info(
-        "Duplikate entfernt: %d eindeutige Items nach %.2fs (vorher: %d)",
-        len(deduped),
-        dedupe_duration,
-        len(items),
-    )
-    items = deduped
-    if not items:
-        log.warning("Keine Items gesammelt.")
-        items = []
-    else:
-        log.debug("Sortiere %d Items nach Priorität.", len(items))
-    items.sort(key=_sort_key)
+        dedupe_start = perf_counter()
+        deduped = _dedupe_items(items)
+        dedupe_duration = perf_counter() - dedupe_start
+        log.info(
+            "Duplikate entfernt: %d eindeutige Items nach %.2fs (vorher: %d)",
+            len(deduped),
+            dedupe_duration,
+            len(items),
+        )
+        items = deduped
+        if not items:
+            log.warning("Keine Items gesammelt.")
+            items = []
+        else:
+            log.debug("Sortiere %d Items nach Priorität.", len(items))
+        items.sort(key=_sort_key)
 
-    rss_start = perf_counter()
-    rss = _make_rss(items, now, state)
-    rss_duration = perf_counter() - rss_start
+        rss_start = perf_counter()
+        rss = _make_rss(items, now, state)
+        rss_duration = perf_counter() - rss_start
 
-    out_path = _validate_path(Path(OUT_PATH), "OUT_PATH")
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = out_path.with_suffix('.tmp')
-    with tmp.open('w', encoding='utf-8') as f:
-        f.write(rss)
-        f.flush()
-        os.fsync(f.fileno())
-    tmp.replace(out_path)
+        out_path = _validate_path(Path(OUT_PATH), "OUT_PATH")
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = out_path.with_suffix('.tmp')
+        with tmp.open('w', encoding='utf-8') as f:
+            f.write(rss)
+            f.flush()
+            os.fsync(f.fileno())
+        tmp.replace(out_path)
 
-    total_duration = perf_counter() - job_start
-    log.info(
-        "Feed geschrieben: %s (%d Items) in %.2fs (RSS-Erzeugung: %.2fs)",
-        out_path,
-        min(len(items), MAX_ITEMS),
-        total_duration,
-        rss_duration,
-    )
-    return 0
+        total_duration = perf_counter() - job_start
+        log.info(
+            "Feed geschrieben: %s (%d Items) in %.2fs (RSS-Erzeugung: %.2fs)",
+            out_path,
+            min(len(items), MAX_ITEMS),
+            total_duration,
+            rss_duration,
+        )
+        report.finish(
+            build_successful=True,
+            raw_items=raw_count,
+            final_items=len(items),
+            durations={
+                "collect": collect_duration,
+                "normalize": normalize_duration,
+                "filter": filter_duration,
+                "dedupe": dedupe_duration,
+                "rss": rss_duration,
+                "total": total_duration,
+            },
+            feed_path=out_path,
+        )
+        report.log_results()
+        return 0
+    except Exception as exc:  # pragma: no cover - defensive
+        log.exception("Feed-Bau fehlgeschlagen: %s", exc)
+        report.record_exception(exc)
+        report.finish(build_successful=False)
+        report.log_results()
+        raise
 
 if __name__ == "__main__":
     sys.exit(main())
