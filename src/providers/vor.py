@@ -852,6 +852,7 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Mapping[str, An
                 except ValueError:
                     _log_warning("VOR StationBoard %s lieferte ungültiges JSON", station_id)
                     return None
+            return None
     except RequestException as exc:
         _log_error("VOR StationBoard %s Ausnahme: %s", station_id, exc)
         return None

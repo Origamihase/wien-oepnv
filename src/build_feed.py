@@ -1390,13 +1390,11 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
 
             while pending:
                 now = perf_counter()
-                expired = [
-                    future
-                    for future in list(pending)
-                    if deadlines.get(future) is not None
-                    and deadlines[future] is not None
-                    and now >= deadlines[future]
-                ]
+                expired = []
+                for future in list(pending):
+                    deadline = deadlines.get(future)
+                    if deadline is not None and now >= deadline:
+                        expired.append(future)
                 for future in expired:
                     pending.discard(future)
                     fetch, provider_name, timeout_value = futures[future]
@@ -1413,11 +1411,11 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
                     break
 
                 wait_timeout: Optional[float] = None
-                remaining = [
-                    deadlines[fut] - now
-                    for fut in pending
-                    if deadlines.get(fut) is not None and deadlines[fut] is not None
-                ]
+                remaining = []
+                for fut in pending:
+                    deadline = deadlines.get(fut)
+                    if deadline is not None:
+                        remaining.append(deadline - now)
                 if remaining:
                     wait_timeout = max(min(remaining), 0.0)
 

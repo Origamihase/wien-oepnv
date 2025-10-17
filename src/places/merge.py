@@ -6,7 +6,7 @@ import json
 from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, List, MutableMapping, Optional, Sequence, Tuple, TypedDict
+from typing import Iterable, List, MutableMapping, Optional, Sequence, Tuple, TypedDict, cast
 
 from .client import Place
 from .normalize import haversine_m, normalize_name
@@ -72,7 +72,7 @@ def load_stations(path: Path) -> List[StationEntry]:
     for raw in data:
         if not isinstance(raw, MutableMapping):
             raise ValueError("stations entries must be objects")
-        stations.append(deepcopy(raw))
+        stations.append(cast(StationEntry, deepcopy(raw)))
     return stations
 
 

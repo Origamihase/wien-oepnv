@@ -137,7 +137,8 @@ class GooglePlacesClient:
                 if place is not None:
                     yield place
 
-            page_token = response.get("nextPageToken")
+            next_token = response.get("nextPageToken")
+            page_token = next_token if isinstance(next_token, str) else None
             if not page_token:
                 break
 
