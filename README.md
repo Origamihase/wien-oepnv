@@ -183,13 +183,14 @@ Die wichtigsten GitHub Actions:
 - `update-wl-cache.yml`, `update-oebb-cache.yml`, `update-vor-cache.yml` – füllen die Provider-Caches.
 - `update-stations.yml` – pflegt monatlich `data/stations.json`.
 - `build-feed.yml` – erzeugt `docs/feed.xml` auf Basis der aktuellen Caches.
-- `test.yml` & `test-vor-api.yml` – führen die vollständige Test-Suite bzw. VOR-spezifische Integrationstests aus.
+- `test.yml` & `test-vor-api.yml` – führen die vollständige Test-Suite bzw. VOR-spezifische Integrationstests aus; `test.yml` läuft bei jedem Push sowie Pull Request und stellt die kontinuierliche Testabdeckung sicher.
 
 Alle Feed-Builds warten auf die Cache-Jobs (`needs`-Abhängigkeit), damit stets konsistente Daten verwendet werden.
 
 ## Entwicklung & Qualitätssicherung
 
 - **Tests**: `python -m pytest` führt sämtliche Unit- und Integrationstests aus (`tests/`).
+- **Kontinuierliche Tests**: Die GitHub Action `test.yml` automatisiert die im Audit empfohlene regelmäßige Testausführung und bricht Builds bei fehlschlagender Test-Suite ab.
 - **Statische Analyse**: `ruff check` (Stil/Konsistenz) und `mypy` (selektive Typprüfung, Fokus auf `src/build_feed.py`).
 - **Logging**: Zur Laufzeit entsteht `log/errors.log` mit rotierenden Dateien; Größe und Anzahl sind konfigurierbar.
 
