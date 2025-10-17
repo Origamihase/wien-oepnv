@@ -18,7 +18,7 @@ Alle Parameter lassen sich via Umgebungsvariablen steuern. Die wichtigsten:
 | --- | --- | --- |
 | `GOOGLE_ACCESS_ID` | – | **Pflicht.** Primärer API-Key für Google Places. |
 | `GOOGLE_MAPS_API_KEY` | – | Deprecated Fallback – wird automatisch verwendet, falls `GOOGLE_ACCESS_ID` fehlt. |
-| `PLACES_INCLUDED_TYPES` | `train_station,subway_station,transit_station` | Komma-separierte Liste von Place-Typen. |
+| `PLACES_INCLUDED_TYPES` | `train_station,subway_station,bus_station` | Komma-separierte Liste von Place-Typen. |
 | `PLACES_LANGUAGE` | `de` | Sprache der API-Antworten. |
 | `PLACES_REGION` | `AT` | Regions-Bias. |
 | `PLACES_RADIUS_M` | `2500` | Radius je Suchkachel (Meter). |
@@ -97,7 +97,7 @@ Ein GitHub-Workflow (`.github/workflows/update-google-places-stations.yml`) füh
 
 Der Workflow führt vor dem eigentlichen Fetch einen minimalen `places:searchText`-Preflight aus. Damit wird schnell erkannt, ob der API-Key wegen Restriktionen oder fehlendem Billing blockiert ist. Die Anfrage setzt `X-Goog-FieldMask: places.id`, läuft mit einem Timeout von 20 Sekunden und versucht es bis zu drei Mal mit kurzen Backoffs. Sensible Daten werden nicht ausgegeben; der Key selbst erscheint nicht im Log.
 
-Zusätzlich validiert ein Nearby-Preflight (`places:searchNearby`) den Request-Body, indem eine einzelne Kachel mit `includedTypes=["train_station"]` geprüft wird. Der Workflow erzwingt dafür kompatible Place-Typen (`train_station, subway_station, bus_station`) via ENV und bricht andernfalls frühzeitig ab.
+Zusätzlich validiert ein Nearby-Preflight (`places:searchNearby`) den Request-Body. Er sendet eine einzelne Kachel mit `includedTypes=["train_station"]`, `maxResultCount=1` und dem FieldMask-Header `places.id,places.displayName,places.location`. Dadurch erkennt der Workflow ungültige Typen oder Feldmasken, bevor der eigentliche Import startet. Für die Abfrage werden kompatible Place-Typen (`train_station, subway_station, bus_station`) via ENV erzwungen. Schlägt der Preflight fehl, liefert ein anschließender Debug-Step (`if: failure()`) einmalig die komprimierte Server-Antwort zur Analyse.
 
 ## Migration
 

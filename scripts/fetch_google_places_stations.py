@@ -96,7 +96,7 @@ def _parse_args(argv: Sequence[str] | None) -> argparse.Namespace:
 
 
 def _parse_included_types(raw: str | None) -> List[str]:
-    raw_value = raw or "train_station,subway_station,transit_station"
+    raw_value = raw or "train_station,subway_station,bus_station"
     items = [part.strip() for part in raw_value.split(",") if part.strip()]
     if not items:
         raise ValueError("PLACES_INCLUDED_TYPES must not be empty")
