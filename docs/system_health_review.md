@@ -38,4 +38,6 @@
 
 - **Cache-Monitoring** – Die Registrierung von Hooks für Cache-Warnungen ist jetzt thread-sicher. Gleichzeitige An- und Abmeldungen werden durch ein Re-Entrant-Lock koordiniert, wodurch Race-Conditions in stark parallelisierten Szenarien vermieden werden.【F:src/utils/cache.py†L12-L58】
 
+- **Performance-Monitoring** – Ergänzend zum bisherigen Logging existiert nun ein dokumentiertes Konzept für Laufzeitmetriken, Alarme und Profiling-Workflows (`docs/performance_monitoring_plan.md`). Damit ist die im Audit empfohlene Beobachtung der Feed-Performance umgesetzt.
+
 Insgesamt bestätigt der aktuelle Stand eine zweckmäßige, robuste und sichere Umsetzung der Feed-Generierung. Kritische Fehler oder Sicherheitsmängel wurden nicht gefunden; die genannten Empfehlungen betreffen proaktives Betriebs-Finetuning.
