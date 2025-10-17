@@ -47,6 +47,22 @@
     "longitude": 16.223929
   },
   {
+    "bst_id": 263,
+    "bst_code": "Cf",
+    "name": "Wien Zentralfriedhof",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490151900",
+    "aliases": [
+      "Wien Zentralfriedhof",
+      "Zentralfriedhof",
+      "Cf",
+      "490151900"
+    ],
+    "latitude": 48.153811,
+    "longitude": 16.426285
+  },
+  {
     "bst_id": 309,
     "bst_code": "Ebr",
     "name": "Ebreichsdorf",
@@ -110,6 +126,22 @@
     "longitude": 16.4039
   },
   {
+    "bst_id": 399,
+    "bst_code": "F   H1",
+    "name": "Wien Siemensstraße",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490124800",
+    "aliases": [
+      "Wien Siemensstraße",
+      "Siemensstraße",
+      "F   H1",
+      "490124800"
+    ],
+    "latitude": 48.270932,
+    "longitude": 16.420748
+  },
+  {
     "bst_id": 400,
     "bst_code": "Bse",
     "name": "Wien Brünner Straße",
@@ -154,6 +186,38 @@
     ],
     "latitude": 48.340239,
     "longitude": 16.732314
+  },
+  {
+    "bst_id": 570,
+    "bst_code": "Gef",
+    "name": "Gerasdorf",
+    "in_vienna": false,
+    "pendler": true,
+    "vor_id": "430349900",
+    "aliases": [
+      "Gerasdorf",
+      "Gef",
+      "430349900",
+      "Gerasdorf bei Wien Bahnhof"
+    ],
+    "latitude": 48.293315,
+    "longitude": 16.483736
+  },
+  {
+    "bst_id": 711,
+    "bst_code": "Gs",
+    "name": "Schwechat",
+    "in_vienna": false,
+    "pendler": true,
+    "vor_id": "430471000",
+    "aliases": [
+      "Schwechat",
+      "Gs",
+      "430471000",
+      "Schwechat Bahnhof"
+    ],
+    "latitude": 48.143195,
+    "longitude": 16.482055
   },
   {
     "bst_id": 779,
@@ -249,6 +313,22 @@
     "longitude": 16.189752
   },
   {
+    "bst_id": 857,
+    "bst_code": "Hns",
+    "name": "Wien Hernals",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490050500",
+    "aliases": [
+      "Wien Hernals",
+      "Hernals",
+      "Hns",
+      "490050500"
+    ],
+    "latitude": 48.223298,
+    "longitude": 16.314945
+  },
+  {
     "bst_id": 901,
     "bst_code": "Ht",
     "name": "Wien Heiligenstadt",
@@ -279,6 +359,22 @@
     "longitude": 16.344277
   },
   {
+    "bst_id": 903,
+    "bst_code": "Ht  H2",
+    "name": "Wien Krottenbachstraße",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490072300",
+    "aliases": [
+      "Wien Krottenbachstraße",
+      "Krottenbachstraße",
+      "Ht  H2",
+      "490072300"
+    ],
+    "latitude": 48.240054,
+    "longitude": 16.341104
+  },
+  {
     "bst_id": 904,
     "bst_code": "Ht  H3",
     "name": "Wien Gersthof",
@@ -293,6 +389,23 @@
     ],
     "latitude": 48.2307,
     "longitude": 16.3062
+  },
+  {
+    "bst_id": 926,
+    "bst_code": "Hz",
+    "name": "Wien Mitte (Landstraße)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490074300",
+    "aliases": [
+      "Wien Mitte (Landstraße)",
+      "Wien Mitte",
+      "Wien Mitte-Landstraße",
+      "Hz",
+      "490074300"
+    ],
+    "latitude": 48.206048,
+    "longitude": 16.384584
   },
   {
     "bst_id": 934,
@@ -422,6 +535,22 @@
     "longitude": 16.285559
   },
   {
+    "bst_id": 1266,
+    "bst_code": "Lp",
+    "name": "Wien Leopoldau",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490076900",
+    "aliases": [
+      "Wien Leopoldau",
+      "Leopoldau",
+      "Lp",
+      "490076900"
+    ],
+    "latitude": 48.277593,
+    "longitude": 16.450691
+  },
+  {
     "bst_id": 1348,
     "bst_code": "Het",
     "name": "Wien Hetzendorf",
@@ -523,6 +652,22 @@
     "aliases": []
   },
   {
+    "bst_id": 1534,
+    "bst_code": "Nf",
+    "name": "Wien Nußdorf",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490094800",
+    "aliases": [
+      "Wien Nußdorf",
+      "Nußdorf",
+      "Nf",
+      "490094800"
+    ],
+    "latitude": 48.260217,
+    "longitude": 16.367658
+  },
+  {
     "bst_id": 1558,
     "bst_code": "Nl",
     "name": "Neulengbach",
@@ -567,6 +712,22 @@
     ],
     "latitude": 48.234274,
     "longitude": 16.383955
+  },
+  {
+    "bst_id": 1620,
+    "bst_code": "Ok",
+    "name": "Wien Ottakring",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490098100",
+    "aliases": [
+      "Wien Ottakring",
+      "Ottakring",
+      "Ok",
+      "490098100"
+    ],
+    "latitude": 48.211792,
+    "longitude": 16.311376
   },
   {
     "bst_id": 1621,
@@ -645,6 +806,22 @@
     ],
     "latitude": 48.286061,
     "longitude": 16.381079
+  },
+  {
+    "bst_id": 1998,
+    "bst_code": "Sg",
+    "name": "Wien Grillgasse",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490125700",
+    "aliases": [
+      "Wien Grillgasse",
+      "Grillgasse",
+      "Sg",
+      "490125700"
+    ],
+    "latitude": 48.166927,
+    "longitude": 16.407309
   },
   {
     "bst_id": 2095,
@@ -741,6 +918,23 @@
     "longitude": 16.175774
   },
   {
+    "bst_id": 1290401,
+    "bst_code": "Wbf",
+    "name": "Wien Hauptbahnhof",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490134900",
+    "aliases": [
+      "Wien Hauptbahnhof",
+      "Wien Hbf",
+      "Wien Hauptbahnhof Bahnhof",
+      "Wbf",
+      "490134900"
+    ],
+    "latitude": 48.185184,
+    "longitude": 16.376413
+  },
+  {
     "bst_id": 2396,
     "bst_code": "Wbf H2",
     "name": "Wien Haidestraße",
@@ -833,6 +1027,55 @@
     ],
     "latitude": 48.196654,
     "longitude": 16.337652
+  },
+  {
+    "bst_id": 2548,
+    "bst_code": "Za",
+    "name": "Kledering",
+    "in_vienna": false,
+    "pendler": true,
+    "vor_id": "430389500",
+    "aliases": [
+      "Kledering",
+      "Za",
+      "430389500",
+      "Kledering Bahnhof"
+    ],
+    "latitude": 48.132453,
+    "longitude": 16.439724
+  },
+  {
+    "bst_id": 1251757,
+    "bst_code": "Nw  H1H",
+    "name": "Wien St. Marx",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490142500",
+    "aliases": [
+      "Wien St. Marx",
+      "St. Marx",
+      "St.Marx",
+      "Nw  H1H",
+      "490142500"
+    ],
+    "latitude": 48.188312,
+    "longitude": 16.398895
+  },
+  {
+    "bst_id": 1251761,
+    "bst_code": "Sah H1",
+    "name": "Wien Geiselbergstraße",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490048400",
+    "aliases": [
+      "Wien Geiselbergstraße",
+      "Geiselbergstraße",
+      "Sah H1",
+      "490048400"
+    ],
+    "latitude": 48.175026,
+    "longitude": 16.40704
   },
   {
     "bst_id": 2968384,
