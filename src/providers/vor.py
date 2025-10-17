@@ -16,6 +16,9 @@ import requests
 from requests import RequestException, Session
 from zoneinfo import ZoneInfo
 
+from .region_filter import keep_by_region as _shared_keep_by_region
+from ..utils.env import get_bool_env
+
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
     from ..utils.http import session_with_retries
 else:  # pragma: no cover - allow running via package or src layout
@@ -59,6 +62,8 @@ VOR_RETRY_OPTIONS: Dict[str, Any] = {
 VOR_ACCESS_ID = ""
 _VOR_ACCESS_TOKEN_RAW = ""
 _VOR_AUTHORIZATION_HEADER = ""
+
+VOR_ONLY_VIENNA = get_bool_env("VOR_ONLY_VIENNA", False)
 
 
 
@@ -117,6 +122,10 @@ def _log_error(message: str, *args: Any) -> None:
         log.error(message, *sanitized_args)
     else:
         log.error("%s", _sanitize_message(message))
+
+
+def _keep_by_region(title: str, desc: str) -> bool:
+    return _shared_keep_by_region(title, desc, only_vienna=VOR_ONLY_VIENNA)
 
 def _get_env(name: str) -> str:
     return (os.getenv(name) or "").strip()
@@ -580,13 +589,18 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[Dict[s
         if lines:
             title = f"{lines[0]}: {title}" if title else lines[0]
 
+        description = "\n".join(description_lines)
+
+        if not _keep_by_region(title, description):
+            continue
+
         items.append(
             {
                 "guid": _build_guid(station_id, message),
                 "source": "VOR/VAO",
                 "category": "Störung",
                 "title": title,
-                "description": "\n".join(description_lines),
+                "description": description,
                 "link": DEFAULT_INFO_LINK,
                 "pubDate": start_dt,
                 "starts_at": start_dt,

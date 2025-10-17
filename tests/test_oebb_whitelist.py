@@ -4,9 +4,16 @@ from pathlib import Path
 import pytest
 
 import src.providers.oebb as oebb
+import src.providers.vor as vor
 from src.utils import stations as station_utils
 
 _STATIONS_PATH = Path(__file__).resolve().parents[1] / "data" / "stations.json"
+
+
+PROVIDERS = [
+    pytest.param(oebb, "OEBB_ONLY_VIENNA", id="oebb"),
+    pytest.param(vor, "VOR_ONLY_VIENNA", id="vor"),
+]
 
 
 @pytest.fixture(scope="module")
@@ -49,16 +56,21 @@ def test_station_flags_match_utils(pendler_station, vienna_station):
     assert station_utils.is_in_vienna(vienna_station)
 
 
+@pytest.mark.parametrize("provider,_flag_attr", PROVIDERS)
 @pytest.mark.parametrize("arrow", ["↔", "<->", "->", "—", "–", "→"])
-def test_pendler_station_is_whitelisted(arrow: str, pendler_station, vienna_station) -> None:
-    assert oebb._keep_by_region(f"{vienna_station} {arrow} {pendler_station}", "")
+def test_pendler_station_is_whitelisted(
+    provider, _flag_attr: str, arrow: str, pendler_station, vienna_station
+) -> None:
+    assert provider._keep_by_region(f"{vienna_station} {arrow} {pendler_station}", "")
 
 
-def test_vienna_station_is_whitelisted(vienna_station):
-    assert oebb._keep_by_region(f"{vienna_station} ↔ {vienna_station}", "")
+@pytest.mark.parametrize("provider,_flag_attr", PROVIDERS)
+def test_vienna_station_is_whitelisted(provider, _flag_attr: str, vienna_station):
+    assert provider._keep_by_region(f"{vienna_station} ↔ {vienna_station}", "")
 
 
-def test_only_vienna_env(monkeypatch, pendler_station, vienna_station):
-    monkeypatch.setattr(oebb, "OEBB_ONLY_VIENNA", True)
-    assert not oebb._keep_by_region(f"{vienna_station} ↔ {pendler_station}", "")
-    assert oebb._keep_by_region(f"{vienna_station} ↔ {vienna_station}", "")
+@pytest.mark.parametrize("provider,flag_attr", PROVIDERS)
+def test_only_vienna_env(monkeypatch, provider, flag_attr: str, pendler_station, vienna_station):
+    monkeypatch.setattr(provider, flag_attr, True)
+    assert not provider._keep_by_region(f"{vienna_station} ↔ {pendler_station}", "")
+    assert provider._keep_by_region(f"{vienna_station} ↔ {vienna_station}", "")

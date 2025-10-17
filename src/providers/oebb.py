@@ -51,6 +51,7 @@ else:  # pragma: no cover - support both package layouts at runtime
     except ModuleNotFoundError:
         from ..utils.http import session_with_retries  # type: ignore
 from defusedxml import ElementTree as ET
+from .region_filter import ARROW_ANY_RE, MULTI_ARROW_RE, clean_endpoint, keep_by_region as _shared_keep_by_region
 
 log = logging.getLogger(__name__)
 
@@ -65,37 +66,12 @@ OEBB_ONLY_VIENNA = get_bool_env("OEBB_ONLY_VIENNA", False)
 USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"
 
 # ---------------- Titel + Endpunkte ----------------
-# remove generic suffixes like "Bahnhof" or "Hbf" when they appear as standalone
-# tokens (optionally followed by "(U)", "(S)" or similar short indicators)
-BAHNHOF_TRIM_RE = re.compile(
-    r"\s*\b(?:Bahnhof|Bahnhst|Hbf|Bf)\b(?:\s*\(\s*[US]\d*\s*\))?",
-    re.IGNORECASE,
-)
-# cover compound spellings that glue "Bahnhof"/"Hbf" directly to the
-# station name but still end with whitespace, a hyphen or string end, e.g.
-# "Ostbahnhof-Messe" → "Ost-Messe"
-BAHNHOF_COMPOUND_RE = re.compile(
-    r"(?<=\S)(?:Bahnhof|Bahnhst|Hbf|Bf)(?=(?:\s|-|$))",
-    re.IGNORECASE,
-)
-# treat simple hyphen as separator only when surrounded by spaces
-ARROW_ANY_RE    = re.compile(r"\s*(?:<=>|<->|<>|→|↔|=>|=|–|—|\s-\s)\s*")
 COLON_PREFIX_RE = re.compile(
     r"""^\s*(?:Update\s*\d+\s*\([^)]*\)\s*)?
         (?:DB\s*↔\s*)?
         (?:[A-Za-zÄÖÜäöüß/ \-]+:\s*)+
     """, re.IGNORECASE | re.VERBOSE
 )
-MULTI_ARROW_RE  = re.compile(r"(?:\s*↔\s*){2,}")
-_MULTI_SLASH_RE = re.compile(r"\s*/{2,}\s*")
-_MULTI_COMMA_RE = re.compile(r"\s*,{2,}\s*")
-
-def _clean_endpoint(p: str) -> str:
-    p = BAHNHOF_TRIM_RE.sub("", p)
-    p = _MULTI_SLASH_RE.sub("/", p)
-    p = _MULTI_COMMA_RE.sub(", ", p)
-    p = re.sub(r"\s{2,}", " ", p)
-    return p.strip(" ,/")
 
 def _clean_title_keep_places(t: str) -> str:
     t = (t or "").strip()
@@ -112,7 +88,7 @@ def _clean_title_keep_places(t: str) -> str:
             continue
         canon = canonical_name(segment)
         if not canon:
-            cleaned = _clean_endpoint(segment)
+            cleaned = clean_endpoint(segment)
             canon = canonical_name(cleaned) or cleaned
         if canon:
             canon = re.sub(r"\s+\(VOR\)$", "", canon)
@@ -131,73 +107,9 @@ def _clean_title_keep_places(t: str) -> str:
     t = re.sub(r"[<>«»‹›]+", "", t)
     return t.strip()
 
-def _split_endpoints(title: str) -> Optional[List[str]]:
-    """Extrahiert Endpunktnamen links/rechts (ohne Bahnhof/Hbf/Klammern)."""
-    arrow_markers = (
-        "↔", "<=>", "<->", "→", "=>", "->", "—", "–",
-    )
-    if not any(a in title for a in arrow_markers) and not re.search(r"\s-\s", title):
-        return None
-    parts = [
-        p for p in re.split(r"\s*(?:↔|<=>|<->|→|=>|->|—|–|\s-\s)\s*", title) if p.strip()
-    ]
-    if len(parts) < 2:
-        return None
-    left, right = parts[0], parts[1]
-    def explode(side: str) -> List[str]:
-        tmp = re.split(r"\s*(?:/|,|bzw\.|oder|und)\s*", side, flags=re.IGNORECASE)
-        names: List[str] = []
-        for n in tmp:
-            n = BAHNHOF_TRIM_RE.sub("", n)
-            n = BAHNHOF_COMPOUND_RE.sub("", n)
-            n = re.sub(r"\s*\([^)]*\)\s*", "", n)  # Klammern-Inhalte weg
-            n = re.sub(r"\s{2,}", " ", n).strip(" .")
-            if n:
-                names.append(n)
-        return names
-    # Links/Rechts zusammenführen und Duplikate entfernen
-    endpoints = explode(left) + explode(right)
-    return list(dict.fromkeys(endpoints))
-
-# ---------------- Region helpers ----------------
-_MAX_STATION_WINDOW = 4
-_FAR_AWAY_RE = re.compile(
-    r"\b(salzburg|innsbruck|villach|bregenz|linz|graz|klagenfurt|bratislava|muenchen|passau|freilassing)\b",
-    re.IGNORECASE,
-)
-
-
-def _is_allowed_station(name: str) -> bool:
-    if is_in_vienna(name):
-        return True
-    if OEBB_ONLY_VIENNA:
-        return False
-    return is_pendler(name)
-
-
-def _has_allowed_station(blob: str) -> bool:
-    tokens = [t for t in re.split(r"\W+", blob) if t]
-    if not tokens:
-        return False
-    window = min(_MAX_STATION_WINDOW, len(tokens))
-    for size in range(window, 0, -1):
-        for idx in range(len(tokens) - size + 1):
-            candidate = " ".join(tokens[idx : idx + size])
-            if _is_allowed_station(candidate):
-                return True
-    return False
-
 
 def _keep_by_region(title: str, desc: str) -> bool:
-    endpoints = _split_endpoints(title)
-    if endpoints:
-        return all(_is_allowed_station(x) for x in endpoints)
-    blob = f"{title or ''} {desc or ''}"
-    if not _has_allowed_station(blob):
-        return False
-    if _FAR_AWAY_RE.search(blob):
-        return False
-    return True
+    return _shared_keep_by_region(title, desc, only_vienna=OEBB_ONLY_VIENNA)
 
 # ---------------- Fetch/Parse ----------------
 def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
