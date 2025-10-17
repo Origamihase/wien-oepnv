@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import pytest
 
-from src.utils.stations import station_info
+from src.utils.stations import station_info, vor_station_ids
 
 
 def test_vor_lookup_by_id():
@@ -38,3 +38,13 @@ def test_vor_does_not_override_station_directory():
     assert info is not None
     assert info.vor_id == "900300"
     assert info.name == "Wiener Neustadt Hbf"
+
+
+def test_vor_station_ids_only_cover_vienna_or_pendler():
+    ids = vor_station_ids()
+    assert ids, "expected VOR station ids"
+
+    for vor_id in ids:
+        info = station_info(vor_id)
+        assert info is not None, f"missing station info for {vor_id}"
+        assert info.in_vienna or info.pendler, f"unexpected non-pendler VOR id {vor_id}"
