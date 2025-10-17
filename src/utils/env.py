@@ -89,7 +89,9 @@ def get_int_env(name: str, default: int) -> int:
         return default
 
 
-ENV_ASSIGNMENT_RE = re.compile(r"^(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)=(.*)$")
+ENV_ASSIGNMENT_RE = re.compile(
+    r"^(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$"
+)
 
 
 def _strip_quotes(value: str) -> str:
