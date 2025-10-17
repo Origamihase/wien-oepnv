@@ -410,13 +410,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
+    "title": "52A/52B: Fremder Verkehrsunfall",
+    "description": "Die Linie 52 B ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Linie 52 A ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 14:00 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Hüttelbergstraße # Ulmenstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
-    "pubDate": "2025-10-17T11:45:00+02:00",
-    "starts_at": "2025-10-17T11:45:00+02:00",
+    "guid": "f9aa2b3d79b54243ea50608f4969a6554446e80bed770aa921edd299df3e5549",
+    "pubDate": "2025-10-17T13:10:00+02:00",
+    "starts_at": "2025-10-17T13:10:00+02:00",
     "ends_at": "2025-10-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2025-10-17"
+    "_identity": "wl|störung|L=52A,52B|D=2025-10-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "47B: Fremder Verkehrsunfall",
+    "description": "Die Linie 47 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein fremder Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d9bf5cb05ab45962277c495061bd80efb899ef393e3314a543d9bfe4c73326ba",
+    "pubDate": "2025-10-17T13:20:00+02:00",
+    "starts_at": "2025-10-17T13:20:00+02:00",
+    "ends_at": "2025-10-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=47B|D=2025-10-17"
   }
 ]
