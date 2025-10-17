@@ -8,7 +8,7 @@ import random
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Iterable, Iterator, List, Optional, Set, cast
+from typing import Dict, Iterable, Iterator, List, Optional, Sequence, Set, cast
 
 import requests
 
@@ -27,9 +27,14 @@ __all__ = [
 
 LOGGER = logging.getLogger("places.google")
 
-_FIELD_MASK = (
-    "places.id,places.displayName,places.location,places.types," "places.formattedAddress,nextPageToken"
+FIELD_MASK_NEARBY = "places.id,places.displayName,places.location,places.types"
+FIELD_MASK_TEXT = "places.id,places.displayName,places.location,places.types"
+DEFAULT_INCLUDED_TYPES: Sequence[str] = (
+    "train_station",
+    "subway_station",
+    "bus_station",
 )
+VALID_TYPES: Set[str] = set(DEFAULT_INCLUDED_TYPES)
 _API_BASE = "https://places.googleapis.com/v1"
 
 
@@ -66,6 +71,7 @@ class GooglePlacesConfig:
     radius_m: int
     timeout_s: float
     max_retries: int
+    max_result_count: int = 20
 
 
 class GooglePlacesClient:
@@ -89,6 +95,9 @@ class GooglePlacesClient:
         self._quota_state_path = quota_state_path
         self._enforce_quota = enforce_quota
         self._quota_skipped_kinds: Set[str] = set()
+        self._included_types = self._sanitize_included_types(config.included_types)
+        self._radius_m = self._clamp_radius(config.radius_m)
+        self._max_result_count = self._clamp_max_result_count(config.max_result_count)
 
     def iter_nearby(self, tiles: Iterable[Tile]) -> Iterator[Place]:
         for tile in tiles:
@@ -102,18 +111,21 @@ class GooglePlacesClient:
     def _iter_tile(self, tile: Tile) -> Iterator[Place]:
         base_body: Dict[str, object] = {
             "languageCode": self._config.language,
-            "regionCode": self._config.region,
-            "includedTypes": self._config.included_types,
+            "includedTypes": self._included_types,
             "locationRestriction": {
                 "circle": {
                     "center": {
                         "latitude": tile.latitude,
                         "longitude": tile.longitude,
                     },
-                    "radius": self._config.radius_m,
+                    "radius": self._radius_m,
                 }
             },
         }
+        if self._config.region:
+            base_body["regionCode"] = self._config.region
+        if self._max_result_count:
+            base_body["maxResultCount"] = self._max_result_count
 
         page_token: Optional[str] = None
         while True:
@@ -121,7 +133,12 @@ class GooglePlacesClient:
             if page_token:
                 body["pageToken"] = page_token
             try:
-                response = self._post("places:searchNearby", body, quota_kind="nearby")
+                response = self._post(
+                    "places:searchNearby",
+                    body,
+                    quota_kind="nearby",
+                    field_mask=FIELD_MASK_NEARBY,
+                )
             except GooglePlacesError:
                 raise
             except Exception as exc:  # pragma: no cover - defensive
@@ -196,6 +213,7 @@ class GooglePlacesClient:
         body: Dict[str, object],
         *,
         quota_kind: Optional[str] = None,
+        field_mask: str = FIELD_MASK_NEARBY,
     ) -> Dict[str, object]:
         if quota_kind and self._quota_active:
             quota = cast(MonthlyQuota, self._quota)
@@ -216,7 +234,7 @@ class GooglePlacesClient:
         headers = {
             "Content-Type": "application/json",
             "X-Goog-Api-Key": self._config.api_key,
-            "X-Goog-FieldMask": _FIELD_MASK,
+            "X-Goog-FieldMask": field_mask,
         }
         attempt = 0
         last_error: Optional[Exception] = None
@@ -252,7 +270,10 @@ class GooglePlacesClient:
                     details = self._extract_error_details(response)
                     raise GooglePlacesPermissionError(details)
                 else:
-                    raise GooglePlacesError(self._format_error_message(response))
+                    message = self._format_error_message(response)
+                    raise GooglePlacesError(
+                        f"Failed to fetch places ({response.status_code}): {message}"
+                    )
 
             if attempt > self._config.max_retries:
                 break
@@ -278,6 +299,9 @@ class GooglePlacesClient:
             return default
         if not isinstance(payload, dict):
             return default
+
+        if "error" in payload and isinstance(payload["error"], dict):
+            payload = payload["error"]
 
         message = payload.get("message")
         status = payload.get("status")
@@ -319,6 +343,32 @@ class GooglePlacesClient:
             formatted = f"{status}: {formatted}"
 
         return formatted or default
+
+    def _sanitize_included_types(self, raw_types: Iterable[str]) -> List[str]:
+        seen: Set[str] = set()
+        sanitized: List[str] = []
+        for item in raw_types:
+            if not isinstance(item, str):
+                continue
+            candidate = item.strip().lower()
+            if not candidate:
+                continue
+            if candidate not in VALID_TYPES:
+                LOGGER.warning("Ignoring unsupported place type: %s", item)
+                continue
+            if candidate in seen:
+                continue
+            sanitized.append(candidate)
+            seen.add(candidate)
+        if not sanitized:
+            sanitized = list(DEFAULT_INCLUDED_TYPES)
+        return sanitized
+
+    def _clamp_radius(self, radius: int) -> int:
+        return max(1, min(50000, radius))
+
+    def _clamp_max_result_count(self, value: int) -> int:
+        return max(1, min(20, value)) if value else 0
 
     def _backoff(self, attempt: int) -> float:
         base = 0.5 * (2 ** (attempt - 1))
