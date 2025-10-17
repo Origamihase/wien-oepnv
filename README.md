@@ -99,6 +99,8 @@ verwendest.
 
 ## Provider-spezifische Workflows
 
+Der Meldungsfeed sammelt ausschließlich offizielle Störungs- und Hinweisinformationen der Wiener Linien (WL), der Verkehrsverbund Ost-Region GmbH (VOR) und der ÖBB.
+
 ### Wiener Linien (WL)
 
 - **Quelle**: Realtime-Störungs-Endpoint (`WL_RSS_URL`, Default: `https://www.wienerlinien.at/ogd_realtime`).
@@ -152,6 +154,7 @@ Der Feed liegt anschließend unter `docs/feed.xml`. Bei Bedarf lässt sich `OUT_
 - **ÖBB-Verkehrsstationen** (`Verzeichnis der Verkehrsstationen.xlsx`, Lizenz [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/)).
 - **Wiener Linien OGD** (`wienerlinien-ogd-haltestellen.csv`, `wienerlinien-ogd-haltepunkte.csv`, Lizenz [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
 - **VOR**: GTFS- oder CSV-Exporte unter [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+- **Google**: Ergänzende Abgleiche via Google Maps Platform (Places API) zur Validierung von Geokoordinaten und Aliasen, Nutzung gemäß den [Google Maps Platform Nutzungsbedingungen](https://cloud.google.com/maps-platform/terms/).
 
 ### Aktualisierungsskripte
 
