@@ -49,6 +49,22 @@ def test_load_env_file_override(monkeypatch: pytest.MonkeyPatch, tmp_path: Path)
     assert os.environ["VOR_ACCESS_ID"] == "new"
 
 
+def test_load_env_file_accepts_whitespace_around_equals(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    env_file = tmp_path / "spaced.env"
+    env_file.write_text("TOKEN = abc123\nexport VALUE = quoted\n", encoding="utf-8")
+
+    monkeypatch.delenv("TOKEN", raising=False)
+    monkeypatch.delenv("VALUE", raising=False)
+
+    loaded = env_utils.load_env_file(env_file)
+
+    assert loaded == {"TOKEN": "abc123", "VALUE": "quoted"}
+    assert os.environ["TOKEN"] == "abc123"
+    assert os.environ["VALUE"] == "quoted"
+
+
 def test_load_default_env_files_respects_environment_variable(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     extra_env = tmp_path / "extra.env"
     extra_env.write_text("EXTRA_VALUE=42\n", encoding="utf-8")
