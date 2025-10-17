@@ -7,6 +7,7 @@ import logging
 import os
 from pathlib import Path
 import tempfile
+from threading import RLock
 from typing import Any, Callable, List, Optional
 
 from .env import get_bool_env
@@ -19,6 +20,7 @@ log = logging.getLogger(__name__)
 
 _CacheAlertHook = Callable[[str, str], None]
 _CACHE_ALERT_HOOKS: List[_CacheAlertHook] = []
+_CACHE_ALERT_LOCK = RLock()
 
 
 def register_cache_alert_hook(callback: _CacheAlertHook) -> Callable[[], None]:
@@ -31,13 +33,15 @@ def register_cache_alert_hook(callback: _CacheAlertHook) -> Callable[[], None]:
     across runs.
     """
 
-    _CACHE_ALERT_HOOKS.append(callback)
+    with _CACHE_ALERT_LOCK:
+        _CACHE_ALERT_HOOKS.append(callback)
 
     def _unregister() -> None:
-        try:
-            _CACHE_ALERT_HOOKS.remove(callback)
-        except ValueError:
-            pass
+        with _CACHE_ALERT_LOCK:
+            try:
+                _CACHE_ALERT_HOOKS.remove(callback)
+            except ValueError:
+                pass
 
     return _unregister
 
@@ -45,7 +49,10 @@ def register_cache_alert_hook(callback: _CacheAlertHook) -> Callable[[], None]:
 def _emit_cache_alert(provider: str, message: str) -> None:
     if not provider or not message:
         return
-    for hook in list(_CACHE_ALERT_HOOKS):
+    with _CACHE_ALERT_LOCK:
+        hooks = list(_CACHE_ALERT_HOOKS)
+
+    for hook in hooks:
         try:
             hook(provider, message)
         except Exception:  # pragma: no cover - defensive guard for user hooks

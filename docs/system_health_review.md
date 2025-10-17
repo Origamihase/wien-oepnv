@@ -34,4 +34,8 @@
 3. **Stationsdateien pflegen** – Die Fallback-Liste `data/vor_station_ids_wien.txt` sollte gepflegt werden, damit neue Linien ohne ENV-Anpassung einfließen.【F:src/providers/vor.py†L287-L315】
 4. **WL-Timeout pro Feed-Typ differenzieren** – Beide Wiener-Linien-Endpunkte teilen sich aktuell einen gemeinsamen Timeout. Ein separates Limit pro API-Aufruf könnte lange blockierende `trafficInfoList`-Anfragen abfedern, während `newsList` weiterhin schnell antwortet.【F:src/providers/wl_fetch.py†L303-L341】
 
+## Nachverfolgung
+
+- **Cache-Monitoring** – Die Registrierung von Hooks für Cache-Warnungen ist jetzt thread-sicher. Gleichzeitige An- und Abmeldungen werden durch ein Re-Entrant-Lock koordiniert, wodurch Race-Conditions in stark parallelisierten Szenarien vermieden werden.【F:src/utils/cache.py†L12-L58】
+
 Insgesamt bestätigt der aktuelle Stand eine zweckmäßige, robuste und sichere Umsetzung der Feed-Generierung. Kritische Fehler oder Sicherheitsmängel wurden nicht gefunden; die genannten Empfehlungen betreffen proaktives Betriebs-Finetuning.
