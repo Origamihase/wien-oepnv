@@ -55,6 +55,18 @@ def test_collect_items_missing_cache_logs_warning(monkeypatch, tmp_path, caplog)
     }
 
 
+def test_collect_items_reports_cache_alerts(monkeypatch, tmp_path):
+    build_feed = _import_build_feed_without_providers(monkeypatch)
+    _patch_empty_cache(monkeypatch, tmp_path)
+
+    report = build_feed.RunReport(build_feed._provider_statuses())
+    items = build_feed._collect_items(report=report)
+
+    assert items == []
+    assert any(warning.startswith("Cache wl") for warning in report.warnings)
+    assert any(warning.startswith("Provider wl") for warning in report.warnings)
+
+
 def test_main_runs_without_network(monkeypatch, tmp_path, caplog):
     build_feed = _import_build_feed_without_providers(monkeypatch)
     _patch_empty_cache(monkeypatch, tmp_path)

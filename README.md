@@ -70,8 +70,8 @@ Der Feed-Bau folgt einem klaren Ablauf:
 | `MAX_ITEM_AGE_DAYS`      | Maximales Alter von Meldungen aus den Caches (Standard 365).                    |
 | `ABSOLUTE_MAX_AGE_DAYS`  | Harte Altersgrenze für Meldungen (Standard 540).                                |
 | `ENDS_AT_GRACE_MINUTES`  | Kulanzfenster für vergangene Endzeiten (Standard 10 Minuten).                   |
-| `PROVIDER_TIMEOUT`       | Timeout für Cache-Ladevorgänge (Standard 25 Sekunden).                          |
-| `PROVIDER_MAX_WORKERS`   | Anzahl paralleler Worker (0 = automatisch).                                     |
+| `PROVIDER_TIMEOUT`       | Globales Timeout für Netzwerkprovider (Standard 25 Sekunden). Per Provider via `PROVIDER_TIMEOUT_<NAME>` oder `<NAME>_TIMEOUT` anpassbar. |
+| `PROVIDER_MAX_WORKERS`   | Anzahl paralleler Worker (0 = automatisch). Feiner steuerbar über `PROVIDER_MAX_WORKERS_<GRUPPE>` bzw. `<GRUPPE>_MAX_WORKERS`. |
 | `WL_ENABLE` / `OEBB_ENABLE` / `VOR_ENABLE` | Aktiviert bzw. deaktiviert die einzelnen Provider (Standard: aktiv). |
 | `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT` | Steuerung der Logging-Ausgabe (`log/errors.log`, `log/diagnostics.log`). |
 | `STATE_PATH`, `STATE_RETENTION_DAYS` | Pfad & Aufbewahrung für `data/first_seen.json`.                      |

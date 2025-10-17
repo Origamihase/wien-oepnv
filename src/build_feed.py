@@ -12,9 +12,17 @@ from dataclasses import dataclass, field
 import re
 import hashlib
 import errno
+from collections import defaultdict
 from contextlib import contextmanager
-from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
+from concurrent.futures import (
+    ThreadPoolExecutor,
+    TimeoutError,
+    wait,
+    FIRST_COMPLETED,
+    CancelledError,
+)
 from pathlib import Path
+from threading import BoundedSemaphore
 from time import perf_counter, struct_time
 from typing import TYPE_CHECKING, Any, Dict, Iterator, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
@@ -22,14 +30,14 @@ from email.utils import format_datetime
 from zoneinfo import ZoneInfo
 
 if TYPE_CHECKING:  # pragma: no cover - make mypy prefer package imports
-    from .utils.cache import read_cache
+    from .utils.cache import read_cache, register_cache_alert_hook
     from .utils.env import get_bool_env, get_int_env
 else:  # pragma: no cover - allow running as package and as script
     try:
-        from utils.cache import read_cache
+        from utils.cache import read_cache, register_cache_alert_hook
         from utils.env import get_int_env, get_bool_env
     except ModuleNotFoundError:
-        from .utils.cache import read_cache  # type: ignore
+        from .utils.cache import read_cache, register_cache_alert_hook  # type: ignore
         from .utils.env import get_int_env, get_bool_env  # type: ignore
 
 try:  # pragma: no cover - platform dependent
@@ -341,6 +349,7 @@ class RunReport:
     warnings: List[str] = field(default_factory=list)
     _error_messages: List[str] = field(default_factory=list)
     _seen_errors: set[str] = field(default_factory=set)
+    _seen_warnings: set[str] = field(default_factory=set)
     finished_at: Optional[datetime] = None
     _error_collector: Optional[_RunErrorCollector] = None
 
@@ -391,7 +400,7 @@ class RunReport:
             self.providers[name] = entry
         entry.finish(status, items=items, detail=_clean_message(detail))
         if status != "ok" and detail:
-            self.warnings.append(f"Provider {name}: {detail}")
+            self.add_warning(f"Provider {name}: {detail}")
 
     def provider_error(self, name: str, message: str) -> None:
         entry = self.providers.get(name)
@@ -413,6 +422,15 @@ class RunReport:
     @property
     def error_messages(self) -> List[str]:
         return list(self._error_messages)
+
+    def add_warning(self, message: str) -> None:
+        cleaned = _clean_message(message)
+        if not cleaned:
+            return
+        if cleaned in self._seen_warnings:
+            return
+        self._seen_warnings.add(cleaned)
+        self.warnings.append(cleaned)
 
     def has_errors(self) -> bool:
         if self.exception_message:
@@ -612,7 +630,7 @@ def _log_startup_summary(statuses: List[Tuple[str, bool]]) -> None:
 
     enabled_display = ", ".join(enabled) if enabled else "keine"
     log.info(
-        "Starte Feed-Bau: %s aktiv (Timeout=%ss, MaxItems=%d, Worker=%s)",
+        "Starte Feed-Bau: %s aktiv (Timeout global=%ss, MaxItems=%d, Worker=%s)",
         enabled_display,
         PROVIDER_TIMEOUT,
         MAX_ITEMS,
@@ -678,6 +696,120 @@ STATE_FILE = _resolve_env_path("STATE_PATH", Path("data/first_seen.json"))  # nu
 STATE_RETENTION_DAYS = max(get_int_env("STATE_RETENTION_DAYS", 60), 0)
 
 RFC = "%a, %d %b %Y %H:%M:%S %z"
+
+# ---------------- Provider tuning ----------------
+
+def _provider_env_slug(name: str) -> str:
+    slug = re.sub(r"[^A-Za-z0-9]+", "_", (name or "").upper()).strip("_")
+    return slug or "PROVIDER"
+
+
+def _read_optional_non_negative_int(env_name: str) -> Optional[int]:
+    raw = os.getenv(env_name)
+    if raw is None:
+        return None
+    stripped = raw.strip()
+    if not stripped:
+        return None
+    try:
+        value = int(stripped)
+    except (TypeError, ValueError) as exc:
+        log.warning(
+            "Ungültiger Wert für %s=%r – ignoriere Override (%s: %s)",
+            env_name,
+            raw,
+            type(exc).__name__,
+            exc,
+        )
+        return None
+    if value < 0:
+        log.warning("Negativer Wert für %s=%r – ignoriere Override", env_name, raw)
+        return None
+    return value
+
+
+def _provider_timeout_override(
+    fetch: Any, env: Optional[str], provider_name: str
+) -> Optional[int]:
+    candidates: List[str] = []
+    custom_env = getattr(fetch, "_provider_timeout_env", None)
+    if isinstance(custom_env, str) and custom_env.strip():
+        candidates.append(custom_env.strip())
+
+    slug = _provider_env_slug(provider_name)
+    candidates.append(f"PROVIDER_TIMEOUT_{slug}")
+
+    if env:
+        base = env.removesuffix("_ENABLE")
+        candidates.append(f"{base}_TIMEOUT")
+        candidates.append(f"PROVIDER_TIMEOUT_{base}")
+
+    seen: set[str] = set()
+    for candidate in candidates:
+        if not candidate or candidate in seen:
+            continue
+        seen.add(candidate)
+        value = _read_optional_non_negative_int(candidate)
+        if value is not None:
+            return value
+    return None
+
+
+def _provider_concurrency_key(fetch: Any, provider_name: str) -> str:
+    key = getattr(fetch, "_provider_concurrency_key", None)
+    if isinstance(key, str) and key.strip():
+        return key.strip()
+    return provider_name
+
+
+def _provider_worker_limit(
+    fetch: Any, env: Optional[str], provider_name: str, concurrency_key: str
+) -> Optional[int]:
+    candidates: List[str] = []
+    custom_env = getattr(fetch, "_provider_max_workers_env", None)
+    if isinstance(custom_env, str) and custom_env.strip():
+        candidates.append(custom_env.strip())
+
+    slug = _provider_env_slug(concurrency_key)
+    candidates.append(f"PROVIDER_MAX_WORKERS_{slug}")
+
+    if env:
+        base = env.removesuffix("_ENABLE")
+        candidates.append(f"{base}_MAX_WORKERS")
+
+    seen: set[str] = set()
+    for candidate in candidates:
+        if not candidate or candidate in seen:
+            continue
+        seen.add(candidate)
+        value = _read_optional_non_negative_int(candidate)
+        if value is not None:
+            return value
+    return None
+
+
+def _fetch_supports_timeout(fetch: Any) -> bool:
+    try:
+        signature = inspect.signature(fetch)
+    except (TypeError, ValueError):
+        return False
+    for param in signature.parameters.values():
+        if param.kind == inspect.Parameter.VAR_KEYWORD:
+            return True
+        if param.name == "timeout":
+            return True
+    return False
+
+
+def _call_fetch_with_timeout(
+    fetch: Any, timeout: Optional[int], supports_timeout: bool
+) -> Any:
+    if supports_timeout:
+        try:
+            return fetch(timeout=None if timeout is None else timeout)
+        except TypeError:
+            return fetch()
+    return fetch()
 
 # ---------------- Helpers ----------------
 
@@ -1098,112 +1230,228 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
         report = RunReport(_provider_statuses())
     items: List[Dict[str, Any]] = []
 
-    cache_fetchers: List[Any] = []
-    network_fetchers: List[Any] = []
-    provider_names: Dict[Any, str] = {}
-    for env, fetch in PROVIDERS:
-        provider_name = _provider_display_name(fetch, env)
-        enabled = bool(get_bool_env(env, True))
-        fetch_type = "cache" if getattr(fetch, "_provider_cache_name", None) else "network"
-        report.register_provider(provider_name, enabled, fetch_type)
-        if not enabled:
-            continue
-        provider_names[fetch] = provider_name
-        if getattr(fetch, "_provider_cache_name", None):
-            cache_fetchers.append(fetch)
-        else:
-            network_fetchers.append(fetch)
+    cache_alerts: defaultdict[str, List[str]] = defaultdict(list)
+    seen_cache_alerts: set[Tuple[str, str]] = set()
 
-    if not cache_fetchers and not network_fetchers:
-        return []
-
-    def _merge_result(fetch: Any, result: Any, provider_name: str) -> None:
-        name = getattr(fetch, "__name__", str(fetch))
-        if not isinstance(result, list):
-            log.error("%s fetch gab keine Liste zurück: %r", name, result)
-            report.provider_error(provider_name, "Ungültige Antwort (keine Liste)")
+    def _cache_alert_handler(provider_key: str, message: str) -> None:
+        normalized_key = str(provider_key or "").strip()
+        normalized_message = _clean_message(message)
+        if not normalized_key or not normalized_message:
             return
-        _normalize_item_datetimes(result)
-        items.extend(result)
-        count = len(result)
-        if count == 0:
-            log.warning(
-                "Cache für Provider '%s' leer – generiere Feed ohne aktuelle Daten.",
-                provider_name,
-            )
-            report.provider_success(
-                provider_name,
-                items=count,
-                status="empty",
-                detail="Keine aktuellen Daten",
-            )
-        else:
-            report.provider_success(provider_name, items=count)
+        cache_alerts[normalized_key].append(normalized_message)
+        if report is not None:
+            key = (normalized_key, normalized_message)
+            if key not in seen_cache_alerts:
+                seen_cache_alerts.add(key)
+                report.add_warning(f"Cache {normalized_key}: {normalized_message}")
 
-    for fetch in cache_fetchers:
-        name = getattr(fetch, "__name__", str(fetch))
-        provider_name = provider_names.get(fetch, _provider_display_name(fetch))
-        report.provider_started(provider_name)
-        try:
-            result = fetch()
-        except Exception as exc:
-            log.exception("%s fetch fehlgeschlagen: %s", name, exc)
-            report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
-            continue
-        _merge_result(fetch, result, provider_name)
-
-    if not network_fetchers:
-        return items
-
-    futures: Dict[Any, Tuple[Any, str]] = {}
-    desired_workers = len(network_fetchers)
-    if PROVIDER_MAX_WORKERS > 0:
-        if desired_workers > PROVIDER_MAX_WORKERS:
-            log.debug(
-                "Begrenze Provider-Threads von %s auf %s", desired_workers, PROVIDER_MAX_WORKERS
-            )
-        desired_workers = min(desired_workers, PROVIDER_MAX_WORKERS)
-    # ThreadPoolExecutor erlaubt max_workers nicht als 0; daher mindestens 1
-    executor = ThreadPoolExecutor(max_workers=max(1, desired_workers))
-    timed_out = False
+    unregister_cache_alert = register_cache_alert_hook(_cache_alert_handler)
     try:
-        for fetch in network_fetchers:
+        cache_fetchers: List[Any] = []
+        network_fetchers: List[Any] = []
+        provider_names: Dict[Any, str] = {}
+        provider_envs: Dict[Any, Optional[str]] = {}
+
+        for env, fetch in PROVIDERS:
+            provider_name = _provider_display_name(fetch, env)
+            enabled = bool(get_bool_env(env, True))
+            fetch_type = "cache" if getattr(fetch, "_provider_cache_name", None) else "network"
+            report.register_provider(provider_name, enabled, fetch_type)
+            if not enabled:
+                continue
+            provider_names[fetch] = provider_name
+            provider_envs[fetch] = env
+            if getattr(fetch, "_provider_cache_name", None):
+                cache_fetchers.append(fetch)
+            else:
+                network_fetchers.append(fetch)
+
+        if not cache_fetchers and not network_fetchers:
+            return []
+
+        def _merge_result(fetch: Any, result: Any, provider_name: str) -> None:
+            name = getattr(fetch, "__name__", str(fetch))
+            if not isinstance(result, list):
+                log.error("%s fetch gab keine Liste zurück: %r", name, result)
+                report.provider_error(provider_name, "Ungültige Antwort (keine Liste)")
+                return
+            _normalize_item_datetimes(result)
+            items.extend(result)
+            count = len(result)
+            if count == 0:
+                log.warning(
+                    "Cache für Provider '%s' leer – generiere Feed ohne aktuelle Daten.",
+                    provider_name,
+                )
+                detail = "Keine aktuellen Daten"
+                cache_name = getattr(fetch, "_provider_cache_name", None)
+                if cache_name is not None:
+                    alerts = cache_alerts.get(str(cache_name), [])
+                    if alerts:
+                        unique_alerts = list(dict.fromkeys(alerts))
+                        detail = "; ".join(unique_alerts)
+                report.provider_success(
+                    provider_name,
+                    items=count,
+                    status="empty",
+                    detail=detail,
+                )
+            else:
+                report.provider_success(provider_name, items=count)
+
+        for fetch in cache_fetchers:
+            name = getattr(fetch, "__name__", str(fetch))
             provider_name = provider_names.get(fetch, _provider_display_name(fetch))
             report.provider_started(provider_name)
-            futures[executor.submit(fetch)] = (fetch, provider_name)
+            try:
+                result = fetch()
+            except Exception as exc:
+                log.exception("%s fetch fehlgeschlagen: %s", name, exc)
+                report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
+                continue
+            _merge_result(fetch, result, provider_name)
+
+        if not network_fetchers:
+            return items
+
+        desired_workers = len(network_fetchers)
+        if PROVIDER_MAX_WORKERS > 0:
+            if desired_workers > PROVIDER_MAX_WORKERS:
+                log.debug(
+                    "Begrenze Provider-Threads von %s auf %s",
+                    desired_workers,
+                    PROVIDER_MAX_WORKERS,
+                )
+            desired_workers = min(desired_workers, PROVIDER_MAX_WORKERS)
+        executor = ThreadPoolExecutor(max_workers=max(1, desired_workers))
+
+        futures: Dict[Any, Tuple[Any, str, int]] = {}
+        deadlines: Dict[Any, Optional[float]] = {}
+        pending: set[Any] = set()
+        semaphores: Dict[str, BoundedSemaphore] = {}
+        timed_out = False
+
         try:
-            for future in as_completed(futures, timeout=PROVIDER_TIMEOUT):
-                fetch, provider_name = futures[future]
-                name = getattr(fetch, "__name__", str(fetch))
-                try:
-                    result = future.result()
-                except TimeoutError:
-                    log.error("%s fetch Timeout nach %ss", name, PROVIDER_TIMEOUT)
+            for fetch in network_fetchers:
+                provider_name = provider_names.get(fetch, _provider_display_name(fetch))
+                env_name = provider_envs.get(fetch)
+                timeout_override = _provider_timeout_override(fetch, env_name, provider_name)
+                effective_timeout = (
+                    timeout_override if timeout_override is not None else PROVIDER_TIMEOUT
+                )
+                concurrency_key = _provider_concurrency_key(fetch, provider_name)
+                worker_limit = _provider_worker_limit(
+                    fetch, env_name, provider_name, concurrency_key
+                )
+                semaphore: Optional[BoundedSemaphore] = None
+                if worker_limit is not None and worker_limit > 0:
+                    semaphore = semaphores.get(concurrency_key)
+                    if semaphore is None:
+                        semaphore = BoundedSemaphore(worker_limit)
+                        semaphores[concurrency_key] = semaphore
+                if timeout_override is not None:
+                    log.debug(
+                        "Provider %s nutzt Timeout-Override von %ss",
+                        provider_name,
+                        timeout_override,
+                    )
+                if worker_limit is not None and worker_limit > 0:
+                    log.debug(
+                        "Provider %s begrenzt Worker auf %s (Schlüssel %s)",
+                        provider_name,
+                        worker_limit,
+                        concurrency_key,
+                    )
+                supports_timeout = _fetch_supports_timeout(fetch)
+
+                def _run_fetch(
+                    fetch: Any = fetch,
+                    timeout_value: int = effective_timeout,
+                    supports: bool = supports_timeout,
+                    semaphore: Optional[BoundedSemaphore] = semaphore,
+                ) -> Any:
+                    timeout_arg = timeout_value if timeout_value > 0 else None
+                    if semaphore is None:
+                        return _call_fetch_with_timeout(fetch, timeout_arg, supports)
+                    with semaphore:
+                        return _call_fetch_with_timeout(fetch, timeout_arg, supports)
+
+                report.provider_started(provider_name)
+                future = executor.submit(_run_fetch)
+                futures[future] = (fetch, provider_name, effective_timeout)
+                pending.add(future)
+                start_time = perf_counter()
+                if effective_timeout > 0:
+                    deadlines[future] = start_time + effective_timeout
+                elif effective_timeout == 0:
+                    deadlines[future] = start_time
+                else:
+                    deadlines[future] = None
+
+            while pending:
+                now = perf_counter()
+                expired = [
+                    future
+                    for future in list(pending)
+                    if deadlines.get(future) is not None
+                    and deadlines[future] is not None
+                    and now >= deadlines[future]
+                ]
+                for future in expired:
+                    pending.discard(future)
+                    fetch, provider_name, timeout_value = futures[future]
+                    name = getattr(fetch, "__name__", str(fetch))
+                    log.error("%s fetch Timeout nach %ss", name, timeout_value)
                     report.provider_error(
                         provider_name,
-                        f"Timeout nach {PROVIDER_TIMEOUT}s",
+                        f"Timeout nach {timeout_value}s",
                     )
-                except Exception as exc:
-                    log.exception("%s fetch fehlgeschlagen: %s", name, exc)
-                    report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
-                else:
-                    _merge_result(fetch, result, provider_name)
-        except TimeoutError:
-            timed_out = True
-            log.error("Provider-Timeout nach %ss", PROVIDER_TIMEOUT)
-            executor.shutdown(wait=False, cancel_futures=True)
-            for future, (fetch, provider_name) in futures.items():
-                if future.done():
-                    continue
-                report.provider_error(
-                    provider_name,
-                    f"Timeout nach {PROVIDER_TIMEOUT}s (globaler Abbruch)",
-                )
-    finally:
-        if not timed_out:
-            executor.shutdown(wait=True)
+                    future.cancel()
+                    timed_out = True
 
-    return items
+                if not pending:
+                    break
+
+                wait_timeout: Optional[float] = None
+                remaining = [
+                    deadlines[fut] - now
+                    for fut in pending
+                    if deadlines.get(fut) is not None and deadlines[fut] is not None
+                ]
+                if remaining:
+                    wait_timeout = max(min(remaining), 0.0)
+
+                done, _ = wait(pending, timeout=wait_timeout, return_when=FIRST_COMPLETED)
+                if not done:
+                    continue
+
+                for future in done:
+                    pending.discard(future)
+                    fetch, provider_name, timeout_value = futures[future]
+                    name = getattr(fetch, "__name__", str(fetch))
+                    try:
+                        result = future.result()
+                    except TimeoutError as exc:
+                        log.error("%s fetch Timeout: %s", name, exc)
+                        report.provider_error(provider_name, f"Timeout: {exc}")
+                        timed_out = True
+                    except CancelledError:
+                        report.provider_error(provider_name, "Fetch abgebrochen")
+                        timed_out = True
+                    except Exception as exc:
+                        log.exception("%s fetch fehlgeschlagen: %s", name, exc)
+                        report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
+                    else:
+                        _merge_result(fetch, result, provider_name)
+        finally:
+            if timed_out:
+                executor.shutdown(wait=False, cancel_futures=True)
+            else:
+                executor.shutdown(wait=True)
+
+        return items
+    finally:
+        unregister_cache_alert()
 
 
 def _invoke_collect_items(report: RunReport) -> List[Dict[str, Any]]:
