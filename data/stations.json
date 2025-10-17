@@ -1163,6 +1163,45 @@
     "source": "vor"
   },
   {
+    "name": "Gerasdorf bei Wien Bahnhof (VOR)",
+    "in_vienna": false,
+    "pendler": false,
+    "vor_id": "430349900",
+    "latitude": 48.293315,
+    "longitude": 16.483736,
+    "aliases": [
+      "430349900",
+      "Gerasdorf bei Wien Bahnhof"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Kledering Bahnhof (VOR)",
+    "in_vienna": false,
+    "pendler": false,
+    "vor_id": "430389500",
+    "latitude": 48.132453,
+    "longitude": 16.439724,
+    "aliases": [
+      "430389500",
+      "Kledering Bahnhof"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Schwechat Bahnhof (VOR)",
+    "in_vienna": false,
+    "pendler": false,
+    "vor_id": "430471000",
+    "latitude": 48.143195,
+    "longitude": 16.482055,
+    "aliases": [
+      "430471000",
+      "Schwechat Bahnhof"
+    ],
+    "source": "vor"
+  },
+  {
     "name": "Wien Aspern Nord (VOR)",
     "in_vienna": true,
     "pendler": false,
@@ -1198,6 +1237,19 @@
     "aliases": [
       "490065700",
       "Wien Karlsplatz U"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Wien Mitte-Landstraße (VOR)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490074300",
+    "latitude": 48.206048,
+    "longitude": 16.384584,
+    "aliases": [
+      "490074300",
+      "Wien Mitte-Landstraße"
     ],
     "source": "vor"
   },
