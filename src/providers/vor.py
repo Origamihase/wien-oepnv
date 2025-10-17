@@ -18,11 +18,17 @@ from zoneinfo import ZoneInfo
 
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
     from ..utils.http import session_with_retries
+    from ..utils.stations import vor_station_ids
 else:  # pragma: no cover - allow running via package or src layout
     try:
         from utils.http import session_with_retries
     except ModuleNotFoundError:
         from ..utils.http import session_with_retries  # type: ignore
+
+    try:
+        from utils.stations import vor_station_ids
+    except ModuleNotFoundError:
+        from ..utils.stations import vor_station_ids  # type: ignore
 
 log = logging.getLogger(__name__)
 
@@ -216,6 +222,14 @@ def _load_station_ids_from_file(path: Path) -> List[str]:
 
 
 def _load_station_ids_default() -> List[str]:
+    ids: List[str] = []
+    try:
+        ids = list(vor_station_ids())
+    except Exception as exc:  # pragma: no cover - defensive guard
+        _log_warning("Konnte Pendler-Stationsliste nicht laden: %s", exc)
+    if ids:
+        return ids
+
     try:
         lines = DEFAULT_STATION_ID_FILE.read_text(encoding="utf-8").splitlines()
     except FileNotFoundError:
