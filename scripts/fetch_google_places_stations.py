@@ -14,12 +14,21 @@ import os
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
+import sys
 from typing import Iterable, List, MutableMapping, Optional, Sequence
+
+# When executed as ``python scripts/fetch_google_places_stations.py`` the parent
+# directory (repository root) is not on ``sys.path`` which prevents importing
+# the ``src`` package. Ensure the root is available before performing the
+# imports below.
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.places.client import (
     GooglePlacesClient,
     GooglePlacesConfig,
     GooglePlacesError,
+    GooglePlacesPermissionError,
     GooglePlacesTileError,
     Place,
     get_places_api_key,
@@ -193,6 +202,30 @@ def _print_diff(
         LOGGER.info("Skipped places already covered (%d)", len(skipped))
 
 
+def _permission_hint(details: str) -> Optional[str]:
+    message = details.lower()
+
+    if "are blocked" in message or "blocked" in message:
+        return (
+            "Check the Google Cloud project: enable Places API (New) and allow the API key to call "
+            "https://places.googleapis.com in its API restrictions."
+        )
+
+    if "api key" in message and "invalid" in message:
+        return (
+            "The configured GOOGLE_ACCESS_ID does not look like a valid Maps API key. "
+            "Provide a key that starts with 'AIza' or update the secret."
+        )
+
+    if "ip" in message and "not authorized" in message:
+        return "Update the API key restrictions to allow requests from GitHub Actions IP ranges."
+
+    if "service has been disabled" in message or "api has not been used" in message:
+        return "Enable Places API (New) in the Google Cloud console for the project tied to the API key."
+
+    return None
+
+
 def _dump_changes(
     path: Path,
     new_entries: Sequence[MutableMapping[str, object]],
@@ -294,6 +327,16 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     try:
         places = _fetch_places(client, runtime.tiles)
+    except GooglePlacesPermissionError as exc:
+        LOGGER.error("Places API access denied: %s", exc)
+        hint = _permission_hint(str(exc))
+        if hint:
+            LOGGER.error(hint)
+        else:
+            LOGGER.error(
+                "Skipping Places update. Ensure the configured API key has access to places.googleapis.com"
+            )
+        return 0
     except GooglePlacesError as exc:
         LOGGER.error("Failed to fetch places: %s", exc)
         return 1
