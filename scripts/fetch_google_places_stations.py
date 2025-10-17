@@ -11,6 +11,7 @@ import argparse
 import json
 import logging
 import os
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, List, MutableMapping, Optional, Sequence
@@ -22,6 +23,12 @@ from src.places.client import (
     GooglePlacesTileError,
     Place,
     get_places_api_key,
+)
+from src.places.quota import (
+    MonthlyQuota,
+    QuotaConfig,
+    load_quota_config_from_env,
+    resolve_quota_state_path,
 )
 from src.places.merge import BoundingBox, MergeConfig, merge_places, load_stations
 from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
@@ -39,6 +46,9 @@ class RuntimeConfig:
     dump_path: Optional[Path]
     dry_run: bool
     write: bool
+    quota_config: QuotaConfig
+    quota_state_path: Path
+    enforce_free_cap: bool
 
 
 def _configure_logging() -> None:
@@ -64,6 +74,13 @@ def _parse_args(argv: Sequence[str] | None) -> argparse.Namespace:
         "--dump-new",
         type=Path,
         help="Optional path to write new or updated entries",
+    )
+    parser.add_argument(
+        "--enforce-free-cap",
+        dest="enforce_free_cap",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Enable/disable enforcement of the configured free quota cap (default: enabled)",
     )
     return parser.parse_args(argv)
 
@@ -129,6 +146,8 @@ def _build_runtime_config(args: argparse.Namespace) -> RuntimeConfig:
         max_retries=max_retries,
     )
     merge_config = MergeConfig(max_distance_m=merge_distance, bounding_box=bounding_box)
+    quota_config = load_quota_config_from_env(env)
+    quota_state_path = resolve_quota_state_path(env)
 
     return RuntimeConfig(
         client_config=client_config,
@@ -138,6 +157,9 @@ def _build_runtime_config(args: argparse.Namespace) -> RuntimeConfig:
         dump_path=args.dump_new,
         dry_run=args.dry_run,
         write=args.write,
+        quota_config=quota_config,
+        quota_state_path=quota_state_path,
+        enforce_free_cap=args.enforce_free_cap,
     )
 
 
@@ -197,8 +219,46 @@ def _write_if_changed(path: Path, stations: Sequence[MutableMapping[str, object]
             LOGGER.info("Stations file already up-to-date")
             return
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(payload, encoding="utf-8")
+    if not payload.strip():
+        LOGGER.warning("Refusing to write empty stations payload to %s", path)
+        return
+    fd, tmp_name = tempfile.mkstemp(dir=path.parent, prefix=path.name, suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(payload)
+        os.replace(tmp_name, path)
+    finally:
+        try:
+            os.unlink(tmp_name)
+        except FileNotFoundError:
+            pass
     LOGGER.info("Wrote stations to %s", path)
+
+
+def _log_quota_status(quota: MonthlyQuota, config: QuotaConfig) -> None:
+    limits = {
+        "total": config.limit_total,
+        "nearby": config.limit_nearby,
+        "text": config.limit_text,
+        "details": config.limit_details,
+    }
+    counts = {key: quota.counts.get(key, 0) for key in ("nearby", "text", "details")}
+    LOGGER.info(
+        "Quota status for %s: total=%d/%s nearby=%d/%s text=%d/%s details=%d/%s",
+        quota.month_key,
+        quota.total,
+        _format_limit(limits["total"]),
+        counts["nearby"],
+        _format_limit(limits["nearby"]),
+        counts["text"],
+        _format_limit(limits["text"]),
+        counts["details"],
+        _format_limit(limits["details"]),
+    )
+
+
+def _format_limit(value: int | None) -> str:
+    return str(value) if value is not None else "∞"
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -210,7 +270,28 @@ def main(argv: Sequence[str] | None = None) -> int:
         LOGGER.error("Configuration error: %s", exc)
         return 2
 
-    client = GooglePlacesClient(runtime.client_config)
+    try:
+        quota = MonthlyQuota.load(runtime.quota_state_path)
+    except Exception as exc:
+        LOGGER.error("Failed to load quota state: %s", exc)
+        return 1
+
+    if quota.maybe_reset_month():
+        try:
+            quota.save_atomic(runtime.quota_state_path)
+        except OSError as exc:
+            LOGGER.error("Failed to persist quota reset: %s", exc)
+            return 1
+
+    _log_quota_status(quota, runtime.quota_config)
+
+    client = GooglePlacesClient(
+        runtime.client_config,
+        quota=quota,
+        quota_config=runtime.quota_config,
+        quota_state_path=runtime.quota_state_path,
+        enforce_quota=runtime.enforce_free_cap,
+    )
     try:
         places = _fetch_places(client, runtime.tiles)
     except GooglePlacesError as exc:
@@ -218,6 +299,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 1
 
     LOGGER.info("Fetched %d places using %d requests", len(places), client.request_count)
+
+    if runtime.enforce_free_cap and client.quota_skipped_kinds:
+        LOGGER.warning("Quota reached, using existing cache. No files were modified.")
+        return 0
 
     stations_path = runtime.output_path
     try:
@@ -244,6 +329,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     if runtime.write:
         _write_if_changed(stations_path, outcome.stations)
     elif runtime.dry_run:
+        _log_quota_status(quota, runtime.quota_config)
         LOGGER.info("Dry-run completed; no files written")
     else:
         LOGGER.info("No output written (use --write to persist changes)")
