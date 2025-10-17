@@ -20,7 +20,7 @@ import sys
 from dataclasses import dataclass
 from importlib import import_module
 from pathlib import Path
-from typing import Callable, Iterable, Iterator, List, Sequence
+from typing import Callable, Iterable, Iterator, List, Mapping, Sequence
 
 
 def _project_root() -> Path:
@@ -40,6 +40,7 @@ is_in_vienna = _load_is_in_vienna()
 DEFAULT_HALTEPUNKTE = BASE_DIR / "data" / "wienerlinien-ogd-haltepunkte.csv"
 DEFAULT_HALTESTELLEN = BASE_DIR / "data" / "wienerlinien-ogd-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
+DEFAULT_VOR_MAPPING = BASE_DIR / "data" / "vor-haltestellen.mapping.json"
 
 log = logging.getLogger("update_wl_stations")
 
@@ -65,6 +66,12 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         type=Path,
         default=DEFAULT_STATIONS,
         help="stations.json that should be updated",
+    )
+    parser.add_argument(
+        "--vor-mapping",
+        type=Path,
+        default=DEFAULT_VOR_MAPPING,
+        help="Optional vor-haltestellen mapping to enrich WL stations with VOR identifiers",
     )
     parser.add_argument(
         "-v",
@@ -192,9 +199,113 @@ def _canonical_name(raw: str) -> str:
     return base
 
 
+def _derive_bst_id(identifier: str | None) -> int | None:
+    if not identifier:
+        return None
+    digits = re.sub(r"\D", "", identifier)
+    if not digits:
+        return None
+    trimmed = digits[-8:]
+    return int(f"9{trimmed.zfill(8)}")
+
+
+def _derive_bst_code(name: str, identifier: str | None) -> str | None:
+    cleaned = re.sub(r"\(WL\)", "", name).strip()
+    cleaned = re.sub(r"(?i)^wien\s+", "", cleaned).strip()
+    tokens = [token for token in re.split(r"[^A-Za-z0-9ÄÖÜäöüß]+", cleaned) if token]
+    if tokens:
+        primary = tokens[0][:3]
+        if primary:
+            return f"WL-{primary.upper()}"
+    if identifier:
+        digits = re.sub(r"\D", "", identifier)
+        if digits:
+            return f"WL-{digits[-3:]}"
+    return None
+
+
+def _aggregate_coordinates(stops: Iterable[Haltepunkt]) -> tuple[float | None, float | None]:
+    latitudes: list[float] = []
+    longitudes: list[float] = []
+    for stop in stops:
+        if stop.latitude is None or stop.longitude is None:
+            continue
+        latitudes.append(stop.latitude)
+        longitudes.append(stop.longitude)
+    if not latitudes or not longitudes:
+        return None, None
+    avg_lat = round(sum(latitudes) / len(latitudes), 6)
+    avg_lon = round(sum(longitudes) / len(longitudes), 6)
+    return avg_lat, avg_lon
+
+
+def _alias_variants(
+    station_name: str, canonical: str, resolved: str | None
+) -> set[str]:
+    base = f"Wien {station_name}".strip()
+    variants = {
+        canonical,
+        base,
+        f"{base} (WL)",
+        f"{base} U",
+        f"{base} U (VOR)",
+        f"{base} Bahnhof",
+        f"Bahnhof {base}",
+        f"{base} Station",
+    }
+    english_base = base
+    if base.lower().startswith("wien "):
+        english_base = f"Vienna {base[5:]}".strip()
+        variants.update(
+            {
+                english_base,
+                f"{english_base} (WL)",
+                f"{english_base} U",
+                f"{english_base} U (VOR)",
+                f"{english_base} Station",
+            }
+        )
+    variants.add(base.replace(" ", "-"))
+    variants.add(canonical.replace(" ", "-"))
+    if resolved:
+        variants.add(resolved)
+        variants.add(f"{resolved} (VOR)")
+    return {variant for variant in variants if variant.strip()}
+
+
+def load_vor_mapping(path: Path) -> dict[str, Mapping[str, object]]:
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        log.info("No VOR mapping found at %s", path)
+        return {}
+    except json.JSONDecodeError as exc:
+        log.warning("Could not parse VOR mapping %s: %s", path, exc)
+        return {}
+    mapping: dict[str, Mapping[str, object]] = {}
+    if not isinstance(raw, list):
+        return mapping
+    for entry in raw:
+        if not isinstance(entry, Mapping):
+            continue
+        candidates = set()
+        for key in ("station_name", "resolved_name"):
+            text = str(entry.get(key) or "").strip()
+            if text:
+                candidates.add(_normalize_key(text))
+        vor_id = str(entry.get("vor_id") or "").strip()
+        if vor_id:
+            candidates.add(_normalize_key(vor_id))
+        for candidate in candidates:
+            if candidate:
+                mapping[candidate] = entry
+    return mapping
+
+
 def build_wl_entries(
     haltestellen: dict[str, Haltestelle],
     haltepunkte: Iterable[Haltepunkt],
+    vor_mapping: Mapping[str, Mapping[str, object]] | None = None,
 ) -> list[dict[str, object]]:
     grouped: dict[str, list[Haltepunkt]] = {}
     for halt in haltepunkte:
@@ -229,6 +340,7 @@ def build_wl_entries(
             aliases.add(station.diva)
         aliases.add(f"Wien {station.name}")
         canonical = _canonical_name(station.name)
+        aliases.add(canonical)
         coords_checked = False
         in_vienna = False
         for stop in stops:
@@ -245,6 +357,34 @@ def build_wl_entries(
                 station_identifier,
             )
             in_vienna = is_in_vienna(station.name)
+        latitude, longitude = _aggregate_coordinates(stops)
+        vor_entry: Mapping[str, object] | None = None
+        if vor_mapping:
+            for candidate in (
+                canonical,
+                station.name,
+                f"Wien {station.name}",
+                station_identifier,
+            ):
+                key = _normalize_key(str(candidate))
+                if key and key in vor_mapping:
+                    vor_entry = vor_mapping[key]
+                    break
+        resolved_name = ""
+        if vor_entry:
+            vor_id = str(vor_entry.get("vor_id") or "").strip()
+            if vor_id:
+                aliases.add(vor_id)
+            resolved_name = str(vor_entry.get("resolved_name") or "").strip()
+            if resolved_name:
+                aliases.add(resolved_name)
+            if latitude is None or longitude is None:
+                lat_val = vor_entry.get("latitude")
+                lon_val = vor_entry.get("longitude")
+                if isinstance(lat_val, (int, float)) and isinstance(lon_val, (int, float)):
+                    latitude = round(float(lat_val), 6)
+                    longitude = round(float(lon_val), 6)
+        aliases.update(_alias_variants(station.name, canonical, resolved_name or None))
         entry = {
             "name": canonical,
             "in_vienna": in_vienna,
@@ -255,10 +395,23 @@ def build_wl_entries(
                 key=lambda item: item["stop_id"],
             ),
             "aliases": sorted(
-                {alias for alias in aliases if isinstance(alias, str) and alias.strip()} 
+                {alias for alias in aliases if isinstance(alias, str) and alias.strip()}
             ),
             "source": "wl",
         }
+        bst_id = _derive_bst_id(station_identifier)
+        if bst_id is not None:
+            entry["bst_id"] = bst_id
+        bst_code = _derive_bst_code(canonical, station_identifier)
+        if bst_code:
+            entry["bst_code"] = bst_code
+        if latitude is not None and longitude is not None:
+            entry["latitude"] = latitude
+            entry["longitude"] = longitude
+        if vor_entry:
+            vor_id = str(vor_entry.get("vor_id") or "").strip()
+            if vor_id:
+                entry["vor_id"] = vor_id
         entries.append(entry)
     entries.sort(key=lambda item: (str(item.get("name")), str(item.get("wl_diva"))))
     return entries
@@ -298,7 +451,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     haltepunkte = load_haltepunkte(args.haltepunkte)
     log.info("Found %d haltepunkte", len(haltepunkte))
 
-    wl_entries = build_wl_entries(haltestellen, haltepunkte)
+    vor_mapping = load_vor_mapping(args.vor_mapping)
+    if vor_mapping:
+        log.info("Loaded %d VOR mapping entries", len(vor_mapping))
+
+    wl_entries = build_wl_entries(haltestellen, haltepunkte, vor_mapping)
     log.info("Prepared %d WL station entries", len(wl_entries))
 
     merge_into_stations(args.stations, wl_entries)
