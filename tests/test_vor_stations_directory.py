@@ -1,6 +1,8 @@
 """Integration tests for VOR entries in stations.json."""
 from __future__ import annotations
 
+from pathlib import Path
+
 import pytest
 
 from src.utils.stations import station_info, vor_station_ids
@@ -48,3 +50,13 @@ def test_vor_station_ids_only_cover_vienna_or_pendler():
         info = station_info(vor_id)
         assert info is not None, f"missing station info for {vor_id}"
         assert info.in_vienna or info.pendler, f"unexpected non-pendler VOR id {vor_id}"
+
+
+def test_vor_station_ids_default_prefers_directory(monkeypatch):
+    import src.providers.vor as vor
+
+    monkeypatch.setattr(vor, "vor_station_ids", lambda: ("900100", "900200"))
+    monkeypatch.setattr(vor, "DEFAULT_STATION_ID_FILE", Path("/nonexistent"), raising=False)
+
+    ids = vor._load_station_ids_default()
+    assert ids == ["900100", "900200"]
