@@ -15,7 +15,7 @@ import errno
 from contextlib import contextmanager
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
 from pathlib import Path
-from time import perf_counter
+from time import perf_counter, struct_time
 from typing import TYPE_CHECKING, Any, Dict, Iterator, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
@@ -105,8 +105,13 @@ def _validate_path(path: Path, name: str) -> Path:
 LOG_TIMEZONE = ZoneInfo("Europe/Vienna")
 
 
-def _vienna_time_converter(timestamp: float):
-    return datetime.fromtimestamp(timestamp, LOG_TIMEZONE).timetuple()
+def _vienna_time_converter(timestamp: float | None) -> struct_time:
+    effective_timestamp = (
+        timestamp
+        if timestamp is not None
+        else datetime.now(tz=LOG_TIMEZONE).timestamp()
+    )
+    return datetime.fromtimestamp(effective_timestamp, LOG_TIMEZONE).timetuple()
 
 
 class _MaxLevelFilter(logging.Filter):
@@ -890,8 +895,8 @@ def _normalize_item_datetimes(
     for item in items:
         if not isinstance(item, dict):
             continue
-        for field in fields:
-            _coerce_datetime_field(item, field)
+        for field_name in fields:
+            _coerce_datetime_field(item, field_name)
     return items
 
 # ---------------- State (first_seen) ----------------
@@ -1303,8 +1308,8 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Return a comparable timestamp describing how recent ``it`` is."""
 
         candidates: List[datetime] = []
-        for field in ("pubDate", "first_seen", "starts_at"):
-            value = it.get(field)
+        for field_name in ("pubDate", "first_seen", "starts_at"):
+            value = it.get(field_name)
             if isinstance(value, datetime):
                 candidates.append(_to_utc(value))
             else:

@@ -26,7 +26,8 @@ jobs:
 
       - name: Fetch Google Places stations
         env:
-          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+          GOOGLE_ACCESS_ID: ${{ secrets.GOOGLE_ACCESS_ID }}
+          # Deprecated fallback: GOOGLE_MAPS_API_KEY remains supported but should be migrated.
         run: |
           python scripts/fetch_google_places_stations.py --write --dump-new new_places.json
 
