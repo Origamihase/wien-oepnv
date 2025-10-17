@@ -188,38 +188,6 @@
     "longitude": 16.732314
   },
   {
-    "bst_id": 570,
-    "bst_code": "Gef",
-    "name": "Gerasdorf",
-    "in_vienna": false,
-    "pendler": true,
-    "vor_id": "430349900",
-    "aliases": [
-      "Gerasdorf",
-      "Gef",
-      "430349900",
-      "Gerasdorf bei Wien Bahnhof"
-    ],
-    "latitude": 48.293315,
-    "longitude": 16.483736
-  },
-  {
-    "bst_id": 711,
-    "bst_code": "Gs",
-    "name": "Schwechat",
-    "in_vienna": false,
-    "pendler": true,
-    "vor_id": "430471000",
-    "aliases": [
-      "Schwechat",
-      "Gs",
-      "430471000",
-      "Schwechat Bahnhof"
-    ],
-    "latitude": 48.143195,
-    "longitude": 16.482055
-  },
-  {
     "bst_id": 779,
     "bst_code": "Hak",
     "name": "Wien Handelskai",
@@ -389,23 +357,6 @@
     ],
     "latitude": 48.2307,
     "longitude": 16.3062
-  },
-  {
-    "bst_id": 926,
-    "bst_code": "Hz",
-    "name": "Wien Mitte (Landstraße)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490074300",
-    "aliases": [
-      "Wien Mitte (Landstraße)",
-      "Wien Mitte",
-      "Wien Mitte-Landstraße",
-      "Hz",
-      "490074300"
-    ],
-    "latitude": 48.206048,
-    "longitude": 16.384584
   },
   {
     "bst_id": 934,
@@ -1012,22 +963,6 @@
     "longitude": 16.337652
   },
   {
-    "bst_id": 2548,
-    "bst_code": "Za",
-    "name": "Kledering",
-    "in_vienna": false,
-    "pendler": true,
-    "vor_id": "430389500",
-    "aliases": [
-      "Kledering",
-      "Za",
-      "430389500",
-      "Kledering Bahnhof"
-    ],
-    "latitude": 48.132453,
-    "longitude": 16.439724
-  },
-  {
     "bst_id": 1251757,
     "bst_code": "Nw  H1H",
     "name": "Wien St. Marx",
@@ -1146,6 +1081,45 @@
     "source": "vor"
   },
   {
+    "name": "Gerasdorf bei Wien Bahnhof (VOR)",
+    "in_vienna": false,
+    "pendler": false,
+    "vor_id": "430349900",
+    "latitude": 48.293315,
+    "longitude": 16.483736,
+    "aliases": [
+      "430349900",
+      "Gerasdorf bei Wien Bahnhof"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Kledering Bahnhof (VOR)",
+    "in_vienna": false,
+    "pendler": false,
+    "vor_id": "430389500",
+    "latitude": 48.132453,
+    "longitude": 16.439724,
+    "aliases": [
+      "430389500",
+      "Kledering Bahnhof"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Schwechat Bahnhof (VOR)",
+    "in_vienna": false,
+    "pendler": false,
+    "vor_id": "430471000",
+    "latitude": 48.143195,
+    "longitude": 16.482055,
+    "aliases": [
+      "430471000",
+      "Schwechat Bahnhof"
+    ],
+    "source": "vor"
+  },
+  {
     "name": "Wien Aspern Nord (VOR)",
     "in_vienna": true,
     "pendler": false,
@@ -1181,6 +1155,19 @@
     "aliases": [
       "490065700",
       "Wien Karlsplatz U"
+    ],
+    "source": "vor"
+  },
+  {
+    "name": "Wien Mitte-Landstraße (VOR)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490074300",
+    "latitude": 48.206048,
+    "longitude": 16.384584,
+    "aliases": [
+      "490074300",
+      "Wien Mitte-Landstraße"
     ],
     "source": "vor"
   },
