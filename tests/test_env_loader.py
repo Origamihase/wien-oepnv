@@ -76,3 +76,21 @@ def test_load_default_env_files_respects_environment_variable(tmp_path: Path, mo
 
     assert loaded[extra_env] == {"EXTRA_VALUE": "42"}
     assert os.environ["EXTRA_VALUE"] == "42"
+
+
+def test_load_env_file_handles_io_errors(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    env_file = tmp_path / "broken.env"
+    env_file.write_bytes(b"\xff\xfe\xff")
+
+    monkeypatch.delenv("BROKEN_VALUE", raising=False)
+
+    caplog.set_level("WARNING", logger="build_feed")
+    loaded = env_utils.load_env_file(env_file)
+
+    assert loaded == {}
+    assert "Kann .env-Datei" in caplog.text
+    assert "BROKEN_VALUE" not in os.environ

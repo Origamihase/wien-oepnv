@@ -139,7 +139,16 @@ def load_env_file(
     if not path.exists() or not path.is_file():
         return {}
 
-    content = path.read_text(encoding="utf-8")
+    try:
+        content = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError) as exc:
+        logging.getLogger("build_feed").warning(
+            "Kann .env-Datei %s nicht lesen – überspringe sie (%s: %s)",
+            path,
+            type(exc).__name__,
+            exc,
+        )
+        return {}
     parsed = _parse_env_file(content)
 
     for key, value in parsed.items():
