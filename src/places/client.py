@@ -252,9 +252,7 @@ class GooglePlacesClient:
                     details = self._extract_error_details(response)
                     raise GooglePlacesPermissionError(details)
                 else:
-                    raise GooglePlacesError(
-                        f"Request failed with status {response.status_code}: {response.text[:200]}"
-                    )
+                    raise GooglePlacesError(self._format_error_message(response))
 
             if attempt > self._config.max_retries:
                 break
@@ -269,18 +267,58 @@ class GooglePlacesClient:
         raise GooglePlacesError(str(last_error)) from last_error
 
     def _extract_error_details(self, response: requests.Response) -> str:
+        return self._format_error_message(response)
+
+    def _format_error_message(self, response: requests.Response) -> str:
+        status_code = response.status_code
+        default = f"Request failed with status {status_code}: {response.text[:200]}"
         try:
             payload = response.json()
         except ValueError:
-            payload = None
-        if isinstance(payload, dict):
-            status = payload.get("status")
-            message = payload.get("message")
-            if isinstance(status, str) and isinstance(message, str):
-                return f"{status}: {message}"
-            if isinstance(message, str):
-                return message
-        return f"HTTP {response.status_code}: {response.text[:200]}"
+            return default
+        if not isinstance(payload, dict):
+            return default
+
+        message = payload.get("message")
+        status = payload.get("status")
+        formatted: Optional[str] = None
+
+        details = payload.get("details")
+        if isinstance(details, list):
+            for detail in details:
+                if not isinstance(detail, dict):
+                    continue
+                detail_type = detail.get("@type")
+                if not isinstance(detail_type, str) or not detail_type.endswith("BadRequest"):
+                    continue
+                violations = detail.get("fieldViolations")
+                if not isinstance(violations, list) or not violations:
+                    continue
+                parts = []
+                for violation in violations:
+                    if not isinstance(violation, dict):
+                        continue
+                    field = violation.get("field")
+                    description = violation.get("description")
+                    fragment = ""
+                    if isinstance(field, str) and field:
+                        fragment = field
+                    if isinstance(description, str) and description:
+                        fragment = f"{fragment}: {description}" if fragment else description
+                    if fragment:
+                        parts.append(fragment)
+                if parts:
+                    base = message if isinstance(message, str) and message else f"HTTP {status_code}"
+                    formatted = f"{base} | {'; '.join(parts)}"
+                    break
+
+        if not formatted and isinstance(message, str) and message:
+            formatted = message
+
+        if formatted and isinstance(status, str) and status:
+            formatted = f"{status}: {formatted}"
+
+        return formatted or default
 
     def _backoff(self, attempt: int) -> float:
         base = 0.5 * (2 ** (attempt - 1))

@@ -97,6 +97,8 @@ Ein GitHub-Workflow (`.github/workflows/update-google-places-stations.yml`) füh
 
 Der Workflow führt vor dem eigentlichen Fetch einen minimalen `places:searchText`-Preflight aus. Damit wird schnell erkannt, ob der API-Key wegen Restriktionen oder fehlendem Billing blockiert ist. Die Anfrage setzt `X-Goog-FieldMask: places.id`, läuft mit einem Timeout von 20 Sekunden und versucht es bis zu drei Mal mit kurzen Backoffs. Sensible Daten werden nicht ausgegeben; der Key selbst erscheint nicht im Log.
 
+Zusätzlich validiert ein Nearby-Preflight (`places:searchNearby`) den Request-Body, indem eine einzelne Kachel mit `includedTypes=["train_station"]` geprüft wird. Der Workflow erzwingt dafür kompatible Place-Typen (`train_station, subway_station, bus_station`) via ENV und bricht andernfalls frühzeitig ab.
+
 ## Migration
 
 * Neue Setups sollten ausschließlich `GOOGLE_ACCESS_ID` pflegen.
