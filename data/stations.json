@@ -295,22 +295,6 @@
     "longitude": 16.3062
   },
   {
-    "bst_id": 926,
-    "bst_code": "Hz",
-    "name": "Wien Mitte",
-    "in_vienna": true,
-    "pendler": false,
-    "aliases": [
-      "Wien Mitte",
-      "Wien Mitte Bahnhof",
-      "Landstraße Wien Mitte",
-      "Landstraße",
-      "Hz"
-    ],
-    "latitude": 48.2072,
-    "longitude": 16.3833
-  },
-  {
     "bst_id": 934,
     "bst_code": "Id",
     "name": "Wien Blumental",
@@ -757,21 +741,6 @@
     "longitude": 16.175774
   },
   {
-    "bst_id": 2393,
-    "bst_code": "Wbf",
-    "name": "Wien Hauptbahnhof",
-    "in_vienna": true,
-    "pendler": false,
-    "aliases": [
-      "Wien Hauptbahnhof",
-      "Wien Hbf",
-      "Wien Hauptbahnhof Bahnhof",
-      "Wbf"
-    ],
-    "latitude": 48.1852,
-    "longitude": 16.3764
-  },
-  {
     "bst_id": 2396,
     "bst_code": "Wbf H2",
     "name": "Wien Haidestraße",
@@ -1018,7 +987,7 @@
   {
     "name": "Wiener Neustadt Hauptbahnhof (VOR)",
     "in_vienna": false,
-    "pendler": true,
+    "pendler": false,
     "vor_id": "430521000",
     "latitude": 47.811304,
     "longitude": 16.23362,
