@@ -118,6 +118,17 @@ verwendest.
 
 ## Feed-Ausführung lokal
 
+Vor produktiven oder manuellen Abrufen empfiehlt sich ein schneller
+Vollständigkeitscheck der benötigten Secrets:
+
+```bash
+python scripts/verify_vor_access_id.py
+```
+
+Das Skript lädt automatisch `.env`, `data/secrets.env` und
+`config/secrets.env` und bricht mit Exit-Code `1` ab, wenn kein gültiger
+`VOR_ACCESS_ID`-Token gefunden wurde.
+
 ```bash
 export WL_ENABLE=true
 export OEBB_ENABLE=true
