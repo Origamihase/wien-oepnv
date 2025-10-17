@@ -7,7 +7,7 @@ import logging
 import os
 from pathlib import Path
 import tempfile
-from typing import Any, List, Optional
+from typing import Any, Callable, List, Optional
 
 from .env import get_bool_env
 
@@ -15,6 +15,41 @@ _CACHE_DIR = Path("cache")
 _CACHE_FILENAME = "events.json"
 
 log = logging.getLogger(__name__)
+
+
+_CacheAlertHook = Callable[[str, str], None]
+_CACHE_ALERT_HOOKS: List[_CacheAlertHook] = []
+
+
+def register_cache_alert_hook(callback: _CacheAlertHook) -> Callable[[], None]:
+    """Register ``callback`` to receive cache alert notifications.
+
+    The callback is invoked with ``(provider, message)`` whenever :func:`read_cache`
+    encounters an issue (missing files, invalid JSON, etc.).  A callable is
+    returned that removes the hook again.  Callers should ensure the unregister
+    function is executed (e.g. via ``try``/``finally``) to avoid leaking hooks
+    across runs.
+    """
+
+    _CACHE_ALERT_HOOKS.append(callback)
+
+    def _unregister() -> None:
+        try:
+            _CACHE_ALERT_HOOKS.remove(callback)
+        except ValueError:
+            pass
+
+    return _unregister
+
+
+def _emit_cache_alert(provider: str, message: str) -> None:
+    if not provider or not message:
+        return
+    for hook in list(_CACHE_ALERT_HOOKS):
+        try:
+            hook(provider, message)
+        except Exception:  # pragma: no cover - defensive guard for user hooks
+            log.exception("Cache alert hook failed for provider '%s'", provider)
 
 
 def _cache_file(provider: str) -> Path:
@@ -35,6 +70,7 @@ def read_cache(provider: str) -> List[Any]:
             payload = json.load(fh)
     except FileNotFoundError:
         log.warning("Cache for provider '%s' not found at %s", provider, cache_file)
+        _emit_cache_alert(provider, f"Cache-Datei fehlt ({cache_file})")
     except json.JSONDecodeError as exc:
         log.warning(
             "Cache for provider '%s' at %s contains invalid JSON: %s",
@@ -42,6 +78,7 @@ def read_cache(provider: str) -> List[Any]:
             cache_file,
             exc,
         )
+        _emit_cache_alert(provider, f"Ungültiges JSON ({exc})")
     except OSError as exc:
         log.warning(
             "Could not read cache for provider '%s' at %s: %s",
@@ -49,6 +86,7 @@ def read_cache(provider: str) -> List[Any]:
             cache_file,
             exc,
         )
+        _emit_cache_alert(provider, f"Leseproblem ({exc})")
     else:
         if isinstance(payload, list):
             return payload
@@ -58,6 +96,7 @@ def read_cache(provider: str) -> List[Any]:
             cache_file,
             type(payload).__name__,
         )
+        _emit_cache_alert(provider, "Cache-Inhalt ist keine Liste")
 
     return []
 

@@ -1,5 +1,6 @@
 import importlib
 import sys
+import threading
 import time
 from pathlib import Path
 import types
@@ -52,6 +53,38 @@ def test_slow_provider_does_not_block(monkeypatch):
     assert items == [{"guid": "fast"}]
 
 
+def test_provider_specific_timeout_override(monkeypatch):
+    monkeypatch.setenv("PROVIDER_TIMEOUT", "10")
+    build_feed = _import_build_feed(monkeypatch)
+
+    def slow_fetch(timeout=None):
+        time.sleep(2)
+        return [{"guid": "slow"}]
+
+    slow_fetch.__name__ = "slow"
+
+    def fast_fetch(timeout=None):
+        return [{"guid": "fast"}]
+
+    fast_fetch.__name__ = "fast"
+
+    monkeypatch.setattr(
+        build_feed,
+        "PROVIDERS",
+        [("SLOW", slow_fetch), ("FAST", fast_fetch)],
+    )
+    monkeypatch.setenv("SLOW", "1")
+    monkeypatch.setenv("FAST", "1")
+    monkeypatch.setenv("PROVIDER_TIMEOUT_SLOW", "1")
+
+    start = time.time()
+    items = build_feed._collect_items()
+    elapsed = time.time() - start
+
+    assert elapsed < 1.5
+    assert items == [{"guid": "fast"}]
+
+
 def test_cache_providers_run_sequentially(monkeypatch):
     build_feed = _import_build_feed(monkeypatch)
 
@@ -90,3 +123,46 @@ def test_cache_providers_run_sequentially(monkeypatch):
 
     assert items == [{"provider": "wl"}, {"provider": "oebb"}]
     assert calls == ["wl", "oebb"]
+
+
+def test_provider_worker_limit(monkeypatch):
+    build_feed = _import_build_feed(monkeypatch)
+    monkeypatch.setenv("PROVIDER_MAX_WORKERS", "4")
+    monkeypatch.setenv("PROVIDER_MAX_WORKERS_GROUP", "1")
+
+    active = 0
+    max_active = 0
+    lock = threading.Lock()
+
+    def make_fetch(name):
+        def _fetch(timeout=None):
+            nonlocal active, max_active
+            with lock:
+                active += 1
+                max_active = max(max_active, active)
+            try:
+                time.sleep(0.2)
+            finally:
+                with lock:
+                    active -= 1
+            return [{"name": name}]
+
+        _fetch.__name__ = name
+        _fetch._provider_concurrency_key = "group"
+        return _fetch
+
+    first = make_fetch("first")
+    second = make_fetch("second")
+
+    monkeypatch.setattr(
+        build_feed,
+        "PROVIDERS",
+        [("FIRST", first), ("SECOND", second)],
+    )
+    monkeypatch.setenv("FIRST", "1")
+    monkeypatch.setenv("SECOND", "1")
+
+    items = build_feed._collect_items()
+
+    assert len(items) == 2
+    assert max_active == 1
