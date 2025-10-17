@@ -410,25 +410,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Taubstummengasse.",
+    "title": "38: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2025-10-17T15:15:00+02:00",
-    "starts_at": "2025-10-17T15:15:00+02:00",
-    "ends_at": "2025-10-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2025-10-17"
+    "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
+    "pubDate": "2025-10-17T16:58:36+02:00",
+    "starts_at": "2025-10-17T16:58:36+02:00",
+    "ends_at": "2025-10-17T17:57:00+02:00",
+    "_identity": "wl|störung|L=38|D=2025-10-17"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
+    "title": "38: Verkehrsunfall Betrieb ab Nußdorfer Straße",
+    "description": "Verkehrsunfall Betrieb ab Nußdorfer Straße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093",
-    "pubDate": "2025-10-17T15:25:00+02:00",
-    "starts_at": "2025-10-17T15:25:00+02:00",
-    "ends_at": "2025-10-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=60|D=2025-10-17"
+    "guid": "2b2f63b1963887e8ebb1197e04616588596e5bdcfade51c2548b4ba7e2fc8261",
+    "pubDate": "2025-10-17T16:59:31+02:00",
+    "starts_at": "2025-10-17T16:59:31+02:00",
+    "ends_at": "2025-10-17T17:58:00+02:00",
+    "_identity": "wl|störung|L=38|D=2025-10-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9a256ddc9071e1be270714d5f6be746d8db040a3968d1eb9ae42aab06ab94ad4",
+    "pubDate": "2025-10-17T17:00:32+02:00",
+    "starts_at": "2025-10-17T17:00:32+02:00",
+    "ends_at": "2025-10-17T17:59:00+02:00",
+    "_identity": "wl|störung|L=37|D=2025-10-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Verkehrsunfall Betrieb ab Nußdorfer Straße",
+    "description": "Verkehrsunfall Betrieb ab Nußdorfer Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "14043cd0b8d59e5b94904b7187111440eeea20ab95e68c8fc3e2fa20884955d9",
+    "pubDate": "2025-10-17T17:00:59+02:00",
+    "starts_at": "2025-10-17T17:00:59+02:00",
+    "ends_at": "2025-10-17T18:00:00+02:00",
+    "_identity": "wl|störung|L=37|D=2025-10-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Verkehrsunfall Züge halten bei 37A",
+    "description": "Verkehrsunfall Züge halten bei 37 A",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d4548c0ae3bf4d858263c40beb381f128ee647321b2c25a31d43d3c6d06ed6b8",
+    "pubDate": "2025-10-17T17:10:14+02:00",
+    "starts_at": "2025-10-17T17:10:14+02:00",
+    "ends_at": "2025-10-17T18:07:00+02:00",
+    "_identity": "wl|störung|L=37A|D=2025-10-17"
   }
 ]
