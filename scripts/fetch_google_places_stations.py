@@ -14,12 +14,21 @@ import os
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
+import sys
 from typing import Iterable, List, MutableMapping, Optional, Sequence
+
+# When executed as ``python scripts/fetch_google_places_stations.py`` the parent
+# directory (repository root) is not on ``sys.path`` which prevents importing
+# the ``src`` package. Ensure the root is available before performing the
+# imports below.
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.places.client import (
     GooglePlacesClient,
     GooglePlacesConfig,
     GooglePlacesError,
+    GooglePlacesPermissionError,
     GooglePlacesTileError,
     Place,
     get_places_api_key,
@@ -294,6 +303,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     try:
         places = _fetch_places(client, runtime.tiles)
+    except GooglePlacesPermissionError as exc:
+        LOGGER.error("Places API access denied: %s", exc)
+        LOGGER.error(
+            "Skipping Places update. Ensure the configured API key has access to places.googleapis.com"
+        )
+        return 0
     except GooglePlacesError as exc:
         LOGGER.error("Failed to fetch places: %s", exc)
         return 1

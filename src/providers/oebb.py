@@ -114,6 +114,8 @@ def _clean_title_keep_places(t: str) -> str:
         if not canon:
             cleaned = _clean_endpoint(segment)
             canon = canonical_name(cleaned) or cleaned
+        if canon:
+            canon = re.sub(r"\s+\(VOR\)$", "", canon)
         canonical_parts.append(canon)
     parts = canonical_parts
     if len(parts) >= 2:
