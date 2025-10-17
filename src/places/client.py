@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import os
 import random
 import time
 from dataclasses import dataclass
@@ -12,7 +13,14 @@ import requests
 
 from .tiling import Tile
 
-__all__ = ["GooglePlacesClient", "GooglePlacesError", "GooglePlacesTileError", "Place"]
+__all__ = [
+    "GooglePlacesClient",
+    "GooglePlacesConfig",
+    "GooglePlacesError",
+    "GooglePlacesTileError",
+    "Place",
+    "get_places_api_key",
+]
 
 LOGGER = logging.getLogger("places.google")
 
@@ -213,3 +221,35 @@ class GooglePlacesClient:
         base = 0.5 * (2 ** (attempt - 1))
         jitter = random.uniform(0, 0.5)
         return base + jitter
+
+
+def get_places_api_key() -> str:
+    """Return the configured Google Places API key.
+
+    Preference is given to ``GOOGLE_ACCESS_ID`` for forward compatibility. The
+    deprecated ``GOOGLE_MAPS_API_KEY`` is retained as a fallback and emits a
+    warning when used. The function aborts the program with ``SystemExit``
+    (status code ``2``) when neither variable is defined.
+    """
+
+    env = os.environ
+    access_id = env.get("GOOGLE_ACCESS_ID")
+    if access_id:
+        key = access_id.strip()
+        if key:
+            return key
+
+    legacy_key = env.get("GOOGLE_MAPS_API_KEY")
+    if legacy_key:
+        key = legacy_key.strip()
+        if key:
+            LOGGER.warning(
+                "DEPRECATED: use GOOGLE_ACCESS_ID instead of GOOGLE_MAPS_API_KEY"
+            )
+            return key
+
+    message = "Missing GOOGLE_ACCESS_ID (preferred) or GOOGLE_MAPS_API_KEY."
+    LOGGER.error(message)
+    exc = SystemExit(2)
+    exc.args = (message,)
+    raise exc

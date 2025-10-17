@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Fetch stations from the Google Places API and merge into stations.json."""
+"""Fetch stations from the Google Places API and merge into stations.json.
+
+Requires the ``GOOGLE_ACCESS_ID`` environment variable (preferred) or the
+deprecated ``GOOGLE_MAPS_API_KEY`` as a fallback.
+"""
 
 from __future__ import annotations
 
@@ -7,7 +11,6 @@ import argparse
 import json
 import logging
 import os
-import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, List, MutableMapping, Optional, Sequence
@@ -18,6 +21,7 @@ from src.places.client import (
     GooglePlacesError,
     GooglePlacesTileError,
     Place,
+    get_places_api_key,
 )
 from src.places.merge import BoundingBox, MergeConfig, merge_places, load_stations
 from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
@@ -42,7 +46,13 @@ def _configure_logging() -> None:
 
 
 def _parse_args(argv: Sequence[str] | None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        epilog=(
+            "Authentication: set GOOGLE_ACCESS_ID (preferred). The legacy "
+            "GOOGLE_MAPS_API_KEY remains supported but is deprecated."
+        ),
+    )
     parser.add_argument("--dry-run", action="store_true", help="Print diff without writing")
     parser.add_argument("--write", action="store_true", help="Persist merged stations.json")
     parser.add_argument(
@@ -56,14 +66,6 @@ def _parse_args(argv: Sequence[str] | None) -> argparse.Namespace:
         help="Optional path to write new or updated entries",
     )
     return parser.parse_args(argv)
-
-
-def _require_api_key(env: MutableMapping[str, str]) -> str:
-    key = env.get("GOOGLE_MAPS_API_KEY", "").strip()
-    if not key:
-        LOGGER.error("GOOGLE_MAPS_API_KEY must be set")
-        raise SystemExit(2)
-    return key
 
 
 def _parse_included_types(raw: str | None) -> List[str]:
@@ -102,7 +104,7 @@ def _build_runtime_config(args: argparse.Namespace) -> RuntimeConfig:
     if args.dry_run and args.write:
         raise ValueError("--dry-run and --write are mutually exclusive")
 
-    api_key = _require_api_key(env)
+    api_key = get_places_api_key()
     included_types = _parse_included_types(env.get("PLACES_INCLUDED_TYPES"))
     language = env.get("PLACES_LANGUAGE", "de")
     region = env.get("PLACES_REGION", "AT")
@@ -152,7 +154,11 @@ def _fetch_places(client: GooglePlacesClient, tiles: Iterable[Tile]) -> List[Pla
     return list(places_by_id.values())
 
 
-def _print_diff(new_entries: Sequence[MutableMapping[str, object]], updated_entries: Sequence[MutableMapping[str, object]], skipped: Sequence[Place]) -> None:
+def _print_diff(
+    new_entries: Sequence[MutableMapping[str, object]],
+    updated_entries: Sequence[MutableMapping[str, object]],
+    skipped: Sequence[Place],
+) -> None:
     if new_entries:
         LOGGER.info("New stations (%d):", len(new_entries))
         for entry in sorted(new_entries, key=lambda item: str(item.get("name", ""))):
@@ -165,7 +171,11 @@ def _print_diff(new_entries: Sequence[MutableMapping[str, object]], updated_entr
         LOGGER.info("Skipped places already covered (%d)", len(skipped))
 
 
-def _dump_changes(path: Path, new_entries: Sequence[MutableMapping[str, object]], updated_entries: Sequence[MutableMapping[str, object]]) -> None:
+def _dump_changes(
+    path: Path,
+    new_entries: Sequence[MutableMapping[str, object]],
+    updated_entries: Sequence[MutableMapping[str, object]],
+) -> None:
     payload = json.dumps(
         {
             "new": list(new_entries),
