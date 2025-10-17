@@ -150,42 +150,59 @@ LOG_BACKUP_COUNT = max(get_int_env("LOG_BACKUP_COUNT", 5), 0)
 
 os.makedirs(LOG_DIR, exist_ok=True)
 
-logging.basicConfig(
-    level=_level,
-    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
-)
-
-root_logger = logging.getLogger()
-root_logger.setLevel(_level)
-for handler in root_logger.handlers:
-    handler.setFormatter(_make_formatter())
-    if isinstance(handler, logging.StreamHandler):
-        handler.setLevel(_level)
-
 error_log_path = Path(LOG_DIR) / "errors.log"
-error_log_path.touch(exist_ok=True)
-error_handler = RotatingFileHandler(
-    error_log_path,
-    maxBytes=LOG_MAX_BYTES,
-    backupCount=LOG_BACKUP_COUNT,
-    encoding="utf-8",
-)
-error_handler.setLevel(logging.ERROR)
-error_handler.setFormatter(_make_formatter())
-root_logger.addHandler(error_handler)
-
 diagnostics_log_path = Path(LOG_DIR) / "diagnostics.log"
-diagnostics_log_path.touch(exist_ok=True)
-diagnostics_handler = RotatingFileHandler(
-    diagnostics_log_path,
-    maxBytes=LOG_MAX_BYTES,
-    backupCount=LOG_BACKUP_COUNT,
-    encoding="utf-8",
-)
-diagnostics_handler.setLevel(logging.INFO)
-diagnostics_handler.addFilter(_MaxLevelFilter(logging.ERROR - 1))
-diagnostics_handler.setFormatter(_make_formatter())
-root_logger.addHandler(diagnostics_handler)
+
+_LOGGING_CONFIGURED = False
+
+
+def configure_logging() -> None:
+    """Configure the default logging handlers for the feed builder."""
+
+    global _LOGGING_CONFIGURED
+
+    if _LOGGING_CONFIGURED:
+        return
+
+    os.makedirs(LOG_DIR, exist_ok=True)
+
+    logging.basicConfig(
+        level=_level,
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+    )
+
+    root_logger = logging.getLogger()
+    root_logger.setLevel(_level)
+    for handler in root_logger.handlers:
+        handler.setFormatter(_make_formatter())
+        if isinstance(handler, logging.StreamHandler):
+            handler.setLevel(_level)
+
+    error_log_path.touch(exist_ok=True)
+    error_handler = RotatingFileHandler(
+        error_log_path,
+        maxBytes=LOG_MAX_BYTES,
+        backupCount=LOG_BACKUP_COUNT,
+        encoding="utf-8",
+    )
+    error_handler.setLevel(logging.ERROR)
+    error_handler.setFormatter(_make_formatter())
+    root_logger.addHandler(error_handler)
+
+    diagnostics_log_path.touch(exist_ok=True)
+    diagnostics_handler = RotatingFileHandler(
+        diagnostics_log_path,
+        maxBytes=LOG_MAX_BYTES,
+        backupCount=LOG_BACKUP_COUNT,
+        encoding="utf-8",
+    )
+    diagnostics_handler.setLevel(logging.INFO)
+    diagnostics_handler.addFilter(_MaxLevelFilter(logging.ERROR - 1))
+    diagnostics_handler.setFormatter(_make_formatter())
+    root_logger.addHandler(diagnostics_handler)
+
+    _LOGGING_CONFIGURED = True
+
 
 log = logging.getLogger("build_feed")
 
@@ -1814,6 +1831,8 @@ def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[
     return "\n".join(out)
 
 def main() -> int:
+    configure_logging()
+
     statuses = _provider_statuses()
     report = RunReport(statuses)
     report.prune_logs()

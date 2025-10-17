@@ -79,6 +79,13 @@ Der Feed-Bau folgt einem klaren Ablauf:
 
 Alle Pfade werden durch `_resolve_env_path` auf `docs/`, `data/` oder `log/` beschränkt, um Path-Traversal zu verhindern.
 
+### Logging-Initialisierung als Bibliothek verwenden
+
+Wird `build_feed` als Skript ausgeführt (`python -m src.build_feed`), richtet es seine Logging-Handler automatisch über
+`configure_logging()` ein. Beim Einbinden des Moduls in andere Anwendungen bleibt die globale Logging-Konfiguration ab
+Python-Import unverändert; rufe in diesem Fall `src.build_feed.configure_logging()` explizit auf, bevor du die Feed-Funktionen
+verwendest.
+
 ### Fehlerprotokolle
 
 - Läuft der Feed-Build über `src/build_feed.py`, landen Fehler- und Traceback-Ausgaben automatisch in `log/errors.log` (rotierende Log-Datei, konfigurierbar über `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`). Ohne Fehler bleibt die Datei unberührt.
