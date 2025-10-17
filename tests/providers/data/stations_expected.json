@@ -1,0 +1,44 @@
+[
+  {
+    "_lat": 47.845,
+    "_lng": 16.524,
+    "aliases": [],
+    "name": "Eisenstadt Bahnhof",
+    "source": [
+      "oebb"
+    ]
+  },
+  {
+    "_formatted_address": "7210 Mattersburg, Österreich",
+    "_google_place_id": "place-mattersburg",
+    "_lat": 47.743,
+    "_lng": 16.4,
+    "_types": [
+      "train_station"
+    ],
+    "aliases": [],
+    "in_vienna": false,
+    "name": "Mattersburg Bahnhof",
+    "source": [
+      "google_places"
+    ]
+  },
+  {
+    "_formatted_address": "Landstraße, 1030 Wien",
+    "_google_place_id": "place-wien-mitte",
+    "_lat": 48.2066,
+    "_lng": 16.3844,
+    "_types": [
+      "train_station"
+    ],
+    "aliases": [
+      "Landstraße"
+    ],
+    "in_vienna": true,
+    "name": "Wien Mitte",
+    "source": [
+      "oebb",
+      "google_places"
+    ]
+  }
+]
