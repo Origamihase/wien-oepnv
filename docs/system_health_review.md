@@ -37,6 +37,7 @@
 ## Nachverfolgung
 
 - **Cache-Monitoring** – Die Registrierung von Hooks für Cache-Warnungen ist jetzt thread-sicher. Gleichzeitige An- und Abmeldungen werden durch ein Re-Entrant-Lock koordiniert, wodurch Race-Conditions in stark parallelisierten Szenarien vermieden werden.【F:src/utils/cache.py†L12-L58】
+- **Bytecode-Cleanup** – Versehentlich versionierte Python-Bytecode-Caches (`src/providers/__pycache__`) wurden entfernt und `.gitignore` präzisiert, sodass künftige `__pycache__`-Verzeichnisse repositoryweit ausgeschlossen bleiben.【F:.gitignore†L1-L2】
 
 - **Performance-Monitoring** – Ergänzend zum bisherigen Logging existiert nun ein dokumentiertes Konzept für Laufzeitmetriken, Alarme und Profiling-Workflows (`docs/performance_monitoring_plan.md`). Damit ist die im Audit empfohlene Beobachtung der Feed-Performance umgesetzt.
 
