@@ -252,11 +252,7 @@ def _build_location_index(
     if wl_path:
         wl_locations = _load_wienerlinien_locations(wl_path)
         for key, value in wl_locations.items():
-            existing = locations.get(key)
-            if existing is None:
-                locations[key] = value
-                continue
-            existing.add_source("wl")
+            _store_location(locations, key, value.latitude, value.longitude, source="wl")
     return locations
 
 

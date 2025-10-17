@@ -1,6 +1,10 @@
 from scripts import update_station_directory as usd
 
 
+def _write_text(path, content: str) -> None:
+    path.write_text(content, encoding="utf-8")
+
+
 def make_station(name: str, *, in_vienna: bool = True) -> usd.Station:
     return usd.Station(bst_id=1, bst_code="X", name=name, in_vienna=in_vienna, pendler=False)
 
@@ -46,3 +50,28 @@ def test_restore_existing_metadata_preserves_vor_id() -> None:
         {1: {"vor_id": "900400"}},
     )
     assert station.vor_id == "900400"
+
+
+def test_build_location_index_prefers_wl_coordinates(tmp_path) -> None:
+    gtfs_path = tmp_path / "stops.txt"
+    wl_path = tmp_path / "wl.csv"
+
+    _write_text(
+        gtfs_path,
+        "stop_id,stop_name,stop_lat,stop_lon,location_type\n"
+        "1,Wien Beispiel,0,0,1\n",
+    )
+
+    _write_text(
+        wl_path,
+        "NAME;WGS84_LAT;WGS84_LON\n"
+        "Wien Beispiel;48.2;16.3\n",
+    )
+
+    locations = usd._build_location_index(gtfs_path, wl_path)
+    assert locations, "expected combined locations"
+
+    info = next(iter(locations.values()))
+    assert info.latitude == 48.2
+    assert info.longitude == 16.3
+    assert info.sources == {"gtfs", "wl"}
