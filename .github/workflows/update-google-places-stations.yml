@@ -28,6 +28,11 @@ jobs:
         env:
           GOOGLE_ACCESS_ID: ${{ secrets.GOOGLE_ACCESS_ID }}
           # Deprecated fallback: GOOGLE_MAPS_API_KEY remains supported but should be migrated.
+          PLACES_LIMIT_TOTAL: 4000
+          PLACES_LIMIT_NEARBY: 1500
+          PLACES_LIMIT_TEXT: 1500
+          PLACES_LIMIT_DETAILS: 1000
+          PLACES_QUOTA_STATE: data/places_quota.json
         run: |
           python scripts/fetch_google_places_stations.py --write --dump-new new_places.json
 
@@ -41,12 +46,20 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          if git status --porcelain data/stations.json | grep .; then
-            git config user.name 'github-actions'
-            git config user.email 'github-actions@github.com'
-            git add data/stations.json new_places.json
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@github.com'
+          if [ -f data/stations.json ]; then
+            git add data/stations.json
+          fi
+          if [ -f new_places.json ]; then
+            git add new_places.json
+          fi
+          if [ -f data/places_quota.json ]; then
+            git add data/places_quota.json
+          fi
+          if git diff --cached --quiet; then
+            echo 'No changes to commit.'
+          else
             git commit -m 'chore: update Google Places stations'
             git push
-          else
-            echo 'No changes to commit.'
           fi

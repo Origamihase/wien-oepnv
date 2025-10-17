@@ -7,10 +7,12 @@ import os
 import random
 import time
 from dataclasses import dataclass
-from typing import Dict, Iterable, Iterator, List, Optional
+from pathlib import Path
+from typing import Dict, Iterable, Iterator, List, Optional, Set, cast
 
 import requests
 
+from .quota import MonthlyQuota, QuotaConfig
 from .tiling import Tile
 
 __all__ = [
@@ -69,14 +71,28 @@ class GooglePlacesClient:
         config: GooglePlacesConfig,
         *,
         session: Optional[requests.Session] = None,
+        quota: Optional[MonthlyQuota] = None,
+        quota_config: Optional[QuotaConfig] = None,
+        quota_state_path: Optional[Path] = None,
+        enforce_quota: bool = False,
     ) -> None:
         self._config = config
         self._session = session or requests.Session()
         self.request_count = 0
+        self._quota = quota
+        self._quota_config = quota_config
+        self._quota_state_path = quota_state_path
+        self._enforce_quota = enforce_quota
+        self._quota_skipped_kinds: Set[str] = set()
 
     def iter_nearby(self, tiles: Iterable[Tile]) -> Iterator[Place]:
         for tile in tiles:
+            if self._quota_skipped_kinds and self._quota_active:
+                LOGGER.info("Skipping remaining tiles due to quota exhaustion")
+                break
             yield from self._iter_tile(tile)
+            if self._quota_skipped_kinds and self._quota_active:
+                break
 
     def _iter_tile(self, tile: Tile) -> Iterator[Place]:
         base_body: Dict[str, object] = {
@@ -100,7 +116,7 @@ class GooglePlacesClient:
             if page_token:
                 body["pageToken"] = page_token
             try:
-                response = self._post("places:searchNearby", body)
+                response = self._post("places:searchNearby", body, quota_kind="nearby")
             except GooglePlacesError:
                 raise
             except Exception as exc:  # pragma: no cover - defensive
@@ -109,6 +125,8 @@ class GooglePlacesClient:
                 ) from exc
 
             places = response.get("places", [])
+            if response.get("skipped_due_to_quota"):
+                break
             if not isinstance(places, list):
                 raise GooglePlacesTileError(
                     f"Unexpected payload for tile {tile!r}: {response!r}"
@@ -166,7 +184,28 @@ class GooglePlacesClient:
             formatted_address=formatted_address,
         )
 
-    def _post(self, endpoint: str, body: Dict[str, object]) -> Dict[str, object]:
+    def _post(
+        self,
+        endpoint: str,
+        body: Dict[str, object],
+        *,
+        quota_kind: Optional[str] = None,
+    ) -> Dict[str, object]:
+        if quota_kind and self._quota_active:
+            quota = cast(MonthlyQuota, self._quota)
+            cfg = cast(QuotaConfig, self._quota_config)
+            reset = quota.maybe_reset_month()
+            if reset:
+                self._save_quota_state()
+            if not quota.can_consume(quota_kind, cfg):
+                if quota_kind not in self._quota_skipped_kinds:
+                    LOGGER.warning(
+                        "Places free cap reached for %s this month; skipping remote calls. Keeping existing cache.",
+                        quota_kind,
+                    )
+                self._quota_skipped_kinds.add(quota_kind)
+                return {"places": [], "skipped_due_to_quota": True}
+
         url = f"{_API_BASE}/{endpoint}"
         headers = {
             "Content-Type": "application/json",
@@ -191,11 +230,14 @@ class GooglePlacesClient:
             else:
                 if response.status_code == 200:
                     try:
-                        return response.json()
+                        payload = response.json()
                     except ValueError as exc:
                         raise GooglePlacesError(
                             "Invalid JSON payload received from Places API"
                         ) from exc
+                    if quota_kind and self._quota_active:
+                        self._record_successful_request(quota_kind)
+                    return payload
                 if response.status_code in {429, 500, 502, 503, 504}:
                     last_error = GooglePlacesError(
                         f"HTTP {response.status_code}: {response.text[:200]}"
@@ -221,6 +263,41 @@ class GooglePlacesClient:
         base = 0.5 * (2 ** (attempt - 1))
         jitter = random.uniform(0, 0.5)
         return base + jitter
+
+    @property
+    def _quota_active(self) -> bool:
+        return (
+            self._enforce_quota
+            and self._quota is not None
+            and self._quota_config is not None
+            and self._quota_state_path is not None
+        )
+
+    @property
+    def quota_skipped_kinds(self) -> Set[str]:
+        return set(self._quota_skipped_kinds)
+
+    def _record_successful_request(self, kind: str) -> None:
+        if not self._quota_active:
+            return
+        try:
+            quota = cast(MonthlyQuota, self._quota)
+            cfg = cast(QuotaConfig, self._quota_config)
+            quota.consume(kind, cfg)
+            self._save_quota_state()
+        except Exception as exc:  # pragma: no cover - defensive
+            raise GooglePlacesError(f"Failed to persist quota state: {exc}") from exc
+
+    def _save_quota_state(self) -> None:
+        if not self._quota_active:
+            return
+        try:
+            quota = cast(MonthlyQuota, self._quota)
+            path = cast(Path, self._quota_state_path)
+            quota.save_atomic(path)
+        except OSError as exc:
+            LOGGER.error("Failed to save Places quota state: %s", exc)
+            raise GooglePlacesError("Failed to save quota state") from exc
 
 
 def get_places_api_key() -> str:
