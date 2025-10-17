@@ -74,6 +74,7 @@ Zusatzoptionen:
 ## Troubleshooting
 
 * **Fehlender API-Key** → Skript bricht mit Exit-Code 2 ab und weist auf `GOOGLE_ACCESS_ID` hin.
+* **PERMISSION_DENIED „Requests … are blocked.”** → API-Schlüssel berechtigt nicht für `places.googleapis.com`. In der Google Cloud Console die *Places API (New)* aktivieren und in den API-Restriktionen `https://places.googleapis.com` zulassen.
 * **429/5xx** → automatische Retries mit exponentiellem Backoff. Bei dauerhaften Fehlern prüfen: Quoten, Billing, Projektrechte.
 * **Schema-Warnungen** → Log-Level WARN signalisiert übersprungene Kacheln/Antworten; Daten bleiben unangetastet.
 * **Dry-Run vs. Write** → `--dry-run` und `--write` schließen sich aus. Ohne `--write` wird keine Datei geändert.
