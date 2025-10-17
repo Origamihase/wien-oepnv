@@ -148,7 +148,7 @@ logging.basicConfig(
 )
 
 root_logger = logging.getLogger()
-root_logger.setLevel(min(_level, logging.WARNING))
+root_logger.setLevel(_level)
 for handler in root_logger.handlers:
     handler.setFormatter(_make_formatter())
     if isinstance(handler, logging.StreamHandler):
