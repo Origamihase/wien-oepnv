@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+"""Run project static analysis helpers (ruff + mypy).
+
+This utility mirrors the checks executed in the CI workflow so that
+contributors can reproduce the results locally with a single command.
+"""
+
+from __future__ import annotations
+
+import argparse
+import subprocess
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
+def _run(command: list[str]) -> int:
+    """Execute *command* inside the project root and stream the output."""
+    print("→", " ".join(command), flush=True)
+    completed = subprocess.run(command, cwd=PROJECT_ROOT, check=False)
+    return completed.returncode
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--fix",
+        action="store_true",
+        help="Allow ruff to apply autofixes before running mypy.",
+    )
+    parser.add_argument(
+        "--ruff-args",
+        nargs=argparse.REMAINDER,
+        help="Additional arguments forwarded to 'ruff check'.",
+    )
+    args = parser.parse_args()
+
+    ruff_command = ["ruff", "check"]
+    if args.fix:
+        ruff_command.append("--fix")
+    if args.ruff_args:
+        ruff_command.extend(args.ruff_args)
+
+    exit_code = _run(ruff_command)
+
+    if exit_code == 0:
+        exit_code = _run(["mypy"])
+
+    return exit_code
+
+
+if __name__ == "__main__":
+    sys.exit(main())

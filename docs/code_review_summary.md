@@ -20,8 +20,8 @@
    - Die README beschreibt Datenquellen, Lizenzhinweise und automatisierte Aktualisierungen detailliert, was für Betrieb und Wartung hilfreich ist.【F:README.md†L1-L122】
 
 ## Empfohlene nächste Schritte
-- **Statische Analyse**: Ergänzende Checks wie `ruff` oder `mypy` könnten zusätzliche Stil- bzw. Typfehler frühzeitig sichtbar machen.
+- ✅ **Statische Analyse**: Ergänzende Checks laufen jetzt automatisiert (`scripts/run_static_checks.py` für lokale Läufe, identisch zur CI-Konfiguration mit `ruff check` und `mypy`).
 - **CI-Hinweis**: Sicherstellen, dass die lokale Testabdeckung in CI gespiegelt wird, damit die 240 Tests regelmäßig laufen.
 
 ## Fazit
-Aktuell zeigen sich keine akuten Fehler; die Implementierung wirkt robust und gut abgesichert. Die bestehenden Tests laufen zuverlässig durch. Zusätzliche statische Analysen könnten das Qualitätsniveau weiter erhöhen.
+Aktuell zeigen sich keine akuten Fehler; die Implementierung wirkt robust und gut abgesichert. Die bestehenden Tests laufen zuverlässig durch und werden nun von automatisierten statischen Analysen flankiert.
