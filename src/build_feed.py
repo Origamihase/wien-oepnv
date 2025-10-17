@@ -131,7 +131,58 @@ class _MaxLevelFilter(logging.Filter):
         return record.levelno <= self._max_level
 
 
+class _JSONFormatter(logging.Formatter):
+    _DEFAULT_FIELDS = {
+        "name",
+        "msg",
+        "args",
+        "levelname",
+        "levelno",
+        "pathname",
+        "filename",
+        "module",
+        "exc_info",
+        "exc_text",
+        "stack_info",
+        "lineno",
+        "funcName",
+        "created",
+        "msecs",
+        "relativeCreated",
+        "thread",
+        "threadName",
+        "processName",
+        "process",
+    }
+
+    def format(self, record: logging.LogRecord) -> str:
+        message = record.getMessage()
+        timestamp = datetime.fromtimestamp(record.created, LOG_TIMEZONE)
+        payload: Dict[str, Any] = {
+            "timestamp": timestamp.isoformat(),
+            "level": record.levelname,
+            "logger": record.name,
+            "message": message,
+        }
+        if record.exc_info:
+            payload["exc_info"] = self.formatException(record.exc_info)
+        if record.stack_info:
+            payload["stack"] = self.formatStack(record.stack_info)
+
+        extras: Dict[str, Any] = {}
+        for key, value in record.__dict__.items():
+            if key in self._DEFAULT_FIELDS:
+                continue
+            extras[key] = value
+        if extras:
+            payload["extra"] = extras
+
+        return json.dumps(payload, ensure_ascii=False)
+
+
 def _make_formatter() -> logging.Formatter:
+    if LOG_FORMAT == "json":
+        return _JSONFormatter()
     formatter = logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s")
     formatter.converter = _vienna_time_converter
     return formatter
@@ -141,6 +192,10 @@ LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").strip().upper()
 _level = getattr(logging, LOG_LEVEL, logging.INFO)
 if not isinstance(_level, int):
     _level = logging.INFO
+
+LOG_FORMAT = os.getenv("LOG_FORMAT", "plain").strip().lower()
+if LOG_FORMAT not in {"plain", "json"}:
+    LOG_FORMAT = "plain"
 
 _DEFAULT_LOG_DIR = Path("log")
 LOG_DIR_PATH = _resolve_env_path("LOG_DIR", _DEFAULT_LOG_DIR, allow_fallback=True)
