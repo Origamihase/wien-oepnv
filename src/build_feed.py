@@ -77,6 +77,9 @@ def _resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: boo
     try:
         resolved = _validate_path(candidate_path, env_name)
     except ValueError:
+        if not allow_fallback:
+            raise
+
         default_parts = Path(default_path).parts
         candidate_parts = candidate_path.parts
         if default_parts and len(candidate_parts) >= len(default_parts):
@@ -85,8 +88,7 @@ def _resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: boo
                 fallback = Path(default_path)
                 os.environ[env_name] = fallback.as_posix()
                 return fallback
-        if not allow_fallback:
-            raise
+
         _validate_path(default_path, env_name)
         fallback_path = Path(default_path)
         os.environ[env_name] = fallback_path.as_posix()

@@ -44,6 +44,16 @@ def test_resolve_env_path_raises_for_invalid_without_fallback(monkeypatch):
     assert os.getenv("CUSTOM_PATH") == "../evil/outside.log"
 
 
+def test_resolve_env_path_suffix_collision_requires_fallback(monkeypatch):
+    monkeypatch.setenv("CUSTOM_PATH", "/tmp/docs/feed.xml")
+    default = Path("docs/feed.xml")
+
+    with pytest.raises(ValueError):
+        build_feed._resolve_env_path("CUSTOM_PATH", default)
+
+    assert os.getenv("CUSTOM_PATH") == "/tmp/docs/feed.xml"
+
+
 def test_resolve_env_path_falls_back_when_allowed(monkeypatch):
     monkeypatch.setenv("CUSTOM_PATH", "../evil/outside.log")
     default = Path("log/default.log")
