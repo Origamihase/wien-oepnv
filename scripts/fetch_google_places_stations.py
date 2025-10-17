@@ -39,6 +39,7 @@ from src.places.quota import (
     load_quota_config_from_env,
     resolve_quota_state_path,
 )
+from src.places.diagnostics import permission_hint
 from src.places.merge import BoundingBox, MergeConfig, merge_places, load_stations
 from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
 from src.utils.env import load_default_env_files
@@ -329,7 +330,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         places = _fetch_places(client, runtime.tiles)
     except GooglePlacesPermissionError as exc:
         LOGGER.error("Places API access denied: %s", exc)
-        hint = _permission_hint(str(exc))
+        hint = permission_hint(str(exc))
         if hint:
             LOGGER.error(hint)
         else:

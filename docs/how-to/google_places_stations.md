@@ -71,6 +71,16 @@ Zusatzoptionen:
 * `--dump-new new_places.json` – schreibt nur neue & aktualisierte Einträge in eine separate Datei (hilfreich für Review/Artefakte).
 * `--tiles-file tiles.json` – überschreibt `PLACES_TILES` mit einer lokalen Datei.
 
+## Zugang schnell prüfen
+
+Bevor der eigentliche Import läuft, kann der API-Schlüssel mit einem leichten Health-Check validiert werden:
+
+```
+python scripts/verify_google_places_access.py
+```
+
+Das Skript lädt die Standard-Konfiguration, fragt eine einzelne Kachel ab und bricht mit konkreten Hinweisen ab, falls `places.googleapis.com` blockiert oder der Key ungültig ist. Bei Erfolg erscheinen Log-Einträge „Places API access verified …”.
+
 ## Troubleshooting
 
 * **Fehlender API-Key** → Skript bricht mit Exit-Code 2 ab und weist auf `GOOGLE_ACCESS_ID` hin.

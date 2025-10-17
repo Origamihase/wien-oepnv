@@ -1,6 +1,6 @@
-"""Tests for helpers in scripts.fetch_google_places_stations."""
+"""Tests for Google Places diagnostics helpers."""
 
-from scripts.fetch_google_places_stations import _permission_hint
+from src.places.diagnostics import permission_hint
 
 
 def test_permission_hint_for_blocked_message() -> None:
@@ -9,7 +9,7 @@ def test_permission_hint_for_blocked_message() -> None:
         "google.maps.places.v1.Places.SearchNearby are blocked."
     )
 
-    hint = _permission_hint(message)
+    hint = permission_hint(message)
 
     assert hint
     assert "enable Places API (New)" in hint
@@ -19,7 +19,7 @@ def test_permission_hint_for_blocked_message() -> None:
 def test_permission_hint_for_invalid_key() -> None:
     message = "API key is invalid."
 
-    hint = _permission_hint(message)
+    hint = permission_hint(message)
 
     assert hint
     assert "GOOGLE_ACCESS_ID" in hint
@@ -27,4 +27,4 @@ def test_permission_hint_for_invalid_key() -> None:
 
 
 def test_permission_hint_unknown_message() -> None:
-    assert _permission_hint("PERMISSION_DENIED: unknown reason") is None
+    assert permission_hint("PERMISSION_DENIED: unknown reason") is None
