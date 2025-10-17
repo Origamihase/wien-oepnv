@@ -16,8 +16,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
-          python -m pip install ruff
-      - name: Lint
-        run: ruff check
+          python -m pip install ruff mypy
+      - name: Static analysis
+        run: |
+          ruff check
+          mypy
       - name: Test
         run: pytest -q

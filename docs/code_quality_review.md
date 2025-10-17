@@ -25,6 +25,6 @@ This document summarizes an automated walkthrough of the repository to assess co
 ## Recommendations
 
 - Continue to treat the unit test suite as the primary guardrail before merging feed changes; its breadth suggests a robust safety net.
-- Consider adding continuous static analysis (e.g. `ruff` or `mypy`) if not already present in CI, to catch style regressions early. Tests currently validate behavior but not necessarily stylistic drift.
+- Continuous static analysis (`ruff check` und `mypy`) läuft inzwischen im zentralen Test-Workflow und ergänzt die Test-Suite um stilistische sowie typisierte Regressionstests.
 
 Overall, the repository is in excellent shape: the code executes reliably, delivers on its intent, and is efficiently structured for further development.

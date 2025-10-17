@@ -52,7 +52,7 @@ Der Feed-Bau folgt einem klaren Ablauf:
    python -m pip install --upgrade pip
    python -m pip install -r requirements.txt
    ```
-3. **Optionale Tools**: Für statische Analysen empfiehlt sich `python -m pip install ruff mypy`.
+3. **Statische Analysen**: Die CI führt `ruff check` und `mypy` aus; lokal spiegelst du das Verhalten mit `python -m pip install ruff mypy`.
 4. **Umgebungsvariablen**: Sensible Daten (Tokens, Basis-URLs) werden ausschließlich über die Umgebung gesetzt.
    Lokale `.env`-Dateien können über `WIEN_OEPNV_ENV_FILES` eingebunden werden.
 
