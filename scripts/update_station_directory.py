@@ -13,13 +13,15 @@ import argparse
 import csv
 import json
 import logging
+import os
 import re
 import sys
 import unicodedata
-from dataclasses import dataclass
+from copy import deepcopy
+from dataclasses import dataclass, field
 from io import BytesIO
 from pathlib import Path
-from typing import Iterable, Mapping
+from typing import Iterable, Mapping, MutableMapping, Sequence
 
 import openpyxl
 import requests
@@ -36,6 +38,37 @@ try:  # pragma: no cover - convenience for module execution
     from src.utils.stations import is_in_vienna as _is_point_in_vienna
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore
+
+try:  # pragma: no cover - convenience for module execution
+    from src.places.client import (
+        DEFAULT_INCLUDED_TYPES,
+        GooglePlacesClient,
+        GooglePlacesConfig,
+        GooglePlacesError,
+        GooglePlacesPermissionError,
+        GooglePlacesTileError,
+        Place,
+        get_places_api_key,
+    )
+    from src.places.diagnostics import permission_hint
+    from src.places.merge import BoundingBox, MergeConfig, merge_places
+    from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
+    from src.utils.env import load_default_env_files
+except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
+    from places.client import (  # type: ignore
+        DEFAULT_INCLUDED_TYPES,
+        GooglePlacesClient,
+        GooglePlacesConfig,
+        GooglePlacesError,
+        GooglePlacesPermissionError,
+        GooglePlacesTileError,
+        Place,
+        get_places_api_key,
+    )
+    from places.diagnostics import permission_hint  # type: ignore
+    from places.merge import BoundingBox, MergeConfig, merge_places  # type: ignore
+    from places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file  # type: ignore
+    from utils.env import load_default_env_files  # type: ignore
 
 DEFAULT_OUTPUT_PATH = _ROOT / "data" / "stations.json"
 DEFAULT_PENDLER_PATH = _ROOT / "data" / "pendler_bst_ids.json"
@@ -67,16 +100,46 @@ class Station:
     in_vienna: bool = False
     pendler: bool = False
     vor_id: str | None = None
+    extras: dict[str, object] = field(default_factory=dict)
 
     def as_dict(self) -> dict[str, object]:
-        return {
+        payload: dict[str, object] = {
             "bst_id": self.bst_id,
             "bst_code": self.bst_code,
             "name": self.name,
             "in_vienna": self.in_vienna,
             "pendler": self.pendler,
-            **({"vor_id": self.vor_id} if self.vor_id else {}),
         }
+        if self.vor_id:
+            payload["vor_id"] = self.vor_id
+
+        for key, value in self.extras.items():
+            if key in {"bst_id", "bst_code", "name", "in_vienna", "pendler", "vor_id"}:
+                continue
+            payload[key] = value
+        return payload
+
+    def update_from_entry(self, entry: Mapping[str, object]) -> None:
+        base_keys = {"bst_id", "bst_code", "name", "in_vienna", "pendler", "vor_id"}
+        for key, value in entry.items():
+            if key == "vor_id":
+                if self.vor_id is None and isinstance(value, str) and value.strip():
+                    self.vor_id = value.strip()
+                continue
+            if key in base_keys:
+                continue
+            self.extras[key] = deepcopy(value)
+
+        lat = entry.get("_lat")
+        lng = entry.get("_lng")
+        if isinstance(lat, (int, float)):
+            latitude = float(lat)
+            self.extras["_lat"] = latitude
+            self.extras["latitude"] = latitude
+        if isinstance(lng, (int, float)):
+            longitude = float(lng)
+            self.extras["_lng"] = longitude
+            self.extras["longitude"] = longitude
 
 
 @dataclass
@@ -289,6 +352,10 @@ def _restore_existing_metadata(
             vor_id = vor_id_raw.strip()
             if vor_id:
                 station.vor_id = vor_id
+        for key, value in existing.items():
+            if key in {"bst_id", "bst_code", "name", "in_vienna", "pendler", "vor_id"}:
+                continue
+            station.extras[key] = deepcopy(value)
 
 
 def _looks_like_vienna(text: str | None) -> bool:
@@ -316,6 +383,200 @@ def _normalize_csv_key(value: str | None) -> str:
     if value is None:
         return ""
     return re.sub(r"[^a-z0-9]+", "", value.casefold())
+
+
+def _parse_included_types(raw: str | None) -> list[str]:
+    if raw is None:
+        return list(DEFAULT_INCLUDED_TYPES)
+    items = [part.strip() for part in raw.split(",") if part.strip()]
+    return items or list(DEFAULT_INCLUDED_TYPES)
+
+
+def _parse_radius(raw: str | None) -> int:
+    if raw is None:
+        return 2500
+    try:
+        radius = int(raw)
+    except (TypeError, ValueError):
+        logger.warning("Invalid PLACES_RADIUS_M=%r – using default 2500", raw)
+        return 2500
+    return max(1, min(50000, radius))
+
+
+def _parse_max_results(raw: str | None) -> int:
+    if raw is None:
+        return 20
+    try:
+        value = int(raw)
+    except (TypeError, ValueError):
+        logger.warning("Invalid PLACES_MAX_RESULTS=%r – using default 20", raw)
+        return 20
+    if value <= 0:
+        return 0
+    return max(1, min(20, value))
+
+
+def _parse_float(raw: str | None, *, key: str, default: float) -> float:
+    if raw is None:
+        return default
+    try:
+        return float(raw)
+    except (TypeError, ValueError):
+        logger.warning("Invalid %s=%r – using default %s", key, raw, default)
+        return default
+
+
+def _parse_int(raw: str | None, *, key: str, default: int) -> int:
+    if raw is None:
+        return default
+    try:
+        return int(raw)
+    except (TypeError, ValueError):
+        logger.warning("Invalid %s=%r – using default %s", key, raw, default)
+        return default
+
+
+def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
+    if not raw:
+        return None
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise ValueError("BOUNDINGBOX_VIENNA must be valid JSON") from exc
+    try:
+        return BoundingBox(
+            min_lat=float(data["min_lat"]),
+            min_lng=float(data["min_lng"]),
+            max_lat=float(data["max_lat"]),
+            max_lng=float(data["max_lng"]),
+        )
+    except (KeyError, TypeError, ValueError) as exc:
+        raise ValueError("BOUNDINGBOX_VIENNA must define min_lat/min_lng/max_lat/max_lng") from exc
+
+
+def _load_tiles_configuration(
+    tiles_file: Path | None, env: MutableMapping[str, str]
+) -> Sequence[Tile]:
+    if tiles_file:
+        return load_tiles_from_file(tiles_file)
+    return load_tiles_from_env(env.get("PLACES_TILES"))
+
+
+def _fetch_google_places(client: GooglePlacesClient, tiles: Sequence[Tile]) -> list[Place]:
+    places_by_id: dict[str, Place] = {}
+    for tile in iter_tiles(tiles):
+        logger.info("Fetching Google Places tile at %.5f/%.5f", tile.latitude, tile.longitude)
+        try:
+            for place in client.iter_nearby([tile]):
+                places_by_id.setdefault(place.place_id, place)
+        except GooglePlacesTileError as exc:
+            logger.warning(
+                "Skipping tile %.5f/%.5f due to Google Places error: %s",
+                tile.latitude,
+                tile.longitude,
+                exc,
+            )
+            continue
+    return list(places_by_id.values())
+
+
+def _merge_google_metadata(
+    stations: list[Station],
+    places: Sequence[Place],
+    merge_config: MergeConfig,
+) -> None:
+    if not places:
+        logger.info("Google Places enrichment returned no places")
+        return
+
+    existing_entries = [station.as_dict() for station in stations]
+    outcome = merge_places(existing_entries, places, merge_config)
+
+    by_id: dict[int, Mapping[str, object]] = {}
+    for entry in outcome.stations:
+        bst_id = entry.get("bst_id")
+        if isinstance(bst_id, int):
+            by_id[bst_id] = entry
+
+    for station in stations:
+        merged = by_id.get(station.bst_id)
+        if merged:
+            station.update_from_entry(merged)
+
+    logger.info(
+        "Google Places enrichment updated %d stations; %d suggestions already covered",
+        len(outcome.updated_entries),
+        len(outcome.skipped_places),
+    )
+
+    unmatched = [entry for entry in outcome.new_entries if "bst_id" not in entry]
+    if unmatched:
+        logger.info(
+            "Google Places suggested %d additional stations without bst_id; ignoring",
+            len(unmatched),
+        )
+
+
+def _enrich_with_google_places(
+    stations: list[Station], *, tiles_file: Path | None
+) -> None:
+    load_default_env_files()
+    env = os.environ
+
+    try:
+        api_key = get_places_api_key()
+    except SystemExit as exc:  # pragma: no cover - depends on env configuration
+        message = exc.args[0] if exc.args else "Missing GOOGLE_ACCESS_ID"
+        logger.warning("Skipping Google Places enrichment: %s", message)
+        return
+
+    try:
+        tiles = _load_tiles_configuration(tiles_file, env)
+    except (OSError, ValueError) as exc:
+        logger.error("Cannot load Places tile configuration: %s", exc)
+        return
+
+    included_types = _parse_included_types(env.get("PLACES_INCLUDED_TYPES"))
+    radius_m = _parse_radius(env.get("PLACES_RADIUS_M"))
+    max_result_count = _parse_max_results(env.get("PLACES_MAX_RESULTS"))
+    language = env.get("PLACES_LANGUAGE", "de")
+    region = env.get("PLACES_REGION", "AT")
+    timeout_s = _parse_float(env.get("REQUEST_TIMEOUT_S"), key="REQUEST_TIMEOUT_S", default=25.0)
+    max_retries = _parse_int(env.get("REQUEST_MAX_RETRIES"), key="REQUEST_MAX_RETRIES", default=4)
+    merge_distance = _parse_float(env.get("MERGE_MAX_DIST_M"), key="MERGE_MAX_DIST_M", default=150.0)
+
+    try:
+        bounding_box = _parse_bounding_box(env.get("BOUNDINGBOX_VIENNA"))
+    except ValueError as exc:
+        logger.error("Invalid BOUNDINGBOX_VIENNA configuration: %s", exc)
+        return
+
+    client_config = GooglePlacesConfig(
+        api_key=api_key,
+        included_types=included_types,
+        language=language,
+        region=region,
+        radius_m=radius_m,
+        timeout_s=timeout_s,
+        max_retries=max_retries,
+        max_result_count=max_result_count,
+    )
+    client = GooglePlacesClient(client_config)
+
+    try:
+        places = _fetch_google_places(client, tiles)
+    except GooglePlacesPermissionError as exc:
+        hint = permission_hint(str(exc))
+        if hint:
+            logger.error("Google Places denied access: %s | %s", exc, hint)
+        else:
+            logger.error("Google Places denied access: %s", exc)
+        return
+    except GooglePlacesError as exc:
+        logger.error("Google Places enrichment failed: %s", exc)
+        return
+
+    _merge_google_metadata(stations, places, MergeConfig(max_distance_m=merge_distance, bounding_box=bounding_box))
 
 
 class _NormalizedCSVRow:
@@ -543,6 +804,19 @@ def parse_args() -> argparse.Namespace:
         help="Path to the Wiener Linien haltepunkte CSV for coordinate lookup",
     )
     parser.add_argument(
+        "--google-enrich",
+        dest="google_enrich",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Use Google Places API to enrich station metadata (default: enabled)",
+    )
+    parser.add_argument(
+        "--places-tiles-file",
+        type=Path,
+        metavar="PATH",
+        help="Optional JSON file overriding PLACES_TILES for Google enrichment",
+    )
+    parser.add_argument(
         "-v",
         "--verbose",
         action="store_true",
@@ -739,6 +1013,10 @@ def main() -> None:
     if vor_stops:
         _assign_vor_ids(stations, vor_stops)
     stations = _filter_relevant_stations(stations)
+    if getattr(args, "google_enrich", False):
+        _enrich_with_google_places(stations, tiles_file=args.places_tiles_file)
+    else:
+        logger.info("Skipping Google Places enrichment (--no-google-enrich)")
     write_json(stations, args.output)
 
 

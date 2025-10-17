@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+import pytest
+
 from scripts import update_station_directory as usd
 
 
@@ -52,6 +56,34 @@ def test_restore_existing_metadata_preserves_vor_id() -> None:
     assert station.vor_id == "900400"
 
 
+def test_restore_existing_metadata_preserves_additional_fields() -> None:
+    station = make_station("Wien Mitte")
+    usd._restore_existing_metadata(
+        [station],
+        {
+            1: {
+                "aliases": ["Alt Wien"],
+                "_google_place_id": "abc123",
+                "_lat": 48.2,
+                "_lng": 16.3,
+                "_types": ["train_station"],
+                "_formatted_address": "Wien Mitte, 1030 Wien",
+                "latitude": 48.2,
+                "longitude": 16.3,
+                "source": ["google_places"],
+            }
+        },
+    )
+    payload = station.as_dict()
+    assert payload["aliases"] == ["Alt Wien"]
+    assert payload["_google_place_id"] == "abc123"
+    assert payload["_lat"] == pytest.approx(48.2)
+    assert payload["_lng"] == pytest.approx(16.3)
+    assert payload["latitude"] == pytest.approx(48.2)
+    assert payload["longitude"] == pytest.approx(16.3)
+    assert payload["source"] == ["google_places"]
+
+
 def test_build_location_index_prefers_wl_coordinates(tmp_path) -> None:
     gtfs_path = tmp_path / "stops.txt"
     wl_path = tmp_path / "wl.csv"
@@ -75,3 +107,26 @@ def test_build_location_index_prefers_wl_coordinates(tmp_path) -> None:
     assert info.latitude == 48.2
     assert info.longitude == 16.3
     assert info.sources == {"gtfs", "wl"}
+
+
+def test_station_update_from_entry_merges_google_metadata() -> None:
+    station = make_station("Wien Mitte")
+    station.update_from_entry(
+        {
+            "bst_id": 1,
+            "_google_place_id": "place-1",
+            "_lat": 48.2082,
+            "_lng": 16.3738,
+            "aliases": ["Wien Mitte Station"],
+            "source": ["google_places"],
+            "_types": ["train_station"],
+        }
+    )
+    payload = station.as_dict()
+    assert payload["_google_place_id"] == "place-1"
+    assert payload["_lat"] == pytest.approx(48.2082)
+    assert payload["_lng"] == pytest.approx(16.3738)
+    assert payload["latitude"] == pytest.approx(48.2082)
+    assert payload["longitude"] == pytest.approx(16.3738)
+    assert payload["aliases"] == ["Wien Mitte Station"]
+    assert payload["source"] == ["google_places"]
