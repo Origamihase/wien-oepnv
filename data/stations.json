@@ -781,7 +781,7 @@
   {
     "name": "Flughafen Wien Bahnhof (VOR)",
     "in_vienna": false,
-    "pendler": false,
+    "pendler": true,
     "vor_id": "430470800",
     "latitude": 48.12056,
     "longitude": 16.563659,
@@ -859,7 +859,7 @@
   {
     "name": "Wiener Neustadt Hauptbahnhof (VOR)",
     "in_vienna": false,
-    "pendler": false,
+    "pendler": true,
     "vor_id": "430521000",
     "latitude": 47.811304,
     "longitude": 16.23362,

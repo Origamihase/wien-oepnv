@@ -468,6 +468,8 @@ def vor_station_ids() -> tuple[str, ...]:
 
     ids: set[str] = set()
     for entry in _station_entries():
+        if not (entry.get("in_vienna") or entry.get("pendler")):
+            continue
         vor_id_raw = entry.get("vor_id")
         if vor_id_raw is not None:
             vor_id = str(vor_id_raw).strip()

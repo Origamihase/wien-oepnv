@@ -21,11 +21,11 @@ if str(BASE_DIR) not in sys.path:
 try:  # pragma: no cover - convenience for module execution
     from src.providers import vor as vor_provider
     from src.utils.http import session_with_retries
-    from src.utils.stations import is_in_vienna
+    from src.utils.stations import is_in_vienna, is_pendler
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from providers import vor as vor_provider  # type: ignore
     from utils.http import session_with_retries  # type: ignore
-    from utils.stations import is_in_vienna  # type: ignore
+    from utils.stations import is_in_vienna, is_pendler  # type: ignore
 DEFAULT_SOURCE = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 
@@ -538,10 +538,18 @@ def build_vor_entries(stops: Iterable[VORStop]) -> list[dict[str, object]]:
                 stop.name,
                 stop.vor_id,
             )
+        pendler = False
+        if not in_vienna:
+            pendler = bool(
+                is_pendler(stop.name)
+                or is_pendler(canonical)
+                or (stop.short_name and is_pendler(stop.short_name))
+            )
+
         entry = {
             "name": canonical,
             "in_vienna": in_vienna,
-            "pendler": False,
+            "pendler": pendler,
             "vor_id": stop.vor_id,
             "latitude": stop.latitude,
             "longitude": stop.longitude,
