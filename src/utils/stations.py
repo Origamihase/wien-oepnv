@@ -384,8 +384,20 @@ def _candidate_values(value: str) -> list[str]:
     extras: list[str] = []
     for variant in candidates:
         if re.search(r"\b(?:bei|b[./-]?)\s*wien\b", variant, re.IGNORECASE):
-            stripped = re.sub(r"\b(?:bei|b[./-]?)\s*wien\b", "", variant, flags=re.IGNORECASE)
+            stripped = re.sub(
+                r"\b(?:bei|b[./-]?)\s*wien\b", "", variant, flags=re.IGNORECASE
+            )
             extras.append(stripped)
+
+        # Expand common station abbreviations like "Hbf"/"Bhf"/"Bf" to improve
+        # canonical lookups for ÖBB titles that use shorthand spellings.
+        if re.search(r"\bHbf\b", variant, re.IGNORECASE):
+            extras.append(re.sub(r"\bHbf\b", "Hauptbahnhof", variant, flags=re.IGNORECASE))
+        if re.search(r"\bBhf\b", variant, re.IGNORECASE):
+            extras.append(re.sub(r"\bBhf\b", "Bahnhof", variant, flags=re.IGNORECASE))
+        if re.search(r"\bBf\b", variant, re.IGNORECASE):
+            extras.append(re.sub(r"\bBf\b", "Bahnhof", variant, flags=re.IGNORECASE))
+
     for extra in extras:
         cleaned = re.sub(r"\s{2,}", " ", extra.strip())
         if cleaned and cleaned not in seen:
@@ -468,6 +480,8 @@ def vor_station_ids() -> tuple[str, ...]:
 
     ids: set[str] = set()
     for entry in _station_entries():
+        if not (entry.get("in_vienna") or entry.get("pendler")):
+            continue
         vor_id_raw = entry.get("vor_id")
         if vor_id_raw is not None:
             vor_id = str(vor_id_raw).strip()
