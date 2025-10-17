@@ -1085,7 +1085,7 @@
   {
     "name": "Gerasdorf bei Wien Bahnhof (VOR)",
     "in_vienna": false,
-    "pendler": false,
+    "pendler": true,
     "vor_id": "430349900",
     "latitude": 48.293315,
     "longitude": 16.483736,
@@ -1098,7 +1098,7 @@
   {
     "name": "Kledering Bahnhof (VOR)",
     "in_vienna": false,
-    "pendler": false,
+    "pendler": true,
     "vor_id": "430389500",
     "latitude": 48.132453,
     "longitude": 16.439724,
@@ -1111,7 +1111,7 @@
   {
     "name": "Schwechat Bahnhof (VOR)",
     "in_vienna": false,
-    "pendler": false,
+    "pendler": true,
     "vor_id": "430471000",
     "latitude": 48.143195,
     "longitude": 16.482055,
@@ -1202,7 +1202,7 @@
   {
     "name": "Wiener Neustadt Hauptbahnhof (VOR)",
     "in_vienna": false,
-    "pendler": false,
+    "pendler": true,
     "vor_id": "430521000",
     "latitude": 47.811304,
     "longitude": 16.23362,
