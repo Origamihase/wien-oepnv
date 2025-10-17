@@ -31,6 +31,7 @@ from src.places.client import (
     GooglePlacesPermissionError,
     GooglePlacesTileError,
     Place,
+    DEFAULT_INCLUDED_TYPES,
     get_places_api_key,
 )
 from src.places.quota import (
@@ -96,11 +97,26 @@ def _parse_args(argv: Sequence[str] | None) -> argparse.Namespace:
 
 
 def _parse_included_types(raw: str | None) -> List[str]:
-    raw_value = raw or "train_station,subway_station,bus_station"
-    items = [part.strip() for part in raw_value.split(",") if part.strip()]
+    if raw is None:
+        return list(DEFAULT_INCLUDED_TYPES)
+    items = [part.strip() for part in raw.split(",") if part.strip()]
     if not items:
-        raise ValueError("PLACES_INCLUDED_TYPES must not be empty")
+        return list(DEFAULT_INCLUDED_TYPES)
     return items
+
+
+def _parse_radius(raw: str | None) -> int:
+    value = int(raw) if raw is not None else 2500
+    return max(1, min(50000, value))
+
+
+def _parse_max_results(raw: str | None) -> int:
+    if raw is None:
+        return 20
+    value = int(raw)
+    if value <= 0:
+        return 0
+    return max(1, min(20, value))
 
 
 def _parse_tiles(args: argparse.Namespace, env: MutableMapping[str, str]) -> List[Tile]:
@@ -135,9 +151,10 @@ def _build_runtime_config(args: argparse.Namespace) -> RuntimeConfig:
     included_types = _parse_included_types(env.get("PLACES_INCLUDED_TYPES"))
     language = env.get("PLACES_LANGUAGE", "de")
     region = env.get("PLACES_REGION", "AT")
-    radius_m = int(env.get("PLACES_RADIUS_M", "2500"))
+    radius_m = _parse_radius(env.get("PLACES_RADIUS_M"))
     timeout_s = float(env.get("REQUEST_TIMEOUT_S", "25"))
     max_retries = int(env.get("REQUEST_MAX_RETRIES", "4"))
+    max_result_count = _parse_max_results(env.get("PLACES_MAX_RESULTS"))
 
     tiles = _parse_tiles(args, env)
 
@@ -154,6 +171,7 @@ def _build_runtime_config(args: argparse.Namespace) -> RuntimeConfig:
         radius_m=radius_m,
         timeout_s=timeout_s,
         max_retries=max_retries,
+        max_result_count=max_result_count,
     )
     merge_config = MergeConfig(max_distance_m=merge_distance, bounding_box=bounding_box)
     quota_config = load_quota_config_from_env(env)
