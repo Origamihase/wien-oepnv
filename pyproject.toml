@@ -26,7 +26,7 @@ warn_return_any = false
 show_error_codes = true
 pretty = true
 ignore_missing_imports = true
-files = ["src/build_feed.py"]
+files = ["src/build_feed.py", "src/utils/stations.py"]
 mypy_path = ["src"]
 explicit_package_bases = true
 disable_error_code = ["import-untyped"]
@@ -39,6 +39,3 @@ ignore_errors = true
 module = "src.providers.*"
 ignore_errors = true
 
-[[tool.mypy.overrides]]
-module = ["src.utils.stations", "src.utils.stations.*"]
-ignore_errors = true

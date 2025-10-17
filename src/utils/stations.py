@@ -8,7 +8,7 @@ import re
 import unicodedata
 from functools import lru_cache
 from pathlib import Path
-from typing import Dict, Iterable, List, NamedTuple, Sequence, Tuple
+from typing import Iterable, NamedTuple
 
 __all__ = [
     "canonical_name",
@@ -45,6 +45,10 @@ class StationInfo(NamedTuple):
 
 _STATIONS_PATH = Path(__file__).resolve().parents[2] / "data" / "stations.json"
 _VIENNA_POLYGON_PATH = Path(__file__).resolve().parents[2] / "data" / "vienna_boundary.geojson"
+
+Coordinate = tuple[float, float]
+Ring = tuple[Coordinate, ...]
+Polygon = tuple[Ring, ...]
 
 
 def _strip_accents(value: str) -> str:
@@ -93,8 +97,8 @@ def _coerce_float(value: object | None) -> float | None:
 def _point_on_segment(
     lat: float,
     lon: float,
-    start: Tuple[float, float],
-    end: Tuple[float, float],
+    start: Coordinate,
+    end: Coordinate,
     tolerance: float = 1e-9,
 ) -> bool:
     """Return ``True`` if *lat*, *lon* lies on the line segment (*start*, *end*)."""
@@ -122,7 +126,7 @@ def _point_on_segment(
     return -tolerance <= dot <= length_sq + tolerance
 
 
-def _point_in_ring(lat: float, lon: float, ring: Sequence[Tuple[float, float]]) -> bool:
+def _point_in_ring(lat: float, lon: float, ring: Ring) -> bool:
     """Return ``True`` if *lat*, *lon* is inside the polygon *ring*."""
 
     if len(ring) < 3:
@@ -145,7 +149,7 @@ def _point_in_ring(lat: float, lon: float, ring: Sequence[Tuple[float, float]]) 
     return inside
 
 
-def _point_in_polygon(lat: float, lon: float, rings: Sequence[Sequence[Tuple[float, float]]]) -> bool:
+def _point_in_polygon(lat: float, lon: float, rings: Polygon) -> bool:
     """Return ``True`` if *lat*, *lon* lies within the polygon defined by *rings*."""
 
     if not rings:
@@ -159,7 +163,7 @@ def _point_in_polygon(lat: float, lon: float, rings: Sequence[Sequence[Tuple[flo
 
 
 @lru_cache(maxsize=1)
-def _vienna_polygons() -> Tuple[Tuple[Tuple[float, float], ...], ...]:
+def _vienna_polygons() -> tuple[Polygon, ...]:
     """Return a tuple of polygon rings representing Vienna's city limits."""
 
     try:
@@ -168,12 +172,12 @@ def _vienna_polygons() -> Tuple[Tuple[Tuple[float, float], ...], ...]:
     except (OSError, json.JSONDecodeError):
         return ()
 
-    polygons: list[tuple[tuple[float, float], ...]] = []
+    polygons: list[Polygon] = []
 
     def add_polygon(coords: Iterable[Iterable[Iterable[float]]]) -> None:
-        parsed_rings: list[tuple[Tuple[float, float], ...]] = []
+        parsed_rings: list[Ring] = []
         for raw_ring in coords:
-            ring_points: list[Tuple[float, float]] = []
+            ring_points: list[Coordinate] = []
             for pair in raw_ring:
                 if not isinstance(pair, (list, tuple)) or len(pair) < 2:
                     continue
@@ -220,7 +224,7 @@ def _iter_aliases(
 ) -> Iterable[str]:
     """Yield alias strings for a station entry (canonical name first)."""
 
-    variants: List[str] = []
+    variants: list[str] = []
     seen: set[str] = set()
 
     def add(raw: str) -> None:
@@ -277,10 +281,10 @@ def _station_entries() -> tuple[dict, ...]:
 
 
 @lru_cache(maxsize=1)
-def _station_lookup() -> Dict[str, StationInfo]:
+def _station_lookup() -> dict[str, StationInfo]:
     """Return a mapping from normalized aliases to :class:`StationInfo` records."""
 
-    mapping: Dict[str, StationInfo] = {}
+    mapping: dict[str, StationInfo] = {}
 
     for entry in _station_entries():
         name = str(entry.get("name", "")).strip()
@@ -361,10 +365,10 @@ def _station_lookup() -> Dict[str, StationInfo]:
     return mapping
 
 
-def _candidate_values(value: str) -> List[str]:
+def _candidate_values(value: str) -> list[str]:
     """Generate possible textual variants for *value* supplied by the caller."""
 
-    candidates: List[str] = []
+    candidates: list[str] = []
     seen: set[str] = set()
     for variant in (
         value,
@@ -377,7 +381,7 @@ def _candidate_values(value: str) -> List[str]:
         if cleaned and cleaned not in seen:
             seen.add(cleaned)
             candidates.append(cleaned)
-    extras: List[str] = []
+    extras: list[str] = []
     for variant in candidates:
         if re.search(r"\b(?:bei|b[./-]?)\s*wien\b", variant, re.IGNORECASE):
             stripped = re.sub(r"\b(?:bei|b[./-]?)\s*wien\b", "", variant, flags=re.IGNORECASE)
