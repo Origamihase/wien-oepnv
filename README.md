@@ -75,6 +75,7 @@ Der Feed-Bau folgt einem klaren Ablauf:
 | `WL_ENABLE` / `OEBB_ENABLE` / `VOR_ENABLE` | Aktiviert bzw. deaktiviert die einzelnen Provider (Standard: aktiv). |
 | `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT` | Steuerung der Logging-Ausgabe (`log/errors.log`, `log/diagnostics.log`). |
 | `STATE_PATH`, `STATE_RETENTION_DAYS` | Pfad & Aufbewahrung für `data/first_seen.json`.                      |
+| `WIEN_OEPNV_CACHE_PRETTY` | Steuert die Formatierung der Cache-Dateien (`1` = gut lesbar, `0` = kompakt). |
 
 Alle Pfade werden durch `_resolve_env_path` auf `docs/`, `data/` oder `log/` beschränkt, um Path-Traversal zu verhindern.
 

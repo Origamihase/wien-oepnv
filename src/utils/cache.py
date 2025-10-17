@@ -7,7 +7,9 @@ import logging
 import os
 from pathlib import Path
 import tempfile
-from typing import Any, List
+from typing import Any, List, Optional
+
+from .env import get_bool_env
 
 _CACHE_DIR = Path("cache")
 _CACHE_FILENAME = "events.json"
@@ -60,8 +62,21 @@ def read_cache(provider: str) -> List[Any]:
     return []
 
 
-def write_cache(provider: str, items: List[Any]) -> None:
-    """Write *items* to the cache for *provider* atomically."""
+def _pretty_print_enabled(explicit: Optional[bool]) -> bool:
+    """Return whether cache files should be pretty printed."""
+
+    if explicit is not None:
+        return explicit
+    return get_bool_env("WIEN_OEPNV_CACHE_PRETTY", True)
+
+
+def write_cache(provider: str, items: List[Any], *, pretty: Optional[bool] = None) -> None:
+    """Write *items* to the cache for *provider* atomically.
+
+    Pretty printing is enabled by default to keep JSON files human readable. To
+    reduce cache size for large datasets set ``pretty`` to ``False`` or define
+    the environment variable ``WIEN_OEPNV_CACHE_PRETTY=0``.
+    """
 
     cache_file = _cache_file(provider)
     cache_file.parent.mkdir(parents=True, exist_ok=True)
@@ -75,7 +90,20 @@ def write_cache(provider: str, items: List[Any]) -> None:
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as fh:
             try:
-                json.dump(items, fh, ensure_ascii=False, indent=2)
+                pretty_print = _pretty_print_enabled(pretty)
+                separators = None
+                indent = 2
+                if not pretty_print:
+                    indent = None
+                    separators = (",", ":")
+
+                json.dump(
+                    items,
+                    fh,
+                    ensure_ascii=False,
+                    indent=indent,
+                    separators=separators,
+                )
                 fh.flush()
                 os.fsync(fh.fileno())
             except Exception:
