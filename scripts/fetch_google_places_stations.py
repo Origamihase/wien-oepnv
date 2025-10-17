@@ -14,12 +14,21 @@ import os
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
+import sys
 from typing import Iterable, List, MutableMapping, Optional, Sequence
+
+# When executed as ``python scripts/fetch_google_places_stations.py`` the parent
+# directory (repository root) is not on ``sys.path`` which prevents importing
+# the ``src`` package. Ensure the root is available before performing the
+# imports below.
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.places.client import (
     GooglePlacesClient,
     GooglePlacesConfig,
     GooglePlacesError,
+    GooglePlacesPermissionError,
     GooglePlacesTileError,
     Place,
     get_places_api_key,
@@ -30,6 +39,7 @@ from src.places.quota import (
     load_quota_config_from_env,
     resolve_quota_state_path,
 )
+from src.places.diagnostics import permission_hint
 from src.places.merge import BoundingBox, MergeConfig, merge_places, load_stations
 from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
 from src.utils.env import load_default_env_files
@@ -294,6 +304,16 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     try:
         places = _fetch_places(client, runtime.tiles)
+    except GooglePlacesPermissionError as exc:
+        LOGGER.error("Places API access denied: %s", exc)
+        hint = permission_hint(str(exc))
+        if hint:
+            LOGGER.error(hint)
+        else:
+            LOGGER.error(
+                "Skipping Places update. Ensure the configured API key has access to places.googleapis.com"
+            )
+        return 0
     except GooglePlacesError as exc:
         LOGGER.error("Failed to fetch places: %s", exc)
         return 1

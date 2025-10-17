@@ -19,6 +19,7 @@ __all__ = [
     "GooglePlacesClient",
     "GooglePlacesConfig",
     "GooglePlacesError",
+    "GooglePlacesPermissionError",
     "GooglePlacesTileError",
     "Place",
     "get_places_api_key",
@@ -38,6 +39,10 @@ class GooglePlacesError(RuntimeError):
 
 class GooglePlacesTileError(GooglePlacesError):
     """Raised when a particular tile cannot be processed."""
+
+
+class GooglePlacesPermissionError(GooglePlacesError):
+    """Raised when the Places API rejects the request due to missing access."""
 
 
 @dataclass(frozen=True)
@@ -243,6 +248,9 @@ class GooglePlacesClient:
                     last_error = GooglePlacesError(
                         f"HTTP {response.status_code}: {response.text[:200]}"
                     )
+                elif response.status_code in {401, 403}:
+                    details = self._extract_error_details(response)
+                    raise GooglePlacesPermissionError(details)
                 else:
                     raise GooglePlacesError(
                         f"Request failed with status {response.status_code}: {response.text[:200]}"
@@ -259,6 +267,20 @@ class GooglePlacesClient:
         if isinstance(last_error, GooglePlacesError):
             raise last_error
         raise GooglePlacesError(str(last_error)) from last_error
+
+    def _extract_error_details(self, response: requests.Response) -> str:
+        try:
+            payload = response.json()
+        except ValueError:
+            payload = None
+        if isinstance(payload, dict):
+            status = payload.get("status")
+            message = payload.get("message")
+            if isinstance(status, str) and isinstance(message, str):
+                return f"{status}: {message}"
+            if isinstance(message, str):
+                return message
+        return f"HTTP {response.status_code}: {response.text[:200]}"
 
     def _backoff(self, attempt: int) -> float:
         base = 0.5 * (2 ** (attempt - 1))
