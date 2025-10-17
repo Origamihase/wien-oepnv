@@ -8,6 +8,15 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      GOOGLE_ACCESS_ID: ${{ secrets.GOOGLE_ACCESS_ID }}
+      PLACES_INCLUDED_TYPES: train_station,subway_station,bus_station
+      # Deprecated fallback: GOOGLE_MAPS_API_KEY remains supported but should be migrated.
+      PLACES_LIMIT_TOTAL: 4000
+      PLACES_LIMIT_NEARBY: 1500
+      PLACES_LIMIT_TEXT: 1500
+      PLACES_LIMIT_DETAILS: 1000
+      PLACES_QUOTA_STATE: data/places_quota.json
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,15 +33,65 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      - name: Check GOOGLE_ACCESS_ID presence
+        run: |
+          set -euo pipefail
+          if [ -z "${GOOGLE_ACCESS_ID:-}" ]; then
+            echo "Missing GOOGLE_ACCESS_ID"; exit 2;
+          fi
+
+      - name: Places preflight
+        run: |
+          set -euo pipefail
+          body='{"textQuery":"Wien Hauptbahnhof","languageCode":"de","regionCode":"AT"}'
+          # Bis zu 3 Versuche, kurze Backoffs
+          for i in 1 2 3; do
+            if curl -fsS -X POST "https://places.googleapis.com/v1/places:searchText" \
+                 -H "Content-Type: application/json" \
+                 -H "X-Goog-Api-Key: $GOOGLE_ACCESS_ID" \
+                 -H "X-Goog-FieldMask: places.id" \
+                 --max-time 20 \
+                 --data "$body" >/dev/null; then
+              echo "Preflight OK"; exit 0
+            fi
+            echo "Preflight attempt $i failed; retrying..." >&2
+            sleep $((i*3))
+          done
+          echo "Preflight failed after retries." >&2
+          exit 1
+
+      - name: Places nearby preflight
+        run: |
+          set -euo pipefail
+          body='{
+            "languageCode":"de",
+            "includedTypes":["train_station"],
+            "maxResultCount": 1,
+            "locationRestriction":{
+              "circle":{"center":{"latitude":48.20849,"longitude":16.37208},"radius":1500}
+            }
+          }'
+          curl -fsS -X POST "https://places.googleapis.com/v1/places:searchNearby" \
+            -H "Content-Type: application/json" \
+            -H "X-Goog-Api-Key: $GOOGLE_ACCESS_ID" \
+            -H "X-Goog-FieldMask: places.id,places.displayName,places.location" \
+            --max-time 20 \
+            --data "$body" >/dev/null
+          echo "Nearby preflight OK"
+
+      - name: Nearby debug (only if needed)
+        if: failure()
+        run: |
+          set -euo pipefail
+          body='{"languageCode":"de","includedTypes":["train_station"],"maxResultCount":1,
+                 "locationRestriction":{"circle":{"center":{"latitude":48.20849,"longitude":16.37208},"radius":1500}}}'
+          curl -sS -X POST "https://places.googleapis.com/v1/places:searchNearby" \
+            -H "Content-Type: application/json" \
+            -H "X-Goog-Api-Key: $GOOGLE_ACCESS_ID" \
+            -H "X-Goog-FieldMask: places.id,places.displayName,places.location" \
+            --data "$body" -w "\nHTTP %{http_code}\n"
+
       - name: Fetch Google Places stations
-        env:
-          GOOGLE_ACCESS_ID: ${{ secrets.GOOGLE_ACCESS_ID }}
-          # Deprecated fallback: GOOGLE_MAPS_API_KEY remains supported but should be migrated.
-          PLACES_LIMIT_TOTAL: 4000
-          PLACES_LIMIT_NEARBY: 1500
-          PLACES_LIMIT_TEXT: 1500
-          PLACES_LIMIT_DETAILS: 1000
-          PLACES_QUOTA_STATE: data/places_quota.json
         run: |
           python scripts/fetch_google_places_stations.py --write --dump-new new_places.json
 

@@ -83,7 +83,7 @@ def test_merge_matches_by_distance() -> None:
             "Bahnhof Landstraße",
             lat=48.2066,
             lng=16.3844,
-            types=["transit_station"],
+            types=["bus_station"],
         )
     ]
     config = MergeConfig(max_distance_m=150.0, bounding_box=None)
@@ -234,7 +234,7 @@ def test_merge_golden_file() -> None:
             "Wien Mitte",
             lat=48.207,
             lng=16.3845,
-            types=["train_station", "transit_station"],
+            types=["train_station", "bus_station"],
             address="Landstraße, 1030 Wien",
         ),
         make_place(
