@@ -11,6 +11,9 @@ jobs:
     env:
       GOOGLE_ACCESS_ID: ${{ secrets.GOOGLE_ACCESS_ID }}
       PLACES_INCLUDED_TYPES: train_station,subway_station,bus_station
+      PLACES_RADIUS_M: 2500
+      PLACES_MAX_RESULTS: 20
+      PLACES_RANK_PREFERENCE: POPULARITY
       # Deprecated fallback: GOOGLE_MAPS_API_KEY remains supported but should be migrated.
       PLACES_LIMIT_TOTAL: 4000
       PLACES_LIMIT_NEARBY: 1500

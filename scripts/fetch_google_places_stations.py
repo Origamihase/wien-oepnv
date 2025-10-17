@@ -32,6 +32,8 @@ from src.places.client import (
     GooglePlacesTileError,
     Place,
     DEFAULT_INCLUDED_TYPES,
+    MAX_RESULTS,
+    RADIUS_M,
     get_places_api_key,
 )
 from src.places.quota import (
@@ -105,20 +107,6 @@ def _parse_included_types(raw: str | None) -> List[str]:
     return items
 
 
-def _parse_radius(raw: str | None) -> int:
-    value = int(raw) if raw is not None else 2500
-    return max(1, min(50000, value))
-
-
-def _parse_max_results(raw: str | None) -> int:
-    if raw is None:
-        return 20
-    value = int(raw)
-    if value <= 0:
-        return 0
-    return max(1, min(20, value))
-
-
 def _parse_tiles(args: argparse.Namespace, env: MutableMapping[str, str]) -> List[Tile]:
     if args.tiles_file is not None:
         return load_tiles_from_file(args.tiles_file)
@@ -151,10 +139,8 @@ def _build_runtime_config(args: argparse.Namespace) -> RuntimeConfig:
     included_types = _parse_included_types(env.get("PLACES_INCLUDED_TYPES"))
     language = env.get("PLACES_LANGUAGE", "de")
     region = env.get("PLACES_REGION", "AT")
-    radius_m = _parse_radius(env.get("PLACES_RADIUS_M"))
     timeout_s = float(env.get("REQUEST_TIMEOUT_S", "25"))
     max_retries = int(env.get("REQUEST_MAX_RETRIES", "4"))
-    max_result_count = _parse_max_results(env.get("PLACES_MAX_RESULTS"))
 
     tiles = _parse_tiles(args, env)
 
@@ -168,10 +154,10 @@ def _build_runtime_config(args: argparse.Namespace) -> RuntimeConfig:
         included_types=included_types,
         language=language,
         region=region,
-        radius_m=radius_m,
+        radius_m=RADIUS_M,
         timeout_s=timeout_s,
         max_retries=max_retries,
-        max_result_count=max_result_count,
+        max_result_count=MAX_RESULTS,
     )
     merge_config = MergeConfig(max_distance_m=merge_distance, bounding_box=bounding_box)
     quota_config = load_quota_config_from_env(env)

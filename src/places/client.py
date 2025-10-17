@@ -27,6 +27,42 @@ __all__ = [
 
 LOGGER = logging.getLogger("places.google")
 
+
+def _env_int(name: str, default: int, min_v: int | None = None, max_v: int | None = None) -> int:
+    raw = os.getenv(name)
+    value = default
+    if raw is not None:
+        try:
+            value = int(raw)
+        except ValueError:
+            LOGGER.warning("Invalid integer for %s: %s", name, raw)
+            value = default
+    if min_v is not None:
+        value = max(min_v, value)
+    if max_v is not None:
+        value = min(max_v, value)
+    return value
+
+
+def _env_rank_preference(
+    name: str = "PLACES_RANK_PREFERENCE", default: str = "POPULARITY"
+) -> str:
+    allowed = {"POPULARITY", "DISTANCE"}
+    default_normalized = default.strip().upper()
+    raw = os.getenv(name)
+    if raw is None:
+        return default_normalized
+    candidate = raw.strip().upper()
+    if candidate in allowed:
+        return candidate
+    LOGGER.warning("Invalid rank preference for %s: %s", name, raw)
+    return default_normalized
+
+
+RADIUS_M = _env_int("PLACES_RADIUS_M", 2500, 1, 50000)
+MAX_RESULTS = _env_int("PLACES_MAX_RESULTS", 20, 1, 20)
+RANK_PREF = _env_rank_preference()
+
 FIELD_MASK_NEARBY = "places.id,places.displayName,places.location,places.types"
 FIELD_MASK_TEXT = "places.id,places.displayName,places.location,places.types"
 DEFAULT_INCLUDED_TYPES: Sequence[str] = (
@@ -36,6 +72,7 @@ DEFAULT_INCLUDED_TYPES: Sequence[str] = (
 )
 VALID_TYPES: Set[str] = set(DEFAULT_INCLUDED_TYPES)
 _API_BASE = "https://places.googleapis.com/v1"
+_NEARBY_CONFIG_LOGGED = False
 
 
 class GooglePlacesError(RuntimeError):
@@ -96,8 +133,9 @@ class GooglePlacesClient:
         self._enforce_quota = enforce_quota
         self._quota_skipped_kinds: Set[str] = set()
         self._included_types = self._sanitize_included_types(config.included_types)
-        self._radius_m = self._clamp_radius(config.radius_m)
-        self._max_result_count = self._clamp_max_result_count(config.max_result_count)
+        self._radius_m = RADIUS_M
+        self._max_result_count = MAX_RESULTS
+        self._rank_preference = RANK_PREF
 
     def iter_nearby(self, tiles: Iterable[Tile]) -> Iterator[Place]:
         for tile in tiles:
@@ -109,9 +147,22 @@ class GooglePlacesClient:
                 break
 
     def _iter_tile(self, tile: Tile) -> Iterator[Place]:
+        global _NEARBY_CONFIG_LOGGED
+        if not _NEARBY_CONFIG_LOGGED:
+            LOGGER.info(
+                "Nearby config: radius=%sm, max=%s, rank=%s, types=%s",
+                self._radius_m,
+                self._max_result_count,
+                self._rank_preference,
+                self._included_types,
+            )
+            _NEARBY_CONFIG_LOGGED = True
+
         base_body: Dict[str, object] = {
             "languageCode": self._config.language,
             "includedTypes": self._included_types,
+            "rankPreference": self._rank_preference,
+            "maxResultCount": self._max_result_count,
             "locationRestriction": {
                 "circle": {
                     "center": {
@@ -124,8 +175,6 @@ class GooglePlacesClient:
         }
         if self._config.region:
             base_body["regionCode"] = self._config.region
-        if self._max_result_count:
-            base_body["maxResultCount"] = self._max_result_count
 
         page_token: Optional[str] = None
         while True:
@@ -363,12 +412,6 @@ class GooglePlacesClient:
         if not sanitized:
             sanitized = list(DEFAULT_INCLUDED_TYPES)
         return sanitized
-
-    def _clamp_radius(self, radius: int) -> int:
-        return max(1, min(50000, radius))
-
-    def _clamp_max_result_count(self, value: int) -> int:
-        return max(1, min(20, value)) if value else 0
 
     def _backoff(self, attempt: int) -> float:
         base = 0.5 * (2 ** (attempt - 1))
