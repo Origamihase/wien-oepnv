@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Iterator, List, cast
+from typing import Iterable, Iterator, List, Mapping, cast
 
 __all__ = ["Tile", "load_tiles_from_env", "load_tiles_from_file", "iter_tiles"]
 
@@ -21,12 +21,21 @@ class Tile:
 _DEFAULT_TILE = Tile(latitude=48.208174, longitude=16.373819)
 
 
-def _parse_tiles(raw_tiles: Iterable[dict[str, object]]) -> List[Tile]:
+def _coerce_coordinate(raw: Mapping[str, object], key: str) -> float:
+    value = raw.get(key)
+    if isinstance(value, (float, int)):
+        return float(value)
+    if isinstance(value, str):
+        return float(value)
+    raise TypeError(f"Invalid {key!r} value in tile specification: {value!r}")
+
+
+def _parse_tiles(raw_tiles: Iterable[Mapping[str, object]]) -> List[Tile]:
     tiles: List[Tile] = []
     for raw in raw_tiles:
         try:
-            lat = float(raw["lat"])
-            lng = float(raw["lng"])
+            lat = _coerce_coordinate(raw, "lat")
+            lng = _coerce_coordinate(raw, "lng")
         except (KeyError, TypeError, ValueError) as exc:
             raise ValueError(f"Invalid tile specification: {raw!r}") from exc
         tiles.append(Tile(latitude=lat, longitude=lng))
@@ -42,7 +51,7 @@ def load_tiles_from_env(raw_value: str | None) -> List[Tile]:
     data = json.loads(raw_value)
     if not isinstance(data, list):
         raise ValueError("PLACES_TILES must encode a list of objects")
-    return _parse_tiles(cast(Iterable[dict[str, object]], data))
+    return _parse_tiles(cast(Iterable[Mapping[str, object]], data))
 
 
 def load_tiles_from_file(path: Path) -> List[Tile]:
@@ -51,7 +60,7 @@ def load_tiles_from_file(path: Path) -> List[Tile]:
     data = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(data, list):
         raise ValueError("Tile file must contain a list of tile objects")
-    return _parse_tiles(cast(Iterable[dict[str, object]], data))
+    return _parse_tiles(cast(Iterable[Mapping[str, object]], data))
 
 
 def iter_tiles(tiles: Iterable[Tile]) -> Iterator[Tile]:

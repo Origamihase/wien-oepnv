@@ -130,8 +130,8 @@ def write_cache(provider: str, items: List[Any], *, pretty: Optional[bool] = Non
         with os.fdopen(fd, "w", encoding="utf-8") as fh:
             try:
                 pretty_print = _pretty_print_enabled(pretty)
-                separators = None
-                indent = 2
+                separators: tuple[str, str] | None = None
+                indent: int | None = 2
                 if not pretty_print:
                     indent = None
                     separators = (",", ":")
