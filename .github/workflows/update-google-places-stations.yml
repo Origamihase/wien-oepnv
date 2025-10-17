@@ -1,0 +1,51 @@
+name: Update Google Places Stations
+
+on:
+  schedule:
+    - cron: '0 5 1,11,21 * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Fetch Google Places stations
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        run: |
+          python scripts/fetch_google_places_stations.py --write --dump-new new_places.json
+
+      - name: Upload new places artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: google-places-new
+          path: new_places.json
+          if-no-files-found: ignore
+
+      - name: Commit and push changes
+        run: |
+          if git status --porcelain data/stations.json | grep .; then
+            git config user.name 'github-actions'
+            git config user.email 'github-actions@github.com'
+            git add data/stations.json new_places.json
+            git commit -m 'chore: update Google Places stations'
+            git push
+          else
+            echo 'No changes to commit.'
+          fi
