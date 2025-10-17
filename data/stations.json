@@ -94,6 +94,22 @@
     "longitude": 16.441172
   },
   {
+    "bst_id": 398,
+    "bst_code": "F",
+    "name": "Wien Floridsdorf",
+    "in_vienna": true,
+    "pendler": false,
+    "aliases": [
+      "Wien Floridsdorf",
+      "Floridsdorf",
+      "Floridsdorf Bahnhof",
+      "Wien Floridsdorf Bahnhof",
+      "F"
+    ],
+    "latitude": 48.2576,
+    "longitude": 16.4039
+  },
+  {
     "bst_id": 400,
     "bst_code": "Bse",
     "name": "Wien Brünner Straße",
@@ -138,6 +154,22 @@
     ],
     "latitude": 48.340239,
     "longitude": 16.732314
+  },
+  {
+    "bst_id": 779,
+    "bst_code": "Hak",
+    "name": "Wien Handelskai",
+    "in_vienna": true,
+    "pendler": false,
+    "aliases": [
+      "Wien Handelskai",
+      "Handelskai",
+      "Handelskai Bahnhof",
+      "Wien Handelskai Bahnhof",
+      "Hak"
+    ],
+    "latitude": 48.2465,
+    "longitude": 16.3872
   },
   {
     "bst_id": 804,
@@ -247,6 +279,38 @@
     "longitude": 16.344277
   },
   {
+    "bst_id": 904,
+    "bst_code": "Ht  H3",
+    "name": "Wien Gersthof",
+    "in_vienna": true,
+    "pendler": false,
+    "aliases": [
+      "Wien Gersthof",
+      "Gersthof",
+      "Gersthof Bahnhof",
+      "Wien Gersthof Bahnhof",
+      "Ht  H3"
+    ],
+    "latitude": 48.2307,
+    "longitude": 16.3062
+  },
+  {
+    "bst_id": 926,
+    "bst_code": "Hz",
+    "name": "Wien Mitte",
+    "in_vienna": true,
+    "pendler": false,
+    "aliases": [
+      "Wien Mitte",
+      "Wien Mitte Bahnhof",
+      "Landstraße Wien Mitte",
+      "Landstraße",
+      "Hz"
+    ],
+    "latitude": 48.2072,
+    "longitude": 16.3833
+  },
+  {
     "bst_id": 934,
     "bst_code": "Id",
     "name": "Wien Blumental",
@@ -260,6 +324,22 @@
     ],
     "latitude": 48.138826,
     "longitude": 16.369249
+  },
+  {
+    "bst_id": 956,
+    "bst_code": "J",
+    "name": "Wien Jedlersdorf",
+    "in_vienna": true,
+    "pendler": false,
+    "aliases": [
+      "Wien Jedlersdorf",
+      "Jedlersdorf",
+      "Jedlersdorf Bahnhof",
+      "Wien Jedlersdorf Bahnhof",
+      "J"
+    ],
+    "latitude": 48.2779,
+    "longitude": 16.4118
   },
   {
     "bst_id": 1019,
@@ -276,6 +356,22 @@
     ],
     "latitude": 48.297585,
     "longitude": 16.334586
+  },
+  {
+    "bst_id": 1059,
+    "bst_code": "Kls",
+    "name": "Wien Kaiserebersdorf",
+    "in_vienna": true,
+    "pendler": false,
+    "aliases": [
+      "Wien Kaiserebersdorf",
+      "Kaiserebersdorf",
+      "Kaiserebersdorf Bahnhof",
+      "Wien Kaiserebersdorf Bahnhof",
+      "Kls"
+    ],
+    "latitude": 48.1436,
+    "longitude": 16.4649
   },
   {
     "bst_id": 1066,
@@ -308,6 +404,22 @@
     ],
     "latitude": 47.937864,
     "longitude": 16.2313
+  },
+  {
+    "bst_id": 1205,
+    "bst_code": "Lg",
+    "name": "Wien Liesing",
+    "in_vienna": true,
+    "pendler": false,
+    "aliases": [
+      "Wien Liesing",
+      "Liesing",
+      "Liesing Bahnhof",
+      "Wien Liesing Bahnhof",
+      "Lg"
+    ],
+    "latitude": 48.1366,
+    "longitude": 16.2883
   },
   {
     "bst_id": 1206,
@@ -369,6 +481,22 @@
     ],
     "latitude": 48.188024,
     "longitude": 16.381366
+  },
+  {
+    "bst_id": 1352,
+    "bst_code": "Ren",
+    "name": "Wien Rennweg",
+    "in_vienna": true,
+    "pendler": false,
+    "aliases": [
+      "Wien Rennweg",
+      "Rennweg",
+      "Rennweg Bahnhof",
+      "Wien Rennweg Bahnhof",
+      "Ren"
+    ],
+    "latitude": 48.1989,
+    "longitude": 16.3896
   },
   {
     "bst_id": 1377,
@@ -455,6 +583,22 @@
     ],
     "latitude": 48.234274,
     "longitude": 16.383955
+  },
+  {
+    "bst_id": 1621,
+    "bst_code": "Ok  H1",
+    "name": "Wien Breitensee",
+    "in_vienna": true,
+    "pendler": false,
+    "aliases": [
+      "Wien Breitensee",
+      "Breitensee",
+      "Breitensee Bahnhof",
+      "Wien Breitensee Bahnhof",
+      "Ok  H1"
+    ],
+    "latitude": 48.1968,
+    "longitude": 16.3126
   },
   {
     "bst_id": 1669,
@@ -611,6 +755,21 @@
     ],
     "latitude": 48.206138,
     "longitude": 16.175774
+  },
+  {
+    "bst_id": 2393,
+    "bst_code": "Wbf",
+    "name": "Wien Hauptbahnhof",
+    "in_vienna": true,
+    "pendler": false,
+    "aliases": [
+      "Wien Hauptbahnhof",
+      "Wien Hbf",
+      "Wien Hauptbahnhof Bahnhof",
+      "Wbf"
+    ],
+    "latitude": 48.1852,
+    "longitude": 16.3764
   },
   {
     "bst_id": 2396,
