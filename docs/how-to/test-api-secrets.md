@@ -132,3 +132,11 @@ gh run watch
 ```
 
 Mit dieser Vorgehensweise verifizieren Sie die hinterlegten VOR-Secrets ohne lokalen Zugriff auf die Klarwerte und sehen unmittelbar, ob die API-Anmeldung funktioniert.
+
+## 5. Lokale Vorprüfung der Secrets
+
+Für lokale Tests oder Deployments außerhalb von GitHub Actions steht zusätzlich
+`python scripts/verify_vor_access_id.py` zur Verfügung. Das Skript lädt die
+Standard-Secret-Dateien (`.env`, `data/secrets.env`, `config/secrets.env`) und
+bricht mit Exit-Code `1` ab, wenn `VOR_ACCESS_ID` nicht befüllt ist. So lässt
+sich vor jedem Lauf sicherstellen, dass ein gültiger Token bereitsteht.
