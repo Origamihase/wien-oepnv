@@ -14,7 +14,15 @@ import os
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
+import sys
 from typing import Iterable, List, MutableMapping, Optional, Sequence
+
+# When executed as ``python scripts/fetch_google_places_stations.py`` the parent
+# directory (repository root) is not on ``sys.path`` which prevents importing
+# the ``src`` package. Ensure the root is available before performing the
+# imports below.
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.places.client import (
     GooglePlacesClient,
