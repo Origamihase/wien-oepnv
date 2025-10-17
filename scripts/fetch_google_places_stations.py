@@ -28,6 +28,7 @@ from src.places.client import (
     GooglePlacesClient,
     GooglePlacesConfig,
     GooglePlacesError,
+    GooglePlacesPermissionError,
     GooglePlacesTileError,
     Place,
     get_places_api_key,
@@ -302,6 +303,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     try:
         places = _fetch_places(client, runtime.tiles)
+    except GooglePlacesPermissionError as exc:
+        LOGGER.error("Places API access denied: %s", exc)
+        LOGGER.error(
+            "Skipping Places update. Ensure the configured API key has access to places.googleapis.com"
+        )
+        return 0
     except GooglePlacesError as exc:
         LOGGER.error("Failed to fetch places: %s", exc)
         return 1
