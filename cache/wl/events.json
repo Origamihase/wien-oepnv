@@ -386,37 +386,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Verunreinigung",
-    "description": "Die Linie 48 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2d35ff00ca738ec95b1a6bd94f8de3f7105ed897f5d6c4a9dc9d5a971cf3ea5d",
-    "pubDate": "2025-10-19T00:00:00+02:00",
-    "starts_at": "2025-10-19T00:00:00+02:00",
-    "ends_at": "2025-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=48A|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "44: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 44 zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201",
-    "pubDate": "2025-10-19T00:20:00+02:00",
-    "starts_at": "2025-10-19T00:20:00+02:00",
-    "ends_at": "2025-10-19T23:55:00+02:00",
+    "pubDate": "2025-10-19T00:24:51+02:00",
+    "starts_at": "2025-10-19T00:24:51+02:00",
+    "ends_at": "2025-10-19T01:25:00+02:00",
     "_identity": "wl|störung|L=44|D=2025-10-19"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "1: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972",
-    "pubDate": "2025-10-19T00:25:00+02:00",
-    "starts_at": "2025-10-19T00:25:00+02:00",
-    "ends_at": "2025-10-19T23:55:00+02:00",
+    "pubDate": "2025-10-19T00:29:05+02:00",
+    "starts_at": "2025-10-19T00:29:05+02:00",
+    "ends_at": "2025-10-19T01:30:00+02:00",
     "_identity": "wl|störung|L=1|D=2025-10-19"
   },
   {
@@ -430,5 +418,41 @@
     "starts_at": "2025-10-19T00:29:07+02:00",
     "ends_at": "2025-10-19T01:28:00+02:00",
     "_identity": "wl|störung|L=1|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f1ccf4d6b1a6d1d510b41cb2c10a04e3bb077aef3d27f0c5f99cad2a9c11f584",
+    "pubDate": "2025-10-19T00:54:01+02:00",
+    "starts_at": "2025-10-19T00:54:01+02:00",
+    "ends_at": "2025-10-19T01:56:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Busse halten bei Hoßplatz 4-5",
+    "description": "Gleisbauarbeiten Busse halten bei Hoßplatz 4-5",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a19de5d51953a6980449181f710dccf7c52937a0e0365fa3f006acf34eeb8266",
+    "pubDate": "2025-10-19T01:00:16+02:00",
+    "starts_at": "2025-10-19T01:00:16+02:00",
+    "ends_at": "2025-10-19T04:30:00+02:00",
+    "_identity": "wl|störung|L=N20|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N43: Verkehrsunfall",
+    "description": "Derzeit kommt es bei der Linie N43 in beiden Richtungen zu unterschiedlichen Intervallen. Grund dafür ist ein Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0434060499ce3ed4bb25d225ff6f1f16bc47d97a830388608af52146bf700353",
+    "pubDate": "2025-10-19T01:05:00+02:00",
+    "starts_at": "2025-10-19T01:05:00+02:00",
+    "ends_at": "2025-10-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=N43|D=2025-10-19"
   }
 ]
