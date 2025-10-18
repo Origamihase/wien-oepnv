@@ -386,42 +386,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201",
-    "pubDate": "2025-10-19T00:24:51+02:00",
-    "starts_at": "2025-10-19T00:24:51+02:00",
-    "ends_at": "2025-10-19T01:25:00+02:00",
-    "_identity": "wl|störung|L=44|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972",
-    "pubDate": "2025-10-19T00:29:05+02:00",
-    "starts_at": "2025-10-19T00:29:05+02:00",
-    "ends_at": "2025-10-19T01:30:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
-    "pubDate": "2025-10-19T00:29:07+02:00",
-    "starts_at": "2025-10-19T00:29:07+02:00",
-    "ends_at": "2025-10-19T01:28:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Fahrtbehinderung wegen Polizeieinsatz",
     "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -454,5 +418,29 @@
     "starts_at": "2025-10-19T01:05:00+02:00",
     "ends_at": "2025-10-19T23:55:00+02:00",
     "_identity": "wl|störung|L=N43|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N31: Nächster Halt Brigittenauer Lände 14",
+    "description": "Gleisbauarbeiten Nächster Halt Brigittenauer Lände 14",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b18f380b7e1e119be24cb5b975e5f036295e8ca375f9bfaf1ec8633ec544801b",
+    "pubDate": "2025-10-19T01:15:16+02:00",
+    "starts_at": "2025-10-19T01:15:16+02:00",
+    "ends_at": "2025-10-19T04:30:00+02:00",
+    "_identity": "wl|störung|L=N31|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N31: Betrieb ab Brigittaplatz",
+    "description": "Gleisbauarbeiten Betrieb ab Brigittaplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6d406877be41073f2061bf6b3c01ed73877bc2b62c93307ee934d7a34554320c",
+    "pubDate": "2025-10-19T01:20:00+02:00",
+    "starts_at": "2025-10-19T01:20:00+02:00",
+    "ends_at": "2025-10-19T04:35:00+02:00",
+    "_identity": "wl|störung|L=N31|D=2025-10-19"
   }
 ]
