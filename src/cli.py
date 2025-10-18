@@ -102,6 +102,13 @@ def _add_python_argument(parser: argparse.ArgumentParser) -> None:
     )
 
 
+def _clean_remainder(values: list[str] | None) -> list[str]:
+    cleaned = list(values or [])
+    while cleaned and cleaned[0] == "--":
+        cleaned.pop(0)
+    return cleaned
+
+
 def _configure_cache_commands(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
     cache_parser = subparsers.add_parser("cache", help="Cache maintenance commands")
     cache_subparsers = cache_parser.add_subparsers(dest="cache_command", required=True)
@@ -219,6 +226,34 @@ def _configure_checks_commands(subparsers: argparse._SubParsersAction[argparse.A
     checks_parser.set_defaults(func=_handle_checks)
 
 
+def _configure_config_commands(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
+    config_parser = subparsers.add_parser("config", help="Configuration utilities")
+    config_subparsers = config_parser.add_subparsers(dest="config_command", required=True)
+
+    wizard_parser = config_subparsers.add_parser("wizard", help="Interactive configuration assistant")
+    _add_python_argument(wizard_parser)
+    wizard_parser.add_argument(
+        "wizard_args",
+        nargs=argparse.REMAINDER,
+        help="Additional arguments forwarded to scripts/configure_feed.py (prefix with --).",
+    )
+    wizard_parser.set_defaults(func=_handle_config_wizard)
+
+
+def _configure_security_commands(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
+    security_parser = subparsers.add_parser("security", help="Security and compliance helpers")
+    security_subparsers = security_parser.add_subparsers(dest="security_command", required=True)
+
+    scan_parser = security_subparsers.add_parser("scan", help="Scan the repository for leaked secrets")
+    _add_python_argument(scan_parser)
+    scan_parser.add_argument(
+        "scan_args",
+        nargs=argparse.REMAINDER,
+        help="Additional arguments forwarded to scripts/scan_secrets.py (prefix with --).",
+    )
+    scan_parser.set_defaults(func=_handle_security_scan)
+
+
 def _handle_cache_update(args: argparse.Namespace) -> int:
     providers = _resolve_targets(
         args.providers,
@@ -307,6 +342,16 @@ def _handle_checks(args: argparse.Namespace) -> int:
     return _run_script("run_static_checks.py", python=args.python, extra_args=extra)
 
 
+def _handle_config_wizard(args: argparse.Namespace) -> int:
+    extra = _clean_remainder(args.wizard_args)
+    return _run_script("configure_feed.py", python=args.python, extra_args=extra)
+
+
+def _handle_security_scan(args: argparse.Namespace) -> int:
+    extra = _clean_remainder(args.scan_args)
+    return _run_script("scan_secrets.py", python=args.python, extra_args=extra)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="wien-oepnv",
@@ -318,6 +363,8 @@ def build_parser() -> argparse.ArgumentParser:
     _configure_feed_commands(subparsers)
     _configure_token_commands(subparsers)
     _configure_checks_commands(subparsers)
+    _configure_config_commands(subparsers)
+    _configure_security_commands(subparsers)
     return parser
 
 

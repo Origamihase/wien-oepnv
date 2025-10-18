@@ -141,3 +141,33 @@ def test_cli_tokens_verify_stops_on_error(monkeypatch: pytest.MonkeyPatch) -> No
         "verify_vor_access_id.py",
         "verify_google_places_access.py",
     ]
+
+
+def test_cli_config_wizard_forwards_arguments(monkeypatch: pytest.MonkeyPatch) -> None:
+    captured: list[tuple[str, str | None, list[str]]] = []
+
+    def fake_run_script(script_name: str, *, python: str | None = None, extra_args: list[str] | None = None) -> int:
+        captured.append((script_name, python, list(extra_args or [])))
+        return 0
+
+    monkeypatch.setattr(cli, "_run_script", fake_run_script)
+
+    exit_code = cli.main(["config", "wizard", "--python", "python3", "--", "--dry-run"])
+
+    assert exit_code == 0
+    assert captured == [("configure_feed.py", "python3", ["--dry-run"])]
+
+
+def test_cli_security_scan_forwards_arguments(monkeypatch: pytest.MonkeyPatch) -> None:
+    captured: list[tuple[str, str | None, list[str]]] = []
+
+    def fake_run_script(script_name: str, *, python: str | None = None, extra_args: list[str] | None = None) -> int:
+        captured.append((script_name, python, list(extra_args or [])))
+        return 0
+
+    monkeypatch.setattr(cli, "_run_script", fake_run_script)
+
+    exit_code = cli.main(["security", "scan", "--python", sys.executable, "--", "--no-fail"])
+
+    assert exit_code == 0
+    assert captured == [("scan_secrets.py", sys.executable, ["--no-fail"])]
