@@ -336,7 +336,8 @@ def _station_lookup() -> dict[str, StationInfo]:
                 )
         station_latitude = _coerce_float(entry.get("latitude"))
         station_longitude = _coerce_float(entry.get("longitude"))
-        record = StationInfo(
+        source_text = str(entry.get("source") or "")
+        base_record = StationInfo(
             name=name,
             in_vienna=bool(entry.get("in_vienna")),
             pendler=bool(entry.get("pendler")),
@@ -345,46 +346,70 @@ def _station_lookup() -> dict[str, StationInfo]:
             vor_id=vor_id or None,
             latitude=station_latitude,
             longitude=station_longitude,
-            source=str(entry.get("source") or "") or None,
+            source=source_text or None,
         )
+        vor_name_raw = entry.get("vor_name")
+        vor_name = str(vor_name_raw).strip() if isinstance(vor_name_raw, str) else ""
         for alias in _iter_aliases(name, code or None, extra_aliases):
-            key = _normalize_token(alias)
-            if not key:
-                continue
-            existing = mapping.get(key)
-            if existing is None:
-                mapping[key] = record
-                continue
-            if existing is record or existing.name == record.name:
-                continue
             alias_text = str(alias)
             alias_lower = alias_text.casefold()
             alias_is_numeric = alias_text.isdigit()
             alias_mentions_vor = "vor" in alias_lower
+            alias_matches_vor_id = bool(vor_id and alias_is_numeric and alias_text == vor_id)
+            use_vor_label = bool(vor_name and (alias_matches_vor_id or alias_mentions_vor))
+
+            alias_record = base_record
+            if use_vor_label:
+                alias_record = StationInfo(
+                    name=vor_name,
+                    in_vienna=base_record.in_vienna,
+                    pendler=base_record.pendler,
+                    wl_diva=base_record.wl_diva,
+                    wl_stops=base_record.wl_stops,
+                    vor_id=base_record.vor_id,
+                    latitude=base_record.latitude,
+                    longitude=base_record.longitude,
+                    source="vor",
+                )
+
+            key = _normalize_token(alias_text)
+            if not key:
+                continue
+            existing = mapping.get(key)
+            if existing is None:
+                mapping[key] = alias_record
+                continue
+            if existing == alias_record or existing.name == alias_record.name:
+                continue
+
             existing_source = existing.source or ""
-            record_source = record.source or ""
+            record_source = alias_record.source or ""
+            if existing_source == "combined":
+                existing_source = "wl"
+            if record_source == "combined":
+                record_source = "wl"
 
             alias_token = _normalize_token(alias_text)
-            record_token = _normalize_token(record.name)
+            record_token = _normalize_token(alias_record.name)
             existing_token = _normalize_token(existing.name)
 
             if alias_token and alias_token == record_token and alias_token != existing_token:
-                mapping[key] = record
+                mapping[key] = alias_record
                 continue
             if alias_token and alias_token == existing_token and alias_token != record_token:
                 continue
 
-            if existing.vor_id and record.vor_id and existing.vor_id == record.vor_id:
+            if existing.vor_id and alias_record.vor_id and existing.vor_id == alias_record.vor_id:
                 if alias_is_numeric or alias_mentions_vor:
                     if record_source == "vor" and existing_source != "vor":
-                        mapping[key] = record
+                        mapping[key] = alias_record
                 else:
                     if record_source == "wl" and existing_source != "wl":
-                        mapping[key] = record
+                        mapping[key] = alias_record
                 continue
 
             if existing_source == "vor" and record_source != "vor":
-                mapping[key] = record
+                mapping[key] = alias_record
                 continue
             if record_source == "vor" and existing_source != "vor":
                 continue
@@ -392,7 +417,7 @@ def _station_lookup() -> dict[str, StationInfo]:
                 "Duplicate station alias %r normalized to %r for %s conflicts with %s",
                 alias,
                 key,
-                record.name,
+                alias_record.name,
                 existing.name,
             )
     return mapping
