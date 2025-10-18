@@ -168,6 +168,10 @@ Der Feed liegt anschließend unter `docs/feed.xml`. Bei Bedarf lässt sich `OUT_
 
 Die GitHub Action `.github/workflows/update-stations.yml` aktualisiert `data/stations.json` monatlich automatisch.
 
+#### Automatisierte Qualitätsberichte
+
+Nutze `python -m src.cli stations validate`, um einen Markdown-Bericht zum Stationsverzeichnis zu erzeugen. Der Standardlauf prüft Dubletten anhand der Geokoordinaten, meldet fehlende Alias-Einträge und gleicht `vor_id`-Werte mit `data/gtfs/stops.txt` ab. Über `--output docs/stations_validation_report.md` wird der Bericht persistiert und kann in CI-Pipelines mit `--fail-on-issues` als Guardrail dienen.
+
 ### Pendler-Whitelist
 
 `data/pendler_bst_ids.json` listet Stationen außerhalb der Stadtgrenze, die dennoch als Pendler:innen-Knoten im Verzeichnis
@@ -194,8 +198,28 @@ Alle Feed-Builds warten auf die Cache-Jobs (`needs`-Abhängigkeit), damit stets 
 
 - **Tests**: `python -m pytest` führt sämtliche Unit- und Integrationstests aus (`tests/`).
 - **Kontinuierliche Tests**: Die GitHub Action `test.yml` automatisiert die im Audit empfohlene regelmäßige Testausführung und bricht Builds bei fehlschlagender Test-Suite ab.
-- **Statische Analyse**: `ruff check` (Stil/Konsistenz) und `mypy` (selektive Typprüfung, Fokus auf `src/build_feed.py`).
+- **Statische Analyse & Typprüfung**: `ruff check` (Stil/Konsistenz) und `mypy` (vollständige Typabdeckung über das gesamte Paket `src/`) laufen identisch zur CI via `python -m src.cli checks`. Optional lassen sich über `--fix` Ruff-Autofixes aktivieren oder zusätzliche Argumente an Ruff durchreichen.
 - **Logging**: Zur Laufzeit entsteht `log/errors.log` mit rotierenden Dateien; Größe und Anzahl sind konfigurierbar.
+
+## Developer Experience & Observability
+
+### Einheitliche CLI für Betriebsaufgaben
+
+Die neue Kommandozeile (`python -m src.cli`) bündelt bisher verstreute Skripte. Wichtige Unterbefehle:
+
+- `python -m src.cli cache update <wl|oebb|vor>` – aktualisiert den jeweiligen Provider-Cache.
+- `python -m src.cli stations update <all|directory|vor|wl>` – führt die bestehenden Stations-Skripte mit optionalem `--verbose` aus.
+- `python -m src.cli feed build` – startet den Feed-Build mit der aktuellen Umgebung.
+- `python -m src.cli tokens verify <vor|google-places|vor-auth>` – validiert Secrets und API-Zugänge.
+- `python -m src.cli checks [--fix] [--ruff-args …]` – ruft die statischen Prüfungen konsistent zur CI auf.
+
+### Qualitätsberichte für das Stationsverzeichnis
+
+`python -m src.cli stations validate --output docs/stations_validation_report.md` erstellt den Report `docs/stations_validation_report.md`. Die Ausgabe enthält zusammengefasste Kennzahlen und detaillierte Listen der gefundenen Probleme. Über `--decimal-places` lässt sich die Toleranz für Dubletten steuern.
+
+### Logging & Beobachtbarkeit
+
+Die CLI respektiert die vorhandene Logging-Konfiguration (`log/errors.log`, `log/diagnostics.log`). Für Ad-hoc-Audits lassen sich Berichte und Skriptausgaben über `--output`-Parameter in nachvollziehbaren Pfaden versionieren.
 
 ## Authentifizierung & Sicherheit
 
