@@ -42,6 +42,7 @@ class StationInfo(NamedTuple):
     vor_id: str | None = None
     latitude: float | None = None
     longitude: float | None = None
+    source: str | None = None
 
 _STATIONS_PATH = Path(__file__).resolve().parents[2] / "data" / "stations.json"
 _VIENNA_POLYGON_PATH = Path(__file__).resolve().parents[2] / "data" / "vienna_boundary.geojson"
@@ -344,6 +345,7 @@ def _station_lookup() -> dict[str, StationInfo]:
             vor_id=vor_id or None,
             latitude=station_latitude,
             longitude=station_longitude,
+            source=str(entry.get("source") or "") or None,
         )
         for alias in _iter_aliases(name, code or None, extra_aliases):
             key = _normalize_token(alias)
@@ -354,6 +356,37 @@ def _station_lookup() -> dict[str, StationInfo]:
                 mapping[key] = record
                 continue
             if existing is record or existing.name == record.name:
+                continue
+            alias_text = str(alias)
+            alias_lower = alias_text.casefold()
+            alias_is_numeric = alias_text.isdigit()
+            alias_mentions_vor = "vor" in alias_lower
+            existing_source = existing.source or ""
+            record_source = record.source or ""
+
+            alias_token = _normalize_token(alias_text)
+            record_token = _normalize_token(record.name)
+            existing_token = _normalize_token(existing.name)
+
+            if alias_token and alias_token == record_token and alias_token != existing_token:
+                mapping[key] = record
+                continue
+            if alias_token and alias_token == existing_token and alias_token != record_token:
+                continue
+
+            if existing.vor_id and record.vor_id and existing.vor_id == record.vor_id:
+                if alias_is_numeric or alias_mentions_vor:
+                    if record_source == "vor" and existing_source != "vor":
+                        mapping[key] = record
+                else:
+                    if record_source == "wl" and existing_source != "wl":
+                        mapping[key] = record
+                continue
+
+            if existing_source == "vor" and record_source != "vor":
+                mapping[key] = record
+                continue
+            if record_source == "vor" and existing_source != "vor":
                 continue
             logger.warning(
                 "Duplicate station alias %r normalized to %r for %s conflicts with %s",
