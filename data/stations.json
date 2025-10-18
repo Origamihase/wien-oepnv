@@ -1070,7 +1070,7 @@
     "longitude": 16.520123
   },
   {
-    "name": "Flughafen Wien Bahnhof (VOR)",
+    "name": "Flughafen Wien Bahnhof",
     "in_vienna": false,
     "pendler": true,
     "vor_id": "430470800",
@@ -1078,7 +1078,8 @@
     "longitude": 16.563659,
     "aliases": [
       "430470800",
-      "Flughafen Wien Bahnhof"
+      "Flughafen Wien Bahnhof",
+      "Flughafen Wien Bahnhof (VOR)"
     ],
     "source": "vor"
   },
@@ -1128,7 +1129,7 @@
     "source": "vor"
   },
   {
-    "name": "Wien Aspern Nord (VOR)",
+    "name": "Wien Aspern Nord",
     "in_vienna": true,
     "pendler": false,
     "vor_id": "490091000",
@@ -1136,12 +1137,13 @@
     "longitude": 16.504456,
     "aliases": [
       "490091000",
-      "Wien Aspern Nord"
+      "Wien Aspern Nord",
+      "Wien Aspern Nord (VOR)"
     ],
     "source": "vor"
   },
   {
-    "name": "Wien Hauptbahnhof (VOR)",
+    "name": "Wien Hauptbahnhof",
     "in_vienna": true,
     "pendler": false,
     "vor_id": "490134900",
@@ -1149,12 +1151,13 @@
     "longitude": 16.376413,
     "aliases": [
       "490134900",
-      "Wien Hauptbahnhof"
+      "Wien Hauptbahnhof",
+      "Wien Hauptbahnhof (VOR)"
     ],
     "source": "vor"
   },
   {
-    "name": "Wien Karlsplatz U (VOR)",
+    "name": "Wien Karlsplatz U",
     "in_vienna": true,
     "pendler": false,
     "vor_id": "490065700",
@@ -1162,12 +1165,13 @@
     "longitude": 16.368907,
     "aliases": [
       "490065700",
-      "Wien Karlsplatz U"
+      "Wien Karlsplatz U",
+      "Wien Karlsplatz U (VOR)"
     ],
     "source": "vor"
   },
   {
-    "name": "Wien Mitte-Landstraße (VOR)",
+    "name": "Wien Mitte-Landstraße",
     "in_vienna": true,
     "pendler": false,
     "vor_id": "490074300",
@@ -1175,12 +1179,13 @@
     "longitude": 16.384584,
     "aliases": [
       "490074300",
-      "Wien Mitte-Landstraße"
+      "Wien Mitte-Landstraße",
+      "Wien Mitte-Landstraße (VOR)"
     ],
     "source": "vor"
   },
   {
-    "name": "Wien Schottentor U (VOR)",
+    "name": "Wien Schottentor U",
     "in_vienna": true,
     "pendler": false,
     "vor_id": "490118400",
@@ -1188,12 +1193,13 @@
     "longitude": 16.361905,
     "aliases": [
       "490118400",
-      "Wien Schottentor U"
+      "Wien Schottentor U",
+      "Wien Schottentor U (VOR)"
     ],
     "source": "vor"
   },
   {
-    "name": "Wien Stephansplatz U (VOR)",
+    "name": "Wien Stephansplatz U",
     "in_vienna": true,
     "pendler": false,
     "vor_id": "490132000",
@@ -1201,12 +1207,13 @@
     "longitude": 16.371604,
     "aliases": [
       "490132000",
-      "Wien Stephansplatz U"
+      "Wien Stephansplatz U",
+      "Wien Stephansplatz U (VOR)"
     ],
     "source": "vor"
   },
   {
-    "name": "Wiener Neustadt Hauptbahnhof (VOR)",
+    "name": "Wiener Neustadt Hauptbahnhof",
     "in_vienna": false,
     "pendler": true,
     "vor_id": "430521000",
@@ -1214,7 +1221,8 @@
     "longitude": 16.23362,
     "aliases": [
       "430521000",
-      "Wiener Neustadt Hauptbahnhof"
+      "Wiener Neustadt Hauptbahnhof",
+      "Wiener Neustadt Hauptbahnhof (VOR)"
     ],
     "source": "vor"
   },
