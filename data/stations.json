@@ -668,7 +668,20 @@
       "490104000"
     ],
     "latitude": 48.218767,
-    "longitude": 16.392171
+    "longitude": 16.392171,
+    "_google_place_id": "ChIJqyJ_cwYHbUcRkPqtvvE4qbE",
+    "_lat": 48.218551999999995,
+    "_lng": 16.392184999999998,
+    "_types": [
+      "subway_station",
+      "transit_station",
+      "point_of_interest",
+      "establishment"
+    ],
+    "source": [
+      "oebb",
+      "google_places"
+    ]
   },
   {
     "bst_id": 1585,
@@ -1193,7 +1206,21 @@
       "Hz"
     ],
     "bst_id": 926,
-    "bst_code": "Hz"
+    "bst_code": "Hz",
+    "_google_place_id": "ChIJm6KCZnMHbUcRF0kfTP5M-HY",
+    "_lat": 48.207316999999996,
+    "_lng": 16.385641,
+    "_types": [
+      "transit_station",
+      "train_station",
+      "subway_station",
+      "point_of_interest",
+      "establishment"
+    ],
+    "source": [
+      "oebb",
+      "google_places"
+    ]
   },
   {
     "name": "Wien Schottentor U",
