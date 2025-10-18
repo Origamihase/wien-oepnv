@@ -7,6 +7,7 @@ import pytest
 
 from src.utils.stations_validation import (
     AliasIssue,
+    CoordinateIssue,
     DuplicateGroup,
     validate_stations,
 )
@@ -96,6 +97,7 @@ def test_markdown_rendering_contains_sections(stations_file: Path, gtfs_file: Pa
     assert "## Geographic duplicates" in markdown
     assert "## Alias issues" in markdown
     assert "## GTFS mismatches" in markdown
+    assert "*Coordinate anomalies*:" in markdown
 
 
 def test_report_flags_missing_alias_list(tmp_path: Path, gtfs_file: Path) -> None:
@@ -118,5 +120,42 @@ def test_report_flags_missing_alias_list(tmp_path: Path, gtfs_file: Path) -> Non
             identifier="bst:10 / code:X10 / source:oebb",
             name="Example",
             reason="missing aliases list",
+        ),
+    )
+
+
+def test_coordinate_validation_detects_missing_and_out_of_bounds(tmp_path: Path) -> None:
+    stations = [
+        {
+            "bst_id": 20,
+            "bst_code": "Y20",
+            "name": "Missing", 
+            "longitude": 16.5,
+            "aliases": ["Missing"],
+        },
+        {
+            "bst_id": 21,
+            "bst_code": "Y21",
+            "name": "Swapped",
+            "latitude": 16.6,
+            "longitude": 48.2,
+            "aliases": ["Swapped"],
+        },
+    ]
+    path = tmp_path / "stations.json"
+    path.write_text(json.dumps(stations), encoding="utf-8")
+
+    report = validate_stations(path)
+
+    assert report.coordinate_issues == (
+        CoordinateIssue(
+            identifier="bst:20 / code:Y20",
+            name="Missing",
+            reason="missing latitude",
+        ),
+        CoordinateIssue(
+            identifier="bst:21 / code:Y21",
+            name="Swapped",
+            reason="coordinates look swapped (lat=16.6, lon=48.2)",
         ),
     )
