@@ -60,6 +60,9 @@ Der Feed-Bau folgt einem klaren Ablauf:
 4. **Umgebungsvariablen**: Sensible Daten (Tokens, Basis-URLs) werden ausschließlich über die Umgebung gesetzt.
    Lokale `.env`-Dateien können über `WIEN_OEPNV_ENV_FILES` eingebunden werden.
 
+   Das Skript `scripts/run_static_checks.py` führt neben `ruff` und `mypy` auch einen Secret-Scan
+   aus (`scripts/scan_secrets.py`), sodass versehentlich eingecheckte Tokens früh auffallen.
+
 ## Entwickler-CLI
 
 Für wiederkehrende Aufgaben steht eine gebündelte Kommandozeile zur Verfügung. Der Aufruf `python -m src.cli` bündelt die
@@ -83,6 +86,12 @@ python -m src.cli stations validate --output docs/stations_validation_report.md
 
 # Ruff + mypy wie in der CI ausführen.
 python -m src.cli checks --fix
+
+# Interaktiven Konfigurationsassistenten starten (schreibt .env).
+python -m src.cli config wizard
+
+# Repository auf versehentlich eingecheckte Secrets prüfen.
+python -m src.cli security scan
 ```
 
 Die Unterbefehle akzeptieren standardmäßig alle bekannten Ziele (z. B. Provider `wl`, `oebb`, `vor`) und lassen sich bei Bedarf
@@ -90,7 +99,10 @@ präzise einschränken. Über `--python` kann ein alternativer Interpreter für 
 
 ## Konfiguration des Feed-Builds
 
-`src/build_feed.py` liest zahlreiche Umgebungsvariablen. Die wichtigsten Parameter:
+`src/build_feed.py` liest zahlreiche Umgebungsvariablen. Für den Einstieg empfiehlt sich der
+Assistent `scripts/configure_feed.py`, der eine bestehende `.env` einliest, die relevanten
+Schlüssel erklärt und wahlweise interaktiv oder per `--accept-defaults` eine neue Konfiguration
+schreibt. Die wichtigsten Parameter:
 
 | Variable                 | Zweck / Standardwert                                                            |
 | ------------------------ | ------------------------------------------------------------------------------- |

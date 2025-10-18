@@ -47,6 +47,10 @@ def main() -> int:
     if exit_code == 0:
         exit_code = _run(["mypy"])
 
+    if exit_code == 0:
+        scanner = PROJECT_ROOT / "scripts" / "scan_secrets.py"
+        exit_code = _run([sys.executable, str(scanner)])
+
     return exit_code
 
 

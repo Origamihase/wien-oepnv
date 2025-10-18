@@ -30,13 +30,64 @@ from email.utils import format_datetime
 from zoneinfo import ZoneInfo
 
 if TYPE_CHECKING:  # pragma: no cover - make mypy prefer package imports
+    from .config.defaults import (
+        DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
+        DEFAULT_DESCRIPTION_CHAR_LIMIT,
+        DEFAULT_ENDS_AT_GRACE_MINUTES,
+        DEFAULT_FEED_DESCRIPTION,
+        DEFAULT_FEED_LINK,
+        DEFAULT_FEED_TITLE,
+        DEFAULT_FEED_TTL_MINUTES,
+        DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
+        DEFAULT_MAX_ITEMS,
+        DEFAULT_MAX_ITEM_AGE_DAYS,
+        DEFAULT_OUT_PATH,
+        DEFAULT_PROVIDER_MAX_WORKERS,
+        DEFAULT_PROVIDER_TIMEOUT,
+        DEFAULT_STATE_PATH,
+        DEFAULT_STATE_RETENTION_DAYS,
+    )
     from .utils.cache import read_cache, register_cache_alert_hook
     from .utils.env import get_bool_env, get_int_env
 else:  # pragma: no cover - allow running as package and as script
     try:
+        from config.defaults import (  # type: ignore
+            DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
+            DEFAULT_DESCRIPTION_CHAR_LIMIT,
+            DEFAULT_ENDS_AT_GRACE_MINUTES,
+            DEFAULT_FEED_DESCRIPTION,
+            DEFAULT_FEED_LINK,
+            DEFAULT_FEED_TITLE,
+            DEFAULT_FEED_TTL_MINUTES,
+            DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
+            DEFAULT_MAX_ITEMS,
+            DEFAULT_MAX_ITEM_AGE_DAYS,
+            DEFAULT_OUT_PATH,
+            DEFAULT_PROVIDER_MAX_WORKERS,
+            DEFAULT_PROVIDER_TIMEOUT,
+            DEFAULT_STATE_PATH,
+            DEFAULT_STATE_RETENTION_DAYS,
+        )
         from utils.cache import read_cache, register_cache_alert_hook
         from utils.env import get_int_env, get_bool_env
     except ModuleNotFoundError:
+        from .config.defaults import (  # type: ignore
+            DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
+            DEFAULT_DESCRIPTION_CHAR_LIMIT,
+            DEFAULT_ENDS_AT_GRACE_MINUTES,
+            DEFAULT_FEED_DESCRIPTION,
+            DEFAULT_FEED_LINK,
+            DEFAULT_FEED_TITLE,
+            DEFAULT_FEED_TTL_MINUTES,
+            DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
+            DEFAULT_MAX_ITEMS,
+            DEFAULT_MAX_ITEM_AGE_DAYS,
+            DEFAULT_OUT_PATH,
+            DEFAULT_PROVIDER_MAX_WORKERS,
+            DEFAULT_PROVIDER_TIMEOUT,
+            DEFAULT_STATE_PATH,
+            DEFAULT_STATE_RETENTION_DAYS,
+        )
         from .utils.cache import read_cache, register_cache_alert_hook  # type: ignore
         from .utils.env import get_int_env, get_bool_env  # type: ignore
 
@@ -748,32 +799,38 @@ def _validate_configuration(statuses: List[Tuple[str, bool]]) -> None:
         )
 
 # ---------------- ENV ----------------
-OUT_PATH = _resolve_env_path("OUT_PATH", Path("docs/feed.xml")).as_posix()
-FEED_TITLE = os.getenv("FEED_TITLE", "ÖPNV Störungen Wien & Umgebung")
-FEED_LINK = os.getenv("FEED_LINK", "https://github.com/Origamihase/wien-oepnv")
-FEED_DESC = os.getenv("FEED_DESC", "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen")
-# Defaultwerte für die Feed-Erzeugung
-DEFAULT_FEED_TTL = 15
-DEFAULT_MAX_ITEM_AGE_DAYS = 365
-DEFAULT_ABSOLUTE_MAX_AGE_DAYS = 540
+OUT_PATH = _resolve_env_path("OUT_PATH", DEFAULT_OUT_PATH).as_posix()
+FEED_TITLE = os.getenv("FEED_TITLE", DEFAULT_FEED_TITLE)
+FEED_LINK = os.getenv("FEED_LINK", DEFAULT_FEED_LINK)
+FEED_DESC = os.getenv("FEED_DESC", DEFAULT_FEED_DESCRIPTION)
 
-FEED_TTL = max(get_int_env("FEED_TTL", DEFAULT_FEED_TTL), 0)
+FEED_TTL = max(get_int_env("FEED_TTL", DEFAULT_FEED_TTL_MINUTES), 0)
 
-DESCRIPTION_CHAR_LIMIT = max(get_int_env("DESCRIPTION_CHAR_LIMIT", 170), 0)
-FRESH_PUBDATE_WINDOW_MIN = get_int_env("FRESH_PUBDATE_WINDOW_MIN", 5)
-MAX_ITEMS = max(get_int_env("MAX_ITEMS", 10), 0)
+DESCRIPTION_CHAR_LIMIT = max(
+    get_int_env("DESCRIPTION_CHAR_LIMIT", DEFAULT_DESCRIPTION_CHAR_LIMIT), 0
+)
+FRESH_PUBDATE_WINDOW_MIN = get_int_env(
+    "FRESH_PUBDATE_WINDOW_MIN", DEFAULT_FRESH_PUBDATE_WINDOW_MIN
+)
+MAX_ITEMS = max(get_int_env("MAX_ITEMS", DEFAULT_MAX_ITEMS), 0)
 MAX_ITEM_AGE_DAYS = max(
     get_int_env("MAX_ITEM_AGE_DAYS", DEFAULT_MAX_ITEM_AGE_DAYS), 0
 )
 ABSOLUTE_MAX_AGE_DAYS = max(
-    get_int_env("ABSOLUTE_MAX_AGE_DAYS", DEFAULT_ABSOLUTE_MAX_AGE_DAYS), 0
+    get_int_env("ABSOLUTE_MAX_AGE_DAYS", DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS), 0
 )
-ENDS_AT_GRACE_MINUTES = max(get_int_env("ENDS_AT_GRACE_MINUTES", 10), 0)
-PROVIDER_TIMEOUT = max(get_int_env("PROVIDER_TIMEOUT", 25), 0)
-PROVIDER_MAX_WORKERS = max(get_int_env("PROVIDER_MAX_WORKERS", 0), 0)
+ENDS_AT_GRACE_MINUTES = max(
+    get_int_env("ENDS_AT_GRACE_MINUTES", DEFAULT_ENDS_AT_GRACE_MINUTES), 0
+)
+PROVIDER_TIMEOUT = max(get_int_env("PROVIDER_TIMEOUT", DEFAULT_PROVIDER_TIMEOUT), 0)
+PROVIDER_MAX_WORKERS = max(
+    get_int_env("PROVIDER_MAX_WORKERS", DEFAULT_PROVIDER_MAX_WORKERS), 0
+)
 
-STATE_FILE = _resolve_env_path("STATE_PATH", Path("data/first_seen.json"))  # nur Einträge aus *aktuellem* Feed
-STATE_RETENTION_DAYS = max(get_int_env("STATE_RETENTION_DAYS", 60), 0)
+STATE_FILE = _resolve_env_path("STATE_PATH", DEFAULT_STATE_PATH)  # nur Einträge aus *aktuellem* Feed
+STATE_RETENTION_DAYS = max(
+    get_int_env("STATE_RETENTION_DAYS", DEFAULT_STATE_RETENTION_DAYS), 0
+)
 
 RFC = "%a, %d %b %Y %H:%M:%S %z"
 
