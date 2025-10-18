@@ -1536,7 +1536,6 @@
       "Wien Aspern Nord",
       "490091000",
       "Sty",
-      "900100",
       "Aspern Nord"
     ],
     "latitude": 48.234567,
@@ -1551,7 +1550,9 @@
     "longitude": 16.483736,
     "aliases": [
       "430349900",
-      "Gerasdorf bei Wien Bahnhof"
+      "Gerasdorf bei Wien Bahnhof",
+      "Gerasdorf bei Wien Bahnhof (VOR)",
+      "900100"
     ],
     "source": "vor",
     "bst_id": "900100",
@@ -1566,7 +1567,9 @@
     "longitude": 16.439724,
     "aliases": [
       "430389500",
-      "Kledering Bahnhof"
+      "Kledering Bahnhof",
+      "Kledering Bahnhof (VOR)",
+      "900101"
     ],
     "source": "vor",
     "bst_id": "900101",
@@ -1581,7 +1584,9 @@
     "longitude": 16.482055,
     "aliases": [
       "430471000",
-      "Schwechat Bahnhof"
+      "Schwechat Bahnhof",
+      "Schwechat Bahnhof (VOR)",
+      "900102"
     ],
     "source": "vor",
     "bst_id": "900102",
@@ -1596,7 +1601,9 @@
     "longitude": 16.376413,
     "aliases": [
       "490134900",
-      "Wien Hauptbahnhof"
+      "Wien Hauptbahnhof",
+      "Wien Hauptbahnhof (VOR)",
+      "900103"
     ],
     "source": "vor",
     "bst_id": "900103",
@@ -1611,7 +1618,9 @@
     "longitude": 16.368907,
     "aliases": [
       "490065700",
-      "Wien Karlsplatz U"
+      "Wien Karlsplatz U",
+      "Wien Karlsplatz U (VOR)",
+      "900104"
     ],
     "source": "vor",
     "bst_id": "900104",
@@ -1626,7 +1635,9 @@
     "longitude": 16.384584,
     "aliases": [
       "490074300",
-      "Wien Mitte-Landstraße"
+      "Wien Mitte-Landstraße",
+      "Wien Mitte-Landstraße (VOR)",
+      "900105"
     ],
     "source": "vor",
     "bst_id": "900105",
@@ -1641,7 +1652,9 @@
     "longitude": 16.361905,
     "aliases": [
       "490118400",
-      "Wien Schottentor U"
+      "Wien Schottentor U",
+      "Wien Schottentor U (VOR)",
+      "900106"
     ],
     "source": "vor",
     "bst_id": "900106",
@@ -1656,34 +1669,13 @@
     "longitude": 16.371604,
     "aliases": [
       "490132000",
-      "Wien Stephansplatz U"
+      "Wien Stephansplatz U",
+      "Wien Stephansplatz U (VOR)",
+      "900107"
     ],
     "source": "vor",
     "bst_id": "900107",
     "bst_code": "900107"
-  },
-  {
-    "vor_id": "900300",
-    "name": "Wiener Neustadt Hbf",
-    "in_vienna": false,
-    "pendler": true,
-    "latitude": 47.811304,
-    "longitude": 16.23362,
-    "aliases": [
-      "Wiener Neustadt Hauptbahnhof",
-      "Wiener Neustadt Hauptbahnhof (VOR)",
-      "Wiener Neustadt Hbf",
-      "Wiener Neustadt",
-      "Wiener Neustadt Bahnhof",
-      "Bahnhof Wiener Neustadt",
-      "Wr. Neustadt Hbf",
-      "Wr. Neustadt",
-      "900300",
-      "430521000"
-    ],
-    "bst_id": "900300",
-    "bst_code": "900300",
-    "source": "vor"
   },
   {
     "name": "Wien Karlsplatz (WL)",
@@ -1724,7 +1716,8 @@
       "Wien Karlsplatz U",
       "Wien Karlsplatz U (VOR)",
       "Wien-Karlsplatz",
-      "Wien-Karlsplatz-(WL)"
+      "Wien-Karlsplatz-(WL)",
+      "WL-KAR"
     ],
     "source": "wl",
     "bst_id": 960201076,
@@ -1772,7 +1765,8 @@
       "Wien Schottentor U",
       "Wien Schottentor U (VOR)",
       "Wien-Schottentor",
-      "Wien-Schottentor-(WL)"
+      "Wien-Schottentor-(WL)",
+      "WL-SCH"
     ],
     "source": "wl",
     "bst_id": 960201002,
@@ -1812,7 +1806,8 @@
       "Wien Stephansplatz U",
       "Wien Stephansplatz U (VOR)",
       "Wien-Stephansplatz",
-      "Wien-Stephansplatz-(WL)"
+      "Wien-Stephansplatz-(WL)",
+      "WL-STE"
     ],
     "source": "wl",
     "bst_id": 960201001,
