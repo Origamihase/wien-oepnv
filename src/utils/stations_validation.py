@@ -334,6 +334,9 @@ def _find_coordinate_issues(
             yield CoordinateIssue(identifier=identifier, name=name, reason=reason)
             continue
 
+        if bool(entry.get("pendler")):
+            continue
+
         if not (min_lat <= latitude <= max_lat) or not (min_lon <= longitude <= max_lon):
             swapped_hint = min_lat <= longitude <= max_lat and min_lon <= latitude <= max_lon
             if swapped_hint:
