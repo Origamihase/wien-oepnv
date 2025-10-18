@@ -209,8 +209,40 @@ def _find_duplicate_coordinate_groups(
         buckets[key].append(station)
 
     for key, entries in buckets.items():
-        if len(entries) > 1:
-            yield key, entries
+        if len(entries) <= 1:
+            continue
+
+        sources: list[str] = []
+        alias_sets: list[set[str]] = []
+        for entry in entries:
+            source = entry.get("source")
+            token = str(source).strip().lower() if isinstance(source, str) else ""
+            sources.append(token)
+
+            aliases: set[str] = set()
+            for candidate in (
+                entry.get("name"),
+                entry.get("bst_code"),
+                entry.get("vor_id"),
+            ):
+                if isinstance(candidate, str) and candidate.strip():
+                    aliases.add(candidate.strip().casefold())
+            alias_list = entry.get("aliases")
+            if isinstance(alias_list, Iterable) and not isinstance(alias_list, (str, bytes)):
+                for alias in alias_list:
+                    if isinstance(alias, str) and alias.strip():
+                        aliases.add(alias.strip().casefold())
+            alias_sets.append(aliases)
+
+        # Suppress duplicate warnings when entries originate from distinct
+        # sources and share at least one textual alias, indicating that they are
+        # intentionally mirrored (e.g. ÖBB vs VOR records for the same station).
+        if len(set(sources)) == len(entries) and alias_sets:
+            shared_aliases = set.intersection(*alias_sets)
+            if shared_aliases:
+                continue
+
+        yield key, entries
 
 
 def _extract_float(value: object) -> float | None:
@@ -332,6 +364,9 @@ def _find_coordinate_issues(
         if missing_components:
             reason = ", ".join(missing_components)
             yield CoordinateIssue(identifier=identifier, name=name, reason=reason)
+            continue
+
+        if bool(entry.get("pendler")):
             continue
 
         if not (min_lat <= latitude <= max_lat) or not (min_lon <= longitude <= max_lon):
