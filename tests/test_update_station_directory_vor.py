@@ -25,9 +25,9 @@ def make_stop(
 
 def test_assign_vor_ids_exact_match() -> None:
     station = make_station("Wien Aspern Nord")
-    stops = [make_stop("900100", "Wien Aspern Nord", municipality="Wien")]
+    stops = [make_stop("490091000", "Wien Aspern Nord", municipality="Wien")]
     usd._assign_vor_ids([station], stops)
-    assert station.vor_id == "900100"
+    assert station.vor_id == "490091000"
 
 
 def test_assign_vor_ids_prefers_matching_municipality() -> None:
