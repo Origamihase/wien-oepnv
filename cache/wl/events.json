@@ -374,18 +374,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62A: Busse halten Breitenfurter Straße 236-238",
-    "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3",
-    "pubDate": "2025-10-18T04:45:22+02:00",
-    "starts_at": "2025-10-18T04:45:22+02:00",
-    "ends_at": "2025-10-19T00:35:00+02:00",
-    "_identity": "wl|störung|L=62A|D=2025-10-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten nach Dresdner Str. (Linie 5A)",
     "description": "Bauarbeiten Busse halten nach Dresdner Str. (Linie 5 A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -398,18 +386,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Verspätungen",
-    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
-    "pubDate": "2025-10-18T23:45:00+02:00",
-    "starts_at": "2025-10-18T23:45:00+02:00",
-    "ends_at": "2025-10-19T01:30:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2025-10-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "48A: Verunreinigung",
     "description": "Die Linie 48 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -418,5 +394,41 @@
     "starts_at": "2025-10-19T00:00:00+02:00",
     "ends_at": "2025-10-19T23:55:00+02:00",
     "_identity": "wl|störung|L=48A|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 44 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201",
+    "pubDate": "2025-10-19T00:20:00+02:00",
+    "starts_at": "2025-10-19T00:20:00+02:00",
+    "ends_at": "2025-10-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=44|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972",
+    "pubDate": "2025-10-19T00:25:00+02:00",
+    "starts_at": "2025-10-19T00:25:00+02:00",
+    "ends_at": "2025-10-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
+    "pubDate": "2025-10-19T00:29:07+02:00",
+    "starts_at": "2025-10-19T00:29:07+02:00",
+    "ends_at": "2025-10-19T01:28:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-10-19"
   }
 ]
