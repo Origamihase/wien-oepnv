@@ -16,7 +16,7 @@ def _stop(info: StationInfo, stop_id: str):
 def test_wl_stop_lookup_by_stop_id():
     info = station_info("60201076")
     assert info is not None
-    assert info.name == "Wien Karlsplatz (WL)"
+    assert info.name == "Wien Karlsplatz"
     assert info.wl_diva == "60201076"
     stop = _stop(info, "60201076")
     assert stop.latitude == pytest.approx(48.19868)
@@ -28,7 +28,7 @@ def test_wl_stop_lookup_by_stop_id():
 def test_wl_alias_matching_by_name():
     info = station_info("Schottentor U (Richtung Karlsplatz)")
     assert info is not None
-    assert info.name == "Wien Schottentor (WL)"
+    assert info.name == "Wien Schottentor"
     assert info.wl_diva == "60201002"
     ids = sorted(stop.stop_id for stop in info.wl_stops)
     assert ids == ["60201002", "60201003"]
@@ -36,4 +36,4 @@ def test_wl_alias_matching_by_name():
 
 
 def test_wl_canonical_name_for_diva():
-    assert canonical_name("Stephansplatz U") == "Wien Stephansplatz (WL)"
+    assert canonical_name("Stephansplatz U") == "Wien Stephansplatz"

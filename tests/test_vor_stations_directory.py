@@ -127,7 +127,7 @@ def test_vor_entries_have_bst_id_and_code():
 def test_wl_aliases_take_precedence_over_vor_text_aliases():
     info = station_info("Wien Karlsplatz U")
     assert info is not None
-    assert info.name == "Wien Karlsplatz (WL)"
+    assert info.name == "Wien Karlsplatz"
 
     numeric = station_info("490065700")
     assert numeric is not None
