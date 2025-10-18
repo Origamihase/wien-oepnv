@@ -1,6 +1,7 @@
 """Integration tests for VOR entries in stations.json."""
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
@@ -60,3 +61,15 @@ def test_vor_station_ids_default_prefers_directory(monkeypatch):
 
     ids = vor._load_station_ids_default()
     assert ids == ["430470800", "490091000"]
+
+
+def test_vor_entries_have_bst_id_and_code():
+    with Path("data/stations.json").open(encoding="utf-8") as handle:
+        stations = json.load(handle)
+
+    vor_entries = [entry for entry in stations if entry.get("source") == "vor"]
+    assert vor_entries, "expected VOR-sourced station entries"
+
+    for entry in vor_entries:
+        assert "bst_id" in entry and entry["bst_id"], f"missing bst_id for {entry['name']}"
+        assert "bst_code" in entry and entry["bst_code"], f"missing bst_code for {entry['name']}"
