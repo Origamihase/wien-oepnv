@@ -1588,7 +1588,7 @@
     "source": "oebb"
   },
   {
-    "name": "Wien Hauptbahnhof (VOR)",
+    "name": "Wien Hauptbahnhof",
     "in_vienna": true,
     "pendler": false,
     "vor_id": "490134900",
@@ -1596,29 +1596,20 @@
     "longitude": 16.376413,
     "aliases": [
       "490134900",
-      "Wien Hauptbahnhof"
+      "900100",
+      "Bahnhof Wien Hauptbahnhof",
+      "Vienna Central Station",
+      "Vienna Main Station",
+      "Wien Hauptbahnhof",
+      "Wien Hauptbahnhof (VOR)",
+      "Wien Hbf"
     ],
     "source": "vor",
-    "bst_id": "900100",
+    "bst_id": 900100,
     "bst_code": "900100"
   },
   {
-    "name": "Wien Karlsplatz U (VOR)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490065700",
-    "latitude": 48.200888,
-    "longitude": 16.368907,
-    "aliases": [
-      "490065700",
-      "Wien Karlsplatz U"
-    ],
-    "source": "vor",
-    "bst_id": "900101",
-    "bst_code": "900101"
-  },
-  {
-    "name": "Wien Mitte-Landstraße (VOR)",
+    "name": "Wien Mitte-Landstraße",
     "in_vienna": true,
     "pendler": false,
     "vor_id": "490074300",
@@ -1626,44 +1617,21 @@
     "longitude": 16.384584,
     "aliases": [
       "490074300",
-      "Wien Mitte-Landstraße"
+      "900102",
+      "Bahnhof Wien Mitte",
+      "Bahnhof Wien Mitte-Landstraße",
+      "Landstraße Wien Mitte",
+      "Vienna Mitte",
+      "Wien Mitte",
+      "Wien Mitte-Landstraße",
+      "Wien Mitte-Landstraße (VOR)"
     ],
     "source": "vor",
-    "bst_id": "900102",
+    "bst_id": 900102,
     "bst_code": "900102"
   },
   {
-    "name": "Wien Schottentor U (VOR)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490118400",
-    "latitude": 48.214489,
-    "longitude": 16.361905,
-    "aliases": [
-      "490118400",
-      "Wien Schottentor U"
-    ],
-    "source": "vor",
-    "bst_id": "900103",
-    "bst_code": "900103"
-  },
-  {
-    "name": "Wien Stephansplatz U (VOR)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490132000",
-    "latitude": 48.208088,
-    "longitude": 16.371604,
-    "aliases": [
-      "490132000",
-      "Wien Stephansplatz U"
-    ],
-    "source": "vor",
-    "bst_id": "900104",
-    "bst_code": "900104"
-  },
-  {
-    "name": "Wien Karlsplatz (WL)",
+    "name": "Wien Karlsplatz",
     "in_vienna": true,
     "pendler": false,
     "wl_diva": "60201076",
@@ -1685,6 +1653,7 @@
       "490065700",
       "60201076",
       "60201077",
+      "900101",
       "Bahnhof Wien Karlsplatz",
       "Karlsplatz",
       "Karlsplatz U (Richtung Leopoldau)",
@@ -1694,6 +1663,7 @@
       "Vienna Karlsplatz Station",
       "Vienna Karlsplatz U",
       "Vienna Karlsplatz U (VOR)",
+      "WL-KAR",
       "Wien Karlsplatz",
       "Wien Karlsplatz (WL)",
       "Wien Karlsplatz Bahnhof",
@@ -1711,7 +1681,7 @@
     "vor_id": "490065700"
   },
   {
-    "name": "Wien Schottentor (WL)",
+    "name": "Wien Schottentor",
     "in_vienna": true,
     "pendler": false,
     "wl_diva": "60201002",
@@ -1733,6 +1703,7 @@
       "490118400",
       "60201002",
       "60201003",
+      "900103",
       "Bahnhof Wien Schottentor",
       "Schottentor",
       "Schottentor U (Richtung Heiligenstadt)",
@@ -1742,6 +1713,7 @@
       "Vienna Schottentor Station",
       "Vienna Schottentor U",
       "Vienna Schottentor U (VOR)",
+      "WL-SCH",
       "Wien Schottentor",
       "Wien Schottentor (WL)",
       "Wien Schottentor Bahnhof",
@@ -1759,7 +1731,7 @@
     "vor_id": "490118400"
   },
   {
-    "name": "Wien Stephansplatz (WL)",
+    "name": "Wien Stephansplatz",
     "in_vienna": true,
     "pendler": false,
     "wl_diva": "60201001",
@@ -1774,6 +1746,7 @@
     "aliases": [
       "490132000",
       "60201001",
+      "900104",
       "Bahnhof Wien Stephansplatz",
       "Stephansplatz",
       "Stephansplatz U",
@@ -1782,6 +1755,7 @@
       "Vienna Stephansplatz Station",
       "Vienna Stephansplatz U",
       "Vienna Stephansplatz U (VOR)",
+      "WL-STE",
       "Wien Stephansplatz",
       "Wien Stephansplatz (WL)",
       "Wien Stephansplatz Bahnhof",
