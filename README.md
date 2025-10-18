@@ -138,6 +138,62 @@ verwendest.
 - Beim manuellen Aufruf der Hilfsskripte, z. B. `scripts/update_vor_cache.py`, erscheinen Warnungen und Fehler direkt auf `stdout`. Für nachträgliche Analysen kannst du den jeweiligen Lauf zusätzlich mit `LOG_DIR` auf ein separates Verzeichnis umleiten.
 - Setzt du `LOG_FORMAT=json`, schreibt das Projekt strukturierte JSON-Logs mit Zeitstempeln im Format `Europe/Vienna`. Ohne Angabe bleibt das klassische Textformat aktiv.
 
+## Nutzung als Datenquelle in Drittprojekten
+
+Das Repository stellt die aufbereiteten Meldungen nicht nur als RSS-Feed bereit, sondern bietet auch stabile JSON-Datensätze und
+wiederverwendbare Python-Helfer für die Integration in andere Anwendungen.
+
+### Schnellstart für Datenkonsumenten
+
+1. Repository klonen und in ein virtuelles Environment wechseln (`python -m venv .venv && source .venv/bin/activate`).
+2. Projektabhängigkeiten installieren (`python -m pip install -r requirements.txt`).
+3. Die gewünschten Cache-Dateien unter `cache/<provider>/events.json` konsumieren oder die Python-Helfer aus `src/` nutzen.
+
+Die Cache-Dateien werden von den GitHub-Actions regelmäßig aktualisiert und enthalten ausschließlich strukturierte JSON-Listen.
+Sie sind damit ohne zusätzlichen Build-Schritt sofort für externe Automationen verwendbar.
+
+### Programmgesteuerter Zugriff via Python
+
+Für Python-Anwendungen existieren zwei bequeme Zugriffspfade:
+
+- **Direkter Cache-Zugriff** – `src.utils.cache.read_cache()` liest die zwischengespeicherten Provider-Events als Python-Liste
+  von Dictionaries ein (Wrapper wie `src.build_feed.read_cache_wl()` sind bereits vorkonfiguriert für „wl“, „oebb“, „vor“ und
+  „baustellen“).【F:src/utils/cache.py†L38-L90】【F:src/build_feed.py†L706-L724】
+- **Live-Abruf der Provider** – Die Module `src.providers.wl_fetch`, `src.providers.oebb` und `src.providers.vor` stellen
+  jeweils eine Funktion `fetch_events()` bereit, die die Rohdaten der Wiener Linien, ÖBB bzw. der VOR/VAO-API direkt
+  normalisiert. Authentifizierung und Ratenlimits der VOR-API werden dabei automatisch behandelt.【F:src/providers/wl_fetch.py†L520-L618】【F:src/providers/oebb.py†L109-L168】【F:src/providers/vor.py†L520-L677】
+
+Minimalbeispiel für den Cache-Zugriff:
+
+```python
+from src.utils.cache import read_cache
+
+wl_events = read_cache("wl")
+for event in wl_events:
+    print(event["title"], event["starts_at"])
+```
+
+### Datenformat der Ereignisse
+
+Unabhängig vom Provider folgen alle Ereignisse derselben Struktur, die auch im Feed verwendet wird. Die wichtigsten Felder im
+JSON-Cache (Strings im ISO-8601-Format) bzw. bei direkter Python-Nutzung (Python-`datetime`-Objekte) sind:
+
+| Feld        | Beschreibung                                                                                  |
+| ----------- | --------------------------------------------------------------------------------------------- |
+| `source`    | Ursprungsquelle der Meldung (`"Wiener Linien"`, `"ÖBB"`, `"VOR/VAO"`, …).                      |
+| `category`  | Typ der Meldung, z. B. „Störung“, „Hinweis“, „Baustelle“.                                       |
+| `title`     | Bereinigter, menschenlesbarer Titel mit Linienkürzeln.                                         |
+| `description` | Ausführliche Beschreibung inkl. Zusatzinfos wie Umleitungen, betroffene Haltestellen usw.     |
+| `link`      | Referenz-URL zur Originalmeldung oder weiterführenden Infos.                                   |
+| `guid`      | Stabile eindeutige Kennung, geeignet als Primärschlüssel.                                      |
+| `pubDate`   | Veröffentlichungszeitpunkt der Meldung.                                                        |
+| `starts_at` | Technischer Startzeitpunkt des Ereignisses (häufig identisch mit `pubDate`).                    |
+| `ends_at`   | Optionales Ende der Maßnahme; `null`, wenn unbekannt oder bereits vergangen.                   |
+| `_identity` | Projektinterner Schlüssel zur Nachverfolgung des „first seen“-Zeitpunkts (optional vorhanden). |
+
+Alle Felder sind als Unicode-Strings hinterlegt, zusätzliche provider-spezifische Hilfsfelder werden vor dem JSON-Export
+entfernt, sodass die Datensätze stabil und schema-konform bleiben.【F:src/providers/wl_fetch.py†L568-L618】【F:src/providers/oebb.py†L143-L168】【F:src/providers/vor.py†L548-L677】
+
 ## Provider-spezifische Workflows
 
 Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wiener Linien (WL), der Verkehrsverbund Ost-Region GmbH (VOR), der ÖBB sowie ergänzende Baustelleninformationen der Stadt Wien.
