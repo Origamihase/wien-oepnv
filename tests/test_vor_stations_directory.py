@@ -73,3 +73,17 @@ def test_vor_entries_have_bst_id_and_code():
     for entry in vor_entries:
         assert "bst_id" in entry and entry["bst_id"], f"missing bst_id for {entry['name']}"
         assert "bst_code" in entry and entry["bst_code"], f"missing bst_code for {entry['name']}"
+
+
+def test_wl_aliases_take_precedence_over_vor_text_aliases():
+    info = station_info("Wien Karlsplatz U")
+    assert info is not None
+    assert info.name == "Wien Karlsplatz (WL)"
+
+    numeric = station_info("490065700")
+    assert numeric is not None
+    assert numeric.name == "Wien Karlsplatz U (VOR)"
+
+    vor_label = station_info("Wien Karlsplatz U (VOR)")
+    assert vor_label is not None
+    assert vor_label.name == "Wien Karlsplatz U (VOR)"
