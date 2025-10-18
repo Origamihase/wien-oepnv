@@ -60,6 +60,34 @@ Der Feed-Bau folgt einem klaren Ablauf:
 4. **Umgebungsvariablen**: Sensible Daten (Tokens, Basis-URLs) werden ausschließlich über die Umgebung gesetzt.
    Lokale `.env`-Dateien können über `WIEN_OEPNV_ENV_FILES` eingebunden werden.
 
+## Entwickler-CLI
+
+Für wiederkehrende Aufgaben steht eine gebündelte Kommandozeile zur Verfügung. Der Aufruf `python -m src.cli` bündelt die
+wichtigsten Skripte und sorgt für konsistente Exit-Codes – ideal für lokale Reproduzierbarkeit oder CI-Jobs.
+
+```bash
+# Alle Provider-Caches sequenziell aktualisieren (Standardverhalten).
+python -m src.cli cache update
+
+# Nur ausgewählte Provider aktualisieren.
+python -m src.cli cache update wl oebb
+
+# Feed generieren (äquivalent zu python -m src.build_feed).
+python -m src.cli feed build
+
+# Zugangsdaten prüfen und beim ersten Fehler abbrechen.
+python -m src.cli tokens verify --stop-on-error
+
+# Stationsverzeichnis prüfen und Bericht speichern.
+python -m src.cli stations validate --output docs/stations_validation_report.md
+
+# Ruff + mypy wie in der CI ausführen.
+python -m src.cli checks --fix
+```
+
+Die Unterbefehle akzeptieren standardmäßig alle bekannten Ziele (z. B. Provider `wl`, `oebb`, `vor`) und lassen sich bei Bedarf
+präzise einschränken. Über `--python` kann ein alternativer Interpreter für die Hilfsskripte gesetzt werden.
+
 ## Konfiguration des Feed-Builds
 
 `src/build_feed.py` liest zahlreiche Umgebungsvariablen. Die wichtigsten Parameter:
