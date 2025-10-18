@@ -1596,76 +1596,49 @@
     "longitude": 16.376413,
     "aliases": [
       "490134900",
-      "Wien Hauptbahnhof"
+      "900100",
+      "Wien Hauptbahnhof",
+      "Wien Hauptbahnhof (VOR)"
     ],
     "source": "vor",
     "bst_id": "900100",
     "bst_code": "900100"
   },
   {
-    "name": "Wien Karlsplatz U (VOR)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490065700",
-    "latitude": 48.200888,
-    "longitude": 16.368907,
-    "aliases": [
-      "490065700",
-      "Wien Karlsplatz U"
-    ],
-    "source": "vor",
-    "bst_id": "900101",
-    "bst_code": "900101"
-  },
-  {
-    "name": "Wien Mitte-Landstraße (VOR)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490074300",
-    "latitude": 48.206048,
-    "longitude": 16.384584,
-    "aliases": [
-      "490074300",
-      "Wien Mitte-Landstraße"
-    ],
-    "source": "vor",
-    "bst_id": "900102",
-    "bst_code": "900102"
-  },
-  {
-    "name": "Wien Schottentor U (VOR)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490118400",
-    "latitude": 48.214489,
-    "longitude": 16.361905,
-    "aliases": [
-      "490118400",
-      "Wien Schottentor U"
-    ],
-    "source": "vor",
-    "bst_id": "900103",
-    "bst_code": "900103"
-  },
-  {
-    "name": "Wien Stephansplatz U (VOR)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490132000",
-    "latitude": 48.208088,
-    "longitude": 16.371604,
-    "aliases": [
-      "490132000",
-      "Wien Stephansplatz U"
-    ],
-    "source": "vor",
-    "bst_id": "900104",
-    "bst_code": "900104"
-  },
-  {
     "name": "Wien Karlsplatz (WL)",
     "in_vienna": true,
     "pendler": false,
+    "vor_id": "490065700",
+    "latitude": 48.19894,
+    "longitude": 16.370225,
+    "aliases": [
+      "490065700",
+      "60201076",
+      "60201077",
+      "900101",
+      "960201076",
+      "Bahnhof Wien Karlsplatz",
+      "Karlsplatz",
+      "Karlsplatz U (Richtung Leopoldau)",
+      "Karlsplatz U (Richtung Reumannplatz)",
+      "Vienna Karlsplatz",
+      "Vienna Karlsplatz (WL)",
+      "Vienna Karlsplatz Station",
+      "Vienna Karlsplatz U",
+      "Vienna Karlsplatz U (VOR)",
+      "WL-KAR",
+      "Wien Karlsplatz",
+      "Wien Karlsplatz (WL)",
+      "Wien Karlsplatz Bahnhof",
+      "Wien Karlsplatz Station",
+      "Wien Karlsplatz U",
+      "Wien Karlsplatz U (VOR)",
+      "Wien-Karlsplatz",
+      "Wien-Karlsplatz-(WL)"
+    ],
+    "source": "combined",
+    "bst_id": "900101",
+    "bst_code": "900101",
     "wl_diva": "60201076",
     "wl_stops": [
       {
@@ -1681,39 +1654,60 @@
         "longitude": 16.371
       }
     ],
+    "vor_name": "Wien Karlsplatz U (VOR)"
+  },
+  {
+    "name": "Wien Mitte-Landstraße (VOR)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490074300",
+    "latitude": 48.206048,
+    "longitude": 16.384584,
     "aliases": [
-      "490065700",
-      "60201076",
-      "60201077",
-      "Bahnhof Wien Karlsplatz",
-      "Karlsplatz",
-      "Karlsplatz U (Richtung Leopoldau)",
-      "Karlsplatz U (Richtung Reumannplatz)",
-      "Vienna Karlsplatz",
-      "Vienna Karlsplatz (WL)",
-      "Vienna Karlsplatz Station",
-      "Vienna Karlsplatz U",
-      "Vienna Karlsplatz U (VOR)",
-      "Wien Karlsplatz",
-      "Wien Karlsplatz (WL)",
-      "Wien Karlsplatz Bahnhof",
-      "Wien Karlsplatz Station",
-      "Wien Karlsplatz U",
-      "Wien Karlsplatz U (VOR)",
-      "Wien-Karlsplatz",
-      "Wien-Karlsplatz-(WL)"
+      "490074300",
+      "900102",
+      "Wien Mitte-Landstraße",
+      "Wien Mitte-Landstraße (VOR)"
     ],
-    "source": "wl",
-    "bst_id": 960201076,
-    "bst_code": "WL-KAR",
-    "latitude": 48.19894,
-    "longitude": 16.370225,
-    "vor_id": "490065700"
+    "source": "vor",
+    "bst_id": "900102",
+    "bst_code": "900102"
   },
   {
     "name": "Wien Schottentor (WL)",
     "in_vienna": true,
     "pendler": false,
+    "vor_id": "490118400",
+    "latitude": 48.21378,
+    "longitude": 16.360605,
+    "aliases": [
+      "490118400",
+      "60201002",
+      "60201003",
+      "900103",
+      "960201002",
+      "Bahnhof Wien Schottentor",
+      "Schottentor",
+      "Schottentor U (Richtung Heiligenstadt)",
+      "Schottentor U (Richtung Karlsplatz)",
+      "Vienna Schottentor",
+      "Vienna Schottentor (WL)",
+      "Vienna Schottentor Station",
+      "Vienna Schottentor U",
+      "Vienna Schottentor U (VOR)",
+      "WL-SCH",
+      "Wien Schottentor",
+      "Wien Schottentor (WL)",
+      "Wien Schottentor Bahnhof",
+      "Wien Schottentor Station",
+      "Wien Schottentor U",
+      "Wien Schottentor U (VOR)",
+      "Wien-Schottentor",
+      "Wien-Schottentor-(WL)"
+    ],
+    "source": "combined",
+    "bst_id": "900103",
+    "bst_code": "900103",
     "wl_diva": "60201002",
     "wl_stops": [
       {
@@ -1729,51 +1723,20 @@
         "longitude": 16.3609
       }
     ],
-    "aliases": [
-      "490118400",
-      "60201002",
-      "60201003",
-      "Bahnhof Wien Schottentor",
-      "Schottentor",
-      "Schottentor U (Richtung Heiligenstadt)",
-      "Schottentor U (Richtung Karlsplatz)",
-      "Vienna Schottentor",
-      "Vienna Schottentor (WL)",
-      "Vienna Schottentor Station",
-      "Vienna Schottentor U",
-      "Vienna Schottentor U (VOR)",
-      "Wien Schottentor",
-      "Wien Schottentor (WL)",
-      "Wien Schottentor Bahnhof",
-      "Wien Schottentor Station",
-      "Wien Schottentor U",
-      "Wien Schottentor U (VOR)",
-      "Wien-Schottentor",
-      "Wien-Schottentor-(WL)"
-    ],
-    "source": "wl",
-    "bst_id": 960201002,
-    "bst_code": "WL-SCH",
-    "latitude": 48.21378,
-    "longitude": 16.360605,
-    "vor_id": "490118400"
+    "vor_name": "Wien Schottentor U (VOR)"
   },
   {
     "name": "Wien Stephansplatz (WL)",
     "in_vienna": true,
     "pendler": false,
-    "wl_diva": "60201001",
-    "wl_stops": [
-      {
-        "stop_id": "60201001",
-        "name": "Stephansplatz U",
-        "latitude": 48.20826,
-        "longitude": 16.37327
-      }
-    ],
+    "vor_id": "490132000",
+    "latitude": 48.20826,
+    "longitude": 16.37327,
     "aliases": [
       "490132000",
       "60201001",
+      "900104",
+      "960201001",
       "Bahnhof Wien Stephansplatz",
       "Stephansplatz",
       "Stephansplatz U",
@@ -1782,6 +1745,7 @@
       "Vienna Stephansplatz Station",
       "Vienna Stephansplatz U",
       "Vienna Stephansplatz U (VOR)",
+      "WL-STE",
       "Wien Stephansplatz",
       "Wien Stephansplatz (WL)",
       "Wien Stephansplatz Bahnhof",
@@ -1791,11 +1755,18 @@
       "Wien-Stephansplatz",
       "Wien-Stephansplatz-(WL)"
     ],
-    "source": "wl",
-    "bst_id": 960201001,
-    "bst_code": "WL-STE",
-    "latitude": 48.20826,
-    "longitude": 16.37327,
-    "vor_id": "490132000"
+    "source": "combined",
+    "bst_id": "900104",
+    "bst_code": "900104",
+    "wl_diva": "60201001",
+    "wl_stops": [
+      {
+        "stop_id": "60201001",
+        "name": "Stephansplatz U",
+        "latitude": 48.20826,
+        "longitude": 16.37327
+      }
+    ],
+    "vor_name": "Wien Stephansplatz U (VOR)"
   }
 ]
