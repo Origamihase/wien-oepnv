@@ -1170,11 +1170,14 @@
     "latitude": 48.200888,
     "longitude": 16.368907,
     "aliases": [
-      "490065700",
       "Wien Karlsplatz U",
+      "VOR-KAR",
+      "490065700",
       "Wien Karlsplatz U (VOR)"
     ],
-    "source": "vor"
+    "source": "vor",
+    "bst_id": 490065700,
+    "bst_code": "VOR-KAR"
   },
   {
     "name": "Wien Mitte-Landstraße",
@@ -1200,11 +1203,14 @@
     "latitude": 48.214489,
     "longitude": 16.361905,
     "aliases": [
-      "490118400",
       "Wien Schottentor U",
+      "VOR-SCH",
+      "490118400",
       "Wien Schottentor U (VOR)"
     ],
-    "source": "vor"
+    "source": "vor",
+    "bst_id": 490118400,
+    "bst_code": "VOR-SCH"
   },
   {
     "name": "Wien Stephansplatz U",
@@ -1214,11 +1220,14 @@
     "latitude": 48.208088,
     "longitude": 16.371604,
     "aliases": [
-      "490132000",
       "Wien Stephansplatz U",
+      "VOR-STE",
+      "490132000",
       "Wien Stephansplatz U (VOR)"
     ],
-    "source": "vor"
+    "source": "vor",
+    "bst_id": 490132000,
+    "bst_code": "VOR-STE"
   },
   {
     "name": "Wiener Neustadt Hauptbahnhof",
