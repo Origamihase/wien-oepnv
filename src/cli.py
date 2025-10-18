@@ -4,8 +4,8 @@ from __future__ import annotations
 import argparse
 import subprocess
 import sys
+from collections.abc import Mapping, Sequence
 from pathlib import Path
-from typing import Sequence
 
 from .utils.stations_validation import validate_stations
 
@@ -56,6 +56,44 @@ def _run_script(script_name: str, *, python: str | None = None, extra_args: Sequ
     return _run(command)
 
 
+def _unique_preserving_order(values: Sequence[str]) -> list[str]:
+    seen: set[str] = set()
+    unique: list[str] = []
+    for value in values:
+        if value not in seen:
+            seen.add(value)
+            unique.append(value)
+    return unique
+
+
+def _resolve_targets(
+    candidates: Sequence[str],
+    *,
+    all_flag: bool,
+    available: Mapping[str, str],
+    parser: argparse.ArgumentParser,
+    default_all: bool,
+    subject: str,
+) -> list[str]:
+    available_keys = list(available.keys())
+    if all_flag:
+        if candidates:
+            parser.error(f"--all darf nicht gleichzeitig mit individuellen {subject}-Angaben verwendet werden.")
+        return available_keys
+
+    if not candidates:
+        if default_all:
+            return available_keys
+        parser.error(f"Es wurden keine {subject} angegeben.")
+
+    invalid = [candidate for candidate in candidates if candidate not in available]
+    if invalid:
+        formatted = ", ".join(sorted(invalid))
+        parser.error(f"Unbekannte {subject}: {formatted}")
+
+    return _unique_preserving_order(candidates)
+
+
 def _add_python_argument(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--python",
@@ -69,9 +107,24 @@ def _configure_cache_commands(subparsers: argparse._SubParsersAction[argparse.Ar
     cache_subparsers = cache_parser.add_subparsers(dest="cache_command", required=True)
 
     update_parser = cache_subparsers.add_parser("update", help="Refresh provider caches")
-    update_parser.add_argument("provider", choices=sorted(_PROVIDER_CACHE_SCRIPTS))
+    update_parser.add_argument(
+        "providers",
+        nargs="*",
+        metavar="PROVIDER",
+        help="Provider identifiers (wl, oebb, vor). Ohne Angabe werden alle Caches aktualisiert.",
+    )
+    update_parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Aktualisiert alle Caches unabhängig von expliziten Providerangaben.",
+    )
+    update_parser.add_argument(
+        "--stop-on-error",
+        action="store_true",
+        help="Bricht nach dem ersten fehlgeschlagenen Lauf ab (Default: führt alle Läufe aus).",
+    )
     _add_python_argument(update_parser)
-    update_parser.set_defaults(func=_handle_cache_update)
+    update_parser.set_defaults(func=_handle_cache_update, parser=update_parser)
 
 
 def _configure_stations_commands(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
@@ -134,9 +187,24 @@ def _configure_token_commands(subparsers: argparse._SubParsersAction[argparse.Ar
     token_subparsers = token_parser.add_subparsers(dest="tokens_command", required=True)
 
     verify_parser = token_subparsers.add_parser("verify", help="Validate available tokens or API keys")
-    verify_parser.add_argument("target", choices=sorted(_TOKEN_VERIFY_SCRIPTS))
+    verify_parser.add_argument(
+        "targets",
+        nargs="*",
+        metavar="TARGET",
+        help="Zu prüfende Zugangsdaten (vor, vor-auth, google-places). Ohne Angabe werden alle überprüft.",
+    )
+    verify_parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Prüft alle bekannten Zugangsdaten.",
+    )
+    verify_parser.add_argument(
+        "--stop-on-error",
+        action="store_true",
+        help="Beendet den Lauf nach dem ersten Fehler (Standard: versucht alle Prüfungen).",
+    )
     _add_python_argument(verify_parser)
-    verify_parser.set_defaults(func=_handle_token_verify)
+    verify_parser.set_defaults(func=_handle_token_verify, parser=verify_parser)
 
 
 def _configure_checks_commands(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
@@ -152,8 +220,25 @@ def _configure_checks_commands(subparsers: argparse._SubParsersAction[argparse.A
 
 
 def _handle_cache_update(args: argparse.Namespace) -> int:
-    script_name = _PROVIDER_CACHE_SCRIPTS[args.provider]
-    return _run_script(script_name, python=args.python)
+    providers = _resolve_targets(
+        args.providers,
+        all_flag=args.all,
+        available=_PROVIDER_CACHE_SCRIPTS,
+        parser=args.parser,
+        default_all=True,
+        subject="Provider",
+    )
+
+    exit_code = 0
+    for provider in providers:
+        script_name = _PROVIDER_CACHE_SCRIPTS[provider]
+        result = _run_script(script_name, python=args.python)
+        if result != 0:
+            if args.stop_on_error:
+                return result
+            if exit_code == 0:
+                exit_code = result
+    return exit_code
 
 
 def _handle_stations_update(args: argparse.Namespace) -> int:
@@ -191,8 +276,25 @@ def _handle_feed_build(args: argparse.Namespace) -> int:
 
 
 def _handle_token_verify(args: argparse.Namespace) -> int:
-    script_name = _TOKEN_VERIFY_SCRIPTS[args.target]
-    return _run_script(script_name, python=args.python)
+    targets = _resolve_targets(
+        args.targets,
+        all_flag=args.all,
+        available=_TOKEN_VERIFY_SCRIPTS,
+        parser=args.parser,
+        default_all=True,
+        subject="Token-Prüfziele",
+    )
+
+    exit_code = 0
+    for target in targets:
+        script_name = _TOKEN_VERIFY_SCRIPTS[target]
+        result = _run_script(script_name, python=args.python)
+        if result != 0:
+            if args.stop_on_error:
+                return result
+            if exit_code == 0:
+                exit_code = result
+    return exit_code
 
 
 def _handle_checks(args: argparse.Namespace) -> int:
@@ -226,7 +328,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     if handler is None:
         parser.print_help()
         return 1
-    return handler(args)
+    try:
+        return handler(args)
+    except CLIError as exc:
+        parser.error(str(exc))
 
 
 if __name__ == "__main__":  # pragma: no cover - manual execution
