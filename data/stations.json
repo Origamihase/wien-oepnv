@@ -808,24 +808,28 @@
   {
     "bst_id": 1499,
     "bst_code": "Nb",
-    "name": "Wiener Neustadt Hbf",
+    "name": "Wiener Neustadt Hauptbahnhof",
     "in_vienna": false,
     "pendler": true,
     "source": "oebb",
-    "vor_id": "900300",
+    "vor_id": "430521000",
     "aliases": [
-      "Wiener Neustadt Hbf",
+      "430521000",
       "Wiener Neustadt Hauptbahnhof",
+      "Wiener Neustadt Hauptbahnhof (VOR)",
+      "Nb",
+      "Wiener Neustadt Hbf",
       "Wr. Neustadt Hbf",
       "Wr Neustadt Hbf",
       "Wr. Neustadt",
       "Wiener Neustadt",
       "Bahnhof Wiener Neustadt",
       "Wiener Neustadt Bahnhof",
-      "WN Hbf"
+      "WN Hbf",
+      "900300"
     ],
-    "latitude": 47.810647,
-    "longitude": 16.248002
+    "latitude": 47.811304,
+    "longitude": 16.23362
   },
   {
     "bst_id": 1534,
@@ -1607,23 +1611,6 @@
     ]
   },
   {
-    "bst_id": 490065700,
-    "bst_code": "VOR-KAR",
-    "name": "Wien Karlsplatz U",
-    "in_vienna": true,
-    "pendler": false,
-    "source": "vor",
-    "vor_id": "490065700",
-    "latitude": 48.200888,
-    "longitude": 16.368907,
-    "aliases": [
-      "Wien Karlsplatz U",
-      "VOR-KAR",
-      "490065700",
-      "Wien Karlsplatz U (VOR)"
-    ]
-  },
-  {
     "bst_id": 926,
     "bst_code": "Hz",
     "name": "Wien Mitte-Landstraße",
@@ -1651,57 +1638,6 @@
       "subway_station",
       "point_of_interest",
       "establishment"
-    ]
-  },
-  {
-    "bst_id": 490118400,
-    "bst_code": "VOR-SCH",
-    "name": "Wien Schottentor U",
-    "in_vienna": true,
-    "pendler": false,
-    "source": "vor",
-    "vor_id": "490118400",
-    "latitude": 48.214489,
-    "longitude": 16.361905,
-    "aliases": [
-      "Wien Schottentor U",
-      "VOR-SCH",
-      "490118400",
-      "Wien Schottentor U (VOR)"
-    ]
-  },
-  {
-    "bst_id": 490132000,
-    "bst_code": "VOR-STE",
-    "name": "Wien Stephansplatz U",
-    "in_vienna": true,
-    "pendler": false,
-    "source": "vor",
-    "vor_id": "490132000",
-    "latitude": 48.208088,
-    "longitude": 16.371604,
-    "aliases": [
-      "Wien Stephansplatz U",
-      "VOR-STE",
-      "490132000",
-      "Wien Stephansplatz U (VOR)"
-    ]
-  },
-  {
-    "bst_id": 1499,
-    "bst_code": "Nb",
-    "name": "Wiener Neustadt Hauptbahnhof",
-    "in_vienna": false,
-    "pendler": true,
-    "source": "oebb",
-    "vor_id": "430521000",
-    "latitude": 47.811304,
-    "longitude": 16.23362,
-    "aliases": [
-      "430521000",
-      "Wiener Neustadt Hauptbahnhof",
-      "Wiener Neustadt Hauptbahnhof (VOR)",
-      "Nb"
     ]
   },
   {
@@ -1746,7 +1682,8 @@
       "Wien Karlsplatz U",
       "Wien Karlsplatz U (VOR)",
       "Wien-Karlsplatz",
-      "Wien-Karlsplatz-(WL)"
+      "Wien-Karlsplatz-(WL)",
+      "VOR-KAR"
     ],
     "latitude": 48.19894,
     "longitude": 16.370225,
@@ -1794,7 +1731,8 @@
       "Wien Schottentor U",
       "Wien Schottentor U (VOR)",
       "Wien-Schottentor",
-      "Wien-Schottentor-(WL)"
+      "Wien-Schottentor-(WL)",
+      "VOR-SCH"
     ],
     "latitude": 48.21378,
     "longitude": 16.360605,
@@ -1834,7 +1772,8 @@
       "Wien Stephansplatz U",
       "Wien Stephansplatz U (VOR)",
       "Wien-Stephansplatz",
-      "Wien-Stephansplatz-(WL)"
+      "Wien-Stephansplatz-(WL)",
+      "VOR-STE"
     ],
     "latitude": 48.20826,
     "longitude": 16.37327,
