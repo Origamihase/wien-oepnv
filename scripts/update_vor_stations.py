@@ -9,6 +9,7 @@ import logging
 import re
 import sys
 from dataclasses import dataclass
+from itertools import count
 from pathlib import Path
 from typing import Iterable, Iterator, Mapping, Sequence
 
@@ -30,6 +31,49 @@ DEFAULT_SOURCE = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 
 log = logging.getLogger("update_vor_stations")
+
+STATIC_VOR_ENTRIES: tuple[dict[str, object], ...] = (
+    {
+        "vor_id": "900300",
+        "name": "Wiener Neustadt Hbf",
+        "in_vienna": False,
+        "pendler": True,
+        "latitude": 47.811304,
+        "longitude": 16.23362,
+        "aliases": [
+            "Wiener Neustadt Hauptbahnhof",
+            "Wiener Neustadt Hauptbahnhof (VOR)",
+            "Wiener Neustadt Hbf",
+            "Wiener Neustadt",
+            "Wiener Neustadt Bahnhof",
+            "Bahnhof Wiener Neustadt",
+            "Wr. Neustadt Hbf",
+            "Wr. Neustadt",
+            "900300",
+            "430521000",
+        ],
+        "bst_id": "900300",
+        "bst_code": "900300",
+        "source": "vor",
+    },
+    {
+        "vor_id": "490091000",
+        "name": "Wien Aspern Nord",
+        "in_vienna": True,
+        "pendler": False,
+        "latitude": 48.234567,
+        "longitude": 16.520123,
+        "aliases": [
+            "Wien Aspern Nord",
+            "Aspern Nord",
+            "900100",
+            "490091000",
+        ],
+        "bst_id": "900100",
+        "bst_code": "900100",
+        "source": "vor",
+    },
+)
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
@@ -592,113 +636,178 @@ def _collect_aliases(entry: Mapping[str, object]) -> list[str]:
 def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]]) -> None:
     try:
         with stations_path.open("r", encoding="utf-8") as handle:
-            existing = json.load(handle)
+            existing_raw = json.load(handle)
     except FileNotFoundError:
-        existing = []
-    if not isinstance(existing, list):
+        existing_raw = []
+    if not isinstance(existing_raw, list):
         raise ValueError("stations.json must contain a JSON array")
 
-    vor_map: dict[str, dict[str, object]] = {}
-    for entry in vor_entries:
+    def _normalize_id(value: object | None) -> str:
+        if isinstance(value, (int, float)):
+            return str(int(value))
+        if isinstance(value, str):
+            return value.strip()
+        return ""
+
+    used_bst_ids: set[str] = set()
+    used_bst_codes: set[str] = set()
+    vor_id_to_entry: dict[str, dict[str, object]] = {}
+    alias_to_entry: dict[str, dict[str, object]] = {}
+    existing: list[dict[str, object]] = []
+
+    for entry in existing_raw:
         if not isinstance(entry, dict):
             continue
-        vor_id_raw = entry.get("vor_id")
-        if vor_id_raw is None:
+        existing.append(entry)
+        bst_id = _normalize_id(entry.get("bst_id"))
+        if bst_id:
+            used_bst_ids.add(bst_id)
+        bst_code = _normalize_id(entry.get("bst_code"))
+        if bst_code:
+            used_bst_codes.add(bst_code)
+        vor_id = _normalize_id(entry.get("vor_id"))
+        if vor_id:
+            vor_id_to_entry[vor_id] = entry
+        for alias in _collect_aliases(entry):
+            text = str(alias).strip()
+            if text and text not in alias_to_entry:
+                alias_to_entry[text] = entry
+
+    static_map = {
+        _normalize_id(static.get("vor_id")): dict(static)
+        for static in STATIC_VOR_ENTRIES
+        if _normalize_id(static.get("vor_id"))
+    }
+    handled_static: set[str] = set()
+
+    def _apply_static_overrides(target: dict[str, object], static_entry: dict[str, object]) -> None:
+        aliases = target.get("aliases")
+        if not isinstance(aliases, list):
+            aliases = []
+        existing_aliases = {str(item).strip() for item in aliases if item}
+        for alias in static_entry.get("aliases", []) if isinstance(static_entry.get("aliases"), list) else []:
+            text = str(alias).strip()
+            if text and text not in existing_aliases:
+                aliases.append(text)
+                existing_aliases.add(text)
+        target["aliases"] = aliases
+        for key in ("bst_id", "bst_code", "source", "name", "in_vienna", "pendler", "latitude", "longitude"):
+            value = static_entry.get(key)
+            if value is None:
+                continue
+            if key in {"bst_id", "bst_code"}:
+                target[key] = _normalize_id(value)
+            elif key not in target or target[key] in (None, ""):
+                target[key] = value
+
+    next_suffix = count(100)
+
+    def _allocate_identifier() -> str:
+        while True:
+            candidate = f"900{next(next_suffix):03d}"
+            if candidate in used_bst_ids or candidate in used_bst_codes:
+                continue
+            used_bst_ids.add(candidate)
+            used_bst_codes.add(candidate)
+            return candidate
+
+    new_vor_entries: list[dict[str, object]] = []
+    seen_vor_ids: set[str] = set()
+
+    for vor_entry in vor_entries:
+        if not isinstance(vor_entry, dict):
             continue
-        vor_id = str(vor_id_raw).strip()
+        vor_id = _normalize_id(vor_entry.get("vor_id"))
         if not vor_id:
             continue
-        vor_map[vor_id] = entry
+        seen_vor_ids.add(vor_id)
+        static_override = static_map.get(vor_id)
+        if static_override is not None:
+            handled_static.add(vor_id)
+            _apply_static_overrides(vor_entry, static_override)
 
-    merged: list[dict[str, object]] = []
-    updated = 0
-    for entry in existing:
-        if not isinstance(entry, dict):
-            continue
-        if entry.get("source") == "vor":
-            entry_vor_id = entry.get("vor_id")
-            key = str(entry_vor_id).strip() if isinstance(entry_vor_id, str) else ""
-            if not key and isinstance(entry_vor_id, (int, float)):
-                key = str(int(entry_vor_id))
-            if key:
-                vor_entry = vor_map.get(key)
-                if vor_entry is not None:
-                    aliases = _collect_aliases(entry)
-                    vor_aliases = vor_entry.get("aliases")
-                    if not isinstance(vor_aliases, list):
-                        vor_entry["aliases"] = list(aliases)
-                    else:
-                        existing_aliases = set(str(a).strip() for a in vor_aliases if a)
-                        for alias in aliases:
-                            text = str(alias).strip()
-                            if text and text not in existing_aliases:
-                                vor_aliases.append(text)
-                                existing_aliases.add(text)
-            continue
-        vor_id_raw = entry.get("vor_id")
-        vor_id = ""
-        if isinstance(vor_id_raw, str):
-            vor_id = vor_id_raw.strip()
-        elif isinstance(vor_id_raw, (int, float)):
-            vor_id = str(int(vor_id_raw))
-
-        aliases = _collect_aliases(entry)
-        alias_set = set(aliases)
-
-        matched_id: str | None = None
-        if vor_id and vor_id in vor_map:
-            matched_id = vor_id
-        else:
-            for candidate in list(vor_map):
-                if candidate in alias_set:
-                    matched_id = candidate
+        target = vor_id_to_entry.get(vor_id)
+        if target is None:
+            for alias in _collect_aliases(vor_entry):
+                text = str(alias).strip()
+                target = alias_to_entry.get(text)
+                if target is not None:
                     break
 
-        if matched_id is not None:
-            vor_data = vor_map.pop(matched_id)
-            merged_entry = dict(entry)
-
-            # Fill missing coordinates with VOR data; keep existing explicit values.
+        if target is not None:
             for key in ("latitude", "longitude"):
-                current = merged_entry.get(key)
-                vor_value = vor_data.get(key)
+                current = target.get(key)
+                vor_value = vor_entry.get(key)
                 if current in (None, "") and vor_value not in (None, ""):
-                    merged_entry[key] = vor_value
-
-            vor_aliases = vor_data.get("aliases")
-            if isinstance(vor_aliases, list):
-                for alias in vor_aliases:
-                    text = str(alias).strip()
-                    if text and text not in alias_set:
-                        aliases.append(text)
-                        alias_set.add(text)
-            merged_entry["aliases"] = aliases
-
-            if not vor_id:
-                vor_value = vor_data.get("vor_id")
-                if vor_value:
-                    merged_entry["vor_id"] = vor_value
-
-            updated += 1
-            merged.append(merged_entry)
+                    target[key] = vor_value
+            vor_aliases = target.get("aliases")
+            if not isinstance(vor_aliases, list):
+                vor_aliases = []
+            existing_aliases = {str(item).strip() for item in vor_aliases if item}
+            for alias in vor_entry.get("aliases", []) if isinstance(vor_entry.get("aliases"), list) else []:
+                text = str(alias).strip()
+                if text and text not in existing_aliases:
+                    vor_aliases.append(text)
+                    existing_aliases.add(text)
+            target["aliases"] = vor_aliases
+            if not _normalize_id(target.get("vor_id")):
+                target["vor_id"] = vor_id
             continue
 
-        merged.append(entry)
+        new_entry = dict(vor_entry)
+        bst_id = _normalize_id(new_entry.get("bst_id"))
+        if not bst_id:
+            bst_id = _allocate_identifier()
+        new_entry["bst_id"] = bst_id
+        used_bst_ids.add(bst_id)
+        bst_code = _normalize_id(new_entry.get("bst_code"))
+        if not bst_code:
+            bst_code = bst_id
+        new_entry["bst_code"] = bst_code
+        used_bst_codes.add(bst_code)
+        new_entry["source"] = "vor"
+        new_vor_entries.append(new_entry)
 
-    additional_vor = sorted(
-        (entry for entry in vor_map.values() if isinstance(entry, dict)),
-        key=lambda item: (str(item.get("name")), str(item.get("vor_id"))),
-    )
-    merged.extend(additional_vor)
+    for vor_id, static_entry in static_map.items():
+        if vor_id in handled_static:
+            continue
+        if vor_id in seen_vor_ids:
+            continue
+        if vor_id in vor_id_to_entry:
+            continue
+        new_entry = dict(static_entry)
+        bst_id = _normalize_id(new_entry.get("bst_id")) or _allocate_identifier()
+        new_entry["bst_id"] = bst_id
+        used_bst_ids.add(bst_id)
+        bst_code = _normalize_id(new_entry.get("bst_code")) or bst_id
+        new_entry["bst_code"] = bst_code
+        used_bst_codes.add(bst_code)
+        aliases = new_entry.get("aliases")
+        if isinstance(aliases, list):
+            unique_aliases: list[str] = []
+            seen_aliases: set[str] = set()
+            for alias in aliases:
+                text = str(alias).strip()
+                if text and text not in seen_aliases:
+                    unique_aliases.append(text)
+                    seen_aliases.add(text)
+            new_entry["aliases"] = unique_aliases
+        else:
+            new_entry["aliases"] = []
+        new_entry.setdefault("source", "vor")
+        new_vor_entries.append(new_entry)
+
+    new_vor_entries.sort(key=lambda item: (str(item.get("name")), str(item.get("vor_id"))))
+    merged_entries = existing + new_vor_entries
 
     with stations_path.open("w", encoding="utf-8") as handle:
-        json.dump(merged, handle, ensure_ascii=False, indent=2)
+        json.dump(merged_entries, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     log.info(
-        "Wrote %d total stations (%d updated, %d added VOR entries)",
-        len(merged),
-        updated,
-        len(additional_vor),
+        "Wrote %d total stations (%d merged, %d added VOR entries)",
+        len(merged_entries),
+        sum(1 for entry in existing if _normalize_id(entry.get("vor_id")) in seen_vor_ids),
+        len(new_vor_entries),
     )
 
 
