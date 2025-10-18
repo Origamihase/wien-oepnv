@@ -19,6 +19,55 @@ def test_vor_lookup_by_id():
     assert info.longitude == pytest.approx(16.520123)
 
 
+def test_vor_bst_code_prefers_directory_entry(monkeypatch):
+    import src.utils.stations as stations
+
+    stations._station_lookup.cache_clear()
+
+    def fake_entries():
+        return (
+            {
+                "name": "Wien Hauptbahnhof (VOR)",
+                "in_vienna": True,
+                "pendler": False,
+                "vor_id": "490134900",
+                "aliases": ["490134900", "Wien Hauptbahnhof"],
+                "latitude": 48.185184,
+                "longitude": 16.376413,
+                "source": "vor",
+                "bst_id": "900100",
+                "bst_code": "900100",
+            },
+            {
+                "bst_id": 4773541,
+                "bst_code": "Sty",
+                "name": "Wien Aspern Nord",
+                "in_vienna": True,
+                "pendler": False,
+                "vor_id": "490091000",
+                "aliases": [
+                    "Wien Aspern Nord",
+                    "490091000",
+                    "Sty",
+                    "900100",
+                    "Aspern Nord",
+                ],
+                "latitude": 48.234567,
+                "longitude": 16.520123,
+                "source": "oebb",
+            },
+        )
+
+    monkeypatch.setattr(stations, "_station_entries", fake_entries)
+    try:
+        info = stations.station_info("900100")
+        assert info is not None
+        assert info.name == "Wien Aspern Nord"
+        assert info.source == "oebb"
+    finally:
+        stations._station_lookup.cache_clear()
+
+
 def test_vor_lookup_by_alias():
     info = station_info("Vienna Airport")
     assert info is not None
@@ -73,3 +122,17 @@ def test_vor_entries_have_bst_id_and_code():
     for entry in vor_entries:
         assert "bst_id" in entry and entry["bst_id"], f"missing bst_id for {entry['name']}"
         assert "bst_code" in entry and entry["bst_code"], f"missing bst_code for {entry['name']}"
+
+
+def test_wl_aliases_take_precedence_over_vor_text_aliases():
+    info = station_info("Wien Karlsplatz U")
+    assert info is not None
+    assert info.name == "Wien Karlsplatz (WL)"
+
+    numeric = station_info("490065700")
+    assert numeric is not None
+    assert numeric.name == "Wien Karlsplatz U (VOR)"
+
+    vor_label = station_info("Wien Karlsplatz U (VOR)")
+    assert vor_label is not None
+    assert vor_label.name == "Wien Karlsplatz U (VOR)"

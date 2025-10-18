@@ -26,7 +26,11 @@ def main() -> int:
         print("Need at least two VOR entries", file=sys.stderr)
         return 1
 
-    pattern = re.compile(r"900\d{3}")
+    # Historically, we expected all VOR identifiers to start with "900" and be six
+    # digits long. In practice there are legitimate five digit identifiers such as
+    # "93010" which caused the validation to reject otherwise valid data. Allow
+    # either five or six digit numeric identifiers starting with "9".
+    pattern = re.compile(r"9\d{4,5}")
     for station in vor_entries:
         for key in ("bst_id", "bst_code"):
             value = station.get(key)
