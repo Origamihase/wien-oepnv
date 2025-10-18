@@ -43,18 +43,33 @@ class GTFSIssue:
 
 
 @dataclass(frozen=True)
+class CoordinateIssue:
+    """Stations whose geographic metadata appears to be malformed."""
+
+    identifier: str
+    name: str
+    reason: str
+
+
+@dataclass(frozen=True)
 class ValidationReport:
     """Summary returned by :func:`validate_stations`."""
 
     total_stations: int
     duplicates: tuple[DuplicateGroup, ...]
     alias_issues: tuple[AliasIssue, ...]
+    coordinate_issues: tuple[CoordinateIssue, ...]
     gtfs_issues: tuple[GTFSIssue, ...]
     gtfs_stop_count: int
 
     @property
     def has_issues(self) -> bool:
-        return bool(self.duplicates or self.alias_issues or self.gtfs_issues)
+        return bool(
+            self.duplicates
+            or self.alias_issues
+            or self.coordinate_issues
+            or self.gtfs_issues
+        )
 
     def to_markdown(self) -> str:
         lines = ["# Stations Validation Report", ""]
@@ -62,6 +77,7 @@ class ValidationReport:
         lines.append(f"*GTFS stops loaded*: {self.gtfs_stop_count}")
         lines.append(f"*Geographic duplicates*: {len(self.duplicates)}")
         lines.append(f"*Alias issues*: {len(self.alias_issues)}")
+        lines.append(f"*Coordinate anomalies*: {len(self.coordinate_issues)}")
         lines.append(f"*GTFS mismatches*: {len(self.gtfs_issues)}")
         lines.append("")
 
@@ -79,6 +95,14 @@ class ValidationReport:
             for alias_issue in self.alias_issues:
                 lines.append(
                     f"- {alias_issue.identifier} ({alias_issue.name}): {alias_issue.reason}"
+                )
+            lines.append("")
+
+        if self.coordinate_issues:
+            lines.append("## Coordinate anomalies")
+            for coordinate_issue in self.coordinate_issues:
+                lines.append(
+                    f"- {coordinate_issue.identifier} ({coordinate_issue.name}): {coordinate_issue.reason}"
                 )
             lines.append("")
 
@@ -105,6 +129,7 @@ def validate_stations(
     *,
     gtfs_stops_path: Path | None = None,
     decimal_places: int = 5,
+    coordinate_bounds: tuple[float, float, float, float] | None = None,
 ) -> ValidationReport:
     stations = _load_stations(stations_path)
     gtfs_stop_ids, gtfs_count = _load_gtfs_stop_ids(gtfs_stops_path)
@@ -115,12 +140,16 @@ def validate_stations(
     )
 
     alias_issues = tuple(_find_alias_issues(stations))
+    coordinate_issues = tuple(
+        _find_coordinate_issues(stations, bounds=coordinate_bounds)
+    )
     gtfs_issues = tuple(_find_gtfs_issues(stations, gtfs_stop_ids))
 
     return ValidationReport(
         total_stations=len(stations),
         duplicates=duplicates,
         alias_issues=alias_issues,
+        coordinate_issues=coordinate_issues,
         gtfs_issues=gtfs_issues,
         gtfs_stop_count=gtfs_count,
     )
@@ -187,6 +216,14 @@ def _find_duplicate_coordinate_groups(
 def _extract_float(value: object) -> float | None:
     if isinstance(value, (int, float)):
         return float(value)
+    if isinstance(value, str):
+        token = value.strip()
+        if not token:
+            return None
+        try:
+            return float(token)
+        except ValueError:
+            return None
     return None
 
 
@@ -265,6 +302,45 @@ def _find_alias_issues(
                 name=name or "<unknown>",
                 reason=f"missing required aliases: {missing_text}",
             )
+
+
+def _find_coordinate_issues(
+    stations: Sequence[Mapping[str, object]],
+    *,
+    bounds: tuple[float, float, float, float] | None,
+) -> Iterator[CoordinateIssue]:
+    if bounds is None:
+        min_lat, max_lat, min_lon, max_lon = (47.0, 48.8, 15.4, 17.0)
+    else:
+        min_lat, max_lat, min_lon, max_lon = bounds
+
+    for entry in stations:
+        identifier = _format_identifier(entry)
+        name = str(entry.get("name", "")).strip() or "<unknown>"
+
+        latitude_value = entry.get("latitude")
+        longitude_value = entry.get("longitude")
+        latitude = _extract_float(latitude_value)
+        longitude = _extract_float(longitude_value)
+
+        missing_components: list[str] = []
+        if latitude is None:
+            missing_components.append("missing latitude")
+        if longitude is None:
+            missing_components.append("missing longitude")
+
+        if missing_components:
+            reason = ", ".join(missing_components)
+            yield CoordinateIssue(identifier=identifier, name=name, reason=reason)
+            continue
+
+        if not (min_lat <= latitude <= max_lat) or not (min_lon <= longitude <= max_lon):
+            swapped_hint = min_lat <= longitude <= max_lat and min_lon <= latitude <= max_lon
+            if swapped_hint:
+                reason = f"coordinates look swapped (lat={latitude}, lon={longitude})"
+            else:
+                reason = f"coordinates out of bounds (lat={latitude}, lon={longitude})"
+            yield CoordinateIssue(identifier=identifier, name=name, reason=reason)
 
 
 def _find_gtfs_issues(

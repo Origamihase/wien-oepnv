@@ -218,7 +218,7 @@ Die GitHub Action `.github/workflows/update-stations.yml` aktualisiert `data/sta
 
 #### Automatisierte Qualitätsberichte
 
-Nutze `python -m src.cli stations validate`, um einen Markdown-Bericht zum Stationsverzeichnis zu erzeugen. Der Standardlauf prüft Dubletten anhand der Geokoordinaten, meldet fehlende Alias-Einträge und gleicht `vor_id`-Werte mit `data/gtfs/stops.txt` ab. Über `--output docs/stations_validation_report.md` wird der Bericht persistiert und kann in CI-Pipelines mit `--fail-on-issues` als Guardrail dienen.
+Nutze `python -m src.cli stations validate`, um einen Markdown-Bericht zum Stationsverzeichnis zu erzeugen. Der Standardlauf prüft Dubletten anhand der Geokoordinaten, meldet fehlende Alias-Einträge, erkennt Koordinaten-Anomalien (z. B. vertauschte Werte oder fehlende Angaben) und gleicht `vor_id`-Werte mit `data/gtfs/stops.txt` ab. Über `--output docs/stations_validation_report.md` wird der Bericht persistiert und kann in CI-Pipelines mit `--fail-on-issues` als Guardrail dienen.
 
 ### Pendler-Whitelist
 

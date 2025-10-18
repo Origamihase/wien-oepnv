@@ -4,6 +4,7 @@
 *GTFS stops loaded*: 5
 *Geographic duplicates*: 0
 *Alias issues*: 5
+*Coordinate anomalies*: 0
 *GTFS mismatches*: 81
 
 ## Alias issues
