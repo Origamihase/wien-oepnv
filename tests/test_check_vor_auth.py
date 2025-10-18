@@ -129,7 +129,7 @@ def test_check_authentication_uses_basic_header(monkeypatch: pytest.MonkeyPatch)
     monkeypatch.setattr(module.vor, "VOR_RETRY_OPTIONS", {})
     monkeypatch.setattr(module, "session_with_retries", lambda *args, **kwargs: session)
 
-    result = module.check_authentication("900100")
+    result = module.check_authentication("490091000")
 
     assert result["authenticated"] is True
     assert session.last_request is not None
@@ -150,7 +150,7 @@ def test_check_authentication_accepts_prefixed_basic(monkeypatch: pytest.MonkeyP
     monkeypatch.setattr(module.vor, "VOR_RETRY_OPTIONS", {})
     monkeypatch.setattr(module, "session_with_retries", lambda *args, **kwargs: session)
 
-    result = module.check_authentication("900100")
+    result = module.check_authentication("490091000")
 
     assert result["authenticated"] is True
     assert session.last_request is not None

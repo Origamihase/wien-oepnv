@@ -11,26 +11,26 @@ from scripts import update_vor_stations as module
 
 def test_parse_api_stop_with_properties() -> None:
     data = {
-        "id": "900100",
+        "id": "490091000",
         "name": "Wien Aspern Nord",
         "coord": {"lat": 48.234567, "lon": 16.520123},
         "properties": [
             {"name": "municipality", "value": "Wien"},
             {"name": "shortName", "value": "Aspern Nord"},
-            {"name": "globalId", "value": "AT:900100"},
-            {"name": "gtfsStopId", "value": "900100"},
+            {"name": "globalId", "value": "AT:490091000"},
+            {"name": "gtfsStopId", "value": "490091000"},
         ],
     }
 
-    stop = module._parse_api_stop(data, wanted_id="900100")
+    stop = module._parse_api_stop(data, wanted_id="490091000")
 
     assert stop is not None
-    assert stop.vor_id == "900100"
+    assert stop.vor_id == "490091000"
     assert stop.name == "Wien Aspern Nord"
     assert stop.municipality == "Wien"
     assert stop.short_name == "Aspern Nord"
-    assert stop.global_id == "AT:900100"
-    assert stop.gtfs_stop_id == "900100"
+    assert stop.global_id == "AT:490091000"
+    assert stop.gtfs_stop_id == "490091000"
     assert pytest.approx(stop.latitude or 0.0, rel=1e-6) == 48.234567
     assert pytest.approx(stop.longitude or 0.0, rel=1e-6) == 16.520123
 
@@ -76,18 +76,18 @@ class _FakeSession:
 
 def test_fetch_vor_stops_from_api_uses_fallback(monkeypatch: pytest.MonkeyPatch) -> None:
     payloads = {
-        "900100": (
+        "490091000": (
             200,
             {
                 "StopLocation": {
-                    "id": "900100",
+                    "id": "490091000",
                     "name": "Wien Aspern Nord",
                     "coord": {"lat": 48.234567, "lon": 16.520123},
                     "municipality": "Wien",
                 }
             },
         ),
-        "900200": (500, {}),
+        "430470800": (500, {}),
     }
 
     fake_session = _FakeSession(payloads)
@@ -97,17 +97,17 @@ def test_fetch_vor_stops_from_api_uses_fallback(monkeypatch: pytest.MonkeyPatch)
     monkeypatch.setattr(module.vor_provider, "VOR_ACCESS_ID", "token", raising=False)
 
     fallback = {
-        "900200": module.VORStop(
-            vor_id="900200",
+        "430470800": module.VORStop(
+            vor_id="430470800",
             name="Fallback Stop",
             latitude=None,
             longitude=None,
         )
     }
 
-    stops = module.fetch_vor_stops_from_api(["900100", "900200"], fallback=fallback)
+    stops = module.fetch_vor_stops_from_api(["490091000", "430470800"], fallback=fallback)
 
-    assert [stop.vor_id for stop in stops] == ["900100", "900200"]
+    assert [stop.vor_id for stop in stops] == ["490091000", "430470800"]
     assert any("location.name" in call[0] for call in fake_session.calls)
     assert module.vor_provider.refresh_access_credentials() == "token"
 
