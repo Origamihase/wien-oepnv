@@ -27,10 +27,53 @@
       "Baden",
       "Bf  H1",
       "430310100",
-      "Baden bei Wien Bahnhof"
+      "Baden bei Wien Bahnhof",
+      "Baden bei Wien",
+      "Bahnhof Baden",
+      "Baden Bahnhof"
     ],
     "latitude": 48.00406,
     "longitude": 16.242735
+  },
+  {
+    "bst_id": 172,
+    "bst_code": "Bl",
+    "name": "Bruck an der Leitha",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430320900",
+    "aliases": [
+      "Bruck an der Leitha",
+      "Bl",
+      "430320900",
+      "Bruck an der Leitha Bahnhof",
+      "Bruck/Leitha",
+      "Bahnhof Bruck an der Leitha",
+      "Bruck (Leitha)"
+    ],
+    "latitude": 48.019036,
+    "longitude": 16.780721
+  },
+  {
+    "bst_id": 252,
+    "bst_code": "Bu",
+    "name": "Brunn am Gebirge",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430325500",
+    "aliases": [
+      "Brunn am Gebirge",
+      "Bu",
+      "430325500",
+      "Brunn am Gebirge Bahnhof",
+      "Bahnhof Brunn am Gebirge",
+      "Brunn/Gebirge",
+      "Brunn am Geb."
+    ],
+    "latitude": 48.10509,
+    "longitude": 16.288094
   },
   {
     "bst_id": 253,
@@ -182,7 +225,13 @@
       "Schwechat Flughafen Wien Bahnhof",
       "Flughafen Wien Bahnhof",
       "430470800",
-      "Flughafen Wien Bahnhof (VOR)"
+      "Bahnhof Flughafen Wien",
+      "Flughafen Wien-Schwechat",
+      "Flughafen Schwechat",
+      "Vienna International Airport",
+      "VIE Airport",
+      "Flughafen Wien (VIE)",
+      "Flughafen Wien (Schwechat)"
     ],
     "latitude": 48.120027,
     "longitude": 16.561749
@@ -199,10 +248,34 @@
       "Gänserndorf",
       "Gae",
       "430362200",
-      "Gänserndorf Bahnhof"
+      "Gänserndorf Bahnhof",
+      "Bahnhof Gänserndorf",
+      "Gaenserndorf"
     ],
     "latitude": 48.340239,
     "longitude": 16.732314
+  },
+  {
+    "bst_id": 777,
+    "bst_code": "Hai H1",
+    "name": "Hainburg an der Donau Personenbahnhof",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430368600",
+    "aliases": [
+      "Hainburg an der Donau Personenbahnhof",
+      "Hai H1",
+      "430368600",
+      "Hainburg/Donau",
+      "Hainburg an der Donau",
+      "Bahnhof Hainburg/Donau",
+      "Hainburg Personenbahnhof",
+      "Hainburg (Donau)",
+      "Bahnhof Hainburg an der Donau"
+    ],
+    "latitude": 48.14893,
+    "longitude": 16.939866
   },
   {
     "bst_id": 779,
@@ -443,6 +516,28 @@
     "longitude": 16.334586
   },
   {
+    "bst_id": 1020,
+    "bst_code": "Ken H1",
+    "name": "Klosterneuburg-Kierling",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430395200",
+    "aliases": [
+      "Klosterneuburg-Kierling",
+      "Ken H1",
+      "430395200",
+      "Klosterneuburg Kierling Bahnhof",
+      "Klosterneuburg",
+      "Bahnhof Klosterneuburg-Kierling",
+      "Klosterneuburg Kierling",
+      "Bahnhof Klosterneuburg",
+      "Klosterneuburg Bahnhof"
+    ],
+    "latitude": 48.309738,
+    "longitude": 16.326316
+  },
+  {
     "bst_id": 1059,
     "bst_code": "Kls",
     "name": "Wien Kaiserebersdorf",
@@ -473,10 +568,29 @@
       "Korneuburg",
       "Ko",
       "430396300",
-      "Korneuburg Bahnhof"
+      "Korneuburg Bahnhof",
+      "Bahnhof Korneuburg"
     ],
     "latitude": 48.343574,
     "longitude": 16.328474
+  },
+  {
+    "bst_id": 1103,
+    "bst_code": "Ktt",
+    "name": "Kittsee",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "410597200",
+    "aliases": [
+      "Kittsee",
+      "Ktt",
+      "410597200",
+      "Kittsee Bahnhof",
+      "Bahnhof Kittsee"
+    ],
+    "latitude": 48.081322,
+    "longitude": 17.071369
   },
   {
     "bst_id": 1161,
@@ -526,7 +640,11 @@
       "Perchtoldsdorf",
       "Lg  H1",
       "430450000",
-      "Perchtoldsdorf Bahnhof"
+      "Perchtoldsdorf Bahnhof",
+      "Bahnhof Perchtoldsdorf",
+      "Perchtoldsdorf bei Wien",
+      "P'dorf",
+      "P'dorf (lokale Abkürzung)"
     ],
     "latitude": 48.123023,
     "longitude": 16.285559
@@ -547,6 +665,24 @@
     ],
     "latitude": 48.277593,
     "longitude": 16.450691
+  },
+  {
+    "bst_id": 1318,
+    "bst_code": "Mac",
+    "name": "Marchegg",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430413200",
+    "aliases": [
+      "Marchegg",
+      "Mac",
+      "430413200",
+      "Marchegg Bahnhof",
+      "Bahnhof Marchegg"
+    ],
+    "latitude": 48.249798,
+    "longitude": 16.917519
   },
   {
     "bst_id": 1348,
@@ -616,6 +752,25 @@
     "vor_id": "490109100"
   },
   {
+    "bst_id": 1370,
+    "bst_code": "Mb",
+    "name": "Mistelbach",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430420200",
+    "aliases": [
+      "Mistelbach",
+      "Mb",
+      "430420200",
+      "Bahnhof Mistelbach",
+      "Mistelbach Bahnhof",
+      "Mistelbach (S-Bahn)"
+    ],
+    "latitude": 48.565949,
+    "longitude": 16.565115
+  },
+  {
     "bst_id": 1377,
     "bst_code": "Md",
     "name": "Mödling",
@@ -627,7 +782,9 @@
       "Mödling",
       "Md",
       "430423900",
-      "Mödling Bahnhof"
+      "Mödling Bahnhof",
+      "Bahnhof Mödling",
+      "Moedling"
     ],
     "latitude": 48.085628,
     "longitude": 16.295474
@@ -657,7 +814,15 @@
     "source": "oebb",
     "vor_id": "900300",
     "aliases": [
-      "Wiener Neustadt Hbf"
+      "Wiener Neustadt Hbf",
+      "Wiener Neustadt Hauptbahnhof",
+      "Wr. Neustadt Hbf",
+      "Wr Neustadt Hbf",
+      "Wr. Neustadt",
+      "Wiener Neustadt",
+      "Bahnhof Wiener Neustadt",
+      "Wiener Neustadt Bahnhof",
+      "WN Hbf"
     ],
     "latitude": 47.810647,
     "longitude": 16.248002
@@ -691,10 +856,31 @@
       "Neulengbach",
       "Nl",
       "430433700",
-      "Neulengbach Bahnhof"
+      "Neulengbach Bahnhof",
+      "Bahnhof Neulengbach"
     ],
     "latitude": 48.199504,
     "longitude": 15.892875
+  },
+  {
+    "bst_id": 1568,
+    "bst_code": "Ns",
+    "name": "Neusiedl am See",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "410435100",
+    "aliases": [
+      "Neusiedl am See",
+      "Ns",
+      "410435100",
+      "Neusiedl am See Bahnhof",
+      "Bahnhof Neusiedl am See",
+      "Neusiedl/See",
+      "Neusiedl Bahnhof"
+    ],
+    "latitude": 47.955824,
+    "longitude": 16.823788
   },
   {
     "bst_id": 1584,
@@ -741,6 +927,24 @@
     "longitude": 16.383955
   },
   {
+    "bst_id": 1617,
+    "bst_code": "Oh",
+    "name": "Hollabrunn",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430378000",
+    "aliases": [
+      "Hollabrunn",
+      "Oh",
+      "430378000",
+      "Hollabrunn Bahnhof",
+      "Bahnhof Hollabrunn"
+    ],
+    "latitude": 48.562964,
+    "longitude": 16.07229
+  },
+  {
     "bst_id": 1620,
     "bst_code": "Ok",
     "name": "Wien Ottakring",
@@ -777,6 +981,24 @@
     "vor_id": "490016600"
   },
   {
+    "bst_id": 1660,
+    "bst_code": "Par",
+    "name": "Parndorf",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "410446900",
+    "aliases": [
+      "Parndorf",
+      "Par",
+      "410446900",
+      "Parndorf Bahnhof",
+      "Bahnhof Parndorf"
+    ],
+    "latitude": 47.986972,
+    "longitude": 16.870344
+  },
+  {
     "bst_id": 1669,
     "bst_code": "Pb",
     "name": "St.Pölten Hbf",
@@ -788,10 +1010,38 @@
       "St.Pölten Hbf",
       "Pb",
       "430484800",
-      "St. Pölten Hauptbahnhof"
+      "St. Pölten Hauptbahnhof",
+      "Sankt Pölten Hauptbahnhof",
+      "Bahnhof St. Pölten",
+      "St. Pölten Bahnhof",
+      "St Pölten Hbf",
+      "St. Pölten",
+      "Sankt Pölten",
+      "St Pölten",
+      "St. Pölten Hbf"
     ],
     "latitude": 48.208196,
     "longitude": 15.624034
+  },
+  {
+    "bst_id": 1718,
+    "bst_code": "Pm",
+    "name": "Tullnerbach-Pressbaum",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430506800",
+    "aliases": [
+      "Tullnerbach-Pressbaum",
+      "Pm",
+      "430506800",
+      "Tullnerbach Pressbaum Bahnhof",
+      "Bahnhof Tullnerbach-Pressbaum",
+      "Tullnerbach Pressbaum",
+      "Pressbaum-Tullnerbach"
+    ],
+    "latitude": 48.186083,
+    "longitude": 16.093271
   },
   {
     "bst_id": 1719,
@@ -825,6 +1075,27 @@
     ],
     "latitude": 48.192654,
     "longitude": 16.305327
+  },
+  {
+    "bst_id": 1905,
+    "bst_code": "Rw  H1",
+    "name": "Eichgraben-Altlengbach",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430334700",
+    "aliases": [
+      "Eichgraben-Altlengbach",
+      "Rw  H1",
+      "430334700",
+      "Eichgraben Altlengbach Bahnhof",
+      "Bahnhof Eichgraben-Altlengbach",
+      "Eichgraben Altlengbach",
+      "Eichgraben",
+      "Altlengbach-Eichgraben"
+    ],
+    "latitude": 48.17348,
+    "longitude": 15.981544
   },
   {
     "bst_id": 1969,
@@ -904,7 +1175,8 @@
       "Stockerau",
       "Su",
       "430488400",
-      "Stockerau Bahnhof"
+      "Stockerau Bahnhof",
+      "Bahnhof Stockerau"
     ],
     "latitude": 48.382308,
     "longitude": 16.213016
@@ -943,6 +1215,26 @@
     "longitude": 16.033385
   },
   {
+    "bst_id": 2262,
+    "bst_code": "Tu",
+    "name": "Tulln an der Donau",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430503400",
+    "aliases": [
+      "Tulln an der Donau",
+      "Tu",
+      "430503400",
+      "Tulln Bahnhof",
+      "Bahnhof Tulln an der Donau",
+      "Tulln/Donau",
+      "Bahnhof Tulln"
+    ],
+    "latitude": 48.32733,
+    "longitude": 16.064362
+  },
+  {
     "bst_id": 2290,
     "bst_code": "Upz",
     "name": "Purkersdorf Zentrum",
@@ -954,7 +1246,9 @@
       "Purkersdorf Zentrum",
       "Upz",
       "430460300",
-      "Purkersdorf bei Wien Zentrum Bahnhof"
+      "Purkersdorf-Zentrum",
+      "Bahnhof Purkersdorf-Zentrum",
+      "Purkersdorf Zentrum Bahnhof"
     ],
     "latitude": 48.206138,
     "longitude": 16.175774
@@ -1020,10 +1314,51 @@
       "Deutsch Wagram",
       "Wg",
       "430327900",
-      "Deutsch-Wagram Bahnhof"
+      "Deutsch-Wagram Bahnhof",
+      "Deutsch-Wagram",
+      "Bahnhof Deutsch-Wagram",
+      "Deutsch Wagram Bahnhof"
     ],
     "latitude": 48.303014,
     "longitude": 16.563982
+  },
+  {
+    "bst_id": 2449,
+    "bst_code": "Wg  H2",
+    "name": "Strasshof an der Nordbahn",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430492200",
+    "aliases": [
+      "Strasshof an der Nordbahn",
+      "Wg  H2",
+      "430492200",
+      "Strasshof Bahnhof",
+      "Bahnhof Strasshof",
+      "Strasshof",
+      "Straßhof"
+    ],
+    "latitude": 48.318476,
+    "longitude": 16.6339
+  },
+  {
+    "bst_id": 2493,
+    "bst_code": "Wof",
+    "name": "Wolfsthal",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430527100",
+    "aliases": [
+      "Wolfsthal",
+      "Wof",
+      "430527100",
+      "Wolfsthal Bahnhof",
+      "Bahnhof Wolfsthal"
+    ],
+    "latitude": 48.135554,
+    "longitude": 17.006063
   },
   {
     "bst_id": 2497,
@@ -1037,7 +1372,10 @@
       "Wolkersdorf",
       "Wol",
       "430527400",
-      "Wolkersdorf Bahnhof"
+      "Wolkersdorf Bahnhof",
+      "Bahnhof Wolkersdorf",
+      "Wolkersdorf im Weinviertel",
+      "Wolkersdorf/Weinviertel"
     ],
     "latitude": 48.378434,
     "longitude": 16.512672
@@ -1058,6 +1396,24 @@
     ],
     "latitude": 48.196654,
     "longitude": 16.337652
+  },
+  {
+    "bst_id": 1240762,
+    "bst_code": "Apo H1",
+    "name": "Parndorf Ort",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "410447300",
+    "aliases": [
+      "Parndorf Ort",
+      "Apo H1",
+      "410447300",
+      "Parndorf Ort Bahnhof",
+      "Bahnhof Parndorf Ort"
+    ],
+    "latitude": 47.992033,
+    "longitude": 16.851421
   },
   {
     "bst_id": 1251757,
@@ -1122,7 +1478,9 @@
       "Tullnerfeld",
       "Tfd",
       "430575900",
-      "Tullnerfeld Bahnhof"
+      "Tullnerfeld Bahnhof",
+      "Bahnhof Tullnerfeld",
+      "Bahnhof Tullnerfeld (Tulln)"
     ],
     "latitude": 48.29514,
     "longitude": 15.996736
@@ -1226,8 +1584,9 @@
       "Schwechat",
       "430471000",
       "Schwechat Bahnhof",
-      "Schwechat Bahnhof (VOR)",
-      "Gs"
+      "Gs",
+      "Bahnhof Schwechat",
+      "Schwechat Stadt"
     ]
   },
   {
