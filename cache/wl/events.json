@@ -387,7 +387,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "13A: Demonstration",
-    "description": "Die Linie 13 A fährt derzeit nicht zwischen Neubaugasse U und Burggasse, Neubaugasse. Ersatzweise benützen Sie die Linien U6 und 48 A. Die Störung dauert voraussichtlich bis 19:00 Uhr. Grund dafür ist eine Demonstration im Bereich Neubaugasse U.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 13 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4553d124bef92fd9958492a539b47367d0f7331a3f7df49bbca396491639aec3",
     "pubDate": "2025-10-18T12:35:00+02:00",
@@ -418,30 +418,6 @@
     "starts_at": "2025-10-18T13:40:00+02:00",
     "ends_at": "2025-10-18T23:55:00+02:00",
     "_identity": "wl|störung|L=62|D=2025-10-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "14A: Rettungseinsatz Betrieb ab Pilgramgasse",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 14 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac",
-    "pubDate": "2025-10-18T13:50:00+02:00",
-    "starts_at": "2025-10-18T13:50:00+02:00",
-    "ends_at": "2025-10-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=14A|D=2025-10-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "14A: Rettungseinsatz Umleitung ab Matzleinsdorfer Platz zur Pilgramgasse über 13A",
-    "description": "Rettungseinsatz Umleitung ab Matzleinsdorfer Platz zur Pilgramgasse über 13 A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c23ae9346a76698555b91aa55d73f6adb85dd9edf1b013e47ac31180f7e23416",
-    "pubDate": "2025-10-18T14:11:57+02:00",
-    "starts_at": "2025-10-18T14:11:57+02:00",
-    "ends_at": "2025-10-18T15:11:00+02:00",
-    "_identity": "wl|störung|L=14A|D=2025-10-18"
   },
   {
     "source": "Wiener Linien",
@@ -518,30 +494,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9a3191136d8bad796a52ae693389b95d11840d24bc4efea2aa060f02844dccba",
-    "pubDate": "2025-10-18T14:33:27+02:00",
-    "starts_at": "2025-10-18T14:33:27+02:00",
-    "ends_at": "2025-10-18T15:33:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fremdunfall Betrieb ab Johann-Nepomuk-Berger-Platz",
-    "description": "Fremdunfall Betrieb ab Johann-Nepomuk-Berger-Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a0a8e7fbd2196a57460bd49eaf24e2cea4c7a8b724b1153be9766b04b97f32d9",
-    "pubDate": "2025-10-18T14:33:56+02:00",
-    "starts_at": "2025-10-18T14:33:56+02:00",
-    "ends_at": "2025-10-18T15:33:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Fahrtbehinderung wegen Demonstration",
     "description": "Fahrtbehinderung wegen Demonstration",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -586,18 +538,6 @@
     "starts_at": "2025-10-18T14:49:37+02:00",
     "ends_at": "2025-10-18T22:00:00+02:00",
     "_identity": "wl|störung|L=2|D=2025-10-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Rettungseinsatz",
-    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Rennbahnweg.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
-    "pubDate": "2025-10-18T14:50:00+02:00",
-    "starts_at": "2025-10-18T14:50:00+02:00",
-    "ends_at": "2025-10-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2025-10-18"
   },
   {
     "source": "Wiener Linien",
@@ -682,5 +622,65 @@
     "starts_at": "2025-10-18T14:58:47+02:00",
     "ends_at": "2025-10-18T22:00:00+02:00",
     "_identity": "wl|störung|L=D|D=2025-10-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Demonstration Betrieb ab Schwarzenbergplatz",
+    "description": "Demonstration Betrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c026b000b202d288cf3bec2c812e718351d4c37b0196152e41c269e70771cadc",
+    "pubDate": "2025-10-18T15:00:14+02:00",
+    "starts_at": "2025-10-18T15:00:14+02:00",
+    "ends_at": "2025-10-18T22:00:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-10-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31A: Signalstörung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 31 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "00edbbf20abc1514ffbb7b671cc5d4c7cd52e2d79edd8d76d0aa40602859c1f7",
+    "pubDate": "2025-10-18T15:25:00+02:00",
+    "starts_at": "2025-10-18T15:25:00+02:00",
+    "ends_at": "2025-10-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=31A|D=2025-10-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Verkehrsunfall",
+    "description": "Die Linie 14 A fährt derzeit nur zwischen Neubaugasse und Laxenburger Straße, Gudrunstraße. Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Keplerplatz U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "45135f0f9023593102b885c7d89c0c028d3a4d83421c93a8a39180b147612974",
+    "pubDate": "2025-10-18T15:30:00+02:00",
+    "starts_at": "2025-10-18T15:30:00+02:00",
+    "ends_at": "2025-10-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2025-10-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8040dc868c9f595d150005c78624ba19af61d6d75a2a097f9a394e84bc1f1efc",
+    "pubDate": "2025-10-18T15:36:05+02:00",
+    "starts_at": "2025-10-18T15:36:05+02:00",
+    "ends_at": "2025-10-18T16:35:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Verkehrsunfall Betrieb ab Laxenburger Straße/Gudrunstraße",
+    "description": "Verkehrsunfall Betrieb ab Laxenburger Straße/Gudrunstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8a82fe8912d2b6e9695d386e264bf95d48203a9d7b5c141d22e910ba2a0370f3",
+    "pubDate": "2025-10-18T15:36:34+02:00",
+    "starts_at": "2025-10-18T15:36:34+02:00",
+    "ends_at": "2025-10-18T16:35:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-18"
   }
 ]
