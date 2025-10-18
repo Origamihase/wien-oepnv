@@ -36,7 +36,7 @@ Der Feed-Bau folgt einem klaren Ablauf:
 | --------------------- | ------------------------------------------------------------------------------------------------ |
 | `src/`                | Feed-Bau, Provider-Adapter, Utilities (Caching, Logging, Textaufbereitung, Stationslogik).       |
 | `scripts/`            | Kommandozeilen-Werkzeuge für Cache-Updates, Stationspflege sowie API-Hilfsfunktionen.            |
-| `cache/`              | Versionierte Provider-Zwischenspeicher (`wl`, `oebb`, `vor`) für reproduzierbare Feed-Builds.    |
+| `cache/`              | Versionierte Provider-Zwischenspeicher (`wl`, `oebb`, `vor`, `baustellen`) für reproduzierbare Feed-Builds. |
 | `data/`               | Stationsverzeichnis, GTFS-Testdaten und Hilfslisten (z. B. Pendler-Whitelist).                   |
 | `docs/`               | Audit-Berichte, Referenzen, Beispiel-Feeds und das offizielle VAO/VOR-API-Handbuch.              |
 | `.github/workflows/`  | Automatisierte Jobs für Cache-Updates, Stationspflege, Feed-Erzeugung und Tests.                |
@@ -77,6 +77,7 @@ Der Feed-Bau folgt einem klaren Ablauf:
 | `PROVIDER_TIMEOUT`       | Globales Timeout für Netzwerkprovider (Standard 25 Sekunden). Per Provider via `PROVIDER_TIMEOUT_<NAME>` oder `<NAME>_TIMEOUT` anpassbar. |
 | `PROVIDER_MAX_WORKERS`   | Anzahl paralleler Worker (0 = automatisch). Feiner steuerbar über `PROVIDER_MAX_WORKERS_<GRUPPE>` bzw. `<GRUPPE>_MAX_WORKERS`. |
 | `WL_ENABLE` / `OEBB_ENABLE` / `VOR_ENABLE` | Aktiviert bzw. deaktiviert die einzelnen Provider (Standard: aktiv). |
+| `BAUSTELLEN_ENABLE`      | Steuert den neuen Baustellen-Provider (Default: aktiv, nutzt Stadt-Wien-OGD bzw. Fallback-Daten). |
 | `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`, `LOG_FORMAT` | Steuerung der Logging-Ausgabe (`log/errors.log`, `log/diagnostics.log`). |
 | `STATE_PATH`, `STATE_RETENTION_DAYS` | Pfad & Aufbewahrung für `data/first_seen.json`.                      |
 | `WIEN_OEPNV_CACHE_PRETTY` | Steuert die Formatierung der Cache-Dateien (`1` = gut lesbar, `0` = kompakt). |
@@ -99,7 +100,7 @@ verwendest.
 
 ## Provider-spezifische Workflows
 
-Der Meldungsfeed sammelt ausschließlich offizielle Störungs- und Hinweisinformationen der Wiener Linien (WL), der Verkehrsverbund Ost-Region GmbH (VOR) und der ÖBB.
+Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wiener Linien (WL), der Verkehrsverbund Ost-Region GmbH (VOR), der ÖBB sowie ergänzende Baustelleninformationen der Stadt Wien.
 
 ### Wiener Linien (WL)
 
@@ -122,6 +123,13 @@ Der Meldungsfeed sammelt ausschließlich offizielle Störungs- und Hinweisinform
   Cache-Aktualisierungen werden bei ausgeschöpftem Limit übersprungen.
 - **Unterstützung**: Für lokale Experimente stehen Hilfsskripte wie `scripts/check_vor_auth.py` oder
   `scripts/fetch_vor_haltestellen.py` bereit.
+
+### Stadt Wien – Baustellen
+
+- **Quelle**: Open-Government-Data-Baustellenfeed der Stadt Wien (`BAUSTELLEN_DATA_URL`, Default: offizieller WFS-Endpoint).
+- **Cache**: `cache/baustellen/events.json`, gepflegt via `scripts/update_baustellen_cache.py` und eigener GitHub-Action (optional).
+- **Fallback**: Schlägt der Remote-Abruf fehl (z. B. wegen Rate-Limits), nutzt das Skript `data/samples/baustellen_sample.geojson` als Grunddatensatz, damit der Feed konsistent bleibt.
+- **Kontext**: Die Meldungen enthalten Metadaten zu Bezirk, Maßnahme, Zeitraum sowie geokodierte Adressen und ergänzen damit ÖPNV-Störungsmeldungen um bauzeitliche Einschränkungen.
 
 ## Feed-Ausführung lokal
 
