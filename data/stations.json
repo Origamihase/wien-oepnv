@@ -818,13 +818,9 @@
       "Wiener Neustadt Hauptbahnhof",
       "Wiener Neustadt Hauptbahnhof (VOR)",
       "Nb",
-      "Wiener Neustadt Hbf",
       "Wr. Neustadt Hbf",
       "Wr Neustadt Hbf",
       "Wr. Neustadt",
-      "Wiener Neustadt",
-      "Bahnhof Wiener Neustadt",
-      "Wiener Neustadt Bahnhof",
       "WN Hbf",
       "430521000",
       "900300"
@@ -1785,5 +1781,45 @@
     "latitude": 48.20826,
     "longitude": 16.37327,
     "vor_id": "490132000"
+  },
+  {
+    "bst_id": "900300",
+    "bst_code": "900300",
+    "name": "Wiener Neustadt Hbf",
+    "in_vienna": false,
+    "pendler": true,
+    "source": "vor",
+    "vor_id": "900300",
+    "aliases": [
+      "Wiener Neustadt Hauptbahnhof",
+      "Wiener Neustadt Hauptbahnhof (VOR)",
+      "Wiener Neustadt Hbf",
+      "Wiener Neustadt",
+      "Wiener Neustadt Bahnhof",
+      "Bahnhof Wiener Neustadt",
+      "Wr. Neustadt Hbf",
+      "Wr. Neustadt",
+      "900300",
+      "430521000"
+    ],
+    "latitude": 47.811304,
+    "longitude": 16.23362
+  },
+  {
+    "bst_id": "900100",
+    "bst_code": "900100",
+    "name": "Wien Aspern Nord",
+    "in_vienna": true,
+    "pendler": false,
+    "source": "vor",
+    "vor_id": "490091000",
+    "aliases": [
+      "Wien Aspern Nord",
+      "Aspern Nord",
+      "900100",
+      "490091000"
+    ],
+    "latitude": 48.234567,
+    "longitude": 16.520123
   }
 ]
