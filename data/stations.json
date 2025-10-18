@@ -503,29 +503,6 @@
     "source": "oebb"
   },
   {
-    "bst_id": 926,
-    "bst_code": "Hz",
-    "name": "Wien Mitte-Landstraße",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490074300",
-    "aliases": [
-      "Wien Mitte-Landstraße",
-      "Hz",
-      "490074300",
-      "Wien Mitte",
-      "Landstraße",
-      "Landstrasse",
-      "Wien Mitte Landstraße",
-      "Wien Mitte Landstrasse",
-      "Bahnhof Wien Mitte",
-      "Bahnhof Wien Mitte-Landstraße"
-    ],
-    "latitude": 48.206048,
-    "longitude": 16.384584,
-    "source": "oebb"
-  },
-  {
     "bst_id": 934,
     "bst_code": "Id",
     "name": "Wien Blumental",
@@ -1310,27 +1287,6 @@
     "source": "oebb"
   },
   {
-    "bst_id": 2393,
-    "bst_code": "Wbf",
-    "name": "Wien Hauptbahnhof",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490134900",
-    "aliases": [
-      "Wien Hauptbahnhof",
-      "Wbf",
-      "490134900",
-      "Wien Hbf",
-      "Bahnhof Wien Hauptbahnhof",
-      "Vienna Hauptbahnhof",
-      "Vienna Central Station",
-      "Hauptbahnhof Wien"
-    ],
-    "latitude": 48.185184,
-    "longitude": 16.376413,
-    "source": "oebb"
-  },
-  {
     "bst_id": 2396,
     "bst_code": "Wbf H2",
     "name": "Wien Haidestraße",
@@ -1632,52 +1588,79 @@
     "source": "oebb"
   },
   {
+    "name": "Wien Hauptbahnhof (VOR)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490134900",
+    "latitude": 48.185184,
+    "longitude": 16.376413,
+    "aliases": [
+      "490134900",
+      "Wien Hauptbahnhof"
+    ],
+    "source": "vor",
+    "bst_id": "900100",
+    "bst_code": "900100"
+  },
+  {
     "name": "Wien Karlsplatz U (VOR)",
     "in_vienna": true,
     "pendler": false,
     "vor_id": "490065700",
-    "aliases": [
-      "Wien Karlsplatz U",
-      "VOR-KAR",
-      "490065700"
-    ],
     "latitude": 48.200888,
     "longitude": 16.368907,
+    "aliases": [
+      "490065700",
+      "Wien Karlsplatz U"
+    ],
     "source": "vor",
-    "bst_id": 490065700,
-    "bst_code": "VOR-KAR"
+    "bst_id": "900101",
+    "bst_code": "900101"
+  },
+  {
+    "name": "Wien Mitte-Landstraße (VOR)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490074300",
+    "latitude": 48.206048,
+    "longitude": 16.384584,
+    "aliases": [
+      "490074300",
+      "Wien Mitte-Landstraße"
+    ],
+    "source": "vor",
+    "bst_id": "900102",
+    "bst_code": "900102"
   },
   {
     "name": "Wien Schottentor U (VOR)",
     "in_vienna": true,
     "pendler": false,
     "vor_id": "490118400",
-    "aliases": [
-      "Wien Schottentor U",
-      "VOR-SCH",
-      "490118400"
-    ],
     "latitude": 48.214489,
     "longitude": 16.361905,
+    "aliases": [
+      "490118400",
+      "Wien Schottentor U"
+    ],
     "source": "vor",
-    "bst_id": 490118400,
-    "bst_code": "VOR-SCH"
+    "bst_id": "900103",
+    "bst_code": "900103"
   },
   {
     "name": "Wien Stephansplatz U (VOR)",
     "in_vienna": true,
     "pendler": false,
     "vor_id": "490132000",
-    "aliases": [
-      "Wien Stephansplatz U",
-      "VOR-STE",
-      "490132000"
-    ],
     "latitude": 48.208088,
     "longitude": 16.371604,
+    "aliases": [
+      "490132000",
+      "Wien Stephansplatz U"
+    ],
     "source": "vor",
-    "bst_id": 490132000,
-    "bst_code": "VOR-STE"
+    "bst_id": "900104",
+    "bst_code": "900104"
   },
   {
     "name": "Wien Karlsplatz (WL)",
