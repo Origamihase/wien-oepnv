@@ -310,7 +310,7 @@ def _find_coordinate_issues(
     bounds: tuple[float, float, float, float] | None,
 ) -> Iterator[CoordinateIssue]:
     if bounds is None:
-        min_lat, max_lat, min_lon, max_lon = (47.0, 48.8, 15.4, 17.0)
+        min_lat, max_lat, min_lon, max_lon = (47.0, 48.8, 15.4, 17.2)
     else:
         min_lat, max_lat, min_lon, max_lon = bounds
 
