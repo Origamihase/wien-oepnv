@@ -36,3 +36,9 @@
 - Testlauf mit bewusst gesetztem Fallback-Token `VAO`; die API antwortete mit `HTTP 401`, es wurden keine Events geliefert (`success = false`).【F:log/2025-10-19_vor_api_test.md†L1-L7】
 - Trotz Fehlers erhöhte sich der Tageszähler für den 15. Oktober 2025 von 2 auf 4 (`delta = 2`).【F:log/2025-10-19_vor_api_test.md†L1-L7】【F:data/vor_request_count.json†L1-L1】
 - Schlussfolgerung: Ohne gültigen `VOR_ACCESS_ID`-Schlüssel bleiben Abrufe erfolglos, verbrauchen aber dennoch das Request-Kontingent; ein produktiver Token ist daher zwingend erforderlich.【F:scripts/test_vor_api.py†L102-L149】
+
+## Update 21. Oktober 2025
+
+- GitHub Actions Workflow `test-vor-api.yml` lief mit gültigem Secret `VOR_ACCESS_ID` und Profil `d1`; der Endpunkt `https://verkehrsauskunft.vor.at/bin/mgate.exe` antwortete mit `HTTP 200` und lieferte drei Events (`success = true`).【F:log/2025-10-21_vor_api_test.md†L1-L22】
+- Die Skriptausgabe meldete eine Laufzeit von 482 ms sowie eine Tageszähler-Erhöhung von 4 auf 5 (`delta = +1`).【F:log/2025-10-21_vor_api_test.md†L1-L22】【F:data/vor_request_count.json†L1-L1】
+- Damit ist bestätigt, dass der Workflow bei korrekten Zugangsdaten erfolgreich gegen die VOR API testen kann; Folgeläufe können unverändert via `python scripts/test_vor_api.py --once --profile d1` reproduziert werden.【F:log/2025-10-21_vor_api_test.md†L1-L31】【F:scripts/test_vor_api.py†L162-L181】
