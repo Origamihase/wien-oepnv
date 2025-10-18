@@ -4,35 +4,58 @@
 <title>ÖPNV Störungen Wien &amp; Umgebung</title>
 <link>https://github.com/Origamihase/wien-oepnv</link>
 <description>Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen</description>
-<lastBuildDate>Sat, 18 Oct 2025 13:37:32 +0000</lastBuildDate>
+<lastBuildDate>Sat, 18 Oct 2025 14:12:43 +0000</lastBuildDate>
 <ttl>15</ttl>
 <item>
-<title><![CDATA[Wiener Neustadt-Gutenstein / Puchberg/Schneeberg]]></title>
-<link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-<guid>https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;825091</guid>
-<pubDate>Sat, 18 Oct 2025 13:17:19 +0000</pubDate>
-<ext:first_seen>Sat, 18 Oct 2025 13:37:32 +0000</ext:first_seen>
-<ext:starts_at>Sat, 18 Oct 2025 13:17:19 +0000</ext:starts_at>
-<description><![CDATA[Wegen einer Stellwerkstörung am Bahnhof waren zwischen Wöllersdorf/Piesting Bahnhof und Wr.Neustadt Hbf bzw. zwischen Wr.Neustadt Hbf und Pfennigbach …<br>[Seit 18.10.2025]]]></description>
-<content:encoded><![CDATA[Wegen einer Stellwerkstörung am Bahnhof waren zwischen Wöllersdorf/Piesting Bahnhof und Wr.Neustadt Hbf bzw. zwischen Wr.Neustadt Hbf und Pfennigbach …<br/>[Seit 18.10.2025]]]></content:encoded>
+<title><![CDATA[13A: Verkehrsunfall Betrieb ab Laxenburger Straße/Gudrunstraße]]></title>
+<link>https://www.wienerlinien.at/ogd_realtime</link>
+<guid>8a82fe8912d2b6e9695d386e264bf95d48203a9d7b5c141d22e910ba2a0370f3</guid>
+<pubDate>Sat, 18 Oct 2025 13:36:34 +0000</pubDate>
+<ext:first_seen>Sat, 18 Oct 2025 14:12:43 +0000</ext:first_seen>
+<ext:starts_at>Sat, 18 Oct 2025 13:36:34 +0000</ext:starts_at>
+<ext:ends_at>Sat, 18 Oct 2025 14:35:00 +0000</ext:ends_at>
+<description><![CDATA[Verkehrsunfall Betrieb ab Laxenburger Straße/Gudrunstraße<br>[Seit 18.10.2025]]]></description>
+<content:encoded><![CDATA[Verkehrsunfall Betrieb ab Laxenburger Straße/Gudrunstraße<br/>[Seit 18.10.2025]]]></content:encoded>
 </item>
 <item>
-<title><![CDATA[D: Demonstration Einstieg Schottenring 19]]></title>
+<title><![CDATA[14A: Verkehrsunfall]]></title>
 <link>https://www.wienerlinien.at/ogd_realtime</link>
-<guid>eed0f207dbf7a609d46a440765093321964dc85fdd19259e6e192e5797128ce4</guid>
-<pubDate>Sat, 18 Oct 2025 12:58:47 +0000</pubDate>
-<ext:first_seen>Sat, 18 Oct 2025 13:37:32 +0000</ext:first_seen>
-<ext:starts_at>Sat, 18 Oct 2025 12:58:47 +0000</ext:starts_at>
+<guid>45135f0f9023593102b885c7d89c0c028d3a4d83421c93a8a39180b147612974</guid>
+<pubDate>Sat, 18 Oct 2025 13:30:00 +0000</pubDate>
+<ext:first_seen>Sat, 18 Oct 2025 14:12:43 +0000</ext:first_seen>
+<ext:starts_at>Sat, 18 Oct 2025 13:30:00 +0000</ext:starts_at>
+<ext:ends_at>Sat, 18 Oct 2025 21:55:00 +0000</ext:ends_at>
+<description><![CDATA[Die Linie 14 A fährt derzeit nur zwischen Neubaugasse und Laxenburger Straße, Gudrunstraße. Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist ein …<br>[Seit 18.10.2025]]]></description>
+<content:encoded><![CDATA[Die Linie 14 A fährt derzeit nur zwischen Neubaugasse und Laxenburger Straße, Gudrunstraße. Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist ein …<br/>[Seit 18.10.2025]]]></content:encoded>
+</item>
+<item>
+<title><![CDATA[31A: Signalstörung]]></title>
+<link>https://www.wienerlinien.at/ogd_realtime</link>
+<guid>00edbbf20abc1514ffbb7b671cc5d4c7cd52e2d79edd8d76d0aa40602859c1f7</guid>
+<pubDate>Sat, 18 Oct 2025 13:25:00 +0000</pubDate>
+<ext:first_seen>Sat, 18 Oct 2025 14:12:43 +0000</ext:first_seen>
+<ext:starts_at>Sat, 18 Oct 2025 13:25:00 +0000</ext:starts_at>
+<ext:ends_at>Sat, 18 Oct 2025 21:55:00 +0000</ext:ends_at>
+<description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 31 A zu unterschiedlichen Intervallen.<br>[Seit 18.10.2025]]]></description>
+<content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 31 A zu unterschiedlichen Intervallen.<br/>[Seit 18.10.2025]]]></content:encoded>
+</item>
+<item>
+<title><![CDATA[D: Demonstration Betrieb ab Schwarzenbergplatz]]></title>
+<link>https://www.wienerlinien.at/ogd_realtime</link>
+<guid>c026b000b202d288cf3bec2c812e718351d4c37b0196152e41c269e70771cadc</guid>
+<pubDate>Sat, 18 Oct 2025 13:00:14 +0000</pubDate>
+<ext:first_seen>Sat, 18 Oct 2025 14:12:43 +0000</ext:first_seen>
+<ext:starts_at>Sat, 18 Oct 2025 13:00:14 +0000</ext:starts_at>
 <ext:ends_at>Sat, 18 Oct 2025 20:00:00 +0000</ext:ends_at>
-<description><![CDATA[Demonstration Einstieg Schottenring 19<br>[Seit 18.10.2025]]]></description>
-<content:encoded><![CDATA[Demonstration Einstieg Schottenring 19<br/>[Seit 18.10.2025]]]></content:encoded>
+<description><![CDATA[Demonstration Betrieb ab Schwarzenbergplatz<br>[Seit 18.10.2025]]]></description>
+<content:encoded><![CDATA[Demonstration Betrieb ab Schwarzenbergplatz<br/>[Seit 18.10.2025]]]></content:encoded>
 </item>
 <item>
 <title><![CDATA[1: Demonstration Betrieb ab Resselgasse]]></title>
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid>a3904226e11e2eaa01222749b08821d53ed1cdb9f1a41de4e9b274034872a123</guid>
 <pubDate>Sat, 18 Oct 2025 12:56:52 +0000</pubDate>
-<ext:first_seen>Sat, 18 Oct 2025 13:37:32 +0000</ext:first_seen>
+<ext:first_seen>Sat, 18 Oct 2025 14:12:43 +0000</ext:first_seen>
 <ext:starts_at>Sat, 18 Oct 2025 12:56:52 +0000</ext:starts_at>
 <ext:ends_at>Sat, 18 Oct 2025 20:00:00 +0000</ext:ends_at>
 <description><![CDATA[Demonstration Betrieb ab Resselgasse<br>[Seit 18.10.2025]]]></description>
@@ -43,77 +66,55 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid>e9e9e8a69c6bc57a12ef20bf33d494d704855d47782195ee4e12ee870b9fc227</guid>
 <pubDate>Sat, 18 Oct 2025 12:52:02 +0000</pubDate>
-<ext:first_seen>Sat, 18 Oct 2025 13:37:32 +0000</ext:first_seen>
+<ext:first_seen>Sat, 18 Oct 2025 14:12:43 +0000</ext:first_seen>
 <ext:starts_at>Sat, 18 Oct 2025 12:52:02 +0000</ext:starts_at>
 <ext:ends_at>Sat, 18 Oct 2025 20:00:00 +0000</ext:ends_at>
 <description><![CDATA[Demonstration Einstieg am Nebengleis<br>[Seit 18.10.2025]]]></description>
 <content:encoded><![CDATA[Demonstration Einstieg am Nebengleis<br/>[Seit 18.10.2025]]]></content:encoded>
 </item>
 <item>
-<title><![CDATA[U1: Rettungseinsatz]]></title>
-<link>https://www.wienerlinien.at/ogd_realtime</link>
-<guid>06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945</guid>
-<pubDate>Sat, 18 Oct 2025 12:50:00 +0000</pubDate>
-<ext:first_seen>Sat, 18 Oct 2025 13:37:32 +0000</ext:first_seen>
-<ext:starts_at>Sat, 18 Oct 2025 12:50:00 +0000</ext:starts_at>
-<ext:ends_at>Sat, 18 Oct 2025 21:55:00 +0000</ext:ends_at>
-<description><![CDATA[Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Rennbahnweg.<br>[Seit 18.10.2025]]]></description>
-<content:encoded><![CDATA[Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Rennbahnweg.<br/>[Seit 18.10.2025]]]></content:encoded>
-</item>
-<item>
 <title><![CDATA[71: Demonstration Betrieb ab Schwarzenbergplatz]]></title>
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid>7b5445a18fe825f2c2505c326e546fd306ae6d46f226760d813ee1afcf1097bc</guid>
 <pubDate>Sat, 18 Oct 2025 12:43:49 +0000</pubDate>
-<ext:first_seen>Sat, 18 Oct 2025 13:37:32 +0000</ext:first_seen>
+<ext:first_seen>Sat, 18 Oct 2025 14:12:43 +0000</ext:first_seen>
 <ext:starts_at>Sat, 18 Oct 2025 12:43:49 +0000</ext:starts_at>
 <ext:ends_at>Sat, 18 Oct 2025 20:00:00 +0000</ext:ends_at>
 <description><![CDATA[Demonstration Betrieb ab Schwarzenbergplatz<br>[Seit 18.10.2025]]]></description>
 <content:encoded><![CDATA[Demonstration Betrieb ab Schwarzenbergplatz<br/>[Seit 18.10.2025]]]></content:encoded>
 </item>
 <item>
-<title><![CDATA[13A: Demonstration Betrieb ab Kellermanngasse]]></title>
-<link>https://www.wienerlinien.at/ogd_realtime</link>
-<guid>0780a1f21076ec9193e13b9dfd7b2a72c73d39ae4fd92a2d35eec85ef3b50f19</guid>
-<pubDate>Sat, 18 Oct 2025 12:30:43 +0000</pubDate>
-<ext:first_seen>Sat, 18 Oct 2025 13:37:32 +0000</ext:first_seen>
-<ext:starts_at>Sat, 18 Oct 2025 12:30:43 +0000</ext:starts_at>
-<ext:ends_at>Sat, 18 Oct 2025 20:00:00 +0000</ext:ends_at>
-<description><![CDATA[Demonstration Betrieb ab Kellermanngasse<br>[Seit 18.10.2025]]]></description>
-<content:encoded><![CDATA[Demonstration Betrieb ab Kellermanngasse<br/>[Seit 18.10.2025]]]></content:encoded>
-</item>
-<item>
 <title><![CDATA[57A: Demonstration Betrieb ab Haus des Meeres]]></title>
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid>7c9f1323c22bd34ef5e55f4bf0e0bd447ae5d3eaf5fe01dda9bbf65664699b65</guid>
 <pubDate>Sat, 18 Oct 2025 12:29:35 +0000</pubDate>
-<ext:first_seen>Sat, 18 Oct 2025 13:37:32 +0000</ext:first_seen>
+<ext:first_seen>Sat, 18 Oct 2025 14:12:43 +0000</ext:first_seen>
 <ext:starts_at>Sat, 18 Oct 2025 12:29:35 +0000</ext:starts_at>
 <ext:ends_at>Sat, 18 Oct 2025 20:00:00 +0000</ext:ends_at>
 <description><![CDATA[Demonstration Betrieb ab Haus des Meeres<br>[Seit 18.10.2025]]]></description>
 <content:encoded><![CDATA[Demonstration Betrieb ab Haus des Meeres<br/>[Seit 18.10.2025]]]></content:encoded>
 </item>
 <item>
-<title><![CDATA[14A: Demonstration Betrieb ab Kellermanngasse]]></title>
-<link>https://www.wienerlinien.at/ogd_realtime</link>
-<guid>98164fc824b159e5b3f393cb44bc38486b0a0043b08da33277bfe43ae25621cb</guid>
-<pubDate>Sat, 18 Oct 2025 12:26:51 +0000</pubDate>
-<ext:first_seen>Sat, 18 Oct 2025 13:37:32 +0000</ext:first_seen>
-<ext:starts_at>Sat, 18 Oct 2025 12:26:51 +0000</ext:starts_at>
-<ext:ends_at>Sat, 18 Oct 2025 20:00:00 +0000</ext:ends_at>
-<description><![CDATA[Demonstration Betrieb ab Kellermanngasse<br>[Seit 18.10.2025]]]></description>
-<content:encoded><![CDATA[Demonstration Betrieb ab Kellermanngasse<br/>[Seit 18.10.2025]]]></content:encoded>
-</item>
-<item>
 <title><![CDATA[62: Rettungseinsatz]]></title>
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid>73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d</guid>
 <pubDate>Sat, 18 Oct 2025 11:40:00 +0000</pubDate>
-<ext:first_seen>Sat, 18 Oct 2025 13:37:32 +0000</ext:first_seen>
+<ext:first_seen>Sat, 18 Oct 2025 14:12:43 +0000</ext:first_seen>
 <ext:starts_at>Sat, 18 Oct 2025 11:40:00 +0000</ext:starts_at>
 <ext:ends_at>Sat, 18 Oct 2025 21:55:00 +0000</ext:ends_at>
 <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.<br>[Seit 18.10.2025]]]></description>
 <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.<br/>[Seit 18.10.2025]]]></content:encoded>
+</item>
+<item>
+<title><![CDATA[37A: Busse halten nach Dresdner Str. (Linie 5A)]]></title>
+<link>https://www.wienerlinien.at/ogd_realtime</link>
+<guid>49cb6b0e3a692a88a279ee616da4ce4103c6b7d7b0ea1921eeba2182684a2514</guid>
+<pubDate>Sat, 18 Oct 2025 07:58:42 +0000</pubDate>
+<ext:first_seen>Sat, 18 Oct 2025 14:12:43 +0000</ext:first_seen>
+<ext:starts_at>Sat, 18 Oct 2025 07:58:42 +0000</ext:starts_at>
+<ext:ends_at>Sat, 18 Oct 2025 21:59:59 +0000</ext:ends_at>
+<description><![CDATA[Bauarbeiten Busse halten nach Dresdner Str. (Linie 5 A)<br>[Seit 18.10.2025]]]></description>
+<content:encoded><![CDATA[Bauarbeiten Busse halten nach Dresdner Str. (Linie 5 A)<br/>[Seit 18.10.2025]]]></content:encoded>
 </item>
 </channel>
 </rss>
