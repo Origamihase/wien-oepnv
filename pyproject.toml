@@ -26,26 +26,12 @@ warn_return_any = false
 show_error_codes = true
 pretty = true
 ignore_missing_imports = true
-files = [
-  "src/build_feed.py",
-  "src/utils/stations.py",
-  "src/utils/cache.py",
-  "src/places",
-  "src/providers/vor.py",
-]
 mypy_path = ["src"]
 explicit_package_bases = true
+packages = ["src"]
 disable_error_code = ["import-untyped"]
 
 [[tool.mypy.overrides]]
 module = "tests.*"
 ignore_errors = true
-
-[[tool.mypy.overrides]]
-module = "providers.*"
-ignore_errors = true
-
-[[tool.mypy.overrides]]
-module = "providers.vor"
-ignore_errors = false
 
