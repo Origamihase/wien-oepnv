@@ -166,6 +166,7 @@
     "in_vienna": true,
     "pendler": false,
     "source": "oebb",
+    "vor_id": "490033400",
     "aliases": [
       "Wien Floridsdorf",
       "Floridsdorf",
@@ -175,8 +176,7 @@
       "490033400"
     ],
     "latitude": 48.2576,
-    "longitude": 16.4039,
-    "vor_id": "490033400"
+    "longitude": 16.4039
   },
   {
     "bst_id": 399,
@@ -231,7 +231,8 @@
       "Vienna International Airport",
       "VIE Airport",
       "Flughafen Wien (VIE)",
-      "Flughafen Wien (Schwechat)"
+      "Flughafen Wien (Schwechat)",
+      "Fws"
     ],
     "latitude": 48.120027,
     "longitude": 16.561749
@@ -284,6 +285,7 @@
     "in_vienna": true,
     "pendler": false,
     "source": "oebb",
+    "vor_id": "490170500",
     "aliases": [
       "Wien Handelskai",
       "Handelskai",
@@ -293,8 +295,7 @@
       "490170500"
     ],
     "latitude": 48.2465,
-    "longitude": 16.3872,
-    "vor_id": "490170500"
+    "longitude": 16.3872
   },
   {
     "bst_id": 804,
@@ -451,6 +452,7 @@
     "in_vienna": true,
     "pendler": false,
     "source": "oebb",
+    "vor_id": "490039300",
     "aliases": [
       "Wien Gersthof",
       "Gersthof",
@@ -460,8 +462,7 @@
       "490039300"
     ],
     "latitude": 48.2307,
-    "longitude": 16.3062,
-    "vor_id": "490039300"
+    "longitude": 16.3062
   },
   {
     "bst_id": 934,
@@ -486,6 +487,7 @@
     "in_vienna": true,
     "pendler": false,
     "source": "oebb",
+    "vor_id": "490059100",
     "aliases": [
       "Wien Jedlersdorf",
       "Jedlersdorf",
@@ -495,8 +497,7 @@
       "490059100"
     ],
     "latitude": 48.2779,
-    "longitude": 16.4118,
-    "vor_id": "490059100"
+    "longitude": 16.4118
   },
   {
     "bst_id": 1019,
@@ -544,6 +545,7 @@
     "in_vienna": true,
     "pendler": false,
     "source": "oebb",
+    "vor_id": "490178000",
     "aliases": [
       "Wien Kaiserebersdorf",
       "Kaiserebersdorf",
@@ -553,8 +555,7 @@
       "490178000"
     ],
     "latitude": 48.1436,
-    "longitude": 16.4649,
-    "vor_id": "490178000"
+    "longitude": 16.4649
   },
   {
     "bst_id": 1066,
@@ -616,6 +617,7 @@
     "in_vienna": true,
     "pendler": false,
     "source": "oebb",
+    "vor_id": "490078800",
     "aliases": [
       "Wien Liesing",
       "Liesing",
@@ -625,8 +627,7 @@
       "490078800"
     ],
     "latitude": 48.1366,
-    "longitude": 16.2883,
-    "vor_id": "490078800"
+    "longitude": 16.2883
   },
   {
     "bst_id": 1206,
@@ -739,6 +740,7 @@
     "in_vienna": true,
     "pendler": false,
     "source": "oebb",
+    "vor_id": "490109100",
     "aliases": [
       "Wien Rennweg",
       "Rennweg",
@@ -748,8 +750,7 @@
       "490109100"
     ],
     "latitude": 48.1989,
-    "longitude": 16.3896,
-    "vor_id": "490109100"
+    "longitude": 16.3896
   },
   {
     "bst_id": 1370,
@@ -814,7 +815,6 @@
     "source": "oebb",
     "vor_id": "430521000",
     "aliases": [
-      "430521000",
       "Wiener Neustadt Hauptbahnhof",
       "Wiener Neustadt Hauptbahnhof (VOR)",
       "Nb",
@@ -826,6 +826,7 @@
       "Bahnhof Wiener Neustadt",
       "Wiener Neustadt Bahnhof",
       "WN Hbf",
+      "430521000",
       "900300"
     ],
     "latitude": 47.811304,
@@ -905,8 +906,8 @@
     "latitude": 48.218767,
     "longitude": 16.392171,
     "_google_place_id": "ChIJqyJ_cwYHbUcRkPqtvvE4qbE",
-    "_lat": 48.218551999999995,
-    "_lng": 16.392184999999998,
+    "_lat": 48.218552,
+    "_lng": 16.392185,
     "_types": [
       "subway_station",
       "transit_station",
@@ -972,6 +973,7 @@
     "in_vienna": true,
     "pendler": false,
     "source": "oebb",
+    "vor_id": "490016600",
     "aliases": [
       "Wien Breitensee",
       "Breitensee",
@@ -981,8 +983,7 @@
       "490016600"
     ],
     "latitude": 48.1968,
-    "longitude": 16.3126,
-    "vor_id": "490016600"
+    "longitude": 16.3126
   },
   {
     "bst_id": 1660,
@@ -1546,15 +1547,15 @@
     "pendler": true,
     "source": "oebb",
     "vor_id": "430349900",
-    "latitude": 48.293315,
-    "longitude": 16.483736,
     "aliases": [
       "Gerasdorf",
       "430349900",
       "Gerasdorf bei Wien Bahnhof",
       "Gerasdorf bei Wien Bahnhof (VOR)",
       "Gef"
-    ]
+    ],
+    "latitude": 48.293315,
+    "longitude": 16.483736
   },
   {
     "bst_id": 2548,
@@ -1564,15 +1565,15 @@
     "pendler": true,
     "source": "oebb",
     "vor_id": "430389500",
-    "latitude": 48.132453,
-    "longitude": 16.439724,
     "aliases": [
       "Kledering",
       "430389500",
       "Kledering Bahnhof",
       "Kledering Bahnhof (VOR)",
       "Za"
-    ]
+    ],
+    "latitude": 48.132453,
+    "longitude": 16.439724
   },
   {
     "bst_id": 711,
@@ -1582,8 +1583,6 @@
     "pendler": true,
     "source": "oebb",
     "vor_id": "430471000",
-    "latitude": 48.143195,
-    "longitude": 16.482055,
     "aliases": [
       "Schwechat",
       "430471000",
@@ -1591,7 +1590,9 @@
       "Gs",
       "Bahnhof Schwechat",
       "Schwechat Stadt"
-    ]
+    ],
+    "latitude": 48.143195,
+    "longitude": 16.482055
   },
   {
     "bst_id": 2393,
@@ -1601,14 +1602,14 @@
     "pendler": false,
     "source": "oebb",
     "vor_id": "490134900",
-    "latitude": 48.185184,
-    "longitude": 16.376413,
     "aliases": [
-      "490134900",
       "Wien Hauptbahnhof",
       "Wien Hauptbahnhof (VOR)",
-      "Wbf"
-    ]
+      "Wbf",
+      "490134900"
+    ],
+    "latitude": 48.185184,
+    "longitude": 16.376413
   },
   {
     "bst_id": 926,
@@ -1621,14 +1622,14 @@
       "google_places"
     ],
     "vor_id": "490074300",
-    "latitude": 48.206048,
-    "longitude": 16.384584,
     "aliases": [
-      "490074300",
       "Wien Mitte-Landstraße",
       "Wien Mitte-Landstraße (VOR)",
-      "Hz"
+      "Hz",
+      "490074300"
     ],
+    "latitude": 48.206048,
+    "longitude": 16.384584,
     "_google_place_id": "ChIJm6KCZnMHbUcRF0kfTP5M-HY",
     "_lat": 48.207316999999996,
     "_lng": 16.385641,
@@ -1663,6 +1664,7 @@
       }
     ],
     "aliases": [
+      "Wien Karlsplatz (WL)",
       "490065700",
       "60201076",
       "60201077",
@@ -1683,7 +1685,8 @@
       "Wien Karlsplatz U (VOR)",
       "Wien-Karlsplatz",
       "Wien-Karlsplatz-(WL)",
-      "VOR-KAR"
+      "VOR-KAR",
+      "WL-KAR"
     ],
     "latitude": 48.19894,
     "longitude": 16.370225,
@@ -1712,6 +1715,7 @@
       }
     ],
     "aliases": [
+      "Wien Schottentor (WL)",
       "490118400",
       "60201002",
       "60201003",
@@ -1732,7 +1736,8 @@
       "Wien Schottentor U (VOR)",
       "Wien-Schottentor",
       "Wien-Schottentor-(WL)",
-      "VOR-SCH"
+      "VOR-SCH",
+      "WL-SCH"
     ],
     "latitude": 48.21378,
     "longitude": 16.360605,
@@ -1755,6 +1760,7 @@
       }
     ],
     "aliases": [
+      "Wien Stephansplatz (WL)",
       "490132000",
       "60201001",
       "Bahnhof Wien Stephansplatz",
@@ -1773,7 +1779,8 @@
       "Wien Stephansplatz U (VOR)",
       "Wien-Stephansplatz",
       "Wien-Stephansplatz-(WL)",
-      "VOR-STE"
+      "VOR-STE",
+      "WL-STE"
     ],
     "latitude": 48.20826,
     "longitude": 16.37327,
