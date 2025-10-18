@@ -503,6 +503,38 @@
     "source": "oebb"
   },
   {
+    "bst_id": 926,
+    "bst_code": "Hz",
+    "name": "Wien Mitte-Landstraße",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490074300",
+    "vor_name": "Wien Mitte-Landstraße (VOR)",
+    "aliases": [
+      "Wien Mitte-Landstraße",
+      "Wien Mitte",
+      "Landstraße",
+      "Landstrasse",
+      "Wien Landstraße",
+      "Wien Landstrasse",
+      "Bahnhof Wien Mitte-Landstraße",
+      "Wien Mitte Bahnhof",
+      "Wien Mitte - CAT",
+      "CAT Terminal Wien Mitte",
+      "City Airport Train Wien Mitte",
+      "Vienna Mitte",
+      "Vienna Landstraße",
+      "Vienna Mitte-Landstraße",
+      "Hz",
+      "Cat",
+      "926",
+      "4747985"
+    ],
+    "latitude": 48.206048,
+    "longitude": 16.384584,
+    "source": "combined"
+  },
+  {
     "bst_id": 934,
     "bst_code": "Id",
     "name": "Wien Blumental",
@@ -1287,6 +1319,33 @@
     "source": "oebb"
   },
   {
+    "bst_id": 2393,
+    "bst_code": "Wbf",
+    "name": "Wien Hauptbahnhof",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490134900",
+    "vor_name": "Wien Hauptbahnhof (VOR)",
+    "aliases": [
+      "Wien Hauptbahnhof",
+      "Wien Hauptbahnhof Südtiroler Platz",
+      "Südtiroler Platz-Hauptbahnhof",
+      "Suedtiroler Platz-Hauptbahnhof",
+      "Südtiroler Platz",
+      "Suedtiroler Platz",
+      "Bahnhof Wien Hauptbahnhof",
+      "Vienna Hauptbahnhof",
+      "Vienna Central Station",
+      "Wbf",
+      "Wsp",
+      "2393",
+      "4773103"
+    ],
+    "latitude": 48.185184,
+    "longitude": 16.376413,
+    "source": "combined"
+  },
+  {
     "bst_id": 2396,
     "bst_code": "Wbf H2",
     "name": "Wien Haidestraße",
@@ -1596,13 +1655,27 @@
     "longitude": 16.376413,
     "aliases": [
       "Wien Hauptbahnhof (VOR)",
-      "Wien Hauptbahnhof",
-      "490134900",
-      "900100"
+      "490134900"
     ],
     "source": "vor",
     "bst_id": "900100",
     "bst_code": "900100"
+  },
+  {
+    "name": "Wien Mitte-Landstraße (VOR)",
+    "in_vienna": true,
+    "pendler": false,
+    "vor_id": "490074300",
+    "latitude": 48.206048,
+    "longitude": 16.384584,
+    "aliases": [
+      "Wien Mitte-Landstraße (VOR)",
+      "490074300",
+      "900102"
+    ],
+    "source": "vor",
+    "bst_id": "900102",
+    "bst_code": "900102"
   },
   {
     "name": "Wien Karlsplatz",
@@ -1656,23 +1729,6 @@
     "latitude": 48.19894,
     "longitude": 16.370225,
     "source": "combined"
-  },
-  {
-    "name": "Wien Mitte-Landstraße (VOR)",
-    "in_vienna": true,
-    "pendler": false,
-    "vor_id": "490074300",
-    "latitude": 48.206048,
-    "longitude": 16.384584,
-    "aliases": [
-      "Wien Mitte-Landstraße (VOR)",
-      "Wien Mitte-Landstraße",
-      "490074300",
-      "900102"
-    ],
-    "source": "vor",
-    "bst_id": "900102",
-    "bst_code": "900102"
   },
   {
     "name": "Wien Schottentor",
