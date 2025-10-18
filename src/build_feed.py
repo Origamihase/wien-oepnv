@@ -650,6 +650,7 @@ PROVIDER_CACHE_KEYS: Dict[str, str] = {
     "WL_ENABLE": "wl",
     "OEBB_ENABLE": "oebb",
     "VOR_ENABLE": "vor",
+    "BAUSTELLEN_ENABLE": "baustellen",
 }
 
 def read_cache_wl() -> List[Any]:
@@ -664,10 +665,15 @@ def read_cache_vor() -> List[Any]:
     return read_cache("vor")
 
 
+def read_cache_baustellen() -> List[Any]:
+    return read_cache("baustellen")
+
+
 PROVIDERS: List[Tuple[str, Any]] = [
     ("WL_ENABLE", read_cache_wl),
     ("OEBB_ENABLE", read_cache_oebb),
     ("VOR_ENABLE", read_cache_vor),
+    ("BAUSTELLEN_ENABLE", read_cache_baustellen),
 ]
 
 for env, loader in PROVIDERS:

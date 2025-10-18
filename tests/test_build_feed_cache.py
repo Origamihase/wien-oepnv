@@ -52,6 +52,7 @@ def test_collect_items_missing_cache_logs_warning(monkeypatch, tmp_path, caplog)
         "Cache für Provider 'wl' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'oebb' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'vor' leer – generiere Feed ohne aktuelle Daten.",
+        "Cache für Provider 'baustellen' leer – generiere Feed ohne aktuelle Daten.",
     }
 
 
@@ -97,6 +98,7 @@ def test_main_runs_without_network(monkeypatch, tmp_path, caplog):
         "Cache für Provider 'wl' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'oebb' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'vor' leer – generiere Feed ohne aktuelle Daten.",
+        "Cache für Provider 'baustellen' leer – generiere Feed ohne aktuelle Daten.",
     }
 
 
@@ -116,9 +118,10 @@ def test_collect_items_reads_from_cache(monkeypatch):
 
     items = build_feed._collect_items()
 
-    assert len(calls) == 3
-    assert set(calls) == {"wl", "oebb", "vor"}
+    assert len(calls) == 4
+    assert set(calls) == {"wl", "oebb", "vor", "baustellen"}
     assert sorted(items, key=lambda item: item["provider"]) == [
+        {"provider": "baustellen"},
         {"provider": "oebb"},
         {"provider": "vor"},
         {"provider": "wl"},

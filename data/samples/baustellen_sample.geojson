@@ -1,0 +1,45 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "OGD_ID": "BS-0001",
+        "BEZEICHNUNG": "Arbeiten Mariahilfer Straße",
+        "STRASSE": "Mariahilfer Straße",
+        "VON": "Kirchengasse",
+        "BIS": "Zieglergasse",
+        "ANFANGSZEIT": "2025-10-01T06:00:00+02:00",
+        "ENDEZEIT": "2025-10-15T22:00:00+02:00",
+        "BEZIRK": "06",
+        "HINWEIS": "Fahrbahnverengung, Verzögerungen möglich.",
+        "VERKEHRSMASSNAHME": "Fahrbahnverengung"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.3505, 48.1981]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OGD_ID": "BS-0002",
+        "MASSNAHME": "Leitungsbau Gürtel",
+        "STRASSENNAME": "Währinger Gürtel",
+        "ABSCHNITT_VON": "Spitalgasse",
+        "ABSCHNITT_BIS": "Nußdorfer Straße",
+        "DAUER": "2025-11-05/2025-11-20",
+        "BEZIRK": "09",
+        "BEMERKUNG": "Tempo 30, Einspurigkeit stadteinwärts.",
+        "VERKEHRSART": "Straßenbahn"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [16.3532, 48.2191],
+          [16.3564, 48.2246]
+        ]
+      }
+    }
+  ]
+}
