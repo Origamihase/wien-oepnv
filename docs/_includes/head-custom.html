@@ -1,1 +1,33 @@
+{% if page.url %}
+  {% if site.url %}
+    {% assign canonical_url = page.url | absolute_url %}
+  {% else %}
+    {% assign canonical_url = page.url | prepend: site.baseurl %}
+  {% endif %}
+{% endif %}
+{% assign meta_title = page.title | default: site.title | default: site.github.repository_name %}
+{% assign meta_description = page.description | default: page.excerpt | default: site.description | default: site.github.project_tagline %}
+{% assign meta_description = meta_description | strip_html | strip_newlines | replace: '  ', ' ' | truncate: 160 %}
+
 <link rel="alternate" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" title="Wien ÖPNV Feed" />
+{% if canonical_url %}
+<link rel="canonical" href="{{ canonical_url }}">
+{% endif %}
+<meta property="og:type" content="{% if page.url == '/' %}website{% else %}article{% endif %}">
+<meta property="og:locale" content="de_AT">
+{% if meta_title %}
+<meta property="og:title" content="{{ meta_title | escape }}">
+<meta name="twitter:title" content="{{ meta_title | escape }}">
+{% endif %}
+{% if meta_description %}
+<meta name="description" content="{{ meta_description | escape }}">
+<meta property="og:description" content="{{ meta_description | escape }}">
+<meta name="twitter:description" content="{{ meta_description | escape }}">
+{% endif %}
+{% if canonical_url %}
+<meta property="og:url" content="{{ canonical_url }}">
+{% endif %}
+{% if site.title %}
+<meta property="og:site_name" content="{{ site.title | escape }}">
+{% endif %}
+<meta name="twitter:card" content="summary">

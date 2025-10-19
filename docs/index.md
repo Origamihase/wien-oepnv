@@ -116,6 +116,47 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was ist der Funktionsumfang des Wien ÖPNV Feed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Der Feed bündelt Verkehrs- und Störungsmeldungen aus Wien, Niederösterreich und dem Burgenland, dedupliziert identische Ereignisse und stellt sie als strukturierte RSS- sowie JSON-Daten mit konsistenten Metadaten bereit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich eigene Provider oder Filter hinzufügen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Über Umgebungsvariablen lassen sich Provider deaktivieren und in src/providers/ können neue Adapter ergänzt werden. Das How-to zu Provider-Plugins beschreibt den empfohlenen Workflow inklusive Scaffold-Skript."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Unter welcher Lizenz steht das Projekt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Der Code wird unter der MIT-Lizenz veröffentlicht. Für externe Datenquellen gelten zusätzlich deren jeweilige Nutzungsbedingungen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie bleibe ich über Änderungen informiert?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Repository-Watcher, Release-Abonnements und die Integration der Cache-Updates in CI/CD-Pipelines informieren über Neuerungen. Audit-Berichte und Changelogs dokumentieren wichtige Änderungen."
+      }
+    }
+  ]
+}
+</script>
+
 <footer class="page-footer">
   <p><strong>Hinweis:</strong> Passe bei Bedarf die Projekt-URL in der Sitemap und in den strukturierten Daten an deine produktive Domain an.</p>
 </footer>
