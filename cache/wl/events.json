@@ -386,42 +386,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Feuerwehreinsatz Betrieb ab Quellenplatz",
-    "description": "Feuerwehreinsatz Betrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "01303e6859132326eda132a9a36332be724952173100dacd7c108d254d0bb55d",
-    "pubDate": "2025-10-19T04:44:07+02:00",
-    "starts_at": "2025-10-19T04:44:07+02:00",
-    "ends_at": "2025-10-19T09:00:00+02:00",
-    "_identity": "wl|störung|L=11|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "817562aa4abf4a2ae71dbf2855aa218d5ad9ff8d87863a4132d70b6dcc28ecef",
-    "pubDate": "2025-10-19T04:44:37+02:00",
-    "starts_at": "2025-10-19T04:44:37+02:00",
-    "ends_at": "2025-10-19T09:00:00+02:00",
-    "_identity": "wl|störung|L=O|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Feuerwehreinsatz Betrieb ab Quellenplatz",
-    "description": "Feuerwehreinsatz Betrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a5601647c678a30d708c33f61f13e381f369be8fdde71388af9f73cd1eee3d99",
-    "pubDate": "2025-10-19T04:44:37+02:00",
-    "starts_at": "2025-10-19T04:44:37+02:00",
-    "ends_at": "2025-10-19T09:00:00+02:00",
-    "_identity": "wl|störung|L=O|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -430,30 +394,6 @@
     "starts_at": "2025-10-19T04:45:06+02:00",
     "ends_at": "2025-10-20T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Feuerwehreinsatz Züge halten bei Linie 6 Richtung Burggasse",
-    "description": "Feuerwehreinsatz Züge halten bei Linie 6 Richtung Burggasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a3b669981402f23b22a9d510d54454f361dee2591dbec94a2762ab148aa318d3",
-    "pubDate": "2025-10-19T04:52:48+02:00",
-    "starts_at": "2025-10-19T04:52:48+02:00",
-    "ends_at": "2025-10-19T09:00:00+02:00",
-    "_identity": "wl|störung|L=O|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Feuerwehreinsatz Züge halten bei Linie 6 Richtung Geiereckstraße",
-    "description": "Feuerwehreinsatz Züge halten bei Linie 6 Richtung Geiereckstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d8b79451fed91e6c67f3f38e3d03d3f3f5c226c0e2b01ecc9f807fa8ab5978a1",
-    "pubDate": "2025-10-19T04:55:13+02:00",
-    "starts_at": "2025-10-19T04:55:13+02:00",
-    "ends_at": "2025-10-19T09:00:00+02:00",
-    "_identity": "wl|störung|L=11|D=2025-10-19"
   },
   {
     "source": "Wiener Linien",
@@ -478,5 +418,17 @@
     "starts_at": "2025-10-19T08:30:00+02:00",
     "ends_at": "2025-10-19T23:55:00+02:00",
     "_identity": "wl|störung|L=D|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 37 ist derzeit in Richtung Schottentor an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 09:30 Uhr. Grund dafür ist ein Falschparker im Bereich Döblinger Hauptstraße 81.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
+    "pubDate": "2025-10-19T09:00:00+02:00",
+    "starts_at": "2025-10-19T09:00:00+02:00",
+    "ends_at": "2025-10-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=37|D=2025-10-19"
   }
 ]
