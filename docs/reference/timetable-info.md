@@ -1,3 +1,8 @@
+---
+title: "GET /tti"
+description: "Referenz für das Timetable-Info-Service mit Erläuterungen zu Gültigkeitszeiträumen und Grenzen für API-Abfragen."
+---
+
 # GET /tti
 
 ## Kurzbeschreibung

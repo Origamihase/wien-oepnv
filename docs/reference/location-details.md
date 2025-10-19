@@ -1,3 +1,8 @@
+---
+title: "GET /location.details"
+description: "Endpunktbeschreibung für detaillierte Ortspunktausgaben inklusive Ausstattung, Sharing-Angeboten und optionalen Wetterdaten."
+---
+
 # GET /location.details
 
 ## Kurzbeschreibung

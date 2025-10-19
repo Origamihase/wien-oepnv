@@ -8,6 +8,10 @@
 {% assign meta_title = page.title | default: site.title | default: site.github.repository_name %}
 {% assign meta_description = page.description | default: page.excerpt | default: site.description | default: site.github.project_tagline %}
 {% assign meta_description = meta_description | strip_html | strip_newlines | replace: '  ', ' ' | truncate: 160 %}
+{% assign og_image_path = page.og_image | default: site.og_image | default: '/assets/og-default.svg' %}
+{% if og_image_path %}
+  {% assign og_image_url = og_image_path | absolute_url %}
+{% endif %}
 
 <link rel="alternate" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" title="Wien ÖPNV Feed" />
 {% if canonical_url %}
@@ -30,4 +34,13 @@
 {% if site.title %}
 <meta property="og:site_name" content="{{ site.title | escape }}">
 {% endif %}
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+{% if og_image_url %}
+<meta property="og:image" content="{{ og_image_url }}">
+<meta name="twitter:image" content="{{ og_image_url }}">
+{% if page.og_image_alt or site.og_image_alt %}
+  {% assign og_image_alt = page.og_image_alt | default: site.og_image_alt %}
+  <meta property="og:image:alt" content="{{ og_image_alt | escape }}">
+  <meta name="twitter:image:alt" content="{{ og_image_alt | escape }}">
+{% endif %}
+{% endif %}

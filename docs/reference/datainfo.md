@@ -1,3 +1,8 @@
+---
+title: "GET /datainfo"
+description: "Beschreibung des Datainfo-Service inklusive Struktur der Betreiber-, Produkt- und Kategorienlisten für nachgelagerte Filter."
+---
+
 # GET /datainfo
 
 ## Kurzbeschreibung

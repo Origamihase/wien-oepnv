@@ -1,3 +1,8 @@
+---
+title: "GET /trip"
+description: "Ausführliche Parameterliste für Trip-Anfragen inklusive Via-Optionen, Produktfiltern und Rückgabestruktur der VAO ReST API."
+---
+
 # GET /trip
 
 ## Kurzbeschreibung

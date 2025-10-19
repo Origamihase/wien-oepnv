@@ -1,3 +1,8 @@
+---
+title: "GET /DepartureBoard"
+description: "Referenz für den DepartureBoard-Endpunkt mit Pflichtparametern, Filtern und Hinweisen zum Scrollen durch weitere Abfahrten."
+---
+
 # GET /DepartureBoard
 
 ## Kurzbeschreibung

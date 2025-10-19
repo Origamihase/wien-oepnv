@@ -1,3 +1,8 @@
+---
+title: "Google Places Stations Import"
+description: "Anleitung zum Abruf und zur Zusammenführung von Bahnhofs- und Haltestellendaten über die Google Places API in den lokalen Stationskatalog."
+---
+
 # Google Places Stations Import
 
 Dieses Dokument beschreibt, wie Bahnhofsdatensätze aus der *Google Places API (New)* in `data/stations.json` eingespielt werden.

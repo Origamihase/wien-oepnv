@@ -1,3 +1,8 @@
+---
+title: "Eigene Provider-Plugins anbinden"
+description: "Schritt-für-Schritt-Anleitung, um neue Datenquellen als Provider-Plugin in die Feed-Pipeline einzubinden und lokal zu testen."
+---
+
 # Eigene Provider-Plugins anbinden
 
 Die Feed-Pipeline kann über zusätzliche Provider erweitert werden, ohne den

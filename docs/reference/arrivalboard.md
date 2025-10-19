@@ -1,3 +1,8 @@
+---
+title: "GET /arrivalBoard"
+description: "Dokumentation des ArrivalBoard-Endpunkts mit Parametern, Antwortstruktur und Hinweisen zum Paging über Ankunftszeiträume."
+---
+
 # GET /arrivalBoard
 
 ## Kurzbeschreibung

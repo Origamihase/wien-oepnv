@@ -1,3 +1,8 @@
+---
+title: "GET /location.nearbystops"
+description: "Dokumentation der Umkreissuche mit Parametern für Radius, Treffertypen sowie Zusatzinformationen zu Sharing-Angeboten."
+---
+
 # GET /location.nearbystops
 
 ## Kurzbeschreibung
