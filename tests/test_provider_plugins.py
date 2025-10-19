@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib
+import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -131,11 +132,13 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
 
         out_path = tmp_path / "feed.xml"
         health_path = tmp_path / "feed-health.md"
+        health_json_path = tmp_path / "feed-health.json"
         state_path = tmp_path / "state.json"
 
         monkeypatch.setattr(build_feed, "_validate_path", lambda path, name: Path(path))
         monkeypatch.setattr(build_feed, "OUT_PATH", out_path)
         monkeypatch.setattr(build_feed, "FEED_HEALTH_PATH", health_path)
+        monkeypatch.setattr(build_feed, "FEED_HEALTH_JSON_PATH", health_json_path)
         monkeypatch.setattr(build_feed, "STATE_FILE", state_path)
         monkeypatch.setattr(build_feed, "_load_state", lambda: {})
         monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
@@ -145,6 +148,7 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
         assert exit_code == 0
         assert out_path.exists()
         assert health_path.exists()
+        assert health_json_path.exists()
 
         feed_text = out_path.read_text(encoding="utf-8")
         assert "plugin-1" in feed_text
@@ -152,6 +156,13 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
         assert "Feed Health Report" in health_text
         assert "plugin" in health_text.lower()
         assert "disabled" in health_text.lower()
+
+        health_payload = json.loads(health_json_path.read_text(encoding="utf-8"))
+        assert health_payload["metrics"]["raw_items"] == 1
+        assert health_payload["metrics"]["deduped_items"] == 1
+        assert "collect" in health_payload["durations"]
+        provider_names = {provider["name"] for provider in health_payload["providers"]}
+        assert "plugin" in provider_names
     finally:
         provider_mod.unregister_provider("PLUGIN_ENABLE")
         provider_mod._reset_registry()
