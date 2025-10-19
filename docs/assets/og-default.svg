@@ -1,80 +1,166 @@
-<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Wien ÖPNV Feed – Social Preview</title>
+  <desc id="desc">Moderner Header mit Stadtplan-Motiv, Titel, Untertitel und Badges für Wiener Linien, ÖBB und VOR sowie RSS-Hinweis.</desc>
+
   <defs>
+    <!-- Farben / Tokens -->
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0C1024"/>
+      <stop offset="1" stop-color="#1C234F"/>
+    </linearGradient>
+    <radialGradient id="ringGlow" cx="50%" cy="45%" r="60%">
+      <stop offset="0" stop-color="#3B56FF" stop-opacity="0.35"/>
+      <stop offset="0.55" stop-color="#3B56FF" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#3B56FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accentGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5BE7C4"/>
+      <stop offset="1" stop-color="#4CA9FF"/>
+    </linearGradient>
+
+    <!-- Subtiles Liniennetz -->
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(0)">
+      <path d="M0 0H28V28H0Z" fill="none"/>
+      <path d="M0 0H28" stroke="#FFFFFF" stroke-opacity="0.06"/>
+      <path d="M0 14H28" stroke="#FFFFFF" stroke-opacity="0.04"/>
+      <path d="M14 0V28" stroke="#FFFFFF" stroke-opacity="0.04"/>
+    </pattern>
+
+    <!-- Schatten für Chips -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+
+    <!-- Typo -->
     <style>
       .title {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-        font-size: 80px;
-        font-weight: 700;
-        fill: #FFFFFF;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 84px;
+        letter-spacing: 0.2px;
       }
       .subtitle {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-        font-size: 38px;
-        font-weight: 400;
-        fill: #FFFFFF;
-        fill-opacity: 0.9;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, system-ui, sans-serif;
+        font-weight: 500;
+        font-size: 36px;
+        opacity: 0.92;
       }
-      .button-text {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-        font-size: 32px;
+      .chip-text {
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 26px;
+      }
+      .small {
+        font-size: 24px;
         font-weight: 600;
-        fill: #1E266A; /* Dunkler Blauton für Kontrast auf Gelb */
-        text-anchor: middle;
-        dominant-baseline: central;
-      }
-      .line {
-        stroke: #FFD95B; /* Gelb */
-        stroke-width: 6;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        opacity: 0.6;
-      }
-      .dot {
-        fill: #FFD95B; /* Gelb */
-        opacity: 0.8;
+        opacity: 0.9;
       }
     </style>
+
+    <!-- Symbole -->
+    <!-- Zug -->
+    <g id="ic-train">
+      <path d="M10 6h36c6.6 0 12 5.4 12 12v18c0 6.6-5.4 12-12 12H10C3.4 48-2 42.6-2 36V18C-2 11.4 3.4 6 10 6Z" fill="#FFFFFF"/>
+      <rect x="4" y="14" width="48" height="14" rx="4" fill="#0F1A3A"/>
+      <rect x="8" y="32" width="12" height="8" rx="2" fill="#0F1A3A"/>
+      <rect x="36" y="32" width="12" height="8" rx="2" fill="#0F1A3A"/>
+      <path d="M6 52l8 10M50 52l-8 10" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <!-- Tram -->
+    <g id="ic-tram">
+      <rect x="0" y="10" width="54" height="30" rx="6" fill="#FFFFFF"/>
+      <rect x="6" y="16" width="42" height="10" rx="3" fill="#0F1A3A"/>
+      <rect x="10" y="30" width="10" height="6" rx="2" fill="#0F1A3A"/>
+      <rect x="34" y="30" width="10" height="6" rx="2" fill="#0F1A3A"/>
+      <path d="M14 8h26" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <!-- Bus -->
+    <g id="ic-bus">
+      <rect x="0" y="14" width="56" height="28" rx="6" fill="#FFFFFF"/>
+      <rect x="6" y="20" width="36" height="8" rx="2" fill="#0F1A3A"/>
+      <rect x="8" y="32" width="10" height="6" rx="2" fill="#0F1A3A"/>
+      <rect x="34" y="32" width="10" height="6" rx="2" fill="#0F1A3A"/>
+      <circle cx="14" cy="46" r="4.5" fill="#FFFFFF"/>
+      <circle cx="42" cy="46" r="4.5" fill="#FFFFFF"/>
+    </g>
+    <!-- RSS -->
+    <g id="ic-rss">
+      <circle cx="10" cy="44" r="6" fill="#0F1A3A"/>
+      <path d="M2 22a30 30 0 0 1 30 30" stroke="#0F1A3A" stroke-width="8" stroke-linecap="round"/>
+      <path d="M2 6a46 46 0 0 1 46 46" stroke="#0F1A3A" stroke-width="8" stroke-linecap="round" opacity="0.9"/>
+    </g>
   </defs>
-  
-  <rect width="1200" height="630" fill="#2A3695"/>
-  
-  <text x="60" y="130" class="title">Wien ÖPNV Feed</text>
-  <text x="60" y="195" class="subtitle">Aktuelle Verkehrsmeldungen &amp; API-Daten</text>
-  
-  <g transform="translate(60, 270)">
-    <rect width="300" height="90" rx="45" fill="#FFD95B"/>
-    <text x="150" y="45" class="button-text">RSS &amp; JSON</text>
-    
-    <rect x="320" width="300" height="90" rx="45" fill="#FFD95B"/>
-    <text x="470" y="45" class="button-text">Open Data</text>
-    
-    <rect x="640" width="300" height="90" rx="45" fill="#FFD95B"/>
-    <text x="790" y="45" class="button-text">ÖPNV Wien</text>
+
+  <!-- Hintergrund -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Ring / Glow (Anspielung auf die Ringstraße & Netz) -->
+  <g>
+    <circle cx="600" cy="290" r="280" fill="url(#ringGlow)"/>
+    <circle cx="600" cy="290" r="210" stroke="url(#accentGradient)" stroke-width="2" opacity="0.35"/>
+    <circle cx="600" cy="290" r="140" stroke="#7ABC1E" stroke-opacity="0.25" stroke-width="2"/>
+    <circle cx="600" cy="290" r="70"  stroke="#E2002A" stroke-opacity="0.25" stroke-width="2"/>
   </g>
 
-  <g transform="translate(0, 420)">
-    <path class="line" d="M 80 120 Q 180 80, 280 120 T 480 120 Q 580 80, 680 120 T 880 120 Q 980 80, 1080 120"/>
-    <path class="line" d="M 60 150 C 160 130, 260 170, 360 150 S 560 130, 660 170 S 860 130, 960 150 C 1060 170, 1160 130, 1140 150"/>
-    
-    <circle class="dot" cx="80" cy="120" r="8"/>
-    <circle class="dot" cx="280" cy="120" r="8"/>
-    <circle class="dot" cx="480" cy="120" r="8"/>
-    <circle class="dot" cx="680" cy="120" r="8"/>
-    <circle class="dot" cx="880" cy="120" r="8"/>
-    <circle class="dot" cx="1080" cy="120" r="8"/>
-
-    <circle class="dot" cx="60" cy="150" r="8"/>
-    <circle class="dot" cx="260" cy="160" r="8"/>
-    <circle class="dot" cx="460" cy="140" r="8"/>
-    <circle class="dot" cx="660" cy="160" r="8"/>
-    <circle class="dot" cx="860" cy="140" r="8"/>
-    <circle class="dot" cx="1140" cy="150" r="8"/>
+  <!-- Kopfbereich -->
+  <g transform="translate(80,120)">
+    <text class="title" x="0" y="0" fill="#FFFFFF">Wien ÖPNV Feed</text>
+    <text class="subtitle" x="0" y="56" fill="#E6EEFF">Störungen · Baustellen · Hinweise · RSS &amp; JSON</text>
   </g>
 
-  <g transform="translate(970, 60) scale(1.1)">
-    <path d="M136.08,0.36C136.08,0.36,104.76,3.6,104.76,3.6L104.76,68.76L104.76,133.92C104.76,133.92,104.76,161.64,104.76,189.36C104.76,189.36,101.52,189.36,98.28,189.36C98.28,189.36,71.28,189.36,44.28,189.36C44.28,189.36,41.04,189.36,37.8,189.36C37.8,189.36,37.8,161.64,37.8,133.92L37.8,68.76L37.8,3.6C37.8,3.6,6.48,0.36,6.48,0.36L71.64,0.36L136.08,0.36Z" fill="#FFFFFF"/>
-    <path d="M142.56,0C142.56,0,71.64,0,0,0C0,0,0,94.68,0,189.36C0,189.36,31.32,192.6,31.32,192.6C31.32,192.6,31.32,208.8,31.32,225C31.32,225,49.32,238.32,67.32,251.64C67.32,251.64,71.64,254.88,76.68,254.88C81,254.88,85.32,251.64,85.32,251.64C103.32,238.32,121.32,225,121.32,225C121.32,225,121.32,208.8,121.32,192.6C121.32,192.6,152.64,189.36,152.64,189.36C152.64,189.36,152.64,94.68,152.64,0L142.56,0Z" fill="#C60C30"/>
-    <path d="M104.76,3.6V68.76V133.92C104.76,161.64,104.76,189.36,98.28,189.36H71.28H44.28C37.8,189.36,37.8,161.64,37.8,133.92V68.76V3.6C6.48,0.36,71.64,0.36,136.08,0.36C136.08,0.36,104.76,3.6,104.76,3.6Z" fill="#FFFFFF"/>
-    <path d="M37.8,133.92V68.76M104.76,133.92V68.76M71.28,189.36H44.28M71.28,189.36H98.28M71.28,3.6H136.08C136.08,0.36,71.64,0.36,6.48,0.36H71.28M37.8,189.36C37.8,161.64,37.8,133.92,37.8,133.92M104.76,189.36C104.76,161.64,104.76,133.92,104.76,133.92M37.8,3.6C37.8,3.6,37.8,68.76,37.8,68.76M104.76,3.6C104.76,3.6,104.76,68.76,104.76,68.76M0,0V189.36C31.32,192.6,31.32,225,67.32,251.64C71.64,254.88,81,254.88,85.32,251.64C121.32,225,121.32,192.6,152.64,189.36V0H0Z" stroke="#000000" stroke-width="3"/>
+  <!-- Badges -->
+  <g transform="translate(80,240)" filter="url(#softShadow)">
+    <!-- WL -->
+    <g transform="translate(0,0)">
+      <rect x="0" y="0" rx="18" width="250" height="56" fill="#E2002A"/>
+      <g transform="translate(18,12) scale(0.9)">
+        <use href="#ic-tram"/>
+      </g>
+      <text class="chip-text" x="92" y="37" fill="#FFFFFF">Wiener&nbsp;Linien</text>
+    </g>
+    <!-- ÖBB -->
+    <g transform="translate(270,0)">
+      <rect x="0" y="0" rx="18" width="220" height="56" fill="#CC0000"/>
+      <g transform="translate(16,9) scale(1.0)">
+        <use href="#ic-train"/>
+      </g>
+      <text class="chip-text" x="96" y="37" fill="#FFFFFF">ÖBB</text>
+    </g>
+    <!-- VOR -->
+    <g transform="translate(510,0)">
+      <rect x="0" y="0" rx="18" width="230" height="56" fill="#7ABC1E"/>
+      <g transform="translate(16,12) scale(0.9)">
+        <use href="#ic-bus"/>
+      </g>
+      <text class="chip-text" x="96" y="37" fill="#0F1A3A">VOR / VAO</text>
+    </g>
+    <!-- RSS -->
+    <g transform="translate(760,0)">
+      <rect x="0" y="0" rx="18" width="200" height="56" fill="#FFD95B"/>
+      <g transform="translate(16,6) scale(1.0)">
+        <use href="#ic-rss"/>
+      </g>
+      <text class="chip-text" x="96" y="37" fill="#1B2456">RSS&nbsp;Feed</text>
+    </g>
+  </g>
+
+  <!-- Fußleiste mit Kurzinfos -->
+  <g transform="translate(80,520)">
+    <rect x="0" y="0" width="1040" height="70" rx="16" fill="#101633" stroke="#2A3873" stroke-opacity="0.7"/>
+    <g transform="translate(22,18)">
+      <g transform="translate(0,0)">
+        <circle cx="18" cy="18" r="18" fill="url(#accentGradient)"/>
+        <path d="M16 10h4v16h-4zM10 16h16v4H10z" fill="#0F1A3A" opacity="0.95"/>
+      </g>
+      <text class="small" x="56" y="26" fill="#EAF2FF">Konsolidierter Feed • Dedupliziert • Reproduzierbare Builds • Validierte Stationsdaten</text>
+    </g>
+  </g>
+
+  <!-- Dekorlinien (U-Bahn-Stil) -->
+  <g opacity="0.55">
+    <path d="M1100 120c-80 20-160 10-230 50-70 40-90 120-170 150-80 30-160-10-230 0-70 10-120 70-190 90-60 18-130 8-180 0" stroke="url(#accentGradient)" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M1080 90c-60 10-120 6-180 34-60 28-100 86-160 110-60 24-140 20-200 30-84 14-140 66-220 86" stroke="#E2002A" stroke-opacity="0.35" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M1090 160c-70 22-150 20-210 54-60 34-80 96-140 122-60 26-150 20-210 30-70 12-120 52-190 74" stroke="#7ABC1E" stroke-opacity="0.4" stroke-width="3" stroke-linecap="round" fill="none"/>
   </g>
 </svg>
