@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:ext="https://wien-oepnv.example/schema" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss xmlns:atom="http://www.w3.org/2005/Atom"  version="2.0" xmlns:ext="https://wien-oepnv.example/schema" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
 <title>ÖPNV Störungen Wien &amp; Umgebung</title>
 <link>https://github.com/Origamihase/wien-oepnv</link>
 <description>Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen</description>
-<lastBuildDate>Sun, 19 Oct 2025 13:37:39 +0000</lastBuildDate>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+<language>de</language>
+<lastBuildDate>Sun, 19 Oct 2025 12:32:57 +0000</lastBuildDate>
 <ttl>15</ttl>
 <item>
 <title><![CDATA[52: Fahrtbehinderung Verkehrsunfall]]></title>
@@ -36,8 +39,30 @@
 <ext:first_seen>Sun, 19 Oct 2025 13:37:39 +0000</ext:first_seen>
 <ext:starts_at>Sun, 19 Oct 2025 12:00:00 +0000</ext:starts_at>
 <ext:ends_at>Sun, 19 Oct 2025 21:55:00 +0000</ext:ends_at>
-<description><![CDATA[Die Linie 31 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Kagraner Friedhof.<br>[Seit 19.10.2025]]]></description>
+<description><![CDATA[Die Linie 31 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Kagraner Friedhof.<br>[Seit 19.10.2025]]]></description><atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
 <content:encoded><![CDATA[Die Linie 31 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Kagraner Friedhof.<br/>[Seit 19.10.2025]]]></content:encoded>
+</item>
+<item>
+<title><![CDATA[52: Fahrtbehinderung Verkehrsunfall]]></title>
+<link>https://www.wienerlinien.at/ogd_realtime</link>
+<guid>538e3537ccddfddb6ed2a2bea6bb7128afece95871c03e3c9b06dde002cf7d72</guid>
+<pubDate>Sun, 19 Oct 2025 11:59:50 +0000</pubDate>
+<ext:first_seen>Sun, 19 Oct 2025 12:32:57 +0000</ext:first_seen>
+<ext:starts_at>Sun, 19 Oct 2025 11:59:50 +0000</ext:starts_at>
+<ext:ends_at>Sun, 19 Oct 2025 12:59:00 +0000</ext:ends_at>
+<description><![CDATA[Fahrtbehinderung Verkehrsunfall<br>[Seit 19.10.2025]]]></description><atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+<content:encoded><![CDATA[Fahrtbehinderung Verkehrsunfall<br/>[Seit 19.10.2025]]]></content:encoded>
+</item>
+<item>
+<title><![CDATA[12: Schadhafter Zug Umleitung bis Jägerstraße über die Linie 31]]></title>
+<link>https://www.wienerlinien.at/ogd_realtime</link>
+<guid>8197ecc1d5e132b0518259b9864122b4c6d7c6c5003678b5f8243507485dfd73</guid>
+<pubDate>Sun, 19 Oct 2025 11:56:50 +0000</pubDate>
+<ext:first_seen>Sun, 19 Oct 2025 12:32:57 +0000</ext:first_seen>
+<ext:starts_at>Sun, 19 Oct 2025 11:56:50 +0000</ext:starts_at>
+<ext:ends_at>Sun, 19 Oct 2025 12:55:00 +0000</ext:ends_at>
+<description><![CDATA[Schadhafter Zug Umleitung bis Jägerstraße über die Linie 31<br>[Seit 19.10.2025]]]></description>
+<content:encoded><![CDATA[Schadhafter Zug Umleitung bis Jägerstraße über die Linie 31<br/>[Seit 19.10.2025]]]></content:encoded>
 </item>
 <item>
 <title><![CDATA[71: Gleisschaden Betrieb ab Schwarzenbergplatz]]></title>

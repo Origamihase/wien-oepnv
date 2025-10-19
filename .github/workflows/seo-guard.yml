@@ -19,7 +19,6 @@ jobs:
     env:
       SITE_BASE: https://origamihase.github.io/wien-oepnv
       DESC: Konsolidierter RSS-Feed für Störungen und Baustellenmeldungen im Wiener ÖPNV (WL/ÖBB/VOR), inkl. Doku & Open-Data-Workflows.
-      TOPICS_JSON: '["wien","oepnv","public-transport","rss-feed","open-data","verkehrsmeldungen","tram","bus","train"]'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -50,19 +49,19 @@ jobs:
             [[ "$before" != "$after" ]] && changed=true
           fi
 
-          # --- robots.txt: Einrückungen & genau eine Sitemap-Zeile ---
+          # --- robots.txt: Einrückungen entfernen & genau eine Sitemap-Zeile ---
           if [[ -f docs/robots.txt ]]; then
             before="$(sha1sum docs/robots.txt | awk '{print $1}')"
-            # Einrückungen entfernen
+            # führende Leerzeichen bei bekannten Direktiven entfernen
             sed -E -i 's/^[[:space:]]+User-agent:/User-agent:/; s/^[[:space:]]+Allow:/Allow:/' docs/robots.txt || true
-            # vorhandene Sitemap-Zeilen entfernen und exakt eine Zeile setzen
+            # alle vorhandenen Sitemap-Zeilen entfernen, eine normierte Zeile setzen
             sed -E -i '/^[[:space:]]*Sitemap:/d' docs/robots.txt
             printf 'Sitemap: %s/sitemap.xml\n' "$SITE_BASE" >> docs/robots.txt
             after="$(sha1sum docs/robots.txt | awk '{print $1}')"
             [[ "$before" != "$after" ]] && changed=true
           fi
 
-          # --- feed.xml: xmlns:atom, language, atom:self/alternate (dedupe & idempotent) ---
+          # --- feed.xml: xmlns:atom, language, atom:self/alternate (DEDUP global) ---
           if [[ -f docs/feed.xml ]]; then
             before="$(sha1sum docs/feed.xml | awk '{print $1}')"
 
@@ -70,22 +69,23 @@ jobs:
               my $base = $ENV{"SITE_BASE"} // "https://origamihase.github.io/wien-oepnv";
               my $s = $_;
 
-              # 1) xmlns:atom ergänzen, falls fehlt (attribut-schonend)
+              # 1) xmlns:atom ergänzen, falls fehlt (attributschonend am <rss>-Starttag)
               $s =~ s{<rss\b(?![^>]*\bxmlns:atom=)}{<rss xmlns:atom="http://www.w3.org/2005/Atom" }s;
 
-              # 2) <language>de</language> nach </description> einfügen, falls nicht vorhanden
+              # 2) vor/nach </description> ein konsistentes Newline sicherstellen
+              $s =~ s{</description>\s*}{</description>\n}s;
+
+              # 3) vorhandenes <language>de</language> ENTWEDER beibehalten ODER normiert direkt nach </description> setzen
               if ($s !~ m{<language>de</language>}s) {
-                $s =~ s{(</description>\s*\n)}{$1    <language>de</language>\n}s;
+                $s =~ s{(</description>\n)}{$1    <language>de</language>\n}s;
               }
 
-              # 3) Alle vorhandenen atom:link self/alternate entfernen (Dedupe) …
-              $s =~ s{\n[ \t]*<atom:link\b[^>]*\brel="self"[^>]*/>\s*}{}gs;
-              $s =~ s{\n[ \t]*<atom:link\b[^>]*\brel="alternate"[^>]*/>\s*}{}gs;
+              # 4) ALLE vorhandenen atom:link in der gesamten Datei entfernen (globales DEDUPE)
+              $s =~ s{\n[ \t]*<atom:link\b[^>]*?/>\s*}{}gs;
 
-              # … und genau zwei normierte Einträge nach </description> einsetzen
-              my $ins = "    <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n"
-                      . "    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n";
-              $s =~ s{(</description>\s*\n)}{$1$ins}s;
+              # 5) EXAKT ZWEI normierte Einträge NACH </description> (bzw. nach language, wenn eingefügt) einsetzen
+              #    Reihenfolge ist egal; wir hängen sie direkt nach </description> an, language bleibt bestehen.
+              $s =~ s{(</description>\n)}{$1    <atom:link rel="alternate" type="text/html" href="$base/"/>\n    <atom:link rel="self" type="application/rss+xml" href="$base/feed.xml"/>\n}s;
 
               $_ = $s;
             ' docs/feed.xml
@@ -142,7 +142,7 @@ jobs:
             exit 0
           fi
           OWNER_REPO="${{ github.repository }}"
-          # Beschreibung + Homepage (Topics bereits gesetzt – optional hier erneut möglich)
+          # Beschreibung + Homepage setzen
           curl -sS -H "Authorization: Bearer ${ADMIN_TOKEN}" \
                -H "Accept: application/vnd.github+json" \
                -X PATCH "https://api.github.com/repos/${OWNER_REPO}" \
@@ -158,16 +158,17 @@ jobs:
           grep -q '<language>de</language>' docs/feed.xml
           grep -q 'xmlns:atom=' docs/feed.xml
 
-      - name: Verify published feed (best-effort, with retries)
+      - name: Verify published feed (best-effort; retries for Pages delay)
         shell: bash
         run: |
           set -euo pipefail
-          for i in {1..5}; do
+          for i in {1..6}; do
             if curl -fsSL "${{ env.SITE_BASE }}/feed.xml" -o /tmp/pub.xml; then
               if grep -q '<language>de</language>' /tmp/pub.xml \
                  && [ "$(grep -c 'atom:link[^>]*rel=\"self\"' /tmp/pub.xml)" -eq 1 ] \
                  && [ "$(grep -c 'atom:link[^>]*rel=\"alternate\"' /tmp/pub.xml)" -eq 1 ]; then
-                echo "Published feed OK"; exit 0
+                echo "Published feed OK"
+                exit 0
               fi
             fi
             sleep 10
