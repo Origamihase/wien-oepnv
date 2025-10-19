@@ -2,11 +2,13 @@
 from __future__ import annotations
 
 import argparse
-import subprocess
+import runpy
 import sys
-from collections.abc import Mapping, Sequence
+from collections.abc import Mapping, Sequence, Iterator
+from contextlib import contextmanager
 from pathlib import Path
 
+from . import build_feed as build_feed_module
 from .utils.stations_validation import validate_stations
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -39,21 +41,31 @@ class CLIError(RuntimeError):
     """Raised when the CLI cannot execute the requested command."""
 
 
-def _run(command: Sequence[str]) -> int:
-    completed = subprocess.run(command, cwd=PROJECT_ROOT, check=False)
-    return int(completed.returncode or 0)
+@contextmanager
+def _patched_argv(script_path: Path, arguments: Sequence[str] | None) -> Iterator[None]:
+    original = sys.argv[:]
+    sys.argv = [str(script_path)] + list(arguments or [])
+    try:
+        yield
+    finally:
+        sys.argv = original
 
 
-def _run_script(script_name: str, *, python: str | None = None, extra_args: Sequence[str] | None = None) -> int:
+def _run_script(
+    script_name: str,
+    *,
+    python: str | None = None,
+    extra_args: Sequence[str] | None = None,
+) -> int:
     script_path = SCRIPTS_DIR / script_name
     if not script_path.exists():
         raise CLIError(f"Script not found: {script_path}")
 
-    interpreter = python or sys.executable
-    command = [interpreter, str(script_path)]
-    if extra_args:
-        command.extend(extra_args)
-    return _run(command)
+    del python  # Interpreter selection is handled via runpy in the current process.
+    cleaned_args = _clean_remainder(list(extra_args or []))
+    with _patched_argv(script_path, cleaned_args):
+        runpy.run_path(str(script_path), run_name="__main__")
+    return 0
 
 
 def _unique_preserving_order(values: Sequence[str]) -> list[str]:
@@ -306,8 +318,8 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
 
 
 def _handle_feed_build(args: argparse.Namespace) -> int:
-    command = [args.python, "-m", "src.build_feed"]
-    return _run(command)
+    del args.python  # Execution happens in-process.
+    return int(build_feed_module.main())
 
 
 def _handle_token_verify(args: argparse.Namespace) -> int:
