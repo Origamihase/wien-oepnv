@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Wien ÖPNV Feed Vorschau</title>
+  <desc id="desc">Grafik mit ÖPNV-Symbolen und Titelzeile für den Wien ÖPNV Feed.</desc>
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a237e" />
+      <stop offset="100%" stop-color="#283593" />
+    </linearGradient>
+    <style type="text/css"><![CDATA[
+      .title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-weight: 700; font-size: 70px; fill: #ffffff; }
+      .subtitle { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 34px; fill: #e8eaf6; }
+      .pill { fill: #ffca28; }
+      .pill-text { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 32px; fill: #1a237e; }
+    ]]></style>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgGradient)" rx="36" />
+  <g transform="translate(100 120)">
+    <text class="title">Wien ÖPNV Feed</text>
+    <text class="subtitle" y="96">Aktuelle Verkehrsmeldungen &amp; API-Daten</text>
+  </g>
+  <g transform="translate(100 320)">
+    <rect class="pill" width="320" height="90" rx="45" />
+    <text class="pill-text" x="160" y="60" text-anchor="middle">RSS &amp; JSON</text>
+    <rect class="pill" x="360" width="320" height="90" rx="45" />
+    <text class="pill-text" x="520" y="60" text-anchor="middle">Open Data</text>
+    <rect class="pill" x="720" width="320" height="90" rx="45" />
+    <text class="pill-text" x="880" y="60" text-anchor="middle">ÖPNV Wien</text>
+  </g>
+  <g transform="translate(90 480)" fill="#c5cae9">
+    <path d="M80 60h80c11 0 20-9 20-20V40c0-22-18-40-40-40H40C18 0 0 18 0 40v0c0 11 9 20 20 20h10v40h50z"/>
+    <rect x="160" width="120" height="100" rx="12" />
+    <path d="M320 0h160l32 40v60h-192z" />
+    <rect x="520" y="10" width="120" height="90" rx="12" />
+    <circle cx="720" cy="50" r="50" />
+    <path d="M840 0h160c22 0 40 18 40 40v20c0 22-18 40-40 40h-160z"/>
+  </g>
+</svg>

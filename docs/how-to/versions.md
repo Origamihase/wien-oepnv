@@ -1,3 +1,8 @@
+---
+title: "API-Versionen prüfen"
+description: "Leitfaden, um aktive VAO ReST API-Versionen über den Versions-Endpunkt abzurufen und Änderungen nachzuverfolgen."
+---
+
 # API-Versionen prüfen
 
 Dieser Leitfaden zeigt, wie die aktiven VAO ReST API-Versionen per `${VOR_VERSIONS}` abgefragt werden.

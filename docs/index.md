@@ -3,9 +3,9 @@ title: "Wien ÖPNV Feed – Aktuelle Verkehrsmeldungen & Open-Data-API"
 description: "Open-Source-Projekt für Verkehrsinformationen in Wien und der Ostregion: RSS-Feed, JSON-Daten, Dokumentation & Entwickler-Tools."
 lang: de
 layout: default
+og_image: /assets/og-default.svg
+og_image_alt: "Diagramm mit ÖPNV-Icons und Wien-Skyline als Vorschau für den Wien ÖPNV Feed"
 ---
-
-<meta name="keywords" content="Wien ÖPNV, Verkehr Wien, Störungen Wiener Linien, Verkehrsverbund Ost-Region, ÖPNV API, Verkehrsmeldungen Wien, Öffentlicher Verkehr Österreich, Echtzeit Verkehr Wien, Wien Linien Störungen, VOR Meldungen">
 
 # Wien ÖPNV Feed – Verkehrsmeldungen & API für Wien und die Ostregion
 
@@ -90,68 +90,68 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Wien ÖPNV Feed",
-  "applicationCategory": "DataFeed",
-  "operatingSystem": "Cross-platform",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "EUR"
-  },
-  "creator": {
-    "@type": "Organization",
-    "name": "Wien ÖPNV Projektteam"
-  },
-  "description": "Open-Source-Projekt zur Aggregation und Bereitstellung von Verkehrsmeldungen für Wien, Niederösterreich und das Burgenland via RSS und JSON.",
-  "url": "https://wien-oepnv.github.io/",
-  "softwareVersion": "1.0",
-  "keywords": [
-    "Wien Linien Störungen",
-    "ÖPNV Wien",
-    "Verkehrsmeldungen Wien",
-    "VOR API",
-    "ÖBB Verkehr"
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "Was ist der Funktionsumfang des Wien ÖPNV Feed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Der Feed bündelt Verkehrs- und Störungsmeldungen aus Wien, Niederösterreich und dem Burgenland, dedupliziert identische Ereignisse und stellt sie als strukturierte RSS- sowie JSON-Daten mit konsistenten Metadaten bereit."
-      }
+      "@type": "SoftwareApplication",
+      "name": "Wien ÖPNV Feed",
+      "applicationCategory": "DataFeed",
+      "operatingSystem": "Cross-platform",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Wien ÖPNV Projektteam"
+      },
+      "description": "Open-Source-Projekt zur Aggregation und Bereitstellung von Verkehrsmeldungen für Wien, Niederösterreich und das Burgenland via RSS und JSON.",
+      "url": "https://wien-oepnv.github.io/",
+      "softwareVersion": "1.0",
+      "keywords": [
+        "Wien Linien Störungen",
+        "ÖPNV Wien",
+        "Verkehrsmeldungen Wien",
+        "VOR API",
+        "ÖBB Verkehr"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Kann ich eigene Provider oder Filter hinzufügen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja. Über Umgebungsvariablen lassen sich Provider deaktivieren und in src/providers/ können neue Adapter ergänzt werden. Das How-to zu Provider-Plugins beschreibt den empfohlenen Workflow inklusive Scaffold-Skript."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Unter welcher Lizenz steht das Projekt?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Der Code wird unter der MIT-Lizenz veröffentlicht. Für externe Datenquellen gelten zusätzlich deren jeweilige Nutzungsbedingungen."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wie bleibe ich über Änderungen informiert?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Repository-Watcher, Release-Abonnements und die Integration der Cache-Updates in CI/CD-Pipelines informieren über Neuerungen. Audit-Berichte und Changelogs dokumentieren wichtige Änderungen."
-      }
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was ist der Funktionsumfang des Wien ÖPNV Feed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Der Feed bündelt Verkehrs- und Störungsmeldungen aus Wien, Niederösterreich und dem Burgenland, dedupliziert identische Ereignisse und stellt sie als strukturierte RSS- sowie JSON-Daten mit konsistenten Metadaten bereit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich eigene Provider oder Filter hinzufügen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Über Umgebungsvariablen lassen sich Provider deaktivieren und in src/providers/ können neue Adapter ergänzt werden. Das How-to zu Provider-Plugins beschreibt den empfohlenen Workflow inklusive Scaffold-Skript."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Unter welcher Lizenz steht das Projekt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Der Code wird unter der MIT-Lizenz veröffentlicht. Für externe Datenquellen gelten zusätzlich deren jeweilige Nutzungsbedingungen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie bleibe ich über Änderungen informiert?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Repository-Watcher, Release-Abonnements und die Integration der Cache-Updates in CI/CD-Pipelines informieren über Neuerungen. Audit-Berichte und Changelogs dokumentieren wichtige Änderungen."
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,3 +1,8 @@
+---
+title: "GET /location.name"
+description: "Referenz für die Namenssuche nach Ortspunkten mit Filteroptionen für Typen, Produkte und Standortgewichtung."
+---
+
 # GET /location.name
 
 ## Kurzbeschreibung

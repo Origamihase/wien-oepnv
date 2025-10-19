@@ -1,3 +1,8 @@
+---
+title: "Trip-Abfrage durchführen"
+description: "Kurzer Leitfaden, um mit der VAO ReST API Fahrten zwischen zwei Punkten zu ermitteln und die Antworten weiterzuverarbeiten."
+---
+
 # Trip-Abfrage durchführen
 
 Diese Anleitung zeigt die grundlegenden Schritte, um mit der VAO ReST API eine Verbindung zu berechnen.
