@@ -417,6 +417,95 @@ def build_wl_entries(
     return entries
 
 
+def _normalize_sources(value: object | None) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, str):
+        candidates = value.split(",")
+    elif isinstance(value, Iterable):  # pragma: no cover - defensive guard
+        candidates = list(value)
+    else:
+        return []
+    normalized: list[str] = []
+    seen: set[str] = set()
+    for item in candidates:
+        text = str(item).strip()
+        if not text:
+            continue
+        if text in seen:
+            continue
+        seen.add(text)
+        normalized.append(text)
+    return normalized
+
+
+def _merge_sources(*values: object | None) -> str:
+    merged: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        for item in _normalize_sources(value):
+            if item in seen:
+                continue
+            seen.add(item)
+            merged.append(item)
+    return ", ".join(merged)
+
+
+def _ensure_sorted_aliases(entry: dict[str, object]) -> None:
+    aliases = entry.get("aliases")
+    if not isinstance(aliases, list):
+        return
+    unique: set[str] = set()
+    cleaned: list[str] = []
+    for alias in aliases:
+        if not isinstance(alias, str):
+            continue
+        text = alias.strip()
+        if not text or text in unique:
+            continue
+        unique.add(text)
+        cleaned.append(text)
+    cleaned.sort()
+    entry["aliases"] = cleaned
+
+
+def _merge_wl_payload(target: dict[str, object], payload: Mapping[str, object]) -> None:
+    if payload.get("wl_diva"):
+        target["wl_diva"] = payload["wl_diva"]
+
+    wl_stops = payload.get("wl_stops")
+    if isinstance(wl_stops, list):
+        target["wl_stops"] = wl_stops
+
+    target["source"] = _merge_sources(target.get("source"), payload.get("source"), "wl")
+
+    existing_aliases: list[str] = []
+    if isinstance(target.get("aliases"), list):
+        existing_aliases = list(target.get("aliases") or [])
+    incoming_aliases = []
+    if isinstance(payload.get("aliases"), list):
+        incoming_aliases = list(payload.get("aliases") or [])
+    target["aliases"] = existing_aliases + incoming_aliases
+    _ensure_sorted_aliases(target)
+
+    if target.get("latitude") in (None, "") and payload.get("latitude") is not None:
+        target["latitude"] = payload["latitude"]
+    if target.get("longitude") in (None, "") and payload.get("longitude") is not None:
+        target["longitude"] = payload["longitude"]
+
+
+def _lookup_candidates(index: Mapping[str, dict[str, object]], key: object | None) -> dict[str, object] | None:
+    if key is None:
+        return None
+    text = str(key).strip()
+    if not text:
+        return None
+    normalized = _normalize_key(text)
+    if not normalized:
+        return None
+    return index.get(normalized)
+
+
 def merge_into_stations(
     stations_path: Path,
     wl_entries: list[dict[str, object]],
@@ -429,9 +518,82 @@ def merge_into_stations(
     if not isinstance(existing, list):
         raise ValueError("stations.json must contain a JSON array")
 
-    filtered = [entry for entry in existing if entry.get("source") != "wl"]
+    filtered: list[dict[str, object]] = []
+    vor_index: dict[str, dict[str, object]] = {}
+    bst_index: dict[str, dict[str, object]] = {}
+    name_index: dict[str, dict[str, object]] = {}
+
+    for entry in existing:
+        source = entry.get("source")
+        if isinstance(source, str) and source.strip() == "wl":
+            continue
+        filtered.append(entry)
+
+        vor_id = entry.get("vor_id")
+        if vor_id is not None:
+            key = _normalize_key(str(vor_id))
+            if key and key not in vor_index:
+                vor_index[key] = entry
+
+        bst_id = entry.get("bst_id")
+        if bst_id is not None:
+            key = _normalize_key(str(bst_id))
+            if key and key not in bst_index:
+                bst_index[key] = entry
+
+        name = entry.get("name")
+        if isinstance(name, str):
+            key = _normalize_key(name)
+            if key and key not in name_index:
+                name_index[key] = entry
+
+        aliases = entry.get("aliases")
+        if isinstance(aliases, list):
+            for alias in aliases:
+                if not isinstance(alias, str):
+                    continue
+                key = _normalize_key(alias)
+                if key and key not in name_index:
+                    name_index[key] = entry
+
     log.info("Keeping %d existing non-WL stations", len(filtered))
-    filtered.extend(wl_entries)
+
+    unmatched: list[dict[str, object]] = []
+    for payload in wl_entries:
+        merged_into: dict[str, object] | None = None
+
+        vor_id = payload.get("vor_id")
+        merged_into = _lookup_candidates(vor_index, vor_id)
+
+        if merged_into is None:
+            bst_id = payload.get("bst_id")
+            merged_into = _lookup_candidates(bst_index, bst_id)
+
+        if merged_into is None:
+            name = payload.get("name")
+            if isinstance(name, str):
+                merged_into = _lookup_candidates(name_index, name)
+
+        if merged_into is None:
+            aliases = payload.get("aliases")
+            if isinstance(aliases, list):
+                for alias in aliases:
+                    if not isinstance(alias, str):
+                        continue
+                    merged_into = _lookup_candidates(name_index, alias)
+                    if merged_into is not None:
+                        break
+
+        if merged_into is not None:
+            _merge_wl_payload(merged_into, payload)
+            continue
+
+        entry = dict(payload)
+        entry["source"] = _merge_sources(payload.get("source"), "wl") or "wl"
+        _ensure_sorted_aliases(entry)
+        unmatched.append(entry)
+
+    filtered.extend(unmatched)
 
     with stations_path.open("w", encoding="utf-8") as handle:
         json.dump(filtered, handle, ensure_ascii=False, indent=2)
