@@ -49,6 +49,13 @@ Alle Datenquellen werden revisionssicher versioniert, inklusive Lizenzhinweisen.
 - **Datenjournalismus & Forschung**: Analysiere historische Meldungen, entdecke Muster in Störungsdaten und visualisiere Trends.
 - **Unternehmensinterne Dashboards**: Überwache wichtige Linien, verknüpfe Daten mit eigenen KPIs und setze Benachrichtigungen auf.
 
+## Feed abonnieren & weiterempfehlen
+
+- **Direkter RSS-Link**: `https://origamihase.github.io/wien-oepnv/feed.xml` liefert stets die aktuellen Meldungen mit sprechenden GUIDs und permalinks. Die Elemente enthalten eindeutige Titel und Links, damit News-Aggregatoren wie Feedly oder Inoreader sie korrekt erkennen.
+- **Sitemap & Robots**: `docs/sitemap.xml` und `docs/robots.txt` weisen Suchmaschinen aktiv auf den Feed hin. Der `<link rel="alternate">`-Eintrag im HTML-Head macht den Feed außerdem für Google Discover und andere „Folgen“-Funktionen sichtbar.
+- **Weiterführende Signale**: Verlinke das Projekt auf deiner Website, in Blogposts oder passenden Community-Foren (z. B. Reddit, Mastodon, lokale ÖPNV-Gruppen). Jede Empfehlung erzeugt wertvolle Backlinks und hilft Suchmaschinen, die Relevanz des Angebots einzuordnen.
+- **Monitoring**: Hinterlege den Feed in eigenen Automationen oder in der Google Search Console, um Crawling-Fehler oder Strukturanpassungen frühzeitig zu erkennen. Feed-Validatoren wie `https://validator.w3.org/feed/` unterstützen beim kontinuierlichen Qualitätscheck.
+
 ## Vorteile für SEO & Auffindbarkeit
 
 - Aussagekräftige Titel, Meta-Beschreibungen und Keywords in der Projektdokumentation.
