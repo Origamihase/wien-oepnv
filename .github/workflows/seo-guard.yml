@@ -50,50 +50,45 @@ jobs:
             [[ "$before" != "$after" ]] && changed=true
           fi
 
-          # --- robots.txt: Sitemap ---
+          # --- robots.txt: Einrückungen & genau eine Sitemap-Zeile ---
           if [[ -f docs/robots.txt ]]; then
             before="$(sha1sum docs/robots.txt | awk '{print $1}')"
-            # Einheitliche, nicht eingerückte Zeilen
+            # Einrückungen entfernen
             sed -E -i 's/^[[:space:]]+User-agent:/User-agent:/; s/^[[:space:]]+Allow:/Allow:/' docs/robots.txt || true
-            if grep -Eq '^[[:space:]]*Sitemap:' docs/robots.txt; then
-              sed -E -i 's#^[[:space:]]*Sitemap:.*#Sitemap: '"$SITE_BASE"'/sitemap.xml#g' docs/robots.txt
-            else
-              printf 'Sitemap: %s/sitemap.xml\n' "$SITE_BASE" >> docs/robots.txt
-            fi
+            # vorhandene Sitemap-Zeilen entfernen und exakt eine Zeile setzen
+            sed -E -i '/^[[:space:]]*Sitemap:/d' docs/robots.txt
+            printf 'Sitemap: %s/sitemap.xml\n' "$SITE_BASE" >> docs/robots.txt
             after="$(sha1sum docs/robots.txt | awk '{print $1}')"
             [[ "$before" != "$after" ]] && changed=true
           fi
 
-          # --- feed.xml: xmlns:atom, language, atom:links (multiline-safe) ---
+          # --- feed.xml: xmlns:atom, language, atom:self/alternate (dedupe & idempotent) ---
           if [[ -f docs/feed.xml ]]; then
             before="$(sha1sum docs/feed.xml | awk '{print $1}')"
 
-            # 1) xmlns:atom nur ergänzen, wenn nicht vorhanden
-            perl -0777 -pe 's|<rss\b(?![^>]*\bxmlns:atom=)|<rss xmlns:atom="http://www.w3.org/2005/Atom" |s' -i docs/feed.xml
+            perl -0777 -i -pe '
+              my $base = $ENV{"SITE_BASE"} // "https://origamihase.github.io/wien-oepnv";
+              my $s = $_;
 
-            # 2) <language>de</language> nach <description> nur wenn fehlt
-            if ! grep -q '<language>de</language>' docs/feed.xml; then
-              awk '
-                /<description>/ && !done { print; print "    <language>de</language>"; done=1; next }
-                { print }
-              ' docs/feed.xml > docs/feed.xml.tmp && mv docs/feed.xml.tmp docs/feed.xml
-            fi
+              # 1) xmlns:atom ergänzen, falls fehlt (attribut-schonend)
+              $s =~ s{<rss\b(?![^>]*\bxmlns:atom=)}{<rss xmlns:atom="http://www.w3.org/2005/Atom" }s;
 
-            # 3) atom:link rel="self" nur wenn fehlt
-            if ! grep -q 'atom:link[^>]*rel="self"[^>]*origamihase.github.io/wien-oepnv/feed.xml' docs/feed.xml; then
-              awk '
-                /<description>/ && !sdone { print; print "    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"'"$SITE_BASE"'/feed.xml\"/>"; sdone=1; next }
-                { print }
-              ' docs/feed.xml > docs/feed.xml.tmp && mv docs/feed.xml.tmp docs/feed.xml
-            fi
+              # 2) <language>de</language> nach </description> einfügen, falls nicht vorhanden
+              if ($s !~ m{<language>de</language>}s) {
+                $s =~ s{(</description>\s*\n)}{$1    <language>de</language>\n}s;
+              }
 
-            # 4) atom:link rel="alternate" nur wenn fehlt
-            if ! grep -q 'atom:link[^>]*rel="alternate"[^>]*origamihase.github.io/wien-oepnv/?' docs/feed.xml; then
-              awk '
-                /<description>/ && !adone { print; print "    <atom:link rel=\"alternate\" type=\"text/html\" href=\"'"$SITE_BASE"'/\"/>"; adone=1; next }
-                { print }
-              ' docs/feed.xml > docs/feed.xml.tmp && mv docs/feed.xml.tmp docs/feed.xml
-            fi
+              # 3) Alle vorhandenen atom:link self/alternate entfernen (Dedupe) …
+              $s =~ s{\n[ \t]*<atom:link\b[^>]*\brel="self"[^>]*/>\s*}{}gs;
+              $s =~ s{\n[ \t]*<atom:link\b[^>]*\brel="alternate"[^>]*/>\s*}{}gs;
+
+              # … und genau zwei normierte Einträge nach </description> einsetzen
+              my $ins = "    <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n"
+                      . "    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n";
+              $s =~ s{(</description>\s*\n)}{$1$ins}s;
+
+              $_ = $s;
+            ' docs/feed.xml
 
             after="$(sha1sum docs/feed.xml | awk '{print $1}')"
             [[ "$before" != "$after" ]] && changed=true
@@ -115,7 +110,7 @@ jobs:
           CUR="$(git rev-parse --abbrev-ref HEAD || true)"
           BRANCH="${CUR:-$DEF}"
           git add -A
-          git commit -m "chore(seo): feed atom links + language; sitemap/robots canonicals"
+          git commit -m "chore(seo): feed atom links (dedupe) + language; sitemap/robots canonicals"
           if git push origin "HEAD:${BRANCH}"; then
             echo "mode=direct" >> "$GITHUB_OUTPUT"
           else
@@ -125,21 +120,20 @@ jobs:
             git push origin "HEAD:$PRB"
             OWNER_REPO="${{ github.repository }}"
             BASE="$DEF"
-            BODY=$'Fix: Canonicals in sitemap/robots; Feed: language=de, Atom self/alternate + xmlns:atom. Idempotent.'
+            BODY=$'Fix: Canonicals in sitemap/robots; Feed: language=de, Atom self/alternate (dedupe) + xmlns:atom. Idempotent.'
             curl -sS -H "Authorization: Bearer ${GH_TOKEN}" \
                  -H "Accept: application/vnd.github+json" \
                  -X POST "https://api.github.com/repos/${OWNER_REPO}/pulls" \
                  -d "$(printf '{ "title": %q, "head": %q, "base": %q, "body": %q }' \
-                          "SEO: Canonicals + Atom-Links im RSS-Feed" "$PRB" "$BASE" "$BODY")" >/dev/null
+                          "SEO: Canonicals + Atom-Links (dedupe) im RSS-Feed" "$PRB" "$BASE" "$BODY")" >/dev/null
             echo "mode=pr" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Update repository metadata (desc/homepage/topics) via PAT
+      - name: Update repository metadata (desc/homepage) via PAT
         env:
           ADMIN_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
           SITE_BASE: ${{ env.SITE_BASE }}
           DESC: ${{ env.DESC }}
-          TOPICS_JSON: ${{ env.TOPICS_JSON }}
         shell: bash
         run: |
           set -euo pipefail
@@ -148,30 +142,34 @@ jobs:
             exit 0
           fi
           OWNER_REPO="${{ github.repository }}"
-          # Beschreibung + Homepage
+          # Beschreibung + Homepage (Topics bereits gesetzt – optional hier erneut möglich)
           curl -sS -H "Authorization: Bearer ${ADMIN_TOKEN}" \
                -H "Accept: application/vnd.github+json" \
                -X PATCH "https://api.github.com/repos/${OWNER_REPO}" \
-               -d "$(printf '{"description":%q,"homepage":%q}' "${DESC}" "${SITE_BASE}/")" >/dev/null
-          # Topics (ersetzen)
-          curl -sS -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-               -H "Accept: application/vnd.github+json" \
-               -H "Content-Type: application/json" \
-               -X PUT "https://api.github.com/repos/${OWNER_REPO}/topics" \
-               -d "{\"names\": ${TOPICS_JSON} }" >/dev/null
+               -d "$(printf '{"description":%q,"homepage":%q}' \
+                    "${DESC}" "${SITE_BASE}/")" >/dev/null
 
-      - name: Verify published feed contains SEO tags
+      - name: Verify feed file (repo) – exactly one self & one alternate
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsSL "${{ env.SITE_BASE }}/feed.xml" -o /tmp/feed.xml
-          grep -q '<language>de</language>' /tmp/feed.xml
-          grep -q 'atom:link[^>]*rel="self"' /tmp/feed.xml
-          grep -q 'atom:link[^>]*rel="alternate"' /tmp/feed.xml
+          test "$(grep -c 'atom:link[^>]*rel=\"self\"' docs/feed.xml)" -eq 1
+          test "$(grep -c 'atom:link[^>]*rel=\"alternate\"' docs/feed.xml)" -eq 1
+          grep -q '<language>de</language>' docs/feed.xml
+          grep -q 'xmlns:atom=' docs/feed.xml
 
-      - name: Summary
+      - name: Verify published feed (best-effort, with retries)
         shell: bash
         run: |
-          echo "SEO Guard abgeschlossen."
-          echo "Änderungen angewendet:  ${{ steps.seo.outputs.changed }}"
-          echo "Veröffentlichungsmodus:  ${{ steps.publish.outputs.mode || 'none' }}"
+          set -euo pipefail
+          for i in {1..5}; do
+            if curl -fsSL "${{ env.SITE_BASE }}/feed.xml" -o /tmp/pub.xml; then
+              if grep -q '<language>de</language>' /tmp/pub.xml \
+                 && [ "$(grep -c 'atom:link[^>]*rel=\"self\"' /tmp/pub.xml)" -eq 1 ] \
+                 && [ "$(grep -c 'atom:link[^>]*rel=\"alternate\"' /tmp/pub.xml)" -eq 1 ]; then
+                echo "Published feed OK"; exit 0
+              fi
+            fi
+            sleep 10
+          done
+          echo "WARN: Published feed noch nicht synchron; Repo-Datei ist korrekt."
