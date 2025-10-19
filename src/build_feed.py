@@ -24,6 +24,7 @@ from pathlib import Path
 from threading import BoundedSemaphore
 from time import perf_counter
 from typing import Any, Dict, Iterator, List, Optional, Sequence, Tuple
+from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
 
 try:  # pragma: no cover - allow running as script or module
@@ -1192,6 +1193,36 @@ def _emit_channel_header(now: datetime) -> List[str]:
     h.append(f"<ttl>{FEED_TTL}</ttl>")
     return h
 
+def _build_canonical_link(candidate: Any, ident: str) -> str:
+    """Return a canonical link for ``ident`` with a stable fallback anchor."""
+
+    if isinstance(candidate, str):
+        normalized = candidate.strip()
+        if normalized:
+            return normalized
+
+    slug_source = ident or ""
+    slug = quote(slug_source, safe="")
+    base = (FEED_LINK or "").strip()
+    if not base:
+        return f"#meldung-{slug}" if slug else ""
+
+    anchor_prefix = "meldung"
+    base = base.rstrip("/")
+    if slug:
+        return f"{base}/#{anchor_prefix}-{slug}"
+    return base
+
+
+def _guid_attributes(guid: str, link: str) -> str:
+    """Return attributes for the GUID tag based on permalink heuristics."""
+
+    parsed = urlparse(guid)
+    if parsed.scheme and parsed.netloc and guid == link:
+        return ""
+    return ' isPermaLink="false"'
+
+
 def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any]]) -> Tuple[str, str]:
     pubDate = _coerce_datetime_field(it, "pubDate")
     starts_at = _coerce_datetime_field(it, "starts_at")
@@ -1213,8 +1244,14 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     # Felder holen
     raw_title = it.get("title") or "Mitteilung"
     raw_desc  = it.get("description") or ""
-    link      = it.get("link") or FEED_LINK
-    guid      = it.get("guid") or ident
+    link = _build_canonical_link(it.get("link"), ident)
+    if not link:
+        link = FEED_LINK
+
+    raw_guid = it.get("guid") or ident
+    guid = str(raw_guid).strip() if raw_guid is not None else ident
+    if not guid:
+        guid = ident
     if not isinstance(pubDate, datetime) and FRESH_PUBDATE_WINDOW_MIN > 0:
         age = _to_utc(now) - _to_utc(fs_dt)
         if age <= timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN):
@@ -1330,7 +1367,8 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     parts.append("<item>")
     parts.append(f"<title>{_cdata(title_out)}</title>")
     parts.append(f"<link>{html.escape(link)}</link>")
-    parts.append(f"<guid>{html.escape(guid)}</guid>")
+    guid_attrs = _guid_attributes(guid, link)
+    parts.append(f"<guid{guid_attrs}>{html.escape(guid)}</guid>")
     if isinstance(pubDate, datetime):
         parts.append(f"<pubDate>{_fmt_rfc2822(pubDate)}</pubDate>")
 
