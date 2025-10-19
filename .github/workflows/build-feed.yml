@@ -45,17 +45,11 @@ jobs:
             my $s = $_;
 
             $s =~ s{<rss\b(?![^>]*\bxmlns:atom=)}{<rss xmlns:atom="http://www.w3.org/2005/Atom" }s;
-            $s =~ s{</description>\s*}{</description>\n}s;
-
-            if ($s !~ m{<language>de</language>}s) {
-              $s =~ s{(</description>\n)}{$1    <language>de</language>\n}s;
-            }
-
-            $s =~ s{\n[ \t]*<atom:link\b[^>]*?/>\s*}{}gs;
-
-            my $ins = "    <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n"
-                    . "    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n";
-            $s =~ s{(</description>\n)}{$1$ins}s;
+            $s =~ s{(?:\r?\n)?[ \t]*<atom:link\b[^>]*?/>}{}gs;
+            $s =~ s{(<channel>.*?<description>.*?</description>)(?:\s*<language>.*?</language>)?\s*}{
+              my $prefix = $1;
+              "$prefix\n    <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n    <language>de</language>\n"
+            }es;
 
             $_ = $s;
           ' docs/feed.xml

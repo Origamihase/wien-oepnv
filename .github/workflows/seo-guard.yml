@@ -70,16 +70,13 @@ jobs:
               my $s = $_;
               # Atom-Namespace ergänzen (nur wenn fehlt)
               $s =~ s{<rss\b(?![^>]*\bxmlns:atom=)}{<rss xmlns:atom="http://www.w3.org/2005/Atom" }s;
-              # Nach </description> stets einen Zeilenumbruch erzwingen
-              $s =~ s{</description>\s*}{</description>\n}s;
-              # Sprache einfügen, falls nicht vorhanden
-              if ($s !~ m{<language>de</language>}s) {
-                $s =~ s{(</description>\n)}{$1    <language>de</language>\n}s;
-              }
               # Alle bestehenden atom:link-Tags global entfernen
-              $s =~ s{\n[ \t]*<atom:link\b[^>]*?/>\s*}{}gs;
-              # Genau zwei normierte Links (alternate & self) direkt nach </description> einsetzen
-              $s =~ s{(</description>\n)}{$1    <atom:link rel="alternate" type="text/html" href="$base/"/>\n    <atom:link rel="self" type="application/rss+xml" href="$base/feed.xml"/>\n}s;
+              $s =~ s{(?:\r?\n)?[ \t]*<atom:link\b[^>]*?/>}{}gs;
+              # Channel-Links & Sprache normieren
+              $s =~ s{(<channel>.*?<description>.*?</description>)(?:\s*<language>.*?</language>)?\s*}{
+                my $prefix = $1;
+                "$prefix\n    <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n    <language>de</language>\n"
+              }es;
               $_ = $s;
             ' docs/feed.xml
 
