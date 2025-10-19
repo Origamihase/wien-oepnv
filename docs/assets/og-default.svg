@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" aria-label="Wien ÖPNV Feed – Social Preview (korrigiert)">
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" aria-label="Wien ÖPNV Feed – Social Preview (Abstände angepasst)">
   <!-- Hintergrund -->
   <rect width="1200" height="630" fill="#0F1736"/>
 
@@ -13,26 +13,22 @@
         font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial"
         font-weight="500" font-size="36" fill="#CFE0FF">Störungen · Baustellen · Hinweise · RSS &amp; JSON</text>
 
-  <!-- Wappen-Panel (rechts oben, fixe Koordinaten) -->
+  <!-- Wappen-Panel -->
   <g transform="translate(988,48)">
     <rect width="148" height="176" rx="18" fill="#111C44" stroke="#2A3873"/>
-    <!-- Wiener Wappen (exakt zentriert im Panel) -->
     <g transform="translate(11,9)">
-      <!-- Außenschild -->
       <path d="M10 4 H116 V70 C116 110 95 138 63 154 C31 138 10 110 10 70 V4 Z"
             fill="#E0182D" stroke="#000000" stroke-width="3"/>
-      <!-- Weißes Kreuz -->
       <rect x="55" y="8" width="16" height="142" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
       <rect x="14" y="60" width="98" height="16" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
-      <!-- Innenkontur -->
       <path d="M14 8 H112 V70 C112 108 93 134 63 149 C33 134 14 108 14 70 V8 Z"
             fill="none" stroke="#000000" stroke-width="2"/>
     </g>
   </g>
 
-  <!-- Chips / Badges (einheitlich 60 px hoch) -->
+  <!-- Badges: um 20 px nach unten versetzt (y=260) -->
   <!-- WL -->
-  <g transform="translate(64,240)">
+  <g transform="translate(64,260)">
     <rect width="260" height="60" rx="18" fill="#E2002A"/>
     <g transform="translate(16,12)">
       <rect x="0" y="8" width="46" height="28" rx="6" fill="#FFFFFF"/>
@@ -47,7 +43,7 @@
   </g>
 
   <!-- ÖBB -->
-  <g transform="translate(340,240)">
+  <g transform="translate(340,260)">
     <rect width="220" height="60" rx="18" fill="#CC0000"/>
     <g transform="translate(16,10)">
       <rect x="0" y="6" width="48" height="36" rx="10" fill="#FFFFFF"/>
@@ -63,13 +59,15 @@
   </g>
 
   <!-- VOR -->
-  <g transform="translate(576,240)">
+  <g transform="translate(576,260)">
     <rect width="230" height="60" rx="18" fill="#7ABC1E"/>
     <g transform="translate(16,12)">
       <rect x="0" y="8" width="48" height="28" rx="6" fill="#FFFFFF"/>
       <rect x="6" y="14" width="30" height="8" rx="2" fill="#0F1736"/>
       <rect x="8" y="26" width="10" height="6" rx="2" fill="#0F1736"/>
       <rect x="28" y="26" width="10" height="6" rx="2" fill="#0F1736"/>
+      <circle cx="14" cy="42" r="4.5" fill="#FFFFFF"/>
+      <circle cx="34" cy="42" r="4.5" fill="#FFFFFF"/>
     </g>
     <text x="80" y="39"
           font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial"
@@ -77,7 +75,7 @@
   </g>
 
   <!-- RSS -->
-  <g transform="translate(822,240)">
+  <g transform="translate(822,260)">
     <rect width="210" height="60" rx="18" fill="#FFD95B"/>
     <g transform="translate(16,10)">
       <circle cx="12" cy="40" r="6" fill="#0F1A3A"/>
