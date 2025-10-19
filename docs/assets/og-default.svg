@@ -33,15 +33,18 @@
         fill: #FFD95B; /* Gelb */
         opacity: 0.8;
       }
-      /* Farben für das Wiener Wappen */
-      .wappen-background {
-        fill: #C60C30; /* Rot des Wiener Wappens */
+      /* Farben für das Wiener Wappen (Adler) */
+      .wappen-schild {
+        fill: #C60C30; /* Rot für den Schild */
       }
-      .wappen-cross {
-        fill: #FFFFFF; /* Weiß des Wiener Wappens */
+      .wappen-adler {
+        fill: #000000; /* Schwarz für den Adler */
+      }
+      .wappen-bewehrung {
+        fill: #FFD700; /* Gold für Bewehrung (Schnabel, Zunge, Krallen) */
       }
       .wappen-border {
-        stroke: #000000; /* Schwarze Umrandung für das Wappen */
+        stroke: #000000; /* Schwarze Umrandung für den Schild */
         stroke-width: 3;
       }
     </style>
@@ -83,11 +86,10 @@
   </g>
 
   <g transform="translate(970, 40) scale(0.8)">
-    <path class="wappen-background" d="M 0 0 C 0 0, 100 -20, 200 0 C 200 0, 220 100, 200 200 C 200 200, 100 220, 0 200 C 0 200, -20 100, 0 0 Z"/>
+    <path class="wappen-schild" d="M 0 0 C 0 0, 100 -20, 200 0 C 200 0, 220 100, 200 200 C 200 200, 100 220, 0 200 C 0 200, -20 100, 0 0 Z"/>
     
-    <rect x="60" y="45" width="80" height="20" class="wappen-cross"/>
-    <rect x="90" y="15" width="20" height="80" class="wappen-cross"/>
+    <path class="wappen-adler" d="M100,40 C120,20 180,20 160,40 L170,60 C180,80 180,120 160,140 L140,160 C120,180 80,180 60,160 L40,140 C20,120 20,80 40,60 L30,40 Z"/>
     
-    <path class="wappen-border" d="M 0 0 C 0 0, 100 -20, 200 0 C 200 0, 220 100, 200 200 C 200 200, 100 220, 0 200 C 0 200, -20 100, 0 0 Z"/>
+    <circle class="wappen-bewehrung" cx="100" cy="40" r="5"/> <circle class="wappen-bewehrung" cx="60" cy="150" r="5"/> <circle class="wappen-bewehrung" cx="140" cy="150" r="5"/> <path class class="wappen-border" d="M 0 0 C 0 0, 100 -20, 200 0 C 200 0, 220 100, 200 200 C 200 200, 100 220, 0 200 C 0 200, -20 100, 0 0 Z"/>
   </g>
 </svg>
