@@ -1,95 +1,58 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+from __future__ import annotations
 
+import errno
+import hashlib
+import html
 import inspect
 import json
-import os
-import sys
-import html
 import logging
-from logging.handlers import RotatingFileHandler
-from dataclasses import dataclass, field
+import os
 import re
-import hashlib
-import errno
+import sys
 from collections import defaultdict
-from contextlib import contextmanager
 from concurrent.futures import (
+    FIRST_COMPLETED,
+    CancelledError,
     ThreadPoolExecutor,
     TimeoutError,
     wait,
-    FIRST_COMPLETED,
-    CancelledError,
 )
+from contextlib import contextmanager
+from datetime import datetime, timedelta, timezone
+from email.utils import format_datetime
 from pathlib import Path
 from threading import BoundedSemaphore
-from time import perf_counter, struct_time
-from typing import TYPE_CHECKING, Any, Dict, Iterator, List, Optional, Tuple
-from datetime import datetime, timezone, timedelta
-from email.utils import format_datetime
+from time import perf_counter
+from typing import Any, Dict, Iterator, List, Optional, Tuple
 from zoneinfo import ZoneInfo
 
-if TYPE_CHECKING:  # pragma: no cover - make mypy prefer package imports
-    from .config.defaults import (
-        DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
-        DEFAULT_DESCRIPTION_CHAR_LIMIT,
-        DEFAULT_ENDS_AT_GRACE_MINUTES,
-        DEFAULT_FEED_DESCRIPTION,
-        DEFAULT_FEED_LINK,
-        DEFAULT_FEED_TITLE,
-        DEFAULT_FEED_TTL_MINUTES,
-        DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
-        DEFAULT_MAX_ITEMS,
-        DEFAULT_MAX_ITEM_AGE_DAYS,
-        DEFAULT_OUT_PATH,
-        DEFAULT_PROVIDER_MAX_WORKERS,
-        DEFAULT_PROVIDER_TIMEOUT,
-        DEFAULT_STATE_PATH,
-        DEFAULT_STATE_RETENTION_DAYS,
+try:  # pragma: no cover - allow running as script or module
+    from feed import config as feed_config
+    from feed.logging import configure_logging
+    from feed.providers import (
+        iter_providers,
+        load_provider_plugins,
+        provider_statuses,
+        register_provider,
+        resolve_provider_name,
     )
-    from .utils.cache import read_cache, register_cache_alert_hook
-    from .utils.env import get_bool_env, get_int_env
-else:  # pragma: no cover - allow running as package and as script
-    try:
-        from config.defaults import (  # type: ignore
-            DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
-            DEFAULT_DESCRIPTION_CHAR_LIMIT,
-            DEFAULT_ENDS_AT_GRACE_MINUTES,
-            DEFAULT_FEED_DESCRIPTION,
-            DEFAULT_FEED_LINK,
-            DEFAULT_FEED_TITLE,
-            DEFAULT_FEED_TTL_MINUTES,
-            DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
-            DEFAULT_MAX_ITEMS,
-            DEFAULT_MAX_ITEM_AGE_DAYS,
-            DEFAULT_OUT_PATH,
-            DEFAULT_PROVIDER_MAX_WORKERS,
-            DEFAULT_PROVIDER_TIMEOUT,
-            DEFAULT_STATE_PATH,
-            DEFAULT_STATE_RETENTION_DAYS,
-        )
-        from utils.cache import read_cache, register_cache_alert_hook
-        from utils.env import get_int_env, get_bool_env
-    except ModuleNotFoundError:
-        from .config.defaults import (  # type: ignore
-            DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
-            DEFAULT_DESCRIPTION_CHAR_LIMIT,
-            DEFAULT_ENDS_AT_GRACE_MINUTES,
-            DEFAULT_FEED_DESCRIPTION,
-            DEFAULT_FEED_LINK,
-            DEFAULT_FEED_TITLE,
-            DEFAULT_FEED_TTL_MINUTES,
-            DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
-            DEFAULT_MAX_ITEMS,
-            DEFAULT_MAX_ITEM_AGE_DAYS,
-            DEFAULT_OUT_PATH,
-            DEFAULT_PROVIDER_MAX_WORKERS,
-            DEFAULT_PROVIDER_TIMEOUT,
-            DEFAULT_STATE_PATH,
-            DEFAULT_STATE_RETENTION_DAYS,
-        )
-        from .utils.cache import read_cache, register_cache_alert_hook  # type: ignore
-        from .utils.env import get_int_env, get_bool_env  # type: ignore
+    from feed.reporting import RunReport, clean_message
+except ModuleNotFoundError:  # pragma: no cover
+    from .feed import config as feed_config
+    from .feed.logging import configure_logging
+    from .feed.providers import (
+        iter_providers,
+        load_provider_plugins,
+        provider_statuses,
+        register_provider,
+        resolve_provider_name,
+    )
+    from .feed.reporting import RunReport, clean_message
+
+try:  # pragma: no cover - allow running as script or package
+    from utils.cache import read_cache as _core_read_cache, register_cache_alert_hook  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover
+    from .utils.cache import read_cache as _core_read_cache, register_cache_alert_hook
 
 try:  # pragma: no cover - platform dependent
     import fcntl  # type: ignore
@@ -101,658 +64,85 @@ try:  # pragma: no cover - platform dependent
 except ModuleNotFoundError:  # pragma: no cover
     msvcrt = None  # type: ignore
 
-# ---------------- Paths ----------------
-_ALLOWED_ROOTS = {"docs", "data", "log"}
-_REPO_ROOT = Path(__file__).resolve().parents[1]
+log = logging.getLogger("build_feed")
 
 
-def _resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: bool = False) -> Path:
-    """Return a repository-internal path for ``env_name``.
-
-    Empty or whitespace-only values fall back to ``default``.  Invalid
-    non-empty values propagate the :class:`ValueError` raised by
-    :func:`_validate_path`.
-    """
-
-    default_path = Path(default)
-    raw = os.getenv(env_name)
-    candidate_str = (raw or "").strip()
-
-    if not candidate_str:
-        _validate_path(default_path, env_name)
-        resolved_default = Path(default_path)
-        os.environ[env_name] = resolved_default.as_posix()
-        return resolved_default
-
-    candidate_path = Path(candidate_str)
-    try:
-        resolved = _validate_path(candidate_path, env_name)
-    except ValueError:
-        if not allow_fallback:
-            raise
-
-        default_parts = Path(default_path).parts
-        candidate_parts = candidate_path.parts
-        if default_parts and len(candidate_parts) >= len(default_parts):
-            if candidate_parts[-len(default_parts):] == default_parts:
-                _validate_path(default_path, env_name)
-                fallback = Path(default_path)
-                os.environ[env_name] = fallback.as_posix()
-                return fallback
-
-        _validate_path(default_path, env_name)
-        fallback_path = Path(default_path)
-        os.environ[env_name] = fallback_path.as_posix()
-        return fallback_path
-    os.environ[env_name] = resolved.as_posix()
-    return resolved
+resolve_env_path = feed_config.resolve_env_path
+validate_path = feed_config.validate_path
+get_bool_env = feed_config.get_bool_env
+LOG_TIMEZONE = feed_config.LOG_TIMEZONE
 
 
-def _validate_path(path: Path, name: str) -> Path:
-    """Ensure ``path`` stays within whitelisted directories."""
+def refresh_from_env() -> None:
+    """Refresh configuration values and reload provider plugins."""
 
-    resolved = path.resolve()
-    bases = {Path.cwd().resolve(), _REPO_ROOT}
-    for base in bases:
-        try:
-            rel = resolved.relative_to(base)
-        except Exception:
-            continue
-        if rel.parts and rel.parts[0] in _ALLOWED_ROOTS:
-            return resolved
-    raise ValueError(f"{name} outside allowed directories")
-
-# ---------------- Logging ----------------
-LOG_TIMEZONE = ZoneInfo("Europe/Vienna")
+    feed_config.refresh_from_env()
+    load_provider_plugins(force=True)
 
 
-def _vienna_time_converter(timestamp: float | None) -> struct_time:
-    effective_timestamp = (
-        timestamp
-        if timestamp is not None
-        else datetime.now(tz=LOG_TIMEZONE).timestamp()
-    )
-    return datetime.fromtimestamp(effective_timestamp, LOG_TIMEZONE).timetuple()
+refresh_from_env()
 
-
-class _MaxLevelFilter(logging.Filter):
-    def __init__(self, max_level: int) -> None:
-        super().__init__()
-        self._max_level = max_level
-
-    def filter(self, record: logging.LogRecord) -> bool:
-        return record.levelno <= self._max_level
-
-
-class _JSONFormatter(logging.Formatter):
-    _DEFAULT_FIELDS = {
-        "name",
-        "msg",
-        "args",
-        "levelname",
-        "levelno",
-        "pathname",
-        "filename",
-        "module",
-        "exc_info",
-        "exc_text",
-        "stack_info",
-        "lineno",
-        "funcName",
-        "created",
-        "msecs",
-        "relativeCreated",
-        "thread",
-        "threadName",
-        "processName",
-        "process",
-    }
-
-    def format(self, record: logging.LogRecord) -> str:
-        message = record.getMessage()
-        timestamp = datetime.fromtimestamp(record.created, LOG_TIMEZONE)
-        payload: Dict[str, Any] = {
-            "timestamp": timestamp.isoformat(),
-            "level": record.levelname,
-            "logger": record.name,
-            "message": message,
-        }
-        if record.exc_info:
-            payload["exc_info"] = self.formatException(record.exc_info)
-        if record.stack_info:
-            payload["stack"] = self.formatStack(record.stack_info)
-
-        extras: Dict[str, Any] = {}
-        for key, value in record.__dict__.items():
-            if key in self._DEFAULT_FIELDS:
-                continue
-            extras[key] = value
-        if extras:
-            payload["extra"] = extras
-
-        return json.dumps(payload, ensure_ascii=False)
-
-
-def _make_formatter() -> logging.Formatter:
-    if LOG_FORMAT == "json":
-        return _JSONFormatter()
-    formatter = logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s")
-    formatter.converter = _vienna_time_converter
-    return formatter
-
-
-LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").strip().upper()
-_level = getattr(logging, LOG_LEVEL, logging.INFO)
-if not isinstance(_level, int):
-    _level = logging.INFO
-
-LOG_FORMAT = os.getenv("LOG_FORMAT", "plain").strip().lower()
-if LOG_FORMAT not in {"plain", "json"}:
-    LOG_FORMAT = "plain"
-
-_DEFAULT_LOG_DIR = Path("log")
-LOG_DIR_PATH = _resolve_env_path("LOG_DIR", _DEFAULT_LOG_DIR, allow_fallback=True)
+ABSOLUTE_MAX_AGE_DAYS = feed_config.ABSOLUTE_MAX_AGE_DAYS
+DESCRIPTION_CHAR_LIMIT = feed_config.DESCRIPTION_CHAR_LIMIT
+ENDS_AT_GRACE_MINUTES = feed_config.ENDS_AT_GRACE_MINUTES
+FEED_DESC = feed_config.FEED_DESC
+FEED_LINK = feed_config.FEED_LINK
+FEED_TITLE = feed_config.FEED_TITLE
+FEED_TTL = feed_config.FEED_TTL
+FRESH_PUBDATE_WINDOW_MIN = feed_config.FRESH_PUBDATE_WINDOW_MIN
+LOG_DIR_PATH = feed_config.LOG_DIR_PATH
 LOG_DIR = LOG_DIR_PATH.as_posix()
-LOG_MAX_BYTES = max(get_int_env("LOG_MAX_BYTES", 1_000_000), 0)
-LOG_BACKUP_COUNT = max(get_int_env("LOG_BACKUP_COUNT", 5), 0)
+LOG_MAX_BYTES = feed_config.LOG_MAX_BYTES
+LOG_BACKUP_COUNT = feed_config.LOG_BACKUP_COUNT
+MAX_ITEM_AGE_DAYS = feed_config.MAX_ITEM_AGE_DAYS
+MAX_ITEMS = feed_config.MAX_ITEMS
+OUT_PATH = feed_config.OUT_PATH
+PROVIDER_MAX_WORKERS = feed_config.PROVIDER_MAX_WORKERS
+PROVIDER_TIMEOUT = feed_config.PROVIDER_TIMEOUT
+RFC = feed_config.RFC
+STATE_FILE = feed_config.STATE_FILE
+STATE_RETENTION_DAYS = feed_config.STATE_RETENTION_DAYS
 
 os.makedirs(LOG_DIR, exist_ok=True)
 
-error_log_path = Path(LOG_DIR) / "errors.log"
-diagnostics_log_path = Path(LOG_DIR) / "diagnostics.log"
+read_cache = _core_read_cache
 
-_LOGGING_CONFIGURED = False
-
-
-def configure_logging() -> None:
-    """Configure the default logging handlers for the feed builder."""
-
-    global _LOGGING_CONFIGURED
-
-    if _LOGGING_CONFIGURED:
-        return
-
-    os.makedirs(LOG_DIR, exist_ok=True)
-
-    logging.basicConfig(
-        level=_level,
-        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
-    )
-
-    root_logger = logging.getLogger()
-    root_logger.setLevel(_level)
-    for handler in root_logger.handlers:
-        handler.setFormatter(_make_formatter())
-        if isinstance(handler, logging.StreamHandler):
-            handler.setLevel(_level)
-
-    error_log_path.touch(exist_ok=True)
-    error_handler = RotatingFileHandler(
-        error_log_path,
-        maxBytes=LOG_MAX_BYTES,
-        backupCount=LOG_BACKUP_COUNT,
-        encoding="utf-8",
-    )
-    error_handler.setLevel(logging.ERROR)
-    error_handler.setFormatter(_make_formatter())
-    root_logger.addHandler(error_handler)
-
-    diagnostics_log_path.touch(exist_ok=True)
-    diagnostics_handler = RotatingFileHandler(
-        diagnostics_log_path,
-        maxBytes=LOG_MAX_BYTES,
-        backupCount=LOG_BACKUP_COUNT,
-        encoding="utf-8",
-    )
-    diagnostics_handler.setLevel(logging.INFO)
-    diagnostics_handler.addFilter(_MaxLevelFilter(logging.ERROR - 1))
-    diagnostics_handler.setFormatter(_make_formatter())
-    root_logger.addHandler(diagnostics_handler)
-
-    _LOGGING_CONFIGURED = True
-
-
-log = logging.getLogger("build_feed")
-
-_LOG_TIMESTAMP_RE = re.compile(r"^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2}),(\d{3})")
-
-
-def _prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
-    """Remove log records older than ``keep_days`` from ``path``.
-
-    The function keeps log output grouped by records, so multi-line stack traces
-    stay intact.  Lines without the expected timestamp prefix are preserved.
-    """
-
-    if keep_days <= 0:
-        return
-    if not path.exists():
-        return
-
-    if now.tzinfo is None:
-        now = now.replace(tzinfo=LOG_TIMEZONE)
-    else:
-        now = now.astimezone(LOG_TIMEZONE)
-    cutoff = now - timedelta(days=keep_days)
-    try:
-        raw_lines = path.read_text(encoding="utf-8").splitlines(keepends=True)
-    except OSError:
-        return
-
-    grouped: List[List[str]] = []
-    current: List[str] = []
-    for line in raw_lines:
-        if _LOG_TIMESTAMP_RE.match(line):
-            if current:
-                grouped.append(current)
-            current = [line]
-        else:
-            if not current:
-                current = [line]
-            else:
-                current.append(line)
-    if current:
-        grouped.append(current)
-
-    filtered: List[str] = []
-    for record_lines in grouped:
-        first = record_lines[0]
-        match = _LOG_TIMESTAMP_RE.match(first)
-        if not match:
-            filtered.extend(record_lines)
-            continue
-        ts_raw = f"{match.group(1)} {match.group(2)},{match.group(3)}"
-        try:
-            ts = datetime.strptime(ts_raw, "%Y-%m-%d %H:%M:%S,%f")
-        except ValueError:
-            filtered.extend(record_lines)
-            continue
-        if ts.tzinfo is None:
-            ts = ts.replace(tzinfo=LOG_TIMEZONE)
-        else:
-            ts = ts.astimezone(LOG_TIMEZONE)
-        if ts >= cutoff:
-            filtered.extend(record_lines)
-
-    try:
-        path.write_text("".join(filtered), encoding="utf-8")
-    except OSError:
-        return
-
-
-def _provider_display_name(fetch: Any, env: Optional[str] = None) -> str:
-    provider_name = getattr(fetch, "_provider_cache_name", None)
-    if provider_name:
-        return str(provider_name)
-    if env:
-        env_name = PROVIDER_CACHE_KEYS.get(env)
-        if env_name:
-            return env_name
-    name = getattr(fetch, "__name__", None)
-    if name:
-        return name
-    return str(fetch)
-
-
-def _clean_message(message: Optional[str]) -> str:
-    if not message:
-        return ""
-    return re.sub(r"\s+", " ", message).strip()
-
-
-@dataclass
-class ProviderReport:
-    name: str
-    enabled: bool
-    fetch_type: str = "unknown"
-    status: str = "pending"  # ok, empty, error, disabled, skipped
-    detail: Optional[str] = None
-    items: Optional[int] = None
-    duration: Optional[float] = None
-    _started_at: Optional[float] = None
-
-    def mark_disabled(self) -> None:
-        self.enabled = False
-        self.status = "disabled"
-
-    def start(self) -> None:
-        self._started_at = perf_counter()
-        if self.status == "disabled":
-            return
-        self.status = "running"
-
-    def finish(
-        self,
-        status: str,
-        *,
-        items: Optional[int] = None,
-        detail: Optional[str] = None,
-        duration: Optional[float] = None,
-    ) -> None:
-        if duration is None and self._started_at is not None:
-            duration = perf_counter() - self._started_at
-        self.duration = duration
-        self.items = items
-        self.detail = detail
-        self.status = status
-
-
-class _RunErrorCollector(logging.Handler):
-    def __init__(self, report: "RunReport") -> None:
-        super().__init__(level=logging.ERROR)
-        self.report = report
-        self._formatter = logging.Formatter()
-
-    def emit(self, record: logging.LogRecord) -> None:  # pragma: no cover - defensive
-        try:
-            msg = record.getMessage()
-        except Exception:
-            msg = str(record.msg)
-        if record.exc_info:
-            try:
-                exc_text = self._formatter.formatException(record.exc_info)
-            except Exception:
-                exc_text = ""
-            if exc_text:
-                msg = f"{msg}\n{exc_text}"
-        source = record.name or "root"
-        composed = f"{source}: {msg}" if msg else source
-        self.report.add_error_message(composed)
-
-
-@dataclass
-class RunReport:
-    statuses: List[Tuple[str, bool]]
-    started_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
-    providers: Dict[str, ProviderReport] = field(default_factory=dict)
-    raw_item_count: Optional[int] = None
-    final_item_count: Optional[int] = None
-    durations: Dict[str, float] = field(default_factory=dict)
-    feed_path: Optional[str] = None
-    build_successful: bool = False
-    exception_message: Optional[str] = None
-    warnings: List[str] = field(default_factory=list)
-    _error_messages: List[str] = field(default_factory=list)
-    _seen_errors: set[str] = field(default_factory=set)
-    _seen_warnings: set[str] = field(default_factory=set)
-    finished_at: Optional[datetime] = None
-    _error_collector: Optional[_RunErrorCollector] = None
-
-    def __post_init__(self) -> None:
-        for name, enabled in self.statuses:
-            normalized = str(name)
-            entry = ProviderReport(name=normalized, enabled=enabled)
-            if not enabled:
-                entry.mark_disabled()
-            self.providers[normalized] = entry
-
-    @property
-    def run_id(self) -> str:
-        return self.started_at.strftime("%Y%m%dT%H%M%SZ")
-
-    def register_provider(self, name: str, enabled: bool, fetch_type: str) -> None:
-        normalized = str(name)
-        entry = self.providers.get(normalized)
-        if entry is None:
-            entry = ProviderReport(name=normalized, enabled=enabled, fetch_type=fetch_type)
-            self.providers[normalized] = entry
-        else:
-            entry.enabled = enabled
-            entry.fetch_type = fetch_type
-        if not enabled:
-            entry.mark_disabled()
-        elif entry.status == "disabled":
-            entry.status = "pending"
-
-    def provider_started(self, name: str) -> None:
-        entry = self.providers.get(name)
-        if entry is None:
-            entry = ProviderReport(name=name, enabled=True)
-            self.providers[name] = entry
-        entry.start()
-
-    def provider_success(
-        self,
-        name: str,
-        *,
-        items: int,
-        status: str = "ok",
-        detail: Optional[str] = None,
-    ) -> None:
-        entry = self.providers.get(name)
-        if entry is None:
-            entry = ProviderReport(name=name, enabled=True)
-            self.providers[name] = entry
-        entry.finish(status, items=items, detail=_clean_message(detail))
-        if status != "ok" and detail:
-            self.add_warning(f"Provider {name}: {detail}")
-
-    def provider_error(self, name: str, message: str) -> None:
-        entry = self.providers.get(name)
-        if entry is None:
-            entry = ProviderReport(name=name, enabled=True)
-            self.providers[name] = entry
-        entry.finish("error", detail=_clean_message(message))
-        self.add_error_message(f"Provider {name}: {message}")
-
-    def add_error_message(self, message: str) -> None:
-        cleaned = _clean_message(message)
-        if not cleaned:
-            return
-        if cleaned in self._seen_errors:
-            return
-        self._seen_errors.add(cleaned)
-        self._error_messages.append(cleaned)
-
-    @property
-    def error_messages(self) -> List[str]:
-        return list(self._error_messages)
-
-    def add_warning(self, message: str) -> None:
-        cleaned = _clean_message(message)
-        if not cleaned:
-            return
-        if cleaned in self._seen_warnings:
-            return
-        self._seen_warnings.add(cleaned)
-        self.warnings.append(cleaned)
-
-    def has_errors(self) -> bool:
-        if self.exception_message:
-            return True
-        if any(entry.status == "error" for entry in self.providers.values()):
-            return True
-        return bool(self._error_messages)
-
-    def attach_error_collector(self) -> None:
-        if self._error_collector is not None:
-            return
-        collector = _RunErrorCollector(self)
-        logging.getLogger().addHandler(collector)
-        self._error_collector = collector
-
-    def detach_error_collector(self) -> None:
-        if self._error_collector is None:
-            return
-        logging.getLogger().removeHandler(self._error_collector)
-        self._error_collector = None
-
-    def finish(
-        self,
-        *,
-        build_successful: bool,
-        raw_items: Optional[int] = None,
-        final_items: Optional[int] = None,
-        durations: Optional[Dict[str, float]] = None,
-        feed_path: Optional[Path] = None,
-    ) -> None:
-        self.build_successful = build_successful
-        if raw_items is not None:
-            self.raw_item_count = raw_items
-        if final_items is not None:
-            self.final_item_count = final_items
-        if durations:
-            self.durations.update(durations)
-        if feed_path is not None:
-            self.feed_path = feed_path.as_posix()
-        self.finished_at = datetime.now(timezone.utc)
-
-    def record_exception(self, exc: Exception) -> None:
-        message = f"{exc.__class__.__name__}: {exc}"
-        self.exception_message = _clean_message(message)
-        self.add_error_message(f"Ausnahme: {message}")
-
-    def prune_logs(self) -> None:
-        now = self.started_at
-        _prune_log_file(diagnostics_log_path, now=now)
-        _prune_log_file(error_log_path, now=now)
-
-    def _provider_summary(self) -> str:
-        summaries: List[str] = []
-        for name in sorted(self.providers):
-            entry = self.providers[name]
-            details: List[str] = []
-            if entry.items is not None and entry.status in {"ok", "empty"}:
-                details.append(f"{entry.items} Items")
-            if entry.detail:
-                details.append(entry.detail)
-            if entry.duration is not None:
-                details.append(f"{entry.duration:.2f}s")
-            details_str = ", ".join(details)
-            if entry.status == "disabled":
-                summaries.append(f"{name}:disabled")
-                continue
-            if entry.status == "pending":
-                summaries.append(f"{name}:pending")
-                continue
-            if entry.status == "error":
-                if details_str:
-                    summaries.append(f"{name}:error({details_str})")
-                else:
-                    summaries.append(f"{name}:error")
-                continue
-            if entry.status == "empty":
-                if details_str:
-                    summaries.append(f"{name}:empty({details_str})")
-                else:
-                    summaries.append(f"{name}:empty")
-                continue
-            if entry.status == "ok":
-                if details_str:
-                    summaries.append(f"{name}:ok({details_str})")
-                else:
-                    summaries.append(f"{name}:ok")
-                continue
-            if entry.status == "running":
-                summaries.append(f"{name}:running")
-                continue
-            summaries.append(f"{name}:{entry.status or 'unknown'}")
-        return "; ".join(summaries)
-
-    def _duration_summary(self) -> str:
-        if not self.durations:
-            return ""
-        parts = [f"{key}={value:.2f}s" for key, value in sorted(self.durations.items())]
-        return ", ".join(parts)
-
-    def _items_summary(self) -> str:
-        raw = self.raw_item_count if self.raw_item_count is not None else "?"
-        final = self.final_item_count if self.final_item_count is not None else "?"
-        return f"Items raw={raw}, final={final}"
-
-    def diagnostics_message(self) -> str:
-        status = "FAILED"
-        if self.build_successful:
-            status = "ERROR" if self.has_errors() else "OK"
-        provider_summary = self._provider_summary()
-        duration_summary = self._duration_summary()
-        items_summary = self._items_summary()
-        components = [
-            f"Feed-Lauf {self.run_id}",
-            f"Status={status}",
-            items_summary,
-        ]
-        if duration_summary:
-            components.append(f"Dauer: {duration_summary}")
-        if provider_summary:
-            components.append(f"Provider: {provider_summary}")
-        if self.feed_path:
-            components.append(f"Feed={self.feed_path}")
-        if self.exception_message and not self.build_successful:
-            components.append(f"Fehler={self.exception_message}")
-        if self.warnings:
-            components.append(f"Warnungen: {'; '.join(self.warnings)}")
-        return " | ".join(components)
-
-    def log_results(self) -> None:
-        try:
-            diagnostics = self.diagnostics_message()
-            log.info(diagnostics)
-            if self.has_errors():
-                log.info(
-                    "Hinweis: Fehler während des Feed-Laufs – Details siehe %s",
-                    error_log_path,
-                )
-        finally:
-            self.detach_error_collector()
-
-# Mapping of environment variables to provider cache loaders
-PROVIDER_CACHE_KEYS: Dict[str, str] = {
-    "WL_ENABLE": "wl",
-    "OEBB_ENABLE": "oebb",
-    "VOR_ENABLE": "vor",
-    "BAUSTELLEN_ENABLE": "baustellen",
-}
 
 def read_cache_wl() -> List[Any]:
-    return read_cache("wl")
+    return list(read_cache("wl"))
 
 
 def read_cache_oebb() -> List[Any]:
-    return read_cache("oebb")
+    return list(read_cache("oebb"))
 
 
 def read_cache_vor() -> List[Any]:
-    return read_cache("vor")
+    return list(read_cache("vor"))
 
 
 def read_cache_baustellen() -> List[Any]:
-    return read_cache("baustellen")
+    return list(read_cache("baustellen"))
 
 
-PROVIDERS: List[Tuple[str, Any]] = [
+DEFAULT_PROVIDERS: Tuple[Tuple[str, Any], ...] = (
     ("WL_ENABLE", read_cache_wl),
     ("OEBB_ENABLE", read_cache_oebb),
     ("VOR_ENABLE", read_cache_vor),
     ("BAUSTELLEN_ENABLE", read_cache_baustellen),
-]
+)
 
-for env, loader in PROVIDERS:
-    provider_name = PROVIDER_CACHE_KEYS.get(env)
-    if provider_name is None:
-        continue
-    try:
-        loader.__name__ = f"read_cache_{provider_name}"
-    except (AttributeError, TypeError):  # pragma: no cover - defensive only
-        pass
-    setattr(loader, "_provider_cache_name", provider_name)
+PROVIDERS: List[Tuple[str, Any]] = list(DEFAULT_PROVIDERS)
+
+for env_name, loader in PROVIDERS:
+    register_provider(env_name, loader, cache_key=resolve_provider_name(loader, env_name))
+
+
+def _provider_display_name(fetch: Any, env: Optional[str] = None) -> str:
+    return resolve_provider_name(fetch, env)
 
 
 def _provider_statuses() -> List[Tuple[str, bool]]:
-    statuses: List[Tuple[str, bool]] = []
-    seen_envs: set[str] = set()
-    for env, fetch in PROVIDERS:
-        if env in seen_envs:
-            continue
-        seen_envs.add(env)
-        provider_name = getattr(fetch, "_provider_cache_name", None)
-        if not provider_name:
-            provider_name = PROVIDER_CACHE_KEYS.get(env)
-        if not provider_name:
-            provider_name = getattr(fetch, "__name__", env.lower())
-        provider_display = str(provider_name)
-        statuses.append((provider_display, bool(get_bool_env(env, True))))
-    return statuses
+    return provider_statuses()
 
 
 def _log_startup_summary(statuses: List[Tuple[str, bool]]) -> None:
@@ -797,42 +187,6 @@ def _validate_configuration(statuses: List[Tuple[str, bool]]) -> None:
             MAX_ITEM_AGE_DAYS,
             ABSOLUTE_MAX_AGE_DAYS,
         )
-
-# ---------------- ENV ----------------
-OUT_PATH = _resolve_env_path("OUT_PATH", DEFAULT_OUT_PATH).as_posix()
-FEED_TITLE = os.getenv("FEED_TITLE", DEFAULT_FEED_TITLE)
-FEED_LINK = os.getenv("FEED_LINK", DEFAULT_FEED_LINK)
-FEED_DESC = os.getenv("FEED_DESC", DEFAULT_FEED_DESCRIPTION)
-
-FEED_TTL = max(get_int_env("FEED_TTL", DEFAULT_FEED_TTL_MINUTES), 0)
-
-DESCRIPTION_CHAR_LIMIT = max(
-    get_int_env("DESCRIPTION_CHAR_LIMIT", DEFAULT_DESCRIPTION_CHAR_LIMIT), 0
-)
-FRESH_PUBDATE_WINDOW_MIN = get_int_env(
-    "FRESH_PUBDATE_WINDOW_MIN", DEFAULT_FRESH_PUBDATE_WINDOW_MIN
-)
-MAX_ITEMS = max(get_int_env("MAX_ITEMS", DEFAULT_MAX_ITEMS), 0)
-MAX_ITEM_AGE_DAYS = max(
-    get_int_env("MAX_ITEM_AGE_DAYS", DEFAULT_MAX_ITEM_AGE_DAYS), 0
-)
-ABSOLUTE_MAX_AGE_DAYS = max(
-    get_int_env("ABSOLUTE_MAX_AGE_DAYS", DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS), 0
-)
-ENDS_AT_GRACE_MINUTES = max(
-    get_int_env("ENDS_AT_GRACE_MINUTES", DEFAULT_ENDS_AT_GRACE_MINUTES), 0
-)
-PROVIDER_TIMEOUT = max(get_int_env("PROVIDER_TIMEOUT", DEFAULT_PROVIDER_TIMEOUT), 0)
-PROVIDER_MAX_WORKERS = max(
-    get_int_env("PROVIDER_MAX_WORKERS", DEFAULT_PROVIDER_MAX_WORKERS), 0
-)
-
-STATE_FILE = _resolve_env_path("STATE_PATH", DEFAULT_STATE_PATH)  # nur Einträge aus *aktuellem* Feed
-STATE_RETENTION_DAYS = max(
-    get_int_env("STATE_RETENTION_DAYS", DEFAULT_STATE_RETENTION_DAYS), 0
-)
-
-RFC = "%a, %d %b %Y %H:%M:%S %z"
 
 # ---------------- Provider tuning ----------------
 
@@ -1364,7 +718,7 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
 
 def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
     if report is None:
-        report = RunReport(_provider_statuses())
+        report = RunReport(provider_statuses())
     items: List[Dict[str, Any]] = []
 
     cache_alerts: defaultdict[str, List[str]] = defaultdict(list)
@@ -1372,7 +726,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
 
     def _cache_alert_handler(provider_key: str, message: str) -> None:
         normalized_key = str(provider_key or "").strip()
-        normalized_message = _clean_message(message)
+        normalized_message = clean_message(message)
         if not normalized_key or not normalized_message:
             return
         cache_alerts[normalized_key].append(normalized_message)
@@ -1389,7 +743,18 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
         provider_names: Dict[Any, str] = {}
         provider_envs: Dict[Any, Optional[str]] = {}
 
-        for env, fetch in PROVIDERS:
+        provider_entries = list(PROVIDERS)
+        providers_overridden = tuple(PROVIDERS) != DEFAULT_PROVIDERS
+        if provider_entries:
+            if not providers_overridden:
+                known_envs = {env for env, _ in provider_entries}
+                for spec in iter_providers():
+                    if spec.env_var not in known_envs:
+                        provider_entries.append((spec.env_var, spec.loader))
+        else:
+            provider_entries = [(spec.env_var, spec.loader) for spec in iter_providers()]
+
+        for env, fetch in provider_entries:
             provider_name = _provider_display_name(fetch, env)
             enabled = bool(get_bool_env(env, True))
             fetch_type = "cache" if getattr(fetch, "_provider_cache_name", None) else "network"
@@ -1433,6 +798,8 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
                     status="empty",
                     detail=detail,
                 )
+                if detail:
+                    report.add_warning(f"Provider {provider_name}: {detail}")
             else:
                 report.provider_success(provider_name, items=count)
 
@@ -1953,7 +1320,7 @@ def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[
 def main() -> int:
     configure_logging()
 
-    statuses = _provider_statuses()
+    statuses = provider_statuses()
     report = RunReport(statuses)
     report.prune_logs()
     report.attach_error_collector()
@@ -2050,6 +1417,10 @@ def main() -> int:
         report.finish(build_successful=False)
         report.log_results()
         raise
+
+_resolve_env_path = resolve_env_path
+# Backwards compatibility for tests and external imports
+_validate_path = validate_path
 
 if __name__ == "__main__":
     sys.exit(main())
