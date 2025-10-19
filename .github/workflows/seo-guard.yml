@@ -1,0 +1,161 @@
+name: SEO Guard
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 3 * * *"   # täglich 03:23 UTC
+  push:
+    paths:
+      - "docs/**"
+      - ".github/workflows/seo-guard.yml"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    env:
+      SITE_BASE: https://origamihase.github.io/wien-oepnv
+      DESC: Konsolidierter RSS-Feed für Störungen und Baustellenmeldungen im Wiener ÖPNV (WL/ÖBB/VOR), inkl. Doku & Open-Data-Workflows.
+      TOPICS_JSON: '["wien","oepnv","public-transport","rss-feed","open-data","verkehrsmeldungen","tram","bus","train"]'
+    steps:
+      - name: Checkout
+      # nutzt automatisch GITHUB_TOKEN für Pull/Push
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply idempotent SEO fixes (sitemap/robots/feed)
+        id: seo
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed=false
+
+          # --- docs/sitemap.xml ---
+          if [[ -f docs/sitemap.xml ]]; then
+            before="$(sha1sum docs/sitemap.xml | awk '{print $1}')"
+            sed -E -i \
+              -e 's#<loc>https://wien-oepnv\.github\.io/?</loc>#<loc>'"$SITE_BASE"'/</loc>#g' \
+              -e 's#<loc>https://origamihase\.github\.io/wien-oepnv/?</loc>#<loc>'"$SITE_BASE"'/</loc>#g' \
+              -e 's#<loc>https://wien-oepnv\.github\.io/feed\.xml</loc>#<loc>'"$SITE_BASE"'/feed.xml</loc>#g' \
+              -e 's#<loc>https://origamihase\.github\.io/wien-oepnv/feed\.xml</loc>#<loc>'"$SITE_BASE"'/feed.xml</loc>#g' \
+              -e 's#<loc>https://wien-oepnv\.github\.io/docs/how-to/?</loc>#<loc>'"$SITE_BASE"'/docs/how-to/</loc>#g' \
+              -e 's#<loc>https://origamihase\.github\.io/wien-oepnv/docs/how-to/?</loc>#<loc>'"$SITE_BASE"'/docs/how-to/</loc>#g' \
+              -e 's#<loc>https://wien-oepnv\.github\.io/docs/reference/?</loc>#<loc>'"$SITE_BASE"'/docs/reference/</loc>#g' \
+              -e 's#<loc>https://origamihase\.github\.io/wien-oepnv/docs/reference/?</loc>#<loc>'"$SITE_BASE"'/docs/reference/</loc>#g' \
+              docs/sitemap.xml
+            after="$(sha1sum docs/sitemap.xml | awk '{print $1}')"
+            [[ "$before" != "$after" ]] && changed=true
+          fi
+
+          # --- docs/robots.txt ---
+          if [[ -f docs/robots.txt ]]; then
+            before="$(sha1sum docs/robots.txt | awk '{print $1}')"
+            if grep -Eq '^[[:space:]]*Sitemap:' docs/robots.txt; then
+              sed -E -i 's#^[[:space:]]*Sitemap:.*#Sitemap: '"$SITE_BASE"'/sitemap.xml#g' docs/robots.txt
+            else
+              printf '\nSitemap: %s/sitemap.xml\n' "$SITE_BASE" >> docs/robots.txt
+            fi
+            after="$(sha1sum docs/robots.txt | awk '{print $1}')"
+            [[ "$before" != "$after" ]] && changed=true
+          fi
+
+          # --- docs/feed.xml ---
+          if [[ -f docs/feed.xml ]]; then
+            before="$(sha1sum docs/feed.xml | awk '{print $1}')"
+            # Atom-NS einmalig ergänzen
+            if ! grep -q 'xmlns:atom=' docs/feed.xml; then
+              sed -E -i '0,/<rss[[:space:]]/s//<rss xmlns:atom="http:\/\/www.w3.org\/2005\/Atom" /' docs/feed.xml
+            fi
+            # <language>de</language> nach <description>
+            if ! grep -q '<language>de</language>' docs/feed.xml; then
+              sed -E -i '/<description>/a\    <language>de</language>' docs/feed.xml
+            fi
+            # atom:link self (nur wenn fehlt)
+            if ! grep -q 'atom:link[^>]*rel="self"[^>]*origamihase.github.io/wien-oepnv/feed.xml' docs/feed.xml; then
+              sed -E -i '/<description>/a\    <atom:link rel="self" type="application/rss+xml" href="'"$SITE_BASE"'/feed.xml"/>' docs/feed.xml
+            fi
+            # atom:link alternate (nur wenn fehlt)
+            if ! grep -q 'atom:link[^>]*rel="alternate"[^>]*origamihase.github.io/wien-oepnv/?' docs/feed.xml; then
+              sed -E -i '/<description>/a\    <atom:link rel="alternate" type="text/html" href="'"$SITE_BASE"'/"/>' docs/feed.xml
+            fi
+            after="$(sha1sum docs/feed.xml | awk '{print $1}')"
+            [[ "$before" != "$after" ]] && changed=true
+          fi
+
+          echo "changed=${changed}" >> "$GITHUB_OUTPUT"
+
+      - name: Commit & push, or open PR if branch protected
+        if: steps.seo.outputs.changed == 'true'
+        id: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name  "seo-bot"
+          git config user.email "seo-bot@users.noreply.github.com"
+
+          # Default-Branch robust bestimmen
+          DEF="$(git remote show origin | awk '/HEAD branch/ {print $NF}')"
+          CUR="$(git rev-parse --abbrev-ref HEAD || true)"
+          BRANCH="${CUR:-$DEF}"
+
+          git add -A
+          git commit -m "chore(seo): fix sitemap/robots canonical URLs + add atom links & language to RSS"
+
+          if git push origin "HEAD:${BRANCH}"; then
+            echo "mode=direct" >> "$GITHUB_OUTPUT"
+          else
+            echo "Branch protection active, creating PR..."
+            PRB="seo/fix-domain-sitemap-robots-feed"
+            git checkout -b "$PRB"
+            git push origin "HEAD:$PRB"
+
+            # PR via REST (kein jq)
+            OWNER_REPO="${{ github.repository }}"
+            BASE="$DEF"
+            BODY=$'Fix: Domain-Korrektur in sitemap.xml/robots.txt auf '"${SITE_BASE}"$'.\nFeed: language=de, Atom self/alternate + xmlns:atom. Idempotent; keine Item-Inhaltsänderungen.'
+            curl -sS -H "Authorization: Bearer ${GH_TOKEN}" \
+                 -H "Accept: application/vnd.github+json" \
+                 -X POST "https://api.github.com/repos/${OWNER_REPO}/pulls" \
+                 -d "$(printf '{ "title": %q, "head": %q, "base": %q, "body": %q }' \
+                          "SEO: Korrigierte Canonicals für Sitemap/Robots + Atom-Links im RSS-Feed" \
+                          "$PRB" "$BASE" "$BODY")" >/dev/null
+            echo "mode=pr" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update repository metadata (description, homepage, topics)
+        # läuft unabhängig vom Datei-Diff
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SITE_BASE: ${{ env.SITE_BASE }}
+          DESC: ${{ env.DESC }}
+          TOPICS_JSON: ${{ env.TOPICS_JSON }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          OWNER_REPO="${{ github.repository }}"
+          # Beschreibung/Homepage
+          curl -sS -H "Authorization: Bearer ${GH_TOKEN}" \
+               -H "Accept: application/vnd.github+json" \
+               -X PATCH "https://api.github.com/repos/${OWNER_REPO}" \
+               -d "$(printf '{"description":%q,"homepage":%q}' \
+                    "${DESC}" "${SITE_BASE}/")" >/dev/null
+
+          # Topics setzen (ersetzt vollständig die Liste)
+          curl -sS -H "Authorization: Bearer ${GH_TOKEN}" \
+               -H "Accept: application/vnd.github+json" \
+               -H "Content-Type: application/json" \
+               -X PUT "https://api.github.com/repos/${OWNER_REPO}/topics" \
+               -d "{\"names\": ${TOPICS_JSON} }" >/dev/null
+
+      - name: Summary
+        shell: bash
+        run: |
+          echo "SEO Guard abgeschlossen."
+          echo "Änderungen angewendet:  ${{ steps.seo.outputs.changed }}"
+          echo "Veröffentlichungsmodus:  ${{ steps.publish.outputs.mode || 'none' }}"
