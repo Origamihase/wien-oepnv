@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:ext="https://wien-oepnv.example/schema" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:ext="https://wien-oepnv.example/schema" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
 <title>ÖPNV Störungen Wien &amp; Umgebung</title>
 <link>https://github.com/Origamihase/wien-oepnv</link>
 <description>Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen</description>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+    <language>de</language>
 <lastBuildDate>Sun, 19 Oct 2025 11:35:53 +0000</lastBuildDate>
 <ttl>15</ttl>
 <item>
@@ -15,6 +18,9 @@
 <ext:starts_at>Sun, 19 Oct 2025 11:00:00 +0000</ext:starts_at>
 <ext:ends_at>Sun, 19 Oct 2025 21:55:00 +0000</ext:ends_at>
 <description><![CDATA[Die Linie 48 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Gutraterplatz.<br>[Seit 19.10.2025]]]></description>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+    <language>de</language>
 <content:encoded><![CDATA[Die Linie 48 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Gutraterplatz.<br/>[Seit 19.10.2025]]]></content:encoded>
 </item>
 <item>
@@ -26,6 +32,9 @@
 <ext:starts_at>Sun, 19 Oct 2025 10:30:00 +0000</ext:starts_at>
 <ext:ends_at>Sun, 19 Oct 2025 21:55:00 +0000</ext:ends_at>
 <description><![CDATA[Die Linie 61 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Liesing S.<br>[Seit 19.10.2025]]]></description>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+    <language>de</language>
 <content:encoded><![CDATA[Die Linie 61 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Liesing S.<br/>[Seit 19.10.2025]]]></content:encoded>
 </item>
 <item>
@@ -37,6 +46,9 @@
 <ext:starts_at>Sun, 19 Oct 2025 04:00:00 +0000</ext:starts_at>
 <ext:ends_at>Sun, 02 Nov 2025 23:00:00 +0000</ext:ends_at>
 <description><![CDATA[Wegen Voranschreitens der Gleisbauarbeiten für die Verlängerung der Linie 18 müssen die Linien 77 A und 80 A abermals anders umgeleitet, beziehungsweise …<br>[19.10.2025 – 03.11.2025]]]></description>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+    <language>de</language>
 <content:encoded><![CDATA[Wegen Voranschreitens der Gleisbauarbeiten für die Verlängerung der Linie 18 müssen die Linien 77 A und 80 A abermals anders umgeleitet, beziehungsweise …<br/>[19.10.2025 – 03.11.2025]]]></content:encoded>
 </item>
 <item>
@@ -48,6 +60,9 @@
 <ext:starts_at>Sun, 19 Oct 2025 02:45:06 +0000</ext:starts_at>
 <ext:ends_at>Sun, 19 Oct 2025 22:35:00 +0000</ext:ends_at>
 <description><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br>[19.10.2025 – 20.10.2025]]]></description>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+    <language>de</language>
 <content:encoded><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[19.10.2025 – 20.10.2025]]]></content:encoded>
 </item>
 <item>
@@ -59,6 +74,9 @@
 <ext:starts_at>Sat, 18 Oct 2025 07:58:42 +0000</ext:starts_at>
 <ext:ends_at>Sun, 19 Oct 2025 17:00:00 +0000</ext:ends_at>
 <description><![CDATA[Bauarbeiten Busse halten nach Dresdner Str. (Linie 5 A)<br>[18.10.2025 – 19.10.2025]]]></description>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+    <language>de</language>
 <content:encoded><![CDATA[Bauarbeiten Busse halten nach Dresdner Str. (Linie 5 A)<br/>[18.10.2025 – 19.10.2025]]]></content:encoded>
 </item>
 <item>
@@ -70,6 +88,9 @@
 <ext:starts_at>Thu, 16 Oct 2025 08:52:00 +0000</ext:starts_at>
 <ext:ends_at>Thu, 23 Oct 2025 14:00:00 +0000</ext:ends_at>
 <description><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten im Bereich Kaunitzgasse werden die Linie 13 A und 14 A umgeleitet.<br>[16.10.2025 – 23.10.2025]]]></description>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+    <language>de</language>
 <content:encoded><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten im Bereich Kaunitzgasse werden die Linie 13 A und 14 A umgeleitet.<br/>[16.10.2025 – 23.10.2025]]]></content:encoded>
 </item>
 <item>
@@ -81,6 +102,9 @@
 <ext:starts_at>Thu, 16 Oct 2025 04:50:00 +0000</ext:starts_at>
 <ext:ends_at>Sun, 26 Oct 2025 16:00:00 +0000</ext:ends_at>
 <description><![CDATA[Veranstaltung Wegen einer Veranstaltung im Bereich der Ringstraße kann es zu folgenden Verkehrsmaßnahmen kommen.<br>[16.10.2025 – 26.10.2025]]]></description>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+    <language>de</language>
 <content:encoded><![CDATA[Veranstaltung Wegen einer Veranstaltung im Bereich der Ringstraße kann es zu folgenden Verkehrsmaßnahmen kommen.<br/>[16.10.2025 – 26.10.2025]]]></content:encoded>
 </item>
 <item>
@@ -92,6 +116,9 @@
 <ext:starts_at>Tue, 14 Oct 2025 11:47:00 +0000</ext:starts_at>
 <ext:ends_at>Wed, 14 Oct 2026 09:11:00 +0000</ext:ends_at>
 <description><![CDATA[Gleisbauarbeiten Wegen Bauarbeiten kommt es zu folgenden Maßnahmen bei der Linie N49.<br>[Seit 14.10.2025]]]></description>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+    <language>de</language>
 <content:encoded><![CDATA[Gleisbauarbeiten Wegen Bauarbeiten kommt es zu folgenden Maßnahmen bei der Linie N49.<br/>[Seit 14.10.2025]]]></content:encoded>
 </item>
 <item>
@@ -103,6 +130,9 @@
 <ext:starts_at>Tue, 14 Oct 2025 05:56:18 +0000</ext:starts_at>
 <ext:ends_at>Sun, 19 Oct 2025 21:59:59 +0000</ext:ends_at>
 <description><![CDATA[Gleisbauarbeiten Busse halten Dammstraße 2<br>[14.10.2025 – 19.10.2025]]]></description>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+    <language>de</language>
 <content:encoded><![CDATA[Gleisbauarbeiten Busse halten Dammstraße 2<br/>[14.10.2025 – 19.10.2025]]]></content:encoded>
 </item>
 <item>
@@ -114,6 +144,9 @@
 <ext:starts_at>Fri, 10 Oct 2025 04:59:51 +0000</ext:starts_at>
 <ext:ends_at>Sun, 19 Oct 2025 21:59:59 +0000</ext:ends_at>
 <description><![CDATA[Bauarbeiten Busse halten Grenzgasse 2-4<br>[10.10.2025 – 19.10.2025]]]></description>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+    <language>de</language>
 <content:encoded><![CDATA[Bauarbeiten Busse halten Grenzgasse 2-4<br/>[10.10.2025 – 19.10.2025]]]></content:encoded>
 </item>
 </channel>
