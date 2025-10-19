@@ -26,16 +26,28 @@ from time import perf_counter
 from typing import Any, Dict, Iterator, List, Optional, Tuple
 from zoneinfo import ZoneInfo
 
-from .feed import config as feed_config
-from .feed.logging import configure_logging
-from .feed.providers import (
-    iter_providers,
-    load_provider_plugins,
-    provider_statuses,
-    register_provider,
-    resolve_provider_name,
-)
-from .feed.reporting import RunReport, clean_message
+try:  # pragma: no cover - allow running as script or module
+    from feed import config as feed_config
+    from feed.logging import configure_logging
+    from feed.providers import (
+        iter_providers,
+        load_provider_plugins,
+        provider_statuses,
+        register_provider,
+        resolve_provider_name,
+    )
+    from feed.reporting import RunReport, clean_message
+except ModuleNotFoundError:  # pragma: no cover
+    from .feed import config as feed_config
+    from .feed.logging import configure_logging
+    from .feed.providers import (
+        iter_providers,
+        load_provider_plugins,
+        provider_statuses,
+        register_provider,
+        resolve_provider_name,
+    )
+    from .feed.reporting import RunReport, clean_message
 
 try:  # pragma: no cover - allow running as script or package
     from utils.cache import read_cache as _core_read_cache, register_cache_alert_hook  # type: ignore

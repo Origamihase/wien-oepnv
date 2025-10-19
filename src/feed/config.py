@@ -7,24 +7,44 @@ from pathlib import Path
 from typing import Optional
 from zoneinfo import ZoneInfo
 
-from ..config.defaults import (
-    DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
-    DEFAULT_DESCRIPTION_CHAR_LIMIT,
-    DEFAULT_ENDS_AT_GRACE_MINUTES,
-    DEFAULT_FEED_DESCRIPTION,
-    DEFAULT_FEED_LINK,
-    DEFAULT_FEED_TITLE,
-    DEFAULT_FEED_TTL_MINUTES,
-    DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
-    DEFAULT_MAX_ITEMS,
-    DEFAULT_MAX_ITEM_AGE_DAYS,
-    DEFAULT_OUT_PATH,
-    DEFAULT_PROVIDER_MAX_WORKERS,
-    DEFAULT_PROVIDER_TIMEOUT,
-    DEFAULT_STATE_PATH,
-    DEFAULT_STATE_RETENTION_DAYS,
-)
-from ..utils.env import get_bool_env, get_int_env
+try:  # pragma: no cover - support package and script execution
+    from config.defaults import (
+        DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
+        DEFAULT_DESCRIPTION_CHAR_LIMIT,
+        DEFAULT_ENDS_AT_GRACE_MINUTES,
+        DEFAULT_FEED_DESCRIPTION,
+        DEFAULT_FEED_LINK,
+        DEFAULT_FEED_TITLE,
+        DEFAULT_FEED_TTL_MINUTES,
+        DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
+        DEFAULT_MAX_ITEMS,
+        DEFAULT_MAX_ITEM_AGE_DAYS,
+        DEFAULT_OUT_PATH,
+        DEFAULT_PROVIDER_MAX_WORKERS,
+        DEFAULT_PROVIDER_TIMEOUT,
+        DEFAULT_STATE_PATH,
+        DEFAULT_STATE_RETENTION_DAYS,
+    )
+    from utils.env import get_bool_env, get_int_env
+except ModuleNotFoundError:  # pragma: no cover
+    from ..config.defaults import (
+        DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
+        DEFAULT_DESCRIPTION_CHAR_LIMIT,
+        DEFAULT_ENDS_AT_GRACE_MINUTES,
+        DEFAULT_FEED_DESCRIPTION,
+        DEFAULT_FEED_LINK,
+        DEFAULT_FEED_TITLE,
+        DEFAULT_FEED_TTL_MINUTES,
+        DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
+        DEFAULT_MAX_ITEMS,
+        DEFAULT_MAX_ITEM_AGE_DAYS,
+        DEFAULT_OUT_PATH,
+        DEFAULT_PROVIDER_MAX_WORKERS,
+        DEFAULT_PROVIDER_TIMEOUT,
+        DEFAULT_STATE_PATH,
+        DEFAULT_STATE_RETENTION_DAYS,
+    )
+    from ..utils.env import get_bool_env, get_int_env
 
 ALLOWED_ROOTS = {"docs", "data", "log"}
 REPO_ROOT = Path(__file__).resolve().parents[2]

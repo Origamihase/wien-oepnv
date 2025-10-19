@@ -9,8 +9,12 @@ from dataclasses import dataclass
 from types import ModuleType
 from typing import Any, Callable, Dict, Iterable, List, Sequence, Tuple
 
-from ..utils.cache import read_cache
-from .config import get_bool_env
+try:  # pragma: no cover - allow running as script or package
+    from utils.cache import read_cache
+    from feed.config import get_bool_env
+except ModuleNotFoundError:  # pragma: no cover
+    from ..utils.cache import read_cache
+    from .config import get_bool_env
 
 log = logging.getLogger(__name__)
 
