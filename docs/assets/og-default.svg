@@ -33,20 +33,6 @@
         fill: #FFD95B; /* Gelb */
         opacity: 0.8;
       }
-      /* Farben für das Wiener Wappen (Adler) */
-      .wappen-schild {
-        fill: #C60C30; /* Rot für den Schild */
-      }
-      .wappen-adler {
-        fill: #000000; /* Schwarz für den Adler */
-      }
-      .wappen-bewehrung {
-        fill: #FFD700; /* Gold für Bewehrung (Schnabel, Zunge, Krallen) */
-      }
-      .wappen-border {
-        stroke: #000000; /* Schwarze Umrandung für den Schild */
-        stroke-width: 3;
-      }
     </style>
   </defs>
   
@@ -82,14 +68,18 @@
     <circle class="dot" cx="460" cy="140" r="8"/>
     <circle class="dot" cx="660" cy="160" r="8"/>
     <circle class="dot" cx="860" cy="140" r="8"/>
-    <circle class="dot" cx="1140" cy="150" r="8"/>
+    <circle classs="dot" cx="1140" cy="150" r="8"/>
   </g>
 
-  <g transform="translate(970, 40) scale(0.8)">
-    <path class="wappen-schild" d="M 0 0 C 0 0, 100 -20, 200 0 C 200 0, 220 100, 200 200 C 200 200, 100 220, 0 200 C 0 200, -20 100, 0 0 Z"/>
+  <g transform="translate(970, 60) scale(1.6)">
+    <path d="M75 0 C 60 -5, 15 -5, 0 0 L 0 70 C 0 95, 30 105, 37.5 110 C 45 105, 75 95, 75 70 L 75 0 Z" fill="#C60C30" stroke="#000000" stroke-width="2"/>
     
-    <path class="wappen-adler" d="M100,40 C120,20 180,20 160,40 L170,60 C180,80 180,120 160,140 L140,160 C120,180 80,180 60,160 L40,140 C20,120 20,80 40,60 L30,40 Z"/>
+    <path d="M37.5 20 C 30 20, 25 25, 25 30 L 20 28 L 15 35 L 20 40 L 20 60 L 15 70 L 25 75 L 30 70 L 37.5 75 L 45 70 L 50 75 L 60 70 L 55 60 L 55 40 L 60 35 L 55 28 L 50 30 C 50 25, 45 20, 37.5 20 Z" fill="#000000"/>
     
-    <circle class="wappen-bewehrung" cx="100" cy="40" r="5"/> <circle class="wappen-bewehrung" cx="60" cy="150" r="5"/> <circle class="wappen-bewehrung" cx="140" cy="150" r="5"/> <path class class="wappen-border" d="M 0 0 C 0 0, 100 -20, 200 0 C 200 0, 220 100, 200 200 C 200 200, 100 220, 0 200 C 0 200, -20 100, 0 0 Z"/>
+    <path d="M37.5 20 C 36 24, 39 24, 37.5 20 L 37.5 26 L 39 24 Z" fill="#FFD700"/>
+    <path d="M15 70 L 10 75 L 15 80 Z" fill="#FFD700"/>
+    <path d="M25 75 L 20 80 L 25 85 Z" fill="#FFD700"/>
+    <path d="M50 75 L 55 80 L 50 85 Z" fill="#FFD700"/>
+    <path d="M60 70 L 65 75 L 60 80 Z" fill="#FFD700"/>
   </g>
 </svg>
