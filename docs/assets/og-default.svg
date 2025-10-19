@@ -33,15 +33,16 @@
         fill: #FFD95B; /* Gelb */
         opacity: 0.8;
       }
+      /* Farben für das Wiener Wappen */
+      .wappen-background {
+        fill: #C60C30; /* Rot des Wiener Wappens */
+      }
       .wappen-cross {
-        fill: #FFFFFF;
+        fill: #FFFFFF; /* Weiß des Wiener Wappens */
       }
-      .wappen-red {
-        fill: #C60C30; /* Tiefes Rot für das Wappen */
-      }
-      .wappen-outline {
-        stroke: #000000;
-        stroke-width: 5;
+      .wappen-border {
+        stroke: #000000; /* Schwarze Umrandung für das Wappen */
+        stroke-width: 3;
       }
     </style>
   </defs>
@@ -81,20 +82,12 @@
     <circle class="dot" cx="1140" cy="150" r="8"/>
   </g>
 
-  <g transform="translate(900, 30) scale(1.0)"> 
-    <path class="wappen-red" d="M30 0 H120 L150 30 V120 L120 150 H30 L0 120 V30 Z"/>
-    <path class="wappen-cross" d="M30 0 H120 L150 30 V120 L120 150 H30 L0 120 V30 Z" clip-path="url(#wappenClip)"/>
+  <g transform="translate(970, 40) scale(0.8)">
+    <path class="wappen-background" d="M 0 0 C 0 0, 100 -20, 200 0 C 200 0, 220 100, 200 200 C 200 200, 100 220, 0 200 C 0 200, -20 100, 0 0 Z"/>
     
-    <mask id="wappenMask">
-      <path fill="white" d="M30 0 H120 L150 30 V120 L120 150 H30 L0 120 V30 Z"/>
-    </mask>
-
-    <g mask="url(#wappenMask)">
-        <rect x="0" y="55" width="150" height="40" class="wappen-cross"/> 
-        <rect x="55" y="0" width="40" height="150" class="wappen-cross"/>
-    </g>
-
-    <path class="wappen-outline" d="M30 0 H120 L150 30 V120 L120 150 H30 L0 120 V30 Z"/>
-
+    <rect x="60" y="45" width="80" height="20" class="wappen-cross"/>
+    <rect x="90" y="15" width="20" height="80" class="wappen-cross"/>
+    
+    <path class="wappen-border" d="M 0 0 C 0 0, 100 -20, 200 0 C 200 0, 220 100, 200 200 C 200 200, 100 220, 0 200 C 0 200, -20 100, 0 0 Z"/>
   </g>
 </svg>
