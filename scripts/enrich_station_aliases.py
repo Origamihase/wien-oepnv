@@ -26,7 +26,7 @@ import csv
 import json
 import logging
 import re
-from collections import defaultdict
+from collections import defaultdict, deque
 from pathlib import Path
 from typing import Iterable
 
@@ -97,6 +97,83 @@ def _normalize_key(text: str) -> str:
     cleaned = re.sub(r"[^a-z0-9]+", " ", cleaned)
     cleaned = re.sub(r"\s{2,}", " ", cleaned)
     return cleaned.strip()
+
+
+def _normalize_spaces(value: str) -> str:
+    return re.sub(r"\s{2,}", " ", value.strip())
+
+
+_UMLAUT_TRANSLATION = str.maketrans(
+    {"ä": "ae", "ö": "oe", "ü": "ue", "Ä": "Ae", "Ö": "Oe", "Ü": "Ue"}
+)
+
+
+def _accent_free(value: str) -> str:
+    cleaned = _strip_accents(value.translate(_UMLAUT_TRANSLATION))
+    cleaned = cleaned.replace("ß", "ss").replace("ẞ", "SS")
+    return cleaned
+
+
+def _is_textual_alias(value: str, station_keys: set[str]) -> bool:
+    if not re.search(r"[a-zäöüß]", value):
+        return False
+    normalized = _normalize_key(value)
+    if not normalized:
+        return False
+    return normalized in station_keys
+
+
+_ST_ABBREV_RE = re.compile(r"\bSt\.?\s*(?=[A-ZÄÖÜ])")
+
+
+def _sankt_variants(alias: str) -> set[str]:
+    variant = _ST_ABBREV_RE.sub("Sankt ", alias)
+    variant = _normalize_spaces(variant)
+    if variant and variant != alias:
+        return {variant}
+    return set()
+
+
+_BAHNHOF_RE = re.compile(r"\bbahnhof\b", re.IGNORECASE)
+
+
+def _bahnhof_variants(alias: str) -> set[str]:
+    base = _normalize_spaces(alias)
+    if not base or _BAHNHOF_RE.search(base):
+        return set()
+
+    variants: set[str] = {f"{base} Bahnhof"}
+
+    prefix_target = base
+    if base.lower().startswith("wien "):
+        prefix_target = base[5:].strip()
+
+    if prefix_target:
+        variants.add(f"Bahnhof {prefix_target}")
+
+    return {_normalize_spaces(variant) for variant in variants if variant.strip()}
+
+
+def _textual_variants(alias: str) -> set[str]:
+    alias = _normalize_spaces(alias)
+    variants: set[str] = set()
+
+    accent_free = _accent_free(alias)
+    if accent_free and accent_free != alias:
+        variants.add(accent_free)
+
+    variants.update(_sankt_variants(alias))
+    variants.update(_bahnhof_variants(alias))
+
+    lowered = alias.casefold()
+    for prefix in ("wien ", "vienna "):
+        if lowered.startswith(prefix):
+            without_city = _normalize_spaces(alias[len(prefix) :])
+            if without_city:
+                variants.add(without_city)
+            break
+
+    return {variant for variant in variants if variant}
 
 
 def _load_vor_names(path: Path) -> dict[str, str]:
@@ -200,6 +277,39 @@ def _alias_candidates(
         bst_id = None
     if bst_id is not None:
         push(vor_mapping.get(bst_id))
+
+    station_keys: set[str] = set()
+
+    def add_station_key(raw: str) -> None:
+        if raw:
+            key = _normalize_key(raw)
+            if key:
+                station_keys.add(key)
+
+    add_station_key(name)
+    add_station_key(re.sub(r"^(?:wien|vienna)\s+", "", name, flags=re.IGNORECASE))
+
+    for key in list(station_keys):
+        sankt_key = re.sub(r"\bst\b", "sankt", key)
+        if sankt_key and sankt_key != key:
+            station_keys.add(sankt_key)
+        st_key = re.sub(r"\bsankt\b", "st", key)
+        if st_key and st_key != key:
+            station_keys.add(st_key)
+
+    queue: deque[str] = deque(sorted(aliases))
+    processed: set[str] = set()
+    while queue:
+        alias = queue.popleft()
+        if alias in processed:
+            continue
+        processed.add(alias)
+        if not _is_textual_alias(alias, station_keys):
+            continue
+        for variant in sorted(_textual_variants(alias)):
+            if variant not in aliases:
+                aliases.add(variant)
+                queue.append(variant)
 
     norm_keys: set[str] = set()
     for candidate in aliases:
