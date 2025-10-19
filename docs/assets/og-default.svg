@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" aria-label="Wien ÖPNV Feed – Social Preview (Abstände angepasst)">
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" aria-label="Wien ÖPNV Feed – Social Preview mit eingebautem Wappen">
   <!-- Hintergrund -->
   <rect width="1200" height="630" fill="#0F1736"/>
 
@@ -13,20 +13,28 @@
         font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial"
         font-weight="500" font-size="36" fill="#CFE0FF">Störungen · Baustellen · Hinweise · RSS &amp; JSON</text>
 
-  <!-- Wappen-Panel -->
+  <!-- Wappen-Panel (rechts oben) -->
   <g transform="translate(988,48)">
     <rect width="148" height="176" rx="18" fill="#111C44" stroke="#2A3873"/>
-    <g transform="translate(11,9)">
-      <path d="M10 4 H116 V70 C116 110 95 138 63 154 C31 138 10 110 10 70 V4 Z"
-            fill="#E0182D" stroke="#000000" stroke-width="3"/>
-      <rect x="55" y="8" width="16" height="142" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
-      <rect x="14" y="60" width="98" height="16" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
-      <path d="M14 8 H112 V70 C112 108 93 134 63 149 C33 134 14 108 14 70 V8 Z"
-            fill="none" stroke="#000000" stroke-width="2"/>
+    <!-- Dein Wappen: skaliert (0.6) und zentriert: (14,10) bei Panel 148×176 -->
+    <g transform="translate(14,10) scale(0.6)" fill="none" stroke="#000" stroke-width="2">
+      <clipPath id="c">
+        <path d="M199,1L1,1c0,0 1,69 5,106c4,36 18,79 35,106c13,23 36,45
+        59,46c23,0 46-24 59-46c17-28 31-71 35-106c4-37 5-105 5-106"/>
+      </clipPath>
+      <g clip-path="url(#c)">
+        <rect fill="#DA121A" width="200" height="260"/>
+        <path stroke="#FFF" stroke-width="43" d="m100,0v260M0,99h200"/>
+        <path d="m77.5,1v75.5H0m0,45h77.5v260m45
+        0V121.5H200m0-45H122.5V0M84.5,0v83.5H0m0,31H84.5v260m31,0V114.5H200m0-31H115.5V0"/>
+      </g>
+      <path d="M199,1L1,1c0,0 1.2,68.6 5,106c4.2,36
+      18.2,79 35,106c13.4,22.7 36,45 59,46c23,0 45.6-24.2
+      59-46c16.7-27.9 30.7-71 35-106c4.2-37.2 5.3-105 5-106z"/>
     </g>
   </g>
 
-  <!-- Badges: um 20 px nach unten versetzt (y=260) -->
+  <!-- Badges (20 px tiefer: y=260) -->
   <!-- WL -->
   <g transform="translate(64,260)">
     <rect width="260" height="60" rx="18" fill="#E2002A"/>
