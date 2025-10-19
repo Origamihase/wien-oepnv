@@ -15,13 +15,14 @@ import json
 import logging
 import os
 import re
+import subprocess
 import sys
 import unicodedata
 from copy import deepcopy
 from dataclasses import dataclass, field
 from io import BytesIO
 from pathlib import Path
-from typing import Iterable, Mapping, MutableMapping, Sequence
+from typing import Callable, Iterable, Mapping, MutableMapping, Sequence
 
 import openpyxl
 import requests
@@ -88,6 +89,89 @@ HEADER_VARIANTS: dict[str, set[str]] = {
 }
 
 logger = logging.getLogger("update_station_directory")
+
+
+def _empty_args() -> tuple[str, ...]:
+    return ()
+
+
+@dataclass(frozen=True)
+class CacheRefreshTarget:
+    label: str
+    script_candidates: tuple[str, ...]
+    optional: bool = False
+    extra_args_factory: Callable[[], Sequence[str]] = _empty_args
+    availability_check: Callable[[], bool] | None = None
+
+
+def _has_google_places_credentials() -> bool:
+    return bool(os.getenv("GOOGLE_ACCESS_ID") or os.getenv("GOOGLE_MAPS_API_KEY"))
+
+
+def _google_cache_args() -> tuple[str, ...]:
+    return ("--write",)
+
+
+_CACHE_REFRESH_TARGETS: tuple[CacheRefreshTarget, ...] = (
+    CacheRefreshTarget("ÖBB", ("update_oebb_cache.py",)),
+    CacheRefreshTarget("VOR", ("update_vor_cache.py",)),
+    CacheRefreshTarget("Wiener Linien", ("update_wl_cache.py",)),
+    CacheRefreshTarget(
+        "Google Places",
+        ("update_google_cache.py", "fetch_google_places_stations.py"),
+        optional=True,
+        extra_args_factory=_google_cache_args,
+        availability_check=_has_google_places_credentials,
+    ),
+)
+
+
+def _refresh_provider_caches(*, script_dir: Path | None = None) -> None:
+    base_dir = script_dir or Path(__file__).resolve().parent
+    for target in _CACHE_REFRESH_TARGETS:
+        if target.availability_check and not target.availability_check():
+            logger.info(
+                "Skipping %s cache refresh (credentials not available)", target.label
+            )
+            continue
+
+        command: list[str] | None = None
+        script_path: Path | None = None
+        for candidate in target.script_candidates:
+            candidate_path = base_dir / candidate
+            if candidate_path.exists():
+                extra_args = list(target.extra_args_factory())
+                command = [sys.executable, str(candidate_path), *extra_args]
+                script_path = candidate_path
+                break
+
+        if command is None or script_path is None:
+            message = (
+                "No cache refresh script found for %s; skipping"
+                if target.optional
+                else "Cache refresh script missing for %s"
+            )
+            log_method = logger.debug if target.optional else logger.warning
+            log_method(message, target.label)
+            continue
+
+        logger.info("Refreshing %s cache via %s", target.label, script_path.name)
+        try:
+            result = subprocess.run(command, check=False)
+        except OSError as exc:  # pragma: no cover - execution environment issues
+            logger.warning(
+                "Failed to execute %s cache refresh (%s); continuing", target.label, exc
+            )
+            continue
+
+        if result.returncode != 0:
+            logger.warning(
+                "%s cache refresh exited with code %s; continuing",
+                target.label,
+                result.returncode,
+            )
+        else:
+            logger.info("%s cache refresh completed", target.label)
 
 
 @dataclass
@@ -999,6 +1083,7 @@ def write_json(stations: list[Station], output_path: Path) -> None:
 def main() -> None:
     args = parse_args()
     configure_logging(args.verbose)
+    _refresh_provider_caches()
     existing_entries = _load_existing_station_entries(args.output)
     workbook_stream = download_workbook(args.source_url)
     stations = extract_stations(workbook_stream)
