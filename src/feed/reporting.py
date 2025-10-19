@@ -8,6 +8,7 @@ from pathlib import Path
 from time import perf_counter
 from typing import Any, Dict, Iterator, List, Optional, Tuple
 
+from .config import LOG_TIMEZONE
 from .logging import diagnostics_log_path, error_log_path, prune_log_file
 
 log = logging.getLogger("build_feed")
@@ -317,4 +318,148 @@ class RunReport:
             self.detach_error_collector()
 
 
-__all__ = ["ProviderReport", "RunReport", "clean_message"]
+@dataclass(frozen=True)
+class DuplicateSummary:
+    """Description of a deduplicated item cluster."""
+
+    dedupe_key: str
+    count: int
+    titles: Tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class FeedHealthMetrics:
+    """Aggregate metrics captured during a feed build."""
+
+    raw_items: int
+    filtered_items: int
+    deduped_items: int
+    new_items: int
+    duplicate_count: int
+    duplicates: Tuple[DuplicateSummary, ...]
+
+
+def _format_timestamp(dt: Optional[datetime]) -> str:
+    if dt is None:
+        return "—"
+    try:
+        localized = dt.astimezone(LOG_TIMEZONE)
+    except Exception:  # pragma: no cover - timezone edge cases
+        localized = dt
+    return localized.strftime("%Y-%m-%d %H:%M:%S %Z")
+
+
+def render_feed_health_markdown(
+    report: RunReport,
+    metrics: FeedHealthMetrics,
+) -> str:
+    """Render a human-readable Markdown summary of the latest feed build."""
+
+    lines: List[str] = []
+    lines.append("# Feed Health Report")
+    lines.append("")
+    status = "✅ Erfolgreich" if report.build_successful else "❌ Fehlerhaft"
+    lines.append(f"- **Status:** {status}")
+    lines.append(f"- **Run-ID:** `{report.run_id}`")
+    lines.append(f"- **Start:** {_format_timestamp(report.started_at)}")
+    lines.append(f"- **Ende:** {_format_timestamp(report.finished_at)}")
+    if report.feed_path:
+        lines.append(f"- **RSS-Datei:** `{report.feed_path}`")
+    lines.append("")
+
+    lines.append("## Pipeline-Kennzahlen")
+    lines.append("")
+    lines.append("| Schritt | Anzahl |")
+    lines.append("| --- | ---: |")
+    lines.append(f"| Rohdaten | {metrics.raw_items} |")
+    lines.append(f"| Nach Altersfilter | {metrics.filtered_items} |")
+    lines.append(f"| Nach Deduplizierung | {metrics.deduped_items} |")
+    lines.append(f"| Neue Items seit letztem State | {metrics.new_items} |")
+    lines.append(
+        f"| Entfernte Duplikate | {metrics.duplicate_count} |")
+    lines.append("")
+
+    if report.durations:
+        lines.append("### Laufzeiten")
+        lines.append("")
+        lines.append("| Schritt | Dauer (s) |")
+        lines.append("| --- | ---: |")
+        for key, value in sorted(report.durations.items()):
+            lines.append(f"| {key} | {value:.2f} |")
+        lines.append("")
+
+    lines.append("## Providerübersicht")
+    lines.append("")
+    lines.append("| Provider | Status | Items | Dauer (s) | Details |")
+    lines.append("| --- | --- | ---: | ---: | --- |")
+    for name in sorted(report.providers):
+        entry = report.providers[name]
+        status = entry.status or "unbekannt"
+        items = entry.items if entry.items is not None else "—"
+        duration = f"{entry.duration:.2f}" if entry.duration is not None else "—"
+        detail = entry.detail or ""
+        lines.append(
+            f"| {name} | {status} | {items} | {duration} | {detail} |"
+        )
+    lines.append("")
+
+    if metrics.duplicate_count:
+        lines.append("### Entfernte Duplikate im Detail")
+        lines.append("")
+        for dup in metrics.duplicates:
+            titles = ", ".join(
+                f"`{title}`" for title in dup.titles if title.strip()
+            )
+            title_text = titles or "(keine Titelinformationen)"
+            lines.append(
+                f"- **{dup.count}×** Schlüssel `{dup.dedupe_key}` – Beispiele: {title_text}"
+            )
+        lines.append("")
+
+    if report.warnings:
+        lines.append("## Warnungen")
+        lines.append("")
+        for warning in report.warnings:
+            lines.append(f"- {warning}")
+        lines.append("")
+
+    errors = list(report.iter_error_messages())
+    if report.exception_message and report.exception_message not in errors:
+        errors.append(report.exception_message)
+    if errors:
+        lines.append("## Fehler")
+        lines.append("")
+        for error in errors:
+            lines.append(f"- {error}")
+        lines.append("")
+
+    if not metrics.duplicate_count and not report.warnings and not errors:
+        lines.append("Keine zusätzlichen Auffälligkeiten festgestellt.")
+
+    return "\n".join(lines).strip() + "\n"
+
+
+def write_feed_health_report(
+    report: RunReport,
+    metrics: FeedHealthMetrics,
+    *,
+    output_path: Path,
+) -> None:
+    """Persist the feed health report to ``output_path`` using an atomic write."""
+
+    markdown = render_feed_health_markdown(report, metrics)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = output_path.with_suffix(output_path.suffix + ".tmp")
+    tmp_path.write_text(markdown, encoding="utf-8")
+    tmp_path.replace(output_path)
+
+
+__all__ = [
+    "DuplicateSummary",
+    "FeedHealthMetrics",
+    "ProviderReport",
+    "RunReport",
+    "clean_message",
+    "render_feed_health_markdown",
+    "write_feed_health_report",
+]

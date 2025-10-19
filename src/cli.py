@@ -200,6 +200,11 @@ def _configure_feed_commands(subparsers: argparse._SubParsersAction[argparse.Arg
     _add_python_argument(build_parser)
     build_parser.set_defaults(func=_handle_feed_build)
 
+    lint_parser = feed_subparsers.add_parser(
+        "lint", help="Analyse cached Items auf strukturelle Probleme"
+    )
+    lint_parser.set_defaults(func=_handle_feed_lint)
+
 
 def _configure_token_commands(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
     token_parser = subparsers.add_parser("tokens", help="Credential diagnostics")
@@ -320,6 +325,10 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
 def _handle_feed_build(args: argparse.Namespace) -> int:
     del args.python  # Execution happens in-process.
     return int(build_feed_module.main())
+
+
+def _handle_feed_lint(_args: argparse.Namespace) -> int:
+    return int(build_feed_module.lint())
 
 
 def _handle_token_verify(args: argparse.Namespace) -> int:

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wien-oepnv.github.io/schema/events.schema.json",
+  "title": "Wien ÖPNV Event",
+  "description": "Standardisiertes Ereignisobjekt für Cache-Dateien und den Feed-Build.",
+  "type": "object",
+  "required": [
+    "source",
+    "category",
+    "title",
+    "description",
+    "link",
+    "guid",
+    "pubDate",
+    "starts_at"
+  ],
+  "properties": {
+    "source": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Ursprung der Meldung, z. B. 'Wiener Linien', 'ÖBB' oder 'VOR/VAO'."
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Ereigniskategorie wie 'Störung', 'Hinweis' oder 'Baustelle'."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Bereinigter Titel inklusive Linienangaben."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Ausführliche Beschreibung, inklusive Umleitungen und Zusatzinformationen."
+    },
+    "link": {
+      "type": "string",
+      "format": "uri",
+      "description": "Referenz-URL zur Originalmeldung."
+    },
+    "guid": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stabile eindeutige Kennung, die auch im RSS-Feed verwendet wird."
+    },
+    "_identity": {
+      "type": "string",
+      "description": "Projektinterne Kennung zur Nachverfolgung von 'first_seen'."
+    },
+    "pubDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Veröffentlichungszeitpunkt der Meldung (ISO-8601)."
+    },
+    "starts_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Technischer Startzeitpunkt der Maßnahme (ISO-8601)."
+    },
+    "ends_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Optionales Ende der Maßnahme (ISO-8601)."
+    },
+    "first_seen": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Zeitpunkt, an dem die Meldung erstmals im Feed erschienen ist."
+    }
+  },
+  "additionalProperties": true,
+  "examples": [
+    {
+      "source": "Wiener Linien",
+      "category": "Störung",
+      "title": "U4: Betriebsstörung bei Karlsplatz",
+      "description": "Die Linie U4 hält derzeit nicht bei Karlsplatz.",
+      "link": "https://www.wienerlinien.at/ogd_realtime",
+      "guid": "d9f6c0e2-f6fb-4f6d-b3f2-0a5f1a3fcb4d",
+      "_identity": "wl|störung|L=U4|D=2025-07-20",
+      "pubDate": "2025-07-20T12:15:00+02:00",
+      "starts_at": "2025-07-20T12:10:00+02:00",
+      "ends_at": null
+    }
+  ]
+}
