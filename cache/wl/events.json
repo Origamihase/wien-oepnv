@@ -422,13 +422,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "65A/66A/7A: Fremder Verkehrsunfall",
+    "description": "Die Linie 7 A fährt derzeit nur zwischen Meidling Hauptstraße und Belgradplatz. Die Linie 65 A ist derzeit in Richtung Inzersdorf, Zetschegasse an der Weiterfahrt gehindert. Die Linie 66 A fährt derzeit nur zwischen Liesing und Laxenburger Straße, Sahulkastraße. Die Störung dauert voraussichtlich bis 11:00 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Reumannplatz U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bfddaadd2beae96ec7e5dff3dfa7e1f69e3e9aae4f04ddb833741a2a1cb39a64",
+    "pubDate": "2025-10-19T10:15:00+02:00",
+    "starts_at": "2025-10-19T10:15:00+02:00",
+    "ends_at": "2025-10-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=65A,66A,7A|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Fremdunfall Betrieb ab Laxenburger Straße , Sahulkastraße",
+    "description": "Fremdunfall Betrieb ab Laxenburger Straße , Sahulkastraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3aa58aaf948819d8d536da6ddee47a0578b37523360c62801f6ba2a42666fd9b",
+    "pubDate": "2025-10-19T10:17:46+02:00",
+    "starts_at": "2025-10-19T10:17:46+02:00",
+    "ends_at": "2025-10-19T11:36:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "35f1c1dae859117ecfd4a8a5bacbe13030aa8781faed62b42b7559892dc0a368",
+    "pubDate": "2025-10-19T10:17:52+02:00",
+    "starts_at": "2025-10-19T10:17:52+02:00",
+    "ends_at": "2025-10-19T11:33:00+02:00",
+    "_identity": "wl|störung|L=7A|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Fremdunfall Betrieb ab Belgradplatz",
+    "description": "Fremdunfall Betrieb ab Belgradplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c3cd3a8fd07a48882be78062ca583287bde7eeb293bb0b8eab20f519e820e252",
+    "pubDate": "2025-10-19T10:18:03+02:00",
+    "starts_at": "2025-10-19T10:18:03+02:00",
+    "ends_at": "2025-10-19T11:33:00+02:00",
+    "_identity": "wl|störung|L=7A|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Fahrtbehinderung Fremder Verkehrsunfall",
     "description": "Fahrtbehinderung Fremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "780fd447a88a91c51ac3c46c185e1b858fe23e32d2b8bb27ada606517750290a",
-    "pubDate": "2025-10-19T10:17:46+02:00",
-    "starts_at": "2025-10-19T10:17:46+02:00",
-    "ends_at": "2025-10-19T11:16:00+02:00",
+    "pubDate": "2025-10-19T10:34:41+02:00",
+    "starts_at": "2025-10-19T10:34:41+02:00",
+    "ends_at": "2025-10-19T11:34:00+02:00",
     "_identity": "wl|störung|L=66A|D=2025-10-19"
   }
 ]
