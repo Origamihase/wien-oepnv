@@ -49,19 +49,19 @@ jobs:
             [[ "$before" != "$after" ]] && changed=true
           fi
 
-          # --- robots.txt: Einrückungen entfernen & genau eine Sitemap-Zeile ---
+          # --- robots.txt: Einrückungen entfernen & genau EINE Sitemap-Zeile ---
           if [[ -f docs/robots.txt ]]; then
             before="$(sha1sum docs/robots.txt | awk '{print $1}')"
-            # führende Leerzeichen bei bekannten Direktiven entfernen
-            sed -E -i 's/^[[:space:]]+User-agent:/User-agent:/; s/^[[:space:]]+Allow:/Allow:/' docs/robots.txt || true
-            # alle vorhandenen Sitemap-Zeilen entfernen, eine normierte Zeile setzen
+            # alle führenden Leerzeichen in jeder Zeile entfernen
+            sed -E -i 's/^[[:space:]]+//g' docs/robots.txt
+            # alle vorhandenen Sitemap-Zeilen löschen, exakt eine normierte Zeile setzen
             sed -E -i '/^[[:space:]]*Sitemap:/d' docs/robots.txt
             printf 'Sitemap: %s/sitemap.xml\n' "$SITE_BASE" >> docs/robots.txt
             after="$(sha1sum docs/robots.txt | awk '{print $1}')"
             [[ "$before" != "$after" ]] && changed=true
           fi
 
-          # --- feed.xml: xmlns:atom, language, atom:self/alternate (DEDUP global) ---
+          # --- feed.xml: xmlns:atom, language, atom:self/alternate (globale DEDUPE) ---
           if [[ -f docs/feed.xml ]]; then
             before="$(sha1sum docs/feed.xml | awk '{print $1}')"
 
@@ -69,23 +69,24 @@ jobs:
               my $base = $ENV{"SITE_BASE"} // "https://origamihase.github.io/wien-oepnv";
               my $s = $_;
 
-              # 1) xmlns:atom ergänzen, falls fehlt (attributschonend am <rss>-Starttag)
+              # 1) xmlns:atom am <rss>-Starttag ergänzen, falls fehlt (nicht zerstörend)
               $s =~ s{<rss\b(?![^>]*\bxmlns:atom=)}{<rss xmlns:atom="http://www.w3.org/2005/Atom" }s;
 
-              # 2) vor/nach </description> ein konsistentes Newline sicherstellen
+              # 2) Nach </description> eine saubere Zeile erzwingen
               $s =~ s{</description>\s*}{</description>\n}s;
 
-              # 3) vorhandenes <language>de</language> ENTWEDER beibehalten ODER normiert direkt nach </description> setzen
+              # 3) <language>de</language> direkt nach </description> einfügen, falls nicht vorhanden
               if ($s !~ m{<language>de</language>}s) {
                 $s =~ s{(</description>\n)}{$1    <language>de</language>\n}s;
               }
 
-              # 4) ALLE vorhandenen atom:link in der gesamten Datei entfernen (globales DEDUPE)
+              # 4) ALLE bestehenden atom:link-Elemente in der GESAMTEN Datei entfernen (Items inkl.)
               $s =~ s{\n[ \t]*<atom:link\b[^>]*?/>\s*}{}gs;
 
-              # 5) EXAKT ZWEI normierte Einträge NACH </description> (bzw. nach language, wenn eingefügt) einsetzen
-              #    Reihenfolge ist egal; wir hängen sie direkt nach </description> an, language bleibt bestehen.
-              $s =~ s{(</description>\n)}{$1    <atom:link rel="alternate" type="text/html" href="$base/"/>\n    <atom:link rel="self" type="application/rss+xml" href="$base/feed.xml"/>\n}s;
+              # 5) EXAKT ZWEI normierte Channel-Links unmittelbar nach </description> einsetzen
+              my $ins = "    <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n"
+                      . "    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n";
+              $s =~ s{(</description>\n)}{$1$ins}s;
 
               $_ = $s;
             ' docs/feed.xml
@@ -110,7 +111,7 @@ jobs:
           CUR="$(git rev-parse --abbrev-ref HEAD || true)"
           BRANCH="${CUR:-$DEF}"
           git add -A
-          git commit -m "chore(seo): feed atom links (dedupe) + language; sitemap/robots canonicals"
+          git commit -m "chore(seo): feed atom links (global dedupe) + language; robots formatting; sitemap canonicals"
           if git push origin "HEAD:${BRANCH}"; then
             echo "mode=direct" >> "$GITHUB_OUTPUT"
           else
@@ -120,7 +121,7 @@ jobs:
             git push origin "HEAD:$PRB"
             OWNER_REPO="${{ github.repository }}"
             BASE="$DEF"
-            BODY=$'Fix: Canonicals in sitemap/robots; Feed: language=de, Atom self/alternate (dedupe) + xmlns:atom. Idempotent.'
+            BODY=$'Fix: Canonicals in sitemap/robots; Feed: language=de, Atom self/alternate (global dedupe) + xmlns:atom. Idempotent.'
             curl -sS -H "Authorization: Bearer ${GH_TOKEN}" \
                  -H "Accept: application/vnd.github+json" \
                  -X POST "https://api.github.com/repos/${OWNER_REPO}/pulls" \
@@ -129,7 +130,7 @@ jobs:
             echo "mode=pr" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Update repository metadata (desc/homepage) via PAT
+      - name: Update repository metadata (desc/homepage) via PAT Secret
         env:
           ADMIN_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
           SITE_BASE: ${{ env.SITE_BASE }}
@@ -142,12 +143,10 @@ jobs:
             exit 0
           fi
           OWNER_REPO="${{ github.repository }}"
-          # Beschreibung + Homepage setzen
           curl -sS -H "Authorization: Bearer ${ADMIN_TOKEN}" \
                -H "Accept: application/vnd.github+json" \
                -X PATCH "https://api.github.com/repos/${OWNER_REPO}" \
-               -d "$(printf '{"description":%q,"homepage":%q}' \
-                    "${DESC}" "${SITE_BASE}/")" >/dev/null
+               -d "$(printf '{"description":%q,"homepage":%q}' "${DESC}" "${SITE_BASE}/")" >/dev/null
 
       - name: Verify feed file (repo) – exactly one self & one alternate
         shell: bash
@@ -158,7 +157,7 @@ jobs:
           grep -q '<language>de</language>' docs/feed.xml
           grep -q 'xmlns:atom=' docs/feed.xml
 
-      - name: Verify published feed (best-effort; retries for Pages delay)
+      - name: Verify published feed (best-effort; allow Pages delay)
         shell: bash
         run: |
           set -euo pipefail
