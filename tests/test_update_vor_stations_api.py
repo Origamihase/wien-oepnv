@@ -111,3 +111,19 @@ def test_fetch_vor_stops_from_api_uses_fallback(monkeypatch: pytest.MonkeyPatch)
     assert any("location.name" in call[0] for call in fake_session.calls)
     assert module.vor_provider.refresh_access_credentials() == "token"
 
+
+def test_canonical_vor_name_strips_suffixes(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(module.vor_provider, "STATION_NAME_MAP", {}, raising=False)
+
+    assert module._canonical_vor_name("Wien Karlsplatz U") == "Wien Karlsplatz"
+    assert module._canonical_vor_name("Wien Karlsplatz U (VOR)") == "Wien Karlsplatz"
+    assert module._canonical_vor_name("Wien Karlsplatz (WL)") == "Wien Karlsplatz"
+    assert module._canonical_vor_name("Wien Hauptbahnhof (VOR)") == "Wien Hauptbahnhof"
+
+    mapping = {
+        "Vienna Karlsplatz U": "Wien Karlsplatz",
+    }
+    monkeypatch.setattr(module.vor_provider, "STATION_NAME_MAP", mapping, raising=False)
+    assert module._canonical_vor_name("Vienna Karlsplatz U (WL)") == "Wien Karlsplatz"
+    assert module._canonical_vor_name("Vienna Karlsplatz") == "Wien Karlsplatz"
+

@@ -527,12 +527,39 @@ def _looks_like_vienna(text: str | None) -> bool:
     return not normalized[4].isalpha()
 
 
+_SUFFIX_PATTERNS: tuple[re.Pattern[str], ...] = (
+    re.compile(r"\s+U\s*(?:\((?:VOR|WL)\))?$", flags=re.IGNORECASE),
+    re.compile(r"\s+\((?:VOR|WL)\)$", flags=re.IGNORECASE),
+)
+
+
+def _strip_vor_suffixes(name: str) -> str:
+    text = name
+    for pattern in _SUFFIX_PATTERNS:
+        text = pattern.sub("", text)
+    text = re.sub(r"\s{2,}", " ", text)
+    return text.strip(" -")
+
+
 def _canonical_vor_name(name: str) -> str:
     cleaned = re.sub(r"\s{2,}", " ", name.strip())
     if not cleaned:
-        cleaned = name.strip()
-    if "(VOR)" not in cleaned:
-        cleaned = f"{cleaned} (VOR)"
+        return name.strip()
+
+    mapped = (
+        vor_provider.STATION_NAME_MAP.get(cleaned)
+        or vor_provider.STATION_NAME_MAP.get(name.strip())
+    )
+    if mapped:
+        cleaned = str(mapped).strip()
+
+    stripped = _strip_vor_suffixes(cleaned)
+    if stripped:
+        cleaned = stripped
+
+    if cleaned.casefold().startswith("vienna "):
+        cleaned = f"Wien {cleaned[7:].lstrip()}".strip()
+
     return cleaned
 
 

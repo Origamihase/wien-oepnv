@@ -592,10 +592,34 @@
     "longitude": 16.376413
   },
   {
+    "station_name": "Wien Hauptbahnhof (VOR)",
+    "bst_id": 2393,
+    "vor_id": "490134900",
+    "resolved_name": "Wien Hauptbahnhof",
+    "latitude": 48.185184,
+    "longitude": 16.376413
+  },
+  {
+    "station_name": "Vienna Central Station",
+    "bst_id": 2393,
+    "vor_id": "490134900",
+    "resolved_name": "Wien Hauptbahnhof",
+    "latitude": 48.185184,
+    "longitude": 16.376413
+  },
+  {
+    "station_name": "Vienna Hauptbahnhof (VOR)",
+    "bst_id": 2393,
+    "vor_id": "490134900",
+    "resolved_name": "Wien Hauptbahnhof",
+    "latitude": 48.185184,
+    "longitude": 16.376413
+  },
+  {
     "station_name": "Wien Karlsplatz U",
     "bst_id": 490065700,
     "vor_id": "490065700",
-    "resolved_name": "Wien Karlsplatz U",
+    "resolved_name": "Wien Karlsplatz",
     "latitude": 48.200888,
     "longitude": 16.368907
   },
@@ -608,10 +632,34 @@
     "longitude": 16.384584
   },
   {
+    "station_name": "Wien Mitte-Landstraße (VOR)",
+    "bst_id": 926,
+    "vor_id": "490074300",
+    "resolved_name": "Wien Mitte-Landstraße",
+    "latitude": 48.206048,
+    "longitude": 16.384584
+  },
+  {
+    "station_name": "Vienna Mitte-Landstraße",
+    "bst_id": 926,
+    "vor_id": "490074300",
+    "resolved_name": "Wien Mitte-Landstraße",
+    "latitude": 48.206048,
+    "longitude": 16.384584
+  },
+  {
+    "station_name": "Vienna Mitte-Landstraße (VOR)",
+    "bst_id": 926,
+    "vor_id": "490074300",
+    "resolved_name": "Wien Mitte-Landstraße",
+    "latitude": 48.206048,
+    "longitude": 16.384584
+  },
+  {
     "station_name": "Wien Schottentor U",
     "bst_id": 490118400,
     "vor_id": "490118400",
-    "resolved_name": "Wien Schottentor U",
+    "resolved_name": "Wien Schottentor",
     "latitude": 48.214489,
     "longitude": 16.361905
   },
@@ -619,7 +667,7 @@
     "station_name": "Wien Stephansplatz U",
     "bst_id": 490132000,
     "vor_id": "490132000",
-    "resolved_name": "Wien Stephansplatz U",
+    "resolved_name": "Wien Stephansplatz",
     "latitude": 48.208088,
     "longitude": 16.371604
   },
@@ -635,7 +683,55 @@
     "station_name": "Wien Karlsplatz (WL)",
     "bst_id": 960201076,
     "vor_id": "490065700",
-    "resolved_name": "Wien Karlsplatz U",
+    "resolved_name": "Wien Karlsplatz",
+    "latitude": 48.200888,
+    "longitude": 16.368907
+  },
+  {
+    "station_name": "Wien Karlsplatz U (VOR)",
+    "bst_id": 490065700,
+    "vor_id": "490065700",
+    "resolved_name": "Wien Karlsplatz",
+    "latitude": 48.200888,
+    "longitude": 16.368907
+  },
+  {
+    "station_name": "Wien Karlsplatz (VOR)",
+    "bst_id": 490065700,
+    "vor_id": "490065700",
+    "resolved_name": "Wien Karlsplatz",
+    "latitude": 48.200888,
+    "longitude": 16.368907
+  },
+  {
+    "station_name": "Wien Karlsplatz U (WL)",
+    "bst_id": 960201076,
+    "vor_id": "490065700",
+    "resolved_name": "Wien Karlsplatz",
+    "latitude": 48.200888,
+    "longitude": 16.368907
+  },
+  {
+    "station_name": "Vienna Karlsplatz U",
+    "bst_id": 490065700,
+    "vor_id": "490065700",
+    "resolved_name": "Wien Karlsplatz",
+    "latitude": 48.200888,
+    "longitude": 16.368907
+  },
+  {
+    "station_name": "Vienna Karlsplatz U (VOR)",
+    "bst_id": 490065700,
+    "vor_id": "490065700",
+    "resolved_name": "Wien Karlsplatz",
+    "latitude": 48.200888,
+    "longitude": 16.368907
+  },
+  {
+    "station_name": "Vienna Karlsplatz (WL)",
+    "bst_id": 960201076,
+    "vor_id": "490065700",
+    "resolved_name": "Wien Karlsplatz",
     "latitude": 48.200888,
     "longitude": 16.368907
   },
@@ -643,7 +739,55 @@
     "station_name": "Wien Schottentor (WL)",
     "bst_id": 960201002,
     "vor_id": "490118400",
-    "resolved_name": "Wien Schottentor U",
+    "resolved_name": "Wien Schottentor",
+    "latitude": 48.214489,
+    "longitude": 16.361905
+  },
+  {
+    "station_name": "Wien Schottentor U (VOR)",
+    "bst_id": 490118400,
+    "vor_id": "490118400",
+    "resolved_name": "Wien Schottentor",
+    "latitude": 48.214489,
+    "longitude": 16.361905
+  },
+  {
+    "station_name": "Wien Schottentor (VOR)",
+    "bst_id": 490118400,
+    "vor_id": "490118400",
+    "resolved_name": "Wien Schottentor",
+    "latitude": 48.214489,
+    "longitude": 16.361905
+  },
+  {
+    "station_name": "Wien Schottentor U (WL)",
+    "bst_id": 960201002,
+    "vor_id": "490118400",
+    "resolved_name": "Wien Schottentor",
+    "latitude": 48.214489,
+    "longitude": 16.361905
+  },
+  {
+    "station_name": "Vienna Schottentor U",
+    "bst_id": 490118400,
+    "vor_id": "490118400",
+    "resolved_name": "Wien Schottentor",
+    "latitude": 48.214489,
+    "longitude": 16.361905
+  },
+  {
+    "station_name": "Vienna Schottentor U (VOR)",
+    "bst_id": 490118400,
+    "vor_id": "490118400",
+    "resolved_name": "Wien Schottentor",
+    "latitude": 48.214489,
+    "longitude": 16.361905
+  },
+  {
+    "station_name": "Vienna Schottentor (WL)",
+    "bst_id": 960201002,
+    "vor_id": "490118400",
+    "resolved_name": "Wien Schottentor",
     "latitude": 48.214489,
     "longitude": 16.361905
   },
@@ -651,7 +795,55 @@
     "station_name": "Wien Stephansplatz (WL)",
     "bst_id": 960201001,
     "vor_id": "490132000",
-    "resolved_name": "Wien Stephansplatz U",
+    "resolved_name": "Wien Stephansplatz",
+    "latitude": 48.208088,
+    "longitude": 16.371604
+  },
+  {
+    "station_name": "Wien Stephansplatz U (VOR)",
+    "bst_id": 490132000,
+    "vor_id": "490132000",
+    "resolved_name": "Wien Stephansplatz",
+    "latitude": 48.208088,
+    "longitude": 16.371604
+  },
+  {
+    "station_name": "Wien Stephansplatz (VOR)",
+    "bst_id": 490132000,
+    "vor_id": "490132000",
+    "resolved_name": "Wien Stephansplatz",
+    "latitude": 48.208088,
+    "longitude": 16.371604
+  },
+  {
+    "station_name": "Wien Stephansplatz U (WL)",
+    "bst_id": 960201001,
+    "vor_id": "490132000",
+    "resolved_name": "Wien Stephansplatz",
+    "latitude": 48.208088,
+    "longitude": 16.371604
+  },
+  {
+    "station_name": "Vienna Stephansplatz U",
+    "bst_id": 490132000,
+    "vor_id": "490132000",
+    "resolved_name": "Wien Stephansplatz",
+    "latitude": 48.208088,
+    "longitude": 16.371604
+  },
+  {
+    "station_name": "Vienna Stephansplatz U (VOR)",
+    "bst_id": 490132000,
+    "vor_id": "490132000",
+    "resolved_name": "Wien Stephansplatz",
+    "latitude": 48.208088,
+    "longitude": 16.371604
+  },
+  {
+    "station_name": "Vienna Stephansplatz (WL)",
+    "bst_id": 960201001,
+    "vor_id": "490132000",
+    "resolved_name": "Wien Stephansplatz",
     "latitude": 48.208088,
     "longitude": 16.371604
   },
