@@ -14,68 +14,87 @@
         fill: #FFFFFF;
         fill-opacity: 0.9;
       }
+      .button-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        font-size: 32px;
+        font-weight: 600;
+        fill: #1E266A; /* Dunkler Blauton für Kontrast auf Gelb */
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
       .line {
         stroke: #FFD95B; /* Gelb */
-        stroke-width: 8;
+        stroke-width: 6;
         stroke-linecap: round;
         stroke-linejoin: round;
+        opacity: 0.6;
       }
       .dot {
         fill: #FFD95B; /* Gelb */
+        opacity: 0.8;
       }
-      .building-fill {
+      .wappen-cross {
         fill: #FFFFFF;
       }
-      .skyline-base {
-        fill: #2A3695; /* Dunkelblau */
+      .wappen-red {
+        fill: #C60C30; /* Tiefes Rot für das Wappen */
+      }
+      .wappen-outline {
+        stroke: #000000;
+        stroke-width: 5;
       }
     </style>
   </defs>
-
-  <rect width="1200" height="630" fill="#2A3695"/> <text x="60" y="130" class="title">Wien ÖPNV Feed</text>
+  
+  <rect width="1200" height="630" fill="#2A3695"/>
+  
+  <text x="60" y="130" class="title">Wien ÖPNV Feed</text>
   <text x="60" y="195" class="subtitle">Aktuelle Verkehrsmeldungen &amp; API-Daten</text>
-
+  
   <g transform="translate(60, 270)">
     <rect width="300" height="90" rx="45" fill="#FFD95B"/>
-    <text x="150" y="45" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 32px; font-weight: 600; fill: #1E266A; text-anchor: middle; dominant-baseline: central;">RSS &amp; JSON</text>
+    <text x="150" y="45" class="button-text">RSS &amp; JSON</text>
     
     <rect x="320" width="300" height="90" rx="45" fill="#FFD95B"/>
-    <text x="470" y="45" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 32px; font-weight: 600; fill: #1E266A; text-anchor: middle; dominant-baseline: central;">Open Data</text>
+    <text x="470" y="45" class="button-text">Open Data</text>
     
     <rect x="640" width="300" height="90" rx="45" fill="#FFD95B"/>
-    <text x="790" y="45" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 32px; font-weight: 600; fill: #1E266A; text-anchor: middle; dominant-baseline: central;">ÖPNV Wien</text>
+    <text x="790" y="45" class="button-text">ÖPNV Wien</text>
   </g>
 
   <g transform="translate(0, 420)">
-    <rect x="0" y="100" width="1200" height="110" class="skyline-base"/>
-
-    <path class="building-fill" d="M 100 100 L 100 30 L 150 30 L 150 100 Z"/>
-    <path class="building-fill" d="M 200 100 L 200 60 L 240 60 L 240 100 Z"/>
-    <path class="building-fill" d="M 300 100 L 300 40 L 330 40 L 330 100 Z"/>
-    <path class="building-fill" d="M 450 100 L 450 20 L 500 20 L 500 100 Z"/>
-    <path class="building-fill" d="M 550 100 L 550 70 L 580 70 L 580 100 Z"/>
-    
-    <path class="building-fill" d="M 700 100 L 700 30 L 750 30 L 750 100 Z"/>
-    <path class="building-fill" d="M 800 100 L 800 50 L 830 50 L 830 100 Z"/>
-    <path class="building-fill" d="M 900 100 L 900 65 L 940 65 L 940 100 Z"/>
-    <path class="building-fill" d="M 1000 100 L 1000 25 L 1050 25 L 1050 100 Z"/>
-
     <path class="line" d="M 80 120 Q 180 80, 280 120 T 480 120 Q 580 80, 680 120 T 880 120 Q 980 80, 1080 120"/>
     <path class="line" d="M 60 150 C 160 130, 260 170, 360 150 S 560 130, 660 170 S 860 130, 960 150 C 1060 170, 1160 130, 1140 150"/>
     
-    <circle class="dot" cx="80" cy="120" r="10"/>
-    <circle class="dot" cx="280" cy="120" r="10"/>
-    <circle class="dot" cx="480" cy="120" r="10"/>
-    <circle class="dot" cx="680" cy="120" r="10"/>
-    <circle class="dot" cx="880" cy="120" r="10"/>
-    <circle class="dot" cx="1080" cy="120" r="10"/>
+    <circle class="dot" cx="80" cy="120" r="8"/>
+    <circle class="dot" cx="280" cy="120" r="8"/>
+    <circle class="dot" cx="480" cy="120" r="8"/>
+    <circle class="dot" cx="680" cy="120" r="8"/>
+    <circle class="dot" cx="880" cy="120" r="8"/>
+    <circle class="dot" cx="1080" cy="120" r="8"/>
 
-    <circle class="dot" cx="60" cy="150" r="10"/>
-    <circle class="dot" cx="260" cy="160" r="10"/>
-    <circle class="dot" cx="460" cy="140" r="10"/>
-    <circle class="dot" cx="660" cy="160" r="10"/>
-    <circle class="dot" cx="860" cy="140" r="10"/>
-    <circle class="dot" cx="1140" cy="150" r="10"/>
+    <circle class="dot" cx="60" cy="150" r="8"/>
+    <circle class="dot" cx="260" cy="160" r="8"/>
+    <circle class="dot" cx="460" cy="140" r="8"/>
+    <circle class="dot" cx="660" cy="160" r="8"/>
+    <circle class="dot" cx="860" cy="140" r="8"/>
+    <circle class="dot" cx="1140" cy="150" r="8"/>
+  </g>
+
+  <g transform="translate(900, 30) scale(1.0)"> 
+    <path class="wappen-red" d="M30 0 H120 L150 30 V120 L120 150 H30 L0 120 V30 Z"/>
+    <path class="wappen-cross" d="M30 0 H120 L150 30 V120 L120 150 H30 L0 120 V30 Z" clip-path="url(#wappenClip)"/>
+    
+    <mask id="wappenMask">
+      <path fill="white" d="M30 0 H120 L150 30 V120 L120 150 H30 L0 120 V30 Z"/>
+    </mask>
+
+    <g mask="url(#wappenMask)">
+        <rect x="0" y="55" width="150" height="40" class="wappen-cross"/> 
+        <rect x="55" y="0" width="40" height="150" class="wappen-cross"/>
+    </g>
+
+    <path class="wappen-outline" d="M30 0 H120 L150 30 V120 L120 150 H30 L0 120 V30 Z"/>
 
   </g>
 </svg>
