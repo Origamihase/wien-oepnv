@@ -131,8 +131,8 @@ def test_wl_aliases_take_precedence_over_vor_text_aliases():
 
     numeric = station_info("490065700")
     assert numeric is not None
-    assert numeric.name == "Wien Karlsplatz U (VOR)"
+    assert numeric.name == "Wien Karlsplatz"
 
     vor_label = station_info("Wien Karlsplatz U (VOR)")
     assert vor_label is not None
-    assert vor_label.name == "Wien Karlsplatz U (VOR)"
+    assert vor_label.name == "Wien Karlsplatz"
