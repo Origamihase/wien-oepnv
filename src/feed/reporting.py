@@ -3,14 +3,22 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from time import perf_counter
 from typing import Any, Dict, Iterator, List, Optional, Tuple
 
+import requests
+
 from .config import LOG_TIMEZONE
 from .logging import diagnostics_log_path, error_log_path, prune_log_file
+
+try:  # pragma: no cover - support package and script execution
+    from utils.env import get_bool_env
+except ModuleNotFoundError:  # pragma: no cover
+    from ..utils.env import get_bool_env
 
 log = logging.getLogger("build_feed")
 
@@ -315,6 +323,7 @@ class RunReport:
                     "Hinweis: Fehler während des Feed-Laufs – Details siehe %s",
                     error_log_path,
                 )
+                _submit_github_issue(self)
         finally:
             self.detach_error_collector()
 
@@ -556,3 +565,198 @@ __all__ = [
     "write_feed_health_report",
     "write_feed_health_json",
 ]
+
+
+def _split_csv(value: str | None) -> Tuple[str, ...]:
+    if not value:
+        return ()
+    parts = [item.strip() for item in value.split(",")]
+    return tuple(part for part in parts if part)
+
+
+@dataclass(frozen=True)
+class _GithubIssueConfig:
+    enabled: bool
+    repository: Optional[str]
+    token: Optional[str]
+    api_url: str
+    labels: Tuple[str, ...]
+    assignees: Tuple[str, ...]
+    title_prefix: str
+
+    @classmethod
+    def from_env(cls) -> "_GithubIssueConfig":
+        enabled = get_bool_env("FEED_GITHUB_CREATE_ISSUES", False)
+        repository = (
+            os.getenv("FEED_GITHUB_REPOSITORY")
+            or os.getenv("GITHUB_REPOSITORY")
+            or None
+        )
+        token = os.getenv("FEED_GITHUB_TOKEN") or os.getenv("GITHUB_TOKEN") or None
+        api_url = (
+            os.getenv("FEED_GITHUB_API_URL")
+            or os.getenv("GITHUB_API_URL")
+            or "https://api.github.com"
+        )
+        labels = _split_csv(os.getenv("FEED_GITHUB_ISSUE_LABELS"))
+        assignees = _split_csv(os.getenv("FEED_GITHUB_ISSUE_ASSIGNEES"))
+        title_prefix = os.getenv("FEED_GITHUB_ISSUE_TITLE_PREFIX", "Fehlerbericht")
+        return cls(
+            enabled=enabled,
+            repository=repository,
+            token=token,
+            api_url=api_url.rstrip("/"),
+            labels=labels,
+            assignees=assignees,
+            title_prefix=title_prefix.strip() or "Fehlerbericht",
+        )
+
+
+class _GithubIssueReporter:
+    def __init__(self, config: _GithubIssueConfig) -> None:
+        self._config = config
+
+    def submit(self, report: RunReport) -> None:
+        if not self._config.enabled:
+            return
+        if not self._config.repository or not self._config.token:
+            log.warning(
+                "Automatisches GitHub-Issue kann nicht erstellt werden – Token oder Repository fehlen."
+            )
+            return
+
+        url = (
+            f"{self._config.api_url}/repos/{self._config.repository}/issues"
+        )
+        payload = {
+            "title": self._build_title(report),
+            "body": self._build_body(report),
+        }
+        if self._config.labels:
+            payload["labels"] = list(self._config.labels)
+        if self._config.assignees:
+            payload["assignees"] = list(self._config.assignees)
+
+        headers = {
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {self._config.token}",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "wien-oepnv-feed-reporter",
+        }
+
+        try:
+            response = requests.post(url, json=payload, timeout=10, headers=headers)
+        except requests.RequestException as exc:
+            log.warning(
+                "Automatisches GitHub-Issue fehlgeschlagen (Netzwerkfehler %s: %s)",
+                type(exc).__name__,
+                exc,
+            )
+            return
+
+        if response.status_code >= 400:
+            detail: str
+            try:
+                detail = response.json().get("message", response.text)
+            except ValueError:
+                detail = response.text
+            log.warning(
+                "GitHub-Antwort %s beim Erstellen des Issues: %s",
+                response.status_code,
+                detail,
+            )
+            return
+
+        issue_url: Optional[str] = None
+        try:
+            data = response.json()
+            issue_url = data.get("html_url")
+        except ValueError:
+            issue_url = None
+
+        if issue_url:
+            log.info("Automatisches GitHub-Issue erstellt: %s", issue_url)
+        else:
+            log.info("Automatisches GitHub-Issue erstellt.")
+
+    def _build_title(self, report: RunReport) -> str:
+        return f"{self._config.title_prefix}: Feed-Lauf {report.run_id}"
+
+    def _build_body(self, report: RunReport) -> str:
+        started = _format_timestamp(report.started_at)
+        finished = _format_timestamp(report.finished_at)
+        errors = list(report.iter_error_messages())
+        if report.exception_message and report.exception_message not in errors:
+            errors.append(report.exception_message)
+
+        lines: List[str] = []
+        lines.append(
+            "Dieser Issue wurde automatisch erstellt, weil der Feed-Lauf Fehler gemeldet hat."
+        )
+        lines.append("")
+        lines.append("## Zusammenfassung")
+        lines.append("")
+        lines.append(f"- **Run-ID:** `{report.run_id}`")
+        lines.append("- **Status:** Fehler")
+        lines.append(f"- **Start:** {started}")
+        lines.append(f"- **Ende:** {finished}")
+        if report.feed_path:
+            lines.append(f"- **Feed-Datei:** `{report.feed_path}`")
+        if report.raw_item_count is not None:
+            lines.append(f"- **Items (roh):** {report.raw_item_count}")
+        if report.final_item_count is not None:
+            lines.append(f"- **Items (final):** {report.final_item_count}")
+        if report.exception_message:
+            lines.append(f"- **Ausnahme:** {report.exception_message}")
+        if report.warnings:
+            lines.append(f"- **Warnungen:** {len(report.warnings)}")
+        lines.append("")
+
+        if report.warnings:
+            lines.append("## Warnungen")
+            lines.append("")
+            for warning in report.warnings:
+                lines.append(f"- {warning}")
+            lines.append("")
+
+        if errors:
+            lines.append("## Fehler")
+            lines.append("")
+            for error in errors:
+                lines.append(f"- {error}")
+            lines.append("")
+
+        lines.append("## Providerstatus")
+        lines.append("")
+        lines.append("| Provider | Status | Details | Items | Dauer (s) |")
+        lines.append("| --- | --- | --- | ---: | ---: |")
+        for name in sorted(report.providers):
+            entry = report.providers[name]
+            detail = entry.detail or ""
+            items = entry.items if entry.items is not None else "—"
+            duration = f"{entry.duration:.2f}" if entry.duration is not None else "—"
+            lines.append(
+                f"| {name} | {entry.status or 'unbekannt'} | {detail} | {items} | {duration} |"
+            )
+        lines.append("")
+
+        diagnostics = report.diagnostics_message()
+        if diagnostics:
+            lines.append("## Diagnosedaten")
+            lines.append("")
+            lines.append("```text")
+            lines.append(diagnostics)
+            lines.append("```")
+            lines.append("")
+
+        lines.append(
+            f"Weitere Details finden sich in der Logdatei `{error_log_path}`."
+        )
+
+        return "\n".join(lines).strip() + "\n"
+
+
+def _submit_github_issue(report: RunReport) -> None:
+    config = _GithubIssueConfig.from_env()
+    reporter = _GithubIssueReporter(config)
+    reporter.submit(report)
