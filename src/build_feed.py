@@ -42,6 +42,7 @@ try:  # pragma: no cover - allow running as script or module
         RunReport,
         clean_message,
         write_feed_health_report,
+        write_feed_health_json,
     )
 except ModuleNotFoundError:  # pragma: no cover
     from .feed import config as feed_config
@@ -59,6 +60,7 @@ except ModuleNotFoundError:  # pragma: no cover
         RunReport,
         clean_message,
         write_feed_health_report,
+        write_feed_health_json,
     )
 
 try:  # pragma: no cover - allow running as script or package
@@ -103,6 +105,7 @@ FEED_TITLE = feed_config.FEED_TITLE
 FEED_TTL = feed_config.FEED_TTL
 FRESH_PUBDATE_WINDOW_MIN = feed_config.FRESH_PUBDATE_WINDOW_MIN
 FEED_HEALTH_PATH = feed_config.FEED_HEALTH_PATH
+FEED_HEALTH_JSON_PATH = feed_config.FEED_HEALTH_JSON_PATH
 LOG_DIR_PATH = feed_config.LOG_DIR_PATH
 LOG_DIR = LOG_DIR_PATH.as_posix()
 LOG_MAX_BYTES = feed_config.LOG_MAX_BYTES
@@ -1493,6 +1496,29 @@ def main() -> int:
     new_items_count = 0
     items: List[Dict[str, Any]] = []
     health_path = _validate_path(Path(FEED_HEALTH_PATH), "FEED_HEALTH_PATH")
+    health_json_path = _validate_path(
+        Path(FEED_HEALTH_JSON_PATH), "FEED_HEALTH_JSON_PATH"
+    )
+
+    def _write_health_outputs(active_metrics: FeedHealthMetrics) -> None:
+        try:
+            write_feed_health_report(
+                report, active_metrics, output_path=health_path
+            )
+        except Exception as exc:  # pragma: no cover - defensive
+            log.warning(
+                "Feed-Health-Markdown konnte nicht geschrieben werden: %s",
+                exc,
+            )
+        try:
+            write_feed_health_json(
+                report, active_metrics, output_path=health_json_path
+            )
+        except Exception as exc:  # pragma: no cover - defensive
+            log.warning(
+                "Feed-Health-JSON konnte nicht geschrieben werden: %s",
+                exc,
+            )
 
     try:
         collect_start = perf_counter()
@@ -1590,23 +1616,17 @@ def main() -> int:
             },
             feed_path=out_path,
         )
-        try:
-            if health_metrics is None:
-                fallback_deduped = deduped_count or filtered_count or raw_count
-                health_metrics = FeedHealthMetrics(
-                    raw_items=raw_count,
-                    filtered_items=filtered_count or raw_count,
-                    deduped_items=fallback_deduped,
-                    new_items=new_items_count,
-                    duplicate_count=duplicates_removed,
-                    duplicates=tuple(duplicate_summaries),
-                )
-            write_feed_health_report(report, health_metrics, output_path=health_path)
-        except Exception as exc:
-            log.warning(
-                "Feed-Health-Report konnte nicht geschrieben werden: %s",
-                exc,
+        if health_metrics is None:
+            fallback_deduped = deduped_count or filtered_count or raw_count
+            health_metrics = FeedHealthMetrics(
+                raw_items=raw_count,
+                filtered_items=filtered_count or raw_count,
+                deduped_items=fallback_deduped,
+                new_items=new_items_count,
+                duplicate_count=duplicates_removed,
+                duplicates=tuple(duplicate_summaries),
             )
+        _write_health_outputs(health_metrics)
         report.log_results()
         return 0
     except Exception as exc:  # pragma: no cover - defensive
@@ -1623,13 +1643,7 @@ def main() -> int:
                 duplicates=tuple(duplicate_summaries),
             )
         report.finish(build_successful=False)
-        try:
-            write_feed_health_report(report, health_metrics, output_path=health_path)
-        except Exception as write_exc:
-            log.warning(
-                "Feed-Health-Report konnte nicht geschrieben werden: %s",
-                write_exc,
-            )
+        _write_health_outputs(health_metrics)
         report.log_results()
         raise
 

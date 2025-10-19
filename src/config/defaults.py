@@ -7,6 +7,7 @@ from pathlib import Path
 __all__ = [
     "DEFAULT_OUT_PATH",
     "DEFAULT_FEED_HEALTH_PATH",
+    "DEFAULT_FEED_HEALTH_JSON_PATH",
     "DEFAULT_FEED_TITLE",
     "DEFAULT_FEED_DESCRIPTION",
     "DEFAULT_FEED_LINK",
@@ -26,6 +27,7 @@ __all__ = [
 
 DEFAULT_OUT_PATH = Path("docs/feed.xml")
 DEFAULT_FEED_HEALTH_PATH = Path("docs/feed-health.md")
+DEFAULT_FEED_HEALTH_JSON_PATH = Path("docs/feed-health.json")
 DEFAULT_FEED_TITLE = "ÖPNV Störungen Wien & Umgebung"
 DEFAULT_FEED_DESCRIPTION = "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen"
 DEFAULT_FEED_LINK = "https://github.com/Origamihase/wien-oepnv"

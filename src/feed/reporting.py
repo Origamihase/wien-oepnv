@@ -1,6 +1,7 @@
 """Reporting primitives shared by feed builder components."""
 from __future__ import annotations
 
+import json
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -349,6 +350,16 @@ def _format_timestamp(dt: Optional[datetime]) -> str:
     return localized.strftime("%Y-%m-%d %H:%M:%S %Z")
 
 
+def _format_timestamp_iso(dt: Optional[datetime]) -> Optional[str]:
+    if dt is None:
+        return None
+    try:
+        localized = dt.astimezone(LOG_TIMEZONE)
+    except Exception:  # pragma: no cover - timezone edge cases
+        localized = dt
+    return localized.isoformat()
+
+
 def render_feed_health_markdown(
     report: RunReport,
     metrics: FeedHealthMetrics,
@@ -454,12 +465,94 @@ def write_feed_health_report(
     tmp_path.replace(output_path)
 
 
+def build_feed_health_payload(
+    report: RunReport,
+    metrics: FeedHealthMetrics,
+) -> Dict[str, Any]:
+    """Create a JSON-serialisable structure summarising the feed build."""
+
+    duplicate_entries = [
+        {
+            "dedupe_key": summary.dedupe_key,
+            "count": summary.count,
+            "titles": [title for title in summary.titles if title.strip()],
+        }
+        for summary in metrics.duplicates
+    ]
+
+    provider_entries = []
+    for name in sorted(report.providers):
+        entry = report.providers[name]
+        provider_entries.append(
+            {
+                "name": name,
+                "enabled": entry.enabled,
+                "status": entry.status,
+                "fetch_type": entry.fetch_type,
+                "detail": entry.detail,
+                "items": entry.items,
+                "duration": entry.duration,
+            }
+        )
+
+    warnings = list(report.warnings)
+    errors = list(report.iter_error_messages())
+    if report.exception_message and report.exception_message not in errors:
+        errors.append(report.exception_message)
+
+    return {
+        "run": {
+            "id": report.run_id,
+            "status": "success" if report.build_successful else "error",
+            "started_at": _format_timestamp_iso(report.started_at),
+            "finished_at": _format_timestamp_iso(report.finished_at),
+            "feed_path": report.feed_path,
+            "raw_item_count": report.raw_item_count,
+            "final_item_count": report.final_item_count,
+        },
+        "metrics": {
+            "raw_items": metrics.raw_items,
+            "filtered_items": metrics.filtered_items,
+            "deduped_items": metrics.deduped_items,
+            "new_items": metrics.new_items,
+            "duplicate_count": metrics.duplicate_count,
+        },
+        "duplicates": duplicate_entries,
+        "durations": {
+            key: value for key, value in sorted(report.durations.items())
+        },
+        "providers": provider_entries,
+        "warnings": warnings,
+        "errors": errors,
+    }
+
+
+def write_feed_health_json(
+    report: RunReport,
+    metrics: FeedHealthMetrics,
+    *,
+    output_path: Path,
+) -> None:
+    """Persist the feed health payload as JSON using an atomic write."""
+
+    payload = build_feed_health_payload(report, metrics)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = output_path.with_suffix(output_path.suffix + ".tmp")
+    tmp_path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    tmp_path.replace(output_path)
+
+
 __all__ = [
     "DuplicateSummary",
     "FeedHealthMetrics",
+    "build_feed_health_payload",
     "ProviderReport",
     "RunReport",
     "clean_message",
     "render_feed_health_markdown",
     "write_feed_health_report",
+    "write_feed_health_json",
 ]
