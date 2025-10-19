@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import importlib
 import sys
+from datetime import datetime, timezone
+from pathlib import Path
 from types import ModuleType
 
 
@@ -77,6 +79,79 @@ def test_collect_items_uses_plugin_provider(monkeypatch):
         items = build_feed._collect_items()
         assert items == []
         assert plugin_calls == ["invoked"]
+    finally:
+        provider_mod.unregister_provider("PLUGIN_ENABLE")
+        provider_mod._reset_registry()
+        monkeypatch.delenv("WIEN_OEPNV_PROVIDER_PLUGINS", raising=False)
+        sys.modules.pop(module_name, None)
+        importlib.reload(build_feed)
+
+
+def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
+    from src.feed import providers as provider_mod
+
+    module_name = "tests.fake_plugin_e2e"
+    now = datetime.now(timezone.utc)
+
+    def plugin_loader(*_args, **_kwargs):
+        return [
+            {
+                "_identity": "plugin|event",
+                "guid": "plugin-1",
+                "title": "Plugin Ereignis",
+                "description": "Ereignis aus Plugin",
+                "link": "https://example.com/plugin",
+                "source": "Plugin",
+                "category": "Info",
+                "pubDate": now.isoformat(),
+                "starts_at": now.isoformat(),
+            }
+        ]
+
+    plugin_module = _make_plugin_module(
+        module_name,
+        providers=[("PLUGIN_ENABLE", plugin_loader, "plugin")],
+    )
+
+    monkeypatch.setitem(sys.modules, module_name, plugin_module)
+    monkeypatch.setenv("WIEN_OEPNV_PROVIDER_PLUGINS", module_name)
+
+    provider_mod._reset_registry()
+
+    import src.build_feed as build_feed
+
+    build_feed = importlib.reload(build_feed)
+
+    try:
+        monkeypatch.setenv("WL_ENABLE", "0")
+        monkeypatch.setenv("OEBB_ENABLE", "0")
+        monkeypatch.setenv("VOR_ENABLE", "0")
+        monkeypatch.setenv("BAUSTELLEN_ENABLE", "0")
+        monkeypatch.setenv("PLUGIN_ENABLE", "1")
+
+        out_path = tmp_path / "feed.xml"
+        health_path = tmp_path / "feed-health.md"
+        state_path = tmp_path / "state.json"
+
+        monkeypatch.setattr(build_feed, "_validate_path", lambda path, name: Path(path))
+        monkeypatch.setattr(build_feed, "OUT_PATH", out_path)
+        monkeypatch.setattr(build_feed, "FEED_HEALTH_PATH", health_path)
+        monkeypatch.setattr(build_feed, "STATE_FILE", state_path)
+        monkeypatch.setattr(build_feed, "_load_state", lambda: {})
+        monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
+
+        exit_code = build_feed.main()
+
+        assert exit_code == 0
+        assert out_path.exists()
+        assert health_path.exists()
+
+        feed_text = out_path.read_text(encoding="utf-8")
+        assert "plugin-1" in feed_text
+        health_text = health_path.read_text(encoding="utf-8")
+        assert "Feed Health Report" in health_text
+        assert "plugin" in health_text.lower()
+        assert "disabled" in health_text.lower()
     finally:
         provider_mod.unregister_provider("PLUGIN_ENABLE")
         provider_mod._reset_registry()

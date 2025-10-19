@@ -23,7 +23,7 @@ from email.utils import format_datetime
 from pathlib import Path
 from threading import BoundedSemaphore
 from time import perf_counter
-from typing import Any, Dict, Iterator, List, Optional, Tuple
+from typing import Any, Dict, Iterator, List, Optional, Sequence, Tuple
 from zoneinfo import ZoneInfo
 
 try:  # pragma: no cover - allow running as script or module
@@ -36,7 +36,13 @@ try:  # pragma: no cover - allow running as script or module
         register_provider,
         resolve_provider_name,
     )
-    from feed.reporting import RunReport, clean_message
+    from feed.reporting import (
+        DuplicateSummary,
+        FeedHealthMetrics,
+        RunReport,
+        clean_message,
+        write_feed_health_report,
+    )
 except ModuleNotFoundError:  # pragma: no cover
     from .feed import config as feed_config
     from .feed.logging import configure_logging
@@ -47,7 +53,13 @@ except ModuleNotFoundError:  # pragma: no cover
         register_provider,
         resolve_provider_name,
     )
-    from .feed.reporting import RunReport, clean_message
+    from .feed.reporting import (
+        DuplicateSummary,
+        FeedHealthMetrics,
+        RunReport,
+        clean_message,
+        write_feed_health_report,
+    )
 
 try:  # pragma: no cover - allow running as script or package
     from utils.cache import read_cache as _core_read_cache, register_cache_alert_hook  # type: ignore
@@ -90,6 +102,7 @@ FEED_LINK = feed_config.FEED_LINK
 FEED_TITLE = feed_config.FEED_TITLE
 FEED_TTL = feed_config.FEED_TTL
 FRESH_PUBDATE_WINDOW_MIN = feed_config.FRESH_PUBDATE_WINDOW_MIN
+FEED_HEALTH_PATH = feed_config.FEED_HEALTH_PATH
 LOG_DIR_PATH = feed_config.LOG_DIR_PATH
 LOG_DIR = LOG_DIR_PATH.as_posix()
 LOG_MAX_BYTES = feed_config.LOG_MAX_BYTES
@@ -1038,21 +1051,64 @@ def _drop_old_items(
     return out
 
 
-def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Deduplicate items by identity/guid and prefer later ends or longer descriptions."""
+def _dedupe_key_for_item(
+    it: Dict[str, Any], *, warn_on_missing: bool = True
+) -> Tuple[str, bool]:
+    """Return the deduplication key used for ``it`` and indicate fallback usage."""
 
-    def _key_for_item(it: Dict[str, Any]) -> str:
-        if it.get("_identity"):
-            return str(it.get("_identity"))
-        if it.get("guid"):
-            return str(it.get("guid"))
-        raw = f"{it.get('source') or ''}|{it.get('title') or ''}|{it.get('description') or ''}"
-        key = hashlib.sha1(raw.encode("utf-8")).hexdigest()
+    if it.get("_identity"):
+        return str(it.get("_identity")), False
+    if it.get("guid"):
+        return str(it.get("guid")), False
+    raw = (
+        f"{it.get('source') or ''}|{it.get('title') or ''}|{it.get('description') or ''}"
+    )
+    key = hashlib.sha1(raw.encode("utf-8")).hexdigest()
+    if warn_on_missing:
         log.warning(
             "Item ohne guid/_identity – Fallback-Schlüssel (source|title|description) %s",
             key,
         )
-        return key
+    return key, True
+
+
+def _summarize_duplicates(items: Sequence[Dict[str, Any]]) -> List[DuplicateSummary]:
+    groups: Dict[str, List[Dict[str, Any]]] = {}
+    for it in items:
+        if not isinstance(it, dict):
+            continue
+        key, _ = _dedupe_key_for_item(it, warn_on_missing=False)
+        groups.setdefault(key, []).append(it)
+
+    summaries: List[DuplicateSummary] = []
+    for key, group in groups.items():
+        if len(group) <= 1:
+            continue
+        titles = tuple(str(entry.get("title") or "") for entry in group[:3])
+        summaries.append(
+            DuplicateSummary(dedupe_key=key, count=len(group), titles=titles)
+        )
+    summaries.sort(key=lambda summary: summary.count, reverse=True)
+    return summaries
+
+
+def _count_new_items(
+    items: Sequence[Dict[str, Any]],
+    state: Dict[str, Dict[str, Any]],
+) -> int:
+    existing = set(state.keys()) if isinstance(state, dict) else set()
+    count = 0
+    for it in items:
+        if not isinstance(it, dict):
+            continue
+        ident = _identity_for_item(it)
+        if ident not in existing:
+            count += 1
+    return count
+
+
+def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Deduplicate items by identity/guid and prefer later ends or longer descriptions."""
 
     def _recency_value(it: Dict[str, Any]) -> datetime:
         """Return a comparable timestamp describing how recent ``it`` is."""
@@ -1102,7 +1158,7 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     seen: Dict[str, int] = {}
     out: List[Dict[str, Any]] = []
     for it in items:
-        key = _key_for_item(it)
+        key, _ = _dedupe_key_for_item(it)
         if key in seen:
             idx = seen[key]
             if _better(it, out[idx]):
@@ -1317,6 +1373,104 @@ def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[
 
     return "\n".join(out)
 
+
+def lint() -> int:
+    """Run structural checks on the aggregated feed items without writing RSS."""
+
+    configure_logging()
+
+    statuses = provider_statuses()
+    report = RunReport(statuses)
+    report.prune_logs()
+    report.attach_error_collector()
+    _log_startup_summary(statuses)
+    _validate_configuration(statuses)
+
+    now = datetime.now(timezone.utc)
+    state = _load_state()
+    exit_code = 0
+
+    try:
+        items = _invoke_collect_items(report)
+        raw_count = len(items)
+        _normalize_item_datetimes(items)
+
+        filtered_items = _drop_old_items(items, now, state)
+        filtered_count = len(filtered_items)
+        duplicate_summaries = _summarize_duplicates(filtered_items)
+        duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
+
+        deduped_items = _dedupe_items(list(filtered_items))
+        deduped_count = len(deduped_items)
+        new_items_count = _count_new_items(deduped_items, state)
+        missing_guid_items = [it for it in filtered_items if not it.get("guid")]
+
+        metrics = FeedHealthMetrics(
+            raw_items=raw_count,
+            filtered_items=filtered_count,
+            deduped_items=deduped_count,
+            new_items=new_items_count,
+            duplicate_count=duplicates_removed,
+            duplicates=tuple(duplicate_summaries),
+        )
+
+        print("Feed-Lint Bericht")
+        print("==================")
+        print(f"Rohdaten: {metrics.raw_items}")
+        print(f"Nach Altersfilter: {metrics.filtered_items}")
+        print(
+            f"Nach Deduplizierung: {metrics.deduped_items} "
+            f"(entfernte Duplikate: {metrics.duplicate_count})"
+        )
+        print(f"Neue Items (vs. State): {metrics.new_items}")
+
+        if duplicate_summaries:
+            print("\nErkannte Duplikat-Gruppen:")
+            for summary in duplicate_summaries:
+                titles = ", ".join(
+                    title or "<ohne Titel>" for title in summary.titles if title is not None
+                )
+                titles = titles or "<keine Beispiele>"
+                print(
+                    f"- {summary.count}× Schlüssel {summary.dedupe_key}: {titles}"
+                )
+
+        if missing_guid_items:
+            print("\nEinträge ohne GUID:")
+            for item in missing_guid_items:
+                source = item.get("source") or "unbekannt"
+                title = item.get("title") or "<ohne Titel>"
+                print(f"- {source}: {title}")
+
+        provider_failures = report.has_errors()
+        if provider_failures:
+            print("\nProvider-Fehler erkannt – siehe Log-Ausgabe für Details.")
+
+        if not duplicate_summaries and not missing_guid_items and not provider_failures:
+            print("\nKeine strukturellen Probleme gefunden.")
+
+        if provider_failures:
+            exit_code = 2
+        elif duplicate_summaries or missing_guid_items:
+            exit_code = 1
+        else:
+            exit_code = 0
+
+        report.finish(
+            build_successful=exit_code == 0,
+            raw_items=metrics.raw_items,
+            final_items=metrics.deduped_items,
+        )
+        return exit_code
+    except Exception as exc:  # pragma: no cover - defensive
+        log.exception("Feed-Lint fehlgeschlagen: %s", exc)
+        report.record_exception(exc)
+        report.finish(build_successful=False)
+        return 2
+    finally:
+        report.log_results()
+
+
 def main() -> int:
     configure_logging()
 
@@ -1330,6 +1484,15 @@ def main() -> int:
     job_start = perf_counter()
     now = datetime.now(timezone.utc)
     state = _load_state()
+    health_metrics: Optional[FeedHealthMetrics] = None
+    duplicate_summaries: List[DuplicateSummary] = []
+    raw_count = 0
+    filtered_count = 0
+    deduped_count = 0
+    duplicates_removed = 0
+    new_items_count = 0
+    items: List[Dict[str, Any]] = []
+    health_path = _validate_path(Path(FEED_HEALTH_PATH), "FEED_HEALTH_PATH")
 
     try:
         collect_start = perf_counter()
@@ -1350,6 +1513,7 @@ def main() -> int:
         filter_start = perf_counter()
         items = _drop_old_items(items, now, state)
         filter_duration = perf_counter() - filter_start
+        filtered_count = len(items)
         log.info(
             "Altersfilter angewendet: %d Items nach %.2fs (vorher: %d)",
             len(items),
@@ -1357,22 +1521,39 @@ def main() -> int:
             raw_count,
         )
 
+        pre_dedupe_items = list(items)
+        duplicate_summaries = _summarize_duplicates(pre_dedupe_items)
+
         dedupe_start = perf_counter()
         deduped = _dedupe_items(items)
         dedupe_duration = perf_counter() - dedupe_start
+        pre_dedupe_count = len(pre_dedupe_items)
         log.info(
             "Duplikate entfernt: %d eindeutige Items nach %.2fs (vorher: %d)",
             len(deduped),
             dedupe_duration,
-            len(items),
+            pre_dedupe_count,
         )
         items = deduped
+        deduped_count = len(items)
+        duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
         if not items:
             log.warning("Keine Items gesammelt.")
             items = []
         else:
             log.debug("Sortiere %d Items nach Priorität.", len(items))
         items.sort(key=_sort_key)
+
+        new_items_count = _count_new_items(items, state)
+
+        health_metrics = FeedHealthMetrics(
+            raw_items=raw_count,
+            filtered_items=filtered_count,
+            deduped_items=deduped_count,
+            new_items=new_items_count,
+            duplicate_count=duplicates_removed,
+            duplicates=tuple(duplicate_summaries),
+        )
 
         rss_start = perf_counter()
         rss = _make_rss(items, now, state)
@@ -1409,12 +1590,46 @@ def main() -> int:
             },
             feed_path=out_path,
         )
+        try:
+            if health_metrics is None:
+                fallback_deduped = deduped_count or filtered_count or raw_count
+                health_metrics = FeedHealthMetrics(
+                    raw_items=raw_count,
+                    filtered_items=filtered_count or raw_count,
+                    deduped_items=fallback_deduped,
+                    new_items=new_items_count,
+                    duplicate_count=duplicates_removed,
+                    duplicates=tuple(duplicate_summaries),
+                )
+            write_feed_health_report(report, health_metrics, output_path=health_path)
+        except Exception as exc:
+            log.warning(
+                "Feed-Health-Report konnte nicht geschrieben werden: %s",
+                exc,
+            )
         report.log_results()
         return 0
     except Exception as exc:  # pragma: no cover - defensive
         log.exception("Feed-Bau fehlgeschlagen: %s", exc)
         report.record_exception(exc)
+        if health_metrics is None:
+            fallback_deduped = deduped_count or filtered_count or raw_count
+            health_metrics = FeedHealthMetrics(
+                raw_items=raw_count,
+                filtered_items=filtered_count or raw_count,
+                deduped_items=fallback_deduped,
+                new_items=new_items_count,
+                duplicate_count=duplicates_removed,
+                duplicates=tuple(duplicate_summaries),
+            )
         report.finish(build_successful=False)
+        try:
+            write_feed_health_report(report, health_metrics, output_path=health_path)
+        except Exception as write_exc:
+            log.warning(
+                "Feed-Health-Report konnte nicht geschrieben werden: %s",
+                write_exc,
+            )
         report.log_results()
         raise
 

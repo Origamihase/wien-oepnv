@@ -191,8 +191,11 @@ JSON-Cache (Strings im ISO-8601-Format) bzw. bei direkter Python-Nutzung (Python
 | `ends_at`   | Optionales Ende der Maßnahme; `null`, wenn unbekannt oder bereits vergangen.                   |
 | `_identity` | Projektinterner Schlüssel zur Nachverfolgung des „first seen“-Zeitpunkts (optional vorhanden). |
 
-Alle Felder sind als Unicode-Strings hinterlegt, zusätzliche provider-spezifische Hilfsfelder werden vor dem JSON-Export
-entfernt, sodass die Datensätze stabil und schema-konform bleiben.【F:src/providers/wl_fetch.py†L568-L618】【F:src/providers/oebb.py†L143-L168】【F:src/providers/vor.py†L548-L677】
+Eine formale Beschreibung steht als [JSON-Schema](docs/schema/events.schema.json)
+bereit und eignet sich für Validierungen in Drittprojekten. Alle Felder sind als
+Unicode-Strings hinterlegt, zusätzliche provider-spezifische Hilfsfelder werden
+vor dem JSON-Export entfernt, sodass die Datensätze stabil und schema-konform
+bleiben.【F:src/providers/wl_fetch.py†L568-L618】【F:src/providers/oebb.py†L143-L168】【F:src/providers/vor.py†L548-L677】
 
 ## Provider-spezifische Workflows
 
@@ -225,6 +228,15 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
 - **Quelle**: Open-Government-Data-Baustellenfeed der Stadt Wien (`BAUSTELLEN_DATA_URL`, Default: offizieller WFS-Endpoint).
 - **Cache**: `cache/baustellen/events.json`, gepflegt via `scripts/update_baustellen_cache.py` und eigener GitHub-Action (optional).
 - **Fallback**: Schlägt der Remote-Abruf fehl (z. B. wegen Rate-Limits), nutzt das Skript `data/samples/baustellen_sample.geojson` als Grunddatensatz, damit der Feed konsistent bleibt.
+
+### Eigene Provider-Plugins
+
+Zusätzliche Datenquellen lassen sich ohne Änderungen am Kerncode anbinden. Das
+How-to [eigene Provider-Plugins anbinden](docs/how-to/provider_plugins.md)
+erläutert den Workflow und verweist auf das Skript
+`scripts/scaffold_provider_plugin.py`, das ein lauffähiges Modul-Skelett
+erzeugt. Aktivierte Plugins erscheinen automatisch im Feed-Health-Report und
+können über `WIEN_OEPNV_PROVIDER_PLUGINS` gesteuert werden.
 - **Kontext**: Die Meldungen enthalten Metadaten zu Bezirk, Maßnahme, Zeitraum sowie geokodierte Adressen und ergänzen damit ÖPNV-Störungsmeldungen um bauzeitliche Einschränkungen.
 
 ## Feed-Ausführung lokal
@@ -314,6 +326,7 @@ Die neue Kommandozeile (`python -m src.cli`) bündelt bisher verstreute Skripte.
 - `python -m src.cli cache update <wl|oebb|vor>` – aktualisiert den jeweiligen Provider-Cache.
 - `python -m src.cli stations update <all|directory|vor|wl>` – führt die bestehenden Stations-Skripte mit optionalem `--verbose` aus.
 - `python -m src.cli feed build` – startet den Feed-Build mit der aktuellen Umgebung.
+- `python -m src.cli feed lint` – prüft die aggregierten Items auf fehlende GUIDs oder unerwartete Duplikate.
 - `python -m src.cli tokens verify <vor|google-places|vor-auth>` – validiert Secrets und API-Zugänge.
 - `python -m src.cli checks [--fix] [--ruff-args …]` – ruft die statischen Prüfungen konsistent zur CI auf.
 
@@ -323,7 +336,7 @@ Die neue Kommandozeile (`python -m src.cli`) bündelt bisher verstreute Skripte.
 
 ### Logging & Beobachtbarkeit
 
-Die CLI respektiert die vorhandene Logging-Konfiguration (`log/errors.log`, `log/diagnostics.log`). Für Ad-hoc-Audits lassen sich Berichte und Skriptausgaben über `--output`-Parameter in nachvollziehbaren Pfaden versionieren.
+Die CLI respektiert die vorhandene Logging-Konfiguration (`log/errors.log`, `log/diagnostics.log`). Für Ad-hoc-Audits lassen sich Berichte und Skriptausgaben über `--output`-Parameter in nachvollziehbaren Pfaden versionieren. Jeder Feed-Build erzeugt zusätzlich einen aktuellen Gesundheitsbericht unter [`docs/feed-health.md`](docs/feed-health.md).
 
 ## Authentifizierung & Sicherheit
 

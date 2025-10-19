@@ -25,8 +25,9 @@ Der gesamte Code steht als Open Source zur Verfügung, sodass du jederzeit nachv
 1. **Repository klonen** und ein virtuelles Environment anlegen (`python -m venv .venv`).
 2. **Abhängigkeiten installieren** mit `pip install -r requirements.txt`.
 3. **Caches aktualisieren** via `python -m src.cli cache update`.
-4. **Feed bauen** mit `python -m src.cli feed build`, um `docs/feed.xml` zu generieren.
-5. **Statische Analysen** optional mit `scripts/run_static_checks.py` ausführen.
+4. **Feed bauen** mit `python -m src.cli feed build`, um `docs/feed.xml` zu generieren (anschließend steht der Gesundheitsbericht unter `docs/feed-health.md` bereit).
+5. **Qualitätscheck** vor dem nächsten Build optional mit `python -m src.cli feed lint` durchführen.
+6. **Statische Analysen** optional mit `scripts/run_static_checks.py` ausführen.
 
 Weitere Details findest du in der [ausführlichen Projektdokumentation](../README.md) sowie in den [How-to-Anleitungen](how-to/) für spezielle Workflows.
 
@@ -61,7 +62,7 @@ Alle Datenquellen werden revisionssicher versioniert, inklusive Lizenzhinweisen.
 Der Feed konsolidiert Meldungen, dedupliziert identische Ereignisse, versieht sie mit konsistenten Metadaten und stellt sie als RSS- und JSON-Daten bereit.
 
 ### Kann ich eigene Provider oder Filter hinzufügen?
-Ja. Die Architektur erlaubt es, Provider über Umgebungsvariablen zu deaktivieren oder neue Adapter in `src/providers/` hinzuzufügen. Tests und statische Analysen unterstützen bei der Integration.
+Ja. Die Architektur erlaubt es, Provider über Umgebungsvariablen zu deaktivieren oder neue Adapter in `src/providers/` hinzuzufügen. Das How-to [eigene Provider-Plugins anbinden](how-to/provider_plugins.md) beschreibt den empfohlenen Workflow inklusive Scaffold-Skript.
 
 ### Unter welcher Lizenz steht das Projekt?
 Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die individuellen Lizenzbedingungen.
@@ -74,6 +75,8 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
 - [Projektübersicht im README](../README.md)
 - [API-Referenzen und Audits](reference/)
 - [Stationsvalidierung & Reports](stations_validation_report.md)
+- [Feed Health Report](feed-health.md)
+- [Eventschema für Integrationen](schema/events.schema.json)
 - [System-Health-Reviews](system_health_review.md)
 - [Feed als RSS-Dokument](feed.xml)
 

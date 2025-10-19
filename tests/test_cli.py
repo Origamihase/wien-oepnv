@@ -171,3 +171,18 @@ def test_cli_security_scan_forwards_arguments(monkeypatch: pytest.MonkeyPatch) -
 
     assert exit_code == 0
     assert captured == [("scan_secrets.py", sys.executable, ["--no-fail"])]
+
+
+def test_cli_feed_lint_invokes_module(monkeypatch: pytest.MonkeyPatch) -> None:
+    invoked: list[int] = []
+
+    def fake_lint() -> int:
+        invoked.append(1)
+        return 0
+
+    monkeypatch.setattr(cli.build_feed_module, "lint", fake_lint)
+
+    exit_code = cli.main(["feed", "lint"])
+
+    assert exit_code == 0
+    assert invoked == [1]
