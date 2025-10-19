@@ -362,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten nach Dresdner Str. (Linie 5A)",
-    "description": "Bauarbeiten Busse halten nach Dresdner Str. (Linie 5 A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "49cb6b0e3a692a88a279ee616da4ce4103c6b7d7b0ea1921eeba2182684a2514",
-    "pubDate": "2025-10-18T09:58:42+02:00",
-    "starts_at": "2025-10-18T09:58:42+02:00",
-    "ends_at": "2025-10-19T19:00:00+02:00",
-    "_identity": "wl|störung|L=37A|D=2025-10-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -394,54 +382,6 @@
     "starts_at": "2025-10-19T06:00:00+02:00",
     "ends_at": "2025-11-03T01:00:00+02:00",
     "_identity": "wl|hinweis|L=77A,80A|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Gleisschaden",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6",
-    "pubDate": "2025-10-19T13:40:00+02:00",
-    "starts_at": "2025-10-19T13:40:00+02:00",
-    "ends_at": "2025-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Gleisschaden",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5d010f8464652ed6a306ddced5ce6f36d6dc655f586c22bcf3962f2d30d23b6a",
-    "pubDate": "2025-10-19T13:40:00+02:00",
-    "starts_at": "2025-10-19T13:40:00+02:00",
-    "ends_at": "2025-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Gleisschaden",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "20688509a035ff5d793f6f47e1acea5691e90081ceb65855b442897c38df282a",
-    "pubDate": "2025-10-19T13:40:00+02:00",
-    "starts_at": "2025-10-19T13:40:00+02:00",
-    "ends_at": "2025-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Gleisschaden",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f73d4c5a37a7a1a241d8e5436275dbe70c2dda51e786bff97d786c203b6b1863",
-    "pubDate": "2025-10-19T13:40:00+02:00",
-    "starts_at": "2025-10-19T13:40:00+02:00",
-    "ends_at": "2025-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=71|D=2025-10-19"
   },
   {
     "source": "Wiener Linien",
@@ -506,18 +446,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38A: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 38 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62",
-    "pubDate": "2025-10-19T14:05:00+02:00",
-    "starts_at": "2025-10-19T14:05:00+02:00",
-    "ends_at": "2025-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=38A|D=2025-10-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -542,25 +470,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Schadhafter PKW",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.",
+    "title": "77A: Verkehrsüberlastung",
+    "description": "Die Linie 77 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich A23, Südosttangente.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "decb45044f2151222a9fb5923844f3147cf93a315a730b2991db70dccde3c830",
-    "pubDate": "2025-10-19T16:45:00+02:00",
-    "starts_at": "2025-10-19T16:45:00+02:00",
+    "guid": "d2fb78dfec0b3971d13e72314dc2efcdbccb60650daf7059b954d1bd1800e28b",
+    "pubDate": "2025-10-19T18:50:00+02:00",
+    "starts_at": "2025-10-19T18:50:00+02:00",
     "ends_at": "2025-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=62|D=2025-10-19"
+    "_identity": "wl|störung|L=77A|D=2025-10-19"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "66A: Vandalismus",
-    "description": "Die Linie 66 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Vandalismus im Bereich Purkytgasse.",
+    "title": "O: Verkehrsüberlastung",
+    "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c744db54432e28a2c7e07d2e2431afd799d8184dc3590db7aa55be7cb19c0335",
-    "pubDate": "2025-10-19T18:20:00+02:00",
-    "starts_at": "2025-10-19T18:20:00+02:00",
+    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
+    "pubDate": "2025-10-19T19:05:00+02:00",
+    "starts_at": "2025-10-19T19:05:00+02:00",
     "ends_at": "2025-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2025-10-19"
+    "_identity": "wl|störung|L=O|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1/18/62/WLB: Rettungseinsatz",
+    "description": "Die Linie 1 ist derzeit in Richtung Stefan-Fadinger-Platz an der Weiterfahrt gehindert. Die Linie 18 ist derzeit in Richtung Burggasse, Stadthalle an der Weiterfahrt gehindert. Die Linie 62 ist derzeit in Richtung Lainz, Wolkersbergenstraße an der Weiterfahrt gehindert. Die Badner Bahn ist derzeit in Richtung Baden an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 19:40 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Matzleinsdorfer Platz S.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6bea8f63a555f7e2119b963639799cb4e7b705aec210e0baec00c76db270bdc5",
+    "pubDate": "2025-10-19T19:05:00+02:00",
+    "starts_at": "2025-10-19T19:05:00+02:00",
+    "ends_at": "2025-10-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=1,18,62,WLB|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
+    "pubDate": "2025-10-19T19:11:07+02:00",
+    "starts_at": "2025-10-19T19:11:07+02:00",
+    "ends_at": "2025-10-19T20:10:00+02:00",
+    "_identity": "wl|störung|L=18|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
+    "pubDate": "2025-10-19T19:11:36+02:00",
+    "starts_at": "2025-10-19T19:11:36+02:00",
+    "ends_at": "2025-10-19T20:11:00+02:00",
+    "_identity": "wl|störung|L=1|D=2025-10-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
+    "pubDate": "2025-10-19T19:11:59+02:00",
+    "starts_at": "2025-10-19T19:11:59+02:00",
+    "ends_at": "2025-10-19T20:11:00+02:00",
+    "_identity": "wl|störung|L=62|D=2025-10-19"
   }
 ]
