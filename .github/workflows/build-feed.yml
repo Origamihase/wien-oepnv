@@ -36,7 +36,32 @@ jobs:
         run: python src/build_feed.py
         env:
           VOR_API_KEY: ${{ secrets.VOR_API_KEY }}
-          
+
+      - name: Normalize feed metadata (SEO)
+        run: |
+          set -euo pipefail
+          perl -0777 -i -pe '
+            my $base = $ENV{"BASE"} // "https://origamihase.github.io/wien-oepnv";
+            my $s = $_;
+
+            $s =~ s{<rss\b(?![^>]*\bxmlns:atom=)}{<rss xmlns:atom="http://www.w3.org/2005/Atom" }s;
+            $s =~ s{</description>\s*}{</description>\n}s;
+
+            if ($s !~ m{<language>de</language>}s) {
+              $s =~ s{(</description>\n)}{$1    <language>de</language>\n}s;
+            }
+
+            $s =~ s{\n[ \t]*<atom:link\b[^>]*?/>\s*}{}gs;
+
+            my $ins = "    <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n"
+                    . "    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n";
+            $s =~ s{(</description>\n)}{$1$ins}s;
+
+            $_ = $s;
+          ' docs/feed.xml
+        env:
+          BASE: https://origamihase.github.io/wien-oepnv
+
       - name: Configure Git
         if: github.ref == 'refs/heads/main'
         run: |
