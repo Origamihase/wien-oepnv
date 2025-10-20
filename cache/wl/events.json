@@ -406,5 +406,41 @@
     "starts_at": "2025-10-20T06:00:00+02:00",
     "ends_at": "2025-10-29T05:00:00+02:00",
     "_identity": "wl|hinweis|L=N71|D=2025-10-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Falschparker",
+    "description": "Die Linie 13 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d",
+    "pubDate": "2025-10-20T13:00:00+02:00",
+    "starts_at": "2025-10-20T13:00:00+02:00",
+    "ends_at": "2025-10-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "65A/66A: Rettungseinsatz",
+    "description": "Die Linie 65 A wird derzeit in Richtung Wienerberg City, bzw. Inzersdorf Zetschegasse zwischen Reumannplatz und Laxenburger Straße, Troststraße über die Davidgasse und Laxenburger Straße umgeleitet. Die Linie 66 A wird derzeit in Richtung Liesing zwischen Reumannplatz und Laxenburger Straße, Troststraße über die Davidgasse und Laxenburger Straße umgeleitet. Die Störung dauert voraussichtlich bis 13:30 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "049e8bccfd1c2d2a50902db4166a51df35982a13a9b32f0321f84729fcb74501",
+    "pubDate": "2025-10-20T13:05:00+02:00",
+    "starts_at": "2025-10-20T13:05:00+02:00",
+    "ends_at": "2025-10-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=65A,66A|D=2025-10-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Rettungseinsatz Umleitung über Laxenburger Straße",
+    "description": "Rettungseinsatz Umleitung über Laxenburger Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2434a7ab0061bc81c2fa012d4e4302e1241d282d22c18fc9767cb0e09050fd22",
+    "pubDate": "2025-10-20T13:11:57+02:00",
+    "starts_at": "2025-10-20T13:11:57+02:00",
+    "ends_at": "2025-10-20T14:10:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2025-10-20"
   }
 ]
