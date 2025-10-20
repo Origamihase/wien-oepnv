@@ -410,18 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2025-10-20T15:31:14+02:00",
-    "starts_at": "2025-10-20T15:31:14+02:00",
-    "ends_at": "2025-10-20T16:56:00+02:00",
-    "_identity": "wl|störung|L=42|D=2025-10-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "42: Fahrtbehinderung Fremder Verkehrsunfall",
     "description": "Fahrtbehinderung Fremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -430,18 +418,6 @@
     "starts_at": "2025-10-20T15:32:53+02:00",
     "ends_at": "2025-10-20T17:45:00+02:00",
     "_identity": "wl|störung|L=42|D=2025-10-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2025-10-20T15:52:10+02:00",
-    "starts_at": "2025-10-20T15:52:10+02:00",
-    "ends_at": "2025-10-20T16:54:00+02:00",
-    "_identity": "wl|störung|L=9|D=2025-10-20"
   },
   {
     "source": "Wiener Linien",
@@ -466,5 +442,17 @@
     "starts_at": "2025-10-20T16:25:07+02:00",
     "ends_at": "2025-10-20T17:24:00+02:00",
     "_identity": "wl|störung|L=5|D=2025-10-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Kardinal-Nagl-Platz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2025-10-20T17:05:00+02:00",
+    "starts_at": "2025-10-20T17:05:00+02:00",
+    "ends_at": "2025-10-20T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2025-10-20"
   }
 ]
