@@ -410,18 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
-    "pubDate": "2025-10-21T06:25:00+02:00",
-    "starts_at": "2025-10-21T06:25:00+02:00",
-    "ends_at": "2025-10-21T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2025-10-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A/14A/57A: Busse 13A und 14A halten bei Linie 57A",
     "description": "Bauarbeiten Busse 13 A und 14 A halten bei Linie 57 A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -494,30 +482,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Verunreinigung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U6 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515",
-    "pubDate": "2025-10-21T08:40:00+02:00",
-    "starts_at": "2025-10-21T08:40:00+02:00",
-    "ends_at": "2025-10-21T23:55:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2025-10-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
-    "pubDate": "2025-10-21T08:50:25+02:00",
-    "starts_at": "2025-10-21T08:50:25+02:00",
-    "ends_at": "2025-10-21T09:49:00+02:00",
-    "_identity": "wl|störung|L=37|D=2025-10-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2A: Staatsbesuch",
     "description": "Die Linie 2 A fährt derzeit nur zwischen Schwedenplatz und Michaelerplatz. Die Störung dauert voraussichtlich bis 11:30 Uhr. Grund dafür ist ein Staatsbesuch im Bereich Josefsplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -554,13 +518,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Gleisschaden",
-    "description": "Die Linie 25 fährt nur zwischen Aspern, Oberdorfstraße und Kagran. Ersatzweise können Sie auf die U-Bahnlinien U1 und U6 ausweichen. Die Störung dauert voraussichtlich bis 11:00 Uhr. Grund dafür ist ein Gleisschaden im Bereich Schlosshofer Straße 30.",
+    "title": "25: Fahrtbehinderung Gleisschaden SEV hält bei Linie 26",
+    "description": "Fahrtbehinderung Gleisschaden SEV hält bei Linie 26",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "04aa731bd1d146dc4bace56f19cc0b24fff503cb6c055f16d4a5d988c5a1729f",
-    "pubDate": "2025-10-21T09:30:00+02:00",
-    "starts_at": "2025-10-21T09:30:00+02:00",
-    "ends_at": "2025-10-21T23:55:00+02:00",
+    "guid": "a5d63f90e5b2e1976e802199df9acb4c887ff37e0c8bc3b9eed1c8a24a8420c5",
+    "pubDate": "2025-10-21T09:30:09+02:00",
+    "starts_at": "2025-10-21T09:30:09+02:00",
+    "ends_at": "2025-10-21T23:45:00+02:00",
     "_identity": "wl|störung|L=25|D=2025-10-21"
   },
   {
@@ -586,5 +550,77 @@
     "starts_at": "2025-10-21T09:30:23+02:00",
     "ends_at": "2025-10-21T23:45:00+02:00",
     "_identity": "wl|störung|L=25|D=2025-10-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Gleisschaden Betrieb ab Floridsdorf",
+    "description": "Gleisschaden Betrieb ab Floridsdorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "38a4821fb353fdfe61daec7da0db43cac926c634af2203ee620707c6c9096249",
+    "pubDate": "2025-10-21T09:59:52+02:00",
+    "starts_at": "2025-10-21T09:59:52+02:00",
+    "ends_at": "2025-10-21T23:45:00+02:00",
+    "_identity": "wl|störung|L=26|D=2025-10-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Gleisschaden Betrieb ab Josef-Baumann-Gasse",
+    "description": "Gleisschaden Betrieb ab Josef-Baumann-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1ef731de87c966aca1651d617cbef6943f8ac9792e1d8bfc87127c925d047935",
+    "pubDate": "2025-10-21T09:59:52+02:00",
+    "starts_at": "2025-10-21T09:59:52+02:00",
+    "ends_at": "2025-10-21T23:45:00+02:00",
+    "_identity": "wl|störung|L=26|D=2025-10-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Gleisschaden Betrieb ab Josef-Baumann-Gasse",
+    "description": "Gleisschaden Betrieb ab Josef-Baumann-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "419e4209ae0b9ccf229091aeb1ea9172ef811a5dfe7c7813e295f93df69a4eda",
+    "pubDate": "2025-10-21T10:09:32+02:00",
+    "starts_at": "2025-10-21T10:09:32+02:00",
+    "ends_at": "2025-10-21T23:45:00+02:00",
+    "_identity": "wl|störung|L=27|D=2025-10-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung Gleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ccc533855ea2984b782c5a81de07d0110a852afb9ea031dd736c66d3681ae990",
+    "pubDate": "2025-10-21T10:10:01+02:00",
+    "starts_at": "2025-10-21T10:10:01+02:00",
+    "ends_at": "2025-10-21T23:45:00+02:00",
+    "_identity": "wl|störung|L=27|D=2025-10-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Betriebsstörung",
+    "description": "Die Linie 48 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Ring, Volkstheater U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "40abe8015540dc340a7006b7131e0f8abed33a83dfde5af7bcbdf50c13a4eeb9",
+    "pubDate": "2025-10-21T10:15:00+02:00",
+    "starts_at": "2025-10-21T10:15:00+02:00",
+    "ends_at": "2025-10-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=48A|D=2025-10-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Betriebsstörung",
+    "description": "Die Linie 59 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Oper, Karlsplatz .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a91916ebfae10495bfe26d851fd989dfb98e3b79121e747890d1c7c976694e3d",
+    "pubDate": "2025-10-21T10:15:00+02:00",
+    "starts_at": "2025-10-21T10:15:00+02:00",
+    "ends_at": "2025-10-21T23:55:00+02:00",
+    "_identity": "wl|störung|L=59A|D=2025-10-21"
   }
 ]
