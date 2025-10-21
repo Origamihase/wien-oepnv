@@ -542,49 +542,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Demonstration Betrieb ab Schwarzenbergplatz",
-    "description": "Demonstration Betrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c026b000b202d288cf3bec2c812e718351d4c37b0196152e41c269e70771cadc",
-    "pubDate": "2025-10-21T19:09:55+02:00",
-    "starts_at": "2025-10-21T19:09:55+02:00",
-    "ends_at": "2025-10-21T23:30:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-10-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "52: Fahrtbehinderung wegen Stromstörung",
-    "description": "Fahrtbehinderung wegen Stromstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d7960a00919295e93fe4136daf1b5b1573735558ab6554bf0bbd95a04217f38c",
-    "pubDate": "2025-10-21T22:34:09+02:00",
-    "starts_at": "2025-10-21T22:34:09+02:00",
-    "ends_at": "2025-10-21T23:33:00+02:00",
-    "_identity": "wl|störung|L=52|D=2025-10-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Fahrtbehinderung wegen Stromstörung",
-    "description": "Fahrtbehinderung wegen Stromstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0999aa01777455b0133b3d9cea37bab839e26e621cf515bea86c5aeee4431088",
-    "pubDate": "2025-10-21T22:34:38+02:00",
-    "starts_at": "2025-10-21T22:34:38+02:00",
-    "ends_at": "2025-10-21T23:34:00+02:00",
-    "_identity": "wl|störung|L=60|D=2025-10-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10: Fahrtbehinderung wegen Stromstörung",
     "description": "Fahrtbehinderung wegen Stromstörung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "03904adffffa10dfd49c8686d95b1660bf5dbf0d71210e737e56444f6c1e5ec0",
-    "pubDate": "2025-10-21T22:35:07+02:00",
-    "starts_at": "2025-10-21T22:35:07+02:00",
+    "pubDate": "2025-10-21T22:36:34+02:00",
+    "starts_at": "2025-10-21T22:36:34+02:00",
     "ends_at": "2025-10-21T23:36:00+02:00",
     "_identity": "wl|störung|L=10|D=2025-10-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Die Linie 5 ist derzeit in Richtung Praterstern an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 23:45 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Burggasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5",
+    "pubDate": "2025-10-21T23:30:00+02:00",
+    "starts_at": "2025-10-21T23:30:00+02:00",
+    "ends_at": "2025-10-22T00:40:00+02:00",
+    "_identity": "wl|störung|L=5|D=2025-10-21"
   }
 ]
