@@ -435,7 +435,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U6: Beschädigte Oberleitung",
-    "description": "Die Linie U6 fährt derzeit in der Station Jägerstraße in beiden Richtungen über Gleis 1. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist eine beschädigte Oberleitung im Bereich Jägerstraße.",
+    "description": "Die Linie U6 fährt derzeit nicht zwischen Nußdorfer Straße und Dresdner Straße. Ersatzweise benützen Sie bitte die Linie 37 A. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist eine beschädigte Oberleitung im Bereich Jägerstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4db9833022d07eada723af55382fd06fec7a7c25c7e223c54d4ca4f151223cf1",
     "pubDate": "2025-10-22T05:00:00+02:00",
@@ -502,17 +502,5 @@
     "starts_at": "2025-10-22T07:45:00+02:00",
     "ends_at": "2025-10-22T23:55:00+02:00",
     "_identity": "wl|störung|L=60|D=2025-10-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29B: Verkehrsunfall",
-    "description": "Die Linie 29 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Töllergasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8b4d4a72f50e91161cc2a3568655409d3ad71971f5a441a5ae52af3d6739aec8",
-    "pubDate": "2025-10-22T08:15:00+02:00",
-    "starts_at": "2025-10-22T08:15:00+02:00",
-    "ends_at": "2025-10-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=29B|D=2025-10-22"
   }
 ]
