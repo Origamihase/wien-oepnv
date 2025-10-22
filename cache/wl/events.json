@@ -435,7 +435,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U6: Schadhaftes Fahrzeug",
-    "description": "Die Linie U6 fährt derzeit in der Station Jägerstraße in beiden Richtungen über Gleis 1. Die Störung dauert voraussichtlich bis 05:30 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Jägerstraße.",
+    "description": "Die Linie U6 fährt derzeit in der Station Jägerstraße in beiden Richtungen über Gleis 1. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Jägerstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
     "pubDate": "2025-10-22T05:00:00+02:00",
@@ -446,13 +446,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Schadhaftes Fahrzeug",
-    "description": "Die Linie U3 ist derzeit in Richtung Simmering an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 05:45 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Kendlerstraße.",
+    "title": "D: Veranstaltung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
-    "pubDate": "2025-10-22T05:30:00+02:00",
-    "starts_at": "2025-10-22T05:30:00+02:00",
+    "guid": "5d9d0bf8b997795d7cf42525d1ffc6fee8d3ae30ff2067c6206a27742a1835a2",
+    "pubDate": "2025-10-22T05:45:00+02:00",
+    "starts_at": "2025-10-22T05:45:00+02:00",
     "ends_at": "2025-10-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2025-10-22"
+    "_identity": "wl|störung|L=D|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2025-10-22T05:55:00+02:00",
+    "starts_at": "2025-10-22T05:55:00+02:00",
+    "ends_at": "2025-10-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Veranstaltung Betrieb ab Quartier Belvedere",
+    "description": "Veranstaltung Betrieb ab Quartier Belvedere",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0129c09ee23b7d9272d4072deed99e14ac17a7cf792cc2d00136a128ac80529e",
+    "pubDate": "2025-10-22T05:55:29+02:00",
+    "starts_at": "2025-10-22T05:55:29+02:00",
+    "ends_at": "2025-10-22T10:45:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Veranstaltung Betrieb ab Börse",
+    "description": "Veranstaltung Betrieb ab Börse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1cfa78b3cd9aab3c1d3bbf75ce440f18fad728eabb2566089dc1e6a1836a1531",
+    "pubDate": "2025-10-22T05:56:27+02:00",
+    "starts_at": "2025-10-22T05:56:27+02:00",
+    "ends_at": "2025-10-22T10:15:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18/O: Veranstaltung Umleitung über 18 und O",
+    "description": "Veranstaltung Umleitung über 18 und O",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "687661a6e4a44696c3c379a35518b508a1dff48a91c51b22e93889af6fa529e6",
+    "pubDate": "2025-10-22T05:59:50+02:00",
+    "starts_at": "2025-10-22T05:59:50+02:00",
+    "ends_at": "2025-10-22T09:30:00+02:00",
+    "_identity": "wl|störung|L=18,O|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Veranstaltung",
+    "description": "Die Linie 18 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Veranstaltung im Bereich Heinrich-Drimmel-Platz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4e3a8d81e0aa1509b3a773036f36059bbcc3d84d8e27bbb40c3f4279defe03ba",
+    "pubDate": "2025-10-22T06:00:00+02:00",
+    "starts_at": "2025-10-22T06:00:00+02:00",
+    "ends_at": "2025-10-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=18|D=2025-10-22"
   }
 ]
