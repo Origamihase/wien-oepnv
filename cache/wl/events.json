@@ -458,42 +458,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Staatsbesuch",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 38 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "53e816660796bea1d805fd64d4975da9dfc36b3bd6b9d82e239668f95d280d96",
-    "pubDate": "2025-10-22T15:55:00+02:00",
-    "starts_at": "2025-10-22T15:55:00+02:00",
-    "ends_at": "2025-10-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=38|D=2025-10-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Staatsbesuch",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d0b2331cc119e278507799d6041abe2e7922c0e4a1baffdd5f5449d4cdd71757",
-    "pubDate": "2025-10-22T15:55:00+02:00",
-    "starts_at": "2025-10-22T15:55:00+02:00",
-    "ends_at": "2025-10-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=40|D=2025-10-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Staatsbesuch",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "88071de94ffccb5aff335ebfacf69d249fd52670eae1474919ebadcf3c92a787",
-    "pubDate": "2025-10-22T15:55:00+02:00",
-    "starts_at": "2025-10-22T15:55:00+02:00",
-    "ends_at": "2025-10-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=41|D=2025-10-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Verspätungen",
     "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Stubentor.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -502,30 +466,6 @@
     "starts_at": "2025-10-22T16:05:00+02:00",
     "ends_at": "2025-10-22T23:55:00+02:00",
     "_identity": "wl|störung|L=U3|D=2025-10-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "63A: Betriebsstörung",
-    "description": "Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Gesundheitszentrum Süd.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "268fd410f5ef450f9c7a2a594e86bd0dc8db5b7815880b183dc553c14f663dfe",
-    "pubDate": "2025-10-22T16:10:00+02:00",
-    "starts_at": "2025-10-22T16:10:00+02:00",
-    "ends_at": "2025-10-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=63A|D=2025-10-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40A: Betriebsstörung",
-    "description": "Die Linie 40 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Schottentor U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "26323d724ae74cdb1948779faf6756d99524f146a27ee171ab82e40e940145cd",
-    "pubDate": "2025-10-22T16:10:00+02:00",
-    "starts_at": "2025-10-22T16:10:00+02:00",
-    "ends_at": "2025-10-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=40A|D=2025-10-22"
   },
   {
     "source": "Wiener Linien",
@@ -550,5 +490,101 @@
     "starts_at": "2025-10-22T16:20:00+02:00",
     "ends_at": "2025-10-22T23:55:00+02:00",
     "_identity": "wl|störung|L=11A|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Staatsbesuch",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0ea9b463953945805e2863b4a46d2fee5ab4528154e0a7759901cc7cef631756",
+    "pubDate": "2025-10-22T16:50:00+02:00",
+    "starts_at": "2025-10-22T16:50:00+02:00",
+    "ends_at": "2025-10-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=10|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Staatsbesuch",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2937f75e39c547f61eb4ae77273011d2cc17f332a079a27130114bef3a5bd6a9",
+    "pubDate": "2025-10-22T16:50:00+02:00",
+    "starts_at": "2025-10-22T16:50:00+02:00",
+    "ends_at": "2025-10-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=60|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Staatsbesuch",
+    "description": "Die Linie D fährt derzeit nur zwischen Nußdorf und Quartier Belvedere. Die Störung dauert voraussichtlich bis 18:00 Uhr. Grund dafür ist ein Staatsbesuch im Bereich Hauptbahnhof Ost.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "725c5250c60acec71a2b1fc654e2e1560bc396a74ad0b468d32af47b1d966802",
+    "pubDate": "2025-10-22T16:50:00+02:00",
+    "starts_at": "2025-10-22T16:50:00+02:00",
+    "ends_at": "2025-10-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Fahrtbehinderung Veranstaltung",
+    "description": "Fahrtbehinderung Veranstaltung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a7a20f10541f3ecc1930821219843143fc0796e227daaa20f20a8c1e3aac4bbd",
+    "pubDate": "2025-10-22T16:53:07+02:00",
+    "starts_at": "2025-10-22T16:53:07+02:00",
+    "ends_at": "2025-10-22T20:15:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Veranstaltung Betrieb ab Quartier Belvedere",
+    "description": "Veranstaltung Betrieb ab Quartier Belvedere",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0129c09ee23b7d9272d4072deed99e14ac17a7cf792cc2d00136a128ac80529e",
+    "pubDate": "2025-10-22T16:54:34+02:00",
+    "starts_at": "2025-10-22T16:54:34+02:00",
+    "ends_at": "2025-10-22T19:45:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Staatsbesuch",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5c654046f8cdfaeca0ffea6c718618cf64d6882f0a67b980a5fd4a040906d0f6",
+    "pubDate": "2025-10-22T16:55:00+02:00",
+    "starts_at": "2025-10-22T16:55:00+02:00",
+    "ends_at": "2025-10-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9",
+    "pubDate": "2025-10-22T16:56:02+02:00",
+    "starts_at": "2025-10-22T16:56:02+02:00",
+    "ends_at": "2025-10-22T19:45:00+02:00",
+    "_identity": "wl|störung|L=60|D=2025-10-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Staatsbesuch",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 13 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "78c2f8c5363943c55b1c853e5d07d626b0b04c19ead94bab77436e165365592b",
+    "pubDate": "2025-10-22T17:05:00+02:00",
+    "starts_at": "2025-10-22T17:05:00+02:00",
+    "ends_at": "2025-10-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-22"
   }
 ]
