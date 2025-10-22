@@ -7,14 +7,25 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Wed, 22 Oct 2025 08:49:10 +0000</lastBuildDate>
+<lastBuildDate>Wed, 22 Oct 2025 09:18:31 +0000</lastBuildDate>
 <ttl>15</ttl>
+<item>
+<title><![CDATA[1A: Betriebsstörung]]></title>
+<link>https://www.wienerlinien.at/ogd_realtime</link>
+<guid isPermaLink="false">4b2918ad99aed210caba7a735fb4dbba20880a1518a017af7457fa01e1b00b2f</guid>
+<pubDate>Wed, 22 Oct 2025 08:35:00 +0000</pubDate>
+<ext:first_seen>Wed, 22 Oct 2025 09:18:31 +0000</ext:first_seen>
+<ext:starts_at>Wed, 22 Oct 2025 08:35:00 +0000</ext:starts_at>
+<ext:ends_at>Wed, 22 Oct 2025 21:55:00 +0000</ext:ends_at>
+<description><![CDATA[Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Stephansplatz U.<br>[Seit 22.10.2025]]]></description>
+<content:encoded><![CDATA[Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Stephansplatz U.<br/>[Seit 22.10.2025]]]></content:encoded>
+</item>
 <item>
 <title><![CDATA[U3: Rettungseinsatz]]></title>
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
 <pubDate>Wed, 22 Oct 2025 07:50:00 +0000</pubDate>
-<ext:first_seen>Wed, 22 Oct 2025 08:49:10 +0000</ext:first_seen>
+<ext:first_seen>Wed, 22 Oct 2025 09:18:31 +0000</ext:first_seen>
 <ext:starts_at>Wed, 22 Oct 2025 07:50:00 +0000</ext:starts_at>
 <ext:ends_at>Wed, 22 Oct 2025 21:55:00 +0000</ext:ends_at>
 <description><![CDATA[Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Simmering.<br>[Seit 22.10.2025]]]></description>
@@ -25,29 +36,18 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">26dab77d720bee7a4554a163cd8af781b649c79533f209c6d60fa8fe1647c0a0</guid>
 <pubDate>Wed, 22 Oct 2025 07:15:00 +0000</pubDate>
-<ext:first_seen>Wed, 22 Oct 2025 08:49:10 +0000</ext:first_seen>
+<ext:first_seen>Wed, 22 Oct 2025 09:18:31 +0000</ext:first_seen>
 <ext:starts_at>Wed, 22 Oct 2025 07:15:00 +0000</ext:starts_at>
 <ext:ends_at>Wed, 22 Oct 2025 21:55:00 +0000</ext:ends_at>
 <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 5 zu unterschiedlichen Intervallen.<br>[Seit 22.10.2025]]]></description>
 <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 5 zu unterschiedlichen Intervallen.<br/>[Seit 22.10.2025]]]></content:encoded>
 </item>
 <item>
-<title><![CDATA[D: Veranstaltung Betrieb ab Quartier Belvedere]]></title>
-<link>https://www.wienerlinien.at/ogd_realtime</link>
-<guid isPermaLink="false">0129c09ee23b7d9272d4072deed99e14ac17a7cf792cc2d00136a128ac80529e</guid>
-<pubDate>Wed, 22 Oct 2025 03:55:29 +0000</pubDate>
-<ext:first_seen>Wed, 22 Oct 2025 08:49:10 +0000</ext:first_seen>
-<ext:starts_at>Wed, 22 Oct 2025 03:55:29 +0000</ext:starts_at>
-<ext:ends_at>Wed, 22 Oct 2025 08:45:00 +0000</ext:ends_at>
-<description><![CDATA[Veranstaltung Betrieb ab Quartier Belvedere<br>[Seit 22.10.2025]]]></description>
-<content:encoded><![CDATA[Veranstaltung Betrieb ab Quartier Belvedere<br/>[Seit 22.10.2025]]]></content:encoded>
-</item>
-<item>
 <title><![CDATA[U6: Beschädigte Oberleitung]]></title>
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">4db9833022d07eada723af55382fd06fec7a7c25c7e223c54d4ca4f151223cf1</guid>
 <pubDate>Wed, 22 Oct 2025 03:00:00 +0000</pubDate>
-<ext:first_seen>Wed, 22 Oct 2025 08:49:10 +0000</ext:first_seen>
+<ext:first_seen>Wed, 22 Oct 2025 09:18:31 +0000</ext:first_seen>
 <ext:starts_at>Wed, 22 Oct 2025 03:00:00 +0000</ext:starts_at>
 <ext:ends_at>Wed, 22 Oct 2025 21:55:00 +0000</ext:ends_at>
 <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie U6 zu unterschiedlichen Intervallen.<br>[Seit 22.10.2025]]]></description>
@@ -58,7 +58,7 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
 <pubDate>Wed, 22 Oct 2025 02:45:25 +0000</pubDate>
-<ext:first_seen>Wed, 22 Oct 2025 08:49:10 +0000</ext:first_seen>
+<ext:first_seen>Wed, 22 Oct 2025 09:18:31 +0000</ext:first_seen>
 <ext:starts_at>Wed, 22 Oct 2025 02:45:25 +0000</ext:starts_at>
 <ext:ends_at>Wed, 22 Oct 2025 22:35:00 +0000</ext:ends_at>
 <description><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br>[22.10.2025 – 23.10.2025]]]></description>
@@ -69,7 +69,7 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">537290993f4260df2eb115e4349739f580ff4b1b822fe5541d0aaef77876a578</guid>
 <pubDate>Tue, 21 Oct 2025 14:24:11 +0000</pubDate>
-<ext:first_seen>Wed, 22 Oct 2025 08:49:10 +0000</ext:first_seen>
+<ext:first_seen>Wed, 22 Oct 2025 09:18:31 +0000</ext:first_seen>
 <ext:starts_at>Tue, 21 Oct 2025 14:24:11 +0000</ext:starts_at>
 <ext:ends_at>Wed, 22 Oct 2025 21:59:59 +0000</ext:ends_at>
 <description><![CDATA[Bauarbeiten Busse halten bei Linie 57 A (Richtung Rudolfsheim)<br>[21.10.2025 – 22.10.2025]]]></description>
@@ -80,7 +80,7 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">977876550b56a5d6723634a7f834bacd27b66455e3a326fd9a696e99de9cd9c2</guid>
 <pubDate>Tue, 21 Oct 2025 14:23:42 +0000</pubDate>
-<ext:first_seen>Wed, 22 Oct 2025 08:49:10 +0000</ext:first_seen>
+<ext:first_seen>Wed, 22 Oct 2025 09:18:31 +0000</ext:first_seen>
 <ext:starts_at>Tue, 21 Oct 2025 14:23:42 +0000</ext:starts_at>
 <ext:ends_at>Wed, 22 Oct 2025 21:59:59 +0000</ext:ends_at>
 <description><![CDATA[Bauarbeiten Busse halten bei Linie 57 A (Richtung Rudolfsheim)<br>[21.10.2025 – 22.10.2025]]]></description>
@@ -91,7 +91,7 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">ed46355ec75fbaba380ee884d9958858899f9e77cdde0cab2ec42460044c6bb3</guid>
 <pubDate>Tue, 21 Oct 2025 06:00:00 +0000</pubDate>
-<ext:first_seen>Wed, 22 Oct 2025 08:49:10 +0000</ext:first_seen>
+<ext:first_seen>Wed, 22 Oct 2025 09:18:31 +0000</ext:first_seen>
 <ext:starts_at>Tue, 21 Oct 2025 06:00:00 +0000</ext:starts_at>
 <ext:ends_at>Wed, 22 Oct 2025 19:00:00 +0000</ext:ends_at>
 <description><![CDATA[Bei der Linie D kommt es zu Einschränkungen aufgrund von diversen Veranstaltungen im Bereich Prinz-Eugen-Straße und Hauptbahnhof Süd.<br>[21.10.2025 – 22.10.2025]]]></description>
@@ -102,7 +102,7 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">6c34fcbb634bcd4dc8f67af2e730a58f8db3465df51f839d43f6f69b11d6c8f5</guid>
 <pubDate>Mon, 20 Oct 2025 04:00:00 +0000</pubDate>
-<ext:first_seen>Wed, 22 Oct 2025 08:49:10 +0000</ext:first_seen>
+<ext:first_seen>Wed, 22 Oct 2025 09:18:31 +0000</ext:first_seen>
 <ext:starts_at>Mon, 20 Oct 2025 04:00:00 +0000</ext:starts_at>
 <ext:ends_at>Wed, 29 Oct 2025 03:00:00 +0000</ext:ends_at>
 <description><![CDATA[Haltestellenauflassung der Linie N71 in Richtung Oper, Karlsplatz (Mo.-Fr.) Haltestelle: Schwarzenbergplatz Dauer: Mittwoch, 29. Oktober 2025 (Nacht von 28. auf 29.) von …<br>[20.10.2025 – 29.10.2025]]]></description>
@@ -113,7 +113,7 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4</guid>
 <pubDate>Sun, 19 Oct 2025 22:07:58 +0000</pubDate>
-<ext:first_seen>Wed, 22 Oct 2025 08:49:10 +0000</ext:first_seen>
+<ext:first_seen>Wed, 22 Oct 2025 09:18:31 +0000</ext:first_seen>
 <ext:starts_at>Sun, 19 Oct 2025 22:07:58 +0000</ext:starts_at>
 <ext:ends_at>Wed, 22 Oct 2025 21:59:59 +0000</ext:ends_at>
 <description><![CDATA[Bauarbeiten Betrieb ab Bergmillergasse<br>[20.10.2025 – 22.10.2025]]]></description>
