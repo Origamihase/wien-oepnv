@@ -434,25 +434,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Friedensbrücke.",
+    "title": "94A: Polizeieinsatz",
+    "description": "Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Stadlau .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
-    "pubDate": "2025-10-23T20:20:00+02:00",
-    "starts_at": "2025-10-23T20:20:00+02:00",
+    "guid": "1d966e09fb9636c1df4d837b16c680b46ab28a49b95b2a41c4f2fc935e7a26af",
+    "pubDate": "2025-10-23T22:50:00+02:00",
+    "starts_at": "2025-10-23T22:50:00+02:00",
     "ends_at": "2025-10-23T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2025-10-23"
+    "_identity": "wl|störung|L=94A|D=2025-10-23"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Veranstaltung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
+    "title": "D: Verunreinigung",
+    "description": "Die Linie D kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung im Bereich Absberggasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "82f67fc4ae423e511abb8b767eacbf6009f15e0d2c45606f760ea7149593a6ee",
-    "pubDate": "2025-10-23T21:10:00+02:00",
-    "starts_at": "2025-10-23T21:10:00+02:00",
+    "guid": "28dd617e135ca8c10e6ad9cda709d30d6392210e846e91e8bdbb3b2e72457757",
+    "pubDate": "2025-10-23T23:05:00+02:00",
+    "starts_at": "2025-10-23T23:05:00+02:00",
     "ends_at": "2025-10-23T23:55:00+02:00",
-    "_identity": "wl|störung|L=49|D=2025-10-23"
+    "_identity": "wl|störung|L=D|D=2025-10-23"
   }
 ]
