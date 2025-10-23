@@ -483,7 +483,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "D: Witterung",
-    "description": "Die Linie D fährt derzeit nur zwischen Absberggasse und Augasse. Ersatzweise können Sie auf die U-Bahnlinien U4,U6 sowie auf die Linien 10 A,38 A, 400 und S-Bahn ausweichen. Die Störung dauert voraussichtlich bis 19:00 Uhr. Grund dafür ist die aktuelle Witterung im Bereich Nußdorf S.",
+    "description": "Die Linie D fährt derzeit nur zwischen Absberggasse und Augasse. Ersatzweise können Sie auf die U-Bahnlinien U4,U6 sowie auf die Linien 10 A,38 A, 400 und S-Bahn ausweichen. Die Störung dauert voraussichtlich bis 19:30 Uhr. Grund dafür ist die aktuelle Witterung im Bereich Nußdorf S.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2bbcc52818188d7f58539af2c6c44b7d9c40d6395b1c036e40ca4b5929bd4de2",
     "pubDate": "2025-10-23T18:30:00+02:00",
@@ -518,13 +518,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10/42/44/60/9: Witterung",
-    "description": "Die Linie 9 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 10 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 42 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 44 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich Großraum Wien.",
+    "title": "10/60: Witterung",
+    "description": "Die Linie 10 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich Großraum Wien.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2565b36e3caa44553c299fd27dc266b65eef2d0ea640672fc86ae2b05e38ae04",
+    "guid": "2e36eb777f047f44c0281beb1ae60620c03ea99f7ef6ad822c4c34d5eb48792e",
     "pubDate": "2025-10-23T18:35:00+02:00",
     "starts_at": "2025-10-23T18:35:00+02:00",
     "ends_at": "2025-10-23T23:55:00+02:00",
-    "_identity": "wl|störung|L=10,42,44,60,9|D=2025-10-23"
+    "_identity": "wl|störung|L=10,60|D=2025-10-23"
   }
 ]
