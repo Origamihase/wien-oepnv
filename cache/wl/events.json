@@ -490,5 +490,29 @@
     "starts_at": "2025-10-23T14:25:00+02:00",
     "ends_at": "2025-10-23T23:55:00+02:00",
     "_identity": "wl|störung|L=U2|D=2025-10-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Verkehrsüberlastung",
+    "description": "Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405",
+    "pubDate": "2025-10-23T15:00:00+02:00",
+    "starts_at": "2025-10-23T15:00:00+02:00",
+    "ends_at": "2025-10-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2025-10-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Die Linie 37 ist derzeit in Richtung Schottentor an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Hohe Warte.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b515046f8efc2938e32142bba4c3e0824f0ae216ac5103eef86cc71cf2d91c34",
+    "pubDate": "2025-10-23T15:25:00+02:00",
+    "starts_at": "2025-10-23T15:25:00+02:00",
+    "ends_at": "2025-10-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=37|D=2025-10-23"
   }
 ]
