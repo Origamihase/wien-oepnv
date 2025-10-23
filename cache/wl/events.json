@@ -386,18 +386,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten bei Linie 57A (Richtung Rudolfsheim)",
-    "description": "Bauarbeiten Busse halten bei Linie 57 A (Richtung Rudolfsheim)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "977876550b56a5d6723634a7f834bacd27b66455e3a326fd9a696e99de9cd9c2",
-    "pubDate": "2025-10-23T00:00:23+02:00",
-    "starts_at": "2025-10-23T00:00:23+02:00",
-    "ends_at": "2025-10-23T18:00:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "14A: Busse halten bei Linie 57A (Richtung Rudolfsheim)",
     "description": "Bauarbeiten Busse halten bei Linie 57 A (Richtung Rudolfsheim)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -406,6 +394,18 @@
     "starts_at": "2025-10-23T00:00:23+02:00",
     "ends_at": "2025-10-23T18:00:00+02:00",
     "_identity": "wl|störung|L=14A|D=2025-10-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Busse halten bei Linie 57A (Richtung Rudolfsheim)",
+    "description": "Bauarbeiten Busse halten bei Linie 57 A (Richtung Rudolfsheim)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "977876550b56a5d6723634a7f834bacd27b66455e3a326fd9a696e99de9cd9c2",
+    "pubDate": "2025-10-23T00:00:23+02:00",
+    "starts_at": "2025-10-23T00:00:23+02:00",
+    "ends_at": "2025-10-23T18:00:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-23"
   },
   {
     "source": "Wiener Linien",
@@ -506,13 +506,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Die Linie 37 ist derzeit in Richtung Schottentor an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Hohe Warte.",
+    "title": "37: Rettungseinsatz Betrieb ab Nußdorfer Straße",
+    "description": "Die Linie 37 fährt derzeit nur zwischen Schottentor und Nußdorfer Straße. Ersatzweise benützen Sie die Linien D, 38, 10 A, 35 A, 38 A, 39 A Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Hohe Warte.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b515046f8efc2938e32142bba4c3e0824f0ae216ac5103eef86cc71cf2d91c34",
     "pubDate": "2025-10-23T15:25:00+02:00",
     "starts_at": "2025-10-23T15:25:00+02:00",
     "ends_at": "2025-10-23T23:55:00+02:00",
+    "_identity": "wl|störung|L=37|D=2025-10-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Züge halten bei Währinger Gürtel, U6 Station",
+    "description": "Züge halten bei Währinger Gürtel, U6 Station",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "42c0cabe0490f38929393f1cf5838c848d2c904eba4f5b25b322df4c63b07767",
+    "pubDate": "2025-10-23T15:26:08+02:00",
+    "starts_at": "2025-10-23T15:26:08+02:00",
+    "ends_at": "2025-10-23T16:30:00+02:00",
     "_identity": "wl|störung|L=37|D=2025-10-23"
   }
 ]
