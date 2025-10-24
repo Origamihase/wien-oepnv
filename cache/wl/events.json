@@ -446,18 +446,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "73A: Verkehrsunfall",
-    "description": "Die Linie 73 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dbbabc9a1034b11652086a4984d3bf03f2416a5573f1fbf33c905aaa97513395",
-    "pubDate": "2025-10-24T07:35:00+02:00",
-    "starts_at": "2025-10-24T07:35:00+02:00",
-    "ends_at": "2025-10-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=73A|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "60: Verkehrsüberlastung",
     "description": "Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -466,5 +454,17 @@
     "starts_at": "2025-10-24T07:45:00+02:00",
     "ends_at": "2025-10-24T23:55:00+02:00",
     "_identity": "wl|störung|L=60|D=2025-10-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Verkehrsüberlastung",
+    "description": "Die Linie 10 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cacf94e8445ea939a186a3698793861c8ba6a34893925abeef4ee4781217f71e",
+    "pubDate": "2025-10-24T08:40:00+02:00",
+    "starts_at": "2025-10-24T08:40:00+02:00",
+    "ends_at": "2025-10-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=10|D=2025-10-24"
   }
 ]
