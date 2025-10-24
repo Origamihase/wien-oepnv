@@ -86,6 +86,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "29A/29B: Umleitung ab 04.08.2025",
+    "description": "Straßenbauarbeiten\nWegen Straßenbauarbeiten in der Leopoldauer Straße müssen die Busse neuerlich umgeleitet werden.\nZeitraum:\nMontag, 4. August 2025 Betriebsbeginn bis voraussichtlich Mitte November 2025.\nMaßnahmen:\nLinien 29 A, 29 B und Rufbus N30 in Richtung Floridsdorf S U:\nUmleitung ab Leopoldauer Straße # Katsushikastraße über Katsushikastraße - Brünner Straße - Angerer Straße - Freytaggasse.\nHaltestelle:\nSebastian-Kohl-Gasse (Leopoldauer Straße 37): Ersatzlos aufgelassen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e4177e16bcc0a2b04b0dc1cfd337a16495b81def430bbc4f8018d760528e3c7",
+    "pubDate": "2025-07-28T14:40:00+02:00",
+    "starts_at": "2025-07-28T14:40:00+02:00",
+    "ends_at": "2026-07-28T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=29A,29B|D=2025-07-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "N20: Umleitung Schlosshofer Straße ab 11.08.2025",
     "description": "Gleisbauarbeiten\nWegen Bauarbeiten in der Schlosshofer Straße wird die Linie N20 provisorisch umgeleitet.\nZeitraum:\nAb Donnerstag, 09. Oktober 2025 Betriebsbeginn (Nacht von 8. auf 9.), für etwa sieben Wochen\nMaßnahmen:\nLinie N20 in Richtung Strebersdorf\nUmleitung ab Donaufelder Straße # Hoßplatz über Hoßplatz – Patrizigasse – Angerer Straße – Rechte Nordbahngasse – Karl-Waldbrunner-Platz – Schloßhofer Straße zur Stammstrecke.\nAufgelassene Haltestelle:\nHoßplatz (Hoßplatz ggü. 12-13)\nErsatz- und provisorische Haltestelle:\nHoßplatz (Hoßplatz 4-5, prov. Haltestelle)\nLinie N20 in Richtung Eßling, Stadtgrenze\nUmleitung ab Schloßhofer Straße # Karl-Waldbrunner-Platz über Karl-Waldbrunner-Platz – Rechte Nordbahngasse – Angerer Straße – Patrizigasse – Hoßplatz – Donaufelder Straße zur Stammstrecke\nAufgelassene Haltestelle:\nHoßplatz (Hoßplatz 12)\nErsatz- und provisorische Haltestelle:\nHoßplatz (Hoßplatz ggü. 4-5, prov. Haltestelle)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -166,6 +178,18 @@
     "starts_at": "2025-09-24T20:00:00+02:00",
     "ends_at": "2026-10-01T11:11:00+02:00",
     "_identity": "wl|hinweis|L=38A|D=2025-09-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "29A/29B: Patrizigasse in beiden Richtungen",
+    "description": "Haltestellenverlegung der Linien 29 A, 29 B und Rufbus N30 in Richtung Großfeldsiedlung bzw. Neu Leopoldau\nHaltestelle: Patrizigasse\nVon: Freytaggasse 32\nNach: Angerer Straße 22-24, provisorische Haltestelle\nHaltestellenverlegung der Linien 29 A, 29 B und Rufbus N30 in Richtung Floridsdorf S U\nHaltestelle: Patrizigasse\nVon: Freytaggasse nach Angerer Straße\nNach: Rechte Nordbahngasse nach Angerer Straße, provisorische Haltestelle\nDauer: 09. Oktober 2025, etwa 00:30 Uhr auf Dauer von etwa sieben Wochen\nGrund: Umleitung wegen Gleisbauarbeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2d8cdbad8ce83dc172dd29ee3de63de5f78f178dcaae7fab889e86c1f5376974",
+    "pubDate": "2025-09-29T17:15:00+02:00",
+    "starts_at": "2025-09-29T17:15:00+02:00",
+    "ends_at": "2026-10-09T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=29A,29B|D=2025-09-29"
   },
   {
     "source": "Wiener Linien",
@@ -374,18 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 26 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2138b36809ccac7f65eff86dfb0122d185db52f01548609aa843782fb799b465",
-    "pubDate": "2025-10-24T16:15:00+02:00",
-    "starts_at": "2025-10-24T16:15:00+02:00",
-    "ends_at": "2025-10-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=26|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "Feuerwehreinsatz Betrieb ab Josef-Baumann-Gasse",
     "description": "Feuerwehreinsatz Betrieb ab Josef-Baumann-Gasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -446,42 +458,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Demonstration Züge halten nach Bellariastraße",
-    "description": "Demonstration Züge halten nach Bellariastraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "69e686471fcc889c58ea0ba924021063b45b59e176a0ceaa62fd732da52d2008",
-    "pubDate": "2025-10-24T17:33:33+02:00",
-    "starts_at": "2025-10-24T17:33:33+02:00",
-    "ends_at": "2025-10-24T22:00:00+02:00",
-    "_identity": "wl|störung|L=2|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Züge halten in der Peregringasse",
-    "description": "Demonstration Züge halten in der Peregringasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5a8c6319be948f0c51dea1afe10a777b002822cc548ce249a21377a43db0fce9",
-    "pubDate": "2025-10-24T17:34:02+02:00",
-    "starts_at": "2025-10-24T17:34:02+02:00",
-    "ends_at": "2025-10-24T22:00:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Betrieb ab Schwarzenbergplatz",
-    "description": "Demonstration Betrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c026b000b202d288cf3bec2c812e718351d4c37b0196152e41c269e70771cadc",
-    "pubDate": "2025-10-24T17:34:02+02:00",
-    "starts_at": "2025-10-24T17:34:02+02:00",
-    "ends_at": "2025-10-24T22:00:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Rettungseinsatz Züge halten Schottenring 19",
     "description": "Rettungseinsatz Züge halten Schottenring 19",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -506,18 +482,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Demonstration Betrieb ab Resselgasse",
-    "description": "Demonstration Betrieb ab Resselgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a3904226e11e2eaa01222749b08821d53ed1cdb9f1a41de4e9b274034872a123",
-    "pubDate": "2025-10-24T17:37:25+02:00",
-    "starts_at": "2025-10-24T17:37:25+02:00",
-    "ends_at": "2025-10-24T22:00:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Rettungseinsatz Betrieb ab Julius-Raab-Platz",
     "description": "Rettungseinsatz Betrieb ab Julius-Raab-Platz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -538,138 +502,6 @@
     "starts_at": "2025-10-24T17:38:23+02:00",
     "ends_at": "2025-10-24T22:26:00+02:00",
     "_identity": "wl|störung|L=1|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Demonstration Umleitung über Linie 2",
-    "description": "Demonstration Umleitung über Linie 2",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
-    "pubDate": "2025-10-24T17:38:38+02:00",
-    "starts_at": "2025-10-24T17:38:38+02:00",
-    "ends_at": "2025-10-24T22:00:00+02:00",
-    "_identity": "wl|störung|L=1|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 25 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "904ba03627e216651c3fe7a87850a5c4243041de296f0ebcb4c445c1842de781",
-    "pubDate": "2025-10-24T19:40:00+02:00",
-    "starts_at": "2025-10-24T19:40:00+02:00",
-    "ends_at": "2025-10-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=25|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Schadhafter LKW",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "807c3f69bc7e44147ec5a5285d531eb1c5de1656031a5be6dd129ead48ab14b5",
-    "pubDate": "2025-10-24T20:40:00+02:00",
-    "starts_at": "2025-10-24T20:40:00+02:00",
-    "ends_at": "2025-10-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=49|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5A: Fremder Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 5 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dc0e90b9ebaef374ec89165f9f0b0d8518265604a6da764f1b1eb2285ef85ae4",
-    "pubDate": "2025-10-24T20:45:00+02:00",
-    "starts_at": "2025-10-24T20:45:00+02:00",
-    "ends_at": "2025-10-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=5A|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A: Fremder Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2c3f095ba0cb0cbba45d610cc390a23388bb52b8da9157c5f2276f8ea06e2203",
-    "pubDate": "2025-10-24T20:45:00+02:00",
-    "starts_at": "2025-10-24T20:45:00+02:00",
-    "ends_at": "2025-10-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=11A|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29B: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 29 B zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6be4f8ac2eb7d4a17a3178915171c32f8e6aab43b5edda94bac522449f5d19ca",
-    "pubDate": "2025-10-24T20:45:00+02:00",
-    "starts_at": "2025-10-24T20:45:00+02:00",
-    "ends_at": "2025-10-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=29B|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29A: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 29 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a0df81bac277c629feadf8eceae21b08562891e46e7d73cd68690499825965b",
-    "pubDate": "2025-10-24T20:45:00+02:00",
-    "starts_at": "2025-10-24T20:45:00+02:00",
-    "ends_at": "2025-10-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=29A|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung Schadhafter Lkw",
-    "description": "Fahrtbehinderung Schadhafter Lkw",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f5805313ad1910c9266df378ffba8a42acdb5f3387f57befdad81e132b85ca80",
-    "pubDate": "2025-10-24T20:46:05+02:00",
-    "starts_at": "2025-10-24T20:46:05+02:00",
-    "ends_at": "2025-10-24T21:53:00+02:00",
-    "_identity": "wl|störung|L=49|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a89851b79bb10c004e30f4f5596e4c277ac128abfb49a6ea66c3bfd8baff5369",
-    "pubDate": "2025-10-24T20:56:40+02:00",
-    "starts_at": "2025-10-24T20:56:40+02:00",
-    "ends_at": "2025-10-24T22:03:00+02:00",
-    "_identity": "wl|störung|L=11A|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "861b347919fafe93485bd458579dca2ee9c49837be4f17153876f8fe037a1122",
-    "pubDate": "2025-10-24T21:05:00+02:00",
-    "starts_at": "2025-10-24T21:05:00+02:00",
-    "ends_at": "2025-10-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=6|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5A: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "78512192b4bca78f9e70d69b8204679f8e62341125f45b2df91478124ceab09f",
-    "pubDate": "2025-10-24T21:06:20+02:00",
-    "starts_at": "2025-10-24T21:06:20+02:00",
-    "ends_at": "2025-10-24T22:05:00+02:00",
-    "_identity": "wl|störung|L=5A|D=2025-10-24"
   },
   {
     "source": "Wiener Linien",
@@ -710,30 +542,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Verkehrsunfall",
-    "description": "Die Linie 62 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Oper, Karlsplatz U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eed493b84b991f4fbb293a881224825ca49d2be64d70010ef16dbd19919e838a",
-    "pubDate": "2025-10-24T21:15:00+02:00",
-    "starts_at": "2025-10-24T21:15:00+02:00",
-    "ends_at": "2025-10-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=62|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Verkehrsunfall Betrieb ab Resselgasse",
-    "description": "Verkehrsunfall Betrieb ab Resselgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "765acb4895d29553a9ff8f347592b8804a5c78e9b2af9a319e6ff8e8cf2b183d",
-    "pubDate": "2025-10-24T21:18:14+02:00",
-    "starts_at": "2025-10-24T21:18:14+02:00",
-    "ends_at": "2025-10-24T22:17:00+02:00",
-    "_identity": "wl|störung|L=62|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -742,18 +550,6 @@
     "starts_at": "2025-10-24T21:20:00+02:00",
     "ends_at": "2025-10-24T23:55:00+02:00",
     "_identity": "wl|störung|L=71|D=2025-10-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e",
-    "pubDate": "2025-10-24T21:20:00+02:00",
-    "starts_at": "2025-10-24T21:20:00+02:00",
-    "ends_at": "2025-10-24T23:55:00+02:00",
-    "_identity": "wl|störung|L=D|D=2025-10-24"
   },
   {
     "source": "Wiener Linien",
@@ -778,5 +574,53 @@
     "starts_at": "2025-10-24T21:20:00+02:00",
     "ends_at": "2025-10-24T23:55:00+02:00",
     "_identity": "wl|störung|L=1|D=2025-10-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Rettungseinsatz",
+    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Oberlaa.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
+    "pubDate": "2025-10-24T22:10:00+02:00",
+    "starts_at": "2025-10-24T22:10:00+02:00",
+    "ends_at": "2025-10-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2025-10-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Fremder Verkehrsunfall",
+    "description": "Die Linie D fährt derzeit nur zwischen Absberggasse und Liechtenwerder Platz. Ersatzweise benützen Sie bitte die Linie U4 sowie den Regionalbus 400. Die Störung dauert voraussichtlich bis 22:40 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Gunoldstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f0dde5821d03cb68c45830addd54ee8545c302f1154e3c7d1144448feb5546bd",
+    "pubDate": "2025-10-24T22:10:00+02:00",
+    "starts_at": "2025-10-24T22:10:00+02:00",
+    "ends_at": "2025-10-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-10-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c4d5ef0c25b44b7246d48ec4d938e77441185b7dcca81b50ad6b2cc945ac9595",
+    "pubDate": "2025-10-24T22:17:23+02:00",
+    "starts_at": "2025-10-24T22:17:23+02:00",
+    "ends_at": "2025-10-24T23:16:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-10-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Fremdunfall Betrieb ab Liechtenwerder Platz",
+    "description": "Fremdunfall Betrieb ab Liechtenwerder Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "275c9840b490f181d8a5fddb451cc07aed203c366e9be6f3573c228ba321f2da",
+    "pubDate": "2025-10-24T22:17:23+02:00",
+    "starts_at": "2025-10-24T22:17:23+02:00",
+    "ends_at": "2025-10-24T23:17:00+02:00",
+    "_identity": "wl|störung|L=D|D=2025-10-24"
   }
 ]
