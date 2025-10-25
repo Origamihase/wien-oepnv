@@ -434,25 +434,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 5 zu unterschiedlichen Intervallen.",
+    "title": "D: Verkehrsunfall",
+    "description": "Die Linie D ist derzeit in Richtung Absberggasse an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 23:30 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Heiligenstädter Straße 64.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8f92fb936b7c740f0f8bc713737d2ddddc0101ed1972011221685e252f6f06f4",
-    "pubDate": "2025-10-25T21:50:00+02:00",
-    "starts_at": "2025-10-25T21:50:00+02:00",
+    "guid": "99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e",
+    "pubDate": "2025-10-25T23:05:00+02:00",
+    "starts_at": "2025-10-25T23:05:00+02:00",
     "ends_at": "2025-10-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=5|D=2025-10-25"
+    "_identity": "wl|störung|L=D|D=2025-10-25"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U2 zu unterschiedlichen Intervallen.",
+    "title": "D: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
-    "pubDate": "2025-10-25T21:55:00+02:00",
-    "starts_at": "2025-10-25T21:55:00+02:00",
-    "ends_at": "2025-10-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2025-10-25"
+    "guid": "051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9",
+    "pubDate": "2025-10-25T23:11:13+02:00",
+    "starts_at": "2025-10-25T23:11:13+02:00",
+    "ends_at": "2025-10-25T23:59:59+02:00",
+    "_identity": "wl|störung|L=D|D=2025-10-25"
   }
 ]
