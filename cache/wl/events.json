@@ -398,10 +398,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "WLB: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "WLB: Betrieb ab Inzersdorf, Lokalbahn",
+    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "516be79a6bcdab2a2784760193ccbf461d25dfb2971cf43ae715ae66fe6e847e",
+    "guid": "7adaade93d48413da80be380152faf61c0aaf47b5a5c2d564873065af783cb93",
     "pubDate": "2025-10-25T04:30:00+02:00",
     "starts_at": "2025-10-25T04:30:00+02:00",
     "ends_at": "2025-10-27T00:59:59+02:00",
@@ -410,10 +410,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "WLB: Betrieb ab Inzersdorf, Lokalbahn",
-    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
+    "title": "WLB: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7adaade93d48413da80be380152faf61c0aaf47b5a5c2d564873065af783cb93",
+    "guid": "516be79a6bcdab2a2784760193ccbf461d25dfb2971cf43ae715ae66fe6e847e",
     "pubDate": "2025-10-25T04:30:00+02:00",
     "starts_at": "2025-10-25T04:30:00+02:00",
     "ends_at": "2025-10-27T00:59:59+02:00",
@@ -434,13 +434,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
+    "title": "N31: Nächster Halt Brigittenauer Lände 14",
+    "description": "Gleisbauarbeiten Nächster Halt Brigittenauer Lände 14",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
-    "pubDate": "2025-10-26T01:05:00+02:00",
-    "starts_at": "2025-10-26T01:05:00+02:00",
-    "ends_at": "2025-10-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2025-10-26"
+    "guid": "b18f380b7e1e119be24cb5b975e5f036295e8ca375f9bfaf1ec8633ec544801b",
+    "pubDate": "2025-10-26T01:15:05+02:00",
+    "starts_at": "2025-10-26T01:15:05+02:00",
+    "ends_at": "2025-10-26T05:30:00+02:00",
+    "_identity": "wl|störung|L=N31|D=2025-10-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N31: Betrieb ab Brigittaplatz",
+    "description": "Gleisbauarbeiten Betrieb ab Brigittaplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6d406877be41073f2061bf6b3c01ed73877bc2b62c93307ee934d7a34554320c",
+    "pubDate": "2025-10-26T01:20:25+02:00",
+    "starts_at": "2025-10-26T01:20:25+02:00",
+    "ends_at": "2025-10-26T05:35:00+02:00",
+    "_identity": "wl|störung|L=N31|D=2025-10-26"
   }
 ]
