@@ -68,7 +68,7 @@
     "guid": "c8fe425d7242fb213ce8416c7e36d3307750aef3cd584dd26b6b881c88e54d42",
     "pubDate": "2025-05-12T00:55:00+02:00",
     "starts_at": "2025-05-12T00:55:00+02:00",
-    "ends_at": "2025-12-31T23:55:00+02:00",
+    "ends_at": "2026-01-31T23:55:00+02:00",
     "_identity": "wl|störung|L=U6|D=2025-05-12"
   },
   {
@@ -398,10 +398,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "WLB: Betrieb ab Inzersdorf, Lokalbahn",
-    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
+    "title": "WLB: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7adaade93d48413da80be380152faf61c0aaf47b5a5c2d564873065af783cb93",
+    "guid": "516be79a6bcdab2a2784760193ccbf461d25dfb2971cf43ae715ae66fe6e847e",
     "pubDate": "2025-10-25T04:30:00+02:00",
     "starts_at": "2025-10-25T04:30:00+02:00",
     "ends_at": "2025-10-25T23:59:59+02:00",
@@ -410,10 +410,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "WLB: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "WLB: Betrieb ab Inzersdorf, Lokalbahn",
+    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "516be79a6bcdab2a2784760193ccbf461d25dfb2971cf43ae715ae66fe6e847e",
+    "guid": "7adaade93d48413da80be380152faf61c0aaf47b5a5c2d564873065af783cb93",
     "pubDate": "2025-10-25T04:30:00+02:00",
     "starts_at": "2025-10-25T04:30:00+02:00",
     "ends_at": "2025-10-25T23:59:59+02:00",
@@ -470,42 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A: Demonstration Kein Betrieb",
-    "description": "Demonstration Kein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ccccd997ff504c1b8013f123fd5e2cce7b33c44a83d539badf84976766775443",
-    "pubDate": "2025-10-25T14:50:09+02:00",
-    "starts_at": "2025-10-25T14:50:09+02:00",
-    "ends_at": "2025-10-25T17:15:00+02:00",
-    "_identity": "wl|störung|L=1A|D=2025-10-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2A: Demonstration Kein Betrieb",
-    "description": "Demonstration Kein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3aee12203511e3e72227f33e472c060347fdf40d75db9f684ab5d01d932e2e7f",
-    "pubDate": "2025-10-25T14:50:38+02:00",
-    "starts_at": "2025-10-25T14:50:38+02:00",
-    "ends_at": "2025-10-25T17:15:00+02:00",
-    "_identity": "wl|störung|L=2A|D=2025-10-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "3A: Demonstration Kein Betrieb",
-    "description": "Demonstration Kein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ac6225b2b5a6a1fc86fb0a36e0019bf087db67a069e4fe4b51409d0a3252fa60",
-    "pubDate": "2025-10-25T14:51:07+02:00",
-    "starts_at": "2025-10-25T14:51:07+02:00",
-    "ends_at": "2025-10-25T17:30:00+02:00",
-    "_identity": "wl|störung|L=3A|D=2025-10-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Verspätungen",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -518,7 +482,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "62: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
