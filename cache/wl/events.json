@@ -398,10 +398,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "WLB: Betrieb ab Inzersdorf, Lokalbahn",
-    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
+    "title": "WLB: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7adaade93d48413da80be380152faf61c0aaf47b5a5c2d564873065af783cb93",
+    "guid": "516be79a6bcdab2a2784760193ccbf461d25dfb2971cf43ae715ae66fe6e847e",
     "pubDate": "2025-10-25T04:30:00+02:00",
     "starts_at": "2025-10-25T04:30:00+02:00",
     "ends_at": "2025-10-25T23:59:59+02:00",
@@ -410,10 +410,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "WLB: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "WLB: Betrieb ab Inzersdorf, Lokalbahn",
+    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "516be79a6bcdab2a2784760193ccbf461d25dfb2971cf43ae715ae66fe6e847e",
+    "guid": "7adaade93d48413da80be380152faf61c0aaf47b5a5c2d564873065af783cb93",
     "pubDate": "2025-10-25T04:30:00+02:00",
     "starts_at": "2025-10-25T04:30:00+02:00",
     "ends_at": "2025-10-25T23:59:59+02:00",
@@ -470,18 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35",
-    "pubDate": "2025-10-25T18:00:26+02:00",
-    "starts_at": "2025-10-25T18:00:26+02:00",
-    "ends_at": "2025-10-25T19:03:00+02:00",
-    "_identity": "wl|störung|L=62|D=2025-10-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U4: Verspätungen",
     "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -490,5 +478,65 @@
     "starts_at": "2025-10-25T18:40:00+02:00",
     "ends_at": "2025-10-25T23:55:00+02:00",
     "_identity": "wl|störung|L=U4|D=2025-10-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9a256ddc9071e1be270714d5f6be746d8db040a3968d1eb9ae42aab06ab94ad4",
+    "pubDate": "2025-10-25T19:01:03+02:00",
+    "starts_at": "2025-10-25T19:01:03+02:00",
+    "ends_at": "2025-10-25T20:07:00+02:00",
+    "_identity": "wl|störung|L=37|D=2025-10-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
+    "pubDate": "2025-10-25T19:01:03+02:00",
+    "starts_at": "2025-10-25T19:01:03+02:00",
+    "ends_at": "2025-10-25T20:09:00+02:00",
+    "_identity": "wl|störung|L=38|D=2025-10-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "171280fe175191f4b2c1a62b7dc57c3520423e50d712bbc87c62209842a74580",
+    "pubDate": "2025-10-25T19:01:32+02:00",
+    "starts_at": "2025-10-25T19:01:32+02:00",
+    "ends_at": "2025-10-25T20:10:00+02:00",
+    "_identity": "wl|störung|L=40|D=2025-10-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1e687669355f2ef165e274ee1dc721668120a3f488ae695b99053b29ea59dc02",
+    "pubDate": "2025-10-25T19:02:01+02:00",
+    "starts_at": "2025-10-25T19:02:01+02:00",
+    "ends_at": "2025-10-25T20:08:00+02:00",
+    "_identity": "wl|störung|L=41|D=2025-10-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "930d80e075929cf21fe799fda5426fd5228d64088925dc7f7064542f79ff0bc7",
+    "pubDate": "2025-10-25T19:02:14+02:00",
+    "starts_at": "2025-10-25T19:02:14+02:00",
+    "ends_at": "2025-10-25T20:09:00+02:00",
+    "_identity": "wl|störung|L=42|D=2025-10-25"
   }
 ]
