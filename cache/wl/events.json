@@ -386,10 +386,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "LB: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "LB: Betrieb ab Inzersdorf, Lokalbahn",
+    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ccaf2b90af2295f60ce86b09abf99f4a22cd711554268e9af608855f96421ecb",
+    "guid": "0a261bd9bac89ebef4ed45fc30f979f2b7a7d69273e78f37c1956c5e671a47e2",
     "pubDate": "2025-10-25T04:30:00+01:00",
     "starts_at": "2025-10-25T04:30:00+01:00",
     "ends_at": "2025-10-27T00:59:59+01:00",
@@ -398,10 +398,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "LB: Betrieb ab Inzersdorf, Lokalbahn",
-    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
+    "title": "LB: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a261bd9bac89ebef4ed45fc30f979f2b7a7d69273e78f37c1956c5e671a47e2",
+    "guid": "ccaf2b90af2295f60ce86b09abf99f4a22cd711554268e9af608855f96421ecb",
     "pubDate": "2025-10-25T04:30:00+01:00",
     "starts_at": "2025-10-25T04:30:00+01:00",
     "ends_at": "2025-10-27T00:59:59+01:00",
@@ -538,5 +538,29 @@
     "starts_at": "2025-10-26T11:30:00+01:00",
     "ends_at": "2025-10-26T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2025-10-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "35A: Betriebsstörung",
+    "description": "Die Linie 35 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Spittelau S U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "85fdd364d4b671f2e5b0646b1b74da3e016a2f47ffc1807f1192d5435e340860",
+    "pubDate": "2025-10-26T13:50:00+01:00",
+    "starts_at": "2025-10-26T13:50:00+01:00",
+    "ends_at": "2025-10-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=35A|D=2025-10-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8",
+    "pubDate": "2025-10-26T14:00:17+01:00",
+    "starts_at": "2025-10-26T14:00:17+01:00",
+    "ends_at": "2025-10-26T16:00:00+01:00",
+    "_identity": "wl|störung|L=41|D=2025-10-26"
   }
 ]
