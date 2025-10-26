@@ -562,5 +562,29 @@
     "starts_at": "2025-10-26T13:55:00+01:00",
     "ends_at": "2025-10-26T23:55:00+01:00",
     "_identity": "wl|störung|L=41|D=2025-10-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Schadhaftes Fahrzeug",
+    "description": "Die Linie 26 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "59e208367d2d4abd51c67734b05d4470604d748bf4d8210aec89186b2434cefa",
+    "pubDate": "2025-10-26T14:50:00+01:00",
+    "starts_at": "2025-10-26T14:50:00+01:00",
+    "ends_at": "2025-10-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=26|D=2025-10-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Verkehrsüberlastung",
+    "description": "Die Linie 38 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich Cobenzl-Parkplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5bd9dda7a847330a7d1c36378ab1c1f0e9f6e6e70be1d423e453221b27840f53",
+    "pubDate": "2025-10-26T14:50:00+01:00",
+    "starts_at": "2025-10-26T14:50:00+01:00",
+    "ends_at": "2025-10-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=38A|D=2025-10-26"
   }
 ]
