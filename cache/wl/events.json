@@ -418,5 +418,41 @@
     "starts_at": "2025-10-26T04:45:08+01:00",
     "ends_at": "2025-10-27T01:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-10-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d4fefbd61cffb826224497ce36210117717220dc478820ab5f401038825d1565",
+    "pubDate": "2025-10-26T23:33:11+01:00",
+    "starts_at": "2025-10-26T23:33:11+01:00",
+    "ends_at": "2025-10-27T00:59:59+01:00",
+    "_identity": "wl|störung|L=60|D=2025-10-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a98ce5b1ad854c6ed3e45e2e7ba8501931ec19b9c65469df145fe9e064f76e2f",
+    "pubDate": "2025-10-26T23:33:42+01:00",
+    "starts_at": "2025-10-26T23:33:42+01:00",
+    "ends_at": "2025-10-27T00:59:59+01:00",
+    "_identity": "wl|störung|L=52|D=2025-10-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "538e3537ccddfddb6ed2a2bea6bb7128afece95871c03e3c9b06dde002cf7d72",
+    "pubDate": "2025-10-26T23:36:36+01:00",
+    "starts_at": "2025-10-26T23:36:36+01:00",
+    "ends_at": "2025-10-27T00:59:59+01:00",
+    "_identity": "wl|störung|L=52|D=2025-10-26"
   }
 ]
