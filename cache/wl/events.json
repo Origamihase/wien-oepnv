@@ -386,10 +386,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "LB: Betrieb ab Inzersdorf, Lokalbahn",
-    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
+    "title": "LB: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a261bd9bac89ebef4ed45fc30f979f2b7a7d69273e78f37c1956c5e671a47e2",
+    "guid": "ccaf2b90af2295f60ce86b09abf99f4a22cd711554268e9af608855f96421ecb",
     "pubDate": "2025-10-25T04:30:00+01:00",
     "starts_at": "2025-10-25T04:30:00+01:00",
     "ends_at": "2025-10-28T00:59:59+01:00",
@@ -398,10 +398,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "LB: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "LB: Betrieb ab Inzersdorf, Lokalbahn",
+    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ccaf2b90af2295f60ce86b09abf99f4a22cd711554268e9af608855f96421ecb",
+    "guid": "0a261bd9bac89ebef4ed45fc30f979f2b7a7d69273e78f37c1956c5e671a47e2",
     "pubDate": "2025-10-25T04:30:00+01:00",
     "starts_at": "2025-10-25T04:30:00+01:00",
     "ends_at": "2025-10-28T00:59:59+01:00",
@@ -494,18 +494,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "50A: Fremder Verkehrsunfall",
-    "description": "Die Linie 50 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein fremder Verkehrsunfall im Bereich Badgasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d4160bde62b16cb90b2efa19e169a3b626da51a7469f6ee7794fbae0e88b1a34",
-    "pubDate": "2025-10-27T08:25:00+01:00",
-    "starts_at": "2025-10-27T08:25:00+01:00",
-    "ends_at": "2025-10-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=50A|D=2025-10-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Bauarbeiten",
     "description": "Die Linie 13 A fährt derzeit nur zwischen Hauptbahnhof und Laudongasse. Die Störung dauert voraussichtlich bis 24. November Betriebsbeginn. Grund dafür sind Bauarbeiten im Bereich Kochgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -514,18 +502,6 @@
     "starts_at": "2025-10-27T09:10:00+01:00",
     "ends_at": "2025-11-24T23:55:00+01:00",
     "_identity": "wl|störung|L=13A|D=2025-10-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29B: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3229e9896561f65d48147a5d13f5afb8a88931448a8cf22ef0bf7f6dad78006f",
-    "pubDate": "2025-10-27T09:41:16+01:00",
-    "starts_at": "2025-10-27T09:41:16+01:00",
-    "ends_at": "2025-10-27T11:40:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-10-27"
   },
   {
     "source": "Wiener Linien",
@@ -579,7 +555,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Die Linie 9 ist derzeit in Richtung Westbahnhof an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 11:30 Uhr. Grund dafür ist ein Falschparker im Bereich Hormayrgasse 19.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
     "pubDate": "2025-10-27T11:10:00+01:00",
@@ -590,13 +566,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40/41: Falschparker",
-    "description": "Die Linie 40 wird in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper und Gersthof über Michelbeuern-AKH umgeleitet. Die Linie 41 wird in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper und Gersthof über Michelbeuern-AKH umgeleitet. Die Störung dauert voraussichtlich bis 11:40 Uhr. Grund dafür ist ein Falschparker im Bereich Gentzgasse.",
+    "title": "40: Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130",
+    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
     "pubDate": "2025-10-27T11:15:00+01:00",
     "starts_at": "2025-10-27T11:15:00+01:00",
     "ends_at": "2025-10-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=40,41|D=2025-10-27"
+    "_identity": "wl|störung|L=40|D=2025-10-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2025-10-27T11:15:00+01:00",
+    "starts_at": "2025-10-27T11:15:00+01:00",
+    "ends_at": "2025-10-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=41|D=2025-10-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Falschparker Betrieb ab Gersthof",
+    "description": "Falschparker Betrieb ab Gersthof",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
+    "pubDate": "2025-10-27T11:19:39+01:00",
+    "starts_at": "2025-10-27T11:19:39+01:00",
+    "ends_at": "2025-10-27T13:18:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-10-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Bauarbeiten",
+    "description": "Die Linie 29 B wird in Richtung Floridsdorf S U zwischen Moritz-Dreger-Gasse und Paukerwerkstraße über Egon-Friedell-Gasse umgeleitet. Die Störung dauert voraussichtlich bis Mittwoch, 29. Oktober ca. 12:00 Uhr. Grund dafür sind Bauarbeiten im Bereich Richard-Neutra-Gasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4f264856173d979b6f6311bfdf41050c409a38d370827b48291d6cb46fa00ea",
+    "pubDate": "2025-10-27T11:20:00+01:00",
+    "starts_at": "2025-10-27T11:20:00+01:00",
+    "ends_at": "2025-10-29T12:00:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-10-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Verkehrsunfall",
+    "description": "Die Linie 43 ist derzeit in Richtung Schottentor an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 12:00 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Hernalser Hauptstraße 105.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "de57d7fc844121db03d0e532febfd7d62faf7f8cc5ced1951f3e1470fcd4d6c8",
+    "pubDate": "2025-10-27T11:35:00+01:00",
+    "starts_at": "2025-10-27T11:35:00+01:00",
+    "ends_at": "2025-10-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=43|D=2025-10-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cc281c6508ba062820ee6ec97a11514a795c1ba829397c43d3f8f6719026c771",
+    "pubDate": "2025-10-27T11:38:31+01:00",
+    "starts_at": "2025-10-27T11:38:31+01:00",
+    "ends_at": "2025-10-27T13:37:00+01:00",
+    "_identity": "wl|störung|L=43|D=2025-10-27"
   }
 ]
