@@ -518,18 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9",
-    "pubDate": "2025-10-27T08:42:02+01:00",
-    "starts_at": "2025-10-27T08:42:02+01:00",
-    "ends_at": "2025-10-27T10:40:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-10-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Bauarbeiten",
     "description": "Die Linie 13 A fährt derzeit nur zwischen Hauptbahnhof und Laudongasse. Die Störung dauert voraussichtlich bis 24. November Betriebsbeginn. Grund dafür sind Bauarbeiten im Bereich Kochgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -567,12 +555,24 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "O: Rettungseinsatz Einstieg bei Linie 18 Richtung Burggasse",
-    "description": "Die Linie O wird derzeit in Richtung Raxstraße, Rudolfshügelgasse zwischen Rennweg und Fasangasse über St. Marx umgeleitet. Die Störung dauert voraussichtlich bis 10:40 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Fasangasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie O zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84",
     "pubDate": "2025-10-27T10:05:00+01:00",
     "starts_at": "2025-10-27T10:05:00+01:00",
     "ends_at": "2025-10-27T23:55:00+01:00",
     "_identity": "wl|störung|L=O|D=2025-10-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Schadhaftes Fahrzeug",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
+    "pubDate": "2025-10-27T10:25:00+01:00",
+    "starts_at": "2025-10-27T10:25:00+01:00",
+    "ends_at": "2025-10-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-10-27"
   }
 ]
