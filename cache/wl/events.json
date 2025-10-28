@@ -422,10 +422,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Betrieb ab Baumgarten",
-    "description": "Bauarbeiten Betrieb ab Baumgarten",
+    "title": "49: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
+    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
     "pubDate": "2025-10-27T04:30:00+01:00",
     "starts_at": "2025-10-27T04:30:00+01:00",
     "ends_at": "2025-10-28T23:59:59+01:00",
@@ -434,10 +434,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "49: Betrieb ab Baumgarten",
+    "description": "Bauarbeiten Betrieb ab Baumgarten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
+    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
     "pubDate": "2025-10-27T04:30:00+01:00",
     "starts_at": "2025-10-27T04:30:00+01:00",
     "ends_at": "2025-10-28T23:59:59+01:00",
@@ -530,18 +530,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
-    "pubDate": "2025-10-28T00:05:00+01:00",
-    "starts_at": "2025-10-28T00:05:00+01:00",
-    "ends_at": "2025-10-28T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-10-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -554,49 +542,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N20: Busse halten bei Hoßplatz 4-5",
-    "description": "Gleisbauarbeiten Busse halten bei Hoßplatz 4-5",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a19de5d51953a6980449181f710dccf7c52937a0e0365fa3f006acf34eeb8266",
-    "pubDate": "2025-10-28T01:00:22+01:00",
-    "starts_at": "2025-10-28T01:00:22+01:00",
-    "ends_at": "2025-10-28T04:30:00+01:00",
-    "_identity": "wl|störung|L=N20|D=2025-10-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N31: Nächster Halt Brigittenauer Lände 14",
-    "description": "Gleisbauarbeiten Nächster Halt Brigittenauer Lände 14",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b18f380b7e1e119be24cb5b975e5f036295e8ca375f9bfaf1ec8633ec544801b",
-    "pubDate": "2025-10-28T01:15:09+01:00",
-    "starts_at": "2025-10-28T01:15:09+01:00",
-    "ends_at": "2025-10-28T04:30:00+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-10-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N60: Schadhaftes Fahrzeug",
-    "description": "Derzeit kommt es bei der Linie N60 in beiden Richtungen zu unterschiedlichen Intervallen. Grund dafür ist ein schadhaftes Fahrzeug .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f29e56aa4166e8206e8471c3bed7dd959689a03e33e7661ba22ccb3dd92b8b1c",
-    "pubDate": "2025-10-28T01:20:00+01:00",
-    "starts_at": "2025-10-28T01:20:00+01:00",
-    "ends_at": "2025-10-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=N60|D=2025-10-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N31: Betrieb ab Brigittaplatz",
-    "description": "Gleisbauarbeiten Betrieb ab Brigittaplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6d406877be41073f2061bf6b3c01ed73877bc2b62c93307ee934d7a34554320c",
-    "pubDate": "2025-10-28T01:20:05+01:00",
-    "starts_at": "2025-10-28T01:20:05+01:00",
-    "ends_at": "2025-10-28T04:35:00+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-10-28"
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "pubDate": "2025-10-28T00:05:00+01:00",
+    "starts_at": "2025-10-28T00:05:00+01:00",
+    "ends_at": "2025-10-28T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-10-28"
   }
 ]
