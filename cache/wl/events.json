@@ -422,18 +422,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Betrieb ab Baumgarten",
-    "description": "Bauarbeiten Betrieb ab Baumgarten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
-    "pubDate": "2025-10-27T04:30:00+01:00",
-    "starts_at": "2025-10-27T04:30:00+01:00",
-    "ends_at": "2025-10-28T23:59:59+01:00",
-    "_identity": "wl|störung|L=49|D=2025-10-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "49: Kein Betrieb",
     "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -446,14 +434,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "49: Betrieb ab Baumgarten",
+    "description": "Bauarbeiten Betrieb ab Baumgarten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-10-27T04:45:00+01:00",
-    "starts_at": "2025-10-27T04:45:00+01:00",
+    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
+    "pubDate": "2025-10-27T04:30:00+01:00",
+    "starts_at": "2025-10-27T04:30:00+01:00",
     "ends_at": "2025-10-28T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-27"
+    "_identity": "wl|störung|L=49|D=2025-10-27"
   },
   {
     "source": "Wiener Linien",
@@ -462,6 +450,18 @@
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-10-27T04:45:00+01:00",
+    "starts_at": "2025-10-27T04:45:00+01:00",
+    "ends_at": "2025-10-28T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-10-27T04:45:00+01:00",
     "starts_at": "2025-10-27T04:45:00+01:00",
     "ends_at": "2025-10-28T23:59:59+01:00",
@@ -530,10 +530,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-10-28T00:05:00+01:00",
     "starts_at": "2025-10-28T00:05:00+01:00",
     "ends_at": "2025-10-28T23:59:59+01:00",
@@ -542,10 +542,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-10-28T00:05:00+01:00",
     "starts_at": "2025-10-28T00:05:00+01:00",
     "ends_at": "2025-10-28T23:59:59+01:00",
@@ -602,13 +602,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "32A: Polizeieinsatz",
-    "description": "Die Linie 32 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Haspingerplatz.",
+    "title": "40: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Die Linie 40 ist derzeit in Richtung Schottentor an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 20:00 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Herbeckstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7c83441f75a4e79213dc74497d534a0ae14537b1901e683b8c8c96c12038205",
-    "pubDate": "2025-10-28T19:00:00+01:00",
-    "starts_at": "2025-10-28T19:00:00+01:00",
+    "guid": "5092aa3e16264a54729d619c0073938e9a20bc79adf99a5a51f89ef26c9055eb",
+    "pubDate": "2025-10-28T19:45:00+01:00",
+    "starts_at": "2025-10-28T19:45:00+01:00",
     "ends_at": "2025-10-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=32A|D=2025-10-28"
+    "_identity": "wl|störung|L=40|D=2025-10-28"
   }
 ]
