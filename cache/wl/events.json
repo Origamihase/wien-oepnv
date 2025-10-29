@@ -410,6 +410,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N49: Betrieb ab Bergmillergasse",
+    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
+    "pubDate": "2025-10-29T00:00:04+01:00",
+    "starts_at": "2025-10-29T00:00:04+01:00",
+    "ends_at": "2025-10-29T23:59:59+01:00",
+    "_identity": "wl|störung|L=N49|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "49: Kein Betrieb",
     "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -430,18 +442,6 @@
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-10-29T23:59:59+01:00",
     "_identity": "wl|störung|L=49|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N49: Betrieb ab Bergmillergasse",
-    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
-    "pubDate": "2025-10-29T00:00:04+01:00",
-    "starts_at": "2025-10-29T00:00:04+01:00",
-    "ends_at": "2025-10-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=N49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -518,10 +518,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-10-29T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-10-29T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-10-29T23:59:59+01:00",
@@ -542,18 +566,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-10-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -562,18 +574,6 @@
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-10-29T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-10-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -638,18 +638,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201",
-    "pubDate": "2025-10-29T16:06:56+01:00",
-    "starts_at": "2025-10-29T16:06:56+01:00",
-    "ends_at": "2025-10-29T17:06:00+01:00",
-    "_identity": "wl|störung|L=44|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "4A: Verkehrsüberlastung",
     "description": "Die Linie 4 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -658,5 +646,29 @@
     "starts_at": "2025-10-29T16:20:00+01:00",
     "ends_at": "2025-10-29T23:55:00+01:00",
     "_identity": "wl|störung|L=4A|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "80A: Verkehrsüberlastung",
+    "description": "Die Linie 80 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab",
+    "pubDate": "2025-10-29T16:45:00+01:00",
+    "starts_at": "2025-10-29T16:45:00+01:00",
+    "ends_at": "2025-10-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=80A|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Verkehrsüberlastung",
+    "description": "Die Linie 7 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
+    "pubDate": "2025-10-29T16:55:00+01:00",
+    "starts_at": "2025-10-29T16:55:00+01:00",
+    "ends_at": "2025-10-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=7A|D=2025-10-29"
   }
 ]
