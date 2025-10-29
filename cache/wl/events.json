@@ -398,18 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N49: Betrieb ab Bergmillergasse",
-    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
-    "pubDate": "2025-10-29T00:00:04+01:00",
-    "starts_at": "2025-10-29T00:00:04+01:00",
-    "ends_at": "2025-10-30T23:59:59+01:00",
-    "_identity": "wl|störung|L=N49|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "49: Betrieb ab Baumgarten",
     "description": "Bauarbeiten Betrieb ab Baumgarten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -430,6 +418,18 @@
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-10-30T23:59:59+01:00",
     "_identity": "wl|störung|L=49|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N49: Betrieb ab Bergmillergasse",
+    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
+    "pubDate": "2025-10-29T00:00:04+01:00",
+    "starts_at": "2025-10-29T00:00:04+01:00",
+    "ends_at": "2025-10-30T23:59:59+01:00",
+    "_identity": "wl|störung|L=N49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -565,18 +565,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62A: Busse halten Breitenfurter Straße 236-238",
-    "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3",
-    "pubDate": "2025-10-29T04:45:19+01:00",
-    "starts_at": "2025-10-29T04:45:19+01:00",
-    "ends_at": "2025-10-30T00:35:00+01:00",
-    "_identity": "wl|störung|L=62A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "N25/N38/N60/N66/N71/N75: Umleitung",
     "description": "Temporäre Straßensperre\nWegen Dreharbeiten am Ring müssen Buslinien umgeleitet werden.\nZeitraum:\nAm Donnerstag, 30. Oktober 2025 ca. 00:30 bis Betriebsschluss.\nMaßnahmen:\nN25 Richtung Großfeldsiedlung\nN38 Richtung Grinzing\nN60 Richtung Maurer Hauptplatz\nN66 Richtung Liesing\nN75 Richtung Oper, Karlsplatz\nUmleitung ab Schubertring # Schwarzenbergplatz über Schwarzenbergplatz, Lothringer Straße, Karlsplatz, Kärntner Straße zum Opernring.\nLinie N71 Richtung Oper, Karlsplatz wird ab Schwarzenbergplatz # Lothringerstraße über Lothringer Straße, Karlsplatz, Kärntner Straße und Opernring umgeleitet. Hier wird die Haltestelle Schwarzenbergplatz nicht eingehalten.",
@@ -626,18 +614,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6",
-    "pubDate": "2025-10-30T00:00:00+01:00",
-    "starts_at": "2025-10-30T00:00:00+01:00",
-    "ends_at": "2025-10-30T23:55:00+01:00",
-    "_identity": "wl|störung|L=11|D=2025-10-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "6: Fahrtbehinderung Schadhafter Zug",
     "description": "Fahrtbehinderung Schadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -658,5 +634,53 @@
     "starts_at": "2025-10-30T00:05:00+01:00",
     "ends_at": "2025-10-30T23:55:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-10-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Schadhaftes Fahrzeug",
+    "description": "Die Linie 31 fährt derzeit nur zwischen Schottenring und Brünner Straße, Hanreitergasse. Die Störung dauert voraussichtlich bis 00:50 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Herrenholzgasse 18.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "899bf6038c3a38ee5193e2d6c7398a8b95520941bd268edc5b6be3fa4cd67f49",
+    "pubDate": "2025-10-30T00:15:00+01:00",
+    "starts_at": "2025-10-30T00:15:00+01:00",
+    "ends_at": "2025-10-30T23:55:00+01:00",
+    "_identity": "wl|störung|L=31|D=2025-10-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Schadhafter Zug Betrieb ab Hanreitergasse",
+    "description": "Schadhafter Zug Betrieb ab Hanreitergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2b384a69d1fc7e0411d49a68dc1e3ab8396a28c40d612a7150375f138daac677",
+    "pubDate": "2025-10-30T00:18:59+01:00",
+    "starts_at": "2025-10-30T00:18:59+01:00",
+    "ends_at": "2025-10-30T02:30:00+01:00",
+    "_identity": "wl|störung|L=31|D=2025-10-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fab64d37b33153d652781bdf655a1bb8c2906198e754bcbf5ac1af5236584df6",
+    "pubDate": "2025-10-30T00:19:27+01:00",
+    "starts_at": "2025-10-30T00:19:27+01:00",
+    "ends_at": "2025-10-30T01:18:00+01:00",
+    "_identity": "wl|störung|L=31|D=2025-10-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Schadhafter Zug Züge halten in der Schleife",
+    "description": "Schadhafter Zug Züge halten in der Schleife",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "72ed6c7645cebd663c418848e31cec1fd40efa83acf03c40ff19cd93dade5bad",
+    "pubDate": "2025-10-30T00:19:56+01:00",
+    "starts_at": "2025-10-30T00:19:56+01:00",
+    "ends_at": "2025-10-30T01:19:00+01:00",
+    "_identity": "wl|störung|L=31|D=2025-10-30"
   }
 ]
