@@ -518,30 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-10-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-10-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -574,6 +550,30 @@
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-10-29T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-10-29T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-10-29T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -626,14 +626,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "30A: Feuerwehreinsatz",
-    "description": "Die Linie 30 A wird in Richtung Stammersdorf, Freiheitsplatz zwischen Justgasse und Berzeliusgasse über die Siemensstraße umgeleitet. Die Störung dauert voraussichtlich bis 22:00 Uhr. Grund dafür ist ein Feuerwehreinsatz im Bereich Skraupstraße.",
+    "title": "30A/31A: Feuerwehreinsatz",
+    "description": "Die Linie 30 A wird in Richtung Stammersdorf, Freiheitsplatz zwischen Justgasse und Berzeliusgasse über die Siemensstraße umgeleitet. Die Linie 31 A wird in beiden Richtungen zwischen Siemensstraße S und Großjedlersdorf über die Brünner Straße und Shuttleworthstraße umgeleitet. Die Störung dauert voraussichtlich bis 22:00 Uhr. Grund dafür ist ein Feuerwehreinsatz im Bereich Skraupstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d91860dee8738cb28c226302c8107d12df414115becdd4e17c6244aa0b44d9b1",
+    "guid": "592db4e0cfcfe153968eec3414b7e53e98ef375d1163c4bc7de11cfa2b28e5ff",
     "pubDate": "2025-10-29T19:20:00+01:00",
     "starts_at": "2025-10-29T19:20:00+01:00",
     "ends_at": "2025-10-29T23:55:00+01:00",
-    "_identity": "wl|störung|L=30A|D=2025-10-29"
+    "_identity": "wl|störung|L=30A,31A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
