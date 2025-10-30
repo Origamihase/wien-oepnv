@@ -398,18 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N49: Betrieb ab Bergmillergasse",
-    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
-    "pubDate": "2025-10-29T00:00:04+01:00",
-    "starts_at": "2025-10-29T00:00:04+01:00",
-    "ends_at": "2025-10-30T23:59:59+01:00",
-    "_identity": "wl|störung|L=N49|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "49: Kein Betrieb",
     "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -418,6 +406,18 @@
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-10-30T23:59:59+01:00",
     "_identity": "wl|störung|L=49|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N49: Betrieb ab Bergmillergasse",
+    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
+    "pubDate": "2025-10-29T00:00:04+01:00",
+    "starts_at": "2025-10-29T00:00:04+01:00",
+    "ends_at": "2025-10-30T23:59:59+01:00",
+    "_identity": "wl|störung|L=N49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -518,18 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-10-30T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -550,6 +538,18 @@
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-10-30T23:59:59+01:00",
     "_identity": "wl|störung|L=43|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-10-30T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -598,41 +598,5 @@
     "starts_at": "2025-10-29T12:37:00+01:00",
     "ends_at": "2025-11-10T05:00:00+01:00",
     "_identity": "wl|hinweis|L=N75|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten bei Hoßplatz 4-5",
-    "description": "Gleisbauarbeiten Busse halten bei Hoßplatz 4-5",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a19de5d51953a6980449181f710dccf7c52937a0e0365fa3f006acf34eeb8266",
-    "pubDate": "2025-10-30T01:00:05+01:00",
-    "starts_at": "2025-10-30T01:00:05+01:00",
-    "ends_at": "2025-10-30T04:30:00+01:00",
-    "_identity": "wl|störung|L=N20|D=2025-10-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N31: Nächster Halt Brigittenauer Lände 14",
-    "description": "Gleisbauarbeiten Nächster Halt Brigittenauer Lände 14",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b18f380b7e1e119be24cb5b975e5f036295e8ca375f9bfaf1ec8633ec544801b",
-    "pubDate": "2025-10-30T01:15:01+01:00",
-    "starts_at": "2025-10-30T01:15:01+01:00",
-    "ends_at": "2025-10-30T04:30:00+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-10-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N31: Betrieb ab Brigittaplatz",
-    "description": "Gleisbauarbeiten Betrieb ab Brigittaplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6d406877be41073f2061bf6b3c01ed73877bc2b62c93307ee934d7a34554320c",
-    "pubDate": "2025-10-30T01:20:05+01:00",
-    "starts_at": "2025-10-30T01:20:05+01:00",
-    "ends_at": "2025-10-30T04:35:00+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-10-30"
   }
 ]
