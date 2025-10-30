@@ -361,30 +361,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29B: Bauarbeiten",
-    "description": "Die Linie 29 B wird in Richtung Floridsdorf S U zwischen Egon-Friedell-Gasse und Hertha-Kräftner-Gasse über Egon-Friedell-Gasse umgeleitet. Das Störungsende ist derzeit nicht absehbar. Grund dafür sind Bauarbeiten im Bereich Richard-Neutra-Gasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4f264856173d979b6f6311bfdf41050c409a38d370827b48291d6cb46fa00ea",
-    "pubDate": "2025-10-27T11:20:00+01:00",
-    "starts_at": "2025-10-27T11:20:00+01:00",
-    "ends_at": "2025-12-12T12:12:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-10-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "29B: Straßenbauarbeiten ab 27.10.2025",
-    "description": "Straßenbauarbeiten\nDie Linie 29 B wird wegen Bauarbeiten im Bereich Felmayergasse # Richard-Neutra-Gasse vorübergehend umgeleitet.\nZeitraum:\nAb Montag, 27. OKtober 2025, etwa 11:15 Uhr bis derzeit unbekannt.\nMaßnahmen:\nUmleitung in Richtung Floridsdorf S U\nAb Schererstraße # Egon-Fridell-Gasse über Egon-Fridell-Gasse - Schönthalergasse - Richard-Neutra-Gasse - Paukerwerkstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nEGON-FRIDELL-GASSE\n(Egon-Fridell-Gasse 3)\nFELMAYERGASSE\n(Richard-Neutra-Gasse ggü. 12)\nHERTHA-KRÄFTNER-GASSE\n(Richard-Neutra-Gasse ggü. 6)\nErsatzhaltestellen:\nEGON-FRIDELL-GASSE\n(Egon-Fridell-Gasse 1, provisorische Haltestelle)\nHERTHA-KRÄFTNER-GASSE\n(Paukerwerkstraße 8, provisorische Haltestelle)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "974594cbd4bfcd6161ab80708110edd7595dc877cb5d1b4e30e67d02710a67a7",
-    "pubDate": "2025-10-27T12:00:00+01:00",
-    "starts_at": "2025-10-27T12:00:00+01:00",
-    "ends_at": "2026-11-29T11:11:00+01:00",
-    "_identity": "wl|hinweis|L=29B|D=2025-10-27"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "5B/2: Umleitung Gaußplatz ab 04.11.2025 (Phase 2)",
     "description": "Gleisbauarbeiten\nWegen Gleisbauarbeiten im Bereich Gaußplatz werden die Busse der Linie 5 B umgeleitet.\nZeitraum:\nAb Dienstag, 04. November 2025 für etwa fünf Wochen\njeweils in den Abendstunden von 22:00 Uhr bis Betriebsschluss\nMaßnahmen:\nUmleitung in Richtung Praterstern S U:\nab Gaußplatz # Obere Augartenstraße über Gaußplatz – Wasnergasse – Rauscherstraße – Nordwestbahnstraße – Taborstraße – Heinestraße zur Stammstrecke.\nAufgelassene Haltestellen:\nObere Augartenstraße\n(Obere Augartenstraße 34)\nMalzgasse\n(Obere Augartenstraße vor Malzgasse)\nTaborstraße U\n(Obere Augartenstraße 70)\nHeinestraße\n(Taborstraße 56)\nErsatzhaltestellen:\nHeinestraße\n(Taborstraße 56, Haltestelle Linie 5)",
@@ -398,18 +374,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N49: Betrieb ab Bergmillergasse",
-    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
-    "pubDate": "2025-10-29T00:00:04+01:00",
-    "starts_at": "2025-10-29T00:00:04+01:00",
-    "ends_at": "2025-10-30T23:59:59+01:00",
-    "_identity": "wl|störung|L=N49|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "49: Kein Betrieb",
     "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -418,6 +382,18 @@
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-10-30T23:59:59+01:00",
     "_identity": "wl|störung|L=49|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N49: Betrieb ab Bergmillergasse",
+    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
+    "pubDate": "2025-10-29T00:00:04+01:00",
+    "starts_at": "2025-10-29T00:00:04+01:00",
+    "ends_at": "2025-10-30T23:59:59+01:00",
+    "_identity": "wl|störung|L=N49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -446,10 +422,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "LB: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "LB: Betrieb ab Inzersdorf, Lokalbahn",
+    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ccaf2b90af2295f60ce86b09abf99f4a22cd711554268e9af608855f96421ecb",
+    "guid": "0a261bd9bac89ebef4ed45fc30f979f2b7a7d69273e78f37c1956c5e671a47e2",
     "pubDate": "2025-10-29T00:00:07+01:00",
     "starts_at": "2025-10-29T00:00:07+01:00",
     "ends_at": "2025-10-30T23:59:59+01:00",
@@ -458,10 +434,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "LB: Betrieb ab Inzersdorf, Lokalbahn",
-    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
+    "title": "LB: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a261bd9bac89ebef4ed45fc30f979f2b7a7d69273e78f37c1956c5e671a47e2",
+    "guid": "ccaf2b90af2295f60ce86b09abf99f4a22cd711554268e9af608855f96421ecb",
     "pubDate": "2025-10-29T00:00:07+01:00",
     "starts_at": "2025-10-29T00:00:07+01:00",
     "ends_at": "2025-10-30T23:59:59+01:00",
