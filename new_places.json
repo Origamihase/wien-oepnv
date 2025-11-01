@@ -1,23 +1,6 @@
 {
   "new": [
     {
-      "_google_place_id": "ChIJqyJ_cwYHbUcRkPqtvvE4qbE",
-      "_lat": 48.218551999999995,
-      "_lng": 16.392184999999998,
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "point_of_interest",
-        "establishment"
-      ],
-      "aliases": [],
-      "in_vienna": false,
-      "name": "Praterstern",
-      "source": [
-        "google_places"
-      ]
-    },
-    {
       "_google_place_id": "ChIJQ-lZKZ8HbUcRLnHPUlkyNqE",
       "_lat": 48.208175999999995,
       "_lng": 16.371245899999998,
@@ -171,23 +154,6 @@
       ]
     },
     {
-      "_google_place_id": "ChIJL9GG_ieobUcR-w0VU2MaNko",
-      "_lat": 48.1926175,
-      "_lng": 16.354467,
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "point_of_interest",
-        "establishment"
-      ],
-      "aliases": [],
-      "in_vienna": false,
-      "name": "Pilgramgasse",
-      "source": [
-        "google_places"
-      ]
-    },
-    {
       "_google_place_id": "ChIJGZJ3hXsHbUcRoSEOdidtTe8",
       "_lat": 48.195519999999995,
       "_lng": 16.3861454,
@@ -200,6 +166,23 @@
       "aliases": [],
       "in_vienna": false,
       "name": "Rennweg",
+      "source": [
+        "google_places"
+      ]
+    },
+    {
+      "_google_place_id": "ChIJL9GG_ieobUcR-w0VU2MaNko",
+      "_lat": 48.1926175,
+      "_lng": 16.354467,
+      "_types": [
+        "subway_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "aliases": [],
+      "in_vienna": false,
+      "name": "Pilgramgasse",
       "source": [
         "google_places"
       ]
@@ -292,63 +275,7 @@
   ],
   "updated": [
     {
-      "_google_place_id": "ChIJm6KCZnMHbUcRF0kfTP5M-HY",
-      "_lat": 48.207316999999996,
-      "_lng": 16.385641,
-      "_types": [
-        "transit_station",
-        "train_station",
-        "subway_station",
-        "point_of_interest",
-        "establishment"
-      ],
-      "aliases": [
-        "490074300",
-        "Wien Mitte-Landstraße"
-      ],
-      "bst_code": "900102",
-      "bst_id": "900102",
-      "in_vienna": true,
-      "latitude": 48.206048,
-      "longitude": 16.384584,
-      "name": "Wien Mitte-Landstraße",
-      "pendler": false,
-      "source": [
-        "vor",
-        "google_places"
-      ],
-      "vor_id": "490074300"
-    },
-    {
-      "_google_place_id": "ChIJm6KCZnMHbUcRF0kfTP5M-HY",
-      "_lat": 48.207316999999996,
-      "_lng": 16.385641,
-      "_types": [
-        "transit_station",
-        "train_station",
-        "subway_station",
-        "point_of_interest",
-        "establishment"
-      ],
-      "aliases": [
-        "490074300",
-        "Wien Mitte-Landstraße"
-      ],
-      "bst_code": "900102",
-      "bst_id": "900102",
-      "in_vienna": true,
-      "latitude": 48.206048,
-      "longitude": 16.384584,
-      "name": "Wien Mitte-Landstraße",
-      "pendler": false,
-      "source": [
-        "vor",
-        "google_places"
-      ],
-      "vor_id": "490074300"
-    },
-    {
-      "_google_place_id": "ChIJqyJ_cwYHbUcRkPqtvvE4qbE",
+      "_google_place_id": "ChIJt-5d3wUHbUcRP1Pso-OUU4k",
       "_lat": 48.218551999999995,
       "_lng": 16.392184999999998,
       "_types": [
@@ -357,12 +284,119 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
-      "name": "Praterstern",
+      "aliases": [
+        "490104000",
+        "Wien Praterstern",
+        "Bahnhof Praterstern",
+        "Nw",
+        "Praterstern",
+        "Praterstern Bahnhof",
+        "Vienna Praterstern",
+        "Vienna Praterstern Bahnhof",
+        "Wien Praterstern Bahnhof"
+      ],
+      "bst_code": "Nw",
+      "bst_id": 1584,
+      "in_vienna": true,
+      "latitude": 48.218767,
+      "longitude": 16.392171,
+      "name": "Wien Praterstern",
+      "pendler": false,
       "source": [
+        "oebb",
         "google_places"
-      ]
+      ],
+      "vor_id": "490104000"
+    },
+    {
+      "_google_place_id": "ChIJm6KCZnMHbUcRF0kfTP5M-HY",
+      "_lat": 48.207316999999996,
+      "_lng": 16.385641,
+      "_types": [
+        "transit_station",
+        "subway_station",
+        "train_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "aliases": [
+        "490074300",
+        "Wien Mitte-Landstraße"
+      ],
+      "bst_code": "900102",
+      "bst_id": "900102",
+      "in_vienna": true,
+      "latitude": 48.206048,
+      "longitude": 16.384584,
+      "name": "Wien Mitte-Landstraße",
+      "pendler": false,
+      "source": [
+        "vor",
+        "google_places"
+      ],
+      "vor_id": "490074300"
+    },
+    {
+      "_google_place_id": "ChIJm6KCZnMHbUcRF0kfTP5M-HY",
+      "_lat": 48.207316999999996,
+      "_lng": 16.385641,
+      "_types": [
+        "transit_station",
+        "subway_station",
+        "train_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "aliases": [
+        "490074300",
+        "Wien Mitte-Landstraße"
+      ],
+      "bst_code": "900102",
+      "bst_id": "900102",
+      "in_vienna": true,
+      "latitude": 48.206048,
+      "longitude": 16.384584,
+      "name": "Wien Mitte-Landstraße",
+      "pendler": false,
+      "source": [
+        "vor",
+        "google_places"
+      ],
+      "vor_id": "490074300"
+    },
+    {
+      "_google_place_id": "ChIJt-5d3wUHbUcRP1Pso-OUU4k",
+      "_lat": 48.218551999999995,
+      "_lng": 16.392184999999998,
+      "_types": [
+        "subway_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "aliases": [
+        "490104000",
+        "Wien Praterstern",
+        "Bahnhof Praterstern",
+        "Nw",
+        "Praterstern",
+        "Praterstern Bahnhof",
+        "Vienna Praterstern",
+        "Vienna Praterstern Bahnhof",
+        "Wien Praterstern Bahnhof"
+      ],
+      "bst_code": "Nw",
+      "bst_id": 1584,
+      "in_vienna": true,
+      "latitude": 48.218767,
+      "longitude": 16.392171,
+      "name": "Wien Praterstern",
+      "pendler": false,
+      "source": [
+        "oebb",
+        "google_places"
+      ],
+      "vor_id": "490104000"
     }
   ]
 }
