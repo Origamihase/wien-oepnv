@@ -494,26 +494,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Züge halten Alszeile 126",
-    "description": "Bauarbeiten Züge halten Alszeile 126",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-01T23:59:59+01:00",
-    "_identity": "wl|störung|L=43|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-01T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-10-29"
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -530,14 +518,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-01T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
+    "_identity": "wl|störung|L=N71|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Züge halten Alszeile 126",
+    "description": "Bauarbeiten Züge halten Alszeile 126",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-01T23:59:59+01:00",
+    "_identity": "wl|störung|L=43|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -585,18 +585,6 @@
     "pubDate": "2025-11-01T18:05:00+01:00",
     "starts_at": "2025-11-01T18:05:00+01:00",
     "ends_at": "2025-11-01T23:55:00+01:00",
-    "_identity": "wl|störung|L=60|D=2025-11-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Fremdunfall Betrieb ab Hofwiesengasse",
-    "description": "Fremdunfall Betrieb ab Hofwiesengasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "549edb6065a4f10175de79873b7f09870ab5ec18b64acf8d5f9bb273cc6b9e44",
-    "pubDate": "2025-11-01T18:08:04+01:00",
-    "starts_at": "2025-11-01T18:08:04+01:00",
-    "ends_at": "2025-11-01T21:30:00+01:00",
     "_identity": "wl|störung|L=60|D=2025-11-01"
   },
   {
