@@ -374,14 +374,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N49: Betrieb ab Bergmillergasse",
-    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
+    "title": "49: Betrieb ab Baumgarten",
+    "description": "Bauarbeiten Betrieb ab Baumgarten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
+    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-01T23:59:59+01:00",
-    "_identity": "wl|störung|L=N49|D=2025-10-29"
+    "_identity": "wl|störung|L=49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -398,14 +398,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Betrieb ab Baumgarten",
-    "description": "Bauarbeiten Betrieb ab Baumgarten",
+    "title": "N49: Betrieb ab Bergmillergasse",
+    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
+    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-01T23:59:59+01:00",
-    "_identity": "wl|störung|L=49|D=2025-10-29"
+    "_identity": "wl|störung|L=N49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -578,14 +578,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29A/29B: Polizeieinsatz",
-    "description": "Die Linie 29 B wird in beiden Richtungen zwischen Patrizigasse und Hawlicekgasse über Angerer Straße, Brünner Straße, Katsushikastraße und Leopoldauer Straße umgeleitet. Die Linie 29 A wird in beiden Richtungen zwischen Patrizigasse und Hawlicekgasse über Angerer Straße, Brünner Straße, Katsushikastraße und Leopoldauer Straße umgeleitet. Die Haltestelle Sebastian-Kohl-Gasse kann nicht eingehalten werden. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein Polizeieinsatz im Bereich Leopoldauer Straße 12.",
+    "title": "60: Fremder Verkehrsunfall",
+    "description": "Die Linie 60 fährt derzeit nicht zwischen Hofwiesengasse und Hietzing. Weichen Sie auf die Linien 56 A und 56 B aus. Die Störung dauert voraussichtlich bis 18:45 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Lainzer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7adf047f45b6452b1af517ee80d7fa5bdecbef4f95280b05406cf17829d54b8e",
-    "pubDate": "2025-11-01T17:05:00+01:00",
-    "starts_at": "2025-11-01T17:05:00+01:00",
+    "guid": "fa13a977753886fe597c353a144a3e24d7a3675a48c2729c300f9be73e720a96",
+    "pubDate": "2025-11-01T18:05:00+01:00",
+    "starts_at": "2025-11-01T18:05:00+01:00",
     "ends_at": "2025-11-01T23:55:00+01:00",
-    "_identity": "wl|störung|L=29A,29B|D=2025-11-01"
+    "_identity": "wl|störung|L=60|D=2025-11-01"
   },
   {
     "source": "Wiener Linien",
@@ -622,5 +622,29 @@
     "starts_at": "2025-11-01T18:08:33+01:00",
     "ends_at": "2025-11-01T22:45:00+01:00",
     "_identity": "wl|störung|L=60|D=2025-11-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
+    "pubDate": "2025-11-01T18:10:00+01:00",
+    "starts_at": "2025-11-01T18:10:00+01:00",
+    "ends_at": "2025-11-01T23:55:00+01:00",
+    "_identity": "wl|störung|L=6|D=2025-11-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
+    "pubDate": "2025-11-01T18:13:16+01:00",
+    "starts_at": "2025-11-01T18:13:16+01:00",
+    "ends_at": "2025-11-01T22:15:00+01:00",
+    "_identity": "wl|störung|L=6|D=2025-11-01"
   }
 ]
