@@ -482,6 +482,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-02T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -529,18 +541,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "44A: Umleitung",
     "description": "Umleitung in beide Richtungen\nWegen Bauarbeiten im Bereich Andergasse wird die Linie 44 A umgeleitet.\nZeitraum:\nAm Dienstag, 04. November 2025 ab 06:00 Uhr bis 18:00 Uhr\nMaßnahmen Richtung Mitterberg:\nAb Andergasse # Braungasse über Braungasse – Franz-Glaser-Gasse – Eselstiege - Andergasse\nAufgelassene Haltestellen:\nWallishaussergasse\nEselstiege\nErsatzhaltestelle:\nWallishaussergasse - Franz-Glaser-Gasse 20-22, provisorische Haltestelle\nEselstiege - Andergasse 60\nMaßnahmen Richtung Hernals:\nAb Andergasse # Eselstiege über Eselstiege – Franz-Glaser-Gasse – Braungasse – Andergasse\nAufgelassene Haltestellen:\nWallishaussergasse\nBraungasse\nErsatzhaltestelle:\nWallishaussergasse - Franz-Glaser-Gasse 37-37 A, provisorische Haltestelle\nBraungasse - Andergasse 9 B",
@@ -574,5 +574,17 @@
     "starts_at": "2025-11-02T04:45:19+01:00",
     "ends_at": "2025-11-03T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-11-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "61A: Schadhaftes Fahrzeug",
+    "description": "Die Linie 61 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "24d403bea9e0b4db53acc2598dbb9ec4525faa7e6da89ca598bca35f17ad9232",
+    "pubDate": "2025-11-02T14:20:00+01:00",
+    "starts_at": "2025-11-02T14:20:00+01:00",
+    "ends_at": "2025-11-02T15:02:00+01:00",
+    "_identity": "wl|störung|L=61A|D=2025-11-02"
   }
 ]
