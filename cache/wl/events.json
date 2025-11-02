@@ -145,18 +145,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "U4: Landstraße Bahnsteigsanierung ab 22.09.2025",
-    "description": "Sperre Bahnsteig Richtung Heiligenstadt S U\nWegen Sanierungsarbeiten kommt es zu einer Bahnsteigsperre der Linie U4 in der Station Landstraße U in Richtung Heiligenstadt S U.\nZeitraum:\nVon 22. September 2025 bis inkl. 02. November 2025.\nMaßnahmen:\nDie Linie U4 kann die Station Landstraße U in Fahrtrichtung Heiligenstadt S U nicht einhalten. Um die Station Landstraße U zu erreichen, fahren Sie eine Station weiter bis Schwedenplatz U und steigen Sie dort in einen Zug in die Gegenrichtung um.\nUm von Landstraße aus die Stationen Richtung Heiligenstadt zu erreichen, fahren Sie zunächst in Richtung Hütteldorf bis Karlsplatz und steigen dann auf einen Zug in Richtung Heiligenstadt um.\nIm Anschluss ist bis Anfang Dezember der Bahnsteig in Richtung Hütteldorf S U gesperrt.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "30d91a0c7e91f0c701b5a478e87b952234a8ed26cbeb0f9da3a2336eaa0d8673",
-    "pubDate": "2025-09-16T09:00:00+01:00",
-    "starts_at": "2025-09-16T09:00:00+01:00",
-    "ends_at": "2025-11-02T23:59:00+01:00",
-    "_identity": "wl|hinweis|L=U4|D=2025-09-16"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "U4: Bauarbeiten",
     "description": "Die Linie U4 kann die Station Landstraße U in Fahrtrichtung Heiligenstadt S U nicht einhalten. Um die Station Landstraße U zu erreichen, fahren Sie eine Station weiter bis Schwedenplatz U und steigen Sie dort in einen Zug in die Gegenrichtung um. Die Arbeiten dauern bis 2. November 2025 Betriebsschluss. Grund dafür sind Bauarbeiten im Bereich Landstraße.",
@@ -374,26 +362,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N49: Betrieb ab Bergmillergasse",
-    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
-    "pubDate": "2025-10-29T00:00:04+01:00",
-    "starts_at": "2025-10-29T00:00:04+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
-    "_identity": "wl|störung|L=N49|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "49: Betrieb ab Baumgarten",
     "description": "Bauarbeiten Betrieb ab Baumgarten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=49|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N49: Betrieb ab Bergmillergasse",
+    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
+    "pubDate": "2025-10-29T00:00:04+01:00",
+    "starts_at": "2025-10-29T00:00:04+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
+    "_identity": "wl|störung|L=N49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -404,7 +392,7 @@
     "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=49|D=2025-10-29"
   },
   {
@@ -416,7 +404,7 @@
     "guid": "43798535fdcb5e1dfdcb40ce4f7857da89c7e4edf432f7f489798458af8e1bf4",
     "pubDate": "2025-10-29T00:00:05+01:00",
     "starts_at": "2025-10-29T00:00:05+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
@@ -428,7 +416,7 @@
     "guid": "516be79a6bcdab2a2784760193ccbf461d25dfb2971cf43ae715ae66fe6e847e",
     "pubDate": "2025-10-29T00:00:07+01:00",
     "starts_at": "2025-10-29T00:00:07+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=WLB|D=2025-10-29"
   },
   {
@@ -440,7 +428,7 @@
     "guid": "7adaade93d48413da80be380152faf61c0aaf47b5a5c2d564873065af783cb93",
     "pubDate": "2025-10-29T00:00:07+01:00",
     "starts_at": "2025-10-29T00:00:07+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=WLB|D=2025-10-29"
   },
   {
@@ -452,7 +440,7 @@
     "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
     "pubDate": "2025-10-29T00:00:12+01:00",
     "starts_at": "2025-10-29T00:00:12+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=18|D=2025-10-29"
   },
   {
@@ -464,7 +452,7 @@
     "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
     "pubDate": "2025-10-29T00:00:16+01:00",
     "starts_at": "2025-10-29T00:00:16+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2025-10-29"
   },
   {
@@ -476,7 +464,7 @@
     "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
     "pubDate": "2025-10-29T00:00:18+01:00",
     "starts_at": "2025-10-29T00:00:18+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2025-10-29"
   },
   {
@@ -488,32 +476,8 @@
     "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=43|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -524,7 +488,7 @@
     "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
@@ -536,8 +500,32 @@
     "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -578,32 +566,20 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fab64d37b33153d652781bdf655a1bb8c2906198e754bcbf5ac1af5236584df6",
-    "pubDate": "2025-11-02T21:38:15+01:00",
-    "starts_at": "2025-11-02T21:38:15+01:00",
-    "ends_at": "2025-11-02T23:45:00+01:00",
-    "_identity": "wl|störung|L=31|D=2025-11-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "WLB: Testtext GSC200 Test für LB / WLB und Lauftext",
     "description": "Testtext GSC200 Test für LB / WLB und Lauftext",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "21cdf2db7b315d3e313121d3da353d71269e1456ac6de412a35b702b6b849d99",
     "pubDate": "2025-11-02T22:25:02+01:00",
     "starts_at": "2025-11-02T22:25:02+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=WLB|D=2025-11-02"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "13A: Feuerwehreinsatz",
-    "description": "Die Linie 13 A ist derzeit in Richtung Hauptbahnhof an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 00:00. Grund dafür ist ein Feuerwehreinsatz im Bereich Leibenfrostgasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 13 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "026449bbaa4d4fb12232ee00ce32f945776d8f5fe194667e421e376d9efa1ed7",
     "pubDate": "2025-11-02T23:30:00+01:00",
@@ -620,7 +596,7 @@
     "guid": "208aba4393c0ace8808434eb89ca27fef0978d71272bf09122f263a30953bfef",
     "pubDate": "2025-11-02T23:33:54+01:00",
     "starts_at": "2025-11-02T23:33:54+01:00",
-    "ends_at": "2025-11-02T23:59:59+01:00",
+    "ends_at": "2025-11-03T04:30:00+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-02"
   }
 ]
