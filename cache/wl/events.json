@@ -458,18 +458,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -490,6 +478,18 @@
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=43|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -566,25 +566,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Betriebsstörung",
-    "description": "Die Linie 29 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Floridsdorf S U.",
+    "title": "U6: Tiere im Gleis",
+    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür sind Tiere im Gleis im Bereich Handelskai.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c760fff07a94835849ce5a7d90f07aa73c3f6c1ce3b5260c452acb2597ebca0e",
-    "pubDate": "2025-11-03T04:55:00+01:00",
-    "starts_at": "2025-11-03T04:55:00+01:00",
+    "guid": "213478fbb32b4332ea228fb76f4ed2d9b848b9f99185e4f4519859753c6a12c1",
+    "pubDate": "2025-11-03T05:30:00+01:00",
+    "starts_at": "2025-11-03T05:30:00+01:00",
     "ends_at": "2025-11-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40A: Verspätungen",
-    "description": "Die Linie 40 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Schottentor U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "11aa33c68f3b235c869f74bc1c41192a0d48a3b681bedab9ef96a1e7b5d4a0d8",
-    "pubDate": "2025-11-03T05:00:00+01:00",
-    "starts_at": "2025-11-03T05:00:00+01:00",
-    "ends_at": "2025-11-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=40A|D=2025-11-03"
+    "_identity": "wl|störung|L=U6|D=2025-11-03"
   }
 ]
