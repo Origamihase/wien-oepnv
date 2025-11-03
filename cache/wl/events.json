@@ -398,10 +398,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "WLB: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "WLB: Betrieb ab Inzersdorf, Lokalbahn",
+    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "516be79a6bcdab2a2784760193ccbf461d25dfb2971cf43ae715ae66fe6e847e",
+    "guid": "7adaade93d48413da80be380152faf61c0aaf47b5a5c2d564873065af783cb93",
     "pubDate": "2025-10-29T00:00:07+01:00",
     "starts_at": "2025-10-29T00:00:07+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
@@ -410,10 +410,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "WLB: Betrieb ab Inzersdorf, Lokalbahn",
-    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
+    "title": "WLB: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7adaade93d48413da80be380152faf61c0aaf47b5a5c2d564873065af783cb93",
+    "guid": "516be79a6bcdab2a2784760193ccbf461d25dfb2971cf43ae715ae66fe6e847e",
     "pubDate": "2025-10-29T00:00:07+01:00",
     "starts_at": "2025-10-29T00:00:07+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
@@ -562,5 +562,29 @@
     "starts_at": "2025-11-03T04:45:02+01:00",
     "ends_at": "2025-11-04T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-11-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "84A: Schadhaftes Fahrzeug",
+    "description": "Die Linie 84 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "deaabcde777c5aadabb916749e391fe027d3bc58271bd8ddc0a3f163742136f2",
+    "pubDate": "2025-11-03T11:50:00+01:00",
+    "starts_at": "2025-11-03T11:50:00+01:00",
+    "ends_at": "2025-11-03T23:55:00+01:00",
+    "_identity": "wl|störung|L=84A|D=2025-11-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Schadhaftes Fahrzeug",
+    "description": "Die Linie 40 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bb250e2c43de487577251bcb8b73b4c5de0652ba27d3f9aacc8555f08612408d",
+    "pubDate": "2025-11-03T11:50:00+01:00",
+    "starts_at": "2025-11-03T11:50:00+01:00",
+    "ends_at": "2025-11-03T23:55:00+01:00",
+    "_identity": "wl|störung|L=40A|D=2025-11-03"
   }
 ]
