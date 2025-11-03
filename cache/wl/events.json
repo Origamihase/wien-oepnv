@@ -458,10 +458,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-04T23:59:59+01:00",
@@ -470,10 +470,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-04T23:59:59+01:00",
@@ -514,17 +514,5 @@
     "starts_at": "2025-10-29T12:37:00+01:00",
     "ends_at": "2025-11-10T05:00:00+01:00",
     "_identity": "wl|hinweis|L=N75|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62A: Busse halten Breitenfurter Straße 236-238",
-    "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3",
-    "pubDate": "2025-11-03T04:45:02+01:00",
-    "starts_at": "2025-11-03T04:45:02+01:00",
-    "ends_at": "2025-11-04T00:35:00+01:00",
-    "_identity": "wl|störung|L=62A|D=2025-11-03"
   }
 ]
