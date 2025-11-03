@@ -566,42 +566,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182",
-    "pubDate": "2025-11-03T12:45:00+01:00",
-    "starts_at": "2025-11-03T12:45:00+01:00",
-    "ends_at": "2025-11-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-11-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
-    "pubDate": "2025-11-03T14:30:00+01:00",
-    "starts_at": "2025-11-03T14:30:00+01:00",
-    "ends_at": "2025-11-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=41|D=2025-11-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
-    "pubDate": "2025-11-03T15:15:00+01:00",
-    "starts_at": "2025-11-03T15:15:00+01:00",
-    "ends_at": "2025-11-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2025-11-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -610,5 +574,29 @@
     "starts_at": "2025-11-03T15:20:00+01:00",
     "ends_at": "2025-11-03T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2025-11-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Verkehrsüberlastung",
+    "description": "Die Linie 59 A kann derzeit in Richtung Oper, Karlsplatz nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich Rechte Wienzeile.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
+    "pubDate": "2025-11-03T16:20:00+01:00",
+    "starts_at": "2025-11-03T16:20:00+01:00",
+    "ends_at": "2025-11-03T23:55:00+01:00",
+    "_identity": "wl|störung|L=59A|D=2025-11-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Schadhaftes Fahrzeug",
+    "description": "Die Linie U2 ist derzeit in Richtung Karlsplatz an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 17:00 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Donaumarina.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
+    "pubDate": "2025-11-03T16:35:00+01:00",
+    "starts_at": "2025-11-03T16:35:00+01:00",
+    "ends_at": "2025-11-03T23:55:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2025-11-03"
   }
 ]
