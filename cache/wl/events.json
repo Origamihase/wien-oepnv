@@ -362,10 +362,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Betrieb ab Baumgarten",
-    "description": "Bauarbeiten Betrieb ab Baumgarten",
+    "title": "49: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
+    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
@@ -374,10 +374,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "49: Betrieb ab Baumgarten",
+    "description": "Bauarbeiten Betrieb ab Baumgarten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
+    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
@@ -458,14 +458,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Züge halten Alszeile 126",
-    "description": "Bauarbeiten Züge halten Alszeile 126",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=43|D=2025-10-29"
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -494,26 +506,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "43: Züge halten Alszeile 126",
+    "description": "Bauarbeiten Züge halten Alszeile 126",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
+    "_identity": "wl|störung|L=43|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -622,5 +622,29 @@
     "starts_at": "2025-11-03T14:15:00+01:00",
     "ends_at": "2025-11-03T23:55:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-11-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40/41: Falschparker",
+    "description": "Die Linie 40 wird in Richtung Schottentor zwischen Gersthof und Währinger Straße, Volksoper über Michelbeuern-AKH umgeleitet. Die Linie 41 wird in Richtung Schottentor zwischen Gersthof und Währinger Straße, Volksoper über Michelbeuern-AKH umgeleitet. Die Störung dauert voraussichtlich bis 14:55 Uhr. Grund dafür ist ein Falschparker im Bereich Martinstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130",
+    "pubDate": "2025-11-03T14:30:00+01:00",
+    "starts_at": "2025-11-03T14:30:00+01:00",
+    "ends_at": "2025-11-03T23:55:00+01:00",
+    "_identity": "wl|störung|L=40,41|D=2025-11-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42/9: Falschparker Umeltung bis Volksoper über Linien 42 und 9!",
+    "description": "Falschparker Umeltung bis Volksoper über Linien 42 und 9!",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9ded21edd54ec0e3a1f351b48d66193d9727ef9573d767e7aba342b65021d51a",
+    "pubDate": "2025-11-03T14:33:31+01:00",
+    "starts_at": "2025-11-03T14:33:31+01:00",
+    "ends_at": "2025-11-03T15:33:00+01:00",
+    "_identity": "wl|störung|L=42,9|D=2025-11-03"
   }
 ]
