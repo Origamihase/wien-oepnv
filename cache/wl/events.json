@@ -147,12 +147,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U4: Bauarbeiten",
-    "description": "Die Linie U4 kann die Station Landstraße U in Fahrtrichtung Heiligenstadt S U nicht einhalten. Um die Station Landstraße U zu erreichen, fahren Sie eine Station weiter bis Schwedenplatz U und steigen Sie dort in einen Zug in die Gegenrichtung um. Die Arbeiten dauern bis 2. November 2025 Betriebsschluss. Grund dafür sind Bauarbeiten im Bereich Landstraße.",
+    "description": "Die Linie U4 kann die Station Landstraße U in Fahrtrichtung Hütteldorf nicht einhalten. Um die Station Landstraße U zu erreichen, fahren Sie eine Station weiter bis Stadtpark und steigen Sie dort in einen Zug in die Gegenrichtung um. Die Arbeiten dauern bis 4. Dezember 2025 Betriebsschluss. Grund dafür sind Bauarbeiten im Bereich Landstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "764d27c15bdb3bd3868fa37a024661bca55e2394a77bba17e0c6dbf42f5e023c",
     "pubDate": "2025-09-22T05:25:00+01:00",
     "starts_at": "2025-09-22T05:25:00+01:00",
-    "ends_at": "2025-11-03T01:00:00+01:00",
+    "ends_at": "2025-12-04T01:00:00+01:00",
     "_identity": "wl|störung|L=U4|D=2025-09-22"
   },
   {
@@ -326,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Gleisbauarbeiten",
-    "description": "Die Linie U6 fährt derzeit nur zwischen Siebenhirten und Spittelau beziehungsweise zwischen Jägerstraße und Floridsdorf. Weichen Sie auf die Linien 12 und 37 A aus. Die Störung dauert voraussichtlich bis 02.11.25 Betriebsschluss. Grund dafür sind Gleisbauarbeiten im Bereich zwischen Spittelau U und Jägerstraße U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c57071fe7f4cf8cade4da40fb53f27d49a181aa9399ddd5d782ef9d5fac61fec",
-    "pubDate": "2025-10-27T04:10:00+01:00",
-    "starts_at": "2025-10-27T04:10:00+01:00",
-    "ends_at": "2025-11-03T01:00:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-10-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Bauarbeiten",
     "description": "Die Linie 13 A fährt derzeit nur zwischen Hauptbahnhof und Laudongasse. Die Störung dauert voraussichtlich bis 24. November Betriebsbeginn. Grund dafür sind Bauarbeiten im Bereich Kochgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -374,10 +362,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "49: Betrieb ab Baumgarten",
+    "description": "Bauarbeiten Betrieb ab Baumgarten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
+    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
@@ -386,10 +374,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Betrieb ab Baumgarten",
-    "description": "Bauarbeiten Betrieb ab Baumgarten",
+    "title": "49: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
+    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
@@ -410,10 +398,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "WLB: Betrieb ab Inzersdorf, Lokalbahn",
-    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
+    "title": "WLB: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7adaade93d48413da80be380152faf61c0aaf47b5a5c2d564873065af783cb93",
+    "guid": "516be79a6bcdab2a2784760193ccbf461d25dfb2971cf43ae715ae66fe6e847e",
     "pubDate": "2025-10-29T00:00:07+01:00",
     "starts_at": "2025-10-29T00:00:07+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
@@ -422,10 +410,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "WLB: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "WLB: Betrieb ab Inzersdorf, Lokalbahn",
+    "description": "Bauarbeiten Betrieb ab Inzersdorf, Lokalbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "516be79a6bcdab2a2784760193ccbf461d25dfb2971cf43ae715ae66fe6e847e",
+    "guid": "7adaade93d48413da80be380152faf61c0aaf47b5a5c2d564873065af783cb93",
     "pubDate": "2025-10-29T00:00:07+01:00",
     "starts_at": "2025-10-29T00:00:07+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
@@ -470,14 +458,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
+    "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-10-29"
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -494,14 +482,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
+    "_identity": "wl|störung|L=N71|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -514,18 +514,6 @@
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -566,18 +554,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 13 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "026449bbaa4d4fb12232ee00ce32f945776d8f5fe194667e421e376d9efa1ed7",
-    "pubDate": "2025-11-02T23:30:00+01:00",
-    "starts_at": "2025-11-02T23:30:00+01:00",
-    "ends_at": "2025-11-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Fahrtbehinderung wegen Feuerwehreinsatz",
     "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -586,5 +562,41 @@
     "starts_at": "2025-11-02T23:33:54+01:00",
     "ends_at": "2025-11-03T04:30:00+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Busse halten bei Hoßplatz 4-5",
+    "description": "Gleisbauarbeiten Busse halten bei Hoßplatz 4-5",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a19de5d51953a6980449181f710dccf7c52937a0e0365fa3f006acf34eeb8266",
+    "pubDate": "2025-11-03T01:00:23+01:00",
+    "starts_at": "2025-11-03T01:00:23+01:00",
+    "ends_at": "2025-11-03T04:30:00+01:00",
+    "_identity": "wl|störung|L=N20|D=2025-11-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N31: Nächster Halt Brigittenauer Lände 14",
+    "description": "Gleisbauarbeiten Nächster Halt Brigittenauer Lände 14",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b18f380b7e1e119be24cb5b975e5f036295e8ca375f9bfaf1ec8633ec544801b",
+    "pubDate": "2025-11-03T01:15:02+01:00",
+    "starts_at": "2025-11-03T01:15:02+01:00",
+    "ends_at": "2025-11-03T04:30:00+01:00",
+    "_identity": "wl|störung|L=N31|D=2025-11-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N31: Betrieb ab Brigittaplatz",
+    "description": "Gleisbauarbeiten Betrieb ab Brigittaplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6d406877be41073f2061bf6b3c01ed73877bc2b62c93307ee934d7a34554320c",
+    "pubDate": "2025-11-03T01:20:18+01:00",
+    "starts_at": "2025-11-03T01:20:18+01:00",
+    "ends_at": "2025-11-03T04:35:00+01:00",
+    "_identity": "wl|störung|L=N31|D=2025-11-03"
   }
 ]
