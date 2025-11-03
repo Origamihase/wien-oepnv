@@ -338,18 +338,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Betrieb ab Baumgarten",
-    "description": "Bauarbeiten Betrieb ab Baumgarten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
-    "pubDate": "2025-10-29T00:00:04+01:00",
-    "starts_at": "2025-10-29T00:00:04+01:00",
-    "ends_at": "2025-11-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=49|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N49: Betrieb ab Bergmillergasse",
     "description": "Bauarbeiten Betrieb ab Bergmillergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -358,6 +346,18 @@
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=N49|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Betrieb ab Baumgarten",
+    "description": "Bauarbeiten Betrieb ab Baumgarten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
+    "pubDate": "2025-10-29T00:00:04+01:00",
+    "starts_at": "2025-10-29T00:00:04+01:00",
+    "ends_at": "2025-11-03T23:59:59+01:00",
+    "_identity": "wl|störung|L=49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -446,14 +446,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
+    "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-10-29"
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -482,14 +482,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
+    "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
+    "_identity": "wl|störung|L=N71|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -554,18 +554,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Tiere im Gleis",
-    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür sind Tiere im Gleis im Bereich Handelskai.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "213478fbb32b4332ea228fb76f4ed2d9b848b9f99185e4f4519859753c6a12c1",
-    "pubDate": "2025-11-03T05:30:00+01:00",
-    "starts_at": "2025-11-03T05:30:00+01:00",
-    "ends_at": "2025-11-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-11-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Verspätungen",
     "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -610,5 +598,17 @@
     "starts_at": "2025-11-03T07:35:00+01:00",
     "ends_at": "2025-11-03T23:55:00+01:00",
     "_identity": "wl|störung|L=95A|D=2025-11-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Längenfeldgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2025-11-03T08:15:00+01:00",
+    "starts_at": "2025-11-03T08:15:00+01:00",
+    "ends_at": "2025-11-03T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2025-11-03"
   }
 ]
