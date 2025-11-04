@@ -338,14 +338,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N49: Betrieb ab Bergmillergasse",
-    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
+    "title": "49: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
+    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=N49|D=2025-10-29"
+    "ends_at": "2025-11-05T23:59:59+01:00",
+    "_identity": "wl|störung|L=49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -356,20 +356,20 @@
     "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
+    "ends_at": "2025-11-05T23:59:59+01:00",
     "_identity": "wl|störung|L=49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "N49: Betrieb ab Bergmillergasse",
+    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
+    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=49|D=2025-10-29"
+    "ends_at": "2025-11-05T23:59:59+01:00",
+    "_identity": "wl|störung|L=N49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -380,20 +380,8 @@
     "guid": "43798535fdcb5e1dfdcb40ce4f7857da89c7e4edf432f7f489798458af8e1bf4",
     "pubDate": "2025-10-29T00:00:05+01:00",
     "starts_at": "2025-10-29T00:00:05+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
+    "ends_at": "2025-11-05T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Betrieb ab St. Marx",
-    "description": "Bauarbeiten Betrieb ab St. Marx",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
-    "pubDate": "2025-10-29T00:00:12+01:00",
-    "starts_at": "2025-10-29T00:00:12+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -404,44 +392,8 @@
     "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
     "pubDate": "2025-10-29T00:00:16+01:00",
     "starts_at": "2025-10-29T00:00:16+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
+    "ends_at": "2025-11-05T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Busse halten Grenzgasse 2-4",
-    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
-    "pubDate": "2025-10-29T00:00:18+01:00",
-    "starts_at": "2025-10-29T00:00:18+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=12A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43: Züge halten Alszeile 126",
-    "description": "Bauarbeiten Züge halten Alszeile 126",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=43|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -452,20 +404,8 @@
     "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
+    "ends_at": "2025-11-05T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -476,8 +416,32 @@
     "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
+    "ends_at": "2025-11-05T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-05T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-05T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -506,37 +470,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 18 zu unterschiedlichen Intervallen.",
+    "title": "12A: Busse halten Grenzgasse 2-4",
+    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
-    "pubDate": "2025-11-04T23:20:00+01:00",
-    "starts_at": "2025-11-04T23:20:00+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-11-04"
+    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
+    "pubDate": "2025-11-05T00:00:26+01:00",
+    "starts_at": "2025-11-05T00:00:26+01:00",
+    "ends_at": "2025-11-05T23:59:59+01:00",
+    "_identity": "wl|störung|L=12A|D=2025-11-05"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Fahrtbehinderung Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.",
+    "title": "43: Züge halten Alszeile 126",
+    "description": "Bauarbeiten Züge halten Alszeile 126",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c9b2f06082b865070bcbe91b5a5c9af65a5b959cee850e5fe9386874c8fbfb1",
-    "pubDate": "2025-11-04T23:30:00+01:00",
-    "starts_at": "2025-11-04T23:30:00+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=62|D=2025-11-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "WLB: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7cb90ca79aa9cf23e603244981e6deb94e94be3394b9baedcd1a2743ada330c8",
-    "pubDate": "2025-11-04T23:36:17+01:00",
-    "starts_at": "2025-11-04T23:36:17+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=WLB|D=2025-11-04"
+    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
+    "pubDate": "2025-11-05T00:00:27+01:00",
+    "starts_at": "2025-11-05T00:00:27+01:00",
+    "ends_at": "2025-11-05T23:59:59+01:00",
+    "_identity": "wl|störung|L=43|D=2025-11-05"
   }
 ]
