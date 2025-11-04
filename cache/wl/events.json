@@ -350,10 +350,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "49: Betrieb ab Baumgarten",
+    "description": "Bauarbeiten Betrieb ab Baumgarten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
+    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-04T23:59:59+01:00",
@@ -362,10 +362,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Betrieb ab Baumgarten",
-    "description": "Bauarbeiten Betrieb ab Baumgarten",
+    "title": "49: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
+    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-04T23:59:59+01:00",
@@ -422,14 +422,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "43: Züge halten Alszeile 126",
+    "description": "Bauarbeiten Züge halten Alszeile 126",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
+    "_identity": "wl|störung|L=43|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -470,14 +470,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Züge halten Alszeile 126",
-    "description": "Bauarbeiten Züge halten Alszeile 126",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=43|D=2025-10-29"
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -518,66 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a",
-    "pubDate": "2025-11-04T07:20:00+01:00",
-    "starts_at": "2025-11-04T07:20:00+01:00",
-    "ends_at": "2025-11-04T23:55:00+01:00",
-    "_identity": "wl|störung|L=60|D=2025-11-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "64A: Fremder Verkehrsunfall",
-    "description": "Derzeit kommt es bei der Linie 64 A in beiden Richtungen zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "db92c5ec5526fff2229ec1fcc45f1e18db9adbdc927d53c8b40baec4640a63c3",
-    "pubDate": "2025-11-04T08:10:00+01:00",
-    "starts_at": "2025-11-04T08:10:00+01:00",
-    "ends_at": "2025-11-04T23:55:00+01:00",
-    "_identity": "wl|störung|L=64A|D=2025-11-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "22A: Verkehrsüberlastung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 22 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea",
-    "pubDate": "2025-11-04T08:15:00+01:00",
-    "starts_at": "2025-11-04T08:15:00+01:00",
-    "ends_at": "2025-11-04T23:55:00+01:00",
-    "_identity": "wl|störung|L=22A|D=2025-11-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60A: Verkehrsüberlastung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c324aeb68aff0a13a99697bafb1720b1552500ec06ceef7ada487c69aa2ddcf",
-    "pubDate": "2025-11-04T08:15:00+01:00",
-    "starts_at": "2025-11-04T08:15:00+01:00",
-    "ends_at": "2025-11-04T23:55:00+01:00",
-    "_identity": "wl|störung|L=60A|D=2025-11-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "16A: Verkehrsüberlastung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 16 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7",
-    "pubDate": "2025-11-04T08:15:00+01:00",
-    "starts_at": "2025-11-04T08:15:00+01:00",
-    "ends_at": "2025-11-04T23:55:00+01:00",
-    "_identity": "wl|störung|L=16A|D=2025-11-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "49A: Verkehrsunfall",
     "description": "Die Linie 49 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -586,5 +526,41 @@
     "starts_at": "2025-11-04T08:30:00+01:00",
     "ends_at": "2025-11-04T23:55:00+01:00",
     "_identity": "wl|störung|L=49A|D=2025-11-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "77A: Verkehrsüberlastung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 77 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d2fb78dfec0b3971d13e72314dc2efcdbccb60650daf7059b954d1bd1800e28b",
+    "pubDate": "2025-11-04T09:05:00+01:00",
+    "starts_at": "2025-11-04T09:05:00+01:00",
+    "ends_at": "2025-11-04T23:55:00+01:00",
+    "_identity": "wl|störung|L=77A|D=2025-11-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "80A: Verkehrsüberlastung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 80 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab",
+    "pubDate": "2025-11-04T09:05:00+01:00",
+    "starts_at": "2025-11-04T09:05:00+01:00",
+    "ends_at": "2025-11-04T23:55:00+01:00",
+    "_identity": "wl|störung|L=80A|D=2025-11-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fahrtbehinderung Signalstörung",
+    "description": "Fahrtbehinderung Signalstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "09d6917b97f5daaeacf044c0dc055c18cfa0187f1782a553fba8fb19ddf0b1f1",
+    "pubDate": "2025-11-04T09:16:42+01:00",
+    "starts_at": "2025-11-04T09:16:42+01:00",
+    "ends_at": "2025-11-04T10:16:00+01:00",
+    "_identity": "wl|störung|L=10|D=2025-11-04"
   }
 ]
