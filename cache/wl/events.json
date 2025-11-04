@@ -514,5 +514,17 @@
     "starts_at": "2025-11-04T19:00:00+01:00",
     "ends_at": "2025-11-04T23:55:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-11-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "24A: Verspätungen",
+    "description": "Die Linie 24 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3ae9ff888a67996a9f331c655284810d480df1b797004e01e44699f339e15fd3",
+    "pubDate": "2025-11-04T19:35:00+01:00",
+    "starts_at": "2025-11-04T19:35:00+01:00",
+    "ends_at": "2025-11-04T23:55:00+01:00",
+    "_identity": "wl|störung|L=24A|D=2025-11-04"
   }
 ]
