@@ -578,13 +578,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A/38A/39A: Verkehrsüberlastung",
-    "description": "Die Linien 11 A, 38 A und 39 A können derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "title": "11A/38A: Verkehrsüberlastung",
+    "description": "Die Linie 11 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 38 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2c12b12dfe8724356461bb167e4acc9d599f508f18bc80cb1d432091633c341",
+    "guid": "1b0074ddbc1a7357b10321c981c9058733b003c78869160d5876ba122ae46d68",
     "pubDate": "2025-11-04T17:50:00+01:00",
     "starts_at": "2025-11-04T17:50:00+01:00",
     "ends_at": "2025-11-04T23:55:00+01:00",
-    "_identity": "wl|störung|L=11A,38A,39A|D=2025-11-04"
+    "_identity": "wl|störung|L=11A,38A|D=2025-11-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "39A: Rettungseinsatz",
+    "description": "Die Linie 39 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Barawitzkagasse # Heiligenstädter Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1df516d27848be5432f6a767976faa1435ee6b8d4cda2e54bf6f90ddfbeff55a",
+    "pubDate": "2025-11-04T18:25:00+01:00",
+    "starts_at": "2025-11-04T18:25:00+01:00",
+    "ends_at": "2025-11-04T23:55:00+01:00",
+    "_identity": "wl|störung|L=39A|D=2025-11-04"
   }
 ]
