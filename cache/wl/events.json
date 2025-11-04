@@ -422,18 +422,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Züge halten Alszeile 126",
-    "description": "Bauarbeiten Züge halten Alszeile 126",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=43|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -442,6 +430,30 @@
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-04T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-04T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Züge halten Alszeile 126",
+    "description": "Bauarbeiten Züge halten Alszeile 126",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-04T23:59:59+01:00",
+    "_identity": "wl|störung|L=43|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -466,18 +478,6 @@
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-04T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -514,18 +514,6 @@
     "starts_at": "2025-11-04T04:45:24+01:00",
     "ends_at": "2025-11-05T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-11-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49A: Verkehrsunfall",
-    "description": "Die Linie 49 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dfaa9d88c8ae83e03aae752baeab2e3ccba45658ce6dcc93ce200de99e7024cd",
-    "pubDate": "2025-11-04T08:30:00+01:00",
-    "starts_at": "2025-11-04T08:30:00+01:00",
-    "ends_at": "2025-11-04T23:55:00+01:00",
-    "_identity": "wl|störung|L=49A|D=2025-11-04"
   },
   {
     "source": "Wiener Linien",
