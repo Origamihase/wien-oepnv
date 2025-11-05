@@ -62,6 +62,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "29A/29B: Umleitung bis 13.11.2025",
+    "description": "Straßenbauarbeiten\nWegen Straßenbauarbeiten in der Leopoldauer Straße müssen die Busse neuerlich umgeleitet werden.\nZeitraum:\nMontag, 4. August 2025, Betriebsbeginn bis 13. November 2025, Betriebsbeginn des Tagesverkehrs.\nMaßnahmen:\nLinien 29 A, 29 B und Rufbus N30 in Richtung Floridsdorf S U:\nUmleitung ab Leopoldauer Straße # Katsushikastraße über Katsushikastraße - Brünner Straße - Angerer Straße - Freytaggasse.\nHaltestelle:\nSebastian-Kohl-Gasse (Leopoldauer Straße 37): Ersatzlos aufgelassen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e4177e16bcc0a2b04b0dc1cfd337a16495b81def430bbc4f8018d760528e3c7",
+    "pubDate": "2025-07-28T14:40:00+01:00",
+    "starts_at": "2025-07-28T14:40:00+01:00",
+    "ends_at": "2025-11-13T05:00:00+01:00",
+    "_identity": "wl|hinweis|L=29A,29B|D=2025-07-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "49A: Kurzführung ab 26.08.2025",
     "description": "Kurzführung / Haltestellenverlegung\nWegen Straßenbauarbeiten in der Salzwiesengasse wird die Linie 49 A umgeleitet.\nZeitraum:\nAb 26. August 2025, etwa 07:00 Uhr für voraussichtlich sieben Wochen.\nMaßnahmen:\nLinie 49 A:\nUmleitung über die Viktor-Hagl-Gasse.\nHaltestelle Wolfersberg, Schöffelplatz:\nVerlegt von: Salzwiesengasse 13-15\nVerlegt nach: Viktor-Hagl-Gasse 16-16 A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -290,14 +302,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N49: Betrieb ab Bergmillergasse",
-    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
+    "title": "49: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
+    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-05T23:59:59+01:00",
-    "_identity": "wl|störung|L=N49|D=2025-10-29"
+    "_identity": "wl|störung|L=49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -314,14 +326,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "N49: Betrieb ab Bergmillergasse",
+    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
+    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-05T23:59:59+01:00",
-    "_identity": "wl|störung|L=49|D=2025-10-29"
+    "_identity": "wl|störung|L=N49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -350,26 +362,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-05T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-05T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -386,10 +386,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
+    "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-05T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-05T23:59:59+01:00",
@@ -494,18 +506,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26A: Rettungseinsatz",
-    "description": "Die Linie 26 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Polgarstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0245b6164e8aeaf5bf219cd1cff1358fe2406e2c522e5ac88f5e5fc5c5e87abe",
-    "pubDate": "2025-11-05T16:30:00+01:00",
-    "starts_at": "2025-11-05T16:30:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=26A|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Verkehrsunfall",
     "description": "Die Linie 74 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -518,42 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "77A: Verkehrsunfall",
-    "description": "Die Linie 77 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b1866dbda10de11cf3a1ffe8fa6fa879751a915b069299afcb4c2a0a6f3945d6",
-    "pubDate": "2025-11-05T17:00:00+01:00",
-    "starts_at": "2025-11-05T17:00:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=77A|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "16A: Verkehrsunfall",
-    "description": "Die Linie 16 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dccbadcbf12162af2af610ce5d398d1d933ec7a7a29797ac278f17a4bdc47cb6",
-    "pubDate": "2025-11-05T17:00:00+01:00",
-    "starts_at": "2025-11-05T17:00:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=16A|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "48A: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 48 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6e8d730fa49ad4bb678353894e55415fcd9bfbdea9d97e5770694567f4f027af",
-    "pubDate": "2025-11-05T17:10:00+01:00",
-    "starts_at": "2025-11-05T17:10:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=48A|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "60: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -562,90 +526,6 @@
     "starts_at": "2025-11-05T17:25:00+01:00",
     "ends_at": "2025-11-05T23:55:00+01:00",
     "_identity": "wl|störung|L=60|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29A: Verkehrsüberlastung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 29 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f59099d5f814b15cf7dc562e38563b57c3f9416a4a4a89b974c32e0f86696c8f",
-    "pubDate": "2025-11-05T17:40:00+01:00",
-    "starts_at": "2025-11-05T17:40:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29B: Verkehrsüberlastung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 29 B zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "08b8a805ffb9a7e669c0f713d7e32ed10212c2015e3a2867f592c4a4c37f5e76",
-    "pubDate": "2025-11-05T17:40:00+01:00",
-    "starts_at": "2025-11-05T17:40:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A: Verkehrsüberlastung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9d0a7e4b9b87021faced5a5e0994d1adbea3b271fc48868ad2b14e038ee2871b",
-    "pubDate": "2025-11-05T17:40:00+01:00",
-    "starts_at": "2025-11-05T17:40:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "94A: Verkehrsüberlastung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 94 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b79028aaa1fdd7fc7889c7f24a28ccc80200e858d4fcbe7105f68be3c59ecb5f",
-    "pubDate": "2025-11-05T17:40:00+01:00",
-    "starts_at": "2025-11-05T17:40:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=94A|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2A: Verkehrsüberlastung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06817ade86d1a1933bbe0d61cb95b6a6235420db1b9474f70939e73f51c11a2f",
-    "pubDate": "2025-11-05T17:45:00+01:00",
-    "starts_at": "2025-11-05T17:45:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=2A|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "3A: Verkehrsüberlastung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 3 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9f9e6187c209c35f7459a15952d47555cbf84b2191172cf18db8d559f94cca69",
-    "pubDate": "2025-11-05T17:45:00+01:00",
-    "starts_at": "2025-11-05T17:45:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=3A|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Verkehrsüberlastung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 7 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
-    "pubDate": "2025-11-05T17:45:00+01:00",
-    "starts_at": "2025-11-05T17:45:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=7A|D=2025-11-05"
   },
   {
     "source": "Wiener Linien",
@@ -674,8 +554,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Fahrtbehinderung Falschparker",
-    "description": "Die Linie 5 ist derzeit in Richtung Praterstern an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 19:00 Uhr. Grund dafür ist ein Falschparker im Bereich Blindengasse 13.",
+    "title": "5: Falschparker Betrieb ab Albertgasse",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 5 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
     "pubDate": "2025-11-05T17:58:42+01:00",
@@ -686,10 +566,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "14A: Polizeieinsatz",
-    "description": "Die Linie 14 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Gudrunstraße.",
+    "title": "14A: Rettungseinsatz",
+    "description": "Die Linie 14 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Reumannplatz U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc",
+    "guid": "84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac",
     "pubDate": "2025-11-05T18:10:00+01:00",
     "starts_at": "2025-11-05T18:10:00+01:00",
     "ends_at": "2025-11-05T23:55:00+01:00",
@@ -698,14 +578,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40/41: Falschparker",
-    "description": "Die Linie 40 wird in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper und Gersthof über Michelbeuern-AKH umgeleitet. Die Linie 41 wird in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper und Gersthof über Michelbeuern-AKH umgeleitet. Die Störung dauert voraussichtlich bis 19:00 Uhr. Grund dafür ist ein Falschparker im Bereich Gentzgasse 128.",
+    "title": "40: Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130",
+    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
     "pubDate": "2025-11-05T18:35:00+01:00",
     "starts_at": "2025-11-05T18:35:00+01:00",
     "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=40,41|D=2025-11-05"
+    "_identity": "wl|störung|L=40|D=2025-11-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2025-11-05T18:35:00+01:00",
+    "starts_at": "2025-11-05T18:35:00+01:00",
+    "ends_at": "2025-11-05T23:55:00+01:00",
+    "_identity": "wl|störung|L=41|D=2025-11-05"
   },
   {
     "source": "Wiener Linien",
