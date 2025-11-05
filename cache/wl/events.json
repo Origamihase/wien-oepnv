@@ -86,6 +86,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "29A/29B: Umleitung bis 13.11.2025",
+    "description": "Straßenbauarbeiten\nWegen Straßenbauarbeiten in der Leopoldauer Straße müssen die Busse neuerlich umgeleitet werden.\nZeitraum:\nMontag, 4. August 2025, Betriebsbeginn bis 13. November 2025, Betriebsbeginn des Tagesverkehrs.\nMaßnahmen:\nLinien 29 A, 29 B und Rufbus N30 in Richtung Floridsdorf S U:\nUmleitung ab Leopoldauer Straße # Katsushikastraße über Katsushikastraße - Brünner Straße - Angerer Straße - Freytaggasse.\nHaltestelle:\nSebastian-Kohl-Gasse (Leopoldauer Straße 37): Ersatzlos aufgelassen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e4177e16bcc0a2b04b0dc1cfd337a16495b81def430bbc4f8018d760528e3c7",
+    "pubDate": "2025-07-28T14:40:00+01:00",
+    "starts_at": "2025-07-28T14:40:00+01:00",
+    "ends_at": "2025-11-13T05:00:00+01:00",
+    "_identity": "wl|hinweis|L=29A,29B|D=2025-07-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "49A: Kurzführung ab 26.08.2025",
     "description": "Kurzführung / Haltestellenverlegung\nWegen Straßenbauarbeiten in der Salzwiesengasse wird die Linie 49 A umgeleitet.\nZeitraum:\nAb 26. August 2025, etwa 07:00 Uhr für voraussichtlich sieben Wochen.\nMaßnahmen:\nLinie 49 A:\nUmleitung über die Viktor-Hagl-Gasse.\nHaltestelle Wolfersberg, Schöffelplatz:\nVerlegt von: Salzwiesengasse 13-15\nVerlegt nach: Viktor-Hagl-Gasse 16-16 A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -142,6 +154,18 @@
     "starts_at": "2025-09-29T15:30:00+01:00",
     "ends_at": "2026-11-27T11:11:00+01:00",
     "_identity": "wl|hinweis|L=N20|D=2025-09-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "29A/29B: Patrizigasse in beiden Richtungen",
+    "description": "Haltestellenverlegung der Linien 29 A, 29 B und Rufbus N30 in Richtung Großfeldsiedlung bzw. Neu Leopoldau\nHaltestelle: Patrizigasse\nVon: Freytaggasse 32\nNach: Angerer Straße 22-24, provisorische Haltestelle\nHaltestellenverlegung der Linien 29 A, 29 B und Rufbus N30 in Richtung Floridsdorf S U\nHaltestelle: Patrizigasse\nVon: Freytaggasse nach Angerer Straße\nNach: Rechte Nordbahngasse nach Angerer Straße, provisorische Haltestelle\nDauer: 09. Oktober 2025, etwa 00:30 Uhr auf Dauer von etwa sieben Wochen\nGrund: Umleitung wegen Gleisbauarbeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2d8cdbad8ce83dc172dd29ee3de63de5f78f178dcaae7fab889e86c1f5376974",
+    "pubDate": "2025-09-29T17:15:00+01:00",
+    "starts_at": "2025-09-29T17:15:00+01:00",
+    "ends_at": "2026-10-09T11:11:00+01:00",
+    "_identity": "wl|hinweis|L=29A,29B|D=2025-09-29"
   },
   {
     "source": "Wiener Linien",
@@ -314,14 +338,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N49: Betrieb ab Bergmillergasse",
-    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
+    "title": "49: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
+    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-05T23:59:59+01:00",
-    "_identity": "wl|störung|L=N49|D=2025-10-29"
+    "_identity": "wl|störung|L=49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -338,14 +362,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "N49: Betrieb ab Bergmillergasse",
+    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
+    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
     "pubDate": "2025-10-29T00:00:04+01:00",
     "starts_at": "2025-10-29T00:00:04+01:00",
     "ends_at": "2025-11-05T23:59:59+01:00",
-    "_identity": "wl|störung|L=49|D=2025-10-29"
+    "_identity": "wl|störung|L=N49|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -374,10 +398,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-05T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-05T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-10-29T00:00:19+01:00",
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-05T23:59:59+01:00",
@@ -394,30 +442,6 @@
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-05T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-05T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-05T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -469,30 +493,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29A: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 29 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ec25a5329192107eee26784e17b80c2aaf5146f5517c3c566d064cc3d7517ca4",
-    "pubDate": "2025-11-05T09:45:00+01:00",
-    "starts_at": "2025-11-05T09:45:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29B: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 29 B zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "03ed3a95881b40aee57d117526a273de15116e7243ec0bceaacfed6695a2d3c4",
-    "pubDate": "2025-11-05T09:45:00+01:00",
-    "starts_at": "2025-11-05T09:45:00+01:00",
-    "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "48A: Otto Wagner Areal",
     "description": "Haltestellenverlegung der Linie 48 A in Richtung Klinik Penzing\nHaltestelle: Otto Wagner Areal\nVon: Baumgartner Höhe 1\nNach: ca. 40 Meter in Fahrtrichtung\nDauer: 10.11. 2025, etwa 07:00 Uhr auf derzeit unbekannte Dauer\nGrund: Arbeiten der MA31",
@@ -525,42 +525,6 @@
     "pubDate": "2025-11-05T10:35:00+01:00",
     "starts_at": "2025-11-05T10:35:00+01:00",
     "ends_at": "2025-11-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Schadhafter Zug Umleitung ab Marienbrücke über Linie 1",
-    "description": "Schadhafter Zug Umleitung ab Marienbrücke über Linie 1",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "33fdabf789891aa6f1a137e1d006228c6016d6d5cf7dfa77be2f13e5cd8a19d9",
-    "pubDate": "2025-11-05T10:42:20+01:00",
-    "starts_at": "2025-11-05T10:42:20+01:00",
-    "ends_at": "2025-11-05T11:41:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Schadhafter Zug Betrieb ab Ring, Volkstheater",
-    "description": "Schadhafter Zug Betrieb ab Ring, Volkstheater",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06dbf532b52ef52aa461ecc02932b9abb0d6edb80c5bedce4df61449801db465",
-    "pubDate": "2025-11-05T10:43:16+01:00",
-    "starts_at": "2025-11-05T10:43:16+01:00",
-    "ends_at": "2025-11-05T11:42:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Schadhafter Zug Züge halten vor Parlament",
-    "description": "Schadhafter Zug Züge halten vor Parlament",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "898c836b887a2e90dc427c1e921bd5b557b43421b9593d5ee4027ed9df51c001",
-    "pubDate": "2025-11-05T10:45:12+01:00",
-    "starts_at": "2025-11-05T10:45:12+01:00",
-    "ends_at": "2025-11-05T11:44:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-11-05"
   }
 ]
