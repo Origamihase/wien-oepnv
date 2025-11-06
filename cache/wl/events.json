@@ -314,10 +314,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Kein Betrieb",
-    "description": "Bauarbeiten Kein Betrieb",
+    "title": "49: Betrieb ab Baumgarten",
+    "description": "Bauarbeiten Betrieb ab Baumgarten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
+    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
     "pubDate": "2025-10-29T00:00:13+01:00",
     "starts_at": "2025-10-29T00:00:13+01:00",
     "ends_at": "2025-11-06T23:59:59+01:00",
@@ -326,10 +326,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Betrieb ab Baumgarten",
-    "description": "Bauarbeiten Betrieb ab Baumgarten",
+    "title": "49: Kein Betrieb",
+    "description": "Bauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
+    "guid": "fd2526845720ce3a509feb63a83b886a9e89f2521331536064b474d4dd5f9963",
     "pubDate": "2025-10-29T00:00:13+01:00",
     "starts_at": "2025-10-29T00:00:13+01:00",
     "ends_at": "2025-11-06T23:59:59+01:00",
@@ -346,6 +346,18 @@
     "starts_at": "2025-10-29T00:00:16+01:00",
     "ends_at": "2025-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2025-10-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-10-29T00:00:19+01:00",
+    "starts_at": "2025-10-29T00:00:19+01:00",
+    "ends_at": "2025-11-06T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -370,18 +382,6 @@
     "starts_at": "2025-10-29T00:00:19+01:00",
     "ends_at": "2025-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-10-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-10-29T00:00:19+01:00",
-    "starts_at": "2025-10-29T00:00:19+01:00",
-    "ends_at": "2025-11-06T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-10-29"
   },
   {
     "source": "Wiener Linien",
@@ -518,18 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "16A: Verkehrsüberlastung",
-    "description": "Die Linie 16 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7",
-    "pubDate": "2025-11-06T17:35:00+01:00",
-    "starts_at": "2025-11-06T17:35:00+01:00",
-    "ends_at": "2025-11-06T23:55:00+01:00",
-    "_identity": "wl|störung|L=16A|D=2025-11-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Rettungseinsatz",
     "description": "Die Linie 5 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -578,18 +566,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Veranstaltung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "82f67fc4ae423e511abb8b767eacbf6009f15e0d2c45606f760ea7149593a6ee",
-    "pubDate": "2025-11-06T19:35:00+01:00",
-    "starts_at": "2025-11-06T19:35:00+01:00",
-    "ends_at": "2025-11-06T23:55:00+01:00",
-    "_identity": "wl|störung|L=49|D=2025-11-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Fahrtbehinderung wegen Veranstaltung",
     "description": "Fahrtbehinderung wegen Veranstaltung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -610,5 +586,65 @@
     "starts_at": "2025-11-06T19:38:57+01:00",
     "ends_at": "2025-11-06T20:38:00+01:00",
     "_identity": "wl|störung|L=49|D=2025-11-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Feuerwehreinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 38 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fb6187f5418284b8f1c12e7f700f7e582646769c7bcd3f588882792fa8b8ac36",
+    "pubDate": "2025-11-06T19:55:00+01:00",
+    "starts_at": "2025-11-06T19:55:00+01:00",
+    "ends_at": "2025-11-06T23:55:00+01:00",
+    "_identity": "wl|störung|L=38|D=2025-11-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "35A: Feuerwehreinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 35 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7e5bb54ab112bd12760b04e917aef5557e2e575e7b038f36549f78b1fd5daa03",
+    "pubDate": "2025-11-06T19:55:00+01:00",
+    "starts_at": "2025-11-06T19:55:00+01:00",
+    "ends_at": "2025-11-06T23:55:00+01:00",
+    "_identity": "wl|störung|L=35A|D=2025-11-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fe23cbf4bc48409e0a317324177545ad256e58cdd9ac61862303f4906bcd4cf3",
+    "pubDate": "2025-11-06T20:00:00+01:00",
+    "starts_at": "2025-11-06T20:00:00+01:00",
+    "ends_at": "2025-11-06T21:07:00+01:00",
+    "_identity": "wl|störung|L=38|D=2025-11-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Falschparker",
+    "description": "Die Linie 49 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4",
+    "pubDate": "2025-11-06T20:05:00+01:00",
+    "starts_at": "2025-11-06T20:05:00+01:00",
+    "ends_at": "2025-11-06T23:55:00+01:00",
+    "_identity": "wl|störung|L=49|D=2025-11-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "35A: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ab2562cd943a915d1504ad79d9471c1cf4dc1cd6d5a25ed8e79b1f78a0465871",
+    "pubDate": "2025-11-06T20:09:11+01:00",
+    "starts_at": "2025-11-06T20:09:11+01:00",
+    "ends_at": "2025-11-06T21:08:00+01:00",
+    "_identity": "wl|störung|L=35A|D=2025-11-06"
   }
 ]
