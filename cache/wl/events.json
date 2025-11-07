@@ -434,14 +434,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-07"
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -458,18 +458,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -478,6 +466,18 @@
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-07T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
+    "ends_at": "2025-11-07T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -517,30 +517,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0adadc0d52c1c4ca5640d9262b7d557e64527b5ae1096d8366a008580c44402a",
-    "pubDate": "2025-11-07T13:21:32+01:00",
-    "starts_at": "2025-11-07T13:21:32+01:00",
-    "ends_at": "2025-11-07T18:15:00+01:00",
-    "_identity": "wl|störung|L=|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Polizeieinsatz Betrieb ab Quellenplatz",
-    "description": "Polizeieinsatz Betrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
-    "pubDate": "2025-11-07T13:38:57+01:00",
-    "starts_at": "2025-11-07T13:38:57+01:00",
-    "ends_at": "2025-11-07T18:30:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "62: Lainz, Wolkersbergenstraße",
     "description": "Ersatzlose Haltestellenauflassung der Linie 62 in Richtung Oper, Karlsplatz U\nHaltestelle: Lainz, Wolkersbergenstraße\nÖrtlichkeit: Wolkersbergenstraße 94-104 (Anfangshaltestelle)\nDauer: 11. November 2025, etwa 04:00 Uhr bis 26. November 2025, etwa 04:00 Uhr\nGrund: Arbeiten",
@@ -574,18 +550,6 @@
     "starts_at": "2025-11-07T16:25:00+01:00",
     "ends_at": "2025-11-07T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43: Betriebsstörung",
-    "description": "Die Linie 43 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Elterleinplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7df1ea15586715cb10d96c6d0cb66f5e7b5f095a09b30566643002c38895afa0",
-    "pubDate": "2025-11-07T16:40:00+01:00",
-    "starts_at": "2025-11-07T16:40:00+01:00",
-    "ends_at": "2025-11-07T23:55:00+01:00",
-    "_identity": "wl|störung|L=43|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
