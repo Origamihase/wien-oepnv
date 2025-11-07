@@ -386,14 +386,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Betrieb ab Baumgarten",
-    "description": "Bauarbeiten Betrieb ab Baumgarten",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
     "pubDate": "2025-11-07T00:00:22+01:00",
     "starts_at": "2025-11-07T00:00:22+01:00",
     "ends_at": "2025-11-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=49|D=2025-11-07"
+    "_identity": "wl|störung|L=5A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -410,14 +410,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "title": "49: Betrieb ab Baumgarten",
+    "description": "Bauarbeiten Betrieb ab Baumgarten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "guid": "5b43dd7de2f2ca43f6b3966e1c6c321ceaa2aab60ec77f070322c3b52c8461ca",
     "pubDate": "2025-11-07T00:00:22+01:00",
     "starts_at": "2025-11-07T00:00:22+01:00",
     "ends_at": "2025-11-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-11-07"
+    "_identity": "wl|störung|L=49|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -430,30 +430,6 @@
     "starts_at": "2025-11-07T00:00:22+01:00",
     "ends_at": "2025-11-07T23:59:59+01:00",
     "_identity": "wl|störung|L=N49|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -482,6 +458,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
+    "ends_at": "2025-11-07T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
+    "ends_at": "2025-11-07T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "43: Züge halten Alszeile 126",
     "description": "Bauarbeiten Züge halten Alszeile 126",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -494,26 +494,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N20: Busse halten Dückegasse ggü. 1",
-    "description": "Gleisbauarbeiten Busse halten Dückegasse ggü. 1",
+    "title": "U4: Betriebsstörung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4e8c267da3dc7fa247c63b0da126c97557d881bd31ac90799e04de1e5248dab2",
-    "pubDate": "2025-11-07T01:15:11+01:00",
-    "starts_at": "2025-11-07T01:15:11+01:00",
-    "ends_at": "2025-11-07T05:00:00+01:00",
-    "_identity": "wl|störung|L=N20|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N60: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6e96ae5cd54585576caf991e3692fd6ef62db9f704651f611276d79ed898fcf2",
-    "pubDate": "2025-11-07T04:14:50+01:00",
-    "starts_at": "2025-11-07T04:14:50+01:00",
-    "ends_at": "2025-11-07T05:12:00+01:00",
-    "_identity": "wl|störung|L=N60|D=2025-11-07"
+    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
+    "pubDate": "2025-11-07T04:30:00+01:00",
+    "starts_at": "2025-11-07T04:30:00+01:00",
+    "ends_at": "2025-11-07T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -526,5 +514,17 @@
     "starts_at": "2025-11-07T04:30:19+01:00",
     "ends_at": "2025-11-08T00:00:00+01:00",
     "_identity": "wl|störung|L=60|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62A: Busse halten Breitenfurter Straße 236-238",
+    "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3",
+    "pubDate": "2025-11-07T04:45:11+01:00",
+    "starts_at": "2025-11-07T04:45:11+01:00",
+    "ends_at": "2025-11-08T00:35:00+01:00",
+    "_identity": "wl|störung|L=62A|D=2025-11-07"
   }
 ]
