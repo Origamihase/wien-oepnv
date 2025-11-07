@@ -410,6 +410,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N49: Betrieb ab Bergmillergasse",
+    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
+    "pubDate": "2025-11-07T00:00:22+01:00",
+    "starts_at": "2025-11-07T00:00:22+01:00",
+    "ends_at": "2025-11-07T23:59:59+01:00",
+    "_identity": "wl|störung|L=N49|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5A: Busse halten Dammstraße 2",
     "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -422,14 +434,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N49: Betrieb ab Bergmillergasse",
-    "description": "Bauarbeiten Betrieb ab Bergmillergasse",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
-    "pubDate": "2025-11-07T00:00:22+01:00",
-    "starts_at": "2025-11-07T00:00:22+01:00",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=N49|D=2025-11-07"
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -446,18 +458,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -470,10 +470,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-07T23:59:59+01:00",
@@ -518,18 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40A: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f",
-    "pubDate": "2025-11-07T06:10:00+01:00",
-    "starts_at": "2025-11-07T06:10:00+01:00",
-    "ends_at": "2025-11-07T23:55:00+01:00",
-    "_identity": "wl|störung|L=40A|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "40A: Fremdunfall Betrieb ab Cottagegasse",
     "description": "Fremdunfall Betrieb ab Cottagegasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -562,5 +550,89 @@
     "starts_at": "2025-11-07T07:35:00+01:00",
     "ends_at": "2025-11-07T23:55:00+01:00",
     "_identity": "wl|störung|L=U2|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25/26/27/29A/29B: Feuerwehreinsatz",
+    "description": "Die Linie 25 fährt nur zwischen Aspern, Oberdorfstraße und Kagran. Die Linie 26 fährt derzeit nicht zwischen Floridsdorf und Josef-Baumann-Gasse. Die Linie 27 fährt derzeit nicht zwischen Josef-Baumann-Gasse und Floridsdorf. Die Linie 29 B wird in Richtung Großfeldsiedlung U zwischen Floridsdorf S U und Sebastian-Kohl-Gasse über Brünner Straße und Angerer Straße umgeleitet. Die Linie 29 A wird in Richtung Großfeldsiedlung U zwischen Floridsdorf S U und Sebastian-Kohl-Gasse über Brünner Straße und Angerer Straße umgeleitet. Alternative: Linien 30, 31, 31 A, U1 Die Störung dauert voraussichtlich bis 09:00 Uhr. Grund dafür ist ein Feuerwehreinsatz im Bereich Floridsdorf S U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "100773321800bf831b1301dcce3abb0ceff4faf8ea9644f4476662a9e6c2c199",
+    "pubDate": "2025-11-07T07:50:00+01:00",
+    "starts_at": "2025-11-07T07:50:00+01:00",
+    "ends_at": "2025-11-07T23:55:00+01:00",
+    "_identity": "wl|störung|L=25,26,27,29A,29B|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Feuerwehreinsatz Betrieb ab Josef-Baumann-Gasse",
+    "description": "Feuerwehreinsatz Betrieb ab Josef-Baumann-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "08dbb1d5984cc8831914955ca14a68c1779b13324601303461e9c11f3ea68cbc",
+    "pubDate": "2025-11-07T07:56:08+01:00",
+    "starts_at": "2025-11-07T07:56:08+01:00",
+    "ends_at": "2025-11-07T12:30:00+01:00",
+    "_identity": "wl|störung|L=27|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Feuerwehreinsatz Betrieb ab Floridsdorf",
+    "description": "Feuerwehreinsatz Betrieb ab Floridsdorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4c065e99ef86a659b492b95072a4f80bcc704c594c4ebcd8d57f687fe5015fef",
+    "pubDate": "2025-11-07T07:56:37+01:00",
+    "starts_at": "2025-11-07T07:56:37+01:00",
+    "ends_at": "2025-11-07T11:30:00+01:00",
+    "_identity": "wl|störung|L=27|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Feuerwehreinsatz Betrieb ab Josef-Baumann-Gasse",
+    "description": "Feuerwehreinsatz Betrieb ab Josef-Baumann-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0901db61996d428867dbfb2dd2aadc7f031e46782e017bcee7b8b0c3860a2647",
+    "pubDate": "2025-11-07T07:57:06+01:00",
+    "starts_at": "2025-11-07T07:57:06+01:00",
+    "ends_at": "2025-11-07T11:00:00+01:00",
+    "_identity": "wl|störung|L=26|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Feuerwehreinsatz Betrieb ab Floridsdorf",
+    "description": "Feuerwehreinsatz Betrieb ab Floridsdorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d898707714df409edc4a8fcbfd3be270dd7a851661715eabc2b1e6270c840c8f",
+    "pubDate": "2025-11-07T07:57:35+01:00",
+    "starts_at": "2025-11-07T07:57:35+01:00",
+    "ends_at": "2025-11-07T12:30:00+01:00",
+    "_identity": "wl|störung|L=26|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Feuerwehreinsatz Betrieb ab Kagran",
+    "description": "Feuerwehreinsatz Betrieb ab Kagran",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a0bfab9e3feffe38798bcce5380bf2dba60a6a14d821f27f0cee60827e0b496",
+    "pubDate": "2025-11-07T07:58:04+01:00",
+    "starts_at": "2025-11-07T07:58:04+01:00",
+    "ends_at": "2025-11-07T11:30:00+01:00",
+    "_identity": "wl|störung|L=25|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "93968bfcf5241c3c5bba2e0645a844d1e32f30d44ed86f54eb9147503efaadbb",
+    "pubDate": "2025-11-07T07:58:20+01:00",
+    "starts_at": "2025-11-07T07:58:20+01:00",
+    "ends_at": "2025-11-07T11:00:00+01:00",
+    "_identity": "wl|störung|L=25|D=2025-11-07"
   }
 ]
