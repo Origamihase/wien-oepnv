@@ -530,38 +530,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Verkehrsunfall Betrieb ab Schloss Schönbrunn",
-    "description": "Verkehrsunfall Betrieb ab Schloss Schönbrunn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "32def0d6c388401fef9e5d31f6db7590bd4455a3320a43cadf83a9d16f19d4c3",
-    "pubDate": "2025-11-07T09:56:38+01:00",
-    "starts_at": "2025-11-07T09:56:38+01:00",
-    "ends_at": "2025-11-07T13:00:00+01:00",
-    "_identity": "wl|störung|L=10|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "60: Falschparker Betrieb ab Hofwiesengasse",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
+    "description": "Falschparker Betrieb ab Hofwiesengasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093",
-    "pubDate": "2025-11-07T10:10:00+01:00",
-    "starts_at": "2025-11-07T10:10:00+01:00",
-    "ends_at": "2025-11-07T23:55:00+01:00",
+    "pubDate": "2025-11-07T10:27:59+01:00",
+    "starts_at": "2025-11-07T10:27:59+01:00",
+    "ends_at": "2025-11-07T13:45:00+01:00",
     "_identity": "wl|störung|L=60|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "20852ffbd37b67a912d01cdf6a60c7ca1adaa1fdce59570f1a3f057dd9c938a2",
-    "pubDate": "2025-11-07T11:43:36+01:00",
-    "starts_at": "2025-11-07T11:43:36+01:00",
-    "ends_at": "2025-11-07T12:42:00+01:00",
-    "_identity": "wl|störung|L=9A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -578,13 +554,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Betriebsstörung",
-    "description": "Die Linie 5 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Wasnergasse.",
+    "title": "69A: Rettungseinsatz",
+    "description": "Die Linie 69 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Unter der Kirche.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c77c47a61be6b0a44439d9b5cf1d68e069051aafaa519c29ebfb916f9d8deb69",
-    "pubDate": "2025-11-07T12:20:00+01:00",
-    "starts_at": "2025-11-07T12:20:00+01:00",
+    "guid": "c3f5724da51a5f97e26106c94e4e4a9c78a6afbf8833a95716caef1b24c5cf6e",
+    "pubDate": "2025-11-07T13:00:00+01:00",
+    "starts_at": "2025-11-07T13:00:00+01:00",
     "ends_at": "2025-11-07T23:55:00+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-11-07"
+    "_identity": "wl|störung|L=69A|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Schadhaftes Fahrzeug",
+    "description": "Die Linie 18 fährt derzeit nur zwischen Schlachthausgasse und Eichenstraße und weiter bis Bahnhof Meidling, Dörfelstraße. Die Störung dauert voraussichtlich bis 13:40 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Arbeitergasse, Gürtel.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9211cb3d8ce68889c7066532dfb5410be52f492f45bf8c859a2229f0a241d27f",
+    "pubDate": "2025-11-07T13:15:00+01:00",
+    "starts_at": "2025-11-07T13:15:00+01:00",
+    "ends_at": "2025-11-07T23:55:00+01:00",
+    "_identity": "wl|störung|L=18|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0adadc0d52c1c4ca5640d9262b7d557e64527b5ae1096d8366a008580c44402a",
+    "pubDate": "2025-11-07T13:21:32+01:00",
+    "starts_at": "2025-11-07T13:21:32+01:00",
+    "ends_at": "2025-11-07T18:15:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Schadhafter Zug Betrieb ab Eichenstraße",
+    "description": "Schadhafter Zug Betrieb ab Eichenstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "29cdb7f089ae19da7a3ce3728d84117b7a42fc5a4d1d83d351698a0e70de5d0b",
+    "pubDate": "2025-11-07T13:22:30+01:00",
+    "starts_at": "2025-11-07T13:22:30+01:00",
+    "ends_at": "2025-11-07T17:15:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-11-07"
   }
 ]
