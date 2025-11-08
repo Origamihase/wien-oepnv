@@ -386,18 +386,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-08T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -410,14 +398,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
+    "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-08T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
+    "_identity": "wl|störung|L=N71|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -430,6 +418,18 @@
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-08T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
+    "ends_at": "2025-11-08T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -518,37 +518,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
+    "title": "10: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
-    "pubDate": "2025-11-08T06:30:00+01:00",
-    "starts_at": "2025-11-08T06:30:00+01:00",
-    "ends_at": "2025-11-08T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2025-11-08"
+    "guid": "8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9",
+    "pubDate": "2025-11-08T08:06:13+01:00",
+    "starts_at": "2025-11-08T08:06:13+01:00",
+    "ends_at": "2025-11-08T09:05:00+01:00",
+    "_identity": "wl|störung|L=10|D=2025-11-08"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A: Verspätungen",
-    "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "52: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ad4f085c52382af6e3fe8075c712a8ae261d948c3dde4f7135bf0f3bfdcf1687",
-    "pubDate": "2025-11-08T07:00:00+01:00",
-    "starts_at": "2025-11-08T07:00:00+01:00",
-    "ends_at": "2025-11-08T23:55:00+01:00",
-    "_identity": "wl|störung|L=1A|D=2025-11-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Betriebsstörung",
-    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Perfektastraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
-    "pubDate": "2025-11-08T07:35:00+01:00",
-    "starts_at": "2025-11-08T07:35:00+01:00",
-    "ends_at": "2025-11-08T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-11-08"
+    "guid": "135dc138ba98273ad144d64ca134b6893a89c99daba5bd7077ef978a587e1c53",
+    "pubDate": "2025-11-08T08:09:11+01:00",
+    "starts_at": "2025-11-08T08:09:11+01:00",
+    "ends_at": "2025-11-08T09:08:00+01:00",
+    "_identity": "wl|störung|L=52|D=2025-11-08"
   }
 ]
