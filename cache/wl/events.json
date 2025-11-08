@@ -386,14 +386,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
+    "title": "13A: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-08T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-07"
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -410,18 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-08T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -430,6 +418,18 @@
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-08T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
+    "ends_at": "2025-11-08T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -543,7 +543,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "O: Rettungseinsatz Züge halten bei Linie 18 Richtung Burggasse",
-    "description": "Die Linie O wird derzeit in Richtung Raxstraße, Rudolfshügelgasse zwischen Rennweg und Fasangasse über St. Marx umgeleitet. Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Fasangasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie O zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84",
     "pubDate": "2025-11-08T15:20:00+01:00",
@@ -554,13 +554,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Schottenring.",
+    "title": "46: Rettungseinsatz",
+    "description": "Die Linie 46 ist in Richtung Joachimsthalerplatz an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 16:25 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Maroltingergasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2025-11-08T15:20:00+01:00",
-    "starts_at": "2025-11-08T15:20:00+01:00",
+    "guid": "e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc",
+    "pubDate": "2025-11-08T16:00:00+01:00",
+    "starts_at": "2025-11-08T16:00:00+01:00",
     "ends_at": "2025-11-08T23:55:00+01:00",
-    "_identity": "wl|störung|L=U2|D=2025-11-08"
+    "_identity": "wl|störung|L=46|D=2025-11-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9",
+    "pubDate": "2025-11-08T16:07:12+01:00",
+    "starts_at": "2025-11-08T16:07:12+01:00",
+    "ends_at": "2025-11-08T17:07:00+01:00",
+    "_identity": "wl|störung|L=10|D=2025-11-08"
   }
 ]
