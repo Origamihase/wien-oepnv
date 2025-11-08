@@ -386,6 +386,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
+    "ends_at": "2025-11-08T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -418,18 +430,6 @@
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-08T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-08T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -526,5 +526,17 @@
     "starts_at": "2025-11-08T09:00:00+01:00",
     "ends_at": "2025-11-08T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2025-11-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Polizeieinsatz Betrieb ab Albertgasse",
+    "description": "Polizeieinsatz Betrieb ab Albertgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561",
+    "pubDate": "2025-11-08T10:01:27+01:00",
+    "starts_at": "2025-11-08T10:01:27+01:00",
+    "ends_at": "2025-11-08T11:00:00+01:00",
+    "_identity": "wl|störung|L=2|D=2025-11-08"
   }
 ]
