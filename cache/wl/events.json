@@ -518,13 +518,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "47A: Rettungseinsatz",
-    "description": "Die Linie 47 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "27: Schadhaftes Fahrzeug",
+    "description": "Die Linie 27 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "31e51e324d0956dfecce2c4506581e5d0f5137cdfb6cffc4e768a7eeef1aafad",
-    "pubDate": "2025-11-08T05:15:00+01:00",
-    "starts_at": "2025-11-08T05:15:00+01:00",
+    "guid": "8de0171cb5a82c20b0963bf79e2f59c4da0c97e94c58a5fdab5ede435ad86aba",
+    "pubDate": "2025-11-08T06:20:00+01:00",
+    "starts_at": "2025-11-08T06:20:00+01:00",
     "ends_at": "2025-11-08T23:55:00+01:00",
-    "_identity": "wl|störung|L=47A|D=2025-11-08"
+    "_identity": "wl|störung|L=27|D=2025-11-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Betriebsstörung",
+    "description": "Die Linie U4 fährt derzeit nur zwischen Heiligenstadt und Ober St. Veit. Die Störung dauert voraussichtlich bis 07:00. Grund dafür ist eine Betriebsstörung im Bereich Hütteldorf.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
+    "pubDate": "2025-11-08T06:30:00+01:00",
+    "starts_at": "2025-11-08T06:30:00+01:00",
+    "ends_at": "2025-11-08T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2025-11-08"
   }
 ]
