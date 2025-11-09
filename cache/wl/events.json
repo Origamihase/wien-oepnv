@@ -374,14 +374,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
+    "title": "13A: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-07"
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -398,14 +398,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
+    "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
+    "_identity": "wl|störung|L=N71|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -502,5 +502,53 @@
     "starts_at": "2025-11-09T19:35:53+01:00",
     "ends_at": "2025-11-09T23:00:00+01:00",
     "_identity": "wl|störung|L=|D=2025-11-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "99A: Verspätungen",
+    "description": "Die Linie 99 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Niklas-Eslarn-Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9eb4dcd3120f975f92e2b1b11f603ca1e37dd12a14c2406ac3bf1cebc383c2c4",
+    "pubDate": "2025-11-09T21:40:00+01:00",
+    "starts_at": "2025-11-09T21:40:00+01:00",
+    "ends_at": "2025-11-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=99A|D=2025-11-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Verspätungen",
+    "description": "Die Linie 11 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Sahulkastraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eaf96db733f004733a9b91b0e04111a3f9331a02f6c30911495b5b22f6e936d3",
+    "pubDate": "2025-11-09T21:40:00+01:00",
+    "starts_at": "2025-11-09T21:40:00+01:00",
+    "ends_at": "2025-11-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=11|D=2025-11-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Erlaaer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2025-11-09T22:00:00+01:00",
+    "starts_at": "2025-11-09T22:00:00+01:00",
+    "ends_at": "2025-11-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2025-11-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Erdberg.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2025-11-09T22:00:00+01:00",
+    "starts_at": "2025-11-09T22:00:00+01:00",
+    "ends_at": "2025-11-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-11-09"
   }
 ]
