@@ -362,30 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -406,6 +382,30 @@
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-09T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
+    "ends_at": "2025-11-09T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
+    "ends_at": "2025-11-09T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -550,5 +550,41 @@
     "starts_at": "2025-11-09T22:00:00+01:00",
     "ends_at": "2025-11-09T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2025-11-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Polizeieinsatz Betrieb ab Eichenstraße",
+    "description": "Polizeieinsatz Betrieb ab Eichenstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "68bc6af54c6e7221254acf728b57d945990511addcc9f1a0366dc0c96112b806",
+    "pubDate": "2025-11-09T22:15:05+01:00",
+    "starts_at": "2025-11-09T22:15:05+01:00",
+    "ends_at": "2025-11-09T23:45:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-11-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46",
+    "pubDate": "2025-11-09T22:25:43+01:00",
+    "starts_at": "2025-11-09T22:25:43+01:00",
+    "ends_at": "2025-11-09T23:45:00+01:00",
+    "_identity": "wl|störung|L=18|D=2025-11-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
+    "pubDate": "2025-11-09T22:26:12+01:00",
+    "starts_at": "2025-11-09T22:26:12+01:00",
+    "ends_at": "2025-11-09T23:45:00+01:00",
+    "_identity": "wl|störung|L=6|D=2025-11-09"
   }
 ]
