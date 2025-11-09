@@ -362,14 +362,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
+    "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
+    "_identity": "wl|störung|L=N71|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -386,14 +386,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
+    "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-07"
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -502,5 +502,17 @@
     "starts_at": "2025-11-09T08:00:00+01:00",
     "ends_at": "2025-11-09T23:55:00+01:00",
     "_identity": "wl|störung|L=57A|D=2025-11-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "32A: Betriebsstörung",
+    "description": "Die Linie 32 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b8f605357bdb01eff0d2a9e03be369ec3cafbb1d52adbc5fdb13804bb55b2106",
+    "pubDate": "2025-11-09T08:15:00+01:00",
+    "starts_at": "2025-11-09T08:15:00+01:00",
+    "ends_at": "2025-11-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=32A|D=2025-11-09"
   }
 ]
