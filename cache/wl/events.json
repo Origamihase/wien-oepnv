@@ -356,19 +356,19 @@
     "guid": "cbabfd422277777090ff450167f2ad9fe022e5b59794995b2120ac4ed7a629b4",
     "pubDate": "2025-11-07T00:00:22+01:00",
     "starts_at": "2025-11-07T00:00:22+01:00",
-    "ends_at": "2025-11-09T23:59:59+01:00",
+    "ends_at": "2025-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=N49|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-09T23:59:59+01:00",
+    "ends_at": "2025-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
@@ -380,20 +380,8 @@
     "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-09T23:59:59+01:00",
+    "ends_at": "2025-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -404,8 +392,20 @@
     "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-09T23:59:59+01:00",
+    "ends_at": "2025-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
+    "ends_at": "2025-11-10T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -440,7 +440,7 @@
     "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
     "pubDate": "2025-11-08T00:00:25+01:00",
     "starts_at": "2025-11-08T00:00:25+01:00",
-    "ends_at": "2025-11-09T23:59:59+01:00",
+    "ends_at": "2025-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2025-11-08"
   },
   {
@@ -452,7 +452,7 @@
     "guid": "43798535fdcb5e1dfdcb40ce4f7857da89c7e4edf432f7f489798458af8e1bf4",
     "pubDate": "2025-11-08T00:00:26+01:00",
     "starts_at": "2025-11-08T00:00:26+01:00",
-    "ends_at": "2025-11-09T23:59:59+01:00",
+    "ends_at": "2025-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-08"
   },
   {
@@ -464,20 +464,8 @@
     "guid": "79d70b60ea9f3f396e403123459bbed9393be2edbbbdc2b1e066ec622d9f9339",
     "pubDate": "2025-11-08T00:00:27+01:00",
     "starts_at": "2025-11-08T00:00:27+01:00",
-    "ends_at": "2025-11-09T23:59:59+01:00",
+    "ends_at": "2025-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=43|D=2025-11-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Einstieg Hofwiesengasse 34-38",
-    "description": "Bauarbeiten Einstieg Hofwiesengasse 34-38",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a0a6a5e5604753dd20449be53eef427d758bb2c38eb3287bcf1e8918489ccb47",
-    "pubDate": "2025-11-09T04:30:17+01:00",
-    "starts_at": "2025-11-09T04:30:17+01:00",
-    "ends_at": "2025-11-10T00:00:00+01:00",
-    "_identity": "wl|störung|L=60|D=2025-11-09"
   },
   {
     "source": "Wiener Linien",
@@ -494,49 +482,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
-    "pubDate": "2025-11-09T22:25:00+01:00",
-    "starts_at": "2025-11-09T22:25:00+01:00",
-    "ends_at": "2025-11-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-11-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 18 zu unterschiedlichen Intervallen.",
+    "title": "18: Polizeieinsatz",
+    "description": "Die Linie 18 fährt derzeit nur zwischen Schlachthausgasse und Eichenstraße und weiter bis Bahnhof Meidling, Dörfelstraße. Die Störung dauert voraussichtlich bis 23:30. Grund dafür ist ein Polizeieinsatz im Bereich Arbeitergasse, Gürtel.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46",
     "pubDate": "2025-11-09T22:25:00+01:00",
     "starts_at": "2025-11-09T22:25:00+01:00",
-    "ends_at": "2025-11-09T23:55:00+01:00",
+    "ends_at": "2025-11-10T23:55:00+01:00",
     "_identity": "wl|störung|L=18|D=2025-11-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Polizeieinsatz Betrieb ab Eichenstraße",
-    "description": "Polizeieinsatz Betrieb ab Eichenstraße",
+    "title": "13A: Feuerwehreinsatz",
+    "description": "Die Linie 13 A wird in Richtung Alser Straße, Skodagasse zwischen Hauptbahnhof und Pilgramgasse über Wiedner Gürtel, Kliebergasse, Wiedner Hauptstraße und die Strecke der Linie 14 A umgeleitet. Die Störung dauert voraussichtlich bis 00:30. Grund dafür ist ein Feuerwehreinsatz im Bereich Rainergasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "68bc6af54c6e7221254acf728b57d945990511addcc9f1a0366dc0c96112b806",
-    "pubDate": "2025-11-09T22:28:37+01:00",
-    "starts_at": "2025-11-09T22:28:37+01:00",
-    "ends_at": "2025-11-09T23:45:00+01:00",
-    "_identity": "wl|störung|L=|D=2025-11-09"
+    "guid": "026449bbaa4d4fb12232ee00ce32f945776d8f5fe194667e421e376d9efa1ed7",
+    "pubDate": "2025-11-09T23:55:00+01:00",
+    "starts_at": "2025-11-09T23:55:00+01:00",
+    "ends_at": "2025-11-10T23:55:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
+    "title": "13A: Feuerwehreinsatz Betrieb ab Pilgramgasse",
+    "description": "Feuerwehreinsatz Betrieb ab Pilgramgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2025-11-09T23:10:00+01:00",
-    "starts_at": "2025-11-09T23:10:00+01:00",
-    "ends_at": "2025-11-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=9|D=2025-11-09"
+    "guid": "1a002a5ff32e7bc65de73c50913138760e72806bc21c7fb443f10710162ea29a",
+    "pubDate": "2025-11-10T00:01:43+01:00",
+    "starts_at": "2025-11-10T00:01:43+01:00",
+    "ends_at": "2025-11-10T01:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-10"
   }
 ]
