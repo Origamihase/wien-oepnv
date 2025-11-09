@@ -362,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -382,6 +370,18 @@
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-09T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
+    "ends_at": "2025-11-09T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -398,14 +398,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
+    "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
+    "_identity": "wl|störung|L=N71|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -494,42 +494,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Fahrtbehinderung Rettungseinsatz",
-    "description": "Fahrtbehinderung Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
-    "pubDate": "2025-11-09T19:35:53+01:00",
-    "starts_at": "2025-11-09T19:35:53+01:00",
-    "ends_at": "2025-11-09T23:00:00+01:00",
-    "_identity": "wl|störung|L=|D=2025-11-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "99A: Verspätungen",
-    "description": "Die Linie 99 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Niklas-Eslarn-Straße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9eb4dcd3120f975f92e2b1b11f603ca1e37dd12a14c2406ac3bf1cebc383c2c4",
-    "pubDate": "2025-11-09T21:40:00+01:00",
-    "starts_at": "2025-11-09T21:40:00+01:00",
-    "ends_at": "2025-11-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=99A|D=2025-11-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Verspätungen",
-    "description": "Die Linie 11 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Sahulkastraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eaf96db733f004733a9b91b0e04111a3f9331a02f6c30911495b5b22f6e936d3",
-    "pubDate": "2025-11-09T21:40:00+01:00",
-    "starts_at": "2025-11-09T21:40:00+01:00",
-    "ends_at": "2025-11-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=11|D=2025-11-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U6: Verspätungen",
     "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Erlaaer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -566,25 +530,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
+    "pubDate": "2025-11-09T22:25:00+01:00",
+    "starts_at": "2025-11-09T22:25:00+01:00",
+    "ends_at": "2025-11-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=6|D=2025-11-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 18 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46",
-    "pubDate": "2025-11-09T22:25:43+01:00",
-    "starts_at": "2025-11-09T22:25:43+01:00",
-    "ends_at": "2025-11-09T23:45:00+01:00",
+    "pubDate": "2025-11-09T22:25:00+01:00",
+    "starts_at": "2025-11-09T22:25:00+01:00",
+    "ends_at": "2025-11-09T23:55:00+01:00",
     "_identity": "wl|störung|L=18|D=2025-11-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
-    "pubDate": "2025-11-09T22:26:12+01:00",
-    "starts_at": "2025-11-09T22:26:12+01:00",
-    "ends_at": "2025-11-09T23:45:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-11-09"
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2025-11-09T23:14:02+01:00",
+    "starts_at": "2025-11-09T23:14:02+01:00",
+    "ends_at": "2025-11-09T23:59:59+01:00",
+    "_identity": "wl|störung|L=9|D=2025-11-09"
   }
 ]
