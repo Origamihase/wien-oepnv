@@ -482,37 +482,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Rettungseinsatz",
-    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
+    "title": "7A: Betriebsstörung",
+    "description": "Die Linie 7 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
-    "pubDate": "2025-11-10T14:30:00+01:00",
-    "starts_at": "2025-11-10T14:30:00+01:00",
-    "ends_at": "2025-11-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-11-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Verunreinigung",
-    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "55a6d2210edf7006a86ba29cb1618fa5f1c07d264c2f291e173729f4b9f779d9",
-    "pubDate": "2025-11-10T15:55:00+01:00",
-    "starts_at": "2025-11-10T15:55:00+01:00",
-    "ends_at": "2025-11-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=U2|D=2025-11-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "94A: Betriebsstörung",
-    "description": "Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ab9a315bb4763912df12601d781a9487102576b75c46fff6971dcfe32c9a9c29",
+    "guid": "5b789916252dddf8004129a72a8fdf5c338ea358283e683ceb8fd67d4ac9e280",
     "pubDate": "2025-11-10T16:35:00+01:00",
     "starts_at": "2025-11-10T16:35:00+01:00",
     "ends_at": "2025-11-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=94A|D=2025-11-10"
+    "_identity": "wl|störung|L=7A|D=2025-11-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Verkehrsüberlastung",
+    "description": "Die Linie 59 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
+    "pubDate": "2025-11-10T16:45:00+01:00",
+    "starts_at": "2025-11-10T16:45:00+01:00",
+    "ends_at": "2025-11-10T23:55:00+01:00",
+    "_identity": "wl|störung|L=59A|D=2025-11-10"
   }
 ]
