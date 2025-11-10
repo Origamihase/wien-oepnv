@@ -350,14 +350,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
+    "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
+    "_identity": "wl|störung|L=N71|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -374,14 +374,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
+    "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-07"
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -490,5 +490,17 @@
     "starts_at": "2025-11-10T17:40:00+01:00",
     "ends_at": "2025-11-10T23:55:00+01:00",
     "_identity": "wl|störung|L=11A|D=2025-11-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "15A: Fremder Verkehrsunfall",
+    "description": "Die Linie 15 A wird in Richtung Bhf. Meidling , Schedifkaplatz zwischen Langsulzgasse und Altes Landgut U über Bitterlichstraße, Laaer Berg Straße und Favoritenstraße umgeleitet. Die Störung dauert voraussichtlich bis 19:15 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Florian-Geyer-Gasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8465c4a863695aeea5f77f0199c4bf034c7c302614acab16428cdb62511f8686",
+    "pubDate": "2025-11-10T18:00:00+01:00",
+    "starts_at": "2025-11-10T18:00:00+01:00",
+    "ends_at": "2025-11-10T23:55:00+01:00",
+    "_identity": "wl|störung|L=15A|D=2025-11-10"
   }
 ]
