@@ -350,34 +350,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
-    "pubDate": "2025-11-07T00:00:24+01:00",
-    "starts_at": "2025-11-07T00:00:24+01:00",
-    "ends_at": "2025-11-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-07T00:00:24+01:00",
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-10T23:59:59+01:00",
@@ -394,6 +370,30 @@
     "starts_at": "2025-11-07T00:00:24+01:00",
     "ends_at": "2025-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
+    "ends_at": "2025-11-10T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-11-07T00:00:24+01:00",
+    "starts_at": "2025-11-07T00:00:24+01:00",
+    "ends_at": "2025-11-10T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-07"
   },
   {
     "source": "Wiener Linien",
@@ -490,5 +490,17 @@
     "starts_at": "2025-11-10T18:46:57+01:00",
     "ends_at": "2025-11-10T22:45:00+01:00",
     "_identity": "wl|störung|L=|D=2025-11-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Polizeieinsatz Betrieb ab Hintzerstraße",
+    "description": "Die Linie 74 A wird in beiden Richtungen zwischen Hintzerstraße und Rabengasse über Neulinggasse, Ungargasse und Oberzellergasse umgeleitet. Die Störung dauert voraussichtlich bis 21:00 Uhr. Grund dafür ist ein Polizeieinsatz im Bereich Barichgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d3f78298c0cf7e3adb13e441ed10aff7e1e8b83ad2eeba7885e3b92a6ad6bd69",
+    "pubDate": "2025-11-10T20:00:00+01:00",
+    "starts_at": "2025-11-10T20:00:00+01:00",
+    "ends_at": "2025-11-10T23:55:00+01:00",
+    "_identity": "wl|störung|L=74A|D=2025-11-10"
   }
 ]
