@@ -478,5 +478,17 @@
     "starts_at": "2025-11-11T09:05:00+01:00",
     "ends_at": "2025-11-11T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Betriebsstörung",
+    "description": "Die Linie D kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Schloss Belvedere.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4da7ec50efe04776d24983130a8b4badbde4fb98c292e38675b780160a239430",
+    "pubDate": "2025-11-11T09:45:00+01:00",
+    "starts_at": "2025-11-11T09:45:00+01:00",
+    "ends_at": "2025-11-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=D|D=2025-11-11"
   }
 ]
