@@ -482,61 +482,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
+    "title": "U3: Stellwerksstörung",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Stellwerksstörung im Bereich Erdberg.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2025-11-11T05:00:00+01:00",
-    "starts_at": "2025-11-11T05:00:00+01:00",
-    "ends_at": "2025-11-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Betriebsstörung",
-    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Siebenhirten.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
-    "pubDate": "2025-11-11T05:10:00+01:00",
-    "starts_at": "2025-11-11T05:10:00+01:00",
-    "ends_at": "2025-11-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Simmering.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2025-11-11T05:10:00+01:00",
-    "starts_at": "2025-11-11T05:10:00+01:00",
+    "guid": "bd1e1d376d76c97d21d201d9c4430ea2b7a048438100494212e76b102a146378",
+    "pubDate": "2025-11-11T07:45:00+01:00",
+    "starts_at": "2025-11-11T07:45:00+01:00",
     "ends_at": "2025-11-11T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26A: Verkehrsunfall",
-    "description": "Die Linie 26 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b3dcbbc6e19d96361d56bc3f3ee29d72b2f90f08ddab0ffb34e6788945fb613c",
-    "pubDate": "2025-11-11T06:25:00+01:00",
-    "starts_at": "2025-11-11T06:25:00+01:00",
-    "ends_at": "2025-11-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=26A|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Verspätungen",
-    "description": "Die Linie 7 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "214cec6cae971effd21b47b0b3859b88354324a6fc53301d0ac43a41c2f9bb78",
-    "pubDate": "2025-11-11T06:40:00+01:00",
-    "starts_at": "2025-11-11T06:40:00+01:00",
-    "ends_at": "2025-11-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=7A|D=2025-11-11"
   }
 ]
