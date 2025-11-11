@@ -350,10 +350,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-11T23:59:59+01:00",
@@ -362,14 +362,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-11"
+    "_identity": "wl|störung|L=N71|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -386,14 +386,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
+    "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-11"
+    "_identity": "wl|störung|L=13A|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -470,18 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2025-11-11T14:38:05+01:00",
-    "starts_at": "2025-11-11T14:38:05+01:00",
-    "ends_at": "2025-11-11T15:37:00+01:00",
-    "_identity": "wl|störung|L=9|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5B: Falschparker",
     "description": "Die Linie 5 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Falschparker im Bereich Volkertplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -490,5 +478,113 @@
     "starts_at": "2025-11-11T14:50:00+01:00",
     "ends_at": "2025-11-11T23:55:00+01:00",
     "_identity": "wl|störung|L=5B|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A/42A: Fremder Verkehrsunfall",
+    "description": "Die Linie 10 A fährt derzeit nur zwischen Niederhofstraße und Schmelz, Gablenzgasse beziehungsweise Bahnhof Heiligenstadt S U und Gersthof S. Die Linie 42 A ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 16:15 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Wattgasse 96.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7afdd930a5b7fee82acd854b72f4ea9b6acc40029c103e2aab5a2a5af47fb044",
+    "pubDate": "2025-11-11T15:25:00+01:00",
+    "starts_at": "2025-11-11T15:25:00+01:00",
+    "ends_at": "2025-11-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=10A,42A|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "301864fe661402a234c7e28ce57d515a8b73dbea9b2393b14e61bea5451c769d",
+    "pubDate": "2025-11-11T15:30:11+01:00",
+    "starts_at": "2025-11-11T15:30:11+01:00",
+    "ends_at": "2025-11-11T16:36:00+01:00",
+    "_identity": "wl|störung|L=10A|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Verkehrsunfall Betrieb nur bis Schmelz, Gablenzgasse",
+    "description": "Verkehrsunfall Betrieb nur bis Schmelz, Gablenzgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "39111bd8009951eb1ef36614f84f611a21a899dc67f1d96aa5706b6b2bd1ad67",
+    "pubDate": "2025-11-11T15:34:20+01:00",
+    "starts_at": "2025-11-11T15:34:20+01:00",
+    "ends_at": "2025-11-11T16:33:00+01:00",
+    "_identity": "wl|störung|L=10A|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25/26/27/29A: Falschparker",
+    "description": "Die Linie 25 ist derzeit in Richtung Aspern an der Weiterfahrt gehindert. Die Linie 26 ist derzeit in Richtung Hausfeldstraße an der Weiterfahrt gehindert. Die Linie 27 ist derzeit in Richtung Aspern Nord an der Weiterfahrt gehindert. Die Linie 29 A ist derzeit in Richtung Großfeldsiedlung an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist ein Falschparker im Bereich Schloßhofer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a2c41e7489d11ac87893e5c12811afcad717f2967c39c90a73626a03e6f6bec3",
+    "pubDate": "2025-11-11T15:35:00+01:00",
+    "starts_at": "2025-11-11T15:35:00+01:00",
+    "ends_at": "2025-11-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=25,26,27,29A|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
+    "pubDate": "2025-11-11T15:35:22+01:00",
+    "starts_at": "2025-11-11T15:35:22+01:00",
+    "ends_at": "2025-11-11T16:34:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Verkehrsunfall Betrieb nur bis Gersthof",
+    "description": "Verkehrsunfall Betrieb nur bis Gersthof",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3e38391102cb7443108efd01b534c42cc5299be59b2defc09109db8d89f30448",
+    "pubDate": "2025-11-11T15:35:30+01:00",
+    "starts_at": "2025-11-11T15:35:30+01:00",
+    "ends_at": "2025-11-11T16:34:00+01:00",
+    "_identity": "wl|störung|L=10A|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
+    "pubDate": "2025-11-11T15:40:18+01:00",
+    "starts_at": "2025-11-11T15:40:18+01:00",
+    "ends_at": "2025-11-11T16:39:00+01:00",
+    "_identity": "wl|störung|L=25|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac",
+    "pubDate": "2025-11-11T15:40:54+01:00",
+    "starts_at": "2025-11-11T15:40:54+01:00",
+    "ends_at": "2025-11-11T16:40:00+01:00",
+    "_identity": "wl|störung|L=26|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "06ce993d4521983bd6b681492c64487991a39c88ae158c2b651de50a40457063",
+    "pubDate": "2025-11-11T15:41:47+01:00",
+    "starts_at": "2025-11-11T15:41:47+01:00",
+    "ends_at": "2025-11-11T16:42:00+01:00",
+    "_identity": "wl|störung|L=27|D=2025-11-11"
   }
 ]
