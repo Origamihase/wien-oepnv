@@ -49,18 +49,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "29A/29B: Umleitung bis 13.11.2025",
-    "description": "Straßenbauarbeiten\nWegen Straßenbauarbeiten in der Leopoldauer Straße müssen die Busse neuerlich umgeleitet werden.\nZeitraum:\nMontag, 4. August 2025, Betriebsbeginn bis 13. November 2025, Betriebsbeginn des Tagesverkehrs.\nMaßnahmen:\nLinien 29 A, 29 B und Rufbus N30 in Richtung Floridsdorf S U:\nUmleitung ab Leopoldauer Straße # Katsushikastraße über Katsushikastraße - Brünner Straße - Angerer Straße - Freytaggasse.\nHaltestelle:\nSebastian-Kohl-Gasse (Leopoldauer Straße 37): Ersatzlos aufgelassen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6e4177e16bcc0a2b04b0dc1cfd337a16495b81def430bbc4f8018d760528e3c7",
-    "pubDate": "2025-07-28T14:40:00+01:00",
-    "starts_at": "2025-07-28T14:40:00+01:00",
-    "ends_at": "2025-11-13T05:00:00+01:00",
-    "_identity": "wl|hinweis|L=29A,29B|D=2025-07-28"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "18: Gleisbauarbeiten",
     "description": "Die Linie 18 fährt bis Ende des Jahres nur zwischen Burggasse, Stadthalle und St. Marx. Weichen Sie auf die Linien U3, O, 71, 74 A, 77 A und die S-Bahn aus. Grund dafür sind Gleisbauarbeiten im Bereich Schlachthausgasse.",
@@ -362,6 +350,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-11-11T00:00:08+01:00",
+    "starts_at": "2025-11-11T00:00:08+01:00",
+    "ends_at": "2025-11-11T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -378,18 +378,6 @@
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-11-11T00:00:08+01:00",
-    "starts_at": "2025-11-11T00:00:08+01:00",
-    "ends_at": "2025-11-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-11T23:59:59+01:00",
@@ -482,14 +470,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A/42A: Fremder Verkehrsunfall",
-    "description": "Die Linie 10 A fährt derzeit nur zwischen Niederhofstraße und Schmelz, Gablenzgasse beziehungsweise Bahnhof Heiligenstadt S U und Gersthof S. Die Linie 42 A ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 16:15 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Wattgasse 96.",
+    "title": "10A: Fremder Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7afdd930a5b7fee82acd854b72f4ea9b6acc40029c103e2aab5a2a5af47fb044",
+    "guid": "69bf84ed2d92c43fb9999e573aa34981c804f4c13f0177a30ce634d9c2393458",
     "pubDate": "2025-11-11T15:25:00+01:00",
     "starts_at": "2025-11-11T15:25:00+01:00",
     "ends_at": "2025-11-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=10A,42A|D=2025-11-11"
+    "_identity": "wl|störung|L=10A|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42A: Fremder Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 42 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5c43645e71514b79e677e1dcb880bcfc1a29885cefdd2a67dfac07b7423e5753",
+    "pubDate": "2025-11-11T15:25:00+01:00",
+    "starts_at": "2025-11-11T15:25:00+01:00",
+    "ends_at": "2025-11-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=42A|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -518,14 +518,50 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25/26/27/29A: Falschparker",
-    "description": "Die Linie 25 ist derzeit in Richtung Aspern an der Weiterfahrt gehindert. Die Linie 26 ist derzeit in Richtung Hausfeldstraße an der Weiterfahrt gehindert. Die Linie 27 ist derzeit in Richtung Aspern Nord an der Weiterfahrt gehindert. Die Linie 29 A ist derzeit in Richtung Großfeldsiedlung an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist ein Falschparker im Bereich Schloßhofer Straße.",
+    "title": "25: Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 25 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a2c41e7489d11ac87893e5c12811afcad717f2967c39c90a73626a03e6f6bec3",
+    "guid": "0626d6a3a6bb3140cf27cca64701a1deef0a4f3fec522cb89f63d15158aaef25",
     "pubDate": "2025-11-11T15:35:00+01:00",
     "starts_at": "2025-11-11T15:35:00+01:00",
     "ends_at": "2025-11-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=25,26,27,29A|D=2025-11-11"
+    "_identity": "wl|störung|L=25|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 26 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "708d3f7d7a13e01575aae65705956a7ad77db9d37dfd85667f4c6c32b9e318ef",
+    "pubDate": "2025-11-11T15:35:00+01:00",
+    "starts_at": "2025-11-11T15:35:00+01:00",
+    "ends_at": "2025-11-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=26|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 27 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2de4a80879fee6916f5899d435c3f11711bd93a63bf4239466c4f52a560dc044",
+    "pubDate": "2025-11-11T15:35:00+01:00",
+    "starts_at": "2025-11-11T15:35:00+01:00",
+    "ends_at": "2025-11-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=27|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 29 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ec25a5329192107eee26784e17b80c2aaf5146f5517c3c566d064cc3d7517ca4",
+    "pubDate": "2025-11-11T15:35:00+01:00",
+    "starts_at": "2025-11-11T15:35:00+01:00",
+    "ends_at": "2025-11-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -586,5 +622,17 @@
     "starts_at": "2025-11-11T15:41:47+01:00",
     "ends_at": "2025-11-11T16:42:00+01:00",
     "_identity": "wl|störung|L=27|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Rettungseinsatz",
+    "description": "Die Linie 66 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
+    "pubDate": "2025-11-11T16:00:00+01:00",
+    "starts_at": "2025-11-11T16:00:00+01:00",
+    "ends_at": "2025-11-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=66A|D=2025-11-11"
   }
 ]
