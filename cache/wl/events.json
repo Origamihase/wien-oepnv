@@ -374,10 +374,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-11T23:59:59+01:00",
@@ -386,10 +386,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-11T23:59:59+01:00",
@@ -458,30 +458,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N20: Busse halten bei Hoßplatz 4-5",
-    "description": "Gleisbauarbeiten Busse halten bei Hoßplatz 4-5",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a19de5d51953a6980449181f710dccf7c52937a0e0365fa3f006acf34eeb8266",
-    "pubDate": "2025-11-11T01:00:21+01:00",
-    "starts_at": "2025-11-11T01:00:21+01:00",
-    "ends_at": "2025-11-11T04:30:00+01:00",
-    "_identity": "wl|störung|L=N20|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N31: Nächster Halt Brigittenauer Lände 14",
-    "description": "Gleisbauarbeiten Nächster Halt Brigittenauer Lände 14",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b18f380b7e1e119be24cb5b975e5f036295e8ca375f9bfaf1ec8633ec544801b",
-    "pubDate": "2025-11-11T01:15:16+01:00",
-    "starts_at": "2025-11-11T01:15:16+01:00",
-    "ends_at": "2025-11-11T04:30:00+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N20: Busse halten Dückegasse ggü. 1",
     "description": "Gleisbauarbeiten Busse halten Dückegasse ggü. 1",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -494,13 +470,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Betrieb ab Brigittaplatz",
-    "description": "Gleisbauarbeiten Betrieb ab Brigittaplatz",
+    "title": "60: Einstieg Hofwiesengasse 34-38",
+    "description": "Bauarbeiten Einstieg Hofwiesengasse 34-38",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6d406877be41073f2061bf6b3c01ed73877bc2b62c93307ee934d7a34554320c",
-    "pubDate": "2025-11-11T01:20:23+01:00",
-    "starts_at": "2025-11-11T01:20:23+01:00",
-    "ends_at": "2025-11-11T04:35:00+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-11-11"
+    "guid": "a0a6a5e5604753dd20449be53eef427d758bb2c38eb3287bcf1e8918489ccb47",
+    "pubDate": "2025-11-11T04:30:13+01:00",
+    "starts_at": "2025-11-11T04:30:13+01:00",
+    "ends_at": "2025-11-12T00:00:00+01:00",
+    "_identity": "wl|störung|L=60|D=2025-11-11"
   }
 ]
