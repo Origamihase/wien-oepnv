@@ -350,10 +350,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-11T23:59:59+01:00",
@@ -386,10 +386,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-11T23:59:59+01:00",
@@ -478,5 +478,17 @@
     "starts_at": "2025-11-11T14:38:05+01:00",
     "ends_at": "2025-11-11T15:37:00+01:00",
     "_identity": "wl|störung|L=9|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5B: Falschparker",
+    "description": "Die Linie 5 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Falschparker im Bereich Volkertplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6f2fe1e933b94c1a12afde9a2d517b8be52680e46d798a0016e5fbb36a659a92",
+    "pubDate": "2025-11-11T14:50:00+01:00",
+    "starts_at": "2025-11-11T14:50:00+01:00",
+    "ends_at": "2025-11-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=5B|D=2025-11-11"
   }
 ]
