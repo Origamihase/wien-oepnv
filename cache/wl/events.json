@@ -350,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-11T00:00:08+01:00",
-    "starts_at": "2025-11-11T00:00:08+01:00",
-    "ends_at": "2025-11-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -382,6 +370,18 @@
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-11-11T00:00:08+01:00",
+    "starts_at": "2025-11-11T00:00:08+01:00",
+    "ends_at": "2025-11-11T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -466,30 +466,6 @@
     "starts_at": "2025-11-11T13:47:37+01:00",
     "ends_at": "2025-11-11T23:45:00+01:00",
     "_identity": "wl|störung|L=49|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5aaba97144ab1f9a110bad400e29c07d9fcca47c4b94a7b2a49b8438a1b01109",
-    "pubDate": "2025-11-11T18:48:04+01:00",
-    "starts_at": "2025-11-11T18:48:04+01:00",
-    "ends_at": "2025-11-11T20:44:00+01:00",
-    "_identity": "wl|störung|L=26|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "625312ff0a505ab67720d68ebb14aca83e0a6ed463920bd05b72da054c66ead9",
-    "pubDate": "2025-11-11T18:48:33+01:00",
-    "starts_at": "2025-11-11T18:48:33+01:00",
-    "ends_at": "2025-11-11T20:43:00+01:00",
-    "_identity": "wl|störung|L=27|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
