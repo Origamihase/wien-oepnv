@@ -49,6 +49,18 @@
   },
   {
     "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "29A/29B: Umleitung bis 13.11.2025",
+    "description": "Straßenbauarbeiten\nWegen Straßenbauarbeiten in der Leopoldauer Straße müssen die Busse neuerlich umgeleitet werden.\nZeitraum:\nMontag, 4. August 2025, Betriebsbeginn bis 13. November 2025, Betriebsbeginn des Tagesverkehrs.\nMaßnahmen:\nLinien 29 A, 29 B und Rufbus N30 in Richtung Floridsdorf S U:\nUmleitung ab Leopoldauer Straße # Katsushikastraße über Katsushikastraße - Brünner Straße - Angerer Straße - Freytaggasse.\nHaltestelle:\nSebastian-Kohl-Gasse (Leopoldauer Straße 37): Ersatzlos aufgelassen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e4177e16bcc0a2b04b0dc1cfd337a16495b81def430bbc4f8018d760528e3c7",
+    "pubDate": "2025-07-28T14:40:00+01:00",
+    "starts_at": "2025-07-28T14:40:00+01:00",
+    "ends_at": "2025-11-13T05:00:00+01:00",
+    "_identity": "wl|hinweis|L=29A,29B|D=2025-07-28"
+  },
+  {
+    "source": "Wiener Linien",
     "category": "Störung",
     "title": "18: Gleisbauarbeiten",
     "description": "Die Linie 18 fährt bis Ende des Jahres nur zwischen Burggasse, Stadthalle und St. Marx. Weichen Sie auf die Linien U3, O, 71, 74 A, 77 A und die S-Bahn aus. Grund dafür sind Gleisbauarbeiten im Bereich Schlachthausgasse.",
@@ -338,14 +350,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
+    "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-11"
+    "_identity": "wl|störung|L=N71|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -362,22 +374,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-11T00:00:08+01:00",
-    "starts_at": "2025-11-11T00:00:08+01:00",
-    "ends_at": "2025-11-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "pubDate": "2025-11-11T00:00:08+01:00",
+    "starts_at": "2025-11-11T00:00:08+01:00",
+    "ends_at": "2025-11-11T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-11T23:59:59+01:00",
@@ -458,38 +470,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
+    "title": "26: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9c7b3ee5f523fca7feed81f5f9ddbfbd1a74b67ce91790006cb9036727ea2bca",
+    "guid": "5aaba97144ab1f9a110bad400e29c07d9fcca47c4b94a7b2a49b8438a1b01109",
     "pubDate": "2025-11-11T18:48:04+01:00",
     "starts_at": "2025-11-11T18:48:04+01:00",
-    "ends_at": "2025-11-11T19:47:00+01:00",
+    "ends_at": "2025-11-11T20:44:00+01:00",
     "_identity": "wl|störung|L=26|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
+    "title": "27: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5236f47ffd1dcffd769c8ad48ffbd0ee63810602a92ad31fcd46eb9237ddea29",
+    "guid": "625312ff0a505ab67720d68ebb14aca83e0a6ed463920bd05b72da054c66ead9",
     "pubDate": "2025-11-11T18:48:33+01:00",
     "starts_at": "2025-11-11T18:48:33+01:00",
-    "ends_at": "2025-11-11T19:48:00+01:00",
+    "ends_at": "2025-11-11T20:43:00+01:00",
     "_identity": "wl|störung|L=27|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1e4e24ebcdd0e7dd8e8fbe0f23ec26cb8e40e488131de367afd765b08b1f5817",
-    "pubDate": "2025-11-11T18:49:25+01:00",
-    "starts_at": "2025-11-11T18:49:25+01:00",
-    "ends_at": "2025-11-11T19:48:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -502,18 +502,6 @@
     "starts_at": "2025-11-11T18:49:54+01:00",
     "ends_at": "2025-11-11T19:49:00+01:00",
     "_identity": "wl|störung|L=29B|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10: Fahrtbehinderung Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0d70c69478856b9a3b8e5e9a4e597963f8077e418dad78a7ecf0b5dea4f9fa04",
-    "pubDate": "2025-11-11T18:50:00+01:00",
-    "starts_at": "2025-11-11T18:50:00+01:00",
-    "ends_at": "2025-11-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=10|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -542,14 +530,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 48 A zu unterschiedlichen Intervallen.",
+    "title": "10: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "40abe8015540dc340a7006b7131e0f8abed33a83dfde5af7bcbdf50c13a4eeb9",
-    "pubDate": "2025-11-11T19:00:00+01:00",
-    "starts_at": "2025-11-11T19:00:00+01:00",
-    "ends_at": "2025-11-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=48A|D=2025-11-11"
+    "guid": "0d70c69478856b9a3b8e5e9a4e597963f8077e418dad78a7ecf0b5dea4f9fa04",
+    "pubDate": "2025-11-11T18:59:09+01:00",
+    "starts_at": "2025-11-11T18:59:09+01:00",
+    "ends_at": "2025-11-11T20:02:00+01:00",
+    "_identity": "wl|störung|L=10|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
