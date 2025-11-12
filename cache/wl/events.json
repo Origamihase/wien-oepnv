@@ -459,12 +459,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "35A: Wasserrohrgebrechen",
-    "description": "Die Linie 35 A fährt derzeit nur zwischen Spittelau und Glanzing. Weichen Sie ersatzweise auf die Linien 39 A aus, welche bis Salmannsdorf verlängert wurde. . Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein Wasserrohrgebrechen im Bereich Krottenbachstraße Strehlgasse.",
+    "description": "Die Linie 35 A fährt derzeit nur zwischen Spittelau und Glanzing. Weichen Sie ersatzweise auf die Linien 39 A aus, welche bis Salmannsdorf verlängert wurde. . Grund dafür ist ein Wasserrohrgebrechen im Bereich Krottenbachstraße Strehlgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "6e875b17c7c21287a398b497fb2e9bf1870b824800b2e89c0506dc6a13c1b0b2",
     "pubDate": "2025-11-12T11:50:00+01:00",
     "starts_at": "2025-11-12T11:50:00+01:00",
-    "ends_at": "2025-11-12T23:55:00+01:00",
+    "ends_at": "2025-11-13T05:00:00+01:00",
     "_identity": "wl|störung|L=35A|D=2025-11-12"
   },
   {
@@ -506,13 +506,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Verkehrsunfall",
-    "description": "Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Auf der Schmelz.",
+    "title": "9: Verspätungen",
+    "description": "Die Linie 9 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4037eb177f53feada9cd8d5d413f9865f66b30fafc51c7e633db6ca36d431e5",
-    "pubDate": "2025-11-12T19:05:00+01:00",
-    "starts_at": "2025-11-12T19:05:00+01:00",
+    "guid": "31a26903d85084ee959631a5114ee24e12feca42c93cb008a7a19a3e9dad3628",
+    "pubDate": "2025-11-12T19:50:00+01:00",
+    "starts_at": "2025-11-12T19:50:00+01:00",
     "ends_at": "2025-11-12T23:55:00+01:00",
-    "_identity": "wl|störung|L=10A|D=2025-11-12"
+    "_identity": "wl|störung|L=9|D=2025-11-12"
   }
 ]
