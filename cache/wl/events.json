@@ -74,13 +74,13 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "95A/97A: Straßenbauarbeiten",
-    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Pfalzgasse werden die Linien 95 A und 97 A umgeleitet.\nZeitraum:\nAb Montag, 22. September 2025, etwa 07:00 Uhr auf Dauer von etwa acht Wochen.\nMaßnahmen:\nLinie 95 A in Richtung Aspern Nord S U\nUmleitung ab Hausfeldstraße # Pfalzgasse über Hausfeldstraße – Lackenjöchelgasse – Schukowitzgasse – Pfalzgasse.\nLinie 95 A in Richtung Großer Biberhaufen\nUmleitung ab Fuchsenzeile # Schukowitzgasse über Schukowitzgasse – Lackenjöchelgasse – Hausfeldstraße.\nHaltestellen in Richtung Großer Biberhaufen:\nPODHAGSKYGASSE\nSchukowitzgasse nach Podhagskygasse\nPFALZGASSE\nSchukowitzgasse vor Pfalzgasse\nNEUBREITENLEE\nPfalzgasse 1-5\nErsatz- und provisorische Haltestellen:\nPODHAGSKYGASSE Schukowitzgasse 30\nNEUBREITENLEE Quadenstraße 87 -89\nLinie 97 A (Schulkurs) in Richtung Mayredergasse\nUmleitung ab Hausfeldstraße # Lackenjöchelgasse über Lackenjöchelgasse – Schukowitzgasse – Pfalzgasse.\nHaltestellen:\nLACKENJÖCHELGASSE\nHausfeldstraße nach Lackenjöchelgasse\nLinie 97 A in Richtung Breitenlee, Schule\nUmleitung ab Fuchsenzeile # Schukowitzgasse über Schukowitzgasse – Lackenjöchelgasse – Hausfeldstraße.\nHaltestellen:\nPODHAGSKYGASSE\nSchukowitzgasse nach Podhagskygasse\nPFALZGASSE\nSchukowitzgasse vor Pfalzgasse\nNEUBREITENLEE\nPfalzgasse 1-5\nErsatz- und provisorische Haltestellen:\nPODHAGSKYGASSE Schukowitzgasse 30\nNEUBREITENLEE Hausfeldstraße gegenüber 76-78",
+    "title": "95A/97A: Straßenbauarbeiten bis 18.11.2025",
+    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Pfalzgasse werden die Linien 95 A und 97 A umgeleitet.\nZeitraum:\nAb Montag, 22. September 2025, etwa 07:00 Uhr bis 18. November 2025, etwa 09:00 Uhr\nMaßnahmen:\nLinie 95 A in Richtung Aspern Nord S U\nUmleitung ab Hausfeldstraße # Pfalzgasse über Hausfeldstraße – Lackenjöchelgasse – Schukowitzgasse – Pfalzgasse.\nLinie 95 A in Richtung Großer Biberhaufen\nUmleitung ab Fuchsenzeile # Schukowitzgasse über Schukowitzgasse – Lackenjöchelgasse – Hausfeldstraße.\nHaltestellen in Richtung Großer Biberhaufen:\nPODHAGSKYGASSE\nSchukowitzgasse nach Podhagskygasse\nPFALZGASSE\nSchukowitzgasse vor Pfalzgasse\nNEUBREITENLEE\nPfalzgasse 1-5\nErsatz- und provisorische Haltestellen:\nPODHAGSKYGASSE Schukowitzgasse 30\nNEUBREITENLEE Quadenstraße 87 -89\nLinie 97 A (Schulkurs) in Richtung Mayredergasse\nUmleitung ab Hausfeldstraße # Lackenjöchelgasse über Lackenjöchelgasse – Schukowitzgasse – Pfalzgasse.\nHaltestellen:\nLACKENJÖCHELGASSE\nHausfeldstraße nach Lackenjöchelgasse\nLinie 97 A in Richtung Breitenlee, Schule\nUmleitung ab Fuchsenzeile # Schukowitzgasse über Schukowitzgasse – Lackenjöchelgasse – Hausfeldstraße.\nHaltestellen:\nPODHAGSKYGASSE\nSchukowitzgasse nach Podhagskygasse\nPFALZGASSE\nSchukowitzgasse vor Pfalzgasse\nNEUBREITENLEE\nPfalzgasse 1-5\nErsatz- und provisorische Haltestellen:\nPODHAGSKYGASSE Schukowitzgasse 30\nNEUBREITENLEE Hausfeldstraße gegenüber 76-78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2b36bd83c76e9b3875ef8db91fdcf612018122efc252eefcfaa4627f1b8fb247",
+    "guid": "1500fe0735896605c88f56fc49ba329a88ae8782fbccb35a991fed759428ee3c",
     "pubDate": "2025-09-11T13:00:00+01:00",
     "starts_at": "2025-09-11T13:00:00+01:00",
-    "ends_at": "2026-09-11T11:11:00+01:00",
+    "ends_at": "2025-11-18T09:00:00+01:00",
     "_identity": "wl|hinweis|L=95A,97A|D=2025-09-11"
   },
   {
@@ -350,30 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-11-11T00:00:08+01:00",
-    "starts_at": "2025-11-11T00:00:08+01:00",
-    "ends_at": "2025-11-12T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-11-11T00:00:08+01:00",
-    "starts_at": "2025-11-11T00:00:08+01:00",
-    "ends_at": "2025-11-12T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -394,6 +370,30 @@
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-12T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-11-11T00:00:08+01:00",
+    "starts_at": "2025-11-11T00:00:08+01:00",
+    "ends_at": "2025-11-12T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "pubDate": "2025-11-11T00:00:08+01:00",
+    "starts_at": "2025-11-11T00:00:08+01:00",
+    "ends_at": "2025-11-12T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -482,13 +482,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "35A: Wasserrohrgebrechen Betrieb ab Glanzing",
-    "description": "Wasserrohrgebrechen Betrieb ab Glanzing",
+    "title": "35A: Rohrgebrechen Betrieb ab Glanzing",
+    "description": "Rohrgebrechen Betrieb ab Glanzing",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5986b2719ad2692c1558eb250a6a69a58a48948aff27743279e96a639831a7c0",
+    "guid": "8561b922216b43343977aa71a279ad7067f3e4ee9e7aeda357f843b1a5b3901a",
     "pubDate": "2025-11-12T12:04:21+01:00",
     "starts_at": "2025-11-12T12:04:21+01:00",
-    "ends_at": "2025-11-12T23:15:00+01:00",
+    "ends_at": "2025-11-12T23:30:00+01:00",
     "_identity": "wl|störung|L=35A|D=2025-11-12"
   },
   {
