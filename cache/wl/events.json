@@ -350,26 +350,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-11-11T00:00:08+01:00",
-    "starts_at": "2025-11-11T00:00:08+01:00",
-    "ends_at": "2025-11-12T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
+    "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-12T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-11"
+    "_identity": "wl|störung|L=N71|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -386,14 +374,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
+    "title": "13A: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-12T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-11"
+    "_identity": "wl|störung|L=13A|D=2025-11-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-11-11T00:00:08+01:00",
+    "starts_at": "2025-11-11T00:00:08+01:00",
+    "ends_at": "2025-11-12T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -458,18 +458,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2025-11-12T06:05:00+01:00",
-    "starts_at": "2025-11-12T06:05:00+01:00",
-    "ends_at": "2025-11-12T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-11-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Betriebsstörung",
     "description": "Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -482,13 +470,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Rettungseinsatz",
-    "description": "Die Linie 18 ist derzeit in Richtung St. Marx an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 07:50 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Wildgansplatz.",
+    "title": "18: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 18 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
     "pubDate": "2025-11-12T07:20:00+01:00",
     "starts_at": "2025-11-12T07:20:00+01:00",
     "ends_at": "2025-11-12T23:55:00+01:00",
     "_identity": "wl|störung|L=18|D=2025-11-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Landstraße und Herrengasse in beiden Richtungen über Gleis 1. Die Störung dauert voraussichtlich bis 08:00 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Landstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2025-11-12T07:30:00+01:00",
+    "starts_at": "2025-11-12T07:30:00+01:00",
+    "ends_at": "2025-11-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-11-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Betriebsstörung",
+    "description": "Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bcf5e28438afd5f132c742c8c42153044a8dfa5ee88de4228d89212a67bdca71",
+    "pubDate": "2025-11-12T07:40:00+01:00",
+    "starts_at": "2025-11-12T07:40:00+01:00",
+    "ends_at": "2025-11-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=60|D=2025-11-12"
   }
 ]
