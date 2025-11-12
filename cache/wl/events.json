@@ -350,14 +350,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
+    "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-12T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-11"
+    "_identity": "wl|störung|L=13A|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -374,14 +374,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
+    "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-11T00:00:08+01:00",
     "starts_at": "2025-11-11T00:00:08+01:00",
     "ends_at": "2025-11-12T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-11"
+    "_identity": "wl|störung|L=N71|D=2025-11-11"
   },
   {
     "source": "Wiener Linien",
@@ -542,18 +542,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Fahrtbehinderung Schadhafter PKW",
-    "description": "Fahrtbehinderung Schadhafter PKW",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "57a3d57064d01b6d8704ac8cfebc4ffc5429b2bfe02ac4a8b98b6f185396c821",
-    "pubDate": "2025-11-12T17:27:11+01:00",
-    "starts_at": "2025-11-12T17:27:11+01:00",
-    "ends_at": "2025-11-12T18:35:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-11-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Schadhafter PKW",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -574,17 +562,5 @@
     "starts_at": "2025-11-12T17:30:00+01:00",
     "ends_at": "2025-11-12T23:55:00+01:00",
     "_identity": "wl|störung|L=D|D=2025-11-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Fahrtbehinderung Schadhafter PKW",
-    "description": "Fahrtbehinderung Schadhafter PKW",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "33ecb26968fa5cb93dd5c9239e26987773588c8f23db9c687cd389e1d3715913",
-    "pubDate": "2025-11-12T17:36:49+01:00",
-    "starts_at": "2025-11-12T17:36:49+01:00",
-    "ends_at": "2025-11-12T18:36:00+01:00",
-    "_identity": "wl|störung|L=71|D=2025-11-12"
   }
 ]
