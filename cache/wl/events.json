@@ -410,18 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-11-13T00:00:26+01:00",
-    "starts_at": "2025-11-13T00:00:26+01:00",
-    "ends_at": "2025-11-13T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -434,14 +422,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-11-13T00:00:26+01:00",
     "starts_at": "2025-11-13T00:00:26+01:00",
     "ends_at": "2025-11-13T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-13"
+    "_identity": "wl|störung|L=13A|D=2025-11-13"
   },
   {
     "source": "Wiener Linien",
@@ -454,6 +442,18 @@
     "starts_at": "2025-11-13T00:00:26+01:00",
     "ends_at": "2025-11-13T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-11-13T00:00:26+01:00",
+    "starts_at": "2025-11-13T00:00:26+01:00",
+    "ends_at": "2025-11-13T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-13"
   },
   {
     "source": "Wiener Linien",
@@ -502,5 +502,29 @@
     "starts_at": "2025-11-13T01:20:09+01:00",
     "ends_at": "2025-11-13T04:35:00+01:00",
     "_identity": "wl|störung|L=N31|D=2025-11-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N66: Verkehrsunfall",
+    "description": "Die Linie N66 ist derzeit in Richtung Ring, Kai an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 04:00 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Quellenplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "67a9cdea2859d122160b9d9788d94139a9260230c0be0e35fa2e3ce87b6a2e09",
+    "pubDate": "2025-11-13T03:40:00+01:00",
+    "starts_at": "2025-11-13T03:40:00+01:00",
+    "ends_at": "2025-11-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=N66|D=2025-11-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N66: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c5fda5b480ff1658a5af8758e8765b5e552182ce404fc33605abd646673e5956",
+    "pubDate": "2025-11-13T03:42:53+01:00",
+    "starts_at": "2025-11-13T03:42:53+01:00",
+    "ends_at": "2025-11-13T04:52:00+01:00",
+    "_identity": "wl|störung|L=N66|D=2025-11-13"
   }
 ]
