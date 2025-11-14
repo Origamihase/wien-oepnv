@@ -134,13 +134,13 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "37A: Rohrleitungsarbeiten ab 06.10.2025",
-    "description": "Rohrleitungsarbeiten\nWegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37 A in Richtung Dänenstraße bzw. Nußdorfer Straße U umgeleitet.\nZeitraum:\nAb Montag, 06. Oktober 2025, etwa 07:00 Uhr bis voraussichtlich Frühling 2026.\nMaßnahmen:\nLinie 37 A in Richtung Dänenstraße bzw. Nußdorfer Straße U:\nUmleitung ab Pasettistraße # Donaueschingenstraße über Pasettistraße – Hellwagstraße – Dresdner Straße.\nAufgelassene Haltestellen:\nLorenz-Böhler-Unfallkrankenhaus (Donaueschingenstraße nach Pasettistraße)\nDresdner Straße U (Dresdner Straße 47, gemeinsam mit Linie 2)\nErsatz- und provisorische Haltestellen:\nLorenz-Böhler-Unfallkrankenhaus (Pasettistraße 73-75)\nPasettistraße (Pasettistraße vor Hellwagstraße)",
+    "title": "37A: Rohrleitungsarbeiten bis 14.11.2025",
+    "description": "Rohrleitungsarbeiten\nWegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37 A in Richtung Dänenstraße bzw. Nußdorfer Straße U umgeleitet.\nZeitraum:\nAb Montag, 06. Oktober 2025, etwa 07:00 Uhr bis 14. November 2025, etwa 12:00 Uhr.\nMaßnahmen:\nLinie 37 A in Richtung Dänenstraße bzw. Nußdorfer Straße U:\nUmleitung ab Pasettistraße # Donaueschingenstraße über Pasettistraße – Hellwagstraße – Dresdner Straße.\nAufgelassene Haltestellen:\nLorenz-Böhler-Unfallkrankenhaus (Donaueschingenstraße nach Pasettistraße)\nDresdner Straße U (Dresdner Straße 47, gemeinsam mit Linie 2)\nErsatz- und provisorische Haltestellen:\nLorenz-Böhler-Unfallkrankenhaus (Pasettistraße 73-75)\nPasettistraße (Pasettistraße vor Hellwagstraße)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3d097803dc3456c67e296200b289fd02a8a9bb7797d13839e57b9a1cd41cd118",
+    "guid": "b084649b2e75e291e7825575938ba3b6320e19dbc67ff6e9c9f5b6dc420b83ae",
     "pubDate": "2025-10-02T15:00:00+01:00",
     "starts_at": "2025-10-02T15:00:00+01:00",
-    "ends_at": "2026-10-02T11:11:00+01:00",
+    "ends_at": "2025-11-14T12:00:00+01:00",
     "_identity": "wl|hinweis|L=37A|D=2025-10-02"
   },
   {
@@ -430,30 +430,6 @@
     "starts_at": "2025-11-14T06:55:00+01:00",
     "ends_at": "2025-11-14T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2025-11-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "58B: Verkehrsunfall",
-    "description": "Die Linie 58 B kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "031c5d12dca2394457c20c2af2c93388c0958fc1e1482ef1a3325c9cefbd5425",
-    "pubDate": "2025-11-14T07:00:00+01:00",
-    "starts_at": "2025-11-14T07:00:00+01:00",
-    "ends_at": "2025-11-14T23:55:00+01:00",
-    "_identity": "wl|störung|L=58B|D=2025-11-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "39A: Rettungseinsatz",
-    "description": "Die Linie 39 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1df516d27848be5432f6a767976faa1435ee6b8d4cda2e54bf6f90ddfbeff55a",
-    "pubDate": "2025-11-14T07:40:00+01:00",
-    "starts_at": "2025-11-14T07:40:00+01:00",
-    "ends_at": "2025-11-14T23:55:00+01:00",
-    "_identity": "wl|störung|L=39A|D=2025-11-14"
   },
   {
     "source": "Wiener Linien",
