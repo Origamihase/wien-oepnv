@@ -350,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-13T00:00:26+01:00",
-    "starts_at": "2025-11-13T00:00:26+01:00",
-    "ends_at": "2025-11-14T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -394,6 +382,18 @@
     "starts_at": "2025-11-13T00:00:26+01:00",
     "ends_at": "2025-11-14T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-11-13T00:00:26+01:00",
+    "starts_at": "2025-11-13T00:00:26+01:00",
+    "ends_at": "2025-11-14T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-13"
   },
   {
     "source": "Wiener Linien",
@@ -434,18 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Verkehrsüberlastung",
-    "description": "Die Linie 7 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
-    "pubDate": "2025-11-14T14:10:00+01:00",
-    "starts_at": "2025-11-14T14:10:00+01:00",
-    "ends_at": "2025-11-14T23:55:00+01:00",
-    "_identity": "wl|störung|L=7A|D=2025-11-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "16A: Verkehrsüberlastung",
     "description": "Die Linie 16 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -478,5 +466,17 @@
     "starts_at": "2025-11-14T15:05:00+01:00",
     "ends_at": "2025-11-14T23:55:00+01:00",
     "_identity": "wl|störung|L=66A|D=2025-11-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Betriebsstörung",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Ottakring.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2025-11-14T15:30:00+01:00",
+    "starts_at": "2025-11-14T15:30:00+01:00",
+    "ends_at": "2025-11-14T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-11-14"
   }
 ]
