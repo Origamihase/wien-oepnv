@@ -350,14 +350,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
+    "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-11-13T00:00:26+01:00",
     "starts_at": "2025-11-13T00:00:26+01:00",
     "ends_at": "2025-11-14T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-13"
+    "_identity": "wl|störung|L=N71|D=2025-11-13"
   },
   {
     "source": "Wiener Linien",
@@ -374,22 +374,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-11-13T00:00:26+01:00",
     "starts_at": "2025-11-13T00:00:26+01:00",
     "ends_at": "2025-11-14T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-13"
+    "_identity": "wl|störung|L=13A|D=2025-11-13"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-13T00:00:26+01:00",
     "starts_at": "2025-11-13T00:00:26+01:00",
     "ends_at": "2025-11-14T23:59:59+01:00",
@@ -434,18 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "597ad83b2f6ce921e002d19d00bada2f45a7d465164c36344c4e43b70ccbfb7d",
-    "pubDate": "2025-11-14T18:06:16+01:00",
-    "starts_at": "2025-11-14T18:06:16+01:00",
-    "ends_at": "2025-11-14T19:26:00+01:00",
-    "_identity": "wl|störung|L=2A|D=2025-11-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U4: Verspätungen",
     "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Hütteldorf.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -454,18 +442,6 @@
     "starts_at": "2025-11-14T18:10:00+01:00",
     "ends_at": "2025-11-14T23:55:00+01:00",
     "_identity": "wl|störung|L=U4|D=2025-11-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4c1b006aea8414254450dddfcfe0123aac01eadd08b27641cd2f59da9bc0cfce",
-    "pubDate": "2025-11-14T18:18:49+01:00",
-    "starts_at": "2025-11-14T18:18:49+01:00",
-    "ends_at": "2025-11-14T19:31:00+01:00",
-    "_identity": "wl|störung|L=1A|D=2025-11-14"
   },
   {
     "source": "Wiener Linien",
@@ -494,25 +470,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
+    "title": "38A: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 38 A ist derzeit in Richtung Bahnhof Heiligenstadt an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 20:00. Grund dafür ist ein Falschparker im Bereich Grinzinger Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "12c122fd59c34caf7f02ba0225ce436dc57cac19067265e4e00cf01131a3ccaf",
-    "pubDate": "2025-11-14T18:20:54+01:00",
-    "starts_at": "2025-11-14T18:20:54+01:00",
-    "ends_at": "2025-11-14T19:44:00+01:00",
-    "_identity": "wl|störung|L=71|D=2025-11-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Verkehrsunfall Umleitung ab Rennweg über Linien O,1 Und 2",
-    "description": "Verkehrsunfall Umleitung ab Rennweg über Linien O,1 Und 2",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dfe4fd4e5c0cba0b4e46c05f3e00b5c6d881a2a4c7fb2b273c499631d215463f",
-    "pubDate": "2025-11-14T18:35:01+01:00",
-    "starts_at": "2025-11-14T18:35:01+01:00",
-    "ends_at": "2025-11-14T19:33:00+01:00",
-    "_identity": "wl|störung|L=71|D=2025-11-14"
+    "guid": "361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62",
+    "pubDate": "2025-11-14T19:25:00+01:00",
+    "starts_at": "2025-11-14T19:25:00+01:00",
+    "ends_at": "2025-11-14T23:55:00+01:00",
+    "_identity": "wl|störung|L=38A|D=2025-11-14"
   }
 ]
