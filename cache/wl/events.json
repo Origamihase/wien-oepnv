@@ -350,10 +350,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-11-15T00:00:16+01:00",
     "starts_at": "2025-11-15T00:00:16+01:00",
     "ends_at": "2025-11-15T23:59:59+01:00",
@@ -386,10 +386,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-15T00:00:16+01:00",
     "starts_at": "2025-11-15T00:00:16+01:00",
     "ends_at": "2025-11-15T23:59:59+01:00",
@@ -422,18 +422,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "66A: Fahrtbehinderung Betriebsstörung",
-    "description": "Fahrtbehinderung Betriebsstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "54c8c04a8eb891f555b04ddc3ab16b0fc0fa639c0b77dc3254911619bba3e9f1",
-    "pubDate": "2025-11-15T04:48:55+01:00",
-    "starts_at": "2025-11-15T04:48:55+01:00",
-    "ends_at": "2025-11-15T05:47:00+01:00",
-    "_identity": "wl|störung|L=66A|D=2025-11-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "63A: Verunreinigung",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 63 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -442,5 +430,17 @@
     "starts_at": "2025-11-15T05:35:00+01:00",
     "ends_at": "2025-11-15T23:55:00+01:00",
     "_identity": "wl|störung|L=63A|D=2025-11-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 27 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8de0171cb5a82c20b0963bf79e2f59c4da0c97e94c58a5fdab5ede435ad86aba",
+    "pubDate": "2025-11-15T06:10:00+01:00",
+    "starts_at": "2025-11-15T06:10:00+01:00",
+    "ends_at": "2025-11-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=27|D=2025-11-15"
   }
 ]
