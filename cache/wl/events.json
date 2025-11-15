@@ -350,6 +350,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "pubDate": "2025-11-15T00:00:16+01:00",
+    "starts_at": "2025-11-15T00:00:16+01:00",
+    "ends_at": "2025-11-15T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -386,18 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
-    "pubDate": "2025-11-15T00:00:16+01:00",
-    "starts_at": "2025-11-15T00:00:16+01:00",
-    "ends_at": "2025-11-15T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -406,18 +406,6 @@
     "starts_at": "2025-11-15T04:45:04+01:00",
     "ends_at": "2025-11-16T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-11-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Haltestelle aufgelassen",
-    "description": "Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fa889c2299e7ce8aa1eabc47eb37e266c3e94d2c42d9cfa421d33c79f1be15dc",
-    "pubDate": "2025-11-15T15:01:47+01:00",
-    "starts_at": "2025-11-15T15:01:47+01:00",
-    "ends_at": "2025-11-15T22:30:00+01:00",
-    "_identity": "wl|störung|L=|D=2025-11-15"
   },
   {
     "source": "Wiener Linien",
@@ -478,17 +466,5 @@
     "starts_at": "2025-11-15T20:40:00+01:00",
     "ends_at": "2025-11-15T23:55:00+01:00",
     "_identity": "wl|störung|L=29B|D=2025-11-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5",
-    "pubDate": "2025-11-15T21:17:43+01:00",
-    "starts_at": "2025-11-15T21:17:43+01:00",
-    "ends_at": "2025-11-15T22:19:00+01:00",
-    "_identity": "wl|störung|L=5|D=2025-11-15"
   }
 ]
