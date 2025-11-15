@@ -350,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-15T00:00:16+01:00",
-    "starts_at": "2025-11-15T00:00:16+01:00",
-    "ends_at": "2025-11-15T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -382,6 +370,18 @@
     "starts_at": "2025-11-15T00:00:16+01:00",
     "ends_at": "2025-11-15T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-11-15T00:00:16+01:00",
+    "starts_at": "2025-11-15T00:00:16+01:00",
+    "ends_at": "2025-11-15T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-15"
   },
   {
     "source": "Wiener Linien",
@@ -434,18 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Verkehrsunfall",
-    "description": "Die Linie 48 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033",
-    "pubDate": "2025-11-15T14:00:00+01:00",
-    "starts_at": "2025-11-15T14:00:00+01:00",
-    "ends_at": "2025-11-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=48A|D=2025-11-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "Haltestelle aufgelassen",
     "description": "Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -470,25 +458,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "73A: Rettungseinsatz",
-    "description": "Die Linie 73 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "4A/74A: Verspätungen",
+    "description": "Die Linie 4 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 74 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aeb0b84ae5e8a62af5d84641c15f91257543dc2b7569bb960589eb875b2fd4cc",
-    "pubDate": "2025-11-15T15:55:00+01:00",
-    "starts_at": "2025-11-15T15:55:00+01:00",
+    "guid": "d705c0f207cc7f2845099a619f46f52f805762bd8f36462c3e14e09f2e3c905f",
+    "pubDate": "2025-11-15T16:00:00+01:00",
+    "starts_at": "2025-11-15T16:00:00+01:00",
     "ends_at": "2025-11-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=73A|D=2025-11-15"
+    "_identity": "wl|störung|L=4A,74A|D=2025-11-15"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Verspätungen",
-    "description": "Die Linie 74 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "48A: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6c8834bcfbaf7654bee19dd6b2f57ffc863599541437b7eacefea493f8ec45b4",
-    "pubDate": "2025-11-15T16:00:00+01:00",
-    "starts_at": "2025-11-15T16:00:00+01:00",
-    "ends_at": "2025-11-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=74A|D=2025-11-15"
+    "guid": "5333dcb1e1592d8f81fbfe4b91df068f08c722be45f91be6cac898092fcc2a11",
+    "pubDate": "2025-11-15T16:20:28+01:00",
+    "starts_at": "2025-11-15T16:20:28+01:00",
+    "ends_at": "2025-11-15T17:20:00+01:00",
+    "_identity": "wl|störung|L=48A|D=2025-11-15"
   }
 ]
