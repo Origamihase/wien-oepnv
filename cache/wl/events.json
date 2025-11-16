@@ -326,10 +326,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-16T00:00:13+01:00",
     "starts_at": "2025-11-16T00:00:13+01:00",
     "ends_at": "2025-11-16T23:59:59+01:00",
@@ -350,6 +350,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "pubDate": "2025-11-16T00:00:13+01:00",
+    "starts_at": "2025-11-16T00:00:13+01:00",
+    "ends_at": "2025-11-16T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "13A: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -358,18 +370,6 @@
     "starts_at": "2025-11-16T00:00:13+01:00",
     "ends_at": "2025-11-16T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-16T00:00:13+01:00",
-    "starts_at": "2025-11-16T00:00:13+01:00",
-    "ends_at": "2025-11-16T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-16"
   },
   {
     "source": "Wiener Linien",
