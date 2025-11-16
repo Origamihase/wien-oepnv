@@ -418,5 +418,29 @@
     "starts_at": "2025-11-16T04:50:00+01:00",
     "ends_at": "2025-11-16T23:55:00+01:00",
     "_identity": "wl|störung|L=U6|D=2025-11-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Fremder Verkehrsunfall",
+    "description": "Die Linie 40 A ist derzeit in Richtung Schottentor an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 05:45 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Fuchsthallergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "88eeea788d9bd97b359d36a38227e8eac3f62372f88682d87f20cad66d2ce311",
+    "pubDate": "2025-11-16T05:20:00+01:00",
+    "starts_at": "2025-11-16T05:20:00+01:00",
+    "ends_at": "2025-11-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=40A|D=2025-11-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "df6ec3469e16e2045130d403888b4b94210047d85fa5fd4fd41fb78efa2a8733",
+    "pubDate": "2025-11-16T05:22:19+01:00",
+    "starts_at": "2025-11-16T05:22:19+01:00",
+    "ends_at": "2025-11-16T06:33:00+01:00",
+    "_identity": "wl|störung|L=40A|D=2025-11-16"
   }
 ]
