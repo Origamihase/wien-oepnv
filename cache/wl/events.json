@@ -326,30 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-16T00:00:13+01:00",
-    "starts_at": "2025-11-16T00:00:13+01:00",
-    "ends_at": "2025-11-16T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
-    "pubDate": "2025-11-16T00:00:13+01:00",
-    "starts_at": "2025-11-16T00:00:13+01:00",
-    "ends_at": "2025-11-16T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,6 +346,30 @@
     "starts_at": "2025-11-16T00:00:13+01:00",
     "ends_at": "2025-11-16T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-11-16T00:00:13+01:00",
+    "starts_at": "2025-11-16T00:00:13+01:00",
+    "ends_at": "2025-11-16T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "pubDate": "2025-11-16T00:00:13+01:00",
+    "starts_at": "2025-11-16T00:00:13+01:00",
+    "ends_at": "2025-11-16T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-16"
   },
   {
     "source": "Wiener Linien",
@@ -406,5 +406,29 @@
     "starts_at": "2025-11-16T04:45:12+01:00",
     "ends_at": "2025-11-17T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-11-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25/26/27/29A/29B: Polizeieinsatz",
+    "description": "Die Linie 25 ist derzeit in Richtung Floridsdorf an der Weiterfahrt gehindert. Die Linie 26 ist derzeit in Richtung Strebersdorf an der Weiterfahrt gehindert. Die Linie 27 ist derzeit in Richtung Strebersdorf an der Weiterfahrt gehindert. Die Linie 29 B ist derzeit in Richtung Großfeldsiedlung an der Weiterfahrt gehindert. Die Linie 29 A ist derzeit in Richtung Großfeldsiedlung an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 12:00 Uhr. Grund dafür ist ein Polizeieinsatz im Bereich Schloßhofer Straße 17.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "52c3cfea8e23425ad4ce8c163bb1c086b62cdc997670b60f4eee5635bdceaaa0",
+    "pubDate": "2025-11-16T11:35:00+01:00",
+    "starts_at": "2025-11-16T11:35:00+01:00",
+    "ends_at": "2025-11-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=25,26,27,29A,29B|D=2025-11-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "68bc6af54c6e7221254acf728b57d945990511addcc9f1a0366dc0c96112b806",
+    "pubDate": "2025-11-16T11:38:31+01:00",
+    "starts_at": "2025-11-16T11:38:31+01:00",
+    "ends_at": "2025-11-16T12:38:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-11-16"
   }
 ]
