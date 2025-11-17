@@ -183,12 +183,12 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "N49: Kurzführung - gilt nur Montag bis Freitag, werktags",
-    "description": "Gleisbauarbeiten\nWegen Bauarbeiten kommt es zu folgenden Maßnahmen bei der Linie N49.\nZeitraum:\nVon 20. Oktober 2025 Betriebsbeginn auf Dauer von etwa 5 Wochen\nAm Wochenende normaler Betrieb!\nMaßnahmen:\nWegen Bauarbeiten fährt die Linie N49 nur zwischen Oper, Karlsplatz und Bergmillergasse (zwischenzeitige End- und Anfangshaltestelle).\nDes Weiteren werden die Busse über die Bergmillergasse, Linzer Straße, und Bahnhofstraße umgeleitet.\nAufgelassene Haltestellen in Richtung Oper, Karlsplatz:\nHütteldorf, Bujattigasse (reguläre End- und Anfangshaltestelle)\nBergmillergasse\nSkizze:",
+    "description": "Gleisbauarbeiten\nWegen Bauarbeiten kommt es zu folgenden Maßnahmen bei der Linie N49.\nZeitraum:\nVon 20. Oktober 2025 Betriebsbeginn bis inklusive 23. November 2025\nAm Wochenende normaler Betrieb!\nMaßnahmen:\nWegen Bauarbeiten fährt die Linie N49 nur zwischen Oper, Karlsplatz und Bergmillergasse (zwischenzeitige End- und Anfangshaltestelle).\nDes Weiteren werden die Busse über die Bergmillergasse, Linzer Straße, und Bahnhofstraße umgeleitet.\nAufgelassene Haltestellen in Richtung Oper, Karlsplatz:\nHütteldorf, Bujattigasse (reguläre End- und Anfangshaltestelle)\nBergmillergasse\nSkizze:",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0d6fae73e1dad75ba22f69a5189789e291faa896c9f77df71caa785b011ded6f",
     "pubDate": "2025-10-14T13:47:00+01:00",
     "starts_at": "2025-10-14T13:47:00+01:00",
-    "ends_at": "2026-10-14T11:11:00+01:00",
+    "ends_at": "2025-11-23T05:00:00+01:00",
     "_identity": "wl|hinweis|L=N49|D=2025-10-14"
   },
   {
@@ -350,14 +350,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
+    "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-17T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-17"
+    "_identity": "wl|störung|L=N71|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -374,22 +374,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-17T00:00:23+01:00",
-    "starts_at": "2025-11-17T00:00:23+01:00",
-    "ends_at": "2025-11-17T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "pubDate": "2025-11-17T00:00:23+01:00",
+    "starts_at": "2025-11-17T00:00:23+01:00",
+    "ends_at": "2025-11-17T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-17T23:59:59+01:00",
@@ -454,54 +454,6 @@
     "starts_at": "2025-11-17T08:35:00+01:00",
     "ends_at": "2025-11-17T23:55:00+01:00",
     "_identity": "wl|störung|L=29B|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Verkehrsunfall Betrieb ab Kliebergasse",
-    "description": "Verkehrsunfall Betrieb ab Kliebergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ac8acf45169621513993e76886543fb728fcd18cc6b44914ece94a4fd68cfd09",
-    "pubDate": "2025-11-17T08:47:20+01:00",
-    "starts_at": "2025-11-17T08:47:20+01:00",
-    "ends_at": "2025-11-17T09:46:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Verkehrsunfall Einstieg bei Linie 18",
-    "description": "Verkehrsunfall Einstieg bei Linie 18",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "66bb1c91510f07bd0d034b43de34873aa63642ddf1b649f2d7d839c6f594ae70",
-    "pubDate": "2025-11-17T08:48:18+01:00",
-    "starts_at": "2025-11-17T08:48:18+01:00",
-    "ends_at": "2025-11-17T09:47:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Verkehrsunfall Betrieb ab Kliebergasse",
-    "description": "Verkehrsunfall Betrieb ab Kliebergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f4f395cbb46f1bd9aa73763ebf5591b87c835783990bd4f294607d3ee2c5127",
-    "pubDate": "2025-11-17T08:48:47+01:00",
-    "starts_at": "2025-11-17T08:48:47+01:00",
-    "ends_at": "2025-11-17T09:48:00+01:00",
-    "_identity": "wl|störung|L=62|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35",
-    "pubDate": "2025-11-17T08:49:14+01:00",
-    "starts_at": "2025-11-17T08:49:14+01:00",
-    "ends_at": "2025-11-17T09:48:00+01:00",
-    "_identity": "wl|störung|L=62|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -579,7 +531,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "5A: Umleitung Gaußplatz ab 25.11.2025",
-    "description": "Gleisbauarbeiten\nWegen Gleisbauarbeiten am Gaußplatz können die kurzgeführten Kurse der Linie 5 A dort nicht wenden und werden umgeleitet.\nZeitraum:\nDienstag, 25. November 2025 bis etwa Mitte Dezember 2025.\nMaßnahmen:\nNur jene Kurse der Linie 5 A, die nur zwischen Griegstraße und Gaußplatz fahren sind betroffen, somit:\nMo-Sa (werktag): 20:00 Uhr bis 00:20 Uhr,\nSo-Feiertag ganztägig.\nLinie 5 A in Richtung Griegstraße:\nUmleitung ab Wasnergasse # Gaußplatz über Gaußplatz - Jägerstraße - Wallensteinplatz - Wallensteinstraße - Dammstraße\nAufgelassene Haltestellen:\nGaußplatz (Wasnergasse nach Gaußplatz)\nKarl-Meißl-Straße (Wasnegasse gegenüber 25-27)\nWasnergasse (Wasnergasse gegenüber 43)\nRauscherstraße (Rauscherstraße 1-3)\nErsatzhaltestellen:\nGaußplatz (Wasnergasse 3-5, provisorische Anfangs- und Endhaltestelle)\nWallensteinplatz (Wallensteinplatz gegenüber 8, Haltestelle der Linie 5 B)\nRauscherstraße (Dammstraße 2, provisorische Haltestelle).\nErsatz:\nBenützen Sie in diesem Zeitraum die Haltestellen der Gegenrichtung.",
+    "description": "Gleisbauarbeiten\nWegen Gleisbauarbeiten am Gaußplatz können die kurz geführten Kurse der Linie 5 A dort nicht wenden und werden umgeleitet.\nEbenso können die Kurse Richtung Nestroyplatz den Gaußplatz nicht queren und werden in die Gegenrichtung umgeleitet (siehe unten).\nZeitraum:\nDienstag, 25. November 2025 bis etwa Mitte Dezember 2025.\nMaßnahmen:\nNur jene Kurse der Linie 5 A, die nur zwischen Griegstraße und Gaußplatz fahren sind betroffen, somit:\nMo-Sa (Werktag): 20:00 Uhr bis 00:20 Uhr,\nSo-Feiertag ganztägig.\nLinie 5 A in Richtung Griegstraße, jedoch nur jene, die nicht vom Nestroyplatz kommen:\nUmleitung ab Wasnergasse # Gaußplatz über Gaußplatz - Jägerstraße - Wallensteinplatz - Wallensteinstraße - Dammstraße.\nAufgelassene Haltestellen:\nGaußplatz (Wasnergasse nach Gaußplatz)\nKarl-Meißl-Straße (Wasnergasse gegenüber 25-27)\nWasnergasse (Wasnergasse gegenüber 43)\nRauscherstraße (Rauscherstraße 1-3)\nErsatzhaltestellen:\nGaußplatz (Wasnergasse 3-5, provisorische Anfangs- und Endhaltestelle)\nWallensteinplatz (Wallensteinplatz gegenüber 8, Haltestelle der Linie 5 B)\nRauscherstraße (Dammstraße 2, provisorische Haltestelle).\nLinie 5 A in Richtung Nestroyplatz:\nUmleitung ab Dammstraße # Wallensteinstraße über Wallensteinstraße - Wallensteinplatz - Jägerstraße - Gaußplatz, Gleiskörper - Obere Augartenstraße.\nAufgelassene Haltestellen:\nRauscherstraße (Rauscherstraße 2-4)\nWasnergasse (Wasnergasse 45)\nKarl-Meißl-Straße (Wasnergasse 25-27)\nErsatzhaltestellen:\nRauscherstraße (Wallensteinstraße 51-53)\nWallensteinplatz (Wallensteinplatz 7, Haltestelle der Linie 5 B).\nErsatz:\nBenützen Sie in diesem Zeitraum bitte jeweils die Haltestellen der Gegenrichtung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1fa0a31ed111400345afb01312c2034943a4f3db51e0a35e60ccd4e049f64c00",
     "pubDate": "2025-11-17T09:20:00+01:00",
