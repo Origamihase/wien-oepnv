@@ -362,14 +362,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
+    "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-17T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-17"
+    "_identity": "wl|störung|L=N71|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -386,14 +386,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
+    "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-17T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-17"
+    "_identity": "wl|störung|L=13A|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -434,13 +434,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
+    "title": "U4: Verspätungen",
+    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Pilgramgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "20852ffbd37b67a912d01cdf6a60c7ca1adaa1fdce59570f1a3f057dd9c938a2",
-    "pubDate": "2025-11-17T15:30:48+01:00",
-    "starts_at": "2025-11-17T15:30:48+01:00",
-    "ends_at": "2025-11-17T16:30:00+01:00",
-    "_identity": "wl|störung|L=9A|D=2025-11-17"
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2025-11-17T16:20:00+01:00",
+    "starts_at": "2025-11-17T16:20:00+01:00",
+    "ends_at": "2025-11-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e5660a0ab66e8052c66ac62caa273ee692ce56758d8e16e3324e16b86881f37a",
+    "pubDate": "2025-11-17T16:25:00+01:00",
+    "starts_at": "2025-11-17T16:25:00+01:00",
+    "ends_at": "2025-11-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Verkehrsunfall",
+    "description": "Die Linie 31 ist derzeit in Richtung Stammersdorf an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 16:50 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Stromstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "84f9fe1b5c4beaf00a73c1565363074e86a57541f0f409f0ef6b0f7aac539f50",
+    "pubDate": "2025-11-17T16:25:00+01:00",
+    "starts_at": "2025-11-17T16:25:00+01:00",
+    "ends_at": "2025-11-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=31|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
+    "pubDate": "2025-11-17T16:34:33+01:00",
+    "starts_at": "2025-11-17T16:34:33+01:00",
+    "ends_at": "2025-11-17T17:34:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b3bce5b56b4f9b52769c8c21ebd335d7f9ae6e17dbf3f5187526cfd046403160",
+    "pubDate": "2025-11-17T16:35:02+01:00",
+    "starts_at": "2025-11-17T16:35:02+01:00",
+    "ends_at": "2025-11-17T17:39:00+01:00",
+    "_identity": "wl|störung|L=31|D=2025-11-17"
   }
 ]
