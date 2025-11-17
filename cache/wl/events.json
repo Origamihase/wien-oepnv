@@ -350,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-17T00:00:23+01:00",
-    "starts_at": "2025-11-17T00:00:23+01:00",
-    "ends_at": "2025-11-17T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,6 +358,18 @@
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-17T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-11-17T00:00:23+01:00",
+    "starts_at": "2025-11-17T00:00:23+01:00",
+    "ends_at": "2025-11-17T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -386,14 +386,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
+    "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-17T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-17"
+    "_identity": "wl|störung|L=N71|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -481,30 +481,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7091f5ceb189603887edeb672707027ab0765bd9fd7a0fa2d67f934f96a2ae34",
-    "pubDate": "2025-11-17T08:53:51+01:00",
-    "starts_at": "2025-11-17T08:53:51+01:00",
-    "ends_at": "2025-11-17T09:53:00+01:00",
-    "_identity": "wl|störung|L=10|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d4fefbd61cffb826224497ce36210117717220dc478820ab5f401038825d1565",
-    "pubDate": "2025-11-17T08:54:20+01:00",
-    "starts_at": "2025-11-17T08:54:20+01:00",
-    "ends_at": "2025-11-17T09:53:00+01:00",
-    "_identity": "wl|störung|L=60|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "60A: Umleitung ab 28. November 2025",
     "description": "Veranstaltung\nWegen einer Veranstaltung im Bereich der Endresstraße werden die Busse umgeleitet.\nZeitraum:\nAb Freitag, 28. November 2025 etwa 13.00 Uhr bis Samstag, 29. November etwa 22:00 Uhr.\nMaßnahmen:\n60 A in Richtung Alterlaa U\nUmleitung ab Maurer Hauptplatz # Speisinger Straße über Speisinger Straße – Franz-Graßler-Gasse – Karl-Schwed-Gasse zur bestehenden Fahrtroute.\nAufgelassene Haltestellen Richtung Alterlaa U:\nKarl-Schwed-Gasse (Karl-Schwed-Gasse 134-145)\nErsatzhaltestelle:\nFranz-Graßler-Gasse 62-64\nAufgelassene Haltestelle Richtung Liesing:\nSpeisinger Straße - wird ersatzlos aufgelassen.",
@@ -538,5 +514,17 @@
     "starts_at": "2025-11-17T09:20:00+01:00",
     "ends_at": "2026-11-17T11:11:00+01:00",
     "_identity": "wl|hinweis|L=5A|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Schadhaftes Fahrzeug",
+    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Krieau.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
+    "pubDate": "2025-11-17T09:50:00+01:00",
+    "starts_at": "2025-11-17T09:50:00+01:00",
+    "ends_at": "2025-11-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2025-11-17"
   }
 ]
