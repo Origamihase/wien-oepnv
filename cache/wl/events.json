@@ -350,10 +350,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-17T23:59:59+01:00",
@@ -386,10 +386,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-17T23:59:59+01:00",
@@ -438,8 +438,8 @@
     "description": "Polizeieinsatz Betrieb ab Quartier Belvedere",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "f1ccf4d6b1a6d1d510b41cb2c10a04e3bb077aef3d27f0c5f99cad2a9c11f584",
-    "pubDate": "2025-11-17T18:09:21+01:00",
-    "starts_at": "2025-11-17T18:09:21+01:00",
+    "pubDate": "2025-11-17T18:09:50+01:00",
+    "starts_at": "2025-11-17T18:09:50+01:00",
     "ends_at": "2025-11-17T21:30:00+01:00",
     "_identity": "wl|störung|L=D|D=2025-11-17"
   },
@@ -453,18 +453,6 @@
     "pubDate": "2025-11-17T20:15:00+01:00",
     "starts_at": "2025-11-17T20:15:00+01:00",
     "ends_at": "2025-11-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=40|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e60afdce15be5e41a85d86d78442ae2e1ed6ab5a0dd678cf16e513616dc97fce",
-    "pubDate": "2025-11-17T20:16:05+01:00",
-    "starts_at": "2025-11-17T20:16:05+01:00",
-    "ends_at": "2025-11-17T21:15:00+01:00",
     "_identity": "wl|störung|L=40|D=2025-11-17"
   }
 ]
