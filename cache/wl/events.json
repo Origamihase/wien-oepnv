@@ -350,6 +350,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-11-17T00:00:23+01:00",
+    "starts_at": "2025-11-17T00:00:23+01:00",
+    "ends_at": "2025-11-17T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "13A: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,18 +382,6 @@
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-17T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-17T00:00:23+01:00",
-    "starts_at": "2025-11-17T00:00:23+01:00",
-    "ends_at": "2025-11-17T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -454,5 +454,53 @@
     "starts_at": "2025-11-17T07:35:00+01:00",
     "ends_at": "2025-11-17T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Witterung",
+    "description": "Die Linie 11 ist derzeit in Richtung Kaiserebersdorf an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 08:30 Uhr. Grund dafür ist die aktuelle Witterung im Bereich Wienerfeldgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "551c643af3eefd5c5002322d476fae7cca2ce70f0009d59a4e5fb6e2373f36f3",
+    "pubDate": "2025-11-17T08:05:00+01:00",
+    "starts_at": "2025-11-17T08:05:00+01:00",
+    "ends_at": "2025-11-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=11|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Rettungseinsatz Züge halten in der Buchengasse",
+    "description": "Rettungseinsatz Züge halten in der Buchengasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
+    "pubDate": "2025-11-17T08:07:19+01:00",
+    "starts_at": "2025-11-17T08:07:19+01:00",
+    "ends_at": "2025-11-17T09:06:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Rettungseinsatz",
+    "description": "Die Linie 6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
+    "pubDate": "2025-11-17T08:10:00+01:00",
+    "starts_at": "2025-11-17T08:10:00+01:00",
+    "ends_at": "2025-11-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=6|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e832b46eec6d19cd652e99a3efa00e678cd32779ad0f0da0378f515eb2651f68",
+    "pubDate": "2025-11-17T08:10:23+01:00",
+    "starts_at": "2025-11-17T08:10:23+01:00",
+    "ends_at": "2025-11-17T09:09:00+01:00",
+    "_identity": "wl|störung|L=11|D=2025-11-17"
   }
 ]
