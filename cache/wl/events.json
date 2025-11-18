@@ -326,6 +326,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "pubDate": "2025-11-17T00:00:23+01:00",
+    "starts_at": "2025-11-17T00:00:23+01:00",
+    "ends_at": "2025-11-18T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-11-17T00:00:23+01:00",
+    "starts_at": "2025-11-17T00:00:23+01:00",
+    "ends_at": "2025-11-18T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N71: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -346,30 +370,6 @@
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-18T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-11-17T00:00:23+01:00",
-    "starts_at": "2025-11-17T00:00:23+01:00",
-    "ends_at": "2025-11-18T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-11-17T00:00:23+01:00",
-    "starts_at": "2025-11-17T00:00:23+01:00",
-    "ends_at": "2025-11-18T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -430,5 +430,113 @@
     "starts_at": "2025-11-18T11:45:00+01:00",
     "ends_at": "2025-11-18T23:55:00+01:00",
     "_identity": "wl|störung|L=76A,76B|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
+    "pubDate": "2025-11-18T12:39:47+01:00",
+    "starts_at": "2025-11-18T12:39:47+01:00",
+    "ends_at": "2025-11-18T13:39:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Verkehrsunfall",
+    "description": "Die Linie 13 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2f2c2f4a5edccc2e83123c4cd571f55d466f767a922c5c5c5e338c8121b6f2b9",
+    "pubDate": "2025-11-18T12:40:00+01:00",
+    "starts_at": "2025-11-18T12:40:00+01:00",
+    "ends_at": "2025-11-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fremder Verkehrsunfall",
+    "description": "Die Linie 44 fährt nur zwischen Schottentor und Johann-Nepomuk-Berger-Platz. Ersatzweise benützen Sie die Linien 9, 46. Grund dafür ist ein fremder Verkehrsunfall im Bereich Montleartstraße # Thaliastraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f53a283f3ee969f2582a7c1c05102b661c4ea8366276196d0cf3bbc0187a3be3",
+    "pubDate": "2025-11-18T12:40:00+01:00",
+    "starts_at": "2025-11-18T12:40:00+01:00",
+    "ends_at": "2025-11-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=44|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13da360ca8a94dcafa0dd3aa043ce5baefa02c1c92c93d57c144cc19166804d0",
+    "pubDate": "2025-11-18T12:44:43+01:00",
+    "starts_at": "2025-11-18T12:44:43+01:00",
+    "ends_at": "2025-11-18T16:00:00+01:00",
+    "_identity": "wl|störung|L=44|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fremdunfall Betrieb ab Johann-Nepomuk-Berger-Platz",
+    "description": "Fremdunfall Betrieb ab Johann-Nepomuk-Berger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "790d436782ad4a4a14807ca21f71b9fb3b4a2df1740d688dc66b1277c5b2d3cd",
+    "pubDate": "2025-11-18T12:45:15+01:00",
+    "starts_at": "2025-11-18T12:45:15+01:00",
+    "ends_at": "2025-11-18T16:00:00+01:00",
+    "_identity": "wl|störung|L=44|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fremdunfall Einstieg bei Linien 2 und 9",
+    "description": "Fremdunfall Einstieg bei Linien 2 und 9",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1800bcce33f2cd040f91b8ce87dc0fdf3c478cb55d97217e21f9ccebc6b8137c",
+    "pubDate": "2025-11-18T12:47:15+01:00",
+    "starts_at": "2025-11-18T12:47:15+01:00",
+    "ends_at": "2025-11-18T16:15:00+01:00",
+    "_identity": "wl|störung|L=44|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fremdunfall Betrieb nur bis Johann-Nepomukl-Berger-Platz",
+    "description": "Fremdunfall Betrieb nur bis Johann-Nepomukl-Berger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3e206a3964ae96d2d57838e53acf78cf885c07e44d44bce37dd112c0b2d5fff1",
+    "pubDate": "2025-11-18T12:54:55+01:00",
+    "starts_at": "2025-11-18T12:54:55+01:00",
+    "ends_at": "2025-11-18T16:00:00+01:00",
+    "_identity": "wl|störung|L=44|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d",
+    "pubDate": "2025-11-18T13:15:00+01:00",
+    "starts_at": "2025-11-18T13:15:00+01:00",
+    "ends_at": "2025-11-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=60|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d4fefbd61cffb826224497ce36210117717220dc478820ab5f401038825d1565",
+    "pubDate": "2025-11-18T13:18:54+01:00",
+    "starts_at": "2025-11-18T13:18:54+01:00",
+    "ends_at": "2025-11-18T14:25:00+01:00",
+    "_identity": "wl|störung|L=60|D=2025-11-18"
   }
 ]
