@@ -338,6 +338,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-11-17T00:00:23+01:00",
+    "starts_at": "2025-11-17T00:00:23+01:00",
+    "ends_at": "2025-11-18T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -358,18 +370,6 @@
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-18T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-17T00:00:23+01:00",
-    "starts_at": "2025-11-17T00:00:23+01:00",
-    "ends_at": "2025-11-18T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -418,5 +418,17 @@
     "starts_at": "2025-11-18T11:35:00+01:00",
     "ends_at": "2025-11-18T23:55:00+01:00",
     "_identity": "wl|störung|L=1A,2A|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "76A/76B: Rettungseinsatz",
+    "description": "Die Linie 76 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 76 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "27bd3d99bb83ca2c54f94b3e35f6bedbe46bd3ae95c04fed6f6737b69952a7f7",
+    "pubDate": "2025-11-18T11:45:00+01:00",
+    "starts_at": "2025-11-18T11:45:00+01:00",
+    "ends_at": "2025-11-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=76A,76B|D=2025-11-18"
   }
 ]
