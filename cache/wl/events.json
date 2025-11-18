@@ -338,14 +338,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-18T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-17"
+    "_identity": "wl|störung|L=13A|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -362,14 +362,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-18T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-17"
+    "_identity": "wl|störung|L=N71|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -410,19 +410,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Rettungseinsatz Betrieb ab Schweglerstraße",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
-    "pubDate": "2025-11-18T18:50:00+01:00",
-    "starts_at": "2025-11-18T18:50:00+01:00",
-    "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=9|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Rettungseinsatz Betrieb ab Josefstädter Straße",
+    "title": "2: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
@@ -434,7 +422,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Fahrtbehinderung Falschparker",
+    "title": "12A: Falschparker",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
@@ -442,30 +430,6 @@
     "starts_at": "2025-11-18T19:00:00+01:00",
     "ends_at": "2025-11-18T23:55:00+01:00",
     "_identity": "wl|störung|L=12A|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8d027bd0136563db15b013c0aa4de03c0f2ff6b7c33eb3469e64b319bd6a584c",
-    "pubDate": "2025-11-18T19:01:37+01:00",
-    "starts_at": "2025-11-18T19:01:37+01:00",
-    "ends_at": "2025-11-18T20:01:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "faa2c75b2aaa3d9a162d6003d0bcec7e9a0d0132a2c6c3f2e5ebd42f317d3882",
-    "pubDate": "2025-11-18T19:02:14+01:00",
-    "starts_at": "2025-11-18T19:02:14+01:00",
-    "ends_at": "2025-11-18T20:02:00+01:00",
-    "_identity": "wl|störung|L=11|D=2025-11-18"
   },
   {
     "source": "Wiener Linien",
@@ -483,12 +447,48 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "31: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Die Linie 31 ist derzeit in Richtung Schottenring an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 20:15 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Shuttleworthstraße.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 31 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "93779f2373f8195241c5ab62df54f31689b7c4f93a9f65654658fd3b67c3a983",
     "pubDate": "2025-11-18T19:40:00+01:00",
     "starts_at": "2025-11-18T19:40:00+01:00",
     "ends_at": "2025-11-18T23:55:00+01:00",
     "_identity": "wl|störung|L=31|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "30: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e651b94865f7e5efc9395cf803f518a69f762e0cb990649d58cf4f8152b3d3c7",
+    "pubDate": "2025-11-18T19:53:21+01:00",
+    "starts_at": "2025-11-18T19:53:21+01:00",
+    "ends_at": "2025-11-18T20:52:00+01:00",
+    "_identity": "wl|störung|L=30|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Rettungseinsatz",
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Alterlaa und Am Schöpfwerk in beiden Richtungen über Gleis 1. Die Störung dauert voraussichtlich bis 20:15 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Am Schöpfwerk.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2025-11-18T19:55:00+01:00",
+    "starts_at": "2025-11-18T19:55:00+01:00",
+    "ends_at": "2025-11-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Verspätungen",
+    "description": "Die Linie 62 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "82b2b968365fe18a9edd52433273c0f78ff5079c2218a60fb58c22aa07911b8c",
+    "pubDate": "2025-11-18T20:00:00+01:00",
+    "starts_at": "2025-11-18T20:00:00+01:00",
+    "ends_at": "2025-11-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=62|D=2025-11-18"
   }
 ]
