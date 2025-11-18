@@ -410,19 +410,19 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A/2A: Betriebsstörung",
-    "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "1A/2A/3A: Betriebsstörung",
+    "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 3 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6c8421903c79fd1432e10de2f006a028a5eb75e3a18b295c8995464be0fbe9ec",
+    "guid": "5b9507f1b3e0ca239e80a8b8646a1e4a5090fc280278138b7e78a78302bbf54c",
     "pubDate": "2025-11-18T11:35:00+01:00",
     "starts_at": "2025-11-18T11:35:00+01:00",
     "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=1A,2A|D=2025-11-18"
+    "_identity": "wl|störung|L=1A,2A,3A|D=2025-11-18"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "76A/76B: Rettungseinsatz",
+    "title": "76B/76A: Rettungseinsatz",
     "description": "Die Linie 76 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 76 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "27bd3d99bb83ca2c54f94b3e35f6bedbe46bd3ae95c04fed6f6737b69952a7f7",
