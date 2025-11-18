@@ -255,7 +255,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "29B: Felmayergasse ab 17.11.2025",
-    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Felmayergasse # Richard-Neutra-Gasse wird die Linie 29 B umgeleitet.\nZeitraum:\nAb Montag, 17. November 2025, etwa 06:30 Uhr bis voraussichtlich Mitte Dezember 2025.\nMaßnahmen:\nLinie 29 B in Richtung Großfeldsiedlung U:\nUmleitung ab Paukerwerkstraße # Richard-Neutra-Gasse über Richard-Neutra-Gasse – Schönthalergasse – Egon-Friedell-Gasse – Schererstraße.\nAufgelassene Haltestellen:\nHerta-Kräftner-Gasse (Richard-Neutra-Gasse 6)\nFelmayergasse (Richard-Neutra-Gasse 12-14)\nEgon-Friedell-Gasse (Felmayergasse vor Egon-Friedell-Gasse)\nErsatzhaltestellen:\nHerta-Kräftner-Gasse (Paukerwerkstraße gegenüber 7)\nEgon-Friedell-Gasse (Oswald-Redlich-Straße 2)\nLinie 29 B in Richtung Floridsdorf S U:\nUmleitung ab Schererstraße # Egon-Friedell-Gasse über Egon-Friedell-Gasse – Schönthalergasse – Richard-Neutra-Gasse – Paukerwerkstraße.\nAufgelassene Haltestellen:\nEgon-Friedell-Gasse (Egon-Friedell-Gasse 3)\nFelmayergasse (Richard-Neutra-Gasse gegenüber 12)\nHerta-Kräftner-Gasse (Richard-Neutra-Gasse gegenüber 6)\nErsatzhaltestellen:\nEgon-Friedell-Gasse (Oswald-Redlich-Straße 1)\nHerta-Kräftner-Gasse (Paukerwerkstraße 7)",
+    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Felmayergasse # Richard-Neutra-Gasse wird die Linie 29 B umgeleitet.\nZeitraum:\nAb Montag, 17. November 2025, etwa 06:30 Uhr bis voraussichtlich Mitte Dezember 2025.\nMaßnahmen:\nLinie 29 B in Richtung Großfeldsiedlung U:\nUmleitung ab Paukerwerkstraße # Richard-Neutra-Gasse über Richard-Neutra-Gasse – Schönthalergasse – Egon-Friedell-Gasse – Schererstraße.\nAufgelassene Haltestellen:\nHerta-Kräftner-Gasse (Richard-Neutra-Gasse 6)\nFelmayergasse (Richard-Neutra-Gasse 12-14)\nEgon-Friedell-Gasse (Felmayergasse vor Egon-Friedell-Gasse)\nErsatzhaltestellen:\nHerta-Kräftner-Gasse (Paukerwerkstraße gegenüber 7)\nEgon-Friedell-Gasse (Oswald-Redlich-Straße 2)\nLinie 29 B in Richtung Floridsdorf S U:\nUmleitung ab Schererstraße # Egon-Friedell-Gasse über Egon-Friedell-Gasse – Schönthalergasse – Richard-Neutra-Gasse – Paukerwerkstraße.\nAufgelassene Haltestellen:\nEgon-Friedell-Gasse (Egon-Friedell-Gasse 3)\nFelmayergasse (Richard-Neutra-Gasse gegenüber 12)\nHerta-Kräftner-Gasse (Richard-Neutra-Gasse gegenüber 6)\nErsatzhaltestellen:\nEgon-Friedell-Gasse (Oswald-Redlich-Straße 1)\nHerta-Kräftner-Gasse (Paukerwerkstraße 7)\nSkizze:",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "01eb39443591b8916278493e626e4b76718c31b4f3e96e56c886e11206fe5d0a",
     "pubDate": "2025-11-05T11:45:00+01:00",
@@ -338,18 +338,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
-    "pubDate": "2025-11-17T00:00:23+01:00",
-    "starts_at": "2025-11-17T00:00:23+01:00",
-    "ends_at": "2025-11-18T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Busse halten Laudongasse 24-30",
     "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -373,6 +361,18 @@
   },
   {
     "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-11-17T00:00:23+01:00",
+    "starts_at": "2025-11-17T00:00:23+01:00",
+    "ends_at": "2025-11-18T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "60A: Umleitung ab 28. November 2025",
     "description": "Veranstaltung\nWegen einer Veranstaltung im Bereich der Endresstraße werden die Busse umgeleitet.\nZeitraum:\nAb Freitag, 28. November 2025 etwa 13.00 Uhr bis Samstag, 29. November etwa 22:00 Uhr.\nMaßnahmen:\n60 A in Richtung Alterlaa U\nUmleitung ab Maurer Hauptplatz # Speisinger Straße über Speisinger Straße – Franz-Graßler-Gasse – Karl-Schwed-Gasse zur bestehenden Fahrtroute.\nAufgelassene Haltestellen Richtung Alterlaa U:\nKarl-Schwed-Gasse (Karl-Schwed-Gasse 134-145)\nErsatzhaltestelle:\nFranz-Graßler-Gasse 62-64\nAufgelassene Haltestelle Richtung Liesing:\nSpeisinger Straße - wird ersatzlos aufgelassen.",
@@ -387,7 +387,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "5A: Umleitung Gaußplatz ab 25.11.2025",
-    "description": "Gleisbauarbeiten\nWegen Gleisbauarbeiten am Gaußplatz können die kurz geführten Kurse der Linie 5 A dort nicht wenden und werden umgeleitet.\nEbenso können die Kurse Richtung Nestroyplatz den Gaußplatz nicht queren und werden in die Gegenrichtung umgeleitet (siehe unten).\nZeitraum:\nDienstag, 25. November 2025 bis etwa Mitte Dezember 2025.\nMaßnahmen:\nNur jene Kurse der Linie 5 A, die nur zwischen Griegstraße und Gaußplatz fahren sind betroffen, somit:\nMo-Sa (Werktag): 20:00 Uhr bis 00:20 Uhr,\nSo-Feiertag ganztägig.\nLinie 5 A in Richtung Griegstraße, jedoch nur jene, die nicht vom Nestroyplatz kommen:\nUmleitung ab Wasnergasse # Gaußplatz über Gaußplatz - Jägerstraße - Wallensteinplatz - Wallensteinstraße - Dammstraße.\nAufgelassene Haltestellen:\nGaußplatz (Wasnergasse nach Gaußplatz)\nKarl-Meißl-Straße (Wasnergasse gegenüber 25-27)\nWasnergasse (Wasnergasse gegenüber 43)\nRauscherstraße (Rauscherstraße 1-3)\nErsatzhaltestellen:\nGaußplatz (Wasnergasse 3-5, provisorische Anfangs- und Endhaltestelle)\nWallensteinplatz (Wallensteinplatz gegenüber 8, Haltestelle der Linie 5 B)\nRauscherstraße (Dammstraße 2, provisorische Haltestelle).\nLinie 5 A in Richtung Nestroyplatz:\nUmleitung ab Dammstraße # Wallensteinstraße über Wallensteinstraße - Wallensteinplatz - Jägerstraße - Gaußplatz, Gleiskörper - Obere Augartenstraße.\nAufgelassene Haltestellen:\nRauscherstraße (Rauscherstraße 2-4)\nWasnergasse (Wasnergasse 45)\nKarl-Meißl-Straße (Wasnergasse 25-27)\nErsatzhaltestellen:\nRauscherstraße (Wallensteinstraße 51-53)\nWallensteinplatz (Wallensteinplatz 7, Haltestelle der Linie 5 B).\nErsatz:\nBenützen Sie in diesem Zeitraum bitte jeweils die Haltestellen der Gegenrichtung.",
+    "description": "Gleisbauarbeiten\nWegen Gleisbauarbeiten am Gaußplatz können die kurz geführten Kurse der Linie 5 A dort nicht wenden und werden umgeleitet.\nEbenso können die Kurse Richtung Nestroyplatz den Gaußplatz nicht queren und werden in die Gegenrichtung umgeleitet (siehe unten).\nZeitraum:\nDienstag, 25. November 2025 bis etwa Mitte Dezember 2025.\nMaßnahmen:\nLinie 5 A in Richtung Griegstraße, jedoch nur jene, die nicht vom Nestroyplatz kommen:\nNur jene Kurse der Linie 5 A, die nur zwischen Griegstraße und Gaußplatz fahren sind betroffen, somit:\nMo-Sa (Werktag): 20:00 Uhr bis 00:20 Uhr,\nSo-Feiertag ganztägig.\nUmleitung ab Wasnergasse # Gaußplatz über Gaußplatz - Jägerstraße - Wallensteinplatz - Wallensteinstraße - Dammstraße.\nAufgelassene Haltestellen:\nGaußplatz (Wasnergasse nach Gaußplatz)\nKarl-Meißl-Straße (Wasnergasse gegenüber 25-27)\nWasnergasse (Wasnergasse gegenüber 43)\nRauscherstraße (Rauscherstraße 1-3)\nErsatzhaltestellen:\nGaußplatz (Wasnergasse 3-5, provisorische Anfangs- und Endhaltestelle)\nWallensteinplatz (Wallensteinplatz gegenüber 8, Haltestelle der Linie 5 B)\nRauscherstraße (Dammstraße 2, provisorische Haltestelle).\nLinie 5 A in Richtung Nestroyplatz:\nJene Kurse Mo-Sa bis etwa 20:00 Uhr.\nUmleitung ab Dammstraße # Wallensteinstraße über Wallensteinstraße - Wallensteinplatz - Jägerstraße - Gaußplatz, Gleiskörper - Obere Augartenstraße.\nAufgelassene Haltestellen:\nRauscherstraße (Rauscherstraße 2-4)\nWasnergasse (Wasnergasse 45)\nKarl-Meißl-Straße (Wasnergasse 25-27)\nErsatzhaltestellen:\nRauscherstraße (Wallensteinstraße 51-53)\nWallensteinplatz (Wallensteinplatz 7, Haltestelle der Linie 5 B).\nErsatz:\nBenützen Sie in diesem Zeitraum bitte jeweils die Haltestellen der Gegenrichtung.\nSkizzen:\nSkizze für kurz geführte Kurse ab Gaußplatz\nSkizze für lang geführte Kurse zum Nestroyplatz:",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1fa0a31ed111400345afb01312c2034943a4f3db51e0a35e60ccd4e049f64c00",
     "pubDate": "2025-11-17T09:20:00+01:00",
@@ -410,18 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A/2A/3A: Betriebsstörung",
-    "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 3 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5b9507f1b3e0ca239e80a8b8646a1e4a5090fc280278138b7e78a78302bbf54c",
-    "pubDate": "2025-11-18T11:35:00+01:00",
-    "starts_at": "2025-11-18T11:35:00+01:00",
-    "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=1A,2A,3A|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Fahrzeug im Gleis",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 18 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -430,30 +418,6 @@
     "starts_at": "2025-11-18T14:15:00+01:00",
     "ends_at": "2025-11-18T23:55:00+01:00",
     "_identity": "wl|störung|L=18|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972",
-    "pubDate": "2025-11-18T15:05:00+01:00",
-    "starts_at": "2025-11-18T15:05:00+01:00",
-    "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie O zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6",
-    "pubDate": "2025-11-18T15:05:00+01:00",
-    "starts_at": "2025-11-18T15:05:00+01:00",
-    "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=O|D=2025-11-18"
   },
   {
     "source": "Wiener Linien",
@@ -470,18 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "988c80ab109007f5051aff806aa861e0141853ffcc393ab7f2657dc9a31b4cd0",
-    "pubDate": "2025-11-18T16:10:00+01:00",
-    "starts_at": "2025-11-18T16:10:00+01:00",
-    "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=43|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "6: Rettungseinsatz",
     "description": "Die Linie 6 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -490,5 +442,65 @@
     "starts_at": "2025-11-18T16:15:00+01:00",
     "ends_at": "2025-11-18T23:55:00+01:00",
     "_identity": "wl|störung|L=6|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "4A: Verkehrsüberlastung",
+    "description": "Die Linie 4 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c",
+    "pubDate": "2025-11-18T16:50:00+01:00",
+    "starts_at": "2025-11-18T16:50:00+01:00",
+    "ends_at": "2025-11-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=4A|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fahrtbehinderung wegen Demonstration",
+    "description": "Fahrtbehinderung wegen Demonstration",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "882cff7dff40bedd1ece0cbb30689a64d03bb5ae0a9196ee7128b2dd79abddb9",
+    "pubDate": "2025-11-18T16:58:21+01:00",
+    "starts_at": "2025-11-18T16:58:21+01:00",
+    "ends_at": "2025-11-18T18:45:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Demonstration Betrieb ab Hintere Zollamtsstraße",
+    "description": "Demonstration Betrieb ab Hintere Zollamtsstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4d575d0a8f97a0f1e2fe25796c1a21ed9d13c45bba3cc6273daf9df012fcb0ce",
+    "pubDate": "2025-11-18T16:58:29+01:00",
+    "starts_at": "2025-11-18T16:58:29+01:00",
+    "ends_at": "2025-11-18T19:00:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 9 ist derzeit in Richtung Gersthof an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 17:30 Uhr. Grund dafür ist ein Falschparker im Bereich Simonygasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2025-11-18T17:05:00+01:00",
+    "starts_at": "2025-11-18T17:05:00+01:00",
+    "ends_at": "2025-11-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1/2: Polizeieinsatz",
+    "description": "Die Linie 1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fd28ebe9da83c94f515c60ee960cb3fc34bf497a2c297724b9c97f0f981d04e3",
+    "pubDate": "2025-11-18T17:10:00+01:00",
+    "starts_at": "2025-11-18T17:10:00+01:00",
+    "ends_at": "2025-11-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=1,2|D=2025-11-18"
   }
 ]
