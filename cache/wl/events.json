@@ -61,18 +61,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "95A/97A: Straßenbauarbeiten bis 18.11.2025",
-    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Pfalzgasse werden die Linien 95 A und 97 A umgeleitet.\nZeitraum:\nAb Montag, 22. September 2025, etwa 07:00 Uhr bis 18. November 2025, etwa 09:00 Uhr\nMaßnahmen:\nLinie 95 A in Richtung Aspern Nord S U\nUmleitung ab Hausfeldstraße # Pfalzgasse über Hausfeldstraße – Lackenjöchelgasse – Schukowitzgasse – Pfalzgasse.\nLinie 95 A in Richtung Großer Biberhaufen\nUmleitung ab Fuchsenzeile # Schukowitzgasse über Schukowitzgasse – Lackenjöchelgasse – Hausfeldstraße.\nHaltestellen in Richtung Großer Biberhaufen:\nPODHAGSKYGASSE\nSchukowitzgasse nach Podhagskygasse\nPFALZGASSE\nSchukowitzgasse vor Pfalzgasse\nNEUBREITENLEE\nPfalzgasse 1-5\nErsatz- und provisorische Haltestellen:\nPODHAGSKYGASSE Schukowitzgasse 30\nNEUBREITENLEE Quadenstraße 87 -89\nLinie 97 A (Schulkurs) in Richtung Mayredergasse\nUmleitung ab Hausfeldstraße # Lackenjöchelgasse über Lackenjöchelgasse – Schukowitzgasse – Pfalzgasse.\nHaltestellen:\nLACKENJÖCHELGASSE\nHausfeldstraße nach Lackenjöchelgasse\nLinie 97 A in Richtung Breitenlee, Schule\nUmleitung ab Fuchsenzeile # Schukowitzgasse über Schukowitzgasse – Lackenjöchelgasse – Hausfeldstraße.\nHaltestellen:\nPODHAGSKYGASSE\nSchukowitzgasse nach Podhagskygasse\nPFALZGASSE\nSchukowitzgasse vor Pfalzgasse\nNEUBREITENLEE\nPfalzgasse 1-5\nErsatz- und provisorische Haltestellen:\nPODHAGSKYGASSE Schukowitzgasse 30\nNEUBREITENLEE Hausfeldstraße gegenüber 76-78",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1500fe0735896605c88f56fc49ba329a88ae8782fbccb35a991fed759428ee3c",
-    "pubDate": "2025-09-11T13:00:00+01:00",
-    "starts_at": "2025-09-11T13:00:00+01:00",
-    "ends_at": "2025-11-18T09:00:00+01:00",
-    "_identity": "wl|hinweis|L=95A,97A|D=2025-09-11"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "U4: Bauarbeiten",
     "description": "Die Linie U4 kann die Station Landstraße U in Fahrtrichtung Hütteldorf nicht einhalten. Um die Station Landstraße U zu erreichen, fahren Sie eine Station weiter bis Stadtpark und steigen Sie dort in einen Zug in die Gegenrichtung um. Die Arbeiten dauern bis 4. Dezember 2025 Betriebsschluss. Grund dafür sind Bauarbeiten im Bereich Landstraße.",
@@ -338,10 +326,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-18T23:59:59+01:00",
@@ -350,10 +338,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-18T23:59:59+01:00",
@@ -422,42 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26A: Rettungseinsatz",
-    "description": "Die Linie 26 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0245b6164e8aeaf5bf219cd1cff1358fe2406e2c522e5ac88f5e5fc5c5e87abe",
-    "pubDate": "2025-11-18T06:50:00+01:00",
-    "starts_at": "2025-11-18T06:50:00+01:00",
-    "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=26A|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a",
-    "pubDate": "2025-11-18T07:10:00+01:00",
-    "starts_at": "2025-11-18T07:10:00+01:00",
-    "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=60|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Schadhaftes Fahrzeug",
-    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Alterlaa.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
-    "pubDate": "2025-11-18T07:30:00+01:00",
-    "starts_at": "2025-11-18T07:30:00+01:00",
-    "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "31: Betriebsstörung",
     "description": "Die Linie 31 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -470,30 +422,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
-    "pubDate": "2025-11-18T08:10:00+01:00",
-    "starts_at": "2025-11-18T08:10:00+01:00",
-    "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11/71: Verspätungen",
-    "description": "Die Linie 11 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5c8cbcfc483548e16d56f40581ae9165cba8dca7b736254981e921946395aee9",
-    "pubDate": "2025-11-18T08:20:00+01:00",
-    "starts_at": "2025-11-18T08:20:00+01:00",
-    "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=11,71|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "9: Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -502,6 +430,18 @@
     "starts_at": "2025-11-18T08:20:00+01:00",
     "ends_at": "2025-11-18T23:55:00+01:00",
     "_identity": "wl|störung|L=9|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Verspätungen",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e3d5b5559f494aee2eaa5aaaaf9d625b3d892f7b9d9446f0446e98c4a0f04ac1",
+    "pubDate": "2025-11-18T08:20:00+01:00",
+    "starts_at": "2025-11-18T08:20:00+01:00",
+    "ends_at": "2025-11-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=71|D=2025-11-18"
   },
   {
     "source": "Wiener Linien",
@@ -526,5 +466,29 @@
     "starts_at": "2025-11-18T08:25:00+01:00",
     "ends_at": "2025-11-18T23:55:00+01:00",
     "_identity": "wl|störung|L=7A|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26A: Betrieb ab Polgarstraße",
+    "description": "Bauarbeiten Betrieb ab Polgarstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fecff84c73d3e7f3c8518c568316c427645917b2e64633eeb3eee4716867b6d3",
+    "pubDate": "2025-11-18T08:46:33+01:00",
+    "starts_at": "2025-11-18T08:46:33+01:00",
+    "ends_at": "2025-11-18T09:45:00+01:00",
+    "_identity": "wl|störung|L=26A|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26A: Betrieb ab Konstanziagasse",
+    "description": "Bauarbeiten Betrieb ab Konstanziagasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0f5f4d695ae223d9fe39b6be309de6916b7cf401654773e204020bfc222dd22c",
+    "pubDate": "2025-11-18T08:47:02+01:00",
+    "starts_at": "2025-11-18T08:47:02+01:00",
+    "ends_at": "2025-11-18T09:46:00+01:00",
+    "_identity": "wl|störung|L=26A|D=2025-11-18"
   }
 ]
