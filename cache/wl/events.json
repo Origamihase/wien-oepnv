@@ -350,10 +350,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-18T23:59:59+01:00",
@@ -362,10 +362,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-18T23:59:59+01:00",
@@ -430,18 +430,6 @@
     "starts_at": "2025-11-18T14:15:00+01:00",
     "ends_at": "2025-11-18T23:55:00+01:00",
     "_identity": "wl|störung|L=18|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Schadhaftes Fahrzeug",
-    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
-    "pubDate": "2025-11-18T14:15:00+01:00",
-    "starts_at": "2025-11-18T14:15:00+01:00",
-    "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-11-18"
   },
   {
     "source": "Wiener Linien",
