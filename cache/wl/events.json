@@ -326,30 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
-    "pubDate": "2025-11-17T00:00:23+01:00",
-    "starts_at": "2025-11-17T00:00:23+01:00",
-    "ends_at": "2025-11-18T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
-    "pubDate": "2025-11-17T00:00:23+01:00",
-    "starts_at": "2025-11-17T00:00:23+01:00",
-    "ends_at": "2025-11-18T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,6 +346,30 @@
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-18T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2f1056f8be02045c1161a7e9e2f0f069623bfdae60c1ba37d23e1af8d6ff2a9",
+    "pubDate": "2025-11-17T00:00:23+01:00",
+    "starts_at": "2025-11-17T00:00:23+01:00",
+    "ends_at": "2025-11-18T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "pubDate": "2025-11-17T00:00:23+01:00",
+    "starts_at": "2025-11-17T00:00:23+01:00",
+    "ends_at": "2025-11-18T23:59:59+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -442,53 +442,5 @@
     "starts_at": "2025-11-18T08:20:00+01:00",
     "ends_at": "2025-11-18T23:55:00+01:00",
     "_identity": "wl|störung|L=71|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "97d36012e56b1e5a07124d6ea367507c8e56424a01571c10477b0691d91eaa87",
-    "pubDate": "2025-11-18T08:24:33+01:00",
-    "starts_at": "2025-11-18T08:24:33+01:00",
-    "ends_at": "2025-11-18T09:34:00+01:00",
-    "_identity": "wl|störung|L=9|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Signalstörung",
-    "description": "Die Linie 7 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Signalstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "56cfae51576906358ca8b20023d237b58b63c2307392b3a7b06419cfe7314754",
-    "pubDate": "2025-11-18T08:25:00+01:00",
-    "starts_at": "2025-11-18T08:25:00+01:00",
-    "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=7A|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26A: Betrieb ab Polgarstraße",
-    "description": "Bauarbeiten Betrieb ab Polgarstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fecff84c73d3e7f3c8518c568316c427645917b2e64633eeb3eee4716867b6d3",
-    "pubDate": "2025-11-18T08:46:33+01:00",
-    "starts_at": "2025-11-18T08:46:33+01:00",
-    "ends_at": "2025-11-18T09:45:00+01:00",
-    "_identity": "wl|störung|L=26A|D=2025-11-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26A: Betrieb ab Konstanziagasse",
-    "description": "Bauarbeiten Betrieb ab Konstanziagasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0f5f4d695ae223d9fe39b6be309de6916b7cf401654773e204020bfc222dd22c",
-    "pubDate": "2025-11-18T08:47:02+01:00",
-    "starts_at": "2025-11-18T08:47:02+01:00",
-    "ends_at": "2025-11-18T09:46:00+01:00",
-    "_identity": "wl|störung|L=26A|D=2025-11-18"
   }
 ]
