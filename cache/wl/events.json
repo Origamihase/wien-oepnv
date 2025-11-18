@@ -410,13 +410,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U6 zu unterschiedlichen Intervallen.",
+    "title": "6: Rettungseinsatz",
+    "description": "Die Linie 6 kann derzeit in Richtung Geiereckstraße nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Burggasse, Stadthalle U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2025-11-18T19:55:00+01:00",
-    "starts_at": "2025-11-18T19:55:00+01:00",
+    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
+    "pubDate": "2025-11-18T21:45:00+01:00",
+    "starts_at": "2025-11-18T21:45:00+01:00",
     "ends_at": "2025-11-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-11-18"
+    "_identity": "wl|störung|L=6|D=2025-11-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2025-11-18T23:05:00+01:00",
+    "starts_at": "2025-11-18T23:05:00+01:00",
+    "ends_at": "2025-11-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2025-11-18"
   }
 ]
