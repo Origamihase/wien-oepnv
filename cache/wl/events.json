@@ -278,26 +278,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Betrieb ab Laudongasse",
+    "title": "13A: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-20T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Busse halten Laudongasse 24-30",
-    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
-    "pubDate": "2025-11-17T00:00:23+01:00",
-    "starts_at": "2025-11-17T00:00:23+01:00",
-    "ends_at": "2025-11-20T23:59:59+01:00",
-    "_identity": "wl|störung|L=N71|D=2025-11-17"
+    "_identity": "wl|störung|L=13A|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -314,14 +302,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Betrieb ab Laudongasse",
-    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "title": "N71: Busse halten Laudongasse 24-30",
+    "description": "Bauarbeiten Busse halten Laudongasse 24-30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5710daeb7ecb502f84740fa821a884d8e772bc6c5b92f71e8fef397d408b1e92",
+    "guid": "7e7dab6564547aa70b7702ca29e67e0fb27449f632b271c0267a2af99c5312a9",
     "pubDate": "2025-11-17T00:00:23+01:00",
     "starts_at": "2025-11-17T00:00:23+01:00",
     "ends_at": "2025-11-20T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-17"
+    "_identity": "wl|störung|L=N71|D=2025-11-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Betrieb ab Laudongasse",
+    "description": "Bauarbeiten Betrieb ab Laudongasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "168be277f15ac9bc010f2bc27316120f2af9f77b8b0e845b661b961c7bb4767c",
+    "pubDate": "2025-11-17T00:00:23+01:00",
+    "starts_at": "2025-11-17T00:00:23+01:00",
+    "ends_at": "2025-11-20T23:59:59+01:00",
+    "_identity": "wl|störung|L=N71|D=2025-11-17"
   },
   {
     "source": "Wiener Linien",
@@ -410,49 +410,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 zu unterschiedlichen Intervallen.",
+    "title": "6: Rettungseinsatz Züge halten bei Li. 18",
+    "description": "Rettungseinsatz Züge halten bei Li. 18",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5",
-    "pubDate": "2025-11-20T06:45:00+01:00",
-    "starts_at": "2025-11-20T06:45:00+01:00",
-    "ends_at": "2025-11-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=12|D=2025-11-20"
+    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
+    "pubDate": "2025-11-20T08:39:57+01:00",
+    "starts_at": "2025-11-20T08:39:57+01:00",
+    "ends_at": "2025-11-20T09:39:00+01:00",
+    "_identity": "wl|störung|L=6|D=2025-11-20"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 zu unterschiedlichen Intervallen.",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f563448e7fb71558e6eef46dca2bf47130d05fc4cbb4ec67d362ce9b66884713",
-    "pubDate": "2025-11-20T07:05:00+01:00",
-    "starts_at": "2025-11-20T07:05:00+01:00",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2025-11-20T09:00:00+01:00",
+    "starts_at": "2025-11-20T09:00:00+01:00",
     "ends_at": "2025-11-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=40|D=2025-11-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18/6: Rettungseinsatz",
-    "description": "Die Linie 6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 18 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Urban-Loritz-Platz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1def9461b8655d7b6f67bdc914523256dd51eef4cde802a2417942e6aeda9a74",
-    "pubDate": "2025-11-20T08:20:00+01:00",
-    "starts_at": "2025-11-20T08:20:00+01:00",
-    "ends_at": "2025-11-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=18,6|D=2025-11-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Rettungseinsatz Züge halten bei Li. 49 Richtung Hütteldorf",
-    "description": "Rettungseinsatz Züge halten bei Li. 49 Richtung Hütteldorf",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
-    "pubDate": "2025-11-20T08:23:29+01:00",
-    "starts_at": "2025-11-20T08:23:29+01:00",
-    "ends_at": "2025-11-20T09:22:00+01:00",
-    "_identity": "wl|störung|L=49|D=2025-11-20"
+    "_identity": "wl|störung|L=U4|D=2025-11-20"
   }
 ]
