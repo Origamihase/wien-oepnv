@@ -362,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 13 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f2c2f4a5edccc2e83123c4cd571f55d466f767a922c5c5c5e338c8121b6f2b9",
-    "pubDate": "2025-11-21T17:15:00+01:00",
-    "starts_at": "2025-11-21T17:15:00+01:00",
-    "ends_at": "2025-11-21T23:55:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5: Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 5 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -406,54 +394,6 @@
     "starts_at": "2025-11-21T19:20:00+01:00",
     "ends_at": "2025-11-21T23:55:00+01:00",
     "_identity": "wl|störung|L=U1|D=2025-11-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "98667687253bc639656a963907dc9d6e4d87dbc4735242bb2b985799eaecefeb",
-    "pubDate": "2025-11-21T19:20:17+01:00",
-    "starts_at": "2025-11-21T19:20:17+01:00",
-    "ends_at": "2025-11-21T20:19:00+01:00",
-    "_identity": "wl|störung|L=|D=2025-11-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d639275fed205d39e9265cc9e6b073be44a4952e33d97ef0c1891f996a19ef98",
-    "pubDate": "2025-11-21T19:21:15+01:00",
-    "starts_at": "2025-11-21T19:21:15+01:00",
-    "ends_at": "2025-11-21T20:20:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2025-11-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "90f3e9ae80b1ced372efb169e9553a734be9ad86fa0539d9008f2c17a5442faf",
-    "pubDate": "2025-11-21T19:25:07+01:00",
-    "starts_at": "2025-11-21T19:25:07+01:00",
-    "ends_at": "2025-11-21T20:24:00+01:00",
-    "_identity": "wl|störung|L=5|D=2025-11-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
-    "pubDate": "2025-11-21T19:25:07+01:00",
-    "starts_at": "2025-11-21T19:25:07+01:00",
-    "ends_at": "2025-11-21T20:24:00+01:00",
-    "_identity": "wl|störung|L=12|D=2025-11-21"
   },
   {
     "source": "Wiener Linien",
@@ -506,13 +446,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "52: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 52 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f0abf3e55e40782bd00f3c222b84c3ee7e95801297cf252add178a51bd1c806",
+    "pubDate": "2025-11-21T20:15:00+01:00",
+    "starts_at": "2025-11-21T20:15:00+01:00",
+    "ends_at": "2025-11-21T23:55:00+01:00",
+    "_identity": "wl|störung|L=52|D=2025-11-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "60: Schadhaftes Fahrzeug",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a",
-    "pubDate": "2025-11-21T20:00:00+01:00",
-    "starts_at": "2025-11-21T20:00:00+01:00",
+    "pubDate": "2025-11-21T20:15:00+01:00",
+    "starts_at": "2025-11-21T20:15:00+01:00",
     "ends_at": "2025-11-21T23:55:00+01:00",
     "_identity": "wl|störung|L=60|D=2025-11-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebfcdeecb63555a7d3eeda6e1144843992faaa428a94f9ee9f79f89dc91e33f",
+    "pubDate": "2025-11-21T20:20:57+01:00",
+    "starts_at": "2025-11-21T20:20:57+01:00",
+    "ends_at": "2025-11-21T21:27:00+01:00",
+    "_identity": "wl|störung|L=60|D=2025-11-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2ee36aef3d89abfa24f8d8f97da1dc68bce51a62bcbd7e5deb004fcb75090bbd",
+    "pubDate": "2025-11-21T20:21:26+01:00",
+    "starts_at": "2025-11-21T20:21:26+01:00",
+    "ends_at": "2025-11-21T21:21:00+01:00",
+    "_identity": "wl|störung|L=52|D=2025-11-21"
   }
 ]
