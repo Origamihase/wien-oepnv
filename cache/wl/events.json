@@ -350,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Bauarbeiten",
-    "description": "Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür sind Bauarbeiten.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "02ed5bd063aef17589028905ae201aa56c3e252e53902050dc002f36ada500c4",
-    "pubDate": "2025-11-22T13:05:00+01:00",
-    "starts_at": "2025-11-22T13:05:00+01:00",
-    "ends_at": "2025-11-22T23:55:00+01:00",
-    "_identity": "wl|störung|L=10A|D=2025-11-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Demonstration Betrieb ab Weyrgasse",
     "description": "Demonstration Betrieb ab Weyrgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -398,13 +386,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
+    "title": "Haltestelle aufgelassen",
+    "description": "Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "98667687253bc639656a963907dc9d6e4d87dbc4735242bb2b985799eaecefeb",
-    "pubDate": "2025-11-22T13:50:26+01:00",
-    "starts_at": "2025-11-22T13:50:26+01:00",
-    "ends_at": "2025-11-22T14:49:00+01:00",
+    "guid": "fa889c2299e7ce8aa1eabc47eb37e266c3e94d2c42d9cfa421d33c79f1be15dc",
+    "pubDate": "2025-11-22T15:01:00+01:00",
+    "starts_at": "2025-11-22T15:01:00+01:00",
+    "ends_at": "2025-11-22T22:30:00+01:00",
     "_identity": "wl|störung|L=|D=2025-11-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Polizeieinsatz",
+    "description": "Die Linie 62 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Versorgungsheimplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2563cb7e5e67c7016a99b581b604e1f7ef686490b44625d39ce5e66b47c20dc1",
+    "pubDate": "2025-11-22T15:05:00+01:00",
+    "starts_at": "2025-11-22T15:05:00+01:00",
+    "ends_at": "2025-11-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=62|D=2025-11-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Verkehrsüberlastung",
+    "description": "Die Linie 13 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0b00fe24c2dd37aaf07ae252d80374592513223744f2d6ecc3fa197c58c6de52",
+    "pubDate": "2025-11-22T15:10:00+01:00",
+    "starts_at": "2025-11-22T15:10:00+01:00",
+    "ends_at": "2025-11-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-22"
   }
 ]
