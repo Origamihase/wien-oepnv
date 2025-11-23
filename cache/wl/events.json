@@ -314,54 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Weichenschaden Betrieb ab Matzleinsdorfer Platz",
-    "description": "Weichenschaden Betrieb ab Matzleinsdorfer Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "684544c57bf685de2fd136d513bb9047a76df7023fdab62b2765678abdf55454",
-    "pubDate": "2025-11-23T05:26:39+01:00",
-    "starts_at": "2025-11-23T05:26:39+01:00",
-    "ends_at": "2025-11-23T08:00:00+01:00",
-    "_identity": "wl|störung|L=18|D=2025-11-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Weichenschaden Züge halten bei Li. 6 Ri. Burggasse",
-    "description": "Weichenschaden Züge halten bei Li. 6 Ri. Burggasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e4b994c461a7f249cf9d74a62fe40f36e73a17fd615aba3558239925d004292b",
-    "pubDate": "2025-11-23T05:26:39+01:00",
-    "starts_at": "2025-11-23T05:26:39+01:00",
-    "ends_at": "2025-11-23T08:00:00+01:00",
-    "_identity": "wl|störung|L=18|D=2025-11-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31A: Witterung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 31 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "25b51c0d3a7268a9676b645733dc6b1e7ee8a8aadf3d6bffade3538a9814e3ea",
-    "pubDate": "2025-11-23T05:30:00+01:00",
-    "starts_at": "2025-11-23T05:30:00+01:00",
-    "ends_at": "2025-11-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=31A|D=2025-11-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Weichenschaden Ab Hauptbahnhof Betrieb über Li. O+6",
-    "description": "Weichenschaden Ab Hauptbahnhof Betrieb über Li. O+6",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f5eb35ac5048ae8d5e1fb38338a332fab55eb85b31ec384b92d419e8cd3f01f6",
-    "pubDate": "2025-11-23T05:33:08+01:00",
-    "starts_at": "2025-11-23T05:33:08+01:00",
-    "ends_at": "2025-11-23T08:00:00+01:00",
-    "_identity": "wl|störung|L=18|D=2025-11-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "49: Falschparker",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -374,13 +326,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40A: Witterung",
-    "description": "Die Linie 40 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich Cottagegasse.",
+    "title": "31A: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 31 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9a9b7f7c50378e06d60435b43a82dbad3c18cc2a0ef1ed7d383e438b5da08b78",
-    "pubDate": "2025-11-23T07:05:00+01:00",
-    "starts_at": "2025-11-23T07:05:00+01:00",
+    "guid": "7a5002edcae3000c19f7b2e8c75135a2348b751874043889e05a5b54e25f5d70",
+    "pubDate": "2025-11-23T08:00:00+01:00",
+    "starts_at": "2025-11-23T08:00:00+01:00",
     "ends_at": "2025-11-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=40A|D=2025-11-23"
+    "_identity": "wl|störung|L=31A|D=2025-11-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "83c3609f009d6e608421792607fec288818cf59eb16d02167c97d2fb5b065d1f",
+    "pubDate": "2025-11-23T08:04:22+01:00",
+    "starts_at": "2025-11-23T08:04:22+01:00",
+    "ends_at": "2025-11-23T09:03:00+01:00",
+    "_identity": "wl|störung|L=31A|D=2025-11-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Verunreinigung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "28dd617e135ca8c10e6ad9cda709d30d6392210e846e91e8bdbb3b2e72457757",
+    "pubDate": "2025-11-23T08:05:00+01:00",
+    "starts_at": "2025-11-23T08:05:00+01:00",
+    "ends_at": "2025-11-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=D|D=2025-11-23"
   }
 ]
