@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-11-24T04:30:19+01:00",
-    "starts_at": "2025-11-24T04:30:19+01:00",
-    "ends_at": "2025-11-25T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -322,6 +310,18 @@
     "starts_at": "2025-11-24T04:30:19+01:00",
     "ends_at": "2025-11-25T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-11-24T04:30:19+01:00",
+    "starts_at": "2025-11-24T04:30:19+01:00",
+    "ends_at": "2025-11-25T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-11-24"
   },
   {
     "source": "Wiener Linien",
@@ -362,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "90f3e9ae80b1ced372efb169e9553a734be9ad86fa0539d9008f2c17a5442faf",
-    "pubDate": "2025-11-24T11:23:58+01:00",
-    "starts_at": "2025-11-24T11:23:58+01:00",
-    "ends_at": "2025-11-24T12:30:00+01:00",
-    "_identity": "wl|störung|L=5|D=2025-11-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1A: Verkehrsüberlastung",
     "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -382,5 +370,17 @@
     "starts_at": "2025-11-24T11:35:00+01:00",
     "ends_at": "2025-11-24T23:55:00+01:00",
     "_identity": "wl|störung|L=1A|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "51A: Falschparker",
+    "description": "Die Linie 51 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Falschparker im Bereich Torricelligasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1158b9f6e1f875d0e5e0182ac6a5498a3c44409d0852ad53f35495bda8dc13c4",
+    "pubDate": "2025-11-24T12:35:00+01:00",
+    "starts_at": "2025-11-24T12:35:00+01:00",
+    "ends_at": "2025-11-24T23:55:00+01:00",
+    "_identity": "wl|störung|L=51A|D=2025-11-24"
   }
 ]
