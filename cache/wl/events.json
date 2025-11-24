@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-11-24T04:30:19+01:00",
-    "starts_at": "2025-11-24T04:30:19+01:00",
-    "ends_at": "2025-11-25T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -322,6 +310,18 @@
     "starts_at": "2025-11-24T04:30:19+01:00",
     "ends_at": "2025-11-25T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-11-24T04:30:19+01:00",
+    "starts_at": "2025-11-24T04:30:19+01:00",
+    "ends_at": "2025-11-25T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-11-24"
   },
   {
     "source": "Wiener Linien",
@@ -382,5 +382,29 @@
     "starts_at": "2025-11-24T16:05:00+01:00",
     "ends_at": "2025-11-24T23:55:00+01:00",
     "_identity": "wl|störung|L=U6|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Verkehrsüberlastung",
+    "description": "Die Linie 37 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2e24fe695c2fcaad6e5ed7a7b5c99cf7721f9e207bf50fca8d03103f6e0c8159",
+    "pubDate": "2025-11-24T16:30:00+01:00",
+    "starts_at": "2025-11-24T16:30:00+01:00",
+    "ends_at": "2025-11-24T23:55:00+01:00",
+    "_identity": "wl|störung|L=37A|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "86A: Verkehrsunfall",
+    "description": "Die Linie 86 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "73631e4195301df953764a247392bb9d8f5835d876b6d2e1d76ba739a2c45982",
+    "pubDate": "2025-11-24T16:35:00+01:00",
+    "starts_at": "2025-11-24T16:35:00+01:00",
+    "ends_at": "2025-11-24T23:55:00+01:00",
+    "_identity": "wl|störung|L=86A|D=2025-11-24"
   }
 ]
