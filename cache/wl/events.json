@@ -370,5 +370,29 @@
     "starts_at": "2025-11-24T05:30:00+01:00",
     "ends_at": "2025-11-24T23:55:00+01:00",
     "_identity": "wl|störung|L=12A|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8c54650e65ef647f350297bb5f234db6c9420a95be4c9c46b35286f6ec869089",
+    "pubDate": "2025-11-24T08:12:23+01:00",
+    "starts_at": "2025-11-24T08:12:23+01:00",
+    "ends_at": "2025-11-24T09:15:00+01:00",
+    "_identity": "wl|störung|L=6|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e832b46eec6d19cd652e99a3efa00e678cd32779ad0f0da0378f515eb2651f68",
+    "pubDate": "2025-11-24T08:12:45+01:00",
+    "starts_at": "2025-11-24T08:12:45+01:00",
+    "ends_at": "2025-11-24T09:12:00+01:00",
+    "_identity": "wl|störung|L=11|D=2025-11-24"
   }
 ]
