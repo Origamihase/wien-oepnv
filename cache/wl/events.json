@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-11-24T04:30:19+01:00",
-    "starts_at": "2025-11-24T04:30:19+01:00",
-    "ends_at": "2025-11-25T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -322,6 +310,18 @@
     "starts_at": "2025-11-24T04:30:19+01:00",
     "ends_at": "2025-11-25T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-11-24T04:30:19+01:00",
+    "starts_at": "2025-11-24T04:30:19+01:00",
+    "ends_at": "2025-11-25T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-11-24"
   },
   {
     "source": "Wiener Linien",
@@ -362,8 +362,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Fahrtbehinderung Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 A zu unterschiedlichen Intervallen.",
+    "title": "12A: Falschparker",
+    "description": "Die Linie 12 A fährt derzeit nur zwischen Schmelz, Gablenzgasse und Fendigasse. Die Störung dauert voraussichtlich bis 07:00 Uhr. Grund dafür ist ein Falschparker im Bereich Storkgasse 3.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
     "pubDate": "2025-11-24T05:30:00+01:00",
