@@ -410,18 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Schottentor.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2025-11-25T15:30:00+01:00",
-    "starts_at": "2025-11-25T15:30:00+01:00",
-    "ends_at": "2025-11-25T23:55:00+01:00",
-    "_identity": "wl|störung|L=U2|D=2025-11-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "57A: Verkehrsüberlastung",
     "description": "Die Linie 57 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich Gumpendorfer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -518,8 +506,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Rettungseinsatz Züge halten Schottenring 19",
-    "description": "Rettungseinsatz Züge halten Schottenring 19",
+    "title": "D: Rettungseinsatz Betrieb ab Börse",
+    "description": "Rettungseinsatz Betrieb ab Börse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106",
     "pubDate": "2025-11-25T16:47:53+01:00",
@@ -530,36 +518,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Rettungseinsatz Betrieb ab Julius-Raab-Platz",
-    "description": "Rettungseinsatz Betrieb ab Julius-Raab-Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
-    "pubDate": "2025-11-25T16:49:56+01:00",
-    "starts_at": "2025-11-25T16:49:56+01:00",
-    "ends_at": "2025-11-25T17:49:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-11-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Rettungseinsatz Umleitung über Linie 2",
-    "description": "Rettungseinsatz Umleitung über Linie 2",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c550a114044a230fcd7a1440b145bb0b0b356a38ad8506b0dfdbec3c6872e189",
-    "pubDate": "2025-11-25T16:50:33+01:00",
-    "starts_at": "2025-11-25T16:50:33+01:00",
-    "ends_at": "2025-11-25T17:49:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-11-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Rettungseinsatz Züge halten beim Steig C",
-    "description": "Rettungseinsatz Züge halten bei Linien 46 u. 49",
+    "description": "Rettungseinsatz Züge halten beim Steig C",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
-    "pubDate": "2025-11-25T16:51:16+01:00",
-    "starts_at": "2025-11-25T16:51:16+01:00",
+    "pubDate": "2025-11-25T16:52:43+01:00",
+    "starts_at": "2025-11-25T16:52:43+01:00",
     "ends_at": "2025-11-25T17:52:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-11-25"
   }
