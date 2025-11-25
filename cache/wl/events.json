@@ -326,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-11-25T04:30:13+01:00",
-    "starts_at": "2025-11-25T04:30:13+01:00",
-    "ends_at": "2025-11-26T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -350,14 +338,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
-    "pubDate": "2025-11-25T04:45:03+01:00",
-    "starts_at": "2025-11-25T04:45:03+01:00",
-    "ends_at": "2025-11-25T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-11-25"
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-11-25T04:30:13+01:00",
+    "starts_at": "2025-11-25T04:30:13+01:00",
+    "ends_at": "2025-11-26T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-11-25"
   },
   {
     "source": "Wiener Linien",
@@ -366,6 +354,18 @@
     "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "pubDate": "2025-11-25T04:45:03+01:00",
+    "starts_at": "2025-11-25T04:45:03+01:00",
+    "ends_at": "2025-11-25T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2025-11-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
     "pubDate": "2025-11-25T04:45:03+01:00",
     "starts_at": "2025-11-25T04:45:03+01:00",
     "ends_at": "2025-11-25T23:59:59+01:00",
