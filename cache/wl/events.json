@@ -326,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-11-25T04:30:13+01:00",
-    "starts_at": "2025-11-25T04:30:13+01:00",
-    "ends_at": "2025-11-26T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -350,14 +338,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
-    "pubDate": "2025-11-25T04:45:03+01:00",
-    "starts_at": "2025-11-25T04:45:03+01:00",
-    "ends_at": "2025-11-25T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-11-25"
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-11-25T04:30:13+01:00",
+    "starts_at": "2025-11-25T04:30:13+01:00",
+    "ends_at": "2025-11-26T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-11-25"
   },
   {
     "source": "Wiener Linien",
@@ -366,6 +354,18 @@
     "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "pubDate": "2025-11-25T04:45:03+01:00",
+    "starts_at": "2025-11-25T04:45:03+01:00",
+    "ends_at": "2025-11-25T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2025-11-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
     "pubDate": "2025-11-25T04:45:03+01:00",
     "starts_at": "2025-11-25T04:45:03+01:00",
     "ends_at": "2025-11-25T23:59:59+01:00",
@@ -410,18 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 26 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac",
-    "pubDate": "2025-11-25T06:50:00+01:00",
-    "starts_at": "2025-11-25T06:50:00+01:00",
-    "ends_at": "2025-11-25T23:55:00+01:00",
-    "_identity": "wl|störung|L=26|D=2025-11-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -446,7 +434,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Rettungseinsatz Betrieb ab Schwarzenbergplatz",
+    "title": "D: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106",
@@ -466,18 +454,6 @@
     "starts_at": "2025-11-25T07:10:00+01:00",
     "ends_at": "2025-11-25T23:55:00+01:00",
     "_identity": "wl|störung|L=71|D=2025-11-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Rettungseinsatz Umleitung! Einstieg gegenüber (Richtung Schottenring)",
-    "description": "Rettungseinsatz Umleitung! Einstieg gegenüber (Richtung Schottenring)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "60a673bf5b2e0cb2358aecc820348d3d0575f1f5333597444688f5f1b3de0ebd",
-    "pubDate": "2025-11-25T07:18:53+01:00",
-    "starts_at": "2025-11-25T07:18:53+01:00",
-    "ends_at": "2025-11-25T08:17:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-11-25"
   },
   {
     "source": "Wiener Linien",
@@ -506,25 +482,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 37 zu unterschiedlichen Intervallen.",
+    "title": "U3: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "680feea65497ba72c174dc1d3b77299d887769ca2260c03b8399deb5bcb5e778",
-    "pubDate": "2025-11-25T08:10:00+01:00",
-    "starts_at": "2025-11-25T08:10:00+01:00",
+    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
+    "pubDate": "2025-11-25T08:25:00+01:00",
+    "starts_at": "2025-11-25T08:25:00+01:00",
     "ends_at": "2025-11-25T23:55:00+01:00",
-    "_identity": "wl|störung|L=37|D=2025-11-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 38 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c16184b68509899faf02a65c374d8c059400404774e2da3970444c5b92e08600",
-    "pubDate": "2025-11-25T08:10:00+01:00",
-    "starts_at": "2025-11-25T08:10:00+01:00",
-    "ends_at": "2025-11-25T23:55:00+01:00",
-    "_identity": "wl|störung|L=38|D=2025-11-25"
+    "_identity": "wl|störung|L=U3|D=2025-11-25"
   }
 ]
