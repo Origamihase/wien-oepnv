@@ -326,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-11-25T04:30:13+01:00",
-    "starts_at": "2025-11-25T04:30:13+01:00",
-    "ends_at": "2025-11-26T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -346,6 +334,18 @@
     "starts_at": "2025-11-25T04:30:13+01:00",
     "ends_at": "2025-11-26T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-11-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-11-25T04:30:13+01:00",
+    "starts_at": "2025-11-25T04:30:13+01:00",
+    "ends_at": "2025-11-26T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-11-25"
   },
   {
     "source": "Wiener Linien",
@@ -452,7 +452,19 @@
     "guid": "64c168750858c631c7a91ad91fc35cce1827e9d8a3c84eff3d5bc5adb3221722",
     "pubDate": "2025-11-25T21:50:00+01:00",
     "starts_at": "2025-11-25T21:50:00+01:00",
-    "ends_at": "2025-11-25T23:55:00+01:00",
+    "ends_at": "2025-11-25T22:55:00+01:00",
     "_identity": "wl|störung|L=7A|D=2025-11-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Polizeieinsatz Züge halten bei Linie O (Migerkastraße)",
+    "description": "Die Linie 11 fährt derzeit nur zwischen Kaiserebersdorf und Raxstraße, Rudolfshügelgasse. Weichen Sie ersatzweise auf die Linien 16 A und 66 A aus. Die Störung dauert voraussichtlich bis 23:00 Uhr. Grund dafür ist ein Polizeieinsatz im Bereich Wienerfeldgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
+    "pubDate": "2025-11-25T22:16:50+01:00",
+    "starts_at": "2025-11-25T22:20:00+01:00",
+    "ends_at": "2025-11-25T23:55:00+01:00",
+    "_identity": "wl|störung|L=11|D=2025-11-25"
   }
 ]
