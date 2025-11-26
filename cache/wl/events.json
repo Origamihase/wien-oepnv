@@ -326,10 +326,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
     "pubDate": "2025-11-25T04:45:03+01:00",
     "starts_at": "2025-11-25T04:45:03+01:00",
     "ends_at": "2025-11-26T23:59:59+01:00",
@@ -338,10 +338,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
     "pubDate": "2025-11-25T04:45:03+01:00",
     "starts_at": "2025-11-25T04:45:03+01:00",
     "ends_at": "2025-11-26T23:59:59+01:00",
@@ -358,30 +358,6 @@
     "starts_at": "2025-11-25T13:00:00+01:00",
     "ends_at": "2025-11-26T15:00:00+01:00",
     "_identity": "wl|hinweis|L=1,2,46,48A,49,71,D|D=2025-11-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten bei Angerer Straße 18",
-    "description": "Gleisbauarbeiten Busse halten bei Angerer Straße 18",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "558f59444097441514c5218f9ad23d52adfbdc3971e9555b12e6428604b993d2",
-    "pubDate": "2025-11-26T01:00:18+01:00",
-    "starts_at": "2025-11-26T01:00:18+01:00",
-    "ends_at": "2025-11-26T05:00:00+01:00",
-    "_identity": "wl|störung|L=N20|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten Dückegasse ggü. 1",
-    "description": "Gleisbauarbeiten Busse halten Dückegasse ggü. 1",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4e8c267da3dc7fa247c63b0da126c97557d881bd31ac90799e04de1e5248dab2",
-    "pubDate": "2025-11-26T01:15:17+01:00",
-    "starts_at": "2025-11-26T01:15:17+01:00",
-    "ends_at": "2025-11-26T05:00:00+01:00",
-    "_identity": "wl|störung|L=N20|D=2025-11-26"
   },
   {
     "source": "Wiener Linien",
@@ -418,5 +394,17 @@
     "starts_at": "2025-11-26T04:45:27+01:00",
     "ends_at": "2025-11-27T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-11-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18/52/60/9: Stromstörung",
+    "description": "Die Linie 9 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 18 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 52 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Stromstörung im Bereich Anschützgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8378bd0ad3a994fa173fce941e13f2ac5cd35e547347423db97ba2d2188ef888",
+    "pubDate": "2025-11-26T05:15:00+01:00",
+    "starts_at": "2025-11-26T05:15:00+01:00",
+    "ends_at": "2025-11-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=18,52,60,9|D=2025-11-26"
   }
 ]
