@@ -338,18 +338,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
-    "pubDate": "2025-11-26T04:30:04+01:00",
-    "starts_at": "2025-11-26T04:30:04+01:00",
-    "ends_at": "2025-11-27T00:50:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -358,6 +346,18 @@
     "starts_at": "2025-11-26T04:30:04+01:00",
     "ends_at": "2025-11-27T00:50:00+01:00",
     "_identity": "wl|störung|L=29B|D=2025-11-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
+    "pubDate": "2025-11-26T04:30:04+01:00",
+    "starts_at": "2025-11-26T04:30:04+01:00",
+    "ends_at": "2025-11-27T00:50:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2025-11-26"
   },
   {
     "source": "Wiener Linien",
@@ -398,19 +398,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "20852ffbd37b67a912d01cdf6a60c7ca1adaa1fdce59570f1a3f057dd9c938a2",
-    "pubDate": "2025-11-26T19:15:43+01:00",
-    "starts_at": "2025-11-26T19:15:43+01:00",
-    "ends_at": "2025-11-26T20:15:00+01:00",
-    "_identity": "wl|störung|L=9A|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "49: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
