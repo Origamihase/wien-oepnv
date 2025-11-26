@@ -802,5 +802,17 @@
     "starts_at": "2025-11-26T14:35:00+01:00",
     "ends_at": "2025-11-26T23:55:00+01:00",
     "_identity": "wl|störung|L=26A|D=2025-11-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Verkehrsüberlastung",
+    "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
+    "pubDate": "2025-11-26T15:30:00+01:00",
+    "starts_at": "2025-11-26T15:30:00+01:00",
+    "ends_at": "2025-11-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-11-26"
   }
 ]
