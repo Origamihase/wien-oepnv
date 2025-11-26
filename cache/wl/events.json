@@ -326,10 +326,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
     "pubDate": "2025-11-25T04:45:03+01:00",
     "starts_at": "2025-11-25T04:45:03+01:00",
     "ends_at": "2025-11-26T23:59:59+01:00",
@@ -338,10 +338,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
     "pubDate": "2025-11-25T04:45:03+01:00",
     "starts_at": "2025-11-25T04:45:03+01:00",
     "ends_at": "2025-11-26T23:59:59+01:00",
@@ -418,5 +418,29 @@
     "starts_at": "2025-11-26T08:55:00+01:00",
     "ends_at": "2025-11-26T23:55:00+01:00",
     "_identity": "wl|störung|L=56A,56B|D=2025-11-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A/2A: Betriebsstörung",
+    "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6c8421903c79fd1432e10de2f006a028a5eb75e3a18b295c8995464be0fbe9ec",
+    "pubDate": "2025-11-26T09:35:00+01:00",
+    "starts_at": "2025-11-26T09:35:00+01:00",
+    "ends_at": "2025-11-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=1A,2A|D=2025-11-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Verkehrsunfall",
+    "description": "Die Linie 40 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Cottagegasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f",
+    "pubDate": "2025-11-26T09:40:00+01:00",
+    "starts_at": "2025-11-26T09:40:00+01:00",
+    "ends_at": "2025-11-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=40A|D=2025-11-26"
   }
 ]
