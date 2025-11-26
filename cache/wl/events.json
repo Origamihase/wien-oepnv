@@ -313,6 +313,18 @@
   },
   {
     "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "U1/U4: Station Schwedenplatz, Sperre Aufgang Urania",
+    "description": "Aufgangsperre\nWegen Bauarbeiten muss der Aufgang \"Urania\" der U-Bahn-Station Schwedenplatz zeitweilig gesperrt werden.\nZeitraum:\nMontag, 24. November 2025, 21:00 Uhr bis Freitag, 19. Dezember 2025, etwa 04:30 Uhr.\nJedoch nur Montag - Donnerstag zwischen 21:00 Uhr und 04:30 Uhr.\nErsatz:\nBitte benutzen Sie die anderen Aufgänge.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "aac66d61a153d41a7c2a795dcebb5bed35489d9bc098be249cbb953e58f24d15",
+    "pubDate": "2025-11-24T14:15:00+01:00",
+    "starts_at": "2025-11-24T14:15:00+01:00",
+    "ends_at": "2025-12-19T04:30:00+01:00",
+    "_identity": "wl|hinweis|L=U1,U4|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
     "category": "Störung",
     "title": "5A: Busse halten Dammstraße 2",
     "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
@@ -386,30 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
-    "pubDate": "2025-11-26T19:30:00+01:00",
-    "starts_at": "2025-11-26T19:30:00+01:00",
-    "ends_at": "2025-11-26T23:55:00+01:00",
-    "_identity": "wl|störung|L=49|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
-    "pubDate": "2025-11-26T19:55:00+01:00",
-    "starts_at": "2025-11-26T19:55:00+01:00",
-    "ends_at": "2025-11-26T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U4: Polizeieinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -418,5 +406,29 @@
     "starts_at": "2025-11-26T21:20:00+01:00",
     "ends_at": "2025-11-26T23:55:00+01:00",
     "_identity": "wl|störung|L=U4|D=2025-11-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U6 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
+    "pubDate": "2025-11-26T21:55:00+01:00",
+    "starts_at": "2025-11-26T21:55:00+01:00",
+    "ends_at": "2025-11-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2025-11-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Hütteldorfer Straße und Kendlerstraße in beiden Richtungen über Gleis 1. Grund dafür ist ein Rettungseinsatz im Bereich Kendlerstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2025-11-26T22:05:00+01:00",
+    "starts_at": "2025-11-26T22:05:00+01:00",
+    "ends_at": "2025-11-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-11-26"
   }
 ]
