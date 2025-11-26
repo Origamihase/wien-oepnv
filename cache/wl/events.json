@@ -350,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-11-26T04:30:04+01:00",
-    "starts_at": "2025-11-26T04:30:04+01:00",
-    "ends_at": "2025-11-27T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,6 +358,18 @@
     "starts_at": "2025-11-26T04:30:04+01:00",
     "ends_at": "2025-11-27T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-11-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-11-26T04:30:04+01:00",
+    "starts_at": "2025-11-26T04:30:04+01:00",
+    "ends_at": "2025-11-27T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-11-26"
   },
   {
     "source": "Wiener Linien",
@@ -406,78 +406,6 @@
     "starts_at": "2025-11-26T13:00:00+01:00",
     "ends_at": "2025-11-29T17:00:00+01:00",
     "_identity": "wl|hinweis|L=1,2,57A,71,D|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Demonstration Betrieb ab Josefstädter Straße",
-    "description": "Demonstration Betrieb ab Josefstädter Straße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "de4a0a5401a4e8a1e3c2602e947343018a4c83dffea04b635dca4c314a1e8c35",
-    "pubDate": "2025-11-26T13:16:35+01:00",
-    "starts_at": "2025-11-26T13:16:35+01:00",
-    "ends_at": "2025-11-26T19:00:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Demonstration Betrieb ab Ring, Volkstheater",
-    "description": "Demonstration Betrieb ab Ring, Volkstheater",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "56efdee6d024abacd36240318e62e642b355c434d845f56aebdd91507e6d33a1",
-    "pubDate": "2025-11-26T13:16:57+01:00",
-    "starts_at": "2025-11-26T13:16:57+01:00",
-    "ends_at": "2025-11-26T18:45:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Demonstration Betrieb ab Schwedenplatz",
-    "description": "Demonstration Betrieb ab Schwedenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "99497f667984c242f0b49239bc0bc529d80e10510e894e37c252b75583a4b7d3",
-    "pubDate": "2025-11-26T13:17:07+01:00",
-    "starts_at": "2025-11-26T13:17:07+01:00",
-    "ends_at": "2025-11-26T19:15:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "46: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung wegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "960dbded5f573b2c41bfdb93f0d341e37cfa070db6f08b0954fcfcfbce5ffcbb",
-    "pubDate": "2025-11-26T13:24:44+01:00",
-    "starts_at": "2025-11-26T13:24:44+01:00",
-    "ends_at": "2025-11-26T19:00:00+01:00",
-    "_identity": "wl|störung|L=46|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "46: Demonstration Betrieb ab Thaliastraße",
-    "description": "Demonstration Betrieb ab Thaliastraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0fc768394e8affdc3f3a18210b504989aaf88de4f7077fdf535194c830ae693d",
-    "pubDate": "2025-11-26T13:25:42+01:00",
-    "starts_at": "2025-11-26T13:25:42+01:00",
-    "ends_at": "2025-11-26T19:00:00+01:00",
-    "_identity": "wl|störung|L=46|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "48A: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung wegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4d178e8dfdf674f387dc132f4e4eb3135fc5568e8988f2a2bef1b983eadfca7",
-    "pubDate": "2025-11-26T13:30:32+01:00",
-    "starts_at": "2025-11-26T13:30:32+01:00",
-    "ends_at": "2025-11-26T19:15:00+01:00",
-    "_identity": "wl|störung|L=48A|D=2025-11-26"
   },
   {
     "source": "Wiener Linien",
@@ -578,66 +506,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Verkehrsunfall Betrieb ab Hofwiesengasse",
-    "description": "Verkehrsunfall Betrieb ab Hofwiesengasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "58fb55c12f3a50285072650650cee8366427aae593f0d22497c59c05afa0a673",
-    "pubDate": "2025-11-26T18:05:15+01:00",
-    "starts_at": "2025-11-26T18:05:15+01:00",
-    "ends_at": "2025-11-26T19:06:00+01:00",
-    "_identity": "wl|störung|L=60|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Verkehrsunfall Betrieb ab Hietzing",
-    "description": "Verkehrsunfall Betrieb ab Hietzing",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9aa64ffbe125babfe2e0cc0a6f7a03ba356a1229ede5f60259d0e4e186056b56",
-    "pubDate": "2025-11-26T18:05:18+01:00",
-    "starts_at": "2025-11-26T18:05:18+01:00",
-    "ends_at": "2025-11-26T19:04:00+01:00",
-    "_identity": "wl|störung|L=60|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7091f5ceb189603887edeb672707027ab0765bd9fd7a0fa2d67f934f96a2ae34",
-    "pubDate": "2025-11-26T18:05:47+01:00",
-    "starts_at": "2025-11-26T18:05:47+01:00",
-    "ends_at": "2025-11-26T19:05:00+01:00",
-    "_identity": "wl|störung|L=10|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Verkehrsunfall Züge halten bei Linie 62 Richtung Lainz",
-    "description": "Verkehrsunfall Züge halten bei Linie 62 Richtung Lainz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d1bd66417a59f346e5ca082eaca88176b53e79139d29baa428e80af4ce54cdb2",
-    "pubDate": "2025-11-26T18:07:13+01:00",
-    "starts_at": "2025-11-26T18:07:13+01:00",
-    "ends_at": "2025-11-26T19:06:00+01:00",
-    "_identity": "wl|störung|L=60|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10: Verkehrsunfall Betrieb ab Hietzing",
-    "description": "Verkehrsunfall Betrieb ab Hietzing",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "12cba3a7c054981d6add94856dcd1c65418ae082cdac6b727396ab70a235c95d",
-    "pubDate": "2025-11-26T18:07:13+01:00",
-    "starts_at": "2025-11-26T18:07:13+01:00",
-    "ends_at": "2025-11-26T19:06:00+01:00",
-    "_identity": "wl|störung|L=10|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U6: Betriebsstörung",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U6 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -658,5 +526,17 @@
     "starts_at": "2025-11-26T18:20:00+01:00",
     "ends_at": "2025-11-26T23:55:00+01:00",
     "_identity": "wl|störung|L=95A|D=2025-11-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9A: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 9 A wird in Richtung Bahnhof Meidling zwischen Pohlgasse und Bahnhof Meidling über die Ruckergasse umgeleitet. Die Störung dauert voraussichtlich bis 19:40 Uhr. Grund dafür ist ein Falschparker im Bereich Rauchgasse 43.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "20852ffbd37b67a912d01cdf6a60c7ca1adaa1fdce59570f1a3f057dd9c938a2",
+    "pubDate": "2025-11-26T19:10:00+01:00",
+    "starts_at": "2025-11-26T19:10:00+01:00",
+    "ends_at": "2025-11-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=9A|D=2025-11-26"
   }
 ]
