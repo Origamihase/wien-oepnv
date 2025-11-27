@@ -446,128 +446,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17410552b5076b6dbbd3ae46156043cd5032b22edde7e308e5b84105a85b76ff",
-    "pubDate": "2025-11-27T10:23:00+01:00",
-    "starts_at": "2025-11-27T10:23:00+01:00",
-    "ends_at": "2025-11-27T11:22:00+01:00",
-    "_identity": "wl|störung|L=25|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Verkehrsunfall Betrieb ab Kagran",
-    "description": "Verkehrsunfall Betrieb ab Kagran",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abf48581353f2892d84bb8010d52ea12860c6cc24798f6446212f5d628963a08",
-    "pubDate": "2025-11-27T10:23:37+01:00",
-    "starts_at": "2025-11-27T10:23:37+01:00",
-    "ends_at": "2025-11-27T11:26:00+01:00",
-    "_identity": "wl|störung|L=25|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Verkehrsunfall Betrieb ab Floridsdorf",
-    "description": "Verkehrsunfall Betrieb ab Floridsdorf",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a06993354ebfaff128147e64a0a017cf2c2e95000e9826bbfff6dd1c32a30483",
-    "pubDate": "2025-11-27T10:24:35+01:00",
-    "starts_at": "2025-11-27T10:24:35+01:00",
-    "ends_at": "2025-11-27T11:23:00+01:00",
-    "_identity": "wl|störung|L=26|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2025-11-27T10:25:00+01:00",
-    "starts_at": "2025-11-27T10:25:00+01:00",
-    "ends_at": "2025-11-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Verkehrsunfall Betrieb ab Josef-Baumann-Gasse",
-    "description": "Verkehrsunfall Betrieb ab Josef-Baumann-Gasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "32facfcfed31eff3e5df684d78a0eacb84e262a5373690f8c8d769159400de64",
-    "pubDate": "2025-11-27T10:25:04+01:00",
-    "starts_at": "2025-11-27T10:25:04+01:00",
-    "ends_at": "2025-11-27T11:24:00+01:00",
-    "_identity": "wl|störung|L=26|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Züge halten Tokiostraße",
-    "description": "Züge halten Tokiostraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e30c120ef0011d5d80b4d03049a1bc5a0eb77689c425cbc7ca439f2c4e3e01e1",
-    "pubDate": "2025-11-27T10:26:31+01:00",
-    "starts_at": "2025-11-27T10:26:31+01:00",
-    "ends_at": "2025-11-27T11:25:00+01:00",
-    "_identity": "wl|störung|L=26|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Züge halten bei Linien 30 / 31",
-    "description": "Züge halten bei Linien 30 / 31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "665fba2165a1494904e8dc622654c783931e784eb4b45dded64ad87f27ebf3b1",
-    "pubDate": "2025-11-27T10:27:00+01:00",
-    "starts_at": "2025-11-27T10:27:00+01:00",
-    "ends_at": "2025-11-27T11:26:00+01:00",
-    "_identity": "wl|störung|L=26|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Verkehrsunfall Betrieb ab Floridsdorf",
-    "description": "Verkehrsunfall Betrieb ab Floridsdorf",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "14e548281652e8fed3cbf5fd3e363d2043ce347b75f6898c09c470ef7d315a12",
-    "pubDate": "2025-11-27T10:27:58+01:00",
-    "starts_at": "2025-11-27T10:27:58+01:00",
-    "ends_at": "2025-11-27T11:27:00+01:00",
-    "_identity": "wl|störung|L=27|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Veranstaltung Betrieb ab Josef-Baumann-Gasse",
-    "description": "Veranstaltung Betrieb ab Josef-Baumann-Gasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4465ae4936a2c3a0fa065d141a4ea3c07209009a5759dd80370657dc3adb0e71",
-    "pubDate": "2025-11-27T10:28:27+01:00",
-    "starts_at": "2025-11-27T10:28:27+01:00",
-    "ends_at": "2025-11-27T11:27:00+01:00",
-    "_identity": "wl|störung|L=27|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Züge halten Tokiostraße",
-    "description": "Züge halten Tokiostraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "852c8717e6e92791385b907b3b99e2194b418621ccc27ceef171e00a76a0b69b",
-    "pubDate": "2025-11-27T10:28:56+01:00",
-    "starts_at": "2025-11-27T10:28:56+01:00",
-    "ends_at": "2025-11-27T11:28:00+01:00",
-    "_identity": "wl|störung|L=27|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "44: Gleisschaden",
-    "description": "Die Linie 44 fährt nur zwischen Schottentor und Johann-Nepomuk-Berger-Platz. Die Störung dauert voraussichtlich bis 12:00. Grund dafür ist ein Gleisschaden im Bereich Ottakringer Straße.",
+    "description": "Die Linie 44 fährt nur zwischen Schottentor und Johann-Nepomuk-Berger-Platz. Benutzen Sie die Linien U3, 2, 9, 43, 46, 10 A Die Störung dauert voraussichtlich bis 13:00. Grund dafür ist ein Gleisschaden im Bereich Ottakringer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "6e25dfd3d050e375ad5cfc00b7a2a28d272cfefc880dba24adb400574e2aa75a",
     "pubDate": "2025-11-27T10:50:00+01:00",
@@ -584,7 +464,7 @@
     "guid": "8aed614b938d691f3e45e71f231079bba626b033beaa066a2488ddfac77b9c97",
     "pubDate": "2025-11-27T10:55:30+01:00",
     "starts_at": "2025-11-27T10:55:30+01:00",
-    "ends_at": "2025-11-27T11:54:00+01:00",
+    "ends_at": "2025-11-27T16:15:00+01:00",
     "_identity": "wl|störung|L=44|D=2025-11-27"
   },
   {
@@ -596,7 +476,7 @@
     "guid": "147623a83fa774b0d3159825c342b4c4d1bdd9256d05d8a8ce17eb75923ba509",
     "pubDate": "2025-11-27T10:57:12+01:00",
     "starts_at": "2025-11-27T10:57:12+01:00",
-    "ends_at": "2025-11-27T11:55:00+01:00",
+    "ends_at": "2025-11-27T15:15:00+01:00",
     "_identity": "wl|störung|L=44|D=2025-11-27"
   },
   {
@@ -608,7 +488,31 @@
     "guid": "4427f1f96b5026fa281e592de3296331cfc5a820beb70a95d16abe3c49d8008f",
     "pubDate": "2025-11-27T10:59:09+01:00",
     "starts_at": "2025-11-27T10:59:09+01:00",
-    "ends_at": "2025-11-27T11:57:00+01:00",
+    "ends_at": "2025-11-27T16:15:00+01:00",
     "_identity": "wl|störung|L=44|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2A: Betriebsstörung",
+    "description": "Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Schwedenplatz U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ea5410be950e5f7b7b6144550bb8f7dd262eee55c9543f022a28aefcd2e7e5a2",
+    "pubDate": "2025-11-27T11:20:00+01:00",
+    "starts_at": "2025-11-27T11:20:00+01:00",
+    "ends_at": "2025-11-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=2A|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Erdberg.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2025-11-27T11:40:00+01:00",
+    "starts_at": "2025-11-27T11:40:00+01:00",
+    "ends_at": "2025-11-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-11-27"
   }
 ]
