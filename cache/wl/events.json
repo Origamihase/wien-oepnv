@@ -277,18 +277,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "U1/U4: Station Schwedenplatz, Sperre Aufgang Urania",
-    "description": "Aufgangsperre\nWegen Bauarbeiten muss der Aufgang \"Urania\" der U-Bahn-Station Schwedenplatz zeitweilig gesperrt werden.\nZeitraum:\nMontag, 24. November 2025, 21:00 Uhr bis Freitag, 19. Dezember 2025, etwa 04:30 Uhr.\nJedoch nur Montag - Donnerstag zwischen 21:00 Uhr und 04:30 Uhr.\nErsatz:\nBitte benutzen Sie die anderen Aufgänge.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aac66d61a153d41a7c2a795dcebb5bed35489d9bc098be249cbb953e58f24d15",
-    "pubDate": "2025-11-24T14:15:00+01:00",
-    "starts_at": "2025-11-24T14:15:00+01:00",
-    "ends_at": "2025-12-19T04:30:00+01:00",
-    "_identity": "wl|hinweis|L=U1,U4|D=2025-11-24"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "5A: Busse halten Wallensteinstraße 51-53",
     "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
@@ -362,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-11-27T04:30:00+01:00",
-    "starts_at": "2025-11-27T04:30:00+01:00",
-    "ends_at": "2025-11-28T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -382,6 +358,18 @@
     "starts_at": "2025-11-27T04:30:00+01:00",
     "ends_at": "2025-11-28T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-11-27T04:30:00+01:00",
+    "starts_at": "2025-11-27T04:30:00+01:00",
+    "ends_at": "2025-11-28T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-11-27"
   },
   {
     "source": "Wiener Linien",
@@ -418,5 +406,41 @@
     "starts_at": "2025-11-27T07:30:00+01:00",
     "ends_at": "2025-11-27T23:55:00+01:00",
     "_identity": "wl|störung|L=48A|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "16A: Verkehrsüberlastung",
+    "description": "Die Linie 16 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7",
+    "pubDate": "2025-11-27T07:50:00+01:00",
+    "starts_at": "2025-11-27T07:50:00+01:00",
+    "ends_at": "2025-11-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=16A|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Stellwerksstörung",
+    "description": "Die Linie U1 fährt derzeit nicht zwischen Stephansplatz und Vorgartenstraße. Ersatzweise benützen Sie die S-Bahn sowie die Linien U2, U4, O, 1, 12. Das Störungsende ist derzeit noch nicht absehbar. Grund dafür ist eine Stellwerksstörung im Bereich Praterstern.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d264cf297118f15193acf542540f7ba8a223f20092400da6f3686e026fb42613",
+    "pubDate": "2025-11-27T07:55:00+01:00",
+    "starts_at": "2025-11-27T07:55:00+01:00",
+    "ends_at": "2025-11-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: **Störung U1** Kein Betrieb zwischen Stephansplatz und Vorgartenstraße",
+    "description": "**Störung U1** Kein Betrieb zwischen Stephansplatz und Vorgartenstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2c41ee9200de317ff64103e2ea19ad029602b52a5417845db544d99cb3bd4af0",
+    "pubDate": "2025-11-27T08:03:26+01:00",
+    "starts_at": "2025-11-27T08:03:26+01:00",
+    "ends_at": "2025-11-27T09:02:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2025-11-27"
   }
 ]
