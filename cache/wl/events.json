@@ -277,6 +277,18 @@
   },
   {
     "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "U1/U4: Station Schwedenplatz, Sperre Aufgang Urania",
+    "description": "Aufgangsperre\nWegen Bauarbeiten muss der Aufgang \"Urania\" der U-Bahn-Station Schwedenplatz zeitweilig gesperrt werden.\nZeitraum:\nMontag, 24. November 2025, 21:00 Uhr bis Freitag, 19. Dezember 2025, etwa 04:30 Uhr.\nJedoch nur Montag - Donnerstag zwischen 21:00 Uhr und 04:30 Uhr.\nErsatz:\nBitte benutzen Sie die anderen Aufgänge.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "aac66d61a153d41a7c2a795dcebb5bed35489d9bc098be249cbb953e58f24d15",
+    "pubDate": "2025-11-24T14:15:00+01:00",
+    "starts_at": "2025-11-24T14:15:00+01:00",
+    "ends_at": "2025-12-19T04:30:00+01:00",
+    "_identity": "wl|hinweis|L=U1,U4|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
     "category": "Störung",
     "title": "5A: Busse halten Wallensteinstraße 51-53",
     "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
@@ -350,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-11-27T04:30:00+01:00",
-    "starts_at": "2025-11-27T04:30:00+01:00",
-    "ends_at": "2025-11-28T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,6 +370,18 @@
     "starts_at": "2025-11-27T04:30:00+01:00",
     "ends_at": "2025-11-28T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-11-27T04:30:00+01:00",
+    "starts_at": "2025-11-27T04:30:00+01:00",
+    "ends_at": "2025-11-28T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-11-27"
   },
   {
     "source": "Wiener Linien",
@@ -386,30 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Fahrtbehinderung Gleisschaden",
-    "description": "Fahrtbehinderung Gleisschaden",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8aed614b938d691f3e45e71f231079bba626b033beaa066a2488ddfac77b9c97",
-    "pubDate": "2025-11-27T10:55:30+01:00",
-    "starts_at": "2025-11-27T10:55:30+01:00",
-    "ends_at": "2025-11-27T16:15:00+01:00",
-    "_identity": "wl|störung|L=44|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "44: Züge halten bei Linie 2",
-    "description": "Züge halten bei Linie 2",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4427f1f96b5026fa281e592de3296331cfc5a820beb70a95d16abe3c49d8008f",
-    "pubDate": "2025-11-27T10:59:09+01:00",
-    "starts_at": "2025-11-27T10:59:09+01:00",
-    "ends_at": "2025-11-27T16:15:00+01:00",
-    "_identity": "wl|störung|L=44|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2A: Betriebsstörung",
     "description": "Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Schwedenplatz U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -422,61 +410,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
+    "title": "57A: Fremder Verkehrsunfall",
+    "description": "Die Linie 57 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein fremder Verkehrsunfall im Bereich Sechshauser Straße Kranzgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
-    "pubDate": "2025-11-27T13:20:00+01:00",
-    "starts_at": "2025-11-27T13:20:00+01:00",
+    "guid": "d354c7652a6b29deb96b519f98e62abb5becc90c01b68e51f6409488034e70ec",
+    "pubDate": "2025-11-27T15:55:00+01:00",
+    "starts_at": "2025-11-27T15:55:00+01:00",
     "ends_at": "2025-11-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2025-11-27"
+    "_identity": "wl|störung|L=57A|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "17A: Straßenbauarbeiten ab 01.12.2025",
+    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Jochen-Rindt-Straße werden die Linien 17 A, 66 A und 67 A umgeleitet.\nZeitraum:\nAb Montag, 01. Dezember 2025, etwa 08:00 Uhr bis Freitag, 12. Dezember 2025, etwa 08:00 Uhr.\nMaßnahmen:\nLinie 17 A in Richtung Oberlaa U, 66 A Richtung Liesing S bzw. 67 A Inzersdorf, Slamastraße:\nUmleitung ab Jochen-Rindt-Straße # Tenschertstraße über Tenschertstraße – Gorskistraße – Salmhoferstraße – Jochen-Rindt-Straße.\nAufgelassene Haltestellen:\nTenschertstraße (Jochen-Rindt-Straße 17)\nErnanigasse (Jochen-Rindt-Straße 7)\nErsatzhaltestelle:\nTenschertstraße (Tenschertstraße 11)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "da4cad5c8db8c0ffb9dc6192069dad84348d82a129e6c0a1e1e54d3220e12785",
+    "pubDate": "2025-11-27T16:00:00+01:00",
+    "starts_at": "2025-11-27T16:00:00+01:00",
+    "ends_at": "2025-12-12T08:00:00+01:00",
+    "_identity": "wl|hinweis|L=17A|D=2025-11-27"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Verspätungen",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U2 zu unterschiedlichen Intervallen.",
+    "title": "10A/11A/12A/25A/27B/2A/58B/7A/95A: Verkehrsüberlastung",
+    "description": "Die Linien 2 A, 7 A, 10 A, 11 A, 12 A, 25 A, 95 A, 27 B und 58 B können derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
-    "pubDate": "2025-11-27T13:30:00+01:00",
-    "starts_at": "2025-11-27T13:30:00+01:00",
+    "guid": "8ce0f433c5ba114ee07aa89504aa5f69e48492f57c8a529067fe9f8c40abce30",
+    "pubDate": "2025-11-27T16:10:00+01:00",
+    "starts_at": "2025-11-27T16:10:00+01:00",
     "ends_at": "2025-11-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=U2|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Simmering.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2025-11-27T14:45:00+01:00",
-    "starts_at": "2025-11-27T14:45:00+01:00",
-    "ends_at": "2025-11-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fahrtbehinderung Betriebsstörung",
-    "description": "Fahrtbehinderung Betriebsstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8ab2ce0bc6c59daf4882de877c8d7f24ce1a9cca988b7f1cdfd8b48b8370a09f",
-    "pubDate": "2025-11-27T14:52:41+01:00",
-    "starts_at": "2025-11-27T14:52:41+01:00",
-    "ends_at": "2025-11-27T15:52:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed",
-    "pubDate": "2025-11-27T15:13:37+01:00",
-    "starts_at": "2025-11-27T15:13:37+01:00",
-    "ends_at": "2025-11-27T16:16:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-11-27"
+    "_identity": "wl|störung|L=10A,11A,12A,25A,27B,2A,58B,7A,95A|D=2025-11-27"
   }
 ]
