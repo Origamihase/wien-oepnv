@@ -278,10 +278,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
     "pubDate": "2025-11-25T04:45:03+01:00",
     "starts_at": "2025-11-25T04:45:03+01:00",
     "ends_at": "2025-11-27T23:59:59+01:00",
@@ -290,10 +290,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
     "pubDate": "2025-11-25T04:45:03+01:00",
     "starts_at": "2025-11-25T04:45:03+01:00",
     "ends_at": "2025-11-27T23:59:59+01:00",
@@ -470,25 +470,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Verkehrsunfall",
-    "description": "Die Linie 2 ist derzeit in Richtung Friedrich-Engels-Platz an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 15:45. Grund dafür ist ein Verkehrsunfall im Bereich Wilhelminenstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
-    "pubDate": "2025-11-27T15:10:00+01:00",
-    "starts_at": "2025-11-27T15:10:00+01:00",
-    "ends_at": "2025-11-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed",
     "pubDate": "2025-11-27T15:13:37+01:00",
     "starts_at": "2025-11-27T15:13:37+01:00",
-    "ends_at": "2025-11-27T16:15:00+01:00",
+    "ends_at": "2025-11-27T16:16:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-11-27"
   }
 ]
