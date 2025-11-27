@@ -290,10 +290,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
     "pubDate": "2025-11-25T04:45:03+01:00",
     "starts_at": "2025-11-25T04:45:03+01:00",
     "ends_at": "2025-11-27T23:59:59+01:00",
@@ -302,10 +302,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
     "pubDate": "2025-11-25T04:45:03+01:00",
     "starts_at": "2025-11-25T04:45:03+01:00",
     "ends_at": "2025-11-27T23:59:59+01:00",
@@ -394,18 +394,6 @@
     "starts_at": "2025-11-27T04:45:06+01:00",
     "ends_at": "2025-11-28T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Betriebsstörung",
-    "description": "Die Linie D kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Liechtenwerder Platz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4da7ec50efe04776d24983130a8b4badbde4fb98c292e38675b780160a239430",
-    "pubDate": "2025-11-27T09:05:00+01:00",
-    "starts_at": "2025-11-27T09:05:00+01:00",
-    "ends_at": "2025-11-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-11-27"
   },
   {
     "source": "Wiener Linien",
@@ -574,5 +562,53 @@
     "starts_at": "2025-11-27T10:28:56+01:00",
     "ends_at": "2025-11-27T11:28:00+01:00",
     "_identity": "wl|störung|L=27|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Gleisschaden",
+    "description": "Die Linie 44 fährt nur zwischen Schottentor und Johann-Nepomuk-Berger-Platz. Die Störung dauert voraussichtlich bis 12:00. Grund dafür ist ein Gleisschaden im Bereich Ottakringer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e25dfd3d050e375ad5cfc00b7a2a28d272cfefc880dba24adb400574e2aa75a",
+    "pubDate": "2025-11-27T10:50:00+01:00",
+    "starts_at": "2025-11-27T10:50:00+01:00",
+    "ends_at": "2025-11-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=44|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung Gleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8aed614b938d691f3e45e71f231079bba626b033beaa066a2488ddfac77b9c97",
+    "pubDate": "2025-11-27T10:55:30+01:00",
+    "starts_at": "2025-11-27T10:55:30+01:00",
+    "ends_at": "2025-11-27T11:54:00+01:00",
+    "_identity": "wl|störung|L=44|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Gleisschaden Betrieb ab Johann-Nepomuk-Berger-Platz",
+    "description": "Gleisschaden Betrieb ab Johann-Nepomuk-Berger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "147623a83fa774b0d3159825c342b4c4d1bdd9256d05d8a8ce17eb75923ba509",
+    "pubDate": "2025-11-27T10:57:12+01:00",
+    "starts_at": "2025-11-27T10:57:12+01:00",
+    "ends_at": "2025-11-27T11:55:00+01:00",
+    "_identity": "wl|störung|L=44|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Züge halten bei Linie 2",
+    "description": "Züge halten bei Linie 2",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4427f1f96b5026fa281e592de3296331cfc5a820beb70a95d16abe3c49d8008f",
+    "pubDate": "2025-11-27T10:59:09+01:00",
+    "starts_at": "2025-11-27T10:59:09+01:00",
+    "ends_at": "2025-11-27T11:57:00+01:00",
+    "_identity": "wl|störung|L=44|D=2025-11-27"
   }
 ]
