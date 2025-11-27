@@ -277,18 +277,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "U1/U4: Station Schwedenplatz, Sperre Aufgang Urania",
-    "description": "Aufgangsperre\nWegen Bauarbeiten muss der Aufgang \"Urania\" der U-Bahn-Station Schwedenplatz zeitweilig gesperrt werden.\nZeitraum:\nMontag, 24. November 2025, 21:00 Uhr bis Freitag, 19. Dezember 2025, etwa 04:30 Uhr.\nJedoch nur Montag - Donnerstag zwischen 21:00 Uhr und 04:30 Uhr.\nErsatz:\nBitte benutzen Sie die anderen Aufgänge.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aac66d61a153d41a7c2a795dcebb5bed35489d9bc098be249cbb953e58f24d15",
-    "pubDate": "2025-11-24T14:15:00+01:00",
-    "starts_at": "2025-11-24T14:15:00+01:00",
-    "ends_at": "2025-12-19T04:30:00+01:00",
-    "_identity": "wl|hinweis|L=U1,U4|D=2025-11-24"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "5A: Busse halten Wallensteinstraße 51-53",
     "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
@@ -494,13 +482,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Erdberg.",
+    "title": "13A: Verkehrsüberlastung",
+    "description": "Die Linie 13 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich Alser Straße, Skodagasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2025-11-27T11:40:00+01:00",
-    "starts_at": "2025-11-27T11:40:00+01:00",
+    "guid": "0b00fe24c2dd37aaf07ae252d80374592513223744f2d6ecc3fa197c58c6de52",
+    "pubDate": "2025-11-27T12:40:00+01:00",
+    "starts_at": "2025-11-27T12:40:00+01:00",
     "ends_at": "2025-11-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-11-27"
+    "_identity": "wl|störung|L=13A|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Rettungseinsatz",
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Aderklaaer Straße und Rennbahnweg in beiden Richtungen über Gleis 1. Die Störung dauert voraussichtlich bis 13:50 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Rennbahnweg.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
+    "pubDate": "2025-11-27T13:20:00+01:00",
+    "starts_at": "2025-11-27T13:20:00+01:00",
+    "ends_at": "2025-11-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Die Linie U2 fährt derzeit in der Station Aspern Nord in beiden Richtungen über Gleis 1. Die Störung dauert voraussichtlich bis 13:40 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Aspern Nord.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2025-11-27T13:30:00+01:00",
+    "starts_at": "2025-11-27T13:30:00+01:00",
+    "ends_at": "2025-11-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2025-11-27"
   }
 ]
