@@ -518,18 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "35A: Verspätungen",
-    "description": "Die Linie 35 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "67c751137c6566f442303d569ccfcae2618b18c074923f44066938ab05204482",
-    "pubDate": "2025-11-27T13:35:00+01:00",
-    "starts_at": "2025-11-27T13:35:00+01:00",
-    "ends_at": "2025-11-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=35A|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "88B: Schadhaftes Fahrzeug",
     "description": "Die Linie 88 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Raphael-Donner-Allee.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -538,5 +526,17 @@
     "starts_at": "2025-11-27T14:10:00+01:00",
     "ends_at": "2025-11-27T23:55:00+01:00",
     "_identity": "wl|störung|L=88B|D=2025-11-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Simmering.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2025-11-27T14:45:00+01:00",
+    "starts_at": "2025-11-27T14:45:00+01:00",
+    "ends_at": "2025-11-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-11-27"
   }
 ]
