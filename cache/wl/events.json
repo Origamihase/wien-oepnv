@@ -338,14 +338,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
     "pubDate": "2025-11-28T00:00:26+01:00",
     "starts_at": "2025-11-28T00:00:26+01:00",
     "ends_at": "2025-11-28T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-11-28"
+    "_identity": "wl|störung|L=18|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
@@ -362,14 +362,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
     "pubDate": "2025-11-28T00:00:26+01:00",
     "starts_at": "2025-11-28T00:00:26+01:00",
     "ends_at": "2025-11-28T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-11-28"
+    "_identity": "wl|störung|L=5A|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
@@ -386,18 +386,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
-    "pubDate": "2025-11-28T04:30:02+01:00",
-    "starts_at": "2025-11-28T04:30:02+01:00",
-    "ends_at": "2025-11-29T00:50:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -406,6 +394,18 @@
     "starts_at": "2025-11-28T04:30:02+01:00",
     "ends_at": "2025-11-29T00:50:00+01:00",
     "_identity": "wl|störung|L=29B|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
+    "pubDate": "2025-11-28T04:30:02+01:00",
+    "starts_at": "2025-11-28T04:30:02+01:00",
+    "ends_at": "2025-11-29T00:50:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
@@ -578,18 +578,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Verkehrsüberlastung",
-    "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
-    "pubDate": "2025-11-28T14:55:00+01:00",
-    "starts_at": "2025-11-28T14:55:00+01:00",
-    "ends_at": "2025-11-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=O|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Verkehrsüberlastung",
     "description": "Die Linie 74 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -646,5 +634,89 @@
     "starts_at": "2025-11-28T15:30:00+01:00",
     "ends_at": "2025-11-28T23:55:00+01:00",
     "_identity": "wl|störung|L=10|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Staatsbesuch",
+    "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Staatsbesuch.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "55143db1df65ce88f5ffe4eacd7cdf8bcb5623c73d1240c077ebac31d7fe8b42",
+    "pubDate": "2025-11-28T15:45:00+01:00",
+    "starts_at": "2025-11-28T15:45:00+01:00",
+    "ends_at": "2025-11-28T23:55:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "87A: Verkehrsüberlastung",
+    "description": "Die Linie 87 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bdbab2244de470fab40c03c4442e1cacd4598c871fef04b19833b28330e1e1a9",
+    "pubDate": "2025-11-28T15:45:00+01:00",
+    "starts_at": "2025-11-28T15:45:00+01:00",
+    "ends_at": "2025-11-28T23:55:00+01:00",
+    "_identity": "wl|störung|L=87A|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6",
+    "pubDate": "2025-11-28T15:45:31+01:00",
+    "starts_at": "2025-11-28T15:45:31+01:00",
+    "ends_at": "2025-11-28T16:52:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40/41: Schadhafter LKW",
+    "description": "Die Linie 40 wird in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper und Gersthof über Michelbeuern-AKH umgeleitet. Die Linie 41 wird in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper und Gersthof über Michelbeuern-AKH umgeleitet. Die Störung dauert voraussichtlich bis 17:00 Uhr. Grund dafür ist ein schadhafter LKW im Bereich Gentzgasse 103.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1bc57560d98c64c8759b6576df0581ebeaccf90654d73ed363c3ca1b8f10fe88",
+    "pubDate": "2025-11-28T16:00:00+01:00",
+    "starts_at": "2025-11-28T16:00:00+01:00",
+    "ends_at": "2025-11-28T23:55:00+01:00",
+    "_identity": "wl|störung|L=40,41|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Schadhafter LKW Betrieb ab Gersthof",
+    "description": "Schadhafter LKW Betrieb ab Gersthof",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cca6f01c35538714c31ff63b34cdfec077e02959d7fbc83fcc24c294a296ffdd",
+    "pubDate": "2025-11-28T16:03:14+01:00",
+    "starts_at": "2025-11-28T16:03:14+01:00",
+    "ends_at": "2025-11-28T17:13:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Falschparker",
+    "description": "Fahrtbehinderung wegen Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
+    "pubDate": "2025-11-28T16:03:15+01:00",
+    "starts_at": "2025-11-28T16:03:15+01:00",
+    "ends_at": "2025-11-28T17:02:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Schadhafter LKW Einstieg bei Linie 42",
+    "description": "Schadhafter LKW Einstieg bei Linie 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fe071e832104dc8513fa7bb3797fd79467803fb716020b481fab11a256b26e45",
+    "pubDate": "2025-11-28T16:12:59+01:00",
+    "starts_at": "2025-11-28T16:12:59+01:00",
+    "ends_at": "2025-11-28T17:11:00+01:00",
+    "_identity": "wl|störung|L=42|D=2025-11-28"
   }
 ]
