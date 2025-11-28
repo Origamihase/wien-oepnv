@@ -338,14 +338,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
     "pubDate": "2025-11-28T00:00:26+01:00",
     "starts_at": "2025-11-28T00:00:26+01:00",
     "ends_at": "2025-11-28T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-11-28"
+    "_identity": "wl|störung|L=5A|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
@@ -362,14 +362,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
     "pubDate": "2025-11-28T00:00:26+01:00",
     "starts_at": "2025-11-28T00:00:26+01:00",
     "ends_at": "2025-11-28T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-11-28"
+    "_identity": "wl|störung|L=18|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
@@ -470,54 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "67B/16A/17A/67A: Signalstörung",
-    "description": "Die Linie 67 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 16 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 17 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 67 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Signalstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "884994111f691b16f8e904736fd9b06ec304c06a4c366af8a170da68d09e5e37",
-    "pubDate": "2025-11-28T13:20:00+01:00",
-    "starts_at": "2025-11-28T13:20:00+01:00",
-    "ends_at": "2025-11-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=16A,17A,67A,67B|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 26 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e5e4ada309d3d5a39dbcc7b58ba60a9bcfb4f6f0b36f7174fc6f157776ed18b5",
-    "pubDate": "2025-11-28T13:25:00+01:00",
-    "starts_at": "2025-11-28T13:25:00+01:00",
-    "ends_at": "2025-11-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=26|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 27 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2944c0ef3d90e6a01626e659ff945114566768f92f2cfcb4aacd173962aa18ee",
-    "pubDate": "2025-11-28T13:25:00+01:00",
-    "starts_at": "2025-11-28T13:25:00+01:00",
-    "ends_at": "2025-11-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=27|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 13 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
-    "pubDate": "2025-11-28T13:50:00+01:00",
-    "starts_at": "2025-11-28T13:50:00+01:00",
-    "ends_at": "2025-11-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1/2/D/71: Staatsbesuch",
     "description": "Die Linie 1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie D kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Staatsbesuch.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -526,18 +478,6 @@
     "starts_at": "2025-11-28T14:00:00+01:00",
     "ends_at": "2025-11-28T23:55:00+01:00",
     "_identity": "wl|störung|L=1,2,71,D|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "59A: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 59 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e09339cfb3094980cbafa9341e8d677466ba3d6e478ce1b4da7e352a8c42c4a",
-    "pubDate": "2025-11-28T14:15:00+01:00",
-    "starts_at": "2025-11-28T14:15:00+01:00",
-    "ends_at": "2025-11-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=59A|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
@@ -614,18 +554,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Fremder Verkehrsunfall",
-    "description": "Die Linie 10 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a353875670c81bfb8e057d43db548115ca6c84c08a4b6f4e5ddfed91706f0a44",
-    "pubDate": "2025-11-28T15:30:00+01:00",
-    "starts_at": "2025-11-28T15:30:00+01:00",
-    "ends_at": "2025-11-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=10|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "O: Staatsbesuch",
     "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Staatsbesuch.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -650,73 +578,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "40: Schadhafter LKW",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6",
-    "pubDate": "2025-11-28T15:45:31+01:00",
-    "starts_at": "2025-11-28T15:45:31+01:00",
-    "ends_at": "2025-11-28T16:52:00+01:00",
-    "_identity": "wl|störung|L=O|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40/41: Schadhafter LKW",
-    "description": "Die Linie 40 wird in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper und Gersthof über Michelbeuern-AKH umgeleitet. Die Linie 41 wird in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper und Gersthof über Michelbeuern-AKH umgeleitet. Die Störung dauert voraussichtlich bis 17:00 Uhr. Grund dafür ist ein schadhafter LKW im Bereich Gentzgasse 103.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1bc57560d98c64c8759b6576df0581ebeaccf90654d73ed363c3ca1b8f10fe88",
+    "guid": "1447ffd3df754a6b3f5da43d5316b8eabb2807f3c552bf192ceb69023da98547",
     "pubDate": "2025-11-28T16:00:00+01:00",
     "starts_at": "2025-11-28T16:00:00+01:00",
     "ends_at": "2025-11-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=40,41|D=2025-11-28"
+    "_identity": "wl|störung|L=40|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Schadhafter LKW Betrieb ab Gersthof",
-    "description": "Schadhafter LKW Betrieb ab Gersthof",
+    "title": "41: Schadhafter LKW",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cca6f01c35538714c31ff63b34cdfec077e02959d7fbc83fcc24c294a296ffdd",
-    "pubDate": "2025-11-28T16:03:14+01:00",
-    "starts_at": "2025-11-28T16:03:14+01:00",
-    "ends_at": "2025-11-28T17:13:00+01:00",
-    "_identity": "wl|störung|L=|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung wegen Falschparker",
-    "description": "Fahrtbehinderung wegen Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
-    "pubDate": "2025-11-28T16:03:15+01:00",
-    "starts_at": "2025-11-28T16:03:15+01:00",
-    "ends_at": "2025-11-28T17:02:00+01:00",
-    "_identity": "wl|störung|L=|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Schadhafter LKW Einstieg bei Linie 42",
-    "description": "Schadhafter LKW Einstieg bei Linie 42",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fe071e832104dc8513fa7bb3797fd79467803fb716020b481fab11a256b26e45",
-    "pubDate": "2025-11-28T16:12:59+01:00",
-    "starts_at": "2025-11-28T16:12:59+01:00",
-    "ends_at": "2025-11-28T17:36:00+01:00",
-    "_identity": "wl|störung|L=42|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Schadhafter LKW Einstieg bei Linie 9",
-    "description": "Schadhafter LKW Einstieg bei Linie 9",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "27dfc9ffff8d1180e960c3c0da1e3c253a91336bd4cedb49c390b91041a27f89",
-    "pubDate": "2025-11-28T16:19:16+01:00",
-    "starts_at": "2025-11-28T16:19:16+01:00",
-    "ends_at": "2025-11-28T17:18:00+01:00",
+    "guid": "013f872592db171a871c5043d72410fdb20e9a281b5b3e27ebd46365bd045860",
+    "pubDate": "2025-11-28T16:00:00+01:00",
+    "starts_at": "2025-11-28T16:00:00+01:00",
+    "ends_at": "2025-11-28T23:55:00+01:00",
     "_identity": "wl|störung|L=41|D=2025-11-28"
   },
   {
@@ -742,5 +622,17 @@
     "starts_at": "2025-11-28T16:37:09+01:00",
     "ends_at": "2025-11-28T17:36:00+01:00",
     "_identity": "wl|störung|L=|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Schadhafter LKW Einstieg bei Linie 42",
+    "description": "Schadhafter LKW Einstieg bei Linie 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fe071e832104dc8513fa7bb3797fd79467803fb716020b481fab11a256b26e45",
+    "pubDate": "2025-11-28T16:37:39+01:00",
+    "starts_at": "2025-11-28T16:37:39+01:00",
+    "ends_at": "2025-11-28T17:36:00+01:00",
+    "_identity": "wl|störung|L=42|D=2025-11-28"
   }
 ]
