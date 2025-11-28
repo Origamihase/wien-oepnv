@@ -338,18 +338,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
-    "pubDate": "2025-11-28T00:00:26+01:00",
-    "starts_at": "2025-11-28T00:00:26+01:00",
-    "ends_at": "2025-11-28T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Busse halten Dammstraße 2",
     "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,6 +358,18 @@
     "starts_at": "2025-11-28T00:00:26+01:00",
     "ends_at": "2025-11-28T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "pubDate": "2025-11-28T00:00:26+01:00",
+    "starts_at": "2025-11-28T00:00:26+01:00",
+    "ends_at": "2025-11-28T23:59:59+01:00",
+    "_identity": "wl|störung|L=18|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
@@ -422,13 +422,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Verkehrsüberlastung",
-    "description": "Die Linie 12 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "59A: Polizeieinsatz",
+    "description": "Die Linie 59 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d22f8a5721cb328952fc07b28fc40f91ea591ee68bafe657d779bd5fbff1b8bc",
-    "pubDate": "2025-11-28T07:00:00+01:00",
-    "starts_at": "2025-11-28T07:00:00+01:00",
+    "guid": "2e09339cfb3094980cbafa9341e8d677466ba3d6e478ce1b4da7e352a8c42c4a",
+    "pubDate": "2025-11-28T07:25:00+01:00",
+    "starts_at": "2025-11-28T07:25:00+01:00",
     "ends_at": "2025-11-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=12A|D=2025-11-28"
+    "_identity": "wl|störung|L=59A|D=2025-11-28"
   }
 ]
