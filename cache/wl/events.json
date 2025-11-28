@@ -338,6 +338,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "pubDate": "2025-11-28T00:00:26+01:00",
+    "starts_at": "2025-11-28T00:00:26+01:00",
+    "ends_at": "2025-11-28T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Züge halten Gegenüber",
     "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -362,18 +374,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
-    "pubDate": "2025-11-28T00:00:26+01:00",
-    "starts_at": "2025-11-28T00:00:26+01:00",
-    "ends_at": "2025-11-28T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "43: Züge halten Alszeile 126",
     "description": "Bauarbeiten Züge halten Alszeile 126",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -382,18 +382,6 @@
     "starts_at": "2025-11-28T00:00:27+01:00",
     "ends_at": "2025-11-28T23:59:59+01:00",
     "_identity": "wl|störung|L=43|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-11-28T04:30:02+01:00",
-    "starts_at": "2025-11-28T04:30:02+01:00",
-    "ends_at": "2025-11-29T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
@@ -410,6 +398,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-11-28T04:30:02+01:00",
+    "starts_at": "2025-11-28T04:30:02+01:00",
+    "ends_at": "2025-11-29T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -422,14 +422,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A: Verkehrsüberlastung",
-    "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "1A/2A/3A: Verkehrsüberlastung",
+    "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 3 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "54bc809d85229c6a09e43a7de307b52c3b4983748375648087f4d7c0df6854ef",
+    "guid": "0774f8bedb7802aa46466a015e5858759b159e468279e521e20c0ae7f987933d",
     "pubDate": "2025-11-28T11:05:00+01:00",
     "starts_at": "2025-11-28T11:05:00+01:00",
     "ends_at": "2025-11-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=1A|D=2025-11-28"
+    "_identity": "wl|störung|L=1A,2A,3A|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
@@ -506,7 +506,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Rettungseinsatz Betrieb ab Pilgramgasse",
+    "title": "13A: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 13 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
@@ -518,36 +518,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4",
-    "pubDate": "2025-11-28T13:52:52+01:00",
-    "starts_at": "2025-11-28T13:52:52+01:00",
-    "ends_at": "2025-11-28T14:52:00+01:00",
-    "_identity": "wl|störung|L=49|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U6 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
-    "pubDate": "2025-11-28T13:55:00+01:00",
-    "starts_at": "2025-11-28T13:55:00+01:00",
-    "ends_at": "2025-11-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "59A: Rettungseinsatz Betrieb ab Arbeitergasse",
     "description": "Rettungseinsatz Betrieb ab Arbeitergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8c03b8e895b2d4a0128c618aca988a64bddde574c9066f235d0fcf9f069b5e83",
-    "pubDate": "2025-11-28T13:56:35+01:00",
-    "starts_at": "2025-11-28T13:56:35+01:00",
+    "pubDate": "2025-11-28T13:56:36+01:00",
+    "starts_at": "2025-11-28T13:56:36+01:00",
     "ends_at": "2025-11-28T15:18:00+01:00",
     "_identity": "wl|störung|L=59A|D=2025-11-28"
   },
@@ -562,42 +538,6 @@
     "starts_at": "2025-11-28T14:00:00+01:00",
     "ends_at": "2025-11-28T23:55:00+01:00",
     "_identity": "wl|störung|L=1,2,71,D|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Fahrtbehinderung wegen Staatsbesuch",
-    "description": "Fahrtbehinderung wegen Staatsbesuch",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "789ec993afd575efd1ff72dbcd298b8c9a1ddbb22e9a5ca6f9f634e003e009bb",
-    "pubDate": "2025-11-28T14:02:13+01:00",
-    "starts_at": "2025-11-28T14:02:13+01:00",
-    "ends_at": "2025-11-28T15:01:00+01:00",
-    "_identity": "wl|störung|L=71|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fahrtbehinderung wegen Staatsbesuch",
-    "description": "Fahrtbehinderung wegen Staatsbesuch",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37d281eb9beec574aa6c666f2ab2a9babd85403e07c7fc73d5ccf47eb4f25daf",
-    "pubDate": "2025-11-28T14:03:41+01:00",
-    "starts_at": "2025-11-28T14:03:41+01:00",
-    "ends_at": "2025-11-28T15:03:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182",
-    "pubDate": "2025-11-28T14:15:00+01:00",
-    "starts_at": "2025-11-28T14:15:00+01:00",
-    "ends_at": "2025-11-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
@@ -693,6 +633,54 @@
     "pubDate": "2025-11-28T14:38:57+01:00",
     "starts_at": "2025-11-28T14:38:57+01:00",
     "ends_at": "2025-11-28T15:38:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Verkehrsüberlastung",
+    "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
+    "pubDate": "2025-11-28T14:55:00+01:00",
+    "starts_at": "2025-11-28T14:55:00+01:00",
+    "ends_at": "2025-11-28T23:55:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Verkehrsüberlastung",
+    "description": "Die Linie 74 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5186edf4c14199ffa2add1bad85d01d118b16b0a35937894ef8c07771bbd6d42",
+    "pubDate": "2025-11-28T14:55:00+01:00",
+    "starts_at": "2025-11-28T14:55:00+01:00",
+    "ends_at": "2025-11-28T23:55:00+01:00",
+    "_identity": "wl|störung|L=74A|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Signalstörung",
+    "description": "Die Linie 6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Signalstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1e8ead886269666198eb82f34c4204697ca12db91d69fcb71827e1b53070d25e",
+    "pubDate": "2025-11-28T14:55:00+01:00",
+    "starts_at": "2025-11-28T14:55:00+01:00",
+    "ends_at": "2025-11-28T23:55:00+01:00",
+    "_identity": "wl|störung|L=6|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Haltestelle aufgelassen!",
+    "description": "Haltestelle aufgelassen!",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa889c2299e7ce8aa1eabc47eb37e266c3e94d2c42d9cfa421d33c79f1be15dc",
+    "pubDate": "2025-11-28T15:02:11+01:00",
+    "starts_at": "2025-11-28T15:02:11+01:00",
+    "ends_at": "2025-11-28T22:30:00+01:00",
     "_identity": "wl|störung|L=|D=2025-11-28"
   }
 ]
