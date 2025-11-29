@@ -242,18 +242,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "1/2/57A/71/D: Demonstartion am 29.11.2025",
-    "description": "Demonstration\nWegen einer Demonstration im Bereich der Innenstadt kommt es bei Bedarf zu Verkehrsmaßnahmen.\nZeitraum:\nSamstag, 29. November 2025, von ca. 14:00 Uhr bis 17:00 Uhr\nMaßnahmen:\nLinie D\nUmleitung in beiden Richtungen\nzwischen Schwarzenbergplatz und Börse\nüber Schwedenplatz U.\nLinie 1\nKein Betrieb zwischen Börse und Karlsplatz U.\nDie Züge Richtung Stefan-Fadinger-Platz fahren bis zur Börse, wenden dort, kehren zurück zum Julius-Raab-Platz und fahren über die Strecke der Linie 2, den Schwarzenbergplatz und die Lothringerstraße zur Haltestelle Resselgasse (Zustieg am Karlsplatz möglich).\nIn Richtung Prater Hauptallee werden die Züge direkt zwischen Karlsplatz und Julius-Raab-Platz über die Lothringerstraße, den Schwarzenbergplatz und die Linie 2 umgeleitet.\nSomit kein Betrieb zwischen Karlsplatz und Börse, Fahrgäste ab Börse mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen.\nLinie 2\nKein Betrieb zwischen Ring, Volkstheater U und Schwarzenbergplatz, die Züge fahren ab Schwarzenbergplatz über Lothringerstraße zum Karlsplatz U.\nBeachten Sie bitte: Die Haltestellen Ring, Volkstheater und Parlament werden in Richtung Dornbach nicht eingehalten (es halten dort die Züge Richtung Friedrich-Engels-Platz), Fahrgäste Richtung Dornbach finden die Züge in der Haltestelle der Linien 46, 49 und 48 A.\nLinie 71\nBetrieb nur zwischen\nKaiserebersdorf und Schwarzenbergplatz.\nLinie 57 A\nBetrieb nur zwischen\nRudolfsheim, Anschützgasse und Haus des Meeres. (Neubaugasse/Schadekgasse)\nWeiteres:\nBeachten Sie bitte, dass die genannten Verkehrsmaßnahmen nicht alle gleichzeitig auftreten müssen. Je nach Fortschritt der Demonstration und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf www.wienerlinien.at.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dbf36866ca8dddc4703873568b1308d1448b532c7840a5f45fc9de925a3de0ae",
-    "pubDate": "2025-11-26T13:00:00+01:00",
-    "starts_at": "2025-11-26T13:00:00+01:00",
-    "ends_at": "2025-11-29T17:00:00+01:00",
-    "_identity": "wl|hinweis|L=1,2,57A,71,D|D=2025-11-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "17A: Straßenbauarbeiten ab 01.12.2025",
     "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Jochen-Rindt-Straße werden die Linien 17 A, 66 A und 67 A umgeleitet.\nZeitraum:\nAb Montag, 01. Dezember 2025, etwa 08:00 Uhr bis Freitag, 12. Dezember 2025, etwa 08:00 Uhr.\nMaßnahmen:\nLinie 17 A in Richtung Oberlaa U, 66 A Richtung Liesing S bzw. 67 A Inzersdorf, Slamastraße:\nUmleitung ab Jochen-Rindt-Straße # Tenschertstraße über Tenschertstraße – Gorskistraße – Salmhoferstraße – Jochen-Rindt-Straße.\nAufgelassene Haltestellen:\nTenschertstraße (Jochen-Rindt-Straße 17)\nErnanigasse (Jochen-Rindt-Straße 7)\nErsatzhaltestelle:\nTenschertstraße (Tenschertstraße 11)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -410,18 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "3A: Einkaufssamstag Betrieb ganztägig eingestellt",
-    "description": "Einkaufssamstag Betrieb ganztägig eingestellt",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "589141b1c3a87887eb23482dd6ebee076cb13f3480afdd68e6f000e43fa82ad9",
-    "pubDate": "2025-11-29T05:30:04+01:00",
-    "starts_at": "2025-11-29T05:30:04+01:00",
-    "ends_at": "2025-11-29T20:00:00+01:00",
-    "_identity": "wl|störung|L=3A|D=2025-11-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2A: Einkaufssamstag Betrieb ganztägig eingestellt",
     "description": "Einkaufssamstag Betrieb ganztägig eingestellt",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -430,6 +406,18 @@
     "starts_at": "2025-11-29T05:30:04+01:00",
     "ends_at": "2025-11-29T20:00:00+01:00",
     "_identity": "wl|störung|L=2A|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "3A: Einkaufssamstag Betrieb ganztägig eingestellt",
+    "description": "Einkaufssamstag Betrieb ganztägig eingestellt",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "589141b1c3a87887eb23482dd6ebee076cb13f3480afdd68e6f000e43fa82ad9",
+    "pubDate": "2025-11-29T05:30:04+01:00",
+    "starts_at": "2025-11-29T05:30:04+01:00",
+    "ends_at": "2025-11-29T20:00:00+01:00",
+    "_identity": "wl|störung|L=3A|D=2025-11-29"
   },
   {
     "source": "Wiener Linien",
@@ -537,18 +525,6 @@
     "pubDate": "2025-11-29T14:22:44+01:00",
     "starts_at": "2025-11-29T14:22:44+01:00",
     "ends_at": "2025-11-29T23:00:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-11-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972",
-    "pubDate": "2025-11-29T14:23:03+01:00",
-    "starts_at": "2025-11-29T14:23:03+01:00",
-    "ends_at": "2025-11-29T15:22:00+01:00",
     "_identity": "wl|störung|L=1|D=2025-11-29"
   },
   {
@@ -682,5 +658,17 @@
     "starts_at": "2025-11-29T14:52:36+01:00",
     "ends_at": "2025-11-29T20:45:00+01:00",
     "_identity": "wl|störung|L=D|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Demonstration",
+    "description": "Die Linie 57 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Demonstration.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1e16b0c6290563dcf7cbdaf7bfc35e0f7e654f4fd8fe13c3f0343e878211389b",
+    "pubDate": "2025-11-29T15:25:00+01:00",
+    "starts_at": "2025-11-29T15:25:00+01:00",
+    "ends_at": "2025-11-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2025-11-29"
   }
 ]
