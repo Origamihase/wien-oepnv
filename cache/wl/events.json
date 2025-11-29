@@ -386,18 +386,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
-    "pubDate": "2025-11-29T04:30:05+01:00",
-    "starts_at": "2025-11-29T04:30:05+01:00",
-    "ends_at": "2025-11-30T00:50:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-11-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -406,6 +394,18 @@
     "starts_at": "2025-11-29T04:30:05+01:00",
     "ends_at": "2025-11-30T00:50:00+01:00",
     "_identity": "wl|störung|L=29B|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
+    "pubDate": "2025-11-29T04:30:05+01:00",
+    "starts_at": "2025-11-29T04:30:05+01:00",
+    "ends_at": "2025-11-30T00:50:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2025-11-29"
   },
   {
     "source": "Wiener Linien",
@@ -470,13 +470,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Heiligenstadt.",
+    "title": "48A: Verunreinigung",
+    "description": "Die Linie 48 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2025-11-29T07:35:00+01:00",
-    "starts_at": "2025-11-29T07:35:00+01:00",
+    "guid": "2d35ff00ca738ec95b1a6bd94f8de3f7105ed897f5d6c4a9dc9d5a971cf3ea5d",
+    "pubDate": "2025-11-29T08:55:00+01:00",
+    "starts_at": "2025-11-29T08:55:00+01:00",
     "ends_at": "2025-11-29T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2025-11-29"
+    "_identity": "wl|störung|L=48A|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Einkaufssamstag Betrieb ab Neubaugasse, Burggasse",
+    "description": "Einkaufssamstag Betrieb ab Neubaugasse, Burggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c2eca20e716f8361b8f6a799c5e8e15227094623080719d1ccc4898e710aa664",
+    "pubDate": "2025-11-29T09:02:46+01:00",
+    "starts_at": "2025-11-29T09:02:46+01:00",
+    "ends_at": "2025-11-29T20:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Einkaufssamstag Busse in der Haltestelle Richtung Hauptbahnhof",
+    "description": "Einkaufssamstag Busse in der Haltestelle Richtung Hauptbahnhof",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1023e855189a507fcbc224224432e7fc1f92cfc741796f5a3e0997b38e2464d4",
+    "pubDate": "2025-11-29T09:04:42+01:00",
+    "starts_at": "2025-11-29T09:04:42+01:00",
+    "ends_at": "2025-11-29T20:00:00+01:00",
+    "_identity": "wl|störung|L=14A|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Einkaufssamstag Betrieb ab Neubaugasse U",
+    "description": "Einkaufssamstag Betrieb ab Neubaugasse U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8ee74ab2cc0f746c7ccec88132fc45d851e0ce64605aed98e521133eb5e57452",
+    "pubDate": "2025-11-29T09:05:33+01:00",
+    "starts_at": "2025-11-29T09:05:33+01:00",
+    "ends_at": "2025-11-29T20:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Einkaufssamstag Busse halten in der Amerlingstraße",
+    "description": "Einkaufssamstag Busse halten in der Amerlingstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b11575c7f8e51768685119dc9d641cc83057e90cb02cf78e4f3c98910d2e9833",
+    "pubDate": "2025-11-29T09:06:34+01:00",
+    "starts_at": "2025-11-29T09:06:34+01:00",
+    "ends_at": "2025-11-29T20:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-11-29"
   }
 ]
