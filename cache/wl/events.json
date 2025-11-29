@@ -290,6 +290,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
+    "pubDate": "2025-11-28T00:00:26+01:00",
+    "starts_at": "2025-11-28T00:00:26+01:00",
+    "ends_at": "2025-11-29T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Züge halten Gegenüber",
     "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -314,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
-    "pubDate": "2025-11-28T00:00:26+01:00",
-    "starts_at": "2025-11-28T00:00:26+01:00",
-    "ends_at": "2025-11-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "43: Züge halten Alszeile 126",
     "description": "Bauarbeiten Züge halten Alszeile 126",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -338,18 +338,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
-    "pubDate": "2025-11-29T00:00:22+01:00",
-    "starts_at": "2025-11-29T00:00:22+01:00",
-    "ends_at": "2025-11-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-11-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "33A: Haltestelle aufgelassen",
     "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -358,6 +346,18 @@
     "starts_at": "2025-11-29T00:00:22+01:00",
     "ends_at": "2025-11-29T23:59:59+01:00",
     "_identity": "wl|störung|L=33A|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "pubDate": "2025-11-29T00:00:22+01:00",
+    "starts_at": "2025-11-29T00:00:22+01:00",
+    "ends_at": "2025-11-29T23:59:59+01:00",
+    "_identity": "wl|störung|L=N31|D=2025-11-29"
   },
   {
     "source": "Wiener Linien",
@@ -422,13 +422,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Verspätungen",
-    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "2A: Einkaufssamstag Betrieb ganztägig eingestellt",
+    "description": "Einkaufssamstag Betrieb ganztägig eingestellt",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
-    "pubDate": "2025-11-29T05:10:00+01:00",
-    "starts_at": "2025-11-29T05:10:00+01:00",
-    "ends_at": "2025-11-29T23:55:00+01:00",
-    "_identity": "wl|störung|L=U2|D=2025-11-29"
+    "guid": "01cfbae80be2566445b6b7fd160705218d42f8bd970c662dec09f40143c32ff2",
+    "pubDate": "2025-11-29T05:30:04+01:00",
+    "starts_at": "2025-11-29T05:30:04+01:00",
+    "ends_at": "2025-11-29T20:00:00+01:00",
+    "_identity": "wl|störung|L=2A|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "3A: Einkaufssamstag Betrieb ganztägig eingestellt",
+    "description": "Einkaufssamstag Betrieb ganztägig eingestellt",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "589141b1c3a87887eb23482dd6ebee076cb13f3480afdd68e6f000e43fa82ad9",
+    "pubDate": "2025-11-29T05:30:04+01:00",
+    "starts_at": "2025-11-29T05:30:04+01:00",
+    "ends_at": "2025-11-29T20:00:00+01:00",
+    "_identity": "wl|störung|L=3A|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A: Einkaufssamstag Betrieb ganztägig eingestellt",
+    "description": "Einkaufssamstag Betrieb ganztägig eingestellt",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9002c1f69037c290f876a07e97d8bffbc9e346e826c2495c2d2c8f95d4183b77",
+    "pubDate": "2025-11-29T05:30:04+01:00",
+    "starts_at": "2025-11-29T05:30:04+01:00",
+    "ends_at": "2025-11-29T20:45:00+01:00",
+    "_identity": "wl|störung|L=1A|D=2025-11-29"
   }
 ]
