@@ -218,18 +218,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "60A: Umleitung ab 28. November 2025",
-    "description": "Veranstaltung\nWegen einer Veranstaltung im Bereich der Endresstraße werden die Busse umgeleitet.\nZeitraum:\nAb Freitag, 28. November 2025 etwa 13.00 Uhr bis Samstag, 29. November etwa 22:00 Uhr.\nMaßnahmen:\n60 A in Richtung Alterlaa U\nUmleitung ab Maurer Hauptplatz # Speisinger Straße über Speisinger Straße – Franz-Graßler-Gasse – Karl-Schwed-Gasse zur bestehenden Fahrtroute.\nAufgelassene Haltestellen Richtung Alterlaa U:\nKarl-Schwed-Gasse (Karl-Schwed-Gasse 134-145)\nErsatzhaltestelle:\nFranz-Graßler-Gasse 62-64\nAufgelassene Haltestelle Richtung Liesing:\nSpeisinger Straße - wird ersatzlos aufgelassen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d758217b90c2c96d472d9fc53425ea4c114110eafed63c70852548585b454623",
-    "pubDate": "2025-11-17T09:00:00+01:00",
-    "starts_at": "2025-11-17T09:00:00+01:00",
-    "ends_at": "2025-11-29T22:00:00+01:00",
-    "_identity": "wl|hinweis|L=60A|D=2025-11-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "5A: Umleitung Gaußplatz ab 25.11.2025",
     "description": "Gleisbauarbeiten\nWegen Gleisbauarbeiten am Gaußplatz können die kurz geführten Kurse der Linie 5 A dort nicht wenden und werden umgeleitet.\nEbenso können die Kurse Richtung Nestroyplatz den Gaußplatz nicht queren und werden in die Gegenrichtung umgeleitet (siehe unten).\nZeitraum:\nDienstag, 25. November 2025 bis etwa Mitte Dezember 2025.\nMaßnahmen:\nLinie 5 A in Richtung Griegstraße, jedoch nur jene, die nicht vom Nestroyplatz kommen:\nNur jene Kurse der Linie 5 A, die nur zwischen Griegstraße und Gaußplatz fahren sind betroffen, somit:\nMo-Sa (Werktag): 20:00 Uhr bis 00:20 Uhr,\nSo-Feiertag ganztägig.\nUmleitung ab Wasnergasse # Gaußplatz über Gaußplatz - Jägerstraße - Wallensteinplatz - Wallensteinstraße - Dammstraße.\nAufgelassene Haltestellen:\nGaußplatz (Wasnergasse nach Gaußplatz)\nKarl-Meißl-Straße (Wasnergasse gegenüber 25-27)\nWasnergasse (Wasnergasse gegenüber 43)\nRauscherstraße (Rauscherstraße 1-3)\nErsatzhaltestellen:\nGaußplatz (Wasnergasse 3-5, provisorische Anfangs- und Endhaltestelle)\nWallensteinplatz (Wallensteinplatz gegenüber 8, Haltestelle der Linie 5 B)\nRauscherstraße (Dammstraße 2, provisorische Haltestelle).\nLinie 5 A in Richtung Nestroyplatz:\nJene Kurse Mo-Sa bis etwa 20:00 Uhr.\nUmleitung ab Dammstraße # Wallensteinstraße über Wallensteinstraße - Wallensteinplatz - Jägerstraße - Gaußplatz, Gleiskörper - Obere Augartenstraße.\nAufgelassene Haltestellen:\nRauscherstraße (Rauscherstraße 2-4)\nWasnergasse (Wasnergasse 45)\nKarl-Meißl-Straße (Wasnergasse 25-27)\nErsatzhaltestellen:\nRauscherstraße (Wallensteinstraße 51-53)\nWallensteinplatz (Wallensteinplatz 7, Haltestelle der Linie 5 B).\nErsatz:\nBenützen Sie in diesem Zeitraum bitte jeweils die Haltestellen der Gegenrichtung.\nSkizzen:\nSkizze für kurz geführte Kurse ab Gaußplatz\nSkizze für lang geführte Kurse zum Nestroyplatz:",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -290,18 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
-    "pubDate": "2025-11-28T00:00:26+01:00",
-    "starts_at": "2025-11-28T00:00:26+01:00",
-    "ends_at": "2025-11-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Züge halten Gegenüber",
     "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -310,6 +286,18 @@
     "starts_at": "2025-11-28T00:00:26+01:00",
     "ends_at": "2025-11-29T23:59:59+01:00",
     "_identity": "wl|störung|L=18|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "pubDate": "2025-11-28T00:00:26+01:00",
+    "starts_at": "2025-11-28T00:00:26+01:00",
+    "ends_at": "2025-11-29T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
@@ -326,18 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
-    "pubDate": "2025-11-29T00:00:22+01:00",
-    "starts_at": "2025-11-29T00:00:22+01:00",
-    "ends_at": "2025-11-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-11-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
     "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -350,14 +326,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Busse halten Grenzgasse 2-4",
-    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
-    "pubDate": "2025-11-29T00:00:26+01:00",
-    "starts_at": "2025-11-29T00:00:26+01:00",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "pubDate": "2025-11-29T00:00:22+01:00",
+    "starts_at": "2025-11-29T00:00:22+01:00",
     "ends_at": "2025-11-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=12A|D=2025-11-29"
+    "_identity": "wl|störung|L=33A|D=2025-11-29"
   },
   {
     "source": "Wiener Linien",
@@ -370,6 +346,18 @@
     "starts_at": "2025-11-29T00:00:26+01:00",
     "ends_at": "2025-11-29T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Busse halten Grenzgasse 2-4",
+    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
+    "pubDate": "2025-11-29T00:00:26+01:00",
+    "starts_at": "2025-11-29T00:00:26+01:00",
+    "ends_at": "2025-11-29T23:59:59+01:00",
+    "_identity": "wl|störung|L=12A|D=2025-11-29"
   },
   {
     "source": "Wiener Linien",
@@ -441,18 +429,6 @@
     "pubDate": "2025-11-29T14:42:27+01:00",
     "starts_at": "2025-11-29T14:42:27+01:00",
     "ends_at": "2025-11-29T22:30:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-11-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Demonstration Züge halten bei Linie 49",
-    "description": "Demonstration Züge halten bei Linie 49",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f4295d18127f5bcea16c057af62b09237b6947ffc103877653c45e11a6c77369",
-    "pubDate": "2025-11-29T14:42:56+01:00",
-    "starts_at": "2025-11-29T14:42:56+01:00",
-    "ends_at": "2025-11-29T21:45:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-11-29"
   },
   {
@@ -567,24 +543,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "10: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "381829f20deab888a50e0846e6431dbf3ea0d5a796a28663625e48630c13c686",
-    "pubDate": "2025-11-29T21:05:00+01:00",
-    "starts_at": "2025-11-29T21:05:00+01:00",
-    "ends_at": "2025-11-29T23:55:00+01:00",
+    "pubDate": "2025-11-29T21:16:46+01:00",
+    "starts_at": "2025-11-29T21:16:46+01:00",
+    "ends_at": "2025-11-29T22:26:00+01:00",
     "_identity": "wl|störung|L=10|D=2025-11-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Verunreinigung",
-    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "55a6d2210edf7006a86ba29cb1618fa5f1c07d264c2f291e173729f4b9f779d9",
-    "pubDate": "2025-11-29T21:25:00+01:00",
-    "starts_at": "2025-11-29T21:25:00+01:00",
-    "ends_at": "2025-11-29T23:55:00+01:00",
-    "_identity": "wl|störung|L=U2|D=2025-11-29"
   }
 ]
