@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
-    "pubDate": "2025-11-28T00:00:26+01:00",
-    "starts_at": "2025-11-28T00:00:26+01:00",
-    "ends_at": "2025-11-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-11-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Busse halten Dammstraße 2",
     "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -322,6 +310,18 @@
     "starts_at": "2025-11-28T00:00:26+01:00",
     "ends_at": "2025-11-29T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2025-11-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "pubDate": "2025-11-28T00:00:26+01:00",
+    "starts_at": "2025-11-28T00:00:26+01:00",
+    "ends_at": "2025-11-29T23:59:59+01:00",
+    "_identity": "wl|störung|L=18|D=2025-11-28"
   },
   {
     "source": "Wiener Linien",
@@ -362,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Busse halten Grenzgasse 2-4",
-    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
-    "pubDate": "2025-11-29T00:00:26+01:00",
-    "starts_at": "2025-11-29T00:00:26+01:00",
-    "ends_at": "2025-11-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=12A|D=2025-11-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Betrieb ab Laudongasse",
     "description": "Bauarbeiten Betrieb ab Laudongasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -382,6 +370,18 @@
     "starts_at": "2025-11-29T00:00:26+01:00",
     "ends_at": "2025-11-29T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Busse halten Grenzgasse 2-4",
+    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
+    "pubDate": "2025-11-29T00:00:26+01:00",
+    "starts_at": "2025-11-29T00:00:26+01:00",
+    "ends_at": "2025-11-29T23:59:59+01:00",
+    "_identity": "wl|störung|L=12A|D=2025-11-29"
   },
   {
     "source": "Wiener Linien",
@@ -454,5 +454,29 @@
     "starts_at": "2025-11-29T05:30:04+01:00",
     "ends_at": "2025-11-29T20:45:00+01:00",
     "_identity": "wl|störung|L=1A|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Polizeieinsatz",
+    "description": "Die Linie 49 fährt derzeit nur zwischen Ring, Volkstheater und Breitensee. Die Linie 52 wird bis Hütteldorf, Bujattigasse verlängert. Ersatzweise benützen Sie die Linien 10, 52. Die Störung dauert voraussichtlich bis 07:00 Uhr. Grund dafür ist ein Polizeieinsatz im Bereich Hütteldorfer Straße 217.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1252a6d03226d3f1d21b0f0e84cdaf2b9637cd4ac88019850214fb459e92e018",
+    "pubDate": "2025-11-29T06:30:00+01:00",
+    "starts_at": "2025-11-29T06:30:00+01:00",
+    "ends_at": "2025-11-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=49|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Polizeieinsatz Betrieb ab Breitensee",
+    "description": "Polizeieinsatz Betrieb ab Breitensee",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "17245375550a341367d59df402e880c1611e9fbb35634da6ea980f6f056c6c9b",
+    "pubDate": "2025-11-29T06:35:14+01:00",
+    "starts_at": "2025-11-29T06:35:14+01:00",
+    "ends_at": "2025-11-29T07:34:00+01:00",
+    "_identity": "wl|störung|L=46|D=2025-11-29"
   }
 ]
