@@ -386,18 +386,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
-    "pubDate": "2025-11-29T04:30:05+01:00",
-    "starts_at": "2025-11-29T04:30:05+01:00",
-    "ends_at": "2025-11-30T00:50:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-11-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -406,6 +394,18 @@
     "starts_at": "2025-11-29T04:30:05+01:00",
     "ends_at": "2025-11-30T00:50:00+01:00",
     "_identity": "wl|störung|L=29B|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
+    "pubDate": "2025-11-29T04:30:05+01:00",
+    "starts_at": "2025-11-29T04:30:05+01:00",
+    "ends_at": "2025-11-30T00:50:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2025-11-29"
   },
   {
     "source": "Wiener Linien",
@@ -514,5 +514,29 @@
     "starts_at": "2025-11-29T09:06:34+01:00",
     "ends_at": "2025-11-29T20:00:00+01:00",
     "_identity": "wl|störung|L=13A|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49A/50B: Wasserrohrgebrechen",
+    "description": "Die Linie 49 A wird in Richtung Bhf. Hütteldorf S U zwischen Cottagestraße und Hüttergasse über Ferdinand-Frey-Weg und Hüttergasse umgeleitet. Die Linie 50 B wird in Richtung Auhof zwischen Hüttergasse und Anzengruberstraße über Hüttergasse und Ferdinand-Frey-Weg umgeleitet. Grund dafür ist ein Wasserrohrgebrechen im Bereich Cottagestraße # Anzengruberstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a6ffb99fe8ff5ce3d1b1b9ed2974e0f56b4608118bc92b7945f1fb29f1f0a2f2",
+    "pubDate": "2025-11-29T09:40:00+01:00",
+    "starts_at": "2025-11-29T09:40:00+01:00",
+    "ends_at": "2025-11-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=49A,50B|D=2025-11-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verspätungen",
+    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2025-11-29T09:55:00+01:00",
+    "starts_at": "2025-11-29T09:55:00+01:00",
+    "ends_at": "2025-11-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2025-11-29"
   }
 ]
