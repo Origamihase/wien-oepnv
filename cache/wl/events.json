@@ -230,18 +230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "U1/U4: Station Schwedenplatz, Sperre Aufgang Urania",
-    "description": "Aufgangsperre\nWegen Bauarbeiten muss der Aufgang \"Urania\" der U-Bahn-Station Schwedenplatz zeitweilig gesperrt werden.\nZeitraum:\nMontag, 24. November 2025, 21:00 Uhr bis Freitag, 19. Dezember 2025, etwa 04:30 Uhr.\nJedoch nur Montag - Donnerstag zwischen 21:00 Uhr und 04:30 Uhr.\nErsatz:\nBitte benutzen Sie die anderen Aufgänge.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aac66d61a153d41a7c2a795dcebb5bed35489d9bc098be249cbb953e58f24d15",
-    "pubDate": "2025-11-24T14:15:00+01:00",
-    "starts_at": "2025-11-24T14:15:00+01:00",
-    "ends_at": "2025-12-19T04:30:00+01:00",
-    "_identity": "wl|hinweis|L=U1,U4|D=2025-11-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "17A: Straßenbauarbeiten ab 01.12.2025",
     "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Jochen-Rindt-Straße werden die Linien 17 A, 66 A und 67 A umgeleitet.\nZeitraum:\nAb Montag, 01. Dezember 2025, etwa 08:00 Uhr bis Freitag, 12. Dezember 2025, etwa 08:00 Uhr.\nMaßnahmen:\nLinie 17 A in Richtung Oberlaa U, 66 A Richtung Liesing S bzw. 67 A Inzersdorf, Slamastraße:\nUmleitung ab Jochen-Rindt-Straße # Tenschertstraße über Tenschertstraße – Gorskistraße – Salmhoferstraße – Jochen-Rindt-Straße.\nAufgelassene Haltestellen:\nTenschertstraße (Jochen-Rindt-Straße 17)\nErnanigasse (Jochen-Rindt-Straße 7)\nErsatzhaltestelle:\nTenschertstraße (Tenschertstraße 11)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -278,18 +266,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
-    "pubDate": "2025-11-30T00:00:08+01:00",
-    "starts_at": "2025-11-30T00:00:08+01:00",
-    "ends_at": "2025-11-30T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-11-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "33A: Haltestelle aufgelassen",
     "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -298,6 +274,18 @@
     "starts_at": "2025-11-30T00:00:08+01:00",
     "ends_at": "2025-11-30T23:59:59+01:00",
     "_identity": "wl|störung|L=33A|D=2025-11-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "pubDate": "2025-11-30T00:00:08+01:00",
+    "starts_at": "2025-11-30T00:00:08+01:00",
+    "ends_at": "2025-11-30T23:59:59+01:00",
+    "_identity": "wl|störung|L=N31|D=2025-11-30"
   },
   {
     "source": "Wiener Linien",
@@ -326,18 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
-    "pubDate": "2025-11-30T00:00:18+01:00",
-    "starts_at": "2025-11-30T00:00:18+01:00",
-    "ends_at": "2025-11-30T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-11-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Züge halten Gegenüber",
     "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -354,6 +330,18 @@
     "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "pubDate": "2025-11-30T00:00:18+01:00",
+    "starts_at": "2025-11-30T00:00:18+01:00",
+    "ends_at": "2025-11-30T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2025-11-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
     "pubDate": "2025-11-30T00:00:18+01:00",
     "starts_at": "2025-11-30T00:00:18+01:00",
     "ends_at": "2025-11-30T23:59:59+01:00",
@@ -430,18 +418,6 @@
     "starts_at": "2025-11-30T16:20:00+01:00",
     "ends_at": "2025-11-30T23:55:00+01:00",
     "_identity": "wl|störung|L=10A|D=2025-11-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Rettungseinsatz Züge halten bei Li. 6",
-    "description": "Rettungseinsatz Züge halten bei Li. 6",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
-    "pubDate": "2025-11-30T18:02:27+01:00",
-    "starts_at": "2025-11-30T18:02:27+01:00",
-    "ends_at": "2025-11-30T19:02:00+01:00",
-    "_identity": "wl|störung|L=18|D=2025-11-30"
   },
   {
     "source": "Wiener Linien",
@@ -542,13 +518,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Fahrtbehinderung Falschparker",
-    "description": "Die Linie 10 ist derzeit in Richtung Unter St. Veit an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 19:00 Uhr. Grund dafür ist ein Falschparker im Bereich Reinlgasse.",
+    "title": "10: Falschparker Betrieb ab Hütteldorfer Straße U",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0d70c69478856b9a3b8e5e9a4e597963f8077e418dad78a7ecf0b5dea4f9fa04",
     "pubDate": "2025-11-30T18:35:00+01:00",
     "starts_at": "2025-11-30T18:35:00+01:00",
     "ends_at": "2025-11-30T23:55:00+01:00",
     "_identity": "wl|störung|L=10|D=2025-11-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2025-11-30T18:50:00+01:00",
+    "starts_at": "2025-11-30T18:50:00+01:00",
+    "ends_at": "2025-11-30T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2025-11-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "75c314f681fe756a41036cc506d4e269bf917e5d515c978c03f60c4402399a79",
+    "pubDate": "2025-11-30T19:05:19+01:00",
+    "starts_at": "2025-11-30T19:05:19+01:00",
+    "ends_at": "2025-11-30T20:08:00+01:00",
+    "_identity": "wl|störung|L=18|D=2025-11-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "98667687253bc639656a963907dc9d6e4d87dbc4735242bb2b985799eaecefeb",
+    "pubDate": "2025-11-30T19:13:39+01:00",
+    "starts_at": "2025-11-30T19:13:39+01:00",
+    "ends_at": "2025-11-30T20:13:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-11-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Verkehrsunfall Betrieb ab Eichenstraße",
+    "description": "Verkehrsunfall Betrieb ab Eichenstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a389812e7ce568c1ae77f3d7d1b12d39ab8a3ab807b311052e0eb4bf5b2b820",
+    "pubDate": "2025-11-30T19:14:08+01:00",
+    "starts_at": "2025-11-30T19:14:08+01:00",
+    "ends_at": "2025-11-30T20:13:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-11-30"
   }
 ]
