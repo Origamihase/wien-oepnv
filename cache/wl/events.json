@@ -193,18 +193,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "29B: Felmayergasse bis 01.12.2025",
-    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Felmayergasse # Richard-Neutra-Gasse wird die Linie 29 B umgeleitet.\nZeitraum:\nAb Montag, 17. November 2025, etwa 06:30 Uhr bis 01. Dezember 2025, etwa 06:00 Uhr.\nMaßnahmen:\nLinie 29 B in Richtung Großfeldsiedlung U:\nUmleitung ab Paukerwerkstraße # Richard-Neutra-Gasse über Richard-Neutra-Gasse – Schönthalergasse – Egon-Friedell-Gasse – Schererstraße.\nAufgelassene Haltestellen:\nHerta-Kräftner-Gasse (Richard-Neutra-Gasse 6)\nFelmayergasse (Richard-Neutra-Gasse 12-14)\nEgon-Friedell-Gasse (Felmayergasse vor Egon-Friedell-Gasse)\nErsatzhaltestellen:\nHerta-Kräftner-Gasse (Paukerwerkstraße gegenüber 7)\nEgon-Friedell-Gasse (Oswald-Redlich-Straße 2)\nLinie 29 B in Richtung Floridsdorf S U:\nUmleitung ab Schererstraße # Egon-Friedell-Gasse über Egon-Friedell-Gasse – Schönthalergasse – Richard-Neutra-Gasse – Paukerwerkstraße.\nAufgelassene Haltestellen:\nEgon-Friedell-Gasse (Egon-Friedell-Gasse 3)\nFelmayergasse (Richard-Neutra-Gasse gegenüber 12)\nHerta-Kräftner-Gasse (Richard-Neutra-Gasse gegenüber 6)\nErsatzhaltestellen:\nEgon-Friedell-Gasse (Oswald-Redlich-Straße 1)\nHerta-Kräftner-Gasse (Paukerwerkstraße 7)\nSkizze:",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "317e816fa569b274a4235dedc5a6aaec8eafaa78b84afb377e25a4c44be0673e",
-    "pubDate": "2025-11-05T11:45:00+01:00",
-    "starts_at": "2025-11-05T11:45:00+01:00",
-    "ends_at": "2025-12-01T06:00:00+01:00",
-    "_identity": "wl|hinweis|L=29B|D=2025-11-05"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "80A: Bauarbeiten",
     "description": "Die Linie 80 A wird in Richtung Neu Marx zwischen Friedensgasse und Stadionbrücke über die Wittelsbachstraße, Erdberger Lände und Schlachthausgasse umgeleitet. Die Haltestellen Friedensgasse, Lukschgasse, Rustenschacherallee, Klaschkaweg und Stadionbrücke können dadurch nicht eingehalten werden. Die Störung dauert voraussichtlich bis Ende Mai 2026. Grund dafür sind Bauarbeiten im Bereich Stadionallee.",
@@ -362,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-01T04:30:20+01:00",
-    "starts_at": "2025-12-01T04:30:20+01:00",
-    "ends_at": "2025-12-02T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -386,6 +362,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-12-01T04:30:20+01:00",
+    "starts_at": "2025-12-01T04:30:20+01:00",
+    "ends_at": "2025-12-02T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-12-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -394,5 +382,65 @@
     "starts_at": "2025-12-01T04:45:21+01:00",
     "ends_at": "2025-12-02T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "32A: Rettungseinsatz",
+    "description": "Die Linie 32 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Leopoldau S U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61",
+    "pubDate": "2025-12-01T05:40:00+01:00",
+    "starts_at": "2025-12-01T05:40:00+01:00",
+    "ends_at": "2025-12-01T23:55:00+01:00",
+    "_identity": "wl|störung|L=32A|D=2025-12-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11/71: Verspätungen",
+    "description": "Die Linie 11 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Zentralfriedhof 2.Tor.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d4e3fe6c349b665b97cbde4b8d73172b90fcdb011c9cb9d8c80c70350fe1766e",
+    "pubDate": "2025-12-01T05:55:00+01:00",
+    "starts_at": "2025-12-01T05:55:00+01:00",
+    "ends_at": "2025-12-01T23:55:00+01:00",
+    "_identity": "wl|störung|L=11,71|D=2025-12-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Schadhaftes Fahrzeug",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Herrengasse und Landstraße in beiden Richtungen über Gleis 2. Die Störung dauert voraussichtlich bis 06:40 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Landstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
+    "pubDate": "2025-12-01T06:15:00+01:00",
+    "starts_at": "2025-12-01T06:15:00+01:00",
+    "ends_at": "2025-12-01T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-12-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Schadhafter Bus",
+    "description": "Fahrtbehinderung Schadhafter Bus",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "843fd4e31e0c0925f4e60123918291f13b408cb6e4562c1876c1d4af3013ca73",
+    "pubDate": "2025-12-01T06:20:13+01:00",
+    "starts_at": "2025-12-01T06:20:13+01:00",
+    "ends_at": "2025-12-01T07:22:00+01:00",
+    "_identity": "wl|störung|L=38|D=2025-12-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "39A: Fahrtbehinderung Schadhafter Bus",
+    "description": "Fahrtbehinderung Schadhafter Bus",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "74e97fcc210cb5a98a057ffca428d9ed77589ecab24c6da4809c5040a6868d53",
+    "pubDate": "2025-12-01T06:21:33+01:00",
+    "starts_at": "2025-12-01T06:21:33+01:00",
+    "ends_at": "2025-12-01T07:21:00+01:00",
+    "_identity": "wl|störung|L=39A|D=2025-12-01"
   }
 ]
