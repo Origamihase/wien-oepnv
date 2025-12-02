@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Tue, 02 Dec 2025 15:15:03 +0000</lastBuildDate>
+<lastBuildDate>Tue, 02 Dec 2025 15:32:12 +0000</lastBuildDate>
 <ttl>15</ttl>
 <item>
 <title><![CDATA[9: Falschparker Betrieb ab Rosensteingasse]]></title>
@@ -52,17 +52,6 @@
 <ext:ends_at>Tue, 02 Dec 2025 22:55:00 +0000</ext:ends_at>
 <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.<br>[Seit 02.12.2025]]]></description>
 <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.<br/>[Seit 02.12.2025]]]></content:encoded>
-</item>
-<item>
-<title><![CDATA[12A: Rettungseinsatz]]></title>
-<link>https://www.wienerlinien.at/ogd_realtime</link>
-<guid isPermaLink="false">711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7</guid>
-<pubDate>Tue, 02 Dec 2025 14:20:00 +0000</pubDate>
-<ext:first_seen>Tue, 02 Dec 2025 15:15:03 +0000</ext:first_seen>
-<ext:starts_at>Tue, 02 Dec 2025 14:20:00 +0000</ext:starts_at>
-<ext:ends_at>Tue, 02 Dec 2025 22:55:00 +0000</ext:ends_at>
-<description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 12 A zu unterschiedlichen Intervallen.<br>[Seit 02.12.2025]]]></description>
-<content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 12 A zu unterschiedlichen Intervallen.<br/>[Seit 02.12.2025]]]></content:encoded>
 </item>
 <item>
 <title><![CDATA[41: Falschparker]]></title>
@@ -118,6 +107,17 @@
 <ext:ends_at>Tue, 02 Dec 2025 23:50:00 +0000</ext:ends_at>
 <description><![CDATA[Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31<br>[02.12.2025 – 03.12.2025]]]></description>
 <content:encoded><![CDATA[Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31<br/>[02.12.2025 – 03.12.2025]]]></content:encoded>
+</item>
+<item>
+<title><![CDATA[12A: Busse halten Grenzgasse 2-4]]></title>
+<link>https://www.wienerlinien.at/ogd_realtime</link>
+<guid isPermaLink="false">e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240</guid>
+<pubDate>Sun, 30 Nov 2025 23:00:21 +0000</pubDate>
+<ext:first_seen>Tue, 02 Dec 2025 15:32:12 +0000</ext:first_seen>
+<ext:starts_at>Sun, 30 Nov 2025 23:00:21 +0000</ext:starts_at>
+<ext:ends_at>Tue, 02 Dec 2025 22:59:59 +0000</ext:ends_at>
+<description><![CDATA[Bauarbeiten Busse halten Grenzgasse 2-4<br>[01.12.2025 – 02.12.2025]]]></description>
+<content:encoded><![CDATA[Bauarbeiten Busse halten Grenzgasse 2-4<br/>[01.12.2025 – 02.12.2025]]]></content:encoded>
 </item>
 </channel>
 </rss>
