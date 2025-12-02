@@ -5,8 +5,9 @@ from __future__ import annotations
 import json
 import logging
 import os
-from pathlib import Path
 import tempfile
+from datetime import datetime, timezone
+from pathlib import Path
 from threading import RLock
 from typing import Any, Callable, List, Optional
 
@@ -61,6 +62,30 @@ def _emit_cache_alert(provider: str, message: str) -> None:
 
 def _cache_file(provider: str) -> Path:
     return _CACHE_DIR / provider / _CACHE_FILENAME
+
+
+def cache_modified_at(provider: str) -> Optional[datetime]:
+    """Return the last modification timestamp for ``provider``'s cache.
+
+    ``None`` is returned if the cache file does not exist or cannot be read.
+    The timestamp is always normalised to UTC to simplify comparisons.
+    """
+
+    cache_file = _cache_file(provider)
+    try:
+        stat_result = cache_file.stat()
+    except FileNotFoundError:
+        return None
+    except OSError as exc:
+        log.warning(
+            "Could not read mtime for cache '%s' at %s: %s",
+            provider,
+            cache_file,
+            exc,
+        )
+        return None
+
+    return datetime.fromtimestamp(stat_result.st_mtime, tz=timezone.utc)
 
 
 def read_cache(provider: str) -> List[Any]:
