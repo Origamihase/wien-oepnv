@@ -65,9 +65,17 @@ except ModuleNotFoundError:  # pragma: no cover
     )
 
 try:  # pragma: no cover - allow running as script or package
-    from utils.cache import read_cache as _core_read_cache, register_cache_alert_hook  # type: ignore
+    from utils.cache import (
+        cache_modified_at,
+        read_cache as _core_read_cache,
+        register_cache_alert_hook,
+    )  # type: ignore
 except ModuleNotFoundError:  # pragma: no cover
-    from .utils.cache import read_cache as _core_read_cache, register_cache_alert_hook
+    from .utils.cache import (
+        cache_modified_at,
+        read_cache as _core_read_cache,
+        register_cache_alert_hook,
+    )
 
 try:  # pragma: no cover - platform dependent
     import fcntl  # type: ignore
@@ -119,6 +127,7 @@ PROVIDER_TIMEOUT = feed_config.PROVIDER_TIMEOUT
 RFC = feed_config.RFC
 STATE_FILE = feed_config.STATE_FILE
 STATE_RETENTION_DAYS = feed_config.STATE_RETENTION_DAYS
+CACHE_MAX_AGE_HOURS = feed_config.CACHE_MAX_AGE_HOURS
 
 os.makedirs(LOG_DIR, exist_ok=True)
 
@@ -156,6 +165,39 @@ for env_name, loader in PROVIDERS:
 
 def _provider_display_name(fetch: Any, env: Optional[str] = None) -> str:
     return resolve_provider_name(fetch, env)
+
+
+def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
+    """Record warnings for provider caches older than the configured threshold."""
+
+    if CACHE_MAX_AGE_HOURS <= 0:
+        return []
+
+    threshold = timedelta(hours=CACHE_MAX_AGE_HOURS)
+    stale_messages: List[str] = []
+
+    for _, loader in PROVIDERS:
+        cache_name = getattr(loader, "_provider_cache_name", None)
+        if not cache_name:
+            continue
+
+        modified_at = cache_modified_at(str(cache_name))
+        if modified_at is None:
+            continue
+
+        age = now - modified_at
+        if age <= threshold:
+            continue
+
+        hours = age.total_seconds() / 3600
+        message = (
+            f"Cache {cache_name}: zuletzt vor {hours:.1f}h aktualisiert "
+            f"(Schwelle {CACHE_MAX_AGE_HOURS}h)"
+        )
+        report.add_warning(message)
+        stale_messages.append(message)
+
+    return stale_messages
 
 
 def _provider_statuses() -> List[Tuple[str, bool]]:
@@ -1429,6 +1471,9 @@ def lint() -> int:
 
     now = datetime.now(timezone.utc)
     state = _load_state()
+    stale_cache_messages = _detect_stale_caches(report, now)
+    if stale_cache_messages:
+        log.warning("Veraltete Caches erkannt: %s", "; ".join(stale_cache_messages))
     exit_code = 0
 
     try:
@@ -1476,6 +1521,11 @@ def lint() -> int:
                     f"- {summary.count}× Schlüssel {summary.dedupe_key}: {titles}"
                 )
 
+        if stale_cache_messages:
+            print("\nVeraltete Cache-Dateien:")
+            for message in stale_cache_messages:
+                print(f"- {message}")
+
         if missing_guid_items:
             print("\nEinträge ohne GUID:")
             for item in missing_guid_items:
@@ -1492,7 +1542,7 @@ def lint() -> int:
 
         if provider_failures:
             exit_code = 2
-        elif duplicate_summaries or missing_guid_items:
+        elif duplicate_summaries or missing_guid_items or stale_cache_messages:
             exit_code = 1
         else:
             exit_code = 0
@@ -1525,6 +1575,9 @@ def main() -> int:
     job_start = perf_counter()
     now = datetime.now(timezone.utc)
     state = _load_state()
+    stale_cache_messages = _detect_stale_caches(report, now)
+    if stale_cache_messages:
+        log.warning("Veraltete Caches erkannt: %s", "; ".join(stale_cache_messages))
     health_metrics: Optional[FeedHealthMetrics] = None
     duplicate_summaries: List[DuplicateSummary] = []
     raw_count = 0

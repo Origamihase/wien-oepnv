@@ -1,0 +1,97 @@
+{
+  "duplicates": [
+    {
+      "count": 4,
+      "dedupe_key": "wl|störung|L=1|D=2025-12-02",
+      "titles": [
+        "1: Schadhafter Zug Einstieg bei Linie 18 Richtung St Marx",
+        "1: Fahrtbehinderung Schadhafter Zug",
+        "1: Schadhafter Zug Betrieb ab Matzleinsdorfer Platz"
+      ]
+    },
+    {
+      "count": 2,
+      "dedupe_key": "wl|störung|L=5A|D=2025-12-01",
+      "titles": [
+        "5A: Busse halten Dammstraße 2",
+        "5A: Busse halten Wallensteinstraße 51-53"
+      ]
+    },
+    {
+      "count": 2,
+      "dedupe_key": "wl|störung|L=6|D=2025-12-02",
+      "titles": [
+        "6: Fahrtbehinderung Schadhafter Zug",
+        "6: Schadhafter Zug Einstieg bei LInie 1 Richtung Prater Hauptallee"
+      ]
+    }
+  ],
+  "durations": {
+    "collect": 0.0013854349999959936,
+    "dedupe": 4.0653000006329876e-05,
+    "filter": 0.00015802699999767356,
+    "normalize": 3.1067000001883116e-05,
+    "rss": 0.04789154299999865,
+    "total": 0.052289340999998046
+  },
+  "errors": [],
+  "metrics": {
+    "deduped_items": 38,
+    "duplicate_count": 5,
+    "filtered_items": 43,
+    "new_items": 38,
+    "raw_items": 43
+  },
+  "providers": [
+    {
+      "detail": "Cache-Datei fehlt (cache/baustellen/events.json)",
+      "duration": 0.00026282700000024306,
+      "enabled": true,
+      "fetch_type": "cache",
+      "items": 0,
+      "name": "baustellen",
+      "status": "empty"
+    },
+    {
+      "detail": "",
+      "duration": 7.11790000025303e-05,
+      "enabled": true,
+      "fetch_type": "cache",
+      "items": 1,
+      "name": "oebb",
+      "status": "ok"
+    },
+    {
+      "detail": "Keine aktuellen Daten",
+      "duration": 0.000332170000000076,
+      "enabled": true,
+      "fetch_type": "cache",
+      "items": 0,
+      "name": "vor",
+      "status": "empty"
+    },
+    {
+      "detail": "",
+      "duration": 0.0005851619999930335,
+      "enabled": true,
+      "fetch_type": "cache",
+      "items": 42,
+      "name": "wl",
+      "status": "ok"
+    }
+  ],
+  "run": {
+    "feed_path": "/workspace/wien-oepnv/docs/feed.xml",
+    "final_item_count": 38,
+    "finished_at": "2025-12-02T16:15:03.272000+01:00",
+    "id": "20251202T151503Z",
+    "raw_item_count": 43,
+    "started_at": "2025-12-02T16:15:03.218950+01:00",
+    "status": "success"
+  },
+  "warnings": [
+    "Provider vor: Keine aktuellen Daten",
+    "Cache baustellen: Cache-Datei fehlt (cache/baustellen/events.json)",
+    "Provider baustellen: Cache-Datei fehlt (cache/baustellen/events.json)"
+  ]
+}

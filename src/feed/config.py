@@ -22,6 +22,7 @@ try:  # pragma: no cover - support package and script execution
         DEFAULT_MAX_ITEMS,
         DEFAULT_MAX_ITEM_AGE_DAYS,
         DEFAULT_OUT_PATH,
+        DEFAULT_CACHE_MAX_AGE_HOURS,
         DEFAULT_PROVIDER_MAX_WORKERS,
         DEFAULT_PROVIDER_TIMEOUT,
         DEFAULT_STATE_PATH,
@@ -43,6 +44,7 @@ except ModuleNotFoundError:  # pragma: no cover
         DEFAULT_MAX_ITEMS,
         DEFAULT_MAX_ITEM_AGE_DAYS,
         DEFAULT_OUT_PATH,
+        DEFAULT_CACHE_MAX_AGE_HOURS,
         DEFAULT_PROVIDER_MAX_WORKERS,
         DEFAULT_PROVIDER_TIMEOUT,
         DEFAULT_STATE_PATH,
@@ -145,6 +147,7 @@ def _load_from_env() -> None:
     global DESCRIPTION_CHAR_LIMIT, FRESH_PUBDATE_WINDOW_MIN, MAX_ITEMS
     global MAX_ITEM_AGE_DAYS, ABSOLUTE_MAX_AGE_DAYS, ENDS_AT_GRACE_MINUTES
     global PROVIDER_TIMEOUT, PROVIDER_MAX_WORKERS, STATE_FILE, STATE_RETENTION_DAYS
+    global CACHE_MAX_AGE_HOURS
 
     LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").strip().upper()
     LOG_FORMAT = os.getenv("LOG_FORMAT", "plain").strip().lower()
@@ -178,6 +181,9 @@ def _load_from_env() -> None:
     )
     ENDS_AT_GRACE_MINUTES = max(
         get_int_env("ENDS_AT_GRACE_MINUTES", DEFAULT_ENDS_AT_GRACE_MINUTES), 0
+    )
+    CACHE_MAX_AGE_HOURS = max(
+        get_int_env("CACHE_MAX_AGE_HOURS", DEFAULT_CACHE_MAX_AGE_HOURS), 0
     )
     PROVIDER_TIMEOUT = max(get_int_env("PROVIDER_TIMEOUT", DEFAULT_PROVIDER_TIMEOUT), 0)
     PROVIDER_MAX_WORKERS = max(
@@ -234,6 +240,7 @@ __all__ = [
     "ABSOLUTE_MAX_AGE_DAYS",
     "DESCRIPTION_CHAR_LIMIT",
     "ENDS_AT_GRACE_MINUTES",
+    "CACHE_MAX_AGE_HOURS",
     "FEED_DESC",
     "FEED_HEALTH_JSON_PATH",
     "FEED_LINK",
