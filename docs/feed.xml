@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:ext="https://wien-oepnv.example/schema" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss xmlns:atom="http://www.w3.org/2005/Atom"  version="2.0" xmlns:ext="https://wien-oepnv.example/schema" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
 <title>ÖPNV Störungen Wien &amp; Umgebung</title>
 <link>https://github.com/Origamihase/wien-oepnv</link>
 <description>Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen</description>
+    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
+    <language>de</language>
 <lastBuildDate>Tue, 02 Dec 2025 15:15:03 +0000</lastBuildDate>
 <ttl>15</ttl>
 <item>
