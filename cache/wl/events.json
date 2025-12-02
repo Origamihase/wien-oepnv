@@ -302,6 +302,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "pubDate": "2025-12-01T00:00:18+01:00",
+    "starts_at": "2025-12-01T00:00:18+01:00",
+    "ends_at": "2025-12-02T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2025-12-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Züge halten Gegenüber",
     "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -326,18 +338,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
-    "pubDate": "2025-12-01T00:00:18+01:00",
-    "starts_at": "2025-12-01T00:00:18+01:00",
-    "ends_at": "2025-12-02T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-12-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Busse halten Grenzgasse 2-4",
     "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -346,18 +346,6 @@
     "starts_at": "2025-12-01T00:00:21+01:00",
     "ends_at": "2025-12-02T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2025-12-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
-    "pubDate": "2025-12-02T04:30:20+01:00",
-    "starts_at": "2025-12-02T04:30:20+01:00",
-    "ends_at": "2025-12-03T00:50:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-12-02"
   },
   {
     "source": "Wiener Linien",
@@ -374,6 +362,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
+    "pubDate": "2025-12-02T04:30:20+01:00",
+    "starts_at": "2025-12-02T04:30:20+01:00",
+    "ends_at": "2025-12-03T00:50:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2025-12-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -382,5 +382,65 @@
     "starts_at": "2025-12-02T04:45:22+01:00",
     "ends_at": "2025-12-03T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1/18/6/62/WLB: Schadhaftes Fahrzeug",
+    "description": "Die Linie 1 wird in beiden Richtungen zwischen Knöllgasse und Schwarzenbergplatz über Quellenplatz und Quartier Belvedere S umgeleitet. Die Linie 6 fährt derzeit nicht zwischen Knöllgasse und Arbeitergasse, Gürtel. Die Linie 18 fährt derzeit nicht zwischen Quartier Belvedere S und Arbeitergasse, Gürtel. Die Linie 62 fährt derzeit nur zwischen Lainz und Bahnhof Meidling, Dörfelstraße. Die Badner Bahn fährt derzeit nur zwischen Baden und Aßmayergasse. Weichen Sie auf die U- und S-Bahnlinien aus. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Matzleinsdorfer Platz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ce6dcb552be1cbb40dbbf81911f9dc5268cdbe1be7b4403d247bdc0dec6281d7",
+    "pubDate": "2025-12-02T06:25:00+01:00",
+    "starts_at": "2025-12-02T06:25:00+01:00",
+    "ends_at": "2025-12-02T23:55:00+01:00",
+    "_identity": "wl|störung|L=1,18,6,62,WLB|D=2025-12-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Schadhafter Zug Betrieb ab Oper, Karlsplatz",
+    "description": "Schadhafter Zug Betrieb ab Oper, Karlsplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "295f0882f49d1ea8f292edf601eace441ebc8e0fe62265cf2b9eba6f2ccb6569",
+    "pubDate": "2025-12-02T06:35:50+01:00",
+    "starts_at": "2025-12-02T06:35:50+01:00",
+    "ends_at": "2025-12-02T07:34:00+01:00",
+    "_identity": "wl|störung|L=1|D=2025-12-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Schadhafter Zug Betrieb ab Knöllgasse",
+    "description": "Schadhafter Zug Betrieb ab Knöllgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ba0d8939ea7da6ddd80657ddbedbb9f330db7daffd3142176ab817f1d95700fa",
+    "pubDate": "2025-12-02T06:36:28+01:00",
+    "starts_at": "2025-12-02T06:36:28+01:00",
+    "ends_at": "2025-12-02T07:35:00+01:00",
+    "_identity": "wl|störung|L=1|D=2025-12-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Schadhafter Zug Betrieb ab Arbeiter, Gürtel",
+    "description": "Schadhafter Zug Betrieb ab Arbeiter, Gürtel",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4d6c28f77546ddf127b1c08579eeb39e6c4cdae0d147795bcb3254088243fe0e",
+    "pubDate": "2025-12-02T06:41:19+01:00",
+    "starts_at": "2025-12-02T06:41:19+01:00",
+    "ends_at": "2025-12-02T07:40:00+01:00",
+    "_identity": "wl|störung|L=6|D=2025-12-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Schadhafter Zug Betrieb ab Knöllgasse",
+    "description": "Schadhafter Zug Betrieb ab Knöllgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "26ad8057ded898528f6225409ac8d9486ef05ea28d72703318c480f2febbd3e1",
+    "pubDate": "2025-12-02T06:41:48+01:00",
+    "starts_at": "2025-12-02T06:41:48+01:00",
+    "ends_at": "2025-12-02T07:41:00+01:00",
+    "_identity": "wl|störung|L=6|D=2025-12-02"
   }
 ]
