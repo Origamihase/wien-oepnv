@@ -362,13 +362,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "80A: Verkehrsunfall",
-    "description": "Die Linie 80 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Praterstern SU.",
+    "title": "O: Stromstörung Betrieb bis Praterstern",
+    "description": "Stromstörung Betrieb bis Praterstern",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dbf255f4864fa810267d36e958e84cdee6c8bc0adf8bb00a3e708ca0ae65cc69",
-    "pubDate": "2025-12-03T07:00:00+01:00",
-    "starts_at": "2025-12-03T07:00:00+01:00",
-    "ends_at": "2025-12-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=80A|D=2025-12-03"
+    "guid": "77a7d76e6aaa6eab946cdf56b48d69b23f6efeb5d7fefc6d7dc03c2a8ffef02d",
+    "pubDate": "2025-12-03T07:46:29+01:00",
+    "starts_at": "2025-12-03T07:46:29+01:00",
+    "ends_at": "2025-12-03T08:45:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung wegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "43af55e593e401ae3f42239fe3f2a3b5a3535c3089af02d052a809738853421a",
+    "pubDate": "2025-12-03T07:47:09+01:00",
+    "starts_at": "2025-12-03T07:47:09+01:00",
+    "ends_at": "2025-12-03T08:46:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Stromstörung Betrieb ab Praterstern",
+    "description": "Stromstörung Betrieb ab Praterstern",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "008841fe1c556e9ba62e8f6ec17a783b06564e315075ec256d4b5d2d157dfb53",
+    "pubDate": "2025-12-03T07:47:11+01:00",
+    "starts_at": "2025-12-03T07:47:11+01:00",
+    "ends_at": "2025-12-03T08:46:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung wegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2ab7e45e746a33e65e5f2e5bb674ae1070cea13aa977600ba24acaa990f5636e",
+    "pubDate": "2025-12-03T07:48:37+01:00",
+    "starts_at": "2025-12-03T07:48:37+01:00",
+    "ends_at": "2025-12-03T08:48:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Stromstörung Betrieb ab Dresdner Straße",
+    "description": "Stromstörung Betrieb ab Dresdner Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c99cec13a8d592beb82659e718076225a9d73d69ea025dc585804b36c3e28bba",
+    "pubDate": "2025-12-03T07:49:35+01:00",
+    "starts_at": "2025-12-03T07:49:35+01:00",
+    "ends_at": "2025-12-03T08:48:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Stromstörung Umleitung zum Praterstern",
+    "description": "Stromstörung Umleitung zum Praterstern",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8197ecc1d5e132b0518259b9864122b4c6d7c6c5003678b5f8243507485dfd73",
+    "pubDate": "2025-12-03T07:50:33+01:00",
+    "starts_at": "2025-12-03T07:50:33+01:00",
+    "ends_at": "2025-12-03T08:49:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-03"
   }
 ]
