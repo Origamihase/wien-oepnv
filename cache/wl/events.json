@@ -254,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
-    "pubDate": "2025-12-01T00:00:17+01:00",
-    "starts_at": "2025-12-01T00:00:17+01:00",
-    "ends_at": "2025-12-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
     "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -278,14 +266,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "pubDate": "2025-12-01T00:00:17+01:00",
+    "starts_at": "2025-12-01T00:00:17+01:00",
+    "ends_at": "2025-12-03T23:59:59+01:00",
+    "_identity": "wl|störung|L=33A|D=2025-12-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
     "pubDate": "2025-12-01T00:00:18+01:00",
     "starts_at": "2025-12-01T00:00:18+01:00",
     "ends_at": "2025-12-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-12-01"
+    "_identity": "wl|störung|L=18|D=2025-12-01"
   },
   {
     "source": "Wiener Linien",
@@ -302,14 +302,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
     "pubDate": "2025-12-01T00:00:18+01:00",
     "starts_at": "2025-12-01T00:00:18+01:00",
     "ends_at": "2025-12-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-01"
+    "_identity": "wl|störung|L=5A|D=2025-12-01"
   },
   {
     "source": "Wiener Linien",
@@ -470,18 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "39A: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 39 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dfa3af5eacd7ecf6f3b864d15ccbe892b2dd7ed23dfedaca0a147c26955c5cc8",
-    "pubDate": "2025-12-03T16:10:00+01:00",
-    "starts_at": "2025-12-03T16:10:00+01:00",
-    "ends_at": "2025-12-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=39A|D=2025-12-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "38A: Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 38 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -494,13 +482,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Verkehrsüberlastung",
-    "description": "Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "52: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 52 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8",
-    "pubDate": "2025-12-03T16:40:00+01:00",
-    "starts_at": "2025-12-03T16:40:00+01:00",
+    "guid": "e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734",
+    "pubDate": "2025-12-03T16:45:00+01:00",
+    "starts_at": "2025-12-03T16:45:00+01:00",
     "ends_at": "2025-12-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=63A|D=2025-12-03"
+    "_identity": "wl|störung|L=52|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "39A: Betriebsstörung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 39 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5523edb695136c871e830c4ac9ba6db2fa3aeb4d1d0ae34e1a20abfc3c75fdac",
+    "pubDate": "2025-12-03T16:50:00+01:00",
+    "starts_at": "2025-12-03T16:50:00+01:00",
+    "ends_at": "2025-12-03T23:55:00+01:00",
+    "_identity": "wl|störung|L=39A|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "39A: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung Betriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "55cbdbe00a3b98c5b5be2b6af034e0fdea79fd2654299bf69aca6d95cb705ff9",
+    "pubDate": "2025-12-03T17:05:20+01:00",
+    "starts_at": "2025-12-03T17:05:20+01:00",
+    "ends_at": "2025-12-03T18:04:00+01:00",
+    "_identity": "wl|störung|L=39A|D=2025-12-03"
   }
 ]
