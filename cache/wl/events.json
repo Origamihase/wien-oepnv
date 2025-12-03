@@ -278,18 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
-    "pubDate": "2025-12-01T00:00:18+01:00",
-    "starts_at": "2025-12-01T00:00:18+01:00",
-    "ends_at": "2025-12-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-12-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Züge halten Gegenüber",
     "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -314,6 +302,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "pubDate": "2025-12-01T00:00:18+01:00",
+    "starts_at": "2025-12-01T00:00:18+01:00",
+    "ends_at": "2025-12-03T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2025-12-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Busse halten Grenzgasse 2-4",
     "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -326,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
-    "pubDate": "2025-12-03T04:30:21+01:00",
-    "starts_at": "2025-12-03T04:30:21+01:00",
-    "ends_at": "2025-12-04T00:50:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-12-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -346,6 +334,18 @@
     "starts_at": "2025-12-03T04:30:21+01:00",
     "ends_at": "2025-12-04T00:50:00+01:00",
     "_identity": "wl|störung|L=29B|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
+    "pubDate": "2025-12-03T04:30:21+01:00",
+    "starts_at": "2025-12-03T04:30:21+01:00",
+    "ends_at": "2025-12-04T00:50:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2025-12-03"
   },
   {
     "source": "Wiener Linien",
@@ -446,7 +446,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52: Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "52: Polizeieinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 52 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734",
@@ -470,30 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "39A: Fahrtbehinderung Betriebsstörung",
-    "description": "Fahrtbehinderung Betriebsstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "55cbdbe00a3b98c5b5be2b6af034e0fdea79fd2654299bf69aca6d95cb705ff9",
-    "pubDate": "2025-12-03T17:05:20+01:00",
-    "starts_at": "2025-12-03T17:05:20+01:00",
-    "ends_at": "2025-12-03T18:04:00+01:00",
-    "_identity": "wl|störung|L=39A|D=2025-12-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "17A: Signalstörung",
-    "description": "Die Linie 17 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Signalstörung der ÖBB.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5dfa210ba3291a66edebd31b6cfcfd1d45e1cd37d3c1946494afc52dec0c55d4",
-    "pubDate": "2025-12-03T17:25:00+01:00",
-    "starts_at": "2025-12-03T17:25:00+01:00",
-    "ends_at": "2025-12-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=17A|D=2025-12-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Betriebsstörung",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -502,5 +478,53 @@
     "starts_at": "2025-12-03T17:35:00+01:00",
     "ends_at": "2025-12-03T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Feuerwehreinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5f34ffb95ca00ee307dddaa13ef057499c3642155e6eb52bbc863400c847fab6",
+    "pubDate": "2025-12-03T18:05:00+01:00",
+    "starts_at": "2025-12-03T18:05:00+01:00",
+    "ends_at": "2025-12-03T23:55:00+01:00",
+    "_identity": "wl|störung|L=1|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "984e0a73443fff586bfa578f7bd3f04ab70baae90fe7807278c45e2b5858ec2b",
+    "pubDate": "2025-12-03T18:07:05+01:00",
+    "starts_at": "2025-12-03T18:07:05+01:00",
+    "ends_at": "2025-12-03T19:06:00+01:00",
+    "_identity": "wl|störung|L=1|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Feuerwehreinsatz Betrieb ab Knöllgasse",
+    "description": "Feuerwehreinsatz Betrieb ab Knöllgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "699b501c7dc4dd029cdd6cbcb0a2294a3185e97c02a097cf76649684c1b74a4a",
+    "pubDate": "2025-12-03T18:07:34+01:00",
+    "starts_at": "2025-12-03T18:07:34+01:00",
+    "ends_at": "2025-12-03T19:06:00+01:00",
+    "_identity": "wl|störung|L=1|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Feuerwehreinsatz Züge halten bei Linie 6 Richtung Burggasse",
+    "description": "Feuerwehreinsatz Züge halten bei Linie 6 Richtung Burggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0294ae79453735f437951601e91441a8e7a185002a6130eb908a18fe3b448d18",
+    "pubDate": "2025-12-03T18:08:03+01:00",
+    "starts_at": "2025-12-03T18:08:03+01:00",
+    "ends_at": "2025-12-03T19:07:00+01:00",
+    "_identity": "wl|störung|L=1|D=2025-12-03"
   }
 ]
