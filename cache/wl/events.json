@@ -218,6 +218,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "U1/U4: Station Schwedenplatz, Sperre Aufgang Urania",
+    "description": "Aufgangsperre\nWegen Bauarbeiten muss der Aufgang \"Urania\" der U-Bahn-Station Schwedenplatz zeitweilig gesperrt werden.\nZeitraum:\nMontag, 24. November 2025, 21:00 Uhr bis Freitag, 19. Dezember 2025, etwa 04:30 Uhr.\nJedoch nur Montag - Donnerstag zwischen 21:00 Uhr und 04:30 Uhr.\nErsatz:\nBitte benutzen Sie die anderen Aufgänge.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "aac66d61a153d41a7c2a795dcebb5bed35489d9bc098be249cbb953e58f24d15",
+    "pubDate": "2025-11-24T14:15:00+01:00",
+    "starts_at": "2025-11-24T14:15:00+01:00",
+    "ends_at": "2025-12-19T04:30:00+01:00",
+    "_identity": "wl|hinweis|L=U1,U4|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "17A: Straßenbauarbeiten ab 01.12.2025",
     "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Jochen-Rindt-Straße werden die Linien 17 A, 66 A und 67 A umgeleitet.\nZeitraum:\nAb Montag, 01. Dezember 2025, etwa 08:00 Uhr bis Freitag, 12. Dezember 2025, etwa 08:00 Uhr.\nMaßnahmen:\nLinie 17 A in Richtung Oberlaa U, 66 A Richtung Liesing S bzw. 67 A Inzersdorf, Slamastraße:\nUmleitung ab Jochen-Rindt-Straße # Tenschertstraße über Tenschertstraße – Gorskistraße – Salmhoferstraße – Jochen-Rindt-Straße.\nAufgelassene Haltestellen:\nTenschertstraße (Jochen-Rindt-Straße 17)\nErnanigasse (Jochen-Rindt-Straße 7)\nErsatzhaltestelle:\nTenschertstraße (Jochen-Rindt-Straße 19)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -278,18 +290,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
-    "pubDate": "2025-12-01T00:00:18+01:00",
-    "starts_at": "2025-12-01T00:00:18+01:00",
-    "ends_at": "2025-12-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Busse halten Dammstraße 2",
     "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -298,6 +298,18 @@
     "starts_at": "2025-12-01T00:00:18+01:00",
     "ends_at": "2025-12-03T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2025-12-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "pubDate": "2025-12-01T00:00:18+01:00",
+    "starts_at": "2025-12-01T00:00:18+01:00",
+    "ends_at": "2025-12-03T23:59:59+01:00",
+    "_identity": "wl|störung|L=18|D=2025-12-01"
   },
   {
     "source": "Wiener Linien",
@@ -422,18 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4037eb177f53feada9cd8d5d413f9865f66b30fafc51c7e633db6ca36d431e5",
-    "pubDate": "2025-12-03T16:10:00+01:00",
-    "starts_at": "2025-12-03T16:10:00+01:00",
-    "ends_at": "2025-12-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=10A|D=2025-12-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Polizeieinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 52 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -442,18 +442,6 @@
     "starts_at": "2025-12-03T16:45:00+01:00",
     "ends_at": "2025-12-03T23:55:00+01:00",
     "_identity": "wl|störung|L=52|D=2025-12-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "39A: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 39 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5523edb695136c871e830c4ac9ba6db2fa3aeb4d1d0ae34e1a20abfc3c75fdac",
-    "pubDate": "2025-12-03T16:50:00+01:00",
-    "starts_at": "2025-12-03T16:50:00+01:00",
-    "ends_at": "2025-12-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=39A|D=2025-12-03"
   },
   {
     "source": "Wiener Linien",
@@ -482,49 +470,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "title": "U4: Rettungseinsatz",
+    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Heiligenstadt.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "984e0a73443fff586bfa578f7bd3f04ab70baae90fe7807278c45e2b5858ec2b",
-    "pubDate": "2025-12-03T18:07:05+01:00",
-    "starts_at": "2025-12-03T18:07:05+01:00",
-    "ends_at": "2025-12-03T19:06:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-12-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Feuerwehreinsatz Betrieb ab Knöllgasse",
-    "description": "Feuerwehreinsatz Betrieb ab Knöllgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "699b501c7dc4dd029cdd6cbcb0a2294a3185e97c02a097cf76649684c1b74a4a",
-    "pubDate": "2025-12-03T18:07:34+01:00",
-    "starts_at": "2025-12-03T18:07:34+01:00",
-    "ends_at": "2025-12-03T19:06:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-12-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Feuerwehreinsatz Züge halten bei Linie 6 Richtung Burggasse",
-    "description": "Feuerwehreinsatz Züge halten bei Linie 6 Richtung Burggasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0294ae79453735f437951601e91441a8e7a185002a6130eb908a18fe3b448d18",
-    "pubDate": "2025-12-03T18:08:03+01:00",
-    "starts_at": "2025-12-03T18:08:03+01:00",
-    "ends_at": "2025-12-03T19:07:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-12-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
-    "pubDate": "2025-12-03T18:30:00+01:00",
-    "starts_at": "2025-12-03T18:30:00+01:00",
+    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
+    "pubDate": "2025-12-03T19:10:00+01:00",
+    "starts_at": "2025-12-03T19:10:00+01:00",
     "ends_at": "2025-12-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2025-12-03"
+    "_identity": "wl|störung|L=U4|D=2025-12-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "32A: Busse halten Rußbergstraße 24-32",
+    "description": "Bauarbeiten Busse halten Rußbergstraße 24-32",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9f65ea6b4791f2fd738447caa8e2684be8517d3685a94f5254adbfb2e8eca7a",
+    "pubDate": "2025-12-03T19:12:58+01:00",
+    "starts_at": "2025-12-03T19:12:58+01:00",
+    "ends_at": "2025-12-03T23:59:59+01:00",
+    "_identity": "wl|störung|L=32A|D=2025-12-03"
   }
 ]
