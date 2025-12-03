@@ -254,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
-    "pubDate": "2025-12-01T00:00:17+01:00",
-    "starts_at": "2025-12-01T00:00:17+01:00",
-    "ends_at": "2025-12-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-12-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "33A: Haltestelle aufgelassen",
     "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -278,14 +266,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
-    "pubDate": "2025-12-01T00:00:18+01:00",
-    "starts_at": "2025-12-01T00:00:18+01:00",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "pubDate": "2025-12-01T00:00:17+01:00",
+    "starts_at": "2025-12-01T00:00:17+01:00",
     "ends_at": "2025-12-03T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-12-01"
+    "_identity": "wl|störung|L=N31|D=2025-12-01"
   },
   {
     "source": "Wiener Linien",
@@ -294,6 +282,18 @@
     "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "pubDate": "2025-12-01T00:00:18+01:00",
+    "starts_at": "2025-12-01T00:00:18+01:00",
+    "ends_at": "2025-12-03T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2025-12-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
     "pubDate": "2025-12-01T00:00:18+01:00",
     "starts_at": "2025-12-01T00:00:18+01:00",
     "ends_at": "2025-12-03T23:59:59+01:00",
@@ -434,18 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
-    "pubDate": "2025-12-03T11:45:00+01:00",
-    "starts_at": "2025-12-03T11:45:00+01:00",
-    "ends_at": "2025-12-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-12-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "34A: Gasrohrgebrechen",
     "description": "Die Linie 34 A fährt nur zwischen Floridsdorf und Jedlesee, Überfuhrstraße. Die Störung dauert voraussichtlich bis Betriebsschluss. Grund dafür ist ein Gasrohrgebrechen im Bereich Sumpfgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -454,18 +442,6 @@
     "starts_at": "2025-12-03T11:50:00+01:00",
     "ends_at": "2025-12-03T23:55:00+01:00",
     "_identity": "wl|störung|L=34A|D=2025-12-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U6 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2025-12-03T11:50:00+01:00",
-    "starts_at": "2025-12-03T11:50:00+01:00",
-    "ends_at": "2025-12-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-12-03"
   },
   {
     "source": "Wiener Linien",
@@ -482,19 +458,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "404f3551d0efb1f503b6da3f9dea1315ba797797becc9ded87406bb28d1acc34",
-    "pubDate": "2025-12-03T12:50:00+01:00",
-    "starts_at": "2025-12-03T12:50:00+01:00",
-    "ends_at": "2025-12-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=49|D=2025-12-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung Falschparker",
+    "title": "9: Falschparker",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
@@ -506,13 +470,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
+    "title": "U3: Schadhaftes Fahrzeug",
+    "description": "Die Linie U3 ist derzeit in Richtung Simmering an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 14:40 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Ottakring.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d3121440bb198809da6ad6777749127de887bfe17ce700d64f281bbb4593b9c8",
-    "pubDate": "2025-12-03T12:55:21+01:00",
-    "starts_at": "2025-12-03T12:55:21+01:00",
-    "ends_at": "2025-12-03T13:54:00+01:00",
-    "_identity": "wl|störung|L=49|D=2025-12-03"
+    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
+    "pubDate": "2025-12-03T14:30:00+01:00",
+    "starts_at": "2025-12-03T14:30:00+01:00",
+    "ends_at": "2025-12-03T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-12-03"
   }
 ]
