@@ -254,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
-    "pubDate": "2025-12-04T00:00:20+01:00",
-    "starts_at": "2025-12-04T00:00:20+01:00",
-    "ends_at": "2025-12-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
     "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -274,6 +262,18 @@
     "starts_at": "2025-12-04T00:00:20+01:00",
     "ends_at": "2025-12-04T23:59:59+01:00",
     "_identity": "wl|störung|L=N31|D=2025-12-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "pubDate": "2025-12-04T00:00:20+01:00",
+    "starts_at": "2025-12-04T00:00:20+01:00",
+    "ends_at": "2025-12-04T23:59:59+01:00",
+    "_identity": "wl|störung|L=33A|D=2025-12-04"
   },
   {
     "source": "Wiener Linien",
@@ -290,18 +290,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
-    "pubDate": "2025-12-04T00:00:22+01:00",
-    "starts_at": "2025-12-04T00:00:22+01:00",
-    "ends_at": "2025-12-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-12-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Busse halten Dammstraße 2",
     "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -314,14 +302,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "32A: Busse halten Rußbergstraße 24-32",
-    "description": "Bauarbeiten Busse halten Rußbergstraße 24-32",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9f65ea6b4791f2fd738447caa8e2684be8517d3685a94f5254adbfb2e8eca7a",
-    "pubDate": "2025-12-04T00:00:27+01:00",
-    "starts_at": "2025-12-04T00:00:27+01:00",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
+    "pubDate": "2025-12-04T00:00:22+01:00",
+    "starts_at": "2025-12-04T00:00:22+01:00",
     "ends_at": "2025-12-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=32A|D=2025-12-04"
+    "_identity": "wl|störung|L=5A|D=2025-12-04"
   },
   {
     "source": "Wiener Linien",
@@ -334,6 +322,18 @@
     "starts_at": "2025-12-04T00:00:27+01:00",
     "ends_at": "2025-12-04T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2025-12-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "32A: Busse halten Rußbergstraße 24-32",
+    "description": "Bauarbeiten Busse halten Rußbergstraße 24-32",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9f65ea6b4791f2fd738447caa8e2684be8517d3685a94f5254adbfb2e8eca7a",
+    "pubDate": "2025-12-04T00:00:27+01:00",
+    "starts_at": "2025-12-04T00:00:27+01:00",
+    "ends_at": "2025-12-04T23:59:59+01:00",
+    "_identity": "wl|störung|L=32A|D=2025-12-04"
   },
   {
     "source": "Wiener Linien",
@@ -458,14 +458,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2/71/D: Staatsbesuch",
-    "description": "Die Linie 1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie D kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Staatsbesuch im Bereich Oper, Karlsplatz U.",
+    "title": "2/71/D: Staatsbesuch",
+    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie D kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Staatsbesuch im Bereich Oper, Karlsplatz U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e01cbff77eb511ec9bbf80d8633f0757a8de4a1b34f99f7b4184fd7741430fa3",
+    "guid": "20d003d0c21e2857f71adb9602930752d5eab90e3e4884208213fcb027fb307e",
     "pubDate": "2025-12-04T11:00:00+01:00",
     "starts_at": "2025-12-04T11:00:00+01:00",
     "ends_at": "2025-12-04T23:55:00+01:00",
-    "_identity": "wl|störung|L=1,2,71,D|D=2025-12-04"
+    "_identity": "wl|störung|L=2,71,D|D=2025-12-04"
   },
   {
     "source": "Wiener Linien",
@@ -482,13 +482,97 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Die Linie U4 ist derzeit in Richtung Hütteldorf an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 12:00 Uhr. Grund dafür ist eine Betriebsstörung im Bereich Kettenbrückengasse.",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Die Linie U4 fährt derzeit zwischen den Stationen Kettenbrückengasse und Pilgramgasse in beiden Richtungen über Gleis 1. Die Störung dauert voraussichtlich bis 12:20 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Kettenbrückengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
     "pubDate": "2025-12-04T11:40:00+01:00",
     "starts_at": "2025-12-04T11:40:00+01:00",
     "ends_at": "2025-12-04T23:55:00+01:00",
     "_identity": "wl|störung|L=U4|D=2025-12-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1/62/WLB: Gleisschaden",
+    "description": "Die Linie 1 wird in Richtung Prater Hauptallee zwischen Kliebergasse und Oper, Karlsplatz über Hauptbahnhof und Schwarzenbergplatz umgeleitet. Die Linie 62 fährt derzeit nur zwischen Lainz und Kliebergasse und wird zum Quartier Belvedere umgeleitet. Die Badner Bahn fährt derzeit nur zwischen Baden und Aßmayergasse. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein Gleisschaden im Bereich Karlsplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "15e3a34a358b0ab96e1bf6f8b7ceb39d36782ee4799cf2f1f043c321a9d050e4",
+    "pubDate": "2025-12-04T11:50:00+01:00",
+    "starts_at": "2025-12-04T11:50:00+01:00",
+    "ends_at": "2025-12-04T23:55:00+01:00",
+    "_identity": "wl|störung|L=1,62,WLB|D=2025-12-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Falschparker Umleitung zur Herbeckstraße",
+    "description": "Falschparker Umleitung zur Herbeckstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d8529c094ca08d487d31ef0c9a8062f6019c45f0ca4b2ab3d6eb700bdde80057",
+    "pubDate": "2025-12-04T11:52:54+01:00",
+    "starts_at": "2025-12-04T11:52:54+01:00",
+    "ends_at": "2025-12-04T12:51:00+01:00",
+    "_identity": "wl|störung|L=41|D=2025-12-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Gleisschaden Umleitung über die Strecke der Linien 18 und D",
+    "description": "Gleisschaden Umleitung über die Strecke der Linien 18 und D",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
+    "pubDate": "2025-12-04T11:58:02+01:00",
+    "starts_at": "2025-12-04T11:58:02+01:00",
+    "ends_at": "2025-12-04T12:57:00+01:00",
+    "_identity": "wl|störung|L=1|D=2025-12-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Gleisschaden Umleitung zu Quartier Belvedere",
+    "description": "Gleisschaden Umleitung zu Quartier Belvedere",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3bd22726420279ab2026e70b351fc7fcb5ca5e75a7964b14725381471569f673",
+    "pubDate": "2025-12-04T12:03:07+01:00",
+    "starts_at": "2025-12-04T12:03:07+01:00",
+    "ends_at": "2025-12-04T13:02:00+01:00",
+    "_identity": "wl|störung|L=62|D=2025-12-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung Gleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "741ea98efd3a670526d9b885aa9ef38313ee2ea4df35dcbaf2a4d15fa7cde399",
+    "pubDate": "2025-12-04T12:04:19+01:00",
+    "starts_at": "2025-12-04T12:04:19+01:00",
+    "ends_at": "2025-12-04T13:03:00+01:00",
+    "_identity": "wl|störung|L=62|D=2025-12-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Gleisschaden Betrieb ab Kliebergasse",
+    "description": "Gleisschaden Betrieb ab Kliebergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9646c4fc5f49ddec258fbf30f2221475fcecf541dcfe0632bde6a897c9cdcc4c",
+    "pubDate": "2025-12-04T12:04:48+01:00",
+    "starts_at": "2025-12-04T12:04:48+01:00",
+    "ends_at": "2025-12-04T13:04:00+01:00",
+    "_identity": "wl|störung|L=62|D=2025-12-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Gleisschaden Züge halten bei Linie 18",
+    "description": "Gleisschaden Züge halten bei Linie 18",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ffb60ad2964dcdea1519d5b3c7602bf154430ff18c98ee10735df197e69eadf5",
+    "pubDate": "2025-12-04T12:09:38+01:00",
+    "starts_at": "2025-12-04T12:09:38+01:00",
+    "ends_at": "2025-12-04T13:05:00+01:00",
+    "_identity": "wl|störung|L=62|D=2025-12-04"
   }
 ]
