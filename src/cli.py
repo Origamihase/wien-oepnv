@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import runpy
+import subprocess
 import sys
 from collections.abc import Mapping, Sequence, Iterator
 from contextlib import contextmanager
@@ -61,11 +62,21 @@ def _run_script(
     if not script_path.exists():
         raise CLIError(f"Script not found: {script_path}")
 
-    del python  # Interpreter selection is handled via runpy in the current process.
     cleaned_args = _clean_remainder(list(extra_args or []))
-    with _patched_argv(script_path, cleaned_args):
-        runpy.run_path(str(script_path), run_name="__main__")
-    return 0
+    selected_python = python or sys.executable
+
+    if selected_python == sys.executable:
+        with _patched_argv(script_path, cleaned_args):
+            runpy.run_path(str(script_path), run_name="__main__")
+        return 0
+
+    command = [selected_python, str(script_path), *cleaned_args]
+    try:
+        result = subprocess.run(command, check=False)
+    except FileNotFoundError as exc:  # pragma: no cover - exercised via CLI
+        raise CLIError(f"Python interpreter not found: {selected_python}") from exc
+
+    return int(result.returncode)
 
 
 def _unique_preserving_order(values: Sequence[str]) -> list[str]:

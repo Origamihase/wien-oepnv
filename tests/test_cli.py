@@ -173,6 +173,43 @@ def test_cli_security_scan_forwards_arguments(monkeypatch: pytest.MonkeyPatch) -
     assert captured == [("scan_secrets.py", sys.executable, ["--no-fail"])]
 
 
+def test_run_script_uses_runpy_for_current_interpreter(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    script = tmp_path / "echo_args.py"
+    script.write_text("import sys\nprint('ok', sys.argv[1:])\n", encoding="utf-8")
+    monkeypatch.setattr(cli, "SCRIPTS_DIR", tmp_path)
+
+    exit_code = cli._run_script("echo_args.py", python=sys.executable, extra_args=["--", "foo"])
+
+    assert exit_code == 0
+    assert "ok ['foo']" in capsys.readouterr().out
+
+
+def test_run_script_invokes_subprocess_for_custom_interpreter(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    script = tmp_path / "noop.py"
+    script.write_text("print('hi')\n", encoding="utf-8")
+    monkeypatch.setattr(cli, "SCRIPTS_DIR", tmp_path)
+
+    calls: list[tuple[list[str], bool]] = []
+
+    class DummyResult:
+        returncode = 5
+
+    def fake_run(command: list[str], *, check: bool = False) -> DummyResult:
+        calls.append((command, check))
+        return DummyResult()
+
+    monkeypatch.setattr(cli.subprocess, "run", fake_run)
+
+    exit_code = cli._run_script("noop.py", python="/custom/python", extra_args=["--", "arg1"])
+
+    assert exit_code == 5
+    assert calls == [(["/custom/python", str(script), "arg1"], False)]
+
+
 def test_cli_feed_lint_invokes_module(monkeypatch: pytest.MonkeyPatch) -> None:
     invoked: list[int] = []
 
