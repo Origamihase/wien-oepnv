@@ -374,18 +374,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Busse halten Grenzgasse 2-4",
-    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
-    "pubDate": "2025-12-04T00:00:27+01:00",
-    "starts_at": "2025-12-04T00:00:27+01:00",
-    "ends_at": "2025-12-04T23:59:59+01:00",
-    "_identity": "wl|störung|L=12A|D=2025-12-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "32A: Busse halten Rußbergstraße 24-32",
     "description": "Bauarbeiten Busse halten Rußbergstraße 24-32",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -394,6 +382,18 @@
     "starts_at": "2025-12-04T00:00:27+01:00",
     "ends_at": "2025-12-04T23:59:59+01:00",
     "_identity": "wl|störung|L=32A|D=2025-12-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Busse halten Grenzgasse 2-4",
+    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
+    "pubDate": "2025-12-04T00:00:27+01:00",
+    "starts_at": "2025-12-04T00:00:27+01:00",
+    "ends_at": "2025-12-04T23:59:59+01:00",
+    "_identity": "wl|störung|L=12A|D=2025-12-04"
   },
   {
     "source": "Wiener Linien",
