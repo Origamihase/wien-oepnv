@@ -102,6 +102,22 @@ def _strip_quotes(value: str) -> str:
     return value
 
 
+def _strip_inline_comment(value: str) -> str:
+    """Remove inline ``#`` comments from unquoted values."""
+
+    if not value:
+        return value
+
+    if value[0] in {'"', "'"}:
+        return value
+
+    for idx, char in enumerate(value):
+        if char == "#" and (idx == 0 or value[idx - 1].isspace()):
+            return value[:idx].rstrip()
+
+    return value
+
+
 def _parse_env_file(content: str) -> Dict[str, str]:
     """Parse the given env file ``content`` into a mapping."""
 
@@ -116,7 +132,8 @@ def _parse_env_file(content: str) -> Dict[str, str]:
             continue
 
         key, value = match.groups()
-        parsed[key] = _strip_quotes(value.strip())
+        cleaned = _strip_inline_comment(value.strip())
+        parsed[key] = _strip_quotes(cleaned.strip())
 
     return parsed
 

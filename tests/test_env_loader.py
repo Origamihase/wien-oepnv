@@ -65,6 +65,33 @@ def test_load_env_file_accepts_whitespace_around_equals(
     assert os.environ["VALUE"] == "quoted"
 
 
+def test_load_env_file_strips_inline_comments(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    env_file = tmp_path / "inline.env"
+    env_file.write_text(
+        """
+        TOKEN=abc123   # trailing comment
+        QUOTED="value # kept"
+        HASHY=abc#def
+        """.strip(),
+        encoding="utf-8",
+    )
+
+    monkeypatch.delenv("TOKEN", raising=False)
+    monkeypatch.delenv("QUOTED", raising=False)
+    monkeypatch.delenv("HASHY", raising=False)
+
+    loaded = env_utils.load_env_file(env_file)
+
+    assert loaded == {
+        "TOKEN": "abc123",
+        "QUOTED": "value # kept",
+        "HASHY": "abc#def",
+    }
+    assert os.environ["TOKEN"] == "abc123"
+    assert os.environ["QUOTED"] == "value # kept"
+    assert os.environ["HASHY"] == "abc#def"
+
+
 def test_load_default_env_files_respects_environment_variable(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     extra_env = tmp_path / "extra.env"
     extra_env.write_text("EXTRA_VALUE=42\n", encoding="utf-8")
