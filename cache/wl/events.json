@@ -277,18 +277,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62A: Busse halten Breitenfurter Straße 236-238",
-    "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3",
-    "pubDate": "2025-12-04T04:45:28+01:00",
-    "starts_at": "2025-12-04T04:45:28+01:00",
-    "ends_at": "2025-12-05T00:35:00+01:00",
-    "_identity": "wl|störung|L=62A|D=2025-12-04"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "57A: Straßenbauarbeiten ab 15.12.25",
     "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Babenbergerstraße # Nibelungengasse wird die Linie 57 A in Richtung Rudolfsheim, Anschützgasse umgeleitet.\nZeitraum:\nAb Montag, 15. Dezember 2025, etwa 07:00 Uhr bis Donnerstag, 18. Dezember 2025.\nMaßnahmen:\nLinie 57 A in Richtung Rudolfsheim, Anschützgasse:\nUmleitung ab Babenbergerstraße # Nibelungengasse über Babenbergerstraße – Getreidemarkt – Gumpendorfer Straße\nAufgelassene Haltestellen:\nMuseumsquartier U (1., Nibelungengasse 15 nach Babenbergerstraße)",
@@ -298,18 +286,6 @@
     "starts_at": "2025-12-04T08:41:00+01:00",
     "ends_at": "2025-12-18T17:00:00+01:00",
     "_identity": "wl|hinweis|L=57A|D=2025-12-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
-    "pubDate": "2025-12-05T00:00:00+01:00",
-    "starts_at": "2025-12-05T00:00:00+01:00",
-    "ends_at": "2025-12-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -374,6 +350,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "pubDate": "2025-12-05T00:00:22+01:00",
+    "starts_at": "2025-12-05T00:00:22+01:00",
+    "ends_at": "2025-12-05T23:59:59+01:00",
+    "_identity": "wl|störung|L=N31|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "21: Züge halten Schloßhofer Straße 21",
     "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -410,13 +398,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "title": "9: Schadhafter PKW",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
-    "pubDate": "2025-12-05T00:00:22+01:00",
-    "starts_at": "2025-12-05T00:00:22+01:00",
-    "ends_at": "2025-12-05T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-12-05"
+    "guid": "201d29e8c544566afa85f7d705a9499ec8429ced2324e27a1b61ec5c0cfc8862",
+    "pubDate": "2025-12-05T00:15:00+01:00",
+    "starts_at": "2025-12-05T00:15:00+01:00",
+    "ends_at": "2025-12-05T23:55:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Schadhafter Pkw",
+    "description": "Fahrtbehinderung Schadhafter Pkw",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "16b072dd40df82c56241e536ecbe7c613c73c73d601afdcf8db1b49fe92c3fe9",
+    "pubDate": "2025-12-05T00:16:19+01:00",
+    "starts_at": "2025-12-05T00:16:19+01:00",
+    "ends_at": "2025-12-05T01:18:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-12-05"
   }
 ]
