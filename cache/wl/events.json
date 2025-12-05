@@ -386,43 +386,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "67B: Signalstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 67 B zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5dcfeb610d68f34a772e9dab8cb83e87a0d52ba551d6978e4c268381f37521c7",
-    "pubDate": "2025-12-05T11:30:00+01:00",
-    "starts_at": "2025-12-05T11:30:00+01:00",
-    "ends_at": "2025-12-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=67B|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67A: Signalstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 67 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c6217f3734081f8e926c9979e884673454468f1b1a07fa5e2e3236de593c654",
-    "pubDate": "2025-12-05T11:30:00+01:00",
-    "starts_at": "2025-12-05T11:30:00+01:00",
-    "ends_at": "2025-12-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=67A|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "17A: Signalstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 17 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5dfa210ba3291a66edebd31b6cfcfd1d45e1cd37d3c1946494afc52dec0c55d4",
-    "pubDate": "2025-12-05T11:30:00+01:00",
-    "starts_at": "2025-12-05T11:30:00+01:00",
-    "ends_at": "2025-12-05T23:55:00+01:00",
-    "_identity": "wl|störung|L=17A|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "16A: Fahrtbehinderung Signalstörung",
+    "title": "16A: Signalstörung",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 16 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "32c92ab83f0de4027d69c995f2641822ec1a450fec2f45c5d0d5e4e3a1ace708",
@@ -459,7 +423,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "60: Schadhaftes Fahrzeug",
-    "description": "Die Linie 60 ist derzeit in Richtung Westbahnhof an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 13:00 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Jagdschloßgasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a",
     "pubDate": "2025-12-05T12:20:00+01:00",
@@ -486,9 +450,21 @@
     "description": "Fahrtbehinderung Schadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4ebfcdeecb63555a7d3eeda6e1144843992faaa428a94f9ee9f79f89dc91e33f",
-    "pubDate": "2025-12-05T12:28:16+01:00",
-    "starts_at": "2025-12-05T12:28:16+01:00",
-    "ends_at": "2025-12-05T13:27:00+01:00",
+    "pubDate": "2025-12-05T12:40:19+01:00",
+    "starts_at": "2025-12-05T12:40:19+01:00",
+    "ends_at": "2025-12-05T13:39:00+01:00",
     "_identity": "wl|störung|L=60|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 42 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2025-12-05T13:10:00+01:00",
+    "starts_at": "2025-12-05T13:10:00+01:00",
+    "ends_at": "2025-12-05T23:55:00+01:00",
+    "_identity": "wl|störung|L=42|D=2025-12-05"
   }
 ]
