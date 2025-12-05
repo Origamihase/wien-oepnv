@@ -266,10 +266,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
     "pubDate": "2025-12-05T00:00:03+01:00",
     "starts_at": "2025-12-05T00:00:03+01:00",
     "ends_at": "2025-12-05T23:59:59+01:00",
@@ -278,10 +278,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
     "pubDate": "2025-12-05T00:00:03+01:00",
     "starts_at": "2025-12-05T00:00:03+01:00",
     "ends_at": "2025-12-05T23:59:59+01:00",
@@ -314,14 +314,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "21: Züge halten Schloßhofer Straße 21",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
     "pubDate": "2025-12-05T00:00:22+01:00",
     "starts_at": "2025-12-05T00:00:22+01:00",
     "ends_at": "2025-12-05T23:59:59+01:00",
-    "_identity": "wl|störung|L=21|D=2025-12-05"
+    "_identity": "wl|störung|L=33A|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -338,18 +338,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
-    "pubDate": "2025-12-05T00:00:22+01:00",
-    "starts_at": "2025-12-05T00:00:22+01:00",
-    "ends_at": "2025-12-05T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "20: Züge halten Schloßhofer Straße 20",
     "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -358,6 +346,18 @@
     "starts_at": "2025-12-05T00:00:22+01:00",
     "ends_at": "2025-12-05T23:59:59+01:00",
     "_identity": "wl|störung|L=20|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "21: Züge halten Schloßhofer Straße 21",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
+    "pubDate": "2025-12-05T00:00:22+01:00",
+    "starts_at": "2025-12-05T00:00:22+01:00",
+    "ends_at": "2025-12-05T23:59:59+01:00",
+    "_identity": "wl|störung|L=21|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -394,5 +394,41 @@
     "starts_at": "2025-12-05T04:45:16+01:00",
     "ends_at": "2025-12-06T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12/5: Schadhaftes Fahrzeug",
+    "description": "Die Linie 5 fährt derzeit nicht zwischen Lange Gasse und Lerchenfelder Straße. Die Linie 12 fährt derzeit nur zwischen Hillerstraße und Lange Gasse und weiter bis Alser Straße. Ersatzweise benützen Sie die Linie U6. Die Störung dauert voraussichtlich bis 06:15 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Florianigasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d4e34f09d4feef2c9a3d0b25bc620ab6468efd635b84d9e7f803ea88c87e5d21",
+    "pubDate": "2025-12-05T05:40:00+01:00",
+    "starts_at": "2025-12-05T05:40:00+01:00",
+    "ends_at": "2025-12-05T23:55:00+01:00",
+    "_identity": "wl|störung|L=12,5|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "32ae66e6206b82ebc95ff253940dc84dcc795b64994268f24cd4036d2e9a3634",
+    "pubDate": "2025-12-05T05:44:15+01:00",
+    "starts_at": "2025-12-05T05:44:15+01:00",
+    "ends_at": "2025-12-05T06:43:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Schadhafter Zug Umleitung zum Zimmermannplatz",
+    "description": "Schadhafter Zug Umleitung zum Zimmermannplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8197ecc1d5e132b0518259b9864122b4c6d7c6c5003678b5f8243507485dfd73",
+    "pubDate": "2025-12-05T05:45:42+01:00",
+    "starts_at": "2025-12-05T05:45:42+01:00",
+    "ends_at": "2025-12-05T06:44:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-05"
   }
 ]
