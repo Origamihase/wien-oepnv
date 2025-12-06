@@ -254,14 +254,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
     "pubDate": "2025-12-05T00:00:03+01:00",
     "starts_at": "2025-12-05T00:00:03+01:00",
     "ends_at": "2025-12-06T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-12-05"
+    "_identity": "wl|störung|L=18|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -278,14 +278,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
     "pubDate": "2025-12-05T00:00:03+01:00",
     "starts_at": "2025-12-05T00:00:03+01:00",
     "ends_at": "2025-12-06T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-05"
+    "_identity": "wl|störung|L=5A|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -302,14 +302,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "title": "20: Züge halten Schloßhofer Straße 20",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
     "pubDate": "2025-12-05T00:00:22+01:00",
     "starts_at": "2025-12-05T00:00:22+01:00",
     "ends_at": "2025-12-06T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-12-05"
+    "_identity": "wl|störung|L=20|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -326,6 +326,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "pubDate": "2025-12-05T00:00:22+01:00",
+    "starts_at": "2025-12-05T00:00:22+01:00",
+    "ends_at": "2025-12-06T23:59:59+01:00",
+    "_identity": "wl|störung|L=N31|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "21: Züge halten Schloßhofer Straße 21",
     "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -334,30 +346,6 @@
     "starts_at": "2025-12-05T00:00:22+01:00",
     "ends_at": "2025-12-06T23:59:59+01:00",
     "_identity": "wl|störung|L=21|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "20: Züge halten Schloßhofer Straße 20",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
-    "pubDate": "2025-12-05T00:00:22+01:00",
-    "starts_at": "2025-12-05T00:00:22+01:00",
-    "ends_at": "2025-12-06T23:59:59+01:00",
-    "_identity": "wl|störung|L=20|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-06T04:30:11+01:00",
-    "starts_at": "2025-12-06T04:30:11+01:00",
-    "ends_at": "2025-12-07T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-06"
   },
   {
     "source": "Wiener Linien",
@@ -374,6 +362,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-12-06T04:30:11+01:00",
+    "starts_at": "2025-12-06T04:30:11+01:00",
+    "ends_at": "2025-12-07T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-12-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -386,32 +386,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Rettungseinsatz",
-    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
-    "pubDate": "2025-12-06T06:10:00+01:00",
-    "starts_at": "2025-12-06T06:10:00+01:00",
-    "ends_at": "2025-12-06T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-12-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Die Linie U6 kann derzeit in Richtung Floridsdorf nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Siebenhirten.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2025-12-06T06:20:00+01:00",
-    "starts_at": "2025-12-06T06:20:00+01:00",
-    "ends_at": "2025-12-06T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-12-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Verkehrsstörung",
-    "description": "Die Linie 26 A ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 06:45 Uhr. Grund dafür ist eine Verkehrsstörung im Bereich Siegesplatz # Asperner Heldenplatz.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 26 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1a83f40242f4fe2a61c94eb4176ded36b2f53fed946428f494a7d09691a0966e",
     "pubDate": "2025-12-06T06:25:00+01:00",
