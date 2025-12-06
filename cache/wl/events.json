@@ -350,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-06T04:30:11+01:00",
-    "starts_at": "2025-12-06T04:30:11+01:00",
-    "ends_at": "2025-12-07T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,6 +358,18 @@
     "starts_at": "2025-12-06T04:30:11+01:00",
     "ends_at": "2025-12-07T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-12-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-12-06T04:30:11+01:00",
+    "starts_at": "2025-12-06T04:30:11+01:00",
+    "ends_at": "2025-12-07T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-12-06"
   },
   {
     "source": "Wiener Linien",
@@ -406,5 +406,65 @@
     "starts_at": "2025-12-06T23:00:00+01:00",
     "ends_at": "2025-12-06T23:55:00+01:00",
     "_identity": "wl|störung|L=74A|D=2025-12-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fremder Verkehrsunfall",
+    "description": "Die Linie O wird derzeit in beiden Richtungen zwischen Quellenplatz und Quartier Belvedere über Reumannplatz und Hauptbahnhof Ost umgeleitet. Die Störung dauert voraussichtlich bis 23:50 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Laxenburger Straße # Landgutgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36ad6a7c30b68d7345880b54bf25d283a433758da75c3a0fa4127d22d410a937",
+    "pubDate": "2025-12-06T23:15:00+01:00",
+    "starts_at": "2025-12-06T23:15:00+01:00",
+    "ends_at": "2025-12-06T23:55:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-12-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fremdunfall Züge halten bei Linie D",
+    "description": "Fremdunfall Züge halten bei Linie D",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2bc1a67ec2ba1df0b16771edf249cc0a0763ebe25de11660bbb9a5e759b8e65d",
+    "pubDate": "2025-12-06T23:22:07+01:00",
+    "starts_at": "2025-12-06T23:22:07+01:00",
+    "ends_at": "2025-12-06T23:59:59+01:00",
+    "_identity": "wl|störung|L=O|D=2025-12-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fremdunfall Betrieb ab Qullenplatz",
+    "description": "Fremdunfall Betrieb ab Qullenplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e71fcca36232cbd920c34de44a4270d643cc23afe65c0770225c83aedcbfaab4",
+    "pubDate": "2025-12-06T23:22:36+01:00",
+    "starts_at": "2025-12-06T23:22:36+01:00",
+    "ends_at": "2025-12-06T23:59:59+01:00",
+    "_identity": "wl|störung|L=O|D=2025-12-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fremdunfall Betrieb ab Züge halten bei Linie 6",
+    "description": "Fremdunfall Betrieb ab Züge halten bei Linie 6",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "664c4bf7c82f6dc4fe272890030da8d1285c7d1632ee5afd939fd8520c3c5002",
+    "pubDate": "2025-12-06T23:23:05+01:00",
+    "starts_at": "2025-12-06T23:23:05+01:00",
+    "ends_at": "2025-12-06T23:59:59+01:00",
+    "_identity": "wl|störung|L=O|D=2025-12-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fahrtbehinderung Fremder Verkehrsunfall Betrieb ab Quartier Belvedere",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall Betrieb ab Quartier Belvedere",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a901d1adaf14fe36b0a4aab76aea9c2d727f50872b7745ed1f8b98223adaa03f",
+    "pubDate": "2025-12-06T23:23:34+01:00",
+    "starts_at": "2025-12-06T23:23:34+01:00",
+    "ends_at": "2025-12-06T23:59:59+01:00",
+    "_identity": "wl|störung|L=O|D=2025-12-06"
   }
 ]
