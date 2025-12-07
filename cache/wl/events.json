@@ -302,6 +302,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "21: Züge halten Schloßhofer Straße 21",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
+    "pubDate": "2025-12-05T00:00:22+01:00",
+    "starts_at": "2025-12-05T00:00:22+01:00",
+    "ends_at": "2025-12-07T23:59:59+01:00",
+    "_identity": "wl|störung|L=21|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "33A: Haltestelle aufgelassen",
     "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -322,18 +334,6 @@
     "starts_at": "2025-12-05T00:00:22+01:00",
     "ends_at": "2025-12-07T23:59:59+01:00",
     "_identity": "wl|störung|L=20|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "21: Züge halten Schloßhofer Straße 21",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
-    "pubDate": "2025-12-05T00:00:22+01:00",
-    "starts_at": "2025-12-05T00:00:22+01:00",
-    "ends_at": "2025-12-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=21|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -410,13 +410,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Verspätungen",
-    "description": "Die Linie 26 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "title": "U4: Rettungseinsatz",
+    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Heiligenstadt.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a47f9fa6aa5dc023902618b82cd58f0159061f19c7fef5f64da9f064236be44e",
-    "pubDate": "2025-12-07T13:00:00+01:00",
-    "starts_at": "2025-12-07T13:00:00+01:00",
+    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
+    "pubDate": "2025-12-07T13:40:00+01:00",
+    "starts_at": "2025-12-07T13:40:00+01:00",
     "ends_at": "2025-12-07T23:55:00+01:00",
-    "_identity": "wl|störung|L=26|D=2025-12-07"
+    "_identity": "wl|störung|L=U4|D=2025-12-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "17A: Schadhaftes Fahrzeug",
+    "description": "Die Linie 17 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1500d4096b8ef9b77be90cba000dc963cca68cd63ccc7d101ad4597dbffebcd4",
+    "pubDate": "2025-12-07T13:45:00+01:00",
+    "starts_at": "2025-12-07T13:45:00+01:00",
+    "ends_at": "2025-12-07T23:55:00+01:00",
+    "_identity": "wl|störung|L=17A|D=2025-12-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "95A: Verkehrsüberlastung",
+    "description": "Die Linie 95 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich Hirschstetten.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9088845b139caebd288899db7b04de583ae8501ab636efcafcd44f9ec0996e26",
+    "pubDate": "2025-12-07T14:05:00+01:00",
+    "starts_at": "2025-12-07T14:05:00+01:00",
+    "ends_at": "2025-12-07T23:55:00+01:00",
+    "_identity": "wl|störung|L=95A|D=2025-12-07"
   }
 ]
