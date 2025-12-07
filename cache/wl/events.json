@@ -254,14 +254,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
     "pubDate": "2025-12-05T00:00:03+01:00",
     "starts_at": "2025-12-05T00:00:03+01:00",
     "ends_at": "2025-12-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-05"
+    "_identity": "wl|störung|L=5A|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -278,14 +278,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
     "pubDate": "2025-12-05T00:00:03+01:00",
     "starts_at": "2025-12-05T00:00:03+01:00",
     "ends_at": "2025-12-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-12-05"
+    "_identity": "wl|störung|L=18|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -302,14 +302,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "21: Züge halten Schloßhofer Straße 21",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
     "pubDate": "2025-12-05T00:00:22+01:00",
     "starts_at": "2025-12-05T00:00:22+01:00",
     "ends_at": "2025-12-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=21|D=2025-12-05"
+    "_identity": "wl|störung|L=33A|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -326,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
-    "pubDate": "2025-12-05T00:00:22+01:00",
-    "starts_at": "2025-12-05T00:00:22+01:00",
-    "ends_at": "2025-12-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "20: Züge halten Schloßhofer Straße 20",
     "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -350,14 +338,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "title": "21: Züge halten Schloßhofer Straße 21",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-07T04:30:15+01:00",
-    "starts_at": "2025-12-07T04:30:15+01:00",
-    "ends_at": "2025-12-08T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-07"
+    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
+    "pubDate": "2025-12-05T00:00:22+01:00",
+    "starts_at": "2025-12-05T00:00:22+01:00",
+    "ends_at": "2025-12-07T23:59:59+01:00",
+    "_identity": "wl|störung|L=21|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -370,6 +358,18 @@
     "starts_at": "2025-12-07T04:30:15+01:00",
     "ends_at": "2025-12-08T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-12-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-12-07T04:30:15+01:00",
+    "starts_at": "2025-12-07T04:30:15+01:00",
+    "ends_at": "2025-12-08T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-12-07"
   },
   {
     "source": "Wiener Linien",
@@ -406,5 +406,53 @@
     "starts_at": "2025-12-07T14:05:00+01:00",
     "ends_at": "2025-12-07T23:55:00+01:00",
     "_identity": "wl|störung|L=95A|D=2025-12-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A/62/WLB: Schadhafte Badner Bahn",
+    "description": "Die Linie 62 fährt derzeit nicht zwischen Wattmanngasse und Eichenstraße. Die Badner Bahn ist derzeit in Richtung Baden an der Weiterfahrt gehindert. Die Linie 59 A ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Weichen Sie ersatzweise auf die Linien U6, U4 und die S-Bahn oder 62 A sowie 63 A aus. Die Störung dauert voraussichtlich bis 15:50 Uhr. Grund dafür ist ein schadhafter Zug der Badner Bahn im Bereich Dörfelstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9ac914cead677ab94dfb807fe19d3b1c435096b7282b93bedae4f322ae0238b6",
+    "pubDate": "2025-12-07T15:25:00+01:00",
+    "starts_at": "2025-12-07T15:25:00+01:00",
+    "ends_at": "2025-12-07T23:55:00+01:00",
+    "_identity": "wl|störung|L=59A,62,WLB|D=2025-12-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Schadhafter Zug Betrieb ab Eichenstraße",
+    "description": "Schadhafter Zug Betrieb ab Eichenstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "25cd29317ff48f6daf6bdaf9bf2445903e9bdfd4ad0672bec0a6286efc93347d",
+    "pubDate": "2025-12-07T15:32:33+01:00",
+    "starts_at": "2025-12-07T15:32:33+01:00",
+    "ends_at": "2025-12-07T16:32:00+01:00",
+    "_identity": "wl|störung|L=62|D=2025-12-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Schadhafter Zug Betrieb ab Wattmanngasse",
+    "description": "Schadhafter Zug Betrieb ab Wattmanngasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "921b3c5d71c9fac943caff9375d5f0d3fd5c8976d6933c819f56df31f52c303f",
+    "pubDate": "2025-12-07T15:33:11+01:00",
+    "starts_at": "2025-12-07T15:33:11+01:00",
+    "ends_at": "2025-12-07T16:32:00+01:00",
+    "_identity": "wl|störung|L=62|D=2025-12-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3999a92dd3ff190c2a27adfde9a859ecad25797611e18dbc997023e882885145",
+    "pubDate": "2025-12-07T15:35:18+01:00",
+    "starts_at": "2025-12-07T15:35:18+01:00",
+    "ends_at": "2025-12-07T16:34:00+01:00",
+    "_identity": "wl|störung|L=59A|D=2025-12-07"
   }
 ]
