@@ -266,18 +266,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
-    "pubDate": "2025-12-05T00:00:03+01:00",
-    "starts_at": "2025-12-05T00:00:03+01:00",
-    "ends_at": "2025-12-07T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Busse halten Wallensteinstraße 51-53",
     "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -298,6 +286,18 @@
     "starts_at": "2025-12-05T00:00:03+01:00",
     "ends_at": "2025-12-07T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "pubDate": "2025-12-05T00:00:03+01:00",
+    "starts_at": "2025-12-05T00:00:03+01:00",
+    "ends_at": "2025-12-07T23:59:59+01:00",
+    "_identity": "wl|störung|L=18|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
