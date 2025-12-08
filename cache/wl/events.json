@@ -254,6 +254,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "pubDate": "2025-12-05T00:00:03+01:00",
+    "starts_at": "2025-12-05T00:00:03+01:00",
+    "ends_at": "2025-12-08T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Züge halten Gegenüber",
     "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -278,18 +290,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
-    "pubDate": "2025-12-05T00:00:03+01:00",
-    "starts_at": "2025-12-05T00:00:03+01:00",
-    "ends_at": "2025-12-08T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Busse halten Grenzgasse 2-4",
     "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -298,18 +298,6 @@
     "starts_at": "2025-12-05T00:00:20+01:00",
     "ends_at": "2025-12-08T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "21: Züge halten Schloßhofer Straße 21",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
-    "pubDate": "2025-12-05T00:00:22+01:00",
-    "starts_at": "2025-12-05T00:00:22+01:00",
-    "ends_at": "2025-12-08T23:59:59+01:00",
-    "_identity": "wl|störung|L=21|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -326,14 +314,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "title": "21: Züge halten Schloßhofer Straße 21",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
     "pubDate": "2025-12-05T00:00:22+01:00",
     "starts_at": "2025-12-05T00:00:22+01:00",
     "ends_at": "2025-12-08T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-05"
+    "_identity": "wl|störung|L=21|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -346,6 +334,18 @@
     "starts_at": "2025-12-05T00:00:22+01:00",
     "ends_at": "2025-12-08T23:59:59+01:00",
     "_identity": "wl|störung|L=20|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "pubDate": "2025-12-05T00:00:22+01:00",
+    "starts_at": "2025-12-05T00:00:22+01:00",
+    "ends_at": "2025-12-08T23:59:59+01:00",
+    "_identity": "wl|störung|L=33A|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
