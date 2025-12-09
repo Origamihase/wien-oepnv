@@ -254,14 +254,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
+    "title": "5A: Busse halten Wallensteinstraße 51-53",
+    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
     "pubDate": "2025-12-05T00:00:03+01:00",
     "starts_at": "2025-12-05T00:00:03+01:00",
     "ends_at": "2025-12-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-05"
+    "_identity": "wl|störung|L=5A|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -278,14 +278,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Wallensteinstraße 51-53",
-    "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb7e251b71948d75790da53a4a57a1059c5e6ddbf3fe6bf3a437dbc42c372ef7",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
     "pubDate": "2025-12-05T00:00:03+01:00",
     "starts_at": "2025-12-05T00:00:03+01:00",
     "ends_at": "2025-12-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-12-05"
+    "_identity": "wl|störung|L=18|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -298,18 +298,6 @@
     "starts_at": "2025-12-05T00:00:20+01:00",
     "ends_at": "2025-12-09T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "21: Züge halten Schloßhofer Straße 21",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
-    "pubDate": "2025-12-05T00:00:22+01:00",
-    "starts_at": "2025-12-05T00:00:22+01:00",
-    "ends_at": "2025-12-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=21|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -338,6 +326,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "21: Züge halten Schloßhofer Straße 21",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
+    "pubDate": "2025-12-05T00:00:22+01:00",
+    "starts_at": "2025-12-05T00:00:22+01:00",
+    "ends_at": "2025-12-09T23:59:59+01:00",
+    "_identity": "wl|störung|L=21|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "33A: Haltestelle aufgelassen",
     "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -362,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-09T04:30:02+01:00",
-    "starts_at": "2025-12-09T04:30:02+01:00",
-    "ends_at": "2025-12-10T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -382,6 +370,18 @@
     "starts_at": "2025-12-09T04:30:02+01:00",
     "ends_at": "2025-12-10T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-12-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-12-09T04:30:02+01:00",
+    "starts_at": "2025-12-09T04:30:02+01:00",
+    "ends_at": "2025-12-10T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-12-09"
   },
   {
     "source": "Wiener Linien",
@@ -416,7 +416,7 @@
     "guid": "2bc715be33c6266cf02d2caa8b985dcaa674a132fe70ee579306a5df7f9ad982",
     "pubDate": "2025-12-09T13:18:43+01:00",
     "starts_at": "2025-12-09T13:18:43+01:00",
-    "ends_at": "2025-12-09T16:00:00+01:00",
+    "ends_at": "2025-12-09T16:19:00+01:00",
     "_identity": "wl|störung|L=5|D=2025-12-09"
   },
   {
@@ -441,6 +441,18 @@
     "pubDate": "2025-12-09T13:21:37+01:00",
     "starts_at": "2025-12-09T13:21:37+01:00",
     "ends_at": "2025-12-09T16:15:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Gleisschaden Betrieb ab Spitalgasse",
+    "description": "Gleisschaden Betrieb ab Spitalgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "62e76b8c1dfc97bc339f7659aa6febdaa7a32d9e846e2e6501c982ed9b30f72b",
+    "pubDate": "2025-12-09T13:22:23+01:00",
+    "starts_at": "2025-12-09T13:22:23+01:00",
+    "ends_at": "2025-12-09T16:33:00+01:00",
     "_identity": "wl|störung|L=12|D=2025-12-09"
   },
   {
@@ -481,6 +493,18 @@
   },
   {
     "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "1/2/71/D: Silvesterpfad 2025",
+    "description": "Silvesterpfad 2025\nIm Zuge des Silvesterpfades 2025 wird die Ringstraße im Bereich Rathausplatz gesperrt. Es kommt zu folgenden Verkehrsmaßnahmen:\nZeitraum:\nMittwoch, 31. Dezember 2025, ab zirka 18:30 Uhr bis Donnerstag, 01.01.2026, etwa 02:00 Uhr.\nMaßnahmen:\nLinie D\nUmleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über den Franz-Josefs-Kai.\nLinie 1\nUmleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor und Schwarzenbergplatz.\nLinie 2\nUmleitung in beiden Richtungen zwischen Ring, Volkstheater U und Rathaus über die Reichsratstraße. Fahrgäste Richtung Dornbach finden die Züge in der Haltestelle der Linien 46, 49 und 48 A.\nLinie 71\nKein Betrieb zwischen Schwarzenbergplatz und Schottenring U.\nWeiteres:\nBeachten Sie bitte, dass die genannten Verkehrsmaßnahmen nicht alle gleichzeitig auftreten müssen. Je nach Fortschritt der Demonstration und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf www.wienerlinien.at.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "77700feca8d94ea0bdd08f3ee306edff4bc6d461d3c472d003aaaef19b929a22",
+    "pubDate": "2025-12-09T13:30:00+01:00",
+    "starts_at": "2025-12-09T13:30:00+01:00",
+    "ends_at": "2026-01-01T02:00:00+01:00",
+    "_identity": "wl|hinweis|L=1,2,71,D|D=2025-12-09"
+  },
+  {
+    "source": "Wiener Linien",
     "category": "Störung",
     "title": "5: Gleisschaden Betrieb nur bis Lerchenfelder Straße",
     "description": "Gleisschaden Betrieb nur bis Lerchenfelder Straße",
@@ -494,10 +518,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Gleisschaden Betrieb nur bis Franz-Josefs-Bahnhof",
-    "description": "Gleisschaden Betrieb nur bis Franz-Josefs-Bahnhof",
+    "title": "12: Gleisschaden Betrieb nur bis Spitalgasse",
+    "description": "Gleisschaden Betrieb nur bis Spitalgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5bd43fef4c534d31869b3c0cdecd5e3e61b39ed6c12adbb84b8f6a5f09a05d58",
+    "guid": "bad8ba11b2faf81c3d27ef82fc57c3d95227b252260b6dcf08fac84b42663c50",
     "pubDate": "2025-12-09T13:31:28+01:00",
     "starts_at": "2025-12-09T13:31:28+01:00",
     "ends_at": "2025-12-09T16:09:00+01:00",
@@ -530,30 +554,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Demonstration",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6bce64de3d90cd0bd9938e3a69084af2bed13b86bf951e0e06e6d3ebeb7ac65e",
-    "pubDate": "2025-12-09T13:40:00+01:00",
-    "starts_at": "2025-12-09T13:40:00+01:00",
-    "ends_at": "2025-12-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=71|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "20afbfca21c790691b2b60903b6da68364ee59e3bc83d2b8ea61832b2baa30d0",
-    "pubDate": "2025-12-09T13:40:00+01:00",
-    "starts_at": "2025-12-09T13:40:00+01:00",
-    "ends_at": "2025-12-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "3A: Demonstration",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 3 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -578,18 +578,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Demonstration",
-    "description": "Die Linie 11 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Demonstration im Bereich Vorgartenstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c4e86729b5edacaa4d4f4e3f661033e1639444166fe166235139837f6fcafc9f",
-    "pubDate": "2025-12-09T14:00:00+01:00",
-    "starts_at": "2025-12-09T14:00:00+01:00",
-    "ends_at": "2025-12-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1A: Demonstration",
     "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Demonstration im Bereich Ringstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -602,7 +590,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Rettungseinsatz Betrieb nur bis Urban-Loritz-Platz",
+    "title": "49: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
@@ -614,7 +602,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Rettungseinsatz Betrieb nur bis Thaliastraße",
+    "title": "46: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 46 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc",
@@ -626,32 +614,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Rettungseinsatz Betrieb ab Kellermanngasse",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 48 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2d67d7e9c317d518f24f879879e1b8977cbc97545f7ebbc35fdd5aa8a7ec2e29",
-    "pubDate": "2025-12-09T14:20:00+01:00",
-    "starts_at": "2025-12-09T14:20:00+01:00",
-    "ends_at": "2025-12-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=48A|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31: Flaschparker Umleitung über Jägerstraße",
-    "description": "Flaschparker Umleitung über Jägerstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "21adc42283a180b04ba5b3c0f81ae67ca5f94b41a621e7c2699dc27deb2d4878",
-    "pubDate": "2025-12-09T14:29:25+01:00",
-    "starts_at": "2025-12-09T14:29:25+01:00",
-    "ends_at": "2025-12-09T15:28:00+01:00",
-    "_identity": "wl|störung|L=31|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "31: Falschparker",
-    "description": "Die Linie 31 wird derzeit in Richtung Schottenring zwischen Jägerstraße und Gaußplatz über die Jägerstraße umgeleitet. Die Störung dauert voraussichtlich bis 15:15 Uhr. Grund dafür ist ein Falschparker im Bereich Klosterneuburger Straße 1.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 31 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7fc5dec6c1828e780870a54d956a3e47494ba66068f3920d342fbe84b2c28065",
     "pubDate": "2025-12-09T14:30:00+01:00",
@@ -662,20 +626,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Falschparker Umleitung ab Jägerstraße über Jägerstraße",
-    "description": "Falschparker Umleitung ab Jägerstraße über Jägerstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b32e82a6a6c9348c4066b362be3d6d689b4cba21ae5038f67960dfc8f5615bd7",
-    "pubDate": "2025-12-09T14:30:23+01:00",
-    "starts_at": "2025-12-09T14:30:23+01:00",
-    "ends_at": "2025-12-09T15:29:00+01:00",
-    "_identity": "wl|störung|L=31|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62: Verkehrsunfall",
-    "description": "Die Linie 62 ist derzeit in Richtung Lainz, Wolkersbergenstraße an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 15:30 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Rosenhügelstraße.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "eed493b84b991f4fbb293a881224825ca49d2be64d70010ef16dbd19919e838a",
     "pubDate": "2025-12-09T15:00:00+01:00",
@@ -706,5 +658,53 @@
     "starts_at": "2025-12-09T15:15:46+01:00",
     "ends_at": "2025-12-09T16:15:00+01:00",
     "_identity": "wl|störung|L=62|D=2025-12-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Betriebsstörung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2025-12-09T15:20:00+01:00",
+    "starts_at": "2025-12-09T15:20:00+01:00",
+    "ends_at": "2025-12-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-12-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Gleisschaden Züge halten bei Linie 37/38",
+    "description": "Gleisschaden Züge halten bei Linie 37/38",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0b7aad7c3b4a2595f70a7812f74e973fcf85a38b46d4330ba1606960adecf548",
+    "pubDate": "2025-12-09T15:35:31+01:00",
+    "starts_at": "2025-12-09T15:35:31+01:00",
+    "ends_at": "2025-12-09T16:34:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71/D: Rettungseinsatz",
+    "description": "Die Linie D wird in Richtung Absberggasse zwischen Schwarzenbergplatz und Quartier Belvedere über St. Marx umgeleitet. Die Linie 71 fährt derzeit nur zwischen Kaiserebersdorf und Rennweg. Die Züge fahren über die Linie O bis Hintere Zollamtsstraße. Die Störung dauert voraussichtlich bis 16:10 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Schwarzenbergplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c2a90c6568b73bacaffeebc00c705c56542fb5a7734bb78ea19061d197f41e66",
+    "pubDate": "2025-12-09T15:40:00+01:00",
+    "starts_at": "2025-12-09T15:40:00+01:00",
+    "ends_at": "2025-12-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=71,D|D=2025-12-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c",
+    "pubDate": "2025-12-09T15:42:39+01:00",
+    "starts_at": "2025-12-09T15:42:39+01:00",
+    "ends_at": "2025-12-09T16:46:00+01:00",
+    "_identity": "wl|störung|L=71|D=2025-12-09"
   }
 ]
