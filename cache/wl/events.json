@@ -254,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
-    "pubDate": "2025-12-05T00:00:03+01:00",
-    "starts_at": "2025-12-05T00:00:03+01:00",
-    "ends_at": "2025-12-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Busse halten Wallensteinstraße 51-53",
     "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -274,6 +262,18 @@
     "starts_at": "2025-12-05T00:00:03+01:00",
     "ends_at": "2025-12-09T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "pubDate": "2025-12-05T00:00:03+01:00",
+    "starts_at": "2025-12-05T00:00:03+01:00",
+    "ends_at": "2025-12-09T23:59:59+01:00",
+    "_identity": "wl|störung|L=18|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -302,14 +302,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "20: Züge halten Schloßhofer Straße 20",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
+    "title": "21: Züge halten Schloßhofer Straße 21",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
+    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
     "pubDate": "2025-12-05T00:00:22+01:00",
     "starts_at": "2025-12-05T00:00:22+01:00",
     "ends_at": "2025-12-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=20|D=2025-12-05"
+    "_identity": "wl|störung|L=21|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -326,14 +326,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "21: Züge halten Schloßhofer Straße 21",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
+    "title": "20: Züge halten Schloßhofer Straße 20",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
+    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
     "pubDate": "2025-12-05T00:00:22+01:00",
     "starts_at": "2025-12-05T00:00:22+01:00",
     "ends_at": "2025-12-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=21|D=2025-12-05"
+    "_identity": "wl|störung|L=20|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -434,30 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "16A: Fahrtbehinderung Signalstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 16 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "32c92ab83f0de4027d69c995f2641822ec1a450fec2f45c5d0d5e4e3a1ace708",
-    "pubDate": "2025-12-09T11:15:00+01:00",
-    "starts_at": "2025-12-09T11:15:00+01:00",
-    "ends_at": "2025-12-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=16A|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "17A: Signalstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 17 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5dfa210ba3291a66edebd31b6cfcfd1d45e1cd37d3c1946494afc52dec0c55d4",
-    "pubDate": "2025-12-09T11:15:00+01:00",
-    "starts_at": "2025-12-09T11:15:00+01:00",
-    "ends_at": "2025-12-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=17A|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "49: Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -465,42 +441,6 @@
     "pubDate": "2025-12-09T11:15:00+01:00",
     "starts_at": "2025-12-09T11:15:00+01:00",
     "ends_at": "2025-12-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=49|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67A: Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung Signalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c6217f3734081f8e926c9979e884673454468f1b1a07fa5e2e3236de593c654",
-    "pubDate": "2025-12-09T11:17:59+01:00",
-    "starts_at": "2025-12-09T11:17:59+01:00",
-    "ends_at": "2025-12-09T12:17:00+01:00",
-    "_identity": "wl|störung|L=67A|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67B: Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung Signalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5dcfeb610d68f34a772e9dab8cb83e87a0d52ba551d6978e4c268381f37521c7",
-    "pubDate": "2025-12-09T11:18:28+01:00",
-    "starts_at": "2025-12-09T11:18:28+01:00",
-    "ends_at": "2025-12-09T12:18:00+01:00",
-    "_identity": "wl|störung|L=67B|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d3121440bb198809da6ad6777749127de887bfe17ce700d64f281bbb4593b9c8",
-    "pubDate": "2025-12-09T11:21:26+01:00",
-    "starts_at": "2025-12-09T11:21:26+01:00",
-    "ends_at": "2025-12-09T12:24:00+01:00",
     "_identity": "wl|störung|L=49|D=2025-12-09"
   },
   {
@@ -526,5 +466,41 @@
     "starts_at": "2025-12-09T11:50:35+01:00",
     "ends_at": "2025-12-09T12:58:00+01:00",
     "_identity": "wl|störung|L=D|D=2025-12-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Die Linie 25 ist derzeit in Richtung Floridsdorf an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 13:00 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Arminenstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
+    "pubDate": "2025-12-09T12:25:00+01:00",
+    "starts_at": "2025-12-09T12:25:00+01:00",
+    "ends_at": "2025-12-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=25|D=2025-12-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "16A/17A/67A/67B: Signalstörung",
+    "description": "Die Linie 67 B ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Linie 16 A ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Linie 17 A ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Linie 67 A ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 13:00 Uhr. Grund dafür ist eine Signalstörung im Bereich Himberger Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "884994111f691b16f8e904736fd9b06ec304c06a4c366af8a170da68d09e5e37",
+    "pubDate": "2025-12-09T12:35:00+01:00",
+    "starts_at": "2025-12-09T12:35:00+01:00",
+    "ends_at": "2025-12-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=16A,17A,67A,67B|D=2025-12-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Signalstörung",
+    "description": "Fahrtbehinderung wegen Signalstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b6bef18c56849381c155b7aee25b6c16c648913c966f705b3cc68162c0cb56fd",
+    "pubDate": "2025-12-09T12:37:10+01:00",
+    "starts_at": "2025-12-09T12:37:10+01:00",
+    "ends_at": "2025-12-09T13:36:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-12-09"
   }
 ]
