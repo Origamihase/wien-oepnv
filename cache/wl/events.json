@@ -254,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
-    "pubDate": "2025-12-05T00:00:03+01:00",
-    "starts_at": "2025-12-05T00:00:03+01:00",
-    "ends_at": "2025-12-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Busse halten Wallensteinstraße 51-53",
     "description": "Gleisbauarbeiten Busse halten Wallensteinstraße 51-53",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -286,6 +274,18 @@
     "starts_at": "2025-12-05T00:00:03+01:00",
     "ends_at": "2025-12-09T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2025-12-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "pubDate": "2025-12-05T00:00:03+01:00",
+    "starts_at": "2025-12-05T00:00:03+01:00",
+    "ends_at": "2025-12-09T23:59:59+01:00",
+    "_identity": "wl|störung|L=18|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -314,14 +314,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "title": "21: Züge halten Schloßhofer Straße 21",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
     "pubDate": "2025-12-05T00:00:22+01:00",
     "starts_at": "2025-12-05T00:00:22+01:00",
     "ends_at": "2025-12-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-12-05"
+    "_identity": "wl|störung|L=21|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -338,14 +338,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "21: Züge halten Schloßhofer Straße 21",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
     "pubDate": "2025-12-05T00:00:22+01:00",
     "starts_at": "2025-12-05T00:00:22+01:00",
     "ends_at": "2025-12-09T23:59:59+01:00",
-    "_identity": "wl|störung|L=21|D=2025-12-05"
+    "_identity": "wl|störung|L=N31|D=2025-12-05"
   },
   {
     "source": "Wiener Linien",
@@ -409,18 +409,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Gleisschaden Betrieb ab Lerchenfelder Straße",
-    "description": "Gleisschaden Betrieb ab Lerchenfelder Straße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2bc715be33c6266cf02d2caa8b985dcaa674a132fe70ee579306a5df7f9ad982",
-    "pubDate": "2025-12-09T13:18:43+01:00",
-    "starts_at": "2025-12-09T13:18:43+01:00",
-    "ends_at": "2025-12-09T20:00:00+01:00",
-    "_identity": "wl|störung|L=5|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "1/2/71/D: Silvesterpfad 2025",
     "description": "Silvesterpfad 2025\nIm Zuge des Silvesterpfades 2025 wird die Ringstraße im Bereich Rathausplatz gesperrt. Es kommt zu folgenden Verkehrsmaßnahmen:\nZeitraum:\nMittwoch, 31. Dezember 2025, ab zirka 18:30 Uhr bis Donnerstag, 01.01.2026, etwa 02:00 Uhr.\nMaßnahmen:\nLinie D\nUmleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über den Franz-Josefs-Kai.\nLinie 1\nUmleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor und Schwarzenbergplatz.\nLinie 2\nUmleitung in beiden Richtungen zwischen Ring, Volkstheater U und Rathaus über die Reichsratstraße. Fahrgäste Richtung Dornbach finden die Züge in der Haltestelle der Linien 46, 49 und 48 A.\nLinie 71\nKein Betrieb zwischen Schwarzenbergplatz und Schottenring U.\nWeiteres:\nBeachten Sie bitte, dass die genannten Verkehrsmaßnahmen nicht alle gleichzeitig auftreten müssen. Je nach Fortschritt der Demonstration und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf www.wienerlinien.at.",
@@ -442,18 +430,6 @@
     "starts_at": "2025-12-09T15:05:00+01:00",
     "ends_at": "2025-12-09T23:55:00+01:00",
     "_identity": "wl|störung|L=5|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2A: Verspätungen",
-    "description": "Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Schwarzenbergplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "57d004da43aa922d23ef17d2febd4d27e41c86903650f7772a81a3838692e289",
-    "pubDate": "2025-12-09T18:55:00+01:00",
-    "starts_at": "2025-12-09T18:55:00+01:00",
-    "ends_at": "2025-12-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=2A|D=2025-12-09"
   },
   {
     "source": "Wiener Linien",
