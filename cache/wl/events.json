@@ -194,6 +194,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "U1/U4: Station Schwedenplatz, Sperre Aufgang Urania",
+    "description": "Aufgangsperre\nWegen Bauarbeiten muss der Aufgang \"Urania\" der U-Bahn-Station Schwedenplatz zeitweilig gesperrt werden.\nZeitraum:\nMontag, 24. November 2025, 21:00 Uhr bis Freitag, 19. Dezember 2025, etwa 04:30 Uhr.\nJedoch nur Montag - Donnerstag zwischen 21:00 Uhr und 04:30 Uhr.\nErsatz:\nBitte benutzen Sie die anderen Aufgänge.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "aac66d61a153d41a7c2a795dcebb5bed35489d9bc098be249cbb953e58f24d15",
+    "pubDate": "2025-11-24T14:15:00+01:00",
+    "starts_at": "2025-11-24T14:15:00+01:00",
+    "ends_at": "2025-12-19T04:30:00+01:00",
+    "_identity": "wl|hinweis|L=U1,U4|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "17A: Straßenbauarbeiten ab 01.12.2025",
     "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Jochen-Rindt-Straße werden die Linien 17 A, 66 A und 67 A umgeleitet.\nZeitraum:\nAb Montag, 01. Dezember 2025, etwa 08:00 Uhr bis Freitag, 12. Dezember 2025, etwa 08:00 Uhr.\nMaßnahmen:\nLinie 17 A in Richtung Oberlaa U, 66 A Richtung Liesing S bzw. 67 A Inzersdorf, Slamastraße:\nUmleitung ab Jochen-Rindt-Straße # Tenschertstraße über Tenschertstraße – Gorskistraße – Salmhoferstraße – Jochen-Rindt-Straße.\nAufgelassene Haltestellen:\nTenschertstraße (Jochen-Rindt-Straße 17)\nErnanigasse (Jochen-Rindt-Straße 7)\nErsatzhaltestelle:\nTenschertstraße (Jochen-Rindt-Straße 19)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -362,18 +374,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-10T04:30:22+01:00",
-    "starts_at": "2025-12-10T04:30:22+01:00",
-    "ends_at": "2025-12-11T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -386,6 +386,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-12-10T04:30:22+01:00",
+    "starts_at": "2025-12-10T04:30:22+01:00",
+    "ends_at": "2025-12-11T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -394,30 +406,6 @@
     "starts_at": "2025-12-10T04:45:19+01:00",
     "ends_at": "2025-12-11T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2025-12-10T08:00:00+01:00",
-    "starts_at": "2025-12-10T08:00:00+01:00",
-    "ends_at": "2025-12-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Betriebsstörung",
-    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Ring, Volkstheater U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3fa76bf14cbf672d001832183ec1b91fad63c7415b4791401e739a11e09085ac",
-    "pubDate": "2025-12-10T08:30:00+01:00",
-    "starts_at": "2025-12-10T08:30:00+01:00",
-    "ends_at": "2025-12-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
