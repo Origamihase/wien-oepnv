@@ -230,18 +230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Dammstraße 2",
-    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
-    "pubDate": "2025-12-10T00:00:12+01:00",
-    "starts_at": "2025-12-10T00:00:12+01:00",
-    "ends_at": "2025-12-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Züge halten Gegenüber",
     "description": "Züge halten Gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -250,6 +238,18 @@
     "starts_at": "2025-12-10T00:00:12+01:00",
     "ends_at": "2025-12-10T23:59:59+01:00",
     "_identity": "wl|störung|L=18|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5A: Busse halten Dammstraße 2",
+    "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9b32427fa12957f42dba2cf4f55d77b77f1a2e3c4f7c391bf994b1438410d95",
+    "pubDate": "2025-12-10T00:00:12+01:00",
+    "starts_at": "2025-12-10T00:00:12+01:00",
+    "ends_at": "2025-12-10T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -278,14 +278,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "title": "12A: Busse halten Grenzgasse 2-4",
+    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-12-10"
+    "_identity": "wl|störung|L=12A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -314,18 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Busse halten Grenzgasse 2-4",
-    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=12A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "33A: Haltestelle aufgelassen",
     "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -338,14 +326,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
-    "pubDate": "2025-12-10T04:30:22+01:00",
-    "starts_at": "2025-12-10T04:30:22+01:00",
-    "ends_at": "2025-12-11T00:50:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-12-10"
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-10T23:59:59+01:00",
+    "_identity": "wl|störung|L=N31|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -362,6 +350,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
+    "pubDate": "2025-12-10T04:30:22+01:00",
+    "starts_at": "2025-12-10T04:30:22+01:00",
+    "ends_at": "2025-12-11T00:50:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -374,25 +374,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42/9: Falschparker",
-    "description": "Die Linie 9 ist derzeit in Richtung Gersthof an der Weiterfahrt gehindert. Die Linie 42 ist derzeit in Richtung Antonigasse an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 21:00 Uhr. Grund dafür ist ein Falschparker im Bereich Kreuzgasse Klostergasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9ded21edd54ec0e3a1f351b48d66193d9727ef9573d767e7aba342b65021d51a",
-    "pubDate": "2025-12-10T20:30:00+01:00",
-    "starts_at": "2025-12-10T20:30:00+01:00",
-    "ends_at": "2025-12-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=42,9|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "42: Fahrtbehinderung Falschparker",
     "description": "Fahrtbehinderung Falschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
     "pubDate": "2025-12-10T20:33:48+01:00",
     "starts_at": "2025-12-10T20:33:48+01:00",
-    "ends_at": "2025-12-10T21:33:00+01:00",
+    "ends_at": "2025-12-10T21:40:00+01:00",
     "_identity": "wl|störung|L=42|D=2025-12-10"
   }
 ]
