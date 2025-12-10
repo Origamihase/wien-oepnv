@@ -230,18 +230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Züge halten Gegenüber",
-    "description": "Züge halten Gegenüber",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
-    "pubDate": "2025-12-10T00:00:12+01:00",
-    "starts_at": "2025-12-10T00:00:12+01:00",
-    "ends_at": "2025-12-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Busse halten Dammstraße 2",
     "description": "Gleisbauarbeiten Busse halten Dammstraße 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -250,6 +238,18 @@
     "starts_at": "2025-12-10T00:00:12+01:00",
     "ends_at": "2025-12-10T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Züge halten Gegenüber",
+    "description": "Züge halten Gegenüber",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
+    "pubDate": "2025-12-10T00:00:12+01:00",
+    "starts_at": "2025-12-10T00:00:12+01:00",
+    "ends_at": "2025-12-10T23:59:59+01:00",
+    "_identity": "wl|störung|L=18|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -278,6 +278,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-10T23:59:59+01:00",
+    "_identity": "wl|störung|L=N31|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "21: Züge halten Schloßhofer Straße 21",
     "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -286,6 +298,18 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-10T23:59:59+01:00",
     "_identity": "wl|störung|L=21|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "20: Züge halten Schloßhofer Straße 20",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-10T23:59:59+01:00",
+    "_identity": "wl|störung|L=20|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -302,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "33A: Haltestelle aufgelassen",
     "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -322,18 +334,6 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-10T23:59:59+01:00",
     "_identity": "wl|störung|L=33A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "20: Züge halten Schloßhofer Straße 20",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=20|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -374,13 +374,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
+    "title": "42/9: Falschparker",
+    "description": "Die Linie 9 ist derzeit in Richtung Gersthof an der Weiterfahrt gehindert. Die Linie 42 ist derzeit in Richtung Antonigasse an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 21:00 Uhr. Grund dafür ist ein Falschparker im Bereich Kreuzgasse Klostergasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
-    "pubDate": "2025-12-10T17:55:00+01:00",
-    "starts_at": "2025-12-10T17:55:00+01:00",
+    "guid": "9ded21edd54ec0e3a1f351b48d66193d9727ef9573d767e7aba342b65021d51a",
+    "pubDate": "2025-12-10T20:30:00+01:00",
+    "starts_at": "2025-12-10T20:30:00+01:00",
     "ends_at": "2025-12-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2025-12-10"
+    "_identity": "wl|störung|L=42,9|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2025-12-10T20:33:48+01:00",
+    "starts_at": "2025-12-10T20:33:48+01:00",
+    "ends_at": "2025-12-10T21:33:00+01:00",
+    "_identity": "wl|störung|L=42|D=2025-12-10"
   }
 ]
