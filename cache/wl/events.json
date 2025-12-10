@@ -338,14 +338,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "20: Züge halten Schloßhofer Straße 20",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
+    "title": "21: Züge halten Schloßhofer Straße 21",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
+    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=20|D=2025-12-10"
+    "_identity": "wl|störung|L=21|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -386,14 +386,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "21: Züge halten Schloßhofer Straße 21",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
+    "title": "20: Züge halten Schloßhofer Straße 20",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
+    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=21|D=2025-12-10"
+    "_identity": "wl|störung|L=20|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -454,5 +454,17 @@
     "starts_at": "2025-12-10T01:20:14+01:00",
     "ends_at": "2025-12-10T04:35:00+01:00",
     "_identity": "wl|störung|L=N31|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Polizeieinsatz",
+    "description": "Die Linie N20 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Floridsdorf S U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f39bdfe90bdc9c73d2fd6c4107decda5b863e90a51bd1818a3f705804a3b6cc1",
+    "pubDate": "2025-12-10T02:45:00+01:00",
+    "starts_at": "2025-12-10T02:45:00+01:00",
+    "ends_at": "2025-12-10T23:55:00+01:00",
+    "_identity": "wl|störung|L=N20|D=2025-12-10"
   }
 ]
