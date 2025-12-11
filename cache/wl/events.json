@@ -290,18 +290,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "20: Züge halten Schloßhofer Straße 20",
     "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -314,26 +302,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N60: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie N60 zu unterschiedlichen Intervallen.",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f29e56aa4166e8206e8471c3bed7dd959689a03e33e7661ba22ccb3dd92b8b1c",
-    "pubDate": "2025-12-11T03:40:00+01:00",
-    "starts_at": "2025-12-11T03:40:00+01:00",
-    "ends_at": "2025-12-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=N60|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N60: Fahrtbehinderung Schadhafter Bus",
-    "description": "Fahrtbehinderung Schadhafter Bus",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a059ce783c64dbec107b3045a3f216c06865885fabaf9c007d2d1758784b4177",
-    "pubDate": "2025-12-11T04:18:10+01:00",
-    "starts_at": "2025-12-11T04:18:10+01:00",
-    "ends_at": "2025-12-11T05:17:00+01:00",
-    "_identity": "wl|störung|L=N60|D=2025-12-11"
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-11T23:59:59+01:00",
+    "_identity": "wl|störung|L=33A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -370,17 +346,5 @@
     "starts_at": "2025-12-11T04:45:00+01:00",
     "ends_at": "2025-12-12T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Die Linie U2 kann derzeit in Richtung Seestadt nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Karlsplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2025-12-11T04:55:00+01:00",
-    "starts_at": "2025-12-11T04:55:00+01:00",
-    "ends_at": "2025-12-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=U2|D=2025-12-11"
   }
 ]
