@@ -266,18 +266,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "20: Züge halten Schloßhofer Straße 20",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=20|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "21: Züge halten Schloßhofer Straße 21",
     "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -286,18 +274,6 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-11T23:59:59+01:00",
     "_identity": "wl|störung|L=21|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -314,14 +290,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-11T04:30:08+01:00",
-    "starts_at": "2025-12-11T04:30:08+01:00",
-    "ends_at": "2025-12-12T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-11"
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-11T23:59:59+01:00",
+    "_identity": "wl|störung|L=33A|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "20: Züge halten Schloßhofer Straße 20",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-11T23:59:59+01:00",
+    "_identity": "wl|störung|L=20|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -334,6 +322,18 @@
     "starts_at": "2025-12-11T04:30:08+01:00",
     "ends_at": "2025-12-12T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-12-11T04:30:08+01:00",
+    "starts_at": "2025-12-11T04:30:08+01:00",
+    "ends_at": "2025-12-12T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-12-11"
   },
   {
     "source": "Wiener Linien",
@@ -394,18 +394,6 @@
     "starts_at": "2025-12-11T14:21:22+01:00",
     "ends_at": "2025-12-11T23:15:00+01:00",
     "_identity": "wl|störung|L=9|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Gleisschaden Einstieg Wipplingerstraße",
-    "description": "Gleisschaden Einstieg Wipplingerstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ed8b2410dbc1d44cc61f08c282616f1d5ef78f6203eb662d68574c6bdda7f458",
-    "pubDate": "2025-12-11T14:48:48+01:00",
-    "starts_at": "2025-12-11T14:48:48+01:00",
-    "ends_at": "2025-12-11T22:22:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-12-11"
   },
   {
     "source": "Wiener Linien",
