@@ -254,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "21: Züge halten Schloßhofer Straße 21",
     "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -286,6 +274,18 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-11T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-11T23:59:59+01:00",
+    "_identity": "wl|störung|L=33A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -374,13 +374,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung wegen Demonstration",
+    "title": "49: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "985938d855320e7fa36fdb3da0c5abab3edad10c7d5b4907c7add38eb6a3384b",
+    "guid": "b50c613612251feea4193dabddf520d95d8fd1c6547b45a685160134aa7d7138",
     "pubDate": "2025-12-11T13:39:38+01:00",
     "starts_at": "2025-12-11T13:39:38+01:00",
-    "ends_at": "2025-12-11T22:45:00+01:00",
+    "ends_at": "2025-12-11T21:25:00+01:00",
+    "_identity": "wl|störung|L=49|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fremdunfall Betrieb ab Urban-Loritz-Platz",
+    "description": "Fremdunfall Betrieb ab Urban-Loritz-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "61aafb82f18cc07fb5521d84d3b1ba9f7ed93d8876fcabdda0a0311906ab2d86",
+    "pubDate": "2025-12-11T13:40:36+01:00",
+    "starts_at": "2025-12-11T13:40:36+01:00",
+    "ends_at": "2025-12-11T21:25:00+01:00",
+    "_identity": "wl|störung|L=49|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fremdunfall Züge halten bei Li. 9 Richtung Gersthof S",
+    "description": "Fremdunfall Züge halten bei Li. 9 Richtung Gersthof S",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "59290d71cc4018d80292b8f0c80420a968fef3d68efe86e939a1ff45afa0e56b",
+    "pubDate": "2025-12-11T13:40:36+01:00",
+    "starts_at": "2025-12-11T13:40:36+01:00",
+    "ends_at": "2025-12-11T21:27:00+01:00",
     "_identity": "wl|störung|L=49|D=2025-12-11"
   },
   {
@@ -393,18 +417,6 @@
     "pubDate": "2025-12-11T13:58:10+01:00",
     "starts_at": "2025-12-11T13:58:10+01:00",
     "ends_at": "2025-12-11T21:00:00+01:00",
-    "_identity": "wl|störung|L=57A|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "57A: Demonstration Betrieb ab Gumpendorfer Straße",
-    "description": "Demonstration Betrieb ab Gumpendorfer Straße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "850f11994749cee0440a7fef9b972ed79c1f346b12ec896cff50e1ad7f91dbb2",
-    "pubDate": "2025-12-11T14:05:27+01:00",
-    "starts_at": "2025-12-11T14:05:27+01:00",
-    "ends_at": "2025-12-11T20:27:00+01:00",
     "_identity": "wl|störung|L=57A|D=2025-12-11"
   },
   {
@@ -442,18 +454,6 @@
     "starts_at": "2025-12-11T14:29:26+01:00",
     "ends_at": "2025-12-11T21:00:00+01:00",
     "_identity": "wl|störung|L=13A|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "57A: Demonstration Einstieg am Äußeren Gürtel (Linie N8)",
-    "description": "Demonstration Einstieg am Äußeren Gürtel (Linie N8)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c73de01e1d4eac5293c7231f35a1dbcfbad8008204436825163e0314f1d069c5",
-    "pubDate": "2025-12-11T14:30:08+01:00",
-    "starts_at": "2025-12-11T14:30:08+01:00",
-    "ends_at": "2025-12-11T20:29:00+01:00",
-    "_identity": "wl|störung|L=57A|D=2025-12-11"
   },
   {
     "source": "Wiener Linien",
@@ -518,18 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Veranstaltung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "82f67fc4ae423e511abb8b767eacbf6009f15e0d2c45606f760ea7149593a6ee",
-    "pubDate": "2025-12-11T18:40:00+01:00",
-    "starts_at": "2025-12-11T18:40:00+01:00",
-    "ends_at": "2025-12-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=49|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "60: Fremder Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -542,25 +530,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "title": "49: Fremder Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c349b50f0178512ad734e156c00804fd590a7d6904fd095af86c323015fbd0eb",
-    "pubDate": "2025-12-11T19:08:28+01:00",
-    "starts_at": "2025-12-11T19:08:28+01:00",
-    "ends_at": "2025-12-11T20:30:00+01:00",
-    "_identity": "wl|störung|L=60|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49A: Veranstaltung",
-    "description": "Die Linie 49 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Veranstaltung im Bereich Hütteldorf, Bujattigasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "59259edbcd485248d99ae034faeef4cc4b166c24a5e466d49354c3c694f9e612",
-    "pubDate": "2025-12-11T19:10:00+01:00",
-    "starts_at": "2025-12-11T19:10:00+01:00",
+    "guid": "1b00fb340622a0ca705f8951a39064434e168b4386156987e0648096623cc1c4",
+    "pubDate": "2025-12-11T20:15:00+01:00",
+    "starts_at": "2025-12-11T20:15:00+01:00",
     "ends_at": "2025-12-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=49A|D=2025-12-11"
+    "_identity": "wl|störung|L=49|D=2025-12-11"
   }
 ]
