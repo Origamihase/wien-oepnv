@@ -266,14 +266,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "title": "20: Züge halten Schloßhofer Straße 20",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-10"
+    "_identity": "wl|störung|L=20|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -290,14 +290,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "20: Züge halten Schloßhofer Straße 20",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=20|D=2025-12-10"
+    "_identity": "wl|störung|L=33A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -314,18 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-11T04:30:08+01:00",
-    "starts_at": "2025-12-11T04:30:08+01:00",
-    "ends_at": "2025-12-12T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -334,6 +322,18 @@
     "starts_at": "2025-12-11T04:30:08+01:00",
     "ends_at": "2025-12-12T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-12-11T04:30:08+01:00",
+    "starts_at": "2025-12-11T04:30:08+01:00",
+    "ends_at": "2025-12-12T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-12-11"
   },
   {
     "source": "Wiener Linien",
@@ -358,18 +358,6 @@
     "starts_at": "2025-12-11T07:10:00+01:00",
     "ends_at": "2025-12-11T23:55:00+01:00",
     "_identity": "wl|störung|L=O|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2025-12-11T08:58:33+01:00",
-    "starts_at": "2025-12-11T08:58:33+01:00",
-    "ends_at": "2025-12-11T09:59:00+01:00",
-    "_identity": "wl|störung|L=9|D=2025-12-11"
   },
   {
     "source": "Wiener Linien",
@@ -405,6 +393,42 @@
     "pubDate": "2025-12-11T09:42:22+01:00",
     "starts_at": "2025-12-11T09:42:22+01:00",
     "ends_at": "2025-12-11T10:41:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A: Verkehrsüberlastung",
+    "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "54bc809d85229c6a09e43a7de307b52c3b4983748375648087f4d7c0df6854ef",
+    "pubDate": "2025-12-11T10:05:00+01:00",
+    "starts_at": "2025-12-11T10:05:00+01:00",
+    "ends_at": "2025-12-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=1A|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11/71: Gleisschaden",
+    "description": "Die Linie 11 fährt derzeit nur zwischen Otto-Probst-Platz und Zentralfriedhof, 3. Tor. Die Linie 71 fährt derzeit nur zwischen Schottenring und Zentralfriedhof, 3. Tor. Die Störung dauert voraussichtlich bis 12:30 Uhr. Grund dafür ist ein Gleisschaden im Bereich Svetelskystraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "30e4cb38662cbcd4ac46b35eec1e893e2075d3e0d046bf290ac173dd6b4f5e1c",
+    "pubDate": "2025-12-11T10:10:00+01:00",
+    "starts_at": "2025-12-11T10:10:00+01:00",
+    "ends_at": "2025-12-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=11,71|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung Gleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13174dc246e330fe35ab703e95b032772ca852144babb7167757600872f23f96",
+    "pubDate": "2025-12-11T10:17:53+01:00",
+    "starts_at": "2025-12-11T10:17:53+01:00",
+    "ends_at": "2025-12-11T13:00:00+01:00",
     "_identity": "wl|störung|L=|D=2025-12-11"
   }
 ]
