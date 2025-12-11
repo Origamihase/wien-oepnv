@@ -158,18 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "U1/U4: Station Schwedenplatz, Sperre Aufgang Urania",
-    "description": "Aufgangsperre\nWegen Bauarbeiten muss der Aufgang \"Urania\" der U-Bahn-Station Schwedenplatz zeitweilig gesperrt werden.\nZeitraum:\nMontag, 24. November 2025, 21:00 Uhr bis Freitag, 19. Dezember 2025, etwa 04:30 Uhr.\nJedoch nur Montag - Donnerstag zwischen 21:00 Uhr und 04:30 Uhr.\nErsatz:\nBitte benutzen Sie die anderen Aufgänge.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aac66d61a153d41a7c2a795dcebb5bed35489d9bc098be249cbb953e58f24d15",
-    "pubDate": "2025-11-24T14:15:00+01:00",
-    "starts_at": "2025-11-24T14:15:00+01:00",
-    "ends_at": "2025-12-19T04:30:00+01:00",
-    "_identity": "wl|hinweis|L=U1,U4|D=2025-11-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "17A: Straßenbauarbeiten ab 01.12.2025",
     "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Jochen-Rindt-Straße werden die Linien 17 A, 66 A und 67 A umgeleitet.\nZeitraum:\nAb Montag, 01. Dezember 2025, etwa 08:00 Uhr bis Freitag, 12. Dezember 2025, etwa 08:00 Uhr.\nMaßnahmen:\nLinie 17 A in Richtung Oberlaa U, 66 A Richtung Liesing S bzw. 67 A Inzersdorf, Slamastraße:\nUmleitung ab Jochen-Rindt-Straße # Tenschertstraße über Tenschertstraße – Gorskistraße – Salmhoferstraße – Jochen-Rindt-Straße.\nAufgelassene Haltestellen:\nTenschertstraße (Jochen-Rindt-Straße 17)\nErnanigasse (Jochen-Rindt-Straße 7)\nErsatzhaltestelle:\nTenschertstraße (Jochen-Rindt-Straße 19)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -350,25 +338,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "95A: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "70b60cad88fc7a4ce142fd17c49e70df5ff73be2ae9820bd7ba2004b0403f0e4",
-    "pubDate": "2025-12-11T06:17:28+01:00",
-    "starts_at": "2025-12-11T06:17:28+01:00",
-    "ends_at": "2025-12-11T07:16:00+01:00",
-    "_identity": "wl|störung|L=95A|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U4: Weichenstörung",
-    "description": "Die Linie U4 fährt derzeit in der Station Meidling, Hauptstraße in beiden Richtungen über Gleis 2. Die Störung dauert voraussichtlich bis 07:15 Uhr. Grund dafür ist eine Weichenstörung im Bereich Meidling, Hauptstraße.",
+    "description": "Die Linie U4 fährt derzeit in der Station Meidling, Hauptstraße in beiden Richtungen über Gleis 2. Die Störung dauert voraussichtlich bis 09:00 Uhr. Grund dafür ist eine Weichenstörung im Bereich Meidling, Hauptstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c2aad3fdc6f0b659a98e9e15613bc97fcd324d68275fa594b864a1a5d8cec2a5",
     "pubDate": "2025-12-11T06:40:00+01:00",
     "starts_at": "2025-12-11T06:40:00+01:00",
     "ends_at": "2025-12-11T23:55:00+01:00",
     "_identity": "wl|störung|L=U4|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "28A: Verspätungen",
+    "description": "Die Linie 28 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Breitenlee, Schule.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7ffce7b72dfc37cb0f677403ac3611d0182dd55e974eb1dd91feaf2ef0662f85",
+    "pubDate": "2025-12-11T06:50:00+01:00",
+    "starts_at": "2025-12-11T06:50:00+01:00",
+    "ends_at": "2025-12-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=28A|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Verkehrsüberlastung",
+    "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
+    "pubDate": "2025-12-11T07:10:00+01:00",
+    "starts_at": "2025-12-11T07:10:00+01:00",
+    "ends_at": "2025-12-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Die Linie U1 ist derzeit in Richtung Leopoldau an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 07:30 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Kaisermühlen, V.I.C..",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2025-12-11T07:15:00+01:00",
+    "starts_at": "2025-12-11T07:15:00+01:00",
+    "ends_at": "2025-12-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2025-12-11"
   }
 ]
