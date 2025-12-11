@@ -254,26 +254,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "20: Züge halten Schloßhofer Straße 20",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=20|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-12-10"
+    "_identity": "wl|störung|L=33A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -290,14 +278,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-10"
+    "_identity": "wl|störung|L=N31|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -310,6 +298,18 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-11T23:59:59+01:00",
     "_identity": "wl|störung|L=21|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "20: Züge halten Schloßhofer Straße 20",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dce91284295974b403946c4b2442cd47929463861428b6fa90c4911a3dddafed",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-11T23:59:59+01:00",
+    "_identity": "wl|störung|L=20|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -422,30 +422,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
-    "pubDate": "2025-12-11T10:54:29+01:00",
-    "starts_at": "2025-12-11T10:54:29+01:00",
-    "ends_at": "2025-12-11T11:53:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2025-12-11T11:30:00+01:00",
-    "starts_at": "2025-12-11T11:30:00+01:00",
-    "ends_at": "2025-12-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=9|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Fremder Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -483,7 +459,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "71: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Die Linie 71 fährt derzeit nicht zwischen Enkplatz, Grillgasse und St. Marx. Die Störung dauert voraussichtlich bis 12:00 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Zippererstraße U.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c",
     "pubDate": "2025-12-11T11:32:30+01:00",
@@ -507,7 +483,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "66A: Fahrtbehinderung Falschparker",
-    "description": "Die Linie 66 A ist derzeit in Richtung Liesing an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 12:05 Uhr. Grund dafür ist ein Falschparker im Bereich Leibnizgasse 41.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 66 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7fdb8d218c98770afcae364ee84c6bae842a6db49d7e944b0574b390a1d1a214",
     "pubDate": "2025-12-11T11:40:00+01:00",
@@ -530,13 +506,85 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A/46: Schadhaftes Fahrzeug",
-    "description": "Die Linie 46 fährt derzeit nur zwischen Joachimsthalerplatz und Thaliastraße. Die Züge fahren weiter bis Josefstädter Straße. Die Linie 13 A ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 12:15 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Strozzigasse.",
+    "title": "13A: Fahrtbehinderung Schadhafter Bus",
+    "description": "Fahrtbehinderung Schadhafter Bus",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e0f13f3f434a4c68ad1822e0b589bf6e74d3e5f719606f54b043ac3e1733f6f",
-    "pubDate": "2025-12-11T11:45:00+01:00",
-    "starts_at": "2025-12-11T11:45:00+01:00",
+    "guid": "07564cdbce244fd32f13a957885d93a19fcc7a1e413431e05b6b0d1a9d3596a2",
+    "pubDate": "2025-12-11T11:48:32+01:00",
+    "starts_at": "2025-12-11T11:48:32+01:00",
+    "ends_at": "2025-12-11T15:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Schadhafter Bus Betrieb ab Burggasse",
+    "description": "Schadhafter Bus Betrieb ab Burggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a7fe9e3dfbdb208af2508df9d0b756825cde011e83c0488fbc9e1ecb9fcca53c",
+    "pubDate": "2025-12-11T11:48:32+01:00",
+    "starts_at": "2025-12-11T11:48:32+01:00",
+    "ends_at": "2025-12-11T12:50:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Fahrtbehinderung Schadhafter Bus",
+    "description": "Fahrtbehinderung Schadhafter Bus",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f84f2d4d7fec810d36160c6101e6bf3b437f22be18912ff0bf2d1e7f7df675b1",
+    "pubDate": "2025-12-11T11:48:40+01:00",
+    "starts_at": "2025-12-11T11:48:40+01:00",
+    "ends_at": "2025-12-11T12:48:00+01:00",
+    "_identity": "wl|störung|L=46|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Schadhafter Bus Betrieb ab Thaliastraße",
+    "description": "Schadhafter Bus Betrieb ab Thaliastraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8a6f2422a64ebf49f8f56137a14a726c91051e97b2150ca63ac19ce619d809e6",
+    "pubDate": "2025-12-11T11:49:38+01:00",
+    "starts_at": "2025-12-11T11:49:38+01:00",
+    "ends_at": "2025-12-11T12:48:00+01:00",
+    "_identity": "wl|störung|L=46|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "16A/17A/67A: Signalstörung",
+    "description": "Die Linie 16 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 17 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 67 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Signalstörung im Bereich .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d6797337aafff309ce8bc6cb0df12f8de5f8cd51dc75092009c213b70dae7bc8",
+    "pubDate": "2025-12-11T11:50:00+01:00",
+    "starts_at": "2025-12-11T11:50:00+01:00",
     "ends_at": "2025-12-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=13A,46|D=2025-12-11"
+    "_identity": "wl|störung|L=16A,17A,67A|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 9 ist derzeit in Richtung Westbahnhof an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 12:35 Uhr. Grund dafür ist ein Falschparker im Bereich Hormayrgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2025-12-11T12:10:00+01:00",
+    "starts_at": "2025-12-11T12:10:00+01:00",
+    "ends_at": "2025-12-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-12-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "72: Rettungseinsatz Betrieb ab St. Marx",
+    "description": "Rettungseinsatz Betrieb ab St. Marx",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2a0b4ad586b69220968c281c167c29532697718942eb60e4ef47dc10f6377999",
+    "pubDate": "2025-12-11T12:10:58+01:00",
+    "starts_at": "2025-12-11T12:10:58+01:00",
+    "ends_at": "2025-12-11T13:10:00+01:00",
+    "_identity": "wl|störung|L=72|D=2025-12-11"
   }
 ]
