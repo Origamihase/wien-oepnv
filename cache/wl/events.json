@@ -158,6 +158,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "U1/U4: Station Schwedenplatz, Sperre Aufgang Urania",
+    "description": "Aufgangsperre\nWegen Bauarbeiten muss der Aufgang \"Urania\" der U-Bahn-Station Schwedenplatz zeitweilig gesperrt werden.\nZeitraum:\nMontag, 24. November 2025, 21:00 Uhr bis Freitag, 19. Dezember 2025, etwa 04:30 Uhr.\nJedoch nur Montag - Donnerstag zwischen 21:00 Uhr und 04:30 Uhr.\nErsatz:\nBitte benutzen Sie die anderen Aufgänge.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "aac66d61a153d41a7c2a795dcebb5bed35489d9bc098be249cbb953e58f24d15",
+    "pubDate": "2025-11-24T14:15:00+01:00",
+    "starts_at": "2025-11-24T14:15:00+01:00",
+    "ends_at": "2025-12-19T04:30:00+01:00",
+    "_identity": "wl|hinweis|L=U1,U4|D=2025-11-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "17A: Straßenbauarbeiten ab 01.12.2025",
     "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Jochen-Rindt-Straße werden die Linien 17 A, 66 A und 67 A umgeleitet.\nZeitraum:\nAb Montag, 01. Dezember 2025, etwa 08:00 Uhr bis Freitag, 12. Dezember 2025, etwa 08:00 Uhr.\nMaßnahmen:\nLinie 17 A in Richtung Oberlaa U, 66 A Richtung Liesing S bzw. 67 A Inzersdorf, Slamastraße:\nUmleitung ab Jochen-Rindt-Straße # Tenschertstraße über Tenschertstraße – Gorskistraße – Salmhoferstraße – Jochen-Rindt-Straße.\nAufgelassene Haltestellen:\nTenschertstraße (Jochen-Rindt-Straße 17)\nErnanigasse (Jochen-Rindt-Straße 7)\nErsatzhaltestelle:\nTenschertstraße (Jochen-Rindt-Straße 19)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -242,26 +254,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "21: Züge halten Schloßhofer Straße 21",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=21|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Busse halten Grenzgasse 2-4",
-    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=12A|D=2025-12-10"
+    "_identity": "wl|störung|L=33A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -278,14 +278,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "title": "12A: Busse halten Grenzgasse 2-4",
+    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-10"
+    "_identity": "wl|störung|L=12A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -298,6 +298,18 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-11T23:59:59+01:00",
     "_identity": "wl|störung|L=20|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "21: Züge halten Schloßhofer Straße 21",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-11T23:59:59+01:00",
+    "_identity": "wl|störung|L=21|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -338,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Weichenstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c2aad3fdc6f0b659a98e9e15613bc97fcd324d68275fa594b864a1a5d8cec2a5",
-    "pubDate": "2025-12-11T06:40:00+01:00",
-    "starts_at": "2025-12-11T06:40:00+01:00",
-    "ends_at": "2025-12-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "28A: Verspätungen",
     "description": "Die Linie 28 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Breitenlee, Schule.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -374,25 +374,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 9 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Falschparker im Bereich Blumengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
-    "pubDate": "2025-12-11T07:15:00+01:00",
-    "starts_at": "2025-12-11T07:15:00+01:00",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2025-12-11T08:55:00+01:00",
+    "starts_at": "2025-12-11T08:55:00+01:00",
     "ends_at": "2025-12-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Rettungseinsatz",
-    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
-    "pubDate": "2025-12-11T08:00:00+01:00",
-    "starts_at": "2025-12-11T08:00:00+01:00",
-    "ends_at": "2025-12-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-12-11"
+    "_identity": "wl|störung|L=9|D=2025-12-11"
   }
 ]
