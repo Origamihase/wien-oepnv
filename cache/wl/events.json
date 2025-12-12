@@ -170,18 +170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "17A: Straßenbauarbeiten ab 01.12.2025",
-    "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Jochen-Rindt-Straße werden die Linien 17 A, 66 A und 67 A umgeleitet.\nZeitraum:\nAb Montag, 01. Dezember 2025, etwa 08:00 Uhr bis Freitag, 12. Dezember 2025, etwa 08:00 Uhr.\nMaßnahmen:\nLinie 17 A in Richtung Oberlaa U, 66 A Richtung Liesing S bzw. 67 A Inzersdorf, Slamastraße:\nUmleitung ab Jochen-Rindt-Straße # Tenschertstraße über Tenschertstraße – Gorskistraße – Salmhoferstraße – Jochen-Rindt-Straße.\nAufgelassene Haltestellen:\nTenschertstraße (Jochen-Rindt-Straße 17)\nErnanigasse (Jochen-Rindt-Straße 7)\nErsatzhaltestelle:\nTenschertstraße (Jochen-Rindt-Straße 19)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "da4cad5c8db8c0ffb9dc6192069dad84348d82a129e6c0a1e1e54d3220e12785",
-    "pubDate": "2025-11-27T16:00:00+01:00",
-    "starts_at": "2025-11-27T16:00:00+01:00",
-    "ends_at": "2025-12-12T08:00:00+01:00",
-    "_identity": "wl|hinweis|L=17A|D=2025-11-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "57A: Straßenbauarbeiten ab 15.12.25",
     "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Babenbergerstraße # Nibelungengasse wird die Linie 57 A in Richtung Rudolfsheim, Anschützgasse umgeleitet.\nZeitraum:\nAb Montag, 15. Dezember 2025, etwa 07:00 Uhr bis Donnerstag, 18. Dezember 2025.\nMaßnahmen:\nLinie 57 A in Richtung Rudolfsheim, Anschützgasse:\nUmleitung ab Babenbergerstraße # Nibelungengasse über Babenbergerstraße – Getreidemarkt – Gumpendorfer Straße\nAufgelassene Haltestellen:\nMuseumsquartier U (1., Nibelungengasse 15 nach Babenbergerstraße)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -334,5 +322,29 @@
     "starts_at": "2025-12-12T07:20:00+01:00",
     "ends_at": "2025-12-12T23:55:00+01:00",
     "_identity": "wl|störung|L=5|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Hütteldorfer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2025-12-12T08:05:00+01:00",
+    "starts_at": "2025-12-12T08:05:00+01:00",
+    "ends_at": "2025-12-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "16A/67B: Verkehrsüberlastung",
+    "description": "Die Linie 67 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 16 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fc9831dec440998a2a5d83c8cfe89bd10ae380335b0e18d41939ee141d7a962d",
+    "pubDate": "2025-12-12T08:10:00+01:00",
+    "starts_at": "2025-12-12T08:10:00+01:00",
+    "ends_at": "2025-12-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=16A,67B|D=2025-12-12"
   }
 ]
