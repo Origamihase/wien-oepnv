@@ -145,6 +145,18 @@
   },
   {
     "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "29A/29B/33A/N20/N31: Gleisbauarbeiten ab 24.11.2025",
+    "description": "Gleisbauarbeiten\nWegen Bauarbeiten im Bereich Schloßhofer Straße werden die Linien 29 A, 29 B, 33 A, N20, N31 und Rufbus N30 umgeleitet.\nZeitraum:\nAb Montag, 24. November 2025, etwa 00:30 Uhr bis 15. Dezember 2025, etwa 04:50 Uhr.\nMaßnahmen:\nLinien 29 A, 29 B und Rufbus N30 in Richtung Floridsdorf S U:\nUmleitung bis zur provisorischen Haltestelle Floridsdorf S U Schloßhofer Straße 25-31.\nLinien 29 A und 29 B in Richtung Großfeldsiedlung U bzw. Rufbus N30 in Richtung Neu Leopoldau:\nUmleitung über Schloßhofer Straße – Karl-Waldbrunner-Platz – Rechte Nordbahngasse – Angerer Straße – Leopoldauer Straße.\nAufgelassene Haltestellen:\nFloridsdorf S U (Rechte Nordbahngasse 4)\nFloridsdorf S U (29 A, 29 B) (Rechte Nordbahngasse 5 und 6)\nFloridsdorf S U (Franz-Jonas-Platz gegenüber 5-6)\nFloridsdorf S U (S-Bahn-Unterführung, Schloßhofer Straße vor Rechte Nordbahngasse; Linien 25, 26, 33 A)\nPatrizigasse (Freytaggasse 32)\nErsatzhaltestellen:\nFloridsdorf S U (Schloßhofer Straße 25-31)\nPatrizigasse (Angerer Straße 22-24)\nLinie 33 A in Richtung Floridsdorf S U:\nUmleitung ab Am Spitz # Schloßhofer Straße über Brünner Straße – Angerer Straße – Rechte Nordbahngasse – Karl-Waldbrunner-Platz – Rechte Nordbahngasse.\nErsatzlos aufgelassene Haltestelle:\nFloridsdorf S U (S-Bahn-Unterführung, Schloßhofer Straße vor Rechte Nordbahngasse; Linien 25, 26, 29 A, 29 B)\nLinie N20 in Richtung Strebersdorf, Edmund-Hawranek-Platz:\nUmleitung ab Schloßhofer Straße # Freytaggasse über Freytaggasse – Angerer Straße – Brünner Straße – Am Spitz.\nAufgelassene Haltestelle:\nFloridsdorf S U (S-Bahn-Unterführung, Schloßhofer Straße vor Rechte Nordbahngasse)\nErsatzhaltestelle:\nFloridsdorf S U (Angerer Straße gegenüber Rechte Nordbahngasse)\nLinie N20 in Richtung Eßling, Schule bzw. Eßling, Stadtgrenze:\nUmleitung ab Am Spitz # Brünner Straße über Brünner Straße – Angerer Straße – Freytaggasse – Schloßhofer Straße.\nAufgelassene Haltestellen:\nFloridsdorf S U (S-Bahn-Unterführung, Schloßhofer Straße vor Rechte Nordbahngasse; Linien 25, 26, 33 A)\nErsatzhaltestellen:\nFloridsdorf S U (Angerer Straße 18)\nLinie N31 in Richtung Stammersdorf:\nUmleitung ab Schloßhofer Straße # Franz-Jonas-Platz über Franz-Jonas-Platz – Schöpfleuthnergasse – Leopold-Ferstl-Gasse – Floridsdorfer Hauptstraße – Am Spitz – Brünner Straße.\nAufgelassene Haltestelle:\nFloridsdorf S U (S-Bahn-Unterführung, Schloßhofer Straße vor Rechte Nordbahngasse)\nFloridsdorf S U (Rechte Nordbahngasse; 5. und 6. Haltestelle)\nErsatzhaltestelle:\nFloridsdorf S U (Franz-Jonas-Platz 7-8)\nSkizze 29 A, 29 B, Rufbus N30:",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f7521a1436abc910315eef5cac33e67e31923880e19fc99df201dc4283b8c09",
+    "pubDate": "2025-11-05T13:05:00+01:00",
+    "starts_at": "2025-11-05T13:05:00+01:00",
+    "ends_at": "2025-12-12T04:50:00+01:00",
+    "_identity": "wl|hinweis|L=29A,29B,33A,N20,N31|D=2025-11-05"
+  },
+  {
+    "source": "Wiener Linien",
     "category": "Störung",
     "title": "80A: Bauarbeiten",
     "description": "Die Linie 80 A wird in Richtung Neu Marx zwischen Friedensgasse und Stadionbrücke über die Wittelsbachstraße, Erdberger Lände und Schlachthausgasse umgeleitet. Die Haltestellen Friedensgasse, Lukschgasse, Rustenschacherallee, Klaschkaweg und Stadionbrücke können dadurch nicht eingehalten werden. Die Störung dauert voraussichtlich bis Ende Mai 2026. Grund dafür sind Bauarbeiten im Bereich Stadionallee.",
@@ -242,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "21: Züge halten Schloßhofer Straße 21",
-    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-12T04:00:00+01:00",
-    "_identity": "wl|störung|L=21|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "20: Züge halten Schloßhofer Straße 20",
     "description": "Bauarbeiten Züge halten Schloßhofer Straße 20",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -262,6 +262,18 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-12T04:00:00+01:00",
     "_identity": "wl|störung|L=20|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "21: Züge halten Schloßhofer Straße 21",
+    "description": "Bauarbeiten Züge halten Schloßhofer Straße 21",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "be6b6dc3b075a1e36ca1bb7f2f08ff759d54dc6079ce3c8630b274a603beb0d4",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-12T04:00:00+01:00",
+    "_identity": "wl|störung|L=21|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -302,30 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-11T04:30:08+01:00",
-    "starts_at": "2025-12-11T04:30:08+01:00",
-    "ends_at": "2025-12-12T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
-    "pubDate": "2025-12-11T04:30:08+01:00",
-    "starts_at": "2025-12-11T04:30:08+01:00",
-    "ends_at": "2025-12-12T00:50:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-12-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "Betrieb ab St. Marx",
     "description": "Betrieb ab St. Marx",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -334,5 +322,41 @@
     "starts_at": "2025-12-12T00:00:22+01:00",
     "ends_at": "2025-12-12T23:59:59+01:00",
     "_identity": "wl|störung|L=|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Busse halten bei Angerer Straße ggü. Rechte Nordbahngasse",
+    "description": "Gleisbauarbeiten Busse halten bei Angerer Straße ggü. Rechte Nordbahngasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9a6740e3976f4c9976b6a4204d6f4ab495c38391c6bd405f7c940689ab27ce9a",
+    "pubDate": "2025-12-12T01:00:13+01:00",
+    "starts_at": "2025-12-12T01:00:13+01:00",
+    "ends_at": "2025-12-12T04:30:00+01:00",
+    "_identity": "wl|störung|L=N20|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Busse halten bei Angerer Straße 18",
+    "description": "Gleisbauarbeiten Busse halten bei Angerer Straße 18",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "558f59444097441514c5218f9ad23d52adfbdc3971e9555b12e6428604b993d2",
+    "pubDate": "2025-12-12T01:00:13+01:00",
+    "starts_at": "2025-12-12T01:00:13+01:00",
+    "ends_at": "2025-12-12T05:00:00+01:00",
+    "_identity": "wl|störung|L=N20|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Busse halten Dückegasse ggü. 1",
+    "description": "Gleisbauarbeiten Busse halten Dückegasse ggü. 1",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4e8c267da3dc7fa247c63b0da126c97557d881bd31ac90799e04de1e5248dab2",
+    "pubDate": "2025-12-12T01:15:10+01:00",
+    "starts_at": "2025-12-12T01:15:10+01:00",
+    "ends_at": "2025-12-12T05:00:00+01:00",
+    "_identity": "wl|störung|L=N20|D=2025-12-12"
   }
 ]
