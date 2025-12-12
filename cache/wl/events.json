@@ -254,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-12T04:30:10+01:00",
-    "starts_at": "2025-12-12T04:30:10+01:00",
-    "ends_at": "2025-12-13T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -274,6 +262,18 @@
     "starts_at": "2025-12-12T04:30:10+01:00",
     "ends_at": "2025-12-13T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-12-12T04:30:10+01:00",
+    "starts_at": "2025-12-12T04:30:10+01:00",
+    "ends_at": "2025-12-13T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-12-12"
   },
   {
     "source": "Wiener Linien",
@@ -334,18 +334,6 @@
     "starts_at": "2025-12-12T13:12:00+01:00",
     "ends_at": "2026-12-12T11:11:00+01:00",
     "_identity": "wl|hinweis|L=N62|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Christkindlmarkt Derzeit kein Halt",
-    "description": "Christkindlmarkt Derzeit kein Halt",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "799b670f8f7602bf874843910e09c6ffb5e617d062ab3d5ca4fd5ab094ddec2a",
-    "pubDate": "2025-12-12T15:03:53+01:00",
-    "starts_at": "2025-12-12T15:03:53+01:00",
-    "ends_at": "2025-12-12T22:30:00+01:00",
-    "_identity": "wl|störung|L=|D=2025-12-12"
   },
   {
     "source": "Wiener Linien",
