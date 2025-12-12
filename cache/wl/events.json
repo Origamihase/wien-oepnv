@@ -254,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-12T04:30:10+01:00",
-    "starts_at": "2025-12-12T04:30:10+01:00",
-    "ends_at": "2025-12-13T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -274,6 +262,18 @@
     "starts_at": "2025-12-12T04:30:10+01:00",
     "ends_at": "2025-12-13T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-12-12T04:30:10+01:00",
+    "starts_at": "2025-12-12T04:30:10+01:00",
+    "ends_at": "2025-12-13T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-12-12"
   },
   {
     "source": "Wiener Linien",
@@ -398,30 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "208aba4393c0ace8808434eb89ca27fef0978d71272bf09122f263a30953bfef",
-    "pubDate": "2025-12-12T15:33:53+01:00",
-    "starts_at": "2025-12-12T15:33:53+01:00",
-    "ends_at": "2025-12-12T16:36:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "48A: Rettungseinsatz",
-    "description": "Die Linie 48 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Pfenninggeldgasse .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2d67d7e9c317d518f24f879879e1b8977cbc97545f7ebbc35fdd5aa8a7ec2e29",
-    "pubDate": "2025-12-12T15:55:00+01:00",
-    "starts_at": "2025-12-12T15:55:00+01:00",
-    "ends_at": "2025-12-12T23:55:00+01:00",
-    "_identity": "wl|störung|L=48A|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "42: Fahrtbehinderung wegen Rettungseinsatz",
     "description": "Fahrtbehinderung wegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -430,5 +406,41 @@
     "starts_at": "2025-12-12T16:04:46+01:00",
     "ends_at": "2025-12-12T17:04:00+01:00",
     "_identity": "wl|störung|L=42|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Schadhaftes Fahrzeug",
+    "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Sechskrügelgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a3ccf7c2ad3270af3ce0b5bff574b7e68e073f01c1a9bf875ba6186e69760114",
+    "pubDate": "2025-12-12T16:15:00+01:00",
+    "starts_at": "2025-12-12T16:15:00+01:00",
+    "ends_at": "2025-12-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "35A: Feuerwehreinsatz",
+    "description": "Die Linie 35 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Feuerwehreinsatz im Bereich Flotowgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7e5bb54ab112bd12760b04e917aef5557e2e575e7b038f36549f78b1fd5daa03",
+    "pubDate": "2025-12-12T16:35:00+01:00",
+    "starts_at": "2025-12-12T16:35:00+01:00",
+    "ends_at": "2025-12-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=35A|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "56A/56B: Verkehrsunfall",
+    "description": "Die Linie 56 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 56 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Ruzickagasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ed0db574bd28a7429ee311e0d75446295cb467bb7833890845d379fb731b81d2",
+    "pubDate": "2025-12-12T16:40:00+01:00",
+    "starts_at": "2025-12-12T16:40:00+01:00",
+    "ends_at": "2025-12-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=56A,56B|D=2025-12-12"
   }
 ]
