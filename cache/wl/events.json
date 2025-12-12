@@ -254,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
-    "pubDate": "2025-12-12T04:30:10+01:00",
-    "starts_at": "2025-12-12T04:30:10+01:00",
-    "ends_at": "2025-12-13T00:50:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -274,6 +262,18 @@
     "starts_at": "2025-12-12T04:30:10+01:00",
     "ends_at": "2025-12-13T00:50:00+01:00",
     "_identity": "wl|störung|L=29B|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
+    "pubDate": "2025-12-12T04:30:10+01:00",
+    "starts_at": "2025-12-12T04:30:10+01:00",
+    "ends_at": "2025-12-13T00:50:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2025-12-12"
   },
   {
     "source": "Wiener Linien",
@@ -289,14 +289,26 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1A: Verkehrsüberlastung",
-    "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "category": "Hinweis",
+    "title": "1A/2A: polizeiliche Streckensperre am 15.12.2025",
+    "description": "Pollerübing\nWegen einer Pollerübung werden die Strauchgasse und Herrengasse polizeilich gesperrt.\nZeitraum:\nMontag, 15. Dezember 2025 von ca. 10:00 bis 11:00 Uhr.\nMaßnahmen:\nLinie 1 A\nBetrieb eingestellt.\nLinie 2 A\nBetrieb eingestellt.\nErsatz:\nDie U-Bahnen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "54bc809d85229c6a09e43a7de307b52c3b4983748375648087f4d7c0df6854ef",
-    "pubDate": "2025-12-12T09:55:00+01:00",
-    "starts_at": "2025-12-12T09:55:00+01:00",
+    "guid": "0f7a0217e6b9d8c5ac5fba2f3dbfd7c3de1b039d1457ed1971bff7d93ed7f5bc",
+    "pubDate": "2025-12-12T09:56:00+01:00",
+    "starts_at": "2025-12-12T09:56:00+01:00",
+    "ends_at": "2025-12-15T11:00:00+01:00",
+    "_identity": "wl|hinweis|L=1A,2A|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Rettungseinsatz",
+    "description": "Die Linie U6 ist derzeit in Richtung Floridsdorf an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 11:00 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Josefstädter Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2025-12-12T10:40:00+01:00",
+    "starts_at": "2025-12-12T10:40:00+01:00",
     "ends_at": "2025-12-12T23:55:00+01:00",
-    "_identity": "wl|störung|L=1A|D=2025-12-12"
+    "_identity": "wl|störung|L=U6|D=2025-12-12"
   }
 ]
