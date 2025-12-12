@@ -362,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "56B/56A: Verkehrsunfall",
-    "description": "Die Linie 56 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 56 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Ruzickagasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ed0db574bd28a7429ee311e0d75446295cb467bb7833890845d379fb731b81d2",
-    "pubDate": "2025-12-12T16:40:00+01:00",
-    "starts_at": "2025-12-12T16:40:00+01:00",
-    "ends_at": "2025-12-12T23:55:00+01:00",
-    "_identity": "wl|störung|L=56A,56B|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U1: Verspätungen",
     "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -394,5 +382,17 @@
     "starts_at": "2025-12-12T17:10:00+01:00",
     "ends_at": "2025-12-12T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "73A: Rettungseinsatz",
+    "description": "Die Linie 73 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Kaiser-Ebersdorfer Straße 73.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "aeb0b84ae5e8a62af5d84641c15f91257543dc2b7569bb960589eb875b2fd4cc",
+    "pubDate": "2025-12-12T18:10:00+01:00",
+    "starts_at": "2025-12-12T18:10:00+01:00",
+    "ends_at": "2025-12-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=73A|D=2025-12-12"
   }
 ]
