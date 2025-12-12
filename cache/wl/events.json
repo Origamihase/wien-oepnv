@@ -218,14 +218,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-12T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-10"
+    "_identity": "wl|störung|L=N31|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -242,14 +242,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-12T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-12-10"
+    "_identity": "wl|störung|L=33A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -266,18 +266,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-12T04:30:10+01:00",
-    "starts_at": "2025-12-12T04:30:10+01:00",
-    "ends_at": "2025-12-13T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -286,6 +274,18 @@
     "starts_at": "2025-12-12T04:30:10+01:00",
     "ends_at": "2025-12-13T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-12-12T04:30:10+01:00",
+    "starts_at": "2025-12-12T04:30:10+01:00",
+    "ends_at": "2025-12-13T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-12-12"
   },
   {
     "source": "Wiener Linien",
@@ -350,43 +350,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Verkehrsunfall Betrieb ab Canisiusgasse",
-    "description": "Verkehrsunfall Betrieb ab Canisiusgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "97dbaa7d0f4d31098f16ebdc375d4ad4c2058ff4f544fade60b2812ec7c04f50",
-    "pubDate": "2025-12-12T08:33:07+01:00",
-    "starts_at": "2025-12-12T08:33:07+01:00",
-    "ends_at": "2025-12-12T09:32:00+01:00",
-    "_identity": "wl|störung|L=38|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "39A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0518218dfef9e7890832a59bcff40a1613b435e219141c5586ffa406ab24313a",
-    "pubDate": "2025-12-12T08:37:00+01:00",
-    "starts_at": "2025-12-12T08:37:00+01:00",
-    "ends_at": "2025-12-12T09:36:00+01:00",
-    "_identity": "wl|störung|L=39A|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
-    "pubDate": "2025-12-12T08:38:56+01:00",
-    "starts_at": "2025-12-12T08:38:56+01:00",
-    "ends_at": "2025-12-12T09:38:00+01:00",
-    "_identity": "wl|störung|L=38|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43: Fahrtbehinderung Falschparker",
+    "title": "43: Falschparker",
     "description": "Die Linie 43 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Falschparker im Bereich Himmelmutterweg.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "45707199f93ff4683281aab521b5dd7f64c348fa82fc6b7113e98b6572382511",
@@ -399,12 +363,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "4A: Fahrtbehinderung Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 4 A zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung Falschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e19d2a31fcfdb6d2b7f1e4ee95e4b4a615ab9baa6ce4bbcc423af956a08e0a3d",
-    "pubDate": "2025-12-12T08:55:00+01:00",
-    "starts_at": "2025-12-12T08:55:00+01:00",
-    "ends_at": "2025-12-12T23:55:00+01:00",
+    "pubDate": "2025-12-12T08:58:24+01:00",
+    "starts_at": "2025-12-12T08:58:24+01:00",
+    "ends_at": "2025-12-12T09:57:00+01:00",
     "_identity": "wl|störung|L=4A|D=2025-12-12"
   },
   {
