@@ -242,18 +242,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Busse halten Grenzgasse 2-4",
-    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-12T23:59:59+01:00",
-    "_identity": "wl|störung|L=12A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "33A: Haltestelle aufgelassen",
     "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -262,6 +250,18 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-12T23:59:59+01:00",
     "_identity": "wl|störung|L=33A|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Busse halten Grenzgasse 2-4",
+    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-12T23:59:59+01:00",
+    "_identity": "wl|störung|L=12A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -310,5 +310,29 @@
     "starts_at": "2025-12-12T04:45:16+01:00",
     "ends_at": "2025-12-13T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5",
+    "pubDate": "2025-12-12T07:24:03+01:00",
+    "starts_at": "2025-12-12T07:24:03+01:00",
+    "ends_at": "2025-12-12T08:26:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5",
+    "pubDate": "2025-12-12T07:25:30+01:00",
+    "starts_at": "2025-12-12T07:25:30+01:00",
+    "ends_at": "2025-12-12T08:25:00+01:00",
+    "_identity": "wl|störung|L=5|D=2025-12-12"
   }
 ]
