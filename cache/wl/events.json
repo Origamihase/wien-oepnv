@@ -218,18 +218,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-12T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "33A: Haltestelle aufgelassen",
     "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -238,6 +226,18 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-12T23:59:59+01:00",
     "_identity": "wl|störung|L=33A|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-12T23:59:59+01:00",
+    "_identity": "wl|störung|L=N31|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -254,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
-    "pubDate": "2025-12-12T04:30:10+01:00",
-    "starts_at": "2025-12-12T04:30:10+01:00",
-    "ends_at": "2025-12-13T00:50:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -274,6 +262,18 @@
     "starts_at": "2025-12-12T04:30:10+01:00",
     "ends_at": "2025-12-13T00:50:00+01:00",
     "_identity": "wl|störung|L=29B|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf",
+    "pubDate": "2025-12-12T04:30:10+01:00",
+    "starts_at": "2025-12-12T04:30:10+01:00",
+    "ends_at": "2025-12-13T00:50:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2025-12-12"
   },
   {
     "source": "Wiener Linien",
@@ -338,7 +338,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "6: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
@@ -350,49 +350,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 18 zu unterschiedlichen Intervallen.",
+    "title": "49: Fahrtbehinderung Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
-    "pubDate": "2025-12-12T21:45:00+01:00",
-    "starts_at": "2025-12-12T21:45:00+01:00",
+    "guid": "df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4",
+    "pubDate": "2025-12-12T22:35:00+01:00",
+    "starts_at": "2025-12-12T22:35:00+01:00",
+    "ends_at": "2025-12-12T23:56:00+01:00",
+    "_identity": "wl|störung|L=49|D=2025-12-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "39A: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 39 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "71618ae62b9ab93dc5f1a08adb28c6d4811eab44ce507f1cdcc6c028681640f7",
+    "pubDate": "2025-12-12T22:40:00+01:00",
+    "starts_at": "2025-12-12T22:40:00+01:00",
     "ends_at": "2025-12-12T23:55:00+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-12"
+    "_identity": "wl|störung|L=39A|D=2025-12-12"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "41: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "U2: Betriebsstörung",
+    "description": "Die Linie U2 ist derzeit in Richtung Karlsplatz an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 23:30 Uhr. Grund dafür ist eine Betriebsstörung im Bereich Schottenring.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c00c177609807206f4916d92d93f2b3dcefd7c4893f63c45f581cfba2bdad937",
-    "pubDate": "2025-12-12T21:53:01+01:00",
-    "starts_at": "2025-12-12T21:53:01+01:00",
-    "ends_at": "2025-12-12T22:52:00+01:00",
-    "_identity": "wl|störung|L=41|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a29e671a85c2a6d60f93348738aed861f0787ecaeb052980186da61232ad65c7",
-    "pubDate": "2025-12-12T21:53:30+01:00",
-    "starts_at": "2025-12-12T21:53:30+01:00",
-    "ends_at": "2025-12-12T22:53:00+01:00",
-    "_identity": "wl|störung|L=40|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d0e4afae8a76682f9151e0252680d546a58090bd24478041f5804ac6fa3ff1de",
-    "pubDate": "2025-12-12T21:53:59+01:00",
-    "starts_at": "2025-12-12T21:53:59+01:00",
-    "ends_at": "2025-12-12T22:53:00+01:00",
-    "_identity": "wl|störung|L=9|D=2025-12-12"
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2025-12-12T23:15:00+01:00",
+    "starts_at": "2025-12-12T23:15:00+01:00",
+    "ends_at": "2025-12-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2025-12-12"
   }
 ]
