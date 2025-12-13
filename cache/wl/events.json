@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-13T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
     "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,6 +202,18 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-13T23:59:59+01:00",
     "_identity": "wl|störung|L=N31|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-13T23:59:59+01:00",
+    "_identity": "wl|störung|L=33A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -363,12 +363,36 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "41: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8",
     "pubDate": "2025-12-13T17:33:29+01:00",
-    "starts_at": "2025-12-13T17:35:00+01:00",
-    "ends_at": "2025-12-13T23:55:00+01:00",
+    "starts_at": "2025-12-13T17:33:29+01:00",
+    "ends_at": "2025-12-13T22:30:00+01:00",
     "_identity": "wl|störung|L=41|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734",
+    "pubDate": "2025-12-13T20:29:06+01:00",
+    "starts_at": "2025-12-13T20:29:06+01:00",
+    "ends_at": "2025-12-13T22:30:00+01:00",
+    "_identity": "wl|störung|L=52|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9",
+    "pubDate": "2025-12-13T20:32:00+01:00",
+    "starts_at": "2025-12-13T20:32:00+01:00",
+    "ends_at": "2025-12-13T21:31:00+01:00",
+    "_identity": "wl|störung|L=60|D=2025-12-13"
   }
 ]
