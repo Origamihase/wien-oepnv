@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Busse halten Grenzgasse 2-4",
-    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-13T23:59:59+01:00",
-    "_identity": "wl|störung|L=12A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "33A: Haltestelle aufgelassen",
     "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -226,6 +214,18 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-13T23:59:59+01:00",
     "_identity": "wl|störung|L=N31|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Busse halten Grenzgasse 2-4",
+    "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-13T23:59:59+01:00",
+    "_identity": "wl|störung|L=12A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -326,10 +326,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Veranstaltung Busse halten Amerlingstraße 8 - 10",
-    "description": "Veranstaltung Busse halten Amerlingstraße 8 - 10",
+    "title": "13A: Veranstaltung Betrieb ab Neubaugasse",
+    "description": "Veranstaltung Betrieb ab Neubaugasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "23c3a929989151d46e7be6d0b300349e87699f9723d3870bcf87d70ddd1170be",
+    "guid": "82c9e243642dd4396cf1ec601edd9eea4e230e790dd5b977e45c3309c44bd0f9",
     "pubDate": "2025-12-13T08:59:19+01:00",
     "starts_at": "2025-12-13T08:59:19+01:00",
     "ends_at": "2025-12-13T20:00:00+01:00",
@@ -338,10 +338,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Veranstaltung Betrieb ab Neubaugasse",
-    "description": "Veranstaltung Betrieb ab Neubaugasse",
+    "title": "13A: Veranstaltung Busse halten Amerlingstraße 8 - 10",
+    "description": "Veranstaltung Busse halten Amerlingstraße 8 - 10",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "82c9e243642dd4396cf1ec601edd9eea4e230e790dd5b977e45c3309c44bd0f9",
+    "guid": "23c3a929989151d46e7be6d0b300349e87699f9723d3870bcf87d70ddd1170be",
     "pubDate": "2025-12-13T08:59:19+01:00",
     "starts_at": "2025-12-13T08:59:19+01:00",
     "ends_at": "2025-12-13T20:00:00+01:00",
@@ -447,12 +447,48 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "42: Fahrtbehinderung Falschparker",
-    "description": "Die Linie 42 ist derzeit in Richtung Schottentor an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 14:40 Uhr. Grund dafür ist ein Falschparker im Bereich Johann-Nepomuk-Vogl-Platz.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 42 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
     "pubDate": "2025-12-13T14:15:00+01:00",
     "starts_at": "2025-12-13T14:15:00+01:00",
     "ends_at": "2025-12-13T23:55:00+01:00",
     "_identity": "wl|störung|L=42|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Rettungseinsatz Züge halten bei Linie D Richtung Absberggasse",
+    "description": "Rettungseinsatz Züge halten bei Linie D Richtung Absberggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84",
+    "pubDate": "2025-12-13T14:35:51+01:00",
+    "starts_at": "2025-12-13T14:35:51+01:00",
+    "ends_at": "2025-12-13T15:36:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Rettungseinsatz Umleitung ab Quartier Belvedere über D und 6",
+    "description": "Rettungseinsatz Umleitung ab Quartier Belvedere über D und 6",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8ffb31cdb8d2f840f6a5c5b4c2a584496120aaabfadacfa44b7875af9e9c188e",
+    "pubDate": "2025-12-13T14:38:44+01:00",
+    "starts_at": "2025-12-13T14:38:44+01:00",
+    "ends_at": "2025-12-13T15:37:00+01:00",
+    "_identity": "wl|störung|L=O|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Rettungseinsatz Züge halten bei Linie 6 Richtung Burggasse",
+    "description": "Rettungseinsatz Züge halten bei Linie 6 Richtung Burggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
+    "pubDate": "2025-12-13T14:39:43+01:00",
+    "starts_at": "2025-12-13T14:39:43+01:00",
+    "ends_at": "2025-12-13T15:40:00+01:00",
+    "_identity": "wl|störung|L=18|D=2025-12-13"
   }
 ]
