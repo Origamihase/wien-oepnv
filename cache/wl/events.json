@@ -326,10 +326,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Veranstaltung Betrieb ab Neubaugasse",
-    "description": "Veranstaltung Betrieb ab Neubaugasse",
+    "title": "13A: Veranstaltung Busse halten Amerlingstraße 8 - 10",
+    "description": "Veranstaltung Busse halten Amerlingstraße 8 - 10",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "82c9e243642dd4396cf1ec601edd9eea4e230e790dd5b977e45c3309c44bd0f9",
+    "guid": "23c3a929989151d46e7be6d0b300349e87699f9723d3870bcf87d70ddd1170be",
     "pubDate": "2025-12-13T08:59:19+01:00",
     "starts_at": "2025-12-13T08:59:19+01:00",
     "ends_at": "2025-12-13T20:00:00+01:00",
@@ -338,10 +338,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Veranstaltung Busse halten Amerlingstraße 8 - 10",
-    "description": "Veranstaltung Busse halten Amerlingstraße 8 - 10",
+    "title": "13A: Veranstaltung Betrieb ab Neubaugasse",
+    "description": "Veranstaltung Betrieb ab Neubaugasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "23c3a929989151d46e7be6d0b300349e87699f9723d3870bcf87d70ddd1170be",
+    "guid": "82c9e243642dd4396cf1ec601edd9eea4e230e790dd5b977e45c3309c44bd0f9",
     "pubDate": "2025-12-13T08:59:19+01:00",
     "starts_at": "2025-12-13T08:59:19+01:00",
     "ends_at": "2025-12-13T20:00:00+01:00",
@@ -398,18 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46A: Polizeieinsatz",
-    "description": "Die Linie 46 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Hansi-Schmid-Weg.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eebd0795200e17a7fe8a5c3a5fe8ecae0df94cd2f4bae14a5b5cebbfcbce6b5b",
-    "pubDate": "2025-12-13T11:50:00+01:00",
-    "starts_at": "2025-12-13T11:50:00+01:00",
-    "ends_at": "2025-12-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=46A|D=2025-12-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Rettungseinsatz",
     "description": "Die Linie D kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -434,13 +422,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Fahrtbehinderung Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 13 A im Bereich zwischen Hauptbahnhof und Neubaugasse zu unterschiedlichen Intervallen.",
+    "title": "31: Bauarbeiten",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 31 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d",
-    "pubDate": "2025-12-13T13:20:00+01:00",
-    "starts_at": "2025-12-13T13:20:00+01:00",
+    "guid": "0a37b68c1191b1bc4c6be2334e3c367442404fbf5c5b4acaaac18623ab98cccb",
+    "pubDate": "2025-12-13T14:00:00+01:00",
+    "starts_at": "2025-12-13T14:00:00+01:00",
     "ends_at": "2025-12-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-12-13"
+    "_identity": "wl|störung|L=31|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fahrtbehinderung wegen Bauarbeiten",
+    "description": "Fahrtbehinderung wegen Bauarbeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "77cb636fe3b1d2460495d894f5ea3629d9ea848f4bfe182443db82ca516a03ff",
+    "pubDate": "2025-12-13T14:04:04+01:00",
+    "starts_at": "2025-12-13T14:04:04+01:00",
+    "ends_at": "2025-12-13T15:02:00+01:00",
+    "_identity": "wl|störung|L=31|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 42 ist derzeit in Richtung Schottentor an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 14:40 Uhr. Grund dafür ist ein Falschparker im Bereich Johann-Nepomuk-Vogl-Platz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2025-12-13T14:15:00+01:00",
+    "starts_at": "2025-12-13T14:15:00+01:00",
+    "ends_at": "2025-12-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=42|D=2025-12-13"
   }
 ]
