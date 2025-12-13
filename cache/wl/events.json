@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-13T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Busse halten Grenzgasse 2-4",
     "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,6 +202,18 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-13T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-13T23:59:59+01:00",
+    "_identity": "wl|störung|L=33A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -326,10 +326,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Veranstaltung Busse halten Amerlingstraße 8 - 10",
-    "description": "Veranstaltung Busse halten Amerlingstraße 8 - 10",
+    "title": "13A: Veranstaltung Betrieb ab Neubaugasse",
+    "description": "Veranstaltung Betrieb ab Neubaugasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "23c3a929989151d46e7be6d0b300349e87699f9723d3870bcf87d70ddd1170be",
+    "guid": "82c9e243642dd4396cf1ec601edd9eea4e230e790dd5b977e45c3309c44bd0f9",
     "pubDate": "2025-12-13T08:59:19+01:00",
     "starts_at": "2025-12-13T08:59:19+01:00",
     "ends_at": "2025-12-13T20:00:00+01:00",
@@ -338,10 +338,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Veranstaltung Betrieb ab Neubaugasse",
-    "description": "Veranstaltung Betrieb ab Neubaugasse",
+    "title": "13A: Veranstaltung Busse halten Amerlingstraße 8 - 10",
+    "description": "Veranstaltung Busse halten Amerlingstraße 8 - 10",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "82c9e243642dd4396cf1ec601edd9eea4e230e790dd5b977e45c3309c44bd0f9",
+    "guid": "23c3a929989151d46e7be6d0b300349e87699f9723d3870bcf87d70ddd1170be",
     "pubDate": "2025-12-13T08:59:19+01:00",
     "starts_at": "2025-12-13T08:59:19+01:00",
     "ends_at": "2025-12-13T20:00:00+01:00",
