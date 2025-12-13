@@ -7,25 +7,36 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Sat, 13 Dec 2025 18:21:39 +0000</lastBuildDate>
+<lastBuildDate>Sat, 13 Dec 2025 18:46:18 +0000</lastBuildDate>
 <ttl>15</ttl>
 <item>
 <title><![CDATA[7A: Fahrtbehinderung Falschparker]]></title>
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">77994cd70c8bd44acc7c6ae28c2d0cee63d1f01a0b2acaf969f56ecb941ab571</guid>
 <pubDate>Sat, 13 Dec 2025 17:05:28 +0000</pubDate>
-<ext:first_seen>Sat, 13 Dec 2025 18:21:39 +0000</ext:first_seen>
+<ext:first_seen>Sat, 13 Dec 2025 18:46:18 +0000</ext:first_seen>
 <ext:starts_at>Sat, 13 Dec 2025 17:05:28 +0000</ext:starts_at>
 <ext:ends_at>Sat, 13 Dec 2025 19:00:00 +0000</ext:ends_at>
 <description><![CDATA[Fahrtbehinderung Falschparker<br>[Seit 13.12.2025]]]></description>
 <content:encoded><![CDATA[Fahrtbehinderung Falschparker<br/>[Seit 13.12.2025]]]></content:encoded>
 </item>
 <item>
+<title><![CDATA[41: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+<link>https://www.wienerlinien.at/ogd_realtime</link>
+<guid isPermaLink="false">1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8</guid>
+<pubDate>Sat, 13 Dec 2025 16:33:29 +0000</pubDate>
+<ext:first_seen>Sat, 13 Dec 2025 18:46:18 +0000</ext:first_seen>
+<ext:starts_at>Sat, 13 Dec 2025 16:35:00 +0000</ext:starts_at>
+<ext:ends_at>Sat, 13 Dec 2025 22:55:00 +0000</ext:ends_at>
+<description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.<br>[Seit 13.12.2025]]]></description>
+<content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.<br/>[Seit 13.12.2025]]]></content:encoded>
+</item>
+<item>
 <title><![CDATA[36A: Falschparker]]></title>
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">a7f6783cec819d802976a3d6f9f27ab627f5e35b56cf703230c756aefc51060f</guid>
 <pubDate>Sat, 13 Dec 2025 15:50:00 +0000</pubDate>
-<ext:first_seen>Sat, 13 Dec 2025 18:21:39 +0000</ext:first_seen>
+<ext:first_seen>Sat, 13 Dec 2025 18:46:18 +0000</ext:first_seen>
 <ext:starts_at>Sat, 13 Dec 2025 15:50:00 +0000</ext:starts_at>
 <ext:ends_at>Sat, 13 Dec 2025 22:55:00 +0000</ext:ends_at>
 <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 36 A zu unterschiedlichen Intervallen.<br>[Seit 13.12.2025]]]></description>
@@ -36,7 +47,7 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">bcd1112437c0cbb2c7682b24fb7aa3ea00327ead9d421d9bbb21ba2478c27a7c</guid>
 <pubDate>Sat, 13 Dec 2025 15:50:00 +0000</pubDate>
-<ext:first_seen>Sat, 13 Dec 2025 18:21:39 +0000</ext:first_seen>
+<ext:first_seen>Sat, 13 Dec 2025 18:46:18 +0000</ext:first_seen>
 <ext:starts_at>Sat, 13 Dec 2025 15:50:00 +0000</ext:starts_at>
 <ext:ends_at>Sat, 13 Dec 2025 22:55:00 +0000</ext:ends_at>
 <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 36 B zu unterschiedlichen Intervallen.<br>[Seit 13.12.2025]]]></description>
@@ -47,7 +58,7 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">884994111f691b16f8e904736fd9b06ec304c06a4c366af8a170da68d09e5e37</guid>
 <pubDate>Sat, 13 Dec 2025 15:45:00 +0000</pubDate>
-<ext:first_seen>Sat, 13 Dec 2025 18:21:39 +0000</ext:first_seen>
+<ext:first_seen>Sat, 13 Dec 2025 18:46:18 +0000</ext:first_seen>
 <ext:starts_at>Sat, 13 Dec 2025 15:45:00 +0000</ext:starts_at>
 <ext:ends_at>Sat, 13 Dec 2025 22:55:00 +0000</ext:ends_at>
 <description><![CDATA[Die Linie 67 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 16 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 17 A kann …<br>[Seit 13.12.2025]]]></description>
@@ -58,29 +69,18 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">ca43503e98e82b34761ff32f008f5b328a9ebc6ddceaeeafafa4b814b06cd870</guid>
 <pubDate>Sat, 13 Dec 2025 14:03:47 +0000</pubDate>
-<ext:first_seen>Sat, 13 Dec 2025 18:21:39 +0000</ext:first_seen>
+<ext:first_seen>Sat, 13 Dec 2025 18:46:18 +0000</ext:first_seen>
 <ext:starts_at>Sat, 13 Dec 2025 14:03:47 +0000</ext:starts_at>
 <ext:ends_at>Sat, 13 Dec 2025 21:30:00 +0000</ext:ends_at>
 <description><![CDATA[Christkindlmarkt Kein Halt!<br>[Seit 13.12.2025]]]></description>
 <content:encoded><![CDATA[Christkindlmarkt Kein Halt!<br/>[Seit 13.12.2025]]]></content:encoded>
 </item>
 <item>
-<title><![CDATA[41: Fahrtbehinderung wegen Rettungseinsatz]]></title>
-<link>https://www.wienerlinien.at/ogd_realtime</link>
-<guid isPermaLink="false">1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8</guid>
-<pubDate>Sat, 13 Dec 2025 08:33:41 +0000</pubDate>
-<ext:first_seen>Sat, 13 Dec 2025 18:21:39 +0000</ext:first_seen>
-<ext:starts_at>Sat, 13 Dec 2025 16:35:00 +0000</ext:starts_at>
-<ext:ends_at>Sat, 13 Dec 2025 22:55:00 +0000</ext:ends_at>
-<description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.<br>[Seit 13.12.2025]]]></description>
-<content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.<br/>[Seit 13.12.2025]]]></content:encoded>
-</item>
-<item>
 <title><![CDATA[13A: Veranstaltung Betrieb ab Kellermanngasse]]></title>
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">00cfb17514703229c5b9bea55eb0474caa73788d39cd3a1ab17ab93ae5636828</guid>
 <pubDate>Sat, 13 Dec 2025 08:03:05 +0000</pubDate>
-<ext:first_seen>Sat, 13 Dec 2025 18:21:39 +0000</ext:first_seen>
+<ext:first_seen>Sat, 13 Dec 2025 18:46:18 +0000</ext:first_seen>
 <ext:starts_at>Sat, 13 Dec 2025 08:03:05 +0000</ext:starts_at>
 <ext:ends_at>Sat, 13 Dec 2025 19:00:00 +0000</ext:ends_at>
 <description><![CDATA[Veranstaltung Betrieb ab Kellermanngasse<br>[Seit 13.12.2025]]]></description>
@@ -91,7 +91,7 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
 <pubDate>Sat, 13 Dec 2025 03:45:14 +0000</pubDate>
-<ext:first_seen>Sat, 13 Dec 2025 18:21:39 +0000</ext:first_seen>
+<ext:first_seen>Sat, 13 Dec 2025 18:46:18 +0000</ext:first_seen>
 <ext:starts_at>Sat, 13 Dec 2025 03:45:14 +0000</ext:starts_at>
 <ext:ends_at>Sat, 13 Dec 2025 23:35:00 +0000</ext:ends_at>
 <description><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br>[13.12.2025 – 14.12.2025]]]></description>
@@ -102,7 +102,7 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819</guid>
 <pubDate>Sat, 13 Dec 2025 03:30:17 +0000</pubDate>
-<ext:first_seen>Sat, 13 Dec 2025 18:21:39 +0000</ext:first_seen>
+<ext:first_seen>Sat, 13 Dec 2025 18:46:18 +0000</ext:first_seen>
 <ext:starts_at>Sat, 13 Dec 2025 03:30:17 +0000</ext:starts_at>
 <ext:ends_at>Sat, 13 Dec 2025 23:50:00 +0000</ext:ends_at>
 <description><![CDATA[Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31<br>[13.12.2025 – 14.12.2025]]]></description>
@@ -113,7 +113,7 @@
 <link>https://www.wienerlinien.at/ogd_realtime</link>
 <guid isPermaLink="false">f9254678ed9906782a20c5530df7dd4d5acc1d16ef678c99ec80f37bea38dbbf</guid>
 <pubDate>Sat, 13 Dec 2025 03:30:17 +0000</pubDate>
-<ext:first_seen>Sat, 13 Dec 2025 18:21:39 +0000</ext:first_seen>
+<ext:first_seen>Sat, 13 Dec 2025 18:46:18 +0000</ext:first_seen>
 <ext:starts_at>Sat, 13 Dec 2025 03:30:17 +0000</ext:starts_at>
 <ext:ends_at>Sat, 13 Dec 2025 23:50:00 +0000</ext:ends_at>
 <description><![CDATA[Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31<br>[13.12.2025 – 14.12.2025]]]></description>
