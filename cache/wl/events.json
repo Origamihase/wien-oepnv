@@ -146,18 +146,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "U1/U4: Station Schwedenplatz, Sperre Aufgang Urania",
-    "description": "Aufgangsperre\nWegen Bauarbeiten muss der Aufgang \"Urania\" der U-Bahn-Station Schwedenplatz zeitweilig gesperrt werden.\nZeitraum:\nMontag, 24. November 2025, 21:00 Uhr bis Freitag, 19. Dezember 2025, etwa 04:30 Uhr.\nJedoch nur Montag - Donnerstag zwischen 21:00 Uhr und 04:30 Uhr.\nErsatz:\nBitte benutzen Sie die anderen Aufgänge.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aac66d61a153d41a7c2a795dcebb5bed35489d9bc098be249cbb953e58f24d15",
-    "pubDate": "2025-11-24T14:15:00+01:00",
-    "starts_at": "2025-11-24T14:15:00+01:00",
-    "ends_at": "2025-12-19T04:30:00+01:00",
-    "_identity": "wl|hinweis|L=U1,U4|D=2025-11-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "57A: Straßenbauarbeiten ab 15.12.25",
     "description": "Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Babenbergerstraße # Nibelungengasse wird die Linie 57 A in Richtung Rudolfsheim, Anschützgasse umgeleitet.\nZeitraum:\nAb Montag, 15. Dezember 2025, etwa 07:00 Uhr bis Donnerstag, 18. Dezember 2025.\nMaßnahmen:\nLinie 57 A in Richtung Rudolfsheim, Anschützgasse:\nUmleitung ab Babenbergerstraße # Nibelungengasse über Babenbergerstraße – Getreidemarkt – Gumpendorfer Straße\nAufgelassene Haltestellen:\nMuseumsquartier U (1., Nibelungengasse 15 nach Babenbergerstraße)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -194,18 +182,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-13T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Busse halten Grenzgasse 2-4",
     "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -226,6 +202,18 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-13T23:59:59+01:00",
     "_identity": "wl|störung|L=33A|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-13T23:59:59+01:00",
+    "_identity": "wl|störung|L=N31|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -326,10 +314,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Veranstaltung Busse halten Amerlingstraße 8 - 10",
-    "description": "Veranstaltung Busse halten Amerlingstraße 8 - 10",
+    "title": "13A: Veranstaltung Betrieb ab Neubaugasse",
+    "description": "Veranstaltung Betrieb ab Neubaugasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "23c3a929989151d46e7be6d0b300349e87699f9723d3870bcf87d70ddd1170be",
+    "guid": "82c9e243642dd4396cf1ec601edd9eea4e230e790dd5b977e45c3309c44bd0f9",
     "pubDate": "2025-12-13T08:59:19+01:00",
     "starts_at": "2025-12-13T08:59:19+01:00",
     "ends_at": "2025-12-13T20:00:00+01:00",
@@ -338,10 +326,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Veranstaltung Betrieb ab Neubaugasse",
-    "description": "Veranstaltung Betrieb ab Neubaugasse",
+    "title": "13A: Veranstaltung Busse halten Amerlingstraße 8 - 10",
+    "description": "Veranstaltung Busse halten Amerlingstraße 8 - 10",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "82c9e243642dd4396cf1ec601edd9eea4e230e790dd5b977e45c3309c44bd0f9",
+    "guid": "23c3a929989151d46e7be6d0b300349e87699f9723d3870bcf87d70ddd1170be",
     "pubDate": "2025-12-13T08:59:19+01:00",
     "starts_at": "2025-12-13T08:59:19+01:00",
     "ends_at": "2025-12-13T20:00:00+01:00",
@@ -410,7 +398,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Rettungseinsatz Züge halten bei Linie D Richtung Nußdorf",
+    "title": "18: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 18 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
@@ -454,5 +442,29 @@
     "starts_at": "2025-12-13T15:03:47+01:00",
     "ends_at": "2025-12-13T22:30:00+01:00",
     "_identity": "wl|störung|L=|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fahrtbehinderung Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4",
+    "pubDate": "2025-12-13T15:55:00+01:00",
+    "starts_at": "2025-12-13T15:55:00+01:00",
+    "ends_at": "2025-12-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=49|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
+    "pubDate": "2025-12-13T16:00:00+01:00",
+    "starts_at": "2025-12-13T16:00:00+01:00",
+    "ends_at": "2025-12-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2025-12-13"
   }
 ]
