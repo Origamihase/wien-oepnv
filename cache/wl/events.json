@@ -194,6 +194,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-13T23:59:59+01:00",
+    "_identity": "wl|störung|L=N31|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Busse halten Grenzgasse 2-4",
     "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,18 +226,6 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-13T23:59:59+01:00",
     "_identity": "wl|störung|L=33A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-13T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -326,25 +326,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
-    "pubDate": "2025-12-13T07:15:00+01:00",
-    "starts_at": "2025-12-13T07:15:00+01:00",
-    "ends_at": "2025-12-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2025-12-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "14A: Polizeieinsatz",
-    "description": "Die Linie 14 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Neubaugasse U.",
+    "description": "Die Linie 14 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür war ein Polizeieinsatz im Bereich Neubaugasse U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc",
     "pubDate": "2025-12-13T07:50:00+01:00",
     "starts_at": "2025-12-13T07:50:00+01:00",
     "ends_at": "2025-12-13T23:55:00+01:00",
     "_identity": "wl|störung|L=14A|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Veranstaltung Busse halten Amerlingstraße 8 - 10",
+    "description": "Veranstaltung Busse halten Amerlingstraße 8 - 10",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "23c3a929989151d46e7be6d0b300349e87699f9723d3870bcf87d70ddd1170be",
+    "pubDate": "2025-12-13T08:59:19+01:00",
+    "starts_at": "2025-12-13T08:59:19+01:00",
+    "ends_at": "2025-12-13T20:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Veranstaltung Betrieb ab Neubaugasse",
+    "description": "Veranstaltung Betrieb ab Neubaugasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "82c9e243642dd4396cf1ec601edd9eea4e230e790dd5b977e45c3309c44bd0f9",
+    "pubDate": "2025-12-13T08:59:19+01:00",
+    "starts_at": "2025-12-13T08:59:19+01:00",
+    "ends_at": "2025-12-13T20:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Veranstaltung",
+    "description": "Die Linie 13 A fährt derzeit nicht zwischen Neubaugasse und Burggasse, Neubaugasse. Ersatzweise benützen Sie bitte die Linien U3, 49 und 48 A. Die Störung dauert voraussichtlich bis 19:30 Uhr. Grund dafür ist der Einkaufsamstag im Bereich Neubaugasse und Mariahilfer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3d8b44601911a87284252dd90f4e6f9945f8568694ad441a7dfdf7477162d067",
+    "pubDate": "2025-12-13T09:00:00+01:00",
+    "starts_at": "2025-12-13T09:00:00+01:00",
+    "ends_at": "2025-12-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-12-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Veranstaltung Betrieb ab Kellermanngasse",
+    "description": "Veranstaltung Betrieb ab Kellermanngasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "00cfb17514703229c5b9bea55eb0474caa73788d39cd3a1ab17ab93ae5636828",
+    "pubDate": "2025-12-13T09:03:05+01:00",
+    "starts_at": "2025-12-13T09:03:05+01:00",
+    "ends_at": "2025-12-13T20:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-12-13"
   }
 ]
