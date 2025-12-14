@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-14T23:59:59+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
     "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -226,6 +214,18 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-14T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33A: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "42b0844ca111de589826223d8c27d37a75837f56da8d12d69e58aa2306233917",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-14T23:59:59+01:00",
+    "_identity": "wl|störung|L=33A|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -346,30 +346,6 @@
     "starts_at": "2025-12-14T16:30:00+01:00",
     "ends_at": "2025-12-14T23:55:00+01:00",
     "_identity": "wl|störung|L=80A|D=2025-12-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c54650e65ef647f350297bb5f234db6c9420a95be4c9c46b35286f6ec869089",
-    "pubDate": "2025-12-14T16:40:23+01:00",
-    "starts_at": "2025-12-14T16:40:23+01:00",
-    "ends_at": "2025-12-14T17:40:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-12-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e832b46eec6d19cd652e99a3efa00e678cd32779ad0f0da0378f515eb2651f68",
-    "pubDate": "2025-12-14T16:41:00+01:00",
-    "starts_at": "2025-12-14T16:41:00+01:00",
-    "ends_at": "2025-12-14T17:40:00+01:00",
-    "_identity": "wl|störung|L=11|D=2025-12-14"
   },
   {
     "source": "Wiener Linien",
