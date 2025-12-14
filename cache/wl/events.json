@@ -322,5 +322,29 @@
     "starts_at": "2025-12-14T04:45:24+01:00",
     "ends_at": "2025-12-15T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Verunreinigung",
+    "description": "Die Linie 57 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "edf458207dfa1627d5f19c1bb36bc26f08d0643b8abe5bfcda75cadea4c04305",
+    "pubDate": "2025-12-14T06:55:00+01:00",
+    "starts_at": "2025-12-14T06:55:00+01:00",
+    "ends_at": "2025-12-14T23:55:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2025-12-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verunreinigung",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung im Bereich Ottakring.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
+    "pubDate": "2025-12-14T07:05:00+01:00",
+    "starts_at": "2025-12-14T07:05:00+01:00",
+    "ends_at": "2025-12-14T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-12-14"
   }
 ]
