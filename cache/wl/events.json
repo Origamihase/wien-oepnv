@@ -290,18 +290,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
-    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
-    "pubDate": "2025-12-14T04:30:18+01:00",
-    "starts_at": "2025-12-14T04:30:18+01:00",
-    "ends_at": "2025-12-15T00:50:00+01:00",
-    "_identity": "wl|störung|L=29B|D=2025-12-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Busse halten bei Schloßhofer Straße 25-31",
     "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -310,6 +298,18 @@
     "starts_at": "2025-12-14T04:30:18+01:00",
     "ends_at": "2025-12-15T00:50:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-12-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Busse halten bei Schloßhofer Straße 25-31",
+    "description": "Gleisbauarbeiten Busse halten bei Schloßhofer Straße 25-31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "316b12eb686005b03288b2c481f841454eea7394e4fbe1968079cb0bc6df5819",
+    "pubDate": "2025-12-14T04:30:18+01:00",
+    "starts_at": "2025-12-14T04:30:18+01:00",
+    "ends_at": "2025-12-15T00:50:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2025-12-14"
   },
   {
     "source": "Wiener Linien",
@@ -339,12 +339,24 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "2: Verkehrsunfall",
-    "description": "Die Linie 2 ist derzeit in Richtung Friedrich-Engels-Platz an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 08:30 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Gredlerstraße.",
+    "description": "Die Linie 2 wird derzeit in Richtung Dornbach zwischen Heinestraße und Julius-Raab-Platz über Praterstern umgeleitet und in Richtung Friedrich-Engels-Platz zwischen Julius-Raab-Platz und Karmeliterplatz über die Schwedenbrücke umgeleitet. Die Störung dauert voraussichtlich bis ca. 09:00 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Gredlerstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
-    "pubDate": "2025-12-14T07:55:00+01:00",
-    "starts_at": "2025-12-14T07:55:00+01:00",
+    "pubDate": "2025-12-14T08:05:00+01:00",
+    "starts_at": "2025-12-14T08:05:00+01:00",
     "ends_at": "2025-12-14T23:55:00+01:00",
+    "_identity": "wl|störung|L=2|D=2025-12-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Verkehrsunfall Umleitung bis Julius - Raab - Platz über Praterstern",
+    "description": "Verkehrsunfall Umleitung über die Schwedenbrücke bis Karmeliterplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "33fdabf789891aa6f1a137e1d006228c6016d6d5cf7dfa77be2f13e5cd8a19d9",
+    "pubDate": "2025-12-14T08:17:27+01:00",
+    "starts_at": "2025-12-14T08:17:27+01:00",
+    "ends_at": "2025-12-14T11:00:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-12-14"
   }
 ]
