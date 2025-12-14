@@ -194,6 +194,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
+    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
+    "pubDate": "2025-12-10T00:00:16+01:00",
+    "starts_at": "2025-12-10T00:00:16+01:00",
+    "ends_at": "2025-12-14T23:59:59+01:00",
+    "_identity": "wl|störung|L=N31|D=2025-12-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Busse halten Grenzgasse 2-4",
     "description": "Bauarbeiten Busse halten Grenzgasse 2-4",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,18 +226,6 @@
     "starts_at": "2025-12-10T00:00:16+01:00",
     "ends_at": "2025-12-14T23:59:59+01:00",
     "_identity": "wl|störung|L=33A|D=2025-12-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N31: Busse halten bei Franz-Jonas-Platz 7-8",
-    "description": "Gleisbauarbeiten Busse halten bei Franz-Jonas-Platz 7-8",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4ab2ad7facc453b0f35d7f0776e94b18a5a1dc715d9d0c3ea745dfe0def79c5",
-    "pubDate": "2025-12-10T00:00:16+01:00",
-    "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-14T23:59:59+01:00",
-    "_identity": "wl|störung|L=N31|D=2025-12-10"
   },
   {
     "source": "Wiener Linien",
@@ -322,5 +322,29 @@
     "starts_at": "2025-12-14T04:45:24+01:00",
     "ends_at": "2025-12-15T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "63A: Signalstörung",
+    "description": "Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Signalstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ef90501a3fb925c65a2cd98e6341b2c2e4b3d86f8dea54f73053cb555dd07649",
+    "pubDate": "2025-12-14T15:00:00+01:00",
+    "starts_at": "2025-12-14T15:00:00+01:00",
+    "ends_at": "2025-12-14T23:55:00+01:00",
+    "_identity": "wl|störung|L=63A|D=2025-12-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Kein Halt bis 22:30 Uhr No Stop until 10:30pm",
+    "description": "Kein Halt bis 22:30 Uhr No Stop until 10:30 pm",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0fe04c049694516f2ef79c7f82d1ec89044a7ca3a9c37c305ee0a165a3d15917",
+    "pubDate": "2025-12-14T15:00:46+01:00",
+    "starts_at": "2025-12-14T15:00:46+01:00",
+    "ends_at": "2025-12-14T22:30:00+01:00",
+    "_identity": "wl|störung|L=10|D=2025-12-14"
   }
 ]
