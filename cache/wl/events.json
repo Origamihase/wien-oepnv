@@ -169,6 +169,18 @@
   },
   {
     "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "1/2/71/D: Silvesterpfad 2025",
+    "description": "Silvesterpfad 2025\nIm Zuge des Silvesterpfades 2025 wird die Ringstraße im Bereich Rathausplatz gesperrt. Es kommt zu folgenden Verkehrsmaßnahmen:\nZeitraum:\nMittwoch, 31. Dezember 2025, ab zirka 18:30 Uhr bis Donnerstag, 01.01.2026, etwa 02:00 Uhr.\nMaßnahmen:\nLinie D\nUmleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U.\nLinie 1\nUmleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz.\nLinie 2\nUmleitung in beiden Richtungen zwischen Ring, Volkstheater U und Rathaus U über die Reichsratstraße. Fahrgäste Richtung Dornbach finden die Züge in der Haltestelle der Linien 46, 49 und 48 A.\nLinie 71\nBetrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.\nWeiteres:\nBeachten Sie bitte, dass die genannten Verkehrsmaßnahmen nicht alle gleichzeitig auftreten müssen. Je nach Fortschritt und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf www.wienerlinien.at.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "77700feca8d94ea0bdd08f3ee306edff4bc6d461d3c472d003aaaef19b929a22",
+    "pubDate": "2025-12-09T13:30:00+01:00",
+    "starts_at": "2025-12-09T13:30:00+01:00",
+    "ends_at": "2026-01-01T02:00:00+01:00",
+    "_identity": "wl|hinweis|L=1,2,71,D|D=2025-12-09"
+  },
+  {
+    "source": "Wiener Linien",
     "category": "Störung",
     "title": "18: Züge halten Gegenüber",
     "description": "Züge halten Gegenüber",
@@ -278,18 +290,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
-    "pubDate": "2025-12-15T14:35:00+01:00",
-    "starts_at": "2025-12-15T14:35:00+01:00",
-    "ends_at": "2025-12-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Falschparker",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -362,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40A: Schadhaftes Fahrzeug",
-    "description": "Die Linie 40 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Währinger Straße, Volksoper U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bb250e2c43de487577251bcb8b73b4c5de0652ba27d3f9aacc8555f08612408d",
-    "pubDate": "2025-12-15T15:05:00+01:00",
-    "starts_at": "2025-12-15T15:05:00+01:00",
-    "ends_at": "2025-12-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=40A|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Gleisschaden Betrieb ab Franz-Josefs-Bahnhof",
     "description": "Gleisschaden Betrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -382,18 +370,6 @@
     "starts_at": "2025-12-15T15:16:07+01:00",
     "ends_at": "2025-12-15T23:45:00+01:00",
     "_identity": "wl|störung|L=12|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "39A: Schadhaftes Fahrzeug",
-    "description": "Die Linie 39 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "71618ae62b9ab93dc5f1a08adb28c6d4811eab44ce507f1cdcc6c028681640f7",
-    "pubDate": "2025-12-15T15:20:00+01:00",
-    "starts_at": "2025-12-15T15:20:00+01:00",
-    "ends_at": "2025-12-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=39A|D=2025-12-15"
   },
   {
     "source": "Wiener Linien",
@@ -471,7 +447,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "44: Verkehrsunfall",
-    "description": "Die Linie 44 ist derzeit in Richtung Schottentor an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 18:15 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Yppengasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 44 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e78eaae06ed5d3cf090d4186a3c0813bd59271e475fa87f71ff2ee4b48e3d505",
     "pubDate": "2025-12-15T17:40:00+01:00",
@@ -490,5 +466,17 @@
     "starts_at": "2025-12-15T17:42:15+01:00",
     "ends_at": "2025-12-15T18:41:00+01:00",
     "_identity": "wl|störung|L=44|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "77A: Falschparker",
+    "description": "Die Linie 77 A ist derzeit in Richtung Rennweg an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 18:45 Uhr. Grund dafür ist ein Falschparker im Bereich Rabengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "660f28330b16b21973d919d0ca7b3d0827062ed7398171f828b0ccfbf543928b",
+    "pubDate": "2025-12-15T18:15:00+01:00",
+    "starts_at": "2025-12-15T18:15:00+01:00",
+    "ends_at": "2025-12-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=77A|D=2025-12-15"
   }
 ]
