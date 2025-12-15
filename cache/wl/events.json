@@ -278,18 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "65A: Feuerwehreinsatz Umleitung bis Gußriegelstraße",
-    "description": "Feuerwehreinsatz Umleitung bis Gußriegelstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "60f6aeb5159243f170aeeed12a1220a886b53980899ac92051b53aa9ab94b0ea",
-    "pubDate": "2025-12-15T08:48:14+01:00",
-    "starts_at": "2025-12-15T08:48:14+01:00",
-    "ends_at": "2025-12-15T13:00:00+01:00",
-    "_identity": "wl|störung|L=65A|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1A: Verkehrsüberlastung",
     "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -302,7 +290,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "57A: Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "57A: Polizeieinsatz",
     "description": "Die Linie 57 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Grimmgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1479d69628ad6774aff996064517e6a4ab864e04445cce50bdca7679b4465bb8",
@@ -310,5 +298,77 @@
     "starts_at": "2025-12-15T12:25:00+01:00",
     "ends_at": "2025-12-15T23:55:00+01:00",
     "_identity": "wl|störung|L=57A|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Fremder Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2b0f1205307a50c21e75a3c12cce182adc6997c9d23896025a4dd903660289de",
+    "pubDate": "2025-12-15T12:50:00+01:00",
+    "starts_at": "2025-12-15T12:50:00+01:00",
+    "ends_at": "2025-12-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=12A|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Fremder Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 14 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "42270d028cd443977f582a2b48222c38c0603b64b1f2d3ae98143b310e12046e",
+    "pubDate": "2025-12-15T12:50:00+01:00",
+    "starts_at": "2025-12-15T12:50:00+01:00",
+    "ends_at": "2025-12-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=14A|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3906e11c18aa9333980e1532d7e8005bacd160684c6330d6142359502ccfc2a5",
+    "pubDate": "2025-12-15T12:55:42+01:00",
+    "starts_at": "2025-12-15T12:55:42+01:00",
+    "ends_at": "2025-12-15T13:54:00+01:00",
+    "_identity": "wl|störung|L=14A|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5d8949d1e0cb5bc325dc83e8a5d5d2fefda38aa7af5297e89b2f65454100fd62",
+    "pubDate": "2025-12-15T12:56:40+01:00",
+    "starts_at": "2025-12-15T12:56:40+01:00",
+    "ends_at": "2025-12-15T13:55:00+01:00",
+    "_identity": "wl|störung|L=12A|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c7fd936044af6023c2a709dc0262721a0b678e6cbd5a59042d48471a2671e255",
+    "pubDate": "2025-12-15T13:01:14+01:00",
+    "starts_at": "2025-12-15T13:01:14+01:00",
+    "ends_at": "2025-12-15T14:00:00+01:00",
+    "_identity": "wl|störung|L=1A|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "80A: Verkehrsunfall",
+    "description": "Die Linie 80 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Franzensbrücke.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dbf255f4864fa810267d36e958e84cdee6c8bc0adf8bb00a3e708ca0ae65cc69",
+    "pubDate": "2025-12-15T13:20:00+01:00",
+    "starts_at": "2025-12-15T13:20:00+01:00",
+    "ends_at": "2025-12-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=80A|D=2025-12-15"
   }
 ]
