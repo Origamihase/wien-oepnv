@@ -188,7 +188,7 @@
     "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
     "pubDate": "2025-12-10T00:00:12+01:00",
     "starts_at": "2025-12-10T00:00:12+01:00",
-    "ends_at": "2025-12-15T23:59:59+01:00",
+    "ends_at": "2025-12-16T23:59:59+01:00",
     "_identity": "wl|störung|L=18|D=2025-12-10"
   },
   {
@@ -200,7 +200,7 @@
     "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-15T23:59:59+01:00",
+    "ends_at": "2025-12-16T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2025-12-10"
   },
   {
@@ -212,7 +212,7 @@
     "guid": "607e7cb4e6ab81222f1c111c95ec09641bf3f6b32bc2d6ba1ae43912eeb66da7",
     "pubDate": "2025-12-12T00:00:22+01:00",
     "starts_at": "2025-12-12T00:00:22+01:00",
-    "ends_at": "2025-12-15T23:59:59+01:00",
+    "ends_at": "2025-12-16T23:59:59+01:00",
     "_identity": "wl|störung|L=|D=2025-12-12"
   },
   {
@@ -224,7 +224,7 @@
     "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
     "pubDate": "2025-12-12T11:59:39+01:00",
     "starts_at": "2025-12-12T11:59:39+01:00",
-    "ends_at": "2025-12-15T23:59:59+01:00",
+    "ends_at": "2025-12-16T23:59:59+01:00",
     "_identity": "wl|störung|L=18|D=2025-12-12"
   },
   {
@@ -236,7 +236,7 @@
     "guid": "1540f7c8272575e3ac382ead36ec6f89de804e48d860ef679126fdcfb8e9f55e",
     "pubDate": "2025-12-12T12:05:27+01:00",
     "starts_at": "2025-12-12T12:05:27+01:00",
-    "ends_at": "2025-12-15T23:59:59+01:00",
+    "ends_at": "2025-12-16T23:59:59+01:00",
     "_identity": "wl|störung|L=18|D=2025-12-12"
   },
   {
@@ -262,66 +262,6 @@
     "starts_at": "2025-12-15T04:45:11+01:00",
     "ends_at": "2025-12-16T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Gleisschaden Betrieb ab Spitalgasse",
-    "description": "Gleisschaden Betrieb ab Spitalgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eb0cd9b087c52fe793bb676ef4c8dc6987e5d6fcfb0cd5c125e3653942b9aa17",
-    "pubDate": "2025-12-15T15:01:30+01:00",
-    "starts_at": "2025-12-15T15:01:30+01:00",
-    "ends_at": "2025-12-15T23:45:00+01:00",
-    "_identity": "wl|störung|L=5|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Gleisschaden Züge halten bei Linien 37-42",
-    "description": "Gleisschaden Züge halten bei Linien 37-42",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6323fc5f57d46d5c11f0a264dcdfb957920d7fb7cfa25f6da71cec48133f284b",
-    "pubDate": "2025-12-15T15:01:37+01:00",
-    "starts_at": "2025-12-15T15:01:37+01:00",
-    "ends_at": "2025-12-15T23:45:00+01:00",
-    "_identity": "wl|störung|L=5|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Gleisschaden Betrieb ab Lerchenfelder Straße",
-    "description": "Gleisschaden Betrieb ab Lerchenfelder Straße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2bc715be33c6266cf02d2caa8b985dcaa674a132fe70ee579306a5df7f9ad982",
-    "pubDate": "2025-12-15T15:02:28+01:00",
-    "starts_at": "2025-12-15T15:02:28+01:00",
-    "ends_at": "2025-12-15T23:45:00+01:00",
-    "_identity": "wl|störung|L=5|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Fahrtbehinderung Gleisschaden",
-    "description": "Fahrtbehinderung Gleisschaden",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "11b5106eaf1385cf51d05275d61f2f6fa0acc39d9994a9906a30ad187cc7abdd",
-    "pubDate": "2025-12-15T15:03:03+01:00",
-    "starts_at": "2025-12-15T15:03:03+01:00",
-    "ends_at": "2025-12-15T23:45:00+01:00",
-    "_identity": "wl|störung|L=12|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Gleisschaden Betrieb ab Franz-Josefs-Bahnhof",
-    "description": "Gleisschaden Betrieb ab Franz-Josefs-Bahnhof",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7d876502b02a0eba79e2308f2d540a53b3999c7afee069efa5833a9f7c2d6e7",
-    "pubDate": "2025-12-15T15:16:07+01:00",
-    "starts_at": "2025-12-15T15:16:07+01:00",
-    "ends_at": "2025-12-15T23:45:00+01:00",
-    "_identity": "wl|störung|L=12|D=2025-12-15"
   },
   {
     "source": "Wiener Linien",
