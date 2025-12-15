@@ -326,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Feuerwehreinsatz Züge halten Schlickgasse 1-3",
-    "description": "Feuerwehreinsatz Züge halten Schlickgasse 1-3",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "35aad6296f3c61e1dec35818ea9e35054f9c69dcdf73e61296e2e5e557fba5e2",
-    "pubDate": "2025-12-15T16:04:32+01:00",
-    "starts_at": "2025-12-15T16:04:32+01:00",
-    "ends_at": "2025-12-15T22:00:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "38: Schadhafter Bus Betrieb ab Nußdorfer Straße",
     "description": "Schadhafter Bus Betrieb ab Nußdorfer Straße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -350,18 +338,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "39A: Schadhaftes Fahrzeug",
-    "description": "Die Linie 39 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "71618ae62b9ab93dc5f1a08adb28c6d4811eab44ce507f1cdcc6c028681640f7",
-    "pubDate": "2025-12-15T20:05:00+01:00",
-    "starts_at": "2025-12-15T20:05:00+01:00",
-    "ends_at": "2025-12-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=39A|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U1: Betriebsstörung",
     "description": "Derzeit können die Züge der Linie U1 die Station Schwedenplatz in Richtung Leopoldau nicht einhalten. Um vom Schwedenplatz in Richtung Leopoldau zu fahren, fahren Sie eine Station zum Stephansplatz und steigen dort anschließend in einen Zug Richtung Leopoldau um. Um die Station Schwedenplatz zu erreichen, fahren Sie bis Nestroyplatz und steigen anschließend in einen Zug in Richtung Oberlaa um. Alternativ können Sie auch auf die Linien U2 und U4 ausweichen. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist eine Betriebsstörung im Bereich Schwedenplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,5 +346,29 @@
     "starts_at": "2025-12-15T21:05:00+01:00",
     "ends_at": "2025-12-15T23:55:00+01:00",
     "_identity": "wl|störung|L=U1|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62/WLB: Betriebsstörung",
+    "description": "Die Linie 62 ist derzeit in Richtung Lainz, Wolkersbergenstraße an der Weiterfahrt gehindert. Die Badner Bahn ist derzeit in Richtung Baden an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 22:45. Grund dafür ist eine Betriebsstörung im Bereich Aßmayergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b3435fa7a7fc62b0f77080f05dd01a4912b9c0d86d757c76be7e33dab4e4cc7e",
+    "pubDate": "2025-12-15T22:10:00+01:00",
+    "starts_at": "2025-12-15T22:10:00+01:00",
+    "ends_at": "2025-12-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=62,WLB|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung Betriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fcdf3a91c7d337a1beae12d0681a02e09f5bb4f31d1c94e3683a9eef9d3cf255",
+    "pubDate": "2025-12-15T22:15:31+01:00",
+    "starts_at": "2025-12-15T22:15:31+01:00",
+    "ends_at": "2025-12-15T23:15:00+01:00",
+    "_identity": "wl|störung|L=62|D=2025-12-15"
   }
 ]
