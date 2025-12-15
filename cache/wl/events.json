@@ -358,5 +358,65 @@
     "starts_at": "2025-12-15T16:04:32+01:00",
     "ends_at": "2025-12-15T22:00:00+01:00",
     "_identity": "wl|störung|L=D|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Schadhaftes Fahrzeug",
+    "description": "Die Linie 38 fährt derzeit nur zwischen Schottentor und Nußdorfer Straße. Weichen Sie auf die Linien 10 A, 35 A und 39 A aus. Die Störung dauert voraussichtlich bis 20:30 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Oberdöbling S.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c16184b68509899faf02a65c374d8c059400404774e2da3970444c5b92e08600",
+    "pubDate": "2025-12-15T19:55:00+01:00",
+    "starts_at": "2025-12-15T19:55:00+01:00",
+    "ends_at": "2025-12-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=38|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Schadhafter Bus",
+    "description": "Fahrtbehinderung Schadhafter Bus",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "843fd4e31e0c0925f4e60123918291f13b408cb6e4562c1876c1d4af3013ca73",
+    "pubDate": "2025-12-15T20:00:27+01:00",
+    "starts_at": "2025-12-15T20:00:27+01:00",
+    "ends_at": "2025-12-15T21:00:00+01:00",
+    "_identity": "wl|störung|L=38|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Schadhafter Bus Betrieb ab Nußdorfer Straße",
+    "description": "Schadhafter Bus Betrieb ab Nußdorfer Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8340173f4bb79ffc2cc78a15c66a33d21272caf016bd583e0a44831357cbddb6",
+    "pubDate": "2025-12-15T20:01:39+01:00",
+    "starts_at": "2025-12-15T20:01:39+01:00",
+    "ends_at": "2025-12-15T22:45:00+01:00",
+    "_identity": "wl|störung|L=38|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Schadhafter Bus Züge halten Währinger Gürtel 164",
+    "description": "Schadhafter Bus Züge halten Währinger Gürtel 164",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4c041baab229a642e22ad16273376ce2a4dd090a6cce5902dad46f0404b0b4a5",
+    "pubDate": "2025-12-15T20:02:53+01:00",
+    "starts_at": "2025-12-15T20:02:53+01:00",
+    "ends_at": "2025-12-15T21:01:00+01:00",
+    "_identity": "wl|störung|L=38|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "39A: Schadhaftes Fahrzeug",
+    "description": "Die Linie 39 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "71618ae62b9ab93dc5f1a08adb28c6d4811eab44ce507f1cdcc6c028681640f7",
+    "pubDate": "2025-12-15T20:05:00+01:00",
+    "starts_at": "2025-12-15T20:05:00+01:00",
+    "ends_at": "2025-12-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=39A|D=2025-12-15"
   }
 ]
