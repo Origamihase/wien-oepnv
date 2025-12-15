@@ -217,18 +217,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "1A/2A: polizeiliche Streckensperre am 15.12.2025",
-    "description": "Pollerübung\nWegen einer Pollerübung werden die Strauchgasse und Herrengasse polizeilich gesperrt.\nZeitraum:\nMontag, 15. Dezember 2025 von ca. 10:00 bis 11:00 Uhr.\nMaßnahmen:\nLinie 1 A\nBetrieb eingestellt.\nLinie 2 A\nBetrieb eingestellt.\nErsatz:\nDie U-Bahnen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0f7a0217e6b9d8c5ac5fba2f3dbfd7c3de1b039d1457ed1971bff7d93ed7f5bc",
-    "pubDate": "2025-12-12T09:56:00+01:00",
-    "starts_at": "2025-12-12T09:56:00+01:00",
-    "ends_at": "2025-12-15T11:00:00+01:00",
-    "_identity": "wl|hinweis|L=1A,2A|D=2025-12-12"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "18: Betrieb ab St. Marx",
     "description": "Gleisbauarbeiten Betrieb ab St. Marx",
@@ -278,78 +266,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Fremder Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1205ac22f6bd4faf7c9d1128f045fd29146816a4bd3c883707a404d2c904cd86",
-    "pubDate": "2025-12-15T07:35:00+01:00",
-    "starts_at": "2025-12-15T07:35:00+01:00",
-    "ends_at": "2025-12-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=43|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
-    "pubDate": "2025-12-15T07:35:00+01:00",
-    "starts_at": "2025-12-15T07:35:00+01:00",
-    "ends_at": "2025-12-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
-    "pubDate": "2025-12-15T07:35:00+01:00",
-    "starts_at": "2025-12-15T07:35:00+01:00",
-    "ends_at": "2025-12-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=11|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "94A: Verkehrsunfall",
-    "description": "Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Steigenteschgasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f0d634e8c64b753a861add399e7138caa8409a34cbca6326b25b7324feb41ede",
-    "pubDate": "2025-12-15T07:50:00+01:00",
-    "starts_at": "2025-12-15T07:50:00+01:00",
-    "ends_at": "2025-12-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=94A|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "65A: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 65 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba542ef47c4a314869d53611ce727014dd524b3928b7e2bc8d9b93aa406f2ecf",
-    "pubDate": "2025-12-15T08:25:00+01:00",
-    "starts_at": "2025-12-15T08:25:00+01:00",
-    "ends_at": "2025-12-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=65A|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9a7a8399871f959c73d5c052df902d2d7d2d08286d2113c31e82a0eedf499d08",
-    "pubDate": "2025-12-15T08:25:00+01:00",
-    "starts_at": "2025-12-15T08:25:00+01:00",
-    "ends_at": "2025-12-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=11|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "O: Feuerwehreinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie O zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,5 +286,41 @@
     "starts_at": "2025-12-15T08:48:14+01:00",
     "ends_at": "2025-12-15T13:00:00+01:00",
     "_identity": "wl|störung|L=65A|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
+    "pubDate": "2025-12-15T10:10:00+01:00",
+    "starts_at": "2025-12-15T10:10:00+01:00",
+    "ends_at": "2025-12-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=2|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A: Kein Betrieb wegen Polizeieinsatz",
+    "description": "Kein Betrieb wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1728d250973f2515460b23b3c697922114d90ab90874f000d040c5e6b86cfa5e",
+    "pubDate": "2025-12-15T10:20:45+01:00",
+    "starts_at": "2025-12-15T10:20:45+01:00",
+    "ends_at": "2025-12-15T11:19:00+01:00",
+    "_identity": "wl|störung|L=1A|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2A: Kein Betrieb wegen Polizeieinsatz",
+    "description": "Kein Betrieb wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f00bcae17764f62582458ff81855410216ab3b96f1a4443be49d05c1dcfefa76",
+    "pubDate": "2025-12-15T10:21:14+01:00",
+    "starts_at": "2025-12-15T10:21:14+01:00",
+    "ends_at": "2025-12-15T11:20:00+01:00",
+    "_identity": "wl|störung|L=2A|D=2025-12-15"
   }
 ]
