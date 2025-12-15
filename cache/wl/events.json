@@ -290,7 +290,31 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "2A: Polizeiübung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "26eeaa7fc2cd9ac6bb0a2fec1731da9cf7f65612947d9d46df5bf0addd498f18",
+    "pubDate": "2025-12-15T09:55:00+01:00",
+    "starts_at": "2025-12-15T09:55:00+01:00",
+    "ends_at": "2025-12-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=2A|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A: Polizeiübung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7b2b51107dae0920ff8ddd25f90ed56ecbc505f6574f7472f92369661afcacc5",
+    "pubDate": "2025-12-15T09:55:00+01:00",
+    "starts_at": "2025-12-15T09:55:00+01:00",
+    "ends_at": "2025-12-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=1A|D=2025-12-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
@@ -298,30 +322,6 @@
     "starts_at": "2025-12-15T10:10:00+01:00",
     "ends_at": "2025-12-15T23:55:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1A: Kein Betrieb wegen Polizeieinsatz",
-    "description": "Kein Betrieb wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1728d250973f2515460b23b3c697922114d90ab90874f000d040c5e6b86cfa5e",
-    "pubDate": "2025-12-15T10:20:45+01:00",
-    "starts_at": "2025-12-15T10:20:45+01:00",
-    "ends_at": "2025-12-15T11:19:00+01:00",
-    "_identity": "wl|störung|L=1A|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2A: Kein Betrieb wegen Polizeieinsatz",
-    "description": "Kein Betrieb wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f00bcae17764f62582458ff81855410216ab3b96f1a4443be49d05c1dcfefa76",
-    "pubDate": "2025-12-15T10:21:14+01:00",
-    "starts_at": "2025-12-15T10:21:14+01:00",
-    "ends_at": "2025-12-15T11:20:00+01:00",
-    "_identity": "wl|störung|L=2A|D=2025-12-15"
   },
   {
     "source": "Wiener Linien",
