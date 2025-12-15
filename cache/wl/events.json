@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 42 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2025-12-15T14:50:00+01:00",
-    "starts_at": "2025-12-15T14:50:00+01:00",
-    "ends_at": "2025-12-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=42|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5: Gleisschaden Betrieb ab Spitalgasse",
     "description": "Gleisschaden Betrieb ab Spitalgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,18 +358,6 @@
     "starts_at": "2025-12-15T15:16:07+01:00",
     "ends_at": "2025-12-15T23:45:00+01:00",
     "_identity": "wl|störung|L=12|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2025-12-15T15:35:00+01:00",
-    "starts_at": "2025-12-15T15:35:00+01:00",
-    "ends_at": "2025-12-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=9|D=2025-12-15"
   },
   {
     "source": "Wiener Linien",
@@ -458,20 +434,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "95f5e733f774706c0b823246524a86bb8b6b48fd50e0ccfc15432e2c4c3225f0",
-    "pubDate": "2025-12-15T17:42:15+01:00",
-    "starts_at": "2025-12-15T17:42:15+01:00",
-    "ends_at": "2025-12-15T18:41:00+01:00",
-    "_identity": "wl|störung|L=44|D=2025-12-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "77A: Falschparker",
-    "description": "Die Linie 77 A ist derzeit in Richtung Rennweg an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 18:45 Uhr. Grund dafür ist ein Falschparker im Bereich Rabengasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 77 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "660f28330b16b21973d919d0ca7b3d0827062ed7398171f828b0ccfbf543928b",
     "pubDate": "2025-12-15T18:15:00+01:00",
