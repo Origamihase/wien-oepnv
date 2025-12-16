@@ -278,13 +278,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Fahrtbehinderung Schadhafter Bus",
-    "description": "Fahrtbehinderung Schadhafter Bus",
+    "title": "71A/71B/73B: Rettungseinsatz",
+    "description": "Die Linie 71 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 73 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Zentralfriedhof 3. Tor.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8a71b52a69d62b957003c14e7d3709cca748e01874f88f23c2b9c93f1f4cc267",
-    "pubDate": "2025-12-16T05:01:50+01:00",
-    "starts_at": "2025-12-16T05:01:50+01:00",
-    "ends_at": "2025-12-16T06:01:00+01:00",
-    "_identity": "wl|störung|L=31|D=2025-12-16"
+    "guid": "5d32ca3c0cad05a8f4b40e1b3db68f05048064438a8f762bfecbdea11b498aae",
+    "pubDate": "2025-12-16T06:05:00+01:00",
+    "starts_at": "2025-12-16T06:05:00+01:00",
+    "ends_at": "2025-12-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=71A,71B,73B|D=2025-12-16"
   }
 ]
