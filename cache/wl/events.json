@@ -188,7 +188,7 @@
     "guid": "37f1d606ca5e9f79012ab13f4e72b001991ec69cce0477d568166a68c85e6b0d",
     "pubDate": "2025-12-10T00:00:12+01:00",
     "starts_at": "2025-12-10T00:00:12+01:00",
-    "ends_at": "2025-12-16T23:59:59+01:00",
+    "ends_at": "2025-12-17T23:59:59+01:00",
     "_identity": "wl|störung|L=18|D=2025-12-10"
   },
   {
@@ -200,7 +200,7 @@
     "guid": "e7e61880b3db520e54ffc94a14292daab75cc57ae93ec9a41ddf2d47321ba240",
     "pubDate": "2025-12-10T00:00:16+01:00",
     "starts_at": "2025-12-10T00:00:16+01:00",
-    "ends_at": "2025-12-16T23:59:59+01:00",
+    "ends_at": "2025-12-17T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2025-12-10"
   },
   {
@@ -212,7 +212,7 @@
     "guid": "607e7cb4e6ab81222f1c111c95ec09641bf3f6b32bc2d6ba1ae43912eeb66da7",
     "pubDate": "2025-12-12T00:00:22+01:00",
     "starts_at": "2025-12-12T00:00:22+01:00",
-    "ends_at": "2025-12-16T23:59:59+01:00",
+    "ends_at": "2025-12-17T23:59:59+01:00",
     "_identity": "wl|störung|L=|D=2025-12-12"
   },
   {
@@ -224,7 +224,7 @@
     "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
     "pubDate": "2025-12-12T11:59:39+01:00",
     "starts_at": "2025-12-12T11:59:39+01:00",
-    "ends_at": "2025-12-16T23:59:59+01:00",
+    "ends_at": "2025-12-17T23:59:59+01:00",
     "_identity": "wl|störung|L=18|D=2025-12-12"
   },
   {
@@ -236,7 +236,7 @@
     "guid": "1540f7c8272575e3ac382ead36ec6f89de804e48d860ef679126fdcfb8e9f55e",
     "pubDate": "2025-12-12T12:05:27+01:00",
     "starts_at": "2025-12-12T12:05:27+01:00",
-    "ends_at": "2025-12-16T23:59:59+01:00",
+    "ends_at": "2025-12-17T23:59:59+01:00",
     "_identity": "wl|störung|L=18|D=2025-12-12"
   },
   {
@@ -274,90 +274,6 @@
     "starts_at": "2025-12-16T09:30:00+01:00",
     "ends_at": "2025-12-31T13:00:00+01:00",
     "_identity": "wl|hinweis|L=1,2,71,74A,D|D=2025-12-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Demonstration Betrieb ab Josefstädter Straße",
-    "description": "Demonstration Betrieb ab Josefstädter Straße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "de4a0a5401a4e8a1e3c2602e947343018a4c83dffea04b635dca4c314a1e8c35",
-    "pubDate": "2025-12-16T17:32:17+01:00",
-    "starts_at": "2025-12-16T17:32:17+01:00",
-    "ends_at": "2025-12-16T23:45:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Demonstration Betrieb ab Schwarzenbergplatz",
-    "description": "Demonstration Betrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "765574ef0399f84ef88bb0b2bd5cbe3ed6672c5bce9bb05cf34a46a29e20e6e4",
-    "pubDate": "2025-12-16T17:34:41+01:00",
-    "starts_at": "2025-12-16T17:34:41+01:00",
-    "ends_at": "2025-12-16T23:45:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Demonstration Betrieb ab Börse",
-    "description": "Demonstration Betrieb ab Börse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bd2bbc492fa41191c2ba11d0c2b48db31149a36909ebf7486dc05890a079f7ac",
-    "pubDate": "2025-12-16T17:35:40+01:00",
-    "starts_at": "2025-12-16T17:35:40+01:00",
-    "ends_at": "2025-12-16T23:45:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-12-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Demonstration Betrieb ab Resselgasse",
-    "description": "Demonstration Betrieb ab Resselgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a3904226e11e2eaa01222749b08821d53ed1cdb9f1a41de4e9b274034872a123",
-    "pubDate": "2025-12-16T17:36:38+01:00",
-    "starts_at": "2025-12-16T17:36:38+01:00",
-    "ends_at": "2025-12-16T23:45:00+01:00",
-    "_identity": "wl|störung|L=1|D=2025-12-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Betrieb ab Schwarzenbergplatz",
-    "description": "Demonstration Betrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c026b000b202d288cf3bec2c812e718351d4c37b0196152e41c269e70771cadc",
-    "pubDate": "2025-12-16T17:37:07+01:00",
-    "starts_at": "2025-12-16T17:37:07+01:00",
-    "ends_at": "2025-12-16T23:45:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-12-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Betrieb ab Börse",
-    "description": "Demonstration Betrieb ab Börse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d651f21483cd1d9dd9109527a3dd8776f2dd5eb47e34c6e2354a303472fb9d1c",
-    "pubDate": "2025-12-16T17:37:36+01:00",
-    "starts_at": "2025-12-16T17:37:36+01:00",
-    "ends_at": "2025-12-16T23:45:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-12-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
-    "pubDate": "2025-12-16T23:02:32+01:00",
-    "starts_at": "2025-12-16T23:02:32+01:00",
-    "ends_at": "2025-12-16T23:59:59+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-12-16"
   },
   {
     "source": "Wiener Linien",
