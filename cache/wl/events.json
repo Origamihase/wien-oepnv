@@ -351,12 +351,24 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "13A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 13 A zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
-    "pubDate": "2025-12-16T23:00:00+01:00",
-    "starts_at": "2025-12-16T23:00:00+01:00",
+    "pubDate": "2025-12-16T23:02:32+01:00",
+    "starts_at": "2025-12-16T23:02:32+01:00",
     "ends_at": "2025-12-16T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2025-12-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Betriebsstörung",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Simmering.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2025-12-16T23:25:00+01:00",
+    "starts_at": "2025-12-16T23:25:00+01:00",
+    "ends_at": "2025-12-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-12-16"
   }
 ]
