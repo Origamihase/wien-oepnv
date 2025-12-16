@@ -322,5 +322,41 @@
     "starts_at": "2025-12-16T10:10:00+01:00",
     "ends_at": "2025-12-16T23:55:00+01:00",
     "_identity": "wl|störung|L=52|D=2025-12-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Verkehrsunfall",
+    "description": "Die Linie 25 ist derzeit in Richtung Aspern an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 11:10 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Konstanziagasse .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "904ba03627e216651c3fe7a87850a5c4243041de296f0ebcb4c445c1842de781",
+    "pubDate": "2025-12-16T10:40:00+01:00",
+    "starts_at": "2025-12-16T10:40:00+01:00",
+    "ends_at": "2025-12-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=25|D=2025-12-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "32A: Polizeieinsatz",
+    "description": "Die Linie 32 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Mitterhofergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7c83441f75a4e79213dc74497d534a0ae14537b1901e683b8c8c96c12038205",
+    "pubDate": "2025-12-16T10:45:00+01:00",
+    "starts_at": "2025-12-16T10:45:00+01:00",
+    "ends_at": "2025-12-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=32A|D=2025-12-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "17410552b5076b6dbbd3ae46156043cd5032b22edde7e308e5b84105a85b76ff",
+    "pubDate": "2025-12-16T10:45:03+01:00",
+    "starts_at": "2025-12-16T10:45:03+01:00",
+    "ends_at": "2025-12-16T11:44:00+01:00",
+    "_identity": "wl|störung|L=25|D=2025-12-16"
   }
 ]
