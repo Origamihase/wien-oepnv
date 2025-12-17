@@ -290,38 +290,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Verkehrsüberlastung",
-    "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "title": "86A/94A: Verkehrsüberlastung",
+    "description": "Die Linie 86 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich Stadlau S U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
-    "pubDate": "2025-12-17T08:10:00+01:00",
-    "starts_at": "2025-12-17T08:10:00+01:00",
-    "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=O|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "86A/87A/94A: Verkehrsüberlastung",
-    "description": "Die Linie 86 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 87 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich Stadlau S U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "94a3293d8ba0774a4ac63a832e24ed23e780c2a0dce59c6b5b9215815c128848",
+    "guid": "977f4a2469fde64dcf2fffd4670af2873ca5c2b5d757655129bf5341f39eabf7",
     "pubDate": "2025-12-17T08:15:00+01:00",
     "starts_at": "2025-12-17T08:15:00+01:00",
     "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=86A,87A,94A|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Signalstörung",
-    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Signalstörung im Bereich Julius-Raab-Platz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f6742e2e14a2e570249887c5b57afe641256f9d269c64df8e3fe64db025f2eea",
-    "pubDate": "2025-12-17T08:20:00+01:00",
-    "starts_at": "2025-12-17T08:20:00+01:00",
-    "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-17"
+    "_identity": "wl|störung|L=86A,94A|D=2025-12-17"
   },
   {
     "source": "Wiener Linien",
@@ -338,30 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "17A: Störung an einem Bahnübergang",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 17 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a9a27425e5abc97ac537f8ede7996cb196df826cae17e716388d06154a7c5243",
-    "pubDate": "2025-12-17T08:25:00+01:00",
-    "starts_at": "2025-12-17T08:25:00+01:00",
-    "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=17A|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67A: Störung an einem Bahnübergang",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 67 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6e99216299a61049561d5a4425452f6c84cc32619ff3840ff8b07559a0c13400",
-    "pubDate": "2025-12-17T08:25:00+01:00",
-    "starts_at": "2025-12-17T08:25:00+01:00",
-    "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=67A|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "67B: Störung an einem Bahnübergang",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 67 B zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,42 +322,6 @@
     "starts_at": "2025-12-17T08:25:00+01:00",
     "ends_at": "2025-12-17T23:55:00+01:00",
     "_identity": "wl|störung|L=67B|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "17A: Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung Signalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5dfa210ba3291a66edebd31b6cfcfd1d45e1cd37d3c1946494afc52dec0c55d4",
-    "pubDate": "2025-12-17T08:31:46+01:00",
-    "starts_at": "2025-12-17T08:31:46+01:00",
-    "ends_at": "2025-12-17T09:30:00+01:00",
-    "_identity": "wl|störung|L=17A|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67A: Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung Signalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c6217f3734081f8e926c9979e884673454468f1b1a07fa5e2e3236de593c654",
-    "pubDate": "2025-12-17T08:34:11+01:00",
-    "starts_at": "2025-12-17T08:34:11+01:00",
-    "ends_at": "2025-12-17T09:33:00+01:00",
-    "_identity": "wl|störung|L=67A|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "16A: Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung Signalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "32c92ab83f0de4027d69c995f2641822ec1a450fec2f45c5d0d5e4e3a1ace708",
-    "pubDate": "2025-12-17T08:36:50+01:00",
-    "starts_at": "2025-12-17T08:36:50+01:00",
-    "ends_at": "2025-12-17T09:34:00+01:00",
-    "_identity": "wl|störung|L=16A|D=2025-12-17"
   },
   {
     "source": "Wiener Linien",
@@ -423,7 +339,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "15A: Fremder Verkehrsunfall",
-    "description": "Die Linie 15 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Haltestelle Business Park Vienna kann derzeit in Fahrtrichtung Enkplatz nicht eingehalten werden. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein fremder Verkehrsunfall im Bereich Wienerbergstraße.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 15 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8465c4a863695aeea5f77f0199c4bf034c7c302614acab16428cdb62511f8686",
     "pubDate": "2025-12-17T09:05:00+01:00",
@@ -452,7 +368,43 @@
     "guid": "9c8e15f0ba0dbcdb542be134479b200dc7e50b5cf6a2e4341807f7ab6931e81a",
     "pubDate": "2025-12-17T09:23:51+01:00",
     "starts_at": "2025-12-17T09:23:51+01:00",
-    "ends_at": "2025-12-17T10:20:00+01:00",
+    "ends_at": "2025-12-17T12:00:00+01:00",
     "_identity": "wl|störung|L=3,71B,73A|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71B/73A: Fahrtbehinderung Gleisschaden Ausweichen auf 71B, 73A",
+    "description": "Fahrtbehinderung Gleisschaden Ausweichen auf 71 B, 73 A",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "98e5ddee67c3eece092b7ef4d5d3676049277db57fba7ecd85d5458ed3636bf7",
+    "pubDate": "2025-12-17T09:24:55+01:00",
+    "starts_at": "2025-12-17T09:24:55+01:00",
+    "ends_at": "2025-12-17T12:00:00+01:00",
+    "_identity": "wl|störung|L=71B,73A|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71B/73A: Gleisschaden Ausweichen auf Linie 71B, 73A",
+    "description": "Gleisschaden Ausweichen auf Linie 71 B, 73 A",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c1e3a49ae40dc5c204d59353f42f4b512c238c49f2f07573e849c19bbd5deaa3",
+    "pubDate": "2025-12-17T09:26:45+01:00",
+    "starts_at": "2025-12-17T09:26:45+01:00",
+    "ends_at": "2025-12-17T12:00:00+01:00",
+    "_identity": "wl|störung|L=71B,73A|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Verspätungen",
+    "description": "Die Linie 40 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Gentzgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c4d4448b0267859a73cc289d87d6fb4d0e216ade078fa509342ef899d6ba97f1",
+    "pubDate": "2025-12-17T09:45:00+01:00",
+    "starts_at": "2025-12-17T09:45:00+01:00",
+    "ends_at": "2025-12-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=40|D=2025-12-17"
   }
 ]
