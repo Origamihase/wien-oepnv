@@ -274,5 +274,65 @@
     "starts_at": "2025-12-17T04:45:26+01:00",
     "ends_at": "2025-12-18T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "61050604051e6004ec6f1aa1bd456297d7a5a3c423af697a9d36147a6443b43a",
+    "pubDate": "2025-12-17T06:26:37+01:00",
+    "starts_at": "2025-12-17T06:26:37+01:00",
+    "ends_at": "2025-12-17T07:25:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25/26/27: Verkehrsunfall",
+    "description": "Die Linie 25 fährt nur zwischen Aspern, Oberdorfstraße und Kagran. Die Linie 26 fährt derzeit nicht zwischen Josef-Baumann-Gasse und Floridsdorf. Die Linie 27 fährt derzeit nicht zwischen Josef-Baumann-Gasse und Floridsdorf. Weichen Sie auf die Linien U1, 29 A und 31 A aus. Die Störung dauert voraussichtlich bis 07:15 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Floridsdorf S U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ed60133baf408131b29a498f71283e442b4a9dad05b4f346051a7de28c3e4bab",
+    "pubDate": "2025-12-17T06:35:00+01:00",
+    "starts_at": "2025-12-17T06:35:00+01:00",
+    "ends_at": "2025-12-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=25,26,27|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a366c32c65098559124d9098d458131cf3e677c92ae8069e81b721bb4295db1a",
+    "pubDate": "2025-12-17T06:39:51+01:00",
+    "starts_at": "2025-12-17T06:39:51+01:00",
+    "ends_at": "2025-12-17T07:39:00+01:00",
+    "_identity": "wl|störung|L=25|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A/29B: Verkehrsunfall",
+    "description": "Die Linie 29 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 29 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Floridsdorf S U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "26f6631b2d05628fb4db586861b3f9861438df3ff5ea38f47fba448c239d15cd",
+    "pubDate": "2025-12-17T06:40:00+01:00",
+    "starts_at": "2025-12-17T06:40:00+01:00",
+    "ends_at": "2025-12-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=29A,29B|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Polizeieinsatz Betrieb ab Floridsdorf",
+    "description": "Polizeieinsatz Betrieb ab Floridsdorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "68bc6af54c6e7221254acf728b57d945990511addcc9f1a0366dc0c96112b806",
+    "pubDate": "2025-12-17T06:42:54+01:00",
+    "starts_at": "2025-12-17T06:42:54+01:00",
+    "ends_at": "2025-12-17T07:42:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-12-17"
   }
 ]
