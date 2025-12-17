@@ -286,5 +286,41 @@
     "starts_at": "2025-12-17T12:00:00+01:00",
     "ends_at": "2025-12-19T03:00:00+01:00",
     "_identity": "wl|hinweis|L=18|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Rettungseinsatz",
+    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Dornbach.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
+    "pubDate": "2025-12-17T22:30:00+01:00",
+    "starts_at": "2025-12-17T22:30:00+01:00",
+    "ends_at": "2025-12-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=2|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Verspätungen",
+    "description": "Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7c9302b74c4151c193e8b61e865846e07389f3d8b7b69a75a90f6a2fde5e99f4",
+    "pubDate": "2025-12-17T22:30:00+01:00",
+    "starts_at": "2025-12-17T22:30:00+01:00",
+    "ends_at": "2025-12-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=10A|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "4A: Verspätungen",
+    "description": "Die Linie 4 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c488466d4e8c651bfdcfdf462d4fb9251bbd52636edf4eb2c38b9c6842c4ecda",
+    "pubDate": "2025-12-17T22:30:00+01:00",
+    "starts_at": "2025-12-17T22:30:00+01:00",
+    "ends_at": "2025-12-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=4A|D=2025-12-17"
   }
 ]
