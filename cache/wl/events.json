@@ -314,18 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Verkehrsüberlastung",
-    "description": "Die Linie 12 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d22f8a5721cb328952fc07b28fc40f91ea591ee68bafe657d779bd5fbff1b8bc",
-    "pubDate": "2025-12-17T16:40:00+01:00",
-    "starts_at": "2025-12-17T16:40:00+01:00",
-    "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=12A|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "O: Fremder Verkehrsunfall",
     "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein fremder Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -338,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Verkehrsüberlastung",
-    "description": "Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich Meidling.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8",
-    "pubDate": "2025-12-17T16:40:00+01:00",
-    "starts_at": "2025-12-17T16:40:00+01:00",
-    "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=63A|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "14A: Fremder Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 14 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -358,18 +334,6 @@
     "starts_at": "2025-12-17T16:40:00+01:00",
     "ends_at": "2025-12-17T23:55:00+01:00",
     "_identity": "wl|störung|L=14A|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
-    "pubDate": "2025-12-17T16:55:39+01:00",
-    "starts_at": "2025-12-17T16:55:39+01:00",
-    "ends_at": "2025-12-17T17:55:00+01:00",
-    "_identity": "wl|störung|L=|D=2025-12-17"
   },
   {
     "source": "Wiener Linien",
@@ -398,78 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Verspätungen",
-    "description": "Die Linie 18 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "08245d776c6086aeb34234d104f1c9a7c93bccf3eb8915fc23bc32028143c544",
-    "pubDate": "2025-12-17T17:10:00+01:00",
-    "starts_at": "2025-12-17T17:10:00+01:00",
-    "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10: Schadhafter Zug Betrieb ab Maroltingergasse",
-    "description": "Schadhafter Zug Betrieb ab Maroltingergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c0635ddac0f2c1d59d18dcc8a8910c519361ac8d5035441c0c1ffe8eac4e0ee",
-    "pubDate": "2025-12-17T17:14:26+01:00",
-    "starts_at": "2025-12-17T17:14:26+01:00",
-    "ends_at": "2025-12-17T18:17:00+01:00",
-    "_identity": "wl|störung|L=10|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8b2268ed2767a36efc584afb53e17a86e0b3ba91e4cecbbda59c4fede640ee4a",
-    "pubDate": "2025-12-17T17:14:26+01:00",
-    "starts_at": "2025-12-17T17:14:26+01:00",
-    "ends_at": "2025-12-17T18:17:00+01:00",
-    "_identity": "wl|störung|L=10|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "94f4eb65518cea7f3596d07523d5e3ba07cc2ee6eadafdf524ef5a92f01f2dc6",
-    "pubDate": "2025-12-17T17:15:52+01:00",
-    "starts_at": "2025-12-17T17:15:52+01:00",
-    "ends_at": "2025-12-17T18:15:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Schadhafter Zug Betrieb ab Dornbach",
-    "description": "Schadhafter Zug Betrieb ab Dornbach",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "91fd7472cd3277ed53a385ba6221034ed480412043d005aa961e804ee58b93a4",
-    "pubDate": "2025-12-17T17:15:52+01:00",
-    "starts_at": "2025-12-17T17:15:52+01:00",
-    "ends_at": "2025-12-17T18:18:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Schadhafter Zug Umleitung über Linie 43",
-    "description": "Schadhafter Zug Umleitung über Linie 43",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "33fdabf789891aa6f1a137e1d006228c6016d6d5cf7dfa77be2f13e5cd8a19d9",
-    "pubDate": "2025-12-17T17:19:41+01:00",
-    "starts_at": "2025-12-17T17:19:41+01:00",
-    "ends_at": "2025-12-17T18:18:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "3A: Verspätungen",
     "description": "Die Linie 3 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Stephansplatz U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -478,17 +370,5 @@
     "starts_at": "2025-12-17T17:20:00+01:00",
     "ends_at": "2025-12-17T23:55:00+01:00",
     "_identity": "wl|störung|L=3A|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U6 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
-    "pubDate": "2025-12-17T17:30:00+01:00",
-    "starts_at": "2025-12-17T17:30:00+01:00",
-    "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-12-17"
   }
 ]
