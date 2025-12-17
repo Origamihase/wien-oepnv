@@ -278,30 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d",
-    "pubDate": "2025-12-17T06:50:00+01:00",
-    "starts_at": "2025-12-17T06:50:00+01:00",
-    "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=60|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "86A/94A: Verkehrsüberlastung",
-    "description": "Die Linie 86 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich Stadlau S U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "977f4a2469fde64dcf2fffd4670af2873ca5c2b5d757655129bf5341f39eabf7",
-    "pubDate": "2025-12-17T08:15:00+01:00",
-    "starts_at": "2025-12-17T08:15:00+01:00",
-    "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=86A,94A|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "16A: Störung an einem Bahnübergang",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 16 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -326,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
-    "pubDate": "2025-12-17T08:50:00+01:00",
-    "starts_at": "2025-12-17T08:50:00+01:00",
-    "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "15A: Fremder Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 15 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -351,7 +315,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "11/71: Gleisschaden",
-    "description": "Die Linie 11 fährt derzeit nur zwischen Otto-Probst-Platz und Zentralfriedhof, 3. Tor. Die Linie 71 fährt derzeit nur zwischen Schottenring und Zentralfriedhof, 3. Tor. Ersatzweise weichen Sie bitte auf die Linien 71 B und 73 A aus. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein Gleisschaden im Bereich Ettrichstraße.",
+    "description": "Die Linie 11 fährt derzeit nur zwischen Otto-Probst-Platz und Zentralfriedhof, 3. Tor. Die Linie 71 fährt derzeit nur zwischen Schottenring und Zentralfriedhof, 3. Tor. Ersatzweise weichen Sie bitte auf die Linien 73 A und 73 B aus. Die Störung dauert voraussichtlich bis 15:00 Uhr. Grund dafür ist ein Gleisschaden im Bereich Ettrichstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b50a11cb5113ac13a4601eecb6e70457fd70a922949c473abfaeea9fa2836571",
     "pubDate": "2025-12-17T09:15:00+01:00",
@@ -406,5 +370,17 @@
     "starts_at": "2025-12-17T09:45:00+01:00",
     "ends_at": "2025-12-17T23:55:00+01:00",
     "_identity": "wl|störung|L=40|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2025-12-17T10:00:00+01:00",
+    "starts_at": "2025-12-17T10:00:00+01:00",
+    "ends_at": "2025-12-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-12-17"
   }
 ]
