@@ -278,37 +278,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "title": "25: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 25 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "61050604051e6004ec6f1aa1bd456297d7a5a3c423af697a9d36147a6443b43a",
-    "pubDate": "2025-12-17T06:26:37+01:00",
-    "starts_at": "2025-12-17T06:26:37+01:00",
-    "ends_at": "2025-12-17T07:25:00+01:00",
-    "_identity": "wl|störung|L=9|D=2025-12-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25/26/27: Verkehrsunfall",
-    "description": "Die Linie 25 fährt nur zwischen Aspern, Oberdorfstraße und Kagran. Die Linie 26 fährt derzeit nicht zwischen Josef-Baumann-Gasse und Floridsdorf. Die Linie 27 fährt derzeit nicht zwischen Josef-Baumann-Gasse und Floridsdorf. Weichen Sie auf die Linien U1, 29 A und 31 A aus. Die Störung dauert voraussichtlich bis 07:15 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Floridsdorf S U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ed60133baf408131b29a498f71283e442b4a9dad05b4f346051a7de28c3e4bab",
+    "guid": "904ba03627e216651c3fe7a87850a5c4243041de296f0ebcb4c445c1842de781",
     "pubDate": "2025-12-17T06:35:00+01:00",
     "starts_at": "2025-12-17T06:35:00+01:00",
     "ends_at": "2025-12-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=25,26,27|D=2025-12-17"
+    "_identity": "wl|störung|L=25|D=2025-12-17"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "26: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 26 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e5e4ada309d3d5a39dbcc7b58ba60a9bcfb4f6f0b36f7174fc6f157776ed18b5",
+    "pubDate": "2025-12-17T06:35:00+01:00",
+    "starts_at": "2025-12-17T06:35:00+01:00",
+    "ends_at": "2025-12-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=26|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 27 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2944c0ef3d90e6a01626e659ff945114566768f92f2cfcb4aacd173962aa18ee",
+    "pubDate": "2025-12-17T06:35:00+01:00",
+    "starts_at": "2025-12-17T06:35:00+01:00",
+    "ends_at": "2025-12-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=27|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Polizeieinsatz Züge halten bei Linie 25",
+    "description": "Polizeieinsatz Züge halten bei Linie 25",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a366c32c65098559124d9098d458131cf3e677c92ae8069e81b721bb4295db1a",
     "pubDate": "2025-12-17T06:39:51+01:00",
     "starts_at": "2025-12-17T06:39:51+01:00",
-    "ends_at": "2025-12-17T07:39:00+01:00",
+    "ends_at": "2025-12-17T07:44:00+01:00",
     "_identity": "wl|störung|L=25|D=2025-12-17"
   },
   {
@@ -334,5 +346,53 @@
     "starts_at": "2025-12-17T06:42:54+01:00",
     "ends_at": "2025-12-17T07:42:00+01:00",
     "_identity": "wl|störung|L=|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Polizeieinsatz Umleitung nach Kagran",
+    "description": "Polizeieinsatz Umleitung nach Kagran",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "629b61cd86e8dc1f817fe3f258cb883d7ad3061135447ea4767dfb382d13bf3b",
+    "pubDate": "2025-12-17T06:44:50+01:00",
+    "starts_at": "2025-12-17T06:44:50+01:00",
+    "ends_at": "2025-12-17T07:43:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d",
+    "pubDate": "2025-12-17T06:50:00+01:00",
+    "starts_at": "2025-12-17T06:50:00+01:00",
+    "ends_at": "2025-12-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=60|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d4fefbd61cffb826224497ce36210117717220dc478820ab5f401038825d1565",
+    "pubDate": "2025-12-17T06:54:52+01:00",
+    "starts_at": "2025-12-17T06:54:52+01:00",
+    "ends_at": "2025-12-17T08:05:00+01:00",
+    "_identity": "wl|störung|L=60|D=2025-12-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9",
+    "pubDate": "2025-12-17T07:02:06+01:00",
+    "starts_at": "2025-12-17T07:02:06+01:00",
+    "ends_at": "2025-12-17T08:00:00+01:00",
+    "_identity": "wl|störung|L=60|D=2025-12-17"
   }
 ]
