@@ -278,18 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
-    "pubDate": "2025-12-18T09:10:00+01:00",
-    "starts_at": "2025-12-18T09:10:00+01:00",
-    "ends_at": "2025-12-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "56B: Rettungseinsatz",
     "description": "Die Linie 56 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -334,5 +322,17 @@
     "starts_at": "2025-12-18T10:13:24+01:00",
     "ends_at": "2025-12-18T11:12:00+01:00",
     "_identity": "wl|störung|L=62|D=2025-12-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "47A: Feuerwehreinsatz",
+    "description": "Die Linie 47 A wird in Richtung zwischen Gruschaplatz und Zehetnergasse örtlich umgeleitet. Grund dafür ist ein Feuerwehreinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e8a4777f7fead54d94d7f32f5efe559a91f4488fd25a309c373c2d52b872de9d",
+    "pubDate": "2025-12-18T10:35:00+01:00",
+    "starts_at": "2025-12-18T10:35:00+01:00",
+    "ends_at": "2025-12-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=47A|D=2025-12-18"
   }
 ]
