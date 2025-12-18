@@ -286,5 +286,29 @@
     "starts_at": "2025-12-18T05:00:00+01:00",
     "ends_at": "2025-12-18T23:55:00+01:00",
     "_identity": "wl|störung|L=U4|D=2025-12-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "63A: Betriebsstörung",
+    "description": "Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Pohlgasse .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "268fd410f5ef450f9c7a2a594e86bd0dc8db5b7815880b183dc553c14f663dfe",
+    "pubDate": "2025-12-18T05:50:00+01:00",
+    "starts_at": "2025-12-18T05:50:00+01:00",
+    "ends_at": "2025-12-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=63A|D=2025-12-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "16A/17A/67A/67B: Signalstörung",
+    "description": "Die Linie 67 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 16 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 17 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 67 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Signalstörung der ÖBB.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "884994111f691b16f8e904736fd9b06ec304c06a4c366af8a170da68d09e5e37",
+    "pubDate": "2025-12-18T06:00:00+01:00",
+    "starts_at": "2025-12-18T06:00:00+01:00",
+    "ends_at": "2025-12-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=16A,17A,67A,67B|D=2025-12-18"
   }
 ]
