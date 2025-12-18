@@ -278,30 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "56B: Rettungseinsatz",
-    "description": "Die Linie 56 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "98ba41d658c3bdafab78a5064a1599abb103e39bd4d194548e7288a883eb4ec0",
-    "pubDate": "2025-12-18T09:35:00+01:00",
-    "starts_at": "2025-12-18T09:35:00+01:00",
-    "ends_at": "2025-12-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=56B|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Fremder Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4c1e89a0a40bfb1e4f7ed705d39d58c43ececa41111e4527719df3c39d677104",
-    "pubDate": "2025-12-18T10:00:00+01:00",
-    "starts_at": "2025-12-18T10:00:00+01:00",
-    "ends_at": "2025-12-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=62|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "47A: Feuerwehreinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 47 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -310,54 +286,6 @@
     "starts_at": "2025-12-18T10:35:00+01:00",
     "ends_at": "2025-12-18T23:55:00+01:00",
     "_identity": "wl|störung|L=47A|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Verspätungen",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eaf96db733f004733a9b91b0e04111a3f9331a02f6c30911495b5b22f6e936d3",
-    "pubDate": "2025-12-18T11:10:00+01:00",
-    "starts_at": "2025-12-18T11:10:00+01:00",
-    "ends_at": "2025-12-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=11|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Verspätungen",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "03b747bc4c57f0d83aba2ed60a1156b616a882a8e9b1ca40258d97373518d195",
-    "pubDate": "2025-12-18T11:10:00+01:00",
-    "starts_at": "2025-12-18T11:10:00+01:00",
-    "ends_at": "2025-12-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Schadhafter Zug Betrieb ab Reumannplatz",
-    "description": "Schadhafter Zug Betrieb ab Reumannplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a5b0466c8dc56436a95a935148dfa49a28fc3f91a13bcbe5cbf16a9b782641a3",
-    "pubDate": "2025-12-18T11:19:14+01:00",
-    "starts_at": "2025-12-18T11:19:14+01:00",
-    "ends_at": "2025-12-18T12:18:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Polizeieinsatz",
-    "description": "Die Linie 13 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
-    "pubDate": "2025-12-18T11:20:00+01:00",
-    "starts_at": "2025-12-18T11:20:00+01:00",
-    "ends_at": "2025-12-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-12-18"
   },
   {
     "source": "Wiener Linien",
@@ -382,5 +310,29 @@
     "starts_at": "2025-12-18T12:10:00+01:00",
     "ends_at": "2025-12-18T23:55:00+01:00",
     "_identity": "wl|störung|L=59A|D=2025-12-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "32A: Verspätungen",
+    "description": "Die Linie 32 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Bhf. Strebersdorf S.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "43249ec0a5f2d6c08874c2657c86483fbc66df5b60627e491e0a6a97082be359",
+    "pubDate": "2025-12-18T12:15:00+01:00",
+    "starts_at": "2025-12-18T12:15:00+01:00",
+    "ends_at": "2025-12-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=32A|D=2025-12-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2025-12-18T12:35:00+01:00",
+    "starts_at": "2025-12-18T12:35:00+01:00",
+    "ends_at": "2025-12-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2025-12-18"
   }
 ]
