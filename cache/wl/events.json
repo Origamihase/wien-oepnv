@@ -194,10 +194,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Betrieb ab St. Marx",
-    "description": "Gleisbauarbeiten Betrieb ab St. Marx",
+    "title": "18: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
+    "guid": "1540f7c8272575e3ac382ead36ec6f89de804e48d860ef679126fdcfb8e9f55e",
     "pubDate": "2025-12-18T00:00:21+01:00",
     "starts_at": "2025-12-18T00:00:21+01:00",
     "ends_at": "2025-12-18T23:59:59+01:00",
@@ -206,10 +206,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "title": "18: Betrieb ab St. Marx",
+    "description": "Gleisbauarbeiten Betrieb ab St. Marx",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1540f7c8272575e3ac382ead36ec6f89de804e48d860ef679126fdcfb8e9f55e",
+    "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
     "pubDate": "2025-12-18T00:00:21+01:00",
     "starts_at": "2025-12-18T00:00:21+01:00",
     "ends_at": "2025-12-18T23:59:59+01:00",
@@ -266,25 +266,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26A: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "13c64fa7dcaca816042a4e89eaf864bb6f5dfd4781f2d0299bbb70dd987b9828",
-    "pubDate": "2025-12-18T20:49:23+01:00",
-    "starts_at": "2025-12-18T20:49:23+01:00",
-    "ends_at": "2025-12-18T23:45:00+01:00",
-    "_identity": "wl|störung|L=26A|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Feuerwehreinsatz Betrieb ab Lannesstraße",
     "description": "Feuerwehreinsatz Betrieb ab Lannesstraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8969a1a91e4ad06a33ac988813f4a7426a92ed8c7ba4b24a1b0b854b1fbb9d99",
     "pubDate": "2025-12-18T20:49:23+01:00",
     "starts_at": "2025-12-18T20:49:23+01:00",
-    "ends_at": "2025-12-18T23:45:00+01:00",
+    "ends_at": "2025-12-18T23:59:59+01:00",
+    "_identity": "wl|störung|L=26A|D=2025-12-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26A: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13c64fa7dcaca816042a4e89eaf864bb6f5dfd4781f2d0299bbb70dd987b9828",
+    "pubDate": "2025-12-18T20:49:23+01:00",
+    "starts_at": "2025-12-18T20:49:23+01:00",
+    "ends_at": "2025-12-18T23:59:59+01:00",
     "_identity": "wl|störung|L=26A|D=2025-12-18"
   },
   {
@@ -296,7 +296,7 @@
     "guid": "37e3e08a2cf69f169fe8c2757f9571e191ba5f91478198fd7ec63be762cfa643",
     "pubDate": "2025-12-18T21:00:59+01:00",
     "starts_at": "2025-12-18T21:00:59+01:00",
-    "ends_at": "2025-12-18T23:45:00+01:00",
+    "ends_at": "2025-12-18T23:59:59+01:00",
     "_identity": "wl|störung|L=88B|D=2025-12-18"
   },
   {
@@ -308,7 +308,7 @@
     "guid": "df84ce28269021f567627c42c49e0db8ee62dd2535726313fcd0b6074c7951ff",
     "pubDate": "2025-12-18T21:02:26+01:00",
     "starts_at": "2025-12-18T21:02:26+01:00",
-    "ends_at": "2025-12-18T23:45:00+01:00",
+    "ends_at": "2025-12-18T23:59:59+01:00",
     "_identity": "wl|störung|L=98A|D=2025-12-18"
   },
   {
@@ -326,25 +326,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17410552b5076b6dbbd3ae46156043cd5032b22edde7e308e5b84105a85b76ff",
-    "pubDate": "2025-12-18T22:21:19+01:00",
-    "starts_at": "2025-12-18T22:21:19+01:00",
-    "ends_at": "2025-12-18T23:33:00+01:00",
-    "_identity": "wl|störung|L=25|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26A: Feuerwehreinsatz Betrieb nur bis Lannesstraße",
     "description": "Feuerwehreinsatz Betrieb nur bis Lannesstraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "550624496cda9e87cb27547dd8c2460ccfc413bdde738ad0018906f04a354f2a",
     "pubDate": "2025-12-18T22:24:49+01:00",
     "starts_at": "2025-12-18T22:24:49+01:00",
-    "ends_at": "2025-12-18T23:45:00+01:00",
+    "ends_at": "2025-12-18T23:59:59+01:00",
     "_identity": "wl|störung|L=26A|D=2025-12-18"
   }
 ]
