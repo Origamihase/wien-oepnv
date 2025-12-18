@@ -290,10 +290,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26A: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "title": "26A: Feuerwehreinsatz Betrieb ab Lannesstraße",
+    "description": "Feuerwehreinsatz Betrieb ab Lannesstraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "13c64fa7dcaca816042a4e89eaf864bb6f5dfd4781f2d0299bbb70dd987b9828",
+    "guid": "8969a1a91e4ad06a33ac988813f4a7426a92ed8c7ba4b24a1b0b854b1fbb9d99",
     "pubDate": "2025-12-18T20:49:23+01:00",
     "starts_at": "2025-12-18T20:49:23+01:00",
     "ends_at": "2025-12-18T23:45:00+01:00",
@@ -302,10 +302,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26A: Feuerwehreinsatz Betrieb ab Lannesstraße",
-    "description": "Feuerwehreinsatz Betrieb ab Lannesstraße",
+    "title": "26A: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8969a1a91e4ad06a33ac988813f4a7426a92ed8c7ba4b24a1b0b854b1fbb9d99",
+    "guid": "13c64fa7dcaca816042a4e89eaf864bb6f5dfd4781f2d0299bbb70dd987b9828",
     "pubDate": "2025-12-18T20:49:23+01:00",
     "starts_at": "2025-12-18T20:49:23+01:00",
     "ends_at": "2025-12-18T23:45:00+01:00",
@@ -346,5 +346,41 @@
     "starts_at": "2025-12-18T21:45:00+01:00",
     "ends_at": "2025-12-18T23:55:00+01:00",
     "_identity": "wl|störung|L=U4|D=2025-12-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Verkehrsunfall",
+    "description": "Die Linie 25 ist derzeit in Richtung Floridsdorf an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 22:40 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Langobardenstraße .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "904ba03627e216651c3fe7a87850a5c4243041de296f0ebcb4c445c1842de781",
+    "pubDate": "2025-12-18T22:15:00+01:00",
+    "starts_at": "2025-12-18T22:15:00+01:00",
+    "ends_at": "2025-12-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=25|D=2025-12-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "17410552b5076b6dbbd3ae46156043cd5032b22edde7e308e5b84105a85b76ff",
+    "pubDate": "2025-12-18T22:21:19+01:00",
+    "starts_at": "2025-12-18T22:21:19+01:00",
+    "ends_at": "2025-12-18T23:33:00+01:00",
+    "_identity": "wl|störung|L=25|D=2025-12-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26A: Feuerwehreinsatz Betrieb nur bis Lannesstraße",
+    "description": "Feuerwehreinsatz Betrieb nur bis Lannesstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "550624496cda9e87cb27547dd8c2460ccfc413bdde738ad0018906f04a354f2a",
+    "pubDate": "2025-12-18T22:24:49+01:00",
+    "starts_at": "2025-12-18T22:24:49+01:00",
+    "ends_at": "2025-12-18T23:45:00+01:00",
+    "_identity": "wl|störung|L=26A|D=2025-12-18"
   }
 ]
