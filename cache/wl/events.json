@@ -278,86 +278,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
+    "title": "14A: Betriebsstörung",
+    "description": "Die Linie 14 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Kaunitzgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
-    "pubDate": "2025-12-19T09:00:00+01:00",
-    "starts_at": "2025-12-19T09:00:00+01:00",
-    "ends_at": "2025-12-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-12-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0db792f9373b33394ac9cbd54fe89c56f58770700c324d59539bd75f7e841cff",
-    "pubDate": "2025-12-19T11:00:00+01:00",
-    "starts_at": "2025-12-19T11:00:00+01:00",
-    "ends_at": "2025-12-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-12-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46",
-    "pubDate": "2025-12-19T11:00:00+01:00",
-    "starts_at": "2025-12-19T11:00:00+01:00",
-    "ends_at": "2025-12-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=11|D=2025-12-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A: Verkehrsunfall",
-    "description": "Die Linie 11 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Vorgartenstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "49173de64aa2215d87e8e544f1df8b7687c6e8172327e8cd9174b3c727005709",
-    "pubDate": "2025-12-19T11:40:00+01:00",
-    "starts_at": "2025-12-19T11:40:00+01:00",
-    "ends_at": "2025-12-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2025-12-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A/14A: Betriebsstörung",
-    "description": "Die Linie 13 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 14 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Kaunitzgasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d20e7444587d88d21443285285fef08f8a95d5337241af45d616016397cb3e16",
+    "guid": "1ce7b5feac6777b87454ae90ecf1a21ccc30d9d9f775c8de00d123245575dcec",
     "pubDate": "2025-12-19T12:25:00+01:00",
     "starts_at": "2025-12-19T12:25:00+01:00",
     "ends_at": "2025-12-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=13A,14A|D=2025-12-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "57A: Verkehrsüberlastung",
-    "description": "Die Linie 57 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4e672553aa1915bacf3501b3a3d5a8107576c36dc3c6e9cc3c4a59768adff9a4",
-    "pubDate": "2025-12-19T12:50:00+01:00",
-    "starts_at": "2025-12-19T12:50:00+01:00",
-    "ends_at": "2025-12-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=57A|D=2025-12-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "33A: Verkehrsüberlastung",
-    "description": "Die Linie 33 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cd2204c7545719ef367a1d80f100a473cb05ab42b0684f7b7ac6078c99df82c5",
-    "pubDate": "2025-12-19T13:25:00+01:00",
-    "starts_at": "2025-12-19T13:25:00+01:00",
-    "ends_at": "2025-12-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=33A|D=2025-12-19"
+    "_identity": "wl|störung|L=14A|D=2025-12-19"
   },
   {
     "source": "Wiener Linien",
@@ -370,5 +298,29 @@
     "starts_at": "2025-12-19T13:25:00+01:00",
     "ends_at": "2025-12-19T23:55:00+01:00",
     "_identity": "wl|störung|L=60A|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Verkehrsüberlastung",
+    "description": "Die Linie 7 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
+    "pubDate": "2025-12-19T13:40:00+01:00",
+    "starts_at": "2025-12-19T13:40:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=7A|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "87A: Verkehrsüberlastung",
+    "description": "Die Linie 87 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bdbab2244de470fab40c03c4442e1cacd4598c871fef04b19833b28330e1e1a9",
+    "pubDate": "2025-12-19T14:00:00+01:00",
+    "starts_at": "2025-12-19T14:00:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=87A|D=2025-12-19"
   }
 ]
