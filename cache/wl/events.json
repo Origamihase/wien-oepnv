@@ -158,10 +158,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Betrieb ab St. Marx",
-    "description": "Gleisbauarbeiten Betrieb ab St. Marx",
+    "title": "18: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
+    "guid": "1540f7c8272575e3ac382ead36ec6f89de804e48d860ef679126fdcfb8e9f55e",
     "pubDate": "2025-12-18T00:00:21+01:00",
     "starts_at": "2025-12-18T00:00:21+01:00",
     "ends_at": "2025-12-19T23:59:59+01:00",
@@ -170,10 +170,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "title": "18: Betrieb ab St. Marx",
+    "description": "Gleisbauarbeiten Betrieb ab St. Marx",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1540f7c8272575e3ac382ead36ec6f89de804e48d860ef679126fdcfb8e9f55e",
+    "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
     "pubDate": "2025-12-18T00:00:21+01:00",
     "starts_at": "2025-12-18T00:00:21+01:00",
     "ends_at": "2025-12-19T23:59:59+01:00",
@@ -278,30 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Rettungseinsatz Betrieb ab Johann-Nepomuk-Berger-Platz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
-    "pubDate": "2025-12-19T18:15:00+01:00",
-    "starts_at": "2025-12-19T18:15:00+01:00",
-    "ends_at": "2025-12-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=9|D=2025-12-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43: Rettungseinsatz Betrieb ab Brünnlbadgasse",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
-    "pubDate": "2025-12-19T18:15:00+01:00",
-    "starts_at": "2025-12-19T18:15:00+01:00",
-    "ends_at": "2025-12-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=43|D=2025-12-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Gleisschaden Betrieb über Li. 2",
     "description": "Gleisschaden Betrieb über Li. 2",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -358,5 +334,17 @@
     "starts_at": "2025-12-19T18:29:34+01:00",
     "ends_at": "2025-12-19T23:45:00+01:00",
     "_identity": "wl|störung|L=71|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
+    "pubDate": "2025-12-19T19:28:46+01:00",
+    "starts_at": "2025-12-19T19:28:46+01:00",
+    "ends_at": "2025-12-19T20:27:00+01:00",
+    "_identity": "wl|störung|L=49|D=2025-12-19"
   }
 ]
