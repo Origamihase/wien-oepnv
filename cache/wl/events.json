@@ -326,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Fremder Verkehrsunfall",
-    "description": "Die Linie 6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein fremder Verkehrsunfall im Bereich Bernhardtstalgasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "67f6f340526dbbc6c28a07268bd4d4da5596272e34d03f234305749a96c6a33a",
-    "pubDate": "2025-12-19T12:10:00+01:00",
-    "starts_at": "2025-12-19T12:10:00+01:00",
-    "ends_at": "2025-12-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-12-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A/14A: Betriebsstörung",
     "description": "Die Linie 13 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 14 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Kaunitzgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -346,5 +334,41 @@
     "starts_at": "2025-12-19T12:25:00+01:00",
     "ends_at": "2025-12-19T23:55:00+01:00",
     "_identity": "wl|störung|L=13A,14A|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Verkehrsüberlastung",
+    "description": "Die Linie 57 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4e672553aa1915bacf3501b3a3d5a8107576c36dc3c6e9cc3c4a59768adff9a4",
+    "pubDate": "2025-12-19T12:50:00+01:00",
+    "starts_at": "2025-12-19T12:50:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33A: Verkehrsüberlastung",
+    "description": "Die Linie 33 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cd2204c7545719ef367a1d80f100a473cb05ab42b0684f7b7ac6078c99df82c5",
+    "pubDate": "2025-12-19T13:25:00+01:00",
+    "starts_at": "2025-12-19T13:25:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=33A|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60A: Verkehrsüberlastung",
+    "description": "Die Linie 60 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c324aeb68aff0a13a99697bafb1720b1552500ec06ceef7ada487c69aa2ddcf",
+    "pubDate": "2025-12-19T13:25:00+01:00",
+    "starts_at": "2025-12-19T13:25:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=60A|D=2025-12-19"
   }
 ]
