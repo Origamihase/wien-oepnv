@@ -122,18 +122,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "U1/U4: Station Schwedenplatz, Sperre Aufgang Urania",
-    "description": "Aufgangsperre\nWegen Bauarbeiten muss der Aufgang \"Urania\" der U-Bahn-Station Schwedenplatz zeitweilig gesperrt werden.\nZeitraum:\nMontag, 24. November 2025, 21:00 Uhr bis Freitag, 19. Dezember 2025, etwa 04:30 Uhr.\nJedoch nur Montag - Donnerstag zwischen 21:00 Uhr und 04:30 Uhr.\nErsatz:\nBitte benutzen Sie die anderen Aufgänge.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aac66d61a153d41a7c2a795dcebb5bed35489d9bc098be249cbb953e58f24d15",
-    "pubDate": "2025-11-24T14:15:00+01:00",
-    "starts_at": "2025-11-24T14:15:00+01:00",
-    "ends_at": "2025-12-19T04:30:00+01:00",
-    "_identity": "wl|hinweis|L=U1,U4|D=2025-11-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "1/2/71/D: Silvesterpfad 2025",
     "description": "Silvesterpfad 2025\nIm Zuge des Silvesterpfades 2025 wird die Ringstraße im Bereich Rathausplatz gesperrt. Es kommt zu folgenden Verkehrsmaßnahmen:\nZeitraum:\nMittwoch, 31. Dezember 2025, ab zirka 18:30 Uhr bis Donnerstag, 01.01.2026, etwa 02:00 Uhr.\nMaßnahmen:\nLinie D\nUmleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U.\nLinie 1\nUmleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz.\nLinie 2\nUmleitung in beiden Richtungen zwischen Ring, Volkstheater U und Rathaus U über die Reichsratstraße. Fahrgäste Richtung Dornbach finden die Züge in der Haltestelle der Linien 46, 49 und 48 A.\nLinie 71\nBetrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.\nWeiteres:\nBeachten Sie bitte, dass die genannten Verkehrsmaßnahmen nicht alle gleichzeitig auftreten müssen. Je nach Fortschritt und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf www.wienerlinien.at.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -266,13 +254,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N20: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie N20 zu unterschiedlichen Intervallen.",
+    "title": "62A: Busse halten Breitenfurter Straße 236-238",
+    "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8b7ed7c2f8f102b95f2cdd1affa7d7d07a267a3b6e16559a64a3683654913544",
-    "pubDate": "2025-12-19T00:55:00+01:00",
-    "starts_at": "2025-12-19T00:55:00+01:00",
-    "ends_at": "2025-12-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=N20|D=2025-12-19"
+    "guid": "156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3",
+    "pubDate": "2025-12-19T04:45:10+01:00",
+    "starts_at": "2025-12-19T04:45:10+01:00",
+    "ends_at": "2025-12-20T00:35:00+01:00",
+    "_identity": "wl|störung|L=62A|D=2025-12-19"
   }
 ]
