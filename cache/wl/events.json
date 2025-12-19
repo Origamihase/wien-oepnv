@@ -302,6 +302,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0db792f9373b33394ac9cbd54fe89c56f58770700c324d59539bd75f7e841cff",
+    "pubDate": "2025-12-19T11:00:00+01:00",
+    "starts_at": "2025-12-19T11:00:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=6|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46",
+    "pubDate": "2025-12-19T11:00:00+01:00",
+    "starts_at": "2025-12-19T11:00:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=11|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "6: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -362,6 +386,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "77A: Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 77 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0686bd5b181b3fefdfbc6224ce7aeee3a1c12badce5322207bfcd2c14be2b7d4",
+    "pubDate": "2025-12-19T11:15:00+01:00",
+    "starts_at": "2025-12-19T11:15:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=77A|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11: Verkehrsunfall Umleitung ab Absberggasse über D und O",
     "description": "Verkehrsunfall Umleitung ab Absberggasse über D und O",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,5 +406,41 @@
     "starts_at": "2025-12-19T11:16:05+01:00",
     "ends_at": "2025-12-19T12:14:00+01:00",
     "_identity": "wl|störung|L=11|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 66 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "aba904564d19959e0ddb3e2e002949d8d9e98e2655696c852ae1597077a1d78b",
+    "pubDate": "2025-12-19T11:30:00+01:00",
+    "starts_at": "2025-12-19T11:30:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=66A|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "65A: Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 65 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2da08ce376dece351b5e6a5143f4b46dc0617e5578595d88319035c01c6875b4",
+    "pubDate": "2025-12-19T11:30:00+01:00",
+    "starts_at": "2025-12-19T11:30:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=65A|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11A: Verkehrsunfall",
+    "description": "Die Linie 11 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Vorgartenstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "49173de64aa2215d87e8e544f1df8b7687c6e8172327e8cd9174b3c727005709",
+    "pubDate": "2025-12-19T11:40:00+01:00",
+    "starts_at": "2025-12-19T11:40:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=11A|D=2025-12-19"
   }
 ]
