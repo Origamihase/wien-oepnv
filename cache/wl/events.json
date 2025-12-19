@@ -195,12 +195,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "53A: Wasserrohrgebrechen",
-    "description": "Die Linie 53 A wird in beiden Richtungen zwischen Bhf. Hütteldorf SU und Wolfrathplatz über Auhofstraße umgeleitet. Die Störung dauert voraussichtlich bis 19.12.2025, 13:00 Uhr. Grund dafür ist ein Wasserrohrgebrechen im Bereich Schloßbergstraße.",
+    "description": "Die Linie 53 A wird in beiden Richtungen zwischen Bhf. Hütteldorf SU und Wolfrathplatz über Auhofstraße umgeleitet. Die Störung dauert voraussichtlich bis 19.12.2025, 18:00 Uhr. Grund dafür ist ein Wasserrohrgebrechen im Bereich Schloßbergstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8835feb5165c41ab176bec916243fd1645068bcbc6fb584da5106b819843dcce",
     "pubDate": "2025-12-18T15:55:00+01:00",
     "starts_at": "2025-12-18T15:55:00+01:00",
-    "ends_at": "2025-12-19T15:00:00+01:00",
+    "ends_at": "2025-12-19T18:00:00+01:00",
     "_identity": "wl|störung|L=53A|D=2025-12-18"
   },
   {
@@ -274,5 +274,17 @@
     "starts_at": "2025-12-19T05:50:00+01:00",
     "ends_at": "2025-12-19T23:55:00+01:00",
     "_identity": "wl|störung|L=73B|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "15A: Verkehrsunfall",
+    "description": "Die Linie 15 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Raxstraße / Rudolfshügelgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b22dfbbf389bb0a8ea03be177b6fa20b16f32c05b0828f6ae785106649e64f7b",
+    "pubDate": "2025-12-19T06:25:00+01:00",
+    "starts_at": "2025-12-19T06:25:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=15A|D=2025-12-19"
   }
 ]
