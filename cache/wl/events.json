@@ -194,10 +194,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Haltestelle aufgelassen",
-    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
+    "title": "18: Betrieb ab St. Marx",
+    "description": "Gleisbauarbeiten Betrieb ab St. Marx",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1540f7c8272575e3ac382ead36ec6f89de804e48d860ef679126fdcfb8e9f55e",
+    "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
     "pubDate": "2025-12-18T00:00:21+01:00",
     "starts_at": "2025-12-18T00:00:21+01:00",
     "ends_at": "2025-12-19T23:59:59+01:00",
@@ -206,10 +206,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Betrieb ab St. Marx",
-    "description": "Gleisbauarbeiten Betrieb ab St. Marx",
+    "title": "18: Haltestelle aufgelassen",
+    "description": "Gleisbauarbeiten Haltestelle aufgelassen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "78e25f4709a0c5e27cab79b249f85b38898f9b4660c45314e351f1aef4f9f2e7",
+    "guid": "1540f7c8272575e3ac382ead36ec6f89de804e48d860ef679126fdcfb8e9f55e",
     "pubDate": "2025-12-18T00:00:21+01:00",
     "starts_at": "2025-12-18T00:00:21+01:00",
     "ends_at": "2025-12-19T23:59:59+01:00",
@@ -238,66 +238,6 @@
     "starts_at": "2025-12-18T15:55:00+01:00",
     "ends_at": "2025-12-19T15:00:00+01:00",
     "_identity": "wl|störung|L=53A|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "98A: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 98 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6c9f58f1334198ea026091b84cb87592db3486f202530b1e3fcb39079e59a456",
-    "pubDate": "2025-12-18T20:45:00+01:00",
-    "starts_at": "2025-12-18T20:45:00+01:00",
-    "ends_at": "2025-12-19T01:00:00+01:00",
-    "_identity": "wl|störung|L=98A|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "88B: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 88 B zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e3a8042ac62e7670e25ecfac1d4f04d6782b920cc17c036764911b89eda240fc",
-    "pubDate": "2025-12-18T20:45:00+01:00",
-    "starts_at": "2025-12-18T20:45:00+01:00",
-    "ends_at": "2025-12-19T01:00:00+01:00",
-    "_identity": "wl|störung|L=88B|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26A: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 26 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e6df765a0f47ee56b6f452dc59bd5e48027660a4df74396fd39a3f154b2f7ae",
-    "pubDate": "2025-12-18T20:45:00+01:00",
-    "starts_at": "2025-12-18T20:45:00+01:00",
-    "ends_at": "2025-12-19T01:00:00+01:00",
-    "_identity": "wl|störung|L=26A|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26A: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "13c64fa7dcaca816042a4e89eaf864bb6f5dfd4781f2d0299bbb70dd987b9828",
-    "pubDate": "2025-12-18T20:49:23+01:00",
-    "starts_at": "2025-12-18T20:49:23+01:00",
-    "ends_at": "2025-12-19T23:45:00+01:00",
-    "_identity": "wl|störung|L=26A|D=2025-12-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26A: Feuerwehreinsatz Betrieb ab Lannesstraße",
-    "description": "Feuerwehreinsatz Betrieb ab Lannesstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8969a1a91e4ad06a33ac988813f4a7426a92ed8c7ba4b24a1b0b854b1fbb9d99",
-    "pubDate": "2025-12-18T20:49:23+01:00",
-    "starts_at": "2025-12-18T20:49:23+01:00",
-    "ends_at": "2025-12-19T23:45:00+01:00",
-    "_identity": "wl|störung|L=26A|D=2025-12-18"
   },
   {
     "source": "Wiener Linien",
@@ -346,5 +286,17 @@
     "starts_at": "2025-12-19T00:00:27+01:00",
     "ends_at": "2025-12-19T23:59:59+01:00",
     "_identity": "wl|störung|L=|D=2025-12-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Feuerwehreinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie N20 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8b7ed7c2f8f102b95f2cdd1affa7d7d07a267a3b6e16559a64a3683654913544",
+    "pubDate": "2025-12-19T00:55:00+01:00",
+    "starts_at": "2025-12-19T00:55:00+01:00",
+    "ends_at": "2025-12-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=N20|D=2025-12-19"
   }
 ]
