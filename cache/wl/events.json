@@ -250,5 +250,17 @@
     "starts_at": "2025-12-20T15:04:55+01:00",
     "ends_at": "2025-12-20T22:30:00+01:00",
     "_identity": "wl|störung|L=|D=2025-12-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2025-12-20T15:55:00+01:00",
+    "starts_at": "2025-12-20T15:55:00+01:00",
+    "ends_at": "2025-12-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-12-20"
   }
 ]
