@@ -206,13 +206,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Rettungseinsatz",
-    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Oberlaa.",
+    "title": "13A: Einkaufssamstag Betrieb ab Neubaugasse",
+    "description": "Einkaufssamstag Betrieb ab Neubaugasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
-    "pubDate": "2025-12-20T08:25:00+01:00",
-    "starts_at": "2025-12-20T08:25:00+01:00",
-    "ends_at": "2025-12-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2025-12-20"
+    "guid": "188e5ea2bd64ebe99fb4d2df5cea47979b825734a46e9035166ebb08ea43332a",
+    "pubDate": "2025-12-20T08:41:05+01:00",
+    "starts_at": "2025-12-20T08:41:05+01:00",
+    "ends_at": "2025-12-20T20:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-12-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Einkaufssamstag Betrieb ab Neubaugasse / Burggasse",
+    "description": "Einkaufssamstag Betrieb ab Neubaugasse / Burggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c2eca20e716f8361b8f6a799c5e8e15227094623080719d1ccc4898e710aa664",
+    "pubDate": "2025-12-20T09:03:08+01:00",
+    "starts_at": "2025-12-20T09:03:08+01:00",
+    "ends_at": "2025-12-20T20:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-12-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Einkaufssamstag Busse halten bei 14A",
+    "description": "Einkaufssamstag Busse halten bei 14 A",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5f6a1d04b0640debe7500c27fce789b944a717a621015d3d3d666ed73b6146e4",
+    "pubDate": "2025-12-20T09:03:19+01:00",
+    "starts_at": "2025-12-20T09:03:19+01:00",
+    "ends_at": "2025-12-20T20:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-12-20"
   }
 ]
