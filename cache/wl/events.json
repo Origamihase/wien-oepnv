@@ -190,5 +190,29 @@
     "starts_at": "2025-12-20T05:40:00+01:00",
     "ends_at": "2025-12-20T23:55:00+01:00",
     "_identity": "wl|störung|L=25|D=2025-12-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Einkaufssamstag Ganztägig kein Betrieb!",
+    "description": "Einkaufssamstag Ganztägig kein Betrieb!",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3e53bddded6c4f4d29474626d0340a9936b52b1680115fc3b7226fcdfeba4ddb",
+    "pubDate": "2025-12-20T05:50:30+01:00",
+    "starts_at": "2025-12-20T05:50:30+01:00",
+    "ends_at": "2025-12-20T20:45:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-12-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "4A: Umleitung ab 12.01.2026",
+    "description": "Rohrleitungsarbeiten\nWegen Bauarbeiten im Bereich der Lisztstraße wird die Linie 4 A umgeleitet.\nZeitraum:\nAb Montag, 12. Jänner 2026 etwa 07:00 Uhr bis voraussichtlich Ende Februar 2026.\nMaßnahmen:\nLinie 4 A in Richtung Wittelsbachstraße\nUmleitung ab Lothringerstraße # Schwarzenbergplatz über Schwarzenbergplatz - Am Heumarkt - Lisztstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nAkademietheater (Lisztstraße 4)\nLinie 4 A in Richtung Karlsplatz U\nUmleitung ab Lisztstraße # Heumarkt über Am Heumarkt - Schwarzenbergplatz - Lothringerstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nAkademietheater (Lisztstraße 1)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3968b28d1734e83928e4cd5b122b4bd71990d4b7d329e687736e6d9d94e25d6f",
+    "pubDate": "2025-12-20T06:00:00+01:00",
+    "starts_at": "2025-12-20T06:00:00+01:00",
+    "ends_at": "2026-02-28T11:11:00+01:00",
+    "_identity": "wl|hinweis|L=4A|D=2025-12-20"
   }
 ]
