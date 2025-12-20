@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Christkindlmarkt Kein Halt bis etwa 22:30!",
-    "description": "Christkindlmarkt Kein Halt bis etwa 22:30!",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "85d8b36504b503c9c3ec6e6db005faa64f15eab50eb0e2fa72052820513d7ce5",
-    "pubDate": "2025-12-20T15:04:55+01:00",
-    "starts_at": "2025-12-20T15:04:55+01:00",
-    "ends_at": "2025-12-20T22:30:00+01:00",
-    "_identity": "wl|störung|L=|D=2025-12-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -218,37 +206,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "69A: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 69 A zu unterschiedlichen Intervallen.",
+    "title": "13A: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c3f5724da51a5f97e26106c94e4e4a9c78a6afbf8833a95716caef1b24c5cf6e",
-    "pubDate": "2025-12-20T20:25:00+01:00",
-    "starts_at": "2025-12-20T20:25:00+01:00",
-    "ends_at": "2025-12-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=69A|D=2025-12-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
-    "pubDate": "2025-12-20T21:05:00+01:00",
-    "starts_at": "2025-12-20T21:05:00+01:00",
-    "ends_at": "2025-12-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2025-12-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1252a6d03226d3f1d21b0f0e84cdaf2b9637cd4ac88019850214fb459e92e018",
-    "pubDate": "2025-12-20T21:30:00+01:00",
-    "starts_at": "2025-12-20T21:30:00+01:00",
-    "ends_at": "2025-12-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=49|D=2025-12-20"
+    "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
+    "pubDate": "2025-12-20T22:15:08+01:00",
+    "starts_at": "2025-12-20T22:15:08+01:00",
+    "ends_at": "2025-12-20T23:14:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-12-20"
   }
 ]
