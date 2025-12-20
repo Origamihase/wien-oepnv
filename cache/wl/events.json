@@ -214,5 +214,17 @@
     "starts_at": "2025-12-20T06:00:00+01:00",
     "ends_at": "2026-02-28T11:11:00+01:00",
     "_identity": "wl|hinweis|L=4A|D=2025-12-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Simmering.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2025-12-20T07:05:00+01:00",
+    "starts_at": "2025-12-20T07:05:00+01:00",
+    "ends_at": "2025-12-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-12-20"
   }
 ]
