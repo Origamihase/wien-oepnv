@@ -164,7 +164,7 @@
     "guid": "987f6342d650fde597d45e8613dc916359daf5b52e33852b7b965e827818fa3e",
     "pubDate": "2025-12-19T07:31:17+01:00",
     "starts_at": "2025-12-19T07:31:17+01:00",
-    "ends_at": "2025-12-20T23:59:59+01:00",
+    "ends_at": "2025-12-21T23:59:59+01:00",
     "_identity": "wl|störung|L=|D=2025-12-19"
   },
   {
@@ -194,13 +194,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "65A: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 65 A zu unterschiedlichen Intervallen.",
+    "title": "U4: Polizeieinsatz",
+    "description": "Die Linie U4 fährt derzeit nur zwischen Hütteldorf und Spittelau. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein Polizeieinsatz im Bereich Heiligenstadt.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2da08ce376dece351b5e6a5143f4b46dc0617e5578595d88319035c01c6875b4",
-    "pubDate": "2025-12-20T23:15:00+01:00",
-    "starts_at": "2025-12-20T23:15:00+01:00",
-    "ends_at": "2025-12-21T00:30:00+01:00",
-    "_identity": "wl|störung|L=65A|D=2025-12-20"
+    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
+    "pubDate": "2025-12-21T00:05:00+01:00",
+    "starts_at": "2025-12-21T00:05:00+01:00",
+    "ends_at": "2025-12-21T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2025-12-21"
   }
 ]
