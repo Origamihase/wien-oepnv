@@ -157,18 +157,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Busse halten Untere Augartenstraße 42",
-    "description": "Busse halten Untere Augartenstraße 42",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "987f6342d650fde597d45e8613dc916359daf5b52e33852b7b965e827818fa3e",
-    "pubDate": "2025-12-19T07:31:17+01:00",
-    "starts_at": "2025-12-19T07:31:17+01:00",
-    "ends_at": "2025-12-21T23:59:59+01:00",
-    "_identity": "wl|störung|L=|D=2025-12-19"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "4A: Umleitung ab 12.01.2026",
     "description": "Rohrleitungsarbeiten\nWegen Bauarbeiten im Bereich der Lisztstraße wird die Linie 4 A umgeleitet.\nZeitraum:\nAb Montag, 12. Jänner 2026 etwa 07:00 Uhr bis voraussichtlich Ende Februar 2026.\nMaßnahmen:\nLinie 4 A in Richtung Wittelsbachstraße\nUmleitung ab Lothringerstraße # Schwarzenbergplatz über Schwarzenbergplatz - Am Heumarkt - Lisztstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nAkademietheater (Lisztstraße 4)\nLinie 4 A in Richtung Karlsplatz U\nUmleitung ab Lisztstraße # Heumarkt über Am Heumarkt - Schwarzenbergplatz - Lothringerstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nAkademietheater (Lisztstraße 1)",
@@ -190,5 +178,17 @@
     "starts_at": "2025-12-21T04:45:00+01:00",
     "ends_at": "2025-12-22T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Busse halten Untere Augartenstraße 42",
+    "description": "Busse halten Untere Augartenstraße 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "987f6342d650fde597d45e8613dc916359daf5b52e33852b7b965e827818fa3e",
+    "pubDate": "2025-12-22T00:00:16+01:00",
+    "starts_at": "2025-12-22T00:00:16+01:00",
+    "ends_at": "2025-12-22T23:59:59+01:00",
+    "_identity": "wl|störung|L=|D=2025-12-22"
   }
 ]
