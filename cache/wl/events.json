@@ -238,5 +238,41 @@
     "starts_at": "2025-12-21T19:45:00+01:00",
     "ends_at": "2025-12-21T23:55:00+01:00",
     "_identity": "wl|störung|L=U4|D=2025-12-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "67cf05ce8846177e4f3d143c88b0e0c7b91c475498b9731a9668e78e4fae4a88",
+    "pubDate": "2025-12-21T20:04:40+01:00",
+    "starts_at": "2025-12-21T20:04:40+01:00",
+    "ends_at": "2025-12-21T21:04:00+01:00",
+    "_identity": "wl|störung|L=38A|D=2025-12-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Rettungseinsatz Umleitung über Mooslackengasse - Muthgasse",
+    "description": "Rettungseinsatz Umleitung über Mooslackengasse - Muthgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7753bc5687cafc02e7162ebfb520d933af7ed0f6caae2b4861dd189b14b80396",
+    "pubDate": "2025-12-21T20:04:40+01:00",
+    "starts_at": "2025-12-21T20:04:40+01:00",
+    "ends_at": "2025-12-21T21:06:00+01:00",
+    "_identity": "wl|störung|L=38A|D=2025-12-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5B: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "026034b61e72b8d6446ed6a38d301b8d35dab3ccc028632401c2c456a02db76a",
+    "pubDate": "2025-12-21T20:05:13+01:00",
+    "starts_at": "2025-12-21T20:05:13+01:00",
+    "ends_at": "2025-12-21T21:07:00+01:00",
+    "_identity": "wl|störung|L=5B|D=2025-12-21"
   }
 ]
