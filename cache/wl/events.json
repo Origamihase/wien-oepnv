@@ -195,12 +195,36 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "52: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Die Linie 52 ist derzeit in Richtung Baumgarten an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 06:15 Uhr. Grund dafür ist ein Polizeieinsatz im Bereich Penzinger Straße.",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734",
-    "pubDate": "2025-12-21T05:50:00+01:00",
-    "starts_at": "2025-12-21T05:50:00+01:00",
-    "ends_at": "2025-12-21T23:55:00+01:00",
+    "pubDate": "2025-12-21T05:51:30+01:00",
+    "starts_at": "2025-12-21T05:51:30+01:00",
+    "ends_at": "2025-12-21T07:08:00+01:00",
     "_identity": "wl|störung|L=52|D=2025-12-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 5 ist derzeit in Richtung Praterstern an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 06:25 Uhr. Grund dafür ist ein Falschparker im Bereich Blindengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
+    "pubDate": "2025-12-21T05:55:00+01:00",
+    "starts_at": "2025-12-21T05:55:00+01:00",
+    "ends_at": "2025-12-21T23:55:00+01:00",
+    "_identity": "wl|störung|L=5|D=2025-12-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9",
+    "pubDate": "2025-12-21T06:02:07+01:00",
+    "starts_at": "2025-12-21T06:02:07+01:00",
+    "ends_at": "2025-12-21T07:09:00+01:00",
+    "_identity": "wl|störung|L=60|D=2025-12-21"
   }
 ]
