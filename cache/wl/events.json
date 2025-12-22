@@ -290,13 +290,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "43: Rettungseinsatz Betrieb ab Wattgasse",
+    "description": "Rettungseinsatz Betrieb ab Wattgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
-    "pubDate": "2025-12-22T11:19:43+01:00",
-    "starts_at": "2025-12-22T11:19:43+01:00",
+    "pubDate": "2025-12-22T11:21:10+01:00",
+    "starts_at": "2025-12-22T11:21:10+01:00",
     "ends_at": "2025-12-22T16:15:00+01:00",
     "_identity": "wl|störung|L=43|D=2025-12-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "3A: Betriebsstörung",
+    "description": "Die Linie 3 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Schottenring U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee33b4bc2a2e5977383fda6b2c687c6de1796efc633a69cdba94615a4a580129",
+    "pubDate": "2025-12-22T12:15:00+01:00",
+    "starts_at": "2025-12-22T12:15:00+01:00",
+    "ends_at": "2025-12-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=3A|D=2025-12-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Betriebsstörung",
+    "description": "Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Bahnhof Heiligenstadt S U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abae72a6ccef48e743b3943d0074059b8e01d4d5248fce2416b74da71e4c4e2b",
+    "pubDate": "2025-12-22T12:15:00+01:00",
+    "starts_at": "2025-12-22T12:15:00+01:00",
+    "ends_at": "2025-12-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=10A|D=2025-12-22"
   }
 ]
