@@ -230,18 +230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Betriebsstörung",
-    "description": "Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Bahnhof Heiligenstadt S U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abae72a6ccef48e743b3943d0074059b8e01d4d5248fce2416b74da71e4c4e2b",
-    "pubDate": "2025-12-22T12:15:00+01:00",
-    "starts_at": "2025-12-22T12:15:00+01:00",
-    "ends_at": "2025-12-22T23:55:00+01:00",
-    "_identity": "wl|störung|L=10A|D=2025-12-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10: Fahrtbehinderung Betriebsstörung",
     "description": "Fahrtbehinderung Betriebsstörung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -250,18 +238,6 @@
     "starts_at": "2025-12-22T13:56:15+01:00",
     "ends_at": "2025-12-22T18:00:00+01:00",
     "_identity": "wl|störung|L=10|D=2025-12-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "94A: Betriebsstörung",
-    "description": "Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Erzherzog-Karl-Straße .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ab9a315bb4763912df12601d781a9487102576b75c46fff6971dcfe32c9a9c29",
-    "pubDate": "2025-12-22T14:45:00+01:00",
-    "starts_at": "2025-12-22T14:45:00+01:00",
-    "ends_at": "2025-12-22T23:55:00+01:00",
-    "_identity": "wl|störung|L=94A|D=2025-12-22"
   },
   {
     "source": "Wiener Linien",
@@ -302,18 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "39A: Verspätungen",
-    "description": "Die Linie 39 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0d9b2c21192d370d49c26a63f910b951db7c6d82fe54d2f7390917957d08150c",
-    "pubDate": "2025-12-22T15:40:00+01:00",
-    "starts_at": "2025-12-22T15:40:00+01:00",
-    "ends_at": "2025-12-22T23:55:00+01:00",
-    "_identity": "wl|störung|L=39A|D=2025-12-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "38: Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 38 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -326,14 +290,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "35A: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 35 A zu unterschiedlichen Intervallen.",
+    "title": "2: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b0a24007474aab764828e2f63bdadfa9f2fa0506bb84bdfcd25263dd7bbb7dca",
-    "pubDate": "2025-12-22T16:30:00+01:00",
-    "starts_at": "2025-12-22T16:30:00+01:00",
+    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
+    "pubDate": "2025-12-22T16:35:00+01:00",
+    "starts_at": "2025-12-22T16:35:00+01:00",
     "ends_at": "2025-12-22T23:55:00+01:00",
-    "_identity": "wl|störung|L=35A|D=2025-12-22"
+    "_identity": "wl|störung|L=2|D=2025-12-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e5660a0ab66e8052c66ac62caa273ee692ce56758d8e16e3324e16b86881f37a",
+    "pubDate": "2025-12-22T16:35:00+01:00",
+    "starts_at": "2025-12-22T16:35:00+01:00",
+    "ends_at": "2025-12-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-22"
   },
   {
     "source": "Wiener Linien",
@@ -362,25 +338,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed",
-    "pubDate": "2025-12-22T16:39:33+01:00",
-    "starts_at": "2025-12-22T16:39:33+01:00",
-    "ends_at": "2025-12-22T17:39:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Verkehrsunfall Betrieb ab Am Tabor",
     "description": "Verkehrsunfall Betrieb ab Am Tabor",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8c8ac712bd131ca67a04ba9b9d65a314b46a8bf6afff48abaad28961bc2dde3b",
     "pubDate": "2025-12-22T16:39:33+01:00",
     "starts_at": "2025-12-22T16:39:33+01:00",
-    "ends_at": "2025-12-22T21:00:00+01:00",
+    "ends_at": "2025-12-22T22:45:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-12-22"
   },
   {
@@ -392,7 +356,7 @@
     "guid": "d8b7fe9c07226c5f7a1bbe0c321b1eebda3dae49f67b02fd7b033473548e1b41",
     "pubDate": "2025-12-22T16:44:17+01:00",
     "starts_at": "2025-12-22T16:44:17+01:00",
-    "ends_at": "2025-12-22T20:30:00+01:00",
+    "ends_at": "2025-12-22T21:45:00+01:00",
     "_identity": "wl|störung|L=12|D=2025-12-22"
   },
   {
@@ -423,7 +387,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "1: Schadhaftes Fahrzeug",
-    "description": "Die Linie 1 fährt nur zwischen Stefan-Fadinger-Platz und Radetzkyplatz und wird weiter zum Praterstern umgeleitet. Weichen Sie auf die Linien 4 A und 80 A aus. Die Störung dauert voraussichtlich bis 17:45 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Prater Hauptallee.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "73357b6320dfec1f26a86c63469d119b40e8f17ed69fcf1491dd8ae09deab193",
     "pubDate": "2025-12-22T17:10:00+01:00",
@@ -466,5 +430,17 @@
     "starts_at": "2025-12-22T17:14:51+01:00",
     "ends_at": "2025-12-22T21:30:00+01:00",
     "_identity": "wl|störung|L=1|D=2025-12-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "77A: Rettungseinsatz",
+    "description": "Die Linie 77 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Stadlauer Brücke.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0686bd5b181b3fefdfbc6224ce7aeee3a1c12badce5322207bfcd2c14be2b7d4",
+    "pubDate": "2025-12-22T17:35:00+01:00",
+    "starts_at": "2025-12-22T17:35:00+01:00",
+    "ends_at": "2025-12-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=77A|D=2025-12-22"
   }
 ]
