@@ -218,18 +218,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Verkehrsunfall Betrieb ab Bruno-Marek-Allee",
-    "description": "Verkehrsunfall Betrieb ab Bruno-Marek-Allee",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d8b7fe9c07226c5f7a1bbe0c321b1eebda3dae49f67b02fd7b033473548e1b41",
-    "pubDate": "2025-12-22T16:44:17+01:00",
-    "starts_at": "2025-12-22T16:44:17+01:00",
-    "ends_at": "2025-12-22T21:45:00+01:00",
-    "_identity": "wl|störung|L=12|D=2025-12-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Fahrtbehinderung Schadhafter Zug",
     "description": "Fahrtbehinderung Schadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -238,6 +226,42 @@
     "starts_at": "2025-12-22T17:10:59+01:00",
     "ends_at": "2025-12-22T23:15:00+01:00",
     "_identity": "wl|störung|L=1|D=2025-12-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Feuerwehreinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 25 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3ee7a44f6a6eb0f230186992ef7499a06bc84a63cb4a35e53eef91a19489f8d7",
+    "pubDate": "2025-12-22T20:45:00+01:00",
+    "starts_at": "2025-12-22T20:45:00+01:00",
+    "ends_at": "2025-12-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=25|D=2025-12-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Feuerwehreinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 26 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2138b36809ccac7f65eff86dfb0122d185db52f01548609aa843782fb799b465",
+    "pubDate": "2025-12-22T20:45:00+01:00",
+    "starts_at": "2025-12-22T20:45:00+01:00",
+    "ends_at": "2025-12-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=26|D=2025-12-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Feuerwehreinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 27 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ed8cb016f1afc95f839f9fc5a0c8c2cb7f83b8cb053de1b453b658789df16cb0",
+    "pubDate": "2025-12-22T20:45:00+01:00",
+    "starts_at": "2025-12-22T20:45:00+01:00",
+    "ends_at": "2025-12-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=27|D=2025-12-22"
   },
   {
     "source": "Wiener Linien",
@@ -260,7 +284,7 @@
     "guid": "4cc15ef274fcf87f4413868a0ebb39f132c87bfdec5b40372d81e2c8c3c0f363",
     "pubDate": "2025-12-22T20:51:27+01:00",
     "starts_at": "2025-12-22T20:51:27+01:00",
-    "ends_at": "2025-12-22T21:51:00+01:00",
+    "ends_at": "2025-12-22T23:30:00+01:00",
     "_identity": "wl|störung|L=25|D=2025-12-22"
   },
   {
@@ -296,7 +320,7 @@
     "guid": "08dbb1d5984cc8831914955ca14a68c1779b13324601303461e9c11f3ea68cbc",
     "pubDate": "2025-12-22T20:56:17+01:00",
     "starts_at": "2025-12-22T20:56:17+01:00",
-    "ends_at": "2025-12-22T21:55:00+01:00",
+    "ends_at": "2025-12-22T23:00:00+01:00",
     "_identity": "wl|störung|L=27|D=2025-12-22"
   },
   {
@@ -358,5 +382,17 @@
     "starts_at": "2025-12-22T21:06:39+01:00",
     "ends_at": "2025-12-22T23:45:00+01:00",
     "_identity": "wl|störung|L=|D=2025-12-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
+    "pubDate": "2025-12-22T22:04:24+01:00",
+    "starts_at": "2025-12-22T22:04:24+01:00",
+    "ends_at": "2025-12-22T23:04:00+01:00",
+    "_identity": "wl|störung|L=43|D=2025-12-22"
   }
 ]
