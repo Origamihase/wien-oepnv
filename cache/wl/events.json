@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Betriebsstörung",
-    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Stephansplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
-    "pubDate": "2025-12-23T11:20:00+01:00",
-    "starts_at": "2025-12-23T11:20:00+01:00",
-    "ends_at": "2025-12-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2025-12-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1A: Verkehrsüberlastung",
     "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,5 +202,29 @@
     "starts_at": "2025-12-23T11:40:00+01:00",
     "ends_at": "2025-12-23T23:55:00+01:00",
     "_identity": "wl|störung|L=1A|D=2025-12-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Verkehrsüberlastung",
+    "description": "Die Linie 59 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
+    "pubDate": "2025-12-23T11:55:00+01:00",
+    "starts_at": "2025-12-23T11:55:00+01:00",
+    "ends_at": "2025-12-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=59A|D=2025-12-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 60 ist derzeit in Richtung Rodaun an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 12:40 Uhr. Grund dafür ist ein Falschparker im Bereich Lainzer Straße 21.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093",
+    "pubDate": "2025-12-23T12:10:00+01:00",
+    "starts_at": "2025-12-23T12:10:00+01:00",
+    "ends_at": "2025-12-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=60|D=2025-12-23"
   }
 ]
