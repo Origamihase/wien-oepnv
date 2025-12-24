@@ -206,18 +206,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29A: Rettungseinsatz",
-    "description": "Die Linie 29 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Serpentingasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fd28b60b0d399a255267aca8e0564e4a131b7ccaa011c57449a8324ef18484f3",
-    "pubDate": "2025-12-24T11:00:00+01:00",
-    "starts_at": "2025-12-24T11:00:00+01:00",
-    "ends_at": "2025-12-24T23:55:00+01:00",
-    "_identity": "wl|störung|L=29A|D=2025-12-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U4: Betriebsstörung",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -238,54 +226,6 @@
     "starts_at": "2025-12-24T11:05:00+01:00",
     "ends_at": "2025-12-24T23:55:00+01:00",
     "_identity": "wl|störung|L=U6|D=2025-12-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Linie U4 Kein Betrieb zwischen Pilgramgasse",
-    "description": "Linie U4 Kein Betrieb zwischen Pilgramgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "13d25715fa440bda5ea2b1f477bb579d6423b0b082cb387feb4e5be4e478f9f1",
-    "pubDate": "2025-12-24T11:21:43+01:00",
-    "starts_at": "2025-12-24T11:21:43+01:00",
-    "ends_at": "2025-12-24T12:19:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2025-12-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Linie U6 Kein Betrieb zwischen Gumpendorfer Straße und Niederhofstraße",
-    "description": "Linie U6 Kein Betrieb zwischen Gumpendorfer Straße und Niederhofstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2578b91c8c5f2f482032004649297afc448fa0947da88af44fe4627d58d91517",
-    "pubDate": "2025-12-24T11:23:08+01:00",
-    "starts_at": "2025-12-24T11:23:08+01:00",
-    "ends_at": "2025-12-24T12:21:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-12-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Test",
-    "description": "Test",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e41a28ca62e36dc58f3e27dabef7321bc2ab2834de4ad1a6d6a7a4929389ff7",
-    "pubDate": "2025-12-24T11:27:43+01:00",
-    "starts_at": "2025-12-24T11:27:43+01:00",
-    "ends_at": "2025-12-24T12:28:00+01:00",
-    "_identity": "wl|störung|L=27|D=2025-12-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Test",
-    "description": "Test",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8d429de191705622cc16d29ad63a083a7dd643a567252ac9a11e0e64e92012eb",
-    "pubDate": "2025-12-24T11:38:56+01:00",
-    "starts_at": "2025-12-24T11:38:56+01:00",
-    "ends_at": "2025-12-24T12:38:00+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-24"
   },
   {
     "source": "Wiener Linien",
