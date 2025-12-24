@@ -13,15 +13,15 @@ import requests
 from dateutil import parser as dtparser
 
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
-    from ..utils.http import session_with_retries
+    from ..utils.http import session_with_retries, validate_http_url
     from ..utils.ids import make_guid
     from ..utils.stations import canonical_name
     from ..utils.text import html_to_text
 else:  # pragma: no cover - support both package layouts at runtime
     try:
-        from utils.http import session_with_retries
+        from utils.http import session_with_retries, validate_http_url
     except ModuleNotFoundError:
-        from ..utils.http import session_with_retries  # type: ignore
+        from ..utils.http import session_with_retries, validate_http_url  # type: ignore
 
     try:
         from utils.text import html_to_text
@@ -56,8 +56,9 @@ from .wl_text import (
 )
 
 # Basis-URL aus Secret/ENV, Fallback: OGD-Endpoint
+_WL_BASE_ENV = os.getenv("WL_RSS_URL", "").strip()
 WL_BASE = (
-    os.getenv("WL_RSS_URL", "").strip()
+    validate_http_url(_WL_BASE_ENV)
     or "https://www.wienerlinien.at/ogd_realtime"
 ).rstrip("/")
 

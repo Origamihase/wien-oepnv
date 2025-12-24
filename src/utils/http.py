@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Any
+from urllib.parse import urlparse
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -33,3 +34,26 @@ def session_with_retries(user_agent: str, **retry_opts: Any) -> requests.Session
     session.mount("https://", adapter)
     session.headers.update({"User-Agent": user_agent})
     return session
+
+
+def validate_http_url(url: str | None) -> str | None:
+    """Ensure the given URL is valid and uses http or https.
+
+    Returns the URL (stripped) if valid, or ``None`` if invalid/empty/wrong scheme.
+    """
+    if not url:
+        return None
+
+    candidate = url.strip()
+    if not candidate:
+        return None
+
+    try:
+        parsed = urlparse(candidate)
+        if parsed.scheme.lower() not in ("http", "https"):
+            return None
+        if not parsed.netloc:
+            return None
+        return candidate
+    except Exception:
+        return None

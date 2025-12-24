@@ -27,7 +27,7 @@ from email.utils import parsedate_to_datetime
 
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
     from ..utils.env import get_bool_env
-    from ..utils.http import session_with_retries
+    from ..utils.http import session_with_retries, validate_http_url
     from ..utils.ids import make_guid
     from ..utils.stations import canonical_name, is_in_vienna, is_pendler
     from ..utils.text import html_to_text
@@ -47,15 +47,18 @@ else:  # pragma: no cover - support both package layouts at runtime
         from ..utils.stations import canonical_name, is_in_vienna, is_pendler  # type: ignore
 
     try:
-        from utils.http import session_with_retries
+        from utils.http import session_with_retries, validate_http_url
     except ModuleNotFoundError:
-        from ..utils.http import session_with_retries  # type: ignore
+        from ..utils.http import session_with_retries, validate_http_url  # type: ignore
 from defusedxml import ElementTree as ET
 
 log = logging.getLogger(__name__)
 
-OEBB_URL = (os.getenv("OEBB_RSS_URL", "").strip()
-            or "https://fahrplan.oebb.at/bin/help.exe/dnl?protocol=https:&tpl=rss_WI_oebb&")
+_OEBB_URL_ENV = os.getenv("OEBB_RSS_URL", "").strip()
+OEBB_URL = (
+    validate_http_url(_OEBB_URL_ENV)
+    or "https://fahrplan.oebb.at/bin/help.exe/dnl?protocol=https:&tpl=rss_WI_oebb&"
+)
 
 # Optional strenger Filter: Nur Meldungen mit Endpunkten in Wien behalten.
 # Aktiviert durch Umgebungsvariable ``OEBB_ONLY_VIENNA`` ("1"/"true" vs "0"/"false", case-insens).
@@ -335,4 +338,3 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
 
 
 __all__ = ["fetch_events"]
-
