@@ -194,30 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "15A: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "61d800321a9f38a8a83860f1cca614446871ecfcaec5339554797d7f29c03bf9",
-    "pubDate": "2025-12-24T09:54:47+01:00",
-    "starts_at": "2025-12-24T09:54:47+01:00",
-    "ends_at": "2025-12-24T10:54:00+01:00",
-    "_identity": "wl|störung|L=15A|D=2025-12-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "15A: Fremdunfall Betrieb ab Am Europlatz",
-    "description": "Fremdunfall Betrieb ab Am Europlatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a5abaf991ad90b2f4055bd0b51b526a078b03b36ae9c56e2049e2688ae5549a2",
-    "pubDate": "2025-12-24T09:57:20+01:00",
-    "starts_at": "2025-12-24T09:57:20+01:00",
-    "ends_at": "2025-12-24T10:56:00+01:00",
-    "_identity": "wl|störung|L=15A|D=2025-12-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "60A: Witterung",
     "description": "Die Linie 60 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich Kalksburger Straße .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -226,5 +202,53 @@
     "starts_at": "2025-12-24T10:10:00+01:00",
     "ends_at": "2025-12-24T23:55:00+01:00",
     "_identity": "wl|störung|L=60A|D=2025-12-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: ***Frohe*** **Weihnachten**",
+    "description": "***Frohe*** **Weihnachten**",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c45bbe15c835689db383c58f775ff9c7e576a5bbda550e6d10c5ad8c1d1a6aa9",
+    "pubDate": "2025-12-24T10:51:34+01:00",
+    "starts_at": "2025-12-24T10:51:34+01:00",
+    "ends_at": "2025-12-24T11:48:00+01:00",
+    "_identity": "wl|störung|L=74A|D=2025-12-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Rettungseinsatz",
+    "description": "Die Linie 29 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Serpentingasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fd28b60b0d399a255267aca8e0564e4a131b7ccaa011c57449a8324ef18484f3",
+    "pubDate": "2025-12-24T11:00:00+01:00",
+    "starts_at": "2025-12-24T11:00:00+01:00",
+    "ends_at": "2025-12-24T23:55:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2025-12-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Rettungseinsatz",
+    "description": "Die Linie 14 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Laxenburger Straße / Gudrunstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac",
+    "pubDate": "2025-12-24T11:05:00+01:00",
+    "starts_at": "2025-12-24T11:05:00+01:00",
+    "ends_at": "2025-12-24T23:55:00+01:00",
+    "_identity": "wl|störung|L=14A|D=2025-12-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4/U6: Betriebsstörung",
+    "description": "Die Linie U4 ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Linie U6 fährt derzeit nicht zwischen Gumpendorfer Straße und Niederhofstraße. Ersatzweise können Sie auf die Linien 12 A,57 A und 59 A ausweichen. Die Störung dauert voraussichtlich bis 11:30 Uhr. Grund dafür ist eine Betriebsstörung im Bereich Längenfeldgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6cf95fe5cc66cffaf751fc9a315a5015b41795353c72e8d8ebf484f21b0a5c70",
+    "pubDate": "2025-12-24T11:05:00+01:00",
+    "starts_at": "2025-12-24T11:05:00+01:00",
+    "ends_at": "2025-12-24T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4,U6|D=2025-12-24"
   }
 ]
