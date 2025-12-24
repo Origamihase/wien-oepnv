@@ -8,8 +8,19 @@ from collections.abc import Mapping, Sequence, Iterator
 from contextlib import contextmanager
 from pathlib import Path
 
-from . import build_feed as build_feed_module
-from .utils.stations_validation import validate_stations
+
+if __package__:
+    from . import build_feed as build_feed_module
+    from .utils.stations_validation import validate_stations
+else:
+    # Fallback for script execution or if package context is missing
+    try:
+        from src import build_feed as build_feed_module  # type: ignore
+        from src.utils.stations_validation import validate_stations  # type: ignore
+    except ImportError:
+        # If running from src directory directly
+        import build_feed as build_feed_module  # type: ignore
+        from utils.stations_validation import validate_stations  # type: ignore
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS_DIR = PROJECT_ROOT / "scripts"

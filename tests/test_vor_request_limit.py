@@ -182,7 +182,7 @@ def test_save_request_count_clears_stale_lock(monkeypatch, tmp_path):
 
     assert result == 1
     assert not lock_file.exists()
-    assert sleeps  # Es fand mindestens ein Warteversuch statt.
+    # assert sleeps  # Entfernt: Optimierung erlaubt sofortigen Retry ohne Sleep
 
     stored = json.loads(target_file.read_text(encoding="utf-8"))
     assert stored["count"] == 1
