@@ -17,13 +17,13 @@ from requests import RequestException, Session
 from zoneinfo import ZoneInfo
 
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
-    from ..utils.http import session_with_retries
+    from ..utils.http import session_with_retries, validate_http_url
     from ..utils.stations import vor_station_ids
 else:  # pragma: no cover - allow running via package or src layout
     try:
-        from utils.http import session_with_retries
+        from utils.http import session_with_retries, validate_http_url
     except ModuleNotFoundError:
-        from ..utils.http import session_with_retries  # type: ignore
+        from ..utils.http import session_with_retries, validate_http_url  # type: ignore
 
     try:
         from utils.stations import vor_station_ids
@@ -267,15 +267,20 @@ def refresh_base_configuration() -> str:
     version_env = _get_env("VOR_VERSION")
 
     version = version_env or DEFAULT_VERSION
+
+    # Pre-validate base env vars to avoid injection risks
+    validated_base_url_env = validate_http_url(base_url_env)
+    validated_base_env = validate_http_url(base_env)
+
     base_url = DEFAULT_BASE_URL
 
-    if base_url_env:
-        base_url = base_url_env.rstrip("/") + "/"
+    if validated_base_url_env:
+        base_url = validated_base_url_env.rstrip("/") + "/"
         last_segment = base_url.rstrip("/").split("/")[-1]
         if last_segment.startswith("v"):
             version = last_segment
-    elif base_env:
-        base = base_env.rstrip("/")
+    elif validated_base_env:
+        base = validated_base_env.rstrip("/")
         if version_env:
             base_url = f"{base}/{version_env.strip('/')}/"
         else:
@@ -286,6 +291,7 @@ def refresh_base_configuration() -> str:
             else:
                 base_url = f"{base}/{version}/"
     else:
+        # Fallback to default if envs are invalid or empty
         base_url = f"{DEFAULT_BASE.rstrip('/')}/{version}/"
 
     global VOR_BASE_URL, VOR_VERSION
