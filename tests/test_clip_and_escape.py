@@ -56,7 +56,8 @@ def test_emit_item_sanitizes_description(monkeypatch):
     monkeypatch.setattr(bf, "DESCRIPTION_CHAR_LIMIT", 5)
     now = datetime(2024, 1, 1)
     ident, xml = bf._emit_item({"title": "X", "description": "<b>Tom & Jerry</b>"}, now, {})
-    assert "<description><![CDATA[Tom & …]]></description>" in xml
+    # Since we now escape the description, the ampersand becomes &amp;
+    assert "<description><![CDATA[Tom &amp; …]]></description>" in xml
     assert "Jerry" not in xml
 
 
