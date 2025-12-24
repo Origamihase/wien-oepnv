@@ -740,6 +740,9 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
     if item.get("_identity"):
         return str(item["_identity"])
 
+    if "_calculated_identity" in item:
+        return item["_calculated_identity"]
+
     title = item.get("title") or ""
     sa = item.get("starts_at")
     ea = item.get("ends_at")
@@ -748,30 +751,36 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
     fuzzy_raw = f"{title}|{sa_str}|{ea_str}"
     fuzzy_hash = hashlib.sha1(fuzzy_raw.encode("utf-8")).hexdigest()
 
+    result: str
     source = (item.get("source") or "").lower()
     category = (item.get("category") or "").lower()
     if "öbb" in source or "oebb" in source:
-        return f"oebb|F={fuzzy_hash}"
-
-    lines = _parse_lines_from_title(title)
-    lines_part = "L=" + "/".join(lines) if lines else "L="
-    start_day = _ymd_or_none(sa)
-    base = f"{source}|{category}|{lines_part}|D={start_day}"
-    if source and category:
-        if not lines:
-            if item.get("title"):
-                return f"{base}|T={item['title']}|F={fuzzy_hash}"
-
+        result = f"oebb|F={fuzzy_hash}"
+    else:
+        lines = _parse_lines_from_title(title)
+        lines_part = "L=" + "/".join(lines) if lines else "L="
+        start_day = _ymd_or_none(sa)
+        base = f"{source}|{category}|{lines_part}|D={start_day}"
+        if source and category:
+            if not lines:
+                if item.get("title"):
+                    result = f"{base}|T={item['title']}|F={fuzzy_hash}"
+                else:
+                    raw = json.dumps(item, sort_keys=True, default=str)
+                    hashed = hashlib.sha1(raw.encode("utf-8")).hexdigest()
+                    result = f"{base}|H={hashed}|F={fuzzy_hash}"
+            else:
+                result = f"{base}|F={fuzzy_hash}"
+        # Fallback: Ohne Quelle/Kategorie Titel oder vollständigen Hash anhängen
+        elif item.get("title"):
+            result = f"{base}|T={item['title']}|F={fuzzy_hash}"
+        else:
             raw = json.dumps(item, sort_keys=True, default=str)
             hashed = hashlib.sha1(raw.encode("utf-8")).hexdigest()
-            return f"{base}|H={hashed}|F={fuzzy_hash}"
-        return f"{base}|F={fuzzy_hash}"
-    # Fallback: Ohne Quelle/Kategorie Titel oder vollständigen Hash anhängen
-    if item.get("title"):
-        return f"{base}|T={item['title']}|F={fuzzy_hash}"
-    raw = json.dumps(item, sort_keys=True, default=str)
-    hashed = hashlib.sha1(raw.encode("utf-8")).hexdigest()
-    return f"{base}|H={hashed}|F={fuzzy_hash}"
+            result = f"{base}|H={hashed}|F={fuzzy_hash}"
+
+    item["_calculated_identity"] = result
+    return result
 
 # ---------------- Pipeline ----------------
 
@@ -1104,12 +1113,21 @@ def _dedupe_key_for_item(
 
     if it.get("_identity"):
         return str(it.get("_identity")), False
+
+    if "_calculated_dedupe_key" in it:
+        return it["_calculated_dedupe_key"], False
+
     if it.get("guid"):
         return str(it.get("guid")), False
     raw = (
         f"{it.get('source') or ''}|{it.get('title') or ''}|{it.get('description') or ''}"
     )
     key = hashlib.sha1(raw.encode("utf-8")).hexdigest()
+
+    # Only cache if we produced a fallback key to avoid recalculating SHA1
+    # We set it before logging, so we can return it.
+    it["_calculated_dedupe_key"] = key
+
     if warn_on_missing:
         log.warning(
             "Item ohne guid/_identity – Fallback-Schlüssel (source|title|description) %s",

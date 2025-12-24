@@ -21,7 +21,21 @@ def main() -> int:
         print(f"Invalid JSON in data/stations.json: {exc}", file=sys.stderr)
         return 1
 
-    vor_entries = [station for station in stations if station.get("source") == "vor"]
+    vor_entries = []
+    for station in stations:
+        source = station.get("source")
+        is_vor = False
+        if isinstance(source, str):
+            parts = [s.strip() for s in source.split(",")]
+            if "vor" in parts:
+                is_vor = True
+        elif isinstance(source, list):
+            if "vor" in source:
+                is_vor = True
+
+        if is_vor:
+            vor_entries.append(station)
+
     if len(vor_entries) < 2:
         print("Need at least two VOR entries", file=sys.stderr)
         return 1

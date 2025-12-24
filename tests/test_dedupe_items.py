@@ -52,6 +52,11 @@ def test_main_dedupes_items(monkeypatch, tmp_path):
 
     build_feed.main()
 
+    # Remove internal cache keys from captured items to allow comparison
+    for item in captured["items"]:
+        item.pop("_calculated_identity", None)
+        item.pop("_calculated_dedupe_key", None)
+
     assert captured["items"] == [
         {"_identity": "a", "guid": "ga", "title": "A"},
         {"guid": "gb", "title": "B"},
