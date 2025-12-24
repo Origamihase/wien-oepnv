@@ -17,12 +17,31 @@ _DEFAULT_RETRY_OPTIONS: dict[str, Any] = {
     "allowed_methods": ("GET",),
 }
 
+# Default timeout in seconds if none is provided
+DEFAULT_TIMEOUT = 20
 
-def session_with_retries(user_agent: str, **retry_opts: Any) -> requests.Session:
-    """Return a :class:`requests.Session` pre-configured with retries.
+
+class TimeoutHTTPAdapter(HTTPAdapter):
+    """HTTPAdapter that enforces a default timeout."""
+
+    def __init__(self, *args: Any, timeout: int | None = None, **kwargs: Any) -> None:
+        self.timeout = timeout
+        super().__init__(*args, **kwargs)
+
+    def send(self, request: requests.PreparedRequest, **kwargs: Any) -> requests.Response:
+        if kwargs.get("timeout") is None:
+            kwargs["timeout"] = self.timeout
+        return super().send(request, **kwargs)
+
+
+def session_with_retries(
+    user_agent: str, timeout: int = DEFAULT_TIMEOUT, **retry_opts: Any
+) -> requests.Session:
+    """Return a :class:`requests.Session` pre-configured with retries and a default timeout.
 
     Args:
         user_agent: User-Agent header that should be sent with every request.
+        timeout: Default timeout in seconds for requests (default: 20).
         **retry_opts: Additional keyword arguments forwarded to
             :class:`urllib3.util.retry.Retry`.
     """
@@ -30,7 +49,7 @@ def session_with_retries(user_agent: str, **retry_opts: Any) -> requests.Session
     options = {**_DEFAULT_RETRY_OPTIONS, **retry_opts}
     session = requests.Session()
     retry = Retry(**options)
-    adapter = HTTPAdapter(max_retries=retry)
+    adapter = TimeoutHTTPAdapter(max_retries=retry, timeout=timeout)
     session.mount("http://", adapter)
     session.mount("https://", adapter)
     session.headers.update({"User-Agent": user_agent})
