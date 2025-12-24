@@ -124,6 +124,17 @@ def test_refresh_access_credentials_reloads_from_env(monkeypatch):
 
 
 def test_base_url_prefers_secret(monkeypatch):
+    import socket
+
+    # Mock DNS to ensure secret.example.com is accepted
+    monkeypatch.setattr(
+        socket,
+        "getaddrinfo",
+        lambda *args, **kwargs: [
+            (socket.AF_INET, socket.SOCK_STREAM, 6, "", ("93.184.216.34", 80))
+        ],
+    )
+
     monkeypatch.setenv("VOR_BASE", "https://example.com/base")
     monkeypatch.setenv("VOR_BASE_URL", "https://secret.example.com/base")
 

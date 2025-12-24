@@ -1,5 +1,6 @@
 import importlib
 import os
+import socket
 
 
 def _restore_env(original: dict[str, str | None]) -> None:
@@ -24,7 +25,16 @@ def test_default_vor_version():
         importlib.reload(module)
 
 
-def test_base_url_infers_version():
+def test_base_url_infers_version(monkeypatch):
+    # Mock DNS resolution to ensure example.test is accepted
+    monkeypatch.setattr(
+        socket,
+        "getaddrinfo",
+        lambda *args, **kwargs: [
+            (socket.AF_INET, socket.SOCK_STREAM, 6, "", ("93.184.216.34", 80))
+        ],
+    )
+
     module = importlib.import_module("src.providers.vor")
     original = {key: os.environ.get(key) for key in ("VOR_BASE_URL", "VOR_BASE", "VOR_VERSION")}
     try:

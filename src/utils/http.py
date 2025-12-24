@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import ipaddress
+import socket
 from typing import Any
 from urllib.parse import urlparse
 
@@ -82,18 +83,28 @@ def validate_http_url(url: str | None) -> str | None:
         if hostname.lower() == "localhost":
             return None
 
-        # Block private IPs
+        # Resolve hostname to IPs to prevent DNS rebinding/aliasing to private IPs
         try:
-            ip = ipaddress.ip_address(hostname)
-            # Check for private, loopback, unspecified, and link-local (169.254.x.x)
-            if (ip.is_private or
-                ip.is_loopback or
-                ip.is_unspecified or
-                ip.is_link_local):
-                return None
-        except ValueError:
-            # Not an IP literal, proceed
-            pass
+            # We use socket.getaddrinfo to get all associated IPs
+            addr_info = socket.getaddrinfo(hostname, None, proto=socket.IPPROTO_TCP)
+
+            for _, _, _, _, sockaddr in addr_info:
+                ip_str = sockaddr[0]
+                # Handle IPv6 scope ids if present
+                ip = ipaddress.ip_address(ip_str.split("%")[0])
+
+                # Check for private, loopback, unspecified, and link-local (169.254.x.x)
+                if (
+                    ip.is_private
+                    or ip.is_loopback
+                    or ip.is_unspecified
+                    or ip.is_link_local
+                ):
+                    return None
+
+        except (socket.gaierror, ValueError):
+            # DNS resolution failed or invalid IP -> treat as invalid URL
+            return None
 
         return candidate
     except Exception:
