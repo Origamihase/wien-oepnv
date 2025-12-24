@@ -136,14 +136,42 @@ def _split_endpoints(title: str) -> Optional[List[str]]:
     arrow_markers = (
         "↔", "<=>", "<->", "→", "=>", "->", "—", "–",
     )
-    if not any(a in title for a in arrow_markers) and not re.search(r"\s-\s", title):
-        return None
-    parts = [
-        p for p in re.split(r"\s*(?:↔|<=>|<->|→|=>|->|—|–|\s-\s)\s*", title) if p.strip()
-    ]
+
+    parts = []
+
+    # 1. Standard: Pfeile oder " - "
+    if any(a in title for a in arrow_markers) or re.search(r"\s-\s", title):
+        parts = [
+            p for p in re.split(r"\s*(?:↔|<=>|<->|→|=>|->|—|–|\s-\s)\s*", title) if p.strip()
+        ]
+
+    # 2. Fallback: Hyphen split if not a valid single station name
+    elif "-" in title:
+        # If the entire title matches a known station (e.g. "Deutsch-Wagram"),
+        # do NOT split it.
+        if canonical_name(title):
+            return None
+
+        parts = [p.strip() for p in title.split("-") if p.strip()]
+
     if len(parts) < 2:
         return None
-    left, right = parts[0], parts[1]
+
+    # Use only first and last part if > 2? Or just split first pivot?
+    # Usually standard arrows split into 2 main blocks.
+    # Simple hyphen split might produce "A-B-C".
+    # For compatibility with explode logic, we take first vs remaining?
+    # Or just treat everything as a list of endpoints.
+    # The existing logic assumes strict left/right split.
+
+    if len(parts) == 2:
+        left, right = parts[0], parts[1]
+    else:
+        # E.g. A-B-C -> Left=A, Right=B-C? Or Left=A, Right=B, Right2=C?
+        # Let's flatten all parts into endpoints
+        # But we need to run 'explode' cleanup on each.
+        pass
+
     def explode(side: str) -> List[str]:
         tmp = re.split(r"\s*(?:/|,|bzw\.|oder|und)\s*", side, flags=re.IGNORECASE)
         names: List[str] = []
@@ -155,9 +183,12 @@ def _split_endpoints(title: str) -> Optional[List[str]]:
             if n:
                 names.append(n)
         return names
-    # Links/Rechts zusammenführen und Duplikate entfernen
-    endpoints = explode(left) + explode(right)
-    return list(dict.fromkeys(endpoints))
+
+    all_found = []
+    for p in parts:
+        all_found.extend(explode(p))
+
+    return list(dict.fromkeys(all_found))
 
 # ---------------- Region helpers ----------------
 _MAX_STATION_WINDOW = 4
@@ -191,7 +222,12 @@ def _has_allowed_station(blob: str) -> bool:
 def _keep_by_region(title: str, desc: str) -> bool:
     endpoints = _split_endpoints(title)
     if endpoints:
-        return all(_is_allowed_station(x) for x in endpoints)
+        # Strecken: Alle Endpunkte müssen in whitelist sein (Pendler/Wien),
+        # ABER mindestens einer MUSS explizit in Wien liegen.
+        are_allowed = all(_is_allowed_station(x) for x in endpoints)
+        has_vienna = any(is_in_vienna(x) for x in endpoints)
+        return are_allowed and has_vienna
+
     blob = f"{title or ''} {desc or ''}"
     if not _has_allowed_station(blob):
         return False
