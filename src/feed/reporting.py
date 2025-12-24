@@ -7,6 +7,7 @@ import os
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
+from threading import RLock
 from time import perf_counter
 from typing import Any, Dict, Iterator, List, Optional, Tuple
 
@@ -110,6 +111,7 @@ class RunReport:
     _seen_warnings: set[str] = field(default_factory=set)
     finished_at: Optional[datetime] = None
     _error_collector: Optional[_RunErrorCollector] = None
+    _lock: RLock = field(default_factory=RLock)
 
     def __post_init__(self) -> None:
         for name, enabled in self.statuses:
@@ -125,24 +127,26 @@ class RunReport:
 
     def register_provider(self, name: str, enabled: bool, fetch_type: str) -> None:
         normalized = str(name)
-        entry = self.providers.get(normalized)
-        if entry is None:
-            entry = ProviderReport(name=normalized, enabled=enabled, fetch_type=fetch_type)
-            self.providers[normalized] = entry
-        else:
-            entry.enabled = enabled
-            entry.fetch_type = fetch_type
-        if not enabled:
-            entry.mark_disabled()
-        elif entry.status == "disabled":
-            entry.status = "pending"
+        with self._lock:
+            entry = self.providers.get(normalized)
+            if entry is None:
+                entry = ProviderReport(name=normalized, enabled=enabled, fetch_type=fetch_type)
+                self.providers[normalized] = entry
+            else:
+                entry.enabled = enabled
+                entry.fetch_type = fetch_type
+            if not enabled:
+                entry.mark_disabled()
+            elif entry.status == "disabled":
+                entry.status = "pending"
 
     def provider_started(self, name: str) -> None:
-        entry = self.providers.get(name)
-        if entry is None:
-            entry = ProviderReport(name=name, enabled=True)
-            self.providers[name] = entry
-        entry.start()
+        with self._lock:
+            entry = self.providers.get(name)
+            if entry is None:
+                entry = ProviderReport(name=name, enabled=True)
+                self.providers[name] = entry
+            entry.start()
 
     def provider_success(
         self,
@@ -152,59 +156,73 @@ class RunReport:
         status: str = "ok",
         detail: Optional[str] = None,
     ) -> None:
-        entry = self.providers.get(name)
-        if entry is None:
-            entry = ProviderReport(name=name, enabled=True)
-            self.providers[name] = entry
-        entry.finish(status, items=items, detail=clean_message(detail))
+        with self._lock:
+            entry = self.providers.get(name)
+            if entry is None:
+                entry = ProviderReport(name=name, enabled=True)
+                self.providers[name] = entry
+            entry.finish(status, items=items, detail=clean_message(detail))
 
     def provider_empty(self, name: str, message: str | None = None) -> None:
-        entry = self.providers.get(name)
-        if entry is None:
-            entry = ProviderReport(name=name, enabled=True)
-            self.providers[name] = entry
-        entry.finish("empty", detail=clean_message(message))
+        with self._lock:
+            entry = self.providers.get(name)
+            if entry is None:
+                entry = ProviderReport(name=name, enabled=True)
+                self.providers[name] = entry
+            entry.finish("empty", detail=clean_message(message))
 
     def provider_error(self, name: str, message: str | None = None) -> None:
-        entry = self.providers.get(name)
-        if entry is None:
-            entry = ProviderReport(name=name, enabled=True)
-            self.providers[name] = entry
-        cleaned = clean_message(message)
-        entry.finish("error", detail=cleaned)
+        with self._lock:
+            entry = self.providers.get(name)
+            if entry is None:
+                entry = ProviderReport(name=name, enabled=True)
+                self.providers[name] = entry
+            cleaned = clean_message(message)
+            entry.finish("error", detail=cleaned)
         if cleaned:
             self.add_error_message(f"{name}: {cleaned}")
 
     def provider_disabled(self, name: str, message: str | None = None) -> None:
-        entry = self.providers.get(name)
-        if entry is None:
-            entry = ProviderReport(name=name, enabled=False)
-            self.providers[name] = entry
-        entry.finish("disabled", detail=clean_message(message))
+        with self._lock:
+            entry = self.providers.get(name)
+            if entry is None:
+                entry = ProviderReport(name=name, enabled=False)
+                self.providers[name] = entry
+            entry.finish("disabled", detail=clean_message(message))
 
     def add_warning(self, message: str) -> None:
         cleaned = clean_message(message)
-        if not cleaned or cleaned in self._seen_warnings:
+        if not cleaned:
             return
-        self._seen_warnings.add(cleaned)
-        self.warnings.append(cleaned)
+        with self._lock:
+            if cleaned in self._seen_warnings:
+                return
+            self._seen_warnings.add(cleaned)
+            self.warnings.append(cleaned)
 
     def add_error_message(self, message: str) -> None:
         cleaned = clean_message(message)
-        if not cleaned or cleaned in self._seen_errors:
+        if not cleaned:
             return
-        self._seen_errors.add(cleaned)
-        self._error_messages.append(cleaned)
+        with self._lock:
+            if cleaned in self._seen_errors:
+                return
+            self._seen_errors.add(cleaned)
+            self._error_messages.append(cleaned)
 
     def iter_error_messages(self) -> Iterator[str]:
-        yield from self._error_messages
+        with self._lock:
+            # Snapshot the list to release lock immediately
+            errors = list(self._error_messages)
+        yield from errors
 
     def has_errors(self) -> bool:
-        if self.exception_message:
-            return True
-        if any(entry.status == "error" for entry in self.providers.values()):
-            return True
-        return bool(self._error_messages)
+        with self._lock:
+            if self.exception_message:
+                return True
+            if any(entry.status == "error" for entry in self.providers.values()):
+                return True
+            return bool(self._error_messages)
 
     def attach_error_collector(self) -> None:
         if self._error_collector is not None:

@@ -21,7 +21,7 @@ from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
 from pathlib import Path
-from threading import BoundedSemaphore
+from threading import BoundedSemaphore, Lock
 from time import perf_counter
 from typing import Any, Dict, Iterator, List, Optional, Sequence, Tuple
 from urllib.parse import quote, urlparse
@@ -791,18 +791,20 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
 
     cache_alerts: defaultdict[str, List[str]] = defaultdict(list)
     seen_cache_alerts: set[Tuple[str, str]] = set()
+    alert_lock = Lock()
 
     def _cache_alert_handler(provider_key: str, message: str) -> None:
         normalized_key = str(provider_key or "").strip()
         normalized_message = clean_message(message)
         if not normalized_key or not normalized_message:
             return
-        cache_alerts[normalized_key].append(normalized_message)
-        if report is not None:
-            key = (normalized_key, normalized_message)
-            if key not in seen_cache_alerts:
-                seen_cache_alerts.add(key)
-                report.add_warning(f"Cache {normalized_key}: {normalized_message}")
+        with alert_lock:
+            cache_alerts[normalized_key].append(normalized_message)
+            if report is not None:
+                key = (normalized_key, normalized_message)
+                if key not in seen_cache_alerts:
+                    seen_cache_alerts.add(key)
+                    report.add_warning(f"Cache {normalized_key}: {normalized_message}")
 
     unregister_cache_alert = register_cache_alert_hook(_cache_alert_handler)
     try:

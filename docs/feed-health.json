@@ -1,37 +1,17 @@
 {
-  "duplicates": [
-    {
-      "count": 2,
-      "dedupe_key": "a",
-      "titles": [
-        "A",
-        "A2"
-      ]
-    },
-    {
-      "count": 2,
-      "dedupe_key": "gb",
-      "titles": [
-        "B",
-        "B2"
-      ]
-    }
+  "duplicates": [],
+  "durations": {},
+  "errors": [
+    "build_feed: Feed-Bau fehlgeschlagen: OUT_PATH outside allowed directories Traceback (most recent call last): File \"/app/src/build_feed.py\", line 1699, in main out_path = _validate_path(Path(OUT_PATH), \"OUT_PATH\") ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"/app/src/feed/config.py\", line 76, in validate_path raise InvalidPathError(f\"{name} outside allowed directories\") feed.config.InvalidPathError: OUT_PATH outside allowed directories",
+    "Ausnahme: InvalidPathError: OUT_PATH outside allowed directories",
+    "InvalidPathError: OUT_PATH outside allowed directories"
   ],
-  "durations": {
-    "collect": 4.7343000005639624e-05,
-    "dedupe": 5.131200003916092e-05,
-    "filter": 6.042100000058781e-05,
-    "normalize": 7.384000014099001e-06,
-    "rss": 1.0250000173073204e-06,
-    "total": 0.0049554480000324475
-  },
-  "errors": [],
   "metrics": {
-    "deduped_items": 3,
-    "duplicate_count": 2,
-    "filtered_items": 5,
-    "new_items": 3,
-    "raw_items": 5
+    "deduped_items": 0,
+    "duplicate_count": 0,
+    "filtered_items": 0,
+    "new_items": 0,
+    "raw_items": 0
   },
   "providers": [
     {
@@ -72,13 +52,13 @@
     }
   ],
   "run": {
-    "feed_path": "/tmp/pytest-of-jules/pytest-3/test_main_dedupes_items0/docs/feed.xml",
-    "final_item_count": 3,
-    "finished_at": "2025-12-24T12:06:26.967606+01:00",
-    "id": "20251224T110626Z",
-    "raw_item_count": 5,
-    "started_at": "2025-12-24T12:06:26.961665+01:00",
-    "status": "success"
+    "feed_path": null,
+    "final_item_count": null,
+    "finished_at": "2025-12-24T13:54:31.743792+01:00",
+    "id": "20251224T125431Z",
+    "raw_item_count": null,
+    "started_at": "2025-12-24T13:54:31.739607+01:00",
+    "status": "error"
   },
   "warnings": []
 }
