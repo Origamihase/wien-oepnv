@@ -112,6 +112,20 @@ def _is_active(start: Optional[datetime], end: Optional[datetime], now: datetime
         return False
     return True
 
+def _intervals_overlap(
+    start_a: Optional[datetime],
+    end_a: Optional[datetime],
+    start_b: Optional[datetime],
+    end_b: Optional[datetime],
+) -> bool:
+    """Return True if the time intervals [start_a, end_a] and [start_b, end_b] overlap."""
+
+    s_a = start_a or datetime.min.replace(tzinfo=timezone.utc)
+    s_b = start_b or datetime.min.replace(tzinfo=timezone.utc)
+    e_a = end_a or datetime.max.replace(tzinfo=timezone.utc)
+    e_b = end_b or datetime.max.replace(tzinfo=timezone.utc)
+
+    return s_a <= e_b and s_b <= e_a
 
 def _as_list(val) -> List[Any]:
     if val is None:
@@ -676,6 +690,43 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             continue  # Aggregat raus
         filtered.append(it)
 
+    # F) Subset-Bereinigung: Eintrag entfernen, wenn ein anderer Eintrag eine Obermenge der Linien abdeckt
+    #    und zeitlich überlappt.
+    items_to_remove = set()
+    for i, item_a in enumerate(filtered):
+        if i in items_to_remove:
+            continue
+        lines_a = item_a.get("_lines_set") or set()
+        if not lines_a:
+            continue
+
+        for j, item_b in enumerate(filtered):
+            if i == j:
+                continue
+            if j in items_to_remove:
+                continue
+
+            lines_b = item_b.get("_lines_set") or set()
+            if not lines_b:
+                continue
+
+            # Wenn A eine ECHTE Teilmenge von B ist
+            if lines_a.issubset(lines_b) and len(lines_a) < len(lines_b):
+                # Check category match
+                if item_a.get("category") != item_b.get("category"):
+                     continue
+
+                # Check time overlap
+                if _intervals_overlap(
+                    item_a.get("starts_at"), item_a.get("ends_at"),
+                    item_b.get("starts_at"), item_b.get("ends_at")
+                ):
+                    items_to_remove.add(i)
+                    break
+
+    final_filtered = [it for i, it in enumerate(filtered) if i not in items_to_remove]
+    filtered = final_filtered
+
     # Aufräumen interner Felder + Sortierung
     for it in filtered:
         it.pop("_lines_set", None)
@@ -688,4 +739,3 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
 
 __all__ = ["fetch_events"]
-

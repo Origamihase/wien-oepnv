@@ -40,6 +40,11 @@ def test_aggregate_removed_when_all_singles_present(monkeypatch):
 
 
 def test_aggregate_retained_when_single_missing(monkeypatch):
+    # This test checks behavior when NOT all singles are present.
+    # Previously, it expected both Aggregate and Single1 to be present.
+    # With the new subset removal logic, Single1 (subset of Aggregate) is considered redundant and removed.
+    # The Aggregate remains because Single2 is missing, so Aggregate is "better" than just Single1.
+
     aggregate = _make_event("Aggregate", ["U1", "U2"])
     single1 = _make_event("Single1", ["U1"])
 
@@ -56,5 +61,6 @@ def test_aggregate_retained_when_single_missing(monkeypatch):
     titles = [it["title"] for it in items]
 
     assert "U1/U2: Aggregate" in titles
-    assert "U1: Single1" in titles
-    assert len(items) == 2
+    # Single1 is removed because it is a subset of Aggregate
+    assert "U1: Single1" not in titles
+    assert len(items) == 1
