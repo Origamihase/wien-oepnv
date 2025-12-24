@@ -1422,8 +1422,17 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     if time_line:
         desc_parts.append(time_line)
     desc_out = "\n".join(desc_parts)
-    desc_html = desc_out.replace("\n", "<br/>")
-    desc_cdata = desc_out.replace("\n", "<br>")
+    # Escaping is important here because html_to_text() returns plain text that
+    # might contain characters like < or > (e.g. if the original source had
+    # &lt;script&gt;). Since we wrap this in CDATA for content:encoded, an RSS
+    # reader treating it as HTML would execute it. We must escape it first,
+    # then add our own safe HTML markup (br tags).
+    desc_escaped = html.escape(desc_out)
+    desc_html = desc_escaped.replace("\n", "<br/>")
+    # For the description element (often plain text, but sometimes treated as HTML),
+    # we also escape to be safe, while preserving newlines if possible (though
+    # standard RSS description is often just text).
+    desc_cdata = desc_escaped.replace("\n", "<br>")
 
     parts: List[str] = []
     parts.append("<item>")

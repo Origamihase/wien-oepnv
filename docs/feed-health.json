@@ -2,7 +2,7 @@
   "duplicates": [],
   "durations": {},
   "errors": [
-    "build_feed: Feed-Bau fehlgeschlagen: OUT_PATH outside allowed directories Traceback (most recent call last): File \"/app/src/build_feed.py\", line 1699, in main out_path = _validate_path(Path(OUT_PATH), \"OUT_PATH\") ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"/app/src/feed/config.py\", line 75, in validate_path raise InvalidPathError(f\"{name} outside allowed directories\") feed.config.InvalidPathError: OUT_PATH outside allowed directories",
+    "build_feed: Feed-Bau fehlgeschlagen: OUT_PATH outside allowed directories Traceback (most recent call last): File \"/app/src/build_feed.py\", line 1708, in main out_path = _validate_path(Path(OUT_PATH), \"OUT_PATH\") ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"/app/src/feed/config.py\", line 75, in validate_path raise InvalidPathError(f\"{name} outside allowed directories\") feed.config.InvalidPathError: OUT_PATH outside allowed directories",
     "Ausnahme: InvalidPathError: OUT_PATH outside allowed directories",
     "InvalidPathError: OUT_PATH outside allowed directories"
   ],
@@ -54,10 +54,10 @@
   "run": {
     "feed_path": null,
     "final_item_count": null,
-    "finished_at": "2025-12-24T14:14:02.433194+01:00",
-    "id": "20251224T131402Z",
+    "finished_at": "2025-12-24T14:52:44.392828+01:00",
+    "id": "20251224T135244Z",
     "raw_item_count": null,
-    "started_at": "2025-12-24T14:14:02.428301+01:00",
+    "started_at": "2025-12-24T14:52:44.389402+01:00",
     "status": "error"
   },
   "warnings": []
