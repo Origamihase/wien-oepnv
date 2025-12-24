@@ -10,6 +10,7 @@ import textwrap
 TEMPLATE = textwrap.dedent(
     '''from __future__ import annotations
 
+from datetime import datetime, timezone
 from typing import Callable, Iterable
 
 Item = dict[str, object]
@@ -21,8 +22,18 @@ def register_providers(register_provider: Callable) -> None:
     def load_custom_events() -> Iterable[Item]:
         """Return iterable of events ready for the feed pipeline."""
 
-        # TODO: Replace with real implementation (e.g. API calls or cache reads).
-        return []
+        # Example implementation:
+        now = datetime.now(timezone.utc)
+        return [
+            {
+                "id": "custom-1",
+                "title": "Example Event",
+                "link": "https://example.com/event",
+                "pubDate": now,
+                "description": "This is a sample event from the custom provider.",
+                "guid": "custom-1",
+            }
+        ]
 
     register_provider("CUSTOM_PROVIDER_ENABLE", load_custom_events, cache_key="custom")
 
