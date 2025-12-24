@@ -722,22 +722,26 @@ def _acquire_lock(lock_path: Path) -> bool:
     deadline = time.monotonic() + REQUEST_LOCK_TIMEOUT_SEC
     while True:
         try:
-            fd = os.open(lock_path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            # Explicit mode 0o600 for security
+            fd = os.open(str(lock_path), os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
             os.close(fd)
             return True
         except FileExistsError:
             try:
                 mtime = lock_path.stat().st_mtime
             except FileNotFoundError:
-                time.sleep(REQUEST_LOCK_RETRY_DELAY)
+                # Lock file vanished in the meantime, retry immediately
                 continue
+
+            # Check for stale lock
             if time.time() - mtime > REQUEST_LOCK_TIMEOUT_SEC:
                 try:
                     lock_path.unlink()
                 except FileNotFoundError:
                     pass
-                time.sleep(REQUEST_LOCK_RETRY_DELAY)
+                # Retry immediately after removing stale lock
                 continue
+
             if time.monotonic() > deadline:
                 return False
             time.sleep(REQUEST_LOCK_RETRY_DELAY)
@@ -760,7 +764,8 @@ def save_request_count(now_local: datetime) -> int:
         temp_path = REQUEST_COUNT_FILE.with_suffix(".tmp")
         payload = {"date": date_iso, "count": new_count}
         try:
-            fd = os.open(temp_path, os.O_CREAT | os.O_TRUNC | os.O_WRONLY, 0o600)
+            # Ensure temp path is string for os.open
+            fd = os.open(str(temp_path), os.O_CREAT | os.O_TRUNC | os.O_WRONLY, 0o600)
         except OSError:
             return previous_count
         try:
