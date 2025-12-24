@@ -42,7 +42,7 @@ def normalize_bullets(text: str) -> str:
 
     def _repl(match: Match[str]) -> str:
         prefix = match.group(1)
-        tail = match.group(0)[len(prefix) :]
+        tail = match.group(0)[len(prefix):]
         if "\n" in tail:
             return prefix + "\n"
         return prefix + " "

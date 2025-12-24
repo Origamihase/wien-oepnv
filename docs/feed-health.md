@@ -1,31 +1,19 @@
 # Feed Health Report
 
-- **Status:** ✅ Erfolgreich
-- **Run-ID:** `20251224T110626Z`
-- **Start:** 2025-12-24 12:06:26 CET
-- **Ende:** 2025-12-24 12:06:26 CET
-- **RSS-Datei:** `/tmp/pytest-of-jules/pytest-3/test_main_dedupes_items0/docs/feed.xml`
+- **Status:** ❌ Fehlerhaft
+- **Run-ID:** `20251224T125431Z`
+- **Start:** 2025-12-24 13:54:31 CET
+- **Ende:** 2025-12-24 13:54:31 CET
 
 ## Pipeline-Kennzahlen
 
 | Schritt | Anzahl |
 | --- | ---: |
-| Rohdaten | 5 |
-| Nach Altersfilter | 5 |
-| Nach Deduplizierung | 3 |
-| Neue Items seit letztem State | 3 |
-| Entfernte Duplikate | 2 |
-
-### Laufzeiten
-
-| Schritt | Dauer (s) |
-| --- | ---: |
-| collect | 0.00 |
-| dedupe | 0.00 |
-| filter | 0.00 |
-| normalize | 0.00 |
-| rss | 0.00 |
-| total | 0.00 |
+| Rohdaten | 0 |
+| Nach Altersfilter | 0 |
+| Nach Deduplizierung | 0 |
+| Neue Items seit letztem State | 0 |
+| Entfernte Duplikate | 0 |
 
 ## Providerübersicht
 
@@ -36,7 +24,8 @@
 | vor | pending | — | — |  |
 | wl | pending | — | — |  |
 
-### Entfernte Duplikate im Detail
+## Fehler
 
-- **2×** Schlüssel `a` – Beispiele: `A`, `A2`
-- **2×** Schlüssel `gb` – Beispiele: `B`, `B2`
+- build_feed: Feed-Bau fehlgeschlagen: OUT_PATH outside allowed directories Traceback (most recent call last): File "/app/src/build_feed.py", line 1699, in main out_path = _validate_path(Path(OUT_PATH), "OUT_PATH") ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File "/app/src/feed/config.py", line 76, in validate_path raise InvalidPathError(f"{name} outside allowed directories") feed.config.InvalidPathError: OUT_PATH outside allowed directories
+- Ausnahme: InvalidPathError: OUT_PATH outside allowed directories
+- InvalidPathError: OUT_PATH outside allowed directories
