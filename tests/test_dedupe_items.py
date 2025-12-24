@@ -56,6 +56,8 @@ def test_main_dedupes_items(monkeypatch, tmp_path):
     for item in captured["items"]:
         item.pop("_calculated_identity", None)
         item.pop("_calculated_dedupe_key", None)
+        item.pop("_calculated_recency", None)
+        item.pop("_calculated_end", None)
 
     assert captured["items"] == [
         {"_identity": "a", "guid": "ga", "title": "A"},

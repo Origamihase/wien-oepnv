@@ -1178,6 +1178,8 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
     def _recency_value(it: Dict[str, Any]) -> datetime:
         """Return a comparable timestamp describing how recent ``it`` is."""
+        if "_calculated_recency" in it:
+            return it["_calculated_recency"]
 
         candidates: List[datetime] = []
         for field_name in ("pubDate", "first_seen", "starts_at"):
@@ -1190,15 +1192,25 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                     candidates.append(_to_utc(parsed))
 
         if candidates:
-            return max(candidates)
+            res = max(candidates)
+        else:
+            res = datetime.min.replace(tzinfo=timezone.utc)
 
-        return datetime.min.replace(tzinfo=timezone.utc)
+        it["_calculated_recency"] = res
+        return res
 
     def _end_value(it: Dict[str, Any]) -> datetime:
+        if "_calculated_end" in it:
+            return it["_calculated_end"]
+
         ends = it.get("ends_at")
         if isinstance(ends, datetime):
-            return _to_utc(ends)
-        return datetime.min.replace(tzinfo=timezone.utc)
+            res = _to_utc(ends)
+        else:
+            res = datetime.min.replace(tzinfo=timezone.utc)
+
+        it["_calculated_end"] = res
+        return res
 
     def _better(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
         """Return True if ``a`` is better than ``b`` according to recency and content."""
