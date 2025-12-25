@@ -25,9 +25,11 @@ from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Any, Dict, List, Optional
 from email.utils import parsedate_to_datetime
 
+import requests
+
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
     from ..utils.env import get_bool_env
-    from ..utils.http import session_with_retries, validate_http_url
+    from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.ids import make_guid
     from ..utils.stations import canonical_name, is_in_vienna, is_pendler
     from ..utils.text import html_to_text
@@ -47,9 +49,9 @@ else:  # pragma: no cover - support both package layouts at runtime
         from ..utils.stations import canonical_name, is_in_vienna, is_pendler  # type: ignore
 
     try:
-        from utils.http import session_with_retries, validate_http_url
+        from utils.http import session_with_retries, validate_http_url, fetch_content_safe
     except ModuleNotFoundError:
-        from ..utils.http import session_with_retries, validate_http_url  # type: ignore
+        from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
 from defusedxml import ElementTree as ET
 
 log = logging.getLogger(__name__)
@@ -236,39 +238,38 @@ def _keep_by_region(title: str, desc: str) -> bool:
 def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
     with session_with_retries(USER_AGENT) as s:
         for attempt in range(2):
-            r = s.get(url, timeout=timeout)
-            status = getattr(r, "status_code", None)
-            headers = getattr(r, "headers", {}) or {}
-            if status == 429:
-                retry_after = headers.get("Retry-After")
-                log.warning("ÖBB RSS Rate-Limit (Retry-After: %s)", retry_after)
-                wait_seconds: Optional[float] = None
-                if retry_after:
-                    try:
-                        wait_seconds = float(retry_after)
-                    except (TypeError, ValueError):
+            try:
+                content = fetch_content_safe(s, url, timeout=timeout)
+                return ET.fromstring(content)
+            except ValueError as e:
+                log.warning("ÖBB RSS: Content-Limit/Format-Fehler: %s", e)
+                return None
+            except requests.RequestException as e:
+                log.warning("ÖBB RSS fetch fehlgeschlagen (Versuch %d): %s", attempt + 1, e)
+
+                wait_seconds = 1.0
+                if e.response is not None and e.response.status_code == 429:
+                    header = e.response.headers.get("Retry-After")
+                    if header:
                         try:
-                            retry_dt = parsedate_to_datetime(str(retry_after))
-                        except (TypeError, ValueError, OverflowError):
-                            wait_seconds = None
-                        else:
-                            if retry_dt is not None:
+                            wait_seconds = float(header)
+                        except (TypeError, ValueError):
+                            try:
+                                retry_dt = parsedate_to_datetime(header)
                                 if retry_dt.tzinfo is None:
                                     retry_dt = retry_dt.replace(tzinfo=timezone.utc)
                                 delta = (retry_dt - datetime.now(timezone.utc)).total_seconds()
                                 wait_seconds = max(0.0, delta)
+                            except Exception:
+                                pass
+                    log.warning("ÖBB RSS Rate-Limit (Retry-After: %s)", header)
+
                 if attempt == 0:
-                    if wait_seconds and wait_seconds > 0:
-                        try:
-                            time.sleep(wait_seconds)
-                        except Exception as sleep_err:
-                            log.warning("ÖBB RSS Wartezeit fehlgeschlagen: %s", sleep_err)
-                    continue
+                     if wait_seconds > 0:
+                        time.sleep(wait_seconds)
+                     continue
                 return None
-            if status is not None and status >= 400:
-                log.warning("ÖBB RSS HTTP-Fehler: Status %s", status)
-                return None
-            return ET.fromstring(r.content)
+
     return None
 
 def _get_text(elem: Optional[ET.Element], tag: str) -> str:
