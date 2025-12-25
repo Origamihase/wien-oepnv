@@ -9,6 +9,7 @@ import logging
 import os
 import re
 import sys
+import tempfile
 from collections import defaultdict
 from concurrent.futures import (
     FIRST_COMPLETED,
@@ -721,14 +722,27 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
 def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
     path = _validate_path(STATE_FILE, "STATE_PATH")
     path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(".tmp")
     with path.open("a+", encoding="utf-8") as lock_file:
         with _file_lock(lock_file, exclusive=True):
-            with tmp.open("w", encoding="utf-8") as f:
-                json.dump(state, f, ensure_ascii=False, indent=2, sort_keys=True)
-                f.flush()
-                os.fsync(f.fileno())
-            tmp.replace(path)
+            fd, tmp_path = tempfile.mkstemp(
+                dir=str(path.parent),
+                prefix=f"{path.name}.",
+                suffix=".tmp",
+                text=True,
+            )
+            try:
+                with os.fdopen(fd, "w", encoding="utf-8") as f:
+                    json.dump(state, f, ensure_ascii=False, indent=2, sort_keys=True)
+                    f.flush()
+                    os.fsync(f.fileno())
+                os.replace(tmp_path, path)
+            except Exception:
+                if os.path.exists(tmp_path):
+                    try:
+                        os.unlink(tmp_path)
+                    except OSError:
+                        pass
+                raise
 
 def _identity_for_item(item: Dict[str, Any]) -> str:
     """
