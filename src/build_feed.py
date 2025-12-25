@@ -1733,12 +1733,29 @@ def main() -> int:
 
         out_path = _validate_path(Path(OUT_PATH), "OUT_PATH")
         out_path.parent.mkdir(parents=True, exist_ok=True)
-        tmp = out_path.with_suffix('.tmp')
-        with tmp.open('w', encoding='utf-8') as f:
-            f.write(rss)
-            f.flush()
-            os.fsync(f.fileno())
-        tmp.replace(out_path)
+
+        fd, tmp_path = tempfile.mkstemp(
+            dir=str(out_path.parent),
+            prefix=f"{out_path.name}.",
+            suffix=".tmp",
+            text=True,
+        )
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as f:
+                f.write(rss)
+                f.flush()
+                os.fsync(f.fileno())
+            # Explicitly set permissions to 0644 since mkstemp creates 0600
+            # and the feed is intended to be public.
+            os.chmod(tmp_path, 0o644)
+            os.replace(tmp_path, out_path)
+        except Exception:
+            if os.path.exists(tmp_path):
+                try:
+                    os.unlink(tmp_path)
+                except OSError:
+                    pass
+            raise
 
         total_duration = perf_counter() - job_start
         log.info(
