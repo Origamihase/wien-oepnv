@@ -218,54 +218,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 38 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "31f255c87f5a1575177df04a76beabf6426a71727ee2fef75eb69ab752e4775f",
-    "pubDate": "2025-12-25T18:40:00+01:00",
-    "starts_at": "2025-12-25T18:40:00+01:00",
-    "ends_at": "2025-12-25T23:55:00+01:00",
-    "_identity": "wl|störung|L=38|D=2025-12-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 37 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "469b9778d4214dbbbd09d8ed008c51981bf9682b6a81d9e95d111392e71be734",
-    "pubDate": "2025-12-25T18:40:00+01:00",
-    "starts_at": "2025-12-25T18:40:00+01:00",
-    "ends_at": "2025-12-25T23:55:00+01:00",
-    "_identity": "wl|störung|L=37|D=2025-12-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
-    "pubDate": "2025-12-25T18:53:12+01:00",
-    "starts_at": "2025-12-25T18:53:12+01:00",
-    "ends_at": "2025-12-25T20:52:00+01:00",
-    "_identity": "wl|störung|L=38|D=2025-12-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9a256ddc9071e1be270714d5f6be746d8db040a3968d1eb9ae42aab06ab94ad4",
-    "pubDate": "2025-12-25T18:53:12+01:00",
-    "starts_at": "2025-12-25T18:53:12+01:00",
-    "ends_at": "2025-12-25T20:52:00+01:00",
-    "_identity": "wl|störung|L=37|D=2025-12-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "95A: Rettungseinsatz",
     "description": "Die Linie 95 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Langobardenstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -274,5 +226,17 @@
     "starts_at": "2025-12-25T20:20:00+01:00",
     "ends_at": "2025-12-25T23:55:00+01:00",
     "_identity": "wl|störung|L=95A|D=2025-12-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "94A: Polizeieinsatz",
+    "description": "Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Mergenthalerplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1d966e09fb9636c1df4d837b16c680b46ab28a49b95b2a41c4f2fc935e7a26af",
+    "pubDate": "2025-12-25T20:55:00+01:00",
+    "starts_at": "2025-12-25T20:55:00+01:00",
+    "ends_at": "2025-12-25T23:55:00+01:00",
+    "_identity": "wl|störung|L=94A|D=2025-12-25"
   }
 ]
