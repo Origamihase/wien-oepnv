@@ -206,6 +206,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "Polizeieinsatz Betrieb ab Währinger Straße, Volksoper",
+    "description": "Polizeieinsatz Betrieb ab Währinger Straße, Volksoper",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "68bc6af54c6e7221254acf728b57d945990511addcc9f1a0366dc0c96112b806",
+    "pubDate": "2025-12-24T14:00:04+01:00",
+    "starts_at": "2025-12-24T14:00:04+01:00",
+    "ends_at": "2025-12-25T13:57:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-12-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Polizeieinsatz Einstieg bei Linie 42",
+    "description": "Polizeieinsatz Einstieg bei Linie 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5d0479fbee24a6170595345617adac2832b089a4749522b366de941b72d82321",
+    "pubDate": "2025-12-24T14:00:04+01:00",
+    "starts_at": "2025-12-24T14:00:04+01:00",
+    "ends_at": "2025-12-25T13:59:00+01:00",
+    "_identity": "wl|störung|L=42|D=2025-12-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -218,13 +242,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44A: Verkehrsunfall",
-    "description": "Die Linie 44 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "40: Polizeieinsatz Umleitung über Linien 9 und 42",
+    "description": "Polizeieinsatz Umleitung über Linien 9 und 42",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "52ad1ed10ad7e0b3c2de55776236f0ccb147ac2e33de1bb7d36a108f10129df5",
-    "pubDate": "2025-12-25T12:25:00+01:00",
-    "starts_at": "2025-12-25T12:25:00+01:00",
-    "ends_at": "2025-12-25T23:55:00+01:00",
-    "_identity": "wl|störung|L=44A|D=2025-12-25"
+    "guid": "c69945909bb9857d7bd6f588f1762bb246448847eb61869c9392bf820d075aa9",
+    "pubDate": "2025-12-25T13:01:14+01:00",
+    "starts_at": "2025-12-25T13:01:14+01:00",
+    "ends_at": "2025-12-25T14:00:00+01:00",
+    "_identity": "wl|störung|L=40|D=2025-12-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Polizeieinsatz Umleitung über Linien 9 und 42",
+    "description": "Polizeieinsatz Umleitung über Linien 9 und 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "23c71dea38600f656550e4ee80abde568280d05af712cf5a0434be0220ef6e80",
+    "pubDate": "2025-12-25T13:01:43+01:00",
+    "starts_at": "2025-12-25T13:01:43+01:00",
+    "ends_at": "2025-12-25T14:01:00+01:00",
+    "_identity": "wl|störung|L=41|D=2025-12-25"
   }
 ]
