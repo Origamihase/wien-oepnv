@@ -172,8 +172,16 @@ def _resolve_path(candidate: str | None, *, default: Path) -> Path:
         return default
     path = Path(text)
     if not path.is_absolute():
-        return (BASE_DIR / path).resolve()
-    return path
+        resolved = (BASE_DIR / path).resolve()
+    else:
+        resolved = path.resolve()
+
+    try:
+        resolved.relative_to(BASE_DIR)
+    except ValueError:
+        _log_warning("Pfad-Traversal erkannt oder Pfad außerhalb des Projekts: %s. Nutze Standard.", text)
+        return default
+    return resolved
 
 
 REQUEST_COUNT_FILE = _resolve_path(

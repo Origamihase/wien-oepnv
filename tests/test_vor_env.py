@@ -84,13 +84,20 @@ def test_station_ids_fallback_from_file(monkeypatch, tmp_path):
     monkeypatch.delenv("VOR_STATION_IDS", raising=False)
     monkeypatch.delenv("VOR_STATION_NAMES", raising=False)
 
-    ids_file = tmp_path / "ids.txt"
-    ids_file.write_text("  1001,1002\n1003  ", encoding="utf-8")
-    monkeypatch.setenv("VOR_STATION_IDS_FILE", str(ids_file))
+    # Use a file inside the project directory (e.g. data/) to pass validation
+    from pathlib import Path
+    data_dir = vor.DATA_DIR
+    ids_file = data_dir / "test_ids.txt"
+    try:
+        ids_file.write_text("  1001,1002\n1003  ", encoding="utf-8")
+        monkeypatch.setenv("VOR_STATION_IDS_FILE", str(ids_file))
 
-    importlib.reload(vor)
+        importlib.reload(vor)
 
-    assert vor.VOR_STATION_IDS == ["1001", "1002", "1003"]
+        assert vor.VOR_STATION_IDS == ["1001", "1002", "1003"]
+    finally:
+        if ids_file.exists():
+            ids_file.unlink()
 
     monkeypatch.delenv("VOR_STATION_IDS_FILE", raising=False)
     importlib.reload(vor)
