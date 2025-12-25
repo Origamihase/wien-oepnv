@@ -27,6 +27,10 @@ class DummySession:
     def __init__(self, responses: Iterable[DummyResponse]) -> None:
         self._queue = list(responses)
         self.calls: List[dict] = []
+        self.headers: dict = {}
+
+    def mount(self, prefix: str, adapter: object) -> None:
+        pass
 
     def post(self, url: str, *, headers: dict, json: dict, timeout: float) -> DummyResponse:
         if not self._queue:
