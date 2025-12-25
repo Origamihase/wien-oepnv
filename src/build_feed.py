@@ -449,6 +449,8 @@ _ELLIPSIS = " …"
 _SENTENCE_END_RE = re.compile(r"[.!?…](?=\s|$)")
 _WHITESPACE_RE = re.compile(r"\s+")
 _ISO_TZ_FIX_RE = re.compile(r"([+-]\d{2})(\d{2})$")
+_HTML_TAG_RE = re.compile(r"<[^>]*>")
+_WHITESPACE_CLEANUP_RE = re.compile(r"[ \t\r\f\v]+")
 
 def _sanitize_text(s: str) -> str:
     return _CONTROL_RE.sub("", s or "")
@@ -459,7 +461,7 @@ def _cdata(s: str) -> str:
     return f"<![CDATA[{s}]]>"
 
 def _strip_html(s: str) -> str:
-    return re.sub(r"<[^>]*>", "", s or "")
+    return _HTML_TAG_RE.sub("", s or "")
 
 def _clip_text_html(text: str, limit: int) -> str:
     """Für TV knapper machen. Gibt immer Plaintext zurück und kürzt falls nötig."""
@@ -1410,13 +1412,13 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
             desc_sentence = sentence_text
 
     desc_line = _sanitize_text(desc_sentence)
-    title_out = re.sub(r"\s+", " ", title_out).strip()
-    desc_line = re.sub(r"[ \t\r\f\v]+", " ", desc_line).strip()
+    title_out = _WHITESPACE_RE.sub(" ", title_out).strip()
+    desc_line = _WHITESPACE_CLEANUP_RE.sub(" ", desc_line).strip()
 
     sanitized_extras: List[str] = []
     for extra_line in extra_lines_raw:
         sanitized = _sanitize_text(extra_line)
-        sanitized = re.sub(r"[ \t\r\f\v]+", " ", sanitized).strip()
+        sanitized = _WHITESPACE_CLEANUP_RE.sub(" ", sanitized).strip()
         if sanitized and sanitized != desc_line:
             sanitized_extras.append(sanitized)
 
@@ -1434,7 +1436,7 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     ):
         time_line = date_range_line
     time_line = _sanitize_text(time_line)
-    time_line = re.sub(r"[ \t\r\f\v]+", " ", time_line).strip()
+    time_line = _WHITESPACE_CLEANUP_RE.sub(" ", time_line).strip()
     if time_line:
         if not time_line.startswith("["):
             time_line = f"[{time_line}"

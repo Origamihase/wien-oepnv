@@ -284,6 +284,14 @@ def test_fetch_stationboard_counts_unsuccessful_requests(monkeypatch, status_cod
         def json(self):  # pragma: no cover - defensive, should not be called for error codes
             return {}
 
+        def raise_for_status(self):
+            import requests
+            if 400 <= self.status_code < 600:
+                raise requests.HTTPError(response=self)
+
+        def iter_content(self, chunk_size=1):
+            return []
+
     class DummySession:
         def __init__(self, response: DummyResponse):
             self._response = response
@@ -295,8 +303,13 @@ def test_fetch_stationboard_counts_unsuccessful_requests(monkeypatch, status_cod
         def __exit__(self, exc_type, exc, tb):
             return False
 
-        def get(self, url, params=None, timeout=None):  # pragma: no cover - exercised in test
-            return self._response
+        def get(self, url, params=None, timeout=None, **kwargs):  # pragma: no cover - exercised in test
+            class CM:
+                def __enter__(inner):
+                    return self._response
+                def __exit__(inner, exc_type, exc, tb):
+                    pass
+            return CM()
 
     def fake_session_with_retries(*args, **kwargs):
         return DummySession(DummyResponse(status_code, headers))
@@ -334,6 +347,12 @@ def test_fetch_stationboard_retries_increment_counter(monkeypatch):
         def json(self):
             return {}
 
+        def raise_for_status(self):
+            pass
+
+        def iter_content(self, chunk_size=1):
+            yield b"{}"
+
     class DummySession:
         def __init__(self):
             self.calls = 0
@@ -349,7 +368,12 @@ def test_fetch_stationboard_retries_increment_counter(monkeypatch):
             self.calls += 1
             if self.calls == 1:
                 raise ConnectionError("boom")
-            return DummyResponse()
+            class CM:
+                def __enter__(inner):
+                    return DummyResponse()
+                def __exit__(inner, exc_type, exc, tb):
+                    pass
+            return CM()
 
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
