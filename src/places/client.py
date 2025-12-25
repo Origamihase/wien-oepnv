@@ -12,6 +12,11 @@ from typing import Dict, Iterable, Iterator, List, Optional, Sequence, Set, cast
 
 import requests
 
+try:
+    from utils.http import session_with_retries
+except ModuleNotFoundError:
+    from ..utils.http import session_with_retries
+
 from .quota import MonthlyQuota, QuotaConfig
 from .tiling import Tile
 
@@ -125,7 +130,13 @@ class GooglePlacesClient:
         enforce_quota: bool = False,
     ) -> None:
         self._config = config
-        self._session = session or requests.Session()
+        self._session = session or session_with_retries(
+            user_agent="wien-oepnv-places/1.0",
+            # Fallback timeout if not specified in config (though _post uses config.timeout_s)
+            timeout=20,
+            # Google Places API primarily uses POST, allow retries on POST
+            allowed_methods=("GET", "POST"),
+        )
         self.request_count = 0
         self._quota = quota
         self._quota_config = quota_config
