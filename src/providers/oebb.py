@@ -167,13 +167,7 @@ def _split_endpoints(title: str) -> Optional[List[str]]:
     # Or just treat everything as a list of endpoints.
     # The existing logic assumes strict left/right split.
 
-    if len(parts) == 2:
-        left, right = parts[0], parts[1]
-    else:
-        # E.g. A-B-C -> Left=A, Right=B-C? Or Left=A, Right=B, Right2=C?
-        # Let's flatten all parts into endpoints
-        # But we need to run 'explode' cleanup on each.
-        pass
+    # We process all parts generically below.
 
     def explode(side: str) -> List[str]:
         tmp = re.split(r"\s*(?:/|,|bzw\.|oder|und)\s*", side, flags=re.IGNORECASE)

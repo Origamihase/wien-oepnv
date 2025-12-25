@@ -7,14 +7,9 @@ from unittest.mock import patch, MagicMock
 
 import pytest
 
-# We need to import the function to test
-# Since build_feed imports config which has side effects (environment loading),
-# we need to be careful.
-
 @pytest.fixture
 def mock_feed_config(monkeypatch):
     """Mock the feed config to avoid environment validation issues."""
-    # We can patch validate_path in feed.config
     with patch("feed.config.validate_path", side_effect=lambda p, n: Path(p).resolve()):
         yield
 
@@ -26,15 +21,23 @@ def test_save_state_secure_permissions(tmp_path, mock_feed_config):
     # Define a state file path
     state_file = tmp_path / "secure_state.json"
 
-    # We need to patch the global STATE_FILE in build_feed module
-    # or ensure _validate_path returns our path.
-    # _save_state uses: path = _validate_path(STATE_FILE, "STATE_PATH")
-    # We patched _validate_path to just return the path.
-    # But we also need to make sure STATE_FILE variable passed to it is something reasonable?
-    # Actually, if we patched validate_path, we can just pass the path we want to check if we could control the argument.
-    # But _save_state takes 'state' dict, and uses global STATE_FILE.
+    # Patch build_feed.STATE_FILE.
+    # Since build_feed uses global STATE_FILE, we patch it there.
+    # Note: _save_state calls _validate_path(STATE_FILE, ...)
+    # _validate_path is imported from feed.config
+    # We mocked feed.config.validate_path above.
+    # But build_feed.py imports it at top level.
+    # So we also need to make sure build_feed._validate_path calls our mock or the mock is applied before import.
+    # Since build_feed is likely already imported by other tests, we rely on patch here.
 
-    with patch("build_feed.STATE_FILE", state_file):
+    # We also need to patch build_feed._validate_path because it captured the original function
+    # OR we patch where it is used.
+    # The fixture mock_feed_config patches 'feed.config.validate_path'.
+    # If build_feed does `from feed.config import validate_path`, then `build_feed.validate_path` is the old one.
+
+    with patch("build_feed.STATE_FILE", state_file), \
+         patch("build_feed._validate_path", side_effect=lambda p, n: Path(p).resolve()):
+
         test_state = {"test_item": {"first_seen": "2023-01-01T00:00:00+00:00"}}
 
         _save_state(test_state)
