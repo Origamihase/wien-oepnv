@@ -206,6 +206,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "Verkehrsunfall Betrieb ab Nußdorfer Straße",
+    "description": "Verkehrsunfall Betrieb ab Nußdorfer Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5653a39c2e33d45649637c04a3cf2a2dab39d50041555d2c2039f853057bb918",
+    "pubDate": "2025-12-24T13:59:58+01:00",
+    "starts_at": "2025-12-24T13:59:58+01:00",
+    "ends_at": "2025-12-25T19:53:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-12-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U: Züge halten bei U-Bahn Station Nußdorfer Str.",
+    "description": "Züge halten bei U-Bahn Station Nußdorfer Str.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5126cb69c78bc9c3f3bf67537c94ed3c472ffc82d209ca214cec4eae56456008",
+    "pubDate": "2025-12-24T14:00:04+01:00",
+    "starts_at": "2025-12-24T14:00:04+01:00",
+    "ends_at": "2025-12-25T19:54:00+01:00",
+    "_identity": "wl|störung|L=U|D=2025-12-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,5 +238,29 @@
     "starts_at": "2025-12-25T04:45:14+01:00",
     "ends_at": "2025-12-26T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
+    "pubDate": "2025-12-25T18:53:12+01:00",
+    "starts_at": "2025-12-25T18:53:12+01:00",
+    "ends_at": "2025-12-25T19:52:00+01:00",
+    "_identity": "wl|störung|L=38|D=2025-12-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9a256ddc9071e1be270714d5f6be746d8db040a3968d1eb9ae42aab06ab94ad4",
+    "pubDate": "2025-12-25T18:53:12+01:00",
+    "starts_at": "2025-12-25T18:53:12+01:00",
+    "ends_at": "2025-12-25T19:52:00+01:00",
+    "_identity": "wl|störung|L=37|D=2025-12-25"
   }
 ]
