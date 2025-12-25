@@ -218,25 +218,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "95A: Rettungseinsatz",
-    "description": "Die Linie 95 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Langobardenstraße.",
+    "title": "U4: Rettungseinsatz",
+    "description": "Die Linie U4 ist derzeit in Richtung Heiligenstadt an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 22:40 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Pilgramgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "51cce396129aa5d5e2e16db7f0c2488b4d50ee8e7b1f1c5afa26a00e10b3def7",
-    "pubDate": "2025-12-25T20:20:00+01:00",
-    "starts_at": "2025-12-25T20:20:00+01:00",
+    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
+    "pubDate": "2025-12-25T22:10:00+01:00",
+    "starts_at": "2025-12-25T22:10:00+01:00",
     "ends_at": "2025-12-25T23:55:00+01:00",
-    "_identity": "wl|störung|L=95A|D=2025-12-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "94A: Polizeieinsatz",
-    "description": "Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Mergenthalerplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1d966e09fb9636c1df4d837b16c680b46ab28a49b95b2a41c4f2fc935e7a26af",
-    "pubDate": "2025-12-25T20:55:00+01:00",
-    "starts_at": "2025-12-25T20:55:00+01:00",
-    "ends_at": "2025-12-25T23:55:00+01:00",
-    "_identity": "wl|störung|L=94A|D=2025-12-25"
+    "_identity": "wl|störung|L=U4|D=2025-12-25"
   }
 ]
