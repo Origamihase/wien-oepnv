@@ -17,13 +17,13 @@ from requests import RequestException, Session
 from zoneinfo import ZoneInfo
 
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
-    from ..utils.http import session_with_retries, validate_http_url
+    from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.stations import vor_station_ids
 else:  # pragma: no cover - allow running via package or src layout
     try:
-        from utils.http import session_with_retries, validate_http_url
+        from utils.http import session_with_retries, validate_http_url, fetch_content_safe
     except ModuleNotFoundError:
-        from ..utils.http import session_with_retries, validate_http_url  # type: ignore
+        from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
 
     try:
         from utils.stations import vor_station_ids
@@ -842,9 +842,49 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Mapping[str, An
             attempts = max(int(VOR_RETRY_OPTIONS.get("total", 0) or 0) + 1, 1)
             for attempt in range(attempts):
                 try:
-                    response = session.get(
-                        f"{VOR_BASE_URL}departureboard", params=params, timeout=HTTP_TIMEOUT
+                    content = fetch_content_safe(
+                        session,
+                        f"{VOR_BASE_URL}departureboard",
+                        params=params,
+                        timeout=HTTP_TIMEOUT,
                     )
+                    save_request_count(now_local)
+                    return json.loads(content)
+
+                except ValueError as exc:
+                    save_request_count(now_local)
+                    _log_warning("VOR StationBoard %s ungültig/zu groß: %s", station_id, exc)
+                    return None
+
+                except requests.HTTPError as exc:
+                    save_request_count(now_local)
+                    response = exc.response
+                    if response is not None:
+                        if response.status_code == 429:
+                            _log_warning("VOR StationBoard %s -> HTTP 429", station_id)
+                            _handle_retry_after(response)
+                            return None
+                        if response.status_code >= 500:
+                            _log_warning("VOR StationBoard %s -> HTTP %s", station_id, response.status_code)
+                            if response.status_code == 503:
+                                _handle_retry_after(response)
+                            return None
+                        if response.status_code >= 400:
+                            _log_warning("VOR StationBoard %s -> HTTP %s", station_id, response.status_code)
+                            return None
+
+                    if attempt >= attempts - 1:
+                        _log_error("VOR StationBoard %s fehlgeschlagen: %s", station_id, exc)
+                        return None
+                    _log_warning(
+                        "VOR StationBoard %s fehlgeschlagen (Versuch %d/%d): %s",
+                        station_id,
+                        attempt + 1,
+                        attempts,
+                        exc,
+                    )
+                    continue
+
                 except RequestException as exc:
                     save_request_count(now_local)
                     if attempt >= attempts - 1:
@@ -859,24 +899,6 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Mapping[str, An
                     )
                     continue
 
-                save_request_count(now_local)
-                if response.status_code == 429:
-                    _log_warning("VOR StationBoard %s -> HTTP 429", station_id)
-                    _handle_retry_after(response)
-                    return None
-                if response.status_code >= 500:
-                    _log_warning("VOR StationBoard %s -> HTTP %s", station_id, response.status_code)
-                    if response.status_code == 503:
-                        _handle_retry_after(response)
-                    return None
-                if response.status_code >= 400:
-                    _log_warning("VOR StationBoard %s -> HTTP %s", station_id, response.status_code)
-                    return None
-                try:
-                    return response.json()
-                except ValueError:
-                    _log_warning("VOR StationBoard %s lieferte ungültiges JSON", station_id)
-                    return None
             return None
     except RequestException as exc:
         _log_error("VOR StationBoard %s Ausnahme: %s", station_id, exc)
