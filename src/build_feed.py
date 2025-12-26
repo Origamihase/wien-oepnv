@@ -751,7 +751,7 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
     sa_str = _to_utc(sa).isoformat() if isinstance(sa, datetime) else "None"
     ea_str = _to_utc(ea).isoformat() if isinstance(ea, datetime) else "None"
     fuzzy_raw = f"{title}|{sa_str}|{ea_str}"
-    fuzzy_hash = hashlib.sha1(fuzzy_raw.encode("utf-8")).hexdigest()
+    fuzzy_hash = hashlib.sha256(fuzzy_raw.encode("utf-8")).hexdigest()
 
     result: str
     source = (item.get("source") or "").lower()
@@ -769,7 +769,7 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
                     result = f"{base}|T={item['title']}|F={fuzzy_hash}"
                 else:
                     raw = json.dumps(item, sort_keys=True, default=str)
-                    hashed = hashlib.sha1(raw.encode("utf-8")).hexdigest()
+                    hashed = hashlib.sha256(raw.encode("utf-8")).hexdigest()
                     result = f"{base}|H={hashed}|F={fuzzy_hash}"
             else:
                 result = f"{base}|F={fuzzy_hash}"
@@ -778,7 +778,7 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
             result = f"{base}|T={item['title']}|F={fuzzy_hash}"
         else:
             raw = json.dumps(item, sort_keys=True, default=str)
-            hashed = hashlib.sha1(raw.encode("utf-8")).hexdigest()
+            hashed = hashlib.sha256(raw.encode("utf-8")).hexdigest()
             result = f"{base}|H={hashed}|F={fuzzy_hash}"
 
     item["_calculated_identity"] = result
@@ -1126,9 +1126,9 @@ def _dedupe_key_for_item(
     raw = (
         f"{it.get('source') or ''}|{it.get('title') or ''}|{it.get('description') or ''}"
     )
-    key = hashlib.sha1(raw.encode("utf-8")).hexdigest()
+    key = hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
-    # Only cache if we produced a fallback key to avoid recalculating SHA1
+    # Only cache if we produced a fallback key to avoid recalculating SHA256
     # We set it before logging, so we can return it.
     it["_calculated_dedupe_key"] = key
 
