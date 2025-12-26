@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import ipaddress
+import re
 import socket
 from typing import Any
 from urllib.parse import urlparse
@@ -68,17 +69,26 @@ def session_with_retries(
     return session
 
 
+# Block control characters and whitespace in URLs to prevent log injection
+_UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f]")
+
+
 def validate_http_url(url: str | None) -> str | None:
     """Ensure the given URL is valid and uses http or https.
 
     Returns the URL (stripped) if valid, or ``None`` if invalid/empty/wrong scheme.
-    Also rejects URLs that point to localhost or private IP addresses (SSRF protection).
+    Also rejects URLs that point to localhost or private IP addresses (SSRF protection),
+    or contain unsafe control characters/whitespace.
     """
     if not url:
         return None
 
     candidate = url.strip()
     if not candidate:
+        return None
+
+    # Reject internal whitespace or control characters
+    if _UNSAFE_URL_CHARS.search(candidate):
         return None
 
     try:
