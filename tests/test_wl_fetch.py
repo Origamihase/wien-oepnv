@@ -18,11 +18,21 @@ def test_stop_names_from_related_uses_canonical_names():
 
 def test_fetch_events_handles_invalid_json(monkeypatch, caplog):
     class DummyResponse:
+        headers = {}
         def raise_for_status(self):
             return None
 
         def json(self):
             raise ValueError("invalid JSON")
+
+        def iter_content(self, chunk_size=8192):
+            return [b"invalid"]
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            pass
 
     class DummySession:
         def __init__(self):
@@ -34,7 +44,7 @@ def test_fetch_events_handles_invalid_json(monkeypatch, caplog):
         def __exit__(self, exc_type, exc, tb):
             return False
 
-        def get(self, url, params=None, timeout=None):
+        def get(self, url, params=None, timeout=None, stream=False, **kwargs):
             return DummyResponse()
 
     monkeypatch.setattr("src.providers.wl_fetch.session_with_retries", lambda *a, **kw: DummySession())
@@ -43,7 +53,9 @@ def test_fetch_events_handles_invalid_json(monkeypatch, caplog):
         events = fetch_events(timeout=0)
 
     assert events == []
-    assert any("Ungültige JSON-Antwort" in message for message in caplog.messages)
+    # With fetch_content_safe, invalid JSON will result in json.loads failing, which is caught.
+    # The message includes "Ungültige JSON-Antwort" or "Antwort ... zu groß oder ungültig"
+    assert any(("Ungültige JSON-Antwort" in message or "zu groß oder ungültig" in message) for message in caplog.messages)
 
 
 class DummySession:
