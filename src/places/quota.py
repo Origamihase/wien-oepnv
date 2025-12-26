@@ -5,11 +5,15 @@ from __future__ import annotations
 import json
 import logging
 import os
-import tempfile
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable, Dict, Mapping
+
+try:  # pragma: no cover
+    from utils.files import atomic_write
+except ModuleNotFoundError:  # pragma: no cover
+    from ..utils.files import atomic_write
 
 LOGGER = logging.getLogger("places.quota")
 
@@ -104,20 +108,10 @@ class MonthlyQuota:
             "counts": {key: int(self.counts.get(key, 0)) for key in _KIND_KEYS},
             "total": int(self.total),
         }
-        path.parent.mkdir(parents=True, exist_ok=True)
-        fd, tmp_name = tempfile.mkstemp(dir=path.parent, prefix=path.name, suffix=".tmp")
         # Explicitly set 0600 permissions
-        os.chmod(tmp_name, 0o600)
-        try:
-            with os.fdopen(fd, "w", encoding="utf-8") as handle:
-                json.dump(payload, handle, ensure_ascii=False, indent=2, sort_keys=True)
-                handle.write("\n")
-            os.replace(tmp_name, path)
-        finally:
-            try:
-                os.unlink(tmp_name)
-            except FileNotFoundError:
-                pass
+        with atomic_write(path, mode="w", encoding="utf-8", permissions=0o600) as handle:
+            json.dump(payload, handle, ensure_ascii=False, indent=2, sort_keys=True)
+            handle.write("\n")
 
     def maybe_reset_month(self) -> bool:
         current = self.current_month_key(self._now_func())
