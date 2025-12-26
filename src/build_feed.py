@@ -374,6 +374,8 @@ def _to_utc(dt: datetime) -> datetime:
     Naive datetimes are assumed to already represent UTC and will simply be
     tagged accordingly.
     """
+    if dt.tzinfo is timezone.utc:
+        return dt
 
     return dt.astimezone(timezone.utc) if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
 
