@@ -149,9 +149,12 @@ def fetch_content_safe(
         **kwargs: Additional arguments passed to session.get().
 
     Raises:
-        ValueError: If Content-Length header or actual body size exceeds max_bytes.
+        ValueError: If URL is unsafe/invalid, or Content-Length/body size exceeds max_bytes.
         requests.RequestException: For network errors.
     """
+    if not validate_http_url(url):
+        raise ValueError(f"Unsafe or invalid URL: {url}")
+
     with session.get(url, stream=True, timeout=timeout, **kwargs) as r:
         r.raise_for_status()
         # Check Content-Length header if present
