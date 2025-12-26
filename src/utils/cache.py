@@ -12,6 +12,7 @@ from threading import RLock
 from typing import Any, Callable, List, Optional
 
 from .env import get_bool_env
+from .files import atomic_write
 
 _CACHE_DIR = Path("cache")
 _CACHE_FILENAME = "events.json"
@@ -150,57 +151,31 @@ def write_cache(provider: str, items: List[Any], *, pretty: Optional[bool] = Non
     """
 
     cache_file = _cache_file(provider)
-    cache_file.parent.mkdir(parents=True, exist_ok=True)
-
-    fd, tmp_path = tempfile.mkstemp(
-        dir=str(cache_file.parent),
-        prefix="events.",
-        suffix=".json.tmp",
-    )
-    # Explicitly set 0600 permissions for defense in depth,
-    # even though mkstemp usually does this by default.
-    os.chmod(tmp_path, 0o600)
+    # atomic_write creates parents if needed
 
     try:
-        with os.fdopen(fd, "w", encoding="utf-8") as fh:
-            try:
-                pretty_print = _pretty_print_enabled(pretty)
-                separators: tuple[str, str] | None = None
-                indent: int | None = 2
-                if not pretty_print:
-                    indent = None
-                    separators = (",", ":")
+        # Explicitly set 0600 permissions for defense in depth
+        with atomic_write(
+            cache_file, mode="w", encoding="utf-8", permissions=0o600
+        ) as fh:
+            pretty_print = _pretty_print_enabled(pretty)
+            separators: tuple[str, str] | None = None
+            indent: int | None = 2
+            if not pretty_print:
+                indent = None
+                separators = (",", ":")
 
-                json.dump(
-                    items,
-                    fh,
-                    ensure_ascii=False,
-                    indent=indent,
-                    separators=separators,
-                )
-                fh.flush()
-                os.fsync(fh.fileno())
-            except Exception:
-                log.exception(
-                    "Failed to write cache for provider '%s' to temporary file %s",
-                    provider,
-                    tmp_path,
-                )
-                raise
-        try:
-            os.replace(tmp_path, cache_file)
-        except OSError:
-            log.exception(
-                "Failed to replace cache for provider '%s' at %s with temporary file %s",
-                provider,
-                cache_file,
-                tmp_path,
+            json.dump(
+                items,
+                fh,
+                ensure_ascii=False,
+                indent=indent,
+                separators=separators,
             )
-            raise
-    finally:
-        # If anything went wrong before os.replace, ensure the temporary file is removed.
-        if os.path.exists(tmp_path):
-            try:
-                os.unlink(tmp_path)
-            except OSError:
-                pass
+    except Exception:
+        log.exception(
+            "Failed to write cache for provider '%s' to %s",
+            provider,
+            cache_file,
+        )
+        raise
