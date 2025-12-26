@@ -45,7 +45,6 @@ _MULTI_BULLET_RE = re.compile(r"(?:\s*•\s*){2,}")
 _LEADING_BULLET_RE = re.compile(r"^\s*•\s*")
 _TRAILING_BULLET_RE = re.compile(r"\s*•\s*$")
 _MULTI_SPACE_RE = re.compile(r"\s{2,}")
-_MULTI_NEWLINE_RE = re.compile(r"\n{2,}")
 
 
 def normalize_bullets(text: str) -> str:
@@ -125,7 +124,8 @@ def html_to_text(s: str, *, collapse_newlines: bool = False) -> str:
     parser.close()
 
     txt = "".join(parser.parts)
-    txt = html.unescape(txt)
+    # Note: html.unescape is skipped because HTMLParser(convert_charrefs=True)
+    # already decodes entities. Calling unescape again is redundant.
     txt = txt.replace("\xa0", " ")
 
     newline_replacement = " • " if collapse_newlines else "\n"
@@ -149,8 +149,8 @@ def html_to_text(s: str, *, collapse_newlines: bool = False) -> str:
         txt = _WS_RE.sub(" ", txt)
         txt = _MULTI_SPACE_RE.sub(" ", txt).strip()
     else:
-        txt = _NEWLINE_CLEANUP_RE.sub("\n", txt)
-        txt = _MULTI_NEWLINE_RE.sub("\n", txt)
+        # Optimization: _NEWLINE_CLEANUP_RE and _MULTI_NEWLINE_RE are
+        # effectively handled by split/strip/join below.
         lines = [line.strip() for line in txt.split("\n")]
         txt = "\n".join(line for line in lines if line)
 
