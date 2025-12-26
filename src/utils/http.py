@@ -114,13 +114,9 @@ def validate_http_url(url: str | None) -> str | None:
                 # Handle IPv6 scope ids if present
                 ip = ipaddress.ip_address(ip_str.split("%")[0])
 
-                # Check for private, loopback, unspecified, and link-local (169.254.x.x)
-                if (
-                    ip.is_private
-                    or ip.is_loopback
-                    or ip.is_unspecified
-                    or ip.is_link_local
-                ):
+                # Ensure the IP is globally reachable (excludes private, loopback, link-local, reserved)
+                # We also explicitly block multicast, as is_global can be True for multicast in some versions/contexts
+                if not ip.is_global or ip.is_multicast:
                     return None
 
         except (socket.gaierror, ValueError):
