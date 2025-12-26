@@ -10,6 +10,7 @@ from pathlib import Path
 from threading import RLock
 from time import perf_counter
 from typing import Any, Dict, Iterator, List, Optional, Tuple
+import tempfile
 
 import requests
 
@@ -487,9 +488,28 @@ def write_feed_health_report(
 
     markdown = render_feed_health_markdown(report, metrics)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    tmp_path = output_path.with_suffix(output_path.suffix + ".tmp")
-    tmp_path.write_text(markdown, encoding="utf-8")
-    tmp_path.replace(output_path)
+
+    fd, tmp_path = tempfile.mkstemp(
+        dir=str(output_path.parent),
+        prefix=f"{output_path.name}.",
+        suffix=".tmp",
+        text=True,
+    )
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(markdown)
+            f.flush()
+            os.fsync(f.fileno())
+        # Reports should be readable
+        os.chmod(tmp_path, 0o644)
+        os.replace(tmp_path, output_path)
+    except Exception:
+        if os.path.exists(tmp_path):
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
+        raise
 
 
 def build_feed_health_payload(
@@ -564,12 +584,29 @@ def write_feed_health_json(
 
     payload = build_feed_health_payload(report, metrics)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    tmp_path = output_path.with_suffix(output_path.suffix + ".tmp")
-    tmp_path.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
+
+    fd, tmp_path = tempfile.mkstemp(
+        dir=str(output_path.parent),
+        prefix=f"{output_path.name}.",
+        suffix=".tmp",
+        text=True,
     )
-    tmp_path.replace(output_path)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2, sort_keys=True)
+            f.write("\n")
+            f.flush()
+            os.fsync(f.fileno())
+        # Reports should be readable
+        os.chmod(tmp_path, 0o644)
+        os.replace(tmp_path, output_path)
+    except Exception:
+        if os.path.exists(tmp_path):
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
+        raise
 
 
 __all__ = [
