@@ -182,10 +182,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "**Frohe** **Weihnachten**",
-    "description": "**Frohe** **Weihnachten**",
+    "title": "**Frohe** **Weihnachten** **Merry** **Christmas**",
+    "description": "**Frohe** **Weihnachten** **Merry** **Christmas** ************ ************",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b4bf0ccd9824a99767d5a548a6a821f798f759ae6a1eb174ed582af58a60248f",
+    "guid": "454f38c2d6c5b5ff2e821d99d29271dd1bc3d5b57cce87eed20e8f3349a2418e",
     "pubDate": "2025-12-24T13:59:53+01:00",
     "starts_at": "2025-12-24T13:59:53+01:00",
     "ends_at": "2025-12-26T18:00:00+01:00",
@@ -194,10 +194,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "**Frohe** **Weihnachten** **Merry** **Christmas**",
-    "description": "**Frohe** **Weihnachten** **Merry** **Christmas** ************ ************",
+    "title": "**Frohe** **Weihnachten**",
+    "description": "**Frohe** **Weihnachten**",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "454f38c2d6c5b5ff2e821d99d29271dd1bc3d5b57cce87eed20e8f3349a2418e",
+    "guid": "b4bf0ccd9824a99767d5a548a6a821f798f759ae6a1eb174ed582af58a60248f",
     "pubDate": "2025-12-24T13:59:53+01:00",
     "starts_at": "2025-12-24T13:59:53+01:00",
     "ends_at": "2025-12-26T18:00:00+01:00",
@@ -218,13 +218,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Verspätungen",
-    "description": "Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "97A: Verkehrsunfall",
+    "description": "Die Linie 97 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Pilotengasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "499ac622a712bd280a6b728d5cd57eb6ebde96a246de80a08e9a389a60dab6f9",
-    "pubDate": "2025-12-26T11:40:00+01:00",
-    "starts_at": "2025-12-26T11:40:00+01:00",
+    "guid": "84179df3b6977c1f2a94231aa650a6c134e1750cbe78746ad0558d3b8a6317b8",
+    "pubDate": "2025-12-26T12:55:00+01:00",
+    "starts_at": "2025-12-26T12:55:00+01:00",
     "ends_at": "2025-12-26T23:55:00+01:00",
-    "_identity": "wl|störung|L=63A|D=2025-12-26"
+    "_identity": "wl|störung|L=97A|D=2025-12-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "64A: Falschparker",
+    "description": "Derzeit kommt es bei der Linie 64 A in beiden Richtungen zu unterschiedlichen Intervallen. Grund dafür ist ein Falschparker im Bereich Perfektastraße U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "efa70b7ed2b576bd417daacf2dd4d22efff11511fa169fcec09755fcbfdd1b72",
+    "pubDate": "2025-12-26T13:25:00+01:00",
+    "starts_at": "2025-12-26T13:25:00+01:00",
+    "ends_at": "2025-12-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=64A|D=2025-12-26"
   }
 ]
