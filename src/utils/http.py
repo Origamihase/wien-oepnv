@@ -35,6 +35,16 @@ class TimeoutHTTPAdapter(HTTPAdapter):
         return super().send(request, **kwargs)
 
 
+def _check_redirect_security(response: requests.Response, *args: Any, **kwargs: Any) -> None:
+    if response.is_redirect:
+        next_url = response.headers.get("Location")
+        if next_url:
+            # Join relative URLs
+            full_url = requests.compat.urljoin(response.url, next_url)
+            if not validate_http_url(full_url):
+                raise ValueError(f"Unsafe redirect to: {full_url}")
+
+
 def session_with_retries(
     user_agent: str, timeout: int = DEFAULT_TIMEOUT, **retry_opts: Any
 ) -> requests.Session:
@@ -49,6 +59,7 @@ def session_with_retries(
 
     options = {**_DEFAULT_RETRY_OPTIONS, **retry_opts}
     session = requests.Session()
+    session.hooks["response"].append(_check_redirect_security)
     retry = Retry(**options)
     adapter = TimeoutHTTPAdapter(max_retries=retry, timeout=timeout)
     session.mount("http://", adapter)

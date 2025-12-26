@@ -28,6 +28,7 @@ class DummySession:
         self._queue = list(responses)
         self.calls: List[dict] = []
         self.headers: dict = {}
+        self.hooks: dict = {"response": []}
 
     def mount(self, prefix: str, adapter: object) -> None:
         pass
