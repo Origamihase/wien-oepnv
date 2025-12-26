@@ -66,6 +66,9 @@ OEBB_URL = (
 # Aktiviert durch Umgebungsvariable ``OEBB_ONLY_VIENNA`` ("1"/"true" vs "0"/"false", case-insens).
 OEBB_ONLY_VIENNA = get_bool_env("OEBB_ONLY_VIENNA", False)
 
+# Max wait time for Retry-After headers to prevent DoS
+RETRY_AFTER_MAX_SEC = 120.0
+
 # ---------------- HTTP ----------------
 USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"
 
@@ -266,6 +269,9 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
 
                 if attempt == 0:
                      if wait_seconds > 0:
+                        if wait_seconds > RETRY_AFTER_MAX_SEC:
+                            log.warning("Retry-After %.1fs zu hoch – kappe auf %.1fs", wait_seconds, RETRY_AFTER_MAX_SEC)
+                            wait_seconds = RETRY_AFTER_MAX_SEC
                         time.sleep(wait_seconds)
                      continue
                 return None

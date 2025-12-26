@@ -47,6 +47,7 @@ DEFAULT_MAX_STATIONS_PER_RUN = 2
 DEFAULT_ROTATION_INTERVAL_SEC = 1800
 DEFAULT_MAX_REQUESTS_PER_DAY = 1000
 RETRY_AFTER_FALLBACK_SEC = 5.0
+RETRY_AFTER_MAX_SEC = 120.0
 REQUEST_LOCK_TIMEOUT_SEC = 5.0
 REQUEST_LOCK_RETRY_DELAY = 0.05
 
@@ -834,6 +835,11 @@ def _handle_retry_after(response: requests.Response) -> None:
     if delay is None:
         delay = RETRY_AFTER_FALLBACK_SEC
         _log_warning("Nutze Fallback-Verzögerung %s Sekunden", delay)
+
+    if delay > RETRY_AFTER_MAX_SEC:
+        _log_warning("Retry-After %s zu hoch – kappe auf %s Sekunden", delay, RETRY_AFTER_MAX_SEC)
+        delay = RETRY_AFTER_MAX_SEC
+
     time.sleep(delay)
 
 
