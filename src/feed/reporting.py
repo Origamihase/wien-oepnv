@@ -446,7 +446,7 @@ def render_feed_health_markdown(
         lines.append("")
         for dup in metrics.duplicates:
             titles = ", ".join(
-                f"`{title}`" for title in dup.titles if title.strip()
+                f"`{title.replace('`', "'")}`" for title in dup.titles if title.strip()
             )
             title_text = titles or "(keine Titelinformationen)"
             lines.append(
