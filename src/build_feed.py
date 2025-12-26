@@ -9,7 +9,6 @@ import logging
 import os
 import re
 import sys
-import tempfile
 from collections import defaultdict
 from concurrent.futures import (
     FIRST_COMPLETED,
@@ -1435,7 +1434,7 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     # For the description element (often plain text, but sometimes treated as HTML),
     # we also escape to be safe, while preserving newlines if possible (though
     # standard RSS description is often just text).
-    desc_cdata = desc_escaped.replace("\n", "<br>")
+    desc_cdata = desc_escaped.replace("\n", "<br/>")
 
     parts: List[str] = []
     parts.append("<item>")

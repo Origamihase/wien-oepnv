@@ -10,7 +10,6 @@ from pathlib import Path
 from threading import RLock
 from time import perf_counter
 from typing import Any, Dict, Iterator, List, Optional, Tuple
-import tempfile
 
 import requests
 

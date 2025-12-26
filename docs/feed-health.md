@@ -1,31 +1,43 @@
 # Feed Health Report
 
-- **Status:** ❌ Fehlerhaft
-- **Run-ID:** `20251226T224039Z`
-- **Start:** 2025-12-26 23:40:39 CET
-- **Ende:** 2025-12-26 23:40:39 CET
+- **Status:** ✅ Erfolgreich
+- **Run-ID:** `20251226T232132Z`
+- **Start:** 2025-12-27 00:21:32 CET
+- **Ende:** 2025-12-27 00:21:32 CET
+- **RSS-Datei:** `/app/docs/feed.xml`
 
 ## Pipeline-Kennzahlen
 
 | Schritt | Anzahl |
 | --- | ---: |
-| Rohdaten | 0 |
-| Nach Altersfilter | 0 |
-| Nach Deduplizierung | 0 |
-| Neue Items seit letztem State | 0 |
+| Rohdaten | 19 |
+| Nach Altersfilter | 16 |
+| Nach Deduplizierung | 16 |
+| Neue Items seit letztem State | 16 |
 | Entfernte Duplikate | 0 |
+
+### Laufzeiten
+
+| Schritt | Dauer (s) |
+| --- | ---: |
+| collect | 0.00 |
+| dedupe | 0.00 |
+| filter | 0.00 |
+| normalize | 0.00 |
+| rss | 0.00 |
+| total | 0.01 |
 
 ## Providerübersicht
 
 | Provider | Status | Items | Dauer (s) | Details |
 | --- | --- | ---: | ---: | --- |
-| baustellen | pending | — | — |  |
-| oebb | pending | — | — |  |
-| vor | pending | — | — |  |
-| wl | pending | — | — |  |
+| baustellen | empty | 0 | 0.00 | Cache-Datei fehlt (cache/baustellen/events.json) |
+| oebb | ok | 3 | 0.00 |  |
+| vor | empty | 0 | 0.00 | Keine aktuellen Daten |
+| wl | ok | 16 | 0.00 |  |
 
-## Fehler
+## Warnungen
 
-- build_feed: Feed-Bau fehlgeschlagen: OUT_PATH outside allowed directories Traceback (most recent call last): File "/app/src/build_feed.py", line 1724, in main out_path = _validate_path(Path(OUT_PATH), "OUT_PATH") ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File "/app/tests/../src/feed/config.py", line 75, in validate_path raise InvalidPathError(f"{name} outside allowed directories") feed.config.InvalidPathError: OUT_PATH outside allowed directories
-- Ausnahme: InvalidPathError: OUT_PATH outside allowed directories
-- InvalidPathError: OUT_PATH outside allowed directories
+- Provider vor: Keine aktuellen Daten
+- Cache baustellen: Cache-Datei fehlt (cache/baustellen/events.json)
+- Provider baustellen: Cache-Datei fehlt (cache/baustellen/events.json)

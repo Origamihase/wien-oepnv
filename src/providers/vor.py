@@ -17,6 +17,7 @@ from requests import RequestException, Session
 from zoneinfo import ZoneInfo
 
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
+    from ..utils.files import atomic_write
     from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.stations import vor_station_ids
 else:  # pragma: no cover - allow running via package or src layout
@@ -24,6 +25,11 @@ else:  # pragma: no cover - allow running via package or src layout
         from utils.http import session_with_retries, validate_http_url, fetch_content_safe
     except ModuleNotFoundError:
         from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
+
+    try:
+        from utils.files import atomic_write
+    except ModuleNotFoundError:
+        from ..utils.files import atomic_write  # type: ignore
 
     try:
         from utils.stations import vor_station_ids
@@ -779,25 +785,16 @@ def save_request_count(now_local: datetime) -> int:
         if not lock_acquired:
             return previous_count
         REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
-        temp_path = REQUEST_COUNT_FILE.with_suffix(".tmp")
+        # temp_path is handled internally by atomic_write
         payload = {"date": date_iso, "count": new_count}
         try:
-            # Ensure temp path is string for os.open
-            fd = os.open(str(temp_path), os.O_CREAT | os.O_TRUNC | os.O_WRONLY, 0o600)
-        except OSError:
-            return previous_count
-        try:
-            with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            # Replaced custom atomic write logic with centralized utility
+            with atomic_write(
+                REQUEST_COUNT_FILE, mode="w", encoding="utf-8", permissions=0o600
+            ) as handle:
                 json.dump(payload, handle, ensure_ascii=False)
                 handle.write("\n")
-                handle.flush()
-                os.fsync(handle.fileno())
-            os.replace(temp_path, REQUEST_COUNT_FILE)
         except OSError:
-            try:
-                temp_path.unlink()
-            except FileNotFoundError:
-                pass
             return previous_count
         return new_count
     finally:

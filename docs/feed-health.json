@@ -1,64 +1,71 @@
 {
   "duplicates": [],
-  "durations": {},
-  "errors": [
-    "build_feed: Feed-Bau fehlgeschlagen: OUT_PATH outside allowed directories Traceback (most recent call last): File \"/app/src/build_feed.py\", line 1724, in main out_path = _validate_path(Path(OUT_PATH), \"OUT_PATH\") ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"/app/tests/../src/feed/config.py\", line 75, in validate_path raise InvalidPathError(f\"{name} outside allowed directories\") feed.config.InvalidPathError: OUT_PATH outside allowed directories",
-    "Ausnahme: InvalidPathError: OUT_PATH outside allowed directories",
-    "InvalidPathError: OUT_PATH outside allowed directories"
-  ],
+  "durations": {
+    "collect": 0.0014051450000351906,
+    "dedupe": 1.5996999991330085e-05,
+    "filter": 0.00018996000005699898,
+    "normalize": 2.3408999936691544e-05,
+    "rss": 0.0043789319998950305,
+    "total": 0.009918996999999763
+  },
+  "errors": [],
   "metrics": {
-    "deduped_items": 0,
+    "deduped_items": 16,
     "duplicate_count": 0,
-    "filtered_items": 0,
-    "new_items": 0,
-    "raw_items": 0
+    "filtered_items": 16,
+    "new_items": 16,
+    "raw_items": 19
   },
   "providers": [
     {
-      "detail": null,
-      "duration": null,
+      "detail": "Cache-Datei fehlt (cache/baustellen/events.json)",
+      "duration": 0.00029637099999035854,
       "enabled": true,
-      "fetch_type": "unknown",
-      "items": null,
+      "fetch_type": "cache",
+      "items": 0,
       "name": "baustellen",
-      "status": "pending"
+      "status": "empty"
     },
     {
-      "detail": null,
-      "duration": null,
+      "detail": "",
+      "duration": 0.00018148499998460466,
       "enabled": true,
-      "fetch_type": "unknown",
-      "items": null,
+      "fetch_type": "cache",
+      "items": 3,
       "name": "oebb",
-      "status": "pending"
+      "status": "ok"
     },
     {
-      "detail": null,
-      "duration": null,
+      "detail": "Keine aktuellen Daten",
+      "duration": 0.00037781900005029456,
       "enabled": true,
-      "fetch_type": "unknown",
-      "items": null,
+      "fetch_type": "cache",
+      "items": 0,
       "name": "vor",
-      "status": "pending"
+      "status": "empty"
     },
     {
-      "detail": null,
-      "duration": null,
+      "detail": "",
+      "duration": 0.00032686399993053783,
       "enabled": true,
-      "fetch_type": "unknown",
-      "items": null,
+      "fetch_type": "cache",
+      "items": 16,
       "name": "wl",
-      "status": "pending"
+      "status": "ok"
     }
   ],
   "run": {
-    "feed_path": null,
-    "final_item_count": null,
-    "finished_at": "2025-12-26T23:40:39.144777+01:00",
-    "id": "20251226T224039Z",
-    "raw_item_count": null,
-    "started_at": "2025-12-26T23:40:39.125227+01:00",
-    "status": "error"
+    "feed_path": "/app/docs/feed.xml",
+    "final_item_count": 16,
+    "finished_at": "2025-12-27T00:21:32.880180+01:00",
+    "id": "20251226T232132Z",
+    "raw_item_count": 19,
+    "started_at": "2025-12-27T00:21:32.840687+01:00",
+    "status": "success"
   },
-  "warnings": []
+  "warnings": [
+    "Provider vor: Keine aktuellen Daten",
+    "Cache baustellen: Cache-Datei fehlt (cache/baustellen/events.json)",
+    "Provider baustellen: Cache-Datei fehlt (cache/baustellen/events.json)"
+  ]
 }
