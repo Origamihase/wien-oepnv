@@ -158,9 +158,11 @@ def fetch_content_safe(
         if content_length and int(content_length) > max_bytes:
             raise ValueError(f"Content-Length exceeds {max_bytes} bytes")
 
-        content = b""
+        chunks = []
+        received = 0
         for chunk in r.iter_content(chunk_size=8192):
-            content += chunk
-            if len(content) > max_bytes:
+            chunks.append(chunk)
+            received += len(chunk)
+            if received > max_bytes:
                 raise ValueError(f"Response too large (> {max_bytes} bytes)")
-        return content
+        return b"".join(chunks)
