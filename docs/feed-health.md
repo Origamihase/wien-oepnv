@@ -1,9 +1,9 @@
 # Feed Health Report
 
 - **Status:** ❌ Fehlerhaft
-- **Run-ID:** `20251226T131546Z`
-- **Start:** 2025-12-26 14:15:46 CET
-- **Ende:** 2025-12-26 14:15:46 CET
+- **Run-ID:** `20251226T132852Z`
+- **Start:** 2025-12-26 14:28:52 CET
+- **Ende:** 2025-12-26 14:28:52 CET
 
 ## Pipeline-Kennzahlen
 
