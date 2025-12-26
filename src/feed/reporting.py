@@ -35,6 +35,16 @@ def clean_message(message: Optional[str]) -> str:
     return re.sub(r"\s+", " ", message).strip()
 
 
+def _escape_cell(text: str) -> str:
+    """Escape pipe characters to prevent Markdown table breakage."""
+    return text.replace("|", r"\|")
+
+
+def _sanitize_code_span(text: str) -> str:
+    """Sanitize text intended for inline code spans by replacing backticks."""
+    return text.replace("`", "'")
+
+
 @dataclass
 class ProviderReport:
     name: str
@@ -436,7 +446,7 @@ def render_feed_health_markdown(
         status = entry.status or "unbekannt"
         items = entry.items if entry.items is not None else "—"
         duration = f"{entry.duration:.2f}" if entry.duration is not None else "—"
-        detail = entry.detail or ""
+        detail = _escape_cell(entry.detail or "")
         lines.append(
             f"| {name} | {status} | {items} | {duration} | {detail} |"
         )
@@ -447,7 +457,7 @@ def render_feed_health_markdown(
         lines.append("")
         for dup in metrics.duplicates:
             titles = ", ".join(
-                f"`{title}`" for title in dup.titles if title.strip()
+                f"`{_sanitize_code_span(title)}`" for title in dup.titles if title.strip()
             )
             title_text = titles or "(keine Titelinformationen)"
             lines.append(
@@ -787,7 +797,7 @@ class _GithubIssueReporter:
         lines.append("| --- | --- | --- | ---: | ---: |")
         for name in sorted(report.providers):
             entry = report.providers[name]
-            detail = entry.detail or ""
+            detail = _escape_cell(entry.detail or "")
             items = entry.items if entry.items is not None else "—"
             duration = f"{entry.duration:.2f}" if entry.duration is not None else "—"
             lines.append(
