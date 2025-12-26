@@ -98,6 +98,9 @@ def _sanitize_message(text: str) -> str:
         else:
             sanitized = sanitized.replace(_VOR_AUTHORIZATION_HEADER, "***")
 
+    # Prevent log injection by escaping newlines and control characters
+    sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
+
     return sanitized
 
 
