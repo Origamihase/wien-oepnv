@@ -13,15 +13,15 @@ import requests
 from dateutil import parser as dtparser
 
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
-    from ..utils.http import session_with_retries, validate_http_url
+    from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.ids import make_guid
     from ..utils.stations import canonical_name
     from ..utils.text import html_to_text
 else:  # pragma: no cover - support both package layouts at runtime
     try:
-        from utils.http import session_with_retries, validate_http_url
+        from utils.http import session_with_retries, validate_http_url, fetch_content_safe
     except ModuleNotFoundError:
-        from ..utils.http import session_with_retries, validate_http_url  # type: ignore
+        from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
 
     try:
         from utils.text import html_to_text
@@ -330,11 +330,13 @@ def _get_json(
     url = f"{WL_BASE.rstrip('/')}/{path.lstrip('/')}"
 
     def _fetch(s: requests.Session) -> Dict[str, Any]:
-        r = s.get(url, params=params or None, timeout=timeout)
-        r.raise_for_status()
         try:
-            return r.json()
-        except (ValueError, json.JSONDecodeError) as exc:
+            content = fetch_content_safe(s, url, params=params or None, timeout=timeout)
+            return json.loads(content)
+        except ValueError as exc:
+            log.warning("Antwort von %s zu groß oder ungültig: %s", url, exc)
+            return {}
+        except json.JSONDecodeError as exc:
             log.warning("Ungültige JSON-Antwort von %s: %s", url, exc)
             return {}
 
