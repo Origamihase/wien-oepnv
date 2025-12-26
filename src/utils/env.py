@@ -94,12 +94,34 @@ ENV_ASSIGNMENT_RE = re.compile(
 )
 
 
-def _strip_quotes(value: str) -> str:
-    """Return ``value`` without surrounding single or double quotes."""
+def _parse_value(value: str) -> str:
+    """Parse a value string, handling quotes and inline comments."""
+    value = value.strip()
+    if not value:
+        return ""
 
-    if len(value) >= 2 and ((value[0] == value[-1]) and value[0] in {'"', "'"}):
-        return value[1:-1]
-    return value
+    quote_char = None
+    if value.startswith("'"):
+        quote_char = "'"
+    elif value.startswith('"'):
+        quote_char = '"'
+
+    if quote_char:
+        idx = 1
+        while idx < len(value):
+            if value[idx] == quote_char:
+                # Check for escaped quote (only relevant for double quotes usually,
+                # but we handle it generically to be safe/permissive)
+                if value[idx - 1] == "\\":
+                    idx += 1
+                    continue
+                return value[1:idx]
+            idx += 1
+        # If no closing quote found, return as is (consistent with flexible parsing)
+        return value
+    else:
+        # Unquoted: stop at first #
+        return value.split("#", 1)[0].strip()
 
 
 def _parse_env_file(content: str) -> Dict[str, str]:
@@ -116,7 +138,7 @@ def _parse_env_file(content: str) -> Dict[str, str]:
             continue
 
         key, value = match.groups()
-        parsed[key] = _strip_quotes(value.strip())
+        parsed[key] = _parse_value(value)
 
     return parsed
 
@@ -197,4 +219,3 @@ def load_default_env_files(
             loaded[candidate] = parsed
 
     return loaded
-
