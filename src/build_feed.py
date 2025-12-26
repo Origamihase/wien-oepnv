@@ -71,12 +71,14 @@ try:  # pragma: no cover - allow running as script or package
         read_cache as _core_read_cache,
         register_cache_alert_hook,
     )  # type: ignore
+    from utils.files import atomic_write
 except ModuleNotFoundError:  # pragma: no cover
     from .utils.cache import (
         cache_modified_at,
         read_cache as _core_read_cache,
         register_cache_alert_hook,
     )
+    from .utils.files import atomic_write
 
 try:  # pragma: no cover - platform dependent
     import fcntl  # type: ignore
@@ -714,25 +716,10 @@ def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a+", encoding="utf-8") as lock_file:
         with _file_lock(lock_file, exclusive=True):
-            fd, tmp_path = tempfile.mkstemp(
-                dir=str(path.parent),
-                prefix=f"{path.name}.",
-                suffix=".tmp",
-                text=True,
-            )
-            try:
-                with os.fdopen(fd, "w", encoding="utf-8") as f:
-                    json.dump(state, f, ensure_ascii=False, indent=2, sort_keys=True)
-                    f.flush()
-                    os.fsync(f.fileno())
-                os.replace(tmp_path, path)
-            except Exception:
-                if os.path.exists(tmp_path):
-                    try:
-                        os.unlink(tmp_path)
-                    except OSError:
-                        pass
-                raise
+            with atomic_write(
+                path, mode="w", encoding="utf-8", permissions=0o600
+            ) as f:
+                json.dump(state, f, ensure_ascii=False, indent=2, sort_keys=True)
 
 def _identity_for_item(item: Dict[str, Any]) -> str:
     """
@@ -1722,30 +1709,10 @@ def main() -> int:
         rss_duration = perf_counter() - rss_start
 
         out_path = _validate_path(Path(OUT_PATH), "OUT_PATH")
-        out_path.parent.mkdir(parents=True, exist_ok=True)
-
-        fd, tmp_path = tempfile.mkstemp(
-            dir=str(out_path.parent),
-            prefix=f"{out_path.name}.",
-            suffix=".tmp",
-            text=True,
-        )
-        try:
-            with os.fdopen(fd, "w", encoding="utf-8") as f:
-                f.write(rss)
-                f.flush()
-                os.fsync(f.fileno())
-            # Explicitly set permissions to 0644 since mkstemp creates 0600
-            # and the feed is intended to be public.
-            os.chmod(tmp_path, 0o644)
-            os.replace(tmp_path, out_path)
-        except Exception:
-            if os.path.exists(tmp_path):
-                try:
-                    os.unlink(tmp_path)
-                except OSError:
-                    pass
-            raise
+        with atomic_write(
+            out_path, mode="w", encoding="utf-8", permissions=0o644
+        ) as f:
+            f.write(rss)
 
         total_duration = perf_counter() - job_start
         log.info(

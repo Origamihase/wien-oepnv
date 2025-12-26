@@ -19,8 +19,10 @@ from .logging import diagnostics_log_path, error_log_path, prune_log_file
 
 try:  # pragma: no cover - support package and script execution
     from utils.env import get_bool_env
+    from utils.files import atomic_write
 except ModuleNotFoundError:  # pragma: no cover
     from ..utils.env import get_bool_env
+    from ..utils.files import atomic_write
 
 log = logging.getLogger("build_feed")
 
@@ -497,29 +499,10 @@ def write_feed_health_report(
     """Persist the feed health report to ``output_path`` using an atomic write."""
 
     markdown = render_feed_health_markdown(report, metrics)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    fd, tmp_path = tempfile.mkstemp(
-        dir=str(output_path.parent),
-        prefix=f"{output_path.name}.",
-        suffix=".tmp",
-        text=True,
-    )
-    try:
-        with os.fdopen(fd, "w", encoding="utf-8") as f:
-            f.write(markdown)
-            f.flush()
-            os.fsync(f.fileno())
-        # Reports should be readable
-        os.chmod(tmp_path, 0o644)
-        os.replace(tmp_path, output_path)
-    except Exception:
-        if os.path.exists(tmp_path):
-            try:
-                os.unlink(tmp_path)
-            except OSError:
-                pass
-        raise
+    with atomic_write(
+        output_path, mode="w", encoding="utf-8", permissions=0o644
+    ) as f:
+        f.write(markdown)
 
 
 def build_feed_health_payload(
@@ -593,30 +576,11 @@ def write_feed_health_json(
     """Persist the feed health payload as JSON using an atomic write."""
 
     payload = build_feed_health_payload(report, metrics)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    fd, tmp_path = tempfile.mkstemp(
-        dir=str(output_path.parent),
-        prefix=f"{output_path.name}.",
-        suffix=".tmp",
-        text=True,
-    )
-    try:
-        with os.fdopen(fd, "w", encoding="utf-8") as f:
-            json.dump(payload, f, ensure_ascii=False, indent=2, sort_keys=True)
-            f.write("\n")
-            f.flush()
-            os.fsync(f.fileno())
-        # Reports should be readable
-        os.chmod(tmp_path, 0o644)
-        os.replace(tmp_path, output_path)
-    except Exception:
-        if os.path.exists(tmp_path):
-            try:
-                os.unlink(tmp_path)
-            except OSError:
-                pass
-        raise
+    with atomic_write(
+        output_path, mode="w", encoding="utf-8", permissions=0o644
+    ) as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2, sort_keys=True)
+        f.write("\n")
 
 
 __all__ = [
