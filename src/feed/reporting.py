@@ -19,9 +19,11 @@ from .logging import diagnostics_log_path, error_log_path, prune_log_file
 try:  # pragma: no cover - support package and script execution
     from utils.env import get_bool_env
     from utils.files import atomic_write
+    from utils.http import session_with_retries, validate_http_url
 except ModuleNotFoundError:  # pragma: no cover
     from ..utils.env import get_bool_env
     from ..utils.files import atomic_write
+    from ..utils.http import session_with_retries, validate_http_url
 
 log = logging.getLogger("build_feed")
 
@@ -656,6 +658,14 @@ class _GithubIssueReporter:
         url = (
             f"{self._config.api_url}/repos/{self._config.repository}/issues"
         )
+
+        if not validate_http_url(url):
+            log.warning(
+                "Automatisches GitHub-Issue abgebrochen: Unsichere oder ungültige API-URL: %s",
+                url,
+            )
+            return
+
         payload = {
             "title": self._build_title(report),
             "body": self._build_body(report),
@@ -669,14 +679,20 @@ class _GithubIssueReporter:
             "Accept": "application/vnd.github+json",
             "Authorization": f"Bearer {self._config.token}",
             "X-GitHub-Api-Version": "2022-11-28",
-            "User-Agent": "wien-oepnv-feed-reporter",
+            # User-Agent is set via session_with_retries
         }
 
         try:
-            response = requests.post(url, json=payload, timeout=10, headers=headers)
-        except requests.RequestException as exc:
+            with session_with_retries(
+                user_agent="wien-oepnv-feed-reporter",
+                allowed_methods=("POST",),  # Explicitly allow POST
+                raise_on_status=False,
+            ) as session:
+                session.headers.update(headers)
+                response = session.post(url, json=payload, timeout=10)
+        except (requests.RequestException, ValueError) as exc:
             log.warning(
-                "Automatisches GitHub-Issue fehlgeschlagen (Netzwerkfehler %s: %s)",
+                "Automatisches GitHub-Issue fehlgeschlagen (Netzwerkfehler/Sicherheit %s: %s)",
                 type(exc).__name__,
                 exc,
             )
