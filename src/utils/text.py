@@ -36,6 +36,17 @@ _PREP_BULLET_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Precompiled regexes for html_to_text cleanup
+_NEWLINE_CLEANUP_RE = re.compile(r"[ \t\r\f\v]*\n[ \t\r\f\v]*")
+_COLON_BULLET_RE = re.compile(r":\s*•\s*")
+_COLON_NEWLINE_RE = re.compile(r":\s*\n")
+_DIGIT_ALPHA_RE = re.compile(r"(\d)([A-Za-zÄÖÜäöüß])")
+_MULTI_BULLET_RE = re.compile(r"(?:\s*•\s*){2,}")
+_LEADING_BULLET_RE = re.compile(r"^\s*•\s*")
+_TRAILING_BULLET_RE = re.compile(r"\s*•\s*$")
+_MULTI_SPACE_RE = re.compile(r"\s{2,}")
+_MULTI_NEWLINE_RE = re.compile(r"\n{2,}")
+
 
 def normalize_bullets(text: str) -> str:
     """Remove bullets that directly follow known prepositions."""
@@ -118,30 +129,29 @@ def html_to_text(s: str, *, collapse_newlines: bool = False) -> str:
     txt = txt.replace("\xa0", " ")
 
     newline_replacement = " • " if collapse_newlines else "\n"
-    txt = re.sub(r"[ \t\r\f\v]*\n[ \t\r\f\v]*", newline_replacement, txt)
+    txt = _NEWLINE_CLEANUP_RE.sub(newline_replacement, txt)
     if collapse_newlines:
-        txt = re.sub(r":\s*•\s*", ": ", txt)
+        txt = _COLON_BULLET_RE.sub(": ", txt)
     else:
-        txt = re.sub(r":\s*\n", ":\n", txt)
-    txt = re.sub(r"(\d)([A-Za-zÄÖÜäöüß])", r"\1 \2", txt)
+        txt = _COLON_NEWLINE_RE.sub(":\n", txt)
+    txt = _DIGIT_ALPHA_RE.sub(r"\1 \2", txt)
     txt = _WS_RE.sub(" ", txt)
     # Collapse any repeated bullet separators before removing those after prepositions
-    txt = re.sub(r"(?:\s*•\s*){2,}", " • ", txt)
+    txt = _MULTI_BULLET_RE.sub(" • ", txt)
     txt = normalize_bullets(txt)
 
     strip_border_bullets = collapse_newlines or " • " in txt
     if strip_border_bullets:
-        txt = re.sub(r"^\s*•\s*", "", txt)
-        txt = re.sub(r"\s*•\s*$", "", txt)
+        txt = _LEADING_BULLET_RE.sub("", txt)
+        txt = _TRAILING_BULLET_RE.sub("", txt)
 
     if collapse_newlines:
         txt = _WS_RE.sub(" ", txt)
-        txt = re.sub(r"\s{2,}", " ", txt).strip()
+        txt = _MULTI_SPACE_RE.sub(" ", txt).strip()
     else:
-        txt = re.sub(r"[ \t\r\f\v]*\n[ \t\r\f\v]*", "\n", txt)
-        txt = re.sub(r"\n{2,}", "\n", txt)
+        txt = _NEWLINE_CLEANUP_RE.sub("\n", txt)
+        txt = _MULTI_NEWLINE_RE.sub("\n", txt)
         lines = [line.strip() for line in txt.split("\n")]
         txt = "\n".join(line for line in lines if line)
 
     return txt
-
