@@ -174,7 +174,8 @@ def test_emit_item_oebb_multiline_sentence(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text.split("<br>") == [
+    # Expect <br/> instead of <br> in description as well
+    assert desc_text.split("<br/>") == [
         "Wegen Bauarbeiten können in Ebenfurth Bahnhof von 06.12.2025 "
         "(06:10 Uhr) bis 09.12.2025 (04:40 Uhr) die S60-Züge nicht halten.",
         "[06.12.2025 – 09.12.2025]",
@@ -199,7 +200,7 @@ def test_emit_item_uses_date_range_from_description(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text.split("<br>") == [
+    assert desc_text.split("<br/>") == [
         "Wegen Bauarbeiten",
         "[06.12.2025 – 09.12.2025]",
     ]
@@ -227,7 +228,7 @@ def test_emit_item_since_line_replaced_by_description_range(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text.split("<br>") == [
+    assert desc_text.split("<br/>") == [
         "Wegen Bauarbeiten",
         "[06.12.2025 – 09.12.2025]",
     ]
@@ -255,7 +256,7 @@ def test_emit_item_since_line_replaced_by_description_range_after_text(monkeypat
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text.split("<br>") == [
+    assert desc_text.split("<br/>") == [
         "Wegen Bauarbeiten.",
         "[06.12.2025 – 09.12.2025]",
     ]
@@ -282,7 +283,7 @@ def test_emit_item_appends_since_time(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text == "Wegen Bauarbeiten<br>[Seit 05.01.2024]"
+    assert desc_text == "Wegen Bauarbeiten<br/>[Seit 05.01.2024]"
 
     content_html = _extract_content_encoded(xml)
     assert content_html == "Wegen Bauarbeiten<br/>[Seit 05.01.2024]"
@@ -311,7 +312,7 @@ def test_emit_item_since_line_for_missing_or_nonadvancing_end(monkeypatch):
         _, xml = bf._emit_item(item, now, {})
 
         desc_text = _extract_description(xml)
-        assert desc_text.split("<br>") == [
+        assert desc_text.split("<br/>") == [
             "Wegen Bauarbeiten",
             "[Seit 05.01.2024]",
         ]
@@ -339,7 +340,7 @@ def test_emit_item_same_day_shows_since(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text.split("<br>") == [
+    assert desc_text.split("<br/>") == [
         "Wegen Bauarbeiten",
         "[Seit 10.01.2024]",
     ]
@@ -366,7 +367,7 @@ def test_emit_item_future_start_without_end_shows_ab(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text.split("<br>") == [
+    assert desc_text.split("<br/>") == [
         "Eingeschränkter Betrieb",
         "[Ab 20.01.2024]",
     ]
@@ -409,7 +410,7 @@ def test_emit_item_long_range_treated_as_open(monkeypatch):
         _, xml = bf._emit_item(item, now, {})
 
         desc_text = _extract_description(xml)
-        assert desc_text.split("<br>") == [
+        assert desc_text.split("<br/>") == [
             "Langer Zeitraum",
             expected_line,
         ]
@@ -437,7 +438,7 @@ def test_emit_item_same_day_range_shows_since(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text.split("<br>") == [
+    assert desc_text.split("<br/>") == [
         "Zug verkehrt nicht",
         "[Seit 10.03.2024]",
     ]
@@ -465,7 +466,7 @@ def test_emit_item_multi_day_range_still_shows_range(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text.split("<br>") == [
+    assert desc_text.split("<br/>") == [
         "Zug verkehrt eingeschränkt",
         "[10.03.2024\u202f–\u202f12.03.2024]",
     ]
@@ -490,7 +491,7 @@ def test_emit_item_appends_multi_day_range(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text == "Ersatzverkehr eingerichtet<br>[01.06.2024\u202f–\u202f03.06.2024]"
+    assert desc_text == "Ersatzverkehr eingerichtet<br/>[01.06.2024\u202f–\u202f03.06.2024]"
 
     content_html = _extract_content_encoded(xml)
     assert content_html == "Ersatzverkehr eingerichtet<br/>[01.06.2024\u202f–\u202f03.06.2024]"
@@ -509,7 +510,7 @@ def test_emit_item_description_two_lines(monkeypatch):
     _, xml = bf._emit_item(item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text.split("<br>") == [
+    assert desc_text.split("<br/>") == [
         "Ersatzverkehr eingerichtet",
         "[01.07.2024\u202f–\u202f02.07.2024]",
     ]

@@ -86,12 +86,10 @@ def test_vor_description_keeps_extra_lines():
     desc_html = desc_match.group(1)
     content_html = content_match.group(1)
 
-    desc_lines = desc_html.split("<br>")
+    desc_lines = desc_html.split("<br/>")
     content_lines = content_html.split("<br/>")
 
-    expected_content_html = desc_html.replace("<br>", "<br/>")
-
-    assert content_html == expected_content_html
+    assert content_html == desc_html
     assert content_lines == desc_lines
 
     for lines in (desc_lines, content_lines):
