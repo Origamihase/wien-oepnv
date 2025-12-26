@@ -106,6 +106,8 @@ class MonthlyQuota:
         }
         path.parent.mkdir(parents=True, exist_ok=True)
         fd, tmp_name = tempfile.mkstemp(dir=path.parent, prefix=path.name, suffix=".tmp")
+        # Explicitly set 0600 permissions
+        os.chmod(tmp_name, 0o600)
         try:
             with os.fdopen(fd, "w", encoding="utf-8") as handle:
                 json.dump(payload, handle, ensure_ascii=False, indent=2, sort_keys=True)

@@ -157,6 +157,9 @@ def write_cache(provider: str, items: List[Any], *, pretty: Optional[bool] = Non
         prefix="events.",
         suffix=".json.tmp",
     )
+    # Explicitly set 0600 permissions for defense in depth,
+    # even though mkstemp usually does this by default.
+    os.chmod(tmp_path, 0o600)
 
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as fh:
