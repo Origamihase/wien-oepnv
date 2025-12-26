@@ -448,7 +448,6 @@ DATE_RANGE_RE = re.compile(
 _ELLIPSIS = " …"
 _SENTENCE_END_RE = re.compile(r"[.!?…](?=\s|$)")
 _WHITESPACE_RE = re.compile(r"\s+")
-_ISO_TZ_FIX_RE = re.compile(r"([+-]\d{2})(\d{2})$")
 _HTML_TAG_RE = re.compile(r"<[^>]*>")
 _WHITESPACE_CLEANUP_RE = re.compile(r"[ \t\r\f\v]+")
 
@@ -533,26 +532,13 @@ def _parse_datetime(value: Any) -> Optional[datetime]:
         if not candidate:
             return None
 
-        attempts = [candidate]
-        if candidate.endswith("Z"):
-            attempts.append(candidate[:-1] + "+00:00")
-        match = _ISO_TZ_FIX_RE.search(candidate)
-        if match:
-            attempts.append(candidate[: match.start()] + f"{match.group(1)}:{match.group(2)}")
-
-        last_error: Optional[Exception] = None
-        for attempt in attempts:
-            try:
-                parsed = datetime.fromisoformat(attempt)
-            except ValueError as exc:
-                last_error = exc
-                continue
+        try:
+            parsed = datetime.fromisoformat(candidate)
             if parsed.tzinfo is None:
                 parsed = parsed.replace(tzinfo=timezone.utc)
             return parsed
-
-        if last_error is not None:
-            log.debug("Datetime-Parsing fehlgeschlagen für %r (%s)", value, last_error)
+        except ValueError as exc:
+            log.debug("Datetime-Parsing fehlgeschlagen für %r (%s)", value, exc)
 
     return None
 
