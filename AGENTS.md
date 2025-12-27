@@ -48,11 +48,13 @@ Wichtige Befehle:
 2.  **Dateisystem & Pfade**:
     - Verwende **immer** `validate_path` oder `resolve_env_path` aus `src.feed.config` (bzw. Import via `src.build_feed`), wenn Dateipfade aus Konfigurationen verarbeitet werden.
     - Schreiben ist nur in `docs/`, `data/` und `log/` erlaubt (Path-Traversal-Schutz).
-    - Temporäre Dateien sicher mit `tempfile` erstellen.
+    - Verwende `src.utils.files.atomic_write` für alle Dateischreibvorgänge, um Atomizität und korrekte Berechtigungen sicherzustellen.
+    - Tests, die temporäre Dateien benötigen, sollten diese in `data/` erstellen, um Path-Traversal-Checks zu bestehen.
 
 3.  **Netzwerkzugriffe (SSRF-Schutz)**:
     - Verwende für externe Requests **ausschließlich** `src.utils.http.session_with_retries` und `fetch_content_safe`.
-    - Diese Utilities verhindern SSRF (Server-Side Request Forgery), indem sie interne IPs (Localhost, Private Networks) blockieren.
+    - `fetch_content_safe` implementiert DNS-Rebinding-Schutz (Überprüfung der verbundenen IP) und Limits für die Antwortgröße (DoS-Schutz).
+    - `validate_http_url` muss vor Redirects oder Request-Initiierung aufgerufen werden.
 
 4.  **Logging**:
     - Sensible Daten (Token, Auth-Header) müssen vor dem Logging maskiert werden (siehe `_sanitize_message` in Providern).

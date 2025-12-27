@@ -291,6 +291,7 @@ def _configure_security_commands(subparsers: argparse._SubParsersAction[argparse
 
 
 def _handle_cache_update(args: argparse.Namespace) -> int:
+    """Refreshes the local event cache for the specified (or all) providers."""
     providers = _resolve_targets(
         args.providers,
         all_flag=args.all,
@@ -313,6 +314,7 @@ def _handle_cache_update(args: argparse.Namespace) -> int:
 
 
 def _handle_stations_update(args: argparse.Namespace) -> int:
+    """Invokes the station update scripts to refresh the stations.json registry."""
     script_name = _STATION_UPDATE_SCRIPTS[args.target]
     extra: list[str] = []
     if args.verbose:
@@ -321,6 +323,7 @@ def _handle_stations_update(args: argparse.Namespace) -> int:
 
 
 def _handle_stations_validate(args: argparse.Namespace) -> int:
+    """Performs integrity checks on the station registry and generates a quality report."""
     report = validate_stations(
         args.stations,
         gtfs_stops_path=args.gtfs,
@@ -342,15 +345,18 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
 
 
 def _handle_feed_build(args: argparse.Namespace) -> int:
+    """Executes the main feed generation logic."""
     del args.python  # Execution happens in-process.
     return int(build_feed_module.main())
 
 
 def _handle_feed_lint(_args: argparse.Namespace) -> int:
+    """Scans the feed content for structural issues without generating an output file."""
     return int(build_feed_module.lint())
 
 
 def _handle_token_verify(args: argparse.Namespace) -> int:
+    """Checks the validity of external API tokens and credentials."""
     targets = _resolve_targets(
         args.targets,
         all_flag=args.all,
@@ -373,6 +379,7 @@ def _handle_token_verify(args: argparse.Namespace) -> int:
 
 
 def _handle_checks(args: argparse.Namespace) -> int:
+    """Runs static analysis tools (Ruff, Mypy) via the helper script."""
     extra: list[str] = []
     if args.fix:
         extra.append("--fix")
@@ -383,11 +390,13 @@ def _handle_checks(args: argparse.Namespace) -> int:
 
 
 def _handle_config_wizard(args: argparse.Namespace) -> int:
+    """Starts the interactive configuration assistant."""
     extra = _clean_remainder(args.wizard_args)
     return _run_script("configure_feed.py", python=args.python, extra_args=extra)
 
 
 def _handle_security_scan(args: argparse.Namespace) -> int:
+    """Scans the codebase for potential secret leaks."""
     extra = _clean_remainder(args.scan_args)
     return _run_script("scan_secrets.py", python=args.python, extra_args=extra)
 
@@ -409,6 +418,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    """Entry point for the unified CLI tool."""
     parser = build_parser()
     args = parser.parse_args(argv)
     handler = getattr(args, "func", None)

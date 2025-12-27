@@ -50,6 +50,7 @@ def _sanitize_code_span(text: str) -> str:
 
 @dataclass
 class ProviderReport:
+    """Tracks the execution status and results of a single provider."""
     name: str
     enabled: bool
     fetch_type: str = "unknown"
@@ -60,10 +61,12 @@ class ProviderReport:
     _started_at: Optional[float] = None
 
     def mark_disabled(self) -> None:
+        """Explicitly mark the provider as disabled."""
         self.enabled = False
         self.status = "disabled"
 
     def start(self) -> None:
+        """Mark the provider execution as started."""
         self._started_at = perf_counter()
         if self.status == "disabled":
             return
@@ -77,6 +80,7 @@ class ProviderReport:
         detail: Optional[str] = None,
         duration: Optional[float] = None,
     ) -> None:
+        """Finalize the provider execution with a status, item count, and optional details."""
         if duration is None and self._started_at is not None:
             duration = perf_counter() - self._started_at
         self.duration = duration
@@ -110,6 +114,7 @@ class _RunErrorCollector(logging.Handler):
 
 @dataclass
 class RunReport:
+    """Collects all metrics, errors, and status updates for a complete feed build run."""
     statuses: List[Tuple[str, bool]]
     started_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     providers: Dict[str, ProviderReport] = field(default_factory=dict)
@@ -137,9 +142,11 @@ class RunReport:
 
     @property
     def run_id(self) -> str:
+        """Return a unique identifier for the run based on the start time."""
         return self.started_at.strftime("%Y%m%dT%H%M%SZ")
 
     def register_provider(self, name: str, enabled: bool, fetch_type: str) -> None:
+        """Register a provider for tracking."""
         normalized = str(name)
         with self._lock:
             entry = self.providers.get(normalized)
@@ -155,6 +162,7 @@ class RunReport:
                 entry.status = "pending"
 
     def provider_started(self, name: str) -> None:
+        """Mark a provider as started."""
         with self._lock:
             entry = self.providers.get(name)
             if entry is None:
@@ -170,6 +178,7 @@ class RunReport:
         status: str = "ok",
         detail: Optional[str] = None,
     ) -> None:
+        """Record a successful provider run with the number of collected items."""
         with self._lock:
             entry = self.providers.get(name)
             if entry is None:
@@ -178,6 +187,7 @@ class RunReport:
             entry.finish(status, items=items, detail=clean_message(detail))
 
     def provider_empty(self, name: str, message: str | None = None) -> None:
+        """Record that a provider ran successfully but returned no items."""
         with self._lock:
             entry = self.providers.get(name)
             if entry is None:
@@ -186,6 +196,7 @@ class RunReport:
             entry.finish("empty", detail=clean_message(message))
 
     def provider_error(self, name: str, message: str | None = None) -> None:
+        """Record a provider failure with an error message."""
         with self._lock:
             entry = self.providers.get(name)
             if entry is None:
@@ -197,6 +208,7 @@ class RunReport:
             self.add_error_message(f"{name}: {cleaned}")
 
     def provider_disabled(self, name: str, message: str | None = None) -> None:
+        """Record that a provider was disabled during execution."""
         with self._lock:
             entry = self.providers.get(name)
             if entry is None:
@@ -205,6 +217,7 @@ class RunReport:
             entry.finish("disabled", detail=clean_message(message))
 
     def add_warning(self, message: str) -> None:
+        """Add a global warning to the report."""
         cleaned = clean_message(message)
         if not cleaned:
             return
@@ -215,6 +228,7 @@ class RunReport:
             self.warnings.append(cleaned)
 
     def add_error_message(self, message: str) -> None:
+        """Add a global error message to the report."""
         cleaned = clean_message(message)
         if not cleaned:
             return
@@ -231,6 +245,7 @@ class RunReport:
         yield from errors
 
     def has_errors(self) -> bool:
+        """Return True if any errors were recorded during the run."""
         with self._lock:
             if self.exception_message:
                 return True
