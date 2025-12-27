@@ -1,6 +1,7 @@
 """Reporting primitives shared by feed builder components."""
 from __future__ import annotations
 
+import html
 import json
 import logging
 import os
@@ -39,13 +40,19 @@ def clean_message(message: Optional[str]) -> str:
 
 
 def _escape_cell(text: str) -> str:
-    """Escape pipe characters to prevent Markdown table breakage."""
-    return text.replace("|", r"\|")
+    """Escape pipe characters and HTML to prevent injection and table breakage."""
+    escaped = html.escape(text)
+    return escaped.replace("|", r"\|")
 
 
 def _sanitize_code_span(text: str) -> str:
     """Sanitize text intended for inline code spans by replacing backticks."""
     return text.replace("`", "'")
+
+
+def _escape_markdown_text(text: str) -> str:
+    """Escape HTML characters to prevent Stored XSS in Markdown lists."""
+    return html.escape(text)
 
 
 @dataclass
@@ -487,7 +494,7 @@ def render_feed_health_markdown(
         lines.append("## Warnungen")
         lines.append("")
         for warning in report.warnings:
-            lines.append(f"- {warning}")
+            lines.append(f"- {_escape_markdown_text(warning)}")
         lines.append("")
 
     errors = list(report.iter_error_messages())
@@ -497,7 +504,7 @@ def render_feed_health_markdown(
         lines.append("## Fehler")
         lines.append("")
         for error in errors:
-            lines.append(f"- {error}")
+            lines.append(f"- {_escape_markdown_text(error)}")
         lines.append("")
 
     if not metrics.duplicate_count and not report.warnings and not errors:
@@ -769,7 +776,7 @@ class _GithubIssueReporter:
         if report.final_item_count is not None:
             lines.append(f"- **Items (final):** {report.final_item_count}")
         if report.exception_message:
-            lines.append(f"- **Ausnahme:** {report.exception_message}")
+            lines.append(f"- **Ausnahme:** {_escape_markdown_text(report.exception_message)}")
         if report.warnings:
             lines.append(f"- **Warnungen:** {len(report.warnings)}")
         lines.append("")
@@ -778,14 +785,14 @@ class _GithubIssueReporter:
             lines.append("## Warnungen")
             lines.append("")
             for warning in report.warnings:
-                lines.append(f"- {warning}")
+                lines.append(f"- {_escape_markdown_text(warning)}")
             lines.append("")
 
         if errors:
             lines.append("## Fehler")
             lines.append("")
             for error in errors:
-                lines.append(f"- {error}")
+                lines.append(f"- {_escape_markdown_text(error)}")
             lines.append("")
 
         lines.append("## Providerstatus")
