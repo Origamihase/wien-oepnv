@@ -50,7 +50,7 @@ def _to_url(path: Path, base_url: str) -> str:
 def _last_modified(path: Path) -> str:
     try:
         output = subprocess.check_output(
-            ["git", "log", "-1", "--format=%cI", str(path)],
+            ["git", "log", "-1", "--format=%cI", "--", str(path)],
             cwd=REPO_ROOT,
             stderr=subprocess.DEVNULL,
             text=True,
