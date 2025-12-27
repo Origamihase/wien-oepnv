@@ -167,6 +167,41 @@ def validate_http_url(url: str | None) -> str | None:
         return None
 
 
+def verify_response_ip(response: requests.Response) -> None:
+    """Verify that the response connection was made to a safe IP (DNS Rebinding protection)."""
+    try:
+        # r.raw.connection is usually a urllib3.connection.HTTPConnection
+        # .sock is the underlying socket
+        conn = getattr(response.raw, "connection", None)
+        sock = getattr(conn, "sock", None)
+        if sock:
+            peer_info = sock.getpeername()
+            peer_ip = peer_info[0]
+            if not is_ip_safe(peer_ip):
+                raise ValueError(
+                    f"Security: Connected to unsafe IP {peer_ip} (DNS Rebinding protection)"
+                )
+        else:
+            # If we cannot find the socket, we cannot verify the IP.
+            # Fail securely.
+            raise ValueError(
+                f"Security: Could not retrieve socket for {response.url} (DNS Rebinding protection)"
+            )
+
+    except (AttributeError, OSError, ValueError) as exc:
+        # If we cannot verify the IP (e.g. mocks, strange adapters),
+        # we fail securely instead of failing open.
+        # If is_ip_safe returned False (ValueError raised above), we propagate it.
+        if "DNS Rebinding protection" in str(exc):
+            raise
+        log.warning(
+            "Security: Could not verify peer IP for %s (Fail Closed): %s", response.url, exc
+        )
+        raise ValueError(
+            f"Security: Could not verify peer IP for {response.url} (DNS Rebinding protection)"
+        ) from exc
+
+
 def fetch_content_safe(
     session: requests.Session,
     url: str,
@@ -194,29 +229,7 @@ def fetch_content_safe(
         r.raise_for_status()
 
         # Prevent DNS Rebinding: Check the actual connected IP
-        try:
-            # r.raw.connection is usually a urllib3.connection.HTTPConnection
-            # .sock is the underlying socket
-            conn = getattr(r.raw, "connection", None)
-            sock = getattr(conn, "sock", None)
-            if sock:
-                peer_info = sock.getpeername()
-                peer_ip = peer_info[0]
-                if not is_ip_safe(peer_ip):
-                    raise ValueError(f"Security: Connected to unsafe IP {peer_ip} (DNS Rebinding protection)")
-            else:
-                # If we cannot find the socket, we cannot verify the IP.
-                # Fail securely.
-                raise ValueError(f"Security: Could not retrieve socket for {url} (DNS Rebinding protection)")
-
-        except (AttributeError, OSError, ValueError) as exc:
-            # If we cannot verify the IP (e.g. mocks, strange adapters),
-            # we fail securely instead of failing open.
-            # If is_ip_safe returned False (ValueError raised above), we propagate it.
-            if "DNS Rebinding protection" in str(exc):
-                raise
-            log.warning("Security: Could not verify peer IP for %s (Fail Closed): %s", url, exc)
-            raise ValueError(f"Security: Could not verify peer IP for {url} (DNS Rebinding protection)") from exc
+        verify_response_ip(r)
 
         # Check Content-Length header if present
         content_length = r.headers.get("Content-Length")
