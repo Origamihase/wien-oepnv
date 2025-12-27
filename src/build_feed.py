@@ -166,6 +166,7 @@ for env_name, loader in PROVIDERS:
 
 
 def _provider_display_name(fetch: Any, env: Optional[str] = None) -> str:
+    """Resolve the display name for a provider based on its loader or env var."""
     return resolve_provider_name(fetch, env)
 
 
@@ -203,10 +204,12 @@ def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
 
 
 def _provider_statuses() -> List[Tuple[str, bool]]:
+    """Return a list of (name, enabled) tuples for all registered providers."""
     return provider_statuses()
 
 
 def _log_startup_summary(statuses: List[Tuple[str, bool]]) -> None:
+    """Log the active configuration and enabled providers at startup."""
     enabled = sorted(name for name, is_enabled in statuses if is_enabled)
     disabled = sorted(name for name, is_enabled in statuses if not is_enabled)
 
@@ -223,6 +226,7 @@ def _log_startup_summary(statuses: List[Tuple[str, bool]]) -> None:
 
 
 def _validate_configuration(statuses: List[Tuple[str, bool]]) -> None:
+    """Check the runtime configuration for common issues (e.g. no providers active)."""
     enabled_count = sum(1 for _, is_enabled in statuses if is_enabled)
     if not statuses:
         log.warning("Keine Provider registriert – es werden keine Items gesammelt.")
@@ -252,11 +256,13 @@ def _validate_configuration(statuses: List[Tuple[str, bool]]) -> None:
 # ---------------- Provider tuning ----------------
 
 def _provider_env_slug(name: str) -> str:
+    """Convert a provider name into a slug suitable for environment variables."""
     slug = re.sub(r"[^A-Za-z0-9]+", "_", (name or "").upper()).strip("_")
     return slug or "PROVIDER"
 
 
 def _read_optional_non_negative_int(env_name: str) -> Optional[int]:
+    """Read a non-negative integer from an environment variable."""
     raw = os.getenv(env_name)
     if raw is None:
         return None
@@ -283,6 +289,7 @@ def _read_optional_non_negative_int(env_name: str) -> Optional[int]:
 def _provider_timeout_override(
     fetch: Any, env: Optional[str], provider_name: str
 ) -> Optional[int]:
+    """Determine if a specific timeout override exists for this provider."""
     candidates: List[str] = []
     custom_env = getattr(fetch, "_provider_timeout_env", None)
     if isinstance(custom_env, str) and custom_env.strip():
@@ -308,6 +315,7 @@ def _provider_timeout_override(
 
 
 def _provider_concurrency_key(fetch: Any, provider_name: str) -> str:
+    """Return the key used to group providers for concurrency limits."""
     key = getattr(fetch, "_provider_concurrency_key", None)
     if isinstance(key, str) and key.strip():
         return key.strip()
@@ -317,6 +325,7 @@ def _provider_concurrency_key(fetch: Any, provider_name: str) -> str:
 def _provider_worker_limit(
     fetch: Any, env: Optional[str], provider_name: str, concurrency_key: str
 ) -> Optional[int]:
+    """Determine the maximum number of concurrent workers for this provider group."""
     candidates: List[str] = []
     custom_env = getattr(fetch, "_provider_max_workers_env", None)
     if isinstance(custom_env, str) and custom_env.strip():
@@ -341,6 +350,7 @@ def _provider_worker_limit(
 
 
 def _fetch_supports_timeout(fetch: Any) -> bool:
+    """Check if the fetch callable accepts a 'timeout' argument."""
     try:
         signature = inspect.signature(fetch)
     except (TypeError, ValueError):
@@ -356,6 +366,7 @@ def _fetch_supports_timeout(fetch: Any) -> bool:
 def _call_fetch_with_timeout(
     fetch: Any, timeout: Optional[int], supports_timeout: bool
 ) -> Any:
+    """Invoke the fetch callable, passing the timeout if supported."""
     if supports_timeout:
         try:
             return fetch(timeout=None if timeout is None else timeout)
@@ -397,6 +408,7 @@ _VIENNA_TZ = ZoneInfo("Europe/Vienna")
 def format_local_times(
     start: Optional[datetime], end: Optional[datetime]
 ) -> str:
+    """Format a time range (start, end) into a localized string (e.g. 'Seit 01.01.2023')."""
     start_local: Optional[datetime] = None
     end_local: Optional[datetime] = None
 
@@ -1288,6 +1300,11 @@ def _guid_attributes(guid: str, link: str) -> str:
 
 
 def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any]]) -> Tuple[str, str]:
+    """Convert a normalized item dictionary into an RSS <item> XML string.
+
+    Returns:
+        A tuple containing the item identity and the generated XML string.
+    """
     pubDate = _coerce_datetime_field(it, "pubDate")
     starts_at = _coerce_datetime_field(it, "starts_at")
     ends_at = _coerce_datetime_field(it, "ends_at")
@@ -1461,6 +1478,7 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     return ident, "\n".join(parts)
 
 def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[str, Any]]) -> str:
+    """Generate the full RSS XML document from a list of items."""
     out: List[str] = _emit_channel_header(now)
 
     body_parts: List[str] = []
@@ -1598,6 +1616,7 @@ def lint() -> int:
 
 
 def main() -> int:
+    """Execute the full feed generation pipeline (collect, dedupe, generate RSS)."""
     configure_logging()
 
     statuses = provider_statuses()

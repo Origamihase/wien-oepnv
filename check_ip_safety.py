@@ -1,5 +1,4 @@
 import ipaddress
-import sys
 
 # Copying the function from src/utils/http.py
 def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
