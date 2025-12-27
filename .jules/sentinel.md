@@ -17,3 +17,8 @@
 **Vulnerability:** The secure file writing pattern (using `mkstemp`, `fsync`, `chmod`, `rename`) was duplicated across multiple modules (`src/build_feed.py`, `src/utils/cache.py`, `src/feed/reporting.py`). Code duplication increases the risk of subtle inconsistencies (e.g., forgetting `fsync` or using wrong permissions) and makes it harder to audit or patch security flaws globally.
 **Learning:** Security-critical logic such as atomic file writing should be centralized in a single, well-tested utility to ensure consistent application of security best practices (defense in depth).
 **Prevention:** Refactored the codebase to use a centralized `atomic_write` context manager in `src/utils/files.py`. This utility encapsulates all steps for secure file creation, including strict permission defaults and atomic replacement.
+
+## 2025-05-25 - Argument Injection in Sitemap Generation
+**Vulnerability:** The sitemap generator (`scripts/generate_sitemap.py`) passed the file path directly to `git log` via `subprocess` without using the `--` separator. This meant that a file named like a command-line flag (e.g., `-p` or `--help`) could be interpreted as an option by `git`, potentially leading to unexpected behavior or error leakage (CWE-88).
+**Learning:** When passing untrusted or partially trusted input (like filenames from a repository) to command-line tools via `subprocess`, always use the `--` separator to explicitly delimit options from positional arguments.
+**Prevention:** Updated `scripts/generate_sitemap.py` to invoke `git log` with the `--` separator: `["git", "log", ..., "--", str(path)]`.
