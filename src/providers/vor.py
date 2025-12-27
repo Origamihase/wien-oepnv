@@ -107,6 +107,8 @@ def _sanitize_message(text: str) -> str:
 
     # Prevent log injection by escaping newlines and control characters
     sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
+    # Remove remaining control characters (including ANSI escape codes)
+    sanitized = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", sanitized)
 
     return sanitized
 
