@@ -19,11 +19,11 @@ from .logging import diagnostics_log_path, error_log_path, prune_log_file
 try:  # pragma: no cover - support package and script execution
     from utils.env import get_bool_env
     from utils.files import atomic_write
-    from utils.http import session_with_retries, validate_http_url
+    from utils.http import session_with_retries, validate_http_url, verify_response_ip
 except ModuleNotFoundError:  # pragma: no cover
     from ..utils.env import get_bool_env
     from ..utils.files import atomic_write
-    from ..utils.http import session_with_retries, validate_http_url
+    from ..utils.http import session_with_retries, validate_http_url, verify_response_ip
 
 log = logging.getLogger("build_feed")
 
@@ -705,6 +705,9 @@ class _GithubIssueReporter:
             ) as session:
                 session.headers.update(headers)
                 response = session.post(url, json=payload, timeout=10)
+                # Ensure we didn't get redirected to a private IP (DNS Rebinding)
+                verify_response_ip(response)
+
         except (requests.RequestException, ValueError) as exc:
             log.warning(
                 "Automatisches GitHub-Issue fehlgeschlagen (Netzwerkfehler/Sicherheit %s: %s)",
