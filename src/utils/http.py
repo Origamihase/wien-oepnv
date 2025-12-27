@@ -27,6 +27,9 @@ DEFAULT_TIMEOUT = 20
 # DNS resolution timeout in seconds
 DNS_TIMEOUT = 5.0
 
+# Shared executor for DNS resolution to avoid thread exhaustion
+_DNS_EXECUTOR = ThreadPoolExecutor(max_workers=8, thread_name_prefix="DNS_Resolver")
+
 log = logging.getLogger(__name__)
 
 
@@ -45,6 +48,10 @@ class TimeoutHTTPAdapter(HTTPAdapter):
 
 def _check_redirect_security(response: requests.Response, *args: Any, **kwargs: Any) -> None:
     if response.is_redirect:
+        # Verify that the intermediate response we just received came from a safe IP
+        # This protects against DNS Rebinding attacks during the redirect chain
+        verify_response_ip(response)
+
         next_url = response.headers.get("Location")
         if next_url:
             # Join relative URLs
@@ -100,9 +107,9 @@ def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> 
 
 def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     """Resolve hostname with a timeout to prevent DoS."""
-    executor = ThreadPoolExecutor(max_workers=1)
     try:
-        future = executor.submit(socket.getaddrinfo, hostname, None, proto=socket.IPPROTO_TCP)
+        # Reuse the shared executor instead of creating one per call
+        future = _DNS_EXECUTOR.submit(socket.getaddrinfo, hostname, None, proto=socket.IPPROTO_TCP)
         return future.result(timeout=DNS_TIMEOUT)
     except TimeoutError:
         log.warning("DNS resolution timed out for %s (DoS protection)", hostname)
@@ -113,10 +120,7 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     except Exception as exc:
         log.warning("Unexpected error during DNS resolution for %s: %s", hostname, exc)
         return []
-    finally:
-        # We must not wait for the thread to finish if it's stuck,
-        # otherwise we block the main thread.
-        executor.shutdown(wait=False)
+    # We do not shutdown the shared executor
 
 
 def validate_http_url(url: str | None) -> str | None:
