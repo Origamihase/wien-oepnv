@@ -194,11 +194,15 @@ def verify_response_ip(response: requests.Response) -> None:
         # If is_ip_safe returned False (ValueError raised above), we propagate it.
         if "DNS Rebinding protection" in str(exc):
             raise
+
+        # Robustly get URL or use fallback
+        url = getattr(response, "url", "unknown_url")
+
         log.warning(
-            "Security: Could not verify peer IP for %s (Fail Closed): %s", response.url, exc
+            "Security: Could not verify peer IP for %s (Fail Closed): %s", url, exc
         )
         raise ValueError(
-            f"Security: Could not verify peer IP for {response.url} (DNS Rebinding protection)"
+            f"Security: Could not verify peer IP for {url} (DNS Rebinding protection)"
         ) from exc
 
 
