@@ -6,6 +6,7 @@ import ipaddress
 import logging
 import re
 import socket
+from concurrent.futures import ThreadPoolExecutor, TimeoutError
 from typing import Any
 from urllib.parse import urlparse
 
@@ -22,6 +23,9 @@ _DEFAULT_RETRY_OPTIONS: dict[str, Any] = {
 
 # Default timeout in seconds if none is provided
 DEFAULT_TIMEOUT = 20
+
+# DNS resolution timeout in seconds
+DNS_TIMEOUT = 5.0
 
 log = logging.getLogger(__name__)
 
@@ -94,6 +98,27 @@ def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> 
         return False
 
 
+def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
+    """Resolve hostname with a timeout to prevent DoS."""
+    executor = ThreadPoolExecutor(max_workers=1)
+    try:
+        future = executor.submit(socket.getaddrinfo, hostname, None, proto=socket.IPPROTO_TCP)
+        return future.result(timeout=DNS_TIMEOUT)
+    except TimeoutError:
+        log.warning("DNS resolution timed out for %s (DoS protection)", hostname)
+        return []
+    except (socket.gaierror, ValueError) as exc:
+        log.debug("DNS resolution failed for %s: %s", hostname, exc)
+        return []
+    except Exception as exc:
+        log.warning("Unexpected error during DNS resolution for %s: %s", hostname, exc)
+        return []
+    finally:
+        # We must not wait for the thread to finish if it's stuck,
+        # otherwise we block the main thread.
+        executor.shutdown(wait=False)
+
+
 def validate_http_url(url: str | None) -> str | None:
     """Ensure the given URL is valid and uses http or https.
 
@@ -126,17 +151,16 @@ def validate_http_url(url: str | None) -> str | None:
             return None
 
         # Resolve hostname to IPs to prevent DNS rebinding/aliasing to private IPs
-        try:
-            # We use socket.getaddrinfo to get all associated IPs
-            addr_info = socket.getaddrinfo(hostname, None, proto=socket.IPPROTO_TCP)
+        # This now includes a timeout mechanism
+        addr_info = _resolve_hostname_safe(hostname)
 
-            for _, _, _, _, sockaddr in addr_info:
-                if not is_ip_safe(sockaddr[0]):
-                    return None
-
-        except (socket.gaierror, ValueError):
-            # DNS resolution failed or invalid IP -> treat as invalid URL
+        # If resolution yielded no results (timeout or failure), reject the URL
+        if not addr_info:
             return None
+
+        for _, _, _, _, sockaddr in addr_info:
+            if not is_ip_safe(sockaddr[0]):
+                return None
 
         return candidate
     except Exception:
