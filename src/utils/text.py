@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """Text utilities."""
 
-import html
 import re
 from html.parser import HTMLParser
 from typing import Match

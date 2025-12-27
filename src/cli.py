@@ -7,9 +7,17 @@ import sys
 from collections.abc import Mapping, Sequence, Iterator
 from contextlib import contextmanager
 from pathlib import Path
+from typing import TYPE_CHECKING
 
-
-if __package__:
+if TYPE_CHECKING:
+    # mypy handling: assume package context or explicit import
+    try:
+        from src import build_feed as build_feed_module  # type: ignore
+        from src.utils.stations_validation import validate_stations  # type: ignore
+    except ImportError:
+        import build_feed as build_feed_module  # type: ignore
+        from utils.stations_validation import validate_stations  # type: ignore
+elif __package__:
     from . import build_feed as build_feed_module
     from .utils.stations_validation import validate_stations
 else:
