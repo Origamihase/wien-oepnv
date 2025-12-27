@@ -190,5 +190,29 @@
     "starts_at": "2025-12-27T19:02:41+01:00",
     "ends_at": "2025-12-27T20:01:00+01:00",
     "_identity": "wl|störung|L=62|D=2025-12-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Verspätungen",
+    "description": "Die Linie 1 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1d3414b1e3cc28842526c11ed2f6bc808d703447c6c64603053764ec08ab1b50",
+    "pubDate": "2025-12-27T19:40:00+01:00",
+    "starts_at": "2025-12-27T19:40:00+01:00",
+    "ends_at": "2025-12-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=1|D=2025-12-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Betriebsstörung",
+    "description": "Die Linie U3 ist derzeit in Richtung Ottakring an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 20:00 Uhr. Grund dafür ist eine Betriebsstörung im Bereich Erdberg.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2025-12-27T19:45:00+01:00",
+    "starts_at": "2025-12-27T19:45:00+01:00",
+    "ends_at": "2025-12-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-12-27"
   }
 ]
