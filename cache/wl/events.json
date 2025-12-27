@@ -190,5 +190,29 @@
     "starts_at": "2025-12-27T10:10:00+01:00",
     "ends_at": "2025-12-27T23:55:00+01:00",
     "_identity": "wl|störung|L=U2|D=2025-12-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26/27/85A/95A: Polizeieinsatz",
+    "description": "Die Linie 26 fährt derzeit nicht zwischen Zanggasse und Josef-Baumann-Gasse. Die Linie 27 fährt derzeit nicht zwischen Berresgasse und Josef-Baumann-Gasse. Die Linie 85 A ist derzeit in Richtung Hausfeldstraße an der Weiterfahrt gehindert. Die Linie 95 A ist derzeit in Richtung Aspern Nord an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 11:30 Uhr. Grund dafür ist ein Polizeieinsatz im Bereich Prinzgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f177a397b67c9948ce05c1d2dc0e08b50ddfa9e576f0a39b88c8d58e4214ed9d",
+    "pubDate": "2025-12-27T10:55:00+01:00",
+    "starts_at": "2025-12-27T10:55:00+01:00",
+    "ends_at": "2025-12-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=26,27,85A,95A|D=2025-12-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Rettungseinsatz",
+    "description": "Die Linie 12 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7",
+    "pubDate": "2025-12-27T11:00:00+01:00",
+    "starts_at": "2025-12-27T11:00:00+01:00",
+    "ends_at": "2025-12-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=12A|D=2025-12-27"
   }
 ]
