@@ -1,6 +1,8 @@
 import logging
+from unittest.mock import MagicMock
 
 import src.providers.oebb as oebb
+from tests.mock_utils import get_mock_socket_structure
 
 
 class DummyResponse:
@@ -8,6 +10,10 @@ class DummyResponse:
         self.status_code = status_code
         self.headers = headers or {}
         self.content = content
+
+        # Mock raw connection for security checks
+        self.raw = MagicMock()
+        self.raw.connection = get_mock_socket_structure()
 
     def raise_for_status(self):
         if self.status_code >= 400:
