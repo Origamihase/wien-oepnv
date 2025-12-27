@@ -36,8 +36,10 @@ if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
 try:  # pragma: no cover - convenience for module execution
+    from src.utils.http import fetch_content_safe, session_with_retries
     from src.utils.stations import is_in_vienna as _is_point_in_vienna
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
+    from utils.http import fetch_content_safe, session_with_retries  # type: ignore
     from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore
 
 try:  # pragma: no cover - convenience for module execution
@@ -917,9 +919,9 @@ def configure_logging(verbose: bool) -> None:
 
 def download_workbook(url: str) -> BytesIO:
     logger.info("Downloading workbook: %s", url)
-    response = requests.get(url, timeout=REQUEST_TIMEOUT, headers={"User-Agent": USER_AGENT})
-    response.raise_for_status()
-    return BytesIO(response.content)
+    with session_with_retries(USER_AGENT) as session:
+        content = fetch_content_safe(session, url, timeout=REQUEST_TIMEOUT)
+        return BytesIO(content)
 
 
 def _normalize_header(value: object | None) -> str:
