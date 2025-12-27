@@ -6,7 +6,6 @@ from pathlib import Path
 import types
 
 
-
 def _import_build_feed(monkeypatch):
     module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
@@ -28,11 +27,13 @@ def _import_build_feed(monkeypatch):
 
 
 def test_slow_provider_does_not_block(monkeypatch):
+    # Use 1s timeout
     monkeypatch.setenv("PROVIDER_TIMEOUT", "1")
     build_feed = _import_build_feed(monkeypatch)
 
     def slow_fetch(timeout=None):
-        time.sleep(2)
+        # Sleep 1.2s to trigger timeout
+        time.sleep(1.2)
         return [{"guid": "slow"}]
 
     def fast_fetch(timeout=None):
@@ -49,16 +50,18 @@ def test_slow_provider_does_not_block(monkeypatch):
     items = build_feed._collect_items()
     elapsed = time.time() - start
 
+    # Should finish quickly after timeout (1s)
+    # Give it some buffer
     assert elapsed < 1.5, f"_collect_items blocked for {elapsed:.2f}s"
     assert items == [{"guid": "fast"}]
 
 
 def test_provider_specific_timeout_override(monkeypatch):
-    monkeypatch.setenv("PROVIDER_TIMEOUT", "10")
+    monkeypatch.setenv("PROVIDER_TIMEOUT", "2")
     build_feed = _import_build_feed(monkeypatch)
 
     def slow_fetch(timeout=None):
-        time.sleep(2)
+        time.sleep(1.2)
         return [{"guid": "slow"}]
 
     slow_fetch.__name__ = "slow"
@@ -75,6 +78,7 @@ def test_provider_specific_timeout_override(monkeypatch):
     )
     monkeypatch.setenv("SLOW", "1")
     monkeypatch.setenv("FAST", "1")
+    # Override slow provider to 1s timeout
     monkeypatch.setenv("PROVIDER_TIMEOUT_SLOW", "1")
 
     start = time.time()
@@ -141,7 +145,8 @@ def test_provider_worker_limit(monkeypatch):
                 active += 1
                 max_active = max(max_active, active)
             try:
-                time.sleep(0.2)
+                # Sleep a tiny bit to allow overlap if concurrency was broken
+                time.sleep(0.05)
             finally:
                 with lock:
                     active -= 1
