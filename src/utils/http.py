@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import ipaddress
+import logging
 import re
 import socket
 from typing import Any
@@ -21,6 +22,8 @@ _DEFAULT_RETRY_OPTIONS: dict[str, Any] = {
 
 # Default timeout in seconds if none is provided
 DEFAULT_TIMEOUT = 20
+
+log = logging.getLogger(__name__)
 
 
 class TimeoutHTTPAdapter(HTTPAdapter):
@@ -73,6 +76,24 @@ def session_with_retries(
 _UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f]")
 
 
+def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
+    """Check if an IP address is globally reachable and safe."""
+    try:
+        if isinstance(ip_addr, str):
+            # Handle IPv6 scope ids if present
+            ip = ipaddress.ip_address(ip_addr.split("%")[0])
+        else:
+            ip = ip_addr
+
+        # Ensure the IP is globally reachable (excludes private, loopback, link-local, reserved)
+        # We also explicitly block multicast, as is_global can be True for multicast in some versions/contexts
+        if not ip.is_global or ip.is_multicast:
+            return False
+        return True
+    except ValueError:
+        return False
+
+
 def validate_http_url(url: str | None) -> str | None:
     """Ensure the given URL is valid and uses http or https.
 
@@ -110,13 +131,7 @@ def validate_http_url(url: str | None) -> str | None:
             addr_info = socket.getaddrinfo(hostname, None, proto=socket.IPPROTO_TCP)
 
             for _, _, _, _, sockaddr in addr_info:
-                ip_str = sockaddr[0]
-                # Handle IPv6 scope ids if present
-                ip = ipaddress.ip_address(ip_str.split("%")[0])
-
-                # Ensure the IP is globally reachable (excludes private, loopback, link-local, reserved)
-                # We also explicitly block multicast, as is_global can be True for multicast in some versions/contexts
-                if not ip.is_global or ip.is_multicast:
+                if not is_ip_safe(sockaddr[0]):
                     return None
 
         except (socket.gaierror, ValueError):
@@ -153,6 +168,26 @@ def fetch_content_safe(
 
     with session.get(url, stream=True, timeout=timeout, **kwargs) as r:
         r.raise_for_status()
+
+        # Prevent DNS Rebinding: Check the actual connected IP
+        try:
+            # r.raw.connection is usually a urllib3.connection.HTTPConnection
+            # .sock is the underlying socket
+            conn = getattr(r.raw, "connection", None)
+            sock = getattr(conn, "sock", None)
+            if sock:
+                peer_info = sock.getpeername()
+                peer_ip = peer_info[0]
+                if not is_ip_safe(peer_ip):
+                    raise ValueError(f"Security: Connected to unsafe IP {peer_ip} (DNS Rebinding protection)")
+        except (AttributeError, OSError, ValueError) as exc:
+            # If we cannot verify the IP (e.g. mocks, strange adapters),
+            # we log a debug message but don't crash unless it was a clear validation failure.
+            # If is_ip_safe returned False (ValueError raised above), we propagate it.
+            if "DNS Rebinding protection" in str(exc):
+                raise
+            log.debug("Could not verify peer IP for %s: %s", url, exc)
+
         # Check Content-Length header if present
         content_length = r.headers.get("Content-Length")
         if content_length and int(content_length) > max_bytes:
