@@ -187,9 +187,9 @@ def _resolve_path(candidate: str | None, *, default: Path) -> Path:
         resolved = path.resolve()
 
     try:
-        resolved.relative_to(BASE_DIR)
+        resolved.relative_to(DATA_DIR)
     except ValueError:
-        _log_warning("Pfad-Traversal erkannt oder Pfad außerhalb des Projekts: %s. Nutze Standard.", text)
+        _log_warning("Pfad-Traversal erkannt oder Pfad außerhalb von %s: %s. Nutze Standard.", DATA_DIR, text)
         return default
     return resolved
 
@@ -991,10 +991,11 @@ def fetch_events() -> List[Dict[str, Any]]:
                 failures += 1
                 continue
             message_count = len(items)
+            sanitized_id = _sanitize_arg(station_id)
             if message_count == 0:
-                log.info("VOR Station %s meldet derzeit keine Ereignisse.", station_id)
+                log.info("VOR Station %s meldet derzeit keine Ereignisse.", sanitized_id)
             else:
-                log.info("VOR Station %s lieferte %s Ereignis(se).", station_id, message_count)
+                log.info("VOR Station %s lieferte %s Ereignis(se).", sanitized_id, message_count)
             results.extend(items)
 
     if successes == 0:
