@@ -696,18 +696,28 @@ def resolve_station_ids(names: Iterable[str]) -> List[str]:
         for name in tokens:
             params = {"format": "json", "input": name, "type": "stop"}
             try:
-                response = session.get(f"{VOR_BASE_URL}location.name", params=params, timeout=HTTP_TIMEOUT)
+                content = fetch_content_safe(
+                    session,
+                    f"{VOR_BASE_URL}location.name",
+                    params=params,
+                    timeout=HTTP_TIMEOUT,
+                )
+                payload = json.loads(content)
+            except ValueError as exc:
+                _log_warning("VOR location.name für '%s' ungültig/zu groß: %s", name, exc)
+                continue
             except RequestException as exc:
-                _log_warning("VOR location.name für '%s' fehlgeschlagen: %s", name, exc)
+                # Check for HTTP error status if attached
+                if exc.response is not None and exc.response.status_code >= 400:
+                    _log_warning(
+                        "VOR location.name für '%s' -> HTTP %s",
+                        name,
+                        exc.response.status_code,
+                    )
+                else:
+                    _log_warning("VOR location.name für '%s' fehlgeschlagen: %s", name, exc)
                 continue
-            if response.status_code >= 400:
-                _log_warning("VOR location.name für '%s' -> HTTP %s", name, response.status_code)
-                continue
-            try:
-                payload = response.json()
-            except ValueError:
-                _log_warning("VOR location.name für '%s' lieferte ungültiges JSON", name)
-                continue
+
             stops = []
             if isinstance(payload, Mapping):
                 if "StopLocation" in payload:
