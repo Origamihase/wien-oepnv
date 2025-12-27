@@ -1324,6 +1324,7 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     # TV-freundliche Kürzung (Beschreibung darf HTML enthalten)
     desc_clipped = _clip_text_html(raw_desc, DESCRIPTION_CHAR_LIMIT)
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
+    # WICHTIG: title_out muss später noch escaped werden, bevor es ins CDATA kommt
     title_out = _sanitize_text(html.unescape(raw_title))
     desc_lines_raw = desc_clipped.split("\n")
 
@@ -1435,10 +1436,13 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     # we also escape to be safe, while preserving newlines if possible (though
     # standard RSS description is often just text).
     desc_cdata = desc_escaped.replace("\n", "<br/>")
+    # Auch der Titel muss escaped werden, um XSS bei Feed-Readern zu verhindern,
+    # die CDATA-Inhalt naiv als HTML rendern.
+    title_escaped = html.escape(title_out)
 
     parts: List[str] = []
     parts.append("<item>")
-    parts.append(f"<title>{_cdata(title_out)}</title>")
+    parts.append(f"<title>{_cdata(title_escaped)}</title>")
     parts.append(f"<link>{html.escape(link)}</link>")
     guid_attrs = _guid_attributes(guid, link)
     parts.append(f"<guid{guid_attrs}>{html.escape(guid)}</guid>")
