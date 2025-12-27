@@ -42,3 +42,16 @@ def test_sanitize_message_strips_control_chars():
     assert "\r" not in sanitized
     assert "\t" not in sanitized
     assert "Line 1\\nLine 2\\rLine 3\\tTabbed" in sanitized
+
+def test_sanitize_message_strips_ansi_codes():
+    # Test for ANSI escape codes (e.g. colors)
+    red = "\x1b[31m"
+    reset = "\x1b[0m"
+    msg = f"Error {red}Critical{reset} failure"
+    sanitized = vor._sanitize_message(msg)
+
+    assert "\x1b" not in sanitized
+    assert "Critical" in sanitized
+    # The control character \x1b is removed, rendering the sequence harmless.
+    # We accept that the bracket and parameters ("[31m") remain as plain text.
+    assert "[31m" in sanitized
