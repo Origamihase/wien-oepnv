@@ -204,13 +204,19 @@ def fetch_content_safe(
                 peer_ip = peer_info[0]
                 if not is_ip_safe(peer_ip):
                     raise ValueError(f"Security: Connected to unsafe IP {peer_ip} (DNS Rebinding protection)")
+            else:
+                # If we cannot find the socket, we cannot verify the IP.
+                # Fail securely.
+                raise ValueError(f"Security: Could not retrieve socket for {url} (DNS Rebinding protection)")
+
         except (AttributeError, OSError, ValueError) as exc:
             # If we cannot verify the IP (e.g. mocks, strange adapters),
-            # we log a debug message but don't crash unless it was a clear validation failure.
+            # we fail securely instead of failing open.
             # If is_ip_safe returned False (ValueError raised above), we propagate it.
             if "DNS Rebinding protection" in str(exc):
                 raise
-            log.debug("Could not verify peer IP for %s: %s", url, exc)
+            log.warning("Security: Could not verify peer IP for %s (Fail Closed): %s", url, exc)
+            raise ValueError(f"Security: Could not verify peer IP for {url} (DNS Rebinding protection)") from exc
 
         # Check Content-Length header if present
         content_length = r.headers.get("Content-Length")

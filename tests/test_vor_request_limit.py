@@ -339,10 +339,17 @@ def test_fetch_stationboard_retries_increment_counter(monkeypatch):
     retry_options = {"total": 1, "backoff_factor": 0.0, "raise_on_status": False}
     monkeypatch.setattr(vor, "VOR_RETRY_OPTIONS", retry_options)
 
+    from unittest.mock import MagicMock
+    from tests.mock_utils import get_mock_socket_structure
+
     class DummyResponse:
         def __init__(self):
             self.status_code = 200
             self.headers: dict[str, str] = {}
+
+            # Mock raw connection for security checks
+            self.raw = MagicMock()
+            self.raw.connection = get_mock_socket_structure()
 
         def json(self):
             return {}
