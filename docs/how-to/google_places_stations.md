@@ -39,7 +39,7 @@ Alle Parameter lassen sich via Umgebungsvariablen steuern. Die wichtigsten:
 Die Places API darf nur im Rahmen des kostenlosen Kontingents genutzt werden. Das Repository bringt daher einen Quota-Manager mit, der die monatlichen Aufrufe (UTC-Monatsgrenzen) zählt und bei Erreichen der Limits auf bestehende Caches zurückfällt.
 
 * Limits werden über folgende ENV-Variablen gesteuert (Defaults in Klammern): `PLACES_LIMIT_TOTAL` (4000), `PLACES_LIMIT_NEARBY` (1500), `PLACES_LIMIT_TEXT` (1500), `PLACES_LIMIT_DETAILS` (1000).
-* Der Zählerstand wird in `data/places_quota.json` persistiert. Der Speicherort kann über `PLACES_QUOTA_STATE` überschrieben werden. Falls `STATE_PATH` gesetzt ist, landet die Datei automatisch dort.
+* Der Zählerstand wird in `data/places_quota.json` persistiert. Der Speicherort kann über `PLACES_QUOTA_STATE` überschrieben werden (Pfad muss innerhalb von `data/`, `docs/` oder `log/` liegen). Falls `STATE_PATH` gesetzt ist, landet die Datei automatisch dort.
 * Beim Monatswechsel (UTC) wird der Zähler automatisch auf Null zurückgesetzt und der neue Stand gespeichert. Logs enthalten einen Hinweis „Quota reset for new month …“.
 * Sind die Limits erreicht, werden keine externen Requests mehr abgesetzt. Stattdessen erscheint eine Warnung „Quota reached, using existing cache. No files were modified.“ und bestehende Cache-/Zieldateien bleiben unverändert.
 * `--dry-run` zeigt die aktuellen Zähler sowie Limits im Log an und verändert weder State noch Ausgabedateien.
