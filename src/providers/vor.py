@@ -1,3 +1,17 @@
+"""
+VOR/VAO Provider Module.
+
+This module implements the logic to fetch transport alerts from the VOR (Verkehrsverbund Ost-Region)
+/ VAO (Verkehrsauskunft Österreich) API. It handles:
+- Authentication (Access ID / Token injection)
+- Station resolution (Name -> ID)
+- Rate limiting and caching of request counts
+- Safe HTTP fetching with retries and DoS protection
+- Parsing of complex JSON responses into standardized feed items.
+
+Configuration is primarily driven by environment variables (e.g., ``VOR_ACCESS_ID``, ``VOR_STATION_IDS``).
+"""
+
 from __future__ import annotations
 
 import base64
@@ -74,8 +88,14 @@ _VOR_ACCESS_TOKEN_RAW = ""
 _VOR_AUTHORIZATION_HEADER = ""
 
 
-
 def _sanitize_message(text: str) -> str:
+    """
+    Sanitize log messages by masking secrets and removing control characters.
+
+    This protects against:
+    - Leaking credentials (VOR_ACCESS_ID, Bearer tokens) in logs.
+    - Log Injection attacks (newlines, ANSI sequences).
+    """
     sanitized = text or ""
     patterns = [
         (r"(?i)(accessid%3d)([^&\s]+)", r"\1***"),
@@ -114,6 +134,7 @@ def _sanitize_message(text: str) -> str:
 
 
 def _sanitize_arg(arg: Any) -> Any:
+    """Helper to sanitize arguments passed to logging functions."""
     if isinstance(arg, (int, float)):
         return arg
     if isinstance(arg, str):
@@ -136,6 +157,7 @@ def _log_error(message: str, *args: Any) -> None:
     else:
         log.error("%s", _sanitize_message(message))
 
+
 def _get_env(name: str) -> str:
     return (os.getenv(name) or "").strip()
 
@@ -147,10 +169,14 @@ def _load_int_env(name: str, default: int) -> int:
     try:
         value = int(raw)
     except ValueError:
-        _log_warning("Ungültiger Wert für %s: %s – verwende Standard %s", name, raw, default)
+        _log_warning(
+            "Ungültiger Wert für %s: %s – verwende Standard %s", name, raw, default
+        )
         return default
     if value <= 0:
-        _log_warning("Ungültiger Wert für %s: %s – verwende Standard %s", name, raw, default)
+        _log_warning(
+            "Ungültiger Wert für %s: %s – verwende Standard %s", name, raw, default
+        )
         return default
     return value
 
@@ -168,17 +194,29 @@ def _compile_regex(name: str, default_pattern: str) -> re.Pattern[str]:
 
 BOARD_DURATION_MIN = _load_int_env("VOR_BOARD_DURATION_MIN", DEFAULT_BOARD_DURATION_MIN)
 HTTP_TIMEOUT = _load_int_env("VOR_HTTP_TIMEOUT", DEFAULT_HTTP_TIMEOUT)
-MAX_STATIONS_PER_RUN = _load_int_env("VOR_MAX_STATIONS_PER_RUN", DEFAULT_MAX_STATIONS_PER_RUN)
+MAX_STATIONS_PER_RUN = _load_int_env(
+    "VOR_MAX_STATIONS_PER_RUN", DEFAULT_MAX_STATIONS_PER_RUN
+)
 if MAX_STATIONS_PER_RUN <= 0:
     MAX_STATIONS_PER_RUN = DEFAULT_MAX_STATIONS_PER_RUN
-ROTATION_INTERVAL_SEC = _load_int_env("VOR_ROTATION_INTERVAL_SEC", DEFAULT_ROTATION_INTERVAL_SEC)
-MAX_REQUESTS_PER_DAY = _load_int_env("VOR_MAX_REQUESTS_PER_DAY", DEFAULT_MAX_REQUESTS_PER_DAY)
+ROTATION_INTERVAL_SEC = _load_int_env(
+    "VOR_ROTATION_INTERVAL_SEC", DEFAULT_ROTATION_INTERVAL_SEC
+)
+MAX_REQUESTS_PER_DAY = _load_int_env(
+    "VOR_MAX_REQUESTS_PER_DAY", DEFAULT_MAX_REQUESTS_PER_DAY
+)
 
 ALLOW_BUS = _get_env("VOR_ALLOW_BUS").lower() in {"1", "true", "yes"}
 BUS_INCLUDE_RE = _compile_regex("VOR_BUS_INCLUDE_REGEX", DEFAULT_BUS_INCLUDE_PATTERN)
 BUS_EXCLUDE_RE = _compile_regex("VOR_BUS_EXCLUDE_REGEX", DEFAULT_BUS_EXCLUDE_PATTERN)
 
+
 def _resolve_path(candidate: str | None, *, default: Path) -> Path:
+    """
+    Resolve a file path from configuration, ensuring it stays within the data directory.
+
+    Protects against Path Traversal by enforcing that the resolved path is relative to ``DATA_DIR``.
+    """
     text = (candidate or "").strip()
     if not text:
         return default
@@ -191,7 +229,11 @@ def _resolve_path(candidate: str | None, *, default: Path) -> Path:
     try:
         resolved.relative_to(DATA_DIR)
     except ValueError:
-        _log_warning("Pfad-Traversal erkannt oder Pfad außerhalb von %s: %s. Nutze Standard.", DATA_DIR, text)
+        _log_warning(
+            "Pfad-Traversal erkannt oder Pfad außerhalb von %s: %s. Nutze Standard.",
+            DATA_DIR,
+            text,
+        )
         return default
     return resolved
 
@@ -201,8 +243,12 @@ REQUEST_COUNT_FILE = _resolve_path(
 )
 
 
-MAPPING_FILE = _resolve_path(_get_env("VOR_STATION_NAME_MAP"), default=DATA_DIR / "vor-haltestellen.mapping.json")
-DEFAULT_STATION_ID_FILE = _resolve_path(_get_env("VOR_STATION_IDS_DEFAULT"), default=DATA_DIR / "vor-haltestellen.csv")
+MAPPING_FILE = _resolve_path(
+    _get_env("VOR_STATION_NAME_MAP"), default=DATA_DIR / "vor-haltestellen.mapping.json"
+)
+DEFAULT_STATION_ID_FILE = _resolve_path(
+    _get_env("VOR_STATION_IDS_DEFAULT"), default=DATA_DIR / "vor-haltestellen.csv"
+)
 
 
 def _load_station_name_map() -> Dict[str, str]:
@@ -272,16 +318,28 @@ def _load_station_ids_from_env() -> List[str]:
 
     ids_file = _get_env("VOR_STATION_IDS_FILE")
     if ids_file:
-        return _load_station_ids_from_file(_resolve_path(ids_file, default=DEFAULT_STATION_ID_FILE))
+        return _load_station_ids_from_file(
+            _resolve_path(ids_file, default=DEFAULT_STATION_ID_FILE)
+        )
 
     return _load_station_ids_default()
 
 
 VOR_STATION_IDS: List[str] = _load_station_ids_from_env()
-VOR_STATION_NAMES: List[str] = [name.strip() for name in re.split(r",|\n", _get_env("VOR_STATION_NAMES")) if name.strip()]
+VOR_STATION_NAMES: List[str] = [
+    name.strip()
+    for name in re.split(r",|\n", _get_env("VOR_STATION_NAMES"))
+    if name.strip()
+]
 
 
 def refresh_base_configuration() -> str:
+    """
+    Refresh VOR base URL and version from environment variables.
+
+    Allows overriding ``VOR_BASE_URL`` and ``VOR_VERSION`` dynamically.
+    Sanitizes inputs using ``validate_http_url``.
+    """
     base_url_env = _get_env("VOR_BASE_URL")
     base_env = _get_env("VOR_BASE")
     version_env = _get_env("VOR_VERSION")
@@ -342,6 +400,12 @@ def _normalise_access_token(raw: str) -> tuple[str, str]:
 
 
 def refresh_access_credentials() -> str:
+    """
+    Reload access credentials from environment variables.
+
+    Supports ``VOR_ACCESS_ID`` (or legacy ``VAO_ACCESS_ID``).
+    Automatically detects Basic vs. Bearer tokens.
+    """
     raw = _get_env("VOR_ACCESS_ID")
     if not raw:
         raw = _get_env("VAO_ACCESS_ID")
@@ -372,6 +436,13 @@ def _inject_access_id(params: Any) -> Any:
 
 
 def apply_authentication(session: Session) -> None:
+    """
+    Configure the requests Session with VOR credentials.
+
+    - Sets the `Authorization` header (if applicable).
+    - Monkeypatches ``session.request`` or ``session.get`` to inject ``accessId``
+      into query parameters automatically.
+    """
     refresh_access_credentials()
     session.headers.setdefault("Accept", "application/json")
     if _VOR_AUTHORIZATION_HEADER:
@@ -381,7 +452,9 @@ def apply_authentication(session: Session) -> None:
         original_request = session.request  # type: ignore[assignment]
 
         def wrapped(method: str, url: str, params: Any = None, **kwargs: Any) -> Any:
-            return original_request(method, url, params=_inject_access_id(params), **kwargs)
+            return original_request(
+                method, url, params=_inject_access_id(params), **kwargs
+            )
 
         session.request = wrapped  # type: ignore[assignment]
         setattr(session, "_vor_auth_wrapped", True)
@@ -481,7 +554,12 @@ def _extract_lines(message: Mapping[str, Any]) -> List[str]:
     lines: List[str] = []
     for product in _iter_products(message):
         cat = str(product.get("catOutS") or product.get("catOutL") or "").strip()
-        number = str(product.get("displayNumber") or product.get("name") or product.get("line") or "").strip()
+        number = str(
+            product.get("displayNumber")
+            or product.get("name")
+            or product.get("line")
+            or ""
+        ).strip()
         if not number and cat:
             token = cat
         elif cat:
@@ -492,7 +570,11 @@ def _extract_lines(message: Mapping[str, Any]) -> List[str]:
         else:
             token = number
         if token and token not in lines:
-            if not ALLOW_BUS and BUS_INCLUDE_RE.match(token) and BUS_EXCLUDE_RE.search(token):
+            if (
+                not ALLOW_BUS
+                and BUS_INCLUDE_RE.match(token)
+                and BUS_EXCLUDE_RE.search(token)
+            ):
                 continue
             lines.append(token)
     return lines
@@ -582,16 +664,25 @@ def _build_guid(station_id: str, message: Mapping[str, Any]) -> str:
     raw_id = str(message.get("id") or "").strip()
     if raw_id:
         return f"vor:{station_id}:{raw_id}"
-    key = json.dumps({
-        "station": station_id,
-        "head": message.get("head"),
-        "text": message.get("text"),
-    }, sort_keys=True)
+    key = json.dumps(
+        {
+            "station": station_id,
+            "head": message.get("head"),
+            "text": message.get("text"),
+        },
+        sort_keys=True,
+    )
     fallback = base64.urlsafe_b64encode(key.encode("utf-8")).decode("ascii").rstrip("=")
     return f"vor:{station_id}:{fallback}"
 
 
 def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[Dict[str, Any]]:
+    """
+    Parse a StationBoard JSON response and extract event items.
+
+    Searches for 'Message' objects within the DepartureBoard or root structure.
+    Extracts title, lines, affected stops, and time ranges.
+    """
     items: List[Dict[str, Any]] = []
     for message in _iter_messages(root):
         head = str(message.get("head") or "").strip()
@@ -650,7 +741,9 @@ def _product_class_bitmask(classes: Sequence[int]) -> int:
     return mask
 
 
-def _select_stations_round_robin(ids: Sequence[str], chunk_size: int, period_seconds: int) -> List[str]:
+def _select_stations_round_robin(
+    ids: Sequence[str], chunk_size: int, period_seconds: int
+) -> List[str]:
     if not ids or chunk_size <= 0:
         return []
     chunk = min(len(ids), chunk_size)
@@ -670,6 +763,11 @@ def _select_stations_round_robin(ids: Sequence[str], chunk_size: int, period_sec
 
 
 def resolve_station_ids(names: Iterable[str]) -> List[str]:
+    """
+    Resolve station names to VOR station IDs (EVA-IDs) using the ``location.name`` API.
+
+    Returns a list of unique station IDs.
+    """
     deduped: Dict[str, str] = {}
     for raw in names:
         text = str(raw or "").strip()
@@ -706,7 +804,9 @@ def resolve_station_ids(names: Iterable[str]) -> List[str]:
                 )
                 payload = json.loads(content)
             except ValueError as exc:
-                _log_warning("VOR location.name für '%s' ungültig/zu groß: %s", name, exc)
+                _log_warning(
+                    "VOR location.name für '%s' ungültig/zu groß: %s", name, exc
+                )
                 continue
             except RequestException as exc:
                 # Check for HTTP error status if attached
@@ -717,7 +817,9 @@ def resolve_station_ids(names: Iterable[str]) -> List[str]:
                         exc.response.status_code,
                     )
                 else:
-                    _log_warning("VOR location.name für '%s' fehlgeschlagen: %s", name, exc)
+                    _log_warning(
+                        "VOR location.name für '%s' fehlgeschlagen: %s", name, exc
+                    )
                 continue
 
             stops = []
@@ -846,13 +948,22 @@ def _handle_retry_after(response: requests.Response) -> None:
         _log_warning("Nutze Fallback-Verzögerung %s Sekunden", delay)
 
     if delay > RETRY_AFTER_MAX_SEC:
-        _log_warning("Retry-After %s zu hoch – kappe auf %s Sekunden", delay, RETRY_AFTER_MAX_SEC)
+        _log_warning(
+            "Retry-After %s zu hoch – kappe auf %s Sekunden", delay, RETRY_AFTER_MAX_SEC
+        )
         delay = RETRY_AFTER_MAX_SEC
 
     time.sleep(delay)
 
 
-def _fetch_stationboard(station_id: str, now_local: datetime) -> Mapping[str, Any] | None:
+def _fetch_stationboard(
+    station_id: str, now_local: datetime
+) -> Mapping[str, Any] | None:
+    """
+    Fetch the DepartureBoard for a specific station.
+
+    Handles retries, rate limiting (Retry-After), and increments the daily request count.
+    """
     params = {
         "format": "json",
         "id": station_id,
@@ -879,7 +990,9 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Mapping[str, An
 
                 except ValueError as exc:
                     save_request_count(now_local)
-                    _log_warning("VOR StationBoard %s ungültig/zu groß: %s", station_id, exc)
+                    _log_warning(
+                        "VOR StationBoard %s ungültig/zu groß: %s", station_id, exc
+                    )
                     return None
 
                 except requests.HTTPError as exc:
@@ -891,16 +1004,26 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Mapping[str, An
                             _handle_retry_after(response)
                             return None
                         if response.status_code >= 500:
-                            _log_warning("VOR StationBoard %s -> HTTP %s", station_id, response.status_code)
+                            _log_warning(
+                                "VOR StationBoard %s -> HTTP %s",
+                                station_id,
+                                response.status_code,
+                            )
                             if response.status_code == 503:
                                 _handle_retry_after(response)
                             return None
                         if response.status_code >= 400:
-                            _log_warning("VOR StationBoard %s -> HTTP %s", station_id, response.status_code)
+                            _log_warning(
+                                "VOR StationBoard %s -> HTTP %s",
+                                station_id,
+                                response.status_code,
+                            )
                             return None
 
                     if attempt >= attempts - 1:
-                        _log_error("VOR StationBoard %s fehlgeschlagen: %s", station_id, exc)
+                        _log_error(
+                            "VOR StationBoard %s fehlgeschlagen: %s", station_id, exc
+                        )
                         return None
                     _log_warning(
                         "VOR StationBoard %s fehlgeschlagen (Versuch %d/%d): %s",
@@ -914,7 +1037,9 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Mapping[str, An
                 except RequestException as exc:
                     save_request_count(now_local)
                     if attempt >= attempts - 1:
-                        _log_error("VOR StationBoard %s fehlgeschlagen: %s", station_id, exc)
+                        _log_error(
+                            "VOR StationBoard %s fehlgeschlagen: %s", station_id, exc
+                        )
                         return None
                     _log_warning(
                         "VOR StationBoard %s fehlgeschlagen (Versuch %d/%d): %s",
@@ -932,6 +1057,15 @@ def _fetch_stationboard(station_id: str, now_local: datetime) -> Mapping[str, An
 
 
 def fetch_events() -> List[Dict[str, Any]]:
+    """
+    Main entry point for VOR provider.
+
+    1. Checks authentication and daily request limits.
+    2. Resolves configured station names to IDs if necessary.
+    3. Selects a subset of stations (Round-Robin) to query.
+    4. Fetches station boards in parallel (using ``ThreadPoolExecutor``).
+    5. Aggregates and returns a list of normalized event dictionaries.
+    """
     token = refresh_access_credentials()
     if not token:
         log.warning("Kein VOR Access Token konfiguriert – überspringe Abruf.")
@@ -959,7 +1093,9 @@ def fetch_events() -> List[Dict[str, Any]]:
         log.info("Keine VOR Stationen konfiguriert")
         return []
 
-    selected_ids = _select_stations_round_robin(station_ids, MAX_STATIONS_PER_RUN, ROTATION_INTERVAL_SEC)
+    selected_ids = _select_stations_round_robin(
+        station_ids, MAX_STATIONS_PER_RUN, ROTATION_INTERVAL_SEC
+    )
     if not selected_ids:
         selected_ids = station_ids[: MAX_STATIONS_PER_RUN or 1]
 
@@ -983,7 +1119,10 @@ def fetch_events() -> List[Dict[str, Any]]:
     successes = 0
 
     with ThreadPoolExecutor(max_workers=len(selected_ids) or 1) as executor:
-        futures = {executor.submit(_fetch_stationboard, sid, now_local): sid for sid in selected_ids}
+        futures = {
+            executor.submit(_fetch_stationboard, sid, now_local): sid
+            for sid in selected_ids
+        }
         for future in as_completed(futures):
             station_id = futures[future]
             try:
@@ -1005,9 +1144,15 @@ def fetch_events() -> List[Dict[str, Any]]:
             message_count = len(items)
             sanitized_id = _sanitize_arg(station_id)
             if message_count == 0:
-                log.info("VOR Station %s meldet derzeit keine Ereignisse.", sanitized_id)
+                log.info(
+                    "VOR Station %s meldet derzeit keine Ereignisse.", sanitized_id
+                )
             else:
-                log.info("VOR Station %s lieferte %s Ereignis(se).", sanitized_id, message_count)
+                log.info(
+                    "VOR Station %s lieferte %s Ereignis(se).",
+                    sanitized_id,
+                    message_count,
+                )
             results.extend(items)
 
     if successes == 0:

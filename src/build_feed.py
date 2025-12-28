@@ -1174,7 +1174,21 @@ def _count_new_items(
 
 
 def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Deduplicate items by identity/guid and prefer later ends or longer descriptions."""
+    """
+    Deduplicate items by identity/guid.
+
+    When duplicates are found (same deduplication key), the "better" item is kept.
+    Selection criteria for the "better" item:
+    1. Later end date (indicates more up-to-date info on duration).
+    2. More recent publication/start date.
+    3. Longer description (indicates more detail).
+
+    Args:
+        items: List of item dictionaries.
+
+    Returns:
+        A list of unique item dictionaries.
+    """
 
     def _recency_value(it: Dict[str, Any]) -> datetime:
         """Return a comparable timestamp describing how recent ``it`` is."""
@@ -1300,8 +1314,20 @@ def _guid_attributes(guid: str, link: str) -> str:
 def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any]]) -> Tuple[str, str]:
     """Convert a normalized item dictionary into an RSS <item> XML string.
 
+    This function handles:
+    - Field coercion (dates to datetime objects).
+    - Identity/GUID resolution.
+    - Title and description sanitization (including HTML escaping).
+    - Description formatting (HTML to text, then wrapped in CDATA).
+    - Generation of extension fields (starts_at, ends_at).
+
+    Args:
+        it: The normalized item dictionary.
+        now: The current datetime (used for relative time calculations).
+        state: The state dictionary (used to persist first_seen timestamps).
+
     Returns:
-        A tuple containing the item identity and the generated XML string.
+        A tuple containing the item identity (str) and the generated XML string (str).
     """
     pubDate = _coerce_datetime_field(it, "pubDate")
     starts_at = _coerce_datetime_field(it, "starts_at")
@@ -1476,7 +1502,13 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     return ident, "\n".join(parts)
 
 def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[str, Any]]) -> str:
-    """Generate the full RSS XML document from a list of items."""
+    """
+    Generate the full RSS XML document from a list of items.
+
+    Iterates over the items, emits them using ``_emit_item``, and assembles the
+    final XML document with channel headers. It also prunes the state dictionary
+    to only include items present in the current feed.
+    """
     out: List[str] = _emit_channel_header(now)
 
     body_parts: List[str] = []
