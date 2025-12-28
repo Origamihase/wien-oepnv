@@ -18,8 +18,15 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 def _run(command: list[str]) -> int:
     """Execute *command* inside the project root and stream the output."""
     print("→", " ".join(command), flush=True)
-    completed = subprocess.run(command, cwd=PROJECT_ROOT, check=False)
-    return completed.returncode
+    try:
+        # Enforce a 5-minute timeout for static checks
+        completed = subprocess.run(
+            command, cwd=PROJECT_ROOT, check=False, timeout=300
+        )
+        return completed.returncode
+    except subprocess.TimeoutExpired:
+        print(f"Command timed out after 300s: {' '.join(command)}", file=sys.stderr)
+        return 1
 
 
 def main() -> int:
