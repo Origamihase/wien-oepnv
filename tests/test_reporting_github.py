@@ -52,3 +52,31 @@ def test_run_report_logs_warning_when_credentials_missing(monkeypatch, caplog):
         record.message for record in caplog.records if record.name == "build_feed"
     ]
     assert any("Token oder Repository fehlen" in message for message in warning_messages)
+
+
+@responses.activate
+def test_run_report_sanitizes_github_error_details(monkeypatch, caplog):
+    monkeypatch.setenv("FEED_GITHUB_CREATE_ISSUES", "1")
+    monkeypatch.setenv("FEED_GITHUB_REPOSITORY", "demo/repo")
+    monkeypatch.setenv("FEED_GITHUB_TOKEN", "secret-token")
+    monkeypatch.setattr("feed.reporting.verify_response_ip", lambda _: None)
+
+    responses.post(
+        "https://api.github.com/repos/demo/repo/issues",
+        json={"message": "Bad\nrequest\tdata\rwith controls"},
+        status=400,
+    )
+
+    report = RunReport([("wl", True)])
+    report.provider_error("wl", "Fehler ohne Erfolg")
+    report.finish(build_successful=False)
+
+    caplog.set_level(logging.WARNING, logger="build_feed")
+
+    report.log_results()
+
+    warning_messages = [
+        record.message for record in caplog.records if record.name == "build_feed"
+    ]
+    assert any("Bad request data with controls" in message for message in warning_messages)
+    assert all("\n" not in message and "\t" not in message for message in warning_messages)
