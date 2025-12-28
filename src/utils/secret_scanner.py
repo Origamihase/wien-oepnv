@@ -49,8 +49,9 @@ def _tracked_files(base_dir: Path) -> list[Path]:
             cwd=base_dir,
             check=True,
             capture_output=True,
+            timeout=30,
         )
-    except (subprocess.CalledProcessError, FileNotFoundError):
+    except (subprocess.CalledProcessError, FileNotFoundError, subprocess.TimeoutExpired):
         return [path for path in base_dir.rglob("*") if path.is_file()]
     stdout = completed.stdout.decode("utf-8", errors="ignore")
     files: list[Path] = []
