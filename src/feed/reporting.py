@@ -51,7 +51,9 @@ def _sanitize_log_detail(detail: str) -> str:
 
 def _escape_cell(text: str) -> str:
     """Escape pipe characters and HTML to prevent injection and table breakage."""
-    escaped = html.escape(text)
+    # Reuse the robust markdown escaping logic
+    escaped = _escape_markdown_text(text)
+    # Additionally escape the pipe character which is special in tables
     return escaped.replace("|", r"\|")
 
 
@@ -61,8 +63,32 @@ def _sanitize_code_span(text: str) -> str:
 
 
 def _escape_markdown_text(text: str) -> str:
-    """Escape HTML characters to prevent Stored XSS in Markdown lists."""
-    return html.escape(text)
+    """
+    Escape characters to prevent Markdown injection and Stored XSS.
+
+    Escapes:
+    - HTML characters (<, >, &, etc.)
+    - Markdown syntax characters ([, ], *, _) to prevent link creation/formatting
+    """
+    # First, HTML escape to handle <script>, etc.
+    escaped = html.escape(text)
+
+    # Then escape common Markdown control characters that could be used for injection
+    # We replace them with their HTML entity equivalents or backslash escape them.
+    # Since we are outputting to Markdown that might be rendered to HTML,
+    # backslash escaping is standard.
+    # [ -> \[
+    # ] -> \]
+    # ( -> \(
+    # ) -> \)
+    # * -> \*
+    # _ -> \_
+    # ` -> \`
+    chars_to_escape = r"[]()*_`"
+    for char in chars_to_escape:
+        escaped = escaped.replace(char, f"\\{char}")
+
+    return escaped
 
 
 @dataclass

@@ -1,9 +1,9 @@
 # Feed Health Report
 
 - **Status:** ❌ Fehlerhaft
-- **Run-ID:** `20251227T210605Z`
-- **Start:** 2025-12-27 22:06:05 CET
-- **Ende:** 2025-12-27 22:06:05 CET
+- **Run-ID:** `20251228T133516Z`
+- **Start:** 2025-12-28 14:35:16 CET
+- **Ende:** 2025-12-28 14:35:16 CET
 
 ## Pipeline-Kennzahlen
 
@@ -26,6 +26,6 @@
 
 ## Fehler
 
-- build_feed: Feed-Bau fehlgeschlagen: OUT_PATH outside allowed directories Traceback (most recent call last): File "/app/src/build_feed.py", line 1733, in main out_path = _validate_path(Path(OUT_PATH), "OUT_PATH") ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File "/app/src/feed/config.py", line 75, in validate_path raise InvalidPathError(f"{name} outside allowed directories") feed.config.InvalidPathError: OUT_PATH outside allowed directories
-- Ausnahme: InvalidPathError: OUT_PATH outside allowed directories
-- InvalidPathError: OUT_PATH outside allowed directories
+- build\_feed: Feed-Bau fehlgeschlagen: OUT\_PATH outside allowed directories Traceback \(most recent call last\): File &quot;/app/src/build\_feed.py&quot;, line 1763, in main out\_path = \_validate\_path\(Path\(OUT\_PATH\), &quot;OUT\_PATH&quot;\) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File &quot;/app/tests/../src/feed/config.py&quot;, line 79, in validate\_path raise InvalidPathError\(f&quot;{name} outside allowed directories&quot;\) feed.config.InvalidPathError: OUT\_PATH outside allowed directories
+- Ausnahme: InvalidPathError: OUT\_PATH outside allowed directories
+- InvalidPathError: OUT\_PATH outside allowed directories
