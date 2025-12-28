@@ -19,6 +19,15 @@ class Tile:
 
 
 _DEFAULT_TILE = Tile(latitude=48.208174, longitude=16.373819)
+MAX_TILE_COUNT = 200
+
+
+def _validate_tile_count(count: int) -> None:
+    # Security: prevent unbounded tile lists from triggering excessive API calls/DoS.
+    if count > MAX_TILE_COUNT:
+        raise ValueError(
+            f"Tile configuration exceeds the limit of {MAX_TILE_COUNT} entries."
+        )
 
 
 def _coerce_coordinate(raw: Mapping[str, object], key: str) -> float:
@@ -51,6 +60,7 @@ def load_tiles_from_env(raw_value: str | None) -> List[Tile]:
     data = json.loads(raw_value)
     if not isinstance(data, list):
         raise ValueError("PLACES_TILES must encode a list of objects")
+    _validate_tile_count(len(data))
     return _parse_tiles(cast(Iterable[Mapping[str, object]], data))
 
 
@@ -60,6 +70,7 @@ def load_tiles_from_file(path: Path) -> List[Tile]:
     data = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(data, list):
         raise ValueError("Tile file must contain a list of tile objects")
+    _validate_tile_count(len(data))
     return _parse_tiles(cast(Iterable[Mapping[str, object]], data))
 
 
