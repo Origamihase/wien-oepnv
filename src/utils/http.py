@@ -86,6 +86,9 @@ def session_with_retries(
 # Block control characters and whitespace in URLs to prevent log injection
 _UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f]")
 
+# Limit URL length to reduce DoS risk from extremely long inputs.
+MAX_URL_LENGTH = 2048
+
 
 def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
     """Check if an IP address is globally reachable and safe."""
@@ -135,6 +138,10 @@ def validate_http_url(url: str | None) -> str | None:
 
     candidate = url.strip()
     if not candidate:
+        return None
+
+    # Guard against excessively long URLs (DoS protection).
+    if len(candidate) > MAX_URL_LENGTH:
         return None
 
     # Reject internal whitespace or control characters

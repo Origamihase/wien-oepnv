@@ -1,5 +1,5 @@
-
 from src.utils.http import validate_http_url
+
 
 def test_validate_http_url_valid() -> None:
     assert validate_http_url("https://example.com") == "https://example.com"
@@ -7,10 +7,12 @@ def test_validate_http_url_valid() -> None:
     # Port usage is fine if not local/private (will require complex logic or just be allowed if IP is public)
     # We will test public IPs if we can, but let's stick to domain names for now.
 
+
 def test_validate_http_url_invalid_scheme() -> None:
     assert validate_http_url("ftp://example.com") is None
     assert validate_http_url("file:///etc/passwd") is None
     assert validate_http_url("javascript:alert(1)") is None
+
 
 def test_validate_http_url_ssrf_domains() -> None:
     # These should be REJECTED after the fix
@@ -18,9 +20,16 @@ def test_validate_http_url_ssrf_domains() -> None:
     assert validate_http_url("https://localhost:8080") is None
     assert validate_http_url("http://LOCALHOST") is None
 
+
 def test_validate_http_url_rejects_userinfo() -> None:
     assert validate_http_url("https://user:pass@example.com") is None
     assert validate_http_url("http://user@example.com") is None
+
+
+def test_validate_http_url_rejects_excessive_length() -> None:
+    long_url = "https://example.com/" + ("a" * 5000)
+    assert validate_http_url(long_url) is None
+
 
 def test_validate_http_url_ssrf_ips() -> None:
     # Private IPs should be REJECTED
