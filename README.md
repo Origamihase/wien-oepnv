@@ -121,7 +121,7 @@ schreibt. Die wichtigsten Parameter:
 | ------------------------ | ------------------------------------------------------------------------------- |
 | `OUT_PATH`               | Zielpfad für den RSS-Feed (Standard `docs/feed.xml`).                           |
 | `FEED_TITLE` / `DESC`    | Titel und Beschreibung des Feeds.                                               |
-| `FEED_LINK`              | Referenz-URL (Standard: GitHub-Repository).                                     |
+| `FEED_LINK`              | Referenz-URL (nur http/https, Standard: GitHub-Repository).                     |
 | `MAX_ITEMS`              | Anzahl der Einträge im Feed (Standard 10).                                      |
 | `FEED_TTL`               | Cache-Hinweis für Clients in Minuten (Standard 15).                             |
 | `MAX_ITEM_AGE_DAYS`      | Maximales Alter von Meldungen aus den Caches (Standard 365).                    |

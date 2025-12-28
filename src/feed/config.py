@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
+import logging
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -28,6 +29,7 @@ try:  # pragma: no cover - support package and script execution
         DEFAULT_STATE_RETENTION_DAYS,
     )
     from utils.env import get_bool_env, get_int_env
+    from utils.http import validate_http_url
 except ModuleNotFoundError:  # pragma: no cover
     from ..config.defaults import (
         DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
@@ -50,10 +52,12 @@ except ModuleNotFoundError:  # pragma: no cover
         DEFAULT_STATE_RETENTION_DAYS,
     )
     from ..utils.env import get_bool_env, get_int_env
+    from ..utils.http import validate_http_url
 
 ALLOWED_ROOTS = {"docs", "data", "log"}
 REPO_ROOT = Path(__file__).resolve().parents[2]
 LOG_TIMEZONE = ZoneInfo("Europe/Vienna")
+log = logging.getLogger(__name__)
 
 
 class InvalidPathError(ValueError):
@@ -162,7 +166,14 @@ def _load_from_env() -> None:
         "FEED_HEALTH_JSON_PATH", DEFAULT_FEED_HEALTH_JSON_PATH, allow_fallback=True
     )
     FEED_TITLE = os.getenv("FEED_TITLE", DEFAULT_FEED_TITLE)
-    FEED_LINK = os.getenv("FEED_LINK", DEFAULT_FEED_LINK)
+    raw_feed_link = os.getenv("FEED_LINK", DEFAULT_FEED_LINK)
+    # Security: only allow safe http/https URLs to avoid unsafe feed links.
+    validated_feed_link = validate_http_url(raw_feed_link)
+    if not validated_feed_link:
+        validated_feed_link = validate_http_url(DEFAULT_FEED_LINK) or DEFAULT_FEED_LINK
+        if raw_feed_link.strip() and raw_feed_link.strip() != DEFAULT_FEED_LINK:
+            log.warning("Invalid FEED_LINK provided; falling back to default.")
+    FEED_LINK = validated_feed_link
     FEED_DESC = os.getenv("FEED_DESC", DEFAULT_FEED_DESCRIPTION)
     FEED_TTL = max(get_int_env("FEED_TTL", DEFAULT_FEED_TTL_MINUTES), 0)
     DESCRIPTION_CHAR_LIMIT = max(
