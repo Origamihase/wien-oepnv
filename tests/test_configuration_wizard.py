@@ -52,6 +52,30 @@ def test_format_env_document_includes_secret_placeholder(tmp_path: Path) -> None
     assert "OUT_PATH=docs/feed.xml" in document
 
 
+def test_format_env_document_escapes_newlines() -> None:
+    managed = {
+        "FEED_TITLE": "Titel",
+        "FEED_DESC": "Line 1\nLine 2",
+        "FEED_LINK": "https://example.invalid",
+        "MAX_ITEMS": "10",
+        "FEED_TTL": "15",
+        "MAX_ITEM_AGE_DAYS": "365",
+        "ABSOLUTE_MAX_AGE_DAYS": "540",
+        "ENDS_AT_GRACE_MINUTES": "10",
+        "PROVIDER_TIMEOUT": "25",
+        "PROVIDER_MAX_WORKERS": "0",
+        "STATE_RETENTION_DAYS": "60",
+        "WL_ENABLE": "true",
+        "OEBB_ENABLE": "true",
+        "VOR_ENABLE": "true",
+        "BAUSTELLEN_ENABLE": "true",
+    }
+
+    document = wizard.format_env_document(managed, {})
+
+    assert 'FEED_DESC="Line 1\\nLine 2"' in document
+
+
 def test_calculate_changes_handles_add_and_remove() -> None:
     previous = {"FEED_TITLE": "Alt", "OLD_KEY": "value"}
     current = {"FEED_TITLE": "Neu", "NEW_KEY": "value"}
