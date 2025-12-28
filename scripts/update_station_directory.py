@@ -36,9 +36,11 @@ if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
 try:  # pragma: no cover - convenience for module execution
+    from src.utils.files import atomic_write
     from src.utils.http import fetch_content_safe, session_with_retries
     from src.utils.stations import is_in_vienna as _is_point_in_vienna
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
+    from utils.files import atomic_write  # type: ignore
     from utils.http import fetch_content_safe, session_with_retries  # type: ignore
     from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore
 
@@ -1074,9 +1076,9 @@ def load_pendler_station_ids(path: Path) -> set[int]:
 
 
 def write_json(stations: list[Station], output_path: Path) -> None:
-    output_path.parent.mkdir(parents=True, exist_ok=True)
     payload = [station.as_dict() for station in stations]
-    with output_path.open("w", encoding="utf-8") as handle:
+    # Use atomic_write to prevent partial writes and reduce race conditions.
+    with atomic_write(output_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         json.dump(payload, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     logger.info("Wrote %s", output_path)
