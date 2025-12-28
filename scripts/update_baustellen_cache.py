@@ -13,9 +13,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple, Union
 
-import requests
 from dateutil import parser as dtparser
-from requests import Response
 from requests.exceptions import RequestException
 from zoneinfo import ZoneInfo
 
@@ -25,6 +23,7 @@ if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 from utils.cache import write_cache  # noqa: E402
+from utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
 from utils.ids import make_guid  # noqa: E402
 from utils.serialize import serialize_for_cache  # noqa: E402
 
@@ -141,27 +140,32 @@ def configure_logging() -> None:
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
-def _load_json_from_response(response: Response) -> Dict[str, Any]:
+def _load_json_from_content(content: bytes) -> Dict[str, Any]:
     try:
-        return response.json()
-    except json.JSONDecodeError as exc:  # pragma: no cover - defensive
+        return json.loads(content.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:  # pragma: no cover - defensive
         raise ValueError(f"Invalid JSON payload: {exc}") from exc
 
 
 def _fetch_remote(url: str, timeout: int) -> Optional[Dict[str, Any]]:
+    # Security: validate remote URL before fetching (SSRF/DNS rebinding protection).
+    if not validate_http_url(url):
+        LOGGER.warning("Baustellen: Unsichere oder ungültige URL: %s", url)
+        return None
     try:
         LOGGER.info("Baustellen: Lade Daten von %s", url)
-        response = requests.get(
-            url,
-            timeout=timeout,
-            headers={"User-Agent": USER_AGENT, "Accept": "application/json"},
-        )
-        response.raise_for_status()
-    except RequestException as exc:
+        with session_with_retries(USER_AGENT, raise_on_status=False) as session:
+            content = fetch_content_safe(
+                session,
+                url,
+                timeout=timeout,
+                headers={"Accept": "application/json"},
+            )
+    except (RequestException, ValueError) as exc:
         LOGGER.warning("Baustellen: Abruf fehlgeschlagen (%s)", exc)
         return None
     try:
-        payload = _load_json_from_response(response)
+        payload = _load_json_from_content(content)
     except ValueError as exc:
         LOGGER.warning("Baustellen: Ungültiges JSON vom Endpoint (%s)", exc)
         return None
