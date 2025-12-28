@@ -100,11 +100,15 @@ def test_load_quota_config_from_env_defaults(monkeypatch: pytest.MonkeyPatch) ->
 
 
 def test_resolve_quota_state_path_prefers_env(tmp_path: Path) -> None:
-    override = tmp_path / "custom.json"
+    override = Path("data") / "places_quota_override.json"
     path = resolve_quota_state_path({"PLACES_QUOTA_STATE": str(override)})
-    assert path == override
+    assert path == override.resolve()
 
-    base = tmp_path / "state"
+    base = Path("data") / "state"
     result = resolve_quota_state_path({"STATE_PATH": str(base)})
-    assert result == base / "places_quota.json"
+    assert result == (base / "places_quota.json").resolve()
 
+
+def test_resolve_quota_state_path_rejects_outside_repo(tmp_path: Path) -> None:
+    with pytest.raises(ValueError):
+        resolve_quota_state_path({"PLACES_QUOTA_STATE": str(tmp_path / "custom.json")})

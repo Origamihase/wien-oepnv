@@ -12,8 +12,10 @@ from typing import Callable, Dict, Mapping
 
 try:  # pragma: no cover
     from utils.files import atomic_write
+    from feed.config import validate_path
 except ModuleNotFoundError:  # pragma: no cover
     from ..utils.files import atomic_write
+    from ..feed.config import validate_path
 
 LOGGER = logging.getLogger("places.quota")
 
@@ -179,9 +181,10 @@ def resolve_quota_state_path(env: Mapping[str, str] | None = None) -> Path:
     environment = env or os.environ
     override = environment.get("PLACES_QUOTA_STATE")
     if override:
-        return Path(override)
+        # Security: validate configured paths to prevent path traversal outside allowed roots.
+        return validate_path(Path(override), "PLACES_QUOTA_STATE")
     base = environment.get("STATE_PATH")
     if base:
-        return Path(base) / "places_quota.json"
-    return Path("data/places_quota.json")
-
+        base_path = validate_path(Path(base), "STATE_PATH")
+        return validate_path(base_path / "places_quota.json", "PLACES_QUOTA_STATE")
+    return validate_path(Path("data/places_quota.json"), "PLACES_QUOTA_STATE")

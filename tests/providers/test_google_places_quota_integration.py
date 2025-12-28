@@ -159,16 +159,18 @@ def test_rate_limit_does_not_consume_quota(tmp_path: Path, monkeypatch: pytest.M
     assert data["total"] == 1
 
 
-def _configure_env(monkeypatch: pytest.MonkeyPatch, tmp_path: Path, quota_path: Path) -> None:
+def _configure_env(monkeypatch: pytest.MonkeyPatch, base_dir: Path, quota_path: Path) -> None:
     monkeypatch.setenv("GOOGLE_ACCESS_ID", "key")
     monkeypatch.setenv("PLACES_TILES", json.dumps([{"lat": 48.2, "lng": 16.3}]))
-    monkeypatch.setenv("OUT_PATH_STATIONS", str(tmp_path / "stations.json"))
+    monkeypatch.setenv("OUT_PATH_STATIONS", str(base_dir / "stations.json"))
     monkeypatch.setenv("PLACES_QUOTA_STATE", str(quota_path))
     monkeypatch.setenv("MERGE_MAX_DIST_M", "150")
 
 
 def test_cli_short_circuits_on_quota(monkeypatch: pytest.MonkeyPatch, tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
-    quota_path = tmp_path / "quota.json"
+    base_dir = Path("data") / tmp_path.name
+    base_dir.mkdir(parents=True, exist_ok=True)
+    quota_path = base_dir / "quota.json"
     quota = MonthlyQuota(month_key=MonthlyQuota.current_month_key())
     quota.counts["nearby"] = 1500
     quota.total = 1500
@@ -183,7 +185,7 @@ def test_cli_short_circuits_on_quota(monkeypatch: pytest.MonkeyPatch, tmp_path: 
         return session
 
     monkeypatch.setattr("src.places.client.requests.Session", factory)
-    _configure_env(monkeypatch, tmp_path, quota_path)
+    _configure_env(monkeypatch, base_dir, quota_path)
     caplog.set_level("INFO", logger="places.cli")
 
     exit_code = fetch_main(["--write"])
@@ -191,7 +193,7 @@ def test_cli_short_circuits_on_quota(monkeypatch: pytest.MonkeyPatch, tmp_path: 
     assert exit_code == 0
     assert not sessions or sessions[0].calls == []
     assert "Quota reached" in caplog.text
-    assert not (tmp_path / "stations.json").exists()
+    assert not (base_dir / "stations.json").exists()
     with quota_path.open(encoding="utf-8") as handle:
         data = json.load(handle)
     assert data["counts"]["nearby"] == 1500
@@ -206,7 +208,9 @@ def test_cli_dry_run_reports_quota(monkeypatch: pytest.MonkeyPatch, tmp_path: Pa
             },
         )
     ]
-    quota_path = tmp_path / "quota.json"
+    base_dir = Path("data") / tmp_path.name
+    base_dir.mkdir(parents=True, exist_ok=True)
+    quota_path = base_dir / "quota.json"
     quota = MonthlyQuota(month_key=MonthlyQuota.current_month_key())
     _save_quota(quota_path, quota)
 
@@ -218,7 +222,7 @@ def test_cli_dry_run_reports_quota(monkeypatch: pytest.MonkeyPatch, tmp_path: Pa
         return session
 
     monkeypatch.setattr("src.places.client.requests.Session", factory)
-    _configure_env(monkeypatch, tmp_path, quota_path)
+    _configure_env(monkeypatch, base_dir, quota_path)
     caplog.set_level("INFO", logger="places.cli")
 
     exit_code = fetch_main(["--dry-run"])
@@ -226,5 +230,4 @@ def test_cli_dry_run_reports_quota(monkeypatch: pytest.MonkeyPatch, tmp_path: Pa
     assert exit_code == 0
     assert "Quota status" in caplog.text
     assert sessions[0].calls
-    assert not (tmp_path / "stations.json").exists()
-
+    assert not (base_dir / "stations.json").exists()
