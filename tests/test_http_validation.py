@@ -18,6 +18,10 @@ def test_validate_http_url_ssrf_domains() -> None:
     assert validate_http_url("https://localhost:8080") is None
     assert validate_http_url("http://LOCALHOST") is None
 
+def test_validate_http_url_rejects_userinfo() -> None:
+    assert validate_http_url("https://user:pass@example.com") is None
+    assert validate_http_url("http://user@example.com") is None
+
 def test_validate_http_url_ssrf_ips() -> None:
     # Private IPs should be REJECTED
     assert validate_http_url("http://127.0.0.1") is None
