@@ -35,6 +35,15 @@ class _ErrorSession:
         return self._response
 
 
+class _TextErrorResponse:
+    def __init__(self, status_code: int, text: str):
+        self.status_code = status_code
+        self.text = text
+
+    def json(self) -> Dict[str, Any]:
+        raise ValueError("invalid json")
+
+
 def test_bad_request_error_includes_field_violations() -> None:
     payload = {
         "error": {
@@ -87,3 +96,38 @@ def test_bad_request_error_includes_field_violations() -> None:
     assert "Failed to fetch places (400)" in message
     assert "INVALID_ARGUMENT" in message
     assert "X-Goog-FieldMask: invalid path nextPageToken" in message
+
+
+def test_error_details_strip_control_characters() -> None:
+    response = _TextErrorResponse(500, "bad\ntext\x00payload" + ("x" * 300))
+    session = _ErrorSession(response)
+    config = GooglePlacesConfig(
+        api_key="dummy",
+        included_types=["train_station"],
+        language="de",
+        region="AT",
+        radius_m=2500,
+        timeout_s=1,
+        max_retries=0,
+    )
+    client = GooglePlacesClient(config, session=session)
+
+    with pytest.raises(GooglePlacesError) as excinfo:
+        client._post(
+            "places:searchNearby",
+            {
+                "languageCode": "de",
+                "includedTypes": ["train_station"],
+                "locationRestriction": {
+                    "circle": {
+                        "center": {"latitude": 0.0, "longitude": 0.0},
+                        "radius": 1000,
+                    }
+                },
+            },
+            field_mask=FIELD_MASK_NEARBY,
+        )
+
+    message = str(excinfo.value)
+    assert "\n" not in message
+    assert "\x00" not in message
