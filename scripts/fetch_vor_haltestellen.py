@@ -8,6 +8,7 @@ import difflib
 import json
 import logging
 import re
+import sys
 import time
 import unicodedata
 from dataclasses import dataclass
@@ -17,6 +18,18 @@ from typing import Iterable, Mapping, Sequence
 import requests
 
 BASE_DIR = Path(__file__).resolve().parents[1]
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+try:
+    from src.utils.files import atomic_write
+    from src.utils.http import session_with_retries
+except ImportError:
+    # Fallback if running as a package, though sys.path adjustment above should handle it
+    from utils.files import atomic_write  # type: ignore
+    from utils.http import session_with_retries  # type: ignore
+
+
 DEFAULT_STATIONS_PATH = BASE_DIR / "data" / "stations.json"
 DEFAULT_OUTPUT_PATH = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_CONFIG_URL = "https://anachb.vor.at/webapp/js/hafas_webapp_config.js"
@@ -230,7 +243,7 @@ def resolve_station(
 
 def write_csv(path: Path, candidates: Mapping[str, VORCandidate]) -> None:
     fieldnames = ["StopPointId", "StopPointName", "Latitude", "Longitude"]
-    with path.open("w", encoding="utf-8", newline="") as handle:
+    with atomic_write(path, mode="w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames, delimiter=";")
         writer.writeheader()
         for stop in sorted(candidates.values(), key=lambda item: item.ext_id):
@@ -260,8 +273,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     resolved_unique: dict[str, VORCandidate] = {}
     resolved_pairs: list[tuple[Station, VORCandidate]] = []
 
-    with requests.Session() as session:
-        session.headers.update({"User-Agent": "wien-oepnv fetch_vor_haltestellen"})
+    # Use secure session with retries and default timeout
+    with session_with_retries(user_agent="wien-oepnv fetch_vor_haltestellen") as session:
         try:
             access_id = fetch_access_id(session)
         except Exception as exc:
@@ -295,7 +308,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         }
         for pair in resolved_pairs
     ]
-    mapping_path.write_text(json.dumps(mapping_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    with atomic_write(mapping_path, mode="w", encoding="utf-8") as handle:
+        handle.write(json.dumps(mapping_payload, ensure_ascii=False, indent=2) + "\n")
+
     log.info("Wrote station mapping to %s", mapping_path)
     return 0
 
