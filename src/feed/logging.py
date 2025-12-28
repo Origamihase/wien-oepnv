@@ -18,6 +18,10 @@ from .config import (
     LOG_MAX_BYTES,
     LOG_TIMEZONE,
 )
+try:  # pragma: no cover - support package and script execution
+    from utils.files import atomic_write
+except ModuleNotFoundError:  # pragma: no cover
+    from ..utils.files import atomic_write
 
 LOG_DIR = LOG_DIR_PATH.as_posix()
 error_log_path = Path(LOG_DIR) / "errors.log"
@@ -214,7 +218,9 @@ def prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
             filtered.extend(record_lines)
 
     try:
-        path.write_text("".join(filtered), encoding="utf-8")
+        # Security: use atomic writes to avoid partial log truncation on interruption.
+        with atomic_write(path, encoding="utf-8") as handle:
+            handle.write("".join(filtered))
     except OSError:
         return
 
