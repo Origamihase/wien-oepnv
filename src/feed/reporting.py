@@ -5,6 +5,7 @@ import html
 import json
 import logging
 import os
+import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -28,15 +29,24 @@ except ModuleNotFoundError:  # pragma: no cover
 
 log = logging.getLogger("build_feed")
 
+_CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f]")
+
 
 def clean_message(message: Optional[str]) -> str:
     """Normalize log and status messages for human consumption."""
 
     if not message:
         return ""
-    import re
 
     return re.sub(r"\s+", " ", message).strip()
+
+
+def _sanitize_log_detail(detail: str) -> str:
+    """Sanitize log details to avoid control characters/log injection."""
+    if not detail:
+        return ""
+    sanitized = _CONTROL_CHARS_RE.sub(" ", detail)
+    return clean_message(sanitized)
 
 
 def _escape_cell(text: str) -> str:
@@ -729,6 +739,8 @@ class _GithubIssueReporter:
                 detail = response.json().get("message", response.text)
             except ValueError:
                 detail = response.text
+            # Security: avoid log injection by stripping control characters.
+            detail = _sanitize_log_detail(detail)
             log.warning(
                 "GitHub-Antwort %s beim Erstellen des Issues: %s",
                 response.status_code,
