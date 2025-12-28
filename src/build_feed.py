@@ -71,6 +71,7 @@ try:  # pragma: no cover - allow running as script or package
         register_cache_alert_hook,
     )  # type: ignore
     from utils.files import atomic_write
+    from utils.text import html_to_text
 except ModuleNotFoundError:  # pragma: no cover
     from .utils.cache import (
         cache_modified_at,
@@ -78,6 +79,7 @@ except ModuleNotFoundError:  # pragma: no cover
         register_cache_alert_hook,
     )
     from .utils.files import atomic_write
+    from .utils.text import html_to_text
 
 try:  # pragma: no cover - platform dependent
     import fcntl  # type: ignore
@@ -463,7 +465,6 @@ DATE_RANGE_RE = re.compile(
 _ELLIPSIS = " …"
 _SENTENCE_END_RE = re.compile(r"[.!?…](?=\s|$)")
 _WHITESPACE_RE = re.compile(r"\s+")
-_HTML_TAG_RE = re.compile(r"<[^>]*>")
 _WHITESPACE_CLEANUP_RE = re.compile(r"[ \t\r\f\v]+")
 
 def _sanitize_text(s: str) -> str:
@@ -474,12 +475,9 @@ def _cdata(s: str) -> str:
     s = s.replace("]]>", "]]]]><![CDATA[>")
     return f"<![CDATA[{s}]]>"
 
-def _strip_html(s: str) -> str:
-    return _HTML_TAG_RE.sub("", s or "")
-
 def _clip_text_html(text: str, limit: int) -> str:
     """Für TV knapper machen. Gibt immer Plaintext zurück und kürzt falls nötig."""
-    plain = html.unescape(_strip_html(text or ""))
+    plain = html_to_text(text or "")
     if limit <= 0 or len(plain) <= limit:
         return plain
     prefix = plain[:limit]
