@@ -170,18 +170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Schadhafter Zug Betrieb ab Wallensteinplatz",
-    "description": "Schadhafter Zug Betrieb ab Wallensteinplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b4a3bd590cf677f648c4d77014e2213713c35bb9857a0a4ecdd8cd07caeb5418",
-    "pubDate": "2025-12-28T18:08:12+01:00",
-    "starts_at": "2025-12-28T18:08:12+01:00",
-    "ends_at": "2025-12-28T22:00:00+01:00",
-    "_identity": "wl|störung|L=5|D=2025-12-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Fremdunfall Züge halten bei Linie 49",
     "description": "Fremdunfall Züge halten bei Linie 49",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -206,25 +194,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "title": "38A: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "95aeb4ba16e2fb0146735f3a2338723d5a267bb386f96f10ddd9c6072e133994",
-    "pubDate": "2025-12-28T20:58:25+01:00",
-    "starts_at": "2025-12-28T20:58:25+01:00",
-    "ends_at": "2025-12-28T21:57:00+01:00",
-    "_identity": "wl|störung|L=9|D=2025-12-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "915d95b28add9fd37cc8db6aad0ee0d4df44918b9054eecdbccbdf5187711016",
-    "pubDate": "2025-12-28T21:07:00+01:00",
-    "starts_at": "2025-12-28T21:07:00+01:00",
-    "ends_at": "2025-12-28T22:06:00+01:00",
-    "_identity": "wl|störung|L=49|D=2025-12-28"
+    "guid": "dded550fba663cf534f9fd553a582a61f5261229fb6341636d30aa082e91657d",
+    "pubDate": "2025-12-28T21:42:33+01:00",
+    "starts_at": "2025-12-28T21:42:33+01:00",
+    "ends_at": "2025-12-28T22:41:00+01:00",
+    "_identity": "wl|störung|L=38A|D=2025-12-28"
   }
 ]
