@@ -161,7 +161,13 @@ def _refresh_provider_caches(*, script_dir: Path | None = None) -> None:
 
         logger.info("Refreshing %s cache via %s", target.label, script_path.name)
         try:
-            result = subprocess.run(command, check=False)
+            # Enforce a 5-minute timeout to prevent indefinite hangs (DoS protection)
+            result = subprocess.run(command, check=False, timeout=300)
+        except subprocess.TimeoutExpired:
+            logger.warning(
+                "%s cache refresh timed out after 300s; continuing", target.label
+            )
+            continue
         except OSError as exc:  # pragma: no cover - execution environment issues
             logger.warning(
                 "Failed to execute %s cache refresh (%s); continuing", target.label, exc
