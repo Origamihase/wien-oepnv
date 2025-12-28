@@ -338,7 +338,13 @@ def _escape_env_value(value: str) -> str:
         return ""
     if re.fullmatch(r"[A-Za-z0-9_@%+,:./-]+", value):
         return value
-    escaped = value.replace("\\", "\\\\").replace('"', '\\"')
+    # Escape control characters to prevent newline injection in generated .env files.
+    escaped = (
+        value.replace("\\", "\\\\")
+        .replace("\r", "\\r")
+        .replace("\n", "\\n")
+        .replace('"', '\\"')
+    )
     return f'"{escaped}"'
 
 
