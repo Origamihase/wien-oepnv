@@ -44,7 +44,8 @@ def run_script(python: str, script_path: Path, verbose: bool) -> None:
     if verbose:
         cmd.append("--verbose")
     logging.info("Running %s", script_path.name)
-    subprocess.run(cmd, check=True)
+    # Enforce a 10-minute timeout for each update script to prevent indefinite hangs
+    subprocess.run(cmd, check=True, timeout=600)
 
 
 def main(argv: Sequence[str] | None = None) -> int:
