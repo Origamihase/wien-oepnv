@@ -146,6 +146,10 @@ def validate_http_url(url: str | None) -> str | None:
         if parsed.scheme.lower() not in ("http", "https"):
             return None
 
+        # Disallow embedded credentials to avoid leaking secrets via logs or proxies.
+        if parsed.username or parsed.password:
+            return None
+
         hostname = parsed.hostname
         if not hostname:
             return None
