@@ -190,5 +190,113 @@
     "starts_at": "2025-12-28T14:44:02+01:00",
     "ends_at": "2025-12-28T20:00:00+01:00",
     "_identity": "wl|störung|L=|D=2025-12-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3ae90c0c64b5c7d1855f6d65b70c2fac58c3368abd559cb27a64de60c6b7a7c5",
+    "pubDate": "2025-12-28T18:02:41+01:00",
+    "starts_at": "2025-12-28T18:02:41+01:00",
+    "ends_at": "2025-12-28T19:02:00+01:00",
+    "_identity": "wl|störung|L=5|D=2025-12-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Schadhafter Zug Züge halten bei Linie 37",
+    "description": "Schadhafter Zug Züge halten bei Linie 37",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dfdfd8c0efa2c71ece15a30b2ec297f51a4529bfea180353ba9c3eb29294f3ff",
+    "pubDate": "2025-12-28T18:02:41+01:00",
+    "starts_at": "2025-12-28T18:02:41+01:00",
+    "ends_at": "2025-12-28T20:00:00+01:00",
+    "_identity": "wl|störung|L=5|D=2025-12-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Schadhafter Zug Betrieb ab Alserbachstraße",
+    "description": "Schadhafter Zug Betrieb ab Alserbachstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b8d7f47d7e61c9e185acd707147213f2ef0802f641b00942716e22ec91f86e27",
+    "pubDate": "2025-12-28T18:02:41+01:00",
+    "starts_at": "2025-12-28T18:02:41+01:00",
+    "ends_at": "2025-12-28T20:15:00+01:00",
+    "_identity": "wl|störung|L=5|D=2025-12-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "32ae66e6206b82ebc95ff253940dc84dcc795b64994268f24cd4036d2e9a3634",
+    "pubDate": "2025-12-28T18:03:10+01:00",
+    "starts_at": "2025-12-28T18:03:10+01:00",
+    "ends_at": "2025-12-28T19:02:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Schadhafter Zug Betrieb ab Alserbachstraße",
+    "description": "Schadhafter Zug Betrieb ab Alserbachstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6273c96170a93939f9113f8e11284f196821dcfb1df3dba8b9f1ea8556844911",
+    "pubDate": "2025-12-28T18:03:10+01:00",
+    "starts_at": "2025-12-28T18:03:10+01:00",
+    "ends_at": "2025-12-28T20:30:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Schadhafter Zug Züge halten bei Linie 37",
+    "description": "Schadhafter Zug Züge halten bei Linie 37",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5c0058102ac44d503f2be5787944926738cf3bf6323908deb4c20971257d4edb",
+    "pubDate": "2025-12-28T18:03:10+01:00",
+    "starts_at": "2025-12-28T18:03:10+01:00",
+    "ends_at": "2025-12-28T21:00:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Schadhafter Zug Betrieb ab Jägerstraße",
+    "description": "Schadhafter Zug Betrieb ab Jägerstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c3f7dde5f11c3bc221996463dc5352c40f59e040b60bf3d7e0c7128fc4bbdb1c",
+    "pubDate": "2025-12-28T18:05:41+01:00",
+    "starts_at": "2025-12-28T18:05:41+01:00",
+    "ends_at": "2025-12-28T19:05:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Schadhafter Zug Züge halten bei Linie 31",
+    "description": "Schadhafter Zug Züge halten bei Linie 31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cd72ef4fb7a675396e4ac33941f0f00be2fac4c91ba8cd1a60b114ce19253b4e",
+    "pubDate": "2025-12-28T18:06:39+01:00",
+    "starts_at": "2025-12-28T18:06:39+01:00",
+    "ends_at": "2025-12-28T19:05:00+01:00",
+    "_identity": "wl|störung|L=12|D=2025-12-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Schadhafter Zug Betrieb ab Wallensteinplatz",
+    "description": "Schadhafter Zug Betrieb ab Wallensteinplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b4a3bd590cf677f648c4d77014e2213713c35bb9857a0a4ecdd8cd07caeb5418",
+    "pubDate": "2025-12-28T18:08:12+01:00",
+    "starts_at": "2025-12-28T18:08:12+01:00",
+    "ends_at": "2025-12-28T22:00:00+01:00",
+    "_identity": "wl|störung|L=5|D=2025-12-28"
   }
 ]
