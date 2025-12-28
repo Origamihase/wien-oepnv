@@ -1,7 +1,7 @@
 
 import pytest
 import datetime
-from build_feed import _emit_item, FEED_LINK
+from src.build_feed import _emit_item, FEED_LINK
 
 def test_javascript_link_sanitization(mocker):
     # Mock date and state
