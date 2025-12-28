@@ -126,12 +126,18 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     # We do not shutdown the shared executor
 
 
-def validate_http_url(url: str | None) -> str | None:
+def validate_http_url(url: str | None, check_dns: bool = True) -> str | None:
     """Ensure the given URL is valid and uses http or https.
 
     Returns the URL (stripped) if valid, or ``None`` if invalid/empty/wrong scheme.
     Also rejects URLs that point to localhost or private IP addresses (SSRF protection),
     or contain unsafe control characters/whitespace.
+
+    Args:
+        url: The URL to validate.
+        check_dns: If True (default), resolves the hostname to ensure it exists
+                   and doesn't point to a private IP (SSRF protection).
+                   If False, only syntax and scheme checks are performed.
     """
     if not url:
         return None
@@ -167,15 +173,16 @@ def validate_http_url(url: str | None) -> str | None:
 
         # Resolve hostname to IPs to prevent DNS rebinding/aliasing to private IPs
         # This now includes a timeout mechanism
-        addr_info = _resolve_hostname_safe(hostname)
+        if check_dns:
+            addr_info = _resolve_hostname_safe(hostname)
 
-        # If resolution yielded no results (timeout or failure), reject the URL
-        if not addr_info:
-            return None
-
-        for _, _, _, _, sockaddr in addr_info:
-            if not is_ip_safe(sockaddr[0]):
+            # If resolution yielded no results (timeout or failure), reject the URL
+            if not addr_info:
                 return None
+
+            for _, _, _, _, sockaddr in addr_info:
+                if not is_ip_safe(sockaddr[0]):
+                    return None
 
         return candidate
     except Exception:
