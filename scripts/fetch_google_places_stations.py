@@ -11,7 +11,6 @@ import argparse
 import json
 import logging
 import os
-import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 import sys
@@ -46,6 +45,7 @@ from src.places.diagnostics import permission_hint
 from src.places.merge import BoundingBox, MergeConfig, merge_places, load_stations
 from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
 from src.utils.env import load_default_env_files
+from src.utils.files import atomic_write
 
 LOGGER = logging.getLogger("places.cli")
 
@@ -260,16 +260,10 @@ def _write_if_changed(path: Path, stations: Sequence[MutableMapping[str, object]
     if not payload.strip():
         LOGGER.warning("Refusing to write empty stations payload to %s", path)
         return
-    fd, tmp_name = tempfile.mkstemp(dir=path.parent, prefix=path.name, suffix=".tmp")
-    try:
-        with os.fdopen(fd, "w", encoding="utf-8") as handle:
-            handle.write(payload)
-        os.replace(tmp_name, path)
-    finally:
-        try:
-            os.unlink(tmp_name)
-        except FileNotFoundError:
-            pass
+
+    with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
+        handle.write(payload)
+
     LOGGER.info("Wrote stations to %s", path)
 
 
