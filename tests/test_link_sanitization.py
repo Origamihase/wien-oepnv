@@ -3,7 +3,7 @@ import pytest
 import datetime
 from src.build_feed import _emit_item, FEED_LINK
 
-def test_javascript_link_sanitization(mocker):
+def test_javascript_link_sanitization():
     # Mock date and state
     now = datetime.datetime(2025, 1, 1, 12, 0, 0, tzinfo=datetime.timezone.utc)
     state = {}

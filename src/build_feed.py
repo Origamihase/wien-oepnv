@@ -1352,13 +1352,16 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     raw_title = it.get("title") or "Mitteilung"
     raw_desc  = it.get("description") or ""
     link = _build_canonical_link(it.get("link"), ident)
-    if link and not validate_http_url(link, check_dns=False):
+    sanitized_link = validate_http_url(link, check_dns=False) if link else ""
+    if link and not sanitized_link:
         log.warning(
             "Item %s has potentially unsafe/invalid link %r; falling back to feed link.",
             ident,
             link,
         )
         link = ""
+    else:
+        link = sanitized_link
 
     if not link:
         link = FEED_LINK
