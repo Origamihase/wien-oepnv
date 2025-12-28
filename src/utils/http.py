@@ -241,10 +241,12 @@ def fetch_content_safe(
         ValueError: If URL is unsafe/invalid, or Content-Length/body size exceeds max_bytes.
         requests.RequestException: For network errors.
     """
-    if not validate_http_url(url):
-        raise ValueError(f"Unsafe or invalid URL: {url}")
+    safe_url = validate_http_url(url)
+    if not safe_url:
+        # Security: avoid echoing potentially sensitive URLs (e.g., embedded credentials) in errors.
+        raise ValueError("Unsafe or invalid URL")
 
-    with session.get(url, stream=True, timeout=timeout, **kwargs) as r:
+    with session.get(safe_url, stream=True, timeout=timeout, **kwargs) as r:
         r.raise_for_status()
 
         # Prevent DNS Rebinding: Check the actual connected IP
