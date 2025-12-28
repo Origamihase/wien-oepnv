@@ -5,6 +5,7 @@ from __future__ import annotations
 import logging
 import os
 import random
+import re
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -31,6 +32,15 @@ __all__ = [
 ]
 
 LOGGER = logging.getLogger("places.google")
+
+_CONTROL_CHAR_RE = re.compile(r"[\x00-\x1f\x7f]")
+_MAX_ERROR_DETAIL = 200
+
+
+def _sanitize_error_detail(detail: str) -> str:
+    # Security: Strip control characters to avoid log injection via API error bodies.
+    cleaned = _CONTROL_CHAR_RE.sub(" ", detail)
+    return cleaned[:_MAX_ERROR_DETAIL]
 
 
 def _env_int(name: str, default: int, min_v: int | None = None, max_v: int | None = None) -> int:
@@ -323,8 +333,9 @@ class GooglePlacesClient:
                         self._record_successful_request(quota_kind)
                     return payload
                 if response.status_code in {429, 500, 502, 503, 504}:
+                    detail = _sanitize_error_detail(response.text)
                     last_error = GooglePlacesError(
-                        f"HTTP {response.status_code}: {response.text[:200]}"
+                        f"HTTP {response.status_code}: {detail}"
                     )
                 elif response.status_code in {401, 403}:
                     details = self._extract_error_details(response)
@@ -352,7 +363,8 @@ class GooglePlacesClient:
 
     def _format_error_message(self, response: requests.Response) -> str:
         status_code = response.status_code
-        default = f"Request failed with status {status_code}: {response.text[:200]}"
+        detail = _sanitize_error_detail(response.text)
+        default = f"Request failed with status {status_code}: {detail}"
         try:
             payload = response.json()
         except ValueError:
