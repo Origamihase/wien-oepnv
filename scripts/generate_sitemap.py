@@ -4,10 +4,13 @@
 from __future__ import annotations
 
 import datetime as _dt
+import logging
 import os
+import re
 import subprocess
 from pathlib import Path
 from typing import Iterable, List, Optional, Tuple
+from urllib.parse import urlparse
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -17,11 +20,36 @@ DEFAULT_BASE_URL = "https://origamihase.github.io/wien-oepnv"
 INCLUDE_EXTENSIONS = {".md", ".html", ".xml", ".json", ".pdf", ".txt"}
 EXCLUDED_FILES = {"sitemap.xml"}
 EXCLUDED_DIRS = {"_includes"}
+_UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f]")
+
+logger = logging.getLogger(__name__)
+
+
+def _is_valid_base_url(candidate: str) -> bool:
+    """Validate the base URL to prevent sitemap injection via env overrides."""
+    if _UNSAFE_URL_CHARS.search(candidate):
+        return False
+    parsed = urlparse(candidate)
+    if parsed.scheme.lower() not in {"http", "https"}:
+        return False
+    if not parsed.hostname:
+        return False
+    # Disallow embedded credentials to avoid leaking secrets into sitemap URLs.
+    if parsed.username or parsed.password:
+        return False
+    return True
 
 
 def _base_url() -> str:
-    url = os.getenv("SITE_BASE_URL", DEFAULT_BASE_URL).strip()
-    return url.rstrip("/")
+    raw = os.getenv("SITE_BASE_URL", DEFAULT_BASE_URL)
+    candidate = raw.strip()
+    if not candidate or not _is_valid_base_url(candidate):
+        if raw.strip() and raw.strip() != DEFAULT_BASE_URL:
+            logger.warning(
+                "Invalid SITE_BASE_URL provided; falling back to default base URL."
+            )
+        return DEFAULT_BASE_URL.rstrip("/")
+    return candidate.rstrip("/")
 
 
 def _should_include(path: Path) -> bool:
