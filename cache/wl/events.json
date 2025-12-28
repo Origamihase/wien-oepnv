@@ -170,30 +170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Schadhafter Zug Betrieb ab Alserbachstraße",
-    "description": "Schadhafter Zug Betrieb ab Alserbachstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b8d7f47d7e61c9e185acd707147213f2ef0802f641b00942716e22ec91f86e27",
-    "pubDate": "2025-12-28T18:02:41+01:00",
-    "starts_at": "2025-12-28T18:02:41+01:00",
-    "ends_at": "2025-12-28T20:15:00+01:00",
-    "_identity": "wl|störung|L=5|D=2025-12-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Schadhafter Zug Betrieb ab Alserbachstraße",
-    "description": "Schadhafter Zug Betrieb ab Alserbachstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6273c96170a93939f9113f8e11284f196821dcfb1df3dba8b9f1ea8556844911",
-    "pubDate": "2025-12-28T18:03:10+01:00",
-    "starts_at": "2025-12-28T18:03:10+01:00",
-    "ends_at": "2025-12-28T20:30:00+01:00",
-    "_identity": "wl|störung|L=12|D=2025-12-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Schadhafter Zug Züge halten bei Linie 37",
     "description": "Schadhafter Zug Züge halten bei Linie 37",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,5 +190,41 @@
     "starts_at": "2025-12-28T18:08:12+01:00",
     "ends_at": "2025-12-28T22:00:00+01:00",
     "_identity": "wl|störung|L=5|D=2025-12-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fremder Verkehrsunfall",
+    "description": "Die Linie 2 wird in Richtung Dornbach zwischen Ring, Volkstheater und Rathaus über die Reichsratsstraße umgeleitet. Die Störung dauert voraussichtlich bis 21:00 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Stadiongasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0749610181f65ab0658c177429fbd2fa37ffe19a156e13edf490d50626a4aa1b",
+    "pubDate": "2025-12-28T20:20:00+01:00",
+    "starts_at": "2025-12-28T20:20:00+01:00",
+    "ends_at": "2025-12-28T23:55:00+01:00",
+    "_identity": "wl|störung|L=2|D=2025-12-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fremdunfall Züge halten bei Linie 49",
+    "description": "Fremdunfall Züge halten bei Linie 49",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "34b477f8d3143583e48fd5d44ee598717b63baeecb7a6956b53b7634b575c53e",
+    "pubDate": "2025-12-28T20:23:17+01:00",
+    "starts_at": "2025-12-28T20:23:17+01:00",
+    "ends_at": "2025-12-28T23:00:00+01:00",
+    "_identity": "wl|störung|L=2|D=2025-12-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0adadc0d52c1c4ca5640d9262b7d557e64527b5ae1096d8366a008580c44402a",
+    "pubDate": "2025-12-28T20:33:15+01:00",
+    "starts_at": "2025-12-28T20:33:15+01:00",
+    "ends_at": "2025-12-28T21:32:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-12-28"
   }
 ]
