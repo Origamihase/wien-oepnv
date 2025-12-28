@@ -171,6 +171,20 @@ def validate_http_url(url: str | None, check_dns: bool = True) -> str | None:
         if hostname.lower() == "localhost":
             return None
 
+        # Block private IP literals even if DNS check is disabled.
+        # This prevents leaking private network structure in generated feeds
+        # or bypassing SSRF checks by avoiding DNS resolution steps.
+        try:
+            # Handle IPv6 brackets and scope IDs if present
+            # urlparse.hostname strips brackets for IPv6, so we just handle scope/formatting
+            ip_candidate = hostname.strip("[]").split("%")[0]
+            ip = ipaddress.ip_address(ip_candidate)
+            if not is_ip_safe(ip):
+                return None
+        except ValueError:
+            # Not a literal IP address, proceed to DNS check if enabled
+            pass
+
         # Resolve hostname to IPs to prevent DNS rebinding/aliasing to private IPs
         # This now includes a timeout mechanism
         if check_dns:
