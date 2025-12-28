@@ -8,6 +8,11 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, List, MutableMapping, Optional, Sequence, Tuple, TypedDict, cast
 
+try:  # pragma: no cover
+    from utils.files import atomic_write
+except ModuleNotFoundError:  # pragma: no cover
+    from ..utils.files import atomic_write
+
 from .client import Place
 from .normalize import haversine_m, normalize_name
 
@@ -79,7 +84,9 @@ def load_stations(path: Path) -> List[StationEntry]:
 def write_stations(path: Path, stations: Sequence[StationEntry]) -> None:
     serialisable = list(stations)
     payload = json.dumps(serialisable, ensure_ascii=False, indent=2, sort_keys=True)
-    path.write_text(payload + "\n", encoding="utf-8")
+    # Security: use atomic_write to avoid partial writes on crashes/power loss.
+    with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
+        handle.write(payload + "\n")
 
 
 def merge_places(
