@@ -82,8 +82,9 @@ def _last_modified(path: Path) -> str:
             cwd=REPO_ROOT,
             stderr=subprocess.DEVNULL,
             text=True,
+            timeout=10,
         ).strip()
-    except subprocess.CalledProcessError:
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
         output = ""
     if output:
         try:
