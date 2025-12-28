@@ -61,8 +61,13 @@ def _sanitize_code_span(text: str) -> str:
 
 
 def _escape_markdown_text(text: str) -> str:
-    """Escape HTML characters to prevent Stored XSS in Markdown lists."""
-    return html.escape(text)
+    """Escape HTML and Markdown characters to prevent injection/XSS."""
+    text = html.escape(text)
+    # Escape Markdown characters that could create links or formatting
+    # We backslash-escape: [ ] ( ) * _ `
+    for char in "[]()*_`":
+        text = text.replace(char, f"\\{char}")
+    return text
 
 
 @dataclass
