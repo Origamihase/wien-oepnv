@@ -21,7 +21,7 @@ def test_refresh_provider_caches_runs_available_scripts(monkeypatch: pytest.Monk
 
     calls: list[list[str]] = []
 
-    def fake_run(command: list[str], *, check: bool) -> object:
+    def fake_run(command: list[str], *, check: bool, **kwargs: object) -> object:
         calls.append(command)
         return _make_result()
 
@@ -46,7 +46,7 @@ def test_refresh_provider_caches_runs_available_scripts(monkeypatch: pytest.Monk
 def test_refresh_provider_caches_skips_missing_optional(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     calls: list[list[str]] = []
 
-    def fake_run(command: list[str], *, check: bool) -> object:
+    def fake_run(command: list[str], *, check: bool, **kwargs: object) -> object:
         calls.append(command)
         return _make_result()
 
@@ -70,7 +70,7 @@ def test_refresh_provider_caches_respects_availability_check(monkeypatch: pytest
 
     calls: list[list[str]] = []
 
-    def fake_run(command: list[str], *, check: bool) -> object:
+    def fake_run(command: list[str], *, check: bool, **kwargs: object) -> object:
         calls.append(command)
         return _make_result()
 
