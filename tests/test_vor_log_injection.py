@@ -52,6 +52,6 @@ def test_sanitize_message_strips_ansi_codes():
 
     assert "\x1b" not in sanitized
     assert "Critical" in sanitized
-    # The control character \x1b is removed, rendering the sequence harmless.
-    # We accept that the bracket and parameters ("[31m") remain as plain text.
-    assert "[31m" in sanitized
+    # The control character \x1b and its parameters are removed completely
+    assert "[31m" not in sanitized
+    assert sanitized == "Error Critical failure"
