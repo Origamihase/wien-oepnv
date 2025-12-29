@@ -158,18 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Fahrtbehinderung Betriebsstörung",
-    "description": "Fahrtbehinderung Betriebsstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b8bad1cd87782a8999246791842c9d119e2691a680000ae55aff8534cae3e390",
-    "pubDate": "2025-12-29T21:53:08+01:00",
-    "starts_at": "2025-12-29T21:53:08+01:00",
-    "ends_at": "2025-12-29T22:52:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-12-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "6: Gleisschaden Züge halten bei Linie 1",
     "description": "Gleisschaden Züge halten bei Linie 1",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -194,18 +182,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Gleisschaden Züge halten bei Linie O",
-    "description": "Gleisschaden Züge halten bei Linie O",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "932f2a36b5572118e04222d172f899d29ff4401c29eef4f893d926093f46101c",
-    "pubDate": "2025-12-29T21:59:54+01:00",
-    "starts_at": "2025-12-29T21:59:54+01:00",
-    "ends_at": "2025-12-29T22:59:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-12-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "6: Gleisschaden Betrieb ab Knöllgasse",
     "description": "Gleisschaden Betrieb ab Knöllgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,5 +190,17 @@
     "starts_at": "2025-12-29T22:00:23+01:00",
     "ends_at": "2025-12-29T23:30:00+01:00",
     "_identity": "wl|störung|L=6|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf der Hauptfahrbahn",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2025-12-29T23:00:24+01:00",
+    "starts_at": "2025-12-29T23:00:24+01:00",
+    "ends_at": "2025-12-30T05:30:00+01:00",
+    "_identity": "wl|störung|L=N29|D=2025-12-29"
   }
 ]
