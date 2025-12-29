@@ -33,6 +33,7 @@ from zoneinfo import ZoneInfo
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
     from ..utils.files import atomic_write
     from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
+    from ..utils.logging import sanitize_log_arg, sanitize_log_message
     from ..utils.stations import vor_station_ids
 else:  # pragma: no cover - allow running via package or src layout
     try:
@@ -44,6 +45,11 @@ else:  # pragma: no cover - allow running via package or src layout
         from utils.files import atomic_write
     except ModuleNotFoundError:
         from ..utils.files import atomic_write  # type: ignore
+
+    try:
+        from utils.logging import sanitize_log_arg, sanitize_log_message
+    except ModuleNotFoundError:
+        from ..utils.logging import sanitize_log_arg, sanitize_log_message  # type: ignore
 
     try:
         from utils.stations import vor_station_ids
@@ -88,34 +94,19 @@ _VOR_ACCESS_TOKEN_RAW = ""
 _VOR_AUTHORIZATION_HEADER = ""
 
 
+def _get_secrets() -> List[str]:
+    secrets = [s for s in [VOR_ACCESS_ID, _VOR_ACCESS_TOKEN_RAW] if s]
+    return secrets
+
+
 def _sanitize_message(text: str) -> str:
     """
     Sanitize log messages by masking secrets and removing control characters.
-
-    This protects against:
-    - Leaking credentials (VOR_ACCESS_ID, Bearer tokens) in logs.
-    - Log Injection attacks (newlines, ANSI sequences).
     """
-    sanitized = text or ""
-    patterns = [
-        (r"(?i)(accessid%3d)([^&\s]+)", r"\1***"),
-        (r"(?i)(accessid=)([^&\s]+)", r"\1***"),
-        (r"(?i)(\"accessId\"\s*:\s*\")(.*?)(\")", r"\1***\3"),
-        (r"(?i)('accessId'\s*:\s*')(.*?)(')", r"\1***\3"),
-        (r"(?i)(Authorization:\s*Bearer\s+)(\S+)", r"\1***"),
-        (r"(?i)(Authorization:\s*Basic\s+)(\S+)", r"\1***"),
-        (r"(?i)(\"Authorization\"\s*:\s*\"Bearer\s+)([^\"\s]+)", r"\1***"),
-        (r"(?i)(\"Authorization\"\s*:\s*\"Basic\s+)([^\"\s]+)", r"\1***"),
-        (r"(?i)('Authorization'\s*:\s*'Bearer\s+)([^'\s]+)", r"\1***"),
-        (r"(?i)('Authorization'\s*:\s*'Basic\s+)([^'\s]+)", r"\1***"),
-    ]
-    for pattern, repl in patterns:
-        sanitized = re.sub(pattern, repl, sanitized)
+    secrets = _get_secrets()
+    sanitized = sanitize_log_message(text, secrets=secrets)
 
-    for secret in {VOR_ACCESS_ID, _VOR_ACCESS_TOKEN_RAW}:
-        if secret:
-            sanitized = sanitized.replace(secret, "***")
-
+    # Specific handling for the auth header global
     if _VOR_AUTHORIZATION_HEADER:
         auth_parts = _VOR_AUTHORIZATION_HEADER.split(" ", 1)
         if len(auth_parts) == 2:
@@ -125,21 +116,24 @@ def _sanitize_message(text: str) -> str:
         else:
             sanitized = sanitized.replace(_VOR_AUTHORIZATION_HEADER, "***")
 
-    # Prevent log injection by escaping newlines and control characters
-    sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
-    # Remove remaining control characters (including ANSI escape codes)
-    sanitized = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", sanitized)
-
     return sanitized
 
 
 def _sanitize_arg(arg: Any) -> Any:
     """Helper to sanitize arguments passed to logging functions."""
-    if isinstance(arg, (int, float)):
-        return arg
-    if isinstance(arg, str):
-        return _sanitize_message(arg)
-    return _sanitize_message(str(arg))
+    secrets = _get_secrets()
+    # If the arg matches the exact header string, mask it properly before generic sanitization
+    if (
+        _VOR_AUTHORIZATION_HEADER
+        and isinstance(arg, str)
+        and arg == _VOR_AUTHORIZATION_HEADER
+    ):
+        auth_parts = _VOR_AUTHORIZATION_HEADER.split(" ", 1)
+        if len(auth_parts) == 2:
+            return f"{auth_parts[0]} ***"
+        return "***"
+
+    return sanitize_log_arg(arg, secrets=secrets)
 
 
 def _log_warning(message: str, *args: Any) -> None:

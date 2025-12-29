@@ -15,6 +15,7 @@ from dateutil import parser as dtparser
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
     from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.ids import make_guid
+    from ..utils.logging import sanitize_log_arg
     from ..utils.stations import canonical_name
     from ..utils.text import html_to_text
 else:  # pragma: no cover - support both package layouts at runtime
@@ -22,6 +23,11 @@ else:  # pragma: no cover - support both package layouts at runtime
         from utils.http import session_with_retries, validate_http_url, fetch_content_safe
     except ModuleNotFoundError:
         from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
+
+    try:
+        from utils.logging import sanitize_log_arg
+    except ModuleNotFoundError:
+        from ..utils.logging import sanitize_log_arg  # type: ignore
 
     try:
         from utils.text import html_to_text
@@ -334,10 +340,18 @@ def _get_json(
             content = fetch_content_safe(s, url, params=params or None, timeout=timeout)
             return json.loads(content)
         except ValueError as exc:
-            log.warning("Antwort von %s zu groß oder ungültig: %s", url, exc)
+            log.warning(
+                "Antwort von %s zu groß oder ungültig: %s",
+                sanitize_log_arg(url),
+                sanitize_log_arg(exc),
+            )
             return {}
         except json.JSONDecodeError as exc:
-            log.warning("Ungültige JSON-Antwort von %s: %s", url, exc)
+            log.warning(
+                "Ungültige JSON-Antwort von %s: %s",
+                sanitize_log_arg(url),
+                sanitize_log_arg(exc),
+            )
             return {}
 
     if session is not None:
@@ -457,7 +471,9 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                     }
                 )
         except requests.RequestException as e:  # pragma: no cover - network errors
-            log.exception("WL trafficInfoList fehlgeschlagen: %s", e)
+            log.error(
+                "WL trafficInfoList fehlgeschlagen: %s", sanitize_log_arg(e)
+            )
 
         # B) News/Hinweise
         try:
@@ -550,7 +566,9 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                     }
                 )
         except requests.RequestException as e:  # pragma: no cover - network errors
-            log.exception("WL newsList fehlgeschlagen: %s", e)
+            log.error(
+                "WL newsList fehlgeschlagen: %s", sanitize_log_arg(e)
+            )
 
     # C) Bündelung: LINIEN-SET + TOPIC
     buckets: Dict[str, Dict[str, Any]] = {}
