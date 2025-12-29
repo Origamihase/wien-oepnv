@@ -122,18 +122,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Untere Augartenstraße 42",
-    "description": "Busse halten Untere Augartenstraße 42",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "483eae38010ee8e6894791d2738a9629c827a8f49663810bceb0716d9219a663",
-    "pubDate": "2025-12-22T10:25:17+01:00",
-    "starts_at": "2025-12-22T10:25:17+01:00",
-    "ends_at": "2025-12-29T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2025-12-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -146,42 +134,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Gleisschaden",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "903c2f5b11fba4918a23b80775f0948bf551316a7bfb89e017f127cf85795ba3",
-    "pubDate": "2025-12-29T21:50:00+01:00",
-    "starts_at": "2025-12-29T21:50:00+01:00",
-    "ends_at": "2025-12-29T23:55:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-12-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Gleisschaden Züge halten bei Linie 1",
-    "description": "Gleisschaden Züge halten bei Linie 1",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "26d6f35596339e84f751dfd51a20d80e534b7024438f20312e22d713472691d7",
-    "pubDate": "2025-12-29T21:53:08+01:00",
-    "starts_at": "2025-12-29T21:53:08+01:00",
-    "ends_at": "2025-12-29T23:45:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-12-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Gleisschaden Betrieb ab Quellenplatz",
-    "description": "Gleisschaden Betrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fbe24f988bffc1b8b125985198c31ba1b6b9cd0d2078c2c0134512486bf2ff67",
-    "pubDate": "2025-12-29T22:01:50+01:00",
-    "starts_at": "2025-12-29T22:01:50+01:00",
-    "ends_at": "2025-12-29T23:45:00+01:00",
-    "_identity": "wl|störung|L=6|D=2025-12-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N29: Busse halten auf der Hauptfahrbahn",
     "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -190,5 +142,17 @@
     "starts_at": "2025-12-29T23:00:24+01:00",
     "ends_at": "2025-12-30T05:30:00+01:00",
     "_identity": "wl|störung|L=N29|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5A: Busse halten Untere Augartenstraße 42",
+    "description": "Busse halten Untere Augartenstraße 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "483eae38010ee8e6894791d2738a9629c827a8f49663810bceb0716d9219a663",
+    "pubDate": "2025-12-30T00:00:21+01:00",
+    "starts_at": "2025-12-30T00:00:21+01:00",
+    "ends_at": "2025-12-30T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2025-12-30"
   }
 ]
