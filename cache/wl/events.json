@@ -158,18 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A: Verkehrsüberlastung",
-    "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "54bc809d85229c6a09e43a7de307b52c3b4983748375648087f4d7c0df6854ef",
-    "pubDate": "2025-12-29T12:55:00+01:00",
-    "starts_at": "2025-12-29T12:55:00+01:00",
-    "ends_at": "2025-12-29T23:55:00+01:00",
-    "_identity": "wl|störung|L=1A|D=2025-12-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Verspätungen",
     "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Volkstheater.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -178,18 +166,6 @@
     "starts_at": "2025-12-29T13:05:00+01:00",
     "ends_at": "2025-12-29T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2025-12-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e5660a0ab66e8052c66ac62caa273ee692ce56758d8e16e3324e16b86881f37a",
-    "pubDate": "2025-12-29T14:35:00+01:00",
-    "starts_at": "2025-12-29T14:35:00+01:00",
-    "ends_at": "2025-12-29T23:55:00+01:00",
-    "_identity": "wl|störung|L=12|D=2025-12-29"
   },
   {
     "source": "Wiener Linien",
@@ -230,50 +206,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Verkehrsunfall Umleitung nach Am Tabor über Linien 31 und 5",
-    "description": "Verkehrsunfall Umleitung nach Am Tabor über Linien 31 und 5",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "33fdabf789891aa6f1a137e1d006228c6016d6d5cf7dfa77be2f13e5cd8a19d9",
-    "pubDate": "2025-12-29T14:43:09+01:00",
-    "starts_at": "2025-12-29T14:43:09+01:00",
-    "ends_at": "2025-12-29T15:41:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Verkehrsunfall Einstieg bei Linie 5 Richtung Praterstern",
-    "description": "Verkehrsunfall Einstieg bei Linie 5 Richtung Praterstern",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dbf96e4667db0f12ef8f52ac37da7eaf33ad09d02d8e1d8959ebadc38e694ca0",
-    "pubDate": "2025-12-29T14:44:36+01:00",
-    "starts_at": "2025-12-29T14:44:36+01:00",
-    "ends_at": "2025-12-29T15:43:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Verkehrsunfall Einstieg Taborstraße 78",
     "description": "Verkehrsunfall Einstieg Taborstraße 78",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4371cd4c404d04adf8d0c6b80f359740ee12c6722b3903e6206206daf94325c6",
-    "pubDate": "2025-12-29T14:46:08+01:00",
-    "starts_at": "2025-12-29T14:46:08+01:00",
+    "pubDate": "2025-12-29T14:47:30+01:00",
+    "starts_at": "2025-12-29T14:47:30+01:00",
     "ends_at": "2025-12-29T15:46:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-12-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 18 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2aa1df2c9f4ae19df070aff6c202cb045b5e46393e05c8496bd4773beeb1745f",
-    "pubDate": "2025-12-29T14:50:00+01:00",
-    "starts_at": "2025-12-29T14:50:00+01:00",
-    "ends_at": "2025-12-29T23:55:00+01:00",
-    "_identity": "wl|störung|L=18|D=2025-12-29"
   },
   {
     "source": "Wiener Linien",
@@ -291,12 +231,72 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U1: Rettungseinsatz",
-    "description": "Derzeit können die Züge der Linie U1 die Station Südtiroler Platz in beiden Richtungen nicht einhalten. Ersatzweise benützen Sie bitte die Linien D und O sowie die S-Bahn. Die Störung dauert voraussichtlich bis 15:30 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Südtiroler Platz.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
     "pubDate": "2025-12-29T15:00:00+01:00",
     "starts_at": "2025-12-29T15:00:00+01:00",
     "ends_at": "2025-12-29T23:55:00+01:00",
     "_identity": "wl|störung|L=U1|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Gleisschaden",
+    "description": "Die Linie 5 fährt derzeit nur zwischen Westbahnhof und Nordbahnstraße und weiter bis Bruno-Marek-Allee. Ersatzweise benutzen Sie die Linie O. Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist ein Gleisschaden im Bereich Praterstern.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bedf723d52a68d37c43ad22546a6f03dc025175a56bf7ba4aa78fbb6f993d99b",
+    "pubDate": "2025-12-29T15:15:00+01:00",
+    "starts_at": "2025-12-29T15:15:00+01:00",
+    "ends_at": "2025-12-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=5|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Weichenschaden Betrieb ab Nordbahnstraße",
+    "description": "Weichenschaden Betrieb ab Nordbahnstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e6dd54887acec8946fe7c0313ee45917bca90d4bd40e6ce3d657ded964335943",
+    "pubDate": "2025-12-29T15:27:32+01:00",
+    "starts_at": "2025-12-29T15:27:32+01:00",
+    "ends_at": "2025-12-29T20:26:00+01:00",
+    "_identity": "wl|störung|L=5|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Weichenschaden Einstieg bei Linie O Richtung Raxstraße",
+    "description": "Weichenschaden Einstieg bei Linie O Richtung Raxstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3993e77eede48cb63624ebd5d7444b37db83de2c1e92f30754860588559c7517",
+    "pubDate": "2025-12-29T15:28:29+01:00",
+    "starts_at": "2025-12-29T15:28:29+01:00",
+    "ends_at": "2025-12-29T20:27:00+01:00",
+    "_identity": "wl|störung|L=5|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung Weichenschaden",
+    "description": "Fahrtbehinderung Weichenschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fc795c1c3d88e5893b2bd43b6b3fe15b59aca65981e63034d002ab98f2bea637",
+    "pubDate": "2025-12-29T15:31:09+01:00",
+    "starts_at": "2025-12-29T15:31:09+01:00",
+    "ends_at": "2025-12-29T20:30:00+01:00",
+    "_identity": "wl|störung|L=5|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29A: Verspätungen",
+    "description": "Die Linie 29 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "86a65ab6e558f661aa538c3f4a06367de61adfdcf654c7ec31b57f2f5243756c",
+    "pubDate": "2025-12-29T15:40:00+01:00",
+    "starts_at": "2025-12-29T15:40:00+01:00",
+    "ends_at": "2025-12-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2025-12-29"
   }
 ]
