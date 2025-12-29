@@ -154,5 +154,65 @@
     "starts_at": "2025-12-29T04:45:13+01:00",
     "ends_at": "2025-12-30T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62A: Verkehrsunfall",
+    "description": "Die Linie 62 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Breitenfurter Straße # Dr.-Neumann-Gasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9ce0b6d5a30b4e1685f4f825dd39e70de43d9861235273eddc64d5a8feb1a4ff",
+    "pubDate": "2025-12-29T11:40:00+01:00",
+    "starts_at": "2025-12-29T11:40:00+01:00",
+    "ends_at": "2025-12-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=62A|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Karlsplatz bis Schottentor.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2025-12-29T11:45:00+01:00",
+    "starts_at": "2025-12-29T11:45:00+01:00",
+    "ends_at": "2025-12-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Schadhaftes Fahrzeug",
+    "description": "Die Linie 9 fährt derzeit nur zwischen Gersthof und Urban-Loritz-Platz. Ersatzweise benützen Sie bitte die Linien U6, 6 und 18. Die Störung dauert voraussichtlich bis 12:40 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Westbahnhof S U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f2e5215dcf979df7b2f81449c361d572de72aa15e864729d40a888c35d82fe7b",
+    "pubDate": "2025-12-29T11:55:00+01:00",
+    "starts_at": "2025-12-29T11:55:00+01:00",
+    "ends_at": "2025-12-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Schadhafter Zug Betrieb ab Urban-Loritz-Platz",
+    "description": "Schadhafter Zug Betrieb ab Urban-Loritz-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dc96bdd991ea3bd45c058a5a15accfdedc11641dca1634044fc9b8af0298cd73",
+    "pubDate": "2025-12-29T12:10:59+01:00",
+    "starts_at": "2025-12-29T12:10:59+01:00",
+    "ends_at": "2025-12-29T13:09:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Schadhafter Zug Züge halten bei Linie 49 Richtung Hütteldorf",
+    "description": "Schadhafter Zug Züge halten bei Linie 49 Richtung Hütteldorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7a842f6f8a52c71f8fefeb269005f34e7b6117334e1776d9482c645e6d996c0",
+    "pubDate": "2025-12-29T12:12:32+01:00",
+    "starts_at": "2025-12-29T12:12:32+01:00",
+    "ends_at": "2025-12-29T13:10:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-12-29"
   }
 ]
