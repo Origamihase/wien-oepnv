@@ -8,12 +8,22 @@ import logging
 import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 from typing import Iterable, List, Optional, Tuple
 from urllib.parse import urlparse
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+try:
+    from src.utils.files import atomic_write
+except ModuleNotFoundError:
+    # Fallback if src is not a package or run differently
+    from utils.files import atomic_write  # type: ignore
+
 DOCS_DIR = REPO_ROOT / "docs"
 DEFAULT_BASE_URL = "https://origamihase.github.io/wien-oepnv"
 
@@ -151,7 +161,8 @@ def main() -> None:
     entries = _collect_entries(base_url)
     sitemap = _build_xml(entries)
     target = DOCS_DIR / "sitemap.xml"
-    target.write_text(sitemap, encoding="utf-8")
+    with atomic_write(target, mode="w", encoding="utf-8", permissions=0o644) as f:
+        f.write(sitemap)
 
 
 if __name__ == "__main__":
