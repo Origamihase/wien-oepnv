@@ -13,18 +13,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "N81: Rohrleitungsarbeiten ab 17.04.2025",
-    "description": "Rohrleitungsarbeiten im Bereich Engerthstraße\nZeitraum:\nAb Donnerstag, den 17. April 2025, etwa 07:00 Uhr auf Dauer von etwa zehn Wochen\nMaßnahmen:\nLinie N81:\nUmleitung ab Engerthstraße # Sturgasse über Sturgasse - Vorgartenstraße - Olympiaplatz - Stephanie-Endres-Straße.\nAufgelassene Haltestelle:\nPensionistenwohnhaus Prater (2., Engerthstraße 232-238, Stiege 9)\nErsatzhaltestelle:\nPensionistenwohnhaus Prater (2., Vorgartenstraße vor Stella-Klein-Löw-Weg)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ee448e1c1219fb2329c135f6b8016a2c3ebe008a7dad51da62f93b910442a352",
-    "pubDate": "2025-04-02T14:00:00+01:00",
-    "starts_at": "2025-04-02T14:00:00+01:00",
-    "ends_at": "2026-04-02T11:11:00+01:00",
-    "_identity": "wl|hinweis|L=N81|D=2025-04-02"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "U6: Bauarbeiten",
     "description": "Wegen Bauarbeiten kann die Station Tscherttegasse U in Fahrtrichtung Floridsdorf S U nicht eingehalten werden. Um die Station Tscherttegasse U zu erreichen, fahren Sie eine Station weiter bis Bahnhof Meidling S U und steigen dort in einen Zug in die Gegenrichtung um. Die Bauarbeiten dauern bis Ende Jänner 2026.",
@@ -39,7 +27,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "2A: Bauarbeiten Renngasse ab 14.07.2025",
-    "description": "Bauarbeiten\nWegen Rohrleitungsarbeiten in der Renngasse wird die Linie 2 A umgeleitet.\nZeitraum:\nMontag, 14. Juli 2025, 06:30 Uhr bis voraussichtlich Ende November 2025.\nMaßnahmen:\nLinie 2 A Richtung Schwarzenbergplatz:\nUmleitung ab Renngasse # Wipplingerstraße über Wipplingerstraße - Helferstorferstraße - Schottengasse - Freyung.\nHaltestelle Renngasse\nVerlegt von: Renngasse 9\nVerlegt nach: Wipplingerstraße 30",
+    "description": "Bauarbeiten\nWegen Rohrleitungsarbeiten in der Renngasse wird die Linie 2 A umgeleitet.\nZeitraum:\nMontag, 14. Juli 2025, 06:30 Uhr, Dauer unbekannt.\nMaßnahmen:\nLinie 2 A Richtung Schwarzenbergplatz:\nUmleitung ab Renngasse # Wipplingerstraße über Wipplingerstraße - Helferstorferstraße - Schottengasse - Freyung.\nHaltestelle Renngasse\nVerlegt von: Renngasse 9\nVerlegt nach: Wipplingerstraße 30",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "01c9f4ff8e2a95c1daa67093e9fb371618e5d7c7d3cc36a78465221712a0ca86",
     "pubDate": "2025-07-07T13:16:00+01:00",
@@ -214,5 +202,17 @@
     "starts_at": "2025-12-29T15:40:00+01:00",
     "ends_at": "2025-12-29T23:55:00+01:00",
     "_identity": "wl|störung|L=29A|D=2025-12-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25/26/27: Gleisschaden",
+    "description": "Die Linie 25 fährt nur zwischen Aspern, Oberdorfstraße und Kagran. Die Linie 26 fährt derzeit nicht zwischen Josef-Baumann-Gasse und Floridsdorf. Die Linie 27 fährt derzeit nicht zwischen Josef-Baumann-Gasse und Floridsdorf. Die Störung dauert voraussichtlich bis 22:00 Uhr. Grund dafür ist ein Gleisschaden im Bereich Donaufelder Straße 122.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6d4fa85875ba2a58198fb63ddc89bf16354fcd0d7d9e9182abb6747d670c626a",
+    "pubDate": "2025-12-29T16:30:00+01:00",
+    "starts_at": "2025-12-29T16:30:00+01:00",
+    "ends_at": "2025-12-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=25,26,27|D=2025-12-29"
   }
 ]
