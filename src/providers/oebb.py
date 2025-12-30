@@ -311,10 +311,25 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
     for item in channel.findall("item"):
         raw_title = _get_text(item, "title")
         title = _clean_title_keep_places(raw_title)
-        link  = _get_text(item, "link").strip() or OEBB_URL
-        guid  = _get_text(item, "guid").strip() or make_guid(title, link)
+
         desc_html = _get_text(item, "description")
         desc = html_to_text(desc_html)
+
+        # Fallback für schlechte Titel (leer, "-" oder keine alphanumerischen Zeichen)
+        is_poor = (not title) or (title == "-") or (not any(c.isalnum() for c in title))
+        if is_poor and desc:
+            if ":" in desc:
+                # Strategy A: Teil vor dem Doppelpunkt
+                title = desc.split(":", 1)[0].strip()
+            else:
+                # Strategy B: Erste 40 Zeichen (ggf. gekürzt)
+                if len(desc) > 40:
+                    title = desc[:40] + "..."
+                else:
+                    title = desc
+
+        link  = _get_text(item, "link").strip() or OEBB_URL
+        guid  = _get_text(item, "guid").strip() or make_guid(title, link)
         pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
 
         # Region-Filter: nur Wien + definierter Pendelraum
