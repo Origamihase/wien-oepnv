@@ -158,18 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A/2A: Verkehrsüberlastung",
-    "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6a4fcbc46dca179dfbf55e14d7e42fe84e1ec67474349315f5ddaaea0d41fad5",
-    "pubDate": "2025-12-30T13:25:00+01:00",
-    "starts_at": "2025-12-30T13:25:00+01:00",
-    "ends_at": "2025-12-30T23:55:00+01:00",
-    "_identity": "wl|störung|L=1A,2A|D=2025-12-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U2: Verspätungen",
     "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -178,5 +166,17 @@
     "starts_at": "2025-12-30T17:05:00+01:00",
     "ends_at": "2025-12-30T23:55:00+01:00",
     "_identity": "wl|störung|L=U2|D=2025-12-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "3A: Schadhaftes Fahrzeug",
+    "description": "Die Linie 3 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c34f5e5dd3ff7a1d65b4e242f1c7a2485ba1574fc241002cd83197071facd200",
+    "pubDate": "2025-12-30T17:35:00+01:00",
+    "starts_at": "2025-12-30T17:35:00+01:00",
+    "ends_at": "2025-12-30T23:55:00+01:00",
+    "_identity": "wl|störung|L=3A|D=2025-12-30"
   }
 ]
