@@ -146,37 +146,85 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
+    "title": "36A: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 36 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
-    "pubDate": "2025-12-30T11:25:00+01:00",
-    "starts_at": "2025-12-30T11:25:00+01:00",
+    "guid": "65e41d4ee2138d1551141fe9980a59c0c75540522493118158db325df8ecbdd9",
+    "pubDate": "2025-12-30T12:40:00+01:00",
+    "starts_at": "2025-12-30T12:40:00+01:00",
     "ends_at": "2025-12-30T23:55:00+01:00",
-    "_identity": "wl|störung|L=43|D=2025-12-30"
+    "_identity": "wl|störung|L=36A|D=2025-12-30"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Verkehrsunfall",
-    "description": "Die Linie 13 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Mommsengasse.",
+    "title": "36B: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 36 B zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f2c2f4a5edccc2e83123c4cd571f55d466f767a922c5c5c5e338c8121b6f2b9",
-    "pubDate": "2025-12-30T11:55:00+01:00",
-    "starts_at": "2025-12-30T11:55:00+01:00",
+    "guid": "c5dfcbf0ac6f53f5aa46354637fce7a274f1b74d1ac997528825ebf6a42a925c",
+    "pubDate": "2025-12-30T12:40:00+01:00",
+    "starts_at": "2025-12-30T12:40:00+01:00",
     "ends_at": "2025-12-30T23:55:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-12-30"
+    "_identity": "wl|störung|L=36B|D=2025-12-30"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Fahrtbehinderung Verkehrsunfall",
+    "title": "62: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eed493b84b991f4fbb293a881224825ca49d2be64d70010ef16dbd19919e838a",
+    "pubDate": "2025-12-30T12:50:00+01:00",
+    "starts_at": "2025-12-30T12:50:00+01:00",
+    "ends_at": "2025-12-30T23:55:00+01:00",
+    "_identity": "wl|störung|L=62|D=2025-12-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8040dc868c9f595d150005c78624ba19af61d6d75a2a097f9a394e84bc1f1efc",
-    "pubDate": "2025-12-30T11:56:01+01:00",
-    "starts_at": "2025-12-30T11:56:01+01:00",
-    "ends_at": "2025-12-30T12:57:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2025-12-30"
+    "guid": "7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35",
+    "pubDate": "2025-12-30T12:53:43+01:00",
+    "starts_at": "2025-12-30T12:53:43+01:00",
+    "ends_at": "2025-12-30T13:53:00+01:00",
+    "_identity": "wl|störung|L=62|D=2025-12-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Die Linie U6 kann derzeit in Richtung Floridsdorf nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Erlaaer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2025-12-30T13:00:00+01:00",
+    "starts_at": "2025-12-30T13:00:00+01:00",
+    "ends_at": "2025-12-30T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2025-12-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A/2A: Verkehrsüberlastung",
+    "description": "Die Linie 1 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6a4fcbc46dca179dfbf55e14d7e42fe84e1ec67474349315f5ddaaea0d41fad5",
+    "pubDate": "2025-12-30T13:25:00+01:00",
+    "starts_at": "2025-12-30T13:25:00+01:00",
+    "ends_at": "2025-12-30T23:55:00+01:00",
+    "_identity": "wl|störung|L=1A,2A|D=2025-12-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Polizeieinsatz",
+    "description": "Die Linie U4 fährt derzeit nicht zwischen Schwedenplatz und Karlsplatz. Weichen Sie auf die Linien U1, U3, 2 und 74 A aus. Die Störung dauert voraussichtlich bis 14:00 Uhr. Grund dafür ist ein Polizeieinsatz im Bereich Landstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
+    "pubDate": "2025-12-30T13:25:00+01:00",
+    "starts_at": "2025-12-30T13:25:00+01:00",
+    "ends_at": "2025-12-30T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2025-12-30"
   }
 ]
