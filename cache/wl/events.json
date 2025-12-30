@@ -178,5 +178,29 @@
     "starts_at": "2025-12-30T18:35:00+01:00",
     "ends_at": "2025-12-30T23:55:00+01:00",
     "_identity": "wl|störung|L=26A|D=2025-12-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Schadhaftes Fahrzeug",
+    "description": "Die Linie 25 fährt nur zwischen Floridsdorf und Donauspital. Die Störung dauert voraussichtlich bis 19:45 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Oberdorfstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "76ec352854b559b2d1c07ec729df49b28debe6671b359e8312bc178e8f701468",
+    "pubDate": "2025-12-30T19:00:00+01:00",
+    "starts_at": "2025-12-30T19:00:00+01:00",
+    "ends_at": "2025-12-30T23:55:00+01:00",
+    "_identity": "wl|störung|L=25|D=2025-12-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc260bf756a8d0275a4ce51c5b124812c4c380b787e4c627f39df2747b1c157",
+    "pubDate": "2025-12-30T19:04:03+01:00",
+    "starts_at": "2025-12-30T19:04:03+01:00",
+    "ends_at": "2025-12-30T20:03:00+01:00",
+    "_identity": "wl|störung|L=25|D=2025-12-30"
   }
 ]
