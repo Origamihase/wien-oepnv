@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import re
+from datetime import datetime, timezone, timedelta
+from typing import Optional
 
 # ---------------- Relevanz-/Ausschluss-Filter ----------------
 
@@ -90,6 +92,53 @@ def _tidy_title_wl(title: str) -> str:
     return re.sub(r"\s{2,}", " ", t).strip(" -–—:/\t")
 
 
+# ---------------- Datum aus Titel extrahieren ----------------
+
+_DATE_FROM_TITLE_RE = re.compile(r"ab\s+(\d{1,2})\.(\d{1,2})\.(\d{4})?", re.IGNORECASE)
+
+def extract_date_from_title(title: str, reference_date: Optional[datetime] = None) -> Optional[datetime]:
+    """
+    Extrahierte ein Datum der Form 'ab DD.MM.[YYYY]' aus dem Titel.
+    Falls das Jahr fehlt, wird versucht, es anhand von reference_date zu raten.
+    """
+    if not title:
+        return None
+
+    match = _DATE_FROM_TITLE_RE.search(title)
+    if not match:
+        return None
+
+    day_str, month_str, year_str = match.groups()
+    day, month = int(day_str), int(month_str)
+
+    if reference_date is None:
+        reference_date = datetime.now(timezone.utc)
+
+    if year_str:
+        year = int(year_str)
+    else:
+        # Jahr raten:
+        # Zunächst aktuelles Jahr (basierend auf reference_date)
+        year = reference_date.year
+        try:
+            candidate = datetime(year, month, day, tzinfo=timezone.utc)
+        except ValueError:
+            return None
+
+        # Wenn das Datum mehr als 3 Monate in der Vergangenheit liegt im Vergleich zum Referenzdatum,
+        # nehmen wir an, dass das nächste Jahr gemeint ist (z.B. im Dez 'ab Jan').
+        if candidate < reference_date - timedelta(days=90):
+            year += 1
+
+    try:
+        # Wir setzen die Zeit auf 04:00 (Betriebsbeginn?) oder 00:00?
+        # Um Konsistenz mit Kalendern zu wahren, ist 00:00 (Mitternacht) am sichersten.
+        # Da wir UTC nutzen, ist es 00:00 UTC.
+        return datetime(year, month, day, tzinfo=timezone.utc)
+    except ValueError:
+        return None
+
+
 # ---------------- „Kernbegriff/Topic“ für Dedupe ----------------
 
 TITLE_TOPIC_TOKENS = {
@@ -137,5 +186,5 @@ __all__ = [
     "_tidy_title_wl",
     "_title_core",
     "_topic_key_from_title",
+    "extract_date_from_title",
 ]
-
