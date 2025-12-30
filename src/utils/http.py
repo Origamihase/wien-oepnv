@@ -103,6 +103,12 @@ def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> 
         # We also explicitly block multicast, as is_global can be True for multicast in some versions/contexts
         if not ip.is_global or ip.is_multicast:
             return False
+
+        # We explicitly block is_site_local (deprecated fec0::/10) because is_global returns True for them in some python versions.
+        # This attribute only exists on IPv6Address.
+        if getattr(ip, "is_site_local", False):
+            return False
+
         return True
     except ValueError:
         return False
@@ -167,8 +173,8 @@ def validate_http_url(url: str | None, check_dns: bool = True) -> str | None:
         if not hostname:
             return None
 
-        # Block localhost
-        if hostname.lower() == "localhost":
+        # Block localhost (handle trailing dot bypass)
+        if hostname.lower().rstrip(".") == "localhost":
             return None
 
         # Block private IP literals even if DNS check is disabled.
