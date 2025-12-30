@@ -317,6 +317,16 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         desc = html_to_text(desc_html)
         pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
 
+        # Fallback: Wenn Titel leer oder nur Satzzeichen (z.B. " - "),
+        # versuchen wir, aus der Beschreibung etwas Besseres zu generieren.
+        # Muster: "Station Silberwald: Aufzug ..." -> Titel "Station Silberwald"
+        if not title or not re.search(r"[A-Za-z0-9]", title):
+            if desc and ":" in desc:
+                candidate = desc.split(":", 1)[0].strip()
+                # Einfache Plausibilitätsprüfung
+                if 3 < len(candidate) < 60 and re.search(r"[A-Za-z]", candidate):
+                    title = candidate
+
         # Region-Filter: nur Wien + definierter Pendelraum
         if not _keep_by_region(title, desc):
             continue
