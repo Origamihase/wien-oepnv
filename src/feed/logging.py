@@ -1,19 +1,16 @@
 """Logging utilities for the feed builder."""
 from __future__ import annotations
 
-import json
 import logging
 import os
 import re
 from datetime import datetime, timedelta
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
-from typing import Any, Dict
 
 from .config import (
     LOG_BACKUP_COUNT,
     LOG_DIR_PATH,
-    LOG_FORMAT,
     LOG_LEVEL,
     LOG_MAX_BYTES,
     LOG_TIMEZONE,
@@ -22,6 +19,12 @@ try:  # pragma: no cover - support package and script execution
     from utils.files import atomic_write
 except ModuleNotFoundError:  # pragma: no cover
     from ..utils.files import atomic_write
+
+# Import the new safe formatters
+try:
+    from .logging_safe import SafeFormatter, SafeJSONFormatter, _make_formatter
+except ImportError:
+    from feed.logging_safe import SafeFormatter, SafeJSONFormatter, _make_formatter
 
 LOG_DIR = LOG_DIR_PATH.as_posix()
 error_log_path = Path(LOG_DIR) / "errors.log"
@@ -41,74 +44,6 @@ class MaxLevelFilter(logging.Filter):
         return record.levelno <= self._max_level
 
 
-class JSONFormatter(logging.Formatter):
-    """Minimal JSON logging formatter."""
-
-    _DEFAULT_FIELDS = {
-        "name",
-        "msg",
-        "args",
-        "levelname",
-        "levelno",
-        "pathname",
-        "filename",
-        "module",
-        "exc_info",
-        "exc_text",
-        "stack_info",
-        "lineno",
-        "funcName",
-        "created",
-        "msecs",
-        "relativeCreated",
-        "thread",
-        "threadName",
-        "processName",
-        "process",
-    }
-
-    def format(self, record: logging.LogRecord) -> str:  # pragma: no cover - exercised via logging
-        message = record.getMessage()
-        timestamp = datetime.fromtimestamp(record.created, LOG_TIMEZONE)
-        payload: Dict[str, Any] = {
-            "timestamp": timestamp.isoformat(),
-            "level": record.levelname,
-            "logger": record.name,
-            "message": message,
-        }
-        if record.exc_info:
-            payload["exc_info"] = self.formatException(record.exc_info)
-        if record.stack_info:
-            payload["stack"] = self.formatStack(record.stack_info)
-
-        extras: Dict[str, Any] = {}
-        for key, value in record.__dict__.items():
-            if key in self._DEFAULT_FIELDS:
-                continue
-            extras[key] = value
-        if extras:
-            payload["extra"] = extras
-
-        return json.dumps(payload, ensure_ascii=False)
-
-
-def _vienna_time_converter(timestamp: float | None) -> tuple:
-    effective_timestamp = (
-        timestamp
-        if timestamp is not None
-        else datetime.now(tz=LOG_TIMEZONE).timestamp()
-    )
-    return datetime.fromtimestamp(effective_timestamp, LOG_TIMEZONE).timetuple()
-
-
-def _make_formatter() -> logging.Formatter:
-    if LOG_FORMAT == "json":
-        return JSONFormatter()
-    formatter = logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s")
-    formatter.converter = _vienna_time_converter
-    return formatter
-
-
 def configure_logging() -> None:
     """Configure the default logging handlers for the feed builder."""
 
@@ -123,15 +58,19 @@ def configure_logging() -> None:
     if not isinstance(level, int):
         level = logging.INFO
 
-    logging.basicConfig(
-        level=level,
-        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
-    )
+    # Use SafeFormatter for console output as well
+    logging.basicConfig(level=level)
 
+    # We must replace the formatter on the root logger's handlers created by basicConfig
+    # or any existing handlers.
     root_logger = logging.getLogger()
     root_logger.setLevel(level)
+
+    # Ensure all handlers use the safe formatter
+    safe_formatter = _make_formatter()
+
     for handler in root_logger.handlers:
-        handler.setFormatter(_make_formatter())
+        handler.setFormatter(safe_formatter)
         if isinstance(handler, logging.StreamHandler):
             handler.setLevel(level)
 
@@ -143,7 +82,7 @@ def configure_logging() -> None:
         encoding="utf-8",
     )
     error_handler.setLevel(logging.ERROR)
-    error_handler.setFormatter(_make_formatter())
+    error_handler.setFormatter(safe_formatter)
     root_logger.addHandler(error_handler)
 
     diagnostics_log_path.touch(exist_ok=True)
@@ -155,7 +94,7 @@ def configure_logging() -> None:
     )
     diagnostics_handler.setLevel(logging.INFO)
     diagnostics_handler.addFilter(MaxLevelFilter(logging.ERROR - 1))
-    diagnostics_handler.setFormatter(_make_formatter())
+    diagnostics_handler.setFormatter(safe_formatter)
     root_logger.addHandler(diagnostics_handler)
 
     _LOGGING_CONFIGURED = True
@@ -227,7 +166,8 @@ def prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
 
 __all__ = [
     "MaxLevelFilter",
-    "JSONFormatter",
+    "SafeFormatter",
+    "SafeJSONFormatter",
     "configure_logging",
     "diagnostics_log_path",
     "error_log_path",
