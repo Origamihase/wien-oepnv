@@ -26,11 +26,21 @@ import csv
 import json
 import logging
 import re
+import sys
 from collections import defaultdict, deque
 from pathlib import Path
 from typing import Iterable
 
+# Ensure the project root is in sys.path to allow imports from src
 BASE_DIR = Path(__file__).resolve().parents[1]
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+try:
+    from src.utils.files import atomic_write
+except ModuleNotFoundError:
+    from utils.files import atomic_write  # type: ignore
+
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 DEFAULT_VOR_STOPS = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_VOR_MAPPING = BASE_DIR / "data" / "vor-haltestellen.mapping.json"
@@ -91,9 +101,11 @@ def _normalize_key(text: str) -> str:
     cleaned = _strip_accents(text)
     cleaned = cleaned.replace("ß", "ss")
     cleaned = cleaned.casefold()
+    cleaned = re.sub(r"\ba\s*(?:[./]\s*)?d(?:[./]\s*)?\b", "an der ", cleaned)
+    cleaned = re.sub(r"\bu\s*(?:[./]\s*)?d(?:[./]\s*)?\b", "unter der ", cleaned)
     cleaned = re.sub(r"\s*\([^)]*\)\s*", " ", cleaned)
     cleaned = cleaned.replace("-", " ").replace("/", " ")
-    cleaned = re.sub(r"\b(?:bahnhof|bf|bahnhst|station)\b", "", cleaned)
+    cleaned = re.sub(r"\b(?:bahnhof|bf|bahnhst|hbf|station)\b", "", cleaned)
     cleaned = re.sub(r"[^a-z0-9]+", " ", cleaned)
     cleaned = re.sub(r"\s{2,}", " ", cleaned)
     return cleaned.strip()
@@ -139,17 +151,25 @@ _BAHNHOF_RE = re.compile(r"\bbahnhof\b", re.IGNORECASE)
 
 def _bahnhof_variants(alias: str) -> set[str]:
     base = _normalize_spaces(alias)
-    if not base or _BAHNHOF_RE.search(base):
+    if not base:
         return set()
 
-    variants: set[str] = {f"{base} Bahnhof"}
+    variants: set[str] = set()
+    if not _BAHNHOF_RE.search(base):
+        variants.add(f"{base} Bahnhof")
+        prefix_target = base
+        if base.lower().startswith("wien "):
+            prefix_target = base[5:].strip()
+        if prefix_target:
+            variants.add(f"Bahnhof {prefix_target}")
 
-    prefix_target = base
-    if base.lower().startswith("wien "):
-        prefix_target = base[5:].strip()
-
-    if prefix_target:
-        variants.add(f"Bahnhof {prefix_target}")
+    # Expand abbreviations often found in titles
+    if re.search(r"\bHbf\b", base, re.IGNORECASE):
+        variants.add(re.sub(r"\bHbf\b", "Hauptbahnhof", base, flags=re.IGNORECASE))
+    if re.search(r"\bBhf\b", base, re.IGNORECASE):
+        variants.add(re.sub(r"\bBhf\b", "Bahnhof", base, flags=re.IGNORECASE))
+    if re.search(r"\bBf\b", base, re.IGNORECASE):
+        variants.add(re.sub(r"\bBf\b", "Bahnhof", base, flags=re.IGNORECASE))
 
     return {_normalize_spaces(variant) for variant in variants if variant.strip()}
 
@@ -164,6 +184,12 @@ def _textual_variants(alias: str) -> set[str]:
 
     variants.update(_sankt_variants(alias))
     variants.update(_bahnhof_variants(alias))
+
+    # Expand "Str." to "Straße"
+    if "str." in alias.lower():
+        expanded = re.sub(r"\bStr\.", "Straße", alias, flags=re.IGNORECASE)
+        if expanded != alias:
+            variants.add(expanded)
 
     lowered = alias.casefold()
     for prefix in ("wien ", "vienna "):
@@ -387,7 +413,9 @@ def main() -> int:
         log.info("Dry run – not writing %s", args.stations)
         return 0
 
-    args.stations.write_text(json.dumps(stations, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    with atomic_write(args.stations, mode="w", encoding="utf-8", permissions=0o644) as handle:
+        json.dump(stations, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
     log.info("Wrote enriched aliases to %s", args.stations)
     return 0
 
