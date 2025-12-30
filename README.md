@@ -1,12 +1,12 @@
 # Wien ÖPNV Feed – Projektdokumentation
 
-[![Feed Build](https://github.com/origamihase/wien-oepnv/actions/workflows/build-feed.yml/badge.svg)](https://github.com/origamihase/wien-oepnv/actions/workflows/build-feed.yml)
+[![Feed Build](https://github.com/origamihase/wien-oepnv/actions/workflows/build-feed.yml/badge.svg?branch=main)](https://github.com/origamihase/wien-oepnv/actions/workflows/build-feed.yml)
 [![Tests](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml/badge.svg)](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml)
 [![SEO-Checks](https://github.com/origamihase/wien-oepnv/actions/workflows/seo-guard.yml/badge.svg)](https://github.com/origamihase/wien-oepnv/actions/workflows/seo-guard.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Dieses Repository bündelt sämtliche Komponenten, um einen konsolidierten Meldungs-Feed für den öffentlichen Verkehr in Wien
-und dem niederösterreichisch-burgenländischen Umland zu erzeugen. Der Feed kombiniert offizielle Informationen der Wiener
+und im niederösterreichisch-burgenländischen Umland zu erzeugen. Der Feed kombiniert offizielle Informationen der Wiener
 Linien (WL), der ÖBB und der Verkehrsverbund Ost-Region GmbH (VOR) und stellt sie als aufbereitetes RSS-Dokument zur
 Verfügung. Zusätzlich sind Werkzeuge zur Pflege des Stationsverzeichnisses, zur Verwaltung der Provider-Caches sowie eine
 komplette Referenzdokumentation für die VOR/VAO-ReST-API enthalten.
@@ -239,7 +239,7 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
 ### Stadt Wien – Baustellen
 
 - **Quelle**: Open-Government-Data-Baustellenfeed der Stadt Wien (`BAUSTELLEN_DATA_URL`, Default: offizieller WFS-Endpoint).
-- **Cache**: `cache/baustellen/events.json`, gepflegt via `scripts/update_baustellen_cache.py` und eigener GitHub-Action (optional).
+- **Cache**: `cache/baustellen/events.json`, gepflegt via `scripts/update_baustellen_cache.py`.
 - **Fallback**: Schlägt der Remote-Abruf fehl (z. B. wegen Rate-Limits), nutzt das Skript `data/samples/baustellen_sample.geojson` als Grunddatensatz, damit der Feed konsistent bleibt.
 
 ### Eigene Provider-Plugins
@@ -280,7 +280,7 @@ Der Feed liegt anschließend unter `docs/feed.xml`. Bei Bedarf lässt sich `OUT_
 `data/stations.json` vereint ÖBB-, Wiener-Linien- und VOR-Haltestellen mit den Feldern `bst_id`, `bst_code`, `name`,
 `in_vienna`, `pendler`, `source` sowie optionalen Aliasen. Die Datenbasis stammt aus folgenden Quellen:
 
-- **ÖBB-Verkehrsstationen** (`Verzeichnis der Verkehrsstationen.xlsx`, Lizenz [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/)).
+- **ÖBB-Verkehrsstationen** (Download von `data.oebb.at`, Lizenz [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/)).
 - **Wiener Linien OGD** (`wienerlinien-ogd-haltestellen.csv`, `wienerlinien-ogd-haltepunkte.csv`, Lizenz [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
 - **VOR**: GTFS- oder CSV-Exporte unter [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 - **Google**: Ergänzende Abgleiche via Google Maps Platform (Places API) zur Validierung von Geokoordinaten und Aliasen, Nutzung gemäß den [Google Maps Platform Nutzungsbedingungen](https://cloud.google.com/maps-platform/terms/).
