@@ -144,12 +144,19 @@ def _sankt_variants(alias: str) -> set[str]:
     return set()
 
 
-_BAHNHOF_RE = re.compile(r"\bbahnhof\b", re.IGNORECASE)
+_BAHNHOF_RE = re.compile(r"\b(?:bahnhof|hbf|bf)\b", re.IGNORECASE)
 
 
 def _bahnhof_variants(alias: str) -> set[str]:
     base = _normalize_spaces(alias)
-    if not base or _BAHNHOF_RE.search(base):
+    if not base:
+        return set()
+
+    # Avoid adding "Bahnhof" if it's already present as a word or suffix
+    lowered = base.lower()
+    if _BAHNHOF_RE.search(base):
+        return set()
+    if lowered.endswith("bahnhof") or lowered.endswith("hbf") or lowered.endswith(" bf"):
         return set()
 
     variants: set[str] = {f"{base} Bahnhof"}
@@ -164,6 +171,45 @@ def _bahnhof_variants(alias: str) -> set[str]:
     return {_normalize_spaces(variant) for variant in variants if variant.strip()}
 
 
+_ABBREV_PAIRS = [
+    (r"\bStr\.?", "Straße"),
+    (r"\bPl\.?", "Platz"),
+    (r"\bHbf\b", "Hauptbahnhof"),
+    (r"\bBf\b", "Bahnhof"),
+    (r"\bDr\.?", "Doktor"),
+    (r"\bG\.?", "Gasse"),
+    (r"\bBr\.?", "Brücke"),
+    (r"\bOb\.?", "Ober"),
+    (r"\bUnt\.?", "Unter"),
+]
+
+_SHORTEN_PAIRS = [
+    (r"Straße", "Str."),
+    (r"Strasse", "Str."),
+    (r"Platz", "Pl."),
+    (r"Hauptbahnhof", "Hbf"),
+    (r"Bahnhof", "Bf"),
+    (r"Doktor", "Dr."),
+    (r"Gasse", "G."),
+    (r"Brücke", "Br."),
+    (r"Ober", "Ob."),
+    (r"Unter", "Unt."),
+]
+
+
+def _replace_variants(alias: str, pairs: list[tuple[str, str]]) -> set[str]:
+    variants = set()
+    for pattern, replacement in pairs:
+        # Use simple regex substitution
+        try:
+            new_val = re.sub(pattern, replacement, alias, flags=re.IGNORECASE)
+            if new_val != alias:
+                variants.add(_normalize_spaces(new_val))
+        except re.error:
+            continue
+    return variants
+
+
 def _textual_variants(alias: str) -> set[str]:
     alias = _normalize_spaces(alias)
     variants: set[str] = set()
@@ -174,6 +220,10 @@ def _textual_variants(alias: str) -> set[str]:
 
     variants.update(_sankt_variants(alias))
     variants.update(_bahnhof_variants(alias))
+
+    # New abbreviation variants
+    variants.update(_replace_variants(alias, _ABBREV_PAIRS))
+    variants.update(_replace_variants(alias, _SHORTEN_PAIRS))
 
     lowered = alias.casefold()
     for prefix in ("wien ", "vienna "):
@@ -299,6 +349,24 @@ def _alias_candidates(
     add_station_key(name)
     add_station_key(re.sub(r"^(?:wien|vienna)\s+", "", name, flags=re.IGNORECASE))
 
+    # Expand station keys to allow matching of abbreviations
+    # E.g. allow "thaliastr" if key is "thaliastrasse"
+    key_expansions = [
+        ("strasse", "str"),
+        ("str", "strasse"),
+        ("platz", "pl"),
+        ("pl", "platz"),
+        ("hauptbahnhof", "hbf"),
+        ("hbf", "hauptbahnhof"),
+        ("bahnhof", "bf"),
+        ("bf", "bahnhof"),
+        ("doktor", "dr"),
+        ("dr", "doktor"),
+        ("gasse", "g"),
+        ("bruecke", "br"),
+        ("br", "bruecke"),
+    ]
+
     for key in list(station_keys):
         sankt_key = re.sub(r"\bst\b", "sankt", key)
         if sankt_key and sankt_key != key:
@@ -306,6 +374,25 @@ def _alias_candidates(
         st_key = re.sub(r"\bsankt\b", "st", key)
         if st_key and st_key != key:
             station_keys.add(st_key)
+
+        # New key expansions
+        for src, dst in key_expansions:
+            # Suffix check
+            if key.endswith(src):
+                # Replace suffix
+                new_key = key[:-len(src)] + dst
+                station_keys.add(new_key)
+            # Word boundary check (for normalized keys, words are separated by space)
+            # But wait, _normalize_key returns space separated?
+            # yes: cleaned = re.sub(r"[^a-z0-9]+", " ", cleaned)
+            # So "wien hauptbahnhof" has space.
+            if f" {src} " in f" {key} ":
+                 # Replace word
+                 # Use regex to be safe
+                 new_key = re.sub(rf"\b{src}\b", dst, key)
+                 if new_key != key:
+                     station_keys.add(new_key)
+
 
     queue: deque[str] = deque(sorted(aliases))
     processed: set[str] = set()
