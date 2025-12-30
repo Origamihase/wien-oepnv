@@ -7,7 +7,7 @@ import logging
 import re
 import socket
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
-from typing import Any
+from typing import Any, Container
 from urllib.parse import urlparse
 
 import requests
@@ -79,7 +79,9 @@ def session_with_retries(
     adapter = TimeoutHTTPAdapter(max_retries=retry, timeout=timeout)
     session.mount("http://", adapter)
     session.mount("https://", adapter)
-    session.headers.update({"User-Agent": user_agent})
+    session.headers.update({
+        "User-Agent": user_agent,
+    })
     return session
 
 
@@ -132,18 +134,23 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     # We do not shutdown the shared executor
 
 
-def validate_http_url(url: str | None, check_dns: bool = True) -> str | None:
+def validate_http_url(
+    url: str | None, check_dns: bool = True, allowed_ports: Container[int] = (80, 443)
+) -> str | None:
     """Ensure the given URL is valid and uses http or https.
 
     Returns the URL (stripped) if valid, or ``None`` if invalid/empty/wrong scheme.
     Also rejects URLs that point to localhost or private IP addresses (SSRF protection),
     or contain unsafe control characters/whitespace.
 
+    Now enforces a port whitelist to prevent scanning of non-standard ports.
+
     Args:
         url: The URL to validate.
         check_dns: If True (default), resolves the hostname to ensure it exists
                    and doesn't point to a private IP (SSRF protection).
                    If False, only syntax and scheme checks are performed.
+        allowed_ports: Container of allowed ports (default: 80, 443).
     """
     if not url:
         return None
@@ -171,6 +178,23 @@ def validate_http_url(url: str | None, check_dns: bool = True) -> str | None:
 
         hostname = parsed.hostname
         if not hostname:
+            return None
+
+        # Validate port
+        try:
+            port = parsed.port
+        except ValueError:
+            # Invalid port number (e.g. out of range or non-numeric)
+            return None
+
+        if port is None:
+            # Default ports are implicit
+            if parsed.scheme.lower() == "http":
+                port = 80
+            elif parsed.scheme.lower() == "https":
+                port = 443
+
+        if port not in allowed_ports:
             return None
 
         # Block localhost (handle trailing dot bypass)
