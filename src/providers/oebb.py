@@ -42,11 +42,11 @@ else:  # pragma: no cover - support both package layouts at runtime
     try:
         from utils.ids import make_guid
         from utils.text import html_to_text
-        from utils.stations import canonical_name, is_in_vienna, is_pendler
+        from utils.stations import canonical_name, is_in_vienna, is_pendler, station_by_oebb_id
     except ModuleNotFoundError:
         from ..utils.ids import make_guid  # type: ignore
         from ..utils.text import html_to_text  # type: ignore
-        from ..utils.stations import canonical_name, is_in_vienna, is_pendler  # type: ignore
+        from ..utils.stations import canonical_name, is_in_vienna, is_pendler, station_by_oebb_id  # type: ignore
 
     try:
         from utils.http import session_with_retries, validate_http_url, fetch_content_safe
@@ -221,6 +221,17 @@ def _has_allowed_station(blob: str) -> bool:
     return False
 
 
+def _extract_station_id_from_url(url: str) -> Optional[int]:
+    """Extrahiert die 6+ stellige ID am Ende von ÖBB-Links (z.B. &123456)."""
+    m = re.search(r"[&?](\d{6,})(?:$|[^\d])", url)
+    if m:
+        try:
+            return int(m.group(1))
+        except ValueError:
+            pass
+    return None
+
+
 def _extract_stations_from_text(text: str) -> List[str]:
     """
     Findet bekannte Stationsnamen im Text via Sliding Window.
@@ -353,27 +364,40 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         desc_html = _get_text(item, "description")
         desc = html_to_text(desc_html)
 
+        link  = _get_text(item, "link").strip() or OEBB_URL
+
         # Fallback für schlechte Titel (leer, "-" oder keine alphanumerischen Zeichen)
         is_poor = (not title) or (title == "-") or (not any(c.isalnum() for c in title))
-        if is_poor and desc:
-            # 1. Try to extract stations from description
-            found_stations = _extract_stations_from_text(desc)
-            if len(found_stations) == 1:
-                title = found_stations[0]
-            elif len(found_stations) >= 2:
-                title = f"{found_stations[0]} ↔ {found_stations[1]}"
-            # 2. Fallback strategies
-            elif ":" in desc:
-                # Strategy A: Teil vor dem Doppelpunkt
-                title = desc.split(":", 1)[0].strip()
-            else:
-                # Strategy B: Erste 40 Zeichen (ggf. gekürzt)
-                if len(desc) > 40:
-                    title = desc[:40] + "..."
-                else:
-                    title = desc
+        if is_poor:
+            # Attempt 1: Extract Station ID from link (guid is not yet fully determined,
+            # but we can try extraction from link first).
+            # Note: We compute guid after title correction usually, but if link has ID, we use it.
 
-        link  = _get_text(item, "link").strip() or OEBB_URL
+            found_id_title = None
+            sid = _extract_station_id_from_url(link)
+            if sid:
+                sname = station_by_oebb_id(sid)
+                if sname:
+                    found_id_title = sname
+
+            if found_id_title:
+                title = found_id_title
+            elif desc:
+                # Attempt 2: Extract stations from description
+                found_stations = _extract_stations_from_text(desc)
+                if len(found_stations) == 1:
+                    title = found_stations[0]
+                elif len(found_stations) >= 2:
+                    title = f"{found_stations[0]} ↔ {found_stations[1]}"
+                # Attempt 3: Legacy Fallback strategies
+                elif ":" in desc:
+                    title = desc.split(":", 1)[0].strip()
+                else:
+                    if len(desc) > 40:
+                        title = desc[:40] + "..."
+                    else:
+                        title = desc
+
         guid  = _get_text(item, "guid").strip() or make_guid(title, link)
         pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
 

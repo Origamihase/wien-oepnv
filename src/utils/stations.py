@@ -15,6 +15,7 @@ __all__ = [
     "is_in_vienna",
     "is_pendler",
     "station_info",
+    "station_by_oebb_id",
     "vor_station_ids",
 ]
 
@@ -490,6 +491,19 @@ def station_info(name: str) -> StationInfo | None:
         info = lookup.get(key)
         if info:
             return info
+    return None
+
+
+@lru_cache(maxsize=2048)
+def station_by_oebb_id(bst_id: int) -> str | None:
+    """Return the canonical station name for a numeric ÖBB *bst_id*."""
+    if not isinstance(bst_id, int):
+        return None
+
+    for entry in _station_entries():
+        entry_id = entry.get("bst_id")
+        if isinstance(entry_id, int) and entry_id == bst_id:
+            return str(entry.get("name", ""))
     return None
 
 
