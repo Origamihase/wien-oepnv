@@ -221,6 +221,44 @@ def _has_allowed_station(blob: str) -> bool:
     return False
 
 
+def _extract_stations_from_text(text: str) -> List[str]:
+    """
+    Findet bekannte Stationsnamen im Text via Sliding Window.
+    Priorisiert längere Matches an der aktuellen Position.
+    """
+    tokens = [t for t in re.split(r"\W+", text) if t]
+    if not tokens:
+        return []
+
+    found = []
+    seen = set()
+    n = len(tokens)
+    i = 0
+
+    while i < n:
+        matched = False
+        # Try longest window first
+        max_size = min(_MAX_STATION_WINDOW, n - i)
+        for size in range(max_size, 0, -1):
+            chunk = tokens[i : i + size]
+            candidate = " ".join(chunk)
+            # Use canonical_name to check validity against stations.json
+            cname = canonical_name(candidate)
+            if cname:
+                if cname not in seen:
+                    found.append(cname)
+                    seen.add(cname)
+                # Skip the matched tokens
+                i += size
+                matched = True
+                break
+
+        if not matched:
+            i += 1
+
+    return found
+
+
 def _keep_by_region(title: str, desc: str) -> bool:
     endpoints = _split_endpoints(title)
     if endpoints:
@@ -318,7 +356,14 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         # Fallback für schlechte Titel (leer, "-" oder keine alphanumerischen Zeichen)
         is_poor = (not title) or (title == "-") or (not any(c.isalnum() for c in title))
         if is_poor and desc:
-            if ":" in desc:
+            # 1. Try to extract stations from description
+            found_stations = _extract_stations_from_text(desc)
+            if len(found_stations) == 1:
+                title = found_stations[0]
+            elif len(found_stations) >= 2:
+                title = f"{found_stations[0]} ↔ {found_stations[1]}"
+            # 2. Fallback strategies
+            elif ":" in desc:
                 # Strategy A: Teil vor dem Doppelpunkt
                 title = desc.split(":", 1)[0].strip()
             else:
