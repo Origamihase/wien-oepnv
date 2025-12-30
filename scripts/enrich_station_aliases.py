@@ -185,9 +185,24 @@ def _textual_variants(alias: str) -> set[str]:
     variants.update(_sankt_variants(alias))
     variants.update(_bahnhof_variants(alias))
 
-    # Expand "Str." to "Straße"
+    # Expand abbreviations
     if "str." in alias.lower():
         expanded = re.sub(r"\bStr\.", "Straße", alias, flags=re.IGNORECASE)
+        if expanded != alias:
+            variants.add(expanded)
+
+    if "wr." in alias.lower():
+        expanded = re.sub(r"\bWr\.", "Wiener", alias, flags=re.IGNORECASE)
+        if expanded != alias:
+            variants.add(expanded)
+
+    if "pl." in alias.lower():
+        expanded = re.sub(r"\bPl\.", "Platz", alias, flags=re.IGNORECASE)
+        if expanded != alias:
+            variants.add(expanded)
+
+    if "g." in alias.lower():
+        expanded = re.sub(r"\bG\.", "Gasse", alias, flags=re.IGNORECASE)
         if expanded != alias:
             variants.add(expanded)
 
