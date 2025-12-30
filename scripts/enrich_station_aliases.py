@@ -26,11 +26,21 @@ import csv
 import json
 import logging
 import re
+import sys
 from collections import defaultdict, deque
 from pathlib import Path
 from typing import Iterable
 
+# Ensure the project root is in sys.path to allow imports from src
 BASE_DIR = Path(__file__).resolve().parents[1]
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+try:
+    from src.utils.files import atomic_write
+except ModuleNotFoundError:
+    from utils.files import atomic_write  # type: ignore
+
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 DEFAULT_VOR_STOPS = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_VOR_MAPPING = BASE_DIR / "data" / "vor-haltestellen.mapping.json"
@@ -387,7 +397,9 @@ def main() -> int:
         log.info("Dry run – not writing %s", args.stations)
         return 0
 
-    args.stations.write_text(json.dumps(stations, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    with atomic_write(args.stations, mode="w", encoding="utf-8", permissions=0o644) as handle:
+        json.dump(stations, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
     log.info("Wrote enriched aliases to %s", args.stations)
     return 0
 

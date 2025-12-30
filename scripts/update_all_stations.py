@@ -13,6 +13,7 @@ _SCRIPT_ORDER = (
     "update_station_directory.py",
     "update_vor_stations.py",
     "update_wl_stations.py",
+    "enrich_station_aliases.py",
 )
 
 
