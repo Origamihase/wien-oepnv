@@ -146,18 +146,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Verspätungen",
-    "description": "Die Linie 43 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Neuwaldegg.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b1490c67595f9a7dee31e046bae4aa424ec43051f0d3c2d48b18da2cf7be0b45",
-    "pubDate": "2025-12-30T08:00:00+01:00",
-    "starts_at": "2025-12-30T08:00:00+01:00",
-    "ends_at": "2025-12-30T23:55:00+01:00",
-    "_identity": "wl|störung|L=43|D=2025-12-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "3A: Verspätungen",
     "description": "Die Linie 3 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -171,25 +159,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "62: Verkehrsunfall",
-    "description": "Die Linie 62 ist derzeit in Richtung Oper, Karlsplatz an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 08:55 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Altmannsdorfer Straße 77.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "eed493b84b991f4fbb293a881224825ca49d2be64d70010ef16dbd19919e838a",
     "pubDate": "2025-12-30T08:30:00+01:00",
     "starts_at": "2025-12-30T08:30:00+01:00",
     "ends_at": "2025-12-30T23:55:00+01:00",
     "_identity": "wl|störung|L=62|D=2025-12-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "57A: Fremder Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 57 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d354c7652a6b29deb96b519f98e62abb5becc90c01b68e51f6409488034e70ec",
-    "pubDate": "2025-12-30T08:30:00+01:00",
-    "starts_at": "2025-12-30T08:30:00+01:00",
-    "ends_at": "2025-12-30T23:55:00+01:00",
-    "_identity": "wl|störung|L=57A|D=2025-12-30"
   },
   {
     "source": "Wiener Linien",
@@ -224,7 +200,43 @@
     "guid": "7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35",
     "pubDate": "2025-12-30T08:35:28+01:00",
     "starts_at": "2025-12-30T08:35:28+01:00",
-    "ends_at": "2025-12-30T09:35:00+01:00",
+    "ends_at": "2025-12-30T09:46:00+01:00",
     "_identity": "wl|störung|L=62|D=2025-12-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "22A: Fremder Verkehrsunfall",
+    "description": "Die Linie 22 A ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 09:50 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Hirschstettner Straße # Marietta-Blau-Gasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "055d4d99398b022ad5c8573ee3caaf14b904565a1201b01461b0a2148ddca4a6",
+    "pubDate": "2025-12-30T09:15:00+01:00",
+    "starts_at": "2025-12-30T09:15:00+01:00",
+    "ends_at": "2025-12-30T23:55:00+01:00",
+    "_identity": "wl|störung|L=22A|D=2025-12-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Schadhaftes Fahrzeug",
+    "description": "Die Linie U3 ist derzeit in Richtung Simmering an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 09:40 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Neubaugasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
+    "pubDate": "2025-12-30T09:20:00+01:00",
+    "starts_at": "2025-12-30T09:20:00+01:00",
+    "ends_at": "2025-12-30T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2025-12-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "22A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "83fcac88960bb72240db8cf78cd5d06d45325d018723cf8586a3dfc34817d08e",
+    "pubDate": "2025-12-30T09:20:24+01:00",
+    "starts_at": "2025-12-30T09:20:24+01:00",
+    "ends_at": "2025-12-30T10:19:00+01:00",
+    "_identity": "wl|störung|L=22A|D=2025-12-30"
   }
 ]
