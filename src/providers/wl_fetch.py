@@ -59,6 +59,7 @@ from .wl_text import (
     _tidy_title_wl,
     _title_core,
     _topic_key_from_title,
+    extract_date_from_title,
 )
 
 # Basis-URL aus Secret/ENV, Fallback: OGD-Endpoint
@@ -425,6 +426,21 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 tinfo = ti.get("time") or {}
                 start = _iso(tinfo.get("start")) or _best_ts(ti)
                 end = _iso(tinfo.get("end"))
+
+                # Check for date in title to override starts_at
+                title_date = extract_date_from_title(title_raw, reference_date=start or now)
+
+                real_start = start
+                if title_date:
+                    # If we found a date in the title, we prioritize it if:
+                    # 1. We don't have a start date from API.
+                    # 2. Or the title date is later than the API start date (suggesting future event published early).
+                    if not start or title_date.date() > start.date():
+                        real_start = title_date
+
+                # We check activity based on the API start time (publication/validity start),
+                # NOT the event start time extracted from the title.
+                # This ensures advance notices (Vorankündigungen) are shown.
                 if not _is_active(start, end, now):
                     continue
 
@@ -450,7 +466,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
                 # stabile Identity für first_seen
                 id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
-                id_day = start.date().isoformat() if isinstance(start, datetime) else "None"
+                id_day = real_start.date().isoformat() if isinstance(real_start, datetime) else "None"
                 identity = f"wl|störung|L={id_lines}|D={id_day}"
 
                 raw.append(
@@ -464,8 +480,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                         "extras": extras,
                         "lines_pairs": line_pairs,  # [(tok, disp), …]
                         "stop_names": set(stop_names),
-                        "pubDate": start,  # ggf. None
-                        "starts_at": start,
+                        "pubDate": start,  # Publication/Creation date remains original
+                        "starts_at": real_start, # Effective start date (for calendar)
                         "ends_at": end,
                         "_identity": identity,
                     }
@@ -514,6 +530,15 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                 tinfo = poi.get("time") or {}
                 start = _iso(tinfo.get("start")) or _best_ts(poi)
                 end = _iso(tinfo.get("end"))
+
+                # Check for date in title to override starts_at
+                title_date = extract_date_from_title(title_raw, reference_date=start or now)
+
+                real_start = start
+                if title_date:
+                    if not start or title_date.date() > start.date():
+                        real_start = title_date
+
                 if not _is_active(start, end, now):
                     continue
 
@@ -545,7 +570,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                         extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
 
                 id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
-                id_day = start.date().isoformat() if isinstance(start, datetime) else "None"
+                id_day = real_start.date().isoformat() if isinstance(real_start, datetime) else "None"
                 identity = f"wl|hinweis|L={id_lines}|D={id_day}"
 
                 raw.append(
@@ -560,7 +585,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                         "lines_pairs": line_pairs,  # [(tok, disp), …]
                         "stop_names": set(stop_names),
                         "pubDate": start,
-                        "starts_at": start,
+                        "starts_at": real_start,
                         "ends_at": end,
                         "_identity": identity,
                     }
@@ -626,10 +651,29 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
             b["lines_pairs"] = _merge_line_pairs(b["lines_pairs"], ev["lines_pairs"])
             b["stop_names"].update(ev["stop_names"])
+
+            # Use the earliest pubDate for the bucket (to show when first detected/announced)
             if ev["pubDate"] and (
                 not b["pubDate"] or ev["pubDate"] < b["pubDate"]
             ):
                 b["pubDate"] = ev["pubDate"]
+
+            # For starts_at, if we have different items merging, what to do?
+            # If the events are really the same, they should have the same start.
+            # But if one has a corrected start, we might want that.
+            # However, logic above only updates pubDate.
+            # If I want to update starts_at, I should probably take the one from the "better" title item?
+            # Or just update it if ev["starts_at"] > b["starts_at"]?
+            # Actually, `starts_at` is usually the event start.
+            # If we merge, we assume they are the same event.
+            # If one item has the corrected date (from title) and the other doesn't,
+            # we should prefer the corrected one.
+            # The corrected one is likely LATER than the uncorrected one (which defaults to pubDate/api-start).
+            if ev["starts_at"] and (
+                not b["starts_at"] or ev["starts_at"] > b["starts_at"]
+            ):
+                b["starts_at"] = ev["starts_at"]
+
             be, ee = b["ends_at"], ev["ends_at"]
             b["ends_at"] = None if (be is None or ee is None) else max(be, ee)
             for x in ev["extras"]:
