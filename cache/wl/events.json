@@ -154,5 +154,29 @@
     "starts_at": "2025-12-30T11:25:00+01:00",
     "ends_at": "2025-12-30T23:55:00+01:00",
     "_identity": "wl|störung|L=43|D=2025-12-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Verkehrsunfall",
+    "description": "Die Linie 13 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Mommsengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2f2c2f4a5edccc2e83123c4cd571f55d466f767a922c5c5c5e338c8121b6f2b9",
+    "pubDate": "2025-12-30T11:55:00+01:00",
+    "starts_at": "2025-12-30T11:55:00+01:00",
+    "ends_at": "2025-12-30T23:55:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-12-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8040dc868c9f595d150005c78624ba19af61d6d75a2a097f9a394e84bc1f1efc",
+    "pubDate": "2025-12-30T11:56:01+01:00",
+    "starts_at": "2025-12-30T11:56:01+01:00",
+    "ends_at": "2025-12-30T12:57:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2025-12-30"
   }
 ]
