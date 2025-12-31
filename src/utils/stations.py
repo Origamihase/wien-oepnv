@@ -14,6 +14,7 @@ __all__ = [
     "canonical_name",
     "is_in_vienna",
     "is_pendler",
+    "station_by_oebb_id",
     "station_info",
     "vor_station_ids",
 ]
@@ -462,6 +463,22 @@ def _candidate_values(value: str) -> list[str]:
             seen.add(cleaned)
             candidates.append(cleaned)
     return candidates
+
+
+@lru_cache(maxsize=1024)
+def station_by_oebb_id(bst_id: int | str) -> str | None:
+    """Return the station name for a given ÖBB station ID (bst_id)."""
+    try:
+        target_id = int(bst_id)
+    except (ValueError, TypeError):
+        return None
+
+    for entry in _station_entries():
+        # bst_id in json is int
+        current_id = entry.get("bst_id")
+        if current_id == target_id:
+            return entry.get("name")
+    return None
 
 
 @lru_cache(maxsize=2048)
