@@ -146,18 +146,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A: Veranstaltung Ganztägig kein Betrieb",
-    "description": "Veranstaltung Ganztägig kein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d2a6f74f22447865943e90ba74296185318d34ba0852b8e9d8965dec5ad92507",
-    "pubDate": "2025-12-31T06:53:50+01:00",
-    "starts_at": "2025-12-31T06:53:50+01:00",
-    "ends_at": "2025-12-31T20:45:00+01:00",
-    "_identity": "wl|störung|L=1A|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "***Frohes*** ***neues Jahr***",
     "description": "***Frohes*** ***neues Jahr***",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -178,18 +166,6 @@
     "starts_at": "2025-12-31T17:00:20+01:00",
     "ends_at": "2025-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Silvesterpfad Betrieb ab Rathaus",
-    "description": "Silvesterpfad Betrieb ab Rathaus",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "47609c063d4dab4e4ba000e69e8bd79200c13c77ba7fe746f3df4cd6335afb1c",
-    "pubDate": "2025-12-31T18:29:58+01:00",
-    "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-31"
   },
   {
     "source": "Wiener Linien",
@@ -218,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Silvesterpfad Züge halten bei Burgring nach Bellariastraße",
-    "description": "Silvesterpfad Züge halten bei Burgring nach Bellariastraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e54129b0ac81ca8f2f528738b6eff9c710f9db1bf4071a2159ba8e9b4c76c5d",
-    "pubDate": "2025-12-31T18:29:58+01:00",
-    "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Silvesterpfad Betrieb ab Börse",
     "description": "Silvesterpfad Betrieb ab Börse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -238,18 +202,6 @@
     "starts_at": "2025-12-31T18:29:58+01:00",
     "ends_at": "2025-12-31T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Silvesterpfad Züge halten bei den Linien 46,49,48A",
-    "description": "Silvesterpfad Züge halten bei den Linien 46,49,48 A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f795b0e9e1f8fb3b1e4ab1b9de7aa245bbca9778c50f7bfa31ef47093995de31",
-    "pubDate": "2025-12-31T18:29:58+01:00",
-    "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-31"
   },
   {
     "source": "Wiener Linien",
@@ -266,6 +218,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Silvesterpfad Betrieb ab Rathaus",
+    "description": "Silvesterpfad Betrieb ab Rathaus",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "47609c063d4dab4e4ba000e69e8bd79200c13c77ba7fe746f3df4cd6335afb1c",
+    "pubDate": "2025-12-31T18:29:58+01:00",
+    "starts_at": "2025-12-31T18:29:58+01:00",
+    "ends_at": "2025-12-31T23:59:59+01:00",
+    "_identity": "wl|störung|L=2|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Silvesterpfad Züge halten bei den Linien 46,49,48A",
+    "description": "Silvesterpfad Züge halten bei den Linien 46,49,48 A",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f795b0e9e1f8fb3b1e4ab1b9de7aa245bbca9778c50f7bfa31ef47093995de31",
+    "pubDate": "2025-12-31T18:29:58+01:00",
+    "starts_at": "2025-12-31T18:29:58+01:00",
+    "ends_at": "2025-12-31T23:59:59+01:00",
+    "_identity": "wl|störung|L=2|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Silvesterpfad Züge halten bei Schottenring 19",
     "description": "Silvesterpfad Züge halten bei Schottenring 19",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -274,6 +250,18 @@
     "starts_at": "2025-12-31T18:29:58+01:00",
     "ends_at": "2025-12-31T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Silvesterpfad Züge halten bei Burgring nach Bellariastraße",
+    "description": "Silvesterpfad Züge halten bei Burgring nach Bellariastraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2e54129b0ac81ca8f2f528738b6eff9c710f9db1bf4071a2159ba8e9b4c76c5d",
+    "pubDate": "2025-12-31T18:29:58+01:00",
+    "starts_at": "2025-12-31T18:29:58+01:00",
+    "ends_at": "2025-12-31T23:59:59+01:00",
+    "_identity": "wl|störung|L=2|D=2025-12-31"
   },
   {
     "source": "Wiener Linien",
@@ -310,5 +298,77 @@
     "starts_at": "2025-12-31T20:30:00+01:00",
     "ends_at": "2025-12-31T23:55:00+01:00",
     "_identity": "wl|störung|L=10|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1/U3: Veranstaltung",
+    "description": "Derzeit können die Züge der Linien U1 und U3 die Station Stephansplatz in beiden Richtungen nicht einhalten. Bitte benutzen Sie die Stationen Karlsplatz U, Herrengasse U, Schwedenplatz U sowie Stubentor U, um den Silvesterpfad zu erreichen. Die Sperre dauert voraussichtlich bis 01.01.2026, ca. 2:00 Uhr. Grund dafür ist eine Veranstaltung im Bereich Stephansplatz. Currently, trains on lines U1 and U3 cannot stop at Stephansplatz station in either direction. Please use Karlsplatz U, Herrengasse U, Schwedenplatz U and Stubentor U stations to reach the New Year's Eve trail. The closure is expected to last until 1 January 2026, approximately 2:00 a.m. The reason for this is an event in the Stephansplatz area.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "48a6463e5599d3793735e1ab004450a5c6409069c75314425b1f560e3abf39d3",
+    "pubDate": "2025-12-31T20:35:00+01:00",
+    "starts_at": "2025-12-31T20:35:00+01:00",
+    "ends_at": "2026-01-01T03:00:00+01:00",
+    "_identity": "wl|störung|L=U1,U3|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Feuerwehreinsatz",
+    "description": "Die Linie 9 fährt derzeit nicht zwischen Johann-Nepomuk-Berger-Platz und Schweglerstraße. Weichen Sie auf die Linien U3, 10, 49 und 10 A aus. Die Störung dauert voraussichtlich bis 21:45 Uhr. Grund dafür ist ein Feuerwehreinsatz im Bereich Schweglerstraße U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e32cd5806e5f6595a21fd31d0d7b637a54fc9777e05686842fc754f354322f75",
+    "pubDate": "2025-12-31T20:35:00+01:00",
+    "starts_at": "2025-12-31T20:35:00+01:00",
+    "ends_at": "2025-12-31T23:55:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Feuerwehreinsatz Betrieb ab Johann-Nepomuk-Berger-Platz",
+    "description": "Feuerwehreinsatz Betrieb ab Johann-Nepomuk-Berger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f68d254376c86020e262c4b8e0851eb19f28b41845d62a212608def34ec70634",
+    "pubDate": "2025-12-31T20:39:22+01:00",
+    "starts_at": "2025-12-31T20:39:22+01:00",
+    "ends_at": "2025-12-31T22:30:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Feuerwehreinsatz Züge halten in der Taubergasse",
+    "description": "Feuerwehreinsatz Züge halten in der Taubergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c470aed0c29b555604d8b7f8157b217c9dd4c642729c2853ab2d07fe46dcb9ee",
+    "pubDate": "2025-12-31T20:40:20+01:00",
+    "starts_at": "2025-12-31T20:40:20+01:00",
+    "ends_at": "2025-12-31T21:39:00+01:00",
+    "_identity": "wl|störung|L=2|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Feuerwehreinsatz Züge halten in der Taubergasse",
+    "description": "Feuerwehreinsatz Züge halten in der Taubergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b5018bec8c9b43ebd075d2abcc5d4e1acd805f03f7d05d3507388239f7c3b497",
+    "pubDate": "2025-12-31T20:40:49+01:00",
+    "starts_at": "2025-12-31T20:40:49+01:00",
+    "ends_at": "2025-12-31T22:30:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Feuerwehreinsatz Betrieb ab Schweglerstraße",
+    "description": "Feuerwehreinsatz Betrieb ab Schweglerstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1b1f9287070f4d1ad47b93655b6e19c872589fa27733257cc14f14c8ebcce2d1",
+    "pubDate": "2025-12-31T20:41:02+01:00",
+    "starts_at": "2025-12-31T20:41:18+01:00",
+    "ends_at": "2025-12-31T22:30:00+01:00",
+    "_identity": "wl|störung|L=9|D=2025-12-31"
   }
 ]
