@@ -16,12 +16,20 @@ def _load_build_feed(monkeypatch):
     return importlib.import_module(module_name)
 
 
+def _emit_item_str(bf, item, now, state):
+    ident, elem, replacements = bf._emit_item(item, now, state)
+    xml_str = bf.ET.tostring(elem, encoding="unicode")
+    for ph, content in replacements.items():
+        xml_str = xml_str.replace(ph, content)
+    return ident, xml_str
+
+
 def test_emit_item_generates_stable_anchor_when_link_missing(monkeypatch):
     bf = _load_build_feed(monkeypatch)
-    monkeypatch.setattr(bf, "FEED_LINK", "https://example.com/wien-oepnv/")
+    monkeypatch.setattr(bf.feed_config, "FEED_LINK", "https://example.com/wien-oepnv/")
     now = datetime(2025, 1, 1, tzinfo=timezone.utc)
 
-    ident, xml = bf._emit_item({"title": "Info", "description": "Hinweis"}, now, {})
+    ident, xml = _emit_item_str(bf, {"title": "Info", "description": "Hinweis"}, now, {})
 
     expected_link = bf._build_canonical_link(None, ident)
     link_match = re.search(r"<link>([^<]+)</link>", xml)
@@ -44,7 +52,7 @@ def test_emit_item_keeps_permalink_guid_when_matching_link(monkeypatch):
         "guid": "https://verkehr.example/störung",
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     guid_match = re.search(r"<guid([^>]*)>([^<]+)</guid>", xml)
     assert guid_match, xml

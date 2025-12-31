@@ -1,8 +1,17 @@
 import re
 from datetime import datetime, timezone
+import xml.etree.ElementTree as ET
 
 import src.build_feed as build_feed
 import src.providers.vor as vor
+
+
+def _emit_item_str(item, now, state):
+    ident, elem, replacements = build_feed._emit_item(item, now, state)
+    xml_str = ET.tostring(elem, encoding="unicode")
+    for ph, content in replacements.items():
+        xml_str = xml_str.replace(ph, content)
+    return ident, xml_str
 
 
 def test_title_has_line_prefix():
@@ -69,7 +78,7 @@ def test_vor_description_keeps_extra_lines():
     items = vor._collect_from_board("123", payload)
     assert len(items) == 1
     now = datetime(2023, 7, 20, 12, 0, tzinfo=timezone.utc)
-    _, xml_item = build_feed._emit_item(items[0], now, {})
+    _, xml_item = _emit_item_str(items[0], now, {})
 
     desc_match = re.search(
         r"<description><!\[CDATA\[(.*?)\]\]></description>",

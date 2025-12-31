@@ -22,7 +22,9 @@ def _import_build_feed(monkeypatch):
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
     sys.modules.pop(module_name, None)
-    return importlib.import_module(module_name)
+    module = importlib.import_module(module_name)
+    module.refresh_from_env()  # Ensure config is fresh
+    return module
 
 
 def test_state_path_override(monkeypatch, tmp_path):

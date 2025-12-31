@@ -38,4 +38,5 @@ def test_default_age_and_ttl(monkeypatch, attr, expected):
     monkeypatch.delenv("MAX_ITEM_AGE_DAYS", raising=False)
     monkeypatch.delenv("ABSOLUTE_MAX_AGE_DAYS", raising=False)
     build_feed = _import_build_feed(monkeypatch)
-    assert getattr(build_feed, attr) == expected
+    # Refactored build_feed accesses constants via feed_config
+    assert getattr(build_feed.feed_config, attr) == expected

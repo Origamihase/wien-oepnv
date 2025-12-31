@@ -11,7 +11,9 @@ def test_max_items_non_negative(monkeypatch):
     monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1] / "src"))
     sys.modules.pop(module_name, None)
     build_feed = importlib.import_module(module_name)
-    assert build_feed.MAX_ITEMS == 0
+    build_feed.refresh_from_env()
+    # Refactored build_feed uses feed_config.MAX_ITEMS
+    assert build_feed.feed_config.MAX_ITEMS == 0
 
 
 def test_make_rss_ignores_items_when_max_is_zero(monkeypatch):
@@ -20,6 +22,7 @@ def test_make_rss_ignores_items_when_max_is_zero(monkeypatch):
     monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1] / "src"))
     sys.modules.pop(module_name, None)
     build_feed = importlib.import_module(module_name)
+    build_feed.refresh_from_env()
     try:
         captured_state = {"value": None}
 

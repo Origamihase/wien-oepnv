@@ -22,7 +22,9 @@ def _import_build_feed(monkeypatch, env=None):
     for k, v in env.items():
         monkeypatch.setenv(k, str(v))
     sys.modules.pop(module_name, None)
-    return importlib.import_module(module_name)
+    module = importlib.import_module(module_name)
+    module.refresh_from_env()
+    return module
 
 
 def test_future_ends_at_skips_max_age(monkeypatch):

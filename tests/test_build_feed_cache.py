@@ -75,11 +75,14 @@ def test_main_runs_without_network(monkeypatch, tmp_path, caplog):
     out_file = tmp_path / "feed.xml"
     state_file = tmp_path / "state.json"
 
-    monkeypatch.setattr(build_feed, "_validate_path", lambda path, name: path)
-    monkeypatch.setattr(build_feed, "OUT_PATH", str(out_file))
-    monkeypatch.setattr(build_feed, "STATE_FILE", state_file)
+    monkeypatch.setattr(build_feed, "validate_path", lambda path, name: path)
+    monkeypatch.setattr(build_feed.feed_config, "OUT_PATH", out_file)
+    monkeypatch.setattr(build_feed.feed_config, "STATE_FILE", state_file)
     monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
     monkeypatch.setattr(build_feed, "_load_state", lambda: {})
+
+    # Prevent main() from resetting config via refresh_from_env
+    monkeypatch.setattr(build_feed, "refresh_from_env", lambda: None)
 
     caplog.set_level(logging.WARNING, logger="build_feed")
     caplog.set_level(logging.WARNING, logger="utils.cache")
@@ -115,6 +118,8 @@ def test_collect_items_reads_from_cache(monkeypatch):
     monkeypatch.setenv("WL_ENABLE", "1")
     monkeypatch.setenv("OEBB_ENABLE", "1")
     monkeypatch.setenv("VOR_ENABLE", "1")
+    # Need to refresh config to pick up env vars because we removed auto-refresh
+    build_feed.refresh_from_env()
 
     items = build_feed._collect_items()
 
@@ -142,7 +147,7 @@ def test_fmt_rfc2822_logs_and_uses_fallback(monkeypatch, caplog):
 
     result = build_feed._fmt_rfc2822(dt)
 
-    assert result == build_feed._to_utc(dt).strftime(build_feed.RFC)
+    assert result == build_feed._to_utc(dt).strftime(build_feed.feed_config.RFC)
     log_records = [
         record
         for record in caplog.records
