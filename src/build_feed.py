@@ -29,6 +29,7 @@ from zoneinfo import ZoneInfo
 
 try:  # pragma: no cover - allow running as script or module
     from feed import config as feed_config
+    from feed.merge import deduplicate_fuzzy
     from feed.logging import configure_logging
     from feed.providers import (
         iter_providers,
@@ -47,6 +48,7 @@ try:  # pragma: no cover - allow running as script or module
     )
 except ModuleNotFoundError:  # pragma: no cover
     from .feed import config as feed_config
+    from .feed.merge import deduplicate_fuzzy
     from .feed.logging import configure_logging
     from .feed.providers import (
         iter_providers,
@@ -1583,6 +1585,7 @@ def lint() -> int:
         duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
 
         deduped_items = _dedupe_items(list(filtered_items))
+        deduped_items = deduplicate_fuzzy(deduped_items)
         deduped_count = len(deduped_items)
         new_items_count = _count_new_items(deduped_items, state)
         missing_guid_items = [it for it in filtered_items if not it.get("guid")]
@@ -1748,7 +1751,19 @@ def main() -> int:
             dedupe_duration,
             pre_dedupe_count,
         )
-        items = deduped
+
+        fuzzy_start = perf_counter()
+        fuzzy_deduped = deduplicate_fuzzy(deduped)
+        fuzzy_duration = perf_counter() - fuzzy_start
+        if len(fuzzy_deduped) < len(deduped):
+            log.info(
+                "Fuzzy Duplikate entfernt: %d verbleiben nach %.2fs (vorher: %d)",
+                len(fuzzy_deduped),
+                fuzzy_duration,
+                len(deduped),
+            )
+
+        items = fuzzy_deduped
         deduped_count = len(items)
         duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
         if not items:
