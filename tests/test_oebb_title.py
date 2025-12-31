@@ -15,3 +15,8 @@ def test_clean_title_expands_wien_hbf_abbreviation():
     t = "Störung: Wien Hbf (U) <-> Wien Meidling Bahnhof"
     assert _clean_title_keep_places(t) == "Wien Hauptbahnhof ↔ Wien Meidling"
 
+
+def test_clean_title_removes_redundant_suffix():
+    # Issue: Station name is duplicated in the feed title if it's already part of the message text.
+    t = "Bahnsteig 2/3 in Sigmundsherberg nicht barrierefrei: Sigmundsherberg"
+    assert _clean_title_keep_places(t) == "Bahnsteig 2/3 in Sigmundsherberg nicht barrierefrei"

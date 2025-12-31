@@ -107,6 +107,16 @@ def _clean_endpoint(p: str) -> str:
 
 def _clean_title_keep_places(t: str) -> str:
     t = (t or "").strip()
+
+    # Redundanz-Check: Wenn Titel „Text: Station“ ist und Station im Text vorkommt,
+    # dann nur Text nehmen (z.B. "Aufzug in X defekt: X").
+    match = re.search(r"^(.*):\s+(.+)$", t)
+    if match:
+        text_part, suffix_part = match.group(1), match.group(2)
+        # Check ob suffix im Text enthalten ist (case-sensitive)
+        if suffix_part.strip() in text_part:
+            t = text_part
+
     # Vorspann bis zum Doppelpunkt entfernen
     t = COLON_PREFIX_RE.sub("", t)
     # Sonderfall: „Wien X und Wien Y“ → „Wien X ↔ Wien Y“
