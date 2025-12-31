@@ -70,6 +70,8 @@ def test_collect_items_uses_plugin_provider(monkeypatch):
     build_feed = importlib.import_module("src.build_feed")
     try:
         build_feed = importlib.reload(build_feed)
+        # Explicitly initialize config/plugins because import no longer does it
+        build_feed.refresh_from_env()
 
         monkeypatch.setenv("WL_ENABLE", "0")
         monkeypatch.setenv("OEBB_ENABLE", "0")
@@ -135,13 +137,22 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
         health_json_path = tmp_path / "feed-health.json"
         state_path = tmp_path / "state.json"
 
-        monkeypatch.setattr(build_feed, "_validate_path", lambda path, name: Path(path))
-        monkeypatch.setattr(build_feed, "OUT_PATH", out_path)
-        monkeypatch.setattr(build_feed, "FEED_HEALTH_PATH", health_path)
-        monkeypatch.setattr(build_feed, "FEED_HEALTH_JSON_PATH", health_json_path)
-        monkeypatch.setattr(build_feed, "STATE_FILE", state_path)
+        # Patch feed_config on build_feed module to ensure we target the right one
+        monkeypatch.setattr(build_feed.feed_config, "validate_path", lambda path, name: Path(path))
+        monkeypatch.setattr(build_feed, "validate_path", lambda path, name: Path(path))
+
+        monkeypatch.setattr(build_feed.feed_config, "OUT_PATH", out_path)
+        monkeypatch.setattr(build_feed.feed_config, "FEED_HEALTH_PATH", health_path)
+        monkeypatch.setattr(build_feed.feed_config, "FEED_HEALTH_JSON_PATH", health_json_path)
+        monkeypatch.setattr(build_feed.feed_config, "STATE_FILE", state_path)
         monkeypatch.setattr(build_feed, "_load_state", lambda: {})
         monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
+
+        # Patch ENV vars for paths so refresh_from_env uses them
+        monkeypatch.setenv("OUT_PATH", str(out_path))
+        monkeypatch.setenv("FEED_HEALTH_PATH", str(health_path))
+        monkeypatch.setenv("FEED_HEALTH_JSON_PATH", str(health_json_path))
+        monkeypatch.setenv("STATE_PATH", str(state_path))
 
         exit_code = build_feed.main()
 

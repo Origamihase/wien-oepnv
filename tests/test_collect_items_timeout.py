@@ -23,7 +23,9 @@ def _import_build_feed(monkeypatch):
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
     monkeypatch.setitem(sys.modules, "providers.vor", vor)
     sys.modules.pop(module_name, None)
-    return importlib.import_module(module_name)
+    module = importlib.import_module(module_name)
+    module.refresh_from_env()
+    return module
 
 
 def test_slow_provider_does_not_block(monkeypatch):
@@ -81,6 +83,9 @@ def test_provider_specific_timeout_override(monkeypatch):
     # Override slow provider to 1s timeout
     monkeypatch.setenv("PROVIDER_TIMEOUT_SLOW", "1")
 
+    # Re-refresh to pick up new env vars set AFTER import
+    build_feed.refresh_from_env()
+
     start = time.time()
     items = build_feed._collect_items()
     elapsed = time.time() - start
@@ -133,6 +138,7 @@ def test_provider_worker_limit(monkeypatch):
     build_feed = _import_build_feed(monkeypatch)
     monkeypatch.setenv("PROVIDER_MAX_WORKERS", "4")
     monkeypatch.setenv("PROVIDER_MAX_WORKERS_GROUP", "1")
+    build_feed.refresh_from_env()
 
     active = 0
     max_active = 0

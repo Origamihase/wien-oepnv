@@ -1,7 +1,16 @@
 
 import pytest
 import datetime
-from src.build_feed import _emit_item, FEED_LINK
+import xml.etree.ElementTree as ET
+from src import build_feed
+from src.feed.config import FEED_LINK
+
+def _emit_item_str(item, now, state):
+    ident, elem, replacements = build_feed._emit_item(item, now, state)
+    xml_str = ET.tostring(elem, encoding="unicode")
+    for ph, content in replacements.items():
+        xml_str = xml_str.replace(ph, content)
+    return ident, xml_str
 
 def test_javascript_link_sanitization():
     # Mock date and state
@@ -18,7 +27,7 @@ def test_javascript_link_sanitization():
     }
 
     # Execute
-    ident, xml = _emit_item(item, now, state)
+    ident, xml = _emit_item_str(item, now, state)
 
     # Verify
     assert "javascript:alert" not in xml
@@ -44,6 +53,6 @@ def test_valid_http_link_preserved():
         "description": "Description"
     }
 
-    ident, xml = _emit_item(item, now, state)
+    ident, xml = _emit_item_str(item, now, state)
 
     assert f"<link>{valid_link}</link>" in xml

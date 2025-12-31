@@ -1,6 +1,7 @@
 import importlib
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
@@ -10,6 +11,14 @@ def _load_build_feed(monkeypatch):
     monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1] / "src"))
     sys.modules.pop(module_name, None)
     return importlib.import_module(module_name)
+
+
+def _emit_item_str(bf, item, now, state):
+    ident, elem, replacements = bf._emit_item(item, now, state)
+    xml_str = ET.tostring(elem, encoding="unicode")
+    for ph, content in replacements.items():
+        xml_str = xml_str.replace(ph, content)
+    return ident, xml_str
 
 
 def _extract_description(xml: str) -> str:
@@ -53,9 +62,9 @@ def test_clip_text_html_avoids_half_words(monkeypatch):
 
 def test_emit_item_sanitizes_description(monkeypatch):
     bf = _load_build_feed(monkeypatch)
-    monkeypatch.setattr(bf, "DESCRIPTION_CHAR_LIMIT", 5)
+    monkeypatch.setattr(bf.feed_config, "DESCRIPTION_CHAR_LIMIT", 5)
     now = datetime(2024, 1, 1)
-    ident, xml = bf._emit_item({"title": "X", "description": "<b>Tom & Jerry</b>"}, now, {})
+    ident, xml = _emit_item_str(bf, {"title": "X", "description": "<b>Tom & Jerry</b>"}, now, {})
     # Since we now escape the description, the ampersand becomes &amp;
     assert "<description><![CDATA[Tom &amp; …]]></description>" in xml
     assert "Jerry" not in xml
@@ -64,7 +73,7 @@ def test_emit_item_sanitizes_description(monkeypatch):
 def test_emit_item_keeps_bullet_separator(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     now = datetime(2024, 1, 1)
-    ident, xml = bf._emit_item({"title": "X", "description": "foo • bar"}, now, {})
+    ident, xml = _emit_item_str(bf, {"title": "X", "description": "foo • bar"}, now, {})
     assert "foo • bar" in xml
     assert "foo\nbar" not in xml
 
@@ -76,7 +85,7 @@ def test_emit_item_collapses_whitespace(monkeypatch):
         "title": "  Mehrfach\t  Leerzeichen   ",
         "description": "Zeile\t\tEins  mit   Tabs\nZeile Zwei\t  mit   Spaces",
     }
-    ident, xml = bf._emit_item(messy, now, {})
+    ident, xml = _emit_item_str(bf, messy, now, {})
 
     title_match = re.search(r"<title><!\[CDATA\[(.*)]]></title>", xml)
     assert title_match, xml
@@ -100,7 +109,7 @@ def test_emit_item_trims_wrapping_whitespace(monkeypatch):
         "description": " \t Foo  bar \n ",
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     title_match = re.search(r"<title><!\[CDATA\[(.*)]]></title>", xml)
     assert title_match, xml
@@ -119,7 +128,7 @@ def test_emit_item_removes_category_and_limits_lines(monkeypatch):
         "description": "Bauarbeiten\nWegen …\nZeitraum:\nMontag …",
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text == "Wegen …"
@@ -135,7 +144,7 @@ def test_emit_item_skips_leading_date_line(monkeypatch):
         "description": "24.01.2024\nErsatzverkehr eingerichtet",
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text == "Ersatzverkehr eingerichtet"
@@ -149,7 +158,7 @@ def test_emit_item_wl_identical_title_description_fallback(monkeypatch):
         "description": "WL Störung auf Linie U2",
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text == "WL Störung auf Linie U2"
@@ -171,7 +180,7 @@ def test_emit_item_oebb_multiline_sentence(monkeypatch):
         ),
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     # Expect <br/> instead of <br> in description as well
@@ -197,7 +206,7 @@ def test_emit_item_uses_date_range_from_description(monkeypatch):
         "description": "06.12.2025 - 09.12.2025\nWegen Bauarbeiten",
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text.split("<br/>") == [
@@ -225,7 +234,7 @@ def test_emit_item_since_line_replaced_by_description_range(monkeypatch):
         "ends_at": bf.datetime(2025, 9, 16, 6, 0, tzinfo=timezone.utc),
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text.split("<br/>") == [
@@ -253,7 +262,7 @@ def test_emit_item_since_line_replaced_by_description_range_after_text(monkeypat
         "ends_at": bf.datetime(2025, 9, 16, 6, 0, tzinfo=timezone.utc),
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text.split("<br/>") == [
@@ -280,7 +289,7 @@ def test_emit_item_appends_since_time(monkeypatch):
         "starts_at": bf.datetime(2024, 1, 5, 10, 0, tzinfo=timezone.utc),
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text == "Wegen Bauarbeiten<br/>[Seit 05.01.2024]"
@@ -309,7 +318,7 @@ def test_emit_item_since_line_for_missing_or_nonadvancing_end(monkeypatch):
     for extra in scenarios:
         item = dict(base_item)
         item.update(extra)
-        _, xml = bf._emit_item(item, now, {})
+        _, xml = _emit_item_str(bf, item, now, {})
 
         desc_text = _extract_description(xml)
         assert desc_text.split("<br/>") == [
@@ -337,7 +346,7 @@ def test_emit_item_same_day_shows_since(monkeypatch):
         "ends_at": bf.datetime(2024, 1, 10, 12, 0, tzinfo=timezone.utc),
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text.split("<br/>") == [
@@ -364,7 +373,7 @@ def test_emit_item_future_start_without_end_shows_ab(monkeypatch):
         "starts_at": bf.datetime(2024, 1, 20, 6, 0, tzinfo=timezone.utc),
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text.split("<br/>") == [
@@ -407,7 +416,7 @@ def test_emit_item_long_range_treated_as_open(monkeypatch):
             "ends_at": end_dt,
         }
 
-        _, xml = bf._emit_item(item, now, {})
+        _, xml = _emit_item_str(bf, item, now, {})
 
         desc_text = _extract_description(xml)
         assert desc_text.split("<br/>") == [
@@ -435,7 +444,7 @@ def test_emit_item_same_day_range_shows_since(monkeypatch):
         "ends_at": bf.datetime(2024, 3, 10, 12, 30, tzinfo=timezone.utc),
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text.split("<br/>") == [
@@ -463,7 +472,7 @@ def test_emit_item_multi_day_range_still_shows_range(monkeypatch):
         "ends_at": bf.datetime(2024, 3, 12, 12, 0, tzinfo=timezone.utc),
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text.split("<br/>") == [
@@ -488,7 +497,7 @@ def test_emit_item_appends_multi_day_range(monkeypatch):
         "ends_at": datetime(2024, 6, 3, 15, 0, tzinfo=timezone.utc),
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text == "Ersatzverkehr eingerichtet<br/>[01.06.2024\u202f–\u202f03.06.2024]"
@@ -507,7 +516,7 @@ def test_emit_item_description_two_lines(monkeypatch):
         "ends_at": "2024-07-02T00:00:00+00:00",
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text.split("<br/>") == [
@@ -530,7 +539,7 @@ def test_emit_item_no_times_only_description(monkeypatch):
         "description": "Kurzinfo",
     }
 
-    _, xml = bf._emit_item(item, now, {})
+    _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
     assert desc_text == "Kurzinfo"

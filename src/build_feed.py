@@ -9,6 +9,7 @@ import logging
 import os
 import re
 import sys
+import uuid
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from concurrent.futures import (
@@ -99,46 +100,15 @@ except ModuleNotFoundError:  # pragma: no cover
 log = logging.getLogger("build_feed")
 
 
-resolve_env_path = feed_config.resolve_env_path
+# Expose validate_path for tests that patch it or use it
 validate_path = feed_config.validate_path
-get_bool_env = feed_config.get_bool_env
-LOG_TIMEZONE = feed_config.LOG_TIMEZONE
 
 
 def refresh_from_env() -> None:
     """Refresh configuration values and reload provider plugins."""
-
     feed_config.refresh_from_env()
     load_provider_plugins(force=True)
 
-
-refresh_from_env()
-
-ABSOLUTE_MAX_AGE_DAYS = feed_config.ABSOLUTE_MAX_AGE_DAYS
-DESCRIPTION_CHAR_LIMIT = feed_config.DESCRIPTION_CHAR_LIMIT
-ENDS_AT_GRACE_MINUTES = feed_config.ENDS_AT_GRACE_MINUTES
-FEED_DESC = feed_config.FEED_DESC
-FEED_LINK = feed_config.FEED_LINK
-FEED_TITLE = feed_config.FEED_TITLE
-FEED_TTL = feed_config.FEED_TTL
-FRESH_PUBDATE_WINDOW_MIN = feed_config.FRESH_PUBDATE_WINDOW_MIN
-FEED_HEALTH_PATH = feed_config.FEED_HEALTH_PATH
-FEED_HEALTH_JSON_PATH = feed_config.FEED_HEALTH_JSON_PATH
-LOG_DIR_PATH = feed_config.LOG_DIR_PATH
-LOG_DIR = LOG_DIR_PATH.as_posix()
-LOG_MAX_BYTES = feed_config.LOG_MAX_BYTES
-LOG_BACKUP_COUNT = feed_config.LOG_BACKUP_COUNT
-MAX_ITEM_AGE_DAYS = feed_config.MAX_ITEM_AGE_DAYS
-MAX_ITEMS = feed_config.MAX_ITEMS
-OUT_PATH = feed_config.OUT_PATH
-PROVIDER_MAX_WORKERS = feed_config.PROVIDER_MAX_WORKERS
-PROVIDER_TIMEOUT = feed_config.PROVIDER_TIMEOUT
-RFC = feed_config.RFC
-STATE_FILE = feed_config.STATE_FILE
-STATE_RETENTION_DAYS = feed_config.STATE_RETENTION_DAYS
-CACHE_MAX_AGE_HOURS = feed_config.CACHE_MAX_AGE_HOURS
-
-os.makedirs(LOG_DIR, exist_ok=True)
 
 read_cache = _core_read_cache
 
@@ -180,10 +150,10 @@ def _provider_display_name(fetch: Any, env: Optional[str] = None) -> str:
 def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
     """Record warnings for provider caches older than the configured threshold."""
 
-    if CACHE_MAX_AGE_HOURS <= 0:
+    if feed_config.CACHE_MAX_AGE_HOURS <= 0:
         return []
 
-    threshold = timedelta(hours=CACHE_MAX_AGE_HOURS)
+    threshold = timedelta(hours=feed_config.CACHE_MAX_AGE_HOURS)
     stale_messages: List[str] = []
 
     for _, loader in PROVIDERS:
@@ -202,7 +172,7 @@ def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
         hours = age.total_seconds() / 3600
         message = (
             f"Cache {cache_name}: zuletzt vor {hours:.1f}h aktualisiert "
-            f"(Schwelle {CACHE_MAX_AGE_HOURS}h)"
+            f"(Schwelle {feed_config.CACHE_MAX_AGE_HOURS}h)"
         )
         report.add_warning(message)
         stale_messages.append(message)
@@ -224,9 +194,9 @@ def _log_startup_summary(statuses: List[Tuple[str, bool]]) -> None:
     log.info(
         "Starte Feed-Bau: %s aktiv (Timeout global=%ss, MaxItems=%d, Worker=%s)",
         enabled_display,
-        PROVIDER_TIMEOUT,
-        MAX_ITEMS,
-        PROVIDER_MAX_WORKERS or "auto",
+        feed_config.PROVIDER_TIMEOUT,
+        feed_config.MAX_ITEMS,
+        feed_config.PROVIDER_MAX_WORKERS or "auto",
     )
     if disabled:
         log.info("Deaktivierte Provider: %s", ", ".join(disabled))
@@ -242,22 +212,22 @@ def _validate_configuration(statuses: List[Tuple[str, bool]]) -> None:
             "Alle Provider deaktiviert – Feed bleibt leer, bitte Konfiguration prüfen."
         )
 
-    if MAX_ITEMS == 0:
+    if feed_config.MAX_ITEMS == 0:
         log.warning("MAX_ITEMS ist 0 – der Feed wird ohne Einträge erzeugt.")
-    if FEED_TTL == 0:
+    if feed_config.FEED_TTL == 0:
         log.warning(
             "FEED_TTL ist 0 – Clients werten den Feed unmittelbar als abgelaufen."
         )
-    if PROVIDER_TIMEOUT == 0 and enabled_count:
+    if feed_config.PROVIDER_TIMEOUT == 0 and enabled_count:
         log.warning(
             "PROVIDER_TIMEOUT ist 0 – Netzwerkprovider haben keine Zeit für Antworten."
         )
-    if MAX_ITEM_AGE_DAYS > ABSOLUTE_MAX_AGE_DAYS:
+    if feed_config.MAX_ITEM_AGE_DAYS > feed_config.ABSOLUTE_MAX_AGE_DAYS:
         log.warning(
             "MAX_ITEM_AGE_DAYS (%s) übersteigt ABSOLUTE_MAX_AGE_DAYS (%s) – ältere Items "
             "werden dennoch durch den absoluten Grenzwert verworfen.",
-            MAX_ITEM_AGE_DAYS,
-            ABSOLUTE_MAX_AGE_DAYS,
+            feed_config.MAX_ITEM_AGE_DAYS,
+            feed_config.ABSOLUTE_MAX_AGE_DAYS,
         )
 
 # ---------------- Provider tuning ----------------
@@ -384,15 +354,7 @@ def _call_fetch_with_timeout(
 # ---------------- Helpers ----------------
 
 def _to_utc(dt: datetime) -> datetime:
-    """Return a timezone-aware datetime in UTC.
-
-    If ``dt`` already contains timezone information, it is converted to UTC
-    using ``astimezone``.  Previously, aware datetimes were returned as-is,
-    which meant that values in non-UTC zones stayed in their original
-    timezone.  With this change all consumers receive a true UTC value.
-    Naive datetimes are assumed to already represent UTC and will simply be
-    tagged accordingly.
-    """
+    """Return a timezone-aware datetime in UTC."""
     if dt.tzinfo is timezone.utc:
         return dt
 
@@ -406,7 +368,7 @@ def _fmt_rfc2822(dt: datetime) -> str:
             "Konnte Datum %r nicht per format_datetime formatieren – nutze strftime-Fallback.",
             dt,
         )
-        return _to_utc(dt).strftime(RFC)
+        return _to_utc(dt).strftime(feed_config.RFC)
 
 
 _VIENNA_TZ = ZoneInfo("Europe/Vienna")
@@ -677,7 +639,7 @@ def _file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
 
 
 def _load_state() -> Dict[str, Dict[str, Any]]:
-    path = _validate_path(STATE_FILE, "STATE_PATH")
+    path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     if not path.exists():
         return {}
     try:
@@ -690,9 +652,9 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
         return {}
 
     retention_cutoff: Optional[datetime] = None
-    if STATE_RETENTION_DAYS > 0:
+    if feed_config.STATE_RETENTION_DAYS > 0:
         now_utc = _to_utc(datetime.now(timezone.utc))
-        retention_cutoff = now_utc - timedelta(days=STATE_RETENTION_DAYS)
+        retention_cutoff = now_utc - timedelta(days=feed_config.STATE_RETENTION_DAYS)
 
     out: Dict[str, Dict[str, Any]] = {}
     for ident, entry in data.items():
@@ -712,7 +674,7 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
             log.debug(
                 "State-Eintrag %s älter als %s Tage – entferne Eintrag.",
                 ident,
-                STATE_RETENTION_DAYS,
+                feed_config.STATE_RETENTION_DAYS,
             )
             continue
 
@@ -721,7 +683,7 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
     return out
 
 def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
-    path = _validate_path(STATE_FILE, "STATE_PATH")
+    path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a+", encoding="utf-8") as lock_file:
         with _file_lock(lock_file, exclusive=True):
@@ -826,7 +788,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
 
         for env, fetch in provider_entries:
             provider_name = _provider_display_name(fetch, env)
-            enabled = bool(get_bool_env(env, True))
+            enabled = bool(feed_config.get_bool_env(env, True))
             fetch_type = "cache" if getattr(fetch, "_provider_cache_name", None) else "network"
             report.register_provider(provider_name, enabled, fetch_type)
             if not enabled:
@@ -889,14 +851,14 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
             return items
 
         desired_workers = len(network_fetchers)
-        if PROVIDER_MAX_WORKERS > 0:
-            if desired_workers > PROVIDER_MAX_WORKERS:
+        if feed_config.PROVIDER_MAX_WORKERS > 0:
+            if desired_workers > feed_config.PROVIDER_MAX_WORKERS:
                 log.debug(
                     "Begrenze Provider-Threads von %s auf %s",
                     desired_workers,
-                    PROVIDER_MAX_WORKERS,
+                    feed_config.PROVIDER_MAX_WORKERS,
                 )
-            desired_workers = min(desired_workers, PROVIDER_MAX_WORKERS)
+            desired_workers = min(desired_workers, feed_config.PROVIDER_MAX_WORKERS)
         executor = ThreadPoolExecutor(max_workers=max(1, desired_workers))
 
         futures: Dict[Any, Tuple[Any, str, int]] = {}
@@ -911,7 +873,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
                 env_name = provider_envs.get(fetch)
                 timeout_override = _provider_timeout_override(fetch, env_name, provider_name)
                 effective_timeout = (
-                    timeout_override if timeout_override is not None else PROVIDER_TIMEOUT
+                    timeout_override if timeout_override is not None else feed_config.PROVIDER_TIMEOUT
                 )
                 concurrency_key = _provider_concurrency_key(fetch, provider_name)
                 worker_limit = _provider_worker_limit(
@@ -1072,7 +1034,7 @@ def _drop_old_items(
 
         ends_at = it.get("ends_at")
         if isinstance(ends_at, datetime):
-            if _to_utc(ends_at) < now_utc - timedelta(minutes=ENDS_AT_GRACE_MINUTES):
+            if _to_utc(ends_at) < now_utc - timedelta(minutes=feed_config.ENDS_AT_GRACE_MINUTES):
                 continue
 
         dt = it.get("pubDate") or it.get("starts_at")
@@ -1096,9 +1058,9 @@ def _drop_old_items(
                     age_days = (now_utc - _to_utc(first_seen_dt)).total_seconds() / 86400.0
 
         if age_days is not None:
-            if age_days > ABSOLUTE_MAX_AGE_DAYS:
+            if age_days > feed_config.ABSOLUTE_MAX_AGE_DAYS:
                 continue
-            if age_days > MAX_ITEM_AGE_DAYS:
+            if age_days > feed_config.MAX_ITEM_AGE_DAYS:
                 if not (
                     isinstance(ends_at, datetime) and _to_utc(ends_at) > now_utc
                 ):
@@ -1277,7 +1239,7 @@ def _build_canonical_link(candidate: Any, ident: str) -> str:
 
     slug_source = ident or ""
     slug = quote(slug_source, safe="")
-    base = (FEED_LINK or "").strip()
+    base = (feed_config.FEED_LINK or "").strip()
     if not base:
         return f"#meldung-{slug}" if slug else ""
 
@@ -1295,15 +1257,8 @@ def _cdata_content(s: str) -> str:
 
 def _emit_item(
     it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any]]
-) -> Tuple[str, str]:
-    """Convert a normalized item dictionary into an RSS <item> XML string.
-
-    This function handles:
-    - Field coercion (dates to datetime objects).
-    - Identity/GUID resolution.
-    - Title and description sanitization (including HTML escaping).
-    - Description formatting (HTML to text, then escaped again for XML safety).
-    - Generation of extension fields (starts_at, ends_at).
+) -> Tuple[str, ET.Element, Dict[str, str]]:
+    """Convert a normalized item dictionary into an RSS <item> element and CDATA replacements.
 
     Args:
         it: The normalized item dictionary.
@@ -1311,12 +1266,11 @@ def _emit_item(
         state: The state dictionary (used to persist first_seen timestamps).
 
     Returns:
-        A tuple containing the item identity (str) and the generated XML string.
+        A tuple containing:
+         - The item identity (str)
+         - The generated ElementTree.Element
+         - A dictionary mapping placeholder strings to their CDATA-wrapped content.
     """
-    # Register namespaces locally to ensure they are available in isolated calls
-    ET.register_namespace("ext", "https://wien-oepnv.example/schema")
-    ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
-
     pubDate = _coerce_datetime_field(it, "pubDate")
     starts_at = _coerce_datetime_field(it, "starts_at")
     ends_at = _coerce_datetime_field(it, "ends_at")
@@ -1350,21 +1304,21 @@ def _emit_item(
         link = sanitized_link
 
     if not link:
-        link = FEED_LINK
+        link = feed_config.FEED_LINK
 
     raw_guid = it.get("guid") or ident
     guid = str(raw_guid).strip() if raw_guid is not None else ident
     if not guid:
         guid = ident
-    if not isinstance(pubDate, datetime) and FRESH_PUBDATE_WINDOW_MIN > 0:
+    if not isinstance(pubDate, datetime) and feed_config.FRESH_PUBDATE_WINDOW_MIN > 0:
         age = _to_utc(now) - _to_utc(fs_dt)
-        if age <= timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN):
+        if age <= timedelta(minutes=feed_config.FRESH_PUBDATE_WINDOW_MIN):
             pubDate = now
 
     # TV-freundliche Kürzung (Beschreibung darf HTML enthalten)
-    desc_clipped = _clip_text_html(raw_desc, DESCRIPTION_CHAR_LIMIT)
+    desc_clipped = _clip_text_html(raw_desc, feed_config.DESCRIPTION_CHAR_LIMIT)
+
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
-    # WICHTIG: title_out muss später noch escaped werden, bevor es ins CDATA kommt
     title_out = _sanitize_text(html.unescape(raw_title))
     desc_lines_raw = desc_clipped.split("\n")
 
@@ -1466,24 +1420,21 @@ def _emit_item(
         desc_parts.append(time_line)
     desc_out = "\n".join(desc_parts)
 
-    # Double-escaping logic for HTML-rendering RSS readers:
-    # We escape the text so it's safe to interpret as HTML, then we replace
-    # newlines with <br/> tags.
+    # Double-escaping logic for HTML-rendering RSS readers
     desc_escaped = html.escape(desc_out)
     desc_html = desc_escaped.replace("\n", "<br/>")
-
-    # Double-escape title for the same reason
     title_escaped = html.escape(title_out)
 
     # Prepare CDATA content (handle ]]> in content)
     title_cdata = _cdata_content(title_escaped)
     desc_cdata = _cdata_content(desc_html)
 
-    # Placeholders (using GUIDs to avoid accidental replacement of user content)
-    # We use valid XML characters.
-    PH_TITLE = "___CDATA_TITLE_PLACEHOLDER___"
-    PH_DESC = "___CDATA_DESC_PLACEHOLDER___"
-    PH_CONTENT = "___CDATA_CONTENT_PLACEHOLDER___"
+    # Generate unique placeholders
+    # We use a UUID to ensure uniqueness within the document
+    uid = uuid.uuid4().hex
+    PH_TITLE = f"___CDATA_TITLE_{uid}___"
+    PH_DESC = f"___CDATA_DESC_{uid}___"
+    PH_CONTENT = f"___CDATA_CONTENT_{uid}___"
 
     # --- ElementTree Construction ---
     item = ET.Element("item")
@@ -1522,20 +1473,13 @@ def _emit_item(
     # content:encoded
     ET.SubElement(item, "{http://purl.org/rss/1.0/modules/content/}encoded").text = PH_CONTENT
 
-    # Serialize to string
-    xml_str = ET.tostring(item, encoding="unicode")
+    replacements = {
+        PH_TITLE: f"<![CDATA[{title_cdata}]]>",
+        PH_DESC: f"<![CDATA[{desc_cdata}]]>",
+        PH_CONTENT: f"<![CDATA[{desc_cdata}]]>",
+    }
 
-    # Clean up namespace declarations on the item element (they are declared in root)
-    # This prevents <item xmlns:ext="..."> which can confuse regex-based tests counting <item>
-    # We remove xmlns attributes from the first tag only.
-    xml_str = re.sub(r'^(<item)([^>]*?)(\sxmlns:\w+="[^"]+")+([^>]*?>)', r'\1\2\4', xml_str)
-
-    # Inject CDATA
-    xml_str = xml_str.replace(PH_TITLE, f"<![CDATA[{title_cdata}]]>")
-    xml_str = xml_str.replace(PH_DESC, f"<![CDATA[{desc_cdata}]]>")
-    xml_str = xml_str.replace(PH_CONTENT, f"<![CDATA[{desc_cdata}]]>")
-
-    return ident, xml_str
+    return ident, item, replacements
 
 
 def _make_rss(
@@ -1544,40 +1488,40 @@ def _make_rss(
     """
     Generate the full RSS XML document from a list of items using ElementTree.
 
-    Iterates over the items, emits them using ``_emit_item``, and assembles the
-    final XML document with channel headers. It also prunes the state dictionary
-    to only include items present in the current feed.
+    Args:
+        items: List of item dictionaries.
+        now: Current timestamp.
+        state: State dictionary for tracking items.
+
+    Returns:
+        The generated RSS XML string with CDATA sections.
     """
-    # Register namespaces globally (idempotent)
+    # Register namespaces globally
     ET.register_namespace("ext", "https://wien-oepnv.example/schema")
     ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
 
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
 
-    ET.SubElement(channel, "title").text = FEED_TITLE
-    ET.SubElement(channel, "link").text = FEED_LINK
-    ET.SubElement(channel, "description").text = FEED_DESC
+    ET.SubElement(channel, "title").text = feed_config.FEED_TITLE
+    ET.SubElement(channel, "link").text = feed_config.FEED_LINK
+    ET.SubElement(channel, "description").text = feed_config.FEED_DESC
     ET.SubElement(channel, "lastBuildDate").text = _fmt_rfc2822(now)
-    ET.SubElement(channel, "ttl").text = str(FEED_TTL)
+    ET.SubElement(channel, "ttl").text = str(feed_config.FEED_TTL)
 
-    # We need to build the items separately because we want to preserve CDATA
-    # which ET doesn't support. _emit_item returns a string with CDATA.
-    # We will splice them into the channel body.
-
-    item_strings: List[str] = []
+    item_replacements: Dict[str, str] = {}
     identities_in_feed: List[str] = []
     emitted = 0
     for it in items:
-        if emitted >= MAX_ITEMS:
+        if emitted >= feed_config.MAX_ITEMS:
             break
-        ident, xml_item_str = _emit_item(it, now, state)
-        item_strings.append(xml_item_str)
+        ident, elem, repl = _emit_item(it, now, state)
+        channel.append(elem)
+        item_replacements.update(repl)
         identities_in_feed.append(ident)
         emitted += 1
 
-    # State nur für *aktuelle* Items speichern (kein Anwachsen). Ist der Feed
-    # leer, speichern wir einen leeren State, um veraltete GUIDs zu entfernen.
+    # State pruning
     pruned = {k: state[k] for k in identities_in_feed if k in state} if identities_in_feed else {}
     try:
         _save_state(pruned)
@@ -1587,37 +1531,23 @@ def _make_rss(
             e,
         )
 
-    # Pretty print the header part (Python 3.9+)
+    # Pretty print the tree
     if hasattr(ET, "indent"):
         ET.indent(rss, space="  ", level=0)
 
-    # Serialize header to string
-    # This gives us <rss ...><channel>...metadata...</channel></rss>
-    header_xml = ET.tostring(rss, encoding="unicode", xml_declaration=True)
+    # Serialize to string
+    xml_str = ET.tostring(rss, encoding="unicode", xml_declaration=True)
 
-    # We need to insert items before </channel>.
-    # Because we used indent, there might be whitespace before </channel>.
-    # We find the last occurrence of </channel>.
-    split_token = "</channel>"
-    parts = header_xml.rsplit(split_token, 1)
+    # Inject CDATA
+    for placeholder, cdata in item_replacements.items():
+        xml_str = xml_str.replace(placeholder, cdata)
 
-    if len(parts) != 2:
-        # Fallback if something is weird, though rsplit should work on valid XML from ET
-        log.error("Could not find closing channel tag in RSS header.")
-        return header_xml
-
-    # Construct final body
-    # We add a newline for niceness if items exist
-    items_block = "\n".join(item_strings)
-    if items_block:
-        items_block = "\n" + items_block + "\n"
-
-    return parts[0] + items_block + split_token + parts[1]
+    return xml_str
 
 
 def lint() -> int:
     """Run structural checks on the aggregated feed items without writing RSS."""
-
+    refresh_from_env()
     configure_logging()
 
     statuses = provider_statuses()
@@ -1723,6 +1653,7 @@ def lint() -> int:
 
 def main() -> int:
     """Execute the full feed generation pipeline (collect, dedupe, generate RSS)."""
+    refresh_from_env()
     configure_logging()
 
     statuses = provider_statuses()
@@ -1746,9 +1677,9 @@ def main() -> int:
     duplicates_removed = 0
     new_items_count = 0
     items: List[Dict[str, Any]] = []
-    health_path = _validate_path(Path(FEED_HEALTH_PATH), "FEED_HEALTH_PATH")
-    health_json_path = _validate_path(
-        Path(FEED_HEALTH_JSON_PATH), "FEED_HEALTH_JSON_PATH"
+    health_path = validate_path(Path(feed_config.FEED_HEALTH_PATH), "FEED_HEALTH_PATH")
+    health_json_path = validate_path(
+        Path(feed_config.FEED_HEALTH_JSON_PATH), "FEED_HEALTH_JSON_PATH"
     )
 
     def _write_health_outputs(active_metrics: FeedHealthMetrics) -> None:
@@ -1848,7 +1779,7 @@ def main() -> int:
         rss = _make_rss(items, now, state)
         rss_duration = perf_counter() - rss_start
 
-        out_path = _validate_path(Path(OUT_PATH), "OUT_PATH")
+        out_path = validate_path(Path(feed_config.OUT_PATH), "OUT_PATH")
         with atomic_write(
             out_path, mode="w", encoding="utf-8", permissions=0o644
         ) as f:
@@ -1858,7 +1789,7 @@ def main() -> int:
         log.info(
             "Feed geschrieben: %s (%d Items) in %.2fs (RSS-Erzeugung: %.2fs)",
             out_path,
-            min(len(items), MAX_ITEMS),
+            min(len(items), feed_config.MAX_ITEMS),
             total_duration,
             rss_duration,
         )
@@ -1907,9 +1838,6 @@ def main() -> int:
         report.log_results()
         raise
 
-_resolve_env_path = resolve_env_path
-# Backwards compatibility for tests and external imports
-_validate_path = validate_path
 
 if __name__ == "__main__":
     sys.exit(main())
