@@ -42,11 +42,11 @@ else:  # pragma: no cover - support both package layouts at runtime
     try:
         from utils.ids import make_guid
         from utils.text import html_to_text
-        from utils.stations import canonical_name, is_in_vienna, is_pendler
+        from utils.stations import canonical_name, is_in_vienna, is_pendler, _station_entries
     except ModuleNotFoundError:
         from ..utils.ids import make_guid  # type: ignore
         from ..utils.text import html_to_text  # type: ignore
-        from ..utils.stations import canonical_name, is_in_vienna, is_pendler  # type: ignore
+        from ..utils.stations import canonical_name, is_in_vienna, is_pendler, _station_entries  # type: ignore
 
     try:
         from utils.http import session_with_retries, validate_http_url, fetch_content_safe
@@ -237,6 +237,65 @@ def _keep_by_region(title: str, desc: str) -> bool:
         return False
     return True
 
+# ---------------- Fallback logic ----------------
+def _lookup_station_by_bst_id(link: str, guid: str) -> Optional[str]:
+    """Versucht, eine Station via bst_id aus Link/GUID zu finden."""
+    # Pattern für IDs am Ende von URLs, z.B. ...&123456
+    # oder im GUID. Oft sind es 6-7 Ziffern.
+    candidates = []
+
+    # 1. Link parsing
+    match = re.search(r"[?&](\d{6,})", link)
+    if match:
+        candidates.append(int(match.group(1)))
+
+    # 2. GUID parsing (oft identisch)
+    match_g = re.search(r"(\d{6,})", guid)
+    if match_g:
+        candidates.append(int(match_g.group(1)))
+
+    if not candidates:
+        return None
+
+    for cid in candidates:
+        for entry in _station_entries():
+            # Typensicherer Vergleich
+            bst_id = entry.get("bst_id")
+            if bst_id is not None and int(bst_id) == cid:
+                return str(entry.get("name") or "")
+
+    return None
+
+def _extract_stations_from_text(desc: str) -> List[str]:
+    """Sucht bekannte Stationsnamen im Text (Sliding Window)."""
+    if not desc:
+        return []
+
+    found = []
+    tokens = desc.split()
+    n = len(tokens)
+    # Sliding window size 1 to 4 tokens
+    for size in range(4, 0, -1):
+        for i in range(n - size + 1):
+            chunk = " ".join(tokens[i : i + size])
+            # Trim punctuation
+            chunk = chunk.strip(".,:;()[]")
+            if not chunk:
+                continue
+
+            # Check canonical name
+            cname = canonical_name(chunk)
+            if cname:
+                # Avoid subsets/duplicates if possible (simple dedup here)
+                if cname not in found:
+                    found.append(cname)
+
+    # Heuristic: if we found "Wien Mitte" and "Mitte", we prefer the longer match.
+    # But since we scan large-to-small windows, we likely catch big names first.
+    # However, scanning linear means we might match overlapping tokens.
+    # For now, just returning unique found names is a good start.
+    return found
+
 # ---------------- Fetch/Parse ----------------
 def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
     with session_with_retries(USER_AGENT) as s:
@@ -315,21 +374,35 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         desc_html = _get_text(item, "description")
         desc = html_to_text(desc_html)
 
-        # Fallback für schlechte Titel (leer, "-" oder keine alphanumerischen Zeichen)
-        is_poor = (not title) or (title == "-") or (not any(c.isalnum() for c in title))
-        if is_poor and desc:
-            if ":" in desc:
-                # Strategy A: Teil vor dem Doppelpunkt
-                title = desc.split(":", 1)[0].strip()
-            else:
-                # Strategy B: Erste 40 Zeichen (ggf. gekürzt)
-                if len(desc) > 40:
-                    title = desc[:40] + "..."
-                else:
-                    title = desc
-
         link  = _get_text(item, "link").strip() or OEBB_URL
-        guid  = _get_text(item, "guid").strip() or make_guid(title, link)
+        guid  = _get_text(item, "guid").strip() or "" # don't make GUID from poor title yet
+
+        # Fallback für schlechte Titel
+        is_poor = (not title) or (title == "-") or (not any(c.isalnum() for c in title))
+
+        if is_poor:
+            # Attempt 1: ID Lookup
+            station_name = _lookup_station_by_bst_id(link, guid)
+            if station_name:
+                title = station_name
+            else:
+                # Attempt 2: Text Search in Description
+                found_stations = _extract_stations_from_text(desc)
+                if len(found_stations) == 1:
+                    title = found_stations[0]
+                elif len(found_stations) >= 2:
+                    # Nimm die ersten zwei (meist Start/Ziel oder betroffen)
+                    title = f"{found_stations[0]} ↔ {found_stations[1]}"
+                else:
+                    # Attempt 3: Truncation (Emergency)
+                    if len(desc) > 40:
+                        title = desc[:40] + "..."
+                    else:
+                        title = desc
+
+        if not guid:
+             guid = make_guid(title, link)
+
         pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
 
         # Region-Filter: nur Wien + definierter Pendelraum
