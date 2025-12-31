@@ -170,18 +170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Schadhaftes Fahrzeug",
-    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
-    "pubDate": "2025-12-31T05:10:00+01:00",
-    "starts_at": "2025-12-31T05:10:00+01:00",
-    "ends_at": "2025-12-31T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Veranstaltung Kein Betrieb",
     "description": "Veranstaltung Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -202,5 +190,53 @@
     "starts_at": "2025-12-31T05:29:07+01:00",
     "ends_at": "2025-12-31T13:00:00+01:00",
     "_identity": "wl|störung|L=71|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A: Veranstaltung Ganztägig kein Betrieb",
+    "description": "Veranstaltung Ganztägig kein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d2a6f74f22447865943e90ba74296185318d34ba0852b8e9d8965dec5ad92507",
+    "pubDate": "2025-12-31T06:53:50+01:00",
+    "starts_at": "2025-12-31T06:53:50+01:00",
+    "ends_at": "2025-12-31T20:45:00+01:00",
+    "_identity": "wl|störung|L=1A|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2A: Veranstaltung Ganztägig kein Betrieb",
+    "description": "Veranstaltung Ganztägig kein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7567c439577396d306710cfe55627bb9b12a7e47a2eab2f96e4cd2be5c1946d8",
+    "pubDate": "2025-12-31T06:54:47+01:00",
+    "starts_at": "2025-12-31T06:54:47+01:00",
+    "ends_at": "2025-12-31T20:00:00+01:00",
+    "_identity": "wl|störung|L=2A|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "3A: Veranstaltung Ganztägig kein Betrieb",
+    "description": "Veranstaltung Ganztägig kein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "780cb17e297e1072e397f8e9c1db5e4d8ecc0ef70ec7c3aebf59d6475ce006d4",
+    "pubDate": "2025-12-31T06:55:45+01:00",
+    "starts_at": "2025-12-31T06:55:45+01:00",
+    "ends_at": "2025-12-31T20:00:00+01:00",
+    "_identity": "wl|störung|L=3A|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "32A: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 32 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61",
+    "pubDate": "2025-12-31T07:10:00+01:00",
+    "starts_at": "2025-12-31T07:23:05+01:00",
+    "ends_at": "2025-12-31T23:55:00+01:00",
+    "_identity": "wl|störung|L=32A|D=2025-12-31"
   }
 ]
