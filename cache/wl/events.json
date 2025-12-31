@@ -128,7 +128,7 @@
     "guid": "483eae38010ee8e6894791d2738a9629c827a8f49663810bceb0716d9219a663",
     "pubDate": "2025-12-30T00:00:21+01:00",
     "starts_at": "2025-12-30T00:00:21+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
+    "ends_at": "2026-01-01T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2025-12-30"
   },
   {
@@ -146,37 +146,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "** Frohes ** ** neues Jahr ** Happy new year",
-    "description": "***Frohes*** ***neues Jahr*** ***Happy*** ****new year****",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b41681af202637be97468998a4a55c03f594853f1751a6e641189b10ff77bba8",
-    "pubDate": "2025-12-31T16:59:53+01:00",
-    "starts_at": "2025-12-31T17:00:20+01:00",
-    "ends_at": "2025-12-31T23:59:00+01:00",
-    "_identity": "wl|störung|L=|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "***Frohes*** ***neues Jahr***",
-    "description": "***Frohes*** ***neues Jahr***",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c90e249f18ab696ab544d0b9b32c331d8ecd8d0e839dde3d36a38548a632e5d7",
-    "pubDate": "2025-12-31T16:59:53+01:00",
-    "starts_at": "2025-12-31T17:00:20+01:00",
-    "ends_at": "2025-12-31T23:59:00+01:00",
-    "_identity": "wl|störung|L=|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Silvesterpfad Betrieb ab Schwarzenbergplatz",
     "description": "Silvesterpfad Betrieb ab Schwarzenbergplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "616b77fdbeb1cc2cf412bcad5c0b611145ca0f187220eefab819f871cca49460",
     "pubDate": "2025-12-31T18:29:58+01:00",
     "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
     "_identity": "wl|störung|L=D|D=2025-12-31"
   },
   {
@@ -188,7 +164,19 @@
     "guid": "f3fbe9be37911134a8796dfe571f297be62bca57873dba39ee0110436d381d33",
     "pubDate": "2025-12-31T18:29:58+01:00",
     "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
+    "_identity": "wl|störung|L=71|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Silvesterpfad Kein Betrieb",
+    "description": "Silvesterpfad Kein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b03985f0488e9d9c328dc8d95b2563f2762da3e8f8fbde13c20ffd7bebcfa8a9",
+    "pubDate": "2025-12-31T18:29:58+01:00",
+    "starts_at": "2025-12-31T18:29:58+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
     "_identity": "wl|störung|L=71|D=2025-12-31"
   },
   {
@@ -200,7 +188,19 @@
     "guid": "47609c063d4dab4e4ba000e69e8bd79200c13c77ba7fe746f3df4cd6335afb1c",
     "pubDate": "2025-12-31T18:29:58+01:00",
     "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
+    "_identity": "wl|störung|L=2|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Silvesterpfad Züge halten bei den Linien 46,49,48A",
+    "description": "Silvesterpfad Züge halten bei den Linien 46,49,48 A",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f795b0e9e1f8fb3b1e4ab1b9de7aa245bbca9778c50f7bfa31ef47093995de31",
+    "pubDate": "2025-12-31T18:29:58+01:00",
+    "starts_at": "2025-12-31T18:29:58+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-12-31"
   },
   {
@@ -212,32 +212,8 @@
     "guid": "39d557b52ca2401b65b9a8b484122e72d659cb899d450e5e7cef311863ec9aba",
     "pubDate": "2025-12-31T18:29:58+01:00",
     "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
     "_identity": "wl|störung|L=D|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Silvesterpfad Züge halten bei den Linien 46,49,48A",
-    "description": "Silvesterpfad Züge halten bei den Linien 46,49,48 A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f795b0e9e1f8fb3b1e4ab1b9de7aa245bbca9778c50f7bfa31ef47093995de31",
-    "pubDate": "2025-12-31T18:29:58+01:00",
-    "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Silvesterpfad Kein Betrieb",
-    "description": "Silvesterpfad Kein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b03985f0488e9d9c328dc8d95b2563f2762da3e8f8fbde13c20ffd7bebcfa8a9",
-    "pubDate": "2025-12-31T18:29:58+01:00",
-    "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
-    "_identity": "wl|störung|L=71|D=2025-12-31"
   },
   {
     "source": "Wiener Linien",
@@ -248,7 +224,7 @@
     "guid": "2e54129b0ac81ca8f2f528738b6eff9c710f9db1bf4071a2159ba8e9b4c76c5d",
     "pubDate": "2025-12-31T18:29:58+01:00",
     "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
     "_identity": "wl|störung|L=2|D=2025-12-31"
   },
   {
@@ -260,7 +236,7 @@
     "guid": "9fa5bc4a1e77fa1916b896b4bf9fe50a59c729bb3a036d086d45bc35cd5b90b1",
     "pubDate": "2025-12-31T18:29:58+01:00",
     "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
     "_identity": "wl|störung|L=D|D=2025-12-31"
   },
   {
@@ -272,7 +248,7 @@
     "guid": "16485dafc823ffafb888df7aeb6f249dd2e5ab0f41de67d1c9186a942215ca00",
     "pubDate": "2025-12-31T18:38:11+01:00",
     "starts_at": "2025-12-31T18:38:11+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
     "_identity": "wl|störung|L=1|D=2025-12-31"
   },
   {
@@ -284,7 +260,7 @@
     "guid": "480d39405aae858befb1f0db2fb092e96ab15861870c9be5ec62a70139d6ad6f",
     "pubDate": "2025-12-31T18:38:40+01:00",
     "starts_at": "2025-12-31T18:38:40+01:00",
-    "ends_at": "2025-12-31T23:59:59+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
     "_identity": "wl|störung|L=1|D=2025-12-31"
   },
   {
@@ -310,5 +286,29 @@
     "starts_at": "2025-12-31T23:00:08+01:00",
     "ends_at": "2026-01-01T05:30:00+01:00",
     "_identity": "wl|störung|L=N29|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Polizeieinsatz Betrieb ab Ring, Volkstheater U",
+    "description": "Polizeieinsatz Züge halten bei der Linie 5 B",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561",
+    "pubDate": "2025-12-31T23:50:36+01:00",
+    "starts_at": "2026-01-01T00:09:05+01:00",
+    "ends_at": "2026-01-01T02:30:00+01:00",
+    "_identity": "wl|störung|L=2|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Prosit Neujahr Happy new year",
+    "description": "Prosit Neujahr! Happy new year!",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0f836370741a0253524f90e611b93ae9b2e4d21e0a33ecdc31d34d1ae24b15cf",
+    "pubDate": "2025-12-31T23:59:54+01:00",
+    "starts_at": "2026-01-01T00:00:28+01:00",
+    "ends_at": "2026-01-01T15:00:00+01:00",
+    "_identity": "wl|störung|L=|D=2025-12-31"
   }
 ]
