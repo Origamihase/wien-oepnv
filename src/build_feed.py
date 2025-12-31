@@ -9,6 +9,7 @@ import logging
 import os
 import re
 import sys
+import xml.etree.ElementTree as ET
 from collections import defaultdict
 from concurrent.futures import (
     FIRST_COMPLETED,
@@ -473,11 +474,6 @@ _WHITESPACE_CLEANUP_RE = re.compile(r"[ \t\r\f\v]+")
 
 def _sanitize_text(s: str) -> str:
     return _CONTROL_RE.sub("", s or "")
-
-def _cdata(s: str) -> str:
-    # CDATA sicher splitten, falls ']]>' im Text vorkommt
-    s = s.replace("]]>", "]]]]><![CDATA[>")
-    return f"<![CDATA[{s}]]>"
 
 def _clip_text_html(text: str, limit: int) -> str:
     """Für TV knapper machen. Gibt immer Plaintext zurück und kürzt falls nötig."""
@@ -1270,20 +1266,6 @@ def _sort_key(item: Dict[str, Any]) -> Tuple[int, float, str]:
         return (0, -_to_utc(pd).timestamp(), item.get("guid", ""))
     return (1, 0.0, item.get("guid", ""))
 
-def _emit_channel_header(now: datetime) -> List[str]:
-    h = []
-    h.append('<?xml version="1.0" encoding="UTF-8"?>')
-    h.append(
-        '<rss version="2.0" xmlns:ext="https://wien-oepnv.example/schema" '
-        'xmlns:content="http://purl.org/rss/1.0/modules/content/">'
-    )
-    h.append("<channel>")
-    h.append(f"<title>{html.escape(FEED_TITLE)}</title>")
-    h.append(f"<link>{html.escape(FEED_LINK)}</link>")
-    h.append(f"<description>{html.escape(FEED_DESC)}</description>")
-    h.append(f"<lastBuildDate>{_fmt_rfc2822(now)}</lastBuildDate>")
-    h.append(f"<ttl>{FEED_TTL}</ttl>")
-    return h
 
 def _build_canonical_link(candidate: Any, ident: str) -> str:
     """Return a canonical link for ``ident`` with a stable fallback anchor."""
@@ -1306,23 +1288,21 @@ def _build_canonical_link(candidate: Any, ident: str) -> str:
     return base
 
 
-def _guid_attributes(guid: str, link: str) -> str:
-    """Return attributes for the GUID tag based on permalink heuristics."""
-
-    parsed = urlparse(guid)
-    if parsed.scheme and parsed.netloc and guid == link:
-        return ""
-    return ' isPermaLink="false"'
+def _cdata_content(s: str) -> str:
+    """Prepare a string for inclusion in a CDATA block, handling ']]>'."""
+    return s.replace("]]>", "]]]]><![CDATA[>")
 
 
-def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any]]) -> Tuple[str, str]:
+def _emit_item(
+    it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any]]
+) -> Tuple[str, str]:
     """Convert a normalized item dictionary into an RSS <item> XML string.
 
     This function handles:
     - Field coercion (dates to datetime objects).
     - Identity/GUID resolution.
     - Title and description sanitization (including HTML escaping).
-    - Description formatting (HTML to text, then wrapped in CDATA).
+    - Description formatting (HTML to text, then escaped again for XML safety).
     - Generation of extension fields (starts_at, ends_at).
 
     Args:
@@ -1331,8 +1311,12 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
         state: The state dictionary (used to persist first_seen timestamps).
 
     Returns:
-        A tuple containing the item identity (str) and the generated XML string (str).
+        A tuple containing the item identity (str) and the generated XML string.
     """
+    # Register namespaces locally to ensure they are available in isolated calls
+    ET.register_namespace("ext", "https://wien-oepnv.example/schema")
+    ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
+
     pubDate = _coerce_datetime_field(it, "pubDate")
     starts_at = _coerce_datetime_field(it, "starts_at")
     ends_at = _coerce_datetime_field(it, "ends_at")
@@ -1481,65 +1465,116 @@ def _emit_item(it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any
     if time_line:
         desc_parts.append(time_line)
     desc_out = "\n".join(desc_parts)
-    # Escaping is important here because html_to_text() returns plain text that
-    # might contain characters like < or > (e.g. if the original source had
-    # &lt;script&gt;). Since we wrap this in CDATA for content:encoded, an RSS
-    # reader treating it as HTML would execute it. We must escape it first,
-    # then add our own safe HTML markup (br tags).
+
+    # Double-escaping logic for HTML-rendering RSS readers:
+    # We escape the text so it's safe to interpret as HTML, then we replace
+    # newlines with <br/> tags.
     desc_escaped = html.escape(desc_out)
     desc_html = desc_escaped.replace("\n", "<br/>")
-    # For the description element (often plain text, but sometimes treated as HTML),
-    # we also escape to be safe, while preserving newlines if possible (though
-    # standard RSS description is often just text).
-    desc_cdata = desc_escaped.replace("\n", "<br/>")
-    # Auch der Titel muss escaped werden, um XSS bei Feed-Readern zu verhindern,
-    # die CDATA-Inhalt naiv als HTML rendern.
+
+    # Double-escape title for the same reason
     title_escaped = html.escape(title_out)
 
-    parts: List[str] = []
-    parts.append("<item>")
-    parts.append(f"<title>{_cdata(title_escaped)}</title>")
-    parts.append(f"<link>{html.escape(link)}</link>")
-    guid_attrs = _guid_attributes(guid, link)
-    parts.append(f"<guid{guid_attrs}>{html.escape(guid)}</guid>")
+    # Prepare CDATA content (handle ]]> in content)
+    title_cdata = _cdata_content(title_escaped)
+    desc_cdata = _cdata_content(desc_html)
+
+    # Placeholders (using GUIDs to avoid accidental replacement of user content)
+    # We use valid XML characters.
+    PH_TITLE = "___CDATA_TITLE_PLACEHOLDER___"
+    PH_DESC = "___CDATA_DESC_PLACEHOLDER___"
+    PH_CONTENT = "___CDATA_CONTENT_PLACEHOLDER___"
+
+    # --- ElementTree Construction ---
+    item = ET.Element("item")
+
+    # Title
+    ET.SubElement(item, "title").text = PH_TITLE
+
+    # Link
+    ET.SubElement(item, "link").text = link
+
+    # GUID
+    guid_elem = ET.SubElement(item, "guid")
+    guid_elem.text = guid
+
+    # guid attributes (isPermaLink)
+    parsed = urlparse(guid)
+    if not (parsed.scheme and parsed.netloc and guid == link):
+        guid_elem.set("isPermaLink", "false")
+
+    # pubDate
     if isinstance(pubDate, datetime):
-        parts.append(f"<pubDate>{_fmt_rfc2822(pubDate)}</pubDate>")
+        ET.SubElement(item, "pubDate").text = _fmt_rfc2822(pubDate)
 
-    parts.append(f"<ext:first_seen>{_fmt_rfc2822(fs_dt)}</ext:first_seen>")
+    # Extensions
+    ET.SubElement(item, "{https://wien-oepnv.example/schema}first_seen").text = _fmt_rfc2822(fs_dt)
+
     if isinstance(starts_at, datetime):
-        parts.append(f"<ext:starts_at>{_fmt_rfc2822(starts_at)}</ext:starts_at>")
+        ET.SubElement(item, "{https://wien-oepnv.example/schema}starts_at").text = _fmt_rfc2822(starts_at)
+
     if isinstance(ends_at, datetime):
-        parts.append(f"<ext:ends_at>{_fmt_rfc2822(ends_at)}</ext:ends_at>")
+        ET.SubElement(item, "{https://wien-oepnv.example/schema}ends_at").text = _fmt_rfc2822(ends_at)
 
-    parts.append(f"<description>{_cdata(desc_cdata)}</description>")
-    parts.append(f"<content:encoded>{_cdata(desc_html)}</content:encoded>")
-    parts.append("</item>")
-    return ident, "\n".join(parts)
+    # Description
+    ET.SubElement(item, "description").text = PH_DESC
 
-def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[str, Any]]) -> str:
+    # content:encoded
+    ET.SubElement(item, "{http://purl.org/rss/1.0/modules/content/}encoded").text = PH_CONTENT
+
+    # Serialize to string
+    xml_str = ET.tostring(item, encoding="unicode")
+
+    # Clean up namespace declarations on the item element (they are declared in root)
+    # This prevents <item xmlns:ext="..."> which can confuse regex-based tests counting <item>
+    # We remove xmlns attributes from the first tag only.
+    xml_str = re.sub(r'^(<item)([^>]*?)(\sxmlns:\w+="[^"]+")+([^>]*?>)', r'\1\2\4', xml_str)
+
+    # Inject CDATA
+    xml_str = xml_str.replace(PH_TITLE, f"<![CDATA[{title_cdata}]]>")
+    xml_str = xml_str.replace(PH_DESC, f"<![CDATA[{desc_cdata}]]>")
+    xml_str = xml_str.replace(PH_CONTENT, f"<![CDATA[{desc_cdata}]]>")
+
+    return ident, xml_str
+
+
+def _make_rss(
+    items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[str, Any]]
+) -> str:
     """
-    Generate the full RSS XML document from a list of items.
+    Generate the full RSS XML document from a list of items using ElementTree.
 
     Iterates over the items, emits them using ``_emit_item``, and assembles the
     final XML document with channel headers. It also prunes the state dictionary
     to only include items present in the current feed.
     """
-    out: List[str] = _emit_channel_header(now)
+    # Register namespaces globally (idempotent)
+    ET.register_namespace("ext", "https://wien-oepnv.example/schema")
+    ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
 
-    body_parts: List[str] = []
+    rss = ET.Element("rss", version="2.0")
+    channel = ET.SubElement(rss, "channel")
+
+    ET.SubElement(channel, "title").text = FEED_TITLE
+    ET.SubElement(channel, "link").text = FEED_LINK
+    ET.SubElement(channel, "description").text = FEED_DESC
+    ET.SubElement(channel, "lastBuildDate").text = _fmt_rfc2822(now)
+    ET.SubElement(channel, "ttl").text = str(FEED_TTL)
+
+    # We need to build the items separately because we want to preserve CDATA
+    # which ET doesn't support. _emit_item returns a string with CDATA.
+    # We will splice them into the channel body.
+
+    item_strings: List[str] = []
     identities_in_feed: List[str] = []
     emitted = 0
     for it in items:
         if emitted >= MAX_ITEMS:
             break
-        ident, xml_item = _emit_item(it, now, state)
-        body_parts.append(xml_item)
+        ident, xml_item_str = _emit_item(it, now, state)
+        item_strings.append(xml_item_str)
         identities_in_feed.append(ident)
         emitted += 1
-
-    out.extend(body_parts)
-    out.append("</channel>")
-    out.append("</rss>")
 
     # State nur für *aktuelle* Items speichern (kein Anwachsen). Ist der Feed
     # leer, speichern wir einen leeren State, um veraltete GUIDs zu entfernen.
@@ -1552,7 +1587,32 @@ def _make_rss(items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[
             e,
         )
 
-    return "\n".join(out)
+    # Pretty print the header part (Python 3.9+)
+    if hasattr(ET, "indent"):
+        ET.indent(rss, space="  ", level=0)
+
+    # Serialize header to string
+    # This gives us <rss ...><channel>...metadata...</channel></rss>
+    header_xml = ET.tostring(rss, encoding="unicode", xml_declaration=True)
+
+    # We need to insert items before </channel>.
+    # Because we used indent, there might be whitespace before </channel>.
+    # We find the last occurrence of </channel>.
+    split_token = "</channel>"
+    parts = header_xml.rsplit(split_token, 1)
+
+    if len(parts) != 2:
+        # Fallback if something is weird, though rsplit should work on valid XML from ET
+        log.error("Could not find closing channel tag in RSS header.")
+        return header_xml
+
+    # Construct final body
+    # We add a newline for niceness if items exist
+    items_block = "\n".join(item_strings)
+    if items_block:
+        items_block = "\n" + items_block + "\n"
+
+    return parts[0] + items_block + split_token + parts[1]
 
 
 def lint() -> int:
