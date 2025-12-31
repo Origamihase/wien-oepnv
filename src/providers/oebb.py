@@ -31,7 +31,7 @@ if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type check
     from ..utils.env import get_bool_env
     from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.ids import make_guid
-    from ..utils.stations import canonical_name, is_in_vienna, is_pendler
+    from ..utils.stations import canonical_name, is_in_vienna, is_pendler, station_by_oebb_id
     from ..utils.text import html_to_text
 else:  # pragma: no cover - support both package layouts at runtime
     try:
@@ -42,11 +42,11 @@ else:  # pragma: no cover - support both package layouts at runtime
     try:
         from utils.ids import make_guid
         from utils.text import html_to_text
-        from utils.stations import canonical_name, is_in_vienna, is_pendler
+        from utils.stations import canonical_name, is_in_vienna, is_pendler, station_by_oebb_id
     except ModuleNotFoundError:
         from ..utils.ids import make_guid  # type: ignore
         from ..utils.text import html_to_text  # type: ignore
-        from ..utils.stations import canonical_name, is_in_vienna, is_pendler  # type: ignore
+        from ..utils.stations import canonical_name, is_in_vienna, is_pendler, station_by_oebb_id  # type: ignore
 
     try:
         from utils.http import session_with_retries, validate_http_url, fetch_content_safe
@@ -237,6 +237,42 @@ def _keep_by_region(title: str, desc: str) -> bool:
         return False
     return True
 
+# ---------------- Fallback Helpers ----------------
+def _extract_id_from_url(url: str) -> Optional[int]:
+    """
+    Extracts a numeric ID (e.g., station ID) from the end of a URL/GUID.
+    Matches ...&123456 or ...?123456.
+    """
+    if not url:
+        return None
+    # Looking for &<digits> or ?<digits> at string end or before hash/other param
+    # User example: ...&752992
+    match = re.search(r"[?&](\d{6,})(?:$|[#&])", url)
+    if match:
+        return int(match.group(1))
+    return None
+
+def _find_stations_in_text(blob: str) -> List[str]:
+    """
+    Scans text for known station names using a sliding window.
+    Returns a list of unique canonical station names found.
+    """
+    # Use whitespace splitting to preserve punctuation like '.' in 'St. Pölten'
+    tokens = [t for t in blob.split() if t]
+    if not tokens:
+        return []
+
+    found = set()
+    window = min(_MAX_STATION_WINDOW, len(tokens))
+    for size in range(window, 0, -1):
+        for idx in range(len(tokens) - size + 1):
+            chunk = " ".join(tokens[idx : idx + size])
+            canon = canonical_name(chunk)
+            if canon:
+                found.add(canon)
+
+    return sorted(list(found))
+
 # ---------------- Fetch/Parse ----------------
 def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
     with session_with_retries(USER_AGENT) as s:
@@ -316,6 +352,34 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         desc_html = _get_text(item, "description")
         desc = html_to_text(desc_html)
         pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
+
+        # Title Fallback for "poor" titles
+        def _is_poor_title(t: str) -> bool:
+            return not t or not any(c.isalnum() for c in t) or t == "-"
+
+        if _is_poor_title(title):
+            # Attempt 1: ID from Link/GUID
+            station_id = _extract_id_from_url(link) or _extract_id_from_url(guid)
+            if station_id:
+                found_name = station_by_oebb_id(station_id)
+                if found_name:
+                    title = found_name
+
+            # Attempt 2: Text extraction (if still poor)
+            if _is_poor_title(title):
+                stations_found = _find_stations_in_text(desc)
+                if len(stations_found) == 1:
+                    title = stations_found[0]
+                elif len(stations_found) >= 2:
+                    title = f"{stations_found[0]} ↔ {stations_found[1]}"
+
+            # Attempt 3: Truncation
+            if _is_poor_title(title):
+                snippet = desc.strip()
+                if len(snippet) > 40:
+                    snippet = snippet[:40] + "..."
+                if snippet:
+                    title = snippet
 
         # Region-Filter: nur Wien + definierter Pendelraum
         if not _keep_by_region(title, desc):
