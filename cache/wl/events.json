@@ -135,12 +135,36 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "38: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Die Linie 38 ist derzeit in Richtung Schottentor an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 16:10 Uhr. Grund dafür ist ein Polizeieinsatz im Bereich Grinzing.",
+    "description": "Die Linie 38 ist derzeit in Richtung Schottentor an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 16:30 Uhr. Grund dafür ist ein Polizeieinsatz im Bereich Grinzing.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "14b787061b8e077e79d48423bff586516bd1c55ab89e303fd510de9c03ccc6d9",
     "pubDate": "2026-01-01T15:35:00+01:00",
-    "starts_at": "2026-01-01T15:42:05+01:00",
+    "starts_at": "2026-01-01T16:08:57+01:00",
     "ends_at": "2026-01-01T23:55:00+01:00",
     "_identity": "wl|störung|L=38|D=2026-01-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Vandalismus",
+    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Vandalismus.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "080fbd09add2b1122a5bda1d47d95c77b8bc427edd505ab205116a242f7e6d97",
+    "pubDate": "2026-01-01T16:05:00+01:00",
+    "starts_at": "2026-01-01T16:05:00+01:00",
+    "ends_at": "2026-01-01T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2026-01-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "35A: Verspätungen",
+    "description": "Die Linie 35 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "67c751137c6566f442303d569ccfcae2618b18c074923f44066938ab05204482",
+    "pubDate": "2026-01-01T16:15:00+01:00",
+    "starts_at": "2026-01-01T16:15:00+01:00",
+    "ends_at": "2026-01-01T23:55:00+01:00",
+    "_identity": "wl|störung|L=35A|D=2026-01-01"
   }
 ]
