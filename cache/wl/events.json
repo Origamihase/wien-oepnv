@@ -86,18 +86,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "1/2/71/D/U1/U3: Silvesterpfad 2025",
-    "description": "Silvesterpfad 2025\nIm Zuge des Silvesterpfades 2025 kommt zu folgenden Verkehrsmaßnahmen:\nZeitraum:\nMittwoch, 31. Dezember 2025, ab zirka 18:30 Uhr bis Donnerstag, 01.01.2026, etwa 02:00 Uhr.\nMaßnahmen:\nLinien U1 und U3\nKein Halt in der Station Stephansplatz ab circa 21:00 Uhr.\nDie Veranstaltungen erreichen Sie von den Stationen Schwedenplatz, Karlsplatz, Herrengasse und Stubentor.\nLinie D\nUmleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U.\nLinie 1\nUmleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz.\nLinie 2\nUmleitung in beiden Richtungen zwischen Ring, Volkstheater U und Rathaus U über die Reichsratstraße. Fahrgäste Richtung Dornbach finden die Züge in der Haltestelle der Linien 46, 49 und 48 A.\nLinie 71\nBetrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.\nWeiteres:\nBeachten Sie bitte, dass die genannten Verkehrsmaßnahmen nicht alle gleichzeitig auftreten müssen. Je nach Fortschritt und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf www.wienerlinien.at.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "974d25ed0d7095a5cce4f48053d25bd5b72d8733851fde80b7dfe8c0a45941c0",
-    "pubDate": "2025-12-09T13:30:00+01:00",
-    "starts_at": "2025-12-09T13:30:00+01:00",
-    "ends_at": "2026-01-01T02:00:00+01:00",
-    "_identity": "wl|hinweis|L=1,2,71,D,U1,U3|D=2025-12-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "N62: Bauarbeiten ab 08.01.2026",
     "description": "Rohrleitungsarbeiten\nWegen Bauarbeiten im Bereich der Wiedner Hauptstraße wird die Linie N62 umgeleitet.\nZeitraum:\nAb Donnerstag, 08. Jänner 2026 (Nacht von 07.01 auf 08.01) bis voraussichtlich Ende April 2026.\nMaßnahmen:\nLinie N62 in Richtung Oper, Karlsplatz U\nUmleitung ab Wiedner Hauptstraße # Kriehubergasse über Kriehubergasse – Rainergasse – Schönburggasse – Wiedner Hauptstraße zur Stammstrecke.\nAufgelassene Haltestelle:\nJohann-Strauß-Gasse (Wiedner Hauptstraße 71)\nErsatz Haltestelle:\nJohann-Strauß-Gasse (Schönburgstraße vor Wiedner Hauptstraße)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -134,14 +122,50 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Silvesterpfad Betrieb ab Heinestraße",
-    "description": "Silvesterpfad Betrieb ab Heinestraße",
+    "title": "71: Silvesterpfad Betrieb ab Schwarzenbergplatz",
+    "description": "Silvesterpfad Betrieb ab Schwarzenbergplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "143c131d0ba5807b31f85fb67914d736b33fe4bb2a5f8a0722d2f5dc7810e4ab",
+    "guid": "f3fbe9be37911134a8796dfe571f297be62bca57873dba39ee0110436d381d33",
     "pubDate": "2025-12-31T18:29:58+01:00",
-    "starts_at": "2026-01-01T00:08:02+01:00",
-    "ends_at": "2026-01-01T02:15:00+01:00",
-    "_identity": "wl|störung|L=2|D=2025-12-31"
+    "starts_at": "2025-12-31T18:29:58+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
+    "_identity": "wl|störung|L=71|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Silvesterpfad Betrieb ab Schwarzenbergplatz",
+    "description": "Silvesterpfad Betrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "616b77fdbeb1cc2cf412bcad5c0b611145ca0f187220eefab819f871cca49460",
+    "pubDate": "2025-12-31T18:29:58+01:00",
+    "starts_at": "2025-12-31T18:29:58+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
+    "_identity": "wl|störung|L=D|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Silvesterpfad Züge halten bei Schottenring 19",
+    "description": "Silvesterpfad Züge halten bei Schottenring 19",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9fa5bc4a1e77fa1916b896b4bf9fe50a59c729bb3a036d086d45bc35cd5b90b1",
+    "pubDate": "2025-12-31T18:29:58+01:00",
+    "starts_at": "2025-12-31T18:29:58+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
+    "_identity": "wl|störung|L=D|D=2025-12-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Silvesterpfad Kein Betrieb",
+    "description": "Silvesterpfad Kein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b03985f0488e9d9c328dc8d95b2563f2762da3e8f8fbde13c20ffd7bebcfa8a9",
+    "pubDate": "2025-12-31T18:29:58+01:00",
+    "starts_at": "2025-12-31T18:29:58+01:00",
+    "ends_at": "2026-01-01T04:30:00+01:00",
+    "_identity": "wl|störung|L=71|D=2025-12-31"
   },
   {
     "source": "Wiener Linien",
@@ -158,14 +182,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Silvesterpfad Betrieb ab Schwarzenbergplatz",
-    "description": "Silvesterpfad Betrieb ab Schwarzenbergplatz",
+    "title": "2: Silvesterpfad Züge halten bei Burgring nach Bellariastraße",
+    "description": "Silvesterpfad Züge halten bei Burgring nach Bellariastraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f3fbe9be37911134a8796dfe571f297be62bca57873dba39ee0110436d381d33",
+    "guid": "2e54129b0ac81ca8f2f528738b6eff9c710f9db1bf4071a2159ba8e9b4c76c5d",
     "pubDate": "2025-12-31T18:29:58+01:00",
     "starts_at": "2025-12-31T18:29:58+01:00",
     "ends_at": "2026-01-01T04:30:00+01:00",
-    "_identity": "wl|störung|L=71|D=2025-12-31"
+    "_identity": "wl|störung|L=2|D=2025-12-31"
   },
   {
     "source": "Wiener Linien",
@@ -194,42 +218,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Silvesterpfad Betrieb ab Schwarzenbergplatz",
-    "description": "Silvesterpfad Betrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "616b77fdbeb1cc2cf412bcad5c0b611145ca0f187220eefab819f871cca49460",
-    "pubDate": "2025-12-31T18:29:58+01:00",
-    "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2026-01-01T04:30:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Silvesterpfad Kein Betrieb",
-    "description": "Silvesterpfad Kein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b03985f0488e9d9c328dc8d95b2563f2762da3e8f8fbde13c20ffd7bebcfa8a9",
-    "pubDate": "2025-12-31T18:29:58+01:00",
-    "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2026-01-01T04:30:00+01:00",
-    "_identity": "wl|störung|L=71|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Silvesterpfad Züge halten bei Schottenring 17",
-    "description": "Silvesterpfad Züge halten bei Schottenring 17",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "290120afe15c7dd4e2b4d93f321f3780523756e7b3dd80a01e60fd46a0a7d6e1",
-    "pubDate": "2025-12-31T18:29:58+01:00",
-    "starts_at": "2025-12-31T18:29:58+01:00",
-    "ends_at": "2026-01-01T04:30:00+01:00",
-    "_identity": "wl|störung|L=D|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Silvesterpfad Betrieb ab Resselgasse",
     "description": "Silvesterpfad Betrieb ab Resselgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -250,18 +238,6 @@
     "starts_at": "2025-12-31T18:38:40+01:00",
     "ends_at": "2026-01-01T04:30:00+01:00",
     "_identity": "wl|störung|L=1|D=2025-12-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1/U3: Veranstaltung",
-    "description": "Derzeit können die Züge der Linien U1 und U3 die Station Stephansplatz in beiden Richtungen nicht einhalten. Bitte benutzen Sie die Stationen Karlsplatz U, Herrengasse U, Schwedenplatz U sowie Stubentor U, um den Silvesterpfad zu erreichen. Die Sperre dauert voraussichtlich bis 01.01.2026, ca. 2:00 Uhr. Grund dafür ist eine Veranstaltung im Bereich Stephansplatz. Currently, trains on lines U1 and U3 cannot stop at Stephansplatz station in either direction. Please use Karlsplatz U, Herrengasse U, Schwedenplatz U and Stubentor U stations to reach the New Year's Eve trail. The closure is expected to last until 1 January 2026, approximately 2:00 a.m. The reason for this is an event in the Stephansplatz area.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "48a6463e5599d3793735e1ab004450a5c6409069c75314425b1f560e3abf39d3",
-    "pubDate": "2025-12-31T20:35:00+01:00",
-    "starts_at": "2025-12-31T20:35:00+01:00",
-    "ends_at": "2026-01-01T03:00:00+01:00",
-    "_identity": "wl|störung|L=U1,U3|D=2025-12-31"
   },
   {
     "source": "Wiener Linien",
@@ -302,13 +278,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Silvesterpfad Züge halten bei der Linie 5B",
-    "description": "Silvesterpfad Züge halten bei der Linie 5 B",
+    "title": "41: Schadhaftes Fahrzeug",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "34c7598b3f2541d87a16c27a878a6afc0508d18e3ea9075221803d9a604514f4",
-    "pubDate": "2026-01-01T00:09:05+01:00",
-    "starts_at": "2026-01-01T00:09:05+01:00",
-    "ends_at": "2026-01-01T01:07:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-01-01"
+    "guid": "72eb75aa42c7e47445cd50c7115766c40679cb9642b1c117c5e7dcae91dab1e4",
+    "pubDate": "2026-01-01T01:40:00+01:00",
+    "starts_at": "2026-01-01T01:40:00+01:00",
+    "ends_at": "2026-01-01T23:55:00+01:00",
+    "_identity": "wl|störung|L=41|D=2026-01-01"
   }
 ]
