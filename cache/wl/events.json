@@ -134,14 +134,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/6: Stromstörung",
-    "description": "Die Linie 1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Stromstörung im Bereich SIccardsburggasse.",
+    "title": "1: Stromstörung",
+    "description": "Die Linie 1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Stromstörung im Bereich SIccardsburggasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "16c7c0a4ba696e92e84ae7c42d49eba34e58f67766131e03f867a13b1dc97f15",
+    "guid": "d3a7d59c112413b6a0a1229407678b3d535f605e66bdc8720ef9b7e6765fe036",
     "pubDate": "2026-01-02T05:00:00+01:00",
     "starts_at": "2026-01-02T05:00:00+01:00",
     "ends_at": "2026-01-02T23:55:00+01:00",
-    "_identity": "wl|störung|L=1,6|D=2026-01-02"
+    "_identity": "wl|störung|L=1|D=2026-01-02"
   },
   {
     "source": "Wiener Linien",
@@ -158,18 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6/11/18/D/O: Stromstörung",
-    "description": "Die Linie 6 ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Linie 11 fährt derzeit nur zwischen Kaiserebersdorf, Zinnergasse und Absberggasse. Die Linie 18 ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Linie D ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Linie O ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Weichen Sie auf die S-Bahnen aus. Grund dafür ist eine Stromstörung im Bereich Quartier Belvedere S.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e689fe2da975d84feef4b34fbe1773d46e6b5b82646972e5b69894d82954c7b5",
-    "pubDate": "2026-01-02T05:40:00+01:00",
-    "starts_at": "2026-01-02T05:40:00+01:00",
-    "ends_at": "2026-01-02T23:55:00+01:00",
-    "_identity": "wl|störung|L=11,18,6,D,O|D=2026-01-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "38A: Schadhaftes Fahrzeug",
     "description": "Die Linie 38 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -178,5 +166,125 @@
     "starts_at": "2026-01-02T05:50:00+01:00",
     "ends_at": "2026-01-02T23:55:00+01:00",
     "_identity": "wl|störung|L=38A|D=2026-01-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung wegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a1e1c5690c5ed252608dab14d1d287b0324238fdde3d39b1597b152fd9095c14",
+    "pubDate": "2026-01-02T05:51:30+01:00",
+    "starts_at": "2026-01-02T05:51:53+01:00",
+    "ends_at": "2026-01-02T06:51:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-01-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Stromstörung Betrieb ab Absberggasse",
+    "description": "Stromstörung Betrieb ab Absberggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "942abec00fc981a2845ed9a1e82adc888bdb02abc5acc5c5ffd20de261d3d975",
+    "pubDate": "2026-01-02T05:51:58+01:00",
+    "starts_at": "2026-01-02T05:52:22+01:00",
+    "ends_at": "2026-01-02T06:51:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-01-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung wegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "43af55e593e401ae3f42239fe3f2a3b5a3535c3089af02d052a809738853421a",
+    "pubDate": "2026-01-02T05:54:47+01:00",
+    "starts_at": "2026-01-02T06:03:16+01:00",
+    "ends_at": "2026-01-02T10:00:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-01-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Stromstörung Betrieb ab Quartier Belvedere",
+    "description": "Stromstörung Betrieb ab Quartier Belvedere",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7d78df43255bdcdf668a1bb2568b23e47e18caeeb127b3e1a7c0ad8f1337890",
+    "pubDate": "2026-01-02T05:55:16+01:00",
+    "starts_at": "2026-01-02T05:55:25+01:00",
+    "ends_at": "2026-01-02T10:00:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-01-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Stromstörung Einstieg bei Linie D Richtung Nußdorf",
+    "description": "Stromstörung Einstieg bei Linie D Richtung Nußdorf",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "39f509c0d8ad7864f8b210eeb509b944d169deac0a17e0fd48672820ef3a9895",
+    "pubDate": "2026-01-02T05:55:54+01:00",
+    "starts_at": "2026-01-02T05:55:54+01:00",
+    "ends_at": "2026-01-02T10:00:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-01-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung wegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "faa7515363efc4e5a4f804f3db9aaeb8cec74d4149ea2a4819233aa214b79f0e",
+    "pubDate": "2026-01-02T06:00:31+01:00",
+    "starts_at": "2026-01-02T06:11:43+01:00",
+    "ends_at": "2026-01-02T10:00:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-01-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung wegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "170e29284578c9f26d82c2210ab4c2117142719000c2e5526f2ef66a2570a23e",
+    "pubDate": "2026-01-02T06:02:08+01:00",
+    "starts_at": "2026-01-02T06:02:08+01:00",
+    "ends_at": "2026-01-02T07:00:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-01-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Stromstörung Betrieb ab Schwarzenbergplatz",
+    "description": "Stromstörung Betrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "96dea7baae4ac7b09de0d6f7c737744eb48f8a0299c3b418f62ad1c6ab637437",
+    "pubDate": "2026-01-02T06:02:37+01:00",
+    "starts_at": "2026-01-02T06:02:38+01:00",
+    "ends_at": "2026-01-02T07:01:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-01-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Stromstörung Betrieb ab Praterstern",
+    "description": "Stromstörung Betrieb ab Praterstern",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "008841fe1c556e9ba62e8f6ec17a783b06564e315075ec256d4b5d2d157dfb53",
+    "pubDate": "2026-01-02T06:03:33+01:00",
+    "starts_at": "2026-01-02T06:03:40+01:00",
+    "ends_at": "2026-01-02T07:03:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-01-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung wegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "766fe796b58fc2ff36f754a41a9a791c7797370db621475f344507cb23eb1e40",
+    "pubDate": "2026-01-02T06:05:27+01:00",
+    "starts_at": "2026-01-02T06:05:32+01:00",
+    "ends_at": "2026-01-02T07:05:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-01-02"
   }
 ]
