@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38A: Schadhaftes Fahrzeug",
-    "description": "Die Linie 38 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "70091138a7ffd10e070ec8ab8dc2bf58be312bb1c49f7b829ed2aa4053b90e87",
-    "pubDate": "2026-01-02T05:50:00+01:00",
-    "starts_at": "2026-01-02T05:50:00+01:00",
-    "ends_at": "2026-01-02T23:55:00+01:00",
-    "_identity": "wl|störung|L=38A|D=2026-01-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "O: Fahrtbehinderung wegen Stromstörung",
     "description": "Fahrtbehinderung wegen Stromstörung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -213,6 +201,18 @@
     "pubDate": "2026-01-02T05:54:47+01:00",
     "starts_at": "2026-01-02T05:54:56+01:00",
     "ends_at": "2026-01-02T10:00:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-01-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Stromstörung Umleitung bis Quartier Belvedere über Linien 11 und D",
+    "description": "Stromstörung Umleitung bis Quartier Belvedere über Linien 11 und D",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6514f4d84c031a613f9600a8a532de752e5f42ebad2f6cd171ba0116fcc4be4b",
+    "pubDate": "2026-01-02T05:54:56+01:00",
+    "starts_at": "2026-01-02T05:55:16+01:00",
+    "ends_at": "2026-01-02T13:00:00+01:00",
     "_identity": "wl|störung|L=O|D=2026-01-02"
   },
   {
@@ -236,18 +236,6 @@
     "guid": "f0991d43344dc4ffeb1fe246c83390fad7d7f6dc8a79e7bc87e34dbcc2da1ea0",
     "pubDate": "2026-01-02T05:54:56+01:00",
     "starts_at": "2026-01-02T05:54:56+01:00",
-    "ends_at": "2026-01-02T13:00:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-01-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Stromstörung Umleitung bis Quartier Belvedere über Linien 11 und D",
-    "description": "Stromstörung Umleitung bis Quartier Belvedere über Linien 11 und D",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6514f4d84c031a613f9600a8a532de752e5f42ebad2f6cd171ba0116fcc4be4b",
-    "pubDate": "2026-01-02T05:54:56+01:00",
-    "starts_at": "2026-01-02T05:55:16+01:00",
     "ends_at": "2026-01-02T13:00:00+01:00",
     "_identity": "wl|störung|L=O|D=2026-01-02"
   },
@@ -298,18 +286,6 @@
     "starts_at": "2026-01-02T06:05:32+01:00",
     "ends_at": "2026-01-02T09:00:00+01:00",
     "_identity": "wl|störung|L=6|D=2026-01-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "84A: Verkehrsunfall",
-    "description": "Die Linie 84 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Billgasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5d702aa13277ee935b7d4f0b9d4455572013ee81e209df9b678bbff8032d361f",
-    "pubDate": "2026-01-02T06:55:00+01:00",
-    "starts_at": "2026-01-02T06:55:00+01:00",
-    "ends_at": "2026-01-02T23:55:00+01:00",
-    "_identity": "wl|störung|L=84A|D=2026-01-02"
   },
   {
     "source": "Wiener Linien",
