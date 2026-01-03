@@ -146,18 +146,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Fahrtbehinderung Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 63 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d2feb2e43a915bc5c355b50989a85dd948e859e49cfed575aee9b774034ace44",
-    "pubDate": "2026-01-03T19:00:00+01:00",
-    "starts_at": "2026-01-03T19:00:51+01:00",
-    "ends_at": "2026-01-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=63A|D=2026-01-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U1: Betriebsstörung",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -166,5 +154,29 @@
     "starts_at": "2026-01-03T19:00:00+01:00",
     "ends_at": "2026-01-03T23:55:00+01:00",
     "_identity": "wl|störung|L=U1|D=2026-01-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 25 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
+    "pubDate": "2026-01-03T19:50:00+01:00",
+    "starts_at": "2026-01-03T19:54:18+01:00",
+    "ends_at": "2026-01-03T23:55:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-01-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "93A: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9139b858cc5b32fdae2329398eff2f761358a89ef3a321b858732fb73e5850fa",
+    "pubDate": "2026-01-03T19:58:21+01:00",
+    "starts_at": "2026-01-03T19:58:21+01:00",
+    "ends_at": "2026-01-03T20:57:00+01:00",
+    "_identity": "wl|störung|L=93A|D=2026-01-03"
   }
 ]
