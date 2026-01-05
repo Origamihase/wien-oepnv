@@ -134,50 +134,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Fahrleitungsgebrechen Betrieb ab Dörfelstraße",
-    "description": "Fahrleitungsgebrechen Betrieb ab Dörfelstraße",
+    "title": "62/WLB: Beschädigte Oberleitung",
+    "description": "Die Linie 62 fährt derzeit nicht zwischen Bahnhof Meidling, Dörfelstraße und Wattmanngasse. Die Badner Bahn fährt derzeit nicht zwischen Bahnhof Meidling, Dörfelstraße und Schöpfwerk. Weichen Sie auf die Linien U6, 60, 58 A, 58 B, 62 A, 63 A, 66 A und die S-Bahn aus. Die Störung dauert voraussichtlich bis 10:00 Uhr. Grund dafür ist eine beschädigte Oberleitung im Bereich Bahnhof Meidling.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7c5a0dbd6397f1547e00662aa310caddaaf5ea4a5ade3331dd39c44f838f0c3d",
-    "pubDate": "2026-01-05T06:57:39+01:00",
-    "starts_at": "2026-01-05T06:57:46+01:00",
-    "ends_at": "2026-01-05T08:44:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-01-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Fahrleitungsgebrechen Betrieb ab Wattmanngasse",
-    "description": "Fahrleitungsgebrechen Betrieb ab Wattmanngasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e69086c4cf429e7591071678bca294300adf9190ac4c29d9ca28088483cbaec",
-    "pubDate": "2026-01-05T06:58:44+01:00",
-    "starts_at": "2026-01-05T07:46:36+01:00",
-    "ends_at": "2026-01-05T08:45:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-01-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "WLB: Fahrleitungsgebrechen Betrieb ab Dörfelstraße",
-    "description": "Fahrleitungsgebrechen Betrieb ab Dörfelstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3b103afc1eff8fcdb8ebfcb9f5fc21fce76c5f5b82c20442fde857a043efc8af",
-    "pubDate": "2026-01-05T07:02:36+01:00",
-    "starts_at": "2026-01-05T07:02:36+01:00",
-    "ends_at": "2026-01-05T08:46:00+01:00",
-    "_identity": "wl|störung|L=WLB|D=2026-01-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "WLB: Fahrleitungsgebrechen Betrieb ab Schöpfwerk",
-    "description": "Fahrleitungsgebrechen Betrieb ab Schöpfwerk",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dc9a352fe57de12c5f3591ea874c29047c6bc8e8b8154ce0528e499de1610284",
-    "pubDate": "2026-01-05T07:04:03+01:00",
-    "starts_at": "2026-01-05T07:04:03+01:00",
-    "ends_at": "2026-01-05T08:47:00+01:00",
-    "_identity": "wl|störung|L=WLB|D=2026-01-05"
+    "guid": "2486c2891107b231f56741768ee1c16a8ef3e526f80c604a6a3892b7a46b5c7f",
+    "pubDate": "2026-01-05T06:50:00+01:00",
+    "starts_at": "2026-01-05T06:50:00+01:00",
+    "ends_at": "2026-01-05T23:55:00+01:00",
+    "_identity": "wl|störung|L=62,WLB|D=2026-01-05"
   },
   {
     "source": "Wiener Linien",
