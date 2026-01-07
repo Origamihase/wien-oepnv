@@ -135,12 +135,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "31: Rettungseinsatz Betrieb ab Floridsdorfer Markt",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 31 zu unterschiedlichen Intervallen.",
+    "description": "Rettungseinsatz Betrieb ab Floridsdorfer Markt",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "93779f2373f8195241c5ab62df54f31689b7c4f93a9f65654658fd3b67c3a983",
-    "pubDate": "2026-01-07T14:40:00+01:00",
+    "pubDate": "2026-01-07T14:42:02+01:00",
     "starts_at": "2026-01-07T14:43:28+01:00",
-    "ends_at": "2026-01-07T23:55:00+01:00",
+    "ends_at": "2026-01-07T19:00:00+01:00",
     "_identity": "wl|störung|L=31|D=2026-01-07"
   },
   {
@@ -162,7 +162,7 @@
     "description": "Rettungseinsatz Betrieb ab Nordbrücke",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
-    "pubDate": "2026-01-07T14:56:59+01:00",
+    "pubDate": "2026-01-07T14:57:28+01:00",
     "starts_at": "2026-01-07T14:57:28+01:00",
     "ends_at": "2026-01-07T19:00:00+01:00",
     "_identity": "wl|störung|L=|D=2026-01-07"
@@ -202,5 +202,41 @@
     "starts_at": "2026-01-07T17:14:51+01:00",
     "ends_at": "2026-01-07T18:14:00+01:00",
     "_identity": "wl|störung|L=46|D=2026-01-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Siebenhirten.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-01-07T17:30:00+01:00",
+    "starts_at": "2026-01-07T17:30:00+01:00",
+    "ends_at": "2026-01-07T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2026-01-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "69A: Fremder Verkehrsunfall",
+    "description": "Die Linie 69 A wird in beiden Richtungen zwischen Gattergasse und Am Kanal über Hasenleitengasse, Lorystraße und Grillgasse umgeleitet. Die Störung dauert voraussichtlich bis 18:30 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Schemmerlstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9c2d8999eea9f81ceccf426b45628544b1ad275f5ebdcce19cfc2e83a426820c",
+    "pubDate": "2026-01-07T17:40:00+01:00",
+    "starts_at": "2026-01-07T17:40:00+01:00",
+    "ends_at": "2026-01-07T23:55:00+01:00",
+    "_identity": "wl|störung|L=69A|D=2026-01-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "69A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "80d2f7f33fd3356a5072cedd55bc8ce68e91e599cf789ed1d83fe49b69dfa777",
+    "pubDate": "2026-01-07T17:44:52+01:00",
+    "starts_at": "2026-01-07T17:45:22+01:00",
+    "ends_at": "2026-01-07T18:44:00+01:00",
+    "_identity": "wl|störung|L=69A|D=2026-01-07"
   }
 ]
