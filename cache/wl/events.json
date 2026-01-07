@@ -142,5 +142,41 @@
     "starts_at": "2026-01-07T11:35:00+01:00",
     "ends_at": "2026-01-07T23:55:00+01:00",
     "_identity": "wl|störung|L=26A|D=2026-01-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40/41: Falschparker",
+    "description": "Die Linie 40 wird in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper und Gersthof über Michelbeuern-AKH umgeleitet. Die Linie 41 wird in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper und Gersthof über Michelbeuern-AKH umgeleitet. Die Störung dauert voraussichtlich bis 12:30 Uhr. Grund dafür ist ein Falschparker im Bereich Gentzgasse 116.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130",
+    "pubDate": "2026-01-07T12:10:00+01:00",
+    "starts_at": "2026-01-07T12:10:00+01:00",
+    "ends_at": "2026-01-07T23:55:00+01:00",
+    "_identity": "wl|störung|L=40,41|D=2026-01-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Verspätungen",
+    "description": "Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Sillerplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ed273bb9b3ad9ca9955a318015cde52f70c2fd133a1b085c49a27877e35affcb",
+    "pubDate": "2026-01-07T12:10:00+01:00",
+    "starts_at": "2026-01-07T12:10:00+01:00",
+    "ends_at": "2026-01-07T23:55:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-01-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Falschparker Betrieb ab Gersthof",
+    "description": "Falschparker Betrieb ab Gersthof",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
+    "pubDate": "2026-01-07T12:12:03+01:00",
+    "starts_at": "2026-01-07T12:12:03+01:00",
+    "ends_at": "2026-01-07T13:11:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-01-07"
   }
 ]
