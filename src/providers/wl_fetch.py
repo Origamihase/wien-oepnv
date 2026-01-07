@@ -44,6 +44,15 @@ else:  # pragma: no cover - support both package layouts at runtime
     except ModuleNotFoundError:
         from ..utils.stations import canonical_name  # type: ignore
 
+try:
+    from feed.config import ENDS_AT_GRACE_MINUTES
+except ModuleNotFoundError:
+    try:
+        from ..feed.config import ENDS_AT_GRACE_MINUTES
+    except ModuleNotFoundError:
+        # Fallback if config is unreachable (e.g. tests)
+        ENDS_AT_GRACE_MINUTES = 10
+
 from .wl_lines import (
     _detect_line_pairs_from_text,
     _ensure_line_prefix,
@@ -116,7 +125,7 @@ def _best_ts(obj: Dict[str, Any]) -> Optional[datetime]:
 def _is_active(start: Optional[datetime], end: Optional[datetime], now: datetime) -> bool:
     if start and start > now:
         return False
-    if end and end < (now - timedelta(minutes=10)):
+    if end and end < (now - timedelta(minutes=ENDS_AT_GRACE_MINUTES)):
         return False
     return True
 
