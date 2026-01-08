@@ -278,25 +278,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11/6: Betriebsstörung",
-    "description": "Die Linie 6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 11 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Gellertplatz.",
+    "title": "6: Verspätungen",
+    "description": "Die Linie 6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "41c3f80b1bd8bc568e15727fe66fada1bc1554484e5fa7b1a3ae1c453c78e400",
-    "pubDate": "2026-01-08T14:20:00+01:00",
-    "starts_at": "2026-01-08T14:20:00+01:00",
+    "guid": "03b747bc4c57f0d83aba2ed60a1156b616a882a8e9b1ca40258d97373518d195",
+    "pubDate": "2026-01-08T15:15:00+01:00",
+    "starts_at": "2026-01-08T15:15:00+01:00",
     "ends_at": "2026-01-08T23:55:00+01:00",
-    "_identity": "wl|störung|L=11,6|D=2026-01-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71A: Verspätungen",
-    "description": "Die Linie 71 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cf75f820e6ea238de15daeb74960add84971dca4262191847fb3825bc9ca9958",
-    "pubDate": "2026-01-08T14:20:00+01:00",
-    "starts_at": "2026-01-08T14:20:00+01:00",
-    "ends_at": "2026-01-08T23:55:00+01:00",
-    "_identity": "wl|störung|L=71A|D=2026-01-08"
+    "_identity": "wl|störung|L=6|D=2026-01-08"
   }
 ]
