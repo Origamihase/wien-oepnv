@@ -154,5 +154,29 @@
     "starts_at": "2026-01-08T22:30:00+01:00",
     "ends_at": "2026-01-08T23:55:00+01:00",
     "_identity": "wl|störung|L=D|D=2026-01-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Rettungseinsatz",
+    "description": "Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Dänenstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "219e547df2be869f9c5e196043c5ef1b5d356073d50ea5347540dd618f54101f",
+    "pubDate": "2026-01-08T22:55:00+01:00",
+    "starts_at": "2026-01-08T22:55:00+01:00",
+    "ends_at": "2026-01-08T23:55:00+01:00",
+    "_identity": "wl|störung|L=10A|D=2026-01-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf der Hauptfahrbahn",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-01-08T23:00:09+01:00",
+    "starts_at": "2026-01-08T23:00:09+01:00",
+    "ends_at": "2026-01-09T05:30:00+01:00",
+    "_identity": "wl|störung|L=N29|D=2026-01-08"
   }
 ]
