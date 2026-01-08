@@ -278,13 +278,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Verspätungen",
-    "description": "Die Linie 6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung.",
+    "title": "6: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "03b747bc4c57f0d83aba2ed60a1156b616a882a8e9b1ca40258d97373518d195",
-    "pubDate": "2026-01-08T15:15:00+01:00",
-    "starts_at": "2026-01-08T15:15:00+01:00",
-    "ends_at": "2026-01-08T23:55:00+01:00",
+    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
+    "pubDate": "2026-01-08T15:22:41+01:00",
+    "starts_at": "2026-01-08T15:25:06+01:00",
+    "ends_at": "2026-01-08T16:24:00+01:00",
     "_identity": "wl|störung|L=6|D=2026-01-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46",
+    "pubDate": "2026-01-08T15:23:10+01:00",
+    "starts_at": "2026-01-08T15:24:37+01:00",
+    "ends_at": "2026-01-08T16:24:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-01-08"
   }
 ]
