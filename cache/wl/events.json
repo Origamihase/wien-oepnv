@@ -13,18 +13,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Bauarbeiten",
-    "description": "Wegen Bauarbeiten kann die Station Tscherttegasse U in Fahrtrichtung Floridsdorf S U nicht eingehalten werden. Um die Station Tscherttegasse U zu erreichen, fahren Sie eine Station weiter bis Bahnhof Meidling S U und steigen dort in einen Zug in die Gegenrichtung um. Die Bauarbeiten dauern bis Ende Jänner 2026.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c8fe425d7242fb213ce8416c7e36d3307750aef3cd584dd26b6b881c88e54d42",
-    "pubDate": "2025-05-12T00:55:00+01:00",
-    "starts_at": "2025-05-12T00:55:00+01:00",
-    "ends_at": "2026-01-31T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-05-12"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "2A: Bauarbeiten Renngasse ab 14.07.2025",
     "description": "Bauarbeiten\nWegen Rohrleitungsarbeiten in der Renngasse wird die Linie 2 A umgeleitet.\nZeitraum:\nMontag, 14. Juli 2025, 06:30 Uhr, Dauer unbekannt.\nMaßnahmen:\nLinie 2 A Richtung Schwarzenbergplatz:\nUmleitung ab Renngasse # Wipplingerstraße über Wipplingerstraße - Helferstorferstraße - Schottengasse - Freyung.\nHaltestelle Renngasse\nVerlegt von: Renngasse 9\nVerlegt nach: Wipplingerstraße 30",
@@ -106,65 +94,5 @@
     "starts_at": "2026-01-09T06:00:00+01:00",
     "ends_at": "2026-02-14T17:00:00+01:00",
     "_identity": "wl|hinweis|L=69A,72A,73A,76A,76B|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Vorsicht Glatteis!",
-    "description": "Vorsicht Glatteis!",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "186ef2b93c97e07322f7f72db6a4aa3d3909c74116832d27f6d687487d538d7e",
-    "pubDate": "2026-01-09T08:59:33+01:00",
-    "starts_at": "2026-01-09T09:00:01+01:00",
-    "ends_at": "2026-01-09T23:45:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1A/2A/3A/4A/5A/7A/8A/9A/10A/11A/12A/13A/14A/15A/16A/17A/19A/20A/22A/24A/25A/26A/27A/28A/29A/30A/31A/32A/33A/34A/35A/36A/37A/38A/39A/40A/41A/42A/43A/44A/45A/46A/47A/48A: Witterung",
-    "description": "Derzeit kommt es bei verschiedenen Autobuslinien zu längeren Intervallen. Grund dafür ist die aktuelle Witterung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2d1cc2c1e8d43a03f16512373cad463f89201a75574ae4e3108f9ba05458d615",
-    "pubDate": "2026-01-09T10:30:00+01:00",
-    "starts_at": "2026-01-09T10:30:00+01:00",
-    "ends_at": "2026-01-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=10A,11A,12A,13A,14A,15A,16A,17A,19A,1A,20A,22A,24A,25A,26A,27A,28A,29A,2A,30A,31A,32A,33A,34A,35A,36A,37A,38A,39A,3A,40A,41A,42A,43A,44A,45A,46A,47A,48A,4A,5A,7A,8A,9A|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1/2/5/6/9/10/11/12/18/25/26/27/30/31/D/37/38/40/41/42/43/44/46/49/52/60/62/O/71: Witterung",
-    "description": "Derzeit kommt es bei verschiedenen Straßenbahnlinien zu längeren Intervallen. Grund dafür ist die aktuelle Witterung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ae82f77d63ed55264d744842b78945f25555694a1dbbe7886713c3f541ec0692",
-    "pubDate": "2026-01-09T13:00:00+01:00",
-    "starts_at": "2026-01-09T13:00:00+01:00",
-    "ends_at": "2026-01-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=1,10,11,12,18,2,25,26,27,30,31,37,38,40,41,42,43,44,46,49,5,52,6,60,62,71,9,D,O|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49A/50A/51A/52A/53A/56A/57A/58A/59A/60A/61A/62A/63A/64A/66A/67A/68A/69A/70A/71A/72A/73A/74A/76A/77A/79A/80A/82A/84A/85A/86A/87A/89A/92A/93A/94A/95A/96A/97A/98A/99A: Witterung",
-    "description": "Derzeit kommt es bei verschiedenen Autobuslinien zu längeren Intervallen. Grund dafür ist die aktuelle Witterung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fd1a3b6321b6ec30c4def3a289ab7be53beffa5ad06e6b0ddb13610278fda8a0",
-    "pubDate": "2026-01-09T13:00:00+01:00",
-    "starts_at": "2026-01-09T13:00:00+01:00",
-    "ends_at": "2026-01-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=49A,50A,51A,52A,53A,56A,57A,58A,59A,60A,61A,62A,63A,64A,66A,67A,68A,69A,70A,71A,72A,73A,74A,76A,77A,79A,80A,82A,84A,85A,86A,87A,89A,92A,93A,94A,95A,96A,97A,98A,99A|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U6 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-01-09T16:05:00+01:00",
-    "starts_at": "2026-01-09T16:05:00+01:00",
-    "ends_at": "2026-01-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2026-01-09"
   }
 ]
