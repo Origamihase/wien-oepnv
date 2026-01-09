@@ -7,14 +7,36 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Fri, 09 Jan 2026 10:19:00 +0000</lastBuildDate>
+<lastBuildDate>Fri, 09 Jan 2026 10:48:03 +0000</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">938ac29fa057a3ddd67f86c556a2f4fea6b28f73f84d298ed3c0dbde81da7fcf</guid>
+      <pubDate>Fri, 09 Jan 2026 10:15:00 +0000</pubDate>
+      <ext:first_seen>Fri, 09 Jan 2026 10:48:03 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 09 Jan 2026 10:15:00 +0000</ext:starts_at>
+      <ext:ends_at>Fri, 09 Jan 2026 22:55:00 +0000</ext:ends_at>
+      <description><![CDATA[Die Linie 2 ist derzeit in Richtung Dornbach an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 11:45. Grund dafür ist ein Feuerwehreinsatz im Bereich …<br/>[Seit 09.01.2026]]]></description>
+      <content:encoded><![CDATA[Die Linie 2 ist derzeit in Richtung Dornbach an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 11:45. Grund dafür ist ein Feuerwehreinsatz im Bereich …<br/>[Seit 09.01.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">862e3f211c3ceef265b5482217590de31a4543c847f52549b4bb94355c32c947</guid>
+      <pubDate>Fri, 09 Jan 2026 10:10:00 +0000</pubDate>
+      <ext:first_seen>Fri, 09 Jan 2026 10:48:03 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 09 Jan 2026 10:10:00 +0000</ext:starts_at>
+      <ext:ends_at>Fri, 09 Jan 2026 22:55:00 +0000</ext:ends_at>
+      <description><![CDATA[Die Linie 9 fährt derzeit nur zwischen Gersthof und Johann-Nepomuk-Berger-Platz. Die Störung dauert voraussichtlich bis 11:45. Grund dafür ist eine Betriebsstörung im …<br/>[Seit 09.01.2026]]]></description>
+      <content:encoded><![CDATA[Die Linie 9 fährt derzeit nur zwischen Gersthof und Johann-Nepomuk-Berger-Platz. Die Störung dauert voraussichtlich bis 11:45. Grund dafür ist eine Betriebsstörung im …<br/>[Seit 09.01.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733</guid>
       <pubDate>Fri, 09 Jan 2026 09:40:00 +0000</pubDate>
-      <ext:first_seen>Fri, 09 Jan 2026 10:19:00 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 09 Jan 2026 10:48:03 +0000</ext:first_seen>
       <ext:starts_at>Fri, 09 Jan 2026 09:40:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 09 Jan 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Hervicusgasse.<br/>[Seit 09.01.2026]]]></description>
@@ -25,72 +47,51 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">d3121440bb198809da6ad6777749127de887bfe17ce700d64f281bbb4593b9c8</guid>
       <pubDate>Fri, 09 Jan 2026 09:37:11 +0000</pubDate>
-      <ext:first_seen>Fri, 09 Jan 2026 10:19:00 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 09 Jan 2026 10:48:03 +0000</ext:first_seen>
       <ext:starts_at>Fri, 09 Jan 2026 09:43:16 +0000</ext:starts_at>
       <ext:ends_at>Fri, 09 Jan 2026 10:42:00 +0000</ext:ends_at>
       <description><![CDATA[Fahrtbehinderung Verkehrsunfall<br/>[Seit 09.01.2026]]]></description>
       <content:encoded><![CDATA[Fahrtbehinderung Verkehrsunfall<br/>[Seit 09.01.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[9: Verkehrsunfall]]></title>
+      <title><![CDATA[5B/36B/46B/58B/10A/11A/15A/16A/22A/25A/34A/35A/39A/42A/45A/46A/51A/60A/61A/65A/86A/88A/97A: Witterung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9</guid>
-      <pubDate>Fri, 09 Jan 2026 09:35:00 +0000</pubDate>
-      <ext:first_seen>Fri, 09 Jan 2026 10:19:00 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 09 Jan 2026 09:35:00 +0000</ext:starts_at>
-      <ext:ends_at>Fri, 09 Jan 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.<br/>[Seit 09.01.2026]]]></description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.<br/>[Seit 09.01.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25: Verkehrsunfall Betrieb ab Kagran]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abf48581353f2892d84bb8010d52ea12860c6cc24798f6446212f5d628963a08</guid>
-      <pubDate>Fri, 09 Jan 2026 09:32:04 +0000</pubDate>
-      <ext:first_seen>Fri, 09 Jan 2026 10:19:00 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 09 Jan 2026 09:32:04 +0000</ext:starts_at>
-      <ext:ends_at>Fri, 09 Jan 2026 10:31:00 +0000</ext:ends_at>
-      <description><![CDATA[Verkehrsunfall Betrieb ab Kagran<br/>[Seit 09.01.2026]]]></description>
-      <content:encoded><![CDATA[Verkehrsunfall Betrieb ab Kagran<br/>[Seit 09.01.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Stadlau]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;844248</guid>
-      <pubDate>Fri, 09 Jan 2026 09:30:43 +0000</pubDate>
-      <ext:first_seen>Fri, 09 Jan 2026 10:19:00 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 09 Jan 2026 09:30:43 +0000</ext:starts_at>
-      <description><![CDATA[Wegen einer Weichenstörung sind zwischen Wien Hbf (U) und Wien Stadlau Bahnhst (U) Zugfahrten voraussichtlich bis 11:00 Uhr nur eingeschränkt möglich. Es kommt …<br/>[Seit 09.01.2026]]]></description>
-      <content:encoded><![CDATA[Wegen einer Weichenstörung sind zwischen Wien Hbf (U) und Wien Stadlau Bahnhst (U) Zugfahrten voraussichtlich bis 11:00 Uhr nur eingeschränkt möglich. Es kommt …<br/>[Seit 09.01.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A/11A/15A/17A/29A/35A/42A/45A/46A/48A/49A/60A/65A/66A: Witterung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">14f82ca9ab1432c891f6d21cc7d8f3a69080a768a83a0d11ba3aba945e866b60</guid>
+      <guid isPermaLink="false">d71c10665f1e42bd224fa372f8b0386a67cc8700c40ae868a8fe67f46c460915</guid>
       <pubDate>Fri, 09 Jan 2026 09:30:00 +0000</pubDate>
-      <ext:first_seen>Fri, 09 Jan 2026 10:19:00 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 09 Jan 2026 10:48:03 +0000</ext:first_seen>
       <ext:starts_at>Fri, 09 Jan 2026 09:30:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 09 Jan 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 11 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 15 A kann …<br/>[Seit 09.01.2026]]]></description>
-      <content:encoded><![CDATA[Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 11 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 15 A kann …<br/>[Seit 09.01.2026]]]></content:encoded>
+      <description><![CDATA[Derzeit kommt es bei verschiedenen Autobuslinien zu längeren Intervallen. Grund dafür ist die aktuelle Witterung.<br/>[Seit 09.01.2026]]]></description>
+      <content:encoded><![CDATA[Derzeit kommt es bei verschiedenen Autobuslinien zu längeren Intervallen. Grund dafür ist die aktuelle Witterung.<br/>[Seit 09.01.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10: Fremdunfall Betrieb ab Joachimsthalerplatz]]></title>
+      <title><![CDATA[25: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">913a28ccae617036ff2b170673fe1d372358b09ec0e813dfd6cd047c8e18ed3b</guid>
-      <pubDate>Fri, 09 Jan 2026 09:12:38 +0000</pubDate>
-      <ext:first_seen>Fri, 09 Jan 2026 10:19:00 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 09 Jan 2026 09:22:21 +0000</ext:starts_at>
-      <ext:ends_at>Fri, 09 Jan 2026 10:21:00 +0000</ext:ends_at>
-      <description><![CDATA[Fremdunfall Betrieb ab Joachimsthalerplatz<br/>[Seit 09.01.2026]]]></description>
-      <content:encoded><![CDATA[Fremdunfall Betrieb ab Joachimsthalerplatz<br/>[Seit 09.01.2026]]]></content:encoded>
+      <guid isPermaLink="false">904ba03627e216651c3fe7a87850a5c4243041de296f0ebcb4c445c1842de781</guid>
+      <pubDate>Fri, 09 Jan 2026 09:25:00 +0000</pubDate>
+      <ext:first_seen>Fri, 09 Jan 2026 10:48:03 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 09 Jan 2026 09:25:00 +0000</ext:starts_at>
+      <ext:ends_at>Fri, 09 Jan 2026 22:55:00 +0000</ext:ends_at>
+      <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 25 zu unterschiedlichen Intervallen.<br/>[Seit 09.01.2026]]]></description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 25 zu unterschiedlichen Intervallen.<br/>[Seit 09.01.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a353875670c81bfb8e057d43db548115ca6c84c08a4b6f4e5ddfed91706f0a44</guid>
+      <pubDate>Fri, 09 Jan 2026 09:00:00 +0000</pubDate>
+      <ext:first_seen>Fri, 09 Jan 2026 10:48:03 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 09 Jan 2026 09:00:00 +0000</ext:starts_at>
+      <ext:ends_at>Fri, 09 Jan 2026 22:55:00 +0000</ext:ends_at>
+      <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 10 zu unterschiedlichen Intervallen.<br/>[Seit 09.01.2026]]]></description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 10 zu unterschiedlichen Intervallen.<br/>[Seit 09.01.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">eed4ea629d44bb9f67a32b24760e7fc7e9fbb8fab9efd3a43457846fae26b28d</guid>
       <pubDate>Fri, 09 Jan 2026 09:00:00 +0000</pubDate>
-      <ext:first_seen>Fri, 09 Jan 2026 10:19:00 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 09 Jan 2026 10:48:03 +0000</ext:first_seen>
       <ext:starts_at>Fri, 09 Jan 2026 09:00:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 09 Jan 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 46 zu unterschiedlichen Intervallen.<br/>[Seit 09.01.2026]]]></description>
@@ -101,22 +102,22 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f53a283f3ee969f2582a7c1c05102b661c4ea8366276196d0cf3bbc0187a3be3</guid>
       <pubDate>Fri, 09 Jan 2026 09:00:00 +0000</pubDate>
-      <ext:first_seen>Fri, 09 Jan 2026 10:19:00 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 09 Jan 2026 10:48:03 +0000</ext:first_seen>
       <ext:starts_at>Fri, 09 Jan 2026 09:00:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 09 Jan 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 44 zu unterschiedlichen Intervallen.<br/>[Seit 09.01.2026]]]></description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 44 zu unterschiedlichen Intervallen.<br/>[Seit 09.01.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[29B: Verkehrsunfall Längere Warteziten]]></title>
+      <title><![CDATA[29B: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d1db30983ce246c0be892e8b6f0827dc58fffaf47a8a658e69636312ea5e12a5</guid>
-      <pubDate>Fri, 09 Jan 2026 08:20:56 +0000</pubDate>
-      <ext:first_seen>Fri, 09 Jan 2026 10:19:00 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 09 Jan 2026 08:21:03 +0000</ext:starts_at>
-      <ext:ends_at>Fri, 09 Jan 2026 10:15:00 +0000</ext:ends_at>
-      <description><![CDATA[Verkehrsunfall Längere Warteziten<br/>[Seit 09.01.2026]]]></description>
-      <content:encoded><![CDATA[Verkehrsunfall Längere Warteziten<br/>[Seit 09.01.2026]]]></content:encoded>
+      <guid isPermaLink="false">8b4d4a72f50e91161cc2a3568655409d3ad71971f5a441a5ae52af3d6739aec8</guid>
+      <pubDate>Fri, 09 Jan 2026 08:20:00 +0000</pubDate>
+      <ext:first_seen>Fri, 09 Jan 2026 10:48:03 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 09 Jan 2026 08:20:00 +0000</ext:starts_at>
+      <ext:ends_at>Fri, 09 Jan 2026 22:55:00 +0000</ext:ends_at>
+      <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 29 B zu unterschiedlichen Intervallen.<br/>[Seit 09.01.2026]]]></description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 29 B zu unterschiedlichen Intervallen.<br/>[Seit 09.01.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
