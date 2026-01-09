@@ -170,66 +170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "39A: Witterung",
-    "description": "Die Linie 39 A fährt derzeit nur zwischen Bahnhof Heiligenstadt und Sievering. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist die aktuelle Witterung im Bereich Agnesgasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "09d1a6011d8c2d7c198136358583f1926b0aa77ed5e0c09df8ddfd201900913b",
-    "pubDate": "2026-01-09T12:35:00+01:00",
-    "starts_at": "2026-01-09T12:35:00+01:00",
-    "ends_at": "2026-01-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=39A|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Witterung",
-    "description": "Die Linie 49 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ffcc1417ebdffc37195d2f93debe7dbf46cd83db4aee538a40eb46ea853ef339",
-    "pubDate": "2026-01-09T13:00:00+01:00",
-    "starts_at": "2026-01-09T13:00:00+01:00",
-    "ends_at": "2026-01-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Betriebsstörung Betrieb ab Urban-Loritz-Platz",
-    "description": "Betriebsstörung Betrieb ab Urban-Loritz-Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "caad4ae30df3aa1f6ddc5cdad57de45dd75e845bcfa6a774737d7b0804c20f10",
-    "pubDate": "2026-01-09T15:07:07+01:00",
-    "starts_at": "2026-01-09T15:07:07+01:00",
-    "ends_at": "2026-01-09T21:00:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Weichenschaden",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "03f10a6a5173e8bc6e9c1c46acf820a974b51b09941a25f215738f4c059a63b7",
-    "pubDate": "2026-01-09T18:50:00+01:00",
-    "starts_at": "2026-01-09T18:50:00+01:00",
-    "ends_at": "2026-01-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Weichenschaden",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5363acedce4f616bd5ff59f1a8fc5226e17c27a2bfa461cae1a28b5ed57d283d",
-    "pubDate": "2026-01-09T18:50:00+01:00",
-    "starts_at": "2026-01-09T18:50:00+01:00",
-    "ends_at": "2026-01-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "O: Gleisschaden",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie O zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -238,18 +178,6 @@
     "starts_at": "2026-01-09T18:55:00+01:00",
     "ends_at": "2026-01-09T23:55:00+01:00",
     "_identity": "wl|störung|L=O|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Weichenschaden Betrieb ab Enkplatz",
-    "description": "Weichenschaden Betrieb ab Enkplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3e18c286ee39678ebd77144ab05a6f100b22b509c8ebb88a1ecc58e39d22309c",
-    "pubDate": "2026-01-09T18:57:44+01:00",
-    "starts_at": "2026-01-09T18:57:44+01:00",
-    "ends_at": "2026-01-09T20:45:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-01-09"
   },
   {
     "source": "Wiener Linien",
@@ -266,30 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "133ffbcd0b2f71b543a2c0f5320fa67ba5678cbcb7eba0ce920a1c3f70a90114",
-    "pubDate": "2026-01-09T19:05:00+01:00",
-    "starts_at": "2026-01-09T19:05:00+01:00",
-    "ends_at": "2026-01-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=10|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "52: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 52 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "92e7200b48fe35bc6a7cc83efb2f006e5faf4f1ec5437b1aa334f522cfb7ca72",
-    "pubDate": "2026-01-09T19:05:00+01:00",
-    "starts_at": "2026-01-09T19:05:00+01:00",
-    "ends_at": "2026-01-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=52|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Gleisschaden Betrieb ab Hintere Zollamtsstraße",
     "description": "Gleisschaden Betrieb ab Hintere Zollamtsstraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -302,13 +206,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
+    "title": "5B: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 5 B ist derzeit in Richtung Bahnhof Heiligenstadt an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 21:30 Uhr. Grund dafür ist ein Falschparker im Bereich Volkertstraße Vereinsgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-01-09T19:50:00+01:00",
-    "starts_at": "2026-01-09T19:53:10+01:00",
+    "guid": "6f2fe1e933b94c1a12afde9a2d517b8be52680e46d798a0016e5fbb36a659a92",
+    "pubDate": "2026-01-09T21:05:00+01:00",
+    "starts_at": "2026-01-09T21:07:20+01:00",
     "ends_at": "2026-01-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=9|D=2026-01-09"
+    "_identity": "wl|störung|L=5B|D=2026-01-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "24A: Vandalismus",
+    "description": "Die Linie 24 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ceecae6c903dd716f5dc21be5b0e7052f0a633abb2a9e9464eca0cf8fa3d65e",
+    "pubDate": "2026-01-09T21:15:00+01:00",
+    "starts_at": "2026-01-09T21:15:00+01:00",
+    "ends_at": "2026-01-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=24A|D=2026-01-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fahrtbehinderung Weichenschaden",
+    "description": "Fahrtbehinderung Weichenschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d1988834d0ccc6319405ff19e62006b328d05ee2b9ff4eb6639ad0eceaf91606",
+    "pubDate": "2026-01-09T21:17:45+01:00",
+    "starts_at": "2026-01-09T21:17:45+01:00",
+    "ends_at": "2026-01-09T22:17:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-01-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Fahrtbehinderung Weichenschaden",
+    "description": "Fahrtbehinderung Weichenschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "54a5c157ec37fa3d2d41031562bee6f4323408f4ce363495e3b7a69ac1ad2ff0",
+    "pubDate": "2026-01-09T21:18:14+01:00",
+    "starts_at": "2026-01-09T21:18:27+01:00",
+    "ends_at": "2026-01-09T22:17:00+01:00",
+    "_identity": "wl|störung|L=52|D=2026-01-09"
   }
 ]
