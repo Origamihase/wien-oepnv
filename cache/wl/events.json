@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Rettungseinsatz",
-    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Friedrich-Engels-Platz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
-    "pubDate": "2026-01-09T07:50:00+01:00",
-    "starts_at": "2026-01-09T07:50:00+01:00",
-    "ends_at": "2026-01-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-01-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U6: Betriebsstörung",
     "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,5 +202,53 @@
     "starts_at": "2026-01-09T08:05:00+01:00",
     "ends_at": "2026-01-09T23:55:00+01:00",
     "_identity": "wl|störung|L=U6|D=2026-01-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Vorsicht Glatteis!",
+    "description": "Vorsicht Glatteis!",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "186ef2b93c97e07322f7f72db6a4aa3d3909c74116832d27f6d687487d538d7e",
+    "pubDate": "2026-01-09T08:59:33+01:00",
+    "starts_at": "2026-01-09T09:00:01+01:00",
+    "ends_at": "2026-01-09T23:45:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-01-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Verspätungen",
+    "description": "Die Linie 10 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7c9302b74c4151c193e8b61e865846e07389f3d8b7b69a75a90f6a2fde5e99f4",
+    "pubDate": "2026-01-09T09:00:00+01:00",
+    "starts_at": "2026-01-09T09:00:00+01:00",
+    "ends_at": "2026-01-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=10A|D=2026-01-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Verkehrsunfall",
+    "description": "Die Linie 29 B ist derzeit in beiden Richtungen an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 10:00. Grund dafür ist ein Verkehrsunfall im Bereich Egon-Friedell-Gasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8b4d4a72f50e91161cc2a3568655409d3ad71971f5a441a5ae52af3d6739aec8",
+    "pubDate": "2026-01-09T09:20:00+01:00",
+    "starts_at": "2026-01-09T09:20:00+01:00",
+    "ends_at": "2026-01-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2026-01-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "da3db86290ce028842f29a8f7cd0dafdab55345c460d0c1cfc61bf17f16dd43c",
+    "pubDate": "2026-01-09T09:20:56+01:00",
+    "starts_at": "2026-01-09T09:21:03+01:00",
+    "ends_at": "2026-01-09T10:20:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2026-01-09"
   }
 ]
