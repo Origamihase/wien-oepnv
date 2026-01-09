@@ -2,6 +2,18 @@
   {
     "source": "ÖBB",
     "category": "Störung",
+    "title": "Marchegg und Devínska Nová Ves zel.st.",
+    "description": "09.01.2026\nWegen eines defekten Zuges auf der Strecke waren zwischen Marchegg Bahnhof und Devínska Nová Ves zel.st. bis 14:33 Uhr keine Fahrten möglich. Planen Sie derzeit noch bis zu 30 Minuten mehr Reisezeit ein.\nWir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&844329",
+    "pubDate": "2026-01-09T14:39:32+01:00",
+    "starts_at": "2026-01-09T14:39:32+01:00",
+    "ends_at": null,
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&844329"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
     "title": "Wien Mitte ↔ Wien Rennweg",
     "description": "09.01.2026\nWegen eines Schadens am Gleis waren zwischen Wien Mitte-Landstraße Bahnhof (U) und Wien Rennweg Bahnhst bis 14:09 Uhr nur eingeschränkt Fahrten möglich. Es kommt noch zu vereinzelten Zugausfällen und Verzögerungen. Wir bitten um Entschuldigung.",
     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
@@ -10,17 +22,5 @@
     "starts_at": "2026-01-09T14:12:35+01:00",
     "ends_at": null,
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&844288"
-  },
-  {
-    "source": "ÖBB",
-    "category": "Störung",
-    "title": "Marchegg und Devínska Nová Ves zel.st.",
-    "description": "09.01.2026\nWegen eines defekten Zuges auf der Strecke sind zwischen Marchegg Bahnhof und Devínska Nová Ves zel.st. derzeit keine Fahrten möglich. Über die Dauer der Unterbrechung kann derzeit noch keine Angabe gemacht werden. Die Züge warten die Sperre vorerst ab.\nSobald uns weitere Informationen vorliegen, informieren wir Sie.\nWir bitten um Entschuldigung.",
-    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
-    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&844329",
-    "pubDate": "2026-01-09T13:44:49+01:00",
-    "starts_at": "2026-01-09T13:44:49+01:00",
-    "ends_at": null,
-    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&844329"
   }
 ]
