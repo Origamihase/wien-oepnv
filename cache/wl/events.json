@@ -146,26 +146,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "2: Weichenstörung",
+    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Weichenstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-01-10T04:50:00+01:00",
-    "starts_at": "2026-01-10T04:50:00+01:00",
-    "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1/2: Weichenstörung",
-    "description": "Die Linie 1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Weichenstörung im Bereich .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0e57ea3c2d1d84b4305a19d6fe9915d85e619f962211f266f505dffc286e0354",
+    "guid": "e9673e44be830b887966ee9781b3966db3f3a618ee1d6c4267fe7a10a33ba0ff",
     "pubDate": "2026-01-10T05:00:00+01:00",
     "starts_at": "2026-01-10T05:00:00+01:00",
     "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=1,2|D=2026-01-10"
+    "_identity": "wl|störung|L=2|D=2026-01-10"
   },
   {
     "source": "Wiener Linien",
@@ -198,7 +186,7 @@
     "description": "Fahrtbehinderung Weichenschaden",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "3ef19574811de369b1278ea34322208a8775f7d6a927c21d0817f3963d4cea5a",
-    "pubDate": "2026-01-10T05:10:35+01:00",
+    "pubDate": "2026-01-10T05:19:46+01:00",
     "starts_at": "2026-01-10T05:19:46+01:00",
     "ends_at": "2026-01-10T06:19:00+01:00",
     "_identity": "wl|störung|L=6|D=2026-01-10"
@@ -206,13 +194,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Fahrtbehinderung Weichenschaden",
-    "description": "Fahrtbehinderung Weichenschaden",
+    "title": "U2: Betriebsstörung",
+    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fc92c4c81cc877f901398d847f5b3da54ab3777ef01104cccedb527b4bae0110",
-    "pubDate": "2026-01-10T05:14:27+01:00",
-    "starts_at": "2026-01-10T05:14:29+01:00",
-    "ends_at": "2026-01-10T06:14:00+01:00",
-    "_identity": "wl|störung|L=43|D=2026-01-10"
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-01-10T05:55:00+01:00",
+    "starts_at": "2026-01-10T05:55:00+01:00",
+    "ends_at": "2026-01-10T23:55:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2026-01-10"
   }
 ]
