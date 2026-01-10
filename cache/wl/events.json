@@ -182,25 +182,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Fahrtbehinderung Weichenschaden",
-    "description": "Fahrtbehinderung Weichenschaden",
+    "title": "62: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3ef19574811de369b1278ea34322208a8775f7d6a927c21d0817f3963d4cea5a",
-    "pubDate": "2026-01-10T05:19:46+01:00",
-    "starts_at": "2026-01-10T05:19:46+01:00",
-    "ends_at": "2026-01-10T06:19:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-01-10"
+    "guid": "11dae11dafaf0878f07d1e1c010007790105e67c155ad06ba2cd6c87388c9e93",
+    "pubDate": "2026-01-10T06:20:09+01:00",
+    "starts_at": "2026-01-10T06:29:48+01:00",
+    "ends_at": "2026-01-10T07:28:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-01-10"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung.",
+    "title": "WLB: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2026-01-10T05:55:00+01:00",
-    "starts_at": "2026-01-10T05:55:00+01:00",
-    "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=U2|D=2026-01-10"
+    "guid": "bc287c4ded13c589a4038ac2b6a53f90c984155ed0d9838ae653b3f4ebb4714c",
+    "pubDate": "2026-01-10T06:21:25+01:00",
+    "starts_at": "2026-01-10T06:32:15+01:00",
+    "ends_at": "2026-01-10T07:31:00+01:00",
+    "_identity": "wl|störung|L=WLB|D=2026-01-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Schadhafter Zug Betrieb ab Dörfelstraße",
+    "description": "Schadhafter Zug Betrieb ab Dörfelstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "88c7406c51828594f73a8ba477ff47532264dc347460a3e4cc1b19483b4531e3",
+    "pubDate": "2026-01-10T06:25:56+01:00",
+    "starts_at": "2026-01-10T06:30:50+01:00",
+    "ends_at": "2026-01-10T07:29:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-01-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "WLB: Schadhafter Zug Betrieb ab Aßmayergasse",
+    "description": "Schadhafter Zug Betrieb ab Aßmayergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1999e72e510f053be37df05720fd5b21503beb0544c3c9cc99c1dd8953961d89",
+    "pubDate": "2026-01-10T06:32:42+01:00",
+    "starts_at": "2026-01-10T06:33:01+01:00",
+    "ends_at": "2026-01-10T07:32:00+01:00",
+    "_identity": "wl|störung|L=WLB|D=2026-01-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "WLB: Schadhafter Zug Züge halten Richtung Oper",
+    "description": "Schadhafter Zug Züge halten Richtung Oper",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "daf43e62d739cbd7a94063d5f50421dac568beb9e2c5c3e5b031ed87612b4435",
+    "pubDate": "2026-01-10T06:33:40+01:00",
+    "starts_at": "2026-01-10T06:33:40+01:00",
+    "ends_at": "2026-01-10T07:32:00+01:00",
+    "_identity": "wl|störung|L=WLB|D=2026-01-10"
   }
 ]
