@@ -146,114 +146,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Verunreinigung",
-    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5718e5adfd8ff17a7b75efa1723cae5513a3a9e89e84929ae6d9338f8ba24e1d",
-    "pubDate": "2026-01-10T19:45:00+01:00",
-    "starts_at": "2026-01-10T19:45:00+01:00",
-    "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eed493b84b991f4fbb293a881224825ca49d2be64d70010ef16dbd19919e838a",
-    "pubDate": "2026-01-10T20:05:00+01:00",
-    "starts_at": "2026-01-10T20:05:00+01:00",
-    "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
-    "pubDate": "2026-01-10T20:05:00+01:00",
-    "starts_at": "2026-01-10T20:05:00+01:00",
-    "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e105ca57f2aa7daecce2d0c7b4277004ad37ec7461843c457618fc8980286aef",
-    "pubDate": "2026-01-10T20:05:32+01:00",
-    "starts_at": "2026-01-10T20:06:30+01:00",
-    "ends_at": "2026-01-10T21:05:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35",
-    "pubDate": "2026-01-10T20:05:53+01:00",
-    "starts_at": "2026-01-10T20:06:14+01:00",
-    "ends_at": "2026-01-10T21:05:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Fremder Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0860febc5e9df23aa7c2b7e11f49988c5e330f09ac2fc1fda85a5145582a1b8e",
-    "pubDate": "2026-01-10T20:20:00+01:00",
-    "starts_at": "2026-01-10T20:20:00+01:00",
-    "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=40|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Fremder Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c32e637f56695696c935d89d292df591fa603bba5e183d227418c70209cce8e",
-    "pubDate": "2026-01-10T20:20:00+01:00",
-    "starts_at": "2026-01-10T20:20:00+01:00",
-    "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=41|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Fremder Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 42 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "98a8a0372c9ff6da754361eac55d66de6cbcc81622b88e74cf1ea84e27f9627a",
-    "pubDate": "2026-01-10T20:20:00+01:00",
-    "starts_at": "2026-01-10T20:20:00+01:00",
-    "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=42|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "35A: Schadhafter PKW",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 35 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "893d169b608ab020af9f1e85bf691680f882d7b01ed1b5a3687e5c6f6709f6c7",
-    "pubDate": "2026-01-10T20:20:00+01:00",
-    "starts_at": "2026-01-10T20:20:00+01:00",
-    "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=35A|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "42: Fahrtbehinderung Fremder Verkehrsunfall",
     "description": "Fahrtbehinderung Fremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -326,18 +218,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52A: Polizeieinsatz",
-    "description": "Die Linie 52 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Bhf. Hütteldorf S U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0b50b4ce18e678b7099fa405bf0a5dfc6c522adb5d36cff2f1daf85d0419ba2b",
-    "pubDate": "2026-01-10T20:30:00+01:00",
-    "starts_at": "2026-01-10T20:30:00+01:00",
-    "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=52A|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11: Verspätungen",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -346,29 +226,5 @@
     "starts_at": "2026-01-10T20:30:00+01:00",
     "ends_at": "2026-01-10T23:55:00+01:00",
     "_identity": "wl|störung|L=11|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Fremder Verkehrsunfall",
-    "description": "Die Linie 37 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein fremder Verkehrsunfall im Bereich Spitalgasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c5967a225000cfa70f0360204f0e15a3823fbe67437b4556e2214a6146b37072",
-    "pubDate": "2026-01-10T20:30:00+01:00",
-    "starts_at": "2026-01-10T20:30:00+01:00",
-    "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=37|D=2026-01-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "46: Polizeieinsatz",
-    "description": "Die Linie 46 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17245375550a341367d59df402e880c1611e9fbb35634da6ea980f6f056c6c9b",
-    "pubDate": "2026-01-10T20:30:00+01:00",
-    "starts_at": "2026-01-10T20:30:00+01:00",
-    "ends_at": "2026-01-10T23:55:00+01:00",
-    "_identity": "wl|störung|L=46|D=2026-01-10"
   }
 ]
