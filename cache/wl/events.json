@@ -146,13 +146,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Verspätungen",
-    "description": "Die Linie 59 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "5: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 5 ist derzeit in Richtung Westbahnhof an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 11:30 Uhr. Grund dafür ist ein Falschparker im Bereich Blindengasse 13.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bbf31a68061bfd0881f02a66b144b8f6c7e19668ddd11e8dc8d9ef56e900dee5",
-    "pubDate": "2026-01-11T09:40:00+01:00",
-    "starts_at": "2026-01-11T09:40:00+01:00",
+    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
+    "pubDate": "2026-01-11T11:05:00+01:00",
+    "starts_at": "2026-01-11T11:07:53+01:00",
     "ends_at": "2026-01-11T23:55:00+01:00",
-    "_identity": "wl|störung|L=59A|D=2026-01-11"
+    "_identity": "wl|störung|L=5|D=2026-01-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "63A: Verspätungen",
+    "description": "Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "499ac622a712bd280a6b728d5cd57eb6ebde96a246de80a08e9a389a60dab6f9",
+    "pubDate": "2026-01-11T11:10:00+01:00",
+    "starts_at": "2026-01-11T11:10:00+01:00",
+    "ends_at": "2026-01-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=63A|D=2026-01-11"
   }
 ]
