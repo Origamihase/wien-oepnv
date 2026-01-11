@@ -146,49 +146,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
+    "title": "66A: Verunreinigung",
+    "description": "Die Linie 66 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0adadc0d52c1c4ca5640d9262b7d557e64527b5ae1096d8366a008580c44402a",
-    "pubDate": "2026-01-11T12:50:28+01:00",
-    "starts_at": "2026-01-11T12:50:28+01:00",
-    "ends_at": "2026-01-11T15:00:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-01-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "S/U: Schadhafter Zug Betrieb ab Westbahnhof S U",
-    "description": "Schadhafter Zug Betrieb ab Westbahnhof S U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5dbefc232ac199c96af303b2c6668e2cee8f31c7a96ec23c1e93e16bb55ef3fd",
-    "pubDate": "2026-01-11T12:51:26+01:00",
-    "starts_at": "2026-01-11T12:51:26+01:00",
-    "ends_at": "2026-01-11T15:00:00+01:00",
-    "_identity": "wl|störung|L=S,U|D=2026-01-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Schadhafter Zug Betrieb ab Hütteldorfer Straße",
-    "description": "Schadhafter Zug Betrieb ab Hütteldorfer Straße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "463acbe56f34cb31dabf60e8dd42e131d40c23a37e9a80cf54460eb0e97d26fb",
-    "pubDate": "2026-01-11T12:55:20+01:00",
-    "starts_at": "2026-01-11T12:55:20+01:00",
-    "ends_at": "2026-01-11T15:00:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-01-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Schadhafter Zug Betrieb ab Urban - Loritz - Platz",
-    "description": "Schadhafter Zug Betrieb ab Urban - Loritz - Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d2419dc93c7d12ba5163b0983f5da28243f27f75079e3cff1beb55da6349d1a0",
-    "pubDate": "2026-01-11T12:55:49+01:00",
-    "starts_at": "2026-01-11T12:55:49+01:00",
-    "ends_at": "2026-01-11T15:00:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-01-11"
+    "guid": "0888c1d875334376a10ad60bd733b6a5f43fd3920cb8605cfdea62f9236bbc97",
+    "pubDate": "2026-01-11T15:00:00+01:00",
+    "starts_at": "2026-01-11T15:00:00+01:00",
+    "ends_at": "2026-01-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=66A|D=2026-01-11"
   }
 ]
