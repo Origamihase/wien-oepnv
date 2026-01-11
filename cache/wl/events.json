@@ -154,5 +154,77 @@
     "starts_at": "2026-01-11T20:00:00+01:00",
     "ends_at": "2026-01-11T23:55:00+01:00",
     "_identity": "wl|störung|L=25A|D=2026-01-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fremder Verkehrsunfall",
+    "description": "Die Linie 44 fährt nur zwischen Schottentor und Johann-Nepomuk-Berger-Platz. Weichen Sie auf die Linien 2, 9, 10 und 46 aus. Die Störung dauert voraussichtlich bis 23:00 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Ottakringer Straße 104.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f53a283f3ee969f2582a7c1c05102b661c4ea8366276196d0cf3bbc0187a3be3",
+    "pubDate": "2026-01-11T22:15:00+01:00",
+    "starts_at": "2026-01-11T22:15:00+01:00",
+    "ends_at": "2026-01-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=44|D=2026-01-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13da360ca8a94dcafa0dd3aa043ce5baefa02c1c92c93d57c144cc19166804d0",
+    "pubDate": "2026-01-11T22:17:34+01:00",
+    "starts_at": "2026-01-11T22:20:29+01:00",
+    "ends_at": "2026-01-11T23:19:00+01:00",
+    "_identity": "wl|störung|L=44|D=2026-01-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Züge halte bei Linie 2 (Rosensteingasse)",
+    "description": "Züge halte bei Linie 2 (Rosensteingasse)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "444aded4980a9870b0da3a65a4f03efa86647c041758a74132584070445e79a4",
+    "pubDate": "2026-01-11T22:17:34+01:00",
+    "starts_at": "2026-01-11T22:17:34+01:00",
+    "ends_at": "2026-01-11T23:20:00+01:00",
+    "_identity": "wl|störung|L=44|D=2026-01-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fremdunfall Betrieb ab Johann-Nepomuk-Berger-Platz",
+    "description": "Fremdunfall Betrieb ab Johann-Nepomuk-Berger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "790d436782ad4a4a14807ca21f71b9fb3b4a2df1740d688dc66b1277c5b2d3cd",
+    "pubDate": "2026-01-11T22:17:34+01:00",
+    "starts_at": "2026-01-11T22:20:58+01:00",
+    "ends_at": "2026-01-11T23:20:00+01:00",
+    "_identity": "wl|störung|L=44|D=2026-01-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Verspätung wegen Fremdunfall",
+    "description": "Verspätung wegen Fremdunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5259dc8427381c9d0cb3d0fdc851de2723251dd7822b91570f009c4ce946f27b",
+    "pubDate": "2026-01-11T22:17:34+01:00",
+    "starts_at": "2026-01-11T22:17:42+01:00",
+    "ends_at": "2026-01-11T23:22:00+01:00",
+    "_identity": "wl|störung|L=44|D=2026-01-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fremdunfall Betrieb bis Johann-Nepomuk-Berger-Platz",
+    "description": "Fremdunfall Betrieb bis Johann-Nepomuk-Berger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f3a85f1cf6249d9c70465c542eac41a829329f9b4b29a4cb3b49a406df243c41",
+    "pubDate": "2026-01-11T22:17:42+01:00",
+    "starts_at": "2026-01-11T22:22:32+01:00",
+    "ends_at": "2026-01-11T23:21:00+01:00",
+    "_identity": "wl|störung|L=44|D=2026-01-11"
   }
 ]
