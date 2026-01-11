@@ -109,18 +109,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5A: Busse halten Untere Augartenstraße 42",
-    "description": "Busse halten Untere Augartenstraße 42",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "483eae38010ee8e6894791d2738a9629c827a8f49663810bceb0716d9219a663",
-    "pubDate": "2026-01-04T00:00:28+01:00",
-    "starts_at": "2026-01-04T00:00:28+01:00",
-    "ends_at": "2026-01-11T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2026-01-04"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "69A/72A/73A/76A/76B: Faschingsumzug Simmering am 14.02.2026",
     "description": "Veranstaltung\nWegen Abhaltung des Faschingsumzugs im Bereich der Simmeringer Hauptstraße kommt es bei den Linien 69 A, 72 A, 73 A, 76 A und 76 B zu folgenden Maßnahmen\nZeitraum:\nSamstag, 14. Februar 2026, von etwa 13:00 Uhr bis etwa 17:00 Uhr.\nMaßnahmen:\nLinie 69 A\nKurzführung\nBetrieb nur zwischen Hauptbahnhof S U und Unter der Kirche.\nVorübergehende End- und Anfangshaltestelle bei Unter der Kirche gegenüber 2 (vor Kreisverkehr).\nLinie 72 A\nKurzführung\nBetrieb nur zwischen Hasenleiten und Anton-Stilling-Platz.\nVorübergehende End- und Anfangshaltestelle bei Hasenleitengasse 11-21.\nLinie 73 A\nKurzführung\nBetrieb nur zwischen Landwehrstraße und Unter der Kirche.\nVorübergehende End- und Anfangshaltestelle bei Kaiser-Ebersdorfer-Straße 1-3 (vor Kreisverkehr).\nLinien 76 A und 76 B\n76 A und 76 B in Richtung Albern\nUmleitung ab Mautner-Markhof-Gasse # Krausegasse über Krausegasse - Rappachgasse.\nAufgelassene Haltestellen:\n- Enjkplatz U, Grillgasse\n- Hauffgasse\n- Simoningplatz (FR Alberner Hafen)\n- Rappachgasse (FR Alberner Hafen)\nVorübergehende End- und Anfangshaltestelle bei Mautner-Markhof-Gasse 62.",
@@ -154,5 +142,17 @@
     "starts_at": "2026-01-11T23:00:07+01:00",
     "ends_at": "2026-01-12T05:30:00+01:00",
     "_identity": "wl|störung|L=N29|D=2026-01-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5A: Busse halten Untere Augartenstraße 42",
+    "description": "Busse halten Untere Augartenstraße 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "483eae38010ee8e6894791d2738a9629c827a8f49663810bceb0716d9219a663",
+    "pubDate": "2026-01-12T00:00:28+01:00",
+    "starts_at": "2026-01-12T00:00:28+01:00",
+    "ends_at": "2026-01-12T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2026-01-12"
   }
 ]
