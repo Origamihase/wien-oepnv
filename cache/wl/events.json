@@ -171,7 +171,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "38: Schadhaftes Fahrzeug",
-    "description": "Die Linie 38 fährt derzeit nur zwischen Schottentor und Nußdorfer Straße. Ersatzweise benützen Sie die Linien 38 A und 39 A. Die Störung dauert voraussichtlich bis 22:30 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Oberdöbling S.",
+    "description": "Die Linie 38 fährt derzeit nur zwischen Schottentor und Nußdorfer Straße. Ersatzweise benützen Sie die Linien 38 A und 39 A. Die Störung dauert voraussichtlich bis 23:00 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Oberdöbling S.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c16184b68509899faf02a65c374d8c059400404774e2da3970444c5b92e08600",
     "pubDate": "2026-01-12T21:50:00+01:00",
@@ -236,7 +236,7 @@
     "guid": "843fd4e31e0c0925f4e60123918291f13b408cb6e4562c1876c1d4af3013ca73",
     "pubDate": "2026-01-12T21:51:45+01:00",
     "starts_at": "2026-01-12T21:51:52+01:00",
-    "ends_at": "2026-01-12T22:51:00+01:00",
+    "ends_at": "2026-01-12T23:45:00+01:00",
     "_identity": "wl|störung|L=38|D=2026-01-12"
   },
   {
@@ -248,7 +248,7 @@
     "guid": "9933a7253d2b46da50ab2f5014e1cc4d3e4f95ee5b02081b636cec423c0937ee",
     "pubDate": "2026-01-12T21:52:44+01:00",
     "starts_at": "2026-01-12T21:52:48+01:00",
-    "ends_at": "2026-01-12T22:51:00+01:00",
+    "ends_at": "2026-01-12T23:45:00+01:00",
     "_identity": "wl|störung|L=38|D=2026-01-12"
   },
   {
@@ -262,5 +262,17 @@
     "starts_at": "2026-01-12T21:55:00+01:00",
     "ends_at": "2026-01-12T23:55:00+01:00",
     "_identity": "wl|störung|L=39A|D=2026-01-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "73A: Rettungseinsatz",
+    "description": "Die Linie 73 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Simmering S U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "aeb0b84ae5e8a62af5d84641c15f91257543dc2b7569bb960589eb875b2fd4cc",
+    "pubDate": "2026-01-12T22:20:00+01:00",
+    "starts_at": "2026-01-12T22:20:00+01:00",
+    "ends_at": "2026-01-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=73A|D=2026-01-12"
   }
 ]
