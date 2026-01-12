@@ -159,7 +159,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "10: Beschädigte Oberleitung durch einen LKW",
-    "description": "Die Linie 10 fährt derzeit nur zwischen Dornbach und Hietzing. Weichen Sie ersatzweise auf die U4 und die Linie 53 A aus. Die Störung dauert voraussichtlich bis 11:30 Uhr. Grund dafür ist eine beschädigte Oberleitung durch einen LKW im Bereich Hietzinger Hauptstraße # St.-Veit-Gasse.",
+    "description": "Die Linie 10 fährt derzeit nur zwischen Dornbach und Hietzing. Weichen Sie ersatzweise auf die U4 und die Linie 53 A aus. Die Störung dauert voraussichtlich bis 11:50 Uhr. Grund dafür ist eine beschädigte Oberleitung durch einen LKW im Bereich Hietzinger Hauptstraße # St.-Veit-Gasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1cc03f58871e439c60f7d1c4c3c910e4b48387a025061f9ac3cf402dad33b706",
     "pubDate": "2026-01-12T09:20:00+01:00",
@@ -226,5 +226,17 @@
     "starts_at": "2026-01-12T10:56:17+01:00",
     "ends_at": "2026-01-12T23:55:00+01:00",
     "_identity": "wl|störung|L=40|D=2026-01-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25/26/27: Rettungseinsatz",
+    "description": "Die Linie 25 fährt nur zwischen Aspern, Oberdorfstraße und Kagran. Die Linie 26 fährt derzeit nicht zwischen Josef-Baumann-Gasse und Floridsdorf. Die Linie 27 fährt derzeit nicht zwischen Berresegasse und Floridsdorf. Die Störung dauert voraussichtlich bis 13:00 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Donaufelder Straße Fultonstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f369b4ef60e24d6c019e11d9bf1faf3ece8eae989b5537f6e1329f91a1b44152",
+    "pubDate": "2026-01-12T11:40:00+01:00",
+    "starts_at": "2026-01-12T11:40:00+01:00",
+    "ends_at": "2026-01-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=25,26,27|D=2026-01-12"
   }
 ]
