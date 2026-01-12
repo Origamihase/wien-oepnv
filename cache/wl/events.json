@@ -146,30 +146,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c2e9c1318c2be30240f4a1f17cfa6a4073b3ce6a5dcd19499dec0ccba6f6f745",
-    "pubDate": "2026-01-12T19:20:00+01:00",
-    "starts_at": "2026-01-12T19:20:00+01:00",
-    "ends_at": "2026-01-12T23:55:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-01-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 5 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "67a08b0ea7e7d87f8cbe5b7194615122bc53745414d137b5818803a18f1f6267",
-    "pubDate": "2026-01-12T19:20:00+01:00",
-    "starts_at": "2026-01-12T19:20:00+01:00",
-    "ends_at": "2026-01-12T23:55:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-01-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5: Betriebsstörung Betrieb ab Lerchenfelder Straße",
     "description": "Betriebsstörung Betrieb ab Lerchenfelder Straße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -218,14 +194,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "170: Betriebsstörung Züge halten Währinger Gürtel 170",
-    "description": "Betriebsstörung Züge halten Währinger Gürtel 170",
+    "title": "*** Vorsicht *** *** Glatteis! **",
+    "description": "*** Vorsicht *** *** Glatteis! **",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9f642dda2d499e46dfa8716de4b1ee6ee09959087c4387606d93228e41692c24",
+    "guid": "186ef2b93c97e07322f7f72db6a4aa3d3909c74116832d27f6d687487d538d7e",
     "pubDate": "2026-01-12T19:24:45+01:00",
-    "starts_at": "2026-01-12T19:24:45+01:00",
-    "ends_at": "2026-01-12T22:00:00+01:00",
-    "_identity": "wl|störung|L=170|D=2026-01-12"
+    "starts_at": "2026-01-12T21:00:21+01:00",
+    "ends_at": "2026-01-12T23:59:59+01:00",
+    "_identity": "wl|störung|L=|D=2026-01-12"
   },
   {
     "source": "Wiener Linien",
@@ -254,13 +230,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "36A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
+    "title": "46: Fremder Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 46 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7f6783cec819d802976a3d6f9f27ab627f5e35b56cf703230c756aefc51060f",
-    "pubDate": "2026-01-12T20:08:41+01:00",
-    "starts_at": "2026-01-12T20:08:50+01:00",
-    "ends_at": "2026-01-12T21:08:00+01:00",
-    "_identity": "wl|störung|L=36A|D=2026-01-12"
+    "guid": "eed4ea629d44bb9f67a32b24760e7fc7e9fbb8fab9efd3a43457846fae26b28d",
+    "pubDate": "2026-01-12T20:45:00+01:00",
+    "starts_at": "2026-01-12T20:45:00+01:00",
+    "ends_at": "2026-01-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=46|D=2026-01-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Fremdunfall Betrieb ab Thaliastraße U",
+    "description": "Fremdunfall Betrieb ab Thaliastraße U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5145bbd71cb593de8b1c67d88f8b8ab65c01c1280f686f0fcace9ac2042f0579",
+    "pubDate": "2026-01-12T20:48:27+01:00",
+    "starts_at": "2026-01-12T20:54:15+01:00",
+    "ends_at": "2026-01-12T21:53:00+01:00",
+    "_identity": "wl|störung|L=46|D=2026-01-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ca3f320972243b037074321441d828580185f68cae3de0b8d41ea5abc0bd3d31",
+    "pubDate": "2026-01-12T20:48:30+01:00",
+    "starts_at": "2026-01-12T20:53:49+01:00",
+    "ends_at": "2026-01-12T21:52:00+01:00",
+    "_identity": "wl|störung|L=46|D=2026-01-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Simmering.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-01-12T21:05:00+01:00",
+    "starts_at": "2026-01-12T21:05:00+01:00",
+    "ends_at": "2026-01-12T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2026-01-12"
   }
 ]
