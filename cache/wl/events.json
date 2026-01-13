@@ -128,20 +128,8 @@
     "guid": "186ef2b93c97e07322f7f72db6a4aa3d3909c74116832d27f6d687487d538d7e",
     "pubDate": "2026-01-12T20:59:52+01:00",
     "starts_at": "2026-01-13T00:00:28+01:00",
-    "ends_at": "2026-01-13T12:00:00+01:00",
+    "ends_at": "2026-01-13T20:00:00+01:00",
     "_identity": "wl|störung|L=|D=2026-01-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung wegen Gleisschaden",
-    "description": "Fahrtbehinderung wegen Gleisschaden",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1d24038899533c94bce76f97f2f2f9c8639164ca18e379532b81e084f2d38536",
-    "pubDate": "2026-01-13T00:00:21+01:00",
-    "starts_at": "2026-01-13T10:31:07+01:00",
-    "ends_at": "2026-01-13T13:00:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
@@ -170,6 +158,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "Fahrtbehinderung wegen Gleisschaden",
+    "description": "Fahrtbehinderung wegen Gleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1d24038899533c94bce76f97f2f2f9c8639164ca18e379532b81e084f2d38536",
+    "pubDate": "2026-01-13T00:00:21+01:00",
+    "starts_at": "2026-01-13T10:31:07+01:00",
+    "ends_at": "2026-01-13T13:00:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-01-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -190,18 +190,6 @@
     "starts_at": "2026-01-13T05:45:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
     "_identity": "wl|störung|L=11A|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "69A: Witterung Umleitung über Simmeringer Hautptstraße",
-    "description": "Witterung Umleitung über Simmeringer Hautptstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9ba40d0b6713d8408a56e8a81cf7b6c6d333af2ed93a6570a7e50313c093d65c",
-    "pubDate": "2026-01-13T06:30:53+01:00",
-    "starts_at": "2026-01-13T07:02:31+01:00",
-    "ends_at": "2026-01-13T12:00:00+01:00",
-    "_identity": "wl|störung|L=69A|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
@@ -237,18 +225,6 @@
     "pubDate": "2026-01-13T10:45:00+01:00",
     "starts_at": "2026-01-13T10:45:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35",
-    "pubDate": "2026-01-13T10:49:54+01:00",
-    "starts_at": "2026-01-13T11:03:32+01:00",
-    "ends_at": "2026-01-13T12:03:00+01:00",
     "_identity": "wl|störung|L=62|D=2026-01-13"
   }
 ]
