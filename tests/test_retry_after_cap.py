@@ -38,12 +38,6 @@ def test_vor_retry_after_capped(monkeypatch, caplog):
     vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
 
     # Expect the sleep to be capped (assuming we will set it to 120)
-    # Since we haven't implemented the fix yet, this test is expected to FAIL or pass with the wrong value (99999)
-    # Ideally we write the test assuming the fix is in place, so it fails first.
-
-    # For TDD, I'll assert the expected capped value.
-    # If the code isn't fixed yet, sleep_calls will contain [99999.0]
-
     assert len(sleep_calls) > 0
     assert sleep_calls[0] <= 120.0
     assert any("zu hoch" in message for message in caplog.messages) or any("kappe auf" in message for message in caplog.messages)
