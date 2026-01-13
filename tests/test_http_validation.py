@@ -15,7 +15,7 @@ def test_validate_http_url_invalid_scheme() -> None:
 
 
 def test_validate_http_url_ssrf_domains() -> None:
-    # These should be REJECTED after the fix
+    # These should be REJECTED (SSRF protection)
     assert validate_http_url("http://localhost") is None
     assert validate_http_url("https://localhost:8080") is None
     assert validate_http_url("http://LOCALHOST") is None
