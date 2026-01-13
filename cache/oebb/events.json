@@ -3,13 +3,25 @@
     "source": "ÖBB",
     "category": "Störung",
     "title": "Wien Liesing ↔ Mödling",
-    "description": "13.01.2026\nWegen eines defekten Zuges auf der Strecke sind zwischen Wien Liesing Bahnhof und Mödling Bahnhof Zugfahrten derzeit nur eingeschränkt möglich. Es kommt zu vereinzelten Zugausfällen und Verspätungen bis zu 10 Minuten.\nBeachten Sie bitte die Lautsprecherdurchsagen und Monitoranzeigen am Bahnsteig.\nWir bitten um Entschuldigung.",
+    "description": "13.01.2026\nWegen eines defekten Zuges auf der Strecke sind zwischen Wien Liesing Bahnhof und Mödling Bahnhof Zugfahrten voraussichtlich bis 09:00 Uhr nur eingeschränkt möglich. Es kommt zu vereinzelten Zugausfällen und Verspätungen bis zu 30 Minuten.\nBeachten Sie bitte die Lautsprecherdurchsagen und Monitoranzeigen am Bahnsteig.\nWir bitten um Entschuldigung.",
     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&845608",
-    "pubDate": "2026-01-13T05:45:26+01:00",
-    "starts_at": "2026-01-13T05:45:26+01:00",
+    "pubDate": "2026-01-13T07:28:43+01:00",
+    "starts_at": "2026-01-13T07:28:43+01:00",
     "ends_at": null,
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&845608"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Wien Hauptbahnhof ↔ Flughafen Wien",
+    "description": "12.01.2026 - 13.01.2026\nWegen der derzeitigen Witterung sind zwischen Wien Hbf (U) und Flughafen Wien Bahnhof bis voraussichtlich 13.01.2026, 13:00 Uhr keine Fahrten möglich.\nÖBB Fahrausweise werden auf den Wiener Linien bis 13:00 Uhr anerkannt. Sobald uns weitere Informationen vorliegen, informieren wir Sie.\nWir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&845341",
+    "pubDate": "2026-01-13T06:59:17+01:00",
+    "starts_at": "2026-01-13T06:59:17+01:00",
+    "ends_at": null,
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&845341"
   },
   {
     "source": "ÖBB",
@@ -22,17 +34,5 @@
     "starts_at": "2026-01-13T04:56:41+01:00",
     "ends_at": null,
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&845591"
-  },
-  {
-    "source": "ÖBB",
-    "category": "Störung",
-    "title": "Wien Hauptbahnhof ↔ Flughafen Wien",
-    "description": "12.01.2026 - 13.01.2026\nWegen der derzeitigen Witterung sind zwischen Wien Hbf (U) und Flughafen Wien Bahnhof bis voraussichtlich 13.01.2026, 12:00 Uhr keine Fahrten möglich.\nSobald uns weitere Informationen vorliegen, informieren wir Sie.\nWir bitten um Entschuldigung.",
-    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
-    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&845341",
-    "pubDate": "2026-01-12T23:16:58+01:00",
-    "starts_at": "2026-01-12T23:16:58+01:00",
-    "ends_at": null,
-    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&845341"
   }
 ]
