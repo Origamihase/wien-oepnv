@@ -75,7 +75,11 @@ DATE_FULL_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\.(?:\d{2}|\d{4})\b")
 DATE_SHORT_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\b")
 TIME_RE = re.compile(r"\b\d{1,2}:\d{2}\b")
 ADDRESS_NO_RE = re.compile(
-    r"\b([A-Za-zÄÖÜäöüß\-]+(?:gasse|straße|strasse|platz|allee|weg|steig|ufer|brücke|kai|ring))\s+\d+\b",
+    r"\b([A-Za-zÄÖÜäöüß\-]+(?:gasse|straße|strasse|platz|allee|weg|steig|ufer|brücke|kai|ring|gürtel|lände|damm|markt))\s+\d+\b",
+    re.IGNORECASE,
+)
+ADDRESS_NO_PRE_RE = re.compile(
+    r"\b(?:ggü\.?|gegenüber|Nr\.?|Nummer|Hausnr\.?|Objekt|Stiege|Tür|Top)\s+\d+\b",
     re.IGNORECASE,
 )
 
@@ -85,6 +89,7 @@ def _mask_dates_times_addresses(t: str) -> str:
     t = DATE_SHORT_RE.sub(" ", t)
     t = TIME_RE.sub(" ", t)
     t = ADDRESS_NO_RE.sub(r"\1", t)  # Zahl nach Straßentyp entfernen
+    t = ADDRESS_NO_PRE_RE.sub(" ", t)  # Zahl nach Präfix (ggü. 12) entfernen
     return t
 
 
