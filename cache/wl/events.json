@@ -170,18 +170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Betriebsstörung",
-    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Ottakring.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2026-01-13T05:35:00+01:00",
-    "starts_at": "2026-01-13T05:35:00+01:00",
-    "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10: Schadhaftes Fahrzeug",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -194,14 +182,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2/26A/31/32A/39A/40A/5/60/71/88B/94A: Witterung",
-    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 5 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 31 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 88 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 26 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 32 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 39 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 40 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich des Wiener Stadtgebietes.",
+    "title": "2/26A/31/32A/39A/40A/60/71/88B/94A: Witterung",
+    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 31 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 88 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 26 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 32 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 39 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 40 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich des Wiener Stadtgebietes.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a0d78e0992e714625cf250f5c57393c771b1176c267a1cf3af6619e2a54cd086",
+    "guid": "84f5fa0c445996b2cd4c4ce8860a1359b3da76d79d95e8b6dae9c320762001f2",
     "pubDate": "2026-01-13T05:45:00+01:00",
     "starts_at": "2026-01-13T05:45:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=2,26A,31,32A,39A,40A,5,60,71,88B,94A|D=2026-01-13"
+    "_identity": "wl|störung|L=2,26A,31,32A,39A,40A,60,71,88B,94A|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
@@ -214,18 +202,6 @@
     "starts_at": "2026-01-13T06:25:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
     "_identity": "wl|störung|L=69A|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "73A: Witterung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 73 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d924e7a559986879910030362a7c749c1562c4ec2c28a1436cb451d67fb547b0",
-    "pubDate": "2026-01-13T06:25:00+01:00",
-    "starts_at": "2026-01-13T06:25:00+01:00",
-    "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=73A|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
@@ -278,25 +254,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52: Schadhafter PKW",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 52 zu unterschiedlichen Intervallen.",
+    "title": "43: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "13ddbae4c3fbe725cdbc57feffb503dbb6277d56b6ff7cf08563093d0aa7e3ae",
-    "pubDate": "2026-01-13T07:40:00+01:00",
-    "starts_at": "2026-01-13T07:40:00+01:00",
+    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
+    "pubDate": "2026-01-13T07:45:00+01:00",
+    "starts_at": "2026-01-13T07:58:49+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=52|D=2026-01-13"
+    "_identity": "wl|störung|L=43|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Die Linie 43 ist derzeit in Richtung Schottentor an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 08:20 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Hernals, Wattgasse.",
+    "title": "18/6/62/WLB: Schadhaftes Fahrzeug",
+    "description": "Die Linie 6 fährt derzeit nicht zwischen Knöllgasse und Arbeitergasse, Gürtel. Die Linie 18 fährt derzeit nicht zwischen Arbeitergasse, Gürtel und Matzleinsdorfer Platz. Die Linie 62 fährt derzeit nicht zwischen Bahnhof Meidling, Dörfelstraße und Matzleinsdorfer Platz, die Züge werden ab Matzleinsdorfer Platz zum Stefan-Fadinger-Platz umgeleitet. Die Badner Bahn fährt derzeit nur zwischen Baden und Bahnhof Meidling, Schedifkaplatz. Ersatzweise können Sie auf die U-Bahnlinie U6 sowie auf die Linien 12 A und 59 A ausweichen. Die Störung dauert voraussichtlich bis 09:00 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Eichenstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
-    "pubDate": "2026-01-13T07:45:00+01:00",
-    "starts_at": "2026-01-13T07:51:06+01:00",
+    "guid": "efef26e03359e04413fb166deffb75b7cf60e787cc6a86fcf9ec0ad442db36cd",
+    "pubDate": "2026-01-13T08:05:00+01:00",
+    "starts_at": "2026-01-13T08:05:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=43|D=2026-01-13"
+    "_identity": "wl|störung|L=18,6,62,WLB|D=2026-01-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-01-13T08:20:00+01:00",
+    "starts_at": "2026-01-13T08:20:00+01:00",
+    "ends_at": "2026-01-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2026-01-13"
   }
 ]
