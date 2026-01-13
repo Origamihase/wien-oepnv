@@ -158,38 +158,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Witterung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
+    "title": "71: Witterung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "551c643af3eefd5c5002322d476fae7cca2ce70f0009d59a4e5fb6e2373f36f3",
-    "pubDate": "2026-01-13T05:00:00+01:00",
-    "starts_at": "2026-01-13T05:00:00+01:00",
-    "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2/60/71/11A/63A: Witterung",
-    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 11 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich des Wiener Stadtgebietes.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b21cd3d7998b4aeafb425d4a444bc77fc3339f16eb2fe9791fc8d17bd030b034",
+    "guid": "74bd1d71aea9c31232861cf14dd4655cf79983da6c31aaa3c43a5b62b8866093",
     "pubDate": "2026-01-13T05:45:00+01:00",
     "starts_at": "2026-01-13T05:45:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=11A,2,60,63A,71|D=2026-01-13"
+    "_identity": "wl|störung|L=71|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "69A: Witterung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 69 A zu unterschiedlichen Intervallen.",
+    "title": "11A: Witterung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "86817c6544986554e1f69457342bd23e893ffaf94ef127a41e888415cdad68f0",
-    "pubDate": "2026-01-13T06:25:00+01:00",
-    "starts_at": "2026-01-13T06:25:00+01:00",
+    "guid": "fcb4a70ff06f72ae8f67d1bb44134f82ade00f943d65fea768e6642dafc6e19f",
+    "pubDate": "2026-01-13T05:45:00+01:00",
+    "starts_at": "2026-01-13T05:45:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=69A|D=2026-01-13"
+    "_identity": "wl|störung|L=11A|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
@@ -214,18 +202,6 @@
     "starts_at": "2026-01-13T06:45:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
     "_identity": "wl|störung|L=U6|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
-    "pubDate": "2026-01-13T07:45:00+01:00",
-    "starts_at": "2026-01-13T07:45:00+01:00",
-    "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=43|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
@@ -286,17 +262,5 @@
     "starts_at": "2026-01-13T08:40:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "51A: Rettungseinsatz",
-    "description": "Die Linie 51 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Hietzing U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f78d0b74472be6846b85f2cf8b83096c770eaa8ed2a63e41f17b05c62dcb9804",
-    "pubDate": "2026-01-13T09:00:00+01:00",
-    "starts_at": "2026-01-13T09:00:00+01:00",
-    "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=51A|D=2026-01-13"
   }
 ]
