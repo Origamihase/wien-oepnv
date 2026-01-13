@@ -182,14 +182,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2/60/71/88B/26A/32A/94A: Witterung",
-    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 88 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 26 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 32 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich des Wiener Stadtgebietes.",
+    "title": "2/60/71/63A: Witterung",
+    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich des Wiener Stadtgebietes.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1ca8a4550543cb5e047987e5699fcc8143179433313c485ac3f3a55a040e5441",
+    "guid": "6728f55b9de8ed1c7c392f1d534a7daa60535a3673c983851a2d2c633cbe6921",
     "pubDate": "2026-01-13T05:45:00+01:00",
     "starts_at": "2026-01-13T05:45:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=2,26A,32A,60,71,88B,94A|D=2026-01-13"
+    "_identity": "wl|störung|L=2,60,63A,71|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
@@ -218,18 +218,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "404f3551d0efb1f503b6da3f9dea1315ba797797becc9ded87406bb28d1acc34",
-    "pubDate": "2026-01-13T06:35:00+01:00",
-    "starts_at": "2026-01-13T06:35:00+01:00",
-    "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U6: Schadhaftes Fahrzeug",
     "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Am Schöpfwerk.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -242,12 +230,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "43: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
     "pubDate": "2026-01-13T07:45:00+01:00",
-    "starts_at": "2026-01-13T07:58:49+01:00",
+    "starts_at": "2026-01-13T07:45:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
     "_identity": "wl|störung|L=43|D=2026-01-13"
   },
@@ -290,110 +278,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Schadhafter Zug Betrieb ab Knöllgasse",
-    "description": "Schadhafter Zug Betrieb ab Knöllgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "26ad8057ded898528f6225409ac8d9486ef05ea28d72703318c480f2febbd3e1",
-    "pubDate": "2026-01-13T08:10:53+01:00",
-    "starts_at": "2026-01-13T08:18:38+01:00",
-    "ends_at": "2026-01-13T09:18:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "6: Schadhafter Zug Züge halten Linie 1 Richtung Prater Hauptallee",
     "description": "Schadhafter Zug Züge halten Linie 1 Richtung Prater Hauptallee",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c9f14a05dd30443d0fa4c68aa8eed002e7b86212f14dcc47dff8983711d52dd4",
     "pubDate": "2026-01-13T08:13:48+01:00",
     "starts_at": "2026-01-13T08:13:48+01:00",
-    "ends_at": "2026-01-13T09:19:00+01:00",
+    "ends_at": "2026-01-13T11:00:00+01:00",
     "_identity": "wl|störung|L=6|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c54650e65ef647f350297bb5f234db6c9420a95be4c9c46b35286f6ec869089",
-    "pubDate": "2026-01-13T08:14:17+01:00",
-    "starts_at": "2026-01-13T08:18:09+01:00",
-    "ends_at": "2026-01-13T09:17:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Schadhafter Zug Betrieb ab Matzleinsdorfer Platz",
-    "description": "Schadhafter Zug Betrieb ab Matzleinsdorfer Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "26230b628e675d3a64b99ba6c6e9ba0964c0df23c210439575f9cfb962935f95",
-    "pubDate": "2026-01-13T08:15:44+01:00",
-    "starts_at": "2026-01-13T08:21:03+01:00",
-    "ends_at": "2026-01-13T09:20:00+01:00",
-    "_identity": "wl|störung|L=18|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Schadhafter Zug Züge halten Linie 1 Richtung Prater Hauptallee",
-    "description": "Schadhafter Zug Züge halten Linie 1 Richtung Prater Hauptallee",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3a050bd2b692c5410a4413ae7fbd719df54ae646589a18a4868c9e4b27a872ad",
-    "pubDate": "2026-01-13T08:16:42+01:00",
-    "starts_at": "2026-01-13T08:16:42+01:00",
-    "ends_at": "2026-01-13T09:21:00+01:00",
-    "_identity": "wl|störung|L=18|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b5c18c502bca3e563ccf2d3da3d06868790f6d4f4fe3fd3fc1429807b9bed37f",
-    "pubDate": "2026-01-13T08:20:30+01:00",
-    "starts_at": "2026-01-13T08:20:34+01:00",
-    "ends_at": "2026-01-13T09:19:00+01:00",
-    "_identity": "wl|störung|L=18|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Schadhafter Zug Betrieb ab Matzleinsdorfer Platz",
-    "description": "Schadhafter Zug Betrieb ab Matzleinsdorfer Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dc49a0841bc6a66d06845da158df189d81681c48dae0c7d8e3c78efcbb6da5d4",
-    "pubDate": "2026-01-13T08:23:25+01:00",
-    "starts_at": "2026-01-13T08:23:29+01:00",
-    "ends_at": "2026-01-13T09:22:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Schadhafter Zug Betrieb ab Dörfelstraße",
-    "description": "Schadhafter Zug Betrieb ab Dörfelstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "88c7406c51828594f73a8ba477ff47532264dc347460a3e4cc1b19483b4531e3",
-    "pubDate": "2026-01-13T08:23:53+01:00",
-    "starts_at": "2026-01-13T08:23:58+01:00",
-    "ends_at": "2026-01-13T09:23:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Schadhafter Zug Züge halten Linie 1 Richtung Prater Hauptallee",
-    "description": "Schadhafter Zug Züge halten Linie 1 Richtung Prater Hauptallee",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8ceb5bb1d966f33ef66165a77b9e99df5e82cc694de70693772cdce9adb88383",
-    "pubDate": "2026-01-13T08:24:27+01:00",
-    "starts_at": "2026-01-13T08:24:27+01:00",
-    "ends_at": "2026-01-13T09:24:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
@@ -423,12 +315,24 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U3: Betriebsstörung",
-    "description": "Die Linie U3 ist derzeit in Richtung Simmering an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 09:15. Grund dafür ist eine Betriebsstörung im Bereich Zieglergasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
     "pubDate": "2026-01-13T08:40:00+01:00",
     "starts_at": "2026-01-13T08:40:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2026-01-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "51A: Rettungseinsatz",
+    "description": "Die Linie 51 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Hietzing U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f78d0b74472be6846b85f2cf8b83096c770eaa8ed2a63e41f17b05c62dcb9804",
+    "pubDate": "2026-01-13T09:00:00+01:00",
+    "starts_at": "2026-01-13T09:00:00+01:00",
+    "ends_at": "2026-01-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=51A|D=2026-01-13"
   }
 ]
