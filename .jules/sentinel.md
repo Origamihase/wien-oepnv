@@ -22,3 +22,8 @@
 **Vulnerability:** The sitemap generator (`scripts/generate_sitemap.py`) passed the file path directly to `git log` via `subprocess` without using the `--` separator. This meant that a file named like a command-line flag (e.g., `-p` or `--help`) could be interpreted as an option by `git`, potentially leading to unexpected behavior or error leakage (CWE-88).
 **Learning:** When passing untrusted or partially trusted input (like filenames from a repository) to command-line tools via `subprocess`, always use the `--` separator to explicitly delimit options from positional arguments.
 **Prevention:** Updated `scripts/generate_sitemap.py` to invoke `git log` with the `--` separator: `["git", "log", ..., "--", str(path)]`.
+
+## 2025-05-25 - Denial of Service via Recursion in Serializer
+**Vulnerability:** The utility `serialize_for_cache` (used for caching external data) was vulnerable to infinite recursion if passed a data structure with circular references. This could lead to a `RecursionError` and crash the application (Denial of Service). While input currently comes from trusted providers (parsed JSON), future changes or new providers could inadvertently introduce cycles.
+**Learning:** Recursive functions processing generic input must always include cycle detection or depth limits to prevent stack overflows, even if the current data sources are believed to be acyclic.
+**Prevention:** Updated `src/utils/serialize.py` to track visited object IDs during recursion and raise a `ValueError` if a cycle is detected, mirroring the behavior of `json.dumps`.
