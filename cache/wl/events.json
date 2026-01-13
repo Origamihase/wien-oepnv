@@ -146,25 +146,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N66: Witterung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie N66 zu unterschiedlichen Intervallen.",
+    "title": "62A: Busse halten Breitenfurter Straße 236-238",
+    "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "292489d67ddb4fc054427923c40936c803db5103fc04e570be2af7b34d8594df",
-    "pubDate": "2026-01-13T02:55:00+01:00",
-    "starts_at": "2026-01-13T02:55:00+01:00",
-    "ends_at": "2026-01-13T04:50:00+01:00",
-    "_identity": "wl|störung|L=N66|D=2026-01-13"
+    "guid": "156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3",
+    "pubDate": "2026-01-13T04:45:20+01:00",
+    "starts_at": "2026-01-13T04:45:20+01:00",
+    "ends_at": "2026-01-14T00:35:00+01:00",
+    "_identity": "wl|störung|L=62A|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N66: Fahrtbehinderung wegen Witterung",
+    "title": "U2: Betriebsstörung",
+    "description": "Die Linie U2 fährt derzeit nur zwischen Seestadt und Schottentor. Ersatzweise benützen Sie die Linien U1, U4, 1, 2, D und 71. Die Störung dauert voraussichtlich bis 05:30 Uhr. Grund dafür ist eine Betriebsstörung im Bereich Volkstheater.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-01-13T04:50:00+01:00",
+    "starts_at": "2026-01-13T04:50:00+01:00",
+    "ends_at": "2026-01-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2026-01-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Betriebsstörung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4da7ec50efe04776d24983130a8b4badbde4fb98c292e38675b780160a239430",
+    "pubDate": "2026-01-13T05:00:00+01:00",
+    "starts_at": "2026-01-13T05:00:00+01:00",
+    "ends_at": "2026-01-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-01-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Witterung",
+    "description": "Die Linie 11 ist derzeit in Richtung Kaiserebersdorf an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 05:30 Uhr. Grund dafür ist die aktuelle Witterung im Bereich Otto-Probst-Platz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "551c643af3eefd5c5002322d476fae7cca2ce70f0009d59a4e5fb6e2373f36f3",
+    "pubDate": "2026-01-13T05:00:00+01:00",
+    "starts_at": "2026-01-13T05:00:00+01:00",
+    "ends_at": "2026-01-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-01-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Fahrtbehinderung wegen Witterung",
     "description": "Fahrtbehinderung wegen Witterung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c7f3d716d967ab95d91a48d2b206dcf7f9212a7b5239d8725315e45eb549def",
-    "pubDate": "2026-01-13T03:24:40+01:00",
-    "starts_at": "2026-01-13T03:34:57+01:00",
-    "ends_at": "2026-01-13T04:34:00+01:00",
-    "_identity": "wl|störung|L=N66|D=2026-01-13"
+    "guid": "83e17132dfa6c6ce3fb9e0ce8ec68bb96c552e1d929b731217803b5ae0bd0d6a",
+    "pubDate": "2026-01-13T05:05:14+01:00",
+    "starts_at": "2026-01-13T05:11:05+01:00",
+    "ends_at": "2026-01-13T06:10:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-01-13"
   }
 ]
