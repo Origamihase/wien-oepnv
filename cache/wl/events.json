@@ -170,26 +170,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 zu unterschiedlichen Intervallen.",
+    "title": "2/60/71/11A/63A: Witterung",
+    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 11 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich des Wiener Stadtgebietes.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fdcda7ef6a92179bf10d7bc572ea4566627e0563f24d6ad54899c823e3aca356",
-    "pubDate": "2026-01-13T05:40:00+01:00",
-    "starts_at": "2026-01-13T05:40:00+01:00",
-    "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=10|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2/60/71/63A: Witterung",
-    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich des Wiener Stadtgebietes.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6728f55b9de8ed1c7c392f1d534a7daa60535a3673c983851a2d2c633cbe6921",
+    "guid": "b21cd3d7998b4aeafb425d4a444bc77fc3339f16eb2fe9791fc8d17bd030b034",
     "pubDate": "2026-01-13T05:45:00+01:00",
     "starts_at": "2026-01-13T05:45:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=2,60,63A,71|D=2026-01-13"
+    "_identity": "wl|störung|L=11A,2,60,63A,71|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
@@ -286,30 +274,6 @@
     "starts_at": "2026-01-13T08:13:48+01:00",
     "ends_at": "2026-01-13T11:00:00+01:00",
     "_identity": "wl|störung|L=6|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "WLB: Schadhafter Zug Betrieb ab Schedifkaplatz",
-    "description": "Schadhafter Zug Betrieb ab Schedifkaplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1eaee98e7a1bfa0c102e68c32dbc5f308e599a78a27a0ce2b0adebb631b34991",
-    "pubDate": "2026-01-13T08:32:35+01:00",
-    "starts_at": "2026-01-13T08:32:45+01:00",
-    "ends_at": "2026-01-13T09:31:00+01:00",
-    "_identity": "wl|störung|L=WLB|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "WLB: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bc287c4ded13c589a4038ac2b6a53f90c984155ed0d9838ae653b3f4ebb4714c",
-    "pubDate": "2026-01-13T08:32:40+01:00",
-    "starts_at": "2026-01-13T08:33:05+01:00",
-    "ends_at": "2026-01-13T09:32:00+01:00",
-    "_identity": "wl|störung|L=WLB|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
