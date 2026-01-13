@@ -206,30 +206,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Fahrtbehinderung wegen Stromstörung",
-    "description": "Fahrtbehinderung wegen Stromstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "43af55e593e401ae3f42239fe3f2a3b5a3535c3089af02d052a809738853421a",
-    "pubDate": "2026-01-13T05:38:03+01:00",
-    "starts_at": "2026-01-13T05:38:03+01:00",
-    "ends_at": "2026-01-13T06:37:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Stromstörung Betrieb ab Praterstern",
-    "description": "Stromstörung Betrieb ab Praterstern",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "008841fe1c556e9ba62e8f6ec17a783b06564e315075ec256d4b5d2d157dfb53",
-    "pubDate": "2026-01-13T05:38:32+01:00",
-    "starts_at": "2026-01-13T05:38:33+01:00",
-    "ends_at": "2026-01-13T06:37:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10: Schadhaftes Fahrzeug",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -242,50 +218,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Fahrtbehinderung wegen Stromstörung",
-    "description": "Fahrtbehinderung wegen Stromstörung",
+    "title": "2/5/31/43/52/60/71/40A: Witterung",
+    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 5 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 31 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 43 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 52 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 40 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich des Wiener Staatgebietes.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2ab7e45e746a33e65e5f2e5bb674ae1070cea13aa977600ba24acaa990f5636e",
-    "pubDate": "2026-01-13T05:40:28+01:00",
-    "starts_at": "2026-01-13T05:40:40+01:00",
-    "ends_at": "2026-01-13T06:40:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Stromstörung Betrieb ab Rebhangasse",
-    "description": "Stromstörung Betrieb ab Rebhangasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d44d8243217a2fd18faf4ee68f8f36ca60d04aba77c3150a9625698df47d0640",
-    "pubDate": "2026-01-13T05:41:09+01:00",
-    "starts_at": "2026-01-13T05:41:09+01:00",
-    "ends_at": "2026-01-13T06:40:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8b2268ed2767a36efc584afb53e17a86e0b3ba91e4cecbbda59c4fede640ee4a",
-    "pubDate": "2026-01-13T05:43:49+01:00",
-    "starts_at": "2026-01-13T05:43:57+01:00",
-    "ends_at": "2026-01-13T06:43:00+01:00",
-    "_identity": "wl|störung|L=10|D=2026-01-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2/31/40A/43/5/52/60/69A/71: Witterung",
-    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 5 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 31 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 43 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 52 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 71 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 40 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 69 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung im Bereich des Wiener Staatgebietes.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c10a0a680b05b4d7fd958241779edd2705f279d862bc7c46a6e77a1ff0613f69",
+    "guid": "f592dec87fae0efc38506788002b96de7a63c6ddda0671044d55f98719953a81",
     "pubDate": "2026-01-13T05:45:00+01:00",
     "starts_at": "2026-01-13T05:45:00+01:00",
     "ends_at": "2026-01-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=2,31,40A,43,5,52,60,69A,71|D=2026-01-13"
+    "_identity": "wl|störung|L=2,31,40A,43,5,52,60,71|D=2026-01-13"
   },
   {
     "source": "Wiener Linien",
@@ -310,5 +250,65 @@
     "starts_at": "2026-01-13T06:17:10+01:00",
     "ends_at": "2026-01-13T07:16:00+01:00",
     "_identity": "wl|störung|L=6|D=2026-01-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "69A: Witterung",
+    "description": "Die Linie 69 A wird in Richtung Hauptbahnhof S U zwischen Simmering S U und Weißenböckstraße über die Simmeringer Hauptstraße umgeleitet. Die Störung dauert voraussichtlich bis 07:00 Uhr. Grund dafür ist die aktuelle Witterung im Bereich Unter der Kirche.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "86817c6544986554e1f69457342bd23e893ffaf94ef127a41e888415cdad68f0",
+    "pubDate": "2026-01-13T06:25:00+01:00",
+    "starts_at": "2026-01-13T06:25:00+01:00",
+    "ends_at": "2026-01-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=69A|D=2026-01-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "69A: Witterung Umleitung über Simmeringer Hauptstraße",
+    "description": "Witterung Umleitung über Simmeringer Hauptstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9ba40d0b6713d8408a56e8a81cf7b6c6d333af2ed93a6570a7e50313c093d65c",
+    "pubDate": "2026-01-13T06:30:53+01:00",
+    "starts_at": "2026-01-13T06:30:53+01:00",
+    "ends_at": "2026-01-13T12:00:00+01:00",
+    "_identity": "wl|störung|L=69A|D=2026-01-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "404f3551d0efb1f503b6da3f9dea1315ba797797becc9ded87406bb28d1acc34",
+    "pubDate": "2026-01-13T06:35:00+01:00",
+    "starts_at": "2026-01-13T06:35:00+01:00",
+    "ends_at": "2026-01-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-01-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d3121440bb198809da6ad6777749127de887bfe17ce700d64f281bbb4593b9c8",
+    "pubDate": "2026-01-13T06:36:03+01:00",
+    "starts_at": "2026-01-13T06:36:03+01:00",
+    "ends_at": "2026-01-13T07:35:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-01-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Schadhaftes Fahrzeug",
+    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Am Schöpfwerk.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
+    "pubDate": "2026-01-13T06:45:00+01:00",
+    "starts_at": "2026-01-13T06:45:00+01:00",
+    "ends_at": "2026-01-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2026-01-13"
   }
 ]
