@@ -73,7 +73,7 @@ def validate_path(path: Path, name: str) -> Path:
         try:
             rel = resolved.relative_to(base)
         except Exception:
-            continue
+            continue  # nosec B112 - ignore path resolution errors during validation
         if rel.parts and rel.parts[0] in ALLOWED_ROOTS:
             return resolved
     raise InvalidPathError(f"{name} outside allowed directories")

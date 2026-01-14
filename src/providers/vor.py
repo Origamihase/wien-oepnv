@@ -89,9 +89,9 @@ VOR_RETRY_OPTIONS: Dict[str, Any] = {
     "raise_on_status": False,
 }
 
-VOR_ACCESS_ID = ""
-_VOR_ACCESS_TOKEN_RAW = ""
-_VOR_AUTHORIZATION_HEADER = ""
+VOR_ACCESS_ID = ""  # nosec B105
+_VOR_ACCESS_TOKEN_RAW = ""  # nosec B105
+_VOR_AUTHORIZATION_HEADER = ""  # nosec B105
 
 
 def _get_secrets() -> List[str]:

@@ -310,7 +310,7 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
                                 delta = (retry_dt - datetime.now(timezone.utc)).total_seconds()
                                 wait_seconds = max(0.0, delta)
                             except Exception:
-                                pass
+                                pass  # nosec B110
                     log.warning("ÖBB RSS Rate-Limit (Retry-After: %s)", header)
 
                 if attempt == 0:

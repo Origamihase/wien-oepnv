@@ -69,7 +69,7 @@ def atomic_write(
             try:
                 f.close()
             except Exception:
-                pass
+                pass  # nosec B110
         # Cleanup temp file
         if os.path.exists(tmp_path):
             try:
