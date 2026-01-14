@@ -110,7 +110,45 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             # Optimization: Check lines first (cheaper)
             if line_overlap > 0.3:
                 if _has_significant_overlap(name, ex_name):
-                    # Merge Logic
+                    # Provider Priority Logic
+                    # VOR > ÖBB. If one is VOR and other is ÖBB, we prioritize VOR.
+                    p1 = (existing.get("provider") or existing.get("source") or "").lower()
+                    p2 = (item.get("provider") or item.get("source") or "").lower()
+
+                    is_vor_existing = "vor" in p1
+                    is_oebb_existing = "oebb" in p1 or "öbb" in p1
+                    is_vor_item = "vor" in p2
+                    is_oebb_item = "oebb" in p2 or "öbb" in p2
+
+                    # Case 1: Existing is VOR, Item is ÖBB -> Keep Existing, merge ÖBB desc if useful
+                    if is_vor_existing and is_oebb_item:
+                        desc_vor = existing.get("description", "") or ""
+                        desc_oebb = item.get("description", "") or ""
+                        if desc_oebb and desc_oebb not in desc_vor:
+                            existing["description"] = f"{desc_vor}\n\n{desc_oebb}"
+                        # Do NOT update GUID or Title from ÖBB (keep VOR master data)
+                        merged = True
+                        break
+
+                    # Case 2: Existing is ÖBB, Item is VOR -> Replace Existing with Item
+                    if is_oebb_existing and is_vor_item:
+                        # We replace the existing item content with the new item (VOR)
+                        # But we preserve the 'existing' list slot, so we update the dict in place.
+                        desc_oebb = existing.get("description", "") or ""
+                        desc_vor = item.get("description", "") or ""
+
+                        # Update existing with VOR data
+                        existing.clear()
+                        existing.update(item)
+
+                        # Append ÖBB desc if not present
+                        if desc_oebb and desc_oebb not in desc_vor:
+                            existing["description"] = f"{desc_vor}\n\n{desc_oebb}"
+
+                        merged = True
+                        break
+
+                    # Standard Merge Logic (Peers)
 
                     # 1. Combine Lines
                     all_lines = sorted(list(lines | ex_lines))
