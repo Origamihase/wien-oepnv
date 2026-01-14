@@ -76,13 +76,21 @@ class _HTMLToTextParser(HTMLParser):
         "td",
         "th",
     }
+    _IGNORE_TAGS = {"script", "style"}
 
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.parts: list[str] = []
+        self._ignore_depth = 0
 
     def handle_starttag(self, tag: str, attrs) -> None:  # noqa: D401, ANN001
         tag = tag.lower()
+        if tag in self._IGNORE_TAGS:
+            self._ignore_depth += 1
+            return
+        if self._ignore_depth > 0:
+            return
+
         if tag == "br":
             self.parts.append("\n")
         elif tag == "li":
@@ -93,6 +101,13 @@ class _HTMLToTextParser(HTMLParser):
 
     def handle_endtag(self, tag: str) -> None:  # noqa: D401, ANN001
         tag = tag.lower()
+        if tag in self._IGNORE_TAGS:
+            if self._ignore_depth > 0:
+                self._ignore_depth -= 1
+            return
+        if self._ignore_depth > 0:
+            return
+
         if tag == "li":
             self.parts.append("\n")
         elif tag in self._BLOCK_TAGS or tag in {"ul", "ol"}:
@@ -100,12 +115,17 @@ class _HTMLToTextParser(HTMLParser):
 
     def handle_startendtag(self, tag: str, attrs) -> None:  # noqa: D401, ANN001
         tag = tag.lower()
+        if self._ignore_depth > 0:
+            return
+
         if tag == "br":
             self.parts.append("\n")
         elif tag in self._BLOCK_TAGS:
             self.parts.append("\n")
 
     def handle_data(self, data: str) -> None:  # noqa: D401
+        if self._ignore_depth > 0:
+            return
         self.parts.append(data)
 
 
