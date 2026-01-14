@@ -1,4 +1,5 @@
 from datetime import datetime
+import pytest
 
 from src.utils.serialize import serialize_for_cache
 
@@ -39,3 +40,27 @@ def test_serialize_nested_collections_are_json_friendly():
     assert isinstance(result["items"], list)
     assert all(isinstance(item["tags"], list) for item in result["items"])
     assert isinstance(result["metadata"], list)
+
+def test_serialize_circular_reference_raises_value_error():
+    circular_dict = {"a": 1}
+    circular_dict["b"] = circular_dict
+
+    with pytest.raises(ValueError, match="Circular reference detected"):
+        serialize_for_cache(circular_dict)
+
+def test_serialize_circular_list_raises_value_error():
+    circular_list = [1, 2]
+    circular_list.append(circular_list)
+
+    with pytest.raises(ValueError, match="Circular reference detected"):
+        serialize_for_cache(circular_list)
+
+def test_serialize_tuple_recursion_check():
+    # Tuples are immutable but can contain mutable items that recurse
+    data = []
+    t = (data,)
+    data.append(t)
+
+    # Structure: data -> [ t ] -> [ (data,) ] -> [ ([...],) ]
+    with pytest.raises(ValueError, match="Circular reference detected"):
+        serialize_for_cache(data)
