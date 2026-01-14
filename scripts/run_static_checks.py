@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run project static analysis helpers (ruff + mypy).
+"""Run project static analysis helpers (ruff + mypy + bandit).
 
 This utility mirrors the checks executed in the CI workflow so that
 contributors can reproduce the results locally with a single command.
@@ -53,6 +53,15 @@ def main() -> int:
 
     if exit_code == 0:
         exit_code = _run(["mypy"])
+
+    if exit_code == 0:
+        # Run bandit security check
+        # -r: recursive
+        # -q: quiet (only errors)
+        # -c: config file (optional, we use defaults for now)
+        # We target src/ and scripts/
+        bandit_cmd = ["bandit", "-r", "src", "scripts", "-q"]
+        exit_code = _run(bandit_cmd)
 
     if exit_code == 0:
         scanner = PROJECT_ROOT / "scripts" / "scan_secrets.py"

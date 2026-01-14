@@ -10,7 +10,7 @@ import os
 import re
 import sys
 import uuid
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET  # nosec B405 - used for XML generation, not parsing untrusted input
 from collections import defaultdict
 from concurrent.futures import (
     FIRST_COMPLETED,

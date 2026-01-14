@@ -438,7 +438,7 @@ class GooglePlacesClient:
 
     def _backoff(self, attempt: int) -> float:
         base = 0.5 * (2 ** (attempt - 1))
-        jitter = random.uniform(0, 0.5)
+        jitter = random.uniform(0, 0.5)  # nosec B311
         return base + jitter
 
     @property

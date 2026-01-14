@@ -1,6 +1,5 @@
 
 import xml.etree.ElementTree as ET
-import sys
 
 def test_et_generation():
     NS_EXT = "https://wien-oepnv.example/schema"

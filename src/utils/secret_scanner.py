@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Sequence
 import re
-import subprocess
+import subprocess  # nosec B404
 
 __all__ = [
     "Finding",
@@ -44,7 +44,7 @@ def load_ignore_file(base_dir: Path, filename: str = ".secret-scan-ignore") -> l
 
 def _tracked_files(base_dir: Path) -> list[Path]:
     try:
-        completed = subprocess.run(
+        completed = subprocess.run(  # nosec B603, B607
             ["git", "ls-files", "-z"],
             cwd=base_dir,
             check=True,

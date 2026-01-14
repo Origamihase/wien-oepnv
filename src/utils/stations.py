@@ -518,7 +518,7 @@ def is_in_vienna(lat: object, lon: object | None = None) -> bool:
         if info:
             return bool(info.in_vienna)
         token = _normalize_token(lat)
-        if token == "wien" or token.startswith("wien "):
+        if token == "wien" or token.startswith("wien "):  # nosec B105
             return True
         return False
 
