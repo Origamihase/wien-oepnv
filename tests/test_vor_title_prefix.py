@@ -8,6 +8,7 @@ import src.providers.vor as vor
 
 def _emit_item_str(item, now, state):
     ident, elem, replacements = build_feed._emit_item(item, now, state)
+    ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
     xml_str = ET.tostring(elem, encoding="unicode")
     for ph, content in replacements.items():
         xml_str = xml_str.replace(ph, content)
