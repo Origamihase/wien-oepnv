@@ -170,18 +170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60A: Betriebsstörung",
-    "description": "Die Linie 60 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Alterlaa U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4140cd6c6a34d1e82b20538ec14b3ec1ff66956685caf61706996b945edf3c96",
-    "pubDate": "2026-01-14T07:50:00+01:00",
-    "starts_at": "2026-01-14T07:50:00+01:00",
-    "ends_at": "2026-01-14T23:55:00+01:00",
-    "_identity": "wl|störung|L=60A|D=2026-01-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Bauarbeiten",
     "description": "Die Linie 11 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür sind Bauarbeiten im Bereich Handelskai.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -201,30 +189,6 @@
     "pubDate": "2026-01-14T08:50:00+01:00",
     "starts_at": "2026-01-14T08:50:00+01:00",
     "ends_at": "2026-01-14T23:55:00+01:00",
-    "_identity": "wl|störung|L=25|D=2026-01-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Schadhafter Zug Betrieb ab Donauspital",
-    "description": "Schadhafter Zug Betrieb ab Donauspital",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7c5ca1cde42eb7177fa98bdeccfc34d94bc5f2e63c05e008a3e5268b80203cdf",
-    "pubDate": "2026-01-14T08:52:40+01:00",
-    "starts_at": "2026-01-14T08:52:46+01:00",
-    "ends_at": "2026-01-14T09:52:00+01:00",
-    "_identity": "wl|störung|L=25|D=2026-01-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Schadhafter Zug Betrieb ab Kagran",
-    "description": "Schadhafter Zug Betrieb ab Kagran",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "034925fef1aa3638e7a6aa672cab9e7459748a47ef84c27b3354b1a6cd706c87",
-    "pubDate": "2026-01-14T08:53:09+01:00",
-    "starts_at": "2026-01-14T08:53:15+01:00",
-    "ends_at": "2026-01-14T09:52:00+01:00",
     "_identity": "wl|störung|L=25|D=2026-01-14"
   },
   {
