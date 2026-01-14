@@ -29,6 +29,16 @@ A test suite (`tests/test_deduplication_quality.py`) was added to verify:
 *   "Better" items (e.g., later end date) are preserved.
 *   Fallback behavior (hashing) works for identical content but fails for updates (creates duplicates) if no GUID is present.
 
+## Provider Prioritization Strategy
+
+To ensure the highest data quality, the deduplication logic (`src/feed/merge.py`) implements a strict provider hierarchy when merging events:
+
+*   **Priority:** VOR > ÖBB.
+*   **Reason:** The VOR provider sources data from a structured API, which guarantees stable IDs and precise timestamps (start/end). The ÖBB provider relies on HTML scraping, which is inherently brittle and unstructured.
+*   **Merge Behavior:**
+    *   **Metadata:** Timestamps (start/end), Line IDs, and other core attributes are strictly retained from the VOR event (the master record).
+    *   **Descriptions:** To prevent data loss, any unique free-text information found in the ÖBB event (but missing in VOR) is appended to the VOR event's description.
+
 ## Conclusion
 
 The deduplication quality is **high**. The system correctly handles updates and merges duplicates for all configured providers. The only theoretical weakness (duplicates on text updates without GUIDs) is mitigated by all current providers implementing stable IDs.
