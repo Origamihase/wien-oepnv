@@ -2,6 +2,7 @@
 
 ## Quelle: PDF-Handbuch
 
+- 2026-01-14 – Optimized feed deduplication logic to prioritize VOR provider events (API) over ÖBB provider events (Scraper). Conflicts are now resolved by retaining the VOR event as the master record while merging unique description details from the ÖBB event. This ensures higher data quality and stability.
 - 2025-08-11 – Line Info Service ergänzt. (Kapitel 19)
 - 2025-07-02 – Aktualisierung 5.9.2 zu Informationstexten bei Störungen.
 - 2025-05-22 – Neuer Parameter `includeDrt` im Trip-Service.
