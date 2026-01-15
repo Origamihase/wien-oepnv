@@ -231,8 +231,8 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
 
 - **Quelle**: VOR/VAO-ReST-API, authentifiziert über einen Access Token (`VOR_ACCESS_ID`).
 - **Cache**: `cache/vor/events.json`, gepflegt mittels `scripts/update_vor_cache.py` und `.github/workflows/update-vor-cache.yml`.
-- **Rate-Limit**: Tageslimits werden automatisch überwacht (`MAX_REQUESTS_PER_DAY` in `src/providers/vor.py`). Wiederholte
-  Cache-Aktualisierungen werden bei ausgeschöpftem Limit übersprungen.
+- **Rate-Limit**: Tageslimits werden automatisch überwacht (`MAX_REQUESTS_PER_DAY` in `src/providers/vor.py`, Standard: 100 für "VAO Start"). Wiederholte
+  Cache-Aktualisierungen werden bei ausgeschöpftem Limit übersprungen. Falls Sie über einen kostenpflichtigen Vertrag (Variante A/B) verfügen, können Sie das Limit über `VOR_MAX_REQUESTS_PER_DAY` erhöhen.
 - **Unterstützung**: Für lokale Experimente stehen Hilfsskripte wie `scripts/check_vor_auth.py` oder
   `scripts/fetch_vor_haltestellen.py` bereit.
 

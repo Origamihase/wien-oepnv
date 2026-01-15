@@ -52,9 +52,9 @@ else:  # pragma: no cover - allow running via package or src layout
         from ..utils.logging import sanitize_log_arg, sanitize_log_message  # type: ignore
 
     try:
-        from utils.stations import vor_station_ids
+        from utils.stations import vor_station_ids, station_info
     except ModuleNotFoundError:
-        from ..utils.stations import vor_station_ids  # type: ignore
+        from ..utils.stations import vor_station_ids, station_info  # type: ignore
 
 log = logging.getLogger(__name__)
 
@@ -69,9 +69,10 @@ DEFAULT_USER_AGENT = "wien-oepnv/1.0 (+https://github.com/Origamihase/wien-oepnv
 
 DEFAULT_BOARD_DURATION_MIN = 60
 DEFAULT_HTTP_TIMEOUT = 15
-DEFAULT_MAX_STATIONS_PER_RUN = 20
+DEFAULT_MAX_STATIONS_PER_RUN = 2
 DEFAULT_ROTATION_INTERVAL_SEC = 1800
-DEFAULT_MAX_REQUESTS_PER_DAY = 1000
+# "VAO Start" contract limit: 100 requests per day (hard limit).
+DEFAULT_MAX_REQUESTS_PER_DAY = 100
 RETRY_AFTER_FALLBACK_SEC = 5.0
 RETRY_AFTER_MAX_SEC = 120.0
 REQUEST_LOCK_TIMEOUT_SEC = 5.0
@@ -758,36 +759,52 @@ def _select_stations_round_robin(
 
 def resolve_station_ids(names: Iterable[str]) -> List[str]:
     """
-    Resolve station names to VOR station IDs (EVA-IDs) using the ``location.name`` API.
+    Resolve station names to VOR station IDs (EVA-IDs).
 
-    Returns a list of unique station IDs.
+    Prioritizes local static data to save API quota ("VAO Start" limit).
+    Falls back to ``location.name`` API only if necessary and allowed.
     """
-    deduped: Dict[str, str] = {}
+    resolved: List[str] = []
+    to_lookup: List[str] = []
+    seen: set[str] = set()
+
     for raw in names:
         text = str(raw or "").strip()
         if not text:
             continue
-        options = [text]
-        mapped = STATION_NAME_MAP.get(text)
-        if mapped and mapped not in options:
-            options.append(mapped)
-        key = _normalize_stop_key(text)
-        current = deduped.get(key)
-        for candidate in options:
-            candidate = candidate.strip()
-            if not candidate:
-                continue
-            if current is None or _name_score(candidate) > _name_score(current):
-                current = candidate
-        if current is not None:
-            deduped[key] = current
-    tokens = list(deduped.values())
-    if not tokens:
-        return []
-    resolved: List[str] = []
+
+        # 1. Check if it's already an ID (numeric)
+        if text.isdigit():
+            if text not in resolved:
+                resolved.append(text)
+            continue
+
+        # 2. Check static mapping via station_info (includes STATION_NAME_MAP and aliases)
+        info = station_info(text)
+        if info and info.vor_id:
+            if info.vor_id not in resolved:
+                resolved.append(info.vor_id)
+            continue
+
+        # 3. Queue for API lookup if not found locally
+        if text not in seen:
+            seen.add(text)
+            to_lookup.append(text)
+
+    if not to_lookup:
+        return resolved
+
+    # Fallback to API for unknown names
+    # Note: This consumes quota!
+    _log_warning(
+        "Stationsauflösung via API für %s Namen (%s). "
+        "Dies verbraucht das VAO-Start-Kontingent (100 Requests/Tag)!",
+        len(to_lookup), ", ".join(to_lookup[:3]) + ("..." if len(to_lookup) > 3 else "")
+    )
+
     with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
         apply_authentication(session)
-        for name in tokens:
+        for name in to_lookup:
             params = {"format": "json", "input": name, "type": "stop"}
             try:
                 content = fetch_content_safe(
