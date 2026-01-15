@@ -39,6 +39,7 @@ Das Projekt setzt "Defense-in-Depth"-Strategien konsequent um:
 *   **Deduplizierung:** Die Logik in `src/build_feed.py` ist robust und priorisiert korrekt Einträge mit längerer Laufzeit oder detaillierterer Beschreibung.
 *   **Datumsbehandlung:** Zeitzonen (UTC vs. Lokalzeit) werden konsistent behandelt (`_to_utc`), was Fehler bei Zeitumstellungen ausschließt.
 *   **Provider:** Die Integration externer APIs (VOR, ÖBB, Google Places) behandelt Rate-Limits (HTTP 429, Retry-After) und Authentifizierung korrekt.
+    *   **VOR-Optimierung:** Der VOR-Provider implementiert eine ressourcensparende "Monitor"-Strategie, die sich standardmäßig auf kritische Knotenpunkte (Hauptbahnhof, Flughafen) beschränkt, um das 100-Request-Limit des "VAO Start"-Vertrags proaktiv einzuhalten.
 
 ## Fazit
 Es besteht aktuell **kein Handlungsbedarf**. Der Code ist sicher, robust, effizient und wartbar.
