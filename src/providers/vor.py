@@ -73,6 +73,7 @@ DEFAULT_MAX_STATIONS_PER_RUN = 2
 DEFAULT_ROTATION_INTERVAL_SEC = 1800
 # "VAO Start" contract limit: 100 requests per day (hard limit).
 DEFAULT_MAX_REQUESTS_PER_DAY = 100
+DEFAULT_MONITOR_WHITELIST = "Wien Hauptbahnhof,Flughafen Wien"
 RETRY_AFTER_FALLBACK_SEC = 5.0
 RETRY_AFTER_MAX_SEC = 120.0
 REQUEST_LOCK_TIMEOUT_SEC = 5.0
@@ -1097,9 +1098,24 @@ def fetch_events() -> List[Dict[str, Any]]:
         )
         return []
 
-    station_ids = list(VOR_STATION_IDS)
-    if not station_ids and VOR_STATION_NAMES:
-        station_ids = resolve_station_ids(VOR_STATION_NAMES)
+    # 1. Monitor Whitelist (New Strategy)
+    monitor_whitelist_str = os.getenv(
+        "VOR_MONITOR_STATIONS_WHITELIST", DEFAULT_MONITOR_WHITELIST
+    ).strip()
+    whitelist_names = [
+        x.strip() for x in monitor_whitelist_str.split(",") if x.strip()
+    ]
+
+    station_ids: List[str] = []
+    if whitelist_names:
+        log.info("Nutze VOR Monitor-Whitelist: %s", ", ".join(whitelist_names))
+        station_ids = resolve_station_ids(whitelist_names)
+    else:
+        # 2. Legacy Fallback (Full Rotation)
+        station_ids = list(VOR_STATION_IDS)
+        if not station_ids and VOR_STATION_NAMES:
+            station_ids = resolve_station_ids(VOR_STATION_NAMES)
+
     if not station_ids:
         log.info("Keine VOR Stationen konfiguriert")
         return []
