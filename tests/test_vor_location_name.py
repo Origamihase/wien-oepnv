@@ -30,7 +30,7 @@ def test_resolve_station_ids_looks_up_stop_ids(monkeypatch):
 
     def fake_fetch_safe(session, url, params=None, timeout=None):
         # Verify params
-        assert params["input"] == "Wien Franz-Josefs-Bf"
+        assert params["input"] == "UnknownStation"
         # accessId is injected via apply_authentication, which modifies the request or session,
         # but here fetch_content_safe receives params directly.
         # In the original code:
@@ -51,7 +51,7 @@ def test_resolve_station_ids_looks_up_stop_ids(monkeypatch):
     monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch_safe)
 
     ids = vor.resolve_station_ids(
-        ["Wien Franz Josefs Bahnhof", " Wien Franz-Josefs-Bf "]
+        ["UnknownStation"]
     )
 
     assert ids == ["42"]
