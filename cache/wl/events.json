@@ -134,30 +134,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Bauarbeiten",
-    "description": "Die Linie 11 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür sind Bauarbeiten im Bereich Handelskai.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e8372c2579c775212ae158406a90e1db924051a27c2edb2f563e97b1ca6ce3b",
-    "pubDate": "2026-01-15T09:05:00+01:00",
-    "starts_at": "2026-01-15T09:05:00+01:00",
-    "ends_at": "2026-01-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2026-01-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Gleisschaden",
-    "description": "Die Linie 1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Gleisschaden.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6",
-    "pubDate": "2026-01-15T12:15:00+01:00",
-    "starts_at": "2026-01-15T12:15:00+01:00",
-    "ends_at": "2026-01-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-01-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62: Gleisschaden Betrieb ab Resselgasse",
     "description": "Gleisschaden Betrieb ab Resselgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -205,18 +181,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40A: Fahrtbehinderung Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "502438d7745d32b9aed77971dc1aa753d1ce24a0e28a7b386725a3175a6cf1c8",
-    "pubDate": "2026-01-15T13:15:00+01:00",
-    "starts_at": "2026-01-15T13:29:15+01:00",
-    "ends_at": "2026-01-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=40A|D=2026-01-15"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "U1: Sperre Ausgang beim Keplerplatz",
     "description": "Sperre eines Aufgangs\nWegen Bauarbeiten auf der Favoritenstraße muss ein Aufgang der U-Bahn Station Keplerplatz gesperrt werden.\nZeitraum:\nMontag, 19. Jänner 2026, 04:30 Uhr bis Freitag, 03. April 2026, 04:30 Uhr.\nMaßnahme:\nDer rechte Ausgang Raaber Bahngasse gegenüber Favoritenstraße 85 bleibt im angegebenen Zeitraum geschlossen.",
@@ -226,5 +190,41 @@
     "starts_at": "2026-01-15T13:15:00+01:00",
     "ends_at": "2026-04-03T04:30:00+01:00",
     "_identity": "wl|hinweis|L=U1|D=2026-01-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Betriebsstörung",
+    "description": "Die Linie U1 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Oberlaa.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
+    "pubDate": "2026-01-15T14:25:00+01:00",
+    "starts_at": "2026-01-15T14:25:00+01:00",
+    "ends_at": "2026-01-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2026-01-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
+    "pubDate": "2026-01-15T14:30:36+01:00",
+    "starts_at": "2026-01-15T14:30:36+01:00",
+    "ends_at": "2026-01-15T15:30:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-01-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8",
+    "pubDate": "2026-01-15T14:31:34+01:00",
+    "starts_at": "2026-01-15T14:31:47+01:00",
+    "ends_at": "2026-01-15T15:30:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-01-15"
   }
 ]
