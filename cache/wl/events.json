@@ -154,5 +154,17 @@
     "starts_at": "2026-01-15T05:25:00+01:00",
     "ends_at": "2026-01-15T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2026-01-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "35A/48A: Verkehrsunfall",
+    "description": "Die Linie 35 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 48 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall im Bereich Opfermanngasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bdd05803d5db49358f671ab6a389d5bccd524dbdd0b6fa9023a51d1fd8372875",
+    "pubDate": "2026-01-15T06:05:00+01:00",
+    "starts_at": "2026-01-15T06:05:00+01:00",
+    "ends_at": "2026-01-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=35A,48A|D=2026-01-15"
   }
 ]
