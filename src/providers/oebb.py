@@ -19,8 +19,10 @@ from __future__ import annotations
 
 import logging
 import os
+import json
 import re
 import time
+from pathlib import Path
 from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Any, Dict, List, Optional
 from email.utils import parsedate_to_datetime
@@ -149,103 +151,121 @@ def _clean_title_keep_places(t: str) -> str:
     t = re.sub(r"[<>«»‹›]+", "", t)
     return t.strip()
 
-def _split_endpoints(title: str) -> Optional[List[str]]:
-    """Extrahiert Endpunktnamen links/rechts (ohne Bahnhof/Hbf/Klammern)."""
-    arrow_markers = (
-        "↔", "<=>", "<->", "→", "=>", "->", "—", "–",
-    )
+# ---------------- Region / Filter Logic ----------------
 
-    parts = []
+# Global sets for caching loaded station data
+_VIENNA_STATIONS: Optional[set] = None
+_OUTER_STATIONS: Optional[set] = None
 
-    # 1. Standard: Pfeile oder " - "
-    if any(a in title for a in arrow_markers) or re.search(r"\s-\s", title):
-        parts = [
-            p for p in re.split(r"\s*(?:↔|<=>|<->|→|=>|->|—|–|\s-\s)\s*", title) if p.strip()
-        ]
+# Compiled regexes for fast scanning
+_VIENNA_STATIONS_RE: Optional[re.Pattern] = None
+_OUTER_STATIONS_RE: Optional[re.Pattern] = None
 
-    # 2. Fallback: Hyphen split if not a valid single station name
-    elif "-" in title:
-        # If the entire title matches a known station (e.g. "Deutsch-Wagram"),
-        # do NOT split it.
-        if canonical_name(title):
-            return None
+def _load_station_sets():
+    """
+    Loads station data from data/stations.json and populates the global
+    sets/regexes for Vienna vs. Outer stations.
+    """
+    global _VIENNA_STATIONS, _OUTER_STATIONS
+    global _VIENNA_STATIONS_RE, _OUTER_STATIONS_RE
 
-        parts = [p.strip() for p in title.split("-") if p.strip()]
+    if _VIENNA_STATIONS is not None:
+        return
 
-    if len(parts) < 2:
-        return None
+    _VIENNA_STATIONS = set()
+    _OUTER_STATIONS = set()
 
-    # Use only first and last part if > 2? Or just split first pivot?
-    # Usually standard arrows split into 2 main blocks.
-    # Simple hyphen split might produce "A-B-C".
-    # For compatibility with explode logic, we take first vs remaining?
-    # Or just treat everything as a list of endpoints.
-    # The existing logic assumes strict left/right split.
+    try:
+        # Resolve path relative to this file: src/providers/oebb.py -> ../../data/stations.json
+        base_dir = Path(__file__).resolve().parent.parent.parent
+        data_path = base_dir / "data" / "stations.json"
 
-    # We process all parts generically below.
+        with open(data_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
 
-    def explode(side: str) -> List[str]:
-        tmp = re.split(r"\s*(?:/|,|bzw\.|oder|und)\s*", side, flags=re.IGNORECASE)
-        names: List[str] = []
-        for n in tmp:
-            n = BAHNHOF_TRIM_RE.sub("", n)
-            n = BAHNHOF_COMPOUND_RE.sub("", n)
-            n = re.sub(r"\s*\([^)]*\)\s*", "", n)  # Klammern-Inhalte weg
-            n = re.sub(r"\s{2,}", " ", n).strip(" .")
-            if n:
-                names.append(n)
-        return names
+        for entry in data:
+            is_vienna = entry.get("in_vienna", False)
+            names = set()
+            # Add main name
+            if entry.get("name"):
+                names.add(entry["name"])
+            # Add aliases
+            if entry.get("aliases"):
+                names.update(entry["aliases"])
 
-    all_found = []
-    for p in parts:
-        all_found.extend(explode(p))
+            # Normalize: lowercase, stripped. Filter out very short unsafe aliases (<2 chars) unless numeric
+            # to avoid false positives (e.g. "Au" in "Aufzug").
+            normalized = set()
+            for n in names:
+                if not n:
+                    continue
+                n_clean = n.strip().lower()
+                if len(n_clean) < 2 and not n_clean.isdigit():
+                    continue
+                normalized.add(n_clean)
 
-    return list(dict.fromkeys(all_found))
+            if is_vienna:
+                _VIENNA_STATIONS.update(normalized)
+            else:
+                _OUTER_STATIONS.update(normalized)
+
+        # Remove overlaps (if a name is in both, prefer Vienna or handle as such?
+        # Actually logic is: Check A (Vienna items) then Check B (Outer items).
+        # We don't need to remove overlaps for the sets, but for regex generation it helps.
+        # But here we just build regexes.
+
+        def _make_re(terms):
+            if not terms:
+                return re.compile(r"(?!x)x") # impossible match
+            # Sort by length desc to match "Bad Vöslau" before "Bad"
+            sorted_terms = sorted(terms, key=len, reverse=True)
+            # Escape and join
+            pattern = r"\b(?:" + "|".join(re.escape(t) for t in sorted_terms) + r")\b"
+            return re.compile(pattern, re.IGNORECASE)
+
+        _VIENNA_STATIONS_RE = _make_re(_VIENNA_STATIONS)
+        _OUTER_STATIONS_RE = _make_re(_OUTER_STATIONS)
+
+    except Exception as e:
+        log.error("Failed to load station data for filtering: %s", e)
+        # Fallback: empty sets
+        _VIENNA_STATIONS = set()
+        _OUTER_STATIONS = set()
+        _VIENNA_STATIONS_RE = re.compile(r"(?!x)x")
+        _OUTER_STATIONS_RE = re.compile(r"(?!x)x")
+
+
+def _is_relevant(title: str, description: str) -> bool:
+    """
+    Entscheidet über Relevanz für Wien-Pendler.
+    Logik:
+    1. Check A (Explizit Wien): Text enthält "Wien" oder "Vienna". -> JA.
+    2. Check B (Ort in Wien): Text enthält Bahnhof aus `vienna_stations`. -> JA.
+    3. Check C (Ausschluss Umland): Text enthält *nur* Bahnhöfe aus `outer_stations` (und keine Wien-Referenz). -> NEIN.
+    """
+    _load_station_sets()
+
+    text = f"{title} {description}" # Regex is case-insensitive, no need to lower() here for regex
+
+    # Check A: Explizit Wien (Word boundaries)
+    if re.search(r"\b(wien|vienna)\b", text, re.IGNORECASE):
+        return True
+
+    # Check B: Ort in Wien
+    if _VIENNA_STATIONS_RE.search(text):
+        return True
+
+    # Check C: Ausschluss Umland
+    # Wir sind hier nur, wenn WEDER Wien-Keyword NOCH Wien-Bahnhof gefunden wurde.
+    # Wenn jetzt EIN Outer-Bahnhof gefunden wird, ist es eine "reine Umland-Meldung" -> Weg damit.
+    if _OUTER_STATIONS_RE.search(text):
+        return False
+
+    # Fallback: Keine bekannten Bahnhöfe gefunden (z.B. "Allgemeine Störung"). Behalten.
+    return True
 
 # ---------------- Region helpers ----------------
 _MAX_STATION_WINDOW = 4
-_FAR_AWAY_RE = re.compile(
-    r"\b(salzburg|innsbruck|villach|bregenz|linz|graz|klagenfurt|bratislava|muenchen|passau|freilassing)\b",
-    re.IGNORECASE,
-)
-
-
-def _is_allowed_station(name: str) -> bool:
-    if is_in_vienna(name):
-        return True
-    if OEBB_ONLY_VIENNA:
-        return False
-    return is_pendler(name)
-
-
-def _has_allowed_station(blob: str) -> bool:
-    tokens = [t for t in re.split(r"\W+", blob) if t]
-    if not tokens:
-        return False
-    window = min(_MAX_STATION_WINDOW, len(tokens))
-    for size in range(window, 0, -1):
-        for idx in range(len(tokens) - size + 1):
-            candidate = " ".join(tokens[idx : idx + size])
-            if _is_allowed_station(candidate):
-                return True
-    return False
-
-
-def _keep_by_region(title: str, desc: str) -> bool:
-    endpoints = _split_endpoints(title)
-    if endpoints:
-        # Strecken: Alle Endpunkte müssen in whitelist sein (Pendler/Wien),
-        # ABER mindestens einer MUSS explizit in Wien liegen.
-        are_allowed = all(_is_allowed_station(x) for x in endpoints)
-        has_vienna = any(is_in_vienna(x) for x in endpoints)
-        return are_allowed and has_vienna
-
-    blob = f"{title or ''} {desc or ''}"
-    if not _has_allowed_station(blob):
-        return False
-    if _FAR_AWAY_RE.search(blob):
-        return False
-    return True
 
 # ---------------- Fallback Helpers ----------------
 def _extract_id_from_url(url: str) -> Optional[int]:
@@ -391,8 +411,8 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
                 if snippet:
                     title = snippet
 
-        # Region-Filter: nur Wien + definierter Pendelraum
-        if not _keep_by_region(title, desc):
+        # Region-Filter: Neue Logik (Wien-Bezug strikt)
+        if not _is_relevant(title, desc):
             continue
 
         out.append({
