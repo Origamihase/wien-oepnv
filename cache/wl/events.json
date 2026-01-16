@@ -146,25 +146,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Schadhaftes Fahrzeug",
-    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Kendlerstraße.",
+    "title": "U3: Rettungseinsatz",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Herrengasse und Landstraße in beiden Richtungen über Gleis 2. Die Störung dauert voraussichtlich bis 07:40 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Stubentor.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
-    "pubDate": "2026-01-16T05:05:00+01:00",
-    "starts_at": "2026-01-16T05:05:00+01:00",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-01-16T07:10:00+01:00",
+    "starts_at": "2026-01-16T07:10:00+01:00",
     "ends_at": "2026-01-16T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2026-01-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "15A: Rettungseinsatz",
-    "description": "Die Linie 15 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bc65efc0eaddbdf7e05327a802d1b0275625e76f2f1601244d8cb88fec910412",
-    "pubDate": "2026-01-16T05:25:00+01:00",
-    "starts_at": "2026-01-16T05:25:00+01:00",
-    "ends_at": "2026-01-16T23:55:00+01:00",
-    "_identity": "wl|störung|L=15A|D=2026-01-16"
   }
 ]
