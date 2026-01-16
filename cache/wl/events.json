@@ -218,10 +218,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Gleisschade Betrieb ab Anschützgasse",
-    "description": "Gleisschade Betrieb ab Anschützgasse",
+    "title": "Gleisschaden Betrieb ab Anschützgasse",
+    "description": "Gleisschaden Betrieb ab Anschützgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3ad8602848aed3cb18d0b68396ceed0eb4d5e901c57578ddfe4407442b803b86",
+    "guid": "ba67fb1e65ee7ab58a78ee646707ee6eaaf7e04384f02fca80b80cf88509c3a8",
     "pubDate": "2026-01-16T13:29:05+01:00",
     "starts_at": "2026-01-16T13:29:05+01:00",
     "ends_at": "2026-01-16T20:00:00+01:00",
@@ -286,5 +286,17 @@
     "starts_at": "2026-01-16T16:00:00+01:00",
     "ends_at": "2026-01-16T23:55:00+01:00",
     "_identity": "wl|störung|L=58A|D=2026-01-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5A: Feuerwehreinsatz",
+    "description": "Die Linie 5 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Feuerwehreinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6265c36948026a9240c5fa52560e59de9f1f4f9d60cb446ca1c706c43873487a",
+    "pubDate": "2026-01-16T16:25:00+01:00",
+    "starts_at": "2026-01-16T16:25:00+01:00",
+    "ends_at": "2026-01-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=5A|D=2026-01-16"
   }
 ]
