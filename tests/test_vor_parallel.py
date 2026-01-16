@@ -5,6 +5,7 @@ import src.providers.vor as vor
 
 def test_fetch_events_parallel(monkeypatch):
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "test")
+    monkeypatch.setenv("VOR_MONITOR_STATIONS_WHITELIST", "")
     vor.VOR_ACCESS_ID = "test"
     vor.VOR_STATION_IDS = ["1", "2"]
     vor.MAX_STATIONS_PER_RUN = 2
@@ -34,6 +35,7 @@ def test_fetch_events_parallel(monkeypatch):
 
 def test_fetch_events_logs_and_continues(monkeypatch, caplog):
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "test")
+    monkeypatch.setenv("VOR_MONITOR_STATIONS_WHITELIST", "")
     vor.VOR_ACCESS_ID = "test"
     vor.VOR_STATION_IDS = ["1", "2"]
     vor.MAX_STATIONS_PER_RUN = 2

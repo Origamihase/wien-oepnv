@@ -59,6 +59,7 @@ def test_resolve_station_ids_looks_up_stop_ids(monkeypatch):
 
 def test_fetch_events_prefers_configured_station_ids(monkeypatch):
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "token")
+    monkeypatch.setenv("VOR_MONITOR_STATIONS_WHITELIST", "")
     monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token", raising=False)
     monkeypatch.setattr(vor, "VOR_STATION_IDS", ["override"])
     monkeypatch.setattr(vor, "VOR_STATION_NAMES", ["Wien"])
@@ -82,6 +83,7 @@ def test_fetch_events_prefers_configured_station_ids(monkeypatch):
 
 def test_fetch_events_uses_station_names_when_ids_missing(monkeypatch):
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "token")
+    monkeypatch.setenv("VOR_MONITOR_STATIONS_WHITELIST", "")
     monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token", raising=False)
     monkeypatch.setattr(vor, "VOR_STATION_IDS", [])
     monkeypatch.setattr(vor, "VOR_STATION_NAMES", ["Wien"])
