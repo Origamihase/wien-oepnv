@@ -47,6 +47,15 @@
     "vor_id": "430310100"
   },
   {
+    "name": "Bregenz",
+    "aliases": [
+      "Bregenz Bahnhof"
+    ],
+    "in_vienna": false,
+    "pendler": false,
+    "source": "manual"
+  },
+  {
     "aliases": [
       "430320900",
       "Bruck an der Leitha",
@@ -198,6 +207,16 @@
     "vor_id": "430334700"
   },
   {
+    "name": "Feldkirch",
+    "aliases": [
+      "Feldkirch Bahnhof",
+      "Bahnhof Feldkirch"
+    ],
+    "in_vienna": false,
+    "pendler": false,
+    "source": "manual"
+  },
+  {
     "aliases": [
       "430470800",
       "Flughafen Wien",
@@ -252,6 +271,43 @@
   },
   {
     "aliases": [
+      "430349900",
+      "Gerasdorf",
+      "Bahnhof Gasseerasdorf",
+      "Bahnhof Gerasdorf",
+      "Bf Gasseerasdorf",
+      "Bf Gerasdorf",
+      "Gasseerasdorf",
+      "Gasseerasdorf Bahnhof",
+      "Gasseerasdorf Bf",
+      "Gef",
+      "Gerasdorf Bahnhof",
+      "Gerasdorf bei Wien",
+      "Gerasdorf bei Wien Bahnhof",
+      "Gerasdorf bei Wien Bahnhof (VOR)",
+      "Gerasdorf Bf"
+    ],
+    "bst_code": "Gef",
+    "bst_id": 570,
+    "in_vienna": false,
+    "latitude": 48.293315,
+    "longitude": 16.483736,
+    "name": "Gerasdorf",
+    "pendler": true,
+    "source": "oebb",
+    "vor_id": "430349900"
+  },
+  {
+    "name": "Graz Hbf",
+    "aliases": [
+      "Graz Hauptbahnhof"
+    ],
+    "in_vienna": false,
+    "pendler": false,
+    "source": "manual"
+  },
+  {
+    "aliases": [
       "430362200",
       "Gänserndorf",
       "Bahnhof Gaenserndorf",
@@ -279,34 +335,6 @@
     "pendler": true,
     "source": "oebb",
     "vor_id": "430362200"
-  },
-  {
-    "aliases": [
-      "430349900",
-      "Gerasdorf",
-      "Bahnhof Gasseerasdorf",
-      "Bahnhof Gerasdorf",
-      "Bf Gasseerasdorf",
-      "Bf Gerasdorf",
-      "Gasseerasdorf",
-      "Gasseerasdorf Bahnhof",
-      "Gasseerasdorf Bf",
-      "Gef",
-      "Gerasdorf Bahnhof",
-      "Gerasdorf bei Wien",
-      "Gerasdorf bei Wien Bahnhof",
-      "Gerasdorf bei Wien Bahnhof (VOR)",
-      "Gerasdorf Bf"
-    ],
-    "bst_code": "Gef",
-    "bst_id": 570,
-    "in_vienna": false,
-    "latitude": 48.293315,
-    "longitude": 16.483736,
-    "name": "Gerasdorf",
-    "pendler": true,
-    "source": "oebb",
-    "vor_id": "430349900"
   },
   {
     "aliases": [
@@ -376,6 +404,16 @@
     "vor_id": "430378000"
   },
   {
+    "name": "Innsbruck Hbf",
+    "aliases": [
+      "Innsbruck",
+      "Innsbruck Hauptbahnhof"
+    ],
+    "in_vienna": false,
+    "pendler": false,
+    "source": "manual"
+  },
+  {
     "_google_place_id": "ChIJAejOLIMHbUcRqGaIKFIrOSs",
     "_lat": 48.200779399999995,
     "_lng": 16.3694019,
@@ -428,6 +466,15 @@
     "pendler": true,
     "source": "oebb",
     "vor_id": "410597200"
+  },
+  {
+    "name": "Klagenfurt Hbf",
+    "aliases": [
+      "Klagenfurt Hauptbahnhof"
+    ],
+    "in_vienna": false,
+    "pendler": false,
+    "source": "manual"
   },
   {
     "aliases": [
@@ -548,6 +595,17 @@
     "pendler": true,
     "source": "oebb",
     "vor_id": "430408400"
+  },
+  {
+    "name": "Linz/Donau Hbf",
+    "aliases": [
+      "Linz Hbf",
+      "Linz Hauptbahnhof",
+      "Linz/Donau"
+    ],
+    "in_vienna": false,
+    "pendler": false,
+    "source": "manual"
   },
   {
     "aliases": [
@@ -862,6 +920,15 @@
     "source": [
       "google_places"
     ]
+  },
+  {
+    "name": "Salzburg Hbf",
+    "aliases": [
+      "Salzburg Hauptbahnhof"
+    ],
+    "in_vienna": false,
+    "pendler": false,
+    "source": "manual"
   },
   {
     "_google_place_id": "ChIJP12J6aQHbUcRMDvO2qPS6bg",
@@ -1248,6 +1315,15 @@
     "pendler": true,
     "source": "oebb",
     "vor_id": "430575900"
+  },
+  {
+    "name": "Villach Hbf",
+    "aliases": [
+      "Villach Hauptbahnhof"
+    ],
+    "in_vienna": false,
+    "pendler": false,
+    "source": "manual"
   },
   {
     "_google_place_id": "ChIJua204ZAHbUcRnAuRn1kblgM",
@@ -1907,13 +1983,6 @@
     "aliases": [
       "490134900",
       "Wien Hauptbahnhof",
-      "Bahnhof HauptBf",
-      "Bf HauptBf",
-      "Hauptbahnhof",
-      "HauptBf",
-      "HauptBf Bahnhof",
-      "HauptBf Bf",
-      "Hbf",
       "Wien Hauptbahnhof (VOR)",
       "Wien HauptBf",
       "Wien HauptBf Bahnhof",
