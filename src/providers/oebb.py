@@ -44,11 +44,11 @@ else:  # pragma: no cover - support both package layouts at runtime
     try:
         from utils.ids import make_guid
         from utils.text import html_to_text
-        from utils.stations import canonical_name, is_in_vienna, is_pendler, station_by_oebb_id
+        from utils.stations import canonical_name, station_by_oebb_id
     except ModuleNotFoundError:
         from ..utils.ids import make_guid  # type: ignore
         from ..utils.text import html_to_text  # type: ignore
-        from ..utils.stations import canonical_name, is_in_vienna, is_pendler, station_by_oebb_id  # type: ignore
+        from ..utils.stations import canonical_name, station_by_oebb_id  # type: ignore
 
     try:
         from utils.http import session_with_retries, validate_http_url, fetch_content_safe
@@ -89,7 +89,8 @@ BAHNHOF_COMPOUND_RE = re.compile(
     re.IGNORECASE,
 )
 # treat simple hyphen as separator only when surrounded by spaces
-ARROW_ANY_RE    = re.compile(r"\s*(?:<=>|<->|<>|→|↔|=>|=|–|—|\s-\s)\s*")
+# Also swallow surrounding "decorations" like < > if they wrap the arrow
+ARROW_ANY_RE    = re.compile(r"\s*(?:<+\s*)?(?:<=>|<->|<>|→|↔|=>|=|–|—|\s-\s)(?:\s*>+)?\s*")
 COLON_PREFIX_RE = re.compile(
     r"""^\s*(?:Update\s*\d+\s*\([^)]*\)\s*)?
         (?:DB\s*↔\s*)?
