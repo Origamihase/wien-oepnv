@@ -203,6 +203,9 @@ def _load_station_sets():
                 n_clean = n.strip().lower()
                 if len(n_clean) < 2 and not n_clean.isdigit():
                     continue
+                # Filter generic aliases that would match any station (e.g. "Innsbruck Hbf" matching "Hbf")
+                if n_clean in {"hbf", "bf", "bahnhof", "hauptbahnhof", "station"}:
+                    continue
                 normalized.add(n_clean)
 
             if is_vienna:
@@ -260,6 +263,15 @@ def _is_relevant(title: str, description: str) -> bool:
     # Wir sind hier nur, wenn WEDER Wien-Keyword NOCH Wien-Bahnhof gefunden wurde.
     # Wenn jetzt EIN Outer-Bahnhof gefunden wird, ist es eine "reine Umland-Meldung" -> Weg damit.
     if _OUTER_STATIONS_RE.search(text):
+        return False
+
+    # Check D: Heuristik für unbekannte Routen
+    # Wenn der Titel nach einer Strecke aussieht (Pfeil), aber kein bekannter
+    # Bahnhof (Wien oder Umland) gefunden wurde, ist es vermutlich eine
+    # Strecke weit weg (z.B. "Innsbruck ↔ Feldkirch") oder eine irrelevante
+    # Formatierung (z.B. "Bauarbeiten ↔ Umleitung").
+    # Note: Regex matches < ↔ > if cleanup failed, or just ↔.
+    if "↔" in title or ARROW_ANY_RE.search(title):
         return False
 
     # Fallback: Keine bekannten Bahnhöfe gefunden (z.B. "Allgemeine Störung"). Behalten.
