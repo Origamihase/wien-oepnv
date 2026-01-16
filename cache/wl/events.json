@@ -158,18 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Gleisschaden",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9ae819da26999d3a57dc4e1bc809291590eac95a77887208a1310c4aeed7e8aa",
-    "pubDate": "2026-01-16T12:35:00+01:00",
-    "starts_at": "2026-01-16T12:35:00+01:00",
-    "ends_at": "2026-01-16T23:55:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-01-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Feuerwehreinsatz Betrieb ab Heinestraße",
     "description": "Feuerwehreinsatz Betrieb ab Heinestraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -274,5 +262,17 @@
     "starts_at": "2026-01-16T15:00:00+01:00",
     "ends_at": "2026-01-18T17:30:00+01:00",
     "_identity": "wl|hinweis|L=71|D=2026-01-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Falschparker",
+    "description": "Die Linie 62 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Falschparker im Bereich Hetzendorfer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8c9b2f06082b865070bcbe91b5a5c9af65a5b959cee850e5fe9386874c8fbfb1",
+    "pubDate": "2026-01-16T15:40:00+01:00",
+    "starts_at": "2026-01-16T15:40:00+01:00",
+    "ends_at": "2026-01-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-01-16"
   }
 ]
