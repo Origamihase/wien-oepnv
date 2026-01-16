@@ -278,18 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "58A: Verkehrsunfall",
-    "description": "Die Linie 58 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "50b5bd59d298c90884ffaef7645af1fb9c59dbf8d9e7f017a183e69d2be2ea53",
-    "pubDate": "2026-01-16T16:00:00+01:00",
-    "starts_at": "2026-01-16T16:00:00+01:00",
-    "ends_at": "2026-01-16T23:55:00+01:00",
-    "_identity": "wl|störung|L=58A|D=2026-01-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Feuerwehreinsatz",
     "description": "Die Linie 5 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Feuerwehreinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -310,5 +298,41 @@
     "starts_at": "2026-01-16T17:10:00+01:00",
     "ends_at": "2026-01-16T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2026-01-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Verkehrsunfall",
+    "description": "Die Linie D fährt derzeit nur zwischen Absberggasse und Liechtenwerder Platz. Die Störung dauert voraussichtlich bis 18:00. Grund dafür ist ein Verkehrsunfall im Bereich Heiligenstädter Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e",
+    "pubDate": "2026-01-16T17:25:00+01:00",
+    "starts_at": "2026-01-16T17:25:00+01:00",
+    "ends_at": "2026-01-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-01-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9",
+    "pubDate": "2026-01-16T17:28:55+01:00",
+    "starts_at": "2026-01-16T17:28:55+01:00",
+    "ends_at": "2026-01-16T18:28:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-01-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Verkehrsunfall Betrieb ab Liechtenwerder Platz",
+    "description": "Verkehrsunfall Betrieb ab Liechtenwerder Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d89e8f452199ec37d2a75e6121a473ed5fd4642023889bce1cb8efaf9ac47f10",
+    "pubDate": "2026-01-16T17:29:25+01:00",
+    "starts_at": "2026-01-16T17:29:25+01:00",
+    "ends_at": "2026-01-16T18:28:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-01-16"
   }
 ]
