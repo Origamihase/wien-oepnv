@@ -230,42 +230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Betriebsstörung",
-    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Zippererstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2026-01-16T17:10:00+01:00",
-    "starts_at": "2026-01-16T17:10:00+01:00",
-    "ends_at": "2026-01-16T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2026-01-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Polizeieinsatz Betrieb ab Bruno-Marek-Allee",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cb8f37a153e49e1b9fce9bbe197d868b0f2104c567dea861959f72bf49ba88a7",
-    "pubDate": "2026-01-16T18:00:00+01:00",
-    "starts_at": "2026-01-16T18:02:41+01:00",
-    "ends_at": "2026-01-16T23:55:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-01-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A: Polizeieinsatz Betrieb ab Pensionsversicherungsanstalt",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "810ddddf37c3bfda3e29fcd9fe96566231a7941343e64c6f0f65d605631c27b6",
-    "pubDate": "2026-01-16T18:00:00+01:00",
-    "starts_at": "2026-01-16T18:06:04+01:00",
-    "ends_at": "2026-01-16T23:55:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2026-01-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "6: Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -290,61 +254,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8d027bd0136563db15b013c0aa4de03c0f2ff6b7c33eb3469e64b319bd6a584c",
-    "pubDate": "2026-01-16T18:21:30+01:00",
-    "starts_at": "2026-01-16T18:21:30+01:00",
-    "ends_at": "2026-01-16T19:20:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-01-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Verkehrsunfall Betrieb ab Quellenplatz",
-    "description": "Verkehrsunfall Betrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a0dd3f673320b727ae55ff713e1626e950233333490bd7fb7f6e2c2540b0439a",
-    "pubDate": "2026-01-16T18:21:30+01:00",
-    "starts_at": "2026-01-16T18:21:30+01:00",
-    "ends_at": "2026-01-16T19:21:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-01-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Verkehrsunfall Betrieb ab Absberggasse",
-    "description": "Verkehrsunfall Betrieb ab Absberggasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d6154e1d5cb0d807dce49a5ff5881d12d6461f6c6421b467583e5f2b8124603d",
-    "pubDate": "2026-01-16T18:23:24+01:00",
-    "starts_at": "2026-01-16T18:23:24+01:00",
-    "ends_at": "2026-01-16T19:22:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-01-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Verkehrsunfall Züge halten bei Linie O",
-    "description": "Verkehrsunfall Züge halten bei Linie O",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6d213eeb5dbf5dfc98579fdadfc4f0b2dc4b80463bc5f8a09cf3c8f19dd7c448",
-    "pubDate": "2026-01-16T18:23:53+01:00",
-    "starts_at": "2026-01-16T18:23:53+01:00",
-    "ends_at": "2026-01-16T19:23:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-01-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Verkehrsunfall Betrieb ab Quellenplatz",
-    "description": "Verkehrsunfall Betrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "caa99a4405c9e9d694c00ed55cb1e3ef3d62a8ffbb96ac554bb8ac74ceb13819",
-    "pubDate": "2026-01-16T18:23:53+01:00",
-    "starts_at": "2026-01-16T18:23:53+01:00",
-    "ends_at": "2026-01-16T19:23:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-01-16"
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2026-01-16T19:10:00+01:00",
+    "starts_at": "2026-01-16T19:23:15+01:00",
+    "ends_at": "2026-01-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=9|D=2026-01-16"
   }
 ]
