@@ -32,11 +32,9 @@ def mock_xml_response(items):
 
 @patch("src.providers.oebb._fetch_xml")
 @patch("src.providers.oebb.station_by_oebb_id")
-@patch("src.providers.oebb.is_in_vienna")
 @patch("src.providers.oebb.canonical_name")
-def test_oebb_title_fallback_id(mock_canon, mock_vienna, mock_station_lookup, mock_fetch):
+def test_oebb_title_fallback_id(mock_canon, mock_station_lookup, mock_fetch):
     # Setup
-    mock_vienna.return_value = True # Ensure item is kept
     mock_station_lookup.return_value = "ID-Station"
     mock_canon.side_effect = lambda x: x if x == "ID-Station" else None
 
@@ -65,11 +63,9 @@ def test_oebb_title_fallback_id(mock_canon, mock_vienna, mock_station_lookup, mo
 
 @patch("src.providers.oebb._fetch_xml")
 @patch("src.providers.oebb.station_by_oebb_id")
-@patch("src.providers.oebb.is_in_vienna")
 @patch("src.providers.oebb.canonical_name")
-def test_oebb_title_fallback_text(mock_canon, mock_vienna, mock_station_lookup, mock_fetch):
+def test_oebb_title_fallback_text(mock_canon, mock_station_lookup, mock_fetch):
     # Setup
-    mock_vienna.return_value = True
     mock_station_lookup.return_value = None # No ID match
 
     # Mock canonical_name to recognize "Text-Station"
@@ -97,10 +93,8 @@ def test_oebb_title_fallback_text(mock_canon, mock_vienna, mock_station_lookup, 
 
 @patch("src.providers.oebb._fetch_xml")
 @patch("src.providers.oebb.station_by_oebb_id")
-@patch("src.providers.oebb.is_in_vienna")
 @patch("src.providers.oebb.canonical_name")
-def test_oebb_title_fallback_truncation(mock_canon, mock_vienna, mock_station_lookup, mock_fetch):
-    mock_vienna.return_value = True
+def test_oebb_title_fallback_truncation(mock_canon, mock_station_lookup, mock_fetch):
     mock_station_lookup.return_value = None
     mock_canon.return_value = None # No stations found in text
 

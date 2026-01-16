@@ -33,7 +33,7 @@ if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type check
     from ..utils.env import get_bool_env
     from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.ids import make_guid
-    from ..utils.stations import canonical_name, is_in_vienna, is_pendler, station_by_oebb_id
+    from ..utils.stations import canonical_name, station_by_oebb_id
     from ..utils.text import html_to_text
 else:  # pragma: no cover - support both package layouts at runtime
     try:
