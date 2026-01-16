@@ -2646,11 +2646,8 @@
       "Wien Hauptbahnhof",
       "Bahnhof HauptBf",
       "Bf HauptBf",
-      "Hauptbahnhof",
-      "HauptBf",
       "HauptBf Bahnhof",
       "HauptBf Bf",
-      "Hbf",
       "Wien Hauptbahnhof (VOR)",
       "Wien HauptBf",
       "Wien HauptBf Bahnhof",
@@ -3058,5 +3055,124 @@
         "longitude": 16.37327
       }
     ]
+  },
+  {
+    "name": "Linz Hbf",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900001,
+    "aliases": ["Linz Hbf", "Linz Hauptbahnhof", "Linz/Donau", "Linz/Donau Hbf", "Linz"]
+  },
+  {
+    "name": "Graz Hbf",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900002,
+    "aliases": ["Graz Hbf", "Graz Hauptbahnhof", "Graz"]
+  },
+  {
+    "name": "Salzburg Hbf",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900003,
+    "aliases": ["Salzburg Hbf", "Salzburg Hauptbahnhof", "Salzburg"]
+  },
+  {
+    "name": "Innsbruck Hbf",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900004,
+    "aliases": ["Innsbruck Hbf", "Innsbruck Hauptbahnhof", "Innsbruck"]
+  },
+  {
+    "name": "Klagenfurt Hbf",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900005,
+    "aliases": ["Klagenfurt Hbf", "Klagenfurt Hauptbahnhof", "Klagenfurt"]
+  },
+  {
+    "name": "Villach Hbf",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900006,
+    "aliases": ["Villach Hbf", "Villach Hauptbahnhof", "Villach"]
+  },
+  {
+    "name": "Bregenz",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900007,
+    "aliases": ["Bregenz"]
+  },
+  {
+    "name": "Feldkirch",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900008,
+    "aliases": ["Feldkirch", "Feldkirch Bahnhof"]
+  },
+  {
+    "name": "St. Anton am Arlberg",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900009,
+    "aliases": ["St. Anton am Arlberg", "St. Anton/Arlberg", "St. Anton"]
+  },
+  {
+    "name": "Bischofshofen",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900010,
+    "aliases": ["Bischofshofen"]
+  },
+  {
+    "name": "Schwarzach-St.Veit",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900011,
+    "aliases": ["Schwarzach-St.Veit", "Schwarzach im Pongau", "Schwarzach im Pongau-St.Veit"]
+  },
+  {
+    "name": "Ljubljana",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900012,
+    "aliases": ["Ljubljana"]
+  },
+  {
+    "name": "Budapest",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900013,
+    "aliases": ["Budapest", "Budapest-Keleti", "Budapest-Deli", "Budapest-Nyugati"]
+  },
+  {
+    "name": "München",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900014,
+    "aliases": ["München", "München Hbf", "München Hauptbahnhof"]
+  },
+  {
+    "name": "Zürich",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900015,
+    "aliases": ["Zürich", "Zürich HB"]
+  },
+  {
+    "name": "Bratislava",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900016,
+    "aliases": ["Bratislava", "Bratislava hl.st.", "Bratislava-Petrzalka"]
+  },
+  {
+    "name": "Hegyeshalom",
+    "in_vienna": false,
+    "pendler": false,
+    "bst_id": 9900017,
+    "aliases": ["Hegyeshalom"]
   }
 ]
