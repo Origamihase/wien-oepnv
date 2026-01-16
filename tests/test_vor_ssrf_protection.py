@@ -30,7 +30,7 @@ def test_resolve_station_ids_uses_fetch_content_safe(monkeypatch):
     monkeypatch.setattr(vor, "fetch_content_safe", mock_fetch_safe)
 
     # Call the function
-    station_names = ["Westbahnhof"]
+    station_names = ["PhantasiaHauptbahnhof"]
     result = vor.resolve_station_ids(station_names)
 
     # Verification
@@ -39,7 +39,7 @@ def test_resolve_station_ids_uses_fetch_content_safe(monkeypatch):
     args, kwargs = mock_fetch_safe.call_args
     assert args[0] == mock_session
     assert "location.name" in args[1]
-    assert kwargs['params']['input'] == "Westbahnhof"
+    assert kwargs['params']['input'] == "PhantasiaHauptbahnhof"
 
 def test_resolve_station_ids_handles_unsafe_url_error(monkeypatch):
     """
@@ -55,7 +55,7 @@ def test_resolve_station_ids_handles_unsafe_url_error(monkeypatch):
     monkeypatch.setattr(vor, "fetch_content_safe", mock_fetch_safe)
 
     # Call the function
-    result = vor.resolve_station_ids(["Westbahnhof"])
+    result = vor.resolve_station_ids(["PhantasiaHauptbahnhof"])
 
     # Should return empty list (or at least not crash) and log warning
     assert result == []
