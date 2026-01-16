@@ -216,25 +216,32 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
 
 ### Wiener Linien (WL)
 
+- **Anforderung**: "Alle Meldungen sind interessant." (Die Wiener Linien sind per Definition Wien-fokussiert).
+- **Umsetzung**: Der Provider verarbeitet sämtliche Meldungen der Realtime-Schnittstelle. Es erfolgt lediglich eine Filterung nach Status (aktiv) sowie eine Ausschlussprüfung für irrelevante Wartungsinformationen. Eine explizite Geo-Filterung ist nicht notwendig und findet nicht statt.
 - **Quelle**: Realtime-Störungs-Endpoint (`WL_RSS_URL`, Default: `https://www.wienerlinien.at/ogd_realtime`).
-- **Cache**: `cache/wl/events.json`, aktualisiert durch `scripts/update_wl_cache.py` bzw. `.github/workflows/update-wl-cache.yml`.
-- **Spezifika**: Aufbereitung und Zeitleistenlogik befinden sich in `src/providers/wiener_linien.py` und `src/providers/wl_fetch.py`.
+- **Cache**: `cache/wl/events.json`.
 
 ### ÖBB
 
-- **Quelle**: Offizielle ÖBB-Störungsinformationen gemäß interner Whitelist.
-- **Cache**: `cache/oebb/events.json`, gepflegt über `scripts/update_oebb_cache.py` sowie `.github/workflows/update-oebb-cache.yml`.
-- **Spezifika**: Provider-Adapter `src/providers/oebb.py` normalisiert die vielfältigen Meldungsformate und setzt die WL/ÖBB
-  Namenskonventionen um.
+- **Anforderung**:
+  1. Pendlerbahnhöfe mit gestörter Verbindung nach Wien.
+  2. Wien nach Pendlerbahnhof.
+  3. Innerhalb von Wien (alle Störungen).
+- **Umsetzung**: Der Provider implementiert einen **strengen Geo-Filter** (`_is_relevant`):
+  - Eine Meldung wird akzeptiert, wenn sie das Keyword "Wien"/"Vienna" oder einen expliziten Wiener Bahnhof enthält.
+  - Meldungen, die *nur* Pendlerbahnhöfe (ohne Wien-Bezug) oder *nur* ferne Bahnhöfe erwähnen, werden verworfen.
+  - Dies stellt sicher, dass "Störungen im Bereich Mödling" ohne Wien-Bezug (z.B. Richtung Süden) nicht einfließen, solange keine Auswirkung auf die Wien-Verbindung explizit genannt ist (siehe [data/stations.json](data/stations.json) für Definitionen von `in_vienna` und `pendler`).
+- **Quelle**: Offizielle ÖBB-Störungsinformationen.
+- **Cache**: `cache/oebb/events.json`.
 
 ### Verkehrsverbund Ost-Region (VOR)
 
-- **Quelle**: VOR/VAO-ReST-API, authentifiziert über einen Access Token (`VOR_ACCESS_ID`).
-- **Cache**: `cache/vor/events.json`, gepflegt mittels `scripts/update_vor_cache.py` und `.github/workflows/update-vor-cache.yml`.
-- **Rate-Limit**: Tageslimits werden automatisch überwacht (`MAX_REQUESTS_PER_DAY` in `src/providers/vor.py`, Standard: 100 für "VAO Start"). Wiederholte
-  Cache-Aktualisierungen werden bei ausgeschöpftem Limit übersprungen. Falls Sie über einen kostenpflichtigen Vertrag (Variante A/B) verfügen, können Sie das Limit über `VOR_MAX_REQUESTS_PER_DAY` erhöhen.
-- **Unterstützung**: Für lokale Experimente stehen Hilfsskripte wie `scripts/check_vor_auth.py` oder
-  `scripts/fetch_vor_haltestellen.py` bereit.
+- **Anforderung**: Nur Abfragen für "Flughafen Wien" und "Hauptbahnhof Wien".
+- **Umsetzung**: Der Provider verwendet standardmäßig eine Whitelist (`VOR_MONITOR_STATIONS_WHITELIST`), die auf `"Wien Hauptbahnhof,Flughafen Wien"` voreingestellt ist.
+  - Dies minimiert API-Requests ("VAO Start" Kontingent) und fokussiert auf die zentralen Pendlerknoten.
+  - Weitere Stationen werden nur bei expliziter Konfiguration abgerufen.
+- **Quelle**: VOR/VAO-ReST-API, authentifiziert über Access Token.
+- **Cache**: `cache/vor/events.json`.
 
 ### Stadt Wien – Baustellen
 
