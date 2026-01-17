@@ -22,6 +22,7 @@ import os
 import json
 import re
 import time
+import html
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Any, Dict, List, Optional
@@ -389,6 +390,8 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
     out: List[Dict[str, Any]] = []
     for item in channel.findall("item"):
         raw_title = _get_text(item, "title")
+        # Decode HTML entities (e.g. "&lt;" -> "<") for cleanup regexes
+        raw_title = html.unescape(raw_title)
         title = _clean_title_keep_places(raw_title)
         link  = _get_text(item, "link").strip() or OEBB_URL
         guid  = _get_text(item, "guid").strip() or make_guid(title, link)
