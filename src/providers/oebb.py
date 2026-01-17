@@ -91,7 +91,9 @@ BAHNHOF_COMPOUND_RE = re.compile(
 )
 # treat simple hyphen as separator only when surrounded by spaces
 # Also swallow surrounding "decorations" like < > if they wrap the arrow
-ARROW_ANY_RE    = re.compile(r"\s*(?:<+\s*)?(?:<=>|<->|<>|→|↔|=>|=|–|—|\s-\s)(?:\s*>+)?\s*")
+ARROW_ANY_RE    = re.compile(r"\s*(?:<+\s*)?(?:<=>|<->|<>|→|↔|=>|->|<-|=|–|—|\s-\s)(?:\s*>+)?\s*")
+DESC_CLEANUP_RE = re.compile(r"(?:<+\s*)(?:<=>|<->|<>|→|↔|=>|->|<-)(?:\s*>+)|(?:<->|<=>)")
+
 COLON_PREFIX_RE = re.compile(
     r"""^\s*(?:Update\s*\d+\s*\([^)]*\)\s*)?
         (?:DB\s*↔\s*)?
@@ -108,6 +110,16 @@ def _clean_endpoint(p: str) -> str:
     p = _MULTI_COMMA_RE.sub(", ", p)
     p = re.sub(r"\s{2,}", " ", p)
     return p.strip(" ,/")
+
+def _clean_description(text: str) -> str:
+    if not text:
+        return ""
+    # Normalize arrows wrapped in angle brackets or specific ASCII arrows to ↔
+    text = DESC_CLEANUP_RE.sub(" ↔ ", text)
+    # Collapse spaces
+    text = re.sub(r"\s{2,}", " ", text)
+    return text.strip()
+
 
 def _clean_title_keep_places(t: str) -> str:
     t = (t or "").strip()
@@ -397,6 +409,7 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         guid  = _get_text(item, "guid").strip() or make_guid(title, link)
         desc_html = _get_text(item, "description")
         desc = html_to_text(desc_html)
+        desc = _clean_description(desc)
         pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
 
         # Title Fallback for "poor" titles
