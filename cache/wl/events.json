@@ -134,30 +134,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N41: Busse halten auf der Hauptfahrbahn",
-    "description": "Bauarbeiten Busse halten auf der Hauptfahrbahn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ab9415a5e9ec151915b4e6eae1fba40a335605ff09a9bc91f2f24392d34bb23",
-    "pubDate": "2026-01-16T22:30:00+01:00",
-    "starts_at": "2026-01-16T22:30:00+01:00",
-    "ends_at": "2026-01-17T05:09:00+01:00",
-    "_identity": "wl|störung|L=N41|D=2026-01-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N29: Busse halten auf der Hauptfahrbahn",
-    "description": "Busse halten auf der Hauptfahrbahn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
-    "pubDate": "2026-01-16T23:00:14+01:00",
-    "starts_at": "2026-01-16T23:00:14+01:00",
-    "ends_at": "2026-01-17T05:30:00+01:00",
-    "_identity": "wl|störung|L=N29|D=2026-01-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Busse halten Untere Augartenstraße 42",
     "description": "Busse halten Untere Augartenstraße 42",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -178,5 +154,17 @@
     "starts_at": "2026-01-17T04:45:14+01:00",
     "ends_at": "2026-01-18T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-01-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5B: Rettungseinsatz",
+    "description": "Die Linie 5 B kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Jägerstraße U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "026034b61e72b8d6446ed6a38d301b8d35dab3ccc028632401c2c456a02db76a",
+    "pubDate": "2026-01-17T05:15:00+01:00",
+    "starts_at": "2026-01-17T05:15:00+01:00",
+    "ends_at": "2026-01-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=5B|D=2026-01-17"
   }
 ]
