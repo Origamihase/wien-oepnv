@@ -84,3 +84,14 @@ class TestOebbFiltering:
             "Innsbruck Hbf ↔ Salzburg Hbf",
             "Verspätung."
         ) is False
+
+    def test_marchegg_bratislava_excluded(self):
+        # Regression test for user report: "Marchegg ↔ Bratislava hl.st."
+        # Marchegg is in Outer region (pendler=True).
+        # Bratislava is foreign (not Vienna).
+        # Should be excluded by Check C (Marchegg matches Outer, no Vienna match)
+        # or Check D (Route heuristic).
+        assert _is_relevant(
+            "Marchegg ↔ Bratislava hl.st.",
+            "Wegen Bauarbeiten können zwischen Marchegg Bahnhof und Bratislava hl.st. von 04.05.2026 (07:50 Uhr) bis 08.05.2026 (16:00 Uhr) keine REX8-Züge …[04.05.2026 – 08.05.2026]"
+        ) is False

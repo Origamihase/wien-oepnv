@@ -3060,5 +3060,19 @@
         "longitude": 16.37327
       }
     ]
+  },
+  {
+    "name": "Bratislava hl.st.",
+    "in_vienna": false,
+    "pendler": false,
+    "aliases": [
+      "Bratislava",
+      "Bratislava hl.st.",
+      "Bratislava hlavna stanica",
+      "Bratislava hl. st.",
+      "Bratislava-Petrzalka"
+    ],
+    "source": "manual_fix",
+    "bst_id": 9990001
   }
 ]
