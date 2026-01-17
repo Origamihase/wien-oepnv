@@ -172,15 +172,15 @@ def _bahnhof_variants(alias: str) -> set[str]:
 
 
 _ABBREV_PAIRS = [
-    (r"\bStr\.?", "Straße"),
-    (r"\bPl\.?", "Platz"),
+    (r"\bStr\.", "Straße"),
+    (r"\bPl\.", "Platz"),
     (r"\bHbf\b", "Hauptbahnhof"),
     (r"\bBf\b", "Bahnhof"),
-    (r"\bDr\.?", "Doktor"),
-    (r"\bG\.?", "Gasse"),
-    (r"\bBr\.?", "Brücke"),
-    (r"\bOb\.?", "Ober"),
-    (r"\bUnt\.?", "Unter"),
+    (r"\bDr\.", "Doktor"),
+    (r"\bG\.", "Gasse"),
+    (r"\bBr\.", "Brücke"),
+    (r"\bOb\.", "Ober"),
+    (r"\bUnt\.", "Unter"),
 ]
 
 _SHORTEN_PAIRS = [
@@ -419,7 +419,58 @@ def _alias_candidates(
         for gtfs_alias in gtfs_index.get(key, set()):
             push(gtfs_alias)
 
-    return sorted(alias for alias in aliases if alias)
+    # -------------------------------------------------------------------------
+    # OPTIMIZATION: Manually add specific missing colloquial aliases
+    # -------------------------------------------------------------------------
+    missing_map = {
+        r"Wien Meidling$": ["Meidling"],
+        r"Wien Westbahnhof$": ["Westbahnhof"],
+        r"Wien Mitte-Landstraße$": ["Wien Mitte", "Mitte"],
+        r"Wien Praterstern$": ["Praterstern"],
+        r"Wien Floridsdorf$": ["Floridsdorf"],
+        r"Wien Handelskai$": ["Handelskai"],
+        r"Wien Hütteldorf$": ["Hütteldorf"],
+        r"Wien Heiligenstadt$": ["Heiligenstadt"],
+        r"Wien Spittelau$": ["Spittelau"],
+        r"Wien Simmering$": ["Simmering"],
+        r"Wien Ottakring$": ["Ottakring"],
+        r"Wien Liesing$": ["Liesing"],
+        r"Wien Penzing$": ["Penzing"],
+        r"St. Pölten Hbf$": ["St. Pölten", "Sankt Pölten"],
+        r"Wiener Neustadt Hbf$": ["Wr. Neustadt", "Wiener Neustadt"],
+        r"Bratislava hl\.st\.$": ["Bratislava"],
+    }
+
+    for pattern, add_list in missing_map.items():
+        if re.match(pattern, name):
+            for new_a in add_list:
+                push(new_a)
+
+    # -------------------------------------------------------------------------
+    # OPTIMIZATION: Filter out dangerous aliases
+    # -------------------------------------------------------------------------
+    final_aliases = sorted(alias for alias in aliases if alias)
+
+    # Filter dangerous aliases that normalize to empty or generic city names
+    # Examples: "Hbf", "Bf", "Bahnhof", "Wien Hbf" (norms to "wien")
+    safe_aliases = []
+    for a in final_aliases:
+        norm = _normalize_key(a)
+        if not norm:
+            # Skip if it normalizes to nothing (e.g. just "Hbf")
+            continue
+
+        # Explicit blacklist of generic terms if they appear alone
+        if norm in {"wien", "vienna"}:
+            continue
+
+        # Filter out platform-specific aliases to prevent bloat
+        if re.search(r"\b(?:bahnsteige?|gleise?)\b", a, re.IGNORECASE):
+            continue
+
+        safe_aliases.append(a)
+
+    return safe_aliases
 
 
 def _order_aliases(station: dict, aliases: Iterable[str]) -> list[str]:
