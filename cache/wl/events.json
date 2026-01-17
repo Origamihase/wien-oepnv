@@ -170,38 +170,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Rettungseinsatz Betrieb ab Anschützgasse",
-    "description": "Rettungseinsatz Betrieb ab Anschützgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
-    "pubDate": "2026-01-17T15:04:10+01:00",
-    "starts_at": "2026-01-17T15:04:42+01:00",
-    "ends_at": "2026-01-17T16:03:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-01-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
-    "pubDate": "2026-01-17T15:05:00+01:00",
-    "starts_at": "2026-01-17T15:05:00+01:00",
-    "ends_at": "2026-01-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-01-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5: Demonstration",
-    "description": "Die Linie 5 fährt nur zwischen Praterstern und Josefstädter Straße. Weichen Sie ersatzweise auf die Linie U6 aus. Die Störung dauert voraussichtlich bis 16:30 Uhr. Grund dafür ist eine Demonstration im Bereich Burggasse.",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 5 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "9f165c075986a15f166e33b45b8d944a379e149f1d04cfef623757a51c68a8b2",
     "pubDate": "2026-01-17T15:15:00+01:00",
     "starts_at": "2026-01-17T15:15:00+01:00",
     "ends_at": "2026-01-17T23:55:00+01:00",
     "_identity": "wl|störung|L=5|D=2026-01-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Demonstration",
+    "description": "Die Linie 48 A fährt derzeit nur zwischen Klinik Penzing und Burggasse, Stadthalle. Weichen Sie ersatzweise auf die Linie U6 aus. Die Störung dauert voraussichtlich bis 16:30 Uhr. Grund dafür ist eine Demonstration im Bereich Burggasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "38d27fec70a24aa438d6f4ecaf97346afe158d1fc490bef4bf9e84c1e1bb975f",
+    "pubDate": "2026-01-17T15:15:00+01:00",
+    "starts_at": "2026-01-17T15:15:00+01:00",
+    "ends_at": "2026-01-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=48A|D=2026-01-17"
   },
   {
     "source": "Wiener Linien",
@@ -262,5 +250,53 @@
     "starts_at": "2026-01-17T15:31:56+01:00",
     "ends_at": "2026-01-17T23:00:00+01:00",
     "_identity": "wl|störung|L=49|D=2026-01-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Fahrtbehinderung wegen Demonstration",
+    "description": "Fahrtbehinderung wegen Demonstration",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a4d178e8dfdf674f387dc132f4e4eb3135fc5568e8988f2a2bef1b983eadfca7",
+    "pubDate": "2026-01-17T15:55:37+01:00",
+    "starts_at": "2026-01-17T15:55:37+01:00",
+    "ends_at": "2026-01-17T21:15:00+01:00",
+    "_identity": "wl|störung|L=48A|D=2026-01-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "63A: Verspätungen",
+    "description": "Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "499ac622a712bd280a6b728d5cd57eb6ebde96a246de80a08e9a389a60dab6f9",
+    "pubDate": "2026-01-17T16:00:00+01:00",
+    "starts_at": "2026-01-17T16:00:00+01:00",
+    "ends_at": "2026-01-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=63A|D=2026-01-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Verunreinigung",
+    "description": "Die Linie 25 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5142e280b9254a5d6c4795fbaf7550c029777e1f957a6d40ee61d2d9858dda0e",
+    "pubDate": "2026-01-17T16:05:00+01:00",
+    "starts_at": "2026-01-17T16:05:00+01:00",
+    "ends_at": "2026-01-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-01-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Demonstration Betrieb ab Thaliastraße",
+    "description": "Demonstration Betrieb ab Thaliastraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1bf6dbfd1b17826044595946e078a37678bb18f00a587b556cdb5e69f83bfa62",
+    "pubDate": "2026-01-17T16:06:04+01:00",
+    "starts_at": "2026-01-17T16:06:15+01:00",
+    "ends_at": "2026-01-17T18:30:00+01:00",
+    "_identity": "wl|störung|L=48A|D=2026-01-17"
   }
 ]
