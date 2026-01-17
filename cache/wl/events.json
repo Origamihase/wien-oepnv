@@ -163,7 +163,7 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "ccf5fdf36548d8cb98b17e24818594e090b4dca8cc03ca55d939bf6d375f1411",
     "pubDate": "2026-01-17T15:27:39+01:00",
-    "starts_at": "2026-01-17T15:38:18+01:00",
+    "starts_at": "2026-01-17T15:27:39+01:00",
     "ends_at": "2026-01-17T23:00:00+01:00",
     "_identity": "wl|störung|L=5|D=2026-01-17"
   },
@@ -177,6 +177,18 @@
     "pubDate": "2026-01-17T15:31:56+01:00",
     "starts_at": "2026-01-17T15:31:56+01:00",
     "ends_at": "2026-01-17T23:00:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-01-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1252a6d03226d3f1d21b0f0e84cdaf2b9637cd4ac88019850214fb459e92e018",
+    "pubDate": "2026-01-17T15:31:56+01:00",
+    "starts_at": "2026-01-17T22:32:47+01:00",
+    "ends_at": "2026-01-17T23:32:00+01:00",
     "_identity": "wl|störung|L=49|D=2026-01-17"
   }
 ]
