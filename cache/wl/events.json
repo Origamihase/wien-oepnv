@@ -170,30 +170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Fremdunfall Betrieb ab Maroltingergasse",
-    "description": "Fremdunfall Betrieb ab Maroltingergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "48318e15ba68624377f0a97dd4e56ea28e6e0aa438525d8d3557de750e18ff0c",
-    "pubDate": "2026-01-18T19:10:36+01:00",
-    "starts_at": "2026-01-18T19:10:36+01:00",
-    "ends_at": "2026-01-18T21:15:00+01:00",
-    "_identity": "wl|störung|L=10|D=2026-01-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9a3191136d8bad796a52ae693389b95d11840d24bc4efea2aa060f02844dccba",
-    "pubDate": "2026-01-18T19:11:23+01:00",
-    "starts_at": "2026-01-18T19:11:34+01:00",
-    "ends_at": "2026-01-18T21:15:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-01-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Fremdunfall Betrieb ab Mayssengasse",
     "description": "Fremdunfall Betrieb ab Mayssengasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,17 +190,5 @@
     "starts_at": "2026-01-18T19:12:50+01:00",
     "ends_at": "2026-01-18T23:00:00+01:00",
     "_identity": "wl|störung|L=2|D=2026-01-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "69A: Rettungseinsatz",
-    "description": "Die Linie 69 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Gräßlplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c3f5724da51a5f97e26106c94e4e4a9c78a6afbf8833a95716caef1b24c5cf6e",
-    "pubDate": "2026-01-18T20:05:00+01:00",
-    "starts_at": "2026-01-18T20:05:00+01:00",
-    "ends_at": "2026-01-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=69A|D=2026-01-18"
   }
 ]
