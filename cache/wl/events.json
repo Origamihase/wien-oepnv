@@ -146,18 +146,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fremder Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8592082f0ee1e02c1752914f4264dc0c7712b06abe68bfff8093855857b88f37",
-    "pubDate": "2026-01-19T13:30:00+01:00",
-    "starts_at": "2026-01-19T13:30:00+01:00",
-    "ends_at": "2026-01-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=9|D=2026-01-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -182,25 +170,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
+    "title": "13A: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 13 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "90f3e9ae80b1ced372efb169e9553a734be9ad86fa0539d9008f2c17a5442faf",
-    "pubDate": "2026-01-19T15:13:35+01:00",
-    "starts_at": "2026-01-19T15:15:06+01:00",
-    "ends_at": "2026-01-19T16:14:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-01-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
-    "pubDate": "2026-01-19T15:16:20+01:00",
-    "starts_at": "2026-01-19T15:16:29+01:00",
-    "ends_at": "2026-01-19T16:15:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-01-19"
+    "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
+    "pubDate": "2026-01-19T15:55:00+01:00",
+    "starts_at": "2026-01-19T16:02:22+01:00",
+    "ends_at": "2026-01-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-01-19"
   }
 ]
