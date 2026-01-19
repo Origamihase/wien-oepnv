@@ -146,30 +146,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Verkehrsüberlastung",
-    "description": "Die Linie 11 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich Vorgartenstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9d0a7e4b9b87021faced5a5e0994d1adbea3b271fc48868ad2b14e038ee2871b",
-    "pubDate": "2026-01-19T08:55:00+01:00",
-    "starts_at": "2026-01-19T08:55:00+01:00",
-    "ends_at": "2026-01-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2026-01-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "46A: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 46 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eebd0795200e17a7fe8a5c3a5fe8ecae0df94cd2f4bae14a5b5cebbfcbce6b5b",
-    "pubDate": "2026-01-19T10:20:00+01:00",
-    "starts_at": "2026-01-19T10:20:00+01:00",
-    "ends_at": "2026-01-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=46A|D=2026-01-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Fahrtbehinderung wegen Polizeieinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -194,18 +170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d",
-    "pubDate": "2026-01-19T11:10:00+01:00",
-    "starts_at": "2026-01-19T11:11:55+01:00",
-    "ends_at": "2026-01-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=71|D=2026-01-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U6: Polizeieinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U6 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -218,13 +182,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "71: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d",
+    "pubDate": "2026-01-19T11:11:55+01:00",
+    "starts_at": "2026-01-19T11:11:55+01:00",
+    "ends_at": "2026-01-19T12:11:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-01-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "27: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 27 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2de4a80879fee6916f5899d435c3f11711bd93a63bf4239466c4f52a560dc044",
-    "pubDate": "2026-01-19T11:23:40+01:00",
-    "starts_at": "2026-01-19T11:23:40+01:00",
-    "ends_at": "2026-01-19T12:23:00+01:00",
+    "pubDate": "2026-01-19T11:20:00+01:00",
+    "starts_at": "2026-01-19T11:23:57+01:00",
+    "ends_at": "2026-01-19T23:55:00+01:00",
     "_identity": "wl|störung|L=27|D=2026-01-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "708d3f7d7a13e01575aae65705956a7ad77db9d37dfd85667f4c6c32b9e318ef",
+    "pubDate": "2026-01-19T11:24:09+01:00",
+    "starts_at": "2026-01-19T11:24:26+01:00",
+    "ends_at": "2026-01-19T12:23:00+01:00",
+    "_identity": "wl|störung|L=26|D=2026-01-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "82A: Betriebsstörung",
+    "description": "Die Linie 82 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Praterstern S U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7665aba863acfd56bbca3e5ec4f8c600b0106c476f2daec55c3a8e8bb0d8995e",
+    "pubDate": "2026-01-19T11:40:00+01:00",
+    "starts_at": "2026-01-19T11:40:00+01:00",
+    "ends_at": "2026-01-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=82A|D=2026-01-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ec43fe93de3687cd6b41ed3e161ecdbf78722df221d55ecf3d92bd4faf7d3814",
+    "pubDate": "2026-01-19T11:44:33+01:00",
+    "starts_at": "2026-01-19T11:52:29+01:00",
+    "ends_at": "2026-01-19T12:51:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-01-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e832b46eec6d19cd652e99a3efa00e678cd32779ad0f0da0378f515eb2651f68",
+    "pubDate": "2026-01-19T11:45:18+01:00",
+    "starts_at": "2026-01-19T11:53:15+01:00",
+    "ends_at": "2026-01-19T12:52:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-01-19"
   }
 ]
