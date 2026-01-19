@@ -146,61 +146,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Rathaus.",
+    "title": "43: Verkehrsunfall Betrieb ab Rosensteingasse",
+    "description": "Verkehrsunfall Betrieb ab Rosensteingasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2026-01-19T16:35:00+01:00",
-    "starts_at": "2026-01-19T16:35:00+01:00",
-    "ends_at": "2026-01-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=U2|D=2026-01-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26A: Rettungseinsatz",
-    "description": "Die Linie 26 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Lohwaggasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0245b6164e8aeaf5bf219cd1cff1358fe2406e2c522e5ac88f5e5fc5c5e87abe",
-    "pubDate": "2026-01-19T16:45:00+01:00",
-    "starts_at": "2026-01-19T16:45:00+01:00",
-    "ends_at": "2026-01-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=26A|D=2026-01-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U4 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
-    "pubDate": "2026-01-19T16:45:00+01:00",
-    "starts_at": "2026-01-19T16:45:00+01:00",
-    "ends_at": "2026-01-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-01-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Rettungseinsatz",
-    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Ottakring.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
-    "pubDate": "2026-01-19T16:55:00+01:00",
-    "starts_at": "2026-01-19T16:55:00+01:00",
-    "ends_at": "2026-01-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2026-01-19"
+    "guid": "5043bbd60bb6e1db88ce0b33457d6d6a2b57c63f3a4524dd90888c0f6ccf74e6",
+    "pubDate": "2026-01-19T17:35:23+01:00",
+    "starts_at": "2026-01-19T17:37:48+01:00",
+    "ends_at": "2026-01-19T19:20:00+01:00",
+    "_identity": "wl|störung|L=43|D=2026-01-19"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "43: Polizeieinsatz Züge halten bei Linie 44",
-    "description": "Polizeieinsatz Betrieb ab Rosensteingasse",
+    "description": "Polizeieinsatz Betrieb ab Brünnlbadgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "988c80ab109007f5051aff806aa861e0141853ffcc393ab7f2657dc9a31b4cd0",
     "pubDate": "2026-01-19T17:35:23+01:00",
     "starts_at": "2026-01-19T17:39:44+01:00",
     "ends_at": "2026-01-19T22:00:00+01:00",
+    "_identity": "wl|störung|L=43|D=2026-01-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Verkehrsunfall Umleitung bis Rosensteing. über Linien 44 und 9",
+    "description": "Verkehrsunfall Umleitung bis Rosensteing. über Linien 44 und 9",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2af1720e6852cdb9df5176571052e179e8c35f4588fc7fe3db541ae8a95e0592",
+    "pubDate": "2026-01-19T17:37:48+01:00",
+    "starts_at": "2026-01-19T17:37:48+01:00",
+    "ends_at": "2026-01-19T19:21:00+01:00",
     "_identity": "wl|störung|L=43|D=2026-01-19"
   },
   {
@@ -218,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "33A: Betriebsstörung",
-    "description": "Die Linie 33 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Betriebsstörung im Bereich Floridsdorf S U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "773cb38b3987a85c3e89c321541d6d5d9197306de63f3c4ba42fff5a50441dca",
-    "pubDate": "2026-01-19T18:05:00+01:00",
-    "starts_at": "2026-01-19T18:05:00+01:00",
-    "ends_at": "2026-01-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=33A|D=2026-01-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "43: Verkehrsunfall",
     "description": "Die Linie 43 wird in Richtung Neuwaldegg zwischen Brünnlbadgasse und Rosensteingasse über die Strecke der Linien 44 und 9 umgeleitet. Die Störung dauert voraussichtlich bis 18:45 Uhr. Grund dafür ist ein Verkehrsunfall im Bereich Jörgerstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -238,5 +202,29 @@
     "starts_at": "2026-01-19T18:15:00+01:00",
     "ends_at": "2026-01-19T23:55:00+01:00",
     "_identity": "wl|störung|L=43|D=2026-01-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "82A: Feuerwehreinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 82 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2e0b36478a2dcea8e9e1c30c2af1bf0d0d3edf8be99b532760aacae5b879af21",
+    "pubDate": "2026-01-19T18:20:00+01:00",
+    "starts_at": "2026-01-19T18:20:00+01:00",
+    "ends_at": "2026-01-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=82A|D=2026-01-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "82A: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2a74ff7fb808e44a25a37fed2dcdbf1ef2a838192fd5ca086b3fb771cbfcf50a",
+    "pubDate": "2026-01-19T18:25:32+01:00",
+    "starts_at": "2026-01-19T18:25:32+01:00",
+    "ends_at": "2026-01-19T19:24:00+01:00",
+    "_identity": "wl|störung|L=82A|D=2026-01-19"
   }
 ]
