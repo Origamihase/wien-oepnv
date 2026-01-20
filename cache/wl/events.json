@@ -154,41 +154,5 @@
     "starts_at": "2026-01-20T07:50:00+01:00",
     "ends_at": "2026-01-22T15:00:00+01:00",
     "_identity": "wl|hinweis|L=13A|D=2026-01-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1A: Demonstration Kein Betrieb",
-    "description": "Demonstration Kein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ccccd997ff504c1b8013f123fd5e2cce7b33c44a83d539badf84976766775443",
-    "pubDate": "2026-01-20T18:30:46+01:00",
-    "starts_at": "2026-01-20T18:30:46+01:00",
-    "ends_at": "2026-01-20T21:10:00+01:00",
-    "_identity": "wl|störung|L=1A|D=2026-01-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
-    "pubDate": "2026-01-20T20:05:00+01:00",
-    "starts_at": "2026-01-20T20:15:36+01:00",
-    "ends_at": "2026-01-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-01-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie O zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84",
-    "pubDate": "2026-01-20T20:05:00+01:00",
-    "starts_at": "2026-01-20T20:16:05+01:00",
-    "ends_at": "2026-01-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-01-20"
   }
 ]
