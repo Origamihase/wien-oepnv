@@ -158,54 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Verkehrsüberlastung",
-    "description": "Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8",
-    "pubDate": "2026-01-20T08:10:00+01:00",
-    "starts_at": "2026-01-20T08:10:00+01:00",
-    "ends_at": "2026-01-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=63A|D=2026-01-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "44: Polizeieinsatz",
-    "description": "Die Linie 44 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201",
-    "pubDate": "2026-01-20T08:50:00+01:00",
-    "starts_at": "2026-01-20T08:50:00+01:00",
-    "ends_at": "2026-01-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=44|D=2026-01-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "210b08a061991185eeff2755a4bd167b6c9a20d1703d1c621da74ef84d96a1b5",
-    "pubDate": "2026-01-20T08:50:00+01:00",
-    "starts_at": "2026-01-20T08:53:02+01:00",
-    "ends_at": "2026-01-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=9A|D=2026-01-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Verspätungen",
-    "description": "Die Linie 12 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b4c2e5634daffb2953a449e1106154bca73bdb498b00ff9111c29ce9d41ff3ae",
-    "pubDate": "2026-01-20T09:00:00+01:00",
-    "starts_at": "2026-01-20T09:00:00+01:00",
-    "ends_at": "2026-01-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=12A|D=2026-01-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Schadhaftes Fahrzeug",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,6 +166,18 @@
     "starts_at": "2026-01-20T09:00:00+01:00",
     "ends_at": "2026-01-20T23:55:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-01-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e832b46eec6d19cd652e99a3efa00e678cd32779ad0f0da0378f515eb2651f68",
+    "pubDate": "2026-01-20T09:05:57+01:00",
+    "starts_at": "2026-01-20T09:14:02+01:00",
+    "ends_at": "2026-01-20T10:13:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-01-20"
   },
   {
     "source": "Wiener Linien",
@@ -230,13 +194,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11/6: Gleisschaden",
-    "description": "Die Linie 6 fährt derzeit nur zwischen Burggasse, Stadthalle und Reumannplatz. Die Linie 11 wird in Richtung Otto-Probst-Platz zwischen Absberggasse und Quellenplatz über Hauptbahnhof umgeleitet. Die Störung dauert voraussichtlich bis 10:00 Uhr. Grund dafür ist ein Gleisschaden im Bereich Reumannplatz U.",
+    "title": "6: Gleisschaden",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "492f3a253df294ab9bc8918eece21c44ecac3f2c7abd18a749ab80161199b725",
+    "guid": "903c2f5b11fba4918a23b80775f0948bf551316a7bfb89e017f127cf85795ba3",
     "pubDate": "2026-01-20T09:20:00+01:00",
     "starts_at": "2026-01-20T09:20:00+01:00",
     "ends_at": "2026-01-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=11,6|D=2026-01-20"
+    "_identity": "wl|störung|L=6|D=2026-01-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Gleisschaden",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8ac82128f904a7fa58ecafa95c032722978fbab01a1f66c59f511f819537fbc0",
+    "pubDate": "2026-01-20T09:20:00+01:00",
+    "starts_at": "2026-01-20T09:20:00+01:00",
+    "ends_at": "2026-01-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-01-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung Gleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "02c7f0bc3ecc0f55715e6a0fb2ac4766b69e9ca3c6fbafac7e216802615d5b88",
+    "pubDate": "2026-01-20T09:29:45+01:00",
+    "starts_at": "2026-01-20T09:29:45+01:00",
+    "ends_at": "2026-01-20T16:29:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-01-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Gleisschaden Betrieb ab Quellenplatz",
+    "description": "Gleisschaden Betrieb ab Quellenplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a6832dfe04b311153d679df04f1cc6e55b02c29c6b95936d5a589cdaf5ed940f",
+    "pubDate": "2026-01-20T09:31:41+01:00",
+    "starts_at": "2026-01-20T09:31:41+01:00",
+    "ends_at": "2026-01-20T16:30:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-01-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Gleisschaden Einstieg bei Linie O Richtung Raxstraße",
+    "description": "Gleisschaden Einstieg bei Linie O Richtung Raxstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7989e64c45b6d4d113c00fcc0ba018e499d744b4aaca988ec525907882a503ef",
+    "pubDate": "2026-01-20T09:32:10+01:00",
+    "starts_at": "2026-01-20T09:32:10+01:00",
+    "ends_at": "2026-01-20T16:31:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-01-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Gleisschaden Betrieb ab Reumannplatz",
+    "description": "Gleisschaden Betrieb ab Reumannplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f0ed55de63ec072bbac966b8aa4f3e60504a386d41e41d0249a56a67aac6270d",
+    "pubDate": "2026-01-20T09:38:56+01:00",
+    "starts_at": "2026-01-20T09:38:56+01:00",
+    "ends_at": "2026-01-20T16:38:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-01-20"
   }
 ]
