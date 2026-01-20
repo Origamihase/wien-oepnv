@@ -190,5 +190,17 @@
     "starts_at": "2026-01-20T23:00:25+01:00",
     "ends_at": "2026-01-21T05:30:00+01:00",
     "_identity": "wl|störung|L=N29|D=2026-01-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verspätungen",
+    "description": "Die Linie U4 ist derzeit in Richtung Hütteldorf an der Weiterfahrt gehindert.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-01-20T23:25:00+01:00",
+    "starts_at": "2026-01-20T23:25:00+01:00",
+    "ends_at": "2026-01-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2026-01-20"
   }
 ]
