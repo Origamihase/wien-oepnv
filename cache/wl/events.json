@@ -158,30 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Fahrtbehinderung Gleisschaden",
-    "description": "Fahrtbehinderung Gleisschaden",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "02c7f0bc3ecc0f55715e6a0fb2ac4766b69e9ca3c6fbafac7e216802615d5b88",
-    "pubDate": "2026-01-20T09:29:45+01:00",
-    "starts_at": "2026-01-20T09:29:45+01:00",
-    "ends_at": "2026-01-20T16:29:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-01-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Gleisschaden Betrieb ab Quellenplatz",
-    "description": "Gleisschaden Betrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a6832dfe04b311153d679df04f1cc6e55b02c29c6b95936d5a589cdaf5ed940f",
-    "pubDate": "2026-01-20T09:31:41+01:00",
-    "starts_at": "2026-01-20T09:31:41+01:00",
-    "ends_at": "2026-01-20T16:30:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-01-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "6: Gleisschaden Betrieb ab Reumannplatz",
     "description": "Gleisschaden Betrieb ab Reumannplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,5 +190,29 @@
     "starts_at": "2026-01-20T15:35:00+01:00",
     "ends_at": "2026-01-20T23:55:00+01:00",
     "_identity": "wl|störung|L=50A|D=2026-01-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Verkehrsüberlastung",
+    "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
+    "pubDate": "2026-01-20T16:05:00+01:00",
+    "starts_at": "2026-01-20T16:05:00+01:00",
+    "ends_at": "2026-01-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-01-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 12 A wird in Richtung Schmelz, Gablenzgasse zwischen Schmelzbrücke und Huglgasse über Schweglerstraße und Märzstraße umgeleitet. Die Haltestelle Schweglerstraße kann dadurch nicht eingehalten werden. Die Störung dauert voraussichtlich bis 16:45 Uhr. Grund dafür ist ein Falschparker im Bereich Huglgasse 14.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-01-20T16:20:00+01:00",
+    "starts_at": "2026-01-20T16:24:10+01:00",
+    "ends_at": "2026-01-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=12A|D=2026-01-20"
   }
 ]
