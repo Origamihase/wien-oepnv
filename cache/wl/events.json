@@ -182,18 +182,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "82A: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung wegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "78250d9de0c87dc3ef55d09f948160d025dfe90c910cb7aee5890f9fe7506b6f",
-    "pubDate": "2026-01-20T16:42:51+01:00",
-    "starts_at": "2026-01-20T16:42:51+01:00",
-    "ends_at": "2026-01-20T17:42:00+01:00",
-    "_identity": "wl|störung|L=82A|D=2026-01-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Demonstration",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,18 +202,6 @@
     "starts_at": "2026-01-20T16:45:00+01:00",
     "ends_at": "2026-01-20T23:55:00+01:00",
     "_identity": "wl|störung|L=2|D=2026-01-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung wegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0e54dd6d9dedeaf40cc2429a236278e687390a81109540d1e2403036f460f187",
-    "pubDate": "2026-01-20T16:49:09+01:00",
-    "starts_at": "2026-01-20T16:49:38+01:00",
-    "ends_at": "2026-01-20T17:49:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-01-20"
   },
   {
     "source": "Wiener Linien",
@@ -274,5 +250,17 @@
     "starts_at": "2026-01-20T17:29:30+01:00",
     "ends_at": "2026-01-20T18:28:00+01:00",
     "_identity": "wl|störung|L=42,9|D=2026-01-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Rettungseinsatz",
+    "description": "Die Linie 74 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Stubentor U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "87cde0ff8f531daad212e230c8873600d36c9a10b0da2554e6fac3c5a24c60e6",
+    "pubDate": "2026-01-20T17:55:00+01:00",
+    "starts_at": "2026-01-20T17:55:00+01:00",
+    "ends_at": "2026-01-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=74A|D=2026-01-20"
   }
 ]
