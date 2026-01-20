@@ -158,49 +158,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
+    "title": "38: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Die Linie 38 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Schwarzspanierstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "73357b6320dfec1f26a86c63469d119b40e8f17ed69fcf1491dd8ae09deab193",
-    "pubDate": "2026-01-20T22:00:00+01:00",
-    "starts_at": "2026-01-20T22:00:00+01:00",
-    "ends_at": "2026-01-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-01-20"
+    "guid": "14b787061b8e077e79d48423bff586516bd1c55ab89e303fd510de9c03ccc6d9",
+    "pubDate": "2026-01-20T22:55:00+01:00",
+    "starts_at": "2026-01-20T22:58:08+01:00",
+    "ends_at": "2026-01-20T23:57:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-01-20"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Schadhaftes Fahrzeug",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
+    "title": "37: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6386a0a1443709a811da286faca3c110f82cb450fccefa41edfcc91b1f2e483b",
-    "pubDate": "2026-01-20T22:00:00+01:00",
-    "starts_at": "2026-01-20T22:00:00+01:00",
-    "ends_at": "2026-01-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=71|D=2026-01-20"
+    "guid": "81435586c2728ac85f64e190f4ce6ba0cbb5e28eca6bb2623414210333c443f5",
+    "pubDate": "2026-01-20T22:58:34+01:00",
+    "starts_at": "2026-01-20T22:58:34+01:00",
+    "ends_at": "2026-01-20T23:57:00+01:00",
+    "_identity": "wl|störung|L=37|D=2026-01-20"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42136a8e71b4c2b5584fecbaf02e84bbc564028048d64f662ba7e51eec28927a",
-    "pubDate": "2026-01-20T22:02:53+01:00",
-    "starts_at": "2026-01-20T22:02:59+01:00",
-    "ends_at": "2026-01-20T23:02:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-01-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ec43fe93de3687cd6b41ed3e161ecdbf78722df221d55ecf3d92bd4faf7d3814",
-    "pubDate": "2026-01-20T22:03:22+01:00",
-    "starts_at": "2026-01-20T22:03:22+01:00",
-    "ends_at": "2026-01-20T23:02:00+01:00",
-    "_identity": "wl|störung|L=71|D=2026-01-20"
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-01-20T23:00:25+01:00",
+    "starts_at": "2026-01-20T23:00:25+01:00",
+    "ends_at": "2026-01-21T05:30:00+01:00",
+    "_identity": "wl|störung|L=N29|D=2026-01-20"
   }
 ]
