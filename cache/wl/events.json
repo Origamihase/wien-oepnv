@@ -250,5 +250,17 @@
     "starts_at": "2026-01-21T08:00:32+01:00",
     "ends_at": "2026-01-21T08:59:00+01:00",
     "_identity": "wl|störung|L=60|D=2026-01-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Verkehrsüberlastung",
+    "description": "Die Linie 59 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
+    "pubDate": "2026-01-21T08:40:00+01:00",
+    "starts_at": "2026-01-21T08:40:00+01:00",
+    "ends_at": "2026-01-21T23:55:00+01:00",
+    "_identity": "wl|störung|L=59A|D=2026-01-21"
   }
 ]
