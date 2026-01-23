@@ -154,5 +154,17 @@
     "starts_at": "2026-01-23T00:00:27+01:00",
     "ends_at": "2026-01-23T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2026-01-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N67: Signalstörung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie N67 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "35baba2c843a5046bc122f7eadb9859ef1a991b6aa02642f4ef2818b5c0d1c67",
+    "pubDate": "2026-01-23T04:00:00+01:00",
+    "starts_at": "2026-01-23T04:00:00+01:00",
+    "ends_at": "2026-01-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=N67|D=2026-01-23"
   }
 ]
