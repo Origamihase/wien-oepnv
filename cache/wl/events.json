@@ -394,5 +394,17 @@
     "starts_at": "2026-01-23T17:15:00+01:00",
     "ends_at": "2026-01-25T20:00:00+01:00",
     "_identity": "wl|hinweis|L=2,4A,71,D|D=2026-01-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 12 A ist derzeit in Richtung Eichenstraße an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 18:15 Uhr. Grund dafür ist ein Falschparker im Bereich Akkonplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-01-23T17:45:00+01:00",
+    "starts_at": "2026-01-23T17:49:12+01:00",
+    "ends_at": "2026-01-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=12A|D=2026-01-23"
   }
 ]
