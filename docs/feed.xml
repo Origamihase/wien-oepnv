@@ -7,25 +7,36 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Fri, 23 Jan 2026 16:25:13 +0000</lastBuildDate>
+<lastBuildDate>Fri, 23 Jan 2026 16:55:59 +0000</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[66A: Polizeieinsatz]]></title>
+      <title><![CDATA[D/2/71/4A: Demonstration am 25.01.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">aba904564d19959e0ddb3e2e002949d8d9e98e2655696c852ae1597077a1d78b</guid>
-      <pubDate>Fri, 23 Jan 2026 15:45:00 +0000</pubDate>
-      <ext:first_seen>Fri, 23 Jan 2026 16:25:13 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 23 Jan 2026 15:45:00 +0000</ext:starts_at>
+      <guid isPermaLink="false">47b12149b4c1e34e28b1f06b8d32d73de9fbd2111ef61daef408a08ff065ec69</guid>
+      <pubDate>Fri, 23 Jan 2026 16:15:00 +0000</pubDate>
+      <ext:first_seen>Fri, 23 Jan 2026 16:55:59 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 23 Jan 2026 16:15:00 +0000</ext:starts_at>
+      <ext:ends_at>Sun, 25 Jan 2026 19:00:00 +0000</ext:ends_at>
+      <description><![CDATA[Wegen einer Demonstration kann es zu Einschränkungen kommen.<br/>[23.01.2026 – 25.01.2026]]]></description>
+      <content:encoded><![CDATA[Wegen einer Demonstration kann es zu Einschränkungen kommen.<br/>[23.01.2026 – 25.01.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Fri, 23 Jan 2026 16:10:00 +0000</pubDate>
+      <ext:first_seen>Fri, 23 Jan 2026 16:55:59 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 23 Jan 2026 16:10:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 23 Jan 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 66 A zu unterschiedlichen Intervallen.<br/>[Seit 23.01.2026]]]></description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 66 A zu unterschiedlichen Intervallen.<br/>[Seit 23.01.2026]]]></content:encoded>
+      <description><![CDATA[Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Westbahnhof.<br/>[Seit 23.01.2026]]]></description>
+      <content:encoded><![CDATA[Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Westbahnhof.<br/>[Seit 23.01.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Verunreinigung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515</guid>
       <pubDate>Fri, 23 Jan 2026 15:30:00 +0000</pubDate>
-      <ext:first_seen>Fri, 23 Jan 2026 16:25:13 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 23 Jan 2026 16:55:59 +0000</ext:first_seen>
       <ext:starts_at>Fri, 23 Jan 2026 15:30:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 23 Jan 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung im Bereich Neue Donau.<br/>[Seit 23.01.2026]]]></description>
@@ -36,73 +47,18 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e7c762209790ccc1458fc85a3ab1e457323e911dc03795bf462a2f2d1fc322e2</guid>
       <pubDate>Fri, 23 Jan 2026 15:15:00 +0000</pubDate>
-      <ext:first_seen>Fri, 23 Jan 2026 16:25:13 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 23 Jan 2026 16:55:59 +0000</ext:first_seen>
       <ext:starts_at>Fri, 23 Jan 2026 15:15:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 23 Jan 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.<br/>[Seit 23.01.2026]]]></description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 6 zu unterschiedlichen Intervallen.<br/>[Seit 23.01.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10A: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">69bf84ed2d92c43fb9999e573aa34981c804f4c13f0177a30ce634d9c2393458</guid>
-      <pubDate>Fri, 23 Jan 2026 14:00:00 +0000</pubDate>
-      <ext:first_seen>Fri, 23 Jan 2026 16:25:13 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 23 Jan 2026 14:00:00 +0000</ext:starts_at>
-      <ext:ends_at>Fri, 23 Jan 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 10 A zu unterschiedlichen Intervallen.<br/>[Seit 23.01.2026]]]></description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 10 A zu unterschiedlichen Intervallen.<br/>[Seit 23.01.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">405ffe0aa2098d8d6d582944507740bd3b2ff950f6553c25606e98f3e6b79d5e</guid>
-      <pubDate>Fri, 23 Jan 2026 13:45:00 +0000</pubDate>
-      <ext:first_seen>Fri, 23 Jan 2026 16:25:13 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 23 Jan 2026 13:45:00 +0000</ext:starts_at>
-      <ext:ends_at>Fri, 23 Jan 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Die Linie 27 kann derzeit in beiden Richtungen nur unregelmäßig fahren.<br/>[Seit 23.01.2026]]]></description>
-      <content:encoded><![CDATA[Die Linie 27 kann derzeit in beiden Richtungen nur unregelmäßig fahren.<br/>[Seit 23.01.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106</guid>
-      <pubDate>Fri, 23 Jan 2026 13:30:00 +0000</pubDate>
-      <ext:first_seen>Fri, 23 Jan 2026 16:25:13 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 23 Jan 2026 13:30:00 +0000</ext:starts_at>
-      <ext:ends_at>Fri, 23 Jan 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.<br/>[Seit 23.01.2026]]]></description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.<br/>[Seit 23.01.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7</guid>
-      <pubDate>Fri, 23 Jan 2026 13:20:00 +0000</pubDate>
-      <ext:first_seen>Fri, 23 Jan 2026 16:25:13 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 23 Jan 2026 13:20:00 +0000</ext:starts_at>
-      <ext:ends_at>Fri, 23 Jan 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 16 A zu unterschiedlichen Intervallen.<br/>[Seit 23.01.2026]]]></description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 16 A zu unterschiedlichen Intervallen.<br/>[Seit 23.01.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0c324aeb68aff0a13a99697bafb1720b1552500ec06ceef7ada487c69aa2ddcf</guid>
-      <pubDate>Fri, 23 Jan 2026 13:20:00 +0000</pubDate>
-      <ext:first_seen>Fri, 23 Jan 2026 16:25:13 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 23 Jan 2026 13:20:00 +0000</ext:starts_at>
-      <ext:ends_at>Fri, 23 Jan 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 60 A zu unterschiedlichen Intervallen.<br/>[Seit 23.01.2026]]]></description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 60 A zu unterschiedlichen Intervallen.<br/>[Seit 23.01.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[166: Gleisschaden Züge halten ggü Währinger Gürtel 166]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a4167ce38687ad6040893d9fab329f07d9f9d763c8ac4a486a29b66ea3b1d79f</guid>
       <pubDate>Fri, 23 Jan 2026 12:48:12 +0000</pubDate>
-      <ext:first_seen>Fri, 23 Jan 2026 16:25:13 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 23 Jan 2026 16:55:59 +0000</ext:first_seen>
       <ext:starts_at>Fri, 23 Jan 2026 12:48:12 +0000</ext:starts_at>
       <ext:ends_at>Fri, 23 Jan 2026 22:30:00 +0000</ext:ends_at>
       <description><![CDATA[Gleisschaden Züge halten ggü Währinger Gürtel 166<br/>[Seit 23.01.2026]]]></description>
@@ -113,11 +69,55 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">6427fa888411eebaa35e595ed6f54f3b4f4e5453afca62e4efb064d8aa81f8e0</guid>
       <pubDate>Fri, 23 Jan 2026 12:46:06 +0000</pubDate>
-      <ext:first_seen>Fri, 23 Jan 2026 16:25:13 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 23 Jan 2026 16:55:59 +0000</ext:first_seen>
       <ext:starts_at>Fri, 23 Jan 2026 12:46:15 +0000</ext:starts_at>
       <ext:ends_at>Fri, 23 Jan 2026 22:30:00 +0000</ext:ends_at>
       <description><![CDATA[Gleisschaden Betrieb ab Nußdorfer Straße<br/>[Seit 23.01.2026]]]></description>
       <content:encoded><![CDATA[Gleisschaden Betrieb ab Nußdorfer Straße<br/>[Seit 23.01.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[38: Gleisschaden Betrieb ab Nußdorfer Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7d90bb516c9c2f4e5cd876a8b111bffc86034360a89cffdd379d832de03a90e5</guid>
+      <pubDate>Fri, 23 Jan 2026 12:36:26 +0000</pubDate>
+      <ext:first_seen>Fri, 23 Jan 2026 16:55:59 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 23 Jan 2026 12:36:35 +0000</ext:starts_at>
+      <ext:ends_at>Fri, 23 Jan 2026 22:30:00 +0000</ext:ends_at>
+      <description><![CDATA[Gleisschaden Betrieb ab Nußdorfer Straße<br/>[Seit 23.01.2026]]]></description>
+      <content:encoded><![CDATA[Gleisschaden Betrieb ab Nußdorfer Straße<br/>[Seit 23.01.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Gleischaden Züge halten bei Linie 40A]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ce70e76a5b6a0b84371d7c5aa4b751bb9a8826f7c4346b81c56ace773e1b4674</guid>
+      <pubDate>Fri, 23 Jan 2026 10:44:54 +0000</pubDate>
+      <ext:first_seen>Fri, 23 Jan 2026 16:55:59 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 23 Jan 2026 10:44:54 +0000</ext:starts_at>
+      <ext:ends_at>Fri, 23 Jan 2026 22:45:00 +0000</ext:ends_at>
+      <description><![CDATA[Gleischaden Züge halten bei Linie 40 A<br/>[Seit 23.01.2026]]]></description>
+      <content:encoded><![CDATA[Gleischaden Züge halten bei Linie 40 A<br/>[Seit 23.01.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12: Fahrtbehinderung Gleisschaden]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">11b5106eaf1385cf51d05275d61f2f6fa0acc39d9994a9906a30ad187cc7abdd</guid>
+      <pubDate>Fri, 23 Jan 2026 09:50:02 +0000</pubDate>
+      <ext:first_seen>Fri, 23 Jan 2026 16:55:59 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 23 Jan 2026 09:50:15 +0000</ext:starts_at>
+      <ext:ends_at>Fri, 23 Jan 2026 22:30:00 +0000</ext:ends_at>
+      <description><![CDATA[Fahrtbehinderung Gleisschaden<br/>[Seit 23.01.2026]]]></description>
+      <content:encoded><![CDATA[Fahrtbehinderung Gleisschaden<br/>[Seit 23.01.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[42: Gleisschaden Züge halten bei Linie 40A]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">846154959acf55fbd9d5ff80fe7ac0620587c9a4a61ec210457e839ae55cd171</guid>
+      <pubDate>Fri, 23 Jan 2026 09:46:58 +0000</pubDate>
+      <ext:first_seen>Fri, 23 Jan 2026 16:55:59 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 23 Jan 2026 09:46:58 +0000</ext:starts_at>
+      <ext:ends_at>Fri, 23 Jan 2026 22:45:00 +0000</ext:ends_at>
+      <description><![CDATA[Gleisschaden Züge halten bei Linie 40 A<br/>[Seit 23.01.2026]]]></description>
+      <content:encoded><![CDATA[Gleisschaden Züge halten bei Linie 40 A<br/>[Seit 23.01.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
