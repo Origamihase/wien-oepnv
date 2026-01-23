@@ -158,18 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12/40/41/42/5: Gleisschaden",
-    "description": "Die Linie 5 fährt derzeit nicht zwischen Franz-Josefs-Bahnhof und Josefstädter Straße. Die Linie 12 fährt derzeit nur zwischen Hillerstraße und Franz-Josefs-Bahnhof und weiter bis Marsanogasse Bhf. Gürtel. Die Linie 40 wird in beiden Richtungen zwischen Spitalgasse und Währinger Straße, Volksoper über Nußdorfer Straße umgeleitet. Die Linie 41 wird in beiden Richtungen zwischen Spitalgasse und Währinger Straße, Volksoper über Nußdorfer Straße umgeleitet. Die Linie 42 fährt derzeit nur zwischen Antonigasse und Währinger Straße, Volksoper U. Ersatzweise benützen Sie die Linien U4, U6, 43, 44 und 13 A. Die Störung dauert voraussichtlich bis 16:00 Uhr. Grund dafür ist ein Gleisschaden im Bereich Spitalgasse 33.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "728322c9cc16dd0ed9699db2656b0fce74d2f02495b176d4d79acc173f3b5f7e",
-    "pubDate": "2026-01-23T10:15:00+01:00",
-    "starts_at": "2026-01-23T10:15:00+01:00",
-    "ends_at": "2026-01-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=12,40,41,42,5|D=2026-01-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "40A: Gleisschaden Züge halten bei Linie 40A",
     "description": "Gleisschaden Züge halten bei Linie 40 A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -178,6 +166,30 @@
     "starts_at": "2026-01-23T10:36:12+01:00",
     "ends_at": "2026-01-23T23:45:00+01:00",
     "_identity": "wl|störung|L=40A|D=2026-01-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Gleisschaden Züge halten bei Linie 5",
+    "description": "Gleisschaden Züge halten bei Linie 5",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0d647606b82a245f6ba6647a7a0c369d1ab02e4487567287591a1c2faa7d8c10",
+    "pubDate": "2026-01-23T10:36:41+01:00",
+    "starts_at": "2026-01-23T10:36:41+01:00",
+    "ends_at": "2026-01-23T23:45:00+01:00",
+    "_identity": "wl|störung|L=5|D=2026-01-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Gleisschaden Betrieb ab Josefstädter Straße",
+    "description": "Gleisschaden Betrieb ab Josefstädter Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c37e60fd714129263b6bf3a271dd9f5e58aca960a8da4ddba910e33050c6717b",
+    "pubDate": "2026-01-23T10:41:20+01:00",
+    "starts_at": "2026-01-23T10:41:32+01:00",
+    "ends_at": "2026-01-23T23:45:00+01:00",
+    "_identity": "wl|störung|L=5|D=2026-01-23"
   },
   {
     "source": "Wiener Linien",
@@ -194,26 +206,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Demonstration",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.",
+    "title": "5: Betrieb ab Franz-Josefs-Bahnhof",
+    "description": "Gleisbauarbeiten Betrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "20afbfca21c790691b2b60903b6da68364ee59e3bc83d2b8ea61832b2baa30d0",
-    "pubDate": "2026-01-23T10:55:00+01:00",
-    "starts_at": "2026-01-23T10:55:00+01:00",
-    "ends_at": "2026-01-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=D|D=2026-01-23"
+    "guid": "cd9dce23e7446f61ecc2b5a7c0710b100987399c2e7f28f888dcee21050531da",
+    "pubDate": "2026-01-23T10:43:57+01:00",
+    "starts_at": "2026-01-23T10:43:57+01:00",
+    "ends_at": "2026-01-23T23:45:00+01:00",
+    "_identity": "wl|störung|L=5|D=2026-01-23"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 zu unterschiedlichen Intervallen.",
+    "title": "12: Gleisschaden Betrieb ab Franz-Josefs-Bahnhof",
+    "description": "Gleisschaden Betrieb ab Franz-Josefs-Bahnhof",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9",
-    "pubDate": "2026-01-23T11:25:00+01:00",
-    "starts_at": "2026-01-23T11:25:00+01:00",
-    "ends_at": "2026-01-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=9|D=2026-01-23"
+    "guid": "a7d876502b02a0eba79e2308f2d540a53b3999c7afee069efa5833a9f7c2d6e7",
+    "pubDate": "2026-01-23T10:49:16+01:00",
+    "starts_at": "2026-01-23T10:49:17+01:00",
+    "ends_at": "2026-01-23T23:45:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-01-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung Gleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "11b5106eaf1385cf51d05275d61f2f6fa0acc39d9994a9906a30ad187cc7abdd",
+    "pubDate": "2026-01-23T10:50:02+01:00",
+    "starts_at": "2026-01-23T10:50:15+01:00",
+    "ends_at": "2026-01-23T23:30:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-01-23"
   },
   {
     "source": "Wiener Linien",
@@ -230,13 +254,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Fahrtbehinderung wegen Signalstörung der ÖBB",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 10 zu unterschiedlichen Intervallen.",
+    "title": "40/41/42: Gleisschaden",
+    "description": "Die Linie 40 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 41 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 42 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Gleisschaden im Bereich Spitalgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "09d6917b97f5daaeacf044c0dc055c18cfa0187f1782a553fba8fb19ddf0b1f1",
-    "pubDate": "2026-01-23T12:15:00+01:00",
-    "starts_at": "2026-01-23T12:21:17+01:00",
+    "guid": "9d29b0090763f4c571248b17149489895bea5454db5112caa5a2c9a69a11b49d",
+    "pubDate": "2026-01-23T13:15:00+01:00",
+    "starts_at": "2026-01-23T13:15:00+01:00",
     "ends_at": "2026-01-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=10|D=2026-01-23"
+    "_identity": "wl|störung|L=40,41,42|D=2026-01-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung Gleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c903caea7c137eb91bc99faf58fd6c344fb7b26acf8f1f0f58bfcce21b03699f",
+    "pubDate": "2026-01-23T13:34:10+01:00",
+    "starts_at": "2026-01-23T13:34:10+01:00",
+    "ends_at": "2026-01-23T23:00:00+01:00",
+    "_identity": "wl|störung|L=37|D=2026-01-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung Gleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36291a8913f4c0e64cf9c131c1cabf9164a01e3b26a8d92b61ce6d4817630b30",
+    "pubDate": "2026-01-23T13:35:37+01:00",
+    "starts_at": "2026-01-23T13:35:37+01:00",
+    "ends_at": "2026-01-23T23:15:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-01-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Gleisschaden Betrieb ab Nußdorfer Straße",
+    "description": "Gleisschaden Betrieb ab Nußdorfer Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7d90bb516c9c2f4e5cd876a8b111bffc86034360a89cffdd379d832de03a90e5",
+    "pubDate": "2026-01-23T13:36:26+01:00",
+    "starts_at": "2026-01-23T13:36:35+01:00",
+    "ends_at": "2026-01-23T23:30:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-01-23"
   }
 ]
