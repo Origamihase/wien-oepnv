@@ -166,5 +166,29 @@
     "starts_at": "2026-01-23T07:55:00+01:00",
     "ends_at": "2026-01-23T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2026-01-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "56A: Verspätungen",
+    "description": "Die Linie 56 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Küniglberg, ORF-Zentrum.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "79c70b7e498d9bbfc0bd7653eb5d750c30bdabd1e999f0cb905664cb573e1945",
+    "pubDate": "2026-01-23T08:20:00+01:00",
+    "starts_at": "2026-01-23T08:20:00+01:00",
+    "ends_at": "2026-01-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=56A|D=2026-01-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Rettungseinsatz",
+    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2026-01-23T08:20:00+01:00",
+    "starts_at": "2026-01-23T08:20:00+01:00",
+    "ends_at": "2026-01-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2026-01-23"
   }
 ]
