@@ -170,13 +170,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Schadhaftes Fahrzeug",
-    "description": "Die Linie 7 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Meidling Hauptstraße U.",
+    "title": "U3: Verspätungen",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "957cb1b08225ad1e4245b00d3a903a998ca51304cfc0cf8066722db5bf4f5ca2",
-    "pubDate": "2026-01-24T06:35:00+01:00",
-    "starts_at": "2026-01-24T06:35:00+01:00",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-01-24T06:55:00+01:00",
+    "starts_at": "2026-01-24T06:55:00+01:00",
     "ends_at": "2026-01-24T23:55:00+01:00",
-    "_identity": "wl|störung|L=7A|D=2026-01-24"
+    "_identity": "wl|störung|L=U3|D=2026-01-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verspätungen",
+    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-01-24T07:05:00+01:00",
+    "starts_at": "2026-01-24T07:05:00+01:00",
+    "ends_at": "2026-01-24T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2026-01-24"
   }
 ]
