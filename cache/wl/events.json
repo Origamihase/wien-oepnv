@@ -86,6 +86,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "4A: Umleitung ab 12.01.2026",
+    "description": "Rohrleitungsarbeiten\nWegen Bauarbeiten im Bereich der Lisztstraße wird die Linie 4 A umgeleitet.\nZeitraum:\nAb Montag, 12. Jänner 2026 etwa 07:00 Uhr bis voraussichtlich Ende Februar 2026.\nMaßnahmen:\nLinie 4 A in Richtung Wittelsbachstraße\nUmleitung ab Lothringerstraße # Schwarzenbergplatz über Schwarzenbergplatz - Am Heumarkt - Lisztstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nAkademietheater (Lisztstraße 4)\nLinie 4 A in Richtung Karlsplatz U\nUmleitung ab Lisztstraße # Heumarkt über Am Heumarkt - Schwarzenbergplatz - Lothringerstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nAkademietheater (Lisztstraße 1)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3968b28d1734e83928e4cd5b122b4bd71990d4b7d329e687736e6d9d94e25d6f",
+    "pubDate": "2025-12-20T06:00:00+01:00",
+    "starts_at": "2026-01-12T00:00:00+00:00",
+    "ends_at": "2026-02-28T11:11:00+01:00",
+    "_identity": "wl|hinweis|L=4A|D=2026-01-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "69A/72A/73A/76A/76B: Faschingsumzug Simmering am 14.02.2026",
     "description": "Veranstaltung\nWegen Abhaltung des Faschingsumzugs im Bereich der Simmeringer Hauptstraße kommt es bei den Linien 69 A, 72 A, 73 A, 76 A und 76 B zu folgenden Maßnahmen\nZeitraum:\nSamstag, 14. Februar 2026, von etwa 13:00 Uhr bis etwa 17:00 Uhr.\nMaßnahmen:\nLinie 69 A\nKurzführung\nBetrieb nur zwischen Hauptbahnhof S U und Unter der Kirche.\nVorübergehende End- und Anfangshaltestelle bei Unter der Kirche gegenüber 2 (vor Kreisverkehr).\nLinie 72 A\nKurzführung\nBetrieb nur zwischen Hasenleiten und Anton-Stilling-Platz.\nVorübergehende End- und Anfangshaltestelle bei Hasenleitengasse 11-21.\nLinie 73 A\nKurzführung\nBetrieb nur zwischen Landwehrstraße und Unter der Kirche.\nVorübergehende End- und Anfangshaltestelle bei Kaiser-Ebersdorfer-Straße 1-3 (vor Kreisverkehr).\nLinien 76 A und 76 B\n76 A und 76 B in Richtung Albern\nUmleitung ab Mautner-Markhof-Gasse # Krausegasse über Krausegasse - Rappachgasse.\nAufgelassene Haltestellen:\n- Enkplatz U, Grillgasse\n- Hauffgasse\n- Simoningplatz (FR Alberner Hafen)\n- Rappachgasse (FR Alberner Hafen)\nVorübergehende End- und Anfangshaltestelle bei Mautner-Markhof-Gasse 62.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -133,18 +145,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "D/2/71/4A: Demonstration am 25.01.2026",
-    "description": "Demonstration\nWegen einer Demonstration kann es zu Einschränkungen kommen.\nZeitraum:\nSonntag, 25. Jänner 2026, zwischen 18:00 Uhr und 20:00 Uhr.\nMaßnahmen:\nLinie 2:\nUmleitung in beiden Richtungen zwischen Stadiongasse # Reichsratsstraße und Schwedenplatz U über Schottentor - Schottenring.\nLinie D:\nKein Betrieb zwischen Quartier Belvedere und Schwarzenbergplatz.\nLinie 71:\nBetrieb nur zwischen Kaiserebersdorf und Rennweg S. Weiterfahrt über Linie O bis Hintere Zollamtsstraße.\nLinie 4 A:\nBetrieb nur zwischen Wittelsbachstraße und Lisztstraße.\nHinweis:\nBeachten Sie daher unsere Lautsprecherdurchsagen und unsere Echtzeitinformationen in der Wienmobil-App oder unter www.wienerlinien.at.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "47b12149b4c1e34e28b1f06b8d32d73de9fbd2111ef61daef408a08ff065ec69",
-    "pubDate": "2026-01-23T17:15:00+01:00",
-    "starts_at": "2026-01-23T17:15:00+01:00",
-    "ends_at": "2026-01-25T20:00:00+01:00",
-    "_identity": "wl|hinweis|L=2,4A,71,D|D=2026-01-23"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
@@ -159,12 +159,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "D: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106",
-    "pubDate": "2026-01-25T17:20:00+01:00",
+    "pubDate": "2026-01-25T17:21:01+01:00",
     "starts_at": "2026-01-25T17:31:39+01:00",
-    "ends_at": "2026-01-25T23:55:00+01:00",
+    "ends_at": "2026-01-25T18:31:00+01:00",
     "_identity": "wl|störung|L=D|D=2026-01-25"
   },
   {
@@ -214,5 +214,101 @@
     "starts_at": "2026-01-25T17:40:52+01:00",
     "ends_at": "2026-01-25T18:40:00+01:00",
     "_identity": "wl|störung|L=44|D=2026-01-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Demonstration Betrieb nur bis Rennweg / Hintere Zollamtsstraße",
+    "description": "Demonstration Betrieb nur bis Rennweg / Hintere Zollamtsstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7334ea3cd607bc926c5eee226f1fae54031bb8c7e3dd42310923616f5a5d4984",
+    "pubDate": "2026-01-25T18:05:58+01:00",
+    "starts_at": "2026-01-25T18:05:58+01:00",
+    "ends_at": "2026-01-25T19:04:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-01-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Demonstration Umleitung ab Volkstheater übere Linie 1",
+    "description": "Demonstration Umleitung ab Volkstheater übere Linie 1",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "33fdabf789891aa6f1a137e1d006228c6016d6d5cf7dfa77be2f13e5cd8a19d9",
+    "pubDate": "2026-01-25T18:06:53+01:00",
+    "starts_at": "2026-01-25T18:07:55+01:00",
+    "ends_at": "2026-01-25T19:07:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-01-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Demonstration Betrieb nur bis Börse",
+    "description": "Demonstration Betrieb nur bis Börse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1cfc9d5baf0aacbfac35ec029f1e22da6c99c00913566b06fa03af0554f65d34",
+    "pubDate": "2026-01-25T18:09:20+01:00",
+    "starts_at": "2026-01-25T18:09:22+01:00",
+    "ends_at": "2026-01-25T19:07:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-01-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Falschparker",
+    "description": "Die Linie 38 A ist derzeit in Richtung Bahnhof Heiligenstadt an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 18:30 Uhr. Grund dafür ist ein Falschparker im Bereich Grinzinger Straße 26.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62",
+    "pubDate": "2026-01-25T18:10:00+01:00",
+    "starts_at": "2026-01-25T18:10:00+01:00",
+    "ends_at": "2026-01-25T23:55:00+01:00",
+    "_identity": "wl|störung|L=38A|D=2026-01-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Demonstration Betrieb nur bis Q. Belvedere / St. Marx",
+    "description": "Demonstration Betrieb nur bis Q. Belvedere / St. Marx",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8538b89f4169f260e125969c3e9a97081e63782c1e01acbd0699c68733b67c1b",
+    "pubDate": "2026-01-25T18:10:15+01:00",
+    "starts_at": "2026-01-25T18:10:20+01:00",
+    "ends_at": "2026-01-25T19:09:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-01-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "4A: Demonstration Betrieb ab Akademietheater",
+    "description": "Demonstration Betrieb ab Akademietheater",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5e1263a3e6ba581132da4dd92eb7eedb44e89560190af36081df8fdc169056d9",
+    "pubDate": "2026-01-25T18:10:43+01:00",
+    "starts_at": "2026-01-25T18:10:43+01:00",
+    "ends_at": "2026-01-25T20:30:00+01:00",
+    "_identity": "wl|störung|L=4A|D=2026-01-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fahrtbehinderung wegen Demonstration",
+    "description": "Fahrtbehinderung wegen Demonstration",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4e2427e61bec98c160f61c806cf29a33a0eeb03e82e5fa7ffabf042a02249147",
+    "pubDate": "2026-01-25T18:11:42+01:00",
+    "starts_at": "2026-01-25T18:11:47+01:00",
+    "ends_at": "2026-01-25T20:30:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-01-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Demonstration Betrieb ab Ring, Volkstheater",
+    "description": "Demonstration Betrieb ab Ring, Volkstheater",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "56efdee6d024abacd36240318e62e642b355c434d845f56aebdd91507e6d33a1",
+    "pubDate": "2026-01-25T18:13:14+01:00",
+    "starts_at": "2026-01-25T18:13:14+01:00",
+    "ends_at": "2026-01-25T20:30:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-01-25"
   }
 ]
