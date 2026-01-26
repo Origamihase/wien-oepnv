@@ -158,30 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Oberleitungsdef. Züge halten bei Linie 1 Richtung Prater Hauptallee",
-    "description": "Oberleitungsdef. Züge halten bei Linie 1 Richtung Prater Hauptallee",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9f675eb8b21ccbb624bcdd0a9fd38ecfd533bf5a3eef2a22dfe678356864b239",
-    "pubDate": "2026-01-26T05:39:26+01:00",
-    "starts_at": "2026-01-26T05:39:26+01:00",
-    "ends_at": "2026-01-26T13:45:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-01-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Fahrtbehinderung Oberleitungsdefekt",
-    "description": "Fahrtbehinderung Oberleitungsdefekt",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0f4d93a761c0cc7719c7354a99213d32b282bd9f46b7dd0a5f4ad7b0687302ef",
-    "pubDate": "2026-01-26T05:41:23+01:00",
-    "starts_at": "2026-01-26T05:41:35+01:00",
-    "ends_at": "2026-01-26T14:15:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-01-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -274,5 +250,17 @@
     "starts_at": "2026-01-26T13:35:00+01:00",
     "ends_at": "2026-01-26T23:55:00+01:00",
     "_identity": "wl|störung|L=22A|D=2026-01-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Handelskai.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-01-26T14:35:00+01:00",
+    "starts_at": "2026-01-26T14:35:00+01:00",
+    "ends_at": "2026-01-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2026-01-26"
   }
 ]
