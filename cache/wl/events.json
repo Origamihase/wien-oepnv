@@ -190,5 +190,17 @@
     "starts_at": "2026-01-26T20:00:00+01:00",
     "ends_at": "2026-01-28T20:00:00+01:00",
     "_identity": "wl|hinweis|L=1,2,37,38,40,41,42,71,D|D=2026-01-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cda1a2da5b61304e836403c2db61f3d996378a1a8165e5896d086ffe465eaf23",
+    "pubDate": "2026-01-26T21:02:50+01:00",
+    "starts_at": "2026-01-26T21:02:50+01:00",
+    "ends_at": "2026-01-26T22:02:00+01:00",
+    "_identity": "wl|störung|L=59A|D=2026-01-26"
   }
 ]
