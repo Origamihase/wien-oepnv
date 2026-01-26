@@ -170,90 +170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Beschädigte Oberleitung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 49 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9881076aea927c2d87933e8fa2afe4615632ed171310d93b9799b31ed774be9f",
-    "pubDate": "2026-01-26T11:55:00+01:00",
-    "starts_at": "2026-01-26T11:55:00+01:00",
-    "ends_at": "2026-01-26T23:55:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-01-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "52: Beschädigte Oberleitung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 52 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7b4152fcf3d4de7cd3f7a37029187507465e8ca59ce9d2d80774006b8e287f27",
-    "pubDate": "2026-01-26T11:55:00+01:00",
-    "starts_at": "2026-01-26T11:55:00+01:00",
-    "ends_at": "2026-01-26T23:55:00+01:00",
-    "_identity": "wl|störung|L=52|D=2026-01-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrleitungsgebrechen Betrieb ab Breitensee S",
-    "description": "Fahrleitungsgebrechen Betrieb ab Breitensee S",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "613be57398792364dc2b2183cfb7f2174e9feeea6e9e15bbb9d2bbda0add3a0d",
-    "pubDate": "2026-01-26T12:01:08+01:00",
-    "starts_at": "2026-01-26T12:01:15+01:00",
-    "ends_at": "2026-01-26T16:00:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-01-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung wegen Fahrleitungsgebrechen",
-    "description": "Fahrtbehinderung wegen Fahrleitungsgebrechen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aa39099924801302016b64ed2ae7b5f85b7eb668696eb0c8301db12f2d98684e",
-    "pubDate": "2026-01-26T12:02:35+01:00",
-    "starts_at": "2026-01-26T12:02:42+01:00",
-    "ends_at": "2026-01-26T16:00:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-01-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Verunreinigung",
-    "description": "Die Linie 11 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1f0306b680e5da26f14eb1fee7aed5a4682caac6e0570037c68c42879db4b795",
-    "pubDate": "2026-01-26T12:30:00+01:00",
-    "starts_at": "2026-01-26T12:30:00+01:00",
-    "ends_at": "2026-01-26T23:55:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-01-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A: Rettungseinsatz",
-    "description": "Die Linie 11 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Friedrich-Engels-Platz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "42fd134123a418e9ad9efe9206b8aec78f4828e1289887cd32b9a179ab2ed7cd",
-    "pubDate": "2026-01-26T12:45:00+01:00",
-    "starts_at": "2026-01-26T12:45:00+01:00",
-    "ends_at": "2026-01-26T23:55:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2026-01-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "22A: Verkehrsunfall",
-    "description": "Die Linie 22 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "24f3e8ed4b406112c71c820943058faeb5e6f2942ac26ea1686d40f72cd4f36c",
-    "pubDate": "2026-01-26T13:35:00+01:00",
-    "starts_at": "2026-01-26T13:35:00+01:00",
-    "ends_at": "2026-01-26T23:55:00+01:00",
-    "_identity": "wl|störung|L=22A|D=2026-01-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "39A: Verspätungen",
     "description": "Die Linie 39 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -262,5 +178,29 @@
     "starts_at": "2026-01-26T14:40:00+01:00",
     "ends_at": "2026-01-26T23:55:00+01:00",
     "_identity": "wl|störung|L=39A|D=2026-01-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "24A: Verkehrsüberlastung",
+    "description": "Die Linie 24 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "16fcbbe3aabe5a1378dc06ea696db0d79196145330594b3b91659557e6d58a03",
+    "pubDate": "2026-01-26T16:00:00+01:00",
+    "starts_at": "2026-01-26T16:00:00+01:00",
+    "ends_at": "2026-01-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=24A|D=2026-01-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Signalstörung",
+    "description": "Die Linie 74 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Störung dauert voraussichtlich bis 16:30. Grund dafür ist eine Signalstörung im Bereich Landstraßer Hauptstraße Vordere Zollamtsstraße .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037",
+    "pubDate": "2026-01-26T16:05:00+01:00",
+    "starts_at": "2026-01-26T16:05:00+01:00",
+    "ends_at": "2026-01-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=74A|D=2026-01-26"
   }
 ]
