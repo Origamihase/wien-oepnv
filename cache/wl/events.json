@@ -194,25 +194,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "title": "9: Verkehrsunfall Betrieb ab Sommarugagasse",
+    "description": "Verkehrsunfall Betrieb ab Sommarugagasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cda1a2da5b61304e836403c2db61f3d996378a1a8165e5896d086ffe465eaf23",
-    "pubDate": "2026-01-26T21:02:50+01:00",
-    "starts_at": "2026-01-26T21:02:50+01:00",
-    "ends_at": "2026-01-26T22:02:00+01:00",
-    "_identity": "wl|störung|L=59A|D=2026-01-26"
+    "guid": "421540badbc5e4153c1ffab961b9374739a38303ff4907e98f1d9a15fbc6f74e",
+    "pubDate": "2026-01-26T22:02:21+01:00",
+    "starts_at": "2026-01-26T22:02:21+01:00",
+    "ends_at": "2026-01-26T23:01:00+01:00",
+    "_identity": "wl|störung|L=9|D=2026-01-26"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "69A: Verunreinigung",
-    "description": "Die Linie 69 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist eine Verunreinigung im Bereich Simmering S U.",
+    "title": "40: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b079ebd93defa31d55546926dfd3c51dd314d300550eab4e71a03ece1d9b4baf",
-    "pubDate": "2026-01-26T21:35:00+01:00",
-    "starts_at": "2026-01-26T21:35:00+01:00",
-    "ends_at": "2026-01-26T23:55:00+01:00",
-    "_identity": "wl|störung|L=69A|D=2026-01-26"
+    "guid": "171280fe175191f4b2c1a62b7dc57c3520423e50d712bbc87c62209842a74580",
+    "pubDate": "2026-01-26T22:03:20+01:00",
+    "starts_at": "2026-01-26T22:12:17+01:00",
+    "ends_at": "2026-01-26T23:11:00+01:00",
+    "_identity": "wl|störung|L=40|D=2026-01-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1e687669355f2ef165e274ee1dc721668120a3f488ae695b99053b29ea59dc02",
+    "pubDate": "2026-01-26T22:04:04+01:00",
+    "starts_at": "2026-01-26T22:15:36+01:00",
+    "ends_at": "2026-01-26T23:15:00+01:00",
+    "_identity": "wl|störung|L=41|D=2026-01-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "301864fe661402a234c7e28ce57d515a8b73dbea9b2393b14e61bea5451c769d",
+    "pubDate": "2026-01-26T22:05:11+01:00",
+    "starts_at": "2026-01-26T22:17:41+01:00",
+    "ends_at": "2026-01-26T23:16:00+01:00",
+    "_identity": "wl|störung|L=10A|D=2026-01-26"
   }
 ]
