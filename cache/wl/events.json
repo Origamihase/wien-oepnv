@@ -182,42 +182,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "47B: Fremder Verkehrsunfall",
-    "description": "Die Linie 47 B kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d9bf5cb05ab45962277c495061bd80efb899ef393e3314a543d9bfe4c73326ba",
-    "pubDate": "2026-01-27T16:00:00+01:00",
-    "starts_at": "2026-01-27T16:00:00+01:00",
-    "ends_at": "2026-01-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=47B|D=2026-01-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5092aa3e16264a54729d619c0073938e9a20bc79adf99a5a51f89ef26c9055eb",
-    "pubDate": "2026-01-27T16:35:00+01:00",
-    "starts_at": "2026-01-27T16:35:00+01:00",
-    "ends_at": "2026-01-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=40|D=2026-01-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 41 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8",
-    "pubDate": "2026-01-27T16:35:00+01:00",
-    "starts_at": "2026-01-27T16:35:00+01:00",
-    "ends_at": "2026-01-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=41|D=2026-01-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "42: Rettungseinsatz",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 42 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -226,18 +190,6 @@
     "starts_at": "2026-01-27T16:35:00+01:00",
     "ends_at": "2026-01-27T23:55:00+01:00",
     "_identity": "wl|störung|L=42|D=2026-01-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U/37: Rettungseinsatz Betrieb über Währinger Gürtel u. Li. 37",
-    "description": "Rettungseinsatz Betrieb über Währinger Gürtel u. Li. 37",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5a0c39b376a933cc35a0bb30c5ae93a3d962cdea683e8434af7c1d36c5ec21f4",
-    "pubDate": "2026-01-27T16:40:30+01:00",
-    "starts_at": "2026-01-27T16:40:30+01:00",
-    "ends_at": "2026-01-27T17:39:00+01:00",
-    "_identity": "wl|störung|L=37,U|D=2026-01-27"
   },
   {
     "source": "Wiener Linien",
@@ -278,42 +230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "900385c5f036bbfd87a12af5b22611468f29da18f5d7f9bb676b8330fa354ee1",
-    "pubDate": "2026-01-27T16:55:00+01:00",
-    "starts_at": "2026-01-27T16:55:00+01:00",
-    "ends_at": "2026-01-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-01-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31: Feuerwehreinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 31 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "748a7fd4a5421241f869780aa9f5e1d09e39d012f8769926583ebfb1bf880707",
-    "pubDate": "2026-01-27T16:55:00+01:00",
-    "starts_at": "2026-01-27T16:55:00+01:00",
-    "ends_at": "2026-01-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=31|D=2026-01-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "63A: Verkehrsüberlastung",
-    "description": "Die Linie 63 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8",
-    "pubDate": "2026-01-27T16:55:00+01:00",
-    "starts_at": "2026-01-27T16:55:00+01:00",
-    "ends_at": "2026-01-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=63A|D=2026-01-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Feuerwehreinsatz Betrieb über Li. 5+O",
     "description": "Feuerwehreinsatz Betrieb über Li. 5+O",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -350,18 +266,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Rettungseinsatz Betrieb ab Julius-Raab-Platz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
-    "pubDate": "2026-01-27T17:00:00+01:00",
-    "starts_at": "2026-01-27T17:13:52+01:00",
-    "ends_at": "2026-01-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-01-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Rettungseinsatz Züge halten beim Parlament",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -374,13 +278,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Rettungseinsatz Betrieb ab Julius-Raab-Platz",
+    "description": "Rettungseinsatz Betrieb ab Julius-Raab-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
+    "pubDate": "2026-01-27T17:06:37+01:00",
+    "starts_at": "2026-01-27T17:13:52+01:00",
+    "ends_at": "2026-01-27T18:12:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-01-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "71: Rettungseinsatz Betrieb ab Schwarzenbergplatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
+    "description": "Rettungseinsatz Betrieb ab Schwarzenbergplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c",
-    "pubDate": "2026-01-27T17:00:00+01:00",
+    "pubDate": "2026-01-27T17:09:31+01:00",
     "starts_at": "2026-01-27T17:10:00+01:00",
-    "ends_at": "2026-01-27T23:55:00+01:00",
+    "ends_at": "2026-01-27T18:09:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-01-27"
   },
   {
@@ -394,5 +310,29 @@
     "starts_at": "2026-01-27T17:10:00+01:00",
     "ends_at": "2026-01-27T23:55:00+01:00",
     "_identity": "wl|störung|L=7A|D=2026-01-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "39A: Verkehrsüberlastung",
+    "description": "Die Linie 39 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b74cd55e07015a732b2763d5b9037500b1e34b202c8733ad8e0033dcf79e9f06",
+    "pubDate": "2026-01-27T17:25:00+01:00",
+    "starts_at": "2026-01-27T17:25:00+01:00",
+    "ends_at": "2026-01-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=39A|D=2026-01-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "4A: Rettungseinsatz",
+    "description": "Die Linie 4 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Wittelsbachstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e1d8190e4bc45bff393bd68fe6c8835c135a2d0d02394cd2d5728969881d1559",
+    "pubDate": "2026-01-27T17:30:00+01:00",
+    "starts_at": "2026-01-27T17:30:00+01:00",
+    "ends_at": "2026-01-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=4A|D=2026-01-27"
   }
 ]
