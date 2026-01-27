@@ -182,18 +182,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52: Demonstration",
-    "description": "Derzeit ist ein Betrieb der Linie 52 nicht möglich. Weichen Sie auf die Linien 49, 60, 10 A, 47 A und 51 A aus. Die Störung dauert voraussichtlich bis 21:00 Uhr. Grund dafür ist eine Demonstration im Bereich Linzer Straße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b8eece29c5e925d09b20009b945f4612ebfabd0e7572b07e4720393d661716b3",
-    "pubDate": "2026-01-27T18:35:00+01:00",
-    "starts_at": "2026-01-27T18:35:00+01:00",
-    "ends_at": "2026-01-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=52|D=2026-01-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Fahrtbehinderung wegen Demonstration",
     "description": "Fahrtbehinderung wegen Demonstration",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -202,5 +190,53 @@
     "starts_at": "2026-01-27T19:19:26+01:00",
     "ends_at": "2026-01-27T22:00:00+01:00",
     "_identity": "wl|störung|L=52|D=2026-01-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Demonstration Betrieb ab Hietzing",
+    "description": "Demonstration Betrieb ab Hietzing",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "468f731e8c58233b76d082b83f050de16a168fb658cb55b80cd7abe52438fb44",
+    "pubDate": "2026-01-27T19:47:34+01:00",
+    "starts_at": "2026-01-27T19:47:34+01:00",
+    "ends_at": "2026-01-27T22:00:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-01-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Seestadt.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-01-27T19:50:00+01:00",
+    "starts_at": "2026-01-27T19:50:00+01:00",
+    "ends_at": "2026-01-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2026-01-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Demonstration Betrieb ab Hütteldorfer Str.",
+    "description": "Demonstration Betrieb ab Hütteldorfer Str.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c69b03e471efcd35c4226fdae25f932d57a82169980984d47e7da8df5df37b89",
+    "pubDate": "2026-01-27T19:50:58+01:00",
+    "starts_at": "2026-01-27T19:50:58+01:00",
+    "ends_at": "2026-01-27T22:00:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-01-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Rettungseinsatz",
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Gumpendorfer Straße und Westbahnhof in beiden Richtungen über Gleis 2. Die Störung dauert voraussichtlich bis 20:45 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Gumpendorfer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2026-01-27T20:10:00+01:00",
+    "starts_at": "2026-01-27T20:10:00+01:00",
+    "ends_at": "2026-01-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2026-01-27"
   }
 ]
