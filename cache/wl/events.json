@@ -206,18 +206,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Polizeieinsatz",
-    "description": "Die Linie 59 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Oper, Karlsplatz .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e09339cfb3094980cbafa9341e8d677466ba3d6e478ce1b4da7e352a8c42c4a",
-    "pubDate": "2026-01-28T11:35:00+01:00",
-    "starts_at": "2026-01-28T11:35:00+01:00",
-    "ends_at": "2026-01-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=59A|D=2026-01-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "65A/66A: Fremder Verkehrsunfall",
     "description": "Die Linie 65 A wird in beiden Richtungen zwischen Reumannplatz U und Laxenburger Straße / Troststraße über die Laxenburger Straße umgeleitet. Die Linie 66 A wird in beiden Richtungen zwischen Reumannplatz U und Laxenburger Straße / Troststraße über die Laxenburger Straße umgeleitet. Die Störung dauert voraussichtlich bis 13:00 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Troststraße .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -226,5 +214,53 @@
     "starts_at": "2026-01-28T12:05:00+01:00",
     "ends_at": "2026-01-28T23:55:00+01:00",
     "_identity": "wl|störung|L=65A,66A|D=2026-01-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "51A: Verkehrsunfall",
+    "description": "Die Linie 51 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a18da69c596bb24ccdac07328b4c2f011f90a5ee09c12ab39f48b3174ecfa9d5",
+    "pubDate": "2026-01-28T12:35:00+01:00",
+    "starts_at": "2026-01-28T12:35:00+01:00",
+    "ends_at": "2026-01-28T23:55:00+01:00",
+    "_identity": "wl|störung|L=51A|D=2026-01-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fremder Verkehrsunfall",
+    "description": "Die Linie 71 wird derzeit in beiden Richtungen zwischen Schwarzenbergplatz und St. Marx über Quartier Belvedere umgeleitet. Die Störung dauert voraussichtlich bis 13:20 Uhr. Grund dafür ist ein fremder Verkehrsunfall im Bereich Rennweg 59.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "358388ed9cce33f9f3e1b29e2cd0946d5c73b2e74dc535752c3c8a6b57b85f25",
+    "pubDate": "2026-01-28T12:35:00+01:00",
+    "starts_at": "2026-01-28T12:35:00+01:00",
+    "ends_at": "2026-01-28T23:55:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-01-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fremdunfall Betrieb ab St. Marx",
+    "description": "Fremdunfall Betrieb ab St. Marx",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bf3bd23886676f32fc137744d204c807016f12e7766569b7c858cbb400aef7c9",
+    "pubDate": "2026-01-28T12:42:47+01:00",
+    "starts_at": "2026-01-28T12:42:52+01:00",
+    "ends_at": "2026-01-28T13:42:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-01-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fremdunfall Betrieb ab Schwarzenbergplatz",
+    "description": "Fremdunfall Betrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4414bbdca0d0ddd98f061a6e67d3edd1a9042ebd9562cb2b16c4a6f05b8dd0bd",
+    "pubDate": "2026-01-28T12:43:25+01:00",
+    "starts_at": "2026-01-28T12:43:25+01:00",
+    "ends_at": "2026-01-28T13:42:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-01-28"
   }
 ]
