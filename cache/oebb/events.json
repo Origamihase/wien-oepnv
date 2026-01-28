@@ -2,6 +2,18 @@
   {
     "source": "ÖBB",
     "category": "Störung",
+    "title": "Wien Franz-Josefs-Bf ↔ Wien Heiligenstadt",
+    "description": "14.12.2025 - 03.07.2026\nWegen Bauarbeiten können zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt Bahnhof (U) von 14.12.2025 bis 03.07.2026 (17:00 Uhr) keine S40 und R40 Züge fahren. Als Ersatzbeförderung haben Sie die Möglichkeit, den nächsten fahrplanmäßigen Zug zu nehmen.\nWir bitten um Entschuldigung.\nDetails finden Sie hier...",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&829791",
+    "pubDate": "2026-01-28T10:46:16+01:00",
+    "starts_at": "2026-01-28T10:46:16+01:00",
+    "ends_at": null,
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&829791"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
     "title": "Bauarbeiten ↔ kein Halt in Wien Spittelau",
     "description": "06.03.2026 - 22.06.2026\nWegen Bauarbeiten können\nin Wien Spittelau Bahnhst (U)\nvon 06.03.2026 (04:00 Uhr) bis 22.06.2026 (04:30 Uhr)\nkeine Züge halten.\nFahrgäste mit gültigem Ticket haben die Möglichkeit folgende Alternativverbindungen der WIENER LINIEN zu nutzen:\nU4: zwischen Wien Heiligenstadt Bahnhof (U) und Wien Friedensbrücke (U)\nTram D: zwischen Wien Franz-Josefs-Bahnhof und Wien Nußdorf Bahnhst\nWir bitten um Entschuldigung.\nDetails finden Sie hier...",
     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
@@ -418,17 +430,5 @@
     "starts_at": "2025-11-11T10:28:07+01:00",
     "ends_at": null,
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&830018"
-  },
-  {
-    "source": "ÖBB",
-    "category": "Störung",
-    "title": "Wien Franz-Josefs-Bf ↔ Wien Heiligenstadt",
-    "description": "14.12.2025 - 03.07.2026\nWegen Bauarbeiten können zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt Bahnhof (U) von 14.12.2025 bis 03.07.2026 (17:00 Uhr) keine S40 und R40 Züge fahren. Als Ersatzbeförderung haben Sie die Möglichkeit, den nächsten fahrplanmäßigen Zug zu nehmen.\nWir bitten um Entschuldigung.",
-    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
-    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&829791",
-    "pubDate": "2025-11-10T15:03:38+01:00",
-    "starts_at": "2025-11-10T15:03:38+01:00",
-    "ends_at": null,
-    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&829791"
   }
 ]
