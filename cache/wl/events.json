@@ -206,24 +206,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "57A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a2ac5fae7e3f48a67607975b18dba585c5ef50bbf2cc22863a26b7cf93ff0890",
-    "pubDate": "2026-01-28T08:12:54+01:00",
-    "starts_at": "2026-01-28T08:20:39+01:00",
-    "ends_at": "2026-01-28T09:20:00+01:00",
-    "_identity": "wl|störung|L=57A|D=2026-01-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40A: Fahrtbehinderung Signalstörung",
+    "title": "40A: Signalstörung",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c34553b55ac2078be4ad5d6671a89ecceb79e3183ad99b3598004a7f4c14d1d1",
     "pubDate": "2026-01-28T08:15:00+01:00",
-    "starts_at": "2026-01-28T08:24:12+01:00",
+    "starts_at": "2026-01-28T08:15:00+01:00",
     "ends_at": "2026-01-28T23:55:00+01:00",
     "_identity": "wl|störung|L=40A|D=2026-01-28"
   },
@@ -242,13 +230,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "16A: Verkehrsunfall",
-    "description": "Die Linie 16 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Verkehrsunfall.",
+    "title": "18: Schadhaftes Fahrzeug",
+    "description": "Die Linie 18 fährt derzeit nur zwischen Burggasse, Stadthalle und St. Marx. Alternative: Linien 74 A, 77 A Die Störung dauert voraussichtlich bis 09:40 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Viehmarktgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dccbadcbf12162af2af610ce5d398d1d933ec7a7a29797ac278f17a4bdc47cb6",
-    "pubDate": "2026-01-28T08:35:00+01:00",
-    "starts_at": "2026-01-28T08:35:00+01:00",
+    "guid": "9211cb3d8ce68889c7066532dfb5410be52f492f45bf8c859a2229f0a241d27f",
+    "pubDate": "2026-01-28T09:15:00+01:00",
+    "starts_at": "2026-01-28T09:15:00+01:00",
     "ends_at": "2026-01-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=16A|D=2026-01-28"
+    "_identity": "wl|störung|L=18|D=2026-01-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Schadhafter Zug Betrieb bis St. Marx",
+    "description": "Schadhafter Zug Betrieb bis St. Marx",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f7c8dfba4252f37c62a2bbd27a5ae57c0f7d5522bced4b11baa3fe528442ae6a",
+    "pubDate": "2026-01-28T09:17:33+01:00",
+    "starts_at": "2026-01-28T09:17:50+01:00",
+    "ends_at": "2026-01-28T10:16:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-01-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b5c18c502bca3e563ccf2d3da3d06868790f6d4f4fe3fd3fc1429807b9bed37f",
+    "pubDate": "2026-01-28T09:18:20+01:00",
+    "starts_at": "2026-01-28T09:18:20+01:00",
+    "ends_at": "2026-01-28T10:17:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-01-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Schadhafter Zug Betrieb ab St. Marx",
+    "description": "Schadhafter Zug Betrieb ab St. Marx",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bed32b4be5d344351d9e2d0b3afd0d3f8dd3a94a2d2639472370ec262cea1291",
+    "pubDate": "2026-01-28T09:18:49+01:00",
+    "starts_at": "2026-01-28T09:18:49+01:00",
+    "ends_at": "2026-01-28T10:17:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-01-28"
   }
 ]
