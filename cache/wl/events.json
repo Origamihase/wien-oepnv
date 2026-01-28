@@ -182,13 +182,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Schadhaftes Fahrzeug",
-    "description": "Die Linie 18 fährt derzeit nur zwischen Burggasse, Stadthalle und St. Marx. Alternative: Linien 74 A, 77 A Die Störung dauert voraussichtlich bis 09:40 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Viehmarktgasse.",
+    "title": "13A: Gleisschaden Umleitung über 69A",
+    "description": "Gleisschaden Umleitung über 69 A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9211cb3d8ce68889c7066532dfb5410be52f492f45bf8c859a2229f0a241d27f",
-    "pubDate": "2026-01-28T09:15:00+01:00",
-    "starts_at": "2026-01-28T09:15:00+01:00",
+    "guid": "a20b46492619e91d60711b031fb05376558d5092611f63954256f79d6134986b",
+    "pubDate": "2026-01-28T11:25:25+01:00",
+    "starts_at": "2026-01-28T11:25:25+01:00",
+    "ends_at": "2026-01-28T14:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-01-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Gleisschaden Betrieb ab Kolschitzkygasse",
+    "description": "Gleisschaden Betrieb ab Kolschitzkygasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6dff6fbd132c65fbaa06af9f1357892579beac690687e4970811064a2056600c",
+    "pubDate": "2026-01-28T11:26:23+01:00",
+    "starts_at": "2026-01-28T11:26:23+01:00",
+    "ends_at": "2026-01-28T14:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-01-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Polizeieinsatz",
+    "description": "Die Linie 59 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Polizeieinsatz im Bereich Oper, Karlsplatz .",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2e09339cfb3094980cbafa9341e8d677466ba3d6e478ce1b4da7e352a8c42c4a",
+    "pubDate": "2026-01-28T11:35:00+01:00",
+    "starts_at": "2026-01-28T11:35:00+01:00",
     "ends_at": "2026-01-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=18|D=2026-01-28"
+    "_identity": "wl|störung|L=59A|D=2026-01-28"
   }
 ]
