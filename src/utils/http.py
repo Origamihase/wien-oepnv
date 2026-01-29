@@ -228,8 +228,27 @@ def validate_http_url(
             if not is_ip_safe(ip):
                 return None
         except ValueError:
-            # Not a literal IP address, proceed to DNS check if enabled
-            pass
+            # Not a standard literal IP address
+            # Security Enhancement: If DNS resolution is skipped, we must be stricter.
+            # We reject hostnames that look like obfuscated IPs (integer/hex) or invalid TLDs.
+            if not check_dns:
+                lower_host = hostname.lower()
+                # 1. Check if it looks like a Hex IP (e.g., 0x7f000001)
+                if lower_host.startswith("0x") and re.fullmatch(r"0x[0-9a-f]+", lower_host):
+                    return None
+
+                # 2. Check TLD validity
+                # Valid public TLDs must start with a letter (RFC 1123).
+                # This catches:
+                # - Integer IPs (2130706433 -> TLD "2130706433" starts with digit)
+                # - Dotted Quad IPs (127.0.0.1 -> TLD "1" starts with digit)
+                # - Short numeric (127.1 -> TLD "1" starts with digit)
+                # - Dotted Hex (0x7f.0x1 -> TLD "0x1" starts with digit)
+                labels = lower_host.split(".")
+                if labels:
+                    tld = labels[-1]
+                    if not tld or not tld[0].isalpha():
+                        return None
 
         # Resolve hostname to IPs to prevent DNS rebinding/aliasing to private IPs
         # This now includes a timeout mechanism
