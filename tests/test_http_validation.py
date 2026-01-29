@@ -45,3 +45,35 @@ def test_validate_http_url_ssrf_ips() -> None:
 
     # IPv6 loopback
     assert validate_http_url("http://[::1]") is None
+
+
+def test_validate_http_url_obfuscated_ips_no_dns() -> None:
+    # Integer IP (2130706433 -> 127.0.0.1)
+    assert validate_http_url("http://2130706433", check_dns=False) is None
+
+    # Hex IP (0x7f000001 -> 127.0.0.1)
+    assert validate_http_url("http://0x7f000001", check_dns=False) is None
+
+    # Dotted Hex IP (0x7f.0x0.0x0.0x1 -> 127.0.0.1) - TLD "0x1" starts with digit
+    assert validate_http_url("http://0x7f.0x0.0x0.0x1", check_dns=False) is None
+
+    # Short numeric (127.1 -> 127.0.0.1) - TLD "1" starts with digit
+    assert validate_http_url("http://127.1", check_dns=False) is None
+
+    # Octal/Mixed (0127.0.0.1) - TLD "1" starts with digit
+    assert validate_http_url("http://0127.0.0.1", check_dns=False) is None
+
+    # IP with TLD (rare but possible obfuscation?) - 127.0.0.1.
+    # TLD is empty? "127.0.0.1." split -> "1" is last non-empty?
+    # split(".") for "1." -> ["1", ""]
+    # My code: labels = lower_host.split(".") -> ["127", "0", "0", "1", ""]
+    # labels[-1] is empty. if not tld: return None.
+    # So "http://127.0.0.1." should return None.
+    assert validate_http_url("http://127.0.0.1.", check_dns=False) is None
+
+    # Valid domains should pass
+    assert validate_http_url("http://example.com", check_dns=False) == "http://example.com"
+    assert validate_http_url("http://123.com", check_dns=False) == "http://123.com"
+    assert validate_http_url("http://xn--Example.com", check_dns=False) == "http://xn--Example.com"
+    # IDN Punycode TLD
+    assert validate_http_url("http://example.xn--vermgensberatung-pwb", check_dns=False) == "http://example.xn--vermgensberatung-pwb"
