@@ -207,14 +207,14 @@ def _load_station_sets():
             if entry.get("aliases"):
                 names.update(entry["aliases"])
 
-            # Normalize: lowercase, stripped. Filter out very short unsafe aliases (<2 chars) unless numeric
-            # to avoid false positives (e.g. "Au" in "Aufzug").
+            # Normalize: lowercase, stripped. Filter out very short unsafe aliases (<3 chars) unless numeric
+            # to avoid false positives (e.g. "Au" in "Aufzug", "Sg" matching "SG" for St. Gallen).
             normalized = set()
             for n in names:
                 if not n:
                     continue
                 n_clean = n.strip().lower()
-                if len(n_clean) < 2 and not n_clean.isdigit():
+                if len(n_clean) < 3 and not n_clean.isdigit():
                     continue
                 # Filter generic aliases that would match any station (e.g. "Innsbruck Hbf" matching "Hbf")
                 if n_clean in {"hbf", "bf", "bahnhof", "hauptbahnhof", "station"}:

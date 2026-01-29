@@ -95,3 +95,12 @@ class TestOebbFiltering:
             "Marchegg ↔ Bratislava hl.st.",
             "Wegen Bauarbeiten können zwischen Marchegg Bahnhof und Bratislava hl.st. von 04.05.2026 (07:50 Uhr) bis 08.05.2026 (16:00 Uhr) keine REX8-Züge …[04.05.2026 – 08.05.2026]"
         ) is False
+
+    def test_irrelevant_st_margrethen_sg(self):
+        # Regression test for "Lindau (Bodensee) Reutin ↔ ST. MARGRETHEN SG"
+        # "SG" (St. Gallen) used to match "Sg" (alias for Wien Grillgasse).
+        # We now filter out 2-letter aliases to prevent this.
+        assert _is_relevant(
+            "Lindau (Bodensee) Reutin ↔ ST. MARGRETHEN SG",
+            "Wegen Bauarbeiten der Deutschen Bahn (DB) können zwischen Lindau (Bodensee) Reutin Bahnhof und ST. MARGRETHEN SG..."
+        ) is False
