@@ -27,3 +27,8 @@
 **Vulnerability:** The utility `serialize_for_cache` (used for caching external data) was vulnerable to infinite recursion if passed a data structure with circular references. This could lead to a `RecursionError` and crash the application (Denial of Service). While input currently comes from trusted providers (parsed JSON), future changes or new providers could inadvertently introduce cycles.
 **Learning:** Recursive functions processing generic input must always include cycle detection or depth limits to prevent stack overflows, even if the current data sources are believed to be acyclic.
 **Prevention:** Updated `src/utils/serialize.py` to track visited object IDs during recursion and raise a `ValueError` if a cycle is detected, mirroring the behavior of `json.dumps`.
+
+## 2025-05-26 - Credential Leakage in Redirect Error Messages
+**Vulnerability:** The `_check_redirect_security` function in `src/utils/http.py` validated redirect URLs but, upon finding an unsafe URL (e.g., one with embedded credentials), raised a `ValueError` containing the unsanitized URL. This exposed sensitive credentials (e.g., `https://user:pass@host/...`) in logs and exception traces.
+**Learning:** Exception messages often end up in logs. Including raw inputs (like URLs) in error messages without sanitization can leak sensitive data, even if the application correctly rejects the input.
+**Prevention:** Implemented `_sanitize_url_for_error` in `src/utils/http.py` to strip credentials from URLs before including them in exception messages. Applied this to both redirect checks and DNS rebinding verification.
