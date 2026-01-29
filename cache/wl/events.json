@@ -182,37 +182,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Rettungseinsatz",
-    "description": "Die Linie 74 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Rochusgasse U.",
+    "title": "U6: Verspätungen",
+    "description": "Die Linie U6 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "87cde0ff8f531daad212e230c8873600d36c9a10b0da2554e6fac3c5a24c60e6",
-    "pubDate": "2026-01-29T11:30:00+01:00",
-    "starts_at": "2026-01-29T11:30:00+01:00",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-01-29T13:55:00+01:00",
+    "starts_at": "2026-01-29T13:55:00+01:00",
     "ends_at": "2026-01-29T23:55:00+01:00",
-    "_identity": "wl|störung|L=74A|D=2026-01-29"
+    "_identity": "wl|störung|L=U6|D=2026-01-29"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
-    "pubDate": "2026-01-29T13:30:42+01:00",
-    "starts_at": "2026-01-29T13:30:42+01:00",
-    "ends_at": "2026-01-29T14:30:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2026-01-29"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "57A: Verspätungen",
-    "description": "Die Linie 57 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "77025b4bff4fcf1771f5d3e265e4985d543b6128a5e12e1959409664b6188ae2",
-    "pubDate": "2026-01-29T13:45:00+01:00",
-    "starts_at": "2026-01-29T13:45:00+01:00",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-01-29T14:05:00+01:00",
+    "starts_at": "2026-01-29T14:05:00+01:00",
     "ends_at": "2026-01-29T23:55:00+01:00",
-    "_identity": "wl|störung|L=57A|D=2026-01-29"
+    "_identity": "wl|störung|L=U4|D=2026-01-29"
   }
 ]
