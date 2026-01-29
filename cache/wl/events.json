@@ -178,5 +178,53 @@
     "starts_at": "2026-01-29T04:45:09+01:00",
     "ends_at": "2026-01-30T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-01-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Rettungseinsatz Züge halten bei Li. 18 Richtung Burggasse, Stadthalle U",
+    "description": "Die Linie 6 wird in Richtung Burggasse, Stadthalle zwischen Quellenplatz und Matzleinsdorfer Platz über Hauptbahnhof umgeleitet. Die Störung dauert voraussichtlich bis 08:30 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Neilreichgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
+    "pubDate": "2026-01-29T07:24:44+01:00",
+    "starts_at": "2026-01-29T08:01:07+01:00",
+    "ends_at": "2026-01-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-01-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung Betriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b8bad1cd87782a8999246791842c9d119e2691a680000ae55aff8534cae3e390",
+    "pubDate": "2026-01-29T07:24:44+01:00",
+    "starts_at": "2026-01-29T07:24:44+01:00",
+    "ends_at": "2026-01-29T08:24:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-01-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Die Linie U4 fährt derzeit in der Station Stadtpark in beiden Richtungen über Gleis 1. Die Störung dauert voraussichtlich bis 08:30 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Stadtpark.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-01-29T07:55:00+01:00",
+    "starts_at": "2026-01-29T07:55:00+01:00",
+    "ends_at": "2026-01-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2026-01-29"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27A/60A: Verkehrsüberlastung",
+    "description": "Die Linie 27 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 60 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "780ef9eacdc2d49560bfdf343af4691c67d181370987b3d75ec544b7df3f21ba",
+    "pubDate": "2026-01-29T08:05:00+01:00",
+    "starts_at": "2026-01-29T08:05:00+01:00",
+    "ends_at": "2026-01-29T23:55:00+01:00",
+    "_identity": "wl|störung|L=27A,60A|D=2026-01-29"
   }
 ]
