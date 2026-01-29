@@ -45,11 +45,11 @@ else:  # pragma: no cover - support both package layouts at runtime
     try:
         from utils.ids import make_guid
         from utils.text import html_to_text
-        from utils.stations import canonical_name, station_by_oebb_id
+        from utils.stations import canonical_name, station_by_oebb_id, is_in_vienna
     except ModuleNotFoundError:
         from ..utils.ids import make_guid  # type: ignore
         from ..utils.text import html_to_text  # type: ignore
-        from ..utils.stations import canonical_name, station_by_oebb_id  # type: ignore
+        from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna  # type: ignore
 
     try:
         from utils.http import session_with_retries, validate_http_url, fetch_content_safe
@@ -153,6 +153,10 @@ def _clean_title_keep_places(t: str) -> str:
         canonical_parts.append(canon)
     parts = canonical_parts
     if len(parts) >= 2:
+        # Check ordering: if part[1] is Vienna and part[0] is not, swap
+        if is_in_vienna(parts[1]) and not is_in_vienna(parts[0]):
+             parts[0], parts[1] = parts[1], parts[0]
+
         t = f"{parts[0]} ↔ {parts[1]}"
         if len(parts) > 2:
             rest = " ".join(parts[2:]).strip()
