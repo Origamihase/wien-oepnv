@@ -33,6 +33,21 @@ _DNS_EXECUTOR = ThreadPoolExecutor(max_workers=8, thread_name_prefix="DNS_Resolv
 log = logging.getLogger(__name__)
 
 
+def _sanitize_url_for_error(url: str) -> str:
+    """Strip credentials from URL for safe error logging."""
+    try:
+        parsed = urlparse(url)
+        if parsed.username or parsed.password:
+            # Reconstruct netloc without auth
+            netloc = parsed.hostname or ""
+            if parsed.port:
+                netloc += f":{parsed.port}"
+            return parsed._replace(netloc=netloc).geturl()
+        return url
+    except Exception:
+        return "invalid_url"
+
+
 class TimeoutHTTPAdapter(HTTPAdapter):
     """HTTPAdapter that enforces a default timeout."""
 
@@ -57,7 +72,8 @@ def _check_redirect_security(response: requests.Response, *args: Any, **kwargs: 
             # Join relative URLs
             full_url = requests.compat.urljoin(response.url, next_url)
             if not validate_http_url(full_url):
-                raise ValueError(f"Unsafe redirect to: {full_url}")
+                safe_url = _sanitize_url_for_error(full_url)
+                raise ValueError(f"Unsafe redirect to: {safe_url}")
 
 
 def session_with_retries(
@@ -262,7 +278,8 @@ def verify_response_ip(response: requests.Response) -> None:
             raise
 
         # Robustly get URL or use fallback
-        url = getattr(response, "url", "unknown_url")
+        raw_url = getattr(response, "url", "unknown_url")
+        url = _sanitize_url_for_error(raw_url)
 
         log.warning(
             "Security: Could not verify peer IP for %s (Fail Closed): %s", url, exc
