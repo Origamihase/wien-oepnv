@@ -48,8 +48,8 @@ def test_emit_item_keeps_permalink_guid_when_matching_link(monkeypatch):
     item = {
         "title": "Störung",
         "description": "Details",
-        "link": "https://verkehr.example/störung",
-        "guid": "https://verkehr.example/störung",
+        "link": "https://verkehr.at/störung",
+        "guid": "https://verkehr.at/störung",
     }
 
     _, xml = _emit_item_str(bf, item, now, {})
