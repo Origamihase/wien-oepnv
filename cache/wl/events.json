@@ -194,30 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Verspätungen",
-    "description": "Die Linie 27 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "405ffe0aa2098d8d6d582944507740bd3b2ff950f6553c25606e98f3e6b79d5e",
-    "pubDate": "2026-01-30T05:05:00+01:00",
-    "starts_at": "2026-01-30T05:05:00+01:00",
-    "ends_at": "2026-01-30T23:55:00+01:00",
-    "_identity": "wl|störung|L=27|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Ober St. Veit.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-01-30T05:50:00+01:00",
-    "starts_at": "2026-01-30T05:50:00+01:00",
-    "ends_at": "2026-01-30T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "Test",
     "description": "Test",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -226,5 +202,17 @@
     "starts_at": "2026-01-30T06:17:21+01:00",
     "ends_at": "2026-01-30T07:16:00+01:00",
     "_identity": "wl|störung|L=|D=2026-01-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9A: Verspätungen",
+    "description": "Die Linie 9 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9e3976e9bb5ee545674f34d5b6d143bb76fab0ede012b583b848c10916715046",
+    "pubDate": "2026-01-30T06:40:00+01:00",
+    "starts_at": "2026-01-30T06:40:00+01:00",
+    "ends_at": "2026-01-30T23:55:00+01:00",
+    "_identity": "wl|störung|L=9A|D=2026-01-30"
   }
 ]
