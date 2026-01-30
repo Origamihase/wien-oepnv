@@ -182,49 +182,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Demonstration",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 2 zu unterschiedlichen Intervallen.",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b7aa8ce808ee613c853a94deab827af332e2501d633f6ca1386b975529ae43fb",
-    "pubDate": "2026-01-30T18:00:00+01:00",
-    "starts_at": "2026-01-30T18:00:00+01:00",
-    "ends_at": "2026-01-30T23:55:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung wegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4e2427e61bec98c160f61c806cf29a33a0eeb03e82e5fa7ffabf042a02249147",
-    "pubDate": "2026-01-30T18:10:12+01:00",
-    "starts_at": "2026-01-30T18:10:12+01:00",
-    "ends_at": "2026-01-30T22:52:00+01:00",
-    "_identity": "wl|störung|L=71|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Demonstration Umleitung ab Julius-Raab-Platz zum Karlsplatz",
-    "description": "Demonstration Umleitung ab Julius-Raab-Platz zum Karlsplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
-    "pubDate": "2026-01-30T18:11:05+01:00",
-    "starts_at": "2026-01-30T18:11:24+01:00",
-    "ends_at": "2026-01-30T22:55:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Demonstration Betrieb ab Schwarzenbergplatz",
-    "description": "Demonstration Betrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7b5445a18fe825f2c2505c326e546fd306ae6d46f226760d813ee1afcf1097bc",
-    "pubDate": "2026-01-30T18:15:02+01:00",
-    "starts_at": "2026-01-30T18:15:02+01:00",
-    "ends_at": "2026-01-30T22:52:00+01:00",
-    "_identity": "wl|störung|L=71|D=2026-01-30"
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-01-30T23:00:19+01:00",
+    "starts_at": "2026-01-30T23:00:19+01:00",
+    "ends_at": "2026-01-31T05:30:00+01:00",
+    "_identity": "wl|störung|L=N29|D=2026-01-30"
   }
 ]
