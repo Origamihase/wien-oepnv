@@ -194,30 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Demonstration Betrieb ab Schwarzenbergplatz",
-    "description": "Demonstration Betrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c026b000b202d288cf3bec2c812e718351d4c37b0196152e41c269e70771cadc",
-    "pubDate": "2026-01-30T18:08:45+01:00",
-    "starts_at": "2026-01-30T18:08:45+01:00",
-    "ends_at": "2026-01-30T22:07:00+01:00",
-    "_identity": "wl|störung|L=D|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Betrieb ab Börse",
-    "description": "Demonstration Betrieb ab Börse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d651f21483cd1d9dd9109527a3dd8776f2dd5eb47e34c6e2354a303472fb9d1c",
-    "pubDate": "2026-01-30T18:09:14+01:00",
-    "starts_at": "2026-01-30T18:09:14+01:00",
-    "ends_at": "2026-01-30T22:06:00+01:00",
-    "_identity": "wl|störung|L=D|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "3A: Demonstration Derzeit kein Betrieb!",
     "description": "Demonstration Derzeit kein Betrieb!",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -254,30 +230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Demonstration Betrieb ab Karlsplatz",
-    "description": "Demonstration Betrieb ab Karlsplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "80f528c953544ff0894c73ddead6bf8a4ed141fbfc8757c016f8969ebca33614",
-    "pubDate": "2026-01-30T18:11:10+01:00",
-    "starts_at": "2026-01-30T18:11:10+01:00",
-    "ends_at": "2026-01-30T22:01:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Demonstration Einstieg gegenüber Karlsplatz 2",
-    "description": "Demonstration Einstieg gegenüber Karlsplatz 2",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "62791163e687765645a4285e8c789a87d133fc6a86d916f19ccb986adc3135ab",
-    "pubDate": "2026-01-30T18:11:10+01:00",
-    "starts_at": "2026-01-30T18:11:10+01:00",
-    "ends_at": "2026-01-30T22:01:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Demonstration Betrieb ab Schwarzenbergplatz",
     "description": "Demonstration Betrieb ab Schwarzenbergplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -286,53 +238,5 @@
     "starts_at": "2026-01-30T18:15:02+01:00",
     "ends_at": "2026-01-30T22:52:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Demonstration Betrieb ab Ring, Volkstheater",
-    "description": "Demonstration Betrieb ab Ring, Volkstheater",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "56efdee6d024abacd36240318e62e642b355c434d845f56aebdd91507e6d33a1",
-    "pubDate": "2026-01-30T18:16:58+01:00",
-    "starts_at": "2026-01-30T18:16:58+01:00",
-    "ends_at": "2026-01-30T22:16:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Demonstration Einstieg gegenüber bei Linien 46/49/48A",
-    "description": "Demonstration Einstieg gegenüber bei Linien 46/49/48 A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3b19da43828e8a5a3a15f618d7b315d4d47541551b133fb477488570de06933d",
-    "pubDate": "2026-01-30T18:17:56+01:00",
-    "starts_at": "2026-01-30T18:17:56+01:00",
-    "ends_at": "2026-01-30T22:16:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Demonstration Betrieb ab Rathaus",
-    "description": "Demonstration Betrieb ab Rathaus",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "98f42a4faf66cb3709fbe943de0c4df20021b349c51ce2fea4defc0c8930b4ef",
-    "pubDate": "2026-01-30T18:18:25+01:00",
-    "starts_at": "2026-01-30T18:18:25+01:00",
-    "ends_at": "2026-01-30T22:17:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-01-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Demonstration Betrieb ab Schwedenplatz",
-    "description": "Demonstration Betrieb ab Schwedenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "99497f667984c242f0b49239bc0bc529d80e10510e894e37c252b75583a4b7d3",
-    "pubDate": "2026-01-30T18:19:23+01:00",
-    "starts_at": "2026-01-30T18:19:23+01:00",
-    "ends_at": "2026-01-30T22:18:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-01-30"
   }
 ]
