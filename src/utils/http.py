@@ -107,6 +107,23 @@ _UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f]")
 # Limit URL length to reduce DoS risk from extremely long inputs.
 MAX_URL_LENGTH = 2048
 
+# TLDs that are reserved or commonly used for internal networks.
+# We block these when DNS checks are skipped to prevent leaking internal names
+# or generating invalid links in feeds.
+_UNSAFE_TLDS = {
+    "local",
+    "localhost",
+    "test",
+    "example",
+    "invalid",
+    "lan",
+    "home",
+    "corp",
+    "internal",
+    "intranet",
+    "private",
+}
+
 
 def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
     """Check if an IP address is globally reachable and safe."""
@@ -248,6 +265,9 @@ def validate_http_url(
                 if labels:
                     tld = labels[-1]
                     if not tld or not tld[0].isalpha():
+                        return None
+                    # Security Enhancement: Block reserved/internal TLDs
+                    if tld in _UNSAFE_TLDS:
                         return None
 
         # Resolve hostname to IPs to prevent DNS rebinding/aliasing to private IPs

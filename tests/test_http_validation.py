@@ -77,3 +77,17 @@ def test_validate_http_url_obfuscated_ips_no_dns() -> None:
     assert validate_http_url("http://xn--Example.com", check_dns=False) == "http://xn--Example.com"
     # IDN Punycode TLD
     assert validate_http_url("http://example.xn--vermgensberatung-pwb", check_dns=False) == "http://example.xn--vermgensberatung-pwb"
+
+
+def test_validate_http_url_reserved_tlds() -> None:
+    # These should be blocked even if check_dns=False
+    assert validate_http_url("http://myprinter.local", check_dns=False) is None
+    assert validate_http_url("http://router.lan", check_dns=False) is None
+    assert validate_http_url("http://server.internal", check_dns=False) is None
+    assert validate_http_url("http://test.localhost", check_dns=False) is None
+    assert validate_http_url("http://example.test", check_dns=False) is None
+    assert validate_http_url("http://site.invalid", check_dns=False) is None
+
+    # Case insensitivity check
+    assert validate_http_url("http://ROUTER.LAN", check_dns=False) is None
+    assert validate_http_url("http://MyPrinter.Local", check_dns=False) is None
