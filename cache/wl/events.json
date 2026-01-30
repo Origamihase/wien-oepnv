@@ -13,18 +13,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Bauarbeiten",
-    "description": "Wegen Bauarbeiten kann die Station Tscherttegasse U in Fahrtrichtung Floridsdorf S U nicht eingehalten werden. Um die Station Tscherttegasse U zu erreichen, fahren Sie eine Station weiter bis Bahnhof Meidling S U und steigen dort in einen Zug in die Gegenrichtung um. Die Bauarbeiten dauern bis Ende Jänner 2026.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c8fe425d7242fb213ce8416c7e36d3307750aef3cd584dd26b6b881c88e54d42",
-    "pubDate": "2025-05-12T00:55:00+01:00",
-    "starts_at": "2025-05-12T00:55:00+01:00",
-    "ends_at": "2026-01-30T01:00:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2025-05-12"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "2A: Bauarbeiten Renngasse ab 14.07.2025",
     "description": "Bauarbeiten\nWegen Rohrleitungsarbeiten in der Renngasse wird die Linie 2 A umgeleitet.\nZeitraum:\nMontag, 14. Juli 2025, 06:30 Uhr, Dauer unbekannt.\nMaßnahmen:\nLinie 2 A Richtung Schwarzenbergplatz:\nUmleitung ab Renngasse # Wipplingerstraße über Wipplingerstraße - Helferstorferstraße - Schottengasse - Freyung.\nHaltestelle Renngasse\nVerlegt von: Renngasse 9\nVerlegt nach: Wipplingerstraße 30",
@@ -206,13 +194,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "76A: Rettungseinsatz",
-    "description": "Die Linie 76 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Rettungseinsatz im Bereich Enkplatz U, Grillgasse.",
+    "title": "N20: Nächster Einstieg Konstanziagasse",
+    "description": "Gleisbauarbeiten Nächster Einstieg Konstanziagasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fd550d61d15e362bf18b111cb57e26b29ccb67d347b9aea15a4a0f2d552166b3",
-    "pubDate": "2026-01-30T00:10:00+01:00",
-    "starts_at": "2026-01-30T00:10:00+01:00",
-    "ends_at": "2026-01-30T23:55:00+01:00",
-    "_identity": "wl|störung|L=76A|D=2026-01-30"
+    "guid": "2f04ec316994c34090ef007758275163f67931e599dabc55f5b57614fb83aa75",
+    "pubDate": "2026-01-30T01:00:20+01:00",
+    "starts_at": "2026-01-30T01:00:20+01:00",
+    "ends_at": "2026-01-30T04:30:00+01:00",
+    "_identity": "wl|störung|L=N20|D=2026-01-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Nächster Einstieg Polgarstraße",
+    "description": "Gleisbauarbeiten Nächster Einstieg Polgarstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2916908e9108a74652b817d652f9ca2371e4c5f46ca8279b1cd155ee4efa5b49",
+    "pubDate": "2026-01-30T01:30:19+01:00",
+    "starts_at": "2026-01-30T01:30:19+01:00",
+    "ends_at": "2026-01-30T04:30:00+01:00",
+    "_identity": "wl|störung|L=N20|D=2026-01-30"
   }
 ]
