@@ -29,6 +29,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
 
+      - name: Run static checks
+        run: python scripts/run_static_checks.py
+
       - name: Validate stations
         run: python scripts/validate_stations.py
 
