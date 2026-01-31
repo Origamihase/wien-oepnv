@@ -166,5 +166,29 @@
     "starts_at": "2026-01-31T04:45:17+01:00",
     "ends_at": "2026-02-01T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-01-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Die Linie 5 ist derzeit in Richtung Westbahnhof an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 23:10 Uhr. Grund dafür ist ein Polizeieinsatz im Bereich Am Tabor.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8f92fb936b7c740f0f8bc713737d2ddddc0101ed1972011221685e252f6f06f4",
+    "pubDate": "2026-01-31T22:55:00+01:00",
+    "starts_at": "2026-01-31T23:03:10+01:00",
+    "ends_at": "2026-01-31T23:59:59+01:00",
+    "_identity": "wl|störung|L=5|D=2026-01-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf der Hauptfahrbahn",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-01-31T23:00:16+01:00",
+    "starts_at": "2026-01-31T23:00:16+01:00",
+    "ends_at": "2026-02-01T05:30:00+01:00",
+    "_identity": "wl|störung|L=N29|D=2026-01-31"
   }
 ]
