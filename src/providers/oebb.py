@@ -34,6 +34,7 @@ if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type check
     from ..utils.env import get_bool_env
     from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.ids import make_guid
+    from ..utils.logging import sanitize_log_arg
     from ..utils.stations import canonical_name, station_by_oebb_id
     from ..utils.text import html_to_text
 else:  # pragma: no cover - support both package layouts at runtime
@@ -55,6 +56,12 @@ else:  # pragma: no cover - support both package layouts at runtime
         from utils.http import session_with_retries, validate_http_url, fetch_content_safe
     except ModuleNotFoundError:
         from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
+
+    try:
+        from utils.logging import sanitize_log_arg
+    except ModuleNotFoundError:
+        from ..utils.logging import sanitize_log_arg  # type: ignore
+
 from defusedxml import ElementTree as ET
 
 log = logging.getLogger(__name__)
@@ -341,10 +348,10 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
                 content = fetch_content_safe(s, url, timeout=timeout)
                 return ET.fromstring(content)
             except ValueError as e:
-                log.warning("ÖBB RSS: Content-Limit/Format-Fehler: %s", e)
+                log.warning("ÖBB RSS: Content-Limit/Format-Fehler: %s", sanitize_log_arg(e))
                 return None
             except requests.RequestException as e:
-                log.warning("ÖBB RSS fetch fehlgeschlagen (Versuch %d): %s", attempt + 1, e)
+                log.warning("ÖBB RSS fetch fehlgeschlagen (Versuch %d): %s", attempt + 1, sanitize_log_arg(e))
 
                 wait_seconds = 1.0
                 if e.response is not None and e.response.status_code == 429:
@@ -392,8 +399,7 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
     try:
         root = _fetch_xml(OEBB_URL, timeout=timeout)
     except Exception as e:
-        msg = str(e).replace(OEBB_URL, "***")
-        log.exception("ÖBB RSS abruf fehlgeschlagen: %s", msg)
+        log.exception("ÖBB RSS abruf fehlgeschlagen: %s", sanitize_log_arg(e))
         return []
 
     if root is None:
