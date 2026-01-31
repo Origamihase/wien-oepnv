@@ -440,6 +440,11 @@ def apply_authentication(session: Session) -> None:
       into query parameters automatically.
     """
     refresh_access_credentials()
+
+    # Security check: Warn if sending credentials over plain HTTP
+    if VOR_BASE_URL.lower().startswith("http://") and (VOR_ACCESS_ID or _VOR_AUTHORIZATION_HEADER):
+        _log_warning("Sending VOR credentials over insecure HTTP connection! This is unsafe.")
+
     session.headers.setdefault("Accept", "application/json")
     if _VOR_AUTHORIZATION_HEADER:
         session.headers["Authorization"] = _VOR_AUTHORIZATION_HEADER
