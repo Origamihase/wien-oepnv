@@ -32,3 +32,8 @@
 **Vulnerability:** The `_check_redirect_security` function in `src/utils/http.py` validated redirect URLs but, upon finding an unsafe URL (e.g., one with embedded credentials), raised a `ValueError` containing the unsanitized URL. This exposed sensitive credentials (e.g., `https://user:pass@host/...`) in logs and exception traces.
 **Learning:** Exception messages often end up in logs. Including raw inputs (like URLs) in error messages without sanitization can leak sensitive data, even if the application correctly rejects the input.
 **Prevention:** Implemented `_sanitize_url_for_error` in `src/utils/http.py` to strip credentials from URLs before including them in exception messages. Applied this to both redirect checks and DNS rebinding verification.
+
+## 2025-10-15 - Credential Leakage in URL Parameters
+**Vulnerability:** The VOR provider (`src/providers/vor.py`) was injecting the access token (`accessId`) into query parameters for every request, even when the `Authorization` header was also set. Sending credentials in URL parameters is a security risk (CWE-598) as they can be logged by proxy servers, access logs, and browser history, unlike headers which are typically encrypted in transit (HTTPS) and not logged by default.
+**Learning:** Providing credentials via URL parameters should be avoided even when using HTTPS. If an API supports `Authorization` headers (Basic/Bearer), prefer that method exclusively and suppress the query parameter injection to minimize the attack surface.
+**Prevention:** Updated `src/providers/vor.py` to check for the presence of the `_VOR_AUTHORIZATION_HEADER` and, if present, skip injecting the `accessId` into the query parameters.

@@ -185,8 +185,8 @@ def test_apply_authentication_sets_header(monkeypatch):
     assert session.headers["Authorization"] == "Bearer secret"
 
     response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
-    assert response["params"]["accessId"] == "secret"
-    assert session.calls[0][2]["accessId"] == "secret"
+    assert "accessId" not in response["params"]
+    assert "accessId" not in session.calls[0][2]
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)
@@ -212,8 +212,8 @@ def test_apply_authentication_basic_auth(monkeypatch):
     assert session.headers["Authorization"] == f"Basic {expected}"
 
     response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
-    assert response["params"]["accessId"] == "user:secret"
-    assert session.calls[0][2]["accessId"] == "user:secret"
+    assert "accessId" not in response["params"]
+    assert "accessId" not in session.calls[0][2]
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)
@@ -239,8 +239,8 @@ def test_apply_authentication_basic_with_prefix(monkeypatch):
     assert session.headers["Authorization"] == f"Basic {expected}"
 
     response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
-    assert response["params"]["accessId"] == "user:secret"
-    assert session.calls[0][2]["accessId"] == "user:secret"
+    assert "accessId" not in response["params"]
+    assert "accessId" not in session.calls[0][2]
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)

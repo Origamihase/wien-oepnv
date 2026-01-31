@@ -418,6 +418,11 @@ refresh_access_credentials()
 
 
 def _inject_access_id(params: Any) -> Any:
+    # If we have an authorization header configured, we prefer that and DO NOT inject the query param
+    # to avoid leaking credentials in URL logs.
+    if _VOR_AUTHORIZATION_HEADER:
+        return params
+
     if not VOR_ACCESS_ID:
         return params
     if params is None:
