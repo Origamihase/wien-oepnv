@@ -9,6 +9,7 @@ import os
 import re
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Iterable, List, Optional, Tuple
 from urllib.parse import urlparse
@@ -140,20 +141,22 @@ def _collect_entries(base_url: str) -> List[Tuple[str, str, Optional[str]]]:
 
 
 def _build_xml(entries: Iterable[Tuple[str, str, Optional[str]]]) -> str:
-    lines = [
-        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
-        "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">",
-    ]
+    ET.register_namespace("", "http://www.sitemaps.org/schemas/sitemap/0.9")
+    urlset = ET.Element("{http://www.sitemaps.org/schemas/sitemap/0.9}urlset")
+
     for url, lastmod, changefreq in entries:
-        lines.append("  <url>")
-        lines.append(f"    <loc>{url}</loc>")
-        lines.append(f"    <lastmod>{lastmod}</lastmod>")
+        url_elem = ET.SubElement(urlset, "{http://www.sitemaps.org/schemas/sitemap/0.9}url")
+        ET.SubElement(url_elem, "{http://www.sitemaps.org/schemas/sitemap/0.9}loc").text = url
+        ET.SubElement(url_elem, "{http://www.sitemaps.org/schemas/sitemap/0.9}lastmod").text = lastmod
         if changefreq:
-            lines.append(f"    <changefreq>{changefreq}</changefreq>")
-        lines.append("  </url>")
-    lines.append("</urlset>")
-    lines.append("")
-    return "\n".join(lines)
+            ET.SubElement(url_elem, "{http://www.sitemaps.org/schemas/sitemap/0.9}changefreq").text = changefreq
+
+    if hasattr(ET, "indent"):
+        ET.indent(urlset, space="  ", level=0)
+
+    # Serialize to string with XML declaration
+    xml_str = ET.tostring(urlset, encoding="unicode", xml_declaration=True)
+    return xml_str
 
 
 def main() -> None:

@@ -42,3 +42,8 @@
 **Vulnerability:** While `_sanitize_url_for_error` correctly stripped Basic Auth credentials from URLs, it failed to redact sensitive query parameters (e.g., `accessId`, `token`). If a redirect or network error occurred involving a URL with these parameters, the full URL—including the secret—would be logged in the exception message, bypassing log masking efforts.
 **Learning:** URL sanitization must address all parts of the URL where secrets typically reside, including the query string. Stripping only the "user:pass" section is insufficient when modern APIs often use query parameters for authentication keys.
 **Prevention:** Enhanced `_sanitize_url_for_error` in `src/utils/http.py` to parse query strings and explicitly redact values for known sensitive keys (e.g., `accessId`, `key`, `token`) before logging.
+
+## 2025-01-31 - XML Injection in Sitemap Generation
+**Vulnerability:** `scripts/generate_sitemap.py` constructed XML using string concatenation, allowing invalid XML characters (like `&`) in `SITE_BASE_URL` to break the sitemap structure.
+**Learning:** Even internal helper scripts dealing with "static" sites need proper output encoding if they handle environment variables.
+**Prevention:** Use `xml.etree.ElementTree` or similar libraries for XML generation instead of manual string formatting.
