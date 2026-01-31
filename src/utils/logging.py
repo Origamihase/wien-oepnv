@@ -36,6 +36,16 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
     patterns: List[Tuple[str, str]] = [
         (r"(?i)(accessid%3d)([^&\s]+)", r"\1***"),
         (r"(?i)(accessid=)([^&\s]+)", r"\1***"),
+        (r"(?i)(token%3d)([^&\s]+)", r"\1***"),
+        (r"(?i)(token=)([^&\s]+)", r"\1***"),
+        (r"(?i)(key%3d)([^&\s]+)", r"\1***"),
+        (r"(?i)(key=)([^&\s]+)", r"\1***"),
+        (r"(?i)(apikey%3d)([^&\s]+)", r"\1***"),
+        (r"(?i)(apikey=)([^&\s]+)", r"\1***"),
+        (r"(?i)(password%3d)([^&\s]+)", r"\1***"),
+        (r"(?i)(password=)([^&\s]+)", r"\1***"),
+        (r"(?i)(secret%3d)([^&\s]+)", r"\1***"),
+        (r"(?i)(secret=)([^&\s]+)", r"\1***"),
         # Correctly handle escaped characters in JSON strings (regex: (?:\\.|[^"\\])* )
         (r'(?i)(\"accessId\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (r"(?i)('accessId'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
@@ -46,8 +56,8 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
         (r"(?i)('Authorization'\s*:\s*'Bearer\s+)([^'\s]+)", r"\1***"),
         (r"(?i)('Authorization'\s*:\s*'Basic\s+)([^'\s]+)", r"\1***"),
         # Mask potentially leaked secrets in JSON error messages
-        (r'(?i)(\"secret\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
-        (r"(?i)('secret'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
+        (r'(?i)(\"(?:secret|token|key|apikey|password)\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
+        (r"(?i)('(?:secret|token|key|apikey|password)'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)
