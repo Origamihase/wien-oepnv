@@ -37,3 +37,8 @@
 **Vulnerability:** The VOR provider (`src/providers/vor.py`) was injecting the access token (`accessId`) into query parameters for every request, even when the `Authorization` header was also set. Sending credentials in URL parameters is a security risk (CWE-598) as they can be logged by proxy servers, access logs, and browser history, unlike headers which are typically encrypted in transit (HTTPS) and not logged by default.
 **Learning:** Providing credentials via URL parameters should be avoided even when using HTTPS. If an API supports `Authorization` headers (Basic/Bearer), prefer that method exclusively and suppress the query parameter injection to minimize the attack surface.
 **Prevention:** Updated `src/providers/vor.py` to check for the presence of the `_VOR_AUTHORIZATION_HEADER` and, if present, skip injecting the `accessId` into the query parameters.
+
+## 2025-10-16 - Sensitive Query Parameters Leaking in Error Logs
+**Vulnerability:** While `_sanitize_url_for_error` correctly stripped Basic Auth credentials from URLs, it failed to redact sensitive query parameters (e.g., `accessId`, `token`). If a redirect or network error occurred involving a URL with these parameters, the full URL—including the secret—would be logged in the exception message, bypassing log masking efforts.
+**Learning:** URL sanitization must address all parts of the URL where secrets typically reside, including the query string. Stripping only the "user:pass" section is insufficient when modern APIs often use query parameters for authentication keys.
+**Prevention:** Enhanced `_sanitize_url_for_error` in `src/utils/http.py` to parse query strings and explicitly redact values for known sensitive keys (e.g., `accessId`, `key`, `token`) before logging.

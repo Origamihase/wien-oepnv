@@ -8,7 +8,7 @@ import re
 import socket
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
 from typing import Any, Container
-from urllib.parse import urlparse
+from urllib.parse import parse_qsl, urlencode, urlparse
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -32,18 +32,47 @@ _DNS_EXECUTOR = ThreadPoolExecutor(max_workers=8, thread_name_prefix="DNS_Resolv
 
 log = logging.getLogger(__name__)
 
+# Keys in query parameters that should be redacted in logs
+_SENSITIVE_QUERY_KEYS = frozenset({
+    "accessid",
+    "token",
+    "key",
+    "apikey",
+    "password",
+    "secret",
+    "authorization",
+    "auth",
+    "client_secret",
+})
+
 
 def _sanitize_url_for_error(url: str) -> str:
-    """Strip credentials from URL for safe error logging."""
+    """Strip credentials and sensitive query params from URL for safe error logging."""
     try:
         parsed = urlparse(url)
+
+        # 1. Strip basic auth credentials
         if parsed.username or parsed.password:
             # Reconstruct netloc without auth
             netloc = parsed.hostname or ""
             if parsed.port:
                 netloc += f":{parsed.port}"
-            return parsed._replace(netloc=netloc).geturl()
-        return url
+            parsed = parsed._replace(netloc=netloc)
+
+        # 2. Redact sensitive query parameters
+        if parsed.query:
+            query_params = parse_qsl(parsed.query, keep_blank_values=True)
+            new_params = []
+            for key, value in query_params:
+                if key.lower() in _SENSITIVE_QUERY_KEYS:
+                    new_params.append((key, "***"))
+                else:
+                    new_params.append((key, value))
+
+            new_query = urlencode(new_params)
+            parsed = parsed._replace(query=new_query)
+
+        return parsed.geturl()
     except Exception:
         return "invalid_url"
 
