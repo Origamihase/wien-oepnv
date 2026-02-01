@@ -24,5 +24,5 @@ def test_sanitize_log_message_new_keys():
 
 def test_sanitize_log_message_existing_functionality():
     # Ensure regressions are not introduced
-    assert sanitize_log_message("Authorization: Bearer SECRET") == "Authorization: Bearer ***"
+    assert sanitize_log_message("Authorization: Bearer SECRET") == "Authorization: ***"
     assert sanitize_log_message("accessId=12345") == "accessId=***"

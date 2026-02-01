@@ -35,7 +35,8 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
     # Keys that should be redacted (regex alternation, longest match first)
     _keys = (
         r"client_secret|access_token|refresh_token|client_id|signature|password|"
-        r"accessid|id_token|session|apikey|secret|ticket|token|code|key|sig|sid"
+        r"accessid|id_token|session|apikey|secret|ticket|token|code|key|sig|sid|"
+        r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid"
     )
 
     # Common patterns for secrets in URLs/Headers
@@ -45,12 +46,14 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
         # Correctly handle escaped characters in JSON strings (regex: (?:\\.|[^"\\])* )
         (r'(?i)(\"accessId\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (r"(?i)('accessId'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
-        (r"(?i)(Authorization:\s*Bearer\s+)(\S+)", r"\1***"),
-        (r"(?i)(Authorization:\s*Basic\s+)(\S+)", r"\1***"),
-        (r"(?i)(\"Authorization\"\s*:\s*\"Bearer\s+)([^\"\s]+)", r"\1***"),
-        (r"(?i)(\"Authorization\"\s*:\s*\"Basic\s+)([^\"\s]+)", r"\1***"),
-        (r"(?i)('Authorization'\s*:\s*'Bearer\s+)([^'\s]+)", r"\1***"),
-        (r"(?i)('Authorization'\s*:\s*'Basic\s+)([^'\s]+)", r"\1***"),
+        # Generic Authorization header (covers Bearer, Basic, and custom schemes)
+        (r"(?i)(Authorization:\s*)([^\n\r]+)", r"\1***"),
+        (r'(?i)(\"Authorization\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
+        (r"(?i)('Authorization'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
+        # Cookie and Set-Cookie headers
+        (r"(?i)((?:Set-)?Cookie:\s*)([^\n\r]+)", r"\1***"),
+        (r'(?i)(\"(?:Set-)?Cookie\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
+        (r"(?i)('(?:Set-)?Cookie'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
         # Mask potentially leaked secrets in JSON error messages
         (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),

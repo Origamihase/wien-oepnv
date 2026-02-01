@@ -15,10 +15,10 @@ import src.providers.vor as vor
         ("boom {'accessId': 'secret'}", "'accessId': '***'"),
         ('boom "accessId":"secret"', '"accessId":"***"'),
         ("boom accessId%3Dsecret&foo", "accessId%3D***"),
-        ("boom Authorization: Bearer secret", "Authorization: Bearer ***"),
-        ('boom {"Authorization": "Bearer secret"}', '"Authorization": "Bearer ***"'),
-        ("boom Authorization: Basic secret", "Authorization: Basic ***"),
-        ('boom {"Authorization": "Basic secret"}', '"Authorization": "Basic ***"'),
+        ("boom Authorization: Bearer secret", "Authorization: ***"),
+        ('boom {"Authorization": "Bearer secret"}', '"Authorization": "***"'),
+        ("boom Authorization: Basic secret", "Authorization: ***"),
+        ('boom {"Authorization": "Basic secret"}', '"Authorization": "***"'),
     ],
 )
 def test_accessid_not_logged(monkeypatch, caplog, raw_message, expected_fragment):
