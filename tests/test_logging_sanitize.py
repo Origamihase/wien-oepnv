@@ -26,3 +26,21 @@ def test_sanitize_log_message_existing_functionality():
     # Ensure regressions are not introduced
     assert sanitize_log_message("Authorization: Bearer SECRET") == "Authorization: ***"
     assert sanitize_log_message("accessId=12345") == "accessId=***"
+
+def test_sanitize_log_message_enhanced_keys():
+    # Verify that new keys are redacted in query parameters
+    test_cases = [
+        ("https://example.com?bearer_token=SECRET123", "https://example.com?bearer_token=***"),
+        ("https://example.com?api_key=SECRET123", "https://example.com?api_key=***"),
+        ("https://example.com?auth_token=SECRET123", "https://example.com?auth_token=***"),
+        ("https://example.com?authorization=SECRET123", "https://example.com?authorization=***"),
+        ("https://example.com?auth=SECRET123", "https://example.com?auth=***"),
+    ]
+
+    for input_str, expected in test_cases:
+        sanitized = sanitize_log_message(input_str)
+        assert "***" in sanitized, f"Secret not masked in '{input_str}'"
+        assert "SECRET123" not in sanitized, f"Secret leaked in '{input_str}'"
+        # Check that the key itself is preserved (the part before =)
+        key = input_str.split("=")[0].split("?")[1]
+        assert key in sanitized
