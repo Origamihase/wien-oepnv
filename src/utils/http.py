@@ -53,6 +53,14 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "session",
     "sid",
     "ticket",
+    # Additional common sensitive keys
+    "bearer_token",
+    "api_key",
+    "auth_token",
+    "jsessionid",
+    "phpsessid",
+    "asp.net_sessionid",
+    "__cfduid",
 })
 
 

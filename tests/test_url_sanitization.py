@@ -35,3 +35,24 @@ def test_sanitize_url_malformed():
     url = "http://["
     sanitized = _sanitize_url_for_error(url)
     assert sanitized == "invalid_url"
+
+def test_sanitize_url_enhanced_keys():
+    # Verify that new keys are redacted
+    # jsessionid is case-insensitive in check
+    url = "https://example.com/api?jsessionid=SECRET&auth_token=TOKEN123&api_key=KEY456"
+    sanitized = _sanitize_url_for_error(url)
+    assert "SECRET" not in sanitized
+    assert "TOKEN123" not in sanitized
+    assert "KEY456" not in sanitized
+    # urlencode encodes '*' as '%2A'
+    assert "jsessionid=%2A%2A%2A" in sanitized or "jsessionid=***" in sanitized
+    assert "auth_token=%2A%2A%2A" in sanitized or "auth_token=***" in sanitized
+    assert "api_key=%2A%2A%2A" in sanitized or "api_key=***" in sanitized
+
+    # Check asp.net_sessionid
+    url2 = "https://example.com/api?asp.net_sessionid=SESS&bearer_token=BEARER"
+    sanitized2 = _sanitize_url_for_error(url2)
+    assert "SESS" not in sanitized2
+    assert "BEARER" not in sanitized2
+    assert "asp.net_sessionid=%2A%2A%2A" in sanitized2 or "asp.net_sessionid=***" in sanitized2
+    assert "bearer_token=%2A%2A%2A" in sanitized2 or "bearer_token=***" in sanitized2
