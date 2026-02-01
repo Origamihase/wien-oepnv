@@ -208,6 +208,9 @@ def _load_station_sets():
         with open(data_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
+        if isinstance(data, dict):
+            data = data.get("stations", [])
+
         for entry in data:
             is_vienna = entry.get("in_vienna", False)
             names = set()

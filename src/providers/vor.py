@@ -1012,7 +1012,6 @@ def _fetch_departure_board_for_station(
     params = {
         "format": "json",
         "id": station_id,
-        # "type": "stop" is usually implied for departureBoard
     }
 
     # Mandatory Access ID as Query Param
