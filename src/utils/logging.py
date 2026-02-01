@@ -36,7 +36,8 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
     _keys = (
         r"client_secret|access_token|refresh_token|client_id|signature|password|"
         r"accessid|id_token|session|apikey|secret|ticket|token|code|key|sig|sid|"
-        r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid"
+        r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid|"
+        r"authorization|auth|bearer_token|api_key|auth_token"
     )
 
     # Common patterns for secrets in URLs/Headers
