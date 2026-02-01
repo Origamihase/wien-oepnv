@@ -181,26 +181,14 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 25 zu unterschiedlichen Intervallen.",
+    "category": "Hinweis",
+    "title": "1/2/37/38/40/41/42/71/D: Demonstration am 28.01.2026",
+    "description": "Demonstration\nWegen einer Demonstration im Bereich Innenstadt und Alsergrund kommt es zu Verkehrsmaßnahmen.\nZeitraum:\nMittwoch, 28. Jänner 2026, von etwa 18:00 Uhr bis 20:00 Uhr\nMaßnahmen:\nLinie D\nUmleitung in beiden Richtungen\nzwischen Schwarzenbergplatz und Börse\nüber Schwedenplatz U.\nLinie 1\nKein Betrieb zwischen Börse und Karlsplatz U.\nDie Züge Richtung Stefan-Fadinger-Platz fahren bis zur Börse, wenden dort, kehren zurück zum Julius-Raab-Platz und fahren über die Strecke der Linie 2, den Schwarzenbergplatz und die Lothringerstraße zur Haltestelle Resselgasse (Zustieg am Karlsplatz möglich).\nIn Richtung Prater Hauptallee werden die Züge direkt zwischen Karlsplatz und Julius-Raab-Platz über die Lothringerstraße, den Schwarzenbergplatz und die Linie 2 umgeleitet.\nSomit kein Betrieb zwischen Karlsplatz und Börse, Fahrgäste ab Börse mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen.\nLinie 2\nkein Betrieb zwischen Ring, Volkstheater und Schwarzenbergplatz.\nLinien 37 und 38\nKein Betrieb zwischen\nSchottentor U und Nußdorfer Straße U.\nLinien 40, 41 und 42\nKein Betrieb zwischen\nSchottentor U und Währinger Straße, Volksoper U-\nLinie 71\nBetrieb nur zwischen Kaiserebersdorf, Zinnergasse und Schwarzenbergplatz.\nWeiteres:\nBeachten Sie bitte, dass die genannten Verkehrsmaßnahmen nicht alle gleichzeitig auftreten müssen. Je nach Fortschritt der Demonstration und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf www.wienerlinien.at.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e43336cf67dfb3619172d7f6091d3dbfc7dce1fdb9c417a9a3531c896ad90bcb",
-    "pubDate": "2026-02-01T10:50:00+01:00",
-    "starts_at": "2026-02-01T10:50:00+01:00",
-    "ends_at": "2026-02-01T23:55:00+01:00",
-    "_identity": "wl|störung|L=25|D=2026-02-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Fahrtbehinderung Betriebsstörung",
-    "description": "Fahrtbehinderung Betriebsstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2693128595b7c315bbb765f3e1c9103f842d4cc07e44a34961e1dda92e9ed425",
-    "pubDate": "2026-02-01T10:57:28+01:00",
-    "starts_at": "2026-02-01T10:57:28+01:00",
-    "ends_at": "2026-02-01T11:56:00+01:00",
-    "_identity": "wl|störung|L=25|D=2026-02-01"
+    "guid": "ebed4c3be9eaf14b2e173c5d4a172810c46859308595bace1f000fc450751e72",
+    "pubDate": "2026-02-01T12:00:00+01:00",
+    "starts_at": "2026-02-01T12:00:00+01:00",
+    "ends_at": "2026-02-01T15:00:00+01:00",
+    "_identity": "wl|hinweis|L=1,2,37,38,40,41,42,71,D|D=2026-02-01"
   }
 ]
