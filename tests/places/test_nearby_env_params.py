@@ -7,6 +7,7 @@ import os
 from contextlib import contextmanager
 from types import ModuleType
 from typing import Any, Dict, Iterator
+from unittest.mock import MagicMock
 
 from src.places.tiling import Tile
 
@@ -17,9 +18,25 @@ class _DummyResponse:
     def __init__(self) -> None:
         self.status_code = 200
         self.text = "{}"
+        self.headers: Dict[str, str] = {}
+        self.raw = MagicMock()
+        # Use a public IP to pass verify_response_ip
+        self.raw.connection.sock.getpeername.return_value = ("8.8.8.8", 443)
 
     def json(self) -> Dict[str, Any]:
         return {"places": []}
+
+    def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
+        yield b"{}"
+
+    def close(self) -> None:
+        pass
+
+    def __enter__(self) -> _DummyResponse:
+        return self
+
+    def __exit__(self, *args: Any) -> None:
+        pass
 
 
 class _RecordingSession:
@@ -34,6 +51,7 @@ class _RecordingSession:
         headers: Dict[str, str],
         json: Dict[str, Any],
         timeout: float,
+        **kwargs: Any,
     ) -> _DummyResponse:
         self.calls += 1
         self.last_json = json

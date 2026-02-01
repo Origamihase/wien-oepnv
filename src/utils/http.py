@@ -397,6 +397,33 @@ def verify_response_ip(response: requests.Response) -> None:
         ) from exc
 
 
+def read_response_safe(
+    response: requests.Response, max_bytes: int = 10 * 1024 * 1024
+) -> bytes:
+    """Read response content safely, enforcing size limits.
+
+    Args:
+        response: The requests Response object (must be opened with stream=True).
+        max_bytes: Maximum allowed size in bytes.
+
+    Raises:
+        ValueError: If Content-Length or actual size exceeds max_bytes.
+    """
+    # Check Content-Length header if present
+    content_length = response.headers.get("Content-Length")
+    if content_length and int(content_length) > max_bytes:
+        raise ValueError(f"Content-Length exceeds {max_bytes} bytes")
+
+    chunks = []
+    received = 0
+    for chunk in response.iter_content(chunk_size=8192):
+        chunks.append(chunk)
+        received += len(chunk)
+        if received > max_bytes:
+            raise ValueError(f"Response too large (> {max_bytes} bytes)")
+    return b"".join(chunks)
+
+
 def fetch_content_safe(
     session: requests.Session,
     url: str,
@@ -429,16 +456,4 @@ def fetch_content_safe(
         # Prevent DNS Rebinding: Check the actual connected IP
         verify_response_ip(r)
 
-        # Check Content-Length header if present
-        content_length = r.headers.get("Content-Length")
-        if content_length and int(content_length) > max_bytes:
-            raise ValueError(f"Content-Length exceeds {max_bytes} bytes")
-
-        chunks = []
-        received = 0
-        for chunk in r.iter_content(chunk_size=8192):
-            chunks.append(chunk)
-            received += len(chunk)
-            if received > max_bytes:
-                raise ValueError(f"Response too large (> {max_bytes} bytes)")
-        return b"".join(chunks)
+        return read_response_safe(r, max_bytes)

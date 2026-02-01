@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Dict
+from typing import Any, Dict, Iterator
+from unittest.mock import MagicMock
 
 import pytest
 
@@ -15,9 +16,24 @@ class _ErrorResponse:
         self.status_code = status_code
         self._payload = payload
         self.text = json.dumps(payload)
+        self.headers: Dict[str, str] = {}
+        self.raw = MagicMock()
+        self.raw.connection.sock.getpeername.return_value = ("8.8.8.8", 443)
 
     def json(self) -> Dict[str, Any]:
         return self._payload
+
+    def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
+        yield self.text.encode("utf-8")
+
+    def close(self) -> None:
+        pass
+
+    def __enter__(self) -> _ErrorResponse:
+        return self
+
+    def __exit__(self, *args: Any) -> None:
+        pass
 
 
 class _ErrorSession:
@@ -31,6 +47,7 @@ class _ErrorSession:
         headers: Dict[str, str],
         json: Dict[str, Any],
         timeout: float,
+        **kwargs: Any,
     ) -> _ErrorResponse:
         return self._response
 
@@ -39,9 +56,24 @@ class _TextErrorResponse:
     def __init__(self, status_code: int, text: str):
         self.status_code = status_code
         self.text = text
+        self.headers: Dict[str, str] = {}
+        self.raw = MagicMock()
+        self.raw.connection.sock.getpeername.return_value = ("8.8.8.8", 443)
 
     def json(self) -> Dict[str, Any]:
         raise ValueError("invalid json")
+
+    def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
+        yield self.text.encode("utf-8")
+
+    def close(self) -> None:
+        pass
+
+    def __enter__(self) -> _TextErrorResponse:
+        return self
+
+    def __exit__(self, *args: Any) -> None:
+        pass
 
 
 def test_bad_request_error_includes_field_violations() -> None:
