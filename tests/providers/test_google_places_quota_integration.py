@@ -45,6 +45,7 @@ class DummySession:
         self.calls: List[dict] = []
         self.headers: dict = {}
         self.hooks: dict = {"response": []}
+        self.trust_env: bool = True
 
     def mount(self, prefix: str, adapter: object) -> None:
         pass
