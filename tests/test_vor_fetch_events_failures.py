@@ -13,6 +13,8 @@ def _today_vienna_iso() -> str:
 def _reset_station_ids(monkeypatch):
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "token")
     monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token", raising=False)
+    # Clear the whitelist to force usage of VOR_STATION_IDS
+    monkeypatch.setenv("VOR_MONITOR_STATIONS_WHITELIST", "")
     monkeypatch.setattr(vor, "VOR_STATION_IDS", ["430470800", "490091000"])
     monkeypatch.setattr(vor, "MAX_STATIONS_PER_RUN", 2)
     monkeypatch.setattr(vor, "ROTATION_INTERVAL_SEC", 60)
