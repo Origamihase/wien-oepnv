@@ -26,7 +26,6 @@ warn_return_any = false
 show_error_codes = true
 pretty = true
 ignore_missing_imports = true
-mypy_path = ["src"]
 explicit_package_bases = false
 files = ["src"]
 disable_error_code = ["import-untyped"]

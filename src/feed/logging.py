@@ -24,7 +24,7 @@ except ModuleNotFoundError:  # pragma: no cover
 try:
     from .logging_safe import SafeFormatter, SafeJSONFormatter, _make_formatter
 except ImportError:
-    from feed.logging_safe import SafeFormatter, SafeJSONFormatter, _make_formatter
+    from feed.logging_safe import SafeFormatter, SafeJSONFormatter, _make_formatter  # type: ignore[no-redef]
 
 LOG_DIR = LOG_DIR_PATH.as_posix()
 error_log_path = Path(LOG_DIR) / "errors.log"

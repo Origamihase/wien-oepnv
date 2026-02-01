@@ -52,10 +52,8 @@ def main() -> int:
     exit_code = _run(ruff_command)
 
     if exit_code == 0:
-        # Mypy is currently encountering configuration issues (duplicate modules).
-        # We skip it for now to ensure security checks (bandit, pip-audit) are run.
-        # exit_code = _run(["mypy"])
-        pass
+        # Mypy is configured via pyproject.toml
+        exit_code = _run(["mypy"])
 
     if exit_code == 0:
         # Run bandit security check
