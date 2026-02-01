@@ -151,7 +151,12 @@ _UNSAFE_TLDS = {
     "internal",
     "intranet",
     "private",
+    "onion",  # Tor Hidden Services
+    "i2p",    # Invisible Internet Project
 }
+
+# Explicitly block Shared Address Space (RFC 6598) 100.64.0.0/10 which is often used for CGNAT/internal carrier networks.
+_SHARED_ADDRESS_SPACE = ipaddress.IPv4Network("100.64.0.0/10")
 
 
 def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
@@ -163,6 +168,10 @@ def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> 
         else:
             ip = ip_addr
 
+        # Block unspecified addresses (0.0.0.0, ::)
+        if ip.is_unspecified:
+            return False
+
         # Ensure the IP is globally reachable (excludes private, loopback, link-local, reserved)
         # We also explicitly block multicast, as is_global can be True for multicast in some versions/contexts
         if not ip.is_global or ip.is_multicast:
@@ -171,6 +180,11 @@ def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> 
         # We explicitly block is_site_local (deprecated fec0::/10) because is_global returns True for them in some python versions.
         # This attribute only exists on IPv6Address.
         if getattr(ip, "is_site_local", False):
+            return False
+
+        # Explicitly block Shared Address Space (CGNAT) 100.64.0.0/10
+        # is_global behavior varies by python version for this range
+        if ip.version == 4 and ip in _SHARED_ADDRESS_SPACE:
             return False
 
         return True

@@ -88,6 +88,21 @@ def test_validate_http_url_reserved_tlds() -> None:
     assert validate_http_url("http://example.test", check_dns=False) is None
     assert validate_http_url("http://site.invalid", check_dns=False) is None
 
+    # Tor and I2P should be blocked
+    assert validate_http_url("http://example.onion", check_dns=False) is None
+    assert validate_http_url("http://example.i2p", check_dns=False) is None
+
     # Case insensitivity check
     assert validate_http_url("http://ROUTER.LAN", check_dns=False) is None
     assert validate_http_url("http://MyPrinter.Local", check_dns=False) is None
+    assert validate_http_url("http://Hidden.Onion", check_dns=False) is None
+
+
+def test_validate_http_url_shared_address_space() -> None:
+    # 100.64.0.0/10 (CGNAT) should be rejected
+    assert validate_http_url("http://100.64.0.1", check_dns=False) is None
+    assert validate_http_url("http://100.127.255.255", check_dns=False) is None
+    # 0.0.0.0 should be rejected
+    assert validate_http_url("http://0.0.0.0", check_dns=False) is None
+    # :: should be rejected
+    assert validate_http_url("http://[::]", check_dns=False) is None
