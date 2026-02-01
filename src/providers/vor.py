@@ -596,57 +596,57 @@ def _extract_lines(message: Mapping[str, Any]) -> List[str]:
 
 
 def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
-    # Traffic Info (HIM) typically uses 'trafficInfos' or 'himMessages'
-    if "trafficInfos" in payload:
-        traffic_container = payload["trafficInfos"]
-        if isinstance(traffic_container, list):
-            for entry in traffic_container:
-                yield entry
-            return
-        elif isinstance(traffic_container, Mapping):
-            yield traffic_container
-            return
+    # 1. New generic keys (warnings, infos, himMessages) at root or inside DepartureBoard
+    roots = [payload]
+    if "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
+        roots.append(payload["DepartureBoard"])
 
-    # Fallback to legacy board structure if needed
+    for root in roots:
+        for key in ["warnings", "infos", "himMessages", "trafficInfos"]:
+            if key in root:
+                candidate_container = root[key]
+                if isinstance(candidate_container, list):
+                    for entry in candidate_container:
+                        if isinstance(entry, Mapping):
+                            yield entry
+                elif isinstance(candidate_container, Mapping):
+                    yield candidate_container
+
+    # 2. Legacy/Specific Board Structure (messages object)
     container: Any = payload
-    if isinstance(payload, Mapping):
-        board = payload.get("DepartureBoard")
-        if isinstance(board, Mapping):
-            container = board
+    if "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
+        container = payload["DepartureBoard"]
+
     if isinstance(container, Mapping):
+        # Explicit "Message" or "messages"
         possible_messages = []
         for key, value in container.items():
             if key.lower() == "messages":
                 possible_messages.append(value)
+        if "Message" in container:
+            possible_messages.append(container["Message"])
+
         for value in possible_messages:
-            if isinstance(value, Mapping) and "Message" in value:
-                value = value["Message"]
+            iterable = []
             if isinstance(value, list):
                 iterable = value
             elif isinstance(value, Mapping):
-                iterable = [value]
-            else:
-                iterable = []
+                # Sometimes it's { "Message": ... } nested?
+                if "Message" in value:
+                    sub = value["Message"]
+                    if isinstance(sub, list):
+                        iterable = sub
+                    elif isinstance(sub, Mapping):
+                        iterable = [sub]
+                else:
+                    iterable = [value]
+
             for entry in iterable:
                 if isinstance(entry, Mapping):
                     act = str(entry.get("act", "true")).strip().lower()
                     if act in {"0", "false", "nein", "no"}:
                         continue
                     yield entry
-            return
-    if isinstance(container, Mapping):
-        entry = container.get("Message")
-        if isinstance(entry, list):
-            for candidate in entry:
-                if isinstance(candidate, Mapping):
-                    act = str(candidate.get("act", "true")).strip().lower()
-                    if act in {"0", "false", "nein", "no"}:
-                        continue
-                    yield candidate
-        elif isinstance(entry, Mapping):
-            act = str(entry.get("act", "true")).strip().lower()
-            if act not in {"0", "false", "nein", "no"}:
-                yield entry
 
 
 def _parse_dt(date_str: Any, time_str: Any) -> datetime | None:
@@ -1000,29 +1000,26 @@ def _handle_retry_after(response: requests.Response) -> None:
     time.sleep(delay)
 
 
-def _fetch_traffic_info(
+def _fetch_departure_board_for_station(
     station_id: str, now_local: datetime
 ) -> Mapping[str, Any] | None:
     """
-    Fetch Traffic Info (Disruptions/HIM) for a specific station.
+    Fetch Departure Board for a specific station and extract disruptions.
 
-    Uses the /trafficInfo endpoint.
+    Uses the /departureBoard endpoint.
     Passes accessId as a query parameter (mandatory).
-    Filters results for the station.
     """
     params = {
         "format": "json",
-        "name": station_id,
-        "type": "stop",  # Assuming generic stop query if name is ID, or might need "stopId"
-        # Often trafficInfo/himsearch takes "station" or "stop" or "name".
-        # We try "name" as it's often the most versatile search param in HAFAS.
+        "id": station_id,
+        # "type": "stop" is usually implied for departureBoard
     }
 
     # Mandatory Access ID as Query Param
     if VOR_ACCESS_ID:
         params["accessId"] = VOR_ACCESS_ID
 
-    endpoint = f"{VOR_BASE_URL}trafficInfo"
+    endpoint = f"{VOR_BASE_URL}departureBoard"
 
     try:
         with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
@@ -1031,7 +1028,7 @@ def _fetch_traffic_info(
             for attempt in range(attempts):
                 try:
                     # Logging request details (masked)
-                    log.info(f"Requesting VOR Traffic Info for {station_id}...")
+                    log.info(f"Requesting VOR DepartureBoard for {station_id}...")
 
                     content = fetch_content_safe(
                         session,
@@ -1049,7 +1046,7 @@ def _fetch_traffic_info(
                 except ValueError as exc:
                     save_request_count(now_local)
                     _log_warning(
-                        "VOR TrafficInfo %s ungültig/zu groß: %s", station_id, exc
+                        "VOR DepartureBoard %s ungültig/zu groß: %s", station_id, exc
                     )
                     return None
 
@@ -1058,7 +1055,7 @@ def _fetch_traffic_info(
                     response = exc.response
                     if response is not None:
                         _log_warning(
-                            "VOR TrafficInfo %s -> HTTP %s",
+                            "VOR DepartureBoard %s -> HTTP %s",
                             station_id,
                             response.status_code,
                         )
@@ -1072,7 +1069,7 @@ def _fetch_traffic_info(
 
                     if attempt >= attempts - 1:
                         _log_error(
-                            "VOR TrafficInfo %s fehlgeschlagen: %s", station_id, exc
+                            "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
                         )
                         return None
                     continue
@@ -1081,22 +1078,21 @@ def _fetch_traffic_info(
                     save_request_count(now_local)
                     if attempt >= attempts - 1:
                         _log_error(
-                            "VOR TrafficInfo %s fehlgeschlagen: %s", station_id, exc
+                            "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
                         )
                         return None
                     continue
 
             return None
     except RequestException as exc:
-        _log_error("VOR TrafficInfo %s Ausnahme: %s", station_id, exc)
+        _log_error("VOR DepartureBoard %s Ausnahme: %s", station_id, exc)
         return None
 
 
-def fetch_events() -> List[Dict[str, Any]]:
+def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str, Any]]:
     """
-    Main entry point for VOR provider.
-
-    Fetches traffic info for configured stations using the updated logic.
+    Fetch disruptions for the given stations using the departureBoard endpoint.
+    Iterates over the configured or provided stations and extracts warnings/infos.
     """
     token = refresh_access_credentials()
     if not token:
@@ -1118,30 +1114,29 @@ def fetch_events() -> List[Dict[str, Any]]:
         )
         return []
 
-    # 1. Monitor Whitelist (New Strategy)
-    monitor_whitelist_str = os.getenv(
-        "VOR_MONITOR_STATIONS_WHITELIST", DEFAULT_MONITOR_WHITELIST
-    ).strip()
-    whitelist_names = [
-        x.strip() for x in monitor_whitelist_str.split(",") if x.strip()
-    ]
+    if station_ids is None:
+        # 1. Monitor Whitelist (New Strategy)
+        monitor_whitelist_str = os.getenv(
+            "VOR_MONITOR_STATIONS_WHITELIST", DEFAULT_MONITOR_WHITELIST
+        ).strip()
+        whitelist_names = [
+            x.strip() for x in monitor_whitelist_str.split(",") if x.strip()
+        ]
 
-    station_ids: List[str] = []
-    if whitelist_names:
-        log.info("Nutze VOR Monitor-Whitelist: %s", ", ".join(whitelist_names))
-        station_ids = resolve_station_ids(whitelist_names)
-    else:
-        # 2. Legacy Fallback (Full Rotation)
-        station_ids = list(VOR_STATION_IDS)
-        if not station_ids and VOR_STATION_NAMES:
-            station_ids = resolve_station_ids(VOR_STATION_NAMES)
+        if whitelist_names:
+            log.info("Nutze VOR Monitor-Whitelist: %s", ", ".join(whitelist_names))
+            station_ids = resolve_station_ids(whitelist_names)
+        else:
+            # 2. Legacy Fallback (Full Rotation)
+            station_ids = list(VOR_STATION_IDS)
+            if not station_ids and VOR_STATION_NAMES:
+                station_ids = resolve_station_ids(VOR_STATION_NAMES)
 
     if not station_ids:
         log.info("Keine VOR Stationen konfiguriert")
         return []
 
-    # Limit stations based on requests (simplistic approach, as trafficInfo might support bulk
-    # if we changed logic, but sticking to per-station for now as per "filter" instruction)
+    # Limit stations based on requests
     selected_ids = _select_stations_round_robin(
         station_ids, MAX_STATIONS_PER_RUN, ROTATION_INTERVAL_SEC
     )
@@ -1158,7 +1153,7 @@ def fetch_events() -> List[Dict[str, Any]]:
         selected_ids = selected_ids[:remaining_requests]
 
     log.info(
-        "Starte VOR-Abruf (TrafficInfo) für %s Station(en).",
+        "Starte VOR-Abruf (DepartureBoard) für %s Station(en).",
         len(selected_ids),
     )
 
@@ -1168,7 +1163,7 @@ def fetch_events() -> List[Dict[str, Any]]:
 
     with ThreadPoolExecutor(max_workers=len(selected_ids) or 1) as executor:
         futures = {
-            executor.submit(_fetch_traffic_info, sid, now_local): sid
+            executor.submit(_fetch_departure_board_for_station, sid, now_local): sid
             for sid in selected_ids
         }
         for future in as_completed(futures):
@@ -1176,7 +1171,7 @@ def fetch_events() -> List[Dict[str, Any]]:
             try:
                 payload = future.result()
             except Exception as exc:  # pragma: no cover - defensive guard
-                _log_error("VOR TrafficInfo %s Fehler: %s", station_id, exc)
+                _log_error("VOR DepartureBoard %s Fehler: %s", station_id, exc)
                 failures += 1
                 continue
             if payload is None:
@@ -1204,7 +1199,7 @@ def fetch_events() -> List[Dict[str, Any]]:
             results.extend(items)
 
     if successes == 0:
-        raise RequestException("Keine VOR TrafficInfos abrufbar")
+        raise RequestException("Keine VOR Daten abrufbar")
 
     log.info(
         "VOR-Abruf abgeschlossen: %s Station(en) erfolgreich, %s ohne Ergebnis, %s Ereignis(se) gesammelt.",
@@ -1214,6 +1209,14 @@ def fetch_events() -> List[Dict[str, Any]]:
     )
 
     return results
+
+
+def fetch_events() -> List[Dict[str, Any]]:
+    """
+    Main entry point for VOR provider.
+    Delegates to fetch_vor_disruptions.
+    """
+    return fetch_vor_disruptions()
 
 
 __all__ = [

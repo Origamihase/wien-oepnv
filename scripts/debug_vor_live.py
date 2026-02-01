@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Systematische Suche nach dem korrekten VOR API Endpunkt.
+Debug-Skript für VOR API (DepartureBoard).
 """
 
 import json
@@ -31,111 +31,80 @@ def main():
     
     base_url = os.environ.get("VOR_BASE_URL")
     access_id = os.environ.get("VOR_ACCESS_ID")
-    version = os.environ.get("VOR_VERSIONS", "1.0")
+    version = os.environ.get("VOR_VERSIONS", "1.11.0")
 
     if not base_url or not access_id:
         logger.error("❌ FEHLER: VOR_BASE_URL oder VOR_ACCESS_ID fehlen in den Umgebungsvariablen.")
         sys.exit(1)
 
+    # Clean base URL
     base_url = base_url.rstrip("/")
+
+    # Construct URL for departureBoard
+    # Assuming VOR_BASE_URL includes version if configured that way,
+    # but strictly following the user prompt "URL: {VOR_BASE_URL}/{VOR_VERSIONS}/departureBoard"
+    # we might need to be careful. In the project config, VOR_BASE_URL usually HAS the version.
+    # So we simply append departureBoard.
+    url = f"{base_url}/departureBoard"
+
     logger.info(f"Basis-Konfiguration geladen.")
-    logger.info(f"URL: {base_url}")
-    logger.info(f"Version: {version}")
+    logger.info(f"URL: {url}")
     logger.info(f"AccessID: {access_id[:4]}***")
 
-    # 2. Zu testende Patterns definieren
-    patterns = [
-        f"{base_url}/trafficInfo",              # Ohne Version
-        f"{base_url}/v{version}/trafficInfo",   # Mit Version (Standard)
-        f"{base_url}/otp/trafficInfo",          # OpenTripPlanner Style
-        f"{base_url}/him/search",               # HAFAS HIM Search
-        f"{base_url}/v{version}/himsearch",     # VOR v1.11.0 Standard (himsearch ohne Slash)
-    ]
+    # 2. Test DepartureBoard (Wien Hbf)
+    station_id = "1292100" # Wien Hbf
 
-    working_endpoint = None
-
-    logger.info("\n--- Starte URL-Pattern Tests ---")
-
-    for url in patterns:
-        success, content_snippet = test_endpoint(url, access_id)
-        if success:
-            working_endpoint = url
-            # Wenn wir trafficInfo gefunden haben, bevorzugen wir das und brechen vielleicht ab?
-            # Der User will systematisch suchen. Wir merken uns den letzten funktionierenden oder brechen beim ersten ab.
-            # Nehmen wir den ersten Treffer.
-            break
-
-    # 4. Stations-Check (Optional)
-    if working_endpoint:
-        logger.info(f"\n✅ Working Endpoint found: {working_endpoint}")
-
-        # Check ob es trafficInfo oder him ist für den Parameternamen
-        if "trafficInfo" in working_endpoint:
-            logger.info("\n--- Starte Stations-Check (Wien Hbf) ---")
-            check_station(working_endpoint, access_id)
-        elif "him" in working_endpoint:
-             logger.info("\n--- Starte Stations-Check (Wien Hbf via HIM) ---")
-             # HIM search hat evtl andere Parameter, aber wir probieren es mal generisch
-             check_station(working_endpoint, access_id)
-    else:
-        logger.error("\n❌ Kein funktionierender Endpunkt gefunden.")
-        sys.exit(1)
-
-def test_endpoint(url: str, access_id: str) -> Tuple[bool, Optional[str]]:
-    """Testet einen Endpunkt und gibt (Erfolg, Snippet) zurück."""
-    params = {
-        "accessId": access_id,
-        "format": "json"
-    }
-
-    # Maskierte URL für Log
-    log_url = url.replace(access_id, "***")
-    logger.info(f"Teste: {log_url}")
-
-    try:
-        response = requests.get(url, params=params, timeout=10)
-        status = response.status_code
-        content = response.text.strip()
-
-        start_char = content[0] if content else ""
-
-        if start_char in ("{", "["):
-            logger.info(f"✅ TREFFER! (Status {status})")
-            snippet = content[:200].replace("\n", " ")
-            logger.info(f"   Response: {snippet}...")
-            return True, content
-        elif start_char == "<":
-            logger.info(f"❌ Falscher Endpunkt (HTML/XML, Status {status})")
-            return False, None
-        else:
-            logger.info(f"❓ Unbekannter Content (Start: '{start_char}', Status {status})")
-            return False, None
-
-    except Exception as e:
-        logger.error(f"⚠️ Exception bei Request: {e}")
-        return False, None
-
-def check_station(url: str, access_id: str):
-    """Testet eine spezifische Station am gefundenen Endpunkt."""
-    # Wien Hbf = 1292100
     params = {
         "accessId": access_id,
         "format": "json",
-        "stopId": "1292100"
+        "id": station_id
     }
 
-    logger.info(f"Request mit stopId=1292100...")
+    logger.info(f"\n--- Starte DepartureBoard Check (Station {station_id}) ---")
+
     try:
-        response = requests.get(url, params=params, timeout=10)
-        content = response.text.strip()
-        if content.startswith("{") or content.startswith("["):
-            logger.info("✅ Station-Response ist JSON.")
-            logger.info(f"   Response: {content[:200]}...")
+        response = requests.get(url, params=params, timeout=15)
+        status = response.status_code
+        logger.info(f"HTTP Status: {status}")
+
+        content = response.text
+        snippet = content[:500].replace("\n", " ")
+        logger.info(f"Raw Response (first 500 chars): {snippet}...")
+
+        # Check for keywords
+        found_keywords = []
+        if "warning" in content.lower():
+            found_keywords.append("warning")
+        if "info" in content.lower():
+            found_keywords.append("info")
+        if "himMessage" in content:
+            found_keywords.append("himMessage")
+
+        if found_keywords:
+            logger.info(f"✅ Gefundene Keywords: {', '.join(found_keywords)}")
         else:
-            logger.warning("⚠️ Station-Response ist KEIN JSON (trotz funktionierendem Endpunkt).")
-            logger.info(f"   Start: {content[:50]}...")
+            logger.info("ℹ️ Keine expliziten 'warning'/'info' Keywords gefunden (kann normal sein wenn keine Störung).")
+
+        # Try parsing JSON to be sure
+        try:
+            data = json.loads(content)
+            if "DepartureBoard" in data:
+                 logger.info("✅ JSON-Struktur 'DepartureBoard' gefunden.")
+                 # Check inside
+                 board = data["DepartureBoard"]
+                 if "warnings" in board:
+                     logger.info(f"   'warnings' Feld vorhanden (Länge: {len(board['warnings'])})")
+                 if "infos" in board:
+                     logger.info(f"   'infos' Feld vorhanden (Länge: {len(board['infos'])})")
+            elif "warnings" in data or "infos" in data:
+                 logger.info("✅ JSON-Struktur mit Top-Level warnings/infos gefunden.")
+            else:
+                 logger.info("ℹ️ Gültiges JSON, aber erwartete Keys nicht sofort sichtbar.")
+        except json.JSONDecodeError:
+            logger.error("❌ Response ist kein gültiges JSON!")
+
     except Exception as e:
-        logger.error(f"⚠️ Fehler beim Station-Check: {e}")
+        logger.error(f"⚠️ Exception bei Request: {e}")
 
 if __name__ == "__main__":
     main()

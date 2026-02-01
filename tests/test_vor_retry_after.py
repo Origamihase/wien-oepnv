@@ -35,7 +35,7 @@ def test_retry_after_invalid_value(monkeypatch, caplog):
 
     caplog.set_level(logging.WARNING, logger=vor.log.name)
 
-    result = vor._fetch_traffic_info("123", datetime(2024, 1, 1, 12, 0))
+    result = vor._fetch_departure_board_for_station("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
     assert any("ungültiges Retry-After" in message for message in caplog.messages)
@@ -61,7 +61,7 @@ def test_retry_after_missing_header(monkeypatch, caplog):
 
     caplog.set_level(logging.WARNING, logger=vor.log.name)
 
-    result = vor._fetch_traffic_info("123", datetime(2024, 1, 1, 12, 0))
+    result = vor._fetch_departure_board_for_station("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
     assert sleep_calls == [vor.RETRY_AFTER_FALLBACK_SEC]
@@ -86,7 +86,7 @@ def test_retry_after_numeric_value(monkeypatch):
 
     monkeypatch.setattr(vor.time, "sleep", fake_sleep)
 
-    result = vor._fetch_traffic_info("123", datetime(2024, 1, 1, 12, 0))
+    result = vor._fetch_departure_board_for_station("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
     assert sleep_calls == [3.5]
@@ -121,7 +121,7 @@ def test_retry_after_http_date(monkeypatch):
 
     monkeypatch.setattr(vor.time, "sleep", fake_sleep)
 
-    result = vor._fetch_traffic_info("123", datetime(2024, 1, 1, 12, 0))
+    result = vor._fetch_departure_board_for_station("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
     assert sleep_calls == [delay.total_seconds()]
