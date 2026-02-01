@@ -13,7 +13,13 @@ def main() -> int:
     stations_path = Path("data/stations.json")
 
     try:
-        stations = json.loads(stations_path.read_text(encoding="utf-8"))
+        data = json.loads(stations_path.read_text(encoding="utf-8"))
+        if isinstance(data, dict):
+            stations = data.get("stations", [])
+        elif isinstance(data, list):
+            stations = data
+        else:
+            stations = []
     except FileNotFoundError:
         print("data/stations.json not found", file=sys.stderr)
         return 1
