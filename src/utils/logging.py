@@ -40,6 +40,13 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
         r"authorization|auth|bearer_token|api_key|auth_token"
     )
 
+    # Common header-safe keys for broad redaction in Header: Value pairs
+    # Explicitly supports hyphens for header style (e.g. Api-Key)
+    _header_keys = (
+        r"api[-_]?key|token|secret|signature|password|auth|session|cookie|private|"
+        r"credential|client[-_]?id"
+    )
+
     # Common patterns for secrets in URLs/Headers
     patterns: List[Tuple[str, str]] = [
         # Query parameters (key=value or key%3dvalue)
@@ -55,6 +62,9 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
         (r"(?i)((?:Set-)?Cookie:\s*)([^\n\r]+)", r"\1***"),
         (r'(?i)(\"(?:Set-)?Cookie\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (r"(?i)('(?:Set-)?Cookie'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
+        # Generic sensitive headers (e.g. X-Api-Key, X-Goog-Api-Key, X-Auth-Token)
+        # Matches any header name containing a sensitive term
+        (rf"(?i)((?:[-a-zA-Z0-9]*(?:{_header_keys})[-a-zA-Z0-9]*):\s*)([^\n\r]+)", r"\1***"),
         # Mask potentially leaked secrets in JSON error messages
         (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
