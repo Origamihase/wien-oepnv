@@ -122,25 +122,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-02-01T00:00:05+01:00",
-    "starts_at": "2026-02-01T00:00:05+01:00",
-    "ends_at": "2026-02-01T23:59:59+01:00",
-    "_identity": "wl|störung|L=37A|D=2026-02-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Busse halten Untere Augartenstraße 42",
     "description": "Busse halten Untere Augartenstraße 42",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "483eae38010ee8e6894791d2738a9629c827a8f49663810bceb0716d9219a663",
     "pubDate": "2026-02-01T00:00:26+01:00",
     "starts_at": "2026-02-01T00:00:26+01:00",
-    "ends_at": "2026-02-01T23:59:59+01:00",
+    "ends_at": "2026-02-02T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2026-02-01"
   },
   {
@@ -182,25 +170,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789",
-    "pubDate": "2026-02-01T23:15:00+01:00",
-    "starts_at": "2026-02-01T23:21:01+01:00",
-    "ends_at": "2026-02-01T23:59:59+01:00",
-    "_identity": "wl|störung|L=60|D=2026-02-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9",
-    "pubDate": "2026-02-01T23:26:49+01:00",
-    "starts_at": "2026-02-01T23:26:49+01:00",
-    "ends_at": "2026-02-01T23:59:59+01:00",
-    "_identity": "wl|störung|L=10|D=2026-02-01"
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-02-02T00:00:19+01:00",
+    "starts_at": "2026-02-02T00:00:19+01:00",
+    "ends_at": "2026-02-02T23:59:59+01:00",
+    "_identity": "wl|störung|L=37A|D=2026-02-02"
   }
 ]
