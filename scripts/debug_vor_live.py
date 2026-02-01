@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-Debug script to extract correct VOR Station IDs (Long-IDs).
+Debug script to extract and verify VOR Station IDs (Hafas Long-IDs).
 """
 
 import sys
 import os
-import logging
 import requests
 from pathlib import Path
 
@@ -20,18 +19,9 @@ except ImportError:
     sys.path.insert(0, str(BASE_DIR))
     from src.utils.env import load_default_env_files
 
-# Setup logging
-logging.basicConfig(level=logging.INFO, format="%(message)s")
-log = logging.getLogger("debug_vor")
-
 # Load environment variables
-loaded = load_default_env_files()
-if loaded:
-    log.info(f"📂 Geladene Env-Dateien: {', '.join(str(p) for p in loaded.keys())}")
-else:
-    log.info("⚠️ Keine Env-Dateien gefunden (verwende System-Umgebungsvariablen).")
+load_default_env_files()
 
-# Configuration
 VOR_BASE_URL = os.getenv("VOR_BASE_URL", "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/")
 if not VOR_BASE_URL.endswith("/"):
     VOR_BASE_URL += "/"
@@ -45,23 +35,22 @@ def get_access_id():
 
 VOR_ACCESS_ID = get_access_id()
 
-def fetch_station_id(search_name):
+def get_station_id(search_term):
     url = f"{VOR_BASE_URL}location.name"
     params = {
         "format": "json",
-        "input": search_name,
-        "type": "STOP",  # Uppercase mandated
+        "input": search_term,
+        # "type": "STOP"  <-- REMOVED per requirements to fix 400 errors
     }
     if VOR_ACCESS_ID:
         params["accessId"] = VOR_ACCESS_ID
 
-    log.info(f"🔍 Suche nach '{search_name}'...")
     try:
         resp = requests.get(url, params=params, timeout=10)
         resp.raise_for_status()
         data = resp.json()
     except Exception as e:
-        log.error(f"❌ Fehler bei API-Abruf: {e}")
+        print(f"❌ Error fetching '{search_term}': {e}")
         return None
 
     # Parse Logic
@@ -69,109 +58,62 @@ def fetch_station_id(search_name):
     if "stopLocationOrCoordLocation" in data:
          candidates = data["stopLocationOrCoordLocation"]
     elif "StopLocation" in data:
-         candidates = data["StopLocation"]
-         if isinstance(candidates, dict):
-             candidates = [candidates]
-    elif "LocationList" in data:
-        loc_list = data["LocationList"]
-        if "StopLocation" in loc_list:
-            candidates = loc_list["StopLocation"]
-            if isinstance(candidates, dict):
-                candidates = [candidates]
+         val = data["StopLocation"]
+         candidates = val if isinstance(val, list) else [val]
 
-    if not candidates:
-        log.warning(f"⚠️ Keine Treffer für '{search_name}'")
-        return None
+    found_id = None
+    found_name = None
 
-    first = candidates[0]
-    # Sometimes it's wrapped in StopLocation
-    if "StopLocation" in first:
-        first = first["StopLocation"]
+    for item in candidates:
+        # Handle wrapper structure: { "StopLocation": { ... } } vs { ... }
+        stop_loc = item.get("StopLocation", item)
 
-    found_id = first.get("id")
-    name = first.get("name")
+        sid = stop_loc.get("id")
+        name = stop_loc.get("name")
+
+        if sid:
+            found_id = sid
+            found_name = name
+            break
 
     if found_id:
-        print(f"✅ ID für '{search_name}': {found_id}")
-        log.info(f"   (Name: {name})")
+        print(f"✅ Gefunden: {found_name} -> {found_id}")
         return found_id
     else:
-        log.warning(f"⚠️ ID nicht gefunden im ersten Treffer: {first}")
+        print(f"⚠️ Nichts gefunden für: {search_term}")
         return None
 
-def verify_station(station_id):
-    url = f"{VOR_BASE_URL}departureBoard"
-    params = {
-        "format": "json",
-        "id": station_id
-    }
-    if VOR_ACCESS_ID:
-        params["accessId"] = VOR_ACCESS_ID
-
-    log.info(f"🕵️ Verifiziere ID {station_id} via DepartureBoard...")
-    try:
-        resp = requests.get(url, params=params, timeout=10)
-        resp.raise_for_status()
-        data = resp.json()
-
-        # Count departures
-        departures = 0
-
-        if "DepartureBoard" in data:
-            board = data["DepartureBoard"]
-            if "Departure" in board:
-                deps = board["Departure"]
-                departures = len(deps) if isinstance(deps, list) else 1
-
-        # Check warnings/messages
-        messages = 0
-        # Check various places for messages
-        roots = [data]
-        if "DepartureBoard" in data:
-            roots.append(data["DepartureBoard"])
-
-        for root in roots:
-            for key in ["warnings", "infos", "himMessages", "trafficInfos"]:
-                if key in root:
-                    container = root[key]
-                    if isinstance(container, list):
-                        messages += len(container)
-                    elif isinstance(container, dict):
-                         messages += 1
-
-        log.info(f"✅ Verifikation erfolgreich: {departures} Abfahrten, {messages} Warnungen gefunden.")
-        return True
-    except Exception as e:
-        log.error(f"❌ Verifikation fehlgeschlagen: {e}")
-        if 'resp' in locals() and resp.status_code >= 400:
-             log.error(f"Response: {resp.text}")
-        return False
-
 def main():
+    print(f"Running VOR Debug Script against {VOR_BASE_URL}")
+
     if not VOR_ACCESS_ID:
-        log.error("❌ VOR_ACCESS_ID (oder VAO_ACCESS_ID) nicht gesetzt! Bitte .env prüfen.")
-        sys.exit(1)
+        print("❌ VOR_ACCESS_ID not found in environment. API calls may fail.")
 
-    # 1. Wien Hbf
-    wien_hbf_id = fetch_station_id("Wien Hauptbahnhof")
+    # 1. Search for Wien Hauptbahnhof
+    print("\n--- Suche 1: Wien Hauptbahnhof ---")
+    get_station_id("Wien Hauptbahnhof")
 
-    # 2. Flughafen Wien
-    flughafen_id = fetch_station_id("Flughafen Wien")
-    if not flughafen_id:
-        log.info("↪️ Versuche Alternative 'Flughafen Wien Bahnhof'...")
-        flughafen_id = fetch_station_id("Flughafen Wien Bahnhof")
+    # 2. Search for Flughafen Wien Bahnhof
+    print("\n--- Suche 2: Flughafen Wien Bahnhof ---")
+    airport_id = get_station_id("Flughafen Wien Bahnhof")
 
-    # 3. Verifikation (nur Wien Hbf wie angefordert)
-    if wien_hbf_id:
-        verify_station(wien_hbf_id)
+    # 3. Verification
+    if airport_id:
+        print(f"\n--- Verifikation (DepartureBoard) für ID: {airport_id} ---")
+        url = f"{VOR_BASE_URL}departureBoard"
+        params = {
+            "format": "json",
+            "id": airport_id
+        }
+        if VOR_ACCESS_ID:
+            params["accessId"] = VOR_ACCESS_ID
 
-    print("\n" + "="*40)
-    print("ZUSAMMENFASSUNG:")
-    if wien_hbf_id:
-        print(f"Wien Hauptbahnhof: {wien_hbf_id}")
-    if flughafen_id:
-        print(f"Flughafen Wien:    {flughafen_id}")
-    print("="*40)
+        try:
+            resp = requests.get(url, params=params, timeout=10)
+            print(f"HTTP Status: {resp.status_code}")
+            print(f"Response (first 200 chars): {resp.text[:200]}")
+        except Exception as e:
+            print(f"❌ Verification request failed: {e}")
 
 if __name__ == "__main__":
     main()
