@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-Debug-Skript für VOR API (DepartureBoard).
+Debug-Skript für VOR API: Station Discovery & DepartureBoard Test.
+Ziel: Ermittlung der korrekten Station-IDs (HAFAS-Format) für data/stations.json.
 """
 
 import json
@@ -10,7 +11,7 @@ import logging
 import os
 import sys
 import requests
-from typing import Optional, Dict, Any, Tuple
+from pathlib import Path
 
 # Füge das Projektverzeichnis zum Pfad hinzu, um src zu importieren
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -29,82 +30,121 @@ def main():
     # 1. Umgebungsvariablen laden
     load_default_env_files()
     
-    base_url = os.environ.get("VOR_BASE_URL")
-    access_id = os.environ.get("VOR_ACCESS_ID")
-    version = os.environ.get("VOR_VERSIONS", "1.11.0")
+    # Default URL from src/providers/vor.py
+    DEFAULT_BASE = "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"
 
-    if not base_url or not access_id:
-        logger.error("❌ FEHLER: VOR_BASE_URL oder VOR_ACCESS_ID fehlen in den Umgebungsvariablen.")
+    base_url = os.environ.get("VOR_BASE_URL", DEFAULT_BASE).rstrip("/") + "/"
+    access_id = os.environ.get("VOR_ACCESS_ID")
+
+    if not access_id:
+        logger.error("❌ FEHLER: VOR_ACCESS_ID fehlt in den Umgebungsvariablen (oder secrets.env).")
         sys.exit(1)
 
-    # Clean base URL
-    base_url = base_url.rstrip("/")
+    logger.info(f"Konfiguration:")
+    logger.info(f"  Base URL: {base_url}")
+    logger.info(f"  AccessID: {access_id[:4]}***")
+    logger.info("-" * 40)
 
-    # Construct URL for departureBoard
-    # Assuming VOR_BASE_URL includes version if configured that way,
-    # but strictly following the user prompt "URL: {VOR_BASE_URL}/{VOR_VERSIONS}/departureBoard"
-    # we might need to be careful. In the project config, VOR_BASE_URL usually HAS the version.
-    # So we simply append departureBoard.
-    url = f"{base_url}/departureBoard"
+    stations_to_test = ["Wien Hauptbahnhof", "Flughafen Wien"]
 
-    logger.info(f"Basis-Konfiguration geladen.")
-    logger.info(f"URL: {url}")
-    logger.info(f"AccessID: {access_id[:4]}***")
+    for station_name in stations_to_test:
+        logger.info(f"\n🔍 Suche ID für: '{station_name}'")
+        found_id = resolve_station_id(base_url, access_id, station_name)
 
-    # 2. Test DepartureBoard (Wien Hbf)
-    station_id = "1292100" # Wien Hbf
+        if found_id:
+            logger.info(f"✅ Gefundene ID: {found_id}")
+            logger.info(f"🚀 Teste DepartureBoard mit ID: {found_id}")
+            test_departure_board(base_url, access_id, found_id)
+        else:
+            logger.error(f"❌ Keine ID für '{station_name}' gefunden.")
 
+def resolve_station_id(base_url, access_id, name):
+    """
+    Ruft location.name auf und gibt die ID zurück.
+    Druckt das JSON des ersten Treffers.
+    """
+    url = f"{base_url}location.name"
+    params = {
+        "accessId": access_id,
+        "format": "json",
+        "input": name,
+        "type": "stop"
+    }
+
+    try:
+        response = requests.get(url, params=params, timeout=10)
+        response.raise_for_status()
+
+        try:
+            data = response.json()
+        except json.JSONDecodeError:
+            logger.error("❌ Response war kein gültiges JSON.")
+            return None
+
+        # Suche nach StopLocation
+        stops = []
+        if "StopLocation" in data:
+            stops = data["StopLocation"]
+        elif "LocationList" in data and "StopLocation" in data["LocationList"]:
+             stops = data["LocationList"]["StopLocation"]
+
+        # Manchmal ist es ein einzelnes Dict, keine Liste
+        if isinstance(stops, dict):
+            stops = [stops]
+
+        if not stops:
+             logger.info("ℹ️ Keine StopLocations im Response gefunden.")
+             # Debug output
+             logger.info(json.dumps(data, indent=2))
+             return None
+
+        first_hit = stops[0]
+
+        # WICHTIG: Komplettes JSON für den ersten Treffer ausgeben
+        logger.info("📋 JSON Response (Erster Treffer):")
+        print(json.dumps(first_hit, indent=2))
+
+        # Extrahiere ID
+        # HAFAS IDs sind oft unter 'id' oder 'extId' zu finden
+        station_id = first_hit.get("id")
+        if not station_id:
+            station_id = first_hit.get("extId")
+
+        return station_id
+
+    except requests.exceptions.RequestException as e:
+        logger.error(f"❌ Request Error bei location.name: {e}")
+        return None
+
+def test_departure_board(base_url, access_id, station_id):
+    """
+    Testet den departureBoard Endpunkt mit der gefundenen ID.
+    """
+    url = f"{base_url}departureBoard"
     params = {
         "accessId": access_id,
         "format": "json",
         "id": station_id
     }
 
-    logger.info(f"\n--- Starte DepartureBoard Check (Station {station_id}) ---")
-
     try:
-        response = requests.get(url, params=params, timeout=15)
+        response = requests.get(url, params=params, timeout=10)
         status = response.status_code
-        logger.info(f"HTTP Status: {status}")
 
-        content = response.text
-        snippet = content[:500].replace("\n", " ")
-        logger.info(f"Raw Response (first 500 chars): {snippet}...")
-
-        # Check for keywords
-        found_keywords = []
-        if "warning" in content.lower():
-            found_keywords.append("warning")
-        if "info" in content.lower():
-            found_keywords.append("info")
-        if "himMessage" in content:
-            found_keywords.append("himMessage")
-
-        if found_keywords:
-            logger.info(f"✅ Gefundene Keywords: {', '.join(found_keywords)}")
+        if status == 200:
+            logger.info(f"✅ departureBoard Status 200 OK")
+            # Optional: Prüfen ob Inhalt sinnvoll ist
+            try:
+                content = response.json()
+                logger.info("   Response ist gültiges JSON.")
+            except:
+                logger.warning("   Response 200, aber kein valides JSON?")
         else:
-            logger.info("ℹ️ Keine expliziten 'warning'/'info' Keywords gefunden (kann normal sein wenn keine Störung).")
+            logger.error(f"❌ departureBoard fehlgeschlagen. Status: {status}")
+            logger.error(f"   Response Body: {response.text[:200]}...")
 
-        # Try parsing JSON to be sure
-        try:
-            data = json.loads(content)
-            if "DepartureBoard" in data:
-                 logger.info("✅ JSON-Struktur 'DepartureBoard' gefunden.")
-                 # Check inside
-                 board = data["DepartureBoard"]
-                 if "warnings" in board:
-                     logger.info(f"   'warnings' Feld vorhanden (Länge: {len(board['warnings'])})")
-                 if "infos" in board:
-                     logger.info(f"   'infos' Feld vorhanden (Länge: {len(board['infos'])})")
-            elif "warnings" in data or "infos" in data:
-                 logger.info("✅ JSON-Struktur mit Top-Level warnings/infos gefunden.")
-            else:
-                 logger.info("ℹ️ Gültiges JSON, aber erwartete Keys nicht sofort sichtbar.")
-        except json.JSONDecodeError:
-            logger.error("❌ Response ist kein gültiges JSON!")
-
-    except Exception as e:
-        logger.error(f"⚠️ Exception bei Request: {e}")
+    except requests.exceptions.RequestException as e:
+        logger.error(f"❌ Request Error bei departureBoard: {e}")
 
 if __name__ == "__main__":
     main()
