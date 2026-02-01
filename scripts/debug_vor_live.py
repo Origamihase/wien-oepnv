@@ -1,125 +1,141 @@
-import os
-import requests
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Systematische Suche nach dem korrekten VOR API Endpunkt.
+"""
+
 import json
 import logging
-from typing import Any, Dict, Optional
+import os
+import sys
+import requests
+from typing import Optional, Dict, Any, Tuple
 
-# Setup
-logging.basicConfig(level=logging.INFO)
+# Füge das Projektverzeichnis zum Pfad hinzu, um src zu importieren
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+try:
+    from src.utils.env import load_default_env_files
+except ImportError:
+    print("❌ Konnte src.utils.env nicht importieren. Stellen Sie sicher, dass Sie das Skript aus dem Root-Verzeichnis ausführen.")
+    sys.exit(1)
+
+# Logging Setup
+logging.basicConfig(level=logging.INFO, format="%(message)s")
 logger = logging.getLogger("VOR_DEBUG")
 
-# Lade Secrets (Stelle sicher, dass diese in deiner Shell gesetzt sind!)
-BASE_URL = os.environ.get("VOR_BASE_URL")
-ACCESS_ID = os.environ.get("VOR_ACCESS_ID")
-VERSION = os.environ.get("VOR_VERSIONS", "1.0")
-
-if not BASE_URL or not ACCESS_ID:
-    print("❌ FEHLER: VOR_BASE_URL oder VOR_ACCESS_ID fehlen in den Umgebungsvariablen.")
-    exit(1)
-
-def call_endpoint(endpoint: str, params: Dict[str, Any], description: str) -> Optional[Any]:
-    url = f"{BASE_URL}/v{VERSION}{endpoint}"
-    # Kopie der Params erstellen, um Seiteneffekte zu vermeiden
-    request_params = params.copy()
-    request_params["accessId"] = ACCESS_ID
-    request_params["format"] = "json"
+def main():
+    # 1. Umgebungsvariablen laden
+    load_default_env_files()
     
-    print(f"\n--- Teste Szenario: {description} ---")
-    print(f"URL: {url}")
-    # Hide accessId in logs
-    safe_params = {k: v for k, v in request_params.items() if k != 'accessId'}
-    print(f"Params (ohne Auth): {safe_params}")
-    
+    base_url = os.environ.get("VOR_BASE_URL")
+    access_id = os.environ.get("VOR_ACCESS_ID")
+    version = os.environ.get("VOR_VERSIONS", "1.0")
+
+    if not base_url or not access_id:
+        logger.error("❌ FEHLER: VOR_BASE_URL oder VOR_ACCESS_ID fehlen in den Umgebungsvariablen.")
+        sys.exit(1)
+
+    base_url = base_url.rstrip("/")
+    logger.info(f"Basis-Konfiguration geladen.")
+    logger.info(f"URL: {base_url}")
+    logger.info(f"Version: {version}")
+    logger.info(f"AccessID: {access_id[:4]}***")
+
+    # 2. Zu testende Patterns definieren
+    patterns = [
+        f"{base_url}/trafficInfo",              # Ohne Version
+        f"{base_url}/v{version}/trafficInfo",   # Mit Version (Standard)
+        f"{base_url}/otp/trafficInfo",          # OpenTripPlanner Style
+        f"{base_url}/him/search",               # HAFAS HIM Search
+        f"{base_url}/v{version}/himsearch",     # VOR v1.11.0 Standard (himsearch ohne Slash)
+    ]
+
+    working_endpoint = None
+
+    logger.info("\n--- Starte URL-Pattern Tests ---")
+
+    for url in patterns:
+        success, content_snippet = test_endpoint(url, access_id)
+        if success:
+            working_endpoint = url
+            # Wenn wir trafficInfo gefunden haben, bevorzugen wir das und brechen vielleicht ab?
+            # Der User will systematisch suchen. Wir merken uns den letzten funktionierenden oder brechen beim ersten ab.
+            # Nehmen wir den ersten Treffer.
+            break
+
+    # 4. Stations-Check (Optional)
+    if working_endpoint:
+        logger.info(f"\n✅ Working Endpoint found: {working_endpoint}")
+
+        # Check ob es trafficInfo oder him ist für den Parameternamen
+        if "trafficInfo" in working_endpoint:
+            logger.info("\n--- Starte Stations-Check (Wien Hbf) ---")
+            check_station(working_endpoint, access_id)
+        elif "him" in working_endpoint:
+             logger.info("\n--- Starte Stations-Check (Wien Hbf via HIM) ---")
+             # HIM search hat evtl andere Parameter, aber wir probieren es mal generisch
+             check_station(working_endpoint, access_id)
+    else:
+        logger.error("\n❌ Kein funktionierender Endpunkt gefunden.")
+        sys.exit(1)
+
+def test_endpoint(url: str, access_id: str) -> Tuple[bool, Optional[str]]:
+    """Testet einen Endpunkt und gibt (Erfolg, Snippet) zurück."""
+    params = {
+        "accessId": access_id,
+        "format": "json"
+    }
+
+    # Maskierte URL für Log
+    log_url = url.replace(access_id, "***")
+    logger.info(f"Teste: {log_url}")
+
     try:
-        r = requests.get(url, params=request_params, timeout=10)
-        print(f"Status: {r.status_code}")
-        
-        if r.status_code == 200:
-            try:
-                # Versuche JSON Parsing
-                data = r.json()
-                print("✅ JSON Parsing erfolgreich.")
-                return data
-            except json.JSONDecodeError:
-                # Hier der geforderte Raw-Output bei JSON-Fehler
-                print(f"❌ JSON Parsing fehlgeschlagen. Raw Response Preview:\n{r.text[:500]}")
-                return None
+        response = requests.get(url, params=params, timeout=10)
+        status = response.status_code
+        content = response.text.strip()
+
+        start_char = content[0] if content else ""
+
+        if start_char in ("{", "["):
+            logger.info(f"✅ TREFFER! (Status {status})")
+            snippet = content[:200].replace("\n", " ")
+            logger.info(f"   Response: {snippet}...")
+            return True, content
+        elif start_char == "<":
+            logger.info(f"❌ Falscher Endpunkt (HTML/XML, Status {status})")
+            return False, None
         else:
-            # Auch bei Fehler-Status Raw-Output anzeigen
-            print(f"❌ Status {r.status_code}. Raw Response Preview:\n{r.text[:500]}")
-            return None
-            
+            logger.info(f"❓ Unbekannter Content (Start: '{start_char}', Status {status})")
+            return False, None
+
     except Exception as e:
-        print(f"❌ Exception: {e}")
-        return None
+        logger.error(f"⚠️ Exception bei Request: {e}")
+        return False, None
 
-def test_location_name():
-    # Basistest für /location.name
-    data = call_endpoint("/location.name", {"input": "Wien"}, "Basistest location.name ('Wien')")
-    if data:
-        print(f"Response Keys: {list(data.keys())}")
-        if 'stopLocationOrCoordLocation' in data:
-            print(f"Gefundene Locations: {len(data['stopLocationOrCoordLocation'])}")
+def check_station(url: str, access_id: str):
+    """Testet eine spezifische Station am gefundenen Endpunkt."""
+    # Wien Hbf = 1292100
+    params = {
+        "accessId": access_id,
+        "format": "json",
+        "stopId": "1292100"
+    }
 
-def test_him_search():
-    # Alternative für Traffic Infos
-    data = call_endpoint("/him/search", {}, "Alternative: /him/search (HIM Messages)")
-    if data:
-        print(f"Response Keys: {list(data.keys())}")
-        # Beispielhafte Prüfung auf 'message' Key (Hafas Standard)
-        if 'message' in data:
-            print(f"Anzahl HIM Messages: {len(data['message'])}")
-
-def test_departure_board():
-    # Abfahrtsmonitor Wien Hbf
-    data = call_endpoint("/departureBoard", {"id": "1292100"}, "Alternative: /departureBoard (Wien Hbf)")
-    if data:
-        print(f"Response Keys: {list(data.keys())}")
-        # Prüfen auf Warnungen oder Infos im Departure Board
-        warnings = data.get('warnings', [])
-        infos = data.get('infos', [])
-        print(f"Warnings: {len(warnings)}")
-        print(f"Infos: {len(infos)}")
-
-def test_traffic_info(name: str, params: Dict[str, Any]):
-    data = call_endpoint("/trafficInfo", params, name)
-    if data:
-        msgs = data.get('trafficMessages', [])
-        print(f"Gefundene Meldungen: {len(msgs)}")
-        if len(msgs) > 0:
-            print("✅ ERFOLG! Erste Meldung (Snippet):")
-            print(json.dumps(msgs[0], indent=2)[:300] + "...")
-            # Prüfen ob unsere Stationen dabei sind
-            # Wien Hbf = 1292100, Flughafen = 1091500
-            found_hbf = any("1292100" in str(m) for m in msgs)
-            found_vie = any("1091500" in str(m) for m in msgs)
-            print(f"Enthält Wien Hbf? {'Ja' if found_hbf else 'Nein'}")
-            print(f"Enthält Flughafen? {'Ja' if found_vie else 'Nein'}")
+    logger.info(f"Request mit stopId=1292100...")
+    try:
+        response = requests.get(url, params=params, timeout=10)
+        content = response.text.strip()
+        if content.startswith("{") or content.startswith("["):
+            logger.info("✅ Station-Response ist JSON.")
+            logger.info(f"   Response: {content[:200]}...")
         else:
-            print("⚠️ Leere Liste zurückgegeben.")
-
-# --- SZENARIEN ---
+            logger.warning("⚠️ Station-Response ist KEIN JSON (trotz funktionierendem Endpunkt).")
+            logger.info(f"   Start: {content[:50]}...")
+    except Exception as e:
+        logger.error(f"⚠️ Fehler beim Station-Check: {e}")
 
 if __name__ == "__main__":
-    # 1. Neue Tests zuerst
-    test_location_name()
-    test_him_search()
-    test_departure_board()
-
-    # 2. Alte Traffic Info Tests (refactored)
-    print("\n=== Start Traffic Info Tests ===")
-
-    # Alles abrufen (ohne Filter)
-    test_traffic_info("Global (Kein Filter)", {})
-
-    # Filter auf Wien Hbf (StopID direkt)
-    test_traffic_info("Wien Hbf (stopId=1292100)", {"stopId": "1292100"})
-
-    # Filter auf Wien Hbf (List Format)
-    test_traffic_info("Wien Hbf (stopId[]=1292100)", {"stopId[]": "1292100"})
-
-    # Filter mit 'name' statt ID
-    test_traffic_info("Wien Hbf (name='Wien Hauptbahnhof')", {"name": "Wien Hauptbahnhof"})
-
-    # Filter mit Wildcard Location
-    test_traffic_info("Wien (name='Wien')", {"name": "Wien"})
+    main()
