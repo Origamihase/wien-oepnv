@@ -61,6 +61,14 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "phpsessid",
     "asp.net_sessionid",
     "__cfduid",
+    "tenant",
+    "tenant_id",
+    "subscription",
+    "subscription_id",
+    "oid",
+    "object_id",
+    "code_challenge",
+    "code_verifier",
 })
 
 
@@ -412,7 +420,8 @@ def fetch_content_safe(
     safe_url = validate_http_url(url)
     if not safe_url:
         # Security: avoid echoing potentially sensitive URLs (e.g., embedded credentials) in errors.
-        raise ValueError("Unsafe or invalid URL")
+        sanitized_url = _sanitize_url_for_error(url)
+        raise ValueError(f"Unsafe or invalid URL: {sanitized_url}")
 
     with session.get(safe_url, stream=True, timeout=timeout, **kwargs) as r:
         r.raise_for_status()
