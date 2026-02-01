@@ -8,11 +8,11 @@ def test_fetch_events_passes_local_timezone(monkeypatch):
 
     recorded = {}
 
-    def fake_fetch_stationboard(station_id, now_local):
+    def fake_fetch_traffic_info(station_id, now_local):
         recorded["tz"] = now_local.tzinfo
         return {}
 
-    monkeypatch.setattr(vor, "_fetch_stationboard", fake_fetch_stationboard)
+    monkeypatch.setattr(vor, "_fetch_traffic_info", fake_fetch_traffic_info)
 
     result = vor.fetch_events()
     assert result == []

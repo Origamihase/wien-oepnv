@@ -22,7 +22,7 @@ def test_fetch_events_parallel(monkeypatch):
             raise AssertionError("stationboards not fetched in parallel") from e
         return {}
 
-    monkeypatch.setattr(vor, "_fetch_stationboard", blocking_fetch)
+    monkeypatch.setattr(vor, "_fetch_traffic_info", blocking_fetch)
     monkeypatch.setattr(
         vor,
         "_collect_from_board",
@@ -47,7 +47,7 @@ def test_fetch_events_logs_and_continues(monkeypatch, caplog):
             raise RuntimeError("boom")
         return {}
 
-    monkeypatch.setattr(vor, "_fetch_stationboard", failing_fetch)
+    monkeypatch.setattr(vor, "_fetch_traffic_info", failing_fetch)
     monkeypatch.setattr(vor, "_collect_from_board", lambda sid, root: [{"guid": sid, "pubDate": None}])
 
     with caplog.at_level("ERROR"):

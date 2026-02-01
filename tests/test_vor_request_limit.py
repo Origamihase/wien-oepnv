@@ -43,7 +43,7 @@ def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
     def fail_fetch(*args, **kwargs):
         raise AssertionError("StationBoard request should not be triggered when limit reached")
 
-    monkeypatch.setattr(vor, "_fetch_stationboard", fail_fetch)
+    monkeypatch.setattr(vor, "_fetch_traffic_info", fail_fetch)
 
     today = datetime.now().astimezone(ZoneInfo("Europe/Vienna")).date().isoformat()
     vor.REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -251,7 +251,7 @@ def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path)
         vor.save_request_count(now_local)
         return {}
 
-    monkeypatch.setattr(vor, "_fetch_stationboard", fake_fetch)
+    monkeypatch.setattr(vor, "_fetch_traffic_info", fake_fetch)
 
     items = vor.fetch_events()
 
@@ -263,7 +263,7 @@ def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path)
 
 
 @pytest.mark.parametrize("status_code, headers", [(429, {"Retry-After": "0"}), (503, {})])
-def test_fetch_stationboard_counts_unsuccessful_requests(monkeypatch, status_code, headers):
+def test_fetch_traffic_info_counts_unsuccessful_requests(monkeypatch, status_code, headers):
     called = 0
 
     def fake_save(now_local):
@@ -317,13 +317,13 @@ def test_fetch_stationboard_counts_unsuccessful_requests(monkeypatch, status_cod
     monkeypatch.setattr(vor, "session_with_retries", fake_session_with_retries)
 
     now_local = datetime.now().astimezone(ZoneInfo("Europe/Vienna"))
-    result = vor._fetch_stationboard("123", now_local)
+    result = vor._fetch_traffic_info("123", now_local)
 
     assert result is None
     assert called == 1
 
 
-def test_fetch_stationboard_retries_increment_counter(monkeypatch):
+def test_fetch_traffic_info_retries_increment_counter(monkeypatch):
     from requests import ConnectionError
 
     call_count = 0
@@ -385,7 +385,7 @@ def test_fetch_stationboard_retries_increment_counter(monkeypatch):
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
     now_local = datetime.now().astimezone(ZoneInfo("Europe/Vienna"))
-    payload = vor._fetch_stationboard("123", now_local)
+    payload = vor._fetch_traffic_info("123", now_local)
 
     assert payload == {}
     assert call_count == 2
