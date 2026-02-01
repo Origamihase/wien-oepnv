@@ -48,7 +48,7 @@ def test_accessid_not_logged(monkeypatch, caplog, raw_message, expected_fragment
     now_local = datetime.now(ZoneInfo("Europe/Vienna"))
 
     with caplog.at_level(logging.ERROR):
-        vor._fetch_traffic_info("123", now_local)
+        vor._fetch_departure_board_for_station("123", now_local)
 
     assert vor.VOR_ACCESS_ID not in caplog.text
     assert expected_fragment in caplog.text

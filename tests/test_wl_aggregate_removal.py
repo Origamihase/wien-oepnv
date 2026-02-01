@@ -24,7 +24,7 @@ def test_aggregate_removed_when_all_singles_present(monkeypatch):
 
     monkeypatch.setattr(
         wl_fetch,
-        "_fetch_traffic_infos",
+        "_fetch_departure_board_for_stations",
         lambda timeout=20, session=None: [aggregate, single1, single2],
     )
     monkeypatch.setattr(
@@ -50,7 +50,7 @@ def test_aggregate_retained_when_single_missing(monkeypatch):
 
     monkeypatch.setattr(
         wl_fetch,
-        "_fetch_traffic_infos",
+        "_fetch_departure_board_for_stations",
         lambda timeout=20, session=None: [aggregate, single1],
     )
     monkeypatch.setattr(
