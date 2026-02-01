@@ -96,14 +96,14 @@ jobs:
 
       - name: Fetch Google Places stations
         run: |
-          python scripts/fetch_google_places_stations.py --write --dump-new new_places.json
+          python scripts/fetch_google_places_stations.py --write --dump-new data/new_places.json
 
       - name: Upload new places artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: google-places-new
-          path: new_places.json
+          path: data/new_places.json
           if-no-files-found: ignore
 
       - name: Commit and push changes
@@ -113,8 +113,8 @@ jobs:
           if [ -f data/stations.json ]; then
             git add data/stations.json
           fi
-          if [ -f new_places.json ]; then
-            git add new_places.json
+          if [ -f data/new_places.json ]; then
+            git add data/new_places.json
           fi
           if [ -f data/places_quota.json ]; then
             git add data/places_quota.json
