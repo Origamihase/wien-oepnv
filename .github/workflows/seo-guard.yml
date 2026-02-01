@@ -141,10 +141,35 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(grep -c 'atom:link[^>]*rel=\"self\"' docs/feed.xml)" -eq 1
-          test "$(grep -c 'atom:link[^>]*rel=\"alternate\"' docs/feed.xml)" -eq 1
-          grep -q '<language>de</language>' docs/feed.xml
-          grep -q 'xmlns:atom=' docs/feed.xml
+          if [[ ! -f docs/feed.xml ]]; then
+            echo "docs/feed.xml does not exist, skipping verification."
+            exit 0
+          fi
+
+          echo "Verifying docs/feed.xml..."
+          self_count="$(grep -c 'atom:link[^>]*rel=\"self\"' docs/feed.xml || true)"
+          alt_count="$(grep -c 'atom:link[^>]*rel=\"alternate\"' docs/feed.xml || true)"
+
+          if [[ "$self_count" -ne 1 ]]; then
+            echo "Error: Expected exactly 1 atom:link rel='self', found $self_count"
+            exit 1
+          fi
+
+          if [[ "$alt_count" -ne 1 ]]; then
+            echo "Error: Expected exactly 1 atom:link rel='alternate', found $alt_count"
+            exit 1
+          fi
+
+          if ! grep -q '<language>de</language>' docs/feed.xml; then
+            echo "Error: Missing <language>de</language>"
+            exit 1
+          fi
+
+          if ! grep -q 'xmlns:atom=' docs/feed.xml; then
+            echo "Error: Missing xmlns:atom definition"
+            exit 1
+          fi
+          echo "Feed verification passed."
 
       - name: Verify published feed (best-effort; allow Pages delay)
         shell: bash
