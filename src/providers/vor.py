@@ -56,6 +56,11 @@ else:  # pragma: no cover - allow running via package or src layout
     except ModuleNotFoundError:
         from ..utils.stations import vor_station_ids, station_info  # type: ignore
 
+    try:
+        from utils.ids import make_guid
+    except ModuleNotFoundError:
+        from ..utils.ids import make_guid  # type: ignore
+
 log = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).resolve().parents[2]
@@ -678,7 +683,8 @@ def _build_guid(station_id: str, message: Mapping[str, Any]) -> str:
         },
         sort_keys=True,
     )
-    fallback = base64.urlsafe_b64encode(key.encode("utf-8")).decode("ascii").rstrip("=")
+    # Use SHA256 hash instead of base64 to ensure bounded length
+    fallback = make_guid(key)
     return f"vor:{station_id}:{fallback}"
 
 
