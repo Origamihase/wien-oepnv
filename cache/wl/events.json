@@ -182,13 +182,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10/60: Rettungseinsatz",
-    "description": "Die Linie 10 ist derzeit in Richtung Dornbach an der Weiterfahrt gehindert. Die Linie 60 ist derzeit in Richtung Westbahnhof an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 23:40 Uhr. Grund dafür ist ein Rettungseinsatz im Bereich Hietzing U.",
+    "title": "60: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 60 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "97b262e2afbf19e88cac0259abbffdd9497fb91208b408ea8dd6779d09a90898",
+    "guid": "911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789",
     "pubDate": "2026-02-01T23:15:00+01:00",
-    "starts_at": "2026-02-01T23:15:00+01:00",
-    "ends_at": "2026-02-01T23:55:00+01:00",
-    "_identity": "wl|störung|L=10,60|D=2026-02-01"
+    "starts_at": "2026-02-01T23:21:01+01:00",
+    "ends_at": "2026-02-01T23:59:59+01:00",
+    "_identity": "wl|störung|L=60|D=2026-02-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9",
+    "pubDate": "2026-02-01T23:26:49+01:00",
+    "starts_at": "2026-02-01T23:26:49+01:00",
+    "ends_at": "2026-02-01T23:59:59+01:00",
+    "_identity": "wl|störung|L=10|D=2026-02-01"
   }
 ]
