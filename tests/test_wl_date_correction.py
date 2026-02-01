@@ -15,7 +15,7 @@ class DummySession:
 
 def _setup_fetch(monkeypatch, traffic_infos=None, news=None):
     monkeypatch.setattr(
-        "src.providers.wl_fetch._fetch_departure_board_for_stations",
+        "src.providers.wl_fetch._fetch_traffic_infos",
         lambda *a, **kw: traffic_infos or [],
     )
     monkeypatch.setattr(

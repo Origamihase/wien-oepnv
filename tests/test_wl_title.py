@@ -47,7 +47,7 @@ def test_bucket_merge_prefers_informative_title_and_description(monkeypatch):
             return False
 
     monkeypatch.setattr(
-        "src.providers.wl_fetch._fetch_departure_board_for_stations",
+        "src.providers.wl_fetch._fetch_traffic_infos",
         lambda *a, **kw: [generic, detailed],
     )
     monkeypatch.setattr(
