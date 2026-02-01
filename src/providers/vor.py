@@ -648,6 +648,84 @@ def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
                         continue
                     yield entry
 
+    # 3. Departures (Detailed check for cancellations and embedded messages)
+    departures: List[Any] = []
+    if "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
+        board = payload["DepartureBoard"]
+        if "Departure" in board:
+            dep_container = board["Departure"]
+            if isinstance(dep_container, list):
+                departures = dep_container
+            elif isinstance(dep_container, Mapping):
+                departures = [dep_container]
+
+    for dep in departures:
+        if not isinstance(dep, Mapping):
+            continue
+
+        # 3a. Handle cancelled=True
+        cancelled_val = dep.get("cancelled")
+        is_cancelled = False
+        if isinstance(cancelled_val, bool) and cancelled_val:
+            is_cancelled = True
+        elif isinstance(cancelled_val, str) and cancelled_val.lower() == "true":
+            is_cancelled = True
+
+        if is_cancelled:
+            product = dep.get("Product") or {}
+            line_name = (
+                str(
+                    product.get("displayNumber")
+                    or product.get("name")
+                    or dep.get("name")
+                    or "Zug"
+                )
+                .strip()
+            )
+            direction = str(dep.get("direction") or "").strip()
+
+            head = f"Zugausfall: {line_name}"
+            if direction:
+                head += f" nach {direction}"
+
+            yield {
+                "head": head,
+                "text": "Fahrt fällt aus.",
+                "sDate": dep.get("date"),
+                "sTime": dep.get("time"),
+                # Pass product to help _extract_lines
+                "products": {"Product": [product]} if product else {},
+                # We assume no specific stops listed for cancellation unless expanded
+            }
+
+        # 3b. Handle rtMessages / warnings inside departure
+        for key in ["rtMessages", "warnings"]:
+            if key in dep:
+                dep_container = dep[key]
+                msg_iterable: List[Any] = []
+                if isinstance(dep_container, list):
+                    msg_iterable = dep_container
+                elif isinstance(dep_container, Mapping):
+                    if "Message" in dep_container:
+                        sub = dep_container["Message"]
+                        if isinstance(sub, list):
+                            msg_iterable = sub
+                        elif isinstance(sub, Mapping):
+                            msg_iterable = [sub]
+                    else:
+                        msg_iterable = [dep_container]
+
+                for msg in msg_iterable:
+                    if isinstance(msg, Mapping):
+                        # Avoid modifying original message in case it's reused
+                        msg_copy = dict(msg)
+                        # Inject product if missing, so _extract_lines works
+                        if "products" not in msg_copy and "Products" not in msg_copy:
+                            product = dep.get("Product")
+                            if product:
+                                msg_copy["products"] = {"Product": [product]}
+                        yield msg_copy
+
 
 def _parse_dt(date_str: Any, time_str: Any) -> datetime | None:
     date_txt = str(date_str or "").strip()
