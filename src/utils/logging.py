@@ -37,7 +37,9 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
         r"client_secret|access_token|refresh_token|client_id|signature|password|"
         r"accessid|id_token|session|apikey|secret|ticket|token|code|key|sig|sid|"
         r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid|"
-        r"authorization|auth|bearer_token|api_key|auth_token"
+        r"authorization|auth|bearer_token|api_key|auth_token|"
+        r"tenant_id|tenant|subscription_id|subscription|object_id|oid|"
+        r"code_challenge|code_verifier"
     )
 
     # Common header-safe keys for broad redaction in Header: Value pairs
