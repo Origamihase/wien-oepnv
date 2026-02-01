@@ -597,13 +597,13 @@ def _extract_lines(message: Mapping[str, Any]) -> List[str]:
 def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
     # Traffic Info (HIM) typically uses 'trafficInfos' or 'himMessages'
     if "trafficInfos" in payload:
-        container = payload["trafficInfos"]
-        if isinstance(container, list):
-            for entry in container:
+        traffic_container = payload["trafficInfos"]
+        if isinstance(traffic_container, list):
+            for entry in traffic_container:
                 yield entry
             return
-        elif isinstance(container, Mapping):
-            yield container
+        elif isinstance(traffic_container, Mapping):
+            yield traffic_container
             return
 
     # Fallback to legacy board structure if needed
