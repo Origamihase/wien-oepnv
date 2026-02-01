@@ -38,7 +38,7 @@ def test_fetch_events_uses_whitelist_by_default(monkeypatch, caplog):
         captured_ids.append(station_id)
         return {} # Return empty dict to simulate success
 
-    monkeypatch.setattr(vor, "_fetch_stationboard", mock_fetch)
+    monkeypatch.setattr(vor, "_fetch_traffic_info", mock_fetch)
 
     # Ensure env var is NOT set (simulating default)
     monkeypatch.delenv("VOR_MONITOR_STATIONS_WHITELIST", raising=False)
@@ -80,7 +80,7 @@ def test_fetch_events_uses_configured_whitelist(monkeypatch):
     def mock_fetch(sid, now):
         fetched_ids.append(sid)
         return {}
-    monkeypatch.setattr(vor, "_fetch_stationboard", mock_fetch)
+    monkeypatch.setattr(vor, "_fetch_traffic_info", mock_fetch)
 
     vor.fetch_events()
 
@@ -108,7 +108,7 @@ def test_fetch_events_disabled_whitelist_fallback(monkeypatch):
     def mock_fetch(sid, now):
         fetched_ids.append(sid)
         return {}
-    monkeypatch.setattr(vor, "_fetch_stationboard", mock_fetch)
+    monkeypatch.setattr(vor, "_fetch_traffic_info", mock_fetch)
 
     # Mock resolve_station_ids to assert it's NOT called for whitelist
     def mock_resolve(names):
@@ -135,7 +135,7 @@ def test_whitelist_respects_request_limits(monkeypatch, caplog):
     def mock_fetch(sid, now):
         captured_ids.append(sid)
         return {}
-    monkeypatch.setattr(vor, "_fetch_stationboard", mock_fetch)
+    monkeypatch.setattr(vor, "_fetch_traffic_info", mock_fetch)
 
     with caplog.at_level("INFO"):
         items = vor.fetch_events()

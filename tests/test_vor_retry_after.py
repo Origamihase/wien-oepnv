@@ -35,7 +35,7 @@ def test_retry_after_invalid_value(monkeypatch, caplog):
 
     caplog.set_level(logging.WARNING, logger=vor.log.name)
 
-    result = vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
+    result = vor._fetch_traffic_info("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
     assert any("ungültiges Retry-After" in message for message in caplog.messages)
@@ -61,7 +61,7 @@ def test_retry_after_missing_header(monkeypatch, caplog):
 
     caplog.set_level(logging.WARNING, logger=vor.log.name)
 
-    result = vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
+    result = vor._fetch_traffic_info("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
     assert sleep_calls == [vor.RETRY_AFTER_FALLBACK_SEC]
@@ -86,7 +86,7 @@ def test_retry_after_numeric_value(monkeypatch):
 
     monkeypatch.setattr(vor.time, "sleep", fake_sleep)
 
-    result = vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
+    result = vor._fetch_traffic_info("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
     assert sleep_calls == [3.5]
@@ -121,27 +121,7 @@ def test_retry_after_http_date(monkeypatch):
 
     monkeypatch.setattr(vor.time, "sleep", fake_sleep)
 
-    result = vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
+    result = vor._fetch_traffic_info("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
     assert sleep_calls == [delay.total_seconds()]
-
-
-def test_fetch_stationboard_sends_products_param(monkeypatch):
-    captured_params: dict[str, object] = {}
-
-    def fake_fetch(session, url, params=None, **kwargs):
-        if params:
-            captured_params.update(params)
-        return b"{}"
-
-    monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch)
-    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
-    monkeypatch.setattr(vor, "ALLOW_BUS", False)
-
-    result = vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
-
-    assert result == {}
-    assert "products" in captured_params
-    expected_mask = vor._product_class_bitmask(vor._desired_product_classes())
-    assert captured_params["products"] == str(expected_mask)

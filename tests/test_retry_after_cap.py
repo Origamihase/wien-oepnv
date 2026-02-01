@@ -35,7 +35,7 @@ def test_vor_retry_after_capped(monkeypatch, caplog):
     caplog.set_level(logging.WARNING, logger=vor.log.name)
 
     # Trigger the fetch
-    vor._fetch_stationboard("123", datetime(2024, 1, 1, 12, 0))
+    vor._fetch_traffic_info("123", datetime(2024, 1, 1, 12, 0))
 
     # Expect the sleep to be capped (assuming we will set it to 120)
     assert len(sleep_calls) > 0

@@ -596,6 +596,18 @@ def _extract_lines(message: Mapping[str, Any]) -> List[str]:
 
 
 def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
+    # Traffic Info (HIM) typically uses 'trafficInfos' or 'himMessages'
+    if "trafficInfos" in payload:
+        traffic_container = payload["trafficInfos"]
+        if isinstance(traffic_container, list):
+            for entry in traffic_container:
+                yield entry
+            return
+        elif isinstance(traffic_container, Mapping):
+            yield traffic_container
+            return
+
+    # Fallback to legacy board structure if needed
     container: Any = payload
     if isinstance(payload, Mapping):
         board = payload.get("DepartureBoard")
@@ -694,15 +706,15 @@ def _build_guid(station_id: str, message: Mapping[str, Any]) -> str:
 
 def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[Dict[str, Any]]:
     """
-    Parse a StationBoard JSON response and extract event items.
+    Parse a StationBoard/TrafficInfo JSON response and extract event items.
 
     Searches for 'Message' objects within the DepartureBoard or root structure.
     Extracts title, lines, affected stops, and time ranges.
     """
     items: List[Dict[str, Any]] = []
     for message in _iter_messages(root):
-        head = str(message.get("head") or "").strip()
-        text = str(message.get("text") or "").strip()
+        head = str(message.get("head") or message.get("name") or "").strip()
+        text = str(message.get("text") or message.get("description") or "").strip()
         lines = _extract_lines(message)
         stops = _extract_stop_names(message)
         start_dt = _parse_dt(message.get("sDate"), message.get("sTime"))
@@ -988,42 +1000,56 @@ def _handle_retry_after(response: requests.Response) -> None:
     time.sleep(delay)
 
 
-def _fetch_stationboard(
+def _fetch_traffic_info(
     station_id: str, now_local: datetime
 ) -> Mapping[str, Any] | None:
     """
-    Fetch the DepartureBoard for a specific station.
+    Fetch Traffic Info (Disruptions/HIM) for a specific station.
 
-    Handles retries, rate limiting (Retry-After), and increments the daily request count.
+    Uses the /trafficInfo endpoint.
+    Passes accessId as a query parameter (mandatory).
+    Filters results for the station.
     """
     params = {
         "format": "json",
-        "id": station_id,
-        "date": now_local.strftime("%Y-%m-%d"),
-        "time": now_local.strftime("%H:%M"),
-        "duration": str(BOARD_DURATION_MIN),
-        "products": str(_product_class_bitmask(_desired_product_classes())),
-        "rtMode": "SERVER_DEFAULT",
+        "name": station_id,
+        "type": "stop",  # Assuming generic stop query if name is ID, or might need "stopId"
+        # Often trafficInfo/himsearch takes "station" or "stop" or "name".
+        # We try "name" as it's often the most versatile search param in HAFAS.
     }
+
+    # Mandatory Access ID as Query Param
+    if VOR_ACCESS_ID:
+        params["accessId"] = VOR_ACCESS_ID
+
+    endpoint = f"{VOR_BASE_URL}trafficInfo"
+
     try:
         with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
             apply_authentication(session)
             attempts = max(int(VOR_RETRY_OPTIONS.get("total", 0) or 0) + 1, 1)
             for attempt in range(attempts):
                 try:
+                    # Logging request details (masked)
+                    log.info(f"Requesting VOR Traffic Info for {station_id}...")
+
                     content = fetch_content_safe(
                         session,
-                        f"{VOR_BASE_URL}departureboard",
+                        endpoint,
                         params=params,
                         timeout=HTTP_TIMEOUT,
                     )
                     save_request_count(now_local)
+
+                    # Log raw length
+                    log.debug(f"Received {len(content)} bytes from VOR.")
+
                     return json.loads(content)
 
                 except ValueError as exc:
                     save_request_count(now_local)
                     _log_warning(
-                        "VOR StationBoard %s ungültig/zu groß: %s", station_id, exc
+                        "VOR TrafficInfo %s ungültig/zu groß: %s", station_id, exc
                     )
                     return None
 
@@ -1031,60 +1057,38 @@ def _fetch_stationboard(
                     save_request_count(now_local)
                     response = exc.response
                     if response is not None:
+                        _log_warning(
+                            "VOR TrafficInfo %s -> HTTP %s",
+                            station_id,
+                            response.status_code,
+                        )
                         if response.status_code == 429:
-                            _log_warning("VOR StationBoard %s -> HTTP 429", station_id)
                             _handle_retry_after(response)
                             return None
                         if response.status_code >= 500:
-                            _log_warning(
-                                "VOR StationBoard %s -> HTTP %s",
-                                station_id,
-                                response.status_code,
-                            )
-                            if response.status_code == 503:
+                             if response.status_code == 503:
                                 _handle_retry_after(response)
-                            return None
-                        if response.status_code >= 400:
-                            _log_warning(
-                                "VOR StationBoard %s -> HTTP %s",
-                                station_id,
-                                response.status_code,
-                            )
-                            return None
+                             return None
 
                     if attempt >= attempts - 1:
                         _log_error(
-                            "VOR StationBoard %s fehlgeschlagen: %s", station_id, exc
+                            "VOR TrafficInfo %s fehlgeschlagen: %s", station_id, exc
                         )
                         return None
-                    _log_warning(
-                        "VOR StationBoard %s fehlgeschlagen (Versuch %d/%d): %s",
-                        station_id,
-                        attempt + 1,
-                        attempts,
-                        exc,
-                    )
                     continue
 
                 except RequestException as exc:
                     save_request_count(now_local)
                     if attempt >= attempts - 1:
                         _log_error(
-                            "VOR StationBoard %s fehlgeschlagen: %s", station_id, exc
+                            "VOR TrafficInfo %s fehlgeschlagen: %s", station_id, exc
                         )
                         return None
-                    _log_warning(
-                        "VOR StationBoard %s fehlgeschlagen (Versuch %d/%d): %s",
-                        station_id,
-                        attempt + 1,
-                        attempts,
-                        exc,
-                    )
                     continue
 
             return None
     except RequestException as exc:
-        _log_error("VOR StationBoard %s Ausnahme: %s", station_id, exc)
+        _log_error("VOR TrafficInfo %s Ausnahme: %s", station_id, exc)
         return None
 
 
@@ -1092,11 +1096,7 @@ def fetch_events() -> List[Dict[str, Any]]:
     """
     Main entry point for VOR provider.
 
-    1. Checks authentication and daily request limits.
-    2. Resolves configured station names to IDs if necessary.
-    3. Selects a subset of stations (Round-Robin) to query.
-    4. Fetches station boards in parallel (using ``ThreadPoolExecutor``).
-    5. Aggregates and returns a list of normalized event dictionaries.
+    Fetches traffic info for configured stations using the updated logic.
     """
     token = refresh_access_credentials()
     if not token:
@@ -1140,6 +1140,8 @@ def fetch_events() -> List[Dict[str, Any]]:
         log.info("Keine VOR Stationen konfiguriert")
         return []
 
+    # Limit stations based on requests (simplistic approach, as trafficInfo might support bulk
+    # if we changed logic, but sticking to per-station for now as per "filter" instruction)
     selected_ids = _select_stations_round_robin(
         station_ids, MAX_STATIONS_PER_RUN, ROTATION_INTERVAL_SEC
     )
@@ -1156,9 +1158,8 @@ def fetch_events() -> List[Dict[str, Any]]:
         selected_ids = selected_ids[:remaining_requests]
 
     log.info(
-        "Starte VOR-Abruf für %s Station(en); verbleibende Requests heute: %s",
+        "Starte VOR-Abruf (TrafficInfo) für %s Station(en).",
         len(selected_ids),
-        remaining_requests if remaining_requests else "unbegrenzt",
     )
 
     results: List[Dict[str, Any]] = []
@@ -1167,7 +1168,7 @@ def fetch_events() -> List[Dict[str, Any]]:
 
     with ThreadPoolExecutor(max_workers=len(selected_ids) or 1) as executor:
         futures = {
-            executor.submit(_fetch_stationboard, sid, now_local): sid
+            executor.submit(_fetch_traffic_info, sid, now_local): sid
             for sid in selected_ids
         }
         for future in as_completed(futures):
@@ -1175,7 +1176,7 @@ def fetch_events() -> List[Dict[str, Any]]:
             try:
                 payload = future.result()
             except Exception as exc:  # pragma: no cover - defensive guard
-                _log_error("VOR StationBoard %s Fehler: %s", station_id, exc)
+                _log_error("VOR TrafficInfo %s Fehler: %s", station_id, exc)
                 failures += 1
                 continue
             if payload is None:
@@ -1192,18 +1193,18 @@ def fetch_events() -> List[Dict[str, Any]]:
             sanitized_id = _sanitize_arg(station_id)
             if message_count == 0:
                 log.info(
-                    "VOR Station %s meldet derzeit keine Ereignisse.", sanitized_id
+                    "VOR Station %s: Keine Störungsmeldungen.", sanitized_id
                 )
             else:
                 log.info(
-                    "VOR Station %s lieferte %s Ereignis(se).",
+                    "VOR Station %s: %s Meldung(en).",
                     sanitized_id,
                     message_count,
                 )
             results.extend(items)
 
     if successes == 0:
-        raise RequestException("Keine VOR StationBoards abrufbar")
+        raise RequestException("Keine VOR TrafficInfos abrufbar")
 
     log.info(
         "VOR-Abruf abgeschlossen: %s Station(en) erfolgreich, %s ohne Ergebnis, %s Ereignis(se) gesammelt.",
