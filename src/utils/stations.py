@@ -272,6 +272,9 @@ def _station_entries() -> tuple[dict, ...]:
     except (OSError, json.JSONDecodeError):  # pragma: no cover - defensive
         return ()
 
+    if isinstance(entries, dict):
+        entries = entries.get("stations", [])
+
     if not isinstance(entries, list):
         return ()
 
@@ -296,7 +299,7 @@ def _station_lookup() -> dict[str, StationInfo]:
         code = str(code_raw).strip() if code_raw is not None else ""
         wl_diva_raw = entry.get("wl_diva")
         wl_diva = str(wl_diva_raw).strip() if wl_diva_raw is not None else ""
-        vor_id_raw = entry.get("vor_id")
+        vor_id_raw = entry.get("vor_id") or entry.get("id")
         vor_id = str(vor_id_raw).strip() if vor_id_raw is not None else ""
         extra_aliases: set[str] = set()
         if wl_diva:
@@ -335,8 +338,8 @@ def _station_lookup() -> dict[str, StationInfo]:
                         longitude=longitude,
                     )
                 )
-        station_latitude = _coerce_float(entry.get("latitude"))
-        station_longitude = _coerce_float(entry.get("longitude"))
+        station_latitude = _coerce_float(entry.get("latitude") or entry.get("lat"))
+        station_longitude = _coerce_float(entry.get("longitude") or entry.get("lon"))
         source_text = str(entry.get("source") or "")
         base_record = StationInfo(
             name=name,
@@ -557,7 +560,7 @@ def vor_station_ids() -> tuple[str, ...]:
     for entry in _station_entries():
         if not (entry.get("in_vienna") or entry.get("pendler")):
             continue
-        vor_id_raw = entry.get("vor_id")
+        vor_id_raw = entry.get("vor_id") or entry.get("id")
         if vor_id_raw is not None:
             vor_id = str(vor_id_raw).strip()
             if vor_id:

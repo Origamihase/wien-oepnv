@@ -423,6 +423,9 @@ def _load_existing_station_entries(path: Path) -> dict[int, Mapping[str, object]
         logger.warning("Could not parse existing station directory %s: %s", path, exc)
         return {}
 
+    if isinstance(payload, dict):
+        payload = payload.get("stations", [])
+
     mapping: dict[int, Mapping[str, object]] = {}
     if isinstance(payload, list):
         for entry in payload:
@@ -1082,7 +1085,8 @@ def load_pendler_station_ids(path: Path) -> set[int]:
 
 
 def write_json(stations: list[Station], output_path: Path) -> None:
-    payload = [station.as_dict() for station in stations]
+    stations_list = [station.as_dict() for station in stations]
+    payload = {"stations": stations_list}
     # Use atomic_write to prevent partial writes and reduce race conditions.
     with atomic_write(output_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         json.dump(payload, handle, ensure_ascii=False, indent=2)

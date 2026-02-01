@@ -16,7 +16,10 @@ COMMUTER_STATIONS = {
 def _load_station_directory() -> list[dict[str, object]]:
     stations_path = Path(__file__).resolve().parents[1] / "data" / "stations.json"
     with stations_path.open("r", encoding="utf-8") as handle:
-        return json.load(handle)
+        data = json.load(handle)
+        if isinstance(data, dict):
+            return data.get("stations", [])
+        return data
 
 
 def _lookup_station(entries: list[dict[str, object]], name: str) -> dict[str, object]:

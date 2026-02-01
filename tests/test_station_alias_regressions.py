@@ -16,6 +16,8 @@ from scripts.update_station_directory import (
 def _load_station_payload(path: Path) -> list[dict[str, object]]:
     with path.open("r", encoding="utf-8") as handle:
         payload = json.load(handle)
+    if isinstance(payload, dict):
+        payload = payload.get("stations", [])
     if not isinstance(payload, list):
         pytest.fail("stations.json must contain a list of station entries")
     return [entry for entry in payload if isinstance(entry, dict)]

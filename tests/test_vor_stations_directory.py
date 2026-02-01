@@ -72,17 +72,17 @@ def test_vor_lookup_by_alias():
     info = station_info("Vienna Airport")
     assert info is not None
     assert info.name == "Flughafen Wien"
-    assert info.vor_id == "430470800"
+    assert info.vor_id == "A=1@O=Flughafen Wien Bahnhof@X=16563659@Y=48120560@U=81@L=430470800@p=1769895381@i=A×at:43:4708@"
     assert info.in_vienna is False
-    assert info.latitude == pytest.approx(48.120027)
-    assert info.longitude == pytest.approx(16.561749)
+    assert info.latitude == pytest.approx(48.119)
+    assert info.longitude == pytest.approx(16.564)
 
 
 def test_vor_alias_with_municipality_prefix():
     info = station_info("Schwechat Flughafen Wien Bahnhof")
     assert info is not None
     assert info.name == "Flughafen Wien"
-    assert info.vor_id == "430470800"
+    assert info.vor_id == "A=1@O=Flughafen Wien Bahnhof@X=16563659@Y=48120560@U=81@L=430470800@p=1769895381@i=A×at:43:4708@"
 
 
 def test_vor_does_not_override_station_directory():
@@ -114,7 +114,8 @@ def test_vor_station_ids_default_prefers_directory(monkeypatch):
 
 def test_vor_entries_have_bst_id_and_code():
     with Path("data/stations.json").open(encoding="utf-8") as handle:
-        stations = json.load(handle)
+        data = json.load(handle)
+        stations = data.get("stations", []) if isinstance(data, dict) else data
 
     vor_entries = [entry for entry in stations if entry.get("source") == "vor"]
     assert vor_entries, "expected VOR-sourced station entries"

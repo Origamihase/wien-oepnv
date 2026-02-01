@@ -13,6 +13,8 @@ _STATIONS_PATH = Path(__file__).resolve().parents[1] / "data" / "stations.json"
 def station_entries():
     with _STATIONS_PATH.open("r", encoding="utf-8") as handle:
         data = json.load(handle)
+    if isinstance(data, dict):
+        data = data.get("stations", [])
     if not isinstance(data, list):
         pytest.fail("stations.json must contain a list of station entries")
     entries = []
