@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import ipaddress
 import logging
+import os
 import re
 import socket
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
@@ -153,6 +154,16 @@ def session_with_retries(
     session.headers.update({
         "User-Agent": user_agent,
     })
+
+    proxies_configured = any(
+        k.upper() in ("HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY") for k in os.environ
+    )
+    if session.trust_env and proxies_configured:
+        log.warning(
+            "Security: Proxy configuration detected in environment. "
+            "DNS Rebinding protection (verify_response_ip) may be bypassed."
+        )
+
     return session
 
 
