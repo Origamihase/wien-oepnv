@@ -298,8 +298,10 @@ def _is_relevant(title: str, description: str) -> bool:
     if "↔" in title or ARROW_ANY_RE.search(title):
         return False
 
-    # Fallback: Keine bekannten Bahnhöfe gefunden (z.B. "Allgemeine Störung"). Behalten.
-    return True
+    # Fallback: Keine bekannten Bahnhöfe gefunden.
+    # Strict Policy: "Wenn ein Bahnhof unbekannt ist, gehört die Meldung nicht in den Feed."
+    # Das bedeutet auch: "Allgemeine Störungen" ohne expliziten Wien-Bezug (Check A/B) werden gefiltert.
+    return False
 
 # ---------------- Region helpers ----------------
 _MAX_STATION_WINDOW = 4

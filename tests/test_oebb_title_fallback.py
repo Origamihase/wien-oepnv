@@ -35,8 +35,8 @@ def mock_xml_response(items):
 @patch("src.providers.oebb.canonical_name")
 def test_oebb_title_fallback_id(mock_canon, mock_station_lookup, mock_fetch):
     # Setup
-    mock_station_lookup.return_value = "ID-Station"
-    mock_canon.side_effect = lambda x: x if x == "ID-Station" else None
+    mock_station_lookup.return_value = "Wien ID-Station"
+    mock_canon.side_effect = lambda x: x if x == "Wien ID-Station" else None
 
     # Item with poor title but valid ID in link
     # NOTE: In XML, & must be escaped as &amp;, but _extract_id_from_url will run on the parsed text content.
@@ -57,7 +57,7 @@ def test_oebb_title_fallback_id(mock_canon, mock_station_lookup, mock_fetch):
 
     # Verify
     assert len(events) == 1
-    assert events[0]["title"] == "ID-Station"
+    assert events[0]["title"] == "Wien ID-Station"
     # Ensure ID extraction works (123456)
     mock_station_lookup.assert_called_with(123456)
 
@@ -76,10 +76,11 @@ def test_oebb_title_fallback_text(mock_canon, mock_station_lookup, mock_fetch):
     mock_canon.side_effect = fake_canon
 
     # Item with poor title, no ID, but text contains station
+    # Ensure description contains "Wien" to pass strict filtering
     items = [{
         "title": "-",
         "link": "http://fahrplan.oebb.at/no-id",
-        "description": "Bauarbeiten in Text-Station wegen Wartung.",
+        "description": "Bauarbeiten in Text-Station (Wien) wegen Wartung.",
         "guid": "guid-2"
     }]
 
@@ -98,7 +99,7 @@ def test_oebb_title_fallback_truncation(mock_canon, mock_station_lookup, mock_fe
     mock_station_lookup.return_value = None
     mock_canon.return_value = None # No stations found in text
 
-    long_desc = "This is a very long description that definitely exceeds the limit of forty characters I assume."
+    long_desc = "Wien: This is a very long description that definitely exceeds the limit of forty characters I assume."
     items = [{
         "title": "-",
         "link": "http://fahrplan.oebb.at/no-id",
