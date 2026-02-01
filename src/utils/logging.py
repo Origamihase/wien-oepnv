@@ -51,6 +51,8 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
 
     # Common patterns for secrets in URLs/Headers
     patterns: List[Tuple[str, str]] = [
+        # Basic Auth in URLs (protocol://user:pass@host)
+        (r"(?i)([a-z0-9+.-]+://)([^/@\s]+)@", r"\1***@"),
         # Query parameters (key=value or key%3dvalue)
         (rf"(?i)((?:{_keys})(?:%3d|=))([^&\s]+)", r"\1***"),
         # Correctly handle escaped characters in JSON strings (regex: (?:\\.|[^"\\])* )
