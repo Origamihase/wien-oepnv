@@ -53,10 +53,18 @@ class TestOebbFiltering:
         ) is True
 
     def test_relevant_general_disruption(self):
-        # General disruption without station or arrow -> Keep (Fallback)
+        # General disruption without station or arrow
+        # Strict Mode: Excluded unless explicitly mentioning Vienna.
         assert _is_relevant(
             "Sturmwarnung",
             "Es kommt zu Verzögerungen im gesamten Netz."
+        ) is False
+
+    def test_relevant_general_disruption_with_vienna(self):
+        # General disruption WITH Vienna reference -> Keep
+        assert _is_relevant(
+            "Sturm im Raum Wien",
+            "Verzögerungen bei der S-Bahn Wien."
         ) is True
 
     def test_irrelevant_outer_only(self):
