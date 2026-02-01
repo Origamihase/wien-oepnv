@@ -344,6 +344,9 @@ def refresh_base_configuration() -> str:
     base_url_env = _get_env("VOR_BASE_URL")
     base_env = _get_env("VOR_BASE")
     version_env = _get_env("VOR_VERSION")
+    # Support VOR_VERSIONS as a fallback/alias for the version string
+    if not version_env:
+        version_env = _get_env("VOR_VERSIONS")
 
     version = version_env or DEFAULT_VERSION
 

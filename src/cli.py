@@ -83,7 +83,14 @@ def _run_script(
     del python  # Interpreter selection is handled via runpy in the current process.
     cleaned_args = _clean_remainder(list(extra_args or []))
     with _patched_argv(script_path, cleaned_args):
-        runpy.run_path(str(script_path), run_name="__main__")
+        try:
+            runpy.run_path(str(script_path), run_name="__main__")
+        except SystemExit as e:
+            if e.code is not None and e.code != 0:
+                if isinstance(e.code, int):
+                    return e.code
+                print(e.code, file=sys.stderr)
+                return 1
     return 0
 
 
