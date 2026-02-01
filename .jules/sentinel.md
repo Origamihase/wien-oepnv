@@ -47,3 +47,8 @@
 **Vulnerability:** `scripts/generate_sitemap.py` constructed XML using string concatenation, allowing invalid XML characters (like `&`) in `SITE_BASE_URL` to break the sitemap structure.
 **Learning:** Even internal helper scripts dealing with "static" sites need proper output encoding if they handle environment variables.
 **Prevention:** Use `xml.etree.ElementTree` or similar libraries for XML generation instead of manual string formatting.
+
+## 2026-02-01 - Incomplete Log Sanitization for OAuth Tokens
+**Vulnerability:** The log sanitization logic in `src/utils/logging.py` and `src/utils/http.py` relied on a manual list of sensitive keys (`token`, `key`, `password`) but missed common OAuth and API terms like `client_id`, `access_token`, `refresh_token`, and `code`. This could result in leaking high-value credentials in logs if they appeared in query parameters or JSON payloads during errors or debugging.
+**Learning:** Security allowlists/blocklists for sensitive terms must be comprehensive and account for standard industry terminology (e.g., OAuth 2.0 specs). Partial lists create a false sense of security.
+**Prevention:** Updated both `_SENSITIVE_QUERY_KEYS` in `src/utils/http.py` and the regex patterns in `src/utils/logging.py` to include a wider range of sensitive keys (`client_id`, `access_token`, `refresh_token`, `id_token`, `code`, `sig`, `signature`, `session`, `sid`, `ticket`). Refactored `logging.py` to use a shared regex pattern for maintainability.

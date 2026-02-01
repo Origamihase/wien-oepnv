@@ -11,6 +11,9 @@ def test_run_report_creates_github_issue(monkeypatch):
     monkeypatch.setenv("FEED_GITHUB_CREATE_ISSUES", "1")
     monkeypatch.setenv("FEED_GITHUB_REPOSITORY", "demo/repo")
     monkeypatch.setenv("FEED_GITHUB_TOKEN", "secret-token")
+    # Bypass DNS check in test environment
+    monkeypatch.setattr("feed.reporting.validate_http_url", lambda url: url)
+    monkeypatch.setattr("feed.reporting.verify_response_ip", lambda _: None)
 
     responses.post(
         "https://api.github.com/repos/demo/repo/issues",
