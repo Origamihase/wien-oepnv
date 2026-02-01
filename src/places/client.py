@@ -5,7 +5,6 @@ from __future__ import annotations
 import logging
 import os
 import random
-import re
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -15,8 +14,10 @@ import requests
 
 try:
     from utils.http import read_response_safe, session_with_retries, verify_response_ip
+    from utils.logging import sanitize_log_arg, sanitize_log_message
 except ModuleNotFoundError:
     from ..utils.http import read_response_safe, session_with_retries, verify_response_ip  # type: ignore
+    from ..utils.logging import sanitize_log_arg, sanitize_log_message  # type: ignore
 
 from .quota import MonthlyQuota, QuotaConfig
 from .tiling import Tile
@@ -33,13 +34,12 @@ __all__ = [
 
 LOGGER = logging.getLogger("places.google")
 
-_CONTROL_CHAR_RE = re.compile(r"[\x00-\x1f\x7f]")
 _MAX_ERROR_DETAIL = 200
 
 
-def _sanitize_error_detail(detail: str) -> str:
-    # Security: Strip control characters to avoid log injection via API error bodies.
-    cleaned = _CONTROL_CHAR_RE.sub(" ", detail)
+def _sanitize_error_detail(detail: str, secrets: Optional[List[str]] = None) -> str:
+    # Security: Mask secrets and strip control characters to avoid log injection.
+    cleaned = sanitize_log_message(detail, secrets=secrets)
     return cleaned[:_MAX_ERROR_DETAIL]
 
 
@@ -50,7 +50,7 @@ def _env_int(name: str, default: int, min_v: int | None = None, max_v: int | Non
         try:
             value = int(raw)
         except ValueError:
-            LOGGER.warning("Invalid integer for %s: %s", name, raw)
+            LOGGER.warning("Invalid integer for %s: %s", name, sanitize_log_arg(raw))
             value = default
     if min_v is not None:
         value = max(min_v, value)
@@ -70,7 +70,7 @@ def _env_rank_preference(
     candidate = raw.strip().upper()
     if candidate in allowed:
         return candidate
-    LOGGER.warning("Invalid rank preference for %s: %s", name, raw)
+    LOGGER.warning("Invalid rank preference for %s: %s", name, sanitize_log_arg(raw))
     return default_normalized
 
 
@@ -158,6 +158,9 @@ class GooglePlacesClient:
         self._max_result_count = MAX_RESULTS
         self._rank_preference = RANK_PREF
 
+    def _sanitize_arg(self, arg: object) -> object:
+        return sanitize_log_arg(arg, secrets=[self._config.api_key])
+
     def iter_nearby(self, tiles: Iterable[Tile]) -> Iterator[Place]:
         for tile in tiles:
             if self._quota_skipped_kinds and self._quota_active:
@@ -236,11 +239,11 @@ class GooglePlacesClient:
 
     def _parse_place(self, raw: object) -> Optional[Place]:
         if not isinstance(raw, dict):
-            LOGGER.warning("Ignoring unexpected place payload: %r", raw)
+            LOGGER.warning("Ignoring unexpected place payload: %s", self._sanitize_arg(raw))
             return None
         place_id = raw.get("id")
         if not isinstance(place_id, str):
-            LOGGER.warning("Skipping place without valid id: %r", raw)
+            LOGGER.warning("Skipping place without valid id: %s", self._sanitize_arg(raw))
             return None
         display_name = raw.get("displayName")
         if isinstance(display_name, dict):
@@ -248,16 +251,16 @@ class GooglePlacesClient:
         else:
             name = None
         if not isinstance(name, str):
-            LOGGER.warning("Skipping place without valid name: %s", place_id)
+            LOGGER.warning("Skipping place without valid name: %s", self._sanitize_arg(place_id))
             return None
         location = raw.get("location")
         if not isinstance(location, dict):
-            LOGGER.warning("Skipping place without location: %s", place_id)
+            LOGGER.warning("Skipping place without location: %s", self._sanitize_arg(place_id))
             return None
         latitude = location.get("latitude")
         longitude = location.get("longitude")
         if not isinstance(latitude, (float, int)) or not isinstance(longitude, (float, int)):
-            LOGGER.warning("Skipping place with invalid coordinates: %s", place_id)
+            LOGGER.warning("Skipping place with invalid coordinates: %s", self._sanitize_arg(place_id))
             return None
         types_raw = raw.get("types")
         types: List[str]
@@ -348,7 +351,7 @@ class GooglePlacesClient:
                         return payload
 
                     if response.status_code in {429, 500, 502, 503, 504}:
-                        detail = _sanitize_error_detail(response.text)
+                        detail = _sanitize_error_detail(response.text, secrets=[self._config.api_key])
                         last_error = GooglePlacesError(
                             f"HTTP {response.status_code}: {detail}"
                         )
@@ -367,7 +370,7 @@ class GooglePlacesClient:
                     "Request error (attempt %s/%s): %s",
                     attempt,
                     self._config.max_retries + 1,
-                    exc,
+                    self._sanitize_arg(exc),
                 )
 
             if attempt > self._config.max_retries:
@@ -387,7 +390,7 @@ class GooglePlacesClient:
 
     def _format_error_message(self, response: requests.Response) -> str:
         status_code = response.status_code
-        detail = _sanitize_error_detail(response.text)
+        detail = _sanitize_error_detail(response.text, secrets=[self._config.api_key])
         default = f"Request failed with status {status_code}: {detail}"
         try:
             payload = response.json()
@@ -450,7 +453,7 @@ class GooglePlacesClient:
             if not candidate:
                 continue
             if candidate not in VALID_TYPES:
-                LOGGER.warning("Ignoring unsupported place type: %s", item)
+                LOGGER.warning("Ignoring unsupported place type: %s", self._sanitize_arg(item))
                 continue
             if candidate in seen:
                 continue
@@ -497,7 +500,7 @@ class GooglePlacesClient:
             path = cast(Path, self._quota_state_path)
             quota.save_atomic(path)
         except OSError as exc:
-            LOGGER.error("Failed to save Places quota state: %s", exc)
+            LOGGER.error("Failed to save Places quota state: %s", self._sanitize_arg(exc))
             raise GooglePlacesError("Failed to save quota state") from exc
 
 
