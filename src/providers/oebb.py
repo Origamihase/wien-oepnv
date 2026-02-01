@@ -35,7 +35,7 @@ if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type check
     from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.ids import make_guid
     from ..utils.logging import sanitize_log_arg
-    from ..utils.stations import canonical_name, station_by_oebb_id
+    from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna
     from ..utils.text import html_to_text
 else:  # pragma: no cover - support both package layouts at runtime
     try:
@@ -280,12 +280,14 @@ def _is_relevant(title: str, description: str) -> bool:
         return True
 
     # Check B: Ort in Wien
+    assert _VIENNA_STATIONS_RE is not None
     if _VIENNA_STATIONS_RE.search(text):
         return True
 
     # Check C: Ausschluss Umland
     # Wir sind hier nur, wenn WEDER Wien-Keyword NOCH Wien-Bahnhof gefunden wurde.
     # Wenn jetzt EIN Outer-Bahnhof gefunden wird, ist es eine "reine Umland-Meldung" -> Weg damit.
+    assert _OUTER_STATIONS_RE is not None
     if _OUTER_STATIONS_RE.search(text):
         return False
 

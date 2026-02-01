@@ -10,11 +10,11 @@ try:
     from ..utils.logging import sanitize_log_message
 except ImportError:
     try:
-        from utils.logging import sanitize_log_message
+        from utils.logging import sanitize_log_message  # type: ignore[no-redef]
     except ImportError:
         # Fallback to simple replacement if utils not available (e.g. running script directly)
-        def sanitize_log_message(s: str, secrets: list[str] | None = None) -> str:
-            return s.replace("\n", "\\n").replace("\r", "\\r")
+        def sanitize_log_message(text: str, secrets: list[str] | None = None) -> str:
+            return text.replace("\n", "\\n").replace("\r", "\\r")
 
 class SafeFormatter(logging.Formatter):
     """
@@ -110,7 +110,7 @@ class SafeJSONFormatter(logging.Formatter):
         return json.dumps(payload, ensure_ascii=False)
 
 
-def _vienna_time_converter(timestamp: float | None) -> tuple:
+def _vienna_time_converter(timestamp: float | None) -> Any:
     effective_timestamp = (
         timestamp
         if timestamp is not None

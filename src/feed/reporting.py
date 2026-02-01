@@ -703,7 +703,7 @@ class _GithubIssueReporter:
             )
             return
 
-        payload = {
+        payload: Dict[str, Any] = {
             "title": self._build_title(report),
             "body": self._build_body(report),
         }
