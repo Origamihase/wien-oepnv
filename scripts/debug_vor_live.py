@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-Debug-Skript für VOR API: Station Discovery & DepartureBoard Test.
-Ziel: Ermittlung der korrekten Station-IDs (HAFAS-Format) für data/stations.json.
+LOW-LEVEL DIAGNOSE SKRIPT FÜR VOR API.
+Fokus: Raw Response Body bei 400 Errors, Auth-Alternativen testen.
 """
 
 import json
@@ -11,7 +11,6 @@ import logging
 import os
 import sys
 import requests
-from pathlib import Path
 
 # Füge das Projektverzeichnis zum Pfad hinzu, um src zu importieren
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -24,127 +23,100 @@ except ImportError:
 
 # Logging Setup
 logging.basicConfig(level=logging.INFO, format="%(message)s")
-logger = logging.getLogger("VOR_DEBUG")
+logger = logging.getLogger("VOR_DIAG")
 
-def main():
+def run_diagnostics():
     # 1. Umgebungsvariablen laden
     load_default_env_files()
     
-    # Default URL from src/providers/vor.py
+    # Defaults
     DEFAULT_BASE = "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"
 
     base_url = os.environ.get("VOR_BASE_URL", DEFAULT_BASE).rstrip("/") + "/"
     access_id = os.environ.get("VOR_ACCESS_ID")
 
     if not access_id:
-        logger.error("❌ FEHLER: VOR_ACCESS_ID fehlt in den Umgebungsvariablen (oder secrets.env).")
+        logger.error("❌ FEHLER: VOR_ACCESS_ID fehlt in den Umgebungsvariablen.")
         sys.exit(1)
 
-    logger.info(f"Konfiguration:")
-    logger.info(f"  Base URL: {base_url}")
-    logger.info(f"  AccessID: {access_id[:4]}***")
+    logger.info("=== VOR API LOW-LEVEL DIAGNOSE ===")
+    logger.info(f"Base URL: {base_url}")
+    logger.info(f"Access ID: {access_id[:4]}*** (Länge: {len(access_id)})")
     logger.info("-" * 40)
 
-    stations_to_test = ["Wien Hauptbahnhof", "Flughafen Wien"]
+    target_station = "Wien Hauptbahnhof"
+    endpoint_url = f"{base_url}location.name"
 
-    for station_name in stations_to_test:
-        logger.info(f"\n🔍 Suche ID für: '{station_name}'")
-        found_id = resolve_station_id(base_url, access_id, station_name)
-
-        if found_id:
-            logger.info(f"✅ Gefundene ID: {found_id}")
-            logger.info(f"🚀 Teste DepartureBoard mit ID: {found_id}")
-            test_departure_board(base_url, access_id, found_id)
-        else:
-            logger.error(f"❌ Keine ID für '{station_name}' gefunden.")
-
-def resolve_station_id(base_url, access_id, name):
-    """
-    Ruft location.name auf und gibt die ID zurück.
-    Druckt das JSON des ersten Treffers.
-    """
-    url = f"{base_url}location.name"
-    params = {
+    # --- TEST 1: Standard Request ---
+    # Hier wollen wir unbedingt den Body sehen, falls es fehlschlägt.
+    logger.info("\n🔍 TEST 1: Standard Request (AccessId in URL)")
+    params_std = {
         "accessId": access_id,
         "format": "json",
-        "input": name,
+        "input": target_station,
         "type": "stop"
     }
+    _make_request(endpoint_url, params=params_std, label="Standard")
 
-    try:
-        response = requests.get(url, params=params, timeout=10)
-        response.raise_for_status()
-
-        try:
-            data = response.json()
-        except json.JSONDecodeError:
-            logger.error("❌ Response war kein gültiges JSON.")
-            return None
-
-        # Suche nach StopLocation
-        stops = []
-        if "StopLocation" in data:
-            stops = data["StopLocation"]
-        elif "LocationList" in data and "StopLocation" in data["LocationList"]:
-             stops = data["LocationList"]["StopLocation"]
-
-        # Manchmal ist es ein einzelnes Dict, keine Liste
-        if isinstance(stops, dict):
-            stops = [stops]
-
-        if not stops:
-             logger.info("ℹ️ Keine StopLocations im Response gefunden.")
-             # Debug output
-             logger.info(json.dumps(data, indent=2))
-             return None
-
-        first_hit = stops[0]
-
-        # WICHTIG: Komplettes JSON für den ersten Treffer ausgeben
-        logger.info("📋 JSON Response (Erster Treffer):")
-        print(json.dumps(first_hit, indent=2))
-
-        # Extrahiere ID
-        # HAFAS IDs sind oft unter 'id' oder 'extId' zu finden
-        station_id = first_hit.get("id")
-        if not station_id:
-            station_id = first_hit.get("extId")
-
-        return station_id
-
-    except requests.exceptions.RequestException as e:
-        logger.error(f"❌ Request Error bei location.name: {e}")
-        return None
-
-def test_departure_board(base_url, access_id, station_id):
-    """
-    Testet den departureBoard Endpunkt mit der gefundenen ID.
-    """
-    url = f"{base_url}departureBoard"
-    params = {
-        "accessId": access_id,
+    # --- TEST 2: No Auth ---
+    # Prüft, ob der Endpunkt überhaupt reagiert (sollte 401 liefern)
+    logger.info("\n🔍 TEST 2: Request OHNE Auth (Erwarte 401/403)")
+    params_no_auth = {
         "format": "json",
-        "id": station_id
+        "input": target_station,
+        "type": "stop"
     }
+    _make_request(endpoint_url, params=params_no_auth, label="NoAuth")
 
+    # --- TEST 3: Alternative Parameter-Namen ---
+    logger.info("\n🔍 TEST 3: Alternative Parameter-Namen")
+    # Manche APIs nutzen 'key', 'authKey' oder 'apiKey'
+    alt_keys = ["key", "authKey", "apiKey", "api_key"]
+    for k in alt_keys:
+        logger.info(f"   Teste Parameter: ?{k}=...")
+        p = params_no_auth.copy()
+        p[k] = access_id
+        _make_request(endpoint_url, params=p, label=f"Param-{k}")
+
+    # --- TEST 4: Header Auth ---
+    logger.info("\n🔍 TEST 4: Header Authorization")
+
+    # A) Raw Header
+    headers_raw = {"Authorization": access_id}
+    _make_request(endpoint_url, params=params_no_auth, headers=headers_raw, label="Header-Raw")
+
+    # B) Bearer Token Header
+    headers_bearer = {"Authorization": f"Bearer {access_id}"}
+    _make_request(endpoint_url, params=params_no_auth, headers=headers_bearer, label="Header-Bearer")
+
+def _make_request(url, params=None, headers=None, label="Test"):
+    """
+    Führt Request aus und gibt Status + Body bei Fehlern aus.
+    """
     try:
-        response = requests.get(url, params=params, timeout=10)
+        # Kurzes Timeout für Diagnose
+        response = requests.get(url, params=params, headers=headers, timeout=10)
         status = response.status_code
 
+        msg = f"[{label}] Status: {status}"
+
         if status == 200:
-            logger.info(f"✅ departureBoard Status 200 OK")
-            # Optional: Prüfen ob Inhalt sinnvoll ist
+            logger.info(f"✅ {msg}")
+            # Prüfe ob wir validen JSON Content haben
             try:
-                content = response.json()
+                data = response.json()
+                # Nur kurzen Ausschnitt zeigen
                 logger.info("   Response ist gültiges JSON.")
-            except:
-                logger.warning("   Response 200, aber kein valides JSON?")
+            except json.JSONDecodeError:
+                logger.warning("   Response 200, aber KEIN valides JSON.")
+                logger.info(f"   Body Preview: {response.text[:200]}")
         else:
-            logger.error(f"❌ departureBoard fehlgeschlagen. Status: {status}")
-            logger.error(f"   Response Body: {response.text[:200]}...")
+            logger.error(f"❌ {msg}")
+            # DAS IST DER WICHTIGE TEIL: Error Body ausgeben!
+            logger.error(f"   Error Body: {response.text}")
 
     except requests.exceptions.RequestException as e:
-        logger.error(f"❌ Request Error bei departureBoard: {e}")
+        logger.error(f"❌ [{label}] Exception: {e}")
 
 if __name__ == "__main__":
-    main()
+    run_diagnostics()
