@@ -73,7 +73,7 @@ curl \
 
 Zusatzoptionen:
 
-* `--dump-new new_places.json` – schreibt nur neue & aktualisierte Einträge in eine separate Datei (hilfreich für Review/Artefakte).
+* `--dump-new data/new_places.json` – schreibt nur neue & aktualisierte Einträge in eine separate Datei (hilfreich für Review/Artefakte).
 * `--tiles-file tiles.json` – überschreibt `PLACES_TILES` mit einer lokalen Datei.
 
 ## Zugang schnell prüfen
