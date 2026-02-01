@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Iterable, List
+from typing import Iterable, List, Iterator, Any
+from unittest.mock import MagicMock
 
 import pytest
 
@@ -132,9 +133,24 @@ class DummyResponse:
         self.status_code = status
         self._payload = payload or {}
         self.text = json.dumps(self._payload)
+        self.headers: dict = {}
+        self.raw = MagicMock()
+        self.raw.connection.sock.getpeername.return_value = ("8.8.8.8", 443)
 
     def json(self) -> dict:
         return self._payload
+
+    def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
+        yield self.text.encode("utf-8")
+
+    def close(self) -> None:
+        pass
+
+    def __enter__(self) -> DummyResponse:
+        return self
+
+    def __exit__(self, *args: Any) -> None:
+        pass
 
 
 class DummySession:
@@ -142,7 +158,7 @@ class DummySession:
         self._responses = responses
         self.calls: List[dict] = []
 
-    def post(self, url: str, *, headers: dict, json: dict, timeout: float) -> DummyResponse:
+    def post(self, url: str, *, headers: dict, json: dict, timeout: float, **kwargs: Any) -> DummyResponse:
         if not self._responses:
             raise AssertionError("No more responses queued")
         self.calls.append({"url": url, "json": json, "headers": headers, "timeout": timeout})

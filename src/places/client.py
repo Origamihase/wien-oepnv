@@ -14,9 +14,9 @@ from typing import Dict, Iterable, Iterator, List, Optional, Sequence, Set, cast
 import requests
 
 try:
-    from utils.http import session_with_retries
+    from utils.http import read_response_safe, session_with_retries, verify_response_ip
 except ModuleNotFoundError:
-    from ..utils.http import session_with_retries
+    from ..utils.http import read_response_safe, session_with_retries, verify_response_ip  # type: ignore
 
 from .quota import MonthlyQuota, QuotaConfig
 from .tiling import Tile
@@ -311,40 +311,64 @@ class GooglePlacesClient:
         while attempt <= self._config.max_retries:
             attempt += 1
             try:
-                response = self._session.post(
+                with self._session.post(
                     url,
                     headers=headers,
                     json=body,
                     timeout=self._config.timeout_s,
-                )
-                self.request_count += 1
+                    stream=True,
+                ) as response:
+                    # Enforce SSRF protection (DNS rebinding check)
+                    try:
+                        verify_response_ip(response)
+                    except ValueError as exc:
+                        raise GooglePlacesError(f"Security check failed: {exc}") from exc
+
+                    # Enforce DoS protection (limit response size)
+                    try:
+                        content_bytes = read_response_safe(response)
+                    except ValueError as exc:
+                        raise GooglePlacesError(f"Response too large: {exc}") from exc
+
+                    # Manually populate response content so .json() and .text work as expected
+                    response._content = content_bytes
+                    response._content_consumed = True
+
+                    self.request_count += 1
+
+                    if response.status_code == 200:
+                        try:
+                            payload = response.json()
+                        except ValueError as exc:
+                            raise GooglePlacesError(
+                                "Invalid JSON payload received from Places API"
+                            ) from exc
+                        if quota_kind and self._quota_active:
+                            self._record_successful_request(quota_kind)
+                        return payload
+
+                    if response.status_code in {429, 500, 502, 503, 504}:
+                        detail = _sanitize_error_detail(response.text)
+                        last_error = GooglePlacesError(
+                            f"HTTP {response.status_code}: {detail}"
+                        )
+                    elif response.status_code in {401, 403}:
+                        details = self._extract_error_details(response)
+                        raise GooglePlacesPermissionError(details)
+                    else:
+                        message = self._format_error_message(response)
+                        raise GooglePlacesError(
+                            f"Failed to fetch places ({response.status_code}): {message}"
+                        )
+
             except requests.RequestException as exc:
                 last_error = exc
-                LOGGER.warning("Request error (attempt %s/%s): %s", attempt, self._config.max_retries + 1, exc)
-            else:
-                if response.status_code == 200:
-                    try:
-                        payload = response.json()
-                    except ValueError as exc:
-                        raise GooglePlacesError(
-                            "Invalid JSON payload received from Places API"
-                        ) from exc
-                    if quota_kind and self._quota_active:
-                        self._record_successful_request(quota_kind)
-                    return payload
-                if response.status_code in {429, 500, 502, 503, 504}:
-                    detail = _sanitize_error_detail(response.text)
-                    last_error = GooglePlacesError(
-                        f"HTTP {response.status_code}: {detail}"
-                    )
-                elif response.status_code in {401, 403}:
-                    details = self._extract_error_details(response)
-                    raise GooglePlacesPermissionError(details)
-                else:
-                    message = self._format_error_message(response)
-                    raise GooglePlacesError(
-                        f"Failed to fetch places ({response.status_code}): {message}"
-                    )
+                LOGGER.warning(
+                    "Request error (attempt %s/%s): %s",
+                    attempt,
+                    self._config.max_retries + 1,
+                    exc,
+                )
 
             if attempt > self._config.max_retries:
                 break
