@@ -44,3 +44,23 @@ def test_sanitize_log_message_enhanced_keys():
         # Check that the key itself is preserved (the part before =)
         key = input_str.split("=")[0].split("?")[1]
         assert key in sanitized
+
+
+def test_sanitize_log_message_extended_identity_keys():
+    # Verify that extended identity keys (tenant, oid, etc) are redacted
+    test_cases = [
+        ("https://example.com?tenant=SECRET123", "tenant"),
+        ("https://example.com?tenant_id=SECRET123", "tenant_id"),
+        ("https://example.com?subscription=SECRET123", "subscription"),
+        ("https://example.com?subscription_id=SECRET123", "subscription_id"),
+        ("https://example.com?oid=SECRET123", "oid"),
+        ("https://example.com?object_id=SECRET123", "object_id"),
+        ("https://example.com?code_challenge=SECRET123", "code_challenge"),
+        ("https://example.com?code_verifier=SECRET123", "code_verifier"),
+    ]
+
+    for input_str, key in test_cases:
+        sanitized = sanitize_log_message(input_str)
+        assert "***" in sanitized, f"Secret not masked in '{input_str}'"
+        assert "SECRET123" not in sanitized, f"Secret leaked in '{input_str}'"
+        assert key in sanitized, f"Key '{key}' should remain visible"
