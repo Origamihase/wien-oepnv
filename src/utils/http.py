@@ -43,6 +43,16 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "authorization",
     "auth",
     "client_secret",
+    "client_id",
+    "access_token",
+    "refresh_token",
+    "id_token",
+    "code",
+    "sig",
+    "signature",
+    "session",
+    "sid",
+    "ticket",
 })
 
 

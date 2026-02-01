@@ -32,20 +32,16 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
 
     sanitized = text
 
+    # Keys that should be redacted (regex alternation, longest match first)
+    _keys = (
+        r"client_secret|access_token|refresh_token|client_id|signature|password|"
+        r"accessid|id_token|session|apikey|secret|ticket|token|code|key|sig|sid"
+    )
+
     # Common patterns for secrets in URLs/Headers
     patterns: List[Tuple[str, str]] = [
-        (r"(?i)(accessid%3d)([^&\s]+)", r"\1***"),
-        (r"(?i)(accessid=)([^&\s]+)", r"\1***"),
-        (r"(?i)(token%3d)([^&\s]+)", r"\1***"),
-        (r"(?i)(token=)([^&\s]+)", r"\1***"),
-        (r"(?i)(key%3d)([^&\s]+)", r"\1***"),
-        (r"(?i)(key=)([^&\s]+)", r"\1***"),
-        (r"(?i)(apikey%3d)([^&\s]+)", r"\1***"),
-        (r"(?i)(apikey=)([^&\s]+)", r"\1***"),
-        (r"(?i)(password%3d)([^&\s]+)", r"\1***"),
-        (r"(?i)(password=)([^&\s]+)", r"\1***"),
-        (r"(?i)(secret%3d)([^&\s]+)", r"\1***"),
-        (r"(?i)(secret=)([^&\s]+)", r"\1***"),
+        # Query parameters (key=value or key%3dvalue)
+        (rf"(?i)((?:{_keys})(?:%3d|=))([^&\s]+)", r"\1***"),
         # Correctly handle escaped characters in JSON strings (regex: (?:\\.|[^"\\])* )
         (r'(?i)(\"accessId\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (r"(?i)('accessId'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
@@ -56,8 +52,8 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
         (r"(?i)('Authorization'\s*:\s*'Bearer\s+)([^'\s]+)", r"\1***"),
         (r"(?i)('Authorization'\s*:\s*'Basic\s+)([^'\s]+)", r"\1***"),
         # Mask potentially leaked secrets in JSON error messages
-        (r'(?i)(\"(?:secret|token|key|apikey|password)\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
-        (r"(?i)('(?:secret|token|key|apikey|password)'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
+        (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
+        (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)
