@@ -170,25 +170,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Verspätungen",
-    "description": "Die Linie 18 kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "25: Beschädigte Oberleitung",
+    "description": "Die Linie 25 fährt nur zwischen Floridsdorf und Donauspital. Ersatzweise benützen Sie bitte die Linien U2, 93 A, 95 A, 97 A und 98 A. Die Störung dauert voraussichtlich bis 08:00 Uhr. Grund dafür ist eine beschädigte Oberleitung im Bereich Oberdorfstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "08245d776c6086aeb34234d104f1c9a7c93bccf3eb8915fc23bc32028143c544",
-    "pubDate": "2026-02-01T05:05:00+01:00",
-    "starts_at": "2026-02-01T05:05:00+01:00",
+    "guid": "7e393f9abe8be2f536474f75a2a8f387c1dda867e93afa9f6c0131f74db8fbbc",
+    "pubDate": "2026-02-01T07:05:00+01:00",
+    "starts_at": "2026-02-01T07:05:00+01:00",
     "ends_at": "2026-02-01T23:55:00+01:00",
-    "_identity": "wl|störung|L=18|D=2026-02-01"
+    "_identity": "wl|störung|L=25|D=2026-02-01"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2/D: Rettungseinsatz",
-    "description": "Die Linie 2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie D kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
+    "title": "25: Fahrtbehinderung wegen Fahrleitungsgebrechen",
+    "description": "Fahrtbehinderung wegen Fahrleitungsgebrechen",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "083f9cc8323398c3ab2dfd5de4b503e9f135c30b8f71902ef0dcc38a919d1477",
-    "pubDate": "2026-02-01T05:30:00+01:00",
-    "starts_at": "2026-02-01T05:30:00+01:00",
+    "guid": "bea282d2efc14b411a41c565a1798e81886f671bbfc01e5a9b3ba7bc9f44897c",
+    "pubDate": "2026-02-01T07:16:15+01:00",
+    "starts_at": "2026-02-01T07:16:15+01:00",
+    "ends_at": "2026-02-01T09:00:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-02-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fremder Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 31 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "40f6f4cd05dd63a538173c07f6c2034f17bccfef1e67962b19f17e6e77e0ccfe",
+    "pubDate": "2026-02-01T07:20:00+01:00",
+    "starts_at": "2026-02-01T07:20:00+01:00",
     "ends_at": "2026-02-01T23:55:00+01:00",
-    "_identity": "wl|störung|L=2,D|D=2026-02-01"
+    "_identity": "wl|störung|L=31|D=2026-02-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1243efb4652b691b3d3aa5331b790bc812edbf2cf03fc428533ee3e7ece338e7",
+    "pubDate": "2026-02-01T07:26:33+01:00",
+    "starts_at": "2026-02-01T07:26:33+01:00",
+    "ends_at": "2026-02-01T08:25:00+01:00",
+    "_identity": "wl|störung|L=31|D=2026-02-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fremdunfall Betrieb ab Floridsdorf S U",
+    "description": "Fremdunfall Betrieb ab Floridsdorf S U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d6265524efb75c51c1a2448574a652bce932074427de24822912c0e9d7222997",
+    "pubDate": "2026-02-01T07:26:33+01:00",
+    "starts_at": "2026-02-01T07:46:48+01:00",
+    "ends_at": "2026-02-01T08:46:00+01:00",
+    "_identity": "wl|störung|L=31|D=2026-02-01"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fremdunfall Betrieb ab Friedrich-Engels-Platz",
+    "description": "Fremdunfall Betrieb ab Friedrich-Engels-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c0233c57281e4f79c519cc4f38f4fa1091bde29c07d48f11dbe3969a2a0b01aa",
+    "pubDate": "2026-02-01T07:46:19+01:00",
+    "starts_at": "2026-02-01T07:46:19+01:00",
+    "ends_at": "2026-02-01T08:45:00+01:00",
+    "_identity": "wl|störung|L=31|D=2026-02-01"
   }
 ]
