@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [Unreleased]
+
+* **Fix**: VOR API Integration repariert (Umstellung auf `departureBoard` Endpunkt).
+* **Refactor**: Migration auf HAFAS Long-IDs für Wien Hbf und Flughafen.
+* **Security**: Strenge Rate-Limit-Guards (100req/day) implementiert.
+* **Feat**: Verbessertes Deep-Parsing für Störungsmeldungen in Abfahrtsdaten.
+
 ## Quelle: PDF-Handbuch
 
 - 2026-01-14 – Optimized feed deduplication logic to prioritize VOR provider events (API) over ÖBB provider events (Scraper). Conflicts are now resolved by retaining the VOR event as the master record while merging unique description details from the ÖBB event. This ensures higher data quality and stability.
