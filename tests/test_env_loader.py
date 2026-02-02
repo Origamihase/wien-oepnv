@@ -94,3 +94,18 @@ def test_load_env_file_handles_io_errors(
     assert loaded == {}
     assert "Kann .env-Datei" in caplog.text
     assert "BROKEN_VALUE" not in os.environ
+
+
+@pytest.mark.parametrize("input_val, expected", [
+    ('foo', 'foo'),
+    ("'foo'", 'foo'),
+    ('"foo"', 'foo'),
+    ('"foo bar"', 'foo bar'),
+    (r'"foo\"bar"', 'foo"bar'),
+    (r'"foo\\bar"', r'foo\bar'),
+    (r"'foo\'bar'", r"foo\'bar"),
+])
+def test_parse_value_escapes(input_val: str, expected: str) -> None:
+    """Test that quoted values are correctly unescaped."""
+    # access private _parse_value for direct unit testing
+    assert env_utils._parse_value(input_val) == expected
