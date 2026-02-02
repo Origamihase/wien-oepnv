@@ -1,20 +1,18 @@
 from __future__ import annotations
 
+import copy
 import logging
 import json
 from datetime import datetime
 from typing import Any, Dict
 
 from .config import LOG_FORMAT, LOG_TIMEZONE
+
 try:
     from ..utils.logging import sanitize_log_message
-except ImportError:
-    try:
-        from utils.logging import sanitize_log_message  # type: ignore[no-redef]
-    except ImportError:
-        # Fallback to simple replacement if utils not available (e.g. running script directly)
-        def sanitize_log_message(text: str, secrets: list[str] | None = None) -> str:
-            return text.replace("\n", "\\n").replace("\r", "\\r")
+except (ImportError, ValueError):
+    from utils.logging import sanitize_log_message
+
 
 class SafeFormatter(logging.Formatter):
     """
@@ -30,6 +28,9 @@ class SafeFormatter(logging.Formatter):
         # Sanitize the raw message
         # We modify the record.msg temporarily or work on a copy to avoid side effects?
         # Ideally, we format the message first (args substitution) then sanitize.
+
+        # Work on a copy to avoid side effects on other handlers
+        record = copy.copy(record)
 
         # Standard logging does: msg % args
         # But if args contains secrets, we want to sanitize them too.

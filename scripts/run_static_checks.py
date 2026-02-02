@@ -15,17 +15,17 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
-def _run(command: list[str]) -> int:
+def _run(command: list[str], timeout: int = 300) -> int:
     """Execute *command* inside the project root and stream the output."""
     print("→", " ".join(command), flush=True)
     try:
-        # Enforce a 5-minute timeout for static checks
         completed = subprocess.run(
-            command, cwd=PROJECT_ROOT, check=False, timeout=300
+            command, cwd=PROJECT_ROOT, check=False, timeout=timeout
         )
         return completed.returncode
     except subprocess.TimeoutExpired:
-        print(f"Command timed out after 300s: {' '.join(command)}", file=sys.stderr)
+        print(f"Command timed out after {timeout}s: {' '.join(command)}", file=sys.stderr)
+        print("Tip: If this is pip-audit, try running it separately or increasing the timeout.", file=sys.stderr)
         return 1
 
 
@@ -72,7 +72,8 @@ def main() -> int:
 
     if exit_code == 0:
         # Run pip-audit to check for known vulnerabilities in dependencies
-        exit_code = _run(["pip-audit"])
+        # Use a longer timeout (20 mins) as this can be slow
+        exit_code = _run(["pip-audit"], timeout=1200)
 
     return exit_code
 
