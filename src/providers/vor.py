@@ -1145,10 +1145,6 @@ def _fetch_departure_board_for_station(
         "id": station_id,
     }
 
-    # Mandatory Access ID as Query Param
-    if VOR_ACCESS_ID:
-        params["accessId"] = VOR_ACCESS_ID
-
     endpoint = f"{VOR_BASE_URL}departureBoard"
 
     try:
