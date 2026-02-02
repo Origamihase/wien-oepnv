@@ -35,19 +35,27 @@ class SafeFormatter(logging.Formatter):
         # But if args contains secrets, we want to sanitize them too.
         # sanitize_log_message handles string sanitization.
 
-        # If we use record.getMessage(), it does the substitution.
-        original_msg = record.getMessage()
-        sanitized_msg = sanitize_log_message(original_msg)
+        try:
+            # If we use record.getMessage(), it does the substitution.
+            original_msg = record.getMessage()
+            sanitized_msg = sanitize_log_message(original_msg)
 
-        # We replace the message in the record temporarily for formatting
-        # Be careful not to mutate record permanently if other formatters need raw data (unlikely here)
-        # But for safety, we can clone? No, logging records are passed around.
-        # Let's just update it.
+            # We replace the message in the record temporarily for formatting
+            # Be careful not to mutate record permanently if other formatters need raw data (unlikely here)
+            # But for safety, we can clone? No, logging records are passed around.
+            # Let's just update it.
 
-        # Wait, if we use getMessage(), it merges args.
-        # If we then set record.msg = sanitized_msg and record.args = (), we are safe.
-        record.msg = sanitized_msg
-        record.args = ()
+            # Wait, if we use getMessage(), it merges args.
+            # If we then set record.msg = sanitized_msg and record.args = (), we are safe.
+            record.msg = sanitized_msg
+            record.args = ()
+        except Exception:
+            # Fallback: If sanitization crashes (e.g. Regex error, memory),
+            # we MUST NOT crash the logger, otherwise the original error is hidden.
+            # We assume getMessage() worked (or it would have raised earlier).
+            # We proceed with the original record (potentially leaking secrets,
+            # but better than masking the fatal error).
+            pass
 
         return super().format(record)
 
@@ -80,8 +88,15 @@ class SafeJSONFormatter(logging.Formatter):
 
     def format(self, record: logging.LogRecord) -> str:
         # Sanitize message content
-        original_msg = record.getMessage()
-        sanitized_msg = sanitize_log_message(original_msg)
+        try:
+            original_msg = record.getMessage()
+            sanitized_msg = sanitize_log_message(original_msg)
+        except Exception:
+            # Fallback: use original message if sanitization fails
+            try:
+                sanitized_msg = record.getMessage()
+            except Exception:
+                sanitized_msg = "LOG_FORMAT_ERROR: Could not retrieve message"
 
         timestamp = datetime.fromtimestamp(record.created, LOG_TIMEZONE)
         payload: Dict[str, Any] = {
