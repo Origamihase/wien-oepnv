@@ -14,6 +14,10 @@ def _load_build_feed(monkeypatch):
 
 
 def _emit_item_str(bf, item, now, state):
+    # Register namespaces to ensure consistent prefixes in tests
+    ET.register_namespace("ext", "https://wien-oepnv.example/schema")
+    ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
+
     ident, elem, replacements = bf._emit_item(item, now, state)
     xml_str = ET.tostring(elem, encoding="unicode")
     for ph, content in replacements.items():
@@ -543,3 +547,27 @@ def test_emit_item_no_times_only_description(monkeypatch):
 
     desc_text = _extract_description(xml)
     assert desc_text == "Kurzinfo"
+
+def test_emit_item_truncates_long_title(monkeypatch):
+    bf = _load_build_feed(monkeypatch)
+    # Set a very short limit for testing
+    monkeypatch.setattr(bf.feed_config, "TITLE_CHAR_LIMIT", 10)
+    now = datetime(2024, 1, 1)
+
+    # A title longer than 10 chars
+    long_title = "This is a very long title that should be truncated"
+    item = {
+        "title": long_title,
+        "description": "Short description",
+    }
+
+    _, xml = _emit_item_str(bf, item, now, {})
+
+    title_match = re.search(r"<title><!\[CDATA\[(.*)]]></title>", xml)
+    assert title_match, xml
+    title_content = title_match.group(1)
+
+    assert len(title_content) < len(long_title)
+    assert title_content.endswith(" …")
+    # "This is a " (10 chars) -> rstrip -> "This is a" + " …"
+    assert title_content == "This is a …"
