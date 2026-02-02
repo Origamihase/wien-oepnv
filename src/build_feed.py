@@ -1320,6 +1320,9 @@ def _emit_item(
 
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(html.unescape(raw_title))
+    if len(title_out) > feed_config.TITLE_CHAR_LIMIT:
+        title_out = title_out[: feed_config.TITLE_CHAR_LIMIT].rstrip() + " …"
+
     desc_lines_raw = desc_clipped.split("\n")
 
     date_range_line: Optional[str] = None
