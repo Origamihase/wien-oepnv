@@ -182,18 +182,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "70A: Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 70 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a0dcb3d802f61fa730d734b354fe05854dadee03a80483139f1d0928665a30f0",
-    "pubDate": "2026-02-02T15:40:00+01:00",
-    "starts_at": "2026-02-02T15:40:00+01:00",
-    "ends_at": "2026-02-02T23:55:00+01:00",
-    "_identity": "wl|störung|L=70A|D=2026-02-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Verkehrsunfall",
     "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 12 A zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -202,5 +190,29 @@
     "starts_at": "2026-02-02T15:55:00+01:00",
     "ends_at": "2026-02-02T23:55:00+01:00",
     "_identity": "wl|störung|L=12A|D=2026-02-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9A: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "20852ffbd37b67a912d01cdf6a60c7ca1adaa1fdce59570f1a3f057dd9c938a2",
+    "pubDate": "2026-02-02T16:42:58+01:00",
+    "starts_at": "2026-02-02T16:43:02+01:00",
+    "ends_at": "2026-02-02T17:42:00+01:00",
+    "_identity": "wl|störung|L=9A|D=2026-02-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-02-02T17:15:00+01:00",
+    "starts_at": "2026-02-02T17:15:00+01:00",
+    "ends_at": "2026-02-02T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2026-02-02"
   }
 ]
