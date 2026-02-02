@@ -64,84 +64,25 @@ Die CLI nutzt dabei ebenfalls die in GitHub gespeicherten Secrets. Auf diese Wei
 
 ## 4. Beispiel: VOR API mit Secrets prüfen
 
-Die VOR-Integration verwendet die Secrets `VOR_ACCESS_ID` (Access Token) und `VOR_BASE_URL` (Basis-URL inkl. Version). Beide Werte werden beim Laden der Provider-Konfiguration direkt aus der Umgebung gelesen und für Requests ergänzt.【F:src/providers/vor.py†L274-L301】【F:src/providers/vor.py†L358-L378】
+Die VOR-Integration verwendet die Secrets `VOR_ACCESS_ID` (Access Token) und `VOR_BASE_URL` (Basis-URL inkl. Version). Das Repository enthält bereits einen Workflow `.github/workflows/test-vor-api.yml`, der diese Secrets verwendet, um einen Smoke-Test gegen die API durchzuführen (`location.name` Endpoint).
 
-Legen Sie im Repository zusätzlich einen aufrufbaren Workflow wie `.github/workflows/test-vor-api.yml` an:
+### Workflow ausführen
 
-```yaml
-name: Test VOR API
+1. Öffnen Sie in GitHub den Reiter **Actions**.
+2. Wählen Sie **Test VOR API** in der Liste der Workflows.
+3. Klicken Sie auf **Run workflow**.
 
-on:
-  workflow_dispatch:
-    inputs:
-      station_id:
-        description: Optionale StationBoard-ID (Standard siehe Skript)
-        required: false
-
-jobs:
-  vor-auth:
-    runs-on: ubuntu-latest
-    env:
-      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
-      VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
-      VOR_AUTH_TEST_STATION: ${{ github.event.inputs.station_id }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Check VOR authentication
-        run: python scripts/check_vor_auth.py
-```
-
-Das Skript `scripts/check_vor_auth.py` führt einen einzelnen `departureboard`-Request aus, hängt das Secret automatisch als `accessId` bzw. `Authorization`-Header an und gibt ein JSON-Ergebnis mit Statuscode und `authenticated`-Flag aus.【F:scripts/check_vor_auth.py†L1-L145】 Über `station_id` können Sie optional die getestete Station über die Umgebungsvariable `VOR_AUTH_TEST_STATION` überschreiben; ohne Eingabe greift das Skript auf die Standard-ID zurück.【F:scripts/check_vor_auth.py†L97-L105】
-
-### Workflow ausführen und Ergebnis interpretieren
-
-1. Öffnen Sie in GitHub den Reiter **Actions**, wählen Sie **Test VOR API** und klicken Sie auf **Run workflow**. Optional geben Sie eine `station_id` ein.
-2. Prüfen Sie im Log den Schritt **Check VOR authentication**. Eine erfolgreiche Authentifizierung erkennen Sie daran, dass `authenticated` auf `true` steht und der HTTP-Status < 400 ist.【F:scripts/check_vor_auth.py†L126-L145】
-3. Bei Fehlern zeigt das JSON `error_code`/`error_text` sowie den HTTP-Status – diese Informationen helfen beim Nachschärfen der Secrets.
-
-### Was bedeutet eine erfolgreiche Ausführung?
-
-Wenn der Workflow – wie im Screenshot zu sehen – ohne Fehler endet und der JSON-Block unter **Check VOR authentication** in etwa wie folgt aussieht, sind mehrere Punkte gleichzeitig bestätigt:
-
-```json
-{
-  "authenticated": true,
-  "status_code": 200,
-  "url": "https://.../departureboard?accessId=***&format=json&id=430470800",
-  "payload": {
-    "stopLocationOrCoordLocation": [...]
-  }
-}
-```
-
-* **Secrets werden aufgelöst:** Sowohl `VOR_ACCESS_ID` als auch `VOR_BASE_URL` wurden vom Runner entschlüsselt und in das Skript injiziert. Andernfalls könnte keine Anfrage gestellt werden.【F:scripts/check_vor_auth.py†L72-L123】
-* **Anmeldung bei der VOR API funktioniert:** Der HTTP-Status ist < 400, das Skript meldet `authenticated: true` und es werden keine Auth-Fehlercodes gemeldet. Damit ist der Access Token gültig und hat Zugriff auf den gewünschten Endpunkt.【F:scripts/check_vor_auth.py†L126-L145】
-* **Netzwerkpfad ist offen:** Der Runner konnte die VOR-API über das Internet erreichen. Wäre die API blockiert oder die Basis-URL falsch, würde der Request scheitern und `error_text` gefüllt sein.【F:scripts/check_vor_auth.py†L103-L145】
-
-Die Response im Feld `payload` zeigt außerdem bereits Live-Daten (z. B. Abfahrts-Events), sodass Sie auf einen Blick sehen, ob die erwarteten Informationen zurückgeliefert werden.
-
-Alternativ lässt sich der Workflow auch per CLI starten:
-
+Alternativ über die CLI:
 ```bash
-# Optional andere Station testen
-gh workflow run "Test VOR API" --field station_id=430470800
-
+gh workflow run "Test VOR API"
 gh run watch
 ```
 
-Mit dieser Vorgehensweise verifizieren Sie die hinterlegten VOR-Secrets ohne lokalen Zugriff auf die Klarwerte und sehen unmittelbar, ob die API-Anmeldung funktioniert.
+### Ergebnis prüfen
 
-## 5. Lokale Vorprüfung der Secrets
+Der Workflow führt `curl`-Abfragen sowie die vollständige Test-Suite (`pytest`) aus.
 
-Für lokale Tests oder Deployments außerhalb von GitHub Actions steht zusätzlich
-`python scripts/verify_vor_access_id.py` zur Verfügung. Das Skript lädt die
-Standard-Secret-Dateien (`.env`, `data/secrets.env`, `config/secrets.env`) und
-bricht mit Exit-Code `1` ab, wenn `VOR_ACCESS_ID` nicht befüllt ist. So lässt
-sich vor jedem Lauf sicherstellen, dass ein gültiger Token bereitsteht.
+*   **Smoke test VOR endpoint**: Prüft, ob ein einfacher Abruf (z.B. nach "Wien Hauptbahnhof") mit den hinterlegten Secrets einen HTTP 200 Status liefert.
+*   **Run pytest**: Validiert die gesamte Integrationslogik.
+
+Schlägt der "Smoke test" fehl, sind meist die Secrets ungültig oder abgelaufen.

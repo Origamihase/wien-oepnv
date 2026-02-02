@@ -369,7 +369,7 @@ Die CLI respektiert die vorhandene Logging-Konfiguration (`log/errors.log`, `log
 
 ## VOR / VAO ReST API Dokumentation
 
-Die detaillierte API-Referenz ist vollständig in `docs/Handbuch_VAO_ReST_API_2025-08-11.pdf` hinterlegt. Ergänzende Inhalte:
+Die detaillierte API-Referenz ist vollständig in `docs/reference/manuals/Handbuch_VAO_ReST_API_2026-01-28.pdf` hinterlegt. Ergänzende Inhalte:
 
 - `docs/reference/` – Endpunktbeschreibungen und Beispielanfragen.
 - `docs/how-to/` – Schritt-für-Schritt-Anleitungen (z. B. Versionsabfragen).
@@ -382,7 +382,6 @@ Der Abschnitt „VOR ergänzen“ im Stationskapitel erläutert, wie API-basiert
 
 - **Leerer Feed**: Prüfen, ob alle Provider aktiviert sind und ihre Cache-Dateien gültige JSON-Listen enthalten.
 - **Abgelaufene Meldungen**: `MAX_ITEM_AGE_DAYS` und `ABSOLUTE_MAX_AGE_DAYS` anpassen; Logs geben Hinweise auf verworfene Items.
-- **API-Authentifizierung**: Mit `python scripts/check_vor_auth.py` lässt sich die Gültigkeit des Tokens verifizieren.
 - **Timeouts**: `PROVIDER_TIMEOUT` erhöhen oder einzelne Provider temporär deaktivieren, um Fehlerquellen einzugrenzen.
 
 ---
