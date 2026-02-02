@@ -107,7 +107,7 @@ def _parse_value(value: str) -> str:
         quote_char = '"'
 
     if quote_char:
-        parts = []
+        parts: list[str] = []
         idx = 1
         length = len(value)
         while idx < length:
