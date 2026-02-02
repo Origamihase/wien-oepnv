@@ -770,6 +770,10 @@ def _format_date_range(start: datetime | None, end: datetime | None) -> str:
 def _build_guid(station_id: str, message: Mapping[str, Any]) -> str:
     raw_id = str(message.get("id") or "").strip()
     if raw_id:
+        # Security: Bound the length of external IDs to prevent DoS/memory issues
+        if len(raw_id) > 128:
+            hashed = make_guid(raw_id)
+            return f"vor:{station_id}:{hashed}"
         return f"vor:{station_id}:{raw_id}"
     key = json.dumps(
         {
