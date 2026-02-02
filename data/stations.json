@@ -3347,6 +3347,25 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430527400"
+    },
+    {
+      "name": "Gmünd NÖ",
+      "aliases": [
+        "Gmünd N.Ö.",
+        "Gmünd NOE"
+      ],
+      "in_vienna": false,
+      "pendler": false,
+      "source": "manual_fix"
+    },
+    {
+      "name": "Ceske Velenice",
+      "aliases": [
+        "Ceské Velenice"
+      ],
+      "in_vienna": false,
+      "pendler": false,
+      "source": "manual_fix"
     }
   ]
 }
