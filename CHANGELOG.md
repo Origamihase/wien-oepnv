@@ -2,9 +2,10 @@
 
 ## [Unreleased]
 
-* **Fix**: VOR API Integration repariert (Umstellung auf `departureBoard` Endpunkt).
-* **Refactor**: Migration auf HAFAS Long-IDs für Wien Hbf und Flughafen.
-* **Security**: Strenge Rate-Limit-Guards (100req/day) implementiert.
+## [2026-02-02]
+* `Fix`: VOR API auf `departureBoard` umgestellt und authentifizierte Requests repariert.
+* `Security`: Rate-Limit-Sperre (max 100 Req/Tag) implementiert.
+* `Data`: Stations-IDs auf HAFAS-Format aktualisiert.
 * **Feat**: Verbessertes Deep-Parsing für Störungsmeldungen in Abfahrtsdaten.
 
 ## Quelle: PDF-Handbuch
