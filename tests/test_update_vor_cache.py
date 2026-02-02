@@ -16,6 +16,10 @@ def test_cache_written_when_limit_reached(monkeypatch) -> None:
     now = datetime(2024, 1, 1, 12, tzinfo=ZoneInfo("Europe/Vienna"))
     remaining_state = {"count": update_vor_cache.MAX_REQUESTS_PER_DAY - 1}
 
+    # Mock safety check dependencies to ensure it passes
+    monkeypatch.setattr(update_vor_cache, "get_configured_stations", lambda: ["1", "2"])
+    monkeypatch.setattr(update_vor_cache, "select_stations_for_run", lambda stations: stations)
+
     monkeypatch.setattr(update_vor_cache, "_now_local", lambda: now)
     monkeypatch.setattr(
         update_vor_cache,
@@ -25,7 +29,7 @@ def test_cache_written_when_limit_reached(monkeypatch) -> None:
 
     calls: list[int] = []
 
-    def fake_fetch_events() -> list[dict[str, str]]:
+    def fake_fetch_events(*args, **kwargs) -> list[dict[str, str]]:
         remaining_state["count"] += 1
         calls.append(remaining_state["count"])
         return [{"id": "event"}]
@@ -56,11 +60,15 @@ def test_cache_written_when_limit_reached(monkeypatch) -> None:
 def test_main_returns_success_when_fetch_fails(monkeypatch) -> None:
     """Network failures must not cause a non-zero exit status."""
 
+    # Mock safety check dependencies to ensure it passes
+    monkeypatch.setattr(update_vor_cache, "get_configured_stations", lambda: ["1", "2"])
+    monkeypatch.setattr(update_vor_cache, "select_stations_for_run", lambda stations: stations)
+
     monkeypatch.setattr(update_vor_cache, "_limit_reached", lambda now: False)
     monkeypatch.setattr(
         update_vor_cache,
         "fetch_events",
-        lambda: (_ for _ in ()).throw(RequestException("boom")),
+        lambda *args, **kwargs: (_ for _ in ()).throw(RequestException("boom")),
     )
 
     exit_code = update_vor_cache.main()

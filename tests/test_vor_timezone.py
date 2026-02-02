@@ -8,7 +8,7 @@ def test_fetch_events_passes_local_timezone(monkeypatch):
 
     recorded = {}
 
-    def fake_fetch_departure_board_for_station(station_id, now_local):
+    def fake_fetch_departure_board_for_station(station_id, now_local, counter=None):
         recorded["tz"] = now_local.tzinfo
         return {}
 
