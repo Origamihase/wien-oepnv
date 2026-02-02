@@ -1,5 +1,11 @@
 # Wien ÖPNV Feed – Projektdokumentation
 
+### Status Badges
+![Update VOR Cache](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-vor-cache.yml/badge.svg)
+![Update ÖBB Cache](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-oebb-cache.yml/badge.svg)
+![Test VOR API](https://github.com/Origamihase/wien-oepnv/actions/workflows/test-vor-api.yml/badge.svg)
+![Run Tests](https://github.com/Origamihase/wien-oepnv/actions/workflows/test.yml/badge.svg)
+
 [![Feed Build](https://github.com/origamihase/wien-oepnv/actions/workflows/build-feed.yml/badge.svg?branch=main)](https://github.com/origamihase/wien-oepnv/actions/workflows/build-feed.yml)
 [![Tests](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml/badge.svg)](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml)
 [![SEO-Checks](https://github.com/origamihase/wien-oepnv/actions/workflows/seo-guard.yml/badge.svg)](https://github.com/origamihase/wien-oepnv/actions/workflows/seo-guard.yml)
