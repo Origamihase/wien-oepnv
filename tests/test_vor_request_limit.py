@@ -244,7 +244,7 @@ def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path)
     call_count = 0
     call_lock = threading.Lock()
 
-    def fake_fetch(station_id, now_local):
+    def fake_fetch(station_id, now_local, counter=None):
         nonlocal call_count
         with call_lock:
             call_count += 1

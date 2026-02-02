@@ -24,7 +24,7 @@ def _reset_station_ids(monkeypatch):
 
 
 def test_fetch_events_raises_when_all_stationboards_fail(monkeypatch):
-    monkeypatch.setattr(vor, "_fetch_departure_board_for_station", lambda sid, now: None)
+    monkeypatch.setattr(vor, "_fetch_departure_board_for_station", lambda sid, now, counter=None: None)
     with pytest.raises(vor.RequestException):
         vor.fetch_events()
 
@@ -32,7 +32,7 @@ def test_fetch_events_raises_when_all_stationboards_fail(monkeypatch):
 def test_fetch_events_returns_results_when_some_stationboards_succeed(monkeypatch):
     payloads = {"430470800": object(), "490091000": None}
 
-    def fake_fetch(station_id: str, now):
+    def fake_fetch(station_id: str, now, counter=None):
         return payloads.get(station_id)
 
     def fake_collect(station_id: str, payload):

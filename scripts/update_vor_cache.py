@@ -53,6 +53,8 @@ from providers.vor import (  # noqa: E402  (import after path setup)
     MAX_REQUESTS_PER_DAY,
     fetch_events,
     load_request_count,
+    get_configured_stations,
+    select_stations_for_run,
 )
 from utils.cache import write_cache  # noqa: E402
 from utils.serialize import serialize_for_cache  # noqa: E402
@@ -92,6 +94,32 @@ def _limit_reached(now_local: datetime) -> bool:
 def main() -> int:
     """Entry point for refreshing the VOR cache."""
 
+    # --- SAFETY CHECK ---
+    # VOR erlaubt strikt max. 100 Requests pro Tag.
+    # Wir berechnen den maximalen Verbrauch basierend auf der Konfiguration.
+    stations = get_configured_stations()
+    stations_for_run = select_stations_for_run(stations)
+    # The limit is based on total stations fetched over a day.
+    # select_stations_for_run limits the stations PER RUN.
+    # So daily usage is (stations_per_run) * (runs_per_day).
+
+    # However, to be extra safe as per instruction, we use the logic:
+    # "PROJECTED_DAILY_USAGE = len(stations_for_run) * 24"
+
+    DAILY_RUNS_ASSUMED = 24  # Wir erzwingen stündliche Ausführung
+    # Note: select_stations_for_run returns the subset that WILL be used.
+    # If the user has 10 stations but we only rotate 2 per run, the cost is 2 * 24 = 48 reqs/day.
+    STATIONS_COUNT = len(stations_for_run)
+    PROJECTED_USAGE = STATIONS_COUNT * DAILY_RUNS_ASSUMED
+
+    print(f"🔒 VOR Safety Check: {STATIONS_COUNT} Stationen/Run * {DAILY_RUNS_ASSUMED} Runs = {PROJECTED_USAGE} Requests/Tag")
+
+    if PROJECTED_USAGE > 90: # Puffer von 10 Requests für Tests lassen
+        print(f"❌ CRITICAL: Konfiguration würde {PROJECTED_USAGE} Requests erzeugen (Limit: 100).")
+        print("ABBRUCH! Bitte Stationen reduzieren oder Intervall prüfen.")
+        # Ensure we exit if safety check fails
+        return 1
+
     configure_logging()
 
     now_local = _now_local()
@@ -99,7 +127,8 @@ def main() -> int:
         return 0
 
     try:
-        items = fetch_events()
+        # Pass the pre-selected/calculated stations to avoid re-resolution or discrepancy
+        items = fetch_events(station_ids=stations_for_run)
     except RequestException:
         logger.warning(
             "VOR: API nicht erreichbar – behalte bestehenden Cache bei.",

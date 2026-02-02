@@ -19,6 +19,7 @@ import json
 import logging
 import os
 import re
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
@@ -79,6 +80,7 @@ DEFAULT_MAX_STATIONS_PER_RUN = 2
 DEFAULT_ROTATION_INTERVAL_SEC = 1800
 # "VAO Start" contract limit: 100 requests per day (hard limit).
 DEFAULT_MAX_REQUESTS_PER_DAY = 100
+MAX_REQUESTS_PER_RUN = 10  # Emergency circuit breaker
 DEFAULT_MONITOR_WHITELIST = "Wien Hauptbahnhof,Flughafen Wien"
 RETRY_AFTER_FALLBACK_SEC = 5.0
 RETRY_AFTER_MAX_SEC = 120.0
@@ -699,7 +701,7 @@ def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
             }
 
         # 3b. Handle rtMessages / warnings inside departure
-        for key in ["rtMessages", "warnings"]:
+        for key in ["rtMessages", "warnings", "infos"]:
             if key in dep:
                 dep_container = dep[key]
                 msg_iterable: List[Any] = []
@@ -866,6 +868,53 @@ def _select_stations_round_robin(
         if len(selected) >= chunk:
             break
     return selected
+
+
+def get_configured_stations() -> List[str]:
+    """
+    Retrieve the list of configured station IDs.
+
+    Checks:
+    1. VOR_MONITOR_STATIONS_WHITELIST (names resolved to IDs)
+    2. VOR_STATION_IDS (IDs directly)
+    3. VOR_STATION_NAMES (names resolved to IDs)
+    """
+    monitor_whitelist_str = os.getenv(
+        "VOR_MONITOR_STATIONS_WHITELIST", DEFAULT_MONITOR_WHITELIST
+    ).strip()
+    whitelist_names = [
+        x.strip() for x in monitor_whitelist_str.split(",") if x.strip()
+    ]
+
+    if whitelist_names:
+        log.info("Nutze VOR Monitor-Whitelist: %s", ", ".join(whitelist_names))
+        return resolve_station_ids(whitelist_names)
+
+    # Legacy Fallback
+    station_ids = list(VOR_STATION_IDS)
+    if not station_ids and VOR_STATION_NAMES:
+        station_ids = resolve_station_ids(VOR_STATION_NAMES)
+
+    return station_ids
+
+
+def select_stations_for_run(available_stations: List[str]) -> List[str]:
+    """
+    Select a subset of stations for the current run based on round-robin logic
+    and MAX_STATIONS_PER_RUN limit.
+    """
+    if not available_stations:
+        return []
+
+    selected_ids = _select_stations_round_robin(
+        available_stations, MAX_STATIONS_PER_RUN, ROTATION_INTERVAL_SEC
+    )
+    if not selected_ids:
+        # Fallback if round robin returns empty for some reason (shouldn't if input not empty)
+        # But _select_stations_round_robin returns chunk.
+        selected_ids = available_stations[: MAX_STATIONS_PER_RUN or 1]
+
+    return selected_ids
 
 
 def resolve_station_ids(names: Iterable[str]) -> List[str]:
@@ -1079,7 +1128,7 @@ def _handle_retry_after(response: requests.Response) -> None:
 
 
 def _fetch_departure_board_for_station(
-    station_id: str, now_local: datetime
+    station_id: str, now_local: datetime, counter: Any = None
 ) -> Mapping[str, Any] | None:
     """
     Fetch Departure Board for a specific station and extract disruptions.
@@ -1103,6 +1152,13 @@ def _fetch_departure_board_for_station(
             apply_authentication(session)
             attempts = max(int(VOR_RETRY_OPTIONS.get("total", 0) or 0) + 1, 1)
             for attempt in range(attempts):
+                # CIRCUIT BREAKER CHECK
+                if counter:
+                    with counter["lock"]:
+                        counter["val"] += 1
+                        if counter["val"] > MAX_REQUESTS_PER_RUN:
+                            raise RuntimeError("Emergency Stop: Too many requests in single run!")
+
                 try:
                     # Logging request details (masked)
                     log.info(f"Requesting VOR DepartureBoard for {station_id}...")
@@ -1192,33 +1248,14 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
         return []
 
     if station_ids is None:
-        # 1. Monitor Whitelist (New Strategy)
-        monitor_whitelist_str = os.getenv(
-            "VOR_MONITOR_STATIONS_WHITELIST", DEFAULT_MONITOR_WHITELIST
-        ).strip()
-        whitelist_names = [
-            x.strip() for x in monitor_whitelist_str.split(",") if x.strip()
-        ]
-
-        if whitelist_names:
-            log.info("Nutze VOR Monitor-Whitelist: %s", ", ".join(whitelist_names))
-            station_ids = resolve_station_ids(whitelist_names)
-        else:
-            # 2. Legacy Fallback (Full Rotation)
-            station_ids = list(VOR_STATION_IDS)
-            if not station_ids and VOR_STATION_NAMES:
-                station_ids = resolve_station_ids(VOR_STATION_NAMES)
+        station_ids = get_configured_stations()
 
     if not station_ids:
         log.info("Keine VOR Stationen konfiguriert")
         return []
 
     # Limit stations based on requests
-    selected_ids = _select_stations_round_robin(
-        station_ids, MAX_STATIONS_PER_RUN, ROTATION_INTERVAL_SEC
-    )
-    if not selected_ids:
-        selected_ids = station_ids[: MAX_STATIONS_PER_RUN or 1]
+    selected_ids = select_stations_for_run(station_ids)
 
     if remaining_requests and len(selected_ids) > remaining_requests:
         log.info(
@@ -1238,15 +1275,30 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
     failures = 0
     successes = 0
 
+    # Thread-safe counter for circuit breaker
+    request_counter = {"val": 0, "lock": threading.Lock()}
+
+    seen_texts: set[tuple[str, str]] = set()
+
     with ThreadPoolExecutor(max_workers=len(selected_ids) or 1) as executor:
         futures = {
-            executor.submit(_fetch_departure_board_for_station, sid, now_local): sid
+            executor.submit(_fetch_departure_board_for_station, sid, now_local, request_counter): sid
             for sid in selected_ids
         }
         for future in as_completed(futures):
             station_id = futures[future]
             try:
                 payload = future.result()
+            except RuntimeError as rte:
+                # Catch Emergency Stop
+                if "Emergency Stop" in str(rte):
+                    log.critical(f"ABORT: {rte}")
+                    # Cancel other futures if possible
+                    executor.shutdown(wait=False, cancel_futures=True)
+                    raise rte
+                _log_error("VOR DepartureBoard %s Runtime Error: %s", station_id, rte)
+                failures += 1
+                continue
             except Exception as exc:  # pragma: no cover - defensive guard
                 _log_error("VOR DepartureBoard %s Fehler: %s", station_id, exc)
                 failures += 1
@@ -1273,7 +1325,17 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
                     sanitized_id,
                     message_count,
                 )
-            results.extend(items)
+
+            # Deduplication
+            for item in items:
+                title = str(item.get("title") or "").strip()
+                description = str(item.get("description") or "").strip()
+                # We use title and description as the unique key.
+                # If both match, we consider it a duplicate.
+                key = (title, description)
+                if key not in seen_texts:
+                    seen_texts.add(key)
+                    results.append(item)
 
     if successes == 0:
         raise RequestException("Keine VOR Daten abrufbar")
@@ -1288,12 +1350,12 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
     return results
 
 
-def fetch_events() -> List[Dict[str, Any]]:
+def fetch_events(station_ids: List[str] | None = None) -> List[Dict[str, Any]]:
     """
     Main entry point for VOR provider.
     Delegates to fetch_vor_disruptions.
     """
-    return fetch_vor_disruptions()
+    return fetch_vor_disruptions(station_ids)
 
 
 __all__ = [
@@ -1304,6 +1366,8 @@ __all__ = [
     "save_request_count",
     "refresh_access_credentials",
     "refresh_base_configuration",
+    "get_configured_stations",
+    "select_stations_for_run",
     "RequestException",
     "ZoneInfo",
 ]

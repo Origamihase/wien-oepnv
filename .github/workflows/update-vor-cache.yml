@@ -3,6 +3,7 @@ name: Update VOR cache
 on:
   schedule:
     - cron: '0 * * * *'
+    # SAFETY: Max 24 runs/day * 2 stations = 48 reqs (Limit: 100)
   workflow_dispatch:
 
 permissions:
