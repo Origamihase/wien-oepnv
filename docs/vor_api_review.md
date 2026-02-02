@@ -12,3 +12,13 @@
 ## Tests
 - `pytest tests/test_vor_env.py tests/test_vor_default_version.py tests/test_vor_location_name.py`
   - Bestätigt das erwartete Verhalten beim Laden der Secrets, beim Normalisieren der Basis-URL sowie beim Zusammensetzen der Request-Parameter.【d744d3†L1-L9】
+
+## Lösung & Status Quo (Februar 2026)
+
+* **Endpoint**: Wir nutzen final `departureBoard` (da `trafficInfo` html/fehlerhaft war).
+* **IDs**: Es sind zwingend **HAFAS Long-IDs** (Format `A=1@O=...`) erforderlich. Einfache numerische IDs funktionieren für diesen Endpunkt nicht.
+* **Parameter-Falle**: Der Parameter `type` darf NICHT gesendet werden (führte zu Fehler 400 "No enum constant").
+* **Rate Limit Architektur**: Drei Schutzebenen gegen die 100-Request-Sperre:
+    1.  Workflow-Lock (nur stündlich).
+    2.  Pre-Flight Check (Skript bricht ab, wenn Config > 100 Requests/Tag erzeugt).
+    3.  Runtime Circuit Breaker (Notaus bei >10 Requests/Run).
