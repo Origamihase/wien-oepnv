@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   guard:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       SITE_BASE: https://origamihase.github.io/wien-oepnv
       DESC: Konsolidierter RSS-Feed für Störungen und Baustellenmeldungen im Wiener ÖPNV (WL/ÖBB/VOR), inkl. Doku & Open-Data-Workflows.
