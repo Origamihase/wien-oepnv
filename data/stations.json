@@ -108,6 +108,15 @@
     },
     {
       "aliases": [
+        "Ceské Velenice"
+      ],
+      "in_vienna": false,
+      "name": "Ceske Velenice",
+      "pendler": false,
+      "source": "manual_fix"
+    },
+    {
+      "aliases": [
         "430327900",
         "Deutsch Wagram",
         "Bahnhof Deutsch Wagram",
@@ -226,14 +235,14 @@
       ],
       "bst_code": "Fws",
       "bst_id": 528,
+      "id": "A=1@O=Flughafen Wien Bahnhof@X=16563659@Y=48120560@U=81@L=430470800@p=1769895381@i=A×at:43:4708@",
       "in_vienna": false,
+      "lat": 48.119,
+      "lon": 16.564,
       "name": "Flughafen Wien",
       "pendler": true,
       "source": "oebb",
-      "id": "A=1@O=Flughafen Wien Bahnhof@X=16563659@Y=48120560@U=81@L=430470800@p=1769895381@i=A×at:43:4708@",
-      "type": "stop",
-      "lat": 48.119,
-      "lon": 16.564
+      "type": "stop"
     },
     {
       "_google_place_id": "ChIJcw5fA7YHbUcR9uqSCCBND2k",
@@ -309,6 +318,16 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430349900"
+    },
+    {
+      "aliases": [
+        "Gmünd N.Ö.",
+        "Gmünd NOE"
+      ],
+      "in_vienna": false,
+      "name": "Gmünd NÖ",
+      "pendler": false,
+      "source": "manual_fix"
     },
     {
       "aliases": [
@@ -1924,14 +1943,14 @@
       ],
       "bst_code": "900100",
       "bst_id": "900100",
+      "id": "A=1@O=Wien Hauptbahnhof@X=16376413@Y=48185184@U=81@L=490134900@p=1769895381@i=A×at:49:1349@",
       "in_vienna": true,
+      "lat": 48.185,
+      "lon": 16.376,
       "name": "Wien Hauptbahnhof",
       "pendler": false,
       "source": "vor",
-      "id": "A=1@O=Wien Hauptbahnhof@X=16376413@Y=48185184@U=81@L=490134900@p=1769895381@i=A×at:49:1349@",
-      "type": "stop",
-      "lat": 48.185,
-      "lon": 16.376
+      "type": "stop"
     },
     {
       "aliases": [
@@ -3347,25 +3366,6 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430527400"
-    },
-    {
-      "name": "Gmünd NÖ",
-      "aliases": [
-        "Gmünd N.Ö.",
-        "Gmünd NOE"
-      ],
-      "in_vienna": false,
-      "pendler": false,
-      "source": "manual_fix"
-    },
-    {
-      "name": "Ceske Velenice",
-      "aliases": [
-        "Ceské Velenice"
-      ],
-      "in_vienna": false,
-      "pendler": false,
-      "source": "manual_fix"
     }
   ]
 }
