@@ -107,16 +107,36 @@ def _parse_value(value: str) -> str:
         quote_char = '"'
 
     if quote_char:
+        parts = []
         idx = 1
-        while idx < len(value):
-            if value[idx] == quote_char:
-                # Check for escaped quote (only relevant for double quotes usually,
-                # but we handle it generically to be safe/permissive)
-                if value[idx - 1] == "\\":
-                    idx += 1
-                    continue
-                return value[1:idx]
+        length = len(value)
+        while idx < length:
+            char = value[idx]
+
+            if char == quote_char:
+                return "".join(parts)
+
+            if char == "\\":
+                if idx + 1 < length:
+                    next_char = value[idx + 1]
+                    if quote_char == '"':
+                        # Unescape double-quote and backslash in double-quoted strings
+                        if next_char == '"' or next_char == "\\":
+                            parts.append(next_char)
+                            idx += 2
+                            continue
+                    elif quote_char == "'":
+                        # In single quotes, we allow \' to NOT close the string,
+                        # but we keep the backslash (legacy behavior compatibility)
+                        if next_char == "'":
+                            parts.append("\\")
+                            parts.append("'")
+                            idx += 2
+                            continue
+
+            parts.append(char)
             idx += 1
+
         # If no closing quote found, return as is (consistent with flexible parsing)
         return value
     else:
