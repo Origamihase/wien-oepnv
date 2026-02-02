@@ -423,7 +423,12 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         raw_title = html.unescape(raw_title)
         title = _clean_title_keep_places(raw_title)
         link  = _get_text(item, "link").strip() or OEBB_URL
-        guid  = _get_text(item, "guid").strip() or make_guid(title, link)
+        raw_guid = _get_text(item, "guid").strip()
+        if raw_guid and len(raw_guid) > 128:
+            # Security: Prevent huge GUIDs from external feed
+            guid = make_guid(raw_guid)
+        else:
+            guid = raw_guid or make_guid(title, link)
         desc_html = _get_text(item, "description")
         desc = html_to_text(desc_html)
         desc = _clean_description(desc)
