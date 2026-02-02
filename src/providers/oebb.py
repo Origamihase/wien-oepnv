@@ -181,24 +181,27 @@ def _clean_title_keep_places(t: str) -> str:
 # Global sets for caching loaded station data
 _VIENNA_STATIONS: Optional[set] = None
 _OUTER_STATIONS: Optional[set] = None
+_PENDLER_STATIONS: Optional[set] = None
 
 # Compiled regexes for fast scanning
 _VIENNA_STATIONS_RE: Optional[re.Pattern] = None
 _OUTER_STATIONS_RE: Optional[re.Pattern] = None
+_PENDLER_STATIONS_RE: Optional[re.Pattern] = None
 
 def _load_station_sets():
     """
     Loads station data from data/stations.json and populates the global
     sets/regexes for Vienna vs. Outer stations.
     """
-    global _VIENNA_STATIONS, _OUTER_STATIONS
-    global _VIENNA_STATIONS_RE, _OUTER_STATIONS_RE
+    global _VIENNA_STATIONS, _OUTER_STATIONS, _PENDLER_STATIONS
+    global _VIENNA_STATIONS_RE, _OUTER_STATIONS_RE, _PENDLER_STATIONS_RE
 
     if _VIENNA_STATIONS is not None:
         return
 
     _VIENNA_STATIONS = set()
     _OUTER_STATIONS = set()
+    _PENDLER_STATIONS = set()
 
     try:
         # Resolve path relative to this file: src/providers/oebb.py -> ../../data/stations.json
@@ -239,6 +242,8 @@ def _load_station_sets():
                 _VIENNA_STATIONS.update(normalized)
             else:
                 _OUTER_STATIONS.update(normalized)
+                if entry.get("pendler", False):
+                    _PENDLER_STATIONS.update(normalized)
 
         # Remove overlaps (if a name is in both, prefer Vienna or handle as such?
         # Actually logic is: Check A (Vienna items) then Check B (Outer items).
@@ -256,14 +261,17 @@ def _load_station_sets():
 
         _VIENNA_STATIONS_RE = _make_re(_VIENNA_STATIONS)
         _OUTER_STATIONS_RE = _make_re(_OUTER_STATIONS)
+        _PENDLER_STATIONS_RE = _make_re(_PENDLER_STATIONS)
 
     except Exception as e:
         log.error("Failed to load station data for filtering: %s", e)
         # Fallback: empty sets
         _VIENNA_STATIONS = set()
         _OUTER_STATIONS = set()
+        _PENDLER_STATIONS = set()
         _VIENNA_STATIONS_RE = re.compile(r"(?!x)x")
         _OUTER_STATIONS_RE = re.compile(r"(?!x)x")
+        _PENDLER_STATIONS_RE = re.compile(r"(?!x)x")
 
 
 def _is_relevant(title: str, description: str) -> bool:
@@ -278,20 +286,31 @@ def _is_relevant(title: str, description: str) -> bool:
 
     text = f"{title} {description}" # Regex is case-insensitive, no need to lower() here for regex
 
+    # Check 0: Strict Route Filter (Outer <-> Outer)
+    # Wenn Titel eine Strecke definiert (A ↔ B) und BEIDE Endpunkte bekannte
+    # Outer-Stationen sind (und keiner davon Pendler), verwerfen wir das Item sofort.
+    # Damit verhindern wir, dass "Richtung Wien" im Text ein False Positive auslöst.
+    if "↔" in title:
+        parts = [p.strip() for p in title.split("↔")]
+        if len(parts) == 2:
+            # Check if both are Outer
+            if _OUTER_STATIONS_RE and _OUTER_STATIONS_RE.search(parts[0]) and _OUTER_STATIONS_RE.search(parts[1]):
+                # Check if neither is Pendler
+                if _PENDLER_STATIONS_RE and not (_PENDLER_STATIONS_RE.search(parts[0]) or _PENDLER_STATIONS_RE.search(parts[1])):
+                    return False
+
     # Check A: Explizit Wien (Word boundaries)
     if re.search(r"\b(wien|vienna)\b", text, re.IGNORECASE):
         return True
 
     # Check B: Ort in Wien
-    assert _VIENNA_STATIONS_RE is not None
-    if _VIENNA_STATIONS_RE.search(text):
+    if _VIENNA_STATIONS_RE and _VIENNA_STATIONS_RE.search(text):
         return True
 
     # Check C: Ausschluss Umland
     # Wir sind hier nur, wenn WEDER Wien-Keyword NOCH Wien-Bahnhof gefunden wurde.
     # Wenn jetzt EIN Outer-Bahnhof gefunden wird, ist es eine "reine Umland-Meldung" -> Weg damit.
-    assert _OUTER_STATIONS_RE is not None
-    if _OUTER_STATIONS_RE.search(text):
+    if _OUTER_STATIONS_RE and _OUTER_STATIONS_RE.search(text):
         return False
 
     # Check D: Heuristik für unbekannte Routen
