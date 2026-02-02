@@ -111,6 +111,23 @@ MULTI_ARROW_RE  = re.compile(r"(?:\s*↔\s*){2,}")
 _MULTI_SLASH_RE = re.compile(r"\s*/{2,}\s*")
 _MULTI_COMMA_RE = re.compile(r"\s*,{2,}\s*")
 
+NON_LOCATION_PREFIXES = {
+    "bauarbeiten", "störung", "ausfall", "verspätung", "sperre",
+    "einschränkung", "verkehrsunfall", "feuerwehreinsatz", "rettungseinsatz",
+    "polizeieinsatz", "notarzteinsatz", "weichenstörung", "signalstörung",
+    "oberleitungsstörung", "stellwerksstörung", "fahrzeugschaden", "personenschaden",
+    "wetter", "unwetter", "schnee", "hochwasser", "murenabgang",
+    "lawinengefahr", "streik", "demonstration", "veranstaltung", "wartungsarbeiten",
+    "update", "info", "hinweis", "achtung"
+}
+
+def _is_category(text: str) -> bool:
+    t = text.lower()
+    for k in NON_LOCATION_PREFIXES:
+        if t == k or t.startswith(k + " "):
+             return True
+    return False
+
 def _clean_endpoint(p: str) -> str:
     p = BAHNHOF_TRIM_RE.sub("", p)
     p = _MULTI_SLASH_RE.sub("/", p)
@@ -160,15 +177,23 @@ def _clean_title_keep_places(t: str) -> str:
         canonical_parts.append(canon)
     parts = canonical_parts
     if len(parts) >= 2:
-        # Check ordering: if part[1] is Vienna and part[0] is not, swap
-        if is_in_vienna(parts[1]) and not is_in_vienna(parts[0]):
-             parts[0], parts[1] = parts[1], parts[0]
+        # Check if first part is a category keyword -> use colon
+        if _is_category(parts[0]):
+             t = f"{parts[0]}: {parts[1]}"
+             if len(parts) > 2:
+                rest = " ".join(parts[2:]).strip()
+                if rest:
+                    t += f" {rest}"
+        else:
+            # Check ordering: if part[1] is Vienna and part[0] is not, swap
+            if is_in_vienna(parts[1]) and not is_in_vienna(parts[0]):
+                 parts[0], parts[1] = parts[1], parts[0]
 
-        t = f"{parts[0]} ↔ {parts[1]}"
-        if len(parts) > 2:
-            rest = " ".join(parts[2:]).strip()
-            if rest:
-                t += f" {rest}"
+            t = f"{parts[0]} ↔ {parts[1]}"
+            if len(parts) > 2:
+                rest = " ".join(parts[2:]).strip()
+                if rest:
+                    t += f" {rest}"
     elif parts:
         t = parts[0]
     t = MULTI_ARROW_RE.sub(" ↔ ", t)
