@@ -462,11 +462,9 @@ def fetch_content_safe(
         raise ValueError(f"Unsafe or invalid URL: {sanitized_url}")
 
     with session.get(safe_url, stream=True, timeout=timeout, **kwargs) as r:
-        # Prevent DNS Rebinding: Check the actual connected IP
-        # We do this BEFORE raise_for_status() to ensure we detect safe-IP violations
-        # even if the server returns an error status (e.g. 404, 500).
-        verify_response_ip(r)
-
         r.raise_for_status()
+
+        # Prevent DNS Rebinding: Check the actual connected IP
+        verify_response_ip(r)
 
         return read_response_safe(r, max_bytes)
