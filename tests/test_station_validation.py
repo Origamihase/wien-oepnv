@@ -55,7 +55,7 @@ def stations_file(tmp_path: Path) -> Path:
             "vor_id": "missing",
         },
     ]
-    path.write_text(json.dumps(entries), encoding="utf-8")
+    path.write_text(json.dumps({"stations": entries}), encoding="utf-8")
     return path
 
 
@@ -112,7 +112,7 @@ def test_report_flags_missing_alias_list(tmp_path: Path, gtfs_file: Path) -> Non
         }
     ]
     path = tmp_path / "stations.json"
-    path.write_text(json.dumps(stations), encoding="utf-8")
+    path.write_text(json.dumps({"stations": stations}), encoding="utf-8")
 
     report = validate_stations(path, gtfs_stops_path=gtfs_file)
     assert report.alias_issues == (
@@ -143,7 +143,7 @@ def test_coordinate_validation_detects_missing_and_out_of_bounds(tmp_path: Path)
         },
     ]
     path = tmp_path / "stations.json"
-    path.write_text(json.dumps(stations), encoding="utf-8")
+    path.write_text(json.dumps({"stations": stations}), encoding="utf-8")
 
     report = validate_stations(path)
 

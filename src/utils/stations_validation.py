@@ -166,6 +166,9 @@ def _load_stations(path: Path) -> list[Mapping[str, object]]:
     except json.JSONDecodeError as exc:  # pragma: no cover - defensive
         raise StationValidationError(f"Invalid JSON in {path}") from exc
 
+    if isinstance(data, dict):
+        data = data.get("stations", [])
+
     if not isinstance(data, list):
         raise StationValidationError("Stations payload must be a list")
 
