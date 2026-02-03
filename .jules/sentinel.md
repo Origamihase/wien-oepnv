@@ -12,3 +12,8 @@
 **Vulnerability:** `fetch_content_safe` checked `raise_for_status()` before verifying the connected IP, allowing attackers to probe internal networks by observing error codes (e.g. 404 vs connection refused) even if the IP was blocked.
 **Learning:** Security checks on the response object (like IP verification) must happen *before* any data (including status codes) is processed or returned to the caller.
 **Prevention:** Enforce a strict "Verify-Then-Process" order for all network response handling.
+
+## 2026-02-15 - Unbounded Redirects & Infrastructure TLDs
+**Vulnerability:** The HTTP client used the default limit of 30 redirects, which exposes the application to resource exhaustion (DoS) via redirect loops. Additionally, infrastructure TLDs (.arpa, .kubernetes) were not blocked, potentially allowing SSRF against internal cluster services.
+**Learning:** Default settings in libraries (like requests) often prioritize usability/compatibility over security.
+**Prevention:** Explicitly configure limits (e.g., max_redirects) and maintain a comprehensive blocklist of internal/infrastructure TLDs for SSRF protection.

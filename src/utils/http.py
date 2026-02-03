@@ -146,6 +146,8 @@ def session_with_retries(
 
     options = {**_DEFAULT_RETRY_OPTIONS, **retry_opts}
     session = requests.Session()
+    # Security: Limit redirects to prevent infinite loops and resource exhaustion (DoS)
+    session.max_redirects = 10
     session.hooks["response"].append(_check_redirect_security)
     retry = Retry(**options)
     adapter = TimeoutHTTPAdapter(max_retries=retry, timeout=timeout)
@@ -190,6 +192,8 @@ _UNSAFE_TLDS = {
     "private",
     "onion",  # Tor Hidden Services
     "i2p",    # Invisible Internet Project
+    "arpa",   # Infrastructure TLD
+    "kubernetes", # Kubernetes internal DNS
 }
 
 # Explicitly block Shared Address Space (RFC 6598) 100.64.0.0/10 which is often used for CGNAT/internal carrier networks.
