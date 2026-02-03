@@ -1180,13 +1180,23 @@ def _fetch_departure_board_for_station(
                     # Logging request details (masked)
                     log.info(f"Requesting VOR DepartureBoard for {station_id}...")
 
+                    # Enforce rate limit atomically BEFORE request
+                    current_usage = save_request_count(now_local)
+                    if current_usage > MAX_REQUESTS_PER_DAY:
+                        _log_warning(
+                            "VOR Tageslimit überschritten (%s/%s) – Anfrage für %s abgebrochen.",
+                            current_usage,
+                            MAX_REQUESTS_PER_DAY,
+                            station_id,
+                        )
+                        return None
+
                     content = fetch_content_safe(
                         session,
                         endpoint,
                         params=params,
                         timeout=HTTP_TIMEOUT,
                     )
-                    save_request_count(now_local)
 
                     # Log raw length
                     log.debug(f"Received {len(content)} bytes from VOR.")
@@ -1194,14 +1204,12 @@ def _fetch_departure_board_for_station(
                     return json.loads(content)
 
                 except ValueError as exc:
-                    save_request_count(now_local)
                     _log_warning(
                         "VOR DepartureBoard %s ungültig/zu groß: %s", station_id, exc
                     )
                     return None
 
                 except requests.HTTPError as exc:
-                    save_request_count(now_local)
                     response = exc.response
                     if response is not None:
                         _log_warning(
@@ -1225,7 +1233,6 @@ def _fetch_departure_board_for_station(
                     continue
 
                 except RequestException as exc:
-                    save_request_count(now_local)
                     if attempt >= attempts - 1:
                         _log_error(
                             "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
