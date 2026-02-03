@@ -226,14 +226,17 @@
       ],
       "bst_code": "Fws",
       "bst_id": 528,
+      "id": "A=1@O=Flughafen Wien Bahnhof@X=16563659@Y=48120560@U=81@L=430470800@p=1769895381@i=A×at:43:4708@",
       "in_vienna": false,
+      "lat": 48.119,
+      "latitude": 48.12056,
+      "lon": 16.564,
+      "longitude": 16.563659,
       "name": "Flughafen Wien",
       "pendler": true,
       "source": "oebb",
-      "id": "A=1@O=Flughafen Wien Bahnhof@X=16563659@Y=48120560@U=81@L=430470800@p=1769895381@i=A×at:43:4708@",
       "type": "stop",
-      "lat": 48.119,
-      "lon": 16.564
+      "vor_id": "430470800"
     },
     {
       "_google_place_id": "ChIJcw5fA7YHbUcR9uqSCCBND2k",
@@ -1925,13 +1928,12 @@
       "bst_code": "900100",
       "bst_id": "900100",
       "in_vienna": true,
+      "latitude": 48.185184,
+      "longitude": 16.376413,
       "name": "Wien Hauptbahnhof",
       "pendler": false,
       "source": "vor",
-      "id": "A=1@O=Wien Hauptbahnhof@X=16376413@Y=48185184@U=81@L=490134900@p=1769895381@i=A×at:49:1349@",
-      "type": "stop",
-      "lat": 48.185,
-      "lon": 16.376
+      "vor_id": "490134900"
     },
     {
       "aliases": [
@@ -3347,25 +3349,6 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430527400"
-    },
-    {
-      "name": "Gmünd NÖ",
-      "aliases": [
-        "Gmünd N.Ö.",
-        "Gmünd NOE"
-      ],
-      "in_vienna": false,
-      "pendler": false,
-      "source": "manual_fix"
-    },
-    {
-      "name": "Ceske Velenice",
-      "aliases": [
-        "Ceské Velenice"
-      ],
-      "in_vienna": false,
-      "pendler": false,
-      "source": "manual_fix"
     }
   ]
 }
