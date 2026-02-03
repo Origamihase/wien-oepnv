@@ -18,7 +18,10 @@ def stations_path(tmp_path: Path) -> Path:
 
 
 def _read_entries(path: Path) -> list[dict[str, object]]:
-    return json.loads(path.read_text(encoding="utf-8"))
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if isinstance(data, dict):
+        return data.get("stations", [])
+    return data
 
 
 def test_merge_wl_data_into_existing_vor_entry(stations_path: Path) -> None:

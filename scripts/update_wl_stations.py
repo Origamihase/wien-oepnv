@@ -514,13 +514,11 @@ def merge_into_stations(
         raw_data = []
 
     existing: list[dict[str, object]] = []
-    is_wrapped = False
 
     if isinstance(raw_data, list):
         existing = raw_data
     elif isinstance(raw_data, dict) and isinstance(raw_data.get("stations"), list):
         existing = raw_data["stations"]  # type: ignore[assignment]
-        is_wrapped = True
     else:
         raise ValueError("stations.json must contain a JSON array or a dict with a 'stations' array")
 
@@ -583,10 +581,7 @@ def merge_into_stations(
     filtered.extend(unmatched)
 
     with stations_path.open("w", encoding="utf-8") as handle:
-        if is_wrapped:
-            json.dump({"stations": filtered}, handle, ensure_ascii=False, indent=2)
-        else:
-            json.dump(filtered, handle, ensure_ascii=False, indent=2)
+        json.dump({"stations": filtered}, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     log.info("Wrote %d total stations", len(filtered))
 
