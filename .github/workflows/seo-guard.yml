@@ -73,9 +73,9 @@ jobs:
               # Alle bestehenden atom:link-Tags global entfernen
               $s =~ s{(?:\r?\n)?[ \t]*<atom:link\b[^>]*?/>}{}gs;
               # Channel-Links & Sprache normieren
-              $s =~ s{(<channel>.*?<description>.*?</description>)(?:\s*<language>.*?</language>)?\s*}{
-                my $prefix = $1;
-                "$prefix\n    <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n    <language>de</language>\n"
+              $s =~ s{(<description>.*?</description>)(?:\s*<language>.*?</language>)?}{
+                my $desc = $1;
+                "$desc\n    <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n    <language>de</language>"
               }es;
               $_ = $s;
             ' docs/feed.xml
