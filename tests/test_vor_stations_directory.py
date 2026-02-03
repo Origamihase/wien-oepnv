@@ -78,8 +78,8 @@ def test_vor_lookup_by_alias():
         "430470800",
     )
     assert info.in_vienna is False
-    assert info.latitude == pytest.approx(48.119)
-    assert info.longitude == pytest.approx(16.564)
+    assert info.latitude == pytest.approx(48.12056)
+    assert info.longitude == pytest.approx(16.563659)
 
 
 def test_vor_alias_with_municipality_prefix():

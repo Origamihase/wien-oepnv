@@ -103,7 +103,7 @@ def test_load_env_file_handles_io_errors(
     ('"foo bar"', 'foo bar'),
     (r'"foo\"bar"', 'foo"bar'),
     (r'"foo\\bar"', r'foo\bar'),
-    (r"'foo\'bar'", r"foo'bar"),
+    (r"'foo\'bar'", r"foo\'bar"),
 ])
 def test_parse_value_escapes(input_val: str, expected: str) -> None:
     """Test that quoted values are correctly unescaped."""
