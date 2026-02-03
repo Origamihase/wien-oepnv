@@ -25,8 +25,27 @@ except ImportError:
     try:
         from utils.logging import sanitize_log_message  # type: ignore[no-redef]
     except ImportError:
+        # Fallback security masker if logging module is unreachable.
+        # This ensures secrets are not leaked in plaintext during import errors.
         def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
-            return text.replace("\n", "\\n").replace("\r", "\\r")
+            if not text:
+                return ""
+            sanitized = text
+            # Mask common sensitive keys in query strings or assignments
+            # Matches key=value or key: value where key implies a secret
+            _keys = r"password|token|secret|key|authorization|auth|sid|signature|accessid|apikey"
+            sanitized = re.sub(
+                rf"(?i)((?:{_keys})[^=:\s]*\s*[:=]\s*)([^&\s]+)",
+                r"\1***",
+                sanitized,
+            )
+            # Mask secrets explicitly provided
+            if secrets:
+                for secret in secrets:
+                    if secret:
+                        sanitized = sanitized.replace(secret, "***")
+            # Escape control characters to prevent log injection
+            return sanitized.replace("\n", "\\n").replace("\r", "\\r")
 
 __all__ = [
     "get_int_env",
