@@ -16,7 +16,16 @@ exclude = [
 select = [
   "E",
   "F",
+  "S",
 ]
+
+[tool.ruff.lint.per-file-ignores]
+"src/feed/config.py" = ["S112"]
+"src/places/client.py" = ["S311"]
+"src/providers/oebb.py" = ["S110"]
+"src/utils/files.py" = ["S110"]
+"src/utils/secret_scanner.py" = ["S603", "S607"]
+"src/utils/stations.py" = ["S105"]
 
 [tool.mypy]
 python_version = "3.11"
