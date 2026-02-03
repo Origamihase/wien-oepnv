@@ -17,7 +17,16 @@ import logging
 import os
 import re
 from pathlib import Path
-from typing import Dict, Iterable, Mapping, MutableMapping
+from typing import Dict, Iterable, List, Mapping, MutableMapping
+
+try:
+    from .logging import sanitize_log_message
+except ImportError:
+    try:
+        from utils.logging import sanitize_log_message  # type: ignore[no-redef]
+    except ImportError:
+        def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
+            return text.replace("\n", "\\n").replace("\r", "\\r")
 
 __all__ = [
     "get_int_env",
@@ -58,7 +67,7 @@ def get_bool_env(name: str, default: bool) -> bool:
         "Ungültiger boolescher Wert für %s=%r – verwende Default %s "
         "(erlaubt: 1/0, true/false, yes/no, on/off)",
         name,
-        raw,
+        sanitize_log_message(raw),
         default,
     )
     return default
@@ -81,10 +90,10 @@ def get_int_env(name: str, default: int) -> int:
         logging.getLogger("build_feed").warning(
             "Ungültiger Wert für %s=%r – verwende Default %d (%s: %s)",
             name,
-            raw,
+            sanitize_log_message(raw),
             default,
             type(e).__name__,
-            e,
+            sanitize_log_message(str(e)),
         )
         return default
 
