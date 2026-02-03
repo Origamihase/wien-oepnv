@@ -400,10 +400,21 @@ def _normalise_access_token(raw: str) -> tuple[str, str]:
     token = raw.strip()
     if not token:
         return "", ""
-    normalized = token
-    header = ""
-    if token.lower().startswith("basic "):
+
+    lower_token = token.lower()
+    if lower_token.startswith("basic "):
         normalized = token[6:].strip()
+        # Heuristic: If it contains a colon, it's likely unencoded user:pass
+        if ":" in normalized:
+            encoded = base64.b64encode(normalized.encode("utf-8")).decode("ascii")
+            return normalized, f"Basic {encoded}"
+        return normalized, f"Basic {normalized}"
+
+    if lower_token.startswith("bearer "):
+        normalized = token[7:].strip()
+        return normalized, f"Bearer {normalized}"
+
+    normalized = token
     if ":" in normalized:
         encoded = base64.b64encode(normalized.encode("utf-8")).decode("ascii")
         header = f"Basic {encoded}"
