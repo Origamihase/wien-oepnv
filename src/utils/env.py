@@ -110,21 +110,31 @@ def read_secret(name: str, default: str = "") -> str:
     # 1. Systemd Credentials
     cred_dir = os.getenv("CREDENTIALS_DIRECTORY")
     if cred_dir:
-        path = Path(cred_dir) / name
-        if path.exists() and path.is_file():
-            try:
-                # Secrets are typically single-line, but strip to be safe
-                return path.read_text(encoding="utf-8").strip()
-            except (OSError, ValueError):
-                pass
+        base_dir = Path(cred_dir).resolve()
+        path = (base_dir / name).resolve()
+        try:
+            path.relative_to(base_dir)
+            if path.exists() and path.is_file():
+                try:
+                    # Secrets are typically single-line, but strip to be safe
+                    return path.read_text(encoding="utf-8").strip()
+                except (OSError, ValueError):
+                    pass
+        except ValueError:
+            pass
 
     # 2. Docker Secrets
-    docker_secret = Path("/run/secrets") / name
-    if docker_secret.exists() and docker_secret.is_file():
-        try:
-            return docker_secret.read_text(encoding="utf-8").strip()
-        except (OSError, ValueError):
-            pass
+    docker_base = Path("/run/secrets").resolve()
+    docker_secret = (docker_base / name).resolve()
+    try:
+        docker_secret.relative_to(docker_base)
+        if docker_secret.exists() and docker_secret.is_file():
+            try:
+                return docker_secret.read_text(encoding="utf-8").strip()
+            except (OSError, ValueError):
+                pass
+    except ValueError:
+        pass
 
     # 3. Environment Variable
     return (os.getenv(name) or default).strip()
