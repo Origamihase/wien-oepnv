@@ -106,3 +106,15 @@ def test_validate_http_url_shared_address_space() -> None:
     assert validate_http_url("http://0.0.0.0", check_dns=False) is None
     # :: should be rejected
     assert validate_http_url("http://[::]", check_dns=False) is None
+
+
+def test_validate_http_url_dotless_domains() -> None:
+    # Dotless domains (single label) should be rejected when check_dns=False
+    # to avoid leaking local network names or accessing intranet services via feed links.
+    assert validate_http_url("http://myserver", check_dns=False) is None
+    assert validate_http_url("http://intranet", check_dns=False) is None
+    assert validate_http_url("http://router", check_dns=False) is None
+    assert validate_http_url("http://go", check_dns=False) is None
+
+    # FQDN should pass
+    assert validate_http_url("http://myserver.com", check_dns=False) == "http://myserver.com"
