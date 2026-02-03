@@ -2105,7 +2105,6 @@
     {
       "aliases": [
         "490065700",
-        "Wien Karlsplatz",
         "60201076",
         "60201077",
         "Bahnhof KarlsPl.",
@@ -2179,6 +2178,7 @@
         "Wien KarlsPl. Station",
         "Wien KarlsPl. Station Bahnhof",
         "Wien KarlsPl. Station Bf",
+        "Wien Karlsplatz",
         "Wien Karlsplatz (VOR)",
         "Wien Karlsplatz (VOR) Bahnhof",
         "Wien Karlsplatz (VOR) Bf",
@@ -2217,16 +2217,16 @@
       "wl_diva": "60201076",
       "wl_stops": [
         {
-          "latitude": 48.19868,
-          "longitude": 16.36945,
+          "stop_id": "60201076",
           "name": "Karlsplatz U (Richtung Reumannplatz)",
-          "stop_id": "60201076"
+          "latitude": 48.19868,
+          "longitude": 16.36945
         },
         {
-          "latitude": 48.1992,
-          "longitude": 16.371,
+          "stop_id": "60201077",
           "name": "Karlsplatz U (Richtung Leopoldau)",
-          "stop_id": "60201077"
+          "latitude": 48.1992,
+          "longitude": 16.371
         }
       ]
     },
@@ -2687,7 +2687,6 @@
     {
       "aliases": [
         "490118400",
-        "Wien Schottentor",
         "60201002",
         "60201003",
         "Bahnhof Schottentor",
@@ -2723,6 +2722,7 @@
         "Vienna Schottentor Station",
         "Vienna Schottentor U",
         "Vienna Schottentor U (VOR)",
+        "Wien Schottentor",
         "Wien Schottentor (VOR)",
         "Wien Schottentor (VOR) Bahnhof",
         "Wien Schottentor (VOR) Bf",
@@ -2755,16 +2755,16 @@
       "wl_diva": "60201002",
       "wl_stops": [
         {
-          "latitude": 48.21406,
-          "longitude": 16.36031,
+          "stop_id": "60201002",
           "name": "Schottentor U (Richtung Heiligenstadt)",
-          "stop_id": "60201002"
+          "latitude": 48.21406,
+          "longitude": 16.36031
         },
         {
-          "latitude": 48.2135,
-          "longitude": 16.3609,
+          "stop_id": "60201003",
           "name": "Schottentor U (Richtung Karlsplatz)",
-          "stop_id": "60201003"
+          "latitude": 48.2135,
+          "longitude": 16.3609
         }
       ]
     },
@@ -2938,7 +2938,6 @@
     {
       "aliases": [
         "490132000",
-        "Wien Stephansplatz",
         "60201001",
         "Bahnhof StephansPl.",
         "Bahnhof StephansPl. (VOR)",
@@ -3010,6 +3009,7 @@
         "Wien StephansPl. Station",
         "Wien StephansPl. Station Bahnhof",
         "Wien StephansPl. Station Bf",
+        "Wien Stephansplatz",
         "Wien Stephansplatz (VOR)",
         "Wien Stephansplatz (VOR) Bahnhof",
         "Wien Stephansplatz (VOR) Bf",
@@ -3048,10 +3048,10 @@
       "wl_diva": "60201001",
       "wl_stops": [
         {
-          "latitude": 48.20826,
-          "longitude": 16.37327,
+          "stop_id": "60201001",
           "name": "Stephansplatz U",
-          "stop_id": "60201001"
+          "latitude": 48.20826,
+          "longitude": 16.37327
         }
       ]
     },
