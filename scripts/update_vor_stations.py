@@ -666,8 +666,18 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
             existing_raw = json.load(handle)
     except FileNotFoundError:
         existing_raw = []
-    if not isinstance(existing_raw, list):
-        raise ValueError("stations.json must contain a JSON array")
+
+    is_wrapped = False
+    if isinstance(existing_raw, dict) and "stations" in existing_raw:
+        is_wrapped = True
+        existing_list = existing_raw["stations"]
+    elif isinstance(existing_raw, list):
+        existing_list = existing_raw
+    else:
+        raise ValueError("stations.json must contain a JSON array or a wrapped object")
+
+    if not isinstance(existing_list, list):
+        raise ValueError("stations list must be a JSON array")
 
     def _normalize_id(value: object | None) -> str:
         if isinstance(value, (int, float)):
@@ -682,7 +692,7 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
     alias_to_entry: dict[str, dict[str, object]] = {}
     existing: list[dict[str, object]] = []
 
-    for entry in existing_raw:
+    for entry in existing_list:
         if not isinstance(entry, dict):
             continue
         existing.append(entry)
@@ -828,7 +838,11 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
     merged_entries = existing + new_vor_entries
 
     with stations_path.open("w", encoding="utf-8") as handle:
-        json.dump(merged_entries, handle, ensure_ascii=False, indent=2)
+        if is_wrapped:
+            output = {"stations": merged_entries}
+        else:
+            output = merged_entries
+        json.dump(output, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     log.info(
         "Wrote %d total stations (%d merged, %d added VOR entries)",
