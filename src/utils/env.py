@@ -168,9 +168,8 @@ def _parse_value(value: str) -> str:
                             continue
                     elif quote_char == "'":
                         # In single quotes, we allow \' to NOT close the string,
-                        # but we keep the backslash (legacy behavior compatibility)
+                        # but we consume the backslash to return the intended value.
                         if next_char == "'":
-                            parts.append("\\")
                             parts.append("'")
                             idx += 2
                             continue
