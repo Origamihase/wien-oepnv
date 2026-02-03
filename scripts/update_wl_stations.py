@@ -512,10 +512,6 @@ def merge_into_stations(
             existing = json.load(handle)
     except FileNotFoundError:
         existing = []
-
-    if isinstance(existing, dict):
-        existing = existing.get("stations", [])
-
     if not isinstance(existing, list):
         raise ValueError("stations.json must contain a JSON array")
 
@@ -578,7 +574,7 @@ def merge_into_stations(
     filtered.extend(unmatched)
 
     with stations_path.open("w", encoding="utf-8") as handle:
-        json.dump({"stations": filtered}, handle, ensure_ascii=False, indent=2)
+        json.dump(filtered, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     log.info("Wrote %d total stations", len(filtered))
 
