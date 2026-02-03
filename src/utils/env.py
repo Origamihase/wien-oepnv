@@ -31,6 +31,7 @@ except ImportError:
 __all__ = [
     "get_int_env",
     "get_bool_env",
+    "read_secret",
     "load_env_file",
     "load_default_env_files",
 ]
@@ -96,6 +97,37 @@ def get_int_env(name: str, default: int) -> int:
             sanitize_log_message(str(e)),
         )
         return default
+
+
+def read_secret(name: str, default: str = "") -> str:
+    """Read a secret from Systemd Credentials, Docker Secrets, or Environment Variables.
+
+    Priority:
+    1. Systemd Credentials ($CREDENTIALS_DIRECTORY/name)
+    2. Docker Secrets (/run/secrets/name)
+    3. Environment Variable (os.getenv)
+    """
+    # 1. Systemd Credentials
+    cred_dir = os.getenv("CREDENTIALS_DIRECTORY")
+    if cred_dir:
+        path = Path(cred_dir) / name
+        if path.exists() and path.is_file():
+            try:
+                # Secrets are typically single-line, but strip to be safe
+                return path.read_text(encoding="utf-8").strip()
+            except (OSError, ValueError):
+                pass
+
+    # 2. Docker Secrets
+    docker_secret = Path("/run/secrets") / name
+    if docker_secret.exists() and docker_secret.is_file():
+        try:
+            return docker_secret.read_text(encoding="utf-8").strip()
+        except (OSError, ValueError):
+            pass
+
+    # 3. Environment Variable
+    return (os.getenv(name) or default).strip()
 
 
 ENV_ASSIGNMENT_RE = re.compile(

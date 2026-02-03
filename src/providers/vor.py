@@ -32,12 +32,18 @@ from requests import RequestException, Session
 from zoneinfo import ZoneInfo
 
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
+    from ..utils.env import read_secret
     from ..utils.files import atomic_write
     from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.ids import make_guid
     from ..utils.logging import sanitize_log_arg, sanitize_log_message
     from ..utils.stations import vor_station_ids, station_info
 else:  # pragma: no cover - allow running via package or src layout
+    try:
+        from utils.env import read_secret
+    except ModuleNotFoundError:
+        from ..utils.env import read_secret  # type: ignore
+
     try:
         from utils.http import session_with_retries, validate_http_url, fetch_content_safe
     except ModuleNotFoundError:
@@ -413,9 +419,9 @@ def refresh_access_credentials() -> str:
     Supports ``VOR_ACCESS_ID`` (or legacy ``VAO_ACCESS_ID``).
     Automatically detects Basic vs. Bearer tokens.
     """
-    raw = _get_env("VOR_ACCESS_ID")
+    raw = read_secret("VOR_ACCESS_ID")
     if not raw:
-        raw = _get_env("VAO_ACCESS_ID")
+        raw = read_secret("VAO_ACCESS_ID")
     token, header = _normalise_access_token(raw)
 
     global VOR_ACCESS_ID, _VOR_ACCESS_TOKEN_RAW, _VOR_AUTHORIZATION_HEADER

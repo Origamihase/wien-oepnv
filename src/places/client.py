@@ -13,9 +13,11 @@ from typing import Dict, Iterable, Iterator, List, Optional, Sequence, Set, cast
 import requests
 
 try:
+    from utils.env import read_secret
     from utils.http import read_response_safe, session_with_retries, verify_response_ip
     from utils.logging import sanitize_log_arg, sanitize_log_message
 except ModuleNotFoundError:
+    from ..utils.env import read_secret  # type: ignore
     from ..utils.http import read_response_safe, session_with_retries, verify_response_ip  # type: ignore
     from ..utils.logging import sanitize_log_arg, sanitize_log_message  # type: ignore
 
@@ -513,21 +515,16 @@ def get_places_api_key() -> str:
     (status code ``2``) when neither variable is defined.
     """
 
-    env = os.environ
-    access_id = env.get("GOOGLE_ACCESS_ID")
+    access_id = read_secret("GOOGLE_ACCESS_ID")
     if access_id:
-        key = access_id.strip()
-        if key:
-            return key
+        return access_id
 
-    legacy_key = env.get("GOOGLE_MAPS_API_KEY")
+    legacy_key = read_secret("GOOGLE_MAPS_API_KEY")
     if legacy_key:
-        key = legacy_key.strip()
-        if key:
-            LOGGER.warning(
-                "DEPRECATED: use GOOGLE_ACCESS_ID instead of GOOGLE_MAPS_API_KEY"
-            )
-            return key
+        LOGGER.warning(
+            "DEPRECATED: use GOOGLE_ACCESS_ID instead of GOOGLE_MAPS_API_KEY"
+        )
+        return legacy_key
 
     message = "Missing GOOGLE_ACCESS_ID (preferred) or GOOGLE_MAPS_API_KEY."
     LOGGER.error(message)
