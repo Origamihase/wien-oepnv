@@ -162,12 +162,16 @@ def _load_stations(path: Path) -> list[Mapping[str, object]]:
         raise StationValidationError(f"Stations file not found: {path}") from exc
 
     try:
-        data = json.loads(raw)
+        raw_data = json.loads(raw)
     except json.JSONDecodeError as exc:  # pragma: no cover - defensive
         raise StationValidationError(f"Invalid JSON in {path}") from exc
 
-    if not isinstance(data, list):
-        raise StationValidationError("Stations payload must be a list")
+    if isinstance(raw_data, list):
+        data = raw_data
+    elif isinstance(raw_data, dict) and isinstance(raw_data.get("stations"), list):
+        data = raw_data["stations"]
+    else:
+        raise StationValidationError("Stations payload must be a list or a wrapped object")
 
     entries: list[Mapping[str, object]] = []
     for index, entry in enumerate(data):

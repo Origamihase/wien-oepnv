@@ -503,13 +503,17 @@ def main() -> int:
         return 1
 
     try:
-        stations = json.loads(args.stations.read_text(encoding="utf-8"))
+        raw_data = json.loads(args.stations.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
         log.error("Could not parse %s: %s", args.stations, exc)
         return 1
 
-    if not isinstance(stations, list):
-        log.error("Stations file %s does not contain a JSON array", args.stations)
+    if isinstance(raw_data, list):
+        stations = raw_data
+    elif isinstance(raw_data, dict) and isinstance(raw_data.get("stations"), list):
+        stations = raw_data["stations"]
+    else:
+        log.error("Stations file %s must contain a JSON array or wrapped object", args.stations)
         return 1
 
     vor_names = _load_vor_names(args.vor_stops)
@@ -536,7 +540,7 @@ def main() -> int:
         return 0
 
     with atomic_write(args.stations, mode="w", encoding="utf-8", permissions=0o644) as handle:
-        json.dump(stations, handle, ensure_ascii=False, indent=2)
+        json.dump({"stations": stations}, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     log.info("Wrote enriched aliases to %s", args.stations)
     return 0

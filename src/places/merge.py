@@ -70,9 +70,15 @@ def load_stations(path: Path) -> List[StationEntry]:
     if not path.exists():
         return []
     content = path.read_text(encoding="utf-8")
-    data = json.loads(content)
-    if not isinstance(data, list):
-        raise ValueError("stations file must contain a list")
+    raw_data = json.loads(content)
+
+    if isinstance(raw_data, list):
+        data = raw_data
+    elif isinstance(raw_data, dict) and isinstance(raw_data.get("stations"), list):
+        data = raw_data["stations"]
+    else:
+        raise ValueError("stations file must contain a list or wrapped object")
+
     stations: List[StationEntry] = []
     for raw in data:
         if not isinstance(raw, MutableMapping):
@@ -83,7 +89,7 @@ def load_stations(path: Path) -> List[StationEntry]:
 
 def write_stations(path: Path, stations: Sequence[StationEntry]) -> None:
     serialisable = list(stations)
-    payload = json.dumps(serialisable, ensure_ascii=False, indent=2, sort_keys=True)
+    payload = json.dumps({"stations": serialisable}, ensure_ascii=False, indent=2, sort_keys=True)
     # Security: use atomic_write to avoid partial writes on crashes/power loss.
     with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         handle.write(payload + "\n")

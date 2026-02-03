@@ -667,9 +667,7 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
     except FileNotFoundError:
         existing_raw = []
 
-    is_wrapped = False
     if isinstance(existing_raw, dict) and "stations" in existing_raw:
-        is_wrapped = True
         existing_list = existing_raw["stations"]
     elif isinstance(existing_raw, list):
         existing_list = existing_raw
@@ -838,10 +836,7 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
     merged_entries = existing + new_vor_entries
 
     with stations_path.open("w", encoding="utf-8") as handle:
-        if is_wrapped:
-            output = {"stations": merged_entries}
-        else:
-            output = merged_entries
+        output = {"stations": merged_entries}
         json.dump(output, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     log.info(
