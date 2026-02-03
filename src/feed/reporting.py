@@ -19,11 +19,11 @@ from .config import LOG_TIMEZONE
 from .logging import diagnostics_log_path, error_log_path, prune_log_file
 
 try:  # pragma: no cover - support package and script execution
-    from utils.env import get_bool_env
+    from utils.env import get_bool_env, read_secret
     from utils.files import atomic_write
     from utils.http import session_with_retries, validate_http_url, verify_response_ip
 except ModuleNotFoundError:  # pragma: no cover
-    from ..utils.env import get_bool_env
+    from ..utils.env import get_bool_env, read_secret
     from ..utils.files import atomic_write
     from ..utils.http import session_with_retries, validate_http_url, verify_response_ip
 
@@ -659,7 +659,7 @@ class _GithubIssueConfig:
             or os.getenv("GITHUB_REPOSITORY")
             or None
         )
-        token = os.getenv("FEED_GITHUB_TOKEN") or os.getenv("GITHUB_TOKEN") or None
+        token = read_secret("FEED_GITHUB_TOKEN") or read_secret("GITHUB_TOKEN") or None
         api_url = (
             os.getenv("FEED_GITHUB_API_URL")
             or os.getenv("GITHUB_API_URL")
