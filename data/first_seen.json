@@ -1,5 +1,32 @@
 {
-  "test-guid-123": {
-    "first_seen": "2023-10-27T10:00:00+00:00"
+  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&838661": {
+    "first_seen": "2026-02-03T21:23:51.730273+00:00"
+  },
+  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&841669": {
+    "first_seen": "2026-02-03T21:23:51.730273+00:00"
+  },
+  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&847828": {
+    "first_seen": "2026-02-03T21:23:51.730273+00:00"
+  },
+  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&852534": {
+    "first_seen": "2026-02-03T21:23:51.730273+00:00"
+  },
+  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&852555": {
+    "first_seen": "2026-02-03T21:23:51.730273+00:00"
+  },
+  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&852582": {
+    "first_seen": "2026-02-03T21:23:51.730273+00:00"
+  },
+  "wl|hinweis|L=1,2,4A,71,D|D=2026-02-03": {
+    "first_seen": "2026-02-03T21:23:51.730273+00:00"
+  },
+  "wl|störung|L=12|D=2026-02-03": {
+    "first_seen": "2026-02-03T21:23:51.730273+00:00"
+  },
+  "wl|störung|L=5|D=2026-02-03": {
+    "first_seen": "2026-02-03T21:23:51.730273+00:00"
+  },
+  "wl|störung|L=62A|D=2026-02-03": {
+    "first_seen": "2026-02-03T21:23:51.730273+00:00"
   }
 }
