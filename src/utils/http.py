@@ -7,6 +7,7 @@ import logging
 import os
 import re
 import socket
+import time
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
 from typing import Any, Container
 from urllib.parse import parse_qsl, urlencode, urlparse
@@ -419,25 +420,41 @@ def verify_response_ip(response: requests.Response) -> None:
 
 
 def read_response_safe(
-    response: requests.Response, max_bytes: int = 10 * 1024 * 1024
+    response: requests.Response,
+    max_bytes: int = 10 * 1024 * 1024,
+    timeout: float | None = None,
 ) -> bytes:
-    """Read response content safely, enforcing size limits.
+    """Read response content safely, enforcing size limits and timeouts.
 
     Args:
         response: The requests Response object (must be opened with stream=True).
         max_bytes: Maximum allowed size in bytes.
+        timeout: Maximum time in seconds allowed for reading the body.
 
     Raises:
         ValueError: If Content-Length or actual size exceeds max_bytes.
+        requests.Timeout: If the read operation exceeds the timeout.
     """
     # Check Content-Length header if present
     content_length = response.headers.get("Content-Length")
-    if content_length and int(content_length) > max_bytes:
-        raise ValueError(f"Content-Length exceeds {max_bytes} bytes")
+    if content_length:
+        try:
+            length = int(content_length)
+        except ValueError:
+            # Ignore malformed Content-Length header; strict check happens in loop
+            pass
+        else:
+            if length > max_bytes:
+                raise ValueError(f"Content-Length exceeds {max_bytes} bytes")
 
     chunks = []
     received = 0
+    start_time = time.monotonic()
+
     for chunk in response.iter_content(chunk_size=8192):
+        if timeout is not None and (time.monotonic() - start_time) > timeout:
+            raise requests.Timeout(f"Read timed out after {timeout} seconds")
+
         chunks.append(chunk)
         received += len(chunk)
         if received > max_bytes:
@@ -471,6 +488,7 @@ def fetch_content_safe(
         sanitized_url = _sanitize_url_for_error(url)
         raise ValueError(f"Unsafe or invalid URL: {sanitized_url}")
 
+    start_time = time.monotonic()
     with session.get(safe_url, stream=True, timeout=timeout, **kwargs) as r:
         # Prevent DNS Rebinding: Check the actual connected IP
         # MUST be done before raise_for_status() to prevent leaking info via error codes
@@ -479,4 +497,11 @@ def fetch_content_safe(
 
         r.raise_for_status()
 
-        return read_response_safe(r, max_bytes)
+        # Calculate remaining time for reading body if a total timeout was specified
+        read_timeout: float | None = None
+        if timeout is not None:
+            elapsed = time.monotonic() - start_time
+            # Ensure we have at least a small window to read data
+            read_timeout = max(0.1, float(timeout) - elapsed)
+
+        return read_response_safe(r, max_bytes, timeout=read_timeout)
