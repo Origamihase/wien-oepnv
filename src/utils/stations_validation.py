@@ -11,6 +11,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import csv
 import json
+import math
 from typing import Iterable, Iterator, Mapping, Sequence
 
 
@@ -218,17 +219,23 @@ def _find_duplicate_coordinate_groups(
 
 
 def _extract_float(value: object) -> float | None:
+    val: float
     if isinstance(value, (int, float)):
-        return float(value)
-    if isinstance(value, str):
+        val = float(value)
+    elif isinstance(value, str):
         token = value.strip()
         if not token:
             return None
         try:
-            return float(token)
+            val = float(token)
         except ValueError:
             return None
-    return None
+    else:
+        return None
+
+    if not math.isfinite(val):
+        return None
+    return val
 
 
 def _format_duplicate_group(
