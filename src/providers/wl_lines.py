@@ -31,7 +31,7 @@ LINES_COMPLEX_PREFIX_RE = re.compile(
     r"""^\s*
         [A-Za-z0-9]+
         (?:\s*,\s*[A-Za-z0-9]+){1,}
-        (?:\s*(?:und)?\s*(?:Rufbus\s+[A-Za-z0-9]+|\([^)]+\))\s*)*
+        (?:(?:\s*und)?\s*(?:Rufbus\s+[A-Za-z0-9]+|\([^)]+\)))*
         \s*:\s*
     """,
     re.IGNORECASE | re.VERBOSE,
