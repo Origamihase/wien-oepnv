@@ -350,6 +350,12 @@ def validate_http_url(
                     if tld in _UNSAFE_TLDS:
                         return None
 
+                    # Security Enhancement: Require FQDN (at least one dot) for non-DNS validated hosts
+                    # This filters out local hostnames (e.g. "http://myserver", "http://router")
+                    # unless they are standard IPs (caught above) or localhost (caught earlier).
+                    if len(labels) < 2:
+                        return None
+
         # Resolve hostname to IPs to prevent DNS rebinding/aliasing to private IPs
         # This now includes a timeout mechanism
         if check_dns:
