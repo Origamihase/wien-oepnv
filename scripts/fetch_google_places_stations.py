@@ -250,12 +250,7 @@ def _dump_changes(
 
 
 def _write_if_changed(path: Path, stations: Sequence[MutableMapping[str, object]]) -> None:
-    payload = (
-        json.dumps(
-            {"stations": list(stations)}, ensure_ascii=False, indent=2, sort_keys=True
-        )
-        + "\n"
-    )
+    payload = json.dumps(list(stations), ensure_ascii=False, indent=2, sort_keys=True) + "\n"
     if path.exists():
         current = path.read_text(encoding="utf-8")
         if current == payload:

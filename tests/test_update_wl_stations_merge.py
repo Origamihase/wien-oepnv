@@ -13,31 +13,26 @@ from scripts import update_wl_stations
 @pytest.fixture()
 def stations_path(tmp_path: Path) -> Path:
     path = tmp_path / "stations.json"
-    path.write_text("{}", encoding="utf-8")
+    path.write_text("[]", encoding="utf-8")
     return path
 
 
 def _read_entries(path: Path) -> list[dict[str, object]]:
-    content = json.loads(path.read_text(encoding="utf-8"))
-    if isinstance(content, dict):
-        return content.get("stations", [])
-    return content
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def test_merge_wl_data_into_existing_vor_entry(stations_path: Path) -> None:
     stations_path.write_text(
         json.dumps(
-            {
-                "stations": [
-                    {
-                        "name": "Wien Karlsplatz",
-                        "vor_id": "490065700",
-                        "bst_id": "900101",
-                        "aliases": ["Wien Karlsplatz"],
-                        "source": "vor",
-                    }
-                ]
-            }
+            [
+                {
+                    "name": "Wien Karlsplatz",
+                    "vor_id": "490065700",
+                    "bst_id": "900101",
+                    "aliases": ["Wien Karlsplatz"],
+                    "source": "vor",
+                }
+            ]
         ),
         encoding="utf-8",
     )

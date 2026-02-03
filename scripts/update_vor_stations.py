@@ -666,10 +666,6 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
             existing_raw = json.load(handle)
     except FileNotFoundError:
         existing_raw = []
-
-    if isinstance(existing_raw, dict):
-        existing_raw = existing_raw.get("stations", [])
-
     if not isinstance(existing_raw, list):
         raise ValueError("stations.json must contain a JSON array")
 
@@ -832,9 +828,7 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
     merged_entries = existing + new_vor_entries
 
     with stations_path.open("w", encoding="utf-8") as handle:
-        json.dump(
-            {"stations": merged_entries}, handle, ensure_ascii=False, indent=2
-        )
+        json.dump(merged_entries, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     log.info(
         "Wrote %d total stations (%d merged, %d added VOR entries)",

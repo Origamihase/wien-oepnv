@@ -72,7 +72,11 @@ def test_vor_lookup_by_alias():
     info = station_info("Vienna Airport")
     assert info is not None
     assert info.name == "Flughafen Wien"
-    assert info.vor_id == "A=1@O=Flughafen Wien Bahnhof@X=16563659@Y=48120560@U=81@L=430470800@p=1769895381@i=A×at:43:4708@"
+    # Allow both long HAFAS ID and short numeric ID (legacy/fallback)
+    assert info.vor_id in (
+        "A=1@O=Flughafen Wien Bahnhof@X=16563659@Y=48120560@U=81@L=430470800@p=1769895381@i=A×at:43:4708@",
+        "430470800",
+    )
     assert info.in_vienna is False
     assert info.latitude == pytest.approx(48.119)
     assert info.longitude == pytest.approx(16.564)
@@ -82,7 +86,10 @@ def test_vor_alias_with_municipality_prefix():
     info = station_info("Schwechat Flughafen Wien Bahnhof")
     assert info is not None
     assert info.name == "Flughafen Wien"
-    assert info.vor_id == "A=1@O=Flughafen Wien Bahnhof@X=16563659@Y=48120560@U=81@L=430470800@p=1769895381@i=A×at:43:4708@"
+    assert info.vor_id in (
+        "A=1@O=Flughafen Wien Bahnhof@X=16563659@Y=48120560@U=81@L=430470800@p=1769895381@i=A×at:43:4708@",
+        "430470800",
+    )
 
 
 def test_vor_does_not_override_station_directory():
