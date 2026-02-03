@@ -17,15 +17,15 @@ import logging
 import os
 import re
 from pathlib import Path
-from typing import Dict, Iterable, Mapping, MutableMapping
+from typing import Dict, Iterable, List, Mapping, MutableMapping
 
 try:
     from .logging import sanitize_log_message
 except ImportError:
     try:
-        from utils.logging import sanitize_log_message
+        from utils.logging import sanitize_log_message  # type: ignore[no-redef]
     except ImportError:
-        def sanitize_log_message(text: str, secrets: Iterable[str] | None = None) -> str:
+        def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
             return text.replace("\n", "\\n").replace("\r", "\\r")
 
 __all__ = [
