@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+import math
 import re
 import unicodedata
 from functools import lru_cache
@@ -84,16 +85,23 @@ def _coerce_float(value: object | None) -> float | None:
 
     if value is None:
         return None
+
+    val: float
     if isinstance(value, (int, float)):
-        return float(value)
-    text = str(value).strip()
-    if not text:
+        val = float(value)
+    else:
+        text = str(value).strip()
+        if not text:
+            return None
+        text = text.replace(",", ".")
+        try:
+            val = float(text)
+        except ValueError:
+            return None
+
+    if not math.isfinite(val):
         return None
-    text = text.replace(",", ".")
-    try:
-        return float(text)
-    except ValueError:
-        return None
+    return val
 
 
 def _point_on_segment(
