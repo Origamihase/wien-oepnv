@@ -8,6 +8,7 @@ import os
 import re
 import socket
 import time
+import types
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
 from typing import Any, Container
 from urllib.parse import parse_qsl, urlencode, urlparse
@@ -73,6 +74,16 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "code_verifier",
 })
 
+# Headers that must be stripped on cross-origin redirects
+_SENSITIVE_HEADERS = frozenset({
+    "Authorization",
+    "Proxy-Authorization",
+    "X-Goog-Api-Key",
+    "X-Api-Key",
+    "X-Auth-Token",
+    "Private-Token",
+})
+
 
 def _sanitize_url_for_error(url: str) -> str:
     """Strip credentials and sensitive query params from URL for safe error logging."""
@@ -133,6 +144,27 @@ def _check_redirect_security(response: requests.Response, *args: Any, **kwargs: 
                 raise ValueError(f"Unsafe redirect to: {safe_url}")
 
 
+def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.PreparedRequest, response: requests.Response) -> None:
+    """Override for requests.Session.rebuild_auth to strip sensitive headers on cross-origin redirects."""
+    # Call original implementation to handle Authorization header standard logic
+    requests.Session.rebuild_auth(self, prepared_request, response)
+
+    headers = prepared_request.headers
+    url = prepared_request.url
+
+    if "Location" not in response.headers:
+        # Should not happen if rebuild_auth is called correctly by requests on redirect
+        return
+
+    original_parsed = urlparse(response.request.url)
+    redirect_parsed = urlparse(url)
+
+    if original_parsed.hostname != redirect_parsed.hostname:
+        for header in _SENSITIVE_HEADERS:
+            if header in headers:
+                del headers[header]
+
+
 def session_with_retries(
     user_agent: str, timeout: int = DEFAULT_TIMEOUT, **retry_opts: Any
 ) -> requests.Session:
@@ -147,6 +179,10 @@ def session_with_retries(
 
     options = {**_DEFAULT_RETRY_OPTIONS, **retry_opts}
     session = requests.Session()
+
+    # Security: Strip sensitive headers on cross-origin redirects
+    session.rebuild_auth = types.MethodType(_safe_rebuild_auth, session)  # type: ignore
+
     # Security: Limit redirects to prevent infinite loops and resource exhaustion (DoS)
     session.max_redirects = 10
     session.hooks["response"].append(_check_redirect_security)
