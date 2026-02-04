@@ -12,6 +12,7 @@ from pathlib import Path
 import csv
 import json
 import math
+import re
 from typing import Iterable, Iterator, Mapping, Sequence
 
 
@@ -53,6 +54,15 @@ class CoordinateIssue:
 
 
 @dataclass(frozen=True)
+class SecurityIssue:
+    """Stations containing potentially unsafe characters (XSS risk)."""
+
+    identifier: str
+    name: str
+    reason: str
+
+
+@dataclass(frozen=True)
 class ValidationReport:
     """Summary returned by :func:`validate_stations`."""
 
@@ -61,6 +71,7 @@ class ValidationReport:
     alias_issues: tuple[AliasIssue, ...]
     coordinate_issues: tuple[CoordinateIssue, ...]
     gtfs_issues: tuple[GTFSIssue, ...]
+    security_issues: tuple[SecurityIssue, ...]
     gtfs_stop_count: int
 
     @property
@@ -70,6 +81,7 @@ class ValidationReport:
             or self.alias_issues
             or self.coordinate_issues
             or self.gtfs_issues
+            or self.security_issues
         )
 
     def to_markdown(self) -> str:
@@ -80,7 +92,16 @@ class ValidationReport:
         lines.append(f"*Alias issues*: {len(self.alias_issues)}")
         lines.append(f"*Coordinate anomalies*: {len(self.coordinate_issues)}")
         lines.append(f"*GTFS mismatches*: {len(self.gtfs_issues)}")
+        lines.append(f"*Security warnings*: {len(self.security_issues)}")
         lines.append("")
+
+        if self.security_issues:
+            lines.append("## Security warnings (potential XSS/Injection)")
+            for sec_issue in self.security_issues:
+                lines.append(
+                    f"- {sec_issue.identifier} ({sec_issue.name}): {sec_issue.reason}"
+                )
+            lines.append("")
 
         if self.duplicates:
             lines.append("## Geographic duplicates")
@@ -145,6 +166,7 @@ def validate_stations(
         _find_coordinate_issues(stations, bounds=coordinate_bounds)
     )
     gtfs_issues = tuple(_find_gtfs_issues(stations, gtfs_stop_ids))
+    security_issues = tuple(_find_security_issues(stations))
 
     return ValidationReport(
         total_stations=len(stations),
@@ -152,6 +174,7 @@ def validate_stations(
         alias_issues=alias_issues,
         coordinate_issues=coordinate_issues,
         gtfs_issues=gtfs_issues,
+        security_issues=security_issues,
         gtfs_stop_count=gtfs_count,
     )
 
@@ -377,3 +400,51 @@ def _find_gtfs_issues(
             name = str(entry.get("name", "")).strip() or "<unknown>"
             identifier = _format_identifier(entry)
             yield GTFSIssue(identifier=identifier, name=name, vor_id=vor_id)
+
+
+_UNSAFE_CHARS_RE = re.compile(r"[<>\x00-\x08\x0b\x0c\x0e-\x1f]")
+
+
+def _find_security_issues(
+    stations: Sequence[Mapping[str, object]]
+) -> Iterator[SecurityIssue]:
+    for entry in stations:
+        identifier = _format_identifier(entry)
+        name = str(entry.get("name", "")).strip() or "<unknown>"
+
+        # Check name
+        if _UNSAFE_CHARS_RE.search(name):
+            yield SecurityIssue(
+                identifier=identifier,
+                name=name,
+                reason=f"Unsafe characters in name: {name!r}"
+            )
+
+        # Check bst_code
+        bst_code = str(entry.get("bst_code") or "")
+        if _UNSAFE_CHARS_RE.search(bst_code):
+            yield SecurityIssue(
+                identifier=identifier,
+                name=name,
+                reason=f"Unsafe characters in bst_code: {bst_code!r}"
+            )
+
+        # Check vor_id
+        vor_id = str(entry.get("vor_id") or "")
+        if _UNSAFE_CHARS_RE.search(vor_id):
+            yield SecurityIssue(
+                identifier=identifier,
+                name=name,
+                reason=f"Unsafe characters in vor_id: {vor_id!r}"
+            )
+
+        # Check aliases
+        aliases_obj = entry.get("aliases")
+        if isinstance(aliases_obj, Sequence) and not isinstance(aliases_obj, (str, bytes)):
+            for alias in aliases_obj:
+                if isinstance(alias, str) and _UNSAFE_CHARS_RE.search(alias):
+                    yield SecurityIssue(
+                        identifier=identifier,
+                        name=name,
+                        reason=f"Unsafe characters in alias: {alias!r}"
+                    )
