@@ -3349,6 +3349,30 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430527400"
+    },
+    {
+      "name": "Sigmundsherberg",
+      "bst_id": 9000001,
+      "in_vienna": false,
+      "pendler": false,
+      "latitude": 48.6865,
+      "longitude": 15.7483,
+      "source": "manual_fix",
+      "aliases": [
+        "Sigmundsherberg Bahnhof"
+      ]
+    },
+    {
+      "name": "Hadersdorf am Kamp",
+      "bst_id": 9000002,
+      "in_vienna": false,
+      "pendler": false,
+      "latitude": 48.4608,
+      "longitude": 15.7197,
+      "source": "manual_fix",
+      "aliases": [
+        "Hadersdorf am Kamp Bahnhof"
+      ]
     }
   ]
 }

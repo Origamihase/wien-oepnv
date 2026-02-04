@@ -112,3 +112,17 @@ class TestOebbFiltering:
             "Lindau (Bodensee) Reutin ↔ ST. MARGRETHEN SG",
             "Wegen Bauarbeiten der Deutschen Bahn (DB) können zwischen Lindau (Bodensee) Reutin Bahnhof und ST. MARGRETHEN SG..."
         ) is False
+
+class TestSigmundsherbergRegression:
+    """
+    Regression test for Sigmundsherberg ↔ Hadersdorf am Kamp.
+    This route should be excluded because it is far from Vienna.
+    Previously, 'Hadersdorf am Kamp' triggered a false positive for 'Wien Hadersdorf'.
+    """
+
+    def test_sigmundsherberg_hadersdorf_excluded(self):
+        title = "Sigmundsherberg ↔ Hadersdorf am Kamp"
+        description = "Wegen Bauarbeiten können zwischen Sigmundsherberg Bahnhof und Hadersdorf am Kamp am 16.07., 20.08., 17.09., 15.10. und 19.11.2026 einige …"
+
+        # Should be False (excluded)
+        assert _is_relevant(title, description) is False
