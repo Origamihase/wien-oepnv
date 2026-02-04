@@ -21,3 +21,11 @@ def test_unsafe_tlds_blocked():
     # .cluster.local (Kubernetes default domain - blocked via .local)
     url_local = "http://foo.cluster.local"
     assert validate_http_url(url_local, check_dns=False) is None
+
+    # .localdomain (Common internal)
+    url_localdomain = "http://server.localdomain"
+    assert validate_http_url(url_localdomain, check_dns=False) is None
+
+    # .workgroup (Windows)
+    url_workgroup = "http://pc.workgroup"
+    assert validate_http_url(url_workgroup, check_dns=False) is None
