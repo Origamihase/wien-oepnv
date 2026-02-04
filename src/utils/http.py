@@ -231,6 +231,9 @@ _UNSAFE_TLDS = {
     "i2p",    # Invisible Internet Project
     "arpa",   # Infrastructure TLD
     "kubernetes", # Kubernetes internal DNS
+    "localdomain", # Linux/Unix default
+    "domain", # Generic internal
+    "workgroup", # Windows workgroup
 }
 
 # Explicitly block Shared Address Space (RFC 6598) 100.64.0.0/10 which is often used for CGNAT/internal carrier networks.
