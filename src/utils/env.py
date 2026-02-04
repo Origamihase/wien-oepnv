@@ -31,14 +31,39 @@ except ImportError:
             if not text:
                 return ""
             sanitized = text
-            # Mask common sensitive keys in query strings or assignments
-            # Matches key=value or key: value where key implies a secret
-            _keys = r"password|token|secret|key|authorization|auth|sid|signature|accessid|apikey"
-            sanitized = re.sub(
-                rf"(?i)((?:{_keys})[^=:\s]*\s*[:=]\s*)((?:\"[^\"]*\")|(?:'[^']*')|[^&\s]+)",
-                r"\1***",
-                sanitized,
+
+            # Comprehensive keys list mirroring src.utils.logging to ensure safety during fallback
+            _keys = (
+                r"client_secret|access_token|refresh_token|client_id|signature|password|"
+                r"accessid|id_token|session|apikey|secret|ticket|token|code|key|sig|sid|"
+                r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid|"
+                r"authorization|auth|bearer_token|api_key|auth_token|"
+                r"tenant[-_]?id|tenant|subscription[-_]?id|subscription|object[-_]?id|oid|"
+                r"code_challenge|code_verifier|"
+                r"x[-_]?api[-_]?key|ocp[-_]?apim[-_]?subscription[-_]?key"
             )
+
+            _header_keys = (
+                r"api[-_]?key|token|secret|signature|password|auth|session|cookie|private|"
+                r"credential|client[-_]?id"
+            )
+
+            # Simplified patterns for fallback (subset of full logging module but covering critical cases)
+            patterns = [
+                # URL credentials
+                (r"(?i)([a-z0-9+.-]+://)([^/@\s]+)@", r"\1***@"),
+                # Query params and assignments (key=value)
+                (rf"(?i)((?:{_keys})(?:%3d|=))((?:\"[^\"]*\")|(?:'[^']*')|[^&\s]+)", r"\1***"),
+                # JSON fields (key: "value")
+                (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
+                (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
+                # Headers
+                (rf"(?i)((?:[-a-zA-Z0-9]*(?:{_header_keys})[-a-zA-Z0-9]*):\s*)([^\n\r]+)", r"\1***"),
+            ]
+
+            for pattern, repl in patterns:
+                sanitized = re.sub(pattern, repl, sanitized)
+
             # Mask secrets explicitly provided
             if secrets:
                 for secret in secrets:
