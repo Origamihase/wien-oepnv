@@ -1,5 +1,6 @@
 
 import pytest
+from unittest.mock import patch
 from src.utils.http import session_with_retries, validate_http_url
 
 def test_redirect_limit_enforcement():
@@ -29,3 +30,19 @@ def test_unsafe_tlds_blocked():
     # .workgroup (Windows)
     url_workgroup = "http://pc.workgroup"
     assert validate_http_url(url_workgroup, check_dns=False) is None
+
+def test_unsafe_tlds_blocked_with_dns_check():
+    """Verify that infrastructure TLDs are blocked even if DNS check is enabled and resolves."""
+
+    with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:
+        # Simulate resolving to a safe public IP to mimic an attacker
+        # tricking DNS or an internal environment resolving .local
+        mock_resolve.return_value = [(2, 1, 6, '', ('8.8.8.8', 80))]
+
+        # .kubernetes should be blocked even if DNS resolves it
+        url_k8s = "http://service.kubernetes"
+        assert validate_http_url(url_k8s, check_dns=True) is None
+
+        # .local should be blocked
+        url_local = "http://internal.local"
+        assert validate_http_url(url_local, check_dns=True) is None

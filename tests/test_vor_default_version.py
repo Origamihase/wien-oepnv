@@ -26,7 +26,7 @@ def test_default_vor_version():
 
 
 def test_base_url_infers_version(monkeypatch):
-    # Mock DNS resolution to ensure example.test is accepted
+    # Mock DNS resolution to ensure example.com is accepted
     monkeypatch.setattr(
         socket,
         "getaddrinfo",
@@ -40,9 +40,9 @@ def test_base_url_infers_version(monkeypatch):
     try:
         for key in original:
             os.environ.pop(key, None)
-        os.environ["VOR_BASE_URL"] = "https://example.test/vao/restproxy/v9.9.9/"
+        os.environ["VOR_BASE_URL"] = "https://example.com/vao/restproxy/v9.9.9/"
         reloaded = importlib.reload(module)
-        assert reloaded.VOR_BASE_URL == "https://example.test/vao/restproxy/v9.9.9/"
+        assert reloaded.VOR_BASE_URL == "https://example.com/vao/restproxy/v9.9.9/"
         assert reloaded.VOR_VERSION == "v9.9.9"
     finally:
         _restore_env(original)
