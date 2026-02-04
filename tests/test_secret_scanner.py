@@ -45,3 +45,48 @@ def test_secret_scanner_detects_quoted_secret_with_spaces(tmp_path: Path) -> Non
     # So `findings[0].match` should be the stripped value!
 
     assert findings[0].match == secret_value
+
+
+def test_secret_scanner_detects_aws_access_key(tmp_path: Path) -> None:
+    file_path = tmp_path / "aws_creds.py"
+    file_path.write_text('AWS_ACCESS_KEY_ID = "AKIAIOSFODNN7EXAMPLE"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, "Should detect AWS Access Key"
+    assert "AKIAIOSFODNN7EXAMPLE" in [f.match for f in findings]
+    assert "AWS Access Key ID gefunden" in [f.reason for f in findings]
+
+
+def test_secret_scanner_detects_short_secret_assignment(tmp_path: Path) -> None:
+    file_path = tmp_path / "config.py"
+    # 20 chars, mixed case + digits -> should be detected with new threshold
+    secret = "1234567890abcdef1234"
+    file_path.write_text(f'api_key = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, "Should detect 20-char secret assignment"
+    assert findings[0].match == secret
+
+
+def test_secret_scanner_detects_key_variable(tmp_path: Path) -> None:
+    file_path = tmp_path / "keys.py"
+    secret = "1234567890abcdef1234"
+    file_path.write_text(f'private_key = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, "Should detect variable named private_key"
+    assert findings[0].match == secret
+
+
+def test_secret_scanner_ignores_short_non_secret(tmp_path: Path) -> None:
+    file_path = tmp_path / "ids.py"
+    # Short ID (5 chars) assigned to sensitive-ish name
+    file_path.write_text('my_id = "12345"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    # Should be ignored because length < 20
+    assert findings == []

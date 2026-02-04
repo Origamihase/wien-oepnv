@@ -16,8 +16,9 @@ __all__ = [
 
 _HIGH_ENTROPY_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z0-9+/=_-]{24,}(?![A-Za-z0-9])")
 _SENSITIVE_ASSIGN_RE = re.compile(
-    r"(?i)(token|secret|password|accessid|apikey|authorization)[^\S\n]*[:=][^\S\n]*((?:\"[^\"]*\")|(?:'[^']*')|[^\s\"']+)"
+    r"(?i)(token|secret|password|accessid|apikey|authorization|_key|auth)[^\S\n]*[:=][^\S\n]*((?:\"[^\"]*\")|(?:'[^']*')|[^\s\"']+)"
 )
+_AWS_ID_RE = re.compile(r"(?<![A-Za-z0-9])(AKIA|ASIA|ACCA)[A-Z0-9]{16}(?![A-Za-z0-9])")
 _BEARER_RE = re.compile(r"Bearer\s+([A-Za-z0-9\-_.]{16,})")
 
 
@@ -72,7 +73,8 @@ def _is_binary(path: Path) -> bool:
 
 
 def _looks_like_secret(candidate: str, is_assignment: bool = False) -> bool:
-    if len(candidate) < 24:
+    min_len = 20 if is_assignment else 24
+    if len(candidate) < min_len:
         return False
     categories = 0
     categories += any(c.islower() for c in candidate)
@@ -106,6 +108,9 @@ def _scan_line(line: str) -> list[tuple[str, str]]:
         candidate = match.group(1)
         if _looks_like_secret(candidate, is_assignment=True):
             findings.append((candidate, "Bearer-Token wirkt echt"))
+    for match in _AWS_ID_RE.finditer(line):
+        candidate = match.group(0)
+        findings.append((candidate, "AWS Access Key ID gefunden"))
     if "=" in line or ":" in line:
         for match in _HIGH_ENTROPY_RE.finditer(line):
             candidate = match.group(0)
