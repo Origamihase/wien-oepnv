@@ -72,6 +72,9 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "object_id",
     "code_challenge",
     "code_verifier",
+    "x-api-key",
+    "ocp-apim-subscription-key",
+    "subscription-key",
 })
 
 # Headers that must be stripped on cross-origin redirects
