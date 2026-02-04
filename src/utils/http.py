@@ -503,6 +503,7 @@ def fetch_content_safe(
     url: str,
     max_bytes: int = 10 * 1024 * 1024,
     timeout: int | None = None,
+    allowed_content_types: Container[str] | None = None,
     **kwargs: Any,
 ) -> bytes:
     """Fetch URL content with a size limit to prevent DoS.
@@ -512,10 +513,11 @@ def fetch_content_safe(
         url: The URL to fetch.
         max_bytes: Maximum allowed response body size in bytes (default: 10MB).
         timeout: Request timeout in seconds.
+        allowed_content_types: Optional list of allowed MIME types (e.g. ["application/json"]).
         **kwargs: Additional arguments passed to session.get().
 
     Raises:
-        ValueError: If URL is unsafe/invalid, or Content-Length/body size exceeds max_bytes.
+        ValueError: If URL is unsafe, Content-Type is invalid, or body size exceeds max_bytes.
         requests.RequestException: For network errors.
     """
     safe_url = validate_http_url(url)
@@ -532,6 +534,17 @@ def fetch_content_safe(
         verify_response_ip(r)
 
         r.raise_for_status()
+
+        if allowed_content_types is not None:
+            content_type_header = r.headers.get("Content-Type", "")
+            if not content_type_header:
+                raise ValueError("Content-Type header missing, but validation required")
+            # Robust parsing: take first part before ';', strip, lower case
+            mime_type = content_type_header.split(";")[0].strip().lower()
+            if mime_type not in allowed_content_types:
+                raise ValueError(
+                    f"Invalid Content-Type: {mime_type} (expected {allowed_content_types})"
+                )
 
         # Calculate remaining time for reading body if a total timeout was specified
         read_timeout: float | None = None
