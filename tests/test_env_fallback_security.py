@@ -3,127 +3,79 @@ import logging
 import pytest
 from unittest.mock import patch
 
-# We need to ensure src.utils.env is NOT already imported, or reload it
-if "src.utils.env" in sys.modules:
-    del sys.modules["src.utils.env"]
-if "src.utils.logging" in sys.modules:
-    del sys.modules["src.utils.logging"]
+@pytest.fixture
+def fallback_env():
+    """
+    Fixture that forces src.utils.env to be imported in fallback mode
+    (simulating missing src.utils.logging).
+    """
+    # Preserve original modules
+    original_env = sys.modules.get("src.utils.env")
+    original_logging = sys.modules.get("src.utils.logging")
 
-def test_secure_fallback(caplog):
-    """Verify that env.py fallback logging masks secrets when utils.logging is missing."""
+    # Clean up existing modules to ensure fresh import
+    if "src.utils.env" in sys.modules:
+        del sys.modules["src.utils.env"]
+    if "src.utils.logging" in sys.modules:
+        del sys.modules["src.utils.logging"]
 
     # Simulate utils.logging being missing
     with patch.dict(sys.modules, {"src.utils.logging": None, "utils.logging": None}):
-        # Import env (it should trigger the ImportError fallback)
         import src.utils.env as env
+        yield env
 
-        # Setup logging capture
-        caplog.set_level(logging.WARNING, logger="build_feed")
+    # Restore original modules or clean up
+    if original_env:
+        sys.modules["src.utils.env"] = original_env
+    elif "src.utils.env" in sys.modules:
+        del sys.modules["src.utils.env"]
 
-        # Trigger a warning with sensitive data
-        secret_value = "SuperSecretKey123"
-        # We simulate a "bad int" env var
-        # Note: 'get_int_env' logs the raw value.
-        # "Ungültiger Wert für MY_SECRET_KEY='SuperSecretKey123' ..."
-        # Our regex should catch MY_SECRET_KEY='...' if we format it right?
-        # Wait, get_int_env implementation:
-        # logging.warning("... %s=%r ...", name, sanitize_log_message(raw), ...)
-        # sanitize_log_message(raw) is called with "SuperSecretKey123".
-        # It does NOT see "MY_SECRET_KEY=...".
-        # It only sees the value "SuperSecretKey123".
+    if original_logging:
+        sys.modules["src.utils.logging"] = original_logging
+    elif "src.utils.logging" in sys.modules:
+        del sys.modules["src.utils.logging"]
 
-        # If the value itself does not look like "key=value", the regex won't match!
-        # The regex I added matches `key=value`.
+def test_secure_fallback(caplog, fallback_env):
+    """Verify that env.py fallback logging masks basic secrets."""
+    caplog.set_level(logging.WARNING, logger="build_feed")
 
-        # But wait, sanitize_log_message logic:
-        # _keys = r"password|token|..."
-        # re.sub(rf"(?i)((?:{_keys})[^=:\s]*\s*[:=]\s*)([^&\s]+)", ...)
+    # Simulate a value that looks like a query param or assignment
+    # e.g. a connection string or URL param
+    sensitive_value = "accessId=SuperSecretKey123"
 
-        # If I pass just "SuperSecretKey123", it won't match anything unless it contains "token=...".
+    # Trigger a warning which calls sanitize_log_message on the value
+    with patch("os.getenv", return_value=sensitive_value):
+        fallback_env.get_int_env("DUMMY_VAR", 42)
 
-        # However, `read_secret` might be more relevant?
-        # No, `read_secret` doesn't log the secret.
+    # Verify redaction of standard key
+    assert "accessId=***" in caplog.text
+    assert "accessId=SuperSecretKey123" not in caplog.text
 
-        # `get_int_env` logs the value.
-        # If the value is "123", it's fine.
-        # If the value is "password=123", it will be masked.
+def test_fallback_extended_keys(caplog, fallback_env):
+    """
+    Verify that env.py fallback logging masks vendor-specific and extended secrets.
+    This protects against cloud provider keys (AWS, Azure, etc).
+    """
+    caplog.set_level(logging.WARNING, logger="build_feed")
 
-        # But what if I have `MY_TOKEN=SecretValue`?
-        # `get_int_env("MY_TOKEN", 0)` calls `sanitize_log_message("SecretValue")`.
-        # "SecretValue" doesn't match the regex.
+    # List of sensitive patterns to test
+    test_cases = [
+        ("client_id=my-client-id", "client_id=***"),
+        ("client_secret=my-secret", "client_secret=***"),
+        ("x-api-key=abcdef123456", "x-api-key=***"),
+        ("Ocp-Apim-Subscription-Key=azurekey", "Ocp-Apim-Subscription-Key=***"),
+        ("Tenant-ID=tenant-uuid", "Tenant-ID=***"),
+        ("refresh_token=refreshtoken", "refresh_token=***"),
+    ]
 
-        # Ah. The regex relies on seeing the KEY name in the string being sanitized.
-        # But `get_int_env` passes the VALUE to be sanitized.
-        # So `sanitize_log_message` only sees the value.
+    for raw, expected in test_cases:
+        caplog.clear()
+        with patch("os.getenv", return_value=raw):
+            fallback_env.get_int_env("TEST_VAR", 0)
 
-        # So my fix only protects against secrets that LOOK like assignments (e.g. connection strings `user=x;pass=y`).
-        # It does NOT protect against simple values if the context is lost.
+        if expected not in caplog.text:
+            pytest.fail(f"Failed to redact '{raw}'. Log: {caplog.text}")
 
-        # However, `get_int_env` logs:
-        # "Ungültiger Wert für %s=%r ..." % (name, sanitized_value)
-        # So the log message constructed by `warning` contains the name.
-        # But `sanitize_log_message` is called on `raw` (the value) BEFORE interpolation.
-
-        # So `raw` is just the value.
-
-        # If I want to protect `MY_TOKEN`, `sanitize_log_message` needs to know it's a secret?
-        # But `sanitize_log_message` signature is `(text, secrets)`.
-        # `get_int_env` does NOT pass the value as a secret to `sanitize_log_message`.
-
-        # So my fix is partial. It handles structured secrets.
-        # But wait, `src/utils/logging.py` also primarily relies on regexes for "key=value" patterns!
-        # AND it has `_header_keys` which seem to match header names.
-
-        # Let's check `src/utils/logging.py` again.
-        # It has:
-        # (rf"(?i)((?:{_keys})(?:%3d|=))([^&\s]+)", r"\1***")
-
-        # So even the "full" logging module wouldn't mask "SuperSecretKey123" if passed as `raw` to `get_int_env`?
-        # Unless `SuperSecretKey123` itself matches a pattern?
-        # No.
-
-        # But `get_int_env` is for INTEGERS.
-        # If I put a secret in an INT env var, I am doing something wrong.
-        # But `get_bool_env`? Same.
-
-        # What about `read_secret`?
-        # It doesn't log the value.
-
-        # What about `requests` exceptions?
-        # `src/utils/http.py`: `_sanitize_url_for_error`.
-        # `fetch_content_safe` raises ValueError with `sanitized_url`.
-        # `sanitized_url` is result of `_sanitize_url_for_error`.
-
-        # So where is `sanitize_log_message` used critically?
-        # In `_log_warning` in `src/providers/vor.py`.
-        # `_log_warning(message, *args)`.
-        # `sanitized_args = tuple(_sanitize_arg(arg) for arg in args)`.
-        # `_sanitize_arg` calls `sanitize_log_message`.
-
-        # If `vor.py` logs an error containing a URL with secrets?
-        # `_sanitize_url_for_error` should handle it first.
-
-        # But what if the error message itself contains secrets?
-        # e.g. `requests.RequestException` message might contain the URL with secrets if requests decides to put it there?
-        # (Usually requests puts URL in property, but str(exc) might have it).
-
-        # If `str(exc)` contains `https://api.vor.at/?accessId=SECRET`.
-        # `sanitize_log_message` sees this string.
-        # My fallback regex:
-        # `_keys = ... accessid ...`
-        # `rf"(?i)((?:{_keys})[^=:\s]*\s*[:=]\s*)([^&\s]+)"`
-        # Matches `accessId=SECRET`.
-        # So it SHOULD mask it.
-
-        # So my test case should use a string that looks like an assignment or URL query param!
-
-        # Let's verify this.
-
-        with patch("os.getenv", return_value="accessId=SuperSecret"):
-             # We use get_int_env just to trigger the log call with our string
-             env.get_int_env("DUMMY_VAR", 42)
-
-        # Now check logs.
-        # We expect "accessId=***"
-        assert "accessId=***" in caplog.text
-        assert "accessId=SuperSecret" not in caplog.text
+        # Ensure the secret value is not leaked
+        secret_part = raw.split("=", 1)[1]
+        assert secret_part not in caplog.text, f"Secret leaked for {raw}"
