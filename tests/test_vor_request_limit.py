@@ -345,7 +345,7 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
     class DummyResponse:
         def __init__(self):
             self.status_code = 200
-            self.headers: dict[str, str] = {}
+            self.headers: dict[str, str] = {"Content-Type": "application/json"}
 
             # Mock raw connection for security checks
             self.raw = MagicMock()
