@@ -50,7 +50,7 @@ class DummySession:
 def test_rate_limit_retries_once_after_wait(monkeypatch, caplog):
     responses = [
         DummyResponse(429, {"Retry-After": "1.5"}),
-        DummyResponse(200, {}, b"<root></root>"),
+        DummyResponse(200, {"Content-Type": "application/xml"}, b"<root></root>"),
     ]
 
     # Mock raise_for_status to simulate what fetch_content_safe does

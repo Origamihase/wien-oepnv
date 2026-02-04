@@ -18,7 +18,7 @@ def test_stop_names_from_related_uses_canonical_names():
 
 def test_fetch_events_handles_invalid_json(monkeypatch, caplog):
     class DummyResponse:
-        headers = {}
+        headers = {"Content-Type": "application/json"}
         def raise_for_status(self):
             return None
 

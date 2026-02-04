@@ -396,7 +396,16 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
     with session_with_retries(USER_AGENT) as s:
         for attempt in range(2):
             try:
-                content = fetch_content_safe(s, url, timeout=timeout)
+                content = fetch_content_safe(
+                    s,
+                    url,
+                    timeout=timeout,
+                    allowed_content_types=(
+                        "application/xml",
+                        "text/xml",
+                        "application/rss+xml",
+                    ),
+                )
                 return ET.fromstring(content)
             except ValueError as e:
                 log.warning("ÖBB RSS: Content-Limit/Format-Fehler: %s", sanitize_log_arg(e))

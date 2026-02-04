@@ -347,7 +347,13 @@ def _get_json(
 
     def _fetch(s: requests.Session) -> Dict[str, Any]:
         try:
-            content = fetch_content_safe(s, url, params=params or None, timeout=timeout)
+            content = fetch_content_safe(
+                s,
+                url,
+                params=params or None,
+                timeout=timeout,
+                allowed_content_types=("application/json",),
+            )
             return json.loads(content)
         except ValueError as exc:
             log.warning(

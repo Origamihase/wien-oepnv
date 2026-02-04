@@ -993,6 +993,7 @@ def resolve_station_ids(names: Iterable[str]) -> List[str]:
                     f"{VOR_BASE_URL}location.name",
                     params=params,
                     timeout=HTTP_TIMEOUT,
+                    allowed_content_types=("application/json",),
                 )
                 payload = json.loads(content)
             except ValueError as exc:
@@ -1196,6 +1197,7 @@ def _fetch_departure_board_for_station(
                         endpoint,
                         params=params,
                         timeout=HTTP_TIMEOUT,
+                        allowed_content_types=("application/json",),
                     )
 
                     # Log raw length

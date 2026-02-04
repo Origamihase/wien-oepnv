@@ -28,7 +28,7 @@ def test_resolve_station_ids_looks_up_stop_ids(monkeypatch):
     # We return the JSON bytes directly.
     import json
 
-    def fake_fetch_safe(session, url, params=None, timeout=None):
+    def fake_fetch_safe(session, url, params=None, timeout=None, allowed_content_types=None):
         # Verify params
         assert params["input"] == "UnknownStation"
         # accessId is injected via apply_authentication, which modifies the request or session,
