@@ -74,18 +74,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "U1: Keplerplatz, Sperre eines Aufgangs",
-    "description": "Sperre eines Aufgangs\nWegen Bauarbeiten auf der Favoritenstraße muss ein Aufgang der U-Bahn Station Keplerplatz gesperrt werden.\nZeitraum:\nMontag, 19. Jänner 2026, 04:30 Uhr bis Freitag, 03. April 2026, 04:30 Uhr.\nMaßnahme:\nDer rechte Ausgang Raaber Bahngasse gegenüber Favoritenstraße 85 bleibt im angegebenen Zeitraum geschlossen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4d7e1c939cba4537c1cbea8b77aab6e84ca308591d0551065f21daacb2248e2e",
-    "pubDate": "2026-01-15T13:15:00+01:00",
-    "starts_at": "2026-02-03T16:30:00+01:00",
-    "ends_at": "2026-04-04T01:00:00+01:00",
-    "_identity": "wl|hinweis|L=U1|D=2026-01-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "37A: Straßenbauarbeiten ab 26.01.2026",
     "description": "Umfangreiche Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37 A umgeleitet.\nZeitraum:\nAb Montag, 26. Jänner 2026, etwa 07:00 Uhr bis voraussichtlich Ende Mai 2026.\nMaßnahmen:\nLinie 37 A in Richtung Dänenstraße bzw. Nußdorfer Straße U:\nUmleitung ab Pasettistraße # Donaueschingenstraße über Pasettistraße – Hellwagstraße – Dresdner Straße.\nAufgelassene Haltestellen:\nLorenz-Böhler-Unfallkrankenhaus (Donaueschingenstraße nach Pasettistraße)\nDresdner Straße U (Dresdner Straße 47)\nErsatzhaltestellen:\nLorenz-Böhler-Unfallkrankenhaus (Pasettistraße 73-75)\nPasettistraße (Pasettistraße vor Hellwagstraße)\nSkizze:",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -158,6 +146,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "U1: Keplerplatz, Sperre eines Aufgangs",
+    "description": "Aufgangssperre\nWegen Bauarbeiten muss in der Station Keplerplatz ein Aufgang gesperrt werden.\nZeitraum:\nMittwoch, 04. Februar 2026 bis Freitag, 03. April 2026.\nMaßnahmen:\nStation Keplerplatz: Der rechte Aufgang \"Raaber Bahngasse\" (gegenüber Favoritenstraße 85) bleibt geschlossen.\nErsatz:\nDer gegenüberliegende Aufgang.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4d7e1c939cba4537c1cbea8b77aab6e84ca308591d0551065f21daacb2248e2e",
+    "pubDate": "2026-02-03T16:30:00+01:00",
+    "starts_at": "2026-02-03T16:30:00+01:00",
+    "ends_at": "2026-04-04T01:00:00+01:00",
+    "_identity": "wl|hinweis|L=U1|D=2026-02-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "1/2/4A/71/D: Demonstration am 08.02.2026",
     "description": "Demonstration\nWegen einer Demonstration kommt es zu Verkehrsmaßnahmen.\nZeitraum:\nSonntag, 08. Februar 2026, ca. 15:45 - 19:00 Uhr.\nMaßnahmen:\nLinie D:\nUmleitung in beiden Richtungen zwischen Börse und Quartier Belvedere über die Strecke der Linien 1 und O.\n(Umleitung über Schwedenplatz, Hintere Zollamtsstraße, Landstraße, Fasangasse).\nLinie 1:\nUmleitung in beiden Richtungen zwischen Hintere Zollamtsstraße und Kliebergasse über die Strecke der Linien O und 18.\n(Umleitung über Landstraße, Fasangasse, Quartier Belvedere).\nLinie 2:\nUmleitung in beiden Richtungen zwischen Rathaus und Schwedenplatz über die Strecke der Linie 1 (Schottentor, Schottenring).\nAchtung: In Richtung Dornbach können die Haltestellen Schwedenplatz und Rathaus nicht eingehalten werden.\nLinie 71:\nBetrieb nur zwischen Kaiserebersdorf, Zinnergasse und St. Marx.\nDie Züge werden zur Schlachthausgasse umgeleitet.\nLinie 4 A:\nBetrieb nur zwischen Wittelsbachstraße und Listzstraße.\nHinweis:\nBeachten Sie bitte unsere Lautsprecherdurchsagen und unsere Echtzeitinformation in der WienMobil-App und weichen Sie auf die U-Bahn Linien aus.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -170,18 +170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N29: Busse halten auf der Hauptfahrbahn",
-    "description": "Busse halten auf der Hauptfahrbahn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
-    "pubDate": "2026-02-03T23:00:06+01:00",
-    "starts_at": "2026-02-03T23:00:06+01:00",
-    "ends_at": "2026-02-04T05:30:00+01:00",
-    "_identity": "wl|störung|L=N29|D=2026-02-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -190,17 +178,5 @@
     "starts_at": "2026-02-04T04:45:03+01:00",
     "ends_at": "2026-02-05T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-02-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31A: Verspätungen",
-    "description": "Die Linie 31 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7a2fc58a0e9703ae0845dbd287884295a1c4e146cf7f92e733e658e72b775ab7",
-    "pubDate": "2026-02-04T05:00:00+01:00",
-    "starts_at": "2026-02-04T05:00:00+01:00",
-    "ends_at": "2026-02-04T23:55:00+01:00",
-    "_identity": "wl|störung|L=31A|D=2026-02-04"
   }
 ]
