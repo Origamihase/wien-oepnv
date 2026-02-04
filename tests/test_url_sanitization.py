@@ -56,3 +56,14 @@ def test_sanitize_url_enhanced_keys():
     assert "BEARER" not in sanitized2
     assert "asp.net_sessionid=%2A%2A%2A" in sanitized2 or "asp.net_sessionid=***" in sanitized2
     assert "bearer_token=%2A%2A%2A" in sanitized2 or "bearer_token=***" in sanitized2
+
+def test_sanitize_url_subscription_keys():
+    # Verify new keys added in fix
+    url = "https://example.com/api?Ocp-Apim-Subscription-Key=SECRET1&x-api-key=SECRET2&subscription-key=SECRET3"
+    sanitized = _sanitize_url_for_error(url)
+    assert "SECRET1" not in sanitized
+    assert "SECRET2" not in sanitized
+    assert "SECRET3" not in sanitized
+    assert "Ocp-Apim-Subscription-Key=%2A%2A%2A" in sanitized
+    assert "x-api-key=%2A%2A%2A" in sanitized
+    assert "subscription-key=%2A%2A%2A" in sanitized
