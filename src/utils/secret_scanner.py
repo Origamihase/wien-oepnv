@@ -71,13 +71,18 @@ def _is_binary(path: Path) -> bool:
     return b"\0" in chunk
 
 
-def _looks_like_secret(candidate: str) -> bool:
+def _looks_like_secret(candidate: str, is_assignment: bool = False) -> bool:
     if len(candidate) < 24:
         return False
     categories = 0
     categories += any(c.islower() for c in candidate)
     categories += any(c.isupper() for c in candidate)
     categories += any(c.isdigit() for c in candidate)
+
+    # In strict contexts (assignment to sensitive var), allow symbols/spaces as entropy
+    if is_assignment:
+        categories += any(not c.isalnum() for c in candidate)
+
     if categories < 2:
         return False
     if len(set(candidate)) < max(6, len(candidate) // 4):
@@ -95,11 +100,11 @@ def _scan_line(line: str) -> list[tuple[str, str]]:
         ):
             candidate = candidate[1:-1]
 
-        if _looks_like_secret(candidate):
+        if _looks_like_secret(candidate, is_assignment=True):
             findings.append((candidate, "Verdächtige Zuweisung eines potentiellen Secrets"))
     for match in _BEARER_RE.finditer(line):
         candidate = match.group(1)
-        if _looks_like_secret(candidate):
+        if _looks_like_secret(candidate, is_assignment=True):
             findings.append((candidate, "Bearer-Token wirkt echt"))
     if "=" in line or ":" in line:
         for match in _HIGH_ENTROPY_RE.finditer(line):
