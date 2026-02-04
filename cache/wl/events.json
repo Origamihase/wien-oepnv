@@ -202,5 +202,65 @@
     "starts_at": "2026-02-04T15:45:00+01:00",
     "ends_at": "2026-02-04T23:55:00+01:00",
     "_identity": "wl|störung|L=47B|D=2026-02-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Polizeieinsatz Züge halten bei Linie 44 Richtung Schottentor",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 43 zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "988c80ab109007f5051aff806aa861e0141853ffcc393ab7f2657dc9a31b4cd0",
+    "pubDate": "2026-02-04T16:20:00+01:00",
+    "starts_at": "2026-02-04T16:26:43+01:00",
+    "ends_at": "2026-02-04T23:55:00+01:00",
+    "_identity": "wl|störung|L=43|D=2026-02-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Rettungseinsatz Betrieb ab Augasse",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie D zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106",
+    "pubDate": "2026-02-04T16:28:31+01:00",
+    "starts_at": "2026-02-04T16:30:00+01:00",
+    "ends_at": "2026-02-04T23:55:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-02-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-02-04T16:30:00+01:00",
+    "starts_at": "2026-02-04T16:30:00+01:00",
+    "ends_at": "2026-02-04T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2026-02-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Fahrtbehinderung Signalstörung",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 40 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c34553b55ac2078be4ad5d6671a89ecceb79e3183ad99b3598004a7f4c14d1d1",
+    "pubDate": "2026-02-04T16:39:46+01:00",
+    "starts_at": "2026-02-04T16:46:49+01:00",
+    "ends_at": "2026-02-04T23:55:00+01:00",
+    "_identity": "wl|störung|L=40A|D=2026-02-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2026-02-04T17:02:00+01:00",
+    "starts_at": "2026-02-04T17:02:03+01:00",
+    "ends_at": "2026-02-04T18:01:00+01:00",
+    "_identity": "wl|störung|L=42|D=2026-02-04"
   }
 ]
