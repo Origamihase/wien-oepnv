@@ -373,10 +373,18 @@ def validate_http_url(
                 return None
         except ValueError:
             # Not a standard literal IP address
+            lower_host = hostname.lower()
+            labels = lower_host.split(".")
+
+            if labels:
+                tld = labels[-1]
+                # Security Enhancement: Block reserved/internal TLDs unconditionally (SSRF protection)
+                if tld in _UNSAFE_TLDS:
+                    return None
+
             # Security Enhancement: If DNS resolution is skipped, we must be stricter.
             # We reject hostnames that look like obfuscated IPs (integer/hex) or invalid TLDs.
             if not check_dns:
-                lower_host = hostname.lower()
                 # 1. Check if it looks like a Hex IP (e.g., 0x7f000001)
                 if lower_host.startswith("0x") and re.fullmatch(r"0x[0-9a-f]+", lower_host):
                     return None
@@ -388,13 +396,9 @@ def validate_http_url(
                 # - Dotted Quad IPs (127.0.0.1 -> TLD "1" starts with digit)
                 # - Short numeric (127.1 -> TLD "1" starts with digit)
                 # - Dotted Hex (0x7f.0x1 -> TLD "0x1" starts with digit)
-                labels = lower_host.split(".")
                 if labels:
                     tld = labels[-1]
                     if not tld or not tld[0].isalpha():
-                        return None
-                    # Security Enhancement: Block reserved/internal TLDs
-                    if tld in _UNSAFE_TLDS:
                         return None
 
                     # Security Enhancement: Require FQDN (at least one dot) for non-DNS validated hosts
