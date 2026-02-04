@@ -16,7 +16,7 @@ __all__ = [
 
 _HIGH_ENTROPY_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z0-9+/=_-]{24,}(?![A-Za-z0-9])")
 _SENSITIVE_ASSIGN_RE = re.compile(
-    r"(?i)(token|secret|password|accessid|apikey|authorization)[^\S\n]*[:=][^\S\n]*['\"]?([A-Za-z0-9+/=_-]{16,})['\"]?"
+    r"(?i)(token|secret|password|accessid|apikey|authorization)[^\S\n]*[:=][^\S\n]*((?:\"[^\"]*\")|(?:'[^']*')|[^\s\"']+)"
 )
 _BEARER_RE = re.compile(r"Bearer\s+([A-Za-z0-9\-_.]{16,})")
 
@@ -89,6 +89,12 @@ def _scan_line(line: str) -> list[tuple[str, str]]:
     findings: list[tuple[str, str]] = []
     for match in _SENSITIVE_ASSIGN_RE.finditer(line):
         candidate = match.group(2)
+        # Strip outer quotes if present
+        if (candidate.startswith('"') and candidate.endswith('"')) or (
+            candidate.startswith("'") and candidate.endswith("'")
+        ):
+            candidate = candidate[1:-1]
+
         if _looks_like_secret(candidate):
             findings.append((candidate, "Verdächtige Zuweisung eines potentiellen Secrets"))
     for match in _BEARER_RE.finditer(line):
