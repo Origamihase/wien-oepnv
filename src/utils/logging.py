@@ -55,8 +55,8 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
         # Basic Auth in URLs (protocol://user:pass@host)
         (r"(?i)([a-z0-9+.-]+://)([^/@\s]+)@", r"\1***@"),
         # Query parameters (key=value or key%3dvalue)
-        # Improved to handle quoted values (e.g. key="val with spaces")
-        (rf"(?i)((?:{_keys})(?:%3d|=))((?:\"[^\"]*\")|(?:'[^']*')|[^&\s]+)", r"\1***"),
+        # Improved to handle quoted values (e.g. key="val with spaces") with escaped quotes support
+        (rf"(?i)((?:{_keys})(?:%3d|=))((?:\"(?:\\.|[^\"\\\\])*\")|(?:'(?:\\.|[^'\\])*')|[^&\s]+)", r"\1***"),
         # Correctly handle escaped characters in JSON strings (regex: (?:\\.|[^"\\])* )
         (r'(?i)(\"accessId\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (r"(?i)('accessId'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),

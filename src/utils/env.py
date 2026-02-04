@@ -53,7 +53,7 @@ except ImportError:
                 # URL credentials
                 (r"(?i)([a-z0-9+.-]+://)([^/@\s]+)@", r"\1***@"),
                 # Query params and assignments (key=value)
-                (rf"(?i)((?:{_keys})(?:%3d|=))((?:\"[^\"]*\")|(?:'[^']*')|[^&\s]+)", r"\1***"),
+                (rf"(?i)((?:{_keys})(?:%3d|=))((?:\"(?:\\.|[^\"\\\\])*\")|(?:'(?:\\.|[^'\\])*')|[^&\s]+)", r"\1***"),
                 # JSON fields (key: "value")
                 (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
                 (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
@@ -132,13 +132,21 @@ def get_int_env(name: str, default: int) -> int:
     try:
         return int(raw)
     except (ValueError, TypeError) as e:
+        safe_raw = sanitize_log_message(raw)
+        # Extra safety: redact the raw value and its repr from exception message FIRST
+        # to prevent leaks from double-escaped strings in repr() which sanitize_log_message might miss/mangle
+        msg_str = str(e)
+        if raw:
+            msg_str = msg_str.replace(repr(raw), "***").replace(raw, "***")
+        safe_msg = sanitize_log_message(msg_str)
+
         logging.getLogger("build_feed").warning(
             "Ungültiger Wert für %s=%r – verwende Default %d (%s: %s)",
             name,
-            sanitize_log_message(raw),
+            safe_raw,
             default,
             type(e).__name__,
-            sanitize_log_message(str(e)),
+            safe_msg,
         )
         return default
 
