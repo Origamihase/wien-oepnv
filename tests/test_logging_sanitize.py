@@ -64,3 +64,29 @@ def test_sanitize_log_message_extended_identity_keys():
         assert "***" in sanitized, f"Secret not masked in '{input_str}'"
         assert "SECRET123" not in sanitized, f"Secret leaked in '{input_str}'"
         assert key in sanitized, f"Key '{key}' should remain visible"
+
+def test_sanitize_log_message_quoted_spaces():
+    """Verify that secrets with spaces in quotes are fully masked."""
+    test_cases = [
+        # Double quotes with space
+        ('token="secret value"', 'token=***'),
+        # Single quotes with space
+        ("token='secret value'", "token=***"),
+        # Quoted empty string
+        ('token=""', 'token=***'),
+        # JSON-like with spaces (although JSON regex usually handles this, this tests the fallback/generic param regex)
+        ('key="val 1"&other=val2', 'key=***&other=val2'),
+        # Mixed quotes - ensure multiple replacements work
+        ("key='val 1' & secret=\"val 2\"", "key=*** & secret=***"),
+    ]
+
+    for input_str, expected_contain in test_cases:
+        sanitized = sanitize_log_message(input_str)
+        # We assert that the output contains the masked version
+        # AND does not contain the leaked suffix
+        assert expected_contain in sanitized, f"Failed to mask: {input_str} -> {sanitized}"
+
+        # Explicit check for leakage
+        if "secret value" in input_str:
+            assert "value" not in sanitized, f"Leaked part of secret in '{input_str}' -> '{sanitized}'"
+            assert "secret" not in sanitized

@@ -35,7 +35,7 @@ except ImportError:
             # Matches key=value or key: value where key implies a secret
             _keys = r"password|token|secret|key|authorization|auth|sid|signature|accessid|apikey"
             sanitized = re.sub(
-                rf"(?i)((?:{_keys})[^=:\s]*\s*[:=]\s*)([^&\s]+)",
+                rf"(?i)((?:{_keys})[^=:\s]*\s*[:=]\s*)((?:\"[^\"]*\")|(?:'[^']*')|[^&\s]+)",
                 r"\1***",
                 sanitized,
             )
