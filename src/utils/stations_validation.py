@@ -402,7 +402,7 @@ def _find_gtfs_issues(
             yield GTFSIssue(identifier=identifier, name=name, vor_id=vor_id)
 
 
-_UNSAFE_CHARS_RE = re.compile(r"[<>\x00-\x08\x0b\x0c\x0e-\x1f]")
+_UNSAFE_CHARS_RE = re.compile(r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\u2028-\u202e\u2066-\u2069]")
 
 
 def _find_security_issues(

@@ -19,6 +19,13 @@ def test_validation_flags_unsafe_chars(tmp_path):
                 "longitude": 16.1,
                 "aliases": ["Hacked <script>alert(1)</script>", "Another <bad> alias"],
                 "bst_code": "Evil\x00Code"
+            },
+            {
+                "name": "Bidi Attack \u202e(exe.txt)",
+                "latitude": 48.2,
+                "longitude": 16.2,
+                "aliases": ["Bidi \u2066 Isolate"],
+                "bst_code": "Line\u2028Sep"
             }
         ]
     }
@@ -34,6 +41,13 @@ def test_validation_flags_unsafe_chars(tmp_path):
     assert any("Unsafe characters in name" in r for r in reasons)
     assert any("Unsafe characters in alias" in r for r in reasons)
     assert any("Unsafe characters in bst_code" in r for r in reasons)
+
+    # Verify Bidi attacks are caught
+    bidi_issues = [
+        issue for issue in report.security_issues
+        if "Bidi Attack" in issue.name or "Line\u2028Sep" in issue.reason or "Bidi \u2066 Isolate" in issue.reason
+    ]
+    assert len(bidi_issues) >= 3, f"Expected Bidi issues not found. Found: {bidi_issues}"
 
 def test_validation_passes_safe_chars(tmp_path):
     stations_file = tmp_path / "stations.json"
