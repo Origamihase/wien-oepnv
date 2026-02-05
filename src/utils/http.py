@@ -542,6 +542,10 @@ def fetch_content_safe(
         sanitized_url = _sanitize_url_for_error(url)
         raise ValueError(f"Unsafe or invalid URL: {sanitized_url}")
 
+    # Security: Enforce default timeout to prevent Slowloris attacks if caller forgets it
+    if timeout is None:
+        timeout = DEFAULT_TIMEOUT
+
     start_time = time.monotonic()
     with session.get(safe_url, stream=True, timeout=timeout, **kwargs) as r:
         # Prevent DNS Rebinding: Check the actual connected IP
