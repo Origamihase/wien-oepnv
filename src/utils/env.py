@@ -27,6 +27,12 @@ except ImportError:
     except ImportError:
         # Fallback security masker if logging module is unreachable.
         # This ensures secrets are not leaked in plaintext during import errors.
+
+        # Precompiled regexes for sanitization (copied from src.utils.logging)
+        _CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f-\x9f]")
+        # ANSI escape codes: \x1b followed by [ and optional params, ending with a letter
+        _ANSI_ESCAPE_RE = re.compile(r"\x1b\[[0-9;]*[a-zA-Z]")
+
         def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
             if not text:
                 return ""
@@ -69,8 +75,18 @@ except ImportError:
                 for secret in secrets:
                     if secret:
                         sanitized = sanitized.replace(secret, "***")
+
             # Escape control characters to prevent log injection
-            return sanitized.replace("\n", "\\n").replace("\r", "\\r")
+            # We escape common control chars to keep the log readable but safe
+            sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
+
+            # Remove ANSI escape codes explicitly first
+            sanitized = _ANSI_ESCAPE_RE.sub("", sanitized)
+
+            # Remove remaining control characters
+            sanitized = _CONTROL_CHARS_RE.sub("", sanitized)
+
+            return sanitized
 
 __all__ = [
     "get_int_env",
