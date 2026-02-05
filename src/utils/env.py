@@ -192,11 +192,6 @@ def read_secret(name: str, default: str = "") -> str:
     return (os.getenv(name) or default).strip()
 
 
-ENV_ASSIGNMENT_RE = re.compile(
-    r"^(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$"
-)
-
-
 def _parse_value(value: str) -> str:
     """Parse a value string, handling quotes and inline comments."""
     value = value.strip()
@@ -248,19 +243,105 @@ def _parse_value(value: str) -> str:
 
 def _parse_env_file(content: str) -> Dict[str, str]:
     """Parse the given env file ``content`` into a mapping."""
-
     parsed: Dict[str, str] = {}
-    for raw_line in content.splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#"):
+
+    idx = 0
+    length = len(content)
+
+    while idx < length:
+        # Skip leading whitespace
+        while idx < length and content[idx].isspace():
+            idx += 1
+
+        if idx >= length:
+            break
+
+        # Check for comment
+        if content[idx] == '#':
+            # Consume until newline
+            while idx < length and content[idx] != '\n':
+                idx += 1
             continue
 
-        match = ENV_ASSIGNMENT_RE.match(line)
-        if not match:
+        # Read Key
+        # Expect (export )? KEY =
+        line_start = idx
+        while idx < length and content[idx] != '=' and content[idx] != '\n':
+            idx += 1
+
+        if idx >= length or content[idx] == '\n':
+            # No equals sign on this line, skip
+            idx += 1
             continue
 
-        key, value = match.groups()
-        parsed[key] = _parse_value(value)
+        key_part = content[line_start:idx]
+        idx += 1 # Consume '='
+
+        # Clean up key (remove export, spaces)
+        key_match = re.match(r"^(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*$", key_part.strip())
+        if not key_match:
+            # Invalid key, skip line: consume until newline
+            while idx < length and content[idx] != '\n':
+                idx += 1
+            continue
+
+        key = key_match.group(1)
+
+        # Read Value
+        # Skip whitespace after = (but stop at newline)
+        while idx < length and content[idx] != '\n' and content[idx].isspace():
+            idx += 1
+
+        if idx >= length:
+            parsed[key] = ""
+            break
+
+        if content[idx] == '\n':
+            parsed[key] = ""
+            idx += 1
+            continue
+
+        # Check if quoted
+        if content[idx] == '"' or content[idx] == "'":
+            quote_char = content[idx]
+            val_start = idx
+            idx += 1
+
+            # Find closing quote
+            while idx < length:
+                char = content[idx]
+                if char == quote_char:
+                    idx += 1
+                    break
+
+                if char == '\\' and idx + 1 < length:
+                    # Escape sequence, skip next char check
+                    idx += 2
+                    continue
+
+                idx += 1
+
+            # Extracted raw value including quotes
+            raw_value = content[val_start:idx]
+            parsed[key] = _parse_value(raw_value)
+
+            # Consume rest of line (expect comments or whitespace)
+            while idx < length and content[idx] != '\n':
+                idx += 1
+
+        else:
+            # Unquoted
+            val_start = idx
+            while idx < length and content[idx] != '\n' and content[idx] != '#':
+                idx += 1
+
+            raw_value = content[val_start:idx]
+            parsed[key] = raw_value.strip()
+
+            # If we stopped at #, consume comment line
+            if idx < length and content[idx] == '#':
+                while idx < length and content[idx] != '\n':
+                    idx += 1
 
     return parsed
 
