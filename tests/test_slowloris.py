@@ -82,3 +82,38 @@ def test_content_length_malformed():
     # Should not raise ValueError
     content = read_response_safe(response, max_bytes=100)
     assert content == b"data"
+
+@patch("src.utils.http.validate_http_url")
+@patch("src.utils.http.verify_response_ip")
+def test_fetch_content_safe_default_timeout(mock_verify_ip, mock_validate_url):
+    """Test that fetch_content_safe uses default timeout if None provided."""
+
+    # Setup mocks
+    mock_validate_url.return_value = "http://example.com"
+    mock_verify_ip.return_value = None
+
+    # Create a session mock
+    session = MagicMock(spec=requests.Session)
+    response = MagicMock(spec=requests.Response)
+    response.headers = {}
+    response.iter_content.return_value = [b"data"]
+    response.raise_for_status.return_value = None
+
+    session.get.return_value.__enter__.return_value = response
+    session.get.return_value.__exit__.return_value = None
+
+    # Mock read_response_safe to intercept call
+    with patch("src.utils.http.read_response_safe") as mock_read:
+        mock_read.return_value = b"data"
+
+        fetch_content_safe(session, "http://example.com", timeout=None)
+
+        # Check that session.get was called with timeout=20 (DEFAULT_TIMEOUT)
+        # Note: DEFAULT_TIMEOUT is 20 in src/utils/http.py
+        kwargs = session.get.call_args[1]
+        assert kwargs["timeout"] == 20
+
+        # Check that read_response_safe was called with a timeout
+        read_timeout = mock_read.call_args[1]["timeout"]
+        assert read_timeout is not None
+        assert 19.0 < read_timeout <= 20.0
