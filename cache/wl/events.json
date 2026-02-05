@@ -176,7 +176,7 @@
     "guid": "974d928cbf329ed9135fa310f98bffcf6df021fc043453b040ca3029a4cafaa6",
     "pubDate": "2026-02-04T23:47:40+01:00",
     "starts_at": "2026-02-04T23:47:40+01:00",
-    "ends_at": "2026-02-05T23:59:00+01:00",
+    "ends_at": "2026-02-05T23:59:59+01:00",
     "_identity": "wl|störung|L=O|D=2026-02-04"
   },
   {
@@ -190,5 +190,53 @@
     "starts_at": "2026-02-05T04:45:01+01:00",
     "ends_at": "2026-02-06T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-02-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Gleisschaden",
+    "description": "Die Linie O kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein Gleisschaden im Bereich Praterstern S U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3ac503a168e1300c7444ccdbdc08aaed1509050cf45071646d22f8ec6716b1af",
+    "pubDate": "2026-02-05T10:00:00+01:00",
+    "starts_at": "2026-02-05T10:00:00+01:00",
+    "ends_at": "2026-02-05T23:55:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-02-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verspätungen",
+    "description": "Die Linie U4 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-02-05T10:20:00+01:00",
+    "starts_at": "2026-02-05T10:20:00+01:00",
+    "ends_at": "2026-02-05T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2026-02-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Die Linie U3 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Kardinal-Nagl-Platz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-02-05T10:25:00+01:00",
+    "starts_at": "2026-02-05T10:25:00+01:00",
+    "ends_at": "2026-02-05T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2026-02-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Die Linie U2 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-02-05T10:35:00+01:00",
+    "starts_at": "2026-02-05T10:35:00+01:00",
+    "ends_at": "2026-02-05T23:55:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2026-02-05"
   }
 ]
