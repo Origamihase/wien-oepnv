@@ -111,11 +111,10 @@ def _scan_line(line: str) -> list[tuple[str, str]]:
     for match in _AWS_ID_RE.finditer(line):
         candidate = match.group(0)
         findings.append((candidate, "AWS Access Key ID gefunden"))
-    if "=" in line or ":" in line:
-        for match in _HIGH_ENTROPY_RE.finditer(line):
-            candidate = match.group(0)
-            if _looks_like_secret(candidate):
-                findings.append((candidate, "Hochentropischer Token-String"))
+    for match in _HIGH_ENTROPY_RE.finditer(line):
+        candidate = match.group(0)
+        if _looks_like_secret(candidate):
+            findings.append((candidate, "Hochentropischer Token-String"))
     return findings
 
 
