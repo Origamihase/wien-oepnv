@@ -83,7 +83,7 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "subscriptionkey",
 })
 
-# Headers that must be stripped on cross-origin redirects
+# Headers that must be stripped on cross-origin redirects or scheme downgrades
 _SENSITIVE_HEADERS = frozenset({
     "Authorization",
     "Proxy-Authorization",
@@ -91,6 +91,8 @@ _SENSITIVE_HEADERS = frozenset({
     "X-Api-Key",
     "X-Auth-Token",
     "Private-Token",
+    "Cookie",
+    "Set-Cookie",
 })
 
 
@@ -168,7 +170,11 @@ def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.Prepar
     original_parsed = urlparse(response.request.url)
     redirect_parsed = urlparse(url)
 
-    if original_parsed.hostname != redirect_parsed.hostname:
+    # Detect security risks: Hostname change or Scheme Downgrade (HTTPS -> HTTP)
+    host_changed = original_parsed.hostname != redirect_parsed.hostname
+    scheme_downgraded = original_parsed.scheme == "https" and redirect_parsed.scheme != "https"
+
+    if host_changed or scheme_downgraded:
         for header in _SENSITIVE_HEADERS:
             if header in headers:
                 del headers[header]
