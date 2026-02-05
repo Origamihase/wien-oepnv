@@ -34,12 +34,12 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
 
     # Keys that should be redacted (regex alternation, longest match first)
     _keys = (
-        r"client_secret|access_token|refresh_token|client_id|signature|password|"
-        r"accessid|id_token|session|apikey|secret|ticket|token|code|key|sig|sid|"
+        r"client[-_]?secret|access[-_]?token|refresh[-_]?token|client[-_]?id|signature|password|"
+        r"accessid|id[-_]?token|session|apikey|secret|ticket|token|code|key|sig|sid|"
         r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid|"
-        r"authorization|auth|bearer_token|api_key|auth_token|"
-        r"tenant_id|tenant|subscription_id|subscription|object_id|oid|"
-        r"code_challenge|code_verifier|"
+        r"authorization|auth|bearer[-_]?token|api[-_]?key|auth[-_]?token|"
+        r"tenant[-_]?id|tenant|subscription[-_]?id|subscription|object[-_]?id|oid|"
+        r"code[-_]?challenge|code[-_]?verifier|"
         r"x[-_]?api[-_]?key|ocp[-_]?apim[-_]?subscription[-_]?key"
     )
 
@@ -58,22 +58,22 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
         # Improved to handle quoted values (e.g. key="val with spaces") with escaped quotes support
         (rf"(?i)((?:{_keys})(?:%3d|=))((?:\"(?:\\.|[^\"\\\\])*\")|(?:'(?:\\.|[^'\\])*')|[^&\s]+)", r"\1***"),
         # Correctly handle escaped characters in JSON strings (regex: (?:\\.|[^"\\])* )
-        (r'(?i)(\"accessId\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
-        (r"(?i)('accessId'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
+        (r'(?i)(\"accessId\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
+        (r"(?i)('accessId'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
         # Generic Authorization header (covers Bearer, Basic, and custom schemes)
         (r"(?i)(Authorization:\s*)([^\n\r]+)", r"\1***"),
-        (r'(?i)(\"Authorization\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
-        (r"(?i)('Authorization'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
+        (r'(?i)(\"Authorization\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
+        (r"(?i)('Authorization'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
         # Cookie and Set-Cookie headers
         (r"(?i)((?:Set-)?Cookie:\s*)([^\n\r]+)", r"\1***"),
-        (r'(?i)(\"(?:Set-)?Cookie\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
-        (r"(?i)('(?:Set-)?Cookie'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
+        (r'(?i)(\"(?:Set-)?Cookie\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
+        (r"(?i)('(?:Set-)?Cookie'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
         # Generic sensitive headers (e.g. X-Api-Key, X-Goog-Api-Key, X-Auth-Token)
         # Matches any header name containing a sensitive term
         (rf"(?i)((?:[-a-zA-Z0-9]*(?:{_header_keys})[-a-zA-Z0-9]*):\s*)([^\n\r]+)", r"\1***"),
         # Mask potentially leaked secrets in JSON error messages
-        (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\\\.|[^"\\\\])*)(\")', r'\1***\3'),
-        (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\\\.|[^'\\\\])*)(')", r"\1***\3"),
+        (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
+        (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
     ]
     for pattern, repl in patterns:
         sanitized = re.sub(pattern, repl, sanitized)
