@@ -1,5 +1,6 @@
 
 import pytest
+import responses
 from unittest.mock import patch
 from src.utils.http import session_with_retries, validate_http_url
 
@@ -46,3 +47,41 @@ def test_unsafe_tlds_blocked_with_dns_check():
         # .local should be blocked
         url_local = "http://internal.local"
         assert validate_http_url(url_local, check_dns=True) is None
+
+@patch("src.utils.http.verify_response_ip")
+@patch("src.utils.http.validate_http_url")
+def test_strip_headers_on_scheme_downgrade(mock_validate_url, mock_verify_ip):
+    """Verify that sensitive headers are stripped when redirecting from HTTPS to HTTP (Downgrade Attack)."""
+    # Allow any URL for this test
+    mock_validate_url.side_effect = lambda url, **kwargs: url
+    mock_verify_ip.return_value = None  # No-op
+
+    session = session_with_retries("test-agent")
+
+    @responses.activate
+    def run():
+        # Setup redirect: HTTPS -> HTTP (same domain)
+        responses.add(responses.GET, "https://secure.example.com/", status=302, headers={"Location": "http://secure.example.com/login"})
+        responses.add(responses.GET, "http://secure.example.com/login", status=200)
+
+        headers = {
+            "X-Api-Key": "super-secret-key",
+            "Authorization": "Bearer mytoken",
+            "Cookie": "session=secret"
+        }
+
+        session.get("https://secure.example.com/", headers=headers)
+
+        assert len(responses.calls) == 2
+        # First request (HTTPS) should have headers
+        req1 = responses.calls[0].request
+        assert req1.headers["X-Api-Key"] == "super-secret-key"
+
+        # Second request (HTTP) should NOT have sensitive headers
+        req2 = responses.calls[1].request
+        assert "X-Api-Key" not in req2.headers, "X-Api-Key leaked to insecure HTTP endpoint"
+        assert "Authorization" not in req2.headers, "Authorization leaked to insecure HTTP endpoint"
+        # Note: 'Cookie' might be missing anyway due to requests default behavior, but we check to be sure
+        assert "Cookie" not in req2.headers, "Cookie leaked to insecure HTTP endpoint"
+
+    run()
