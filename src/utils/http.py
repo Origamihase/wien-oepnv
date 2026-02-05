@@ -93,6 +93,10 @@ _SENSITIVE_HEADERS = frozenset({
     "Private-Token",
     "Cookie",
     "Set-Cookie",
+    "Ocp-Apim-Subscription-Key",
+    "X-Amz-Security-Token",
+    "X-Gitlab-Token",
+    "X-Vault-Token",
 })
 
 
