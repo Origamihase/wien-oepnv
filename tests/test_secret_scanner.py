@@ -90,3 +90,15 @@ def test_secret_scanner_ignores_short_non_secret(tmp_path: Path) -> None:
 
     # Should be ignored because length < 20
     assert findings == []
+
+
+def test_secret_scanner_detects_secret_in_function_call(tmp_path: Path) -> None:
+    file_path = tmp_path / "script.py"
+    # High entropy string without assignment or colon
+    secret = "AbCdEfGh1234567890ijklMNOPQR"
+    file_path.write_text(f'connect("{secret}")', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, "Should detect unassigned high-entropy secret"
+    assert findings[0].match == secret
