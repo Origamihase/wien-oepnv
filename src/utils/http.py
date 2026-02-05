@@ -35,7 +35,14 @@ _DNS_EXECUTOR = ThreadPoolExecutor(max_workers=8, thread_name_prefix="DNS_Resolv
 
 log = logging.getLogger(__name__)
 
+def _normalize_key(key: str) -> str:
+    """Normalize key for loose matching (lowercase, no hyphens/underscores)."""
+    return key.lower().replace("-", "").replace("_", "")
+
+
 # Keys in query parameters that should be redacted in logs
+# We store them normalized (lowercase, no separators) to catch variations
+# like x-api-key, x_api_key, X-Api-Key, etc.
 _SENSITIVE_QUERY_KEYS = frozenset({
     "accessid",
     "token",
@@ -45,11 +52,11 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "secret",
     "authorization",
     "auth",
-    "client_secret",
-    "client_id",
-    "access_token",
-    "refresh_token",
-    "id_token",
+    "clientsecret",
+    "clientid",
+    "accesstoken",
+    "refreshtoken",
+    "idtoken",
     "code",
     "sig",
     "signature",
@@ -57,24 +64,23 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "sid",
     "ticket",
     # Additional common sensitive keys
-    "bearer_token",
-    "api_key",
-    "auth_token",
+    "bearertoken",
+    "authtoken",
     "jsessionid",
     "phpsessid",
-    "asp.net_sessionid",
-    "__cfduid",
+    "asp.netsessionid",
+    "cfduid",
     "tenant",
-    "tenant_id",
+    "tenantid",
     "subscription",
-    "subscription_id",
+    "subscriptionid",
     "oid",
-    "object_id",
-    "code_challenge",
-    "code_verifier",
-    "x-api-key",
-    "ocp-apim-subscription-key",
-    "subscription-key",
+    "objectid",
+    "codechallenge",
+    "codeverifier",
+    "xapikey",
+    "ocpapimsubscriptionkey",
+    "subscriptionkey",
 })
 
 # Headers that must be stripped on cross-origin redirects
@@ -106,7 +112,7 @@ def _sanitize_url_for_error(url: str) -> str:
             query_params = parse_qsl(parsed.query, keep_blank_values=True)
             new_params = []
             for key, value in query_params:
-                if key.lower() in _SENSITIVE_QUERY_KEYS:
+                if _normalize_key(key) in _SENSITIVE_QUERY_KEYS:
                     new_params.append((key, "***"))
                 else:
                     new_params.append((key, value))
