@@ -171,7 +171,30 @@ def _clean_title_keep_places(t: str) -> str:
         canon = canonical_name(segment)
         if not canon:
             cleaned = _clean_endpoint(segment)
-            canon = canonical_name(cleaned) or cleaned
+            canon = canonical_name(cleaned)
+
+            # If full string lookup fails, try splitting composite endpoints (e.g. "Wien/ Flughafen Wien")
+            # We require a space after the slash to avoid splitting names like "Linz/Donau" or "2/3".
+            if not canon and re.search(r"/\s", segment):
+                sub_segments = re.split(r"/\s+", segment)
+                sub_segments = [s.strip() for s in sub_segments if s.strip()]
+
+                if len(sub_segments) > 1:
+                    processed_subs = []
+                    for s in sub_segments:
+                        # Resolve each part individually
+                        c = canonical_name(s)
+                        if not c:
+                            cl = _clean_endpoint(s)
+                            c = canonical_name(cl) or cl
+                        if c:
+                            c = re.sub(r"\s+\(VOR\)$", "", c)
+                        processed_subs.append(c)
+                    canon = "/ ".join(processed_subs)
+
+            if not canon:
+                canon = cleaned
+
         if canon:
             canon = re.sub(r"\s+\(VOR\)$", "", canon)
         canonical_parts.append(canon)
