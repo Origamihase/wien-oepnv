@@ -43,7 +43,7 @@ def _normalize_key(key: str) -> str:
 # Regex to detect credentials in URLs that might be missed by urlparse (e.g. missing //)
 # Matches "scheme:user:pass@host" or "scheme://user:pass@host"
 _URL_AUTH_RE = re.compile(
-    r"^(?P<scheme>https?|ftp):(?P<slash>//)?(?P<auth>[^/@\s]+)@", re.IGNORECASE
+    r"^(?P<scheme>https?|ftp):(?P<slash>//)?(?P<auth>[^/\s]+)@", re.IGNORECASE
 )
 
 # Keys in query parameters that should be redacted in logs
