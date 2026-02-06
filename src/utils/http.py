@@ -126,6 +126,23 @@ def _sanitize_url_for_error(url: str) -> str:
             new_query = urlencode(new_params)
             parsed = parsed._replace(query=new_query)
 
+        # 3. Redact sensitive fragment parameters (e.g. OIDC implicit flow)
+        if parsed.fragment:
+            fragment_params = parse_qsl(parsed.fragment, keep_blank_values=True)
+            new_fragment_params = []
+            any_sensitive_fragment = False
+
+            for key, value in fragment_params:
+                if _normalize_key(key) in _SENSITIVE_QUERY_KEYS:
+                    new_fragment_params.append((key, "***"))
+                    any_sensitive_fragment = True
+                else:
+                    new_fragment_params.append((key, value))
+
+            if any_sensitive_fragment:
+                new_fragment = urlencode(new_fragment_params)
+                parsed = parsed._replace(fragment=new_fragment)
+
         return parsed.geturl()
     except Exception:
         return "invalid_url"
