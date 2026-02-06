@@ -114,3 +114,27 @@ def test_secret_scanner_detects_long_lowercase_assignment(tmp_path: Path) -> Non
 
     assert findings, "Should detect long lowercase secret in assignment"
     assert findings[0].match == secret
+
+
+def test_secret_scanner_detects_credential_assignment(tmp_path: Path) -> None:
+    file_path = tmp_path / "creds.py"
+    # 20 chars, mixed case + digits -> should be detected with new threshold
+    secret = "credential_is_20chars"
+    file_path.write_text(f'my_credential = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, "Should detect 20-char credential assignment"
+    assert findings[0].match == secret
+
+
+def test_secret_scanner_detects_passphrase_assignment(tmp_path: Path) -> None:
+    file_path = tmp_path / "wifi.py"
+    # 21 chars
+    secret = "passphrase_is_21chars"
+    file_path.write_text(f'wifi_passphrase = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, "Should detect passphrase assignment"
+    assert findings[0].match == secret
