@@ -25,8 +25,7 @@ KEY_WITH_ESCAPES="line one\\nline two"
     # if char == '\\': if quote_char == '"': unescape...
 
     # If file content is literal \ and n.
-    # My parser: \ followed by n. n is not " or \.
-    # So it appends \ then n.
-    # So result is "line one\nline two" (literal backslash n).
+    # My parser: \ followed by n. n is "n" -> unescape to newline.
+    # So result is "line one\nline two" (actual newline).
 
-    assert parsed.get("KEY_WITH_ESCAPES") == "line one\\nline two"
+    assert parsed.get("KEY_WITH_ESCAPES") == "line one\nline two"
