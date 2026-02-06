@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import runpy
 import sys
 from collections.abc import Mapping, Sequence, Iterator
@@ -436,6 +437,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         return handler(args)
     except CLIError as exc:
         parser.error(str(exc))
+    except Exception:
+        # Security: Prevent stack trace and sensitive info leakage to stderr
+        if os.getenv("WIEN_OEPNV_DEBUG"):
+            raise
+
+        # The exception is likely already logged by the application logger if configured.
+        # We fail securely by not exposing internal details.
+        print("Error: An unexpected error occurred. See logs for details (or set WIEN_OEPNV_DEBUG=1).", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":  # pragma: no cover - manual execution
