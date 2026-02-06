@@ -40,6 +40,12 @@ def _normalize_key(key: str) -> str:
     return key.lower().replace("-", "").replace("_", "")
 
 
+# Regex to detect credentials in URLs that might be missed by urlparse (e.g. missing //)
+# Matches "scheme:user:pass@host" or "scheme://user:pass@host"
+_URL_AUTH_RE = re.compile(
+    r"^(?P<scheme>https?|ftp):(?P<slash>//)?(?P<auth>[^/@\s]+)@", re.IGNORECASE
+)
+
 # Keys in query parameters that should be redacted in logs
 # We store them normalized (lowercase, no separators) to catch variations
 # like x-api-key, x_api_key, X-Api-Key, etc.
@@ -108,9 +114,17 @@ _SENSITIVE_HEADERS = frozenset({
 def _sanitize_url_for_error(url: str) -> str:
     """Strip credentials and sensitive query params from URL for safe error logging."""
     try:
+        # 0. Pre-sanitize malformed auth (e.g. "https:user:pass@...") that urlparse misses
+        # This handles cases where user forgot // or scheme is non-standard
+        match = _URL_AUTH_RE.match(url)
+        if match:
+            # Replace the auth part with ***
+            # We reconstruct it carefully to avoid messing up the rest
+            url = _URL_AUTH_RE.sub(r"\g<scheme>:\g<slash>***@", url, count=1)
+
         parsed = urlparse(url)
 
-        # 1. Strip basic auth credentials
+        # 1. Strip basic auth credentials (if urlparse found them)
         if parsed.username or parsed.password:
             # Reconstruct netloc without auth
             netloc = parsed.hostname or ""
