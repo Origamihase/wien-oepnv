@@ -263,7 +263,8 @@ def session_with_retries(
 
 
 # Block control characters and whitespace in URLs to prevent log injection
-_UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f]")
+# Also block unsafe characters (<, >, ", \, ^, `, {, |, }) to prevent XSS/Injection
+_UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f<>\"\\^`{|}]")
 
 # Limit URL length to reduce DoS risk from extremely long inputs.
 MAX_URL_LENGTH = 2048
