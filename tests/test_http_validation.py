@@ -97,6 +97,18 @@ def test_validate_http_url_reserved_tlds() -> None:
     assert validate_http_url("http://MyPrinter.Local", check_dns=False) is None
     assert validate_http_url("http://Hidden.Onion", check_dns=False) is None
 
+    # New internal TLDs/hostnames
+    assert validate_http_url("http://config.router", check_dns=False) is None
+    assert validate_http_url("http://setup.modem", check_dns=False) is None
+    assert validate_http_url("http://admin.gateway", check_dns=False) is None
+    assert validate_http_url("http://proxy.wpad", check_dns=False) is None
+    assert validate_http_url("http://app.server", check_dns=False) is None
+    assert validate_http_url("http://internal.priv", check_dns=False) is None
+    assert validate_http_url("http://pc.mshome", check_dns=False) is None
+
+    # Kubernetes cluster.local should be blocked (covered by .local)
+    assert validate_http_url("http://svc.cluster.local", check_dns=False) is None
+
 
 def test_validate_http_url_shared_address_space() -> None:
     # 100.64.0.0/10 (CGNAT) should be rejected

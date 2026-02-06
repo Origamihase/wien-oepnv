@@ -291,6 +291,14 @@ _UNSAFE_TLDS = {
     "localdomain", # Linux/Unix default
     "domain", # Generic internal
     "workgroup", # Windows workgroup
+    # Common internal network device names / TLDs
+    "router",
+    "modem",
+    "gateway",
+    "wpad",
+    "server",
+    "priv",
+    "mshome",
 }
 
 # Explicitly block Shared Address Space (RFC 6598) 100.64.0.0/10 which is often used for CGNAT/internal carrier networks.
