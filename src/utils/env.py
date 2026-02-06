@@ -46,7 +46,9 @@ except ImportError:
                 r"authorization|auth|bearer[-_]*token|api[-_]*key|auth[-_]*token|"
                 r"tenant[-_]*id|tenant|subscription[-_]*id|subscription|object[-_]*id|oid|"
                 r"code[-_]*challenge|code[-_]*verifier|"
-                r"x[-_]*api[-_]*key|ocp[-_]*apim[-_]*subscription[-_]*key"
+                r"x[-_]*api[-_]*key|ocp[-_]*apim[-_]*subscription[-_]*key|"
+                r"credential|x[-_]*amz[-_]*credential|x[-_]*amz[-_]*security[-_]*token|"
+                r"x[-_]*amz[-_]*signature|x[-_]*auth[-_]*token"
             )
 
             _header_keys = (
