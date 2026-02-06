@@ -166,12 +166,13 @@ class TimeoutHTTPAdapter(HTTPAdapter):
         return super().send(request, **kwargs)
 
 
-def _check_redirect_security(response: requests.Response, *args: Any, **kwargs: Any) -> None:
-    if response.is_redirect:
-        # Verify that the intermediate response we just received came from a safe IP
-        # This protects against DNS Rebinding attacks during the redirect chain
-        verify_response_ip(response)
+def _check_response_security(response: requests.Response, *args: Any, **kwargs: Any) -> None:
+    # Always verify that the response came from a safe IP
+    # This protects against DNS Rebinding attacks for both direct requests and redirects
+    # Enforces "Verify-Then-Process" order.
+    verify_response_ip(response)
 
+    if response.is_redirect:
         next_url = response.headers.get("Location")
         if next_url:
             # Join relative URLs
@@ -226,7 +227,7 @@ def session_with_retries(
 
     # Security: Limit redirects to prevent infinite loops and resource exhaustion (DoS)
     session.max_redirects = 10
-    session.hooks["response"].append(_check_redirect_security)
+    session.hooks["response"].append(_check_response_security)
     retry = Retry(**options)
     adapter = TimeoutHTTPAdapter(max_retries=retry, timeout=timeout)
     session.mount("http://", adapter)

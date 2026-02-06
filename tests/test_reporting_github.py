@@ -12,8 +12,14 @@ def test_run_report_creates_github_issue(monkeypatch):
     monkeypatch.setenv("FEED_GITHUB_REPOSITORY", "demo/repo")
     monkeypatch.setenv("FEED_GITHUB_TOKEN", "secret-token")
     # Bypass DNS check in test environment
-    monkeypatch.setattr("feed.reporting.validate_http_url", lambda url: url)
-    monkeypatch.setattr("feed.reporting.verify_response_ip", lambda _: None)
+    monkeypatch.setattr("src.utils.http.validate_http_url", lambda url, **kw: url)
+
+    # Robustly patch verify_response_ip in all loaded modules where it might be used
+    # This handles aliasing (src.utils vs utils) and imports in feed.reporting
+    import sys
+    for module_name in ["src.utils.http", "utils.http", "feed.reporting"]:
+        if module_name in sys.modules:
+            monkeypatch.setattr(sys.modules[module_name], "verify_response_ip", lambda _: None)
 
     responses.post(
         "https://api.github.com/repos/demo/repo/issues",
@@ -62,7 +68,11 @@ def test_run_report_sanitizes_github_error_details(monkeypatch, caplog):
     monkeypatch.setenv("FEED_GITHUB_CREATE_ISSUES", "1")
     monkeypatch.setenv("FEED_GITHUB_REPOSITORY", "demo/repo")
     monkeypatch.setenv("FEED_GITHUB_TOKEN", "secret-token")
-    monkeypatch.setattr("feed.reporting.verify_response_ip", lambda _: None)
+
+    import sys
+    for module_name in ["src.utils.http", "utils.http", "feed.reporting"]:
+        if module_name in sys.modules:
+            monkeypatch.setattr(sys.modules[module_name], "verify_response_ip", lambda _: None)
 
     responses.post(
         "https://api.github.com/repos/demo/repo/issues",
