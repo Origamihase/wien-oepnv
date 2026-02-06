@@ -102,3 +102,15 @@ def test_secret_scanner_detects_secret_in_function_call(tmp_path: Path) -> None:
 
     assert findings, "Should detect unassigned high-entropy secret"
     assert findings[0].match == secret
+
+
+def test_secret_scanner_detects_long_lowercase_assignment(tmp_path: Path) -> None:
+    file_path = tmp_path / "config.py"
+    # Long lowercase secret (single category) assigned to sensitive variable
+    secret = "abcdefghijklmnopqrstuvwxyzabcdefgh"
+    file_path.write_text(f'API_KEY = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, "Should detect long lowercase secret in assignment"
+    assert findings[0].match == secret
