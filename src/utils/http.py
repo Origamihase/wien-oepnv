@@ -81,6 +81,11 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "xapikey",
     "ocpapimsubscriptionkey",
     "subscriptionkey",
+    # AWS and other cloud tokens
+    "xauthtoken",
+    "xamzsecuritytoken",
+    "xamzsignature",
+    "xamzcredential",
 })
 
 # Headers that must be stripped on cross-origin redirects or scheme downgrades
