@@ -85,7 +85,10 @@ def _looks_like_secret(candidate: str, is_assignment: bool = False) -> bool:
     if is_assignment:
         categories += any(not c.isalnum() for c in candidate)
 
-    if categories < 2:
+    # In strict contexts (assignments), we allow single-category secrets (e.g. all-lowercase)
+    # provided they meet the length and entropy requirements.
+    min_categories = 1 if is_assignment else 2
+    if categories < min_categories:
         return False
     if len(set(candidate)) < max(6, len(candidate) // 4):
         return False
