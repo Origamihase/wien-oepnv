@@ -133,11 +133,23 @@ _SENSITIVE_HEADERS = frozenset({
     "Ocp-Apim-Subscription-Key",
     "X-Amz-Security-Token",
     "X-Gitlab-Token",
+    "X-GitHub-Token",
     "X-Vault-Token",
     "X-Sentry-Token",
     "DD-API-KEY",
     "X-Figma-Token",
     "X-Plex-Token",
+    "X-Shopify-Access-Token",
+    "X-Slack-Token",
+    "X-HubSpot-API-Key",
+    "X-Postmark-Server-Token",
+    "X-Postmark-Account-Token",
+    "X-RapidAPI-Key",
+    "X-Service-Token",
+    "X-Access-Token",
+    "X-CSRF-Token",
+    "X-CSRFToken",
+    "X-XSRF-TOKEN",
 })
 
 
