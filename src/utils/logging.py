@@ -32,12 +32,8 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
 
     sanitized = text
 
-    # Prevent log injection by escaping newlines and control characters
-    # We escape common control chars to keep the log readable but safe
-    # Also remove ANSI escape codes explicitly first
+    # Remove ANSI escape codes explicitly first
     sanitized = _ANSI_ESCAPE_RE.sub("", sanitized)
-    sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
-    sanitized = _CONTROL_CHARS_RE.sub("", sanitized)
 
     # Keys that should be redacted (regex alternation, longest match first)
     _keys = (
@@ -70,16 +66,16 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
         (r'(?i)(\"accessId\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (r"(?i)('accessId'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
         # Generic Authorization header (covers Bearer, Basic, and custom schemes)
-        (r"(?i)(Authorization:\s*)([^\n\r]+)", r"\1***"),
+        (r"(?i)(Authorization:\s*)((?s:.+))", r"\1***"),
         (r'(?i)(\"Authorization\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (r"(?i)('Authorization'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
         # Cookie and Set-Cookie headers
-        (r"(?i)((?:Set-)?Cookie:\s*)([^\n\r]+)", r"\1***"),
+        (r"(?i)((?:Set-)?Cookie:\s*)((?s:.+))", r"\1***"),
         (r'(?i)(\"(?:Set-)?Cookie\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (r"(?i)('(?:Set-)?Cookie'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
         # Generic sensitive headers (e.g. X-Api-Key, X-Goog-Api-Key, X-Auth-Token)
         # Matches any header name containing a sensitive term
-        (rf"(?i)((?:[-a-zA-Z0-9]*(?:{_header_keys})[-a-zA-Z0-9]*):\s*)([^\n\r]+)", r"\1***"),
+        (rf"(?i)((?:[-a-zA-Z0-9]*(?:{_header_keys})[-a-zA-Z0-9]*):\s*)((?s:.+))", r"\1***"),
         # Mask potentially leaked secrets in JSON error messages
         (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
@@ -92,6 +88,11 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
         for secret in secrets:
             if secret:
                 sanitized = sanitized.replace(secret, "***")
+
+    # Prevent log injection by escaping newlines and control characters
+    # We escape common control chars to keep the log readable but safe
+    sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
+    sanitized = _CONTROL_CHARS_RE.sub("", sanitized)
 
     return sanitized
 
