@@ -75,8 +75,8 @@ def sanitize_log_message(
         # Improved to handle quoted values (e.g. key="val with spaces") with escaped quotes support
         # AND improved unquoted handling to stop at next key or separator (comma/ampersand/newline)
         (
-            rf"(?i)((?:{_keys})(?:%3d|=))"
-            rf"((?:\"(?:\\.|[^\"\\\\])*\")|(?:'(?:\\.|[^'\\\\])*')|((?:(?!\s+[a-zA-Z0-9_.-]+=)[^&,\n])+))",
+            rf"(?i)((?:{_keys})\s*(?:%3d|=)\s*)"
+            rf"((?:\"(?:\\.|[^\"\\\\])*\")|(?:'(?:\\.|[^'\\\\])*')|((?:(?!\s+[a-zA-Z0-9_.-]+\s*(?:%3d|=))[^&,\n])+))",
             r"\1***",
         ),
         # Correctly handle escaped characters in JSON strings (regex: (?:\\.|[^"\\])* )

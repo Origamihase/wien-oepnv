@@ -87,3 +87,8 @@
 **Vulnerability:** The logging formatter sanitized the main log message but appended the raw exception traceback, which could contain secrets in the exception message (e.g., `ValueError("Invalid token: secret_token")`).
 **Learning:** Standard Python `logging` formatting separates the message from the traceback. Sanitizing only `record.msg` or `record.getMessage()` is insufficient if the exception info is also logged.
 **Prevention:** Override `formatException` in custom formatters to explicitly sanitize the string representation of the traceback before appending it to the log entry.
+
+## 2025-02-17 - [Log Sanitization: Whitespace Blindness]
+**Vulnerability:** Log sanitization regexes for `key=value` assignments were too strict, failing to redact sensitive data when spaces were present around the operator (e.g., `password = secret`).
+**Learning:** Developers often add spaces for readability in debug logs or configuration dumps. Standard query parameter parsers don't produce spaces, but free-text logging does.
+**Prevention:** When writing regexes for log sanitization, always account for optional whitespace around separators (`\s*=\s*`) to cover human-formatted strings.
