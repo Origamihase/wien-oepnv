@@ -58,12 +58,15 @@ except ImportError:
                 r"code[-_.\s]*challenge|code[-_.\s]*verifier|"
                 r"x[-_.\s]*api[-_.\s]*key|ocp[-_.\s]*apim[-_.\s]*subscription[-_.\s]*key|"
                 r"[a-z0-9_.\-]*credential|x[-_.\s]*amz[-_.\s]*credential|x[-_.\s]*amz[-_.\s]*security[-_.\s]*token|"
-                r"x[-_.\s]*amz[-_.\s]*signature|x[-_.\s]*auth[-_.\s]*token"
+                r"x[-_.\s]*amz[-_.\s]*signature|x[-_.\s]*auth[-_.\s]*token|"
+                r"[a-z0-9_.\-]*passphrase|[a-z0-9_.\-]*access[-_.\s]*key[-_.\s]*id|"
+                r"[a-z0-9_.\-]*secret[-_.\s]*access[-_.\s]*key|[a-z0-9_.\-]*auth[-_.\s]*code|"
+                r"[a-z0-9_.\-]*authorization[-_.\s]*code"
             )
 
             _header_keys = (
                 r"api[-_.\s]*key|token|secret|signature|password|auth|session|cookie|private|"
-                r"credential|client[-_.\s]*id"
+                r"credential|client[-_.\s]*id|passphrase|access[-_.\s]*key"
             )
 
             # Simplified patterns for fallback (subset of full logging module but covering critical cases)
@@ -82,7 +85,7 @@ except ImportError:
                 (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
                 (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
                 # Headers
-                (rf"(?i)((?:[-a-zA-Z0-9]*(?:{_header_keys})[-a-zA-Z0-9]*):\s*)((?:.*)(?:\n\s+.*)*)", r"\1***"),
+                (rf"(?i)((?:[-a-zA-Z0-9_]*(?:{_header_keys})[-a-zA-Z0-9_]*):\s*)((?:.*)(?:\n\s+.*)*)", r"\1***"),
             ]
 
             for pattern, repl in patterns:
