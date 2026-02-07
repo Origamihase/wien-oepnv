@@ -1843,4 +1843,14 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except Exception:
+        # Security: Prevent stack trace and sensitive info leakage to stderr
+        if os.getenv("WIEN_OEPNV_DEBUG"):
+            raise
+
+        # The exception is likely already logged by the application logger if configured.
+        # We fail securely by not exposing internal details.
+        print("Error: An unexpected error occurred. See logs for details (or set WIEN_OEPNV_DEBUG=1).", file=sys.stderr)
+        sys.exit(1)
