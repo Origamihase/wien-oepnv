@@ -50,14 +50,14 @@ except ImportError:
 
             # Comprehensive keys list mirroring src.utils.logging to ensure safety during fallback
             _keys = (
-                r"client[-_.\s]*secret|access[-_.\s]*token|refresh[-_.\s]*token|client[-_.\s]*id|signature|password|"
-                r"accessid|id[-_.\s]*token|session|apikey|secret|ticket|token|code|key|sig|sid|"
+                r"client[-_.\s]*secret|access[-_.\s]*token|refresh[-_.\s]*token|client[-_.\s]*id|signature|[a-z0-9_.\-]*password|"
+                r"accessid|id[-_.\s]*token|session|apikey|[a-z0-9_.\-]*secret|ticket|[a-z0-9_.\-]*token|code|key|sig|sid|"
                 r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid|"
-                r"authorization|auth|bearer[-_.\s]*token|api[-_.\s]*key|auth[-_.\s]*token|"
+                r"authorization|auth|bearer[-_.\s]*token|[a-z0-9_.\-]*api[-_.\s]*key|auth[-_.\s]*token|"
                 r"tenant[-_.\s]*id|tenant|subscription[-_.\s]*id|subscription|object[-_.\s]*id|oid|"
                 r"code[-_.\s]*challenge|code[-_.\s]*verifier|"
                 r"x[-_.\s]*api[-_.\s]*key|ocp[-_.\s]*apim[-_.\s]*subscription[-_.\s]*key|"
-                r"credential|x[-_.\s]*amz[-_.\s]*credential|x[-_.\s]*amz[-_.\s]*security[-_.\s]*token|"
+                r"[a-z0-9_.\-]*credential|x[-_.\s]*amz[-_.\s]*credential|x[-_.\s]*amz[-_.\s]*security[-_.\s]*token|"
                 r"x[-_.\s]*amz[-_.\s]*signature|x[-_.\s]*auth[-_.\s]*token"
             )
 
