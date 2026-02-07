@@ -37,7 +37,9 @@ log = logging.getLogger(__name__)
 
 def _normalize_key(key: str) -> str:
     """Normalize key for loose matching (lowercase, no hyphens/underscores)."""
-    return key.lower().replace("-", "").replace("_", "")
+    # Security: Use a stricter normalization (strip everything except a-z0-9)
+    # to catch variations like "api.key", "api key", "Client.ID", etc.
+    return re.sub(r"[^a-z0-9]", "", key.lower())
 
 
 # Regex to detect credentials in URLs that might be missed by urlparse (e.g. missing //)
@@ -75,7 +77,7 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "authtoken",
     "jsessionid",
     "phpsessid",
-    "asp.netsessionid",
+    "aspnetsessionid",
     "cfduid",
     "tenant",
     "tenantid",
