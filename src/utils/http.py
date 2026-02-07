@@ -201,6 +201,17 @@ def _check_response_security(response: requests.Response, *args: Any, **kwargs: 
                 raise ValueError(f"Unsafe redirect to: {safe_url}")
 
 
+def _get_port(parsed: Any) -> int | None:
+    """Get the port from a parsed URL, handling default ports."""
+    if parsed.port is not None:
+        return parsed.port
+    if parsed.scheme == "http":
+        return 80
+    if parsed.scheme == "https":
+        return 443
+    return None
+
+
 def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.PreparedRequest, response: requests.Response) -> None:
     """Override for requests.Session.rebuild_auth to strip sensitive headers on cross-origin redirects."""
     # Call original implementation to handle Authorization header standard logic
@@ -216,11 +227,12 @@ def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.Prepar
     original_parsed = urlparse(response.request.url)
     redirect_parsed = urlparse(url)
 
-    # Detect security risks: Hostname change or Scheme Downgrade (HTTPS -> HTTP)
+    # Detect security risks: Hostname change, Scheme Downgrade (HTTPS -> HTTP), or Port change
     host_changed = original_parsed.hostname != redirect_parsed.hostname
     scheme_downgraded = original_parsed.scheme == "https" and redirect_parsed.scheme != "https"
+    port_changed = _get_port(original_parsed) != _get_port(redirect_parsed)
 
-    if host_changed or scheme_downgraded:
+    if host_changed or scheme_downgraded or port_changed:
         for header in _SENSITIVE_HEADERS:
             if header in headers:
                 del headers[header]
