@@ -90,6 +90,13 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "xapikey",
     "ocpapimsubscriptionkey",
     "subscriptionkey",
+    # OAuth 2.0 / OIDC / SAML critical parameters
+    "state",
+    "nonce",
+    "clientassertion",
+    "clientassertiontype",
+    "samlrequest",
+    "samlresponse",
     # AWS and other cloud tokens
     "xauthtoken",
     "xamzsecuritytoken",
