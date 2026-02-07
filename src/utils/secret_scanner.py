@@ -95,6 +95,13 @@ def _looks_like_secret(candidate: str, is_assignment: bool = False) -> bool:
     return True
 
 
+def _mask_secret(value: str) -> str:
+    """Mask a secret value for display (e.g. 'AKIA***1234')."""
+    if len(value) <= 8:
+        return "***"
+    return f"{value[:4]}***{value[-4:]}"
+
+
 def _scan_line(line: str) -> list[tuple[str, str]]:
     findings: list[tuple[str, str]] = []
     for match in _SENSITIVE_ASSIGN_RE.finditer(line):
@@ -159,12 +166,13 @@ def scan_repository(
             continue
         for lineno, line in enumerate(content.splitlines(), start=1):
             for snippet, reason in _scan_line(line):
-                truncated = snippet if len(snippet) <= 80 else f"{snippet[:37]}…{snippet[-38:]}"
+                # Mask the secret value to prevent leakage in logs/CI
+                masked = _mask_secret(snippet)
                 findings.append(
                     Finding(
                         path=file_path,
                         line_number=lineno,
-                        match=truncated,
+                        match=masked,
                         reason=reason,
                     )
                 )
