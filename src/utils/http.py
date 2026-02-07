@@ -97,6 +97,18 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "xamzcredential",
 })
 
+# High-risk substrings that trigger redaction even if the key isn't an exact match in _SENSITIVE_QUERY_KEYS.
+# Normalized keys containing these substrings will be redacted in error messages.
+_SENSITIVE_KEY_SUBSTRINGS = frozenset({
+    "token",
+    "secret",
+    "password",
+    "credential",
+    "passphrase",
+    "apikey",
+    "accesskey",
+})
+
 # Headers that must be stripped on cross-origin redirects or scheme downgrades
 _SENSITIVE_HEADERS = frozenset({
     "Authorization",
@@ -144,7 +156,8 @@ def _sanitize_url_for_error(url: str) -> str:
             query_params = parse_qsl(parsed.query, keep_blank_values=True)
             new_params = []
             for key, value in query_params:
-                if _normalize_key(key) in _SENSITIVE_QUERY_KEYS:
+                normalized = _normalize_key(key)
+                if normalized in _SENSITIVE_QUERY_KEYS or any(s in normalized for s in _SENSITIVE_KEY_SUBSTRINGS):
                     new_params.append((key, "***"))
                 else:
                     new_params.append((key, value))
@@ -159,7 +172,8 @@ def _sanitize_url_for_error(url: str) -> str:
             any_sensitive_fragment = False
 
             for key, value in fragment_params:
-                if _normalize_key(key) in _SENSITIVE_QUERY_KEYS:
+                normalized = _normalize_key(key)
+                if normalized in _SENSITIVE_QUERY_KEYS or any(s in normalized for s in _SENSITIVE_KEY_SUBSTRINGS):
                     new_fragment_params.append((key, "***"))
                     any_sensitive_fragment = True
                 else:
