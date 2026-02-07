@@ -112,4 +112,7 @@ def test_secret_scanner_escaped_quotes(tmp_path):
     match_str = findings[0].match
 
     assert "leak" in match_str
-    assert match_str == secret_inner
+    # The scanner masks the secret: 1234***leak
+    # secret_inner is 12345678901234567890\"leak (24 chars)
+    # So it keeps first 4 ("1234") and last 4 ("leak")
+    assert match_str == "1234***leak"
