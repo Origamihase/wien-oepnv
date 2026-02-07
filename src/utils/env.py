@@ -42,8 +42,6 @@ except ImportError:
             # We escape common control chars to keep the log readable but safe
             # Also remove ANSI escape codes explicitly first
             sanitized = _ANSI_ESCAPE_RE.sub("", sanitized)
-            sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
-            sanitized = _CONTROL_CHARS_RE.sub("", sanitized)
 
             # Comprehensive keys list mirroring src.utils.logging to ensure safety during fallback
             _keys = (
@@ -73,7 +71,7 @@ except ImportError:
                 (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
                 (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
                 # Headers
-                (rf"(?i)((?:[-a-zA-Z0-9]*(?:{_header_keys})[-a-zA-Z0-9]*):\s*)([^\n\r]+)", r"\1***"),
+                (rf"(?i)((?:[-a-zA-Z0-9]*(?:{_header_keys})[-a-zA-Z0-9]*):\s*)((?s:.+))", r"\1***"),
             ]
 
             for pattern, repl in patterns:
