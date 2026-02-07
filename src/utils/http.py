@@ -436,12 +436,16 @@ def validate_http_url(
         except ValueError:
             # Not a standard literal IP address
             lower_host = hostname.lower()
-            labels = lower_host.split(".")
+
+            # Security: Handle trailing dots for FQDNs to prevent TLD check bypass
+            # e.g., "foo.local." -> "foo.local"
+            check_host = lower_host.rstrip(".")
+            labels = check_host.split(".")
 
             if labels:
                 tld = labels[-1]
                 # Security Enhancement: Block reserved/internal TLDs unconditionally (SSRF protection)
-                if tld in _UNSAFE_TLDS:
+                if not tld or tld in _UNSAFE_TLDS:
                     return None
 
             # Security Enhancement: If DNS resolution is skipped, we must be stricter.
