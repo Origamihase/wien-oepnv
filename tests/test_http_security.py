@@ -100,3 +100,41 @@ def test_strip_headers_on_scheme_downgrade(mock_validate_url, mock_verify_ip):
         assert "X-Sentry-Token" not in req2.headers, "X-Sentry-Token leaked to insecure HTTP endpoint"
 
     run()
+
+
+@patch("src.utils.http.verify_response_ip")
+@patch("src.utils.http.validate_http_url")
+def test_strip_headers_on_port_change(mock_validate_url, mock_verify_ip):
+    """Verify that sensitive headers are stripped when redirecting to a different port on the same host."""
+    # Allow any URL for this test
+    mock_validate_url.side_effect = lambda url, **kwargs: url
+    mock_verify_ip.return_value = None  # No-op
+
+    session = session_with_retries("test-agent")
+
+    @responses.activate
+    def run():
+        # Setup redirect: 8443 -> 9443 (same domain, different port)
+        responses.add(responses.GET, "https://example.com:8443/", status=302, headers={"Location": "https://example.com:9443/resource"})
+        responses.add(responses.GET, "https://example.com:9443/resource", status=200)
+
+        headers = {
+            "X-Api-Key": "super-secret-key",
+            "Authorization": "Bearer mytoken",
+            "X-Sentry-Token": "sentry-token-value"
+        }
+
+        session.get("https://example.com:8443/", headers=headers)
+
+        assert len(responses.calls) == 2
+        # First request (8443) should have headers
+        req1 = responses.calls[0].request
+        assert req1.headers["X-Api-Key"] == "super-secret-key"
+
+        # Second request (9443) should NOT have sensitive headers
+        req2 = responses.calls[1].request
+        assert "X-Api-Key" not in req2.headers, "X-Api-Key leaked to different port"
+        assert "Authorization" not in req2.headers, "Authorization leaked to different port"
+        assert "X-Sentry-Token" not in req2.headers, "X-Sentry-Token leaked to different port"
+
+    run()

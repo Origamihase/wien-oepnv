@@ -72,3 +72,8 @@
 **Vulnerability:** The custom `.env` parser ignored standard escape sequences (`\n`, `\r`, `\t`) in double-quoted strings, while the configuration wizard actively escaped them. This caused multiline secrets (like private keys) to be corrupted (flattened to literal `\n`) during the roundtrip.
 **Learning:** When implementing custom parsers for standard formats (like `.env`), ensure strict symmetry between the writer (escaping) and the reader (unescaping). Partial implementation leads to data corruption.
 **Prevention:** Explicitly support standard escape sequences in custom parsers or verify roundtrip integrity with property-based tests.
+
+## 2026-03-12 - Sensitive Headers Leak on Port Change
+**Vulnerability:** The `_safe_rebuild_auth` logic only checked for hostname changes and scheme downgrades, failing to strip sensitive headers when redirecting to a different port on the same host (e.g. `example.com:8443` -> `example.com:9443`).
+**Learning:** Security boundaries often include ports, not just hostnames. Different ports can host different services with different trust levels.
+**Prevention:** Include port comparison (normalizing default ports) when checking for origin changes in redirect handling logic.
