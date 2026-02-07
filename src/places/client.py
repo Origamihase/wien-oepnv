@@ -315,6 +315,7 @@ class GooglePlacesClient:
         last_error: Optional[Exception] = None
         while attempt <= self._config.max_retries:
             attempt += 1
+            start_time = time.monotonic()
             try:
                 with self._session.post(
                     url,
@@ -331,7 +332,9 @@ class GooglePlacesClient:
 
                     # Enforce DoS protection (limit response size)
                     try:
-                        content_bytes = read_response_safe(response)
+                        # Calculate remaining time for reading body to prevent Slowloris
+                        read_timeout = max(0.1, self._config.timeout_s - (time.monotonic() - start_time))
+                        content_bytes = read_response_safe(response, timeout=read_timeout)
                     except ValueError as exc:
                         raise GooglePlacesError(f"Response too large: {exc}") from exc
 
