@@ -8,8 +8,13 @@ from typing import Any, List, Tuple
 # Precompiled regexes for sanitization
 _CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f-\x9f]")
 _LOG_INJECTION_RE = re.compile(r"[\n\r\t]")
-# ANSI escape codes: \x1b followed by [ and optional params, ending with a letter
-_ANSI_ESCAPE_RE = re.compile(r"\x1b\[[0-9;]*[a-zA-Z]")
+# ANSI escape codes: comprehensive matching for CSI, OSC, Fe, and 2-byte sequences
+# Matches:
+# 1. CSI: ESC [ ...
+# 2. OSC: ESC ] ... BEL/ST
+# 3. Fe (excluding [ and ]): ESC [@-Z\\^_]
+# 4. Two-byte sequences: ESC [space-/] [0-~]
+_ANSI_ESCAPE_RE = re.compile(r'\x1b(?:\[[0-?]*[ -/]*[@-~]|\][^\x07\x1b]*(?:\x07|\x1b\\)|[@-Z\\^_]|[\x20-\x2f][\x30-\x7e])')
 
 
 def sanitize_log_message(
