@@ -32,6 +32,13 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
 
     sanitized = text
 
+    # Prevent log injection by escaping newlines and control characters
+    # We escape common control chars to keep the log readable but safe
+    # Also remove ANSI escape codes explicitly first
+    sanitized = _ANSI_ESCAPE_RE.sub("", sanitized)
+    sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
+    sanitized = _CONTROL_CHARS_RE.sub("", sanitized)
+
     # Keys that should be redacted (regex alternation, longest match first)
     _keys = (
         r"client[-_]*secret|access[-_]*token|refresh[-_]*token|client[-_]*id|signature|password|"
@@ -85,16 +92,6 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
         for secret in secrets:
             if secret:
                 sanitized = sanitized.replace(secret, "***")
-
-    # Prevent log injection by escaping newlines and control characters
-    # We escape common control chars to keep the log readable but safe
-    sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
-
-    # Remove ANSI escape codes explicitly first
-    sanitized = _ANSI_ESCAPE_RE.sub("", sanitized)
-
-    # Remove remaining control characters
-    sanitized = _CONTROL_CHARS_RE.sub("", sanitized)
 
     return sanitized
 

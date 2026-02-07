@@ -38,6 +38,13 @@ except ImportError:
                 return ""
             sanitized = text
 
+            # Prevent log injection by escaping newlines and control characters
+            # We escape common control chars to keep the log readable but safe
+            # Also remove ANSI escape codes explicitly first
+            sanitized = _ANSI_ESCAPE_RE.sub("", sanitized)
+            sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
+            sanitized = _CONTROL_CHARS_RE.sub("", sanitized)
+
             # Comprehensive keys list mirroring src.utils.logging to ensure safety during fallback
             _keys = (
                 r"client[-_]*secret|access[-_]*token|refresh[-_]*token|client[-_]*id|signature|password|"
