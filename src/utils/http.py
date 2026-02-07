@@ -56,6 +56,7 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "apikey",
     "password",
     "secret",
+    "passphrase",
     "authorization",
     "auth",
     "clientsecret",
@@ -108,6 +109,10 @@ _SENSITIVE_HEADERS = frozenset({
     "X-Amz-Security-Token",
     "X-Gitlab-Token",
     "X-Vault-Token",
+    "X-Sentry-Token",
+    "DD-API-KEY",
+    "X-Figma-Token",
+    "X-Plex-Token",
 })
 
 
@@ -299,6 +304,10 @@ _UNSAFE_TLDS = {
     "server",
     "priv",
     "mshome",
+    # Container / Orchestration internal TLDs
+    "svc",
+    "cluster",
+    "consul",
 }
 
 # Explicitly block Shared Address Space (RFC 6598) 100.64.0.0/10 which is often used for CGNAT/internal carrier networks.

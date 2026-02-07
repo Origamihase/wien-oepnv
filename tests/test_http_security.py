@@ -32,6 +32,18 @@ def test_unsafe_tlds_blocked():
     url_workgroup = "http://pc.workgroup"
     assert validate_http_url(url_workgroup, check_dns=False) is None
 
+    # .svc (Kubernetes)
+    url_svc = "http://my-service.svc"
+    assert validate_http_url(url_svc, check_dns=False) is None
+
+    # .cluster (Kubernetes)
+    url_cluster = "http://my-pod.cluster"
+    assert validate_http_url(url_cluster, check_dns=False) is None
+
+    # .consul (HashiCorp Consul)
+    url_consul = "http://db.consul"
+    assert validate_http_url(url_consul, check_dns=False) is None
+
 def test_unsafe_tlds_blocked_with_dns_check():
     """Verify that infrastructure TLDs are blocked even if DNS check is enabled and resolves."""
 
@@ -67,7 +79,8 @@ def test_strip_headers_on_scheme_downgrade(mock_validate_url, mock_verify_ip):
         headers = {
             "X-Api-Key": "super-secret-key",
             "Authorization": "Bearer mytoken",
-            "Cookie": "session=secret"
+            "Cookie": "session=secret",
+            "X-Sentry-Token": "sentry-token-value"
         }
 
         session.get("https://secure.example.com/", headers=headers)
@@ -76,6 +89,7 @@ def test_strip_headers_on_scheme_downgrade(mock_validate_url, mock_verify_ip):
         # First request (HTTPS) should have headers
         req1 = responses.calls[0].request
         assert req1.headers["X-Api-Key"] == "super-secret-key"
+        assert req1.headers["X-Sentry-Token"] == "sentry-token-value"
 
         # Second request (HTTP) should NOT have sensitive headers
         req2 = responses.calls[1].request
@@ -83,5 +97,6 @@ def test_strip_headers_on_scheme_downgrade(mock_validate_url, mock_verify_ip):
         assert "Authorization" not in req2.headers, "Authorization leaked to insecure HTTP endpoint"
         # Note: 'Cookie' might be missing anyway due to requests default behavior, but we check to be sure
         assert "Cookie" not in req2.headers, "Cookie leaked to insecure HTTP endpoint"
+        assert "X-Sentry-Token" not in req2.headers, "X-Sentry-Token leaked to insecure HTTP endpoint"
 
     run()
