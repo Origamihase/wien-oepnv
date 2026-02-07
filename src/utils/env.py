@@ -71,7 +71,7 @@ except ImportError:
                 (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
                 (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
                 # Headers
-                (rf"(?i)((?:[-a-zA-Z0-9]*(?:{_header_keys})[-a-zA-Z0-9]*):\s*)((?s:.+))", r"\1***"),
+                (rf"(?i)((?:[-a-zA-Z0-9]*(?:{_header_keys})[-a-zA-Z0-9]*):\s*)((?:.*)(?:\n\s+.*)*)", r"\1***"),
             ]
 
             for pattern, repl in patterns:

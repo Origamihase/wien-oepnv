@@ -13,7 +13,8 @@ def test_multiline_leak():
     assert "Token: ***" in sanitized or "Token: \\n ***" in sanitized or "Token: \\n harmless \\n ***" in sanitized
 
 def test_multiline_header_leak():
-    msg = "Authorization: Bearer\ntoken"
+    # Multiline headers must be indented (folding) to be treated as part of the value
+    msg = "Authorization: Bearer\n  token"
     sanitized = sanitize_log_message(msg)
     print(f"Sanitized: {repr(sanitized)}")
     assert "token" not in sanitized
@@ -56,7 +57,8 @@ def test_env_fallback_multiline():
             assert "Token: ***" in sanitized or "Token: \\n ***" in sanitized or "Token: \\n harmless \\n ***" in sanitized
 
             # Verify multiline header
-            msg_header = "Authorization: Bearer\ntoken"
+            # Multiline headers must be indented (folding) to be treated as part of the value
+            msg_header = "Authorization: Bearer\n  token"
             sanitized_header = sanitize(msg_header)
             print(f"Fallback Sanitized Header: {repr(sanitized_header)}")
             assert "token" not in sanitized_header
