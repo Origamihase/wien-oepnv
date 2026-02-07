@@ -343,6 +343,18 @@ _UNSAFE_TLDS = {
     "svc",
     "cluster",
     "consul",
+    # Additional internal/infrastructure TLDs (SSRF protection)
+    "backup",
+    "prod",
+    "stage",
+    "staging",
+    "sys",
+    "printer",
+    "kube",
+    "openshift",
+    "istio",
+    "mesh",
+    "intra",
 }
 
 # Explicitly block Shared Address Space (RFC 6598) 100.64.0.0/10 which is often used for CGNAT/internal carrier networks.
