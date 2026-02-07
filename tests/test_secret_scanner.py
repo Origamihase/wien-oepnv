@@ -34,27 +34,29 @@ def test_secret_scanner_detects_quoted_secret_with_spaces(tmp_path: Path) -> Non
     findings = scan_repository(tmp_path, paths=[file_path])
 
     assert findings, "Scanner failed to detect quoted secret with spaces"
-    # The scanner returns the match exactly as found by regex.
-    # Our regex captures the content including quotes.
-    # But _scan_line implementation: `candidate = match.group(2)`.
-    # And we updated _scan_line to strip quotes.
-    # Wait, findings[0].match in the original code:
-    # `match=truncated` where `truncated` comes from `snippet` which comes from `_scan_line`.
-    # `_scan_line` yields `(candidate, reason)`.
-    # And we updated `_scan_line` to STRIP quotes from `candidate` before yielding.
-    # So `findings[0].match` should be the stripped value!
 
-    assert findings[0].match == secret_value
+    # Ensure full secret is NOT in findings (Redaction check)
+    assert secret_value not in [f.match for f in findings]
+
+    # Check for redacted match: first 4 + *** + last 4
+    expected = f"{secret_value[:4]}***{secret_value[-4:]}"
+    assert findings[0].match == expected
 
 
 def test_secret_scanner_detects_aws_access_key(tmp_path: Path) -> None:
     file_path = tmp_path / "aws_creds.py"
-    file_path.write_text('AWS_ACCESS_KEY_ID = "AKIAIOSFODNN7EXAMPLE"', encoding="utf-8")
+    secret_value = "AKIAIOSFODNN7EXAMPLE"
+    file_path.write_text(f'AWS_ACCESS_KEY_ID = "{secret_value}"', encoding="utf-8")
 
     findings = scan_repository(tmp_path, paths=[file_path])
 
     assert findings, "Should detect AWS Access Key"
-    assert "AKIAIOSFODNN7EXAMPLE" in [f.match for f in findings]
+
+    # Ensure full secret is NOT in findings (Redaction check)
+    assert secret_value not in [f.match for f in findings]
+
+    expected = f"{secret_value[:4]}***{secret_value[-4:]}"
+    assert expected in [f.match for f in findings]
     assert "AWS Access Key ID gefunden" in [f.reason for f in findings]
 
 
@@ -67,7 +69,9 @@ def test_secret_scanner_detects_short_secret_assignment(tmp_path: Path) -> None:
     findings = scan_repository(tmp_path, paths=[file_path])
 
     assert findings, "Should detect 20-char secret assignment"
-    assert findings[0].match == secret
+    assert secret not in [f.match for f in findings]
+    expected = f"{secret[:4]}***{secret[-4:]}"
+    assert findings[0].match == expected
 
 
 def test_secret_scanner_detects_key_variable(tmp_path: Path) -> None:
@@ -78,7 +82,9 @@ def test_secret_scanner_detects_key_variable(tmp_path: Path) -> None:
     findings = scan_repository(tmp_path, paths=[file_path])
 
     assert findings, "Should detect variable named private_key"
-    assert findings[0].match == secret
+    assert secret not in [f.match for f in findings]
+    expected = f"{secret[:4]}***{secret[-4:]}"
+    assert findings[0].match == expected
 
 
 def test_secret_scanner_ignores_short_non_secret(tmp_path: Path) -> None:
@@ -101,7 +107,9 @@ def test_secret_scanner_detects_secret_in_function_call(tmp_path: Path) -> None:
     findings = scan_repository(tmp_path, paths=[file_path])
 
     assert findings, "Should detect unassigned high-entropy secret"
-    assert findings[0].match == secret
+    assert secret not in [f.match for f in findings]
+    expected = f"{secret[:4]}***{secret[-4:]}"
+    assert findings[0].match == expected
 
 
 def test_secret_scanner_detects_long_lowercase_assignment(tmp_path: Path) -> None:
@@ -113,7 +121,9 @@ def test_secret_scanner_detects_long_lowercase_assignment(tmp_path: Path) -> Non
     findings = scan_repository(tmp_path, paths=[file_path])
 
     assert findings, "Should detect long lowercase secret in assignment"
-    assert findings[0].match == secret
+    assert secret not in [f.match for f in findings]
+    expected = f"{secret[:4]}***{secret[-4:]}"
+    assert findings[0].match == expected
 
 
 def test_secret_scanner_detects_credential_assignment(tmp_path: Path) -> None:
@@ -125,7 +135,9 @@ def test_secret_scanner_detects_credential_assignment(tmp_path: Path) -> None:
     findings = scan_repository(tmp_path, paths=[file_path])
 
     assert findings, "Should detect 20-char credential assignment"
-    assert findings[0].match == secret
+    assert secret not in [f.match for f in findings]
+    expected = f"{secret[:4]}***{secret[-4:]}"
+    assert findings[0].match == expected
 
 
 def test_secret_scanner_detects_passphrase_assignment(tmp_path: Path) -> None:
@@ -137,4 +149,6 @@ def test_secret_scanner_detects_passphrase_assignment(tmp_path: Path) -> None:
     findings = scan_repository(tmp_path, paths=[file_path])
 
     assert findings, "Should detect passphrase assignment"
-    assert findings[0].match == secret
+    assert secret not in [f.match for f in findings]
+    expected = f"{secret[:4]}***{secret[-4:]}"
+    assert findings[0].match == expected
