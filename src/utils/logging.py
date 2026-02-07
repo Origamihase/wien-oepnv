@@ -12,7 +12,9 @@ _LOG_INJECTION_RE = re.compile(r"[\n\r\t]")
 _ANSI_ESCAPE_RE = re.compile(r"\x1b\[[0-9;]*[a-zA-Z]")
 
 
-def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
+def sanitize_log_message(
+    text: str, secrets: List[str] | None = None, strip_control_chars: bool = True
+) -> str:
     """
     Sanitize log messages by masking secrets and removing control characters.
 
@@ -23,6 +25,9 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
     Args:
         text: The raw message string to sanitize.
         secrets: Optional list of specific secret strings to mask.
+        strip_control_chars: If True (default), newlines and other control characters
+                             are escaped or removed to prevent log injection.
+                             Set to False for tracebacks where readability is needed.
 
     Returns:
         The sanitized string.
@@ -90,9 +95,10 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
                 sanitized = sanitized.replace(secret, "***")
 
     # Prevent log injection by escaping newlines and control characters
-    # We escape common control chars to keep the log readable but safe
-    sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
-    sanitized = _CONTROL_CHARS_RE.sub("", sanitized)
+    if strip_control_chars:
+        # We escape common control chars to keep the log readable but safe
+        sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
+        sanitized = _CONTROL_CHARS_RE.sub("", sanitized)
 
     return sanitized
 

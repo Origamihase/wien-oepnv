@@ -33,14 +33,14 @@ except ImportError:
         # ANSI escape codes: \x1b followed by [ and optional params, ending with a letter
         _ANSI_ESCAPE_RE = re.compile(r"\x1b\[[0-9;]*[a-zA-Z]")
 
-        def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
+        def sanitize_log_message(
+            text: str, secrets: List[str] | None = None, strip_control_chars: bool = True
+        ) -> str:
             if not text:
                 return ""
             sanitized = text
 
-            # Prevent log injection by escaping newlines and control characters
-            # We escape common control chars to keep the log readable but safe
-            # Also remove ANSI escape codes explicitly first
+            # Remove ANSI escape codes explicitly first
             sanitized = _ANSI_ESCAPE_RE.sub("", sanitized)
 
             # Comprehensive keys list mirroring src.utils.logging to ensure safety during fallback
@@ -84,14 +84,10 @@ except ImportError:
                         sanitized = sanitized.replace(secret, "***")
 
             # Escape control characters to prevent log injection
-            # We escape common control chars to keep the log readable but safe
-            sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
-
-            # Remove ANSI escape codes explicitly first
-            sanitized = _ANSI_ESCAPE_RE.sub("", sanitized)
-
-            # Remove remaining control characters
-            sanitized = _CONTROL_CHARS_RE.sub("", sanitized)
+            if strip_control_chars:
+                # We escape common control chars to keep the log readable but safe
+                sanitized = sanitized.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
+                sanitized = _CONTROL_CHARS_RE.sub("", sanitized)
 
             return sanitized
 
