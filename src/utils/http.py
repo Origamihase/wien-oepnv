@@ -97,6 +97,8 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "clientassertiontype",
     "samlrequest",
     "samlresponse",
+    # Additional sensitive tokens
+    "bearer",
     # AWS and other cloud tokens
     "xauthtoken",
     "xamzsecuritytoken",
@@ -114,6 +116,8 @@ _SENSITIVE_KEY_SUBSTRINGS = frozenset({
     "passphrase",
     "apikey",
     "accesskey",
+    "privatekey",
+    "signature",
 })
 
 # Headers that must be stripped on cross-origin redirects or scheme downgrades
