@@ -55,14 +55,17 @@ def sanitize_log_message(
         r"code[-_.\s]*challenge|code[-_.\s]*verifier|"
         r"x[-_.\s]*api[-_.\s]*key|ocp[-_.\s]*apim[-_.\s]*subscription[-_.\s]*key|"
         r"[a-z0-9_.\-]*credential|x[-_.\s]*amz[-_.\s]*credential|x[-_.\s]*amz[-_.\s]*security[-_.\s]*token|"
-        r"x[-_.\s]*amz[-_.\s]*signature|x[-_.\s]*auth[-_.\s]*token"
+        r"x[-_.\s]*amz[-_.\s]*signature|x[-_.\s]*auth[-_.\s]*token|"
+        r"[a-z0-9_.\-]*passphrase|[a-z0-9_.\-]*access[-_.\s]*key[-_.\s]*id|"
+        r"[a-z0-9_.\-]*secret[-_.\s]*access[-_.\s]*key|[a-z0-9_.\-]*auth[-_.\s]*code|"
+        r"[a-z0-9_.\-]*authorization[-_.\s]*code"
     )
 
     # Common header-safe keys for broad redaction in Header: Value pairs
     # Explicitly supports hyphens for header style (e.g. Api-Key)
     _header_keys = (
         r"api[-_.\s]*key|token|secret|signature|password|auth|session|cookie|private|"
-        r"credential|client[-_.\s]*id"
+        r"credential|client[-_.\s]*id|passphrase|access[-_.\s]*key"
     )
 
     # Common patterns for secrets in URLs/Headers
@@ -91,8 +94,8 @@ def sanitize_log_message(
         (r'(?i)(\"(?:Set-)?Cookie\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (r"(?i)('(?:Set-)?Cookie'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
         # Generic sensitive headers (e.g. X-Api-Key, X-Goog-Api-Key, X-Auth-Token)
-        # Matches any header name containing a sensitive term
-        (rf"(?i)((?:[-a-zA-Z0-9]*(?:{_header_keys})[-a-zA-Z0-9]*):\s*)((?:.*)(?:\n\s+.*)*)", r"\1***"),
+        # Matches any header name containing a sensitive term. Allows underscores too.
+        (rf"(?i)((?:[-a-zA-Z0-9_]*(?:{_header_keys})[-a-zA-Z0-9_]*):\s*)((?:.*)(?:\n\s+.*)*)", r"\1***"),
         # Mask potentially leaked secrets in JSON error messages
         (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
