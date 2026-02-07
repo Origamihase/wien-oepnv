@@ -73,7 +73,8 @@ def _is_binary(path: Path) -> bool:
 
 
 def _looks_like_secret(candidate: str, is_assignment: bool = False) -> bool:
-    min_len = 20 if is_assignment else 24
+    # Allow shorter secrets for explicit assignments (e.g. password="...")
+    min_len = 8 if is_assignment else 24
     if len(candidate) < min_len:
         return False
     categories = 0

@@ -152,3 +152,16 @@ def test_secret_scanner_detects_passphrase_assignment(tmp_path: Path) -> None:
     assert secret not in [f.match for f in findings]
     expected = f"{secret[:4]}***{secret[-4:]}"
     assert findings[0].match == expected
+
+def test_secret_scanner_detects_short_password_assignment(tmp_path: Path) -> None:
+    file_path = tmp_path / "creds.py"
+    # 10 chars, explicitly assigned to 'password'
+    secret = "Pass1234!!"
+    file_path.write_text(f'password = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, "Should detect 10-char password assignment"
+    assert secret not in [f.match for f in findings]
+    expected = f"{secret[:4]}***{secret[-4:]}"
+    assert findings[0].match == expected
