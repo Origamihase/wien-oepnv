@@ -108,15 +108,15 @@ class SafeJSONFormatter(logging.Formatter):
         for key, value in record.__dict__.items():
             if key in self._DEFAULT_FIELDS:
                 continue
-            # Basic sanitization for extras if they are strings
-            if isinstance(value, str):
-                extras[key] = sanitize_log_message(value)
-            else:
-                extras[key] = value
+            extras[key] = value
+
         if extras:
             payload["extra"] = extras
 
-        return json.dumps(payload, ensure_ascii=False)
+        # We sanitize the full JSON string to catch secrets nested in dictionaries or lists
+        # (e.g. extra={"context": {"api_key": "..."}}) which the previous per-field logic missed.
+        dumped = json.dumps(payload, ensure_ascii=False)
+        return sanitize_log_message(dumped, strip_control_chars=False)
 
     def formatException(self, ei: Any) -> str:
         s = super().formatException(ei)
