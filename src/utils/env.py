@@ -68,10 +68,16 @@ except ImportError:
 
             # Simplified patterns for fallback (subset of full logging module but covering critical cases)
             patterns = [
+                # PEM blocks (keys/certs)
+                (r"(-----BEGIN [A-Z ]+-----)(?:.|\n)*?(-----END [A-Z ]+-----)", r"\1***\2"),
                 # URL credentials
                 (r"(?i)([a-z0-9+.-]+://)([^/@\s]+)@", r"\1***@"),
                 # Query params and assignments (key=value)
-                (rf"(?i)((?:{_keys})(?:%3d|=))((?:\"(?:\\.|[^\"\\\\])*\")|(?:'(?:\\.|[^'\\])*')|[^&\s]+)", r"\1***"),
+                (
+                    rf"(?i)((?:{_keys})(?:%3d|=))"
+                    rf"((?:\"(?:\\.|[^\"\\\\])*\")|(?:'(?:\\.|[^'\\\\])*')|((?:(?!\s+[a-zA-Z0-9_.-]+=)[^&,\n])+))",
+                    r"\1***",
+                ),
                 # JSON fields (key: "value")
                 (rf'(?i)(\"(?:{_keys})\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
                 (rf"(?i)('(?:{_keys})'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),

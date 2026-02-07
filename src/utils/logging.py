@@ -67,11 +67,18 @@ def sanitize_log_message(
 
     # Common patterns for secrets in URLs/Headers
     patterns: List[Tuple[str, str]] = [
+        # PEM blocks (keys/certs) - MUST be first to prevent partial redaction by other patterns
+        (r"(-----BEGIN [A-Z ]+-----)(?:.|\n)*?(-----END [A-Z ]+-----)", r"\1***\2"),
         # Basic Auth in URLs (protocol://user:pass@host)
         (r"(?i)([a-z0-9+.-]+://)([^/@\s]+)@", r"\1***@"),
         # Query parameters (key=value or key%3dvalue)
         # Improved to handle quoted values (e.g. key="val with spaces") with escaped quotes support
-        (rf"(?i)((?:{_keys})(?:%3d|=))((?:\"(?:\\.|[^\"\\\\])*\")|(?:'(?:\\.|[^'\\])*')|[^&\s]+)", r"\1***"),
+        # AND improved unquoted handling to stop at next key or separator (comma/ampersand/newline)
+        (
+            rf"(?i)((?:{_keys})(?:%3d|=))"
+            rf"((?:\"(?:\\.|[^\"\\\\])*\")|(?:'(?:\\.|[^'\\\\])*')|((?:(?!\s+[a-zA-Z0-9_.-]+=)[^&,\n])+))",
+            r"\1***",
+        ),
         # Correctly handle escaped characters in JSON strings (regex: (?:\\.|[^"\\])* )
         (r'(?i)(\"accessId\"\s*:\s*\")((?:\\.|[^"\\\\])*)(\")', r'\1***\3'),
         (r"(?i)('accessId'\s*:\s*')((?:\\.|[^'\\\\])*)(')", r"\1***\3"),
