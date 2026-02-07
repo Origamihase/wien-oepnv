@@ -44,6 +44,31 @@ def test_unsafe_tlds_blocked():
     url_consul = "http://db.consul"
     assert validate_http_url(url_consul, check_dns=False) is None
 
+def test_extended_unsafe_tlds_blocked():
+    """Verify that newly added infrastructure TLDs are blocked."""
+    # .prod
+    assert validate_http_url("http://api.prod", check_dns=False) is None
+    # .stage
+    assert validate_http_url("http://db.stage", check_dns=False) is None
+    # .staging
+    assert validate_http_url("http://backend.staging", check_dns=False) is None
+    # .sys
+    assert validate_http_url("http://monitor.sys", check_dns=False) is None
+    # .backup
+    assert validate_http_url("http://store.backup", check_dns=False) is None
+    # .printer
+    assert validate_http_url("http://office.printer", check_dns=False) is None
+    # .kube
+    assert validate_http_url("http://svc.kube", check_dns=False) is None
+    # .openshift
+    assert validate_http_url("http://console.openshift", check_dns=False) is None
+    # .istio
+    assert validate_http_url("http://mesh.istio", check_dns=False) is None
+    # .mesh
+    assert validate_http_url("http://internal.mesh", check_dns=False) is None
+    # .intra
+    assert validate_http_url("http://portal.intra", check_dns=False) is None
+
 def test_unsafe_tlds_blocked_with_dns_check():
     """Verify that infrastructure TLDs are blocked even if DNS check is enabled and resolves."""
 
