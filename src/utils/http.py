@@ -373,6 +373,19 @@ _UNSAFE_TLDS = {
     "intra",
 }
 
+# Known DNS Rebinding / Wildcard DNS services that map to local IPs.
+# We block these domains (and their subdomains) regardless of DNS resolution settings.
+_UNSAFE_DOMAINS = frozenset({
+    "nip.io",
+    "sslip.io",
+    "xip.io",
+    "xip.name",
+    "localtest.me",
+    "lvh.me",
+    "vcap.me",
+    "127.0.0.1.nip.io",
+})
+
 # Explicitly block Shared Address Space (RFC 6598) 100.64.0.0/10 which is often used for CGNAT/internal carrier networks.
 _SHARED_ADDRESS_SPACE = ipaddress.IPv4Network("100.64.0.0/10")
 
@@ -518,6 +531,13 @@ def validate_http_url(
                 tld = labels[-1]
                 # Security Enhancement: Block reserved/internal TLDs unconditionally (SSRF protection)
                 if not tld or tld in _UNSAFE_TLDS:
+                    return None
+
+            # Security Enhancement: Block known DNS rebinding/wildcard DNS services (e.g. nip.io)
+            # This is critical when check_dns=False to prevent bypassing IP checks via public domains
+            # that resolve to localhost (e.g. 127.0.0.1.nip.io).
+            for unsafe_domain in _UNSAFE_DOMAINS:
+                if lower_host == unsafe_domain or lower_host.endswith("." + unsafe_domain):
                     return None
 
             # Security Enhancement: If DNS resolution is skipped, we must be stricter.
