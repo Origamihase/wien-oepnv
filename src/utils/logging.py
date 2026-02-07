@@ -37,22 +37,22 @@ def sanitize_log_message(text: str, secrets: List[str] | None = None) -> str:
 
     # Keys that should be redacted (regex alternation, longest match first)
     _keys = (
-        r"client[-_]*secret|access[-_]*token|refresh[-_]*token|client[-_]*id|signature|password|"
-        r"accessid|id[-_]*token|session|apikey|secret|ticket|token|code|key|sig|sid|"
+        r"client[-_.\s]*secret|access[-_.\s]*token|refresh[-_.\s]*token|client[-_.\s]*id|signature|password|"
+        r"accessid|id[-_.\s]*token|session|apikey|secret|ticket|token|code|key|sig|sid|"
         r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid|"
-        r"authorization|auth|bearer[-_]*token|api[-_]*key|auth[-_]*token|"
-        r"tenant[-_]*id|tenant|subscription[-_]*id|subscription|object[-_]*id|oid|"
-        r"code[-_]*challenge|code[-_]*verifier|"
-        r"x[-_]*api[-_]*key|ocp[-_]*apim[-_]*subscription[-_]*key|"
-        r"credential|x[-_]*amz[-_]*credential|x[-_]*amz[-_]*security[-_]*token|"
-        r"x[-_]*amz[-_]*signature|x[-_]*auth[-_]*token"
+        r"authorization|auth|bearer[-_.\s]*token|api[-_.\s]*key|auth[-_.\s]*token|"
+        r"tenant[-_.\s]*id|tenant|subscription[-_.\s]*id|subscription|object[-_.\s]*id|oid|"
+        r"code[-_.\s]*challenge|code[-_.\s]*verifier|"
+        r"x[-_.\s]*api[-_.\s]*key|ocp[-_.\s]*apim[-_.\s]*subscription[-_.\s]*key|"
+        r"credential|x[-_.\s]*amz[-_.\s]*credential|x[-_.\s]*amz[-_.\s]*security[-_.\s]*token|"
+        r"x[-_.\s]*amz[-_.\s]*signature|x[-_.\s]*auth[-_.\s]*token"
     )
 
     # Common header-safe keys for broad redaction in Header: Value pairs
     # Explicitly supports hyphens for header style (e.g. Api-Key)
     _header_keys = (
-        r"api[-_]*key|token|secret|signature|password|auth|session|cookie|private|"
-        r"credential|client[-_]*id"
+        r"api[-_.\s]*key|token|secret|signature|password|auth|session|cookie|private|"
+        r"credential|client[-_.\s]*id"
     )
 
     # Common patterns for secrets in URLs/Headers
