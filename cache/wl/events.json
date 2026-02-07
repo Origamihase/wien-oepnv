@@ -182,37 +182,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Verspätungen",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 62 zu unterschiedlichen Intervallen.",
+    "title": "37A: Verspätungen",
+    "description": "Die Linie 37 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "82b2b968365fe18a9edd52433273c0f78ff5079c2218a60fb58c22aa07911b8c",
-    "pubDate": "2026-02-07T05:35:00+01:00",
-    "starts_at": "2026-02-07T05:35:00+01:00",
+    "guid": "194c69f1098e97632b0f8dd64b2f02997b0b337a3d0a03c4ee59329671893179",
+    "pubDate": "2026-02-07T07:45:00+01:00",
+    "starts_at": "2026-02-07T07:45:00+01:00",
     "ends_at": "2026-02-07T23:55:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-02-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Verspätungen",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 1 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1d3414b1e3cc28842526c11ed2f6bc808d703447c6c64603053764ec08ab1b50",
-    "pubDate": "2026-02-07T05:35:00+01:00",
-    "starts_at": "2026-02-07T05:35:00+01:00",
-    "ends_at": "2026-02-07T23:55:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-02-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Verspätungen",
-    "description": "Die Linie 12 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Josefstädter Straße U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8152569e3c97a3516c3d1e324d9792257f593704c09ec2b898cd21752e0f1c9a",
-    "pubDate": "2026-02-07T06:25:00+01:00",
-    "starts_at": "2026-02-07T06:25:00+01:00",
-    "ends_at": "2026-02-07T23:55:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-02-07"
+    "_identity": "wl|störung|L=37A|D=2026-02-07"
   }
 ]
