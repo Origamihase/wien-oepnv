@@ -169,3 +169,45 @@ def test_secret_scanner_detects_short_password_assignment(tmp_path: Path) -> Non
     # Length 10 -> 2 chars
     expected = f"{secret[:2]}***{secret[-2:]}"
     assert findings[0].match == expected
+
+def test_secret_scanner_detects_extended_keys(tmp_path: Path) -> None:
+    file_path = tmp_path / "extended.py"
+    # Create secrets for new keys
+    assignments = [
+        ('accesskey', "AccessKey1234567890"),
+        ('client_id', "ClientId1234567890"),
+        ('bearer', "BearerToken1234567890"),
+        ('session_id', "SessionId1234567890"),
+        ('signature', "Signature1234567890"),
+        ('jwt', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"),
+        ('cookie', "JSESSIONID=1234567890abcdef")
+    ]
+
+    content = ""
+    for key, value in assignments:
+        content += f'{key} = "{value}"\n'
+
+    file_path.write_text(content, encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    # We expect at least one finding per assignment.
+    # Some secrets (like JWT or long cookies) might also trigger the high-entropy check,
+    # resulting in multiple findings for the same line.
+    findings_by_line = {}
+    for f in findings:
+        findings_by_line.setdefault(f.line_number, []).append(f)
+
+    assert len(findings_by_line) == len(assignments), f"Expected findings on {len(assignments)} lines, got {len(findings_by_line)}"
+
+    for line_findings in findings_by_line.values():
+        # At least one finding on the line should be the assignment check
+        reasons = [f.reason for f in line_findings]
+        assert any("Verdächtige Zuweisung" in r for r in reasons), f"Line missed assignment check: {reasons}"
+
+        # Check redaction
+        for finding in line_findings:
+            assert "***" in finding.match
+            # Check that none of the raw secrets are in the match string
+            for _, val in assignments:
+                assert val not in finding.match
