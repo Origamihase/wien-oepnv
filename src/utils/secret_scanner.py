@@ -16,7 +16,7 @@ __all__ = [
 
 _HIGH_ENTROPY_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z0-9+/=_-]{24,}(?![A-Za-z0-9])")
 _SENSITIVE_ASSIGN_RE = re.compile(
-    r"(?i)(token|secret|password|accessid|apikey|accesskey|authorization|_key|auth|credential|passphrase|clientid|client_id|session_id|cookie|signature|bearer|jwt|webhook|webhook_url|dsn|subscriptionkey)[^\S\n]*[:=][^\S\n]*((?:\"(?:\\.|[^\"\\])*\")|(?:'(?:\\.|[^'\\])*')|[^;#'\"\n]+)"
+    r"(?i)([a-z0-9_]*(?:token|secret|password|accessid|apikey|accesskey|authorization|_key|auth|credential|passphrase|clientid|client_id|session_id|cookie|signature|bearer|jwt|webhook|webhook_url|dsn|subscriptionkey)[a-z0-9_]*)[^\S\n]*[:=][^\S\n]*((?:\"(?:\\.|[^\"\\])*\")|(?:'(?:\\.|[^'\\])*')|[^;#'\"\n]+)"
 )
 _AWS_ID_RE = re.compile(r"(?<![A-Za-z0-9])(AKIA|ASIA|ACCA)[A-Z0-9]{16}(?![A-Za-z0-9])")
 _BEARER_RE = re.compile(r"Bearer\s+([A-Za-z0-9\-_.]{16,})")
