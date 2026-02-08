@@ -102,3 +102,8 @@
 **Vulnerability:** The secret masking logic revealed 4 characters at both the start and end of any secret longer than 8 characters, exposing nearly 50% of short secrets (e.g. 16-char API keys).
 **Learning:** One-size-fits-all redaction rules (like "show first/last 4") leak disproportionately more information for shorter secrets.
 **Prevention:** Implement tiered redaction logic that scales the visible portion based on the total length of the secret (e.g. only show 2 chars for secrets < 20 chars).
+
+## 2026-10-29 - Dynamic Sensitive Header Stripping
+**Vulnerability:** Static lists of sensitive headers in redirect handling failed to catch custom authentication headers (e.g. `X-Super-Secret-Token`), leading to potential leakage on cross-origin redirects.
+**Learning:** Security allowlists/blocklists are brittle against custom naming conventions.
+**Prevention:** Implement dynamic header inspection using partial keyword matching (e.g. "token", "secret", "auth") to automatically detect and strip sensitive headers during redirects, ensuring defense-in-depth.

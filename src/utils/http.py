@@ -157,6 +157,22 @@ _SENSITIVE_HEADERS = frozenset({
     "X-XSRF-TOKEN",
 })
 
+# Partial matches for dynamic sensitive header detection (normalized to lowercase)
+_SENSITIVE_HEADER_PARTIALS = frozenset({
+    "token",
+    "key",
+    "secret",
+    "password",
+    "passphrase",
+    "credential",
+    "signature",
+    "session",
+    "cookie",
+    "auth",
+    "access",
+    "client",
+})
+
 
 def _sanitize_url_for_error(url: str) -> str:
     """Strip credentials and sensitive query params from URL for safe error logging."""
@@ -277,9 +293,16 @@ def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.Prepar
     port_changed = _get_port(original_parsed) != _get_port(redirect_parsed)
 
     if host_changed or scheme_downgraded or port_changed:
-        for header in _SENSITIVE_HEADERS:
-            if header in headers:
-                del headers[header]
+        # Dynamic check for sensitive headers based on name patterns
+        # We iterate over a copy of keys to allow modification of the dict during iteration
+        for header_name in list(headers.keys()):
+            if header_name in _SENSITIVE_HEADERS:
+                del headers[header_name]
+                continue
+
+            normalized = header_name.lower()
+            if any(partial in normalized for partial in _SENSITIVE_HEADER_PARTIALS):
+                del headers[header_name]
 
 
 def session_with_retries(
