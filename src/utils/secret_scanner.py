@@ -16,7 +16,7 @@ __all__ = [
 
 _HIGH_ENTROPY_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z0-9+/=_-]{24,}(?![A-Za-z0-9])")
 _SENSITIVE_ASSIGN_RE = re.compile(
-    r"(?i)(token|secret|password|accessid|apikey|accesskey|authorization|_key|auth|credential|passphrase|clientid|client_id|session_id|cookie|signature|bearer|jwt|webhook|webhook_url|dsn|subscriptionkey)[^\S\n]*[:=][^\S\n]*((?:\"(?:\\.|[^\"\\])*\")|(?:'(?:\\.|[^'\\])*')|[^\s\"']+)"
+    r"(?i)(token|secret|password|accessid|apikey|accesskey|authorization|_key|auth|credential|passphrase|clientid|client_id|session_id|cookie|signature|bearer|jwt|webhook|webhook_url|dsn|subscriptionkey)[^\S\n]*[:=][^\S\n]*((?:\"(?:\\.|[^\"\\])*\")|(?:'(?:\\.|[^'\\])*')|[^;#'\"\n]+)"
 )
 _AWS_ID_RE = re.compile(r"(?<![A-Za-z0-9])(AKIA|ASIA|ACCA)[A-Z0-9]{16}(?![A-Za-z0-9])")
 _BEARER_RE = re.compile(r"Bearer\s+([A-Za-z0-9\-_.]{16,})")
@@ -109,7 +109,7 @@ def _mask_secret(value: str) -> str:
 def _scan_line(line: str) -> list[tuple[str, str]]:
     findings: list[tuple[str, str]] = []
     for match in _SENSITIVE_ASSIGN_RE.finditer(line):
-        candidate = match.group(2)
+        candidate = match.group(2).strip()
         # Strip outer quotes if present
         if (candidate.startswith('"') and candidate.endswith('"')) or (
             candidate.startswith("'") and candidate.endswith("'")
