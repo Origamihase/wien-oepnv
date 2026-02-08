@@ -4,20 +4,18 @@ from src.utils.logging import sanitize_log_message
 def test_space_leakage_unquoted():
     """Test handling of unquoted secrets with spaces."""
     # "password=my secret user=1"
-    # New behavior stops at space to avoid over-redaction of subsequent text.
-    # This means "secret" (the second part of the password) will leak if unquoted.
-    # Users should quote secrets with spaces: password="my secret"
+    # New behavior consumes spaces until the next key assignment.
+    # This prevents leaking "secret" (the second part of the password).
 
     msg = "password=my secret user=1"
     sanitized = sanitize_log_message(msg)
 
-    # We expect "my" to be redacted as it's the first token.
-    # "secret" leaks because we stop at space.
-    assert "secret" in sanitized
-    # "user=1" is preserved.
+    # "my" is redacted. "secret" is ALSO redacted.
+    assert "secret" not in sanitized
+    # "user=1" is preserved because it looks like a key assignment.
     assert "user=1" in sanitized
 
-    assert sanitized == "password=*** secret user=1"
+    assert sanitized == "password=*** user=1"
 
 def test_pem_block_redaction():
     """Test that PEM blocks (keys/certs) are fully redacted."""
@@ -69,16 +67,17 @@ def test_space_separated_keys():
     assert "user_id=123" in sanitized # user_id is not sensitive, should be preserved.
 
 def test_over_redaction_space_followed_by_text():
-    """Test that text following a key-value pair is NOT redacted if it doesn't look like a key."""
+    """Test that text following a key-value pair IS redacted if it doesn't look like a key."""
     msg = "password=secret123 and some other text"
     sanitized = sanitize_log_message(msg)
-    # With the fix, we expect: "password=*** and some other text"
-    expected = "password=*** and some other text"
-    assert sanitized == expected, f"Over-redaction occurred: expected '{expected}', got '{sanitized}'"
+    # With the fix, we redact aggressively to prevent partial leaks.
+    # Users should use delimiters or quotes if they want to preserve text.
+    expected = "password=***"
+    assert sanitized == expected
 
 def test_over_redaction_space_followed_by_key_lookalike():
-    """Test that text that looks like a key but is not (no '=') is not consumed."""
+    """Test that text that looks like a key but is not (no '=') IS consumed."""
     msg = "api_key=secret foo bar"
     sanitized = sanitize_log_message(msg)
-    expected = "api_key=*** foo bar"
+    expected = "api_key=***"
     assert sanitized == expected

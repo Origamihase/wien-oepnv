@@ -83,7 +83,7 @@ def sanitize_log_message(
         # AND improved unquoted handling to stop at next key or separator (comma/ampersand/newline)
         (
             rf"(?i)((?:{_keys})\s*(?:%3d|=)\s*)"
-            rf"((?:\"(?:\\.|[^\"\\\\])*\")|(?:'(?:\\.|[^'\\\\])*')|((?:(?!\s+[a-zA-Z0-9_.-]+\s*(?:%3d|=))[^&,\n\s])+))",
+            rf"((?:\"(?:\\.|[^\"\\\\])*\")|(?:'(?:\\.|[^'\\\\])*')|((?:(?!\s+[a-zA-Z0-9_.-]+\s*(?:%3d|=))[^&,\n])+))",
             r"\1***",
         ),
         # Correctly handle escaped characters in JSON strings (regex: (?:\\.|[^"\\])* )
