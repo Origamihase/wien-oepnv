@@ -73,6 +73,7 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "sid",
     "ticket",
     # Additional common sensitive keys
+    "jwt",
     "bearertoken",
     "authtoken",
     "jsessionid",
@@ -85,6 +86,8 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "subscriptionid",
     "oid",
     "objectid",
+    "dsn",
+    "otp",
     "codechallenge",
     "codeverifier",
     "xapikey",
@@ -119,6 +122,7 @@ _SENSITIVE_KEY_SUBSTRINGS = frozenset({
     "privatekey",
     "signature",
     "email",
+    "webhook",
 })
 
 # Headers that must be stripped on cross-origin redirects or scheme downgrades
