@@ -92,3 +92,8 @@
 **Vulnerability:** Log sanitization regexes for `key=value` assignments were too strict, failing to redact sensitive data when spaces were present around the operator (e.g., `password = secret`).
 **Learning:** Developers often add spaces for readability in debug logs or configuration dumps. Standard query parameter parsers don't produce spaces, but free-text logging does.
 **Prevention:** When writing regexes for log sanitization, always account for optional whitespace around separators (`\s*=\s*`) to cover human-formatted strings.
+
+## 2026-03-21 - OAuth/SAML Token Leakage in Logs
+**Vulnerability:** Log sanitization rules missed critical OAuth/SAML parameters (`client_assertion`, `SAMLRequest`, `nonce`, `state`), allowing them to be logged in plain text during authentication flows.
+**Learning:** General-purpose secret scanners often focus on generic terms (like `password` or `token`) but miss protocol-specific sensitive fields.
+**Prevention:** Explicitly include protocol-specific sensitive parameters (e.g., from OAuth 2.0, OIDC, SAML specs) in log redaction configurations.
