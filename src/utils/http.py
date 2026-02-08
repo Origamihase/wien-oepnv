@@ -699,8 +699,48 @@ def fetch_content_safe(
     if timeout is None:
         timeout = DEFAULT_TIMEOUT
 
+    # Security: Ensure redirects are validated by merging our security hook
+    # with existing session hooks and any hooks passed by the caller.
+    # We do this manually to avoid modifying the session object or ignoring caller hooks.
+    has_hooks = hasattr(session, "hooks")
+    if has_hooks:
+        request_hooks = session.hooks.copy()
+    else:
+        request_hooks = {}
+
+    caller_hooks = kwargs.pop("hooks", None)
+    if caller_hooks:
+        for event, hook in caller_hooks.items():
+            existing = request_hooks.get(event, [])
+            if not isinstance(existing, list):
+                existing = [existing]
+            else:
+                existing = list(existing)  # Copy
+
+            if not isinstance(hook, list):
+                hook = [hook]
+
+            request_hooks[event] = existing + hook
+
+    # Ensure response hook list is prepared and includes our security check
+    resp_hooks = request_hooks.get("response", [])
+    if not isinstance(resp_hooks, list):
+        resp_hooks = [resp_hooks]
+    else:
+        resp_hooks = list(resp_hooks)
+
+    if _check_response_security not in resp_hooks:
+        resp_hooks.append(_check_response_security)
+    request_hooks["response"] = resp_hooks
+
     start_time = time.monotonic()
-    with session.get(safe_url, stream=True, timeout=timeout, **kwargs) as r:
+    if has_hooks:
+        ctx = session.get(safe_url, stream=True, timeout=timeout, hooks=request_hooks, **kwargs)
+    else:
+        # Fallback for mocks/duck-types that don't support hooks
+        ctx = session.get(safe_url, stream=True, timeout=timeout, **kwargs)
+
+    with ctx as r:
         # Prevent DNS Rebinding: Check the actual connected IP
         # MUST be done before raise_for_status() to prevent leaking info via error codes
         # if the attacker redirects to an internal IP that returns 404/500.
