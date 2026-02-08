@@ -157,9 +157,15 @@ def prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
             filtered.extend(record_lines)
 
     try:
-        # Security: use atomic writes to avoid partial log truncation on interruption.
-        with atomic_write(path, encoding="utf-8") as handle:
+        # Security: Modify in-place to preserve file handle for RotatingFileHandler.
+        # atomic_write would replace the inode, causing the active logger to write to a stale handle.
+        # Use r+ to read/write without replacing inode.
+        with path.open("r+", encoding="utf-8") as handle:
+            handle.seek(0)
             handle.write("".join(filtered))
+            handle.truncate()
+            handle.flush()
+            os.fsync(handle.fileno())
     except OSError:
         return
 
