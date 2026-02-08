@@ -7,47 +7,58 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Sun, 08 Feb 2026 19:22:32 +0000</lastBuildDate>
+<lastBuildDate>Sun, 08 Feb 2026 19:28:00 +0000</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[52/60: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b46fa2ed8c1819180c24396c158d17a86d5c9cc72cc757721ae9bc91af616e9d</guid>
+      <pubDate>Sun, 08 Feb 2026 19:15:00 +0000</pubDate>
+      <ext:first_seen>Sun, 08 Feb 2026 19:28:00 +0000</ext:first_seen>
+      <ext:starts_at>Sun, 08 Feb 2026 19:15:00 +0000</ext:starts_at>
+      <ext:ends_at>Sun, 08 Feb 2026 22:55:00 +0000</ext:ends_at>
+      <description><![CDATA[Die Linie 52 fährt derzeit nur zwischen Baumgarten und Anschützgasse. Die Linie 60 fährt derzeit nur zwischen Rodaun und Anschützgasse. Die Störung dauert voraussichtlich …<br/>[Seit 08.02.2026]]]></description>
+      <content:encoded><![CDATA[Die Linie 52 fährt derzeit nur zwischen Baumgarten und Anschützgasse. Die Linie 60 fährt derzeit nur zwischen Rodaun und Anschützgasse. Die Störung dauert voraussichtlich …<br/>[Seit 08.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">86a65ab6e558f661aa538c3f4a06367de61adfdcf654c7ec31b57f2f5243756c</guid>
+      <pubDate>Sun, 08 Feb 2026 19:05:00 +0000</pubDate>
+      <ext:first_seen>Sun, 08 Feb 2026 19:28:00 +0000</ext:first_seen>
+      <ext:starts_at>Sun, 08 Feb 2026 19:05:00 +0000</ext:starts_at>
+      <ext:ends_at>Sun, 08 Feb 2026 22:55:00 +0000</ext:ends_at>
+      <description><![CDATA[Die Linie 29 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.<br/>[Seit 08.02.2026]]]></description>
+      <content:encoded><![CDATA[Die Linie 29 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.<br/>[Seit 08.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: Fahrtbehinderung Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f0a5202aebcedb2c45b5a95a90329d9bbb2fc42a2427eaac726333ae671a4181</guid>
+      <pubDate>Sun, 08 Feb 2026 19:01:05 +0000</pubDate>
+      <ext:first_seen>Sun, 08 Feb 2026 19:28:00 +0000</ext:first_seen>
+      <ext:starts_at>Sun, 08 Feb 2026 19:01:12 +0000</ext:starts_at>
+      <ext:ends_at>Sun, 08 Feb 2026 20:00:00 +0000</ext:ends_at>
+      <description><![CDATA[Fahrtbehinderung Verkehrsunfall<br/>[Seit 08.02.2026]]]></description>
+      <content:encoded><![CDATA[Fahrtbehinderung Verkehrsunfall<br/>[Seit 08.02.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945</guid>
       <pubDate>Sun, 08 Feb 2026 18:20:00 +0000</pubDate>
-      <ext:first_seen>Sun, 08 Feb 2026 19:22:32 +0000</ext:first_seen>
+      <ext:first_seen>Sun, 08 Feb 2026 19:28:00 +0000</ext:first_seen>
       <ext:starts_at>Sun, 08 Feb 2026 18:20:00 +0000</ext:starts_at>
       <ext:ends_at>Sun, 08 Feb 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Die Linie U1 fährt derzeit in der Station Alaudagasse in beiden Richtungen über Gleis 1. Die Störung dauert voraussichtlich bis 20:00 Uhr. Grund dafür ist ein …<br/>[Seit 08.02.2026]]]></description>
-      <content:encoded><![CDATA[Die Linie U1 fährt derzeit in der Station Alaudagasse in beiden Richtungen über Gleis 1. Die Störung dauert voraussichtlich bis 20:00 Uhr. Grund dafür ist ein …<br/>[Seit 08.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Fahrtbehinderung Weichenschaden]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4f56c32a0a29cd41422c85d6a05ebeb8fc657f92f532d8e094c3523adab7cddb</guid>
-      <pubDate>Sun, 08 Feb 2026 18:08:40 +0000</pubDate>
-      <ext:first_seen>Sun, 08 Feb 2026 19:22:32 +0000</ext:first_seen>
-      <ext:starts_at>Sun, 08 Feb 2026 18:08:40 +0000</ext:starts_at>
-      <ext:ends_at>Sun, 08 Feb 2026 22:59:00 +0000</ext:ends_at>
-      <description><![CDATA[Fahrtbehinderung Weichenschaden<br/>[Seit 08.02.2026]]]></description>
-      <content:encoded><![CDATA[Fahrtbehinderung Weichenschaden<br/>[Seit 08.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d3f78298c0cf7e3adb13e441ed10aff7e1e8b83ad2eeba7885e3b92a6ad6bd69</guid>
-      <pubDate>Sun, 08 Feb 2026 17:50:00 +0000</pubDate>
-      <ext:first_seen>Sun, 08 Feb 2026 19:22:32 +0000</ext:first_seen>
-      <ext:starts_at>Sun, 08 Feb 2026 17:50:00 +0000</ext:starts_at>
-      <ext:ends_at>Sun, 08 Feb 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 74 A zu unterschiedlichen Intervallen.<br/>[Seit 08.02.2026]]]></description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie 74 A zu unterschiedlichen Intervallen.<br/>[Seit 08.02.2026]]]></content:encoded>
+      <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.<br/>[Seit 08.02.2026]]]></description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie U1 zu unterschiedlichen Intervallen.<br/>[Seit 08.02.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
       <pubDate>Sun, 08 Feb 2026 17:30:00 +0000</pubDate>
-      <ext:first_seen>Sun, 08 Feb 2026 19:22:32 +0000</ext:first_seen>
+      <ext:first_seen>Sun, 08 Feb 2026 19:28:00 +0000</ext:first_seen>
       <ext:starts_at>Sun, 08 Feb 2026 17:30:00 +0000</ext:starts_at>
       <ext:ends_at>Sun, 08 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.<br/>[Seit 08.02.2026]]]></description>
@@ -58,7 +69,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">034fc5dad5182250dd2b8595918478ef7284b97e879046d49ae29b5d329b8982</guid>
       <pubDate>Sun, 08 Feb 2026 12:24:56 +0000</pubDate>
-      <ext:first_seen>Sun, 08 Feb 2026 19:22:32 +0000</ext:first_seen>
+      <ext:first_seen>Sun, 08 Feb 2026 19:28:00 +0000</ext:first_seen>
       <ext:starts_at>Sun, 08 Feb 2026 12:24:56 +0000</ext:starts_at>
       <ext:ends_at>Sun, 08 Feb 2026 21:00:00 +0000</ext:ends_at>
       <description><![CDATA[Demonstration Züge halten bei Linie 18 Richtung Burggasse<br/>[Seit 08.02.2026]]]></description>
@@ -69,7 +80,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e4ea8aacde43cecdf7f75a6d4fe1f5b28b6d8f81143e1c1769f3a8d6195d98a5</guid>
       <pubDate>Sun, 08 Feb 2026 12:21:06 +0000</pubDate>
-      <ext:first_seen>Sun, 08 Feb 2026 19:22:32 +0000</ext:first_seen>
+      <ext:first_seen>Sun, 08 Feb 2026 19:28:00 +0000</ext:first_seen>
       <ext:starts_at>Sun, 08 Feb 2026 12:21:06 +0000</ext:starts_at>
       <ext:ends_at>Sun, 08 Feb 2026 21:00:00 +0000</ext:ends_at>
       <description><![CDATA[Demonstration Umleitung über Linie O und Franz-Josefs-Kai<br/>[Seit 08.02.2026]]]></description>
@@ -80,7 +91,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4e2427e61bec98c160f61c806cf29a33a0eeb03e82e5fa7ffabf042a02249147</guid>
       <pubDate>Sun, 08 Feb 2026 12:20:58 +0000</pubDate>
-      <ext:first_seen>Sun, 08 Feb 2026 19:22:32 +0000</ext:first_seen>
+      <ext:first_seen>Sun, 08 Feb 2026 19:28:00 +0000</ext:first_seen>
       <ext:starts_at>Sun, 08 Feb 2026 12:21:06 +0000</ext:starts_at>
       <ext:ends_at>Sun, 08 Feb 2026 21:00:00 +0000</ext:ends_at>
       <description><![CDATA[Fahrtbehinderung wegen Demonstration<br/>[Seit 08.02.2026]]]></description>
@@ -91,7 +102,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">aac5e478322cb0f7fe0e304f6257e201885eb0cfb17fc96edb2fd5af0222f71b</guid>
       <pubDate>Sun, 08 Feb 2026 12:20:40 +0000</pubDate>
-      <ext:first_seen>Sun, 08 Feb 2026 19:22:32 +0000</ext:first_seen>
+      <ext:first_seen>Sun, 08 Feb 2026 19:28:00 +0000</ext:first_seen>
       <ext:starts_at>Sun, 08 Feb 2026 12:20:40 +0000</ext:starts_at>
       <ext:ends_at>Sun, 08 Feb 2026 21:00:00 +0000</ext:ends_at>
       <description><![CDATA[Demonstration Züge halten bei Steig C<br/>[Seit 08.02.2026]]]></description>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sun, 08 Feb 2026 23:35:00 +0000</ext:ends_at>
       <description><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[08.02.2026 – 09.02.2026]]]></description>
       <content:encoded><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[08.02.2026 – 09.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5A: Busse halten Untere Augartenstraße 42]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">483eae38010ee8e6894791d2738a9629c827a8f49663810bceb0716d9219a663</guid>
-      <pubDate>Thu, 05 Feb 2026 23:00:20 +0000</pubDate>
-      <ext:first_seen>Sun, 08 Feb 2026 11:14:00 +0000</ext:first_seen>
-      <ext:starts_at>Thu, 05 Feb 2026 23:00:20 +0000</ext:starts_at>
-      <ext:ends_at>Sun, 08 Feb 2026 22:59:59 +0000</ext:ends_at>
-      <description><![CDATA[Busse halten Untere Augartenstraße 42<br/>[06.02.2026 – 08.02.2026]]]></description>
-      <content:encoded><![CDATA[Busse halten Untere Augartenstraße 42<br/>[06.02.2026 – 08.02.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
