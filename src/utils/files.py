@@ -61,7 +61,18 @@ def atomic_write(
         except OSError:
             # On some systems/filesystems chmod might fail, but we proceed
             pass
-        os.replace(tmp_path, target)
+
+        if overwrite:
+            os.replace(tmp_path, target)
+        else:
+            # Security: Use os.link to prevent TOCTOU race condition
+            # If target was created between our initial check and now, os.link will fail.
+            try:
+                os.link(tmp_path, target)
+                # Hard link successful, now remove the temp file
+                os.unlink(tmp_path)
+            except FileExistsError:
+                raise FileExistsError(f"File {target} already exists")
 
     except Exception:
         # Close if still open (e.g. exception during yield)
