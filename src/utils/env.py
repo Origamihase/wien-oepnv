@@ -50,7 +50,7 @@ except ImportError:
 
             # Comprehensive keys list mirroring src.utils.logging to ensure safety during fallback
             _keys = (
-                r"client[-_.\s]*secret|access[-_.\s]*token|refresh[-_.\s]*token|client[-_.\s]*id|[a-z0-9_.\-]*signature|[a-z0-9_.\-]*password|"
+                r"client[-_.\s]*secret|access[-_.\s]*token|refresh[-_.\s]*token|client[-_.\s]*id|[a-z0-9_.\-]*signature|[a-z0-9_.\-]*password|[a-z0-9_.\-]*email[a-z0-9_.\-]*|"
                 r"accessid|id[-_.\s]*token|session|apikey|[a-z0-9_.\-]*secret|ticket|[a-z0-9_.\-]*token|code|key|sig|sid|"
                 r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid|"
                 r"authorization|auth|bearer[-_.\s]*token|bearer|[a-z0-9_.\-]*api[-_.\s]*key|[a-z0-9_.\-]*private[-_.\s]*key|auth[-_.\s]*token|"
