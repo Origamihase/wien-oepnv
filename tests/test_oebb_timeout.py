@@ -49,7 +49,7 @@ def test_fetch_xml_passes_timeout_to_session(monkeypatch):
         def __exit__(self, exc_type, exc, tb):
             pass
 
-        def get(self, url, timeout, stream=False):
+        def get(self, url, timeout, stream=False, **kwargs):
             recorded["timeout"] = timeout
             recorded["stream"] = stream
             return DummyResponse()

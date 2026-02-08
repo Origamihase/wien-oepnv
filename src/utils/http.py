@@ -734,6 +734,45 @@ def fetch_content_safe(
     if timeout is None:
         timeout = DEFAULT_TIMEOUT
 
+    # Security: Prevent DNS Rebinding TOCTOU for HTTP (non-secure) requests.
+    # We resolve the IP and use it directly to lock the destination.
+    # HTTPS is protected by certificate validation (and verify_response_ip).
+    parsed = urlparse(safe_url)
+    if parsed.scheme.lower() == "http":
+        hostname = parsed.hostname
+        if hostname:
+            ips = _resolve_hostname_safe(hostname)
+            target_ip = None
+            for _, _, _, _, sockaddr in ips:
+                ip_str = sockaddr[0]
+                if is_ip_safe(ip_str):
+                    target_ip = ip_str
+                    break
+
+            if not target_ip:
+                # Fallback or empty resolution means unsafe/unreachable
+                sanitized_url = _sanitize_url_for_error(url)
+                raise ValueError(f"No safe IP resolved for {sanitized_url}")
+
+            # Reconstruct URL with safe IP
+            # Handle IPv6 literals by adding brackets
+            if ":" in target_ip:
+                safe_netloc = f"[{target_ip}]"
+            else:
+                safe_netloc = target_ip
+
+            port = _get_port(parsed)
+            if port and port != 80:
+                safe_netloc = f"{safe_netloc}:{port}"
+
+            safe_url = parsed._replace(netloc=safe_netloc).geturl()
+
+            # Ensure Host header is set to original hostname for Virtual Hosting
+            if "headers" not in kwargs:
+                kwargs["headers"] = {}
+            if "Host" not in kwargs["headers"]:
+                kwargs["headers"]["Host"] = hostname
+
     # Security: Ensure redirects are validated by merging our security hook
     # with existing session hooks and any hooks passed by the caller.
     # We do this manually to avoid modifying the session object or ignoring caller hooks.
