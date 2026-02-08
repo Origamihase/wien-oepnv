@@ -15,10 +15,6 @@ from .config import (
     LOG_MAX_BYTES,
     LOG_TIMEZONE,
 )
-try:  # pragma: no cover - support package and script execution
-    from utils.files import atomic_write
-except ModuleNotFoundError:  # pragma: no cover
-    from ..utils.files import atomic_write
 
 # Import the new safe formatters
 try:
