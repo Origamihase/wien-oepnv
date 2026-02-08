@@ -394,6 +394,10 @@ _UNSAFE_DOMAINS = frozenset({
 # Explicitly block Shared Address Space (RFC 6598) 100.64.0.0/10 which is often used for CGNAT/internal carrier networks.
 _SHARED_ADDRESS_SPACE = ipaddress.IPv4Network("100.64.0.0/10")
 
+# Explicitly block NAT64 Well-Known Prefix (RFC 6052) 64:ff9b::/96
+# These addresses translate to IPv4 and can bypass IPv4 filters if the environment supports NAT64.
+_NAT64_PREFIX = ipaddress.IPv6Network("64:ff9b::/96")
+
 
 def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
     """Check if an IP address is globally reachable and safe."""
@@ -421,6 +425,10 @@ def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> 
         # Explicitly block Shared Address Space (CGNAT) 100.64.0.0/10
         # is_global behavior varies by python version for this range
         if ip.version == 4 and ip in _SHARED_ADDRESS_SPACE:
+            return False
+
+        # Explicitly block NAT64 WKP (64:ff9b::/96)
+        if ip.version == 6 and ip in _NAT64_PREFIX:
             return False
 
         return True
