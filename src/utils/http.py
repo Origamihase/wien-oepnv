@@ -118,6 +118,7 @@ _SENSITIVE_KEY_SUBSTRINGS = frozenset({
     "accesskey",
     "privatekey",
     "signature",
+    "email",
 })
 
 # Headers that must be stripped on cross-origin redirects or scheme downgrades

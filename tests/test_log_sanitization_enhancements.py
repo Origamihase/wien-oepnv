@@ -37,3 +37,25 @@ def test_passphrase_redaction_header():
     sanitized = sanitize_log_message(msg)
     assert secret not in sanitized
     assert "***" in sanitized
+
+@pytest.mark.parametrize("key", [
+    "email",
+    "user_email",
+    "user.email",
+    "contact_email",
+    "email_address",
+    "customer.email"
+])
+def test_email_redaction(key):
+    secret = "user@example.com"
+    # Test query param style
+    msg = f"User logged in with {key}={secret}"
+    sanitized = sanitize_log_message(msg)
+    assert secret not in sanitized
+    assert "***" in sanitized
+
+    # Test JSON style
+    msg_json = f'{{"{key}": "{secret}"}}'
+    sanitized_json = sanitize_log_message(msg_json)
+    assert secret not in sanitized_json
+    assert "***" in sanitized_json
