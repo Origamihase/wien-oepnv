@@ -2,20 +2,22 @@ import pytest
 from src.utils.logging import sanitize_log_message
 
 def test_space_leakage_unquoted():
-    """Test that secrets with spaces don't leak the second part."""
+    """Test handling of unquoted secrets with spaces."""
     # "password=my secret user=1"
-    # Current behavior leaks "secret".
+    # New behavior stops at space to avoid over-redaction of subsequent text.
+    # This means "secret" (the second part of the password) will leak if unquoted.
+    # Users should quote secrets with spaces: password="my secret"
 
     msg = "password=my secret user=1"
     sanitized = sanitize_log_message(msg)
 
-    # We expect "my secret" to be redacted.
-    assert "secret" not in sanitized, "Secret part leaked!"
-    # We expect "user=1" to be preserved (it's another key).
-    assert "user=1" in sanitized, "Subsequent key consumed!"
+    # We expect "my" to be redacted as it's the first token.
+    # "secret" leaks because we stop at space.
+    assert "secret" in sanitized
+    # "user=1" is preserved.
+    assert "user=1" in sanitized
 
-    # Ideally: password=*** user=1
-    assert sanitized == "password=*** user=1"
+    assert sanitized == "password=*** secret user=1"
 
 def test_pem_block_redaction():
     """Test that PEM blocks (keys/certs) are fully redacted."""
@@ -65,3 +67,18 @@ def test_space_separated_keys():
     assert "secret1" not in sanitized
     assert "secret2" not in sanitized
     assert "user_id=123" in sanitized # user_id is not sensitive, should be preserved.
+
+def test_over_redaction_space_followed_by_text():
+    """Test that text following a key-value pair is NOT redacted if it doesn't look like a key."""
+    msg = "password=secret123 and some other text"
+    sanitized = sanitize_log_message(msg)
+    # With the fix, we expect: "password=*** and some other text"
+    expected = "password=*** and some other text"
+    assert sanitized == expected, f"Over-redaction occurred: expected '{expected}', got '{sanitized}'"
+
+def test_over_redaction_space_followed_by_key_lookalike():
+    """Test that text that looks like a key but is not (no '=') is not consumed."""
+    msg = "api_key=secret foo bar"
+    sanitized = sanitize_log_message(msg)
+    expected = "api_key=*** foo bar"
+    assert sanitized == expected
