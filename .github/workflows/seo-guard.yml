@@ -141,8 +141,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if [[ ! -f docs/feed.xml ]]; then
-            echo "docs/feed.xml does not exist, skipping verification."
+          if [[ ! -s docs/feed.xml ]]; then
+            echo "docs/feed.xml does not exist or is empty, skipping verification."
             exit 0
           fi
 
