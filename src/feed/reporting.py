@@ -22,10 +22,12 @@ try:  # pragma: no cover - support package and script execution
     from utils.env import get_bool_env, read_secret
     from utils.files import atomic_write
     from utils.http import session_with_retries, validate_http_url, verify_response_ip
+    from utils.logging import sanitize_log_message
 except ModuleNotFoundError:  # pragma: no cover
     from ..utils.env import get_bool_env, read_secret
     from ..utils.files import atomic_write
     from ..utils.http import session_with_retries, validate_http_url, verify_response_ip
+    from ..utils.logging import sanitize_log_message
 
 log = logging.getLogger("build_feed")
 
@@ -38,7 +40,11 @@ def clean_message(message: Optional[str]) -> str:
     if not message:
         return ""
 
-    return re.sub(r"\s+", " ", message).strip()
+    # Security: Redact secrets before processing.
+    # We keep control chars here (strip_control_chars=False) because re.sub below handles whitespace collapsing.
+    sanitized = sanitize_log_message(message, strip_control_chars=False)
+
+    return re.sub(r"\s+", " ", sanitized).strip()
 
 
 def _sanitize_log_detail(detail: str) -> str:
