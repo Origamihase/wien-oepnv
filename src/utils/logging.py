@@ -50,7 +50,7 @@ def sanitize_log_message(
         r"client[-_.\s]*secret|access[-_.\s]*token|refresh[-_.\s]*token|client[-_.\s]*id|[a-z0-9_.\-]*signature|[a-z0-9_.\-]*password[a-z0-9_.\-]*|[a-z0-9_.\-]*e[-_.\s]*mail[a-z0-9_.\-]*|"
         r"client[-_.\s]*assertion[-_.\s]*type|client[-_.\s]*assertion|"
         r"saml[-_.\s]*request|saml[-_.\s]*response|"
-        r"accessid|id[-_.\s]*token|session|apikey|[a-z0-9_.\-]*secret[a-z0-9_.\-]*|ticket|[a-z0-9_.\-]*token|code|key|sig|sid|"
+        r"accessid|id[-_.\s]*token|session[-_.\s]*id|session|cookie|apikey|[a-z0-9_.\-]*secret[a-z0-9_.\-]*|ticket|[a-z0-9_.\-]*token|code|key|sig|sid|"
         r"nonce|state|"
         r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid|"
         r"authorization|auth|bearer[-_.\s]*token|bearer|[a-z0-9_.\-]*api[-_.\s]*key|[a-z0-9_.\-]*private[-_.\s]*key|auth[-_.\s]*token|"

@@ -107,3 +107,8 @@
 **Vulnerability:** Static lists of sensitive headers in redirect handling failed to catch custom authentication headers (e.g. `X-Super-Secret-Token`), leading to potential leakage on cross-origin redirects.
 **Learning:** Security allowlists/blocklists are brittle against custom naming conventions.
 **Prevention:** Implement dynamic header inspection using partial keyword matching (e.g. "token", "secret", "auth") to automatically detect and strip sensitive headers during redirects, ensuring defense-in-depth.
+
+## 2024-05-22 - Session ID and Cookie Leakage in Logs
+**Vulnerability:** `session_id` and `cookie` query parameters and key-value pairs were not redacted in logs because they didn't match existing sensitive key patterns (specifically missing from `_SENSITIVE_QUERY_KEYS` and logging regex).
+**Learning:** Regex-based redaction is fragile if keys are not explicitly listed or covered by broad patterns. Normalization helps but `session_id` vs `session` was a gap.
+**Prevention:** Maintain a comprehensive list of sensitive keys and test with common variations (snake_case, camelCase). Use broad matching where possible but verify false positives.
