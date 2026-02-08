@@ -98,8 +98,11 @@ def _looks_like_secret(candidate: str, is_assignment: bool = False) -> bool:
 
 def _mask_secret(value: str) -> str:
     """Mask a secret value for display (e.g. 'AKIA***1234')."""
-    if len(value) <= 8:
+    length = len(value)
+    if length <= 8:
         return "***"
+    if length <= 20:
+        return f"{value[:2]}***{value[-2:]}"
     return f"{value[:4]}***{value[-4:]}"
 
 
