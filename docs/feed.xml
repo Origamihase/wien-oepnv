@@ -7,14 +7,25 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Sun, 08 Feb 2026 21:23:22 +0000</lastBuildDate>
+<lastBuildDate>Sun, 08 Feb 2026 21:30:36 +0000</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[14A: Falschparker Betrieb ab Pilgramgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e94432c96ceb2bf714fdb2aeb039719615f03e39a59552cafb0d232ee11539fc</guid>
+      <pubDate>Sun, 08 Feb 2026 21:15:00 +0000</pubDate>
+      <ext:first_seen>Sun, 08 Feb 2026 21:30:36 +0000</ext:first_seen>
+      <ext:starts_at>Sun, 08 Feb 2026 21:19:31 +0000</ext:starts_at>
+      <ext:ends_at>Sun, 08 Feb 2026 22:55:00 +0000</ext:ends_at>
+      <description><![CDATA[Die Linie 14 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.<br/>[Seit 08.02.2026]]]></description>
+      <content:encoded><![CDATA[Die Linie 14 A kann derzeit in beiden Richtungen nur unregelmäßig fahren.<br/>[Seit 08.02.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[60: Weichenschaden Betrieb ab Schloß Schönbrunn]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">35dd067246068ea81f669e79a585974f2b57d44e6c675efc886cfe9adb04926f</guid>
       <pubDate>Sun, 08 Feb 2026 18:09:38 +0000</pubDate>
-      <ext:first_seen>Sun, 08 Feb 2026 21:23:22 +0000</ext:first_seen>
+      <ext:first_seen>Sun, 08 Feb 2026 21:30:36 +0000</ext:first_seen>
       <ext:starts_at>Sun, 08 Feb 2026 18:09:38 +0000</ext:starts_at>
       <ext:ends_at>Sun, 08 Feb 2026 22:59:00 +0000</ext:ends_at>
       <description><![CDATA[Weichenschaden Betrieb ab Schloß Schönbrunn<br/>[Seit 08.02.2026]]]></description>
@@ -102,16 +113,6 @@
       <ext:ends_at>Sat, 04 Apr 2026 00:00:00 +0000</ext:ends_at>
       <description><![CDATA[Aufgangssperre Wegen Bauarbeiten muss in der Station Keplerplatz ein Aufgang gesperrt werden.<br/>[03.02.2026 – 04.04.2026]]]></description>
       <content:encoded><![CDATA[Aufgangssperre Wegen Bauarbeiten muss in der Station Keplerplatz ein Aufgang gesperrt werden.<br/>[03.02.2026 – 04.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Linz/Donau]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;841669</guid>
-      <pubDate>Tue, 03 Feb 2026 14:41:39 +0000</pubDate>
-      <ext:first_seen>Sun, 08 Feb 2026 21:23:22 +0000</ext:first_seen>
-      <ext:starts_at>Tue, 03 Feb 2026 14:41:39 +0000</ext:starts_at>
-      <description><![CDATA[Wegen Bauarbeiten fahren zwischen Linz/Donau Hbf und Wien Hbf von 15.03.2026 (20:00 Uhr) bis 22.03.2026 die Fernverkehrszüge mit geänderten …<br/>[15.03.2026 – 22.03.2026]]]></description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten fahren zwischen Linz/Donau Hbf und Wien Hbf von 15.03.2026 (20:00 Uhr) bis 22.03.2026 die Fernverkehrszüge mit geänderten …<br/>[15.03.2026 – 22.03.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
