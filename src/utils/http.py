@@ -70,6 +70,8 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "sig",
     "signature",
     "session",
+    "sessionid",
+    "cookie",
     "sid",
     "ticket",
     # Additional common sensitive keys
