@@ -55,7 +55,8 @@ def test_secret_scanner_detects_aws_access_key(tmp_path: Path) -> None:
     # Ensure full secret is NOT in findings (Redaction check)
     assert secret_value not in [f.match for f in findings]
 
-    expected = f"{secret_value[:4]}***{secret_value[-4:]}"
+    # Length 20 -> 2 chars
+    expected = f"{secret_value[:2]}***{secret_value[-2:]}"
     assert expected in [f.match for f in findings]
     assert "AWS Access Key ID gefunden" in [f.reason for f in findings]
 
@@ -70,7 +71,8 @@ def test_secret_scanner_detects_short_secret_assignment(tmp_path: Path) -> None:
 
     assert findings, "Should detect 20-char secret assignment"
     assert secret not in [f.match for f in findings]
-    expected = f"{secret[:4]}***{secret[-4:]}"
+    # Length 20 -> 2 chars
+    expected = f"{secret[:2]}***{secret[-2:]}"
     assert findings[0].match == expected
 
 
@@ -83,7 +85,8 @@ def test_secret_scanner_detects_key_variable(tmp_path: Path) -> None:
 
     assert findings, "Should detect variable named private_key"
     assert secret not in [f.match for f in findings]
-    expected = f"{secret[:4]}***{secret[-4:]}"
+    # Length 20 -> 2 chars
+    expected = f"{secret[:2]}***{secret[-2:]}"
     assert findings[0].match == expected
 
 
@@ -163,5 +166,6 @@ def test_secret_scanner_detects_short_password_assignment(tmp_path: Path) -> Non
 
     assert findings, "Should detect 10-char password assignment"
     assert secret not in [f.match for f in findings]
-    expected = f"{secret[:4]}***{secret[-4:]}"
+    # Length 10 -> 2 chars
+    expected = f"{secret[:2]}***{secret[-2:]}"
     assert findings[0].match == expected
