@@ -211,3 +211,18 @@ def test_secret_scanner_detects_extended_keys(tmp_path: Path) -> None:
             # Check that none of the raw secrets are in the match string
             for _, val in assignments:
                 assert val not in finding.match
+
+def test_secret_scanner_detects_unquoted_secret_with_spaces(tmp_path: Path) -> None:
+    file_path = tmp_path / "config.ini"
+    # Unquoted secret with spaces. Use >20 chars to trigger 4-char redaction.
+    secret_value = "my secret key 123456789"
+    content = f'api_key = {secret_value}'
+    file_path.write_text(content, encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, "Should detect unquoted secret with spaces"
+    assert secret_value not in [f.match for f in findings]
+    # Check for correct redaction: first 4 + *** + last 4
+    expected = f"{secret_value[:4]}***{secret_value[-4:]}"
+    assert findings[0].match == expected
