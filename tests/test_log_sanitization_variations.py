@@ -34,7 +34,7 @@ from src.utils.logging import sanitize_log_message
         # Edge cases
         ("not_a_secret=value", "not_a_secret=value"),
         ("clientid=secret", "clientid=***"), # client[-_]?id matches clientid
-        ("client_id_extra=val", "client_id_extra=val"),
+        ("client_id_extra=val", "client_id_extra=***"),
     ]
 )
 def test_log_sanitization_variations(input_text, expected_redacted):
