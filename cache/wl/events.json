@@ -194,73 +194,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "67A: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 67 A zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e48064b0282fe8f0c127b80a482c6a808c92699f4158012c8f73012d382126aa",
-    "pubDate": "2026-02-09T11:20:00+01:00",
-    "starts_at": "2026-02-09T11:20:00+01:00",
-    "ends_at": "2026-02-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=67A|D=2026-02-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67B: Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 67 B zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "919f39be6b9443b2da5668289bf0b8f904141eea0daaa5936b85bfe0bbce5ad9",
-    "pubDate": "2026-02-09T11:20:00+01:00",
-    "starts_at": "2026-02-09T11:20:00+01:00",
-    "ends_at": "2026-02-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=67B|D=2026-02-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2A: Schadhaftes Fahrzeug",
-    "description": "Die Linie 2 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist ein schadhaftes Fahrzeug im Bereich Schwarzenbergplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c74d4af798e9e6724ca51d75eefad0868ce78899d2249042150c53544e594ae",
-    "pubDate": "2026-02-09T16:10:00+01:00",
-    "starts_at": "2026-02-09T16:10:00+01:00",
-    "ends_at": "2026-02-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=2A|D=2026-02-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Fahrtbehinderung Falschparker",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 5 zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
-    "pubDate": "2026-02-09T16:30:00+01:00",
-    "starts_at": "2026-02-09T16:35:11+01:00",
-    "ends_at": "2026-02-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-02-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "94A: Verkehrsüberlastung",
-    "description": "Die Linie 94 A kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist Verkehrsüberlastung im Bereich Kagran .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b79028aaa1fdd7fc7889c7f24a28ccc80200e858d4fcbe7105f68be3c59ecb5f",
-    "pubDate": "2026-02-09T16:40:00+01:00",
-    "starts_at": "2026-02-09T16:40:00+01:00",
-    "ends_at": "2026-02-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=94A|D=2026-02-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U6: Schadhaftes Fahrzeug",
-    "description": "Die Linie U6 fährt derzeit in der Station Neue Donau in beiden Richtungen über Gleis 1. Die Störung dauert voraussichtlich bis 17:20 Uhr. Grund dafür ist ein schadhaftes Fahrzeug im Bereich .",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U6 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
     "pubDate": "2026-02-09T16:45:00+01:00",
     "starts_at": "2026-02-09T16:45:00+01:00",
     "ends_at": "2026-02-09T23:55:00+01:00",
     "_identity": "wl|störung|L=U6|D=2026-02-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "3A: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2b56ab5d295e9b1738c18de4c57f8e06f1e1a38df05a36ee5da2debacfd4a5c9",
+    "pubDate": "2026-02-09T17:58:30+01:00",
+    "starts_at": "2026-02-09T17:58:30+01:00",
+    "ends_at": "2026-02-09T18:57:00+01:00",
+    "_identity": "wl|störung|L=3A|D=2026-02-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9A: Falschparker",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 9 A zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "20852ffbd37b67a912d01cdf6a60c7ca1adaa1fdce59570f1a3f057dd9c938a2",
+    "pubDate": "2026-02-09T18:20:00+01:00",
+    "starts_at": "2026-02-09T18:20:00+01:00",
+    "ends_at": "2026-02-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=9A|D=2026-02-09"
   }
 ]
