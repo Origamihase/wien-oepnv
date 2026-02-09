@@ -194,49 +194,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 25 zu unterschiedlichen Intervallen.",
+    "title": "67A/67B: Polizeieinsatz",
+    "description": "Die Linie 67 B wird in beiden Richtungen zwischen Himberger Straße und Kronfußgasse über die Linie 16 A umgeleitet. Die Linie 67 A wird in beiden Richtungen zwischen Himberger Straße und Kolbegasse über die Linie 16 A umgeleitet. Das Störungsende ist derzeit nicht absehbar. Grund dafür ist ein Polizeieinsatz im Bereich Oberlaaer Straße 272.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "904ba03627e216651c3fe7a87850a5c4243041de296f0ebcb4c445c1842de781",
-    "pubDate": "2026-02-09T08:15:00+01:00",
-    "starts_at": "2026-02-09T08:15:00+01:00",
+    "guid": "0b6dfb1bce49d507089521affd0d47e324bc155fe4b74f8a855221a294afb3af",
+    "pubDate": "2026-02-09T11:20:00+01:00",
+    "starts_at": "2026-02-09T11:20:00+01:00",
     "ends_at": "2026-02-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=25|D=2026-02-09"
+    "_identity": "wl|störung|L=67A,67B|D=2026-02-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 26 zu unterschiedlichen Intervallen.",
+    "title": "11: Rettungseinsatz Einstieg bei Linie 71 Richtung Zinnergasse",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 11 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e5e4ada309d3d5a39dbcc7b58ba60a9bcfb4f6f0b36f7174fc6f157776ed18b5",
-    "pubDate": "2026-02-09T08:15:00+01:00",
-    "starts_at": "2026-02-09T08:15:00+01:00",
+    "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
+    "pubDate": "2026-02-09T11:30:00+01:00",
+    "starts_at": "2026-02-09T11:40:20+01:00",
     "ends_at": "2026-02-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=26|D=2026-02-09"
+    "_identity": "wl|störung|L=11|D=2026-02-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Verkehrsunfall",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 27 zu unterschiedlichen Intervallen.",
+    "title": "71: Verkehrsunfall",
+    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 71 zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2944c0ef3d90e6a01626e659ff945114566768f92f2cfcb4aacd173962aa18ee",
-    "pubDate": "2026-02-09T08:15:00+01:00",
-    "starts_at": "2026-02-09T08:15:00+01:00",
+    "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
+    "pubDate": "2026-02-09T11:55:00+01:00",
+    "starts_at": "2026-02-09T11:55:00+01:00",
     "ends_at": "2026-02-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=27|D=2026-02-09"
+    "_identity": "wl|störung|L=71|D=2026-02-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Betriebsstörung",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie U3 zu unterschiedlichen Intervallen.",
+    "title": "71: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2026-02-09T10:10:00+01:00",
-    "starts_at": "2026-02-09T10:10:00+01:00",
+    "guid": "12c122fd59c34caf7f02ba0225ce436dc57cac19067265e4e00cf01131a3ccaf",
+    "pubDate": "2026-02-09T11:56:26+01:00",
+    "starts_at": "2026-02-09T11:56:38+01:00",
+    "ends_at": "2026-02-09T12:55:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-02-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25/26/27: Polizeieinsatz",
+    "description": "Die Linie 25 ist derzeit in Richtung Aspern an der Weiterfahrt gehindert. Die Linie 26 ist derzeit in Richtung Hausfeldstraße an der Weiterfahrt gehindert. Die Linie 27 ist derzeit in Richtung Aspern Nord an der Weiterfahrt gehindert. Die Störung dauert voraussichtlich bis 12:40 Uhr. Grund dafür ist ein Polizeieinsatz im Bereich Fultonstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1211365909c18ea9a6e64040a2f0aedb6b67d12b5c3cd40ac8381cf5e3866dc8",
+    "pubDate": "2026-02-09T12:10:00+01:00",
+    "starts_at": "2026-02-09T12:10:00+01:00",
     "ends_at": "2026-02-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2026-02-09"
+    "_identity": "wl|störung|L=25,26,27|D=2026-02-09"
   }
 ]
