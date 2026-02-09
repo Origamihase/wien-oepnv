@@ -15,9 +15,39 @@ __all__ = [
 ]
 
 _HIGH_ENTROPY_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z0-9+/=_-]{24,}(?![A-Za-z0-9])")
+
+# Detect sensitive variable assignments (e.g. key = "value")
+# We use a broad list of keywords and allow common separators (hyphens, dots) in prefixes/suffixes
+# to catch variations like my-api-key, config.client_secret, etc.
 _SENSITIVE_ASSIGN_RE = re.compile(
-    r"(?i)([a-z0-9_]*(?:token|secret|password|accessid|apikey|accesskey|authorization|_key|auth|credential|passphrase|clientid|client_id|session_id|cookie|signature|bearer|jwt|webhook|webhook_url|dsn|subscriptionkey)[a-z0-9_]*)[^\S\n]*[:=][^\S\n]*((?:\"(?:\\.|[^\"\\])*\")|(?:'(?:\\.|[^'\\])*')|[^;#'\"\n]+)"
+    r"""(?xi)
+    (
+        [a-z0-9_.-]*  # Prefix allowing letters, numbers, underscores, dots, hyphens
+        (?:
+            token|secret|password|passphrase|credential|
+            accessid|accesskey|access-key|access.key|
+            apikey|api-key|api.key|
+            privatekey|private-key|private.key|
+            secret-key|secret.key|client-secret|client.secret|
+            authorization|auth-token|auth.token|auth|
+            _key|ssh-key|ssh.key|id_rsa|
+            clientid|client-id|client.id|client_id|
+            session_id|session-id|session.id|
+            cookie|signature|bearer|jwt|
+            webhook_url|webhook-url|webhook.url|webhook|
+            dsn|subscriptionkey
+        )
+        [a-z0-9_.-]*  # Suffix allowing letters, numbers, underscores, dots, hyphens
+    )
+    [^\S\n]*[:=][^\S\n]*  # Assignment operator (= or :) surrounded by optional whitespace
+    (
+        (?:\"(?:\\.|[^\"\\])*\")|  # Double-quoted value
+        (?:'(?:\\.|[^'\\])*')|     # Single-quoted value
+        [^;#'\"\n]+                # Unquoted value (until comment or newline)
+    )
+    """
 )
+
 _AWS_ID_RE = re.compile(r"(?<![A-Za-z0-9])(AKIA|ASIA|ACCA)[A-Z0-9]{16}(?![A-Za-z0-9])")
 _BEARER_RE = re.compile(r"Bearer\s+([A-Za-z0-9\-_.]{16,})")
 
