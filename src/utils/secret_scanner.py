@@ -20,7 +20,7 @@ _HIGH_ENTROPY_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z0-9+/=_-]{24,}(?![A-Za-z0
 # We use a broad list of keywords and allow common separators (hyphens, dots) in prefixes/suffixes
 # to catch variations like my-api-key, config.client_secret, etc.
 _SENSITIVE_ASSIGN_RE = re.compile(
-    r"""(?xi)
+    r"""(?xis)
     (
         [a-z0-9_.-]*  # Prefix allowing letters, numbers, underscores, dots, hyphens
         (?:
@@ -136,9 +136,21 @@ def _mask_secret(value: str) -> str:
     return f"{value[:4]}***{value[-4:]}"
 
 
-def _scan_line(line: str) -> list[tuple[str, str]]:
-    findings: list[tuple[str, str]] = []
-    for match in _SENSITIVE_ASSIGN_RE.finditer(line):
+def _scan_content(content: str) -> list[tuple[int, str, str]]:
+    findings: list[tuple[int, str, str]] = []
+
+    # Pre-calculate line offsets for fast lookup
+    # Using simple list of newline positions
+    newlines = [i for i, char in enumerate(content) if char == "\n"]
+
+    def get_line_number(index: int) -> int:
+        from bisect import bisect_left
+        # newlines contains indices of newlines.
+        # If index is before first newline, it's line 1 (bisect returns 0)
+        # If index is after first newline, it's line 2 (bisect returns 1)
+        return bisect_left(newlines, index) + 1
+
+    for match in _SENSITIVE_ASSIGN_RE.finditer(content):
         candidate = match.group(2).strip()
         # Strip outer quotes if present
         if (candidate.startswith('"') and candidate.endswith('"')) or (
@@ -147,18 +159,22 @@ def _scan_line(line: str) -> list[tuple[str, str]]:
             candidate = candidate[1:-1]
 
         if _looks_like_secret(candidate, is_assignment=True):
-            findings.append((candidate, "Verdächtige Zuweisung eines potentiellen Secrets"))
-    for match in _BEARER_RE.finditer(line):
+            findings.append((get_line_number(match.start()), candidate, "Verdächtige Zuweisung eines potentiellen Secrets"))
+
+    for match in _BEARER_RE.finditer(content):
         candidate = match.group(1)
         if _looks_like_secret(candidate, is_assignment=True):
-            findings.append((candidate, "Bearer-Token wirkt echt"))
-    for match in _AWS_ID_RE.finditer(line):
+            findings.append((get_line_number(match.start()), candidate, "Bearer-Token wirkt echt"))
+
+    for match in _AWS_ID_RE.finditer(content):
         candidate = match.group(0)
-        findings.append((candidate, "AWS Access Key ID gefunden"))
-    for match in _HIGH_ENTROPY_RE.finditer(line):
+        findings.append((get_line_number(match.start()), candidate, "AWS Access Key ID gefunden"))
+
+    for match in _HIGH_ENTROPY_RE.finditer(content):
         candidate = match.group(0)
         if _looks_like_secret(candidate):
-            findings.append((candidate, "Hochentropischer Token-String"))
+            findings.append((get_line_number(match.start()), candidate, "Hochentropischer Token-String"))
+
     return findings
 
 
@@ -198,16 +214,16 @@ def scan_repository(
             content = file_path.read_text(encoding="utf-8", errors="ignore")
         except OSError:
             continue
-        for lineno, line in enumerate(content.splitlines(), start=1):
-            for snippet, reason in _scan_line(line):
-                # Mask the secret value to prevent leakage in logs/CI
-                masked = _mask_secret(snippet)
-                findings.append(
-                    Finding(
-                        path=file_path,
-                        line_number=lineno,
-                        match=masked,
-                        reason=reason,
-                    )
+
+        for lineno, snippet, reason in _scan_content(content):
+            # Mask the secret value to prevent leakage in logs/CI
+            masked = _mask_secret(snippet)
+            findings.append(
+                Finding(
+                    path=file_path,
+                    line_number=lineno,
+                    match=masked,
+                    reason=reason,
                 )
+            )
     return findings
