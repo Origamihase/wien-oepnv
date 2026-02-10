@@ -62,18 +62,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "4A: Umleitung ab 12.01.2026",
-    "description": "Rohrleitungsarbeiten\nWegen Bauarbeiten im Bereich der Lisztstraße wird die Linie 4 A umgeleitet.\nZeitraum:\nAb Montag, 12. Jänner 2026 etwa 07:00 Uhr bis voraussichtlich Ende Februar 2026.\nMaßnahmen:\nLinie 4 A in Richtung Wittelsbachstraße\nUmleitung ab Lothringerstraße # Schwarzenbergplatz über Schwarzenbergplatz - Am Heumarkt - Lisztstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nAkademietheater (Lisztstraße 4)\nLinie 4 A in Richtung Karlsplatz U\nUmleitung ab Lisztstraße # Heumarkt über Am Heumarkt - Schwarzenbergplatz - Lothringerstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nAkademietheater in beiden Richtungen.\nSkizze:",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3968b28d1734e83928e4cd5b122b4bd71990d4b7d329e687736e6d9d94e25d6f",
-    "pubDate": "2025-12-20T06:00:00+01:00",
-    "starts_at": "2026-01-12T00:00:00+00:00",
-    "ends_at": "2026-02-28T11:11:00+01:00",
-    "_identity": "wl|hinweis|L=4A|D=2026-01-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "69A/72A/73A/76A/76B: Faschingsumzug Simmering am 14.02.2026",
     "description": "Veranstaltung\nWegen Abhaltung des Faschingsumzugs im Bereich der Simmeringer Hauptstraße kommt es bei den Linien 69 A, 72 A, 73 A, 76 A und 76 B zu folgenden Maßnahmen\nZeitraum:\nSamstag, 14. Februar 2026, von etwa 13:00 Uhr bis etwa 17:00 Uhr.\nMaßnahmen:\nLinie 69 A\nKurzführung\nBetrieb nur zwischen Hauptbahnhof S U und Unter der Kirche.\nVorübergehende End- und Anfangshaltestelle bei Unter der Kirche gegenüber 2 (vor Kreisverkehr).\nLinie 72 A\nKurzführung\nBetrieb nur zwischen Hasenleiten und Anton-Stilling-Platz.\nVorübergehende End- und Anfangshaltestelle bei Hasenleitengasse 11-21.\nLinie 73 A\nKurzführung\nBetrieb nur zwischen Landwehrstraße und Unter der Kirche.\nVorübergehende End- und Anfangshaltestelle bei Kaiser-Ebersdorfer-Straße 1-3 (vor Kreisverkehr).\nLinien 76 A und 76 B\n76 A und 76 B in Richtung Albern\nUmleitung ab Mautner-Markhof-Gasse # Krausegasse über Krausegasse - Rappachgasse.\nAufgelassene Haltestellen:\n- Enkplatz U, Grillgasse\n- Hauffgasse\n- Simoningplatz (FR Alberner Hafen)\n- Rappachgasse (FR Alberner Hafen)\nVorübergehende End- und Anfangshaltestelle bei Mautner-Markhof-Gasse 62.\nSkizze:",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -121,18 +109,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Bauarbeiten",
-    "description": "Wegen Bauarbeiten kann die Station Tscherttegasse U in Fahrtrichtung Siebenhirten nicht eingehalten werden. Um die Station Tscherttegasse U zu erreichen, fahren Sie eine Station weiter bis Am Schöpfwerk und steigen dort in einen Zug in die Gegenrichtung um. Die Bauarbeiten dauern bis 29.05.2026 ca. 01:30 Uhr.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c8fe425d7242fb213ce8416c7e36d3307750aef3cd584dd26b6b881c88e54d42",
-    "pubDate": "2026-02-02T04:30:00+01:00",
-    "starts_at": "2026-02-02T04:30:00+01:00",
-    "ends_at": "2026-05-29T01:30:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2026-02-02"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "U1: Keplerplatz, Sperre eines Aufgangs",
     "description": "Aufgangssperre\nWegen Bauarbeiten muss in der Station Keplerplatz ein Aufgang gesperrt werden.\nZeitraum:\nMittwoch, 04. Februar 2026 bis Freitag, 03. April 2026.\nMaßnahmen:\nStation Keplerplatz: Der rechte Aufgang \"Raaber Bahngasse\" (gegenüber Favoritenstraße 85) bleibt geschlossen.\nErsatz:\nDer gegenüberliegende Aufgang.",
@@ -170,6 +146,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U6: Bauarbeiten",
+    "description": "Derzeit können die Züge der Linie U6 die Station Tscherttegasse in Richtung Siebenhirten nicht einhalten. Grund dafür sind Bauarbeiten im Bereich Tscherttegasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c8fe425d7242fb213ce8416c7e36d3307750aef3cd584dd26b6b881c88e54d42",
+    "pubDate": "2026-02-09T22:00:00+01:00",
+    "starts_at": "2026-02-09T22:00:00+01:00",
+    "ends_at": "2026-05-31T21:59:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2026-02-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "4A: Bauarbeiten",
+    "description": "Die Linie 4 A wird in beiden Richtungen örtlich umgeleitet. Die Haltestelle Lisztstraße kann dadurch in beiden Richtungen nicht eingehalten werden. Grund dafür sind Bauarbeiten im Bereich Listzstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "80cc1ffb82ba6e68f41951d8664a99f048983457ee2bc38d9560c78ff08f24f2",
+    "pubDate": "2026-02-09T22:00:00+01:00",
+    "starts_at": "2026-02-09T22:00:00+01:00",
+    "ends_at": "2026-02-28T10:11:00+01:00",
+    "_identity": "wl|störung|L=4A|D=2026-02-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N29: Busse halten auf der Hauptfahrbahn",
     "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -178,18 +178,6 @@
     "starts_at": "2026-02-09T23:00:20+01:00",
     "ends_at": "2026-02-10T05:30:00+01:00",
     "_identity": "wl|störung|L=N29|D=2026-02-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Polizeieinsatz",
-    "description": "Derzeit ist ein Betrieb der Linie U4 nicht möglich. Die Störung dauert bis Betriebsschluss, die beiden letzten Züge Richtung Heiligenstadt und Hütteldorf können nicht fahren. Weichen Sie ersatzweise auf die Linien N49, N54 und N60 aus. Grund dafür ist ein Polizeieinsatz im Bereich Kettenbrückengasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
-    "pubDate": "2026-02-09T23:34:00+01:00",
-    "starts_at": "2026-02-09T23:34:00+01:00",
-    "ends_at": "2026-02-10T22:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-02-09"
   },
   {
     "source": "Wiener Linien",
