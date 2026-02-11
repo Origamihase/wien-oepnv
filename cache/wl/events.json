@@ -98,14 +98,14 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "2A/59A/N25/N38/N60/N66/N71/N75: Opernball",
+    "title": "1/2/2A/59A/71/D/N25/N38/N60/N66/N71/N75: Opernball",
     "description": "Opernball\nWegen Abhaltung des Opernballs kommt es zu Verkehrsmaßnahmen.\nZeitraum:\nDonnerstag, 12. Februar 2026, etwa 18:50 Uhr bis Betriebsschluss.\nMaßnahmen:\nLinie D:\nUmleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz.\nLinie 1:\nUmleitung in beiden Richtungen zwischen Karlsplatz und Julius-Raab-Platz über Schwarzenbergplatz und Stubentor.\nLinie 2:\nUmleitung in beiden Richtungen zwischen Rathaus und Schwedenplatz über Schottentor.\nLinie 71:\nBetrieb nur zwischen Kaiserebersdorf, Zinnergasse und Schwarzenbergplatz.\nLinie 2 A:\nAb 18:50 Uhr sukzessive kein Betrieb: Alle Busse, die ab 18:50 Uhr am Schwarzenbergplatz ankommen, werden in die Betriebsgarage eingezogen.\nLinie 59 A:\nAb ca. 19:00 Uhr: Betrieb nur zwischen Bhf. Meidling S U und Bärenmühldurchgang.\nLinien N25 Richtung Großfeldsiedlung, N38 in Richtung Grinzing, N60 und N66 Richtung Ring, Kai, N71 in Richtung Kaiserebersdorf und N75 in Richtung Gasometer:\nHaltestellenverlegung der Haltestelle Oper, Karlsplatz\nZeitraum: Von Dienstag, 10. Februar 2026, 00:00 Uhr bis 13. Februar 2026, 05:00 Uhr.\nVerlegt von: Opernring vor der Oper\nVerlegt nach: Kärntner Ring 1-3\nDiese Haltestellenverlegung gilt für die Linie N71 gilt bis Sonntag, den 15. Februar etwa 05:00 Uhr, da die Busse der Linie N71 von der Alser Straße kommend in Richtung Kaiserebersdorf eine Umleitung über den Schwarzenbergplatz fahren müssen. Diese Umleitung fahren auch die Busse der Linie N60 und N66 im Zeitraum der obgenannten Haltestellenverlegung.\nSkizze:",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2da334ec78c3d8bd394886607f074cf87874da6cbb57d934b0124f1b287f0d22",
+    "guid": "eeac3f1bd0f62c1baf67cb5189cfd2c2f7b06c4d2a10eaaa4012a632a27dccb7",
     "pubDate": "2026-02-01T04:00:00+01:00",
     "starts_at": "2026-02-01T04:00:00+01:00",
-    "ends_at": "2026-02-13T05:00:00+01:00",
-    "_identity": "wl|hinweis|L=2A,59A,N25,N38,N60,N66,N71,N75|D=2026-02-01"
+    "ends_at": "2026-02-12T18:50:00+01:00",
+    "_identity": "wl|hinweis|L=1,2,2A,59A,71,D,N25,N38,N60,N66,N71,N75|D=2026-02-01"
   },
   {
     "source": "Wiener Linien",
@@ -242,25 +242,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Nach einer Fahrtbehinderung kommt es auf der Linie 52 zu unterschiedlichen Intervallen.",
+    "title": "1: Fahrtbehinderung Feuerwehreinsatz",
+    "description": "Fahrtbehinderung Feuerwehreinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734",
-    "pubDate": "2026-02-11T12:13:00+01:00",
-    "starts_at": "2026-02-11T13:14:16+01:00",
-    "ends_at": "2026-02-11T22:55:00+01:00",
-    "_identity": "wl|störung|L=52|D=2026-02-11"
+    "guid": "14cd76672bec7d870594ecd682b181ba6f8e26df8c67b55a1af0365a0dec08bd",
+    "pubDate": "2026-02-11T14:41:21+01:00",
+    "starts_at": "2026-02-11T14:41:21+01:00",
+    "ends_at": "2026-02-11T17:15:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-02-11"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "1: Feuerwehreinsatz Betrieb ab Knöllgasse",
+    "description": "Feuerwehreinsatz Betrieb ab Knöllgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9",
-    "pubDate": "2026-02-11T13:14:38+01:00",
-    "starts_at": "2026-02-11T13:14:38+01:00",
-    "ends_at": "2026-02-11T14:13:00+01:00",
-    "_identity": "wl|störung|L=60|D=2026-02-11"
+    "guid": "699b501c7dc4dd029cdd6cbcb0a2294a3185e97c02a097cf76649684c1b74a4a",
+    "pubDate": "2026-02-11T14:41:22+01:00",
+    "starts_at": "2026-02-11T14:42:49+01:00",
+    "ends_at": "2026-02-11T17:15:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-02-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Feuerwehreinsatz Umleitung zum Reumannplatz",
+    "description": "Feuerwehreinsatz Umleitung zum Reumannplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
+    "pubDate": "2026-02-11T14:41:56+01:00",
+    "starts_at": "2026-02-11T14:41:56+01:00",
+    "ends_at": "2026-02-11T17:15:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-02-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Feuerwehreinsatz Einstieg bei Linie 6 (Richtung Burggasse)",
+    "description": "Feuerwehreinsatz Einstieg bei Linie 6 (Richtung Burggasse)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b0e2f3e6289e6c5433e3203c2e814f4449fc364a7b5357918b59b0da8c0ef2bd",
+    "pubDate": "2026-02-11T14:42:20+01:00",
+    "starts_at": "2026-02-11T14:42:20+01:00",
+    "ends_at": "2026-02-11T17:15:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-02-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Feuerwehreinsatz Betrieb nur bis Knöllgasse. Weiter bis Reumannplatz",
+    "description": "Feuerwehreinsatz Betrieb nur bis Knöllgasse. Weiter bis Reumannplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ecc96b8747f1723acee46acd28e34299149ddc6b94676af72081aa44ed060f85",
+    "pubDate": "2026-02-11T14:43:06+01:00",
+    "starts_at": "2026-02-11T14:43:21+01:00",
+    "ends_at": "2026-02-11T17:15:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-02-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4",
+    "pubDate": "2026-02-11T14:47:21+01:00",
+    "starts_at": "2026-02-11T14:47:21+01:00",
+    "ends_at": "2026-02-11T15:46:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-02-11"
   }
 ]
