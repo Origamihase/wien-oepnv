@@ -62,6 +62,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "4A: Umleitung ab 12.01.2026",
+    "description": "Rohrleitungsarbeiten\nWegen Bauarbeiten im Bereich der Lisztstraße wird die Linie 4 A umgeleitet.\nZeitraum:\nAb Montag, 12. Jänner 2026 etwa 07:00 Uhr bis voraussichtlich Ende Februar 2026.\nMaßnahmen:\nLinie 4 A in Richtung Wittelsbachstraße\nUmleitung ab Lothringerstraße # Schwarzenbergplatz über Schwarzenbergplatz - Am Heumarkt - Lisztstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nAkademietheater (Lisztstraße 4)\nLinie 4 A in Richtung Karlsplatz U\nUmleitung ab Lisztstraße # Heumarkt über Am Heumarkt - Schwarzenbergplatz - Lothringerstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nAkademietheater in beiden Richtungen.\nSkizze:",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3968b28d1734e83928e4cd5b122b4bd71990d4b7d329e687736e6d9d94e25d6f",
+    "pubDate": "2025-12-20T06:00:00+01:00",
+    "starts_at": "2026-01-12T00:00:00+00:00",
+    "ends_at": "2026-02-28T11:11:00+01:00",
+    "_identity": "wl|hinweis|L=4A|D=2026-01-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "69A/72A/73A/76A/76B: Faschingsumzug Simmering am 14.02.2026",
     "description": "Veranstaltung\nWegen Abhaltung des Faschingsumzugs im Bereich der Simmeringer Hauptstraße kommt es bei den Linien 69 A, 72 A, 73 A, 76 A und 76 B zu folgenden Maßnahmen\nZeitraum:\nSamstag, 14. Februar 2026, von etwa 13:00 Uhr bis etwa 17:00 Uhr.\nMaßnahmen:\nLinie 69 A\nKurzführung\nBetrieb nur zwischen Hauptbahnhof S U und Unter der Kirche.\nVorübergehende End- und Anfangshaltestelle bei Unter der Kirche gegenüber 2 (vor Kreisverkehr).\nLinie 72 A\nKurzführung\nBetrieb nur zwischen Hasenleiten und Anton-Stilling-Platz.\nVorübergehende End- und Anfangshaltestelle bei Hasenleitengasse 11-21.\nLinie 73 A\nKurzführung\nBetrieb nur zwischen Landwehrstraße und Unter der Kirche.\nVorübergehende End- und Anfangshaltestelle bei Kaiser-Ebersdorfer-Straße 1-3 (vor Kreisverkehr).\nLinien 76 A und 76 B\n76 A und 76 B in Richtung Albern\nUmleitung ab Mautner-Markhof-Gasse # Krausegasse über Krausegasse - Rappachgasse.\nAufgelassene Haltestellen:\n- Enkplatz U, Grillgasse\n- Hauffgasse\n- Simoningplatz (FR Alberner Hafen)\n- Rappachgasse (FR Alberner Hafen)\nVorübergehende End- und Anfangshaltestelle bei Mautner-Markhof-Gasse 62.\nSkizze:",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -70,6 +82,18 @@
     "starts_at": "2026-01-09T06:00:00+01:00",
     "ends_at": "2026-02-14T17:00:00+01:00",
     "_identity": "wl|hinweis|L=69A,72A,73A,76A,76B|D=2026-01-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "37A: Straßenbauarbeiten ab 26.01.2026",
+    "description": "Umfangreiche Straßenbauarbeiten\nWegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37 A umgeleitet.\nZeitraum:\nAb Montag, 26. Jänner 2026, etwa 07:00 Uhr bis voraussichtlich Ende Mai 2026.\nMaßnahmen:\nLinie 37 A in Richtung Dänenstraße bzw. Nußdorfer Straße U:\nUmleitung ab Pasettistraße # Donaueschingenstraße über Pasettistraße – Hellwagstraße – Dresdner Straße.\nAufgelassene Haltestellen:\nLorenz-Böhler-Unfallkrankenhaus (Donaueschingenstraße nach Pasettistraße)\nDresdner Straße U (Dresdner Straße 47)\nErsatzhaltestellen:\nLorenz-Böhler-Unfallkrankenhaus (Pasettistraße 73-75)\nPasettistraße (Pasettistraße vor Hellwagstraße)\nSkizze:",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f7e041699fc1638d12a7ac3c92a90961b8bd868987203cff1e062661b99a1128",
+    "pubDate": "2026-01-22T09:00:00+01:00",
+    "starts_at": "2026-01-26T00:00:00+00:00",
+    "ends_at": "2027-01-26T11:11:00+01:00",
+    "_identity": "wl|hinweis|L=37A|D=2026-01-26"
   },
   {
     "source": "Wiener Linien",
@@ -134,42 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Bauarbeiten",
-    "description": "Derzeit können die Züge der Linie U6 die Station Tscherttegasse in Richtung Siebenhirten nicht einhalten. Grund dafür sind Bauarbeiten im Bereich Tscherttegasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c8fe425d7242fb213ce8416c7e36d3307750aef3cd584dd26b6b881c88e54d42",
-    "pubDate": "2026-02-09T22:00:00+01:00",
-    "starts_at": "2026-02-09T22:00:00+01:00",
-    "ends_at": "2026-05-31T21:59:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2026-02-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37A: Bauarbeiten",
-    "description": "Alternativen: Grund: Bauarbeiten im Bereich . Umfangreiche Straßenbauarbeiten Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37 A umgeleitet. Zeitraum: Ab Montag, 26. Jänner 2026, etwa 07:00 Uhr bis voraussichtlich Ende Mai 2026. Maßnahmen: Linie 37 A in Richtung Dänenstraße bzw. Nußdorfer Straße U: Umleitung ab Pasettistraße # Donaueschingenstraße über Pasettistraße – Hellwagstraße – Dresdner Straße. Aufgelassene Haltestellen: Lorenz-Böhler-Unfallkrankenhaus (Donaueschingenstraße nach Pasettistraße) Dresdner Straße U (Dresdner Straße 47) Ersatzhaltestellen: Lorenz-Böhler-Unfallkrankenhaus (Pasettistraße 73-75) Pasettistraße (Pasettistraße vor Hellwagstraße) Skizze:",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8566aaf9b27862b0dbf7e8fde77b49ab8e082ee41e598da42cf4b6424bbda7b4",
-    "pubDate": "2026-02-09T22:00:00+01:00",
-    "starts_at": "2026-02-09T22:00:00+01:00",
-    "ends_at": "2027-01-26T10:11:00+01:00",
-    "_identity": "wl|störung|L=37A|D=2026-02-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "4A: Bauarbeiten",
-    "description": "Die Linie 4 A wird in beiden Richtungen örtlich umgeleitet. Die Haltestelle Lisztstraße kann dadurch in beiden Richtungen nicht eingehalten werden. Grund dafür sind Bauarbeiten im Bereich Listzstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "80cc1ffb82ba6e68f41951d8664a99f048983457ee2bc38d9560c78ff08f24f2",
-    "pubDate": "2026-02-09T22:00:00+01:00",
-    "starts_at": "2026-02-09T22:00:00+01:00",
-    "ends_at": "2026-02-28T10:11:00+01:00",
-    "_identity": "wl|störung|L=4A|D=2026-02-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Busse halten Untere Augartenstraße 42",
     "description": "Busse halten Untere Augartenstraße 42",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -218,25 +206,85 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Verkehrsunfall",
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "12A: Verkehrsunfall",
+    "description": "Linie 12 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ee9d3f3d2f7894fa11d971e1ac5f847be3f219359a43a6a87138d443f4bb3996",
-    "pubDate": "2026-02-11T18:35:00+01:00",
-    "starts_at": "2026-02-11T18:35:00+01:00",
+    "guid": "75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35",
+    "pubDate": "2026-02-11T20:46:00+01:00",
+    "starts_at": "2026-02-11T20:46:00+01:00",
     "ends_at": "2026-02-11T22:55:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-02-11"
+    "_identity": "wl|störung|L=12A|D=2026-02-11"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A/2A: Haltestellenverlegung",
-    "description": "Haltestellenverlegung der Linie 1 A in Richtung Stephansplatz U und 2 A in Richtung Schwedenplatz U Haltestelle: Habsburgergasse Von: Habsburgergasse 9 nach Stallburggasse Nach: Habsburgergasse 3 Dauer: 19. Jänner 2026, etwa 08:00 Uhr für etwa ein Jahr Grund: Haussanierung",
+    "title": "48A: Fremder Verkehrsunfall",
+    "description": "Linie 48 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eb5fcd434bb0222c3cbd70e5a73bf868efec092996f13c86b57eee02baf665f0",
-    "pubDate": "2026-02-11T19:00:00+01:00",
-    "starts_at": "2026-02-11T19:00:00+01:00",
-    "ends_at": "2028-01-13T10:11:00+01:00",
-    "_identity": "wl|störung|L=1A,2A|D=2026-02-11"
+    "guid": "7da5c613b2d12a20d7869dc68a2b28443932b3386ce707fa25728d82068a8310",
+    "pubDate": "2026-02-11T20:48:00+01:00",
+    "starts_at": "2026-02-11T20:48:00+01:00",
+    "ends_at": "2026-02-11T22:55:00+01:00",
+    "_identity": "wl|störung|L=48A|D=2026-02-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Rettungseinsatz",
+    "description": "Linie U2: Unregelmäßige Intervalle in Richtung Seestadt. Grund: Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
+    "pubDate": "2026-02-11T21:22:00+01:00",
+    "starts_at": "2026-02-11T21:22:00+01:00",
+    "ends_at": "2026-02-11T22:55:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2026-02-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Verkehrsunfall Betrieb ab Johnstraße",
+    "description": "Verkehrsunfall Betrieb ab Johnstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d32f54a03bf25d68d42b3336b0a3ac969e2e0091c43fb291eca103990998aabc",
+    "pubDate": "2026-02-11T21:47:09+01:00",
+    "starts_at": "2026-02-11T21:47:09+01:00",
+    "ends_at": "2026-02-11T22:46:00+01:00",
+    "_identity": "wl|störung|L=12A|D=2026-02-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d5de43fa164490d094ac66bb07fe6668ccd8e82e980e34eb6ccbbf006f8f0e7e",
+    "pubDate": "2026-02-11T21:49:05+01:00",
+    "starts_at": "2026-02-11T21:49:08+01:00",
+    "ends_at": "2026-02-11T22:48:00+01:00",
+    "_identity": "wl|störung|L=48A|D=2026-02-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3a290c8967b717bf066ab8b81381927897476efbd1370ad7d9f3c4d7bf64cb22",
+    "pubDate": "2026-02-11T22:01:04+01:00",
+    "starts_at": "2026-02-11T22:01:10+01:00",
+    "ends_at": "2026-02-11T23:00:00+01:00",
+    "_identity": "wl|störung|L=48A|D=2026-02-11"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "15A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "61d800321a9f38a8a83860f1cca614446871ecfcaec5339554797d7f29c03bf9",
+    "pubDate": "2026-02-11T22:31:26+01:00",
+    "starts_at": "2026-02-11T22:31:34+01:00",
+    "ends_at": "2026-02-11T23:30:00+01:00",
+    "_identity": "wl|störung|L=15A|D=2026-02-11"
   }
 ]
