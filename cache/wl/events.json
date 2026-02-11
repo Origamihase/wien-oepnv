@@ -158,18 +158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62A: Busse halten Breitenfurter Straße 236-238",
-    "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3",
-    "pubDate": "2026-02-11T04:45:28+01:00",
-    "starts_at": "2026-02-11T04:45:28+01:00",
-    "ends_at": "2026-02-12T00:35:00+01:00",
-    "_identity": "wl|störung|L=62A|D=2026-02-11"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N29: Busse halten auf der Hauptfahrbahn",
     "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -188,19 +176,19 @@
     "guid": "13da360ca8a94dcafa0dd3aa043ce5baefa02c1c92c93d57c144cc19166804d0",
     "pubDate": "2026-02-11T23:53:15+01:00",
     "starts_at": "2026-02-12T00:00:12+01:00",
-    "ends_at": "2026-02-12T00:52:00+01:00",
+    "ends_at": "2026-02-12T01:21:00+01:00",
     "_identity": "wl|störung|L=44|D=2026-02-11"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "44: Fremder Verkehrsunfall",
-    "description": "Linie 44: Fahrtbehinderung in beiden Richtungen. Alternativen: 43, 46 Voraussichtliche Dauer: 00:30 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Hernalser Gürtel.",
+    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "f53a283f3ee969f2582a7c1c05102b661c4ea8366276196d0cf3bbc0187a3be3",
     "pubDate": "2026-02-11T23:54:00+01:00",
     "starts_at": "2026-02-11T23:54:00+01:00",
-    "ends_at": "2026-02-12T01:00:00+01:00",
+    "ends_at": "2026-02-12T00:57:00+01:00",
     "_identity": "wl|störung|L=44|D=2026-02-11"
   },
   {
@@ -214,5 +202,41 @@
     "starts_at": "2026-02-12T00:00:14+01:00",
     "ends_at": "2026-02-12T23:59:59+01:00",
     "_identity": "wl|störung|L=57A|D=2026-02-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-02-12T00:00:18+01:00",
+    "starts_at": "2026-02-12T00:00:18+01:00",
+    "ends_at": "2026-02-12T23:59:59+01:00",
+    "_identity": "wl|störung|L=37A|D=2026-02-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5A: Busse halten Untere Augartenstraße 42",
+    "description": "Busse halten Untere Augartenstraße 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "483eae38010ee8e6894791d2738a9629c827a8f49663810bceb0716d9219a663",
+    "pubDate": "2026-02-12T00:00:22+01:00",
+    "starts_at": "2026-02-12T00:00:22+01:00",
+    "ends_at": "2026-02-12T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2026-02-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972",
+    "pubDate": "2026-02-12T00:23:00+01:00",
+    "starts_at": "2026-02-12T00:35:11+01:00",
+    "ends_at": "2026-02-12T01:34:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-02-12"
   }
 ]
