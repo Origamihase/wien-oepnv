@@ -39,8 +39,10 @@ _SENSITIVE_ASSIGN_RE = re.compile(
         )
         [a-z0-9_.-]*  # Suffix allowing letters, numbers, underscores, dots, hyphens
     )
-    [^\S\n]*[:=][^\S\n]*  # Assignment operator (= or :) surrounded by optional whitespace
+    \s*[:=]\s*  # Assignment operator (= or :) surrounded by flexible whitespace (including newlines)
     (
+        (?:\"{3}.*?\"{3})|         # Triple-double-quoted value (non-greedy)
+        (?:'{3}.*?'{3})|           # Triple-single-quoted value (non-greedy)
         (?:\"(?:\\.|[^\"\\])*\")|  # Double-quoted value
         (?:'(?:\\.|[^'\\])*')|     # Single-quoted value
         [^;#'\"\n]+                # Unquoted value (until comment or newline)
@@ -153,7 +155,12 @@ def _scan_content(content: str) -> list[tuple[int, str, str]]:
     for match in _SENSITIVE_ASSIGN_RE.finditer(content):
         candidate = match.group(2).strip()
         # Strip outer quotes if present
-        if (candidate.startswith('"') and candidate.endswith('"')) or (
+        # Handle triple quotes first (check length >= 6 to avoid index errors)
+        if candidate.startswith('"""') and candidate.endswith('"""') and len(candidate) >= 6:
+            candidate = candidate[3:-3]
+        elif candidate.startswith("'''") and candidate.endswith("'''") and len(candidate) >= 6:
+            candidate = candidate[3:-3]
+        elif (candidate.startswith('"') and candidate.endswith('"')) or (
             candidate.startswith("'") and candidate.endswith("'")
         ):
             candidate = candidate[1:-1]
