@@ -206,25 +206,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Verkehrsunfall",
-    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "62A: Verkehrsunfall",
+    "description": "Linie 62 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "404f3551d0efb1f503b6da3f9dea1315ba797797becc9ded87406bb28d1acc34",
-    "pubDate": "2026-02-12T11:43:00+01:00",
-    "starts_at": "2026-02-12T11:43:00+01:00",
+    "guid": "9ce0b6d5a30b4e1685f4f825dd39e70de43d9861235273eddc64d5a8feb1a4ff",
+    "pubDate": "2026-02-12T13:42:00+01:00",
+    "starts_at": "2026-02-12T13:42:00+01:00",
     "ends_at": "2026-02-12T23:55:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-02-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d3121440bb198809da6ad6777749127de887bfe17ce700d64f281bbb4593b9c8",
-    "pubDate": "2026-02-12T11:43:56+01:00",
-    "starts_at": "2026-02-12T11:50:47+01:00",
-    "ends_at": "2026-02-12T12:50:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-02-12"
+    "_identity": "wl|störung|L=62A|D=2026-02-12"
   }
 ]
