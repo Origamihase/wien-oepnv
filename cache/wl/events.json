@@ -182,18 +182,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2/D/71: Opernball",
-    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz. Linie 2: Umleitung in beiden Richtungen zwischen Ring, Volkstheater U und Schwedenplatz U über Schottentor - Schottenring. Haltestellen: Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. Schwedenplatz U in Richtung Dornbach: Kein Halt möglich. Gredlerstraße: Kein Halt möglich. Ring, Volkstheater U in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach). Ring, Volkstheater U in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament. Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor U und Schwedenplatz U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Alternativen: U1, U2, U3 und U4 Grund: Opernball im Bereich Opernring.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "02307396196e28801050ab0e0b8a2124f65cea621a230d16e544c55b84855016",
-    "pubDate": "2026-02-12T19:15:00+01:00",
-    "starts_at": "2026-02-12T19:15:00+01:00",
-    "ends_at": "2026-02-13T01:30:00+01:00",
-    "_identity": "wl|störung|L=1,2,71,D|D=2026-02-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N29: Busse halten auf der Hauptfahrbahn",
     "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -202,30 +190,6 @@
     "starts_at": "2026-02-12T23:00:20+01:00",
     "ends_at": "2026-02-13T05:30:00+01:00",
     "_identity": "wl|störung|L=N29|D=2026-02-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A: Verspätungen",
-    "description": "Linie 11 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "80bad3fc9a7c8570d47692cfb99b01d9a0b11e6fe8749b87eeb08ec1a799c3e2",
-    "pubDate": "2026-02-12T23:41:00+01:00",
-    "starts_at": "2026-02-12T23:41:00+01:00",
-    "ends_at": "2026-02-13T01:03:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2026-02-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Rettungseinsatz",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8",
-    "pubDate": "2026-02-12T23:50:00+01:00",
-    "starts_at": "2026-02-12T23:50:00+01:00",
-    "ends_at": "2026-02-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=41|D=2026-02-12"
   },
   {
     "source": "Wiener Linien",
@@ -242,13 +206,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Linie 10 A: Fahrtbehinderung in Richtung Niederhofstraße U. Grund: Polizeieinsatz im Haltestellenbereich Schloss Schönbrunn.",
+    "title": "N75: Verspätungen",
+    "description": "Derzeit kommt es bei der Linie N75 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Betriebsstörung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ac1d3869bc5b0bb0ac92b1b9d5c90e1d243d203e81f94cd301990e178423b85",
-    "pubDate": "2026-02-13T00:06:32+01:00",
-    "starts_at": "2026-02-13T00:14:41+01:00",
-    "ends_at": "2026-02-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=10A|D=2026-02-13"
+    "guid": "4d0d3a6b4172b7be17cac71802dbd832072c411e62a93e400f5cfb5306aaf4ab",
+    "pubDate": "2026-02-13T00:51:00+01:00",
+    "starts_at": "2026-02-13T00:51:00+01:00",
+    "ends_at": "2026-02-13T04:55:00+01:00",
+    "_identity": "wl|störung|L=N75|D=2026-02-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N25: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "71ff4e2270a9d00c490cbe4f14f0abccd546a51cf073f7d6bcf723ffea1a857b",
+    "pubDate": "2026-02-13T02:07:00+01:00",
+    "starts_at": "2026-02-13T02:07:26+01:00",
+    "ends_at": "2026-02-13T03:06:00+01:00",
+    "_identity": "wl|störung|L=N25|D=2026-02-13"
   }
 ]
