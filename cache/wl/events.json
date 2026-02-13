@@ -278,24 +278,24 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Feuerwehreinsatz Betrieb ab Dänenstraße",
-    "description": "Feuerwehreinsatz Betrieb ab Dänenstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "72ce5eea9231233e05ad7e35043a72288d38327a7f11feb4cdb1d0757199325a",
-    "pubDate": "2026-02-13T15:33:21+01:00",
-    "starts_at": "2026-02-13T15:33:21+01:00",
-    "ends_at": "2026-02-13T23:45:00+01:00",
-    "_identity": "wl|störung|L=10A|D=2026-02-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10A: Fahrtbehinderung wegen Feuerwehreinsatz",
     "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "74392d26027cecc807945fe11d6a5aee22b9653221349f06409623aa894c44af",
     "pubDate": "2026-02-13T15:33:21+01:00",
     "starts_at": "2026-02-13T15:36:50+01:00",
+    "ends_at": "2026-02-13T23:45:00+01:00",
+    "_identity": "wl|störung|L=10A|D=2026-02-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Feuerwehreinsatz Betrieb ab Dänenstraße",
+    "description": "Feuerwehreinsatz Betrieb ab Dänenstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "72ce5eea9231233e05ad7e35043a72288d38327a7f11feb4cdb1d0757199325a",
+    "pubDate": "2026-02-13T15:33:21+01:00",
+    "starts_at": "2026-02-13T15:33:21+01:00",
     "ends_at": "2026-02-13T23:45:00+01:00",
     "_identity": "wl|störung|L=10A|D=2026-02-13"
   },
@@ -326,25 +326,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Verunreinigung",
-    "description": "Linie 12 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Linie U1: Unregelmäßige Intervalle in Richtung Oberlaa. Grund: Schadhaftes Fahrzeug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "20413cfe1c2c4864089baad214c87f1f0e6ae6651edcb0fd3f56520de0b9eb5d",
-    "pubDate": "2026-02-13T19:34:00+01:00",
-    "starts_at": "2026-02-13T19:34:00+01:00",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2026-02-13T21:09:00+01:00",
+    "starts_at": "2026-02-13T21:09:00+01:00",
     "ends_at": "2026-02-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=12A|D=2026-02-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Signalstörung",
-    "description": "Fahrtbehinderung Signalstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b6bef18c56849381c155b7aee25b6c16c648913c966f705b3cc68162c0cb56fd",
-    "pubDate": "2026-02-13T20:02:34+01:00",
-    "starts_at": "2026-02-13T20:02:48+01:00",
-    "ends_at": "2026-02-13T21:01:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-02-13"
+    "_identity": "wl|störung|L=U1|D=2026-02-13"
   }
 ]
