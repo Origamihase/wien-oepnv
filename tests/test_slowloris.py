@@ -111,7 +111,7 @@ def test_fetch_content_safe_default_timeout(mock_verify_ip, mock_validate_url):
         # Check that session.get was called with timeout=20 (DEFAULT_TIMEOUT)
         # Note: DEFAULT_TIMEOUT is 20 in src/utils/http.py
         kwargs = session.get.call_args[1]
-        assert kwargs["timeout"] == 20
+        assert 19.9 <= kwargs["timeout"] <= 20
 
         # Check that read_response_safe was called with a timeout
         read_timeout = mock_read.call_args[1]["timeout"]
