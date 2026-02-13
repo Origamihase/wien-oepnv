@@ -430,21 +430,25 @@ class GooglePlacesClient:
                     description = violation.get("description")
                     fragment = ""
                     if isinstance(field, str) and field:
-                        fragment = field
+                        fragment = _sanitize_error_detail(field, secrets=[self._config.api_key])
                     if isinstance(description, str) and description:
-                        fragment = f"{fragment}: {description}" if fragment else description
+                        safe_desc = _sanitize_error_detail(description, secrets=[self._config.api_key])
+                        fragment = f"{fragment}: {safe_desc}" if fragment else safe_desc
                     if fragment:
                         parts.append(fragment)
                 if parts:
-                    base = message if isinstance(message, str) and message else f"HTTP {status_code}"
+                    base = f"HTTP {status_code}"
+                    if isinstance(message, str) and message:
+                        base = _sanitize_error_detail(message, secrets=[self._config.api_key])
                     formatted = f"{base} | {'; '.join(parts)}"
                     break
 
         if not formatted and isinstance(message, str) and message:
-            formatted = message
+            formatted = _sanitize_error_detail(message, secrets=[self._config.api_key])
 
         if formatted and isinstance(status, str) and status:
-            formatted = f"{status}: {formatted}"
+            safe_status = _sanitize_error_detail(status, secrets=[self._config.api_key])
+            formatted = f"{safe_status}: {formatted}"
 
         return formatted or default
 
