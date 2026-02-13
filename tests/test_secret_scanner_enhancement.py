@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from src.utils.secret_scanner import scan_repository
+from src.utils.secret_scanner import scan_repository, _scan_content
 
 
 def test_secret_scanner_detects_webhook_url(tmp_path: Path) -> None:
@@ -66,3 +66,80 @@ def test_secret_scanner_detects_webhook_without_underscore(tmp_path: Path) -> No
 
     assert findings, "Should detect plain 'webhook' assignment"
     assert secret not in [f.match for f in findings]
+
+
+def test_secret_scanner_detects_multiline_assignment():
+    """Test that a secret assigned across multiple lines is detected."""
+    content = """
+    my_secret =
+    "super_secret_value_that_should_be_detected"
+    """
+    findings = _scan_content(content)
+    assert len(findings) == 1
+    assert findings[0][1] == "super_secret_value_that_should_be_detected"
+    assert "Verdächtige Zuweisung eines potentiellen Secrets" in findings[0][2]
+
+def test_secret_scanner_detects_triple_quoted_string():
+    """Test that a secret in triple quotes is detected."""
+    content = """
+    my_secret = \"\"\"
+    super_secret_value_in_triple_quotes
+    \"\"\"
+    """
+    findings = _scan_content(content)
+    assert len(findings) == 1
+    # Note: _scan_content strips quotes, but preserves internal newlines
+    assert "super_secret_value_in_triple_quotes" in findings[0][1]
+    assert "Verdächtige Zuweisung eines potentiellen Secrets" in findings[0][2]
+
+def test_secret_scanner_detects_triple_single_quoted_string():
+    """Test that a secret in triple single quotes is detected."""
+    content = """
+    my_secret = '''
+    another_secret_value_in_triple_quotes
+    '''
+    """
+    findings = _scan_content(content)
+    assert len(findings) == 1
+    assert "another_secret_value_in_triple_quotes" in findings[0][1]
+
+def test_secret_scanner_detects_mixed_newlines_and_spaces():
+    """Test flexible whitespace around assignment."""
+    content = """
+    api_key
+      =
+    "my_api_key_value_12345"
+    """
+    findings = _scan_content(content)
+    assert len(findings) == 1
+    assert findings[0][1] == "my_api_key_value_12345"
+
+def test_secret_scanner_ignores_short_values_in_triple_quotes():
+    """Test that short/low entropy values in triple quotes are ignored."""
+    content = """
+    description = \"\"\"
+    This is a long description but not a secret.
+    It has low entropy.
+    \"\"\"
+    """
+    findings = _scan_content(content)
+    # Should be 0 because it doesn't look like a secret (low entropy/too short per line logic?)
+    assert len(findings) == 0
+
+def test_secret_scanner_detects_multiline_with_keyword():
+    """Test that a keyword variable with multiline text is flagged if it looks like a secret."""
+    content = """
+    private_key = \"\"\"
+    -----BEGIN PRIVATE KEY-----
+    MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDZ...
+    -----END PRIVATE KEY-----
+    \"\"\"
+    """
+    findings = _scan_content(content)
+    assert len(findings) >= 1
+    found_assignment = False
+    for f in findings:
+        if "Verdächtige Zuweisung" in f[2]:
+            found_assignment = True
+            break
+    assert found_assignment
