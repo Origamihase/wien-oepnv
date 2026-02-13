@@ -125,6 +125,12 @@ _SENSITIVE_KEY_SUBSTRINGS = frozenset({
     "signature",
     "email",
     "webhook",
+    # Additional broad matching
+    "session",
+    "cookie",
+    "clientid",
+    "clientsecret",
+    "authorization",
 })
 
 # Headers that must be stripped on cross-origin redirects or scheme downgrades
