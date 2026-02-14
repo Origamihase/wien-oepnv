@@ -226,5 +226,17 @@
     "starts_at": "2026-02-14T04:45:14+01:00",
     "ends_at": "2026-02-15T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-02-14"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Betriebsstörung",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2026-02-14T11:42:00+01:00",
+    "starts_at": "2026-02-14T11:42:00+01:00",
+    "ends_at": "2026-02-14T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2026-02-14"
   }
 ]
