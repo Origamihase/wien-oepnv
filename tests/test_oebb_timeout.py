@@ -56,5 +56,5 @@ def test_fetch_xml_passes_timeout_to_session(monkeypatch):
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession())
 
     oebb._fetch_xml("http://example.com", timeout=3)
-    assert recorded["timeout"] == 3
+    assert 2.9 <= recorded["timeout"] <= 3
     assert recorded["stream"] is True

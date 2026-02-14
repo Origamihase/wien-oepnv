@@ -10,7 +10,7 @@ import socket
 import time
 import types
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
-from typing import Any, Container
+from typing import Any, Container, MutableMapping
 from urllib.parse import parse_qsl, urlencode, urlparse
 
 import requests
@@ -267,6 +267,77 @@ def _check_response_security(response: requests.Response, *args: Any, **kwargs: 
             if not validate_http_url(full_url):
                 safe_url = _sanitize_url_for_error(full_url)
                 raise ValueError(f"Unsafe redirect to: {safe_url}")
+
+
+def _pin_url_to_ip(url: str) -> tuple[str, str]:
+    """
+    Resolve hostname to a safe IP and rewrite URL to use it (DNS Pinning).
+    Returns (pinned_url, original_hostname).
+    """
+    # 1. Basic validation (without DNS check to allow us to handle it)
+    safe_url = validate_http_url(url, check_dns=False)
+    if not safe_url:
+        sanitized = _sanitize_url_for_error(url)
+        raise ValueError(f"Invalid URL: {sanitized}")
+
+    parsed = urlparse(safe_url)
+    hostname = parsed.hostname
+    if not hostname:
+        sanitized = _sanitize_url_for_error(url)
+        raise ValueError(f"No hostname in URL: {sanitized}")
+
+    # 2. Resolve to Safe IP
+    ips = _resolve_hostname_safe(hostname)
+    target_ip = None
+    if ips:
+        for _, _, _, _, sockaddr in ips:
+            if is_ip_safe(sockaddr[0]):
+                target_ip = sockaddr[0]
+                break
+
+    if not target_ip:
+        sanitized = _sanitize_url_for_error(url)
+        raise ValueError(f"No safe IP resolved for {sanitized}")
+
+    # 3. Rewrite URL
+    if ":" in target_ip:
+        netloc = f"[{target_ip}]"
+    else:
+        netloc = target_ip
+
+    port = _get_port(parsed)
+    if port:
+        # Check against scheme default ports
+        default_port = 443 if parsed.scheme == "https" else 80
+        if port != default_port:
+            netloc = f"{netloc}:{port}"
+
+    pinned_url = parsed._replace(netloc=netloc).geturl()
+    return pinned_url, hostname
+
+
+def _strip_sensitive_headers(
+    headers: MutableMapping[str, str], original_url: str, new_url: str
+) -> None:
+    """Remove sensitive headers if the redirect crosses security boundaries."""
+    original_parsed = urlparse(original_url)
+    redirect_parsed = urlparse(new_url)
+
+    host_changed = original_parsed.hostname != redirect_parsed.hostname
+    scheme_downgraded = (
+        original_parsed.scheme == "https" and redirect_parsed.scheme != "https"
+    )
+    port_changed = _get_port(original_parsed) != _get_port(redirect_parsed)
+
+    if host_changed or scheme_downgraded or port_changed:
+        for header_name in list(headers.keys()):
+            if header_name in _SENSITIVE_HEADERS:
+                del headers[header_name]
+                continue
+
+            normalized = header_name.lower()
+            if any(partial in normalized for partial in _SENSITIVE_HEADER_PARTIALS):
+                del headers[header_name]
 
 
 def _get_port(parsed: Any) -> int | None:
@@ -732,58 +803,20 @@ def fetch_content_safe(
         ValueError: If URL is unsafe, Content-Type is invalid, or body size exceeds max_bytes.
         requests.RequestException: For network errors.
     """
-    safe_url = validate_http_url(url)
-    if not safe_url:
-        # Security: avoid echoing potentially sensitive URLs (e.g., embedded credentials) in errors.
-        sanitized_url = _sanitize_url_for_error(url)
-        raise ValueError(f"Unsafe or invalid URL: {sanitized_url}")
-
     # Security: Enforce default timeout to prevent Slowloris attacks if caller forgets it
     if timeout is None:
         timeout = DEFAULT_TIMEOUT
 
-    # Security: Prevent DNS Rebinding TOCTOU for HTTP (non-secure) requests.
-    # We resolve the IP and use it directly to lock the destination.
-    # HTTPS is protected by certificate validation (and verify_response_ip).
-    parsed = urlparse(safe_url)
-    if parsed.scheme.lower() == "http":
-        hostname = parsed.hostname
-        if hostname:
-            ips = _resolve_hostname_safe(hostname)
-            target_ip = None
-            for _, _, _, _, sockaddr in ips:
-                ip_str = sockaddr[0]
-                if is_ip_safe(ip_str):
-                    target_ip = ip_str
-                    break
+    # Security: Disable automatic redirects to prevent DNS Rebinding TOCTOU.
+    # We handle redirects manually to pin the DNS for each step.
+    kwargs["allow_redirects"] = False
 
-            if not target_ip:
-                # Fallback or empty resolution means unsafe/unreachable
-                sanitized_url = _sanitize_url_for_error(url)
-                raise ValueError(f"No safe IP resolved for {sanitized_url}")
-
-            # Reconstruct URL with safe IP
-            # Handle IPv6 literals by adding brackets
-            if ":" in target_ip:
-                safe_netloc = f"[{target_ip}]"
-            else:
-                safe_netloc = target_ip
-
-            port = _get_port(parsed)
-            if port and port != 80:
-                safe_netloc = f"{safe_netloc}:{port}"
-
-            safe_url = parsed._replace(netloc=safe_netloc).geturl()
-
-            # Ensure Host header is set to original hostname for Virtual Hosting
-            if "headers" not in kwargs:
-                kwargs["headers"] = {}
-            if "Host" not in kwargs["headers"]:
-                kwargs["headers"]["Host"] = hostname
+    # Ensure Host header is set to original hostname for Virtual Hosting
+    if "headers" not in kwargs:
+        kwargs["headers"] = {}
 
     # Security: Ensure redirects are validated by merging our security hook
     # with existing session hooks and any hooks passed by the caller.
-    # We do this manually to avoid modifying the session object or ignoring caller hooks.
     has_hooks = hasattr(session, "hooks")
     if has_hooks:
         request_hooks = session.hooks.copy()
@@ -815,37 +848,109 @@ def fetch_content_safe(
         resp_hooks.append(_check_response_security)
     request_hooks["response"] = resp_hooks
 
+    # Determine max redirects
+    max_redirects = 10
+    if hasattr(session, "max_redirects"):
+        max_redirects = session.max_redirects
+
+    current_url = url
     start_time = time.monotonic()
-    if has_hooks:
-        ctx = session.get(safe_url, stream=True, timeout=timeout, hooks=request_hooks, **kwargs)
-    else:
-        # Fallback for mocks/duck-types that don't support hooks
-        ctx = session.get(safe_url, stream=True, timeout=timeout, **kwargs)
 
-    with ctx as r:
-        # Prevent DNS Rebinding: Check the actual connected IP
-        # MUST be done before raise_for_status() to prevent leaking info via error codes
-        # if the attacker redirects to an internal IP that returns 404/500.
-        verify_response_ip(r)
+    for attempt in range(max_redirects + 1):
+        # Calculate remaining timeout
+        elapsed = time.monotonic() - start_time
+        # Security: Enforce a total timeout across redirects, but allow a minimal window (0.1s)
+        # to ensure we don't fail strictly on 0s timeouts used in tests with mocks.
+        current_timeout = max(0.1, float(timeout) - elapsed)
 
-        r.raise_for_status()
+        # 1. Validate and Pin
+        safe_url = validate_http_url(current_url, check_dns=False)
+        if not safe_url:
+            # Security: avoid echoing potentially sensitive URLs in errors.
+            sanitized_url = _sanitize_url_for_error(current_url)
+            raise ValueError(f"Unsafe or invalid URL: {sanitized_url}")
 
-        if allowed_content_types is not None:
-            content_type_header = r.headers.get("Content-Type", "")
-            if not content_type_header:
-                raise ValueError("Content-Type header missing, but validation required")
-            # Robust parsing: take first part before ';', strip, lower case
-            mime_type = content_type_header.split(";")[0].strip().lower()
-            if mime_type not in allowed_content_types:
-                raise ValueError(
-                    f"Invalid Content-Type: {mime_type} (expected {allowed_content_types})"
-                )
+        parsed = urlparse(safe_url)
+        target_url = safe_url
 
-        # Calculate remaining time for reading body if a total timeout was specified
-        read_timeout: float | None = None
-        if timeout is not None:
-            elapsed = time.monotonic() - start_time
-            # Ensure we have at least a small window to read data
-            read_timeout = max(0.1, float(timeout) - elapsed)
+        if parsed.scheme == "http":
+            pinned_url, hostname = _pin_url_to_ip(safe_url)
+            kwargs["headers"]["Host"] = hostname
+            target_url = pinned_url
+        else:
+            # HTTPS: Resolve to check safety (fail fast) but don't pin (rely on certs + verify_response_ip)
+            ips = _resolve_hostname_safe(parsed.hostname or "")
+            if not ips or not any(
+                is_ip_safe(sockaddr[0]) for _, _, _, _, sockaddr in ips
+            ):
+                sanitized_url = _sanitize_url_for_error(current_url)
+                raise ValueError(f"No safe IP resolved for {sanitized_url}")
 
-        return read_response_safe(r, max_bytes, timeout=read_timeout)
+            # If we switched from HTTP (pinned) to HTTPS, or just between domains, clean up Host header
+            if "Host" in kwargs["headers"]:
+                del kwargs["headers"]["Host"]
+
+        # 2. Make Request
+        # We must use session.get inside the loop.
+        # We use a try/finally block to ensure response is closed if we continue loop (redirect)
+        if has_hooks:
+            ctx = session.get(
+                target_url,
+                stream=True,
+                timeout=current_timeout,
+                hooks=request_hooks,
+                **kwargs,
+            )
+        else:
+            ctx = session.get(
+                target_url, stream=True, timeout=current_timeout, **kwargs
+            )
+
+        with ctx as r:
+            # Prevent DNS Rebinding: Check the actual connected IP
+            verify_response_ip(r)
+
+            # Duck-typing check for mocks that might lack is_redirect
+            is_redirect = getattr(r, "is_redirect", False)
+
+            if is_redirect:
+                # Handle Redirect
+                location = r.headers.get("Location")
+                if location:
+                    if attempt == max_redirects:
+                        raise requests.TooManyRedirects(
+                            f"Exceeded {max_redirects} redirects"
+                        )
+
+                    # Resolve relative URLs
+                    next_url = requests.compat.urljoin(current_url, location)
+
+                    # Strip sensitive headers if needed
+                    _strip_sensitive_headers(kwargs["headers"], current_url, next_url)
+
+                    current_url = next_url
+                    continue  # Loop again with new URL
+
+            # Final Response
+            r.raise_for_status()
+
+            if allowed_content_types is not None:
+                content_type_header = r.headers.get("Content-Type", "")
+                if not content_type_header:
+                    raise ValueError(
+                        "Content-Type header missing, but validation required"
+                    )
+                # Robust parsing
+                mime_type = content_type_header.split(";")[0].strip().lower()
+                if mime_type not in allowed_content_types:
+                    raise ValueError(
+                        f"Invalid Content-Type: {mime_type} (expected {allowed_content_types})"
+                    )
+
+            # Calculate remaining time for reading body
+            read_timeout = max(0.1, float(timeout) - (time.monotonic() - start_time))
+            return read_response_safe(r, max_bytes, timeout=read_timeout)
+
+    # Should not be reached due to TooManyRedirects check inside loop,
+    # but defensive return.
+    raise requests.TooManyRedirects(f"Exceeded {max_redirects} redirects")

@@ -42,7 +42,7 @@ class DummySession:
     def __exit__(self, exc_type, exc, tb):
         pass
 
-    def get(self, url, timeout, stream=False):
+    def get(self, url, timeout, stream=False, **kwargs):
         self._calls.append((url, timeout))
         return next(self._responses)
 
@@ -77,7 +77,10 @@ def test_rate_limit_retries_once_after_wait(monkeypatch, caplog):
 
     assert result is not None
     assert result.tag == "root"
-    assert calls == [("https://example.com", 1), ("https://example.com", 1)]
+    assert len(calls) == 2
+    for url, timeout in calls:
+        assert url == "https://example.com"
+        assert 0.9 <= timeout <= 1
 
     assert slept == [1.5]
 
@@ -112,5 +115,8 @@ def test_rate_limit_returns_none_after_retry(monkeypatch):
     result = oebb._fetch_xml("https://example.com", timeout=1)
 
     assert result is None
-    assert calls == [("https://example.com", 1), ("https://example.com", 1)]
+    assert len(calls) == 2
+    for url, timeout in calls:
+        assert url == "https://example.com"
+        assert 0.9 <= timeout <= 1
     assert slept == [1.5]
