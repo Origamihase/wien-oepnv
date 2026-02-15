@@ -202,5 +202,17 @@
     "starts_at": "2026-02-15T04:45:15+01:00",
     "ends_at": "2026-02-16T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-02-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Verunreinigung",
+    "description": "Linie D: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "28dd617e135ca8c10e6ad9cda709d30d6392210e846e91e8bdbb3b2e72457757",
+    "pubDate": "2026-02-15T06:06:00+01:00",
+    "starts_at": "2026-02-15T06:06:00+01:00",
+    "ends_at": "2026-02-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-02-15"
   }
 ]
