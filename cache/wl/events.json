@@ -206,25 +206,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Polizeieinsatz",
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2563cb7e5e67c7016a99b581b604e1f7ef686490b44625d39ce5e66b47c20dc1",
-    "pubDate": "2026-02-15T20:41:00+01:00",
-    "starts_at": "2026-02-15T20:41:00+01:00",
-    "ends_at": "2026-02-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-02-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Betriebsstörung",
-    "description": "Linie U3: Fahrtbehinderung in Richtung Ottakring. Voraussichtliche Dauer: 22:40. Grund: Betriebsstörung im Haltestellenbereich Gasometer.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2026-02-15T22:34:00+01:00",
-    "starts_at": "2026-02-15T22:34:00+01:00",
-    "ends_at": "2026-02-15T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2026-02-15"
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-02-15T23:00:12+01:00",
+    "starts_at": "2026-02-15T23:00:12+01:00",
+    "ends_at": "2026-02-16T05:30:00+01:00",
+    "_identity": "wl|störung|L=N29|D=2026-02-15"
   }
 ]
