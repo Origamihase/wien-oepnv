@@ -226,5 +226,41 @@
     "starts_at": "2026-02-16T21:12:59+01:00",
     "ends_at": "2026-02-16T22:12:00+01:00",
     "_identity": "wl|störung|L=46|D=2026-02-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44A: Witterung",
+    "description": "Linie 44 A: Fahrtbehinderung in Richtung Hernals S. Voraussichtliche Dauer: nicht absehbar. Grund: Witterung im Haltestellenbereich Mitterberg.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dd05fd28ae5ce508be9d1f505e78267b1b9481d0afbb0be7b5c9b7123ec80c9a",
+    "pubDate": "2026-02-16T21:49:00+01:00",
+    "starts_at": "2026-02-16T21:49:00+01:00",
+    "ends_at": "2026-02-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=44A|D=2026-02-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "94A: Verkehrsunfall",
+    "description": "Linie 94 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f0d634e8c64b753a861add399e7138caa8409a34cbca6326b25b7324feb41ede",
+    "pubDate": "2026-02-16T21:53:00+01:00",
+    "starts_at": "2026-02-16T21:53:00+01:00",
+    "ends_at": "2026-02-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=94A|D=2026-02-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "29B: Verkehrsunfall",
+    "description": "Linie 29 B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8b4d4a72f50e91161cc2a3568655409d3ad71971f5a441a5ae52af3d6739aec8",
+    "pubDate": "2026-02-16T21:55:00+01:00",
+    "starts_at": "2026-02-16T21:55:00+01:00",
+    "ends_at": "2026-02-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=29B|D=2026-02-16"
   }
 ]
