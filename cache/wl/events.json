@@ -140,7 +140,7 @@
     "guid": "5207814fd4dc4f846ce6bbf0f7351c2ccb2f85d0dd6245bc264f72a60b860741",
     "pubDate": "2026-02-12T00:00:14+01:00",
     "starts_at": "2026-02-12T00:00:14+01:00",
-    "ends_at": "2026-02-16T23:59:59+01:00",
+    "ends_at": "2026-02-17T23:59:59+01:00",
     "_identity": "wl|störung|L=57A|D=2026-02-12"
   },
   {
@@ -176,7 +176,7 @@
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
     "pubDate": "2026-02-14T00:00:17+01:00",
     "starts_at": "2026-02-14T00:00:17+01:00",
-    "ends_at": "2026-02-16T23:59:59+01:00",
+    "ends_at": "2026-02-17T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-02-14"
   },
   {
@@ -188,7 +188,7 @@
     "guid": "483eae38010ee8e6894791d2738a9629c827a8f49663810bceb0716d9219a663",
     "pubDate": "2026-02-15T00:00:27+01:00",
     "starts_at": "2026-02-15T00:00:27+01:00",
-    "ends_at": "2026-02-16T23:59:59+01:00",
+    "ends_at": "2026-02-17T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2026-02-15"
   },
   {
@@ -226,5 +226,53 @@
     "starts_at": "2026-02-16T23:52:00+01:00",
     "ends_at": "2026-02-17T23:55:00+01:00",
     "_identity": "wl|störung|L=10A|D=2026-02-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31A: Witterung",
+    "description": "Linie 31 A: Fahrtbehinderung in Richtung Großjedlersdorf, Jochbergengasse. Voraussichtliche Dauer: nicht absehbar. Grund: Witterung im Bereich Siemensstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "25b51c0d3a7268a9676b645733dc6b1e7ee8a8aadf3d6bffade3538a9814e3ea",
+    "pubDate": "2026-02-17T00:23:00+01:00",
+    "starts_at": "2026-02-17T00:23:00+01:00",
+    "ends_at": "2026-02-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=31A|D=2026-02-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-02-17T00:25:00+01:00",
+    "starts_at": "2026-02-17T00:25:00+01:00",
+    "ends_at": "2026-02-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2026-02-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31A: Fahrtbehinderung wegen Witterung",
+    "description": "Fahrtbehinderung wegen Witterung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee8cf0a2e393628019135abbfbf8ad553745682e986db343dcb75ed5762450b8",
+    "pubDate": "2026-02-17T00:26:49+01:00",
+    "starts_at": "2026-02-17T00:26:54+01:00",
+    "ends_at": "2026-02-17T01:26:00+01:00",
+    "_identity": "wl|störung|L=31A|D=2026-02-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Witterung",
+    "description": "Linie 48 A: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: nicht absehbar. Grund: Witterung im Haltestellenbereich Klinik Penzing.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "269ac5b22ef926539eb9eb04ae2af52c62ef7d894f64ff9269be8fc1a4760c9b",
+    "pubDate": "2026-02-17T00:28:00+01:00",
+    "starts_at": "2026-02-17T00:28:00+01:00",
+    "ends_at": "2026-02-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=48A|D=2026-02-17"
   }
 ]
