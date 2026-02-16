@@ -206,25 +206,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Vandalismus",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
+    "title": "49: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e8901cc9e29cdbdff37b60e1a186ea84cfcae63da145aa8e8cd5bef374a87a0d",
-    "pubDate": "2026-02-16T19:46:00+01:00",
-    "starts_at": "2026-02-16T19:46:00+01:00",
+    "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
+    "pubDate": "2026-02-16T21:03:00+01:00",
+    "starts_at": "2026-02-16T21:13:28+01:00",
     "ends_at": "2026-02-16T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2026-02-16"
+    "_identity": "wl|störung|L=49|D=2026-02-16"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "46: Fahrtbehinderung wegen Rettungseinsatz",
     "description": "Fahrtbehinderung wegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84",
-    "pubDate": "2026-02-16T20:10:04+01:00",
-    "starts_at": "2026-02-16T20:10:11+01:00",
-    "ends_at": "2026-02-16T21:09:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-02-16"
+    "guid": "e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc",
+    "pubDate": "2026-02-16T21:12:59+01:00",
+    "starts_at": "2026-02-16T21:12:59+01:00",
+    "ends_at": "2026-02-16T22:12:00+01:00",
+    "_identity": "wl|störung|L=46|D=2026-02-16"
   }
 ]
