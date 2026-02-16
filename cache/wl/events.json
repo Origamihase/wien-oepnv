@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N29: Busse halten auf der Hauptfahrbahn",
-    "description": "Busse halten auf der Hauptfahrbahn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
-    "pubDate": "2026-02-15T23:00:12+01:00",
-    "starts_at": "2026-02-15T23:00:12+01:00",
-    "ends_at": "2026-02-16T05:30:00+01:00",
-    "_identity": "wl|störung|L=N29|D=2026-02-15"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,5 +202,89 @@
     "starts_at": "2026-02-16T04:45:13+01:00",
     "ends_at": "2026-02-17T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-02-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "135dc138ba98273ad144d64ca134b6893a89c99daba5bd7077ef978a587e1c53",
+    "pubDate": "2026-02-16T05:53:10+01:00",
+    "starts_at": "2026-02-16T05:53:10+01:00",
+    "ends_at": "2026-02-16T06:52:00+01:00",
+    "_identity": "wl|störung|L=52|D=2026-02-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-02-16T06:14:00+01:00",
+    "starts_at": "2026-02-16T06:14:00+01:00",
+    "ends_at": "2026-02-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2026-02-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "3A: Verspätungen",
+    "description": "Linie 3 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87",
+    "pubDate": "2026-02-16T06:16:00+01:00",
+    "starts_at": "2026-02-16T06:16:00+01:00",
+    "ends_at": "2026-02-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=3A|D=2026-02-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "39A: Verspätungen",
+    "description": "Linie 39 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0d9b2c21192d370d49c26a63f910b951db7c6d82fe54d2f7390917957d08150c",
+    "pubDate": "2026-02-16T06:37:00+01:00",
+    "starts_at": "2026-02-16T06:37:00+01:00",
+    "ends_at": "2026-02-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=39A|D=2026-02-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "32A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "645657b5f8fa9424afcdedf5cdc8231d880d3cfc356ac7f0e353f15c699e0752",
+    "pubDate": "2026-02-16T06:43:33+01:00",
+    "starts_at": "2026-02-16T06:43:33+01:00",
+    "ends_at": "2026-02-16T07:42:00+01:00",
+    "_identity": "wl|störung|L=32A|D=2026-02-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "32A: Fremdunfall Einstieg beim Möllplatz",
+    "description": "Fremdunfall Einstieg beim Möllplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f36e024dd0fa1c1588ccb08036730c92bc7701675c8555a4eb5f1b996357b683",
+    "pubDate": "2026-02-16T06:43:34+01:00",
+    "starts_at": "2026-02-16T06:43:34+01:00",
+    "ends_at": "2026-02-16T07:47:00+01:00",
+    "_identity": "wl|störung|L=32A|D=2026-02-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "32A: Fremder Verkehrsunfall",
+    "description": "Die Linie 32 A wird in Richtung zwischen Leopoldau S U und Lavantgasse, Schule über die Aistgasse umgeleitet. Voraussichtliche Dauer: 07:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Thayagasse 19.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2d45b6da852b996e0cb7d0a979aae9c19692fc48ec76a7326b0f07b2290320fd",
+    "pubDate": "2026-02-16T06:44:00+01:00",
+    "starts_at": "2026-02-16T06:44:00+01:00",
+    "ends_at": "2026-02-16T23:55:00+01:00",
+    "_identity": "wl|störung|L=32A|D=2026-02-16"
   }
 ]
