@@ -55,17 +55,6 @@ def _sanitize_log_detail(detail: str) -> str:
     return clean_message(sanitized)
 
 
-def _escape_cell(text: str) -> str:
-    """Escape pipe characters and HTML to prevent injection and table breakage."""
-    escaped = html.escape(text)
-    return escaped.replace("|", r"\|")
-
-
-def _sanitize_code_span(text: str) -> str:
-    """Sanitize text intended for inline code spans by replacing backticks."""
-    return text.replace("`", "'")
-
-
 def _escape_markdown_text(text: str) -> str:
     """Escape HTML and Markdown characters to prevent injection/XSS."""
     text = html.escape(text)
@@ -74,6 +63,17 @@ def _escape_markdown_text(text: str) -> str:
     for char in "[]()*_`":
         text = text.replace(char, f"\\{char}")
     return text
+
+
+def _escape_cell(text: str) -> str:
+    """Escape pipe characters and HTML to prevent injection and table breakage."""
+    escaped = _escape_markdown_text(text)
+    return escaped.replace("|", r"\|")
+
+
+def _sanitize_code_span(text: str) -> str:
+    """Sanitize text intended for inline code spans by replacing backticks."""
+    return text.replace("`", "'")
 
 
 @dataclass
