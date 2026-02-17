@@ -35,7 +35,8 @@ _SENSITIVE_ASSIGN_RE = re.compile(
             session_id|session-id|session.id|
             cookie|signature|bearer|jwt|
             webhook_url|webhook-url|webhook.url|webhook|
-            dsn|subscriptionkey
+            dsn|subscriptionkey|
+            glpat|ghp
         )
         [a-z0-9_.-]*  # Suffix allowing letters, numbers, underscores, dots, hyphens
     )

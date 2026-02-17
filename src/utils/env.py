@@ -61,7 +61,8 @@ except ImportError:
                 r"x[-_.\s]*amz[-_.\s]*signature|x[-_.\s]*auth[-_.\s]*token|"
                 r"[a-z0-9_.\-]*passphrase[a-z0-9_.\-]*|[a-z0-9_.\-]*access[-_.\s]*key[-_.\s]*id[a-z0-9_.\-]*|"
                 r"[a-z0-9_.\-]*secret[-_.\s]*access[-_.\s]*key|[a-z0-9_.\-]*auth[-_.\s]*code[a-z0-9_.\-]*|"
-                r"[a-z0-9_.\-]*authorization[-_.\s]*code[a-z0-9_.\-]*"
+                r"[a-z0-9_.\-]*authorization[-_.\s]*code[a-z0-9_.\-]*|"
+                r"[a-z0-9_.\-]*otp(?:_[a-z0-9_.\-]*)?|[a-z0-9_.\-]*glpat[a-z0-9_.\-]*|[a-z0-9_.\-]*ghp[a-z0-9_.\-]*"
             )
 
             _header_keys = (
