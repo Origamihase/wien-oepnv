@@ -113,6 +113,16 @@ class TestOebbFiltering:
             "Wegen Bauarbeiten der Deutschen Bahn (DB) können zwischen Lindau (Bodensee) Reutin Bahnhof und ST. MARGRETHEN SG..."
         ) is False
 
+    def test_neulengbach_tullnerbach_excluded(self):
+        # Regression test for "Neulengbach ↔ Tullnerbach-Pressbaum"
+        # User reported this as irrelevant (neither Vienna nor commuter stations).
+        # We updated metadata to set pendler=False for these stations.
+        # This test ensures they are filtered out.
+        assert _is_relevant(
+            "Neulengbach ↔ Tullnerbach-Pressbaum",
+            "Wegen Bauarbeiten können zwischen Neulengbach Bahnhof und Tullnerbach-Pressbaum Bahnhof von 28.03.2026 (03:00 Uhr) bis 07.04.2026 (03:00 Uhr) …"
+        ) is False
+
 class TestSigmundsherbergRegression:
     """
     Regression test for Sigmundsherberg ↔ Hadersdorf am Kamp.
