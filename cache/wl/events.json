@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62A: Busse halten Breitenfurter Straße 236-238",
-    "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3",
-    "pubDate": "2026-02-16T04:45:13+01:00",
-    "starts_at": "2026-02-16T04:45:13+01:00",
-    "ends_at": "2026-02-17T00:35:00+01:00",
-    "_identity": "wl|störung|L=62A|D=2026-02-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N29: Busse halten auf der Hauptfahrbahn",
     "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -218,61 +206,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Rettungseinsatz",
-    "description": "Linie 10 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "title": "N66: Witterung",
+    "description": "Die Linie N66 ist derzeit in Richtung Liesing S an der Weiterfahrt gehindert. Voraussichtliche Dauer: nicht absehbar. Grund: Witterung im Haltestellenbereich Bhf. Atzgersdorf S.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "219e547df2be869f9c5e196043c5ef1b5d356073d50ea5347540dd618f54101f",
-    "pubDate": "2026-02-16T23:52:00+01:00",
-    "starts_at": "2026-02-16T23:52:00+01:00",
+    "guid": "292489d67ddb4fc054427923c40936c803db5103fc04e570be2af7b34d8594df",
+    "pubDate": "2026-02-17T02:51:00+01:00",
+    "starts_at": "2026-02-17T02:51:00+01:00",
     "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=10A|D=2026-02-16"
+    "_identity": "wl|störung|L=N66|D=2026-02-17"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31A: Witterung",
-    "description": "Linie 31 A: Fahrtbehinderung in Richtung Großjedlersdorf, Jochbergengasse. Voraussichtliche Dauer: nicht absehbar. Grund: Witterung im Bereich Siemensstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "25b51c0d3a7268a9676b645733dc6b1e7ee8a8aadf3d6bffade3538a9814e3ea",
-    "pubDate": "2026-02-17T00:23:00+01:00",
-    "starts_at": "2026-02-17T00:23:00+01:00",
-    "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=31A|D=2026-02-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Schadhaftes Fahrzeug",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
-    "pubDate": "2026-02-17T00:25:00+01:00",
-    "starts_at": "2026-02-17T00:25:00+01:00",
-    "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-02-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31A: Fahrtbehinderung wegen Witterung",
+    "title": "N66: Fahrtbehinderung wegen Witterung",
     "description": "Fahrtbehinderung wegen Witterung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ee8cf0a2e393628019135abbfbf8ad553745682e986db343dcb75ed5762450b8",
-    "pubDate": "2026-02-17T00:26:49+01:00",
-    "starts_at": "2026-02-17T00:26:54+01:00",
-    "ends_at": "2026-02-17T01:26:00+01:00",
-    "_identity": "wl|störung|L=31A|D=2026-02-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "48A: Witterung",
-    "description": "Linie 48 A: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: nicht absehbar. Grund: Witterung im Haltestellenbereich Klinik Penzing.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "269ac5b22ef926539eb9eb04ae2af52c62ef7d894f64ff9269be8fc1a4760c9b",
-    "pubDate": "2026-02-17T00:28:00+01:00",
-    "starts_at": "2026-02-17T00:28:00+01:00",
-    "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=48A|D=2026-02-17"
+    "guid": "3c7f3d716d967ab95d91a48d2b206dcf7f9212a7b5239d8725315e45eb549def",
+    "pubDate": "2026-02-17T02:53:09+01:00",
+    "starts_at": "2026-02-17T02:53:09+01:00",
+    "ends_at": "2026-02-17T03:52:00+01:00",
+    "_identity": "wl|störung|L=N66|D=2026-02-17"
   }
 ]
