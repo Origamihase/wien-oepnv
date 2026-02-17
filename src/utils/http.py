@@ -90,6 +90,8 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "objectid",
     "dsn",
     "otp",
+    "glpat",
+    "ghp",
     "codechallenge",
     "codeverifier",
     "xapikey",
