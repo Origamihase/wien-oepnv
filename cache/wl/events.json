@@ -218,49 +218,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Fremder Verkehrsunfall",
-    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "77A: Verkehrsunfall",
+    "description": "Linie 77 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1b00fb340622a0ca705f8951a39064434e168b4386156987e0648096623cc1c4",
-    "pubDate": "2026-02-17T11:07:00+01:00",
-    "starts_at": "2026-02-17T11:07:00+01:00",
+    "guid": "b1866dbda10de11cf3a1ffe8fa6fa879751a915b069299afcb4c2a0a6f3945d6",
+    "pubDate": "2026-02-17T13:58:00+01:00",
+    "starts_at": "2026-02-17T13:58:00+01:00",
     "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-02-17"
+    "_identity": "wl|störung|L=77A|D=2026-02-17"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Fahrtbehinderung Falschparker",
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "69A: Verkehrsunfall",
+    "description": "Linie 69 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
-    "pubDate": "2026-02-17T13:38:00+01:00",
-    "starts_at": "2026-02-17T13:49:57+01:00",
+    "guid": "0fc85d27689d90831656e0a962f5ee55294a7b1a7fac9f6b82c5a3b2f65b4ae1",
+    "pubDate": "2026-02-17T14:38:00+01:00",
+    "starts_at": "2026-02-17T14:38:00+01:00",
     "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-02-17"
+    "_identity": "wl|störung|L=69A|D=2026-02-17"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Fahrtbehinderung Falschparker",
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "4A: Betriebsstörung",
+    "description": "Linie 4 A: Fahrtbehinderung in Richtung Karlsplatz U. Voraussichtliche Dauer: 15:20. Grund: Betriebsstörung im Haltestellenbereich Wittelsbachstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d5852610e5230534aa875aec60af4a7a1b528ad8f8dd7b2db5fde27fedc59960",
-    "pubDate": "2026-02-17T13:38:00+01:00",
-    "starts_at": "2026-02-17T13:42:13+01:00",
+    "guid": "832357233e65bcaa6620e85e7746d1262fe141eabe0440ebadc3b495b4ad3714",
+    "pubDate": "2026-02-17T15:02:00+01:00",
+    "starts_at": "2026-02-17T15:02:00+01:00",
     "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-02-17"
+    "_identity": "wl|störung|L=4A|D=2026-02-17"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "68B: Polizeieinsatz",
-    "description": "Linie 68 B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "title": "18/6: Rettungseinsatz",
+    "description": "Linie 6: Betrieb nur zwischen Geiereckstraße und Eichenstraße. Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße. Linie 18: Betrieb nur zwischen Schlachthausgasse U und Eichenstraße. Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße. Voraussichtliche Dauer: 15:25. Grund: Rettungseinsatz im Haltestellenbereich Margaretengürtel U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "14c3903c7475896150659edfe2aba2652833aa37a03ab40f373472276cd0139a",
-    "pubDate": "2026-02-17T13:39:00+01:00",
-    "starts_at": "2026-02-17T13:39:00+01:00",
+    "guid": "1def9461b8655d7b6f67bdc914523256dd51eef4cde802a2417942e6aeda9a74",
+    "pubDate": "2026-02-17T15:03:00+01:00",
+    "starts_at": "2026-02-17T15:03:00+01:00",
     "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=68B|D=2026-02-17"
+    "_identity": "wl|störung|L=18,6|D=2026-02-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Rettungseinsatz Betrieb ab Eichenstraße",
+    "description": "Rettungseinsatz Betrieb ab Eichenstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
+    "pubDate": "2026-02-17T15:05:52+01:00",
+    "starts_at": "2026-02-17T15:05:52+01:00",
+    "ends_at": "2026-02-17T16:05:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-02-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "4A: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung Betriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e2e1a9ce15402ab6a000b3de7a0d754224d892d4285e5955a278886dcbcb28cd",
+    "pubDate": "2026-02-17T15:08:28+01:00",
+    "starts_at": "2026-02-17T15:08:28+01:00",
+    "ends_at": "2026-02-17T16:07:00+01:00",
+    "_identity": "wl|störung|L=4A|D=2026-02-17"
   }
 ]
