@@ -53,6 +53,9 @@ def test_fetch_xml_passes_timeout_to_session(monkeypatch):
             recorded["timeout"] = timeout
             recorded["stream"] = stream
             return DummyResponse()
+
+        def request(self, method, url, timeout=None, stream=False, **kwargs):
+            return self.get(url, timeout=timeout, stream=stream, **kwargs)
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession())
 
     oebb._fetch_xml("http://example.com", timeout=3)

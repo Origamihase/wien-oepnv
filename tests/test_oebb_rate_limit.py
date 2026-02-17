@@ -46,6 +46,9 @@ class DummySession:
         self._calls.append((url, timeout))
         return next(self._responses)
 
+    def request(self, method, url, timeout=None, stream=False, **kwargs):
+        return self.get(url, timeout=timeout, stream=stream, **kwargs)
+
 
 def test_rate_limit_retries_once_after_wait(monkeypatch, caplog):
     responses = [

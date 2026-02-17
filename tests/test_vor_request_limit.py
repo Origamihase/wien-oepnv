@@ -292,6 +292,10 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(monkeypa
         def iter_content(self, chunk_size=1):
             return []
 
+        @property
+        def content(self):
+            return getattr(self, "_content", b"")
+
     class DummySession:
         def __init__(self, response: DummyResponse):
             self._response = response
@@ -310,6 +314,9 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(monkeypa
                 def __exit__(inner, exc_type, exc, tb):
                     pass
             return CM()
+
+        def request(self, method, url, **kwargs):
+            return self.get(url, **kwargs)
 
     def fake_session_with_retries(*args, **kwargs):
         return DummySession(DummyResponse(status_code, headers))
@@ -360,6 +367,10 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
         def iter_content(self, chunk_size=1):
             yield b"{}"
 
+        @property
+        def content(self):
+            return getattr(self, "_content", b"")
+
     class DummySession:
         def __init__(self):
             self.calls = 0
@@ -381,6 +392,9 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
                 def __exit__(inner, exc_type, exc, tb):
                     pass
             return CM()
+
+        def request(self, method, url, **kwargs):
+            return self.get(url, **kwargs)
 
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 

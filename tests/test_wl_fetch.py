@@ -47,6 +47,9 @@ def test_fetch_events_handles_invalid_json(monkeypatch, caplog):
         def get(self, url, params=None, timeout=None, stream=False, **kwargs):
             return DummyResponse()
 
+        def request(self, method, url, **kwargs):
+            return self.get(url, **kwargs)
+
     monkeypatch.setattr("src.providers.wl_fetch.session_with_retries", lambda *a, **kw: DummySession())
 
     with caplog.at_level(logging.WARNING):
