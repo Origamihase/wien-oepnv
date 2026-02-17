@@ -51,11 +51,11 @@ def test_fetch_content_safe_slowloris(mock_verify_ip, mock_validate_url):
     response.iter_content.side_effect = slow_iterator
     response.raise_for_status.return_value = None
 
-    # Configure session.get context manager to return our response
-    session.get.return_value.__enter__.return_value = response
-    session.get.return_value.__exit__.return_value = None
+    # Configure session.request context manager to return our response
+    session.request.return_value.__enter__.return_value = response
+    session.request.return_value.__exit__.return_value = None
 
-    # Call with timeout=0.1. session.get takes negligible time in mock.
+    # Call with timeout=0.1. session.request takes negligible time in mock.
     # So read_response_safe will get ~0.1s timeout.
     # The iterator sleeps 0.3s, so it should fail.
 
@@ -99,8 +99,8 @@ def test_fetch_content_safe_default_timeout(mock_verify_ip, mock_validate_url):
     response.iter_content.return_value = [b"data"]
     response.raise_for_status.return_value = None
 
-    session.get.return_value.__enter__.return_value = response
-    session.get.return_value.__exit__.return_value = None
+    session.request.return_value.__enter__.return_value = response
+    session.request.return_value.__exit__.return_value = None
 
     # Mock read_response_safe to intercept call
     with patch("src.utils.http.read_response_safe") as mock_read:
@@ -108,9 +108,9 @@ def test_fetch_content_safe_default_timeout(mock_verify_ip, mock_validate_url):
 
         fetch_content_safe(session, "http://example.com", timeout=None)
 
-        # Check that session.get was called with timeout=20 (DEFAULT_TIMEOUT)
+        # Check that session.request was called with timeout=20 (DEFAULT_TIMEOUT)
         # Note: DEFAULT_TIMEOUT is 20 in src/utils/http.py
-        kwargs = session.get.call_args[1]
+        kwargs = session.request.call_args[1]
         assert 19.9 <= kwargs["timeout"] <= 20
 
         # Check that read_response_safe was called with a timeout

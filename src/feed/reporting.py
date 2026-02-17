@@ -21,12 +21,12 @@ from .logging import diagnostics_log_path, error_log_path, prune_log_file
 try:  # pragma: no cover - support package and script execution
     from utils.env import get_bool_env, read_secret
     from utils.files import atomic_write
-    from utils.http import session_with_retries, validate_http_url, verify_response_ip
+    from utils.http import request_safe, session_with_retries, validate_http_url
     from utils.logging import sanitize_log_message
 except ModuleNotFoundError:  # pragma: no cover
     from ..utils.env import get_bool_env, read_secret
     from ..utils.files import atomic_write
-    from ..utils.http import session_with_retries, validate_http_url, verify_response_ip
+    from ..utils.http import request_safe, session_with_retries, validate_http_url
     from ..utils.logging import sanitize_log_message
 
 log = logging.getLogger("build_feed")
@@ -733,9 +733,17 @@ class _GithubIssueReporter:
                 raise_on_status=False,
             ) as session:
                 session.headers.update(headers)
-                response = session.post(url, json=payload, timeout=10)
-                # Ensure we didn't get redirected to a private IP (DNS Rebinding)
-                verify_response_ip(response)
+                # Security: Use request_safe to prevent SSRF via DNS Rebinding/Redirects.
+                # session.post() follows redirects automatically and re-resolves DNS,
+                # which creates a TOCTOU vulnerability. request_safe() pins the IP.
+                response = request_safe(
+                    session,
+                    url,
+                    method="POST",
+                    json=payload,
+                    timeout=10,
+                    raise_for_status=False,
+                )
 
         except (requests.RequestException, ValueError) as exc:
             log.warning(

@@ -783,23 +783,30 @@ def read_response_safe(
     return b"".join(chunks)
 
 
-def fetch_content_safe(
+def request_safe(
     session: requests.Session,
     url: str,
+    method: str = "GET",
     max_bytes: int = 10 * 1024 * 1024,
     timeout: int | None = None,
     allowed_content_types: Container[str] | None = None,
+    raise_for_status: bool = True,
     **kwargs: Any,
-) -> bytes:
-    """Fetch URL content with a size limit to prevent DoS.
+) -> requests.Response:
+    """Perform an HTTP request with DNS pinning and size limits to prevent DoS/SSRF.
 
     Args:
         session: The requests session to use.
         url: The URL to fetch.
+        method: HTTP method (default: "GET").
         max_bytes: Maximum allowed response body size in bytes (default: 10MB).
         timeout: Request timeout in seconds.
-        allowed_content_types: Optional list of allowed MIME types (e.g. ["application/json"]).
-        **kwargs: Additional arguments passed to session.get().
+        allowed_content_types: Optional list of allowed MIME types.
+        raise_for_status: If True, call raise_for_status() on the response (default: True).
+        **kwargs: Additional arguments passed to session.request().
+
+    Returns:
+        The requests.Response object with content consumed and attached to ._content.
 
     Raises:
         ValueError: If URL is unsafe, Content-Type is invalid, or body size exceeds max_bytes.
@@ -811,7 +818,8 @@ def fetch_content_safe(
 
     # Security: Disable automatic redirects to prevent DNS Rebinding TOCTOU.
     # We handle redirects manually to pin the DNS for each step.
-    kwargs["allow_redirects"] = False
+    # We remove it from kwargs to prevent conflict with explicit argument in session.request.
+    kwargs.pop("allow_redirects", None)
 
     # Ensure Host header is set to original hostname for Virtual Hosting
     if "headers" not in kwargs:
@@ -858,6 +866,15 @@ def fetch_content_safe(
     current_url = url
     start_time = time.monotonic()
 
+    # Determine methods that typically support redirects (GET, HEAD)
+    # RFC 7231 says 3xx should be followed for safe methods, or 303 See Other.
+    # requests follows redirects for all methods if allow_redirects=True, but we handle manually.
+    # If method is POST/PUT/DELETE, standard redirects (301, 302) might change method to GET.
+    # requests handles this logic inside SessionRedirectMixin.
+    # For simplicity and security, we only follow redirects if appropriate,
+    # but here we replicate requests' behavior of following redirects.
+
+    # We loop to handle redirects
     for attempt in range(max_redirects + 1):
         # Calculate remaining timeout
         elapsed = time.monotonic() - start_time
@@ -893,20 +910,16 @@ def fetch_content_safe(
                 del kwargs["headers"]["Host"]
 
         # 2. Make Request
-        # We must use session.get inside the loop.
-        # We use a try/finally block to ensure response is closed if we continue loop (redirect)
-        if has_hooks:
-            ctx = session.get(
-                target_url,
-                stream=True,
-                timeout=current_timeout,
-                hooks=request_hooks,
-                **kwargs,
-            )
-        else:
-            ctx = session.get(
-                target_url, stream=True, timeout=current_timeout, **kwargs
-            )
+        # We use session.request inside the loop.
+        ctx = session.request(
+            method,
+            target_url,
+            stream=True,
+            timeout=current_timeout,
+            hooks=request_hooks,
+            allow_redirects=False,
+            **kwargs,
+        )
 
         with ctx as r:
             # Prevent DNS Rebinding: Check the actual connected IP
@@ -930,11 +943,37 @@ def fetch_content_safe(
                     # Strip sensitive headers if needed
                     _strip_sensitive_headers(kwargs["headers"], current_url, next_url)
 
+                    # Update URL and continue loop
                     current_url = next_url
-                    continue  # Loop again with new URL
+
+                    # If redirects are followed, standard behavior (like requests) is to switch to GET
+                    # for 301/302/303 if original was not HEAD.
+                    # 307/308 preserve method.
+                    # For simplicity, if we are redirecting, we generally respect the status code implications.
+                    # requests implementation details are complex.
+                    # However, since we are doing manual redirects for security, we should mimic requests behavior roughly
+                    # or just keep using the same method if it's 307/308, and switch to GET for others?
+                    # For this implementation, we simply persist the method unless it's a 303 (See Other)
+                    # which MUST be GET.
+                    if r.status_code == 303 and method != "HEAD":
+                        method = "GET"
+                        # Drop data/json/files for GET redirect
+                        kwargs.pop("data", None)
+                        kwargs.pop("json", None)
+                        kwargs.pop("files", None)
+
+                    # For 301/302, requests switches to GET if not 307/308
+                    if r.status_code in (301, 302) and method == "POST":
+                        method = "GET"
+                        kwargs.pop("data", None)
+                        kwargs.pop("json", None)
+                        kwargs.pop("files", None)
+
+                    continue
 
             # Final Response
-            r.raise_for_status()
+            if raise_for_status:
+                r.raise_for_status()
 
             if allowed_content_types is not None:
                 content_type_header = r.headers.get("Content-Type", "")
@@ -951,8 +990,36 @@ def fetch_content_safe(
 
             # Calculate remaining time for reading body
             read_timeout = max(0.1, float(timeout) - (time.monotonic() - start_time))
-            return read_response_safe(r, max_bytes, timeout=read_timeout)
+            content = read_response_safe(r, max_bytes, timeout=read_timeout)
+
+            # Manually attach content to response object so it's usable after close
+            r._content = content
+            r._content_consumed = True
+
+            return r
 
     # Should not be reached due to TooManyRedirects check inside loop,
     # but defensive return.
     raise requests.TooManyRedirects(f"Exceeded {max_redirects} redirects")
+
+
+def fetch_content_safe(
+    session: requests.Session,
+    url: str,
+    max_bytes: int = 10 * 1024 * 1024,
+    timeout: int | None = None,
+    allowed_content_types: Container[str] | None = None,
+    **kwargs: Any,
+) -> bytes:
+    """Fetch URL content with a size limit to prevent DoS (legacy wrapper)."""
+    response = request_safe(
+        session,
+        url,
+        method="GET",
+        max_bytes=max_bytes,
+        timeout=timeout,
+        allowed_content_types=allowed_content_types,
+        raise_for_status=True,
+        **kwargs,
+    )
+    return response.content

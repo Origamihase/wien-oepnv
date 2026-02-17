@@ -41,7 +41,7 @@ def test_fetch_content_safe_ssrf_bypass_on_error():
         mock_response.__enter__.return_value = mock_response
         mock_response.__exit__.return_value = None
 
-        with patch.object(session, "get", return_value=mock_response):
+        with patch.object(session, "request", return_value=mock_response):
 
             # 3. Execute
             # If Vulnerable: raise_for_status() is called BEFORE verify_response_ip().

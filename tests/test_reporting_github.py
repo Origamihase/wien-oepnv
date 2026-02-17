@@ -17,7 +17,7 @@ def test_run_report_creates_github_issue(monkeypatch):
     # Robustly patch verify_response_ip in all loaded modules where it might be used
     # This handles aliasing (src.utils vs utils) and imports in feed.reporting
     import sys
-    for module_name in ["src.utils.http", "utils.http", "feed.reporting"]:
+    for module_name in ["src.utils.http", "utils.http"]:
         if module_name in sys.modules:
             monkeypatch.setattr(sys.modules[module_name], "verify_response_ip", lambda _: None)
 
@@ -70,7 +70,7 @@ def test_run_report_sanitizes_github_error_details(monkeypatch, caplog):
     monkeypatch.setenv("FEED_GITHUB_TOKEN", "secret-token")
 
     import sys
-    for module_name in ["src.utils.http", "utils.http", "feed.reporting"]:
+    for module_name in ["src.utils.http", "utils.http"]:
         if module_name in sys.modules:
             monkeypatch.setattr(sys.modules[module_name], "verify_response_ip", lambda _: None)
 

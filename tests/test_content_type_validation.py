@@ -10,14 +10,13 @@ def mock_session():
 
 @pytest.fixture
 def mock_response():
-    response = MagicMock(spec=requests.Response)
+    response = requests.Response()
     response.url = "http://example.com"
     response.status_code = 200
-    response.iter_content.return_value = [b"content"]
-    # Mock raw.connection.sock.getpeername for verify_response_ip
-    # We need to structure it so that getattr(response.raw, "connection") returns an object
-    # that has a sock attribute, which has getpeername()
+    # Mock iter_content to return content
+    response.iter_content = MagicMock(return_value=[b"content"])
 
+    # Mock raw connection for verify_response_ip
     mock_connection = MagicMock()
     mock_sock = MagicMock()
     mock_sock.getpeername.return_value = ("8.8.8.8", 80) # Safe IP
@@ -27,18 +26,15 @@ def mock_response():
     response.raw = MagicMock()
     response.raw.connection = mock_connection
 
-    # is_redirect needs to be False for raise_for_status to work typically,
-    # but here we mock raise_for_status separately if needed.
-    # Actually requests.Response.raise_for_status checks status_code.
-    # We mock it to do nothing.
-    response.raise_for_status = MagicMock()
+    # Mock raise_for_status to avoid HTTPError if status is bad (default is good here)
+    # But real raise_for_status is fine if status is 200.
 
     return response
 
 def test_fetch_content_safe_no_validation(mock_session, mock_response):
     """Test that without allowed_content_types, any content type is accepted."""
     mock_response.headers = {"Content-Type": "text/html"}
-    mock_session.get.return_value.__enter__.return_value = mock_response
+    mock_session.request.return_value.__enter__.return_value = mock_response
 
     content = fetch_content_safe(mock_session, "http://example.com")
     assert content == b"content"
@@ -46,7 +42,7 @@ def test_fetch_content_safe_no_validation(mock_session, mock_response):
 def test_fetch_content_safe_valid_json(mock_session, mock_response):
     """Test that matching content type is accepted."""
     mock_response.headers = {"Content-Type": "application/json"}
-    mock_session.get.return_value.__enter__.return_value = mock_response
+    mock_session.request.return_value.__enter__.return_value = mock_response
 
     content = fetch_content_safe(
         mock_session,
@@ -58,7 +54,7 @@ def test_fetch_content_safe_valid_json(mock_session, mock_response):
 def test_fetch_content_safe_invalid_type(mock_session, mock_response):
     """Test that mismatching content type raises ValueError."""
     mock_response.headers = {"Content-Type": "text/html"}
-    mock_session.get.return_value.__enter__.return_value = mock_response
+    mock_session.request.return_value.__enter__.return_value = mock_response
 
     with pytest.raises(ValueError, match="Invalid Content-Type"):
         fetch_content_safe(
@@ -70,7 +66,7 @@ def test_fetch_content_safe_invalid_type(mock_session, mock_response):
 def test_fetch_content_safe_charset(mock_session, mock_response):
     """Test that content type with charset is parsed correctly."""
     mock_response.headers = {"Content-Type": "application/json; charset=utf-8"}
-    mock_session.get.return_value.__enter__.return_value = mock_response
+    mock_session.request.return_value.__enter__.return_value = mock_response
 
     content = fetch_content_safe(
         mock_session,
@@ -82,7 +78,7 @@ def test_fetch_content_safe_charset(mock_session, mock_response):
 def test_fetch_content_safe_missing_header(mock_session, mock_response):
     """Test that missing header raises ValueError when validation is requested."""
     mock_response.headers = {}
-    mock_session.get.return_value.__enter__.return_value = mock_response
+    mock_session.request.return_value.__enter__.return_value = mock_response
 
     with pytest.raises(ValueError, match="Content-Type header missing"):
         fetch_content_safe(
@@ -94,7 +90,7 @@ def test_fetch_content_safe_missing_header(mock_session, mock_response):
 def test_fetch_content_safe_ignore_validation(mock_session, mock_response):
     """Test that missing header is ignored if no validation requested."""
     mock_response.headers = {}
-    mock_session.get.return_value.__enter__.return_value = mock_response
+    mock_session.request.return_value.__enter__.return_value = mock_response
 
     content = fetch_content_safe(mock_session, "http://example.com")
     assert content == b"content"
