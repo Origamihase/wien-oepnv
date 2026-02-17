@@ -35,7 +35,7 @@ if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type check
     from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.ids import make_guid
     from ..utils.logging import sanitize_log_arg
-    from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna
+    from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info
     from ..utils.text import html_to_text
 else:  # pragma: no cover - support both package layouts at runtime
     try:
@@ -46,11 +46,11 @@ else:  # pragma: no cover - support both package layouts at runtime
     try:
         from utils.ids import make_guid
         from utils.text import html_to_text
-        from utils.stations import canonical_name, station_by_oebb_id, is_in_vienna
+        from utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info
     except ModuleNotFoundError:
         from ..utils.ids import make_guid  # type: ignore
         from ..utils.text import html_to_text  # type: ignore
-        from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna  # type: ignore
+        from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info  # type: ignore
 
     try:
         from utils.http import session_with_retries, validate_http_url, fetch_content_safe
@@ -336,15 +336,23 @@ def _is_relevant(title: str, description: str) -> bool:
 
     # Check 0: Strict Route Filter (Outer <-> Outer)
     # Wenn Titel eine Strecke definiert (A ↔ B) und BEIDE Endpunkte bekannte
-    # Outer-Stationen sind (und keiner davon Pendler), verwerfen wir das Item sofort.
-    # Damit verhindern wir, dass "Richtung Wien" im Text ein False Positive auslöst.
+    # Outer-Stationen sind, verwerfen wir das Item sofort, es sei denn, "Wien" wird explizit erwähnt.
+    # Damit filtern wir reine Umland-Strecken (auch Pendler <-> Pendler) aus, wenn sie keinen Wien-Bezug haben.
     if "↔" in title:
         parts = [p.strip() for p in title.split("↔")]
         if len(parts) == 2:
-            # Check if both are Outer
-            if _OUTER_STATIONS_RE and _OUTER_STATIONS_RE.search(parts[0]) and _OUTER_STATIONS_RE.search(parts[1]):
-                # Check if neither is Pendler
-                if _PENDLER_STATIONS_RE and not (_PENDLER_STATIONS_RE.search(parts[0]) or _PENDLER_STATIONS_RE.search(parts[1])):
+            info0 = station_info(parts[0])
+            info1 = station_info(parts[1])
+
+            # Check if both are known and NOT in Vienna (i.e. Outer)
+            # station_info lookup is safer than regex matching here.
+            is_outer0 = info0 and not info0.in_vienna
+            is_outer1 = info1 and not info1.in_vienna
+
+            if is_outer0 and is_outer1:
+                # Disallow purely outer routes even if they are Pendler stations,
+                # UNLESS 'Wien' or 'Vienna' appears in the text.
+                if not re.search(r"\b(wien|vienna)\b", text, re.IGNORECASE):
                     return False
 
     # Check A: Explizit Wien (Word boundaries)

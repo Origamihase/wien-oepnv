@@ -62,3 +62,12 @@ def test_pendler_route_filtered_if_no_vienna():
     title = "Bad Vöslau ↔ Baden"
     description = "..."
     assert _is_relevant(title, description) is False
+
+def test_neulengbach_tullnerbach_filtered():
+    """
+    Verify that 'Neulengbach ↔ Tullnerbach-Pressbaum' is filtered out.
+    Both are Pendler stations, but the route is purely Outer ↔ Outer.
+    """
+    title = "Neulengbach ↔ Tullnerbach-Pressbaum"
+    description = "Wegen Bauarbeiten können zwischen Neulengbach Bahnhof und Tullnerbach-Pressbaum Bahnhof von 28.03.2026 (03:00 Uhr) bis 07.04.2026 (03:00 Uhr) …"
+    assert _is_relevant(title, description) is False
