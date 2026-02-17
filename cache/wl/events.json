@@ -14,18 +14,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "2A: Bauarbeiten Renngasse ab 14.07.2025",
-    "description": "Bauarbeiten\nWegen Rohrleitungsarbeiten in der Renngasse wird die Linie 2 A umgeleitet.\nZeitraum:\nMontag, 14. Juli 2025, 06:30 Uhr, Dauer unbekannt.\nMaßnahmen:\nLinie 2 A Richtung Schwarzenbergplatz:\nUmleitung ab Renngasse # Wipplingerstraße über Wipplingerstraße - Helferstorferstraße - Schottengasse - Freyung.\nHaltestelle Renngasse\nVerlegt von: Renngasse 9\nVerlegt nach: Wipplingerstraße 30",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "01c9f4ff8e2a95c1daa67093e9fb371618e5d7c7d3cc36a78465221712a0ca86",
-    "pubDate": "2025-07-07T13:16:00+01:00",
-    "starts_at": "2025-07-14T00:00:00+00:00",
-    "ends_at": "2026-07-07T11:11:00+01:00",
-    "_identity": "wl|hinweis|L=2A|D=2025-07-14"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "77A: Bauarbeiten, Umleitung über A23",
     "description": "Bauarbeiten\nWegen großräumigen Bauarbeiten wird die Linie 77 A umgeleitet.\nZeitraum:\nMontag, 22. September 2025 auf Dauer von etwa einem Jahr.\nMaßnahmen:\nLinie 77 A\nUmleitung in beiden Richtungen zwischen Ludwig-Koeßler-Platz und Donaumarina über die A23.\nDie Haltestellen Stadionbrücke, Klaschkaweg, Stadionbad, Pierre-de-Coubertin-Platz, Ernst-Happel-Stadion, Stadion U und Marathonweg können dadurch nicht eingehalten werden.\nDie Haltestelle Stadion U ist über die U2 von der Haltestelle Donaumarina U erreichbar.\nSkizze:",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -158,6 +146,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "1A/2A/3A: Platzverbote am 20.02.2026",
+    "description": "Veranstaltung\nWegen einer Veranstaltung wird die Innenstadt polizeilich gesperrt.\nZeitraum:\nFreitag, 20. Februar 2026 von ca. 16:00 bis Betriebsschluss.\nMaßnahmen:\nLinie 1 A\nBetrieb eingestellt.\nLinie 2 A\nBetrieb eingestellt.\nLinie 3 A\nBetrieb eingestellt.\nErsatz:\nDie U-Bahnen",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "200f645798831fc05ac3a6469c34bac7cee19fd8a2129aecb39f0ecca8d1bdc1",
+    "pubDate": "2026-02-13T12:00:00+01:00",
+    "starts_at": "2026-02-13T12:00:00+01:00",
+    "ends_at": "2026-02-20T23:59:00+01:00",
+    "_identity": "wl|hinweis|L=1A,2A,3A|D=2026-02-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "O: Hintere Zollamtsstraße",
     "description": "Haltestellenverlegung der Linie O in Richtung Bruno-Marek-Allee\nHaltestelle: Hintere Zollamtsstraße\nVon: Hintere Zollamtsstraße 7\nNach: Hintere Zollamtsstraße 13-19\nDauer: 24. Februar 2026, etwa 04:00 Uhr bis derzeit noch unbekannt\nGrund: Arbeiten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -206,18 +206,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Polizeieinsatz",
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6",
-    "pubDate": "2026-02-17T08:55:00+01:00",
-    "starts_at": "2026-02-17T08:55:00+01:00",
-    "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-02-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "3A: Busse halten Wipplingerstraße 34",
     "description": "Bauarbeiten Busse halten Wipplingerstraße 34",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -242,73 +230,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Fremder Verkehrsunfall",
+    "title": "5: Fahrtbehinderung Falschparker",
     "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "26dab77d720bee7a4554a163cd8af781b649c79533f209c6d60fa8fe1647c0a0",
-    "pubDate": "2026-02-17T11:07:00+01:00",
-    "starts_at": "2026-02-17T11:07:00+01:00",
+    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
+    "pubDate": "2026-02-17T13:38:00+01:00",
+    "starts_at": "2026-02-17T13:49:57+01:00",
     "ends_at": "2026-02-17T23:55:00+01:00",
     "_identity": "wl|störung|L=5|D=2026-02-17"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A: Falschparker",
-    "description": "Linie 1 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "12: Fahrtbehinderung Falschparker",
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e62adc4ae113e970bff189de823a1353f89ab202e9396cb658d607181a398177",
-    "pubDate": "2026-02-17T11:31:00+01:00",
-    "starts_at": "2026-02-17T11:31:00+01:00",
+    "guid": "d5852610e5230534aa875aec60af4a7a1b528ad8f8dd7b2db5fde27fedc59960",
+    "pubDate": "2026-02-17T13:38:00+01:00",
+    "starts_at": "2026-02-17T13:42:13+01:00",
     "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=1A|D=2026-02-17"
+    "_identity": "wl|störung|L=12|D=2026-02-17"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2A: Falschparker",
-    "description": "Linie 2 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "68B: Polizeieinsatz",
+    "description": "Linie 68 B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e925496740af1a1b7ed4e06afc719cd7332e9864b3aedc30eb0ac35b6a9bc5b4",
-    "pubDate": "2026-02-17T11:31:00+01:00",
-    "starts_at": "2026-02-17T11:31:00+01:00",
+    "guid": "14c3903c7475896150659edfe2aba2652833aa37a03ab40f373472276cd0139a",
+    "pubDate": "2026-02-17T13:39:00+01:00",
+    "starts_at": "2026-02-17T13:39:00+01:00",
     "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=2A|D=2026-02-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106",
-    "pubDate": "2026-02-17T12:16:00+01:00",
-    "starts_at": "2026-02-17T12:18:39+01:00",
-    "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=D|D=2026-02-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung im Haltestellenbereich Heiligenstadt.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
-    "pubDate": "2026-02-17T12:18:00+01:00",
-    "starts_at": "2026-02-17T12:18:00+01:00",
-    "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-02-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Signalstörung",
-    "description": "Linie 7 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "56cfae51576906358ca8b20023d237b58b63c2307392b3a7b06419cfe7314754",
-    "pubDate": "2026-02-17T12:18:00+01:00",
-    "starts_at": "2026-02-17T12:18:00+01:00",
-    "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=7A|D=2026-02-17"
+    "_identity": "wl|störung|L=68B|D=2026-02-17"
   }
 ]
