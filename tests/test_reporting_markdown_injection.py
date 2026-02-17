@@ -3,9 +3,10 @@ from src.feed.reporting import RunReport, FeedHealthMetrics, render_feed_health_
 
 def test_markdown_injection():
     # Setup
-    report = RunReport(statuses=[("test_provider", True)])
+    report = RunReport(statuses=[("test_provider", True), ("Malicious|Provider", True)])
     # Inject various markdown characters
     report.provider_error("test_provider", "Error | with pipe")
+    report.provider_success("Malicious|Provider", items=0)
     report.add_error_message("Bad [link](http://evil.com)")
     report.add_error_message("Bold **text**")
 
@@ -24,6 +25,9 @@ def test_markdown_injection():
     # Assertions
     # 1. Verify pipe is escaped in table cell (already works)
     assert r"Error \| with pipe" in markdown, "Pipe character should be escaped in table cell"
+
+    # 1b. Verify pipe is escaped in provider name
+    assert r"Malicious\|Provider" in markdown, "Pipe character should be escaped in provider name"
 
     # 2. Verify backtick is replaced in duplicates list (already works)
     assert "Title 'with backtick'" in markdown, "Backticks should be replaced with single quotes in duplicates list"

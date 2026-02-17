@@ -489,12 +489,13 @@ def render_feed_health_markdown(
     lines.append("| --- | --- | ---: | ---: | --- |")
     for name in sorted(report.providers):
         entry = report.providers[name]
-        status = entry.status or "unbekannt"
+        status = _escape_cell(entry.status or "unbekannt")
         items = entry.items if entry.items is not None else "—"
         duration = f"{entry.duration:.2f}" if entry.duration is not None else "—"
         detail = _escape_cell(entry.detail or "")
+        name_cell = _escape_cell(name)
         lines.append(
-            f"| {name} | {status} | {items} | {duration} | {detail} |"
+            f"| {name_cell} | {status} | {items} | {duration} | {detail} |"
         )
     lines.append("")
 
@@ -827,8 +828,10 @@ class _GithubIssueReporter:
             detail = _escape_cell(entry.detail or "")
             items = entry.items if entry.items is not None else "—"
             duration = f"{entry.duration:.2f}" if entry.duration is not None else "—"
+            name_cell = _escape_cell(name)
+            status_cell = _escape_cell(entry.status or 'unbekannt')
             lines.append(
-                f"| {name} | {entry.status or 'unbekannt'} | {detail} | {items} | {duration} |"
+                f"| {name_cell} | {status_cell} | {detail} | {items} | {duration} |"
             )
         lines.append("")
 
