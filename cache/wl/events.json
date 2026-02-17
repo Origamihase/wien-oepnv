@@ -242,37 +242,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Linie 11 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "810ddddf37c3bfda3e29fcd9fe96566231a7941343e64c6f0f65d605631c27b6",
-    "pubDate": "2026-02-17T21:37:00+01:00",
-    "starts_at": "2026-02-17T21:37:03+01:00",
-    "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2026-02-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5B: Polizeieinsatz Busse halten bei Linien 38A und 39A",
-    "description": "Polizeieinsatz Busse halten bei Linien 38 A und 39 A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "39560f7575227cd6c066bacb0d9de0f9614bcda3ef477da90eecc1047acb83ed",
-    "pubDate": "2026-02-17T21:52:45+01:00",
-    "starts_at": "2026-02-17T21:52:45+01:00",
-    "ends_at": "2026-02-17T22:52:00+01:00",
-    "_identity": "wl|störung|L=5B|D=2026-02-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Währinger Straße - Volksoper und Michelbeuern - AKH in beiden Richtungen über Gleis 1. Grund: Rettungseinsatz im Haltestellenbereich Michelbeuern - AKH.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-02-17T22:21:00+01:00",
-    "starts_at": "2026-02-17T22:21:00+01:00",
-    "ends_at": "2026-02-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2026-02-17"
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-02-17T23:00:08+01:00",
+    "starts_at": "2026-02-17T23:00:08+01:00",
+    "ends_at": "2026-02-18T05:30:00+01:00",
+    "_identity": "wl|störung|L=N29|D=2026-02-17"
   }
 ]
