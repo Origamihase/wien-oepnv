@@ -141,6 +141,7 @@ def _mask_secret(value: str) -> str:
 
 def _scan_content(content: str) -> list[tuple[int, str, str]]:
     findings: list[tuple[int, str, str]] = []
+    covered_ranges: list[tuple[int, int]] = []
 
     # Pre-calculate line offsets for fast lookup
     # Using simple list of newline positions
@@ -152,6 +153,12 @@ def _scan_content(content: str) -> list[tuple[int, str, str]]:
         # If index is before first newline, it's line 1 (bisect returns 0)
         # If index is after first newline, it's line 2 (bisect returns 1)
         return bisect_left(newlines, index) + 1
+
+    def is_covered(start: int, end: int) -> bool:
+        for c_start, c_end in covered_ranges:
+            if start < c_end and end > c_start:
+                return True
+        return False
 
     for match in _SENSITIVE_ASSIGN_RE.finditer(content):
         candidate = match.group(2).strip()
@@ -166,22 +173,38 @@ def _scan_content(content: str) -> list[tuple[int, str, str]]:
         ):
             candidate = candidate[1:-1]
 
+        # Use the span of the value group (including quotes) for coverage
+        span_start, span_end = match.span(2)
+
         if _looks_like_secret(candidate, is_assignment=True):
-            findings.append((get_line_number(match.start()), candidate, "Verdächtige Zuweisung eines potentiellen Secrets"))
+            if not is_covered(span_start, span_end):
+                findings.append((get_line_number(match.start()), candidate, "Verdächtige Zuweisung eines potentiellen Secrets"))
+                covered_ranges.append((span_start, span_end))
 
     for match in _BEARER_RE.finditer(content):
         candidate = match.group(1)
+        span_start, span_end = match.span(1)
+
         if _looks_like_secret(candidate, is_assignment=True):
-            findings.append((get_line_number(match.start()), candidate, "Bearer-Token wirkt echt"))
+            if not is_covered(span_start, span_end):
+                findings.append((get_line_number(match.start()), candidate, "Bearer-Token wirkt echt"))
+                covered_ranges.append((span_start, span_end))
 
     for match in _AWS_ID_RE.finditer(content):
         candidate = match.group(0)
-        findings.append((get_line_number(match.start()), candidate, "AWS Access Key ID gefunden"))
+        span_start, span_end = match.span(0)
+
+        if not is_covered(span_start, span_end):
+            findings.append((get_line_number(match.start()), candidate, "AWS Access Key ID gefunden"))
+            covered_ranges.append((span_start, span_end))
 
     for match in _HIGH_ENTROPY_RE.finditer(content):
         candidate = match.group(0)
+        span_start, span_end = match.span(0)
+
         if _looks_like_secret(candidate):
-            findings.append((get_line_number(match.start()), candidate, "Hochentropischer Token-String"))
+            if not is_covered(span_start, span_end):
+                findings.append((get_line_number(match.start()), candidate, "Hochentropischer Token-String"))
 
     return findings
 
