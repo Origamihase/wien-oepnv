@@ -112,3 +112,8 @@
 **Vulnerability:** `session_id` and `cookie` query parameters and key-value pairs were not redacted in logs because they didn't match existing sensitive key patterns (specifically missing from `_SENSITIVE_QUERY_KEYS` and logging regex).
 **Learning:** Regex-based redaction is fragile if keys are not explicitly listed or covered by broad patterns. Normalization helps but `session_id` vs `session` was a gap.
 **Prevention:** Maintain a comprehensive list of sensitive keys and test with common variations (snake_case, camelCase). Use broad matching where possible but verify false positives.
+
+## 2026-10-30 - Fallback Log Sanitization Gap
+**Vulnerability:** The fallback log sanitization in `src/utils/env.py` (used during import errors) lacked patterns for OAuth/SAML secrets (`nonce`, `state`, `client_assertion`) that were present in the primary `src/utils/logging.py`, creating a window of exposure if dependencies failed.
+**Learning:** Fallback or redundant security implementations often drift from the primary source of truth, creating inconsistent security postures.
+**Prevention:** Automatically verify that fallback/redundant security logic matches the primary implementation (e.g., via unit tests that compare regex patterns or outputs).
