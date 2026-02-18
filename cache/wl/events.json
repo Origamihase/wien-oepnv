@@ -218,30 +218,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Verkehrsunfall Betrieb ab Vorgartenstraße",
-    "description": "Verkehrsunfall Betrieb ab Vorgartenstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c97894cc86f04104ab5945bcb44f07d3996e4e856e119763ced4bf63816f6449",
-    "pubDate": "2026-02-18T15:52:33+01:00",
-    "starts_at": "2026-02-18T16:00:51+01:00",
-    "ends_at": "2026-02-18T20:15:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2026-02-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "caad9e268eb418676c7db56fdc61da1e782e3e71b8255532134411fde04028b5",
-    "pubDate": "2026-02-18T15:59:48+01:00",
-    "starts_at": "2026-02-18T15:59:48+01:00",
-    "ends_at": "2026-02-18T20:00:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2026-02-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Rettungseinsatz Betrieb ab Grillgasse",
     "description": "Rettungseinsatz Betrieb ab Grillgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -250,30 +226,6 @@
     "starts_at": "2026-02-18T16:18:06+01:00",
     "ends_at": "2026-02-18T22:00:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-02-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Verkehrsunfall Betrieb ab Bruno-Marek-Allee",
-    "description": "Verkehrsunfall Betrieb ab Bruno-Marek-Allee",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d8b7fe9c07226c5f7a1bbe0c321b1eebda3dae49f67b02fd7b033473548e1b41",
-    "pubDate": "2026-02-18T17:07:03+01:00",
-    "starts_at": "2026-02-18T17:07:03+01:00",
-    "ends_at": "2026-02-18T20:00:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-02-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
-    "pubDate": "2026-02-18T17:07:32+01:00",
-    "starts_at": "2026-02-18T17:07:32+01:00",
-    "ends_at": "2026-02-18T20:00:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-02-18"
   },
   {
     "source": "Wiener Linien",
@@ -290,37 +242,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Rettungseinsatz",
-    "description": "Linie 13 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "12A: Polizeieinsatz",
+    "description": "Linie 12 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
-    "pubDate": "2026-02-18T19:04:00+01:00",
-    "starts_at": "2026-02-18T19:04:00+01:00",
+    "guid": "374069ccf0ff3be5104dd31d6813256c9eea30537579d930288c2ea1f81eccd9",
+    "pubDate": "2026-02-18T19:49:00+01:00",
+    "starts_at": "2026-02-18T19:49:00+01:00",
     "ends_at": "2026-02-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2026-02-18"
+    "_identity": "wl|störung|L=12A|D=2026-02-18"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "39A: Verkehrsunfall",
-    "description": "Linie 39 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Bereich Gunoldstraße.",
+    "title": "10A: Verspätungen",
+    "description": "Linie 10 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dfa3af5eacd7ecf6f3b864d15ccbe892b2dd7ed23dfedaca0a147c26955c5cc8",
-    "pubDate": "2026-02-18T19:24:00+01:00",
-    "starts_at": "2026-02-18T19:24:00+01:00",
+    "guid": "7c9302b74c4151c193e8b61e865846e07389f3d8b7b69a75a90f6a2fde5e99f4",
+    "pubDate": "2026-02-18T20:09:00+01:00",
+    "starts_at": "2026-02-18T20:09:00+01:00",
     "ends_at": "2026-02-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=39A|D=2026-02-18"
+    "_identity": "wl|störung|L=10A|D=2026-02-18"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Betriebsstörung",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "12: Verkehrsunfall",
+    "description": "Linie 12: Umleitung in Richtung Hillerstraße zwischen Klosterneuburger Str., Wallensteinstr. und Jägerstraße U über die Klosterneuburger Straße. Voraussichtliche Dauer: 21:30 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Brigittaplatz .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
-    "pubDate": "2026-02-18T19:33:00+01:00",
-    "starts_at": "2026-02-18T19:33:00+01:00",
+    "guid": "e5660a0ab66e8052c66ac62caa273ee692ce56758d8e16e3324e16b86881f37a",
+    "pubDate": "2026-02-18T20:16:00+01:00",
+    "starts_at": "2026-02-18T20:16:00+01:00",
     "ends_at": "2026-02-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2026-02-18"
+    "_identity": "wl|störung|L=12|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Verkehrsunfall Züge halten bei Linie 31!",
+    "description": "Verkehrsunfall Züge halten bei Linie 31!",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "af3dec214073d4d7d747afef12f9eca8e919d1ae9f3092e5beafa90ed223f688",
+    "pubDate": "2026-02-18T20:19:07+01:00",
+    "starts_at": "2026-02-18T20:19:07+01:00",
+    "ends_at": "2026-02-18T21:18:00+01:00",
+    "_identity": "wl|störung|L=31|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Verkehrsunfall Umleitung bis Jägerstraße über Linie 31!",
+    "description": "Verkehrsunfall Umleitung bis Jägerstraße über Linie 31!",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8197ecc1d5e132b0518259b9864122b4c6d7c6c5003678b5f8243507485dfd73",
+    "pubDate": "2026-02-18T20:19:07+01:00",
+    "starts_at": "2026-02-18T20:19:14+01:00",
+    "ends_at": "2026-02-18T21:18:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "90f3e9ae80b1ced372efb169e9553a734be9ad86fa0539d9008f2c17a5442faf",
+    "pubDate": "2026-02-18T20:20:05+01:00",
+    "starts_at": "2026-02-18T20:20:34+01:00",
+    "ends_at": "2026-02-18T21:19:00+01:00",
+    "_identity": "wl|störung|L=5|D=2026-02-18"
   }
 ]
