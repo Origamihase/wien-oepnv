@@ -54,6 +54,19 @@ _SENSITIVE_ASSIGN_RE = re.compile(
 _AWS_ID_RE = re.compile(r"(?<![A-Za-z0-9])(AKIA|ASIA|ACCA)[A-Z0-9]{16}(?![A-Za-z0-9])")
 _BEARER_RE = re.compile(r"Bearer\s+([A-Za-z0-9\-_.]{16,})")
 
+# Known high-value token patterns to detect specifically
+# These bypass the generic entropy checks and provide specific descriptions
+_KNOWN_TOKENS = [
+    (re.compile(r"(?<![A-Za-z0-9])glpat-[0-9a-zA-Z_\-]{20}(?![A-Za-z0-9])"), "GitLab Personal Access Token gefunden"),
+    (re.compile(r"(?<![A-Za-z0-9])ghp_[0-9a-zA-Z]{36}(?![A-Za-z0-9])"), "GitHub Personal Access Token gefunden"),
+    (re.compile(r"(?<![A-Za-z0-9])github_pat_[0-9a-zA-Z_]{22,}(?![A-Za-z0-9])"), "GitHub Fine-Grained Token gefunden"),
+    (re.compile(r"(?<![A-Za-z0-9])sk_live_[0-9a-zA-Z]{24}(?![A-Za-z0-9])"), "Stripe Live Secret Key gefunden"),
+    (re.compile(r"(?<![A-Za-z0-9])xoxb-[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{24}(?![A-Za-z0-9])"), "Slack Bot Token gefunden"),
+    (re.compile(r"(?<![A-Za-z0-9])xoxp-[0-9]{10,}-[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{32}(?![A-Za-z0-9])"), "Slack User Token gefunden"),
+    (re.compile(r"(?<![A-Za-z0-9])npm_[0-9a-zA-Z]{36}(?![A-Za-z0-9])"), "NPM Access Token gefunden"),
+    (re.compile(r"(?<![A-Za-z0-9])pypi-[0-9a-zA-Z_\-]{20,}(?![A-Za-z0-9])"), "PyPI API Token gefunden"),
+]
+
 
 @dataclass(frozen=True)
 class Finding:
@@ -197,6 +210,15 @@ def _scan_content(content: str) -> list[tuple[int, str, str]]:
         if not is_covered(span_start, span_end):
             findings.append((get_line_number(match.start()), candidate, "AWS Access Key ID gefunden"))
             covered_ranges.append((span_start, span_end))
+
+    for regex, reason in _KNOWN_TOKENS:
+        for match in regex.finditer(content):
+            candidate = match.group(0)
+            span_start, span_end = match.span(0)
+
+            if not is_covered(span_start, span_end):
+                findings.append((get_line_number(match.start()), candidate, reason))
+                covered_ranges.append((span_start, span_end))
 
     for match in _HIGH_ENTROPY_RE.finditer(content):
         candidate = match.group(0)
