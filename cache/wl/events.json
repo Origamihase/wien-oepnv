@@ -242,42 +242,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c54650e65ef647f350297bb5f234db6c9420a95be4c9c46b35286f6ec869089",
-    "pubDate": "2026-02-18T07:01:40+01:00",
-    "starts_at": "2026-02-18T07:01:40+01:00",
-    "ends_at": "2026-02-18T08:00:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-02-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2026-02-18T07:03:00+01:00",
-    "starts_at": "2026-02-18T07:03:00+01:00",
-    "ends_at": "2026-02-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2026-02-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e832b46eec6d19cd652e99a3efa00e678cd32779ad0f0da0378f515eb2651f68",
-    "pubDate": "2026-02-18T07:04:06+01:00",
-    "starts_at": "2026-02-18T07:04:09+01:00",
-    "ends_at": "2026-02-18T08:03:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-02-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "42: Verkehrsunfall",
     "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -285,18 +249,6 @@
     "pubDate": "2026-02-18T07:44:00+01:00",
     "starts_at": "2026-02-18T07:44:00+01:00",
     "ends_at": "2026-02-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=42|D=2026-02-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "930d80e075929cf21fe799fda5426fd5228d64088925dc7f7064542f79ff0bc7",
-    "pubDate": "2026-02-18T07:44:16+01:00",
-    "starts_at": "2026-02-18T07:44:20+01:00",
-    "ends_at": "2026-02-18T08:43:00+01:00",
     "_identity": "wl|störung|L=42|D=2026-02-18"
   },
   {
@@ -310,5 +262,89 @@
     "starts_at": "2026-02-18T07:49:00+01:00",
     "ends_at": "2026-02-18T23:55:00+01:00",
     "_identity": "wl|störung|L=U6|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Rettungseinsatz",
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
+    "pubDate": "2026-02-18T08:11:00+01:00",
+    "starts_at": "2026-02-18T08:11:00+01:00",
+    "ends_at": "2026-02-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Fremder Verkehrsunfall",
+    "description": "Linie 57 A: Betrieb nur zwischen Rudolfsheim, Anschützgasse und Gumpendorfer Straße U Weichen Sie ersatzweise auf die Linien U3, U4, U6 und 13 A aus. Voraussichtliche Dauer: 09:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Gumpendorfer Straße 113.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d354c7652a6b29deb96b519f98e62abb5becc90c01b68e51f6409488034e70ec",
+    "pubDate": "2026-02-18T08:14:00+01:00",
+    "starts_at": "2026-02-18T08:14:00+01:00",
+    "ends_at": "2026-02-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Fremdunfall Betrieb ab Gumpendorfer Straße",
+    "description": "Fremdunfall Betrieb ab Gumpendorfer Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9b9f23a5f4e60ba6b9da0839720511562de5c9d87826a29c65e257a35fc3f6e7",
+    "pubDate": "2026-02-18T08:17:38+01:00",
+    "starts_at": "2026-02-18T08:17:38+01:00",
+    "ends_at": "2026-02-18T09:16:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3193a02e5221f9520597baa57dcb324ff4ff3bd9b3e13d9308087aaccf24d18a",
+    "pubDate": "2026-02-18T08:17:38+01:00",
+    "starts_at": "2026-02-18T08:17:43+01:00",
+    "ends_at": "2026-02-18T09:17:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ecd5f95a17857dc93a63349472e98b39e10391574ac70ec7b83eaf44b2f51e5a",
+    "pubDate": "2026-02-18T08:23:55+01:00",
+    "starts_at": "2026-02-18T08:23:55+01:00",
+    "ends_at": "2026-02-18T09:23:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Fremdunfall Busse halten Mariahilfer Gürtel 1-1a",
+    "description": "Fremdunfall Busse halten Mariahilfer Gürtel 1-1 a",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ba65fb58cce98b8a7a5c752269f7d82beb3256ca7b5fe35c9b7b200671ab7281",
+    "pubDate": "2026-02-18T08:24:24+01:00",
+    "starts_at": "2026-02-18T08:24:24+01:00",
+    "ends_at": "2026-02-18T09:23:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Verkehrsunfall",
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee9d3f3d2f7894fa11d971e1ac5f847be3f219359a43a6a87138d443f4bb3996",
+    "pubDate": "2026-02-18T08:33:00+01:00",
+    "starts_at": "2026-02-18T08:33:00+01:00",
+    "ends_at": "2026-02-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-02-18"
   }
 ]
