@@ -71,7 +71,8 @@ def test_aws_key_assignment_deduplication():
     # SENSITIVE_ASSIGN_RE strips quotes.
     # So match is aws_id.
     assert findings1[0][1] == aws_id
-    assert "Verdächtige Zuweisung" in findings1[0][2]
+    # We now prioritize the specific AWS scanner over the generic assignment scanner
+    assert "AWS Access Key ID" in findings1[0][2]
 
     # Case 2: Variable name does NOT match sensitive assignment regex
     # But AWS ID scanner picks it up

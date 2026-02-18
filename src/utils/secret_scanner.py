@@ -173,6 +173,32 @@ def _scan_content(content: str) -> list[tuple[int, str, str]]:
                 return True
         return False
 
+    for regex, reason in _KNOWN_TOKENS:
+        for match in regex.finditer(content):
+            candidate = match.group(0)
+            span_start, span_end = match.span(0)
+
+            if not is_covered(span_start, span_end):
+                findings.append((get_line_number(match.start()), candidate, reason))
+                covered_ranges.append((span_start, span_end))
+
+    for match in _AWS_ID_RE.finditer(content):
+        candidate = match.group(0)
+        span_start, span_end = match.span(0)
+
+        if not is_covered(span_start, span_end):
+            findings.append((get_line_number(match.start()), candidate, "AWS Access Key ID gefunden"))
+            covered_ranges.append((span_start, span_end))
+
+    for match in _BEARER_RE.finditer(content):
+        candidate = match.group(1)
+        span_start, span_end = match.span(1)
+
+        if _looks_like_secret(candidate, is_assignment=True):
+            if not is_covered(span_start, span_end):
+                findings.append((get_line_number(match.start()), candidate, "Bearer-Token wirkt echt"))
+                covered_ranges.append((span_start, span_end))
+
     for match in _SENSITIVE_ASSIGN_RE.finditer(content):
         candidate = match.group(2).strip()
         # Strip outer quotes if present
@@ -192,32 +218,6 @@ def _scan_content(content: str) -> list[tuple[int, str, str]]:
         if _looks_like_secret(candidate, is_assignment=True):
             if not is_covered(span_start, span_end):
                 findings.append((get_line_number(match.start()), candidate, "Verdächtige Zuweisung eines potentiellen Secrets"))
-                covered_ranges.append((span_start, span_end))
-
-    for match in _BEARER_RE.finditer(content):
-        candidate = match.group(1)
-        span_start, span_end = match.span(1)
-
-        if _looks_like_secret(candidate, is_assignment=True):
-            if not is_covered(span_start, span_end):
-                findings.append((get_line_number(match.start()), candidate, "Bearer-Token wirkt echt"))
-                covered_ranges.append((span_start, span_end))
-
-    for match in _AWS_ID_RE.finditer(content):
-        candidate = match.group(0)
-        span_start, span_end = match.span(0)
-
-        if not is_covered(span_start, span_end):
-            findings.append((get_line_number(match.start()), candidate, "AWS Access Key ID gefunden"))
-            covered_ranges.append((span_start, span_end))
-
-    for regex, reason in _KNOWN_TOKENS:
-        for match in regex.finditer(content):
-            candidate = match.group(0)
-            span_start, span_end = match.span(0)
-
-            if not is_covered(span_start, span_end):
-                findings.append((get_line_number(match.start()), candidate, reason))
                 covered_ranges.append((span_start, span_end))
 
     for match in _HIGH_ENTROPY_RE.finditer(content):
