@@ -985,6 +985,10 @@ def request_safe(
                         kwargs.pop("data", None)
                         kwargs.pop("json", None)
                         kwargs.pop("files", None)
+                        # Also drop content-related headers that are invalid for GET
+                        if "headers" in kwargs:
+                            kwargs["headers"].pop("Content-Type", None)
+                            kwargs["headers"].pop("Content-Length", None)
 
                     # For 301/302, requests switches to GET if not 307/308
                     if r.status_code in (301, 302) and method == "POST":
@@ -992,6 +996,10 @@ def request_safe(
                         kwargs.pop("data", None)
                         kwargs.pop("json", None)
                         kwargs.pop("files", None)
+                        # Also drop content-related headers that are invalid for GET
+                        if "headers" in kwargs:
+                            kwargs["headers"].pop("Content-Type", None)
+                            kwargs["headers"].pop("Content-Length", None)
 
                     continue
 
