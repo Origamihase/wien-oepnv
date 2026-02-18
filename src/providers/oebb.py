@@ -334,18 +334,25 @@ def _is_relevant(title: str, description: str) -> bool:
 
     text = f"{title} {description}" # Regex is case-insensitive, no need to lower() here for regex
 
-    # Check 0: Strict Route Filter (Outer <-> Outer)
-    # Wenn Titel eine Strecke definiert (A ↔ B) und BEIDE Endpunkte bekannte
-    # Outer-Stationen sind, verwerfen wir das Item sofort, es sei denn, "Wien" wird explizit erwähnt.
-    # Damit filtern wir reine Umland-Strecken (auch Pendler <-> Pendler) aus, wenn sie keinen Wien-Bezug haben.
+    # Check 0: Route Filter
     if "↔" in title:
         parts = [p.strip() for p in title.split("↔")]
         if len(parts) == 2:
             info0 = station_info(parts[0])
             info1 = station_info(parts[1])
 
-            # Check if both are known and NOT in Vienna (i.e. Outer)
-            # station_info lookup is safer than regex matching here.
+            # Check 0a: Unknown Endpoint Filter (Long-Distance / Irrelevant)
+            # If a route "A ↔ B" is detected, we require that BOTH endpoints are "known"
+            # (either in Vienna or in the Commuter Belt/Outer list).
+            # If one endpoint is unknown (None), we assume it's a long-distance train
+            # to/from outside our relevant area (e.g. Venezia, Munich), and we exclude it.
+            if info0 is None or info1 is None:
+                return False
+
+            # Check 0b: Strict Outer <-> Outer Filter
+            # Wenn Titel eine Strecke definiert (A ↔ B) und BEIDE Endpunkte bekannte
+            # Outer-Stationen sind, verwerfen wir das Item sofort, es sei denn, "Wien" wird explizit erwähnt.
+            # Damit filtern wir reine Umland-Strecken (auch Pendler <-> Pendler) aus, wenn sie keinen Wien-Bezug haben.
             is_outer0 = info0 and not info0.in_vienna
             is_outer1 = info1 and not info1.in_vienna
 
