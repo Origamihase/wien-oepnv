@@ -214,5 +214,101 @@
     "starts_at": "2026-02-18T04:45:01+01:00",
     "ends_at": "2026-02-19T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Schadhaftes Fahrzeug",
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4281aa32ed45a54c560c823ba6cd35e8febae67fca71fa894a80ce4b806088d3",
+    "pubDate": "2026-02-18T07:00:00+01:00",
+    "starts_at": "2026-02-18T07:00:00+01:00",
+    "ends_at": "2026-02-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Schadhaftes Fahrzeug",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6",
+    "pubDate": "2026-02-18T07:00:00+01:00",
+    "starts_at": "2026-02-18T07:00:00+01:00",
+    "ends_at": "2026-02-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8c54650e65ef647f350297bb5f234db6c9420a95be4c9c46b35286f6ec869089",
+    "pubDate": "2026-02-18T07:01:40+01:00",
+    "starts_at": "2026-02-18T07:01:40+01:00",
+    "ends_at": "2026-02-18T08:00:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-02-18T07:03:00+01:00",
+    "starts_at": "2026-02-18T07:03:00+01:00",
+    "ends_at": "2026-02-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e832b46eec6d19cd652e99a3efa00e678cd32779ad0f0da0378f515eb2651f68",
+    "pubDate": "2026-02-18T07:04:06+01:00",
+    "starts_at": "2026-02-18T07:04:09+01:00",
+    "ends_at": "2026-02-18T08:03:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Verkehrsunfall",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fb8ee4d5a29493e27f80e3db638fbbff263fc1757a809406ca73ec8b5d665786",
+    "pubDate": "2026-02-18T07:44:00+01:00",
+    "starts_at": "2026-02-18T07:44:00+01:00",
+    "ends_at": "2026-02-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=42|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "930d80e075929cf21fe799fda5426fd5228d64088925dc7f7064542f79ff0bc7",
+    "pubDate": "2026-02-18T07:44:16+01:00",
+    "starts_at": "2026-02-18T07:44:20+01:00",
+    "ends_at": "2026-02-18T08:43:00+01:00",
+    "_identity": "wl|störung|L=42|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-02-18T07:49:00+01:00",
+    "starts_at": "2026-02-18T07:49:00+01:00",
+    "ends_at": "2026-02-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2026-02-18"
   }
 ]
