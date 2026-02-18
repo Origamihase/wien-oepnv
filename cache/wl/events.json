@@ -146,18 +146,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "1A/2A/3A: Platzverbote am 20.02.2026",
-    "description": "Veranstaltung\nWegen einer Veranstaltung wird die Innenstadt polizeilich gesperrt.\nZeitraum:\nFreitag, 20. Februar 2026 von ca. 16:00 bis Betriebsschluss.\nMaßnahmen:\nLinie 1 A\nBetrieb eingestellt.\nLinie 2 A\nBetrieb eingestellt.\nLinie 3 A\nBetrieb eingestellt.\nErsatz:\nDie U-Bahnen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "200f645798831fc05ac3a6469c34bac7cee19fd8a2129aecb39f0ecca8d1bdc1",
-    "pubDate": "2026-02-13T12:00:00+01:00",
-    "starts_at": "2026-02-13T12:00:00+01:00",
-    "ends_at": "2026-02-20T23:59:00+01:00",
-    "_identity": "wl|hinweis|L=1A,2A,3A|D=2026-02-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "O: Hintere Zollamtsstraße",
     "description": "Haltestellenverlegung der Linie O in Richtung Bruno-Marek-Allee\nHaltestelle: Hintere Zollamtsstraße\nVon: Hintere Zollamtsstraße 7\nNach: Hintere Zollamtsstraße 13-19\nDauer: 24. Februar 2026, etwa 04:00 Uhr bis derzeit noch unbekannt\nGrund: Arbeiten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -242,26 +230,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Weichenstörung",
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "26: Gleisschaden",
+    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "279be8180166a240fa741de4d6692be4126a1ca400caa01b637172af6779d6cc",
-    "pubDate": "2026-02-18T10:59:00+01:00",
-    "starts_at": "2026-02-18T10:59:00+01:00",
+    "guid": "69cffe6b39b2772ee1a6f98a8a596bd010bbe37e4eb986929c5f60726295031b",
+    "pubDate": "2026-02-18T11:56:00+01:00",
+    "starts_at": "2026-02-18T11:56:00+01:00",
     "ends_at": "2026-02-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2026-02-18"
+    "_identity": "wl|störung|L=26|D=2026-02-18"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26/27: Gleisschaden",
-    "description": "Die Linie 26 fährt derzeit nur zwischen Strebersdorf, Meriangasse und Nordbrücke beziehungsweise zwischen Floridsdorf S U und Hausfeldstraße U. Die Linie 27 fährt derzeit nur zwischen Strebersdorf, Meriangasse und Nordbrücke beziehungsweise zwischen Floridsdorf S U und Aspern Nord S U. Voraussichtliche Dauer: nicht absehbar. Grund: Gleisschaden im Haltestellenbereich Floridsdorf S U.",
+    "title": "27: Gleisschaden",
+    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "82ec0168b7cf60b302f49e4f2bd8a53393d89a4904e680357635c62a306033c4",
+    "guid": "c6193a3f82dabd63cdfba2ede1497e914a1dc292bccfbd84a03efb47471127ee",
     "pubDate": "2026-02-18T11:56:00+01:00",
     "starts_at": "2026-02-18T11:56:00+01:00",
     "ends_at": "2026-02-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=26,27|D=2026-02-18"
+    "_identity": "wl|störung|L=27|D=2026-02-18"
   },
   {
     "source": "Wiener Linien",
@@ -290,18 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Schadhaftes Fahrzeug",
-    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4281aa32ed45a54c560c823ba6cd35e8febae67fca71fa894a80ce4b806088d3",
-    "pubDate": "2026-02-18T12:07:00+01:00",
-    "starts_at": "2026-02-18T12:07:00+01:00",
-    "ends_at": "2026-02-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-02-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "6: Schadhafter Zug Züge halten bei Linie O",
     "description": "Schadhafter Zug Züge halten bei Linie O",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -310,18 +286,6 @@
     "starts_at": "2026-02-18T12:08:49+01:00",
     "ends_at": "2026-02-18T15:45:00+01:00",
     "_identity": "wl|störung|L=6|D=2026-02-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Verkehrsunfall",
-    "description": "Linie 12 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35",
-    "pubDate": "2026-02-18T12:15:00+01:00",
-    "starts_at": "2026-02-18T12:15:00+01:00",
-    "ends_at": "2026-02-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=12A|D=2026-02-18"
   },
   {
     "source": "Wiener Linien",
@@ -368,7 +332,19 @@
     "guid": "a4037eb177f53feada9cd8d5d413f9865f66b30fafc51c7e633db6ca36d431e5",
     "pubDate": "2026-02-18T12:27:00+01:00",
     "starts_at": "2026-02-18T12:27:00+01:00",
-    "ends_at": "2026-02-18T23:55:00+01:00",
+    "ends_at": "2026-02-18T14:00:00+01:00",
     "_identity": "wl|störung|L=10A|D=2026-02-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "1/12/13A/1A/2/2A/3A/43/44/46/48A/49/5/6/71/D: Demonstration am 20.02.2026",
+    "description": "Demonstration\nWegen mehrerer Demonstrationen kommt es auf mehreren Linien voraussichtlich zu folgenden Verkehrsmaßnahmen.\nZeitraum:\nFreitag, 20. Februar 2026, zwischen circa 18:00 Uhr und 22:00 Uhr.\nMaßnahmen:\nLinie D\nKein Betrieb zwischen Börse und Schwarzenbergplatz.\nLinie 1\nUmleitung in beiden Richtungen\nzwischen Karlsplatz U und Julius-Raab-Platz\nüber Schwarzenbergplatz und Stubentor U.\nLinie 2\nKein Betrieb zwischen Josefstädter Straße U und Schwarzenbergplatz.\nLinie 5\nBetrieb nur zwischen Praterstern S U und Josefstädter Straße U.\nLinie 6\nBetrieb nur zwischen Geiereckstraße und Westbahnhof S U.\nLinie 12\nBetrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S U.\nWeiterfahrt bis Augasse.\nLinie 18\nBetrieb nur zwischen Schlachthausgasse U und Eichenstraße.\nWeiterfahrt bis Bahnhof Meidling S U, Dörfelstraße.\nLinie 43\nBetrieb nur zwischen Neuwaldegg und Alser Straße U.\nLinie 44\nBetrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz.\nLinie 46\nBetrieb nur zwischen Joachimsthalerplatz und Thaliastraße U.\nWeiterfahrt bis Josefstädter Straße U.\nLinie 49\nBetrieb nur zwischen Hütteldorf, Bujattigasse und Urban-Loritz-Platz.\nWeiterfahrt bis Westbahnhof S U.\nLinie 71\nBetrieb nur zwischen Kaiserebersdorf, Zinnergasse und Schwarzenbergplatz.\nLinien 1 A, 2 A, 3 A\nKein Betrieb ab ca. 16:00 Uhr.\nLinie 13 A\nBetrieb nur zwischen Hauptbahnhof S U und Neubaugasse U.\nLinie 48 A\nBetrieb nur zwischen Klinik Penzing und Burggasse, Stadthalle U.\nZurück ab Koppstraße, Thaliastraße U Richtung Klinik Penzing.\nWeiteres:\nBeachten Sie bitte, dass die genannten Verkehrsmaßnahmen nicht alle gleichzeitig auftreten müssen. Je nach Fortschritt der Demonstration und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf www.wienerlinien.at.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7e3ba2c8e15cdc2d73383c2065ba26ff1163583c39220b19f9de12a1dc73d0a2",
+    "pubDate": "2026-02-18T13:00:00+01:00",
+    "starts_at": "2026-02-18T13:00:00+01:00",
+    "ends_at": "2026-02-20T22:00:00+01:00",
+    "_identity": "wl|hinweis|L=1,12,13A,1A,2,2A,3A,43,44,46,48A,49,5,6,71,D|D=2026-02-18"
   }
 ]
