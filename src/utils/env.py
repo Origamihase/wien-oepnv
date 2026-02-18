@@ -51,7 +51,10 @@ except ImportError:
             # Comprehensive keys list mirroring src.utils.logging to ensure safety during fallback
             _keys = (
                 r"client[-_.\s]*secret|access[-_.\s]*token|refresh[-_.\s]*token|[a-z0-9_.\-]*client[-_.\s]*id[a-z0-9_.\-]*|[a-z0-9_.\-]*signature|[a-z0-9_.\-]*password[a-z0-9_.\-]*|[a-z0-9_.\-]*e[-_.\s]*mail[a-z0-9_.\-]*|"
+                r"client[-_.\s]*assertion[-_.\s]*type|client[-_.\s]*assertion|"
+                r"saml[-_.\s]*request|saml[-_.\s]*response|"
                 r"[a-z0-9_.\-]*accessid[a-z0-9_.\-]*|id[-_.\s]*token|[a-z0-9_.\-]*session[-_.\s]*id[a-z0-9_.\-]*|session|cookie|[a-z0-9_.\-]*apikey[a-z0-9_.\-]*|[a-z0-9_.\-]*secret[a-z0-9_.\-]*|ticket|[a-z0-9_.\-]*token|code|key|sig|sid|"
+                r"nonce|state|"
                 r"jsessionid|phpsessid|asp\.net_sessionid|__cfduid|"
                 r"authorization|auth|bearer[-_.\s]*token|bearer|[a-z0-9_.\-]*api[-_.\s]*key[a-z0-9_.\-]*|[a-z0-9_.\-]*private[-_.\s]*key|auth[-_.\s]*token|"
                 r"tenant[-_.\s]*id|tenant|subscription[-_.\s]*id|subscription|object[-_.\s]*id|oid|"
@@ -67,6 +70,7 @@ except ImportError:
 
             _header_keys = (
                 r"api[-_.\s]*key|token|secret|signature|password|auth|session|cookie|private|"
+                r"client[-_.\s]*assertion|saml[-_.\s]*request|saml[-_.\s]*response|nonce|state|"
                 r"credential|client[-_.\s]*id|passphrase|access[-_.\s]*key|e[-_.\s]*mail"
             )
 
