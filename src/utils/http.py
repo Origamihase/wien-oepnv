@@ -184,6 +184,15 @@ _SENSITIVE_HEADER_PARTIALS = frozenset({
 })
 
 
+def _is_sensitive_header(header_name: str) -> bool:
+    """Check if a header name is considered sensitive."""
+    if header_name in _SENSITIVE_HEADERS:
+        return True
+
+    normalized = header_name.lower()
+    return any(partial in normalized for partial in _SENSITIVE_HEADER_PARTIALS)
+
+
 def _sanitize_url_for_error(url: str) -> str:
     """Strip credentials and sensitive query params from URL for safe error logging."""
     try:
@@ -319,7 +328,10 @@ def _pin_url_to_ip(url: str) -> tuple[str, str]:
 
 
 def _strip_sensitive_headers(
-    headers: MutableMapping[str, str], original_url: str, new_url: str
+    headers: MutableMapping[str, Any],
+    original_url: str,
+    new_url: str,
+    session_headers: Mapping[str, Any] | None = None,
 ) -> None:
     """Remove sensitive headers if the redirect crosses security boundaries."""
     original_parsed = urlparse(original_url)
@@ -332,14 +344,25 @@ def _strip_sensitive_headers(
     port_changed = _get_port(original_parsed) != _get_port(redirect_parsed)
 
     if host_changed or scheme_downgraded or port_changed:
-        for header_name in list(headers.keys()):
-            if header_name in _SENSITIVE_HEADERS:
-                del headers[header_name]
-                continue
+        # If session_headers is provided, we use masking mode (set to None)
+        # to ensure session headers don't leak through.
+        mask_mode = session_headers is not None
 
-            normalized = header_name.lower()
-            if any(partial in normalized for partial in _SENSITIVE_HEADER_PARTIALS):
-                del headers[header_name]
+        # 1. Process explicit override headers
+        for header_name in list(headers.keys()):
+            if _is_sensitive_header(header_name):
+                if mask_mode:
+                    headers[header_name] = None
+                else:
+                    del headers[header_name]
+
+        # 2. Process implicit session headers (if in masking mode)
+        if mask_mode and session_headers:
+            for header_name in session_headers:
+                if _is_sensitive_header(header_name):
+                    # If it's in session headers, we must mask it in override headers
+                    # unless explicitly overridden (but we just masked overrides above)
+                    headers[header_name] = None
 
 
 def _get_port(parsed: Any) -> int | None:
@@ -377,12 +400,7 @@ def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.Prepar
         # Dynamic check for sensitive headers based on name patterns
         # We iterate over a copy of keys to allow modification of the dict during iteration
         for header_name in list(headers.keys()):
-            if header_name in _SENSITIVE_HEADERS:
-                del headers[header_name]
-                continue
-
-            normalized = header_name.lower()
-            if any(partial in normalized for partial in _SENSITIVE_HEADER_PARTIALS):
+            if _is_sensitive_header(header_name):
                 del headers[header_name]
 
 
@@ -941,7 +959,13 @@ def request_safe(
                     next_url = requests.compat.urljoin(current_url, location)
 
                     # Strip sensitive headers if needed
-                    _strip_sensitive_headers(kwargs["headers"], current_url, next_url)
+                    # We pass session.headers to ensure they are masked (set to None) if present
+                    _strip_sensitive_headers(
+                        kwargs["headers"],
+                        current_url,
+                        next_url,
+                        session_headers=session.headers,
+                    )
 
                     # Update URL and continue loop
                     current_url = next_url
