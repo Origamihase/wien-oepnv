@@ -486,9 +486,12 @@ def apply_authentication(session: Session) -> None:
         original_request = session.request  # type: ignore[assignment]
 
         def wrapped(method: str, url: str, params: Any = None, **kwargs: Any) -> Any:
-            return original_request(
-                method, url, params=_inject_access_id(params), **kwargs
-            )
+            # Security: Only inject credentials if target is VOR API
+            if url.startswith(VOR_BASE_URL):
+                return original_request(
+                    method, url, params=_inject_access_id(params), **kwargs
+                )
+            return original_request(method, url, params=params, **kwargs)
 
         session.request = wrapped  # type: ignore[assignment]
         setattr(session, "_vor_auth_wrapped", True)
@@ -498,7 +501,10 @@ def apply_authentication(session: Session) -> None:
         original_get = session.get  # type: ignore[attr-defined]
 
         def wrapped_get(url: str, params: Any = None, **kwargs: Any) -> Any:
-            return original_get(url, params=_inject_access_id(params), **kwargs)
+            # Security: Only inject credentials if target is VOR API
+            if url.startswith(VOR_BASE_URL):
+                return original_get(url, params=_inject_access_id(params), **kwargs)
+            return original_get(url, params=params, **kwargs)
 
         session.get = wrapped_get  # type: ignore[assignment]
         setattr(session, "_vor_auth_get_wrapped", True)
