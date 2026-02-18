@@ -10,7 +10,7 @@ import socket
 import time
 import types
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
-from typing import Any, Container, MutableMapping
+from typing import Any, Container, Mapping, MutableMapping
 from urllib.parse import parse_qsl, urlencode, urlparse
 
 import requests
