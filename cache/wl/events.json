@@ -140,7 +140,7 @@
     "guid": "5207814fd4dc4f846ce6bbf0f7351c2ccb2f85d0dd6245bc264f72a60b860741",
     "pubDate": "2026-02-12T00:00:14+01:00",
     "starts_at": "2026-02-12T00:00:14+01:00",
-    "ends_at": "2026-02-19T23:59:59+01:00",
+    "ends_at": "2026-02-20T23:59:59+01:00",
     "_identity": "wl|störung|L=57A|D=2026-02-12"
   },
   {
@@ -164,7 +164,7 @@
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
     "pubDate": "2026-02-14T00:00:17+01:00",
     "starts_at": "2026-02-14T00:00:17+01:00",
-    "ends_at": "2026-02-19T23:59:59+01:00",
+    "ends_at": "2026-02-20T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-02-14"
   },
   {
@@ -176,7 +176,7 @@
     "guid": "483eae38010ee8e6894791d2738a9629c827a8f49663810bceb0716d9219a663",
     "pubDate": "2026-02-15T00:00:27+01:00",
     "starts_at": "2026-02-15T00:00:27+01:00",
-    "ends_at": "2026-02-19T23:59:59+01:00",
+    "ends_at": "2026-02-20T23:59:59+01:00",
     "_identity": "wl|störung|L=5A|D=2026-02-15"
   },
   {
@@ -188,7 +188,7 @@
     "guid": "2551781b6cbc18b6e7d1384ac763c3a70c0703aea5f683c532a1437b302e3ded",
     "pubDate": "2026-02-17T09:15:22+01:00",
     "starts_at": "2026-02-17T09:15:22+01:00",
-    "ends_at": "2026-02-19T23:59:59+01:00",
+    "ends_at": "2026-02-20T23:59:59+01:00",
     "_identity": "wl|störung|L=3A|D=2026-02-17"
   },
   {
@@ -230,66 +230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "39A: Witterung Derzeitiger Betrieb nur bis Sievering",
-    "description": "Witterung Derzeitiger Betrieb nur bis Sievering",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "66b996937e90f6f4d9e984323c57134d4a1b3a05d098f6eb1e9be4050c6624b5",
-    "pubDate": "2026-02-19T19:57:19+01:00",
-    "starts_at": "2026-02-19T19:57:43+01:00",
-    "ends_at": "2026-02-19T23:56:00+01:00",
-    "_identity": "wl|störung|L=39A|D=2026-02-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "35A: Fahrtbehinderung Wegen Witterung",
-    "description": "Fahrtbehinderung Wegen Witterung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "effe86f24935cad7bf987133bb83917b11aaf6816c8f65f4ade21144c92798b7",
-    "pubDate": "2026-02-19T21:04:01+01:00",
-    "starts_at": "2026-02-19T21:04:01+01:00",
-    "ends_at": "2026-02-19T23:45:00+01:00",
-    "_identity": "wl|störung|L=35A|D=2026-02-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Schadhaftes Fahrzeug",
-    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c16184b68509899faf02a65c374d8c059400404774e2da3970444c5b92e08600",
-    "pubDate": "2026-02-19T22:44:00+01:00",
-    "starts_at": "2026-02-19T22:44:00+01:00",
-    "ends_at": "2026-02-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-02-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Schadhafter Zug Betrieb ab Canisiusgasse",
-    "description": "Schadhafter Zug Betrieb ab Canisiusgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "91383fd7c7451dcbc81c46860422c70f76273db510da65c38544bb748b363148",
-    "pubDate": "2026-02-19T22:44:06+01:00",
-    "starts_at": "2026-02-19T22:47:44+01:00",
-    "ends_at": "2026-02-19T23:46:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-02-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
-    "pubDate": "2026-02-19T22:45:00+01:00",
-    "starts_at": "2026-02-19T22:45:00+01:00",
-    "ends_at": "2026-02-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-02-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N29: Busse halten auf der Hauptfahrbahn",
     "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -302,49 +242,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Betriebsstörung",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
-    "pubDate": "2026-02-19T23:02:00+01:00",
-    "starts_at": "2026-02-19T23:02:00+01:00",
-    "ends_at": "2026-02-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2026-02-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Betriebsstörung Züge halten bei Linie 49",
     "description": "Betriebsstörung Züge halten bei Linie 49",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "166d5dfdbb9cf6af7b96561512b2fd17898c5871d01a66dc5426b35a886f226f",
     "pubDate": "2026-02-19T23:08:47+01:00",
     "starts_at": "2026-02-19T23:08:47+01:00",
-    "ends_at": "2026-02-19T23:59:59+01:00",
+    "ends_at": "2026-02-20T01:15:00+01:00",
     "_identity": "wl|störung|L=52|D=2026-02-19"
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Betriebsstörung",
-    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "category": "Hinweis",
+    "title": "N6/N71: Umleitung wegen Gleisbauarbeiten ab 03.03.2026",
+    "description": "Gleisbauarbeiten\nWegen Gleisbauarbeiten im Bereich Gottschalkgasse # Simmeringer Hauptstraße kommt es zu einer Umleitung der Linien N6 und N71.\nZeitraum:\nAb Dienstag, 3. März Betriebsbeginn (Nacht von 2. auf 3.), bis voraussichtlich Ende Juni 2026\nMaßnahmen:\nLinie N6 in Richtung Westbahnhof S U\nUmleitung ab der End- und Anfangshaltestelle ENKPLATZ U, GRILLGASSE über Simmeringer Hauptstraße - Dommesgasse - Lorystraße - Geiselbergstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nEnkplatz U, Gottschalkgasse\nPolkorabplatz\nErsatzhaltestellen:\nPolkorabplatz\n(Lorystraße 29, prov. Haltestelle)\nLinie N71 in beiden Richtungen\nDie Busse werden auf der Simmeringer Straße zwischen Hauffgasse und Florian-Hedorfer-Straße über die Fahrspur des Individualverkehrs geführt.\nVerlegte Haltestellen in Richtung Kaiserebersdorf:\nEnkplatz U, Grillgasse\nvon: Simmeringer Hauptstr. 94-96 (Gleiskörper)\nnach: Simmeringer Hauptstr. 98 (prov. Haltestelle Hauptfahrbahn)\nSimmering S U\nvon: Simmeringer Hauptstr. 120-122 (Gleiskörper)\nnach: Simmeringer Hauptstr. 120 (prov. Haltestelle Hauptfahrbahn)\nFickeysstraße\nvon: Simmeringer Hauptstr. 154-156 (Gleiskörper)\nnach: Simmeringer Hauptstr. ggü. 197 (prov. Haltestelle Hauptfahrbahn)\nVerlegte Haltestellen in Richtung Oper, Karlsplatz:\nFickeysstraße\nvon: Simmeringer Hauptstr. 193-195 (Gleiskörper)\nnach: Simmeringer Hauptstr. 193-195 (prov. Haltestelle Hauptfahrbahn)\nSimmering S U\nvon: Simmeringer Hauptstr. ggü. 120-122 (Gleiskörper)\nnach: Simmeringer Hauptstr. 157-161 (prov. Haltestelle Hauptfahrbahn)\nEnkplatz U, Grillgasse\nvon: Simmeringer Hauptstr. 111-117 (Gleiskörper)\nnach: Simmeringer Hauptstr. 113 (prov. Haltestelle Hauptfahrbahn)\nHauffgasse\nvon: Simmeringer Hauptstr. 73-77 (Gleiskörper)\nnach: Simmeringer Hauptstr. 79(prov. Haltestelle Hauptfahrbahn)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e43336cf67dfb3619172d7f6091d3dbfc7dce1fdb9c417a9a3531c896ad90bcb",
-    "pubDate": "2026-02-19T23:09:00+01:00",
-    "starts_at": "2026-02-19T23:09:00+01:00",
-    "ends_at": "2026-02-19T23:55:00+01:00",
-    "_identity": "wl|störung|L=25|D=2026-02-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Fahrtbehinderung Betriebsstörung",
-    "description": "Fahrtbehinderung Betriebsstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2693128595b7c315bbb765f3e1c9103f842d4cc07e44a34961e1dda92e9ed425",
-    "pubDate": "2026-02-19T23:13:19+01:00",
-    "starts_at": "2026-02-19T23:19:17+01:00",
-    "ends_at": "2026-02-19T23:59:59+01:00",
-    "_identity": "wl|störung|L=25|D=2026-02-19"
+    "guid": "25e3e54c0178bb3afa04a7e032ddfe1841b80b81c7a4babab795ab485471d1d7",
+    "pubDate": "2026-02-20T00:00:00+01:00",
+    "starts_at": "2026-03-03T00:00:00+00:00",
+    "ends_at": "2027-06-30T11:11:00+01:00",
+    "_identity": "wl|hinweis|L=N6,N71|D=2026-03-03"
   }
 ]
