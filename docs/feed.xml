@@ -7,14 +7,36 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Thu, 19 Feb 2026 21:42:01 +0000</lastBuildDate>
+<lastBuildDate>Thu, 19 Feb 2026 22:27:41 +0000</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682</guid>
+      <pubDate>Thu, 19 Feb 2026 21:45:00 +0000</pubDate>
+      <ext:first_seen>Thu, 19 Feb 2026 22:27:41 +0000</ext:first_seen>
+      <ext:starts_at>Thu, 19 Feb 2026 21:45:00 +0000</ext:starts_at>
+      <ext:ends_at>Thu, 19 Feb 2026 22:55:00 +0000</ext:ends_at>
+      <description><![CDATA[Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 19.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 19.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[38: Schadhafter Zug Betrieb ab Canisiusgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91383fd7c7451dcbc81c46860422c70f76273db510da65c38544bb748b363148</guid>
+      <pubDate>Thu, 19 Feb 2026 21:44:06 +0000</pubDate>
+      <ext:first_seen>Thu, 19 Feb 2026 22:27:41 +0000</ext:first_seen>
+      <ext:starts_at>Thu, 19 Feb 2026 21:47:44 +0000</ext:starts_at>
+      <ext:ends_at>Thu, 19 Feb 2026 22:46:00 +0000</ext:ends_at>
+      <description><![CDATA[Schadhafter Zug Betrieb ab Canisiusgasse<br/>[Seit 19.02.2026]]]></description>
+      <content:encoded><![CDATA[Schadhafter Zug Betrieb ab Canisiusgasse<br/>[Seit 19.02.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[31: Fahrtbehinderung Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7fc5dec6c1828e780870a54d956a3e47494ba66068f3920d342fbe84b2c28065</guid>
       <pubDate>Thu, 19 Feb 2026 21:20:00 +0000</pubDate>
-      <ext:first_seen>Thu, 19 Feb 2026 21:42:01 +0000</ext:first_seen>
+      <ext:first_seen>Thu, 19 Feb 2026 22:27:41 +0000</ext:first_seen>
       <ext:starts_at>Thu, 19 Feb 2026 21:20:35 +0000</ext:starts_at>
       <ext:ends_at>Thu, 19 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19.02.2026]]]></description>
@@ -25,7 +47,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c3f5724da51a5f97e26106c94e4e4a9c78a6afbf8833a95716caef1b24c5cf6e</guid>
       <pubDate>Thu, 19 Feb 2026 21:13:00 +0000</pubDate>
-      <ext:first_seen>Thu, 19 Feb 2026 21:42:01 +0000</ext:first_seen>
+      <ext:first_seen>Thu, 19 Feb 2026 22:27:41 +0000</ext:first_seen>
       <ext:starts_at>Thu, 19 Feb 2026 21:22:00 +0000</ext:starts_at>
       <ext:ends_at>Thu, 19 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Linie 69 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19.02.2026]]]></description>
@@ -36,29 +58,29 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">b064d7a77a5435dbeaf58c524f631363e605bf4552527a87d27048cfd84e4a9e</guid>
       <pubDate>Thu, 19 Feb 2026 20:45:00 +0000</pubDate>
-      <ext:first_seen>Thu, 19 Feb 2026 21:42:01 +0000</ext:first_seen>
+      <ext:first_seen>Thu, 19 Feb 2026 22:27:41 +0000</ext:first_seen>
       <ext:starts_at>Thu, 19 Feb 2026 20:45:00 +0000</ext:starts_at>
       <ext:ends_at>Thu, 19 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Linie 24 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19.02.2026]]]></description>
       <content:encoded><![CDATA[Linie 24 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19.02.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[26: Fahrtbehinderung Verkehrsunfall]]></title>
+      <title><![CDATA[26: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9c7b3ee5f523fca7feed81f5f9ddbfbd1a74b67ce91790006cb9036727ea2bca</guid>
-      <pubDate>Thu, 19 Feb 2026 20:41:49 +0000</pubDate>
-      <ext:first_seen>Thu, 19 Feb 2026 21:42:01 +0000</ext:first_seen>
-      <ext:starts_at>Thu, 19 Feb 2026 20:49:07 +0000</ext:starts_at>
-      <ext:ends_at>Thu, 19 Feb 2026 21:48:00 +0000</ext:ends_at>
-      <description><![CDATA[Fahrtbehinderung Verkehrsunfall<br/>[Seit 19.02.2026]]]></description>
-      <content:encoded><![CDATA[Fahrtbehinderung Verkehrsunfall<br/>[Seit 19.02.2026]]]></content:encoded>
+      <guid isPermaLink="false">e5e4ada309d3d5a39dbcc7b58ba60a9bcfb4f6f0b36f7174fc6f157776ed18b5</guid>
+      <pubDate>Thu, 19 Feb 2026 20:41:00 +0000</pubDate>
+      <ext:first_seen>Thu, 19 Feb 2026 22:27:41 +0000</ext:first_seen>
+      <ext:starts_at>Thu, 19 Feb 2026 20:41:00 +0000</ext:starts_at>
+      <ext:ends_at>Thu, 19 Feb 2026 22:55:00 +0000</ext:ends_at>
+      <description><![CDATA[Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19.02.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[35A: Fahrtbehinderung Wegen Witterung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">effe86f24935cad7bf987133bb83917b11aaf6816c8f65f4ade21144c92798b7</guid>
       <pubDate>Thu, 19 Feb 2026 20:04:01 +0000</pubDate>
-      <ext:first_seen>Thu, 19 Feb 2026 21:42:01 +0000</ext:first_seen>
+      <ext:first_seen>Thu, 19 Feb 2026 22:27:41 +0000</ext:first_seen>
       <ext:starts_at>Thu, 19 Feb 2026 20:04:01 +0000</ext:starts_at>
       <ext:ends_at>Thu, 19 Feb 2026 22:45:00 +0000</ext:ends_at>
       <description><![CDATA[Fahrtbehinderung Wegen Witterung<br/>[Seit 19.02.2026]]]></description>
@@ -69,7 +91,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">358388ed9cce33f9f3e1b29e2cd0946d5c73b2e74dc535752c3c8a6b57b85f25</guid>
       <pubDate>Thu, 19 Feb 2026 20:04:00 +0000</pubDate>
-      <ext:first_seen>Thu, 19 Feb 2026 21:42:01 +0000</ext:first_seen>
+      <ext:first_seen>Thu, 19 Feb 2026 22:27:41 +0000</ext:first_seen>
       <ext:starts_at>Thu, 19 Feb 2026 20:04:00 +0000</ext:starts_at>
       <ext:ends_at>Thu, 19 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19.02.2026]]]></description>
@@ -80,7 +102,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3b8a31ac4a2a78ac67c7ef0f491f11f7f86b70b8920889662b4d8a091e702fba</guid>
       <pubDate>Thu, 19 Feb 2026 20:04:00 +0000</pubDate>
-      <ext:first_seen>Thu, 19 Feb 2026 21:42:01 +0000</ext:first_seen>
+      <ext:first_seen>Thu, 19 Feb 2026 22:27:41 +0000</ext:first_seen>
       <ext:starts_at>Thu, 19 Feb 2026 20:04:00 +0000</ext:starts_at>
       <ext:ends_at>Thu, 19 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19.02.2026]]]></description>
@@ -91,33 +113,11 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">fa13a977753886fe597c353a144a3e24d7a3675a48c2729c300f9be73e720a96</guid>
       <pubDate>Thu, 19 Feb 2026 19:47:00 +0000</pubDate>
-      <ext:first_seen>Thu, 19 Feb 2026 21:42:01 +0000</ext:first_seen>
+      <ext:first_seen>Thu, 19 Feb 2026 22:27:41 +0000</ext:first_seen>
       <ext:starts_at>Thu, 19 Feb 2026 19:47:00 +0000</ext:starts_at>
       <ext:ends_at>Thu, 19 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19.02.2026]]]></description>
       <content:encoded><![CDATA[Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Witterung Betrieb nur bis Währinger Park]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1dbb432f5ce69ab615835bf9cf7d85ed1a08ec28828fdd5dbd5d4f6a583e7a68</guid>
-      <pubDate>Thu, 19 Feb 2026 19:39:42 +0000</pubDate>
-      <ext:first_seen>Thu, 19 Feb 2026 21:42:01 +0000</ext:first_seen>
-      <ext:starts_at>Thu, 19 Feb 2026 19:39:42 +0000</ext:starts_at>
-      <ext:ends_at>Thu, 19 Feb 2026 22:15:00 +0000</ext:ends_at>
-      <description><![CDATA[Witterung Betrieb nur bis Währinger Park<br/>[Seit 19.02.2026]]]></description>
-      <content:encoded><![CDATA[Witterung Betrieb nur bis Währinger Park<br/>[Seit 19.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Witterung Betrieb nur bis Joachimsthalerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ccc08d53f6666e8124778339808ec8b77467fed72db3514b712b5fe2c1f924d3</guid>
-      <pubDate>Thu, 19 Feb 2026 19:36:36 +0000</pubDate>
-      <ext:first_seen>Thu, 19 Feb 2026 21:42:01 +0000</ext:first_seen>
-      <ext:starts_at>Thu, 19 Feb 2026 19:36:53 +0000</ext:starts_at>
-      <ext:ends_at>Thu, 19 Feb 2026 22:15:00 +0000</ext:ends_at>
-      <description><![CDATA[Witterung Betrieb nur bis Joachimsthalerplatz<br/>[Seit 19.02.2026]]]></description>
-      <content:encoded><![CDATA[Witterung Betrieb nur bis Joachimsthalerplatz<br/>[Seit 19.02.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
