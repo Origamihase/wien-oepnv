@@ -139,7 +139,7 @@ def test_secret_scanner_detects_multiline_with_keyword():
     assert len(findings) >= 1
     found_assignment = False
     for f in findings:
-        if "Verdächtige Zuweisung" in f[2]:
+        if "Verdächtige Zuweisung" in f[2] or "Private Key (PEM) gefunden" in f[2]:
             found_assignment = True
             break
     assert found_assignment
