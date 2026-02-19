@@ -218,25 +218,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1A: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1728d250973f2515460b23b3c697922114d90ab90874f000d040c5e6b86cfa5e",
-    "pubDate": "2026-02-19T05:58:38+01:00",
-    "starts_at": "2026-02-19T05:58:38+01:00",
-    "ends_at": "2026-02-19T06:58:00+01:00",
-    "_identity": "wl|störung|L=1A|D=2026-02-19"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "13A: Polizeieinsatz",
     "description": "Linie 13 A: Unregelmäßige Intervalle in Richtung Hauptbahnhof S U. Grund: Polizeieinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
     "pubDate": "2026-02-19T06:16:00+01:00",
-    "starts_at": "2026-02-19T06:16:05+01:00",
+    "starts_at": "2026-02-19T06:16:00+01:00",
     "ends_at": "2026-02-19T23:55:00+01:00",
     "_identity": "wl|störung|L=13A|D=2026-02-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-02-19T07:24:00+01:00",
+    "starts_at": "2026-02-19T07:24:00+01:00",
+    "ends_at": "2026-02-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2026-02-19"
   }
 ]
