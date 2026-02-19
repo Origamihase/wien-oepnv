@@ -193,6 +193,34 @@ def _is_sensitive_header(header_name: str) -> bool:
     return any(partial in normalized for partial in _SENSITIVE_HEADER_PARTIALS)
 
 
+def _strip_sensitive_params(url: str) -> str:
+    """Remove sensitive query parameters from URL completely."""
+    try:
+        parsed = urlparse(url)
+        if not parsed.query:
+            return url
+
+        query_params = parse_qsl(parsed.query, keep_blank_values=True)
+        new_params = []
+        modified = False
+
+        for key, value in query_params:
+            normalized = _normalize_key(key)
+            if normalized in _SENSITIVE_QUERY_KEYS or any(s in normalized for s in _SENSITIVE_KEY_SUBSTRINGS):
+                modified = True
+                continue
+            new_params.append((key, value))
+
+        if modified:
+            new_query = urlencode(new_params)
+            parsed = parsed._replace(query=new_query)
+            return parsed.geturl()
+
+        return url
+    except Exception:
+        return url
+
+
 def _sanitize_url_for_error(url: str) -> str:
     """Strip credentials and sensitive query params from URL for safe error logging."""
     try:
@@ -966,6 +994,18 @@ def request_safe(
                         next_url,
                         session_headers=session.headers,
                     )
+
+                    # Security: Strip sensitive query parameters if redirecting to a different host/scheme/port
+                    # This prevents leaking tokens (e.g. accessId) via redirect URLs.
+                    next_parsed = urlparse(next_url)
+                    curr_parsed = urlparse(current_url)
+
+                    if (
+                        next_parsed.hostname != curr_parsed.hostname
+                        or next_parsed.scheme != curr_parsed.scheme
+                        or _get_port(next_parsed) != _get_port(curr_parsed)
+                    ):
+                        next_url = _strip_sensitive_params(next_url)
 
                     # Update URL and continue loop
                     current_url = next_url
