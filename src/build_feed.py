@@ -879,7 +879,6 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
             deadlines: Dict[Any, Optional[float]] = {}
             pending: set[Any] = set()
             semaphores: Dict[str, BoundedSemaphore] = {}
-            timed_out = False
 
             for fetch in network_fetchers:
                 provider_name = provider_names.get(fetch, _provider_display_name(fetch))
@@ -954,7 +953,6 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
                         f"Timeout nach {timeout_value}s",
                     )
                     future.cancel()
-                    timed_out = True
 
                 if not pending:
                     break
@@ -981,10 +979,8 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
                     except TimeoutError as exc:
                         log.error("%s fetch Timeout: %s", name, exc)
                         report.provider_error(provider_name, f"Timeout: {exc}")
-                        timed_out = True
                     except CancelledError:
                         report.provider_error(provider_name, "Fetch abgebrochen")
-                        timed_out = True
                     except Exception as exc:
                         log.exception("%s fetch fehlgeschlagen: %s", name, exc)
                         report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")

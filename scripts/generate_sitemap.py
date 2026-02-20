@@ -94,7 +94,7 @@ def _last_modified(path: Path) -> str:
             stderr=subprocess.DEVNULL,
             text=True,
             timeout=10,
-        ).strip()
+        ).strip()  # nosec B603, B607 - git execution on trusted internal path
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
         output = ""
     if output:

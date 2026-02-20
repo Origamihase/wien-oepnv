@@ -22,7 +22,7 @@ def _run(command: list[str]) -> int:
         # Enforce a 5-minute timeout for static checks
         completed = subprocess.run(
             command, cwd=PROJECT_ROOT, check=False, timeout=300
-        )
+        )  # nosec B603
         return completed.returncode
     except subprocess.TimeoutExpired:
         print(f"Command timed out after 300s: {' '.join(command)}", file=sys.stderr)
