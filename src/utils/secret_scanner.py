@@ -53,6 +53,7 @@ _SENSITIVE_ASSIGN_RE = re.compile(
 
 _AWS_ID_RE = re.compile(r"(?<![A-Za-z0-9])(AKIA|ASIA|ACCA)[A-Z0-9]{16}(?![A-Za-z0-9])")
 _BEARER_RE = re.compile(r"Bearer\s+([A-Za-z0-9\-_.]{16,})")
+_PEM_RE = re.compile(r"(-----BEGIN [A-Z ]*PRIVATE KEY-----)(?:.|\n)*?(-----END [A-Z ]*PRIVATE KEY-----)")
 
 # Known high-value token patterns to detect specifically
 # These bypass the generic entropy checks and provide specific descriptions
@@ -172,6 +173,14 @@ def _scan_content(content: str) -> list[tuple[int, str, str]]:
             if start < c_end and end > c_start:
                 return True
         return False
+
+    for match in _PEM_RE.finditer(content):
+        candidate = match.group(0)
+        span_start, span_end = match.span(0)
+
+        if not is_covered(span_start, span_end):
+            findings.append((get_line_number(match.start()), candidate, "Private Key (PEM) gefunden"))
+            covered_ranges.append((span_start, span_end))
 
     for regex, reason in _KNOWN_TOKENS:
         for match in regex.finditer(content):
