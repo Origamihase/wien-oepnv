@@ -27,11 +27,17 @@ class TestLogSanitizationNewKeys(unittest.TestCase):
         sanitized = sanitize_log_message(msg)
         self.assertEqual(sanitized, "hotpot=delicious")
 
-        # roughpath (contains ghp, still broad match)
-        # Should be redacted because ghp uses wildcards
+        # roughpath (contains ghp, previously broad match)
+        # Should NOT be redacted now that ghp is strict
         msg = "roughpath=bumpy"
         sanitized = sanitize_log_message(msg)
-        self.assertEqual(sanitized, "roughpath=***")
+        self.assertEqual(sanitized, "roughpath=bumpy")
+
+        # throughput (contains ghp)
+        # Should NOT be redacted
+        msg = "throughput=100"
+        sanitized = sanitize_log_message(msg)
+        self.assertEqual(sanitized, "throughput=100")
 
 if __name__ == "__main__":
     unittest.main()
