@@ -7,36 +7,47 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Fri, 20 Feb 2026 06:51:57 +0000</lastBuildDate>
+<lastBuildDate>Fri, 20 Feb 2026 07:45:08 +0000</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U6: Stromstörung]]></title>
+      <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f0916b184eee00654c3fbb50aa56e39700535f39a3ced631b30d6fc7cc8fb795</guid>
-      <pubDate>Fri, 20 Feb 2026 05:20:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 06:51:57 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 20 Feb 2026 05:20:00 +0000</ext:starts_at>
+      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
+      <pubDate>Fri, 20 Feb 2026 06:41:00 +0000</pubDate>
+      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 20 Feb 2026 06:41:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stromstörung.<br/>[Seit 20.02.2026]]]></description>
-      <content:encoded><![CDATA[Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stromstörung.<br/>[Seit 20.02.2026]]]></content:encoded>
+      <description><![CDATA[Die Linie U2 fährt derzeit nur zwischen Seestadt und Museumsquartier. Voraussichtliche Dauer: 08:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.<br/>[Seit 20.02.2026]]]></description>
+      <content:encoded><![CDATA[Die Linie U2 fährt derzeit nur zwischen Seestadt und Museumsquartier. Voraussichtliche Dauer: 08:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.<br/>[Seit 20.02.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U2: Betriebsstörung]]></title>
+      <title><![CDATA[U1: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
-      <pubDate>Fri, 20 Feb 2026 05:15:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 06:51:57 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 20 Feb 2026 05:15:00 +0000</ext:starts_at>
+      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
+      <pubDate>Fri, 20 Feb 2026 05:55:00 +0000</pubDate>
+      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 20 Feb 2026 05:55:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 20.02.2026]]]></description>
-      <content:encoded><![CDATA[Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 20.02.2026]]]></content:encoded>
+      <description><![CDATA[Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 20.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 20.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e</guid>
+      <pubDate>Fri, 20 Feb 2026 05:20:00 +0000</pubDate>
+      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 20 Feb 2026 05:20:00 +0000</ext:starts_at>
+      <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
+      <description><![CDATA[Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug<br/>[Seit 20.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug<br/>[Seit 20.02.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Witterung Längere Wartezeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9b26bc9cb8ca18a53948a3af25a6d9715479165bc300e5d9a926232a51b4313e</guid>
       <pubDate>Fri, 20 Feb 2026 04:45:21 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 06:51:57 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 05:00:31 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:15:00 +0000</ext:ends_at>
       <description><![CDATA[Witterung Längere Wartezeiten<br/>[Seit 20.02.2026]]]></description>
@@ -47,7 +58,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a68a113671b469d7854e891e9ea97eaa3925df4d76e6a1d88b77056e4846e5d2</guid>
       <pubDate>Fri, 20 Feb 2026 04:37:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 06:51:57 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 04:37:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Derzeit kommt es bei allen Buslinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></description>
@@ -58,7 +69,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">16aad925d96c4f4a31c3766dac174fa1456b79cc71dd9a4e7a0bad852e334077</guid>
       <pubDate>Fri, 20 Feb 2026 04:36:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 06:51:57 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 04:36:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Derzeit kommt es bei allen Buslinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></description>
@@ -69,7 +80,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3dd53bcea29565dd5b3ba39a647b13c040b906debd19790edb8c39f55c652d7f</guid>
       <pubDate>Fri, 20 Feb 2026 04:34:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 06:51:57 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 04:34:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Derzeit kommt es bei allen Buslinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></description>
@@ -80,7 +91,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5236ace484330a8a1340be5bf0c8db704252f5136cb61f2f324811ab706a9553</guid>
       <pubDate>Fri, 20 Feb 2026 04:33:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 06:51:57 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 04:33:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Derzeit kommt es bei allen Buslinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></description>
@@ -91,7 +102,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">b644be9d5bef17a056db35f344542ff6f870a6a797081c9970d2157318178651</guid>
       <pubDate>Fri, 20 Feb 2026 04:31:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 06:51:57 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 04:31:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Derzeit kommt es bei allen Buslinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></description>
@@ -102,22 +113,11 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7e768586892e936e39e413a494ce22b1b4e604aa2866ce1767e8426f9ba92b45</guid>
       <pubDate>Fri, 20 Feb 2026 04:24:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 06:51:57 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 04:24:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Derzeit kommt es bei allen Straßenbahnlinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></description>
       <content:encoded><![CDATA[Derzeit kommt es bei allen Straßenbahnlinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N6/N71: Umleitung wegen Gleisbauarbeiten ab 03.03.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">25e3e54c0178bb3afa04a7e032ddfe1841b80b81c7a4babab795ab485471d1d7</guid>
-      <pubDate>Thu, 19 Feb 2026 23:00:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 06:51:57 +0000</ext:first_seen>
-      <ext:starts_at>Tue, 03 Mar 2026 00:00:00 +0000</ext:starts_at>
-      <ext:ends_at>Wed, 30 Jun 2027 10:11:00 +0000</ext:ends_at>
-      <description><![CDATA[Wegen Gleisbauarbeiten im Bereich Gottschalkgasse # Simmeringer Hauptstraße kommt es zu einer Umleitung der Linien N6 und N71.<br/>[Ab 03.03.2026]]]></description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Gottschalkgasse # Simmeringer Hauptstraße kommt es zu einer Umleitung der Linien N6 und N71.<br/>[Ab 03.03.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
