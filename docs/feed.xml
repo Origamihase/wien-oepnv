@@ -7,25 +7,47 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Fri, 20 Feb 2026 07:45:08 +0000</lastBuildDate>
+<lastBuildDate>Fri, 20 Feb 2026 07:53:35 +0000</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[25: Fahrtbehinderung Schadhafter Zug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">abc260bf756a8d0275a4ce51c5b124812c4c380b787e4c627f39df2747b1c157</guid>
+      <pubDate>Fri, 20 Feb 2026 07:12:42 +0000</pubDate>
+      <ext:first_seen>Fri, 20 Feb 2026 07:53:35 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 20 Feb 2026 07:12:57 +0000</ext:starts_at>
+      <ext:ends_at>Fri, 20 Feb 2026 08:12:00 +0000</ext:ends_at>
+      <description><![CDATA[Fahrtbehinderung Schadhafter Zug<br/>[Seit 20.02.2026]]]></description>
+      <content:encoded><![CDATA[Fahrtbehinderung Schadhafter Zug<br/>[Seit 20.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">564166d27455e4c3e4f123d5028460adab46b34a5d0c7a8f5651f92aee27ffef</guid>
+      <pubDate>Fri, 20 Feb 2026 07:00:00 +0000</pubDate>
+      <ext:first_seen>Fri, 20 Feb 2026 07:53:35 +0000</ext:first_seen>
+      <ext:starts_at>Fri, 20 Feb 2026 07:00:00 +0000</ext:starts_at>
+      <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
+      <description><![CDATA[Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20.02.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
       <pubDate>Fri, 20 Feb 2026 06:41:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:53:35 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 06:41:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Die Linie U2 fährt derzeit nur zwischen Seestadt und Museumsquartier. Voraussichtliche Dauer: 08:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.<br/>[Seit 20.02.2026]]]></description>
-      <content:encoded><![CDATA[Die Linie U2 fährt derzeit nur zwischen Seestadt und Museumsquartier. Voraussichtliche Dauer: 08:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.<br/>[Seit 20.02.2026]]]></content:encoded>
+      <description><![CDATA[Die Linie U2 fährt derzeit in der Station Karlsplatz in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 08:30 Uhr. Grund: Schadhaftes Fahrzeug im …<br/>[Seit 20.02.2026]]]></description>
+      <content:encoded><![CDATA[Die Linie U2 fährt derzeit in der Station Karlsplatz in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 08:30 Uhr. Grund: Schadhaftes Fahrzeug im …<br/>[Seit 20.02.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
       <pubDate>Fri, 20 Feb 2026 05:55:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:53:35 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 05:55:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 20.02.2026]]]></description>
@@ -36,7 +58,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e</guid>
       <pubDate>Fri, 20 Feb 2026 05:20:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:53:35 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 05:20:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug<br/>[Seit 20.02.2026]]]></description>
@@ -47,7 +69,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9b26bc9cb8ca18a53948a3af25a6d9715479165bc300e5d9a926232a51b4313e</guid>
       <pubDate>Fri, 20 Feb 2026 04:45:21 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:53:35 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 05:00:31 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:15:00 +0000</ext:ends_at>
       <description><![CDATA[Witterung Längere Wartezeiten<br/>[Seit 20.02.2026]]]></description>
@@ -58,7 +80,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a68a113671b469d7854e891e9ea97eaa3925df4d76e6a1d88b77056e4846e5d2</guid>
       <pubDate>Fri, 20 Feb 2026 04:37:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:53:35 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 04:37:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Derzeit kommt es bei allen Buslinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></description>
@@ -69,7 +91,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">16aad925d96c4f4a31c3766dac174fa1456b79cc71dd9a4e7a0bad852e334077</guid>
       <pubDate>Fri, 20 Feb 2026 04:36:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:53:35 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 04:36:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Derzeit kommt es bei allen Buslinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></description>
@@ -80,7 +102,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3dd53bcea29565dd5b3ba39a647b13c040b906debd19790edb8c39f55c652d7f</guid>
       <pubDate>Fri, 20 Feb 2026 04:34:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:53:35 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 04:34:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Derzeit kommt es bei allen Buslinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></description>
@@ -91,33 +113,11 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5236ace484330a8a1340be5bf0c8db704252f5136cb61f2f324811ab706a9553</guid>
       <pubDate>Fri, 20 Feb 2026 04:33:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
+      <ext:first_seen>Fri, 20 Feb 2026 07:53:35 +0000</ext:first_seen>
       <ext:starts_at>Fri, 20 Feb 2026 04:33:00 +0000</ext:starts_at>
       <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
       <description><![CDATA[Derzeit kommt es bei allen Buslinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></description>
       <content:encoded><![CDATA[Derzeit kommt es bei allen Buslinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/2A/3A/4A/5A/8A/9A/10A/11A/12A/13A/14A/15A/16A/17A/20A/22A/24A/25A/26A/27A/28A/29A/30A: Witterung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b644be9d5bef17a056db35f344542ff6f870a6a797081c9970d2157318178651</guid>
-      <pubDate>Fri, 20 Feb 2026 04:31:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 20 Feb 2026 04:31:00 +0000</ext:starts_at>
-      <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Derzeit kommt es bei allen Buslinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></description>
-      <content:encoded><![CDATA[Derzeit kommt es bei allen Buslinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/5/6/9/10/11/12/18/30/31/37/38/40/41/42/43/44/46/49/52/60/62: Witterung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7e768586892e936e39e413a494ce22b1b4e604aa2866ce1767e8426f9ba92b45</guid>
-      <pubDate>Fri, 20 Feb 2026 04:24:00 +0000</pubDate>
-      <ext:first_seen>Fri, 20 Feb 2026 07:45:08 +0000</ext:first_seen>
-      <ext:starts_at>Fri, 20 Feb 2026 04:24:00 +0000</ext:starts_at>
-      <ext:ends_at>Fri, 20 Feb 2026 22:55:00 +0000</ext:ends_at>
-      <description><![CDATA[Derzeit kommt es bei allen Straßenbahnlinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></description>
-      <content:encoded><![CDATA[Derzeit kommt es bei allen Straßenbahnlinien zu Verspätungen. Planen Sie daher bitte mehr Zeit ein. Grund: Witterungsverhältnisse.<br/>[Seit 20.02.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
