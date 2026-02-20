@@ -22,23 +22,34 @@ _HIGH_ENTROPY_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z0-9+/=_-]{24,}(?![A-Za-z0
 _SENSITIVE_ASSIGN_RE = re.compile(
     r"""(?xis)
     (
-        [a-z0-9_.-]*  # Prefix allowing letters, numbers, underscores, dots, hyphens
+        # Group 1: The key
         (?:
-            token|secret|password|passphrase|credential|
-            accessid|accesskey|access-key|access.key|
-            apikey|api-key|api.key|
-            privatekey|private-key|private.key|
-            secret-key|secret.key|client-secret|client.secret|
-            authorization|auth-token|auth.token|auth|
-            _key|ssh-key|ssh.key|id_rsa|
-            clientid|client-id|client.id|client_id|
-            session_id|session-id|session.id|
-            cookie|signature|bearer|jwt|
-            webhook_url|webhook-url|webhook.url|webhook|
-            dsn|subscriptionkey|
-            glpat|ghp
+            [a-z0-9_.-]*  # Prefix allowing letters, numbers, underscores, dots, hyphens
+            (?:
+                token|secret|password|passphrase|credential|
+                accessid|accesskey|access-key|access.key|
+                apikey|api-key|api.key|
+                privatekey|private-key|private.key|
+                secret-key|secret.key|client-secret|client.secret|
+                authorization|auth-token|auth.token|auth|
+                _key|ssh-key|ssh.key|id_rsa|
+                clientid|client-id|client.id|client_id|
+                session_id|session-id|session.id|
+                cookie|signature|bearer|jwt|
+                webhook_url|webhook-url|webhook.url|webhook|
+                dsn|subscriptionkey
+            )
+            [a-z0-9_.-]*  # Suffix allowing letters, numbers, underscores, dots, hyphens
         )
-        [a-z0-9_.-]*  # Suffix allowing letters, numbers, underscores, dots, hyphens
+        |
+        (?:
+            # Strict matching for short/risky keywords to avoid false positives (e.g. throughput)
+            [a-z0-9_.-]*  # Prefix
+            (?:
+                glpat|ghp|otp
+            )
+            (?:[-_][a-z0-9_.-]*)?  # Strict suffix (underscore/hyphen required or end)
+        )
     )
     \s*[:=]\s*  # Assignment operator (= or :) surrounded by flexible whitespace (including newlines)
     (

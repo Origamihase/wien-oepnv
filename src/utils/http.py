@@ -127,6 +127,7 @@ _SENSITIVE_KEY_SUBSTRINGS = frozenset({
     "signature",
     "email",
     "webhook",
+    "glpat",
     # Additional broad matching
     "session",
     "cookie",
