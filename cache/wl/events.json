@@ -242,18 +242,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18/49/6: Witterung",
-    "description": "Die Linie 6 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 18 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Die Linie 49 kann derzeit in beiden Richtungen nur unregelmäßig fahren. Grund dafür ist die aktuelle Witterung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cd565e764a6e07a67b6b647b691d8351218f7b7321b8f5a239fb9feb75715a74",
-    "pubDate": "2026-02-20T05:24:00+01:00",
-    "starts_at": "2026-02-20T05:24:00+01:00",
-    "ends_at": "2026-02-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=18,49,6|D=2026-02-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10A: Witterung",
     "description": "Linie 10 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -262,18 +250,6 @@
     "starts_at": "2026-02-20T05:31:00+01:00",
     "ends_at": "2026-02-20T23:55:00+01:00",
     "_identity": "wl|störung|L=10A|D=2026-02-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Witterung",
-    "description": "Linie 12 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5836f06e97fca781f4da5a5d7dbe817e6e3f4a0b93993aac8148076f687b1f0c",
-    "pubDate": "2026-02-20T05:31:00+01:00",
-    "starts_at": "2026-02-20T05:31:00+01:00",
-    "ends_at": "2026-02-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=12A|D=2026-02-20"
   },
   {
     "source": "Wiener Linien",
@@ -302,26 +278,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Fahrtbehinderung wegen Stromstörung",
-    "description": "Fahrtbehinderung wegen Stromstörung",
+    "title": "Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bafb62e635fb1b46dbd6e0501b9811b5f0bafdf50886c0eb5c05bd86c505e635",
-    "pubDate": "2026-02-20T07:06:10+01:00",
-    "starts_at": "2026-02-20T07:06:10+01:00",
-    "ends_at": "2026-02-20T14:15:00+01:00",
-    "_identity": "wl|störung|L=31|D=2026-02-20"
+    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
+    "pubDate": "2026-02-20T06:00:22+01:00",
+    "starts_at": "2026-02-20T06:00:23+01:00",
+    "ends_at": "2026-02-20T15:15:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-02-20"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Stromstörung Betrieb ab Wallensteinplatz",
-    "description": "Stromstörung Betrieb ab Wallensteinplatz",
+    "title": "Fahrtbehinderung wegen Witterung",
+    "description": "Fahrtbehinderung wegen Witterung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0bfe53b49a15d619be64a9242c7b72b8def581a8888712aed4ffd35412bd2d58",
-    "pubDate": "2026-02-20T07:07:08+01:00",
-    "starts_at": "2026-02-20T07:07:08+01:00",
-    "ends_at": "2026-02-20T14:45:00+01:00",
-    "_identity": "wl|störung|L=31|D=2026-02-20"
+    "guid": "fe06ed9a98b1c943a52f060cb327cf4c13e08695b87d56be8922401a6d0dc48f",
+    "pubDate": "2026-02-20T06:00:24+01:00",
+    "starts_at": "2026-02-20T14:52:42+01:00",
+    "ends_at": "2026-02-20T15:51:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-02-20"
   },
   {
     "source": "Wiener Linien",
@@ -358,18 +334,6 @@
     "starts_at": "2026-02-20T09:57:26+01:00",
     "ends_at": "2026-02-20T15:45:00+01:00",
     "_identity": "wl|störung|L=31|D=2026-02-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Witterung",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9c88d8bdc5a06e32210c2143a1dec2d9ab5abf3ff57253fe1ae301223922f1b7",
-    "pubDate": "2026-02-20T11:40:00+01:00",
-    "starts_at": "2026-02-20T11:40:00+01:00",
-    "ends_at": "2026-02-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-02-20"
   },
   {
     "source": "Wiener Linien",
@@ -470,50 +434,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "13A: Rettungseinsatz",
     "description": "Linie 13 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
     "pubDate": "2026-02-20T13:32:00+01:00",
-    "starts_at": "2026-02-20T13:34:25+01:00",
+    "starts_at": "2026-02-20T13:32:00+01:00",
     "ends_at": "2026-02-20T23:55:00+01:00",
     "_identity": "wl|störung|L=13A|D=2026-02-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Polizeieinsatz",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182",
-    "pubDate": "2026-02-20T13:49:00+01:00",
-    "starts_at": "2026-02-20T13:49:00+01:00",
-    "ends_at": "2026-02-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2026-02-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Fahrtbehinderung wegen Witterung",
-    "description": "Fahrtbehinderung wegen Witterung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "52169a0bc53ac8909573c16db04eaf7707f3b4e7be2c9e6b312630b89c7e71d5",
-    "pubDate": "2026-02-20T13:57:58+01:00",
-    "starts_at": "2026-02-20T13:58:14+01:00",
-    "ends_at": "2026-02-20T14:57:00+01:00",
-    "_identity": "wl|störung|L=71|D=2026-02-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Fahrtbehinderung wegen Witterung",
-    "description": "Fahrtbehinderung wegen Witterung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "83e17132dfa6c6ce3fb9e0ce8ec68bb96c552e1d929b731217803b5ae0bd0d6a",
-    "pubDate": "2026-02-20T13:58:37+01:00",
-    "starts_at": "2026-02-20T13:58:56+01:00",
-    "ends_at": "2026-02-20T14:58:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-02-20"
   },
   {
     "source": "Wiener Linien",
@@ -538,5 +466,149 @@
     "starts_at": "2026-02-20T13:59:00+01:00",
     "ends_at": "2026-02-20T23:55:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Betriebsstörung",
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f772b0a6c66647ee4e80b618f6f009261e873191227b6bfcbf9b58294cc76bd1",
+    "pubDate": "2026-02-20T14:03:00+01:00",
+    "starts_at": "2026-02-20T14:03:00+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Betriebsstörung",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "91f10f4182d7824836d33d2209e9cea486854f28d5216b1b2b5c5844beec8939",
+    "pubDate": "2026-02-20T14:03:00+01:00",
+    "starts_at": "2026-02-20T14:03:00+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b515046f8efc2938e32142bba4c3e0824f0ae216ac5103eef86cc71cf2d91c34",
+    "pubDate": "2026-02-20T14:12:00+01:00",
+    "starts_at": "2026-02-20T14:24:18+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=37|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a71fc169a65218e40e97e38cf1216a0530e03cb41823f0f6e351949dbeea8a98",
+    "pubDate": "2026-02-20T14:12:00+01:00",
+    "starts_at": "2026-02-20T14:25:16+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5092aa3e16264a54729d619c0073938e9a20bc79adf99a5a51f89ef26c9055eb",
+    "pubDate": "2026-02-20T14:12:00+01:00",
+    "starts_at": "2026-02-20T14:25:01+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=40|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8",
+    "pubDate": "2026-02-20T14:12:00+01:00",
+    "starts_at": "2026-02-20T14:26:14+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=41|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9c6de3fb17063e07f39809d46daba7b1fb7a447006a112e8c1167551cbd51404",
+    "pubDate": "2026-02-20T14:12:00+01:00",
+    "starts_at": "2026-02-20T14:25:35+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=42|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Feuerwehreinsatz",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a11c559bc88082d01d8ecc232b83791677131f39d67e71c682b52aab7c821cf9",
+    "pubDate": "2026-02-20T14:43:00+01:00",
+    "starts_at": "2026-02-20T14:43:00+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=5|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Feuerwehreinsatz Betrieb ab Albertgasse",
+    "description": "Feuerwehreinsatz Betrieb ab Albertgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6edea82b0ea85698dea5e7a5eb36902746aa9268b5563a1425fe33b1d838c620",
+    "pubDate": "2026-02-20T14:44:27+01:00",
+    "starts_at": "2026-02-20T14:44:27+01:00",
+    "ends_at": "2026-02-20T15:43:00+01:00",
+    "_identity": "wl|störung|L=5|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Gleisschaden",
+    "description": "Linie 49: Kein Betrieb zwischen Hütteldorfer Straße U und Urban-Loritz-Platz. Weichen Sie ersatzweise auf die Linien U3, 9 und 12 A aus. Voraussichtliche Dauer: nicht absehbar. Grund: Gleisschaden im Bereich Märzstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7e01fc848976d0d587e141957de9da7afd74e084db6077e61c5f28daaa72b86e",
+    "pubDate": "2026-02-20T15:00:00+01:00",
+    "starts_at": "2026-02-20T15:00:00+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Gleisschaden Betrieb ab Urban-Loritz-Platz",
+    "description": "Gleisschaden Betrieb ab Urban-Loritz-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "daebfc84e978ba997bf9db03242e337ce2c13f18932a3d0cc38b273b66698b73",
+    "pubDate": "2026-02-20T15:01:09+01:00",
+    "starts_at": "2026-02-20T15:01:09+01:00",
+    "ends_at": "2026-02-20T23:30:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Gleisschaden Betrieb ab Hütteldorfer Straße",
+    "description": "Gleisschaden Betrieb ab Hütteldorfer Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c8c38d7450fd20f9df0beb7024c91b962e431c05bc16a295c6b782f5d113b8b",
+    "pubDate": "2026-02-20T15:08:24+01:00",
+    "starts_at": "2026-02-20T15:08:24+01:00",
+    "ends_at": "2026-02-20T23:30:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-02-20"
   }
 ]
