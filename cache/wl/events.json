@@ -229,18 +229,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "52: Betriebsstörung Züge halten bei Linie 49",
-    "description": "Betriebsstörung Züge halten bei Linie 49",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "166d5dfdbb9cf6af7b96561512b2fd17898c5871d01a66dc5426b35a886f226f",
-    "pubDate": "2026-02-19T23:08:47+01:00",
-    "starts_at": "2026-02-19T23:08:47+01:00",
-    "ends_at": "2026-02-20T01:15:00+01:00",
-    "_identity": "wl|störung|L=52|D=2026-02-19"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "N6/N71: Umleitung wegen Gleisbauarbeiten ab 03.03.2026",
     "description": "Gleisbauarbeiten\nWegen Gleisbauarbeiten im Bereich Gottschalkgasse # Simmeringer Hauptstraße kommt es zu einer Umleitung der Linien N6 und N71.\nZeitraum:\nAb Dienstag, 3. März Betriebsbeginn (Nacht von 2. auf 3.), bis voraussichtlich Ende Juni 2026\nMaßnahmen:\nLinie N6 in Richtung Westbahnhof S U\nUmleitung ab der End- und Anfangshaltestelle ENKPLATZ U, GRILLGASSE über Simmeringer Hauptstraße - Dommesgasse - Lorystraße - Geiselbergstraße zur Stammstrecke.\nAufgelassene Haltestellen:\nEnkplatz U, Gottschalkgasse\nPolkorabplatz\nErsatzhaltestellen:\nPolkorabplatz\n(Lorystraße 29, prov. Haltestelle)\nLinie N71 in beiden Richtungen\nDie Busse werden auf der Simmeringer Straße zwischen Hauffgasse und Florian-Hedorfer-Straße über die Fahrspur des Individualverkehrs geführt.\nVerlegte Haltestellen in Richtung Kaiserebersdorf:\nEnkplatz U, Grillgasse\nvon: Simmeringer Hauptstr. 94-96 (Gleiskörper)\nnach: Simmeringer Hauptstr. 98 (prov. Haltestelle Hauptfahrbahn)\nSimmering S U\nvon: Simmeringer Hauptstr. 120-122 (Gleiskörper)\nnach: Simmeringer Hauptstr. 120 (prov. Haltestelle Hauptfahrbahn)\nFickeysstraße\nvon: Simmeringer Hauptstr. 154-156 (Gleiskörper)\nnach: Simmeringer Hauptstr. ggü. 197 (prov. Haltestelle Hauptfahrbahn)\nVerlegte Haltestellen in Richtung Oper, Karlsplatz:\nFickeysstraße\nvon: Simmeringer Hauptstr. 193-195 (Gleiskörper)\nnach: Simmeringer Hauptstr. 193-195 (prov. Haltestelle Hauptfahrbahn)\nSimmering S U\nvon: Simmeringer Hauptstr. ggü. 120-122 (Gleiskörper)\nnach: Simmeringer Hauptstr. 157-161 (prov. Haltestelle Hauptfahrbahn)\nEnkplatz U, Grillgasse\nvon: Simmeringer Hauptstr. 111-117 (Gleiskörper)\nnach: Simmeringer Hauptstr. 113 (prov. Haltestelle Hauptfahrbahn)\nHauffgasse\nvon: Simmeringer Hauptstr. 73-77 (Gleiskörper)\nnach: Simmeringer Hauptstr. 79(prov. Haltestelle Hauptfahrbahn)",
@@ -250,5 +238,77 @@
     "starts_at": "2026-03-03T00:00:00+00:00",
     "ends_at": "2027-06-30T11:11:00+01:00",
     "_identity": "wl|hinweis|L=N6,N71|D=2026-03-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N49: Witterung",
+    "description": "Linie N49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "71c04c24ae6e2b904e06bab916add25634c833e9bdbc7c186ef6c06efa1d206e",
+    "pubDate": "2026-02-20T01:14:00+01:00",
+    "starts_at": "2026-02-20T01:14:00+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=N49|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Witterung",
+    "description": "Linie N71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "569d65e544cf8c923352c9bcabe700d5df420246bbd398f26066a9fd39ccc0e5",
+    "pubDate": "2026-02-20T01:16:00+01:00",
+    "starts_at": "2026-02-20T01:16:00+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=N71|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Witterung Längere Wartezeiten",
+    "description": "Witterung Längere Wartezeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b949090e928bae4de7f18f7946b5530221def65c5a17a8206947e545d54aaf9f",
+    "pubDate": "2026-02-20T01:18:38+01:00",
+    "starts_at": "2026-02-20T01:51:31+01:00",
+    "ends_at": "2026-02-20T04:00:00+01:00",
+    "_identity": "wl|störung|L=N71|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N49: Witterung Längere Wartezeiten",
+    "description": "Witterung Längere Wartezeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e503aa7de46ba21a3d33ee9792054a3232fd61e4393a18b9ccd20b0635de083d",
+    "pubDate": "2026-02-20T01:19:54+01:00",
+    "starts_at": "2026-02-20T01:36:26+01:00",
+    "ends_at": "2026-02-20T03:45:00+01:00",
+    "_identity": "wl|störung|L=N49|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N67: Witterung",
+    "description": "Linie N67: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2c76e4b689d276b99ec8e3232c43c6c6b758f9d1dbab387d7dbc59ebbcc4a8d9",
+    "pubDate": "2026-02-20T02:40:00+01:00",
+    "starts_at": "2026-02-20T02:40:00+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=N67|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N67: Fahrtbehinderung wegen Witterung",
+    "description": "Fahrtbehinderung wegen Witterung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e763991202a8ad327ccba36b3cafe794c90bde2162e5dda1e64e62a308f47d1f",
+    "pubDate": "2026-02-20T02:40:08+01:00",
+    "starts_at": "2026-02-20T02:40:32+01:00",
+    "ends_at": "2026-02-20T03:39:00+01:00",
+    "_identity": "wl|störung|L=N67|D=2026-02-20"
   }
 ]
