@@ -62,7 +62,8 @@ def sanitize_log_message(
         r"[a-z0-9_.\-]*passphrase[a-z0-9_.\-]*|[a-z0-9_.\-]*access[-_.\s]*key[-_.\s]*id[a-z0-9_.\-]*|"
         r"[a-z0-9_.\-]*secret[-_.\s]*access[-_.\s]*key|[a-z0-9_.\-]*auth[-_.\s]*code[a-z0-9_.\-]*|"
         r"[a-z0-9_.\-]*authorization[-_.\s]*code[a-z0-9_.\-]*|"
-        r"[a-z0-9_.\-]*otp(?:[-_][a-z0-9_.\-]*)?|[a-z0-9_.\-]*glpat(?:[-_][a-z0-9_.\-]*)?|[a-z0-9_.\-]*ghp(?:[-_][a-z0-9_.\-]*)?"
+        r"[a-z0-9_.\-]*otp(?:[-_][a-z0-9_.\-]*)?|[a-z0-9_.\-]*glpat(?:[-_][a-z0-9_.\-]*)?|[a-z0-9_.\-]*ghp(?:[-_][a-z0-9_.\-]*)?|"
+        r"\bpass\b|\bpwd\b|\buser[-_.]?pass\b"
     )
 
     # Common header-safe keys for broad redaction in Header: Value pairs
