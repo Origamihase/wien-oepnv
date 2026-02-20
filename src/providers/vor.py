@@ -461,6 +461,10 @@ def _inject_access_id(params: Any) -> Any:
         updated = dict(params)
         updated.setdefault("accessId", VOR_ACCESS_ID)
         return updated
+    if isinstance(params, (list, tuple)):
+        updated_list = list(params)
+        updated_list.append(("accessId", VOR_ACCESS_ID))
+        return updated_list
     return params
 
 
@@ -697,7 +701,8 @@ def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
             is_cancelled = True
 
         if is_cancelled:
-            product = dep.get("Product") or {}
+            product_raw = dep.get("Product") or {}
+            product = product_raw[0] if isinstance(product_raw, list) and product_raw else product_raw
             line_name = (
                 str(
                     product.get("displayNumber")
@@ -1096,7 +1101,7 @@ def save_request_count(now_local: datetime) -> int:
             previous_count = 0
         new_count = previous_count + 1
         if not lock_acquired:
-            return previous_count
+            return MAX_REQUESTS_PER_DAY + 1
         REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
         # temp_path is handled internally by atomic_write
         payload = {"date": date_iso, "count": new_count}
@@ -1187,11 +1192,11 @@ def _fetch_departure_board_for_station(
                     # Logging request details (masked)
                     log.info(f"Requesting VOR DepartureBoard for {station_id}...")
 
-                    # Enforce rate limit atomically BEFORE request
-                    current_usage = save_request_count(now_local)
-                    if current_usage > MAX_REQUESTS_PER_DAY:
+                    # Enforce rate limit check (read-only)
+                    _, current_usage = load_request_count()
+                    if current_usage >= MAX_REQUESTS_PER_DAY:
                         _log_warning(
-                            "VOR Tageslimit überschritten (%s/%s) – Anfrage für %s abgebrochen.",
+                            "VOR Tageslimit erreicht (%s/%s) – Anfrage für %s abgebrochen.",
                             current_usage,
                             MAX_REQUESTS_PER_DAY,
                             station_id,
@@ -1205,6 +1210,9 @@ def _fetch_departure_board_for_station(
                         timeout=HTTP_TIMEOUT,
                         allowed_content_types=("application/json",),
                     )
+
+                    # Update usage count only after successful fetch
+                    save_request_count(now_local)
 
                     # Log raw length
                     log.debug(f"Received {len(content)} bytes from VOR.")

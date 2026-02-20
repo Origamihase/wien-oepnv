@@ -9,33 +9,33 @@ from src import cli
 
 
 def test_cli_cache_update_invokes_expected_script(monkeypatch: pytest.MonkeyPatch) -> None:
-    calls: list[tuple[str, str | None, list[str]]] = []
+    calls: list[tuple[str, list[str]]] = []
 
-    def fake_run_script(script_name: str, *, python: str | None = None, extra_args: list[str] | None = None) -> int:
-        calls.append((script_name, python, list(extra_args or [])))
+    def fake_run_script(script_name: str, *, extra_args: list[str] | None = None) -> int:
+        calls.append((script_name, list(extra_args or [])))
         return 0
 
     monkeypatch.setattr(cli, "_run_script", fake_run_script)
 
-    exit_code = cli.main(["cache", "update", "--python", "python3", "wl", "oebb", "wl"])
+    exit_code = cli.main(["cache", "update", "wl", "oebb", "wl"])
 
     assert exit_code == 0
     assert calls == [
-        ("update_wl_cache.py", "python3", []),
-        ("update_oebb_cache.py", "python3", []),
+        ("update_wl_cache.py", []),
+        ("update_oebb_cache.py", []),
     ]
 
 
 def test_cli_cache_update_defaults_to_all(monkeypatch: pytest.MonkeyPatch) -> None:
     calls: list[str] = []
 
-    def fake_run_script(script_name: str, *, python: str | None = None, extra_args: list[str] | None = None) -> int:
+    def fake_run_script(script_name: str, *, extra_args: list[str] | None = None) -> int:
         calls.append(script_name)
         return 0
 
     monkeypatch.setattr(cli, "_run_script", fake_run_script)
 
-    exit_code = cli.main(["cache", "update", "--python", sys.executable])
+    exit_code = cli.main(["cache", "update"])
 
     assert exit_code == 0
     assert calls == [
@@ -92,10 +92,10 @@ def test_cli_stations_validate_writes_report(tmp_path: Path, monkeypatch: pytest
 
 
 def test_cli_checks_forwards_arguments(monkeypatch: pytest.MonkeyPatch) -> None:
-    calls: list[tuple[str, str | None, list[str]]] = []
+    calls: list[tuple[str, list[str]]] = []
 
-    def fake_run_script(script_name: str, *, python: str | None = None, extra_args: list[str] | None = None) -> int:
-        calls.append((script_name, python, list(extra_args or [])))
+    def fake_run_script(script_name: str, *, extra_args: list[str] | None = None) -> int:
+        calls.append((script_name, list(extra_args or [])))
         return 0
 
     monkeypatch.setattr(cli, "_run_script", fake_run_script)
@@ -103,13 +103,13 @@ def test_cli_checks_forwards_arguments(monkeypatch: pytest.MonkeyPatch) -> None:
     exit_code = cli.main(["checks", "--fix", "--ruff-args", "--select", "E"])
 
     assert exit_code == 0
-    assert calls == [("run_static_checks.py", sys.executable, ["--fix", "--ruff-args", "--select", "E"])]
+    assert calls == [("run_static_checks.py", ["--fix", "--ruff-args", "--select", "E"])]
 
 
 def test_cli_tokens_verify_defaults_to_all(monkeypatch: pytest.MonkeyPatch) -> None:
     calls: list[str] = []
 
-    def fake_run_script(script_name: str, *, python: str | None = None, extra_args: list[str] | None = None) -> int:
+    def fake_run_script(script_name: str, *, extra_args: list[str] | None = None) -> int:
         calls.append(script_name)
         return 0
 
@@ -128,7 +128,7 @@ def test_cli_tokens_verify_defaults_to_all(monkeypatch: pytest.MonkeyPatch) -> N
 def test_cli_tokens_verify_stops_on_error(monkeypatch: pytest.MonkeyPatch) -> None:
     calls: list[str] = []
 
-    def fake_run_script(script_name: str, *, python: str | None = None, extra_args: list[str] | None = None) -> int:
+    def fake_run_script(script_name: str, *, extra_args: list[str] | None = None) -> int:
         calls.append(script_name)
         return 1 if script_name == "verify_google_places_access.py" else 0
 
@@ -144,33 +144,33 @@ def test_cli_tokens_verify_stops_on_error(monkeypatch: pytest.MonkeyPatch) -> No
 
 
 def test_cli_config_wizard_forwards_arguments(monkeypatch: pytest.MonkeyPatch) -> None:
-    captured: list[tuple[str, str | None, list[str]]] = []
+    captured: list[tuple[str, list[str]]] = []
 
-    def fake_run_script(script_name: str, *, python: str | None = None, extra_args: list[str] | None = None) -> int:
-        captured.append((script_name, python, list(extra_args or [])))
+    def fake_run_script(script_name: str, *, extra_args: list[str] | None = None) -> int:
+        captured.append((script_name, list(extra_args or [])))
         return 0
 
     monkeypatch.setattr(cli, "_run_script", fake_run_script)
 
-    exit_code = cli.main(["config", "wizard", "--python", "python3", "--", "--dry-run"])
+    exit_code = cli.main(["config", "wizard", "--", "--dry-run"])
 
     assert exit_code == 0
-    assert captured == [("configure_feed.py", "python3", ["--dry-run"])]
+    assert captured == [("configure_feed.py", ["--dry-run"])]
 
 
 def test_cli_security_scan_forwards_arguments(monkeypatch: pytest.MonkeyPatch) -> None:
-    captured: list[tuple[str, str | None, list[str]]] = []
+    captured: list[tuple[str, list[str]]] = []
 
-    def fake_run_script(script_name: str, *, python: str | None = None, extra_args: list[str] | None = None) -> int:
-        captured.append((script_name, python, list(extra_args or [])))
+    def fake_run_script(script_name: str, *, extra_args: list[str] | None = None) -> int:
+        captured.append((script_name, list(extra_args or [])))
         return 0
 
     monkeypatch.setattr(cli, "_run_script", fake_run_script)
 
-    exit_code = cli.main(["security", "scan", "--python", sys.executable, "--", "--no-fail"])
+    exit_code = cli.main(["security", "scan", "--", "--no-fail"])
 
     assert exit_code == 0
-    assert captured == [("scan_secrets.py", sys.executable, ["--no-fail"])]
+    assert captured == [("scan_secrets.py", ["--no-fail"])]
 
 
 def test_cli_feed_lint_invokes_module(monkeypatch: pytest.MonkeyPatch) -> None:
