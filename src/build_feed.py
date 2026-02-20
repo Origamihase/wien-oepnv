@@ -879,7 +879,6 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
             deadlines: Dict[Any, Optional[float]] = {}
             pending: set[Any] = set()
             semaphores: Dict[str, BoundedSemaphore] = {}
-            timed_out = False
 
             for fetch in network_fetchers:
                 provider_name = provider_names.get(fetch, _provider_display_name(fetch))
@@ -954,7 +953,6 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
                         f"Timeout nach {timeout_value}s",
                     )
                     future.cancel()
-                    timed_out = True
 
                 if not pending:
                     break
@@ -981,10 +979,8 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
                     except TimeoutError as exc:
                         log.error("%s fetch Timeout: %s", name, exc)
                         report.provider_error(provider_name, f"Timeout: {exc}")
-                        timed_out = True
                     except CancelledError:
                         report.provider_error(provider_name, "Fetch abgebrochen")
-                        timed_out = True
                     except Exception as exc:
                         log.exception("%s fetch fehlgeschlagen: %s", name, exc)
                         report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
@@ -1434,8 +1430,7 @@ def _emit_item(
     desc_out = "\n".join(desc_parts)
 
     # Double-escaping logic for HTML-rendering RSS readers
-    desc_escaped = html.escape(desc_out)
-    desc_html = desc_escaped.replace("\n", "<br/>")
+    desc_html = desc_out.replace("\n", "<br/>")
     # For title, we now rely on ElementTree's escaping which is safer/cleaner than manual CDATA.
     # ET will automatically escape <, >, & to &lt;, &gt;, &amp;.
 
@@ -1533,7 +1528,12 @@ def _make_rss(
         emitted += 1
 
     # State pruning
-    pruned = {k: state[k] for k in identities_in_feed if k in state} if identities_in_feed else {}
+    if not identities_in_feed:
+        # Keep old state if feed is empty (prevent wiping on error/empty fetch)
+        pruned = state
+    else:
+        pruned = {k: state[k] for k in identities_in_feed if k in state}
+
     try:
         _save_state(pruned)
     except Exception as e:

@@ -97,7 +97,7 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             merged_items.append(item)
             continue
 
-        for existing in merged_items:
+        for idx, existing in enumerate(merged_items):
             ex_title = existing.get("title", "")
             ex_lines, ex_name = _parse_title(ex_title)
 
@@ -133,18 +133,18 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                     # Case 2: Existing is ÖBB, Item is VOR -> Replace Existing with Item
                     if is_oebb_existing and is_vor_item:
                         # We replace the existing item content with the new item (VOR)
-                        # But we preserve the 'existing' list slot, so we update the dict in place.
+                        # We create a new object to avoid mutating the original 'existing' reference
+                        # if it came from the input list.
+                        new_existing = item.copy()
+
                         desc_oebb = existing.get("description", "") or ""
                         desc_vor = item.get("description", "") or ""
 
-                        # Update existing with VOR data
-                        existing.clear()
-                        existing.update(item)
-
                         # Append ÖBB desc if not present
                         if desc_oebb and desc_oebb not in desc_vor:
-                            existing["description"] = f"{desc_vor}\n\n{desc_oebb}"
+                            new_existing["description"] = f"{desc_vor}\n\n{desc_oebb}"
 
+                        merged_items[idx] = new_existing
                         merged = True
                         break
 

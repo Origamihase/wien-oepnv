@@ -108,4 +108,6 @@ def test_state_cleared_when_feed_empty(monkeypatch, tmp_path):
     state = build_feed._load_state()
     build_feed._make_rss([], now, state)
 
-    assert json.loads(state_file.read_text()) == {}
+    # State should be preserved when feed is empty (safe fallback)
+    assert json.loads(state_file.read_text()) != {}
+    assert "id" in json.loads(state_file.read_text())

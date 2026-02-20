@@ -8,7 +8,6 @@ exclude = [
   "data",
   "docs",
   "log",
-  "scripts",
   "tests",
 ]
 
@@ -26,6 +25,10 @@ select = [
 "src/utils/files.py" = ["S110"]
 "src/utils/secret_scanner.py" = ["S603", "S607"]
 "src/utils/stations.py" = ["S105"]
+"scripts/generate_sitemap.py" = ["S603", "S607"]
+"scripts/run_static_checks.py" = ["S603"]
+"scripts/update_all_stations.py" = ["S603"]
+"scripts/update_station_directory.py" = ["S603"]
 
 [tool.mypy]
 python_version = "3.11"

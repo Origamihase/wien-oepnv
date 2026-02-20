@@ -13,10 +13,9 @@ if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 try:  # pragma: no cover - executed both as script and module
-    from utils.secret_scanner import Finding, load_ignore_file, scan_repository
+    from utils.secret_scanner import load_ignore_file, scan_repository
 except ModuleNotFoundError:  # pragma: no cover
     from src.utils.secret_scanner import (  # type: ignore
-        Finding,
         load_ignore_file,
         scan_repository,
     )

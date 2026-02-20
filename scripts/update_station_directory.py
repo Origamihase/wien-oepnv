@@ -25,7 +25,6 @@ from pathlib import Path
 from typing import Callable, Iterable, Mapping, MutableMapping, Sequence
 
 import openpyxl
-import requests
 
 DEFAULT_SOURCE_URL = (
     "https://data.oebb.at/dam/jcr:fce22daf-0dd8-4a15-80b4-dbca6e80ce38/"
@@ -162,7 +161,7 @@ def _refresh_provider_caches(*, script_dir: Path | None = None) -> None:
         logger.info("Refreshing %s cache via %s", target.label, script_path.name)
         try:
             # Enforce a 5-minute timeout to prevent indefinite hangs (DoS protection)
-            result = subprocess.run(command, check=False, timeout=300)
+            result = subprocess.run(command, check=False, timeout=300)  # nosec B603
         except subprocess.TimeoutExpired:
             logger.warning(
                 "%s cache refresh timed out after 300s; continuing", target.label
@@ -947,10 +946,10 @@ def _normalize_header(value: object | None) -> str:
 def _match_required_headers(row: Iterable[object]) -> dict[str, int]:
     normalized = [_normalize_header(cell) for cell in row]
     column_map: dict[str, int] = {}
-    for field, candidates in HEADER_VARIANTS.items():
+    for header_field, candidates in HEADER_VARIANTS.items():
         for index, value in enumerate(normalized):
             if any(value == candidate or value.startswith(candidate) for candidate in candidates):
-                column_map[field] = index
+                column_map[header_field] = index
                 break
     return column_map
 

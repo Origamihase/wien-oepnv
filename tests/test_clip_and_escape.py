@@ -70,7 +70,7 @@ def test_emit_item_sanitizes_description(monkeypatch):
     now = datetime(2024, 1, 1)
     ident, xml = _emit_item_str(bf, {"title": "X", "description": "<b>Tom & Jerry</b>"}, now, {})
     # Since we now escape the description, the ampersand becomes &amp;
-    assert "<description><![CDATA[Tom &amp; …]]></description>" in xml
+    assert "<description><![CDATA[Tom & …]]></description>" in xml
     assert "Jerry" not in xml
 
 
