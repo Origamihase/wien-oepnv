@@ -242,18 +242,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac",
-    "pubDate": "2026-02-20T05:40:29+01:00",
-    "starts_at": "2026-02-20T05:49:10+01:00",
-    "ends_at": "2026-02-20T06:48:00+01:00",
-    "_identity": "wl|störung|L=26|D=2026-02-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "Witterung Längere Wartezeiten",
     "description": "Witterung Längere Wartezeiten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -266,25 +254,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2026-02-20T06:15:00+01:00",
-    "starts_at": "2026-02-20T06:15:00+01:00",
-    "ends_at": "2026-02-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=U2|D=2026-02-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Stromstörung",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stromstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f0916b184eee00654c3fbb50aa56e39700535f39a3ced631b30d6fc7cc8fb795",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
     "pubDate": "2026-02-20T06:20:00+01:00",
     "starts_at": "2026-02-20T06:20:00+01:00",
     "ends_at": "2026-02-20T23:55:00+01:00",
     "_identity": "wl|störung|L=U6|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Betriebsstörung",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
+    "pubDate": "2026-02-20T06:55:00+01:00",
+    "starts_at": "2026-02-20T06:55:00+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fahrtbehinderung wegen Witterung",
+    "description": "Fahrtbehinderung wegen Witterung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "52169a0bc53ac8909573c16db04eaf7707f3b4e7be2c9e6b312630b89c7e71d5",
+    "pubDate": "2026-02-20T07:18:36+01:00",
+    "starts_at": "2026-02-20T07:18:51+01:00",
+    "ends_at": "2026-02-20T08:17:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-02-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Schadhaftes Fahrzeug",
+    "description": "Die Linie U2 fährt derzeit nur zwischen Seestadt und Museumsquartier. Voraussichtliche Dauer: 08:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
+    "pubDate": "2026-02-20T07:41:00+01:00",
+    "starts_at": "2026-02-20T07:41:00+01:00",
+    "ends_at": "2026-02-20T23:55:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2026-02-20"
   }
 ]
