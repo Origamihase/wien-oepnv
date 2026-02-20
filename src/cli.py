@@ -74,14 +74,12 @@ def _patched_argv(script_path: Path, arguments: Sequence[str] | None) -> Iterato
 def _run_script(
     script_name: str,
     *,
-    python: str | None = None,
     extra_args: Sequence[str] | None = None,
 ) -> int:
     script_path = SCRIPTS_DIR / script_name
     if not script_path.exists():
         raise CLIError(f"Script not found: {script_path}")
 
-    del python  # Interpreter selection is handled via runpy in the current process.
     cleaned_args = _clean_remainder(list(extra_args or []))
     with _patched_argv(script_path, cleaned_args):
         try:
@@ -133,14 +131,6 @@ def _resolve_targets(
     return _unique_preserving_order(candidates)
 
 
-def _add_python_argument(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument(
-        "--python",
-        default=sys.executable,
-        help="Python interpreter used to invoke helper scripts (default: current interpreter).",
-    )
-
-
 def _clean_remainder(values: list[str] | None) -> list[str]:
     cleaned = list(values or [])
     while cleaned and cleaned[0] == "--":
@@ -169,7 +159,6 @@ def _configure_cache_commands(subparsers: argparse._SubParsersAction[argparse.Ar
         action="store_true",
         help="Bricht nach dem ersten fehlgeschlagenen Lauf ab (Default: führt alle Läufe aus).",
     )
-    _add_python_argument(update_parser)
     update_parser.set_defaults(func=_handle_cache_update, parser=update_parser)
 
 
@@ -184,7 +173,6 @@ def _configure_stations_commands(subparsers: argparse._SubParsersAction[argparse
         action="store_true",
         help="Enable verbose logging for the invoked script.",
     )
-    _add_python_argument(update_parser)
     update_parser.set_defaults(func=_handle_stations_update)
 
     validate_parser = stations_subparsers.add_parser("validate", help="Generate a stations quality report")
@@ -224,7 +212,6 @@ def _configure_feed_commands(subparsers: argparse._SubParsersAction[argparse.Arg
     feed_subparsers = feed_parser.add_subparsers(dest="feed_command", required=True)
 
     build_parser = feed_subparsers.add_parser("build", help="Run the feed builder")
-    _add_python_argument(build_parser)
     build_parser.set_defaults(func=_handle_feed_build)
 
     lint_parser = feed_subparsers.add_parser(
@@ -254,7 +241,6 @@ def _configure_token_commands(subparsers: argparse._SubParsersAction[argparse.Ar
         action="store_true",
         help="Beendet den Lauf nach dem ersten Fehler (Standard: versucht alle Prüfungen).",
     )
-    _add_python_argument(verify_parser)
     verify_parser.set_defaults(func=_handle_token_verify, parser=verify_parser)
 
 
@@ -266,7 +252,6 @@ def _configure_checks_commands(subparsers: argparse._SubParsersAction[argparse.A
         nargs=argparse.REMAINDER,
         help="Additional arguments forwarded to 'ruff check'.",
     )
-    _add_python_argument(checks_parser)
     checks_parser.set_defaults(func=_handle_checks)
 
 
@@ -275,7 +260,6 @@ def _configure_config_commands(subparsers: argparse._SubParsersAction[argparse.A
     config_subparsers = config_parser.add_subparsers(dest="config_command", required=True)
 
     wizard_parser = config_subparsers.add_parser("wizard", help="Interactive configuration assistant")
-    _add_python_argument(wizard_parser)
     wizard_parser.add_argument(
         "wizard_args",
         nargs=argparse.REMAINDER,
@@ -289,7 +273,6 @@ def _configure_security_commands(subparsers: argparse._SubParsersAction[argparse
     security_subparsers = security_parser.add_subparsers(dest="security_command", required=True)
 
     scan_parser = security_subparsers.add_parser("scan", help="Scan the repository for leaked secrets")
-    _add_python_argument(scan_parser)
     scan_parser.add_argument(
         "scan_args",
         nargs=argparse.REMAINDER,
@@ -312,7 +295,7 @@ def _handle_cache_update(args: argparse.Namespace) -> int:
     exit_code = 0
     for provider in providers:
         script_name = _PROVIDER_CACHE_SCRIPTS[provider]
-        result = _run_script(script_name, python=args.python)
+        result = _run_script(script_name)
         if result != 0:
             if args.stop_on_error:
                 return result
@@ -327,7 +310,7 @@ def _handle_stations_update(args: argparse.Namespace) -> int:
     extra: list[str] = []
     if args.verbose:
         extra.append("--verbose")
-    return _run_script(script_name, python=args.python, extra_args=extra)
+    return _run_script(script_name, extra_args=extra)
 
 
 def _handle_stations_validate(args: argparse.Namespace) -> int:
@@ -354,7 +337,6 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
 
 def _handle_feed_build(args: argparse.Namespace) -> int:
     """Executes the main feed generation logic."""
-    del args.python  # Execution happens in-process.
     return int(build_feed_module.main())
 
 
@@ -377,7 +359,7 @@ def _handle_token_verify(args: argparse.Namespace) -> int:
     exit_code = 0
     for target in targets:
         script_name = _TOKEN_VERIFY_SCRIPTS[target]
-        result = _run_script(script_name, python=args.python)
+        result = _run_script(script_name)
         if result != 0:
             if args.stop_on_error:
                 return result
@@ -394,19 +376,19 @@ def _handle_checks(args: argparse.Namespace) -> int:
     if args.ruff_args:
         extra.append("--ruff-args")
         extra.extend(args.ruff_args)
-    return _run_script("run_static_checks.py", python=args.python, extra_args=extra)
+    return _run_script("run_static_checks.py", extra_args=extra)
 
 
 def _handle_config_wizard(args: argparse.Namespace) -> int:
     """Starts the interactive configuration assistant."""
     extra = _clean_remainder(args.wizard_args)
-    return _run_script("configure_feed.py", python=args.python, extra_args=extra)
+    return _run_script("configure_feed.py", extra_args=extra)
 
 
 def _handle_security_scan(args: argparse.Namespace) -> int:
     """Scans the codebase for potential secret leaks."""
     extra = _clean_remainder(args.scan_args)
-    return _run_script("scan_secrets.py", python=args.python, extra_args=extra)
+    return _run_script("scan_secrets.py", extra_args=extra)
 
 
 def build_parser() -> argparse.ArgumentParser:

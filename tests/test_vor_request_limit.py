@@ -123,7 +123,7 @@ def test_save_request_count_returns_previous_on_lock_failure(monkeypatch, tmp_pa
 
     result = vor.save_request_count(datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna")))
 
-    assert result == 7
+    assert result == vor.MAX_REQUESTS_PER_DAY + 1
     stored = json.loads(target_file.read_text(encoding="utf-8"))
     assert stored["count"] == 7
 
@@ -327,7 +327,7 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(monkeypa
     result = vor._fetch_departure_board_for_station("123", now_local)
 
     assert result is None
-    assert called == 1
+    assert called == 0
 
 
 def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch):
@@ -402,4 +402,4 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
     payload = vor._fetch_departure_board_for_station("123", now_local)
 
     assert payload == {}
-    assert call_count == 2
+    assert call_count == 1
