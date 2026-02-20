@@ -1011,6 +1011,11 @@ def request_safe(
                     ):
                         next_url = _strip_sensitive_params(next_url)
 
+                        # Prevent leaking explicit authentication credentials (e.g. auth=('user', 'pass'))
+                        # to unsafe redirect targets.
+                        if "auth" in kwargs:
+                            kwargs.pop("auth")
+
                     # Update URL and continue loop
                     current_url = next_url
 
