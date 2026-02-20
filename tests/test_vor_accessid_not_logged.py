@@ -45,6 +45,11 @@ def test_accessid_not_logged(monkeypatch, caplog, raw_message, expected_fragment
         return DummySession()
 
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: _make_session())
+
+    # Ensure quota check passes so fetch is attempted
+    monkeypatch.setattr(vor, "load_request_count", lambda: (None, 0))
+    monkeypatch.setattr(vor, "save_request_count", lambda dt: 1)
+
     now_local = datetime.now(ZoneInfo("Europe/Vienna"))
 
     with caplog.at_level(logging.ERROR):
