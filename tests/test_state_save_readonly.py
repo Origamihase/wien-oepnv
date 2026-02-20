@@ -64,6 +64,8 @@ def test_make_rss_saves_empty_state_when_no_identities(monkeypatch, caplog):
         )
 
     assert "</rss>" in rss
-    assert captured["state"] == {}
+    # State should be preserved when feed is empty
+    assert captured["state"] != {}
+    assert "old" in captured["state"]
     assert not any("State speichern fehlgeschlagen" in r.message for r in caplog.records)
 
