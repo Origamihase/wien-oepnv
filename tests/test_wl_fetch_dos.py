@@ -50,7 +50,7 @@ def test_fetch_events_response_too_large(monkeypatch, caplog):
     assert events == []
 
     # Check logs
-    assert "zu groß oder ungültig" in caplog.text
+    assert "ungültig oder kein JSON" in caplog.text
 
 def test_wl_fetch_uses_fetch_content_safe(monkeypatch, caplog):
     """Verify that wl_fetch calls fetch_content_safe."""

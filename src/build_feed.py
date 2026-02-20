@@ -874,15 +874,13 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
                     feed_config.PROVIDER_MAX_WORKERS,
                 )
             desired_workers = min(desired_workers, feed_config.PROVIDER_MAX_WORKERS)
-        executor = ThreadPoolExecutor(max_workers=max(1, desired_workers))
+        with ThreadPoolExecutor(max_workers=max(1, desired_workers)) as executor:
+            futures: Dict[Any, Tuple[Any, str, int]] = {}
+            deadlines: Dict[Any, Optional[float]] = {}
+            pending: set[Any] = set()
+            semaphores: Dict[str, BoundedSemaphore] = {}
+            timed_out = False
 
-        futures: Dict[Any, Tuple[Any, str, int]] = {}
-        deadlines: Dict[Any, Optional[float]] = {}
-        pending: set[Any] = set()
-        semaphores: Dict[str, BoundedSemaphore] = {}
-        timed_out = False
-
-        try:
             for fetch in network_fetchers:
                 provider_name = provider_names.get(fetch, _provider_display_name(fetch))
                 env_name = provider_envs.get(fetch)
@@ -992,11 +990,6 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
                         report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
                     else:
                         _merge_result(fetch, result, provider_name)
-        finally:
-            if timed_out:
-                executor.shutdown(wait=False, cancel_futures=True)
-            else:
-                executor.shutdown(wait=True)
 
         return items
     finally:
@@ -1443,16 +1436,15 @@ def _emit_item(
     # Double-escaping logic for HTML-rendering RSS readers
     desc_escaped = html.escape(desc_out)
     desc_html = desc_escaped.replace("\n", "<br/>")
-    title_escaped = html.escape(title_out)
+    # For title, we now rely on ElementTree's escaping which is safer/cleaner than manual CDATA.
+    # ET will automatically escape <, >, & to &lt;, &gt;, &amp;.
 
     # Prepare CDATA content (handle ]]> in content)
-    title_cdata = _cdata_content(title_escaped)
     desc_cdata = _cdata_content(desc_html)
 
     # Generate unique placeholders
     # We use a UUID to ensure uniqueness within the document
     uid = uuid.uuid4().hex
-    PH_TITLE = f"___CDATA_TITLE_{uid}___"
     PH_DESC = f"___CDATA_DESC_{uid}___"
     PH_CONTENT = f"___CDATA_CONTENT_{uid}___"
 
@@ -1460,7 +1452,7 @@ def _emit_item(
     item = ET.Element("item")
 
     # Title
-    ET.SubElement(item, "title").text = PH_TITLE
+    ET.SubElement(item, "title").text = title_out
 
     # Link
     ET.SubElement(item, "link").text = link
@@ -1494,7 +1486,6 @@ def _emit_item(
     ET.SubElement(item, "{http://purl.org/rss/1.0/modules/content/}encoded").text = PH_CONTENT
 
     replacements = {
-        PH_TITLE: f"<![CDATA[{title_cdata}]]>",
         PH_DESC: f"<![CDATA[{desc_cdata}]]>",
         PH_CONTENT: f"<![CDATA[{desc_cdata}]]>",
     }

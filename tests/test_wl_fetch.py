@@ -57,8 +57,8 @@ def test_fetch_events_handles_invalid_json(monkeypatch, caplog):
 
     assert events == []
     # With fetch_content_safe, invalid JSON will result in json.loads failing, which is caught.
-    # The message includes "Ungültige JSON-Antwort" or "Antwort ... zu groß oder ungültig"
-    assert any(("Ungültige JSON-Antwort" in message or "zu groß oder ungültig" in message) for message in caplog.messages)
+    # The message includes "Ungültige JSON-Antwort" or "Antwort ... zu groß oder ungültig" or the new consolidated message
+    assert any(("ungültig oder kein JSON" in message or "Ungültige JSON-Antwort" in message or "zu groß oder ungültig" in message) for message in caplog.messages)
 
 
 class DummySession:

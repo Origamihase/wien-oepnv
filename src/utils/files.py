@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import os
 import tempfile
+import uuid
 from contextlib import contextmanager
 from pathlib import Path
 from typing import IO, Any, Iterator, Optional, Union
@@ -39,9 +40,11 @@ def atomic_write(
         encoding = None
         newline = None
 
+    # Generate a unique temporary filename with UUID to ensure no collision
+    # and prevent "orphaned file blocking" issues if the process crashes.
     fd, tmp_path = tempfile.mkstemp(
         dir=str(target.parent),
-        prefix=f"{target.name}.",
+        prefix=f"{target.name}.{uuid.uuid4()}.",
         suffix=".tmp",
         text=text_mode,
     )

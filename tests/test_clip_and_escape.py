@@ -91,7 +91,7 @@ def test_emit_item_collapses_whitespace(monkeypatch):
     }
     ident, xml = _emit_item_str(bf, messy, now, {})
 
-    title_match = re.search(r"<title><!\[CDATA\[(.*)]]></title>", xml)
+    title_match = re.search(r"<title>(.*)</title>", xml)
     assert title_match, xml
     assert "  " not in title_match.group(1)
     assert "\t" not in title_match.group(1)
@@ -115,7 +115,7 @@ def test_emit_item_trims_wrapping_whitespace(monkeypatch):
 
     _, xml = _emit_item_str(bf, item, now, {})
 
-    title_match = re.search(r"<title><!\[CDATA\[(.*)]]></title>", xml)
+    title_match = re.search(r"<title>(.*)</title>", xml)
     assert title_match, xml
     assert title_match.group(1) == "Foo"
 
@@ -563,7 +563,7 @@ def test_emit_item_truncates_long_title(monkeypatch):
 
     _, xml = _emit_item_str(bf, item, now, {})
 
-    title_match = re.search(r"<title><!\[CDATA\[(.*)]]></title>", xml)
+    title_match = re.search(r"<title>(.*)</title>", xml)
     assert title_match, xml
     title_content = title_match.group(1)
 
