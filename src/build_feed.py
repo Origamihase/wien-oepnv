@@ -685,7 +685,9 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
 def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("a+", encoding="utf-8") as lock_file:
+    # Windows-fix: Use a separate lock file to avoid permission errors when atomic_write replaces the target
+    lock_path = path.with_suffix(".lock")
+    with lock_path.open("a+", encoding="utf-8") as lock_file:
         with _file_lock(lock_file, exclusive=True):
             with atomic_write(
                 path, mode="w", encoding="utf-8", permissions=0o600
@@ -1224,9 +1226,11 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
 def _sort_key(item: Dict[str, Any]) -> Tuple[int, float, str]:
     pd = item.get("pubDate")
+    # Fix TypeError: Ensure guid is always a string, even if explicitly None
+    guid_str = str(item.get("guid") or "")
     if isinstance(pd, datetime):
-        return (0, -_to_utc(pd).timestamp(), item.get("guid", ""))
-    return (1, 0.0, item.get("guid", ""))
+        return (0, -_to_utc(pd).timestamp(), guid_str)
+    return (1, 0.0, guid_str)
 
 
 def _build_canonical_link(candidate: Any, ident: str) -> str:

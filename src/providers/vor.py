@@ -1335,7 +1335,8 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
                     log.critical(f"ABORT: {rte}")
                     # Cancel other futures if possible
                     executor.shutdown(wait=False, cancel_futures=True)
-                    raise rte
+                    # Graceful Degradation: Do not raise, just break loop and return partial results
+                    break
                 _log_error("VOR DepartureBoard %s Runtime Error: %s", station_id, rte)
                 failures += 1
                 continue

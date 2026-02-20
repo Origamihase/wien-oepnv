@@ -30,6 +30,12 @@ DEFAULT_TIMEOUT = 20
 # DNS resolution timeout in seconds
 DNS_TIMEOUT = 5.0
 
+# WARNING: Thread Exhaustion Risk
+# socket.getaddrinfo is a blocking C-call that ignores Python timeouts.
+# If the OS DNS resolver hangs, these threads will be permanently blocked.
+# For long-running daemon processes, consider recreating the executor periodically
+# or switching to an async DNS library (e.g., dnspython).
+# Current usage is safe for periodic cronjob executions (short-lived processes).
 # Shared executor for DNS resolution to avoid thread exhaustion
 _DNS_EXECUTOR = ThreadPoolExecutor(max_workers=8, thread_name_prefix="DNS_Resolver")
 
