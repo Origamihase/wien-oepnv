@@ -32,7 +32,7 @@ def test_fetch_events_raises_when_all_stationboards_fail(monkeypatch):
 def test_fetch_events_returns_results_when_some_stationboards_succeed(monkeypatch):
     payloads = {"430470800": object(), "490091000": None}
 
-    def fake_fetch(station_id: str, now, counter=None):
+    def fake_fetch(station_id: str, now, counter=None, session=None):
         return payloads.get(station_id)
 
     def fake_collect(station_id: str, payload):

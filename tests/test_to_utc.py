@@ -31,10 +31,11 @@ def test_to_utc_converts_timezone(monkeypatch):
     assert result.hour == 10
 
 
-def test_fmt_rfc2822_outputs_utc(monkeypatch):
+def test_fmt_rfc2822_outputs_vienna(monkeypatch):
     build_feed = _import_build_feed(monkeypatch)
     cet = timezone(timedelta(hours=2))
     dt = datetime(2025, 1, 1, 12, 0, tzinfo=cet)
     formatted = build_feed._fmt_rfc2822(dt)
-    assert formatted.endswith("+0000")
-    assert "10:00:00" in formatted
+    # 12:00 +0200 -> 10:00 UTC -> 11:00 +0100 (Vienna Winter)
+    assert formatted.endswith("+0100")
+    assert "11:00:00" in formatted

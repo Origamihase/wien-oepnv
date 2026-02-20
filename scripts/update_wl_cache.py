@@ -47,6 +47,12 @@ def main() -> int:
         )
         return 1
 
+    if not items:
+        logger.error(
+            "Fetched 0 events (unexpected empty list); keeping existing cache."
+        )
+        return 1
+
     serialized_items = [serialize_for_cache(item) for item in items]
     write_cache("wl", serialized_items)
     logger.info("Updated Wiener Linien cache with %d events.", len(serialized_items))

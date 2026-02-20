@@ -160,6 +160,16 @@ class GooglePlacesClient:
         self._max_result_count = MAX_RESULTS
         self._rank_preference = RANK_PREF
 
+    def __enter__(self) -> "GooglePlacesClient":
+        return self
+
+    def __exit__(self, exc_type: object, exc_val: object, exc_tb: object) -> None:
+        self.close()
+
+    def close(self) -> None:
+        if self._session:
+            self._session.close()
+
     def _sanitize_arg(self, arg: object) -> object:
         return sanitize_log_arg(arg, secrets=[self._config.api_key])
 

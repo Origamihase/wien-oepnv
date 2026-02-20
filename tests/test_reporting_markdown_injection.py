@@ -24,10 +24,10 @@ def test_markdown_injection():
 
     # Assertions
     # 1. Verify pipe is escaped in table cell (already works)
-    assert r"Error \| with pipe" in markdown, "Pipe character should be escaped in table cell"
+    assert "Error &#124; with pipe" in markdown, "Pipe character should be escaped in table cell"
 
     # 1b. Verify pipe is escaped in provider name
-    assert r"Malicious\|Provider" in markdown, "Pipe character should be escaped in provider name"
+    assert "Malicious&#124;Provider" in markdown, "Pipe character should be escaped in provider name"
 
     # 2. Verify backtick is replaced in duplicates list (already works)
     assert "Title 'with backtick'" in markdown, "Backticks should be replaced with single quotes in duplicates list"

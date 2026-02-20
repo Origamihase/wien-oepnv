@@ -317,34 +317,34 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     _log_quota_status(quota, runtime.quota_config)
 
-    client = GooglePlacesClient(
+    with GooglePlacesClient(
         runtime.client_config,
         quota=quota,
         quota_config=runtime.quota_config,
         quota_state_path=runtime.quota_state_path,
         enforce_quota=runtime.enforce_free_cap,
-    )
-    try:
-        places = _fetch_places(client, runtime.tiles)
-    except GooglePlacesPermissionError as exc:
-        LOGGER.error("Places API access denied: %s", exc)
-        hint = permission_hint(str(exc))
-        if hint:
-            LOGGER.error(hint)
-        else:
-            LOGGER.error(
-                "Skipping Places update. Ensure the configured API key has access to places.googleapis.com"
-            )
-        return 0
-    except GooglePlacesError as exc:
-        LOGGER.error("Failed to fetch places: %s", exc)
-        return 1
+    ) as client:
+        try:
+            places = _fetch_places(client, runtime.tiles)
+        except GooglePlacesPermissionError as exc:
+            LOGGER.error("Places API access denied: %s", exc)
+            hint = permission_hint(str(exc))
+            if hint:
+                LOGGER.error(hint)
+            else:
+                LOGGER.error(
+                    "Skipping Places update. Ensure the configured API key has access to places.googleapis.com"
+                )
+            return 0
+        except GooglePlacesError as exc:
+            LOGGER.error("Failed to fetch places: %s", exc)
+            return 1
 
-    LOGGER.info("Fetched %d places using %d requests", len(places), client.request_count)
+        LOGGER.info("Fetched %d places using %d requests", len(places), client.request_count)
 
-    if runtime.enforce_free_cap and client.quota_skipped_kinds:
-        LOGGER.warning("Quota reached, using existing cache. No files were modified.")
-        return 0
+        if runtime.enforce_free_cap and client.quota_skipped_kinds:
+            LOGGER.warning("Quota reached, using existing cache. No files were modified.")
+            return 0
 
     stations_path = runtime.output_path
     try:

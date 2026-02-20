@@ -403,211 +403,201 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
     with session_with_retries(WL_USER_AGENT, raise_on_status=False) as session:
         session.headers.update(WL_SESSION_HEADERS)
         # A) TrafficInfos (Störungen)
-        try:
-            for ti in _fetch_traffic_infos(timeout=timeout, session=session):
-                attrs = ti.get("attributes") or {}
-                status_blob = " ".join(
-                    [
-                        str(ti.get("status") or ""),
-                        str(attrs.get("status") or ""),
-                        str(attrs.get("state") or ""),
-                    ]
-                ).lower()
-                if any(
-                    x in status_blob
-                    for x in (
-                        "finished",
-                        "inactive",
-                        "inaktiv",
-                        "done",
-                        "closed",
-                        "nicht aktiv",
-                        "ended",
-                        "ende",
-                        "abgeschlossen",
-                        "beendet",
-                        "geschlossen",
-                    )
-                ):
-                    continue
-
-                title_raw = (ti.get("title") or ti.get("name") or "Meldung").strip()
-                title = _tidy_title_wl(title_raw)
-                desc_raw = (ti.get("description") or "").strip()
-                desc = html_to_text(desc_raw)
-                if _is_facility_only(title_raw, desc_raw):
-                    continue
-
-                tinfo = ti.get("time") or {}
-                start = _iso(tinfo.get("start")) or _best_ts(ti)
-                end = _iso(tinfo.get("end"))
-
-                # Check for date in title to override starts_at
-                title_date = extract_date_from_title(title_raw, reference_date=start or now)
-
-                real_start = start
-                if title_date:
-                    # If we found a date in the title, we prioritize it if:
-                    # 1. We don't have a start date from API.
-                    # 2. Or the title date is later than the API start date (suggesting future event published early).
-                    if not start or title_date.date() > start.date():
-                        real_start = title_date
-
-                # We check activity based on the API start time (publication/validity start),
-                # NOT the event start time extracted from the title.
-                # This ensures advance notices (Vorankündigungen) are shown.
-                if not _is_active(start, end, now):
-                    continue
-
-                blob_for_relevance = " ".join([title_raw, desc_raw])
-                if KW_EXCLUDE.search(blob_for_relevance) and not KW_RESTRICTION.search(
-                    blob_for_relevance
-                ):
-                    continue
-
-                rel_lines = _as_list(ti.get("relatedLines") or attrs.get("relatedLines"))
-                line_pairs = _make_line_pairs_from_related(rel_lines)
-                if not line_pairs:
-                    # Fallback: aus Titeltext (inkl. „Rufbus Nxx“, aber ohne Datum/Zeit/Adresse)
-                    line_pairs = _detect_line_pairs_from_text(title_raw)
-
-                rel_stops = _as_list(ti.get("relatedStops") or attrs.get("relatedStops"))
-                stop_names = _stop_names_from_related(rel_stops)
-
-                extras = []
-                for k in ("status", "state", "station", "location", "reason", "towards"):
-                    if attrs.get(k):
-                        extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
-
-                # stabile Identity für first_seen
-                id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
-                id_day = real_start.date().isoformat() if isinstance(real_start, datetime) else "None"
-                identity = f"wl|störung|L={id_lines}|D={id_day}"
-
-                raw.append(
-                    {
-                        "source": "Wiener Linien",
-                        "category": "Störung",
-                        "title": title,
-                        "title_core": _title_core(title_raw),
-                        "topic_key": _topic_key_from_title(title_raw),
-                        "desc": desc,
-                        "extras": extras,
-                        "lines_pairs": line_pairs,  # [(tok, disp), …]
-                        "stop_names": set(stop_names),
-                        "pubDate": start,  # Publication/Creation date remains original
-                        "starts_at": real_start, # Effective start date (for calendar)
-                        "ends_at": end,
-                        "_identity": identity,
-                    }
+        for ti in _fetch_traffic_infos(timeout=timeout, session=session):
+            attrs = ti.get("attributes") or {}
+            status_blob = " ".join(
+                [
+                    str(ti.get("status") or ""),
+                    str(attrs.get("status") or ""),
+                    str(attrs.get("state") or ""),
+                ]
+            ).lower()
+            if any(
+                x in status_blob
+                for x in (
+                    "finished",
+                    "inactive",
+                    "inaktiv",
+                    "done",
+                    "closed",
+                    "nicht aktiv",
+                    "ended",
+                    "ende",
+                    "abgeschlossen",
+                    "beendet",
+                    "geschlossen",
                 )
-        except requests.RequestException as e:  # pragma: no cover - network errors
-            log.error(
-                "WL trafficInfoList fehlgeschlagen: %s", sanitize_log_arg(e)
+            ):
+                continue
+
+            title_raw = (ti.get("title") or ti.get("name") or "Meldung").strip()
+            title = _tidy_title_wl(title_raw)
+            desc_raw = (ti.get("description") or "").strip()
+            desc = html_to_text(desc_raw)
+            if _is_facility_only(title_raw, desc_raw):
+                continue
+
+            tinfo = ti.get("time") or {}
+            start = _iso(tinfo.get("start")) or _best_ts(ti)
+            end = _iso(tinfo.get("end"))
+
+            # Check for date in title to override starts_at
+            title_date = extract_date_from_title(title_raw, reference_date=start or now)
+
+            real_start = start
+            if title_date:
+                # If we found a date in the title, we prioritize it if:
+                # 1. We don't have a start date from API.
+                # 2. Or the title date is later than the API start date (suggesting future event published early).
+                if not start or title_date.date() > start.date():
+                    real_start = title_date
+
+            # We check activity based on the API start time (publication/validity start),
+            # NOT the event start time extracted from the title.
+            # This ensures advance notices (Vorankündigungen) are shown.
+            if not _is_active(start, end, now):
+                continue
+
+            blob_for_relevance = " ".join([title_raw, desc_raw])
+            if KW_EXCLUDE.search(blob_for_relevance) and not KW_RESTRICTION.search(
+                blob_for_relevance
+            ):
+                continue
+
+            rel_lines = _as_list(ti.get("relatedLines") or attrs.get("relatedLines"))
+            line_pairs = _make_line_pairs_from_related(rel_lines)
+            if not line_pairs:
+                # Fallback: aus Titeltext (inkl. „Rufbus Nxx“, aber ohne Datum/Zeit/Adresse)
+                line_pairs = _detect_line_pairs_from_text(title_raw)
+
+            rel_stops = _as_list(ti.get("relatedStops") or attrs.get("relatedStops"))
+            stop_names = _stop_names_from_related(rel_stops)
+
+            extras = []
+            for k in ("status", "state", "station", "location", "reason", "towards"):
+                if attrs.get(k):
+                    extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
+
+            # stabile Identity für first_seen
+            id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
+            id_day = real_start.date().isoformat() if isinstance(real_start, datetime) else "None"
+            identity = f"wl|störung|L={id_lines}|D={id_day}"
+
+            raw.append(
+                {
+                    "source": "Wiener Linien",
+                    "category": "Störung",
+                    "title": title,
+                    "title_core": _title_core(title_raw),
+                    "topic_key": _topic_key_from_title(title_raw),
+                    "desc": desc,
+                    "extras": extras,
+                    "lines_pairs": line_pairs,  # [(tok, disp), …]
+                    "stop_names": set(stop_names),
+                    "pubDate": start,  # Publication/Creation date remains original
+                    "starts_at": real_start, # Effective start date (for calendar)
+                    "ends_at": end,
+                    "_identity": identity,
+                }
             )
 
         # B) News/Hinweise
-        try:
-            for poi in _fetch_news(timeout=timeout, session=session):
-                attrs = poi.get("attributes") or {}
-                status_blob = " ".join(
-                    [
-                        str(poi.get("status") or ""),
-                        str(attrs.get("status") or ""),
-                        str(attrs.get("state") or ""),
-                    ]
-                ).lower()
-                if any(
-                    x in status_blob
-                    for x in (
-                        "finished",
-                        "inactive",
-                        "inaktiv",
-                        "done",
-                        "closed",
-                        "nicht aktiv",
-                        "ended",
-                        "ende",
-                        "abgeschlossen",
-                        "beendet",
-                        "geschlossen",
-                    )
-                ):
-                    continue
-
-                title_raw = (poi.get("title") or "Hinweis").strip()
-                title = _tidy_title_wl(title_raw)
-                desc_raw = (poi.get("description") or "").strip()
-                desc = html_to_text(desc_raw)
-                if _is_facility_only(title_raw, desc_raw, poi.get("subtitle") or ""):
-                    continue
-
-                tinfo = poi.get("time") or {}
-                start = _iso(tinfo.get("start")) or _best_ts(poi)
-                end = _iso(tinfo.get("end"))
-
-                # Check for date in title to override starts_at
-                title_date = extract_date_from_title(title_raw, reference_date=start or now)
-
-                real_start = start
-                if title_date:
-                    if not start or title_date.date() > start.date():
-                        real_start = title_date
-
-                if not _is_active(start, end, now):
-                    continue
-
-                text_for_filter = " ".join(
-                    [
-                        title_raw,
-                        poi.get("subtitle") or "",
-                        desc_raw,
-                        str(attrs.get("status") or ""),
-                        str(attrs.get("state") or ""),
-                    ]
+        for poi in _fetch_news(timeout=timeout, session=session):
+            attrs = poi.get("attributes") or {}
+            status_blob = " ".join(
+                [
+                    str(poi.get("status") or ""),
+                    str(attrs.get("status") or ""),
+                    str(attrs.get("state") or ""),
+                ]
+            ).lower()
+            if any(
+                x in status_blob
+                for x in (
+                    "finished",
+                    "inactive",
+                    "inaktiv",
+                    "done",
+                    "closed",
+                    "nicht aktiv",
+                    "ended",
+                    "ende",
+                    "abgeschlossen",
+                    "beendet",
+                    "geschlossen",
                 )
-                if not KW_RESTRICTION.search(text_for_filter):
-                    continue
+            ):
+                continue
 
-                rel_lines = _as_list(poi.get("relatedLines") or attrs.get("relatedLines"))
-                line_pairs = _make_line_pairs_from_related(rel_lines)
-                if not line_pairs:
-                    line_pairs = _detect_line_pairs_from_text(title_raw)
+            title_raw = (poi.get("title") or "Hinweis").strip()
+            title = _tidy_title_wl(title_raw)
+            desc_raw = (poi.get("description") or "").strip()
+            desc = html_to_text(desc_raw)
+            if _is_facility_only(title_raw, desc_raw, poi.get("subtitle") or ""):
+                continue
 
-                rel_stops = _as_list(poi.get("relatedStops") or attrs.get("relatedStops"))
-                stop_names = _stop_names_from_related(rel_stops)
+            tinfo = poi.get("time") or {}
+            start = _iso(tinfo.get("start")) or _best_ts(poi)
+            end = _iso(tinfo.get("end"))
 
-                extras = []
-                if poi.get("subtitle"):
-                    extras.append(str(poi["subtitle"]).strip())
-                for k in ("station", "location", "towards"):
-                    if attrs.get(k):
-                        extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
+            # Check for date in title to override starts_at
+            title_date = extract_date_from_title(title_raw, reference_date=start or now)
 
-                id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
-                id_day = real_start.date().isoformat() if isinstance(real_start, datetime) else "None"
-                identity = f"wl|hinweis|L={id_lines}|D={id_day}"
+            real_start = start
+            if title_date:
+                if not start or title_date.date() > start.date():
+                    real_start = title_date
 
-                raw.append(
-                    {
-                        "source": "Wiener Linien",
-                        "category": "Hinweis",
-                        "title": title,
-                        "title_core": _title_core(title_raw),
-                        "topic_key": _topic_key_from_title(title_raw),
-                        "desc": desc,
-                        "extras": extras,
-                        "lines_pairs": line_pairs,  # [(tok, disp), …]
-                        "stop_names": set(stop_names),
-                        "pubDate": start,
-                        "starts_at": real_start,
-                        "ends_at": end,
-                        "_identity": identity,
-                    }
-                )
-        except requests.RequestException as e:  # pragma: no cover - network errors
-            log.error(
-                "WL newsList fehlgeschlagen: %s", sanitize_log_arg(e)
+            if not _is_active(start, end, now):
+                continue
+
+            text_for_filter = " ".join(
+                [
+                    title_raw,
+                    poi.get("subtitle") or "",
+                    desc_raw,
+                    str(attrs.get("status") or ""),
+                    str(attrs.get("state") or ""),
+                ]
+            )
+            if not KW_RESTRICTION.search(text_for_filter):
+                continue
+
+            rel_lines = _as_list(poi.get("relatedLines") or attrs.get("relatedLines"))
+            line_pairs = _make_line_pairs_from_related(rel_lines)
+            if not line_pairs:
+                line_pairs = _detect_line_pairs_from_text(title_raw)
+
+            rel_stops = _as_list(poi.get("relatedStops") or attrs.get("relatedStops"))
+            stop_names = _stop_names_from_related(rel_stops)
+
+            extras = []
+            if poi.get("subtitle"):
+                extras.append(str(poi["subtitle"]).strip())
+            for k in ("station", "location", "towards"):
+                if attrs.get(k):
+                    extras.append(f"{k.capitalize()}: {str(attrs[k]).strip()}")
+
+            id_lines = ",".join(sorted(_line_tokens_from_pairs(line_pairs)))
+            id_day = real_start.date().isoformat() if isinstance(real_start, datetime) else "None"
+            identity = f"wl|hinweis|L={id_lines}|D={id_day}"
+
+            raw.append(
+                {
+                    "source": "Wiener Linien",
+                    "category": "Hinweis",
+                    "title": title,
+                    "title_core": _title_core(title_raw),
+                    "topic_key": _topic_key_from_title(title_raw),
+                    "desc": desc,
+                    "extras": extras,
+                    "lines_pairs": line_pairs,  # [(tok, disp), …]
+                    "stop_names": set(stop_names),
+                    "pubDate": start,
+                    "starts_at": real_start,
+                    "ends_at": end,
+                    "_identity": identity,
+                }
             )
 
     # C) Bündelung: LINIEN-SET + TOPIC

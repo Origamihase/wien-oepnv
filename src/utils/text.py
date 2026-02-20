@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """Text utilities."""
 
+import html
 import re
 from html.parser import HTMLParser
 from typing import Match
@@ -174,3 +175,20 @@ def html_to_text(s: str, *, collapse_newlines: bool = False) -> str:
         txt = "\n".join(line for line in lines if line)
 
     return txt
+
+
+def escape_markdown(text: str) -> str:
+    """Escape HTML and Markdown characters to prevent injection/XSS."""
+    text = html.escape(text)
+    # Escape Markdown characters that could create links or formatting
+    # We backslash-escape: [ ] ( ) * _ `
+    for char in "[]()*_`":
+        text = text.replace(char, f"\\{char}")
+    return text
+
+
+def escape_markdown_cell(text: str) -> str:
+    """Escape pipe characters and HTML to prevent injection and table breakage."""
+    escaped = escape_markdown(text)
+    # Use HTML entity for pipe to be safe in tables
+    return escaped.replace("|", "&#124;")
