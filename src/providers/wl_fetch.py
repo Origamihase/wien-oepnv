@@ -355,16 +355,9 @@ def _get_json(
                 allowed_content_types=("application/json",),
             )
             return json.loads(content)
-        except ValueError as exc:
+        except (ValueError, json.JSONDecodeError) as exc:
             log.warning(
-                "Antwort von %s zu groß oder ungültig: %s",
-                sanitize_log_arg(url),
-                sanitize_log_arg(exc),
-            )
-            return {}
-        except json.JSONDecodeError as exc:
-            log.warning(
-                "Ungültige JSON-Antwort von %s: %s",
+                "Antwort von %s ungültig oder kein JSON: %s",
                 sanitize_log_arg(url),
                 sanitize_log_arg(exc),
             )

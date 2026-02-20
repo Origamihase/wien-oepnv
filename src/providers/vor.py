@@ -1007,7 +1007,7 @@ def resolve_station_ids(names: Iterable[str]) -> List[str]:
                     allowed_content_types=("application/json",),
                 )
                 payload = json.loads(content)
-            except ValueError as exc:
+            except (ValueError, json.JSONDecodeError) as exc:
                 _log_warning(
                     "VOR location.name für '%s' ungültig/zu groß: %s", name, exc
                 )
@@ -1229,7 +1229,7 @@ def _fetch_departure_board_for_station(
 
                 return json.loads(content)
 
-            except ValueError as exc:
+            except (ValueError, json.JSONDecodeError) as exc:
                 _log_warning(
                     "VOR DepartureBoard %s ungültig/zu groß: %s", station_id, exc
                 )

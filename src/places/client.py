@@ -357,7 +357,7 @@ class GooglePlacesClient:
                     if response.status_code == 200:
                         try:
                             payload = response.json()
-                        except ValueError as exc:
+                        except (ValueError, requests.exceptions.JSONDecodeError) as exc:
                             raise GooglePlacesError(
                                 "Invalid JSON payload received from Places API"
                             ) from exc
@@ -409,7 +409,7 @@ class GooglePlacesClient:
         default = f"Request failed with status {status_code}: {detail}"
         try:
             payload = response.json()
-        except ValueError:
+        except (ValueError, requests.exceptions.JSONDecodeError):
             return default
         if not isinstance(payload, dict):
             return default
