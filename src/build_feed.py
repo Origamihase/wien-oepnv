@@ -1434,8 +1434,7 @@ def _emit_item(
     desc_out = "\n".join(desc_parts)
 
     # Double-escaping logic for HTML-rendering RSS readers
-    desc_escaped = html.escape(desc_out)
-    desc_html = desc_escaped.replace("\n", "<br/>")
+    desc_html = desc_out.replace("\n", "<br/>")
     # For title, we now rely on ElementTree's escaping which is safer/cleaner than manual CDATA.
     # ET will automatically escape <, >, & to &lt;, &gt;, &amp;.
 
@@ -1533,7 +1532,12 @@ def _make_rss(
         emitted += 1
 
     # State pruning
-    pruned = {k: state[k] for k in identities_in_feed if k in state} if identities_in_feed else {}
+    if not identities_in_feed:
+        # Keep old state if feed is empty (prevent wiping on error/empty fetch)
+        pruned = state
+    else:
+        pruned = {k: state[k] for k in identities_in_feed if k in state}
+
     try:
         _save_state(pruned)
     except Exception as e:
