@@ -104,7 +104,7 @@
 **Prevention:** Implement tiered redaction logic that scales the visible portion based on the total length of the secret (e.g. only show 2 chars for secrets < 20 chars).
 
 ## 2026-10-29 - Dynamic Sensitive Header Stripping
-**Vulnerability:** Static lists of sensitive headers in redirect handling failed to catch custom authentication headers (e.g. `X-Super-Secret-Token`), leading to potential leakage on cross-origin redirects.
+**Vulnerability:** Static lists of sensitive headers in redirect handling failed to catch custom authentication headers (e.g. `X-Super-Secret-Token`), leading to potential leakage in cross-origin redirects.
 **Learning:** Security allowlists/blocklists are brittle against custom naming conventions.
 **Prevention:** Implement dynamic header inspection using partial keyword matching (e.g. "token", "secret", "auth") to automatically detect and strip sensitive headers during redirects, ensuring defense-in-depth.
 
@@ -117,3 +117,8 @@
 **Vulnerability:** The fallback log sanitization in `src/utils/env.py` (used during import errors) lacked patterns for OAuth/SAML secrets (`nonce`, `state`, `client_assertion`) that were present in the primary `src/utils/logging.py`, creating a window of exposure if dependencies failed.
 **Learning:** Fallback or redundant security implementations often drift from the primary source of truth, creating inconsistent security postures.
 **Prevention:** Automatically verify that fallback/redundant security logic matches the primary implementation (e.g., via unit tests that compare regex patterns or outputs).
+
+## 2026-02-21 - [Secret Scanner Enhancement]
+**Vulnerability:** Generic high-entropy detection lacked specificity for common high-value secrets like Google API Keys and Telegram Bot Tokens.
+**Learning:** Specific regex patterns improve triage and remediation speed by identifying the exact type of secret exposed.
+**Prevention:** Added specific regexes to `_KNOWN_TOKENS` in `src/utils/secret_scanner.py`.
