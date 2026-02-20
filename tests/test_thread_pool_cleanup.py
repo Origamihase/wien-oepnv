@@ -1,18 +1,23 @@
 
 import pytest
+import sys
 from unittest.mock import MagicMock, patch
-from src import build_feed
 
 def test_thread_pool_cleanup():
-    # Mock providers to return empty list so we don't do real work
-    # We need network fetchers to trigger executor creation
+    # Import build_feed here to ensure we get the current module from sys.modules
+    # This guards against other tests (like test_collect_items_timeout) reloading the module
+    from src import build_feed
 
-    # Mock a provider loader that has no _provider_cache_name (so it is network)
-    mock_loader = MagicMock(return_value=[])
-    del mock_loader._provider_cache_name # ensure it's treated as network
+    # Use a callable object to strictly control attributes
+    class MockLoader:
+        def __call__(self, timeout=None):
+            return []
+
+    mock_loader = MockLoader()
+    # Verify it doesn't have the cache attribute
+    assert getattr(mock_loader, "_provider_cache_name", None) is None
 
     # Patch PROVIDERS list in build_feed
-    # Note: We need to patch it on the module object that _collect_items uses
     with patch.object(build_feed, "PROVIDERS", [("TEST_ENV", mock_loader)]):
         with patch("src.build_feed.feed_config.get_bool_env", return_value=True):
             # Mock ThreadPoolExecutor
