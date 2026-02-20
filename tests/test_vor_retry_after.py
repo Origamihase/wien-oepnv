@@ -15,6 +15,9 @@ class DummySession:
     def __exit__(self, exc_type, exc, tb):
         pass
 
+    def close(self):
+        pass
+
 
 def test_retry_after_invalid_value(monkeypatch, caplog):
     def fake_fetch(session, url, **kwargs):

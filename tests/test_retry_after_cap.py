@@ -12,6 +12,9 @@ class DummySession:
     def __exit__(self, exc_type, exc, tb):
         pass
 
+    def close(self):
+        pass
+
 def test_vor_retry_after_capped(monkeypatch, caplog):
     """Verify that VOR provider caps the Retry-After delay."""
 
@@ -63,7 +66,9 @@ def test_oebb_retry_after_capped(monkeypatch, caplog):
 
     caplog.set_level(logging.WARNING, logger=oebb.log.name)
 
-    oebb.fetch_events()
+    import pytest
+    with pytest.raises(requests.HTTPError):
+        oebb.fetch_events()
 
     assert len(sleep_calls) > 0
     assert sleep_calls[0] <= 120.0

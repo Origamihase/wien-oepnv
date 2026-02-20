@@ -475,7 +475,7 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
                             wait_seconds = RETRY_AFTER_MAX_SEC
                         time.sleep(wait_seconds)
                      continue
-                return None
+                raise
 
     return None
 
@@ -494,11 +494,7 @@ def _parse_dt_rfc2822(s: str) -> Optional[datetime]:
 
 # ---------------- Public ----------------
 def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
-    try:
-        root = _fetch_xml(OEBB_URL, timeout=timeout)
-    except Exception as e:
-        log.exception("ÖBB RSS abruf fehlgeschlagen: %s", sanitize_log_arg(e))
-        return []
+    root = _fetch_xml(OEBB_URL, timeout=timeout)
 
     if root is None:
         return []

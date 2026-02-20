@@ -40,7 +40,8 @@ class TestXmlEndsAt(unittest.TestCase):
         self.assertIsNotNone(ends_at_elem, "ext:ends_at element missing")
         self.assertIsNotNone(starts_at_elem, "ext:starts_at element missing")
 
-        expected_end = "Fri, 27 Oct 2023 14:00:00 +0000"
+        # 14:00 UTC = 16:00 CEST (Vienna Summer Time)
+        expected_end = "Fri, 27 Oct 2023 16:00:00 +0200"
         self.assertEqual(ends_at_elem.text, expected_end)
 
     def test_ends_at_missing_in_xml_when_none(self):

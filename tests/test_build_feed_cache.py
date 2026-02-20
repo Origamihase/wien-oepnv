@@ -147,7 +147,9 @@ def test_fmt_rfc2822_logs_and_uses_fallback(monkeypatch, caplog):
 
     result = build_feed._fmt_rfc2822(dt)
 
-    assert result == build_feed._to_utc(dt).strftime(build_feed.feed_config.RFC)
+    # _fmt_rfc2822 now converts to Vienna time
+    local_dt = build_feed._to_utc(dt).astimezone(build_feed._VIENNA_TZ)
+    assert result == local_dt.strftime(build_feed.feed_config.RFC)
     log_records = [
         record
         for record in caplog.records
@@ -220,5 +222,7 @@ def test_cache_iso_items_sorted_and_emit_pubdate(monkeypatch):
     assert rss.count("<pubDate>") == 2
     assert "Veraltete Meldung" not in rss
     assert rss.index("Neuere Meldung") < rss.index("Ältere Meldung")
-    assert "<pubDate>Tue, 02 Jan 2024 08:30:00 +0000</pubDate>" in rss
-    assert "<pubDate>Mon, 01 Jan 2024 22:30:00 +0000</pubDate>" in rss
+    # 08:30 UTC = 09:30 CET (+0100)
+    assert "<pubDate>Tue, 02 Jan 2024 09:30:00 +0100</pubDate>" in rss
+    # 22:30 UTC (Jan 1) = 23:30 CET (Jan 1) (+0100)
+    assert "<pubDate>Mon, 01 Jan 2024 23:30:00 +0100</pubDate>" in rss

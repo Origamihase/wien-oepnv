@@ -244,7 +244,7 @@ def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path)
     call_count = 0
     call_lock = threading.Lock()
 
-    def fake_fetch(station_id, now_local, counter=None):
+    def fake_fetch(station_id, now_local, counter=None, session=None):
         nonlocal call_count
         with call_lock:
             call_count += 1
@@ -306,6 +306,9 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(monkeypa
 
         def __exit__(self, exc_type, exc, tb):
             return False
+
+        def close(self):
+            pass
 
         def get(self, url, params=None, timeout=None, **kwargs):  # pragma: no cover - exercised in test
             class CM:
@@ -381,6 +384,9 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
 
         def __exit__(self, exc_type, exc, tb):
             return False
+
+        def close(self):
+            pass
 
         def get(self, *args, **kwargs):
             self.calls += 1

@@ -148,6 +148,12 @@ def main() -> int:
         )
         return 1
 
+    if not items:
+        logger.error(
+            "Fetched 0 events (unexpected empty list); keeping existing cache."
+        )
+        return 1
+
     serialized_items = [serialize_for_cache(item) for item in items]
     write_cache("vor", serialized_items)
     logger.info("VOR: Cache mit %d Einträgen aktualisiert.", len(serialized_items))

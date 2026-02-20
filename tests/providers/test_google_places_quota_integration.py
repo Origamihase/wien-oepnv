@@ -50,6 +50,9 @@ class DummySession:
     def mount(self, prefix: str, adapter: object) -> None:
         pass
 
+    def close(self) -> None:
+        pass
+
     def post(self, url: str, *, headers: dict, json: dict, timeout: float, **kwargs: Any) -> DummyResponse:
         if not self._queue:
             raise AssertionError("Unexpected HTTP call: no responses queued")

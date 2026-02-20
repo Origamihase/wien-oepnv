@@ -1,7 +1,6 @@
 """Reporting primitives shared by feed builder components."""
 from __future__ import annotations
 
-import html
 import json
 import logging
 import os
@@ -23,11 +22,13 @@ try:  # pragma: no cover - support package and script execution
     from utils.files import atomic_write
     from utils.http import request_safe, session_with_retries, validate_http_url
     from utils.logging import sanitize_log_message
+    from utils.text import escape_markdown, escape_markdown_cell
 except ModuleNotFoundError:  # pragma: no cover
     from ..utils.env import get_bool_env, read_secret
     from ..utils.files import atomic_write
     from ..utils.http import request_safe, session_with_retries, validate_http_url
     from ..utils.logging import sanitize_log_message
+    from ..utils.text import escape_markdown, escape_markdown_cell
 
 log = logging.getLogger("build_feed")
 
@@ -53,22 +54,6 @@ def _sanitize_log_detail(detail: str) -> str:
         return ""
     sanitized = _CONTROL_CHARS_RE.sub(" ", detail)
     return clean_message(sanitized)
-
-
-def _escape_markdown_text(text: str) -> str:
-    """Escape HTML and Markdown characters to prevent injection/XSS."""
-    text = html.escape(text)
-    # Escape Markdown characters that could create links or formatting
-    # We backslash-escape: [ ] ( ) * _ `
-    for char in "[]()*_`":
-        text = text.replace(char, f"\\{char}")
-    return text
-
-
-def _escape_cell(text: str) -> str:
-    """Escape pipe characters and HTML to prevent injection and table breakage."""
-    escaped = _escape_markdown_text(text)
-    return escaped.replace("|", r"\|")
 
 
 def _sanitize_code_span(text: str) -> str:
@@ -489,11 +474,11 @@ def render_feed_health_markdown(
     lines.append("| --- | --- | ---: | ---: | --- |")
     for name in sorted(report.providers):
         entry = report.providers[name]
-        status = _escape_cell(entry.status or "unbekannt")
+        status = escape_markdown_cell(entry.status or "unbekannt")
         items = entry.items if entry.items is not None else "—"
         duration = f"{entry.duration:.2f}" if entry.duration is not None else "—"
-        detail = _escape_cell(entry.detail or "")
-        name_cell = _escape_cell(name)
+        detail = escape_markdown_cell(entry.detail or "")
+        name_cell = escape_markdown_cell(name)
         lines.append(
             f"| {name_cell} | {status} | {items} | {duration} | {detail} |"
         )
@@ -516,7 +501,7 @@ def render_feed_health_markdown(
         lines.append("## Warnungen")
         lines.append("")
         for warning in report.warnings:
-            lines.append(f"- {_escape_markdown_text(warning)}")
+            lines.append(f"- {escape_markdown(warning)}")
         lines.append("")
 
     errors = list(report.iter_error_messages())
@@ -526,7 +511,7 @@ def render_feed_health_markdown(
         lines.append("## Fehler")
         lines.append("")
         for error in errors:
-            lines.append(f"- {_escape_markdown_text(error)}")
+            lines.append(f"- {escape_markdown(error)}")
         lines.append("")
 
     if not metrics.duplicate_count and not report.warnings and not errors:
@@ -808,7 +793,7 @@ class _GithubIssueReporter:
         if report.final_item_count is not None:
             lines.append(f"- **Items (final):** {report.final_item_count}")
         if report.exception_message:
-            lines.append(f"- **Ausnahme:** {_escape_markdown_text(report.exception_message)}")
+            lines.append(f"- **Ausnahme:** {escape_markdown(report.exception_message)}")
         if report.warnings:
             lines.append(f"- **Warnungen:** {len(report.warnings)}")
         lines.append("")
@@ -817,14 +802,14 @@ class _GithubIssueReporter:
             lines.append("## Warnungen")
             lines.append("")
             for warning in report.warnings:
-                lines.append(f"- {_escape_markdown_text(warning)}")
+                lines.append(f"- {escape_markdown(warning)}")
             lines.append("")
 
         if errors:
             lines.append("## Fehler")
             lines.append("")
             for error in errors:
-                lines.append(f"- {_escape_markdown_text(error)}")
+                lines.append(f"- {escape_markdown(error)}")
             lines.append("")
 
         lines.append("## Providerstatus")
@@ -833,11 +818,11 @@ class _GithubIssueReporter:
         lines.append("| --- | --- | --- | ---: | ---: |")
         for name in sorted(report.providers):
             entry = report.providers[name]
-            detail = _escape_cell(entry.detail or "")
+            detail = escape_markdown_cell(entry.detail or "")
             items = entry.items if entry.items is not None else "—"
             duration = f"{entry.duration:.2f}" if entry.duration is not None else "—"
-            name_cell = _escape_cell(name)
-            status_cell = _escape_cell(entry.status or 'unbekannt')
+            name_cell = escape_markdown_cell(name)
+            status_cell = escape_markdown_cell(entry.status or 'unbekannt')
             lines.append(
                 f"| {name_cell} | {status_cell} | {detail} | {items} | {duration} |"
             )

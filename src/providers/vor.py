@@ -1161,7 +1161,10 @@ def _handle_retry_after(response: requests.Response) -> None:
 
 
 def _fetch_departure_board_for_station(
-    station_id: str, now_local: datetime, counter: Any = None
+    station_id: str,
+    now_local: datetime,
+    counter: Any = None,
+    session: requests.Session | None = None,
 ) -> Mapping[str, Any] | None:
     """
     Fetch Departure Board for a specific station and extract disruptions.
@@ -1176,90 +1179,100 @@ def _fetch_departure_board_for_station(
 
     endpoint = f"{VOR_BASE_URL}departureBoard"
 
+    # Use provided session or create a temporary one
+    local_session = None
+    if session is None:
+        local_session = session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS)
+        apply_authentication(local_session)
+        active_session = local_session
+    else:
+        active_session = session
+
     try:
-        with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
-            apply_authentication(session)
-            attempts = max(int(VOR_RETRY_OPTIONS.get("total", 0) or 0) + 1, 1)
-            for attempt in range(attempts):
-                # CIRCUIT BREAKER CHECK
-                if counter:
-                    with counter["lock"]:
-                        counter["val"] += 1
-                        if counter["val"] > MAX_REQUESTS_PER_RUN:
-                            raise RuntimeError("Emergency Stop: Too many requests in single run!")
+        attempts = max(int(VOR_RETRY_OPTIONS.get("total", 0) or 0) + 1, 1)
+        for attempt in range(attempts):
+            # CIRCUIT BREAKER CHECK
+            if counter:
+                with counter["lock"]:
+                    counter["val"] += 1
+                    if counter["val"] > MAX_REQUESTS_PER_RUN:
+                        raise RuntimeError("Emergency Stop: Too many requests in single run!")
 
-                try:
-                    # Logging request details (masked)
-                    log.info(f"Requesting VOR DepartureBoard for {station_id}...")
+            try:
+                # Logging request details (masked)
+                log.info(f"Requesting VOR DepartureBoard for {station_id}...")
 
-                    # Enforce rate limit check (read-only)
-                    _, current_usage = load_request_count()
-                    if current_usage >= MAX_REQUESTS_PER_DAY:
-                        _log_warning(
-                            "VOR Tageslimit erreicht (%s/%s) – Anfrage für %s abgebrochen.",
-                            current_usage,
-                            MAX_REQUESTS_PER_DAY,
-                            station_id,
-                        )
-                        return None
-
-                    content = fetch_content_safe(
-                        session,
-                        endpoint,
-                        params=params,
-                        timeout=HTTP_TIMEOUT,
-                        allowed_content_types=("application/json",),
-                    )
-
-                    # Update usage count only after successful fetch
-                    save_request_count(now_local)
-
-                    # Log raw length
-                    log.debug(f"Received {len(content)} bytes from VOR.")
-
-                    return json.loads(content)
-
-                except ValueError as exc:
+                # Enforce rate limit check (read-only)
+                _, current_usage = load_request_count()
+                if current_usage >= MAX_REQUESTS_PER_DAY:
                     _log_warning(
-                        "VOR DepartureBoard %s ungültig/zu groß: %s", station_id, exc
+                        "VOR Tageslimit erreicht (%s/%s) – Anfrage für %s abgebrochen.",
+                        current_usage,
+                        MAX_REQUESTS_PER_DAY,
+                        station_id,
                     )
                     return None
 
-                except requests.HTTPError as exc:
-                    response = exc.response
-                    if response is not None:
-                        _log_warning(
-                            "VOR DepartureBoard %s -> HTTP %s",
-                            station_id,
-                            response.status_code,
-                        )
-                        if response.status_code == 429:
-                            _handle_retry_after(response)
-                            return None
-                        if response.status_code >= 500:
-                             if response.status_code == 503:
+                content = fetch_content_safe(
+                    active_session,
+                    endpoint,
+                    params=params,
+                    timeout=HTTP_TIMEOUT,
+                    allowed_content_types=("application/json",),
+                )
+
+                # Update usage count only after successful fetch
+                save_request_count(now_local)
+
+                # Log raw length
+                log.debug(f"Received {len(content)} bytes from VOR.")
+
+                return json.loads(content)
+
+            except ValueError as exc:
+                _log_warning(
+                    "VOR DepartureBoard %s ungültig/zu groß: %s", station_id, exc
+                )
+                return None
+
+            except requests.HTTPError as exc:
+                response = exc.response
+                if response is not None:
+                    _log_warning(
+                        "VOR DepartureBoard %s -> HTTP %s",
+                        station_id,
+                        response.status_code,
+                    )
+                    if response.status_code == 429:
+                        _handle_retry_after(response)
+                        return None
+                    if response.status_code >= 500:
+                            if response.status_code == 503:
                                 _handle_retry_after(response)
-                             return None
+                            return None
 
-                    if attempt >= attempts - 1:
-                        _log_error(
-                            "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
-                        )
-                        return None
-                    continue
+                if attempt >= attempts - 1:
+                    _log_error(
+                        "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
+                    )
+                    return None
+                continue
 
-                except RequestException as exc:
-                    if attempt >= attempts - 1:
-                        _log_error(
-                            "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
-                        )
-                        return None
-                    continue
+            except RequestException as exc:
+                if attempt >= attempts - 1:
+                    _log_error(
+                        "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
+                    )
+                    return None
+                continue
 
-            return None
+        return None
     except RequestException as exc:
         _log_error("VOR DepartureBoard %s Ausnahme: %s", station_id, exc)
         return None
+    finally:
+        if local_session:
+            local_session.close()
 
 
 def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str, Any]]:
@@ -1320,63 +1333,65 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
 
     seen_texts: set[tuple[str, str]] = set()
 
-    with ThreadPoolExecutor(max_workers=len(selected_ids) or 1) as executor:
-        futures = {
-            executor.submit(_fetch_departure_board_for_station, sid, now_local, request_counter): sid
-            for sid in selected_ids
-        }
-        for future in as_completed(futures):
-            station_id = futures[future]
-            try:
-                payload = future.result()
-            except RuntimeError as rte:
-                # Catch Emergency Stop
-                if "Emergency Stop" in str(rte):
-                    log.critical(f"ABORT: {rte}")
-                    # Cancel other futures if possible
-                    executor.shutdown(wait=False, cancel_futures=True)
-                    # Graceful Degradation: Do not raise, just break loop and return partial results
-                    break
-                _log_error("VOR DepartureBoard %s Runtime Error: %s", station_id, rte)
-                failures += 1
-                continue
-            except Exception as exc:  # pragma: no cover - defensive guard
-                _log_error("VOR DepartureBoard %s Fehler: %s", station_id, exc)
-                failures += 1
-                continue
-            if payload is None:
-                failures += 1
-                continue
-            successes += 1
-            try:
-                items = _collect_from_board(station_id, payload)
-            except Exception as exc:  # pragma: no cover - defensive guard
-                _log_error("Fehler beim Verarbeiten der Station %s: %s", station_id, exc)
-                failures += 1
-                continue
-            message_count = len(items)
-            sanitized_id = _sanitize_arg(station_id)
-            if message_count == 0:
-                log.info(
-                    "VOR Station %s: Keine Störungsmeldungen.", sanitized_id
-                )
-            else:
-                log.info(
-                    "VOR Station %s: %s Meldung(en).",
-                    sanitized_id,
-                    message_count,
-                )
+    with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
+        apply_authentication(session)
+        with ThreadPoolExecutor(max_workers=len(selected_ids) or 1) as executor:
+            futures = {
+                executor.submit(_fetch_departure_board_for_station, sid, now_local, request_counter, session): sid
+                for sid in selected_ids
+            }
+            for future in as_completed(futures):
+                station_id = futures[future]
+                try:
+                    payload = future.result()
+                except RuntimeError as rte:
+                    # Catch Emergency Stop
+                    if "Emergency Stop" in str(rte):
+                        log.critical(f"ABORT: {rte}")
+                        # Cancel other futures if possible
+                        executor.shutdown(wait=False, cancel_futures=True)
+                        # Graceful Degradation: Do not raise, just break loop and return partial results
+                        break
+                    _log_error("VOR DepartureBoard %s Runtime Error: %s", station_id, rte)
+                    failures += 1
+                    continue
+                except Exception as exc:  # pragma: no cover - defensive guard
+                    _log_error("VOR DepartureBoard %s Fehler: %s", station_id, exc)
+                    failures += 1
+                    continue
+                if payload is None:
+                    failures += 1
+                    continue
+                successes += 1
+                try:
+                    items = _collect_from_board(station_id, payload)
+                except Exception as exc:  # pragma: no cover - defensive guard
+                    _log_error("Fehler beim Verarbeiten der Station %s: %s", station_id, exc)
+                    failures += 1
+                    continue
+                message_count = len(items)
+                sanitized_id = _sanitize_arg(station_id)
+                if message_count == 0:
+                    log.info(
+                        "VOR Station %s: Keine Störungsmeldungen.", sanitized_id
+                    )
+                else:
+                    log.info(
+                        "VOR Station %s: %s Meldung(en).",
+                        sanitized_id,
+                        message_count,
+                    )
 
-            # Deduplication
-            for item in items:
-                title = str(item.get("title") or "").strip()
-                description = str(item.get("description") or "").strip()
-                # We use title and description as the unique key.
-                # If both match, we consider it a duplicate.
-                key = (title, description)
-                if key not in seen_texts:
-                    seen_texts.add(key)
-                    results.append(item)
+                # Deduplication
+                for item in items:
+                    title = str(item.get("title") or "").strip()
+                    description = str(item.get("description") or "").strip()
+                    # We use title and description as the unique key.
+                    # If both match, we consider it a duplicate.
+                    key = (title, description)
+                    if key not in seen_texts:
+                        seen_texts.add(key)
+                        results.append(item)
 
     if successes == 0:
         raise RequestException("Keine VOR Daten abrufbar")

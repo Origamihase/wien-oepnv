@@ -354,21 +354,30 @@ def _call_fetch_with_timeout(
 # ---------------- Helpers ----------------
 
 def _to_utc(dt: datetime) -> datetime:
-    """Return a timezone-aware datetime in UTC."""
+    """Return a timezone-aware datetime in UTC.
+
+    Treats naive datetimes as Vienna local time.
+    """
     if dt.tzinfo is timezone.utc:
         return dt
 
-    return dt.astimezone(timezone.utc) if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=_VIENNA_TZ).astimezone(timezone.utc)
+
+    return dt.astimezone(timezone.utc)
 
 def _fmt_rfc2822(dt: datetime) -> str:
+    """Format datetime as RFC-2822 string with Vienna offset."""
     try:
-        return format_datetime(_to_utc(dt))
+        # Convert to Vienna time for output
+        local_dt = _to_utc(dt).astimezone(_VIENNA_TZ)
+        return format_datetime(local_dt)
     except Exception:
         log.exception(
             "Konnte Datum %r nicht per format_datetime formatieren – nutze strftime-Fallback.",
             dt,
         )
-        return _to_utc(dt).strftime(feed_config.RFC)
+        return _to_utc(dt).astimezone(_VIENNA_TZ).strftime(feed_config.RFC)
 
 
 _VIENNA_TZ = ZoneInfo("Europe/Vienna")
@@ -495,12 +504,15 @@ def _ymd_or_none(dt: Optional[datetime]) -> str:
 
 
 def _parse_datetime(value: Any) -> Optional[datetime]:
-    """Parse ISO8601 timestamps (incl. ``Z`` suffix and compact offsets)."""
+    """Parse ISO8601 timestamps (incl. ``Z`` suffix and compact offsets).
+
+    Treats naive timestamps as Vienna local time.
+    """
 
     if isinstance(value, datetime):
         if value.tzinfo:
             return value
-        return value.replace(tzinfo=timezone.utc)
+        return value.replace(tzinfo=_VIENNA_TZ)
 
     if isinstance(value, str):
         candidate = value.strip()
@@ -510,7 +522,8 @@ def _parse_datetime(value: Any) -> Optional[datetime]:
         try:
             parsed = datetime.fromisoformat(candidate)
             if parsed.tzinfo is None:
-                parsed = parsed.replace(tzinfo=timezone.utc)
+                # Assume Vienna time for naive strings (e.g. from legacy cache)
+                parsed = parsed.replace(tzinfo=_VIENNA_TZ)
             return parsed
         except ValueError as exc:
             log.debug("Datetime-Parsing fehlgeschlagen für %r (%s)", value, exc)

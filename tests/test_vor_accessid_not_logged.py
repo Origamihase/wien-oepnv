@@ -36,6 +36,9 @@ def test_accessid_not_logged(monkeypatch, caplog, raw_message, expected_fragment
             def __exit__(self, exc_type, exc, tb):
                 return False
 
+            def close(self):
+                pass
+
             def request(self, method, url, **kwargs):
                 raise requests.RequestException(raw_message)
 

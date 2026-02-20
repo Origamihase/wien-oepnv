@@ -28,7 +28,7 @@ def test_fetch_events_graceful_shutdown_on_emergency_stop(monkeypatch):
     monkeypatch.setattr(vor, "load_request_count", lambda: ("2023-01-01", 0))
 
     # 2. Mock _fetch_departure_board_for_station
-    def fake_fetch(station_id, now, counter=None):
+    def fake_fetch(station_id, now, counter=None, session=None):
         if station_id == "SUCCESS_STATION":
             # Return a valid payload
             return {

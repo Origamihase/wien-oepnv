@@ -1,6 +1,7 @@
 import logging
 from unittest.mock import MagicMock
 
+import pytest
 import src.providers.oebb as oebb
 from tests.mock_utils import get_mock_socket_structure
 
@@ -92,7 +93,9 @@ def test_rate_limit_retries_once_after_wait(monkeypatch, caplog):
     assert "Rate-Limit" in log_text
 
 
-def test_rate_limit_returns_none_after_retry(monkeypatch):
+def test_rate_limit_raises_http_error_after_retry(monkeypatch):
+    import requests
+
     responses = [
         DummyResponse(429, {"Retry-After": "1.5"}),
         DummyResponse(429, {"Retry-After": "2"}),
@@ -115,9 +118,9 @@ def test_rate_limit_returns_none_after_retry(monkeypatch):
 
     monkeypatch.setattr(oebb.time, "sleep", fake_sleep)
 
-    result = oebb._fetch_xml("https://example.com", timeout=1)
+    with pytest.raises(requests.HTTPError):
+        oebb._fetch_xml("https://example.com", timeout=1)
 
-    assert result is None
     assert len(calls) == 2
     for url, timeout in calls:
         assert url == "https://example.com"
