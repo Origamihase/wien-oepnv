@@ -146,6 +146,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "1A/2A/3A: Platzverbote am 20.02.2026",
+    "description": "Veranstaltung\nWegen einer Veranstaltung wird die Innenstadt polizeilich gesperrt.\nZeitraum:\nFreitag, 20. Februar 2026 von ca. 16:00 bis Betriebsschluss.\nMaßnahmen:\nLinie 1 A\nBetrieb eingestellt.\nLinie 2 A\nBetrieb eingestellt.\nLinie 3 A\nBetrieb eingestellt.\nErsatz:\nDie U-Bahnen",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "200f645798831fc05ac3a6469c34bac7cee19fd8a2129aecb39f0ecca8d1bdc1",
+    "pubDate": "2026-02-13T12:00:00+01:00",
+    "starts_at": "2026-02-13T12:00:00+01:00",
+    "ends_at": "2026-02-20T23:59:00+01:00",
+    "_identity": "wl|hinweis|L=1A,2A,3A|D=2026-02-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "O: Hintere Zollamtsstraße",
     "description": "Haltestellenverlegung der Linie O in Richtung Bruno-Marek-Allee\nHaltestelle: Hintere Zollamtsstraße\nVon: Hintere Zollamtsstraße 7\nNach: Hintere Zollamtsstraße 13-19\nDauer: 24. Februar 2026, etwa 04:00 Uhr bis derzeit noch unbekannt\nGrund: Arbeiten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -190,18 +202,6 @@
     "starts_at": "2026-02-17T09:15:22+01:00",
     "ends_at": "2026-02-20T23:59:59+01:00",
     "_identity": "wl|störung|L=3A|D=2026-02-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "1/12/13A/1A/2/2A/3A/43/44/46/48A/49/5/6/71/D: Demonstration am 20.02.2026",
-    "description": "Demonstration\nWegen mehrerer Demonstrationen kommt es auf mehreren Linien voraussichtlich zu folgenden Verkehrsmaßnahmen.\nZeitraum:\nFreitag, 20. Februar 2026, zwischen circa 18:00 Uhr und 22:00 Uhr.\nMaßnahmen:\nLinie D\nKein Betrieb zwischen Börse und Schwarzenbergplatz.\nLinie 1\nUmleitung in beiden Richtungen\nzwischen Karlsplatz U und Julius-Raab-Platz\nüber Schwarzenbergplatz und Stubentor U.\nLinie 2\nKein Betrieb zwischen Josefstädter Straße U und Schwarzenbergplatz.\nLinie 5\nBetrieb nur zwischen Praterstern S U und Josefstädter Straße U.\nLinie 6\nBetrieb nur zwischen Geiereckstraße und Westbahnhof S U.\nLinie 12\nBetrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S U.\nWeiterfahrt bis Augasse.\nLinie 18\nBetrieb nur zwischen Schlachthausgasse U und Eichenstraße.\nWeiterfahrt bis Bahnhof Meidling S U, Dörfelstraße.\nLinie 43\nBetrieb nur zwischen Neuwaldegg und Alser Straße U.\nLinie 44\nBetrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz.\nLinie 46\nBetrieb nur zwischen Joachimsthalerplatz und Thaliastraße U.\nWeiterfahrt bis Josefstädter Straße U.\nLinie 49\nBetrieb nur zwischen Hütteldorf, Bujattigasse und Urban-Loritz-Platz.\nWeiterfahrt bis Westbahnhof S U.\nLinie 71\nBetrieb nur zwischen Kaiserebersdorf, Zinnergasse und Schwarzenbergplatz.\nLinien 1 A, 2 A, 3 A\nKein Betrieb ab ca. 16:00 Uhr.\nLinie 13 A\nBetrieb nur zwischen Hauptbahnhof S U und Neubaugasse U.\nLinie 48 A\nBetrieb nur zwischen Klinik Penzing und Burggasse, Stadthalle U.\nZurück ab Koppstraße, Thaliastraße U Richtung Klinik Penzing.\nWeiteres:\nBeachten Sie bitte, dass die genannten Verkehrsmaßnahmen nicht alle gleichzeitig auftreten müssen. Je nach Fortschritt der Demonstration und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf www.wienerlinien.at.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e3ba2c8e15cdc2d73383c2065ba26ff1163583c39220b19f9de12a1dc73d0a2",
-    "pubDate": "2026-02-18T13:00:00+01:00",
-    "starts_at": "2026-02-18T13:00:00+01:00",
-    "ends_at": "2026-02-20T22:00:00+01:00",
-    "_identity": "wl|hinweis|L=1,12,13A,1A,2,2A,3A,43,44,46,48A,49,5,6,71,D|D=2026-02-18"
   },
   {
     "source": "Wiener Linien",
@@ -794,13 +794,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Witterung",
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "25: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 25: Fahrtbehinderung in Richtung Floridsdorf S U. Voraussichtliche Dauer: 22:35 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Donauspital U.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fafee9670003c652f3463740124b48675531aca5edd524f98ad30d7cd2417655",
-    "pubDate": "2026-02-20T20:54:00+01:00",
-    "starts_at": "2026-02-20T20:54:00+01:00",
+    "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
+    "pubDate": "2026-02-20T22:17:00+01:00",
+    "starts_at": "2026-02-20T22:17:21+01:00",
     "ends_at": "2026-02-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-02-20"
+    "_identity": "wl|störung|L=25|D=2026-02-20"
   }
 ]
