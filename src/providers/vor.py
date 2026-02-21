@@ -122,15 +122,12 @@ def _sanitize_message(text: str) -> str:
     secrets = _get_secrets()
     sanitized = sanitize_log_message(text, secrets=secrets)
 
-    # Specific handling for the auth header global
-    if _VOR_AUTHORIZATION_HEADER:
-        auth_parts = _VOR_AUTHORIZATION_HEADER.split(" ", 1)
-        if len(auth_parts) == 2:
-            sanitized = sanitized.replace(
-                _VOR_AUTHORIZATION_HEADER, f"{auth_parts[0]} ***"
-            )
-        else:
-            sanitized = sanitized.replace(_VOR_AUTHORIZATION_HEADER, "***")
+    # Specific handling for the auth header global:
+    # never log the header value itself, even partially.
+    if _VOR_AUTHORIZATION_HEADER and _VOR_AUTHORIZATION_HEADER in sanitized:
+        sanitized = sanitized.replace(
+            _VOR_AUTHORIZATION_HEADER, "[REDACTED_AUTH_HEADER]"
+        )
 
     return sanitized
 
@@ -138,16 +135,13 @@ def _sanitize_message(text: str) -> str:
 def _sanitize_arg(arg: Any) -> Any:
     """Helper to sanitize arguments passed to logging functions."""
     secrets = _get_secrets()
-    # If the arg matches the exact header string, mask it properly before generic sanitization
+    # If the arg matches the exact header string, mask it before generic sanitization
     if (
         _VOR_AUTHORIZATION_HEADER
         and isinstance(arg, str)
         and arg == _VOR_AUTHORIZATION_HEADER
     ):
-        auth_parts = _VOR_AUTHORIZATION_HEADER.split(" ", 1)
-        if len(auth_parts) == 2:
-            return f"{auth_parts[0]} ***"
-        return "***"
+        return "[REDACTED_AUTH_HEADER]"
 
     return sanitize_log_arg(arg, secrets=secrets)
 
