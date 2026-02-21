@@ -249,9 +249,9 @@ def _load_station_sets():
     if _VIENNA_STATIONS is not None:
         return
 
-    _VIENNA_STATIONS = set()
-    _OUTER_STATIONS = set()
-    _PENDLER_STATIONS = set()
+    local_vienna = set()
+    local_outer = set()
+    local_pendler = set()
 
     try:
         # Resolve path relative to this file: src/providers/oebb.py -> ../../data/stations.json
@@ -289,11 +289,11 @@ def _load_station_sets():
                 normalized.add(n_clean)
 
             if is_vienna:
-                _VIENNA_STATIONS.update(normalized)
+                local_vienna.update(normalized)
             else:
-                _OUTER_STATIONS.update(normalized)
+                local_outer.update(normalized)
                 if entry.get("pendler", False):
-                    _PENDLER_STATIONS.update(normalized)
+                    local_pendler.update(normalized)
 
         # Remove overlaps (if a name is in both, prefer Vienna or handle as such?
         # Actually logic is: Check A (Vienna items) then Check B (Outer items).
@@ -310,9 +310,18 @@ def _load_station_sets():
             pattern = r"(?<!\w)(?:" + "|".join(re.escape(t) for t in sorted_terms) + r")(?!\w)"
             return re.compile(pattern, re.IGNORECASE)
 
-        _VIENNA_STATIONS_RE = _make_re(_VIENNA_STATIONS)
-        _OUTER_STATIONS_RE = _make_re(_OUTER_STATIONS)
-        _PENDLER_STATIONS_RE = _make_re(_PENDLER_STATIONS)
+        # Build regexes locally
+        local_vienna_re = _make_re(local_vienna)
+        local_outer_re = _make_re(local_outer)
+        local_pendler_re = _make_re(local_pendler)
+
+        # Atomic assignment
+        _VIENNA_STATIONS = local_vienna
+        _OUTER_STATIONS = local_outer
+        _PENDLER_STATIONS = local_pendler
+        _VIENNA_STATIONS_RE = local_vienna_re
+        _OUTER_STATIONS_RE = local_outer_re
+        _PENDLER_STATIONS_RE = local_pendler_re
 
     except Exception as e:
         log.error("Failed to load station data for filtering: %s", e)

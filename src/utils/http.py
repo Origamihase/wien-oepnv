@@ -31,6 +31,13 @@ DEFAULT_TIMEOUT = (3.0, 15.0)
 # DNS resolution timeout in seconds
 DNS_TIMEOUT = 5.0
 
+# Block control characters and whitespace in URLs to prevent log injection
+# Also block unsafe characters (<, >, ", \, ^, `, {, |, }) to prevent XSS/Injection
+_UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f<>\"\\^`{|}]")
+
+# Limit URL length to reduce DoS risk from extremely long inputs.
+MAX_URL_LENGTH = 2048
+
 # Global DNS executor to reduce thread overhead (Task B)
 _DNS_EXECUTOR = ThreadPoolExecutor(max_workers=1, thread_name_prefix="DNS_Resolver")
 
@@ -248,6 +255,9 @@ def _sanitize_exception_msg(msg: str) -> str:
 
 def _sanitize_url_for_error(url: str) -> str:
     """Strip credentials and sensitive query params from URL for safe error logging."""
+    if len(url) > MAX_URL_LENGTH:
+        url = url[:MAX_URL_LENGTH] + "...[TRUNCATED]"
+
     try:
         # 0. Pre-sanitize malformed auth (e.g. "https:user:pass@...") that urlparse misses
         # This handles cases where user forgot // or scheme is non-standard
@@ -504,13 +514,6 @@ def session_with_retries(
 
     return session
 
-
-# Block control characters and whitespace in URLs to prevent log injection
-# Also block unsafe characters (<, >, ", \, ^, `, {, |, }) to prevent XSS/Injection
-_UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f<>\"\\^`{|}]")
-
-# Limit URL length to reduce DoS risk from extremely long inputs.
-MAX_URL_LENGTH = 2048
 
 # TLDs that are reserved or commonly used for internal networks.
 # We block these when DNS checks are skipped to prevent leaking internal names

@@ -1051,9 +1051,7 @@ def resolve_station_ids(names: Iterable[str]) -> List[str]:
 def load_request_count() -> tuple[str | None, int]:
     try:
         data = json.loads(REQUEST_COUNT_FILE.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        return (None, 0)
-    except json.JSONDecodeError:
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
         return (None, 0)
 
     # Strict validation: Only accept if the schema is perfect and date matches today (UTC)
