@@ -27,7 +27,9 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Refresh ÖBB cache
         run: python scripts/update_oebb_cache.py
