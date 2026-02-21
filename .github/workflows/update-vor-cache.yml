@@ -79,9 +79,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if [[ -f cache/vor/events.json ]]; then
-            git add cache/vor/events.json
-          fi
+          # Using wildcard for hashed path (e.g. cache/vor_929f1c/events.json)
+          # We simply try to add files matching the pattern; if none exist, it's fine (but git add fails if no match, so we add || true or check)
+          # Actually, git add works with glob even if new files.
+          git add cache/vor*/events.json || true
 
           if [[ -f data/vor_request_count.json ]]; then
             git add data/vor_request_count.json
