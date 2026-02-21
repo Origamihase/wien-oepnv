@@ -66,7 +66,8 @@ jobs:
               python scripts/update_wl_cache.py
             fi
 
-            git add cache/wl/events.json
+            # Using wildcard because sanitize_filename adds a hash suffix (e.g. cache/wl_9d709a/events.json)
+            git add cache/wl*/events.json
             if git diff --cached --quiet; then
               echo "No changes to commit."
               exit 0
