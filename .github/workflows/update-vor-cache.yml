@@ -91,6 +91,6 @@ jobs:
           fi
 
           branch="${BRANCH_NAME:-$(git rev-parse --abbrev-ref HEAD)}"
-          git commit -m 'chore: update VOR cache'
+          git commit -m 'chore: update VOR cache [skip ci]'
           git pull --rebase origin "$branch"
           git push origin HEAD:"$branch"

@@ -196,3 +196,133 @@ def escape_markdown_cell(text: str) -> str:
     escaped = escape_markdown(text)
     # Use HTML entity for pipe to be safe in tables
     return escaped.replace("|", "&#124;")
+
+class HTMLTruncator(HTMLParser):
+    """Truncates HTML content while preserving tags and structure."""
+
+    def __init__(self, limit: int, ellipsis: str = "...") -> None:
+        super().__init__(convert_charrefs=False)
+        self.limit = limit
+        self.ellipsis = ellipsis
+        self.current_length = 0
+        self.output: list[str] = []
+        self.tags_stack: list[str] = []
+        self.done = False
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if self.done:
+            return
+
+        # Reconstruct the tag
+        attr_str = ""
+        for attr, value in attrs:
+            if value is None:
+                attr_str += f" {attr}"
+            else:
+                # Basic escaping for attribute values
+                val_escaped = html.escape(value, quote=True)
+                attr_str += f' {attr}="{val_escaped}"'
+
+        self.output.append(f"<{tag}{attr_str}>")
+
+        # Void elements (self-closing) shouldn't be added to stack
+        # Source: https://html.spec.whatwg.org/multipage/syntax.html#void-elements
+        void_elements = {
+            "area", "base", "br", "col", "embed", "hr", "img", "input",
+            "link", "meta", "param", "source", "track", "wbr"
+        }
+        if tag.lower() not in void_elements:
+            self.tags_stack.append(tag)
+
+    def handle_endtag(self, tag: str) -> None:
+        if self.done:
+            return
+
+        self.output.append(f"</{tag}>")
+        # Try to match with the most recent open tag
+        if self.tags_stack:
+            if self.tags_stack[-1] == tag:
+                self.tags_stack.pop()
+            else:
+                # Tag mismatch (malformed HTML?), try to find it up the stack
+                if tag in self.tags_stack:
+                    while self.tags_stack and self.tags_stack[-1] != tag:
+                        self.tags_stack.pop()
+                    self.tags_stack.pop() # Pop the matching tag
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if self.done:
+            return
+        # Self-closing tag like <br />
+        attr_str = ""
+        for attr, value in attrs:
+            if value is None:
+                attr_str += f" {attr}"
+            else:
+                val_escaped = html.escape(value, quote=True)
+                attr_str += f' {attr}="{val_escaped}"'
+        self.output.append(f"<{tag}{attr_str} />")
+
+    def handle_data(self, data: str) -> None:
+        if self.done:
+            return
+
+        remaining = self.limit - self.current_length
+        if len(data) > remaining:
+            self.output.append(data[:remaining])
+            self.output.append(self.ellipsis)
+            self.current_length += remaining
+            self.done = True
+        else:
+            self.output.append(data)
+            self.current_length += len(data)
+
+    def handle_entityref(self, name: str) -> None:
+        if self.done:
+            return
+        # Count entity as 1 character for display length
+        entity = f"&{name};"
+        if self.limit - self.current_length >= 1:
+            self.output.append(entity)
+            self.current_length += 1
+        else:
+            self.output.append(self.ellipsis)
+            self.done = True
+
+    def handle_charref(self, name: str) -> None:
+        if self.done:
+            return
+        entity = f"&#{name};"
+        if self.limit - self.current_length >= 1:
+            self.output.append(entity)
+            self.current_length += 1
+        else:
+            self.output.append(self.ellipsis)
+            self.done = True
+
+    def close_open_tags(self) -> None:
+        # Close remaining tags in reverse order
+        while self.tags_stack:
+            tag = self.tags_stack.pop()
+            self.output.append(f"</{tag}>")
+
+
+def truncate_html(text: str, limit: int, ellipsis: str = "...") -> str:
+    """
+    Truncate HTML text to a specified character limit (of content), preserving tags.
+    Ensures all opened tags are closed.
+    """
+    if not text:
+        return ""
+
+    # Quick check if it's even needed
+    # Note: This is a loose check because tags add length but don't count towards content limit.
+    # But if raw length is <= limit, we certainly don't need to truncate content.
+    if len(text) <= limit:
+        return text
+
+    parser = HTMLTruncator(limit, ellipsis)
+    parser.feed(text)
+    parser.close_open_tags()
+
+    return "".join(parser.output)

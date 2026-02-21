@@ -1055,33 +1055,48 @@ def load_request_count() -> tuple[str | None, int]:
     except json.JSONDecodeError:
         return (None, 0)
 
-    # Robustness: Handle legacy integer-only state or malformed dict.
-    # Returning date=None forces a reset in save_request_count (since None != current_date).
-    if isinstance(data, int):
-        return (None, data)
+    # Strict validation: Only accept if the schema is perfect and date matches today (UTC)
+    # The schema must have "date" and "requests".
+    today_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     if not isinstance(data, dict):
         return (None, 0)
 
-    date = data.get("date")
-    count = data.get("count", 0)
-    return (str(date) if date else None, int(count) if isinstance(count, int) else 0)
+    stored_date = data.get("date")
+    # Using 'requests' key as per new strict schema requirement.
+    # If key is missing or date doesn't match today, we treat as corrupt/expired.
+    if stored_date == today_utc and "requests" in data:
+        count = data["requests"]
+        return (stored_date, int(count) if isinstance(count, int) else 0)
+
+    # Discard legacy formats (raw integers, 'count' key) or old dates
+    return (None, 0)
 
 
-def save_request_count(now_local: datetime) -> int:
-    date_iso = now_local.astimezone(ZONE_VIENNA).date().isoformat()
+def save_request_count(now_ignored: datetime | None = None) -> int:
+    # We ignore the passed 'now' to enforce UTC consistency internally.
+    # But keep the signature compatible if callers pass it.
+    now_utc = datetime.now(timezone.utc)
+    date_iso = now_utc.strftime("%Y-%m-%d")
     lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
 
     try:
         with lock_path.open("a+", encoding="utf-8") as lock_file:
             with file_lock(lock_file, exclusive=True):
                 previous_date, previous_count = load_request_count()
+
+                # load_request_count returns (None, 0) if date mismatch or invalid,
+                # so we can just use previous_count directly if date matches (which it won't if None).
+                # Actually, load_request_count already checks if stored_date == today_utc.
+                # So if previous_date is None, it means we reset.
+
                 if previous_date != date_iso:
                     previous_count = 0
+
                 new_count = previous_count + 1
 
                 REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
-                payload = {"date": date_iso, "count": new_count}
+                payload = {"date": date_iso, "requests": new_count}
                 try:
                     # Replaced custom atomic write logic with centralized utility
                     with atomic_write(
@@ -1261,7 +1276,8 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
         return []
 
     now_local = datetime.now(ZONE_VIENNA)
-    today = now_local.date().isoformat()
+    # Ensure consistent UTC check with load_request_count
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     stored_date, stored_count = load_request_count()
     if stored_date == today and stored_count >= MAX_REQUESTS_PER_DAY:
         log.info("Tageslimit von %s VOR-Anfragen erreicht", MAX_REQUESTS_PER_DAY)
