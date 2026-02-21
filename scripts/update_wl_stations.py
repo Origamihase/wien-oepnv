@@ -20,7 +20,7 @@ import sys
 from dataclasses import dataclass
 from importlib import import_module
 from pathlib import Path
-from typing import Callable, Iterable, Iterator, List, Mapping, Sequence
+from typing import Any, Callable, Iterable, Iterator, List, Mapping, Sequence
 
 
 def _project_root() -> Path:

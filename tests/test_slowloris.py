@@ -108,12 +108,12 @@ def test_fetch_content_safe_default_timeout(mock_verify_ip, mock_validate_url):
 
         fetch_content_safe(session, "http://example.com", timeout=None)
 
-        # Check that session.request was called with timeout=20 (DEFAULT_TIMEOUT)
-        # Note: DEFAULT_TIMEOUT is 20 in src/utils/http.py
+        # Check that session.request was called with default tuple timeout
         kwargs = session.request.call_args[1]
-        assert 19.9 <= kwargs["timeout"] <= 20
+        assert kwargs["timeout"] == (3.0, 15.0)
 
         # Check that read_response_safe was called with a timeout
+        # Since timeout is a tuple (connect, read), read_response_safe uses the read part (15.0)
         read_timeout = mock_read.call_args[1]["timeout"]
         assert read_timeout is not None
-        assert 19.0 < read_timeout <= 20.0
+        assert 14.9 < read_timeout <= 15.0
