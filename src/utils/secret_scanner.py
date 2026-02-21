@@ -224,15 +224,48 @@ def _scan_content(content: str) -> list[tuple[int, str, str]]:
     for match in _SENSITIVE_ASSIGN_RE.finditer(content):
         candidate = match.group(2).strip()
         # Strip outer quotes if present
+        quoted = False
         # Handle triple quotes first (check length >= 6 to avoid index errors)
         if candidate.startswith('"""') and candidate.endswith('"""') and len(candidate) >= 6:
             candidate = candidate[3:-3]
+            quoted = True
         elif candidate.startswith("'''") and candidate.endswith("'''") and len(candidate) >= 6:
             candidate = candidate[3:-3]
+            quoted = True
         elif (candidate.startswith('"') and candidate.endswith('"')) or (
             candidate.startswith("'") and candidate.endswith("'")
         ):
             candidate = candidate[1:-1]
+            quoted = True
+
+        if not quoted:
+            # Ignore code-like constructs in unquoted values
+            if any(c in candidate for c in "().[]:"):
+                continue
+            # Ignore common Python keywords to avoid flagging code as secrets
+            if candidate.startswith(
+                (
+                    "return ",
+                    "import ",
+                    "from ",
+                    "class ",
+                    "def ",
+                    "if ",
+                    "else",
+                    "elif",
+                    "for ",
+                    "while ",
+                    "try",
+                    "except",
+                    "with ",
+                    "async ",
+                    "await ",
+                    "raise ",
+                )
+            ):
+                continue
+            if candidate in ("None", "True", "False"):
+                continue
 
         # Use the span of the value group (including quotes) for coverage
         span_start, span_end = match.span(2)
@@ -245,6 +278,10 @@ def _scan_content(content: str) -> list[tuple[int, str, str]]:
     for match in _HIGH_ENTROPY_RE.finditer(content):
         candidate = match.group(0)
         span_start, span_end = match.span(0)
+
+        if candidate.isalpha():
+            # Reduce false positives for LongCamelCaseClassNames
+            continue
 
         if _looks_like_secret(candidate):
             if not is_covered(span_start, span_end):
