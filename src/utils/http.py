@@ -31,6 +31,9 @@ DEFAULT_TIMEOUT = 20
 # DNS resolution timeout in seconds
 DNS_TIMEOUT = 5.0
 
+# Global DNS executor to reduce thread overhead (Task B)
+_DNS_EXECUTOR = ThreadPoolExecutor(max_workers=1, thread_name_prefix="DNS_Resolver")
+
 log = logging.getLogger(__name__)
 
 def _normalize_key(key: str) -> str:
@@ -249,7 +252,13 @@ def _sanitize_url_for_error(url: str) -> str:
         # 1. Strip basic auth credentials (if urlparse found them)
         if parsed.username or parsed.password:
             # Reconstruct netloc without auth
-            netloc = parsed.hostname or ""
+            hostname = parsed.hostname or ""
+            # Fix IPv6 bug (Task A): Re-wrap IPv6 addresses in brackets
+            if ":" in hostname:
+                netloc = f"[{hostname}]"
+            else:
+                netloc = hostname
+
             if parsed.port:
                 netloc += f":{parsed.port}"
             parsed = parsed._replace(netloc=netloc)
@@ -600,13 +609,9 @@ def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> 
 
 def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     """Resolve hostname with a timeout to prevent DoS."""
-    executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="DNS_Resolver")
     try:
-        # Use a fresh executor for each call to prevent thread exhaustion (deadlock)
-        # if the OS resolver hangs indefinitely. This ensures that a hanging thread
-        # does not block the global application state, although it consumes a thread resource
-        # until the OS cleans it up.
-        future = executor.submit(socket.getaddrinfo, hostname, None, proto=socket.IPPROTO_TCP)
+        # Use global executor to reduce thread overhead (Task B)
+        future = _DNS_EXECUTOR.submit(socket.getaddrinfo, hostname, None, proto=socket.IPPROTO_TCP)
         return future.result(timeout=DNS_TIMEOUT)
     except TimeoutError:
         log.warning("DNS resolution timed out for %s (DoS protection)", hostname)
@@ -617,8 +622,6 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     except Exception as exc:
         log.warning("Unexpected error during DNS resolution for %s: %s", hostname, exc)
         return []
-    finally:
-        executor.shutdown(wait=False, cancel_futures=True)
 
 
 def validate_http_url(
@@ -765,6 +768,10 @@ def validate_http_url(
 
 def verify_response_ip(response: requests.Response) -> None:
     """Verify that the response connection was made to a safe IP (DNS Rebinding protection)."""
+    # Proxy Compatibility (Task C): Bypass check if explicit proxy env vars are set
+    if any(k in os.environ for k in ("HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "http_proxy", "https_proxy", "all_proxy")):
+        return
+
     try:
         # r.raw.connection is usually a urllib3.connection.HTTPConnection
         # .sock is the underlying socket
