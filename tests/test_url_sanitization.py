@@ -7,7 +7,7 @@ def test_sanitize_url_basic_auth():
     sanitized = _sanitize_url_for_error(url)
     assert "user" not in sanitized
     assert "pass" not in sanitized
-    assert "example.com" in sanitized
+    assert urlparse(sanitized).hostname == "example.com"
     assert sanitized == "https://example.com/foo"
 
 def test_sanitize_url_query_params():
