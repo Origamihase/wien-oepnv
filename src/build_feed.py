@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import errno
 import hashlib
 import html
 import inspect
@@ -19,14 +18,13 @@ from concurrent.futures import (
     TimeoutError,
     wait,
 )
-from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from dateutil import parser
 from email.utils import format_datetime
 from pathlib import Path
 from threading import BoundedSemaphore, Lock
 from time import perf_counter
-from typing import Any, Dict, Iterator, List, Optional, Sequence, Set, Tuple
+from typing import Any, Dict, List, Optional, Sequence, Set, Tuple
 from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
 
@@ -77,6 +75,7 @@ try:  # pragma: no cover - allow running as script or package
     )  # type: ignore
     from utils.files import atomic_write
     from utils.http import validate_http_url
+    from utils.locking import file_lock
     from utils.text import html_to_text
 except ModuleNotFoundError:  # pragma: no cover
     from .utils.cache import (
@@ -86,17 +85,8 @@ except ModuleNotFoundError:  # pragma: no cover
     )
     from .utils.files import atomic_write
     from .utils.http import validate_http_url
+    from .utils.locking import file_lock
     from .utils.text import html_to_text
-
-try:  # pragma: no cover - platform dependent
-    import fcntl  # type: ignore
-except ModuleNotFoundError:  # pragma: no cover
-    fcntl = None  # type: ignore
-
-try:  # pragma: no cover - platform dependent
-    import msvcrt  # type: ignore
-except ModuleNotFoundError:  # pragma: no cover
-    msvcrt = None  # type: ignore
 
 log = logging.getLogger("build_feed")
 
@@ -565,97 +555,6 @@ def _normalize_item_datetimes(
 
 # ---------------- State (first_seen) ----------------
 
-def _lock_length(fileobj: Any) -> int:
-    try:
-        fileno = fileobj.fileno()
-    except (AttributeError, OSError):
-        return 1
-
-    try:
-        size = os.fstat(fileno).st_size
-    except OSError:
-        try:
-            current = fileobj.tell()
-            fileobj.seek(0, os.SEEK_END)
-            size = fileobj.tell()
-            fileobj.seek(current, os.SEEK_SET)
-        except Exception:
-            return 1
-    return max(int(size), 1)
-
-
-def _acquire_file_lock(fileobj: Any, exclusive: bool) -> None:
-    if fcntl is not None:  # pragma: no branch - simple POSIX case
-        flag = fcntl.LOCK_EX if exclusive else fcntl.LOCK_SH
-        while True:
-            try:
-                fcntl.flock(fileobj.fileno(), flag)
-                return
-            except OSError as exc:  # pragma: no cover - rare EINTR handling
-                if exc.errno != errno.EINTR:
-                    raise
-    elif msvcrt is not None:  # pragma: no cover - Windows fallback
-        length = _lock_length(fileobj)
-        shared_flag = getattr(msvcrt, "LK_RLCK", getattr(msvcrt, "LK_LOCK"))
-        mode = msvcrt.LK_LOCK if exclusive else shared_flag
-        current = None
-        try:
-            current = fileobj.tell()
-        except Exception:
-            current = None
-        fileobj.seek(0)
-        try:
-            msvcrt.locking(fileobj.fileno(), mode, length)
-        finally:
-            if current is not None:
-                fileobj.seek(current)
-
-
-def _release_file_lock(fileobj: Any) -> None:
-    if fcntl is not None:  # pragma: no branch - simple POSIX case
-        while True:
-            try:
-                fcntl.flock(fileobj.fileno(), fcntl.LOCK_UN)
-                return
-            except OSError as exc:  # pragma: no cover - rare EINTR handling
-                if exc.errno != errno.EINTR:
-                    raise
-    elif msvcrt is not None:  # pragma: no cover - Windows fallback
-        length = _lock_length(fileobj)
-        unlock_flag = getattr(msvcrt, "LK_UNLCK", getattr(msvcrt, "LK_UNLOCK", None))
-        if unlock_flag is None:  # pragma: no cover - extremely unlikely
-            return
-        current = None
-        try:
-            current = fileobj.tell()
-        except Exception:
-            current = None
-        fileobj.seek(0)
-        try:
-            msvcrt.locking(fileobj.fileno(), unlock_flag, length)
-        finally:
-            if current is not None:
-                fileobj.seek(current)
-
-
-@contextmanager
-def _file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
-    locked = False
-    try:
-        _acquire_file_lock(fileobj, exclusive)
-        locked = True
-    except Exception as exc:  # pragma: no cover - lock failures are rare
-        log.debug("Dateisperre fehlgeschlagen (%s) – fahre ohne Lock fort.", exc)
-    try:
-        yield
-    finally:
-        if locked:
-            try:
-                _release_file_lock(fileobj)
-            except Exception as exc:  # pragma: no cover - release failures are rare
-                log.debug("Dateisperre konnte nicht gelöst werden: %s", exc)
-
-
 def _load_state() -> Dict[str, Dict[str, Any]]:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     if not path.exists():
@@ -663,7 +562,7 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
     try:
         lock_path = path.with_suffix(".lock")
         with lock_path.open("a+", encoding="utf-8") as lock_file:
-            with _file_lock(lock_file, exclusive=False):
+            with file_lock(lock_file, exclusive=False):
                 with path.open("r", encoding="utf-8") as f:
                     data = json.load(f)
         data = data if isinstance(data, dict) else {}
@@ -708,7 +607,7 @@ def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] 
     # Windows-fix: Use a separate lock file to avoid permission errors when atomic_write replaces the target
     lock_path = path.with_suffix(".lock")
     with lock_path.open("a+", encoding="utf-8") as lock_file:
-        with _file_lock(lock_file, exclusive=True):
+        with file_lock(lock_file, exclusive=True):
             # Safe merge: read existing state to avoid overwriting parallel updates
             merged_state = {}
             if path.exists():

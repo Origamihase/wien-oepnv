@@ -116,10 +116,13 @@ def test_save_request_count_returns_previous_on_lock_failure(monkeypatch, tmp_pa
         encoding="utf-8",
     )
 
-    def failing_open(*args, **kwargs):
+    from contextlib import contextmanager
+    @contextmanager
+    def failing_lock(*args, **kwargs):
         raise OSError("boom")
+        yield
 
-    monkeypatch.setattr(vor.os, "open", failing_open)
+    monkeypatch.setattr(vor, "file_lock", failing_lock)
 
     result = vor.save_request_count(datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna")))
 
@@ -147,45 +150,6 @@ def test_save_request_count_returns_previous_on_replace_failure(monkeypatch, tmp
     assert result == 3
     stored = json.loads(target_file.read_text(encoding="utf-8"))
     assert stored["count"] == 3
-
-
-def test_save_request_count_clears_stale_lock(monkeypatch, tmp_path):
-    target_file = tmp_path / "vor_request_count.json"
-    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
-    monkeypatch.setattr(vor, "REQUEST_LOCK_TIMEOUT_SEC", 0.05)
-
-    lock_file = target_file.with_suffix(".lock")
-    lock_file.parent.mkdir(parents=True, exist_ok=True)
-    lock_file.write_text("", encoding="utf-8")
-    old = time.time() - 3600
-    os.utime(lock_file, (old, old))
-
-    sleeps: list[float] = []
-
-    def fake_sleep(seconds: float) -> None:
-        sleeps.append(seconds)
-
-    class FakeMonotonic:
-        def __init__(self) -> None:
-            self._value = 0.0
-
-        def __call__(self) -> float:
-            self._value += 0.03
-            return self._value
-
-    fake_clock = FakeMonotonic()
-
-    monkeypatch.setattr(vor.time, "sleep", fake_sleep)
-    monkeypatch.setattr(vor.time, "monotonic", fake_clock)
-
-    result = vor.save_request_count(datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna")))
-
-    assert result == 1
-    assert not lock_file.exists()
-    # assert sleeps  # Entfernt: Optimierung erlaubt sofortigen Retry ohne Sleep
-
-    stored = json.loads(target_file.read_text(encoding="utf-8"))
-    assert stored["count"] == 1
 
 
 def test_save_request_count_is_safe_across_processes(monkeypatch, tmp_path):

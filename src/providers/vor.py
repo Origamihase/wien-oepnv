@@ -27,7 +27,6 @@ from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Dict, Iterable, Iterator, List, Mapping, Sequence
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
-import uuid
 
 import requests
 from requests import RequestException, Session
@@ -39,6 +38,7 @@ if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type check
     from ..utils.files import atomic_write
     from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.ids import make_guid
+    from ..utils.locking import file_lock
     from ..utils.logging import sanitize_log_arg, sanitize_log_message
     from ..utils.stations import vor_station_ids, station_info
 else:  # pragma: no cover - allow running via package or src layout
@@ -68,6 +68,11 @@ else:  # pragma: no cover - allow running via package or src layout
         from ..utils.stations import vor_station_ids, station_info  # type: ignore
 
     try:
+        from utils.locking import file_lock
+    except ModuleNotFoundError:
+        from ..utils.locking import file_lock  # type: ignore
+
+    try:
         from utils.ids import make_guid
     except ModuleNotFoundError:
         from ..utils.ids import make_guid  # type: ignore
@@ -92,8 +97,6 @@ DEFAULT_MAX_REQUESTS_PER_DAY = 100
 DEFAULT_MONITOR_WHITELIST = "Wien Hauptbahnhof,Flughafen Wien"
 RETRY_AFTER_FALLBACK_SEC = 5.0
 RETRY_AFTER_MAX_SEC = 120.0
-REQUEST_LOCK_TIMEOUT_SEC = 5.0
-REQUEST_LOCK_RETRY_DELAY = 0.05
 
 DEFAULT_BUS_INCLUDE_PATTERN = r"(?i)^(?:Regionalbus|Bus|AST)"
 DEFAULT_BUS_EXCLUDE_PATTERN = r"(?i)Ersatzverkehr"
@@ -1056,71 +1059,33 @@ def load_request_count() -> tuple[str | None, int]:
     return (str(date) if date else None, int(count) if isinstance(count, int) else 0)
 
 
-def _acquire_lock(lock_path: Path, lock_id: str) -> bool:
-    deadline = time.monotonic() + REQUEST_LOCK_TIMEOUT_SEC
-    while True:
-        try:
-            # Explicit mode 0o600 for security
-            fd = os.open(str(lock_path), os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
-            with os.fdopen(fd, "w", encoding="utf-8") as f:
-                f.write(lock_id)
-            return True
-        except FileExistsError:
-            try:
-                mtime = lock_path.stat().st_mtime
-            except FileNotFoundError:
-                # Lock file vanished in the meantime, retry immediately
-                continue
-
-            # Check for stale lock
-            if time.time() - mtime > REQUEST_LOCK_TIMEOUT_SEC:
-                try:
-                    lock_path.unlink()
-                except FileNotFoundError:
-                    pass
-                # Retry immediately after removing stale lock
-                continue
-
-            if time.monotonic() > deadline:
-                return False
-            time.sleep(REQUEST_LOCK_RETRY_DELAY)
-        except OSError:
-            return False
-
-
 def save_request_count(now_local: datetime) -> int:
     date_iso = now_local.astimezone(ZONE_VIENNA).date().isoformat()
     lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
-    lock_id = str(uuid.uuid4())
-    lock_acquired = _acquire_lock(lock_path, lock_id)
+
     try:
-        previous_date, previous_count = load_request_count()
-        if previous_date != date_iso:
-            previous_count = 0
-        new_count = previous_count + 1
-        if not lock_acquired:
-            return MAX_REQUESTS_PER_DAY + 1
-        REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
-        # temp_path is handled internally by atomic_write
-        payload = {"date": date_iso, "count": new_count}
-        try:
-            # Replaced custom atomic write logic with centralized utility
-            with atomic_write(
-                REQUEST_COUNT_FILE, mode="w", encoding="utf-8", permissions=0o600
-            ) as handle:
-                json.dump(payload, handle, ensure_ascii=False)
-                handle.write("\n")
-        except OSError:
-            return previous_count
-        return new_count
-    finally:
-        if lock_acquired:
-            try:
-                # Verify ownership before deletion to prevent race condition
-                if lock_path.exists() and lock_path.read_text(encoding="utf-8").strip() == lock_id:
-                    lock_path.unlink()
-            except (FileNotFoundError, OSError):
-                pass
+        with lock_path.open("a+", encoding="utf-8") as lock_file:
+            with file_lock(lock_file, exclusive=True):
+                previous_date, previous_count = load_request_count()
+                if previous_date != date_iso:
+                    previous_count = 0
+                new_count = previous_count + 1
+
+                REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
+                payload = {"date": date_iso, "count": new_count}
+                try:
+                    # Replaced custom atomic write logic with centralized utility
+                    with atomic_write(
+                        REQUEST_COUNT_FILE, mode="w", encoding="utf-8", permissions=0o600
+                    ) as handle:
+                        json.dump(payload, handle, ensure_ascii=False)
+                        handle.write("\n")
+                except OSError:
+                    return previous_count
+                return new_count
+    except Exception as e:
+        log.warning("Failed to save request count (lock error): %s", e)
+        return MAX_REQUESTS_PER_DAY + 1
 
 
 def _parse_retry_after(response: requests.Response) -> float | None:
