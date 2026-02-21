@@ -22,8 +22,13 @@ def _import_build_feed(monkeypatch, tmp_path):
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
     monkeypatch.setitem(sys.modules, "providers.vor", vor)
     sys.modules.pop(module_name, None)
+    # Ensure config is reloaded to pick up new env vars/paths
+    sys.modules.pop("feed", None)
+    sys.modules.pop("feed.config", None)
+    sys.modules.pop("src.feed", None)
+    sys.modules.pop("src.feed.config", None)
     monkeypatch.chdir(tmp_path)
-    monkeypatch.setenv("STATE_PATH", "data/state.json")
+    monkeypatch.setenv("STATE_PATH", "data/state_fuzzy.json")
     return importlib.import_module(module_name)
 
 

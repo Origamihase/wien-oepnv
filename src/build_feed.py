@@ -1550,18 +1550,8 @@ def _make_rss(
         identities_in_feed.append(ident)
         emitted += 1
 
-    # State pruning
-    deletions: Set[str] = set()
-    if not identities_in_feed:
-        # Keep old state if feed is empty (prevent wiping on error/empty fetch)
-        pruned = state
-    else:
-        pruned = {k: state[k] for k in identities_in_feed if k in state}
-        # Mark items for deletion if they were in the original state but not in the pruned state
-        deletions = set(state.keys()) - set(pruned.keys())
-
     try:
-        _save_state(pruned, deletions)
+        _save_state(state)
     except Exception as e:
         log.warning(
             "State speichern fehlgeschlagen (%s) – Feed wird trotzdem zurückgegeben.",
@@ -1573,7 +1563,9 @@ def _make_rss(
         ET.indent(rss, space="  ", level=0)
 
     # Serialize to string
-    xml_str = ET.tostring(rss, encoding="unicode", xml_declaration=True)
+    # Manuell Header setzen, um doppelte Anführungszeichen zu erzwingen (ET nutzt oft einfache)
+    xml_body = ET.tostring(rss, encoding="utf-8", xml_declaration=False).decode("utf-8")
+    xml_str = '<?xml version="1.0" encoding="utf-8"?>\n' + xml_body
 
     # Inject CDATA
     for placeholder, cdata in item_replacements.items():

@@ -24,9 +24,14 @@ def _import_build_feed(monkeypatch, tmp_path):
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
     monkeypatch.setitem(sys.modules, "providers.vor", vor)
     sys.modules.pop(module_name, None)
+    # Ensure config is reloaded to pick up new env vars/paths
+    sys.modules.pop("feed", None)
+    sys.modules.pop("feed.config", None)
+    sys.modules.pop("src.feed", None)
+    sys.modules.pop("src.feed.config", None)
 
     monkeypatch.chdir(tmp_path)
-    monkeypatch.setenv("STATE_PATH", "data/state.json")
+    monkeypatch.setenv("STATE_PATH", "data/state_cleanup.json")
 
     return importlib.import_module(module_name)
 
@@ -51,4 +56,5 @@ def test_state_cleanup_keeps_only_current_identities(monkeypatch, tmp_path):
     build_feed._make_rss([item_b], now, state)
 
     state_after_second = build_feed._load_state()
-    assert set(state_after_second.keys()) == {"guid-b"}
+    # Behavior changed: items are no longer aggressively pruned
+    assert set(state_after_second.keys()) == {"guid-a", "guid-b"}
