@@ -46,6 +46,25 @@ _LEADING_BULLET_RE = re.compile(r"^\s*•\s*")
 _TRAILING_BULLET_RE = re.compile(r"\s*•\s*$")
 _MULTI_SPACE_RE = re.compile(r"\s{2,}")
 
+# Void elements (self-closing) shouldn't be added to closing stack
+# Source: https://html.spec.whatwg.org/multipage/syntax.html#void-elements
+VOID_ELEMENTS = {
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr",
+}
+
 
 def normalize_bullets(text: str) -> str:
     """Remove bullets that directly follow known prepositions."""
@@ -225,13 +244,7 @@ class HTMLTruncator(HTMLParser):
 
         self.output.append(f"<{tag}{attr_str}>")
 
-        # Void elements (self-closing) shouldn't be added to stack
-        # Source: https://html.spec.whatwg.org/multipage/syntax.html#void-elements
-        void_elements = {
-            "area", "base", "br", "col", "embed", "hr", "img", "input",
-            "link", "meta", "param", "source", "track", "wbr"
-        }
-        if tag.lower() not in void_elements:
+        if tag.lower() not in VOID_ELEMENTS:
             self.tags_stack.append(tag)
 
     def handle_endtag(self, tag: str) -> None:

@@ -77,7 +77,7 @@ jobs:
             git commit -m "Update feed"
 
             # Neueste Änderungen vom Server holen (ohne Merge-Commits)
-            git pull --rebase origin main
+            git pull --rebase --autostash origin main
 
             # Änderungen pushen
             git push origin main

@@ -50,5 +50,5 @@ jobs:
             branch="$(git rev-parse --abbrev-ref HEAD)"
           fi
           git commit -m 'chore: update ÖBB cache'
-          git pull --rebase origin "$branch"
+          git pull --rebase --autostash origin "$branch"
           git push origin HEAD:"$branch"
