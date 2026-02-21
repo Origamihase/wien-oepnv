@@ -51,7 +51,7 @@ def test_make_rss_saves_empty_state_when_no_identities(monkeypatch, caplog):
 
     captured = {"state": None}
 
-    def marker(state):  # pragma: no cover - trivial
+    def marker(state, deletions=None):  # pragma: no cover - trivial
         captured["state"] = state
 
     monkeypatch.setattr(build_feed, "_save_state", marker)
