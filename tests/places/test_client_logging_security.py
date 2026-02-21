@@ -18,7 +18,10 @@ class _MockResponse:
         self._payload = payload
         self.headers: Dict[str, str] = {}
         self.raw = MagicMock()
-        self.raw.connection.sock.getpeername.return_value = ("8.8.8.8", 443)
+        conn = MagicMock()
+        conn.sock.getpeername.return_value = ("8.8.8.8", 443)
+        self.raw.connection = conn
+        self.raw._connection = conn
         self._content_consumed = True
         self._content = b""
 

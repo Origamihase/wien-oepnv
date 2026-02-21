@@ -25,6 +25,7 @@ def mock_response():
     # response.raw is usually a urllib3 response
     response.raw = MagicMock()
     response.raw.connection = mock_connection
+    response.raw._connection = mock_connection
 
     # Mock raise_for_status to avoid HTTPError if status is bad (default is good here)
     # But real raise_for_status is fine if status is 200.

@@ -24,7 +24,10 @@ class TestDNSRebindingBypass(unittest.TestCase):
                 # Mock the socket to return a private IP
                 mock_sock = MagicMock()
                 mock_sock.getpeername.return_value = ('127.0.0.1', 80)
-                resp.raw.connection.sock = mock_sock
+                conn = MagicMock()
+                conn.sock = mock_sock
+                resp.raw.connection = conn
+                resp.raw._connection = conn
 
                 mock_send.return_value = resp
 

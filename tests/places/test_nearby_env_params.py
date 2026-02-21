@@ -20,8 +20,11 @@ class _DummyResponse:
         self.text = "{}"
         self.headers: Dict[str, str] = {}
         self.raw = MagicMock()
+        conn = MagicMock()
         # Use a public IP to pass verify_response_ip
-        self.raw.connection.sock.getpeername.return_value = ("8.8.8.8", 443)
+        conn.sock.getpeername.return_value = ("8.8.8.8", 443)
+        self.raw.connection = conn
+        self.raw._connection = conn
 
     def json(self) -> Dict[str, Any]:
         return {"places": []}

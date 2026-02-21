@@ -22,7 +22,10 @@ class _RecordingResponse:
         self.text = json.dumps(payload)
         self.headers: Dict[str, str] = {}
         self.raw = MagicMock()
-        self.raw.connection.sock.getpeername.return_value = ("8.8.8.8", 443)
+        conn = MagicMock()
+        conn.sock.getpeername.return_value = ("8.8.8.8", 443)
+        self.raw.connection = conn
+        self.raw._connection = conn
 
     def json(self) -> Dict[str, Any]:
         return self._payload
