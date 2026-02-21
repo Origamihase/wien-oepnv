@@ -46,7 +46,7 @@ def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
 
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", fail_fetch)
 
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = datetime.now(ZoneInfo("Europe/Vienna")).strftime("%Y-%m-%d")
     vor.REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
     vor.REQUEST_COUNT_FILE.write_text(
         json.dumps({"date": today, "requests": vor.MAX_REQUESTS_PER_DAY}),
@@ -118,7 +118,7 @@ def test_save_request_count_returns_previous_on_lock_failure(monkeypatch, tmp_pa
     # Then save_request_count will see None != today, reset to 0, and try to write 1.
     # If we want to test "returns previous count", we need the date to match today.
 
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = datetime.now(ZoneInfo("Europe/Vienna")).strftime("%Y-%m-%d")
     target_file.write_text(
         json.dumps({"date": today, "requests": 7}),
         encoding="utf-8",
@@ -144,7 +144,7 @@ def test_save_request_count_returns_previous_on_replace_failure(monkeypatch, tmp
     target_file = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
 
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = datetime.now(ZoneInfo("Europe/Vienna")).strftime("%Y-%m-%d")
     target_file.write_text(
         json.dumps({"date": today, "requests": 3}),
         encoding="utf-8",
@@ -209,7 +209,7 @@ def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path)
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", count_file)
     count_file.parent.mkdir(parents=True, exist_ok=True)
 
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = datetime.now(ZoneInfo("Europe/Vienna")).strftime("%Y-%m-%d")
     count_file.write_text(
         json.dumps({"date": today, "requests": vor.MAX_REQUESTS_PER_DAY - 1}),
         encoding="utf-8",
@@ -403,7 +403,7 @@ def test_load_request_count_resets_on_legacy_dict(monkeypatch, tmp_path):
     target_file = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
 
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = datetime.now(ZoneInfo("Europe/Vienna")).strftime("%Y-%m-%d")
     # Legacy dict format (using 'count' instead of 'requests')
     target_file.write_text(json.dumps({"date": today, "count": 42}), encoding="utf-8")
 

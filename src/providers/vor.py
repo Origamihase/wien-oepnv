@@ -1057,7 +1057,9 @@ def load_request_count() -> tuple[str | None, int]:
 
     # Strict validation: Only accept if the schema is perfect and date matches today (UTC)
     # The schema must have "date" and "requests".
-    today_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    # FIX: Use Vienna timezone for day boundaries ("Twilight Zone" fix)
+    vienna_tz = ZoneInfo("Europe/Vienna")
+    today_local = datetime.now(vienna_tz).strftime("%Y-%m-%d")
 
     if not isinstance(data, dict):
         return (None, 0)
@@ -1065,7 +1067,7 @@ def load_request_count() -> tuple[str | None, int]:
     stored_date = data.get("date")
     # Using 'requests' key as per new strict schema requirement.
     # If key is missing or date doesn't match today, we treat as corrupt/expired.
-    if stored_date == today_utc and "requests" in data:
+    if stored_date == today_local and "requests" in data:
         count = data["requests"]
         return (stored_date, int(count) if isinstance(count, int) else 0)
 
@@ -1076,8 +1078,10 @@ def load_request_count() -> tuple[str | None, int]:
 def save_request_count(now_ignored: datetime | None = None) -> int:
     # We ignore the passed 'now' to enforce UTC consistency internally.
     # But keep the signature compatible if callers pass it.
-    now_utc = datetime.now(timezone.utc)
-    date_iso = now_utc.strftime("%Y-%m-%d")
+    # FIX: Use Vienna timezone for day boundaries
+    vienna_tz = ZoneInfo("Europe/Vienna")
+    now_local = datetime.now(vienna_tz)
+    date_iso = now_local.strftime("%Y-%m-%d")
     lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
 
     try:
@@ -1277,7 +1281,9 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
 
     now_local = datetime.now(ZONE_VIENNA)
     # Ensure consistent UTC check with load_request_count
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    # FIX: Use Vienna timezone for day boundaries
+    vienna_tz = ZoneInfo("Europe/Vienna")
+    today = datetime.now(vienna_tz).strftime("%Y-%m-%d")
     stored_date, stored_count = load_request_count()
     if stored_date == today and stored_count >= MAX_REQUESTS_PER_DAY:
         log.info("Tageslimit von %s VOR-Anfragen erreicht", MAX_REQUESTS_PER_DAY)

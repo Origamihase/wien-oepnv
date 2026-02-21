@@ -50,7 +50,7 @@ jobs:
           fi
 
           attempt_push() {
-            git pull --rebase origin "$branch"
+            git pull --rebase --autostash origin "$branch"
             git push origin HEAD:"$branch"
           }
 

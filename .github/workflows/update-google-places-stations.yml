@@ -125,5 +125,6 @@ jobs:
             echo 'No changes to commit.'
           else
             git commit -m 'chore: update Google Places stations'
+            git pull --rebase --autostash
             git push
           fi
