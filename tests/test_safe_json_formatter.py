@@ -50,13 +50,13 @@ class TestSafeJSONFormatter(unittest.TestCase):
         logger.addHandler(handler)
 
         # "password=secret" pattern should be caught by regex
-        secret_value = "password=mysecretpassword"
+        secret_value = "password=placeholder"
 
         logger.info("Test message", extra={"query": secret_value})
 
         output = stream.getvalue()
 
-        self.assertNotIn("mysecretpassword", output)
+        self.assertNotIn("placeholder", output)
         self.assertIn("password=***", output)
 
 if __name__ == "__main__":
