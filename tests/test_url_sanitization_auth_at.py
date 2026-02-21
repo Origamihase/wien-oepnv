@@ -29,7 +29,8 @@ def test_sanitize_url_with_multiple_ats_complex():
     sanitized = _sanitize_url_for_error(url)
     assert "secret" not in sanitized
     assert "part" not in sanitized
-    assert "host.com" in sanitized
+    parsed = urlparse(sanitized)
+    assert parsed.hostname == "host.com"
 
 def test_sanitize_url_with_at_in_password_standard_scheme():
     # Even if scheme is standard, if urlparse fails or regex matches first, it should be safe.
