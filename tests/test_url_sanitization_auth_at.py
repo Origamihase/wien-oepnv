@@ -1,4 +1,5 @@
 from src.utils.http import _sanitize_url_for_error
+from urllib.parse import urlparse
 
 def test_sanitize_malformed_url_with_at_in_password():
     # Vulnerability: If regex stops at first @, 'ss' leaks.
@@ -38,4 +39,5 @@ def test_sanitize_url_with_at_in_password_standard_scheme():
     sanitized = _sanitize_url_for_error(url)
     assert "p@ss" not in sanitized
     assert "ss" not in sanitized.replace("host.com", "").replace("foo", "")
-    assert "host.com" in sanitized
+    parsed = urlparse(sanitized)
+    assert parsed.hostname == "host.com"
