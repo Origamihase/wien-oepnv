@@ -318,7 +318,7 @@ class TimeoutHTTPAdapter(HTTPAdapter):
 
     def send(self, request: requests.PreparedRequest, **kwargs: Any) -> requests.Response:
         if kwargs.get("timeout") is None:
-            kwargs["timeout"] = self.timeout
+            kwargs["timeout"] = self.timeout if self.timeout is not None else DEFAULT_TIMEOUT
         return super().send(request, **kwargs)
 
 
@@ -1129,7 +1129,7 @@ def request_safe(
         new_exc = type(exc)(safe_msg)
         new_exc.request = getattr(exc, "request", None)
         new_exc.response = getattr(exc, "response", None)
-        raise new_exc from exc
+        raise new_exc from None
 
     # Should not be reached due to TooManyRedirects check inside loop,
     # but defensive return.

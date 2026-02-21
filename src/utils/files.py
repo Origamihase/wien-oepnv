@@ -42,16 +42,12 @@ def atomic_write(
 
     # Generate a unique temporary filename with UUID to ensure no collision
     # and prevent "orphaned file blocking" issues if the process crashes.
-    fd, tmp_path = tempfile.mkstemp(
-        dir=str(target.parent),
-        prefix=f"{target.name}.{uuid.uuid4()}.",
-        suffix=".tmp",
-        text=text_mode,
-    )
+    unique_id = uuid.uuid4().hex
+    tmp_path = target.with_name(f"{target.name}.{unique_id}.tmp")
 
     f: Optional[IO[Any]] = None
     try:
-        f = os.fdopen(fd, mode, encoding=encoding, newline=newline)
+        f = open(tmp_path, mode, encoding=encoding, newline=newline)
         yield f
         f.flush()
         os.fsync(f.fileno())
