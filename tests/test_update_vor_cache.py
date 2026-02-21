@@ -74,3 +74,25 @@ def test_main_returns_success_when_fetch_fails(monkeypatch) -> None:
     exit_code = update_vor_cache.main()
 
     assert exit_code == 0
+
+
+def test_cache_written_when_empty_list_returned(monkeypatch) -> None:
+    """Ensure an empty list is cached and returns success."""
+
+    # Mock safety check dependencies to ensure it passes
+    monkeypatch.setattr(update_vor_cache, "get_configured_stations", lambda: ["1", "2"])
+    monkeypatch.setattr(update_vor_cache, "select_stations_for_run", lambda stations: stations)
+
+    monkeypatch.setattr(update_vor_cache, "_limit_reached", lambda now: False)
+
+    # Return empty list
+    monkeypatch.setattr(update_vor_cache, "fetch_events", lambda *args, **kwargs: [])
+
+    write_cache_mock = Mock()
+    monkeypatch.setattr(update_vor_cache, "write_cache", write_cache_mock)
+    monkeypatch.setattr(update_vor_cache, "serialize_for_cache", lambda item: item)
+
+    exit_code = update_vor_cache.main()
+
+    assert exit_code == 0
+    write_cache_mock.assert_called_once_with("vor", [])
