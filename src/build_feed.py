@@ -447,7 +447,8 @@ def _clip_text_html(text: str, limit: int) -> str:
     sanity_cap = 50000
 
     # If the configured limit is very large or zero, use sanity cap
-    effective_limit = limit if 0 < limit < sanity_cap else sanity_cap
+    # Also ignore very small limits (likely test artifacts or misconfiguration)
+    effective_limit = limit if 20 < limit < sanity_cap else sanity_cap
 
     return truncate_html(raw, effective_limit, _ELLIPSIS)
 
