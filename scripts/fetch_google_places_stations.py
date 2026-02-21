@@ -179,13 +179,13 @@ def _build_runtime_config(args: argparse.Namespace) -> RuntimeConfig:
 
 def _fetch_places(client: GooglePlacesClient, tiles: Iterable[Tile]) -> List[Place]:
     places_by_id: dict[str, Place] = {}
-    for tile in iter_tiles(tiles):
-        LOGGER.info("Fetching tile at %.5f/%.5f", tile.latitude, tile.longitude)
+    for idx, tile in enumerate(iter_tiles(tiles), start=1):
+        LOGGER.info("Fetching tile #%d", idx)
         try:
             for place in client.iter_nearby([tile]):
                 places_by_id.setdefault(place.place_id, place)
         except GooglePlacesTileError as exc:
-            LOGGER.warning("Skipping tile %.5f/%.5f due to error: %s", tile.latitude, tile.longitude, exc)
+            LOGGER.warning("Skipping tile #%d due to error: %s", idx, exc)
             continue
     return list(places_by_id.values())
 
