@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import errno
 import hashlib
 import html
 import inspect
@@ -19,14 +18,13 @@ from concurrent.futures import (
     TimeoutError,
     wait,
 )
-from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from dateutil import parser
 from email.utils import format_datetime
 from pathlib import Path
 from threading import BoundedSemaphore, Lock
 from time import perf_counter
-from typing import Any, Dict, Iterator, List, Optional, Sequence, Set, Tuple
+from typing import Any, Dict, List, Optional, Sequence, Set, Tuple
 from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
 

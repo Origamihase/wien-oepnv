@@ -27,7 +27,6 @@ from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Dict, Iterable, Iterator, List, Mapping, Sequence
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
-import uuid
 
 import requests
 from requests import RequestException, Session
@@ -39,6 +38,7 @@ if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type check
     from ..utils.files import atomic_write
     from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
     from ..utils.ids import make_guid
+    from ..utils.locking import file_lock
     from ..utils.logging import sanitize_log_arg, sanitize_log_message
     from ..utils.stations import vor_station_ids, station_info
 else:  # pragma: no cover - allow running via package or src layout
