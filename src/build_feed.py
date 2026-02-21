@@ -26,7 +26,7 @@ from email.utils import format_datetime
 from pathlib import Path
 from threading import BoundedSemaphore, Lock
 from time import perf_counter
-from typing import Any, Dict, Iterator, List, Optional, Sequence, Tuple
+from typing import Any, Dict, Iterator, List, Optional, Sequence, Set, Tuple
 from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
 
@@ -696,7 +696,7 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
         out[ident] = entry
     return out
 
-def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
+def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] = None) -> None:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     path.parent.mkdir(parents=True, exist_ok=True)
     # Windows-fix: Use a separate lock file to avoid permission errors when atomic_write replaces the target
@@ -718,6 +718,9 @@ def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
                     )
 
             merged_state.update(state)
+            if deletions:
+                for k in deletions:
+                    merged_state.pop(k, None)
 
             with atomic_write(
                 path, mode="w", encoding="utf-8", permissions=0o600
@@ -1546,14 +1549,17 @@ def _make_rss(
         emitted += 1
 
     # State pruning
+    deletions: Set[str] = set()
     if not identities_in_feed:
         # Keep old state if feed is empty (prevent wiping on error/empty fetch)
         pruned = state
     else:
         pruned = {k: state[k] for k in identities_in_feed if k in state}
+        # Mark items for deletion if they were in the original state but not in the pruned state
+        deletions = set(state.keys()) - set(pruned.keys())
 
     try:
-        _save_state(pruned)
+        _save_state(pruned, deletions)
     except Exception as e:
         log.warning(
             "State speichern fehlgeschlagen (%s) – Feed wird trotzdem zurückgegeben.",
