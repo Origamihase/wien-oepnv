@@ -55,7 +55,11 @@ def _has_significant_overlap(name1: str, name2: str) -> bool:
     # 1. Token Overlap
     # Filter out very short tokens (e.g. "a", "of") if necessary?
     # Prompt says: "ignoring numbers/years" (already done in normalize)
-    if not t1.isdisjoint(t2):
+    intersection = t1 & t2
+    union = t1 | t2
+    if not union:
+        return False
+    if len(intersection) / len(union) >= 0.4:
         return True
 
     # 2. Substring Overlap (for compound words like Silvesterlauf vs Silvesterpfad)
