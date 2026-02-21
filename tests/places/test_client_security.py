@@ -35,6 +35,7 @@ class MockConnection:
 class MockRaw:
     def __init__(self, ip: str):
         self.connection = MockConnection(ip)
+        self._connection = self.connection
 
 class InfiniteStreamResponse:
     """A mock response that yields an infinite stream of data."""

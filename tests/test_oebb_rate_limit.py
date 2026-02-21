@@ -14,7 +14,9 @@ class DummyResponse:
 
         # Mock raw connection for security checks
         self.raw = MagicMock()
-        self.raw.connection = get_mock_socket_structure()
+        conn = get_mock_socket_structure()
+        self.raw.connection = conn
+        self.raw._connection = conn
 
     def raise_for_status(self):
         if self.status_code >= 400:

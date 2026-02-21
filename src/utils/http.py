@@ -15,6 +15,7 @@ from urllib.parse import parse_qsl, urlencode, urlparse
 
 import requests
 from requests.adapters import HTTPAdapter
+from requests.structures import CaseInsensitiveDict
 from urllib3.util.retry import Retry
 
 _DEFAULT_RETRY_OPTIONS: dict[str, Any] = {
@@ -177,6 +178,9 @@ _SENSITIVE_HEADERS = frozenset({
     "X-XSRF-TOKEN",
 })
 
+# Normalized (lowercase) set of sensitive headers for case-insensitive matching
+_SENSITIVE_HEADERS_LOWER = frozenset(h.lower() for h in _SENSITIVE_HEADERS)
+
 # Partial matches for dynamic sensitive header detection (normalized to lowercase)
 _SENSITIVE_HEADER_PARTIALS = frozenset({
     "token",
@@ -196,10 +200,10 @@ _SENSITIVE_HEADER_PARTIALS = frozenset({
 
 def _is_sensitive_header(header_name: str) -> bool:
     """Check if a header name is considered sensitive."""
-    if header_name in _SENSITIVE_HEADERS:
+    normalized = header_name.lower()
+    if normalized in _SENSITIVE_HEADERS_LOWER:
         return True
 
-    normalized = header_name.lower()
     return any(partial in normalized for partial in _SENSITIVE_HEADER_PARTIALS)
 
 
@@ -231,6 +235,14 @@ def _strip_sensitive_params(url: str) -> str:
         return url
 
 
+def _replace_auth(match: re.Match) -> str:
+    """Callback for explicit auth sanitization."""
+    scheme = match.group("scheme")
+    # Handle optional slash group which might be None or empty
+    slash = match.group("slash") or ""
+    return f"{scheme}:{slash}***@"
+
+
 def _sanitize_url_for_error(url: str) -> str:
     """Strip credentials and sensitive query params from URL for safe error logging."""
     try:
@@ -239,8 +251,7 @@ def _sanitize_url_for_error(url: str) -> str:
         match = _URL_AUTH_RE.match(url)
         if match:
             # Replace the auth part with ***
-            # We reconstruct it carefully to avoid messing up the rest
-            url = _URL_AUTH_RE.sub(r"\g<scheme>:\g<slash>***@", url, count=1)
+            url = _URL_AUTH_RE.sub(_replace_auth, url, count=1)
 
         parsed = urlparse(url)
 
@@ -761,7 +772,7 @@ def verify_response_ip(response: requests.Response) -> None:
     try:
         # r.raw.connection is usually a urllib3.connection.HTTPConnection
         # .sock is the underlying socket
-        conn = getattr(response.raw, "connection", None)
+        conn = getattr(response.raw, "_connection", getattr(response.raw, "connection", None))
         sock = getattr(conn, "sock", None)
         if sock:
             peer_info = sock.getpeername()
@@ -879,9 +890,9 @@ def request_safe(
 
     # Ensure Host header is set to original hostname for Virtual Hosting
     if "headers" in kwargs:
-        kwargs["headers"] = dict(kwargs["headers"])
+        kwargs["headers"] = CaseInsensitiveDict(kwargs["headers"])
     else:
-        kwargs["headers"] = {}
+        kwargs["headers"] = CaseInsensitiveDict()
 
     # Security: Ensure redirects are validated by merging our security hook
     # with existing session hooks and any hooks passed by the caller.

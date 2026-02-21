@@ -135,7 +135,10 @@ class DummyResponse:
         self.text = json.dumps(self._payload)
         self.headers: dict = {}
         self.raw = MagicMock()
-        self.raw.connection.sock.getpeername.return_value = ("8.8.8.8", 443)
+        conn = MagicMock()
+        conn.sock.getpeername.return_value = ("8.8.8.8", 443)
+        self.raw.connection = conn
+        self.raw._connection = conn
 
     def json(self) -> dict:
         return self._payload

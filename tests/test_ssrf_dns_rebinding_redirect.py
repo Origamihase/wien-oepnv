@@ -45,6 +45,7 @@ class TestSSRFRedirectRebinding(unittest.TestCase):
                 conn1.sock.getpeername.return_value = (safe_ip, 80)
                 resp1.raw = MagicMock()
                 resp1.raw.connection = conn1
+                resp1.raw._connection = conn1
                 resp1.request = MagicMock()
                 resp1.request.url = 'http://attacker.com/'
 
@@ -59,6 +60,7 @@ class TestSSRFRedirectRebinding(unittest.TestCase):
                 conn2.sock.getpeername.return_value = (safe_ip, 80)
                 resp2.raw = MagicMock()
                 resp2.raw.connection = conn2
+                resp2.raw._connection = conn2
 
                 mock_send.side_effect = [resp1, resp2]
 

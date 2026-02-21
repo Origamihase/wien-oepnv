@@ -59,6 +59,12 @@ def test_cli_stations_validate_writes_report(tmp_path: Path, monkeypatch: pytest
 
     class DummyReport:
         has_issues = True
+        total_stations = 100
+        duplicates = []
+        alias_issues = []
+        coordinate_issues = []
+        gtfs_issues = []
+        security_issues = []
 
         def to_markdown(self) -> str:
             return "dummy-report\n"
@@ -86,7 +92,8 @@ def test_cli_stations_validate_writes_report(tmp_path: Path, monkeypatch: pytest
     ])
 
     captured = capsys.readouterr()
-    assert "dummy-report" in captured.out
+    # The report content is written to file, not stdout. Stdout has a summary.
+    assert "Report written to" in captured.out
     assert output_path.read_text(encoding="utf-8") == "dummy-report\n"
     assert exit_code == 1
 

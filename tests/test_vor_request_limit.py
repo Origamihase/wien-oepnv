@@ -359,7 +359,9 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
 
             # Mock raw connection for security checks
             self.raw = MagicMock()
-            self.raw.connection = get_mock_socket_structure()
+            conn = get_mock_socket_structure()
+            self.raw.connection = conn
+            self.raw._connection = conn
 
         def json(self):
             return {}

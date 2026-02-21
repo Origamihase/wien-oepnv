@@ -26,7 +26,10 @@ class TestHTTPRequestSafe(unittest.TestCase):
                 resp1.url = 'http://example.com/login'
                 resp1.raw = MagicMock()
                 # Mock socket connection for verify_response_ip
-                resp1.raw.connection.sock.getpeername.return_value = (safe_ip, 80)
+                conn = MagicMock()
+                conn.sock.getpeername.return_value = (safe_ip, 80)
+                resp1.raw.connection = conn
+                resp1.raw._connection = conn
 
                 # Response 2: 200 OK (GET)
                 resp2 = requests.Response()
@@ -37,7 +40,10 @@ class TestHTTPRequestSafe(unittest.TestCase):
                 resp2.url = 'http://example.com/redirected'
                 resp2.headers['Content-Type'] = 'text/plain'
                 resp2.raw = MagicMock()
-                resp2.raw.connection.sock.getpeername.return_value = (safe_ip, 80)
+                conn2 = MagicMock()
+                conn2.sock.getpeername.return_value = (safe_ip, 80)
+                resp2.raw.connection = conn2
+                resp2.raw._connection = conn2
 
                 mock_request.side_effect = [resp1, resp2]
 
@@ -84,7 +90,10 @@ class TestHTTPRequestSafe(unittest.TestCase):
                 resp1.headers['Location'] = '/redirected'
                 resp1.url = 'http://example.com/login'
                 resp1.raw = MagicMock()
-                resp1.raw.connection.sock.getpeername.return_value = (safe_ip, 80)
+                conn = MagicMock()
+                conn.sock.getpeername.return_value = (safe_ip, 80)
+                resp1.raw.connection = conn
+                resp1.raw._connection = conn
 
                 # Response 2: 200 OK (POST)
                 resp2 = requests.Response()
@@ -94,7 +103,10 @@ class TestHTTPRequestSafe(unittest.TestCase):
                 resp2.url = 'http://example.com/redirected'
                 resp2.headers['Content-Type'] = 'text/plain'
                 resp2.raw = MagicMock()
-                resp2.raw.connection.sock.getpeername.return_value = (safe_ip, 80)
+                conn2 = MagicMock()
+                conn2.sock.getpeername.return_value = (safe_ip, 80)
+                resp2.raw.connection = conn2
+                resp2.raw._connection = conn2
 
                 mock_request.side_effect = [resp1, resp2]
 

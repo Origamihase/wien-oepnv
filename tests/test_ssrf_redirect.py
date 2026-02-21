@@ -21,7 +21,10 @@ class TestSSRFRedirect(unittest.TestCase):
             resp1.headers['Location'] = 'http://localhost:8080/secret'
             resp1.url = 'http://safe.com'
             resp1.raw = MagicMock()
-            resp1.raw.connection.sock = get_safe_socket()
+            conn = MagicMock()
+            conn.sock = get_safe_socket()
+            resp1.raw.connection = conn
+            resp1.raw._connection = conn
 
             # Response 2: 200 OK (The secret, should NOT be reached)
             resp2 = requests.Response()

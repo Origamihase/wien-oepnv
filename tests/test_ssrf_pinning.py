@@ -24,7 +24,10 @@ def test_fetch_content_safe_pins_dns():
             mock_response.headers = {"Content-Type": "text/plain"}
             mock_response.iter_content.return_value = [b"ok"]
             mock_response.raw = MagicMock()
-            mock_response.raw.connection.sock.getpeername.return_value = (safe_ip, 80)
+            mock_conn = MagicMock()
+            mock_conn.sock.getpeername.return_value = (safe_ip, 80)
+            mock_response.raw.connection = mock_conn
+            mock_response.raw._connection = mock_conn
             mock_response.__enter__.return_value = mock_response
             mock_response.__exit__.return_value = None
             mock_request.return_value = mock_response
@@ -60,7 +63,10 @@ def test_fetch_content_safe_https_skipped():
             mock_response.status_code = 200
             mock_response.headers = {"Content-Type": "text/plain"}
             mock_response.iter_content.return_value = [b"ok"]
-            mock_response.raw.connection.sock.getpeername.return_value = (safe_ip, 443)
+            mock_conn = MagicMock()
+            mock_conn.sock.getpeername.return_value = (safe_ip, 443)
+            mock_response.raw.connection = mock_conn
+            mock_response.raw._connection = mock_conn
             mock_response.__enter__.return_value = mock_response
             mock_response.__exit__.return_value = None
             mock_request.return_value = mock_response
