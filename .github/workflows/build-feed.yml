@@ -68,18 +68,17 @@ jobs:
       - name: Commit and push changes
         if: github.ref == 'refs/heads/main'
         run: |
-          # Stash any changes first
-          git stash
-
-          # Get latest changes
-          git pull origin main
-
-          # Apply stashed changes
-          git stash pop
-
-          # Stage and commit changes
+          # Änderungen stagen
           git add docs/feed.xml
-          git diff --staged --quiet || git commit -m "Update feed"
 
-          # Push if there are changes
-          git push origin main
+          # Prüfen, ob es gestagte Änderungen gibt
+          if ! git diff --staged --quiet; then
+            # Commit erstellen
+            git commit -m "Update feed"
+
+            # Neueste Änderungen vom Server holen (ohne Merge-Commits)
+            git pull --rebase origin main
+
+            # Änderungen pushen
+            git push origin main
+          fi
