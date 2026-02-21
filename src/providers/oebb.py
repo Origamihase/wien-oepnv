@@ -22,7 +22,6 @@ import os
 import json
 import re
 import time
-import html
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Any, Dict, List, Optional
@@ -90,9 +89,9 @@ BAHNHOF_TRIM_RE = re.compile(
     re.IGNORECASE,
 )
 # treat simple hyphen as separator only when surrounded by spaces
-# Also swallow surrounding "decorations" like < > if they wrap the arrow
-ARROW_ANY_RE    = re.compile(r"\s*(?:<+\s*)?(?:<=>|<->|<>|→|↔|=>|->|<-|=|–|—|\s-\s)(?:\s*>+)?\s*")
-DESC_CLEANUP_RE = re.compile(r"(?:<+\s*)(?:<=>|<->|<>|→|↔|=>|->|<-)(?:\s*>+)|(?:<->|<=>)")
+# Also swallow surrounding "decorations" like < > or &lt; &gt; if they wrap the arrow
+ARROW_ANY_RE    = re.compile(r"\s*(?:(?:<|&lt;)+\s*)?(?:<=>|<->|<>|→|↔|=>|->|<-|=|–|—|\s-\s)(?:\s*(?:>|&gt;)+)?\s*")
+DESC_CLEANUP_RE = re.compile(r"(?:(?:<|&lt;)+\s*)(?:<=>|<->|<>|→|↔|=>|->|<-)(?:\s*(?:>|&gt;)+)|(?:<->|<=>)")
 
 COLON_PREFIX_RE = re.compile(
     r"""^\s*(?:Update\s*\d+\s*\([^)]*\)\s*)?
