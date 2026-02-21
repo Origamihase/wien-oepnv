@@ -89,13 +89,6 @@ BAHNHOF_TRIM_RE = re.compile(
     r"\s*\b(?:Bahnhof|Bahnhst|Hbf|Bf)\b(?:\s*\(\s*[US]\d*\s*\))?",
     re.IGNORECASE,
 )
-# cover compound spellings that glue "Bahnhof"/"Hbf" directly to the
-# station name but still end with whitespace, a hyphen or string end, e.g.
-# "Ostbahnhof-Messe" → "Ost-Messe"
-BAHNHOF_COMPOUND_RE = re.compile(
-    r"(?<=\S)(?:Bahnhof|Bahnhst|Hbf|Bf)(?=(?:\s|-|$))",
-    re.IGNORECASE,
-)
 # treat simple hyphen as separator only when surrounded by spaces
 # Also swallow surrounding "decorations" like < > if they wrap the arrow
 ARROW_ANY_RE    = re.compile(r"\s*(?:<+\s*)?(?:<=>|<->|<>|→|↔|=>|->|<-|=|–|—|\s-\s)(?:\s*>+)?\s*")
@@ -523,8 +516,7 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
     out: List[Dict[str, Any]] = []
     for item in channel.findall("item"):
         raw_title = _get_text(item, "title")
-        # Decode HTML entities (e.g. "&lt;" -> "<") for cleanup regexes
-        raw_title = html.unescape(raw_title)
+        # html.unescape removed as per instruction
         title = _clean_title_keep_places(raw_title)
         link  = _get_text(item, "link").strip() or OEBB_URL
         raw_guid = _get_text(item, "guid").strip()
