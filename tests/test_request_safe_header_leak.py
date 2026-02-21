@@ -55,8 +55,9 @@ def test_request_safe_strips_session_headers_on_redirect():
     # Call 2: evil.com - should NOT have sensitive headers
     headers_sent = responses.calls[1].request.headers
 
-    print(f"Auth header sent: {headers_sent.get('Authorization')}")
-    print(f"Custom Secret sent: {headers_sent.get('X-Custom-Secret')}")
+    # Avoid logging sensitive header values; log only their presence for debugging.
+    print(f"Auth header present: {'Authorization' in headers_sent}")
+    print(f"Custom Secret header present: {'X-Custom-Secret' in headers_sent}")
 
     assert responses.calls[1].request.headers["Host"] == "evil.com"
 
