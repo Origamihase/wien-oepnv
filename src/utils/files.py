@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+import re
 import uuid
 from contextlib import contextmanager
 from pathlib import Path
@@ -86,3 +87,9 @@ def atomic_write(
             except OSError:
                 pass
         raise
+
+
+def sanitize_filename(filename_id: str) -> str:
+    """Sanitize a filename ID to prevent path traversal."""
+    # Only allow alphanumeric characters, dashes, and underscores
+    return re.sub(r'[^a-zA-Z0-9_-]', '_', str(filename_id))
