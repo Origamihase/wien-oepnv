@@ -312,7 +312,7 @@ def _sanitize_url_for_error(url: str) -> str:
 class TimeoutHTTPAdapter(HTTPAdapter):
     """HTTPAdapter that enforces a default timeout."""
 
-    def __init__(self, *args: Any, timeout: int | tuple[float, float] | None = None, **kwargs: Any) -> None:
+    def __init__(self, *args: Any, timeout: int | float | tuple[float, float] | None = None, **kwargs: Any) -> None:
         self.timeout = timeout
         super().__init__(*args, **kwargs)
 
@@ -463,13 +463,15 @@ def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.Prepar
 
 
 def session_with_retries(
-    user_agent: str, timeout: int = DEFAULT_TIMEOUT, **retry_opts: Any
+    user_agent: str,
+    timeout: int | float | tuple[float, float] = DEFAULT_TIMEOUT,
+    **retry_opts: Any,
 ) -> requests.Session:
     """Return a :class:`requests.Session` pre-configured with retries and a default timeout.
 
     Args:
         user_agent: User-Agent header that should be sent with every request.
-        timeout: Default timeout in seconds for requests (default: 20).
+        timeout: Default timeout in seconds for requests (default: (3.0, 15.0)).
         **retry_opts: Additional keyword arguments forwarded to
             :class:`urllib3.util.retry.Retry`.
     """
