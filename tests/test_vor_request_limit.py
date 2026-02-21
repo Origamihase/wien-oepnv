@@ -1,3 +1,4 @@
+import builtins
 import json
 import multiprocessing
 import os
@@ -66,11 +67,11 @@ def test_save_request_count_flushes_and_fsyncs(monkeypatch, tmp_path):
     flush_called = False
     fsync_called = False
 
-    original_fdopen = os.fdopen
+    original_open = builtins.open
     original_fsync = os.fsync
 
-    def tracking_fdopen(*args, **kwargs):
-        file_obj = original_fdopen(*args, **kwargs)
+    def tracking_open(*args, **kwargs):
+        file_obj = original_open(*args, **kwargs)
 
         class TrackingFile:
             def __init__(self, wrapped):
@@ -98,7 +99,7 @@ def test_save_request_count_flushes_and_fsyncs(monkeypatch, tmp_path):
         fsync_called = True
         return original_fsync(fd)
 
-    monkeypatch.setattr(vor.os, "fdopen", tracking_fdopen)
+    monkeypatch.setattr("builtins.open", tracking_open)
     monkeypatch.setattr(vor.os, "fsync", tracking_fsync)
 
     vor.save_request_count(datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna")))

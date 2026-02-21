@@ -23,15 +23,29 @@ log = logging.getLogger(__name__)
 
 # Global registry of thread locks for file paths to ensure process-local thread safety
 _THREAD_LOCKS: MutableMapping[str, threading.Lock] = {}
+_LOCK_COUNTS: MutableMapping[str, int] = {}
 _THREAD_LOCKS_GUARD = threading.Lock()
 
 
-def _get_thread_lock(path: str) -> threading.Lock:
-    """Retrieve or create a threading.Lock for the given canonical path."""
+def _acquire_thread_lock_ref(path: str) -> threading.Lock:
+    """Retrieve or create a threading.Lock and increment reference count."""
     with _THREAD_LOCKS_GUARD:
         if path not in _THREAD_LOCKS:
             _THREAD_LOCKS[path] = threading.Lock()
+            _LOCK_COUNTS[path] = 0
+        _LOCK_COUNTS[path] += 1
         return _THREAD_LOCKS[path]
+
+
+def _release_thread_lock_ref(path: str) -> None:
+    """Decrement reference count and remove lock if unused."""
+    with _THREAD_LOCKS_GUARD:
+        _LOCK_COUNTS[path] -= 1
+        if _LOCK_COUNTS[path] <= 0:
+            if path in _THREAD_LOCKS:
+                del _THREAD_LOCKS[path]
+            if path in _LOCK_COUNTS:
+                del _LOCK_COUNTS[path]
 
 
 def _lock_length(fileobj: Any) -> int:
@@ -112,10 +126,11 @@ def file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
     """Context manager for acquiring a cross-platform file lock."""
     # Step 1: Thread-level locking
     thread_lock = None
+    path = None
     try:
         if hasattr(fileobj, "name"):
             path = os.path.abspath(fileobj.name)
-            thread_lock = _get_thread_lock(path)
+            thread_lock = _acquire_thread_lock_ref(path)
             thread_lock.acquire()
     except Exception as exc:
         log.warning("Could not acquire thread lock for file %s: %s", getattr(fileobj, "name", "unknown"), exc)
@@ -138,5 +153,7 @@ def file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
 
         if thread_lock:
             thread_lock.release()
+            if path:
+                _release_thread_lock_ref(path)
 
 __all__ = ["file_lock"]
