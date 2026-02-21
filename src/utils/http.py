@@ -600,14 +600,14 @@ def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> 
 
 def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     """Resolve hostname with a timeout to prevent DoS."""
+    executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="DNS_Resolver")
     try:
         # Use a fresh executor for each call to prevent thread exhaustion (deadlock)
         # if the OS resolver hangs indefinitely. This ensures that a hanging thread
         # does not block the global application state, although it consumes a thread resource
         # until the OS cleans it up.
-        with ThreadPoolExecutor(max_workers=1, thread_name_prefix="DNS_Resolver") as executor:
-            future = executor.submit(socket.getaddrinfo, hostname, None, proto=socket.IPPROTO_TCP)
-            return future.result(timeout=DNS_TIMEOUT)
+        future = executor.submit(socket.getaddrinfo, hostname, None, proto=socket.IPPROTO_TCP)
+        return future.result(timeout=DNS_TIMEOUT)
     except TimeoutError:
         log.warning("DNS resolution timed out for %s (DoS protection)", hostname)
         return []
@@ -617,6 +617,8 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     except Exception as exc:
         log.warning("Unexpected error during DNS resolution for %s: %s", hostname, exc)
         return []
+    finally:
+        executor.shutdown(wait=False, cancel_futures=True)
 
 
 def validate_http_url(

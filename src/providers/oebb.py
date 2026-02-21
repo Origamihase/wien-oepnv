@@ -22,7 +22,6 @@ import os
 import json
 import re
 import time
-import html
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Any, Dict, List, Optional
@@ -89,17 +88,10 @@ BAHNHOF_TRIM_RE = re.compile(
     r"\s*\b(?:Bahnhof|Bahnhst|Hbf|Bf)\b(?:\s*\(\s*[US]\d*\s*\))?",
     re.IGNORECASE,
 )
-# cover compound spellings that glue "Bahnhof"/"Hbf" directly to the
-# station name but still end with whitespace, a hyphen or string end, e.g.
-# "Ostbahnhof-Messe" → "Ost-Messe"
-BAHNHOF_COMPOUND_RE = re.compile(
-    r"(?<=\S)(?:Bahnhof|Bahnhst|Hbf|Bf)(?=(?:\s|-|$))",
-    re.IGNORECASE,
-)
 # treat simple hyphen as separator only when surrounded by spaces
-# Also swallow surrounding "decorations" like < > if they wrap the arrow
-ARROW_ANY_RE    = re.compile(r"\s*(?:<+\s*)?(?:<=>|<->|<>|→|↔|=>|->|<-|=|–|—|\s-\s)(?:\s*>+)?\s*")
-DESC_CLEANUP_RE = re.compile(r"(?:<+\s*)(?:<=>|<->|<>|→|↔|=>|->|<-)(?:\s*>+)|(?:<->|<=>)")
+# Also swallow surrounding "decorations" like < > or &lt; &gt; if they wrap the arrow
+ARROW_ANY_RE    = re.compile(r"\s*(?:(?:<|&lt;)+\s*)?(?:<=>|<->|<>|→|↔|=>|->|<-|=|–|—|\s-\s)(?:\s*(?:>|&gt;)+)?\s*")
+DESC_CLEANUP_RE = re.compile(r"(?:(?:<|&lt;)+\s*)(?:<=>|<->|<>|→|↔|=>|->|<-)(?:\s*(?:>|&gt;)+)|(?:<->|<=>)")
 
 COLON_PREFIX_RE = re.compile(
     r"""^\s*(?:Update\s*\d+\s*\([^)]*\)\s*)?
@@ -523,8 +515,7 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
     out: List[Dict[str, Any]] = []
     for item in channel.findall("item"):
         raw_title = _get_text(item, "title")
-        # Decode HTML entities (e.g. "&lt;" -> "<") for cleanup regexes
-        raw_title = html.unescape(raw_title)
+        # html.unescape removed as per instruction
         title = _clean_title_keep_places(raw_title)
         link  = _get_text(item, "link").strip() or OEBB_URL
         raw_guid = _get_text(item, "guid").strip()

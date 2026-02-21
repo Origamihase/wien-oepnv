@@ -2,7 +2,7 @@ import pytest
 import re
 from unittest.mock import MagicMock, patch
 import xml.etree.ElementTree as ET
-import providers.oebb
+import src.providers.oebb as oebb_provider
 
 # Mock XML content with the problematic title
 MOCK_XML = """<?xml version="1.0" encoding="ISO-8859-1"?>
@@ -38,9 +38,9 @@ class TestOebbMarchegg:
         # because if it works correctly, the item is filtered out and we can't see the title.
 
         # Robustly patch the module imported in this file
-        with patch.object(providers.oebb, "_fetch_xml", return_value=ET.fromstring(MOCK_XML)):
-            with patch.object(providers.oebb, "_is_relevant", return_value=True):
-                events = providers.oebb.fetch_events()
+        with patch.object(oebb_provider, "_fetch_xml", return_value=ET.fromstring(MOCK_XML)):
+            with patch.object(oebb_provider, "_is_relevant", return_value=True):
+                events = oebb_provider.fetch_events()
 
                 assert len(events) == 1
                 title = events[0]["title"]
@@ -50,6 +50,8 @@ class TestOebbMarchegg:
 
                 # The user says "looks terrible", so we expect no < >.
                 assert "<" not in title and ">" not in title, f"Title contains arrows: {title}"
+
+                # Regex fix in provider handles &lt; / &gt; automatically during split/cleanup
                 assert "&lt;" not in title, "Title contains encoded entity"
                 assert "Marchegg ↔ Bratislava hl.st." in title
 
@@ -62,8 +64,8 @@ class TestOebbMarchegg:
         desc = "Wegen Bauarbeiten können zwischen Marchegg Bahnhof und Bratislava hl.st. ..."
 
         # Marchegg is Outer, so it should be False.
-        assert providers.oebb._is_relevant(title_fixed, desc) is False, "Marchegg (Outer) should be filtered out"
+        assert oebb_provider._is_relevant(title_fixed, desc) is False, "Marchegg (Outer) should be filtered out"
 
         # Test with BROKEN title format (current state)
         title_broken = "Marchegg &lt; ↔ &gt; Bratislava hl.st."
-        assert providers.oebb._is_relevant(title_broken, desc) is False, "Broken title should also be filtered (if regex matches)"
+        assert oebb_provider._is_relevant(title_broken, desc) is False, "Broken title should also be filtered (if regex matches)"

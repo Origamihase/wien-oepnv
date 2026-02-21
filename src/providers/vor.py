@@ -25,10 +25,13 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Dict, Iterable, Iterator, List, Mapping, MutableMapping, Sequence
+from typing import TYPE_CHECKING, Any, Dict, Iterable, Iterator, List, Mapping, Sequence
+from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
+import uuid
 
 import requests
 from requests import RequestException, Session
+from requests.auth import AuthBase
 from zoneinfo import ZoneInfo
 
 if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
@@ -439,27 +442,46 @@ def refresh_access_credentials() -> str:
 refresh_access_credentials()
 
 
-def _inject_access_id(params: Any) -> Any:
-    # If we have an authorization header configured, we prefer that and DO NOT inject the query param
-    # to avoid leaking credentials in URL logs.
-    if _VOR_AUTHORIZATION_HEADER:
-        return params
+class VorAuth(AuthBase):
+    """
+    Injects VOR access credentials into the request via query parameter,
+    only if not already authenticated via header.
+    """
+    def __init__(self, access_id: str, base_url: str):
+        self.access_id = access_id
+        self.base_url = base_url
 
-    if not VOR_ACCESS_ID:
-        return params
-    if params is None:
-        return {"accessId": VOR_ACCESS_ID}
-    if isinstance(params, MutableMapping):
-        if "accessId" in params:
-            return params
-        updated = dict(params)
-        updated.setdefault("accessId", VOR_ACCESS_ID)
-        return updated
-    if isinstance(params, (list, tuple)):
-        updated_list = list(params)
-        updated_list.append(("accessId", VOR_ACCESS_ID))
-        return updated_list
-    return params
+    def __call__(self, r: requests.PreparedRequest) -> requests.PreparedRequest:
+        # Security: Only inject credentials if target is VOR API
+        if not r.url or not r.url.startswith(self.base_url):
+            return r
+
+        # If Authorization header is present, do nothing (assumed handled by session headers)
+        if "Authorization" in r.headers:
+            return r
+
+        if not self.access_id:
+            return r
+
+        # Check if accessId is already present in query params
+        try:
+            parsed = urlparse(r.url)
+        except ValueError:
+            return r
+
+        query = dict(parse_qsl(parsed.query))
+
+        if "accessId" in query:
+             return r
+
+        # Inject accessId
+        query["accessId"] = self.access_id
+        new_query = urlencode(query)
+
+        new_parts = parsed._replace(query=new_query)
+        r.url = urlunparse(new_parts)
+
+        return r
 
 
 def apply_authentication(session: Session) -> None:
@@ -467,8 +489,7 @@ def apply_authentication(session: Session) -> None:
     Configure the requests Session with VOR credentials.
 
     - Sets the `Authorization` header (if applicable).
-    - Monkeypatches ``session.request`` or ``session.get`` to inject ``accessId``
-      into query parameters automatically.
+    - Assigns VorAuth to session.auth to inject ``accessId`` into query parameters automatically.
     """
     refresh_access_credentials()
 
@@ -480,32 +501,8 @@ def apply_authentication(session: Session) -> None:
     if _VOR_AUTHORIZATION_HEADER:
         session.headers["Authorization"] = _VOR_AUTHORIZATION_HEADER
 
-    if hasattr(session, "request") and not getattr(session, "_vor_auth_wrapped", False):
-        original_request = session.request  # type: ignore[assignment]
-
-        def wrapped(method: str, url: str, params: Any = None, **kwargs: Any) -> Any:
-            # Security: Only inject credentials if target is VOR API
-            if url.startswith(VOR_BASE_URL):
-                return original_request(
-                    method, url, params=_inject_access_id(params), **kwargs
-                )
-            return original_request(method, url, params=params, **kwargs)
-
-        session.request = wrapped  # type: ignore[assignment]
-        setattr(session, "_vor_auth_wrapped", True)
-    elif not hasattr(session, "request") and hasattr(session, "get") and not getattr(
-        session, "_vor_auth_get_wrapped", False
-    ):
-        original_get = session.get  # type: ignore[attr-defined]
-
-        def wrapped_get(url: str, params: Any = None, **kwargs: Any) -> Any:
-            # Security: Only inject credentials if target is VOR API
-            if url.startswith(VOR_BASE_URL):
-                return original_get(url, params=_inject_access_id(params), **kwargs)
-            return original_get(url, params=params, **kwargs)
-
-        session.get = wrapped_get  # type: ignore[assignment]
-        setattr(session, "_vor_auth_get_wrapped", True)
+    # Use custom AuthBase implementation instead of monkeypatching
+    session.auth = VorAuth(VOR_ACCESS_ID, VOR_BASE_URL)
 
 
 def _extract_stop_container(message: Mapping[str, Any]) -> Iterable[Any]:
@@ -1056,13 +1053,14 @@ def load_request_count() -> tuple[str | None, int]:
     return (str(date) if date else None, int(count) if isinstance(count, int) else 0)
 
 
-def _acquire_lock(lock_path: Path) -> bool:
+def _acquire_lock(lock_path: Path, lock_id: str) -> bool:
     deadline = time.monotonic() + REQUEST_LOCK_TIMEOUT_SEC
     while True:
         try:
             # Explicit mode 0o600 for security
             fd = os.open(str(lock_path), os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
-            os.close(fd)
+            with os.fdopen(fd, "w", encoding="utf-8") as f:
+                f.write(lock_id)
             return True
         except FileExistsError:
             try:
@@ -1090,7 +1088,8 @@ def _acquire_lock(lock_path: Path) -> bool:
 def save_request_count(now_local: datetime) -> int:
     date_iso = now_local.astimezone(ZONE_VIENNA).date().isoformat()
     lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
-    lock_acquired = _acquire_lock(lock_path)
+    lock_id = str(uuid.uuid4())
+    lock_acquired = _acquire_lock(lock_path, lock_id)
     try:
         previous_date, previous_count = load_request_count()
         if previous_date != date_iso:
@@ -1112,10 +1111,13 @@ def save_request_count(now_local: datetime) -> int:
             return previous_count
         return new_count
     finally:
-        try:
-            lock_path.unlink()
-        except FileNotFoundError:
-            pass
+        if lock_acquired:
+            try:
+                # Verify ownership before deletion to prevent race condition
+                if lock_path.exists() and lock_path.read_text(encoding="utf-8").strip() == lock_id:
+                    lock_path.unlink()
+            except (FileNotFoundError, OSError):
+                pass
 
 
 def _parse_retry_after(response: requests.Response) -> float | None:
@@ -1411,6 +1413,7 @@ def fetch_events(station_ids: List[str] | None = None) -> List[Dict[str, Any]]:
 
 
 __all__ = [
+    "VorAuth",
     "apply_authentication",
     "fetch_events",
     "load_request_count",
