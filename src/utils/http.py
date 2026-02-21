@@ -878,7 +878,9 @@ def request_safe(
     kwargs.pop("allow_redirects", None)
 
     # Ensure Host header is set to original hostname for Virtual Hosting
-    if "headers" not in kwargs:
+    if "headers" in kwargs:
+        kwargs["headers"] = dict(kwargs["headers"])
+    else:
         kwargs["headers"] = {}
 
     # Security: Ensure redirects are validated by merging our security hook

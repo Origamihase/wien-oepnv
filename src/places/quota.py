@@ -111,6 +111,7 @@ class MonthlyQuota:
             "total": int(self.total),
         }
         # Explicitly set 0600 permissions
+        path.parent.mkdir(parents=True, exist_ok=True)
         with atomic_write(path, mode="w", encoding="utf-8", permissions=0o600) as handle:
             json.dump(payload, handle, ensure_ascii=False, indent=2, sort_keys=True)
             handle.write("\n")

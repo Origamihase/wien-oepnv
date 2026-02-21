@@ -617,7 +617,7 @@ def _extract_lines(message: Mapping[str, Any]) -> List[str]:
             if (
                 not ALLOW_BUS
                 and BUS_INCLUDE_RE.match(token)
-                and BUS_EXCLUDE_RE.search(token)
+                and not BUS_EXCLUDE_RE.search(token)
             ):
                 continue
             lines.append(token)
