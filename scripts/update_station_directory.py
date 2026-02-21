@@ -561,15 +561,13 @@ def _load_tiles_configuration(
 def _fetch_google_places(client: GooglePlacesClient, tiles: Sequence[Tile]) -> list[Place]:
     places_by_id: dict[str, Place] = {}
     for tile in iter_tiles(tiles):
-        logger.info("Fetching Google Places tile at %.5f/%.5f", tile.latitude, tile.longitude)
+        logger.info("Fetching Google Places tile")
         try:
             for place in client.iter_nearby([tile]):
                 places_by_id.setdefault(place.place_id, place)
         except GooglePlacesTileError as exc:
             logger.warning(
-                "Skipping tile %.5f/%.5f due to Google Places error: %s",
-                tile.latitude,
-                tile.longitude,
+                "Skipping Google Places tile due to error: %s",
                 exc,
             )
             continue
