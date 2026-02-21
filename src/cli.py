@@ -90,6 +90,9 @@ def _run_script(
                     return e.code
                 print(e.code, file=sys.stderr)
                 return 1
+        except Exception as e:
+            print(f"Fehler beim Ausführen von {script_name}: {e}", file=sys.stderr)
+            return 1
     return 0
 
 
@@ -421,7 +424,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         parser.error(str(exc))
     except Exception:
         # Security: Prevent stack trace and sensitive info leakage to stderr
-        if os.getenv("WIEN_OEPNV_DEBUG"):
+        if os.getenv("WIEN_OEPNV_DEBUG") == "1":
             raise
 
         # The exception is likely already logged by the application logger if configured.
