@@ -16,9 +16,9 @@ class TestSafeJSONFormatter(unittest.TestCase):
         handler.setFormatter(formatter)
         logger.addHandler(handler)
 
-        secret = "SUPER_SECRET_TOKEN"
+        value = "non_sensitive_value"
         # Nested dictionary with sensitive key
-        extra_data = {"context": {"api_key": secret}}
+        extra_data = {"context": {"api_key": value}}
 
         logger.info("Test message", extra={"data": extra_data})
 
@@ -28,8 +28,8 @@ class TestSafeJSONFormatter(unittest.TestCase):
         except json.JSONDecodeError:
             self.fail("Log output is not valid JSON")
 
-        # The secret should not be present in the output
-        self.assertNotIn(secret, output)
+        # The original value should not be present in the output
+        self.assertNotIn("non_sensitive_value", output)
         self.assertIn("***", output)
 
         # Verify structure is preserved (roughly)
