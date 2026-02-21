@@ -475,7 +475,11 @@ def _clip_text_html(text: str, limit: int) -> str:
     clip_pos = max((pos for pos in candidates if 0 < pos <= limit), default=None)
 
     if clip_pos is None:
-        truncated = prefix.rstrip()
+        fallback_pos = prefix.rfind(" ")
+        if fallback_pos > 0:
+            truncated = prefix[:fallback_pos].rstrip()
+        else:
+            truncated = prefix.rstrip()
     else:
         truncated = prefix[:clip_pos].rstrip()
         if not truncated:

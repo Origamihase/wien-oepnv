@@ -89,7 +89,6 @@ DEFAULT_MAX_STATIONS_PER_RUN = 2
 DEFAULT_ROTATION_INTERVAL_SEC = 1800
 # "VAO Start" contract limit: 100 requests per day (hard limit).
 DEFAULT_MAX_REQUESTS_PER_DAY = 100
-MAX_REQUESTS_PER_RUN = 10  # Emergency circuit breaker
 DEFAULT_MONITOR_WHITELIST = "Wien Hauptbahnhof,Flughafen Wien"
 RETRY_AFTER_FALLBACK_SEC = 5.0
 RETRY_AFTER_MAX_SEC = 120.0
@@ -469,14 +468,14 @@ class VorAuth(AuthBase):
         except ValueError:
             return r
 
-        query = dict(parse_qsl(parsed.query))
+        query_params = parse_qsl(parsed.query)
 
-        if "accessId" in query:
+        if any(k == "accessId" for k, v in query_params):
              return r
 
         # Inject accessId
-        query["accessId"] = self.access_id
-        new_query = urlencode(query)
+        query_params.append(("accessId", self.access_id))
+        new_query = urlencode(query_params)
 
         new_parts = parsed._replace(query=new_query)
         r.url = urlunparse(new_parts)
@@ -1193,7 +1192,7 @@ def _fetch_departure_board_for_station(
             if counter:
                 with counter["lock"]:
                     counter["val"] += 1
-                    if counter["val"] > MAX_REQUESTS_PER_RUN:
+                    if counter["val"] > counter.get("limit", 10):
                         raise RuntimeError("Emergency Stop: Too many requests in single run!")
 
             try:
@@ -1327,7 +1326,14 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
     successes = 0
 
     # Thread-safe counter for circuit breaker
-    request_counter = {"val": 0, "lock": threading.Lock()}
+    max_allowed_requests = max(
+        10, len(selected_ids) * (VOR_RETRY_OPTIONS.get("total", 3) + 1)
+    )
+    request_counter = {
+        "val": 0,
+        "limit": max_allowed_requests,
+        "lock": threading.Lock(),
+    }
 
     seen_texts: set[tuple[str, str]] = set()
 
@@ -1347,7 +1353,7 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
                     if "Emergency Stop" in str(rte):
                         log.critical(f"ABORT: {rte}")
                         # Cancel other futures if possible
-                        executor.shutdown(wait=False, cancel_futures=True)
+                        executor.shutdown(wait=False)
                         # Graceful Degradation: Do not raise, just break loop and return partial results
                         break
                     _log_error("VOR DepartureBoard %s Runtime Error: %s", station_id, rte)
