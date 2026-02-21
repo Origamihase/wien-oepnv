@@ -39,8 +39,8 @@ def test_save_state_uses_separate_lock_file(monkeypatch, tmp_path):
     # Import build_feed with mocked dependencies
     build_feed = _import_build_feed(monkeypatch)
 
-    # Spy on _file_lock to check what file is being locked
-    original_file_lock = build_feed._file_lock
+    # Spy on file_lock to check what file is being locked
+    original_file_lock = build_feed.file_lock
     locked_files = []
 
     @contextmanager
@@ -49,7 +49,7 @@ def test_save_state_uses_separate_lock_file(monkeypatch, tmp_path):
         with original_file_lock(fileobj, exclusive=exclusive):
             yield
 
-    monkeypatch.setattr(build_feed, "_file_lock", spy_file_lock)
+    monkeypatch.setattr(build_feed, "file_lock", spy_file_lock)
 
     # Save state
     state_data = {"test": {"first_seen": "2023-01-01T12:00:00+00:00"}}
