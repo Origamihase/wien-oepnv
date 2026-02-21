@@ -21,6 +21,7 @@ from concurrent.futures import (
 )
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
+from dateutil import parser
 from email.utils import format_datetime
 from pathlib import Path
 from threading import BoundedSemaphore, Lock
@@ -520,12 +521,12 @@ def _parse_datetime(value: Any) -> Optional[datetime]:
             return None
 
         try:
-            parsed = datetime.fromisoformat(candidate)
+            parsed = parser.isoparse(candidate)
             if parsed.tzinfo is None:
                 # Assume Vienna time for naive strings (e.g. from legacy cache)
                 parsed = parsed.replace(tzinfo=_VIENNA_TZ)
             return parsed
-        except ValueError as exc:
+        except (ValueError, parser.ParserError) as exc:
             log.debug("Datetime-Parsing fehlgeschlagen für %r (%s)", value, exc)
 
     return None
@@ -702,10 +703,26 @@ def _save_state(state: Dict[str, Dict[str, Any]]) -> None:
     lock_path = path.with_suffix(".lock")
     with lock_path.open("a+", encoding="utf-8") as lock_file:
         with _file_lock(lock_file, exclusive=True):
+            # Safe merge: read existing state to avoid overwriting parallel updates
+            merged_state = {}
+            if path.exists():
+                try:
+                    with path.open("r", encoding="utf-8") as f:
+                        existing = json.load(f)
+                        if isinstance(existing, dict):
+                            merged_state = existing
+                except Exception as exc:
+                    log.warning(
+                        "State-Merge fehlgeschlagen (Lesefehler: %s) – überschreibe State.",
+                        exc,
+                    )
+
+            merged_state.update(state)
+
             with atomic_write(
                 path, mode="w", encoding="utf-8", permissions=0o600
             ) as f:
-                json.dump(state, f, ensure_ascii=False, indent=2, sort_keys=True)
+                json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True)
 
 def _identity_for_item(item: Dict[str, Any]) -> str:
     """
@@ -964,7 +981,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
                     if deadline is not None:
                         remaining.append(deadline - now)
                 if remaining:
-                    wait_timeout = max(min(remaining), 0.0)
+                    wait_timeout = max(min(remaining), 0.1)
 
                 done, _ = wait(pending, timeout=wait_timeout, return_when=FIRST_COMPLETED)
                 if not done:
@@ -1204,14 +1221,15 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                 return True
             return False
 
+        # Bei gleichem Enddatum: Zuerst Aktualität, dann Länge
+        if _recency_value(a) > _recency_value(b):
+            return True
+        if _recency_value(a) < _recency_value(b):
+            return False
+
         a_len = len(a.get("description") or "")
         b_len = len(b.get("description") or "")
-        if a_len > b_len:
-            return True
-        if a_len < b_len:
-            return _recency_value(a) > _recency_value(b)
-
-        return _recency_value(a) > _recency_value(b)
+        return a_len > b_len
 
     seen: Dict[str, int] = {}
     out: List[Dict[str, Any]] = []
