@@ -245,7 +245,8 @@ def _dump_changes(
         indent=2,
         sort_keys=True,
     )
-    path.write_text(payload + "\n", encoding="utf-8")
+    with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
+        handle.write(payload + "\n")
     LOGGER.info("Wrote change dump to %s", path)
 
 

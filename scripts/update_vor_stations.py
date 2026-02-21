@@ -21,10 +21,12 @@ if str(BASE_DIR) not in sys.path:
 
 try:  # pragma: no cover - convenience for module execution
     from src.providers import vor as vor_provider
+    from src.utils.files import atomic_write
     from src.utils.http import session_with_retries
     from src.utils.stations import is_in_vienna, is_pendler
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from providers import vor as vor_provider  # type: ignore
+    from utils.files import atomic_write  # type: ignore
     from utils.http import session_with_retries  # type: ignore
     from utils.stations import is_in_vienna, is_pendler  # type: ignore
 DEFAULT_SOURCE = BASE_DIR / "data" / "vor-haltestellen.csv"
@@ -835,7 +837,7 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
     new_vor_entries.sort(key=lambda item: (str(item.get("name")), str(item.get("vor_id"))))
     merged_entries = existing + new_vor_entries
 
-    with stations_path.open("w", encoding="utf-8") as handle:
+    with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         output = {"stations": merged_entries}
         json.dump(output, handle, ensure_ascii=False, indent=2)
         handle.write("\n")

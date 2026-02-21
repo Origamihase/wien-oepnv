@@ -5,8 +5,9 @@ from __future__ import annotations
 import errno
 import logging
 import os
+import threading
 from contextlib import contextmanager
-from typing import Any, Iterator
+from typing import Any, Iterator, MutableMapping
 
 try:  # pragma: no cover - platform dependent
     import fcntl  # type: ignore
@@ -19,6 +20,18 @@ except ModuleNotFoundError:  # pragma: no cover
     msvcrt = None  # type: ignore
 
 log = logging.getLogger(__name__)
+
+# Global registry of thread locks for file paths to ensure process-local thread safety
+_THREAD_LOCKS: MutableMapping[str, threading.Lock] = {}
+_THREAD_LOCKS_GUARD = threading.Lock()
+
+
+def _get_thread_lock(path: str) -> threading.Lock:
+    """Retrieve or create a threading.Lock for the given canonical path."""
+    with _THREAD_LOCKS_GUARD:
+        if path not in _THREAD_LOCKS:
+            _THREAD_LOCKS[path] = threading.Lock()
+        return _THREAD_LOCKS[path]
 
 
 def _lock_length(fileobj: Any) -> int:
@@ -97,6 +110,17 @@ def _release_file_lock(fileobj: Any) -> None:
 @contextmanager
 def file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
     """Context manager for acquiring a cross-platform file lock."""
+    # Step 1: Thread-level locking
+    thread_lock = None
+    try:
+        if hasattr(fileobj, "name"):
+            path = os.path.abspath(fileobj.name)
+            thread_lock = _get_thread_lock(path)
+            thread_lock.acquire()
+    except Exception as exc:
+        log.warning("Could not acquire thread lock for file %s: %s", getattr(fileobj, "name", "unknown"), exc)
+
+    # Step 2: OS-level locking
     locked = False
     try:
         _acquire_file_lock(fileobj, exclusive)
@@ -111,5 +135,8 @@ def file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
                 _release_file_lock(fileobj)
             except Exception as exc:  # pragma: no cover - release failures are rare
                 log.debug("Dateisperre konnte nicht gelöst werden: %s", exc)
+
+        if thread_lock:
+            thread_lock.release()
 
 __all__ = ["file_lock"]
