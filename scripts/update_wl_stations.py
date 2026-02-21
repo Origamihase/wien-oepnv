@@ -20,7 +20,7 @@ import sys
 from dataclasses import dataclass
 from importlib import import_module
 from pathlib import Path
-from typing import Callable, Iterable, Iterator, List, Mapping, Sequence
+from typing import Any, Callable, Iterable, Iterator, List, Mapping, Sequence
 
 
 def _project_root() -> Path:
@@ -35,8 +35,17 @@ def _load_is_in_vienna() -> Callable[..., bool]:
     return module.is_in_vienna
 
 
+def _load_atomic_write() -> Callable[..., Any]:
+    base_dir = _project_root()
+    if str(base_dir) not in sys.path:
+        sys.path.insert(0, str(base_dir))
+    module = import_module("src.utils.files")
+    return module.atomic_write
+
+
 BASE_DIR = _project_root()
 is_in_vienna = _load_is_in_vienna()
+atomic_write = _load_atomic_write()
 DEFAULT_HALTEPUNKTE = BASE_DIR / "data" / "wienerlinien-ogd-haltepunkte.csv"
 DEFAULT_HALTESTELLEN = BASE_DIR / "data" / "wienerlinien-ogd-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
@@ -580,7 +589,7 @@ def merge_into_stations(
 
     filtered.extend(unmatched)
 
-    with stations_path.open("w", encoding="utf-8") as handle:
+    with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         json.dump({"stations": filtered}, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     log.info("Wrote %d total stations", len(filtered))

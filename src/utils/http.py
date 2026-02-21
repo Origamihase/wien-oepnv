@@ -26,7 +26,7 @@ _DEFAULT_RETRY_OPTIONS: dict[str, Any] = {
 }
 
 # Default timeout in seconds if none is provided
-DEFAULT_TIMEOUT = 20
+DEFAULT_TIMEOUT = (3.0, 15.0)
 
 # DNS resolution timeout in seconds
 DNS_TIMEOUT = 5.0
@@ -237,6 +237,15 @@ def _replace_auth(match: re.Match) -> str:
     return f"{scheme}:{slash}***@"
 
 
+def _sanitize_exception_msg(msg: str) -> str:
+    """Sanitize URLs in exception messages."""
+    return re.sub(
+        r"(https?://[^\s'\"<>]+)",
+        lambda m: _sanitize_url_for_error(m.group(1)),
+        msg
+    )
+
+
 def _sanitize_url_for_error(url: str) -> str:
     """Strip credentials and sensitive query params from URL for safe error logging."""
     try:
@@ -303,7 +312,7 @@ def _sanitize_url_for_error(url: str) -> str:
 class TimeoutHTTPAdapter(HTTPAdapter):
     """HTTPAdapter that enforces a default timeout."""
 
-    def __init__(self, *args: Any, timeout: int | None = None, **kwargs: Any) -> None:
+    def __init__(self, *args: Any, timeout: int | float | tuple[float, float] | None = None, **kwargs: Any) -> None:
         self.timeout = timeout
         super().__init__(*args, **kwargs)
 
@@ -454,13 +463,15 @@ def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.Prepar
 
 
 def session_with_retries(
-    user_agent: str, timeout: int = DEFAULT_TIMEOUT, **retry_opts: Any
+    user_agent: str,
+    timeout: int | float | tuple[float, float] = DEFAULT_TIMEOUT,
+    **retry_opts: Any,
 ) -> requests.Session:
     """Return a :class:`requests.Session` pre-configured with retries and a default timeout.
 
     Args:
         user_agent: User-Agent header that should be sent with every request.
-        timeout: Default timeout in seconds for requests (default: 20).
+        timeout: Default timeout in seconds for requests (default: (3.0, 15.0)).
         **retry_opts: Additional keyword arguments forwarded to
             :class:`urllib3.util.retry.Retry`.
     """
@@ -858,7 +869,7 @@ def request_safe(
     url: str,
     method: str = "GET",
     max_bytes: int = 10 * 1024 * 1024,
-    timeout: int | None = None,
+    timeout: int | float | tuple[float, float] | None = None,
     allowed_content_types: Container[str] | None = None,
     raise_for_status: bool = True,
     **kwargs: Any,
@@ -947,159 +958,178 @@ def request_safe(
     # but here we replicate requests' behavior of following redirects.
 
     # We loop to handle redirects
-    for attempt in range(max_redirects + 1):
-        # Calculate remaining timeout
-        elapsed = time.monotonic() - start_time
-        # Security: Enforce a total timeout across redirects, but allow a minimal window (0.1s)
-        # to ensure we don't fail strictly on 0s timeouts used in tests with mocks.
-        current_timeout = max(0.1, float(timeout) - elapsed)
+    try:
+        for attempt in range(max_redirects + 1):
+            # Calculate remaining timeout
+            elapsed = time.monotonic() - start_time
+            # Security: Enforce a total timeout across redirects, but allow a minimal window (0.1s)
+            # to ensure we don't fail strictly on 0s timeouts used in tests with mocks.
+            current_timeout: float | tuple[float, float]
+            if isinstance(timeout, (int, float)):
+                current_timeout = max(0.1, float(timeout) - elapsed)
+            else:
+                # Tuple case: use defined timeouts for every request
+                current_timeout = timeout
 
-        # 1. Validate and Pin
-        safe_url = validate_http_url(current_url, check_dns=False)
-        if not safe_url:
-            # Security: avoid echoing potentially sensitive URLs in errors.
-            sanitized_url = _sanitize_url_for_error(current_url)
-            raise ValueError(f"Unsafe or invalid URL: {sanitized_url}")
-
-        parsed = urlparse(safe_url)
-        target_url = safe_url
-
-        if parsed.scheme == "http":
-            pinned_url, hostname = _pin_url_to_ip(safe_url)
-            kwargs["headers"]["Host"] = hostname
-            target_url = pinned_url
-        else:
-            # HTTPS: Resolve to check safety (fail fast) but don't pin (rely on certs + verify_response_ip)
-            ips = _resolve_hostname_safe(parsed.hostname or "")
-            if not ips or not any(
-                is_ip_safe(sockaddr[0]) for _, _, _, _, sockaddr in ips
-            ):
+            # 1. Validate and Pin
+            safe_url = validate_http_url(current_url, check_dns=False)
+            if not safe_url:
+                # Security: avoid echoing potentially sensitive URLs in errors.
                 sanitized_url = _sanitize_url_for_error(current_url)
-                raise ValueError(f"No safe IP resolved for {sanitized_url}")
+                raise ValueError(f"Unsafe or invalid URL: {sanitized_url}")
 
-            # If we switched from HTTP (pinned) to HTTPS, or just between domains, clean up Host header
-            if "Host" in kwargs["headers"]:
-                del kwargs["headers"]["Host"]
+            parsed = urlparse(safe_url)
+            target_url = safe_url
 
-        # 2. Make Request
-        # We use session.request inside the loop.
-        ctx = session.request(
-            method,
-            target_url,
-            stream=True,
-            timeout=current_timeout,
-            hooks=request_hooks,
-            allow_redirects=False,
-            **kwargs,
-        )
+            if parsed.scheme == "http":
+                pinned_url, hostname = _pin_url_to_ip(safe_url)
+                kwargs["headers"]["Host"] = hostname
+                target_url = pinned_url
+            else:
+                # HTTPS: Resolve to check safety (fail fast) but don't pin (rely on certs + verify_response_ip)
+                ips = _resolve_hostname_safe(parsed.hostname or "")
+                if not ips or not any(
+                    is_ip_safe(sockaddr[0]) for _, _, _, _, sockaddr in ips
+                ):
+                    sanitized_url = _sanitize_url_for_error(current_url)
+                    raise ValueError(f"No safe IP resolved for {sanitized_url}")
 
-        with ctx as r:
-            # Prevent DNS Rebinding: Check the actual connected IP
-            verify_response_ip(r)
+                # If we switched from HTTP (pinned) to HTTPS, or just between domains, clean up Host header
+                if "Host" in kwargs["headers"]:
+                    del kwargs["headers"]["Host"]
 
-            # Duck-typing check for mocks that might lack is_redirect
-            is_redirect = getattr(r, "is_redirect", False)
+            # 2. Make Request
+            # We use session.request inside the loop.
+            ctx = session.request(
+                method,
+                target_url,
+                stream=True,
+                timeout=current_timeout,
+                hooks=request_hooks,
+                allow_redirects=False,
+                **kwargs,
+            )
 
-            if is_redirect:
-                # Handle Redirect
-                location = r.headers.get("Location")
-                if location:
-                    if attempt == max_redirects:
-                        raise requests.TooManyRedirects(
-                            f"Exceeded {max_redirects} redirects"
+            with ctx as r:
+                # Prevent DNS Rebinding: Check the actual connected IP
+                verify_response_ip(r)
+
+                # Duck-typing check for mocks that might lack is_redirect
+                is_redirect = getattr(r, "is_redirect", False)
+
+                if is_redirect:
+                    # Handle Redirect
+                    location = r.headers.get("Location")
+                    if location:
+                        if attempt == max_redirects:
+                            raise requests.TooManyRedirects(
+                                f"Exceeded {max_redirects} redirects"
+                            )
+
+                        # Resolve relative URLs
+                        next_url = requests.compat.urljoin(current_url, location)
+
+                        # Strip sensitive headers if needed
+                        # We pass session.headers to ensure they are masked (set to None) if present
+                        _strip_sensitive_headers(
+                            kwargs["headers"],
+                            current_url,
+                            next_url,
+                            session_headers=session.headers,
                         )
 
-                    # Resolve relative URLs
-                    next_url = requests.compat.urljoin(current_url, location)
+                        # Security: Strip sensitive query parameters if redirecting to a different host/scheme/port
+                        # This prevents leaking tokens (e.g. accessId) via redirect URLs.
+                        next_parsed = urlparse(next_url)
+                        curr_parsed = urlparse(current_url)
 
-                    # Strip sensitive headers if needed
-                    # We pass session.headers to ensure they are masked (set to None) if present
-                    _strip_sensitive_headers(
-                        kwargs["headers"],
-                        current_url,
-                        next_url,
-                        session_headers=session.headers,
-                    )
+                        if (
+                            next_parsed.hostname != curr_parsed.hostname
+                            or next_parsed.scheme != curr_parsed.scheme
+                            or _get_port(next_parsed) != _get_port(curr_parsed)
+                        ):
+                            next_url = _strip_sensitive_params(next_url)
 
-                    # Security: Strip sensitive query parameters if redirecting to a different host/scheme/port
-                    # This prevents leaking tokens (e.g. accessId) via redirect URLs.
-                    next_parsed = urlparse(next_url)
-                    curr_parsed = urlparse(current_url)
+                            # Prevent leaking explicit authentication credentials (e.g. auth=('user', 'pass'))
+                            # to unsafe redirect targets.
+                            if "auth" in kwargs:
+                                kwargs.pop("auth")
 
-                    if (
-                        next_parsed.hostname != curr_parsed.hostname
-                        or next_parsed.scheme != curr_parsed.scheme
-                        or _get_port(next_parsed) != _get_port(curr_parsed)
-                    ):
-                        next_url = _strip_sensitive_params(next_url)
+                        # Update URL and continue loop
+                        current_url = next_url
 
-                        # Prevent leaking explicit authentication credentials (e.g. auth=('user', 'pass'))
-                        # to unsafe redirect targets.
-                        if "auth" in kwargs:
-                            kwargs.pop("auth")
+                        # If redirects are followed, standard behavior (like requests) is to switch to GET
+                        # for 301/302/303 if original was not HEAD.
+                        # 307/308 preserve method.
+                        # For simplicity, if we are redirecting, we generally respect the status code implications.
+                        # requests implementation details are complex.
+                        # However, since we are doing manual redirects for security, we should mimic requests behavior roughly
+                        # or just keep using the same method if it's 307/308, and switch to GET for others?
+                        # For this implementation, we simply persist the method unless it's a 303 (See Other)
+                        # which MUST be GET.
+                        if r.status_code == 303 and method != "HEAD":
+                            method = "GET"
+                            # Drop data/json/files for GET redirect
+                            kwargs.pop("data", None)
+                            kwargs.pop("json", None)
+                            kwargs.pop("files", None)
+                            # Also drop content-related headers that are invalid for GET
+                            if "headers" in kwargs:
+                                kwargs["headers"].pop("Content-Type", None)
+                                kwargs["headers"].pop("Content-Length", None)
 
-                    # Update URL and continue loop
-                    current_url = next_url
+                        # For 301/302, requests switches to GET if not 307/308
+                        if r.status_code in (301, 302) and method == "POST":
+                            method = "GET"
+                            kwargs.pop("data", None)
+                            kwargs.pop("json", None)
+                            kwargs.pop("files", None)
+                            # Also drop content-related headers that are invalid for GET
+                            if "headers" in kwargs:
+                                kwargs["headers"].pop("Content-Type", None)
+                                kwargs["headers"].pop("Content-Length", None)
 
-                    # If redirects are followed, standard behavior (like requests) is to switch to GET
-                    # for 301/302/303 if original was not HEAD.
-                    # 307/308 preserve method.
-                    # For simplicity, if we are redirecting, we generally respect the status code implications.
-                    # requests implementation details are complex.
-                    # However, since we are doing manual redirects for security, we should mimic requests behavior roughly
-                    # or just keep using the same method if it's 307/308, and switch to GET for others?
-                    # For this implementation, we simply persist the method unless it's a 303 (See Other)
-                    # which MUST be GET.
-                    if r.status_code == 303 and method != "HEAD":
-                        method = "GET"
-                        # Drop data/json/files for GET redirect
-                        kwargs.pop("data", None)
-                        kwargs.pop("json", None)
-                        kwargs.pop("files", None)
-                        # Also drop content-related headers that are invalid for GET
-                        if "headers" in kwargs:
-                            kwargs["headers"].pop("Content-Type", None)
-                            kwargs["headers"].pop("Content-Length", None)
+                        continue
 
-                    # For 301/302, requests switches to GET if not 307/308
-                    if r.status_code in (301, 302) and method == "POST":
-                        method = "GET"
-                        kwargs.pop("data", None)
-                        kwargs.pop("json", None)
-                        kwargs.pop("files", None)
-                        # Also drop content-related headers that are invalid for GET
-                        if "headers" in kwargs:
-                            kwargs["headers"].pop("Content-Type", None)
-                            kwargs["headers"].pop("Content-Length", None)
+                # Final Response
+                if raise_for_status:
+                    r.raise_for_status()
 
-                    continue
+                if allowed_content_types is not None:
+                    content_type_header = r.headers.get("Content-Type", "")
+                    if not content_type_header:
+                        raise ValueError(
+                            "Content-Type header missing, but validation required"
+                        )
+                    # Robust parsing
+                    mime_type = content_type_header.split(";")[0].strip().lower()
+                    if mime_type not in allowed_content_types:
+                        raise ValueError(
+                            f"Invalid Content-Type: {mime_type} (expected {allowed_content_types})"
+                        )
 
-            # Final Response
-            if raise_for_status:
-                r.raise_for_status()
+                # Calculate remaining time for reading body
+                read_timeout_val: float
+                if isinstance(timeout, (int, float)):
+                    read_timeout_val = max(0.1, float(timeout) - (time.monotonic() - start_time))
+                else:
+                    # If tuple (c, r), use r as the limit for reading body
+                    read_timeout_val = timeout[1]
 
-            if allowed_content_types is not None:
-                content_type_header = r.headers.get("Content-Type", "")
-                if not content_type_header:
-                    raise ValueError(
-                        "Content-Type header missing, but validation required"
-                    )
-                # Robust parsing
-                mime_type = content_type_header.split(";")[0].strip().lower()
-                if mime_type not in allowed_content_types:
-                    raise ValueError(
-                        f"Invalid Content-Type: {mime_type} (expected {allowed_content_types})"
-                    )
+                content = read_response_safe(r, max_bytes, timeout=read_timeout_val)
 
-            # Calculate remaining time for reading body
-            read_timeout = max(0.1, float(timeout) - (time.monotonic() - start_time))
-            content = read_response_safe(r, max_bytes, timeout=read_timeout)
+                # Manually attach content to response object so it's usable after close
+                r._content = content
+                r._content_consumed = True
 
-            # Manually attach content to response object so it's usable after close
-            r._content = content
-            r._content_consumed = True
-
-            return r
+                return r
+    except requests.RequestException as exc:
+        # Sanitize keys in exception messages (which may contain full URLs)
+        safe_msg = _sanitize_exception_msg(str(exc))
+        new_exc = type(exc)(safe_msg)
+        new_exc.request = getattr(exc, "request", None)
+        new_exc.response = getattr(exc, "response", None)
+        raise new_exc from exc
 
     # Should not be reached due to TooManyRedirects check inside loop,
     # but defensive return.
