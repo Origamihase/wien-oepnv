@@ -139,6 +139,10 @@ def html_to_text(s: str, *, collapse_newlines: bool = False) -> str:
     if not s:
         return ""
 
+    # Hard cap at 5000 characters to prevent ReDoS
+    if len(s) > 5000:
+        s = s[:5000] + "... [TRUNCATED]"
+
     parser = _HTMLToTextParser()
     parser.feed(s)
     parser.close()

@@ -60,6 +60,19 @@ jobs:
           echo "location.name -> HTTP ${code}"
           test "$code" = "200"
 
+      - name: Get Date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Cache VOR request count
+        uses: actions/cache@v4
+        with:
+          path: data/vor_request_count.json
+          key: vor-request-count-${{ steps.date.outputs.date }}-${{ github.run_id }}
+          restore-keys: |
+            vor-request-count-${{ steps.date.outputs.date }}-
+            vor-request-count-
+
       - name: Refresh VOR cache
         run: python scripts/update_vor_cache.py
 

@@ -10,7 +10,7 @@ from threading import RLock
 from typing import Any, Callable, List, Optional
 
 from .env import get_bool_env
-from .files import atomic_write
+from .files import atomic_write, sanitize_filename
 
 _CACHE_DIR = Path("cache")
 _CACHE_FILENAME = "events.json"
@@ -60,7 +60,7 @@ def _emit_cache_alert(provider: str, message: str) -> None:
 
 
 def _cache_file(provider: str) -> Path:
-    return _CACHE_DIR / provider / _CACHE_FILENAME
+    return _CACHE_DIR / sanitize_filename(provider) / _CACHE_FILENAME
 
 
 def cache_modified_at(provider: str) -> Optional[datetime]:
