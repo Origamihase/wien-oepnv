@@ -222,7 +222,7 @@ def _clean_title_keep_places(t: str) -> str:
                     t += f" {rest}"
         else:
             # Check ordering: if part[1] is Vienna and part[0] is not, swap
-            if is_in_vienna(parts[1]) and not is_in_vienna(parts[0]):
+            if len(parts) == 2 and is_in_vienna(parts[1]) and not is_in_vienna(parts[0]):
                  parts[0], parts[1] = parts[1], parts[0]
 
             t = f"{parts[0]} ↔ {parts[1]}"

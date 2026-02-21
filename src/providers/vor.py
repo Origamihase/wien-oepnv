@@ -1358,9 +1358,9 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
                 if payload is None:
                     failures += 1
                     continue
-                successes += 1
                 try:
                     items = _collect_from_board(station_id, payload)
+                    successes += 1
                 except Exception as exc:  # pragma: no cover - defensive guard
                     _log_error("Fehler beim Verarbeiten der Station %s: %s", station_id, exc)
                     failures += 1
