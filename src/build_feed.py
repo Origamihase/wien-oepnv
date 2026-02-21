@@ -1704,11 +1704,12 @@ def main() -> int:
         log.warning("Veraltete Caches erkannt: %s", "; ".join(stale_cache_messages))
     health_metrics: Optional[FeedHealthMetrics] = None
     duplicate_summaries: List[DuplicateSummary] = []
-    raw_count: Optional[int] = None
-    filtered_count: Optional[int] = None
-    deduped_count: Optional[int] = None
-    duplicates_removed: Optional[int] = None
-    new_items_count: Optional[int] = None
+    # Initialize counters to 0 to avoid redundant checks later (Task 3A)
+    raw_count: int = 0
+    filtered_count: int = 0
+    deduped_count: int = 0
+    duplicates_removed: int = 0
+    new_items_count: int = 0
     items: List[Dict[str, Any]] = []
     health_path = validate_path(Path(feed_config.FEED_HEALTH_PATH), "FEED_HEALTH_PATH")
     health_json_path = validate_path(
@@ -1841,21 +1842,14 @@ def main() -> int:
             feed_path=out_path,
         )
         if health_metrics is None:
-            # Fallback logic for successful runs where metrics object wasn't created yet
-            # (though normally it is created before this block).
-            # We use explicit None checks to distinguish between 0 (valid) and unset (None).
-            r_c = raw_count if raw_count is not None else 0
-            f_c = filtered_count if filtered_count is not None else r_c
-            d_c = deduped_count if deduped_count is not None else f_c
-            n_c = new_items_count if new_items_count is not None else 0
-            dup_c = duplicates_removed if duplicates_removed is not None else 0
-
+            # Fallback logic for successful runs where metrics object wasn't created yet.
+            # Simplified using pre-initialized counters (Task 3A).
             health_metrics = FeedHealthMetrics(
-                raw_items=r_c,
-                filtered_items=f_c,
-                deduped_items=d_c,
-                new_items=n_c,
-                duplicate_count=dup_c,
+                raw_items=raw_count,
+                filtered_items=filtered_count,
+                deduped_items=deduped_count,
+                new_items=new_items_count,
+                duplicate_count=duplicates_removed,
                 duplicates=tuple(duplicate_summaries),
             )
         _write_health_outputs(health_metrics)
@@ -1865,19 +1859,13 @@ def main() -> int:
         log.exception("Feed-Bau fehlgeschlagen: %s", exc)
         report.record_exception(exc)
         if health_metrics is None:
-            # Robust fallback logic preventing Falsy-evaluation of 0
-            r_c = raw_count if raw_count is not None else 0
-            f_c = filtered_count if filtered_count is not None else r_c
-            d_c = deduped_count if deduped_count is not None else f_c
-            n_c = new_items_count if new_items_count is not None else 0
-            dup_c = duplicates_removed if duplicates_removed is not None else 0
-
+            # Simplified fallback using pre-initialized counters (Task 3A).
             health_metrics = FeedHealthMetrics(
-                raw_items=r_c,
-                filtered_items=f_c,
-                deduped_items=d_c,
-                new_items=n_c,
-                duplicate_count=dup_c,
+                raw_items=raw_count,
+                filtered_items=filtered_count,
+                deduped_items=deduped_count,
+                new_items=new_items_count,
+                duplicate_count=duplicates_removed,
                 duplicates=tuple(duplicate_summaries),
             )
         report.finish(build_successful=False)

@@ -149,19 +149,23 @@ def _sanitize_arg(arg: Any) -> Any:
 
 
 def _log_warning(message: str, *args: Any) -> None:
+    # Ensure message is sanitized even if args are present
+    sanitized_msg = _sanitize_message(message)
     if args:
         sanitized_args = tuple(_sanitize_arg(arg) for arg in args)
-        log.warning(message, *sanitized_args)
+        log.warning(sanitized_msg, *sanitized_args)
     else:
-        log.warning("%s", _sanitize_message(message))
+        log.warning("%s", sanitized_msg)
 
 
 def _log_error(message: str, *args: Any) -> None:
+    # Ensure message is sanitized even if args are present
+    sanitized_msg = _sanitize_message(message)
     if args:
         sanitized_args = tuple(_sanitize_arg(arg) for arg in args)
-        log.error(message, *sanitized_args)
+        log.error(sanitized_msg, *sanitized_args)
     else:
-        log.error("%s", _sanitize_message(message))
+        log.error("%s", sanitized_msg)
 
 
 def _get_env(name: str) -> str:
@@ -1353,7 +1357,7 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
                     if "Emergency Stop" in str(rte):
                         log.critical(f"ABORT: {rte}")
                         # Cancel other futures if possible
-                        executor.shutdown(wait=False)
+                        executor.shutdown(wait=False, cancel_futures=True)
                         # Graceful Degradation: Do not raise, just break loop and return partial results
                         break
                     _log_error("VOR DepartureBoard %s Runtime Error: %s", station_id, rte)
