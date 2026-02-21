@@ -139,15 +139,15 @@ def html_to_text(s: str, *, collapse_newlines: bool = False) -> str:
     if not s:
         return ""
 
-    # Hard cap at 5000 characters to prevent ReDoS
-    if len(s) > 5000:
-        s = s[:5000] + "... [TRUNCATED]"
-
     parser = _HTMLToTextParser()
     parser.feed(s)
     parser.close()
 
     txt = "".join(parser.parts)
+
+    # Hard cap at 5000 characters to prevent ReDoS
+    if len(txt) > 5000:
+        txt = txt[:5000] + "... [TRUNCATED]"
     # Note: html.unescape is skipped because HTMLParser(convert_charrefs=True)
     # already decodes entities. Calling unescape again is redundant.
     txt = txt.replace("\xa0", " ")

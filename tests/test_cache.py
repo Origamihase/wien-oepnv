@@ -5,12 +5,13 @@ from pathlib import Path
 import pytest
 
 from src.utils import cache
+from src.utils.files import sanitize_filename
 
 
 def _prepare_cache(tmp_path: Path, monkeypatch, provider: str) -> Path:
     base = tmp_path / "cache-root"
     monkeypatch.setattr(cache, "_CACHE_DIR", base, raising=False)
-    target = base / provider
+    target = base / sanitize_filename(provider)
     target.mkdir(parents=True, exist_ok=True)
     return target / "events.json"
 

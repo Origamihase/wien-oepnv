@@ -1,6 +1,7 @@
 """File utility helpers."""
 from __future__ import annotations
 
+import hashlib
 import os
 import re
 import uuid
@@ -92,4 +93,6 @@ def atomic_write(
 def sanitize_filename(filename_id: str) -> str:
     """Sanitize a filename ID to prevent path traversal."""
     # Only allow alphanumeric characters, dashes, and underscores
-    return re.sub(r'[^a-zA-Z0-9_-]', '_', str(filename_id))
+    safe_base = re.sub(r'[^a-zA-Z0-9_-]', '_', str(filename_id))
+    id_hash = hashlib.sha256(str(filename_id).encode('utf-8')).hexdigest()[:6]
+    return f"{safe_base}_{id_hash}"
