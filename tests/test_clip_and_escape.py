@@ -565,3 +565,22 @@ def test_emit_item_truncates_long_title(monkeypatch):
     assert title_content.endswith(" …")
     # "This is a " (10 chars) -> rstrip -> "This is a" + " …"
     assert title_content == "This is a …"
+
+def test_clip_text_html_preserves_entities(monkeypatch):
+    """
+    Ensure that HTML entities are preserved during truncation and not decoded.
+    This prevents accidental double-escaping or invalid characters in output.
+    We use a long string to trigger the parsing logic in truncate_html.
+    """
+    bf = _load_build_feed(monkeypatch)
+    # limit must be < len(html_in) to trigger parsing
+    # and > 20 to avoid _clip_text_html's sanity check fallback to 50000
+
+    html_in = "Long string with &amp; entity to test parsing logic and ensure preservation."
+    # Length is 76.
+    limit = 50
+
+    clipped = bf._clip_text_html(html_in, limit)
+
+    assert "&amp;" in clipped
+    assert "&" not in clipped.replace("&amp;", "") # Ensure no bare ampersands appeared
