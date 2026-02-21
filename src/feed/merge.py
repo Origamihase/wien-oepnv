@@ -125,7 +125,7 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                         desc_vor = existing.get("description", "") or ""
                         desc_oebb = item.get("description", "") or ""
                         if desc_oebb and desc_oebb not in desc_vor:
-                            existing["description"] = f"{desc_vor}\n\n{desc_oebb}"
+                            existing["description"] = f"{desc_vor}\n\n{desc_oebb}".strip()
                         # Do NOT update GUID or Title from ÖBB (keep VOR master data)
                         merged = True
                         break
@@ -142,13 +142,15 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
                         # Append ÖBB desc if not present
                         if desc_oebb and desc_oebb not in desc_vor:
-                            new_existing["description"] = f"{desc_vor}\n\n{desc_oebb}"
+                            new_existing["description"] = f"{desc_vor}\n\n{desc_oebb}".strip()
 
                         merged_items[idx] = new_existing
                         merged = True
                         break
 
                     # Standard Merge Logic (Peers)
+
+                    existing_copy = existing.copy()
 
                     # 1. Combine Lines
                     all_lines = sorted(list(lines | ex_lines))
@@ -181,28 +183,30 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                     all_lines.sort(key=natural_keys)
                     lines_part = "/".join(all_lines)
                     new_title = f"{lines_part}: {new_name}"
-                    existing["title"] = new_title
+                    existing_copy["title"] = new_title
 
                     # 3. Merge Descriptions
-                    desc1 = existing.get("description", "") or ""
+                    desc1 = existing_copy.get("description", "") or ""
                     desc2 = item.get("description", "") or ""
 
                     if desc1 != desc2:
                         if desc1 and desc2:
                              # Check for containment
                             if desc1 in desc2:
-                                existing["description"] = desc2
+                                existing_copy["description"] = desc2
                             elif desc2 in desc1:
-                                existing["description"] = desc1
+                                existing_copy["description"] = desc1
                             else:
-                                existing["description"] = f"{desc1}\n\n{desc2}"
+                                existing_copy["description"] = f"{desc1}\n\n{desc2}".strip()
                         elif desc2:
-                            existing["description"] = desc2
+                            existing_copy["description"] = desc2
 
                     # 4. Update GUID
                     # We create a new deterministic GUID based on the new title.
                     # This ensures clients see it as a new/updated item.
-                    existing["guid"] = hashlib.sha256(new_title.encode("utf-8")).hexdigest()
+                    existing_copy["guid"] = hashlib.sha256(new_title.encode("utf-8")).hexdigest()
+
+                    merged_items[idx] = existing_copy
 
                     # We might also want to merge start/end times?
                     # The requirement doesn't specify. Let's keep existing (usually "better" item).
