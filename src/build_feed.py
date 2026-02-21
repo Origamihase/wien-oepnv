@@ -657,9 +657,11 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
     if not path.exists():
         return {}
     try:
-        with path.open("r", encoding="utf-8") as f:
-            with _file_lock(f, exclusive=False):
-                data = json.load(f)
+        lock_path = path.with_suffix(".lock")
+        with lock_path.open("a+", encoding="utf-8") as lock_file:
+            with _file_lock(lock_file, exclusive=False):
+                with path.open("r", encoding="utf-8") as f:
+                    data = json.load(f)
         data = data if isinstance(data, dict) else {}
     except Exception as e:
         log.warning("State laden fehlgeschlagen (%s) – starte leer.", e)
