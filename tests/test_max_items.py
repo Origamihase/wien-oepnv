@@ -26,7 +26,7 @@ def test_make_rss_ignores_items_when_max_is_zero(monkeypatch):
     try:
         captured_state = {"value": None}
 
-        def capture_state(state):
+        def capture_state(state, deletions=None):
             captured_state["value"] = state
 
         monkeypatch.setattr(build_feed, "_save_state", capture_state)

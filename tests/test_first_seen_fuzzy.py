@@ -47,6 +47,9 @@ def test_first_seen_fuzzy_identity(monkeypatch, tmp_path):
         "ends_at": now,
     }
 
+    # Mock validate_path to allow temp paths
+    monkeypatch.setattr(build_feed, "validate_path", lambda p, *args: p)
+
     state = build_feed._load_state()
     build_feed._make_rss([item_a], now, state)
     state_after_first = build_feed._load_state()

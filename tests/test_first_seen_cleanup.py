@@ -38,6 +38,9 @@ def test_state_cleanup_keeps_only_current_identities(monkeypatch, tmp_path):
     item_a = {"guid": "guid-a", "_identity": "guid-a"}
     item_b = {"guid": "guid-b", "_identity": "guid-b"}
 
+    # Mock validate_path to allow temp paths
+    monkeypatch.setattr(build_feed, "validate_path", lambda p, *args: p)
+
     state = build_feed._load_state()
     build_feed._make_rss([item_a, item_b], now, state)
 
