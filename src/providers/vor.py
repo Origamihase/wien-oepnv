@@ -1054,6 +1054,15 @@ def load_request_count() -> tuple[str | None, int]:
         return (None, 0)
     except json.JSONDecodeError:
         return (None, 0)
+
+    # Robustness: Handle legacy integer-only state or malformed dict.
+    # Returning date=None forces a reset in save_request_count (since None != current_date).
+    if isinstance(data, int):
+        return (None, data)
+
+    if not isinstance(data, dict):
+        return (None, 0)
+
     date = data.get("date")
     count = data.get("count", 0)
     return (str(date) if date else None, int(count) if isinstance(count, int) else 0)

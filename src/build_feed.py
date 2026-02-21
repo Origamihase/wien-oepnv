@@ -438,44 +438,15 @@ def _sanitize_text(s: str) -> str:
     return _CONTROL_RE.sub("", s or "")
 
 def _clip_text_html(text: str, limit: int) -> str:
-    """Für TV knapper machen. Gibt immer Plaintext zurück und kürzt falls nötig."""
-    plain = html_to_text(text or "")
-    if limit <= 0 or len(plain) <= limit:
-        return plain
-    prefix = plain[:limit]
-    candidates = []
-
-    # Satzende bevorzugt, z. B. "...!" oder "...?"
-    for match in _SENTENCE_END_RE.finditer(prefix):
-        end = match.end()
-        if end:
-            candidates.append(end)
-
-    # Wortgrenzen (Whitespace) als Fallback
-    for match in _WHITESPACE_RE.finditer(prefix):
-        start = match.start()
-        if start:
-            candidates.append(start)
-
-    # Wenn das nächste Zeichen bereits eine Grenze ist, darf der aktuelle Block stehen bleiben
-    next_char = plain[limit] if limit < len(plain) else ""
-    if next_char and (next_char.isspace() or next_char in ".,;:!?…"):
-        candidates.append(limit)
-
-    clip_pos = max((pos for pos in candidates if 0 < pos <= limit), default=None)
-
-    if clip_pos is None:
-        fallback_pos = prefix.rfind(" ")
-        if fallback_pos > 0:
-            truncated = prefix[:fallback_pos].rstrip()
-        else:
-            truncated = prefix.rstrip()
-    else:
-        truncated = prefix[:clip_pos].rstrip()
-        if not truncated:
-            truncated = prefix.rstrip()
-
-    return truncated + _ELLIPSIS
+    """Für TV knapper machen. Gibt HTML zurück (bewahrt Links) und kürzt nur im Notfall."""
+    # Fix: Keep HTML to preserve links. Use a massive limit (50k) to prevent DoS but avoid
+    # breaking tags in normal operation.
+    raw = text or ""
+    safe_limit = 50000
+    if len(raw) <= safe_limit:
+        return raw
+    # Fallback for extreme lengths: simple truncation
+    return raw[:safe_limit] + _ELLIPSIS
 
 def _parse_lines_from_title(title: str) -> List[str]:
     m = _LINE_PREFIX_RE.match(title or "")

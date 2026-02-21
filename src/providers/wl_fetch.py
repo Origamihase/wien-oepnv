@@ -426,7 +426,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             title_raw = (ti.get("title") or ti.get("name") or "Meldung").strip()
             title = _tidy_title_wl(title_raw)
             desc_raw = (ti.get("description") or "").strip()
-            desc = html_to_text(desc_raw)
+            # Do NOT strip HTML here, we need to preserve links (Task 3)
+            desc = desc_raw
             if _is_facility_only(title_raw, desc_raw):
                 continue
 
@@ -525,7 +526,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             title_raw = (poi.get("title") or "Hinweis").strip()
             title = _tidy_title_wl(title_raw)
             desc_raw = (poi.get("description") or "").strip()
-            desc = html_to_text(desc_raw)
+            # Do NOT strip HTML here, we need to preserve links (Task 3)
+            desc = desc_raw
             if _is_facility_only(title_raw, desc_raw, poi.get("subtitle") or ""):
                 continue
 

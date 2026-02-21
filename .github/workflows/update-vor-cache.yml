@@ -64,16 +64,6 @@ jobs:
         id: date
         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
-      - name: Cache VOR request count
-        uses: actions/cache@v4
-        with:
-          path: data/vor_request_count.json
-          # Dynamic key to ensure mutable state (new cache entry per run)
-          key: vor-request-count-${{ steps.date.outputs.date }}-${{ github.run_id }}
-          restore-keys: |
-            vor-request-count-${{ steps.date.outputs.date }}-
-            vor-request-count-
-
       - name: Refresh VOR cache
         run: python scripts/update_vor_cache.py
 
@@ -89,6 +79,10 @@ jobs:
 
           if [[ -f cache/vor/events.json ]]; then
             git add cache/vor/events.json
+          fi
+
+          if [[ -f data/vor_request_count.json ]]; then
+            git add data/vor_request_count.json
           fi
 
           if git diff --cached --quiet; then

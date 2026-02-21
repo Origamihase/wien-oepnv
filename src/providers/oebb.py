@@ -525,8 +525,7 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         else:
             guid = raw_guid or make_guid(title, link)
         desc_html = _get_text(item, "description")
-        desc = html_to_text(desc_html)
-        desc = _clean_description(desc)
+        desc = _clean_description(desc_html)
         pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
 
         # Title Fallback for "poor" titles
