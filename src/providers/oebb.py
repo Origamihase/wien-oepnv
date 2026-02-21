@@ -158,7 +158,20 @@ def _clean_title_keep_places(t: str) -> str:
             t = text_part
 
     # Vorspann bis zum Doppelpunkt entfernen
-    t = COLON_PREFIX_RE.sub("", t)
+    # Statt aggressivem Regex nutzen wir eine iterative Entfernung von bekannten Keywords.
+    # Wir iterieren über Kategorie-Präfixe ("Störung:", "Verspätung:") und entfernen sie.
+    # Wenn ein Präfix KEINE bekannte Kategorie ist (z.B. "Wien Meidling:"), bleibt es stehen.
+    while True:
+        match = re.match(r"^\s*([^:]+):\s*", t)
+        if not match:
+            break
+
+        prefix = match.group(1).strip()
+        if _is_category(prefix):
+            t = t[match.end():]
+        else:
+            break
+
     # Sonderfall: „Wien X und Wien Y“ → „Wien X ↔ Wien Y“
     t = re.sub(r"\b(Wien [^,;|]+?)\s+und\s+(Wien [^,;|]+?)\b", r"\1 ↔ \2", t)
     # Pfeile/Bindestriche und Trennzeichen normalisieren
@@ -304,7 +317,8 @@ def _load_station_sets():
             # Sort by length desc to match "Bad Vöslau" before "Bad"
             sorted_terms = sorted(terms, key=len, reverse=True)
             # Escape and join
-            pattern = r"\b(?:" + "|".join(re.escape(t) for t in sorted_terms) + r")\b"
+            # Use lookarounds instead of \b to handle stations ending in special chars (e.g. "(U)")
+            pattern = r"(?<!\w)(?:" + "|".join(re.escape(t) for t in sorted_terms) + r")(?!\w)"
             return re.compile(pattern, re.IGNORECASE)
 
         _VIENNA_STATIONS_RE = _make_re(_VIENNA_STATIONS)
@@ -346,8 +360,11 @@ def _is_relevant(title: str, description: str) -> bool:
             # (either in Vienna or in the Commuter Belt/Outer list).
             # If one endpoint is unknown (None), we assume it's a long-distance train
             # to/from outside our relevant area (e.g. Venezia, Munich), and we exclude it.
-            if info0 is None or info1 is None:
-                return False
+            # RELAXED: If one endpoint is unknown, we do NOT return False immediately.
+            # We allow the flow to continue so that Checks A and B can save the item
+            # if "Wien" is explicitly mentioned in the text.
+            # if info0 is None or info1 is None:
+            #    return False
 
             # Check 0b: Strict Outer <-> Outer Filter
             # Wenn Titel eine Strecke definiert (A ↔ B) und BEIDE Endpunkte bekannte
