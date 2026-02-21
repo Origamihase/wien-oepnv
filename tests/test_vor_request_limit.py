@@ -4,7 +4,7 @@ import multiprocessing
 import os
 import threading
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 
 import pytest
 from zoneinfo import ZoneInfo
@@ -46,10 +46,10 @@ def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
 
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", fail_fetch)
 
-    today = datetime.now().astimezone(ZoneInfo("Europe/Vienna")).date().isoformat()
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     vor.REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
     vor.REQUEST_COUNT_FILE.write_text(
-        json.dumps({"date": today, "count": vor.MAX_REQUESTS_PER_DAY}),
+        json.dumps({"date": today, "requests": vor.MAX_REQUESTS_PER_DAY}),
         encoding="utf-8",
     )
 
@@ -112,8 +112,15 @@ def test_save_request_count_returns_previous_on_lock_failure(monkeypatch, tmp_pa
     target_file = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
 
+    # Note: save_request_count now ignores "old" dates in load if they don't match today_utc.
+    # To test logic, we should probably mock today or ensure the test date matches today.
+    # However, if we write a file with a past date, load_request_count returns (None, 0).
+    # Then save_request_count will see None != today, reset to 0, and try to write 1.
+    # If we want to test "returns previous count", we need the date to match today.
+
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     target_file.write_text(
-        json.dumps({"date": "2023-01-02", "count": 7}),
+        json.dumps({"date": today, "requests": 7}),
         encoding="utf-8",
     )
 
@@ -125,19 +132,21 @@ def test_save_request_count_returns_previous_on_lock_failure(monkeypatch, tmp_pa
 
     monkeypatch.setattr(vor, "file_lock", failing_lock)
 
+    # Arguments to save_request_count are ignored now, but we pass something.
     result = vor.save_request_count(datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna")))
 
     assert result == vor.MAX_REQUESTS_PER_DAY + 1
     stored = json.loads(target_file.read_text(encoding="utf-8"))
-    assert stored["count"] == 7
+    assert stored["requests"] == 7
 
 
 def test_save_request_count_returns_previous_on_replace_failure(monkeypatch, tmp_path):
     target_file = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
 
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     target_file.write_text(
-        json.dumps({"date": "2023-01-02", "count": 3}),
+        json.dumps({"date": today, "requests": 3}),
         encoding="utf-8",
     )
 
@@ -146,11 +155,11 @@ def test_save_request_count_returns_previous_on_replace_failure(monkeypatch, tmp
 
     monkeypatch.setattr(vor.os, "replace", failing_replace)
 
-    result = vor.save_request_count(datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna")))
+    result = vor.save_request_count()
 
     assert result == 3
     stored = json.loads(target_file.read_text(encoding="utf-8"))
-    assert stored["count"] == 3
+    assert stored["requests"] == 3
 
 
 def test_save_request_count_is_safe_across_processes(monkeypatch, tmp_path):
@@ -181,7 +190,7 @@ def test_save_request_count_is_safe_across_processes(monkeypatch, tmp_path):
         assert proc.exitcode == 0
 
     data = json.loads(count_file.read_text(encoding="utf-8"))
-    assert data["count"] == iterations * len(processes)
+    assert data["requests"] == iterations * len(processes)
 
 
 def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path):
@@ -200,9 +209,9 @@ def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path)
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", count_file)
     count_file.parent.mkdir(parents=True, exist_ok=True)
 
-    today = datetime.now().astimezone(ZoneInfo("Europe/Vienna")).date().isoformat()
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     count_file.write_text(
-        json.dumps({"date": today, "count": vor.MAX_REQUESTS_PER_DAY - 1}),
+        json.dumps({"date": today, "requests": vor.MAX_REQUESTS_PER_DAY - 1}),
         encoding="utf-8",
     )
 
@@ -224,7 +233,7 @@ def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path)
     assert call_count == 1
 
     stored = json.loads(count_file.read_text(encoding="utf-8"))
-    assert stored["count"] == vor.MAX_REQUESTS_PER_DAY
+    assert stored["requests"] == vor.MAX_REQUESTS_PER_DAY
 
 
 @pytest.mark.parametrize("status_code, headers", [(429, {"Retry-After": "0"}), (503, {})])
@@ -376,3 +385,28 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
 
     assert payload == {}
     assert call_count == 1
+
+
+def test_load_request_count_resets_on_legacy_integer(monkeypatch, tmp_path):
+    target_file = tmp_path / "vor_request_count.json"
+    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
+
+    # Legacy integer format
+    target_file.write_text("42", encoding="utf-8")
+
+    date, count = vor.load_request_count()
+    assert date is None
+    assert count == 0
+
+
+def test_load_request_count_resets_on_legacy_dict(monkeypatch, tmp_path):
+    target_file = tmp_path / "vor_request_count.json"
+    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
+
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    # Legacy dict format (using 'count' instead of 'requests')
+    target_file.write_text(json.dumps({"date": today, "count": 42}), encoding="utf-8")
+
+    date, count = vor.load_request_count()
+    assert date is None
+    assert count == 0

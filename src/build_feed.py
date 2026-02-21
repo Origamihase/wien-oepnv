@@ -76,6 +76,7 @@ try:  # pragma: no cover - allow running as script or package
     from utils.files import atomic_write
     from utils.http import validate_http_url
     from utils.locking import file_lock
+    from utils.text import truncate_html
 except ModuleNotFoundError:  # pragma: no cover
     from .utils.cache import (
         cache_modified_at,
@@ -85,6 +86,7 @@ except ModuleNotFoundError:  # pragma: no cover
     from .utils.files import atomic_write
     from .utils.http import validate_http_url
     from .utils.locking import file_lock
+    from .utils.text import truncate_html
 
 log = logging.getLogger("build_feed")
 
@@ -437,14 +439,17 @@ def _sanitize_text(s: str) -> str:
 
 def _clip_text_html(text: str, limit: int) -> str:
     """Für TV knapper machen. Gibt HTML zurück (bewahrt Links) und kürzt nur im Notfall."""
-    # Fix: Keep HTML to preserve links. Use a massive limit (50k) to prevent DoS but avoid
-    # breaking tags in normal operation.
+    # Uses HTML-aware truncation to preserve tags and structure (e.g. links).
+    # "limit" is the target length for content (tags excluded from count roughly).
+    # We still enforce a sanity cap of 50k to prevent DoS, but pass the actual limit
+    # to the truncator if it's smaller.
     raw = text or ""
-    safe_limit = 50000
-    if len(raw) <= safe_limit:
-        return raw
-    # Fallback for extreme lengths: simple truncation
-    return raw[:safe_limit] + _ELLIPSIS
+    sanity_cap = 50000
+
+    # If the configured limit is very large or zero, use sanity cap
+    effective_limit = limit if 0 < limit < sanity_cap else sanity_cap
+
+    return truncate_html(raw, effective_limit, _ELLIPSIS)
 
 def _parse_lines_from_title(title: str) -> List[str]:
     m = _LINE_PREFIX_RE.match(title or "")
