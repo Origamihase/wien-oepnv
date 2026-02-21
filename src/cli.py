@@ -325,7 +325,19 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
     )
 
     markdown = report.to_markdown()
-    print(markdown, end="")
+
+    # Avoid printing potentially sensitive coordinate details to stdout.
+    # Instead, print a high-level summary; full details are available in the
+    # optional report file.
+    sys.stdout.write(
+        "Stations validation summary: "
+        f"{report.total_stations} stations analysed, "
+        f"{len(report.duplicates)} geographic duplicates, "
+        f"{len(report.alias_issues)} alias issues, "
+        f"{len(report.coordinate_issues)} coordinate anomalies, "
+        f"{len(report.gtfs_issues)} GTFS mismatches, "
+        f"{len(report.security_issues)} security warnings.\n"
+    )
 
     if args.output:
         output_path: Path = args.output
