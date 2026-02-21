@@ -118,7 +118,7 @@ NON_LOCATION_PREFIXES = {
     "oberleitungsstörung", "stellwerksstörung", "fahrzeugschaden", "personenschaden",
     "wetter", "unwetter", "schnee", "hochwasser", "murenabgang",
     "lawinengefahr", "streik", "demonstration", "veranstaltung", "wartungsarbeiten",
-    "update", "info", "hinweis", "achtung"
+    "update", "info", "hinweis", "achtung", "verkehrsmeldung"
 }
 
 def _is_category(text: str) -> bool:

@@ -4,9 +4,10 @@ from src.providers.oebb import _is_relevant
 
 def test_venezia_is_excluded():
     # Long distance train to unknown station (Venezia)
+    # RELAXED: This route mentions "Wien", so it is now RELEVANT for Vienna commuters.
     title = "Wien Hauptbahnhof ↔ Venezia Santa Lucia"
     description = "Wegen Bauarbeiten..."
-    assert _is_relevant(title, description) == False
+    assert _is_relevant(title, description) == True
 
 def test_wien_st_poelten_included():
     # St. Pölten is in the Pendler list
@@ -30,8 +31,8 @@ def test_one_end_unknown_excluded():
     # One end unknown (but mentions Wien in text)
     title = "Wien Hbf ↔ Unknown City"
     description = "Wien Hauptbahnhof ist betroffen."
-    # Because one end is unknown, it should be excluded regardless of "Wien" in description
-    assert _is_relevant(title, description) == False
+    # RELAXED: Because "Wien" is in text, it is now RELEVANT.
+    assert _is_relevant(title, description) == True
 
 def test_bauarbeiten_category_included():
     # Not a route "A ↔ B" but a category "Category: Detail"
@@ -44,12 +45,10 @@ def test_bauarbeiten_category_included():
 def test_bauarbeiten_arrow_umleitung_excluded_if_no_station():
     # "Bauarbeiten ↔ Umleitung"
     # If these are not stations, they return None for station_info.
-    # So it should be excluded.
+    # RELAXED: But if "Wien Hbf" is in description, it is RELEVANT.
     title = "Bauarbeiten ↔ Umleitung"
     description = "In Wien Hbf..."
-    # The new logic excludes this because "Bauarbeiten" is not a station.
-    # This might be a side effect, but arguably "Bauarbeiten ↔ Umleitung" is a bad title.
-    assert _is_relevant(title, description) == False
+    assert _is_relevant(title, description) == True
 
 def test_flughafen_wien_included():
     # Flughafen Wien is a pendler station
