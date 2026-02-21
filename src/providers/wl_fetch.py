@@ -17,7 +17,6 @@ if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type check
     from ..utils.ids import make_guid
     from ..utils.logging import sanitize_log_arg
     from ..utils.stations import canonical_name
-    from ..utils.text import html_to_text
 else:  # pragma: no cover - support both package layouts at runtime
     try:
         from utils.http import session_with_retries, validate_http_url, fetch_content_safe
@@ -28,11 +27,6 @@ else:  # pragma: no cover - support both package layouts at runtime
         from utils.logging import sanitize_log_arg
     except ModuleNotFoundError:
         from ..utils.logging import sanitize_log_arg  # type: ignore
-
-    try:
-        from utils.text import html_to_text
-    except ModuleNotFoundError:
-        from ..utils.text import html_to_text  # type: ignore
 
     try:
         from utils.ids import make_guid

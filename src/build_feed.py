@@ -76,7 +76,6 @@ try:  # pragma: no cover - allow running as script or package
     from utils.files import atomic_write
     from utils.http import validate_http_url
     from utils.locking import file_lock
-    from utils.text import html_to_text
 except ModuleNotFoundError:  # pragma: no cover
     from .utils.cache import (
         cache_modified_at,
@@ -86,7 +85,6 @@ except ModuleNotFoundError:  # pragma: no cover
     from .utils.files import atomic_write
     from .utils.http import validate_http_url
     from .utils.locking import file_lock
-    from .utils.text import html_to_text
 
 log = logging.getLogger("build_feed")
 
