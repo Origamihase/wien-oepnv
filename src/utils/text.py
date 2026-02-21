@@ -282,9 +282,16 @@ class HTMLTruncator(HTMLParser):
 
         remaining = self.limit - self.current_length
         if len(data) > remaining:
-            self.output.append(data[:remaining])
+            candidate = data[:remaining]
+            last_space = candidate.rfind(" ")
+            if last_space != -1:
+                cut_index = last_space
+            else:
+                cut_index = remaining
+
+            self.output.append(data[:cut_index])
             self.output.append(self.ellipsis)
-            self.current_length += remaining
+            self.current_length += cut_index
             self.done = True
         else:
             self.output.append(data)
