@@ -31,15 +31,6 @@ DEFAULT_TIMEOUT = 20
 # DNS resolution timeout in seconds
 DNS_TIMEOUT = 5.0
 
-# WARNING: Thread Exhaustion Risk
-# socket.getaddrinfo is a blocking C-call that ignores Python timeouts.
-# If the OS DNS resolver hangs, these threads will be permanently blocked.
-# For long-running daemon processes, consider recreating the executor periodically
-# or switching to an async DNS library (e.g., dnspython).
-# Current usage is safe for periodic cronjob executions (short-lived processes).
-# Shared executor for DNS resolution to avoid thread exhaustion
-_DNS_EXECUTOR = ThreadPoolExecutor(max_workers=8, thread_name_prefix="DNS_Resolver")
-
 log = logging.getLogger(__name__)
 
 def _normalize_key(key: str) -> str:
@@ -610,9 +601,13 @@ def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> 
 def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     """Resolve hostname with a timeout to prevent DoS."""
     try:
-        # Reuse the shared executor instead of creating one per call
-        future = _DNS_EXECUTOR.submit(socket.getaddrinfo, hostname, None, proto=socket.IPPROTO_TCP)
-        return future.result(timeout=DNS_TIMEOUT)
+        # Use a fresh executor for each call to prevent thread exhaustion (deadlock)
+        # if the OS resolver hangs indefinitely. This ensures that a hanging thread
+        # does not block the global application state, although it consumes a thread resource
+        # until the OS cleans it up.
+        with ThreadPoolExecutor(max_workers=1, thread_name_prefix="DNS_Resolver") as executor:
+            future = executor.submit(socket.getaddrinfo, hostname, None, proto=socket.IPPROTO_TCP)
+            return future.result(timeout=DNS_TIMEOUT)
     except TimeoutError:
         log.warning("DNS resolution timed out for %s (DoS protection)", hostname)
         return []
@@ -622,7 +617,6 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     except Exception as exc:
         log.warning("Unexpected error during DNS resolution for %s: %s", hostname, exc)
         return []
-    # We do not shutdown the shared executor
 
 
 def validate_http_url(
