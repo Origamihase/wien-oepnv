@@ -325,7 +325,8 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
     )
 
     markdown = report.to_markdown()
-    print(markdown, end="")
+    for line in markdown.splitlines():
+        sys.stdout.write(line + "\n")
 
     if args.output:
         output_path: Path = args.output
