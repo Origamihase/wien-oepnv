@@ -703,6 +703,8 @@ def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
         if is_cancelled:
             product_raw = dep.get("Product") or {}
             product = product_raw[0] if isinstance(product_raw, list) and product_raw else product_raw
+            if not isinstance(product, dict):
+                product = {}
             line_name = (
                 str(
                     product.get("displayNumber")

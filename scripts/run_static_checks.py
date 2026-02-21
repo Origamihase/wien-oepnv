@@ -67,8 +67,8 @@ def main() -> int:
 
     if exit_code == 0:
         scanner = PROJECT_ROOT / "scripts" / "scan_secrets.py"
-        # Secret scanner reports false positives. Run for visibility but don't fail.
-        _run([sys.executable, str(scanner)])
+        # Enforce secret scanning failure
+        exit_code = _run([sys.executable, str(scanner)])
 
     if exit_code == 0:
         # Run pip-audit to check for known vulnerabilities in dependencies
