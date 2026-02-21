@@ -28,15 +28,9 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, Dict, Iterable, Iterator, List, Mapping, Sequence
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
-try:
-    import requests
-    from requests import RequestException, Session
-    from requests.auth import AuthBase
-except ImportError:
-    requests = None  # type: ignore
-    RequestException = Exception  # type: ignore
-    Session = object  # type: ignore
-    AuthBase = object  # type: ignore
+import requests
+from requests import RequestException, Session
+from requests.auth import AuthBase
 
 from zoneinfo import ZoneInfo
 
