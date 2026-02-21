@@ -17,7 +17,6 @@ if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type check
     from ..utils.ids import make_guid
     from ..utils.logging import sanitize_log_arg
     from ..utils.stations import canonical_name
-    from ..utils.text import html_to_text
 else:  # pragma: no cover - support both package layouts at runtime
     try:
         from utils.http import session_with_retries, validate_http_url, fetch_content_safe
@@ -28,11 +27,6 @@ else:  # pragma: no cover - support both package layouts at runtime
         from utils.logging import sanitize_log_arg
     except ModuleNotFoundError:
         from ..utils.logging import sanitize_log_arg  # type: ignore
-
-    try:
-        from utils.text import html_to_text
-    except ModuleNotFoundError:
-        from ..utils.text import html_to_text  # type: ignore
 
     try:
         from utils.ids import make_guid
@@ -426,7 +420,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             title_raw = (ti.get("title") or ti.get("name") or "Meldung").strip()
             title = _tidy_title_wl(title_raw)
             desc_raw = (ti.get("description") or "").strip()
-            desc = html_to_text(desc_raw)
+            # Do NOT strip HTML here, we need to preserve links (Task 3)
+            desc = desc_raw
             if _is_facility_only(title_raw, desc_raw):
                 continue
 
@@ -525,7 +520,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             title_raw = (poi.get("title") or "Hinweis").strip()
             title = _tidy_title_wl(title_raw)
             desc_raw = (poi.get("description") or "").strip()
-            desc = html_to_text(desc_raw)
+            # Do NOT strip HTML here, we need to preserve links (Task 3)
+            desc = desc_raw
             if _is_facility_only(title_raw, desc_raw, poi.get("subtitle") or ""):
                 continue
 

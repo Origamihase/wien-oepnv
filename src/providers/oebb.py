@@ -35,7 +35,6 @@ if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type check
     from ..utils.ids import make_guid
     from ..utils.logging import sanitize_log_arg
     from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info
-    from ..utils.text import html_to_text
 else:  # pragma: no cover - support both package layouts at runtime
     try:
         from utils.env import get_bool_env
@@ -44,11 +43,9 @@ else:  # pragma: no cover - support both package layouts at runtime
 
     try:
         from utils.ids import make_guid
-        from utils.text import html_to_text
         from utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info
     except ModuleNotFoundError:
         from ..utils.ids import make_guid  # type: ignore
-        from ..utils.text import html_to_text  # type: ignore
         from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info  # type: ignore
 
     try:
@@ -525,8 +522,7 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         else:
             guid = raw_guid or make_guid(title, link)
         desc_html = _get_text(item, "description")
-        desc = html_to_text(desc_html)
-        desc = _clean_description(desc)
+        desc = _clean_description(desc_html)
         pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
 
         # Title Fallback for "poor" titles
