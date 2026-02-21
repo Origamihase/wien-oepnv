@@ -4,6 +4,7 @@ from unittest.mock import patch, MagicMock
 from src.utils.http import fetch_content_safe
 import socket
 import requests
+from urllib.parse import urlparse
 
 def test_fetch_content_safe_pins_dns():
     # Setup
@@ -71,5 +72,7 @@ def test_fetch_content_safe_https_skipped():
             # request(method, url, ...)
             called_url = args[1]
 
-            # URL should still contain hostname
-            assert "https://example.com" in called_url
+            # URL should still contain hostname, not be IP-pinned
+            parsed = urlparse(called_url)
+            assert parsed.scheme == "https"
+            assert parsed.hostname == "example.com"
