@@ -1,4 +1,5 @@
 import pytest
+from urllib.parse import urlparse
 from src.utils.http import _sanitize_url_for_error
 
 def test_sanitize_url_basic_auth():
@@ -29,7 +30,7 @@ def test_sanitize_url_mixed_auth_and_query():
     assert "user" not in sanitized
     assert "pass" not in sanitized
     assert "SECRET" not in sanitized
-    assert "example.com" in sanitized
+    assert urlparse(sanitized).hostname == "example.com"
 
 def test_sanitize_url_malformed():
     url = "http://["
