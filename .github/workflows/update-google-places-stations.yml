@@ -8,6 +8,8 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       GOOGLE_ACCESS_ID: ${{ secrets.GOOGLE_ACCESS_ID }}
       PLACES_INCLUDED_TYPES: train_station,subway_station,bus_station
