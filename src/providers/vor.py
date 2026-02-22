@@ -849,7 +849,7 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[Dict[s
 
         title = head or text or "Hinweis"
         if lines:
-            title = f"{lines[0]}: {title}" if title else lines[0]
+            title = f"{', '.join(lines)}: {title}" if title else ", ".join(lines)
 
         items.append(
             {
@@ -857,7 +857,7 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[Dict[s
                 "source": "VOR/VAO",
                 "category": "Störung",
                 "title": title,
-                "description": "\n".join(description_lines),
+                "description": "<br/>".join(description_lines),
                 "link": DEFAULT_INFO_LINK,
                 "pubDate": start_dt,
                 "starts_at": start_dt,

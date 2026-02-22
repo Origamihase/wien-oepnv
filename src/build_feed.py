@@ -1230,90 +1230,18 @@ def _emit_item(
     if len(title_out) > feed_config.TITLE_CHAR_LIMIT:
         title_out = title_out[: feed_config.TITLE_CHAR_LIMIT].rstrip() + " …"
 
-    desc_lines_raw = desc_clipped.split("\n")
-
-    date_range_line: Optional[str] = None
-    for line in desc_lines_raw:
-        match = DATE_RANGE_RE.match(line)
-        if match:
-            date_range_line = f"{match.group(1)} – {match.group(2)}"
-            break
-
-    removed_title_line: Optional[str] = None
-    if desc_lines_raw and desc_lines_raw[0].lower() in title_out.lower():
-        removed_title_line = desc_lines_raw[0]
-        desc_lines_raw = desc_lines_raw[1:]
-    filtered_lines = [
-        line.strip()
-        for line in desc_lines_raw
-        if line.strip() and line.strip().lower() != "zeitraum:"
-    ]
-
-    extra_prefixes = ("linien:", "betroffene haltestellen:")
-    extra_lines_raw: List[str] = []
-    desc_lines: List[str] = []
-    for line in filtered_lines:
-        lower_line = line.lower()
-        if any(lower_line.startswith(prefix) for prefix in extra_prefixes):
-            extra_lines_raw.append(line)
-        else:
-            desc_lines.append(line)
-
-    first_alpha_idx: Optional[int] = None
-    fallback_candidates = desc_lines if desc_lines else extra_lines_raw
-    if fallback_candidates:
-        fallback_line = fallback_candidates[0]
-    else:
-        sanitized_removed = (
-            _sanitize_text(removed_title_line) if removed_title_line else ""
-        )
-        fallback_line = sanitized_removed or title_out
-    for idx, line in enumerate(desc_lines):
-        if any(ch.isalpha() for ch in line):
-            first_alpha_idx = idx
-            fallback_line = line
-            break
-
-    desc_sentence = fallback_line
-    if first_alpha_idx is not None:
-        sentence_text = ""
-        sentence_found = False
-        for line in desc_lines[first_alpha_idx:]:
-            part = line.strip()
-            if not part:
-                continue
-            sentence_text = f"{sentence_text} {part}".strip() if sentence_text else part
-            if _SENTENCE_END_RE.search(sentence_text):
-                sentence_found = True
-                break
-
-        if sentence_found and sentence_text:
-            desc_sentence = sentence_text
-
-    desc_line = _sanitize_text(desc_sentence)
+    # Minimal cleanup
     title_out = _WHITESPACE_RE.sub(" ", title_out).strip()
-    desc_line = _WHITESPACE_CLEANUP_RE.sub(" ", desc_line).strip()
 
-    sanitized_extras: List[str] = []
-    for extra_line in extra_lines_raw:
-        sanitized = _sanitize_text(extra_line)
-        sanitized = _WHITESPACE_CLEANUP_RE.sub(" ", sanitized).strip()
-        if sanitized and sanitized != desc_line:
-            sanitized_extras.append(sanitized)
+    # We now trust the HTML content from the provider and truncation logic.
+    # No more aggressive line splitting or filtering.
+    desc_html = desc_clipped
 
+    # Append time range if available
     time_line = format_local_times(
         starts_at if isinstance(starts_at, datetime) else None,
         ends_at if isinstance(ends_at, datetime) else None,
     )
-    normalized_time_line = (time_line or "").strip()
-    normalized_time_line_first = (
-        normalized_time_line.split(" ", 1)[0] if normalized_time_line else ""
-    )
-    if date_range_line and (
-        not normalized_time_line
-        or normalized_time_line_first in {"Seit", "Ab"}
-    ):
-        time_line = date_range_line
     time_line = _sanitize_text(time_line)
     time_line = _WHITESPACE_CLEANUP_RE.sub(" ", time_line).strip()
     if time_line:
@@ -1322,16 +1250,12 @@ def _emit_item(
         if not time_line.endswith("]"):
             time_line = f"{time_line}]"
 
-    desc_parts: List[str] = []
-    if desc_line:
-        desc_parts.append(desc_line)
-    desc_parts.extend(sanitized_extras)
-    if time_line:
-        desc_parts.append(time_line)
-    desc_out = "\n".join(desc_parts)
+        # Append to description with a break if description is not empty
+        if desc_html:
+            desc_html += f"<br/>{time_line}"
+        else:
+            desc_html = time_line
 
-    # Double-escaping logic for HTML-rendering RSS readers
-    desc_html = desc_out.replace("\n", "<br/>")
     # For title, we now rely on ElementTree's escaping which is safer/cleaner than manual CDATA.
     # ET will automatically escape <, >, & to &lt;, &gt;, &amp;.
 
