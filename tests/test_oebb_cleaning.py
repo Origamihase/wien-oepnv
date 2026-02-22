@@ -1,4 +1,4 @@
-from src.providers.oebb import _clean_description
+from src.providers.oebb import _clean_description, _clean_title_keep_places
 from src.utils.text import html_to_text
 
 def test_clean_description_arrow_brackets():
@@ -50,3 +50,25 @@ def test_double_escaped_entities():
     desc = "Wien &amp;lt; ↔ &amp;gt; Salzburg"
     cleaned = _clean_description(desc)
     assert cleaned == "Wien ↔ Salzburg"
+
+def test_clean_description_numeric_entities():
+    desc = "Wien &#60; ↔ &#62; Salzburg"
+    cleaned = _clean_description(desc)
+    assert cleaned == "Wien ↔ Salzburg"
+
+def test_clean_title_numeric_entities():
+    # "Wien" might be canonicalized to "Wien Hauptbahnhof"
+    title = "Wien &#60; ↔ &#62; Salzburg"
+    cleaned = _clean_title_keep_places(title)
+    # Verify arrow is clean and entities are gone
+    assert "↔" in cleaned
+    assert "&#60;" not in cleaned
+    assert "&#62;" not in cleaned
+    assert "<" not in cleaned
+    assert ">" not in cleaned
+
+def test_clean_title_unknown_entities():
+    # If stations are unknown, it should still clean the arrow
+    title = "FooBar &#60; ↔ &#62; BazQux"
+    cleaned = _clean_title_keep_places(title)
+    assert cleaned == "FooBar ↔ BazQux"
