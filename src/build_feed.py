@@ -76,7 +76,7 @@ try:  # pragma: no cover - allow running as script or package
     from utils.files import atomic_write
     from utils.http import validate_http_url
     from utils.locking import file_lock
-    from utils.text import truncate_html
+    from utils.text import html_to_text, truncate_html
 except ModuleNotFoundError:  # pragma: no cover
     from .utils.cache import (
         cache_modified_at,
@@ -86,7 +86,7 @@ except ModuleNotFoundError:  # pragma: no cover
     from .utils.files import atomic_write
     from .utils.http import validate_http_url
     from .utils.locking import file_lock
-    from .utils.text import truncate_html
+    from .utils.text import html_to_text, truncate_html
 
 log = logging.getLogger("build_feed")
 
@@ -1222,8 +1222,14 @@ def _emit_item(
         if age <= timedelta(minutes=feed_config.FRESH_PUBDATE_WINDOW_MIN):
             pubDate = now
 
-    # TV-freundliche Kürzung (Beschreibung darf HTML enthalten)
-    desc_clipped = _clip_text_html(raw_desc, feed_config.DESCRIPTION_CHAR_LIMIT)
+    # Task: Strict 2-line Layout (Summary + Timeframe)
+    # Line 1: Concise plain text summary (no HTML artifacts)
+    summary = html_to_text(raw_desc, collapse_newlines=True)
+    summary = _sanitize_text(summary).strip()
+
+    # Clip summary if too long
+    if len(summary) > feed_config.DESCRIPTION_CHAR_LIMIT:
+        summary = summary[: feed_config.DESCRIPTION_CHAR_LIMIT].rstrip() + " …"
 
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(html.unescape(raw_title))
@@ -1233,11 +1239,7 @@ def _emit_item(
     # Minimal cleanup
     title_out = _WHITESPACE_RE.sub(" ", title_out).strip()
 
-    # We now trust the HTML content from the provider and truncation logic.
-    # No more aggressive line splitting or filtering.
-    desc_html = desc_clipped
-
-    # Append time range if available
+    # Line 2: Timeframe
     time_line = format_local_times(
         starts_at if isinstance(starts_at, datetime) else None,
         ends_at if isinstance(ends_at, datetime) else None,
@@ -1250,11 +1252,14 @@ def _emit_item(
         if not time_line.endswith("]"):
             time_line = f"{time_line}]"
 
-        # Append to description with a break if description is not empty
-        if desc_html:
-            desc_html += f"<br/>{time_line}"
-        else:
-            desc_html = time_line
+    # Combine
+    desc_parts = []
+    if summary:
+        desc_parts.append(summary)
+    if time_line:
+        desc_parts.append(time_line)
+
+    desc_html = "<br/>".join(desc_parts)
 
     # For title, we now rely on ElementTree's escaping which is safer/cleaner than manual CDATA.
     # ET will automatically escape <, >, & to &lt;, &gt;, &amp;.

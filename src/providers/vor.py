@@ -823,6 +823,9 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[Dict[s
     Searches for 'Message' objects within the DepartureBoard or root structure.
     Extracts title, lines, affected stops, and time ranges.
     """
+    info = station_info(station_id)
+    station_name = info.name if info else None
+
     items: List[Dict[str, Any]] = []
     for message in _iter_messages(root):
         head = str(message.get("head") or message.get("name") or "").strip()
@@ -839,17 +842,19 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[Dict[s
             description_lines.append(text)
         elif head:
             description_lines.append(head)
-        if lines:
-            description_lines.append("Linien: " + ", ".join(lines))
-        if stops:
-            description_lines.append("Betroffene Haltestellen: " + ", ".join(stops))
-        date_range = _format_date_range(start_dt, end_dt)
-        if date_range:
-            description_lines.append(f"[{date_range}]")
+
+        # Keine Linien, Stops oder DateRange mehr anhängen (Task: Strict 2-line Layout)
 
         title = head or text or "Hinweis"
         if lines:
             title = f"{', '.join(lines)}: {title}" if title else ", ".join(lines)
+
+        # Ensure station context in title (Task: Title must indicate location)
+        if station_name and station_name not in title:
+            if lines:
+                title = f"{title} ({station_name})"
+            else:
+                title = f"{station_name}: {title}"
 
         items.append(
             {
