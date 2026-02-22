@@ -60,6 +60,10 @@ def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
 
 
 def test_save_request_count_flushes_and_fsyncs(monkeypatch, tmp_path):
+    # Reset cache to ensure we hit the write path
+    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
+
     target_file = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
 
@@ -108,6 +112,10 @@ def test_save_request_count_flushes_and_fsyncs(monkeypatch, tmp_path):
 
 
 def test_save_request_count_returns_previous_on_lock_failure(monkeypatch, tmp_path):
+    # Reset cache to ensure we try to acquire lock
+    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
+
     target_file = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
 
@@ -140,6 +148,10 @@ def test_save_request_count_returns_previous_on_lock_failure(monkeypatch, tmp_pa
 
 
 def test_save_request_count_returns_previous_on_replace_failure(monkeypatch, tmp_path):
+    # Reset cache to ensure we try to replace file
+    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
+
     target_file = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
 

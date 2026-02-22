@@ -26,7 +26,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
-from typing import Any, Dict, Iterable, Iterator, List, Mapping, Sequence
+from typing import Any, Dict, Iterable, Iterator, List, Mapping, Sequence, cast
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
 import requests
@@ -35,6 +35,7 @@ from requests.auth import AuthBase
 
 from zoneinfo import ZoneInfo
 
+from ..feed_types import FeedItem, VorMessage
 from ..utils.env import read_secret
 from ..utils.files import atomic_write
 from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
@@ -82,6 +83,8 @@ _VOR_AUTHORIZATION_HEADER = ""  # nosec B105
 
 # Global lock for thread-safe quota management within the process
 _QUOTA_LOCK = threading.Lock()
+# Local cache to optimize quota checks (fail-fast)
+_QUOTA_CACHE: Dict[str, Any] = {"date": None, "count": 0}
 
 
 def _get_secrets() -> List[str]:
@@ -763,7 +766,7 @@ def _format_date_range(start: datetime | None, end: datetime | None) -> str:
     return ""
 
 
-def _build_guid(station_id: str, message: Mapping[str, Any]) -> str:
+def _build_guid(station_id: str, message: VorMessage) -> str:
     raw_id = str(message.get("id") or "").strip()
     if raw_id:
         # Security: Bound the length of external IDs to prevent DoS/memory issues
@@ -784,7 +787,7 @@ def _build_guid(station_id: str, message: Mapping[str, Any]) -> str:
     return f"vor:{station_id}:{fallback}"
 
 
-def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[Dict[str, Any]]:
+def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[FeedItem]:
     """
     Parse a StationBoard/TrafficInfo JSON response and extract event items.
 
@@ -794,8 +797,9 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[Dict[s
     info = station_info(station_id)
     station_name = info.name if info else None
 
-    items: List[Dict[str, Any]] = []
-    for message in _iter_messages(root):
+    items: List[FeedItem] = []
+    for raw_msg in _iter_messages(root):
+        message = cast(VorMessage, raw_msg)
         head = str(message.get("head") or message.get("name") or "").strip()
         text = str(message.get("text") or message.get("description") or "").strip()
         lines = _extract_lines(message)
@@ -1034,26 +1038,34 @@ def resolve_station_ids(names: Iterable[str]) -> List[str]:
 
 
 def load_request_count() -> tuple[str | None, int]:
+    # Check memory cache first
+    vienna_tz = ZoneInfo("Europe/Vienna")
+    today_local = datetime.now(vienna_tz).strftime("%Y-%m-%d")
+
+    if _QUOTA_CACHE["date"] == today_local:
+        # If we have a cached value for today, it might be stale but it's a lower bound.
+        # However, for accurate reading we fall through to file.
+        pass
+
     try:
         data = json.loads(REQUEST_COUNT_FILE.read_text(encoding="utf-8"))
     except (FileNotFoundError, OSError, json.JSONDecodeError):
         return (None, 0)
-
-    # Strict validation: Only accept if the schema is perfect and date matches today (UTC)
-    # The schema must have "date" and "requests".
-    # FIX: Use Vienna timezone for day boundaries ("Twilight Zone" fix)
-    vienna_tz = ZoneInfo("Europe/Vienna")
-    today_local = datetime.now(vienna_tz).strftime("%Y-%m-%d")
 
     if not isinstance(data, dict):
         return (None, 0)
 
     stored_date = data.get("date")
     # Using 'requests' key as per new strict schema requirement.
-    # If key is missing or date doesn't match today, we treat as corrupt/expired.
     if stored_date == today_local and "requests" in data:
         count = data["requests"]
-        return (stored_date, int(count) if isinstance(count, int) else 0)
+        int_count = int(count) if isinstance(count, int) else 0
+
+        # Update cache
+        _QUOTA_CACHE["date"] = stored_date
+        _QUOTA_CACHE["count"] = int_count
+
+        return (stored_date, int_count)
 
     # Discard legacy formats (raw integers, 'count' key) or old dates
     return (None, 0)
@@ -1066,6 +1078,11 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
     vienna_tz = ZoneInfo("Europe/Vienna")
     now_local = datetime.now(vienna_tz)
     date_iso = now_local.strftime("%Y-%m-%d")
+
+    # Fail-fast check using memory cache
+    if _QUOTA_CACHE["date"] == date_iso and _QUOTA_CACHE["count"] >= MAX_REQUESTS_PER_DAY:
+        return _QUOTA_CACHE["count"]
+
     lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
 
     try:
@@ -1092,6 +1109,11 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
                     ) as handle:
                         json.dump(payload, handle, ensure_ascii=False)
                         handle.write("\n")
+
+                    # Update memory cache
+                    _QUOTA_CACHE["date"] = date_iso
+                    _QUOTA_CACHE["count"] = new_count
+
                 except OSError:
                     return previous_count
                 return new_count
@@ -1254,7 +1276,7 @@ def _fetch_departure_board_for_station(
             local_session.close()
 
 
-def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str, Any]]:
+def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[FeedItem]:
     """
     Fetch disruptions for the given stations using the departureBoard endpoint.
     Iterates over the configured or provided stations and extracts warnings/infos.
@@ -1306,7 +1328,7 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
         len(selected_ids),
     )
 
-    results: List[Dict[str, Any]] = []
+    results: List[FeedItem] = []
     failures = 0
     successes = 0
 
@@ -1395,7 +1417,7 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[Dict[str
     return results
 
 
-def fetch_events(station_ids: List[str] | None = None) -> List[Dict[str, Any]]:
+def fetch_events(station_ids: List[str] | None = None) -> List[FeedItem]:
     """
     Main entry point for VOR provider.
     Delegates to fetch_vor_disruptions.

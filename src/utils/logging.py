@@ -6,7 +6,10 @@ import re
 from typing import Any, List, Tuple
 
 # Precompiled regexes for sanitization
-_CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f-\x9f]")
+# Extended to include BiDi control characters (Trojan Source) and Zero-Width characters
+_CONTROL_CHARS_RE = re.compile(
+    r"[\x00-\x1f\x7f-\x9f\u200b-\u200d\u202a-\u202e\u2066-\u2069\ufeff]"
+)
 _LOG_INJECTION_RE = re.compile(r"[\n\r\t]")
 # ANSI escape codes: comprehensive matching for CSI, OSC, Fe, and 2-byte sequences
 # Matches:
