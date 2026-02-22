@@ -36,27 +36,11 @@ if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type check
     from ..utils.logging import sanitize_log_arg
     from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info
 else:  # pragma: no cover - support both package layouts at runtime
-    try:
-        from utils.env import get_bool_env
-    except ModuleNotFoundError:
-        from ..utils.env import get_bool_env  # type: ignore
-
-    try:
-        from utils.ids import make_guid
-        from utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info
-    except ModuleNotFoundError:
-        from ..utils.ids import make_guid  # type: ignore
-        from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info  # type: ignore
-
-    try:
-        from utils.http import session_with_retries, validate_http_url, fetch_content_safe
-    except ModuleNotFoundError:
-        from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
-
-    try:
-        from utils.logging import sanitize_log_arg
-    except ModuleNotFoundError:
-        from ..utils.logging import sanitize_log_arg  # type: ignore
+    from ..utils.env import get_bool_env  # type: ignore
+    from ..utils.ids import make_guid  # type: ignore
+    from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info  # type: ignore
+    from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
+    from ..utils.logging import sanitize_log_arg  # type: ignore
 
 from defusedxml import ElementTree as ET
 

@@ -14,9 +14,8 @@ from requests.exceptions import RequestException
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SRC_DIR = REPO_ROOT / "src"
-if str(SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(SRC_DIR))
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 
 def _seed_station_ids_from_file() -> None:
@@ -26,9 +25,9 @@ def _seed_station_ids_from_file() -> None:
         return
 
     try:
-        from utils.stations import vor_station_ids
+        from src.utils.stations import vor_station_ids
     except ModuleNotFoundError:  # pragma: no cover - fallback for src layout
-        from src.utils.stations import vor_station_ids  # type: ignore
+        from utils.stations import vor_station_ids  # type: ignore
 
     ids_from_directory = ",".join(vor_station_ids())
     if ids_from_directory:
@@ -49,15 +48,15 @@ def _seed_station_ids_from_file() -> None:
 
 _seed_station_ids_from_file()
 
-from providers.vor import (  # noqa: E402  (import after path setup)
+from src.providers.vor import (  # noqa: E402  (import after path setup)
     MAX_REQUESTS_PER_DAY,
     fetch_events,
     load_request_count,
     get_configured_stations,
     select_stations_for_run,
 )
-from utils.cache import write_cache  # noqa: E402
-from utils.serialize import serialize_for_cache  # noqa: E402
+from src.utils.cache import write_cache  # noqa: E402
+from src.utils.serialize import serialize_for_cache  # noqa: E402
 
 
 logger = logging.getLogger("update_vor_cache")
