@@ -380,7 +380,6 @@ Die detaillierte API-Referenz ist vollständig in `docs/reference/manuals/Handbu
 - `docs/reference/` – Endpunktbeschreibungen und Beispielanfragen.
 - `docs/how-to/` – Schritt-für-Schritt-Anleitungen (z. B. Versionsabfragen).
 - `docs/examples/` – Shell-Snippets, etwa `version-check.sh`.
-- `docs/vor_api_review.md`, `docs/status_vor_api.md` – Audit- und Statusberichte.
 
 Der Abschnitt „VOR ergänzen“ im Stationskapitel erläutert, wie API-basierte Stationsdaten in das Verzeichnis aufgenommen werden.
 
