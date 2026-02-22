@@ -164,3 +164,64 @@ def test_fuzzy_merge_recursive():
     merged = deduplicate_fuzzy(items)
     assert len(merged) == 1
     assert "1/2/3/4/5" in merged[0]["title"]
+
+
+def test_fuzzy_merge_provider_priority_vor_over_oebb():
+    """Verify that VOR data is prioritized over ÖBB data."""
+    items = [
+        {
+            "title": "1/2: Störung",
+            "description": "VOR Details.",
+            "guid": "vor_guid",
+            "source": "VOR",
+            "lines": ["1", "2"] # Note: helper parses title if lines missing
+        },
+        {
+            "title": "1/2: Störung",
+            "description": "ÖBB Details.",
+            "guid": "oebb_guid",
+            "source": "ÖBB",
+            "lines": ["1", "2"]
+        }
+    ]
+
+    # Run dedupe
+    merged = deduplicate_fuzzy(items)
+    assert len(merged) == 1
+    item = merged[0]
+
+    # Should keep VOR as base (source, guid)
+    assert item["source"] == "VOR"
+    assert item["guid"] == "vor_guid"
+
+    # Description should contain both if unique
+    assert "VOR Details." in item["description"]
+    assert "ÖBB Details." in item["description"]
+
+def test_fuzzy_merge_provider_priority_oebb_over_vor_order():
+    """Verify that even if ÖBB comes first, VOR wins the merge but keeps VOR data."""
+    items = [
+        {
+            "title": "1/2: Störung",
+            "description": "ÖBB Details.",
+            "guid": "oebb_guid",
+            "source": "ÖBB"
+        },
+        {
+            "title": "1/2: Störung",
+            "description": "VOR Details.",
+            "guid": "vor_guid",
+            "source": "VOR"
+        }
+    ]
+
+    merged = deduplicate_fuzzy(items)
+    assert len(merged) == 1
+    item = merged[0]
+
+    # VOR item should replace ÖBB item in-place or be the result
+    # The logic says: if is_oebb_existing and is_vor_item -> Replace Existing with Item (VOR)
+    assert item["source"] == "VOR"
+    assert item["guid"] == "vor_guid"
+    assert "VOR Details." in item["description"]
+    assert "ÖBB Details." in item["description"]

@@ -68,6 +68,9 @@ RETRY_AFTER_MAX_SEC = 120.0
 DEFAULT_BUS_INCLUDE_PATTERN = r"(?i)^(?:Regionalbus|Bus|AST)"
 DEFAULT_BUS_EXCLUDE_PATTERN = r"(?i)Ersatzverkehr"
 
+# Limit concurrent station fetches to avoid thread exhaustion
+VOR_MAX_WORKERS = 10
+
 ZONE_VIENNA = ZoneInfo("Europe/Vienna")
 
 VOR_USER_AGENT = os.getenv("VOR_USER_AGENT", DEFAULT_USER_AGENT)
@@ -1349,7 +1352,9 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[FeedItem
 
     with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
         apply_authentication(session)
-        with ThreadPoolExecutor(max_workers=len(selected_ids) or 1) as executor:
+        # Limit max_workers to prevent thread explosion if many stations are selected
+        max_workers = min(len(selected_ids) or 1, VOR_MAX_WORKERS)
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = {
                 executor.submit(_fetch_departure_board_for_station, sid, now_local, request_counter, session): sid
                 for sid in selected_ids

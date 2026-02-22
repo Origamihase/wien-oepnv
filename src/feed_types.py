@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Dict, List, NotRequired, TypedDict
+from typing import Any, Dict, List, NotRequired, Protocol, TypedDict, runtime_checkable
 
 
 class FeedItem(TypedDict):
@@ -30,6 +30,13 @@ class FeedItem(TypedDict):
     _calculated_dedupe_key: NotRequired[str]
     _calculated_recency: NotRequired[datetime]
     _calculated_end: NotRequired[datetime]
+
+
+@runtime_checkable
+class Provider(Protocol):
+    """Protocol for disruption providers."""
+    def fetch_events(self, *args: Any, **kwargs: Any) -> List[FeedItem]:
+        ...
 
 
 class VorMessage(TypedDict):

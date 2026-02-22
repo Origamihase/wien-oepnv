@@ -24,11 +24,12 @@ import re
 import time
 from pathlib import Path
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from typing import List, Optional
 from email.utils import parsedate_to_datetime
 
 import requests
 
+from ..feed_types import FeedItem
 from ..utils.env import get_bool_env
 from ..utils.ids import make_guid
 from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info
@@ -494,7 +495,7 @@ def _parse_dt_rfc2822(s: str) -> Optional[datetime]:
         return None
 
 # ---------------- Public ----------------
-def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
+def fetch_events(timeout: int = 25) -> List[FeedItem]:
     root = _fetch_xml(OEBB_URL, timeout=timeout)
 
     if root is None:
@@ -504,7 +505,7 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
     if channel is None:
         return []
 
-    out: List[Dict[str, Any]] = []
+    out: List[FeedItem] = []
     for item in channel.findall("item"):
         raw_title = _get_text(item, "title")
         # html.unescape removed as per instruction
