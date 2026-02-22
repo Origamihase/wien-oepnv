@@ -65,8 +65,16 @@ BAHNHOF_TRIM_RE = re.compile(
 # treat simple hyphen as separator only when surrounded by spaces
 # Also swallow surrounding "decorations" like < > or &lt; &gt; if they wrap the arrow
 # Also support double-escaped entities like &amp;lt; and &amp;gt; (seen in some feeds)
-ARROW_ANY_RE    = re.compile(r"\s*(?:(?:<|&lt;|&amp;lt;|&#60;|&#x3C;)+\s*)?(?:<=>|<->|<>|→|↔|=>|->|<-|=|–|—|\s-\s)(?:\s*(?:>|&gt;|&amp;gt;|&#62;|&#x3E;)+)?\s*")
-DESC_CLEANUP_RE = re.compile(r"(?:(?:<|&lt;|&amp;lt;|&#60;|&#x3C;)+\s*)(?:<=>|<->|<>|→|↔|=>|->|<-)(?:\s*(?:>|&gt;|&amp;gt;|&#62;|&#x3E;)+)|(?:<->|<=>)")
+ARROW_ANY_RE    = re.compile(
+    r"\s*(?:(?:<|&lt;|&amp;lt;|&#60;|&#x3C;)+\s*)?"
+    r"(?:<=>|<->|<>|→|↔|=>|->|<-|=|–|—|\s-\s)"
+    r"(?:\s*(?:>|&gt;|&amp;gt;|&#62;|&#x3E;)+)?\s*"
+)
+DESC_CLEANUP_RE = re.compile(
+    r"(?:(?:<|&lt;|&amp;lt;|&#60;|&#x3C;)+\s*)"
+    r"(?:<=>|<->|<>|→|↔|=>|->|<-)"
+    r"(?:\s*(?:>|&gt;|&amp;gt;|&#62;|&#x3E;)+)|(?:<->|<=>)"
+)
 
 COLON_PREFIX_RE = re.compile(
     r"""^\s*(?:Update\s*\d+\s*\([^)]*\)\s*)?
