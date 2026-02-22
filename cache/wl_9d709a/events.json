@@ -238,5 +238,53 @@
     "starts_at": "2026-02-22T04:45:20+01:00",
     "ends_at": "2026-02-23T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-02-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Gleisschaden",
+    "description": "Linie 62: Kein Betrieb zwischen Bahnhof Meidling S U, Dörfelstraße und Wattmanngasse. Weichen Sie ersatzweise auf die Linien 60, 53A, 56A, 56B, 58A, 58B, 62A und 63A aus. Voraussichtliche Dauer: 18:30 Uhr. Grund: Gleisschaden im Bereich Hetzendorfer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9ae819da26999d3a57dc4e1bc809291590eac95a77887208a1310c4aeed7e8aa",
+    "pubDate": "2026-02-22T15:50:00+01:00",
+    "starts_at": "2026-02-22T15:50:00+01:00",
+    "ends_at": "2026-02-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-02-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Gleisschaden Betrieb ab Wattmanngasse",
+    "description": "Gleisschaden Betrieb ab Wattmanngasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c581535f501a01142add950358b15d07de9269780c35ac4f9a5dd926cb459d4",
+    "pubDate": "2026-02-22T15:57:50+01:00",
+    "starts_at": "2026-02-22T15:57:53+01:00",
+    "ends_at": "2026-02-22T19:00:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-02-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Gleisschaden Betrieb ab Dörfelstraße",
+    "description": "Gleisschaden Betrieb ab Dörfelstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a2a071932e59ff5108be3679dc78393920222783c62f251d8c4e117409d174b4",
+    "pubDate": "2026-02-22T15:57:50+01:00",
+    "starts_at": "2026-02-22T15:57:53+01:00",
+    "ends_at": "2026-02-22T19:00:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-02-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Verkehrsunfall",
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d9c616ff8eaab98c987f46c03c04b116e60398ec5e67893f172fc419d4d258b5",
+    "pubDate": "2026-02-22T16:17:00+01:00",
+    "starts_at": "2026-02-22T16:17:00+01:00",
+    "ends_at": "2026-02-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=7A|D=2026-02-22"
   }
 ]
