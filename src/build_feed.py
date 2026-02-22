@@ -1227,9 +1227,26 @@ def _emit_item(
     summary = html_to_text(raw_desc, collapse_newlines=True)
     summary = _sanitize_text(summary).strip()
 
-    # Clip summary if too long
-    if len(summary) > feed_config.DESCRIPTION_CHAR_LIMIT:
-        summary = summary[: feed_config.DESCRIPTION_CHAR_LIMIT].rstrip() + " …"
+    # ÖBB-spezifische Datumspräfixe (z.B. "17.09.2026 - 19.11.2026 • ") entfernen
+    summary = re.sub(r"^\d{2}\.\d{2}\.\d{4}\s*-\s*\d{2}\.\d{2}\.\d{4}\s*•\s*", "", summary)
+    summary = re.sub(r"^\d{2}\.\d{2}\.\d{4}\s*•\s*", "", summary)
+
+    # Bulletpoints auflösen, um einen fließenden Satz zu bilden
+    summary = summary.replace(" • ", " ").replace("•", " ")
+    summary = _WHITESPACE_CLEANUP_RE.sub(" ", summary).strip()
+
+    # Extrahiere maximal die ersten zwei Sätze
+    sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+', summary) if s.strip()]
+    if sentences:
+        short_summary = sentences[0]
+        # Falls der erste Satz sehr kurz ist, nimm den zweiten noch dazu
+        if len(short_summary) < 60 and len(sentences) > 1:
+            short_summary += " " + sentences[1]
+        summary = short_summary
+
+    # Harte Begrenzung für den TV-Screen (max. 180 Zeichen)
+    if len(summary) > 180:
+        summary = summary[:175].rsplit(' ', 1)[0] + " …"
 
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(html.unescape(raw_title))

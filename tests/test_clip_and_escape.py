@@ -63,16 +63,17 @@ def test_emit_item_sanitizes_description(monkeypatch):
     monkeypatch.setattr(bf.feed_config, "DESCRIPTION_CHAR_LIMIT", 5)
     now = datetime(2024, 1, 1)
     ident, xml = _emit_item_str(bf, {"title": "X", "description": "<b>Tom & Jerry</b>"}, now, {})
-    # We now extract text and collapse newlines, then truncate if needed
-    # "Tom & Jerry" (11 chars) -> truncated to 5 -> "Tom & …"
-    assert "<description><![CDATA[Tom & …]]></description>" in xml
+    # DESCRIPTION_CHAR_LIMIT is ignored for TV output (fixed at 180)
+    # We verify that HTML is stripped and full text (short enough) is preserved
+    assert "<description><![CDATA[Tom & Jerry]]></description>" in xml
 
 
 def test_emit_item_keeps_bullet_separator(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     now = datetime(2024, 1, 1)
     ident, xml = _emit_item_str(bf, {"title": "X", "description": "foo • bar"}, now, {})
-    assert "foo • bar" in xml
+    # Bullets are now replaced by spaces for TV output
+    assert "foo bar" in xml
     assert "foo\nbar" not in xml
 
 
@@ -150,8 +151,8 @@ def test_emit_item_skips_leading_date_line(monkeypatch):
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    # We preserve the date line now
-    assert "24.01.2024" in desc_text
+    # Date line is removed for TV output
+    assert "24.01.2024" not in desc_text
     assert "Ersatzverkehr eingerichtet" in desc_text
 
 
@@ -189,8 +190,8 @@ def test_emit_item_oebb_multiline_sentence(monkeypatch):
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    # We now extract text and collapse whitespace (newlines -> space or bullet)
-    assert "06.12.2025 - 09.12.2025" in desc_text
+    # Date range removed for TV output
+    assert "06.12.2025 - 09.12.2025" not in desc_text
     assert "Wegen Bauarbeiten können" in desc_text
     # Ensure newlines are gone
     assert "\n" not in desc_text
@@ -207,8 +208,8 @@ def test_emit_item_uses_date_range_from_description(monkeypatch):
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    # We collapse newlines
-    assert "06.12.2025 - 09.12.2025" in desc_text
+    # Date range removed
+    assert "06.12.2025 - 09.12.2025" not in desc_text
     assert "Wegen Bauarbeiten" in desc_text
     assert "\n" not in desc_text
 
@@ -229,8 +230,8 @@ def test_emit_item_since_line_replaced_by_description_range(monkeypatch):
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    # Original description (collapsed) + appended date line via <br/>
-    assert "06.12.2025 - 09.12.2025" in desc_text
+    # Date range removed, but time line appended
+    assert "06.12.2025 - 09.12.2025" not in desc_text
     assert "Wegen Bauarbeiten" in desc_text
     assert "<br/>[Seit 16.09.2025]" in desc_text
 

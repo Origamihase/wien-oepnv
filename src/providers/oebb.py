@@ -223,7 +223,7 @@ def _clean_title_keep_places(t: str) -> str:
         t = parts[0]
     t = MULTI_ARROW_RE.sub(" ↔ ", t)
     t = re.sub(r"\s{2,}", " ", t)
-    t = re.sub(r"[<>«»‹›]+", "", t)
+    t = re.sub(r"&lt;|&gt;|[<>«»‹›]+", "", t)
     return t.strip()
 
 # ---------------- Region / Filter Logic ----------------

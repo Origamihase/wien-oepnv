@@ -89,6 +89,7 @@ def _tidy_title_wl(title: str) -> str:
     if stripped and _is_informative(stripped):
         t = stripped
     t = re.sub(r"[<>«»‹›]+", "", t)  # spitze Klammern/Anführungen
+    t = re.sub(r"\s+ab\s+\d{1,2}\.\d{1,2}\.(?:\d{4})?", "", t, flags=re.IGNORECASE)
     return re.sub(r"\s{2,}", " ", t).strip(" -–—:/\t")
 
 
