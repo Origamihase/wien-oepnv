@@ -40,7 +40,7 @@ def test_main_filters_items_older_than_max(monkeypatch, tmp_path):
 
     captured = {}
 
-    def fake_make_rss(items, now_param, state):
+    def fake_make_rss(items, now_param, state, deletions=None):
         captured["items"] = items
         return ""
 
@@ -75,7 +75,7 @@ def test_main_filters_items_older_than_absolute(monkeypatch, tmp_path):
 
     captured = {}
 
-    def fake_make_rss(items, now_param, state):
+    def fake_make_rss(items, now_param, state, deletions=None):
         captured["items"] = items
         return ""
 

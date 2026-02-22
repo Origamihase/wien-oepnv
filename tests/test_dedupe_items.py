@@ -41,7 +41,7 @@ def test_main_dedupes_items(monkeypatch, tmp_path):
 
     captured = {}
 
-    def fake_make_rss(items, now, state):
+    def fake_make_rss(items, now, state, deletions=None):
         captured["items"] = items
         return ""
 

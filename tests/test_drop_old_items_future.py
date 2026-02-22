@@ -44,7 +44,7 @@ def test_future_ends_at_skips_max_age(monkeypatch):
         "pubDate": now - timedelta(days=541),
         "ends_at": now + timedelta(days=1),
     }
-    res = build_feed._drop_old_items([future, no_end, too_old], now, {})
+    res, _ = build_feed._drop_old_items([future, no_end, too_old], now, {})
     assert res == [future]
 
 
@@ -68,5 +68,5 @@ def test_first_seen_used_when_no_dates(monkeypatch):
         keep_ident: {"first_seen": (now - timedelta(days=1)).isoformat()},
     }
 
-    res = build_feed._drop_old_items([old, keep, new_item], now, state)
+    res, _ = build_feed._drop_old_items([old, keep, new_item], now, state)
     assert res == [keep, new_item]
