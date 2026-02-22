@@ -53,8 +53,16 @@ jobs:
             --data-urlencode "input=Wien Hauptbahnhof" \
             --data-urlencode "format=json" \
             --data-urlencode "accessId=${VOR_ACCESS_ID}")
-          echo "location.name -> HTTP ${code}"
+          echo "location.name -> HTTP ${code}" | tee vor_api_status.txt
           test "$code" = "200"
+
+      - name: Upload VOR API Status
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: vor-api-status
+          path: vor_api_status.txt
+          retention-days: 1
 
       - name: Run pytest
         if: ${{ success() }}
