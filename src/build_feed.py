@@ -822,14 +822,14 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     supports: bool = supports_timeout,
                     semaphore: Optional[BoundedSemaphore] = semaphore,
                 ) -> Any:
-                    timeout_arg = timeout_value if timeout_value > 0 else None
+                    timeout_arg = timeout_value if timeout_value > 0 else 0.001
                     if semaphore is None:
                         return _call_fetch_with_timeout(fetch, timeout_arg, supports)
 
                     # Prevent thread starvation by enforcing timeout on semaphore acquisition
                     # This ensures that if the provider is deadlocked/overloaded, we don't block
                     # the executor worker forever.
-                    acquired = semaphore.acquire(timeout=timeout_value if timeout_value > 0 else None)
+                    acquired = semaphore.acquire(timeout=timeout_arg)
                     if not acquired:
                          raise TimeoutError(f"Semaphore acquisition timed out after {timeout_value}s")
 
@@ -933,7 +933,7 @@ def _drop_old_items(
     items: List[FeedItem],
     now: datetime,
     state: Dict[str, Dict[str, Any]],
-) -> List[FeedItem]:
+) -> Tuple[List[FeedItem], Set[str]]:
     """Entferne Items, die zu alt sind oder bereits beendet wurden.
 
     Neben ``pubDate``/``starts_at`` wird – falls vorhanden – ``first_seen`` aus dem
@@ -942,6 +942,7 @@ def _drop_old_items(
     """
 
     out: List[FeedItem] = []
+    dropped: Set[str] = set()
     now_utc = _to_utc(now)
     for it in items:
         if not isinstance(it, dict):
@@ -953,6 +954,7 @@ def _drop_old_items(
         ends_at = it.get("ends_at")
         if isinstance(ends_at, datetime):
             if _to_utc(ends_at) < now_utc - timedelta(minutes=feed_config.ENDS_AT_GRACE_MINUTES):
+                dropped.add(ident)
                 continue
 
         dt = it.get("pubDate") or it.get("starts_at")
@@ -977,15 +979,17 @@ def _drop_old_items(
 
         if age_days is not None:
             if age_days > feed_config.ABSOLUTE_MAX_AGE_DAYS:
+                dropped.add(ident)
                 continue
             if age_days > feed_config.MAX_ITEM_AGE_DAYS:
                 if not (
                     isinstance(ends_at, datetime) and _to_utc(ends_at) > now_utc
                 ):
+                    dropped.add(ident)
                     continue
 
         out.append(it)
-    return out
+    return out, dropped
 
 
 def _dedupe_key_for_item(
@@ -1350,7 +1354,10 @@ def _emit_item(
 
 
 def _make_rss(
-    items: List[FeedItem], now: datetime, state: Dict[str, Dict[str, Any]]
+    items: List[FeedItem],
+    now: datetime,
+    state: Dict[str, Dict[str, Any]],
+    deletions: Optional[Set[str]] = None,
 ) -> str:
     """
     Generate the full RSS XML document from a list of items using ElementTree.
@@ -1359,6 +1366,7 @@ def _make_rss(
         items: List of item dictionaries.
         now: Current timestamp.
         state: State dictionary for tracking items.
+        deletions: IDs to be removed from the state.
 
     Returns:
         The generated RSS XML string with CDATA sections.
@@ -1389,7 +1397,7 @@ def _make_rss(
         emitted += 1
 
     try:
-        _save_state(state)
+        _save_state(state, deletions=deletions)
     except Exception as e:
         log.warning(
             "State speichern fehlgeschlagen (%s) – Feed wird trotzdem zurückgegeben.",
@@ -1436,7 +1444,7 @@ def lint() -> int:
         raw_count = len(items)
         _normalize_item_datetimes(items)
 
-        filtered_items = _drop_old_items(items, now, state)
+        filtered_items, _ = _drop_old_items(items, now, state)
         filtered_count = len(filtered_items)
         duplicate_summaries = _summarize_duplicates(filtered_items)
         duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
@@ -1587,7 +1595,7 @@ def main() -> int:
         log.debug("Zeitstempel normalisiert in %.2fs", normalize_duration)
 
         filter_start = perf_counter()
-        items = _drop_old_items(items, now, state)
+        items, dropped_ids = _drop_old_items(items, now, state)
         filter_duration = perf_counter() - filter_start
         filtered_count = len(items)
         log.info(
@@ -1644,7 +1652,7 @@ def main() -> int:
         )
 
         rss_start = perf_counter()
-        rss = _make_rss(items, now, state)
+        rss = _make_rss(items, now, state, deletions=dropped_ids)
         rss_duration = perf_counter() - rss_start
 
         out_path = validate_path(Path(feed_config.OUT_PATH), "OUT_PATH")

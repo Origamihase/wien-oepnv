@@ -447,7 +447,7 @@ class VorAuth(AuthBase):
         except ValueError:
             return r
 
-        query_params = parse_qsl(parsed.query)
+        query_params = parse_qsl(parsed.query, keep_blank_values=True)
 
         if any(k == "accessId" for k, v in query_params):
              return r
@@ -1190,6 +1190,7 @@ def _fetch_departure_board_for_station(
 
     try:
         attempts = max(int(VOR_RETRY_OPTIONS.get("total", 0) or 0) + 1, 1)
+        quota_incremented = False
         for attempt in range(attempts):
             # CIRCUIT BREAKER CHECK
             if counter:
@@ -1215,7 +1216,9 @@ def _fetch_departure_board_for_station(
                         return None
 
                     # Increment before request to count every attempt (Point 4)
-                    save_request_count(now_local)
+                    if not quota_incremented:
+                        save_request_count(now_local)
+                        quota_incremented = True
 
                 content = fetch_content_safe(
                     active_session,

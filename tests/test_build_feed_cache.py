@@ -207,7 +207,7 @@ def test_cache_iso_items_sorted_and_emit_pubdate(monkeypatch):
             assert cache_items[idx][field].tzinfo is not None
 
     state = {}
-    filtered = build_feed._drop_old_items(cache_items, now, state)
+    filtered, _ = build_feed._drop_old_items(cache_items, now, state)
     assert {it["guid"] for it in filtered} == {"new-guid", "older-guid"}
 
     deduped = build_feed._dedupe_items(filtered)
