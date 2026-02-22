@@ -28,6 +28,10 @@ def test_fetch_events_handles_invalid_json(monkeypatch, caplog):
         def iter_content(self, chunk_size=8192):
             return [b"invalid"]
 
+        @property
+        def content(self):
+            return b"invalid"
+
         def __enter__(self):
             return self
 

@@ -19,16 +19,10 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-try:  # pragma: no cover - convenience for module execution
-    from src.providers import vor as vor_provider
-    from src.utils.files import atomic_write
-    from src.utils.http import session_with_retries
-    from src.utils.stations import is_in_vienna, is_pendler
-except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
-    from providers import vor as vor_provider  # type: ignore
-    from utils.files import atomic_write  # type: ignore
-    from utils.http import session_with_retries  # type: ignore
-    from utils.stations import is_in_vienna, is_pendler  # type: ignore
+from src.providers import vor as vor_provider  # type: ignore  # noqa: E402
+from src.utils.files import atomic_write  # type: ignore  # noqa: E402
+from src.utils.http import session_with_retries  # type: ignore  # noqa: E402
+from src.utils.stations import is_in_vienna, is_pendler  # type: ignore  # noqa: E402
 DEFAULT_SOURCE = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 

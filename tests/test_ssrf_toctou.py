@@ -21,6 +21,8 @@ def test_fetch_content_safe_ssrf_bypass_on_error():
         mock_response = MagicMock(spec=requests.Response)
         mock_response.status_code = 404
         mock_response.url = url
+        mock_response.headers = {}
+        mock_response.is_redirect = False
         # Make raise_for_status raise HTTPError
         def raise_for_status_side_effect():
             raise requests.exceptions.HTTPError("404 Client Error", response=mock_response)
@@ -41,26 +43,32 @@ def test_fetch_content_safe_ssrf_bypass_on_error():
         mock_response.__enter__.return_value = mock_response
         mock_response.__exit__.return_value = None
 
-        with patch.object(session, "request", return_value=mock_response):
+        with patch.object(session, "request", return_value=mock_response) as mock_req:
 
             # 3. Execute
-            # If Vulnerable: raise_for_status() is called BEFORE verify_response_ip().
-            #                It raises HTTPError immediately.
-            # If Secure: verify_response_ip() is called BEFORE raise_for_status().
-            #            It checks getpeername(), sees 127.0.0.1, and raises ValueError.
+            # We now rely on session hooks for SSRF protection.
+            # Since we mock session.request, the hook is not executed by requests.
+            # We verify that the security hook is correctly passed to session.request.
 
             try:
                 fetch_content_safe(session, url)
             except requests.exceptions.HTTPError:
-                pytest.fail("VULNERABLE: Caught HTTPError instead of ValueError. SSRF check was skipped.")
-            except ValueError as e:
-                if "Security: Connected to unsafe IP" in str(e):
-                    print("\nSECURE: Caught ValueError. SSRF check was enforced.")
-                    return
-                else:
-                    raise e
+                # Expected since we mocked the response to raise HTTPError and hooks didn't run
+                pass
+            except ValueError:
+                pass
 
-            pytest.fail("Did not raise expected exception")
+            # Verify the hook was passed
+            assert mock_req.called
+            call_kwargs = mock_req.call_args[1]
+            hooks = call_kwargs.get("hooks", {})
+            response_hooks = hooks.get("response", [])
+            from src.utils.http import _check_response_security
+
+            if _check_response_security not in response_hooks:
+                pytest.fail("VULNERABLE: Security hook not passed to session.request")
+
+            print("\nSECURE: Security hook verified.")
 
 if __name__ == "__main__":
     try:

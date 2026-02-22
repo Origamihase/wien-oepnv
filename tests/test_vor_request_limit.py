@@ -304,7 +304,12 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(monkeypa
     result = vor._fetch_departure_board_for_station("123", now_local)
 
     assert result is None
-    assert called == 0
+    # Requirement 4: Count EVERY attempt, even if unsuccessful
+    # 429 aborts immediately (1 call). 503 retries (1 initial + 3 retries = 4 calls).
+    if status_code == 429:
+        assert called == 1
+    else:
+        assert called == 4
 
 
 def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch):
@@ -384,7 +389,8 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
     payload = vor._fetch_departure_board_for_station("123", now_local)
 
     assert payload == {}
-    assert call_count == 1
+    # Requirement 4: Count EVERY retry attempt (total=1 means 2 attempts)
+    assert call_count == 2
 
 
 def test_load_request_count_resets_on_legacy_integer(monkeypatch, tmp_path):

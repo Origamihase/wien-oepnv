@@ -21,13 +21,8 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-try:
-    from src.utils.files import atomic_write
-    from src.utils.http import session_with_retries
-except ImportError:
-    # Fallback if running as a package, though sys.path adjustment above should handle it
-    from utils.files import atomic_write  # type: ignore
-    from utils.http import session_with_retries  # type: ignore
+from src.utils.files import atomic_write  # noqa: E402
+from src.utils.http import session_with_retries  # noqa: E402
 
 
 DEFAULT_STATIONS_PATH = BASE_DIR / "data" / "stations.json"

@@ -11,13 +11,12 @@ from requests.exceptions import RequestException
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SRC_DIR = REPO_ROOT / "src"
-if str(SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(SRC_DIR))
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
-from providers.oebb import fetch_events  # noqa: E402  (import after path setup)
-from utils.cache import write_cache  # noqa: E402
-from utils.serialize import serialize_for_cache  # noqa: E402
+from src.providers.oebb import fetch_events  # noqa: E402  (import after path setup)
+from src.utils.cache import write_cache  # noqa: E402
+from src.utils.serialize import serialize_for_cache  # noqa: E402
 
 
 logger = logging.getLogger("update_oebb_cache")

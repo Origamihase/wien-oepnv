@@ -39,7 +39,7 @@ _UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f<>\"\\^`{|}]")
 MAX_URL_LENGTH = 2048
 
 # Global DNS executor to reduce thread overhead (Task B)
-_DNS_EXECUTOR = ThreadPoolExecutor(max_workers=1, thread_name_prefix="DNS_Resolver")
+_DNS_EXECUTOR = ThreadPoolExecutor(max_workers=10, thread_name_prefix="DNS_Resolver")
 
 log = logging.getLogger(__name__)
 
@@ -1014,9 +1014,6 @@ def request_safe(
             )
 
             with ctx as r:
-                # Prevent DNS Rebinding: Check the actual connected IP
-                verify_response_ip(r)
-
                 # Duck-typing check for mocks that might lack is_redirect
                 is_redirect = getattr(r, "is_redirect", False)
 

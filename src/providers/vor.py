@@ -43,40 +43,13 @@ if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type check
     from ..utils.logging import sanitize_log_arg, sanitize_log_message
     from ..utils.stations import vor_station_ids, station_info
 else:  # pragma: no cover - allow running via package or src layout
-    try:
-        from utils.env import read_secret
-    except ModuleNotFoundError:
-        from ..utils.env import read_secret  # type: ignore
-
-    try:
-        from utils.http import session_with_retries, validate_http_url, fetch_content_safe
-    except ModuleNotFoundError:
-        from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
-
-    try:
-        from utils.files import atomic_write
-    except ModuleNotFoundError:
-        from ..utils.files import atomic_write  # type: ignore
-
-    try:
-        from utils.logging import sanitize_log_arg, sanitize_log_message
-    except ModuleNotFoundError:
-        from ..utils.logging import sanitize_log_arg, sanitize_log_message  # type: ignore
-
-    try:
-        from utils.stations import vor_station_ids, station_info
-    except ModuleNotFoundError:
-        from ..utils.stations import vor_station_ids, station_info  # type: ignore
-
-    try:
-        from utils.locking import file_lock
-    except ModuleNotFoundError:
-        from ..utils.locking import file_lock  # type: ignore
-
-    try:
-        from utils.ids import make_guid
-    except ModuleNotFoundError:
-        from ..utils.ids import make_guid  # type: ignore
+    from ..utils.env import read_secret  # type: ignore
+    from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
+    from ..utils.files import atomic_write  # type: ignore
+    from ..utils.logging import sanitize_log_arg, sanitize_log_message  # type: ignore
+    from ..utils.stations import vor_station_ids, station_info  # type: ignore
+    from ..utils.locking import file_lock  # type: ignore
+    from ..utils.ids import make_guid  # type: ignore
 
 log = logging.getLogger(__name__)
 
@@ -114,6 +87,9 @@ VOR_RETRY_OPTIONS: Dict[str, Any] = {
 VOR_ACCESS_ID = ""  # nosec B105
 _VOR_ACCESS_TOKEN_RAW = ""  # nosec B105
 _VOR_AUTHORIZATION_HEADER = ""  # nosec B105
+
+# Global lock for thread-safe quota management within the process
+_QUOTA_LOCK = threading.Lock()
 
 
 def _get_secrets() -> List[str]:
@@ -1200,16 +1176,20 @@ def _fetch_departure_board_for_station(
                 # Logging request details (masked)
                 log.info(f"Requesting VOR DepartureBoard for {station_id}...")
 
-                # Enforce rate limit check (read-only)
-                _, current_usage = load_request_count()
-                if current_usage >= MAX_REQUESTS_PER_DAY:
-                    _log_warning(
-                        "VOR Tageslimit erreicht (%s/%s) – Anfrage für %s abgebrochen.",
-                        current_usage,
-                        MAX_REQUESTS_PER_DAY,
-                        station_id,
-                    )
-                    return None
+                # Enforce rate limit check and increment atomically
+                with _QUOTA_LOCK:
+                    _, current_usage = load_request_count()
+                    if current_usage >= MAX_REQUESTS_PER_DAY:
+                        _log_warning(
+                            "VOR Tageslimit erreicht (%s/%s) – Anfrage für %s abgebrochen.",
+                            current_usage,
+                            MAX_REQUESTS_PER_DAY,
+                            station_id,
+                        )
+                        return None
+
+                    # Increment before request to count every attempt (Point 4)
+                    save_request_count(now_local)
 
                 content = fetch_content_safe(
                     active_session,
@@ -1218,9 +1198,6 @@ def _fetch_departure_board_for_station(
                     timeout=HTTP_TIMEOUT,
                     allowed_content_types=("application/json",),
                 )
-
-                # Update usage count only after successful fetch
-                save_request_count(now_local)
 
                 # Log raw length
                 log.debug(f"Received {len(content)} bytes from VOR.")
@@ -1247,7 +1224,7 @@ def _fetch_departure_board_for_station(
                     if response.status_code >= 500:
                             if response.status_code == 503:
                                 _handle_retry_after(response)
-                            return None
+                            continue
 
                 if attempt >= attempts - 1:
                     _log_error(

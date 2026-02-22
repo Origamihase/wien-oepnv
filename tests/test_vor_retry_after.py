@@ -108,6 +108,7 @@ def test_retry_after_http_date(monkeypatch):
 
     monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch)
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
+    monkeypatch.setattr(vor, "save_request_count", lambda *a, **kw: None)
 
     class FixedDateTime(datetime):
         @classmethod

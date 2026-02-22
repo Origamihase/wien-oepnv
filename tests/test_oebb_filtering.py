@@ -1,5 +1,5 @@
 import pytest
-from providers.oebb import _is_relevant
+from src.providers.oebb import _is_relevant
 
 class TestOebbFiltering:
     """
