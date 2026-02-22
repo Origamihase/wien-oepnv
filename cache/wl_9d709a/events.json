@@ -238,5 +238,29 @@
     "starts_at": "2026-02-22T04:45:20+01:00",
     "ends_at": "2026-02-23T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-02-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Verkehrsunfall",
+    "description": "Linie 2: Fahrtbehinderung in Richtung Dornbach. Voraussichtliche Dauer: 13:20. Grund: Verkehrsunfall im Haltestellenbereich Stubentor U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
+    "pubDate": "2026-02-22T12:55:00+01:00",
+    "starts_at": "2026-02-22T12:55:00+01:00",
+    "ends_at": "2026-02-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-02-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed",
+    "pubDate": "2026-02-22T12:57:41+01:00",
+    "starts_at": "2026-02-22T12:57:59+01:00",
+    "ends_at": "2026-02-22T13:57:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-02-22"
   }
 ]
