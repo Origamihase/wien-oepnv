@@ -113,7 +113,9 @@ def test_retry_after_http_date(monkeypatch):
     class FixedDateTime(datetime):
         @classmethod
         def now(cls, tz=None):
-            assert tz == timezone.utc
+            # Allow UTC or Vienna
+            if tz is not None:
+                return fixed_now.astimezone(tz)
             return fixed_now
 
     monkeypatch.setattr(vor, "datetime", FixedDateTime)

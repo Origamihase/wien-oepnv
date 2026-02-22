@@ -24,11 +24,12 @@ from email.utils import format_datetime
 from pathlib import Path
 from threading import BoundedSemaphore, Lock
 from time import perf_counter
-from typing import Any, Dict, List, Optional, Sequence, Set, Tuple
+from typing import Any, Dict, List, Optional, Sequence, Set, Tuple, cast
 from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
 
 try:  # pragma: no cover - allow running as script or module
+    from feed_types import FeedItem
     from feed import config as feed_config
     from feed.merge import deduplicate_fuzzy
     from feed.logging import configure_logging
@@ -78,6 +79,7 @@ try:  # pragma: no cover - allow running as script or package
     from utils.locking import file_lock
     from utils.text import html_to_text, truncate_html
 except ModuleNotFoundError:  # pragma: no cover
+    from .feed_types import FeedItem
     from .utils.cache import (
         cache_modified_at,
         read_cache as _core_read_cache,
@@ -518,9 +520,9 @@ def _coerce_datetime_field(it: Dict[str, Any], field: str) -> Optional[datetime]
 
 
 def _normalize_item_datetimes(
-    items: List[Dict[str, Any]],
+    items: List[Any],
     fields: Tuple[str, ...] = ("pubDate", "starts_at", "ends_at"),
-) -> List[Dict[str, Any]]:
+) -> List[Any]:
     for item in items:
         if not isinstance(item, dict):
             continue
@@ -607,7 +609,7 @@ def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] 
             ) as f:
                 json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True)
 
-def _identity_for_item(item: Dict[str, Any]) -> str:
+def _identity_for_item(item: FeedItem) -> str:
     """
     Stabile Identität unabhängig von Titel-Kosmetik.
       - Wenn Provider _identity liefert: diese bevorzugen.
@@ -618,7 +620,7 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
         return str(item["_identity"])
 
     if "_calculated_identity" in item:
-        return item["_calculated_identity"]
+        return cast(str, item["_calculated_identity"])
 
     title = item.get("title") or ""
     sa = item.get("starts_at")
@@ -661,10 +663,10 @@ def _identity_for_item(item: Dict[str, Any]) -> str:
 
 # ---------------- Pipeline ----------------
 
-def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
+def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
     if report is None:
         report = RunReport(provider_statuses())
-    items: List[Dict[str, Any]] = []
+    items: List[FeedItem] = []
 
     cache_alerts: defaultdict[str, List[str]] = defaultdict(list)
     seen_cache_alerts: set[Tuple[str, str]] = set()
@@ -724,8 +726,10 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
                 log.error("%s fetch gab keine Liste zurück: %r", name, result)
                 report.provider_error(provider_name, "Ungültige Antwort (keine Liste)")
                 return
+            # Cast raw dicts to FeedItem for typing compliance after normalization
             _normalize_item_datetimes(result)
-            items.extend(result)
+            typed_result = cast(List[FeedItem], result)
+            items.extend(typed_result)
             count = len(result)
             if count == 0:
                 log.warning(
@@ -821,8 +825,18 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
                     timeout_arg = timeout_value if timeout_value > 0 else None
                     if semaphore is None:
                         return _call_fetch_with_timeout(fetch, timeout_arg, supports)
-                    with semaphore:
+
+                    # Prevent thread starvation by enforcing timeout on semaphore acquisition
+                    # This ensures that if the provider is deadlocked/overloaded, we don't block
+                    # the executor worker forever.
+                    acquired = semaphore.acquire(timeout=timeout_value if timeout_value > 0 else None)
+                    if not acquired:
+                         raise TimeoutError(f"Semaphore acquisition timed out after {timeout_value}s")
+
+                    try:
                         return _call_fetch_with_timeout(fetch, timeout_arg, supports)
+                    finally:
+                        semaphore.release()
 
                 report.provider_started(provider_name)
                 future = executor.submit(_run_fetch)
@@ -892,7 +906,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[Dict[str, Any]]:
         unregister_cache_alert()
 
 
-def _invoke_collect_items(report: RunReport) -> List[Dict[str, Any]]:
+def _invoke_collect_items(report: RunReport) -> List[FeedItem]:
     collect_fn = _collect_items
     try:
         signature = inspect.signature(collect_fn)
@@ -916,10 +930,10 @@ def _invoke_collect_items(report: RunReport) -> List[Dict[str, Any]]:
 
 
 def _drop_old_items(
-    items: List[Dict[str, Any]],
+    items: List[FeedItem],
     now: datetime,
     state: Dict[str, Dict[str, Any]],
-) -> List[Dict[str, Any]]:
+) -> List[FeedItem]:
     """Entferne Items, die zu alt sind oder bereits beendet wurden.
 
     Neben ``pubDate``/``starts_at`` wird – falls vorhanden – ``first_seen`` aus dem
@@ -927,7 +941,7 @@ def _drop_old_items(
     Datumsangaben, die andernfalls ewig im Feed verbleiben würden.
     """
 
-    out: List[Dict[str, Any]] = []
+    out: List[FeedItem] = []
     now_utc = _to_utc(now)
     for it in items:
         if not isinstance(it, dict):
@@ -975,7 +989,7 @@ def _drop_old_items(
 
 
 def _dedupe_key_for_item(
-    it: Dict[str, Any], *, warn_on_missing: bool = True
+    it: FeedItem, *, warn_on_missing: bool = True
 ) -> Tuple[str, bool]:
     """Return the deduplication key used for ``it`` and indicate fallback usage."""
 
@@ -983,7 +997,7 @@ def _dedupe_key_for_item(
         return str(it.get("_identity")), False
 
     if "_calculated_dedupe_key" in it:
-        return it["_calculated_dedupe_key"], False
+        return cast(str, it["_calculated_dedupe_key"]), False
 
     if it.get("guid"):
         return str(it.get("guid")), False
@@ -1004,8 +1018,8 @@ def _dedupe_key_for_item(
     return key, True
 
 
-def _summarize_duplicates(items: Sequence[Dict[str, Any]]) -> List[DuplicateSummary]:
-    groups: Dict[str, List[Dict[str, Any]]] = {}
+def _summarize_duplicates(items: Sequence[FeedItem]) -> List[DuplicateSummary]:
+    groups: Dict[str, List[FeedItem]] = {}
     for it in items:
         if not isinstance(it, dict):
             continue
@@ -1025,7 +1039,7 @@ def _summarize_duplicates(items: Sequence[Dict[str, Any]]) -> List[DuplicateSumm
 
 
 def _count_new_items(
-    items: Sequence[Dict[str, Any]],
+    items: Sequence[FeedItem],
     state: Dict[str, Dict[str, Any]],
 ) -> int:
     existing = set(state.keys()) if isinstance(state, dict) else set()
@@ -1039,7 +1053,7 @@ def _count_new_items(
     return count
 
 
-def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def _dedupe_items(items: List[FeedItem]) -> List[FeedItem]:
     """
     Deduplicate items by identity/guid.
 
@@ -1056,14 +1070,14 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         A list of unique item dictionaries.
     """
 
-    def _recency_value(it: Dict[str, Any]) -> datetime:
+    def _recency_value(it: FeedItem) -> datetime:
         """Return a comparable timestamp describing how recent ``it`` is."""
         if "_calculated_recency" in it:
-            return it["_calculated_recency"]
+            return cast(datetime, it["_calculated_recency"])
 
         candidates: List[datetime] = []
         for field_name in ("pubDate", "first_seen", "starts_at"):
-            value = it.get(field_name)
+            value = it.get(field_name)  # type: ignore
             if isinstance(value, datetime):
                 candidates.append(_to_utc(value))
             else:
@@ -1079,9 +1093,9 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         it["_calculated_recency"] = res
         return res
 
-    def _end_value(it: Dict[str, Any]) -> datetime:
+    def _end_value(it: FeedItem) -> datetime:
         if "_calculated_end" in it:
-            return it["_calculated_end"]
+            return cast(datetime, it["_calculated_end"])
 
         ends = it.get("ends_at")
         if isinstance(ends, datetime):
@@ -1092,7 +1106,7 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         it["_calculated_end"] = res
         return res
 
-    def _better(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
+    def _better(a: FeedItem, b: FeedItem) -> bool:
         """Return True if ``a`` is better than ``b`` according to recency and content."""
 
         a_end = _end_value(a)
@@ -1115,7 +1129,7 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         return a_len > b_len
 
     seen: Dict[str, int] = {}
-    out: List[Dict[str, Any]] = []
+    out: List[FeedItem] = []
     for it in items:
         key, _ = _dedupe_key_for_item(it)
         if key in seen:
@@ -1127,7 +1141,7 @@ def _dedupe_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             out.append(it)
     return out
 
-def _sort_key(item: Dict[str, Any]) -> Tuple[int, float, str]:
+def _sort_key(item: FeedItem) -> Tuple[int, float, str]:
     pd = item.get("pubDate")
     # Fix TypeError: Ensure guid is always a string, even if explicitly None
     guid_str = str(item.get("guid") or "")
@@ -1163,7 +1177,7 @@ def _cdata_content(s: str) -> str:
 
 
 def _emit_item(
-    it: Dict[str, Any], now: datetime, state: Dict[str, Dict[str, Any]]
+    it: FeedItem, now: datetime, state: Dict[str, Dict[str, Any]]
 ) -> Tuple[str, ET.Element, Dict[str, str]]:
     """Convert a normalized item dictionary into an RSS <item> element and CDATA replacements.
 
@@ -1336,7 +1350,7 @@ def _emit_item(
 
 
 def _make_rss(
-    items: List[Dict[str, Any]], now: datetime, state: Dict[str, Dict[str, Any]]
+    items: List[FeedItem], now: datetime, state: Dict[str, Dict[str, Any]]
 ) -> str:
     """
     Generate the full RSS XML document from a list of items using ElementTree.

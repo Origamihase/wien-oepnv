@@ -9,8 +9,9 @@ import re
 import socket
 import time
 import types
+import unicodedata
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
-from typing import Any, Container, Mapping, MutableMapping
+from typing import Any, Container, Mapping, MutableMapping, TypeGuard, Union
 from urllib.parse import parse_qsl, urlencode, urlparse
 
 import requests
@@ -380,10 +381,13 @@ def _pin_url_to_ip(url: str) -> tuple[str, str]:
         raise ValueError(f"No safe IP resolved for {sanitized}")
 
     # 3. Rewrite URL
-    if ":" in target_ip:
-        netloc = f"[{target_ip}]"
+    # target_ip is narrowed to IPv4/IPv6 by TypeGuard, but at runtime it might be a string.
+    # We force string conversion to handle both cases safely.
+    target_ip_str = str(target_ip)
+    if ":" in target_ip_str:
+        netloc = f"[{target_ip_str}]"
     else:
-        netloc = target_ip
+        netloc = target_ip_str
 
     port = _get_port(parsed)
     if port:
@@ -585,14 +589,18 @@ _SHARED_ADDRESS_SPACE = ipaddress.IPv4Network("100.64.0.0/10")
 _NAT64_PREFIX = ipaddress.IPv6Network("64:ff9b::/96")
 
 
-def is_ip_safe(ip_addr: str | ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
+def is_ip_safe(
+    ip_addr: Any
+) -> TypeGuard[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
     """Check if an IP address is globally reachable and safe."""
     try:
         if isinstance(ip_addr, str):
             # Handle IPv6 scope ids if present
             ip = ipaddress.ip_address(ip_addr.split("%")[0])
-        else:
+        elif isinstance(ip_addr, (ipaddress.IPv4Address, ipaddress.IPv6Address)):
             ip = ip_addr
+        else:
+            return False
 
         # Block unspecified addresses (0.0.0.0, ::)
         if ip.is_unspecified:
@@ -648,6 +656,7 @@ def validate_http_url(
     Also rejects URLs that point to localhost or private IP addresses (SSRF protection),
     or contain unsafe control characters/whitespace.
 
+    Applies NFKC normalization to prevent IDNA homograph attacks or blocklist bypasses.
     Now enforces a port whitelist to prevent scanning of non-standard ports.
 
     Args:
@@ -663,6 +672,9 @@ def validate_http_url(
     candidate = url.strip()
     if not candidate:
         return None
+
+    # Security: Normalize unicode to NFKC to prevent IDNA bypasses and homograph confusion
+    candidate = unicodedata.normalize("NFKC", candidate)
 
     # Guard against excessively long URLs (DoS protection).
     if len(candidate) > MAX_URL_LENGTH:
