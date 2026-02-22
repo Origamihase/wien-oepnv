@@ -1,5 +1,4 @@
 
-import pytest
 from unittest.mock import MagicMock
 from src.providers import vor
 

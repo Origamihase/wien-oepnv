@@ -1,6 +1,5 @@
 import os
 import pytest
-from pathlib import Path
 from src.utils.files import atomic_write
 
 def test_atomic_write_creates_file(tmp_path):

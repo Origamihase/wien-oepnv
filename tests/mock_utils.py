@@ -1,5 +1,4 @@
 from unittest.mock import MagicMock
-import socket
 
 def get_mock_socket_structure():
     """

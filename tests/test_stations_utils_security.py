@@ -1,5 +1,4 @@
 from src.utils.stations import _coerce_float, is_in_vienna
-import math
 
 def test_coerce_float_rejects_non_finite():
     # These should return None for security/safety

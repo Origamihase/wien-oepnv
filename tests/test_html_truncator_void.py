@@ -1,4 +1,3 @@
-import pytest
 from src.utils.text import truncate_html
 
 def test_truncate_html_void_elements():

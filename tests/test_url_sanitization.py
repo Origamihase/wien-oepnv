@@ -1,4 +1,3 @@
-import pytest
 from urllib.parse import urlparse
 from src.utils.http import _sanitize_url_for_error
 

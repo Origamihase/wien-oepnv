@@ -1,5 +1,4 @@
 import hashlib
-import pytest
 from src.utils.ids import make_guid
 
 def test_guid_collision_vulnerability():

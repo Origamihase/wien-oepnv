@@ -1,4 +1,3 @@
-import sys
 import unittest
 from src.feed.merge import _has_significant_overlap
 

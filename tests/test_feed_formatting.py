@@ -1,8 +1,6 @@
-import pytest
 from datetime import datetime, timezone
-import xml.etree.ElementTree as ET
 
-from src.build_feed import _emit_item, feed_config
+from src.build_feed import _emit_item
 
 def test_emit_item_formatting_html_stripping():
     # Setup

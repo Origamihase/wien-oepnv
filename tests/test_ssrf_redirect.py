@@ -2,7 +2,7 @@
 import unittest
 from unittest.mock import MagicMock, patch
 import requests
-from src.utils.http import session_with_retries, fetch_content_safe, validate_http_url
+from src.utils.http import session_with_retries, fetch_content_safe
 
 class TestSSRFRedirect(unittest.TestCase):
     def test_redirect_to_private_ip_is_blocked(self):

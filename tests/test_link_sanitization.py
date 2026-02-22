@@ -1,5 +1,4 @@
 
-import pytest
 import datetime
 import xml.etree.ElementTree as ET
 from src import build_feed

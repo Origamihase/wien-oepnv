@@ -1,11 +1,7 @@
 
-import os
-import stat
-from pathlib import Path
 from unittest.mock import patch
-import json
 from utils.cache import write_cache
-from places.quota import MonthlyQuota, QuotaConfig
+from places.quota import MonthlyQuota
 
 def test_cache_file_secure_permissions(tmp_path):
     """Verify that write_cache creates files with secure permissions (0600)."""

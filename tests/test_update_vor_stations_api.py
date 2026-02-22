@@ -51,7 +51,8 @@ class _FakeSession:
         self.calls: list[tuple[str, dict[str, str]]] = []
 
     def request(self, method: str, url: str, **kwargs: object) -> _FakeResponse:
-        params = kwargs.get("params") or {}
+        from typing import cast
+        params = cast(dict[str, str], kwargs.get("params") or {})
         station_id = params["input"]  # type: ignore[index]
         self.calls.append((url, params))
         status, payload = self.payloads[station_id]

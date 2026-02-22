@@ -1,7 +1,5 @@
-import pytest
-import requests
 import responses
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from src.utils.http import request_safe, session_with_retries
 
 @responses.activate

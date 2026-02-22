@@ -1,7 +1,7 @@
 import os
 import pytest
 from unittest.mock import Mock, patch
-from src.utils.http import verify_response_ip, is_ip_safe
+from src.utils.http import verify_response_ip
 
 def test_verify_response_ip_normal_fail():
     """Verify that private IPs raise error normally."""

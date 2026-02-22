@@ -14,18 +14,21 @@ def _load_module() -> object:
 
 
 def test_base_url_rejects_invalid_scheme(monkeypatch) -> None:
+    from typing import cast, Any
     module = _load_module()
     monkeypatch.setenv("SITE_BASE_URL", "javascript:alert(1)")
-    assert module._base_url() == module.DEFAULT_BASE_URL.rstrip("/")
+    assert cast(Any, module)._base_url() == cast(Any, module).DEFAULT_BASE_URL.rstrip("/")
 
 
 def test_base_url_rejects_control_characters(monkeypatch) -> None:
+    from typing import cast, Any
     module = _load_module()
     monkeypatch.setenv("SITE_BASE_URL", "https://example.com\n/inject")
-    assert module._base_url() == module.DEFAULT_BASE_URL.rstrip("/")
+    assert cast(Any, module)._base_url() == cast(Any, module).DEFAULT_BASE_URL.rstrip("/")
 
 
 def test_base_url_accepts_valid_https(monkeypatch) -> None:
+    from typing import cast, Any
     module = _load_module()
     monkeypatch.setenv("SITE_BASE_URL", "https://example.com/base/")
-    assert module._base_url() == "https://example.com/base"
+    assert cast(Any, module)._base_url() == "https://example.com/base"

@@ -1,5 +1,4 @@
 
-import pytest
 from src.providers.oebb import _is_relevant
 
 def test_venezia_is_excluded():

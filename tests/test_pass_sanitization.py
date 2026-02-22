@@ -1,6 +1,5 @@
 
-import pytest
-from src.utils.http import _sanitize_url_for_error, _SENSITIVE_QUERY_KEYS
+from src.utils.http import _sanitize_url_for_error
 from src.utils.logging import sanitize_log_message
 
 def test_sanitize_url_missing_keys():

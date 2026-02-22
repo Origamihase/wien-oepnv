@@ -207,7 +207,7 @@ def streckendaten_dataset() -> Iterator[Path]:
 
 
 @pytest.fixture(scope="session", autouse=True)
-def _ensure_streckendaten(streckendaten_dataset: Path) -> None:  # noqa: PT005
+def _ensure_streckendaten(streckendaten_dataset: Path) -> Iterator[None]:  # noqa: PT005
     yield
 
 

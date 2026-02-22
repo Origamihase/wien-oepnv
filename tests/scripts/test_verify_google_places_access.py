@@ -20,7 +20,7 @@ def _reset_logging():
 
 
 @pytest.fixture(autouse=True)
-def _set_default_env(monkeypatch: pytest.MonkeyPatch) -> None:
+def _set_default_env(monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
     monkeypatch.setitem(os.environ, "GOOGLE_ACCESS_ID", "AIzaDummyKey")
     yield
     monkeypatch.delenv("GOOGLE_ACCESS_ID", raising=False)

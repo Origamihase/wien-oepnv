@@ -1,5 +1,4 @@
 
-import pytest
 from src.utils.http import validate_http_url
 
 def test_validate_http_url_blocks_multicast():

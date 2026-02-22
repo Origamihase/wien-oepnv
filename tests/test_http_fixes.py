@@ -1,8 +1,6 @@
-import pytest
-import re
 import requests
 from unittest.mock import MagicMock, patch
-from src.utils.http import verify_response_ip, request_safe, _is_sensitive_header, _sanitize_url_for_error, _SENSITIVE_HEADERS
+from src.utils.http import verify_response_ip, request_safe, _is_sensitive_header, _sanitize_url_for_error
 
 # 1. Socket Access Tests
 def test_verify_response_ip_new_urllib3():
