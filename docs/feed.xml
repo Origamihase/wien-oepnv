@@ -7,25 +7,36 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Sun, 22 Feb 2026 22:46:24 +0100</lastBuildDate>
+<lastBuildDate>Sun, 22 Feb 2026 23:17:36 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title>U6: Rettungseinsatz</title>
+      <title>26A: Schadhaftes Fahrzeug</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
-      <pubDate>Sun, 22 Feb 2026 21:47:00 +0100</pubDate>
-      <ext:first_seen>Sun, 22 Feb 2026 22:46:24 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 22 Feb 2026 21:47:00 +0100</ext:starts_at>
+      <guid isPermaLink="false">7e1a1f1ab0be86deb6338c43b452792754f48fe4a1bfd83f9e88b2e1da49f9ea</guid>
+      <pubDate>Sun, 22 Feb 2026 22:26:00 +0100</pubDate>
+      <ext:first_seen>Sun, 22 Feb 2026 23:17:36 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 22 Feb 2026 22:26:00 +0100</ext:starts_at>
       <ext:ends_at>Sun, 22 Feb 2026 23:55:00 +0100</ext:ends_at>
-      <description><![CDATA[Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 22.02.2026]]]></description>
-      <content:encoded><![CDATA[Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 22.02.2026]]]></content:encoded>
+      <description><![CDATA[Linie 26 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 22.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie 26 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 22.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>D: Verkehrsunfall</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e</guid>
+      <pubDate>Sun, 22 Feb 2026 22:24:00 +0100</pubDate>
+      <ext:first_seen>Sun, 22 Feb 2026 23:17:36 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 22 Feb 2026 22:24:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 22 Feb 2026 23:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 22.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 22.02.2026]]]></content:encoded>
     </item>
     <item>
       <title>62: Gleisschaden Betrieb ab Wattmanngasse</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">0c581535f501a01142add950358b15d07de9269780c35ac4f9a5dd926cb459d4</guid>
       <pubDate>Sun, 22 Feb 2026 15:57:50 +0100</pubDate>
-      <ext:first_seen>Sun, 22 Feb 2026 22:46:24 +0100</ext:first_seen>
+      <ext:first_seen>Sun, 22 Feb 2026 23:17:36 +0100</ext:first_seen>
       <ext:starts_at>Sun, 22 Feb 2026 15:57:53 +0100</ext:starts_at>
       <ext:ends_at>Sun, 22 Feb 2026 23:45:00 +0100</ext:ends_at>
       <description><![CDATA[Gleisschaden Betrieb ab Wattmanngasse<br/>[Seit 22.02.2026]]]></description>
@@ -105,17 +116,6 @@
       <ext:starts_at>Thu, 19 Feb 2026 10:19:48 +0100</ext:starts_at>
       <description><![CDATA[Wegen Bauarbeiten werden zwischen Wien Hbf (U) und Deutsch Wagram Bahnhof von 28.03.2026 bis 02.05.2026 einige REX 1-Züge umgeleitet und können in Wien Quartier Belvedere, …<br/>[Seit 19.02.2026]]]></description>
       <content:encoded><![CDATA[Wegen Bauarbeiten werden zwischen Wien Hbf (U) und Deutsch Wagram Bahnhof von 28.03.2026 bis 02.05.2026 einige REX 1-Züge umgeleitet und können in Wien Quartier Belvedere, …<br/>[Seit 19.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>63A: Kranarbeiten</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bc3981059ad7074617d4b86f2a8be6f0124e2f06bf354df83b3296fe7992912c</guid>
-      <pubDate>Thu, 19 Feb 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Sat, 21 Feb 2026 23:55:44 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 19 Feb 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 28 Feb 2026 05:00:00 +0100</ext:ends_at>
-      <description><![CDATA[Kranarbeiten Wegen Bauarbeiten im Bereich der Kerschensteinergasse und der damit einhergehenden Straßensperre zwischen Kundratstraße und Längenfeldgasse wird die Linie 63 A …<br/>[19.02.2026 – 28.02.2026]]]></description>
-      <content:encoded><![CDATA[Kranarbeiten Wegen Bauarbeiten im Bereich der Kerschensteinergasse und der damit einhergehenden Straßensperre zwischen Kundratstraße und Längenfeldgasse wird die Linie 63 A …<br/>[19.02.2026 – 28.02.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
