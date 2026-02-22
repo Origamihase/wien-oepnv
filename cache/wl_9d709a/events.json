@@ -242,13 +242,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Verspätungen",
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "18: Verspätungen",
+    "description": "Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "499ac622a712bd280a6b728d5cd57eb6ebde96a246de80a08e9a389a60dab6f9",
-    "pubDate": "2026-02-22T09:14:00+01:00",
-    "starts_at": "2026-02-22T09:14:00+01:00",
+    "guid": "08245d776c6086aeb34234d104f1c9a7c93bccf3eb8915fc23bc32028143c544",
+    "pubDate": "2026-02-22T10:06:00+01:00",
+    "starts_at": "2026-02-22T10:06:00+01:00",
     "ends_at": "2026-02-22T23:55:00+01:00",
-    "_identity": "wl|störung|L=63A|D=2026-02-22"
+    "_identity": "wl|störung|L=18|D=2026-02-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verunreinigung",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
+    "pubDate": "2026-02-22T10:30:00+01:00",
+    "starts_at": "2026-02-22T10:30:00+01:00",
+    "ends_at": "2026-02-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2026-02-22"
   }
 ]
