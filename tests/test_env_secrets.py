@@ -10,7 +10,11 @@ def test_read_secret_from_env():
         mock_instance.exists.return_value = False
 
         with mock.patch.dict(os.environ, {"MY_SECRET": "env_value"}):
-            with mock.patch.object(os, "getenv", side_effect=lambda k, d=None: {"MY_SECRET": "env_value"}.get(k, d) if k != "CREDENTIALS_DIRECTORY" else None):
+            with mock.patch.object(
+                os,
+                "getenv",
+                side_effect=lambda k, d=None: {"MY_SECRET": "env_value"}.get(k, d) if k != "CREDENTIALS_DIRECTORY" else None,
+            ):
                 assert read_secret("MY_SECRET") == "env_value"
 
 def test_read_secret_default():

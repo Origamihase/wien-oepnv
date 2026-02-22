@@ -24,7 +24,9 @@ von 09.03.2026 bis 13.03.2026
 einige REX41-Züge nicht fahren.
 Der Zug REX41(322/326) kann von Schwarzenau im Waldviertel Bahnhof nach Ceské Velenice nicht fahren
 Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.
-Der Zug REX41(321) kann von Ceské Velenice nach Schwarzenau im Waldviertel Bahnhof nicht fahren. Wir haben für Sie einen Schienenersatzverkehr zwischen Ceské Velenice und Gmünd NÖ eingerichtet. Ab Gmünd NÖ haben Sie die Möglichkeit, den Zug REX41(2119) Richtung Wien Franz-Josefs-Bahnhof zu nehmen.
+Der Zug REX41(321) kann von Ceské Velenice nach Schwarzenau im Waldviertel Bahnhof nicht fahren.
+Wir haben für Sie einen Schienenersatzverkehr zwischen Ceské Velenice und Gmünd NÖ eingerichtet.
+Ab Gmünd NÖ haben Sie die Möglichkeit, den Zug REX41(2119) Richtung Wien Franz-Josefs-Bahnhof zu nehmen.
 ACHTUNG:
 Ihre Reisezeit verlängert sich um bis zu 15 Minuten.
 Anschlussverbindungen können nicht gewährleistet werden.

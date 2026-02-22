@@ -100,7 +100,8 @@ class TestOebbFiltering:
         # or Check D (Route heuristic).
         assert _is_relevant(
             "Marchegg ↔ Bratislava hl.st.",
-            "Wegen Bauarbeiten können zwischen Marchegg Bahnhof und Bratislava hl.st. von 04.05.2026 (07:50 Uhr) bis 08.05.2026 (16:00 Uhr) keine REX8-Züge …[04.05.2026 – 08.05.2026]"
+            "Wegen Bauarbeiten können zwischen Marchegg Bahnhof und Bratislava hl.st. "
+            "von 04.05.2026 (07:50 Uhr) bis 08.05.2026 (16:00 Uhr) keine REX8-Züge …[04.05.2026 – 08.05.2026]"
         ) is False
 
     def test_irrelevant_st_margrethen_sg(self):
@@ -119,7 +120,8 @@ class TestOebbFiltering:
         # This test ensures they are filtered out.
         assert _is_relevant(
             "Neulengbach ↔ Tullnerbach-Pressbaum",
-            "Wegen Bauarbeiten können zwischen Neulengbach Bahnhof und Tullnerbach-Pressbaum Bahnhof von 28.03.2026 (03:00 Uhr) bis 07.04.2026 (03:00 Uhr) …"
+            "Wegen Bauarbeiten können zwischen Neulengbach Bahnhof und Tullnerbach-Pressbaum Bahnhof "
+            "von 28.03.2026 (03:00 Uhr) bis 07.04.2026 (03:00 Uhr) …"
         ) is False
 
 class TestSigmundsherbergRegression:
@@ -131,7 +133,10 @@ class TestSigmundsherbergRegression:
 
     def test_sigmundsherberg_hadersdorf_excluded(self):
         title = "Sigmundsherberg ↔ Hadersdorf am Kamp"
-        description = "Wegen Bauarbeiten können zwischen Sigmundsherberg Bahnhof und Hadersdorf am Kamp am 16.07., 20.08., 17.09., 15.10. und 19.11.2026 einige …"
+        description = (
+            "Wegen Bauarbeiten können zwischen Sigmundsherberg Bahnhof und Hadersdorf am Kamp "
+            "am 16.07., 20.08., 17.09., 15.10. und 19.11.2026 einige …"
+        )
 
         # Should be False (excluded)
         assert _is_relevant(title, description) is False

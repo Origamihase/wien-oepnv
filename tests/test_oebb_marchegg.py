@@ -14,7 +14,8 @@ MOCK_XML = """<?xml version="1.0" encoding="ISO-8859-1"?>
 <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;846380</guid>
 <pubDate>Wed, 14 Jan 2026 11:13:54 +0000</pubDate>
 <description>
-<![CDATA[ Wegen Bauarbeiten können zwischen Marchegg Bahnhof und Bratislava hl.st. von 04.05.2026 (07:50 Uhr) bis 08.05.2026 (16:00 Uhr) keine REX8-Züge …<br/>[04.05.2026 – 08.05.2026] ]]>
+<![CDATA[ Wegen Bauarbeiten können zwischen Marchegg Bahnhof und Bratislava hl.st.
+von 04.05.2026 (07:50 Uhr) bis 08.05.2026 (16:00 Uhr) keine REX8-Züge …<br/>[04.05.2026 – 08.05.2026] ]]>
 </description>
 </item>
 </channel>

@@ -16,7 +16,12 @@ class TestExceptionSanitization(unittest.TestCase):
             with patch('requests.Session.request') as mock_request:
                 # Simulate an exception with a sensitive URL
                 sensitive_url = "https://api.example.com/resource?token=SUPER_SECRET_KEY&user=admin"
-                error_msg = f"ConnectionError: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: {sensitive_url} (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at ...>: Failed to establish a new connection: [Errno 111] Connection refused'))"
+                error_msg = (
+                    f"ConnectionError: HTTPSConnectionPool(host='api.example.com', port=443): "
+                    f"Max retries exceeded with url: {sensitive_url} "
+                    f"(Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at ...>: "
+                    f"Failed to establish a new connection: [Errno 111] Connection refused'))"
+                )
 
                 mock_request.side_effect = requests.RequestException(error_msg)
 
