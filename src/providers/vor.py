@@ -25,7 +25,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Dict, Iterable, Iterator, List, Mapping, Sequence
+from typing import Any, Dict, Iterable, Iterator, List, Mapping, Sequence
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
 import requests
@@ -34,22 +34,13 @@ from requests.auth import AuthBase
 
 from zoneinfo import ZoneInfo
 
-if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
-    from ..utils.env import read_secret
-    from ..utils.files import atomic_write
-    from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
-    from ..utils.ids import make_guid
-    from ..utils.locking import file_lock
-    from ..utils.logging import sanitize_log_arg, sanitize_log_message
-    from ..utils.stations import vor_station_ids, station_info
-else:  # pragma: no cover - allow running via package or src layout
-    from ..utils.env import read_secret  # type: ignore
-    from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
-    from ..utils.files import atomic_write  # type: ignore
-    from ..utils.logging import sanitize_log_arg, sanitize_log_message  # type: ignore
-    from ..utils.stations import vor_station_ids, station_info  # type: ignore
-    from ..utils.locking import file_lock  # type: ignore
-    from ..utils.ids import make_guid  # type: ignore
+from ..utils.env import read_secret
+from ..utils.files import atomic_write
+from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
+from ..utils.ids import make_guid
+from ..utils.locking import file_lock
+from ..utils.logging import sanitize_log_arg, sanitize_log_message
+from ..utils.stations import vor_station_ids, station_info
 
 log = logging.getLogger(__name__)
 

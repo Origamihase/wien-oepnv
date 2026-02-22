@@ -24,23 +24,16 @@ import re
 import time
 from pathlib import Path
 from datetime import datetime, timezone
-from typing import TYPE_CHECKING, Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional
 from email.utils import parsedate_to_datetime
 
 import requests
 
-if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
-    from ..utils.env import get_bool_env
-    from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
-    from ..utils.ids import make_guid
-    from ..utils.logging import sanitize_log_arg
-    from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info
-else:  # pragma: no cover - support both package layouts at runtime
-    from ..utils.env import get_bool_env  # type: ignore
-    from ..utils.ids import make_guid  # type: ignore
-    from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info  # type: ignore
-    from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
-    from ..utils.logging import sanitize_log_arg  # type: ignore
+from ..utils.env import get_bool_env
+from ..utils.ids import make_guid
+from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info
+from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
+from ..utils.logging import sanitize_log_arg
 
 from defusedxml import ElementTree as ET
 
