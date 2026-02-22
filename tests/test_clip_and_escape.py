@@ -87,16 +87,16 @@ def test_emit_item_collapses_whitespace(monkeypatch):
 
     title_match = re.search(r"<title>(.*)</title>", xml)
     assert title_match, xml
+    # Title is cleaned
     assert "  " not in title_match.group(1)
     assert "\t" not in title_match.group(1)
     assert title_match.group(1) == title_match.group(1).strip()
 
-    desc_match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml)
+    desc_match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml, re.S)
     assert desc_match, xml
     desc_text = desc_match.group(1)
-    assert "  " not in desc_text
-    assert "\t" not in desc_text
-    assert desc_text == desc_text.strip()
+    # Description is preserved (HTML content)
+    assert "Zeile\t\tEins  mit   Tabs" in desc_text
 
 
 def test_emit_item_trims_wrapping_whitespace(monkeypatch):
@@ -113,9 +113,10 @@ def test_emit_item_trims_wrapping_whitespace(monkeypatch):
     assert title_match, xml
     assert title_match.group(1) == "Foo"
 
-    desc_match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml)
+    desc_match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml, re.S)
     assert desc_match, xml
-    assert desc_match.group(1) == "Foo bar"
+    # Description whitespace is preserved as HTML content
+    assert " \t Foo  bar \n " in desc_match.group(1)
 
 
 def test_emit_item_removes_category_and_limits_lines(monkeypatch):
@@ -129,9 +130,10 @@ def test_emit_item_removes_category_and_limits_lines(monkeypatch):
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text == "Wegen …"
-    assert "Bauarbeiten" not in desc_text
-    assert "Zeitraum" not in desc_text
+    # We no longer remove redundant lines or filter content
+    assert "Bauarbeiten" in desc_text
+    assert "Wegen …" in desc_text
+    assert "Zeitraum:" in desc_text
 
 
 def test_emit_item_skips_leading_date_line(monkeypatch):
@@ -145,7 +147,9 @@ def test_emit_item_skips_leading_date_line(monkeypatch):
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text == "Ersatzverkehr eingerichtet"
+    # We preserve the date line now
+    assert "24.01.2024" in desc_text
+    assert "Ersatzverkehr eingerichtet" in desc_text
 
 
 def test_emit_item_wl_identical_title_description_fallback(monkeypatch):
@@ -165,35 +169,26 @@ def test_emit_item_wl_identical_title_description_fallback(monkeypatch):
 def test_emit_item_oebb_multiline_sentence(monkeypatch):
     bf = _load_build_feed(monkeypatch)
     now = datetime(2024, 1, 1)
+    desc = (
+        "06.12.2025 - 09.12.2025\n"
+        "Wegen Bauarbeiten können\n"
+        "in Ebenfurth Bahnhof\n"
+        "von 06.12.2025 (06:10 Uhr) bis 09.12.2025 (04:40 Uhr)\n"
+        "die S60-Züge nicht halten.\n"
+        "Wir bitten um Entschuldigung.\n"
+        "Details finden Sie hier..."
+    )
     item = {
         "title": "Ebenfurth",
-        "description": (
-            "06.12.2025 - 09.12.2025\n"
-            "Wegen Bauarbeiten können\n"
-            "in Ebenfurth Bahnhof\n"
-            "von 06.12.2025 (06:10 Uhr) bis 09.12.2025 (04:40 Uhr)\n"
-            "die S60-Züge nicht halten.\n"
-            "Wir bitten um Entschuldigung.\n"
-            "Details finden Sie hier..."
-        ),
+        "description": desc,
     }
 
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    # Expect <br/> instead of <br> in description as well
-    assert desc_text.split("<br/>") == [
-        "Wegen Bauarbeiten können in Ebenfurth Bahnhof von 06.12.2025 "
-        "(06:10 Uhr) bis 09.12.2025 (04:40 Uhr) die S60-Züge nicht halten.",
-        "[06.12.2025 – 09.12.2025]",
-    ]
-
-    content_html = _extract_content_encoded(xml)
-    assert content_html.split("<br/>") == [
-        "Wegen Bauarbeiten können in Ebenfurth Bahnhof von 06.12.2025 "
-        "(06:10 Uhr) bis 09.12.2025 (04:40 Uhr) die S60-Züge nicht halten.",
-        "[06.12.2025 – 09.12.2025]",
-    ]
+    # We now preserve the full description including newlines
+    assert desc_text == desc
+    assert "Wegen Bauarbeiten können" in desc_text
 
 
 def test_emit_item_uses_date_range_from_description(monkeypatch):
@@ -207,16 +202,8 @@ def test_emit_item_uses_date_range_from_description(monkeypatch):
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text.split("<br/>") == [
-        "Wegen Bauarbeiten",
-        "[06.12.2025 – 09.12.2025]",
-    ]
-
-    content_html = _extract_content_encoded(xml)
-    assert content_html.split("<br/>") == [
-        "Wegen Bauarbeiten",
-        "[06.12.2025 – 09.12.2025]",
-    ]
+    # We preserve the description as-is if no start/end times provided
+    assert desc_text == "06.12.2025 - 09.12.2025\nWegen Bauarbeiten"
 
 
 def test_emit_item_since_line_replaced_by_description_range(monkeypatch):
@@ -235,16 +222,9 @@ def test_emit_item_since_line_replaced_by_description_range(monkeypatch):
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text.split("<br/>") == [
-        "Wegen Bauarbeiten",
-        "[06.12.2025 – 09.12.2025]",
-    ]
-
-    content_html = _extract_content_encoded(xml)
-    assert content_html.split("<br/>") == [
-        "Wegen Bauarbeiten",
-        "[06.12.2025 – 09.12.2025]",
-    ]
+    # Original description + appended date line
+    assert "06.12.2025 - 09.12.2025\nWegen Bauarbeiten" in desc_text
+    assert "[Seit 16.09.2025]" in desc_text
 
 
 def test_emit_item_since_line_replaced_by_description_range_after_text(monkeypatch):
@@ -263,16 +243,9 @@ def test_emit_item_since_line_replaced_by_description_range_after_text(monkeypat
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    assert desc_text.split("<br/>") == [
-        "Wegen Bauarbeiten.",
-        "[06.12.2025 – 09.12.2025]",
-    ]
-
-    content_html = _extract_content_encoded(xml)
-    assert content_html.split("<br/>") == [
-        "Wegen Bauarbeiten.",
-        "[06.12.2025 – 09.12.2025]",
-    ]
+    # Original description + appended date line
+    assert "Wegen Bauarbeiten.\n06.12.2025 - 09.12.2025" in desc_text
+    assert "[Seit 16.09.2025]" in desc_text
 
 
 def test_emit_item_appends_since_time(monkeypatch):

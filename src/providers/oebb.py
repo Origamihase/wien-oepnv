@@ -534,6 +534,16 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         desc = _clean_description(desc_html)
         pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
 
+        # Attempt to extract affected line from description (e.g. "REX 1", "S 50", "S-Bahn 1", "U1")
+        # if not already present in the title.
+        # Regex covers common Austrian train types + digit.
+        line_match = re.search(r"\b((?:REX|S(?:-Bahn)?|U)\s*\d+)\b", desc)
+        if line_match:
+            line_str = line_match.group(1)
+            # Prepend if not already in title (simple check)
+            if line_str not in title:
+                title = f"{line_str}: {title}"
+
         # Title Fallback for "poor" titles
         def _is_poor_title(t: str) -> bool:
             return not t or not any(c.isalnum() for c in t) or t == "-"
