@@ -103,10 +103,9 @@ def test_vor_description_keeps_extra_lines():
     assert content_lines == desc_lines
 
     for lines in (desc_lines, content_lines):
+        # Strict 2-line layout
+        # Line 1: Summary
         assert lines[0] == "Ersatzverkehr zwischen Floridsdorf und Praterstern."
-        assert lines[1] == "Linien: S1"
-        assert (
-            lines[2]
-            == "Betroffene Haltestellen: Wien Floridsdorf, Wien Praterstern"
-        )
-        assert lines[-1] == "[Seit 15.07.2023]"
+        # Line 2: Timeframe (Lines and Stops are removed)
+        assert lines[1] == "[Seit 15.07.2023]"
+        assert len(lines) == 2

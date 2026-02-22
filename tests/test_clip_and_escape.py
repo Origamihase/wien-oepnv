@@ -63,9 +63,9 @@ def test_emit_item_sanitizes_description(monkeypatch):
     monkeypatch.setattr(bf.feed_config, "DESCRIPTION_CHAR_LIMIT", 5)
     now = datetime(2024, 1, 1)
     ident, xml = _emit_item_str(bf, {"title": "X", "description": "<b>Tom & Jerry</b>"}, now, {})
-    # We preserve HTML now, so no truncation happens at small limits
-    assert "<description><![CDATA[<b>Tom & Jerry</b>]]></description>" in xml
-    assert "Jerry" in xml
+    # We now extract text and collapse newlines, then truncate if needed
+    # "Tom & Jerry" (11 chars) -> truncated to 5 -> "Tom & …"
+    assert "<description><![CDATA[Tom & …]]></description>" in xml
 
 
 def test_emit_item_keeps_bullet_separator(monkeypatch):
@@ -95,8 +95,11 @@ def test_emit_item_collapses_whitespace(monkeypatch):
     desc_match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml, re.S)
     assert desc_match, xml
     desc_text = desc_match.group(1)
-    # Description is preserved (HTML content)
-    assert "Zeile\t\tEins  mit   Tabs" in desc_text
+    # Description is cleaned and collapsed (plain text)
+    # "Zeile Eins mit Tabs • Zeile Zwei mit Spaces"
+    assert "Zeile Eins mit Tabs" in desc_text
+    assert "Zeile Zwei mit Spaces" in desc_text
+    assert "\t" not in desc_text
 
 
 def test_emit_item_trims_wrapping_whitespace(monkeypatch):
@@ -115,8 +118,8 @@ def test_emit_item_trims_wrapping_whitespace(monkeypatch):
 
     desc_match = re.search(r"<description><!\[CDATA\[(.*)]]></description>", xml, re.S)
     assert desc_match, xml
-    # Description whitespace is preserved as HTML content
-    assert " \t Foo  bar \n " in desc_match.group(1)
+    # Description whitespace is collapsed and trimmed
+    assert desc_match.group(1) == "Foo bar"
 
 
 def test_emit_item_removes_category_and_limits_lines(monkeypatch):
@@ -186,9 +189,11 @@ def test_emit_item_oebb_multiline_sentence(monkeypatch):
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    # We now preserve the full description including newlines
-    assert desc_text == desc
+    # We now extract text and collapse whitespace (newlines -> space or bullet)
+    assert "06.12.2025 - 09.12.2025" in desc_text
     assert "Wegen Bauarbeiten können" in desc_text
+    # Ensure newlines are gone
+    assert "\n" not in desc_text
 
 
 def test_emit_item_uses_date_range_from_description(monkeypatch):
@@ -202,8 +207,10 @@ def test_emit_item_uses_date_range_from_description(monkeypatch):
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    # We preserve the description as-is if no start/end times provided
-    assert desc_text == "06.12.2025 - 09.12.2025\nWegen Bauarbeiten"
+    # We collapse newlines
+    assert "06.12.2025 - 09.12.2025" in desc_text
+    assert "Wegen Bauarbeiten" in desc_text
+    assert "\n" not in desc_text
 
 
 def test_emit_item_since_line_replaced_by_description_range(monkeypatch):
@@ -222,9 +229,10 @@ def test_emit_item_since_line_replaced_by_description_range(monkeypatch):
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    # Original description + appended date line
-    assert "06.12.2025 - 09.12.2025\nWegen Bauarbeiten" in desc_text
-    assert "[Seit 16.09.2025]" in desc_text
+    # Original description (collapsed) + appended date line via <br/>
+    assert "06.12.2025 - 09.12.2025" in desc_text
+    assert "Wegen Bauarbeiten" in desc_text
+    assert "<br/>[Seit 16.09.2025]" in desc_text
 
 
 def test_emit_item_since_line_replaced_by_description_range_after_text(monkeypatch):
@@ -243,9 +251,10 @@ def test_emit_item_since_line_replaced_by_description_range_after_text(monkeypat
     _, xml = _emit_item_str(bf, item, now, {})
 
     desc_text = _extract_description(xml)
-    # Original description + appended date line
-    assert "Wegen Bauarbeiten.\n06.12.2025 - 09.12.2025" in desc_text
-    assert "[Seit 16.09.2025]" in desc_text
+    # Original description (collapsed) + appended date line
+    assert "Wegen Bauarbeiten." in desc_text
+    assert "06.12.2025 - 09.12.2025" in desc_text
+    assert "<br/>[Seit 16.09.2025]" in desc_text
 
 
 def test_emit_item_appends_since_time(monkeypatch):

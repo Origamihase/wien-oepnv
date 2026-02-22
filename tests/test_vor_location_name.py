@@ -135,6 +135,7 @@ def test_collect_from_board_canonicalizes_stop_names():
     items = vor._collect_from_board("123", payload)
 
     assert items
+    # Description should no longer contain stops, so we just check it exists/is valid.
+    # The requirement was to put station context in title if needed, or just plain summary.
     description = items[0]["description"]
-    assert "Wien Franz-Josefs-Bf" in description
-    assert "Franz Josefs Bahnhof" not in description
+    assert description == "Test text"

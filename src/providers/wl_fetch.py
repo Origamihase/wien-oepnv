@@ -699,17 +699,8 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
 
         # Beschreibung aufbauen (ohne „Linien: …“ in extras)
         desc = b["desc_base"]
-        extras_clean = [
-            x
-            for x in b["extras"]
-            if not x.lower().startswith("linien:") and x not in extras_for_context
-        ]
-        if extras_clean:
-            desc = (desc + (" • " if desc else "") + " • ".join(extras_clean))
-        if b["stop_names"]:
-            names = sorted(b["stop_names"], key=lambda x: x.casefold())
-            desc += " • Betroffene Haltestellen: " + ", ".join(names)
-        desc = re.sub(r"[<>]+", "", desc)
+        # Keine Extras oder Haltestellen mehr anhängen (Task: Strict 2-line Layout)
+        # Keine aggressive HTML-Entfernung mehr (Task: Fix h2Artifacts)
         desc = re.sub(r"\s{2,}", " ", desc).strip()
 
         guid = make_guid(
