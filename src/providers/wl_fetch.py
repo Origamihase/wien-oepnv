@@ -709,7 +709,6 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
         if b["stop_names"]:
             names = sorted(b["stop_names"], key=lambda x: x.casefold())
             desc += " • Betroffene Haltestellen: " + ", ".join(names)
-        desc = re.sub(r"[<>]+", "", desc)
         desc = re.sub(r"\s{2,}", " ", desc).strip()
 
         guid = make_guid(

@@ -537,9 +537,14 @@ def fetch_events(timeout: int = 25) -> List[Dict[str, Any]]:
         # Attempt to extract affected line from description (e.g. "REX 1", "S 50", "S-Bahn 1", "U1")
         # if not already present in the title.
         # Regex covers common Austrian train types + digit.
-        line_match = re.search(r"\b((?:REX|S(?:-Bahn)?|U)\s*\d+)\b", desc)
+
+        # Strip HTML tags for regex matching (e.g. "<b>REX</b> <i>1</i>" -> "REX 1")
+        desc_plain = re.sub(r"<[^>]+>", " ", desc)
+        desc_plain = re.sub(r"\s{2,}", " ", desc_plain)
+
+        line_match = re.search(r"\b((?:REX|S(?:-Bahn)?|U)\s*\d+)\b", desc_plain)
         if line_match:
-            line_str = line_match.group(1)
+            line_str = line_match.group(1).strip()
             # Prepend if not already in title (simple check)
             if line_str not in title:
                 title = f"{line_str}: {title}"
