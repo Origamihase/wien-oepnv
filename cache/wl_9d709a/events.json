@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5A: Busse halten Untere Augartenstraße 42",
-    "description": "Busse halten Untere Augartenstraße 42",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "483eae38010ee8e6894791d2738a9629c827a8f49663810bceb0716d9219a663",
-    "pubDate": "2026-02-22T00:00:14+01:00",
-    "starts_at": "2026-02-22T00:00:14+01:00",
-    "ends_at": "2026-02-22T23:59:59+01:00",
-    "_identity": "wl|störung|L=5A|D=2026-02-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,6 +202,18 @@
     "starts_at": "2026-02-22T00:00:14+01:00",
     "ends_at": "2026-02-22T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-02-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5A: Busse halten Untere Augartenstraße 42",
+    "description": "Busse halten Untere Augartenstraße 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "483eae38010ee8e6894791d2738a9629c827a8f49663810bceb0716d9219a663",
+    "pubDate": "2026-02-22T00:00:14+01:00",
+    "starts_at": "2026-02-22T00:00:14+01:00",
+    "ends_at": "2026-02-22T23:59:59+01:00",
+    "_identity": "wl|störung|L=5A|D=2026-02-22"
   },
   {
     "source": "Wiener Linien",
@@ -254,10 +254,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Gleisschaden Betrieb ab Wattmanngasse",
-    "description": "Gleisschaden Betrieb ab Wattmanngasse",
+    "title": "62: Gleisschaden Betrieb ab Dörfelstraße",
+    "description": "Gleisschaden Betrieb ab Dörfelstraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c581535f501a01142add950358b15d07de9269780c35ac4f9a5dd926cb459d4",
+    "guid": "a2a071932e59ff5108be3679dc78393920222783c62f251d8c4e117409d174b4",
     "pubDate": "2026-02-22T15:57:50+01:00",
     "starts_at": "2026-02-22T15:57:53+01:00",
     "ends_at": "2026-02-22T19:00:00+01:00",
@@ -266,10 +266,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Gleisschaden Betrieb ab Dörfelstraße",
-    "description": "Gleisschaden Betrieb ab Dörfelstraße",
+    "title": "62: Gleisschaden Betrieb ab Wattmanngasse",
+    "description": "Gleisschaden Betrieb ab Wattmanngasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a2a071932e59ff5108be3679dc78393920222783c62f251d8c4e117409d174b4",
+    "guid": "0c581535f501a01142add950358b15d07de9269780c35ac4f9a5dd926cb459d4",
     "pubDate": "2026-02-22T15:57:50+01:00",
     "starts_at": "2026-02-22T15:57:53+01:00",
     "ends_at": "2026-02-22T19:00:00+01:00",
