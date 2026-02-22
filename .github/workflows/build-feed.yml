@@ -69,7 +69,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: |
           # Änderungen stagen
-          git add docs/feed.xml
+          git add -f docs/feed.xml
 
           # Prüfen, ob es gestagte Änderungen gibt
           if ! git diff --staged --quiet; then
