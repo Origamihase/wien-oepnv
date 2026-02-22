@@ -1,5 +1,4 @@
 
-import pytest
 from src.utils.secret_scanner import _scan_content
 
 def test_deduplication_high_entropy_assignment():

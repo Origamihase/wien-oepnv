@@ -1,5 +1,4 @@
 from src.providers.oebb import _clean_title_keep_places
-from src.utils.stations import is_in_vienna, canonical_name, station_info
 
 def test_title_reordering_vienna_first():
     # Case 1: Vienna station second -> should swap

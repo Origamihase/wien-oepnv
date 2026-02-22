@@ -1,6 +1,5 @@
 
 import sys
-import pytest
 from unittest.mock import patch
 from src.utils.logging import sanitize_log_message
 

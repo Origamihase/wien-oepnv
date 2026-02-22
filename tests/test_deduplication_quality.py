@@ -1,6 +1,5 @@
 import unittest
-from datetime import datetime, timezone, timedelta
-from unittest.mock import MagicMock
+from datetime import datetime, timezone
 import sys
 import os
 

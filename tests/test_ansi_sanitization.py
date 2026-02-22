@@ -1,5 +1,4 @@
 """Tests for comprehensive ANSI escape sequence sanitization."""
-import re
 from src.utils.logging import sanitize_log_message as log_sanitize
 from src.utils.env import sanitize_log_message as env_sanitize
 

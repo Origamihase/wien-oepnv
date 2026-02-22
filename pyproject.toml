@@ -28,6 +28,7 @@ select = [
 "scripts/run_static_checks.py" = ["S603"]
 "scripts/update_all_stations.py" = ["S603"]
 "scripts/update_station_directory.py" = ["S603"]
+"tests/**/*.py" = ["S101", "S113", "S314"]
 
 [tool.mypy]
 python_version = "3.11"

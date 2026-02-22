@@ -1,7 +1,5 @@
 
-import re
 import time
-import pytest
 from src.providers.wl_lines import LINES_COMPLEX_PREFIX_RE
 
 def test_lines_complex_prefix_correctness():

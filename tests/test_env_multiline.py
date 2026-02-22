@@ -1,6 +1,4 @@
 
-import os
-from pathlib import Path
 from src.utils.env import load_env_file
 
 def test_multiline_env_parsing(tmp_path):

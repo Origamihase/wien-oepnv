@@ -56,7 +56,7 @@ def test_auth_kwargs_leak_on_redirect():
             # Execute request_safe with auth kwargs
             try:
                 request_safe(mock_session, "http://safe.com/start", auth=("user", "pass"))
-            except Exception as e:
+            except Exception:
                 pass
 
             # Verify calls

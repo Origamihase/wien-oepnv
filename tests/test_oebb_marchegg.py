@@ -1,6 +1,4 @@
-import pytest
-import re
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 import xml.etree.ElementTree as ET
 import src.providers.oebb as oebb_provider
 

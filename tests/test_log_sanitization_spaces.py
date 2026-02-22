@@ -1,5 +1,4 @@
 
-import pytest
 from src.utils.logging import sanitize_log_message
 
 def test_sanitization_spaces_assignment():

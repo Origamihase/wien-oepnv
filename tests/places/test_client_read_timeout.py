@@ -1,7 +1,7 @@
 from unittest.mock import MagicMock, patch
 import pytest
 import requests
-from src.places.client import GooglePlacesClient, GooglePlacesConfig, GooglePlacesError
+from src.places.client import GooglePlacesClient, GooglePlacesConfig
 
 @pytest.fixture
 def client_config():

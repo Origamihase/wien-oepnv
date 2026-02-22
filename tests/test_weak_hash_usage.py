@@ -1,5 +1,4 @@
 
-import hashlib
 from src.build_feed import _identity_for_item, _dedupe_key_for_item
 
 def test_identity_for_item_uses_strong_hash():

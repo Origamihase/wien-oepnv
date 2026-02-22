@@ -1,7 +1,6 @@
 import sys
 import logging
 import pytest
-from pathlib import Path
 from unittest.mock import patch
 
 from src.utils.logging import sanitize_log_message

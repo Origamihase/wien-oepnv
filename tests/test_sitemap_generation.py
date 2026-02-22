@@ -1,7 +1,6 @@
 import os
 import xml.etree.ElementTree as ET
 from unittest.mock import patch
-from pathlib import Path
 import pytest
 from scripts import generate_sitemap
 

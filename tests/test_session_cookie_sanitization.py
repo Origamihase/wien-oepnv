@@ -1,5 +1,4 @@
 
-import pytest
 from src.utils.http import _sanitize_url_for_error
 from src.utils.logging import sanitize_log_message
 

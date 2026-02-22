@@ -1,6 +1,4 @@
-import pytest
 from src.providers.vor import _build_guid
-from src.utils.ids import make_guid
 
 def test_vor_guid_dos_protection():
     """

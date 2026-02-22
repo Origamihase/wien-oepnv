@@ -1,4 +1,3 @@
-import pytest
 from src.utils.logging import sanitize_log_message
 
 def test_sanitize_x_goog_api_key_header():

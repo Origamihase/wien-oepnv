@@ -1,7 +1,5 @@
 
-import pytest
-import sys
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 def test_thread_pool_cleanup():
     # Import build_feed here to ensure we get the current module from sys.modules

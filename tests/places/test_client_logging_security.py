@@ -9,7 +9,7 @@ from unittest.mock import MagicMock
 import pytest
 import requests
 
-from src.places.client import GooglePlacesClient, GooglePlacesConfig, GooglePlacesTileError
+from src.places.client import GooglePlacesClient, GooglePlacesConfig
 from src.places.tiling import Tile
 
 class _MockResponse:

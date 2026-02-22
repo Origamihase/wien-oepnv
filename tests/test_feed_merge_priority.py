@@ -1,4 +1,3 @@
-import pytest
 from src.feed.merge import deduplicate_fuzzy
 
 def test_fuzzy_merge_provider_priority_vor_wins_over_oebb():

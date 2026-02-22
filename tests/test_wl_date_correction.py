@@ -1,6 +1,4 @@
 
-import pytest
-from datetime import datetime, timezone
 from src.providers.wl_fetch import fetch_events
 
 class DummySession:

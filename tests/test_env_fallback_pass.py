@@ -1,6 +1,5 @@
 
 import sys
-import types
 from unittest.mock import patch
 
 def test_env_fallback_pass_sanitization():

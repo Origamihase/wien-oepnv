@@ -1,6 +1,5 @@
 import requests
 import responses
-from responses import matchers
 
 import src.providers.vor as vor
 
