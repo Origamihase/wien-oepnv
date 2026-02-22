@@ -1,5 +1,4 @@
 
-import inspect
 from typing import get_type_hints, List
 from src.providers import vor, oebb
 from src.feed_types import FeedItem

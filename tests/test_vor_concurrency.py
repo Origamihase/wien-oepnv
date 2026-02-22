@@ -1,5 +1,4 @@
 
-import pytest
 from unittest.mock import patch, MagicMock
 from src.providers.vor import fetch_vor_disruptions, VOR_MAX_WORKERS
 
@@ -37,7 +36,9 @@ def test_vor_concurrency_limit(mock_session, mock_select, mock_get_stations, moc
 @patch("src.providers.vor.get_configured_stations", return_value=["id_1", "id_2"])
 @patch("src.providers.vor.select_stations_for_run", side_effect=lambda x: x)
 @patch("src.providers.vor.session_with_retries")
-def test_vor_concurrency_small_list(mock_session, mock_select, mock_get_stations, mock_load, mock_refresh, mock_executor, mock_as_completed):
+def test_vor_concurrency_small_list(
+    mock_session, mock_select, mock_get_stations, mock_load, mock_refresh, mock_executor, mock_as_completed
+):
     """Verify that VOR fetch uses fewer threads for small station lists."""
 
     mock_executor_instance = MagicMock()
