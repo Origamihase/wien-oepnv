@@ -242,13 +242,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Feuerwehreinsatz",
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "26A: Verspätungen",
+    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "564166d27455e4c3e4f123d5028460adab46b34a5d0c7a8f5651f92aee27ffef",
-    "pubDate": "2026-02-22T04:54:00+01:00",
-    "starts_at": "2026-02-22T04:54:00+01:00",
+    "guid": "7f9a2af401b97e330d7ac59be04b75db63099ba28a23d02de44b605e1ec65a5b",
+    "pubDate": "2026-02-22T08:12:00+01:00",
+    "starts_at": "2026-02-22T08:12:00+01:00",
     "ends_at": "2026-02-22T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-02-22"
+    "_identity": "wl|störung|L=26A|D=2026-02-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10A: Verspätungen",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7c9302b74c4151c193e8b61e865846e07389f3d8b7b69a75a90f6a2fde5e99f4",
+    "pubDate": "2026-02-22T08:25:00+01:00",
+    "starts_at": "2026-02-22T08:25:00+01:00",
+    "ends_at": "2026-02-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=10A|D=2026-02-22"
   }
 ]
