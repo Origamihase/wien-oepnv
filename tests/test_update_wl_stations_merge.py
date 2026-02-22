@@ -64,7 +64,8 @@ def test_merge_wl_data_into_existing_vor_entry(stations_path: Path) -> None:
     assert entry["source"] == "vor, wl"
     assert entry["wl_diva"] == "60201076"
     assert entry["wl_stops"] == wl_entries[0]["wl_stops"]
-    assert set(entry["aliases"]) == {"Karlsplatz", "Wien Karlsplatz"}
+    from typing import cast
+    assert set(cast(list[str], entry["aliases"])) == {"Karlsplatz", "Wien Karlsplatz"}
 
     update_wl_stations.merge_into_stations(stations_path, wl_entries)
     rerun = _read_entries(stations_path)

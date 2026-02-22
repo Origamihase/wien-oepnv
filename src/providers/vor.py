@@ -18,6 +18,7 @@ import base64
 import json
 import logging
 import os
+import random
 import re
 import threading
 import time
@@ -858,10 +859,22 @@ def _select_stations_round_robin(
 ) -> List[str]:
     if not ids or chunk_size <= 0:
         return []
+
+    # Task 4: Stable rotation
+    # 1. Shuffle daily to ensure fairness over long term but stability within day
+    today = datetime.now(ZONE_VIENNA).strftime("%Y-%m-%d")
+    # Use local Random instance to avoid side effects on global random state
+    rng = random.Random(today)
+    shuffled_ids = list(ids)
+    rng.shuffle(shuffled_ids)
+
+    # 2. Use persistent request count as index to rotate every run
+    _, request_count = load_request_count()
+    start_index = request_count % len(shuffled_ids)
+
+    ordered = shuffled_ids[start_index:] + shuffled_ids[:start_index]
+
     chunk = min(len(ids), chunk_size)
-    period = max(1, period_seconds or 1)
-    start_index = int(time.time() // period) % len(ids)
-    ordered = list(ids[start_index:]) + list(ids[:start_index])
     selected: List[str] = []
     seen: set[str] = set()
     for sid in ordered:

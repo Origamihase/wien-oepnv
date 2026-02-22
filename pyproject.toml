@@ -8,7 +8,6 @@ exclude = [
   "data",
   "docs",
   "log",
-  "tests",
 ]
 
 [tool.ruff.lint]
@@ -44,4 +43,4 @@ disable_error_code = ["import-untyped"]
 
 [[tool.mypy.overrides]]
 module = "tests.*"
-ignore_errors = true
+ignore_errors = false

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 from src.utils.secret_scanner import scan_repository
 
@@ -196,7 +197,7 @@ def test_secret_scanner_detects_extended_keys(tmp_path: Path) -> None:
     # We expect at least one finding per assignment.
     # Some secrets (like JWT or long cookies) might also trigger the high-entropy check,
     # resulting in multiple findings for the same line.
-    findings_by_line = {}
+    findings_by_line: dict[int, list[Any]] = {}
     for f in findings:
         findings_by_line.setdefault(f.line_number, []).append(f)
 

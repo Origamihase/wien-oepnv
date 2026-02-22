@@ -401,7 +401,7 @@ def build_wl_entries(
             "wl_diva": station_identifier,
             "wl_stops": sorted(
                 stops_payload,
-                key=lambda item: item["stop_id"],
+                key=lambda item: str(item["stop_id"]),
             ),
             "aliases": sorted(
                 {alias for alias in aliases if isinstance(alias, str) and alias.strip()}
@@ -488,12 +488,16 @@ def _merge_wl_payload(target: dict[str, object], payload: Mapping[str, object]) 
 
     target["source"] = _merge_sources(target.get("source"), payload.get("source"), "wl")
 
+    from typing import cast
     existing_aliases: list[str] = []
-    if isinstance(target.get("aliases"), list):
-        existing_aliases = list(target.get("aliases") or [])
-    incoming_aliases = []
-    if isinstance(payload.get("aliases"), list):
-        incoming_aliases = list(payload.get("aliases") or [])
+    raw_target_aliases = target.get("aliases")
+    if isinstance(raw_target_aliases, list):
+        existing_aliases = cast(List[str], list(raw_target_aliases))
+
+    incoming_aliases: list[str] = []
+    raw_payload_aliases = payload.get("aliases")
+    if isinstance(raw_payload_aliases, list):
+        incoming_aliases = cast(List[str], list(raw_payload_aliases))
     target["aliases"] = existing_aliases + incoming_aliases
     _ensure_sorted_aliases(target)
 
@@ -514,7 +518,7 @@ def _lookup_candidates(index: Mapping[str, dict[str, object]], key: object | Non
 
 def merge_into_stations(
     stations_path: Path,
-    wl_entries: list[dict[str, object]],
+    wl_entries: list[dict[str, Any]],
 ) -> None:
     try:
         with stations_path.open("r", encoding="utf-8") as handle:

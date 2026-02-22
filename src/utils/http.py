@@ -193,7 +193,8 @@ _SENSITIVE_HEADER_PARTIALS = frozenset({
     "signature",
     "session",
     "cookie",
-    "auth",
+    "auth-",
+    "authorization",
     "access",
     "client",
 })
@@ -1156,3 +1157,8 @@ def fetch_content_safe(
         **kwargs,
     )
     return response.content
+
+
+def shutdown_dns_executor() -> None:
+    """Shutdown the global DNS executor to release resources."""
+    _DNS_EXECUTOR.shutdown(wait=True)

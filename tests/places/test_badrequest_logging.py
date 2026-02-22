@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Dict, Iterator
+from typing import Any, Dict, Iterator, Union
 from unittest.mock import MagicMock
 
 import pytest
@@ -40,7 +40,7 @@ class _ErrorResponse:
 
 
 class _ErrorSession:
-    def __init__(self, response: _ErrorResponse):
+    def __init__(self, response: Union[_ErrorResponse, _TextErrorResponse]):
         self._response = response
 
     def post(
@@ -51,7 +51,7 @@ class _ErrorSession:
         json: Dict[str, Any],
         timeout: float,
         **kwargs: Any,
-    ) -> _ErrorResponse:
+    ) -> Union[_ErrorResponse, _TextErrorResponse]:
         return self._response
 
 

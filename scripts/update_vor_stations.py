@@ -19,10 +19,10 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-from src.providers import vor as vor_provider  # type: ignore  # noqa: E402
-from src.utils.files import atomic_write  # type: ignore  # noqa: E402
-from src.utils.http import session_with_retries  # type: ignore  # noqa: E402
-from src.utils.stations import is_in_vienna, is_pendler  # type: ignore  # noqa: E402
+from src.providers import vor as vor_provider  # noqa: E402
+from src.utils.files import atomic_write  # noqa: E402
+from src.utils.http import session_with_retries  # noqa: E402
+from src.utils.stations import is_in_vienna, is_pendler  # noqa: E402
 DEFAULT_SOURCE = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 
@@ -716,11 +716,14 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
         if not isinstance(aliases, list):
             aliases = []
         existing_aliases = {str(item).strip() for item in aliases if item}
-        for alias in static_entry.get("aliases", []) if isinstance(static_entry.get("aliases"), list) else []:
-            text = str(alias).strip()
-            if text and text not in existing_aliases:
-                aliases.append(text)
-                existing_aliases.add(text)
+
+        static_aliases = static_entry.get("aliases")
+        if isinstance(static_aliases, list):
+            for alias in static_aliases:
+                text = str(alias).strip()
+                if text and text not in existing_aliases:
+                    aliases.append(text)
+                    existing_aliases.add(text)
         target["aliases"] = aliases
         for key in ("bst_id", "bst_code", "source", "name", "in_vienna", "pendler", "latitude", "longitude"):
             value = static_entry.get(key)
@@ -775,11 +778,14 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
             if not isinstance(vor_aliases, list):
                 vor_aliases = []
             existing_aliases = {str(item).strip() for item in vor_aliases if item}
-            for alias in vor_entry.get("aliases", []) if isinstance(vor_entry.get("aliases"), list) else []:
-                text = str(alias).strip()
-                if text and text not in existing_aliases:
-                    vor_aliases.append(text)
-                    existing_aliases.add(text)
+
+            vor_entry_aliases = vor_entry.get("aliases")
+            if isinstance(vor_entry_aliases, list):
+                for alias in vor_entry_aliases:
+                    text = str(alias).strip()
+                    if text and text not in existing_aliases:
+                        vor_aliases.append(text)
+                        existing_aliases.add(text)
             target["aliases"] = vor_aliases
             if not _normalize_id(target.get("vor_id")):
                 target["vor_id"] = vor_id
@@ -831,7 +837,7 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
     new_vor_entries.sort(key=lambda item: (str(item.get("name")), str(item.get("vor_id"))))
     merged_entries = existing + new_vor_entries
 
-    with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
+    with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:  # type: ignore[assignment]
         output = {"stations": merged_entries}
         json.dump(output, handle, ensure_ascii=False, indent=2)
         handle.write("\n")

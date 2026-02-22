@@ -60,11 +60,11 @@ def test_cli_stations_validate_writes_report(tmp_path: Path, monkeypatch: pytest
     class DummyReport:
         has_issues = True
         total_stations = 100
-        duplicates = []
-        alias_issues = []
-        coordinate_issues = []
-        gtfs_issues = []
-        security_issues = []
+        duplicates: list[str] = []
+        alias_issues: list[str] = []
+        coordinate_issues: list[str] = []
+        gtfs_issues: list[str] = []
+        security_issues: list[str] = []
 
         def to_markdown(self) -> str:
             return "dummy-report\n"

@@ -16,8 +16,9 @@ def _load_module() -> object:
 def test_scaffold_provider_plugin_writes_template(tmp_path: Path) -> None:
     target = tmp_path / "plugins" / "custom.py"
 
+    from typing import cast, Any
     module = _load_module()
-    exit_code = module.main([str(target)])
+    exit_code = cast(Any, module).main([str(target)])
 
     assert exit_code == 0
     content = target.read_text(encoding="utf-8")

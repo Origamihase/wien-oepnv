@@ -8,14 +8,15 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from types import ModuleType
+from typing import Any, cast
 
 
 def _make_plugin_module(name: str, *, register_callable=None, providers=None) -> ModuleType:
     module = ModuleType(name)
     if register_callable is not None:
-        module.register_providers = register_callable
+        cast(Any, module).register_providers = register_callable
     if providers is not None:
-        module.PROVIDERS = providers
+        cast(Any, module).PROVIDERS = providers
     return module
 
 

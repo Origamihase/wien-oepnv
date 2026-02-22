@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 from src.utils.secret_scanner import scan_repository
 
 def test_secret_scanner_detects_hyphenated_keys(tmp_path: Path) -> None:
@@ -27,7 +28,7 @@ def test_secret_scanner_detects_hyphenated_keys(tmp_path: Path) -> None:
     findings = scan_repository(tmp_path, paths=[file_path])
 
     # Expect all to be found
-    findings_by_line = {}
+    findings_by_line: dict[int, list[Any]] = {}
     for f in findings:
         findings_by_line.setdefault(f.line_number, []).append(f)
 
@@ -53,7 +54,7 @@ def test_secret_scanner_detects_dot_separated_keys(tmp_path: Path) -> None:
     findings = scan_repository(tmp_path, paths=[file_path])
 
     # Expect all to be found
-    findings_by_line = {}
+    findings_by_line: dict[int, list[Any]] = {}
     for f in findings:
         findings_by_line.setdefault(f.line_number, []).append(f)
 

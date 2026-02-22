@@ -2,13 +2,13 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Iterable, List, Iterator, Any
+from typing import Iterable, List, Iterator, Any, cast
 from unittest.mock import MagicMock
 
 import pytest
 
 from src.places.client import GooglePlacesClient, GooglePlacesConfig, Place
-from src.places.merge import BoundingBox, MergeConfig, merge_places
+from src.places.merge import BoundingBox, MergeConfig, merge_places, StationEntry
 from src.places.normalize import haversine_m, normalize_name
 from src.places.tiling import Tile
 
@@ -36,14 +36,14 @@ def _data_path(name: str) -> Path:
     return Path(__file__).resolve().parent / "data" / name
 
 
-def load_existing() -> List[dict]:
+def load_existing() -> List[StationEntry]:
     path = _data_path("stations_existing.json")
-    return json.loads(path.read_text(encoding="utf-8"))
+    return cast(List[StationEntry], json.loads(path.read_text(encoding="utf-8")))
 
 
-def load_expected() -> List[dict]:
+def load_expected() -> List[StationEntry]:
     path = _data_path("stations_expected.json")
-    return json.loads(path.read_text(encoding="utf-8"))
+    return cast(List[StationEntry], json.loads(path.read_text(encoding="utf-8")))
 
 
 def test_normalize_name_handles_accents_and_spacing() -> None:
@@ -96,7 +96,7 @@ def test_merge_matches_by_distance() -> None:
 
 
 def test_merge_infers_in_vienna_from_address_and_bounds() -> None:
-    existing: List[dict] = []
+    existing: List[StationEntry] = []
     places = [
         make_place(
             "vienna-place",
