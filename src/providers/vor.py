@@ -831,7 +831,7 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[Dict[s
         head = str(message.get("head") or message.get("name") or "").strip()
         text = str(message.get("text") or message.get("description") or "").strip()
         lines = _extract_lines(message)
-        stops = _extract_stop_names(message)
+        # stops removed (Task: Strict 2-line layout, not used anymore)
         start_dt = _parse_dt(message.get("sDate"), message.get("sTime"))
         end_dt = _parse_dt(message.get("eDate"), message.get("eTime"))
         if end_dt and start_dt and end_dt < start_dt:
