@@ -24,7 +24,7 @@ from email.utils import format_datetime
 from pathlib import Path
 from threading import BoundedSemaphore, Lock
 from time import perf_counter
-from typing import Any, Dict, List, Optional, Sequence, Set, Tuple, cast
+from typing import Any, Dict, List, Optional, Sequence, Set, Tuple, Union, cast
 from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
 
@@ -334,7 +334,7 @@ def _fetch_supports_timeout(fetch: Any) -> bool:
 
 
 def _call_fetch_with_timeout(
-    fetch: Any, timeout: Optional[int], supports_timeout: bool
+    fetch: Any, timeout: Union[int, float, None], supports_timeout: bool
 ) -> Any:
     """Invoke the fetch callable, passing the timeout if supported."""
     if supports_timeout:
