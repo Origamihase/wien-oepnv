@@ -1,5 +1,4 @@
 
-import pytest
 from src.utils.http import _sanitize_url_for_error
 
 def test_sanitize_url_redacts_fragment_secrets():

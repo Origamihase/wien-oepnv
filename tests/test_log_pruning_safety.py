@@ -1,6 +1,5 @@
 
 import logging
-import time
 from datetime import datetime, timedelta
 from logging.handlers import RotatingFileHandler
 from pathlib import Path

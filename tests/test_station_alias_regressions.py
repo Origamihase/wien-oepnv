@@ -93,6 +93,8 @@ def test_restore_existing_metadata_preserves_all_aliases() -> None:
             assert restored_aliases is None
             continue
 
+        from typing import cast
         assert isinstance(restored_aliases, list), "Restored aliases must be a list"
-        assert set(restored_aliases) == set(original_aliases), f"Aliases changed for {station.name}"
+        assert isinstance(original_aliases, list), "Original aliases must be a list"
+        assert set(cast(list[str], restored_aliases)) == set(cast(list[str], original_aliases)), f"Aliases changed for {station.name}"
 

@@ -1,6 +1,5 @@
 import ipaddress
-import pytest
-from src.utils.http import is_ip_safe, validate_http_url
+from src.utils.http import is_ip_safe
 
 def test_nat64_bypass_detected():
     # NAT64 Well-Known Prefix (WKP) 64:ff9b::/96

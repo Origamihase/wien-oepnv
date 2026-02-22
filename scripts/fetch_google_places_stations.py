@@ -14,7 +14,7 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 import sys
-from typing import Iterable, List, MutableMapping, Optional, Sequence
+from typing import Iterable, List, Mapping, MutableMapping, Optional, Sequence
 
 # When executed as ``python scripts/fetch_google_places_stations.py`` the parent
 # directory (repository root) is not on ``sys.path`` which prevents importing
@@ -191,8 +191,8 @@ def _fetch_places(client: GooglePlacesClient, tiles: Iterable[Tile]) -> List[Pla
 
 
 def _print_diff(
-    new_entries: Sequence[MutableMapping[str, object]],
-    updated_entries: Sequence[MutableMapping[str, object]],
+    new_entries: Sequence[Mapping[str, object]],
+    updated_entries: Sequence[Mapping[str, object]],
     skipped: Sequence[Place],
 ) -> None:
     if new_entries:
@@ -233,8 +233,8 @@ def _permission_hint(details: str) -> Optional[str]:
 
 def _dump_changes(
     path: Path,
-    new_entries: Sequence[MutableMapping[str, object]],
-    updated_entries: Sequence[MutableMapping[str, object]],
+    new_entries: Sequence[Mapping[str, object]],
+    updated_entries: Sequence[Mapping[str, object]],
 ) -> None:
     payload = json.dumps(
         {
@@ -250,7 +250,7 @@ def _dump_changes(
     LOGGER.info("Wrote change dump to %s", path)
 
 
-def _write_if_changed(path: Path, stations: Sequence[MutableMapping[str, object]]) -> None:
+def _write_if_changed(path: Path, stations: Sequence[Mapping[str, object]]) -> None:
     payload = json.dumps({"stations": list(stations)}, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
     if path.exists():
         current = path.read_text(encoding="utf-8")

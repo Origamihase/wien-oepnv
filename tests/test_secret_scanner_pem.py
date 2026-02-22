@@ -1,6 +1,6 @@
 
 import unittest
-from src.utils.secret_scanner import _scan_content, Finding
+from src.utils.secret_scanner import _scan_content
 
 class TestSecretScannerPEM(unittest.TestCase):
     def test_pem_private_key_detection(self):

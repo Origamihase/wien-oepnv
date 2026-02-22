@@ -1,9 +1,6 @@
-import os
-import stat
 import json
-import tempfile
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
 import pytest
 import src.build_feed

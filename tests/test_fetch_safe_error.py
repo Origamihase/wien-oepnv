@@ -1,6 +1,5 @@
 
 import pytest
-import requests
 from src.utils.http import fetch_content_safe, session_with_retries
 
 def test_fetch_content_safe_returns_sanitized_error_url():

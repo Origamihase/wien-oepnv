@@ -22,7 +22,7 @@ from copy import deepcopy
 from dataclasses import dataclass, field
 from io import BytesIO
 from pathlib import Path
-from typing import Callable, Iterable, Mapping, MutableMapping, Sequence
+from typing import Callable, Iterable, Mapping, MutableMapping, Sequence, cast, List
 
 import openpyxl
 
@@ -55,7 +55,7 @@ try:  # pragma: no cover - convenience for module execution
         get_places_api_key,
     )
     from src.places.diagnostics import permission_hint
-    from src.places.merge import BoundingBox, MergeConfig, merge_places
+    from src.places.merge import BoundingBox, MergeConfig, merge_places, StationEntry
     from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
     from src.utils.env import load_default_env_files
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
@@ -70,7 +70,7 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
         get_places_api_key,
     )
     from places.diagnostics import permission_hint  # type: ignore
-    from places.merge import BoundingBox, MergeConfig, merge_places  # type: ignore
+    from places.merge import BoundingBox, MergeConfig, merge_places, StationEntry  # type: ignore
     from places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file  # type: ignore
     from utils.env import load_default_env_files  # type: ignore
 
@@ -583,7 +583,7 @@ def _merge_google_metadata(
         logger.info("Google Places enrichment returned no places")
         return
 
-    existing_entries = [station.as_dict() for station in stations]
+    existing_entries = cast(List[StationEntry], [station.as_dict() for station in stations])
     outcome = merge_places(existing_entries, places, merge_config)
 
     by_id: dict[int, Mapping[str, object]] = {}

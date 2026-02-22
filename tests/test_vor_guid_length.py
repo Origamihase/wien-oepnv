@@ -1,4 +1,3 @@
-import pytest
 from src.providers.vor import _build_guid
 
 def test_vor_guid_bounded_length():

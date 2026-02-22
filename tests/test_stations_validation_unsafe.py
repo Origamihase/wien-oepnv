@@ -1,7 +1,5 @@
 import json
-import pytest
-from pathlib import Path
-from src.utils.stations_validation import validate_stations, SecurityIssue
+from src.utils.stations_validation import validate_stations
 
 def test_validation_flags_unsafe_chars(tmp_path):
     stations_file = tmp_path / "stations.json"

@@ -85,7 +85,6 @@ def test_station_ids_fallback_from_file(monkeypatch, tmp_path):
     monkeypatch.delenv("VOR_STATION_NAMES", raising=False)
 
     # Use a file inside the project directory (e.g. data/) to pass validation
-    from pathlib import Path
     data_dir = vor.DATA_DIR
     ids_file = data_dir / "test_ids.txt"
     try:

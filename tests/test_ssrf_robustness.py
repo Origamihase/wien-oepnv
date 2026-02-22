@@ -1,5 +1,4 @@
 
-import pytest
 import ipaddress
 from src.utils.http import validate_http_url, is_ip_safe
 

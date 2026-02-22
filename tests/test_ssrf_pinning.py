@@ -1,5 +1,4 @@
 
-import pytest
 from unittest.mock import patch, MagicMock
 from src.utils.http import fetch_content_safe
 import socket

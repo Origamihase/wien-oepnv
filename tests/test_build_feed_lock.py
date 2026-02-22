@@ -3,7 +3,6 @@ import json
 import importlib
 import types
 from pathlib import Path
-from unittest.mock import MagicMock
 from contextlib import contextmanager
 
 def _import_build_feed(monkeypatch):

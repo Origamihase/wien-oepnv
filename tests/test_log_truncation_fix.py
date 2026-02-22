@@ -1,6 +1,4 @@
 
-import pytest
-import re
 from src.utils.logging import sanitize_log_message
 
 def test_sanitize_log_message_truncation():

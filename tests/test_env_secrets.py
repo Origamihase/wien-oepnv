@@ -1,6 +1,5 @@
 import os
 from unittest import mock
-import pytest
 from src.utils.env import read_secret
 
 def test_read_secret_from_env():

@@ -1,5 +1,3 @@
-import pytest
-from unittest.mock import MagicMock
 from collections import namedtuple
 
 from src.providers import vor

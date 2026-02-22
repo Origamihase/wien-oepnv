@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 import requests
 import socket
 from src.utils.http import session_with_retries, request_safe

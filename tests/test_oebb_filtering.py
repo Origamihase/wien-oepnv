@@ -1,4 +1,3 @@
-import pytest
 from src.providers.oebb import _is_relevant
 
 class TestOebbFiltering:

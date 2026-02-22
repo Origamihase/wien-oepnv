@@ -1,6 +1,5 @@
 
 import unittest
-from unittest.mock import MagicMock, patch
 import requests
 from src.providers import vor
 

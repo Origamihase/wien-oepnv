@@ -1,5 +1,4 @@
 
-import pytest
 import socket
 import time
 from unittest.mock import patch

@@ -1,4 +1,3 @@
-import pytest
 import responses
 from unittest.mock import patch
 from src.utils.http import session_with_retries

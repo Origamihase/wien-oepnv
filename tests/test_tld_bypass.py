@@ -1,9 +1,8 @@
 
-import sys
 from unittest.mock import patch
 import pytest
 
-from src.utils.http import validate_http_url, _UNSAFE_TLDS
+from src.utils.http import validate_http_url
 
 # Mock DNS resolution to return a safe IP
 # This isolates the TLD check from DNS check.

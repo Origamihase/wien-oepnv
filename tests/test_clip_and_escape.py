@@ -40,7 +40,7 @@ def _extract_content_encoded(xml: str) -> str:
 def _freeze_vienna_now(monkeypatch, bf, moment: datetime) -> None:
     real_datetime = bf.datetime
 
-    class FrozenDateTime(real_datetime):  # type: ignore[misc]
+    class FrozenDateTime(real_datetime):  # type: ignore[misc, valid-type]
         @classmethod
         def now(cls, tz=None):
             if tz is None:
