@@ -30,10 +30,10 @@ komplette Referenzdokumentation für die VOR/VAO-ReST-API enthalten.
 
 Der Feed-Bau folgt einem klaren Ablauf:
 
-1. **Provider-Caches** – Je Provider existiert ein Update-Skript (`scripts/update_*_cache.py`) sowie eine GitHub Action, die den
+1. **Provider-Caches** – Je Provider existiert ein Update-Kommando (`python -m src.cli cache update <provider>`) sowie eine GitHub Action, die den
    Cache regelmäßig aktualisiert (`cache/<provider>/events.json`). Die Provider lassen sich über Umgebungsvariablen deaktivieren,
    ohne den restlichen Prozess zu beeinflussen.
-2. **Feed-Generator** – `src/build_feed.py` liest die Cache-Dateien, normalisiert Texte, entfernt Duplikate und schreibt den
+2. **Feed-Generator** – `python -m src.cli feed build` liest die Cache-Dateien, normalisiert Texte, entfernt Duplikate und schreibt den
    RSS-Feed nach `docs/feed.xml`. Umfangreiche Guards gegen ungültige Umgebungsvariablen, Pfade oder Zeitzonen stellen stabile
    Builds sicher.
 3. **Stationsdaten** – `data/stations.json` liefert vereinheitlichte Stations- und Haltestelleninformationen als Referenz für die
@@ -74,13 +74,13 @@ Der Feed-Bau folgt einem klaren Ablauf:
 3. **Statische Analysen**: Die CI führt `ruff check` und `mypy` aus; lokal spiegelst du das Verhalten mit
    ```bash
    python -m pip install -r requirements-dev.txt
-   scripts/run_static_checks.py
+   python -m src.cli checks
    ```
 4. **Umgebungsvariablen**: Sensible Daten (Tokens, Basis-URLs) werden ausschließlich über die Umgebung gesetzt.
    Lokale `.env`-Dateien können über `WIEN_OEPNV_ENV_FILES` eingebunden werden.
 
-   Das Skript `scripts/run_static_checks.py` führt neben `ruff` und `mypy` auch einen Secret-Scan
-   aus (`scripts/scan_secrets.py`), sodass versehentlich eingecheckte Tokens früh auffallen.
+   Der Befehl `python -m src.cli checks` führt neben `ruff` und `mypy` auch einen Secret-Scan
+   aus (`python -m src.cli security scan`), sodass versehentlich eingecheckte Tokens früh auffallen.
 
 ## Entwickler-CLI
 
@@ -118,8 +118,8 @@ präzise einschränken. Über `--python` kann ein alternativer Interpreter für 
 
 ## Konfiguration des Feed-Builds
 
-`src/build_feed.py` liest zahlreiche Umgebungsvariablen. Für den Einstieg empfiehlt sich der
-Assistent `scripts/configure_feed.py`, der eine bestehende `.env` einliest, die relevanten
+Der Feed-Generator liest zahlreiche Umgebungsvariablen. Für den Einstieg empfiehlt sich der
+Assistent `python -m src.cli config wizard`, der eine bestehende `.env` einliest, die relevanten
 Schlüssel erklärt und wahlweise interaktiv oder per `--accept-defaults` eine neue Konfiguration
 schreibt. Die wichtigsten Parameter:
 
@@ -145,16 +145,16 @@ Alle Pfade werden durch `_resolve_env_path` auf `docs/`, `data/` oder `log/` bes
 
 ### Logging-Initialisierung als Bibliothek verwenden
 
-Wird `build_feed` als Skript ausgeführt (`python -m src.build_feed`), richtet es seine Logging-Handler automatisch über
+Wird `build_feed` als Skript ausgeführt (`python -m src.cli feed build`), richtet es seine Logging-Handler automatisch über
 `configure_logging()` ein. Beim Einbinden des Moduls in andere Anwendungen bleibt die globale Logging-Konfiguration ab
 Python-Import unverändert; rufe in diesem Fall `src.build_feed.configure_logging()` explizit auf, bevor du die Feed-Funktionen
 verwendest.
 
 ### Fehlerprotokolle
 
-- Läuft der Feed-Build über `src/build_feed.py`, landen Fehler- und Traceback-Ausgaben automatisch in `log/errors.log` (rotierende Log-Datei, konfigurierbar über `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`). Ohne Fehler bleibt die Datei unberührt.
+- Läuft der Feed-Build über `python -m src.cli feed build`, landen Fehler- und Traceback-Ausgaben automatisch in `log/errors.log` (rotierende Log-Datei, konfigurierbar über `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`). Ohne Fehler bleibt die Datei unberührt.
 - Ausführliche Statusmeldungen (z. B. zum VOR-Abruf) werden zusätzlich in `log/diagnostics.log` gesammelt.
-- Beim manuellen Aufruf der Hilfsskripte, z. B. `scripts/update_vor_cache.py`, erscheinen Warnungen und Fehler direkt auf `stdout`. Für nachträgliche Analysen kannst du den jeweiligen Lauf zusätzlich mit `LOG_DIR` auf ein separates Verzeichnis umleiten.
+- Beim manuellen Aufruf der Hilfsskripte (bzw. `python -m src.cli cache update vor`) erscheinen Warnungen und Fehler direkt auf `stdout`. Für nachträgliche Analysen kannst du den jeweiligen Lauf zusätzlich mit `LOG_DIR` auf ein separates Verzeichnis umleiten.
 - Setzt du `LOG_FORMAT=json`, schreibt das Projekt strukturierte JSON-Logs mit Zeitstempeln im Format `Europe/Vienna`. Ohne Angabe bleibt das klassische Textformat aktiv.
 
 ## Nutzung als Datenquelle in Drittprojekten
@@ -302,10 +302,10 @@ Der Feed liegt anschließend unter `docs/feed.xml`. Bei Bedarf lässt sich `OUT_
 
 | Skript | Funktion |
 | ------ | -------- |
-| `python scripts/update_all_stations.py --verbose` | Führt alle Teilaktualisierungen (ÖBB, WL, VOR) in einem Lauf aus. |
-| `python scripts/update_station_directory.py --verbose` | Aktualisiert das ÖBB-Basisverzeichnis und setzt `in_vienna`/`pendler`. |
-| `python scripts/update_wl_stations.py --verbose` | Ergänzt WL-spezifische Haltestelleninformationen. |
-| `python scripts/update_vor_stations.py --verbose [--use-api]` | Importiert VOR-Daten aus CSV oder API und reichert Stationen an. |
+| `python -m src.cli stations update all --verbose` | Führt alle Teilaktualisierungen (ÖBB, WL, VOR) in einem Lauf aus. |
+| `python -m src.cli stations update directory --verbose` | Aktualisiert das ÖBB-Basisverzeichnis und setzt `in_vienna`/`pendler`. |
+| `python -m src.cli stations update wl --verbose` | Ergänzt WL-spezifische Haltestelleninformationen. |
+| `python -m src.cli stations update vor --verbose` | Importiert VOR-Daten aus CSV oder API und reichert Stationen an. |
 
 
 Die GitHub Action `.github/workflows/update-stations.yml` aktualisiert `data/stations.json` monatlich automatisch.
@@ -317,7 +317,7 @@ Nutze `python -m src.cli stations validate`, um einen Markdown-Bericht zum Stati
 ### Pendler-Whitelist
 
 `data/pendler_bst_ids.json` listet Stationen außerhalb der Stadtgrenze, die dennoch als Pendler:innen-Knoten im Verzeichnis
-verbleiben sollen. Änderungen an dieser Liste wirken sich beim nächsten Lauf von `update_station_directory.py` aus.
+verbleiben sollen. Änderungen an dieser Liste wirken sich beim nächsten Lauf von `python -m src.cli stations update directory` aus.
 
 ### Zusätzliche Datenquellen
 
@@ -375,7 +375,7 @@ Die CLI respektiert die vorhandene Logging-Konfiguration (`log/errors.log`, `log
 
 ## VOR / VAO ReST API Dokumentation
 
-Die detaillierte API-Referenz ist vollständig in `docs/reference/manuals/Handbuch_VAO_ReST_API_2026-01-28.pdf` hinterlegt. Ergänzende Inhalte:
+Die detaillierte API-Referenz ist vollständig in `docs/reference/manuals/Handbuch_VAO_ReST_API_latest.pdf` hinterlegt. Ergänzende Inhalte:
 
 - `docs/reference/` – Endpunktbeschreibungen und Beispielanfragen.
 - `docs/how-to/` – Schritt-für-Schritt-Anleitungen (z. B. Versionsabfragen).
