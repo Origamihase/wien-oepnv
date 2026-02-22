@@ -7,14 +7,47 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Sun, 22 Feb 2026 18:50:10 +0100</lastBuildDate>
+<lastBuildDate>Sun, 22 Feb 2026 19:30:08 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title>14A: Fahrtbehinderung Falschparker</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e94432c96ceb2bf714fdb2aeb039719615f03e39a59552cafb0d232ee11539fc</guid>
+      <pubDate>Sun, 22 Feb 2026 18:45:21 +0100</pubDate>
+      <ext:first_seen>Sun, 22 Feb 2026 19:30:08 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 22 Feb 2026 18:45:21 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 22 Feb 2026 19:44:00 +0100</ext:ends_at>
+      <description><![CDATA[Fahrtbehinderung Falschparker<br/>[Seit 22.02.2026]]]></description>
+      <content:encoded><![CDATA[Fahrtbehinderung Falschparker<br/>[Seit 22.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>1: Rettungseinsatz Betrieb ab Salztorbrücke</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b</guid>
+      <pubDate>Sun, 22 Feb 2026 18:37:00 +0100</pubDate>
+      <ext:first_seen>Sun, 22 Feb 2026 19:30:08 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 22 Feb 2026 18:46:01 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 22 Feb 2026 23:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 1: Betrieb nur zwischen Stefan-Fadinger-Platz und Schwedenplatz.<br/>[Seit 22.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie 1: Betrieb nur zwischen Stefan-Fadinger-Platz und Schwedenplatz.<br/>[Seit 22.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>5: Verunreinigung</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">930f5ee29bb30c01764fdbe97d3582e7920149b9797eb9064be609813da6f3d1</guid>
+      <pubDate>Sun, 22 Feb 2026 18:35:00 +0100</pubDate>
+      <ext:first_seen>Sun, 22 Feb 2026 19:30:08 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 22 Feb 2026 18:35:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 22 Feb 2026 23:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Seit 22.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Seit 22.02.2026]]]></content:encoded>
+    </item>
     <item>
       <title>62: Gleisschaden Betrieb ab Wattmanngasse</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">0c581535f501a01142add950358b15d07de9269780c35ac4f9a5dd926cb459d4</guid>
       <pubDate>Sun, 22 Feb 2026 15:57:50 +0100</pubDate>
-      <ext:first_seen>Sun, 22 Feb 2026 18:50:10 +0100</ext:first_seen>
+      <ext:first_seen>Sun, 22 Feb 2026 19:30:08 +0100</ext:first_seen>
       <ext:starts_at>Sun, 22 Feb 2026 15:57:53 +0100</ext:starts_at>
       <ext:ends_at>Sun, 22 Feb 2026 23:45:00 +0100</ext:ends_at>
       <description><![CDATA[Gleisschaden Betrieb ab Wattmanngasse<br/>[Seit 22.02.2026]]]></description>
@@ -84,37 +117,6 @@
       <ext:starts_at>Thu, 19 Feb 2026 11:27:56 +0100</ext:starts_at>
       <description><![CDATA[Wegen Bauarbeiten können zwischen Flughafen Wien Bahnhof und Wolfsthal Bahnhof am 17.09.2026 (08:45 Uhr - 14:45 Uhr), am 15.10.2026 (08:45 Uhr - 14:45 Uhr) und am 19.11.2026 …<br/>[Seit 19.02.2026]]]></description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Flughafen Wien Bahnhof und Wolfsthal Bahnhof am 17.09.2026 (08:45 Uhr - 14:45 Uhr), am 15.10.2026 (08:45 Uhr - 14:45 Uhr) und am 19.11.2026 …<br/>[Seit 19.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>REX 1: Wien Hauptbahnhof ↔ Deutsch Wagram</title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;856293</guid>
-      <pubDate>Thu, 19 Feb 2026 10:19:48 +0100</pubDate>
-      <ext:first_seen>Sat, 21 Feb 2026 23:59:34 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 19 Feb 2026 10:19:48 +0100</ext:starts_at>
-      <description><![CDATA[Wegen Bauarbeiten werden zwischen Wien Hbf (U) und Deutsch Wagram Bahnhof von 28.03.2026 bis 02.05.2026 einige REX 1-Züge umgeleitet und können in Wien Quartier Belvedere, …<br/>[Seit 19.02.2026]]]></description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten werden zwischen Wien Hbf (U) und Deutsch Wagram Bahnhof von 28.03.2026 bis 02.05.2026 einige REX 1-Züge umgeleitet und können in Wien Quartier Belvedere, …<br/>[Seit 19.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>63A: Kranarbeiten</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bc3981059ad7074617d4b86f2a8be6f0124e2f06bf354df83b3296fe7992912c</guid>
-      <pubDate>Thu, 19 Feb 2026 00:00:00 +0100</pubDate>
-      <ext:first_seen>Sat, 21 Feb 2026 23:55:44 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 19 Feb 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 28 Feb 2026 05:00:00 +0100</ext:ends_at>
-      <description><![CDATA[Kranarbeiten Wegen Bauarbeiten im Bereich der Kerschensteinergasse und der damit einhergehenden Straßensperre zwischen Kundratstraße und Längenfeldgasse wird die Linie 63 A …<br/>[19.02.2026 – 28.02.2026]]]></description>
-      <content:encoded><![CDATA[Kranarbeiten Wegen Bauarbeiten im Bereich der Kerschensteinergasse und der damit einhergehenden Straßensperre zwischen Kundratstraße und Längenfeldgasse wird die Linie 63 A …<br/>[19.02.2026 – 28.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>Wien Hauptbahnhof ↔ Graz</title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;853249</guid>
-      <pubDate>Tue, 17 Feb 2026 14:48:10 +0100</pubDate>
-      <ext:first_seen>Sat, 21 Feb 2026 23:59:34 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 17 Feb 2026 14:48:10 +0100</ext:starts_at>
-      <description><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf und Bruck/Mur Bahnhof/Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an einigen Tagen) die Züge EC 206, EC 207, EC …<br/>[Seit 17.02.2026]]]></description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf und Bruck/Mur Bahnhof/Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an einigen Tagen) die Züge EC 206, EC 207, EC …<br/>[Seit 17.02.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
