@@ -81,10 +81,8 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
 
 - [Projektübersicht im README](../README.md)
 - [API-Referenzen und Audits](reference/)
-- [Stationsvalidierung & Reports](stations_validation_report.md)
 - [Feed Health Report](feed-health.md)
 - [Eventschema für Integrationen](schema/events.schema.json)
-- [System-Health-Reviews](system_health_review.md)
 - [Feed als RSS-Dokument](feed.xml)
 
 <script type="application/ld+json">
