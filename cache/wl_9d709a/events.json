@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N29: Busse halten auf der Hauptfahrbahn",
-    "description": "Busse halten auf der Hauptfahrbahn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
-    "pubDate": "2026-02-21T23:00:02+01:00",
-    "starts_at": "2026-02-21T23:00:02+01:00",
-    "ends_at": "2026-02-22T05:30:00+01:00",
-    "_identity": "wl|störung|L=N29|D=2026-02-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5A: Busse halten Untere Augartenstraße 42",
     "description": "Busse halten Untere Augartenstraße 42",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -255,24 +243,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U4: Feuerwehreinsatz",
-    "description": "Die Linie U4 fährt derzeit nicht zwischen Landstraße und Schottenring. Weichen Sie ersatzweise auf die Linien U2 und U3 aus. Voraussichtliche Dauer: 05:10 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Schwedenplatz.",
+    "description": "Die Linie U4 fährt derzeit in der Station Schwedenplatz in beiden Richtungen über Gleis 2. Die Störung dauert voraussichtlich bis 07:00 Uhr. Grund dafür ist ein Feuerwehreinsatz im Haltestellenbereich Schwedenplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "564166d27455e4c3e4f123d5028460adab46b34a5d0c7a8f5651f92aee27ffef",
     "pubDate": "2026-02-22T04:54:00+01:00",
     "starts_at": "2026-02-22T04:54:00+01:00",
     "ends_at": "2026-02-22T23:55:00+01:00",
     "_identity": "wl|störung|L=U4|D=2026-02-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Betriebsstörung",
-    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Donauinsel und Kaisermühlen-VIC in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 05:45 Uhr. Grund: Betriebsstörung im Haltestellenbereich Kaisermühlen-VIC.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
-    "pubDate": "2026-02-22T05:11:00+01:00",
-    "starts_at": "2026-02-22T05:11:00+01:00",
-    "ends_at": "2026-02-22T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2026-02-22"
   }
 ]
