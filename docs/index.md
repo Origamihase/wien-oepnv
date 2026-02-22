@@ -106,7 +106,7 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
         "name": "Wien ÖPNV Projektteam"
       },
       "description": "Open-Source-Projekt zur Aggregation und Bereitstellung von Verkehrsmeldungen für Wien, Niederösterreich und das Burgenland via RSS und JSON.",
-      "url": "https://wien-oepnv.github.io/",
+      "url": "https://origamihase.github.io/wien-oepnv/",
       "softwareVersion": "1.0",
       "keywords": [
         "Wien Linien Störungen",

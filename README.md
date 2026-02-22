@@ -1,10 +1,10 @@
 # Wien ÖPNV Feed – Projektdokumentation
 
 ### Status Badges
-![Update VOR Cache](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-vor-cache.yml/badge.svg)
-![Update ÖBB Cache](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-oebb-cache.yml/badge.svg)
-![Test VOR API](https://github.com/Origamihase/wien-oepnv/actions/workflows/test-vor-api.yml/badge.svg)
-![Run Tests](https://github.com/Origamihase/wien-oepnv/actions/workflows/test.yml/badge.svg)
+![Update VOR Cache](https://github.com/origamihase/wien-oepnv/actions/workflows/update-vor-cache.yml/badge.svg)
+![Update ÖBB Cache](https://github.com/origamihase/wien-oepnv/actions/workflows/update-oebb-cache.yml/badge.svg)
+![Test VOR API](https://github.com/origamihase/wien-oepnv/actions/workflows/test-vor-api.yml/badge.svg)
+![Run Tests](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml/badge.svg)
 
 [![Feed Build](https://github.com/origamihase/wien-oepnv/actions/workflows/build-feed.yml/badge.svg?branch=main)](https://github.com/origamihase/wien-oepnv/actions/workflows/build-feed.yml)
 [![Tests](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml/badge.svg)](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml)
@@ -254,6 +254,7 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
 - **Quelle**: Open-Government-Data-Baustellenfeed der Stadt Wien (`BAUSTELLEN_DATA_URL`, Default: offizieller WFS-Endpoint).
 - **Cache**: `cache/baustellen/events.json`, gepflegt via `scripts/update_baustellen_cache.py`.
 - **Fallback**: Schlägt der Remote-Abruf fehl (z. B. wegen Rate-Limits), nutzt das Skript `data/samples/baustellen_sample.geojson` als Grunddatensatz, damit der Feed konsistent bleibt.
+- **Kontext**: Die Meldungen enthalten Metadaten zu Bezirk, Maßnahme, Zeitraum sowie geokodierte Adressen und ergänzen damit ÖPNV-Störungsmeldungen um bauzeitliche Einschränkungen.
 
 ### Eigene Provider-Plugins
 
@@ -263,7 +264,6 @@ erläutert den Workflow und verweist auf das Skript
 `scripts/scaffold_provider_plugin.py`, das ein lauffähiges Modul-Skelett
 erzeugt. Aktivierte Plugins erscheinen automatisch im Feed-Health-Report und
 können über `WIEN_OEPNV_PROVIDER_PLUGINS` gesteuert werden.
-- **Kontext**: Die Meldungen enthalten Metadaten zu Bezirk, Maßnahme, Zeitraum sowie geokodierte Adressen und ergänzen damit ÖPNV-Störungsmeldungen um bauzeitliche Einschränkungen.
 
 ## Feed-Ausführung lokal
 
@@ -271,7 +271,7 @@ Vor produktiven oder manuellen Abrufen empfiehlt sich ein schneller
 Vollständigkeitscheck der benötigten Secrets:
 
 ```bash
-python scripts/verify_vor_access_id.py
+python -m src.cli tokens verify
 ```
 
 Das Skript lädt automatisch `.env`, `data/secrets.env` und
@@ -283,7 +283,7 @@ export WL_ENABLE=true
 export OEBB_ENABLE=true
 export VOR_ENABLE=true
 # Provider-spezifische Secrets/Tokens setzen (z. B. VOR_ACCESS_ID, VOR_BASE_URL ...)
-python -m src.build_feed
+python -m src.cli feed build
 ```
 
 Der Feed liegt anschließend unter `docs/feed.xml`. Bei Bedarf lässt sich `OUT_PATH` auf ein alternatives Verzeichnis umbiegen.

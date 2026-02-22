@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://wien-oepnv.github.io/schema/events.schema.json",
+  "$id": "https://origamihase.github.io/wien-oepnv/schema/events.schema.json",
   "title": "Wien ÖPNV Event",
   "description": "Standardisiertes Ereignisobjekt für Cache-Dateien und den Feed-Build.",
   "type": "object",
