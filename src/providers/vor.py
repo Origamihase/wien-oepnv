@@ -85,7 +85,7 @@ _VOR_ACCESS_TOKEN_RAW = ""  # nosec B105
 _VOR_AUTHORIZATION_HEADER = ""  # nosec B105
 
 # Global lock for thread-safe quota management within the process
-_QUOTA_LOCK = threading.RLock()
+_QUOTA_LOCK = threading.Lock()
 # Local cache to optimize quota checks (fail-fast)
 _QUOTA_CACHE: Dict[str, Any] = {"date": None, "count": 0}
 
@@ -1049,39 +1049,37 @@ def resolve_station_ids(names: Iterable[str]) -> List[str]:
 
 
 def load_request_count() -> tuple[str | None, int]:
-    # Prevent race conditions during concurrent reads/updates of _QUOTA_CACHE
-    with _QUOTA_LOCK:
-        # Check memory cache first
-        vienna_tz = ZoneInfo("Europe/Vienna")
-        today_local = datetime.now(vienna_tz).strftime("%Y-%m-%d")
+    # Check memory cache first
+    vienna_tz = ZoneInfo("Europe/Vienna")
+    today_local = datetime.now(vienna_tz).strftime("%Y-%m-%d")
 
-        if _QUOTA_CACHE["date"] == today_local:
-            # If we have a cached value for today, it might be stale but it's a lower bound.
-            # However, for accurate reading we fall through to file.
-            pass
+    if _QUOTA_CACHE["date"] == today_local:
+        # If we have a cached value for today, it might be stale but it's a lower bound.
+        # However, for accurate reading we fall through to file.
+        pass
 
-        try:
-            data = json.loads(REQUEST_COUNT_FILE.read_text(encoding="utf-8"))
-        except (FileNotFoundError, OSError, json.JSONDecodeError):
-            return (None, 0)
-
-        if not isinstance(data, dict):
-            return (None, 0)
-
-        stored_date = data.get("date")
-        # Using 'requests' key as per new strict schema requirement.
-        if stored_date == today_local and "requests" in data:
-            count = data["requests"]
-            int_count = int(count) if isinstance(count, int) else 0
-
-            # Update cache
-            _QUOTA_CACHE["date"] = stored_date
-            _QUOTA_CACHE["count"] = int_count
-
-            return (stored_date, int_count)
-
-        # Discard legacy formats (raw integers, 'count' key) or old dates
+    try:
+        data = json.loads(REQUEST_COUNT_FILE.read_text(encoding="utf-8"))
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
         return (None, 0)
+
+    if not isinstance(data, dict):
+        return (None, 0)
+
+    stored_date = data.get("date")
+    # Using 'requests' key as per new strict schema requirement.
+    if stored_date == today_local and "requests" in data:
+        count = data["requests"]
+        int_count = int(count) if isinstance(count, int) else 0
+
+        # Update cache
+        _QUOTA_CACHE["date"] = stored_date
+        _QUOTA_CACHE["count"] = int_count
+
+        return (stored_date, int_count)
+
+    # Discard legacy formats (raw integers, 'count' key) or old dates
+    return (None, 0)
 
 
 def save_request_count(now_ignored: datetime | None = None) -> int:
@@ -1179,9 +1177,8 @@ def _handle_retry_after(response: requests.Response) -> None:
 def _fetch_departure_board_for_station(
     station_id: str,
     now_local: datetime,
-    counter: Dict[str, Any] | None = None,
+    counter: Any = None,
     session: requests.Session | None = None,
-    stop_event: threading.Event | None = None,
 ) -> Mapping[str, Any] | None:
     """
     Fetch Departure Board for a specific station and extract disruptions.
@@ -1209,10 +1206,6 @@ def _fetch_departure_board_for_station(
         attempts = max(int(VOR_RETRY_OPTIONS.get("total", 0) or 0) + 1, 1)
         quota_incremented = False
         for attempt in range(attempts):
-            # Emergency Stop Check
-            if stop_event and stop_event.is_set():
-                return None
-
             # CIRCUIT BREAKER CHECK
             if counter:
                 with counter["lock"]:
@@ -1270,8 +1263,7 @@ def _fetch_departure_board_for_station(
                     )
                     if response.status_code == 429:
                         _handle_retry_after(response)
-                        # Continue to next attempt instead of aborting
-                        continue
+                        return None
                     if response.status_code >= 500:
                             if response.status_code == 503:
                                 _handle_retry_after(response)
@@ -1367,7 +1359,6 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[FeedItem
         "lock": threading.Lock(),
     }
 
-    stop_event = threading.Event()
     seen_texts: set[tuple[str, str]] = set()
 
     with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
@@ -1376,14 +1367,7 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[FeedItem
         max_workers = min(len(selected_ids) or 1, VOR_MAX_WORKERS)
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = {
-                executor.submit(
-                    _fetch_departure_board_for_station,
-                    sid,
-                    now_local,
-                    request_counter,
-                    session,
-                    stop_event,
-                ): sid
+                executor.submit(_fetch_departure_board_for_station, sid, now_local, request_counter, session): sid
                 for sid in selected_ids
             }
             for future in as_completed(futures):
@@ -1394,7 +1378,6 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[FeedItem
                     # Catch Emergency Stop
                     if "Emergency Stop" in str(rte):
                         log.critical(f"ABORT: {rte}")
-                        stop_event.set()
                         # Cancel other futures if possible
                         executor.shutdown(wait=False)
                         # Graceful Degradation: Do not raise, just break loop and return partial results

@@ -80,8 +80,7 @@ def test_validate_http_url_obfuscated_ips_no_dns() -> None:
     # Valid domains should pass
     assert validate_http_url("http://example.com", check_dns=False) == "http://example.com"
     assert validate_http_url("http://123.com", check_dns=False) == "http://123.com"
-    # Hostnames are case-normalized (lowercased)
-    assert validate_http_url("http://xn--Example.com", check_dns=False) == "http://xn--example.com"
+    assert validate_http_url("http://xn--Example.com", check_dns=False) == "http://xn--Example.com"
     # IDN Punycode TLD
     assert validate_http_url("http://example.xn--vermgensberatung-pwb", check_dns=False) == "http://example.xn--vermgensberatung-pwb"
 

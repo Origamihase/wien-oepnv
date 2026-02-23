@@ -1,6 +1,6 @@
 
 from unittest.mock import patch
-from src.utils.stations import _vienna_stations_regex
+import src.utils.stations as stations_module
 
 def test_vienna_stations_regex_excludes_digits():
     # Mock data with a numeric alias
@@ -12,11 +12,14 @@ def test_vienna_stations_regex_excludes_digits():
         },
     )
 
-    # Clear cache to ensure we rebuild regex with mock data
-    _vienna_stations_regex.cache_clear()
+    # Access the private function via the module object to avoid import errors
+    # if it's not in __all__ or if strict import checking is in place.
+    # We also need to clear the cache on the function object itself.
+    regex_func = stations_module._vienna_stations_regex
+    regex_func.cache_clear()
 
     with patch("src.utils.stations._station_entries", return_value=mock_data):
-        regex = _vienna_stations_regex()
+        regex = regex_func()
 
         # "Test Alias" should match
         assert regex.search("Test Alias")
@@ -25,8 +28,6 @@ def test_vienna_stations_regex_excludes_digits():
         assert regex.search("Wien Test")
 
         # "51" should NOT match (after fix)
-        # Currently (before fix) it DOES match because "51".isdigit() is True.
-        # If this fails, it confirms the bug exists (or rather, the behavior we want to change).
         assert not regex.search("51")
 
         # "123" should NOT match (after fix)

@@ -20,7 +20,6 @@ class DummySession:
 
 
 def test_retry_after_invalid_value(monkeypatch, caplog):
-    monkeypatch.setitem(vor.VOR_RETRY_OPTIONS, "total", 0)
     def fake_fetch(session, url, **kwargs):
         resp = requests.Response()
         resp.status_code = 429
@@ -47,7 +46,6 @@ def test_retry_after_invalid_value(monkeypatch, caplog):
 
 
 def test_retry_after_missing_header(monkeypatch, caplog):
-    monkeypatch.setitem(vor.VOR_RETRY_OPTIONS, "total", 0)
     def fake_fetch(session, url, **kwargs):
         resp = requests.Response()
         resp.status_code = 429
@@ -75,7 +73,6 @@ def test_retry_after_missing_header(monkeypatch, caplog):
 
 
 def test_retry_after_numeric_value(monkeypatch):
-    monkeypatch.setitem(vor.VOR_RETRY_OPTIONS, "total", 0)
     def fake_fetch(session, url, **kwargs):
         resp = requests.Response()
         resp.status_code = 429
@@ -99,7 +96,6 @@ def test_retry_after_numeric_value(monkeypatch):
 
 
 def test_retry_after_http_date(monkeypatch):
-    monkeypatch.setitem(vor.VOR_RETRY_OPTIONS, "total", 0)
     fixed_now = datetime(2024, 1, 1, 12, 0, tzinfo=timezone.utc)
     delay = timedelta(seconds=7)
     retry_dt = fixed_now + delay
