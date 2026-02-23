@@ -104,7 +104,12 @@ def test_fetch_events_uses_station_names_when_ids_missing(monkeypatch):
     assert calls == [["Wien"]]
 
 
-def test_collect_from_board_canonicalizes_stop_names():
+def test_collect_from_board_canonicalizes_stop_names(monkeypatch):
+    # Mock station info to avoid filter because "Test text" is not "Wien" related.
+    # If in_vienna=True, filtering is skipped.
+    from src.utils.stations import StationInfo
+    monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="Wien FJB", in_vienna=True, pendler=False))
+
     payload = {
         "Messages": {
             "Message": [
