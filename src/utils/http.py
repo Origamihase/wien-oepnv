@@ -19,6 +19,8 @@ from requests.adapters import HTTPAdapter
 from requests.structures import CaseInsensitiveDict
 from urllib3.util.retry import Retry
 
+from .logging import sanitize_log_message
+
 _DEFAULT_RETRY_OPTIONS: dict[str, Any] = {
     "total": 4,
     "backoff_factor": 0.6,
@@ -251,11 +253,14 @@ def _replace_auth(match: re.Match) -> str:
 
 def _sanitize_exception_msg(msg: str) -> str:
     """Sanitize URLs in exception messages."""
-    return re.sub(
+    # First apply specific URL sanitization (handles IPv6, auth, etc.)
+    msg = re.sub(
         r"(https?://[^\s'\"<>]+)",
         lambda m: _sanitize_url_for_error(m.group(1)),
         msg
     )
+    # Then apply generic logging sanitization (catches relative URLs, query params, etc.)
+    return sanitize_log_message(msg, strip_control_chars=False)
 
 
 def _sanitize_url_for_error(url: str) -> str:

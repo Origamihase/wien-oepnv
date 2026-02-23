@@ -1,0 +1,4 @@
+# file: /app/src/utils/text.py
+# hypothesis_version: 6.151.9
+
+[5000, '\n• ', ' • ', '&#124;', '(?:\\s*•\\s*){2,}', '...', '... [TRUNCATED]', ':\n', ': ', ':\\s*\\n', ':\\s*•\\s*', '[ \\t\\r\\f\\v]+', '[]()*_`', '\\1 \\2', '\\s*•\\s*$', '\\s{2,}', '^\\s*•\\s*', 'ab', 'am', 'an', 'area', 'auf', 'base', 'bei', 'bis', 'br', 'col', 'div', 'durch', 'embed', 'gegen', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'img', 'in', 'input', 'li', 'link', 'meta', 'nach', 'ol', 'p', 'param', 'script', 'source', 'style', 'table', 'td', 'th', 'tr', 'track', 'ueber', 'ul', 'vom', 'wbr', 'zum', 'zur', '|', 'über']

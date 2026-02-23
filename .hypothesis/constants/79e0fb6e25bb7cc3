@@ -1,0 +1,4 @@
+# file: /app/src/utils/stations.py
+# hypothesis_version: 6.151.9
+
+[1e-09, 1024, 2048, '(?!x)x', '(?<!\\w)(?:', ')(?!\\w)', ',', '-', '.', '/', 'Bahnhof', 'Feature', 'FeatureCollection', 'Hauptbahnhof', 'MultiPolygon', 'NFKD', 'Polygon', 'Sankt ', 'St', 'St ', 'St.', '[^a-z0-9]+', '\\b(wien|vienna)\\b', '\\bBf\\b', '\\bBhf\\b', '\\bHbf\\b', '\\bSankt\\b', '\\bSt\\.?\\b', '\\bst[. ]?\\b', '\\s*\\([^)]*\\)\\s*', '\\s{2,}', 'a', 'ae', 'aliases', 'an der ', 'bahnhof', 'bf', 'bst_code', 'bst_id', 'canonical_name', 'combined', 'coordinates', 'data', 'features', 'geometry', 'hauptbahnhof', 'hbf', 'id', 'in_vienna', 'is_in_vienna', 'is_pendler', 'lat', 'latitude', 'lon', 'longitude', 'name', 'o', 'oe', 'pendler', 'r', 'sankt ', 'source', 'ss', 'station', 'station_by_oebb_id', 'station_info', 'stations', 'stations.json', 'stop_id', 'type', 'u', 'ue', 'utf-8', 'vor', 'vor_id', 'vor_name', 'vor_station_ids', 'wien', 'wien ', 'wl', 'wl_diva', 'wl_stops', '|', 'ß']

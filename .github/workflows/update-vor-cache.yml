@@ -85,7 +85,7 @@ jobs:
           git add cache/vor*/events.json || true
 
           if [[ -f data/vor_request_count.json ]]; then
-            git add data/vor_request_count.json
+            git add -f data/vor_request_count.json
           fi
 
           if git diff --cached --quiet; then

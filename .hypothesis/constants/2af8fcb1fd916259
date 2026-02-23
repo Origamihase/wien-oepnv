@@ -1,0 +1,4 @@
+# file: /app/src/utils/secret_scanner.py
+# hypothesis_version: 6.151.9
+
+[b'\x00', 4096, '\x00', '"', '"""', '#', "'", "'''", '().[]:', '*', '***', '-z', '.secret-scan-ignore', 'False', 'Finding', 'None', 'True', 'async ', 'await ', 'class ', 'def ', 'elif', 'else', 'except', 'for ', 'from ', 'git', 'if ', 'ignore', 'import ', 'load_ignore_file', 'ls-files', 'raise ', 'rb', 'return ', 'scan_repository', 'try', 'utf-8', 'while ', 'with ']

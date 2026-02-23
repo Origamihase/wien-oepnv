@@ -133,9 +133,12 @@ def test_whitelist_respects_request_limits(monkeypatch, caplog):
         return {}
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", mock_fetch)
 
-    with caplog.at_level("INFO"):
-        items = vor.fetch_events()
+    from requests import RequestException
+    import pytest
 
-    assert items == []
+    with caplog.at_level("INFO"):
+        with pytest.raises(RequestException) as excinfo:
+            vor.fetch_events()
+
+    assert "Tageslimit" in str(excinfo.value)
     assert len(captured_ids) == 0
-    assert any("Tageslimit" in r.getMessage() for r in caplog.records)

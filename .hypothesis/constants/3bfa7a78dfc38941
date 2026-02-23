@@ -1,0 +1,4 @@
+# file: /app/src/providers/wl_fetch.py
+# hypothesis_version: 6.151.9
+
+[' …', '+-', '+00:00', ',', ', ', '/', ':', 'Accept', 'Hinweis', 'Meldung', 'None', 'Störung', 'WL_RSS_URL', 'Wiener Linien', 'Z', '[<>«»‹›]+', '[A-Za-zÄÖÜäöüß]', '\\s{2,}', '\\w+', '_identity', '_lines_set', 'abgeschlossen', 'application/json', 'attributes', 'beendet', 'category', 'closed', 'created', 'data', 'desc', 'desc_base', 'description', 'done', 'end', 'ende', 'ended', 'ends_at', 'extras', 'fetch_events', 'finished', 'geschlossen', 'guid', 'inactive', 'inaktiv', 'lastUpdate', 'lines_pairs', 'link', 'location', 'name', 'newsList', 'nicht aktiv', 'pois', 'pubDate', 'reason', 'relatedLines', 'relatedStops', 'source', 'start', 'starts_at', 'state', 'station', 'status', 'stoerungkurz', 'stoerunglang', 'stopName', 'stop_names', 'subtitle', 'time', 'timestamp', 'title', 'title_core', 'topic_key', 'towards', 'trafficInfoList', 'trafficInfos', 'updated', 'wl']
