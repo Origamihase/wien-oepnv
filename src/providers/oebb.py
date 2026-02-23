@@ -19,10 +19,8 @@ from __future__ import annotations
 
 import logging
 import os
-import json
 import re
 import time
-from pathlib import Path
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 from email.utils import parsedate_to_datetime
