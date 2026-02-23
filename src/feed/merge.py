@@ -1,7 +1,7 @@
 import hashlib
 import re
 from difflib import SequenceMatcher
-from typing import Any, Dict, List, Set, Tuple
+from typing import Any, Dict, List, Set, Tuple, Union
 
 # Regex adapted from build_feed.py
 _LINE_PREFIX_RE = re.compile(r"^\s*([A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20})\s*:\s*")
@@ -70,6 +70,11 @@ def _has_significant_overlap(name1: str, name2: str) -> bool:
         return True
 
     return False
+
+
+def _natural_keys(text: str) -> List[Union[str, int]]:
+    """Helper for natural sorting of line numbers (e.g. U1, U2, U10)."""
+    return [int(c) if c.isdigit() else c for c in re.split(r'(\d+)', text)]
 
 
 def _calculate_line_overlap(lines1: Set[str], lines2: Set[str]) -> float:
@@ -181,10 +186,7 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                     # Better sort: U1, U2... 1, 2...
                     # Existing build_feed doesn't seem to sort lines explicitly in title, just preserves them.
                     # Let's try to sort numerically if possible.
-                    def natural_keys(text):
-                        return [int(c) if c.isdigit() else c for c in re.split(r'(\d+)', text)]
-
-                    all_lines.sort(key=natural_keys)
+                    all_lines.sort(key=_natural_keys)
                     lines_part = "/".join(all_lines)
                     new_title = f"{lines_part}: {new_name}"
                     existing_copy["title"] = new_title
