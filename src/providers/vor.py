@@ -1094,6 +1094,10 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
     if _QUOTA_CACHE["date"] == date_iso and _QUOTA_CACHE["count"] >= MAX_REQUESTS_PER_DAY:
         return _QUOTA_CACHE["count"]
 
+    # Ensure the parent directory exists before attempting to open the lock file.
+    # This prevents FileNotFoundError if the directory structure is missing.
+    REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
+
     lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
 
     try:
@@ -1111,7 +1115,6 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
 
                 new_count = previous_count + 1
 
-                REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
                 payload = {"date": date_iso, "requests": new_count}
                 try:
                     # Replaced custom atomic write logic with centralized utility
