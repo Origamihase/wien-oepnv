@@ -654,10 +654,18 @@ def text_has_vienna_connection(text: str) -> bool:
     # 0. Maskiere bekannte Nicht-Wien-Bahnhöfe mit generischen Suffixen.
     # Dies verhindert, dass z.B. "Innsbruck Westbahnhof" durch den Alias
     # "Westbahnhof" fälschlicherweise als Wiener Station erkannt wird.
-    cities = r"(?:Innsbruck|Salzburg|Linz|Graz|Klagenfurt|Villach|Bregenz|Wels|Steyr|Feldkirch|Dornbirn|St\. Pölten|Wiener Neustadt|Bruck|Leoben|München|Passau|Frankfurt|Berlin)"
-    suffixes = r"(?:Westbahnhof|Ostbahnhof|Südbahnhof|Nordbahnhof|Mitte|Hbf|Hauptbahnhof|Flughafen|Airport)"
+    cities = (
+        r"(?:Innsbruck|Salzburg|Linz|Graz|Klagenfurt|Villach|Bregenz|Wels|Steyr|Feldkirch|"
+        r"Dornbirn|St\. Pölten|Wiener Neustadt|Bruck|Leoben|München|Passau|Frankfurt|Berlin)"
+    )
+    suffixes = (
+        r"(?:Westbahnhof|Ostbahnhof|Südbahnhof|Nordbahnhof|Mitte|Hbf|Hauptbahnhof|Flughafen|"
+        r"Airport)"
+    )
 
-    text_for_matching = re.sub(rf"\b{cities}[\s\-]+{suffixes}\b", " ", text, flags=re.IGNORECASE)
+    text_for_matching = re.sub(
+        rf"\b{cities}[\s\-]+{suffixes}\b", " ", text, flags=re.IGNORECASE
+    )
 
     # 1. Identifiziere alle im Text vorkommenden Stationen
     stations = get_stations_in_text(text_for_matching)
