@@ -5,12 +5,19 @@ from pathlib import Path
 
 import pytest
 
+from unittest.mock import patch
 from src.utils.stations_validation import (
     AliasIssue,
     CoordinateIssue,
     DuplicateGroup,
     validate_stations,
 )
+
+
+@pytest.fixture(autouse=True)
+def mock_validate_path():
+    with patch("src.utils.stations_validation.validate_path", side_effect=lambda p, n: p):
+        yield
 
 
 @pytest.fixture()

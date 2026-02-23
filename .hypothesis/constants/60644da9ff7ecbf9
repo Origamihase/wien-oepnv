@@ -1,0 +1,4 @@
+# file: /app/src/feed/logging.py
+# hypothesis_version: 6.151.9
+
+['%Y-%m-%d %H:%M:%S,%f', 'MaxLevelFilter', 'SafeFormatter', 'SafeJSONFormatter', 'configure_logging', 'diagnostics.log', 'diagnostics_log_path', 'error_log_path', 'errors.log', 'prune_log_file', 'r+', 'utf-8']

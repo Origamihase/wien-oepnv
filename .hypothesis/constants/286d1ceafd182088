@@ -1,0 +1,4 @@
+# file: /app/src/config/defaults.py
+# hypothesis_version: 6.151.9
+
+[256, 365, 540, 4000, 'BAUSTELLEN_ENABLE', 'DEFAULT_FEED_LINK', 'DEFAULT_FEED_TITLE', 'DEFAULT_MAX_ITEMS', 'DEFAULT_OUT_PATH', 'DEFAULT_STATE_PATH', 'OEBB_ENABLE', 'VOR_ENABLE', 'WL_ENABLE', 'data/first_seen.json', 'docs/feed-health.md', 'docs/feed.xml']
