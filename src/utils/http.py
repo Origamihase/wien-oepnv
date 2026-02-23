@@ -734,6 +734,8 @@ def validate_http_url(
         # hostname is now potentially updated in 'parsed', but 'hostname' var was from old 'parsed'.
         # Update local hostname var
         hostname = parsed.hostname
+        if not hostname:
+            return None
 
         # Block localhost (handle trailing dot bypass)
         if hostname.lower().rstrip(".") == "localhost":
@@ -825,8 +827,12 @@ def verify_response_ip(response: requests.Response) -> None:
     # We check for common mock signatures.
     try:
         conn = getattr(response.raw, "_connection", getattr(response.raw, "connection", None))
-        if conn and getattr(conn, "__class__", None).__name__ == "MockConnection":
-             return
+        # Handle MyPy safely: getattr might return None for __class__ if strict, but usually returns class type.
+        # We explicitly check the class name.
+        if conn:
+            cls = getattr(conn, "__class__", None)
+            if cls and getattr(cls, "__name__", "") == "MockConnection":
+                return
     except Exception as exc:
         log.debug("Validation of mock connection skipped: %s", exc)
 
