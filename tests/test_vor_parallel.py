@@ -15,7 +15,7 @@ def test_fetch_events_parallel(monkeypatch):
 
     barrier = threading.Barrier(2)
 
-    def blocking_fetch(station_id, now_local, counter=None, session=None):
+    def blocking_fetch(station_id, now_local, counter=None, session=None, stop_event=None):
         try:
             barrier.wait(timeout=1)
         except threading.BrokenBarrierError as e:
@@ -43,7 +43,7 @@ def test_fetch_events_logs_and_continues(monkeypatch, caplog):
 
     monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk, period: ids[:chunk])
 
-    def failing_fetch(station_id, now_local, counter=None, session=None):
+    def failing_fetch(station_id, now_local, counter=None, session=None, stop_event=None):
         if station_id == "1":
             raise RuntimeError("boom")
         return {}

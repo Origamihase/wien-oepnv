@@ -697,11 +697,27 @@ def validate_http_url(
              # urlparse.hostname returns lowercased hostname.
              # We normalize that.
              normalized_hostname = unicodedata.normalize("NFKC", parsed.hostname)
+
+             # Reconstruct netloc manually to avoid incorrect replacements (e.g. port 8080 if host is 8080)
+             # Handle IPv6
+             if ":" in normalized_hostname:
+                 new_netloc = f"[{normalized_hostname}]"
+             else:
+                 new_netloc = normalized_hostname
+
+             # Append port if present
+             if parsed.port:
+                 new_netloc = f"{new_netloc}:{parsed.port}"
+
+             # Prepend auth if present (though we reject it later, we must reconstruct correctly first)
+             if parsed.username or parsed.password:
+                 auth = parsed.username or ""
+                 if parsed.password:
+                     auth = f"{auth}:{parsed.password}"
+                 new_netloc = f"{auth}@{new_netloc}"
+
              # Update parsed object
-             parsed = parsed._replace(netloc=parsed.netloc.replace(parsed.hostname, normalized_hostname))
-             # Also update candidate for return? No, we return candidate at end?
-             # Wait, the function returns the validated URL string.
-             # We should return the version with normalized hostname but original path/query.
+             parsed = parsed._replace(netloc=new_netloc)
 
              # Reconstruct candidate with normalized hostname
              candidate = parsed.geturl()
@@ -1071,28 +1087,14 @@ def request_safe(
                 # Scalar timeout logic remains similar (using remaining_time)
                 current_timeout = remaining_time # type: ignore
             else:
-                # Tuple case: (connect, read).
-                # We should adjust the tuple? The requirement says:
-                # "Wende dieses berechnete Rest-Limit auch auf den Lesezugriff an."
-                # If we pass (connect, read) to requests, 'connect' is per-request.
-                # 'read' is per-request body read.
-                # But we want to bound the WHOLE process.
-
-                # If we use `remaining_time` for both?
-                # A tuple (remaining, remaining) seems safest to enforce the total bound.
-                # But we might want to respect the original 'connect' constraint if it's smaller?
-                # Original: (3.0, 15.0). Total 18.0.
-                # If 10s passed. Remaining 8.0.
-                # New timeout: (min(3.0, 8.0), 8.0)?
-
-                # Let's simplify and use the remaining time for both to be safe,
-                # effectively converting it to a scalar or a tuple bounded by remaining.
-
-                # If we convert to scalar `remaining_time`, requests treats it as (connect+read) bound per request?
-                # No, scalar timeout in requests means (connect_timeout == read_timeout == scalar).
-
-                # Let's try to preserve the tuple structure but cap it.
-                if remaining_time is not None:
+                # Tuple case: (connect, read)
+                # Prevent effective timeout doubling in redirect loops (Time-Squeeze)
+                # If remaining_time < sum(original_timeout), switch strictly to scalar timeout.
+                # Only applies to subsequent requests (redirects) where time has passed.
+                original_sum = sum(timeout)
+                if attempt > 0 and remaining_time is not None and remaining_time < original_sum:
+                    current_timeout = remaining_time
+                elif remaining_time is not None:
                      # Cap connect timeout
                      new_connect = min(timeout[0], remaining_time)
                      # Cap read timeout
