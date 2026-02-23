@@ -1,6 +1,4 @@
 import json
-from pathlib import Path
-import pytest
 from src.utils.stations_validation import validate_stations, GTFSMissingIssue
 
 def test_detects_unmapped_gtfs_stops(tmp_path):
