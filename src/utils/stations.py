@@ -17,6 +17,7 @@ __all__ = [
     "is_pendler",
     "station_by_oebb_id",
     "station_info",
+    "text_has_vienna_connection",
     "vor_station_ids",
 ]
 
@@ -582,3 +583,46 @@ def vor_station_ids() -> tuple[str, ...]:
                 if alias_text.isdigit():
                     ids.add(alias_text)
     return tuple(sorted(ids))
+
+
+@lru_cache(maxsize=1)
+def _vienna_stations_regex() -> re.Pattern:
+    """Kompiliert einen Regex-Ausdruck mit allen bekannten Wiener Stationen."""
+    vienna = set()
+    for entry in _station_entries():
+        if entry.get("in_vienna"):
+            name = str(entry.get("name", "")).strip().lower()
+            if name:
+                vienna.add(name)
+            for alias in entry.get("aliases", []):
+                if alias:
+                    vienna.add(str(alias).strip().lower())
+
+    # Filtere ungenaue Alias-Namen heraus
+    vienna = {n for n in vienna if len(n) >= 3 or n.isdigit()}
+    vienna -= {"hbf", "bf", "bahnhof", "hauptbahnhof", "station"}
+
+    if not vienna:
+        return re.compile(r"(?!x)x")
+
+    sorted_terms = sorted(vienna, key=len, reverse=True)
+    pattern = r"(?<!\w)(?:" + "|".join(re.escape(t) for t in sorted_terms) + r")(?!\w)"
+    return re.compile(pattern, re.IGNORECASE)
+
+
+def text_has_vienna_connection(text: str) -> bool:
+    """Prüft, ob der Text einen echten Bezug zu Wien oder einer Wiener Station hat."""
+    if not text:
+        return False
+
+    # Verhindere Falsch-Positive durch Pendler-Stationen mit "Wien" im Namen
+    cleaned = re.sub(r"Flughafen Wien|Airport Vienna|Vienna Airport", "", text, flags=re.IGNORECASE)
+
+    if re.search(r"\b(wien|vienna)\b", cleaned, re.IGNORECASE):
+        return True
+
+    rx = _vienna_stations_regex()
+    if rx.search(text):
+        return True
+
+    return False

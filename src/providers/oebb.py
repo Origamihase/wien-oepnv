@@ -31,7 +31,7 @@ import requests
 
 from ..utils.env import get_bool_env
 from ..utils.ids import make_guid
-from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info
+from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info, text_has_vienna_connection
 from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
 from ..utils.logging import sanitize_log_arg
 
@@ -214,182 +214,32 @@ def _clean_title_keep_places(t: str) -> str:
 
 # ---------------- Region / Filter Logic ----------------
 
-# Global sets for caching loaded station data
-_VIENNA_STATIONS: Optional[set] = None
-_OUTER_STATIONS: Optional[set] = None
-_PENDLER_STATIONS: Optional[set] = None
-
-# Compiled regexes for fast scanning
-_VIENNA_STATIONS_RE: Optional[re.Pattern] = None
-_OUTER_STATIONS_RE: Optional[re.Pattern] = None
-_PENDLER_STATIONS_RE: Optional[re.Pattern] = None
-
-def _load_station_sets():
-    """
-    Loads station data from data/stations.json and populates the global
-    sets/regexes for Vienna vs. Outer stations.
-    """
-    global _VIENNA_STATIONS, _OUTER_STATIONS, _PENDLER_STATIONS
-    global _VIENNA_STATIONS_RE, _OUTER_STATIONS_RE, _PENDLER_STATIONS_RE
-
-    if _VIENNA_STATIONS is not None:
-        return
-
-    local_vienna = set()
-    local_outer = set()
-    local_pendler = set()
-
-    try:
-        # Resolve path relative to this file: src/providers/oebb.py -> ../../data/stations.json
-        base_dir = Path(__file__).resolve().parent.parent.parent
-        data_path = base_dir / "data" / "stations.json"
-
-        with open(data_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-
-        if isinstance(data, dict):
-            data = data.get("stations", [])
-
-        for entry in data:
-            is_vienna = entry.get("in_vienna", False)
-            names = set()
-            # Add main name
-            if entry.get("name"):
-                names.add(entry["name"])
-            # Add aliases
-            if entry.get("aliases"):
-                names.update(entry["aliases"])
-
-            # Normalize: lowercase, stripped. Filter out very short unsafe aliases (<3 chars) unless numeric
-            # to avoid false positives (e.g. "Au" in "Aufzug", "Sg" matching "SG" for St. Gallen).
-            normalized = set()
-            for n in names:
-                if not n:
-                    continue
-                n_clean = n.strip().lower()
-                if len(n_clean) < 3 and not n_clean.isdigit():
-                    continue
-                # Filter generic aliases that would match any station (e.g. "Innsbruck Hbf" matching "Hbf")
-                if n_clean in {"hbf", "bf", "bahnhof", "hauptbahnhof", "station"}:
-                    continue
-                normalized.add(n_clean)
-
-            if is_vienna:
-                local_vienna.update(normalized)
-            else:
-                local_outer.update(normalized)
-                if entry.get("pendler", False):
-                    local_pendler.update(normalized)
-
-        # Remove overlaps (if a name is in both, prefer Vienna or handle as such?
-        # Actually logic is: Check A (Vienna items) then Check B (Outer items).
-        # We don't need to remove overlaps for the sets, but for regex generation it helps.
-        # But here we just build regexes.
-
-        def _make_re(terms):
-            if not terms:
-                return re.compile(r"(?!x)x") # impossible match
-            # Sort by length desc to match "Bad Vöslau" before "Bad"
-            sorted_terms = sorted(terms, key=len, reverse=True)
-            # Escape and join
-            # Use lookarounds instead of \b to handle stations ending in special chars (e.g. "(U)")
-            pattern = r"(?<!\w)(?:" + "|".join(re.escape(t) for t in sorted_terms) + r")(?!\w)"
-            return re.compile(pattern, re.IGNORECASE)
-
-        # Build regexes locally
-        local_vienna_re = _make_re(local_vienna)
-        local_outer_re = _make_re(local_outer)
-        local_pendler_re = _make_re(local_pendler)
-
-        # Atomic assignment
-        _VIENNA_STATIONS = local_vienna
-        _OUTER_STATIONS = local_outer
-        _PENDLER_STATIONS = local_pendler
-        _VIENNA_STATIONS_RE = local_vienna_re
-        _OUTER_STATIONS_RE = local_outer_re
-        _PENDLER_STATIONS_RE = local_pendler_re
-
-    except Exception as e:
-        log.error("Failed to load station data for filtering: %s", e)
-        # Fallback: empty sets
-        _VIENNA_STATIONS = set()
-        _OUTER_STATIONS = set()
-        _PENDLER_STATIONS = set()
-        _VIENNA_STATIONS_RE = re.compile(r"(?!x)x")
-        _OUTER_STATIONS_RE = re.compile(r"(?!x)x")
-        _PENDLER_STATIONS_RE = re.compile(r"(?!x)x")
-
-
 def _is_relevant(title: str, description: str) -> bool:
     """
     Entscheidet über Relevanz für Wien-Pendler.
-    Logik:
-    1. Check A (Explizit Wien): Text enthält "Wien" oder "Vienna". -> JA.
-    2. Check B (Ort in Wien): Text enthält Bahnhof aus `vienna_stations`. -> JA.
-    3. Check C (Ausschluss Umland): Text enthält *nur* Bahnhöfe aus `outer_stations` (und keine Wien-Referenz). -> NEIN.
+    Es sollen nur Bahnhöfe mit Störungen in Wien in den Feed.
+    Wenn ein Pendlerbahnhof betroffen ist, muss die gestörte Verbindung
+    mit einem Wiener Bahnhof zu tun haben.
     """
-    _load_station_sets()
+    text = f"{title} {description}"
 
-    text = f"{title} {description}" # Regex is case-insensitive, no need to lower() here for regex
-
-    # Check 0: Route Filter
+    # Check 0: Strecken-Filter für explizite Routen A ↔ B
     if "↔" in title:
         parts = [p.strip() for p in title.split("↔")]
-        if len(parts) == 2:
+        if len(parts) >= 2:
             info0 = station_info(parts[0])
             info1 = station_info(parts[1])
 
-            # Check 0a: Unknown Endpoint Filter (Long-Distance / Irrelevant)
-            # If a route "A ↔ B" is detected, we require that BOTH endpoints are "known"
-            # (either in Vienna or in the Commuter Belt/Outer list).
-            # If one endpoint is unknown (None), we assume it's a long-distance train
-            # to/from outside our relevant area (e.g. Venezia, Munich), and we exclude it.
-            # RELAXED: If one endpoint is unknown, we do NOT return False immediately.
-            # We allow the flow to continue so that Checks A and B can save the item
-            # if "Wien" is explicitly mentioned in the text.
-            # if info0 is None or info1 is None:
-            #    return False
-
-            # Check 0b: Strict Outer <-> Outer Filter
-            # Wenn Titel eine Strecke definiert (A ↔ B) und BEIDE Endpunkte bekannte
-            # Outer-Stationen sind, verwerfen wir das Item sofort, es sei denn, "Wien" wird explizit erwähnt.
-            # Damit filtern wir reine Umland-Strecken (auch Pendler <-> Pendler) aus, wenn sie keinen Wien-Bezug haben.
             is_outer0 = info0 and not info0.in_vienna
             is_outer1 = info1 and not info1.in_vienna
 
             if is_outer0 and is_outer1:
-                # Disallow purely outer routes even if they are Pendler stations,
-                # UNLESS 'Wien' or 'Vienna' appears in the text.
-                if not re.search(r"\b(wien|vienna)\b", text, re.IGNORECASE):
+                # Verbindung zwischen zwei reinen Pendlerbahnhöfen (z.B. Flughafen Wien ↔ Wolfsthal)
+                # Nur zulassen, wenn die Detailbeschreibung einen expliziten Wien-Bezug nennt.
+                if not text_has_vienna_connection(description):
                     return False
 
-    # Check A: Explizit Wien (Word boundaries)
-    if re.search(r"\b(wien|vienna)\b", text, re.IGNORECASE):
-        return True
-
-    # Check B: Ort in Wien
-    if _VIENNA_STATIONS_RE and _VIENNA_STATIONS_RE.search(text):
-        return True
-
-    # Check C: Ausschluss Umland
-    # Wir sind hier nur, wenn WEDER Wien-Keyword NOCH Wien-Bahnhof gefunden wurde.
-    # Wenn jetzt EIN Outer-Bahnhof gefunden wird, ist es eine "reine Umland-Meldung" -> Weg damit.
-    if _OUTER_STATIONS_RE and _OUTER_STATIONS_RE.search(text):
-        return False
-
-    # Check D: Heuristik für unbekannte Routen
-    # Wenn der Titel nach einer Strecke aussieht (Pfeil), aber kein bekannter
-    # Bahnhof (Wien oder Umland) gefunden wurde, ist es vermutlich eine
-    # Strecke weit weg (z.B. "Innsbruck ↔ Feldkirch") oder eine irrelevante
-    # Formatierung (z.B. "Bauarbeiten ↔ Umleitung").
-    # Note: Regex matches < ↔ > if cleanup failed, or just ↔.
-    if "↔" in title or ARROW_ANY_RE.search(title):
-        return False
-
-    # Fallback: Keine bekannten Bahnhöfe gefunden.
-    # Strict Policy: "Wenn ein Bahnhof unbekannt ist, gehört die Meldung nicht in den Feed."
-    # Das bedeutet auch: "Allgemeine Störungen" ohne expliziten Wien-Bezug (Check A/B) werden gefiltert.
-    return False
+    return text_has_vienna_connection(text)
 
 # ---------------- Region helpers ----------------
 _MAX_STATION_WINDOW = 4
