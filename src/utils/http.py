@@ -196,8 +196,11 @@ _SENSITIVE_HEADER_PARTIALS = frozenset({
     "cookie",
     "auth-",
     "authorization",
-    "access",
-    "client",
+    "client-id",
+    "client-secret",
+    "access-token",
+    "access-key",
+    "access-id",
 })
 
 
