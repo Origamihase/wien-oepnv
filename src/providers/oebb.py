@@ -226,14 +226,18 @@ def _is_relevant(title: str, description: str) -> bool:
     if "↔" in title:
         parts = [p.strip() for p in title.split("↔")]
         if len(parts) >= 2:
-            info0 = station_info(parts[0])
-            info1 = station_info(parts[1])
+            # Entferne eventuelle Präfixe wie "REX 51: " aus den Stationsnamen
+            part0 = parts[0].split(":", 1)[-1].strip() if ":" in parts[0] else parts[0]
+            part1 = parts[1].split(":", 1)[-1].strip() if ":" in parts[1] else parts[1]
+
+            info0 = station_info(part0)
+            info1 = station_info(part1)
 
             is_outer0 = info0 and not info0.in_vienna
             is_outer1 = info1 and not info1.in_vienna
 
             if is_outer0 and is_outer1:
-                # Verbindung zwischen zwei reinen Pendlerbahnhöfen (z.B. Flughafen Wien ↔ Wolfsthal)
+                # Verbindung zwischen zwei reinen Pendlerbahnhöfen (z.B. Neulengbach ↔ Tullnerbach-Pressbaum)
                 # Nur zulassen, wenn die Detailbeschreibung einen expliziten Wien-Bezug nennt.
                 if not text_has_vienna_connection(description):
                     return False

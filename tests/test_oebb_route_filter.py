@@ -54,3 +54,27 @@ def test_flughafen_wien_included():
     title = "Wien Hbf ↔ Flughafen Wien"
     description = "..."
     assert _is_relevant(title, description) is True
+
+def test_rex51_neulengbach_tullnerbach_irrelevant():
+    # REX 51: Neulengbach ↔ Tullnerbach-Pressbaum
+    # Should be IRRELEVANT (False).
+    # Currently might be True if "51" matches Vienna regex OR if "Neulengbach" is not parsed correctly.
+    # After fix, it should be False.
+    title = "REX 51: Neulengbach ↔ Tullnerbach-Pressbaum"
+    description = "Wegen einer Oberleitungsstörung..."
+    assert _is_relevant(title, description) is False
+
+def test_prefix_outer_outer_with_wien_in_title_irrelevant():
+    # If the title has "Wien" inside the prefix (e.g. "REX (Wien): ...")
+    # but the stations are outer-outer, it should be irrelevant.
+    # _is_relevant checks `text = f"{title} {description}"`.
+    # If title contains "Wien", `text_has_vienna_connection` is True.
+    # The logic for Outer-Outer exception is:
+    # if is_outer0 and is_outer1:
+    #    if not text_has_vienna_connection(description): return False
+    # Note: it checks DESCRIPTION only!
+
+    # So if title has "Wien" but description doesn't, and stations are outer-outer, it should be False.
+    title = "REX 51 (Wien): Neulengbach ↔ Tullnerbach-Pressbaum"
+    description = "Oberleitungsstörung."
+    assert _is_relevant(title, description) is False

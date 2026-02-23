@@ -598,8 +598,8 @@ def _vienna_stations_regex() -> re.Pattern:
                 if alias:
                     vienna.add(str(alias).strip().lower())
 
-    # Filtere ungenaue Alias-Namen heraus
-    vienna = {n for n in vienna if len(n) >= 3 or n.isdigit()}
+    # Filtere ungenaue Alias-Namen und reine Zahlen (z.B. IDs) heraus
+    vienna = {n for n in vienna if len(n) >= 3 and not n.isdigit()}
     vienna -= {"hbf", "bf", "bahnhof", "hauptbahnhof", "station"}
 
     if not vienna:
