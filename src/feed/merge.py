@@ -1,3 +1,4 @@
+import copy
 import hashlib
 import re
 from difflib import SequenceMatcher
@@ -144,7 +145,7 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                         # We replace the existing item content with the new item (VOR)
                         # We create a new object to avoid mutating the original 'existing' reference
                         # if it came from the input list.
-                        new_existing = item.copy()
+                        new_existing = copy.deepcopy(item)
 
                         desc_oebb = existing.get("description", "") or ""
                         desc_vor = item.get("description", "") or ""
@@ -159,7 +160,7 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
                     # Standard Merge Logic (Peers)
 
-                    existing_copy = existing.copy()
+                    existing_copy = copy.deepcopy(existing)
 
                     # 1. Combine Lines
                     all_lines = sorted(list(lines | ex_lines))
