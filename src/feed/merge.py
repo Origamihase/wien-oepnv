@@ -135,7 +135,9 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                         desc_vor = existing.get("description", "") or ""
                         desc_oebb = item.get("description", "") or ""
                         if desc_oebb and desc_oebb not in desc_vor:
-                            existing["description"] = f"{desc_vor}\n\n{desc_oebb}".strip()
+                            # Avoid mutation of referenced dictionary
+                            new_desc = f"{desc_vor}\n\n{desc_oebb}".strip()
+                            merged_items[idx] = existing | {"description": new_desc}
                         # Do NOT update GUID or Title from ÖBB (keep VOR master data)
                         merged = True
                         break

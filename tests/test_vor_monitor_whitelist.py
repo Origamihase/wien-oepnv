@@ -30,7 +30,7 @@ def test_fetch_events_uses_whitelist_by_default(monkeypatch, caplog):
 
     # Mock fetching to avoid network
     captured_ids = []
-    def mock_fetch(station_id, now_local, counter=None, session=None):
+    def mock_fetch(station_id, now_local, counter=None, session=None, stop_event=None):
         captured_ids.append(station_id)
         return {} # Return empty dict to simulate success
 
@@ -73,7 +73,7 @@ def test_fetch_events_uses_configured_whitelist(monkeypatch):
     monkeypatch.setattr(vor, "resolve_station_ids", mock_resolve)
 
     fetched_ids = []
-    def mock_fetch(sid, now, counter=None, session=None):
+    def mock_fetch(sid, now, counter=None, session=None, stop_event=None):
         fetched_ids.append(sid)
         return {}
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", mock_fetch)
@@ -101,7 +101,7 @@ def test_fetch_events_disabled_whitelist_fallback(monkeypatch):
     monkeypatch.setattr(vor, "VOR_STATION_IDS", ["12345"])
 
     fetched_ids = []
-    def mock_fetch(sid, now, counter=None, session=None):
+    def mock_fetch(sid, now, counter=None, session=None, stop_event=None):
         fetched_ids.append(sid)
         return {}
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", mock_fetch)
@@ -128,7 +128,7 @@ def test_whitelist_respects_request_limits(monkeypatch, caplog):
     monkeypatch.setattr(vor, "load_request_count", lambda: (None, 100))
 
     captured_ids = []
-    def mock_fetch(sid, now, counter=None, session=None):
+    def mock_fetch(sid, now, counter=None, session=None, stop_event=None):
         captured_ids.append(sid)
         return {}
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", mock_fetch)
