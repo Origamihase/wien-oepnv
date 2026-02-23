@@ -1,5 +1,12 @@
 import json
+import pytest
+from unittest.mock import patch
 from src.utils.stations_validation import validate_stations, GTFSMissingIssue
+
+@pytest.fixture(autouse=True)
+def mock_validate_path():
+    with patch("src.utils.stations_validation.validate_path", side_effect=lambda p, n: p):
+        yield
 
 def test_detects_unmapped_gtfs_stops(tmp_path):
     stations = [

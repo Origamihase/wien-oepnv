@@ -15,6 +15,8 @@ import math
 import re
 from typing import Iterable, Iterator, Mapping, Sequence
 
+from .files import validate_path
+
 
 @dataclass(frozen=True)
 class GTFSMissingIssue:
@@ -199,9 +201,10 @@ def validate_stations(
 
 def _load_stations(path: Path) -> list[Mapping[str, object]]:
     try:
-        raw = path.read_text(encoding="utf-8")
-    except FileNotFoundError as exc:  # pragma: no cover - defensive
-        raise StationValidationError(f"Stations file not found: {path}") from exc
+        safe_path = validate_path(path, "Stations File")
+        raw = safe_path.read_text(encoding="utf-8")
+    except (FileNotFoundError, ValueError) as exc:  # pragma: no cover - defensive
+        raise StationValidationError(f"Stations file error ({path}): {exc}") from exc
 
     try:
         raw_data = json.loads(raw)
@@ -229,8 +232,13 @@ def _load_gtfs_stop_ids(path: Path | None) -> tuple[set[str], int]:
     if path is None or not path.exists():
         return set(), 0
 
+    try:
+        safe_path = validate_path(path, "GTFS File")
+    except ValueError:
+        return set(), 0
+
     stop_ids: set[str] = set()
-    with path.open("r", encoding="utf-8-sig", newline="") as handle:
+    with safe_path.open("r", encoding="utf-8-sig", newline="") as handle:
         reader = csv.DictReader(handle)
         for row in reader:
             stop_id = row.get("stop_id")
