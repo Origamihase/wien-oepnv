@@ -1,18 +1,9 @@
 {
-  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&847000": {
-    "first_seen": "2026-02-23T23:02:36.825470+00:00"
-  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&853249": {
     "first_seen": "2026-02-21T22:59:34.045861+00:00"
   },
-  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&854167": {
-    "first_seen": "2026-02-23T23:02:36.825470+00:00"
-  },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&854368": {
     "first_seen": "2026-02-21T22:59:34.045861+00:00"
-  },
-  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&854600": {
-    "first_seen": "2026-02-23T23:02:36.825470+00:00"
   },
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&856293": {
     "first_seen": "2026-02-21T22:59:34.045861+00:00"
@@ -20,26 +11,14 @@
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&856580": {
     "first_seen": "2026-02-21T22:59:34.045861+00:00"
   },
-  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&857753": {
-    "first_seen": "2026-02-23T23:02:36.825470+00:00"
-  },
   "test-guid-123": {
     "first_seen": "2023-10-27T10:00:00+00:00"
   },
   "test-guid-456": {
     "first_seen": "2023-10-27T10:00:00+00:00"
   },
-  "wl|hinweis|L=1,2,71,D|D=2026-02-23": {
-    "first_seen": "2026-02-23T23:02:36.825470+00:00"
-  },
-  "wl|hinweis|L=13A,N71|D=2026-02-23": {
-    "first_seen": "2026-02-23T23:02:36.825470+00:00"
-  },
   "wl|hinweis|L=24A|D=2026-02-17": {
     "first_seen": "2026-02-21T22:55:44.533995+00:00"
-  },
-  "wl|hinweis|L=56A,56B,58A,58B|D=2026-02-23": {
-    "first_seen": "2026-02-23T23:02:36.825470+00:00"
   },
   "wl|hinweis|L=63A|D=2026-02-19": {
     "first_seen": "2026-02-21T22:55:44.533995+00:00"
@@ -83,16 +62,10 @@
   "wl|störung|L=63A|D=2026-02-22": {
     "first_seen": "2026-02-22T10:49:19.108887+00:00"
   },
-  "wl|störung|L=63A|D=2026-02-23": {
-    "first_seen": "2026-02-23T23:02:36.825470+00:00"
-  },
   "wl|störung|L=N29|D=2026-02-21": {
     "first_seen": "2026-02-21T22:55:44.533995+00:00"
   },
   "wl|störung|L=U3|D=2026-02-22": {
     "first_seen": "2026-02-22T10:49:19.108887+00:00"
-  },
-  "wl|störung|L=WLB|D=2026-02-23": {
-    "first_seen": "2026-02-23T23:02:36.825470+00:00"
   }
 }

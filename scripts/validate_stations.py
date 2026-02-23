@@ -49,23 +49,14 @@ def main() -> int:
     # Historically, we expected all VOR identifiers to start with "900" and be six
     # digits long. In practice there are legitimate five digit identifiers such as
     # "93010" which caused the validation to reject otherwise valid data. Allow
-    # either five, six, or seven digit numeric identifiers starting with "8" or "9"
-    # (IDs starting with 81... appear in GTFS for specific platforms).
-    pattern = re.compile(r"[89]\d{4,6}(?::\d+)?")
+    # either five or six digit numeric identifiers starting with "9".
+    pattern = re.compile(r"9\d{4,5}")
     for station in vor_entries:
-        # If the station comes from GTFS (source="vor"), it might rely on vor_id
-        # instead of bst_id/bst_code. We check vor_id if bst_code is missing.
-        check_val = station.get("bst_code") or station.get("vor_id")
-
-        if not isinstance(check_val, str) or not pattern.fullmatch(check_val):
-            # Allow skipping this check if we have a valid vor_id but no bst_* fields,
-            # which is common for pure GTFS stops.
-            if station.get("vor_id") and not station.get("bst_code"):
-                 if pattern.fullmatch(station.get("vor_id")):
-                     continue
-
-            print(f"Invalid identifier for VOR: {check_val} (bst_code/vor_id)", file=sys.stderr)
-            return 1
+        for key in ("bst_id", "bst_code"):
+            value = station.get(key)
+            if not isinstance(value, str) or not pattern.fullmatch(value):
+                print(f"Invalid {key} for VOR: {value}", file=sys.stderr)
+                return 1
 
     oebb_codes = {
         station.get("bst_code")

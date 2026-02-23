@@ -258,34 +258,6 @@
     },
     {
       "aliases": [
-        "430349900",
-        "Gerasdorf",
-        "Bahnhof Gasseerasdorf",
-        "Bahnhof Gerasdorf",
-        "Bf Gasseerasdorf",
-        "Bf Gerasdorf",
-        "Gasseerasdorf",
-        "Gasseerasdorf Bahnhof",
-        "Gasseerasdorf Bf",
-        "Gef",
-        "Gerasdorf Bahnhof",
-        "Gerasdorf bei Wien",
-        "Gerasdorf bei Wien Bahnhof",
-        "Gerasdorf bei Wien Bahnhof (VOR)",
-        "Gerasdorf Bf"
-      ],
-      "bst_code": "Gef",
-      "bst_id": 570,
-      "in_vienna": false,
-      "latitude": 48.293315,
-      "longitude": 16.483736,
-      "name": "Gerasdorf",
-      "pendler": true,
-      "source": "oebb",
-      "vor_id": "430349900"
-    },
-    {
-      "aliases": [
         "430362200",
         "Gänserndorf",
         "Bahnhof Gaenserndorf",
@@ -313,6 +285,34 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430362200"
+    },
+    {
+      "aliases": [
+        "430349900",
+        "Gerasdorf",
+        "Bahnhof Gasseerasdorf",
+        "Bahnhof Gerasdorf",
+        "Bf Gasseerasdorf",
+        "Bf Gerasdorf",
+        "Gasseerasdorf",
+        "Gasseerasdorf Bahnhof",
+        "Gasseerasdorf Bf",
+        "Gef",
+        "Gerasdorf Bahnhof",
+        "Gerasdorf bei Wien",
+        "Gerasdorf bei Wien Bahnhof",
+        "Gerasdorf bei Wien Bahnhof (VOR)",
+        "Gerasdorf Bf"
+      ],
+      "bst_code": "Gef",
+      "bst_id": 570,
+      "in_vienna": false,
+      "latitude": 48.293315,
+      "longitude": 16.483736,
+      "name": "Gerasdorf",
+      "pendler": true,
+      "source": "oebb",
+      "vor_id": "430349900"
     },
     {
       "aliases": [
@@ -869,19 +869,6 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430460300"
-    },
-    {
-      "name": "Quartier Belvedere Gleis 1",
-      "vor_id": "8103001:1",
-      "latitude": 48.18695,
-      "longitude": 16.37724,
-      "in_vienna": true,
-      "pendler": false,
-      "source": "vor",
-      "aliases": [
-        "8103001:1",
-        "Quartier Belvedere Gleis 1"
-      ]
     },
     {
       "_google_place_id": "ChIJGZJ3hXsHbUcRoSEOdidtTe8",
@@ -1989,45 +1976,6 @@
       "vor_id": "490134900"
     },
     {
-      "name": "Wien Hbf (Bahnsteig 1)",
-      "vor_id": "8103000:1",
-      "latitude": 48.18575,
-      "longitude": 16.37512,
-      "in_vienna": true,
-      "pendler": false,
-      "source": "vor",
-      "aliases": [
-        "8103000:1",
-        "Wien Hbf (Bahnsteig 1)"
-      ]
-    },
-    {
-      "name": "Wien Hbf (Bahnsteig 2)",
-      "vor_id": "8103000:2",
-      "latitude": 48.18582,
-      "longitude": 16.37533,
-      "in_vienna": true,
-      "pendler": false,
-      "source": "vor",
-      "aliases": [
-        "8103000:2",
-        "Wien Hbf (Bahnsteig 2)"
-      ]
-    },
-    {
-      "name": "Wien Hbf (Bahnsteige 1-2)",
-      "vor_id": "8103000",
-      "latitude": 48.185013,
-      "longitude": 16.374582,
-      "in_vienna": true,
-      "pendler": false,
-      "source": "vor",
-      "aliases": [
-        "8103000",
-        "Wien Hbf (Bahnsteige 1-2)"
-      ]
-    },
-    {
       "aliases": [
         "490049100",
         "Wien Heiligenstadt",
@@ -2756,19 +2704,6 @@
       "pendler": false,
       "source": "oebb",
       "vor_id": "490134600"
-    },
-    {
-      "name": "Wien Quartier Belvedere",
-      "vor_id": "8103001",
-      "latitude": 48.186719,
-      "longitude": 16.377046,
-      "in_vienna": true,
-      "pendler": false,
-      "source": "vor",
-      "aliases": [
-        "8103001",
-        "Wien Quartier Belvedere"
-      ]
     },
     {
       "aliases": [

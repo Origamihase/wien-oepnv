@@ -1,11 +1,15 @@
+from unittest.mock import patch
 from src.utils.http import validate_http_url
 
 
-def test_validate_http_url_valid() -> None:
+@patch("src.utils.http._resolve_hostname_safe")
+def test_validate_http_url_valid(mock_resolve: object) -> None:
+    # Mock successful DNS resolution for example.com and google.com
+    # Return a safe IP (e.g. 93.184.216.34)
+    mock_resolve.return_value = [(2, 1, 6, "", ("93.184.216.34", 80))]
+
     assert validate_http_url("https://example.com") == "https://example.com"
     assert validate_http_url("http://google.com/foo") == "http://google.com/foo"
-    # Port usage is fine if not local/private (will require complex logic or just be allowed if IP is public)
-    # We will test public IPs if we can, but let's stick to domain names for now.
 
 
 def test_validate_http_url_invalid_scheme() -> None:
@@ -16,6 +20,8 @@ def test_validate_http_url_invalid_scheme() -> None:
 
 def test_validate_http_url_ssrf_domains() -> None:
     # These should be REJECTED (SSRF protection)
+    # They should fail BEFORE DNS check due to hostname blocking, but if they reach DNS,
+    # they would resolve to localhost. We can rely on hostname check.
     assert validate_http_url("http://localhost") is None
     assert validate_http_url("https://localhost:8080") is None
     assert validate_http_url("http://LOCALHOST") is None
@@ -74,8 +80,7 @@ def test_validate_http_url_obfuscated_ips_no_dns() -> None:
     # Valid domains should pass
     assert validate_http_url("http://example.com", check_dns=False) == "http://example.com"
     assert validate_http_url("http://123.com", check_dns=False) == "http://123.com"
-    # Hostnames are case-normalized (lowercased)
-    assert validate_http_url("http://xn--Example.com", check_dns=False) == "http://xn--example.com"
+    assert validate_http_url("http://xn--Example.com", check_dns=False) == "http://xn--Example.com"
     # IDN Punycode TLD
     assert validate_http_url("http://example.xn--vermgensberatung-pwb", check_dns=False) == "http://example.xn--vermgensberatung-pwb"
 

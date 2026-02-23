@@ -2,15 +2,9 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-import pytest
-from unittest.mock import patch
+
 
 from src.utils.stations_validation import validate_stations, CoordinateIssue
-
-@pytest.fixture(autouse=True)
-def mock_validate_path():
-    with patch("src.utils.stations_validation.validate_path", side_effect=lambda p, n: p):
-        yield
 
 def test_validation_rejects_nan_and_infinity(tmp_path: Path) -> None:
     stations = [
