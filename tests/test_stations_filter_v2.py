@@ -1,11 +1,8 @@
 
-import pytest
-import re
 from src.utils.stations import (
     text_has_vienna_connection,
     get_stations_in_text,
-    _station_name_mapping,
-    _station_matcher_regex
+    _station_name_mapping
 )
 
 class TestStationsFilterV2:
@@ -105,9 +102,6 @@ class TestStationsFilterV2:
         # The logic allows digits: `if len(n) < 3 or n.isdigit() ... continue`
         # Wait, the logic says: `if len(n) < 3 or n.isdigit() ... continue`
         # So numeric aliases ARE filtered out in the mapping creation!
-        # Let's verify the code in `src/utils/stations.py`:
-        # `if len(n) < 3 or n.isdigit() or n in ...: continue`
-        # Yes, purely numeric aliases are EXCLUDED from the mapping.
         # This prevents "123" in text matching a station ID.
 
         mapping = _station_name_mapping()
