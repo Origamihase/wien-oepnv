@@ -651,20 +651,35 @@ def text_has_vienna_connection(text: str) -> bool:
     if not text:
         return False
 
+    # 0. Maskiere bekannte Nicht-Wien-Bahnhöfe mit generischen Suffixen.
+    # Dies verhindert, dass z.B. "Innsbruck Westbahnhof" durch den Alias
+    # "Westbahnhof" fälschlicherweise als Wiener Station erkannt wird.
+    cities = (
+        r"(?:Innsbruck|Salzburg|Linz|Graz|Klagenfurt|Villach|Bregenz|Wels|Steyr|Feldkirch|"
+        r"Dornbirn|St\. Pölten|Wiener Neustadt|Bruck|Leoben|München|Passau|Frankfurt|Berlin)"
+    )
+    suffixes = (
+        r"(?:Westbahnhof|Ostbahnhof|Südbahnhof|Nordbahnhof|Mitte|Hbf|Hauptbahnhof|Flughafen|"
+        r"Airport)"
+    )
+
+    text_for_matching = re.sub(
+        rf"\b{cities}[\s\-]+{suffixes}\b", " ", text, flags=re.IGNORECASE
+    )
+
     # 1. Identifiziere alle im Text vorkommenden Stationen
-    stations = get_stations_in_text(text)
+    stations = get_stations_in_text(text_for_matching)
 
     # 2. Wenn mindestens eine identifizierte Station in Wien liegt -> Treffer
     if any(st.get("in_vienna", False) for st in stations):
         return True
 
     # 3. Wenn keine explizite Wiener Station gefunden wurde, entfernen wir alle
-    # identifizierten Pendler-Stationen (wie z.B. "Flughafen Wien") aus dem Text.
-    # So verhindern wir False Positives beim Wort "Wien".
+    # identifizierten Pendler-Stationen aus dem Text.
     rx = _station_matcher_regex()
-    cleaned_text = rx.sub(" ", text)
+    cleaned_text = rx.sub(" ", text_for_matching)
 
-    # 4. Prüfe, ob danach noch das eigenständige Wort "Wien" (z.B. als Richtung) übrig ist
+    # 4. Prüfe, ob danach noch das eigenständige Wort "Wien" übrig ist
     if re.search(r"\b(wien|vienna)\b", cleaned_text, re.IGNORECASE):
         return True
 

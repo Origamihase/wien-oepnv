@@ -119,3 +119,12 @@ class TestStationsFilterV2:
         text = "Wegen Bauarbeiten in Bruck/Leitha und Himberg kommt es zu Verzögerungen Richtung Graz."
         # No Vienna connection
         assert text_has_vienna_connection(text) is False
+
+    def test_innsbruck_westbahnhof_filtered(self):
+        # "Innsbruck Westbahnhof" should NOT be matched as "Wien Westbahnhof"
+        # The new masking logic should handle this.
+        assert text_has_vienna_connection("Innsbruck Westbahnhof") is False
+
+    def test_salzburg_hbf_filtered(self):
+        # "Salzburg Hbf" should NOT be matched as a Vienna station
+        assert text_has_vienna_connection("Salzburg Hbf") is False
