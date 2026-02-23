@@ -13,6 +13,7 @@ from typing import Iterable, NamedTuple
 
 __all__ = [
     "canonical_name",
+    "get_stations_in_text",
     "is_in_vienna",
     "is_pendler",
     "station_by_oebb_id",
@@ -586,43 +587,85 @@ def vor_station_ids() -> tuple[str, ...]:
 
 
 @lru_cache(maxsize=1)
-def _vienna_stations_regex() -> re.Pattern:
-    """Kompiliert einen Regex-Ausdruck mit allen bekannten Wiener Stationen."""
-    vienna = set()
+def _station_name_mapping() -> dict:
+    """Erstellt ein Mapping von allen bekannten Stationsnamen/Aliases auf deren Daten."""
+    mapping = {}
     for entry in _station_entries():
-        if entry.get("in_vienna"):
-            name = str(entry.get("name", "")).strip().lower()
-            if name:
-                vienna.add(name)
-            for alias in entry.get("aliases", []):
-                if alias:
-                    vienna.add(str(alias).strip().lower())
+        if not isinstance(entry, dict):
+            continue
 
-    # Filtere ungenaue Alias-Namen heraus
-    vienna = {n for n in vienna if len(n) >= 3 or n.isdigit()}
-    vienna -= {"hbf", "bf", "bahnhof", "hauptbahnhof", "station"}
+        names_to_add = []
+        name = str(entry.get("name", "")).strip().lower()
+        if name:
+            names_to_add.append(name)
 
-    if not vienna:
+        for alias in entry.get("aliases", []):
+            alias = str(alias).strip().lower()
+            if alias:
+                names_to_add.append(alias)
+
+        for n in names_to_add:
+            # Filtere zu kurze Begriffe, reine Zahlen und generische Wörter
+            if len(n) < 3 or n.isdigit() or n in {"hbf", "bf", "bahnhof", "hauptbahnhof", "station", "wien", "vienna"}:
+                continue
+
+            # Bei Namenskollisionen: Wiener Stationen haben Vorrang
+            if n not in mapping or entry.get("in_vienna"):
+                mapping[n] = entry
+
+    return mapping
+
+
+@lru_cache(maxsize=1)
+def _station_matcher_regex() -> re.Pattern:
+    """Kompiliert einen Regex-Ausdruck mit allen bekannten Stationen (längste zuerst)."""
+    mapping = _station_name_mapping()
+    if not mapping:
         return re.compile(r"(?!x)x")
 
-    sorted_terms = sorted(vienna, key=len, reverse=True)
+    sorted_terms = sorted(mapping.keys(), key=len, reverse=True)
     pattern = r"(?<!\w)(?:" + "|".join(re.escape(t) for t in sorted_terms) + r")(?!\w)"
     return re.compile(pattern, re.IGNORECASE)
 
 
+def get_stations_in_text(text: str) -> list:
+    """Findet alle Stations-Einträge aus dem Verzeichnis, die im Text erwähnt werden."""
+    if not text:
+        return []
+    rx = _station_matcher_regex()
+    mapping = _station_name_mapping()
+
+    found = []
+    for match in rx.finditer(text):
+        term = match.group(0).lower()
+        if term in mapping:
+            found.append(mapping[term])
+    return found
+
+
 def text_has_vienna_connection(text: str) -> bool:
-    """Prüft, ob der Text einen echten Bezug zu Wien oder einer Wiener Station hat."""
+    """
+    Prüft präzise anhand des gesamten Verzeichnisses, ob der Text
+    einen echten Bezug zu Wien oder einer Wiener Station hat.
+    """
     if not text:
         return False
 
-    # Verhindere Falsch-Positive durch Pendler-Stationen mit "Wien" im Namen
-    cleaned = re.sub(r"Flughafen Wien|Airport Vienna|Vienna Airport", "", text, flags=re.IGNORECASE)
+    # 1. Identifiziere alle im Text vorkommenden Stationen
+    stations = get_stations_in_text(text)
 
-    if re.search(r"\b(wien|vienna)\b", cleaned, re.IGNORECASE):
+    # 2. Wenn mindestens eine identifizierte Station in Wien liegt -> Treffer
+    if any(st.get("in_vienna", False) for st in stations):
         return True
 
-    rx = _vienna_stations_regex()
-    if rx.search(text):
+    # 3. Wenn keine explizite Wiener Station gefunden wurde, entfernen wir alle
+    # identifizierten Pendler-Stationen (wie z.B. "Flughafen Wien") aus dem Text.
+    # So verhindern wir False Positives beim Wort "Wien".
+    rx = _station_matcher_regex()
+    cleaned_text = rx.sub(" ", text)
+
+    # 4. Prüfe, ob danach noch das eigenständige Wort "Wien" (z.B. als Richtung) übrig ist
+    if re.search(r"\b(wien|vienna)\b", cleaned_text, re.IGNORECASE):
         return True
 
     return False
