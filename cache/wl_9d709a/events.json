@@ -242,18 +242,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "16A: Verkehrsüberlastung",
-    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7",
-    "pubDate": "2026-02-23T08:09:00+01:00",
-    "starts_at": "2026-02-23T08:09:00+01:00",
-    "ends_at": "2026-02-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=16A|D=2026-02-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U6: Verspätungen",
     "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -266,37 +254,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Verkehrsunfall",
-    "description": "Linie 10: Betrieb nur zwischen Dornbach und Hietzing U. Weichen Sie ersatzweise auf die Linie U4 aus. Voraussichtliche Dauer: 09:10 Uhr. Grund: Verkehrsunfall im Bereich Hietzinger Hauptstraße # Steckhovengasse.",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "61b24b179dc99eec46268642e5c4452102c4449a15d1457fb096c76204442f5f",
-    "pubDate": "2026-02-23T08:39:00+01:00",
-    "starts_at": "2026-02-23T08:39:00+01:00",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-02-23T09:19:00+01:00",
+    "starts_at": "2026-02-23T09:19:00+01:00",
     "ends_at": "2026-02-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=10|D=2026-02-23"
+    "_identity": "wl|störung|L=U3|D=2026-02-23"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7091f5ceb189603887edeb672707027ab0765bd9fd7a0fa2d67f934f96a2ae34",
-    "pubDate": "2026-02-23T08:39:45+01:00",
-    "starts_at": "2026-02-23T08:39:45+01:00",
-    "ends_at": "2026-02-23T09:39:00+01:00",
-    "_identity": "wl|störung|L=10|D=2026-02-23"
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2026-02-23T09:29:35+01:00",
+    "starts_at": "2026-02-23T09:29:52+01:00",
+    "ends_at": "2026-02-23T10:29:00+01:00",
+    "_identity": "wl|störung|L=42|D=2026-02-23"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Verkehrsunfall Betrieb ab Hietzing",
-    "description": "Verkehrsunfall Betrieb ab Hietzing",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "12cba3a7c054981d6add94856dcd1c65418ae082cdac6b727396ab70a235c95d",
-    "pubDate": "2026-02-23T08:42:10+01:00",
-    "starts_at": "2026-02-23T08:42:10+01:00",
-    "ends_at": "2026-02-23T09:39:00+01:00",
-    "_identity": "wl|störung|L=10|D=2026-02-23"
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2026-02-23T09:37:00+01:00",
+    "starts_at": "2026-02-23T09:57:25+01:00",
+    "ends_at": "2026-02-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=9|D=2026-02-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Schadhaftes Fahrzeug",
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9cbda432936ce6d9f277141eebd80c49b0e6c60a0bd25b184a19bce78ee5282f",
+    "pubDate": "2026-02-23T09:46:00+01:00",
+    "starts_at": "2026-02-23T09:46:00+01:00",
+    "ends_at": "2026-02-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=43|D=2026-02-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Schadhafter Zug Betrieb ab Rosensteingasse",
+    "description": "Schadhafter Zug Betrieb ab Rosensteingasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c24c048de24ef28c503e902303e56da2ff32087ba041c8b5de1a91ce2771ac14",
+    "pubDate": "2026-02-23T09:47:16+01:00",
+    "starts_at": "2026-02-23T09:47:16+01:00",
+    "ends_at": "2026-02-23T10:46:00+01:00",
+    "_identity": "wl|störung|L=43|D=2026-02-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Polizeieinsatz",
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6",
+    "pubDate": "2026-02-23T10:08:00+01:00",
+    "starts_at": "2026-02-23T10:08:00+01:00",
+    "ends_at": "2026-02-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-02-23"
   }
 ]
