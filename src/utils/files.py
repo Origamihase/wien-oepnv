@@ -97,3 +97,26 @@ def sanitize_filename(filename_id: str) -> str:
     # Verified: Uses SHA256 (no MD5) for security linter compliance
     id_hash = hashlib.sha256(str(filename_id).encode('utf-8')).hexdigest()[:6]
     return f"{safe_base}_{id_hash}"
+
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+ALLOWED_ROOTS = {"docs", "data", "log"}
+
+
+class InvalidPathError(ValueError):
+    """Raised when a configured path is outside the permitted directories."""
+
+
+def validate_path(path: Path, name: str) -> Path:
+    """Ensure ``path`` stays within whitelisted directories."""
+
+    resolved = path.resolve()
+    bases = {Path.cwd().resolve(), REPO_ROOT}
+    for base in bases:
+        try:
+            rel = resolved.relative_to(base)
+        except Exception:  # noqa: S112
+            continue  # ignore path resolution errors during validation
+        if rel.parts and rel.parts[0] in ALLOWED_ROOTS:
+            return resolved
+    raise InvalidPathError(f"{name} outside allowed directories")

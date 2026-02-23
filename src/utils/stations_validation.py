@@ -15,6 +15,15 @@ import math
 import re
 from typing import Iterable, Iterator, Mapping, Sequence
 
+from .files import validate_path
+
+
+@dataclass(frozen=True)
+class GTFSMissingIssue:
+    """GTFS stops that are not contained in the station directory."""
+
+    stop_id: str
+
 
 @dataclass(frozen=True)
 class DuplicateGroup:
@@ -71,6 +80,7 @@ class ValidationReport:
     alias_issues: tuple[AliasIssue, ...]
     coordinate_issues: tuple[CoordinateIssue, ...]
     gtfs_issues: tuple[GTFSIssue, ...]
+    gtfs_missing_issues: tuple[GTFSMissingIssue, ...]
     security_issues: tuple[SecurityIssue, ...]
     gtfs_stop_count: int
 
@@ -81,6 +91,7 @@ class ValidationReport:
             or self.alias_issues
             or self.coordinate_issues
             or self.gtfs_issues
+            or self.gtfs_missing_issues
             or self.security_issues
         )
 
@@ -92,6 +103,7 @@ class ValidationReport:
         lines.append(f"*Alias issues*: {len(self.alias_issues)}")
         lines.append(f"*Coordinate anomalies*: {len(self.coordinate_issues)}")
         lines.append(f"*GTFS mismatches*: {len(self.gtfs_issues)}")
+        lines.append(f"*Unmapped GTFS stops*: {len(self.gtfs_missing_issues)}")
         lines.append(f"*Security warnings*: {len(self.security_issues)}")
         lines.append("")
 
@@ -136,6 +148,12 @@ class ValidationReport:
                 )
             lines.append("")
 
+        if self.gtfs_missing_issues:
+            lines.append("## Unmapped GTFS stops")
+            for missing in self.gtfs_missing_issues:
+                lines.append(f"- {missing.stop_id}")
+            lines.append("")
+
         if not self.has_issues:
             lines.append("No issues detected.")
 
@@ -166,6 +184,7 @@ def validate_stations(
         _find_coordinate_issues(stations, bounds=coordinate_bounds)
     )
     gtfs_issues = tuple(_find_gtfs_issues(stations, gtfs_stop_ids))
+    gtfs_missing_issues = tuple(_find_gtfs_missing_issues(stations, gtfs_stop_ids))
     security_issues = tuple(_find_security_issues(stations))
 
     return ValidationReport(
@@ -174,6 +193,7 @@ def validate_stations(
         alias_issues=alias_issues,
         coordinate_issues=coordinate_issues,
         gtfs_issues=gtfs_issues,
+        gtfs_missing_issues=gtfs_missing_issues,
         security_issues=security_issues,
         gtfs_stop_count=gtfs_count,
     )
@@ -181,9 +201,10 @@ def validate_stations(
 
 def _load_stations(path: Path) -> list[Mapping[str, object]]:
     try:
-        raw = path.read_text(encoding="utf-8")
-    except FileNotFoundError as exc:  # pragma: no cover - defensive
-        raise StationValidationError(f"Stations file not found: {path}") from exc
+        safe_path = validate_path(path, "Stations File")
+        raw = safe_path.read_text(encoding="utf-8")
+    except (FileNotFoundError, ValueError) as exc:  # pragma: no cover - defensive
+        raise StationValidationError(f"Stations file error ({path}): {exc}") from exc
 
     try:
         raw_data = json.loads(raw)
@@ -211,8 +232,13 @@ def _load_gtfs_stop_ids(path: Path | None) -> tuple[set[str], int]:
     if path is None or not path.exists():
         return set(), 0
 
+    try:
+        safe_path = validate_path(path, "GTFS File")
+    except ValueError:
+        return set(), 0
+
     stop_ids: set[str] = set()
-    with path.open("r", encoding="utf-8-sig", newline="") as handle:
+    with safe_path.open("r", encoding="utf-8-sig", newline="") as handle:
         reader = csv.DictReader(handle)
         for row in reader:
             stop_id = row.get("stop_id")
@@ -400,6 +426,30 @@ def _find_gtfs_issues(
             name = str(entry.get("name", "")).strip() or "<unknown>"
             identifier = _format_identifier(entry)
             yield GTFSIssue(identifier=identifier, name=name, vor_id=vor_id)
+
+
+def _find_gtfs_missing_issues(
+    stations: Sequence[Mapping[str, object]],
+    gtfs_stop_ids: Iterable[str],
+) -> Iterator[GTFSMissingIssue]:
+    known_ids: set[str] = set()
+    for entry in stations:
+        vor_id = entry.get("vor_id")
+        if isinstance(vor_id, str):
+            token = vor_id.strip()
+            if token:
+                known_ids.add(token)
+
+        # Also consider numeric aliases as known IDs (similar to vor_station_ids in stations.py)
+        aliases = entry.get("aliases")
+        if isinstance(aliases, list):
+            for alias in aliases:
+                if isinstance(alias, str) and alias.strip().isdigit():
+                    known_ids.add(alias.strip())
+
+    for stop_id in gtfs_stop_ids:
+        if stop_id not in known_ids:
+            yield GTFSMissingIssue(stop_id=stop_id)
 
 
 _UNSAFE_CHARS_RE = re.compile(r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\u2028-\u202e\u2066-\u2069]")

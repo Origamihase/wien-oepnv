@@ -30,6 +30,7 @@ try:  # pragma: no cover - support package and script execution
         DEFAULT_STATE_RETENTION_DAYS,
     )
     from utils.env import get_bool_env, get_int_env
+    from utils.files import validate_path
     from utils.http import validate_http_url
 except ModuleNotFoundError:  # pragma: no cover
     from ..config.defaults import (
@@ -54,31 +55,11 @@ except ModuleNotFoundError:  # pragma: no cover
         DEFAULT_STATE_RETENTION_DAYS,
     )
     from ..utils.env import get_bool_env, get_int_env
+    from ..utils.files import validate_path
     from ..utils.http import validate_http_url
 
-ALLOWED_ROOTS = {"docs", "data", "log"}
-REPO_ROOT = Path(__file__).resolve().parents[2]
 LOG_TIMEZONE = ZoneInfo("Europe/Vienna")
 log = logging.getLogger(__name__)
-
-
-class InvalidPathError(ValueError):
-    """Raised when a configured path is outside the permitted directories."""
-
-
-def validate_path(path: Path, name: str) -> Path:
-    """Ensure ``path`` stays within whitelisted directories."""
-
-    resolved = path.resolve()
-    bases = {Path.cwd().resolve(), REPO_ROOT}
-    for base in bases:
-        try:
-            rel = resolved.relative_to(base)
-        except Exception:
-            continue  # nosec B112 - ignore path resolution errors during validation
-        if rel.parts and rel.parts[0] in ALLOWED_ROOTS:
-            return resolved
-    raise InvalidPathError(f"{name} outside allowed directories")
 
 
 def resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: bool = False) -> Path:

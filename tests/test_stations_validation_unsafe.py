@@ -1,5 +1,12 @@
 import json
+import pytest
+from unittest.mock import patch
 from src.utils.stations_validation import validate_stations
+
+@pytest.fixture(autouse=True)
+def mock_validate_path():
+    with patch("src.utils.stations_validation.validate_path", side_effect=lambda p, n: p):
+        yield
 
 def test_validation_flags_unsafe_chars(tmp_path):
     stations_file = tmp_path / "stations.json"

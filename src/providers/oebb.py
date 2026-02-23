@@ -30,7 +30,7 @@ import requests
 from ..feed_types import FeedItem
 from ..utils.env import get_bool_env
 from ..utils.ids import make_guid
-from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, station_info, text_has_vienna_connection
+from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, text_has_vienna_connection
 from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
 from ..utils.logging import sanitize_log_arg
 
@@ -219,30 +219,9 @@ def _is_relevant(title: str, description: str) -> bool:
     Es sollen nur Bahnhöfe mit Störungen in Wien in den Feed.
     Wenn ein Pendlerbahnhof betroffen ist, muss die gestörte Verbindung
     mit einem Wiener Bahnhof zu tun haben.
+    Eine reine Verbindung zwischen zwei Pendlerbahnhöfen wird herausgefiltert.
     """
-    text = f"{title} {description}"
-
-    # Check 0: Strecken-Filter für explizite Routen A ↔ B
-    if "↔" in title:
-        parts = [p.strip() for p in title.split("↔")]
-        if len(parts) >= 2:
-            # Entferne eventuelle Präfixe wie "REX 51: " aus den Stationsnamen
-            part0 = parts[0].split(":", 1)[-1].strip() if ":" in parts[0] else parts[0]
-            part1 = parts[1].split(":", 1)[-1].strip() if ":" in parts[1] else parts[1]
-
-            info0 = station_info(part0)
-            info1 = station_info(part1)
-
-            is_outer0 = info0 and not info0.in_vienna
-            is_outer1 = info1 and not info1.in_vienna
-
-            if is_outer0 and is_outer1:
-                # Verbindung zwischen zwei reinen Pendlerbahnhöfen (z.B. Neulengbach ↔ Tullnerbach-Pressbaum)
-                # Nur zulassen, wenn die Detailbeschreibung einen expliziten Wien-Bezug nennt.
-                if not text_has_vienna_connection(description):
-                    return False
-
-    return text_has_vienna_connection(text)
+    return text_has_vienna_connection(f"{title} {description}")
 
 # ---------------- Region helpers ----------------
 _MAX_STATION_WINDOW = 4
