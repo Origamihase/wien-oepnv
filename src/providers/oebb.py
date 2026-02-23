@@ -295,7 +295,7 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
                     ),
                 )
                 return ET.fromstring(content)
-            except ValueError as e:
+            except (ValueError, ET.ParseError) as e:
                 log.warning("ÖBB RSS: Content-Limit/Format-Fehler: %s", sanitize_log_arg(e))
                 return None
             except requests.RequestException as e:

@@ -28,13 +28,13 @@ class MockSocket:
     def getpeername(self) -> tuple[str, int]:
         return (self._ip, 443)
 
-class MockConnection:
+class SimulatedConnection:
     def __init__(self, ip: str):
         self.sock = MockSocket(ip)
 
 class MockRaw:
     def __init__(self, ip: str):
-        self.connection = MockConnection(ip)
+        self.connection = SimulatedConnection(ip)
         self._connection = self.connection
 
 class InfiniteStreamResponse:
