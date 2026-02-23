@@ -2,17 +2,17 @@ from collections import namedtuple
 
 from src.providers import vor
 
-StationInfo = namedtuple("StationInfo", ["name"])
+StationInfo = namedtuple("StationInfo", ["name", "in_vienna"])
 
 def test_collect_from_board_adds_station_context(monkeypatch):
     # Mock station_info
-    monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="Mödling"))
+    monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="Mödling", in_vienna=False))
 
     root = {
         "DepartureBoard": {
             "Message": {
                 "head": "Zugausfall",
-                "text": "Technischer Defekt",
+                "text": "Technischer Defekt (Wien)",
                 "id": "1",
             }
         }
@@ -26,13 +26,13 @@ def test_collect_from_board_adds_station_context(monkeypatch):
     assert title == "Mödling: Zugausfall"
 
 def test_collect_from_board_adds_station_context_with_lines(monkeypatch):
-    monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="Baden"))
+    monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="Baden", in_vienna=False))
 
     root = {
         "DepartureBoard": {
             "Message": {
                 "head": "Verspätung",
-                "text": "Wegen ...",
+                "text": "Wegen ... (Wien)",
                 "products": {"Product": [{"catOutL": "S3"}]},
                 "id": "2",
             }
@@ -45,7 +45,7 @@ def test_collect_from_board_adds_station_context_with_lines(monkeypatch):
     assert title == "S3: Verspätung (Baden)"
 
 def test_collect_from_board_skips_context_if_present(monkeypatch):
-    monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="Wien Mitte"))
+    monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="Wien Mitte", in_vienna=True))
 
     root = {
         "DepartureBoard": {

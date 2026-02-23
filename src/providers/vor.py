@@ -42,7 +42,7 @@ from ..utils.http import session_with_retries, validate_http_url, fetch_content_
 from ..utils.ids import make_guid
 from ..utils.locking import file_lock
 from ..utils.logging import sanitize_log_arg, sanitize_log_message
-from ..utils.stations import vor_station_ids, station_info
+from ..utils.stations import vor_station_ids, station_info, text_has_vienna_connection
 
 log = logging.getLogger(__name__)
 
@@ -799,12 +799,20 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[FeedIt
     """
     info = station_info(station_id)
     station_name = info.name if info else None
+    is_vienna_station = info.in_vienna if info else False
 
     items: List[FeedItem] = []
     for raw_msg in _iter_messages(root):
         message = cast(VorMessage, raw_msg)
         head = str(message.get("head") or message.get("name") or "").strip()
         text = str(message.get("text") or message.get("description") or "").strip()
+
+        # FILTER: Bei Pendlerbahnhöfen muss die konkrete Meldung Wien betreffen
+        if not is_vienna_station:
+            full_text = f"{head} {text}"
+            if not text_has_vienna_connection(full_text):
+                continue
+
         lines = _extract_lines(message)
         # stops removed (Task: Strict 2-line layout, not used anymore)
         start_dt = _parse_dt(message.get("sDate"), message.get("sTime"))

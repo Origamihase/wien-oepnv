@@ -15,7 +15,11 @@ def _emit_item_str(item, now, state):
     return ident, xml_str
 
 
-def test_title_has_line_prefix():
+def test_title_has_line_prefix(monkeypatch):
+    # Mock station info so it doesn't get filtered out
+    from src.utils.stations import StationInfo
+    monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name=None, in_vienna=True, pendler=False))
+
     payload = {
         "DepartureBoard": {
             "Messages": {
@@ -42,7 +46,11 @@ def test_title_has_line_prefix():
     assert items[0]["title"] == "S1: Baustelle …"
 
 
-def test_vor_description_keeps_extra_lines():
+def test_vor_description_keeps_extra_lines(monkeypatch):
+    # Mock station info
+    from src.utils.stations import StationInfo
+    monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="Wien", in_vienna=True, pendler=False))
+
     payload = {
         "DepartureBoard": {
             "Messages": {
