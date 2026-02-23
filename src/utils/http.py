@@ -827,8 +827,8 @@ def verify_response_ip(response: requests.Response) -> None:
         conn = getattr(response.raw, "_connection", getattr(response.raw, "connection", None))
         if conn and getattr(conn, "__class__", None).__name__ == "MockConnection":
              return
-    except Exception:
-        pass
+    except Exception as exc:
+        log.debug("Validation of mock connection skipped: %s", exc)
 
     # Proxy Compatibility (Task C): Bypass check if explicit proxy env vars are set
     if any(k in os.environ for k in ("HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "http_proxy", "https_proxy", "all_proxy")):
