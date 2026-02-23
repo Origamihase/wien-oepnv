@@ -1311,7 +1311,7 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[FeedItem
     stored_date, stored_count = load_request_count()
     if stored_date == today and stored_count >= MAX_REQUESTS_PER_DAY:
         log.info("Tageslimit von %s VOR-Anfragen erreicht", MAX_REQUESTS_PER_DAY)
-        return []
+        raise RequestException(f"VOR Tageslimit erreicht ({MAX_REQUESTS_PER_DAY})")
 
     remaining_requests = max(MAX_REQUESTS_PER_DAY - stored_count, 0)
     if remaining_requests == 0:
@@ -1319,7 +1319,7 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[FeedItem
             "Tageslimit von %s VOR-Anfragen bereits ausgeschöpft – überspringe Abruf.",
             MAX_REQUESTS_PER_DAY,
         )
-        return []
+        raise RequestException(f"VOR Tageslimit erreicht ({MAX_REQUESTS_PER_DAY})")
 
     if station_ids is None:
         station_ids = get_configured_stations()

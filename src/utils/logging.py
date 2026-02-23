@@ -81,6 +81,8 @@ def sanitize_log_message(
     patterns: List[Tuple[str, str]] = [
         # PEM blocks (keys/certs) - MUST be first to prevent partial redaction by other patterns
         (r"(-----BEGIN [A-Z ]+-----)(?:.|\n)*?(-----END [A-Z ]+-----)", r"\1***\2"),
+        # Explicitly mask accessId (Requirement) to ensure robust redaction in tracebacks
+        (r"(?i)(accessId\s*=\s*)([^&\s]+)", r"\1***"),
         # Basic Auth in URLs (protocol://user:pass@host)
         (r"(?i)([a-z0-9+.-]+://)([^/@\s]+)@", r"\1***@"),
         # Query parameters (key=value or key%3dvalue)

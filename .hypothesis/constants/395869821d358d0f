@@ -1,0 +1,4 @@
+# file: /app/src/cli.py
+# hypothesis_version: 6.151.9
+
+['*', ', ', '--', '--all', '--decimal-places', '--fail-on-issues', '--fix', '--gtfs', '--output', '--ruff-args', '--stations', '--stop-on-error', '--verbose', '1', 'PROVIDER', 'Provider', 'Run the feed builder', 'TARGET', 'Token-Prüfziele', 'WIEN_OEPNV_DEBUG', '__main__', 'all', 'build', 'cache', 'cache_command', 'check_vor_auth.py', 'checks', 'command', 'config', 'config_command', 'configure_feed.py', 'data', 'directory', 'feed', 'feed_command', 'func', 'google-places', 'gtfs', 'lint', 'oebb', 'providers', 'run_static_checks.py', 'scan', 'scan_args', 'scan_secrets.py', 'scripts', 'security', 'security_command', 'stations', 'stations.json', 'stations_command', 'stops.txt', 'store_true', 'target', 'targets', 'tokens', 'tokens_command', 'update', 'update_oebb_cache.py', 'update_vor_cache.py', 'update_wl_cache.py', 'utf-8', 'validate', 'verify', 'vor', 'vor-auth', 'wien-oepnv', 'wizard', 'wizard_args', 'wl']

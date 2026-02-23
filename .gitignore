@@ -23,3 +23,6 @@ docs/feed-health.md
 # Virtual Environment
 .venv/
 docs/sitemap.xml
+
+# Runtime State
+data/vor_request_count.json

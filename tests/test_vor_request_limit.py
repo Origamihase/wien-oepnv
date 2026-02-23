@@ -52,10 +52,13 @@ def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
         encoding="utf-8",
     )
 
-    with caplog.at_level("INFO"):
-        items = vor.fetch_events()
+    from requests import RequestException
 
-    assert items == []
+    with caplog.at_level("INFO"):
+        with pytest.raises(RequestException) as excinfo:
+            vor.fetch_events()
+
+    assert "Tageslimit" in str(excinfo.value)
     assert any("Tageslimit" in record.getMessage() for record in caplog.records)
 
 
