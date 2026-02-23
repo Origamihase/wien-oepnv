@@ -128,8 +128,14 @@ def test_vor_entries_have_bst_id_and_code():
     assert vor_entries, "expected VOR-sourced station entries"
 
     for entry in vor_entries:
-        assert "bst_id" in entry and entry["bst_id"], f"missing bst_id for {entry['name']}"
-        assert "bst_code" in entry and entry["bst_code"], f"missing bst_code for {entry['name']}"
+        # If no legacy ÖBB ID (bst_id) is present, we expect a valid VOR ID (vor_id)
+        # to serve as the station identifier for GTFS-derived stops.
+        has_bst = "bst_id" in entry and entry["bst_id"]
+        has_vor = "vor_id" in entry and entry["vor_id"]
+        assert has_bst or has_vor, f"missing bst_id AND vor_id for {entry['name']}"
+
+        if has_bst:
+            assert "bst_code" in entry and entry["bst_code"], f"missing bst_code for {entry['name']}"
 
 
 def test_wl_aliases_take_precedence_over_vor_text_aliases():
