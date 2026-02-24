@@ -427,8 +427,9 @@ class VorAuth(AuthBase):
     Injects VOR access credentials into the request via query parameter,
     only if not already authenticated via header.
     """
-    def __init__(self, access_id: str, base_url: str):
+    def __init__(self, access_id: str, auth_header: str, base_url: str):
         self.access_id = access_id
+        self.auth_header = auth_header
         self.base_url = base_url
 
     def __call__(self, r: requests.PreparedRequest) -> requests.PreparedRequest:
@@ -436,30 +437,24 @@ class VorAuth(AuthBase):
         if not r.url or not r.url.startswith(self.base_url):
             return r
 
-        # If Authorization header is present, do nothing (assumed handled by session headers)
-        if "Authorization" in r.headers:
-            return r
+        # Inject Authorization header if configured and missing
+        if self.auth_header and "Authorization" not in r.headers:
+            r.headers["Authorization"] = self.auth_header
 
-        if not self.access_id:
-            return r
+        # Inject accessId query param if configured
+        if self.access_id:
+            # Check if accessId is already present in query params
+            try:
+                parsed = urlparse(r.url)
+                query_params = parse_qsl(parsed.query, keep_blank_values=True)
 
-        # Check if accessId is already present in query params
-        try:
-            parsed = urlparse(r.url)
-        except ValueError:
-            return r
-
-        query_params = parse_qsl(parsed.query, keep_blank_values=True)
-
-        if any(k == "accessId" for k, v in query_params):
-             return r
-
-        # Inject accessId
-        query_params.append(("accessId", self.access_id))
-        new_query = urlencode(query_params)
-
-        new_parts = parsed._replace(query=new_query)
-        r.url = urlunparse(new_parts)
+                if not any(k == "accessId" for k, v in query_params):
+                    query_params.append(("accessId", self.access_id))
+                    new_query = urlencode(query_params)
+                    new_parts = parsed._replace(query=new_query)
+                    r.url = urlunparse(new_parts)
+            except ValueError:
+                pass
 
         return r
 
@@ -478,11 +473,11 @@ def apply_authentication(session: Session) -> None:
         _log_warning("Sending VOR credentials over insecure HTTP connection! This is unsafe.")
 
     session.headers.setdefault("Accept", "application/json")
-    if _VOR_AUTHORIZATION_HEADER:
-        session.headers["Authorization"] = _VOR_AUTHORIZATION_HEADER
+    # FIX: Do not set Authorization header directly on session.headers to avoid premature injection
+    # Instead pass it to VorAuth which handles conditional injection
 
     # Use custom AuthBase implementation instead of monkeypatching
-    session.auth = VorAuth(VOR_ACCESS_ID, VOR_BASE_URL)
+    session.auth = VorAuth(VOR_ACCESS_ID, _VOR_AUTHORIZATION_HEADER, VOR_BASE_URL)
 
 
 def _extract_stop_container(message: Mapping[str, Any]) -> Iterable[Any]:
@@ -1204,91 +1199,78 @@ def _fetch_departure_board_for_station(
         active_session = session
 
     try:
-        attempts = max(int(VOR_RETRY_OPTIONS.get("total", 0) or 0) + 1, 1)
-        quota_incremented = False
-        for attempt in range(attempts):
-            # CIRCUIT BREAKER CHECK
-            if counter:
-                with counter["lock"]:
-                    counter["val"] += 1
-                    if counter["val"] > counter.get("limit", 10):
-                        raise RuntimeError("Emergency Stop: Too many requests in single run!")
+        # CIRCUIT BREAKER CHECK
+        if counter:
+            with counter["lock"]:
+                counter["val"] += 1
+                if counter["val"] > counter.get("limit", 10):
+                    raise RuntimeError("Emergency Stop: Too many requests in single run!")
 
-            try:
-                # Logging request details (masked)
-                log.info(f"Requesting VOR DepartureBoard for {station_id}...")
+        try:
+            # Logging request details (masked)
+            log.info(f"Requesting VOR DepartureBoard for {station_id}...")
 
-                # Enforce rate limit check and increment atomically
-                with _QUOTA_LOCK:
-                    _, current_usage = load_request_count()
-                    if current_usage >= MAX_REQUESTS_PER_DAY:
-                        _log_warning(
-                            "VOR Tageslimit erreicht (%s/%s) – Anfrage für %s abgebrochen.",
-                            current_usage,
-                            MAX_REQUESTS_PER_DAY,
-                            station_id,
-                        )
-                        return None
-
-                    # Increment before request to count every attempt (Point 4)
-                    if not quota_incremented:
-                        save_request_count(now_local)
-                        quota_incremented = True
-
-                content = fetch_content_safe(
-                    active_session,
-                    endpoint,
-                    params=params,
-                    timeout=HTTP_TIMEOUT,
-                    allowed_content_types=("application/json",),
-                )
-
-                # Log raw length
-                log.debug(f"Received {len(content)} bytes from VOR.")
-
-                return json.loads(content)
-
-            except (ValueError, json.JSONDecodeError) as exc:
-                _log_warning(
-                    "VOR DepartureBoard %s ungültig/zu groß: %s", station_id, exc
-                )
-                return None
-
-            except requests.HTTPError as exc:
-                response = exc.response
-                if response is not None:
+            # Enforce rate limit check and increment atomically
+            with _QUOTA_LOCK:
+                _, current_usage = load_request_count()
+                if current_usage >= MAX_REQUESTS_PER_DAY:
                     _log_warning(
-                        "VOR DepartureBoard %s -> HTTP %s",
+                        "VOR Tageslimit erreicht (%s/%s) – Anfrage für %s abgebrochen.",
+                        current_usage,
+                        MAX_REQUESTS_PER_DAY,
                         station_id,
-                        response.status_code,
                     )
-                    if response.status_code == 429:
+                    return None
+
+                # Increment strictly BEFORE request
+                save_request_count(now_local)
+
+            content = fetch_content_safe(
+                active_session,
+                endpoint,
+                params=params,
+                timeout=HTTP_TIMEOUT,
+                allowed_content_types=("application/json",),
+            )
+
+            # Log raw length
+            log.debug(f"Received {len(content)} bytes from VOR.")
+
+            return json.loads(content)
+
+        except (ValueError, json.JSONDecodeError) as exc:
+            _log_warning(
+                "VOR DepartureBoard %s ungültig/zu groß: %s", station_id, exc
+            )
+            return None
+
+        except requests.HTTPError as exc:
+            response = exc.response
+            if response is not None:
+                _log_warning(
+                    "VOR DepartureBoard %s -> HTTP %s",
+                    station_id,
+                    response.status_code,
+                )
+                if response.status_code == 429:
+                    _log_retry_after_warning(response, station_id)
+                    return None
+
+                if response.status_code >= 500:
+                    if response.status_code == 503:
                         _log_retry_after_warning(response, station_id)
                         return None
 
-                    if response.status_code >= 500:
-                        if response.status_code == 503:
-                            _log_retry_after_warning(response, station_id)
-                            # Fail-Fast also for 503 to avoid spinning/blocking
-                            return None
-                        continue
+            _log_error(
+                "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
+            )
+            return None
 
-                if attempt >= attempts - 1:
-                    _log_error(
-                        "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
-                    )
-                    return None
-                continue
-
-            except RequestException as exc:
-                if attempt >= attempts - 1:
-                    _log_error(
-                        "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
-                    )
-                    return None
-                continue
-
-        return None
+        except RequestException as exc:
+            _log_error(
+                "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
+            )
+            return None
     except RequestException as exc:
         _log_error("VOR DepartureBoard %s Ausnahme: %s", station_id, exc)
         return None

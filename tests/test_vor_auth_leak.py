@@ -22,15 +22,26 @@ def test_vor_sends_param_when_header_present(monkeypatch):
     session = DummySession()
     vor.apply_authentication(session)  # type: ignore[arg-type]
 
-    # Confirm header is set
-    assert session.headers["Authorization"] == "Bearer secret"
+    # Confirm header is NOT set on session directly (Task 1 fix)
+    assert "Authorization" not in session.headers
 
-    # Confirm param is injected (THIS IS THE LEAK)
-    response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
+    # Confirm VorAuth injects both header and param as requested
+    assert isinstance(session.auth, vor.VorAuth)
 
-    # With fix, accessId should NOT be in params
-    try:
-        assert "accessId" not in response["params"]
-    finally:
-        monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
-        importlib.reload(vor)
+    from requests import PreparedRequest
+    req = PreparedRequest()
+    # Use VOR_BASE_URL to ensure auth is applied
+    target_url = vor.VOR_BASE_URL + "endpoint"
+    req.prepare(method="GET", url=target_url, headers={})
+
+    # Apply auth
+    req = session.auth(req)
+
+    # 1. Header should be injected
+    assert req.headers["Authorization"] == "Bearer secret"
+
+    # 2. Param should be injected (as requested by user)
+    assert "accessId=secret" in req.url
+
+    monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    importlib.reload(vor)

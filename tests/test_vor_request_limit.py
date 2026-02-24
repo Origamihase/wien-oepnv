@@ -296,7 +296,7 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(monkeypa
     assert called == 1
 
 
-def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch):
+def test_fetch_departure_board_fails_gracefully_on_error(monkeypatch):
     from requests import ConnectionError
 
     call_count = 0
@@ -307,9 +307,6 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
         return call_count
 
     monkeypatch.setattr(vor, "save_request_count", fake_save)
-
-    retry_options = {"total": 1, "backoff_factor": 0.0, "raise_on_status": False}
-    monkeypatch.setattr(vor, "VOR_RETRY_OPTIONS", retry_options)
 
     # Mock session
     class DummySession:
@@ -327,24 +324,18 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
 
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
-    # Mock fetch_content_safe to simulate failure then success
-    fetch_calls = 0
-
+    # Mock fetch_content_safe to simulate failure
     def fake_fetch_content_safe(*args, **kwargs):
-        nonlocal fetch_calls
-        fetch_calls += 1
-        if fetch_calls == 1:
-            raise ConnectionError("boom")
-        # Success on retry
-        return b"{}"
+        raise ConnectionError("boom")
 
     monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch_content_safe)
 
     now_local = datetime.now().astimezone(ZoneInfo("Europe/Vienna"))
     payload = vor._fetch_departure_board_for_station("123", now_local)
 
-    assert payload == {}
-    # Requirement 4: Count only ONCE per station request
+    # Should return None on failure
+    assert payload is None
+    # Requirement: Count only ONCE per station request
     assert call_count == 1
 
 

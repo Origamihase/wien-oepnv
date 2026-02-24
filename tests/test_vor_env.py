@@ -1,7 +1,7 @@
 import base64
 import importlib
 import logging
-from typing import Any
+import requests
 
 import src.providers.vor as vor
 
@@ -168,24 +168,28 @@ def test_apply_authentication_sets_header(monkeypatch):
     monkeypatch.setenv("VOR_ACCESS_ID", "secret")
     importlib.reload(vor)
 
-    class DummySession:
-        def __init__(self) -> None:
-            self.headers: dict[str, str] = {}
-            self.calls: list[tuple[str, str, Any]] = []
+    session = requests.Session()
+    if "Authorization" in session.headers:
+        del session.headers["Authorization"]
+    # Clear Accept to allow setdefault to work (mimicking DummySession behavior)
+    if "Accept" in session.headers:
+        del session.headers["Accept"]
 
-        def request(self, method: str, url: str, params: Any = None, **kwargs: Any) -> Any:
-            self.calls.append((method, url, params))
-            return {"method": method, "url": url, "params": params, **kwargs}
-
-    session = DummySession()
     vor.apply_authentication(session)  # type: ignore[arg-type]
 
     assert session.headers["Accept"] == "application/json"
-    assert session.headers["Authorization"] == "Bearer secret"
+    assert "Authorization" not in session.headers
+    assert isinstance(session.auth, vor.VorAuth)
 
-    response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
-    assert "accessId" not in response["params"]
-    assert "accessId" not in session.calls[0][2]
+    # Test Auth Application
+    req = requests.PreparedRequest()
+    # Must use VOR_BASE_URL to trigger injection
+    req.prepare("GET", vor.VOR_BASE_URL + "endpoint")
+    req = session.auth(req)
+
+    assert req.headers["Authorization"] == "Bearer secret"
+    # User requested to inject accessId even if header present
+    assert "accessId=secret" in req.url
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)
@@ -195,24 +199,21 @@ def test_apply_authentication_basic_auth(monkeypatch):
     monkeypatch.setenv("VOR_ACCESS_ID", "user:secret")
     importlib.reload(vor)
 
-    class DummySession:
-        def __init__(self) -> None:
-            self.headers: dict[str, str] = {}
-            self.calls: list[tuple[str, str, Any]] = []
+    session = requests.Session()
+    if "Authorization" in session.headers:
+        del session.headers["Authorization"]
 
-        def request(self, method: str, url: str, params: Any = None, **kwargs: Any) -> Any:
-            self.calls.append((method, url, params))
-            return {"method": method, "url": url, "params": params, **kwargs}
-
-    session = DummySession()
     vor.apply_authentication(session)  # type: ignore[arg-type]
 
     expected = base64.b64encode(b"user:secret").decode("ascii")
-    assert session.headers["Authorization"] == f"Basic {expected}"
+    # Verify auth object
+    req = requests.PreparedRequest()
+    req.prepare("GET", vor.VOR_BASE_URL + "endpoint")
+    req = session.auth(req)
 
-    response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
-    assert "accessId" not in response["params"]
-    assert "accessId" not in session.calls[0][2]
+    assert req.headers["Authorization"] == f"Basic {expected}"
+    assert "accessId=user%3Asecret" in req.url or "accessId=user:secret" in req.url
+    assert "accessId=user%3Asecret" in req.url or "accessId=user:secret" in req.url
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)
@@ -222,24 +223,20 @@ def test_apply_authentication_basic_with_prefix(monkeypatch):
     monkeypatch.setenv("VOR_ACCESS_ID", "Basic user:secret")
     importlib.reload(vor)
 
-    class DummySession:
-        def __init__(self) -> None:
-            self.headers: dict[str, str] = {}
-            self.calls: list[tuple[str, str, Any]] = []
+    session = requests.Session()
+    if "Authorization" in session.headers:
+        del session.headers["Authorization"]
 
-        def request(self, method: str, url: str, params: Any = None, **kwargs: Any) -> Any:
-            self.calls.append((method, url, params))
-            return {"method": method, "url": url, "params": params, **kwargs}
-
-    session = DummySession()
     vor.apply_authentication(session)  # type: ignore[arg-type]
 
     expected = base64.b64encode(b"user:secret").decode("ascii")
-    assert session.headers["Authorization"] == f"Basic {expected}"
 
-    response = session.request("GET", "https://example.test/endpoint", params={"format": "json"})
-    assert "accessId" not in response["params"]
-    assert "accessId" not in session.calls[0][2]
+    req = requests.PreparedRequest()
+    req.prepare("GET", vor.VOR_BASE_URL + "endpoint")
+    req = session.auth(req)
+
+    assert req.headers["Authorization"] == f"Basic {expected}"
+    assert "accessId=user%3Asecret" in req.url or "accessId=user:secret" in req.url
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)
