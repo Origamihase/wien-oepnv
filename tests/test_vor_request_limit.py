@@ -261,9 +261,6 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(monkeypa
 
     monkeypatch.setattr(vor, "save_request_count", fake_save)
 
-    # For 429/503 we fail fast, so no sleep mock needed (or we can keep it as safety)
-    monkeypatch.setattr(vor.time, "sleep", lambda *_args, **_kwargs: None)
-
     # Mock session to avoid real creation, but we will mock fetch_content_safe
     class DummySession:
         def __init__(self):
@@ -310,7 +307,6 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
         return call_count
 
     monkeypatch.setattr(vor, "save_request_count", fake_save)
-    monkeypatch.setattr(vor.time, "sleep", lambda *_args, **_kwargs: None)
 
     retry_options = {"total": 1, "backoff_factor": 0.0, "raise_on_status": False}
     monkeypatch.setattr(vor, "VOR_RETRY_OPTIONS", retry_options)

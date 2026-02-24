@@ -18,6 +18,7 @@ import requests
 from requests.adapters import HTTPAdapter
 from requests.structures import CaseInsensitiveDict
 from urllib3.connection import HTTPSConnection
+from urllib3.connectionpool import HTTPSConnectionPool
 from urllib3.poolmanager import PoolManager
 from urllib3.util.retry import Retry
 
@@ -359,25 +360,19 @@ class PinnedHTTPSConnection(HTTPSConnection):
         if self.source_address:
             extra_kw["source_address"] = self.source_address
 
-        # socket.create_connection does not support socket_options.
-        # urllib3 applies them after creation. We will do the same if possible,
-        # but for PinnedConnection we rely on default socket creation behavior
-        # plus pinning. The parent class logic for options is in connect() usually,
-        # but _new_conn is the low level creator.
-
         # We ignore self.host for connection, use pinned_ip
+        # explicit source_address passing to satisfy MyPy
         conn = socket.create_connection(
             (self._pinned_ip, self.port),
             self.timeout,
-            **extra_kw
+            source_address=self.source_address,
         )
 
         # Apply socket options if present (simulating urllib3 behavior)
         if self.socket_options:
             for opt in self.socket_options:
-                if len(opt) == 3:
-                    opt = opt + (None,)
-                # level, optname, value
+                # opt is a tuple (level, optname, value)
+                # some platforms might have 4 items? setsockopt takes 3.
                 conn.setsockopt(*opt[:3])
 
         return conn
@@ -415,9 +410,11 @@ class PinnedHTTPSAdapter(TimeoutHTTPAdapter):
                 super().__init__(*args, **kwargs)
 
         # Get the default HTTPS pool class
-        DefaultHTTPSPool = self.poolmanager.pool_classes_by_scheme["https"]
+        # We use explicit HTTPSConnectionPool as base to satisfy MyPy,
+        # assuming urllib3 uses that (which it does).
+        # Dynamic base class causes MyPy errors.
 
-        class PinnedHTTPSConnectionPool(DefaultHTTPSPool):
+        class PinnedHTTPSConnectionPool(HTTPSConnectionPool):
             ConnectionCls = LocalPinnedHTTPSConnection
 
         # Register it

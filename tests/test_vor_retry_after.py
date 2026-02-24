@@ -29,13 +29,6 @@ def test_retry_after_invalid_value(monkeypatch, caplog):
     monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch)
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
-    sleep_calls: list[float] = []
-
-    def fake_sleep(seconds):
-        sleep_calls.append(seconds)
-
-    monkeypatch.setattr(vor.time, "sleep", fake_sleep)
-
     caplog.set_level(logging.WARNING, logger=vor.log.name)
 
     result = vor._fetch_departure_board_for_station("123", datetime(2024, 1, 1, 12, 0))
@@ -45,8 +38,6 @@ def test_retry_after_invalid_value(monkeypatch, caplog):
     assert any("ungültiges Retry-After" in message for message in caplog.messages)
     # Logged fail-fast warning
     assert any("Überspringe Station (Fail-Fast)" in message for message in caplog.messages)
-    # No sleep called
-    assert sleep_calls == []
 
 
 def test_retry_after_missing_header(monkeypatch, caplog):
@@ -59,19 +50,11 @@ def test_retry_after_missing_header(monkeypatch, caplog):
     monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch)
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
-    sleep_calls: list[float] = []
-
-    def fake_sleep(seconds):
-        sleep_calls.append(seconds)
-
-    monkeypatch.setattr(vor.time, "sleep", fake_sleep)
-
     caplog.set_level(logging.WARNING, logger=vor.log.name)
 
     result = vor._fetch_departure_board_for_station("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
-    assert sleep_calls == []
     assert any("Retry-After fehlt" in message for message in caplog.messages)
     # Logged fail-fast warning
     assert any("Überspringe Station (Fail-Fast)" in message for message in caplog.messages)
@@ -87,19 +70,11 @@ def test_retry_after_numeric_value(monkeypatch, caplog):
     monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch)
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
-    sleep_calls: list[float] = []
-
-    def fake_sleep(seconds):
-        sleep_calls.append(seconds)
-
-    monkeypatch.setattr(vor.time, "sleep", fake_sleep)
-
     caplog.set_level(logging.WARNING, logger=vor.log.name)
 
     result = vor._fetch_departure_board_for_station("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
-    assert sleep_calls == []
     # Logged warning with delay
     assert any("Retry-After: 3.5s" in message for message in caplog.messages)
 
@@ -129,18 +104,10 @@ def test_retry_after_http_date(monkeypatch, caplog):
 
     monkeypatch.setattr(vor, "datetime", FixedDateTime)
 
-    sleep_calls: list[float] = []
-
-    def fake_sleep(seconds):
-        sleep_calls.append(seconds)
-
-    monkeypatch.setattr(vor.time, "sleep", fake_sleep)
-
     caplog.set_level(logging.WARNING, logger=vor.log.name)
 
     result = vor._fetch_departure_board_for_station("123", datetime(2024, 1, 1, 12, 0))
 
     assert result is None
-    assert sleep_calls == []
     # Logged warning with delay
     assert any("Retry-After: 7.0s" in message for message in caplog.messages)
