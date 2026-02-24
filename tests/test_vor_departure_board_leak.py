@@ -35,9 +35,9 @@ def test_leak():
     print(f"URL: {call.request.url}")
     print(f"Headers: {call.request.headers}")
 
-    # Vulnerability check: accessId should NOT be in URL
-    if "accessId=" in call.request.url:
-         raise AssertionError("accessId FOUND in URL (Leak persists!)")
+    # Requirement: accessId MUST be in URL (as per user request "Fallback-Query-Parameter accessId")
+    if "accessId=" not in call.request.url:
+        raise AssertionError("accessId NOT FOUND in URL (Feature regression!)")
 
     # Check Authorization header is still there
     if "Authorization" in call.request.headers:

@@ -14,7 +14,7 @@ class TestVorRedirectLeak(unittest.TestCase):
         Verify that VorAuth injects credentials only for VOR URLs and not for external URLs.
         Using VorAuth directly avoids mocking session internals which can be fragile.
         """
-        auth = vor.VorAuth("SECRET_TOKEN", vor.VOR_BASE_URL)
+        auth = vor.VorAuth("SECRET_TOKEN", "Bearer SECRET_TOKEN", vor.VOR_BASE_URL)
 
         # 1. Test External URL (Attack Scenario)
         attacker_url = "http://attacker.com/steal"
