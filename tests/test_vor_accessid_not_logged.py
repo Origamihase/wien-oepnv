@@ -25,29 +25,21 @@ def test_accessid_not_logged(monkeypatch, caplog, raw_message, expected_fragment
     monkeypatch.setenv("VOR_ACCESS_ID", "secret")
     importlib.reload(vor)
 
-    def _make_session():
-        class DummySession:
-            def __init__(self):
-                self.headers: dict[str, str] = {}
+    # Mock session just to be present (fetch_content_safe requires it as arg)
+    class DummySession:
+        def __init__(self):
+            self.headers: dict[str, str] = {}
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+        def close(self): pass
 
-            def __enter__(self):
-                return self
+    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
-            def __exit__(self, exc_type, exc, tb):
-                return False
+    # Mock fetch_content_safe to raise the exception directly
+    def fake_fetch(*args, **kwargs):
+        raise requests.RequestException(raw_message)
 
-            def close(self):
-                pass
-
-            def request(self, method, url, **kwargs):
-                raise requests.RequestException(raw_message)
-
-            def get(self, url, **kwargs):
-                return self.request("GET", url, **kwargs)
-
-        return DummySession()
-
-    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: _make_session())
+    monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch)
 
     # Ensure quota check passes so fetch is attempted
     monkeypatch.setattr(vor, "load_request_count", lambda: (None, 0))

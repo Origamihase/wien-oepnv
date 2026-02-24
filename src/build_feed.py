@@ -814,12 +814,21 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     # Prevent thread starvation by enforcing timeout on semaphore acquisition
                     # This ensures that if the provider is deadlocked/overloaded, we don't block
                     # the executor worker forever.
+                    start_wait = perf_counter()
                     acquired = semaphore.acquire(timeout=timeout_arg)
                     if not acquired:
                          raise TimeoutError(f"Semaphore acquisition timed out after {timeout_value}s")
 
+                    # Task 3: Subtract wait time from timeout
+                    elapsed = perf_counter() - start_wait
+                    remaining_timeout = timeout_arg - elapsed
+
+                    if remaining_timeout <= 0:
+                        semaphore.release()
+                        raise TimeoutError(f"Semaphore acquisition took {elapsed:.2f}s, no time left for fetch")
+
                     try:
-                        return _call_fetch_with_timeout(fetch, timeout_arg, supports)
+                        return _call_fetch_with_timeout(fetch, remaining_timeout, supports)
                     finally:
                         semaphore.release()
 
