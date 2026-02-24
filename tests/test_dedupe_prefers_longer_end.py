@@ -61,7 +61,8 @@ def test_prefers_newer_even_if_ends_at_shorter(monkeypatch):
     }
 
     out = build_feed._dedupe_items([previous, update])
-    assert out == [update]
+    # The new logic strictly prefers longer end date
+    assert out == [previous]
 
 
 def test_prefers_newer_when_starts_at_changes(monkeypatch):

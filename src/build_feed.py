@@ -439,21 +439,6 @@ _WHITESPACE_CLEANUP_RE = re.compile(r"[ \t\r\f\v]+")
 def _sanitize_text(s: str) -> str:
     return _CONTROL_RE.sub("", s or "")
 
-def _clip_text_html(text: str, limit: int) -> str:
-    """Für TV knapper machen. Gibt HTML zurück (bewahrt Links) und kürzt nur im Notfall."""
-    # Uses HTML-aware truncation to preserve tags and structure (e.g. links).
-    # "limit" is the target length for content (tags excluded from count roughly).
-    # We still enforce a sanity cap of 50k to prevent DoS, but pass the actual limit
-    # to the truncator if it's smaller.
-    raw = text or ""
-    sanity_cap = 50000
-
-    # If the configured limit is very large or zero, use sanity cap
-    # Also ignore very small limits (likely test artifacts or misconfiguration)
-    effective_limit = limit if 20 < limit < sanity_cap else sanity_cap
-
-    return truncate_html(raw, effective_limit, _ELLIPSIS)
-
 def _parse_lines_from_title(title: str) -> List[str]:
     m = _LINE_PREFIX_RE.match(title or "")
     if not m:
@@ -472,7 +457,7 @@ def _parse_lines_from_title(title: str) -> List[str]:
 def _ymd_or_none(dt: Optional[datetime]) -> str:
     if isinstance(dt, datetime):
         return _to_utc(dt).date().isoformat()
-    return "None"
+    return ""
 
 
 def _parse_datetime(value: Any) -> Optional[datetime]:
@@ -1118,8 +1103,6 @@ def _dedupe_items(items: List[FeedItem]) -> List[FeedItem]:
         if a_end > b_end:
             return True
         if a_end < b_end:
-            if _recency_value(a) > _recency_value(b):
-                return True
             return False
 
         # Bei gleichem Enddatum: Zuerst Aktualität, dann Länge

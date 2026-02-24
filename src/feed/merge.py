@@ -132,10 +132,17 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
                     # Case 1: Existing is VOR, Item is ÖBB -> Keep Existing, merge ÖBB desc if useful
                     if is_vor_existing and is_oebb_item:
-                        desc_vor = existing.get("description", "") or ""
+                        # Create a copy to avoid mutating the original 'existing' reference
+                        # if it came from the input list or was already modified.
+                        new_existing = copy.deepcopy(existing)
+
+                        desc_vor = new_existing.get("description", "") or ""
                         desc_oebb = item.get("description", "") or ""
                         if desc_oebb and desc_oebb not in desc_vor:
-                            existing["description"] = f"{desc_vor}\n\n{desc_oebb}".strip()
+                            new_existing["description"] = f"{desc_vor}\n\n{desc_oebb}".strip()
+
+                        # Update the list with the modified copy
+                        merged_items[idx] = new_existing
                         # Do NOT update GUID or Title from ÖBB (keep VOR master data)
                         merged = True
                         break
