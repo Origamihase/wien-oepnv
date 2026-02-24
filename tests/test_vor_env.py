@@ -1,7 +1,6 @@
 import base64
 import importlib
 import logging
-from typing import Any
 import requests
 
 import src.providers.vor as vor
@@ -213,7 +212,8 @@ def test_apply_authentication_basic_auth(monkeypatch):
     req = session.auth(req)
 
     assert req.headers["Authorization"] == f"Basic {expected}"
-    assert f"accessId=user%3Asecret" in req.url or f"accessId=user:secret" in req.url
+    assert "accessId=user%3Asecret" in req.url or "accessId=user:secret" in req.url
+    assert "accessId=user%3Asecret" in req.url or "accessId=user:secret" in req.url
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)
@@ -236,7 +236,7 @@ def test_apply_authentication_basic_with_prefix(monkeypatch):
     req = session.auth(req)
 
     assert req.headers["Authorization"] == f"Basic {expected}"
-    assert f"accessId=user%3Asecret" in req.url or f"accessId=user:secret" in req.url
+    assert "accessId=user%3Asecret" in req.url or "accessId=user:secret" in req.url
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)
