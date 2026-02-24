@@ -13,17 +13,19 @@ class TestExceptionSanitization(unittest.TestCase):
         mock_addr_info = [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))]
 
         with patch('src.utils.http._resolve_hostname_safe', return_value=mock_addr_info):
-            with patch('requests.Session.request') as mock_request:
+            # With PinnedHTTPSAdapter, requests for HTTPS bypass session.request.
+            # We mock PinnedHTTPSAdapter.send to raise the exception.
+            with patch('src.utils.http.PinnedHTTPSAdapter.send') as mock_send:
                 # Simulate an exception with a sensitive URL
                 sensitive_url = "https://api.example.com/resource?token=SUPER_SECRET_KEY&user=admin"
                 error_msg = (
-                    f"ConnectionError: HTTPSConnectionPool(host='api.example.com', port=443): "
+                    f"ConnectionError: PinnedHTTPSConnectionPool(host='api.example.com', port=443): "
                     f"Max retries exceeded with url: {sensitive_url} "
-                    f"(Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at ...>: "
+                    f"(Caused by NewConnectionError('<src.utils.http.PinnedHTTPSConnection object at ...>: "
                     f"Failed to establish a new connection: [Errno 111] Connection refused'))"
                 )
 
-                mock_request.side_effect = requests.RequestException(error_msg)
+                mock_send.side_effect = requests.RequestException(error_msg)
 
                 session = session_with_retries("TestAgent")
 

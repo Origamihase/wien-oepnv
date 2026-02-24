@@ -28,22 +28,16 @@ def test_vor_retry_after_capped(monkeypatch, caplog):
     monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch)
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
-    sleep_calls: list[float] = []
-    def fake_sleep(seconds):
-        sleep_calls.append(seconds)
-
-    monkeypatch.setattr(vor.time, "sleep", fake_sleep)
-
     # Enable logging capture to verify the warning
     caplog.set_level(logging.WARNING, logger=vor.log.name)
 
     # Trigger the fetch
     vor._fetch_departure_board_for_station("123", datetime(2024, 1, 1, 12, 0))
 
-    # Expect the sleep to be capped (assuming we will set it to 120)
-    assert len(sleep_calls) > 0
-    assert sleep_calls[0] <= 120.0
-    assert any("zu hoch" in message for message in caplog.messages) or any("kappe auf" in message for message in caplog.messages)
+    # Updated: VOR now uses fail-fast strategy for 429, skipping sleep to avoid thread blocking.
+    # We verify the warning log contains the raw Retry-After value
+    assert any("Retry-After: 99999.0s" in message for message in caplog.messages)
+    assert any("Überspringe Station (Fail-Fast)" in message for message in caplog.messages)
 
 def test_oebb_retry_after_capped(monkeypatch, caplog):
     """Verify that OEBB provider caps the Retry-After delay."""

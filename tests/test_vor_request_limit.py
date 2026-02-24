@@ -261,58 +261,32 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(monkeypa
 
     monkeypatch.setattr(vor, "save_request_count", fake_save)
 
-    if status_code == 429:
-        monkeypatch.setattr(vor.time, "sleep", lambda *_args, **_kwargs: None)
-
-    class DummyResponse:
-        def __init__(self, status: int, hdrs: dict[str, str]):
-            self.status_code = status
-            self.headers = hdrs
-
-        def json(self):  # pragma: no cover - defensive, should not be called for error codes
-            return {}
-
-        def raise_for_status(self):
-            import requests
-            if 400 <= self.status_code < 600:
-                raise requests.HTTPError(response=self)
-
-        def iter_content(self, chunk_size=1):
-            return []
-
-        @property
-        def content(self):
-            return getattr(self, "_content", b"")
-
+    # Mock session to avoid real creation, but we will mock fetch_content_safe
     class DummySession:
-        def __init__(self, response: DummyResponse):
-            self._response = response
+        def __init__(self):
             self.headers: dict[str, str] = {}
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+        def close(self): pass
+        def prepare_request(self, request):
+            from requests.models import PreparedRequest
+            p = PreparedRequest()
+            p.prepare(method=request.method, url=request.url, headers=request.headers)
+            return p
+        def merge_environment_settings(self, *args, **kwargs): return {}
 
-        def __enter__(self):
-            return self
+    monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
-        def __exit__(self, exc_type, exc, tb):
-            return False
+    def fake_fetch_content_safe(*args, **kwargs):
+        import requests
+        resp = requests.Response()
+        resp.status_code = status_code
+        for k, v in headers.items():
+            resp.headers[k] = v
+        # raise HTTPError as fetch_content_safe calls raise_for_status=True
+        raise requests.HTTPError(response=resp)
 
-        def close(self):
-            pass
-
-        def get(self, url, params=None, timeout=None, **kwargs):  # pragma: no cover - exercised in test
-            class CM:
-                def __enter__(inner):
-                    return self._response
-                def __exit__(inner, exc_type, exc, tb):
-                    pass
-            return CM()
-
-        def request(self, method, url, **kwargs):
-            return self.get(url, **kwargs)
-
-    def fake_session_with_retries(*args, **kwargs):
-        return DummySession(DummyResponse(status_code, headers))
-
-    monkeypatch.setattr(vor, "session_with_retries", fake_session_with_retries)
+    monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch_content_safe)
 
     now_local = datetime.now().astimezone(ZoneInfo("Europe/Vienna"))
     result = vor._fetch_departure_board_for_station("123", now_local)
@@ -333,67 +307,38 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
         return call_count
 
     monkeypatch.setattr(vor, "save_request_count", fake_save)
-    monkeypatch.setattr(vor.time, "sleep", lambda *_args, **_kwargs: None)
 
     retry_options = {"total": 1, "backoff_factor": 0.0, "raise_on_status": False}
     monkeypatch.setattr(vor, "VOR_RETRY_OPTIONS", retry_options)
 
-    from unittest.mock import MagicMock
-    from tests.mock_utils import get_mock_socket_structure
-
-    class DummyResponse:
-        def __init__(self):
-            self.status_code = 200
-            self.headers: dict[str, str] = {"Content-Type": "application/json"}
-
-            # Mock raw connection for security checks
-            self.raw = MagicMock()
-            conn = get_mock_socket_structure()
-            self.raw.connection = conn
-            self.raw._connection = conn
-
-        def json(self):
-            return {}
-
-        def raise_for_status(self):
-            pass
-
-        def iter_content(self, chunk_size=1):
-            yield b"{}"
-
-        @property
-        def content(self):
-            return getattr(self, "_content", b"")
-
+    # Mock session
     class DummySession:
         def __init__(self):
-            self.calls = 0
             self.headers: dict[str, str] = {}
-
-        def __enter__(self):
-            return self
-
-        def __exit__(self, exc_type, exc, tb):
-            return False
-
-        def close(self):
-            pass
-
-        def get(self, *args, **kwargs):
-            self.calls += 1
-            if self.calls == 1:
-                raise ConnectionError("boom")
-            class CM:
-                def __enter__(inner):
-                    return DummyResponse()
-                def __exit__(inner, exc_type, exc, tb):
-                    pass
-            return CM()
-
-        def request(self, method, url, **kwargs):
-            return self.get(url, **kwargs)
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+        def close(self): pass
+        def prepare_request(self, request):
+            from requests.models import PreparedRequest
+            p = PreparedRequest()
+            p.prepare(method=request.method, url=request.url, headers=request.headers)
+            return p
+        def merge_environment_settings(self, *args, **kwargs): return {}
 
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
+
+    # Mock fetch_content_safe to simulate failure then success
+    fetch_calls = 0
+
+    def fake_fetch_content_safe(*args, **kwargs):
+        nonlocal fetch_calls
+        fetch_calls += 1
+        if fetch_calls == 1:
+            raise ConnectionError("boom")
+        # Success on retry
+        return b"{}"
+
+    monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch_content_safe)
 
     now_local = datetime.now().astimezone(ZoneInfo("Europe/Vienna"))
     payload = vor._fetch_departure_board_for_station("123", now_local)

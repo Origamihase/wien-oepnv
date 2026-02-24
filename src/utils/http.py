@@ -17,6 +17,9 @@ from urllib.parse import parse_qsl, urlencode, urlparse
 import requests
 from requests.adapters import HTTPAdapter
 from requests.structures import CaseInsensitiveDict
+from urllib3.connection import HTTPSConnection
+from urllib3.connectionpool import HTTPSConnectionPool
+from urllib3.poolmanager import PoolManager
 from urllib3.util.retry import Retry
 
 from .logging import sanitize_log_message
@@ -340,6 +343,82 @@ class TimeoutHTTPAdapter(HTTPAdapter):
         if kwargs.get("timeout") is None:
             kwargs["timeout"] = self.timeout if self.timeout is not None else DEFAULT_TIMEOUT
         return super().send(request, **kwargs)
+
+
+class PinnedHTTPSConnection(HTTPSConnection):
+    """
+    HTTPSConnection that forces connection to a specific IP while keeping the original hostname for SNI.
+    """
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        self._pinned_ip = kwargs.pop("pinned_ip", None)
+        super().__init__(*args, **kwargs)
+
+    def _new_conn(self) -> Any:
+        # Create socket connected to pinned IP
+        extra_kw = {}
+        if self.source_address:
+            extra_kw["source_address"] = self.source_address
+
+        # We ignore self.host for connection, use pinned_ip
+        # explicit source_address passing to satisfy MyPy
+        conn = socket.create_connection(
+            (self._pinned_ip, self.port),
+            self.timeout,
+            source_address=self.source_address,
+        )
+
+        # Apply socket options if present (simulating urllib3 behavior)
+        if self.socket_options:
+            for opt in self.socket_options:
+                # opt is a tuple (level, optname, value)
+                # some platforms might have 4 items? setsockopt takes 3.
+                conn.setsockopt(*opt[:3])
+
+        return conn
+
+
+class PinnedHTTPSAdapter(TimeoutHTTPAdapter):
+    """
+    HTTPAdapter that forces all connections to a specific IP address
+    while preserving the original hostname for SNI and Host header.
+    """
+
+    def __init__(self, pinned_ip: str, *args: Any, **kwargs: Any) -> None:
+        self.pinned_ip = pinned_ip
+        super().__init__(*args, **kwargs)
+
+    def init_poolmanager(self, connections: int, maxsize: int, block: bool = False, **pool_kwargs: Any) -> None:
+        self._pool_connections = connections
+        self._pool_maxsize = maxsize
+        self._pool_block = block
+
+        self.poolmanager = PoolManager(
+            num_pools=connections,
+            maxsize=maxsize,
+            block=block,
+            strict=True,
+            **pool_kwargs,
+        )
+
+        # Create a closure class for PinnedHTTPSConnection that has pinned_ip baked in.
+        pinned_ip = self.pinned_ip
+
+        class LocalPinnedHTTPSConnection(PinnedHTTPSConnection):
+            def __init__(self, *args: Any, **kwargs: Any) -> None:
+                kwargs["pinned_ip"] = pinned_ip
+                super().__init__(*args, **kwargs)
+
+        # Get the default HTTPS pool class
+        # We use explicit HTTPSConnectionPool as base to satisfy MyPy,
+        # assuming urllib3 uses that (which it does).
+        # Dynamic base class causes MyPy errors.
+
+        class PinnedHTTPSConnectionPool(HTTPSConnectionPool):
+            ConnectionCls = LocalPinnedHTTPSConnection
+
+        # Register it
+        self.poolmanager.pool_classes_by_scheme["https"] = PinnedHTTPSConnectionPool
 
 
 def _check_response_security(response: requests.Response, *args: Any, **kwargs: Any) -> None:
@@ -694,26 +773,37 @@ def validate_http_url(
         if parsed.scheme.lower() not in ("http", "https"):
             return None
 
+        # Disallow embedded credentials to avoid leaking secrets via logs or proxies.
+        # Check this BEFORE normalization to ensure we don't accidentally strip them when reconstructing netloc.
+        if parsed.username or parsed.password:
+            return None
+
         # Security: Normalize only hostname to NFKC to prevent IDNA bypasses and homograph confusion
         # We do NOT normalize the full URL to preserve Base64/Query parameters (Task 2).
         if parsed.hostname:
-             # We must re-encode/decode to handle IDNA correctly or just normalize unicode?
              # The requirement says: "normalize exclusively the hostname".
              # urlparse.hostname returns lowercased hostname.
-             # We normalize that.
              normalized_hostname = unicodedata.normalize("NFKC", parsed.hostname)
+
+             # Reconstruct netloc safely (Task 5)
+             # Avoid using replace() which might clobber ports if they match the hostname
+
+             # Fix IPv6 Brackets: normalized_hostname (from parsed.hostname) lacks brackets for IPv6.
+             # We must restore them if it's an IPv6 literal (contains colons).
+             if ":" in normalized_hostname:
+                 final_hostname = f"[{normalized_hostname}]"
+             else:
+                 final_hostname = normalized_hostname
+
+             new_netloc = final_hostname
+             if parsed.port is not None:
+                 new_netloc = f"{final_hostname}:{parsed.port}"
+
              # Update parsed object
-             parsed = parsed._replace(netloc=parsed.netloc.replace(parsed.hostname, normalized_hostname))
-             # Also update candidate for return? No, we return candidate at end?
-             # Wait, the function returns the validated URL string.
-             # We should return the version with normalized hostname but original path/query.
+             parsed = parsed._replace(netloc=new_netloc)
 
              # Reconstruct candidate with normalized hostname
              candidate = parsed.geturl()
-
-        # Disallow embedded credentials to avoid leaking secrets via logs or proxies.
-        if parsed.username or parsed.password:
-            return None
 
         hostname = parsed.hostname
         if not hostname:
@@ -752,10 +842,22 @@ def validate_http_url(
         try:
             # Handle IPv6 brackets and scope IDs if present
             # urlparse.hostname strips brackets for IPv6, so we just handle scope/formatting
+            # However, for pure IPv6 literals like "[::1]", hostname is "::1" (brackets stripped by urlparse).
+            # But earlier in this function (line ~760), we reconstructed candidate with hostname.
+            # If input was "http://[::1]", parsed.hostname is "::1".
+            # ipaddress.ip_address("::1") works.
+            # ipaddress.ip_address("[::1]") fails.
+            # We strip just in case.
             ip_candidate = hostname.strip("[]").split("%")[0]
             ip = ipaddress.ip_address(ip_candidate)
             if not is_ip_safe(ip):
                 return None
+
+            # If it is a safe IP, we return the candidate (which preserves brackets for IPv6 if they were there)
+            # But wait, earlier we did: candidate = parsed.geturl() after normalization.
+            # If it was an IP, normalization (NFKC) usually leaves it alone or normalizes characters.
+            # If we return 'candidate' here, it's fine.
+            return candidate
         except ValueError:
             # Not a standard literal IP address
             lower_host = hostname.lower()
@@ -1118,32 +1220,70 @@ def request_safe(
 
             if parsed.scheme == "http":
                 pinned_url, hostname = _pin_url_to_ip(safe_url)
-                kwargs["headers"]["Host"] = hostname
+                # Task 1: IPv6 Host Header Fix
+                kwargs["headers"]["Host"] = f"[{hostname}]" if ":" in hostname else hostname
                 target_url = pinned_url
+
+                # Standard session.request for HTTP
+                ctx = session.request(
+                    method,
+                    target_url,
+                    stream=True,
+                    timeout=current_timeout,
+                    hooks=request_hooks,
+                    allow_redirects=False,
+                    **kwargs,
+                )
             else:
-                # HTTPS: Resolve to check safety (fail fast) but don't pin (rely on certs + verify_response_ip)
+                # HTTPS: TOCTOU Fix (Task 4) using PinnedHTTPSAdapter
                 ips = _resolve_hostname_safe(parsed.hostname or "")
-                if not ips or not any(
-                    is_ip_safe(sockaddr[0]) for _, _, _, _, sockaddr in ips
-                ):
+                target_ip = None
+                for _, _, _, _, sockaddr in ips:
+                    if is_ip_safe(sockaddr[0]):
+                        target_ip = sockaddr[0]
+                        break
+
+                if not target_ip:
                     sanitized_url = _sanitize_url_for_error(current_url)
                     raise ValueError(f"No safe IP resolved for {sanitized_url}")
 
-                # If we switched from HTTP (pinned) to HTTPS, or just between domains, clean up Host header
-                if "Host" in kwargs["headers"]:
-                    del kwargs["headers"]["Host"]
+                # Use PinnedHTTPSAdapter to force connection to target_ip while keeping hostname for SNI
+                adapter = PinnedHTTPSAdapter(str(target_ip), timeout=current_timeout)
 
-            # 2. Make Request
-            # We use session.request inside the loop.
-            ctx = session.request(
-                method,
-                target_url,
-                stream=True,
-                timeout=current_timeout,
-                hooks=request_hooks,
-                allow_redirects=False,
-                **kwargs,
-            )
+                # Prepare request manually to bypass session adapter selection
+                req = requests.Request(
+                    method,
+                    target_url,
+                    headers=kwargs.get("headers"),
+                    files=kwargs.get("files"),
+                    data=kwargs.get("data"),
+                    json=kwargs.get("json"),
+                    params=kwargs.get("params"),
+                    auth=kwargs.get("auth"),
+                    cookies=kwargs.get("cookies"),
+                    hooks=request_hooks,
+                )
+                prepped = session.prepare_request(req)
+
+                # Merge environment settings (proxies, verify, cert)
+                # This ensures we respect session verification settings
+                settings = session.merge_environment_settings(
+                    prepped.url, proxies={}, stream=True, verify=kwargs.get("verify"), cert=kwargs.get("cert")
+                )
+                send_kwargs = kwargs.copy()
+                send_kwargs.update(settings)
+
+                # Remove arguments that are already processed into prepped request or settings
+                # Adapter.send signature: send(request, stream=False, timeout=None, verify=True, cert=None, proxies=None)
+                # We need to filter kwargs to match what Adapter.send expects.
+                valid_adapter_args = {"stream", "timeout", "verify", "cert", "proxies"}
+                adapter_kwargs = {k: v for k, v in send_kwargs.items() if k in valid_adapter_args}
+
+                adapter_kwargs["stream"] = True
+                adapter_kwargs["timeout"] = current_timeout
+
+                # Send request using our pinned adapter
+                ctx = adapter.send(prepped, **adapter_kwargs)
 
             with ctx as r:
                 # Duck-typing check for mocks that might lack is_redirect

@@ -21,7 +21,6 @@ import os
 import random
 import re
 import threading
-import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -1159,19 +1158,21 @@ def _parse_retry_after(response: requests.Response) -> float | None:
     return max(delay, 0.0)
 
 
-def _handle_retry_after(response: requests.Response) -> None:
+def _log_retry_after_warning(response: requests.Response, station_id: str) -> None:
     delay = _parse_retry_after(response)
     if delay is None:
-        delay = RETRY_AFTER_FALLBACK_SEC
-        _log_warning("Nutze Fallback-Verzögerung %s Sekunden", delay)
-
-    if delay > RETRY_AFTER_MAX_SEC:
         _log_warning(
-            "Retry-After %s zu hoch – kappe auf %s Sekunden", delay, RETRY_AFTER_MAX_SEC
+            "VOR (Station %s) lieferte %s ohne Retry-After. Überspringe Station (Fail-Fast).",
+            station_id,
+            response.status_code,
         )
-        delay = RETRY_AFTER_MAX_SEC
-
-    time.sleep(delay)
+    else:
+        _log_warning(
+            "VOR (Station %s) lieferte %s. Retry-After: %.1fs. Überspringe Station (Fail-Fast), um Thread nicht zu blockieren.",
+            station_id,
+            response.status_code,
+            delay,
+        )
 
 
 def _fetch_departure_board_for_station(
@@ -1262,12 +1263,15 @@ def _fetch_departure_board_for_station(
                         response.status_code,
                     )
                     if response.status_code == 429:
-                        _handle_retry_after(response)
+                        _log_retry_after_warning(response, station_id)
                         return None
+
                     if response.status_code >= 500:
-                            if response.status_code == 503:
-                                _handle_retry_after(response)
-                            continue
+                        if response.status_code == 503:
+                            _log_retry_after_warning(response, station_id)
+                            # Fail-Fast also for 503 to avoid spinning/blocking
+                            return None
+                        continue
 
                 if attempt >= attempts - 1:
                     _log_error(
