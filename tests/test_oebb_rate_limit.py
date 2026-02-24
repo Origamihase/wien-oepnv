@@ -45,6 +45,26 @@ class DummySession:
     def __exit__(self, exc_type, exc, tb):
         pass
 
+    def prepare_request(self, request):
+        from requests.models import PreparedRequest
+        p = PreparedRequest()
+        p.prepare(
+            method=request.method,
+            url=request.url,
+            headers=request.headers,
+            files=request.files,
+            data=request.data,
+            json=request.json,
+            params=request.params,
+            auth=request.auth,
+            cookies=request.cookies,
+            hooks=request.hooks,
+        )
+        return p
+
+    def merge_environment_settings(self, url, proxies, stream, verify, cert):
+        return {}
+
     def get(self, url, timeout, stream=False, **kwargs):
         self._calls.append((url, timeout))
         return next(self._responses)
@@ -79,13 +99,20 @@ def test_rate_limit_retries_once_after_wait(monkeypatch, caplog):
 
     caplog.set_level(logging.WARNING, logger=oebb.log.name)
 
-    result = oebb._fetch_xml("https://example.com", timeout=1)
+    # Mock DNS resolution to return a known IP, as request_safe pins HTTP URLs
+    from unittest.mock import patch
+    with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:
+        mock_resolve.return_value = [(2, 1, 6, '', ('1.2.3.4', 80))]
+
+        # Use HTTP to avoid SSL/PinnedAdapter complexity in mock
+        result = oebb._fetch_xml("http://example.com", timeout=1)
 
     assert result is not None
     assert result.tag == "root"
     assert len(calls) == 2
     for url, timeout in calls:
-        assert url == "https://example.com"
+        # request_safe rewrites URL to IP for pinning
+        assert url == "http://1.2.3.4"
         assert 0.9 <= timeout <= 1
 
     assert slept == [1.5]
@@ -120,11 +147,17 @@ def test_rate_limit_raises_http_error_after_retry(monkeypatch):
 
     monkeypatch.setattr(oebb.time, "sleep", fake_sleep)
 
-    with pytest.raises(requests.HTTPError):
-        oebb._fetch_xml("https://example.com", timeout=1)
+    # Mock DNS resolution to return a known IP
+    from unittest.mock import patch
+    with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:
+        mock_resolve.return_value = [(2, 1, 6, '', ('1.2.3.4', 80))]
+
+        with pytest.raises(requests.HTTPError):
+            oebb._fetch_xml("http://example.com", timeout=1)
 
     assert len(calls) == 2
     for url, timeout in calls:
-        assert url == "https://example.com"
+        # request_safe rewrites URL to IP for pinning
+        assert url == "http://1.2.3.4"
         assert 0.9 <= timeout <= 1
     assert slept == [1.5]

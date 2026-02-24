@@ -48,7 +48,7 @@ def test_fetch_content_safe_pins_dns():
             assert kwargs["headers"].get("Host") == "example.com"
 
 def test_fetch_content_safe_https_skipped():
-    # HTTPS should NOT be pinned (SNI issue)
+    # HTTPS should use PinnedHTTPSAdapter to pin IP while preserving SNI
     url = "https://example.com/foo"
     safe_ip = "93.184.216.34"
 
@@ -57,7 +57,8 @@ def test_fetch_content_safe_https_skipped():
 
         session = requests.Session()
 
-        with patch.object(session, "request") as mock_request:
+        # PinnedHTTPSAdapter.send is called instead of session.request for HTTPS
+        with patch("src.utils.http.PinnedHTTPSAdapter.send") as mock_send:
             mock_response = MagicMock()
             mock_response.status_code = 200
             mock_response.headers = {"Content-Type": "text/plain"}
@@ -68,16 +69,16 @@ def test_fetch_content_safe_https_skipped():
             mock_response.raw._connection = mock_conn
             mock_response.__enter__.return_value = mock_response
             mock_response.__exit__.return_value = None
-            mock_request.return_value = mock_response
+            mock_send.return_value = mock_response
 
             fetch_content_safe(session, url)
 
-            mock_request.assert_called_once()
-            args, kwargs = mock_request.call_args
-            # request(method, url, ...)
-            called_url = args[1]
+            mock_send.assert_called_once()
+            args, kwargs = mock_send.call_args
+            # adapter.send(request, ...) -> args[0] is PreparedRequest
+            prepped = args[0]
 
-            # URL should still contain hostname, not be IP-pinned
-            parsed = urlparse(called_url)
+            # URL should still contain hostname (preserved for SNI), pinning happens in Adapter
+            parsed = urlparse(prepped.url)
             assert parsed.scheme == "https"
             assert parsed.hostname == "example.com"

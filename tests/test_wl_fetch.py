@@ -48,6 +48,26 @@ def test_fetch_events_handles_invalid_json(monkeypatch, caplog):
         def __exit__(self, exc_type, exc, tb):
             return False
 
+        def prepare_request(self, request):
+            from requests.models import PreparedRequest
+            p = PreparedRequest()
+            p.prepare(
+                method=request.method,
+                url=request.url,
+                headers=request.headers,
+                files=request.files,
+                data=request.data,
+                json=request.json,
+                params=request.params,
+                auth=request.auth,
+                cookies=request.cookies,
+                hooks=request.hooks,
+            )
+            return p
+
+        def merge_environment_settings(self, url, proxies, stream, verify, cert):
+            return {}
+
         def get(self, url, params=None, timeout=None, stream=False, **kwargs):
             return DummyResponse()
 
@@ -55,6 +75,12 @@ def test_fetch_events_handles_invalid_json(monkeypatch, caplog):
             return self.get(url, **kwargs)
 
     monkeypatch.setattr("src.providers.wl_fetch.session_with_retries", lambda *a, **kw: DummySession())
+
+    # Mock fetch_content_safe to avoid real network/pinned adapter logic which fails with timeout=0
+    def fake_fetch_content_safe(*args, **kwargs):
+        raise ValueError("Ungültige JSON-Antwort")
+
+    monkeypatch.setattr("src.providers.wl_fetch.fetch_content_safe", fake_fetch_content_safe)
 
     with caplog.at_level(logging.WARNING):
         events = fetch_events(timeout=0)

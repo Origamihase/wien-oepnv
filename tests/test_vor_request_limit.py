@@ -271,6 +271,12 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(monkeypa
         def __enter__(self): return self
         def __exit__(self, *args): pass
         def close(self): pass
+        def prepare_request(self, request):
+            from requests.models import PreparedRequest
+            p = PreparedRequest()
+            p.prepare(method=request.method, url=request.url, headers=request.headers)
+            return p
+        def merge_environment_settings(self, *args, **kwargs): return {}
 
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
@@ -316,6 +322,12 @@ def test_fetch_departure_board_for_station_retries_increment_counter(monkeypatch
         def __enter__(self): return self
         def __exit__(self, *args): pass
         def close(self): pass
+        def prepare_request(self, request):
+            from requests.models import PreparedRequest
+            p = PreparedRequest()
+            p.prepare(method=request.method, url=request.url, headers=request.headers)
+            return p
+        def merge_environment_settings(self, *args, **kwargs): return {}
 
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 

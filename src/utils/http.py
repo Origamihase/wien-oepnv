@@ -358,15 +358,29 @@ class PinnedHTTPSConnection(HTTPSConnection):
         extra_kw = {}
         if self.source_address:
             extra_kw["source_address"] = self.source_address
-        if self.socket_options:
-            extra_kw["socket_options"] = self.socket_options
+
+        # socket.create_connection does not support socket_options.
+        # urllib3 applies them after creation. We will do the same if possible,
+        # but for PinnedConnection we rely on default socket creation behavior
+        # plus pinning. The parent class logic for options is in connect() usually,
+        # but _new_conn is the low level creator.
 
         # We ignore self.host for connection, use pinned_ip
-        return socket.create_connection(
+        conn = socket.create_connection(
             (self._pinned_ip, self.port),
             self.timeout,
             **extra_kw
         )
+
+        # Apply socket options if present (simulating urllib3 behavior)
+        if self.socket_options:
+            for opt in self.socket_options:
+                if len(opt) == 3:
+                    opt = opt + (None,)
+                # level, optname, value
+                conn.setsockopt(*opt[:3])
+
+        return conn
 
 
 class PinnedHTTPSAdapter(TimeoutHTTPAdapter):
@@ -776,9 +790,17 @@ def validate_http_url(
 
              # Reconstruct netloc safely (Task 5)
              # Avoid using replace() which might clobber ports if they match the hostname
-             new_netloc = normalized_hostname
+
+             # Fix IPv6 Brackets: normalized_hostname (from parsed.hostname) lacks brackets for IPv6.
+             # We must restore them if it's an IPv6 literal (contains colons).
+             if ":" in normalized_hostname:
+                 final_hostname = f"[{normalized_hostname}]"
+             else:
+                 final_hostname = normalized_hostname
+
+             new_netloc = final_hostname
              if parsed.port is not None:
-                 new_netloc = f"{normalized_hostname}:{parsed.port}"
+                 new_netloc = f"{final_hostname}:{parsed.port}"
 
              # Update parsed object
              parsed = parsed._replace(netloc=new_netloc)
@@ -823,10 +845,22 @@ def validate_http_url(
         try:
             # Handle IPv6 brackets and scope IDs if present
             # urlparse.hostname strips brackets for IPv6, so we just handle scope/formatting
+            # However, for pure IPv6 literals like "[::1]", hostname is "::1" (brackets stripped by urlparse).
+            # But earlier in this function (line ~760), we reconstructed candidate with hostname.
+            # If input was "http://[::1]", parsed.hostname is "::1".
+            # ipaddress.ip_address("::1") works.
+            # ipaddress.ip_address("[::1]") fails.
+            # We strip just in case.
             ip_candidate = hostname.strip("[]").split("%")[0]
             ip = ipaddress.ip_address(ip_candidate)
             if not is_ip_safe(ip):
                 return None
+
+            # If it is a safe IP, we return the candidate (which preserves brackets for IPv6 if they were there)
+            # But wait, earlier we did: candidate = parsed.geturl() after normalization.
+            # If it was an IP, normalization (NFKC) usually leaves it alone or normalizes characters.
+            # If we return 'candidate' here, it's fine.
+            return candidate
         except ValueError:
             # Not a standard literal IP address
             lower_host = hostname.lower()
