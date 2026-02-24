@@ -47,9 +47,7 @@ def test_oebb_filtering_strict_route():
     Ensures that a route between two Outer stations (Gmünd NÖ <-> Ceske Velenice) is filtered out.
     This requires 'Gmünd NÖ' and 'Ceske Velenice' to be in stations.json (as non-Vienna, non-Pendler).
     """
-    from src.providers import oebb
     from unittest.mock import patch, MagicMock
-    import socket
 
     # We need to mock DNS and PinnedHTTPSAdapter.send because request_safe bypasses session adapters for HTTPS.
     # This renders responses.add ineffective for request_safe calls on HTTPS.
