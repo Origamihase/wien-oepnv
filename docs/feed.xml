@@ -7,25 +7,35 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Thu, 26 Feb 2026 09:42:32 +0100</lastBuildDate>
+<lastBuildDate>Thu, 26 Feb 2026 10:44:27 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title>6: test test</title>
+      <title>Wien Hauptbahnhof ↔ Götzendorf/Leitha</title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;858761</guid>
+      <pubDate>Thu, 26 Feb 2026 09:22:47 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Feb 2026 10:44:27 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Feb 2026 09:22:47 +0100</ext:starts_at>
+      <description><![CDATA[Wegen Bauarbeiten können von 03.04.2026 (23:00 Uhr) bis 07.04.2026 (04:00 Uhr) zwischen Wien Hbf (U) und Götzendorf/Leitha Bahnhof die Nahverkehrszüge 7713, 7717, 7720, 7721, …<br/>[Seit 26.02.2026]]]></description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können von 03.04.2026 (23:00 Uhr) bis 07.04.2026 (04:00 Uhr) zwischen Wien Hbf (U) und Götzendorf/Leitha Bahnhof die Nahverkehrszüge 7713, 7717, 7720, 7721, …<br/>[Seit 26.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>11: Schadhaftes Fahrzeug</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d4383f0d5a6e0bbab0bec99a03ba8eb6b7c494592f1bbc166caf3bf885cb202a</guid>
-      <pubDate>Thu, 26 Feb 2026 08:47:54 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 09:42:32 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Feb 2026 08:47:54 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 26 Feb 2026 09:47:00 +0100</ext:ends_at>
-      <description><![CDATA[test test<br/>[Seit 26.02.2026]]]></description>
-      <content:encoded><![CDATA[test test<br/>[Seit 26.02.2026]]]></content:encoded>
+      <guid isPermaLink="false">139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6</guid>
+      <pubDate>Thu, 26 Feb 2026 09:03:00 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Feb 2026 10:44:27 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Feb 2026 09:03:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Feb 2026 23:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></content:encoded>
     </item>
     <item>
       <title>U3: Schadhaftes Fahrzeug</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3</guid>
       <pubDate>Thu, 26 Feb 2026 08:45:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 09:42:32 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Feb 2026 10:44:27 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Feb 2026 08:45:00 +0100</ext:starts_at>
       <ext:ends_at>Thu, 26 Feb 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 26.02.2026]]]></description>
@@ -36,7 +46,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9d69502e4ce35704998fd599963cc784e2209d0871e3b4cf191210220509b047</guid>
       <pubDate>Thu, 26 Feb 2026 08:10:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 09:42:32 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Feb 2026 10:44:27 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Feb 2026 08:10:00 +0100</ext:starts_at>
       <ext:ends_at>Thu, 26 Feb 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></description>
@@ -47,7 +57,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a7814ea6ddddf40d66bdca98701ed751452470a75b79db6c37950f6efa728837</guid>
       <pubDate>Thu, 26 Feb 2026 08:10:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 09:42:32 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Feb 2026 10:44:27 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Feb 2026 08:10:00 +0100</ext:starts_at>
       <ext:ends_at>Thu, 26 Feb 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></description>
@@ -58,7 +68,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">499ac622a712bd280a6b728d5cd57eb6ebde96a246de80a08e9a389a60dab6f9</guid>
       <pubDate>Thu, 26 Feb 2026 08:07:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 09:42:32 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Feb 2026 10:44:27 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Feb 2026 08:07:00 +0100</ext:starts_at>
       <ext:ends_at>Thu, 26 Feb 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 63 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 26.02.2026]]]></description>
@@ -69,29 +79,18 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">5e50add1c2956c7fe39a93a9aca4c1c22c5543a9a8e7524b000e496eda7c1a2c</guid>
       <pubDate>Thu, 26 Feb 2026 08:07:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 09:42:32 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Feb 2026 10:44:27 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Feb 2026 08:07:00 +0100</ext:starts_at>
       <ext:ends_at>Thu, 26 Feb 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 16 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 26.02.2026]]]></description>
       <content:encoded><![CDATA[Linie 16 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 26.02.2026]]]></content:encoded>
     </item>
     <item>
-      <title>D: Polizeieinsatz</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f1ccf4d6b1a6d1d510b41cb2c10a04e3bb077aef3d27f0c5f99cad2a9c11f584</guid>
-      <pubDate>Thu, 26 Feb 2026 07:17:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 09:42:32 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Feb 2026 07:17:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 26 Feb 2026 23:55:00 +0100</ext:ends_at>
-      <description><![CDATA[Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></description>
-      <content:encoded><![CDATA[Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></content:encoded>
-    </item>
-    <item>
       <title>U4: Weichenstörung</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c2aad3fdc6f0b659a98e9e15613bc97fcd324d68275fa594b864a1a5d8cec2a5</guid>
       <pubDate>Thu, 26 Feb 2026 06:30:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 09:42:32 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Feb 2026 10:44:27 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Feb 2026 06:30:00 +0100</ext:starts_at>
       <ext:ends_at>Thu, 26 Feb 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></description>
@@ -102,7 +101,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
       <pubDate>Thu, 26 Feb 2026 04:45:07 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 09:42:32 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Feb 2026 10:44:27 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Feb 2026 04:45:07 +0100</ext:starts_at>
       <ext:ends_at>Fri, 27 Feb 2026 00:35:00 +0100</ext:ends_at>
       <description><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[26.02.2026 – 27.02.2026]]]></description>
@@ -113,7 +112,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">543bcb60a6e3108460515f7263e260d1dad43db5a6522c993397065ab87411e2</guid>
       <pubDate>Wed, 25 Feb 2026 22:47:23 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 09:42:32 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Feb 2026 10:44:27 +0100</ext:first_seen>
       <ext:starts_at>Wed, 25 Feb 2026 22:47:23 +0100</ext:starts_at>
       <ext:ends_at>Thu, 26 Feb 2026 23:52:00 +0100</ext:ends_at>
       <description><![CDATA[Fahrzg. im Gleis Kein Betrieb Richtung Bruno-Marek-Allee<br/>[25.02.2026 – 26.02.2026]]]></description>
