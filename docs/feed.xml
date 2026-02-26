@@ -7,15 +7,81 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Thu, 26 Feb 2026 15:11:23 +0100</lastBuildDate>
+<lastBuildDate>Thu, 26 Feb 2026 16:12:08 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title>O: Fahrtbehinderung wegen Polizeieinsatz</title>
+      <title>U3: Betriebsstörung</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f</guid>
+      <pubDate>Thu, 26 Feb 2026 14:44:00 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Feb 2026 16:12:08 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Feb 2026 14:44:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Feb 2026 23:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 26.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 26.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>66A: Feuerwehreinsatz</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0075854372c9aded82d0d242d8bf0c53c6d1e2c910cde4d45cb70c9cc1a8aaca</guid>
+      <pubDate>Thu, 26 Feb 2026 13:00:00 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Feb 2026 16:12:08 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Feb 2026 13:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Feb 2026 21:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 66 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie 66 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>60A: Feuerwehreinsatz</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8f77c905158cc084c3c96609ec53283f9ca76807ef2f6b00a70ed8955a483a94</guid>
+      <pubDate>Thu, 26 Feb 2026 13:00:00 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Feb 2026 16:12:08 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Feb 2026 13:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Feb 2026 21:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 60 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie 60 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>40: Schadhaftes Fahrzeug</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f563448e7fb71558e6eef46dca2bf47130d05fc4cbb4ec67d362ce9b66884713</guid>
+      <pubDate>Thu, 26 Feb 2026 12:56:00 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Feb 2026 16:12:08 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Feb 2026 12:56:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Feb 2026 21:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>6: Verkehrsunfall</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0db792f9373b33394ac9cbd54fe89c56f58770700c324d59539bd75f7e841cff</guid>
+      <pubDate>Thu, 26 Feb 2026 11:36:00 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Feb 2026 16:12:08 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Feb 2026 11:36:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Feb 2026 20:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>11: Verkehrsunfall</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46</guid>
+      <pubDate>Thu, 26 Feb 2026 11:36:00 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Feb 2026 16:12:08 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Feb 2026 11:36:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Feb 2026 20:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></description>
+      <content:encoded><![CDATA[Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>O: Polizeieinsatz</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6</guid>
       <pubDate>Thu, 26 Feb 2026 11:03:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 15:11:23 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Feb 2026 13:03:08 +0100</ext:starts_at>
+      <ext:first_seen>Thu, 26 Feb 2026 16:12:08 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Feb 2026 11:03:00 +0100</ext:starts_at>
       <ext:ends_at>Thu, 26 Feb 2026 21:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></description>
       <content:encoded><![CDATA[Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></content:encoded>
@@ -25,7 +91,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">91f10f4182d7824836d33d2209e9cea486854f28d5216b1b2b5c5844beec8939</guid>
       <pubDate>Thu, 26 Feb 2026 10:15:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 15:11:23 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Feb 2026 16:12:08 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Feb 2026 10:15:00 +0100</ext:starts_at>
       <ext:ends_at>Thu, 26 Feb 2026 21:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.02.2026]]]></description>
@@ -36,7 +102,7 @@
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;858761</guid>
       <pubDate>Thu, 26 Feb 2026 09:22:47 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 15:11:23 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Feb 2026 16:12:08 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Feb 2026 09:22:47 +0100</ext:starts_at>
       <description><![CDATA[Wegen Bauarbeiten können von 03.04.2026 (23:00 Uhr) bis 07.04.2026 (04:00 Uhr) zwischen Wien Hbf (U) und Götzendorf/Leitha Bahnhof die Nahverkehrszüge 7713, 7717, 7720, 7721, …<br/>[Seit 26.02.2026]]]></description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 03.04.2026 (23:00 Uhr) bis 07.04.2026 (04:00 Uhr) zwischen Wien Hbf (U) und Götzendorf/Leitha Bahnhof die Nahverkehrszüge 7713, 7717, 7720, 7721, …<br/>[Seit 26.02.2026]]]></content:encoded>
@@ -46,73 +112,11 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
       <pubDate>Thu, 26 Feb 2026 04:45:07 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 15:11:23 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Feb 2026 16:12:08 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Feb 2026 04:45:07 +0100</ext:starts_at>
       <ext:ends_at>Fri, 27 Feb 2026 00:35:00 +0100</ext:ends_at>
       <description><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[26.02.2026 – 27.02.2026]]]></description>
       <content:encoded><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[26.02.2026 – 27.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>O: Fahrzg. im Gleis Kein Betrieb Richtung Bruno-Marek-Allee</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">543bcb60a6e3108460515f7263e260d1dad43db5a6522c993397065ab87411e2</guid>
-      <pubDate>Wed, 25 Feb 2026 22:47:23 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 15:11:23 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 25 Feb 2026 22:47:23 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 26 Feb 2026 23:52:00 +0100</ext:ends_at>
-      <description><![CDATA[Fahrzg. im Gleis Kein Betrieb Richtung Bruno-Marek-Allee<br/>[25.02.2026 – 26.02.2026]]]></description>
-      <content:encoded><![CDATA[Fahrzg. im Gleis Kein Betrieb Richtung Bruno-Marek-Allee<br/>[25.02.2026 – 26.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>Wien Meidling ↔ Bruck/Mur</title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;854368</guid>
-      <pubDate>Wed, 25 Feb 2026 07:28:45 +0100</pubDate>
-      <ext:first_seen>Sat, 21 Feb 2026 23:59:34 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 25 Feb 2026 07:28:45 +0100</ext:starts_at>
-      <description><![CDATA[Wegen Bauarbeiten werden zwischen Bruck/Mur Bahnhof und Wien Meidling Bahnhof (U) von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) die Nachtzüge NJ 456 und NJ 457 …<br/>[Seit 25.02.2026]]]></description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten werden zwischen Bruck/Mur Bahnhof und Wien Meidling Bahnhof (U) von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) die Nachtzüge NJ 456 und NJ 457 …<br/>[Seit 25.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>N46: Gleisbauarbeiten</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">341d643ba33e6a249c500644b47638b0987252bfef4c1f23bcf2f867c00bea06</guid>
-      <pubDate>Tue, 24 Feb 2026 16:01:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 15:11:23 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 24 Feb 2026 16:01:00 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 24 Feb 2027 23:59:00 +0100</ext:ends_at>
-      <description><![CDATA[Gleisbauarbeiten Wegen umfangreicher Gleisbauarbeiten in der Lerchenfelder Straße wird die Linie N46 über die Strecke der Linie 48 A umgeleitet.<br/>[Seit 24.02.2026]]]></description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Wegen umfangreicher Gleisbauarbeiten in der Lerchenfelder Straße wird die Linie N46 über die Strecke der Linie 48 A umgeleitet.<br/>[Seit 24.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>REX 51: Neulengbach ↔ Tullnerbach-Pressbaum</title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;854167</guid>
-      <pubDate>Tue, 24 Feb 2026 14:23:14 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 15:11:23 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 24 Feb 2026 14:23:14 +0100</ext:starts_at>
-      <description><![CDATA[Wegen Bauarbeiten können zwischen Neulengbach Bahnhof und Tullnerbach-Pressbaum Bahnhof von 28.03.2026 (03:00 Uhr) bis 07.04.2026 (03:00 Uhr) keine Nahverkehrszüge fahren.<br/>[Seit 24.02.2026]]]></description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Neulengbach Bahnhof und Tullnerbach-Pressbaum Bahnhof von 28.03.2026 (03:00 Uhr) bis 07.04.2026 (03:00 Uhr) keine Nahverkehrszüge fahren.<br/>[Seit 24.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>Wien Hauptbahnhof ↔ Gramatneusiedl</title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;847828</guid>
-      <pubDate>Tue, 24 Feb 2026 08:32:13 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 15:11:23 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 24 Feb 2026 08:32:13 +0100</ext:starts_at>
-      <description><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 07.03.2026 bis 30.03.2026 (jeweils Samstag auf Sonntag und Sonntag auf Montag => von 23:15 Uhr - …<br/>[Seit 24.02.2026]]]></description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 07.03.2026 bis 30.03.2026 (jeweils Samstag auf Sonntag und Sonntag auf Montag => von 23:15 Uhr - …<br/>[Seit 24.02.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>REX 1: 23) Bauarbeiten ↔ Schienenersatzverkehr/Teilausfall/geänderte Fahrzeiten: Wien Floridsdorf Bernhardsthal</title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;854600</guid>
-      <pubDate>Tue, 24 Feb 2026 07:23:33 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Feb 2026 15:11:23 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 24 Feb 2026 07:23:33 +0100</ext:starts_at>
-      <description><![CDATA[Wegen Bauarbeiten können zwischen Gänserndorf Bahnhof und Bernhardsthal Bahnhof von 09.03.2026 bis 03.07.2026 die Züge REX 1 (2334, 2338 und 2342) nicht fahren.<br/>[Seit 24.02.2026]]]></description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Gänserndorf Bahnhof und Bernhardsthal Bahnhof von 09.03.2026 bis 03.07.2026 die Züge REX 1 (2334, 2338 und 2342) nicht fahren.<br/>[Seit 24.02.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
