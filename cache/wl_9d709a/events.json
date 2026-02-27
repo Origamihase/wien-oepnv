@@ -278,30 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Verkehrsunfall",
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46",
-    "pubDate": "2026-02-27T13:13:00+01:00",
-    "starts_at": "2026-02-27T13:13:00+01:00",
-    "ends_at": "2026-02-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-02-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Betriebsstörung",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7e8bbbbb1be3a2c4d16075c9994f15cc7267e83a3cefbf3ba8d03a7b9f98bd26",
-    "pubDate": "2026-02-27T13:41:00+01:00",
-    "starts_at": "2026-02-27T13:41:00+01:00",
-    "ends_at": "2026-02-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-02-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Betriebsstörung",
     "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -314,13 +290,85 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Rettungseinsatz Züge halten bei der Linie 43",
-    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "12A: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c14ad7374d16f14cd0154afd971ba66872a46e7f70c45ab6156ec3ada2b6a22a",
-    "pubDate": "2026-02-27T15:01:00+01:00",
-    "starts_at": "2026-02-27T15:10:30+01:00",
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-02-27T16:16:36+01:00",
+    "starts_at": "2026-02-27T16:16:44+01:00",
+    "ends_at": "2026-02-27T17:16:00+01:00",
+    "_identity": "wl|störung|L=12A|D=2026-02-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Verkehrsunfall",
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "74d7957440840d3e04ef7e63c6b0e84924838c4a84cdab001ac77313773a37b5",
+    "pubDate": "2026-02-27T16:52:00+01:00",
+    "starts_at": "2026-02-27T16:52:00+01:00",
     "ends_at": "2026-02-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=44|D=2026-02-27"
+    "_identity": "wl|störung|L=66A|D=2026-02-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Verkehrsunfall",
+    "description": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d9c616ff8eaab98c987f46c03c04b116e60398ec5e67893f172fc419d4d258b5",
+    "pubDate": "2026-02-27T16:52:00+01:00",
+    "starts_at": "2026-02-27T16:52:00+01:00",
+    "ends_at": "2026-02-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=7A|D=2026-02-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "65A: Verkehrsunfall",
+    "description": "Linie 65A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "91604c6736684f0d22451554a67ed8dcf423dac3128aa0c83b7bcf4f50344a36",
+    "pubDate": "2026-02-27T16:52:00+01:00",
+    "starts_at": "2026-02-27T16:52:00+01:00",
+    "ends_at": "2026-02-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=65A|D=2026-02-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f3ebb5b4a802a4a8d9f280e0838e3cba74fcdb3d6a777e63ccb863efc9b52b2e",
+    "pubDate": "2026-02-27T16:53:08+01:00",
+    "starts_at": "2026-02-27T16:53:11+01:00",
+    "ends_at": "2026-02-27T17:52:00+01:00",
+    "_identity": "wl|störung|L=7A|D=2026-02-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "600c23823ba55d54f22677265cc0f785a575d611b1a39c75a30126418a017b0f",
+    "pubDate": "2026-02-27T16:53:39+01:00",
+    "starts_at": "2026-02-27T16:53:39+01:00",
+    "ends_at": "2026-02-27T17:52:00+01:00",
+    "_identity": "wl|störung|L=66A|D=2026-02-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "65A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "25f5ba587c72c694726d7fd7f239289c7c4e4a3b7f1dbd7ad281b095d198606e",
+    "pubDate": "2026-02-27T16:54:37+01:00",
+    "starts_at": "2026-02-27T16:54:37+01:00",
+    "ends_at": "2026-02-27T17:53:00+01:00",
+    "_identity": "wl|störung|L=65A|D=2026-02-27"
   }
 ]
