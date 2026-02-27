@@ -2,12 +2,24 @@
   {
     "source": "ÖBB",
     "category": "Störung",
-    "title": "Wien Leopoldau ↔ Verkehrseinschränkung: Wien Floridsdorf",
-    "description": "27.02.2026<br/><br/>Wegen einer Oberleitungsstörung sind zwischen<b> </b><b>Wien Floridsdorf Bahnhof (U) </b>und <b>Wien Leopoldau Bahnhst (U) Zugfahrten</b> bis voraussichtlich <b>16:00 Uhr nur eingeschränkt</b> möglich. Es kommt zu <b>vereinzelten Zugausfällen </b>und <b>Verspätungen </b>bis zu<b> 10 Minuten</b>.<br>Beachten Sie bitte die Lautsprecherdurchsagen und Monitoranzeigen am Bahnsteig.<br>Wir bitten um Entschuldigung.",
+    "title": "Wien Atzgersdorf ↔ Verkehrseinschränkung: Wien Hetzendorf",
+    "description": "27.02.2026<br/><br/>Wegen eines defekten Zuges auf der Strecke sind zwischen <b>Wien Hetzendorf Bahnhst </b>und <b>Wien Atzgersdorf Bahnhst</b> <b>Zugfahrten derzeit nur eingeschränkt</b> möglich. Es kommt zu <b>vereinzelten Zugausfällen </b>und <b>Verspätungen </b>bis zu<b> 10 Minuten</b>.<br>Beachten Sie bitte die Lautsprecherdurchsagen und Monitoranzeigen am Bahnsteig.<br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&859052",
+    "pubDate": "2026-02-27T15:55:57+01:00",
+    "starts_at": "2026-02-27T15:55:57+01:00",
+    "ends_at": null,
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&859052"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Wien Leopoldau ↔ 48) Verkehrseinschränkung Aufhebung: Wien Floridsdorf",
+    "description": "27.02.2026<br/><br/>Wegen einer Oberleitungsstörung <b>waren</b> zwischen Wien Floridsdorf Bahnhof (U) und Wien Leopoldau Bahnhst (U) <b>bis </b><b>15:41 Uhr</b> nur eingeschränkt Fahrten möglich. Es kommt noch zu <b>vereinzelten Zugausfällen und Verzögerungen</b>. Wir bitten um Entschuldigung.",
     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&859009",
-    "pubDate": "2026-02-27T12:59:30+01:00",
-    "starts_at": "2026-02-27T12:59:30+01:00",
+    "pubDate": "2026-02-27T15:48:46+01:00",
+    "starts_at": "2026-02-27T15:48:46+01:00",
     "ends_at": null,
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&859009"
   },
