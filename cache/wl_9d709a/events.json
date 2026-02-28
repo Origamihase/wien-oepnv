@@ -242,11 +242,11 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "13A: Rettungseinsatz",
     "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
-    "pubDate": "2026-02-28T10:25:11+01:00",
+    "pubDate": "2026-02-28T10:26:00+01:00",
     "starts_at": "2026-02-28T10:26:00+01:00",
     "ends_at": "2026-02-28T23:55:00+01:00",
     "_identity": "wl|störung|L=13A|D=2026-02-28"
@@ -254,37 +254,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Rettungseinsatz Umleitung ab Karl-Popper-Str. über Gürtel",
-    "description": "Rettungseinsatz Umleitung ab Karl-Popper-Str. über Gürtel",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5e41accfa2ddda9b6309dd0c0493e54a42c90d6cb059a64c1e0e31323588de5b",
-    "pubDate": "2026-02-28T10:37:19+01:00",
-    "starts_at": "2026-02-28T10:37:19+01:00",
-    "ends_at": "2026-02-28T11:36:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2026-02-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Rettungseinsatz",
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5",
-    "pubDate": "2026-02-28T10:39:00+01:00",
-    "starts_at": "2026-02-28T10:39:00+01:00",
-    "ends_at": "2026-02-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-02-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Fahrtbehinderung Falschparker",
-    "description": "Linie 12A: Fahrtbehinderung in Richtung Schmelz, Gablenzgasse. Voraussichtliche Dauer: 11:40 Uhr. Grund: Falschparker im Bereich Schanzstraße 28.",
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
     "pubDate": "2026-02-28T11:08:00+01:00",
     "starts_at": "2026-02-28T11:12:05+01:00",
     "ends_at": "2026-02-28T23:55:00+01:00",
     "_identity": "wl|störung|L=12A|D=2026-02-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "63A: Verspätungen",
+    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "499ac622a712bd280a6b728d5cd57eb6ebde96a246de80a08e9a389a60dab6f9",
+    "pubDate": "2026-02-28T11:32:00+01:00",
+    "starts_at": "2026-02-28T11:32:00+01:00",
+    "ends_at": "2026-02-28T23:55:00+01:00",
+    "_identity": "wl|störung|L=63A|D=2026-02-28"
   }
 ]
