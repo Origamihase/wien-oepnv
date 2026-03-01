@@ -615,14 +615,21 @@ def text_has_vienna_connection(text: str) -> bool:
     if not text:
         return False
 
-    # Verhindere Falsch-Positive durch Pendler-Stationen mit "Wien" im Namen
-    cleaned = re.sub(r"Flughafen Wien|Airport Vienna|Vienna Airport", "", text, flags=re.IGNORECASE)
+    # Verhindere Falsch-Positive durch:
+    # 1. Pendler-Stationen mit "Wien" im Namen (z.B. Flughafen Wien)
+    # 2. Orte außerhalb Wiens, die zufällig einen Wiener Stations-Alias enthalten (z.B. Hadersdorf am Kamp)
+    # 3. Nicht-Wiener Bahnhöfe mit "Westbahnhof", "Hauptbahnhof", etc. (z.B. Innsbruck Westbahnhof)
+    mask_pattern = (
+        r"Flughafen Wien|Airport Vienna|Vienna Airport|Hadersdorf am Kamp|"
+        r"(?:Innsbruck|Salzburg|Linz|Graz|Klagenfurt|St\. Pölten|Bregenz|Villach|Wels)\s+(?:Westbahnhof|Südbahnhof|Ostbahnhof|Nordbahnhof|Hauptbahnhof|Hbf|Bahnhof|Bf)"
+    )
+    cleaned = re.sub(mask_pattern, "", text, flags=re.IGNORECASE)
 
     if re.search(r"\b(wien|vienna)\b", cleaned, re.IGNORECASE):
         return True
 
     rx = _vienna_stations_regex()
-    if rx.search(text):
+    if rx.search(cleaned):
         return True
 
     return False
