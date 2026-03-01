@@ -254,25 +254,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Verunreinigung",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f039f2f3a3013ec24c3a2dc8c13684f92a717d560bb3231cda1548e776ce0ff2",
-    "pubDate": "2026-03-01T22:17:00+01:00",
-    "starts_at": "2026-03-01T22:17:00+01:00",
-    "ends_at": "2026-03-01T23:55:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2026-03-01"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Rettungseinsatz",
-    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
-    "pubDate": "2026-03-01T22:23:00+01:00",
-    "starts_at": "2026-03-01T22:23:00+01:00",
-    "ends_at": "2026-03-01T23:55:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-03-01"
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-03-01T23:00:14+01:00",
+    "starts_at": "2026-03-01T23:00:14+01:00",
+    "ends_at": "2026-03-02T05:30:00+01:00",
+    "_identity": "wl|störung|L=N29|D=2026-03-01"
   }
 ]
