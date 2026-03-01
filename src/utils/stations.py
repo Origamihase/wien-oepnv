@@ -621,7 +621,8 @@ def text_has_vienna_connection(text: str) -> bool:
     # 3. Nicht-Wiener Bahnhöfe mit "Westbahnhof", "Hauptbahnhof", etc. (z.B. Innsbruck Westbahnhof)
     mask_pattern = (
         r"Flughafen Wien|Airport Vienna|Vienna Airport|Hadersdorf am Kamp|"
-        r"(?:Innsbruck|Salzburg|Linz|Graz|Klagenfurt|St\. Pölten|Bregenz|Villach|Wels)\s+(?:Westbahnhof|Südbahnhof|Ostbahnhof|Nordbahnhof|Hauptbahnhof|Hbf|Bahnhof|Bf)"
+        r"(?:Innsbruck|Salzburg|Linz|Graz|Klagenfurt|St\. Pölten|Bregenz|Villach|Wels)\s+"
+        r"(?:Westbahnhof|Südbahnhof|Ostbahnhof|Nordbahnhof|Hauptbahnhof|Hbf|Bahnhof|Bf)"
     )
     cleaned = re.sub(mask_pattern, "", text, flags=re.IGNORECASE)
 
