@@ -34,7 +34,7 @@ _SENSITIVE_ASSIGN_RE = re.compile(
                 authorization|auth-token|auth.token|auth|
                 _key|ssh-key|ssh.key|id_rsa|
                 clientid|client-id|client.id|client_id|
-                session_id|session-id|session.id|
+                session_id|session-id|session.id|sessionid|
                 cookie|signature|bearer|jwt|
                 webhook_url|webhook-url|webhook.url|webhook|
                 dsn|subscriptionkey

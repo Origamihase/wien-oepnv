@@ -615,6 +615,9 @@ def text_has_vienna_connection(text: str) -> bool:
     if not text:
         return False
 
+    # Mask known non-Vienna combinations to prevent false alias matches
+    text = re.sub(r"Hadersdorf am Kamp|Innsbruck Westbahnhof", "", text, flags=re.IGNORECASE)
+
     # Verhindere Falsch-Positive durch Pendler-Stationen mit "Wien" im Namen
     cleaned = re.sub(r"Flughafen Wien|Airport Vienna|Vienna Airport", "", text, flags=re.IGNORECASE)
 
@@ -622,7 +625,7 @@ def text_has_vienna_connection(text: str) -> bool:
         return True
 
     rx = _vienna_stations_regex()
-    if rx.search(text):
+    if rx.search(cleaned):
         return True
 
     return False
