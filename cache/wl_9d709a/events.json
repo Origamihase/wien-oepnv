@@ -290,25 +290,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Gleisschaden",
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "94A: Polizeieinsatz",
+    "description": "Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bedf723d52a68d37c43ad22546a6f03dc025175a56bf7ba4aa78fbb6f993d99b",
-    "pubDate": "2026-03-03T11:55:00+01:00",
-    "starts_at": "2026-03-03T11:55:00+01:00",
+    "guid": "1d966e09fb9636c1df4d837b16c680b46ab28a49b95b2a41c4f2fc935e7a26af",
+    "pubDate": "2026-03-03T14:58:00+01:00",
+    "starts_at": "2026-03-03T14:58:00+01:00",
     "ends_at": "2026-03-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-03-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-03-03T13:42:00+01:00",
-    "starts_at": "2026-03-03T13:42:00+01:00",
-    "ends_at": "2026-03-03T23:55:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2026-03-03"
+    "_identity": "wl|störung|L=94A|D=2026-03-03"
   }
 ]
