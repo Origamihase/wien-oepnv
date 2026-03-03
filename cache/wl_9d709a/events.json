@@ -310,5 +310,41 @@
     "starts_at": "2026-03-03T18:10:00+01:00",
     "ends_at": "2026-03-03T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2026-03-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Verspätungen",
+    "description": "Die Linie 60 fährt derzeit nur zwischen Westbahnhof und Maurer-Lange-Gasse. Grund dafür ist ein schadhaftes Fahrzeug. Ersatzweise benützen Sie die Linie 60A. Die Störung dauert voraussichtlich bis 19:20 Uhr.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ed273bb9b3ad9ca9955a318015cde52f70c2fd133a1b085c49a27877e35affcb",
+    "pubDate": "2026-03-03T18:48:00+01:00",
+    "starts_at": "2026-03-03T18:48:00+01:00",
+    "ends_at": "2026-03-03T23:55:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-03-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4ebfcdeecb63555a7d3eeda6e1144843992faaa428a94f9ee9f79f89dc91e33f",
+    "pubDate": "2026-03-03T18:51:48+01:00",
+    "starts_at": "2026-03-03T18:51:48+01:00",
+    "ends_at": "2026-03-03T19:51:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-03-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhafter Zug Betrieb ab Maurer-Lange-Gasse",
+    "description": "Schadhafter Zug Betrieb ab Maurer-Lange-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "303faaa308c13437373193e91cf0a66f2b160d5a70e0b68b09f1fa4d530d58ee",
+    "pubDate": "2026-03-03T18:52:17+01:00",
+    "starts_at": "2026-03-03T18:52:17+01:00",
+    "ends_at": "2026-03-03T19:51:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-03-03"
   }
 ]
