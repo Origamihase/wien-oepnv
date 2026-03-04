@@ -290,73 +290,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Verkehrsüberlastung",
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "97A: Fremder Verkehrsunfall",
+    "description": "Linie 97A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9d0a7e4b9b87021faced5a5e0994d1adbea3b271fc48868ad2b14e038ee2871b",
-    "pubDate": "2026-03-04T08:01:00+01:00",
-    "starts_at": "2026-03-04T08:01:00+01:00",
+    "guid": "abedb8231b4cdfb4fc373ad333ca26658b86f69f1d3dfd3cc501dcbf8ecfa11e",
+    "pubDate": "2026-03-04T11:54:00+01:00",
+    "starts_at": "2026-03-04T11:54:00+01:00",
     "ends_at": "2026-03-04T23:55:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2026-03-04"
+    "_identity": "wl|störung|L=97A|D=2026-03-04"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "97A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-03-04T10:25:00+01:00",
-    "starts_at": "2026-03-04T10:25:00+01:00",
-    "ends_at": "2026-03-04T11:33:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-03-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2026-03-04T10:36:23+01:00",
-    "starts_at": "2026-03-04T10:36:44+01:00",
-    "ends_at": "2026-03-04T11:36:00+01:00",
-    "_identity": "wl|störung|L=42|D=2026-03-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fab64d37b33153d652781bdf655a1bb8c2906198e754bcbf5ac1af5236584df6",
-    "pubDate": "2026-03-04T10:38:37+01:00",
-    "starts_at": "2026-03-04T10:46:50+01:00",
-    "ends_at": "2026-03-04T11:46:00+01:00",
-    "_identity": "wl|störung|L=31|D=2026-03-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43: Verunreinigung",
-    "description": "Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "318023342a9559b96085172ef55276409fffbd4da889200a6a26c818a626b008",
-    "pubDate": "2026-03-04T10:43:00+01:00",
-    "starts_at": "2026-03-04T10:43:00+01:00",
-    "ends_at": "2026-03-04T23:55:00+01:00",
-    "_identity": "wl|störung|L=43|D=2026-03-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung Falschparker",
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9ddf5d1b468f97566b0d71492d70a5743faa129c9553b8165867b8249c7b99da",
-    "pubDate": "2026-03-04T11:11:00+01:00",
-    "starts_at": "2026-03-04T11:11:29+01:00",
-    "ends_at": "2026-03-04T23:55:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-03-04"
+    "guid": "043df3e8784db5d148d6b694f6d2e74bc16b6007b3f58b3a8dc3388584ca5abf",
+    "pubDate": "2026-03-04T11:56:54+01:00",
+    "starts_at": "2026-03-04T12:09:26+01:00",
+    "ends_at": "2026-03-04T13:08:00+01:00",
+    "_identity": "wl|störung|L=97A|D=2026-03-04"
   }
 ]
