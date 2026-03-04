@@ -1064,7 +1064,10 @@ def load_request_count() -> tuple[str | None, int]:
     # Using 'requests' key as per new strict schema requirement.
     if stored_date == today_local and "requests" in data:
         count = data["requests"]
-        int_count = int(count) if isinstance(count, int) else 0
+        try:
+            int_count = int(count)
+        except (ValueError, TypeError):
+            int_count = 0
 
         # Update cache
         _QUOTA_CACHE["date"] = stored_date
@@ -1175,6 +1178,7 @@ def _fetch_departure_board_for_station(
     now_local: datetime,
     counter: Any = None,
     session: requests.Session | None = None,
+    timeout: int | None = None,
 ) -> Mapping[str, Any] | None:
     """
     Fetch Departure Board for a specific station and extract disruptions.
@@ -1229,7 +1233,7 @@ def _fetch_departure_board_for_station(
                 active_session,
                 endpoint,
                 params=params,
-                timeout=HTTP_TIMEOUT,
+                timeout=timeout or HTTP_TIMEOUT,
                 allowed_content_types=("application/json",),
             )
 
@@ -1279,7 +1283,7 @@ def _fetch_departure_board_for_station(
             local_session.close()
 
 
-def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[FeedItem]:
+def fetch_vor_disruptions(station_ids: List[str] | None = None, timeout: int | None = None) -> List[FeedItem]:
     """
     Fetch disruptions for the given stations using the departureBoard endpoint.
     Iterates over the configured or provided stations and extracts warnings/infos.
@@ -1353,7 +1357,7 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[FeedItem
         max_workers = min(len(selected_ids) or 1, VOR_MAX_WORKERS)
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = {
-                executor.submit(_fetch_departure_board_for_station, sid, now_local, request_counter, session): sid
+                executor.submit(_fetch_departure_board_for_station, sid, now_local, request_counter, session, timeout): sid
                 for sid in selected_ids
             }
             for future in as_completed(futures):
@@ -1422,12 +1426,12 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None) -> List[FeedItem
     return results
 
 
-def fetch_events(station_ids: List[str] | None = None) -> List[FeedItem]:
+def fetch_events(station_ids: List[str] | None = None, timeout: int | None = None) -> List[FeedItem]:
     """
     Main entry point for VOR provider.
     Delegates to fetch_vor_disruptions.
     """
-    return fetch_vor_disruptions(station_ids)
+    return fetch_vor_disruptions(station_ids, timeout=timeout)
 
 
 __all__ = [
