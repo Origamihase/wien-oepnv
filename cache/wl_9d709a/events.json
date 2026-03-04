@@ -382,5 +382,41 @@
     "starts_at": "2026-03-04T16:27:00+01:00",
     "ends_at": "2026-03-04T23:55:00+01:00",
     "_identity": "wl|störung|L=29B|D=2026-03-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Verunreinigung",
+    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7c762209790ccc1458fc85a3ab1e457323e911dc03795bf462a2f2d1fc322e2",
+    "pubDate": "2026-03-04T17:55:00+01:00",
+    "starts_at": "2026-03-04T17:55:00+01:00",
+    "ends_at": "2026-03-04T23:55:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-03-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Verkehrsunfall",
+    "description": "Linie 49: Fahrtbehinderung in Richtung Ring, Volkstheater U. Voraussichtliche Dauer: 18:45 Uhr. Grund: Verkehrsunfall im Bereich Linzer Straße 413.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "404f3551d0efb1f503b6da3f9dea1315ba797797becc9ded87406bb28d1acc34",
+    "pubDate": "2026-03-04T18:20:00+01:00",
+    "starts_at": "2026-03-04T18:20:00+01:00",
+    "ends_at": "2026-03-04T23:55:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-03-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d3121440bb198809da6ad6777749127de887bfe17ce700d64f281bbb4593b9c8",
+    "pubDate": "2026-03-04T18:21:09+01:00",
+    "starts_at": "2026-03-04T18:31:33+01:00",
+    "ends_at": "2026-03-04T19:30:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-03-04"
   }
 ]
