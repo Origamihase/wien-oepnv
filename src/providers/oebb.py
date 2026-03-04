@@ -222,7 +222,7 @@ def _is_relevant(title: str, description: str) -> bool:
     """
     text = f"{title} {description}"
 
-    # Check 0: Strecken-Filter für explizite Routen A ↔ B
+    # Strecken-Filter für explizite Routen A ↔ B
     if "↔" in title:
         parts = [p.strip() for p in title.split("↔")]
         if len(parts) >= 2:
@@ -233,14 +233,21 @@ def _is_relevant(title: str, description: str) -> bool:
             info0 = station_info(part0)
             info1 = station_info(part1)
 
-            is_outer0 = info0 and not info0.in_vienna
-            is_outer1 = info1 and not info1.in_vienna
+            if info0 is None and info1 is None:
+                return False
 
-            if is_outer0 and is_outer1:
-                # Verbindung zwischen zwei reinen Pendlerbahnhöfen (z.B. Neulengbach ↔ Tullnerbach-Pressbaum)
-                # Nur zulassen, wenn die Detailbeschreibung einen expliziten Wien-Bezug nennt.
-                if not text_has_vienna_connection(description):
-                    return False
+            in_vienna_0 = info0.in_vienna if info0 else False
+            in_vienna_1 = info1.in_vienna if info1 else False
+            pendler_0 = info0.pendler if info0 else False
+            pendler_1 = info1.pendler if info1 else False
+
+            if in_vienna_0 or in_vienna_1:
+                return True
+
+            if pendler_0 and pendler_1 and not in_vienna_0 and not in_vienna_1:
+                return text_has_vienna_connection(description)
+
+            return False
 
     return text_has_vienna_connection(text)
 

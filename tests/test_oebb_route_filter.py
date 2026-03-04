@@ -44,10 +44,10 @@ def test_bauarbeiten_category_included():
 def test_bauarbeiten_arrow_umleitung_excluded_if_no_station():
     # "Bauarbeiten ↔ Umleitung"
     # If these are not stations, they return None for station_info.
-    # RELAXED: But if "Wien Hbf" is in description, it is RELEVANT.
+    # The new strict logic states that if BOTH stations are unknown, it should return False immediately.
     title = "Bauarbeiten ↔ Umleitung"
     description = "In Wien Hbf..."
-    assert _is_relevant(title, description) is True
+    assert _is_relevant(title, description) is False
 
 def test_flughafen_wien_included():
     # Flughafen Wien is a pendler station
