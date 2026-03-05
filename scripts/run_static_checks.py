@@ -49,32 +49,31 @@ def main() -> int:
     if args.ruff_args:
         ruff_command.extend(args.ruff_args)
 
-    exit_code = _run(ruff_command)
+    exit_codes = []
 
-    if exit_code == 0:
-        # Mypy is configured via pyproject.toml
-        exit_code = _run(["mypy"])
+    exit_codes.append(_run(ruff_command))
 
-    if exit_code == 0:
-        # Run bandit security check
-        # -r: recursive
-        # -q: quiet (only errors)
-        # -c: config file (optional, we use defaults for now)
-        # We target src/ and scripts/
-        # -ll: Only report Medium and High severity issues (skips Low like B404/subprocess)
-        bandit_cmd = ["bandit", "-r", "src", "scripts", "-q", "-ll"]
-        exit_code = _run(bandit_cmd)
+    # Mypy is configured via pyproject.toml
+    exit_codes.append(_run(["mypy"]))
 
-    if exit_code == 0:
-        scanner = PROJECT_ROOT / "scripts" / "scan_secrets.py"
-        # Enforce secret scanning failure
-        exit_code = _run([sys.executable, str(scanner)])
+    # Run bandit security check
+    # -r: recursive
+    # -q: quiet (only errors)
+    # -c: config file (optional, we use defaults for now)
+    # We target src/ and scripts/
+    # -ll: Only report Medium and High severity issues (skips Low like B404/subprocess)
+    bandit_cmd = ["bandit", "-r", "src", "scripts", "-q", "-ll"]
+    exit_codes.append(_run(bandit_cmd))
 
-    if exit_code == 0:
-        # Run pip-audit to check for known vulnerabilities in dependencies
-        exit_code = _run(["pip-audit"])
+    scanner = PROJECT_ROOT / "scripts" / "scan_secrets.py"
+    # Enforce secret scanning failure
+    exit_codes.append(_run([sys.executable, str(scanner)]))
 
-    return exit_code
+    # Run pip-audit to check for known vulnerabilities in dependencies
+    exit_codes.append(_run(["pip-audit"]))
+
+    # Return the highest exit code encountered
+    return max(exit_codes) if exit_codes else 0
 
 
 if __name__ == "__main__":
