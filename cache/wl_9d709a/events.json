@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Kranarbeiten Haltestelle aufgelassen",
-    "description": "Kranarbeiten Haltestelle aufgelassen",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ac6b069ef56deca7e0a374d0b7149945daf3fb039b7e4184337ce805ac46217b",
-    "pubDate": "2026-03-04T19:57:57+01:00",
-    "starts_at": "2026-03-04T19:57:57+01:00",
-    "ends_at": "2026-03-05T01:00:00+01:00",
-    "_identity": "wl|störung|L=63A|D=2026-03-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N29: Busse halten auf der Hauptfahrbahn",
     "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -322,17 +310,5 @@
     "starts_at": "2026-03-04T23:00:22+01:00",
     "ends_at": "2026-03-05T05:30:00+01:00",
     "_identity": "wl|störung|L=N29|D=2026-03-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 62: Fahrtbehinderung in Richtung Lainz, Wolkersbergenstraße. Voraussichtliche Dauer: 00:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Oper, Karlsplatz U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
-    "pubDate": "2026-03-05T00:30:00+01:00",
-    "starts_at": "2026-03-05T00:33:49+01:00",
-    "ends_at": "2026-03-05T01:33:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-03-05"
   }
 ]
