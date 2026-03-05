@@ -84,7 +84,7 @@ _VOR_ACCESS_TOKEN_RAW = ""  # nosec B105
 _VOR_AUTHORIZATION_HEADER = ""  # nosec B105
 
 # Global lock for thread-safe quota management within the process
-_QUOTA_LOCK = threading.Lock()
+_QUOTA_LOCK = threading.RLock()
 # Local cache to optimize quota checks (fail-fast)
 _QUOTA_CACHE: Dict[str, Any] = {"date": None, "count": 0}
 
@@ -1087,50 +1087,51 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
     now_local = datetime.now(vienna_tz)
     date_iso = now_local.strftime("%Y-%m-%d")
 
-    # Fail-fast check using memory cache
-    if _QUOTA_CACHE["date"] == date_iso and _QUOTA_CACHE["count"] >= MAX_REQUESTS_PER_DAY:
-        return _QUOTA_CACHE["count"]
+    with _QUOTA_LOCK:
+        # Fail-fast check using memory cache
+        if _QUOTA_CACHE["date"] == date_iso and _QUOTA_CACHE["count"] >= MAX_REQUESTS_PER_DAY:
+            return _QUOTA_CACHE["count"]
 
-    # Ensure the parent directory exists before attempting to open the lock file.
-    # This prevents FileNotFoundError if the directory structure is missing.
-    REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
+        # Ensure the parent directory exists before attempting to open the lock file.
+        # This prevents FileNotFoundError if the directory structure is missing.
+        REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
-    lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
+        lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
 
-    try:
-        with lock_path.open("a+", encoding="utf-8") as lock_file:
-            with file_lock(lock_file, exclusive=True):
-                previous_date, previous_count = load_request_count()
+        try:
+            with lock_path.open("a+", encoding="utf-8") as lock_file:
+                with file_lock(lock_file, exclusive=True):
+                    previous_date, previous_count = load_request_count()
 
-                # load_request_count returns (None, 0) if date mismatch or invalid,
-                # so we can just use previous_count directly if date matches (which it won't if None).
-                # Actually, load_request_count already checks if stored_date == today_utc.
-                # So if previous_date is None, it means we reset.
+                    # load_request_count returns (None, 0) if date mismatch or invalid,
+                    # so we can just use previous_count directly if date matches (which it won't if None).
+                    # Actually, load_request_count already checks if stored_date == today_utc.
+                    # So if previous_date is None, it means we reset.
 
-                if previous_date != date_iso:
-                    previous_count = 0
+                    if previous_date != date_iso:
+                        previous_count = 0
 
-                new_count = previous_count + 1
+                    new_count = previous_count + 1
 
-                payload = {"date": date_iso, "requests": new_count}
-                try:
-                    # Replaced custom atomic write logic with centralized utility
-                    with atomic_write(
-                        REQUEST_COUNT_FILE, mode="w", encoding="utf-8", permissions=0o600
-                    ) as handle:
-                        json.dump(payload, handle, ensure_ascii=False)
-                        handle.write("\n")
+                    payload = {"date": date_iso, "requests": new_count}
+                    try:
+                        # Replaced custom atomic write logic with centralized utility
+                        with atomic_write(
+                            REQUEST_COUNT_FILE, mode="w", encoding="utf-8", permissions=0o600
+                        ) as handle:
+                            json.dump(payload, handle, ensure_ascii=False)
+                            handle.write("\n")
 
-                    # Update memory cache
-                    _QUOTA_CACHE["date"] = date_iso
-                    _QUOTA_CACHE["count"] = new_count
+                        # Update memory cache
+                        _QUOTA_CACHE["date"] = date_iso
+                        _QUOTA_CACHE["count"] = new_count
 
-                except OSError:
-                    return previous_count
-                return new_count
-    except Exception as e:
-        log.warning("Failed to save request count (lock error): %s", e)
-        return MAX_REQUESTS_PER_DAY + 1
+                    except OSError:
+                        return previous_count
+                    return new_count
+        except Exception as e:
+            log.warning("Failed to save request count (lock error): %s", e)
+            return MAX_REQUESTS_PER_DAY + 1
 
 
 def _parse_retry_after(response: requests.Response) -> float | None:
@@ -1270,11 +1271,20 @@ def _fetch_departure_board_for_station(
             )
             return None
 
+        except requests.exceptions.Timeout as exc:
+            _log_warning(
+                "VOR DepartureBoard %s Timeout: %s", station_id, exc
+            )
+            return None
+
         except RequestException as exc:
             _log_error(
                 "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
             )
             return None
+    except requests.exceptions.Timeout as exc:
+        _log_warning("VOR DepartureBoard %s Timeout-Ausnahme: %s", station_id, exc)
+        return None
     except RequestException as exc:
         _log_error("VOR DepartureBoard %s Ausnahme: %s", station_id, exc)
         return None

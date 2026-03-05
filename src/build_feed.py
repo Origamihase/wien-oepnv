@@ -1296,9 +1296,13 @@ def _emit_item(
 
     # Generate unique placeholders
     # We use a UUID to ensure uniqueness within the document
-    uid = uuid.uuid4().hex
-    PH_DESC = f"___CDATA_DESC_{uid}___"
-    PH_CONTENT = f"___CDATA_CONTENT_{uid}___"
+    # Ensure placeholder is not accidentally present in the original desc_html or raw_desc
+    while True:
+        uid = uuid.uuid4().hex
+        PH_DESC = f"___CDATA_DESC_{uid}___"
+        PH_CONTENT = f"___CDATA_CONTENT_{uid}___"
+        if PH_DESC not in desc_html and PH_CONTENT not in desc_html and PH_DESC not in raw_desc and PH_CONTENT not in raw_desc:
+            break
 
     # --- ElementTree Construction ---
     item = ET.Element("item")
