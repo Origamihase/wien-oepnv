@@ -1050,7 +1050,7 @@ def load_request_count() -> tuple[str | None, int]:
     if _QUOTA_CACHE["date"] == today_local:
         # If we have a cached value for today, it might be stale but it's a lower bound.
         # However, for accurate reading we fall through to file.
-        pass
+        return (today_local, _QUOTA_CACHE["count"])
 
     try:
         data = json.loads(REQUEST_COUNT_FILE.read_text(encoding="utf-8"))
@@ -1282,12 +1282,6 @@ def _fetch_departure_board_for_station(
                 "VOR DepartureBoard %s fehlgeschlagen: %s", station_id, exc
             )
             return None
-    except requests.exceptions.Timeout as exc:
-        _log_warning("VOR DepartureBoard %s Timeout-Ausnahme: %s", station_id, exc)
-        return None
-    except RequestException as exc:
-        _log_error("VOR DepartureBoard %s Ausnahme: %s", station_id, exc)
-        return None
     finally:
         if local_session:
             local_session.close()

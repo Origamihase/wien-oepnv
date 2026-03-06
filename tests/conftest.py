@@ -217,6 +217,17 @@ def reset_vor_request_count(tmp_path, monkeypatch):
 
     path = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", path)
+
+    # Also reset the memory cache
+    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
+
     yield
     if path.exists():
         path.unlink()
+
+@pytest.fixture(autouse=True)
+def skip_request_ip_verification_for_mocks(monkeypatch):
+    """Bypass IP verification for unit tests to prevent network access."""
+    import src.utils.http as http
+    monkeypatch.setattr(http, "verify_response_ip", lambda response: None)

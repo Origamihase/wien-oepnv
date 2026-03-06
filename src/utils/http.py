@@ -1219,7 +1219,7 @@ def request_safe(
             if parsed.scheme == "http":
                 pinned_url, hostname = _pin_url_to_ip(safe_url)
                 # Task 1: IPv6 Host Header Fix
-                kwargs["headers"]["Host"] = f"[{hostname}]" if ":" in hostname else hostname
+                kwargs["headers"]["Host"] = parsed.netloc
                 target_url = pinned_url
 
                 # Standard session.request for HTTP

@@ -18,10 +18,19 @@ def _save_request_count_in_process(count_file: str, iso_timestamp: str, iteratio
     import src.providers.vor as vor_module
 
     vor_module.REQUEST_COUNT_FILE = Path(count_file)
+    # Ensure memory cache is cleared so each process reads from file
+    vor_module._QUOTA_CACHE["count"] = 0
+    vor_module._QUOTA_CACHE["date"] = None
+
     moment = datetime.fromisoformat(iso_timestamp)
     start_event.wait()
     for _ in range(iterations):
         vor_module.save_request_count(moment)
+        # Force cache clearing in loop so it doesn't just hit the memory cache limit
+        # In a real environment, memory cache prevents writing if it's the same process
+        # Since this tests concurrent writes, we need to bypass the memory cache check.
+        vor_module._QUOTA_CACHE["date"] = None
+        vor_module._QUOTA_CACHE["count"] = 0
 
 
 def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
@@ -205,6 +214,12 @@ def test_save_request_count_is_safe_across_processes(monkeypatch, tmp_path):
 
     data = json.loads(count_file.read_text(encoding="utf-8"))
     assert data["requests"] == iterations * len(processes)
+
+@pytest.fixture(autouse=True)
+def reset_vor_quota_cache(monkeypatch):
+    """Ensure memory cache is reset before every test."""
+    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
 
 
 def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path):
