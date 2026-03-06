@@ -314,73 +314,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Rettungseinsatz",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "48A: Verkehrsunfall",
+    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
-    "pubDate": "2026-03-06T10:47:00+01:00",
-    "starts_at": "2026-03-06T10:47:00+01:00",
-    "ends_at": "2026-03-06T11:24:00+01:00",
-    "_identity": "wl|störung|L=U2|D=2026-03-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31A: Verkehrsunfall",
-    "description": "Die Linie 31A wird in Richtung Großjedlersdorf, Jochbergengasse zwischen Großjedlersdorf und Haspingerplatz über Mitterhofergasse, Ödenburger Straße und Jeldersdorfer Straße umgeleitet. Voraussichtliche Dauer: 11:40 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Haspingerplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7a5002edcae3000c19f7b2e8c75135a2348b751874043889e05a5b54e25f5d70",
-    "pubDate": "2026-03-06T11:05:00+01:00",
-    "starts_at": "2026-03-06T11:05:00+01:00",
+    "guid": "00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033",
+    "pubDate": "2026-03-06T12:20:00+01:00",
+    "starts_at": "2026-03-06T12:20:00+01:00",
     "ends_at": "2026-03-06T23:55:00+01:00",
-    "_identity": "wl|störung|L=31A|D=2026-03-06"
+    "_identity": "wl|störung|L=48A|D=2026-03-06"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31A: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "title": "U6: Betriebsstörung",
+    "description": "Linie U6: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 12.40 Uhr. Grund: Betriebsstörung im Haltestellenbereich Jägerstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "330fd6568b440ab28ca07aa855771be767c9068ae88ff366c60ccc6038a445f3",
-    "pubDate": "2026-03-06T11:08:25+01:00",
-    "starts_at": "2026-03-06T11:08:42+01:00",
-    "ends_at": "2026-03-06T12:07:00+01:00",
-    "_identity": "wl|störung|L=31A|D=2026-03-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung Falschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "20852ffbd37b67a912d01cdf6a60c7ca1adaa1fdce59570f1a3f057dd9c938a2",
-    "pubDate": "2026-03-06T11:11:21+01:00",
-    "starts_at": "2026-03-06T11:11:29+01:00",
-    "ends_at": "2026-03-06T12:10:00+01:00",
-    "_identity": "wl|störung|L=9A|D=2026-03-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2A: Verspätungen",
-    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "57d004da43aa922d23ef17d2febd4d27e41c86903650f7772a81a3838692e289",
-    "pubDate": "2026-03-06T11:13:00+01:00",
-    "starts_at": "2026-03-06T11:13:00+01:00",
+    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
+    "pubDate": "2026-03-06T12:24:00+01:00",
+    "starts_at": "2026-03-06T12:24:00+01:00",
     "ends_at": "2026-03-06T23:55:00+01:00",
-    "_identity": "wl|störung|L=2A|D=2026-03-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Linie 9: Fahrtbehinderung in Richtung Gersthof S. Voraussichtliche Dauer: 11:35 Uhr. Grund: Falschparker im Haltestellenbereich Blumengasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-03-06T11:15:00+01:00",
-    "starts_at": "2026-03-06T11:24:33+01:00",
-    "ends_at": "2026-03-06T23:55:00+01:00",
-    "_identity": "wl|störung|L=9|D=2026-03-06"
+    "_identity": "wl|störung|L=U6|D=2026-03-06"
   }
 ]
