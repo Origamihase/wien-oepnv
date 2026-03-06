@@ -1388,7 +1388,8 @@ def request_safe(
 
                 current_elapsed = time.monotonic() - start_time
 
-                assert total_allowed_time is not None  # noqa: S101
+                if total_allowed_time is None:
+                    raise RuntimeError("total_allowed_time cannot be None at this point")
 
                 remaining_total = total_allowed_time - current_elapsed
                 read_timeout_val = max(0.1, remaining_total)
