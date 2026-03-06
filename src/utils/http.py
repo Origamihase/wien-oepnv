@@ -356,9 +356,6 @@ class PinnedHTTPSConnection(HTTPSConnection):
 
     def _new_conn(self) -> Any:
         # Create socket connected to pinned IP
-        extra_kw = {}
-        if self.source_address:
-            extra_kw["source_address"] = self.source_address
 
         # We ignore self.host for connection, use pinned_ip
         # explicit source_address passing to satisfy MyPy
@@ -418,6 +415,7 @@ class PinnedHTTPSAdapter(TimeoutHTTPAdapter):
             ConnectionCls = LocalPinnedHTTPSConnection
 
         # Register it
+        self.poolmanager.pool_classes_by_scheme = self.poolmanager.pool_classes_by_scheme.copy()
         self.poolmanager.pool_classes_by_scheme["https"] = PinnedHTTPSConnectionPool
 
 
@@ -1398,12 +1396,6 @@ def request_safe(
                      # The original code used timeout[1].
                      if isinstance(timeout, tuple):
                           read_timeout_val = min(read_timeout_val, timeout[1])
-                else:
-                     # Fallback if no total limit (should not happen with default timeout)
-                    if isinstance(timeout, (int, float)):
-                        read_timeout_val = max(0.1, float(timeout) - current_elapsed)
-                    else:
-                        read_timeout_val = timeout[1]
 
                 content = read_response_safe(r, max_bytes, timeout=read_timeout_val)
 
