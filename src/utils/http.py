@@ -1361,6 +1361,10 @@ def request_safe(
                                 kwargs["headers"].pop("Content-Type", None)
                                 kwargs["headers"].pop("Content-Length", None)
 
+                        # Task 1: Remove Host header to prevent SNI/Host mismatch on redirect
+                        if "headers" in kwargs:
+                            kwargs["headers"].pop("Host", None)
+
                         continue
 
                 # Final Response

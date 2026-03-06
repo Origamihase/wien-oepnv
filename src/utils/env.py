@@ -9,6 +9,13 @@ store API credentials alongside the repository without committing them to
 version control.  Consumers can call :func:`load_default_env_files` before
 importing provider modules to ensure secrets such as ``VOR_ACCESS_ID`` are
 available.
+
+.. warning::
+    Werte in ``.env``-Dateien, die ein Raute-Zeichen (``#``) enthalten
+    (z. B. Passwörter oder API-Tokens), müssen zwingend in einfache (``'``) oder
+    doppelte (``"``) Anführungszeichen gesetzt werden. Andernfalls bricht der
+    Parser nach Bash-Standard beim ersten ``#`` ab, und der Rest der Zeile
+    wird als Kommentar ignoriert.
 """
 
 from __future__ import annotations

@@ -1,0 +1,4 @@
+# file: /app/src/feed/config.py
+# hypothesis_version: 6.151.9
+
+[1000000, 'CACHE_MAX_AGE_HOURS', 'Europe/Vienna', 'FEED_DESC', 'FEED_HEALTH_PATH', 'FEED_LINK', 'FEED_TITLE', 'FEED_TTL', 'FeedPaths', 'FeedSettings', 'INFO', 'LOG_BACKUP_COUNT', 'LOG_DIR', 'LOG_DIR_PATH', 'LOG_FORMAT', 'LOG_LEVEL', 'LOG_MAX_BYTES', 'LOG_TIMEZONE', 'MAX_ITEMS', 'MAX_ITEM_AGE_DAYS', 'OUT_PATH', 'PROVIDER_MAX_WORKERS', 'PROVIDER_TIMEOUT', 'RFC', 'STATE_FILE', 'STATE_PATH', 'STATE_RETENTION_DAYS', 'TITLE_CHAR_LIMIT', 'build_paths', 'build_settings', 'data', 'docs', 'get_bool_env', 'get_int_env', 'log', 'plain', 'refresh_from_env', 'resolve_env_path', 'validate_path']

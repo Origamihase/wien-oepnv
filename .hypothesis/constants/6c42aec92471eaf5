@@ -1,0 +1,4 @@
+# file: /app/src/places/client.py
+# hypothesis_version: 6.151.9
+
+[0.1, 0.5, 200, 401, 403, 429, 500, 502, 503, 504, 2500, 50000, '@type', 'BadRequest', 'Content-Type', 'DISTANCE', 'GET', 'GOOGLE_ACCESS_ID', 'GOOGLE_MAPS_API_KEY', 'GooglePlacesClient', 'GooglePlacesConfig', 'GooglePlacesError', 'PLACES_MAX_RESULTS', 'PLACES_RADIUS_M', 'POPULARITY', 'POST', 'Place', 'Retrying %s in %.2fs', 'X-Goog-Api-Key', 'X-Goog-FieldMask', 'application/json', 'bus_station', 'center', 'circle', 'description', 'details', 'displayName', 'error', 'field', 'fieldViolations', 'formattedAddress', 'get_places_api_key', 'id', 'includedTypes', 'languageCode', 'latitude', 'location', 'locationRestriction', 'longitude', 'maxResultCount', 'message', 'nearby', 'nextPageToken', 'pageToken', 'places', 'places.google', 'places:searchNearby', 'radius', 'rankPreference', 'regionCode', 'skipped_due_to_quota', 'status', 'subway_station', 'text', 'train_station', 'types']

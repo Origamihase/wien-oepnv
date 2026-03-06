@@ -1,0 +1,4 @@
+# file: /app/src/providers/wl_text.py
+# hypothesis_version: 6.151.9
+
+[' -–—:/\t', 'KW_EXCLUDE', 'KW_RESTRICTION', '[<>«»‹›]+', '[^\\wäöüÄÖÜß]+', '\\s{2,}', '^\\s*(?:(?:', '_is_facility_only', '_tidy_title_wl', '_title_core', 'bauarbeiten', 'ersatzverkehr', 'falschparker', 'gesperrt', 'gleisbauarbeiten', 'hinweis', 'information', 'kurzfuehrung', 'kurzführung', 'polizeieinsatz', 'rettungseinsatz', 'service\\-info', 'serviceinfo', 'signalstoerung', 'signalstörung', 'sperre', 'stoerung', 'strassenbauarbeiten', 'straßenbauarbeiten', 'störung', 'umleitung', 'unfall', 'verkehrsinfo', 'verkehrsinformation', 'verkehrsmeldung', '|']
