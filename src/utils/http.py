@@ -1388,14 +1388,14 @@ def request_safe(
 
                 current_elapsed = time.monotonic() - start_time
 
-                if total_allowed_time is not None:
-                     remaining_total = total_allowed_time - current_elapsed
-                     read_timeout_val = max(0.1, remaining_total)
+                if total_allowed_time is None:
+                    raise RuntimeError("total_allowed_time cannot be None at this point")
 
-                     # If tuple, we also respect the original read timeout if it's smaller?
-                     # The original code used timeout[1].
-                     if isinstance(timeout, tuple):
-                          read_timeout_val = min(read_timeout_val, timeout[1])
+                remaining_total = total_allowed_time - current_elapsed
+                read_timeout_val = max(0.1, remaining_total)
+
+                if isinstance(timeout, tuple):
+                    read_timeout_val = min(read_timeout_val, timeout[1])
 
                 content = read_response_safe(r, max_bytes, timeout=read_timeout_val)
 
