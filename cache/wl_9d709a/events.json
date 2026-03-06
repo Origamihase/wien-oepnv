@@ -302,66 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-03-06T08:27:00+01:00",
-    "starts_at": "2026-03-06T08:27:00+01:00",
-    "ends_at": "2026-03-06T23:55:00+01:00",
-    "_identity": "wl|störung|L=9|D=2026-03-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Verspätungen",
-    "description": "Linie 12: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8152569e3c97a3516c3d1e324d9792257f593704c09ec2b898cd21752e0f1c9a",
-    "pubDate": "2026-03-06T08:35:00+01:00",
-    "starts_at": "2026-03-06T08:35:00+01:00",
-    "ends_at": "2026-03-06T23:55:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-03-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Verspätungen",
-    "description": "Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "45e9fa055fa6de68f6d4b0b6fe8d6c7618eef983d2f63db426ccca192a040e62",
-    "pubDate": "2026-03-06T09:04:00+01:00",
-    "starts_at": "2026-03-06T09:04:00+01:00",
-    "ends_at": "2026-03-06T23:55:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-03-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verunreinigung",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
-    "pubDate": "2026-03-06T09:04:00+01:00",
-    "starts_at": "2026-03-06T09:04:00+01:00",
-    "ends_at": "2026-03-06T09:34:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2026-03-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3ae90c0c64b5c7d1855f6d65b70c2fac58c3368abd559cb27a64de60c6b7a7c5",
-    "pubDate": "2026-03-06T09:07:39+01:00",
-    "starts_at": "2026-03-06T09:07:46+01:00",
-    "ends_at": "2026-03-06T10:07:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-03-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "59A: Verspätungen",
     "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,5 +310,41 @@
     "starts_at": "2026-03-06T09:14:00+01:00",
     "ends_at": "2026-03-06T23:55:00+01:00",
     "_identity": "wl|störung|L=59A|D=2026-03-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Verkehrsunfall",
+    "description": "Die Linie 7A wird in Richtung Reumannplatz U zwischen Hohenbergstraße und Am Europlatz über die Wienerbergbrücke umgeleitet. Grund: Verkehrsunfall im Bereich Hohenbergstraße. Die Störung dauert voraussichtlich bis 10:45 Uhr.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d9c616ff8eaab98c987f46c03c04b116e60398ec5e67893f172fc419d4d258b5",
+    "pubDate": "2026-03-06T10:05:00+01:00",
+    "starts_at": "2026-03-06T10:05:00+01:00",
+    "ends_at": "2026-03-06T23:55:00+01:00",
+    "_identity": "wl|störung|L=7A|D=2026-03-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Verkehrsunfall Betrieb ab Am Europaplatz",
+    "description": "Verkehrsunfall Betrieb ab Am Europaplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b99685ef363db94b52a5f5a6c2123cce98c8c15fad418fc4114b50d756e895d1",
+    "pubDate": "2026-03-06T10:13:20+01:00",
+    "starts_at": "2026-03-06T10:13:20+01:00",
+    "ends_at": "2026-03-06T11:12:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-03-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Verkehrsunfall Betrieb ab Am Europlatz",
+    "description": "Verkehrsunfall Betrieb ab Am Europlatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d74dc2240385dee7db3cbf360c49fdc6879ada6664ce0b75e8710e9967ca34a0",
+    "pubDate": "2026-03-06T10:13:49+01:00",
+    "starts_at": "2026-03-06T10:13:49+01:00",
+    "ends_at": "2026-03-06T11:12:00+01:00",
+    "_identity": "wl|störung|L=7A|D=2026-03-06"
   }
 ]
