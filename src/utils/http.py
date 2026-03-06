@@ -1361,6 +1361,9 @@ def request_safe(
                                 kwargs["headers"].pop("Content-Type", None)
                                 kwargs["headers"].pop("Content-Length", None)
 
+                        if "headers" in kwargs:
+                            kwargs["headers"].pop("Host", None)
+
                         continue
 
                 # Final Response

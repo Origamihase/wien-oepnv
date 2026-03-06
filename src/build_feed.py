@@ -807,7 +807,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     supports: bool = supports_timeout,
                     semaphore: Optional[BoundedSemaphore] = semaphore,
                 ) -> Any:
-                    timeout_arg = timeout_value if timeout_value > 0 else 0.001
+                    timeout_arg = timeout_value if timeout_value > 0 else 0.1
                     if semaphore is None:
                         return _call_fetch_with_timeout(fetch, timeout_arg, supports)
 

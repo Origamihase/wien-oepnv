@@ -409,6 +409,10 @@ def load_env_file(
 
     Returns a mapping containing the parsed assignments. Existing variables are
     left untouched unless ``override`` is set to ``True``.
+
+    **Warning:** Values containing hash symbols (`#`) must be enclosed in single
+    or double quotes (e.g., `PASSWORD="my#secret"`). Otherwise, the hash and
+    everything following it will be treated as an inline comment and truncated.
     """
 
     env: MutableMapping[str, str]
