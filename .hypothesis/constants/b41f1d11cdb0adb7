@@ -1,0 +1,4 @@
+# file: /app/scripts/update_wl_stations.py
+# hypothesis_version: 6.151.9
+
+[420, '%(message)s', '(?i)^wien\\s+', '(WL)', ',', ', ', '-', '--haltepunkte', '--haltestellen', '--stations', '--verbose', '--vor-mapping', '-v', '.', ';', 'DIVA', 'DIVANR', 'Found %d haltepunkte', 'GEO_LAT', 'GEO_LON', 'HALTEPUNKTNAME', 'HALTESTELLEN_ID', 'ID', 'LAT', 'LON', 'LONG', 'NAME', 'RBLNR', 'RBL_NUMMER', 'STOPID', 'STOP_ID', 'WGS84_LAT', 'WGS84_LON', '[^A-Za-z0-9ÄÖÜäöüß]+', '[^a-z0-9]+', '\\(WL\\)', '\\D', '\\s+\\([^)]*\\)', '\\s{2,}', '__main__', 'aliases', 'bst_code', 'bst_id', 'data', 'in_vienna', 'latitude', 'longitude', 'name', 'pendler', 'r', 'resolved_name', 'source', 'src.utils.files', 'src.utils.stations', 'station_name', 'stations', 'stations.json', 'stop_id', 'store_true', 'update_wl_stations', 'utf-8', 'utf-8-sig', 'vor_id', 'w', 'wien', 'wien ', 'wl', 'wl_diva', 'wl_stops']

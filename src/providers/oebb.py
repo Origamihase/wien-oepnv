@@ -86,20 +86,31 @@ _MULTI_SLASH_RE = re.compile(r"\s*/{2,}\s*")
 _MULTI_COMMA_RE = re.compile(r"\s*,{2,}\s*")
 
 NON_LOCATION_PREFIXES = {
-    "bauarbeiten", "störung", "ausfall", "verspätung", "sperre",
+    "bauarbeiten", "störung", "störungen", "ausfall", "ausfälle", "verspätung", "verspätungen", "sperre",
     "einschränkung", "verkehrsunfall", "feuerwehreinsatz", "rettungseinsatz",
     "polizeieinsatz", "notarzteinsatz", "weichenstörung", "signalstörung",
     "oberleitungsstörung", "stellwerksstörung", "fahrzeugschaden", "personenschaden",
     "wetter", "unwetter", "schnee", "hochwasser", "murenabgang",
     "lawinengefahr", "streik", "demonstration", "veranstaltung", "wartungsarbeiten",
-    "update", "info", "hinweis", "achtung", "verkehrsmeldung"
+    "update", "info", "hinweis", "achtung", "verkehrsmeldung",
+    "umleitung", "haltausfall", "schienenersatzverkehr", "sev", "ersatzverkehr",
+    "streckenunterbrechung", "unterbrechung", "teilausfall", "zugausfall"
 }
 
 def _is_category(text: str) -> bool:
     t = text.lower()
+
+    t = re.sub(r"^(?:db|öbb|oebb|nj|rj|rjx|ic|ice|rex|s)[-\s]+", "", t)
+
+    parts = re.split(r"[\s↔<>/\-–]+", t)
+    for part in parts:
+        if part in NON_LOCATION_PREFIXES:
+            return True
+
     for k in NON_LOCATION_PREFIXES:
         if t == k or t.startswith(k + " "):
              return True
+
     return False
 
 def _clean_endpoint(p: str) -> str:
