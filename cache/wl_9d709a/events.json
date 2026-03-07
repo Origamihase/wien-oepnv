@@ -164,7 +164,7 @@
     "guid": "5207814fd4dc4f846ce6bbf0f7351c2ccb2f85d0dd6245bc264f72a60b860741",
     "pubDate": "2026-02-21T00:00:20+01:00",
     "starts_at": "2026-02-21T00:00:20+01:00",
-    "ends_at": "2026-03-07T23:59:59+01:00",
+    "ends_at": "2026-03-08T23:59:59+01:00",
     "_identity": "wl|störung|L=57A|D=2026-02-21"
   },
   {
@@ -176,7 +176,7 @@
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
     "pubDate": "2026-02-22T00:00:14+01:00",
     "starts_at": "2026-02-22T00:00:14+01:00",
-    "ends_at": "2026-03-07T23:59:59+01:00",
+    "ends_at": "2026-03-08T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-02-22"
   },
   {
@@ -188,7 +188,7 @@
     "guid": "2551781b6cbc18b6e7d1384ac763c3a70c0703aea5f683c532a1437b302e3ded",
     "pubDate": "2026-02-22T00:00:16+01:00",
     "starts_at": "2026-02-22T00:00:16+01:00",
-    "ends_at": "2026-03-07T23:59:59+01:00",
+    "ends_at": "2026-03-08T23:59:59+01:00",
     "_identity": "wl|störung|L=3A|D=2026-02-22"
   },
   {
@@ -272,7 +272,7 @@
     "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
     "pubDate": "2026-03-07T20:04:00+01:00",
     "starts_at": "2026-03-07T20:04:00+01:00",
-    "ends_at": "2026-03-07T23:55:00+01:00",
+    "ends_at": "2026-03-08T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2026-03-07"
   },
   {
@@ -284,7 +284,7 @@
     "guid": "12568feac253f498cef6d0727a6353defae690f014e13e4f7209317d5a2cd340",
     "pubDate": "2026-03-07T20:10:38+01:00",
     "starts_at": "2026-03-07T20:10:38+01:00",
-    "ends_at": "2026-03-07T23:59:59+01:00",
+    "ends_at": "2026-03-08T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2026-03-07"
   },
   {
@@ -296,7 +296,7 @@
     "guid": "16658920d5ae4c08d283ac8896c626632ed194c88d5e13ae031a24be6386acb7",
     "pubDate": "2026-03-07T20:11:36+01:00",
     "starts_at": "2026-03-07T20:11:36+01:00",
-    "ends_at": "2026-03-07T23:59:59+01:00",
+    "ends_at": "2026-03-08T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2026-03-07"
   },
   {
@@ -308,7 +308,7 @@
     "guid": "b4f5e9666655265d37f93b5801dad8b36abfc50f2a6d31c11d226188bf3af0ea",
     "pubDate": "2026-03-07T20:14:01+01:00",
     "starts_at": "2026-03-07T20:14:01+01:00",
-    "ends_at": "2026-03-07T23:59:59+01:00",
+    "ends_at": "2026-03-08T23:59:59+01:00",
     "_identity": "wl|störung|L=13A|D=2026-03-07"
   },
   {
@@ -320,7 +320,7 @@
     "guid": "bd77fdee12f35ec1a1be3482a9e2f4a219d3c6b75ee77d1e65d64e571a793573",
     "pubDate": "2026-03-07T20:15:28+01:00",
     "starts_at": "2026-03-07T20:15:28+01:00",
-    "ends_at": "2026-03-07T23:59:59+01:00",
+    "ends_at": "2026-03-08T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2026-03-07"
   },
   {
@@ -332,7 +332,7 @@
     "guid": "63b66667a7b2ab1135f6e0152432ace6bc4503f9f4375c5a938f37ad1a586be0",
     "pubDate": "2026-03-07T20:16:55+01:00",
     "starts_at": "2026-03-07T20:16:55+01:00",
-    "ends_at": "2026-03-07T23:59:59+01:00",
+    "ends_at": "2026-03-08T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2026-03-07"
   },
   {
@@ -344,32 +344,8 @@
     "guid": "3458aed9ae073247548f18581ef1ce6c02f8f538d8da369e21b8f50d3860fb77",
     "pubDate": "2026-03-07T20:17:53+01:00",
     "starts_at": "2026-03-07T20:17:53+01:00",
-    "ends_at": "2026-03-07T23:59:59+01:00",
+    "ends_at": "2026-03-08T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2026-03-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Betriebsstörung",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
-    "pubDate": "2026-03-07T22:13:00+01:00",
-    "starts_at": "2026-03-07T22:13:00+01:00",
-    "ends_at": "2026-03-07T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2026-03-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Betriebsstörung",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
-    "pubDate": "2026-03-07T22:15:00+01:00",
-    "starts_at": "2026-03-07T22:15:00+01:00",
-    "ends_at": "2026-03-07T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2026-03-07"
   },
   {
     "source": "Wiener Linien",
@@ -386,24 +362,24 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "6: Rettungseinsatz",
     "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
     "pubDate": "2026-03-07T23:06:00+01:00",
-    "starts_at": "2026-03-07T23:20:55+01:00",
+    "starts_at": "2026-03-07T23:06:00+01:00",
     "ends_at": "2026-03-08T23:55:00+01:00",
     "_identity": "wl|störung|L=6|D=2026-03-07"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "18: Rettungseinsatz",
     "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
     "pubDate": "2026-03-07T23:06:00+01:00",
-    "starts_at": "2026-03-07T23:21:24+01:00",
+    "starts_at": "2026-03-07T23:06:00+01:00",
     "ends_at": "2026-03-08T23:55:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-03-07"
   }
