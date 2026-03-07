@@ -225,9 +225,3 @@ def reset_vor_request_count(tmp_path, monkeypatch):
     yield
     if path.exists():
         path.unlink()
-
-@pytest.fixture(autouse=True)
-def skip_request_ip_verification_for_mocks(monkeypatch):
-    """Bypass IP verification for unit tests to prevent network access."""
-    import src.utils.http as http
-    monkeypatch.setattr(http, "verify_response_ip", lambda response: None)
