@@ -286,5 +286,29 @@
     "starts_at": "2026-03-07T04:45:10+01:00",
     "ends_at": "2026-03-08T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-03-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25/26/27/30/31: Stromstörung",
+    "description": "Die Linie 25 fährt derzeit nicht zwischen Donauspital U und Josef-Baumann-Gasse. Linie 26: Fahrtbehinderung in beiden Richtungen. Linie 27: Fahrtbehinderung in beiden Richtungen. Linie 30: Fahrtbehinderung in beiden Richtungen. Linie 31: Fahrtbehinderung in beiden Richtungen. Weichen Sie ersatzweise auf die Linien U1, U2, 26A, 95A und 96A aus. Voraussichtliche Dauer: 09:30 Uhr. Grund: Stromstörung im Haltestellenbereich Kagran U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "591bb2bdfcebc0b92767ac21cb1c9779c71074c684637e4f25f5ef98bc54f923",
+    "pubDate": "2026-03-07T08:53:00+01:00",
+    "starts_at": "2026-03-07T08:53:00+01:00",
+    "ends_at": "2026-03-07T23:55:00+01:00",
+    "_identity": "wl|störung|L=25,26,27,30,31|D=2026-03-07"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung wegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5df053ac496434b8ed721d26d1b4a224a1a03ec468a9379e92f65dfa0a5f01de",
+    "pubDate": "2026-03-07T09:15:07+01:00",
+    "starts_at": "2026-03-07T09:15:33+01:00",
+    "ends_at": "2026-03-07T10:14:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-03-07"
   }
 ]
