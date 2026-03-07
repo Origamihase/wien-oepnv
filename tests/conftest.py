@@ -217,6 +217,11 @@ def reset_vor_request_count(tmp_path, monkeypatch):
 
     path = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", path)
+
+    # Also reset the memory cache
+    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
+    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
+
     yield
     if path.exists():
         path.unlink()
