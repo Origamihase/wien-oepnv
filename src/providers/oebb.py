@@ -244,6 +244,14 @@ def _is_relevant(title: str, description: str) -> bool:
             info0 = station_info(part0)
             info1 = station_info(part1)
 
+            # Check if these are actually station names. If they are known category keywords
+            # that were incorrectly joined with ↔ (like "Bauarbeiten ↔ Umleitung"), they might
+            # evaluate to None. We only treat them as strict unknown stations if they don't look
+            # like category keywords.
+            if info0 is None and info1 is None and not _is_category(part0) and not _is_category(part1):
+                # Wenn beide Stationen völlig unbekannt sind, ist es Fernverkehr -> verwerfen
+                return False
+
             is_outer0 = info0 and not info0.in_vienna
             is_outer1 = info1 and not info1.in_vienna
 
