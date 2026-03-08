@@ -525,8 +525,11 @@ def _strip_sensitive_headers(
 
 def _get_port(parsed: Any) -> int | None:
     """Get the port from a parsed URL, handling default ports."""
-    if parsed.port is not None:
-        return parsed.port
+    try:
+        if parsed.port is not None:
+            return parsed.port
+    except ValueError:
+        pass
     if parsed.scheme == "http":
         return 80
     if parsed.scheme == "https":
@@ -1216,201 +1219,204 @@ def request_safe(
             parsed = urlparse(safe_url)
             target_url = safe_url
 
-            if parsed.scheme == "http":
-                pinned_url, hostname = _pin_url_to_ip(safe_url)
-                # Task 1: IPv6 Host Header Fix
-                kwargs["headers"]["Host"] = parsed.netloc
-                target_url = pinned_url
+            adapter = None
+            try:
+                if parsed.scheme == "http":
+                    pinned_url, hostname = _pin_url_to_ip(safe_url)
+                    # Task 1: IPv6 Host Header Fix
+                    kwargs["headers"]["Host"] = parsed.netloc
+                    target_url = pinned_url
 
-                # Standard session.request for HTTP
-                ctx = session.request(
-                    method,
-                    target_url,
-                    stream=True,
-                    timeout=current_timeout,
-                    hooks=request_hooks,
-                    allow_redirects=False,
-                    **kwargs,
-                )
-            else:
-                # HTTPS: TOCTOU Fix (Task 4) using PinnedHTTPSAdapter
-                ips = _resolve_hostname_safe(parsed.hostname or "")
-                target_ip = None
-                for _, _, _, _, sockaddr in ips:
-                    if is_ip_safe(sockaddr[0]):
-                        target_ip = sockaddr[0]
-                        break
+                    # Standard session.request for HTTP
+                    ctx = session.request(
+                        method,
+                        target_url,
+                        stream=True,
+                        timeout=current_timeout,
+                        hooks=request_hooks,
+                        allow_redirects=False,
+                        **kwargs,
+                    )
+                else:
+                    # HTTPS: TOCTOU Fix (Task 4) using PinnedHTTPSAdapter
+                    ips = _resolve_hostname_safe(parsed.hostname or "")
+                    target_ip = None
+                    for _, _, _, _, sockaddr in ips:
+                        if is_ip_safe(sockaddr[0]):
+                            target_ip = sockaddr[0]
+                            break
 
-                if not target_ip:
-                    sanitized_url = _sanitize_url_for_error(current_url)
-                    raise ValueError(f"No safe IP resolved for {sanitized_url}")
+                    if not target_ip:
+                        sanitized_url = _sanitize_url_for_error(current_url)
+                        raise ValueError(f"No safe IP resolved for {sanitized_url}")
 
-                # Use PinnedHTTPSAdapter to force connection to target_ip while keeping hostname for SNI
-                adapter = PinnedHTTPSAdapter(str(target_ip), timeout=current_timeout)
+                    # Use PinnedHTTPSAdapter to force connection to target_ip while keeping hostname for SNI
+                    adapter = PinnedHTTPSAdapter(str(target_ip), timeout=current_timeout)
 
-                # Prepare request manually to bypass session adapter selection
-                req = requests.Request(
-                    method,
-                    target_url,
-                    headers=kwargs.get("headers"),
-                    files=kwargs.get("files"),
-                    data=kwargs.get("data"),
-                    json=kwargs.get("json"),
-                    params=kwargs.get("params"),
-                    auth=kwargs.get("auth"),
-                    cookies=kwargs.get("cookies"),
-                    hooks=request_hooks,
-                )
-                prepped = session.prepare_request(req)
+                    # Prepare request manually to bypass session adapter selection
+                    req = requests.Request(
+                        method,
+                        target_url,
+                        headers=kwargs.get("headers"),
+                        files=kwargs.get("files"),
+                        data=kwargs.get("data"),
+                        json=kwargs.get("json"),
+                        params=kwargs.get("params"),
+                        auth=kwargs.get("auth"),
+                        cookies=kwargs.get("cookies"),
+                        hooks=request_hooks,
+                    )
+                    prepped = session.prepare_request(req)
 
-                # Merge environment settings (proxies, verify, cert)
-                # This ensures we respect session verification settings
-                settings = session.merge_environment_settings(
-                    prepped.url, proxies={}, stream=True, verify=kwargs.get("verify"), cert=kwargs.get("cert")
-                )
-                send_kwargs = kwargs.copy()
-                send_kwargs.update(settings)
+                    # Merge environment settings (proxies, verify, cert)
+                    # This ensures we respect session verification settings
+                    settings = session.merge_environment_settings(
+                        prepped.url, proxies={}, stream=True, verify=kwargs.get("verify"), cert=kwargs.get("cert")
+                    )
+                    send_kwargs = kwargs.copy()
+                    send_kwargs.update(settings)
 
-                # Remove arguments that are already processed into prepped request or settings
-                # Adapter.send signature: send(request, stream=False, timeout=None, verify=True, cert=None, proxies=None)
-                # We need to filter kwargs to match what Adapter.send expects.
-                valid_adapter_args = {"stream", "timeout", "verify", "cert", "proxies"}
-                adapter_kwargs = {k: v for k, v in send_kwargs.items() if k in valid_adapter_args}
+                    # Remove arguments that are already processed into prepped request or settings
+                    # Adapter.send signature: send(request, stream=False, timeout=None, verify=True, cert=None, proxies=None)
+                    # We need to filter kwargs to match what Adapter.send expects.
+                    valid_adapter_args = {"stream", "timeout", "verify", "cert", "proxies"}
+                    adapter_kwargs = {k: v for k, v in send_kwargs.items() if k in valid_adapter_args}
 
-                adapter_kwargs["stream"] = True
-                adapter_kwargs["timeout"] = current_timeout
+                    adapter_kwargs["stream"] = True
+                    adapter_kwargs["timeout"] = current_timeout
 
-                # Send request using our pinned adapter
-                ctx = adapter.send(prepped, **adapter_kwargs)
+                    # Send request using our pinned adapter
+                    ctx = adapter.send(prepped, **adapter_kwargs)
 
-            with ctx as r:
-                # Duck-typing check for mocks that might lack is_redirect
-                is_redirect = getattr(r, "is_redirect", False)
+                with ctx as r:
+                    # Duck-typing check for mocks that might lack is_redirect
+                    is_redirect = getattr(r, "is_redirect", False)
 
-                if is_redirect:
-                    # Handle Redirect
-                    location = r.headers.get("Location")
-                    if location:
-                        if attempt == max_redirects:
-                            raise requests.TooManyRedirects(
-                                f"Exceeded {max_redirects} redirects"
+                    if is_redirect:
+                        # Handle Redirect
+                        location = r.headers.get("Location")
+                        if location:
+                            if attempt == max_redirects:
+                                raise requests.TooManyRedirects(
+                                    f"Exceeded {max_redirects} redirects"
+                                )
+
+                            # Resolve relative URLs
+                            next_url = requests.compat.urljoin(current_url, location)
+
+                            # Strip sensitive headers if needed
+                            # We pass session.headers to ensure they are masked (set to None) if present
+                            _strip_sensitive_headers(
+                                kwargs["headers"],
+                                current_url,
+                                next_url,
+                                session_headers=session.headers,
                             )
 
-                        # Resolve relative URLs
-                        next_url = requests.compat.urljoin(current_url, location)
+                            # Security: Strip sensitive query parameters if redirecting to a different host/scheme/port
+                            # This prevents leaking tokens (e.g. accessId) via redirect URLs.
+                            next_parsed = urlparse(next_url)
+                            curr_parsed = urlparse(current_url)
 
-                        # Strip sensitive headers if needed
-                        # We pass session.headers to ensure they are masked (set to None) if present
-                        _strip_sensitive_headers(
-                            kwargs["headers"],
-                            current_url,
-                            next_url,
-                            session_headers=session.headers,
-                        )
+                            if (
+                                next_parsed.hostname != curr_parsed.hostname
+                                or next_parsed.scheme != curr_parsed.scheme
+                                or _get_port(next_parsed) != _get_port(curr_parsed)
+                            ):
+                                next_url = _strip_sensitive_params(next_url)
 
-                        # Security: Strip sensitive query parameters if redirecting to a different host/scheme/port
-                        # This prevents leaking tokens (e.g. accessId) via redirect URLs.
-                        next_parsed = urlparse(next_url)
-                        curr_parsed = urlparse(current_url)
+                                # Prevent leaking explicit authentication credentials (e.g. auth=('user', 'pass'))
+                                # to unsafe redirect targets.
+                                if "auth" in kwargs:
+                                    kwargs.pop("auth")
 
-                        if (
-                            next_parsed.hostname != curr_parsed.hostname
-                            or next_parsed.scheme != curr_parsed.scheme
-                            or _get_port(next_parsed) != _get_port(curr_parsed)
-                        ):
-                            next_url = _strip_sensitive_params(next_url)
+                            # Update URL and continue loop
+                            current_url = next_url
 
-                            # Prevent leaking explicit authentication credentials (e.g. auth=('user', 'pass'))
-                            # to unsafe redirect targets.
-                            if "auth" in kwargs:
-                                kwargs.pop("auth")
+                            # If redirects are followed, standard behavior (like requests) is to switch to GET
+                            # for 301/302/303 if original was not HEAD.
+                            # 307/308 preserve method.
+                            # For simplicity, if we are redirecting, we generally respect the status code implications.
+                            # requests implementation details are complex.
+                            # However, since we are doing manual redirects for security, we should mimic requests behavior roughly
+                            # or just keep using the same method if it's 307/308, and switch to GET for others?
+                            # For this implementation, we simply persist the method unless it's a 303 (See Other)
+                            # which MUST be GET.
+                            if r.status_code == 303 and method != "HEAD":
+                                method = "GET"
+                                # Drop data/json/files for GET redirect
+                                kwargs.pop("data", None)
+                                kwargs.pop("json", None)
+                                kwargs.pop("files", None)
+                                # Also drop content-related headers that are invalid for GET
+                                if "headers" in kwargs:
+                                    kwargs["headers"].pop("Content-Type", None)
+                                    kwargs["headers"].pop("Content-Length", None)
 
-                        # Update URL and continue loop
-                        current_url = next_url
+                            # For 301/302, requests switches to GET if not 307/308
+                            if r.status_code in (301, 302) and method == "POST":
+                                method = "GET"
+                                kwargs.pop("data", None)
+                                kwargs.pop("json", None)
+                                kwargs.pop("files", None)
+                                # Also drop content-related headers that are invalid for GET
+                                if "headers" in kwargs:
+                                    kwargs["headers"].pop("Content-Type", None)
+                                    kwargs["headers"].pop("Content-Length", None)
 
-                        # If redirects are followed, standard behavior (like requests) is to switch to GET
-                        # for 301/302/303 if original was not HEAD.
-                        # 307/308 preserve method.
-                        # For simplicity, if we are redirecting, we generally respect the status code implications.
-                        # requests implementation details are complex.
-                        # However, since we are doing manual redirects for security, we should mimic requests behavior roughly
-                        # or just keep using the same method if it's 307/308, and switch to GET for others?
-                        # For this implementation, we simply persist the method unless it's a 303 (See Other)
-                        # which MUST be GET.
-                        if r.status_code == 303 and method != "HEAD":
-                            method = "GET"
-                            # Drop data/json/files for GET redirect
-                            kwargs.pop("data", None)
-                            kwargs.pop("json", None)
-                            kwargs.pop("files", None)
-                            # Also drop content-related headers that are invalid for GET
+                            # Task 1: Remove Host header to prevent SNI/Host mismatch on redirect
                             if "headers" in kwargs:
-                                kwargs["headers"].pop("Content-Type", None)
-                                kwargs["headers"].pop("Content-Length", None)
+                                kwargs["headers"].pop("Host", None)
 
-                        # For 301/302, requests switches to GET if not 307/308
-                        if r.status_code in (301, 302) and method == "POST":
-                            method = "GET"
-                            kwargs.pop("data", None)
-                            kwargs.pop("json", None)
-                            kwargs.pop("files", None)
-                            # Also drop content-related headers that are invalid for GET
-                            if "headers" in kwargs:
-                                kwargs["headers"].pop("Content-Type", None)
-                                kwargs["headers"].pop("Content-Length", None)
+                            continue
 
-                        # Task 1: Remove Host header to prevent SNI/Host mismatch on redirect
-                        if "headers" in kwargs:
-                            kwargs["headers"].pop("Host", None)
+                    # Final Response
+                    if raise_for_status:
+                        r.raise_for_status()
 
-                        continue
+                    if allowed_content_types is not None:
+                        content_type_header = r.headers.get("Content-Type", "")
+                        if not content_type_header:
+                            raise ValueError(
+                                "Content-Type header missing, but validation required"
+                            )
+                        # Robust parsing
+                        mime_type = content_type_header.split(";")[0].strip().lower()
+                        if mime_type not in allowed_content_types:
+                            raise ValueError(
+                                f"Invalid Content-Type: {mime_type} (expected {allowed_content_types})"
+                            )
 
-                # Final Response
-                if raise_for_status:
-                    r.raise_for_status()
+                    # Calculate remaining time for reading body (Task 3)
+                    # We must ensure we don't exceed total_allowed_time
+                    read_timeout_val: float
 
-                if allowed_content_types is not None:
-                    content_type_header = r.headers.get("Content-Type", "")
-                    if not content_type_header:
-                        raise ValueError(
-                            "Content-Type header missing, but validation required"
-                        )
-                    # Robust parsing
-                    mime_type = content_type_header.split(";")[0].strip().lower()
-                    if mime_type not in allowed_content_types:
-                        raise ValueError(
-                            f"Invalid Content-Type: {mime_type} (expected {allowed_content_types})"
-                        )
+                    current_elapsed = time.monotonic() - start_time
 
-                # Calculate remaining time for reading body (Task 3)
-                # We must ensure we don't exceed total_allowed_time
-                read_timeout_val: float
+                    if total_allowed_time is None:
+                        raise RuntimeError("total_allowed_time cannot be None at this point")
 
-                current_elapsed = time.monotonic() - start_time
+                    remaining_total = total_allowed_time - current_elapsed
+                    read_timeout_val = max(0.1, remaining_total)
 
-                if total_allowed_time is None:
-                    raise RuntimeError("total_allowed_time cannot be None at this point")
+                    if isinstance(timeout, tuple):
+                        read_timeout_val = min(read_timeout_val, timeout[1])
 
-                remaining_total = total_allowed_time - current_elapsed
-                read_timeout_val = max(0.1, remaining_total)
+                    content = read_response_safe(r, max_bytes, timeout=read_timeout_val)
 
-                if isinstance(timeout, tuple):
-                    read_timeout_val = min(read_timeout_val, timeout[1])
+                    # Manually attach content to response object so it's usable after close
+                    r._content = content
+                    r._content_consumed = True
 
-                content = read_response_safe(r, max_bytes, timeout=read_timeout_val)
-
-                # Manually attach content to response object so it's usable after close
-                r._content = content
-                r._content_consumed = True
-
-                return r
+                    return r
+            finally:
+                if adapter is not None:
+                    adapter.close()
     except requests.RequestException as exc:
         # Sanitize keys in exception messages (which may contain full URLs)
         safe_msg = _sanitize_exception_msg(str(exc))
-        new_exc = type(exc)(safe_msg)
-        new_exc.request = getattr(exc, "request", None)
-        new_exc.response = getattr(exc, "response", None)
-        raise new_exc from None
+        exc.args = (safe_msg,) + exc.args[1:]
+        raise exc from None
 
     # Should not be reached due to TooManyRedirects check inside loop,
     # but defensive return.
