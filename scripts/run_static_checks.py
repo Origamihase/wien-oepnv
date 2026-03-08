@@ -61,8 +61,7 @@ def main() -> int:
     # -q: quiet (only errors)
     # -c: config file (optional, we use defaults for now)
     # We target src/ and scripts/
-    # -ll: Only report Medium and High severity issues (skips Low like B404/subprocess)
-    bandit_cmd = ["bandit", "-r", "src", "scripts", "-q", "-ll"]
+    bandit_cmd = ["bandit", "-r", "src", "scripts", "-q"]
     exit_codes.append(_run(bandit_cmd))
 
     scanner = PROJECT_ROOT / "scripts" / "scan_secrets.py"
