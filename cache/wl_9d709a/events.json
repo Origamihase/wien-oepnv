@@ -386,18 +386,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ecd5f95a17857dc93a63349472e98b39e10391574ac70ec7b83eaf44b2f51e5a",
-    "pubDate": "2026-03-08T17:00:48+01:00",
-    "starts_at": "2026-03-08T17:02:16+01:00",
-    "ends_at": "2026-03-08T21:00:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-03-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "O: Verkehrsunfall Betrieb ab Quellenplatz",
     "description": "Verkehrsunfall Betrieb ab Quellenplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -405,18 +393,6 @@
     "pubDate": "2026-03-08T17:01:17+01:00",
     "starts_at": "2026-03-08T17:01:31+01:00",
     "ends_at": "2026-03-08T21:30:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-03-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Verkehrsunfall Züge halten bei Linie 11",
-    "description": "Verkehrsunfall Züge halten bei Linie 11",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2dd98362435d0448694ce3222219cce111773e6359b2da946b4c3a49a2afed81",
-    "pubDate": "2026-03-08T17:01:46+01:00",
-    "starts_at": "2026-03-08T17:01:46+01:00",
-    "ends_at": "2026-03-08T20:45:00+01:00",
     "_identity": "wl|störung|L=O|D=2026-03-08"
   },
   {
@@ -434,18 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "faa2c75b2aaa3d9a162d6003d0bcec7e9a0d0132a2c6c3f2e5ebd42f317d3882",
-    "pubDate": "2026-03-08T17:04:09+01:00",
-    "starts_at": "2026-03-08T17:04:12+01:00",
-    "ends_at": "2026-03-08T20:45:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-03-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "Fahrtbehinderung Polizeieinsatz",
     "description": "Fahrtbehinderung Polizeieinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -458,25 +422,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "77A: Fremder Verkehrsunfall",
-    "description": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall im Bereich Wällischgasse.",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b9189e326850aa92915899ca534af48c14968292d4a8ae6c7010cf3729512dc3",
-    "pubDate": "2026-03-08T19:14:00+01:00",
-    "starts_at": "2026-03-08T19:14:00+01:00",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-03-08T21:18:00+01:00",
+    "starts_at": "2026-03-08T21:18:00+01:00",
     "ends_at": "2026-03-08T23:55:00+01:00",
-    "_identity": "wl|störung|L=77A|D=2026-03-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Rettungseinsatz",
-    "description": "Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5",
-    "pubDate": "2026-03-08T20:12:00+01:00",
-    "starts_at": "2026-03-08T20:12:00+01:00",
-    "ends_at": "2026-03-08T23:55:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-03-08"
+    "_identity": "wl|störung|L=U2|D=2026-03-08"
   }
 ]
