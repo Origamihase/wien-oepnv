@@ -94,7 +94,8 @@ NON_LOCATION_PREFIXES = {
     "lawinengefahr", "streik", "demonstration", "veranstaltung", "wartungsarbeiten",
     "update", "info", "hinweis", "achtung", "verkehrsmeldung",
     "umleitung", "haltausfall", "schienenersatzverkehr", "sev", "ersatzverkehr",
-    "streckenunterbrechung", "unterbrechung", "teilausfall", "zugausfall"
+        "streckenunterbrechung", "unterbrechung", "teilausfall", "zugausfall",
+        "verkehrseinschränkung"
 }
 
 def _is_category(text: str) -> bool:
@@ -157,8 +158,8 @@ def _clean_title_keep_places(t: str) -> str:
         else:
             break
 
-    # Sonderfall: „Wien X und Wien Y“ → „Wien X ↔ Wien Y“
-    t = re.sub(r"\b(Wien [^,;|]+?)\s+und\s+(Wien [^,;|]+?)\b", r"\1 ↔ \2", t)
+    # Allgemeiner Fall: „X und Y“ → „X ↔ Y“ für Stationen
+    t = re.sub(r"\b([^,;|]+?)\s+und\s+([^,;|]+?)\b", r"\1 ↔ \2", t)
     # Pfeile/Bindestriche und Trennzeichen normalisieren
     raw_parts = [p for p in ARROW_ANY_RE.split(t) if p.strip()]
     canonical_parts: List[str] = []
