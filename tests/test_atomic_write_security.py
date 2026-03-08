@@ -12,6 +12,7 @@ class TestAtomicWriteSecurity(unittest.TestCase):
         self.fixed_uuid_hex = "00000000000000000000000000000000"
         self.expected_tmp_path = self.tmp_path / f"target.txt.{self.fixed_uuid_hex}.tmp"
 
+    @patch("src.utils.files.os.open")
     @patch("src.utils.files.uuid.uuid4")
     @patch("builtins.open", new_callable=mock_open)
     @patch("src.utils.files.os.chmod")
@@ -19,7 +20,9 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.fsync")
     @patch("src.utils.files.os.link")
     @patch("src.utils.files.os.unlink")
-    def test_overwrite_false_uses_link(self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid):
+    def test_overwrite_false_uses_link(
+        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid, mock_os_open
+    ):
         # Setup uuid mock
         mock_uuid_obj = MagicMock()
         mock_uuid_obj.hex = self.fixed_uuid_hex
@@ -27,6 +30,7 @@ class TestAtomicWriteSecurity(unittest.TestCase):
 
         # Setup file mock
         mock_file.return_value.fileno.return_value = 123
+        mock_os_open.return_value = 123
 
         # We need to mock os.path.exists and Path.exists because atomic_write checks it first
         with patch("src.utils.files.Path.exists", return_value=False):
@@ -37,7 +41,7 @@ class TestAtomicWriteSecurity(unittest.TestCase):
                         pass
 
         # Verify open was called with correct path
-        mock_file.assert_called_once_with(self.expected_tmp_path, 'w', encoding='utf-8', newline=None)
+        mock_file.assert_called_once_with(123, 'w', encoding='utf-8', newline=None)
 
         # Verify link was called instead of replace
         args, _ = mock_link.call_args
@@ -52,6 +56,7 @@ class TestAtomicWriteSecurity(unittest.TestCase):
         mock_unlink.assert_called_with(self.expected_tmp_path)
         mock_replace.assert_not_called()
 
+    @patch("src.utils.files.os.open")
     @patch("src.utils.files.uuid.uuid4")
     @patch("builtins.open", new_callable=mock_open)
     @patch("src.utils.files.os.chmod")
@@ -59,11 +64,14 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.fsync")
     @patch("src.utils.files.os.link")
     @patch("src.utils.files.os.unlink")
-    def test_overwrite_true_uses_replace(self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid):
+    def test_overwrite_true_uses_replace(
+        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid, mock_os_open
+    ):
         mock_uuid_obj = MagicMock()
         mock_uuid_obj.hex = self.fixed_uuid_hex
         mock_uuid.return_value = mock_uuid_obj
         mock_file.return_value.fileno.return_value = 123
+        mock_os_open.return_value = 123
 
         with patch("src.utils.files.Path.exists", return_value=False):
             with patch("src.utils.files.Path.mkdir"):
@@ -77,6 +85,7 @@ class TestAtomicWriteSecurity(unittest.TestCase):
 
         mock_link.assert_not_called()
 
+    @patch("src.utils.files.os.open")
     @patch("src.utils.files.uuid.uuid4")
     @patch("builtins.open", new_callable=mock_open)
     @patch("src.utils.files.os.chmod")
@@ -84,7 +93,10 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.fsync")
     @patch("src.utils.files.os.link")
     @patch("src.utils.files.os.unlink")
-    def test_overwrite_false_race_condition(self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid):
+    @patch("src.utils.files.os.open")
+    def test_overwrite_false_race_condition(
+        self, mock_os_open, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid, mock_outer_open
+    ):
         mock_uuid_obj = MagicMock()
         mock_uuid_obj.hex = self.fixed_uuid_hex
         mock_uuid.return_value = mock_uuid_obj

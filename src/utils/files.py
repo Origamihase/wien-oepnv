@@ -48,7 +48,18 @@ def atomic_write(
 
     f: Optional[IO[Any]] = None
     try:
-        f = open(tmp_path, mode, encoding=encoding, newline=newline)
+        flags = os.O_CREAT | os.O_EXCL
+        if "a" in mode:
+            flags |= os.O_APPEND
+        if "+" in mode:
+            flags |= os.O_RDWR
+        elif "r" in mode:
+            flags |= os.O_RDONLY
+        else:
+            flags |= os.O_WRONLY
+
+        fd = os.open(tmp_path, flags, permissions)
+        f = open(fd, mode, encoding=encoding, newline=newline)
         yield f
         f.flush()
         os.fsync(f.fileno())
