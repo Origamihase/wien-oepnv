@@ -873,7 +873,7 @@ def _select_stations_round_robin(
     # 1. Shuffle daily to ensure fairness over long term but stability within day
     today = datetime.now(ZONE_VIENNA).strftime("%Y-%m-%d")
     # Use local Random instance to avoid side effects on global random state
-    rng = random.Random(today)
+    rng = random.Random(today)  # nosec B311 - used for non-cryptographic shuffling of stations
     shuffled_ids = list(ids)
     rng.shuffle(shuffled_ids)
 

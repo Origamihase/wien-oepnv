@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import logging
-import subprocess
+import subprocess  # nosec B404 - utility script to run internal scripts
 import sys
 from pathlib import Path
 from typing import Sequence

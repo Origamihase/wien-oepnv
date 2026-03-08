@@ -8,7 +8,7 @@ contributors can reproduce the results locally with a single command.
 from __future__ import annotations
 
 import argparse
-import subprocess
+import subprocess  # nosec B404 - utility script to run internal tools
 import sys
 from pathlib import Path
 
