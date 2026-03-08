@@ -20,7 +20,9 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.fsync")
     @patch("src.utils.files.os.link")
     @patch("src.utils.files.os.unlink")
-    def test_overwrite_false_uses_link(self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid, mock_os_open):
+    def test_overwrite_false_uses_link(
+        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid, mock_os_open
+    ):
         # Setup uuid mock
         mock_uuid_obj = MagicMock()
         mock_uuid_obj.hex = self.fixed_uuid_hex
@@ -62,7 +64,9 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.fsync")
     @patch("src.utils.files.os.link")
     @patch("src.utils.files.os.unlink")
-    def test_overwrite_true_uses_replace(self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid, mock_os_open):
+    def test_overwrite_true_uses_replace(
+        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid, mock_os_open
+    ):
         mock_uuid_obj = MagicMock()
         mock_uuid_obj.hex = self.fixed_uuid_hex
         mock_uuid.return_value = mock_uuid_obj
@@ -90,7 +94,9 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.link")
     @patch("src.utils.files.os.unlink")
     @patch("src.utils.files.os.open")
-    def test_overwrite_false_race_condition(self, mock_os_open, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid, mock_outer_open):
+    def test_overwrite_false_race_condition(
+        self, mock_os_open, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid, mock_outer_open
+    ):
         mock_uuid_obj = MagicMock()
         mock_uuid_obj.hex = self.fixed_uuid_hex
         mock_uuid.return_value = mock_uuid_obj
