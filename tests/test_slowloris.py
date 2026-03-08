@@ -59,8 +59,23 @@ def test_fetch_content_safe_slowloris(mock_verify_ip, mock_validate_url):
     # So read_response_safe will get ~0.1s timeout.
     # The iterator sleeps 0.3s, so it should fail.
 
-    with pytest.raises(requests.Timeout) as excinfo:
-        fetch_content_safe(session, "http://example.com", timeout=0.1)
+    with patch("src.utils.http.time.monotonic") as mock_monotonic:
+        mock_monotonic.side_effect = [
+            0.0, # start time
+            0.0, # elapsed calculation before request
+            0.0, # elapsed calculation before read
+            0.0, # remaining calculation for read (new after tuple fix)
+            0.0, # read_response start
+            0.2, # first iter chunk
+            0.4, # second iter chunk (should timeout here)
+            0.6,
+            0.8,
+            1.0,
+            1.2,
+            1.4,
+        ]
+        with pytest.raises(requests.Timeout) as excinfo:
+            fetch_content_safe(session, "http://example.com", timeout=0.1)
 
     assert "Read timed out" in str(excinfo.value)
 

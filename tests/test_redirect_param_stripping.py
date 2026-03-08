@@ -49,9 +49,10 @@ class TestRedirectParamStripping(unittest.TestCase):
         # We need to mock PinnedHTTPSAdapter to return our responses.
         # But request_safe instantiates PinnedHTTPSAdapter locally.
 
-        # Strategy: Mock PinnedHTTPSAdapter class in src.utils.http
-        with patch("src.utils.http.PinnedHTTPSAdapter") as MockAdapterClass:
-            mock_adapter = MockAdapterClass.return_value
+        # Strategy: Mock _get_pinned_session in src.utils.http
+        with patch("src.utils.http._get_pinned_session") as mock_get_pinned:
+            mock_pinned_session = mock_get_pinned.return_value
+            mock_adapter = mock_pinned_session.get_adapter.return_value
             mock_adapter.send.side_effect = [cm1, cm2]
 
             # session.prepare_request is also called
