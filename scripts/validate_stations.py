@@ -58,11 +58,22 @@ def main() -> int:
                 print(f"Invalid {key} for VOR: {value}", file=sys.stderr)
                 return 1
 
-    oebb_codes = {
-        station.get("bst_code")
-        for station in stations
-        if station.get("source") == "oebb"
-    }
+    oebb_codes = set()
+    for station in stations:
+        source = station.get("source")
+        is_oebb = False
+        if isinstance(source, str):
+            parts = [s.strip() for s in source.split(",")]
+            if "oebb" in parts:
+                is_oebb = True
+        elif isinstance(source, list):
+            if "oebb" in source:
+                is_oebb = True
+
+        if is_oebb:
+            bst_code = station.get("bst_code")
+            if bst_code:
+                oebb_codes.add(bst_code)
     conflicts = [station for station in vor_entries if station.get("bst_code") in oebb_codes]
     if conflicts:
         print("VOR bst_code collides with OEBB", file=sys.stderr)

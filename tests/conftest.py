@@ -112,7 +112,9 @@ def _extract_streckendaten(archive: Path, target_dir: Path) -> list[Path]:
     created_paths: list[Path] = []
     with zipfile.ZipFile(archive, "r") as zipped:
         for info in zipped.infolist():
-            destination = target_dir / info.filename
+            destination = (target_dir / info.filename).resolve()
+            if not destination.is_relative_to(target_dir.resolve()):
+                continue
             if info.is_dir():
                 destination.mkdir(parents=True, exist_ok=True)
                 continue
@@ -136,7 +138,7 @@ def _ensure_streckendaten_dataset() -> tuple[Path, bool, bool, bool, list[Path]]
     if not archive_existed:
         download_url = os.getenv("STRECKENDATEN_DOWNLOAD_URL")
         created = False
-        if download_url:
+        if download_url and download_url.startswith("https://"):
             created = _download_streckendaten(download_url, archive_path)
         if not created:
             _write_sample_streckendaten(archive_path)
