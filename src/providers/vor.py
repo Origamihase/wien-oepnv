@@ -1042,12 +1042,12 @@ def resolve_station_ids(names: Iterable[str]) -> List[str]:
     return resolved
 
 
-def load_request_count() -> tuple[str | None, int]:
+def load_request_count(bypass_cache: bool = False) -> tuple[str | None, int]:
     # Check memory cache first
     vienna_tz = ZoneInfo("Europe/Vienna")
     today_local = datetime.now(vienna_tz).strftime("%Y-%m-%d")
 
-    if _QUOTA_CACHE["date"] == today_local:
+    if not bypass_cache and _QUOTA_CACHE["date"] == today_local:
         # If we have a cached value for today, it might be stale but it's a lower bound.
         # However, for accurate reading we fall through to file.
         return (today_local, _QUOTA_CACHE["count"])
@@ -1101,7 +1101,7 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
         try:
             with lock_path.open("a+", encoding="utf-8") as lock_file:
                 with file_lock(lock_file, exclusive=True):
-                    previous_date, previous_count = load_request_count()
+                    previous_date, previous_count = load_request_count(bypass_cache=True)
 
                     # load_request_count returns (None, 0) if date mismatch or invalid,
                     # so we can just use previous_count directly if date matches (which it won't if None).
