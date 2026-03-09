@@ -254,54 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Fahrtbehinderung wegen Kranarbeiten",
-    "description": "Fahrtbehinderung wegen Kranarbeiten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "12568feac253f498cef6d0727a6353defae690f014e13e4f7209317d5a2cd340",
-    "pubDate": "2026-03-07T20:10:38+01:00",
-    "starts_at": "2026-03-07T20:10:38+01:00",
-    "ends_at": "2026-03-09T05:00:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2026-03-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Kranarbeiten Betrieb ab Strozzigasse",
-    "description": "Kranarbeiten Betrieb ab Strozzigasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "16658920d5ae4c08d283ac8896c626632ed194c88d5e13ae031a24be6386acb7",
-    "pubDate": "2026-03-07T20:11:36+01:00",
-    "starts_at": "2026-03-07T20:11:36+01:00",
-    "ends_at": "2026-03-09T05:00:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2026-03-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Kranarbeiten Busse halten bei Linie 46",
-    "description": "Kranarbeiten Busse halten bei Linie 46",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b4f5e9666655265d37f93b5801dad8b36abfc50f2a6d31c11d226188bf3af0ea",
-    "pubDate": "2026-03-07T20:14:01+01:00",
-    "starts_at": "2026-03-07T20:14:01+01:00",
-    "ends_at": "2026-03-09T05:00:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2026-03-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Fahrtbehinderung wegen Kranarbeiten",
-    "description": "Fahrtbehinderung wegen Kranarbeiten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bd77fdee12f35ec1a1be3482a9e2f4a219d3c6b75ee77d1e65d64e571a793573",
-    "pubDate": "2026-03-07T20:15:28+01:00",
-    "starts_at": "2026-03-07T20:15:28+01:00",
-    "ends_at": "2026-03-09T05:00:00+01:00",
-    "_identity": "wl|störung|L=N71|D=2026-03-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Kranarbeiten Betrieb ab Strozzigasse",
     "description": "Kranarbeiten Betrieb ab Strozzigasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -309,18 +261,6 @@
     "pubDate": "2026-03-07T20:16:55+01:00",
     "starts_at": "2026-03-07T20:16:55+01:00",
     "ends_at": "2026-03-09T09:00:00+01:00",
-    "_identity": "wl|störung|L=N71|D=2026-03-07"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N71: Kranarbeiten Busse halten bei Linie 46",
-    "description": "Kranarbeiten Busse halten bei Linie 46",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3458aed9ae073247548f18581ef1ce6c02f8f538d8da369e21b8f50d3860fb77",
-    "pubDate": "2026-03-07T20:17:53+01:00",
-    "starts_at": "2026-03-07T20:17:53+01:00",
-    "ends_at": "2026-03-09T05:00:00+01:00",
     "_identity": "wl|störung|L=N71|D=2026-03-07"
   },
   {
@@ -338,49 +278,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N6: Busse halten Neilreichgasse 20-22",
-    "description": "Gleisbauarbeiten Busse halten Neilreichgasse 20-22",
+    "title": "62A: Busse halten Breitenfurter Straße 236-238",
+    "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc",
-    "pubDate": "2026-03-09T00:45:14+01:00",
-    "starts_at": "2026-03-09T00:45:14+01:00",
-    "ends_at": "2026-03-09T05:00:00+01:00",
-    "_identity": "wl|störung|L=N6|D=2026-03-09"
+    "guid": "156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3",
+    "pubDate": "2026-03-09T04:45:09+01:00",
+    "starts_at": "2026-03-09T04:45:09+01:00",
+    "ends_at": "2026-03-10T00:35:00+01:00",
+    "_identity": "wl|störung|L=62A|D=2026-03-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N6: Busse halten Gudrunstraße 180-182",
-    "description": "Gleisbauarbeiten Busse halten Gudrunstraße 180-182",
+    "title": "13A: Betriebsstörung",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fbfa0b2306277b65aba8c13e9b5073f18115488ed43a43c926311b82766a8c92",
-    "pubDate": "2026-03-09T00:45:14+01:00",
-    "starts_at": "2026-03-09T00:45:14+01:00",
-    "ends_at": "2026-03-09T05:00:00+01:00",
-    "_identity": "wl|störung|L=N6|D=2026-03-09"
+    "guid": "278826ec1389a2274acd4046668727a4496cffab62cc72d4a01066ea95dcfaa3",
+    "pubDate": "2026-03-09T04:57:00+01:00",
+    "starts_at": "2026-03-09T04:57:00+01:00",
+    "ends_at": "2026-03-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-03-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N6: Busse halten Gudrunstraße 196A",
-    "description": "Gleisbauarbeiten Busse halten Gudrunstraße 196A",
+    "title": "U3: Betriebsstörung",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0cf569725ac80d096bc347407926f44d828fdce3378908092ad86d9c865de765",
-    "pubDate": "2026-03-09T00:45:14+01:00",
-    "starts_at": "2026-03-09T00:45:14+01:00",
-    "ends_at": "2026-03-09T05:00:00+01:00",
-    "_identity": "wl|störung|L=N6|D=2026-03-09"
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2026-03-09T05:05:00+01:00",
+    "starts_at": "2026-03-09T05:05:00+01:00",
+    "ends_at": "2026-03-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2026-03-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N6: Busse halten Gudrunstraße 189",
-    "description": "Gleisbauarbeiten Busse halten Gudrunstraße 189",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a26896f9ae690ae0d90cf6c4fa75ebda5e6f394f4a9186b58ffa2af7f8459e7",
-    "pubDate": "2026-03-09T00:45:14+01:00",
-    "starts_at": "2026-03-09T00:45:14+01:00",
-    "ends_at": "2026-03-09T05:00:00+01:00",
-    "_identity": "wl|störung|L=N6|D=2026-03-09"
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-03-09T05:07:00+01:00",
+    "starts_at": "2026-03-09T05:07:00+01:00",
+    "ends_at": "2026-03-09T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2026-03-09"
   }
 ]
