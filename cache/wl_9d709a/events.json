@@ -290,37 +290,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Rettungseinsatz",
-    "description": "Linie 46: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "title": "39A: Verspätungen",
+    "description": "Linie 39A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc",
-    "pubDate": "2026-03-09T16:51:00+01:00",
-    "starts_at": "2026-03-09T16:51:00+01:00",
-    "ends_at": "2026-03-09T17:47:00+01:00",
-    "_identity": "wl|störung|L=46|D=2026-03-09"
+    "guid": "0d9b2c21192d370d49c26a63f910b951db7c6d82fe54d2f7390917957d08150c",
+    "pubDate": "2026-03-09T18:08:00+01:00",
+    "starts_at": "2026-03-09T18:08:00+01:00",
+    "ends_at": "2026-03-09T18:55:00+01:00",
+    "_identity": "wl|störung|L=39A|D=2026-03-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Falschparker Züge halten Rosensteingasse 61",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "13A: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung Betriebsstörung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-03-09T16:54:00+01:00",
-    "starts_at": "2026-03-09T17:01:17+01:00",
-    "ends_at": "2026-03-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=9|D=2026-03-09"
+    "guid": "ea370de8f0b1ba36cf263e1df859ab0e5dc17767409d900442e39a6e231282e6",
+    "pubDate": "2026-03-09T18:31:58+01:00",
+    "starts_at": "2026-03-09T18:31:58+01:00",
+    "ends_at": "2026-03-09T19:31:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-03-09"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26A: Rettungseinsatz",
-    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "title": "14A: Fahrtbehinderung Betriebsstörung",
+    "description": "Fahrtbehinderung Betriebsstörung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0245b6164e8aeaf5bf219cd1cff1358fe2406e2c522e5ac88f5e5fc5c5e87abe",
-    "pubDate": "2026-03-09T17:24:00+01:00",
-    "starts_at": "2026-03-09T17:24:00+01:00",
-    "ends_at": "2026-03-09T23:55:00+01:00",
-    "_identity": "wl|störung|L=26A|D=2026-03-09"
+    "guid": "18e11791a6a238e29e83b9dce8d864e64f151e56fbdcb5f85018290f7db9f0b5",
+    "pubDate": "2026-03-09T18:32:56+01:00",
+    "starts_at": "2026-03-09T18:32:56+01:00",
+    "ends_at": "2026-03-09T19:32:00+01:00",
+    "_identity": "wl|störung|L=14A|D=2026-03-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "32ae66e6206b82ebc95ff253940dc84dcc795b64994268f24cd4036d2e9a3634",
+    "pubDate": "2026-03-09T18:33:12+01:00",
+    "starts_at": "2026-03-09T18:33:33+01:00",
+    "ends_at": "2026-03-09T19:32:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-03-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "94f4eb65518cea7f3596d07523d5e3ba07cc2ee6eadafdf524ef5a92f01f2dc6",
+    "pubDate": "2026-03-09T18:33:40+01:00",
+    "starts_at": "2026-03-09T18:34:02+01:00",
+    "ends_at": "2026-03-09T19:33:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-03-09"
   }
 ]
