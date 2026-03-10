@@ -298,5 +298,17 @@
     "starts_at": "2026-03-10T23:00:02+01:00",
     "ends_at": "2026-03-11T05:30:00+01:00",
     "_identity": "wl|störung|L=N29|D=2026-03-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Betriebsstörung",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
+    "pubDate": "2026-03-10T23:28:00+01:00",
+    "starts_at": "2026-03-10T23:28:00+01:00",
+    "ends_at": "2026-03-11T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2026-03-10"
   }
 ]
