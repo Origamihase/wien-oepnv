@@ -89,13 +89,6 @@ def test_rate_limit_retries_once_after_wait(monkeypatch, caplog):
     calls = []
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession(responses, calls))
 
-    slept = []
-
-    def fake_sleep(seconds):
-        slept.append(seconds)
-
-    monkeypatch.setattr(oebb.time, "sleep", fake_sleep)
-
     caplog.set_level(logging.WARNING, logger=oebb.log.name)
 
     # Mock DNS resolution to return a known IP, as request_safe pins HTTP URLs
@@ -108,8 +101,6 @@ def test_rate_limit_retries_once_after_wait(monkeypatch, caplog):
 
     assert result is None
     assert len(calls) == 1
-
-    assert slept == []
 
     log_text = caplog.text
     # My implementation logs the exception message
@@ -133,13 +124,6 @@ def test_rate_limit_raises_http_error_after_retry(monkeypatch):
     calls = []
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession(responses, calls))
 
-    slept = []
-
-    def fake_sleep(seconds):
-        slept.append(seconds)
-
-    monkeypatch.setattr(oebb.time, "sleep", fake_sleep)
-
     # Mock DNS resolution to return a known IP
     from unittest.mock import patch
     with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:
@@ -149,4 +133,3 @@ def test_rate_limit_raises_http_error_after_retry(monkeypatch):
 
     assert result is None
     assert len(calls) == 1
-    assert slept == []

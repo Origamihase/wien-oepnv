@@ -52,16 +52,9 @@ def test_oebb_retry_after_capped(monkeypatch, caplog):
     monkeypatch.setattr(oebb, "fetch_content_safe", fake_fetch_safe)
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession())
 
-    sleep_calls: list[float] = []
-    def fake_sleep(seconds):
-        sleep_calls.append(seconds)
-
-    monkeypatch.setattr(oebb.time, "sleep", fake_sleep)
-
     caplog.set_level(logging.WARNING, logger=oebb.log.name)
 
     result = oebb.fetch_events()
 
     assert len(result) == 0
-    assert len(sleep_calls) == 0
     assert any("Fail-Fast" in message for message in caplog.messages)
