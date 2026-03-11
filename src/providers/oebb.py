@@ -20,7 +20,6 @@ from __future__ import annotations
 import logging
 import os
 import re
-import time
 from datetime import datetime, timezone
 from typing import List, Optional
 from email.utils import parsedate_to_datetime

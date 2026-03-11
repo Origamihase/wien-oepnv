@@ -1,7 +1,6 @@
 import logging
 from unittest.mock import MagicMock
 
-import pytest
 import src.providers.oebb as oebb
 from tests.mock_utils import get_mock_socket_structure
 
@@ -118,7 +117,6 @@ def test_rate_limit_retries_once_after_wait(monkeypatch, caplog):
 
 
 def test_rate_limit_raises_http_error_after_retry(monkeypatch):
-    import requests
 
     responses = [
         DummyResponse(429, {"Retry-After": "1.5"}),
