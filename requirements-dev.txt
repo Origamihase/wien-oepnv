@@ -4,3 +4,5 @@ ruff>=0.4.7,<0.5
 bandit>=1.7,<2.0
 pip-audit
 hypothesis>=6.0
+pytest>=8.0,<9
+responses>=0.25,<1

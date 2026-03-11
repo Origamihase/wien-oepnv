@@ -519,8 +519,6 @@ def _normalize_item_datetimes(
 
 def _load_state() -> Dict[str, Dict[str, Any]]:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
-    if not path.exists():
-        return {}
     try:
         lock_path = path.with_suffix(".lock")
         with lock_path.open("a+", encoding="utf-8") as lock_file:
@@ -528,6 +526,8 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
                 with path.open("r", encoding="utf-8") as f:
                     data = json.load(f)
         data = data if isinstance(data, dict) else {}
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
     except Exception as e:
         log.warning("State laden fehlgeschlagen (%s) – starte leer.", e)
         return {}
@@ -803,7 +803,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
 
                 def _run_fetch(
                     fetch: Any = fetch,
-                    timeout_value: int = effective_timeout,
+                    timeout_value: Union[int, float] = effective_timeout,
                     supports: bool = supports_timeout,
                     semaphore: Optional[BoundedSemaphore] = semaphore,
                 ) -> Any:
@@ -1717,7 +1717,7 @@ if __name__ == "__main__":
         sys.exit(main())
     except Exception:
         # Security: Prevent stack trace and sensitive info leakage to stderr
-        if os.getenv("WIEN_OEPNV_DEBUG"):
+        if os.getenv("WIEN_OEPNV_DEBUG") == "1":
             raise
 
         # The exception is likely already logged by the application logger if configured.
