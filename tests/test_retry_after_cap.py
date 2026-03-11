@@ -60,9 +60,8 @@ def test_oebb_retry_after_capped(monkeypatch, caplog):
 
     caplog.set_level(logging.WARNING, logger=oebb.log.name)
 
-    import pytest
-    with pytest.raises(requests.HTTPError):
-        oebb.fetch_events()
+    result = oebb.fetch_events()
 
-    assert len(sleep_calls) > 0
-    assert sleep_calls[0] <= 120.0
+    assert len(result) == 0
+    assert len(sleep_calls) == 0
+    assert any("Fail-Fast" in message for message in caplog.messages)

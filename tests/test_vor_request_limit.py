@@ -180,7 +180,8 @@ def test_save_request_count_returns_previous_on_replace_failure(monkeypatch, tmp
 
     result = vor.save_request_count()
 
-    assert result == 3
+    assert result == vor.MAX_REQUESTS_PER_DAY + 1
+    # We poisoned the cache and returned the poison pill, the file wasn't replaced
     stored = json.loads(target_file.read_text(encoding="utf-8"))
     assert stored["requests"] == 3
 

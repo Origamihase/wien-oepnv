@@ -1413,7 +1413,9 @@ def request_safe(
 
                             # Task 1: Remove Host header to prevent SNI/Host mismatch on redirect
                             if "headers" in kwargs:
-                                kwargs["headers"].pop("Host", None)
+                                for h in list(kwargs["headers"].keys()):
+                                    if h.lower() == "host":
+                                        del kwargs["headers"][h]
 
                             continue
 

@@ -168,7 +168,7 @@ def _load_int_env(name: str, default: int) -> int:
     return value
 
 
-def _compile_regex(name: str, default_pattern: str) -> re.Pattern[str]:
+def _compile_regex(name: str, default_pattern: str) -> re.Pattern[Any]:
     raw = _get_env(name)
     if not raw:
         return re.compile(default_pattern)
@@ -1127,7 +1127,9 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
                         _QUOTA_CACHE["count"] = new_count
 
                     except OSError:
-                        return previous_count
+                        log.critical("Failed to write to request count file. Quota mechanism poisoned.")
+                        _QUOTA_CACHE["count"] = MAX_REQUESTS_PER_DAY + 1
+                        return MAX_REQUESTS_PER_DAY + 1
                     return new_count
         except Exception as e:
             log.warning("Failed to save request count (lock error): %s", e)
