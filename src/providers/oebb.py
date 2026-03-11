@@ -20,7 +20,6 @@ from __future__ import annotations
 import logging
 import os
 import re
-import time
 from datetime import datetime, timezone
 from typing import List, Optional
 from email.utils import parsedate_to_datetime
@@ -344,10 +343,8 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
 
                 if attempt == 0:
                      if wait_seconds > 0:
-                        if wait_seconds > RETRY_AFTER_MAX_SEC:
-                            log.warning("Retry-After %.1fs zu hoch – kappe auf %.1fs", wait_seconds, RETRY_AFTER_MAX_SEC)
-                            wait_seconds = RETRY_AFTER_MAX_SEC
-                        time.sleep(wait_seconds)
+                         log.warning("ÖBB RSS Rate-Limit erreicht. Breche ab (Fail-Fast).")
+                         return None
                      continue
                 raise
 
