@@ -290,24 +290,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "15A: Rettungseinsatz",
-    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "title": "U3: Stromstörung",
+    "description": "Die Linie U3 fährt derzeit nur zwischen Ottakring und Schlachthausgasse. Voraussichtliche Dauer: 08:30 Uhr. Grund: Stromstörung im Bereich Erdberg.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bc65efc0eaddbdf7e05327a802d1b0275625e76f2f1601244d8cb88fec910412",
-    "pubDate": "2026-03-12T06:16:00+01:00",
-    "starts_at": "2026-03-12T06:16:00+01:00",
-    "ends_at": "2026-03-12T23:55:00+01:00",
-    "_identity": "wl|störung|L=15A|D=2026-03-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Schadhaftes Fahrzeug",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
-    "pubDate": "2026-03-12T06:21:00+01:00",
-    "starts_at": "2026-03-12T06:21:00+01:00",
+    "guid": "7e5afc3d4d87de268169574d3f2a1454609b5961092564dc0c302594e96cafcd",
+    "pubDate": "2026-03-12T07:43:00+01:00",
+    "starts_at": "2026-03-12T07:43:00+01:00",
     "ends_at": "2026-03-12T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2026-03-12"
   }
