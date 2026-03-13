@@ -314,30 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "41: Betriebsstörung",
-    "description": "Linie 41: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "39c61af4f59bba7918a10e37623db5e5dd9267203c7128da28dad3834ab737f5",
-    "pubDate": "2026-03-13T05:09:00+01:00",
-    "starts_at": "2026-03-13T05:09:00+01:00",
-    "ends_at": "2026-03-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=41|D=2026-03-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Polizeieinsatz",
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6",
-    "pubDate": "2026-03-13T05:43:00+01:00",
-    "starts_at": "2026-03-13T05:43:00+01:00",
-    "ends_at": "2026-03-13T23:55:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-03-13"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Polizeieinsatz",
     "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -350,13 +326,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung Schadhafter PKW",
-    "description": "Fahrtbehinderung Schadhafter PKW",
+    "title": "10: Verkehrsunfall",
+    "description": "Linie 10: Fahrtbehinderung in Richtung Dornbach. Voraussichtliche Dauer: 08:00 Uhr. Grund: Verkehrsunfall im Bereich Linzer Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "16b072dd40df82c56241e536ecbe7c613c73c73d601afdcf8db1b49fe92c3fe9",
-    "pubDate": "2026-03-13T05:43:02+01:00",
-    "starts_at": "2026-03-13T05:43:02+01:00",
-    "ends_at": "2026-03-13T07:45:00+01:00",
-    "_identity": "wl|störung|L=9|D=2026-03-13"
+    "guid": "61b24b179dc99eec46268642e5c4452102c4449a15d1457fb096c76204442f5f",
+    "pubDate": "2026-03-13T07:33:00+01:00",
+    "starts_at": "2026-03-13T07:33:00+01:00",
+    "ends_at": "2026-03-13T23:55:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-03-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7091f5ceb189603887edeb672707027ab0765bd9fd7a0fa2d67f934f96a2ae34",
+    "pubDate": "2026-03-13T07:34:42+01:00",
+    "starts_at": "2026-03-13T07:34:42+01:00",
+    "ends_at": "2026-03-13T08:34:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-03-13"
   }
 ]
