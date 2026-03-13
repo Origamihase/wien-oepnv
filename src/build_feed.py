@@ -107,19 +107,19 @@ read_cache = _core_read_cache
 
 
 def read_cache_wl() -> List[Any]:
-    return list(read_cache("wl"))
+    return list(read_cache("wl") or [])
 
 
 def read_cache_oebb() -> List[Any]:
-    return list(read_cache("oebb"))
+    return list(read_cache("oebb") or [])
 
 
 def read_cache_vor() -> List[Any]:
-    return list(read_cache("vor"))
+    return list(read_cache("vor") or [])
 
 
 def read_cache_baustellen() -> List[Any]:
-    return list(read_cache("baustellen"))
+    return list(read_cache("baustellen") or [])
 
 
 DEFAULT_PROVIDERS: Tuple[Tuple[str, Any], ...] = (
@@ -423,7 +423,7 @@ _CONTROL_RE = re.compile(
 _LINE_TOKEN_RE = re.compile(r"^(?:\d{1,3}[A-Z]?|[A-Z]{1,4}\d{0,3})$")
 
 _LINE_PREFIX_RE = re.compile(
-    r"^\s*([A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20})\s*:\s*"
+    r"^\s*([A-Za-z0-9]+\s*(?:/\s*[A-Za-z0-9]+){0,20})\s*:\s*"
 )
 
 DATE_RANGE_RE = re.compile(
@@ -568,7 +568,7 @@ def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] 
     path.parent.mkdir(parents=True, exist_ok=True)
     # Windows-fix: Use a separate lock file to avoid permission errors when atomic_write replaces the target
     lock_path = path.with_suffix(".lock")
-    with lock_path.open("a+", encoding="utf-8") as lock_file:
+    with lock_path.open("w", encoding="utf-8") as lock_file:
         with file_lock(lock_file, exclusive=True):
             # Safe merge: read existing state to avoid overwriting parallel updates
             merged_state = {}
@@ -763,7 +763,8 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     feed_config.PROVIDER_MAX_WORKERS,
                 )
             desired_workers = min(desired_workers, feed_config.PROVIDER_MAX_WORKERS)
-        with ThreadPoolExecutor(max_workers=max(1, desired_workers)) as executor:
+        executor = ThreadPoolExecutor(max_workers=max(1, desired_workers))
+        try:
             futures: Dict[Any, Tuple[Any, str, int]] = {}
             deadlines: Dict[Any, Optional[float]] = {}
             pending: set[Any] = set()
@@ -894,6 +895,8 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
                     else:
                         _merge_result(fetch, result, provider_name)
+        finally:
+            executor.shutdown(wait=False, cancel_futures=True)
 
         return items
     finally:

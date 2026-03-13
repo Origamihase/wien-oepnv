@@ -21,7 +21,6 @@ def test_thread_pool_cleanup():
             # Mock ThreadPoolExecutor
             with patch("src.build_feed.ThreadPoolExecutor") as MockExecutor:
                 mock_instance = MockExecutor.return_value
-                mock_instance.__enter__.return_value = mock_instance
 
                 # Mock wait to return immediately
                 with patch("src.build_feed.wait", return_value=(set(), set())):
@@ -30,6 +29,6 @@ def test_thread_pool_cleanup():
                 # Check if executor was created
                 assert MockExecutor.called, "ThreadPoolExecutor was not instantiated"
 
-                # Check if context manager was used
-                assert mock_instance.__enter__.called, "__enter__ was not called"
-                assert mock_instance.__exit__.called, "__exit__ was not called"
+                # Check if executor was shutdown correctly without context manager
+                assert mock_instance.shutdown.called, "shutdown was not called"
+                mock_instance.shutdown.assert_called_with(wait=False, cancel_futures=True)
