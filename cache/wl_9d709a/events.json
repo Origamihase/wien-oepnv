@@ -322,5 +322,53 @@
     "starts_at": "2026-03-13T23:00:00+01:00",
     "ends_at": "2026-03-14T05:30:00+01:00",
     "_identity": "wl|störung|L=N29|D=2026-03-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Gegenstände im Gleis",
+    "description": "Linie 6: Umleitung in Richtung Burggasse, Stadthalle U zwischen Quellenplatz und Matzleinsdorfer Platz S über Hauptbahnhof S U. Voraussichtliche Dauer: Betriebsschluss. Grund: Gegenstände im Gleis im Bereich Quellenstraße # Bernhardtstalgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5d7706573534255e0c4e165473d217e5b6d0965f87c892eabe95ab427e67eee0",
+    "pubDate": "2026-03-13T23:42:00+01:00",
+    "starts_at": "2026-03-13T23:42:00+01:00",
+    "ends_at": "2026-03-14T23:55:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-03-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Feuerwehreinsatz Betrieb ab Matzleinsdorfer Platz",
+    "description": "Feuerwehreinsatz Betrieb ab Matzleinsdorfer Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "76378137899f1473dc49daa758d74fae43239b617025813b4411aeb7cc9c3ef5",
+    "pubDate": "2026-03-13T23:44:45+01:00",
+    "starts_at": "2026-03-13T23:44:45+01:00",
+    "ends_at": "2026-03-13T23:59:59+01:00",
+    "_identity": "wl|störung|L=6|D=2026-03-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Feuerwehreinsatz Einstieg bei Linie 18 Richtung Burggasse",
+    "description": "Feuerwehreinsatz Einstieg bei Linie 18 Richtung Burggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e9dbc2cb11627dfe3acba1aba3f5614bf60d0e9c14ba7d001a507db4aa0c7b8",
+    "pubDate": "2026-03-13T23:46:12+01:00",
+    "starts_at": "2026-03-13T23:46:12+01:00",
+    "ends_at": "2026-03-13T23:59:59+01:00",
+    "_identity": "wl|störung|L=6|D=2026-03-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Feuerwehreinsatz Umleitung über Linie O und 18 zum Matzleinsdorfer Platz",
+    "description": "Feuerwehreinsatz Umleitung über Linie O und 18 zum Matzleinsdorfer Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ddfa904cfc2ce8c19b1dd67283667d1d174ce0e24cc6d51c25b850b50f782c9d",
+    "pubDate": "2026-03-13T23:47:10+01:00",
+    "starts_at": "2026-03-13T23:47:10+01:00",
+    "ends_at": "2026-03-13T23:59:59+01:00",
+    "_identity": "wl|störung|L=6|D=2026-03-13"
   }
 ]
