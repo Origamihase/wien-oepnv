@@ -324,8 +324,9 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
             except requests.RequestException as e:
                 log.warning("ÖBB RSS fetch fehlgeschlagen (Versuch %d): %s", attempt + 1, sanitize_log_arg(e))
 
-                wait_seconds = 1.0
+                wait_seconds = 0.0
                 if e.response is not None and e.response.status_code == 429:
+                    wait_seconds = 1.0  # Default for 429 if no valid Retry-After is found
                     header = e.response.headers.get("Retry-After")
                     if header:
                         try:
@@ -362,6 +363,9 @@ def _parse_dt_rfc2822(s: str) -> Optional[datetime]:
         return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
     except Exception:
         return None
+
+def _is_poor_title(t: str) -> bool:
+    return not t or not any(c.isalnum() for c in t) or t == "-"
 
 # ---------------- Public ----------------
 def fetch_events(timeout: int = 25) -> List[FeedItem]:
@@ -401,9 +405,6 @@ def fetch_events(timeout: int = 25) -> List[FeedItem]:
                 title = f"{line_str}: {title}"
 
         # Title Fallback for "poor" titles
-        def _is_poor_title(t: str) -> bool:
-            return not t or not any(c.isalnum() for c in t) or t == "-"
-
         if _is_poor_title(title):
             # Attempt 1: ID from Link/GUID
             station_id = _extract_id_from_url(link) or _extract_id_from_url(guid)
