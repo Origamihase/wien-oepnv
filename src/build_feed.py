@@ -19,6 +19,7 @@ from concurrent.futures import (
     wait,
 )
 from datetime import datetime, timedelta, timezone
+import requests
 from dateutil import parser
 from email.utils import format_datetime
 from pathlib import Path
@@ -818,7 +819,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     start_wait = perf_counter()
                     acquired = semaphore.acquire(timeout=timeout_arg)
                     if not acquired:
-                         raise TimeoutError(f"Semaphore acquisition timed out after {timeout_value}s")
+                         raise requests.exceptions.Timeout(f"Semaphore acquisition timed out after {timeout_value}s")
 
                     # Task 3: Subtract wait time from timeout
                     try:
@@ -826,7 +827,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         remaining_timeout = timeout_arg - elapsed
 
                         if remaining_timeout <= 0:
-                            raise TimeoutError(f"Semaphore acquisition took {elapsed:.2f}s, no time left for fetch")
+                            raise requests.exceptions.Timeout(f"Semaphore acquisition took {elapsed:.2f}s, no time left for fetch")
 
                         return _call_fetch_with_timeout(fetch, remaining_timeout, supports)
                     finally:
@@ -884,7 +885,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     name = getattr(fetch, "__name__", str(fetch))
                     try:
                         result = future.result()
-                    except TimeoutError as exc:
+                    except (TimeoutError, requests.exceptions.Timeout) as exc:
                         log.error("%s fetch Timeout: %s", name, exc)
                         report.provider_error(provider_name, f"Timeout: {exc}")
                     except CancelledError:

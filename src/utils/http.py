@@ -15,7 +15,7 @@ import types
 import unicodedata
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
 from typing import Any, Container, Mapping, MutableMapping, TypeGuard, Union
-from urllib.parse import parse_qsl, urlencode, urlparse
+from urllib.parse import parse_qsl, urlencode, urljoin, urlparse
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -466,7 +466,7 @@ def _check_response_security(response: requests.Response, *args: Any, **kwargs: 
         next_url = response.headers.get("Location")
         if next_url:
             # Join relative URLs
-            full_url = requests.compat.urljoin(response.url, next_url)
+            full_url = urljoin(response.url, next_url)
             if not validate_http_url(full_url):
                 safe_url = _sanitize_url_for_error(full_url)
                 raise ValueError(f"Unsafe redirect to: {safe_url}")
@@ -1346,7 +1346,7 @@ def request_safe(
                                 )
 
                             # Resolve relative URLs
-                            next_url = requests.compat.urljoin(current_url, location)
+                            next_url = urljoin(current_url, location)
 
                             # Strip sensitive headers if needed
                             # We pass session.headers to ensure they are masked (set to None) if present
