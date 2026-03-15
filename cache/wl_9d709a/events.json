@@ -334,5 +334,17 @@
     "starts_at": "2026-03-15T11:47:04+01:00",
     "ends_at": "2026-03-15T23:59:59+01:00",
     "_identity": "wl|störung|L=9|D=2026-03-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Polizeieinsatz",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
+    "pubDate": "2026-03-15T12:14:00+01:00",
+    "starts_at": "2026-03-15T12:14:00+01:00",
+    "ends_at": "2026-03-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-03-15"
   }
 ]
