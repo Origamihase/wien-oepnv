@@ -286,5 +286,29 @@
     "starts_at": "2026-03-15T04:45:22+01:00",
     "ends_at": "2026-03-16T00:35:00+01:00",
     "_identity": "wl|störung|L=62A|D=2026-03-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verunreinigung",
+    "description": "Linie U3: Unregelmäßige Intervalle in Richtung Simmering. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
+    "pubDate": "2026-03-15T05:59:00+01:00",
+    "starts_at": "2026-03-15T05:59:00+01:00",
+    "ends_at": "2026-03-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2026-03-15"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verspätungen",
+    "description": "Linie U4: Unregelmäßige Intervalle in Richtung Heiligenstadt. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-03-15T06:04:00+01:00",
+    "starts_at": "2026-03-15T06:04:00+01:00",
+    "ends_at": "2026-03-15T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2026-03-15"
   }
 ]
