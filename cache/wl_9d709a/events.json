@@ -242,18 +242,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-03-16T00:00:06+01:00",
-    "starts_at": "2026-03-16T00:00:06+01:00",
-    "ends_at": "2026-03-16T23:59:59+01:00",
-    "_identity": "wl|störung|L=74A|D=2026-03-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -262,6 +250,18 @@
     "starts_at": "2026-03-16T00:00:06+01:00",
     "ends_at": "2026-03-16T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-03-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-03-16T00:00:06+01:00",
+    "starts_at": "2026-03-16T00:00:06+01:00",
+    "ends_at": "2026-03-16T23:59:59+01:00",
+    "_identity": "wl|störung|L=74A|D=2026-03-16"
   },
   {
     "source": "Wiener Linien",
@@ -386,61 +386,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a71fc169a65218e40e97e38cf1216a0530e03cb41823f0f6e351949dbeea8a98",
-    "pubDate": "2026-03-16T17:34:45+01:00",
-    "starts_at": "2026-03-16T17:35:13+01:00",
-    "ends_at": "2026-03-16T21:00:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-03-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Rettungseinsatz Betrieb ab Quartier Belvedere",
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Rettungseinsatz Betrieb ab Quartier Belvedere",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
-    "pubDate": "2026-03-16T19:10:00+01:00",
+    "pubDate": "2026-03-16T19:17:58+01:00",
     "starts_at": "2026-03-16T19:18:56+01:00",
-    "ends_at": "2026-03-16T23:55:00+01:00",
+    "ends_at": "2026-03-16T22:45:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-03-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Rettungseinsatz",
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
-    "pubDate": "2026-03-16T19:10:00+01:00",
-    "starts_at": "2026-03-16T19:10:00+01:00",
-    "ends_at": "2026-03-16T23:55:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-03-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "WLB: Badner Bahn: Rettungseinsatz",
-    "description": "Linie Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "013b99775d5afd765b05fbb4b04c72d7533a8d35cf6eae25198189f424bae72c",
-    "pubDate": "2026-03-16T19:10:00+01:00",
-    "starts_at": "2026-03-16T19:10:00+01:00",
-    "ends_at": "2026-03-16T23:55:00+01:00",
-    "_identity": "wl|störung|L=WLB|D=2026-03-16"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Verspätungen",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
-    "pubDate": "2026-03-16T20:13:00+01:00",
-    "starts_at": "2026-03-16T20:13:00+01:00",
-    "ends_at": "2026-03-16T23:55:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2026-03-16"
   }
 ]
