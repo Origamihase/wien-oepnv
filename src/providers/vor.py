@@ -379,6 +379,30 @@ def _normalise_access_token(raw: str) -> tuple[str, str]:
         return "", ""
 
     lower_token = token.lower()
+
+    auth_type_override = os.environ.get('VOR_AUTH_TYPE')
+    if auth_type_override:
+        auth_type_override = auth_type_override.strip().lower()
+        if auth_type_override == "bearer":
+            if lower_token.startswith("bearer "):
+                normalized = token[7:].strip()
+            elif lower_token.startswith("basic "):
+                normalized = token[6:].strip()
+            else:
+                normalized = token
+            return normalized, f"Bearer {normalized}"
+        elif auth_type_override == "basic":
+            if lower_token.startswith("basic "):
+                normalized = token[6:].strip()
+            elif lower_token.startswith("bearer "):
+                normalized = token[7:].strip()
+            else:
+                normalized = token
+            if ":" in normalized:
+                encoded = base64.b64encode(normalized.encode("utf-8")).decode("ascii")
+                return normalized, f"Basic {encoded}"
+            return normalized, f"Basic {normalized}"
+
     if lower_token.startswith("basic "):
         normalized = token[6:].strip()
         # Heuristic: If it contains a colon, it's likely unencoded user:pass
