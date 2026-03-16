@@ -135,7 +135,7 @@ def _clean_title_keep_places(t: str) -> str:
 
     # Redundanz-Check: Wenn Titel „Text: Station“ ist und Station im Text vorkommt,
     # dann nur Text nehmen (z.B. "Aufzug in X defekt: X").
-    match = re.search(r"^(.*):\s+(.+)$", t)
+    match = re.search(r"^([^:]+):\s+(.+)$", t)
     if match:
         text_part, suffix_part = match.group(1), match.group(2)
         # Check ob suffix im Text enthalten ist (case-sensitive)
