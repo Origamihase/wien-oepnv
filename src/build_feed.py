@@ -819,7 +819,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     start_wait = perf_counter()
                     acquired = semaphore.acquire(timeout=timeout_arg)
                     if not acquired:
-                         raise requests.exceptions.Timeout(f"Semaphore acquisition timed out after {timeout_value}s")
+                         raise TimeoutError(f"Semaphore acquisition timed out after {timeout_value}s")
 
                     # Task 3: Subtract wait time from timeout
                     try:
@@ -827,7 +827,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         remaining_timeout = timeout_arg - elapsed
 
                         if remaining_timeout <= 0:
-                            raise requests.exceptions.Timeout(f"Semaphore acquisition took {elapsed:.2f}s, no time left for fetch")
+                            raise TimeoutError(f"Semaphore acquisition took {elapsed:.2f}s, no time left for fetch")
 
                         return _call_fetch_with_timeout(fetch, remaining_timeout, supports)
                     finally:

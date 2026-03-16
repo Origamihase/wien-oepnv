@@ -19,6 +19,7 @@ from urllib.parse import parse_qsl, urlencode, urljoin, urlparse
 
 import requests
 from requests.adapters import HTTPAdapter
+from requests.hooks import dispatch_hook
 from requests.structures import CaseInsensitiveDict
 from urllib3.connection import HTTPSConnection
 from urllib3.connectionpool import HTTPSConnectionPool
@@ -1329,6 +1330,10 @@ def request_safe(
 
             with ctx as r:
                 try:
+                    # Manually dispatch hooks for HTTPS since we bypassed session.request
+                    if parsed.scheme == "https":
+                        r = dispatch_hook("response", request_hooks, r, **kwargs)
+
                     # Duck-typing check for mocks that might lack is_redirect
                     # Some mocks implement is_redirect as a MagicMock, which evaluates to True. We explicitly check bool.
                     is_redirect = getattr(r, "is_redirect", False)
@@ -1446,7 +1451,9 @@ def request_safe(
                         raise RuntimeError("total_allowed_time cannot be None at this point")
 
                     remaining_total = total_allowed_time - current_elapsed
-                    read_timeout_val = max(0.1, remaining_total)
+                    if remaining_total <= 0:
+                        raise requests.Timeout("Total timeout exceeded before reading body")
+                    read_timeout_val = remaining_total
 
                     if isinstance(timeout, tuple):
                         read_timeout_val = min(read_timeout_val, timeout[1])
