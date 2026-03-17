@@ -302,10 +302,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Kein Betrieb",
-    "description": "Gleisbauarbeiten Kein Betrieb",
+    "title": "46: Umleitung zur Josefstädter Str.",
+    "description": "Gleisbauarbeiten Umleitung zur Josefstädter Str. >",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b",
+    "guid": "aeec57d7409f298682945c789c4fc8b3fbb7b732136d0b40f782fa843b99bf39",
     "pubDate": "2026-03-17T00:00:14+01:00",
     "starts_at": "2026-03-17T00:00:14+01:00",
     "ends_at": "2026-03-17T23:59:59+01:00",
@@ -314,10 +314,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Umleitung zur Josefstädter Str.",
-    "description": "Gleisbauarbeiten Umleitung zur Josefstädter Str. >",
+    "title": "46: Kein Betrieb",
+    "description": "Gleisbauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aeec57d7409f298682945c789c4fc8b3fbb7b732136d0b40f782fa843b99bf39",
+    "guid": "ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b",
     "pubDate": "2026-03-17T00:00:14+01:00",
     "starts_at": "2026-03-17T00:00:14+01:00",
     "ends_at": "2026-03-17T23:59:59+01:00",
@@ -410,13 +410,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Falschparker",
-    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "title": "59A: Verkehrsüberlastung",
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
-    "pubDate": "2026-03-17T11:39:00+01:00",
-    "starts_at": "2026-03-17T11:39:00+01:00",
+    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
+    "pubDate": "2026-03-17T12:27:00+01:00",
+    "starts_at": "2026-03-17T12:27:00+01:00",
     "ends_at": "2026-03-17T23:55:00+01:00",
-    "_identity": "wl|störung|L=12A|D=2026-03-17"
+    "_identity": "wl|störung|L=59A|D=2026-03-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 62: Kein Betrieb zwischen Bahnhof Meidling S U, Dörfelstraße und Wattmanngasse. Weichen Sie ersatzweise auf die Linien 8A und 63A aus. Voraussichtliche Dauer: 13:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Wienerbergbrücke.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2563cb7e5e67c7016a99b581b604e1f7ef686490b44625d39ce5e66b47c20dc1",
+    "pubDate": "2026-03-17T12:44:47+01:00",
+    "starts_at": "2026-03-17T12:58:19+01:00",
+    "ends_at": "2026-03-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-03-17"
   }
 ]
