@@ -344,7 +344,7 @@
     "guid": "a9081c3efcf42b91fa2bf401525eea7ede4b64ca4db2b6f25a91343e796397b5",
     "pubDate": "2026-03-17T00:00:22+01:00",
     "starts_at": "2026-03-17T00:00:22+01:00",
-    "ends_at": "2026-03-17T23:59:59+01:00",
+    "ends_at": "2026-03-18T00:00:00+01:00",
     "_identity": "wl|störung|L=6|D=2026-03-17"
   },
   {
@@ -394,5 +394,29 @@
     "starts_at": "2026-03-17T05:33:00+01:00",
     "ends_at": "2026-03-17T23:55:00+01:00",
     "_identity": "wl|störung|L=9|D=2026-03-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A/14A: Bauarbeiten",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Bauarbeiten.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a317b33ef310b7bccd15631f28d2b0dc71a50d8502d9b4b2296f3fcd5f822766",
+    "pubDate": "2026-03-17T07:48:00+01:00",
+    "starts_at": "2026-03-17T07:48:00+01:00",
+    "ends_at": "2026-03-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=13A,14A|D=2026-03-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Verkehrsunfall",
+    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033",
+    "pubDate": "2026-03-17T08:00:00+01:00",
+    "starts_at": "2026-03-17T08:00:00+01:00",
+    "ends_at": "2026-03-17T23:55:00+01:00",
+    "_identity": "wl|störung|L=48A|D=2026-03-17"
   }
 ]
