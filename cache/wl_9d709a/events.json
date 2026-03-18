@@ -386,25 +386,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62A: Verspätungen",
-    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "48A: Verkehrsunfall",
+    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4c915370426414728152fb20f853c79b453cd1d24b626f29dba35c836c4029c2",
-    "pubDate": "2026-03-18T05:16:00+01:00",
-    "starts_at": "2026-03-18T05:16:00+01:00",
-    "ends_at": "2026-03-18T05:58:00+01:00",
-    "_identity": "wl|störung|L=62A|D=2026-03-18"
+    "guid": "00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033",
+    "pubDate": "2026-03-18T06:54:00+01:00",
+    "starts_at": "2026-03-18T06:54:00+01:00",
+    "ends_at": "2026-03-18T23:55:00+01:00",
+    "_identity": "wl|störung|L=48A|D=2026-03-18"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Signalstörung",
-    "description": "Linie 7A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 05:55 Uhr. Grund: Signalstörung im Haltestellenbereich Unfallkrankenhaus Meidling.",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 07:20 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Altes Landgut.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "56cfae51576906358ca8b20023d237b58b63c2307392b3a7b06419cfe7314754",
-    "pubDate": "2026-03-18T05:44:00+01:00",
-    "starts_at": "2026-03-18T05:44:00+01:00",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-03-18T06:59:00+01:00",
+    "starts_at": "2026-03-18T06:59:00+01:00",
     "ends_at": "2026-03-18T23:55:00+01:00",
-    "_identity": "wl|störung|L=7A|D=2026-03-18"
+    "_identity": "wl|störung|L=U1|D=2026-03-18"
   }
 ]
