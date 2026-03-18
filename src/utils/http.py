@@ -999,8 +999,26 @@ def verify_response_ip(response: requests.Response) -> None:
                     f"Security: Connected to unsafe IP {peer_ip} (DNS Rebinding protection)"
                 )
         else:
-            # If we cannot find the socket, we cannot verify the IP.
-            # Fail securely.
+            # Fallback 1: Was the connection forced via PinnedHTTPSAdapter?
+            pinned_ip = getattr(conn, "_pinned_ip", None)
+            if pinned_ip:
+                if not is_ip_safe(pinned_ip):
+                    raise ValueError(f"Security: Pinned IP {pinned_ip} is unsafe (DNS Rebinding protection)")
+                return  # IP is safely verified
+
+            # Fallback 2: Was the HTTP URL rewritten to a bare IP?
+            parsed_req = urlparse(getattr(response.request, "url", ""))
+            if parsed_req.hostname:
+                try:
+                    ip_candidate = parsed_req.hostname.strip("[]").split("%")[0]
+                    ip = ipaddress.ip_address(ip_candidate)
+                    if not is_ip_safe(ip):
+                        raise ValueError(f"Security: Requested IP {ip} is unsafe (DNS Rebinding protection)")
+                    return  # IP is safely verified
+                except ValueError:
+                    pass
+
+            # If all fallbacks fail, abort securely
             raise ValueError(
                 f"Security: Could not retrieve socket for {response.url} (DNS Rebinding protection)"
             )
