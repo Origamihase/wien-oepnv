@@ -326,18 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-03-17T00:00:24+01:00",
-    "starts_at": "2026-03-17T00:00:24+01:00",
-    "ends_at": "2026-03-19T23:59:59+01:00",
-    "_identity": "wl|störung|L=74A|D=2026-03-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -346,6 +334,18 @@
     "starts_at": "2026-03-17T00:00:24+01:00",
     "ends_at": "2026-03-19T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-03-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-03-17T00:00:24+01:00",
+    "starts_at": "2026-03-17T00:00:24+01:00",
+    "ends_at": "2026-03-19T23:59:59+01:00",
+    "_identity": "wl|störung|L=74A|D=2026-03-17"
   },
   {
     "source": "Wiener Linien",
@@ -374,13 +374,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "60A: Verkehrsüberlastung",
+    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
-    "pubDate": "2026-03-19T06:49:00+01:00",
-    "starts_at": "2026-03-19T06:49:00+01:00",
-    "ends_at": "2026-03-19T07:57:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2026-03-19"
+    "guid": "0c324aeb68aff0a13a99697bafb1720b1552500ec06ceef7ada487c69aa2ddcf",
+    "pubDate": "2026-03-19T08:00:00+01:00",
+    "starts_at": "2026-03-19T08:00:00+01:00",
+    "ends_at": "2026-03-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=60A|D=2026-03-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "16A: Verkehrsüberlastung",
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7",
+    "pubDate": "2026-03-19T08:00:00+01:00",
+    "starts_at": "2026-03-19T08:00:00+01:00",
+    "ends_at": "2026-03-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=16A|D=2026-03-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "77A: Verkehrsüberlastung",
+    "description": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d2fb78dfec0b3971d13e72314dc2efcdbccb60650daf7059b954d1bd1800e28b",
+    "pubDate": "2026-03-19T08:19:00+01:00",
+    "starts_at": "2026-03-19T08:19:00+01:00",
+    "ends_at": "2026-03-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=77A|D=2026-03-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Betriebsstörung",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2026-03-19T08:30:00+01:00",
+    "starts_at": "2026-03-19T08:30:00+01:00",
+    "ends_at": "2026-03-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=U3|D=2026-03-19"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Verkehrsüberlastung",
+    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9bf5343b39ded7dc7ca142844f951a241fc0e1d681fa0c0e2ed28db2ac8efe38",
+    "pubDate": "2026-03-19T08:35:00+01:00",
+    "starts_at": "2026-03-19T08:35:00+01:00",
+    "ends_at": "2026-03-19T23:55:00+01:00",
+    "_identity": "wl|störung|L=40A|D=2026-03-19"
   }
 ]
