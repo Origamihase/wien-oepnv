@@ -451,8 +451,10 @@ def _get_pinned_session(target_ip: str, timeout: int | float | tuple[float, floa
         # Add to cache and evict if necessary
         _HTTP_SESSION_CACHE[target_ip] = session
         if len(_HTTP_SESSION_CACHE) > _HTTP_SESSION_CACHE_MAX_SIZE:
-            evicted_ip, evicted_session = _HTTP_SESSION_CACHE.popitem(last=False)
-            evicted_session.close()
+            # We pop the oldest session but do NOT explicitly close it immediately
+            # because another thread might still be actively reading from its socket.
+            # Rely on atexit handler and garbage collection to eventually close it.
+            _HTTP_SESSION_CACHE.popitem(last=False)
 
         return session
 
@@ -539,7 +541,14 @@ def _strip_sensitive_headers(
     )
     port_changed = _get_port(original_parsed) != _get_port(redirect_parsed)
 
-    if host_changed or scheme_downgraded or port_changed:
+    # Safe upgrade is HTTP port 80 to HTTPS port 443 on the exact same host
+    is_safe_upgrade = (
+        not host_changed and
+        original_parsed.scheme == "http" and redirect_parsed.scheme == "https" and
+        _get_port(original_parsed) == 80 and _get_port(redirect_parsed) == 443
+    )
+
+    if (host_changed or scheme_downgraded or port_changed) and not is_safe_upgrade:
         # If session_headers is provided, we use masking mode (set to None)
         # to ensure session headers don't leak through.
         mask_mode = session_headers is not None
@@ -595,7 +604,14 @@ def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.Prepar
     scheme_downgraded = original_parsed.scheme == "https" and redirect_parsed.scheme != "https"
     port_changed = _get_port(original_parsed) != _get_port(redirect_parsed)
 
-    if host_changed or scheme_downgraded or port_changed:
+    # Safe upgrade is HTTP port 80 to HTTPS port 443 on the exact same host
+    is_safe_upgrade = (
+        not host_changed and
+        original_parsed.scheme == "http" and redirect_parsed.scheme == "https" and
+        _get_port(original_parsed) == 80 and _get_port(redirect_parsed) == 443
+    )
+
+    if (host_changed or scheme_downgraded or port_changed) and not is_safe_upgrade:
         # Dynamic check for sensitive headers based on name patterns
         # We iterate over a copy of keys to allow modification of the dict during iteration
         for header_name in list(headers.keys()):

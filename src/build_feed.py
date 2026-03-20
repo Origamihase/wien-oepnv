@@ -545,6 +545,8 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
         try:
             raw_first_seen = entry.get("first_seen", "")
             fs_dt = datetime.fromisoformat(str(raw_first_seen))
+            if fs_dt.tzinfo is None:
+                fs_dt = fs_dt.replace(tzinfo=timezone.utc)
             fs_utc = _to_utc(fs_dt)
         except Exception:
             log.warning(
@@ -826,8 +828,10 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         elapsed = perf_counter() - start_wait
                         remaining_timeout = timeout_arg - elapsed
 
-                        if remaining_timeout <= 0:
-                            raise TimeoutError(f"Semaphore acquisition took {elapsed:.2f}s, no time left for fetch")
+                        if remaining_timeout < 0.5:
+                            raise TimeoutError(
+                                f"Semaphore acquisition took {elapsed:.2f}s, no realistic time left for fetch (threshold: 0.5s)"
+                            )
 
                         return _call_fetch_with_timeout(fetch, remaining_timeout, supports)
                     finally:

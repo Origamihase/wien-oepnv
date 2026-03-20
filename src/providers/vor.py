@@ -1116,48 +1116,52 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
         if _QUOTA_CACHE["date"] == date_iso and _QUOTA_CACHE["count"] >= MAX_REQUESTS_PER_DAY:
             return _QUOTA_CACHE["count"]
 
-        # Ensure the parent directory exists before attempting to open the lock file.
-        # This prevents FileNotFoundError if the directory structure is missing.
-        REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
+        # Fast path: update memory cache and defer file writes to reduce I/O bottleneck
+        if _QUOTA_CACHE["date"] != date_iso:
+            _QUOTA_CACHE["date"] = date_iso
+            _QUOTA_CACHE["count"] = 0
 
-        lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
+        _QUOTA_CACHE["count"] += 1
+        new_count = _QUOTA_CACHE["count"]
 
-        try:
-            with lock_path.open("a+", encoding="utf-8") as lock_file:
-                with file_lock(lock_file, exclusive=True):
-                    previous_date, previous_count = load_request_count(bypass_cache=True)
+        # Only perform expensive file I/O periodically (every 10 requests) or on the first request
+        if new_count == 1 or new_count % 10 == 0:
+            # Ensure the parent directory exists before attempting to open the lock file.
+            # This prevents FileNotFoundError if the directory structure is missing.
+            REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
-                    # load_request_count returns (None, 0) if date mismatch or invalid,
-                    # so we can just use previous_count directly if date matches (which it won't if None).
-                    # Actually, load_request_count already checks if stored_date == today_utc.
-                    # So if previous_date is None, it means we reset.
+            lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
 
-                    if previous_date != date_iso:
-                        previous_count = 0
+            try:
+                with lock_path.open("a+", encoding="utf-8") as lock_file:
+                    with file_lock(lock_file, exclusive=True):
+                        previous_date, previous_count = load_request_count(bypass_cache=True)
 
-                    new_count = previous_count + 1
+                        if previous_date != date_iso:
+                            previous_count = 0
 
-                    payload = {"date": date_iso, "requests": new_count}
-                    try:
-                        # Replaced custom atomic write logic with centralized utility
-                        with atomic_write(
-                            REQUEST_COUNT_FILE, mode="w", encoding="utf-8", permissions=0o600
-                        ) as handle:
-                            json.dump(payload, handle, ensure_ascii=False)
-                            handle.write("\n")
+                        # Reconcile memory cache with disk (if another process updated it)
+                        if previous_count > new_count - 1:
+                            new_count = previous_count + 1
+                            _QUOTA_CACHE["count"] = new_count
 
-                        # Update memory cache
-                        _QUOTA_CACHE["date"] = date_iso
-                        _QUOTA_CACHE["count"] = new_count
+                        payload = {"date": date_iso, "requests": new_count}
+                        try:
+                            # Replaced custom atomic write logic with centralized utility
+                            with atomic_write(
+                                REQUEST_COUNT_FILE, mode="w", encoding="utf-8", permissions=0o600
+                            ) as handle:
+                                json.dump(payload, handle, ensure_ascii=False)
+                                handle.write("\n")
+                        except OSError:
+                            log.critical("Failed to write to request count file. Quota mechanism poisoned.")
+                            _QUOTA_CACHE["count"] = MAX_REQUESTS_PER_DAY + 1
+                            return MAX_REQUESTS_PER_DAY + 1
+            except Exception as e:
+                log.warning("Failed to save request count (lock error): %s", e)
+                return MAX_REQUESTS_PER_DAY + 1
 
-                    except OSError:
-                        log.critical("Failed to write to request count file. Quota mechanism poisoned.")
-                        _QUOTA_CACHE["count"] = MAX_REQUESTS_PER_DAY + 1
-                        return MAX_REQUESTS_PER_DAY + 1
-                    return new_count
-        except Exception as e:
-            log.warning("Failed to save request count (lock error): %s", e)
-            return MAX_REQUESTS_PER_DAY + 1
+        return new_count
 
 
 def _parse_retry_after(response: requests.Response) -> float | None:
