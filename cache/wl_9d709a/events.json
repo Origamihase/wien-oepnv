@@ -314,18 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-03-17T00:00:24+01:00",
-    "starts_at": "2026-03-17T00:00:24+01:00",
-    "ends_at": "2026-03-20T23:59:59+01:00",
-    "_identity": "wl|störung|L=37A|D=2026-03-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -334,6 +322,18 @@
     "starts_at": "2026-03-17T00:00:24+01:00",
     "ends_at": "2026-03-20T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-03-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-03-17T00:00:24+01:00",
+    "starts_at": "2026-03-17T00:00:24+01:00",
+    "ends_at": "2026-03-20T23:59:59+01:00",
+    "_identity": "wl|störung|L=37A|D=2026-03-17"
   },
   {
     "source": "Wiener Linien",
@@ -386,30 +386,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung wegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4e2427e61bec98c160f61c806cf29a33a0eeb03e82e5fa7ffabf042a02249147",
-    "pubDate": "2026-03-20T17:50:27+01:00",
-    "starts_at": "2026-03-20T17:50:27+01:00",
-    "ends_at": "2026-03-20T22:15:00+01:00",
-    "_identity": "wl|störung|L=71|D=2026-03-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Umleitung ab Börse über Franz-J.-Kai",
-    "description": "Demonstration Umleitung ab Börse über Franz-J.-Kai",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e4ea8aacde43cecdf7f75a6d4fe1f5b28b6d8f81143e1c1769f3a8d6195d98a5",
-    "pubDate": "2026-03-20T17:52:04+01:00",
-    "starts_at": "2026-03-20T17:52:23+01:00",
-    "ends_at": "2026-03-20T22:30:00+01:00",
-    "_identity": "wl|störung|L=D|D=2026-03-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Demonstration Betrieb ab Schwarzenbergplatz",
     "description": "Demonstration Betrieb ab Schwarzenbergplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -417,18 +393,6 @@
     "pubDate": "2026-03-20T17:52:52+01:00",
     "starts_at": "2026-03-20T17:52:52+01:00",
     "ends_at": "2026-03-20T22:45:00+01:00",
-    "_identity": "wl|störung|L=D|D=2026-03-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Betrieb ab Börse",
-    "description": "Demonstration Betrieb ab Börse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d651f21483cd1d9dd9109527a3dd8776f2dd5eb47e34c6e2354a303472fb9d1c",
-    "pubDate": "2026-03-20T17:53:21+01:00",
-    "starts_at": "2026-03-20T17:53:21+01:00",
-    "ends_at": "2026-03-20T22:30:00+01:00",
     "_identity": "wl|störung|L=D|D=2026-03-20"
   },
   {
@@ -458,25 +422,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26A: Verspätungen",
-    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f9a2af401b97e330d7ac59be04b75db63099ba28a23d02de44b605e1ec65a5b",
-    "pubDate": "2026-03-20T20:59:00+01:00",
-    "starts_at": "2026-03-20T20:59:00+01:00",
-    "ends_at": "2026-03-20T23:55:00+01:00",
-    "_identity": "wl|störung|L=26A|D=2026-03-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 22:00 Uhr. Grund: Falschparker im Bereich Hormayergasse.",
+    "description": "Fahrtbehinderung Falschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-03-20T21:38:00+01:00",
+    "pubDate": "2026-03-20T21:40:13+01:00",
     "starts_at": "2026-03-20T21:40:25+01:00",
-    "ends_at": "2026-03-20T23:55:00+01:00",
+    "ends_at": "2026-03-20T22:39:00+01:00",
     "_identity": "wl|störung|L=9|D=2026-03-20"
   }
 ]
