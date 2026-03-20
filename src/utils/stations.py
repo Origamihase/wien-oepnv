@@ -525,13 +525,14 @@ def station_info(name: str) -> StationInfo | None:
 def is_in_vienna(lat: object, lon: object | None = None) -> bool:
     """Return ``True`` if the supplied coordinates or station name lie in Vienna."""
 
-    if lon is None and isinstance(lat, str):
-        info = station_info(lat)
-        if info:
-            return bool(info.in_vienna)
-        token = _normalize_token(lat)
-        if token == "wien" or token.startswith("wien "):  # nosec B105
-            return True
+    if lon is None:
+        if isinstance(lat, str):
+            info = station_info(lat)
+            if info:
+                return bool(info.in_vienna)
+            token = _normalize_token(lat)
+            if token == "wien" or token.startswith("wien "):  # nosec B105
+                return True
         return False
 
     latitude = _coerce_float(lat)
