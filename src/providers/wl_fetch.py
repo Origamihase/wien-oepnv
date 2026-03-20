@@ -6,6 +6,7 @@ import json
 import logging
 import os
 import re
+import time
 from datetime import datetime, timedelta, timezone
 from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
@@ -340,22 +341,44 @@ def _get_json(
     url = f"{WL_BASE.rstrip('/')}/{path.lstrip('/')}"
 
     def _fetch(s: requests.Session) -> Dict[str, Any]:
-        try:
-            content = fetch_content_safe(
-                s,
-                url,
-                params=params or None,
-                timeout=timeout,
-                allowed_content_types=("application/json",),
-            )
-            return json.loads(content)
-        except (ValueError, json.JSONDecodeError) as exc:
-            log.warning(
-                "Antwort von %s ungültig oder kein JSON: %s",
-                sanitize_log_arg(url),
-                sanitize_log_arg(exc),
-            )
-            return {}
+        max_retries = 3
+        for attempt in range(1, max_retries + 1):
+            try:
+                content = fetch_content_safe(
+                    s,
+                    url,
+                    params=params or None,
+                    timeout=timeout,
+                    allowed_content_types=("application/json",),
+                )
+                return json.loads(content)
+            except (ValueError, json.JSONDecodeError) as exc:
+                log.warning(
+                    "Antwort von %s ungültig oder kein JSON: %s",
+                    sanitize_log_arg(url),
+                    sanitize_log_arg(exc),
+                )
+                return {}
+            except requests.RequestException as exc:
+                if attempt < max_retries:
+                    log.warning(
+                        "Sporadischer Netzwerkfehler bei %s (Versuch %d/%d): %s",
+                        sanitize_log_arg(url),
+                        attempt,
+                        max_retries,
+                        sanitize_log_arg(exc),
+                    )
+                    time.sleep(2)
+                    continue
+                else:
+                    log.error(
+                        "Verbindung zu %s schlug nach %d Versuchen endgültig fehl: %s",
+                        sanitize_log_arg(url),
+                        max_retries,
+                        sanitize_log_arg(exc),
+                    )
+                    return {}
+        return {}
 
     if session is not None:
         return _fetch(session)
