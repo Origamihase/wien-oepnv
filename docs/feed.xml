@@ -7,14 +7,36 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Fri, 20 Mar 2026 18:33:12 +0100</lastBuildDate>
+<lastBuildDate>Fri, 20 Mar 2026 19:42:33 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title>U6: Betriebsstörung</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22</guid>
+      <pubDate>Fri, 20 Mar 2026 18:57:00 +0100</pubDate>
+      <ext:first_seen>Fri, 20 Mar 2026 19:42:33 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Mar 2026 18:57:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 20 Mar 2026 23:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 20.03.2026]]]></description>
+      <content:encoded><![CDATA[Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 20.03.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>31: Schadhaftes Fahrzeug</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">899bf6038c3a38ee5193e2d6c7398a8b95520941bd268edc5b6be3fa4cd67f49</guid>
+      <pubDate>Fri, 20 Mar 2026 18:21:00 +0100</pubDate>
+      <ext:first_seen>Fri, 20 Mar 2026 19:42:33 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Mar 2026 18:21:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 20 Mar 2026 23:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20.03.2026]]]></description>
+      <content:encoded><![CDATA[Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20.03.2026]]]></content:encoded>
+    </item>
     <item>
       <title>5A: Schadhaftes Fahrzeug</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">75afde971a30f548b54c7647c7724394ab1fdab7bdc320d855dd3e51cde5e3df</guid>
       <pubDate>Fri, 20 Mar 2026 17:57:00 +0100</pubDate>
-      <ext:first_seen>Fri, 20 Mar 2026 18:33:12 +0100</ext:first_seen>
+      <ext:first_seen>Fri, 20 Mar 2026 19:42:33 +0100</ext:first_seen>
       <ext:starts_at>Fri, 20 Mar 2026 17:57:00 +0100</ext:starts_at>
       <ext:ends_at>Fri, 20 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 5 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 20.03.2026]]]></description>
@@ -25,7 +47,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">bd2bbc492fa41191c2ba11d0c2b48db31149a36909ebf7486dc05890a079f7ac</guid>
       <pubDate>Fri, 20 Mar 2026 17:55:17 +0100</pubDate>
-      <ext:first_seen>Fri, 20 Mar 2026 18:33:12 +0100</ext:first_seen>
+      <ext:first_seen>Fri, 20 Mar 2026 19:42:33 +0100</ext:first_seen>
       <ext:starts_at>Fri, 20 Mar 2026 17:55:17 +0100</ext:starts_at>
       <ext:ends_at>Fri, 20 Mar 2026 23:30:00 +0100</ext:ends_at>
       <description><![CDATA[Demonstration Betrieb ab Börse<br/>[Seit 20.03.2026]]]></description>
@@ -36,7 +58,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">eb44056b6e3c55441e3a08708ee533ef2a18248bbb5444546f501251eea70a74</guid>
       <pubDate>Fri, 20 Mar 2026 17:53:50 +0100</pubDate>
-      <ext:first_seen>Fri, 20 Mar 2026 18:33:12 +0100</ext:first_seen>
+      <ext:first_seen>Fri, 20 Mar 2026 19:42:33 +0100</ext:first_seen>
       <ext:starts_at>Fri, 20 Mar 2026 17:53:50 +0100</ext:starts_at>
       <ext:ends_at>Fri, 20 Mar 2026 22:45:00 +0100</ext:ends_at>
       <description><![CDATA[Demonstration Züge halten bei Schottenring Nr. 19<br/>[Seit 20.03.2026]]]></description>
@@ -47,7 +69,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">17a658a7ba03efb9dc20a15f32ef2833517852e4c73a1894cfdd44176962690f</guid>
       <pubDate>Fri, 20 Mar 2026 17:50:11 +0100</pubDate>
-      <ext:first_seen>Fri, 20 Mar 2026 18:33:12 +0100</ext:first_seen>
+      <ext:first_seen>Fri, 20 Mar 2026 19:42:33 +0100</ext:first_seen>
       <ext:starts_at>Fri, 20 Mar 2026 17:50:27 +0100</ext:starts_at>
       <ext:ends_at>Fri, 20 Mar 2026 22:45:00 +0100</ext:ends_at>
       <description><![CDATA[Demonstration Betrieb nur bis Schwarzenbergplatz<br/>[Seit 20.03.2026]]]></description>
@@ -58,7 +80,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">99497f667984c242f0b49239bc0bc529d80e10510e894e37c252b75583a4b7d3</guid>
       <pubDate>Fri, 20 Mar 2026 17:48:02 +0100</pubDate>
-      <ext:first_seen>Fri, 20 Mar 2026 18:33:12 +0100</ext:first_seen>
+      <ext:first_seen>Fri, 20 Mar 2026 19:42:33 +0100</ext:first_seen>
       <ext:starts_at>Fri, 20 Mar 2026 17:48:02 +0100</ext:starts_at>
       <ext:ends_at>Fri, 20 Mar 2026 23:15:00 +0100</ext:ends_at>
       <description><![CDATA[Demonstration Betrieb ab Schwedenplatz<br/>[Seit 20.03.2026]]]></description>
@@ -69,55 +91,33 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
       <pubDate>Fri, 20 Mar 2026 17:39:00 +0100</pubDate>
-      <ext:first_seen>Fri, 20 Mar 2026 18:33:12 +0100</ext:first_seen>
+      <ext:first_seen>Fri, 20 Mar 2026 19:42:33 +0100</ext:first_seen>
       <ext:starts_at>Fri, 20 Mar 2026 17:39:00 +0100</ext:starts_at>
       <ext:ends_at>Fri, 20 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20.03.2026]]]></description>
       <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20.03.2026]]]></content:encoded>
     </item>
     <item>
-      <title>Fahrtbehinderung wegen Falschparker</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb</guid>
-      <pubDate>Fri, 20 Mar 2026 17:36:35 +0100</pubDate>
-      <ext:first_seen>Fri, 20 Mar 2026 18:33:12 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 20 Mar 2026 17:36:35 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 20 Mar 2026 18:36:00 +0100</ext:ends_at>
-      <description><![CDATA[Fahrtbehinderung wegen Falschparker<br/>[Seit 20.03.2026]]]></description>
-      <content:encoded><![CDATA[Fahrtbehinderung wegen Falschparker<br/>[Seit 20.03.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>40: Fahrtbehinderung Falschparker</title>
+      <title>40: Falschparker</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
       <pubDate>Fri, 20 Mar 2026 17:23:00 +0100</pubDate>
-      <ext:first_seen>Fri, 20 Mar 2026 18:33:12 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 20 Mar 2026 17:29:48 +0100</ext:starts_at>
+      <ext:first_seen>Fri, 20 Mar 2026 19:42:33 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Mar 2026 17:23:00 +0100</ext:starts_at>
       <ext:ends_at>Fri, 20 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20.03.2026]]]></description>
       <content:encoded><![CDATA[Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20.03.2026]]]></content:encoded>
     </item>
     <item>
-      <title>41: Fahrtbehinderung Falschparker</title>
+      <title>41: Falschparker</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa</guid>
       <pubDate>Fri, 20 Mar 2026 17:23:00 +0100</pubDate>
-      <ext:first_seen>Fri, 20 Mar 2026 18:33:12 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 20 Mar 2026 17:36:09 +0100</ext:starts_at>
+      <ext:first_seen>Fri, 20 Mar 2026 19:42:33 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Mar 2026 17:23:00 +0100</ext:starts_at>
       <ext:ends_at>Fri, 20 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20.03.2026]]]></description>
       <content:encoded><![CDATA[Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20.03.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>U4: Rettungseinsatz</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a</guid>
-      <pubDate>Fri, 20 Mar 2026 16:57:00 +0100</pubDate>
-      <ext:first_seen>Fri, 20 Mar 2026 18:33:12 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 20 Mar 2026 16:57:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 20 Mar 2026 23:55:00 +0100</ext:ends_at>
-      <description><![CDATA[Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20.03.2026]]]></description>
-      <content:encoded><![CDATA[Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20.03.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
