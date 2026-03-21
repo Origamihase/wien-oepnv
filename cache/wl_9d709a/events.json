@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-03-17T00:00:24+01:00",
-    "starts_at": "2026-03-17T00:00:24+01:00",
-    "ends_at": "2026-03-21T23:59:59+01:00",
-    "_identity": "wl|störung|L=37A|D=2026-03-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -322,6 +310,18 @@
     "starts_at": "2026-03-17T00:00:24+01:00",
     "ends_at": "2026-03-21T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-03-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-03-17T00:00:24+01:00",
+    "starts_at": "2026-03-17T00:00:24+01:00",
+    "ends_at": "2026-03-21T23:59:59+01:00",
+    "_identity": "wl|störung|L=37A|D=2026-03-17"
   },
   {
     "source": "Wiener Linien",
@@ -374,13 +374,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Rettungseinsatz",
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "52: Fahrtbehinderung wegen Wasserrohrbruch",
+    "description": "Fahrtbehinderung wegen Wasserrohrbruch",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789",
-    "pubDate": "2026-03-21T19:54:00+01:00",
-    "starts_at": "2026-03-21T19:54:00+01:00",
-    "ends_at": "2026-03-21T21:30:00+01:00",
-    "_identity": "wl|störung|L=60|D=2026-03-21"
+    "guid": "58363df7a32ca4e1fd7a22b82c992a877db32000e9bccc1833da5825fbc8f211",
+    "pubDate": "2026-03-21T21:44:21+01:00",
+    "starts_at": "2026-03-21T21:44:32+01:00",
+    "ends_at": "2026-03-21T23:59:59+01:00",
+    "_identity": "wl|störung|L=52|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Wasserrohrbruch Betrieb ab Anschützgasse",
+    "description": "Wasserrohrbruch Betrieb ab Anschützgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f61ea25785e5cd670f92f6dc1a5b54a738ab26cd8dd382a1e1bd9f91dabed94d",
+    "pubDate": "2026-03-21T21:45:19+01:00",
+    "starts_at": "2026-03-21T21:45:30+01:00",
+    "ends_at": "2026-03-21T23:59:59+01:00",
+    "_identity": "wl|störung|L=52|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Wasserrohrbruch Umleitung nach Hietzing",
+    "description": "Wasserrohrbruch Umleitung nach Hietzing",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f097305f012cb60849880ae992a54ad0c098740abea512050851df69d6156001",
+    "pubDate": "2026-03-21T21:46:57+01:00",
+    "starts_at": "2026-03-21T21:46:57+01:00",
+    "ends_at": "2026-03-21T23:59:59+01:00",
+    "_identity": "wl|störung|L=52|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Wasserrohrbruch Umleitung nach Breitensee",
+    "description": "Wasserrohrbruch Umleitung nach Breitensee",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "da36055228de360118ab2f0463d03e811b59688064b90b655b4adbc59abb05ba",
+    "pubDate": "2026-03-21T21:47:43+01:00",
+    "starts_at": "2026-03-21T21:47:43+01:00",
+    "ends_at": "2026-03-21T23:59:59+01:00",
+    "_identity": "wl|störung|L=10|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Wasserrohrbruch Betrieb ab Hietzing",
+    "description": "Wasserrohrbruch Betrieb ab Hietzing",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "de5b22986cc05257fc3e351cff32242847724cf0a030ba7297d518fd893d9422",
+    "pubDate": "2026-03-21T21:48:41+01:00",
+    "starts_at": "2026-03-21T21:48:41+01:00",
+    "ends_at": "2026-03-21T23:59:59+01:00",
+    "_identity": "wl|störung|L=10|D=2026-03-21"
   }
 ]
