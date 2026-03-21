@@ -382,5 +382,77 @@
     "starts_at": "2026-03-21T10:34:23+01:00",
     "ends_at": "2026-03-21T23:55:00+01:00",
     "_identity": "wl|störung|L=60|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Schadhaftes Fahrzeug",
+    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6",
+    "pubDate": "2026-03-21T10:57:00+01:00",
+    "starts_at": "2026-03-21T10:57:00+01:00",
+    "ends_at": "2026-03-21T23:55:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung Gleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "741ea98efd3a670526d9b885aa9ef38313ee2ea4df35dcbaf2a4d15fa7cde399",
+    "pubDate": "2026-03-21T11:15:09+01:00",
+    "starts_at": "2026-03-21T11:15:14+01:00",
+    "ends_at": "2026-03-21T14:00:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "WLB: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung Gleisschaden",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fd7d374f5cffaa5ab8c2e6644326ab17294e6e0d2c0ca3bd8f8d37cbbe3dc0b6",
+    "pubDate": "2026-03-21T11:16:12+01:00",
+    "starts_at": "2026-03-21T11:16:36+01:00",
+    "ends_at": "2026-03-21T14:00:00+01:00",
+    "_identity": "wl|störung|L=WLB|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "WLB: Gleisschaden Betrieb ab Matzleinsdorfer Platz",
+    "description": "Gleisschaden Betrieb ab Matzleinsdorfer Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "27b4904bda4353a36204946faec72dc5b2d48a64c1472ae8f03a046c1fa5a563",
+    "pubDate": "2026-03-21T11:17:09+01:00",
+    "starts_at": "2026-03-21T11:17:25+01:00",
+    "ends_at": "2026-03-21T14:00:00+01:00",
+    "_identity": "wl|störung|L=WLB|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "WLB: Gleisschaden Züge halten bei den Linien 1 und 6",
+    "description": "Gleisschaden Züge halten bei den Linien 1 und 6",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eac9444ea44103a4cec4732d641a180257b2f8a1cfcbb9df1672c43ebb99d507",
+    "pubDate": "2026-03-21T11:18:14+01:00",
+    "starts_at": "2026-03-21T11:18:14+01:00",
+    "ends_at": "2026-03-21T14:00:00+01:00",
+    "_identity": "wl|störung|L=WLB|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Gleisschaden Betrieb ab Kliebergasse",
+    "description": "Gleisschaden Betrieb ab Kliebergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9646c4fc5f49ddec258fbf30f2221475fcecf541dcfe0632bde6a897c9cdcc4c",
+    "pubDate": "2026-03-21T11:21:46+01:00",
+    "starts_at": "2026-03-21T11:23:13+01:00",
+    "ends_at": "2026-03-21T14:00:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-03-21"
   }
 ]
