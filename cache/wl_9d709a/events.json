@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-03-17T00:00:24+01:00",
-    "starts_at": "2026-03-17T00:00:24+01:00",
-    "ends_at": "2026-03-21T23:59:59+01:00",
-    "_identity": "wl|störung|L=37A|D=2026-03-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -322,6 +310,18 @@
     "starts_at": "2026-03-17T00:00:24+01:00",
     "ends_at": "2026-03-21T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-03-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-03-17T00:00:24+01:00",
+    "starts_at": "2026-03-17T00:00:24+01:00",
+    "ends_at": "2026-03-21T23:59:59+01:00",
+    "_identity": "wl|störung|L=37A|D=2026-03-17"
   },
   {
     "source": "Wiener Linien",
@@ -375,7 +375,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "57A: Demonstration",
-    "description": "Linie 57A: Betrieb nur zwischen Rudolfsheim, Anschützg. und Esterházygasse. Weichen Sie ersatzweise auf die Linien U2, U3, 1, 2, 71 und D aus. Voraussichtliche Dauer: 18:00 Uhr. Grund: Demonstration im Haltestellenbereich Burgring.",
+    "description": "Linie 57A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1e16b0c6290563dcf7cbdaf7bfc35e0f7e654f4fd8fe13c3f0343e878211389b",
     "pubDate": "2026-03-21T15:01:00+01:00",
