@@ -411,11 +411,11 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "10: Wasserrohrbruch Umleitung nach Breitensee",
-    "description": "Wasserrohrbruch Umleitung nach Breitensee",
+    "description": "Wasserrohrbruch Umleitung zur Anschützgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "da36055228de360118ab2f0463d03e811b59688064b90b655b4adbc59abb05ba",
     "pubDate": "2026-03-21T21:47:43+01:00",
-    "starts_at": "2026-03-21T21:47:43+01:00",
+    "starts_at": "2026-03-21T21:50:07+01:00",
     "ends_at": "2026-03-21T23:59:59+01:00",
     "_identity": "wl|störung|L=10|D=2026-03-21"
   },
@@ -430,5 +430,53 @@
     "starts_at": "2026-03-21T21:48:41+01:00",
     "ends_at": "2026-03-21T23:59:59+01:00",
     "_identity": "wl|störung|L=10|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Wasserrohrbruch Betrieb ab Hütteldorfer Straße",
+    "description": "Wasserrohrbruch Betrieb ab Hütteldorfer Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4f96700738f43af6f1edabd98b6c593c587da2cb7a4ad89b0ab7a6b43abc9500",
+    "pubDate": "2026-03-21T21:50:36+01:00",
+    "starts_at": "2026-03-21T21:50:36+01:00",
+    "ends_at": "2026-03-21T23:59:59+01:00",
+    "_identity": "wl|störung|L=10|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Schadhafter PKW",
+    "description": "Linie 57A: Betrieb nur zwischen Rudolfsheim, Anschützgasse und Gumpendorfer Straße U Weichen Sie ersatzweise auf die Linien U6 und 49 aus. Voraussichtliche Dauer: 23:30 Uhr. Grund: Schadhafter PKW im Bereich Esterhazygasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e5121e7b2c38fcec8dc44e598c421e836e30df52da5bde23dee52e0a485edd84",
+    "pubDate": "2026-03-21T22:19:00+01:00",
+    "starts_at": "2026-03-21T22:19:00+01:00",
+    "ends_at": "2026-03-21T23:55:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Fahrtbehinderung Schadhafter PKW",
+    "description": "Fahrtbehinderung Schadhafter PKW",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fd8bfab8d4a07cfe17bf349358a9df91b9e93a104ed8307fa8d0d1465b4434d3",
+    "pubDate": "2026-03-21T22:19:12+01:00",
+    "starts_at": "2026-03-21T22:19:16+01:00",
+    "ends_at": "2026-03-21T23:18:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2026-03-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Schadhafter PKW Betrieb ab Gumpendorfer Straße",
+    "description": "Schadhafter PKW Betrieb ab Gumpendorfer Straße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8fb46be025072e05413b3642058b366e656b2060e30eab49317688f3d6afbd0f",
+    "pubDate": "2026-03-21T22:19:45+01:00",
+    "starts_at": "2026-03-21T22:19:45+01:00",
+    "ends_at": "2026-03-21T23:18:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2026-03-21"
   }
 ]
