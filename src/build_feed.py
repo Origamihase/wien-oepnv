@@ -1433,7 +1433,7 @@ def _make_rss(
 
     # Serialize to string
     # Manuell Header setzen, um doppelte Anführungszeichen zu erzwingen (ET nutzt oft einfache)
-    xml_body = ET.tostring(rss, encoding="utf-8", xml_declaration=False).decode("utf-8")
+    xml_body = ET.tostring(rss, encoding="unicode")
     xml_str = '<?xml version="1.0" encoding="utf-8"?>\n' + xml_body
 
     # Inject CDATA

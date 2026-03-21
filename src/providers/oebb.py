@@ -358,8 +358,6 @@ def _get_text(elem: Optional[ET.Element], tag: str) -> str:
 def _parse_dt_rfc2822(s: str) -> Optional[datetime]:
     try:
         dt = parsedate_to_datetime(s)
-        if dt is None:
-            return None
         return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
     except Exception:
         return None
