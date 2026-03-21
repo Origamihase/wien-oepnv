@@ -559,16 +559,6 @@ def _canonical_stop_names(names: Iterable[str]) -> List[str]:
     return sorted(seen.values(), key=lambda value: value.lower())
 
 
-def _extract_stop_names(message: Mapping[str, Any]) -> List[str]:
-    raw_names: List[str] = []
-    for stop in _extract_stop_container(message):
-        if isinstance(stop, Mapping):
-            name = stop.get("name") or stop.get("StopName")
-            if isinstance(name, str) and name.strip():
-                raw_names.append(name.strip())
-    return _canonical_stop_names(raw_names)
-
-
 def _iter_products(message: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
     container = message.get("products") or message.get("Products")
     if isinstance(container, Mapping) and "Product" in container:
@@ -888,7 +878,7 @@ def _product_class_bitmask(classes: Sequence[int]) -> int:
 
 
 def _select_stations_round_robin(
-    ids: Sequence[str], chunk_size: int, period_seconds: int
+    ids: Sequence[str], chunk_size: int
 ) -> List[str]:
     if not ids or chunk_size <= 0:
         return []
@@ -957,7 +947,7 @@ def select_stations_for_run(available_stations: List[str]) -> List[str]:
         return []
 
     selected_ids = _select_stations_round_robin(
-        available_stations, MAX_STATIONS_PER_RUN, ROTATION_INTERVAL_SEC
+        available_stations, MAX_STATIONS_PER_RUN
     )
     if not selected_ids:
         # Fallback if round robin returns empty for some reason (shouldn't if input not empty)
@@ -1403,7 +1393,7 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None, timeout: int | N
                     if "Emergency Stop" in str(rte):
                         log.critical(f"ABORT: {rte}")
                         # Cancel other futures if possible
-                        executor.shutdown(wait=False)
+                        executor.shutdown(wait=False, cancel_futures=True)
                         # Graceful Degradation: Do not raise, just break loop and return partial results
                         break
                     _log_error("VOR DepartureBoard %s Runtime Error: %s", station_id, rte)

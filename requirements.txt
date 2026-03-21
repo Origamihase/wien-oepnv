@@ -2,3 +2,4 @@ requests>=2.32.0,<3
 python-dateutil>=2.9,<3
 defusedxml>=0.7.1,<1
 openpyxl>=3.1.0,<4
+dnspython>=2.0.0,<3
