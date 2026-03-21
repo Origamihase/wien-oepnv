@@ -371,7 +371,27 @@ def _fmt_rfc2822(dt: datetime) -> str:
             "Konnte Datum %r nicht per format_datetime formatieren – nutze strftime-Fallback.",
             dt,
         )
-        return _to_utc(dt).astimezone(_VIENNA_TZ).strftime(feed_config.RFC)
+        local_dt = _to_utc(dt).astimezone(_VIENNA_TZ)
+        days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+        day_name = days[local_dt.weekday()]
+        month_name = months[local_dt.month - 1]
+
+        offset = local_dt.utcoffset()
+        if offset is None:
+            offset_str = "-0000"
+        else:
+            total_seconds = int(offset.total_seconds())
+            hours, remainder = divmod(abs(total_seconds), 3600)
+            minutes, _ = divmod(remainder, 60)
+            sign = "+" if total_seconds >= 0 else "-"
+            offset_str = f"{sign}{hours:02d}{minutes:02d}"
+
+        return (
+            f"{day_name}, {local_dt.day:02d} {month_name} {local_dt.year:04d} "
+            f"{local_dt.hour:02d}:{local_dt.minute:02d}:{local_dt.second:02d} {offset_str}"
+        )
 
 
 _VIENNA_TZ = ZoneInfo("Europe/Vienna")
