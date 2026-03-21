@@ -408,8 +408,8 @@ def _normalise_access_token(raw: str) -> tuple[str, str]:
                 # If it decodes and we can re-encode it to the exact same string, it's valid Base64
                 if base64.b64encode(decoded.encode("utf-8")).decode("ascii") == normalized:
                     return normalized, f"Basic {normalized}"
-            except Exception:
-                pass
+            except Exception: # noqa: S110
+                pass  # nosec B110
 
             # Fallback: forcefully encode it
             encoded = base64.b64encode(normalized.encode("utf-8")).decode("ascii")

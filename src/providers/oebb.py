@@ -303,7 +303,7 @@ def _find_stations_in_text(blob: str) -> List[str]:
 
     # Filter out shorter overlapping matches
     sorted_found = sorted(list(found), key=len, reverse=True)
-    filtered = []
+    filtered: List[str] = []
     for station in sorted_found:
         if not any(station in longer_station for longer_station in filtered):
             filtered.append(station)
