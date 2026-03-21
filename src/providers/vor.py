@@ -401,7 +401,19 @@ def _normalise_access_token(raw: str) -> tuple[str, str]:
             if ":" in normalized:
                 encoded = base64.b64encode(normalized.encode("utf-8")).decode("ascii")
                 return normalized, f"Basic {encoded}"
-            return normalized, f"Basic {normalized}"
+
+            # Check if it's already properly Base64 encoded
+            try:
+                decoded = base64.b64decode(normalized).decode("utf-8")
+                # If it decodes and we can re-encode it to the exact same string, it's valid Base64
+                if base64.b64encode(decoded.encode("utf-8")).decode("ascii") == normalized:
+                    return normalized, f"Basic {normalized}"
+            except Exception: # noqa: S110
+                pass  # nosec B110
+
+            # Fallback: forcefully encode it
+            encoded = base64.b64encode(normalized.encode("utf-8")).decode("ascii")
+            return normalized, f"Basic {encoded}"
 
     if lower_token.startswith("basic "):
         normalized = token[6:].strip()

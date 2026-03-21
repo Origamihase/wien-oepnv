@@ -447,11 +447,6 @@ _LINE_PREFIX_RE = re.compile(
     r"^\s*([A-Za-z0-9]+\s*(?:/\s*[A-Za-z0-9]+){0,20})\s*:\s*"
 )
 
-DATE_RANGE_RE = re.compile(
-    r"^\s*(\d{2}\.\d{2}\.\d{4})\s*(?:-|–|bis)\s*(\d{2}\.\d{2}\.\d{4})\s*$",
-    re.IGNORECASE,
-)
-
 _ELLIPSIS = " …"
 _SENTENCE_END_RE = re.compile(r"[.!?…](?=\s|$)")
 _WHITESPACE_RE = re.compile(r"\s+")

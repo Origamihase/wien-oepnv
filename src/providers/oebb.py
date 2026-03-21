@@ -20,6 +20,7 @@ from __future__ import annotations
 import logging
 import os
 import re
+import time
 from datetime import datetime, timezone
 from typing import List, Optional
 from email.utils import parsedate_to_datetime
@@ -300,7 +301,14 @@ def _find_stations_in_text(blob: str) -> List[str]:
             if canon:
                 found.add(canon)
 
-    return sorted(list(found))
+    # Filter out shorter overlapping matches
+    sorted_found = sorted(list(found), key=len, reverse=True)
+    filtered: List[str] = []
+    for station in sorted_found:
+        if not any(station in longer_station for longer_station in filtered):
+            filtered.append(station)
+
+    return sorted(filtered)
 
 # ---------------- Fetch/Parse ----------------
 def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
@@ -344,8 +352,8 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
 
                 if attempt == 0:
                      if wait_seconds > 0:
-                         log.warning("ÖBB RSS Rate-Limit erreicht. Breche ab (Fail-Fast).")
-                         return None
+                         log.warning("ÖBB RSS Rate-Limit erreicht. Warte %.1fs (Retry-After).", wait_seconds)
+                         time.sleep(wait_seconds)
                      continue
                 raise
 
