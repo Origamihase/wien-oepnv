@@ -130,16 +130,25 @@ def test_refresh_access_credentials_reloads_from_env(monkeypatch):
 
 
 def test_base_url_prefers_secret(monkeypatch):
-    import socket
+
+
 
     # Mock DNS to ensure secret.example.com is accepted
+    def mock_resolve_env(self, host, record_type, *args, **kwargs):
+        if record_type == 'A':
+            from unittest.mock import MagicMock
+            ans = MagicMock()
+            ans.address = "93.184.216.34"
+            return [ans]
+        import dns.resolver
+        raise dns.resolver.NoAnswer()
+
     monkeypatch.setattr(
-        socket,
-        "getaddrinfo",
-        lambda *args, **kwargs: [
-            (socket.AF_INET, socket.SOCK_STREAM, 6, "", ("93.184.216.34", 80))
-        ],
+        "dns.resolver.Resolver.resolve",
+        mock_resolve_env
     )
+
+
 
     monkeypatch.setenv("VOR_BASE", "https://example.com/base")
     monkeypatch.setenv("VOR_BASE_URL", "https://secret.example.com/base")

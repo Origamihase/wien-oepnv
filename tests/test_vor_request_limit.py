@@ -45,7 +45,7 @@ def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
     monkeypatch.setattr(
         vor,
         "_select_stations_round_robin",
-        lambda ids, chunk, period: ids[:chunk],
+        lambda ids, chunk: ids[:chunk],
     )
     monkeypatch.setattr(vor, "_collect_from_board", lambda sid, root: [])
 
@@ -231,7 +231,7 @@ def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path)
     monkeypatch.setattr(
         vor,
         "_select_stations_round_robin",
-        lambda ids, chunk, period: ids[:chunk],
+        lambda ids, chunk: ids[:chunk],
     )
     monkeypatch.setattr(vor, "_collect_from_board", lambda sid, root: [])
 

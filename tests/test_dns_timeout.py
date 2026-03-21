@@ -1,5 +1,4 @@
 
-import socket
 import time
 from unittest.mock import patch
 from src.utils.http import validate_http_url, DNS_TIMEOUT
@@ -10,19 +9,15 @@ def test_validate_http_url_timeout():
     # We simulate a sleep longer than DNS_TIMEOUT
     slow_duration = DNS_TIMEOUT + 1.0
 
-    def mock_getaddrinfo_slow(host, port, proto=0, flags=0):
-        time.sleep(slow_duration)
-        return [(socket.AF_INET, socket.SOCK_STREAM, 6, '', ('93.184.216.34', 80))]
+    def mock_resolve_slow(host, *args, **kwargs):
+        import dns.exception
+        raise dns.exception.Timeout()
 
-    with patch("socket.getaddrinfo", side_effect=mock_getaddrinfo_slow):
+    with patch("dns.resolver.Resolver.resolve", side_effect=mock_resolve_slow):
         start_time = time.time()
         # Should return None because it timed out
         result = validate_http_url("http://slow-dns.example.com")
-        duration = time.time() - start_time
-
         assert result is None
-        # Ensure we didn't wait forever, but we did wait at least for the timeout
-        assert duration >= DNS_TIMEOUT
 
         # We allow a small margin of error for the timeout mechanism
         # The main thread wakes up after DNS_TIMEOUT.
@@ -44,9 +39,16 @@ def test_validate_http_url_timeout():
 def test_validate_http_url_fast_enough():
     """Verify that fast DNS resolution still works."""
 
-    def mock_getaddrinfo_fast(host, port, proto=0, flags=0):
-        return [(socket.AF_INET, socket.SOCK_STREAM, 6, '', ('93.184.216.34', 80))]
+    def mock_resolve_fast(host, record_type, *args, **kwargs):
+        from unittest.mock import MagicMock
+        if record_type == 'A':
+            mock_answer = MagicMock()
+            mock_answer.address = '93.184.216.34'
+            return [mock_answer]
+        else:
+            import dns.resolver
+            raise dns.resolver.NoAnswer()
 
-    with patch("socket.getaddrinfo", side_effect=mock_getaddrinfo_fast):
+    with patch("dns.resolver.Resolver.resolve", side_effect=mock_resolve_fast):
         result = validate_http_url("http://fast.example.com")
         assert result == "http://fast.example.com"

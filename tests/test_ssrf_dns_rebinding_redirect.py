@@ -2,7 +2,6 @@
 import unittest
 from unittest.mock import MagicMock, patch
 import requests
-import socket
 from src.utils.http import session_with_retries, fetch_content_safe
 
 class TestSSRFRedirectRebinding(unittest.TestCase):
@@ -14,7 +13,7 @@ class TestSSRFRedirectRebinding(unittest.TestCase):
         safe_ip = "8.8.8.8"
         unsafe_ip = "127.0.0.1"
 
-        # Mock socket.getaddrinfo
+        # Mock dns.resolver.Resolver.resolve
         # 1. Initial validation -> Safe
         # 2. Initial pinning -> Safe
         # 3. Redirect validation (TOCTOU: Check sees Safe) -> Safe
@@ -24,13 +23,20 @@ class TestSSRFRedirectRebinding(unittest.TestCase):
         # But we mock send, so requests doesn't resolve.
         # BUT we check the URL passed to send.
 
-        side_effects = [
-            [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))],     # 1. Initial validation
-            [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))],     # 2. Initial pinning
-            [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))],     # 3. Redirect validation
-        ]
 
-        with patch('socket.getaddrinfo', side_effect=side_effects) as mock_getaddrinfo:
+
+        import dns.exception
+
+        def mock_resolve_logic(host, record_type, *args, **kwargs):
+            if record_type == 'A':
+                ans1 = MagicMock()
+                ans1.address = safe_ip
+                return [ans1]
+            raise dns.resolver.NoAnswer()
+
+
+
+        with patch('dns.resolver.Resolver.resolve', side_effect=mock_resolve_logic) as mock_resolve:
             with patch('requests.adapters.HTTPAdapter.send') as mock_send:
 
                 # Setup responses
@@ -70,7 +76,7 @@ class TestSSRFRedirectRebinding(unittest.TestCase):
                 content = fetch_content_safe(session, "http://attacker.com/")
 
                 print(f"DEBUG: mock_send.call_count: {mock_send.call_count}")
-                print(f"DEBUG: mock_getaddrinfo.call_count: {mock_getaddrinfo.call_count}")
+                print(f"DEBUG: mock_resolve.call_count: {mock_resolve.call_count}")
 
                 # Assert we followed redirect
                 self.assertEqual(mock_send.call_count, 2)
