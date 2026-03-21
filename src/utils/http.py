@@ -10,10 +10,12 @@ import os
 import re
 import socket
 import threading
+import dns.resolver
+import dns.exception
 import time
 import types
 import unicodedata
-from concurrent.futures import ThreadPoolExecutor, TimeoutError
+from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Container, Mapping, MutableMapping, TypeGuard, Union
 from urllib.parse import parse_qsl, urlencode, urljoin, urlparse
 
@@ -435,10 +437,6 @@ def _get_pinned_session(target_ip: str, timeout: int | float | tuple[float, floa
             # Move to end to maintain LRU
             session = _HTTP_SESSION_CACHE.pop(target_ip)
 
-            # Update the adapter's timeout if needed. We know the adapter mounted to "https://" is a PinnedHTTPSAdapter
-            adapter = session.get_adapter("https://")
-            if isinstance(adapter, PinnedHTTPSAdapter):
-                adapter.timeout = timeout
 
             _HTTP_SESSION_CACHE[target_ip] = session
             return session
@@ -773,20 +771,41 @@ def is_ip_safe(
 
 
 def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
-    """Resolve hostname with a timeout to prevent DoS."""
+    """Resolve hostname using dnspython with a timeout to prevent thread exhaustion/DoS."""
+    results = []
+
+    resolver = dns.resolver.Resolver()
+    resolver.timeout = DNS_TIMEOUT
+    resolver.lifetime = DNS_TIMEOUT
+
     try:
-        # Use global executor to reduce thread overhead (Task B)
-        future = _DNS_EXECUTOR.submit(socket.getaddrinfo, hostname, None, proto=socket.IPPROTO_TCP)
-        return future.result(timeout=DNS_TIMEOUT)
-    except TimeoutError:
+        # Resolve A records (IPv4)
+        try:
+            answers_v4 = resolver.resolve(hostname, "A")
+            for rdata in answers_v4:
+                # socket.getaddrinfo format: (family, type, proto, canonname, sockaddr)
+                # We return enough structure to satisfy the rest of the code: sockaddr is (ip, port)
+                results.append((socket.AF_INET, socket.SOCK_STREAM, 6, "", (rdata.address, 0)))
+        except (dns.resolver.NoAnswer, dns.resolver.NXDOMAIN, dns.resolver.NoNameservers):
+            pass
+
+        # Resolve AAAA records (IPv6)
+        try:
+            answers_v6 = resolver.resolve(hostname, "AAAA")
+            for rdata in answers_v6:
+                results.append((socket.AF_INET6, socket.SOCK_STREAM, 6, "", (rdata.address, 0, 0, 0)))  # type: ignore
+        except (dns.resolver.NoAnswer, dns.resolver.NXDOMAIN, dns.resolver.NoNameservers):
+            pass
+
+        if not results:
+            log.debug("DNS resolution yielded no A/AAAA records for %s", hostname)
+
+    except dns.exception.Timeout:
         log.warning("DNS resolution timed out for %s (DoS protection)", hostname)
-        return []
-    except (socket.gaierror, ValueError) as exc:
-        log.debug("DNS resolution failed for %s: %s", hostname, exc)
-        return []
     except Exception as exc:
         log.warning("Unexpected error during DNS resolution for %s: %s", hostname, exc)
-        return []
+
+    return results
 
 
 def validate_http_url(
@@ -1520,7 +1539,7 @@ def fetch_content_safe(
     session: requests.Session,
     url: str,
     max_bytes: int = 10 * 1024 * 1024,
-    timeout: int | None = None,
+    timeout: int | float | tuple[float, float] | None = None,
     allowed_content_types: Container[str] | None = None,
     **kwargs: Any,
 ) -> bytes:

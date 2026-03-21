@@ -70,7 +70,7 @@ def test_fetch_events_prefers_configured_station_ids(monkeypatch):
         return []
 
     monkeypatch.setattr(vor, "resolve_station_ids", fail_if_called)
-    monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk, period: ids[:chunk])
+    monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk: ids[:chunk])
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", lambda sid, now_local, counter=None, session=None, timeout=None: {})
     monkeypatch.setattr(vor, "_collect_from_board", lambda sid, root: [])
 
@@ -94,7 +94,7 @@ def test_fetch_events_uses_station_names_when_ids_missing(monkeypatch):
         return ["123"]
 
     monkeypatch.setattr(vor, "resolve_station_ids", fake_resolver)
-    monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk, period: ids[:chunk])
+    monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk: ids[:chunk])
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", lambda sid, now_local, counter=None, session=None, timeout=None: {})
     monkeypatch.setattr(vor, "_collect_from_board", lambda sid, root: [])
 

@@ -11,7 +11,7 @@ def test_fetch_events_parallel(monkeypatch):
     vor.MAX_STATIONS_PER_RUN = 2
 
     # deterministische Auswahl der Stationen
-    monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk, period: ids[:chunk])
+    monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk: ids[:chunk])
 
     barrier = threading.Barrier(2)
 
@@ -41,7 +41,7 @@ def test_fetch_events_logs_and_continues(monkeypatch, caplog):
     vor.VOR_STATION_IDS = ["1", "2"]
     vor.MAX_STATIONS_PER_RUN = 2
 
-    monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk, period: ids[:chunk])
+    monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk: ids[:chunk])
 
     def failing_fetch(station_id, now_local, counter=None, session=None, timeout=None):
         if station_id == "1":
