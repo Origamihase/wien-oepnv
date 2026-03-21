@@ -1532,7 +1532,7 @@ def request_safe(
         # Sanitize keys in exception messages (which may contain full URLs)
         safe_msg = _sanitize_exception_msg(str(exc))
         exc.args = (safe_msg,) + exc.args[1:]
-        raise exc from None
+        raise exc
 
     # Should not be reached due to TooManyRedirects check inside loop,
     # but defensive return.

@@ -99,8 +99,8 @@ def test_rate_limit_retries_once_after_wait(monkeypatch, caplog):
         # Use HTTP to avoid SSL/PinnedAdapter complexity in mock
         result = oebb._fetch_xml("http://example.com", timeout=1)
 
-    assert result is None
-    assert len(calls) == 1
+    assert result is not None
+    assert result.tag == "root"
 
     log_text = caplog.text
     # My implementation logs the exception message
@@ -129,7 +129,9 @@ def test_rate_limit_raises_http_error_after_retry(monkeypatch):
     with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:
         mock_resolve.return_value = [(2, 1, 6, '', ('1.2.3.4', 80))]
 
-        result = oebb._fetch_xml("http://example.com", timeout=1)
+        import pytest
+        import requests
+        with pytest.raises(requests.HTTPError):
+            oebb._fetch_xml("http://example.com", timeout=1)
 
-    assert result is None
-    assert len(calls) == 1
+    assert len(calls) == 2
