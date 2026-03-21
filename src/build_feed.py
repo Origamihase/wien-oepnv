@@ -388,7 +388,10 @@ def _fmt_rfc2822(dt: datetime) -> str:
             sign = "+" if total_seconds >= 0 else "-"
             offset_str = f"{sign}{hours:02d}{minutes:02d}"
 
-        return f"{day_name}, {local_dt.day:02d} {month_name} {local_dt.year:04d} {local_dt.hour:02d}:{local_dt.minute:02d}:{local_dt.second:02d} {offset_str}"
+        return (
+            f"{day_name}, {local_dt.day:02d} {month_name} {local_dt.year:04d} "
+            f"{local_dt.hour:02d}:{local_dt.minute:02d}:{local_dt.second:02d} {offset_str}"
+        )
 
 
 _VIENNA_TZ = ZoneInfo("Europe/Vienna")
