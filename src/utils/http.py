@@ -430,7 +430,7 @@ class PinnedHTTPSAdapter(TimeoutHTTPAdapter):
         self.poolmanager.pool_classes_by_scheme["https"] = PinnedHTTPSConnectionPool
 
 
-def _get_pinned_session(target_ip: str, timeout: int | float | tuple[float, float] | None) -> requests.Session:
+def _get_pinned_session(target_ip: str, timeout: int | float | tuple[float, float] | None, max_retries: Any = 0) -> requests.Session:
     """Retrieve or create a cached session with a PinnedHTTPSAdapter for the target IP."""
     with _HTTP_SESSION_LOCK:
         if target_ip in _HTTP_SESSION_CACHE:
@@ -443,7 +443,7 @@ def _get_pinned_session(target_ip: str, timeout: int | float | tuple[float, floa
 
         # Cache miss, create new
         session = requests.Session()
-        adapter = PinnedHTTPSAdapter(target_ip, timeout=timeout)
+        adapter = PinnedHTTPSAdapter(target_ip, timeout=timeout, max_retries=max_retries)
         session.mount("https://", adapter)
 
         # Add to cache and evict if necessary
@@ -1339,8 +1339,12 @@ def request_safe(
                     sanitized_url = _sanitize_url_for_error(current_url)
                     raise ValueError(f"No safe IP resolved for {sanitized_url}")
 
+                # Extract max_retries from original adapter to maintain retry configuration
+                original_adapter = session.get_adapter(current_url)
+                current_retries = getattr(original_adapter, "max_retries", 0)
+
                 # Use cached PinnedHTTPSAdapter to force connection to target_ip while keeping hostname for SNI
-                pinned_session = _get_pinned_session(str(target_ip), current_timeout)
+                pinned_session = _get_pinned_session(str(target_ip), current_timeout, max_retries=current_retries)
 
                 # Prepare request manually to bypass session adapter selection
                 req = requests.Request(
