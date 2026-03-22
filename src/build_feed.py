@@ -159,6 +159,9 @@ def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
         if modified_at is None:
             continue
 
+        if modified_at.tzinfo is None:
+            modified_at = modified_at.replace(tzinfo=timezone.utc)
+
         age = now - modified_at
         if age <= threshold:
             continue
@@ -841,11 +844,11 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     # Task 3: Subtract wait time from timeout
                     try:
                         elapsed = perf_counter() - start_wait
-                        remaining_timeout = timeout_arg - elapsed
+                        remaining_timeout = max(0.0, timeout_arg - elapsed)
 
-                        if remaining_timeout <= 0:
+                        if remaining_timeout < 0:
                             raise TimeoutError(
-                                f"Semaphore acquisition took {elapsed:.2f}s, no realistic time left for fetch (threshold: <= 0s)"
+                                f"Semaphore acquisition took {elapsed:.2f}s, no realistic time left for fetch (threshold: < 0s)"
                             )
 
                         return _call_fetch_with_timeout(fetch, remaining_timeout, supports)

@@ -1468,7 +1468,7 @@ def request_safe(
                                 if "headers" in kwargs:
                                     # CaseInsensitiveDict .pop does not always handle title case gracefully depending on implementation
                                     for h in list(kwargs["headers"].keys()):
-                                        if h.lower() in ("content-type", "content-length"):
+                                        if h.lower() in ("content-type", "content-length", "transfer-encoding"):
                                             del kwargs["headers"][h]
 
                             # For 301/302, requests switches to GET if not 307/308
@@ -1480,7 +1480,7 @@ def request_safe(
                                 # Also drop content-related headers that are invalid for GET
                                 if "headers" in kwargs:
                                     for h in list(kwargs["headers"].keys()):
-                                        if h.lower() in ("content-type", "content-length"):
+                                        if h.lower() in ("content-type", "content-length", "transfer-encoding"):
                                             del kwargs["headers"][h]
 
                             # Task 1: Remove Host header to prevent SNI/Host mismatch on redirect

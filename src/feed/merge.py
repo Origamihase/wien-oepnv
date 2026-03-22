@@ -130,7 +130,7 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
                         desc_vor = new_existing.get("description", "") or ""
                         desc_oebb = item.get("description", "") or ""
-                        if desc_oebb and desc_oebb not in desc_vor:
+                        if desc_oebb and " ".join(desc_oebb.split()) not in " ".join(desc_vor.split()):
                             new_existing["description"] = f"{desc_vor}\n\n{desc_oebb}".strip()
 
                         # Update the list with the modified copy
@@ -150,7 +150,7 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                         desc_vor = item.get("description", "") or ""
 
                         # Append ÖBB desc if not present
-                        if desc_oebb and desc_oebb not in desc_vor:
+                        if desc_oebb and " ".join(desc_oebb.split()) not in " ".join(desc_vor.split()):
                             new_existing["description"] = f"{desc_vor}\n\n{desc_oebb}".strip()
 
                         merged_items[idx] = new_existing
@@ -198,9 +198,11 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                     if desc1 != desc2:
                         if desc1 and desc2:
                              # Check for containment
-                            if desc1 in desc2:
+                            norm_desc1 = " ".join(desc1.split())
+                            norm_desc2 = " ".join(desc2.split())
+                            if norm_desc1 in norm_desc2:
                                 existing_copy["description"] = desc2
-                            elif desc2 in desc1:
+                            elif norm_desc2 in norm_desc1:
                                 existing_copy["description"] = desc1
                             else:
                                 existing_copy["description"] = f"{desc1}\n\n{desc2}".strip()
