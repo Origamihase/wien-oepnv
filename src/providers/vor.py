@@ -1017,6 +1017,15 @@ def resolve_station_ids(names: Iterable[str]) -> List[str]:
     with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
         apply_authentication(session)
         for name in to_lookup:
+            vienna_tz = ZoneInfo("Europe/Vienna")
+            with _QUOTA_LOCK:
+                _, current_usage = load_request_count()
+                if current_usage >= MAX_REQUESTS_PER_DAY:
+                    _log_warning("Daily limit reached, station resolution aborted.")
+                    break
+                now_local = datetime.now(vienna_tz)
+                save_request_count(now_local)
+
             params = {"format": "json", "input": name, "type": "stop"}
             try:
                 content = fetch_content_safe(
