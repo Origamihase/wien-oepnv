@@ -21,16 +21,15 @@ def _save_request_count_in_process(count_file: str, iso_timestamp: str, iteratio
     # Ensure memory cache is cleared so each process reads from file
     vor_module._QUOTA_CACHE["count"] = 0
     vor_module._QUOTA_CACHE["date"] = None
+    vor_module._QUOTA_CACHE["unsaved_delta"] = 0
 
     moment = datetime.fromisoformat(iso_timestamp)
     start_event.wait()
     for _ in range(iterations):
         vor_module.save_request_count(moment)
-        # Force cache clearing in loop so it doesn't just hit the memory cache limit
-        # In a real environment, memory cache prevents writing if it's the same process
-        # Since this tests concurrent writes, we need to bypass the memory cache check.
-        vor_module._QUOTA_CACHE["date"] = None
         vor_module._QUOTA_CACHE["count"] = 0
+        vor_module._QUOTA_CACHE["unsaved_delta"] = 0
+        vor_module._QUOTA_CACHE["date"] = None
 
 
 def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
@@ -192,29 +191,34 @@ def test_save_request_count_is_safe_across_processes(monkeypatch, tmp_path):
 
     ctx = multiprocessing.get_context("spawn")
     start_event = ctx.Event()
-    timestamp = datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna"))
-    iterations = 5
+    os.environ["WIEN_OEPNV_TEST_QUOTA_BATCH"] = "1"
+    try:
+        timestamp = datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna"))
+        iterations = 5
 
-    processes = [
-        ctx.Process(
-            target=_save_request_count_in_process,
-            args=(str(count_file), timestamp.isoformat(), iterations, start_event),
-        )
-        for _ in range(2)
-    ]
+        processes = [
+            ctx.Process(
+                target=_save_request_count_in_process,
+                args=(str(count_file), timestamp.isoformat(), iterations, start_event),
+            )
+            for _ in range(2)
+        ]
 
-    for proc in processes:
-        proc.start()
+        for proc in processes:
+            proc.start()
 
-    start_event.set()
+        start_event.set()
 
-    for proc in processes:
-        proc.join(10)
-        assert not proc.is_alive()
-        assert proc.exitcode == 0
+        for proc in processes:
+            proc.join(10)
+            assert not proc.is_alive()
+            assert proc.exitcode == 0
 
-    data = json.loads(count_file.read_text(encoding="utf-8"))
-    assert data["requests"] == iterations * len(processes)
+        data = json.loads(count_file.read_text(encoding="utf-8"))
+        assert data["requests"] == iterations * len(processes)
+    finally:
+        del os.environ["WIEN_OEPNV_TEST_QUOTA_BATCH"]
+
 
 @pytest.fixture(autouse=True)
 def reset_vor_quota_cache(monkeypatch):

@@ -86,7 +86,7 @@ _VOR_AUTHORIZATION_HEADER = ""  # nosec B105
 # Global lock for thread-safe quota management within the process
 _QUOTA_LOCK = threading.RLock()
 # Local cache to optimize quota checks (fail-fast)
-_QUOTA_CACHE: Dict[str, Any] = {"date": None, "count": 0}
+_QUOTA_CACHE: Dict[str, Any] = {"date": None, "count": 0, "unsaved_delta": 0}
 
 
 def _get_secrets() -> List[str]:
@@ -764,7 +764,7 @@ def _parse_dt(date_str: Any, time_str: Any) -> datetime | None:
         naive = datetime.strptime(f"{date_txt} {time_txt}", "%Y-%m-%d %H:%M")
     except ValueError:
         return None
-    local_dt = naive.replace(tzinfo=ZONE_VIENNA)
+    local_dt = naive.replace(tzinfo=ZONE_VIENNA, fold=0)
     return local_dt.astimezone(timezone.utc)
 
 
@@ -1099,7 +1099,7 @@ def load_request_count(bypass_cache: bool = False) -> tuple[str | None, int]:
         _QUOTA_CACHE["date"] = stored_date
         _QUOTA_CACHE["count"] = int_count
 
-        return (stored_date, int_count)
+        return (stored_date, int_count + _QUOTA_CACHE.get("unsaved_delta", 0))
 
     # Discard legacy formats (raw integers, 'count' key) or old dates
     return (None, 0)
@@ -1115,19 +1115,25 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
 
     with _QUOTA_LOCK:
         # Fail-fast check using memory cache
-        if _QUOTA_CACHE["date"] == date_iso and _QUOTA_CACHE["count"] >= MAX_REQUESTS_PER_DAY:
-            return _QUOTA_CACHE["count"]
+        if _QUOTA_CACHE["date"] == date_iso and _QUOTA_CACHE["count"] + _QUOTA_CACHE["unsaved_delta"] >= MAX_REQUESTS_PER_DAY:
+            return _QUOTA_CACHE["count"] + _QUOTA_CACHE["unsaved_delta"]
 
         # Fast path: update memory cache and defer file writes to reduce I/O bottleneck
         if _QUOTA_CACHE["date"] != date_iso:
             _QUOTA_CACHE["date"] = date_iso
             _QUOTA_CACHE["count"] = 0
+            _QUOTA_CACHE["unsaved_delta"] = 0
 
-        _QUOTA_CACHE["count"] += 1
-        new_count = _QUOTA_CACHE["count"]
+        _QUOTA_CACHE["unsaved_delta"] += 1
+        current_total = _QUOTA_CACHE["count"] + _QUOTA_CACHE["unsaved_delta"]
 
-        # Only perform expensive file I/O periodically (every 10 requests) or on the first request
-        if new_count == 1 or new_count % 10 == 0:
+        # For testing, we can check an environment variable to lower the batch size
+        batch_limit = 10
+        if os.getenv("WIEN_OEPNV_TEST_QUOTA_BATCH") == "1":
+            batch_limit = 1
+
+        # Only perform expensive file I/O periodically (every X requests) or on the first request
+        if current_total == 1 or _QUOTA_CACHE["unsaved_delta"] >= batch_limit or current_total >= MAX_REQUESTS_PER_DAY:
             # Ensure the parent directory exists before attempting to open the lock file.
             # This prevents FileNotFoundError if the directory structure is missing.
             REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -1137,17 +1143,35 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
             try:
                 with lock_path.open("a+", encoding="utf-8") as lock_file:
                     with file_lock(lock_file, exclusive=True):
-                        previous_date, previous_count = load_request_count(bypass_cache=True)
+                        # Use file read directly to get latest disk count safely under lock
+                        disk_date = None
+                        disk_count = 0
+                        try:
+                            data = json.loads(REQUEST_COUNT_FILE.read_text(encoding="utf-8"))
+                            if isinstance(data, dict):
+                                disk_date = data.get("date")
+                                if "requests" in data:
+                                    try:
+                                        disk_count = int(data["requests"])
+                                    except (ValueError, TypeError):
+                                        pass
+                        except (FileNotFoundError, OSError, json.JSONDecodeError):
+                            pass
 
-                        if previous_date != date_iso:
-                            previous_count = 0
+                        if disk_date != date_iso:
+                            disk_count = 0
+                            _QUOTA_CACHE["count"] = 0
+                        else:
+                            # Update our memory cache to reflect exactly what's on disk right now
+                            _QUOTA_CACHE["count"] = disk_count
 
-                        # Reconcile memory cache with disk (if another process updated it)
-                        if previous_count > new_count - 1:
-                            new_count = previous_count + 1
-                            _QUOTA_CACHE["count"] = new_count
+                        # Add our unsaved delta to what is on disk.
+                        new_total = disk_count + _QUOTA_CACHE["unsaved_delta"]
 
-                        payload = {"date": date_iso, "requests": new_count}
+                        _QUOTA_CACHE["count"] = new_total
+                        _QUOTA_CACHE["unsaved_delta"] = 0
+
+                        payload = {"date": date_iso, "requests": new_total}
                         try:
                             # Replaced custom atomic write logic with centralized utility
                             with atomic_write(
@@ -1158,12 +1182,15 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
                         except OSError:
                             log.critical("Failed to write to request count file. Quota mechanism poisoned.")
                             _QUOTA_CACHE["count"] = MAX_REQUESTS_PER_DAY + 1
+                            _QUOTA_CACHE["unsaved_delta"] = 0
                             return MAX_REQUESTS_PER_DAY + 1
             except Exception as e:
                 log.warning("Failed to save request count (lock error): %s", e)
                 return MAX_REQUESTS_PER_DAY + 1
 
-        return new_count
+            return new_total
+
+        return current_total
 
 
 def _parse_retry_after(response: requests.Response) -> float | None:
