@@ -3,13 +3,13 @@ from src.feed.merge import deduplicate_fuzzy
 def test_fuzzy_merge_silvester():
     items = [
         {
-            "title": "1/2/71/74A/D: Silvesterlauf 2025",
+            "title": "1/2/71/74A/D: Wiener Silvesterlauf Event",
             "description": "Details about Lauf.",
             "guid": "guid1",
             "lines": ["1", "2", "71", "74A", "D"] # Note: keys usually don't have 'lines', parsing happens in function
         },
         {
-            "title": "1/2/71/D/U1/U3: Silvesterpfad 2025",
+            "title": "1/2/71/D/U1/U3: Wiener Silvesterpfad Event",
             "description": "Details about Pfad.",
             "guid": "guid2"
         }
@@ -122,18 +122,18 @@ def test_fuzzy_merge_description_containment():
 def test_fuzzy_merge_name_combining():
     items = [
         {
-            "title": "1/2: Event A",
+            "title": "1/2: Event Special Run",
             "guid": "g1"
         },
         {
-            "title": "1/2: Event B",
+            "title": "1/2: Event Special Walk",
             "guid": "g2"
         }
     ]
-    # "Event A" and "Event B" share "Event" (5 chars).
+    # Tokens "Event", "Special" overlap.
     merged = deduplicate_fuzzy(items)
     assert len(merged) == 1
-    assert "Event A & Event B" in merged[0]["title"] or "Event B & Event A" in merged[0]["title"]
+    assert "Event Special Run & Event Special Walk" in merged[0]["title"] or "Event Special Walk & Event Special Run" in merged[0]["title"]
 
 def test_fuzzy_merge_recursive():
     # A merges with B, result merges with C?

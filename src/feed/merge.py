@@ -63,13 +63,6 @@ def _has_significant_overlap(name1: str, name2: str) -> bool:
     if len(intersection) / len(union) >= 0.4:
         return True
 
-    # 2. Substring Overlap (for compound words like Silvesterlauf vs Silvesterpfad)
-    # Check for Longest Common Substring
-    match = SequenceMatcher(None, n1, n2).find_longest_match(0, len(n1), 0, len(n2))
-    # Threshold: 5 chars seems reasonable for "significant" (e.g. "Umbau", "Demo", "Silve" from Silvester)
-    if match.size >= 5:
-        return True
-
     return False
 
 
