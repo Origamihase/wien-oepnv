@@ -566,18 +566,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Rettungseinsatz",
-    "description": "Linie U3: Fahrtbehinderung in Richtung Simmering. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
-    "pubDate": "2026-03-22T17:28:00+01:00",
-    "starts_at": "2026-03-22T17:28:00+01:00",
-    "ends_at": "2026-03-22T17:53:00+01:00",
-    "_identity": "wl|störung|L=U3|D=2026-03-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "30: Schadhaftes Fahrzeug",
     "description": "Linie 30: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -598,5 +586,29 @@
     "starts_at": "2026-03-22T17:53:00+01:00",
     "ends_at": "2026-03-22T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2026-03-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "19A: Feuerwehreinsatz",
+    "description": "Linie 19A: Derzeit ist ein Betrieb nicht möglich. Grund: Feuerwehreinsatz im Bereich Alaudagasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "337fa010cd294ecf4039b749d51c1b542e097e66ccf0cb12191153a99dfdd2c0",
+    "pubDate": "2026-03-22T18:14:00+01:00",
+    "starts_at": "2026-03-22T18:14:00+01:00",
+    "ends_at": "2026-03-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=19A|D=2026-03-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "19A: Derzeit kein Linienbetrieb",
+    "description": "Derzeit kein Linienbetrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cf90708cbeb61bfdae03dc6eed0b03825538f585189a985cac0f7e6feb994610",
+    "pubDate": "2026-03-22T18:15:07+01:00",
+    "starts_at": "2026-03-22T18:15:07+01:00",
+    "ends_at": "2026-03-22T19:14:00+01:00",
+    "_identity": "wl|störung|L=19A|D=2026-03-22"
   }
 ]
