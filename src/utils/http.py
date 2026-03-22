@@ -1448,6 +1448,7 @@ def request_safe(
 
                             # Update URL and continue loop
                             current_url = next_url
+                            kwargs.pop("params", None)
 
                             # If redirects are followed, standard behavior (like requests) is to switch to GET
                             # for 301/302/303 if original was not HEAD.
