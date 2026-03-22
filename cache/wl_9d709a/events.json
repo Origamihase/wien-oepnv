@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-03-17T00:00:24+01:00",
-    "starts_at": "2026-03-17T00:00:24+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
-    "_identity": "wl|störung|L=74A|D=2026-03-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -322,6 +310,18 @@
     "starts_at": "2026-03-17T00:00:24+01:00",
     "ends_at": "2026-03-22T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-03-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-03-17T00:00:24+01:00",
+    "starts_at": "2026-03-17T00:00:24+01:00",
+    "ends_at": "2026-03-22T23:59:59+01:00",
+    "_identity": "wl|störung|L=74A|D=2026-03-17"
   },
   {
     "source": "Wiener Linien",
@@ -446,25 +446,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Schadhaftes Fahrzeug",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "71: Demonstration",
+    "description": "Die Linie 71 fährt derzeit nur zwischen Kaiserebersdorf, Zinnergasse und St. Marx S. Voraussichtliche Dauer: ca. 17:30 Uhr. Grund: Demonstration im Bereich Schwarzenbergplatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "957cb1b08225ad1e4245b00d3a903a998ca51304cfc0cf8066722db5bf4f5ca2",
-    "pubDate": "2026-03-22T11:12:00+01:00",
-    "starts_at": "2026-03-22T11:12:00+01:00",
+    "guid": "6bce64de3d90cd0bd9938e3a69084af2bed13b86bf951e0e06e6d3ebeb7ac65e",
+    "pubDate": "2026-03-22T13:24:00+01:00",
+    "starts_at": "2026-03-22T13:24:00+01:00",
     "ends_at": "2026-03-22T23:55:00+01:00",
-    "_identity": "wl|störung|L=7A|D=2026-03-22"
+    "_identity": "wl|störung|L=71|D=2026-03-22"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "35A: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "title": "71: Fahrtbehinderung wegen Demonstration",
+    "description": "Fahrtbehinderung wegen Demonstration",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "80dd9145bec10a24205425c6d0332a699ecb222d25687ee2f6275e37232436b6",
-    "pubDate": "2026-03-22T12:33:40+01:00",
-    "starts_at": "2026-03-22T12:33:40+01:00",
-    "ends_at": "2026-03-22T13:33:00+01:00",
-    "_identity": "wl|störung|L=35A|D=2026-03-22"
+    "guid": "4e2427e61bec98c160f61c806cf29a33a0eeb03e82e5fa7ffabf042a02249147",
+    "pubDate": "2026-03-22T13:31:31+01:00",
+    "starts_at": "2026-03-22T13:35:40+01:00",
+    "ends_at": "2026-03-22T14:35:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-03-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Gasrohrgebrechen",
+    "description": "Linie 49: Kein Betrieb zwischen Hütteldorfer Straße U und Urban-Loritz-Platz. Weichen Sie ersatzweise auf die Linie U3 aus. Voraussichtliche Dauer: ca. 18:00 Uhr. Grund: Gasrohrgebrechen im Bereich Huglgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4415eccc9aa0d4ed7a38a7aeb2ea94ed5214433b9d383de295486894279e2955",
+    "pubDate": "2026-03-22T13:36:00+01:00",
+    "starts_at": "2026-03-22T13:36:00+01:00",
+    "ends_at": "2026-03-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-03-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Gasrohrgebrechen Betrieb ab Hütteldorfer Straße U",
+    "description": "Gasrohrgebrechen Betrieb ab Hütteldorfer Straße U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "99224e95d74987987e8743bb3b398a27c3e859e1e64c97dd86282e99c3b98c34",
+    "pubDate": "2026-03-22T13:38:51+01:00",
+    "starts_at": "2026-03-22T13:38:51+01:00",
+    "ends_at": "2026-03-22T23:45:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-03-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Gasrohrgebrechen Betrieb ab Urban-Loritz-Platz",
+    "description": "Gasrohrgebrechen Betrieb ab Urban-Loritz-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1d6e50b2a69b9b8155440801f640146e3f138175f963847e30d39189b059b85d",
+    "pubDate": "2026-03-22T13:39:49+01:00",
+    "starts_at": "2026-03-22T13:39:49+01:00",
+    "ends_at": "2026-03-22T23:45:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-03-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Polizeieinsatz",
+    "description": "Die Linie U4 fährt derzeit in der Station Margaretengürtel in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 14:20 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Margaretengürtel.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
+    "pubDate": "2026-03-22T13:41:00+01:00",
+    "starts_at": "2026-03-22T13:41:00+01:00",
+    "ends_at": "2026-03-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2026-03-22"
   }
 ]
