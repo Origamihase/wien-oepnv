@@ -497,7 +497,7 @@ def _pin_url_to_ip(url: str) -> tuple[str, str]:
         ip_obj = ipaddress.ip_address(hostname)
         target_ip_cand = str(ip_obj)
         if is_ip_safe(target_ip_cand):
-            target_ip = target_ip_cand
+            target_ip = str(target_ip_cand)
     except ValueError:
         ips = _resolve_hostname_safe(hostname)
         if ips:
@@ -1336,10 +1336,10 @@ def request_safe(
             else:
                 # HTTPS: TOCTOU Fix (Task 4) using PinnedHTTPSAdapter
                 ips = _resolve_hostname_safe(parsed.hostname or "")
-                target_ip = None
+                target_ip: str | None = None
                 for _, _, _, _, sockaddr in ips:
-                    if is_ip_safe(sockaddr[0]):
-                        target_ip = sockaddr[0]
+                    if is_ip_safe(str(sockaddr[0])):
+                        target_ip = str(sockaddr[0])
                         break
 
                 if not target_ip:
