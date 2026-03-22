@@ -140,8 +140,8 @@ def _clean_title_keep_places(t: str) -> str:
     if match:
         text_part, suffix_part = match.group(1), match.group(2)
         # Check ob suffix im Text enthalten ist (case-sensitive)
-        if suffix_part.strip() in text_part:
-            t = text_part
+        if suffix_part.strip() in text_part or text_part.strip() in suffix_part:
+            t = text_part if len(text_part) > len(suffix_part) else suffix_part
 
     # Vorspann bis zum Doppelpunkt entfernen
     # Statt aggressivem Regex nutzen wir eine iterative Entfernung von bekannten Keywords.

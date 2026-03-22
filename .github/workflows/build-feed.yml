@@ -35,7 +35,7 @@ jobs:
       - name: Build feed
         run: python src/build_feed.py
         env:
-          VOR_API_KEY: ${{ secrets.VOR_API_KEY }}
+          VOR_ACCESS_ID: ${{ secrets.VOR_API_KEY }}
 
       - name: Normalize feed metadata (SEO)
         run: |
@@ -70,6 +70,7 @@ jobs:
         run: |
           # Änderungen stagen
           git add -f docs/feed.xml
+          git add data/vor_request_count.json
 
           # Prüfen, ob es gestagte Änderungen gibt
           if ! git diff --staged --quiet; then
