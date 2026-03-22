@@ -284,7 +284,7 @@
     "guid": "2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18",
     "pubDate": "2026-03-17T00:00:07+01:00",
     "starts_at": "2026-03-17T00:00:07+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
+    "ends_at": "2026-03-23T23:59:59+01:00",
     "_identity": "wl|störung|L=46|D=2026-03-17"
   },
   {
@@ -296,7 +296,7 @@
     "guid": "ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b",
     "pubDate": "2026-03-17T00:00:14+01:00",
     "starts_at": "2026-03-17T00:00:14+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
+    "ends_at": "2026-03-23T23:59:59+01:00",
     "_identity": "wl|störung|L=46|D=2026-03-17"
   },
   {
@@ -308,20 +308,8 @@
     "guid": "5207814fd4dc4f846ce6bbf0f7351c2ccb2f85d0dd6245bc264f72a60b860741",
     "pubDate": "2026-03-17T00:00:15+01:00",
     "starts_at": "2026-03-17T00:00:15+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
+    "ends_at": "2026-03-23T23:59:59+01:00",
     "_identity": "wl|störung|L=57A|D=2026-03-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-03-17T00:00:24+01:00",
-    "starts_at": "2026-03-17T00:00:24+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
-    "_identity": "wl|störung|L=74A|D=2026-03-17"
   },
   {
     "source": "Wiener Linien",
@@ -332,8 +320,20 @@
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
     "pubDate": "2026-03-17T00:00:24+01:00",
     "starts_at": "2026-03-17T00:00:24+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
+    "ends_at": "2026-03-23T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-03-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-03-17T00:00:24+01:00",
+    "starts_at": "2026-03-17T00:00:24+01:00",
+    "ends_at": "2026-03-23T23:59:59+01:00",
+    "_identity": "wl|störung|L=74A|D=2026-03-17"
   },
   {
     "source": "Wiener Linien",
@@ -344,7 +344,7 @@
     "guid": "4ea60d7ecd862c3a38d15a86e2596ccf072b30adc29de2502b34e706c6b11979",
     "pubDate": "2026-03-21T04:45:08+01:00",
     "starts_at": "2026-03-21T04:45:08+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
+    "ends_at": "2026-03-23T00:35:00+01:00",
     "_identity": "wl|störung|L=11A|D=2026-03-21"
   },
   {
@@ -356,7 +356,7 @@
     "guid": "fb59e7bd46a03dc217d9d90a41cd4e06010cc42a890b25ff96474a74f63a0478",
     "pubDate": "2026-03-21T21:44:21+01:00",
     "starts_at": "2026-03-21T21:44:32+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
+    "ends_at": "2026-03-23T01:30:00+01:00",
     "_identity": "wl|störung|L=52|D=2026-03-21"
   },
   {
@@ -368,7 +368,7 @@
     "guid": "f61ea25785e5cd670f92f6dc1a5b54a738ab26cd8dd382a1e1bd9f91dabed94d",
     "pubDate": "2026-03-21T21:45:19+01:00",
     "starts_at": "2026-03-21T21:45:30+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
+    "ends_at": "2026-03-23T01:30:00+01:00",
     "_identity": "wl|störung|L=52|D=2026-03-21"
   },
   {
@@ -380,7 +380,7 @@
     "guid": "7b5bca9110ab60bf7902cc8e2ffce8d2b35e35d14307bfb2bad1441373ad6b9d",
     "pubDate": "2026-03-21T21:45:30+01:00",
     "starts_at": "2026-03-21T21:45:30+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
+    "ends_at": "2026-03-23T01:30:00+01:00",
     "_identity": "wl|störung|L=52|D=2026-03-21"
   },
   {
@@ -392,7 +392,7 @@
     "guid": "f097305f012cb60849880ae992a54ad0c098740abea512050851df69d6156001",
     "pubDate": "2026-03-21T21:46:57+01:00",
     "starts_at": "2026-03-21T21:46:57+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
+    "ends_at": "2026-03-23T01:30:00+01:00",
     "_identity": "wl|störung|L=52|D=2026-03-21"
   },
   {
@@ -404,7 +404,7 @@
     "guid": "da36055228de360118ab2f0463d03e811b59688064b90b655b4adbc59abb05ba",
     "pubDate": "2026-03-21T21:47:43+01:00",
     "starts_at": "2026-03-21T21:47:43+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
+    "ends_at": "2026-03-23T01:30:00+01:00",
     "_identity": "wl|störung|L=10|D=2026-03-21"
   },
   {
@@ -416,7 +416,7 @@
     "guid": "0d29ba9d15260a93fe4ed46959c232838ec58d2ecbc1fca964c0f4d073d43620",
     "pubDate": "2026-03-21T21:50:36+01:00",
     "starts_at": "2026-03-21T21:50:36+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
+    "ends_at": "2026-03-23T01:30:00+01:00",
     "_identity": "wl|störung|L=10|D=2026-03-21"
   },
   {
@@ -434,18 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Kein Betrieb",
-    "description": "Gleisbauarbeiten Kein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a9081c3efcf42b91fa2bf401525eea7ede4b64ca4db2b6f25a91343e796397b5",
-    "pubDate": "2026-03-22T05:01:13+01:00",
-    "starts_at": "2026-03-22T05:01:13+01:00",
-    "ends_at": "2026-03-23T00:00:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-03-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N29: Busse halten auf der Hauptfahrbahn",
     "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -454,5 +442,17 @@
     "starts_at": "2026-03-22T23:00:06+01:00",
     "ends_at": "2026-03-23T05:30:00+01:00",
     "_identity": "wl|störung|L=N29|D=2026-03-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "28A: Falschparker",
+    "description": "Linie 28A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e62a62fa9de2e6fa5137fca756cab9b0b26c2eb88fce93de80dfc5e59d7cd5aa",
+    "pubDate": "2026-03-22T23:56:00+01:00",
+    "starts_at": "2026-03-22T23:56:00+01:00",
+    "ends_at": "2026-03-23T00:23:00+01:00",
+    "_identity": "wl|störung|L=28A|D=2026-03-22"
   }
 ]
