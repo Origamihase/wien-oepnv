@@ -491,19 +491,19 @@ def _pin_url_to_ip(url: str) -> tuple[str, str]:
         raise ValueError(f"No hostname in URL: {sanitized}")
 
     # 2. Resolve to Safe IP
+    target_ip: str | None = None
     try:
         # Check if the hostname is already an IP address
         ip_obj = ipaddress.ip_address(hostname)
-        target_ip = str(ip_obj)
-        if not is_ip_safe(target_ip):
-            target_ip = None
+        target_ip_cand = str(ip_obj)
+        if is_ip_safe(target_ip_cand):
+            target_ip = target_ip_cand
     except ValueError:
         ips = _resolve_hostname_safe(hostname)
-        target_ip = None
         if ips:
             for _, _, _, _, sockaddr in ips:
-                if is_ip_safe(sockaddr[0]):
-                    target_ip = sockaddr[0]
+                if is_ip_safe(str(sockaddr[0])):
+                    target_ip = str(sockaddr[0])
                     break
 
     if not target_ip:
