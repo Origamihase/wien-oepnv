@@ -46,3 +46,6 @@ disable_error_code = ["import-untyped"]
 [[tool.mypy.overrides]]
 module = "tests.*"
 ignore_errors = false
+
+[tool.pytest.ini_options]
+addopts = "--timeout=60"
