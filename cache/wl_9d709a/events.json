@@ -483,7 +483,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "49: Gasrohrgebrechen",
-    "description": "Linie 49: Kein Betrieb zwischen Hütteldorfer Straße U und Urban-Loritz-Platz. Weichen Sie ersatzweise auf die Linie U3 aus. Voraussichtliche Dauer: ca. 20:00 Uhr. Grund: Gasrohrgebrechen im Bereich Huglgasse.",
+    "description": "Linie 49: Kein Betrieb zwischen Hütteldorfer Straße U und Urban-Loritz-Platz. Weichen Sie ersatzweise auf die Linie U3 aus. Voraussichtliche Dauer: ca. 21:00 Uhr. Grund: Gasrohrgebrechen im Bereich Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4415eccc9aa0d4ed7a38a7aeb2ea94ed5214433b9d383de295486894279e2955",
     "pubDate": "2026-03-22T13:36:00+01:00",
@@ -550,5 +550,17 @@
     "starts_at": "2026-03-22T14:29:17+01:00",
     "ends_at": "2026-03-22T23:45:00+01:00",
     "_identity": "wl|störung|L=74A|D=2026-03-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62A: Betriebsstörung",
+    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b739d7424d9ea25128dd2e4dc57eb1a899f256e3e5e3b3a30d35f39d3edcbe97",
+    "pubDate": "2026-03-22T20:17:00+01:00",
+    "starts_at": "2026-03-22T20:17:00+01:00",
+    "ends_at": "2026-03-22T23:55:00+01:00",
+    "_identity": "wl|störung|L=62A|D=2026-03-22"
   }
 ]
