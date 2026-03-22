@@ -844,7 +844,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     # Task 3: Subtract wait time from timeout
                     try:
                         elapsed = perf_counter() - start_wait
-                        remaining_timeout = max(0.0, timeout_arg - elapsed)
+                        remaining_timeout = timeout_arg - elapsed
 
                         if remaining_timeout < 0:
                             raise TimeoutError(
