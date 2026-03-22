@@ -27,7 +27,7 @@ def test_read_cache_warns_on_non_list(tmp_path, monkeypatch, caplog):
     cache_file = _prepare_cache(tmp_path, monkeypatch, "provider")
     cache_file.write_text(json.dumps({"id": 1}), encoding="utf-8")
 
-    caplog.set_level(logging.WARNING, logger="utils.cache")
+    caplog.set_level(logging.WARNING, logger="src.utils.cache")
 
     assert cache.read_cache("provider") == []
 
