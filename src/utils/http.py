@@ -432,13 +432,14 @@ class PinnedHTTPSAdapter(TimeoutHTTPAdapter):
 
 def _get_pinned_session(target_ip: str, timeout: int | float | tuple[float, float] | None, max_retries: Any = 0) -> requests.Session:
     """Retrieve or create a cached session with a PinnedHTTPSAdapter for the target IP."""
+    cache_key = f"{target_ip}_{max_retries}"
     with _HTTP_SESSION_LOCK:
-        if target_ip in _HTTP_SESSION_CACHE:
+        if cache_key in _HTTP_SESSION_CACHE:
             # Move to end to maintain LRU
-            session = _HTTP_SESSION_CACHE.pop(target_ip)
+            session = _HTTP_SESSION_CACHE.pop(cache_key)
 
 
-            _HTTP_SESSION_CACHE[target_ip] = session
+            _HTTP_SESSION_CACHE[cache_key] = session
             return session
 
         # Cache miss, create new
@@ -447,7 +448,7 @@ def _get_pinned_session(target_ip: str, timeout: int | float | tuple[float, floa
         session.mount("https://", adapter)
 
         # Add to cache and evict if necessary
-        _HTTP_SESSION_CACHE[target_ip] = session
+        _HTTP_SESSION_CACHE[cache_key] = session
         if len(_HTTP_SESSION_CACHE) > _HTTP_SESSION_CACHE_MAX_SIZE:
             # We pop the oldest session but do NOT explicitly close it immediately
             # because another thread might still be actively reading from its socket.
@@ -1276,39 +1277,42 @@ def request_safe(
                  else:
                      remaining_time = max(0.0, remaining_time)
 
-            if isinstance(timeout, (int, float)):
-                # Scalar timeout logic remains similar (using remaining_time)
-                current_timeout = remaining_time # type: ignore
+            if total_allowed_time == 0:
+                current_timeout = timeout
             else:
-                # Tuple case: (connect, read).
-                # We should adjust the tuple? The requirement says:
-                # "Wende dieses berechnete Rest-Limit auch auf den Lesezugriff an."
-                # If we pass (connect, read) to requests, 'connect' is per-request.
-                # 'read' is per-request body read.
-                # But we want to bound the WHOLE process.
-
-                # If we use `remaining_time` for both?
-                # A tuple (remaining, remaining) seems safest to enforce the total bound.
-                # But we might want to respect the original 'connect' constraint if it's smaller?
-                # Original: (3.0, 15.0). Total 18.0.
-                # If 10s passed. Remaining 8.0.
-                # New timeout: (min(3.0, 8.0), 8.0)?
-
-                # Let's simplify and use the remaining time for both to be safe,
-                # effectively converting it to a scalar or a tuple bounded by remaining.
-
-                # If we convert to scalar `remaining_time`, requests treats it as (connect+read) bound per request?
-                # No, scalar timeout in requests means (connect_timeout == read_timeout == scalar).
-
-                # Let's try to preserve the tuple structure but cap it.
-                if remaining_time is not None:
-                     # Cap connect timeout
-                     new_connect = min(timeout[0], remaining_time)
-                     # Cap read timeout
-                     new_read = min(timeout[1], remaining_time)
-                     current_timeout = (new_connect, new_read)
+                if isinstance(timeout, (int, float)):
+                    # Scalar timeout logic remains similar (using remaining_time)
+                    current_timeout = remaining_time # type: ignore
                 else:
-                     current_timeout = timeout
+                    # Tuple case: (connect, read).
+                    # We should adjust the tuple? The requirement says:
+                    # "Wende dieses berechnete Rest-Limit auch auf den Lesezugriff an."
+                    # If we pass (connect, read) to requests, 'connect' is per-request.
+                    # 'read' is per-request body read.
+                    # But we want to bound the WHOLE process.
+
+                    # If we use `remaining_time` for both?
+                    # A tuple (remaining, remaining) seems safest to enforce the total bound.
+                    # But we might want to respect the original 'connect' constraint if it's smaller?
+                    # Original: (3.0, 15.0). Total 18.0.
+                    # If 10s passed. Remaining 8.0.
+                    # New timeout: (min(3.0, 8.0), 8.0)?
+
+                    # Let's simplify and use the remaining time for both to be safe,
+                    # effectively converting it to a scalar or a tuple bounded by remaining.
+
+                    # If we convert to scalar `remaining_time`, requests treats it as (connect+read) bound per request?
+                    # No, scalar timeout in requests means (connect_timeout == read_timeout == scalar).
+
+                    # Let's try to preserve the tuple structure but cap it.
+                    if remaining_time is not None:
+                         # Cap connect timeout
+                         new_connect = min(timeout[0], remaining_time)
+                         # Cap read timeout
+                         new_read = min(timeout[1], remaining_time)
+                         current_timeout = (new_connect, new_read)
+                    else:
+                         current_timeout = timeout
 
             # 1. Validate and Pin
             safe_url = validate_http_url(current_url, check_dns=False)
@@ -1518,13 +1522,16 @@ def request_safe(
                     if total_allowed_time is None:
                         raise RuntimeError("total_allowed_time cannot be None at this point")
 
-                    remaining_total = total_allowed_time - current_elapsed
-                    if remaining_total <= 0:
-                        raise requests.Timeout("Total timeout exceeded before reading body")
-                    read_timeout_val = remaining_total
+                    if total_allowed_time == 0:
+                        read_timeout_val = 0.0
+                    else:
+                        remaining_total = total_allowed_time - current_elapsed
+                        if remaining_total <= 0:
+                            raise requests.Timeout("Total timeout exceeded before reading body")
+                        read_timeout_val = remaining_total
 
-                    if isinstance(timeout, tuple):
-                        read_timeout_val = min(read_timeout_val, timeout[1])
+                        if isinstance(timeout, tuple):
+                            read_timeout_val = min(read_timeout_val, timeout[1])
 
                     content = read_response_safe(r, max_bytes, timeout=read_timeout_val)
 
