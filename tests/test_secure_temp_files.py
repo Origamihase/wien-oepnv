@@ -1,7 +1,7 @@
 
 from unittest.mock import patch
-from utils.cache import write_cache
-from places.quota import MonthlyQuota
+from src.utils.cache import write_cache
+from src.places.quota import MonthlyQuota
 
 def test_cache_file_secure_permissions(tmp_path):
     """Verify that write_cache creates files with secure permissions (0600)."""
@@ -10,7 +10,7 @@ def test_cache_file_secure_permissions(tmp_path):
     provider = "test_provider"
 
     # Patch _cache_file to return a path in our temp dir
-    with patch("utils.cache._cache_file") as mock_cache_file:
+    with patch("src.utils.cache._cache_file") as mock_cache_file:
         target_file = cache_dir / provider / "events.json"
         mock_cache_file.return_value = target_file
 
