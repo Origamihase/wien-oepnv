@@ -619,7 +619,7 @@ def _extract_lines(message: Mapping[str, Any]) -> List[str]:
 def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
     # 1. New generic keys (warnings, infos, himMessages) at root or inside DepartureBoard
     roots = [payload]
-    if "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
+    if isinstance(payload, Mapping) and "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
         roots.append(payload["DepartureBoard"])
 
     for root in roots:
@@ -635,7 +635,7 @@ def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
 
     # 2. Legacy/Specific Board Structure (messages object)
     container: Any = payload
-    if "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
+    if isinstance(payload, Mapping) and "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
         container = payload["DepartureBoard"]
 
     if isinstance(container, Mapping):
@@ -671,7 +671,7 @@ def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
 
     # 3. Departures (Detailed check for cancellations and embedded messages)
     departures: List[Any] = []
-    if "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
+    if isinstance(payload, Mapping) and "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
         board = payload["DepartureBoard"]
         if "Departure" in board:
             dep_container = board["Departure"]
