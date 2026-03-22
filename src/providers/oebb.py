@@ -352,6 +352,9 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
 
                 if attempt == 0:
                      if wait_seconds > 0:
+                         if wait_seconds > RETRY_AFTER_MAX_SEC:
+                             log.warning("ÖBB RSS Rate-Limit überschreitet Maximum (%.1fs). Überspringe (Fail-Fast).", wait_seconds)
+                             break
                          log.warning("ÖBB RSS Rate-Limit erreicht. Warte %.1fs (Retry-After).", wait_seconds)
                          time.sleep(wait_seconds)
                      continue
