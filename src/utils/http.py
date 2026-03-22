@@ -1271,7 +1271,10 @@ def request_safe(
 
             remaining_time = total_allowed_time - elapsed if total_allowed_time is not None else None
             if remaining_time is not None:
-                 remaining_time = max(0.1, remaining_time)
+                 if total_allowed_time > 0:
+                     remaining_time = max(0.1, remaining_time)
+                 else:
+                     remaining_time = max(0.0, remaining_time)
 
             if isinstance(timeout, (int, float)):
                 # Scalar timeout logic remains similar (using remaining_time)
@@ -1463,7 +1466,6 @@ def request_safe(
                                 kwargs.pop("files", None)
                                 # Also drop content-related headers that are invalid for GET
                                 if "headers" in kwargs:
-                                    kwargs["headers"] = dict(kwargs["headers"])
                                     # CaseInsensitiveDict .pop does not always handle title case gracefully depending on implementation
                                     for h in list(kwargs["headers"].keys()):
                                         if h.lower() in ("content-type", "content-length"):
@@ -1477,14 +1479,12 @@ def request_safe(
                                 kwargs.pop("files", None)
                                 # Also drop content-related headers that are invalid for GET
                                 if "headers" in kwargs:
-                                    kwargs["headers"] = dict(kwargs["headers"])
                                     for h in list(kwargs["headers"].keys()):
                                         if h.lower() in ("content-type", "content-length"):
                                             del kwargs["headers"][h]
 
                             # Task 1: Remove Host header to prevent SNI/Host mismatch on redirect
                             if "headers" in kwargs:
-                                kwargs["headers"] = dict(kwargs["headers"])
                                 for h in list(kwargs["headers"].keys()):
                                     if h.lower() == "host":
                                         del kwargs["headers"][h]
