@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-03-17T00:00:24+01:00",
-    "starts_at": "2026-03-17T00:00:24+01:00",
-    "ends_at": "2026-03-22T23:59:59+01:00",
-    "_identity": "wl|störung|L=74A|D=2026-03-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -322,6 +310,18 @@
     "starts_at": "2026-03-17T00:00:24+01:00",
     "ends_at": "2026-03-22T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-03-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-03-17T00:00:24+01:00",
+    "starts_at": "2026-03-17T00:00:24+01:00",
+    "ends_at": "2026-03-22T23:59:59+01:00",
+    "_identity": "wl|störung|L=74A|D=2026-03-17"
   },
   {
     "source": "Wiener Linien",
@@ -356,7 +356,7 @@
     "guid": "fb59e7bd46a03dc217d9d90a41cd4e06010cc42a890b25ff96474a74f63a0478",
     "pubDate": "2026-03-21T21:44:21+01:00",
     "starts_at": "2026-03-21T21:44:32+01:00",
-    "ends_at": "2026-03-22T23:45:00+01:00",
+    "ends_at": "2026-03-22T23:59:59+01:00",
     "_identity": "wl|störung|L=52|D=2026-03-21"
   },
   {
@@ -368,7 +368,7 @@
     "guid": "f61ea25785e5cd670f92f6dc1a5b54a738ab26cd8dd382a1e1bd9f91dabed94d",
     "pubDate": "2026-03-21T21:45:19+01:00",
     "starts_at": "2026-03-21T21:45:30+01:00",
-    "ends_at": "2026-03-22T23:45:00+01:00",
+    "ends_at": "2026-03-22T23:59:59+01:00",
     "_identity": "wl|störung|L=52|D=2026-03-21"
   },
   {
@@ -380,7 +380,7 @@
     "guid": "7b5bca9110ab60bf7902cc8e2ffce8d2b35e35d14307bfb2bad1441373ad6b9d",
     "pubDate": "2026-03-21T21:45:30+01:00",
     "starts_at": "2026-03-21T21:45:30+01:00",
-    "ends_at": "2026-03-22T23:45:00+01:00",
+    "ends_at": "2026-03-22T23:59:59+01:00",
     "_identity": "wl|störung|L=52|D=2026-03-21"
   },
   {
@@ -392,7 +392,7 @@
     "guid": "f097305f012cb60849880ae992a54ad0c098740abea512050851df69d6156001",
     "pubDate": "2026-03-21T21:46:57+01:00",
     "starts_at": "2026-03-21T21:46:57+01:00",
-    "ends_at": "2026-03-22T23:45:00+01:00",
+    "ends_at": "2026-03-22T23:59:59+01:00",
     "_identity": "wl|störung|L=52|D=2026-03-21"
   },
   {
@@ -404,7 +404,7 @@
     "guid": "da36055228de360118ab2f0463d03e811b59688064b90b655b4adbc59abb05ba",
     "pubDate": "2026-03-21T21:47:43+01:00",
     "starts_at": "2026-03-21T21:50:07+01:00",
-    "ends_at": "2026-03-22T23:45:00+01:00",
+    "ends_at": "2026-03-22T23:59:59+01:00",
     "_identity": "wl|störung|L=10|D=2026-03-21"
   },
   {
@@ -422,10 +422,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Wasserrohrbruch Betrieb ab Hütteldorfer Straße U, Ersatzweise SEV",
-    "description": "Wasserrohrbruch Betrieb ab Hütteldorfer Straße U, Ersatzweise SEV",
+    "title": "10: Wasserrohrbruch Betrieb ab Hütteldorfer Straße",
+    "description": "Wasserrohrbruch Betrieb ab Hütteldorfer Straße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0d29ba9d15260a93fe4ed46959c232838ec58d2ecbc1fca964c0f4d073d43620",
+    "guid": "4f96700738f43af6f1edabd98b6c593c587da2cb7a4ad89b0ab7a6b43abc9500",
     "pubDate": "2026-03-21T21:50:36+01:00",
     "starts_at": "2026-03-21T21:50:36+01:00",
     "ends_at": "2026-03-22T23:45:00+01:00",
@@ -434,13 +434,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Wasserrohrbruch Betrieb ab Hütteldorfer Straße",
-    "description": "Wasserrohrbruch Betrieb ab Hütteldorfer Straße",
+    "title": "10: Wasserrohrbruch Betrieb ab Hütteldorfer Straße U, Ersatzweise SEV",
+    "description": "Wasserrohrbruch Betrieb ab Hütteldorfer Straße U, Ersatzweise SEV",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4f96700738f43af6f1edabd98b6c593c587da2cb7a4ad89b0ab7a6b43abc9500",
+    "guid": "0d29ba9d15260a93fe4ed46959c232838ec58d2ecbc1fca964c0f4d073d43620",
     "pubDate": "2026-03-21T21:50:36+01:00",
     "starts_at": "2026-03-21T21:50:36+01:00",
-    "ends_at": "2026-03-22T23:45:00+01:00",
+    "ends_at": "2026-03-22T23:59:59+01:00",
     "_identity": "wl|störung|L=10|D=2026-03-21"
   },
   {
@@ -470,18 +470,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Demonstration",
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6bce64de3d90cd0bd9938e3a69084af2bed13b86bf951e0e06e6d3ebeb7ac65e",
-    "pubDate": "2026-03-22T13:24:00+01:00",
-    "starts_at": "2026-03-22T13:24:00+01:00",
-    "ends_at": "2026-03-22T23:55:00+01:00",
-    "_identity": "wl|störung|L=71|D=2026-03-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Fahrtbehinderung wegen Demonstration",
     "description": "Fahrtbehinderung wegen Demonstration",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -495,7 +483,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "49: Gasrohrgebrechen",
-    "description": "Linie 49: Kein Betrieb zwischen Hütteldorfer Straße U und Urban-Loritz-Platz. Weichen Sie ersatzweise auf die Linie U3 aus. Voraussichtliche Dauer: ca. 18:00 Uhr. Grund: Gasrohrgebrechen im Bereich Huglgasse.",
+    "description": "Linie 49: Kein Betrieb zwischen Hütteldorfer Straße U und Urban-Loritz-Platz. Weichen Sie ersatzweise auf die Linie U3 aus. Voraussichtliche Dauer: ca. 20:00 Uhr. Grund: Gasrohrgebrechen im Bereich Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4415eccc9aa0d4ed7a38a7aeb2ea94ed5214433b9d383de295486894279e2955",
     "pubDate": "2026-03-22T13:36:00+01:00",
@@ -566,24 +554,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2026-03-22T16:04:00+01:00",
-    "starts_at": "2026-03-22T16:04:00+01:00",
-    "ends_at": "2026-03-22T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2026-03-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Fahrtbehinderung Falschparker",
+    "title": "37: Falschparker",
     "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
     "pubDate": "2026-03-22T16:13:00+01:00",
-    "starts_at": "2026-03-22T16:25:02+01:00",
+    "starts_at": "2026-03-22T16:13:00+01:00",
     "ends_at": "2026-03-22T23:55:00+01:00",
     "_identity": "wl|störung|L=37|D=2026-03-22"
   }
