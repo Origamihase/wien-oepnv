@@ -253,6 +253,10 @@ def _is_relevant(title: str, description: str) -> bool:
                 # Wenn beide Stationen völlig unbekannt sind, ist es Fernverkehr -> verwerfen
                 return False
 
+            if OEBB_ONLY_VIENNA:
+                if (info0 and not info0.in_vienna) or (info1 and not info1.in_vienna):
+                    return False
+
             if (info0 and info0.in_vienna) or (info1 and info1.in_vienna):
                 return True
 

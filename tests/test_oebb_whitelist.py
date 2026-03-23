@@ -63,10 +63,15 @@ def test_vienna_station_is_whitelisted(vienna_station):
 
 
 def test_only_vienna_env(monkeypatch, pendler_station, vienna_station):
-    # Since _is_relevant logic does not seem to utilize OEBB_ONLY_VIENNA currently,
-    # and the logic is purely station-set based, we skip or remove this test.
-    # However, to avoid removing the test function entirely if it might be needed later,
-    # we just pass for now or assert the current behavior which ignores the flag.
+    # Test that setting OEBB_ONLY_VIENNA correctly filters out connections
+    # that are not strictly inside Vienna.
     monkeypatch.setattr(oebb, "OEBB_ONLY_VIENNA", True)
-    # Current logic keeps it because one station is in Vienna.
+    # Because one station (pendler_station) is outside Vienna, it should be rejected
+    assert not oebb._is_relevant(f"{vienna_station} ↔ {pendler_station}", "")
+
+    # But a connection fully within Vienna should be accepted
+    assert oebb._is_relevant(f"{vienna_station} ↔ Wien Praterstern", "")
+
+    # When the flag is False, the same mixed connection should be accepted
+    monkeypatch.setattr(oebb, "OEBB_ONLY_VIENNA", False)
     assert oebb._is_relevant(f"{vienna_station} ↔ {pendler_station}", "")
