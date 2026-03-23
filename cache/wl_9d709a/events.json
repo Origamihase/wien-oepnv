@@ -351,25 +351,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "9A: Gasrohrgebrechen",
-    "description": "Die Linie 9A wird in Richtung Meidling Hauptstraße zwischen Tanbruckgasse und Ratschkygasse, Aichholzgasse örtlich umgeleitet. Die Störung dauert voraussichtlich bis 23:00 Uhr. Grund dafür ist ein Gasrohrgebrechen im Bereich Ratschkygasse 34.",
+    "description": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b7d12e5034d8363286cc00cefae66676b23d8cfee8ace75984eed0c6f1f5ae6b",
     "pubDate": "2026-03-23T11:42:00+01:00",
     "starts_at": "2026-03-23T11:42:00+01:00",
     "ends_at": "2026-03-23T23:55:00+01:00",
     "_identity": "wl|störung|L=9A|D=2026-03-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Fremder Verkehrsunfall",
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "26dab77d720bee7a4554a163cd8af781b649c79533f209c6d60fa8fe1647c0a0",
-    "pubDate": "2026-03-23T16:24:00+01:00",
-    "starts_at": "2026-03-23T16:24:00+01:00",
-    "ends_at": "2026-03-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-03-23"
   },
   {
     "source": "Wiener Linien",
@@ -386,13 +374,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Polizeieinsatz Züge halten in der Paschinggasse",
-    "description": "Linie 43: Betrieb nur zwischen Schottentor U und Dornbach. Weichen Sie ersatzweise auf die Linie 44A aus. Voraussichtliche Dauer: 19:10 Uhr. Grund: Polizeieinsatz im Bereich Alszeile.",
+    "title": "43: Polizeieinsatz",
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "988c80ab109007f5051aff806aa861e0141853ffcc393ab7f2657dc9a31b4cd0",
     "pubDate": "2026-03-23T18:34:00+01:00",
-    "starts_at": "2026-03-23T18:38:53+01:00",
+    "starts_at": "2026-03-23T18:34:00+01:00",
     "ends_at": "2026-03-23T23:55:00+01:00",
     "_identity": "wl|störung|L=43|D=2026-03-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Fahrtbehinderung Schadhafter PKW",
+    "description": "Fahrtbehinderung Schadhafter PKW",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bed8bc8882e714c7ec157e07f3abe38f77cabea3a947ec15d7b0e634c27a47fc",
+    "pubDate": "2026-03-23T19:08:46+01:00",
+    "starts_at": "2026-03-23T19:08:51+01:00",
+    "ends_at": "2026-03-23T20:07:00+01:00",
+    "_identity": "wl|störung|L=7A|D=2026-03-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "36B: Fremder Verkehrsunfall",
+    "description": "Linie 36B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "accce3f21245a64052c8612552c60b23535b04f3067f9faca13213873772742d",
+    "pubDate": "2026-03-23T19:26:00+01:00",
+    "starts_at": "2026-03-23T19:26:00+01:00",
+    "ends_at": "2026-03-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=36B|D=2026-03-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "36B: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0d4e215fe20e44613d20cd4d9c781c04c856143ad58587629fca50d3cf569a2b",
+    "pubDate": "2026-03-23T19:28:33+01:00",
+    "starts_at": "2026-03-23T19:28:33+01:00",
+    "ends_at": "2026-03-23T20:28:00+01:00",
+    "_identity": "wl|störung|L=36B|D=2026-03-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "36B: Fremdunfall Betrieb ab Koloniestraße",
+    "description": "Fremdunfall Betrieb ab Koloniestraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2cf0438dc14d0e5af82ec2de063c906a957301dedb57f79fa9092e738f6df365",
+    "pubDate": "2026-03-23T19:31:48+01:00",
+    "starts_at": "2026-03-23T19:31:48+01:00",
+    "ends_at": "2026-03-23T20:30:00+01:00",
+    "_identity": "wl|störung|L=36B|D=2026-03-23"
   }
 ]
