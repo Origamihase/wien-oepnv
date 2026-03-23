@@ -7,99 +7,67 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Mon, 23 Mar 2026 12:44:36 +0100</lastBuildDate>
+<lastBuildDate>Mon, 23 Mar 2026 13:59:20 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title>38A: Feuerwehreinsatz</title>
+      <title>95A: Rettungseinsatz</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">23035fbb18cf54e12a91a326f046fd03ee86d614225ee2cf959f27cb1caea0ff</guid>
-      <pubDate>Mon, 23 Mar 2026 11:56:00 +0100</pubDate>
-      <ext:first_seen>Mon, 23 Mar 2026 12:44:36 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 23 Mar 2026 11:56:00 +0100</ext:starts_at>
+      <guid isPermaLink="false">51cce396129aa5d5e2e16db7f0c2488b4d50ee8e7b1f1c5afa26a00e10b3def7</guid>
+      <pubDate>Mon, 23 Mar 2026 12:37:00 +0100</pubDate>
+      <ext:first_seen>Mon, 23 Mar 2026 13:59:20 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 23 Mar 2026 12:37:00 +0100</ext:starts_at>
       <ext:ends_at>Mon, 23 Mar 2026 23:55:00 +0100</ext:ends_at>
-      <description><![CDATA[Die Linie 38 A wird in beiden Richtungen zwischen Bahnhof Heiligenstadt S U und Grinzing über Grinzinger Allee umgeleitet.<br/>[Seit 23.03.2026]]]></description>
-      <content:encoded><![CDATA[Die Linie 38 A wird in beiden Richtungen zwischen Bahnhof Heiligenstadt S U und Grinzing über Grinzinger Allee umgeleitet.<br/>[Seit 23.03.2026]]]></content:encoded>
+      <description><![CDATA[Linie 95 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 23.03.2026]]]></description>
+      <content:encoded><![CDATA[Linie 95 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 23.03.2026]]]></content:encoded>
     </item>
     <item>
       <title>Wien Liesing ↔ Wien Meidling</title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;864647</guid>
-      <pubDate>Mon, 23 Mar 2026 11:43:37 +0100</pubDate>
-      <ext:first_seen>Mon, 23 Mar 2026 12:44:36 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 23 Mar 2026 11:43:37 +0100</ext:starts_at>
-      <description><![CDATA[Wegen einer technischen Störung auf der Strecke sind zwischen Wien Meidling Bahnhof (U) und Wien Liesing Bahnhof Zugfahrten bis voraussichtlich 13:00 Uhr nur eingeschränkt möglich.<br/>[Seit 23.03.2026]]]></description>
-      <content:encoded><![CDATA[Wegen einer technischen Störung auf der Strecke sind zwischen Wien Meidling Bahnhof (U) und Wien Liesing Bahnhof Zugfahrten bis voraussichtlich 13:00 Uhr nur eingeschränkt möglich.<br/>[Seit 23.03.2026]]]></content:encoded>
+      <pubDate>Mon, 23 Mar 2026 12:06:37 +0100</pubDate>
+      <ext:first_seen>Mon, 23 Mar 2026 13:59:20 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 23 Mar 2026 12:06:37 +0100</ext:starts_at>
+      <description><![CDATA[Wegen einer technischen Störung auf der Strecke waren zwischen Wien Meidling Bahnhof (U) und Wien Liesing Bahnhof bis 12:03 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 23.03.2026]]]></description>
+      <content:encoded><![CDATA[Wegen einer technischen Störung auf der Strecke waren zwischen Wien Meidling Bahnhof (U) und Wien Liesing Bahnhof bis 12:03 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 23.03.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>38A: Feuerwehreinsatz</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">23035fbb18cf54e12a91a326f046fd03ee86d614225ee2cf959f27cb1caea0ff</guid>
+      <pubDate>Mon, 23 Mar 2026 11:56:00 +0100</pubDate>
+      <ext:first_seen>Mon, 23 Mar 2026 13:59:20 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 23 Mar 2026 11:56:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 23 Mar 2026 23:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 38 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 23.03.2026]]]></description>
+      <content:encoded><![CDATA[Linie 38 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 23.03.2026]]]></content:encoded>
     </item>
     <item>
       <title>9A: Gasrohrgebrechen</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">b7d12e5034d8363286cc00cefae66676b23d8cfee8ace75984eed0c6f1f5ae6b</guid>
       <pubDate>Mon, 23 Mar 2026 11:42:00 +0100</pubDate>
-      <ext:first_seen>Mon, 23 Mar 2026 12:44:36 +0100</ext:first_seen>
+      <ext:first_seen>Mon, 23 Mar 2026 13:59:20 +0100</ext:first_seen>
       <ext:starts_at>Mon, 23 Mar 2026 11:42:00 +0100</ext:starts_at>
       <ext:ends_at>Mon, 23 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[[Seit 23.03.2026]]]></description>
       <content:encoded><![CDATA[[Seit 23.03.2026]]]></content:encoded>
     </item>
     <item>
-      <title>Wien Stadlau</title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;864625</guid>
-      <pubDate>Mon, 23 Mar 2026 11:31:33 +0100</pubDate>
-      <ext:first_seen>Mon, 23 Mar 2026 12:44:36 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 23 Mar 2026 11:31:33 +0100</ext:starts_at>
-      <description><![CDATA[Wegen einer Weichenstörung waren in Wien Stadlau Bahnhst (U) bis 11:29 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 23.03.2026]]]></description>
-      <content:encoded><![CDATA[Wegen einer Weichenstörung waren in Wien Stadlau Bahnhst (U) bis 11:29 Uhr nur eingeschränkt Fahrten möglich.<br/>[Seit 23.03.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>18: Polizeieinsatz Betrieb ab Urban Loritz Platz</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46</guid>
-      <pubDate>Mon, 23 Mar 2026 11:24:00 +0100</pubDate>
-      <ext:first_seen>Mon, 23 Mar 2026 12:44:36 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 23 Mar 2026 11:25:51 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 23 Mar 2026 23:55:00 +0100</ext:ends_at>
-      <description><![CDATA[Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 23.03.2026]]]></description>
-      <content:encoded><![CDATA[Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 23.03.2026]]]></content:encoded>
-    </item>
-    <item>
       <title>Wien Mitte-Landstraße ↔ Flughafen Wien</title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;852582</guid>
       <pubDate>Mon, 23 Mar 2026 11:21:12 +0100</pubDate>
-      <ext:first_seen>Mon, 23 Mar 2026 12:44:36 +0100</ext:first_seen>
+      <ext:first_seen>Mon, 23 Mar 2026 13:59:20 +0100</ext:first_seen>
       <ext:starts_at>Mon, 23 Mar 2026 11:21:12 +0100</ext:starts_at>
       <description><![CDATA[Wegen Bauarbeiten können von 13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr) zwischen Flughafen Wien Bahnhof und Wien Mitte-Landstraße Bahnhof …<br/>[Seit 23.03.2026]]]></description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr) zwischen Flughafen Wien Bahnhof und Wien Mitte-Landstraße Bahnhof …<br/>[Seit 23.03.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>41: Falschparker</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa</guid>
-      <pubDate>Mon, 23 Mar 2026 11:21:00 +0100</pubDate>
-      <ext:first_seen>Mon, 23 Mar 2026 12:44:36 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 23 Mar 2026 11:21:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 23 Mar 2026 23:55:00 +0100</ext:ends_at>
-      <description><![CDATA[Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 23.03.2026]]]></description>
-      <content:encoded><![CDATA[Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 23.03.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>9: Rettungseinsatz Betrieb ab Johann Nepomuk Berger Platz</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509</guid>
-      <pubDate>Mon, 23 Mar 2026 10:55:00 +0100</pubDate>
-      <ext:first_seen>Mon, 23 Mar 2026 12:44:36 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 23 Mar 2026 11:05:04 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 23 Mar 2026 23:55:00 +0100</ext:ends_at>
-      <description><![CDATA[Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 23.03.2026]]]></description>
-      <content:encoded><![CDATA[Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 23.03.2026]]]></content:encoded>
     </item>
     <item>
       <title>49: Rettungseinsatz</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a</guid>
       <pubDate>Mon, 23 Mar 2026 10:55:00 +0100</pubDate>
-      <ext:first_seen>Mon, 23 Mar 2026 12:44:36 +0100</ext:first_seen>
+      <ext:first_seen>Mon, 23 Mar 2026 13:59:20 +0100</ext:first_seen>
       <ext:starts_at>Mon, 23 Mar 2026 10:55:00 +0100</ext:starts_at>
       <ext:ends_at>Mon, 23 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 23.03.2026]]]></description>
@@ -110,10 +78,41 @@
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;847000</guid>
       <pubDate>Mon, 23 Mar 2026 10:47:56 +0100</pubDate>
-      <ext:first_seen>Mon, 23 Mar 2026 12:44:36 +0100</ext:first_seen>
+      <ext:first_seen>Mon, 23 Mar 2026 13:59:20 +0100</ext:first_seen>
       <ext:starts_at>Mon, 23 Mar 2026 10:47:56 +0100</ext:starts_at>
       <description><![CDATA[Wegen Bauarbeiten können von 08.03.2026 (04:40 Uhr) bis 22.06.2026 (04:40 Uhr) zwischen Wien Hbf (U) und Götzendorf Bahnhof, zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof, …<br/>[Seit 23.03.2026]]]></description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 08.03.2026 (04:40 Uhr) bis 22.06.2026 (04:40 Uhr) zwischen Wien Hbf (U) und Götzendorf Bahnhof, zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof, …<br/>[Seit 23.03.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>REX 1: Wien Hauptbahnhof ↔ Deutsch Wagram</title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;856293</guid>
+      <pubDate>Mon, 23 Mar 2026 10:27:59 +0100</pubDate>
+      <ext:first_seen>Sat, 21 Feb 2026 23:59:34 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 23 Mar 2026 10:27:59 +0100</ext:starts_at>
+      <description><![CDATA[Wegen Bauarbeiten werden zwischen Wien Hbf (U) und Deutsch Wagram Bahnhof von 28.03.2026 bis 02.05.2026 einige REX 1-Züge umgeleitet und können in Wien Quartier Belvedere, …<br/>[Seit 23.03.2026]]]></description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten werden zwischen Wien Hbf (U) und Deutsch Wagram Bahnhof von 28.03.2026 bis 02.05.2026 einige REX 1-Züge umgeleitet und können in Wien Quartier Belvedere, …<br/>[Seit 23.03.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>Wien Hauptbahnhof ↔ Gramatneusiedl</title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;859927</guid>
+      <pubDate>Mon, 23 Mar 2026 10:14:50 +0100</pubDate>
+      <ext:first_seen>Mon, 23 Mar 2026 13:59:20 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 23 Mar 2026 10:14:50 +0100</ext:starts_at>
+      <description><![CDATA[Wegen Bauarbeiten können zwischen Wien Meidling Bahnhof bzw.<br/>[Seit 23.03.2026]]]></description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Meidling Bahnhof bzw.<br/>[Seit 23.03.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>6: Kein Betrieb</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a9081c3efcf42b91fa2bf401525eea7ede4b64ca4db2b6f25a91343e796397b5</guid>
+      <pubDate>Mon, 23 Mar 2026 05:01:07 +0100</pubDate>
+      <ext:first_seen>Mon, 23 Mar 2026 13:59:20 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 23 Mar 2026 05:01:07 +0100</ext:starts_at>
+      <ext:ends_at>Tue, 24 Mar 2026 00:00:00 +0100</ext:ends_at>
+      <description><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[23.03.2026 – 24.03.2026]]]></description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[23.03.2026 – 24.03.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
