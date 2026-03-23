@@ -356,20 +356,8 @@
     "guid": "b7d12e5034d8363286cc00cefae66676b23d8cfee8ace75984eed0c6f1f5ae6b",
     "pubDate": "2026-03-23T11:42:00+01:00",
     "starts_at": "2026-03-23T11:42:00+01:00",
-    "ends_at": "2026-03-23T23:55:00+01:00",
+    "ends_at": "2026-03-23T20:44:00+01:00",
     "_identity": "wl|störung|L=9A|D=2026-03-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "63A: Rettungseinsatz",
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "91d669c1fbe32bfc275e4e4defa8ceccd4bb34a47aefba98017f28a1c74921ba",
-    "pubDate": "2026-03-23T18:19:00+01:00",
-    "starts_at": "2026-03-23T18:19:00+01:00",
-    "ends_at": "2026-03-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=63A|D=2026-03-23"
   },
   {
     "source": "Wiener Linien",
@@ -382,53 +370,5 @@
     "starts_at": "2026-03-23T18:34:00+01:00",
     "ends_at": "2026-03-23T23:55:00+01:00",
     "_identity": "wl|störung|L=43|D=2026-03-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Fahrtbehinderung Schadhafter PKW",
-    "description": "Fahrtbehinderung Schadhafter PKW",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bed8bc8882e714c7ec157e07f3abe38f77cabea3a947ec15d7b0e634c27a47fc",
-    "pubDate": "2026-03-23T19:08:46+01:00",
-    "starts_at": "2026-03-23T19:08:51+01:00",
-    "ends_at": "2026-03-23T20:07:00+01:00",
-    "_identity": "wl|störung|L=7A|D=2026-03-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "36B: Fremder Verkehrsunfall",
-    "description": "Linie 36B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "accce3f21245a64052c8612552c60b23535b04f3067f9faca13213873772742d",
-    "pubDate": "2026-03-23T19:26:00+01:00",
-    "starts_at": "2026-03-23T19:26:00+01:00",
-    "ends_at": "2026-03-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=36B|D=2026-03-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "36B: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0d4e215fe20e44613d20cd4d9c781c04c856143ad58587629fca50d3cf569a2b",
-    "pubDate": "2026-03-23T19:28:33+01:00",
-    "starts_at": "2026-03-23T19:28:33+01:00",
-    "ends_at": "2026-03-23T20:28:00+01:00",
-    "_identity": "wl|störung|L=36B|D=2026-03-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "36B: Fremdunfall Betrieb ab Koloniestraße",
-    "description": "Fremdunfall Betrieb ab Koloniestraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2cf0438dc14d0e5af82ec2de063c906a957301dedb57f79fa9092e738f6df365",
-    "pubDate": "2026-03-23T19:31:48+01:00",
-    "starts_at": "2026-03-23T19:31:48+01:00",
-    "ends_at": "2026-03-23T20:30:00+01:00",
-    "_identity": "wl|störung|L=36B|D=2026-03-23"
   }
 ]
