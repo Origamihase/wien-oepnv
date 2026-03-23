@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-03-17T00:00:24+01:00",
-    "starts_at": "2026-03-17T00:00:24+01:00",
-    "ends_at": "2026-03-23T23:59:59+01:00",
-    "_identity": "wl|störung|L=74A|D=2026-03-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -322,6 +310,18 @@
     "starts_at": "2026-03-17T00:00:24+01:00",
     "ends_at": "2026-03-23T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-03-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-03-17T00:00:24+01:00",
+    "starts_at": "2026-03-17T00:00:24+01:00",
+    "ends_at": "2026-03-23T23:59:59+01:00",
+    "_identity": "wl|störung|L=74A|D=2026-03-17"
   },
   {
     "source": "Wiener Linien",
@@ -350,37 +350,73 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52A: Verkehrsunfall",
-    "description": "Linie 52A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7982563b6b91508dd1f35df8de7cbd3978abdcef3e75e26c8c9fe451b30847ba",
-    "pubDate": "2026-03-23T10:21:00+01:00",
-    "starts_at": "2026-03-23T10:21:00+01:00",
-    "ends_at": "2026-03-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=52A|D=2026-03-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31: Falschparker Betrieb ab Gaußplatz",
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7fc5dec6c1828e780870a54d956a3e47494ba66068f3920d342fbe84b2c28065",
-    "pubDate": "2026-03-23T10:31:00+01:00",
-    "starts_at": "2026-03-23T10:33:42+01:00",
-    "ends_at": "2026-03-23T23:55:00+01:00",
-    "_identity": "wl|störung|L=31|D=2026-03-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 11:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Schweglerstraße U.",
+    "title": "49: Rettungseinsatz",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
     "pubDate": "2026-03-23T10:55:00+01:00",
-    "starts_at": "2026-03-23T10:57:48+01:00",
+    "starts_at": "2026-03-23T10:55:00+01:00",
     "ends_at": "2026-03-23T23:55:00+01:00",
     "_identity": "wl|störung|L=49|D=2026-03-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Rettungseinsatz Betrieb ab Johann Nepomuk Berger Platz",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
+    "pubDate": "2026-03-23T10:55:00+01:00",
+    "starts_at": "2026-03-23T11:05:04+01:00",
+    "ends_at": "2026-03-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=9|D=2026-03-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Falschparker",
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2026-03-23T11:21:00+01:00",
+    "starts_at": "2026-03-23T11:21:00+01:00",
+    "ends_at": "2026-03-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=41|D=2026-03-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Polizeieinsatz Betrieb ab Urban Loritz Platz",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46",
+    "pubDate": "2026-03-23T11:24:00+01:00",
+    "starts_at": "2026-03-23T11:25:51+01:00",
+    "ends_at": "2026-03-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-03-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9A: Gasrohrgebrechen",
+    "description": "",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b7d12e5034d8363286cc00cefae66676b23d8cfee8ace75984eed0c6f1f5ae6b",
+    "pubDate": "2026-03-23T11:42:00+01:00",
+    "starts_at": "2026-03-23T11:42:00+01:00",
+    "ends_at": "2026-03-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=9A|D=2026-03-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38A: Feuerwehreinsatz",
+    "description": "Die Linie 38A wird in beiden Richtungen zwischen Bahnhof Heiligenstadt S U und Grinzing über Grinzinger Allee umgeleitet. Weichen Sie ersatzweise auf die Linien 37 und 5B aus. Voraussichtliche Dauer: 15:00 Uhr. Grund: Feuerwehreinsatz im Bereich Grinzinger Straße 83.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "23035fbb18cf54e12a91a326f046fd03ee86d614225ee2cf959f27cb1caea0ff",
+    "pubDate": "2026-03-23T11:56:00+01:00",
+    "starts_at": "2026-03-23T11:56:00+01:00",
+    "ends_at": "2026-03-23T23:55:00+01:00",
+    "_identity": "wl|störung|L=38A|D=2026-03-23"
   }
 ]
