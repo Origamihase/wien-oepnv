@@ -7,14 +7,25 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Tue, 24 Mar 2026 13:02:01 +0100</lastBuildDate>
+<lastBuildDate>Tue, 24 Mar 2026 14:54:35 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title>U3: Schadhaftes Fahrzeug</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3</guid>
+      <pubDate>Tue, 24 Mar 2026 12:30:00 +0100</pubDate>
+      <ext:first_seen>Tue, 24 Mar 2026 14:54:35 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 24 Mar 2026 12:30:00 +0100</ext:starts_at>
+      <ext:ends_at>Tue, 24 Mar 2026 23:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></description>
+      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></content:encoded>
+    </item>
     <item>
       <title>46: Verkehrsunfall</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">180993c51d700d2f8779c791c37dcd5e1d26312dd20edb4308afbd81db7e287b</guid>
       <pubDate>Tue, 24 Mar 2026 11:46:00 +0100</pubDate>
-      <ext:first_seen>Tue, 24 Mar 2026 13:02:01 +0100</ext:first_seen>
+      <ext:first_seen>Tue, 24 Mar 2026 14:54:35 +0100</ext:first_seen>
       <ext:starts_at>Tue, 24 Mar 2026 11:46:00 +0100</ext:starts_at>
       <ext:ends_at>Tue, 24 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></description>
@@ -25,29 +36,18 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2bb1b4a8f8fee82afdf26f8751d91135f6933d25a8bf9289c48af7c77247bbc2</guid>
       <pubDate>Tue, 24 Mar 2026 11:46:00 +0100</pubDate>
-      <ext:first_seen>Tue, 24 Mar 2026 13:02:01 +0100</ext:first_seen>
+      <ext:first_seen>Tue, 24 Mar 2026 14:54:35 +0100</ext:first_seen>
       <ext:starts_at>Tue, 24 Mar 2026 11:46:00 +0100</ext:starts_at>
       <ext:ends_at>Tue, 24 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 46 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></description>
       <content:encoded><![CDATA[Linie 46 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></content:encoded>
     </item>
     <item>
-      <title>45A: Verkehrsunfall</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7dd7b5f83cd6fa98acecaa98222badf95dc56f59586029aa420aafc0c50f8f5e</guid>
-      <pubDate>Tue, 24 Mar 2026 11:46:00 +0100</pubDate>
-      <ext:first_seen>Tue, 24 Mar 2026 13:02:01 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 24 Mar 2026 11:46:00 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 24 Mar 2026 23:55:00 +0100</ext:ends_at>
-      <description><![CDATA[Linie 45 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></description>
-      <content:encoded><![CDATA[Linie 45 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></content:encoded>
-    </item>
-    <item>
       <title>46B: Verkehrsunfall</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">bdda258636f7e663d5c3aa1f6412cf1b1cbaf41b11f6d24c6ff003e6f9d0af67</guid>
       <pubDate>Tue, 24 Mar 2026 11:46:00 +0100</pubDate>
-      <ext:first_seen>Tue, 24 Mar 2026 13:02:01 +0100</ext:first_seen>
+      <ext:first_seen>Tue, 24 Mar 2026 14:54:35 +0100</ext:first_seen>
       <ext:starts_at>Tue, 24 Mar 2026 11:46:00 +0100</ext:starts_at>
       <ext:ends_at>Tue, 24 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 46 B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></description>
@@ -58,19 +58,19 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e78eaae06ed5d3cf090d4186a3c0813bd59271e475fa87f71ff2ee4b48e3d505</guid>
       <pubDate>Tue, 24 Mar 2026 11:46:00 +0100</pubDate>
-      <ext:first_seen>Tue, 24 Mar 2026 13:02:01 +0100</ext:first_seen>
+      <ext:first_seen>Tue, 24 Mar 2026 14:54:35 +0100</ext:first_seen>
       <ext:starts_at>Tue, 24 Mar 2026 11:46:00 +0100</ext:starts_at>
       <ext:ends_at>Tue, 24 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></description>
       <content:encoded><![CDATA[Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></content:encoded>
     </item>
     <item>
-      <title>12: Fahrtbehinderung wegen Polizeieinsatz</title>
+      <title>12: Polizeieinsatz</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">cb8f37a153e49e1b9fce9bbe197d868b0f2104c567dea861959f72bf49ba88a7</guid>
       <pubDate>Tue, 24 Mar 2026 11:37:00 +0100</pubDate>
-      <ext:first_seen>Tue, 24 Mar 2026 13:02:01 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 24 Mar 2026 11:42:07 +0100</ext:starts_at>
+      <ext:first_seen>Tue, 24 Mar 2026 14:54:35 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 24 Mar 2026 11:37:00 +0100</ext:starts_at>
       <ext:ends_at>Tue, 24 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></description>
       <content:encoded><![CDATA[Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></content:encoded>
@@ -80,7 +80,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">6386a0a1443709a811da286faca3c110f82cb450fccefa41edfcc91b1f2e483b</guid>
       <pubDate>Tue, 24 Mar 2026 10:55:00 +0100</pubDate>
-      <ext:first_seen>Tue, 24 Mar 2026 13:02:01 +0100</ext:first_seen>
+      <ext:first_seen>Tue, 24 Mar 2026 14:54:35 +0100</ext:first_seen>
       <ext:starts_at>Tue, 24 Mar 2026 10:55:00 +0100</ext:starts_at>
       <ext:ends_at>Tue, 24 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></description>
@@ -91,7 +91,7 @@
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;829791</guid>
       <pubDate>Tue, 24 Mar 2026 10:07:16 +0100</pubDate>
-      <ext:first_seen>Tue, 24 Mar 2026 13:02:01 +0100</ext:first_seen>
+      <ext:first_seen>Tue, 24 Mar 2026 14:54:35 +0100</ext:first_seen>
       <ext:starts_at>Tue, 24 Mar 2026 10:07:16 +0100</ext:starts_at>
       <description><![CDATA[Wegen Bauarbeiten können zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt Bahnhof (U) von 14.12.2025 bis 01.07.2026 (03:00 Uhr) keine S40 und R40 Züge fahren.<br/>[Seit 24.03.2026]]]></description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt Bahnhof (U) von 14.12.2025 bis 01.07.2026 (03:00 Uhr) keine S40 und R40 Züge fahren.<br/>[Seit 24.03.2026]]]></content:encoded>
@@ -101,21 +101,21 @@
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;861846</guid>
       <pubDate>Tue, 24 Mar 2026 10:02:20 +0100</pubDate>
-      <ext:first_seen>Tue, 24 Mar 2026 13:02:01 +0100</ext:first_seen>
+      <ext:first_seen>Tue, 24 Mar 2026 14:54:35 +0100</ext:first_seen>
       <ext:starts_at>Tue, 24 Mar 2026 10:02:20 +0100</ext:starts_at>
       <description><![CDATA[Wegen Bauarbeiten können zwischen Wien Praterstern Bahnhof (U) und Wien Meidling Bahnhof (U), und zwischen Wien Hbf (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (22:00 …<br/>[Seit 24.03.2026]]]></description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Praterstern Bahnhof (U) und Wien Meidling Bahnhof (U), und zwischen Wien Hbf (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (22:00 …<br/>[Seit 24.03.2026]]]></content:encoded>
     </item>
     <item>
-      <title>U1: Schadhaftes Fahrzeug</title>
+      <title>6: Kein Betrieb</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
-      <pubDate>Tue, 24 Mar 2026 09:24:00 +0100</pubDate>
-      <ext:first_seen>Tue, 24 Mar 2026 13:02:01 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 24 Mar 2026 09:24:00 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 24 Mar 2026 23:55:00 +0100</ext:ends_at>
-      <description><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></description>
-      <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 24.03.2026]]]></content:encoded>
+      <guid isPermaLink="false">a9081c3efcf42b91fa2bf401525eea7ede4b64ca4db2b6f25a91343e796397b5</guid>
+      <pubDate>Tue, 24 Mar 2026 05:01:22 +0100</pubDate>
+      <ext:first_seen>Tue, 24 Mar 2026 14:54:35 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 24 Mar 2026 05:01:22 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 25 Mar 2026 00:00:00 +0100</ext:ends_at>
+      <description><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[24.03.2026 – 25.03.2026]]]></description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[24.03.2026 – 25.03.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
