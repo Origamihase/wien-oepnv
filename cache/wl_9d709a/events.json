@@ -350,25 +350,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Rettungseinsatz Betrieb ab Matzleinsdorfer Platz",
+    "title": "1: Rettungseinsatz",
     "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
     "pubDate": "2026-03-24T07:21:00+01:00",
-    "starts_at": "2026-03-24T07:25:53+01:00",
+    "starts_at": "2026-03-24T07:21:00+01:00",
     "ends_at": "2026-03-24T23:55:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-03-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Rettungseinsatz Umleitung zur Dörfelstraße, U6",
-    "description": "Rettungseinsatz Umleitung zur Dörfelstraße, U6",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c550a114044a230fcd7a1440b145bb0b0b356a38ad8506b0dfdbec3c6872e189",
-    "pubDate": "2026-03-24T07:26:22+01:00",
-    "starts_at": "2026-03-24T07:26:22+01:00",
-    "ends_at": "2026-03-24T08:25:00+01:00",
     "_identity": "wl|störung|L=1|D=2026-03-24"
   },
   {
@@ -386,13 +374,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "57A: Verkehrsüberlastung",
-    "description": "Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "31A: Signalstörung",
+    "description": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4e672553aa1915bacf3501b3a3d5a8107576c36dc3c6e9cc3c4a59768adff9a4",
-    "pubDate": "2026-03-24T07:55:00+01:00",
-    "starts_at": "2026-03-24T07:55:00+01:00",
+    "guid": "00edbbf20abc1514ffbb7b671cc5d4c7cd52e2d79edd8d76d0aa40602859c1f7",
+    "pubDate": "2026-03-24T09:01:00+01:00",
+    "starts_at": "2026-03-24T09:01:00+01:00",
     "ends_at": "2026-03-24T23:55:00+01:00",
-    "_identity": "wl|störung|L=57A|D=2026-03-24"
+    "_identity": "wl|störung|L=31A|D=2026-03-24"
   }
 ]
