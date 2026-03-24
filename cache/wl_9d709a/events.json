@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "48A: Neubaugasse, Burggasse",
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 48A in Richtung Ring, Volkstheater<br /></span></u></strong><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie N46 in Richtung Oper, Karlsplatz</span></u></strong><u></u></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Neubaugasse, Burggasse</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Burggasse vor Neubaugasse</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Burggasse 67-69</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 05. M&auml;rz 2026, etwa 17:00 Uhr bis 24. M&auml;rz 2026, etwa 07:30 Uhr</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrlegungsarbeiten</span></p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9607fd711e1d29044f6a79e7269bda60ac0345fb04bdf02def53a2962f142618",
-    "pubDate": "2026-03-02T14:00:00+01:00",
-    "starts_at": "2026-03-02T14:00:00+01:00",
-    "ends_at": "2026-03-24T07:30:00+01:00",
-    "_identity": "wl|hinweis|L=48A|D=2026-03-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "5B: Umleitung Muthgasse",
     "description": "<h2>Bauarbeiten</h2> <p>Wegen Rohrleitungsarbeiten in der Muthgasse wird die Linie 5B umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Dienstag, 17. M&auml;rz 2025, etwa 08:00 Uhr bis voraussichtlich Juni 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 5B in Richtung Praterstern S U:</strong><br />Umleitung Grinzinger Stra&szlig;e # Muthgasse &uuml;ber die Nu&szlig;dorfer L&auml;nde - Mooslackengasse - Leopold-Ungar-Platz.</p> <p><span style=\"text-decoration: underline;\">Haltestellenverlegung:</span><br />Haltestelle Amtshaus Muthgasse<br />Verlegt von: Muthgasse 27<br />Verlegt nach: Nu&szlig;dorfer L&auml;nde 35</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -290,18 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-03-17T00:00:24+01:00",
-    "starts_at": "2026-03-17T00:00:24+01:00",
-    "ends_at": "2026-03-24T23:59:59+01:00",
-    "_identity": "wl|störung|L=74A|D=2026-03-17"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -310,6 +286,18 @@
     "starts_at": "2026-03-17T00:00:24+01:00",
     "ends_at": "2026-03-24T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-03-17"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-03-17T00:00:24+01:00",
+    "starts_at": "2026-03-17T00:00:24+01:00",
+    "ends_at": "2026-03-24T23:59:59+01:00",
+    "_identity": "wl|störung|L=74A|D=2026-03-17"
   },
   {
     "source": "Wiener Linien",
@@ -326,14 +314,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/11/18/O: Stromstörung",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stromstörung.",
+    "title": "O: Stromstörung",
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e4295b9d5757a0298bb068479e200eefc65465998ab68ffbc3c29cc27207dd2c",
+    "guid": "3dff142faa301e65fa92054f19b0b0a6ccbf24dbd074144565aa07d69e7c3ff2",
     "pubDate": "2026-03-24T04:47:00+01:00",
     "starts_at": "2026-03-24T04:47:00+01:00",
     "ends_at": "2026-03-24T23:55:00+01:00",
-    "_identity": "wl|störung|L=1,11,18,O|D=2026-03-24"
+    "_identity": "wl|störung|L=O|D=2026-03-24"
   },
   {
     "source": "Wiener Linien",
@@ -350,13 +338,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "7A: Verspätungen",
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-03-24T05:54:00+01:00",
-    "starts_at": "2026-03-24T05:54:00+01:00",
+    "guid": "214cec6cae971effd21b47b0b3859b88354324a6fc53301d0ac43a41c2f9bb78",
+    "pubDate": "2026-03-24T07:18:00+01:00",
+    "starts_at": "2026-03-24T07:18:00+01:00",
+    "ends_at": "2026-03-24T23:55:00+01:00",
+    "_identity": "wl|störung|L=7A|D=2026-03-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Rettungseinsatz Betrieb ab Matzleinsdorfer Platz",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
+    "pubDate": "2026-03-24T07:21:00+01:00",
+    "starts_at": "2026-03-24T07:25:53+01:00",
+    "ends_at": "2026-03-24T23:55:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-03-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Rettungseinsatz Umleitung zur Dörfelstraße, U6",
+    "description": "Rettungseinsatz Umleitung zur Dörfelstraße, U6",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c550a114044a230fcd7a1440b145bb0b0b356a38ad8506b0dfdbec3c6872e189",
+    "pubDate": "2026-03-24T07:26:22+01:00",
+    "starts_at": "2026-03-24T07:26:22+01:00",
+    "ends_at": "2026-03-24T08:25:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-03-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Stellwerksstörung",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung im Haltestellenbereich Zieglergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bd1e1d376d76c97d21d201d9c4430ea2b7a048438100494212e76b102a146378",
+    "pubDate": "2026-03-24T07:38:00+01:00",
+    "starts_at": "2026-03-24T07:38:00+01:00",
     "ends_at": "2026-03-24T23:55:00+01:00",
     "_identity": "wl|störung|L=U3|D=2026-03-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Verkehrsüberlastung",
+    "description": "Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4e672553aa1915bacf3501b3a3d5a8107576c36dc3c6e9cc3c4a59768adff9a4",
+    "pubDate": "2026-03-24T07:55:00+01:00",
+    "starts_at": "2026-03-24T07:55:00+01:00",
+    "ends_at": "2026-03-24T23:55:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2026-03-24"
   }
 ]
