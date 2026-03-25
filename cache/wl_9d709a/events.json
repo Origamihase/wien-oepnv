@@ -278,14 +278,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N29: Busse halten auf der Hauptfahrbahn",
-    "description": "Busse halten auf der Hauptfahrbahn",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
-    "pubDate": "2026-03-24T23:00:09+01:00",
-    "starts_at": "2026-03-24T23:00:09+01:00",
-    "ends_at": "2026-03-25T05:30:00+01:00",
-    "_identity": "wl|störung|L=N29|D=2026-03-24"
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-03-25T00:00:26+01:00",
+    "starts_at": "2026-03-25T00:00:26+01:00",
+    "ends_at": "2026-03-25T23:59:59+01:00",
+    "_identity": "wl|störung|L=37A|D=2026-03-25"
   },
   {
     "source": "Wiener Linien",
@@ -298,18 +298,6 @@
     "starts_at": "2026-03-25T00:00:26+01:00",
     "ends_at": "2026-03-25T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-03-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-03-25T00:00:26+01:00",
-    "starts_at": "2026-03-25T00:00:26+01:00",
-    "ends_at": "2026-03-25T23:59:59+01:00",
-    "_identity": "wl|störung|L=37A|D=2026-03-25"
   },
   {
     "source": "Wiener Linien",
@@ -344,7 +332,19 @@
     "guid": "13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d",
     "pubDate": "2026-03-25T05:02:00+01:00",
     "starts_at": "2026-03-25T05:02:00+01:00",
-    "ends_at": "2026-03-25T23:55:00+01:00",
+    "ends_at": "2026-03-25T06:40:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-03-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Fahrtbehinderung Falschparker",
+    "description": "Linie 13A: Fahrtbehinderung in Richtung Hauptbahnhof S U. Voraussichtliche Dauer: 07:15 Uhr. Grund: Falschparker im Haltestellenbereich Lederergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d",
+    "pubDate": "2026-03-25T06:40:00+01:00",
+    "starts_at": "2026-03-25T06:41:16+01:00",
+    "ends_at": "2026-03-25T23:55:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-03-25"
   }
 ]
