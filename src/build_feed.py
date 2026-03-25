@@ -589,7 +589,7 @@ def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] 
     path.parent.mkdir(parents=True, exist_ok=True)
     # Windows-fix: Use a separate lock file to avoid permission errors when atomic_write replaces the target
     lock_path = path.with_suffix(".lock")
-    with lock_path.open("w", encoding="utf-8") as lock_file:
+    with lock_path.open("a+", encoding="utf-8") as lock_file:
         with file_lock(lock_file, exclusive=True):
             # Safe merge: read existing state to avoid overwriting parallel updates
             merged_state = {}

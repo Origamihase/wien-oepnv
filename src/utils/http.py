@@ -1342,12 +1342,24 @@ def request_safe(
                 )
             else:
                 # HTTPS: TOCTOU Fix (Task 4) using PinnedHTTPSAdapter
-                ips = _resolve_hostname_safe(parsed.hostname or "")
                 target_ip: str | None = None
-                for _, _, _, _, sockaddr in ips:
-                    if is_ip_safe(str(sockaddr[0])):
-                        target_ip = str(sockaddr[0])
-                        break
+
+                if parsed.hostname:
+                    try:
+                        ip_candidate = parsed.hostname.strip("[]").split("%")[0]
+                        ip_obj = ipaddress.ip_address(ip_candidate)
+                        target_ip_cand = str(ip_obj)
+                        if is_ip_safe(target_ip_cand):
+                            target_ip = str(target_ip_cand)
+                    except ValueError:
+                        pass
+
+                if target_ip is None:
+                    ips = _resolve_hostname_safe(parsed.hostname or "")
+                    for _, _, _, _, sockaddr in ips:
+                        if is_ip_safe(str(sockaddr[0])):
+                            target_ip = str(sockaddr[0])
+                            break
 
                 if not target_ip:
                     sanitized_url = _sanitize_url_for_error(current_url)
