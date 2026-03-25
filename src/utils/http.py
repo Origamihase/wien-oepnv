@@ -1350,7 +1350,7 @@ def request_safe(
                         ip_obj = ipaddress.ip_address(ip_candidate)
                         target_ip_cand = str(ip_obj)
                         if is_ip_safe(target_ip_cand):
-                            target_ip = target_ip_cand
+                            target_ip = str(target_ip_cand)
                     except ValueError:
                         pass
 
