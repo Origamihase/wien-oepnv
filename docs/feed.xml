@@ -7,79 +7,89 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Thu, 26 Mar 2026 12:48:01 +0100</lastBuildDate>
+<lastBuildDate>Thu, 26 Mar 2026 14:06:33 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title>Fahrtbehinderung wegen Polizeieinsatz</title>
+      <title>S 50: Neulengbach ↔ Tullnerbach-Pressbaum</title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;854167</guid>
+      <pubDate>Thu, 26 Mar 2026 12:37:27 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Mar 2026 14:06:33 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Mar 2026 12:37:27 +0100</ext:starts_at>
+      <description><![CDATA[Wegen Bauarbeiten können zwischen Neulengbach Bahnhof und Tullnerbach-Pressbaum Bahnhof von 28.03.2026 (03:00 Uhr) bis 07.04.2026 (03:00 Uhr) keine S 50-Züge fahren.<br/>[Seit 26.03.2026]]]></description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Neulengbach Bahnhof und Tullnerbach-Pressbaum Bahnhof von 28.03.2026 (03:00 Uhr) bis 07.04.2026 (03:00 Uhr) keine S 50-Züge fahren.<br/>[Seit 26.03.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>2: Falschparker Betrieb über Li. 9+43</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">68bc6af54c6e7221254acf728b57d945990511addcc9f1a0366dc0c96112b806</guid>
-      <pubDate>Thu, 26 Mar 2026 11:52:02 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Mar 2026 12:48:01 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Mar 2026 11:52:02 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 26 Mar 2026 12:51:00 +0100</ext:ends_at>
-      <description><![CDATA[Fahrtbehinderung wegen Polizeieinsatz<br/>[Seit 26.03.2026]]]></description>
-      <content:encoded><![CDATA[Fahrtbehinderung wegen Polizeieinsatz<br/>[Seit 26.03.2026]]]></content:encoded>
+      <guid isPermaLink="false">9ddf5d1b468f97566b0d71492d70a5743faa129c9553b8165867b8249c7b99da</guid>
+      <pubDate>Thu, 26 Mar 2026 12:19:57 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Mar 2026 14:06:33 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Mar 2026 12:29:29 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Mar 2026 23:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.03.2026]]]></description>
+      <content:encoded><![CDATA[Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.03.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>10: Falschparker Betrieb ab Maroltingergasse</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0d70c69478856b9a3b8e5e9a4e597963f8077e418dad78a7ecf0b5dea4f9fa04</guid>
+      <pubDate>Thu, 26 Mar 2026 12:19:28 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Mar 2026 14:06:33 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Mar 2026 12:27:12 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Mar 2026 23:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.03.2026]]]></description>
+      <content:encoded><![CDATA[Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.03.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>9: Fahrtbehinderung Betriebsstörung</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">20f1e69eac7e1f585a31fa7f84ecd52c7dfc1dd2ca0f471dc18483cb0b8b25b8</guid>
+      <pubDate>Thu, 26 Mar 2026 12:16:34 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Mar 2026 14:06:33 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Mar 2026 12:16:54 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Mar 2026 14:00:00 +0100</ext:ends_at>
+      <description><![CDATA[Fahrtbehinderung Betriebsstörung<br/>[Seit 26.03.2026]]]></description>
+      <content:encoded><![CDATA[Fahrtbehinderung Betriebsstörung<br/>[Seit 26.03.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title>43: Betriebsstörung</title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7df1ea15586715cb10d96c6d0cb66f5e7b5f095a09b30566643002c38895afa0</guid>
+      <pubDate>Thu, 26 Mar 2026 12:14:00 +0100</pubDate>
+      <ext:first_seen>Thu, 26 Mar 2026 14:06:33 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Mar 2026 12:14:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Mar 2026 23:55:00 +0100</ext:ends_at>
+      <description><![CDATA[Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.03.2026]]]></description>
+      <content:encoded><![CDATA[Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.03.2026]]]></content:encoded>
     </item>
     <item>
       <title>Wien Hauptbahnhof ↔ Götzendorf/Leitha</title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;858761</guid>
       <pubDate>Thu, 26 Mar 2026 11:33:17 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Mar 2026 12:48:01 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Mar 2026 14:06:33 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Mar 2026 11:33:17 +0100</ext:starts_at>
       <description><![CDATA[Wegen Bauarbeiten können von 03.04.2026 (23:00 Uhr) bis 07.04.2026 (04:00 Uhr) zwischen Wien Hbf (U) und Götzendorf/Leitha Bahnhof die Nahverkehrszüge 7713, 7717, 7720, 7721, …<br/>[Seit 26.03.2026]]]></description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 03.04.2026 (23:00 Uhr) bis 07.04.2026 (04:00 Uhr) zwischen Wien Hbf (U) und Götzendorf/Leitha Bahnhof die Nahverkehrszüge 7713, 7717, 7720, 7721, …<br/>[Seit 26.03.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>O: Verspätungen</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">178cf2e06d6bf9e3207e789e31504019ebfed19bf91191929c7996b4b8b6d1a7</guid>
-      <pubDate>Thu, 26 Mar 2026 11:24:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Mar 2026 12:48:01 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Mar 2026 11:24:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 26 Mar 2026 23:55:00 +0100</ext:ends_at>
-      <description><![CDATA[Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.03.2026]]]></description>
-      <content:encoded><![CDATA[Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.03.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>11: Verspätungen</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eaf96db733f004733a9b91b0e04111a3f9331a02f6c30911495b5b22f6e936d3</guid>
-      <pubDate>Thu, 26 Mar 2026 11:24:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Mar 2026 12:48:01 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Mar 2026 11:24:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 26 Mar 2026 23:55:00 +0100</ext:ends_at>
-      <description><![CDATA[Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.03.2026]]]></description>
-      <content:encoded><![CDATA[Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.03.2026]]]></content:encoded>
     </item>
     <item>
       <title>U2: Rettungseinsatz</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
       <pubDate>Thu, 26 Mar 2026 11:17:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Mar 2026 12:48:01 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Mar 2026 14:06:33 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Mar 2026 11:17:00 +0100</ext:starts_at>
       <ext:ends_at>Thu, 26 Mar 2026 23:55:00 +0100</ext:ends_at>
       <description><![CDATA[Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.03.2026]]]></description>
       <content:encoded><![CDATA[Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 26.03.2026]]]></content:encoded>
     </item>
     <item>
-      <title>42: Falschparker</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
-      <pubDate>Thu, 26 Mar 2026 11:09:00 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Mar 2026 12:48:01 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Mar 2026 11:09:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 26 Mar 2026 23:55:00 +0100</ext:ends_at>
-      <description><![CDATA[Linie 42: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.<br/>[Seit 26.03.2026]]]></description>
-      <content:encoded><![CDATA[Linie 42: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.<br/>[Seit 26.03.2026]]]></content:encoded>
-    </item>
-    <item>
       <title>Wien Praterstern ↔ Wien MeidlingbrWien Wien Hütteldorf</title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;861846</guid>
       <pubDate>Thu, 26 Mar 2026 09:02:38 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Mar 2026 12:48:01 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Mar 2026 14:06:33 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Mar 2026 09:02:38 +0100</ext:starts_at>
       <description><![CDATA[Wegen Bauarbeiten können zwischen Wien Praterstern Bahnhof (U) und Wien Meidling Bahnhof (U), und zwischen Wien Hbf (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (22:00 …<br/>[Seit 26.03.2026]]]></description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Praterstern Bahnhof (U) und Wien Meidling Bahnhof (U), und zwischen Wien Hbf (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (22:00 …<br/>[Seit 26.03.2026]]]></content:encoded>
@@ -89,28 +99,17 @@
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">555cbd54effbbd78725dd65a58c5523bc89efced9c8a8ae9cc03e1b139f10922</guid>
       <pubDate>Thu, 26 Mar 2026 08:58:34 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Mar 2026 12:48:01 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Mar 2026 14:06:33 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Mar 2026 08:58:34 +0100</ext:starts_at>
       <description><![CDATA[Wegen Bauarbeiten können zwischen Marchegg Bahnhof und Bratislava hl.st.<br/>[Seit 26.03.2026]]]></description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Marchegg Bahnhof und Bratislava hl.st.<br/>[Seit 26.03.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title>U4: Linie U4 Kein Betrieb zwischen Landstraße und Pilgramgasse</title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2d97cc3de636dac3ab6dc3321ae1a2cc247cdb6c0b22c56a98024874b897bcac</guid>
-      <pubDate>Thu, 26 Mar 2026 07:35:32 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Mar 2026 12:48:01 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Mar 2026 07:35:57 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 26 Mar 2026 13:15:00 +0100</ext:ends_at>
-      <description><![CDATA[Linie U4 Kein Betrieb zwischen Landstraße und Pilgramgasse<br/>[Seit 26.03.2026]]]></description>
-      <content:encoded><![CDATA[Linie U4 Kein Betrieb zwischen Landstraße und Pilgramgasse<br/>[Seit 26.03.2026]]]></content:encoded>
     </item>
     <item>
       <title>6: Kein Betrieb</title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a9081c3efcf42b91fa2bf401525eea7ede4b64ca4db2b6f25a91343e796397b5</guid>
       <pubDate>Thu, 26 Mar 2026 05:01:16 +0100</pubDate>
-      <ext:first_seen>Thu, 26 Mar 2026 12:48:01 +0100</ext:first_seen>
+      <ext:first_seen>Thu, 26 Mar 2026 14:06:33 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Mar 2026 05:01:16 +0100</ext:starts_at>
       <ext:ends_at>Fri, 27 Mar 2026 00:00:00 +0100</ext:ends_at>
       <description><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[26.03.2026 – 27.03.2026]]]></description>
