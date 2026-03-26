@@ -74,18 +74,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "4A: Umleitung",
-    "description": "<h2>Rohrleitungsarbeiten</h2> <p>Wegen Bauarbeiten im Bereich der Lisztstra&szlig;e wird die Linie 4A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Montag, 12. J&auml;nner 2026 etwa 07:00 Uhr bis 28. M&auml;rz 2026, etwa 08:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 4A in Richtung Wittelsbachstra&szlig;e<br /></strong>Umleitung ab Lothringerstra&szlig;e # Schwarzenbergplatz &uuml;ber Schwarzenbergplatz - Am Heumarkt - Lisztstra&szlig;e zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Akademietheater (Lisztstra&szlig;e 4)</p> <p><strong>Linie 4A in Richtung Karlsplatz U<br /></strong>Umleitung ab Lisztstra&szlig;e # Heumarkt &uuml;ber Am Heumarkt - Schwarzenbergplatz - Lothringerstra&szlig;e zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Akademietheater in beiden Richtungen.</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/4A_Akademietheater.png\" alt=\"Skizze\" width=\"859\" height=\"859\" /></p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3968b28d1734e83928e4cd5b122b4bd71990d4b7d329e687736e6d9d94e25d6f",
-    "pubDate": "2025-12-20T06:00:00+01:00",
-    "starts_at": "2026-01-12T00:00:00+00:00",
-    "ends_at": "2026-03-26T08:00:00+01:00",
-    "_identity": "wl|hinweis|L=4A|D=2026-01-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "37A: Straßenbauarbeiten",
     "description": "<h2>Umfangreiche Stra&szlig;enbauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Donaueschingenstra&szlig;e wird die Linie 37A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Montag, 26. J&auml;nner 2026, etwa 07:00 Uhr bis voraussichtlich Ende Mai 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 37A in Richtung D&auml;nenstra&szlig;e bzw. Nu&szlig;dorfer Stra&szlig;e U:<br /></strong>Umleitung ab Pasettistra&szlig;e # Donaueschingenstra&szlig;e &uuml;ber Pasettistra&szlig;e &ndash; Hellwagstra&szlig;e &ndash; Dresdner Stra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Lorenz-B&ouml;hler-Unfallkrankenhaus (Donaueschingenstra&szlig;e nach Pasettistra&szlig;e)<br />Dresdner Stra&szlig;e U (Dresdner Stra&szlig;e 47)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Lorenz-B&ouml;hler-Unfallkrankenhaus (Pasettistra&szlig;e 73-75)<br />Pasettistra&szlig;e (Pasettistra&szlig;e vor Hellwagstra&szlig;e)</p> <p><span style=\"text-decoration: underline;\"><strong>Skizze:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/37A_Donaueschingenstrasse.png\" alt=\"Skizze\" width=\"859\" height=\"828\" /></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -266,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-03-26T00:00:18+01:00",
-    "starts_at": "2026-03-26T00:00:18+01:00",
-    "ends_at": "2026-03-26T23:59:59+01:00",
-    "_identity": "wl|störung|L=74A|D=2026-03-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -286,6 +262,18 @@
     "starts_at": "2026-03-26T00:00:18+01:00",
     "ends_at": "2026-03-26T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-03-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-03-26T00:00:18+01:00",
+    "starts_at": "2026-03-26T00:00:18+01:00",
+    "ends_at": "2026-03-26T23:59:59+01:00",
+    "_identity": "wl|störung|L=74A|D=2026-03-26"
   },
   {
     "source": "Wiener Linien",
@@ -326,18 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-03-26T06:21:00+01:00",
-    "starts_at": "2026-03-26T06:21:00+01:00",
-    "ends_at": "2026-03-26T23:55:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-03-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U6: Verspätungen",
     "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -346,5 +322,101 @@
     "starts_at": "2026-03-26T06:24:00+01:00",
     "ends_at": "2026-03-26T23:55:00+01:00",
     "_identity": "wl|störung|L=U6|D=2026-03-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Rettungseinsatz",
+    "description": "Derzeit können die Züge der Linie U4 die Station Karlsplatz in beiden Richtungen nicht einhalten. Weichen Sie ersatzweise auf die Linien U1, U2, U3, U6, 57A und 59A aus. Voraussichtliche Dauer: 09:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Karlsplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
+    "pubDate": "2026-03-26T07:26:00+01:00",
+    "starts_at": "2026-03-26T07:26:00+01:00",
+    "ends_at": "2026-03-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2026-03-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Linie U4 Kein Betrieb zwischen Landstraße und Pilgramgasse",
+    "description": "Linie U4 Kein Betrieb zwischen Landstraße und Pilgramgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2d97cc3de636dac3ab6dc3321ae1a2cc247cdb6c0b22c56a98024874b897bcac",
+    "pubDate": "2026-03-26T07:35:32+01:00",
+    "starts_at": "2026-03-26T07:35:57+01:00",
+    "ends_at": "2026-03-26T13:15:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2026-03-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Rettungseinsatz",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
+    "pubDate": "2026-03-26T07:42:00+01:00",
+    "starts_at": "2026-03-26T07:42:00+01:00",
+    "ends_at": "2026-03-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=U1|D=2026-03-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Verkehrsunfall",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eb95adf873b18dcc90582141fd8b881d6f58540f5e3144fe72be528eb86b24d6",
+    "pubDate": "2026-03-26T07:46:00+01:00",
+    "starts_at": "2026-03-26T07:46:00+01:00",
+    "ends_at": "2026-03-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=5|D=2026-03-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "90f3e9ae80b1ced372efb169e9553a734be9ad86fa0539d9008f2c17a5442faf",
+    "pubDate": "2026-03-26T07:46:18+01:00",
+    "starts_at": "2026-03-26T07:53:35+01:00",
+    "ends_at": "2026-03-26T08:53:00+01:00",
+    "_identity": "wl|störung|L=5|D=2026-03-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Verspätungen",
+    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "eaf96db733f004733a9b91b0e04111a3f9331a02f6c30911495b5b22f6e936d3",
+    "pubDate": "2026-03-26T08:01:00+01:00",
+    "starts_at": "2026-03-26T08:01:00+01:00",
+    "ends_at": "2026-03-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-03-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Verkehrsüberlastung",
+    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "00805e247214cfaf545982b4b95007ea8a2466b38c0eaf2e743fa342ce44e36c",
+    "pubDate": "2026-03-26T08:36:00+01:00",
+    "starts_at": "2026-03-26T08:36:00+01:00",
+    "ends_at": "2026-03-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=14A|D=2026-03-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Verkehrsüberlastung",
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
+    "pubDate": "2026-03-26T08:37:00+01:00",
+    "starts_at": "2026-03-26T08:37:00+01:00",
+    "ends_at": "2026-03-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=7A|D=2026-03-26"
   }
 ]
