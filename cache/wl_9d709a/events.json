@@ -266,18 +266,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-03-26T00:00:18+01:00",
-    "starts_at": "2026-03-26T00:00:18+01:00",
-    "ends_at": "2026-03-26T23:59:59+01:00",
-    "_identity": "wl|störung|L=37A|D=2026-03-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -286,6 +274,18 @@
     "starts_at": "2026-03-26T00:00:18+01:00",
     "ends_at": "2026-03-26T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-03-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-03-26T00:00:18+01:00",
+    "starts_at": "2026-03-26T00:00:18+01:00",
+    "ends_at": "2026-03-26T23:59:59+01:00",
+    "_identity": "wl|störung|L=37A|D=2026-03-26"
   },
   {
     "source": "Wiener Linien",
@@ -326,13 +326,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Polizeieinsatz",
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U4: Verspätungen",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
-    "pubDate": "2026-03-26T05:04:00+01:00",
-    "starts_at": "2026-03-26T05:04:00+01:00",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-03-26T06:21:00+01:00",
+    "starts_at": "2026-03-26T06:21:00+01:00",
     "ends_at": "2026-03-26T23:55:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2026-03-26"
+    "_identity": "wl|störung|L=U4|D=2026-03-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-03-26T06:24:00+01:00",
+    "starts_at": "2026-03-26T06:24:00+01:00",
+    "ends_at": "2026-03-26T23:55:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2026-03-26"
   }
 ]
