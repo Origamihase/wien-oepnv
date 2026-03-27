@@ -15,7 +15,6 @@ import dns.exception
 import time
 import types
 import unicodedata
-from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Container, Mapping, MutableMapping, TypeGuard, Union
 from urllib.parse import parse_qsl, urlencode, urljoin, urlparse
 
@@ -49,9 +48,6 @@ _UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f<>\"\\^`{|}]")
 
 # Limit URL length to reduce DoS risk from extremely long inputs.
 MAX_URL_LENGTH = 2048
-
-# Global DNS executor to reduce thread overhead (Task B)
-_DNS_EXECUTOR = ThreadPoolExecutor(max_workers=10, thread_name_prefix="DNS_Resolver")
 
 # Thread-safe Session Cache (Task: HTTP Keep-Alive)
 _HTTP_SESSION_CACHE: collections.OrderedDict[str, requests.Session] = collections.OrderedDict()
@@ -1589,11 +1585,6 @@ def fetch_content_safe(
         **kwargs,
     )
     return response.content
-
-
-def shutdown_dns_executor() -> None:
-    """Shutdown the global DNS executor to release resources."""
-    _DNS_EXECUTOR.shutdown(wait=True)
 
 
 def cleanup_http_sessions() -> None:
