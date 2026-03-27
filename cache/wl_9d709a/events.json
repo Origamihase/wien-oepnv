@@ -242,18 +242,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-03-27T00:00:20+01:00",
-    "starts_at": "2026-03-27T00:00:20+01:00",
-    "ends_at": "2026-03-27T23:59:59+01:00",
-    "_identity": "wl|störung|L=37A|D=2026-03-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -262,6 +250,18 @@
     "starts_at": "2026-03-27T00:00:20+01:00",
     "ends_at": "2026-03-27T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-03-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-03-27T00:00:20+01:00",
+    "starts_at": "2026-03-27T00:00:20+01:00",
+    "ends_at": "2026-03-27T23:59:59+01:00",
+    "_identity": "wl|störung|L=37A|D=2026-03-27"
   },
   {
     "source": "Wiener Linien",
@@ -314,73 +314,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Verkehrsunfall",
-    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "49173de64aa2215d87e8e544f1df8b7687c6e8172327e8cd9174b3c727005709",
-    "pubDate": "2026-03-27T16:17:00+01:00",
-    "starts_at": "2026-03-27T16:17:00+01:00",
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2026-03-27T18:22:00+01:00",
+    "starts_at": "2026-03-27T18:25:40+01:00",
     "ends_at": "2026-03-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2026-03-27"
+    "_identity": "wl|störung|L=42|D=2026-03-27"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Verkehrsunfall",
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U6: Polizeieinsatz",
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Josefstädter Straße und Alser Straße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 19:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e5660a0ab66e8052c66ac62caa273ee692ce56758d8e16e3324e16b86881f37a",
-    "pubDate": "2026-03-27T16:17:00+01:00",
-    "starts_at": "2026-03-27T16:17:00+01:00",
-    "ends_at": "2026-03-27T18:39:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-03-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
-    "pubDate": "2026-03-27T17:09:06+01:00",
-    "starts_at": "2026-03-27T17:09:25+01:00",
-    "ends_at": "2026-03-27T18:08:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-03-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung wegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
-    "pubDate": "2026-03-27T17:10:23+01:00",
-    "starts_at": "2026-03-27T17:10:23+01:00",
-    "ends_at": "2026-03-27T18:09:00+01:00",
-    "_identity": "wl|störung|L=9|D=2026-03-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Rettungseinsatz",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
-    "pubDate": "2026-03-27T17:46:00+01:00",
-    "starts_at": "2026-03-27T17:46:00+01:00",
+    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
+    "pubDate": "2026-03-27T18:38:00+01:00",
+    "starts_at": "2026-03-27T18:38:00+01:00",
     "ends_at": "2026-03-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2026-03-27"
+    "_identity": "wl|störung|L=U6|D=2026-03-27"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "24A: Schadhaftes Fahrzeug",
-    "description": "Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "11: Schadhafter Zug Betrieb nur bis Bhf. Simmering",
+    "description": "Schadhafter Zug Betrieb nur bis Bhf. Simmering",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3735dd03dfbaa97b59f38640c3a37c876de820c66e0147838f8138c986dfb4e0",
-    "pubDate": "2026-03-27T17:50:00+01:00",
-    "starts_at": "2026-03-27T17:50:00+01:00",
-    "ends_at": "2026-03-27T18:37:00+01:00",
-    "_identity": "wl|störung|L=24A|D=2026-03-27"
+    "guid": "5dbe1c5e73879da0206ca098a16a79444c4f4e14b7c9005ccd86fcc529ebd76d",
+    "pubDate": "2026-03-27T18:46:18+01:00",
+    "starts_at": "2026-03-27T18:46:28+01:00",
+    "ends_at": "2026-03-27T19:44:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-03-27"
   }
 ]
