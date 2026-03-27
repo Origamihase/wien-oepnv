@@ -290,18 +290,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Verkehrsunfall",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9",
-    "pubDate": "2026-03-27T07:10:00+01:00",
-    "starts_at": "2026-03-27T07:10:00+01:00",
-    "ends_at": "2026-03-27T23:55:00+01:00",
-    "_identity": "wl|störung|L=9|D=2026-03-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "40: Verkehrsunfall",
     "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -310,6 +298,42 @@
     "starts_at": "2026-03-27T07:10:00+01:00",
     "ends_at": "2026-03-27T23:55:00+01:00",
     "_identity": "wl|störung|L=40|D=2026-03-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Weichenschaden",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5ac5c060681b978c794bffab73175f697bee105389e55e6b3d0ec038f12a7d4f",
+    "pubDate": "2026-03-27T07:59:00+01:00",
+    "starts_at": "2026-03-27T07:59:00+01:00",
+    "ends_at": "2026-03-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-03-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Weichenschaden",
+    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0ef2816932befe559a9cf9dff2c93241248a505643acd8675e7d6107d4424b46",
+    "pubDate": "2026-03-27T07:59:00+01:00",
+    "starts_at": "2026-03-27T07:59:00+01:00",
+    "ends_at": "2026-03-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=26|D=2026-03-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Weichenschaden",
+    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f49872da4a6972e0eacd7bef90eb0c88cac9d889ad8b134efb721db825bbe2e9",
+    "pubDate": "2026-03-27T07:59:00+01:00",
+    "starts_at": "2026-03-27T07:59:00+01:00",
+    "ends_at": "2026-03-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=27|D=2026-03-27"
   },
   {
     "source": "Wiener Linien",
@@ -326,18 +350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Weichenschaden Betrieb ab Josef-Baumann-Gasse",
-    "description": "Weichenschaden Betrieb ab Josef-Baumann-Gasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2d71a1bcb2f2552dd9c30790963dafbc7c00c5dc8b44bc57c803ebbf01655759",
-    "pubDate": "2026-03-27T08:24:44+01:00",
-    "starts_at": "2026-03-27T08:24:44+01:00",
-    "ends_at": "2026-03-27T12:00:00+01:00",
-    "_identity": "wl|störung|L=26|D=2026-03-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "27: Weichenschaden Betrieb ab Floridsdorf",
     "description": "Weichenschaden Betrieb ab Floridsdorf < >",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -346,6 +358,18 @@
     "starts_at": "2026-03-27T08:28:07+01:00",
     "ends_at": "2026-03-27T12:00:00+01:00",
     "_identity": "wl|störung|L=27|D=2026-03-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Weichenschaden Betrieb ab Josef-Baumann-Gasse",
+    "description": "Weichenschaden Betrieb ab Josef-Baumann-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2d71a1bcb2f2552dd9c30790963dafbc7c00c5dc8b44bc57c803ebbf01655759",
+    "pubDate": "2026-03-27T08:24:44+01:00",
+    "starts_at": "2026-03-27T08:24:44+01:00",
+    "ends_at": "2026-03-27T12:00:00+01:00",
+    "_identity": "wl|störung|L=26|D=2026-03-27"
   },
   {
     "source": "Wiener Linien",
@@ -398,18 +422,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Weichenschaden Einstieg Tokiostraße bei Linie 25",
-    "description": "Weichenschaden Einstieg Tokiostraße bei Linie 25",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bda6b82751a45fbb568129ddee0265d83c7d07d0a6e70ea03846f2003b34e5a9",
-    "pubDate": "2026-03-27T08:28:07+01:00",
-    "starts_at": "2026-03-27T08:28:07+01:00",
-    "ends_at": "2026-03-27T12:00:00+01:00",
-    "_identity": "wl|störung|L=27|D=2026-03-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26: Weichenschaden Einstieg Tokiostraße bei Linie 25",
     "description": "Weichenschaden Einstieg Tokiostraße bei Linie 25",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -422,6 +434,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "27: Weichenschaden Einstieg Tokiostraße bei Linie 25",
+    "description": "Weichenschaden Einstieg Tokiostraße bei Linie 25",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bda6b82751a45fbb568129ddee0265d83c7d07d0a6e70ea03846f2003b34e5a9",
+    "pubDate": "2026-03-27T08:28:07+01:00",
+    "starts_at": "2026-03-27T08:28:07+01:00",
+    "ends_at": "2026-03-27T12:00:00+01:00",
+    "_identity": "wl|störung|L=27|D=2026-03-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26: Weichenschaden Einstieg Franz-Jonas-Platz",
     "description": "Weichenschaden Einstieg Franz-Jonas-Platz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -430,5 +454,29 @@
     "starts_at": "2026-03-27T08:28:07+01:00",
     "ends_at": "2026-03-27T12:00:00+01:00",
     "_identity": "wl|störung|L=26|D=2026-03-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Weichenschaden Betrieb ab Kagran",
+    "description": "Weichenschaden Betrieb ab Kagran >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5f58c2c9b7c03bd498b3a7fc9765cef302b31abea9d5b11bb0d9334b60398851",
+    "pubDate": "2026-03-27T08:41:00+01:00",
+    "starts_at": "2026-03-27T08:41:10+01:00",
+    "ends_at": "2026-03-27T12:00:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-03-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "36B: Verkehrsunfall",
+    "description": "Linie 36B: Unregelmäßige Intervalle in beiden Richtungen U. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "537a043cfb2484a37bbe1c05b76f66a716a3057cddf873381706f910f929cd91",
+    "pubDate": "2026-03-27T09:10:00+01:00",
+    "starts_at": "2026-03-27T09:10:00+01:00",
+    "ends_at": "2026-03-27T23:55:00+01:00",
+    "_identity": "wl|störung|L=36B|D=2026-03-27"
   }
 ]
