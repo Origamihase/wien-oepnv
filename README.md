@@ -10,6 +10,7 @@
 [![Tests](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml/badge.svg)](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml)
 [![SEO-Checks](https://github.com/origamihase/wien-oepnv/actions/workflows/seo-guard.yml/badge.svg)](https://github.com/origamihase/wien-oepnv/actions/workflows/seo-guard.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Subscribe to Feed](https://img.shields.io/badge/RSS-Subscribe_to_Feed-orange?style=flat&logo=rss)](https://origamihase.github.io/wien-oepnv/feed.xml)
 
 Dieses Repository bündelt sämtliche Komponenten, um einen konsolidierten Meldungs-Feed für den öffentlichen Verkehr in Wien
 und im niederösterreichisch-burgenländischen Umland zu erzeugen. Der Feed kombiniert offizielle Informationen der Wiener
@@ -56,7 +57,7 @@ Der Feed-Bau folgt einem klaren Ablauf:
 ## Repository-SEO & Promotion
 
 - **About & Topics pflegen** – Verwende eine kurze, keyword-starke Projektbeschreibung (z. B. „RSS-Feed für Störungs- und Baustellenmeldungen im Wiener ÖPNV“) und ergänze Topics wie `vienna`, `public-transport`, `verkehrsmeldungen`, `rss-feed`, `python`. So verbesserst du das Ranking innerhalb der GitHub-Suche.
-- **Feed prominent verlinken** – Der RSS-Feed ist unter [`docs/feed.xml`](docs/feed.xml) verfügbar. In GitHub Pages bindet der `<link rel="alternate" type="application/rss+xml">`-Eintrag den Feed direkt im HTML-Head ein, wodurch Google Discover & Co. ihn leichter finden.
+- **Feed prominent verlinken** – Der RSS-Feed ist unter [https://origamihase.github.io/wien-oepnv/feed.xml](https://origamihase.github.io/wien-oepnv/feed.xml) verfügbar. Nutze idealerweise immer diese absolute URL für RSS-Reader, um durchgängig aktuelle Updates zu erhalten. In GitHub Pages bindet der `<link rel="alternate" type="application/rss+xml">`-Eintrag den Feed direkt im HTML-Head ein, wodurch Google Discover & Co. ihn leichter finden.
 - **Sitemap & Robots nutzen** – `docs/sitemap.xml` und `docs/robots.txt` sind bereits vorbereitet. Reiche die Sitemap in der Google Search Console ein, damit neue Meldungen schneller indexiert werden.
 - **Externe Signale aufbauen** – Stelle das Projekt in Blogposts, Foren (z. B. Reddit, Mastodon, lokale ÖPNV-Gruppen) oder Newsletter vor. Backlinks von thematisch relevanten Seiten erhöhen die Sichtbarkeit in klassischen Suchmaschinen.
 - **Monitoring etablieren** – Beobachte GitHub Insights (Stars, Forks, Traffic) sowie Feed-Validatoren wie <https://validator.w3.org/feed/>. Automatisierte Checks helfen, strukturelle Probleme früh zu erkennen.
