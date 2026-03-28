@@ -242,18 +242,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-03-27T00:00:20+01:00",
-    "starts_at": "2026-03-27T00:00:20+01:00",
-    "ends_at": "2026-03-28T23:59:59+01:00",
-    "_identity": "wl|störung|L=37A|D=2026-03-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -262,6 +250,18 @@
     "starts_at": "2026-03-27T00:00:20+01:00",
     "ends_at": "2026-03-28T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-03-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-03-27T00:00:20+01:00",
+    "starts_at": "2026-03-27T00:00:20+01:00",
+    "ends_at": "2026-03-28T23:59:59+01:00",
+    "_identity": "wl|störung|L=37A|D=2026-03-27"
   },
   {
     "source": "Wiener Linien",
@@ -346,5 +346,41 @@
     "starts_at": "2026-03-28T05:01:00+01:00",
     "ends_at": "2026-03-29T00:00:00+01:00",
     "_identity": "wl|störung|L=6|D=2026-03-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093",
+    "pubDate": "2026-03-28T10:48:32+01:00",
+    "starts_at": "2026-03-28T10:48:35+01:00",
+    "ends_at": "2026-03-28T11:48:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-03-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Schadhafter PKW",
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "825f5d59703d319fdbafc2617772b1f3dbf3349a9730778eb79d575891a9b8ea",
+    "pubDate": "2026-03-28T11:09:00+01:00",
+    "starts_at": "2026-03-28T11:09:00+01:00",
+    "ends_at": "2026-03-28T23:55:00+01:00",
+    "_identity": "wl|störung|L=66A|D=2026-03-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Schadhafter Pkw Betrieb ab Atzgersdorf",
+    "description": "Schadhafter Pkw Betrieb ab Atzgersdorf <",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f49400799eb3071fed98f6aea2e0d2d76b479e1c6af34e8251ad6aaabcc9db93",
+    "pubDate": "2026-03-28T11:14:46+01:00",
+    "starts_at": "2026-03-28T11:14:46+01:00",
+    "ends_at": "2026-03-28T12:13:00+01:00",
+    "_identity": "wl|störung|L=66A|D=2026-03-28"
   }
 ]
