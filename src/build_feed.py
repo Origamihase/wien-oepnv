@@ -1429,10 +1429,9 @@ def _make_rss(
     if hasattr(ET, "indent"):
         ET.indent(rss, space="  ", level=0)
 
-    # Serialize to string
-    # Manuell Header setzen, um doppelte Anführungszeichen zu erzwingen (ET nutzt oft einfache)
-    xml_body = ET.tostring(rss, encoding="unicode")
-    xml_str = '<?xml version="1.0" encoding="utf-8"?>\n' + xml_body
+    # Serialize to string using native ElementTree declaration
+    xml_bytes = ET.tostring(rss, encoding="utf-8", xml_declaration=True)
+    xml_str = xml_bytes.decode("utf-8")
 
     # Inject CDATA
     for placeholder, cdata in item_replacements.items():

@@ -14,6 +14,7 @@ Configuration is primarily driven by environment variables (e.g., ``VOR_ACCESS_I
 
 from __future__ import annotations
 
+import atexit
 import base64
 import json
 import logging
@@ -87,6 +88,23 @@ _VOR_AUTHORIZATION_HEADER = ""  # nosec B105
 _QUOTA_LOCK = threading.RLock()
 # Local cache to optimize quota checks (fail-fast)
 _QUOTA_CACHE: Dict[str, Any] = {"date": None, "count": 0, "unsaved_delta": 0}
+
+
+def _flush_quota_cache() -> None:
+    """Flush any unsaved request counts to disk on exit."""
+    with _QUOTA_LOCK:
+        if _QUOTA_CACHE.get("unsaved_delta", 0) > 0:
+            original_batch = os.environ.get("WIEN_OEPNV_TEST_QUOTA_BATCH")
+            try:
+                os.environ["WIEN_OEPNV_TEST_QUOTA_BATCH"] = "1"
+                save_request_count()
+            finally:
+                if original_batch is not None:
+                    os.environ["WIEN_OEPNV_TEST_QUOTA_BATCH"] = original_batch
+                else:
+                    os.environ.pop("WIEN_OEPNV_TEST_QUOTA_BATCH", None)
+
+atexit.register(_flush_quota_cache)
 
 
 def _get_secrets() -> List[str]:
@@ -747,7 +765,10 @@ def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
                         if "products" not in msg_copy and "Products" not in msg_copy:
                             product = dep.get("Product")
                             if product:
-                                msg_copy["products"] = {"Product": [product]}
+                                if isinstance(product, list):
+                                    msg_copy["products"] = {"Product": product}
+                                else:
+                                    msg_copy["products"] = {"Product": [product]}
                         yield msg_copy
 
 
