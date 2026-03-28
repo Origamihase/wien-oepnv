@@ -350,25 +350,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "66A: Schadhafter PKW",
-    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "16A/17A: Störung an einem Bahnübergang",
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Störung an einem Bahnübergang im Bereich .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "825f5d59703d319fdbafc2617772b1f3dbf3349a9730778eb79d575891a9b8ea",
-    "pubDate": "2026-03-28T11:09:00+01:00",
-    "starts_at": "2026-03-28T11:09:00+01:00",
+    "guid": "332a4e5d3f62bbf99e77944e05e9c4843740df6c5a14c9f025477f1a82afba61",
+    "pubDate": "2026-03-28T12:35:00+01:00",
+    "starts_at": "2026-03-28T12:35:00+01:00",
     "ends_at": "2026-03-28T23:55:00+01:00",
-    "_identity": "wl|störung|L=66A|D=2026-03-28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "66A: Schadhafter Pkw Betrieb ab Atzgersdorf",
-    "description": "Schadhafter Pkw Betrieb ab Atzgersdorf <",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f49400799eb3071fed98f6aea2e0d2d76b479e1c6af34e8251ad6aaabcc9db93",
-    "pubDate": "2026-03-28T11:14:46+01:00",
-    "starts_at": "2026-03-28T11:14:46+01:00",
-    "ends_at": "2026-03-28T12:13:00+01:00",
-    "_identity": "wl|störung|L=66A|D=2026-03-28"
+    "_identity": "wl|störung|L=16A,17A|D=2026-03-28"
   }
 ]
