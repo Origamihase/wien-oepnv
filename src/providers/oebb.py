@@ -75,12 +75,6 @@ DESC_CLEANUP_RE = re.compile(
     r"(?:\s*(?:>|&gt;|&amp;gt;|&#62;|&#x3E;)+)|(?:<->|<=>)"
 )
 
-COLON_PREFIX_RE = re.compile(
-    r"""^\s*(?:Update\s*\d+\s*\([^)]*\)\s*)?
-        (?:DB\s*↔\s*)?
-        (?:[A-Za-zÄÖÜäöüß/ \-]+:\s*)+
-    """, re.IGNORECASE | re.VERBOSE
-)
 MULTI_ARROW_RE  = re.compile(r"(?:\s*↔\s*){2,}")
 _MULTI_SLASH_RE = re.compile(r"\s*/{2,}\s*")
 _MULTI_COMMA_RE = re.compile(r"\s*,{2,}\s*")
