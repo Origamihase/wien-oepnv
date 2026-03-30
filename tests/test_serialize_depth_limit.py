@@ -1,5 +1,4 @@
 from src.utils.serialize import serialize_for_cache
-import pytest
 
 def test_serialize_deep_nesting_fails_gracefully():
     # Construct a deeply nested structure exceeding the proposed limit (e.g., 200)
