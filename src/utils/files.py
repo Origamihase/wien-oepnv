@@ -59,6 +59,12 @@ def atomic_write(
             flags |= os.O_WRONLY
 
         fd = os.open(tmp_path, flags, permissions)
+        # Security: Immediately enforce restrictive permissions bypassing umask
+        try:
+            os.fchmod(fd, permissions)
+        except OSError:
+            pass
+
         f = open(fd, mode, encoding=encoding, newline=newline)
         yield f
         f.flush()
