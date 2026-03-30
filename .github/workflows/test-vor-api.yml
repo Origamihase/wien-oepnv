@@ -49,6 +49,7 @@ jobs:
         run: |
           set -euo pipefail
           code=$(curl -sS -o /dev/null -w "%{http_code}" -G \
+            --max-time 15 \
             "${VOR_BASE_URL}location.name" \
             --data-urlencode "input=Wien Hauptbahnhof" \
             --data-urlencode "format=json" \

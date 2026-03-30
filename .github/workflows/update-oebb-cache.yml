@@ -25,6 +25,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
@@ -35,23 +36,7 @@ jobs:
         run: python scripts/update_oebb_cache.py
 
       - name: Commit and push changes
-        shell: bash
-        env:
-          BRANCH_NAME: ${{ github.ref_name }}
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Using wildcard for hashed path (e.g. cache/oebb_c40d21/events.json)
-          git add cache/oebb*/events.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-          branch="${BRANCH_NAME:-${GITHUB_REF#refs/heads/}}"
-          if [[ -z "$branch" || "$branch" == "$GITHUB_REF" ]]; then
-            branch="$(git rev-parse --abbrev-ref HEAD)"
-          fi
-          git commit -m 'chore: update ÖBB cache'
-          git pull --rebase --autostash origin "$branch"
-          git push origin HEAD:"$branch"
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update ÖBB cache'
+          file_pattern: 'cache/oebb*/events.json'
