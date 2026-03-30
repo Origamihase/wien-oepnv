@@ -74,8 +74,9 @@ def validate_path(path: Path, name: str) -> Path:
     for base in bases:
         try:
             rel = resolved.relative_to(base)
-        except Exception:
-            continue  # nosec B112 - ignore path resolution errors during validation
+        except Exception as rel_exc:
+            log.warning("Failed to resolve relative path", exc_info=rel_exc)
+            continue
         if rel.parts and rel.parts[0] in ALLOWED_ROOTS:
             return resolved
     raise InvalidPathError(f"{name} outside allowed directories")

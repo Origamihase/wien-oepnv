@@ -90,14 +90,16 @@ def atomic_write(
         if f is not None:
             try:
                 f.close()
-            except Exception:
-                pass  # nosec B110
+            except Exception as close_exc:
+                import logging
+                logging.getLogger(__name__).warning("Failed to close temporary file", exc_info=close_exc)
         # Cleanup temp file
         if os.path.exists(tmp_path):
             try:
                 os.unlink(tmp_path)
-            except OSError:
-                pass
+            except OSError as unlink_exc:
+                import logging
+                logging.getLogger(__name__).warning("Failed to remove temporary file", exc_info=unlink_exc)
         raise
 
 

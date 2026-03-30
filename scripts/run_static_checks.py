@@ -69,7 +69,7 @@ def main() -> int:
     exit_codes.append(_run([sys.executable, str(scanner)]))
 
     # Run pip-audit to check for known vulnerabilities in dependencies
-    exit_codes.append(_run(["pip-audit", "--ignore-vuln", "CVE-2026-4539"]))
+    exit_codes.append(_run(["pip-audit"]))
 
     # Return the highest exit code encountered
     return max(exit_codes) if exit_codes else 0
