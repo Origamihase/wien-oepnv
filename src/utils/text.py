@@ -214,7 +214,7 @@ def escape_markdown_cell(text: str) -> str:
     """Escape pipe characters and HTML to prevent injection and table breakage."""
     escaped = escape_markdown(text)
     # Use HTML entity for pipe to be safe in tables
-    return escaped.replace("|", "&#124;")
+    return escaped.replace("|", r"\|")
 
 class HTMLTruncator(HTMLParser):
     """Truncates HTML content while preserving tags and structure."""

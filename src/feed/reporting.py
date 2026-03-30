@@ -492,8 +492,9 @@ def render_feed_health_markdown(
                 f"`{_sanitize_code_span(title)}`" for title in dup.titles if title.strip()
             )
             title_text = titles or "(keine Titelinformationen)"
+            dedupe_key_escaped = _sanitize_code_span(dup.dedupe_key)
             lines.append(
-                f"- **{dup.count}×** Schlüssel `{dup.dedupe_key}` – Beispiele: {title_text}"
+                f"- **{dup.count}×** Schlüssel `{dedupe_key_escaped}` – Beispiele: {title_text}"
             )
         lines.append("")
 
