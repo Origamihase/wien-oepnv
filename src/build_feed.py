@@ -784,141 +784,145 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     feed_config.PROVIDER_MAX_WORKERS,
                 )
             desired_workers = min(desired_workers, feed_config.PROVIDER_MAX_WORKERS)
-        executor = ThreadPoolExecutor(max_workers=max(1, desired_workers))
-        try:
-            futures: Dict[Any, Tuple[Any, str, int]] = {}
-            deadlines: Dict[Any, Optional[float]] = {}
-            pending: set[Any] = set()
-            semaphores: Dict[str, BoundedSemaphore] = {}
+        with ThreadPoolExecutor(max_workers=max(1, desired_workers)) as executor:
+            try:
+                futures: Dict[Any, Tuple[Any, str, int]] = {}
+                deadlines: Dict[Any, Optional[float]] = {}
+                pending: set[Any] = set()
+                semaphores: Dict[str, BoundedSemaphore] = {}
 
-            for fetch in network_fetchers:
-                provider_name = provider_names.get(fetch, _provider_display_name(fetch))
-                env_name = provider_envs.get(fetch)
-                timeout_override = _provider_timeout_override(fetch, env_name, provider_name)
-                effective_timeout = (
-                    timeout_override if timeout_override is not None else feed_config.PROVIDER_TIMEOUT
-                )
-                concurrency_key = _provider_concurrency_key(fetch, provider_name)
-                worker_limit = _provider_worker_limit(
-                    fetch, env_name, provider_name, concurrency_key
-                )
-                semaphore: Optional[BoundedSemaphore] = None
-                if worker_limit is not None and worker_limit > 0:
-                    semaphore = semaphores.get(concurrency_key)
-                    if semaphore is None:
-                        semaphore = BoundedSemaphore(worker_limit)
-                        semaphores[concurrency_key] = semaphore
-                if timeout_override is not None:
-                    log.debug(
-                        "Provider %s nutzt Timeout-Override von %ss",
-                        provider_name,
-                        timeout_override,
+                for fetch in network_fetchers:
+                    provider_name = provider_names.get(fetch, _provider_display_name(fetch))
+                    env_name = provider_envs.get(fetch)
+                    timeout_override = _provider_timeout_override(fetch, env_name, provider_name)
+                    effective_timeout = (
+                        timeout_override if timeout_override is not None else feed_config.PROVIDER_TIMEOUT
                     )
-                if worker_limit is not None and worker_limit > 0:
-                    log.debug(
-                        "Provider %s begrenzt Worker auf %s (Schlüssel %s)",
-                        provider_name,
-                        worker_limit,
-                        concurrency_key,
+                    concurrency_key = _provider_concurrency_key(fetch, provider_name)
+                    worker_limit = _provider_worker_limit(
+                        fetch, env_name, provider_name, concurrency_key
                     )
-                supports_timeout = _fetch_supports_timeout(fetch)
+                    semaphore: Optional[BoundedSemaphore] = None
+                    if worker_limit is not None and worker_limit > 0:
+                        semaphore = semaphores.get(concurrency_key)
+                        if semaphore is None:
+                            semaphore = BoundedSemaphore(worker_limit)
+                            semaphores[concurrency_key] = semaphore
+                    if timeout_override is not None:
+                        log.debug(
+                            "Provider %s nutzt Timeout-Override von %ss",
+                            provider_name,
+                            timeout_override,
+                        )
+                    if worker_limit is not None and worker_limit > 0:
+                        log.debug(
+                            "Provider %s begrenzt Worker auf %s (Schlüssel %s)",
+                            provider_name,
+                            worker_limit,
+                            concurrency_key,
+                        )
+                    supports_timeout = _fetch_supports_timeout(fetch)
 
-                def _run_fetch(
-                    fetch: Any = fetch,
-                    timeout_value: Union[int, float] = effective_timeout,
-                    supports: bool = supports_timeout,
-                    semaphore: Optional[BoundedSemaphore] = semaphore,
-                ) -> Any:
-                    timeout_arg = timeout_value if timeout_value > 0 else 0.1
-                    if semaphore is None:
-                        return _call_fetch_with_timeout(fetch, timeout_arg, supports)
+                    def _run_fetch(
+                        fetch: Any = fetch,
+                        timeout_value: Union[int, float] = effective_timeout,
+                        supports: bool = supports_timeout,
+                        semaphore: Optional[BoundedSemaphore] = semaphore,
+                    ) -> Any:
+                        timeout_arg = timeout_value if timeout_value > 0 else 0.1
+                        if semaphore is None:
+                            return _call_fetch_with_timeout(fetch, timeout_arg, supports)
 
-                    # Prevent thread starvation by enforcing timeout on semaphore acquisition
-                    # This ensures that if the provider is deadlocked/overloaded, we don't block
-                    # the executor worker forever.
-                    start_wait = perf_counter()
-                    acquired = semaphore.acquire(timeout=timeout_arg)
-                    if not acquired:
-                         raise TimeoutError(f"Semaphore acquisition timed out after {timeout_value}s")
+                        # Prevent thread starvation by enforcing timeout on semaphore acquisition
+                        # This ensures that if the provider is deadlocked/overloaded, we don't block
+                        # the executor worker forever.
+                        start_wait = perf_counter()
+                        acquired = semaphore.acquire(timeout=timeout_arg)
+                        if not acquired:
+                             raise TimeoutError(f"Semaphore acquisition timed out after {timeout_value}s")
 
-                    # Task 3: Subtract wait time from timeout
-                    try:
-                        elapsed = perf_counter() - start_wait
-                        remaining_timeout = timeout_arg - elapsed
+                        # Task 3: Subtract wait time from timeout
+                        try:
+                            elapsed = perf_counter() - start_wait
+                            remaining_timeout = timeout_arg - elapsed
 
-                        if remaining_timeout < 0:
-                            raise TimeoutError(
-                                f"Semaphore acquisition took {elapsed:.2f}s, no realistic time left for fetch (threshold: < 0s)"
-                            )
+                            if remaining_timeout < 0:
+                                raise TimeoutError(
+                                    f"Semaphore acquisition took {elapsed:.2f}s, no realistic time left for fetch (threshold: < 0s)"
+                                )
 
-                        return _call_fetch_with_timeout(fetch, remaining_timeout, supports)
-                    finally:
-                        semaphore.release()
+                            return _call_fetch_with_timeout(fetch, remaining_timeout, supports)
+                        finally:
+                            semaphore.release()
 
-                report.provider_started(provider_name)
-                future = executor.submit(_run_fetch)
-                futures[future] = (fetch, provider_name, effective_timeout)
-                pending.add(future)
-                start_time = perf_counter()
-                if effective_timeout > 0:
-                    deadlines[future] = start_time + effective_timeout
-                elif effective_timeout == 0:
-                    deadlines[future] = start_time
-                else:
-                    deadlines[future] = None
-
-            while pending:
-                now = perf_counter()
-                expired = []
-                for future in list(pending):
-                    deadline = deadlines.get(future)
-                    if deadline is not None and now >= deadline:
-                        expired.append(future)
-                for future in expired:
-                    pending.discard(future)
-                    fetch, provider_name, timeout_value = futures[future]
-                    name = getattr(fetch, "__name__", str(fetch))
-                    log.error("%s fetch Timeout nach %ss", name, timeout_value)
-                    report.provider_error(
-                        provider_name,
-                        f"Timeout nach {timeout_value}s",
-                    )
-                    future.cancel()
-
-                if not pending:
-                    break
-
-                wait_timeout: Optional[float] = None
-                remaining = []
-                for fut in pending:
-                    deadline = deadlines.get(fut)
-                    if deadline is not None:
-                        remaining.append(deadline - now)
-                if remaining:
-                    wait_timeout = max(min(remaining), 0.1)
-
-                done, _ = wait(pending, timeout=wait_timeout, return_when=FIRST_COMPLETED)
-                if not done:
-                    continue
-
-                for future in done:
-                    pending.discard(future)
-                    fetch, provider_name, timeout_value = futures[future]
-                    name = getattr(fetch, "__name__", str(fetch))
-                    try:
-                        result = future.result()
-                    except (TimeoutError, requests.exceptions.Timeout) as exc:
-                        log.error("%s fetch Timeout: %s", name, exc)
-                        report.provider_error(provider_name, f"Timeout: {exc}")
-                    except CancelledError:
-                        report.provider_error(provider_name, "Fetch abgebrochen")
-                    except Exception as exc:
-                        log.exception("%s fetch fehlgeschlagen: %s", name, exc)
-                        report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
+                    report.provider_started(provider_name)
+                    future = executor.submit(_run_fetch)
+                    futures[future] = (fetch, provider_name, effective_timeout)
+                    pending.add(future)
+                    start_time = perf_counter()
+                    if effective_timeout > 0:
+                        deadlines[future] = start_time + effective_timeout
+                    elif effective_timeout == 0:
+                        deadlines[future] = start_time
                     else:
-                        _merge_result(fetch, result, provider_name)
-        finally:
-            executor.shutdown(wait=False, cancel_futures=True)
+                        deadlines[future] = None
+
+                while pending:
+                    now = perf_counter()
+                    expired = []
+                    for future in list(pending):
+                        deadline = deadlines.get(future)
+                        if deadline is not None and now >= deadline:
+                            expired.append(future)
+                    for future in expired:
+                        pending.discard(future)
+                        fetch, provider_name, timeout_value = futures[future]
+                        name = getattr(fetch, "__name__", str(fetch))
+                        log.error("%s fetch Timeout nach %ss", name, timeout_value)
+                        report.provider_error(
+                            provider_name,
+                            f"Timeout nach {timeout_value}s",
+                        )
+                        future.cancel()
+
+                    if not pending:
+                        break
+
+                    wait_timeout: Optional[float] = None
+                    remaining = []
+                    for fut in pending:
+                        deadline = deadlines.get(fut)
+                        if deadline is not None:
+                            remaining.append(deadline - now)
+                    if remaining:
+                        wait_timeout = max(min(remaining), 0.1)
+
+                    done, _ = wait(pending, timeout=wait_timeout, return_when=FIRST_COMPLETED)
+                    if not done:
+                        continue
+
+                    for future in done:
+                        pending.discard(future)
+                        fetch, provider_name, timeout_value = futures[future]
+                        name = getattr(fetch, "__name__", str(fetch))
+                        try:
+                            result = future.result()
+                        except (TimeoutError, requests.exceptions.Timeout) as exc:
+                            log.error("%s fetch Timeout: %s", name, exc)
+                            report.provider_error(provider_name, f"Timeout: {exc}")
+                        except CancelledError:
+                            report.provider_error(provider_name, "Fetch abgebrochen")
+                        except Exception as exc:
+                            log.exception("%s fetch fehlgeschlagen: %s", name, exc)
+                            report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
+                        else:
+                            _merge_result(fetch, result, provider_name)
+            finally:
+                # Cancel remaining futures if we exit early or with exceptions.
+                # executor.shutdown(wait=False, cancel_futures=True) is automatically called by the context manager's __exit__,
+                # but we explicitly cancel pending futures to free resources immediately.
+                for future in pending:
+                    future.cancel()
 
         return items
     finally:

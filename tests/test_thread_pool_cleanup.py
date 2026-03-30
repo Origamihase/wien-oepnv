@@ -29,6 +29,6 @@ def test_thread_pool_cleanup():
                 # Check if executor was created
                 assert MockExecutor.called, "ThreadPoolExecutor was not instantiated"
 
-                # Check if executor was shutdown correctly without context manager
-                assert mock_instance.shutdown.called, "shutdown was not called"
-                mock_instance.shutdown.assert_called_with(wait=False, cancel_futures=True)
+                # Check if executor was used as a context manager
+                assert mock_instance.__enter__.called, "context manager __enter__ was not called"
+                assert mock_instance.__exit__.called, "context manager __exit__ was not called"

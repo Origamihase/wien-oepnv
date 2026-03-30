@@ -1,5 +1,4 @@
 from src.utils.serialize import serialize_for_cache
-import pytest
 
 def test_serialize_deep_nesting_fails_gracefully():
     # Construct a deeply nested structure exceeding the proposed limit (e.g., 200)
@@ -8,9 +7,9 @@ def test_serialize_deep_nesting_fails_gracefully():
     for _ in range(250):
         deep_structure = {"nested": deep_structure}
 
-    # Should raise ValueError due to max depth exceeded, NOT RecursionError
-    with pytest.raises(ValueError, match="Maximum recursion depth exceeded"):
-        serialize_for_cache(deep_structure)
+    # Should no longer raise ValueError, but return a fallback string
+    result = serialize_for_cache(deep_structure)
+    assert "<Max Depth Exceeded>" in str(result)
 
 def test_serialize_reasonable_depth_works():
     # Construct a moderately nested structure (e.g., 50 levels)

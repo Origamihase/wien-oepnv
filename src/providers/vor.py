@@ -1448,6 +1448,7 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None, timeout: int | N
         apply_authentication(session)
         # Limit max_workers to prevent thread explosion if many stations are selected
         max_workers = min(len(selected_ids) or 1, VOR_MAX_WORKERS)
+        # ThreadPoolExecutor already uses context manager
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = {
                 executor.submit(_fetch_departure_board_for_station, sid, now_local, request_counter, session, timeout): sid
