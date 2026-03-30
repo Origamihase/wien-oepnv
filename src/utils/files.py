@@ -109,6 +109,29 @@ def atomic_write(
         raise
 
 
+def safe_path_join(base: Union[str, Path], *paths: Union[str, Path]) -> Path:
+    """Safely join paths, ensuring the result is within the base directory."""
+    base_abs = os.path.abspath(base)
+
+    # Check for direct path traversal attempts in the inputs
+    for p in paths:
+        if '..' in str(p):
+            raise ValueError(f"Path traversal detected in '{p}'")
+
+    # os.path.join with an absolute path arg resets the path.
+    # We must prevent absolute path bypass.
+    for p in paths:
+        if os.path.isabs(p):
+            raise ValueError(f"Absolute path bypass detected in '{p}'")
+
+    final_path = os.path.abspath(os.path.join(base_abs, *paths))
+
+    if not final_path.startswith(base_abs + os.sep) and final_path != base_abs:
+        raise ValueError(f"Path escape detected: {final_path} is outside of {base_abs}")
+
+    return Path(final_path)
+
+
 def sanitize_filename(filename_id: str) -> str:
     """Sanitize a filename ID to prevent path traversal."""
     # Only allow alphanumeric characters, dashes, and underscores
