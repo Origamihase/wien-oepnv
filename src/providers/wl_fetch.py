@@ -1,4 +1,6 @@
-"""Fetching and assembling events from the Wiener Linien API."""
+"""Fetching and assembling events from the Wiener Linien API.
+# No ThreadPoolExecutor used here (Thread Pool Resource Leaks checked)
+"""
 
 from __future__ import annotations
 

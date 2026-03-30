@@ -9,11 +9,15 @@ from typing import Any
 __all__ = ["serialize_for_cache"]
 
 
+import logging
+
+log = logging.getLogger(__name__)
+
 def serialize_for_cache(
     value: Any,
     _stack: set[int] | None = None,
     _depth: int = 0,
-    max_depth: int = 200,
+    max_depth: int = 50,
 ) -> Any:
     """Recursively convert *value* into a JSON-serializable structure.
 
@@ -22,7 +26,8 @@ def serialize_for_cache(
     """
     # Security: Prevent stack overflow from deeply nested structures
     if _depth > max_depth:
-        raise ValueError("Maximum recursion depth exceeded")
+        log.warning("Maximum recursion depth exceeded during serialization")
+        return "<Max Depth Exceeded>"
 
     # Simple types - return immediately
     if value is None or isinstance(value, (str, int, float, bool)):

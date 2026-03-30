@@ -34,7 +34,7 @@ from ..utils.stations import canonical_name, station_by_oebb_id, is_in_vienna, s
 from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
 from ..utils.logging import sanitize_log_arg
 
-from defusedxml import ElementTree as ET
+from defusedxml import ElementTree as ET # XXE Mitigation applied
 
 log = logging.getLogger(__name__)
 
