@@ -43,6 +43,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
@@ -55,6 +56,7 @@ jobs:
           set -euo pipefail
           base="${VOR_BASE_URL:-${VOR_BASE}/${VOR_VERSION}/}"
           code=$(curl -sS -o /dev/null -w "%{http_code}" -G \
+            --max-time 15 \
             "${base}location.name" \
             --data-urlencode "input=Wien Hauptbahnhof" \
             --data-urlencode "format=json" \
@@ -71,29 +73,7 @@ jobs:
 
       - name: Commit and push changes
         if: ${{ github.ref_type == 'branch' }}
-        shell: bash
-        env:
-          BRANCH_NAME: ${{ github.ref_name }}
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # Using wildcard for hashed path (e.g. cache/vor_929f1c/events.json)
-          # We simply try to add files matching the pattern; if none exist, it's fine (but git add fails if no match, so we add || true or check)
-          # Actually, git add works with glob even if new files.
-          git add cache/vor*/events.json || true
-
-          if [[ -f data/vor_request_count.json ]]; then
-            git add -f data/vor_request_count.json
-          fi
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-
-          branch="${BRANCH_NAME:-$(git rev-parse --abbrev-ref HEAD)}"
-          git commit -m 'chore: update VOR cache [skip ci]'
-          git pull --rebase --autostash origin "$branch"
-          git push origin HEAD:"$branch"
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update VOR cache [skip ci]'
+          file_pattern: 'cache/vor*/events.json data/vor_request_count.json'
