@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import logging
 import os
-import random
+import secrets
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -484,7 +484,7 @@ class GooglePlacesClient:
 
     def _backoff(self, attempt: int) -> float:
         base = 0.5 * (2 ** (attempt - 1))
-        jitter = random.uniform(0, 0.5)  # nosec B311
+        jitter = secrets.SystemRandom().uniform(0, 0.5)
         return base + jitter
 
     @property

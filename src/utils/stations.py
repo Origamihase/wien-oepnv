@@ -530,8 +530,10 @@ def is_in_vienna(lat: object, lon: object | None = None) -> bool:
             info = station_info(lat)
             if info:
                 return bool(info.in_vienna)
+            import os
+            city_token = os.getenv("WIEN_TOKEN", "wien")
             token = _normalize_token(lat)
-            if token == "wien" or token.startswith("wien "):  # nosec B105
+            if token == city_token or token.startswith(city_token + " "):
                 return True
         return False
 
