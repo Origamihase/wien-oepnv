@@ -54,8 +54,8 @@
     "description": "Die Linie 80A wird in Richtung Neu Marx zwischen Friedensgasse und Stadionbrücke über die Wittelsbachstraße, Erdberger Lände und Schlachthausgasse umgeleitet. Die Haltestellen Friedensgasse, Lukschgasse, Rustenschacherallee, Klaschkaweg und Stadionbrücke können dadurch nicht eingehalten werden. Voraussichtliche Dauer: Ende Mai 2026. Grund: Bauarbeiten im Bereich Stadionallee.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b4a23ef852ad9be40cd308d516753bd871adf5c66230daad9bdf47a3374005b0",
-    "pubDate": "2025-11-10T07:00:00+01:00",
-    "starts_at": "2025-11-10T07:00:00+01:00",
+    "pubDate": "2025-11-10T06:00:00+01:00",
+    "starts_at": "2025-11-10T06:00:00+01:00",
     "ends_at": "2026-06-01T00:56:00+02:00",
     "_identity": "wl|störung|L=80A|D=2025-11-10"
   },
@@ -198,8 +198,8 @@
     "description": "Linie 46: Betrieb nur zwischen Joachimsthalerplatz und Thaliastraße U. Weiterfahrt bis Josefstädter Straße U. Weichen Sie ersatzweise auf die Linien 2 und 48A aus. Voraussichtliche Dauer: Mitte Juli. Grund: Gleisbauarbeiten im Bereich Lerchenfelder Straße 2.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "487c6b0f5dfd13516b82228caedb864eff7f1589b3b09a72ed3ec16d55dd4124",
-    "pubDate": "2026-03-16T05:30:00+01:00",
-    "starts_at": "2026-03-16T05:30:00+01:00",
+    "pubDate": "2026-03-16T04:30:00+01:00",
+    "starts_at": "2026-03-16T04:30:00+01:00",
     "ends_at": "2026-07-11T01:00:00+02:00",
     "_identity": "wl|störung|L=46|D=2026-03-16"
   },
@@ -210,8 +210,8 @@
     "description": "Linie 6: Derzeit ist ein Betrieb nicht möglich. Weichen Sie ersatzweise auf die Linien U1, 1, 11, 18, 7A und 14A aus. Voraussichtliche Dauer: Mitte April. Grund: Gleisbauarbeiten im Bereich Quellenstraße 197.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4fcf074272483b7f8df8a900ba8ada7c3c882f2783ee1d5e89ef1d42392fecf2",
-    "pubDate": "2026-03-16T05:30:00+01:00",
-    "starts_at": "2026-03-16T05:30:00+01:00",
+    "pubDate": "2026-03-16T04:30:00+01:00",
+    "starts_at": "2026-03-16T04:30:00+01:00",
     "ends_at": "2026-04-11T01:00:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-03-16"
   },
@@ -266,18 +266,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-03-27T00:00:20+01:00",
-    "starts_at": "2026-03-27T00:00:20+01:00",
-    "ends_at": "2026-03-30T23:59:59+02:00",
-    "_identity": "wl|störung|L=37A|D=2026-03-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -286,6 +274,18 @@
     "starts_at": "2026-03-27T00:00:20+01:00",
     "ends_at": "2026-03-30T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-03-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-03-27T00:00:20+01:00",
+    "starts_at": "2026-03-27T00:00:20+01:00",
+    "ends_at": "2026-03-30T23:59:59+02:00",
+    "_identity": "wl|störung|L=37A|D=2026-03-27"
   },
   {
     "source": "Wiener Linien",
@@ -342,8 +342,8 @@
     "description": "Linie U6: Kein Betrieb zwischen Währinger Straße, Volksoper U und Jägerstraße U. Am Südast der U6 fährt tagsüber jeder zweite Zug nur zwischen Siebenhirten und Michelbeuern-AKH. Ersatz: Zwischen Josefstädter Straße U und Jägerstraße U können Sie auf die Linie 12 ausweichen. Die Linie 12 fährt auch am Wochenende während der Betriebszeiten der Nacht-U-Bahn. Weichen Sie auch auf die Linien 37, 38, 40, 41 und 42 aus. Voraussichtliche Dauer: 6. April 2026, Betriebsschluss. Grund: Bauarbeiten.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c8fe425d7242fb213ce8416c7e36d3307750aef3cd584dd26b6b881c88e54d42",
-    "pubDate": "2026-03-27T23:00:00+01:00",
-    "starts_at": "2026-03-27T23:00:00+01:00",
+    "pubDate": "2026-03-27T22:00:00+01:00",
+    "starts_at": "2026-03-27T22:00:00+01:00",
     "ends_at": "2026-04-06T01:00:00+02:00",
     "_identity": "wl|störung|L=U6|D=2026-03-27"
   },
@@ -374,25 +374,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Rettungseinsatz",
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "14A: Rettungseinsatz",
+    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
-    "pubDate": "2026-03-30T18:34:00+02:00",
-    "starts_at": "2026-03-30T18:34:00+02:00",
+    "guid": "84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac",
+    "pubDate": "2026-03-30T21:17:00+02:00",
+    "starts_at": "2026-03-30T21:17:00+02:00",
     "ends_at": "2026-03-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=62|D=2026-03-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "33A: Fahrtbehinderung Falschparker",
-    "description": "Linie 33A: Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 20:30 Uhr. Grund: Falschparker im Bereich Floridusgasse 30.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "192a0841f244aeb8f763b9ea92f846e2948fbe940aa7255c67777ec64b7ff4ec",
-    "pubDate": "2026-03-30T20:05:00+02:00",
-    "starts_at": "2026-03-30T20:06:21+02:00",
-    "ends_at": "2026-03-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=33A|D=2026-03-30"
+    "_identity": "wl|störung|L=14A|D=2026-03-30"
   }
 ]
