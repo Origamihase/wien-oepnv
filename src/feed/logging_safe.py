@@ -119,6 +119,13 @@ class SafeJSONFormatter(logging.Formatter):
         return sanitize_log_message(dumped, strip_control_chars=False)
 
     def formatException(self, ei: Any) -> str:
+        if ei and len(ei) == 3:
+            _, _, tb = ei
+            while tb is not None:
+                if tb.tb_frame:
+                    tb.tb_frame.clear()
+                tb = tb.tb_next
+
         s = super().formatException(ei)
         # Redact secrets but preserve newlines (JSON handles them)
         return sanitize_log_message(s, strip_control_chars=False)

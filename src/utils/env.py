@@ -465,7 +465,15 @@ def _default_env_file_candidates(base_dir: Path) -> Iterable[Path]:
             candidate = Path(item).expanduser()
             if not candidate.is_absolute():
                 candidate = base_dir / candidate
-            candidates.append(candidate)
+
+            resolved_candidate = Path(os.path.abspath(candidate))
+            try:
+                resolved_candidate.relative_to(base_dir)
+            except ValueError:
+                # Disallow bypassing base_dir with absolute paths or ../
+                continue
+
+            candidates.append(resolved_candidate)
 
     return candidates
 

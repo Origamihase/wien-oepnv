@@ -109,6 +109,7 @@ def _tracked_files(base_dir: Path) -> list[Path]:
             ["git", "ls-files", "-z"],
             cwd=base_dir,
             check=True,
+            shell=False,
             capture_output=True,
             timeout=30,
         )

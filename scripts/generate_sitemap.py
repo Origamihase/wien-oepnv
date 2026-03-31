@@ -91,6 +91,7 @@ def _last_modified(path: Path) -> str:
         output = subprocess.check_output(
             ["git", "log", "-1", "--format=%cI", "--", str(path)],
             cwd=REPO_ROOT,
+            shell=False,
             stderr=subprocess.DEVNULL,
             text=True,
             timeout=10,

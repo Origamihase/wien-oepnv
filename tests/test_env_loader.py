@@ -66,16 +66,22 @@ def test_load_env_file_accepts_whitespace_around_equals(
 
 
 def test_load_default_env_files_respects_environment_variable(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    extra_env = tmp_path / "extra.env"
+    # Need to make the extra_env file inside the project directory so it passes the base_dir check.
+    base_dir = Path(env_utils.__file__).resolve().parents[2]
+    extra_env = base_dir / "test_extra.env"
     extra_env.write_text("EXTRA_VALUE=42\n", encoding="utf-8")
 
-    monkeypatch.setenv("WIEN_OEPNV_ENV_FILES", str(extra_env))
-    monkeypatch.delenv("EXTRA_VALUE", raising=False)
+    try:
+        monkeypatch.setenv("WIEN_OEPNV_ENV_FILES", str(extra_env))
+        monkeypatch.delenv("EXTRA_VALUE", raising=False)
 
-    loaded = env_utils.load_default_env_files()
+        loaded = env_utils.load_default_env_files()
 
-    assert loaded[extra_env] == {"EXTRA_VALUE": "42"}
-    assert os.environ["EXTRA_VALUE"] == "42"
+        assert loaded[extra_env] == {"EXTRA_VALUE": "42"}
+        assert os.environ["EXTRA_VALUE"] == "42"
+    finally:
+        if extra_env.exists():
+            extra_env.unlink()
 
 
 def test_load_env_file_handles_io_errors(
