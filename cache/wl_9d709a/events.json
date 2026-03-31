@@ -230,18 +230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-03-31T00:00:07+02:00",
-    "starts_at": "2026-03-31T00:00:07+02:00",
-    "ends_at": "2026-03-31T23:59:59+02:00",
-    "_identity": "wl|störung|L=37A|D=2026-03-31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -250,6 +238,18 @@
     "starts_at": "2026-03-31T00:00:07+02:00",
     "ends_at": "2026-03-31T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-03-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-03-31T00:00:07+02:00",
+    "starts_at": "2026-03-31T00:00:07+02:00",
+    "ends_at": "2026-03-31T23:59:59+02:00",
+    "_identity": "wl|störung|L=37A|D=2026-03-31"
   },
   {
     "source": "Wiener Linien",
@@ -346,5 +346,101 @@
     "starts_at": "2026-03-31T19:35:00+02:00",
     "ends_at": "2026-03-31T23:55:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-03-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Polizeieinsatz",
+    "description": "Linie U6: Unregelmäßige Intervalle zwischen Währinger Straße, Volksoper und Siebenhirten. Grund: Polizeieinsatz im Haltestellenbereich Michelbeuern - AKH.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
+    "pubDate": "2026-03-31T21:08:00+02:00",
+    "starts_at": "2026-03-31T21:08:00+02:00",
+    "ends_at": "2026-03-31T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-03-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Fahrtbehinderung PKW im Gleis",
+    "description": "Fahrtbehinderung PKW im Gleis",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e4548cb23231983b3f83b47ff8b84bdc637af3596db465c6986f856bb25b58f8",
+    "pubDate": "2026-03-31T21:27:52+02:00",
+    "starts_at": "2026-03-31T21:27:52+02:00",
+    "ends_at": "2026-03-31T22:27:00+02:00",
+    "_identity": "wl|störung|L=26|D=2026-03-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: PKW im Gleis Betrieb ab Josef-Baumann-Gasse",
+    "description": "PKW im Gleis Betrieb ab Josef-Baumann-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7853803c2d10267fe7e94d3652a8fb8df344e70b36695ab0b0087d03cbf1e073",
+    "pubDate": "2026-03-31T21:27:52+02:00",
+    "starts_at": "2026-03-31T21:35:39+02:00",
+    "ends_at": "2026-03-31T22:34:00+02:00",
+    "_identity": "wl|störung|L=26|D=2026-03-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: PKW im Gleis Züge halten in Tokiostraße",
+    "description": "PKW im Gleis Züge halten in Tokiostraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "404d71c44763ed233dbd69cb0f9b39755f70b6b9e203f854e16d395b9bc70993",
+    "pubDate": "2026-03-31T21:27:52+02:00",
+    "starts_at": "2026-03-31T21:27:52+02:00",
+    "ends_at": "2026-03-31T22:35:00+02:00",
+    "_identity": "wl|störung|L=26|D=2026-03-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: PKW im Gleis Betrieb ab Josef-Baumann-Gasse",
+    "description": "PKW im Gleis Betrieb ab Josef-Baumann-Gasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4d0b15f507f9073115c1399e3716f11fb2bc0d1c7642130a4337d3be4ba53029",
+    "pubDate": "2026-03-31T21:27:52+02:00",
+    "starts_at": "2026-03-31T21:36:46+02:00",
+    "ends_at": "2026-03-31T22:36:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-03-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: PKW im Gleis Betrieb ab Prinzgasse",
+    "description": "PKW im Gleis Betrieb ab Prinzgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3aaf000166bffe39cb8a1e2e4132cde448bb34b92d307b6d99c0a24c913b2b7b",
+    "pubDate": "2026-03-31T21:37:03+02:00",
+    "starts_at": "2026-03-31T21:37:06+02:00",
+    "ends_at": "2026-03-31T22:36:00+02:00",
+    "_identity": "wl|störung|L=26|D=2026-03-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: PKW im Gleis Betrieb ab Berresgasse",
+    "description": "PKW im Gleis Betrieb ab Berresgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b9fc94c20afffaf8abfb7ed460000f88fcbc97dee5609a425e414d46cd6b2acf",
+    "pubDate": "2026-03-31T21:37:32+02:00",
+    "starts_at": "2026-03-31T21:37:35+02:00",
+    "ends_at": "2026-03-31T22:36:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-03-31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: PKW im Gleis Züge halten in Tokiostraße",
+    "description": "PKW im Gleis Züge halten in Tokiostraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "045cd951fc244895a9fe3be0cdaf29dc8aabe9bdbb2742a5d17f5de5e68facd9",
+    "pubDate": "2026-03-31T21:37:32+02:00",
+    "starts_at": "2026-03-31T21:37:32+02:00",
+    "ends_at": "2026-03-31T22:36:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-03-31"
   }
 ]
