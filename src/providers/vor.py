@@ -63,7 +63,7 @@ DEFAULT_ROTATION_INTERVAL_SEC = 1800
 DEFAULT_MAX_REQUESTS_PER_DAY = 100
 DEFAULT_MONITOR_WHITELIST = "Wien Hauptbahnhof,Flughafen Wien"
 RETRY_AFTER_FALLBACK_SEC = 5.0
-RETRY_AFTER_MAX_SEC = 120.0
+RETRY_AFTER_MAX_SEC = 60.0
 
 DEFAULT_BUS_INCLUDE_PATTERN = r"(?i)^(?:Regionalbus|Bus|AST)"
 DEFAULT_BUS_EXCLUDE_PATTERN = r"(?i)Ersatzverkehr"
@@ -1296,6 +1296,8 @@ def _fetch_departure_board_for_station(
         # CIRCUIT BREAKER CHECK
         if counter:
             with counter["lock"]:
+                if counter.get("consecutive_5xx", 0) >= 5:
+                    raise RuntimeError("Emergency Stop: Circuit Breaker Open (too many consecutive 5xx errors)!")
                 counter["val"] += 1
                 if counter["val"] > counter.get("limit", 10):
                     raise RuntimeError("Emergency Stop: Too many requests in single run!")
@@ -1330,6 +1332,10 @@ def _fetch_departure_board_for_station(
             # Log raw length
             log.debug(f"Received {len(content)} bytes from VOR.")
 
+            if counter:
+                with counter["lock"]:
+                    counter["consecutive_5xx"] = 0
+
             return json.loads(content)
 
         except (ValueError, json.JSONDecodeError) as exc:
@@ -1340,6 +1346,15 @@ def _fetch_departure_board_for_station(
 
         except requests.HTTPError as exc:
             response = exc.response
+
+            # Record 5xx failures for circuit breaker
+            if response is not None and response.status_code >= 500:
+                if counter:
+                    with counter["lock"]:
+                        counter["consecutive_5xx"] = counter.get("consecutive_5xx", 0) + 1
+                        if counter["consecutive_5xx"] >= 5:
+                            raise RuntimeError("Emergency Stop: Circuit Breaker Open (too many consecutive 5xx errors)!")
+
             if response is not None:
                 _log_warning(
                     "VOR DepartureBoard %s -> HTTP %s",

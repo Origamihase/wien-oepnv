@@ -78,7 +78,7 @@ try:  # pragma: no cover - allow running as script or package
     from utils.files import atomic_write
     from utils.http import validate_http_url
     from utils.locking import file_lock
-    from utils.text import html_to_text
+    from utils.text import html_to_text, truncate_html
 except ModuleNotFoundError:  # pragma: no cover
     from .feed_types import FeedItem
     from .utils.cache import (
@@ -89,7 +89,7 @@ except ModuleNotFoundError:  # pragma: no cover
     from .utils.files import atomic_write
     from .utils.http import validate_http_url
     from .utils.locking import file_lock
-    from .utils.text import html_to_text
+    from .utils.text import html_to_text, truncate_html
 
 log = logging.getLogger("build_feed")
 
@@ -1317,6 +1317,9 @@ def _emit_item(
         desc_parts.append(time_line)
 
     desc_html = "<br/>".join(desc_parts)
+
+    # Truncate HTML descriptions using the HTML-aware truncator to prevent broken layout/XSS.
+    desc_html = truncate_html(desc_html, feed_config.DESCRIPTION_CHAR_LIMIT, ellipsis="... [TRUNCATED]")
 
     # For title, we now rely on ElementTree's escaping which is safer/cleaner than manual CDATA.
     # ET will automatically escape <, >, & to &lt;, &gt;, &amp;.

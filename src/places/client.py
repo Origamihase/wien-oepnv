@@ -159,6 +159,7 @@ class GooglePlacesClient:
         self._radius_m = RADIUS_M
         self._max_result_count = MAX_RESULTS
         self._rank_preference = RANK_PREF
+        self._consecutive_5xx_errors = 0
 
     def __enter__(self) -> "GooglePlacesClient":
         return self
@@ -323,6 +324,11 @@ class GooglePlacesClient:
         }
         attempt = 0
         last_error: Optional[Exception] = None
+
+        # Check circuit breaker before starting requests
+        if self._consecutive_5xx_errors >= 5:
+            raise GooglePlacesError("Circuit breaker open: too many consecutive 5xx errors")
+
         while attempt <= self._config.max_retries:
             attempt += 1
             start_time = time.monotonic()
@@ -355,6 +361,7 @@ class GooglePlacesClient:
                     self.request_count += 1
 
                     if response.status_code == 200:
+                        self._consecutive_5xx_errors = 0
                         try:
                             payload = response.json()
                         except (ValueError, requests.exceptions.JSONDecodeError) as exc:
@@ -366,14 +373,19 @@ class GooglePlacesClient:
                         return payload
 
                     if response.status_code in {429, 500, 502, 503, 504}:
+                        if response.status_code != 429:
+                            self._consecutive_5xx_errors += 1
+
                         detail = _sanitize_error_detail(response.text, secrets=[self._config.api_key])
                         last_error = GooglePlacesError(
                             f"HTTP {response.status_code}: {detail}"
                         )
                     elif response.status_code in {401, 403}:
+                        self._consecutive_5xx_errors = 0
                         details = self._extract_error_details(response)
                         raise GooglePlacesPermissionError(details)
                     else:
+                        self._consecutive_5xx_errors = 0
                         message = self._format_error_message(response)
                         raise GooglePlacesError(
                             f"Failed to fetch places ({response.status_code}): {message}"
@@ -381,6 +393,10 @@ class GooglePlacesClient:
 
             except requests.RequestException as exc:
                 last_error = exc
+
+                if exc.response is not None and exc.response.status_code >= 500:
+                    self._consecutive_5xx_errors += 1
+
                 LOGGER.warning(
                     "Request error (attempt %s/%s): %s",
                     attempt,
@@ -390,7 +406,28 @@ class GooglePlacesClient:
 
             if attempt > self._config.max_retries:
                 break
+
+            if self._consecutive_5xx_errors >= 5:
+                raise GooglePlacesError("Circuit breaker open: too many consecutive 5xx errors")
+
             sleep_for = self._backoff(attempt)
+
+            # If we can access response, let's extract Retry-After
+            retry_after_val = None
+            try:
+                if isinstance(last_error, requests.RequestException) and last_error.response is not None:
+                    header = last_error.response.headers.get("Retry-After")
+                    if header and header.isdigit():
+                        retry_after_val = float(header)
+            except ValueError:
+                LOGGER.warning("Failed to parse Retry-After header: %s", header)
+
+            if retry_after_val is not None:
+                sleep_for = max(sleep_for, retry_after_val)
+
+            # Apply hard cap
+            sleep_for = min(sleep_for, 60.0)
+
             LOGGER.info("Retrying %s in %.2fs", endpoint, sleep_for)
             time.sleep(sleep_for)
 
