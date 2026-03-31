@@ -131,4 +131,7 @@ def test_fetch_content_safe_default_timeout(mock_verify_ip, mock_validate_url):
         # Since timeout is a tuple (connect, read), read_response_safe uses the read part (15.0)
         read_timeout = mock_read.call_args[1]["timeout"]
         assert read_timeout is not None
-        assert 14.9 < read_timeout <= 15.0
+        if isinstance(read_timeout, tuple):
+            assert 14.9 < read_timeout[1] <= 15.0
+        else:
+            assert 14.9 < read_timeout <= 15.0

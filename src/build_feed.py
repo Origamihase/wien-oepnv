@@ -593,17 +593,18 @@ def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] 
         with file_lock(lock_file, exclusive=True):
             # Safe merge: read existing state to avoid overwriting parallel updates
             merged_state = {}
-            if path.exists():
-                try:
-                    with path.open("r", encoding="utf-8") as f:
-                        existing = json.load(f)
-                        if isinstance(existing, dict):
-                            merged_state = existing
-                except Exception as exc:
-                    log.warning(
-                        "State-Merge fehlgeschlagen (Lesefehler: %s) – überschreibe State.",
-                        exc,
-                    )
+            try:
+                with path.open("r", encoding="utf-8") as f:
+                    existing = json.load(f)
+                    if isinstance(existing, dict):
+                        merged_state = existing
+            except FileNotFoundError:
+                pass
+            except Exception as exc:
+                log.warning(
+                    "State-Merge fehlgeschlagen (Lesefehler: %s) – überschreibe State.",
+                    exc,
+                )
 
             merged_state.update(state)
             if deletions:
