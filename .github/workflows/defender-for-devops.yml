@@ -26,6 +26,9 @@ on:
   schedule:
     - cron: '15 0 * * 6'
 
+permissions:
+  contents: read
+
 jobs:
   MSDO:
     # currently only windows latest is supported
@@ -34,16 +37,16 @@ jobs:
       contents: read
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-dotnet@v4
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+    - uses: actions/setup-dotnet@3951f0dfe7a07e2313ec93c75700083e2005cbab # v4
       with:
         dotnet-version: |
           5.0.x
           6.0.x
     - name: Run Microsoft Security DevOps
-      uses: microsoft/security-devops-action@v1
+      uses: microsoft/security-devops-action@5b26a185ff02cf7c100778adeff0ebbf704ca144 # v1
       id: msdo
     - name: Upload results to Security tab
-      uses: github/codeql-action/upload-sarif@v4
+      uses: github/codeql-action/upload-sarif@c10b8064de6f491fea524254123dbe5e09572f13 # v4
       with:
         sarif_file: ${{ steps.msdo.outputs.sarifFile }}

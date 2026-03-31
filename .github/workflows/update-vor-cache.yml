@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: vor-cache-${{ github.ref }}
@@ -16,6 +16,8 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
       VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
@@ -25,7 +27,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
       - name: Ensure pip cache directory exists
         run: mkdir -p "$PIP_CACHE_DIR"
@@ -40,7 +42,7 @@ jobs:
           fi
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5
         with:
           python-version: '3.11'
           cache: 'pip'
@@ -73,7 +75,7 @@ jobs:
 
       - name: Commit and push changes
         if: ${{ github.ref_type == 'branch' }}
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@e348103e9026cc0eee3f596bd989b422a00c7ee6 # v5
         with:
           commit_message: 'chore: update VOR cache [skip ci]'
           file_pattern: 'cache/vor*/events.json data/vor_request_count.json'
