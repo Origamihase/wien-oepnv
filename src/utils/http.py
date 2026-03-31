@@ -1084,7 +1084,7 @@ def verify_response_ip(response: requests.Response) -> None:
 def read_response_safe(
     response: requests.Response,
     max_bytes: int = 10 * 1024 * 1024,
-    timeout: float | None = None,
+    timeout: float | tuple[float, float] | None = None,
 ) -> bytes:
     """Read response content safely, enforcing size limits and timeouts.
 
@@ -1113,9 +1113,15 @@ def read_response_safe(
     received = 0
     start_time = time.monotonic()
 
+    # If timeout is a tuple, we use the read timeout part for body streaming
+    if isinstance(timeout, tuple):
+        read_timeout = timeout[1]
+    else:
+        read_timeout = timeout
+
     for chunk in response.iter_content(chunk_size=8192):
-        if timeout is not None and (time.monotonic() - start_time) > timeout:
-            raise requests.Timeout(f"Read timed out after {timeout} seconds")
+        if read_timeout is not None and (time.monotonic() - start_time) > read_timeout:
+            raise requests.Timeout(f"Read timed out after {read_timeout} seconds")
 
         chunks.append(chunk)
         received += len(chunk)
@@ -1542,7 +1548,12 @@ def request_safe(
                         if isinstance(timeout, tuple):
                             read_timeout_val = min(read_timeout_val, timeout[1])
 
-                    content = read_response_safe(r, max_bytes, timeout=read_timeout_val)
+                    # For safe reading, pass a tuple if it was a tuple, or scalar if scalar
+                    final_read_timeout = read_timeout_val
+                    if isinstance(timeout, tuple):
+                        final_read_timeout = (min(timeout[0], read_timeout_val), read_timeout_val)
+
+                    content = read_response_safe(r, max_bytes, timeout=final_read_timeout)
 
                     # Manually attach content to response object so it's usable after close
                     r._content = content

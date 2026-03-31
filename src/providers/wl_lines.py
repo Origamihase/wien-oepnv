@@ -28,13 +28,8 @@ def _display_line(s: str) -> str:
 # Präfix-Erkennung/Entfernung:
 LINE_PREFIX_STRIP_RE = re.compile(r"^\s*[A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20}\s*:\s*", re.IGNORECASE)
 LINES_COMPLEX_PREFIX_RE = re.compile(
-    r"""^\s*
-        [A-Za-z0-9]+
-        (?:\s*,\s*[A-Za-z0-9]+){1,}
-        (?:(?:\s*und)?\s*(?:Rufbus\s+[A-Za-z0-9]+|\([^)]+\)))*
-        \s*:\s*
-    """,
-    re.IGNORECASE | re.VERBOSE,
+    r"^\s*[A-Za-z0-9]+(?:\s*,\s*[A-Za-z0-9]+)+(?:(?:(?:\s+und)?\s+Rufbus\s+[A-Za-z0-9]+)|(?:\s*\([^)]+\)))*\s*:\s*",
+    re.IGNORECASE,
 )
 RUF_BUS_PREFIX_RE = re.compile(r"^\s*Rufbus\s+([A-Za-z0-9]+)\s*:\s*", re.IGNORECASE)
 
@@ -43,7 +38,6 @@ def _strip_existing_line_block(title: str) -> str:
     """Entfernt vorhandene Linienblöcke am Anfang (Slash-/Komma-/Rufbus-Varianten)."""
 
     t = LINE_PREFIX_STRIP_RE.sub("", title)
-    t = LINES_COMPLEX_PREFIX_RE.sub("", t)
     t = RUF_BUS_PREFIX_RE.sub("", t)
     if ":" in t:
         pre, post = t.split(":", 1)
