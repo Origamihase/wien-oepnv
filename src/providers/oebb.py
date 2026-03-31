@@ -49,7 +49,7 @@ OEBB_URL = (
 OEBB_ONLY_VIENNA = get_bool_env("OEBB_ONLY_VIENNA", False)
 
 # Max wait time for Retry-After headers to prevent DoS
-RETRY_AFTER_MAX_SEC = 120.0
+RETRY_AFTER_MAX_SEC = 60.0
 
 # ---------------- HTTP ----------------
 USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"

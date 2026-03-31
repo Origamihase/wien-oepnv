@@ -614,6 +614,12 @@ def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.Prepar
     )
 
     if (host_changed or scheme_downgraded or port_changed) and not is_safe_upgrade:
+        # Explicitly strip Authorization header if redirect targets a different hostname/domain
+        if host_changed:
+            for header_name in list(headers.keys()):
+                if header_name.lower() == "authorization":
+                    del headers[header_name]
+
         # Dynamic check for sensitive headers based on name patterns
         # We iterate over a copy of keys to allow modification of the dict during iteration
         for header_name in list(headers.keys()):
