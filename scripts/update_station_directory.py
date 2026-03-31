@@ -161,7 +161,7 @@ def _refresh_provider_caches(*, script_dir: Path | None = None) -> None:
         logger.info("Refreshing %s cache via %s", target.label, script_path.name)
         try:
             # Enforce a 5-minute timeout to prevent indefinite hangs (DoS protection)
-            result = subprocess.run(command, check=False, timeout=300)  # nosec B603
+            result = subprocess.run(command, check=False, shell=False, timeout=300)  # nosec B603
         except subprocess.TimeoutExpired:
             logger.warning(
                 "%s cache refresh timed out after 300s; continuing", target.label
