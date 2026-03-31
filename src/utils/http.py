@@ -1115,7 +1115,7 @@ def read_response_safe(
 
     # If timeout is a tuple, we use the read timeout part for body streaming
     if isinstance(timeout, tuple):
-        read_timeout = timeout[1]
+        read_timeout: float | None = timeout[1]
     else:
         read_timeout = timeout
 
@@ -1549,7 +1549,7 @@ def request_safe(
                             read_timeout_val = min(read_timeout_val, timeout[1])
 
                     # For safe reading, pass a tuple if it was a tuple, or scalar if scalar
-                    final_read_timeout = read_timeout_val
+                    final_read_timeout: float | tuple[float, float] = read_timeout_val
                     if isinstance(timeout, tuple):
                         final_read_timeout = (min(timeout[0], read_timeout_val), read_timeout_val)
 
