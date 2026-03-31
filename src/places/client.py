@@ -394,12 +394,8 @@ class GooglePlacesClient:
             except requests.RequestException as exc:
                 last_error = exc
 
-                # Network errors might be treated as transient similar to 5xx, but to be strictly 5xx, we only count them if response is set.
                 if exc.response is not None and exc.response.status_code >= 500:
                     self._consecutive_5xx_errors += 1
-                elif exc.response is None:
-                    # Pure network failures might also need to trigger circuit breaker, but sticking strictly to 5xx
-                    pass
 
                 LOGGER.warning(
                     "Request error (attempt %s/%s): %s",
