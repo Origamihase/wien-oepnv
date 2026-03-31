@@ -423,8 +423,8 @@ class GooglePlacesClient:
                     header = last_error.response.headers.get("Retry-After")
                     if header and header.isdigit():
                         retry_after_val = float(header)
-            except Exception as e:
-                LOGGER.debug("Failed to parse Retry-After header: %s", e)
+            except ValueError:
+                LOGGER.warning("Failed to parse Retry-After header: %s", header)
 
             if retry_after_val is not None:
                 sleep_for = max(sleep_for, retry_after_val)
