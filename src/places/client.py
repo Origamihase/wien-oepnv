@@ -416,20 +416,15 @@ class GooglePlacesClient:
 
             sleep_for = self._backoff(attempt)
 
-            # Use Retry-After header if available
-            if last_error and isinstance(last_error, GooglePlacesError) and "HTTP 429" in str(last_error) or "HTTP 503" in str(last_error):
-                # Since we don't have direct access to response here easily, let's just stick to backoff unless we capture Retry-After
-                pass
-
             # If we can access response, let's extract Retry-After
             retry_after_val = None
             try:
-                if last_error and hasattr(last_error, "response") and last_error.response:
+                if isinstance(last_error, requests.RequestException) and last_error.response is not None:
                     header = last_error.response.headers.get("Retry-After")
                     if header and header.isdigit():
                         retry_after_val = float(header)
-            except Exception:
-                pass
+            except Exception as e:
+                LOGGER.debug("Failed to parse Retry-After header: %s", e)
 
             if retry_after_val is not None:
                 sleep_for = max(sleep_for, retry_after_val)
