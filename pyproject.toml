@@ -48,4 +48,4 @@ module = "tests.*"
 ignore_errors = false
 
 [tool.pytest.ini_options]
-addopts = ""
+addopts = "--timeout=60"
