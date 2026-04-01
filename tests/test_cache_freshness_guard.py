@@ -46,3 +46,23 @@ def test_detect_stale_caches_skips_recent(monkeypatch):
 
     assert messages == []
     assert not report.warnings
+
+def test_cache_freshness_guard_future(monkeypatch, tmp_path):
+    import os
+    from src.utils.cache import cache_modified_at
+
+    provider = "demo"
+    monkeypatch.setattr("src.utils.cache._CACHE_DIR", tmp_path)
+
+    # Create the directory and file
+    cache_path = tmp_path / provider
+    cache_path.mkdir(parents=True, exist_ok=True)
+    cache_file = cache_path / "events.json"
+    cache_file.write_text("[]")
+
+    # Set mtime to 48 hours in the future
+    future_time = datetime.now(timezone.utc) + timedelta(hours=48)
+    os.utime(cache_file, (future_time.timestamp(), future_time.timestamp()))
+
+    # Calling cache_modified_at should return None because it's too far in the future
+    assert cache_modified_at(provider) is None

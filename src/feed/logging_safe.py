@@ -53,7 +53,8 @@ class SafeFormatter(logging.Formatter):
         record.msg = sanitized_msg
         record.args = ()
 
-        return super().format(record)
+        formatted = super().format(record)
+        return formatted.replace("\n", "\\n").replace("\r", "\\r")
 
     def formatException(self, ei: Any) -> str:
         s = super().formatException(ei)
@@ -116,7 +117,8 @@ class SafeJSONFormatter(logging.Formatter):
         # We sanitize the full JSON string to catch secrets nested in dictionaries or lists
         # (e.g. extra={"context": {"api_key": "..."}}) which the previous per-field logic missed.
         dumped = json.dumps(payload, ensure_ascii=False)
-        return sanitize_log_message(dumped, strip_control_chars=False)
+        sanitized = sanitize_log_message(dumped, strip_control_chars=False)
+        return sanitized.replace("\n", "\\n").replace("\r", "\\r")
 
     def formatException(self, ei: Any) -> str:
         if ei and len(ei) == 3:

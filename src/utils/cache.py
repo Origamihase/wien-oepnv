@@ -84,7 +84,16 @@ def cache_modified_at(provider: str) -> Optional[datetime]:
         )
         return None
 
-    return datetime.fromtimestamp(stat_result.st_mtime, tz=timezone.utc)
+    from datetime import timedelta
+    mtime = datetime.fromtimestamp(stat_result.st_mtime, tz=timezone.utc)
+    # Reject cache if it is more than 24 hours in the future
+    if mtime > datetime.now(timezone.utc) + timedelta(hours=24):
+        log.warning(
+            "Cache for provider '%s' at %s is suspiciously far in the future (%s). Treating as missing.",
+            provider, cache_file, mtime
+        )
+        return None
+    return mtime
 
 
 def read_cache(provider: str) -> List[Any]:

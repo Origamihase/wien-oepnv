@@ -27,7 +27,7 @@ def serialize_for_cache(
     # Security: Prevent stack overflow from deeply nested structures
     if _depth > max_depth:
         log.warning("Maximum recursion depth exceeded during serialization")
-        return "<Max Depth Exceeded>"
+        raise RecursionError(f"Maximum recursion depth {max_depth} exceeded")
 
     # Simple types - return immediately
     if value is None or isinstance(value, (str, int, float, bool)):

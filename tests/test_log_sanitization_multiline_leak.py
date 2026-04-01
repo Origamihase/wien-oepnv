@@ -80,3 +80,33 @@ def test_over_redaction_space_followed_by_key_lookalike():
     sanitized = sanitize_log_message(msg)
     expected = "api_key=***"
     assert sanitized == expected
+
+def test_crlf_log_injection_formatters():
+    import logging
+    from src.feed.logging_safe import SafeFormatter, SafeJSONFormatter
+
+    # Test SafeFormatter
+    record = logging.LogRecord("test", logging.INFO, "test.py", 1, "msg\nwith\rnewlines", (), None)
+    formatter = SafeFormatter("%(message)s")
+    formatted = formatter.format(record)
+    assert "\n" not in formatted
+    assert "\r" not in formatted
+    assert "\\n" in formatted
+    assert "\\r" in formatted
+
+    # Test SafeJSONFormatter
+    record2 = logging.LogRecord("test", logging.INFO, "test.py", 1, "json\nmsg\r", (), None)
+    json_formatter = SafeJSONFormatter()
+    json_formatted = json_formatter.format(record2)
+    assert "\n" not in json_formatted
+    assert "\r" not in json_formatted
+
+    # Check tracebacks in SafeFormatter
+    try:
+        raise ValueError("error\nwith\nnewlines")
+    except ValueError as e:
+        import sys
+        record3 = logging.LogRecord("test", logging.ERROR, "test.py", 1, "error msg", (), sys.exc_info())
+        formatted_exc = formatter.format(record3)
+        assert "\n" not in formatted_exc
+        assert "\r" not in formatted_exc
