@@ -316,25 +316,10 @@ def _sanitize_url_for_error(url: str) -> str:
             new_query = urlencode(new_params)
             parsed = parsed._replace(query=new_query)
 
-        # 3. Redact sensitive fragment parameters (e.g. OIDC implicit flow)
-        if parsed.fragment:
-            fragment_params = parse_qsl(parsed.fragment, keep_blank_values=True)
-            new_fragment_params = []
-            any_sensitive_fragment = False
-
-            for key, value in fragment_params:
-                normalized = _normalize_key(key)
-                if normalized in _SENSITIVE_QUERY_KEYS or any(s in normalized for s in _SENSITIVE_KEY_SUBSTRINGS):
-                    new_fragment_params.append((key, "***"))
-                    any_sensitive_fragment = True
-                else:
-                    new_fragment_params.append((key, value))
-
-            if any_sensitive_fragment:
-                new_fragment = urlencode(new_fragment_params)
-                parsed = parsed._replace(fragment=new_fragment)
-
-        return parsed.geturl()
+        # 3. Strip URL fragment entirely (e.g. OIDC implicit flow)
+        import urllib.parse
+        url_without_frag, _ = urllib.parse.urldefrag(parsed.geturl())
+        return url_without_frag
     except Exception:
         return "invalid_url"
 
@@ -1045,7 +1030,7 @@ def verify_response_ip(response: requests.Response) -> None:
             peer_ip = peer_info[0]
             if not is_ip_safe(peer_ip):
                 raise ValueError(
-                    f"Security: Connected to unsafe IP {peer_ip} (DNS Rebinding protection)"
+                    f"Connected to unsafe IP {peer_ip} (DNS Rebinding protection)"
                 )
         else:
             # Fallback 1: Was the connection forced via PinnedHTTPSAdapter?
@@ -1377,6 +1362,8 @@ def request_safe(
                 if not target_ip:
                     sanitized_url = _sanitize_url_for_error(current_url)
                     raise ValueError(f"No safe IP resolved for {sanitized_url}")
+
+                kwargs["headers"]["Host"] = parsed.hostname or parsed.netloc
 
                 # Extract max_retries from original adapter to maintain retry configuration
                 original_adapter = session.get_adapter(current_url)

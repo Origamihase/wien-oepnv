@@ -151,4 +151,4 @@ def test_client_ssrf_protection() -> None:
     with pytest.raises(GooglePlacesError) as exc_info:
         client._post("endpoint", {})
 
-    assert "Security: Connected to unsafe IP" in str(exc_info.value)
+    assert "Connected to unsafe IP" in str(exc_info.value)
