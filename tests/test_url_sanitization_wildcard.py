@@ -62,10 +62,10 @@ def test_sanitize_url_wildcard(key, value, should_redact):
 def test_sanitize_fragment_wildcard():
     url = "https://example.com/#my_token=secret123&other=safe"
     sanitized = _sanitize_url_for_error(url)
-    # urlencode encodes '*' as '%2A'
-    assert "my_token=%2A%2A%2A" in sanitized
+    assert "my_token" not in sanitized
     assert "secret123" not in sanitized
-    assert "other=safe" in sanitized
+    assert "#" not in sanitized
+    assert "other=safe" not in sanitized
 
 def test_sanitize_mixed_params():
     url = "https://example.com/?safe=1&my_token=secret&also_safe=2"
