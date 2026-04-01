@@ -761,6 +761,10 @@ def is_ip_safe(
         if not ip.is_global or ip.is_multicast:
             return False
 
+        # Explicitly reject addresses where is_private, is_loopback, is_link_local evaluates to True
+        if ip.is_private or ip.is_loopback or ip.is_link_local:
+            return False
+
         # We explicitly block is_site_local (deprecated fec0::/10) because is_global returns True for them in some python versions.
         # This attribute only exists on IPv6Address.
         if getattr(ip, "is_site_local", False):
