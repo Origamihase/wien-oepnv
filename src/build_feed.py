@@ -7,8 +7,8 @@ import json
 import logging
 import os
 import re
+import secrets
 import sys
-import uuid
 import xml.etree.ElementTree as ET  # nosec B405 - used for XML generation, not parsing untrusted input
 from collections import defaultdict
 from concurrent.futures import (
@@ -77,7 +77,7 @@ try:  # pragma: no cover - allow running as script or package
     )  # type: ignore
     from utils.files import atomic_write
     from utils.http import validate_http_url
-    from utils.locking import file_lock
+    from utils.locking import file_lock, clear_stale_lock
     from utils.text import html_to_text, truncate_html
 except ModuleNotFoundError:  # pragma: no cover
     from .feed_types import FeedItem
@@ -88,7 +88,7 @@ except ModuleNotFoundError:  # pragma: no cover
     )
     from .utils.files import atomic_write
     from .utils.http import validate_http_url
-    from .utils.locking import file_lock
+    from .utils.locking import file_lock, clear_stale_lock
     from .utils.text import html_to_text, truncate_html
 
 log = logging.getLogger("build_feed")
@@ -540,6 +540,7 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     try:
         lock_path = path.with_suffix(".lock")
+        clear_stale_lock(lock_path)
         with lock_path.open("a+", encoding="utf-8") as lock_file:
             with file_lock(lock_file, exclusive=False):
                 with path.open("r", encoding="utf-8") as f:
@@ -589,6 +590,7 @@ def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] 
     path.parent.mkdir(parents=True, exist_ok=True)
     # Windows-fix: Use a separate lock file to avoid permission errors when atomic_write replaces the target
     lock_path = path.with_suffix(".lock")
+    clear_stale_lock(lock_path)
     with lock_path.open("a+", encoding="utf-8") as lock_file:
         with file_lock(lock_file, exclusive=True):
             # Safe merge: read existing state to avoid overwriting parallel updates
@@ -1328,10 +1330,10 @@ def _emit_item(
     desc_cdata = _cdata_content(desc_html)
 
     # Generate unique placeholders
-    # We use a UUID to ensure uniqueness within the document
+    # We use a cryptographically secure random token to ensure uniqueness within the document
     # Ensure placeholder is not accidentally present in the original desc_html or raw_desc
     while True:
-        uid = uuid.uuid4().hex
+        uid = secrets.token_hex(16)
         PH_DESC = f"___CDATA_DESC_{uid}___"
         PH_CONTENT = f"___CDATA_CONTENT_{uid}___"
         if PH_DESC not in desc_html and PH_CONTENT not in desc_html and PH_DESC not in raw_desc and PH_CONTENT not in raw_desc:
