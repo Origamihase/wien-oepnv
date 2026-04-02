@@ -1119,6 +1119,7 @@ def read_response_safe(
 
     for chunk in response.iter_content(chunk_size=8192):
         if read_timeout is not None and (time.monotonic() - start_time) > read_timeout:
+            response.close()
             raise requests.Timeout(f"Read timed out after {read_timeout} seconds")
 
         chunks.append(chunk)

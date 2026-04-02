@@ -36,3 +36,10 @@ def test_markdown_injection():
     # We now expect backslash escaping for parens too
     assert r"Bad \[link\]\(http://evil.com\)" in markdown, "Markdown links should be escaped"
     assert r"Bold \*\*text\*\*" in markdown, "Markdown bold should be escaped"
+
+    # 4. Verify Mentions and tags are escaped
+    report.add_error_message("@here attention <script>alert(1)</script>")
+    markdown2 = render_feed_health_markdown(report, metrics)
+    # Note: `html.escape` turns `<` into `&lt;` and `>` into `&gt;`. The backslash escape for `<` and `>`
+    # applied after `html.escape` doesn't find literal `<` or `>`. This is expected and safe.
+    assert r"\@here attention &lt;script&gt;alert\(1\)&lt;/script&gt;" in markdown2, "Markdown mentions and tags should be escaped"

@@ -335,8 +335,8 @@ def escape_markdown(text: str) -> str:
     """Escape HTML and Markdown characters to prevent injection/XSS."""
     text = html.escape(text)
     # Escape Markdown characters that could create links or formatting
-    # We backslash-escape: [ ] ( ) * _ `
-    for char in "[]()*_`":
+    # We backslash-escape: [ ] ( ) * _ ` @ < >
+    for char in "[]()*_`@<>":
         text = text.replace(char, f"\\{char}")
     return text
 
