@@ -326,13 +326,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "77A: Verkehrsunfall",
-    "description": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b1866dbda10de11cf3a1ffe8fa6fa879751a915b069299afcb4c2a0a6f3945d6",
-    "pubDate": "2026-04-02T21:31:00+02:00",
-    "starts_at": "2026-04-02T21:31:00+02:00",
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-04-02T23:00:08+02:00",
+    "starts_at": "2026-04-02T23:00:08+02:00",
+    "ends_at": "2026-04-03T05:30:00+02:00",
+    "_identity": "wl|störung|L=N29|D=2026-04-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "69A: Betriebsstörung",
+    "description": "Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dc52dff74ee5642135525bd03b6e0d63e785afd6dc6ab8a9825d4ded1b072ed7",
+    "pubDate": "2026-04-02T23:32:00+02:00",
+    "starts_at": "2026-04-02T23:32:00+02:00",
+    "ends_at": "2026-04-02T23:52:00+02:00",
+    "_identity": "wl|störung|L=69A|D=2026-04-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11A: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 11A: Fahrtbehinderung in Richtung Stadion U. Voraussichtliche Dauer: 00:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Friedrich-Engels-Platz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "810ddddf37c3bfda3e29fcd9fe96566231a7941343e64c6f0f65d605631c27b6",
+    "pubDate": "2026-04-02T23:46:00+02:00",
+    "starts_at": "2026-04-02T23:48:29+02:00",
+    "ends_at": "2026-04-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-04-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Schadhafter PKW",
+    "description": "Linie 43: Fahrtbehinderung in Richtung Neuwaldegg. Voraussichtliche Dauer: 00:15 Uhr. Grund: Schadhafter PKW im Bereich Dornbacher Straße 86.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8979dcb5273f894c190406680d8ec1cc8c9b8fd308398a5cf646978a37ae764c",
+    "pubDate": "2026-04-02T23:49:00+02:00",
+    "starts_at": "2026-04-02T23:49:00+02:00",
     "ends_at": "2026-04-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=77A|D=2026-04-02"
+    "_identity": "wl|störung|L=43|D=2026-04-02"
   }
 ]
