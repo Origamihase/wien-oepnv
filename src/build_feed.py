@@ -1338,7 +1338,8 @@ def _emit_item(
         PH_DESC = f"___CDATA_DESC_{uid}___"
         PH_CONTENT = f"___CDATA_CONTENT_{uid}___"
         PH_TITLE = f"___CDATA_TITLE_{uid}___"
-        if PH_DESC not in desc_html and PH_CONTENT not in desc_html and PH_DESC not in raw_desc and PH_CONTENT not in raw_desc and PH_TITLE not in title_out:
+        if (PH_DESC not in desc_html and PH_CONTENT not in desc_html and
+                PH_DESC not in raw_desc and PH_CONTENT not in raw_desc and PH_TITLE not in title_out):
             break
 
     # --- ElementTree Construction ---
