@@ -2,7 +2,7 @@ name: Update Wiener Linien cache
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '10,40 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -38,6 +38,9 @@ jobs:
 
       - name: Refresh Wiener Linien cache
         run: python scripts/update_wl_cache.py
+
+      - name: Pull concurrent remote changes
+        run: git pull --rebase --autostash
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5

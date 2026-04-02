@@ -2,7 +2,7 @@ name: Update VOR cache
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '15 * * * *'
     # SAFETY: Max 24 runs/day * 2 stations = 48 reqs (Limit: 100)
   workflow_dispatch:
 
@@ -72,6 +72,10 @@ jobs:
 
       - name: Refresh VOR cache
         run: python scripts/update_vor_cache.py
+
+      - name: Pull concurrent remote changes
+        if: ${{ github.ref_type == 'branch' }}
+        run: git pull --rebase --autostash
 
       - name: Commit and push changes
         if: ${{ github.ref_type == 'branch' }}

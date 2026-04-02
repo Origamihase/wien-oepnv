@@ -2,7 +2,7 @@ name: Update station directory
 
 on:
   schedule:
-    - cron: '0 0 1 * *'
+    - cron: '0 1 1 * *'
   workflow_dispatch:
 
 permissions:
@@ -42,6 +42,9 @@ jobs:
 
       - name: Validate stations
         run: python scripts/validate_stations.py
+
+      - name: Pull concurrent remote changes
+        run: git pull --rebase --autostash
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5
