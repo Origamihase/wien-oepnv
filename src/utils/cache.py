@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from threading import RLock
@@ -60,6 +61,8 @@ def _emit_cache_alert(provider: str, message: str) -> None:
 
 
 def _cache_file(provider: str) -> Path:
+    if not re.match(r"^[a-zA-Z0-9_-]+$", provider):
+        raise ValueError(f"Invalid cache key format: {provider}")
     return safe_path_join(_CACHE_DIR, sanitize_filename(provider), _CACHE_FILENAME)
 
 

@@ -126,7 +126,11 @@ def safe_path_join(base: Union[str, Path], *paths: Union[str, Path]) -> Path:
 
     final_path = os.path.abspath(os.path.join(base_abs, *paths))
 
-    if not final_path.startswith(base_abs + os.sep) and final_path != base_abs:
+    # Ensure base_abs has a trailing separator for exact containment check
+    # so that "/var/lib/cache_dir" doesn't mistakenly contain "/var/lib/cache_dir_evil"
+    base_check = base_abs if base_abs.endswith(os.sep) else base_abs + os.sep
+
+    if not final_path.startswith(base_check) and final_path != base_abs:
         raise ValueError(f"Path escape detected: {final_path} is outside of {base_abs}")
 
     return Path(final_path)
