@@ -30,6 +30,12 @@ def normalize_name(name: str) -> str:
 
 def haversine_m(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
     """Return the great-circle distance between two coordinates in metres."""
+    if not (math.isfinite(lat1) and math.isfinite(lng1) and math.isfinite(lat2) and math.isfinite(lng2)):
+        raise ValueError("Coordinates must be finite numbers")
+    if not (-90.0 <= lat1 <= 90.0 and -90.0 <= lat2 <= 90.0):
+        raise ValueError("Latitude must be between -90.0 and 90.0")
+    if not (-180.0 <= lng1 <= 180.0 and -180.0 <= lng2 <= 180.0):
+        raise ValueError("Longitude must be between -180.0 and 180.0")
 
     phi1 = math.radians(lat1)
     phi2 = math.radians(lat2)

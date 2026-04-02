@@ -81,13 +81,13 @@ def _save_quota(path: Path, quota: MonthlyQuota) -> None:
 
 def test_client_short_circuits_when_quota_reached(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
     quota_path = tmp_path / "quota.json"
-    quota = MonthlyQuota(month_key="2024-05")
+    quota = MonthlyQuota(month_key="2024-05", daily_key="2024-05-01")
     quota.counts["nearby"] = 1
     quota.total = 1
     _save_quota(quota_path, quota)
 
     config = _make_config()
-    quota_limits = QuotaConfig(limit_total=1, limit_nearby=1, limit_text=None, limit_details=None)
+    quota_limits = QuotaConfig(limit_total=1, limit_nearby=1, limit_text=None, limit_details=None, limit_daily=None)
     session = DummySession([])
     initial = quota_path.read_text(encoding="utf-8")
 
@@ -137,7 +137,7 @@ def test_successful_request_updates_quota_state(tmp_path: Path) -> None:
         _make_config(),
         session=session,
         quota=MonthlyQuota.load(quota_path),
-        quota_config=QuotaConfig(limit_total=5, limit_nearby=5, limit_text=5, limit_details=5),
+        quota_config=QuotaConfig(limit_total=5, limit_nearby=5, limit_text=5, limit_details=5, limit_daily=None),
         quota_state_path=quota_path,
         enforce_quota=True,
     )
@@ -168,7 +168,7 @@ def test_rate_limit_does_not_consume_quota(tmp_path: Path, monkeypatch: pytest.M
         _make_config(max_retries=1),
         session=session,
         quota=MonthlyQuota.load(quota_path),
-        quota_config=QuotaConfig(limit_total=10, limit_nearby=10, limit_text=10, limit_details=10),
+        quota_config=QuotaConfig(limit_total=10, limit_nearby=10, limit_text=10, limit_details=10, limit_daily=None),
         quota_state_path=quota_path,
         enforce_quota=True,
     )

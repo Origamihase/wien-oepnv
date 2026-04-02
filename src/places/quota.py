@@ -7,6 +7,7 @@ import logging
 import os
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from typing import Callable, Dict, Mapping
 
@@ -38,6 +39,7 @@ class QuotaConfig:
     limit_nearby: int | None
     limit_text: int | None
     limit_details: int | None
+    limit_daily: int | None
 
     def limit_for(self, kind: str) -> int | None:
         if kind == "nearby":
@@ -56,12 +58,20 @@ class MonthlyQuota:
     month_key: str
     counts: Dict[str, int] = field(default_factory=_empty_counts)
     total: int = 0
+    daily_key: str = ""
+    daily_total: int = 0
     _now_func: Callable[[], datetime] = field(default=_utc_now, repr=False)
 
     @staticmethod
     def current_month_key(now: datetime | None = None) -> str:
         reference = now or _utc_now()
         return f"{reference.year:04d}-{reference.month:02d}"
+
+    @staticmethod
+    def current_daily_key(now: datetime | None = None) -> str:
+        reference = now or _utc_now()
+        local_ref = reference.astimezone(ZoneInfo("Europe/Vienna"))
+        return f"{local_ref.year:04d}-{local_ref.month:02d}-{local_ref.day:02d}"
 
     @classmethod
     def load(
@@ -76,6 +86,8 @@ class MonthlyQuota:
                 month_key=cls.current_month_key(now_callable()),
                 counts=_empty_counts(),
                 total=0,
+                daily_key=cls.current_daily_key(now_callable()),
+                daily_total=0,
                 _now_func=now_callable,
             )
 
@@ -102,13 +114,30 @@ class MonthlyQuota:
         if not isinstance(total_raw, int) or total_raw < 0:
             raise ValueError("Quota field 'total' must be a non-negative integer")
 
-        return cls(month_key=month, counts=counts, total=total_raw, _now_func=now_callable)
+        daily_key = raw.get("daily_key", "")
+        if not isinstance(daily_key, str):
+            daily_key = ""
+
+        daily_total = raw.get("daily_total", 0)
+        if not isinstance(daily_total, int) or daily_total < 0:
+            daily_total = 0
+
+        return cls(
+            month_key=month,
+            counts=counts,
+            total=total_raw,
+            daily_key=daily_key,
+            daily_total=daily_total,
+            _now_func=now_callable,
+        )
 
     def save_atomic(self, path: Path) -> None:
         payload = {
             "month": self.month_key,
             "counts": {key: int(self.counts.get(key, 0)) for key in _KIND_KEYS},
             "total": int(self.total),
+            "daily_key": self.daily_key,
+            "daily_total": int(self.daily_total),
         }
         # Explicitly set 0600 permissions
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -117,17 +146,30 @@ class MonthlyQuota:
             handle.write("\n")
 
     def maybe_reset_month(self) -> bool:
-        current = self.current_month_key(self._now_func())
-        if self.month_key == current:
-            return False
-        self.month_key = current
-        self.counts = _empty_counts()
-        self.total = 0
-        LOGGER.info("Quota reset for new month %s", current)
-        return True
+        changed = False
+        now_dt = self._now_func()
+
+        current_month = self.current_month_key(now_dt)
+        if self.month_key != current_month:
+            self.month_key = current_month
+            self.counts = _empty_counts()
+            self.total = 0
+            LOGGER.info("Quota reset for new month %s", current_month)
+            changed = True
+
+        current_day = self.current_daily_key(now_dt)
+        if self.daily_key != current_day:
+            self.daily_key = current_day
+            self.daily_total = 0
+            LOGGER.info("Quota reset for new day %s", current_day)
+            changed = True
+
+        return changed
 
     def can_consume(self, kind: str, cfg: QuotaConfig) -> bool:
         if cfg.limit_total is not None and self.total >= cfg.limit_total:
+            return False
+        if cfg.limit_daily is not None and self.daily_total >= cfg.limit_daily:
             return False
         limit = cfg.limit_for(kind)
         if limit is not None and self.counts.get(kind, 0) >= limit:
@@ -139,6 +181,7 @@ class MonthlyQuota:
             raise RuntimeError(f"Quota exceeded for {kind}")
         self.counts[kind] = self.counts.get(kind, 0) + 1
         self.total += 1
+        self.daily_total += 1
 
 
 def _parse_limit(value: str | None) -> int | None:
@@ -160,6 +203,7 @@ def load_quota_config_from_env(env: Mapping[str, str] | None = None) -> QuotaCon
         "PLACES_LIMIT_NEARBY": 1500,
         "PLACES_LIMIT_TEXT": 1500,
         "PLACES_LIMIT_DETAILS": 1000,
+        "PLACES_LIMIT_DAILY": 200,
     }
 
     limits: Dict[str, int | None] = {}
@@ -175,6 +219,7 @@ def load_quota_config_from_env(env: Mapping[str, str] | None = None) -> QuotaCon
         limit_nearby=limits["PLACES_LIMIT_NEARBY"],
         limit_text=limits["PLACES_LIMIT_TEXT"],
         limit_details=limits["PLACES_LIMIT_DETAILS"],
+        limit_daily=limits["PLACES_LIMIT_DAILY"],
     )
 
 
