@@ -5,6 +5,7 @@ from __future__ import annotations
 import errno
 import logging
 import os
+import time
 import threading
 from contextlib import contextmanager
 from typing import Any, Iterator, MutableMapping
@@ -140,6 +141,14 @@ def file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
     try:
         _acquire_file_lock(fileobj, exclusive)
         locked = True
+
+        # Touch the lock file to update its mtime, preventing it from being
+        # falsely detected as stale in subsequent runs if it's regularly reused.
+        if locked and exclusive and path and path.endswith(".lock"):
+            try:
+                os.utime(path, None)
+            except Exception as exc:
+                log.debug("Could not touch lock file %s: %s", path, exc)
     except Exception as exc:  # pragma: no cover - lock failures are rare
         log.debug("Dateisperre fehlgeschlagen (%s) – fahre ohne Lock fort.", exc)
     try:
@@ -156,4 +165,20 @@ def file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
             if path:
                 _release_thread_lock_ref(path)
 
-__all__ = ["file_lock"]
+def clear_stale_lock(path: str | os.PathLike[str], ttl_seconds: int = 1200) -> None:
+    """Proactively clear a lock file if it is older than ttl_seconds."""
+    path_str = str(path)
+    if not path_str.endswith(".lock"):
+        return
+
+    try:
+        if os.path.exists(path_str):
+            mtime = os.path.getmtime(path_str)
+            if time.time() - mtime > ttl_seconds:
+                log.warning("Stale lock file detected (older than %s seconds). Clearing: %s", ttl_seconds, path_str)
+                os.unlink(path_str)
+    except Exception as exc:
+        log.debug("Could not clear stale lock file %s: %s", path_str, exc)
+
+
+__all__ = ["file_lock", "clear_stale_lock"]

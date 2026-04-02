@@ -4,7 +4,7 @@ from __future__ import annotations
 import hashlib
 import os
 import re
-import uuid
+import secrets
 from contextlib import contextmanager
 from pathlib import Path
 from typing import IO, Any, Iterator, Optional, Union
@@ -41,9 +41,9 @@ def atomic_write(
         encoding = None
         newline = None
 
-    # Generate a unique temporary filename with UUID to ensure no collision
+    # Generate a unique temporary filename with cryptographically secure random token to ensure no collision
     # and prevent "orphaned file blocking" issues if the process crashes.
-    unique_id = uuid.uuid4().hex
+    unique_id = secrets.token_hex(16)
     tmp_path = target.with_name(f"{target.name}.{unique_id}.tmp")
 
     f: Optional[IO[Any]] = None

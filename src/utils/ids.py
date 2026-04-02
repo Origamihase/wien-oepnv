@@ -3,6 +3,7 @@
 """ID utilities."""
 
 import hashlib
+import secrets
 
 __all__ = ["make_guid"]
 

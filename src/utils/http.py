@@ -49,6 +49,9 @@ _UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f<>\"\\^`{|}]")
 # Limit URL length to reduce DoS risk from extremely long inputs.
 MAX_URL_LENGTH = 2048
 
+# OOM Protection: Hard maximum payload limit for HTTP requests
+MAX_PAYLOAD_SIZE = 10 * 1024 * 1024
+
 # Thread-safe Session Cache (Task: HTTP Keep-Alive)
 _HTTP_SESSION_CACHE: collections.OrderedDict[str, requests.Session] = collections.OrderedDict()
 _HTTP_SESSION_LOCK = threading.Lock()
@@ -1078,7 +1081,7 @@ def verify_response_ip(response: requests.Response) -> None:
 
 def read_response_safe(
     response: requests.Response,
-    max_bytes: int = 10 * 1024 * 1024,
+    max_bytes: int = MAX_PAYLOAD_SIZE,
     timeout: float | tuple[float, float] | None = None,
 ) -> bytes:
     """Read response content safely, enforcing size limits and timeouts.
@@ -1121,6 +1124,7 @@ def read_response_safe(
         chunks.append(chunk)
         received += len(chunk)
         if received > max_bytes:
+            response.close()
             raise ValueError(f"Response too large (> {max_bytes} bytes)")
     return b"".join(chunks)
 
@@ -1129,7 +1133,7 @@ def request_safe(
     session: requests.Session,
     url: str,
     method: str = "GET",
-    max_bytes: int = 10 * 1024 * 1024,
+    max_bytes: int = MAX_PAYLOAD_SIZE,
     timeout: int | float | tuple[float, float] | None = None,
     allowed_content_types: Container[str] | None = None,
     raise_for_status: bool = True,
@@ -1162,6 +1166,7 @@ def request_safe(
     # We handle redirects manually to pin the DNS for each step.
     # We remove it from kwargs to prevent conflict with explicit argument in session.request.
     kwargs.pop("allow_redirects", None)
+    kwargs.pop("stream", None)
 
     # Ensure Host header is set to original hostname for Virtual Hosting
     if "headers" in kwargs:
@@ -1577,12 +1582,14 @@ def request_safe(
 def fetch_content_safe(
     session: requests.Session,
     url: str,
-    max_bytes: int = 10 * 1024 * 1024,
+    max_bytes: int = MAX_PAYLOAD_SIZE,
     timeout: int | float | tuple[float, float] | None = None,
     allowed_content_types: Container[str] | None = None,
     **kwargs: Any,
 ) -> bytes:
     """Fetch URL content with a size limit to prevent DoS (legacy wrapper)."""
+    # Explicitly enforce stream=True for downstream compatibility
+    kwargs["stream"] = True
     response = request_safe(
         session,
         url,

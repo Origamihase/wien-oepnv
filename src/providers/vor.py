@@ -40,7 +40,7 @@ from ..utils.env import read_secret
 from ..utils.files import atomic_write
 from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
 from ..utils.ids import make_guid
-from ..utils.locking import file_lock
+from ..utils.locking import file_lock, clear_stale_lock
 from ..utils.logging import sanitize_log_arg, sanitize_log_message
 from ..utils.stations import vor_station_ids, station_info, text_has_vienna_connection
 
@@ -1169,6 +1169,7 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
             REQUEST_COUNT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
             lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
+            clear_stale_lock(lock_path)
 
             try:
                 with lock_path.open("a+", encoding="utf-8") as lock_file:

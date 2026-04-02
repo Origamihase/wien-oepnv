@@ -13,7 +13,7 @@ class TestAtomicWriteSecurity(unittest.TestCase):
         self.expected_tmp_path = self.tmp_path / f"target.txt.{self.fixed_uuid_hex}.tmp"
 
     @patch("src.utils.files.os.open")
-    @patch("src.utils.files.uuid.uuid4")
+    @patch("src.utils.files.secrets.token_hex")
     @patch("builtins.open", new_callable=mock_open)
     @patch("src.utils.files.os.chmod")
     @patch("src.utils.files.os.replace")
@@ -21,12 +21,10 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.link")
     @patch("src.utils.files.os.unlink")
     def test_overwrite_false_uses_link(
-        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid, mock_os_open
+        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_token_hex, mock_os_open
     ):
-        # Setup uuid mock
-        mock_uuid_obj = MagicMock()
-        mock_uuid_obj.hex = self.fixed_uuid_hex
-        mock_uuid.return_value = mock_uuid_obj
+        # Setup secrets mock
+        mock_token_hex.return_value = self.fixed_uuid_hex
 
         # Setup file mock
         mock_file.return_value.fileno.return_value = 123
@@ -57,7 +55,7 @@ class TestAtomicWriteSecurity(unittest.TestCase):
         mock_replace.assert_not_called()
 
     @patch("src.utils.files.os.open")
-    @patch("src.utils.files.uuid.uuid4")
+    @patch("src.utils.files.secrets.token_hex")
     @patch("builtins.open", new_callable=mock_open)
     @patch("src.utils.files.os.chmod")
     @patch("src.utils.files.os.replace")
@@ -65,11 +63,9 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.link")
     @patch("src.utils.files.os.unlink")
     def test_overwrite_true_uses_replace(
-        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid, mock_os_open
+        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_token_hex, mock_os_open
     ):
-        mock_uuid_obj = MagicMock()
-        mock_uuid_obj.hex = self.fixed_uuid_hex
-        mock_uuid.return_value = mock_uuid_obj
+        mock_token_hex.return_value = self.fixed_uuid_hex
         mock_file.return_value.fileno.return_value = 123
         mock_os_open.return_value = 123
 
@@ -86,7 +82,7 @@ class TestAtomicWriteSecurity(unittest.TestCase):
         mock_link.assert_not_called()
 
     @patch("src.utils.files.os.open")
-    @patch("src.utils.files.uuid.uuid4")
+    @patch("src.utils.files.secrets.token_hex")
     @patch("builtins.open", new_callable=mock_open)
     @patch("src.utils.files.os.chmod")
     @patch("src.utils.files.os.replace")
@@ -94,11 +90,9 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.link")
     @patch("src.utils.files.os.unlink")
     def test_overwrite_false_race_condition(
-        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_uuid, mock_os_open
+        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_token_hex, mock_os_open
     ):
-        mock_uuid_obj = MagicMock()
-        mock_uuid_obj.hex = self.fixed_uuid_hex
-        mock_uuid.return_value = mock_uuid_obj
+        mock_token_hex.return_value = self.fixed_uuid_hex
         mock_file.return_value.fileno.return_value = 123
         mock_os_open.return_value = 123
 
