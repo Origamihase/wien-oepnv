@@ -1297,6 +1297,7 @@ def _emit_item(
 
     # Minimal cleanup
     title_out = _WHITESPACE_RE.sub(" ", title_out).strip()
+    title_cdata = _cdata_content(title_out)
 
     # Line 2: Timeframe
     time_line = format_local_times(
@@ -1336,14 +1337,15 @@ def _emit_item(
         uid = secrets.token_hex(16)
         PH_DESC = f"___CDATA_DESC_{uid}___"
         PH_CONTENT = f"___CDATA_CONTENT_{uid}___"
-        if PH_DESC not in desc_html and PH_CONTENT not in desc_html and PH_DESC not in raw_desc and PH_CONTENT not in raw_desc:
+        PH_TITLE = f"___CDATA_TITLE_{uid}___"
+        if PH_DESC not in desc_html and PH_CONTENT not in desc_html and PH_DESC not in raw_desc and PH_CONTENT not in raw_desc and PH_TITLE not in title_out:
             break
 
     # --- ElementTree Construction ---
     item = ET.Element("item")
 
     # Title
-    ET.SubElement(item, "title").text = title_out
+    ET.SubElement(item, "title").text = PH_TITLE
 
     # Link
     ET.SubElement(item, "link").text = link
@@ -1379,6 +1381,7 @@ def _emit_item(
     replacements = {
         PH_DESC: f"<![CDATA[{desc_cdata}]]>",
         PH_CONTENT: f"<![CDATA[{desc_cdata}]]>",
+        PH_TITLE: f"<![CDATA[{title_cdata}]]>",
     }
 
     return ident, item, replacements

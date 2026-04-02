@@ -37,7 +37,7 @@ def test_maybe_reset_month_resets_counts(caplog: pytest.LogCaptureFixture) -> No
 
 
 def test_can_consume_and_consume_respects_limits() -> None:
-    config = QuotaConfig(limit_total=3, limit_nearby=2, limit_text=2, limit_details=None)
+    config = QuotaConfig(limit_total=3, limit_nearby=2, limit_text=2, limit_details=None, limit_daily=None)
     quota = MonthlyQuota(month_key="2024-05")
 
     assert quota.can_consume("nearby", config)

@@ -105,6 +105,22 @@ def _coerce_float(value: object | None) -> float | None:
     return val
 
 
+def _coerce_lat(value: object | None) -> float | None:
+    """Coerce value to a valid latitude."""
+    val = _coerce_float(value)
+    if val is not None and (-90.0 <= val <= 90.0):
+        return val
+    return None
+
+
+def _coerce_lon(value: object | None) -> float | None:
+    """Coerce value to a valid longitude."""
+    val = _coerce_float(value)
+    if val is not None and (-180.0 <= val <= 180.0):
+        return val
+    return None
+
+
 def _point_on_segment(
     lat: float,
     lon: float,
@@ -192,8 +208,8 @@ def _vienna_polygons() -> tuple[Polygon, ...]:
             for pair in raw_ring:
                 if not isinstance(pair, (list, tuple)) or len(pair) < 2:
                     continue
-                lon = _coerce_float(pair[0])
-                lat = _coerce_float(pair[1])
+                lon = _coerce_lon(pair[0])
+                lat = _coerce_lat(pair[1])
                 if lat is None or lon is None:
                     continue
                 ring_points.append((lat, lon))
@@ -333,8 +349,8 @@ def _station_lookup() -> dict[str, StationInfo]:
                 stop_id = str(stop_id_raw).strip() if stop_id_raw is not None else ""
                 name_raw = stop.get("name")
                 stop_name = str(name_raw).strip() if name_raw is not None else ""
-                latitude = _coerce_float(stop.get("latitude"))
-                longitude = _coerce_float(stop.get("longitude"))
+                latitude = _coerce_lat(stop.get("latitude"))
+                longitude = _coerce_lon(stop.get("longitude"))
                 if stop_id:
                     extra_aliases.add(stop_id)
                 if stop_name:
@@ -347,8 +363,8 @@ def _station_lookup() -> dict[str, StationInfo]:
                         longitude=longitude,
                     )
                 )
-        station_latitude = _coerce_float(entry.get("latitude") or entry.get("lat"))
-        station_longitude = _coerce_float(entry.get("longitude") or entry.get("lon"))
+        station_latitude = _coerce_lat(entry.get("latitude") or entry.get("lat"))
+        station_longitude = _coerce_lon(entry.get("longitude") or entry.get("lon"))
         source_text = str(entry.get("source") or "")
         base_record = StationInfo(
             name=name,
@@ -537,8 +553,8 @@ def is_in_vienna(lat: object, lon: object | None = None) -> bool:
                 return True
         return False
 
-    latitude = _coerce_float(lat)
-    longitude = _coerce_float(lon)
+    latitude = _coerce_lat(lat)
+    longitude = _coerce_lon(lon)
     if latitude is None or longitude is None:
         return False
 
