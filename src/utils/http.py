@@ -1517,18 +1517,22 @@ def request_safe(
                     if raise_for_status:
                         r.raise_for_status()
 
+                    content_type_header = r.headers.get("Content-Type", "")
+                    mime_type = content_type_header.split(";")[0].strip().lower() if content_type_header else ""
+
                     if allowed_content_types is not None:
-                        content_type_header = r.headers.get("Content-Type", "")
                         if not content_type_header:
                             raise ValueError(
                                 "Content-Type header missing, but validation required"
                             )
-                        # Robust parsing
-                        mime_type = content_type_header.split(";")[0].strip().lower()
                         if mime_type not in allowed_content_types:
                             raise ValueError(
                                 f"Invalid Content-Type: {mime_type} (expected {allowed_content_types})"
                             )
+                    else:
+                        # Explicitly block text/html proxy errors/WAF blocks when validation is implicit
+                        if mime_type == "text/html":
+                            raise ValueError("Invalid Content-Type: received text/html (possible proxy error or WAF block)")
 
                     # Calculate remaining time for reading body (Task 3)
                     # We must ensure we don't exceed total_allowed_time
