@@ -33,12 +33,21 @@ def mock_response():
     return response
 
 def test_fetch_content_safe_no_validation(mock_session, mock_response):
-    """Test that without allowed_content_types, any content type is accepted."""
-    mock_response.headers = {"Content-Type": "text/html"}
+    """Test that without allowed_content_types, safe content types are accepted but text/html is blocked."""
+    mock_response.headers = {"Content-Type": "application/json"}
     mock_session.request.return_value.__enter__.return_value = mock_response
 
     content = fetch_content_safe(mock_session, "http://example.com")
     assert content == b"content"
+
+def test_fetch_content_safe_blocks_html_implicitly(mock_session, mock_response):
+    """Test that without allowed_content_types, text/html is blocked to prevent proxy/WAF parsing issues."""
+    mock_response.headers = {"Content-Type": "text/html"}
+    mock_session.request.return_value.__enter__.return_value = mock_response
+
+    with pytest.raises(ValueError, match="Invalid Content-Type: received text/html"):
+        fetch_content_safe(mock_session, "http://example.com")
+
 
 def test_fetch_content_safe_valid_json(mock_session, mock_response):
     """Test that matching content type is accepted."""

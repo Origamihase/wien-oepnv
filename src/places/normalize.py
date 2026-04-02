@@ -20,6 +20,8 @@ def _strip_accents(value: str) -> str:
 
 def normalize_name(name: str) -> str:
     """Normalise ``name`` for fuzzy comparisons."""
+    if len(name) > 250:
+        return name
 
     stripped = " ".join(name.strip().split())
     lowered = stripped.casefold()
