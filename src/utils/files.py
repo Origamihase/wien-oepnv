@@ -143,3 +143,12 @@ def sanitize_filename(filename_id: str) -> str:
     # Verified: Uses SHA256 (no MD5) for security linter compliance
     id_hash = hashlib.sha256(str(filename_id).encode('utf-8')).hexdigest()[:6]
     return f"{safe_base}_{id_hash}"
+
+
+def get_file_hash(filepath: Union[str, Path], chunk_size: int = 4096) -> str:
+    """Calculate the SHA256 hash of a file using chunked reading to minimize memory footprint."""
+    hasher = hashlib.sha256()
+    with open(filepath, "rb") as f:
+        for chunk in iter(lambda: f.read(chunk_size), b""):
+            hasher.update(chunk)
+    return hasher.hexdigest()
