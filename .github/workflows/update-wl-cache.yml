@@ -27,7 +27,10 @@ jobs:
           set -euo pipefail
           cache_dir="${RUNNER_TEMP}/pip-cache"
           mkdir -p "$cache_dir"
-          echo "PIP_CACHE_DIR=$cache_dir" >> "$GITHUB_ENV"
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "PIP_CACHE_DIR<<$EOF" >> "$GITHUB_ENV"
+          echo "$cache_dir" >> "$GITHUB_ENV"
+          echo "$EOF" >> "$GITHUB_ENV"
 
       - name: Set up Python
         uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5
