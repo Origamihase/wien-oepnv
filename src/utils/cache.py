@@ -19,6 +19,11 @@ _CACHE_FILENAME = "events.json"
 log = logging.getLogger(__name__)
 
 
+class DataDegradationError(Exception):
+    """Raised when an operation would severely degrade data quality."""
+    pass
+
+
 _CacheAlertHook = Callable[[str, str], None]
 _CACHE_ALERT_HOOKS: List[_CacheAlertHook] = []
 _CACHE_ALERT_LOCK = RLock()
@@ -199,6 +204,27 @@ def write_cache(provider: str, items: List[Any], *, pretty: Optional[bool] = Non
     prune_cache()
 
     cache_file = _cache_file(provider)
+
+    # Data Degradation Guard
+    if cache_file.exists():
+        try:
+            with cache_file.open("r", encoding="utf-8") as fh:
+                existing_data = json.load(fh)
+            if isinstance(existing_data, list) and len(existing_data) > 0:
+                if len(items) == 0:
+                    raise DataDegradationError(
+                        f"Empty payload rejected: refusing to overwrite cache for '{provider}' "
+                        f"which currently has {len(existing_data)} items."
+                    )
+                if len(items) < len(existing_data) * 0.2:
+                    raise DataDegradationError(
+                        f"Degraded payload rejected: '{provider}' items dropped drastically "
+                        f"from {len(existing_data)} to {len(items)}."
+                    )
+        except (json.JSONDecodeError, OSError):
+            # Ignore read errors to allow corrupt caches to be overwritten
+            pass
+
     # atomic_write creates parents if needed
 
     try:
