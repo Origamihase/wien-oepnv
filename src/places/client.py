@@ -214,7 +214,13 @@ class GooglePlacesClient:
             base_body["regionCode"] = self._config.region
 
         page_token: Optional[str] = None
+        page_count = 0
+        MAX_PAGES = 50
         while True:
+            if page_count >= MAX_PAGES:
+                LOGGER.warning("Max pagination limit reached for tile %r, breaking loop.", tile)
+                break
+            page_count += 1
             body = dict(base_body)
             if page_token:
                 body["pageToken"] = page_token
