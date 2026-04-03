@@ -278,14 +278,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N29: Busse halten auf der Hauptfahrbahn",
-    "description": "Busse halten auf der Hauptfahrbahn",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
-    "pubDate": "2026-04-02T23:00:08+02:00",
-    "starts_at": "2026-04-02T23:00:08+02:00",
-    "ends_at": "2026-04-03T05:30:00+02:00",
-    "_identity": "wl|störung|L=N29|D=2026-04-02"
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-04-03T00:00:27+02:00",
+    "starts_at": "2026-04-03T00:00:27+02:00",
+    "ends_at": "2026-04-03T23:59:59+02:00",
+    "_identity": "wl|störung|L=74A|D=2026-04-03"
   },
   {
     "source": "Wiener Linien",
@@ -298,18 +298,6 @@
     "starts_at": "2026-04-03T00:00:27+02:00",
     "ends_at": "2026-04-03T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-04-03T00:00:27+02:00",
-    "starts_at": "2026-04-03T00:00:27+02:00",
-    "ends_at": "2026-04-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-04-03"
   },
   {
     "source": "Wiener Linien",
@@ -338,13 +326,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-04-03T05:24:00+02:00",
-    "starts_at": "2026-04-03T05:24:00+02:00",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2026-04-03T06:22:00+02:00",
+    "starts_at": "2026-04-03T06:22:00+02:00",
     "ends_at": "2026-04-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-04-03"
+    "_identity": "wl|störung|L=U1|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Polizeieinsatz Betrieb ab Alser Straße",
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "988c80ab109007f5051aff806aa861e0141853ffcc393ab7f2657dc9a31b4cd0",
+    "pubDate": "2026-04-03T07:04:00+02:00",
+    "starts_at": "2026-04-03T07:12:26+02:00",
+    "ends_at": "2026-04-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201",
+    "pubDate": "2026-04-03T07:04:00+02:00",
+    "starts_at": "2026-04-03T07:14:19+02:00",
+    "ends_at": "2026-04-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=44|D=2026-04-03"
   }
 ]
