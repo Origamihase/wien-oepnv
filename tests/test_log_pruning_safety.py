@@ -1,6 +1,6 @@
 
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
@@ -34,7 +34,7 @@ def test_prune_log_file_preserves_logging_handle(tmp_path: Path):
         # 3. Simulate Pruning
         # We need to ensure we have content to prune or keep.
         # prune_log_file keeps records NEWER than cutoff.
-        # We pass now=datetime.now(), keep_days=7.
+        # We pass now=datetime.now(timezone.utc), keep_days=7.
         # The current record is very new, so it should be KEPT.
         # But we want to test that the file handle remains valid EVEN IF we rewrite the file.
         # To simulate a rewrite, we can verify that prune_log_file indeed opens and closes the file.
@@ -43,7 +43,7 @@ def test_prune_log_file_preserves_logging_handle(tmp_path: Path):
         # If we want to verify it rewrites, we can check mtime?
         # Or just trust that we call it.
 
-        prune_log_file(log_file, now=datetime.now(), keep_days=1)
+        prune_log_file(log_file, now=datetime.now(timezone.utc), keep_days=1)
 
         # 4. Write second log
         logger.info("Line 2: After Prune")
@@ -68,8 +68,8 @@ def test_prune_log_file_actually_prunes(tmp_path: Path):
     # Create a log file with old and new entries
     # Format matches _LOG_TIMESTAMP_RE: YYYY-MM-DD HH:MM:SS,mmm
 
-    old_date = datetime.now() - timedelta(days=10)
-    new_date = datetime.now()
+    old_date = datetime.now(timezone.utc) - timedelta(days=10)
+    new_date = datetime.now(timezone.utc)
 
     old_line = f"{old_date.strftime('%Y-%m-%d %H:%M:%S,000')} Old Message\n"
     new_line = f"{new_date.strftime('%Y-%m-%d %H:%M:%S,000')} New Message\n"

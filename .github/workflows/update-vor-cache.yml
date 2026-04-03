@@ -68,7 +68,11 @@ jobs:
 
       - name: Get Date
         id: date
-        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+        run: |
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "date<<$EOF" >> "$GITHUB_OUTPUT"
+          echo "$(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+          echo "$EOF" >> "$GITHUB_OUTPUT"
 
       - name: Refresh VOR cache
         run: python scripts/update_vor_cache.py

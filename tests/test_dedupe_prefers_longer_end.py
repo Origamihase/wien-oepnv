@@ -1,3 +1,4 @@
+from datetime import timezone
 import importlib
 import sys
 from pathlib import Path
@@ -31,12 +32,12 @@ def test_prefers_later_ends_at(monkeypatch):
 
     earlier = {
         "_identity": "a",
-        "ends_at": datetime(2024, 1, 1),
+        "ends_at": datetime(2024, 1, 1, tzinfo=timezone.utc),
         "description": "longer",
     }
     later = {
         "_identity": "a",
-        "ends_at": datetime(2024, 1, 2),
+        "ends_at": datetime(2024, 1, 2, tzinfo=timezone.utc),
         "description": "short",
     }
 
@@ -49,15 +50,15 @@ def test_prefers_newer_even_if_ends_at_shorter(monkeypatch):
 
     previous = {
         "_identity": "a",
-        "ends_at": datetime(2024, 1, 5),
+        "ends_at": datetime(2024, 1, 5, tzinfo=timezone.utc),
         "description": "original",
-        "pubDate": datetime(2024, 1, 1, 8, 0, 0),
+        "pubDate": datetime(2024, 1, 1, 8, 0, 0, tzinfo=timezone.utc),
     }
     update = {
         "_identity": "a",
-        "ends_at": datetime(2024, 1, 3),  # verkürzt
+        "ends_at": datetime(2024, 1, 3, tzinfo=timezone.utc),  # verkürzt
         "description": "original",
-        "pubDate": datetime(2024, 1, 1, 10, 0, 0),  # neuer
+        "pubDate": datetime(2024, 1, 1, 10, 0, 0, tzinfo=timezone.utc),  # neuer
     }
 
     out = build_feed._dedupe_items([previous, update])
@@ -70,17 +71,17 @@ def test_prefers_newer_when_starts_at_changes(monkeypatch):
 
     base = {
         "_identity": "a",
-        "starts_at": datetime(2024, 1, 1, 8, 0, 0),
-        "ends_at": datetime(2024, 1, 5, 12, 0, 0),
+        "starts_at": datetime(2024, 1, 1, 8, 0, 0, tzinfo=timezone.utc),
+        "ends_at": datetime(2024, 1, 5, 12, 0, 0, tzinfo=timezone.utc),
         "description": "unchanged",
-        "pubDate": datetime(2024, 1, 1, 8, 0, 0),
+        "pubDate": datetime(2024, 1, 1, 8, 0, 0, tzinfo=timezone.utc),
     }
     modified = {
         "_identity": "a",
-        "starts_at": datetime(2024, 1, 2, 8, 0, 0),  # geänderte Startzeit
-        "ends_at": datetime(2024, 1, 5, 12, 0, 0),
+        "starts_at": datetime(2024, 1, 2, 8, 0, 0, tzinfo=timezone.utc),  # geänderte Startzeit
+        "ends_at": datetime(2024, 1, 5, 12, 0, 0, tzinfo=timezone.utc),
         "description": "unchanged",
-        "pubDate": datetime(2024, 1, 1, 9, 0, 0),
+        "pubDate": datetime(2024, 1, 1, 9, 0, 0, tzinfo=timezone.utc),
     }
 
     out = build_feed._dedupe_items([base, modified])

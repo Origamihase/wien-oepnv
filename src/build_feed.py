@@ -353,13 +353,13 @@ def _call_fetch_with_timeout(
 def _to_utc(dt: datetime) -> datetime:
     """Return a timezone-aware datetime in UTC.
 
-    Treats naive datetimes as Vienna local time.
+    Strictly requires timezone-aware datetimes.
     """
+    if dt.tzinfo is None:
+        raise ValueError("Naive datetimes are banned. Must be timezone-aware.")
+
     if dt.tzinfo is timezone.utc:
         return dt
-
-    if dt.tzinfo is None:
-        return dt.replace(tzinfo=_VIENNA_TZ).astimezone(timezone.utc)
 
     return dt.astimezone(timezone.utc)
 

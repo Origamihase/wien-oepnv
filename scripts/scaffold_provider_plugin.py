@@ -10,7 +10,7 @@ import textwrap
 TEMPLATE = textwrap.dedent(
     '''from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timezone
 from typing import Callable, Iterable
 
 Item = dict[str, object]

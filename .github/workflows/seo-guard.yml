@@ -86,7 +86,10 @@ jobs:
             [[ "$before" != "$after" ]] && changed=true
           fi
 
-          echo "changed=${changed}" >> "$GITHUB_OUTPUT"
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "changed<<$EOF" >> "$GITHUB_OUTPUT"
+          echo "${changed}" >> "$GITHUB_OUTPUT"
+          echo "$EOF" >> "$GITHUB_OUTPUT"
 
       - name: Commit & push, or open PR if branch protected
         if: steps.seo.outputs.changed == 'true'
@@ -104,7 +107,10 @@ jobs:
           git add -A
           git commit -m "chore(seo): robots formatting & single sitemap; global dedupe in feed; canonical URLs"
           if git push origin "HEAD:${BRANCH}"; then
-            echo "mode=direct" >> "$GITHUB_OUTPUT"
+            EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+            echo "mode<<$EOF" >> "$GITHUB_OUTPUT"
+            echo "direct" >> "$GITHUB_OUTPUT"
+            echo "$EOF" >> "$GITHUB_OUTPUT"
           else
             echo "Branch protection active, creating PR..."
             PRB="seo/fix-robots-feed-canonicals"
@@ -118,7 +124,10 @@ jobs:
                  -X POST "https://api.github.com/repos/${OWNER_REPO}/pulls" \
                  -d "$(printf '{ "title": %q, "head": %q, "base": %q, "body": %q }' \
                           "SEO: Robots & Feed Dedupe + Canonical Fixes" "$PRB" "$BASE" "$BODY")" >/dev/null
-            echo "mode=pr" >> "$GITHUB_OUTPUT"
+            EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+            echo "mode<<$EOF" >> "$GITHUB_OUTPUT"
+            echo "pr" >> "$GITHUB_OUTPUT"
+            echo "$EOF" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Update repository metadata via PAT (description & homepage)

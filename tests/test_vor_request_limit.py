@@ -3,7 +3,7 @@ import json
 import multiprocessing
 import os
 import threading
-from datetime import datetime
+from datetime import datetime, timezone
 
 import pytest
 from zoneinfo import ZoneInfo
@@ -308,7 +308,7 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(monkeypa
 
     monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch_content_safe)
 
-    now_local = datetime.now().astimezone(ZoneInfo("Europe/Vienna"))
+    now_local = datetime.now(timezone.utc).astimezone(ZoneInfo("Europe/Vienna"))
     result = vor._fetch_departure_board_for_station("123", now_local)
 
     assert result is None
@@ -350,7 +350,7 @@ def test_fetch_departure_board_fails_gracefully_on_error(monkeypatch):
 
     monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch_content_safe)
 
-    now_local = datetime.now().astimezone(ZoneInfo("Europe/Vienna"))
+    now_local = datetime.now(timezone.utc).astimezone(ZoneInfo("Europe/Vienna"))
     payload = vor._fetch_departure_board_for_station("123", now_local)
 
     # Should return None on failure

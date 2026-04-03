@@ -6,7 +6,7 @@ from __future__ import annotations
 import logging
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -70,7 +70,7 @@ def configure_logging() -> None:
 
 
 def _now_local() -> datetime:
-    return datetime.now().astimezone(ZoneInfo("Europe/Vienna"))
+    return datetime.now(timezone.utc).astimezone(ZoneInfo("Europe/Vienna"))
 
 
 def _todays_request_count(now_local: datetime) -> int:
