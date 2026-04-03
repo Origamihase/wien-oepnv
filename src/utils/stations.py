@@ -108,7 +108,7 @@ def _coerce_float(value: object | None) -> float | None:
 def _coerce_lat(value: object | None) -> float | None:
     """Coerce value to a valid latitude."""
     val = _coerce_float(value)
-    if val is not None and (-90.0 <= val <= 90.0):
+    if val is not None and (46.0 <= val <= 49.5):
         return val
     return None
 
@@ -116,7 +116,7 @@ def _coerce_lat(value: object | None) -> float | None:
 def _coerce_lon(value: object | None) -> float | None:
     """Coerce value to a valid longitude."""
     val = _coerce_float(value)
-    if val is not None and (-180.0 <= val <= 180.0):
+    if val is not None and (9.0 <= val <= 17.5):
         return val
     return None
 

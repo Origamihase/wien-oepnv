@@ -58,10 +58,10 @@ def atomic_write(
         else:
             flags |= os.O_WRONLY
 
-        fd = os.open(tmp_path, flags, permissions)
+        fd = os.open(tmp_path, flags, 0o600)
         # Security: Immediately enforce restrictive permissions bypassing umask
         try:
-            os.fchmod(fd, permissions)
+            os.fchmod(fd, 0o600)
         except OSError:
             pass
 
@@ -69,15 +69,15 @@ def atomic_write(
         yield f
         f.flush()
         os.fsync(f.fileno())
+
+        # Set permissions before moving into place and closing
+        try:
+            os.fchmod(fd, permissions)
+        except OSError:
+            pass
+
         f.close()
         f = None  # Prevent double close in finally
-
-        # Set permissions before moving into place
-        try:
-            os.chmod(tmp_path, permissions)
-        except OSError:
-            # On some systems/filesystems chmod might fail, but we proceed
-            pass
 
         if overwrite:
             os.replace(tmp_path, target)
