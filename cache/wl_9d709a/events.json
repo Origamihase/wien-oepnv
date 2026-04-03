@@ -230,10 +230,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Betrieb ab Neubaugasse, Burggasse",
-    "description": "Gleisbauarbeiten Betrieb ab Neubaugasse, Burggasse",
+    "title": "Kein Betrieb",
+    "description": "Gleisbauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bb3957f3a3c574f575a0faf398065801c1578897162f044a533066b236c1edb7",
+    "guid": "9ec2ea0eca6ce3cc23c5423fc52b682ab65d0af37e7797a70fb53d98b6182ac1",
     "pubDate": "2026-04-02T00:00:18+02:00",
     "starts_at": "2026-04-02T00:00:18+02:00",
     "ends_at": "2026-04-03T23:59:59+02:00",
@@ -242,10 +242,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Kein Betrieb",
-    "description": "Gleisbauarbeiten Kein Betrieb",
+    "title": "Betrieb ab Neubaugasse, Burggasse",
+    "description": "Gleisbauarbeiten Betrieb ab Neubaugasse, Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9ec2ea0eca6ce3cc23c5423fc52b682ab65d0af37e7797a70fb53d98b6182ac1",
+    "guid": "bb3957f3a3c574f575a0faf398065801c1578897162f044a533066b236c1edb7",
     "pubDate": "2026-04-02T00:00:18+02:00",
     "starts_at": "2026-04-02T00:00:18+02:00",
     "ends_at": "2026-04-03T23:59:59+02:00",
@@ -278,18 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-04-03T00:00:27+02:00",
-    "starts_at": "2026-04-03T00:00:27+02:00",
-    "ends_at": "2026-04-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=37A|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -298,6 +286,18 @@
     "starts_at": "2026-04-03T00:00:27+02:00",
     "ends_at": "2026-04-03T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-04-03T00:00:27+02:00",
+    "starts_at": "2026-04-03T00:00:27+02:00",
+    "ends_at": "2026-04-03T23:59:59+02:00",
+    "_identity": "wl|störung|L=37A|D=2026-04-03"
   },
   {
     "source": "Wiener Linien",
@@ -322,77 +322,5 @@
     "starts_at": "2026-04-03T05:01:15+02:00",
     "ends_at": "2026-04-04T00:00:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "98667687253bc639656a963907dc9d6e4d87dbc4735242bb2b985799eaecefeb",
-    "pubDate": "2026-04-03T18:15:29+02:00",
-    "starts_at": "2026-04-03T18:15:29+02:00",
-    "ends_at": "2026-04-03T19:14:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e105ca57f2aa7daecce2d0c7b4277004ad37ec7461843c457618fc8980286aef",
-    "pubDate": "2026-04-03T18:16:06+02:00",
-    "starts_at": "2026-04-03T18:16:06+02:00",
-    "ends_at": "2026-04-03T19:15:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed",
-    "pubDate": "2026-04-03T18:16:27+02:00",
-    "starts_at": "2026-04-03T18:16:27+02:00",
-    "ends_at": "2026-04-03T19:16:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "12c122fd59c34caf7f02ba0225ce436dc57cac19067265e4e00cf01131a3ccaf",
-    "pubDate": "2026-04-03T18:16:56+02:00",
-    "starts_at": "2026-04-03T18:17:16+02:00",
-    "ends_at": "2026-04-03T19:16:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9",
-    "pubDate": "2026-04-03T18:17:54+02:00",
-    "starts_at": "2026-04-03T18:17:54+02:00",
-    "ends_at": "2026-04-03T19:17:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Polizeieinsatz",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182",
-    "pubDate": "2026-04-03T18:50:00+02:00",
-    "starts_at": "2026-04-03T18:50:00+02:00",
-    "ends_at": "2026-04-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-04-03"
   }
 ]
