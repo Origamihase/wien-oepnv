@@ -230,10 +230,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Betrieb ab Neubaugasse, Burggasse",
-    "description": "Gleisbauarbeiten Betrieb ab Neubaugasse, Burggasse",
+    "title": "Kein Betrieb",
+    "description": "Gleisbauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bb3957f3a3c574f575a0faf398065801c1578897162f044a533066b236c1edb7",
+    "guid": "9ec2ea0eca6ce3cc23c5423fc52b682ab65d0af37e7797a70fb53d98b6182ac1",
     "pubDate": "2026-04-02T00:00:18+02:00",
     "starts_at": "2026-04-02T00:00:18+02:00",
     "ends_at": "2026-04-03T23:59:59+02:00",
@@ -242,10 +242,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Kein Betrieb",
-    "description": "Gleisbauarbeiten Kein Betrieb",
+    "title": "Betrieb ab Neubaugasse, Burggasse",
+    "description": "Gleisbauarbeiten Betrieb ab Neubaugasse, Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9ec2ea0eca6ce3cc23c5423fc52b682ab65d0af37e7797a70fb53d98b6182ac1",
+    "guid": "bb3957f3a3c574f575a0faf398065801c1578897162f044a533066b236c1edb7",
     "pubDate": "2026-04-02T00:00:18+02:00",
     "starts_at": "2026-04-02T00:00:18+02:00",
     "ends_at": "2026-04-03T23:59:59+02:00",
@@ -278,18 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-04-03T00:00:27+02:00",
-    "starts_at": "2026-04-03T00:00:27+02:00",
-    "ends_at": "2026-04-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -298,6 +286,18 @@
     "starts_at": "2026-04-03T00:00:27+02:00",
     "ends_at": "2026-04-03T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-04-03T00:00:27+02:00",
+    "starts_at": "2026-04-03T00:00:27+02:00",
+    "ends_at": "2026-04-03T23:59:59+02:00",
+    "_identity": "wl|störung|L=74A|D=2026-04-03"
   },
   {
     "source": "Wiener Linien",
@@ -326,42 +326,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40: Rettungseinsatz",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5092aa3e16264a54729d619c0073938e9a20bc79adf99a5a51f89ef26c9055eb",
-    "pubDate": "2026-04-03T09:44:00+02:00",
-    "starts_at": "2026-04-03T09:44:00+02:00",
-    "ends_at": "2026-04-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=40|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Feuerwehreinsatz",
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a11c559bc88082d01d8ecc232b83791677131f39d67e71c682b52aab7c821cf9",
-    "pubDate": "2026-04-03T10:22:00+02:00",
-    "starts_at": "2026-04-03T10:22:00+02:00",
-    "ends_at": "2026-04-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "86A: Verspätungen",
-    "description": "Linie 86A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9e42e5ccec580785b6aaed6ef6665b7758d15b87dcef3fddbd5d15b4bde26210",
-    "pubDate": "2026-04-03T10:57:00+02:00",
-    "starts_at": "2026-04-03T10:57:00+02:00",
-    "ends_at": "2026-04-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=86A|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Signalstörung",
     "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -374,13 +338,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "66A: Fahrtbehinderung Betriebsstörung",
-    "description": "Fahrtbehinderung Betriebsstörung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "54c8c04a8eb891f555b04ddc3ab16b0fc0fa639c0b77dc3254911619bba3e9f1",
-    "pubDate": "2026-04-03T11:28:38+02:00",
-    "starts_at": "2026-04-03T11:29:07+02:00",
-    "ends_at": "2026-04-03T12:28:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-04-03"
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-04-03T12:25:00+02:00",
+    "starts_at": "2026-04-03T12:25:00+02:00",
+    "ends_at": "2026-04-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Rettungseinsatz",
+    "description": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 13:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Stephansplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
+    "pubDate": "2026-04-03T12:56:00+02:00",
+    "starts_at": "2026-04-03T12:56:00+02:00",
+    "ends_at": "2026-04-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-04-03"
   }
 ]
