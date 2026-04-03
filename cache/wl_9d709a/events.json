@@ -230,10 +230,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Kein Betrieb",
-    "description": "Gleisbauarbeiten Kein Betrieb",
+    "title": "Betrieb ab Neubaugasse, Burggasse",
+    "description": "Gleisbauarbeiten Betrieb ab Neubaugasse, Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9ec2ea0eca6ce3cc23c5423fc52b682ab65d0af37e7797a70fb53d98b6182ac1",
+    "guid": "bb3957f3a3c574f575a0faf398065801c1578897162f044a533066b236c1edb7",
     "pubDate": "2026-04-02T00:00:18+02:00",
     "starts_at": "2026-04-02T00:00:18+02:00",
     "ends_at": "2026-04-03T23:59:59+02:00",
@@ -242,10 +242,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Betrieb ab Neubaugasse, Burggasse",
-    "description": "Gleisbauarbeiten Betrieb ab Neubaugasse, Burggasse",
+    "title": "Kein Betrieb",
+    "description": "Gleisbauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bb3957f3a3c574f575a0faf398065801c1578897162f044a533066b236c1edb7",
+    "guid": "9ec2ea0eca6ce3cc23c5423fc52b682ab65d0af37e7797a70fb53d98b6182ac1",
     "pubDate": "2026-04-02T00:00:18+02:00",
     "starts_at": "2026-04-02T00:00:18+02:00",
     "ends_at": "2026-04-03T23:59:59+02:00",
@@ -278,18 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-04-03T00:00:27+02:00",
-    "starts_at": "2026-04-03T00:00:27+02:00",
-    "ends_at": "2026-04-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=37A|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -298,6 +286,18 @@
     "starts_at": "2026-04-03T00:00:27+02:00",
     "ends_at": "2026-04-03T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-04-03T00:00:27+02:00",
+    "starts_at": "2026-04-03T00:00:27+02:00",
+    "ends_at": "2026-04-03T23:59:59+02:00",
+    "_identity": "wl|störung|L=37A|D=2026-04-03"
   },
   {
     "source": "Wiener Linien",
@@ -326,25 +326,61 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26A: Verspätungen",
-    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "U3: Rettungseinsatz",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Westbahnhof und Schweglerstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 11:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Westbahnhof.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7f9a2af401b97e330d7ac59be04b75db63099ba28a23d02de44b605e1ec65a5b",
-    "pubDate": "2026-04-03T08:10:00+02:00",
-    "starts_at": "2026-04-03T08:10:00+02:00",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-04-03T09:06:00+02:00",
+    "starts_at": "2026-04-03T09:06:00+02:00",
     "ends_at": "2026-04-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=26A|D=2026-04-03"
+    "_identity": "wl|störung|L=U3|D=2026-04-03"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "58B: Verspätungen",
-    "description": "Linie 58B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "53648b2c7bafca9a7f5c31fef1497a2294b9c4f35401ef1bf63e0c55dd769fc8",
-    "pubDate": "2026-04-03T08:24:00+02:00",
-    "starts_at": "2026-04-03T08:24:00+02:00",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-04-03T09:26:00+02:00",
+    "starts_at": "2026-04-03T09:26:00+02:00",
     "ends_at": "2026-04-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=58B|D=2026-04-03"
+    "_identity": "wl|störung|L=U6|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: **Störung U3** Station Westbahnhof derzeit kein Halt",
+    "description": "**Störung U3** Station Westbahnhof derzeit kein Halt",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a9a7d9b5dd9c5ce416a6b0121490f43eccd96b2f5efcc2cdba42dd596b2edd20",
+    "pubDate": "2026-04-03T09:27:19+02:00",
+    "starts_at": "2026-04-03T09:27:46+02:00",
+    "ends_at": "2026-04-03T10:26:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Rettungseinsatz Betrieb ab Gersthof",
+    "description": "Linie 40: Betrieb nur zwischen Schottentor U und Gersthof S. Weiterfahrt über Linie 41 bis Pötzleinsdorf. Voraussichtliche Dauer: 10:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Alsegger Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5092aa3e16264a54729d619c0073938e9a20bc79adf99a5a51f89ef26c9055eb",
+    "pubDate": "2026-04-03T09:44:00+02:00",
+    "starts_at": "2026-04-03T09:46:39+02:00",
+    "ends_at": "2026-04-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=40|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "33A: Verspätungen",
+    "description": "Linie 33A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3aa78619e5283f18d7d7dc0464b0258ba9b76ab98b8d602745e9821345b70bed",
+    "pubDate": "2026-04-03T10:00:00+02:00",
+    "starts_at": "2026-04-03T10:00:00+02:00",
+    "ends_at": "2026-04-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=33A|D=2026-04-03"
   }
 ]
