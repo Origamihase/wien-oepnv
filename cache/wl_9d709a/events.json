@@ -278,18 +278,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-04-03T00:00:27+02:00",
-    "starts_at": "2026-04-03T00:00:27+02:00",
-    "ends_at": "2026-04-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=37A|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -298,6 +286,18 @@
     "starts_at": "2026-04-03T00:00:27+02:00",
     "ends_at": "2026-04-03T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-04-03T00:00:27+02:00",
+    "starts_at": "2026-04-03T00:00:27+02:00",
+    "ends_at": "2026-04-03T23:59:59+02:00",
+    "_identity": "wl|störung|L=37A|D=2026-04-03"
   },
   {
     "source": "Wiener Linien",
@@ -338,30 +338,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Verunreinigung",
-    "description": "Linie 27: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3b461e93a7acf379e3b4faaf7c359e36ab260879a160a5afe603e68440f7b733",
-    "pubDate": "2026-04-03T14:28:00+02:00",
-    "starts_at": "2026-04-03T14:28:00+02:00",
-    "ends_at": "2026-04-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=27|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "15A: Rettungseinsatz",
-    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bc65efc0eaddbdf7e05327a802d1b0275625e76f2f1601244d8cb88fec910412",
-    "pubDate": "2026-04-03T14:43:00+02:00",
-    "starts_at": "2026-04-03T14:43:00+02:00",
-    "ends_at": "2026-04-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=15A|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "22A/77A: Verspätungen",
     "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -370,5 +346,29 @@
     "starts_at": "2026-04-03T15:01:00+02:00",
     "ends_at": "2026-04-03T23:55:00+02:00",
     "_identity": "wl|störung|L=22A,77A|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Schadhaftes Fahrzeug",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "73357b6320dfec1f26a86c63469d119b40e8f17ed69fcf1491dd8ae09deab193",
+    "pubDate": "2026-04-03T15:48:00+02:00",
+    "starts_at": "2026-04-03T15:48:00+02:00",
+    "ends_at": "2026-04-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung Schadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "42136a8e71b4c2b5584fecbaf02e84bbc564028048d64f662ba7e51eec28927a",
+    "pubDate": "2026-04-03T15:49:03+02:00",
+    "starts_at": "2026-04-03T16:01:11+02:00",
+    "ends_at": "2026-04-03T17:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-04-03"
   }
 ]
