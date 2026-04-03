@@ -15,6 +15,7 @@ import dns.exception
 import time
 import types
 import unicodedata
+import secrets
 from typing import Any, Container, Mapping, MutableMapping, TypeGuard, Union
 from urllib.parse import parse_qsl, urlencode, urljoin, urlparse
 
@@ -638,7 +639,13 @@ def session_with_retries(
     # Security: Limit redirects to prevent infinite loops and resource exhaustion (DoS)
     session.max_redirects = 10
     session.hooks["response"].append(_check_response_security)
-    retry = Retry(**options)
+
+    class JitterRetry(Retry):
+        def get_backoff_time(self) -> float:
+            base_backoff = super().get_backoff_time()
+            return base_backoff * secrets.SystemRandom().uniform(0.8, 1.2)
+
+    retry = JitterRetry(**options)
     adapter = TimeoutHTTPAdapter(max_retries=retry, timeout=timeout)
     session.mount("http://", adapter)
     session.mount("https://", adapter)
