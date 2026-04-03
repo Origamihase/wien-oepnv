@@ -346,15 +346,14 @@ class SafeDNSHTTPConnection(HTTPConnection):
     HTTPConnection that resolves DNS once, validates the IP, and connects securely.
     """
     def _new_conn(self) -> Any:
+        target_ip: str | None = None
         try:
             ip_obj = ipaddress.ip_address(self.host)
             target_ip_cand = str(ip_obj)
             if is_ip_safe(target_ip_cand):
-                target_ip = target_ip_cand
-            else:
-                target_ip = None
+                target_ip = str(target_ip_cand)
         except ValueError:
-            target_ip = None
+            pass
 
         if target_ip is None:
             ips = _resolve_hostname_safe(self.host)
@@ -373,7 +372,7 @@ class SafeDNSHTTPConnection(HTTPConnection):
             source_address=self.source_address,
         )
 
-        if getattr(self, "socket_options", None):
+        if self.socket_options:
             for opt in self.socket_options:
                 conn.setsockopt(*opt[:3])
 
@@ -385,15 +384,14 @@ class SafeDNSHTTPSConnection(HTTPSConnection):
     HTTPSConnection that resolves DNS once, validates the IP, and connects securely.
     """
     def _new_conn(self) -> Any:
+        target_ip: str | None = None
         try:
             ip_obj = ipaddress.ip_address(self.host)
             target_ip_cand = str(ip_obj)
             if is_ip_safe(target_ip_cand):
-                target_ip = target_ip_cand
-            else:
-                target_ip = None
+                target_ip = str(target_ip_cand)
         except ValueError:
-            target_ip = None
+            pass
 
         if target_ip is None:
             ips = _resolve_hostname_safe(self.host)
@@ -412,7 +410,7 @@ class SafeDNSHTTPSConnection(HTTPSConnection):
             source_address=self.source_address,
         )
 
-        if getattr(self, "socket_options", None):
+        if self.socket_options:
             for opt in self.socket_options:
                 conn.setsockopt(*opt[:3])
 
