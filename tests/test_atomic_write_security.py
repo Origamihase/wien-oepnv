@@ -21,7 +21,15 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.link")
     @patch("src.utils.files.os.unlink")
     def test_overwrite_false_uses_link(
-        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_token_hex, mock_os_open
+        self,
+        mock_unlink,
+        mock_link,
+        mock_fsync,
+        mock_replace,
+        mock_chmod,
+        mock_file,
+        mock_token_hex,
+        mock_os_open,
     ):
         # Setup secrets mock
         mock_token_hex.return_value = self.fixed_uuid_hex
@@ -63,7 +71,15 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.link")
     @patch("src.utils.files.os.unlink")
     def test_overwrite_true_uses_replace(
-        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_token_hex, mock_os_open
+        self,
+        mock_unlink,
+        mock_link,
+        mock_fsync,
+        mock_replace,
+        mock_chmod,
+        mock_file,
+        mock_token_hex,
+        mock_os_open,
     ):
         mock_token_hex.return_value = self.fixed_uuid_hex
         mock_file.return_value.fileno.return_value = 123
@@ -90,7 +106,15 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.link")
     @patch("src.utils.files.os.unlink")
     def test_overwrite_false_race_condition(
-        self, mock_unlink, mock_link, mock_fsync, mock_replace, mock_chmod, mock_file, mock_token_hex, mock_os_open
+        self,
+        mock_unlink,
+        mock_link,
+        mock_fsync,
+        mock_replace,
+        mock_chmod,
+        mock_file,
+        mock_token_hex,
+        mock_os_open,
     ):
         mock_token_hex.return_value = self.fixed_uuid_hex
         mock_file.return_value.fileno.return_value = 123
