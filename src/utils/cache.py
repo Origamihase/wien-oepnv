@@ -144,6 +144,42 @@ def read_cache(provider: str) -> List[Any]:
     return []
 
 
+def prune_cache(max_age_hours: int = 48) -> None:
+    """Evict cached files older than `max_age_hours` hours to prevent repo bloat.
+
+    Iterates through the cache directory and deletes `events.json` files that
+    are older than the specified age. Removes the provider directory if empty.
+    """
+    if not _CACHE_DIR.is_dir():
+        return
+
+    now = datetime.now(timezone.utc)
+    from datetime import timedelta
+    cutoff = now - timedelta(hours=max_age_hours)
+
+    for provider_dir in _CACHE_DIR.iterdir():
+        if not provider_dir.is_dir():
+            continue
+
+        cache_file = provider_dir / _CACHE_FILENAME
+        if cache_file.exists():
+            try:
+                mtime = datetime.fromtimestamp(cache_file.stat().st_mtime, tz=timezone.utc)
+                if mtime < cutoff:
+                    cache_file.unlink()
+                    log.info("Evicted old cache file: %s", cache_file)
+            except OSError as exc:
+                log.warning("Failed to check or delete old cache file %s: %s", cache_file, exc)
+
+        # Remove the directory if it's now empty
+        try:
+            if not any(provider_dir.iterdir()):
+                provider_dir.rmdir()
+                log.info("Removed empty provider directory: %s", provider_dir)
+        except OSError:
+            pass
+
+
 def _pretty_print_enabled(explicit: Optional[bool]) -> bool:
     """Return whether cache files should be pretty printed."""
 
@@ -159,6 +195,8 @@ def write_cache(provider: str, items: List[Any], *, pretty: Optional[bool] = Non
     reduce cache size for large datasets set ``pretty`` to ``False`` or define
     the environment variable ``WIEN_OEPNV_CACHE_PRETTY=0``.
     """
+
+    prune_cache()
 
     cache_file = _cache_file(provider)
     # atomic_write creates parents if needed

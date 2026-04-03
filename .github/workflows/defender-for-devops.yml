@@ -26,8 +26,7 @@ on:
   schedule:
     - cron: '15 0 * * 6'
 
-permissions:
-  contents: read
+permissions: read-all
 
 jobs:
   MSDO:
