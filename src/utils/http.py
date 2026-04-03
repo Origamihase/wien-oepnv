@@ -23,8 +23,8 @@ import requests
 from requests.adapters import HTTPAdapter
 from requests.hooks import dispatch_hook
 from requests.structures import CaseInsensitiveDict
-from urllib3.connection import HTTPSConnection
-from urllib3.connectionpool import HTTPSConnectionPool
+from urllib3.connection import HTTPSConnection, HTTPConnection
+from urllib3.connectionpool import HTTPSConnectionPool, HTTPConnectionPool
 from urllib3.poolmanager import PoolManager
 from urllib3.util.retry import Retry
 
@@ -341,6 +341,112 @@ class TimeoutHTTPAdapter(HTTPAdapter):
         return super().send(request, **kwargs)
 
 
+class SafeDNSHTTPConnection(HTTPConnection):
+    """
+    HTTPConnection that resolves DNS once, validates the IP, and connects securely.
+    """
+    def _new_conn(self) -> Any:
+        try:
+            ip_obj = ipaddress.ip_address(self.host)
+            target_ip_cand = str(ip_obj)
+            if is_ip_safe(target_ip_cand):
+                target_ip = target_ip_cand
+            else:
+                target_ip = None
+        except ValueError:
+            target_ip = None
+
+        if target_ip is None:
+            ips = _resolve_hostname_safe(self.host)
+            for _, _, _, _, sockaddr in ips:
+                if is_ip_safe(str(sockaddr[0])):
+                    target_ip = str(sockaddr[0])
+                    break
+
+        if not target_ip:
+            sanitized = _sanitize_url_for_error(f"http://{self.host}")
+            raise ValueError(f"No safe IP resolved for {sanitized} (DNS Rebinding protection)")
+
+        conn = socket.create_connection(
+            (target_ip, self.port),
+            self.timeout,
+            source_address=self.source_address,
+        )
+
+        if getattr(self, "socket_options", None):
+            for opt in self.socket_options:
+                conn.setsockopt(*opt[:3])
+
+        return conn
+
+
+class SafeDNSHTTPSConnection(HTTPSConnection):
+    """
+    HTTPSConnection that resolves DNS once, validates the IP, and connects securely.
+    """
+    def _new_conn(self) -> Any:
+        try:
+            ip_obj = ipaddress.ip_address(self.host)
+            target_ip_cand = str(ip_obj)
+            if is_ip_safe(target_ip_cand):
+                target_ip = target_ip_cand
+            else:
+                target_ip = None
+        except ValueError:
+            target_ip = None
+
+        if target_ip is None:
+            ips = _resolve_hostname_safe(self.host)
+            for _, _, _, _, sockaddr in ips:
+                if is_ip_safe(str(sockaddr[0])):
+                    target_ip = str(sockaddr[0])
+                    break
+
+        if not target_ip:
+            sanitized = _sanitize_url_for_error(f"https://{self.host}")
+            raise ValueError(f"No safe IP resolved for {sanitized} (DNS Rebinding protection)")
+
+        conn = socket.create_connection(
+            (target_ip, self.port),
+            self.timeout,
+            source_address=self.source_address,
+        )
+
+        if getattr(self, "socket_options", None):
+            for opt in self.socket_options:
+                conn.setsockopt(*opt[:3])
+
+        return conn
+
+
+class SafeDNSAdapter(TimeoutHTTPAdapter):
+    """
+    HTTPAdapter that forces safe DNS resolution for all connections.
+    """
+    def init_poolmanager(self, connections: int, maxsize: int, block: bool = False, **pool_kwargs: Any) -> None:
+        self._pool_connections = connections
+        self._pool_maxsize = maxsize
+        self._pool_block = block
+
+        self.poolmanager = PoolManager(
+            num_pools=connections,
+            maxsize=maxsize,
+            block=block,
+            strict=True,
+            **pool_kwargs,
+        )
+
+        class SafeDNSHTTPConnectionPool(HTTPConnectionPool):
+            ConnectionCls = SafeDNSHTTPConnection
+
+        class SafeDNSHTTPSConnectionPool(HTTPSConnectionPool):
+            ConnectionCls = SafeDNSHTTPSConnection
+
+        self.poolmanager.pool_classes_by_scheme = self.poolmanager.pool_classes_by_scheme.copy()
+        self.poolmanager.pool_classes_by_scheme["http"] = SafeDNSHTTPConnectionPool
+        self.poolmanager.pool_classes_by_scheme["https"] = SafeDNSHTTPSConnectionPool
+
+
 class PinnedHTTPSConnection(HTTPSConnection):
     """
     HTTPSConnection that forces connection to a specific IP while keeping the original hostname for SNI.
@@ -646,7 +752,7 @@ def session_with_retries(
             return base_backoff * secrets.SystemRandom().uniform(0.8, 1.2)
 
     retry = JitterRetry(**options)
-    adapter = TimeoutHTTPAdapter(max_retries=retry, timeout=timeout)
+    adapter = SafeDNSAdapter(max_retries=retry, timeout=timeout)
     session.mount("http://", adapter)
     session.mount("https://", adapter)
     session.headers.update({

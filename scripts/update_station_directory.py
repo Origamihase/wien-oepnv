@@ -20,6 +20,7 @@ import sys
 import unicodedata
 from copy import deepcopy
 from dataclasses import dataclass, field
+import zipfile
 from io import BytesIO
 from pathlib import Path
 from typing import Callable, Iterable, Mapping, MutableMapping, Sequence, cast, List
@@ -976,6 +977,17 @@ def _coerce_bst_id(value: object | None) -> int | None:
 
 
 def extract_stations(workbook_stream: BytesIO) -> list[Station]:
+    # Prevent zip bomb DoS attacks
+    MAX_UNCOMPRESSED_SIZE = 100 * 1024 * 1024  # 100MB
+    try:
+        with zipfile.ZipFile(workbook_stream) as archive:
+            total_size = sum(info.file_size for info in archive.infolist())
+            if total_size > MAX_UNCOMPRESSED_SIZE:
+                raise ValueError(f"Uncompressed size exceeds threshold: {total_size} bytes")
+    except zipfile.BadZipFile as exc:
+        raise ValueError("Invalid workbook file") from exc
+
+    workbook_stream.seek(0)
     workbook = openpyxl.load_workbook(workbook_stream, data_only=True, read_only=True)
     try:
         worksheet = workbook.active

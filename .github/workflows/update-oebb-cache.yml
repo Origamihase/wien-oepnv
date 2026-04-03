@@ -8,6 +8,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: external-api-fetch
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest

@@ -10,8 +10,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: vor-cache-${{ github.ref }}
-  cancel-in-progress: true
+  group: external-api-fetch
+  cancel-in-progress: false
 
 jobs:
   update:
