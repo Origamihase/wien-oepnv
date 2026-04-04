@@ -314,30 +314,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Rettungseinsatz",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
-    "pubDate": "2026-04-04T17:03:00+02:00",
-    "starts_at": "2026-04-04T17:03:00+02:00",
-    "ends_at": "2026-04-04T19:46:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-04-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "95A: Verkehrsunfall",
-    "description": "Linie 95A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "26218f23db35229564cb6299604cd4c4b744e397a9bfdfcb421b42ad547b0242",
-    "pubDate": "2026-04-04T17:51:00+02:00",
-    "starts_at": "2026-04-04T17:51:00+02:00",
-    "ends_at": "2026-04-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=95A|D=2026-04-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "Fahrtbehinderung Schadhafter Zug",
     "description": "Fahrtbehinderung Schadhafter Zug",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -362,30 +338,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Verspätungen",
-    "description": "Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "08245d776c6086aeb34234d104f1c9a7c93bccf3eb8915fc23bc32028143c544",
-    "pubDate": "2026-04-04T18:47:00+02:00",
-    "starts_at": "2026-04-04T18:47:00+02:00",
-    "ends_at": "2026-04-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-04-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "69A: Verkehrsunfall",
-    "description": "Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0fc85d27689d90831656e0a962f5ee55294a7b1a7fac9f6b82c5a3b2f65b4ae1",
-    "pubDate": "2026-04-04T18:48:00+02:00",
-    "starts_at": "2026-04-04T18:48:00+02:00",
-    "ends_at": "2026-04-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=69A|D=2026-04-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26: Schadhaftes Fahrzeug",
     "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -398,26 +350,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Schadhaftes Fahrzeug",
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "11: Verkehrsunfall",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8de0171cb5a82c20b0963bf79e2f59c4da0c97e94c58a5fdab5ede435ad86aba",
-    "pubDate": "2026-04-04T18:55:00+02:00",
-    "starts_at": "2026-04-04T18:55:00+02:00",
+    "guid": "e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46",
+    "pubDate": "2026-04-04T19:23:00+02:00",
+    "starts_at": "2026-04-04T19:23:00+02:00",
     "ends_at": "2026-04-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=27|D=2026-04-04"
+    "_identity": "wl|störung|L=11|D=2026-04-04"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11/71: Verkehrsunfall",
-    "description": "Linie 11: Betrieb nur zwischen Otto-Probst-Platz und Zentralfriedhof, 3. Tor. Linie 71: Betrieb nur zwischen Schottenring U und Zentralfriedhof, 3. Tor. Weichen Sie ersatzweise auf die Linien 71A, 71B und 73B aus. Voraussichtliche Dauer: 20:00 Uhr. Grund: Verkehrsunfall im Bereich Pantucekgasse 16.",
+    "title": "71: Verkehrsunfall",
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f5cf205b8d1b9273b8615884df6483cdc6482b6336c7e3132314adae6a84f947",
+    "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
     "pubDate": "2026-04-04T19:23:00+02:00",
     "starts_at": "2026-04-04T19:23:00+02:00",
     "ends_at": "2026-04-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=11,71|D=2026-04-04"
+    "_identity": "wl|störung|L=71|D=2026-04-04"
   },
   {
     "source": "Wiener Linien",
@@ -442,5 +394,29 @@
     "starts_at": "2026-04-04T19:24:14+02:00",
     "ends_at": "2026-04-04T23:00:00+02:00",
     "_identity": "wl|störung|L=3|D=2026-04-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Verkehrsunfall",
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35",
+    "pubDate": "2026-04-04T20:18:00+02:00",
+    "starts_at": "2026-04-04T20:18:00+02:00",
+    "ends_at": "2026-04-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-04-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d918f82f99d4acc9c2e9969d73dafc129c9eb0c902f19f570d931d36e6cf04f0",
+    "pubDate": "2026-04-04T20:19:37+02:00",
+    "starts_at": "2026-04-04T20:19:37+02:00",
+    "ends_at": "2026-04-04T22:45:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-04-04"
   }
 ]
