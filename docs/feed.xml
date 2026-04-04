@@ -7,80 +7,91 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Sat, 04 Apr 2026 18:45:13 +0200</lastBuildDate>
+<lastBuildDate>Sat, 04 Apr 2026 19:38:43 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[80A: Feuerwehreinsatz]]></title>
+      <title><![CDATA[69A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d8d5837f96828305b7b30bf29b83b482fde4f946091467603b8aa366c9eb8885</guid>
-      <pubDate>Sat, 04 Apr 2026 17:34:00 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Apr 2026 18:45:13 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 04 Apr 2026 17:34:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">0fc85d27689d90831656e0a962f5ee55294a7b1a7fac9f6b82c5a3b2f65b4ae1</guid>
+      <pubDate>Sat, 04 Apr 2026 18:48:00 +0200</pubDate>
+      <ext:first_seen>Sat, 04 Apr 2026 19:38:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 04 Apr 2026 18:48:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 04 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description><![CDATA[Linie 80 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04.04.2026]]]></description>
-      <content:encoded><![CDATA[Linie 80 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04.04.2026]]]></content:encoded>
+      <description><![CDATA[Linie 69 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 04.04.2026]]]></description>
+      <content:encoded><![CDATA[Linie 69 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 04.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">08245d776c6086aeb34234d104f1c9a7c93bccf3eb8915fc23bc32028143c544</guid>
+      <pubDate>Sat, 04 Apr 2026 18:47:00 +0200</pubDate>
+      <ext:first_seen>Sat, 04 Apr 2026 19:38:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 04 Apr 2026 18:47:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 04 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description><![CDATA[Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 04.04.2026]]]></description>
+      <content:encoded><![CDATA[Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 04.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Rettungseinsatz Betrieb ab Nordbrücke]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc</guid>
+      <pubDate>Sat, 04 Apr 2026 18:24:05 +0200</pubDate>
+      <ext:first_seen>Sat, 04 Apr 2026 19:38:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 04 Apr 2026 18:24:34 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 04 Apr 2026 23:00:00 +0200</ext:ends_at>
+      <description><![CDATA[Rettungseinsatz Betrieb ab Nordbrücke<br/>[Seit 04.04.2026]]]></description>
+      <content:encoded><![CDATA[Rettungseinsatz Betrieb ab Nordbrücke<br/>[Seit 04.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[27: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">06ce993d4521983bd6b681492c64487991a39c88ae158c2b651de50a40457063</guid>
+      <pubDate>Sat, 04 Apr 2026 18:22:00 +0200</pubDate>
+      <ext:first_seen>Sat, 04 Apr 2026 19:38:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 04 Apr 2026 18:22:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 04 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description><![CDATA[Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04.04.2026]]]></description>
+      <content:encoded><![CDATA[Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac</guid>
+      <pubDate>Sat, 04 Apr 2026 18:22:00 +0200</pubDate>
+      <ext:first_seen>Sat, 04 Apr 2026 19:38:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 04 Apr 2026 18:22:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 04 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description><![CDATA[Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04.04.2026]]]></description>
+      <content:encoded><![CDATA[Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[95A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">26218f23db35229564cb6299604cd4c4b744e397a9bfdfcb421b42ad547b0242</guid>
+      <pubDate>Sat, 04 Apr 2026 17:51:00 +0200</pubDate>
+      <ext:first_seen>Sat, 04 Apr 2026 19:38:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 04 Apr 2026 17:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 04 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description><![CDATA[Linie 95 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 04.04.2026]]]></description>
+      <content:encoded><![CDATA[Linie 95 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 04.04.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945</guid>
       <pubDate>Sat, 04 Apr 2026 17:03:00 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Apr 2026 18:45:13 +0200</ext:first_seen>
+      <ext:first_seen>Sat, 04 Apr 2026 19:38:43 +0200</ext:first_seen>
       <ext:starts_at>Sat, 04 Apr 2026 17:03:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 04 Apr 2026 23:55:00 +0200</ext:ends_at>
       <description><![CDATA[Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 04.04.2026]]]></description>
       <content:encoded><![CDATA[Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 04.04.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[9: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d0e4afae8a76682f9151e0252680d546a58090bd24478041f5804ac6fa3ff1de</guid>
-      <pubDate>Sat, 04 Apr 2026 16:36:00 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Apr 2026 18:45:13 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 04 Apr 2026 16:36:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 04 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description><![CDATA[Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04.04.2026]]]></description>
-      <content:encoded><![CDATA[Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">82b2b968365fe18a9edd52433273c0f78ff5079c2218a60fb58c22aa07911b8c</guid>
-      <pubDate>Sat, 04 Apr 2026 16:24:00 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Apr 2026 18:45:13 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 04 Apr 2026 16:24:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 04 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description><![CDATA[Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 04.04.2026]]]></description>
-      <content:encoded><![CDATA[Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 04.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
-      <pubDate>Sat, 04 Apr 2026 15:59:00 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Apr 2026 18:45:13 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 04 Apr 2026 15:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 04 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description><![CDATA[Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04.04.2026]]]></description>
-      <content:encoded><![CDATA[Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25: Schadhafter PKW]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">643283b60c34499e5e22d91fa9bd6a66efe477015d825b594a3b13d16f3aba85</guid>
-      <pubDate>Sat, 04 Apr 2026 14:44:00 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Apr 2026 18:45:13 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 04 Apr 2026 14:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 04 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description><![CDATA[Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04.04.2026]]]></description>
-      <content:encoded><![CDATA[Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04.04.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[6: Kein Betrieb]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a9081c3efcf42b91fa2bf401525eea7ede4b64ca4db2b6f25a91343e796397b5</guid>
       <pubDate>Sat, 04 Apr 2026 05:01:03 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Apr 2026 18:45:13 +0200</ext:first_seen>
+      <ext:first_seen>Sat, 04 Apr 2026 19:38:43 +0200</ext:first_seen>
       <ext:starts_at>Sat, 04 Apr 2026 05:01:03 +0200</ext:starts_at>
       <ext:ends_at>Sun, 05 Apr 2026 00:00:00 +0200</ext:ends_at>
       <description><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[04.04.2026 – 05.04.2026]]]></description>
@@ -91,7 +102,7 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
       <pubDate>Sat, 04 Apr 2026 04:45:20 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Apr 2026 18:45:13 +0200</ext:first_seen>
+      <ext:first_seen>Sat, 04 Apr 2026 19:38:43 +0200</ext:first_seen>
       <ext:starts_at>Sat, 04 Apr 2026 04:45:20 +0200</ext:starts_at>
       <ext:ends_at>Sun, 05 Apr 2026 00:35:00 +0200</ext:ends_at>
       <description><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[04.04.2026 – 05.04.2026]]]></description>
@@ -102,22 +113,11 @@
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2</guid>
       <pubDate>Fri, 03 Apr 2026 00:00:27 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Apr 2026 18:45:13 +0200</ext:first_seen>
+      <ext:first_seen>Sat, 04 Apr 2026 19:38:43 +0200</ext:first_seen>
       <ext:starts_at>Fri, 03 Apr 2026 00:00:27 +0200</ext:starts_at>
       <ext:ends_at>Sat, 04 Apr 2026 23:59:59 +0200</ext:ends_at>
       <description><![CDATA[Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123<br/>[03.04.2026 – 04.04.2026]]]></description>
       <content:encoded><![CDATA[Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123<br/>[03.04.2026 – 04.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
-      <pubDate>Fri, 03 Apr 2026 00:00:27 +0200</pubDate>
-      <ext:first_seen>Sat, 04 Apr 2026 18:45:13 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 03 Apr 2026 00:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 04 Apr 2026 23:59:59 +0200</ext:ends_at>
-      <description><![CDATA[Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A)<br/>[03.04.2026 – 04.04.2026]]]></description>
-      <content:encoded><![CDATA[Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A)<br/>[03.04.2026 – 04.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
