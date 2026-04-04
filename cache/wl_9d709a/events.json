@@ -218,10 +218,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Betrieb ab Neubaugasse, Burggasse",
-    "description": "Gleisbauarbeiten Betrieb ab Neubaugasse, Burggasse",
+    "title": "Kein Betrieb",
+    "description": "Gleisbauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bb3957f3a3c574f575a0faf398065801c1578897162f044a533066b236c1edb7",
+    "guid": "9ec2ea0eca6ce3cc23c5423fc52b682ab65d0af37e7797a70fb53d98b6182ac1",
     "pubDate": "2026-04-02T00:00:18+02:00",
     "starts_at": "2026-04-02T00:00:18+02:00",
     "ends_at": "2026-04-04T23:59:59+02:00",
@@ -230,10 +230,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Kein Betrieb",
-    "description": "Gleisbauarbeiten Kein Betrieb",
+    "title": "Betrieb ab Neubaugasse, Burggasse",
+    "description": "Gleisbauarbeiten Betrieb ab Neubaugasse, Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9ec2ea0eca6ce3cc23c5423fc52b682ab65d0af37e7797a70fb53d98b6182ac1",
+    "guid": "bb3957f3a3c574f575a0faf398065801c1578897162f044a533066b236c1edb7",
     "pubDate": "2026-04-02T00:00:18+02:00",
     "starts_at": "2026-04-02T00:00:18+02:00",
     "ends_at": "2026-04-04T23:59:59+02:00",
@@ -266,18 +266,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-04-03T00:00:27+02:00",
-    "starts_at": "2026-04-03T00:00:27+02:00",
-    "ends_at": "2026-04-04T23:59:59+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -290,14 +278,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N29: Busse halten auf der Hauptfahrbahn",
-    "description": "Busse halten auf der Hauptfahrbahn",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
-    "pubDate": "2026-04-03T23:00:05+02:00",
-    "starts_at": "2026-04-03T23:00:05+02:00",
-    "ends_at": "2026-04-04T05:30:00+02:00",
-    "_identity": "wl|störung|L=N29|D=2026-04-03"
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-04-03T00:00:27+02:00",
+    "starts_at": "2026-04-03T00:00:27+02:00",
+    "ends_at": "2026-04-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=74A|D=2026-04-03"
   },
   {
     "source": "Wiener Linien",
