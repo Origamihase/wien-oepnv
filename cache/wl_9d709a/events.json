@@ -266,18 +266,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-04-03T00:00:27+02:00",
-    "starts_at": "2026-04-03T00:00:27+02:00",
-    "ends_at": "2026-04-04T23:59:59+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-04-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -286,6 +274,18 @@
     "starts_at": "2026-04-03T00:00:27+02:00",
     "ends_at": "2026-04-04T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-04-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-04-03T00:00:27+02:00",
+    "starts_at": "2026-04-03T00:00:27+02:00",
+    "ends_at": "2026-04-04T23:59:59+02:00",
+    "_identity": "wl|störung|L=74A|D=2026-04-03"
   },
   {
     "source": "Wiener Linien",
@@ -321,18 +321,6 @@
     "pubDate": "2026-04-04T18:24:05+02:00",
     "starts_at": "2026-04-04T18:24:05+02:00",
     "ends_at": "2026-04-04T23:00:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-04-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Schadhafter Zug Betrieb ab Nordbrücke",
-    "description": "Schadhafter Zug Betrieb ab Nordbrücke",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "643bc13952bfd3594aa8ea7ab58fa05c6a50d9c49326ecbf1785bffb1b29f7fb",
-    "pubDate": "2026-04-04T18:24:34+02:00",
-    "starts_at": "2026-04-04T18:24:34+02:00",
-    "ends_at": "2026-04-04T22:30:00+02:00",
     "_identity": "wl|störung|L=|D=2026-04-04"
   },
   {
@@ -374,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "98667687253bc639656a963907dc9d6e4d87dbc4735242bb2b985799eaecefeb",
-    "pubDate": "2026-04-04T19:23:37+02:00",
-    "starts_at": "2026-04-04T19:23:37+02:00",
-    "ends_at": "2026-04-04T22:45:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-04-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "3: Verkehrsunfall Betrieb ab 3. Tor",
     "description": "Verkehrsunfall Betrieb ab 3. Tor",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -398,25 +374,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Verkehrsunfall",
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "50A: Verunreinigung",
+    "description": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35",
-    "pubDate": "2026-04-04T20:18:00+02:00",
-    "starts_at": "2026-04-04T20:18:00+02:00",
-    "ends_at": "2026-04-04T22:01:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-04-04"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d918f82f99d4acc9c2e9969d73dafc129c9eb0c902f19f570d931d36e6cf04f0",
-    "pubDate": "2026-04-04T20:19:37+02:00",
-    "starts_at": "2026-04-04T20:19:37+02:00",
-    "ends_at": "2026-04-04T22:45:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-04-04"
+    "guid": "51b7cfffd0e8d0e022b5c1ea3534bb262af9e108a2537b792e375278d46e294d",
+    "pubDate": "2026-04-04T22:08:00+02:00",
+    "starts_at": "2026-04-04T22:08:00+02:00",
+    "ends_at": "2026-04-04T23:55:00+02:00",
+    "_identity": "wl|störung|L=50A|D=2026-04-04"
   }
 ]
