@@ -230,18 +230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-04-05T00:00:24+02:00",
-    "starts_at": "2026-04-05T00:00:24+02:00",
-    "ends_at": "2026-04-05T23:59:59+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-04-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -250,6 +238,18 @@
     "starts_at": "2026-04-05T00:00:24+02:00",
     "ends_at": "2026-04-05T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-04-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-04-05T00:00:24+02:00",
+    "starts_at": "2026-04-05T00:00:24+02:00",
+    "ends_at": "2026-04-05T23:59:59+02:00",
+    "_identity": "wl|störung|L=74A|D=2026-04-05"
   },
   {
     "source": "Wiener Linien",
@@ -314,13 +314,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Polizeieinsatz",
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz im Haltestellenbereich Raxstraße.",
+    "title": "40A: Polizeieinsatz",
+    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6",
-    "pubDate": "2026-04-05T18:19:00+02:00",
-    "starts_at": "2026-04-05T18:19:00+02:00",
+    "guid": "c51bbbc76fed813828240bea5d2f2e485f5d85268602c5a602e18b5cc1ac55d7",
+    "pubDate": "2026-04-05T19:17:00+02:00",
+    "starts_at": "2026-04-05T19:17:00+02:00",
     "ends_at": "2026-04-05T23:55:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-04-05"
+    "_identity": "wl|störung|L=40A|D=2026-04-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "64A: Schadhaftes Fahrzeug",
+    "description": "Derzeit kommt es bei der Linie 64A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "feb9556b6c0e593b04f85002d22817af9333d5d81977807be24577890c1e34e8",
+    "pubDate": "2026-04-05T19:30:00+02:00",
+    "starts_at": "2026-04-05T19:30:00+02:00",
+    "ends_at": "2026-04-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=64A|D=2026-04-05"
   }
 ]
