@@ -254,8 +254,8 @@ def _is_relevant(title: str, description: str) -> bool:
             if (info0 and info0.in_vienna) or (info1 and info1.in_vienna):
                 return True
 
-            is_outer0 = info0 and not info0.in_vienna
-            is_outer1 = info1 and not info1.in_vienna
+            is_outer0 = info0 is not None and not info0.in_vienna
+            is_outer1 = info1 is not None and not info1.in_vienna
 
             if is_outer0 and is_outer1:
                 # Verbindung zwischen zwei reinen Pendlerbahnhöfen (z.B. Neulengbach ↔ Tullnerbach-Pressbaum)
