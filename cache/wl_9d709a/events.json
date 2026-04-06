@@ -206,10 +206,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Betrieb ab Neubaugasse, Burggasse",
-    "description": "Gleisbauarbeiten Betrieb ab Neubaugasse, Burggasse",
+    "title": "Kein Betrieb",
+    "description": "Gleisbauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bb3957f3a3c574f575a0faf398065801c1578897162f044a533066b236c1edb7",
+    "guid": "9ec2ea0eca6ce3cc23c5423fc52b682ab65d0af37e7797a70fb53d98b6182ac1",
     "pubDate": "2026-04-02T00:00:18+02:00",
     "starts_at": "2026-04-02T00:00:18+02:00",
     "ends_at": "2026-04-06T23:59:59+02:00",
@@ -218,10 +218,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "Kein Betrieb",
-    "description": "Gleisbauarbeiten Kein Betrieb",
+    "title": "Betrieb ab Neubaugasse, Burggasse",
+    "description": "Gleisbauarbeiten Betrieb ab Neubaugasse, Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9ec2ea0eca6ce3cc23c5423fc52b682ab65d0af37e7797a70fb53d98b6182ac1",
+    "guid": "bb3957f3a3c574f575a0faf398065801c1578897162f044a533066b236c1edb7",
     "pubDate": "2026-04-02T00:00:18+02:00",
     "starts_at": "2026-04-02T00:00:18+02:00",
     "ends_at": "2026-04-06T23:59:59+02:00",
@@ -254,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "57A: Busse halten Anschützgasse 40",
-    "description": "Bauarbeiten Busse halten Anschützgasse 40",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5207814fd4dc4f846ce6bbf0f7351c2ccb2f85d0dd6245bc264f72a60b860741",
-    "pubDate": "2026-04-05T00:00:27+02:00",
-    "starts_at": "2026-04-05T00:00:27+02:00",
-    "ends_at": "2026-04-06T23:59:59+02:00",
-    "_identity": "wl|störung|L=57A|D=2026-04-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "46: Betrieb ab Thaliastraße",
     "description": "Gleisbauarbeiten Betrieb ab Thaliastraße >",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -274,6 +262,18 @@
     "starts_at": "2026-04-05T00:00:27+02:00",
     "ends_at": "2026-04-06T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-04-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Busse halten Anschützgasse 40",
+    "description": "Bauarbeiten Busse halten Anschützgasse 40",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5207814fd4dc4f846ce6bbf0f7351c2ccb2f85d0dd6245bc264f72a60b860741",
+    "pubDate": "2026-04-05T00:00:27+02:00",
+    "starts_at": "2026-04-05T00:00:27+02:00",
+    "ends_at": "2026-04-06T23:59:59+02:00",
+    "_identity": "wl|störung|L=57A|D=2026-04-05"
   },
   {
     "source": "Wiener Linien",
@@ -310,5 +310,77 @@
     "starts_at": "2026-04-06T05:01:25+02:00",
     "ends_at": "2026-04-07T00:00:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-04-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung wegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c00c177609807206f4916d92d93f2b3dcefd7c4893f63c45f581cfba2bdad937",
+    "pubDate": "2026-04-06T10:24:55+02:00",
+    "starts_at": "2026-04-06T10:24:58+02:00",
+    "ends_at": "2026-04-06T11:24:00+02:00",
+    "_identity": "wl|störung|L=41|D=2026-04-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-04-06T11:06:00+02:00",
+    "starts_at": "2026-04-06T11:06:00+02:00",
+    "ends_at": "2026-04-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-04-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Stromstörung",
+    "description": "Linie 12: Betrieb nur zwischen Josefstädter Straße und Bruno-Marek-Allee. Voraussichtliche Dauer: 11:40 Uhr. Grund: Stromstörung im Haltestellenbereich Vorgartenstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "71b888ecc4fc2ad32d5e10837e29489b08748cae8f18630aabac027746ad7ed7",
+    "pubDate": "2026-04-06T11:10:00+02:00",
+    "starts_at": "2026-04-06T11:10:00+02:00",
+    "ends_at": "2026-04-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-04-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung wegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2ab7e45e746a33e65e5f2e5bb674ae1070cea13aa977600ba24acaa990f5636e",
+    "pubDate": "2026-04-06T11:11:01+02:00",
+    "starts_at": "2026-04-06T11:11:05+02:00",
+    "ends_at": "2026-04-06T15:00:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-04-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Stromstörung Betrieb ab Bruno - Marek - Allee",
+    "description": "Stromstörung Betrieb ab Bruno - Marek - Allee",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "58ca26c36780ed4f2634bb7e9abff886a885f1cd9233a1a16c73c5e47c52f05a",
+    "pubDate": "2026-04-06T11:11:34+02:00",
+    "starts_at": "2026-04-06T11:11:34+02:00",
+    "ends_at": "2026-04-06T15:00:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-04-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Signalstörung Züge halen bei Linie O",
+    "description": "Signalstörung Züge halen bei Linie O",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d135359c05d4d13166571ab8a97191d72d3549d5a25f1157c0d2438a2a400cc4",
+    "pubDate": "2026-04-06T11:13:01+02:00",
+    "starts_at": "2026-04-06T11:13:01+02:00",
+    "ends_at": "2026-04-06T14:45:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-04-06"
   }
 ]
