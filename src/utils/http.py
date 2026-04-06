@@ -16,6 +16,7 @@ import time
 import types
 import unicodedata
 import secrets
+import queue
 from typing import Any, Container, Mapping, MutableMapping, TypeGuard, Union
 from urllib.parse import parse_qsl, urlencode, urljoin, urlparse
 
@@ -58,7 +59,32 @@ _HTTP_SESSION_CACHE: collections.OrderedDict[str, requests.Session] = collection
 _HTTP_SESSION_LOCK = threading.Lock()
 _HTTP_SESSION_CACHE_MAX_SIZE = 50
 
+# Queue to hold evicted sessions that need to be closed
+_EVICTED_SESSIONS_QUEUE: queue.Queue[tuple[requests.Session, float]] = queue.Queue()
+
 log = logging.getLogger(__name__)
+
+def _cleanup_evicted_sessions_thread() -> None:
+    """Daemon thread that closes evicted sessions after a grace period."""
+    while True:
+        try:
+            session, eviction_time = _EVICTED_SESSIONS_QUEUE.get()
+            now = time.time()
+            wait_time = eviction_time + 60.0 - now
+            if wait_time > 0:
+                time.sleep(wait_time)
+
+            try:
+                session.close()
+            except Exception as exc:
+                log.debug("Error closing evicted session: %s", exc)
+
+            _EVICTED_SESSIONS_QUEUE.task_done()
+        except Exception as exc:
+            log.debug("Error in _cleanup_evicted_sessions_thread: %s", exc)
+
+_cleanup_thread = threading.Thread(target=_cleanup_evicted_sessions_thread, daemon=True)
+_cleanup_thread.start()
 
 def _normalize_key(key: str) -> str:
     """Normalize key for loose matching (lowercase, no hyphens/underscores)."""
@@ -541,8 +567,9 @@ def _get_pinned_session(target_ip: str, timeout: int | float | tuple[float, floa
         if len(_HTTP_SESSION_CACHE) > _HTTP_SESSION_CACHE_MAX_SIZE:
             # We pop the oldest session but do NOT explicitly close it immediately
             # because another thread might still be actively reading from its socket.
-            # Rely on atexit handler and garbage collection to eventually close it.
-            _HTTP_SESSION_CACHE.popitem(last=False)
+            # Push it to the cleanup queue to be closed after a grace period.
+            _, evicted_session = _HTTP_SESSION_CACHE.popitem(last=False)
+            _EVICTED_SESSIONS_QUEUE.put((evicted_session, time.time()))
 
         return session
 
