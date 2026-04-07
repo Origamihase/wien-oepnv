@@ -1,5 +1,5 @@
 
-import xml.etree.ElementTree as ET
+from defusedxml import ElementTree as ET
 
 def test_reparse():
     NS_EXT = "https://wien-oepnv.example/schema"

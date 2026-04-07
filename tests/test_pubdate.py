@@ -3,7 +3,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import types
-import xml.etree.ElementTree as ET
+from defusedxml import ElementTree as ET
 
 
 def _import_build_feed(monkeypatch):

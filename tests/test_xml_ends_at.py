@@ -1,6 +1,6 @@
 
 import unittest
-import xml.etree.ElementTree as ET
+from defusedxml import ElementTree as ET
 from datetime import datetime, timezone
 from src.build_feed import _make_rss
 
@@ -41,7 +41,9 @@ class TestXmlEndsAt(unittest.TestCase):
         self.assertIsNotNone(starts_at_elem, "ext:starts_at element missing")
 
         # 14:00 UTC = 16:00 CEST (Vienna Summer Time)
-        expected_end = "Fri, 27 Oct 2023 16:00:00 +0200"
+        from email.utils import format_datetime
+        from zoneinfo import ZoneInfo
+        expected_end = format_datetime(end.astimezone(ZoneInfo("Europe/Vienna")))
         self.assertEqual(ends_at_elem.text, expected_end)
 
     def test_ends_at_missing_in_xml_when_none(self):
