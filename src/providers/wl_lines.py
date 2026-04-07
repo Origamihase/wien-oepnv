@@ -36,8 +36,8 @@ RUF_BUS_PREFIX_RE = re.compile(r"^\s*Rufbus\s+([A-Za-z0-9]+)\s*:\s*", re.IGNOREC
 
 def _strip_existing_line_block(title: str) -> str:
     """Entfernt vorhandene Linienblöcke am Anfang (Slash-/Komma-/Rufbus-Varianten)."""
-    if len(title) > 250:
-        return title
+    if len(title) > 500:
+        title = title[:500]
 
     t = LINE_PREFIX_STRIP_RE.sub("", title)
     t = RUF_BUS_PREFIX_RE.sub("", t)
@@ -50,8 +50,8 @@ def _strip_existing_line_block(title: str) -> str:
 
 def _ensure_line_prefix(title: str, lines_disp: List[str]) -> str:
     """Sorgt für „L1/L2: …“. Entfernt vorhandene Präfixe zuerst."""
-    if len(title) > 250:
-        return title
+    if len(title) > 500:
+        title = title[:500]
 
     if not lines_disp:
         return title
@@ -83,8 +83,8 @@ ADDRESS_NO_PRE_RE = re.compile(
 
 
 def _mask_dates_times_addresses(t: str) -> str:
-    if len(t) > 250:
-        return t
+    if len(t) > 500:
+        t = t[:500]
     t = DATE_FULL_RE.sub(" ", t)
     t = DATE_SHORT_RE.sub(" ", t)
     t = TIME_RE.sub(" ", t)
@@ -94,8 +94,8 @@ def _mask_dates_times_addresses(t: str) -> str:
 
 
 def _detect_line_pairs_from_text(text: str) -> List[Tuple[str, str]]:
-    if text and len(text) > 250:
-        return []
+    if text and len(text) > 500:
+        text = text[:500]
     t = _mask_dates_times_addresses(text or "")
     pairs: List[Tuple[str, str]] = []
     seen: set[str] = set()

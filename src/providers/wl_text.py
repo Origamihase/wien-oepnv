@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 from datetime import datetime, timezone, timedelta
+from zoneinfo import ZoneInfo
 from typing import Optional
 
 # ---------------- Relevanz-/Ausschluss-Filter ----------------
@@ -49,6 +50,8 @@ def _is_facility_only(*texts: str) -> bool:
     """Return ``True`` if the combined text refers only to facilities."""
 
     t = " ".join([x for x in texts if x]).lower()
+    if len(t) > 500:
+        t = t[:500]
     return bool(FACILITY_ONLY.search(t))
 
 
@@ -83,6 +86,8 @@ def _tidy_title_wl(title: str) -> str:
     """Entfernt generische Label am Anfang, wenn danach informativer Text steht."""
 
     t = (title or "").strip()
+    if len(t) > 500:
+        t = t[:500]
     if not t:
         return t
     stripped = _LABEL_HEAD_RE.sub("", t)
@@ -104,6 +109,8 @@ def extract_date_from_title(title: str, reference_date: Optional[datetime] = Non
     """
     if not title:
         return None
+    if len(title) > 500:
+        title = title[:500]
 
     match = _DATE_FROM_TITLE_RE.search(title)
     if not match:
@@ -122,7 +129,7 @@ def extract_date_from_title(title: str, reference_date: Optional[datetime] = Non
         # Zunächst aktuelles Jahr (basierend auf reference_date)
         year = reference_date.year
         try:
-            candidate = datetime(year, month, day, tzinfo=timezone.utc)
+            candidate = datetime(year, month, day, tzinfo=ZoneInfo("Europe/Vienna"))
         except ValueError:
             return None
 
@@ -134,8 +141,7 @@ def extract_date_from_title(title: str, reference_date: Optional[datetime] = Non
     try:
         # Wir setzen die Zeit auf 04:00 (Betriebsbeginn?) oder 00:00?
         # Um Konsistenz mit Kalendern zu wahren, ist 00:00 (Mitternacht) am sichersten.
-        # Da wir UTC nutzen, ist es 00:00 UTC.
-        return datetime(year, month, day, tzinfo=timezone.utc)
+        return datetime(year, month, day, tzinfo=ZoneInfo("Europe/Vienna"))
     except ValueError:
         return None
 
@@ -166,12 +172,16 @@ _GENERIC_FILLER = re.compile(
 
 def _title_core(t: str) -> str:
     t2 = _tidy_title_wl(t)
+    if len(t2) > 500:
+        t2 = t2[:500]
     t2 = re.sub(r"[^\wäöüÄÖÜß]+", " ", t2, flags=re.UNICODE)
     t2 = re.sub(r"\s{2,}", " ", t2).strip().casefold()
     return t2
 
 
 def _topic_key_from_title(raw: str) -> str:
+    if raw and len(raw) > 500:
+        raw = raw[:500]
     t = _GENERIC_FILLER.sub(" ", raw or "")
     t = re.sub(r"[^\wäöüÄÖÜß]+", " ", t, flags=re.UNICODE).casefold()
     toks = {w for w in t.split() if w in TITLE_TOPIC_TOKENS}

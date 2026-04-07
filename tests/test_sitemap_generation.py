@@ -1,5 +1,5 @@
 import os
-import xml.etree.ElementTree as ET
+from defusedxml import ElementTree as ET
 from unittest.mock import patch
 import pytest
 from scripts import generate_sitemap

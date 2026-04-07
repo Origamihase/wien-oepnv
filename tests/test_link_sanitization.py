@@ -1,6 +1,6 @@
 
 import datetime
-import xml.etree.ElementTree as ET
+from defusedxml import ElementTree as ET
 from src import build_feed
 from src.feed.config import FEED_LINK
 
