@@ -825,6 +825,7 @@ def _build_guid(station_id: str, message: VorMessage) -> str:
             "text": message.get("text"),
         },
         sort_keys=True,
+        allow_nan=False,
     )
     # Use SHA256 hash instead of base64 to ensure bounded length
     fallback = make_guid(key)
@@ -1208,7 +1209,7 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
                             with atomic_write(
                                 REQUEST_COUNT_FILE, mode="w", encoding="utf-8", permissions=0o600
                             ) as handle:
-                                json.dump(payload, handle, ensure_ascii=False)
+                                json.dump(payload, handle, ensure_ascii=False, allow_nan=False)
                                 handle.write("\n")
                         except OSError:
                             log.critical("Failed to write to request count file. Quota mechanism poisoned.")

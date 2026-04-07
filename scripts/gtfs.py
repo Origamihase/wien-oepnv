@@ -102,4 +102,45 @@ def read_gtfs_stops(path: Path | None = None) -> Dict[str, GTFSStop]:
     return stops
 
 
-__all__ = ["GTFSStop", "DEFAULT_GTFS_STOP_PATH", "read_gtfs_stops"]
+import zipfile
+import os
+
+def extract_gtfs_archive(archive_path: Path, target_dir: Path) -> None:
+    """Securely extract a GTFS zip archive preventing Zip Slip and Zip Bombs.
+
+    Parameters
+    ----------
+    archive_path:
+        Path to the downloaded zip archive.
+    target_dir:
+        Directory where the archive should be extracted.
+
+    Raises
+    ------
+    ValueError
+        If a Zip Bomb or Zip Slip attempt is detected.
+    """
+    MAX_UNCOMPRESSED_SIZE = 500 * 1024 * 1024  # 500 MB
+    extracted_size = 0
+    target_dir_abs = os.path.abspath(target_dir)
+
+    with zipfile.ZipFile(archive_path, "r") as archive:
+        for info in archive.infolist():
+            extracted_size += info.file_size
+            if extracted_size > MAX_UNCOMPRESSED_SIZE:
+                raise ValueError("Zip bomb detected: uncompressed size exceeds 500MB")
+
+            # Prevent Zip Slip
+            extracted_path = os.path.abspath(os.path.join(target_dir_abs, info.filename))
+            if not extracted_path.startswith(target_dir_abs + os.sep) and extracted_path != target_dir_abs:
+                raise ValueError(f"Zip slip detected: {info.filename} attempts to escape target directory")
+
+            if info.is_dir():
+                os.makedirs(extracted_path, exist_ok=True)
+            else:
+                os.makedirs(os.path.dirname(extracted_path), exist_ok=True)
+                with archive.open(info, "r") as source, open(extracted_path, "wb") as target:
+                    import shutil
+                    shutil.copyfileobj(source, target)
+
+__all__ = ["GTFSStop", "DEFAULT_GTFS_STOP_PATH", "read_gtfs_stops", "extract_gtfs_archive"]

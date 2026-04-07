@@ -10,6 +10,7 @@ import re
 import secrets
 import sys
 import xml.etree.ElementTree as ET  # nosec B405 - used for XML generation, not parsing untrusted input
+from xml.sax.saxutils import escape as xml_escape
 from collections import defaultdict
 from concurrent.futures import (
     FIRST_COMPLETED,
@@ -616,7 +617,7 @@ def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] 
             with atomic_write(
                 path, mode="w", encoding="utf-8", permissions=0o600
             ) as f:
-                json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True)
+                json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True, allow_nan=False)
 
 def _identity_for_item(item: FeedItem) -> str:
     """
@@ -654,7 +655,7 @@ def _identity_for_item(item: FeedItem) -> str:
                 if item.get("title"):
                     result = f"{base}|T={item['title']}|F={fuzzy_hash}"
                 else:
-                    raw = json.dumps(item, sort_keys=True, default=str)
+                    raw = json.dumps(item, sort_keys=True, default=str, allow_nan=False)
                     hashed = hashlib.sha256(raw.encode("utf-8")).hexdigest()
                     result = f"{base}|H={hashed}|F={fuzzy_hash}"
             else:
@@ -663,7 +664,7 @@ def _identity_for_item(item: FeedItem) -> str:
         elif item.get("title"):
             result = f"{base}|T={item['title']}|F={fuzzy_hash}"
         else:
-            raw = json.dumps(item, sort_keys=True, default=str)
+            raw = json.dumps(item, sort_keys=True, default=str, allow_nan=False)
             hashed = hashlib.sha256(raw.encode("utf-8")).hexdigest()
             result = f"{base}|H={hashed}|F={fuzzy_hash}"
 
@@ -1326,6 +1327,8 @@ def _emit_item(
 
     # For title, we now rely on ElementTree's escaping which is safer/cleaner than manual CDATA.
     # ET will automatically escape <, >, & to &lt;, &gt;, &amp;.
+    # However, to explicitly prevent XML Injection as instructed, we also escape it here
+    title_out = xml_escape(title_out)
 
     # Prepare CDATA content (handle ]]> in content)
     desc_cdata = _cdata_content(desc_html)
@@ -1349,11 +1352,11 @@ def _emit_item(
     ET.SubElement(item, "title").text = PH_TITLE
 
     # Link
-    ET.SubElement(item, "link").text = link
+    ET.SubElement(item, "link").text = xml_escape(link)
 
     # GUID
     guid_elem = ET.SubElement(item, "guid")
-    guid_elem.text = guid
+    guid_elem.text = xml_escape(guid)
 
     # guid attributes (isPermaLink)
     parsed = urlparse(guid)

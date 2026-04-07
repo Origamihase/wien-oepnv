@@ -89,7 +89,7 @@ def load_stations(path: Path) -> List[StationEntry]:
 
 def write_stations(path: Path, stations: Sequence[StationEntry]) -> None:
     serialisable = list(stations)
-    payload = json.dumps({"stations": serialisable}, ensure_ascii=False, indent=2, sort_keys=True)
+    payload = json.dumps({"stations": serialisable}, ensure_ascii=False, indent=2, sort_keys=True, allow_nan=False)
     # Security: use atomic_write to avoid partial writes on crashes/power loss.
     with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         handle.write(payload + "\n")

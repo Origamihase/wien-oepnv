@@ -594,7 +594,7 @@ def merge_into_stations(
     filtered.extend(unmatched)
 
     with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
-        json.dump({"stations": filtered}, handle, ensure_ascii=False, indent=2)
+        json.dump({"stations": filtered}, handle, ensure_ascii=False, indent=2, allow_nan=False)
         handle.write("\n")
     log.info("Wrote %d total stations", len(filtered))
 

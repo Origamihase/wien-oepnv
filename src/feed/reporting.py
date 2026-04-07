@@ -610,7 +610,7 @@ def write_feed_health_json(
     with atomic_write(
         output_path, mode="w", encoding="utf-8", permissions=0o644
     ) as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2, sort_keys=True)
+        json.dump(payload, f, ensure_ascii=False, indent=2, sort_keys=True, allow_nan=False)
         f.write("\n")
 
 

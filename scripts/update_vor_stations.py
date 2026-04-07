@@ -839,7 +839,7 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
 
     with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:  # type: ignore[assignment]
         output = {"stations": merged_entries}
-        json.dump(output, handle, ensure_ascii=False, indent=2)
+        json.dump(output, handle, ensure_ascii=False, indent=2, allow_nan=False)
         handle.write("\n")
     log.info(
         "Wrote %d total stations (%d merged, %d added VOR entries)",

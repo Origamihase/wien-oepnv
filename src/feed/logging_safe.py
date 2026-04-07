@@ -116,7 +116,7 @@ class SafeJSONFormatter(logging.Formatter):
 
         # We sanitize the full JSON string to catch secrets nested in dictionaries or lists
         # (e.g. extra={"context": {"api_key": "..."}}) which the previous per-field logic missed.
-        dumped = json.dumps(payload, ensure_ascii=False)
+        dumped = json.dumps(payload, ensure_ascii=False, allow_nan=False)
         sanitized = sanitize_log_message(dumped, strip_control_chars=False)
         return sanitized.replace("\n", "\\n").replace("\r", "\\r")
 

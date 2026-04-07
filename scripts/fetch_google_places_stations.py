@@ -244,6 +244,7 @@ def _dump_changes(
         ensure_ascii=False,
         indent=2,
         sort_keys=True,
+        allow_nan=False,
     )
     with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         handle.write(payload + "\n")
@@ -251,7 +252,7 @@ def _dump_changes(
 
 
 def _write_if_changed(path: Path, stations: Sequence[Mapping[str, object]]) -> None:
-    payload = json.dumps({"stations": list(stations)}, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    payload = json.dumps({"stations": list(stations)}, ensure_ascii=False, indent=2, sort_keys=True, allow_nan=False) + "\n"
     if path.exists():
         current = path.read_text(encoding="utf-8")
         if current == payload:

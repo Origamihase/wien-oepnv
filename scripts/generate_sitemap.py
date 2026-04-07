@@ -10,6 +10,7 @@ import re
 import subprocess  # nosec B404 - used for running git internally
 import sys
 import xml.etree.ElementTree as ET  # nosec B405 - used for XML generation, not parsing untrusted input
+from xml.sax.saxutils import escape as xml_escape
 from pathlib import Path
 from typing import Iterable, List, Optional, Tuple
 from urllib.parse import urlparse
@@ -147,6 +148,8 @@ def _build_xml(entries: Iterable[Tuple[str, str, Optional[str]]]) -> str:
 
     for url, lastmod, changefreq in entries:
         url_elem = ET.SubElement(urlset, "{http://www.sitemaps.org/schemas/sitemap/0.9}url")
+        # xml.etree.ElementTree inherently escapes text. Re-escaping creates double escaping problems.
+        # Removing `xml_escape` from `.text` properties.
         ET.SubElement(url_elem, "{http://www.sitemaps.org/schemas/sitemap/0.9}loc").text = url
         ET.SubElement(url_elem, "{http://www.sitemaps.org/schemas/sitemap/0.9}lastmod").text = lastmod
         if changefreq:

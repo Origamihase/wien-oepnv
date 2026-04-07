@@ -540,7 +540,7 @@ def main() -> int:
         return 0
 
     with atomic_write(args.stations, mode="w", encoding="utf-8", permissions=0o644) as handle:
-        json.dump({"stations": stations}, handle, ensure_ascii=False, indent=2)
+        json.dump({"stations": stations}, handle, ensure_ascii=False, indent=2, allow_nan=False)
         handle.write("\n")
     log.info("Wrote enriched aliases to %s", args.stations)
     return 0

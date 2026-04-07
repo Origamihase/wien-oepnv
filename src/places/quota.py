@@ -142,7 +142,7 @@ class MonthlyQuota:
         # Explicitly set 0600 permissions
         path.parent.mkdir(parents=True, exist_ok=True)
         with atomic_write(path, mode="w", encoding="utf-8", permissions=0o600) as handle:
-            json.dump(payload, handle, ensure_ascii=False, indent=2, sort_keys=True)
+            json.dump(payload, handle, ensure_ascii=False, indent=2, sort_keys=True, allow_nan=False)
             handle.write("\n")
 
     def maybe_reset_month(self) -> bool:

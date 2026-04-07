@@ -245,6 +245,7 @@ def write_cache(provider: str, items: List[Any], *, pretty: Optional[bool] = Non
                 ensure_ascii=False,
                 indent=indent,
                 separators=separators,
+                allow_nan=False,
             )
     except Exception:
         log.exception(

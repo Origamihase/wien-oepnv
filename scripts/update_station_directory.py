@@ -1098,7 +1098,7 @@ def write_json(stations: list[Station], output_path: Path) -> None:
     payload = {"stations": stations_list}
     # Use atomic_write to prevent partial writes and reduce race conditions.
     with atomic_write(output_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
-        json.dump(payload, handle, ensure_ascii=False, indent=2)
+        json.dump(payload, handle, ensure_ascii=False, indent=2, allow_nan=False)
         handle.write("\n")
     logger.info("Wrote %s", output_path)
 
