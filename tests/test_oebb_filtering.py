@@ -140,3 +140,12 @@ class TestSigmundsherbergRegression:
 
         # Should be False (excluded)
         assert _is_relevant(title, description) is False
+
+    def test_irrelevant_outer_to_outer_neulengbach_kledering(self):
+        # Regression test for disruption between two outer stations
+        # Even if the description mentions "Wien", it should be rejected
+        # because neither station is physically inside Vienna.
+        assert _is_relevant(
+            "Neulengbach ↔ Kledering",
+            "Wegen Bauarbeiten in Wien kommt es zu Verzögerungen zwischen Neulengbach Bahnhof und Kledering."
+        ) is False

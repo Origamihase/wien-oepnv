@@ -258,10 +258,9 @@ def _is_relevant(title: str, description: str) -> bool:
             is_outer1 = info1 is not None and not info1.in_vienna
 
             if is_outer0 and is_outer1:
-                # Verbindung zwischen zwei reinen Pendlerbahnhöfen (z.B. Neulengbach ↔ Tullnerbach-Pressbaum)
-                # Nur zulassen, wenn die Detailbeschreibung einen expliziten Wien-Bezug nennt.
-                if not text_has_vienna_connection(description):
-                    return False
+                # Verbindung zwischen zwei reinen Pendlerbahnhöfen (z.B. Himberg ↔ Kledering)
+                # Sofort verwerfen, da nicht mindestens ein Bahnhof in Wien liegt.
+                return False
 
     return text_has_vienna_connection(text)
 
