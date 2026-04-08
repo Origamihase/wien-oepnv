@@ -10,7 +10,6 @@ import re
 import subprocess  # nosec B404 - used for running git internally
 import sys
 import xml.etree.ElementTree as ET  # nosec B405 - used for XML generation, not parsing untrusted input
-from xml.sax.saxutils import escape as xml_escape
 from pathlib import Path
 from typing import Iterable, List, Optional, Tuple
 from urllib.parse import urlparse

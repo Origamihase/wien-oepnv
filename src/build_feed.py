@@ -10,7 +10,7 @@ import re
 import secrets
 import sys
 import xml.etree.ElementTree as ET  # nosec B405 - used for XML generation, not parsing untrusted input
-from xml.sax.saxutils import escape as xml_escape
+from xml.sax.saxutils import escape as xml_escape  # nosec B406
 from collections import defaultdict
 from concurrent.futures import (
     FIRST_COMPLETED,
