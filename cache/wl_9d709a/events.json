@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-04-05T00:00:24+02:00",
-    "starts_at": "2026-04-05T00:00:24+02:00",
-    "ends_at": "2026-04-08T23:59:59+02:00",
-    "_identity": "wl|störung|L=37A|D=2026-04-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,6 +202,18 @@
     "starts_at": "2026-04-05T00:00:24+02:00",
     "ends_at": "2026-04-08T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-04-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-04-05T00:00:24+02:00",
+    "starts_at": "2026-04-05T00:00:24+02:00",
+    "ends_at": "2026-04-08T23:59:59+02:00",
+    "_identity": "wl|störung|L=37A|D=2026-04-05"
   },
   {
     "source": "Wiener Linien",
@@ -298,29 +298,5 @@
     "starts_at": "2026-04-08T05:01:08+02:00",
     "ends_at": "2026-04-09T00:00:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-04-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Verspätungen",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2026-04-08T10:46:00+02:00",
-    "starts_at": "2026-04-08T10:46:00+02:00",
-    "ends_at": "2026-04-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-04-08"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1/71/D: Verkehrsunfall",
-    "description": "Linie 1: Fahrtbehinderung in Richtung Prater Hauptallee. Linie D: Fahrtbehinderung in Richtung Nußdorf, Beethovengang. Linie 71: Fahrtbehinderung in Richtung Schottenring U. Voraussichtliche Dauer: 12:15 Uhr. Grund: Verkehrsunfall im Bereich Universitätsring.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b9d7868e4b372258410a4d3357f27bcfc001fdaccb4abf46cee008dc18c48e36",
-    "pubDate": "2026-04-08T11:45:00+02:00",
-    "starts_at": "2026-04-08T11:45:00+02:00",
-    "ends_at": "2026-04-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=1,71,D|D=2026-04-08"
   }
 ]
