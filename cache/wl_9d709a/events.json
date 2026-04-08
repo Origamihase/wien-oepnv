@@ -194,18 +194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-04-05T00:00:24+02:00",
-    "starts_at": "2026-04-05T00:00:24+02:00",
-    "ends_at": "2026-04-08T23:59:59+02:00",
-    "_identity": "wl|störung|L=37A|D=2026-04-05"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -214,6 +202,18 @@
     "starts_at": "2026-04-05T00:00:24+02:00",
     "ends_at": "2026-04-08T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-04-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-04-05T00:00:24+02:00",
+    "starts_at": "2026-04-05T00:00:24+02:00",
+    "ends_at": "2026-04-08T23:59:59+02:00",
+    "_identity": "wl|störung|L=37A|D=2026-04-05"
   },
   {
     "source": "Wiener Linien",
@@ -298,5 +298,17 @@
     "starts_at": "2026-04-08T05:01:08+02:00",
     "ends_at": "2026-04-09T00:00:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-04-08"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf der Hauptfahrbahn",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-04-08T23:00:06+02:00",
+    "starts_at": "2026-04-08T23:00:06+02:00",
+    "ends_at": "2026-04-09T05:30:00+02:00",
+    "_identity": "wl|störung|L=N29|D=2026-04-08"
   }
 ]
