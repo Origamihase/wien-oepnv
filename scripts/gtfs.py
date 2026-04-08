@@ -102,8 +102,8 @@ def read_gtfs_stops(path: Path | None = None) -> Dict[str, GTFSStop]:
     return stops
 
 
-import zipfile
-import os
+import zipfile  # noqa: E402
+import os  # noqa: E402
 
 def extract_gtfs_archive(archive_path: Path, target_dir: Path) -> None:
     """Securely extract a GTFS zip archive preventing Zip Slip and Zip Bombs.

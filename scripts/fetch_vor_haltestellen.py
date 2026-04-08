@@ -307,7 +307,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     with atomic_write(mapping_path, mode="w", encoding="utf-8") as handle:
         handle.write(
             json.dumps(mapping_payload, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
-        )  # codeql[py/clear-text-storage-sensitive-data]
+        )  # codeql[py/clear-text-storage-sensitive-data] False Positive: Payload contains only public station data, no sensitive user data.
 
     log.info("Wrote station mapping to %s", mapping_path)
     return 0

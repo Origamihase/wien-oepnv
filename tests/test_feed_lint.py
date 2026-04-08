@@ -57,6 +57,7 @@ def test_feed_lint_ok_without_issues(
 
     monkeypatch.setattr(build_feed, "_invoke_collect_items", lambda report: list(items))
     monkeypatch.setattr(build_feed, "_load_state", lambda: {})
+    monkeypatch.setattr(build_feed, "_detect_stale_caches", lambda report, now: [])
 
     exit_code = build_feed.lint()
 
