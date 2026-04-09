@@ -277,6 +277,30 @@
   },
   {
     "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "34A: Bauarbeiten",
+    "description": "<h2>Gleisbauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Prager Stra&szlig;e wird die Linie 34A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Dienstag, 21. April 2026, etwa 04:30 Uhr bis voraussichtlich Anfang Juni 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 34A in Richtung Floridsdorf S U:<br /></strong>Umleitung ab Fr&ouml;mmlgasse # Stryeckgasse &uuml;ber Stryeckgasse &ndash; Prager Stra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Stryeckgasse (Prager Stra&szlig;e 9)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Stryeckgasse (Stryeckgasse 12-14)</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e8930bdbe103d6985dd4316fa5b4bc18628bc4742e3409ca6b8819c38d428910",
+    "pubDate": "2026-04-09T00:00:00+02:00",
+    "starts_at": "2026-04-21T00:00:00+02:00",
+    "ends_at": "2026-06-30T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=34A|D=2026-04-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "49A/50A/50B/N49: Rohrleitungsarbeiten",
+    "description": "<h2>Rohrleitungsarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Linzer Stra&szlig;e 422-442 werden die Linien 50A und N49 (Sa, So und Feiertags) umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Montag, 20. April 2026, etwa 22:00 Uhr auf Dauer von etwa vier Monaten.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 50A in Richtung Auhof:<br /></strong>Umleitung ab Bergmillergasse # H&uuml;ttelbergstra&szlig;e &uuml;ber H&uuml;ttelbergstra&szlig;e &ndash; Wolfersbergbr&uuml;cke &ndash; Wolfersberggasse &ndash; Linzer Stra&szlig;e.</p> <p><strong>Linie N49 in Richtung&nbsp;Weidlingau, Herzmanskystra&szlig;e:<br /></strong>Umleitung ab Bergmillergasse # H&uuml;ttelbergstra&szlig;e &uuml;ber H&uuml;ttelbergstra&szlig;e &ndash; Wolfersbergbr&uuml;cke &ndash; Wolfersberggasse &ndash; Linzer Stra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>H&uuml;tteldorf, Bujattigasse (Linzer Stra&szlig;e gegen&uuml;ber 149)<br />Wolfersberggasse ( Linzer Stra&szlig;e 444)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Wolfersberg (Wolfersberggasse 1)<br /><br /></p> <p><strong>Linie 49A in Richtung Wolfersberg, Sch&ouml;ffelplatz:<br /></strong>Umleitung ab Bergmillergasse # H&uuml;ttelbergstra&szlig;e &uuml;ber H&uuml;ttelbergstra&szlig;e &ndash; Wolfersbergbr&uuml;cke &ndash; Wolfersberggasse &ndash; Anzbachgasse.</p> <p><strong>Linie 50B in Richtung Auhof:<br /></strong>Umleitung ab Bergmillergasse # H&uuml;ttelbergstra&szlig;e &uuml;ber H&uuml;ttelbergstra&szlig;e &ndash; Wolfersbergbr&uuml;cke &ndash; Wolfersberggasse &ndash; Anzbachgasse.</p> <p><span style=\"text-decoration: underline;\">Ersatzlos aufgelassene Haltestellen:<br /></span>H&uuml;tteldorf, Bujattigasse (Linzer Stra&szlig;e gegen&uuml;ber 149)<br />Wolfersberggasse ( Linzer Stra&szlig;e 444)</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d604e56a9b621c25b168395cd39731cacdb3dc499b8cbf5a9b48b171913b35e7",
+    "pubDate": "2026-04-09T00:00:00+02:00",
+    "starts_at": "2026-04-20T00:00:00+02:00",
+    "ends_at": "2027-04-09T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=49A,50A,50B,N49|D=2026-04-20"
+  },
+  {
+    "source": "Wiener Linien",
     "category": "Störung",
     "title": "62A: Busse halten Breitenfurter Straße 236-238",
     "description": "Bauarbeiten Busse halten Breitenfurter Straße 236-238",
@@ -298,89 +322,5 @@
     "starts_at": "2026-04-09T05:01:03+02:00",
     "ends_at": "2026-04-10T00:00:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-04-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "97A: Verkehrsunfall",
-    "description": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "84179df3b6977c1f2a94231aa650a6c134e1750cbe78746ad0558d3b8a6317b8",
-    "pubDate": "2026-04-09T10:44:00+02:00",
-    "starts_at": "2026-04-09T10:44:00+02:00",
-    "ends_at": "2026-04-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=97A|D=2026-04-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Verkehrsunfall",
-    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f2c2f4a5edccc2e83123c4cd571f55d466f767a922c5c5c5e338c8121b6f2b9",
-    "pubDate": "2026-04-09T10:57:00+02:00",
-    "starts_at": "2026-04-09T10:57:00+02:00",
-    "ends_at": "2026-04-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-04-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Rettungseinsatz",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
-    "pubDate": "2026-04-09T11:39:00+02:00",
-    "starts_at": "2026-04-09T11:39:00+02:00",
-    "ends_at": "2026-04-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-04-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Rettungseinsatz",
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
-    "pubDate": "2026-04-09T11:54:00+02:00",
-    "starts_at": "2026-04-09T11:54:00+02:00",
-    "ends_at": "2026-04-09T13:50:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-04-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "52: Betriebsstörung",
-    "description": "Linie 52: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "92e7200b48fe35bc6a7cc83efb2f006e5faf4f1ec5437b1aa334f522cfb7ca72",
-    "pubDate": "2026-04-09T13:02:00+02:00",
-    "starts_at": "2026-04-09T13:02:00+02:00",
-    "ends_at": "2026-04-09T23:55:00+02:00",
-    "_identity": "wl|störung|L=52|D=2026-04-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9",
-    "pubDate": "2026-04-09T13:21:38+02:00",
-    "starts_at": "2026-04-09T13:21:38+02:00",
-    "ends_at": "2026-04-09T14:20:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-04-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Rettungseinsatz",
-    "description": "Linie U2: Unregelmäßige Intervalle in Richtung Seestadt. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
-    "pubDate": "2026-04-09T13:33:00+02:00",
-    "starts_at": "2026-04-09T13:33:00+02:00",
-    "ends_at": "2026-04-09T13:59:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-04-09"
   }
 ]
