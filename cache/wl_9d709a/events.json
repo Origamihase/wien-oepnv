@@ -290,18 +290,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
-    "pubDate": "2026-04-10T00:00:19+02:00",
-    "starts_at": "2026-04-10T00:00:19+02:00",
-    "ends_at": "2026-04-10T23:59:59+02:00",
-    "_identity": "wl|störung|L=37A|D=2026-04-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
     "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -310,6 +298,18 @@
     "starts_at": "2026-04-10T00:00:19+02:00",
     "ends_at": "2026-04-10T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-04-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
+    "pubDate": "2026-04-10T00:00:19+02:00",
+    "starts_at": "2026-04-10T00:00:19+02:00",
+    "ends_at": "2026-04-10T23:59:59+02:00",
+    "_identity": "wl|störung|L=37A|D=2026-04-10"
   },
   {
     "source": "Wiener Linien",
@@ -362,10 +362,10 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N6: Busse halten Gudrunstraße 196A",
-    "description": "Gleisbauarbeiten Busse halten Gudrunstraße 196A",
+    "title": "N6: Busse halten Gudrunstraße 189",
+    "description": "Gleisbauarbeiten Busse halten Gudrunstraße 189",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0cf569725ac80d096bc347407926f44d828fdce3378908092ad86d9c865de765",
+    "guid": "0a26896f9ae690ae0d90cf6c4fa75ebda5e6f394f4a9186b58ffa2af7f8459e7",
     "pubDate": "2026-04-10T00:45:20+02:00",
     "starts_at": "2026-04-10T00:45:20+02:00",
     "ends_at": "2026-04-10T05:00:00+02:00",
@@ -398,13 +398,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N6: Busse halten Gudrunstraße 189",
-    "description": "Gleisbauarbeiten Busse halten Gudrunstraße 189",
+    "title": "N6: Busse halten Gudrunstraße 196A",
+    "description": "Gleisbauarbeiten Busse halten Gudrunstraße 196A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a26896f9ae690ae0d90cf6c4fa75ebda5e6f394f4a9186b58ffa2af7f8459e7",
+    "guid": "0cf569725ac80d096bc347407926f44d828fdce3378908092ad86d9c865de765",
     "pubDate": "2026-04-10T00:45:20+02:00",
     "starts_at": "2026-04-10T00:45:20+02:00",
     "ends_at": "2026-04-10T05:00:00+02:00",
     "_identity": "wl|störung|L=N6|D=2026-04-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N66: Polizeieinsatz",
+    "description": "Derzeit kommt es bei der Linie N66 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "61226b2ae8446ab184d18f5f3fd3a181783a5358bddb21635ca1ebbe708470c7",
+    "pubDate": "2026-04-10T01:53:00+02:00",
+    "starts_at": "2026-04-10T01:53:00+02:00",
+    "ends_at": "2026-04-10T23:55:00+02:00",
+    "_identity": "wl|störung|L=N66|D=2026-04-10"
   }
 ]
