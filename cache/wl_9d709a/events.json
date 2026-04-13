@@ -206,6 +206,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "43: Gleisbauarbeiten",
+    "description": "<p>&nbsp;</p> <h2>Gleisbauarbeiten</h2> <p>Wegen Gleisbauarbeiten in der Dornbacher Stra&szlig;e kommt es bei der Linie 43 zu folgender &Auml;nderung.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Linie 43: ab Montag, 20. April 2026 (Betriebsbeginn) bis voraussichtlich 28. Juli 2026</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><span style=\"text-decoration: underline;\">Linie 43:<br /></span>kein Betrieb zwischen G&uuml;pferlingstra&szlig;e und Neuwaldegg.</p> <p>Weichen sie auf den Ersatzverkehr mit Bussen zwischen Dornbach und Neuwaldegg aus.</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d603fdf2c8042e26b33331378edef5cb6fc532bf2870d0310a5192d0aa0642c6",
+    "pubDate": "2026-04-08T00:00:00+02:00",
+    "starts_at": "2026-04-20T00:00:00+02:00",
+    "ends_at": "2027-04-08T00:00:00+02:00",
+    "_identity": "wl|hinweis|L=43|D=2026-04-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "63A: Kranarbeiten",
     "description": "<h2>Kranarbeiten</h2> <p>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstra&szlig;e und L&auml;ngenfeldgasse wird die Linie 63A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Von Montag, 13. April 2026 bis 16. April 2026 , t&auml;glich von 22:00 Uhr bis 05:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 63A in Richtung Am Rosenh&uuml;gel:<br /></strong>Umleitung ab Eibesbrunnergasse # Unter-Meidlinger-Stra&szlig;e &uuml;ber Eibesbrunnergasse &ndash; Kerschensteinergasse &ndash; L&auml;ngenfeldgasse.</p> <p><span style=\"text-decoration: underline;\">Ersatzlos aufgelassene Haltestellen:<br /></span>Kastanienallee (Unter-Meidlinger-Stra&szlig;e vor Kastanienallee)<br />Unfallkrankenhaus Meidling (Kundratstra&szlig;e 39 vor K&ouml;glergasse)</p> <p><strong>Linie 63A in Richtung Gesundheitszentrum S&uuml;d:<br /></strong>Umleitung ab L&auml;ngenfeldgasse # Kerschensteinergasse &uuml;ber Kerschensteinergasse &ndash; Eibesbrunnergasse &ndash; Unter-Meidlinger-Stra&szlig;e &ndash; Kundratstra&szlig;e &ndash; K&ouml;glergasse.</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -254,18 +266,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-04-12T00:00:15+02:00",
-    "starts_at": "2026-04-12T00:00:15+02:00",
-    "ends_at": "2026-04-13T23:59:59+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-04-12"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -274,6 +274,18 @@
     "starts_at": "2026-04-12T00:00:15+02:00",
     "ends_at": "2026-04-13T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-04-12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
+    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
+    "pubDate": "2026-04-12T00:00:15+02:00",
+    "starts_at": "2026-04-12T00:00:15+02:00",
+    "ends_at": "2026-04-13T23:59:59+02:00",
+    "_identity": "wl|störung|L=74A|D=2026-04-12"
   },
   {
     "source": "Wiener Linien",
@@ -310,5 +322,17 @@
     "starts_at": "2026-04-13T04:45:12+02:00",
     "ends_at": "2026-04-14T00:35:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-04-13"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2026-04-13T11:56:00+02:00",
+    "starts_at": "2026-04-13T11:59:23+02:00",
+    "ends_at": "2026-04-13T12:58:00+02:00",
+    "_identity": "wl|störung|L=42|D=2026-04-13"
   }
 ]
