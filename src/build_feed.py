@@ -29,6 +29,10 @@ from typing import Any, Dict, List, Optional, Sequence, Set, Tuple, Union, cast
 from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
 
+# Register namespaces globally for thread-safe XML generation
+ET.register_namespace("ext", "https://wien-oepnv.example/schema")
+ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
+
 try:  # pragma: no cover - allow running as script or module
     from feed_types import FeedItem
     from feed import config as feed_config
@@ -424,16 +428,11 @@ def format_local_times(
 
     if start_local:
         if end_local:
-            if (
-                start_local.date() == end_local.date()
-                and start_local.date() > today.date()
-            ):
+            if start_local.date() == end_local.date():
                 return f"Am {start_local:%d.%m.%Y}"
             if end_local <= start_local:
                 if start_local.date() > today.date():
                     return f"Ab {start_local:%d.%m.%Y}"
-                return f"Seit {start_local:%d.%m.%Y}"
-            if start_local.date() == end_local.date():
                 return f"Seit {start_local:%d.%m.%Y}"
             return f"{start_local:%d.%m.%Y} – {end_local:%d.%m.%Y}"
         if start_local.date() > today.date():
@@ -834,6 +833,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         timeout_value: Union[int, float] = effective_timeout,
                         supports: bool = supports_timeout,
                         semaphore: Optional[BoundedSemaphore] = semaphore,
+                        provider_name: str = provider_name,
                     ) -> Any:
                         timeout_arg = timeout_value if timeout_value >= 0 else None
 
@@ -1416,10 +1416,6 @@ def _make_rss(
     Returns:
         The generated RSS XML string with CDATA sections.
     """
-    # Register namespaces globally
-    ET.register_namespace("ext", "https://wien-oepnv.example/schema")
-    ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
-
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
 
