@@ -852,7 +852,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         # If timeout_arg is None, acquire(timeout=None) will wait indefinitely.
                         acquired = semaphore.acquire(timeout=timeout_arg)
                         if not acquired:
-                             raise TimeoutError(f"Semaphore acquisition timed out after {timeout_value}s")
+                            raise TimeoutError(f"Semaphore acquisition timed out after {timeout_value}s")
 
                         # Task 3: Subtract wait time from timeout
                         try:
