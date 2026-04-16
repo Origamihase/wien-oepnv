@@ -379,7 +379,7 @@ def _fmt_rfc2822(dt: datetime) -> str:
         try:
             local_dt = _to_utc(dt).astimezone(_VIENNA_TZ)
         except Exception:
-            local_dt = _to_utc(dt)
+            local_dt = dt.replace(tzinfo=timezone.utc)
         days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -834,7 +834,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         supports: bool = supports_timeout,
                         semaphore: Optional[BoundedSemaphore] = semaphore,
                     ) -> Any:
-                        timeout_arg = timeout_value if timeout_value > 0 else None
+                        timeout_arg = timeout_value if timeout_value >= 0 else None
                         if semaphore is None:
                             return _call_fetch_with_timeout(fetch, timeout_arg, supports)
 
