@@ -302,25 +302,97 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/18/6/62/WLB: Stromstörung",
-    "description": "Die Linie 1 wird in beiden Richtungen zwischen Knöllgasse und Oper, Karlsplatz U über die Linien 6, O und D umgeleitet. Linie 6: Kein Betrieb zwischen Knöllgasse und Arbeitergasse, Gürtel. Weiterfahrt ab Knöllgasse über Linie 1 bis Stefan-Fadinger-Platz. Weiterfahrt ab Arbeitergasse, Gürtel über Linie 62 bis Bahnhof Meidling S U, Dörfelstraße. Die Linie 18 fährt derzeit nicht zwischen Arbeitergasse, Gürtel und Quartier Belvedere S. Die Linie 62 fährt derzeit nur zwischen Wolkersbergenstraße und Dörfelstraße. Badner Bahn: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 07:00 Uhr. Grund: Stromstörung im Haltestellenbereich Matzleinsdorfer Platz S.",
+    "title": "1: Stromstörung",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c51bc4f5dba9e936d698cf873d7dea12eb5b2c7f24b17514294ef738b29cbf7d",
+    "guid": "d3a7d59c112413b6a0a1229407678b3d535f605e66bdc8720ef9b7e6765fe036",
     "pubDate": "2026-04-16T05:28:00+02:00",
     "starts_at": "2026-04-16T05:28:00+02:00",
     "ends_at": "2026-04-16T23:55:00+02:00",
-    "_identity": "wl|störung|L=1,18,6,62,WLB|D=2026-04-16"
+    "_identity": "wl|störung|L=1|D=2026-04-16"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "14A/15A: Betriebsstörung",
-    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "6: Stromstörung",
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eccd73867680a15f71b0bf68a9942c0e8b3716ebeee9719c36f4458755a5bcfd",
-    "pubDate": "2026-04-16T05:42:00+02:00",
-    "starts_at": "2026-04-16T05:42:00+02:00",
+    "guid": "2bef0822285cf8779f9d1eb139a1cf793d764d760d6745537e2aecbb253c50c2",
+    "pubDate": "2026-04-16T05:28:00+02:00",
+    "starts_at": "2026-04-16T05:28:00+02:00",
     "ends_at": "2026-04-16T23:55:00+02:00",
-    "_identity": "wl|störung|L=14A,15A|D=2026-04-16"
+    "_identity": "wl|störung|L=6|D=2026-04-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Stromstörung",
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "61e509ec6671bda43b58e979536f2501fd8c8838532959449953aebc388dc1e7",
+    "pubDate": "2026-04-16T05:28:00+02:00",
+    "starts_at": "2026-04-16T05:28:00+02:00",
+    "ends_at": "2026-04-16T08:36:00+02:00",
+    "_identity": "wl|störung|L=62|D=2026-04-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Feuerwehreinsatz",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "809633dc17702ea5749ccf9f4418e79ceb36712e1a203d0f4be57734e09fe65f",
+    "pubDate": "2026-04-16T07:07:00+02:00",
+    "starts_at": "2026-04-16T07:07:00+02:00",
+    "ends_at": "2026-04-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-04-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
+    "pubDate": "2026-04-16T07:18:58+02:00",
+    "starts_at": "2026-04-16T07:21:00+02:00",
+    "ends_at": "2026-04-16T08:18:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-04-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-04-16T07:28:00+02:00",
+    "starts_at": "2026-04-16T07:28:00+02:00",
+    "ends_at": "2026-04-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-04-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Fahrtbehinderung Falschparker",
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d",
+    "pubDate": "2026-04-16T07:30:00+02:00",
+    "starts_at": "2026-04-16T07:44:18+02:00",
+    "ends_at": "2026-04-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-04-16"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Rettungseinsatz",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
+    "pubDate": "2026-04-16T07:47:00+02:00",
+    "starts_at": "2026-04-16T07:47:00+02:00",
+    "ends_at": "2026-04-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-04-16"
   }
 ]
