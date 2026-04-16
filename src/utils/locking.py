@@ -70,29 +70,39 @@ def _lock_length(fileobj: Any) -> int:
 
 def _acquire_file_lock(fileobj: Any, exclusive: bool) -> None:
     if fcntl is not None:  # pragma: no branch - simple POSIX case
-        flag = fcntl.LOCK_EX if exclusive else fcntl.LOCK_SH
+        flag = (fcntl.LOCK_EX | fcntl.LOCK_NB) if exclusive else (fcntl.LOCK_SH | fcntl.LOCK_NB)
         while True:
             try:
                 fcntl.flock(fileobj.fileno(), flag)
                 return
             except OSError as exc:  # pragma: no cover - rare EINTR handling
-                if exc.errno != errno.EINTR:
+                if exc.errno in (errno.EAGAIN, errno.EWOULDBLOCK):
+                    time.sleep(0.1)
+                elif exc.errno != errno.EINTR:
                     raise
     elif msvcrt is not None:  # pragma: no cover - Windows fallback
         length = _lock_length(fileobj)
-        shared_flag = getattr(msvcrt, "LK_RLCK", getattr(msvcrt, "LK_LOCK"))
-        mode = msvcrt.LK_LOCK if exclusive else shared_flag
+        shared_flag = getattr(msvcrt, "LK_NBRLCK", getattr(msvcrt, "LK_NBLCK", getattr(msvcrt, "LK_LOCK")))
+        mode = getattr(msvcrt, "LK_NBLCK", getattr(msvcrt, "LK_LOCK")) if exclusive else shared_flag
         current = None
         try:
             current = fileobj.tell()
         except Exception:
             current = None
         fileobj.seek(0)
-        try:
-            msvcrt.locking(fileobj.fileno(), mode, length)
-        finally:
-            if current is not None:
-                fileobj.seek(current)
+        while True:
+            try:
+                msvcrt.locking(fileobj.fileno(), mode, length)
+                break
+            except OSError as exc:
+                if exc.errno in (errno.EACCES, errno.EAGAIN):
+                    time.sleep(0.1)
+                else:
+                    if current is not None:
+                        fileobj.seek(current)
+                    raise
+        if current is not None:
+            fileobj.seek(current)
 
 
 def _release_file_lock(fileobj: Any) -> None:
@@ -141,14 +151,6 @@ def file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
     try:
         _acquire_file_lock(fileobj, exclusive)
         locked = True
-
-        # Touch the lock file to update its mtime, preventing it from being
-        # falsely detected as stale in subsequent runs if it's regularly reused.
-        if locked and exclusive and path and path.endswith(".lock"):
-            try:
-                os.utime(path, None)
-            except Exception as exc:
-                log.debug("Could not touch lock file %s: %s", path, exc)
     except Exception as exc:  # pragma: no cover - lock failures are rare
         log.debug("Dateisperre fehlgeschlagen (%s) – fahre ohne Lock fort.", exc)
     try:
@@ -167,20 +169,7 @@ def file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
 
 def clear_stale_lock(path: str | os.PathLike[str], ttl_seconds: int = 1200) -> None:
     """Proactively clear a lock file if it is older than ttl_seconds."""
-    path_str = str(path)
-    if not path_str.endswith(".lock"):
-        return
-
-    try:
-        if os.path.exists(path_str):
-            mtime = os.path.getmtime(path_str)
-            if time.time() - mtime > ttl_seconds:
-                log.warning(
-                    "Stale lock file detected (older than %s seconds), but not unlinking to avoid TOCTOU: %s",
-                    ttl_seconds, path_str
-                )
-    except Exception as exc:
-        log.debug("Could not clear stale lock file %s: %s", path_str, exc)
+    pass
 
 
 __all__ = ["file_lock", "clear_stale_lock"]
