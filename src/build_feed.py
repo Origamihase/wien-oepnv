@@ -838,6 +838,8 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         timeout_arg = timeout_value if timeout_value >= 0 else None
 
                         if timeout_arg == 0:
+                            if report:
+                                report.provider_started(provider_name)
                             raise TimeoutError("Timeout value is 0, expiring immediately without acquiring semaphore.")
 
                         if semaphore is None:

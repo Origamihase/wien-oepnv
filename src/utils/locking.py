@@ -68,26 +68,25 @@ def _lock_length(fileobj: Any) -> int:
     return max(int(size), 1)
 
 
-def _acquire_file_lock(fileobj: Any, exclusive: bool) -> None:
-    timeout = 15.0  # Hard timeout of 15 seconds
+def _acquire_file_lock(fileobj: Any, exclusive: bool, timeout: float = 15.0) -> None:
     start_time = time.time()
 
     if fcntl is not None:  # pragma: no branch - simple POSIX case
         flag = (fcntl.LOCK_EX | fcntl.LOCK_NB) if exclusive else (fcntl.LOCK_SH | fcntl.LOCK_NB)
         while True:
+            if time.time() - start_time >= timeout:
+                raise TimeoutError(f"Could not acquire file lock within {timeout} seconds.")
             try:
                 fcntl.flock(fileobj.fileno(), flag)
                 return
             except OSError as exc:  # pragma: no cover - rare EINTR handling
                 if exc.errno in (errno.EAGAIN, errno.EWOULDBLOCK):
-                    if time.time() - start_time >= timeout:
-                        raise TimeoutError(f"Could not acquire file lock within {timeout} seconds.")
                     time.sleep(0.1)
                 elif exc.errno != errno.EINTR:
                     raise
     elif msvcrt is not None:  # pragma: no cover - Windows fallback
         length = _lock_length(fileobj)
-        mode = msvcrt.LK_NBLCK if hasattr(msvcrt, "LK_NBLCK") else msvcrt.LK_LOCK
+        mode = msvcrt.LK_NBLCK if exclusive else getattr(msvcrt, 'LK_NBRLCK', msvcrt.LK_NBLCK)
         current = None
         try:
             current = fileobj.tell()
@@ -95,15 +94,15 @@ def _acquire_file_lock(fileobj: Any, exclusive: bool) -> None:
             current = None
         fileobj.seek(0)
         while True:
+            if time.time() - start_time >= timeout:
+                if current is not None:
+                    fileobj.seek(current)
+                raise TimeoutError(f"Could not acquire file lock within {timeout} seconds.")
             try:
                 msvcrt.locking(fileobj.fileno(), mode, length)
                 break
             except OSError as exc:
                 if exc.errno in (errno.EACCES, errno.EAGAIN):
-                    if time.time() - start_time >= timeout:
-                        if current is not None:
-                            fileobj.seek(current)
-                        raise TimeoutError(f"Could not acquire file lock within {timeout} seconds.")
                     time.sleep(0.1)
                 else:
                     if current is not None:
@@ -141,8 +140,12 @@ def _release_file_lock(fileobj: Any) -> None:
 
 
 @contextmanager
-def file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
-    """Context manager for acquiring a cross-platform file lock."""
+def file_lock(fileobj: Any, *, exclusive: bool, timeout: float = 15.0) -> Iterator[None]:
+    """
+    Context manager for acquiring a cross-platform file lock.
+    Relies on the OS kernel to automatically release locks if a process terminates or crashes.
+    Note: This is highly reliable on local file systems but may lack strict guarantees on certain Network File Systems (NFS).
+    """
     # Step 1: Thread-level locking
     thread_lock = None
     path = None
@@ -157,7 +160,7 @@ def file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
     # Step 2: OS-level locking
     locked = False
     try:
-        _acquire_file_lock(fileobj, exclusive)
+        _acquire_file_lock(fileobj, exclusive, timeout)
         locked = True
     except Exception as exc:  # pragma: no cover - lock failures are rare
         log.debug("Dateisperre fehlgeschlagen (%s) – fahre ohne Lock fort.", exc)
