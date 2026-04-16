@@ -50,6 +50,7 @@ try:  # pragma: no cover - allow running as script or module
         write_feed_health_json,
     )
 except ModuleNotFoundError:  # pragma: no cover
+    from .feed_types import FeedItem
     from .feed import config as feed_config
     from .feed.merge import deduplicate_fuzzy
     from .feed.logging import configure_logging
@@ -80,7 +81,6 @@ try:  # pragma: no cover - allow running as script or package
     from utils.locking import file_lock, clear_stale_lock
     from utils.text import html_to_text, truncate_html
 except ModuleNotFoundError:  # pragma: no cover
-    from .feed_types import FeedItem
     from .utils.cache import (
         cache_modified_at,
         read_cache as _core_read_cache,
