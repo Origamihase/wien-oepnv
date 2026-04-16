@@ -97,6 +97,8 @@ log = logging.getLogger("build_feed")
 # Expose validate_path for tests that patch it or use it
 validate_path = feed_config.validate_path
 
+_VIENNA_TZ = ZoneInfo("Europe/Vienna")
+
 
 def refresh_from_env() -> None:
     """Refresh configuration values and reload provider plugins."""
@@ -398,9 +400,6 @@ def _fmt_rfc2822(dt: datetime) -> str:
             f"{day_name}, {local_dt.day:02d} {month_name} {local_dt.year:04d} "
             f"{local_dt.hour:02d}:{local_dt.minute:02d}:{local_dt.second:02d} {offset_str}"
         )
-
-
-_VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
 
 def format_local_times(
