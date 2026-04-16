@@ -78,7 +78,7 @@ try:  # pragma: no cover - allow running as script or package
     )  # type: ignore
     from utils.files import atomic_write
     from utils.http import validate_http_url
-    from utils.locking import file_lock, clear_stale_lock
+    from utils.locking import file_lock
     from utils.text import html_to_text, truncate_html
 except ModuleNotFoundError:  # pragma: no cover
     from .utils.cache import (
@@ -88,7 +88,7 @@ except ModuleNotFoundError:  # pragma: no cover
     )
     from .utils.files import atomic_write
     from .utils.http import validate_http_url
-    from .utils.locking import file_lock, clear_stale_lock
+    from .utils.locking import file_lock
     from .utils.text import html_to_text, truncate_html
 
 log = logging.getLogger("build_feed")
@@ -379,7 +379,10 @@ def _fmt_rfc2822(dt: datetime) -> str:
         try:
             local_dt = _to_utc(dt).astimezone(_VIENNA_TZ)
         except Exception:
-            local_dt = dt.replace(tzinfo=timezone.utc)
+            if dt.tzinfo is None:
+                local_dt = dt.replace(tzinfo=timezone.utc)
+            else:
+                local_dt = dt.astimezone(timezone.utc)
         days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -542,7 +545,6 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     try:
         lock_path = path.with_suffix(".lock")
-        clear_stale_lock(lock_path)
         with lock_path.open("a+", encoding="utf-8") as lock_file:
             with file_lock(lock_file, exclusive=False):
                 with path.open("r", encoding="utf-8") as f:
@@ -592,7 +594,6 @@ def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] 
     path.parent.mkdir(parents=True, exist_ok=True)
     # Windows-fix: Use a separate lock file to avoid permission errors when atomic_write replaces the target
     lock_path = path.with_suffix(".lock")
-    clear_stale_lock(lock_path)
     with lock_path.open("a+", encoding="utf-8") as lock_file:
         with file_lock(lock_file, exclusive=True):
             # Safe merge: read existing state to avoid overwriting parallel updates
@@ -835,6 +836,10 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         semaphore: Optional[BoundedSemaphore] = semaphore,
                     ) -> Any:
                         timeout_arg = timeout_value if timeout_value >= 0 else None
+
+                        if timeout_arg == 0:
+                            raise TimeoutError("Timeout value is 0, expiring immediately without acquiring semaphore.")
+
                         if semaphore is None:
                             return _call_fetch_with_timeout(fetch, timeout_arg, supports)
 

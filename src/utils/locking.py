@@ -69,6 +69,9 @@ def _lock_length(fileobj: Any) -> int:
 
 
 def _acquire_file_lock(fileobj: Any, exclusive: bool) -> None:
+    timeout = 15.0  # Hard timeout of 15 seconds
+    start_time = time.time()
+
     if fcntl is not None:  # pragma: no branch - simple POSIX case
         flag = (fcntl.LOCK_EX | fcntl.LOCK_NB) if exclusive else (fcntl.LOCK_SH | fcntl.LOCK_NB)
         while True:
@@ -77,13 +80,14 @@ def _acquire_file_lock(fileobj: Any, exclusive: bool) -> None:
                 return
             except OSError as exc:  # pragma: no cover - rare EINTR handling
                 if exc.errno in (errno.EAGAIN, errno.EWOULDBLOCK):
+                    if time.time() - start_time >= timeout:
+                        raise TimeoutError(f"Could not acquire file lock within {timeout} seconds.")
                     time.sleep(0.1)
                 elif exc.errno != errno.EINTR:
                     raise
     elif msvcrt is not None:  # pragma: no cover - Windows fallback
         length = _lock_length(fileobj)
-        shared_flag = getattr(msvcrt, "LK_NBRLCK", getattr(msvcrt, "LK_NBLCK", getattr(msvcrt, "LK_LOCK")))
-        mode = getattr(msvcrt, "LK_NBLCK", getattr(msvcrt, "LK_LOCK")) if exclusive else shared_flag
+        mode = msvcrt.LK_NBLCK if hasattr(msvcrt, "LK_NBLCK") else msvcrt.LK_LOCK
         current = None
         try:
             current = fileobj.tell()
@@ -96,6 +100,10 @@ def _acquire_file_lock(fileobj: Any, exclusive: bool) -> None:
                 break
             except OSError as exc:
                 if exc.errno in (errno.EACCES, errno.EAGAIN):
+                    if time.time() - start_time >= timeout:
+                        if current is not None:
+                            fileobj.seek(current)
+                        raise TimeoutError(f"Could not acquire file lock within {timeout} seconds.")
                     time.sleep(0.1)
                 else:
                     if current is not None:
@@ -167,9 +175,4 @@ def file_lock(fileobj: Any, *, exclusive: bool) -> Iterator[None]:
             if path:
                 _release_thread_lock_ref(path)
 
-def clear_stale_lock(path: str | os.PathLike[str], ttl_seconds: int = 1200) -> None:
-    """Proactively clear a lock file if it is older than ttl_seconds."""
-    pass
-
-
-__all__ = ["file_lock", "clear_stale_lock"]
+__all__ = ["file_lock"]
