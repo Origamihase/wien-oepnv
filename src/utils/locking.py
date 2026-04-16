@@ -175,8 +175,10 @@ def clear_stale_lock(path: str | os.PathLike[str], ttl_seconds: int = 1200) -> N
         if os.path.exists(path_str):
             mtime = os.path.getmtime(path_str)
             if time.time() - mtime > ttl_seconds:
-                log.warning("Stale lock file detected (older than %s seconds). Clearing: %s", ttl_seconds, path_str)
-                os.unlink(path_str)
+                log.warning(
+                    "Stale lock file detected (older than %s seconds), but not unlinking to avoid TOCTOU: %s",
+                    ttl_seconds, path_str
+                )
     except Exception as exc:
         log.debug("Could not clear stale lock file %s: %s", path_str, exc)
 

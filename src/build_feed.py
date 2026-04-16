@@ -374,7 +374,10 @@ def _fmt_rfc2822(dt: datetime) -> str:
             "Konnte Datum %r nicht per format_datetime formatieren – nutze strftime-Fallback.",
             dt,
         )
-        local_dt = _to_utc(dt).astimezone(_VIENNA_TZ)
+        try:
+            local_dt = _to_utc(dt).astimezone(_VIENNA_TZ)
+        except Exception:
+            local_dt = _to_utc(dt)
         days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -832,7 +835,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         supports: bool = supports_timeout,
                         semaphore: Optional[BoundedSemaphore] = semaphore,
                     ) -> Any:
-                        timeout_arg = timeout_value if timeout_value > 0 else 0.1
+                        timeout_arg = timeout_value if timeout_value > 0 else None
                         if semaphore is None:
                             return _call_fetch_with_timeout(fetch, timeout_arg, supports)
 
@@ -840,6 +843,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         # This ensures that if the provider is deadlocked/overloaded, we don't block
                         # the executor worker forever.
                         start_wait = perf_counter()
+                        # If timeout_arg is None, acquire(timeout=None) will wait indefinitely.
                         acquired = semaphore.acquire(timeout=timeout_arg)
                         if not acquired:
                              raise TimeoutError(f"Semaphore acquisition timed out after {timeout_value}s")
@@ -847,9 +851,9 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         # Task 3: Subtract wait time from timeout
                         try:
                             elapsed = perf_counter() - start_wait
-                            remaining_timeout = timeout_arg - elapsed
+                            remaining_timeout = timeout_arg - elapsed if timeout_arg is not None else None
 
-                            if remaining_timeout < 0:
+                            if remaining_timeout is not None and remaining_timeout < 0:
                                 raise TimeoutError(
                                     f"Semaphore acquisition took {elapsed:.2f}s, no realistic time left for fetch (threshold: < 0s)"
                                 )
