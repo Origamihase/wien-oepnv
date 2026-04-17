@@ -430,7 +430,8 @@ def format_local_times(
         if end_local:
             if start_local.date() == end_local.date():
                 return f"Am {start_local:%d.%m.%Y}"
-            if end_local <= start_local:
+            if end_local < start_local:
+                log.warning("Enddatum liegt vor Startdatum")
                 if start_local.date() > today.date():
                     return f"Ab {start_local:%d.%m.%Y}"
                 return f"Seit {start_local:%d.%m.%Y}"
@@ -838,8 +839,6 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         timeout_arg = timeout_value if timeout_value >= 0 else None
 
                         if timeout_arg == 0:
-                            if report:
-                                report.provider_started(provider_name)
                             raise TimeoutError("Timeout value is 0, expiring immediately without acquiring semaphore.")
 
                         if semaphore is None:
@@ -943,26 +942,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
 
 
 def _invoke_collect_items(report: RunReport) -> List[FeedItem]:
-    collect_fn = _collect_items
-    try:
-        signature = inspect.signature(collect_fn)
-    except (TypeError, ValueError):  # pragma: no cover - defensive
-        signature = None
-    if signature is not None:
-        params = signature.parameters
-        if not params:
-            return collect_fn()
-        if "report" in params:
-            return collect_fn(report=report)
-        if all(
-            param.kind in (
-                inspect.Parameter.POSITIONAL_ONLY,
-                inspect.Parameter.POSITIONAL_OR_KEYWORD,
-            )
-            for param in params.values()
-        ):
-            return collect_fn()
-    return collect_fn(report=report)
+    return _collect_items(report=report)
 
 
 def _drop_old_items(
@@ -1182,7 +1162,8 @@ def _dedupe_items(items: List[FeedItem]) -> List[FeedItem]:
 def _sort_key(item: FeedItem) -> Tuple[int, float, str]:
     pd = item.get("pubDate")
     # Fix TypeError: Ensure guid is always a string, even if explicitly None
-    guid_str = str(item.get("guid") or "")
+    guid_val = item.get("guid")
+    guid_str = str(guid_val) if guid_val else _identity_for_item(item)
     if isinstance(pd, datetime):
         return (0, -_to_utc(pd).timestamp(), guid_str)
     return (1, 0.0, guid_str)
@@ -1437,14 +1418,6 @@ def _make_rss(
         identities_in_feed.append(ident)
         emitted += 1
 
-    try:
-        _save_state(state, deletions=deletions)
-    except Exception as e:
-        log.warning(
-            "State speichern fehlgeschlagen (%s) – Feed wird trotzdem zurückgegeben.",
-            e,
-        )
-
     # Pretty print the tree
     if hasattr(ET, "indent"):
         ET.indent(rss, space="  ", level=0)
@@ -1456,6 +1429,14 @@ def _make_rss(
     # Inject CDATA
     for placeholder, cdata in item_replacements.items():
         xml_str = xml_str.replace(placeholder, cdata)
+
+    try:
+        _save_state(state, deletions=deletions)
+    except Exception as e:
+        log.warning(
+            "State speichern fehlgeschlagen (%s) – Feed wird trotzdem zurückgegeben.",
+            e,
+        )
 
     return xml_str
 

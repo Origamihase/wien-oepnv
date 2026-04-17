@@ -35,7 +35,7 @@ def test_main_filters_items_older_than_max(monkeypatch, tmp_path):
     recent = {"title": "recent", "pubDate": now - timedelta(days=2) + timedelta(minutes=1)}
     old = {"title": "old", "pubDate": now - timedelta(days=2) - timedelta(minutes=1)}
 
-    def fake_collect():
+    def fake_collect(report=None):
         return [recent, old]
 
     captured = {}
@@ -70,7 +70,7 @@ def test_main_filters_items_older_than_absolute(monkeypatch, tmp_path):
         "starts_at": now - timedelta(days=2) - timedelta(minutes=1),
     }
 
-    def fake_collect():
+    def fake_collect(report=None):
         return [within, too_old]
 
     captured = {}

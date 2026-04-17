@@ -67,10 +67,10 @@ def test_sort_key_handles_none_guid(monkeypatch, tmp_path):
 
     # Verify that the guid part of the key is a string
     assert isinstance(key1[2], str)
-    assert key1[2] == ""
+    assert len(key1[2]) > 0
 
     assert isinstance(key2[2], str)
-    assert key2[2] == ""
+    assert len(key2[2]) > 0
 
     assert isinstance(key3[2], str)
     assert key3[2] == "some-guid"
