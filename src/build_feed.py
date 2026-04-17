@@ -838,9 +838,6 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     ) -> Any:
                         timeout_arg = timeout_value if timeout_value >= 0 else None
 
-                        if timeout_arg == 0:
-                            raise TimeoutError("Timeout value is 0, expiring immediately without acquiring semaphore.")
-
                         if semaphore is None:
                             return _call_fetch_with_timeout(fetch, timeout_arg, supports)
 
@@ -867,6 +864,13 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         finally:
                             semaphore.release()
 
+                    if effective_timeout == 0:
+                        report.provider_started(provider_name)
+                        name = getattr(fetch, "__name__", str(fetch))
+                        log.error("%s fetch Timeout nach 0s", name)
+                        report.provider_error(provider_name, "Timeout nach 0s")
+                        continue
+
                     report.provider_started(provider_name)
                     future = executor.submit(_run_fetch)
                     futures[future] = (fetch, provider_name, effective_timeout)
@@ -874,8 +878,6 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     start_time = perf_counter()
                     if effective_timeout > 0:
                         deadlines[future] = start_time + effective_timeout
-                    elif effective_timeout == 0:
-                        deadlines[future] = start_time
                     else:
                         deadlines[future] = None
 
