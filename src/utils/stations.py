@@ -676,7 +676,7 @@ def text_has_vienna_connection(text: str) -> bool:
 
     # 0b. Maskiere ausländische/generische Suffixe nach dem dynamischen Orts-Matching
     text_for_matching = re.sub(
-        r"\b\w[\w\s\-\.]{2,30}?\s+(?:hl\.?\s*st\.?|hlavní\s+nádraží|Keleti|Nyugati|Déli)\b",
+        r"\b\w[\w\s\-\.]{2,30}?\s+(?:hl\.?\s*st\.?|hlavní\s+nádraží|Keleti|Nyugati|Déli)(?!\w)",
         " ",
         text,
         flags=re.IGNORECASE
