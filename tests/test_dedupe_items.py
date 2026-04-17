@@ -36,7 +36,7 @@ def test_main_dedupes_items(monkeypatch, tmp_path):
         {"guid": "gc", "title": "C"},
     ]
 
-    def fake_collect():
+    def fake_collect(report=None):
         return list(sample_items)
 
     captured = {}

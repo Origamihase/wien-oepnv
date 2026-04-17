@@ -28,7 +28,7 @@ def test_item_with_past_ends_at_is_dropped(monkeypatch, tmp_path):
     future = {"title": "future", "ends_at": now + timedelta(hours=1)}
     past = {"title": "past", "ends_at": now - timedelta(minutes=11)}
 
-    def fake_collect():
+    def fake_collect(report=None):
         return [future, past]
 
     captured = {}
