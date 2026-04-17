@@ -630,19 +630,28 @@ def _vienna_stations_regex() -> re.Pattern:
 
 
 def text_has_vienna_connection(text: str) -> bool:
-    """Prüft, ob der Text einen echten Bezug zu Wien oder einer Wiener Station hat."""
     if not text:
         return False
 
-    # Mask known non-Vienna combinations to prevent false alias matches
-    text = re.sub(r"Hadersdorf am Kamp|Innsbruck Westbahnhof", "", text, flags=re.IGNORECASE)
+    # 0a. Maskiere spezifische Nicht-Wien-Orte ohne generisches Suffix
+    # Dies verhindert Verwechslungen wie Hadersdorf am Kamp (NÖ) vs. Wien Hadersdorf.
+    text = re.sub(r"Hadersdorf am Kamp", " ", text, flags=re.IGNORECASE)
 
-    # Verhindere Falsch-Positive durch Pendler-Stationen mit "Wien" im Namen
-    cleaned = re.sub(r"Flughafen Wien|Airport Vienna|Vienna Airport", "", text, flags=re.IGNORECASE)
+    # 0b. Maskiere bekannte Nicht-Wien-Bahnhöfe mit generischen Suffixen (inkl. Bratislava/Prag)
+    # Nutzt (?!\w) statt \b am Ende, damit Abkürzungen wie hl.st. korrekt erkannt werden.
+    cities = r"(?:Innsbruck|Salzburg|Linz|Graz|Klagenfurt|Villach|Bregenz|Wels|Steyr|Feldkirch|Dornbirn|St\. Pölten|Wiener Neustadt|Bruck|Leoben|München|Passau|Frankfurt|Berlin|Bratislava|Prag|Budapest)"
+    suffixes = r"(?:Westbahnhof|Ostbahnhof|Südbahnhof|Nordbahnhof|Mitte|Hbf|Hauptbahnhof|Flughafen|Airport|hl\.?\s*st\.?)"
 
+    text_for_matching = re.sub(rf"\b{cities}[\s\-]+{suffixes}(?!\w)", " ", text, flags=re.IGNORECASE)
+
+    # 1. Pendler-Spezialfälle maskieren (verhindert False-Positive beim Wort "Wien")
+    cleaned = re.sub(r"Flughafen Wien|Airport Vienna|Vienna Airport", " ", text_for_matching, flags=re.IGNORECASE)
+
+    # 2. Prüfe auf das eigenständige Wort "Wien" (z.B. als Richtungshinweis)
     if re.search(r"\b(wien|vienna)\b", cleaned, re.IGNORECASE):
         return True
 
+    # 3. Abgleich gegen Wiener Stationen und Aliase aus dem Verzeichnis
     rx = _vienna_stations_regex()
     if rx.search(cleaned):
         return True
