@@ -605,6 +605,40 @@ def vor_station_ids() -> tuple[str, ...]:
 
 
 @lru_cache(maxsize=1)
+def _non_vienna_stations_regex() -> re.Pattern | None:
+    """Kompiliert einen Regex-Ausdruck mit allen bekannten Nicht-Wien/Nicht-Pendler Stationen."""
+    non_vienna = set()
+    for entry in _station_entries():
+        if entry.get("in_vienna") or entry.get("pendler"):
+            continue
+
+        name = str(entry.get("name", "")).strip()
+        if name and not name.isdigit() and len(name) >= 4:
+            non_vienna.add(name)
+
+        for alias in entry.get("aliases", []):
+            if alias:
+                alias_str = str(alias).strip()
+                if alias_str and not alias_str.isdigit() and len(alias_str) >= 4:
+                    non_vienna.add(alias_str)
+
+    if not non_vienna:
+        return None
+
+    sorted_terms = sorted(non_vienna, key=len, reverse=True)
+    pattern = r"(?<!\w)(?:" + "|".join(re.escape(t) for t in sorted_terms) + r")(?!\w)"
+    return re.compile(pattern, re.IGNORECASE)
+
+
+def _mask_non_vienna_stations(text: str) -> str:
+    """Maskiert bekannte Nicht-Wien/Nicht-Pendler Stationen im Text."""
+    regex = _non_vienna_stations_regex()
+    if regex:
+        return regex.sub(" ", text)
+    return text
+
+
+@lru_cache(maxsize=1)
 def _vienna_stations_regex() -> re.Pattern:
     """Kompiliert einen Regex-Ausdruck mit allen bekannten Wiener Stationen."""
     vienna = set()
@@ -633,20 +667,20 @@ def text_has_vienna_connection(text: str) -> bool:
     if not text:
         return False
 
+    # 0. Dynamically mask specific non-Vienna/non-commuter locations
+    text = _mask_non_vienna_stations(text)
+
     # 0a. Maskiere spezifische Nicht-Wien-Orte ohne generisches Suffix
     # Dies verhindert Verwechslungen wie Hadersdorf am Kamp (NÖ) vs. Wien Hadersdorf.
     text = re.sub(r"Hadersdorf am Kamp", " ", text, flags=re.IGNORECASE)
 
-    # 0b. Maskiere bekannte Nicht-Wien-Bahnhöfe mit generischen Suffixen (inkl. Bratislava/Prag)
-    # Nutzt (?!\w) statt \b am Ende, damit Abkürzungen wie hl.st. korrekt erkannt werden.
-    cities = (
-        r"(?:Innsbruck|Salzburg|Linz|Graz|Klagenfurt|Villach|Bregenz|"
-        r"Wels|Steyr|Feldkirch|Dornbirn|St\. Pölten|Wiener Neustadt|"
-        r"Bruck|Leoben|München|Passau|Frankfurt|Berlin|Bratislava|Prag|Budapest)"
+    # 0b. Maskiere ausländische/generische Suffixe nach dem dynamischen Orts-Matching
+    text_for_matching = re.sub(
+        r"\b\w[\w\s\-\.]{2,30}?\s+(?:hl\.?\s*st\.?|hlavní\s+nádraží|Keleti|Nyugati|Déli)\b",
+        " ",
+        text,
+        flags=re.IGNORECASE
     )
-    suffixes = r"(?:Westbahnhof|Ostbahnhof|Südbahnhof|Nordbahnhof|Mitte|Hbf|Hauptbahnhof|Flughafen|Airport|hl\.?\s*st\.?)"
-
-    text_for_matching = re.sub(rf"\b{cities}[\s\-]+{suffixes}(?!\w)", " ", text, flags=re.IGNORECASE)
 
     # 1. Pendler-Spezialfälle maskieren (verhindert False-Positive beim Wort "Wien")
     cleaned = re.sub(r"Flughafen Wien|Airport Vienna|Vienna Airport", " ", text_for_matching, flags=re.IGNORECASE)
