@@ -639,7 +639,11 @@ def text_has_vienna_connection(text: str) -> bool:
 
     # 0b. Maskiere bekannte Nicht-Wien-Bahnhöfe mit generischen Suffixen (inkl. Bratislava/Prag)
     # Nutzt (?!\w) statt \b am Ende, damit Abkürzungen wie hl.st. korrekt erkannt werden.
-    cities = r"(?:Innsbruck|Salzburg|Linz|Graz|Klagenfurt|Villach|Bregenz|Wels|Steyr|Feldkirch|Dornbirn|St\. Pölten|Wiener Neustadt|Bruck|Leoben|München|Passau|Frankfurt|Berlin|Bratislava|Prag|Budapest)"
+    cities = (
+        r"(?:Innsbruck|Salzburg|Linz|Graz|Klagenfurt|Villach|Bregenz|"
+        r"Wels|Steyr|Feldkirch|Dornbirn|St\. Pölten|Wiener Neustadt|"
+        r"Bruck|Leoben|München|Passau|Frankfurt|Berlin|Bratislava|Prag|Budapest)"
+    )
     suffixes = r"(?:Westbahnhof|Ostbahnhof|Südbahnhof|Nordbahnhof|Mitte|Hbf|Hauptbahnhof|Flughafen|Airport|hl\.?\s*st\.?)"
 
     text_for_matching = re.sub(rf"\b{cities}[\s\-]+{suffixes}(?!\w)", " ", text, flags=re.IGNORECASE)
