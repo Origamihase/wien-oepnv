@@ -9,3 +9,7 @@ def test_init_exports_main():
     from src.build_feed import main as build_feed_main
     # Using == for function names to avoid proxy object/import issues with 'is'
     assert src.main.__name__ == build_feed_main.__name__
+
+def test_feed_health_path_in_all():
+    import src.feed.config as config
+    assert "FEED_HEALTH_PATH" in config.__all__

@@ -4,8 +4,10 @@ import re
 from typing import Any, Dict, List, Set, Tuple, Union
 
 # Regex adapted from build_feed.py
-_LINE_PREFIX_RE = re.compile(r"^\s*([A-Za-z0-9]+(?:/[A-Za-z0-9]+){0,20})\s*:\s*")
+_LINE_PREFIX_RE = re.compile(r"^\s*([A-Za-z0-9]+\s*(?:/\s*[A-Za-z0-9]+){0,20})\s*:\s*")
 _LINE_TOKEN_RE = re.compile(r"^(?:\d{1,3}[A-Z]?|[A-Z]{1,4}\d{0,3})$")
+
+_STOP_WORDS = {"störung", "ausfall", "einschränkung", "betrieb", "info", "meldung", "hinweis"}
 
 
 def _parse_title(title: str) -> Tuple[Set[str], str]:
@@ -59,6 +61,20 @@ def _has_significant_overlap(name1: str, name2: str) -> bool:
     union = t1 | t2
     if not union:
         return False
+    # Ignore matches that consist solely of generic stop-words
+    meaningful = intersection - _STOP_WORDS
+    if not meaningful and intersection:
+        # Wait, if both strings are literally ONLY stop words (e.g. "Störung" and "Störung"),
+        # they SHOULD merge because they are essentially the same generic event type!
+        # The bug "False-positive merge on single generic tokens" typically applies when
+        # matching "Störung" with "Störung am Schottentor" -> meaningful intersection is empty for intersection = {"störung"}.
+        # Let's fix this properly: only reject if the UNION contains meaningful words
+        # but the INTERSECTION doesn't.
+        # If the entire UNION is just stop words, it's perfectly fine to merge them!
+        meaningful_union = union - _STOP_WORDS
+        if meaningful_union:
+            return False
+
     if len(intersection) / len(union) >= 0.4:
         return True
 
@@ -213,6 +229,8 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                     # We create a new deterministic GUID based on the new title.
                     # This ensures clients see it as a new/updated item.
                     existing_copy["guid"] = hashlib.sha256(new_title.encode("utf-8")).hexdigest()
+                    existing_copy["_identity"] = existing_copy["guid"]
+                    existing_copy.pop("_calculated_identity", None)
 
                     merged_items[idx] = existing_copy
 

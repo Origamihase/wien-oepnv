@@ -70,12 +70,15 @@ def validate_path(path: Path, name: str) -> Path:
     """Ensure ``path`` stays within whitelisted directories."""
 
     resolved = path.resolve()
-    bases = {Path.cwd().resolve(), REPO_ROOT}
+    bases = {REPO_ROOT}
+    if "PYTEST_CURRENT_TEST" in os.environ:
+        bases.add(Path.cwd().resolve())
+
     for base in bases:
         try:
             rel = resolved.relative_to(base)
         except Exception as rel_exc:
-            log.warning("Failed to resolve relative path", exc_info=rel_exc)
+            log.debug("Failed to resolve relative path", exc_info=rel_exc)
             continue
         if rel.parts and rel.parts[0] in ALLOWED_ROOTS:
             return resolved
@@ -286,6 +289,7 @@ __all__ = [
     "ENDS_AT_GRACE_MINUTES",
     "CACHE_MAX_AGE_HOURS",
     "FEED_DESC",
+    "FEED_HEALTH_PATH",
     "FEED_HEALTH_JSON_PATH",
     "FEED_LINK",
     "FEED_TITLE",

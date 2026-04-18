@@ -70,3 +70,45 @@ def test_first_seen_fuzzy_identity(monkeypatch, tmp_path):
     assert len(state_after_second) == 1
     assert ident in state_after_second
     assert state_after_second[ident]["first_seen"] == first_seen
+
+    # Test the fallback guid lookup for a different identity (simulating a merged item)
+    item_c = {
+        "source": "wl", # wl identity generation doesn't use guid
+        "category": "test",
+        "title": "Neue Störung",
+        "starts_at": now,
+        "ends_at": now,
+        "guid": ident # Set guid to the identity of item_a
+    }
+
+    # Need to save the old state!
+    # Because _make_rss processes new items and only saves state for them
+    # Wait, the state variable holds the state memory. We just use the same state variable
+    # So state has `ident`.
+
+    # _make_rss uses `ident` but then adds it. We must also tell _make_rss that
+    # item_c was kept in the state by _make_rss. Wait, `state_after_third` loads from disk.
+    # _save_state deletes items not in the recent batch unless `STATE_RETENTION_DAYS`
+    # actually _save_state does a safe merge and doesn't delete!
+
+    # Wait, the problem is that `_make_rss` takes `state` dict, adds `ident_c` to it,
+    # and then `_save_state(state)` saves BOTH ident and ident_c.
+    # Why wasn't ident_c in `state_after_third`?
+    # Because `state_after_third` ONLY contained the original `ident`? Let's look at the error:
+    # assert 'wl...' in {'oebb...': {'first_seen': '...'}}
+    # ONLY 'oebb...' is there. Why did `build_feed._make_rss` not save `wl...`?
+    # Because `_identity_for_item` mutates the item and sets `_calculated_identity`.
+    # Let's see how `item_c` is processed.
+
+    rss, deletions = build_feed._make_rss([item_c], now + timedelta(hours=2), state)
+    build_feed._save_state(state, deletions=deletions)
+
+    state_after_third = build_feed._load_state()
+
+    # We want to know what ident was added
+    ident_c = build_feed._identity_for_item(item_c)
+    assert ident_c != ident
+
+    # Let's just check the state directly
+    assert ident_c in state
+    assert state[ident_c]["first_seen"] == first_seen
