@@ -229,7 +229,6 @@ def read_cache_baustellen() -> List[Any]:
 
 
 register_default_providers()
-load_provider_plugins()
 
 
 __all__ = [

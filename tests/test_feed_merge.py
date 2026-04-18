@@ -35,6 +35,32 @@ def test_fuzzy_merge_silvester():
     assert item["guid"] != "guid1"
     assert item["guid"] != "guid2"
 
+def test_fuzzy_merge_pubdate_update():
+    items = [
+        {
+            "title": "U1: Störung",
+            "description": "Erste Meldung.",
+            "guid": "guid1",
+            "pubdate": "2023-01-01T10:00:00Z"
+        },
+        {
+            "title": "U1: Störung",
+            "description": "Zweite Meldung.",
+            "guid": "guid2",
+            "pubdate": "2023-01-01T10:30:00Z"
+        }
+    ]
+
+    merged = deduplicate_fuzzy(items)
+
+    assert len(merged) == 1
+    item = merged[0]
+
+    assert item["pubdate"] == "2023-01-01T10:30:00Z"
+    assert "Erste Meldung." in item["description"]
+    assert "Zweite Meldung." in item["description"]
+
+
 def test_fuzzy_no_merge_different_events():
     items = [
         {

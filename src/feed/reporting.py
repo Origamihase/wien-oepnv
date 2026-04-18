@@ -107,8 +107,11 @@ class _RunErrorCollector(logging.Handler):
         super().__init__(level=logging.ERROR)
         self.report = report
         self._formatter = logging.Formatter()
+        self._detached = False
 
     def emit(self, record: logging.LogRecord) -> None:
+        if self._detached:
+            return
         try:
             msg = record.getMessage()
         except Exception:
@@ -278,6 +281,7 @@ class RunReport:
     def detach_error_collector(self) -> None:
         if self._error_collector is None:
             return
+        self._error_collector._detached = True
         logging.getLogger().removeHandler(self._error_collector)
         self._error_collector = None
 
@@ -385,9 +389,14 @@ class RunReport:
                     "Hinweis: Fehler während des Feed-Laufs – Details siehe %s",
                     error_log_path,
                 )
-                if not self._issue_submitted:
+                with self._lock:
+                    if not self._issue_submitted:
+                        self._issue_submitted = True
+                        submit_now = True
+                    else:
+                        submit_now = False
+                if submit_now:
                     _submit_github_issue(self)
-                    self._issue_submitted = True
         finally:
             self.detach_error_collector()
 
