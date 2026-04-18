@@ -646,7 +646,11 @@ def _identity_for_item(item: FeedItem) -> str:
     source = (item.get("source") or "").lower()
     category = (item.get("category") or "").lower()
     if "öbb" in source or "oebb" in source:
-        result = f"oebb|F={fuzzy_hash}"
+        guid_or_link = item.get("guid") or item.get("link")
+        if guid_or_link:
+            result = f"oebb|{guid_or_link}"
+        else:
+            result = f"oebb|F={fuzzy_hash}"
     else:
         lines = _parse_lines_from_title(title)
         lines_part = "L=" + "/".join(lines) if lines else "L="
@@ -795,6 +799,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                 futures: Dict[Any, Tuple[Any, str, int]] = {}
                 deadlines: Dict[Any, Optional[float]] = {}
                 pending: set[Any] = set()
+                cancelled_futures: set[Any] = set()
                 semaphores: Dict[str, BoundedSemaphore] = {}
 
                 for fetch in network_fetchers:
@@ -828,6 +833,13 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                             concurrency_key,
                         )
                     supports_timeout = _fetch_supports_timeout(fetch)
+
+                    if effective_timeout == 0:
+                        report.provider_started(provider_name)
+                        name = getattr(fetch, "__name__", str(fetch))
+                        log.error("%s fetch Timeout nach 0s", name)
+                        report.provider_error(provider_name, "Timeout nach 0s")
+                        continue
 
                     def _run_fetch(
                         fetch: Any = fetch,
@@ -864,13 +876,6 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         finally:
                             semaphore.release()
 
-                    if effective_timeout == 0:
-                        report.provider_started(provider_name)
-                        name = getattr(fetch, "__name__", str(fetch))
-                        log.error("%s fetch Timeout nach 0s", name)
-                        report.provider_error(provider_name, "Timeout nach 0s")
-                        continue
-
                     report.provider_started(provider_name)
                     future = executor.submit(_run_fetch)
                     futures[future] = (fetch, provider_name, effective_timeout)
@@ -898,6 +903,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                             f"Timeout nach {timeout_value}s",
                         )
                         future.cancel()
+                        cancelled_futures.add(future)
 
                     if not pending:
                         break
@@ -917,6 +923,8 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
 
                     for future in done:
                         pending.discard(future)
+                        if future in cancelled_futures:
+                            continue
                         fetch, provider_name, timeout_value = futures[future]
                         name = getattr(fetch, "__name__", str(fetch))
                         try:
@@ -1314,6 +1322,10 @@ def _emit_item(
 
     desc_html = "<br/>".join(desc_parts)
 
+    # Plain text summary for <description>
+    desc_text = " ".join(desc_parts)
+    desc_text_truncated = truncate_html(desc_text, feed_config.DESCRIPTION_CHAR_LIMIT, ellipsis="... [TRUNCATED]")
+
     # Truncate HTML descriptions using the HTML-aware truncator to prevent broken layout/XSS.
     desc_html = truncate_html(desc_html, feed_config.DESCRIPTION_CHAR_LIMIT, ellipsis="... [TRUNCATED]")
 
@@ -1328,11 +1340,9 @@ def _emit_item(
     # Ensure placeholder is not accidentally present in the original desc_html or raw_desc
     while True:
         uid = secrets.token_hex(16)
-        PH_DESC = f"___CDATA_DESC_{uid}___"
         PH_CONTENT = f"___CDATA_CONTENT_{uid}___"
         PH_TITLE = f"___CDATA_TITLE_{uid}___"
-        if (PH_DESC not in desc_html and PH_CONTENT not in desc_html and
-                PH_DESC not in raw_desc and PH_CONTENT not in raw_desc and PH_TITLE not in title_out):
+        if PH_CONTENT not in desc_html and PH_CONTENT not in raw_desc and PH_TITLE not in title_out:
             break
 
     # --- ElementTree Construction ---
@@ -1367,13 +1377,12 @@ def _emit_item(
         ET.SubElement(item, "{https://wien-oepnv.example/schema}ends_at").text = _fmt_rfc2822(ends_at)
 
     # Description
-    ET.SubElement(item, "description").text = PH_DESC
+    ET.SubElement(item, "description").text = desc_text_truncated
 
     # content:encoded
     ET.SubElement(item, "{http://purl.org/rss/1.0/modules/content/}encoded").text = PH_CONTENT
 
     replacements = {
-        PH_DESC: f"<![CDATA[{desc_cdata}]]>",
         PH_CONTENT: f"<![CDATA[{desc_cdata}]]>",
         PH_TITLE: f"<![CDATA[{title_cdata}]]>",
     }
