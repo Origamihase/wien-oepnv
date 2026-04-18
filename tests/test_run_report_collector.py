@@ -1,5 +1,5 @@
 import logging
-from src.feed.reporting import RunReport, _RunErrorCollector
+from src.feed.reporting import RunReport
 
 def test_run_error_collector_emits_error():
     report = RunReport([])
