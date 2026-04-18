@@ -30,7 +30,7 @@ def test_sort_key_handles_none_guid(monkeypatch, tmp_path):
     """
     Verify that _sort_key handles cases where 'guid' is explicitly None in the item dict.
     """
-    monkeypatch.chdir(tmp_path)
+
     monkeypatch.setenv("OUT_PATH", "docs/feed.xml")
     monkeypatch.setenv("LOG_DIR", "log")
 
@@ -74,3 +74,37 @@ def test_sort_key_handles_none_guid(monkeypatch, tmp_path):
 
     assert isinstance(key3[2], str)
     assert key3[2] == "some-guid"
+
+def test_deterministic_sorting_fallback(monkeypatch, tmp_path):
+
+    build_feed = _import_build_feed(monkeypatch)
+
+    now = datetime(2024, 1, 1, 12, 0, tzinfo=timezone.utc)
+    # Identical pubDates, but no guids
+    items = [
+        {"title": "Item C", "pubDate": now},
+        {"title": "Item A", "pubDate": now},
+        {"title": "Item B", "pubDate": now},
+    ]
+
+    # Generate keys using _sort_key
+    sorted_items = sorted(items, key=build_feed._sort_key)
+
+    # Ensure they don't error out, and order is deterministic.
+    # The _sort_key will generate strings via _identity_for_item
+    # For these items, identity includes "T=Item C|F=...", "T=Item A|F=...", etc.
+    # Check that sorting relies on _identity_for_item
+
+    ident_a = build_feed._identity_for_item(items[1])
+    ident_b = build_feed._identity_for_item(items[2])
+    ident_c = build_feed._identity_for_item(items[0])
+
+    # Construct expected sorted order based on identities
+    expected_order = sorted([
+        {"item": items[0], "ident": ident_c},
+        {"item": items[1], "ident": ident_a},
+        {"item": items[2], "ident": ident_b},
+    ], key=lambda x: x["ident"])
+
+    # We assert that the sorted result matches the one ordered by identities directly
+    assert [it["title"] for it in sorted_items] == [x["item"]["title"] for x in expected_order]

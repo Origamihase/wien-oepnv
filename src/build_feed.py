@@ -1386,7 +1386,7 @@ def _make_rss(
     now: datetime,
     state: Dict[str, Dict[str, Any]],
     deletions: Optional[Set[str]] = None,
-) -> str:
+) -> Tuple[str, Optional[Set[str]]]:
     """
     Generate the full RSS XML document from a list of items using ElementTree.
 
@@ -1397,7 +1397,9 @@ def _make_rss(
         deletions: IDs to be removed from the state.
 
     Returns:
-        The generated RSS XML string with CDATA sections.
+        A tuple containing:
+        - The generated RSS XML string with CDATA sections.
+        - The deletions set.
     """
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
@@ -1432,15 +1434,7 @@ def _make_rss(
     for placeholder, cdata in item_replacements.items():
         xml_str = xml_str.replace(placeholder, cdata)
 
-    try:
-        _save_state(state, deletions=deletions)
-    except Exception as e:
-        log.warning(
-            "State speichern fehlgeschlagen (%s) – Feed wird trotzdem zurückgegeben.",
-            e,
-        )
-
-    return xml_str
+    return xml_str, deletions
 
 
 def lint() -> int:
@@ -1675,7 +1669,7 @@ def main() -> int:
         )
 
         rss_start = perf_counter()
-        rss = _make_rss(items, now, state, deletions=dropped_ids)
+        rss, returned_deletions = _make_rss(items, now, state, deletions=dropped_ids)
         rss_duration = perf_counter() - rss_start
 
         out_path = validate_path(Path(feed_config.OUT_PATH), "OUT_PATH")
@@ -1683,6 +1677,14 @@ def main() -> int:
             out_path, mode="w", encoding="utf-8", permissions=0o644
         ) as f:
             f.write(rss)
+
+        try:
+            _save_state(state, deletions=returned_deletions)
+        except Exception as e:
+            log.warning(
+                "State speichern fehlgeschlagen (%s) – Feed wurde geschrieben, State bleibt veraltet.",
+                e,
+            )
 
         total_duration = perf_counter() - job_start
         log.info(

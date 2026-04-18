@@ -57,6 +57,7 @@ def test_first_seen_fuzzy_identity(monkeypatch, tmp_path):
 
     state = build_feed._load_state()
     build_feed._make_rss([item_a], now, state)
+    build_feed._save_state(state)
     state_after_first = build_feed._load_state()
     assert len(state_after_first) == 1
     ident = next(iter(state_after_first.keys()))
@@ -64,6 +65,7 @@ def test_first_seen_fuzzy_identity(monkeypatch, tmp_path):
 
     state = build_feed._load_state()
     build_feed._make_rss([item_b], now + timedelta(hours=1), state)
+    build_feed._save_state(state)
     state_after_second = build_feed._load_state()
     assert len(state_after_second) == 1
     assert ident in state_after_second

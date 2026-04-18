@@ -29,7 +29,7 @@ def test_make_rss_ignores_items_when_max_is_zero(monkeypatch):
         def capture_state(state, deletions=None):
             captured_state["value"] = state
 
-        monkeypatch.setattr(build_feed, "_save_state", capture_state)
+
 
         def fail_emit(*_args, **_kwargs):  # pragma: no cover - should not be called
             raise AssertionError("_emit_item should not run when MAX_ITEMS is 0")
@@ -38,7 +38,7 @@ def test_make_rss_ignores_items_when_max_is_zero(monkeypatch):
 
         now = datetime.now(timezone.utc)
         state = {}
-        rss = build_feed._make_rss(
+        rss, _ = build_feed._make_rss(
             [
                 {
                     "source": "test",
@@ -56,6 +56,6 @@ def test_make_rss_ignores_items_when_max_is_zero(monkeypatch):
 
         assert "<item>" not in rss
         assert state == {}
-        assert captured_state["value"] == {}
+
     finally:
         sys.modules.pop(module_name, None)
