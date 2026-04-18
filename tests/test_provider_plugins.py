@@ -213,3 +213,45 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
         monkeypatch.delenv("WIEN_OEPNV_PROVIDER_PLUGINS", raising=False)
         sys.modules.pop(module_name, None)
         importlib.reload(build_feed)
+
+def test_full_build_loads_plugins_subprocess(tmp_path):
+    import subprocess
+    import sys
+    import os
+
+    # Create a temporary plugin module
+    plugin_path = tmp_path / "mock_plugin_entrypoint.py"
+    plugin_path.write_text("""
+def loader():
+    return []
+
+def register_providers(register_provider):
+    import sys
+    # Print a specific marker so we can detect it in stdout
+    print("MOCK_PLUGIN_REGISTERED")
+    register_provider("MOCK_PLUGIN_ENABLE", loader, cache_key="mock_plugin")
+""")
+
+    # We want to run a small python script that just imports build_feed
+    # and we verify it prints the marker.
+    # It must have the temp directory in PYTHONPATH to find the plugin.
+    test_script = tmp_path / "run_build.py"
+    test_script.write_text("""
+import sys
+sys.path.insert(0, 'src')
+import build_feed
+""")
+
+    env = os.environ.copy()
+    env["PYTHONPATH"] = f"src{os.pathsep}{str(tmp_path)}"
+    env["WIEN_OEPNV_PROVIDER_PLUGINS"] = "mock_plugin_entrypoint"
+
+    result = subprocess.run(
+        [sys.executable, str(test_script)],  # noqa: S603
+        capture_output=True,
+        text=True,
+        env=env,
+        check=True
+    )
+
+    assert "MOCK_PLUGIN_REGISTERED" in result.stdout
