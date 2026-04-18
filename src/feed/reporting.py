@@ -108,7 +108,7 @@ class _RunErrorCollector(logging.Handler):
         self.report = report
         self._formatter = logging.Formatter()
 
-    def emit(self, record: logging.LogRecord) -> None:  # pragma: no cover - defensive
+    def emit(self, record: logging.LogRecord) -> None:
         try:
             msg = record.getMessage()
         except Exception:
@@ -144,6 +144,7 @@ class RunReport:
     finished_at: Optional[datetime] = None
     _error_collector: Optional[_RunErrorCollector] = None
     _lock: RLock = field(default_factory=RLock)
+    _issue_submitted: bool = False
 
     def __post_init__(self) -> None:
         for name, enabled in self.statuses:
@@ -210,6 +211,7 @@ class RunReport:
 
     def provider_error(self, name: str, message: str | None = None) -> None:
         """Record a provider failure with an error message."""
+        cleaned = ""
         with self._lock:
             entry = self.providers.get(name)
             if entry is None:
@@ -383,7 +385,9 @@ class RunReport:
                     "Hinweis: Fehler während des Feed-Laufs – Details siehe %s",
                     error_log_path,
                 )
-                _submit_github_issue(self)
+                if not self._issue_submitted:
+                    _submit_github_issue(self)
+                    self._issue_submitted = True
         finally:
             self.detach_error_collector()
 

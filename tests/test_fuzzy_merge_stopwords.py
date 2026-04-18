@@ -10,6 +10,9 @@ def test_has_significant_overlap_stopwords():
     # Should not merge.
     assert not _has_significant_overlap("Störung", "Störung am Schottentor")
 
+    # Exact same stopwords only
+    assert _has_significant_overlap("Störung", "Störung")
+
     # Meaningful overlap -> True
     # intersection: {'schottentor'}, union: {'schottentor', 'störung', 'info', 'ausfall'}
     # length: 1 / 4 = 0.25 (not >= 0.4) so this returns False. Let's make it >= 0.4
