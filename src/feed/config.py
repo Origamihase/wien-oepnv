@@ -95,7 +95,6 @@ def resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: bool
     if not candidate_str:
         validate_path(default_path, env_name)
         resolved_default = Path(default_path)
-        os.environ[env_name] = resolved_default.as_posix()
         return resolved_default
 
     candidate_path = Path(candidate_str)
@@ -111,12 +110,10 @@ def resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: bool
             if candidate_parts[-len(default_parts):] == default_parts:
                 validate_path(default_path, env_name)
                 fallback = Path(default_path)
-                os.environ[env_name] = fallback.as_posix()
                 return fallback
 
         validate_path(default_path, env_name)
         fallback_path = Path(default_path)
-        os.environ[env_name] = fallback_path.as_posix()
         return fallback_path
     os.environ[env_name] = resolved.as_posix()
     return resolved
@@ -215,8 +212,8 @@ def _load_from_env() -> None:
     DESCRIPTION_CHAR_LIMIT = max(
         get_int_env("DESCRIPTION_CHAR_LIMIT", DEFAULT_DESCRIPTION_CHAR_LIMIT), 0
     )
-    FRESH_PUBDATE_WINDOW_MIN = get_int_env(
-        "FRESH_PUBDATE_WINDOW_MIN", DEFAULT_FRESH_PUBDATE_WINDOW_MIN
+    FRESH_PUBDATE_WINDOW_MIN = max(
+        get_int_env("FRESH_PUBDATE_WINDOW_MIN", DEFAULT_FRESH_PUBDATE_WINDOW_MIN), 0
     )
     MAX_ITEMS = max(get_int_env("MAX_ITEMS", DEFAULT_MAX_ITEMS), 0)
     MAX_ITEM_AGE_DAYS = max(

@@ -31,28 +31,11 @@ class SafeFormatter(logging.Formatter):
     """
 
     def format(self, record: logging.LogRecord) -> str:
-        # Sanitize the raw message
-        # We modify the record.msg temporarily or work on a copy to avoid side effects?
-        # Ideally, we format the message first (args substitution) then sanitize.
-
-        # Standard logging does: msg % args
-        # But if args contains secrets, we want to sanitize them too.
-        # sanitize_log_message handles string sanitization.
-
-        # If we use record.getMessage(), it does the substitution.
+        record = logging.makeLogRecord(record.__dict__)
         original_msg = record.getMessage()
         sanitized_msg = sanitize_log_message(original_msg)
-
-        # We replace the message in the record temporarily for formatting
-        # Be careful not to mutate record permanently if other formatters need raw data (unlikely here)
-        # But for safety, we can clone? No, logging records are passed around.
-        # Let's just update it.
-
-        # Wait, if we use getMessage(), it merges args.
-        # If we then set record.msg = sanitized_msg and record.args = (), we are safe.
         record.msg = sanitized_msg
         record.args = ()
-
         formatted = super().format(record)
         return formatted.replace("\n", "\\n").replace("\r", "\\r")
 
@@ -121,13 +104,6 @@ class SafeJSONFormatter(logging.Formatter):
         return sanitized.replace("\n", "\\n").replace("\r", "\\r")
 
     def formatException(self, ei: Any) -> str:
-        if ei and len(ei) == 3:
-            _, _, tb = ei
-            while tb is not None:
-                if tb.tb_frame:
-                    tb.tb_frame.clear()
-                tb = tb.tb_next
-
         s = super().formatException(ei)
         # Redact secrets but preserve newlines (JSON handles them)
         return sanitize_log_message(s, strip_control_chars=False)
