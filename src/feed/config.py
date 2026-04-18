@@ -115,7 +115,6 @@ def resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: bool
         validate_path(default_path, env_name)
         fallback_path = Path(default_path)
         return fallback_path
-    os.environ[env_name] = resolved.as_posix()
     return resolved
 
 
