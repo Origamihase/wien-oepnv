@@ -49,3 +49,15 @@ def test_pubdate_not_added_after_window(monkeypatch):
     item = {"_identity": "id", "title": "A"}
     _, xml = _emit_item_str(build_feed, item, now, state)
     assert "<pubDate>" not in xml
+
+
+def test_fresh_pubdate_window_min_rejects_negative_values(monkeypatch):
+    monkeypatch.setenv("FRESH_PUBDATE_WINDOW_MIN", "-10")
+    # Need to reload config to pick up the env var change
+    from src.feed import config
+    config.refresh_from_env()
+    assert config.FRESH_PUBDATE_WINDOW_MIN == 0
+
+    monkeypatch.setenv("FRESH_PUBDATE_WINDOW_MIN", "15")
+    config.refresh_from_env()
+    assert config.FRESH_PUBDATE_WINDOW_MIN == 15

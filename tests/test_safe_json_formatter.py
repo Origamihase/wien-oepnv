@@ -2,9 +2,43 @@ import logging
 import json
 import unittest
 from io import StringIO
-from src.feed.logging_safe import SafeJSONFormatter
+import sys
+from src.feed.logging_safe import SafeJSONFormatter, SafeFormatter
 
 class TestSafeJSONFormatter(unittest.TestCase):
+    def test_format_exception_does_not_clear_frames(self):
+        try:
+            1 / 0
+        except ZeroDivisionError:
+            ei = sys.exc_info()
+
+        tb = ei[2]
+        self.assertIsNotNone(tb.tb_frame.f_locals)
+
+        formatter = SafeJSONFormatter()
+        formatter.formatException(ei)
+
+        # Frame should still exist
+        self.assertIsNotNone(tb.tb_frame.f_locals)
+        self.assertTrue(len(tb.tb_frame.f_locals) > 0)
+
+    def test_safe_formatter_format_does_not_mutate_record(self):
+        record = logging.LogRecord(
+            name="test",
+            level=logging.INFO,
+            pathname="test.py",
+            lineno=1,
+            msg="Hello %s",
+            args=("world",),
+            exc_info=None,
+        )
+
+        formatter = SafeFormatter("%(message)s")
+        formatter.format(record)
+
+        self.assertEqual(record.msg, "Hello %s")
+        self.assertEqual(record.args, ("world",))
+
     def test_extra_dict_leak(self):
         """Test that secrets in nested dictionaries in 'extra' are redacted."""
         logger = logging.getLogger("test_json_leak")

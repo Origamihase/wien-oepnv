@@ -69,7 +69,7 @@ def test_main_success(monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCapture
     caplog.set_level(logging.INFO, logger="places.verify")
 
     assert verify.main([]) == 0
-    assert any("Places API access verified" in record.message for record in caplog.records)
+    assert any("Places API access verified" in record.getMessage() for record in caplog.records)
 
 
 def test_main_permission_denied(monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture) -> None:
@@ -78,8 +78,8 @@ def test_main_permission_denied(monkeypatch: pytest.MonkeyPatch, caplog: pytest.
     caplog.set_level(logging.INFO, logger="places.verify")
 
     assert verify.main([]) == 1
-    assert any("Places API denied" in record.message for record in caplog.records)
-    assert any("Places API (New)" in record.message for record in caplog.records)
+    assert any("Places API denied" in record.getMessage() for record in caplog.records)
+    assert any("Places API (New)" in record.getMessage() for record in caplog.records)
 
 
 def test_main_generic_error(monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture) -> None:
@@ -88,4 +88,4 @@ def test_main_generic_error(monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogC
     caplog.set_level(logging.INFO, logger="places.verify")
 
     assert verify.main([]) == 1
-    assert any("Places API request failed" in record.message for record in caplog.records)
+    assert any("Places API request failed" in record.getMessage() for record in caplog.records)

@@ -28,6 +28,6 @@ def test_station_alias_collision_logs_warning(tmp_path, caplog, monkeypatch):
         stations._station_entries.cache_clear()
         stations._station_lookup.cache_clear()
 
-    warnings = [record.message for record in caplog.records if record.levelno == logging.WARNING]
+    warnings = [record.getMessage() for record in caplog.records if record.levelno == logging.WARNING]
     assert any("Duplicate station alias" in message for message in warnings)
     assert any("First Station" in message and "Second Station" in message for message in warnings)

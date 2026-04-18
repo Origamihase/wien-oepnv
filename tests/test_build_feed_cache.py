@@ -44,9 +44,9 @@ def test_collect_items_missing_cache_logs_warning(monkeypatch, tmp_path, caplog)
     assert items == []
 
     cache_warnings = {
-        record.message
+        record.getMessage()
         for record in caplog.records
-        if record.name == "build_feed" and "Cache für Provider" in record.message
+        if record.name == "build_feed" and "Cache für Provider" in record.getMessage()
     }
     assert cache_warnings == {
         "Cache für Provider 'wl' leer – generiere Feed ohne aktuelle Daten.",
@@ -93,9 +93,9 @@ def test_main_runs_without_network(monkeypatch, tmp_path, caplog):
     assert out_file.exists()
 
     cache_messages = [
-        record.message
+        record.getMessage()
         for record in caplog.records
-        if record.name == "build_feed" and "Cache für Provider" in record.message
+        if record.name == "build_feed" and "Cache für Provider" in record.getMessage()
     ]
     assert set(cache_messages) == {
         "Cache für Provider 'wl' leer – generiere Feed ohne aktuelle Daten.",

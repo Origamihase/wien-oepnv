@@ -19,7 +19,7 @@ def test_resolve_env_path_uses_default_for_whitespace(monkeypatch):
     resolved = feed_config.resolve_env_path("CUSTOM_PATH", default)
 
     assert resolved == default
-    assert os.getenv("CUSTOM_PATH") == default.as_posix()
+    assert os.getenv("CUSTOM_PATH") == "   \t   "
 
 
 def test_resolve_env_path_normalizes_valid_input(monkeypatch):
@@ -63,4 +63,4 @@ def test_resolve_env_path_falls_back_when_allowed(monkeypatch):
     )
 
     assert resolved == default
-    assert os.getenv("CUSTOM_PATH") == default.as_posix()
+    assert os.getenv("CUSTOM_PATH") == "../evil/outside.log"

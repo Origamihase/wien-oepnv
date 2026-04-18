@@ -61,7 +61,7 @@ def test_run_report_logs_warning_when_credentials_missing(monkeypatch, caplog):
 
     assert not responses.calls
     warning_messages = [
-        record.message for record in caplog.records if record.name == "build_feed"
+        record.getMessage() for record in caplog.records if record.name == "build_feed"
     ]
     assert any("Token oder Repository fehlen" in message for message in warning_messages)
 
@@ -92,7 +92,7 @@ def test_run_report_sanitizes_github_error_details(monkeypatch, caplog):
     report.log_results()
 
     warning_messages = [
-        record.message for record in caplog.records if record.name == "build_feed"
+        record.getMessage() for record in caplog.records if record.name == "build_feed"
     ]
     assert any("Bad request data with controls" in message for message in warning_messages)
     assert all("\n" not in message and "\t" not in message for message in warning_messages)

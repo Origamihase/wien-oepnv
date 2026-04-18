@@ -47,7 +47,7 @@ def test_format_local_times_end_before_start_future(monkeypatch, caplog):
     assert result == "Ab 05.01.2023"
 
     # Verify the warning was logged
-    warnings = [record.message for record in caplog.records if record.levelname == "WARNING"]
+    warnings = [record.getMessage() for record in caplog.records if record.levelname == "WARNING"]
     assert "Enddatum liegt vor Startdatum" in warnings
 
 
@@ -74,5 +74,5 @@ def test_format_local_times_end_before_start_past(monkeypatch, caplog):
     assert result == "Seit 05.01.2023"
 
     # Verify the warning was logged
-    warnings = [record.message for record in caplog.records if record.levelname == "WARNING"]
+    warnings = [record.getMessage() for record in caplog.records if record.levelname == "WARNING"]
     assert "Enddatum liegt vor Startdatum" in warnings
