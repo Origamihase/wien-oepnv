@@ -151,10 +151,10 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                         if desc_oebb and " ".join(desc_oebb.split()) not in " ".join(desc_vor.split()):
                             new_existing["description"] = f"{desc_vor}\n\n{desc_oebb}".strip()
 
-                        # Update the list with the modified copy
-                        merged_items[idx] = new_existing
                         new_existing["_identity"] = new_existing.get("guid", "")
                         new_existing.pop("_calculated_identity", None)
+                        # Update the list with the modified copy
+                        merged_items[idx] = new_existing
                         # Do NOT update GUID or Title from ÖBB (keep VOR master data)
                         merged = True
                         break
@@ -173,9 +173,9 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                         if desc_oebb and " ".join(desc_oebb.split()) not in " ".join(desc_vor.split()):
                             new_existing["description"] = f"{desc_vor}\n\n{desc_oebb}".strip()
 
-                        merged_items[idx] = new_existing
                         new_existing["_identity"] = new_existing.get("guid", "")
                         new_existing.pop("_calculated_identity", None)
+                        merged_items[idx] = new_existing
                         merged = True
                         break
 
