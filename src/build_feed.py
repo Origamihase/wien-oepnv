@@ -138,6 +138,10 @@ DEFAULT_PROVIDERS: Tuple[Tuple[str, Any], ...] = (
 
 PROVIDERS: List[Tuple[str, Any]] = list(DEFAULT_PROVIDERS)
 
+# Ensure plugins are loaded exactly once per process startup AFTER env vars are configured
+# and BEFORE the main provider registration loop.
+load_provider_plugins()
+
 for env_name, loader in PROVIDERS:
     register_provider(env_name, loader, cache_key=resolve_provider_name(loader, env_name))
 
