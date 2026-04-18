@@ -24,3 +24,16 @@ def test_bratislava_hl_st_is_false():
 def test_via_wien_regression_is_true():
     # MUST return True. (The text explicitly contains 'Wien').
     assert text_has_vienna_connection("REX 8: Marchegg ↔ Bratislava hl.st. via Wien") is True
+
+def test_villach_westbahnhof_is_false():
+    # MUST return False.
+    assert text_has_vienna_connection("Villach ↔ Villach Westbahnhof") is False
+
+def test_villach_rettungseinsatz_is_false():
+    # MUST return False. (Multiple instances of non-vienna station names with suffixes).
+    text = "Wegen eines Rettungseinsatzes sind zwischen Villach Hbf und Villach Westbahnhof keine Fahrten möglich."
+    assert text_has_vienna_connection(text) is False
+
+def test_st_poelten_hbf_is_false():
+    # MUST return False.
+    assert text_has_vienna_connection("St. Pölten Hbf ist groß.") is False

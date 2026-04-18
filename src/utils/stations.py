@@ -626,7 +626,14 @@ def _non_vienna_stations_regex() -> re.Pattern | None:
         return None
 
     sorted_terms = sorted(non_vienna, key=len, reverse=True)
-    pattern = r"(?<!\w)(?:" + "|".join(re.escape(t) for t in sorted_terms) + r")(?!\w)"
+
+    # Ergänze optionale generische Suffixe für Bahnhöfe
+    suffixes = (
+        r"(?:\s+(?:Hbf|Hauptbahnhof|Westbahnhof|Ostbahnhof|"
+        r"Südbahnhof|Nordbahnhof|Bahnhof|Bf|hl\.?\s*st\.?|"
+        r"hlavní\s+nádraží|Keleti|Nyugati|Déli)(?!\w))?"
+    )
+    pattern = r"(?<!\w)(?:" + "|".join(re.escape(t) for t in sorted_terms) + r")(?!\w)" + suffixes
     return re.compile(pattern, re.IGNORECASE)
 
 
@@ -672,15 +679,7 @@ def text_has_vienna_connection(text: str) -> bool:
 
     # 0a. Maskiere spezifische Nicht-Wien-Orte ohne generisches Suffix
     # Dies verhindert Verwechslungen wie Hadersdorf am Kamp (NÖ) vs. Wien Hadersdorf.
-    text = re.sub(r"Hadersdorf am Kamp", " ", text, flags=re.IGNORECASE)
-
-    # 0b. Maskiere ausländische/generische Suffixe nach dem dynamischen Orts-Matching
-    text_for_matching = re.sub(
-        r"\b\w[\w\s\-\.]{2,30}?\s+(?:hl\.?\s*st\.?|hlavní\s+nádraží|Keleti|Nyugati|Déli)(?!\w)",
-        " ",
-        text,
-        flags=re.IGNORECASE
-    )
+    text_for_matching = re.sub(r"Hadersdorf am Kamp", " ", text, flags=re.IGNORECASE)
 
     # 1. Pendler-Spezialfälle maskieren (verhindert False-Positive beim Wort "Wien")
     cleaned = re.sub(r"Flughafen Wien|Airport Vienna|Vienna Airport", " ", text_for_matching, flags=re.IGNORECASE)
