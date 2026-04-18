@@ -90,7 +90,7 @@ def test_vor_description_keeps_extra_lines(monkeypatch):
     _, xml_item = _emit_item_str(items[0], now, {})
 
     desc_match = re.search(
-        r"<description><!\[CDATA\[(.*?)\]\]></description>",
+        r"<description>(.*?)</description>",
         xml_item,
         re.DOTALL,
     )
@@ -104,16 +104,15 @@ def test_vor_description_keeps_extra_lines(monkeypatch):
     desc_html = desc_match.group(1)
     content_html = content_match.group(1)
 
-    desc_lines = desc_html.split("<br/>")
     content_lines = content_html.split("<br/>")
 
-    assert content_html == desc_html
-    assert content_lines == desc_lines
+    assert "Ersatzverkehr zwischen Floridsdorf und Praterstern." in desc_html
+    assert "Ersatzverkehr zwischen Floridsdorf und Praterstern." in content_html
 
-    for lines in (desc_lines, content_lines):
-        # Strict 2-line layout
-        # Line 1: Summary
-        assert lines[0] == "Ersatzverkehr zwischen Floridsdorf und Praterstern."
-        # Line 2: Timeframe (Lines and Stops are removed)
-        assert lines[1] == "[Seit 15.07.2023]"
-        assert len(lines) == 2
+    # Verify the plain text description format
+    assert desc_html == "Ersatzverkehr zwischen Floridsdorf und Praterstern. [Seit 15.07.2023]"
+
+    # Verify the HTML layout in content:encoded
+    assert len(content_lines) == 2
+    assert content_lines[0] == "Ersatzverkehr zwischen Floridsdorf und Praterstern."
+    assert content_lines[1] == "[Seit 15.07.2023]"

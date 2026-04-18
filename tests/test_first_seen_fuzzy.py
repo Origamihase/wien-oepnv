@@ -38,7 +38,7 @@ def test_first_seen_fuzzy_identity(monkeypatch, tmp_path):
     item_a = {
         "source": "oebb",
         "category": "test",
-        "guid": "A",
+            # Exclude guid/link to force fallback hash
         "title": "Störung",
         "starts_at": now,
         "ends_at": now,
@@ -46,7 +46,7 @@ def test_first_seen_fuzzy_identity(monkeypatch, tmp_path):
     item_b = {
         "source": "oebb",
         "category": "test",
-        "guid": "B",
+            # Exclude guid/link to force fallback hash
         "title": "Störung",
         "starts_at": now,
         "ends_at": now,

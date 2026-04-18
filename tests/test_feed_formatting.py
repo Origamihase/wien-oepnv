@@ -21,14 +21,17 @@ def test_emit_item_formatting_html_stripping():
     # Execute
     ident, elem, replacements = _emit_item(item, now, state)
 
-    # Verify Description Placeholder Content
+    # Verify Description Content
     desc_elem = elem.find("description")
     assert desc_elem is not None
-    placeholder = desc_elem.text
-    assert placeholder in replacements
+    assert desc_elem.text is not None
+    inner_content = desc_elem.text
 
-    content = replacements[placeholder]
-    inner_content = content.replace("<![CDATA[", "").replace("]]>", "")
+    # Verify content:encoded Placeholder Content
+    encoded_elem = elem.find("{http://purl.org/rss/1.0/modules/content/}encoded")
+    assert encoded_elem is not None
+    content_placeholder = encoded_elem.text
+    content_html = replacements[content_placeholder]
 
     # Check for strict 2-line layout
     # Expected: "Kranarbeiten Details here." (from html_to_text with collapse_newlines=True)
@@ -47,10 +50,13 @@ def test_emit_item_formatting_html_stripping():
     assert "Kranarbeiten" in inner_content
     assert "Details here" in inner_content
 
-    # Ensure 2-line layout
-    assert "<br/>" in inner_content
+    # Ensure 2-line layout is in plain text for description
+    assert "<br/>" not in inner_content
     assert "[" in inner_content
     assert "]" in inner_content
+
+    # Check that HTML layout exists in content:encoded
+    assert "<br/>" in content_html
 
 def test_emit_item_formatting_plain_text():
     # Setup
@@ -69,9 +75,10 @@ def test_emit_item_formatting_plain_text():
     ident, elem, replacements = _emit_item(item, now, state)
 
     desc_elem = elem.find("description")
-    placeholder = desc_elem.text
-    content = replacements[placeholder]
-    inner_content = content.replace("<![CDATA[", "").replace("]]>", "")
+    assert desc_elem is not None
+    inner_content = desc_elem.text or ""
+    assert desc_elem is not None
+    inner_content = desc_elem.text or ""
 
     assert "Just plain text." in inner_content
     # No time line -> No <br/>
@@ -94,9 +101,10 @@ def test_emit_item_formatting_multiline_collapsed():
     ident, elem, replacements = _emit_item(item, now, state)
 
     desc_elem = elem.find("description")
-    placeholder = desc_elem.text
-    content = replacements[placeholder]
-    inner_content = content.replace("<![CDATA[", "").replace("]]>", "")
+    assert desc_elem is not None
+    inner_content = desc_elem.text or ""
+    assert desc_elem is not None
+    inner_content = desc_elem.text or ""
 
     # Should be collapsed to space or bullet
     # html_to_text(collapse_newlines=True) replaces newlines with " • " or space?
@@ -120,9 +128,8 @@ def test_emit_item_timeframe_formatting():
 
     ident, elem, replacements = _emit_item(item, now, state)
     desc_elem = elem.find("description")
-    placeholder = desc_elem.text
-    content = replacements[placeholder]
-    inner_content = content.replace("<![CDATA[", "").replace("]]>", "")
+    assert desc_elem is not None
+    inner_content = desc_elem.text or ""
 
     # Check date formatting
     # Should contain dates
