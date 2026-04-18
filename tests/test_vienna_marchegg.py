@@ -15,6 +15,7 @@ from src.utils.stations import text_has_vienna_connection
         "Zugausfall: Bruck an der Leitha",
         "Zugausfall: Bratislava hl.st.",
         "St. Pölten Hbf ist groß.",
+        "Zürich U4 Betrieb",
     ],
 )
 def test_text_has_vienna_connection_false(text: str) -> None:
@@ -27,11 +28,11 @@ def test_text_has_vienna_connection_false(text: str) -> None:
         "S-Bahn Wien: Störung zwischen Wien Mitte und Floridsdorf",
         "REX: Marchegg ↔ Wien Praterstern",
         "Meidling gesperrt",
-        "Störung auf der U6",
         "Flughafen Wien: Zubringerbus ausgefallen",
         "Stockerau ↔ Wien Franz-Josefs-Bahnhof",
         "Zugausfall: Bruck an der Leitha ↔ Wien",
         "REX 8: Marchegg ↔ Bratislava hl.st. via Wien",
+        "Störung auf der U6",
     ],
 )
 def test_text_has_vienna_connection_true(text: str) -> None:

@@ -688,11 +688,23 @@ def text_has_vienna_connection(text: str) -> bool:
     if re.search(r"\b(flughafen wien|airport vienna|vienna airport)\b", text_for_matching, re.IGNORECASE):
         return True
 
-    # 2. Prüfe auf das eigenständige Wort "Wien" (z.B. als Richtungshinweis) oder U-Bahn Linien
-    if re.search(r"\b(wien|vienna|u[1-6]|u-bahn)\b", cleaned, re.IGNORECASE):
+    # 2. Prüfe auf das eigenständige Wort "Wien" (z.B. als Richtungshinweis) oder U-Bahn
+    if re.search(r"\b(wien|vienna|u-bahn)\b", cleaned, re.IGNORECASE):
         return True
 
-    # 3. Abgleich gegen Wiener Stationen und Aliase aus dem Verzeichnis
+    # 3. Kontextsensitive Erkennung für U1-U6:
+    # Matcht nur, wenn U1-U6 in typischen Mustern auftritt (z.B. "Linie U6", "der U6", "U1:", "(U2)")
+    # oder wenn typische Öffi-Wörter nahestehen, um False-Positives ("Zürich U4") zu vermeiden.
+    u_bahn_pattern = (
+        r"(?:\b(?:linie|der|die|auf|mit|von|zur)\s+u[1-6]\b|"
+        r"\bu[1-6]\b\s*[:(]|"
+        r"\(\s*u[1-6]\s*\)|"
+        r"\bu[1-6]\b(?=\s*(?:steht|fährt|ersatz|halt|störung|gesperrt|unterbrochen)))"
+    )
+    if re.search(u_bahn_pattern, cleaned, re.IGNORECASE):
+        return True
+
+    # 4. Abgleich gegen Wiener Stationen und Aliase aus dem Verzeichnis
     rx = _vienna_stations_regex()
     if rx.search(cleaned):
         return True
