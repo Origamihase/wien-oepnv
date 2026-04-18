@@ -254,26 +254,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Veranstaltung Betrieb ab Schwarzenbergplatz",
-    "description": "Veranstaltung Betrieb ab Schwarzenbergplatz",
+    "title": "1: Veranstaltung Betrieb ab Kliebergasse",
+    "description": "Veranstaltung Betrieb ab Kliebergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9998fdc2c4c9aa5874b09849f4aea58b20b1307c12b9ac0282cd1b5db73d2243",
+    "guid": "5d42b050ca8e86e64b4e130a4dafb7189b11911669503f0e4d4580b59c3378ae",
     "pubDate": "2026-04-18T00:00:11+02:00",
-    "starts_at": "2026-04-18T00:00:11+02:00",
-    "ends_at": "2026-04-18T18:19:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-04-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Veranstaltung Betrieb ab Börse",
-    "description": "Veranstaltung Betrieb ab Börse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1cfa78b3cd9aab3c1d3bbf75ce440f18fad728eabb2566089dc1e6a1836a1531",
-    "pubDate": "2026-04-18T00:00:11+02:00",
-    "starts_at": "2026-04-18T17:20:16+02:00",
-    "ends_at": "2026-04-18T18:19:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-04-18"
+    "starts_at": "2026-04-18T17:18:49+02:00",
+    "ends_at": "2026-04-18T23:45:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-04-18"
   },
   {
     "source": "Wiener Linien",
@@ -284,18 +272,6 @@
     "guid": "2a8fdc57bb950d4c8920b577557aa6dd5a47f002d58b56c3c045c54237b6191a",
     "pubDate": "2026-04-18T00:00:11+02:00",
     "starts_at": "2026-04-18T17:19:47+02:00",
-    "ends_at": "2026-04-18T23:45:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-04-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Veranstaltung Betrieb ab Kliebergasse",
-    "description": "Veranstaltung Betrieb ab Kliebergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5d42b050ca8e86e64b4e130a4dafb7189b11911669503f0e4d4580b59c3378ae",
-    "pubDate": "2026-04-18T00:00:11+02:00",
-    "starts_at": "2026-04-18T17:18:49+02:00",
     "ends_at": "2026-04-18T23:45:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-04-18"
   },
@@ -346,18 +322,6 @@
     "starts_at": "2026-04-18T00:00:13+02:00",
     "ends_at": "2026-04-18T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-04-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "74A: Busse halten Landstraßer Hauptstraße 117-123",
-    "description": "Bauarbeiten Busse halten Landstraßer Hauptstraße 117-123",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7346cbddab09c3ce8286afb5eaf836caf64380fe44197f02dcb31864d7a4b3c2",
-    "pubDate": "2026-04-18T00:00:13+02:00",
-    "starts_at": "2026-04-18T00:00:13+02:00",
-    "ends_at": "2026-04-18T23:59:59+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-04-18"
   },
   {
     "source": "Wiener Linien",
@@ -458,49 +422,121 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Rettungseinsatz",
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "3A/74A: Veranstaltung",
+    "description": "Linie 3A: Derzeit ist ein Betrieb nicht möglich. Die Linie 74A fährt derzeit nur zwischen St. Marx S und Landstraße S U. Voraussichtliche Dauer: 19:30 Uhr. Grund: Veranstaltung im Bereich Innere Stadt.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9",
-    "pubDate": "2026-04-18T16:48:00+02:00",
-    "starts_at": "2026-04-18T16:48:00+02:00",
+    "guid": "c9236e1b8c8a853984a1a153047b68bca43adca6ee725f1705547f5f8bdd4f6c",
+    "pubDate": "2026-04-18T17:05:00+02:00",
+    "starts_at": "2026-04-18T17:05:00+02:00",
     "ends_at": "2026-04-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=10|D=2026-04-18"
+    "_identity": "wl|störung|L=3A,74A|D=2026-04-18"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "3A: Kein Betrieb wegen Veranstaltung",
-    "description": "Kein Betrieb wegen Veranstaltung",
+    "title": "27: Verkehrsunfall",
+    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "99f60c3ed0d7f6450bae8353d7728d8df480e44ab4dae7c17d498789989ae9cd",
-    "pubDate": "2026-04-18T17:13:40+02:00",
-    "starts_at": "2026-04-18T17:13:40+02:00",
-    "ends_at": "2026-04-18T18:12:00+02:00",
-    "_identity": "wl|störung|L=3A|D=2026-04-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "74A: Veranstaltung Betrieb ab Landstraße",
-    "description": "Veranstaltung Betrieb ab Landstraße <>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fb4c0753b383c833bc940838e7d5193ad18d65173100c2986868ae8a6e001359",
-    "pubDate": "2026-04-18T17:14:18+02:00",
-    "starts_at": "2026-04-18T17:14:18+02:00",
-    "ends_at": "2026-04-18T18:13:00+02:00",
-    "_identity": "wl|störung|L=74A|D=2026-04-18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25/26/27: Verkehrsunfall",
-    "description": "Linie 25: Fahrtbehinderung in Richtung Aspern, Oberdorfstraße. Linie 26: Fahrtbehinderung in Richtung Hausfeldstraße U. Linie 27: Fahrtbehinderung in Richtung Aspern Nord S U. Voraussichtliche Dauer: 18:20 Uhr. Grund: Verkehrsunfall im Bereich Donaufelder Straße # Fultonstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ed60133baf408131b29a498f71283e442b4a9dad05b4f346051a7de28c3e4bab",
+    "guid": "2944c0ef3d90e6a01626e659ff945114566768f92f2cfcb4aacd173962aa18ee",
     "pubDate": "2026-04-18T18:03:00+02:00",
     "starts_at": "2026-04-18T18:03:00+02:00",
     "ends_at": "2026-04-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=25,26,27|D=2026-04-18"
+    "_identity": "wl|störung|L=27|D=2026-04-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "17410552b5076b6dbbd3ae46156043cd5032b22edde7e308e5b84105a85b76ff",
+    "pubDate": "2026-04-18T18:09:51+02:00",
+    "starts_at": "2026-04-18T18:09:56+02:00",
+    "ends_at": "2026-04-18T19:09:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-04-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9c7b3ee5f523fca7feed81f5f9ddbfbd1a74b67ce91790006cb9036727ea2bca",
+    "pubDate": "2026-04-18T18:10:33+02:00",
+    "starts_at": "2026-04-18T18:10:50+02:00",
+    "ends_at": "2026-04-18T19:09:00+02:00",
+    "_identity": "wl|störung|L=26|D=2026-04-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5236f47ffd1dcffd769c8ad48ffbd0ee63810602a92ad31fcd46eb9237ddea29",
+    "pubDate": "2026-04-18T18:12:01+02:00",
+    "starts_at": "2026-04-18T18:12:17+02:00",
+    "ends_at": "2026-04-18T19:10:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-04-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung Falschparker",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "123c1792102bf603153d3f83b7ca1dab3ecf7f4872f15ae5c9c6e9e85e8f68ca",
+    "pubDate": "2026-04-18T18:26:29+02:00",
+    "starts_at": "2026-04-18T18:26:29+02:00",
+    "ends_at": "2026-04-18T19:25:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-04-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2A: Veranstaltung",
+    "description": "Linie 2A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "05828e40609e92265c7268996ad2e0f95dc6b46270801b19aac119f674867429",
+    "pubDate": "2026-04-18T18:31:00+02:00",
+    "starts_at": "2026-04-18T18:31:00+02:00",
+    "ends_at": "2026-04-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=2A|D=2026-04-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9a3191136d8bad796a52ae693389b95d11840d24bc4efea2aa060f02844dccba",
+    "pubDate": "2026-04-18T18:32:09+02:00",
+    "starts_at": "2026-04-18T18:32:15+02:00",
+    "ends_at": "2026-04-18T19:31:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-04-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Betriebsstörung",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
+    "pubDate": "2026-04-18T18:41:00+02:00",
+    "starts_at": "2026-04-18T18:41:00+02:00",
+    "ends_at": "2026-04-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-04-18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Rettungseinsatz",
+    "description": "Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
+    "pubDate": "2026-04-18T18:52:00+02:00",
+    "starts_at": "2026-04-18T18:52:00+02:00",
+    "ends_at": "2026-04-18T23:55:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-04-18"
   }
 ]
