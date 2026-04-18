@@ -684,8 +684,12 @@ def text_has_vienna_connection(text: str) -> bool:
     # 1. Pendler-Spezialfälle maskieren (verhindert False-Positive beim Wort "Wien")
     cleaned = re.sub(r"Flughafen Wien|Airport Vienna|Vienna Airport", " ", text_for_matching, flags=re.IGNORECASE)
 
-    # 2. Prüfe auf das eigenständige Wort "Wien" (z.B. als Richtungshinweis)
-    if re.search(r"\b(wien|vienna)\b", cleaned, re.IGNORECASE):
+    # Neu: Flughafen Wien explizit als True werten (laut Anforderung)
+    if re.search(r"\b(flughafen wien|airport vienna|vienna airport)\b", text_for_matching, re.IGNORECASE):
+        return True
+
+    # 2. Prüfe auf das eigenständige Wort "Wien" (z.B. als Richtungshinweis) oder U-Bahn Linien
+    if re.search(r"\b(wien|vienna|u[1-6]|u-bahn)\b", cleaned, re.IGNORECASE):
         return True
 
     # 3. Abgleich gegen Wiener Stationen und Aliase aus dem Verzeichnis

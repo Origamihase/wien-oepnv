@@ -1,39 +1,39 @@
+import pytest
 from src.utils.stations import text_has_vienna_connection
 
-def test_marchegg_bratislava_is_false():
-    text = "REX 8: Marchegg ↔ Bratislava hl.st."
+@pytest.mark.parametrize(
+    "text",
+    [
+        "REX 8: Marchegg ↔ Bratislava hl.st.",
+        "Wegen Bauarbeiten der ZSR zwischen Marchegg Bahnhof und Bratislava hl.st.",
+        "Villach ↔ Villach Westbahnhof",
+        "Wegen eines Rettungseinsatzes sind zwischen Villach Hbf und Villach Westbahnhof keine Fahrten möglich.",
+        "Graz Hbf ↔ Graz Ostbahnhof",
+        "Linz Hbf ↔ Wels Hbf",
+        "Innsbruck Westbahnhof gesperrt",
+        "Hadersdorf am Kamp",
+        "Zugausfall: Bruck an der Leitha",
+        "Zugausfall: Bratislava hl.st.",
+        "St. Pölten Hbf ist groß.",
+    ],
+)
+def test_text_has_vienna_connection_false(text: str) -> None:
     assert text_has_vienna_connection(text) is False
 
-def test_hadersdorf_am_kamp_is_false():
-    text = "Hadersdorf am Kamp"
-    assert text_has_vienna_connection(text) is False
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Wien Hbf ↔ Bratislava hl.st.",
+        "S-Bahn Wien: Störung zwischen Wien Mitte und Floridsdorf",
+        "REX: Marchegg ↔ Wien Praterstern",
+        "Meidling gesperrt",
+        "Störung auf der U6",
+        "Flughafen Wien: Zubringerbus ausgefallen",
+        "Stockerau ↔ Wien Franz-Josefs-Bahnhof",
+        "Zugausfall: Bruck an der Leitha ↔ Wien",
+        "REX 8: Marchegg ↔ Bratislava hl.st. via Wien",
+    ],
+)
+def test_text_has_vienna_connection_true(text: str) -> None:
+    assert text_has_vienna_connection(text) is True
 
-def test_bruck_an_der_leitha_is_false():
-    # MUST return False. (It is a commuter station, not a Vienna station, and 'Wien' is not in the text).
-    assert text_has_vienna_connection("Zugausfall: Bruck an der Leitha") is False
-
-def test_bruck_an_der_leitha_with_wien_is_true():
-    # MUST return True. (It remains unmasked, and the word 'Wien' triggers the true condition).
-    assert text_has_vienna_connection("Zugausfall: Bruck an der Leitha ↔ Wien") is True
-
-def test_bratislava_hl_st_is_false():
-    # MUST return False. (Marchegg is left untouched, Bratislava is masked out, no Vienna station or 'Wien' word is found).
-    assert text_has_vienna_connection("REX 8: Marchegg ↔ Bratislava hl.st.") is False
-    assert text_has_vienna_connection("Zugausfall: Bratislava hl.st.") is False
-
-def test_via_wien_regression_is_true():
-    # MUST return True. (The text explicitly contains 'Wien').
-    assert text_has_vienna_connection("REX 8: Marchegg ↔ Bratislava hl.st. via Wien") is True
-
-def test_villach_westbahnhof_is_false():
-    # MUST return False.
-    assert text_has_vienna_connection("Villach ↔ Villach Westbahnhof") is False
-
-def test_villach_rettungseinsatz_is_false():
-    # MUST return False. (Multiple instances of non-vienna station names with suffixes).
-    text = "Wegen eines Rettungseinsatzes sind zwischen Villach Hbf und Villach Westbahnhof keine Fahrten möglich."
-    assert text_has_vienna_connection(text) is False
-
-def test_st_poelten_hbf_is_false():
-    # MUST return False.
-    assert text_has_vienna_connection("St. Pölten Hbf ist groß.") is False
