@@ -867,9 +867,9 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                             elapsed = perf_counter() - start_wait
                             remaining_timeout = timeout_arg - elapsed if timeout_arg is not None else None
 
-                            if remaining_timeout is not None and remaining_timeout < 0:
+                            if remaining_timeout is not None and remaining_timeout <= 0:
                                 raise TimeoutError(
-                                    f"Semaphore acquisition took {elapsed:.2f}s, no realistic time left for fetch (threshold: < 0s)"
+                                    f"Semaphore acquisition took {elapsed:.2f}s, no realistic time left for fetch (threshold: <= 0s)"
                                 )
 
                             return _call_fetch_with_timeout(fetch, remaining_timeout, supports)
@@ -1227,9 +1227,12 @@ def _emit_item(
 
     ident = _identity_for_item(it)
     st = state.get(ident)
+    # Fallback: check guid as secondary key
+    if not st and it.get("guid") and it["guid"] != ident:
+        st = state.get(str(it["guid"]))
     if not st:
         st = {"first_seen": _to_utc(now).isoformat()}
-        state[ident] = st
+    state[ident] = st
 
     try:
         fs_dt = datetime.fromisoformat(st["first_seen"])
@@ -1631,7 +1634,8 @@ def main() -> int:
             raw_count,
         )
 
-        pre_dedupe_items = list(items)
+        import copy
+        pre_dedupe_items = copy.deepcopy(items)
         duplicate_summaries = _summarize_duplicates(pre_dedupe_items)
 
         dedupe_start = perf_counter()
