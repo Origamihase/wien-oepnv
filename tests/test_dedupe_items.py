@@ -43,7 +43,7 @@ def test_main_dedupes_items(monkeypatch, tmp_path):
 
     def fake_make_rss(items, now, state, deletions=None):
         captured["items"] = items
-        return ""
+        return "", deletions
 
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)
     monkeypatch.setattr(build_feed, "_make_rss", fake_make_rss)

@@ -48,13 +48,15 @@ def test_state_cleanup_keeps_only_current_identities(monkeypatch, tmp_path):
 
     state = build_feed._load_state()
     build_feed._make_rss([item_a, item_b], now, state)
+    build_feed._save_state(state)
 
     state_after_first = build_feed._load_state()
     assert set(state_after_first.keys()) == {"guid-a", "guid-b"}
 
     state = build_feed._load_state()
-    build_feed._make_rss([item_b], now, state)
+    build_feed._make_rss([item_b], now, state, deletions={"guid-a"})
+    build_feed._save_state(state, deletions={"guid-a"})
 
     state_after_second = build_feed._load_state()
     # Behavior changed: items are no longer aggressively pruned
-    assert set(state_after_second.keys()) == {"guid-a", "guid-b"}
+    assert set(state_after_second.keys()) == {"guid-b"}

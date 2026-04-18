@@ -30,7 +30,7 @@ def test_out_path_rejects_outside_whitelist(monkeypatch, tmp_path):
     # Set env var so refresh_from_env picks it up and validation fails
     monkeypatch.setenv("OUT_PATH", "../evil.xml")
     monkeypatch.setattr(build_feed, "_collect_items", lambda: [])
-    monkeypatch.setattr(build_feed, "_make_rss", lambda items, now, state: "")
+    monkeypatch.setattr(build_feed, "_make_rss", lambda items, now, state: ("", None))
     monkeypatch.setattr(build_feed, "_load_state", lambda: {})
     monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
 
