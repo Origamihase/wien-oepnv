@@ -20,6 +20,38 @@ def _make_plugin_module(name: str, *, register_callable=None, providers=None) ->
     return module
 
 
+def test_load_provider_plugins_not_called_on_import():
+    # To properly test that importing doesn't call load_provider_plugins,
+    # we launch a subprocess that imports the module and exits without failure.
+    # We can inspect what it did by mocking it or checking side effects,
+    # but the simplest proof is verifying the code source doesn't contain the call at module level.
+    # We'll use a subprocess to run python -c "import src.feed.providers".
+    import subprocess
+    import sys
+
+    # Run the import in a clean environment to ensure no caching tricks us.
+    result = subprocess.run(
+        [sys.executable, "-c", "import sys; sys.path.insert(0, 'src'); import feed.providers; print('IMPORT SUCCESS')"],  # noqa: S603
+        capture_output=True,
+        text=True,
+        check=True
+    )
+
+    assert "IMPORT SUCCESS" in result.stdout
+    # Further ensure that load_provider_plugins() call is truly gone from the file text
+    import pathlib
+    providers_path = pathlib.Path("src/feed/providers.py")
+    content = providers_path.read_text()
+    # The string 'load_provider_plugins()' should not appear as a top-level call.
+    # It might appear in `__all__ = [...]`, so we look for the exact module-level call syntax.
+    # Or simply split lines and check.
+    lines = content.splitlines()
+    for line in lines:
+        # Check for unindented call
+        if line.startswith("load_provider_plugins()"):
+            assert False, "Found top-level call to load_provider_plugins()"
+
+
 def test_load_provider_plugins_via_callable(monkeypatch):
     from src.feed import providers as provider_mod
 
