@@ -44,6 +44,10 @@ def test_fuzzy_merge_provider_priority_vor_wins_over_oebb():
     assert "Short VOR text." in item["description"]
     assert "Details from ÖBB" in item["description"]
 
+    # Verify identity update
+    assert item["_identity"] == "vor_guid_1"
+    assert "_calculated_identity" not in item
+
 def test_fuzzy_merge_provider_priority_vor_wins_reverse_order():
     """
     Same as above, but items are processed in reverse order (VOR exists, ÖBB comes later).
@@ -74,6 +78,10 @@ def test_fuzzy_merge_provider_priority_vor_wins_reverse_order():
     assert item["provider"] == "vor"
     assert "Short VOR text." in item["description"]
     assert "Details from ÖBB" in item["description"]
+
+    # Verify identity update
+    assert item["_identity"] == "vor_guid_1"
+    assert "_calculated_identity" not in item
 
 def test_fuzzy_merge_provider_priority_no_provider_field():
     """

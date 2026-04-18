@@ -33,6 +33,9 @@ def test_run_report_creates_github_issue(monkeypatch):
 
     report.log_results()
 
+    # Should not submit duplicate issue
+    report.log_results()
+
     assert len(responses.calls) == 1
     call = responses.calls[0]
     assert call.request.headers["Authorization"] == "Bearer secret-token"

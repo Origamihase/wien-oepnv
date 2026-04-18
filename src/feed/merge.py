@@ -74,6 +74,8 @@ def _has_significant_overlap(name1: str, name2: str) -> bool:
         meaningful_union = union - _STOP_WORDS
         if meaningful_union:
             return False
+        else:
+            return True
 
     if len(intersection) / len(union) >= 0.4:
         return True
@@ -151,6 +153,8 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
                         # Update the list with the modified copy
                         merged_items[idx] = new_existing
+                        new_existing["_identity"] = new_existing.get("guid", "")
+                        new_existing.pop("_calculated_identity", None)
                         # Do NOT update GUID or Title from ÖBB (keep VOR master data)
                         merged = True
                         break
@@ -170,6 +174,8 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                             new_existing["description"] = f"{desc_vor}\n\n{desc_oebb}".strip()
 
                         merged_items[idx] = new_existing
+                        new_existing["_identity"] = new_existing.get("guid", "")
+                        new_existing.pop("_calculated_identity", None)
                         merged = True
                         break
 
