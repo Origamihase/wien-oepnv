@@ -220,7 +220,15 @@ def _clean_title_keep_places(t: str) -> str:
 # ---------------- Region / Filter Logic ----------------
 
 def _strip_oebb_prefixes(text: str) -> str:
-    """Entfernt iterativ typische ÖBB-Präfixe wie Liniencodes oder Störungsarten."""
+    """
+    Entfernt iterativ typische ÖBB-Präfixe wie Liniencodes oder Störungsarten.
+
+    Warum iterativ (while-Schleife) mit Regex anstatt naivem Split?
+    ÖBB-Titel sind oft mehrfach mutiert, z.B. "REX 51: Störung: Wien". Ein naives
+    Abschneiden am letzten oder ersten Doppelpunkt (`.split(':')`) würde echte
+    Stationsnamen zerstören, die selbst Doppelpunkte enthalten (z.B. "Wien 10.: Favoriten").
+    Daher iterieren wir und entfernen von vorne nur bekannte Präfixe, bis keines mehr matcht.
+    """
     # Sucht nach Linien (z.B. REX 51, RJX 123) oder Wörtern gefolgt von Doppelpunkt
     base_pattern = (r"^(?:(?:REX|S|U|RJ|RJX|EC|IC|ICE|WB|NJ|D|R)\s*\d+|Störung|Verspätung|Zugausfall"
                     r"|Bauarbeiten|Info|Information|Einschränkung|Unterbrechung)\s*:\s*")
@@ -231,9 +239,19 @@ def _strip_oebb_prefixes(text: str) -> str:
 def _is_relevant(title: str, description: str) -> bool:
     """
     Entscheidet über Relevanz für Wien-Pendler.
-    Es sollen nur Bahnhöfe mit Störungen in Wien in den Feed.
-    Wenn ein Pendlerbahnhof betroffen ist, muss die gestörte Verbindung
-    mit einem Wiener Bahnhof zu tun haben.
+
+    Mehrstufiger Filter-Prozess:
+    1. Guard für völlig unbekannte Fernverkehrsstationen: Sind beide Endpunkte `None`
+       (und keine bekannten Kategorie-Schlüsselwörter), wird die Meldung verworfen
+       (z.B. bei Verbindungen wie "Budapest ↔ Bratislava").
+    2. Strikter Modus (OEBB_ONLY_VIENNA): Falls aktiviert, müssen alle bekannten
+       Endpunkte explizit in Wien liegen.
+    3. Asymmetrischer Pendler-Check: Wenn mindestens ein Endpunkt bekannt ist
+       (`at_least_one_known`), muss zwingend auch mindestens ein Endpunkt in Wien liegen
+       (`vienna_endpoint`), sonst wird die Strecke verworfen.
+    4. Fallback auf `text_has_vienna_connection`: Für Meldungen ohne "↔" im Titel
+       (z.B. allgemeine Meldungen ohne explizites Routing) fällt die Logik auf einen
+       generischen Text-Check zurück.
     """
     text = f"{title} {description}"
 
