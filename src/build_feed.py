@@ -373,6 +373,9 @@ def _to_utc(dt: datetime) -> datetime:
 
 def _fmt_rfc2822(dt: datetime) -> str:
     """Format datetime as RFC-2822 string with Vienna offset."""
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+
     try:
         # Convert to Vienna time for output
         local_dt = _to_utc(dt).astimezone(_VIENNA_TZ)
@@ -382,13 +385,10 @@ def _fmt_rfc2822(dt: datetime) -> str:
             "Konnte Datum %r nicht per format_datetime formatieren – nutze strftime-Fallback.",
             dt,
         )
-        if dt.tzinfo is None:
-            local_dt = dt.replace(tzinfo=timezone.utc).astimezone(_VIENNA_TZ)
-        else:
-            try:
-                local_dt = dt.astimezone(_VIENNA_TZ)
-            except Exception:
-                local_dt = dt.astimezone(timezone.utc)
+        try:
+            local_dt = dt.astimezone(_VIENNA_TZ)
+        except Exception:
+            local_dt = dt.astimezone(timezone.utc)
 
         days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
