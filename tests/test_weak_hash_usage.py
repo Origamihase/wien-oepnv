@@ -37,8 +37,16 @@ def test_dedupe_key_for_item_uses_strong_hash():
         "source": "test_source"
     }
 
-    # This uses fallback hashing
+    # This uses fallback hashing which now delegates to _identity_for_item
     key, used_fallback = _dedupe_key_for_item(item)
 
     assert used_fallback is True
-    assert len(key) == 64, f"Key length is {len(key)}, expected 64 (SHA256). Likely still using SHA1."
+    # The new fallback key delegates to _identity_for_item which produces a long string format:
+    # "test_source||L=|D=|T=Test Title|F=<sha256_hash>"
+    assert "F=" in key or "H=" in key, f"Key {key} does not contain a hash part"
+
+    hash_part = next((p for p in key.split("|") if p.startswith("F=") or p.startswith("H=")), None)
+    assert hash_part is not None, f"Key {key} does not contain a hash part"
+    hash_val = hash_part.split("=", 1)[1]
+
+    assert len(hash_val) == 64, f"Hash length is {len(hash_val)}, expected 64 (SHA256). Likely still using SHA1."
