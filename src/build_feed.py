@@ -1033,12 +1033,16 @@ def _dedupe_key_for_item(
     if "_calculated_dedupe_key" in it:
         return cast(str, it["_calculated_dedupe_key"]), False
 
-    if it.get("guid"):
-        guid_str = str(it.get("guid"))
-        source = (it.get("source") or "").lower()
-        if "öbb" in source or "oebb" in source:
-             guid_str = f"oebb|{guid_str}"
-        return guid_str, False
+    guid = it.get("guid")
+    source = (it.get("source") or "").lower()
+
+    if "öbb" in source or "oebb" in source:
+        guid_or_link = guid or it.get("link")
+        if guid_or_link:
+            return f"oebb|{guid_or_link}", False
+
+    if guid:
+        return str(guid), False
     raw = (
         f"{it.get('source') or ''}|{it.get('title') or ''}|{it.get('description') or ''}"
     )
