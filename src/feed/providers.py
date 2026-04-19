@@ -244,5 +244,5 @@ __all__ = [
     "register_provider",
     "resolve_provider_name",
     "unregister_provider",
-    "_reset_registry",
+    "reset_registry",
 ]

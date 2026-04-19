@@ -183,6 +183,13 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
         monkeypatch.setenv("BAUSTELLEN_ENABLE", "0")
         monkeypatch.setenv("PLUGIN_ENABLE", "1")
 
+        # Ensure that providers are registered in the internal module list
+        # We also need to manually register the dummy providers so they can be shown as disabled
+        provider_mod.register_provider("WL_ENABLE", lambda: [], cache_key="wl")
+        provider_mod.register_provider("OEBB_ENABLE", lambda: [], cache_key="oebb")
+        provider_mod.register_provider("VOR_ENABLE", lambda: [], cache_key="vor")
+        provider_mod.register_provider("BAUSTELLEN_ENABLE", lambda: [], cache_key="baustellen")
+
         out_path = tmp_path / "feed.xml"
         health_path = tmp_path / "feed-health.md"
         health_json_path = tmp_path / "feed-health.json"
@@ -197,7 +204,7 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
         monkeypatch.setattr(build_feed.feed_config, "FEED_HEALTH_JSON_PATH", health_json_path)
         monkeypatch.setattr(build_feed.feed_config, "STATE_FILE", state_path)
         monkeypatch.setattr(build_feed, "_load_state", lambda: {})
-        monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
+        monkeypatch.setattr(build_feed, "_save_state", lambda state, deletions=None: None)
 
         # Patch ENV vars for paths so refresh_from_env uses them
         monkeypatch.setenv("OUT_PATH", str(out_path))
