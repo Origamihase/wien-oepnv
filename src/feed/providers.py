@@ -203,7 +203,7 @@ def load_provider_plugins(*, force: bool = False) -> List[str]:
     return loaded
 
 
-def _reset_registry(*, with_defaults: bool = True) -> None:
+def reset_registry(*, with_defaults: bool = True) -> None:
     """Test helper to reset registry and loaded plugin state."""
 
     _REGISTRY.clear()

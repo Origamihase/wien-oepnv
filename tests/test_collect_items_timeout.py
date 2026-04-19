@@ -46,7 +46,8 @@ def test_slow_provider_does_not_block(monkeypatch):
         "PROVIDERS",
         [("SLOW", slow_fetch), ("FAST", fast_fetch)],
     )
-    build_feed._PROVIDERS_INITIALIZED = True
+    # temporarily patch to skip init_providers
+    monkeypatch.setattr(build_feed, "_PROVIDERS_INITIALIZED", True)
     monkeypatch.setenv("SLOW", "1")
     monkeypatch.setenv("FAST", "1")
     start = time.time()
@@ -79,7 +80,8 @@ def test_provider_specific_timeout_override(monkeypatch):
         "PROVIDERS",
         [("SLOW", slow_fetch), ("FAST", fast_fetch)],
     )
-    build_feed._PROVIDERS_INITIALIZED = True
+    # temporarily patch to skip init_providers
+    monkeypatch.setattr(build_feed, "_PROVIDERS_INITIALIZED", True)
     monkeypatch.setenv("SLOW", "1")
     monkeypatch.setenv("FAST", "1")
     # Override slow provider to 1s timeout

@@ -38,17 +38,15 @@ def test_collect_items_cancelled_future():
             delattr(mock_fetch, "_provider_cache_name")
 
         mock_iter.return_value = [ProviderSpec(env_var="DUMMY_ENABLE", loader=mock_fetch, cache_key="")]
-        bf._PROVIDERS_INITIALIZED = False
 
         # For mock_fetch to NOT be considered a cache fetcher, it shouldn't have `_provider_cache_name` at all.
         # However, `init_providers()` actually SETS it if we run it!
         # So we need to ensure that `init_providers()` doesn't turn it into a cache fetcher,
-        # OR we just let `_PROVIDERS_INITIALIZED` stay True to skip `init_providers`!
-        bf._PROVIDERS_INITIALIZED = True
-
-        # Run _collect_items. The fetch should time out and the future will be cancelled.
-        # Then, if the wait() returns a cancelled future, it won't be logged as "Fetch abgebrochen".
-        _collect_items(report=report)
+        # We temporarily patch `_PROVIDERS_INITIALIZED` to True to skip `init_providers` entirely for this mock setup.
+        with patch.object(bf, "_PROVIDERS_INITIALIZED", True):
+            # Run _collect_items. The fetch should time out and the future will be cancelled.
+            # Then, if the wait() returns a cancelled future, it won't be logged as "Fetch abgebrochen".
+            _collect_items(report=report)
 
         # Find all calls to provider_error
         error_calls = [call.args[1] for call in report.provider_error.call_args_list]

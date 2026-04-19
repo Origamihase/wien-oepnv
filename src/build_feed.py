@@ -145,6 +145,11 @@ _PROVIDERS_INITIALIZED = False
 # and BEFORE the main provider registration loop.
 load_provider_plugins()
 
+def reset_module_state() -> None:
+    """Test helper to reset the module-level initialization state."""
+    global _PROVIDERS_INITIALIZED
+    _PROVIDERS_INITIALIZED = False
+
 def init_providers() -> None:
     global _PROVIDERS_INITIALIZED
     if _PROVIDERS_INITIALIZED:
@@ -1379,14 +1384,6 @@ def _emit_item(
         starts_at if isinstance(starts_at, datetime) else None,
         ends_at if isinstance(ends_at, datetime) else None,
     )
-    guid = formatted.guid
-    link = formatted.link
-    title_cdata = formatted.title_cdata
-    desc_text_truncated = formatted.desc_text_truncated
-    desc_cdata = formatted.desc_cdata
-    raw_desc = formatted.raw_desc
-    title_out = formatted.title_out
-    desc_html = formatted.desc_html
 
     if not isinstance(pubDate, datetime) and feed_config.FRESH_PUBDATE_WINDOW_MIN > 0:
         age = _to_utc(now) - _to_utc(fs_dt)
@@ -1400,7 +1397,7 @@ def _emit_item(
         uid = secrets.token_hex(16)
         PH_CONTENT = f"___CDATA_CONTENT_{uid}___"
         PH_TITLE = f"___CDATA_TITLE_{uid}___"
-        if PH_CONTENT not in desc_html and PH_CONTENT not in raw_desc and PH_TITLE not in title_out:
+        if PH_CONTENT not in formatted.desc_html and PH_CONTENT not in formatted.raw_desc and PH_TITLE not in formatted.title_out:
             break
 
     # --- ElementTree Construction ---
@@ -1410,15 +1407,15 @@ def _emit_item(
     ET.SubElement(item, "title").text = PH_TITLE
 
     # Link
-    ET.SubElement(item, "link").text = link
+    ET.SubElement(item, "link").text = formatted.link
 
     # GUID
     guid_elem = ET.SubElement(item, "guid")
-    guid_elem.text = guid
+    guid_elem.text = formatted.guid
 
     # guid attributes (isPermaLink)
-    parsed = urlparse(guid)
-    if not (parsed.scheme and parsed.netloc and guid == link):
+    parsed = urlparse(formatted.guid)
+    if not (parsed.scheme and parsed.netloc and formatted.guid == formatted.link):
         guid_elem.set("isPermaLink", "false")
 
     # pubDate
@@ -1435,14 +1432,14 @@ def _emit_item(
         ET.SubElement(item, "{https://wien-oepnv.example/schema}ends_at").text = _fmt_rfc2822(ends_at)
 
     # Description
-    ET.SubElement(item, "description").text = desc_text_truncated
+    ET.SubElement(item, "description").text = formatted.desc_text_truncated
 
     # content:encoded
     ET.SubElement(item, "{http://purl.org/rss/1.0/modules/content/}encoded").text = PH_CONTENT
 
     replacements = {
-        PH_CONTENT: f"<![CDATA[{desc_cdata}]]>",
-        PH_TITLE: f"<![CDATA[{title_cdata}]]>",
+        PH_CONTENT: f"<![CDATA[{formatted.desc_cdata}]]>",
+        PH_TITLE: f"<![CDATA[{formatted.title_cdata}]]>",
     }
 
     return ident, item, replacements
