@@ -233,8 +233,8 @@ def _is_relevant(title: str, description: str) -> bool:
         parts = [p.strip() for p in title.split("↔")]
         if len(parts) >= 2:
             # Entferne eventuelle Präfixe wie "REX 51: " aus den Stationsnamen
-            part0 = parts[0].split(":", 1)[-1].strip() if ":" in parts[0] else parts[0]
-            part1 = parts[1].split(":", 1)[-1].strip() if ":" in parts[1] else parts[1]
+            part0 = parts[0].split(":")[-1].strip() if ":" in parts[0] else parts[0]
+            part1 = parts[1].split(":")[-1].strip() if ":" in parts[1] else parts[1]
 
             info0 = station_info(part0)
             info1 = station_info(part1)
