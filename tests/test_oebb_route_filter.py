@@ -78,3 +78,39 @@ def test_prefix_outer_outer_with_wien_in_title_irrelevant():
     title = "REX 51 (Wien): Neulengbach ↔ Tullnerbach-Pressbaum"
     description = "Oberleitungsstörung."
     assert _is_relevant(title, description) is False
+
+def test_fernverkehr_mit_prefix_negativ():
+    title = "REX 51: Störung: Salzburg Hbf ↔ Linz/Donau Hbf"
+    description = ""
+    assert _is_relevant(title, description) is False
+
+def test_einseitiger_wien_bezug_mit_prefix():
+    title = "REX 51: Störung: Wien Meidling ↔ Budapest-Keleti"
+    description = ""
+    assert _is_relevant(title, description) is True
+
+def test_wien_bezug_im_zweiten_teil():
+    title = "Störung: Verspätung: Mödling ↔ Wien Hbf"
+    description = ""
+    assert _is_relevant(title, description) is True
+
+def test_stationsname_enthaelt_selbst_doppelpunkt(monkeypatch):
+    title = "RJ 123: Wien 10.: Favoriten ↔ Graz Hbf"
+    description = ""
+
+    # Wir mocken station_info, um zu beweisen, dass der gesamte String "Wien 10.: Favoriten"
+    # intakt übergeben wird und nicht mehr fälschlicherweise durch split(":") zerstört wird.
+    from src.providers.oebb import station_info
+    original_station_info = station_info
+
+    def mock_station_info(name):
+        if name == "Wien 10.: Favoriten":
+            from src.utils.stations import StationInfo
+            return StationInfo(
+                name="Wien 10.: Favoriten", in_vienna=True, pendler=False,
+                wl_diva=None, wl_stops=(), vor_id=None, latitude=None, longitude=None, source="mock"
+            )
+        return original_station_info(name)
+
+    monkeypatch.setattr("src.providers.oebb.station_info", mock_station_info)
+    assert _is_relevant(title, description) is True
