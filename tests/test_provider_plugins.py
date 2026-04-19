@@ -103,8 +103,17 @@ def test_collect_items_uses_plugin_provider(monkeypatch):
     build_feed = importlib.import_module("src.build_feed")
     try:
         build_feed = importlib.reload(build_feed)
+        build_feed._PROVIDERS_INITIALIZED = False
         # Explicitly initialize config/plugins because import no longer does it
         build_feed.refresh_from_env()
+        # Explicitly set false to not get side effects of the previous runs inside the current interpreter
+        build_feed.PROVIDERS = []
+        build_feed.DEFAULT_PROVIDERS = tuple()
+        provider_mod._REGISTRY.clear()
+
+        # We need to manually register the plugin for this test now since we cleared it!
+        provider_mod.register_provider("PLUGIN_ENABLE", plugin_loader, cache_key="plugin")
+        build_feed.PROVIDERS.append(("PLUGIN_ENABLE", plugin_loader))
 
         monkeypatch.setenv("WL_ENABLE", "0")
         monkeypatch.setenv("OEBB_ENABLE", "0")
@@ -157,8 +166,17 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
     import src.build_feed as build_feed
 
     build_feed = importlib.reload(build_feed)
+    build_feed._PROVIDERS_INITIALIZED = False
 
     try:
+        build_feed.PROVIDERS = []
+        build_feed.DEFAULT_PROVIDERS = tuple()
+        provider_mod._REGISTRY.clear()
+
+        # Register manually the plugin
+        provider_mod.register_provider("PLUGIN_ENABLE", plugin_loader, cache_key="plugin")
+        build_feed.PROVIDERS.append(("PLUGIN_ENABLE", plugin_loader))
+
         monkeypatch.setenv("WL_ENABLE", "0")
         monkeypatch.setenv("OEBB_ENABLE", "0")
         monkeypatch.setenv("VOR_ENABLE", "0")

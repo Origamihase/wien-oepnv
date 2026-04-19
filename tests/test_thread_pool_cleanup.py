@@ -16,7 +16,16 @@ def test_thread_pool_cleanup():
     assert getattr(mock_loader, "_provider_cache_name", None) is None
 
     # Patch PROVIDERS list in build_feed
-    with patch.object(build_feed, "PROVIDERS", [("TEST_ENV", mock_loader)]):
+    with patch.object(build_feed, "PROVIDERS", [("TEST_ENV", mock_loader)]), \
+         patch("src.build_feed.iter_providers") as mock_iter, \
+         patch.object(build_feed, "_PROVIDERS_INITIALIZED", True):
+
+        from src.feed.providers import ProviderSpec
+        if hasattr(mock_loader, "_provider_cache_name"):
+            delattr(mock_loader, "_provider_cache_name")
+
+        mock_iter.return_value = [ProviderSpec(env_var="TEST_ENV", loader=mock_loader, cache_key="")]
+
         with patch("src.build_feed.feed_config.get_bool_env", return_value=True):
             # Mock ThreadPoolExecutor
             with patch("src.build_feed.ThreadPoolExecutor") as MockExecutor:
