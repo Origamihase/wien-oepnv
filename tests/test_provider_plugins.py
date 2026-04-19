@@ -67,7 +67,7 @@ def test_load_provider_plugins_via_callable(monkeypatch):
     monkeypatch.setitem(sys.modules, module_name, plugin_module)
     monkeypatch.setenv("WIEN_OEPNV_PROVIDER_PLUGINS", module_name)
 
-    provider_mod._reset_registry()
+    provider_mod.reset_registry()
     try:
         loaded = provider_mod.load_provider_plugins(force=True)
         assert module_name in loaded
@@ -75,7 +75,7 @@ def test_load_provider_plugins_via_callable(monkeypatch):
         assert "plugin" in registered_names
     finally:
         provider_mod.unregister_provider("PLUGIN_ENABLE")
-        provider_mod._reset_registry()
+        provider_mod.reset_registry()
         monkeypatch.delenv("WIEN_OEPNV_PROVIDER_PLUGINS", raising=False)
         sys.modules.pop(module_name, None)
 
@@ -98,18 +98,18 @@ def test_collect_items_uses_plugin_provider(monkeypatch):
     monkeypatch.setitem(sys.modules, module_name, plugin_module)
     monkeypatch.setenv("WIEN_OEPNV_PROVIDER_PLUGINS", module_name)
 
-    provider_mod._reset_registry()
+    provider_mod.reset_registry()
 
     build_feed = importlib.import_module("src.build_feed")
     try:
         build_feed = importlib.reload(build_feed)
-        build_feed._PROVIDERS_INITIALIZED = False
+        build_feed.reset_module_state()
         # Explicitly initialize config/plugins because import no longer does it
         build_feed.refresh_from_env()
         # Explicitly set false to not get side effects of the previous runs inside the current interpreter
         build_feed.PROVIDERS = []
         build_feed.DEFAULT_PROVIDERS = tuple()
-        provider_mod._REGISTRY.clear()
+        provider_mod.reset_registry(with_defaults=False)
 
         # We need to manually register the plugin for this test now since we cleared it!
         provider_mod.register_provider("PLUGIN_ENABLE", plugin_loader, cache_key="plugin")
@@ -126,7 +126,7 @@ def test_collect_items_uses_plugin_provider(monkeypatch):
         assert plugin_calls == ["invoked"]
     finally:
         provider_mod.unregister_provider("PLUGIN_ENABLE")
-        provider_mod._reset_registry()
+        provider_mod.reset_registry()
         monkeypatch.delenv("WIEN_OEPNV_PROVIDER_PLUGINS", raising=False)
         sys.modules.pop(module_name, None)
         importlib.reload(build_feed)
@@ -161,17 +161,17 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
     monkeypatch.setitem(sys.modules, module_name, plugin_module)
     monkeypatch.setenv("WIEN_OEPNV_PROVIDER_PLUGINS", module_name)
 
-    provider_mod._reset_registry()
+    provider_mod.reset_registry()
 
     import src.build_feed as build_feed
 
     build_feed = importlib.reload(build_feed)
-    build_feed._PROVIDERS_INITIALIZED = False
+    build_feed.reset_module_state()
 
     try:
         build_feed.PROVIDERS = []
         build_feed.DEFAULT_PROVIDERS = tuple()
-        provider_mod._REGISTRY.clear()
+        provider_mod.reset_registry(with_defaults=False)
 
         # Register manually the plugin
         provider_mod.register_provider("PLUGIN_ENABLE", plugin_loader, cache_key="plugin")
@@ -182,6 +182,13 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
         monkeypatch.setenv("VOR_ENABLE", "0")
         monkeypatch.setenv("BAUSTELLEN_ENABLE", "0")
         monkeypatch.setenv("PLUGIN_ENABLE", "1")
+
+        # Ensure that providers are registered in the internal module list
+        # We also need to manually register the dummy providers so they can be shown as disabled
+        provider_mod.register_provider("WL_ENABLE", lambda: [], cache_key="wl")
+        provider_mod.register_provider("OEBB_ENABLE", lambda: [], cache_key="oebb")
+        provider_mod.register_provider("VOR_ENABLE", lambda: [], cache_key="vor")
+        provider_mod.register_provider("BAUSTELLEN_ENABLE", lambda: [], cache_key="baustellen")
 
         out_path = tmp_path / "feed.xml"
         health_path = tmp_path / "feed-health.md"
@@ -197,7 +204,7 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
         monkeypatch.setattr(build_feed.feed_config, "FEED_HEALTH_JSON_PATH", health_json_path)
         monkeypatch.setattr(build_feed.feed_config, "STATE_FILE", state_path)
         monkeypatch.setattr(build_feed, "_load_state", lambda: {})
-        monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
+        monkeypatch.setattr(build_feed, "_save_state", lambda state, deletions=None: None)
 
         # Patch ENV vars for paths so refresh_from_env uses them
         monkeypatch.setenv("OUT_PATH", str(out_path))
@@ -227,7 +234,7 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
         assert "plugin" in provider_names
     finally:
         provider_mod.unregister_provider("PLUGIN_ENABLE")
-        provider_mod._reset_registry()
+        provider_mod.reset_registry()
         monkeypatch.delenv("WIEN_OEPNV_PROVIDER_PLUGINS", raising=False)
         sys.modules.pop(module_name, None)
         importlib.reload(build_feed)

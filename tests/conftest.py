@@ -227,3 +227,10 @@ def reset_vor_request_count(tmp_path, monkeypatch):
     yield
     if path.exists():
         path.unlink()
+
+@pytest.fixture(autouse=True)
+def reset_build_feed_state():
+    import src.build_feed as build_feed
+    from src.feed.providers import reset_registry
+    build_feed.reset_module_state()
+    reset_registry(with_defaults=True)
