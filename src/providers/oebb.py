@@ -251,16 +251,13 @@ def _is_relevant(title: str, description: str) -> bool:
                 if (info0 and not info0.in_vienna) or (info1 and not info1.in_vienna):
                     return False
 
-            if (info0 and info0.in_vienna) or (info1 and info1.in_vienna):
-                return True
+            # Neuer, strikter Streckenabgleich:
+            # Wenn mindestens ein Endpunkt bekannt ist, MUSS mindestens einer in Wien liegen.
+            at_least_one_known = (info0 is not None) or (info1 is not None)
+            vienna_endpoint = (info0 and info0.in_vienna) or (info1 and info1.in_vienna)
 
-            is_outer0 = info0 is not None and not info0.in_vienna
-            is_outer1 = info1 is not None and not info1.in_vienna
-
-            if is_outer0 and is_outer1:
-                # Verbindung zwischen zwei reinen Pendlerbahnhöfen (z.B. Himberg ↔ Kledering)
-                # Sofort verwerfen, da nicht mindestens ein Bahnhof in Wien liegt.
-                return False
+            if at_least_one_known:
+                return bool(vienna_endpoint)
 
     return text_has_vienna_connection(text)
 
