@@ -233,13 +233,31 @@ def register_providers(register_provider):
 """)
 
     # We want to run a small python script that just imports build_feed
-    # and we verify it prints the marker.
+    # and we verify it prints the marker exactly once even after calling main().
     # It must have the temp directory in PYTHONPATH to find the plugin.
     test_script = tmp_path / "run_build.py"
     test_script.write_text("""
 import sys
 sys.path.insert(0, 'src')
 import build_feed
+import os
+import tempfile
+import json
+from unittest.mock import patch
+
+# Mock some things so main() doesn't fail or actually fetch
+with tempfile.TemporaryDirectory() as td:
+        # Just bypass path validation completely for the test (we need to patch both)
+        with patch.object(build_feed, 'validate_path', lambda p, n: build_feed.Path(p)), \
+             patch.object(build_feed.feed_config, 'validate_path', lambda p, n: build_feed.Path(p)):
+        os.environ['OUT_PATH'] = os.path.join(td, 'feed.xml')
+        os.environ['FEED_HEALTH_PATH'] = os.path.join(td, 'health.md')
+        os.environ['FEED_HEALTH_JSON_PATH'] = os.path.join(td, 'health.json')
+        os.environ['STATE_PATH'] = os.path.join(td, 'state.json')
+        # Prevent provider error on mock_plugin that just returns []
+        build_feed.feed_config.PROVIDER_TIMEOUT = 10
+        with patch.object(build_feed, '_invoke_collect_items', return_value=[]):
+            build_feed.main()
 """)
 
     env = os.environ.copy()
@@ -254,4 +272,4 @@ import build_feed
         check=True
     )
 
-    assert "MOCK_PLUGIN_REGISTERED" in result.stdout
+    assert result.stdout.count("MOCK_PLUGIN_REGISTERED") == 1, "Plugin should be registered exactly once."
