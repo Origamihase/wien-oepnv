@@ -143,8 +143,9 @@ PROVIDERS: List[Tuple[str, Any]] = list(DEFAULT_PROVIDERS)
 # and BEFORE the main provider registration loop.
 load_provider_plugins()
 
-for env_name, loader in PROVIDERS:
-    register_provider(env_name, loader, cache_key=resolve_provider_name(loader, env_name))
+def init_providers() -> None:
+    for env_name, loader in PROVIDERS:
+        register_provider(env_name, loader, cache_key=resolve_provider_name(loader, env_name))
 
 
 def _provider_display_name(fetch: Any, env: Optional[str] = None) -> str:
@@ -374,7 +375,7 @@ def _to_utc(dt: datetime) -> datetime:
 def _fmt_rfc2822(dt: datetime) -> str:
     """Format datetime as RFC-2822 string with Vienna offset."""
     if dt.tzinfo is None:
-        dt = dt.replace(tzinfo=timezone.utc)
+        raise ValueError("Naive datetimes are banned in _fmt_rfc2822.")
 
     try:
         # Convert to Vienna time for output
@@ -442,7 +443,7 @@ def format_local_times(
             return f"Ab {start_local:%d.%m.%Y}"
         return f"Seit {start_local:%d.%m.%Y}"
     if end_local:
-        return f"bis {end_local:%d.%m.%Y}"
+        return f"Bis {end_local:%d.%m.%Y}"
     return ""
 
 # Entfernt XML-unerlaubte Kontrollzeichen (außer \t, \n, \r)
@@ -579,7 +580,6 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
             )
             fs_dt = datetime.now(timezone.utc)
             fs_utc = _to_utc(fs_dt)
-            entry["first_seen"] = fs_utc.isoformat()
 
         if retention_cutoff and fs_utc < retention_cutoff:
             log.debug(
@@ -589,8 +589,9 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
             )
             continue
 
-        entry["first_seen"] = fs_utc.isoformat()
-        out[ident] = entry
+        new_entry = dict(entry)
+        new_entry["first_seen"] = fs_utc.isoformat()
+        out[ident] = new_entry
     return out
 
 def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] = None) -> None:
@@ -1012,9 +1013,7 @@ def _drop_old_items(
                 dropped.add(ident)
                 continue
             if age_days > feed_config.MAX_ITEM_AGE_DAYS:
-                if not (
-                    isinstance(ends_at, datetime) and _to_utc(ends_at) > now_utc
-                ):
+                if not isinstance(ends_at, datetime):
                     dropped.add(ident)
                     continue
 
@@ -1215,26 +1214,7 @@ def _cdata_content(s: str) -> str:
     return s.replace("]]>", "]]]]><![CDATA[>")
 
 
-def _emit_item(
-    it: FeedItem, now: datetime, state: Dict[str, Dict[str, Any]]
-) -> Tuple[str, ET.Element, Dict[str, str]]:
-    """Convert a normalized item dictionary into an RSS <item> element and CDATA replacements.
-
-    Args:
-        it: The normalized item dictionary.
-        now: The current datetime (used for relative time calculations).
-        state: The state dictionary (used to persist first_seen timestamps).
-
-    Returns:
-        A tuple containing:
-         - The item identity (str)
-         - The generated ElementTree.Element
-         - A dictionary mapping placeholder strings to their CDATA-wrapped content.
-    """
-    pubDate = _coerce_datetime_field(it, "pubDate")
-    starts_at = _coerce_datetime_field(it, "starts_at")
-    ends_at = _coerce_datetime_field(it, "ends_at")
-
+def _update_item_state(it: FeedItem, now: datetime, state: Dict[str, Dict[str, Any]]) -> Tuple[str, datetime]:
     ident = _identity_for_item(it)
     st = state.get(ident)
     # Fallback: check guid as secondary key
@@ -1250,8 +1230,11 @@ def _emit_item(
         log.warning("first_seen Parsefehler: %r – fallback to now", st.get("first_seen"))
         fs_dt = _to_utc(now)
         st["first_seen"] = fs_dt.isoformat()
+    return ident, fs_dt
 
-    # Felder holen
+def _format_item_content(
+    it: FeedItem, ident: str, starts_at: Optional[datetime], ends_at: Optional[datetime]
+) -> Tuple[str, str, str, str, str, str, str, str]:
     raw_title = it.get("title") or "Mitteilung"
     raw_desc  = it.get("description") or ""
     link = _build_canonical_link(it.get("link"), ident)
@@ -1273,10 +1256,6 @@ def _emit_item(
     guid = str(raw_guid).strip() if raw_guid is not None else ident
     if not guid:
         guid = ident
-    if not isinstance(pubDate, datetime) and feed_config.FRESH_PUBDATE_WINDOW_MIN > 0:
-        age = _to_utc(now) - _to_utc(fs_dt)
-        if age <= timedelta(minutes=feed_config.FRESH_PUBDATE_WINDOW_MIN):
-            pubDate = now
 
     # Task: Strict 2-line Layout (Summary + Timeframe)
     # Line 1: Concise plain text summary (no HTML artifacts)
@@ -1337,19 +1316,52 @@ def _emit_item(
 
     # Plain text summary for <description>
     desc_text = " ".join(desc_parts)
-    if len(desc_text) > feed_config.DESCRIPTION_CHAR_LIMIT:
-        desc_text_truncated = desc_text[:feed_config.DESCRIPTION_CHAR_LIMIT] + "... [TRUNCATED]"
-    else:
-        desc_text_truncated = desc_text
+    desc_text_truncated = truncate_html(desc_text, feed_config.DESCRIPTION_CHAR_LIMIT, ellipsis="... [TRUNCATED]")
 
     # Truncate HTML descriptions using the HTML-aware truncator to prevent broken layout/XSS.
     desc_html = truncate_html(desc_html, feed_config.DESCRIPTION_CHAR_LIMIT, ellipsis="... [TRUNCATED]")
 
-    # For title, we now rely on ElementTree's escaping which is safer/cleaner than manual CDATA.
-    # ET will automatically escape <, >, & to &lt;, &gt;, &amp;.
-
     # Prepare CDATA content (handle ]]> in content)
     desc_cdata = _cdata_content(desc_html)
+
+    return guid, link, title_cdata, desc_text_truncated, desc_cdata, raw_desc, title_out, desc_html
+
+
+def _emit_item(
+    it: FeedItem, now: datetime, state: Dict[str, Dict[str, Any]]
+) -> Tuple[str, ET.Element, Dict[str, str]]:
+    """Convert a normalized item dictionary into an RSS <item> element and CDATA replacements.
+
+    Args:
+        it: The normalized item dictionary.
+        now: The current datetime (used for relative time calculations).
+        state: The state dictionary (used to persist first_seen timestamps).
+
+    Returns:
+        A tuple containing:
+         - The item identity (str)
+         - The generated ElementTree.Element
+         - A dictionary mapping placeholder strings to their CDATA-wrapped content.
+    """
+    pubDate = _coerce_datetime_field(it, "pubDate")
+    starts_at = _coerce_datetime_field(it, "starts_at")
+    ends_at = _coerce_datetime_field(it, "ends_at")
+
+    ident, fs_dt = _update_item_state(it, now, state)
+
+    (
+        guid, link, title_cdata, desc_text_truncated, desc_cdata, raw_desc, title_out, desc_html
+    ) = _format_item_content(
+        it,
+        ident,
+        starts_at if isinstance(starts_at, datetime) else None,
+        ends_at if isinstance(ends_at, datetime) else None,
+    )
+
+    if not isinstance(pubDate, datetime) and feed_config.FRESH_PUBDATE_WINDOW_MIN > 0:
+        age = _to_utc(now) - _to_utc(fs_dt)
+        if age <= timedelta(minutes=feed_config.FRESH_PUBDATE_WINDOW_MIN):
+            pubDate = now
 
     # Generate unique placeholders
     # We use a cryptographically secure random token to ensure uniqueness within the document
@@ -1464,6 +1476,7 @@ def _make_rss(
 
 def lint() -> int:
     """Run structural checks on the aggregated feed items without writing RSS."""
+    init_providers()
     refresh_from_env()
     configure_logging()
 
@@ -1570,6 +1583,7 @@ def lint() -> int:
 
 def main() -> int:
     """Execute the full feed generation pipeline (collect, dedupe, generate RSS)."""
+    init_providers()
     refresh_from_env()
     configure_logging()
 
