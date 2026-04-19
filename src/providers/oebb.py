@@ -219,6 +219,15 @@ def _clean_title_keep_places(t: str) -> str:
 
 # ---------------- Region / Filter Logic ----------------
 
+def _strip_oebb_prefixes(text: str) -> str:
+    """Entfernt iterativ typische ÖBB-Präfixe wie Liniencodes oder Störungsarten."""
+    # Sucht nach Linien (z.B. REX 51, RJX 123) oder Wörtern gefolgt von Doppelpunkt
+    base_pattern = (r"^(?:(?:REX|S|U|RJ|RJX|EC|IC|ICE|WB|NJ|D|R)\s*\d+|Störung|Verspätung|Zugausfall"
+                    r"|Bauarbeiten|Info|Information|Einschränkung|Unterbrechung)\s*:\s*")
+    while re.search(base_pattern, text, re.IGNORECASE):
+        text = re.sub(base_pattern, "", text, flags=re.IGNORECASE)
+    return text.strip()
+
 def _is_relevant(title: str, description: str) -> bool:
     """
     Entscheidet über Relevanz für Wien-Pendler.
@@ -233,8 +242,8 @@ def _is_relevant(title: str, description: str) -> bool:
         parts = [p.strip() for p in title.split("↔")]
         if len(parts) >= 2:
             # Entferne eventuelle Präfixe wie "REX 51: " aus den Stationsnamen
-            part0 = parts[0].split(":")[-1].strip() if ":" in parts[0] else parts[0]
-            part1 = parts[1].split(":")[-1].strip() if ":" in parts[1] else parts[1]
+            part0 = _strip_oebb_prefixes(parts[0])
+            part1 = _strip_oebb_prefixes(parts[1])
 
             info0 = station_info(part0)
             info1 = station_info(part1)
