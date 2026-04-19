@@ -38,7 +38,7 @@ def test_state_path_override(monkeypatch, tmp_path):
     assert build_feed._load_state() == {"id": {"first_seen": now}}
 
 
-def test_state_keeps_valid_entries_and_drops_malformed(monkeypatch, tmp_path):
+def test_state_repairs_malformed_entries(monkeypatch, tmp_path):
     state_file = tmp_path / "data" / "state.json"
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("STATE_PATH", "data/state.json")
@@ -66,7 +66,19 @@ def test_state_keeps_valid_entries_and_drops_malformed(monkeypatch, tmp_path):
             f,
         )
 
-    assert build_feed._load_state() == state_payload
+    loaded_state = build_feed._load_state()
+
+    # Original valid entries should be untouched
+    assert loaded_state["old"]["first_seen"] == state_payload["old"]["first_seen"]
+    assert loaded_state["new"]["first_seen"] == state_payload["new"]["first_seen"]
+
+    # Malformed entries should be repaired with current valid ISO datetimes
+    for key in ["broken", "missing", "none"]:
+        assert key in loaded_state
+        repaired_date = loaded_state[key]["first_seen"]
+        # Should be a valid datetime string
+        dt = datetime.fromisoformat(repaired_date)
+        assert dt.tzinfo is not None, "Repaired datetime should be timezone-aware"
 
 
 def test_state_retention_discards_old_entries(monkeypatch, tmp_path):

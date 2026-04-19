@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import copy
 import html
 import inspect
 import json
@@ -270,6 +271,19 @@ def _read_optional_non_negative_int(env_name: str) -> Optional[int]:
     return value
 
 
+def _resolve_provider_override(candidates: List[str]) -> Optional[int]:
+    """Helper to resolve the first valid integer from a list of env var candidates."""
+    seen: set[str] = set()
+    for candidate in candidates:
+        if not candidate or candidate in seen:
+            continue
+        seen.add(candidate)
+        value = _read_optional_non_negative_int(candidate)
+        if value is not None:
+            return value
+    return None
+
+
 def _provider_timeout_override(
     fetch: Any, env: Optional[str], provider_name: str
 ) -> Optional[int]:
@@ -287,15 +301,7 @@ def _provider_timeout_override(
         candidates.append(f"{base}_TIMEOUT")
         candidates.append(f"PROVIDER_TIMEOUT_{base}")
 
-    seen: set[str] = set()
-    for candidate in candidates:
-        if not candidate or candidate in seen:
-            continue
-        seen.add(candidate)
-        value = _read_optional_non_negative_int(candidate)
-        if value is not None:
-            return value
-    return None
+    return _resolve_provider_override(candidates)
 
 
 def _provider_concurrency_key(fetch: Any, provider_name: str) -> str:
@@ -322,15 +328,7 @@ def _provider_worker_limit(
         base = env.removesuffix("_ENABLE")
         candidates.append(f"{base}_MAX_WORKERS")
 
-    seen: set[str] = set()
-    for candidate in candidates:
-        if not candidate or candidate in seen:
-            continue
-        seen.add(candidate)
-        value = _read_optional_non_negative_int(candidate)
-        if value is not None:
-            return value
-    return None
+    return _resolve_provider_override(candidates)
 
 
 def _fetch_supports_timeout(fetch: Any) -> bool:
@@ -384,13 +382,14 @@ def _fmt_rfc2822(dt: datetime) -> str:
             "Konnte Datum %r nicht per format_datetime formatieren – nutze strftime-Fallback.",
             dt,
         )
-        try:
-            local_dt = _to_utc(dt).astimezone(_VIENNA_TZ)
-        except Exception:
-            if dt.tzinfo is None:
-                local_dt = dt.replace(tzinfo=timezone.utc)
-            else:
+        if dt.tzinfo is None:
+            local_dt = dt.replace(tzinfo=timezone.utc).astimezone(_VIENNA_TZ)
+        else:
+            try:
+                local_dt = dt.astimezone(_VIENNA_TZ)
+            except Exception:
                 local_dt = dt.astimezone(timezone.utc)
+
         days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -432,14 +431,13 @@ def format_local_times(
 
     if start_local:
         if end_local:
-            if start_local.date() == end_local.date():
-                return f"Am {start_local:%d.%m.%Y}"
             if end_local < start_local:
                 log.warning("Enddatum liegt vor Startdatum")
-                if start_local.date() > today.date():
-                    return f"Ab {start_local:%d.%m.%Y}"
-                return f"Seit {start_local:%d.%m.%Y}"
-            return f"{start_local:%d.%m.%Y} – {end_local:%d.%m.%Y}"
+                end_local = None
+            elif start_local.date() == end_local.date():
+                return f"Am {start_local:%d.%m.%Y}"
+            else:
+                return f"{start_local:%d.%m.%Y} – {end_local:%d.%m.%Y}"
         if start_local.date() > today.date():
             return f"Ab {start_local:%d.%m.%Y}"
         return f"Seit {start_local:%d.%m.%Y}"
@@ -579,7 +577,9 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
             log.warning(
                 "State-Eintrag %s hat unparsebares first_seen: %r", ident, entry.get("first_seen")
             )
-            continue
+            fs_dt = datetime.now(timezone.utc)
+            fs_utc = _to_utc(fs_dt)
+            entry["first_seen"] = fs_utc.isoformat()
 
         if retention_cutoff and fs_utc < retention_cutoff:
             log.debug(
@@ -713,7 +713,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
         provider_envs: Dict[Any, Optional[str]] = {}
 
         provider_entries = list(PROVIDERS)
-        providers_overridden = tuple(PROVIDERS) != DEFAULT_PROVIDERS
+        providers_overridden = list(PROVIDERS) != list(DEFAULT_PROVIDERS)
         if provider_entries:
             if not providers_overridden:
                 known_envs = {env for env, _ in provider_entries}
@@ -1043,18 +1043,16 @@ def _dedupe_key_for_item(
 
     if guid:
         return str(guid), False
-    raw = (
-        f"{it.get('source') or ''}|{it.get('title') or ''}|{it.get('description') or ''}"
-    )
-    key = hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
-    # Only cache if we produced a fallback key to avoid recalculating SHA256
+    key = _identity_for_item(it)
+
+    # Only cache if we produced a fallback key to avoid recalculating
     # We set it before logging, so we can return it.
     it["_calculated_dedupe_key"] = key
 
     if warn_on_missing:
         log.warning(
-            "Item ohne guid/_identity – Fallback-Schlüssel (source|title|description) %s",
+            "Item ohne guid/_identity – Fallback-Schlüssel (_identity_for_item) %s",
             key,
         )
     return key, True
@@ -1208,7 +1206,7 @@ def _build_canonical_link(candidate: Any, ident: str) -> str:
     anchor_prefix = "meldung"
     base = base.rstrip("/")
     if slug:
-        return f"{base}/#{anchor_prefix}-{slug}"
+        return f"{base}#{anchor_prefix}-{slug}"
     return base
 
 
@@ -1339,7 +1337,10 @@ def _emit_item(
 
     # Plain text summary for <description>
     desc_text = " ".join(desc_parts)
-    desc_text_truncated = truncate_html(desc_text, feed_config.DESCRIPTION_CHAR_LIMIT, ellipsis="... [TRUNCATED]")
+    if len(desc_text) > feed_config.DESCRIPTION_CHAR_LIMIT:
+        desc_text_truncated = desc_text[:feed_config.DESCRIPTION_CHAR_LIMIT] + "... [TRUNCATED]"
+    else:
+        desc_text_truncated = desc_text
 
     # Truncate HTML descriptions using the HTML-aware truncator to prevent broken layout/XSS.
     desc_html = truncate_html(desc_html, feed_config.DESCRIPTION_CHAR_LIMIT, ellipsis="... [TRUNCATED]")
@@ -1593,7 +1594,7 @@ def main() -> int:
     deduped_count: int = 0
     duplicates_removed: int = 0
     new_items_count: int = 0
-    items: List[Dict[str, Any]] = []
+    items: List[FeedItem] = []
     health_path = validate_path(Path(feed_config.FEED_HEALTH_PATH), "FEED_HEALTH_PATH")
     health_json_path = validate_path(
         Path(feed_config.FEED_HEALTH_JSON_PATH), "FEED_HEALTH_JSON_PATH"
@@ -1646,7 +1647,6 @@ def main() -> int:
             raw_count,
         )
 
-        import copy
         pre_dedupe_items = copy.deepcopy(items)
         duplicate_summaries = _summarize_duplicates(pre_dedupe_items)
 

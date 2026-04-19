@@ -109,9 +109,11 @@ class TestDeduplicationQuality(unittest.TestCase):
             "description": "Content A Update"
         }
 
-        # Without GUID/_identity, these are treated as different items
+        # With the new unified fallback logic, if they share the same title, start/end dates, source and category,
+        # they will have the exact same _identity_for_item and thus deduplicate down to 1.
+        # Previously they were treated as different items because description was factored into the fallback hash.
         result = _dedupe_items([item1, item2])
-        self.assertEqual(len(result), 2, "Updates without stable ID result in duplicates")
+        self.assertEqual(len(result), 1, "Updates without stable ID but same title/time/source now deduplicate via unified identity")
 
 if __name__ == '__main__':
     unittest.main()
