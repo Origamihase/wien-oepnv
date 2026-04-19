@@ -26,7 +26,7 @@ from email.utils import format_datetime
 from pathlib import Path
 from threading import BoundedSemaphore, Lock
 from time import perf_counter
-from typing import Any, Dict, List, Optional, Sequence, Set, Tuple, Union, cast
+from typing import Any, Dict, List, Optional, Sequence, Set, Tuple, Union, cast, NamedTuple
 from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
 
@@ -139,13 +139,19 @@ DEFAULT_PROVIDERS: Tuple[Tuple[str, Any], ...] = (
 
 PROVIDERS: List[Tuple[str, Any]] = list(DEFAULT_PROVIDERS)
 
+_PROVIDERS_INITIALIZED = False
+
 # Ensure plugins are loaded exactly once per process startup AFTER env vars are configured
 # and BEFORE the main provider registration loop.
 load_provider_plugins()
 
 def init_providers() -> None:
+    global _PROVIDERS_INITIALIZED
+    if _PROVIDERS_INITIALIZED:
+        return
     for env_name, loader in PROVIDERS:
         register_provider(env_name, loader, cache_key=resolve_provider_name(loader, env_name))
+    _PROVIDERS_INITIALIZED = True
 
 
 def _provider_display_name(fetch: Any, env: Optional[str] = None) -> str:
@@ -460,6 +466,9 @@ _LINE_PREFIX_RE = re.compile(
 
 _ELLIPSIS = " …"
 _SENTENCE_END_RE = re.compile(r"[.!?…](?=\s|$)")
+
+# _WHITESPACE_RE captures all whitespace including newlines (\n).
+# _WHITESPACE_CLEANUP_RE only matches horizontal whitespace (spaces, tabs, etc.) to preserve intended line breaks.
 _WHITESPACE_RE = re.compile(r"\s+")
 _WHITESPACE_CLEANUP_RE = re.compile(r"[ \t\r\f\v]+")
 
@@ -685,6 +694,7 @@ def _identity_for_item(item: FeedItem) -> str:
 # ---------------- Pipeline ----------------
 
 def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
+    init_providers()
     if report is None:
         report = RunReport(provider_statuses())
     items: List[FeedItem] = []
@@ -1214,6 +1224,17 @@ def _cdata_content(s: str) -> str:
     return s.replace("]]>", "]]]]><![CDATA[>")
 
 
+class FormattedContent(NamedTuple):
+    guid: str
+    link: str
+    title_cdata: str
+    desc_text_truncated: str
+    desc_cdata: str
+    raw_desc: str
+    title_out: str
+    desc_html: str
+
+
 def _update_item_state(it: FeedItem, now: datetime, state: Dict[str, Dict[str, Any]]) -> Tuple[str, datetime]:
     ident = _identity_for_item(it)
     st = state.get(ident)
@@ -1234,7 +1255,7 @@ def _update_item_state(it: FeedItem, now: datetime, state: Dict[str, Dict[str, A
 
 def _format_item_content(
     it: FeedItem, ident: str, starts_at: Optional[datetime], ends_at: Optional[datetime]
-) -> Tuple[str, str, str, str, str, str, str, str]:
+) -> FormattedContent:
     raw_title = it.get("title") or "Mitteilung"
     raw_desc  = it.get("description") or ""
     link = _build_canonical_link(it.get("link"), ident)
@@ -1316,7 +1337,10 @@ def _format_item_content(
 
     # Plain text summary for <description>
     desc_text = " ".join(desc_parts)
-    desc_text_truncated = truncate_html(desc_text, feed_config.DESCRIPTION_CHAR_LIMIT, ellipsis="... [TRUNCATED]")
+    if len(desc_text) > feed_config.DESCRIPTION_CHAR_LIMIT:
+        desc_text_truncated = desc_text[:feed_config.DESCRIPTION_CHAR_LIMIT].rstrip() + "... [TRUNCATED]"
+    else:
+        desc_text_truncated = desc_text
 
     # Truncate HTML descriptions using the HTML-aware truncator to prevent broken layout/XSS.
     desc_html = truncate_html(desc_html, feed_config.DESCRIPTION_CHAR_LIMIT, ellipsis="... [TRUNCATED]")
@@ -1324,7 +1348,7 @@ def _format_item_content(
     # Prepare CDATA content (handle ]]> in content)
     desc_cdata = _cdata_content(desc_html)
 
-    return guid, link, title_cdata, desc_text_truncated, desc_cdata, raw_desc, title_out, desc_html
+    return FormattedContent(guid, link, title_cdata, desc_text_truncated, desc_cdata, raw_desc, title_out, desc_html)
 
 
 def _emit_item(
@@ -1349,14 +1373,20 @@ def _emit_item(
 
     ident, fs_dt = _update_item_state(it, now, state)
 
-    (
-        guid, link, title_cdata, desc_text_truncated, desc_cdata, raw_desc, title_out, desc_html
-    ) = _format_item_content(
+    formatted = _format_item_content(
         it,
         ident,
         starts_at if isinstance(starts_at, datetime) else None,
         ends_at if isinstance(ends_at, datetime) else None,
     )
+    guid = formatted.guid
+    link = formatted.link
+    title_cdata = formatted.title_cdata
+    desc_text_truncated = formatted.desc_text_truncated
+    desc_cdata = formatted.desc_cdata
+    raw_desc = formatted.raw_desc
+    title_out = formatted.title_out
+    desc_html = formatted.desc_html
 
     if not isinstance(pubDate, datetime) and feed_config.FRESH_PUBDATE_WINDOW_MIN > 0:
         age = _to_utc(now) - _to_utc(fs_dt)
