@@ -74,8 +74,8 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: |
           # Änderungen stagen
-          git add -f docs/feed.xml
-          git add data/vor_request_count.json
+          git add -f docs/feed.xml || true
+          git add data/first_seen.json || true
 
           # Prüfen, ob es gestagte Änderungen gibt
           if ! git diff --staged --quiet; then
