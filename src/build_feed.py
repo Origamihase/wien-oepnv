@@ -116,7 +116,10 @@ load_provider_plugins()
 def reset_module_state() -> None:
     """Test helper to reset the module-level initialization state."""
     global _PROVIDERS_INITIALIZED
+    global PROVIDERS
     _PROVIDERS_INITIALIZED = False
+    PROVIDERS.clear()
+    PROVIDERS.extend(DEFAULT_PROVIDERS)
 
 def init_providers() -> None:
     global _PROVIDERS_INITIALIZED
@@ -141,7 +144,8 @@ def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
     threshold = timedelta(hours=feed_config.CACHE_MAX_AGE_HOURS)
     stale_messages: List[str] = []
 
-    for _, loader in PROVIDERS:
+    for spec in iter_providers():
+        loader = spec.loader
         cache_name = getattr(loader, "_provider_cache_name", None)
         if not cache_name:
             continue
@@ -370,26 +374,7 @@ def _fmt_rfc2822(dt: datetime) -> str:
         except Exception:
             local_dt = dt.astimezone(timezone.utc)
 
-        days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-
-        day_name = days[local_dt.weekday()]
-        month_name = months[local_dt.month - 1]
-
-        offset = local_dt.utcoffset()
-        if offset is None:
-            offset_str = "-0000"
-        else:
-            total_seconds = int(offset.total_seconds())
-            hours, remainder = divmod(abs(total_seconds), 3600)
-            minutes, _ = divmod(remainder, 60)
-            sign = "+" if total_seconds >= 0 else "-"
-            offset_str = f"{sign}{hours:02d}{minutes:02d}"
-
-        return (
-            f"{day_name}, {local_dt.day:02d} {month_name} {local_dt.year:04d} "
-            f"{local_dt.hour:02d}:{local_dt.minute:02d}:{local_dt.second:02d} {offset_str}"
-        )
+        return local_dt.strftime("%a, %d %b %Y %H:%M:%S %z")
 
 
 def format_local_times(
@@ -582,32 +567,35 @@ def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] 
     path.parent.mkdir(parents=True, exist_ok=True)
     # Windows-fix: Use a separate lock file to avoid permission errors when atomic_write replaces the target
     lock_path = path.with_suffix(".lock")
-    with lock_path.open("a+", encoding="utf-8") as lock_file:
-        with file_lock(lock_file, exclusive=True):
-            # Safe merge: read existing state to avoid overwriting parallel updates
-            merged_state = {}
-            try:
-                with path.open("r", encoding="utf-8") as f:
-                    existing = json.load(f)
-                    if isinstance(existing, dict):
-                        merged_state = existing
-            except FileNotFoundError:
-                pass
-            except Exception as exc:
-                log.warning(
-                    "State-Merge fehlgeschlagen (Lesefehler: %s) – überschreibe State.",
-                    exc,
-                )
+    try:
+        with lock_path.open("a+", encoding="utf-8") as lock_file:
+            with file_lock(lock_file, exclusive=True):
+                # Safe merge: read existing state to avoid overwriting parallel updates
+                merged_state = {}
+                try:
+                    with path.open("r", encoding="utf-8") as f:
+                        existing = json.load(f)
+                        if isinstance(existing, dict):
+                            merged_state = existing
+                except FileNotFoundError:
+                    pass
+                except Exception as exc:
+                    log.warning(
+                        "State-Merge fehlgeschlagen (Lesefehler: %s) – überschreibe State.",
+                        exc,
+                    )
 
-            merged_state.update(state)
-            if deletions:
-                for k in deletions:
-                    merged_state.pop(k, None)
+                merged_state.update(state)
+                if deletions:
+                    for k in deletions:
+                        merged_state.pop(k, None)
 
-            with atomic_write(
-                path, mode="w", encoding="utf-8", permissions=0o600
-            ) as f:
-                json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True)
+                with atomic_write(
+                    path, mode="w", encoding="utf-8", permissions=0o600
+                ) as f:
+                    json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True)
+    finally:
+        lock_path.unlink(missing_ok=True)
 
 def _identity_for_item(item: FeedItem) -> str:
     """
@@ -1260,7 +1248,7 @@ def _format_item_content(
     raw_title = it.get("title") or "Mitteilung"
     raw_desc  = it.get("description") or ""
     link = _build_canonical_link(it.get("link"), ident)
-    sanitized_link = validate_http_url(link, check_dns=True) if link else ""
+    sanitized_link = validate_http_url(link, check_dns=False) if link else ""
     if link and not sanitized_link:
         log.warning(
             "Item %s has potentially unsafe/invalid link %r; falling back to feed link.",
@@ -1478,8 +1466,6 @@ def _make_rss(
     emitted = 0
     for i, it in enumerate(items):
         if emitted >= feed_config.MAX_ITEMS:
-            for remaining in items[i:]:
-                deletions.add(_identity_for_item(remaining))
             break
         ident, elem, repl = _emit_item(it, now, state)
         channel.append(elem)
