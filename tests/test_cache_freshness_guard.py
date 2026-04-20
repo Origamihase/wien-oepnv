@@ -15,7 +15,14 @@ def _make_loader(name: str):
 
 def test_detect_stale_caches_records_warning(monkeypatch):
     loader = _make_loader("demo")
-    monkeypatch.setattr(build_feed, "PROVIDERS", [("DEMO_ENABLE", loader)])
+
+    class DummySpec:
+        loader = None
+
+    spec = DummySpec()
+    spec.loader = loader
+
+    monkeypatch.setattr(build_feed, "iter_providers", lambda: [spec])
     monkeypatch.setattr(build_feed.feed_config, "CACHE_MAX_AGE_HOURS", 1)
     now = datetime.now(timezone.utc)
     report = build_feed.RunReport([(loader._provider_cache_name, True)])
@@ -33,7 +40,14 @@ def test_detect_stale_caches_records_warning(monkeypatch):
 
 def test_detect_stale_caches_skips_recent(monkeypatch):
     loader = _make_loader("demo")
-    monkeypatch.setattr(build_feed, "PROVIDERS", [("DEMO_ENABLE", loader)])
+
+    class DummySpec:
+        loader = None
+
+    spec = DummySpec()
+    spec.loader = loader
+
+    monkeypatch.setattr(build_feed, "iter_providers", lambda: [spec])
     monkeypatch.setattr(build_feed.feed_config, "CACHE_MAX_AGE_HOURS", 2)
     now = datetime.now(timezone.utc)
     report = build_feed.RunReport([(loader._provider_cache_name, True)])
