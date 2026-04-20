@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import hashlib
 import copy
-import html
 import inspect
 import json
 import logging
@@ -406,6 +405,7 @@ def format_local_times(
         end_local = _to_utc(end).astimezone(_VIENNA_TZ)
 
     if start_local and end_local and (end_local - start_local).days > 180:
+        log.warning("Enddatum liegt mehr als 180 Tage nach Startdatum. Setze Enddatum auf None.")
         end_local = None
 
     today = datetime.now(_VIENNA_TZ)
@@ -1260,7 +1260,7 @@ def _format_item_content(
     raw_title = it.get("title") or "Mitteilung"
     raw_desc  = it.get("description") or ""
     link = _build_canonical_link(it.get("link"), ident)
-    sanitized_link = validate_http_url(link, check_dns=False) if link else ""
+    sanitized_link = validate_http_url(link, check_dns=True) if link else ""
     if link and not sanitized_link:
         log.warning(
             "Item %s has potentially unsafe/invalid link %r; falling back to feed link.",
@@ -1306,7 +1306,7 @@ def _format_item_content(
         summary = summary[:175].rsplit(' ', 1)[0] + " …"
 
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
-    title_out = _sanitize_text(html.unescape(raw_title))
+    title_out = _sanitize_text(raw_title)
     if len(title_out) > feed_config.TITLE_CHAR_LIMIT:
         title_out = title_out[: feed_config.TITLE_CHAR_LIMIT].rstrip() + " …"
 
@@ -1525,7 +1525,6 @@ def lint() -> int:
     try:
         items = _invoke_collect_items(report)
         raw_count = len(items)
-        _normalize_item_datetimes(items)
 
         filtered_items, _ = _drop_old_items(items, now, state)
         filtered_count = len(filtered_items)
@@ -1673,11 +1672,6 @@ def main() -> int:
             collect_duration,
         )
 
-        normalize_start = perf_counter()
-        _normalize_item_datetimes(items)
-        normalize_duration = perf_counter() - normalize_start
-        log.debug("Zeitstempel normalisiert in %.2fs", normalize_duration)
-
         filter_start = perf_counter()
         items, dropped_ids = _drop_old_items(items, now, state)
         filter_duration = perf_counter() - filter_start
@@ -1767,7 +1761,6 @@ def main() -> int:
             final_items=len(items),
             durations={
                 "collect": collect_duration,
-                "normalize": normalize_duration,
                 "filter": filter_duration,
                 "dedupe": dedupe_duration,
                 "rss": rss_duration,

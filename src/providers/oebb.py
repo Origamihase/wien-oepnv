@@ -17,6 +17,7 @@
 
 from __future__ import annotations
 
+import html
 import logging
 import os
 import re
@@ -127,6 +128,7 @@ def _clean_description(text: str) -> str:
 
 def _clean_title_keep_places(t: str) -> str:
     t = (t or "").strip()
+    t = html.unescape(t)
 
     # Redundanz-Check: Wenn Titel „Text: Station“ ist und Station im Text vorkommt,
     # dann nur Text nehmen (z.B. "Aufzug in X defekt: X").
@@ -414,7 +416,6 @@ def fetch_events(timeout: int = 25) -> List[FeedItem]:
     out: List[FeedItem] = []
     for item in channel.findall("item"):
         raw_title = _get_text(item, "title")
-        # html.unescape removed as per instruction
         title = _clean_title_keep_places(raw_title)
         link  = _get_text(item, "link").strip() or OEBB_URL
         raw_guid = _get_text(item, "guid").strip()
