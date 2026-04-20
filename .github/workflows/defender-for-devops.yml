@@ -35,8 +35,10 @@ jobs:
     permissions:
       contents: read
 
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
-    - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+    - uses: actions/checkout@v4
     - uses: actions/setup-dotnet@3951f0dfe7a07e2313ec93c75700083e2005cbab # v4
       with:
         dotnet-version: |

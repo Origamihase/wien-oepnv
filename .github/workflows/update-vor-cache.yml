@@ -19,6 +19,7 @@ jobs:
     permissions:
       contents: write
     env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       PYTHONPATH: src
       VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
       VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
@@ -28,7 +29,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        uses: actions/checkout@v4
 
       - name: Ensure pip cache directory exists
         run: mkdir -p "$PIP_CACHE_DIR"
@@ -43,7 +44,7 @@ jobs:
           fi
 
       - name: Set up Python
-        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
@@ -84,7 +85,7 @@ jobs:
 
       - name: Commit and push changes
         if: ${{ github.ref_type == 'branch' }}
-        uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: 'chore: update VOR cache [skip ci]'
           file_pattern: 'cache/vor*/events.json data/vor_request_count.json'
