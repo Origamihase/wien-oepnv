@@ -30,10 +30,6 @@ from typing import Any, Dict, List, Optional, Sequence, Set, Tuple, Union, cast,
 from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
 
-# Register namespaces globally for thread-safe XML generation
-ET.register_namespace("ext", "https://wien-oepnv.example/schema")
-ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
-
 try:  # pragma: no cover - allow running as script or module
     from feed_types import FeedItem
     from feed import config as feed_config
@@ -95,6 +91,11 @@ except ModuleNotFoundError:  # pragma: no cover
     from .utils.http import validate_http_url
     from .utils.locking import file_lock
     from .utils.text import html_to_text, truncate_html
+
+
+# Register namespaces globally for thread-safe XML generation
+ET.register_namespace("ext", "https://wien-oepnv.example/schema")
+ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
 
 log = logging.getLogger("build_feed")
 
@@ -877,10 +878,13 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                         # This ensures that if the provider is deadlocked/overloaded, we don't block
                         # the executor worker forever.
                         start_wait = perf_counter()
-                        # If timeout_arg is None, acquire(timeout=None) will wait indefinitely.
-                        acquired = semaphore.acquire(timeout=timeout_arg)
+
+                        # If timeout_value < 0, fallback to global timeout + buffer to avoid infinite block
+                        sem_timeout = timeout_value if timeout_value >= 0 else (feed_config.PROVIDER_TIMEOUT + 5.0)
+
+                        acquired = semaphore.acquire(timeout=sem_timeout)
                         if not acquired:
-                            raise TimeoutError(f"Semaphore acquisition timed out after {timeout_value}s")
+                            raise TimeoutError(f"Semaphore acquisition timed out after {sem_timeout}s")
 
                         # Task 3: Subtract wait time from timeout
                         try:
@@ -1040,12 +1044,9 @@ def _dedupe_key_for_item(
     it: FeedItem, *, warn_on_missing: bool = True
 ) -> Tuple[str, bool]:
     """Return the deduplication key used for ``it`` and indicate fallback usage."""
-
+    # Use explicit _identity if present
     if it.get("_identity"):
         return str(it.get("_identity")), False
-
-    if "_calculated_dedupe_key" in it:
-        return cast(str, it["_calculated_dedupe_key"]), False
 
     guid = it.get("guid")
     source = (it.get("source") or "").lower()
@@ -1059,10 +1060,6 @@ def _dedupe_key_for_item(
         return str(guid), False
 
     key = _identity_for_item(it)
-
-    # Only cache if we produced a fallback key to avoid recalculating
-    # We set it before logging, so we can return it.
-    it["_calculated_dedupe_key"] = key
 
     if warn_on_missing:
         log.warning(
@@ -1197,7 +1194,38 @@ def _sort_key(item: FeedItem) -> Tuple[int, float, str]:
     pd = item.get("pubDate")
     # Fix TypeError: Ensure guid is always a string, even if explicitly None
     guid_val = item.get("guid")
-    guid_str = str(guid_val) if guid_val else _identity_for_item(item)
+    # Avoid mutating dictionary; use pre-calculated identity or compute it cleanly here
+    if guid_val:
+        guid_str = str(guid_val)
+    else:
+        # Check if already calculated to avoid re-calculating, but do not mutate if not
+        if "_calculated_identity" in item:
+            guid_str = cast(str, item["_calculated_identity"])
+        else:
+            # We can use a simplified, non-mutating hash as fallback
+            # (or simply a string representation if identity isn't cached yet, which shouldn't happen here)
+            title = item.get("title") or ""
+            sa = item.get("starts_at")
+            ea = item.get("ends_at")
+            sa_str = _to_utc(sa).isoformat() if isinstance(sa, datetime) else "None"
+            ea_str = _to_utc(ea).isoformat() if isinstance(ea, datetime) else "None"
+            fuzzy_raw = f"{title}|{sa_str}|{ea_str}"
+            fuzzy_hash = hashlib.sha256(fuzzy_raw.encode("utf-8")).hexdigest()
+
+            source = (item.get("source") or "").lower()
+            category = (item.get("category") or "").lower()
+            lines = _parse_lines_from_title(title)
+            lines_part = "L=" + "/".join(lines) if lines else "L="
+            start_day = _ymd_or_none(sa)
+            base = f"{source}|{category}|{lines_part}|D={start_day}"
+
+            if title:
+                guid_str = f"{base}|T={title}|F={fuzzy_hash}"
+            else:
+                raw = json.dumps(item, sort_keys=True, default=str)
+                hashed = hashlib.sha256(raw.encode("utf-8")).hexdigest()
+                guid_str = f"{base}|H={hashed}|F={fuzzy_hash}"
+
     if isinstance(pd, datetime):
         return (0, -_to_utc(pd).timestamp(), guid_str)
     return (1, 0.0, guid_str)
@@ -1465,6 +1493,9 @@ def _make_rss(
         - The generated RSS XML string with CDATA sections.
         - The deletions set.
     """
+    if deletions is None:
+        deletions = set()
+
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
 
@@ -1477,8 +1508,10 @@ def _make_rss(
     item_replacements: Dict[str, str] = {}
     identities_in_feed: List[str] = []
     emitted = 0
-    for it in items:
+    for i, it in enumerate(items):
         if emitted >= feed_config.MAX_ITEMS:
+            for remaining in items[i:]:
+                deletions.add(_identity_for_item(remaining))
             break
         ident, elem, repl = _emit_item(it, now, state)
         channel.append(elem)
@@ -1774,17 +1807,6 @@ def main() -> int:
             },
             feed_path=out_path,
         )
-        if health_metrics is None:
-            # Fallback logic for successful runs where metrics object wasn't created yet.
-            # Simplified using pre-initialized counters (Task 3A).
-            health_metrics = FeedHealthMetrics(
-                raw_items=raw_count,
-                filtered_items=filtered_count,
-                deduped_items=deduped_count,
-                new_items=new_items_count,
-                duplicate_count=duplicates_removed,
-                duplicates=tuple(duplicate_summaries),
-            )
         _write_health_outputs(health_metrics)
         report.log_results()
         return 0
