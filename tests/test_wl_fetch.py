@@ -158,8 +158,8 @@ def test_fetch_events_adds_stop_context_when_no_lines(monkeypatch):
     assert "Karlsplatz" in title
     assert "Museumsquartier" in title
     assert title.endswith("(2 Halte)")
-    # New logic: Description is just the summary, no extras
-    assert events[0]["description"] == "Testbeschreibung"
+    # New logic: Description includes stop names if present
+    assert events[0]["description"] == "Testbeschreibung | Haltestelle: Karlsplatz, Museumsquartier"
 
 
 def test_fetch_events_uses_extra_context_when_no_stops(monkeypatch):
@@ -180,5 +180,5 @@ def test_fetch_events_uses_extra_context_when_no_stops(monkeypatch):
     assert " – Karlsplatz" in title
     assert "Ausgang Oper" in title
     desc = events[0]["description"]
-    assert "Station: Karlsplatz" not in desc
-    assert "Location: Ausgang Oper" not in desc
+    assert "Station: Karlsplatz" in desc
+    assert "Location: Ausgang Oper" in desc
