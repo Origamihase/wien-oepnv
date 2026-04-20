@@ -518,73 +518,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Verunreinigung",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "title": "22A: Busse halten gegenüber",
+    "description": "Bauarbeiten Busse halten gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
-    "pubDate": "2026-04-20T09:13:00+02:00",
-    "starts_at": "2026-04-20T09:13:00+02:00",
+    "guid": "5bd2630336c89363d0b5b8010615c2e4f93446938e7ef48ce23d56487831b994",
+    "pubDate": "2026-04-20T11:16:18+02:00",
+    "starts_at": "2026-04-20T11:16:18+02:00",
+    "ends_at": "2026-04-20T23:59:59+02:00",
+    "_identity": "wl|störung|L=22A|D=2026-04-20"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "67A: Verkehrsunfall",
+    "description": "Linie 67A: Unregelmäßige in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cff844d3131da98b7ae40385d5a45ed4dbbc86cb4c5556655f00313e9c5fbd98",
+    "pubDate": "2026-04-20T11:25:00+02:00",
+    "starts_at": "2026-04-20T11:25:00+02:00",
     "ends_at": "2026-04-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-04-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10A: Rettungseinsatz",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "219e547df2be869f9c5e196043c5ef1b5d356073d50ea5347540dd618f54101f",
-    "pubDate": "2026-04-20T09:16:00+02:00",
-    "starts_at": "2026-04-20T09:16:00+02:00",
-    "ends_at": "2026-04-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-04-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "28A: Fremder Verkehrsunfall",
-    "description": "Linie 28A: Fahrtbehinderung in Richtung Eipeldauer Straße. Voraussichtliche Dauer: 11:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Rautenweg # Schillingstraße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b56d9dc3e666a206b702a4ebc1ea36f8ff96b01584f20b8213950da0cf40d129",
-    "pubDate": "2026-04-20T10:21:00+02:00",
-    "starts_at": "2026-04-20T10:21:00+02:00",
-    "ends_at": "2026-04-20T23:55:00+02:00",
-    "_identity": "wl|störung|L=28A|D=2026-04-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Fahrtbehinderung Betriebsstörung",
-    "description": "Fahrtbehinderung Betriebsstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "53c46bc6aea6444331548898442031191ed786b068423727bacd2eed5b7ee6eb",
-    "pubDate": "2026-04-20T10:33:53+02:00",
-    "starts_at": "2026-04-20T10:34:10+02:00",
-    "ends_at": "2026-04-20T11:33:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-04-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Fahrtbehinderung Betriebsstörung",
-    "description": "Fahrtbehinderung Betriebsstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "32954b41abd148544322e0cc027955a7a6a2ba447f6671f113810c4df9b7dc4a",
-    "pubDate": "2026-04-20T10:36:32+02:00",
-    "starts_at": "2026-04-20T10:36:47+02:00",
-    "ends_at": "2026-04-20T11:35:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-04-20"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d3121440bb198809da6ad6777749127de887bfe17ce700d64f281bbb4593b9c8",
-    "pubDate": "2026-04-20T10:38:25+02:00",
-    "starts_at": "2026-04-20T10:38:25+02:00",
-    "ends_at": "2026-04-20T11:37:00+02:00",
-    "_identity": "wl|störung|L=49|D=2026-04-20"
+    "_identity": "wl|störung|L=67A|D=2026-04-20"
   }
 ]
