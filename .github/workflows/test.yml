@@ -13,6 +13,8 @@ jobs:
     name: Run test suite
     runs-on: ubuntu-latest
 
+    env:
+      PYTHONPATH: src
     steps:
       - name: Check out repository
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4

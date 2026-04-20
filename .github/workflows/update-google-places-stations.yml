@@ -14,6 +14,7 @@ jobs:
     permissions:
       contents: write
     env:
+      PYTHONPATH: src
       GOOGLE_ACCESS_ID: ${{ secrets.GOOGLE_ACCESS_ID }}
       PLACES_INCLUDED_TYPES: train_station,subway_station,bus_station
       PLACES_RADIUS_M: 2500

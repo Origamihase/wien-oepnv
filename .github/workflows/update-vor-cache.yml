@@ -19,6 +19,7 @@ jobs:
     permissions:
       contents: write
     env:
+      PYTHONPATH: src
       VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
       VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
       VOR_BASE: ${{ secrets.VOR_BASE }}
