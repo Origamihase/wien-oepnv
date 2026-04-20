@@ -49,3 +49,4 @@ ignore_errors = false
 
 [tool.pytest.ini_options]
 addopts = "--timeout=60"
+pythonpath = ["src"]
