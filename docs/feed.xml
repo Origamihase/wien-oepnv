@@ -7,41 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Tue, 21 Apr 2026 14:42:47 +0200</lastBuildDate>
+<lastBuildDate>Tue, 21 Apr 2026 16:50:24 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[U2: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
-      <pubDate>Tue, 21 Apr 2026 13:03:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Apr 2026 14:42:47 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 13:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.04.2026]</description>
-      <content:encoded><![CDATA[Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ee9d3f3d2f7894fa11d971e1ac5f847be3f219359a43a6a87138d443f4bb3996</guid>
-      <pubDate>Tue, 21 Apr 2026 12:05:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Apr 2026 12:56:12 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 12:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.04.2026]</description>
-      <content:encoded><![CDATA[Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[3A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d0ca726f4f3064439e34273bfe62cd8cb00619d515176ac7f96f9e089a05e6ac</guid>
-      <pubDate>Tue, 21 Apr 2026 11:44:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Apr 2026 12:37:30 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 11:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 3 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.04.2026]</description>
-      <content:encoded><![CDATA[Linie 3 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.04.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +85,37 @@
       <ext:ends_at>Tue, 21 Apr 2026 23:59:59 +0200</ext:ends_at>
       <description>Fahrtbehinderung wegen Bauarbeiten [Am 21.04.2026]</description>
       <content:encoded><![CDATA[Fahrtbehinderung wegen Bauarbeiten<br/>[Am 21.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:05 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Apr 2026 01:17:28 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 21 Apr 2026 00:00:05 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Apr 2026 23:59:59 +0200</ext:ends_at>
+      <description>Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A) [Am 21.04.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A)<br/>[Am 21.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Bruck an der Leitha]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;847000</guid>
+      <pubDate>Mon, 20 Apr 2026 07:51:15 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Apr 2026 07:39:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Apr 2026 07:51:15 +0200</ext:starts_at>
+      <description>Wegen Bauarbeiten können von 08.03.2026 (04:40 Uhr) bis 22.06.2026 (04:40 Uhr) zwischen Wien Hbf (U) und Götzendorf Bahnhof, zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof, … [Seit 20.04.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können von 08.03.2026 (04:40 Uhr) bis 22.06.2026 (04:40 Uhr) zwischen Wien Hbf (U) und Götzendorf Bahnhof, zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof, …<br/>[Seit 20.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Praterstern ↔ Wien Meidling/ Wien Hauptbahnhof Wien Hütteldorf]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;861846</guid>
+      <pubDate>Mon, 20 Apr 2026 07:36:55 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Apr 2026 07:39:55 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Apr 2026 07:36:55 +0200</ext:starts_at>
+      <description>Wegen Bauarbeiten können zwischen Wien Praterstern Bahnhof (U) und Wien Meidling Bahnhof (U), und zwischen Wien Hbf (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (22:00 … [Seit 20.04.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Praterstern Bahnhof (U) und Wien Meidling Bahnhof (U), und zwischen Wien Hbf (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (22:00 …<br/>[Seit 20.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
