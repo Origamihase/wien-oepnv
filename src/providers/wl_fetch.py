@@ -729,7 +729,10 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             stops_formatted = ", ".join(sorted(b["stop_names"]))
             desc += f" | Haltestelle: {stops_formatted}"
         elif b["extras"]:
-            locations = [x for x in b["extras"] if x.lower().startswith("station:") or x.lower().startswith("location:")]
+            locations = [
+                x for x in b["extras"]
+                if x.lower().startswith(("station:", "location:")) or ":" not in x
+            ]
             if locations:
                 locations_formatted = " / ".join(locations)
                 desc += f" | {locations_formatted}"
