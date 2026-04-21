@@ -597,7 +597,10 @@ def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] 
                 ) as f:
                     json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True)
     finally:
-        lock_path.unlink(missing_ok=True)
+        try:
+            lock_path.unlink(missing_ok=True)
+        except OSError as e:
+            log.debug("Konnte Lock-Datei nicht löschen (Windows-Lock): %s", e)
 
 
 def _identity_for_item(item: FeedItem) -> str:
@@ -1351,12 +1354,17 @@ def _emit_item(
     # Generate unique placeholders
     # We use a cryptographically secure random token to ensure uniqueness within the document
     # Ensure placeholder is not accidentally present in the original desc_html or raw_desc
+    max_attempts = 100
+    attempts = 0
     while True:
+        if attempts >= max_attempts:
+            raise RuntimeError("Konnte keinen eindeutigen Platzhalter generieren")
         uid = secrets.token_hex(16)
         PH_CONTENT = f"___CDATA_CONTENT_{uid}___"
         PH_TITLE = f"___CDATA_TITLE_{uid}___"
         if PH_CONTENT not in formatted.desc_html and PH_CONTENT not in formatted.raw_desc and PH_TITLE not in formatted.title_out:
             break
+        attempts += 1
 
     # --- ElementTree Construction ---
     item = ET.Element("item")
