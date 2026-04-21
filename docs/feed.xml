@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Tue, 21 Apr 2026 12:56:12 +0200</lastBuildDate>
+<lastBuildDate>Tue, 21 Apr 2026 13:15:06 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[O: Verkehrsunfall]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Tue, 21 Apr 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 3 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.04.2026]</description>
       <content:encoded><![CDATA[Linie 3 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab</guid>
-      <pubDate>Tue, 21 Apr 2026 10:37:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Apr 2026 12:37:30 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 10:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Apr 2026 12:59:00 +0200</ext:ends_at>
-      <description>Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.04.2026]</description>
-      <content:encoded><![CDATA[Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.04.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 21 Apr 2026 23:59:59 +0200</ext:ends_at>
       <description>Fahrtbehinderung wegen Bauarbeiten [Am 21.04.2026]</description>
       <content:encoded><![CDATA[Fahrtbehinderung wegen Bauarbeiten<br/>[Am 21.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:05 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Apr 2026 01:17:28 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 21 Apr 2026 00:00:05 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Apr 2026 23:59:59 +0200</ext:ends_at>
+      <description>Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A) [Am 21.04.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A)<br/>[Am 21.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
