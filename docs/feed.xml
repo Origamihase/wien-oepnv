@@ -7,41 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Tue, 21 Apr 2026 18:16:10 +0200</lastBuildDate>
+<lastBuildDate>Tue, 21 Apr 2026 19:35:26 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[6: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4</guid>
-      <pubDate>Tue, 21 Apr 2026 16:43:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Apr 2026 17:02:26 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 16:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 21.04.2026]</description>
-      <content:encoded><![CDATA[Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 21.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc</guid>
-      <pubDate>Tue, 21 Apr 2026 16:41:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Apr 2026 17:02:26 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 16:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 7 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.04.2026]</description>
-      <content:encoded><![CDATA[Linie 7 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ec4a209401e5de4c025373ee870c863010cf4f1ed29fcc9ec77c7c2c819937a0</guid>
-      <pubDate>Tue, 21 Apr 2026 16:41:00 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Apr 2026 17:02:26 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 16:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 9 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 21.04.2026]</description>
-      <content:encoded><![CDATA[Linie 9 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 21.04.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[60A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +85,39 @@
       <ext:ends_at>Tue, 21 Apr 2026 23:59:59 +0200</ext:ends_at>
       <description>Gleisbauarbeiten Kein Betrieb [Am 21.04.2026]</description>
       <content:encoded><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[Am 21.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Umleitung zum Stefan-Fadinger-Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3bd22726420279ab2026e70b351fc7fcb5ca5e75a7964b14725381471569f673</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:25 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Apr 2026 01:17:28 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 21 Apr 2026 00:00:25 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Apr 2026 23:59:59 +0200</ext:ends_at>
+      <description>Bauarbeiten Umleitung zum Stefan-Fadinger-Platz [Am 21.04.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Umleitung zum Stefan-Fadinger-Platz<br/>[Am 21.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:08 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Apr 2026 01:17:28 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 21 Apr 2026 00:00:08 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Apr 2026 23:59:59 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85 [Am 21.04.2026]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85<br/>[Am 21.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[35A: Kein Halt!]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">336c27302b17f8ff14ae10d8d67eb5aa6fdbf8e1d55a8225079646b76cedd0df</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:08 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Apr 2026 01:17:28 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 21 Apr 2026 00:00:08 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Apr 2026 20:53:00 +0200</ext:ends_at>
+      <description>Bauarbeiten Kein Halt! [Am 21.04.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Kein Halt!<br/>[Am 21.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
