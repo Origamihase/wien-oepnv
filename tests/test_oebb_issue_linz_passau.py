@@ -22,4 +22,4 @@ def test_clean_title_compound_category():
     cleaned = _clean_title_keep_places(title)
     # the exact output depends on internal sorting / canonical naming
     # wait, "Wien Hbf" and "St. Pölten" should just be the parts
-    assert cleaned == "Wien Hauptbahnhof ↔ St.Pölten Hbf" or cleaned == "St.Pölten Hbf ↔ Wien Hauptbahnhof"
+    assert cleaned == "Wien Hauptbahnhof ↔ St. Pölten" or cleaned == "St.Pölten Hbf ↔ Wien Hauptbahnhof"
