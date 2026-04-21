@@ -510,6 +510,7 @@ def _normalize_item_datetimes(
             _coerce_datetime_field(item, field_name)
     return items
 
+
 # ---------------- State (first_seen) ----------------
 
 def _load_state() -> Dict[str, Dict[str, Any]]:
@@ -562,6 +563,7 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
         out[ident] = new_entry
     return out
 
+
 def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] = None) -> None:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -596,6 +598,7 @@ def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] 
                     json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True)
     finally:
         lock_path.unlink(missing_ok=True)
+
 
 def _identity_for_item(item: FeedItem) -> str:
     """
@@ -1150,37 +1153,10 @@ def _sort_key(item: FeedItem) -> Tuple[int, float, str]:
     pd = item.get("pubDate")
     # Fix TypeError: Ensure guid is always a string, even if explicitly None
     guid_val = item.get("guid")
-    # Avoid mutating dictionary; use pre-calculated identity or compute it cleanly here
     if guid_val:
         guid_str = str(guid_val)
     else:
-        # Check if already calculated to avoid re-calculating, but do not mutate if not
-        if "_calculated_identity" in item:
-            guid_str = cast(str, item["_calculated_identity"])
-        else:
-            # We can use a simplified, non-mutating hash as fallback
-            # (or simply a string representation if identity isn't cached yet, which shouldn't happen here)
-            title = item.get("title") or ""
-            sa = item.get("starts_at")
-            ea = item.get("ends_at")
-            sa_str = _to_utc(sa).isoformat() if isinstance(sa, datetime) else "None"
-            ea_str = _to_utc(ea).isoformat() if isinstance(ea, datetime) else "None"
-            fuzzy_raw = f"{title}|{sa_str}|{ea_str}"
-            fuzzy_hash = hashlib.sha256(fuzzy_raw.encode("utf-8")).hexdigest()
-
-            source = (item.get("source") or "").lower()
-            category = (item.get("category") or "").lower()
-            lines = _parse_lines_from_title(title)
-            lines_part = "L=" + "/".join(lines) if lines else "L="
-            start_day = _ymd_or_none(sa)
-            base = f"{source}|{category}|{lines_part}|D={start_day}"
-
-            if title:
-                guid_str = f"{base}|T={title}|F={fuzzy_hash}"
-            else:
-                raw = json.dumps(item, sort_keys=True, default=str)
-                hashed = hashlib.sha256(raw.encode("utf-8")).hexdigest()
-                guid_str = f"{base}|H={hashed}|F={fuzzy_hash}"
+        guid_str = _identity_for_item(item)
 
     if isinstance(pd, datetime):
         return (0, -_to_utc(pd).timestamp(), guid_str)
@@ -1241,6 +1217,7 @@ def _update_item_state(it: FeedItem, now: datetime, state: Dict[str, Dict[str, A
         fs_dt = _to_utc(now)
         st["first_seen"] = fs_dt.isoformat()
     return ident, fs_dt
+
 
 def _format_item_content(
     it: FeedItem, ident: str, starts_at: Optional[datetime], ends_at: Optional[datetime]
@@ -1310,10 +1287,7 @@ def _format_item_content(
     time_line = _sanitize_text(time_line)
     time_line = _WHITESPACE_CLEANUP_RE.sub(" ", time_line).strip()
     if time_line:
-        if not time_line.startswith("["):
-            time_line = f"[{time_line}"
-        if not time_line.endswith("]"):
-            time_line = f"{time_line}]"
+        time_line = f"[{time_line.strip('[]')}]"
 
     # Combine
     desc_parts = []
@@ -1434,7 +1408,7 @@ def _make_rss(
     now: datetime,
     state: Dict[str, Dict[str, Any]],
     deletions: Optional[Set[str]] = None,
-) -> Tuple[str, Optional[Set[str]]]:
+) -> str:
     """
     Generate the full RSS XML document from a list of items using ElementTree.
 
@@ -1445,9 +1419,7 @@ def _make_rss(
         deletions: IDs to be removed from the state.
 
     Returns:
-        A tuple containing:
-        - The generated RSS XML string with CDATA sections.
-        - The deletions set.
+        The generated RSS XML string with CDATA sections.
     """
     if deletions is None:
         deletions = set()
@@ -1485,7 +1457,7 @@ def _make_rss(
     for placeholder, cdata in item_replacements.items():
         xml_str = xml_str.replace(placeholder, cdata)
 
-    return xml_str, deletions
+    return xml_str
 
 
 def lint() -> int:
@@ -1716,7 +1688,7 @@ def main() -> int:
         )
 
         rss_start = perf_counter()
-        rss, returned_deletions = _make_rss(items, now, state, deletions=dropped_ids)
+        rss = _make_rss(items, now, state, deletions=dropped_ids)
         rss_duration = perf_counter() - rss_start
 
         out_path = validate_path(Path(feed_config.OUT_PATH), "OUT_PATH")
@@ -1726,7 +1698,7 @@ def main() -> int:
             f.write(rss)
 
         try:
-            _save_state(state, deletions=returned_deletions)
+            _save_state(state, deletions=dropped_ids)
         except Exception as e:
             log.warning(
                 "State speichern fehlgeschlagen (%s) – Feed wurde geschrieben, State bleibt veraltet.",

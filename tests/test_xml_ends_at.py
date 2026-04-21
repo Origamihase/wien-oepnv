@@ -25,7 +25,7 @@ class TestXmlEndsAt(unittest.TestCase):
         }
 
         # Execution
-        rss_xml, _ = _make_rss([item], now, {})
+        rss_xml = _make_rss([item], now, {})
 
         # Verification
         root = ET.fromstring(rss_xml)
@@ -60,7 +60,7 @@ class TestXmlEndsAt(unittest.TestCase):
             "category": "TestCat"
         }
 
-        rss_xml, _ = _make_rss([item], now, {})
+        rss_xml = _make_rss([item], now, {})
         root = ET.fromstring(rss_xml)
         rss_item = root.find("channel").find("item")
         ns = {"ext": "https://wien-oepnv.example/schema"}

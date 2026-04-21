@@ -216,7 +216,7 @@ def test_cache_iso_items_sorted_and_emit_pubdate(monkeypatch):
     assert [it["guid"] for it in deduped] == ["new-guid", "older-guid"]
 
     monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
-    rss, _ = build_feed._make_rss(deduped, now, state)
+    rss = build_feed._make_rss(deduped, now, state)
 
     assert rss.count("<item>") == 2
     assert rss.count("<pubDate>") == 2

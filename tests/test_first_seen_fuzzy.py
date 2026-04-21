@@ -100,8 +100,8 @@ def test_first_seen_fuzzy_identity(monkeypatch, tmp_path):
     # Because `_identity_for_item` mutates the item and sets `_calculated_identity`.
     # Let's see how `item_c` is processed.
 
-    rss, deletions = build_feed._make_rss([item_c], now + timedelta(hours=2), state)
-    build_feed._save_state(state, deletions=deletions)
+    rss = build_feed._make_rss([item_c], now + timedelta(hours=2), state)
+    build_feed._save_state(state)
 
     state_after_third = build_feed._load_state()
 

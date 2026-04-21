@@ -40,7 +40,7 @@ def test_make_rss_logs_warning_when_state_readonly(monkeypatch, caplog):
     }
 
     with caplog.at_level(logging.WARNING):
-        rss, _ = build_feed._make_rss([item], now, {})
+        rss = build_feed._make_rss([item], now, {})
 
     assert "</rss>" in rss
 
@@ -57,7 +57,7 @@ def test_make_rss_saves_empty_state_when_no_identities(monkeypatch, caplog):
 
 
     with caplog.at_level(logging.WARNING):
-        rss, _ = build_feed._make_rss(
+        rss = build_feed._make_rss(
             [],
             datetime.now(timezone.utc),
             {"old": {"first_seen": datetime.now(timezone.utc).isoformat()}},
