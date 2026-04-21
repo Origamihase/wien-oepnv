@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Tue, 21 Apr 2026 01:52:21 +0200</lastBuildDate>
+<lastBuildDate>Tue, 21 Apr 2026 05:30:11 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[N6: Busse halten Neilreichgasse 20-22]]></title>
+      <title><![CDATA[N31: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc</guid>
-      <pubDate>Tue, 21 Apr 2026 00:45:10 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Apr 2026 01:17:28 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 00:45:10 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Apr 2026 05:00:00 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Busse halten Neilreichgasse 20-22 [Am 21.04.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Busse halten Neilreichgasse 20-22<br/>[Am 21.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N46: Busse halten bei Linie 48A in Neustiftgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1bc89bc576e114343fbe409de06c7658ab641c9714cb025001dae07c25e9ae89</guid>
-      <pubDate>Tue, 21 Apr 2026 00:30:27 +0200</pubDate>
-      <ext:first_seen>Tue, 21 Apr 2026 01:17:28 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 00:30:27 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 21 Apr 2026 05:00:00 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Busse halten bei Linie 48 A in Neustiftgasse [Am 21.04.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Busse halten bei Linie 48 A in Neustiftgasse<br/>[Am 21.04.2026]]]></content:encoded>
+      <guid isPermaLink="false">5b8bb8681ca4a0baa77100a15da81ee981bba94f6bc04d630066f1124f169e35</guid>
+      <pubDate>Tue, 21 Apr 2026 01:23:00 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Apr 2026 05:30:11 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 21 Apr 2026 01:23:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Derzeit kommt es bei der Linie N31 in beiden Richtungen zu unterschiedlichen Intervallen. [Am 21.04.2026]</description>
+      <content:encoded><![CDATA[Derzeit kommt es bei der Linie N31 in beiden Richtungen zu unterschiedlichen Intervallen.<br/>[Am 21.04.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N38: Busse halten auf der Hauptfahrbahn (Straßenbahn)]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 21 Apr 2026 23:59:59 +0200</ext:ends_at>
       <description>Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A) [Am 21.04.2026]</description>
       <content:encoded><![CDATA[Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A)<br/>[Am 21.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a</guid>
+      <pubDate>Mon, 20 Apr 2026 23:00:15 +0200</pubDate>
+      <ext:first_seen>Tue, 21 Apr 2026 05:30:11 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 20 Apr 2026 23:00:15 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 21 Apr 2026 05:30:00 +0200</ext:ends_at>
+      <description>Busse halten auf der Hauptfahrbahn [20.04.2026 – 21.04.2026]</description>
+      <content:encoded><![CDATA[Busse halten auf der Hauptfahrbahn<br/>[20.04.2026 – 21.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
