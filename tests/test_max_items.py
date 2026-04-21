@@ -38,7 +38,7 @@ def test_make_rss_ignores_items_when_max_is_zero(monkeypatch):
 
         now = datetime.now(timezone.utc)
         state = {}
-        rss, _ = build_feed._make_rss(
+        rss = build_feed._make_rss(
             [
                 {
                     "source": "test",

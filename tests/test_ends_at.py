@@ -35,7 +35,7 @@ def test_item_with_past_ends_at_is_dropped(monkeypatch, tmp_path):
 
     def fake_make_rss(items, now_param, state, deletions=None):
         captured["items"] = items
-        return "", deletions
+        return ""
 
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)
     monkeypatch.setattr(build_feed, "_make_rss", fake_make_rss)
