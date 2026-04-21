@@ -48,6 +48,30 @@
       "vor_id": "430310100"
     },
     {
+      "aliases": [],
+      "bst_id": 900017,
+      "in_vienna": false,
+      "name": "Berlin",
+      "pendler": false,
+      "source": "manual_foreign_city"
+    },
+    {
+      "aliases": [],
+      "bst_id": 900018,
+      "in_vienna": false,
+      "name": "Bratislava",
+      "pendler": false,
+      "source": "manual_foreign_city"
+    },
+    {
+      "aliases": [],
+      "bst_id": 900007,
+      "in_vienna": false,
+      "name": "Bregenz",
+      "pendler": false,
+      "source": "manual_foreign_city"
+    },
+    {
       "aliases": [
         "430320900",
         "Bruck an der Leitha",
@@ -107,6 +131,14 @@
       "vor_id": "430325500"
     },
     {
+      "aliases": [],
+      "bst_id": 900020,
+      "in_vienna": false,
+      "name": "Budapest",
+      "pendler": false,
+      "source": "manual_foreign_city"
+    },
+    {
       "aliases": [
         "430327900",
         "Deutsch Wagram",
@@ -130,6 +162,14 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430327900"
+    },
+    {
+      "aliases": [],
+      "bst_id": 900011,
+      "in_vienna": false,
+      "name": "Dornbirn",
+      "pendler": false,
+      "source": "manual_foreign_city"
     },
     {
       "aliases": [
@@ -199,6 +239,14 @@
       "vor_id": "430334700"
     },
     {
+      "aliases": [],
+      "bst_id": 900010,
+      "in_vienna": false,
+      "name": "Feldkirch",
+      "pendler": false,
+      "source": "manual_foreign_city"
+    },
+    {
       "aliases": [
         "430470800",
         "Flughafen Wien",
@@ -237,6 +285,14 @@
       "source": "oebb",
       "type": "stop",
       "vor_id": "430470800"
+    },
+    {
+      "aliases": [],
+      "bst_id": 900016,
+      "in_vienna": false,
+      "name": "Frankfurt",
+      "pendler": false,
+      "source": "manual_foreign_city"
     },
     {
       "_google_place_id": "ChIJcw5fA7YHbUcR9uqSCCBND2k",
@@ -315,6 +371,14 @@
       "vor_id": "430349900"
     },
     {
+      "aliases": [],
+      "bst_id": 900004,
+      "in_vienna": false,
+      "name": "Graz",
+      "pendler": false,
+      "source": "manual_foreign_city"
+    },
+    {
       "aliases": [
         "430368600",
         "Hainburg an der Donau Personenbahnhof",
@@ -383,6 +447,14 @@
       "vor_id": "430378000"
     },
     {
+      "aliases": [],
+      "bst_id": 900001,
+      "in_vienna": false,
+      "name": "Innsbruck",
+      "pendler": false,
+      "source": "manual_foreign_city"
+    },
+    {
       "_google_place_id": "ChIJAejOLIMHbUcRqGaIKFIrOSs",
       "_lat": 48.200779399999995,
       "_lng": 16.3694019,
@@ -437,6 +509,14 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "410597200"
+    },
+    {
+      "aliases": [],
+      "bst_id": 900005,
+      "in_vienna": false,
+      "name": "Klagenfurt",
+      "pendler": false,
+      "source": "manual_foreign_city"
     },
     {
       "aliases": [
@@ -534,6 +614,14 @@
       "vor_id": "430396300"
     },
     {
+      "aliases": [],
+      "bst_id": 900013,
+      "in_vienna": false,
+      "name": "Leoben",
+      "pendler": false,
+      "source": "manual_foreign_city"
+    },
+    {
       "aliases": [
         "430408400",
         "Leobersdorf",
@@ -557,6 +645,14 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430408400"
+    },
+    {
+      "aliases": [],
+      "bst_id": 900003,
+      "in_vienna": false,
+      "name": "Linz",
+      "pendler": false,
+      "source": "manual_foreign_city"
     },
     {
       "aliases": [
@@ -649,6 +745,14 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430423900"
+    },
+    {
+      "aliases": [],
+      "bst_id": 900014,
+      "in_vienna": false,
+      "name": "München",
+      "pendler": false,
+      "source": "manual_foreign_city"
     },
     {
       "_google_place_id": "ChIJ9zkxBIwHbUcRJYN0SNOPjgo",
@@ -751,6 +855,14 @@
       "vor_id": "410447300"
     },
     {
+      "aliases": [],
+      "bst_id": 900015,
+      "in_vienna": false,
+      "name": "Passau",
+      "pendler": false,
+      "source": "manual_foreign_city"
+    },
+    {
       "aliases": [
         "430450000",
         "Perchtoldsdorf",
@@ -790,6 +902,14 @@
       "source": [
         "google_places"
       ]
+    },
+    {
+      "aliases": [],
+      "bst_id": 900019,
+      "in_vienna": false,
+      "name": "Prag",
+      "pendler": false,
+      "source": "manual_foreign_city"
     },
     {
       "aliases": [
@@ -877,6 +997,14 @@
       ]
     },
     {
+      "aliases": [],
+      "bst_id": 900002,
+      "in_vienna": false,
+      "name": "Salzburg",
+      "pendler": false,
+      "source": "manual_foreign_city"
+    },
+    {
       "_google_place_id": "ChIJP12J6aQHbUcRMDvO2qPS6bg",
       "_lat": 48.217113,
       "_lng": 16.37128,
@@ -951,6 +1079,14 @@
       "source": [
         "google_places"
       ]
+    },
+    {
+      "aliases": [],
+      "bst_id": 900012,
+      "in_vienna": false,
+      "name": "St. Pölten",
+      "pendler": false,
+      "source": "manual_foreign_city"
     },
     {
       "aliases": [
@@ -1091,6 +1227,14 @@
       "source": [
         "google_places"
       ]
+    },
+    {
+      "aliases": [],
+      "bst_id": 900009,
+      "in_vienna": false,
+      "name": "Steyr",
+      "pendler": false,
+      "source": "manual_foreign_city"
     },
     {
       "aliases": [
@@ -1270,6 +1414,14 @@
       "vor_id": "430575900"
     },
     {
+      "aliases": [],
+      "bst_id": 900006,
+      "in_vienna": false,
+      "name": "Villach",
+      "pendler": false,
+      "source": "manual_foreign_city"
+    },
+    {
       "_google_place_id": "ChIJua204ZAHbUcRnAuRn1kblgM",
       "_lat": 48.2050705,
       "_lng": 16.3575922,
@@ -1286,6 +1438,14 @@
       "source": [
         "google_places"
       ]
+    },
+    {
+      "aliases": [],
+      "bst_id": 900008,
+      "in_vienna": false,
+      "name": "Wels",
+      "pendler": false,
+      "source": "manual_foreign_city"
     },
     {
       "aliases": [
@@ -3367,166 +3527,6 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430527400"
-    },
-    {
-      "name": "Innsbruck",
-      "bst_id": 900001,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Salzburg",
-      "bst_id": 900002,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Linz",
-      "bst_id": 900003,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Graz",
-      "bst_id": 900004,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Klagenfurt",
-      "bst_id": 900005,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Villach",
-      "bst_id": 900006,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Bregenz",
-      "bst_id": 900007,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Wels",
-      "bst_id": 900008,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Steyr",
-      "bst_id": 900009,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Feldkirch",
-      "bst_id": 900010,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Dornbirn",
-      "bst_id": 900011,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "St. Pölten",
-      "bst_id": 900012,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Leoben",
-      "bst_id": 900013,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "München",
-      "bst_id": 900014,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Passau",
-      "bst_id": 900015,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Frankfurt",
-      "bst_id": 900016,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Berlin",
-      "bst_id": 900017,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Bratislava",
-      "bst_id": 900018,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Prag",
-      "bst_id": 900019,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
-    },
-    {
-      "name": "Budapest",
-      "bst_id": 900020,
-      "in_vienna": false,
-      "pendler": false,
-      "aliases": [],
-      "source": "manual_foreign_city"
     }
   ]
 }
