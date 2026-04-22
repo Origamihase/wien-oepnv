@@ -410,14 +410,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "22A: Busse halten gegenüber",
-    "description": "Bauarbeiten Busse halten gegenüber",
+    "title": "43: Benutzen sie die Linie 43A",
+    "description": "Gleisbauarbeiten Benutzen sie die Linie 43A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5bd2630336c89363d0b5b8010615c2e4f93446938e7ef48ce23d56487831b994",
+    "guid": "46ae3a2d2382092f60c8fcccc65d43dbd7b4d4a0912d5b132508027ee5065181",
     "pubDate": "2026-04-21T00:00:08+02:00",
     "starts_at": "2026-04-21T00:00:08+02:00",
     "ends_at": "2026-04-22T23:59:59+02:00",
-    "_identity": "wl|störung|L=22A|D=2026-04-21"
+    "_identity": "wl|störung|L=43|D=2026-04-21"
   },
   {
     "source": "Wiener Linien",
@@ -434,10 +434,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Benutzen sie die Linie 43A",
-    "description": "Gleisbauarbeiten Benutzen sie die Linie 43A",
+    "title": "22A: Busse halten gegenüber",
+    "description": "Bauarbeiten Busse halten gegenüber",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "46ae3a2d2382092f60c8fcccc65d43dbd7b4d4a0912d5b132508027ee5065181",
+    "guid": "5bd2630336c89363d0b5b8010615c2e4f93446938e7ef48ce23d56487831b994",
+    "pubDate": "2026-04-21T00:00:08+02:00",
+    "starts_at": "2026-04-21T00:00:08+02:00",
+    "ends_at": "2026-04-22T23:59:59+02:00",
+    "_identity": "wl|störung|L=22A|D=2026-04-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Benutzen Sie die Linie 43A - Dornbacher Straße 85",
+    "description": "Gleisbauarbeiten Benutzen Sie die Linie 43A - Dornbacher Straße 85",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12",
     "pubDate": "2026-04-21T00:00:08+02:00",
     "starts_at": "2026-04-21T00:00:08+02:00",
     "ends_at": "2026-04-22T23:59:59+02:00",
@@ -450,18 +462,6 @@
     "description": "Gleisbauarbeiten Benutzen Sie die Linie 43A - Alszeile 93",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "d69dbcd381e73ff23979749766d0ce677cb151b10269f6f878240d11cec54c8f",
-    "pubDate": "2026-04-21T00:00:08+02:00",
-    "starts_at": "2026-04-21T00:00:08+02:00",
-    "ends_at": "2026-04-22T23:59:59+02:00",
-    "_identity": "wl|störung|L=43|D=2026-04-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43: Benutzen Sie die Linie 43A - Dornbacher Straße 85",
-    "description": "Gleisbauarbeiten Benutzen Sie die Linie 43A - Dornbacher Straße 85",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12",
     "pubDate": "2026-04-21T00:00:08+02:00",
     "starts_at": "2026-04-21T00:00:08+02:00",
     "ends_at": "2026-04-22T23:59:59+02:00",
@@ -494,18 +494,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "93A/98A: Umleitung",
-    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten im Bereich Langobardenstra&szlig;e und der damit einhergehenden provisorischen Einbahnf&uuml;hrung von Biberhaufenweg bis Oberdorfstra&szlig;e werden die Linien 93A und 98A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Montag, 27. April 2026, etwa 07:00 Uhr auf Dauer von voraussichtlich 4 Wochen.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linien 93A und 98A in Richtung Kagran U bzw. E&szlig;ling, Schippanisiedlung:<br /></strong>Umleitung ab Erzherzog-Karl-Stra&szlig;e # Oberdorfstra&szlig;e &uuml;ber Aspernstra&szlig;e &ndash; Asperner Heldenplatz &ndash; Biberhaufenweg zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Haberlandtgasse (Oberdorfstra&szlig;e 23)<br />Aspern, Oberdorfstra&szlig;e (Oberdorfstra&szlig;e 3-5)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Haberlandtgasse (Aspernstra&szlig;e 116-120, gemeinsam mit 26A und 97A)<br />Asperner Heldenplatz (Asperner Heldenplatz gg&uuml;. ONr. 3, gemeinsam mit 22A, 92A und 97A)</p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3b48c6bade87bed3e7579f74a1d74ed6b4906fee88d5ada7e19b6b3324f45738",
-    "pubDate": "2026-04-22T00:00:00+02:00",
-    "starts_at": "2026-04-27T00:00:00+02:00",
-    "ends_at": "2027-04-22T11:11:00+02:00",
-    "_identity": "wl|hinweis|L=93A,98A|D=2026-04-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "79A/79B: Umleitung",
     "description": "<h2>Umfangreiche Stra&szlig;enbauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Freudenauer Hafenbr&uuml;cke werden die Linien 79A und 79B umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Dienstag, 05. Mai 2026, etwa 07:00 Uhr auf Dauer von voraussichtlich 3 Wochen.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linien 79A und 79B (Fr&uuml;hkurse) in Richtung Donaumarina, Chrastekgasse:<br /></strong>Umleitung ab Landwehrstra&szlig;e # Alberner Hafenzufahrtsstra&szlig;e &uuml;ber Alberner Hafenzufahrtsstra&szlig;e &ndash; Margetinstra&szlig;e &ndash; Seitenhafenbr&uuml;cke &ndash; Seitenhafenstra&szlig;e &ndash; Hafenzufahrtsstra&szlig;e zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Alberner Hafenzufahrtsstra&szlig;e (Alberner Hafenzufahrtsstra&szlig;e nach Landwehrstra&szlig;e)<br />Freudenauer Hafenbr&uuml;cke (Zinnergasse nach Alberner Hafenzufahrtsstra&szlig;e)<br />Kraftwerk Freudenau (Freudenauer Hafenbr&uuml;cke gg&uuml;. Objekt 28)<br />Hafen Freudenau (Freudenauer Hafenstra&szlig;e gg&uuml;. ONr. 18)<br />Winterhafen (Freudenauer Hafenstra&szlig;e gg&uuml; ONr. 16)<br />Freudenauer Hafenstra&szlig;e (Freudenauer Hafenstra&szlig;e gg&uuml;. ONr. 8-10)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Alberner Hafenzufahrtsstra&szlig;e (Alberner Hafenzufahrtsstra&szlig;e nach Landwehrstra&szlig;e, gemeinsam mit 76A und 79B)<br />Alberner Hafenzufahrtsstra&szlig;e West (Alberner Hafenzufahrtsstra&szlig;e 9, gemeinsam mit 76A und 79B)<br />Margetinstra&szlig;e (Alberner Hafenzufahrtsstra&szlig;e gg&uuml; ONr. 8, gemeinsam mit 76A und 79B)<br />Seitenhafenbr&uuml;cke (Seitenhafenstra&szlig;e 19-21, gemeinsam mit 79B)<br />Seitenhafenstra&szlig;e (Seitenhafenstra&szlig;e 15, gemeinsam mit 79B)<br />Hellingstra&szlig;e (Seitenhafenstra&szlig;e nach Hellingstra&szlig;e, gemeinsam mit 79B)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -514,6 +502,18 @@
     "starts_at": "2026-05-05T00:00:00+02:00",
     "ends_at": "2027-04-22T11:11:00+02:00",
     "_identity": "wl|hinweis|L=79A,79B|D=2026-05-05"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "93A/98A: Umleitung",
+    "description": "<h2>Stra&szlig;enbauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten im Bereich Langobardenstra&szlig;e und der damit einhergehenden provisorischen Einbahnf&uuml;hrung von Biberhaufenweg bis Oberdorfstra&szlig;e werden die Linien 93A und 98A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Montag, 27. April 2026, etwa 07:00 Uhr auf Dauer von voraussichtlich 4 Wochen.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linien 93A und 98A in Richtung Kagran U bzw. E&szlig;ling, Schippanisiedlung:<br /></strong>Umleitung ab Erzherzog-Karl-Stra&szlig;e # Oberdorfstra&szlig;e &uuml;ber Aspernstra&szlig;e &ndash; Asperner Heldenplatz &ndash; Biberhaufenweg zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>Haberlandtgasse (Oberdorfstra&szlig;e 23)<br />Aspern, Oberdorfstra&szlig;e (Oberdorfstra&szlig;e 3-5)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>Haberlandtgasse (Aspernstra&szlig;e 116-120, gemeinsam mit 26A und 97A)<br />Asperner Heldenplatz (Asperner Heldenplatz gg&uuml;. ONr. 3, gemeinsam mit 22A, 92A und 97A)</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3b48c6bade87bed3e7579f74a1d74ed6b4906fee88d5ada7e19b6b3324f45738",
+    "pubDate": "2026-04-22T00:00:00+02:00",
+    "starts_at": "2026-04-27T00:00:00+02:00",
+    "ends_at": "2027-04-22T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=93A,98A|D=2026-04-27"
   },
   {
     "source": "Wiener Linien",
@@ -566,25 +566,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Tiere im Gleis",
-    "description": "Die Linie U6 fährt derzeit nicht zwischen Neue Donau und Handelskai. Weichen Sie ersatzweise auf die S-Bahn aus. Voraussichtliche Dauer: 20:45 Uhr. Grund: Tiere im Gleis im Haltestellenbereich Neue Donau.",
+    "title": "10: Fahrtbehinderung Störung an einem Bahnübergang",
+    "description": "Fahrtbehinderung Störung an einem Bahnübergang",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "213478fbb32b4332ea228fb76f4ed2d9b848b9f99185e4f4519859753c6a12c1",
-    "pubDate": "2026-04-22T19:51:00+02:00",
-    "starts_at": "2026-04-22T19:51:00+02:00",
-    "ends_at": "2026-04-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-04-22"
+    "guid": "3e93100016fcf448339dc62edd7461d9648808590af565f547a802f981e18cc8",
+    "pubDate": "2026-04-22T21:18:46+02:00",
+    "starts_at": "2026-04-22T21:18:46+02:00",
+    "ends_at": "2026-04-22T22:18:00+02:00",
+    "_identity": "wl|störung|L=10|D=2026-04-22"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "17A: Verspätungen",
-    "description": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "10: BÜ Betrieb ab Hietzing",
+    "description": "Störung BÜ Betrieb ab Hietzing >",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8608be99220f292d0bc5fd9ca7b8ac8e286f3a93e8c2113672cfae3c79c4f96b",
-    "pubDate": "2026-04-22T20:33:00+02:00",
-    "starts_at": "2026-04-22T20:33:00+02:00",
-    "ends_at": "2026-04-22T23:55:00+02:00",
-    "_identity": "wl|störung|L=17A|D=2026-04-22"
+    "guid": "da888132501db94ecb11b6e4726d10fcbf27f4f20d88d3230af63c8373806eef",
+    "pubDate": "2026-04-22T21:20:42+02:00",
+    "starts_at": "2026-04-22T21:20:42+02:00",
+    "ends_at": "2026-04-22T22:18:00+02:00",
+    "_identity": "wl|störung|L=10|D=2026-04-22"
   }
 ]
