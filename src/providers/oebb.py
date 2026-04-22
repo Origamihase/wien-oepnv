@@ -87,7 +87,7 @@ NON_LOCATION_PREFIXES = {
     "oberleitungsstörung", "stellwerksstörung", "fahrzeugschaden", "personenschaden",
     "wetter", "unwetter", "schnee", "hochwasser", "murenabgang",
     "lawinengefahr", "streik", "demonstration", "veranstaltung", "wartungsarbeiten",
-    "update", "info", "hinweis", "achtung", "verkehrsmeldung",
+    "update", "info", "information", "hinweis", "achtung", "verkehrsmeldung",
     "umleitung", "haltausfall", "schienenersatzverkehr", "sev", "ersatzverkehr",
         "streckenunterbrechung", "unterbrechung", "teilausfall", "zugausfall",
         "verkehrseinschränkung"
@@ -139,21 +139,6 @@ def _clean_title_keep_places(t: str) -> str:
         if suffix_part.strip() in text_part or text_part.strip() in suffix_part:
             t = text_part if len(text_part) > len(suffix_part) else suffix_part
 
-    # Vorspann bis zum Doppelpunkt entfernen
-    # Statt aggressivem Regex nutzen wir eine iterative Entfernung von bekannten Keywords.
-    # Wir iterieren über Kategorie-Präfixe ("Störung:", "Verspätung:") und entfernen sie.
-    # Wenn ein Präfix KEINE bekannte Kategorie ist (z.B. "Wien Meidling:"), bleibt es stehen.
-    while True:
-        match = re.match(r"^\s*([^:]+):\s*", t)
-        if not match:
-            break
-
-        prefix = match.group(1).strip()
-        if _is_category(prefix):
-            t = t[match.end():]
-        else:
-            break
-
     # Allgemeiner Fall: „X und Y“ → „X ↔ Y“ für Stationen
     t = re.sub(r"\b([^,;|]+?)\s+und\s+([^,;|]+?)\b", r"\1 ↔ \2", t)
     # Pfeile/Bindestriche und Trennzeichen normalisieren
@@ -163,6 +148,22 @@ def _clean_title_keep_places(t: str) -> str:
         segment = part.strip()
         if not segment:
             continue
+
+        # NEU: Präfix iterativ vom jeweiligen Segment abtrennen
+        while True:
+            match = re.match(r"^\s*([^:]+):\s*", segment)
+            if not match:
+                break
+
+            prefix = match.group(1).strip()
+            if _is_category(prefix):
+                segment = segment[match.end():]
+            else:
+                break
+
+        if not segment:
+            continue
+
         canon = canonical_name(segment)
         if not canon:
             cleaned = _clean_endpoint(segment)
