@@ -566,18 +566,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N46: Busse halten bei Linie 48A in Burggasse",
-    "description": "Gleisbauarbeiten Busse halten bei Linie 48A in Burggasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a751a157bea2c61bda9406b779159246c8d4f92aa8a9f6765523f38cb2bce878",
-    "pubDate": "2026-04-23T00:30:03+02:00",
-    "starts_at": "2026-04-23T00:30:03+02:00",
-    "ends_at": "2026-04-23T05:00:00+02:00",
-    "_identity": "wl|störung|L=N46|D=2026-04-23"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N46: Busse halten bei Thaliastraße 3",
     "description": "Gleisbauarbeiten Busse halten bei Thaliastraße 3",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -590,14 +578,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N43: Busse halten Alszeile 93",
-    "description": "Gleisbauarbeiten Busse halten Alszeile 93",
+    "title": "N46: Busse halten bei Linie 48A in Burggasse",
+    "description": "Gleisbauarbeiten Busse halten bei Linie 48A in Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7c175da71f85aad7ffe071ccf58c215f5c088dd9c9d73d351933daae4d3fecb0",
-    "pubDate": "2026-04-23T00:30:14+02:00",
-    "starts_at": "2026-04-23T00:30:14+02:00",
-    "ends_at": "2026-04-23T04:50:00+02:00",
-    "_identity": "wl|störung|L=N43|D=2026-04-23"
+    "guid": "a751a157bea2c61bda9406b779159246c8d4f92aa8a9f6765523f38cb2bce878",
+    "pubDate": "2026-04-23T00:30:03+02:00",
+    "starts_at": "2026-04-23T00:30:03+02:00",
+    "ends_at": "2026-04-23T05:00:00+02:00",
+    "_identity": "wl|störung|L=N46|D=2026-04-23"
   },
   {
     "source": "Wiener Linien",
@@ -606,6 +594,18 @@
     "description": "Gleisbauarbeiten Busse halten Dornbacher Straße 85",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2d95726ed28fcc964d6860a108a88378e18a16cb625531bc8488223f50b958d7",
+    "pubDate": "2026-04-23T00:30:14+02:00",
+    "starts_at": "2026-04-23T00:30:14+02:00",
+    "ends_at": "2026-04-23T04:50:00+02:00",
+    "_identity": "wl|störung|L=N43|D=2026-04-23"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N43: Busse halten Alszeile 93",
+    "description": "Gleisbauarbeiten Busse halten Alszeile 93",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7c175da71f85aad7ffe071ccf58c215f5c088dd9c9d73d351933daae4d3fecb0",
     "pubDate": "2026-04-23T00:30:14+02:00",
     "starts_at": "2026-04-23T00:30:14+02:00",
     "ends_at": "2026-04-23T04:50:00+02:00",
