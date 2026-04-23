@@ -410,14 +410,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Betrieb ab Thaliastraße",
-    "description": "Gleisbauarbeiten Betrieb ab Thaliastraße >",
+    "title": "43: Benutzen sie die Linie 43A",
+    "description": "Gleisbauarbeiten Benutzen sie die Linie 43A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18",
+    "guid": "46ae3a2d2382092f60c8fcccc65d43dbd7b4d4a0912d5b132508027ee5065181",
     "pubDate": "2026-04-21T00:00:08+02:00",
     "starts_at": "2026-04-21T00:00:08+02:00",
     "ends_at": "2026-04-24T23:59:59+02:00",
-    "_identity": "wl|störung|L=46|D=2026-04-21"
+    "_identity": "wl|störung|L=43|D=2026-04-21"
   },
   {
     "source": "Wiener Linien",
@@ -446,18 +446,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Benutzen Sie die Linie 43A",
-    "description": "Gleisbauarbeiten Benutzen Sie die Linie 43A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "46ae3a2d2382092f60c8fcccc65d43dbd7b4d4a0912d5b132508027ee5065181",
-    "pubDate": "2026-04-21T00:00:08+02:00",
-    "starts_at": "2026-04-21T00:00:08+02:00",
-    "ends_at": "2026-04-24T23:59:59+02:00",
-    "_identity": "wl|störung|L=43|D=2026-04-21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "43: Benutzen Sie die Linie 43A - Alszeile 93",
     "description": "Gleisbauarbeiten Benutzen Sie die Linie 43A - Alszeile 93",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -466,6 +454,18 @@
     "starts_at": "2026-04-21T00:00:08+02:00",
     "ends_at": "2026-04-24T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-04-21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Betrieb ab Thaliastraße",
+    "description": "Gleisbauarbeiten Betrieb ab Thaliastraße >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18",
+    "pubDate": "2026-04-21T00:00:08+02:00",
+    "starts_at": "2026-04-21T00:00:08+02:00",
+    "ends_at": "2026-04-24T23:59:59+02:00",
+    "_identity": "wl|störung|L=46|D=2026-04-21"
   },
   {
     "source": "Wiener Linien",
@@ -518,18 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Umleitung zum Stefan-Fadinger-Platz",
-    "description": "Bauarbeiten Umleitung zum Stefan-Fadinger-Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3bd22726420279ab2026e70b351fc7fcb5ca5e75a7964b14725381471569f673",
-    "pubDate": "2026-04-22T00:00:18+02:00",
-    "starts_at": "2026-04-22T00:00:18+02:00",
-    "ends_at": "2026-04-24T23:59:59+02:00",
-    "_identity": "wl|störung|L=62|D=2026-04-22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Busse halten bei Linie 77A",
     "description": "Bauarbeiten Busse halten bei Linie 77A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -538,6 +526,18 @@
     "starts_at": "2026-04-22T00:00:18+02:00",
     "ends_at": "2026-04-24T23:59:59+02:00",
     "_identity": "wl|störung|L=11A|D=2026-04-22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Umleitung zum Stefan-Fadinger-Platz",
+    "description": "Bauarbeiten Umleitung zum Stefan-Fadinger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3bd22726420279ab2026e70b351fc7fcb5ca5e75a7964b14725381471569f673",
+    "pubDate": "2026-04-22T00:00:18+02:00",
+    "starts_at": "2026-04-22T00:00:18+02:00",
+    "ends_at": "2026-04-24T23:59:59+02:00",
+    "_identity": "wl|störung|L=62|D=2026-04-22"
   },
   {
     "source": "Wiener Linien",
@@ -566,18 +566,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N46: Busse halten bei Linie 48A in Burggasse",
-    "description": "Gleisbauarbeiten Busse halten bei Linie 48A in Burggasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a751a157bea2c61bda9406b779159246c8d4f92aa8a9f6765523f38cb2bce878",
-    "pubDate": "2026-04-24T00:30:10+02:00",
-    "starts_at": "2026-04-24T00:30:10+02:00",
-    "ends_at": "2026-04-24T05:00:00+02:00",
-    "_identity": "wl|störung|L=N46|D=2026-04-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N46: Busse halten bei Thaliastraße 3",
     "description": "Gleisbauarbeiten Busse halten bei Thaliastraße 3",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -590,14 +578,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N43: Busse halten Dornbacher Straße 85",
-    "description": "Gleisbauarbeiten Busse halten Dornbacher Straße 85",
+    "title": "N46: Busse halten bei Linie 48A in Burggasse",
+    "description": "Gleisbauarbeiten Busse halten bei Linie 48A in Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2d95726ed28fcc964d6860a108a88378e18a16cb625531bc8488223f50b958d7",
-    "pubDate": "2026-04-24T00:30:13+02:00",
-    "starts_at": "2026-04-24T00:30:13+02:00",
-    "ends_at": "2026-04-24T04:50:00+02:00",
-    "_identity": "wl|störung|L=N43|D=2026-04-24"
+    "guid": "a751a157bea2c61bda9406b779159246c8d4f92aa8a9f6765523f38cb2bce878",
+    "pubDate": "2026-04-24T00:30:10+02:00",
+    "starts_at": "2026-04-24T00:30:10+02:00",
+    "ends_at": "2026-04-24T05:00:00+02:00",
+    "_identity": "wl|störung|L=N46|D=2026-04-24"
   },
   {
     "source": "Wiener Linien",
@@ -614,6 +602,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N43: Busse halten Dornbacher Straße 85",
+    "description": "Gleisbauarbeiten Busse halten Dornbacher Straße 85",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2d95726ed28fcc964d6860a108a88378e18a16cb625531bc8488223f50b958d7",
+    "pubDate": "2026-04-24T00:30:13+02:00",
+    "starts_at": "2026-04-24T00:30:13+02:00",
+    "ends_at": "2026-04-24T04:50:00+02:00",
+    "_identity": "wl|störung|L=N43|D=2026-04-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N46: Busse halten bei Linie 48A in Neustiftgasse",
     "description": "Gleisbauarbeiten Busse halten bei Linie 48A in Neustiftgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -622,30 +622,6 @@
     "starts_at": "2026-04-24T00:30:13+02:00",
     "ends_at": "2026-04-24T05:00:00+02:00",
     "_identity": "wl|störung|L=N46|D=2026-04-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N6: Busse halten Gudrunstraße 180-182",
-    "description": "Gleisbauarbeiten Busse halten Gudrunstraße 180-182",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fbfa0b2306277b65aba8c13e9b5073f18115488ed43a43c926311b82766a8c92",
-    "pubDate": "2026-04-24T00:45:25+02:00",
-    "starts_at": "2026-04-24T00:45:25+02:00",
-    "ends_at": "2026-04-24T05:00:00+02:00",
-    "_identity": "wl|störung|L=N6|D=2026-04-24"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N6: Busse halten Gudrunstraße 189",
-    "description": "Gleisbauarbeiten Busse halten Gudrunstraße 189",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0a26896f9ae690ae0d90cf6c4fa75ebda5e6f394f4a9186b58ffa2af7f8459e7",
-    "pubDate": "2026-04-24T00:45:25+02:00",
-    "starts_at": "2026-04-24T00:45:25+02:00",
-    "ends_at": "2026-04-24T05:00:00+02:00",
-    "_identity": "wl|störung|L=N6|D=2026-04-24"
   },
   {
     "source": "Wiener Linien",
@@ -674,6 +650,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N6: Busse halten Gudrunstraße 180-182",
+    "description": "Gleisbauarbeiten Busse halten Gudrunstraße 180-182",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fbfa0b2306277b65aba8c13e9b5073f18115488ed43a43c926311b82766a8c92",
+    "pubDate": "2026-04-24T00:45:25+02:00",
+    "starts_at": "2026-04-24T00:45:25+02:00",
+    "ends_at": "2026-04-24T05:00:00+02:00",
+    "_identity": "wl|störung|L=N6|D=2026-04-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N6: Busse halten Gudrunstraße 189",
+    "description": "Gleisbauarbeiten Busse halten Gudrunstraße 189",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0a26896f9ae690ae0d90cf6c4fa75ebda5e6f394f4a9186b58ffa2af7f8459e7",
+    "pubDate": "2026-04-24T00:45:25+02:00",
+    "starts_at": "2026-04-24T00:45:25+02:00",
+    "ends_at": "2026-04-24T05:00:00+02:00",
+    "_identity": "wl|störung|L=N6|D=2026-04-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N38: Busse halten bei Straßenbahnhaltestelle",
     "description": "Bauarbeiten Busse halten bei Straßenbahnhaltestelle",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -682,5 +682,17 @@
     "starts_at": "2026-04-24T00:49:59+02:00",
     "ends_at": "2026-04-24T05:00:00+02:00",
     "_identity": "wl|störung|L=N38|D=2026-04-24"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Fahrtbehinderung Signalstörung",
+    "description": "Linie N20: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung im Bereich Kagraner Platz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a8234a91a51d2ab896e6bde9fd744a4f6a5ead68c30215c6fb7a508a99cc50d7",
+    "pubDate": "2026-04-24T01:41:00+02:00",
+    "starts_at": "2026-04-24T01:41:42+02:00",
+    "ends_at": "2026-04-24T23:55:00+02:00",
+    "_identity": "wl|störung|L=N20|D=2026-04-24"
   }
 ]
