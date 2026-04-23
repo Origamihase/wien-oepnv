@@ -35,6 +35,9 @@
   "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&872227": {
     "first_seen": "2026-04-23T19:23:14.249657+00:00"
   },
+  "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&872252": {
+    "first_seen": "2026-04-23T21:26:00.044142+00:00"
+  },
   "test-guid-123": {
     "first_seen": "2023-10-27T10:00:00+00:00"
   },
@@ -94,6 +97,9 @@
   },
   "wl|störung|L=11|D=2026-04-21": {
     "first_seen": "2026-04-21T20:28:04.131631+00:00"
+  },
+  "wl|störung|L=12A|D=2026-04-23": {
+    "first_seen": "2026-04-23T21:26:00.044142+00:00"
   },
   "wl|störung|L=13A|D=2026-04-21": {
     "first_seen": "2026-04-21T20:28:04.131631+00:00"
@@ -325,6 +331,9 @@
   },
   "wl|störung|L=N29|D=2026-04-21": {
     "first_seen": "2026-04-21T22:10:39.366200+00:00"
+  },
+  "wl|störung|L=N29|D=2026-04-23": {
+    "first_seen": "2026-04-23T21:26:00.044142+00:00"
   },
   "wl|störung|L=N31|D=2026-04-21": {
     "first_seen": "2026-04-21T03:30:11.885333+00:00"
