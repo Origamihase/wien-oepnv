@@ -69,7 +69,17 @@ def main() -> int:
     exit_codes.append(_run([sys.executable, str(scanner)]))
 
     # Run pip-audit to check for known vulnerabilities in dependencies
-    exit_codes.append(_run(["pip-audit"]))
+    # We restrict the audit to our explicit dependencies to avoid failing on global toolchain
+    # packages (like `pip` itself) over which we have no direct control in the CI runner.
+    exit_codes.append(
+        _run(
+            [
+                "pip-audit",
+                "-r", "requirements.txt",
+                "-r", "requirements-dev.txt",
+            ]
+        )
+    )
 
     # Return the highest exit code encountered
     return max(exit_codes) if exit_codes else 0
