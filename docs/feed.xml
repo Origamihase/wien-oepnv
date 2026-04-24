@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Fri, 24 Apr 2026 10:32:45 +0200</lastBuildDate>
+<lastBuildDate>Fri, 24 Apr 2026 12:09:09 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
+      <pubDate>Fri, 24 Apr 2026 09:53:00 +0200</pubDate>
+      <ext:first_seen>Fri, 24 Apr 2026 12:09:09 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 24 Apr 2026 09:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 24.04.2026]</description>
+      <content:encoded><![CDATA[Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 24.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c</guid>
+      <pubDate>Fri, 24 Apr 2026 09:33:00 +0200</pubDate>
+      <ext:first_seen>Fri, 24 Apr 2026 12:09:09 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 24 Apr 2026 09:36:14 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.04.2026]</description>
+      <content:encoded><![CDATA[Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7c8f87684407b28b956fd7680a32a002f13b981f0a4885354696cee22dbc327e</guid>
+      <pubDate>Fri, 24 Apr 2026 09:30:00 +0200</pubDate>
+      <ext:first_seen>Fri, 24 Apr 2026 12:09:09 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 24 Apr 2026 09:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 29 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 24.04.2026]</description>
+      <content:encoded><![CDATA[Linie 29 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 24.04.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -83,39 +116,6 @@
       <ext:ends_at>Thu, 22 Apr 2027 11:11:00 +0200</ext:ends_at>
       <description>Straßenbauarbeiten Wegen Straßenbauarbeiten im Bereich Langobardenstraße und der damit einhergehenden provisorischen Einbahnführung von Biberhaufenweg bis Oberdorfstraße … [Ab 27.04.2026]</description>
       <content:encoded><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten im Bereich Langobardenstraße und der damit einhergehenden provisorischen Einbahnführung von Biberhaufenweg bis Oberdorfstraße …<br/>[Ab 27.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[79A/79B: Umleitung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">477693bc5991362e3978f8afa817e46a52fd1d9ffc8bc26558f713ddf9b16ed9</guid>
-      <pubDate>Wed, 22 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 22 Apr 2026 16:50:57 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 05 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 22 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Umfangreiche Straßenbauarbeiten Wegen Bauarbeiten im Bereich Freudenauer Hafenbrücke werden die Linien 79 A und 79 B umgeleitet. [Ab 05.05.2026]</description>
-      <content:encoded><![CDATA[Umfangreiche Straßenbauarbeiten Wegen Bauarbeiten im Bereich Freudenauer Hafenbrücke werden die Linien 79 A und 79 B umgeleitet.<br/>[Ab 05.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
-      <pubDate>Tue, 21 Apr 2026 00:00:28 +0200</pubDate>
-      <ext:first_seen>Fri, 24 Apr 2026 05:59:17 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 00:00:28 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Apr 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Kein Betrieb [21.04.2026 – 24.04.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[21.04.2026 – 24.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
-      <pubDate>Tue, 21 Apr 2026 00:00:08 +0200</pubDate>
-      <ext:first_seen>Fri, 24 Apr 2026 10:32:45 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 00:00:08 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Apr 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85 [21.04.2026 – 24.04.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85<br/>[21.04.2026 – 24.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
