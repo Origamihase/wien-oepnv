@@ -7,51 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Fri, 24 Apr 2026 21:31:35 +0200</lastBuildDate>
+<lastBuildDate>Fri, 24 Apr 2026 22:10:17 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[48A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2f0f0b15cf1fdadadbd71826d1a850fb70259bc440a3ea35bc181776b55d7c6a</guid>
+      <pubDate>Fri, 24 Apr 2026 21:36:00 +0200</pubDate>
+      <ext:first_seen>Fri, 24 Apr 2026 17:14:58 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 24 Apr 2026 21:36:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 48 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 24.04.2026]</description>
+      <content:encoded><![CDATA[Linie 48 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 24.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: Fahrtbehinderung Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
+      <pubDate>Fri, 24 Apr 2026 21:23:00 +0200</pubDate>
+      <ext:first_seen>Fri, 24 Apr 2026 20:08:39 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 24 Apr 2026 21:24:18 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.04.2026]</description>
+      <content:encoded><![CDATA[Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.04.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc</guid>
       <pubDate>Fri, 24 Apr 2026 19:31:00 +0200</pubDate>
-      <ext:first_seen>Fri, 24 Apr 2026 20:08:39 +0200</ext:first_seen>
+      <ext:first_seen>Fri, 24 Apr 2026 22:10:17 +0200</ext:first_seen>
       <ext:starts_at>Fri, 24 Apr 2026 19:31:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 24 Apr 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.04.2026]</description>
       <content:encoded><![CDATA[Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">84f9fe1b5c4beaf00a73c1565363074e86a57541f0f409f0ef6b0f7aac539f50</guid>
-      <pubDate>Fri, 24 Apr 2026 19:28:00 +0200</pubDate>
-      <ext:first_seen>Fri, 24 Apr 2026 20:08:39 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 24 Apr 2026 19:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.04.2026]</description>
-      <content:encoded><![CDATA[Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9cd582e7d389dfb7834c2277d3b615c12e0f096ebda88b9ebe100ad4f2576284</guid>
-      <pubDate>Fri, 24 Apr 2026 19:28:00 +0200</pubDate>
-      <ext:first_seen>Fri, 24 Apr 2026 20:08:39 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 24 Apr 2026 19:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.04.2026]</description>
-      <content:encoded><![CDATA[Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
-      <pubDate>Fri, 24 Apr 2026 18:15:00 +0200</pubDate>
-      <ext:first_seen>Fri, 24 Apr 2026 12:09:09 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 24 Apr 2026 18:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.04.2026]</description>
-      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.04.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -116,6 +105,17 @@
       <ext:ends_at>Sun, 31 May 2026 21:00:00 +0200</ext:ends_at>
       <description>Umleitung wegen einer Veranstaltung: Wegen einer Veranstaltung in der Mariahilfer Straße im Bereich des Technischen Museums wird die Linie N54 umgeleitet. [30.05.2026 – 31.05.2026]</description>
       <content:encoded><![CDATA[Umleitung wegen einer Veranstaltung: Wegen einer Veranstaltung in der Mariahilfer Straße im Bereich des Technischen Museums wird die Linie N54 umgeleitet.<br/>[30.05.2026 – 31.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[93A/98A: Umleitung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b48c6bade87bed3e7579f74a1d74ed6b4906fee88d5ada7e19b6b3324f45738</guid>
+      <pubDate>Wed, 22 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 22 Apr 2026 22:10:05 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Apr 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 22 Apr 2027 11:11:00 +0200</ext:ends_at>
+      <description>Straßenbauarbeiten Wegen Straßenbauarbeiten im Bereich Langobardenstraße und der damit einhergehenden provisorischen Einbahnführung von Biberhaufenweg bis Oberdorfstraße … [Ab 27.04.2026]</description>
+      <content:encoded><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten im Bereich Langobardenstraße und der damit einhergehenden provisorischen Einbahnführung von Biberhaufenweg bis Oberdorfstraße …<br/>[Ab 27.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
