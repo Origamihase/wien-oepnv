@@ -353,7 +353,16 @@ def _get_json(
                     timeout=timeout,
                     allowed_content_types=("application/json",),
                 )
-                return json.loads(content)
+                data = json.loads(content)
+                if not isinstance(data, dict):
+                    log.warning(
+                        "Unerwartetes Payload-Format von %s: %s erwartet, aber %s erhalten (Zero Trust)",
+                        sanitize_log_arg(url),
+                        "dict",
+                        type(data).__name__,
+                    )
+                    return {}
+                return data
             except (ValueError, json.JSONDecodeError) as exc:
                 log.warning(
                     "Antwort von %s ungültig oder kein JSON: %s",
