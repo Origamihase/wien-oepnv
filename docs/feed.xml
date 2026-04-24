@@ -7,26 +7,15 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Fri, 24 Apr 2026 22:10:17 +0200</lastBuildDate>
+<lastBuildDate>Fri, 24 Apr 2026 23:26:38 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[48A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2f0f0b15cf1fdadadbd71826d1a850fb70259bc440a3ea35bc181776b55d7c6a</guid>
-      <pubDate>Fri, 24 Apr 2026 21:36:00 +0200</pubDate>
-      <ext:first_seen>Fri, 24 Apr 2026 17:14:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 24 Apr 2026 21:36:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 24 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 48 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 24.04.2026]</description>
-      <content:encoded><![CDATA[Linie 48 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 24.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Fahrtbehinderung Falschparker]]></title>
+      <title><![CDATA[9: Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
       <pubDate>Fri, 24 Apr 2026 21:23:00 +0200</pubDate>
       <ext:first_seen>Fri, 24 Apr 2026 20:08:39 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 24 Apr 2026 21:24:18 +0200</ext:starts_at>
+      <ext:starts_at>Fri, 24 Apr 2026 21:23:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 24 Apr 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 24.04.2026]</description>
       <content:encoded><![CDATA[Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 24.04.2026]]]></content:encoded>
@@ -116,6 +105,17 @@
       <ext:ends_at>Thu, 22 Apr 2027 11:11:00 +0200</ext:ends_at>
       <description>Straßenbauarbeiten Wegen Straßenbauarbeiten im Bereich Langobardenstraße und der damit einhergehenden provisorischen Einbahnführung von Biberhaufenweg bis Oberdorfstraße … [Ab 27.04.2026]</description>
       <content:encoded><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten im Bereich Langobardenstraße und der damit einhergehenden provisorischen Einbahnführung von Biberhaufenweg bis Oberdorfstraße …<br/>[Ab 27.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[79A/79B: Umleitung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">477693bc5991362e3978f8afa817e46a52fd1d9ffc8bc26558f713ddf9b16ed9</guid>
+      <pubDate>Wed, 22 Apr 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 22 Apr 2026 16:50:57 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 05 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 22 Apr 2027 11:11:00 +0200</ext:ends_at>
+      <description>Umfangreiche Straßenbauarbeiten Wegen Bauarbeiten im Bereich Freudenauer Hafenbrücke werden die Linien 79 A und 79 B umgeleitet. [Ab 05.05.2026]</description>
+      <content:encoded><![CDATA[Umfangreiche Straßenbauarbeiten Wegen Bauarbeiten im Bereich Freudenauer Hafenbrücke werden die Linien 79 A und 79 B umgeleitet.<br/>[Ab 05.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
