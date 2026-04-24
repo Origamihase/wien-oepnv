@@ -122,3 +122,8 @@
 **Vulnerability:** Generic high-entropy detection lacked specificity for common high-value secrets like Google API Keys and Telegram Bot Tokens.
 **Learning:** Specific regex patterns improve triage and remediation speed by identifying the exact type of secret exposed.
 **Prevention:** Added specific regexes to `_KNOWN_TOKENS` in `src/utils/secret_scanner.py`.
+
+## 2025-04-24 - Zero Trust Upstream Payload Validation
+**Vulnerability:** Upstream provider API integrations (`src/providers/vor.py` and `src/providers/wl_fetch.py`) parsed JSON directly via `json.loads` without validating the returned data type. A compromised or misconfigured API returning unexpected JSON structures (like a list instead of a dict) could cause runtime crashes or inject malformed data into downstream parsing logic that assumes dictionary methods (like `.get()`).
+**Learning:** Even "trusted" official external APIs must be treated as untrusted boundaries in a Zero Trust architecture. Just because data parses successfully as JSON doesn't mean it conforms to the expected shape or type for the application state.
+**Prevention:** Always follow up `json.loads` with explicit type and schema validation (e.g., `if not isinstance(data, dict): return safe_fallback`) before passing the deserialized payload to application logic, ensuring the application fails securely and drops malformed data at the network boundary.
