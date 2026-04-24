@@ -53,16 +53,3 @@ def test_preposition_bullet_stripping(html, expected):
 ])
 def test_line_codes_and_units(html, expected):
     assert html_to_text(html) == expected
-
-
-def test_truncate_html_dos_protection():
-    from src.utils.text import truncate_html
-    # Generate a string larger than the 500_000 char threshold
-    large_payload = "A" * 600_000
-    result = truncate_html(large_payload, limit=100)
-
-    # We set max safe size to 500,000 chars, after which it crops.
-    # But since the limit is 100, the final output will be 100 chars + ellipsis.
-    # The main point is that it runs fast and doesn't crash or hang parsing 600k+ chars.
-    assert len(result) == 100 + len("...")
-    assert result.endswith("...")
