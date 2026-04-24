@@ -184,6 +184,11 @@ def truncate_html(text: str, limit: int, ellipsis: str = "...") -> str:
     if not text:
         return ""
 
+    # Security: Defense in Depth. Prevent DoS/memory exhaustion from abnormally large payloads.
+    # Max safe size is set to 500,000 chars (~500KB), beyond which we perform a hard crop.
+    if len(text) > 500_000:
+        text = text[:500_000]
+
     # Quick check if it's even needed
     # Note: This is a loose check because tags add length but don't count towards content limit.
     # But if raw length is <= limit, we certainly don't need to truncate content.
