@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Fri, 24 Apr 2026 01:25:40 +0200</lastBuildDate>
+<lastBuildDate>Fri, 24 Apr 2026 02:10:07 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N20: Fahrtbehinderung Signalstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a8234a91a51d2ab896e6bde9fd744a4f6a5ead68c30215c6fb7a508a99cc50d7</guid>
+      <pubDate>Fri, 24 Apr 2026 01:41:00 +0200</pubDate>
+      <ext:first_seen>Fri, 24 Apr 2026 02:10:07 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 24 Apr 2026 01:41:42 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 24 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie N20: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung im Bereich Kagraner Platz. [Am 24.04.2026]</description>
+      <content:encoded><![CDATA[Linie N20: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung im Bereich Kagraner Platz.<br/>[Am 24.04.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N38: Busse halten bei Straßenbahnhaltestelle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,15 +32,15 @@
       <content:encoded><![CDATA[Bauarbeiten Busse halten bei Straßenbahnhaltestelle<br/>[Am 24.04.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[N6: Busse halten Gudrunstraße 180-182]]></title>
+      <title><![CDATA[N6: Busse halten Neilreichgasse 20-22]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fbfa0b2306277b65aba8c13e9b5073f18115488ed43a43c926311b82766a8c92</guid>
+      <guid isPermaLink="false">65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc</guid>
       <pubDate>Fri, 24 Apr 2026 00:45:25 +0200</pubDate>
       <ext:first_seen>Fri, 24 Apr 2026 01:25:40 +0200</ext:first_seen>
       <ext:starts_at>Fri, 24 Apr 2026 00:45:25 +0200</ext:starts_at>
       <ext:ends_at>Fri, 24 Apr 2026 05:00:00 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Busse halten Gudrunstraße 180-182 [Am 24.04.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Busse halten Gudrunstraße 180-182<br/>[Am 24.04.2026]]]></content:encoded>
+      <description>Gleisbauarbeiten Busse halten Neilreichgasse 20-22 [Am 24.04.2026]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Busse halten Neilreichgasse 20-22<br/>[Am 24.04.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N46: Busse halten bei Linie 48A in Neustiftgasse]]></title>
@@ -105,17 +116,6 @@
       <ext:ends_at>Sun, 31 May 2026 21:00:00 +0200</ext:ends_at>
       <description>Umleitung wegen einer Veranstaltung: Wegen einer Veranstaltung in der Mariahilfer Straße im Bereich des Technischen Museums wird die Linie N54 umgeleitet. [30.05.2026 – 31.05.2026]</description>
       <content:encoded><![CDATA[Umleitung wegen einer Veranstaltung: Wegen einer Veranstaltung in der Mariahilfer Straße im Bereich des Technischen Museums wird die Linie N54 umgeleitet.<br/>[30.05.2026 – 31.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[93A/98A: Umleitung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b48c6bade87bed3e7579f74a1d74ed6b4906fee88d5ada7e19b6b3324f45738</guid>
-      <pubDate>Wed, 22 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 22 Apr 2026 22:10:05 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 22 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Straßenbauarbeiten Wegen Straßenbauarbeiten im Bereich Langobardenstraße und der damit einhergehenden provisorischen Einbahnführung von Biberhaufenweg bis Oberdorfstraße … [Ab 27.04.2026]</description>
-      <content:encoded><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten im Bereich Langobardenstraße und der damit einhergehenden provisorischen Einbahnführung von Biberhaufenweg bis Oberdorfstraße …<br/>[Ab 27.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
