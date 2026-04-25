@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Sat, 25 Apr 2026 19:10:57 +0200</lastBuildDate>
+<lastBuildDate>Sat, 25 Apr 2026 20:06:42 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[31A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b1b59ef91c7e5513a7a2362ffbc5f6ec21eb687935ff3e74c62591a531321745</guid>
-      <pubDate>Sat, 25 Apr 2026 18:45:00 +0200</pubDate>
-      <ext:first_seen>Sat, 25 Apr 2026 15:20:19 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 25 Apr 2026 18:45:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 25 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 31 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 25.04.2026]</description>
-      <content:encoded><![CDATA[Linie 31 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 25.04.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -116,6 +105,17 @@
       <ext:ends_at>Sat, 25 Apr 2026 23:59:59 +0200</ext:ends_at>
       <description>Gleisbauarbeiten Kein Betrieb [21.04.2026 – 25.04.2026]</description>
       <content:encoded><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[21.04.2026 – 25.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:08 +0200</pubDate>
+      <ext:first_seen>Sat, 25 Apr 2026 01:09:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 21 Apr 2026 00:00:08 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 25 Apr 2026 23:59:59 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85 [21.04.2026 – 25.04.2026]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85<br/>[21.04.2026 – 25.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
