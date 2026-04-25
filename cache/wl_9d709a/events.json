@@ -566,18 +566,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Betriebsstörung",
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2026-04-25T08:23:00+02:00",
-    "starts_at": "2026-04-25T08:23:00+02:00",
-    "ends_at": "2026-04-25T11:05:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-04-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Betriebsstörung",
     "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -590,73 +578,49 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Schadhaftes Fahrzeug",
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "32A: Fremder Verkehrsunfall",
+    "description": "Linie 32A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4281aa32ed45a54c560c823ba6cd35e8febae67fca71fa894a80ce4b806088d3",
-    "pubDate": "2026-04-25T10:44:00+02:00",
-    "starts_at": "2026-04-25T10:44:00+02:00",
+    "guid": "2d45b6da852b996e0cb7d0a979aae9c19692fc48ec76a7326b0f07b2290320fd",
+    "pubDate": "2026-04-25T11:19:00+02:00",
+    "starts_at": "2026-04-25T11:19:00+02:00",
     "ends_at": "2026-04-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-04-25"
+    "_identity": "wl|störung|L=32A|D=2026-04-25"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Schadhaftes Fahrzeug",
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "32A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6",
-    "pubDate": "2026-04-25T10:44:00+02:00",
-    "starts_at": "2026-04-25T10:44:00+02:00",
+    "guid": "645657b5f8fa9424afcdedf5cdc8231d880d3cfc356ac7f0e353f15c699e0752",
+    "pubDate": "2026-04-25T11:20:18+02:00",
+    "starts_at": "2026-04-25T11:27:57+02:00",
+    "ends_at": "2026-04-25T12:27:00+02:00",
+    "_identity": "wl|störung|L=32A|D=2026-04-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "32A: Fremdunfall Betrieb ab Steinamangergasse",
+    "description": "Fremdunfall Betrieb ab Steinamangergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a699c3093835b01b4a4b1b9e690341d396371655ab4240cac7e8f8a9564a6c9c",
+    "pubDate": "2026-04-25T11:28:31+02:00",
+    "starts_at": "2026-04-25T11:28:31+02:00",
+    "ends_at": "2026-04-25T12:27:00+02:00",
+    "_identity": "wl|störung|L=32A|D=2026-04-25"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-04-25T11:53:00+02:00",
+    "starts_at": "2026-04-25T11:53:00+02:00",
     "ends_at": "2026-04-25T23:55:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-04-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8c54650e65ef647f350297bb5f234db6c9420a95be4c9c46b35286f6ec869089",
-    "pubDate": "2026-04-25T10:47:02+02:00",
-    "starts_at": "2026-04-25T10:47:02+02:00",
-    "ends_at": "2026-04-25T11:46:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-04-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Schadhafter Zug Betrieb ab Reumannplatz",
-    "description": "Schadhafter Zug Betrieb ab Reumannplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a5b0466c8dc56436a95a935148dfa49a28fc3f91a13bcbe5cbf16a9b782641a3",
-    "pubDate": "2026-04-25T10:47:31+02:00",
-    "starts_at": "2026-04-25T10:47:31+02:00",
-    "ends_at": "2026-04-25T11:46:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-04-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Schadhafter Zug Züge halten Favoritenstraße",
-    "description": "Schadhafter Zug Züge halten Favoritenstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "527b56b0cec2fa5a88ff3fa156cd481a5bd0f19614824fbe68182edc83386011",
-    "pubDate": "2026-04-25T10:48:00+02:00",
-    "starts_at": "2026-04-25T10:48:00+02:00",
-    "ends_at": "2026-04-25T11:47:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-04-25"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung Schadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e832b46eec6d19cd652e99a3efa00e678cd32779ad0f0da0378f515eb2651f68",
-    "pubDate": "2026-04-25T10:48:29+02:00",
-    "starts_at": "2026-04-25T10:48:38+02:00",
-    "ends_at": "2026-04-25T11:48:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-04-25"
+    "_identity": "wl|störung|L=U4|D=2026-04-25"
   }
 ]
