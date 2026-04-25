@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Sat, 25 Apr 2026 16:24:23 +0200</lastBuildDate>
+<lastBuildDate>Sat, 25 Apr 2026 17:10:29 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[9A: Fahrtbehinderung Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">20852ffbd37b67a912d01cdf6a60c7ca1adaa1fdce59570f1a3f057dd9c938a2</guid>
+      <pubDate>Sat, 25 Apr 2026 15:43:00 +0200</pubDate>
+      <ext:first_seen>Sat, 25 Apr 2026 17:10:29 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 25 Apr 2026 15:50:19 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 25 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 9 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.04.2026]</description>
+      <content:encoded><![CDATA[Linie 9 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 25.04.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -105,17 +116,6 @@
       <ext:ends_at>Thu, 22 Apr 2027 11:11:00 +0200</ext:ends_at>
       <description>Umfangreiche Straßenbauarbeiten Wegen Bauarbeiten im Bereich Freudenauer Hafenbrücke werden die Linien 79 A und 79 B umgeleitet. [Ab 05.05.2026]</description>
       <content:encoded><![CDATA[Umfangreiche Straßenbauarbeiten Wegen Bauarbeiten im Bereich Freudenauer Hafenbrücke werden die Linien 79 A und 79 B umgeleitet.<br/>[Ab 05.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
-      <pubDate>Tue, 21 Apr 2026 00:00:28 +0200</pubDate>
-      <ext:first_seen>Sat, 25 Apr 2026 01:09:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 00:00:28 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 25 Apr 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Kein Betrieb [21.04.2026 – 25.04.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[21.04.2026 – 25.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
