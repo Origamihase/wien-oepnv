@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Sat, 25 Apr 2026 01:09:53 +0200</lastBuildDate>
+<lastBuildDate>Sat, 25 Apr 2026 02:06:44 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[26: Fahrtbehinderung wegen Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">28416811674223dffea17c8e1123f10c8cde318972731b305adf2230865ea500</guid>
+      <pubDate>Sat, 25 Apr 2026 01:03:22 +0200</pubDate>
+      <ext:first_seen>Sat, 25 Apr 2026 02:06:44 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 25 Apr 2026 01:03:22 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 25 Apr 2026 02:02:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung wegen Feuerwehreinsatz [Am 25.04.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung wegen Feuerwehreinsatz<br/>[Am 25.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N46: Busse halten bei Linie 48A in Neustiftgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1bc89bc576e114343fbe409de06c7658ab641c9714cb025001dae07c25e9ae89</guid>
+      <pubDate>Sat, 25 Apr 2026 00:30:27 +0200</pubDate>
+      <ext:first_seen>Sat, 25 Apr 2026 02:06:44 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 25 Apr 2026 00:30:27 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 25 Apr 2026 05:00:00 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten Busse halten bei Linie 48 A in Neustiftgasse [Am 25.04.2026]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Busse halten bei Linie 48 A in Neustiftgasse<br/>[Am 25.04.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -94,28 +116,6 @@
       <ext:ends_at>Thu, 22 Apr 2027 11:11:00 +0200</ext:ends_at>
       <description>Umfangreiche Straßenbauarbeiten Wegen Bauarbeiten im Bereich Freudenauer Hafenbrücke werden die Linien 79 A und 79 B umgeleitet. [Ab 05.05.2026]</description>
       <content:encoded><![CDATA[Umfangreiche Straßenbauarbeiten Wegen Bauarbeiten im Bereich Freudenauer Hafenbrücke werden die Linien 79 A und 79 B umgeleitet.<br/>[Ab 05.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
-      <pubDate>Tue, 21 Apr 2026 00:00:28 +0200</pubDate>
-      <ext:first_seen>Sat, 25 Apr 2026 01:09:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 00:00:28 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 25 Apr 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Kein Betrieb [21.04.2026 – 25.04.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[21.04.2026 – 25.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
-      <pubDate>Tue, 21 Apr 2026 00:00:08 +0200</pubDate>
-      <ext:first_seen>Sat, 25 Apr 2026 01:09:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 21 Apr 2026 00:00:08 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 25 Apr 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85 [21.04.2026 – 25.04.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85<br/>[21.04.2026 – 25.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
