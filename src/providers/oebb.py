@@ -289,6 +289,20 @@ def _is_relevant(title: str, description: str) -> bool:
             if at_least_one_known:
                 return bool(vienna_endpoint)
 
+    # Check 1: Asymmetrischer Pendler-Check für unstrukturierte Meldungen (Veto-Logik)
+    found_stations = _find_stations_in_text(text)
+    if found_stations:
+        has_vienna_or_pendler = False
+        for s in found_stations:
+            info = station_info(s)
+            if info and (info.in_vienna or info.pendler):
+                has_vienna_or_pendler = True
+                break
+
+        # Veto: Wir haben Stationen gefunden, aber KEINE davon ist in Wien oder Pendler
+        if not has_vienna_or_pendler:
+            return False
+
     return text_has_vienna_connection(text)
 
 # ---------------- Region helpers ----------------
@@ -315,7 +329,7 @@ def _find_stations_in_text(blob: str) -> List[str]:
     Returns a list of unique canonical station names found.
     """
     # Use whitespace splitting to preserve punctuation like '.' in 'St. Pölten'
-    tokens = [t for t in blob.split() if t]
+    tokens = [t for t in re.split(r"[\s/]+", blob) if t]
     if not tokens:
         return []
 
