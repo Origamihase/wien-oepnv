@@ -184,6 +184,11 @@ def truncate_html(text: str, limit: int, ellipsis: str = "...") -> str:
     if not text:
         return ""
 
+    # SECURITY: Mitigate DoS/memory exhaustion from massively oversized inputs
+    MAX_SAFE_LENGTH = 1_000_000
+    if len(text) > MAX_SAFE_LENGTH:
+        text = text[:MAX_SAFE_LENGTH]
+
     # Quick check if it's even needed
     # Note: This is a loose check because tags add length but don't count towards content limit.
     # But if raw length is <= limit, we certainly don't need to truncate content.
