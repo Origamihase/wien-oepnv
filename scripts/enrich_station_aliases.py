@@ -144,7 +144,7 @@ def _sankt_variants(alias: str) -> set[str]:
     return set()
 
 
-_BAHNHOF_RE = re.compile(r"\b(?:bahnhof|hbf|bf)\b", re.IGNORECASE)
+_BAHNHOF_RE = re.compile(r"bahnhof|hbf|\bbf\b", re.IGNORECASE)
 
 
 def _bahnhof_variants(alias: str) -> set[str]:
@@ -153,10 +153,7 @@ def _bahnhof_variants(alias: str) -> set[str]:
         return set()
 
     # Avoid adding "Bahnhof" if it's already present as a word or suffix
-    lowered = base.lower()
     if _BAHNHOF_RE.search(base):
-        return set()
-    if lowered.endswith("bahnhof") or lowered.endswith("hbf") or lowered.endswith(" bf"):
         return set()
 
     variants: set[str] = {f"{base} Bahnhof"}
@@ -172,28 +169,39 @@ def _bahnhof_variants(alias: str) -> set[str]:
 
 
 _ABBREV_PAIRS = [
-    (r"\bStr\.", "Straße"),
-    (r"\bPl\.", "Platz"),
+    (r"(?<!\w)Str\.", "Straße"),
+    (r"(?<=\w)str\.", "straße"),
+    (r"(?<!\w)Pl\.", "Platz"),
+    (r"(?<=\w)pl\.", "platz"),
     (r"\bHbf\b", "Hauptbahnhof"),
     (r"\bBf\b", "Bahnhof"),
+    (r"(?<=\w)bf\b", "bahnhof"),
     (r"\bDr\.", "Doktor"),
-    (r"\bG\.", "Gasse"),
-    (r"\bBr\.", "Brücke"),
+    (r"(?<!\w)G\.", "Gasse"),
+    (r"(?<=\w)g\.", "gasse"),
+    (r"(?<!\w)Br\.", "Brücke"),
+    (r"(?<=\w)br\.", "brücke"),
     (r"\bOb\.", "Ober"),
     (r"\bUnt\.", "Unter"),
 ]
 
 _SHORTEN_PAIRS = [
-    (r"Straße", "Str."),
-    (r"Strasse", "Str."),
-    (r"Platz", "Pl."),
-    (r"Hauptbahnhof", "Hbf"),
-    (r"Bahnhof", "Bf"),
-    (r"Doktor", "Dr."),
-    (r"Gasse", "G."),
-    (r"Brücke", "Br."),
-    (r"Ober", "Ob."),
-    (r"Unter", "Unt."),
+    (r"\bStraße\b", "Str."),
+    (r"straße\b", "str."),
+    (r"\bStrasse\b", "Str."),
+    (r"strasse\b", "str."),
+    (r"\bPlatz\b", "Pl."),
+    (r"platz\b", "pl."),
+    (r"\bHauptbahnhof\b", "Hbf"),
+    (r"\bBahnhof\b", "Bf"),
+    (r"bahnhof\b", "bf"),
+    (r"\bDoktor\b", "Dr."),
+    (r"\bGasse\b", "G."),
+    (r"gasse\b", "g."),
+    (r"\bBrücke\b", "Br."),
+    (r"brücke\b", "br."),
+    (r"\bOber\b", "Ob."),
+    (r"\bUnter\b", "Unt."),
 ]
 
 

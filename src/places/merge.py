@@ -27,16 +27,16 @@ __all__ = [
 ]
 
 class StationEntry(TypedDict, total=False):
-    bst_id: int
+    bst_id: str
     bst_code: str
     name: str
     in_vienna: bool
     pendler: bool
-    source: str | List[str]
+    source: str
     aliases: List[str]
+    latitude: float
+    longitude: float
     _google_place_id: str
-    _lat: float
-    _lng: float
     _types: List[str]
     _formatted_address: str
 
@@ -153,8 +153,8 @@ def _find_matching_station(
             return station, True
 
     for station in stations:
-        lat = station.get("_lat")
-        lng = station.get("_lng")
+        lat = station.get("latitude")
+        lng = station.get("longitude")
         if isinstance(lat, (float, int)) and isinstance(lng, (float, int)):
             distance = haversine_m(float(lat), float(lng), place.latitude, place.longitude)
             if distance <= max_distance_m:
@@ -162,21 +162,15 @@ def _find_matching_station(
     return None
 
 
-def _ensure_source_list(station: StationEntry) -> List[str]:
+def _ensure_source_set(station: StationEntry) -> set[str]:
     source = station.get("source")
     if source is None:
-        result: List[str] = []
-        station["source"] = result
-        return result
+        return set()
     if isinstance(source, list):
-        return source
+        return set(source)
     if isinstance(source, str):
-        values = [source]
-        station["source"] = values
-        return values
-    values = [str(source)]
-    station["source"] = values
-    return values
+        return {s.strip() for s in source.split(",") if s.strip()}
+    return {str(source)}
 
 
 def _update_station(
@@ -187,10 +181,18 @@ def _update_station(
 ) -> bool:
     changed = False
 
-    sources = _ensure_source_list(station)
+    sources = _ensure_source_set(station)
     if "google_places" not in sources:
-        sources.append("google_places")
+        sources.add("google_places")
+        # Ensure 'source' is saved as a comma-separated string
+        station["source"] = ",".join(sorted(sources))
         changed = True
+    else:
+        # Also fix existing format just in case it wasn't string
+        new_source_str = ",".join(sorted(sources))
+        if station.get("source") != new_source_str:
+            station["source"] = new_source_str
+            changed = True
 
     existing_place_id = station.get("_google_place_id")
     if existing_place_id != place.place_id and (
@@ -199,11 +201,11 @@ def _update_station(
         station["_google_place_id"] = place.place_id
         changed = True
 
-    if station.get("_lat") != place.latitude:
-        station["_lat"] = place.latitude
+    if station.get("latitude") != place.latitude:
+        station["latitude"] = place.latitude
         changed = True
-    if station.get("_lng") != place.longitude:
-        station["_lng"] = place.longitude
+    if station.get("longitude") != place.longitude:
+        station["longitude"] = place.longitude
         changed = True
 
     if place.types:
@@ -219,6 +221,10 @@ def _update_station(
         station["in_vienna"] = _infer_in_vienna(place, config.bounding_box)
         changed = True
 
+    if "pendler" not in station:
+        station["pendler"] = False
+        changed = True
+
     if "aliases" not in station:
         station["aliases"] = []
         changed = True
@@ -229,11 +235,12 @@ def _update_station(
 def _create_station(place: Place, config: MergeConfig) -> StationEntry:
     station: StationEntry = {
         "name": place.name,
-        "source": ["google_places"],
+        "source": "google_places",
         "aliases": [],
+        "latitude": place.latitude,
+        "longitude": place.longitude,
+        "pendler": False,
         "_google_place_id": place.place_id,
-        "_lat": place.latitude,
-        "_lng": place.longitude,
     }
     if place.types:
         station["_types"] = list(place.types)

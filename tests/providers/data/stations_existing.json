@@ -5,17 +5,15 @@
     "aliases": [
       "Landstraße"
     ],
-    "_lat": 48.2065,
-    "_lng": 16.384,
+    "latitude": 48.2065,
+    "longitude": 16.384,
     "in_vienna": true
   },
   {
     "name": "Eisenstadt Bahnhof",
-    "source": [
-      "oebb"
-    ],
+    "source": "oebb",
     "aliases": [],
-    "_lat": 47.845,
-    "_lng": 16.524
+    "latitude": 47.845,
+    "longitude": 16.524
   }
 ]

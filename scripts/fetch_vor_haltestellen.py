@@ -36,7 +36,7 @@ log = logging.getLogger("fetch_vor_haltestellen")
 @dataclass
 class Station:
     name: str
-    bst_id: int | None = None
+    bst_id: str | None = None
 
 
 @dataclass
@@ -77,13 +77,8 @@ def load_stations(path: Path) -> list[Station]:
         if not name:
             continue
         bst_id = entry.get("bst_id")
-        if isinstance(bst_id, (int, float)):
-            try:
-                bst_id = int(bst_id)
-            except ValueError:
-                bst_id = None
-        else:
-            bst_id = None
+        if bst_id is not None:
+            bst_id = str(bst_id).strip()
         stations.append(Station(name=name, bst_id=bst_id))
     return stations
 

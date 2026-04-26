@@ -496,15 +496,13 @@ def _candidate_values(value: str) -> list[str]:
 @lru_cache(maxsize=1024)
 def station_by_oebb_id(bst_id: int | str) -> str | None:
     """Return the station name for a given ÖBB station ID (bst_id)."""
-    try:
-        target_id = int(bst_id)
-    except (ValueError, TypeError):
+    if bst_id is None:
         return None
+    target_id = str(bst_id).strip()
 
     for entry in _station_entries():
-        # bst_id in json is int
         current_id = entry.get("bst_id")
-        if current_id == target_id:
+        if current_id is not None and str(current_id).strip() == target_id:
             return entry.get("name")
     return None
 
@@ -680,6 +678,14 @@ def text_has_vienna_connection(text: str) -> bool:
     # 0a. Maskiere spezifische Nicht-Wien-Orte ohne generisches Suffix
     # Dies verhindert Verwechslungen wie Hadersdorf am Kamp (NÖ) vs. Wien Hadersdorf.
     text_for_matching = re.sub(r"Hadersdorf am Kamp", " ", text, flags=re.IGNORECASE)
+
+    # 0b. Maskiere Nicht-Wiener Stationen, die Wörter enthalten, die mit Wiener Stationen matchen
+    text_for_matching = re.sub(
+        r"(Villach|Innsbruck|Linz|Graz|Salzburg|Klagenfurt)\s+(Westbahnhof|Ostbahnhof|Hbf|Hauptbahnhof|Süd|Nord)",
+        " ",
+        text_for_matching,
+        flags=re.IGNORECASE,
+    )
 
     # 1. Pendler-Spezialfälle maskieren (verhindert False-Positive beim Wort "Wien")
     cleaned = re.sub(r"Flughafen Wien|Airport Vienna|Vienna Airport", " ", text_for_matching, flags=re.IGNORECASE)
