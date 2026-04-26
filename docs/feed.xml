@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Sun, 26 Apr 2026 22:53:51 +0200</lastBuildDate>
+<lastBuildDate>Sun, 26 Apr 2026 23:48:20 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[U3: Vandalismus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4334be1a202ed548df58497f8b783703be22c53319af886ac759d24ad3eaea35</guid>
-      <pubDate>Sun, 26 Apr 2026 21:56:00 +0200</pubDate>
-      <ext:first_seen>Sun, 26 Apr 2026 13:22:19 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 26 Apr 2026 21:56:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 26 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus. [Am 26.04.2026]</description>
-      <content:encoded><![CDATA[Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.<br/>[Am 26.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Rettungseinsatz Betrieb ab Fickeysstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc</guid>
-      <pubDate>Sun, 26 Apr 2026 16:58:18 +0200</pubDate>
-      <ext:first_seen>Sun, 26 Apr 2026 17:50:50 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 26 Apr 2026 17:11:25 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 26 Apr 2026 23:30:00 +0200</ext:ends_at>
-      <description>Rettungseinsatz Betrieb ab Fickeysstraße [Am 26.04.2026]</description>
-      <content:encoded><![CDATA[Rettungseinsatz Betrieb ab Fickeysstraße<br/>[Am 26.04.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[25: Gasrohrgebrechen Züge halten bei Linie 25]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -116,6 +94,28 @@
       <ext:starts_at>Wed, 22 Apr 2026 15:44:12 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten werden von 22.08.2026 bis 20.09.2026 die NJ-Züge 40233 und 40294 über Salzburg/Kufstein und die NJ-Züge 294 und 295 über Brennero/Brenner umgeleitet. [Seit 22.04.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten werden von 22.08.2026 bis 20.09.2026 die NJ-Züge 40233 und 40294 über Salzburg/Kufstein und die NJ-Züge 294 und 295 über Brennero/Brenner umgeleitet.<br/>[Seit 22.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Fahrtbehinderung wegen Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2639d7b2d94d4901035d7c61133924bb9496ef6e2842bec3772eec92ab785076</guid>
+      <pubDate>Wed, 22 Apr 2026 00:00:20 +0200</pubDate>
+      <ext:first_seen>Wed, 22 Apr 2026 20:42:04 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 26 Apr 2026 00:00:19 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 26 Apr 2026 23:59:59 +0200</ext:ends_at>
+      <description>Fahrtbehinderung wegen Bauarbeiten [Am 26.04.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung wegen Bauarbeiten<br/>[Am 26.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Betrieb ab Matzleinsdorfer Platz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8e2bdfd1e1b61ff8919b7029b136594b2b0695ab70741d284db0c586a0479637</guid>
+      <pubDate>Wed, 22 Apr 2026 00:00:20 +0200</pubDate>
+      <ext:first_seen>Sun, 26 Apr 2026 01:48:19 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 22 Apr 2026 00:00:20 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 26 Apr 2026 23:59:59 +0200</ext:ends_at>
+      <description>Bauarbeiten Betrieb ab Matzleinsdorfer Platz [22.04.2026 – 26.04.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Betrieb ab Matzleinsdorfer Platz<br/>[22.04.2026 – 26.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
