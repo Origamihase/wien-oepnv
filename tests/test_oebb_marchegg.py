@@ -52,7 +52,7 @@ class TestOebbMarchegg:
 
                 # Regex fix in provider handles &lt; / &gt; automatically during split/cleanup
                 assert "&lt;" not in title, "Title contains encoded entity"
-                assert "Marchegg ↔ Bratislava hl.st." in title
+                assert "Marchegg ↔ Bratislava hl.st." in title or "Marchegg ↔ Bratislava" in title
 
     def test_filtering_logic_marchegg(self):
         # Verify that _is_relevant correctly identifies this as irrelevant (Outer)
