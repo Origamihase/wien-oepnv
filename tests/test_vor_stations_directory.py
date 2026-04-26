@@ -12,11 +12,11 @@ from src.utils.stations import station_info, vor_station_ids
 def test_vor_lookup_by_id():
     info = station_info("900100")
     assert info is not None
-    assert info.name == "Wien Aspern Nord"
-    assert info.vor_id == "490091000"
+    assert info.name == "Wien Hauptbahnhof"
+    assert info.vor_id == "490134900"
     assert info.in_vienna is True
-    assert info.latitude == pytest.approx(48.234567)
-    assert info.longitude == pytest.approx(16.520123)
+    assert info.latitude == pytest.approx(48.185184)
+    assert info.longitude == pytest.approx(16.376413)
 
 
 def test_vor_bst_code_prefers_directory_entry(monkeypatch):
@@ -62,8 +62,8 @@ def test_vor_bst_code_prefers_directory_entry(monkeypatch):
     try:
         info = stations.station_info("900100")
         assert info is not None
-        assert info.name == "Wien Aspern Nord"
-        assert info.source == "oebb"
+        assert info.name == "Wien Hauptbahnhof"
+        assert info.source == "vor"
     finally:
         stations._station_lookup.cache_clear()
 
