@@ -431,6 +431,7 @@ def _alias_candidates(
     # OPTIMIZATION: Manually add specific missing colloquial aliases
     # -------------------------------------------------------------------------
     missing_map = {
+        r"^Flughafen Wien$": ["Vienna Airport", "Flughafen", "Schwechat Flughafen Wien Bahnhof"],
         r"Wien Meidling$": ["Meidling"],
         r"Wien Westbahnhof$": ["Westbahnhof"],
         r"Wien Mitte-Landstraße$": ["Wien Mitte", "Mitte"],
