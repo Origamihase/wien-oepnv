@@ -48,12 +48,42 @@
       "vor_id": "430310100"
     },
     {
+      "name": "Basel",
+      "aliases": [
+        "Basel SBB"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
       "aliases": [],
       "bst_id": 900017,
       "in_vienna": false,
       "name": "Berlin",
       "pendler": false,
       "source": "manual_foreign_city"
+    },
+    {
+      "name": "Bischofshofen",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
+      "name": "Bludenz",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
+      "name": "Bologna",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
     },
     {
       "aliases": [],
@@ -70,6 +100,24 @@
       "name": "Bregenz",
       "pendler": false,
       "source": "manual_foreign_city"
+    },
+    {
+      "name": "Brenner",
+      "aliases": [
+        "Brennero"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
+      "name": "Brno",
+      "aliases": [
+        "Brünn"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
     },
     {
       "aliases": [
@@ -129,6 +177,13 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430325500"
+    },
+    {
+      "name": "Buchs SG",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
     },
     {
       "aliases": [],
@@ -247,6 +302,15 @@
       "source": "manual_foreign_city"
     },
     {
+      "name": "Firenze",
+      "aliases": [
+        "Florenz"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
       "aliases": [
         "430470800",
         "Flughafen Wien",
@@ -313,34 +377,13 @@
       ]
     },
     {
+      "name": "Genf",
       "aliases": [
-        "430362200",
-        "Gänserndorf",
-        "Bahnhof Gaenserndorf",
-        "Bahnhof Gasseänserndorf",
-        "Bahnhof Gänserndorf",
-        "Bf Gaenserndorf",
-        "Bf Gasseänserndorf",
-        "Bf Gänserndorf",
-        "Gae",
-        "Gaenserndorf",
-        "Gaenserndorf Bahnhof",
-        "Gaenserndorf Bf",
-        "Gasseänserndorf",
-        "Gasseänserndorf Bahnhof",
-        "Gasseänserndorf Bf",
-        "Gänserndorf Bahnhof",
-        "Gänserndorf Bf"
+        "Genève"
       ],
-      "bst_code": "Gae",
-      "bst_id": 547,
+      "type": "manual_foreign_city",
       "in_vienna": false,
-      "latitude": 48.340239,
-      "longitude": 16.732314,
-      "name": "Gänserndorf",
-      "pendler": true,
-      "source": "oebb",
-      "vor_id": "430362200"
+      "pendler": false
     },
     {
       "aliases": [
@@ -379,6 +422,43 @@
       "source": "manual_foreign_city"
     },
     {
+      "name": "Győr",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
+      "aliases": [
+        "430362200",
+        "Gänserndorf",
+        "Bahnhof Gaenserndorf",
+        "Bahnhof Gasseänserndorf",
+        "Bahnhof Gänserndorf",
+        "Bf Gaenserndorf",
+        "Bf Gasseänserndorf",
+        "Bf Gänserndorf",
+        "Gae",
+        "Gaenserndorf",
+        "Gaenserndorf Bahnhof",
+        "Gaenserndorf Bf",
+        "Gasseänserndorf",
+        "Gasseänserndorf Bahnhof",
+        "Gasseänserndorf Bf",
+        "Gänserndorf Bahnhof",
+        "Gänserndorf Bf"
+      ],
+      "bst_code": "Gae",
+      "bst_id": 547,
+      "in_vienna": false,
+      "latitude": 48.340239,
+      "longitude": 16.732314,
+      "name": "Gänserndorf",
+      "pendler": true,
+      "source": "oebb",
+      "vor_id": "430362200"
+    },
+    {
       "aliases": [
         "430368600",
         "Hainburg an der Donau Personenbahnhof",
@@ -407,6 +487,23 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430368600"
+    },
+    {
+      "name": "Hamburg",
+      "aliases": [
+        "Hamburg Hbf",
+        "Hamburg Altona"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
+      "name": "Hannover",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
     },
     {
       "_google_place_id": "ChIJBa9sJZgHbUcRrekncb64g2M",
@@ -614,6 +711,29 @@
       "vor_id": "430396300"
     },
     {
+      "name": "Krakau",
+      "aliases": [
+        "Kraków"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
+      "name": "Kufstein",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
+      "name": "Köln",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
       "aliases": [],
       "bst_id": 900013,
       "in_vienna": false,
@@ -655,6 +775,15 @@
       "source": "manual_foreign_city"
     },
     {
+      "name": "Ljubljana",
+      "aliases": [
+        "Laibach"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
       "aliases": [
         "430413200",
         "Marchegg",
@@ -691,6 +820,15 @@
       "source": [
         "google_places"
       ]
+    },
+    {
+      "name": "Milano",
+      "aliases": [
+        "Mailand"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
     },
     {
       "aliases": [
@@ -813,6 +951,27 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "410435100"
+    },
+    {
+      "name": "Nürnberg",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
+      "name": "Ostrava",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
+      "name": "Paris",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
     },
     {
       "aliases": [
@@ -979,6 +1138,13 @@
       "vor_id": "430460300"
     },
     {
+      "name": "Regensburg",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
       "_google_place_id": "ChIJGZJ3hXsHbUcRoSEOdidtTe8",
       "_lat": 48.195590700000004,
       "_lng": 16.3861494,
@@ -995,6 +1161,16 @@
       "source": [
         "google_places"
       ]
+    },
+    {
+      "name": "Roma",
+      "aliases": [
+        "Roma Termini",
+        "Rom"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
     },
     {
       "aliases": [],
@@ -1079,6 +1255,13 @@
       "source": [
         "google_places"
       ]
+    },
+    {
+      "name": "St. Anton am Arlberg",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
     },
     {
       "aliases": [],
@@ -1305,6 +1488,13 @@
       ]
     },
     {
+      "name": "Stuttgart",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
       "_google_place_id": "ChIJZ1D-htapbUcROoi_2Jg_fcg",
       "_lat": 48.186496999999996,
       "_lng": 16.373117,
@@ -1321,6 +1511,15 @@
       "source": [
         "google_places"
       ]
+    },
+    {
+      "name": "Tarvis",
+      "aliases": [
+        "Tarvisio Bosconero"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
     },
     {
       "aliases": [
@@ -1414,6 +1613,26 @@
       "vor_id": "430575900"
     },
     {
+      "name": "Venezia",
+      "aliases": [
+        "Venedig",
+        "Venezia Santa Lucia",
+        "Venezia Mestre"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
+      "name": "Verona",
+      "aliases": [
+        "Verona Porta Nuova"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
       "aliases": [],
       "bst_id": 900006,
       "in_vienna": false,
@@ -1438,6 +1657,15 @@
       "source": [
         "google_places"
       ]
+    },
+    {
+      "name": "Warschau",
+      "aliases": [
+        "Warszawa"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
     },
     {
       "aliases": [],
@@ -3527,6 +3755,31 @@
       "pendler": true,
       "source": "oebb",
       "vor_id": "430527400"
+    },
+    {
+      "name": "Zagreb",
+      "aliases": [
+        "Agram"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
+      "name": "Zell am See",
+      "aliases": [],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
+    },
+    {
+      "name": "Zürich",
+      "aliases": [
+        "Zürich HB"
+      ],
+      "type": "manual_foreign_city",
+      "in_vienna": false,
+      "pendler": false
     }
   ]
 }
