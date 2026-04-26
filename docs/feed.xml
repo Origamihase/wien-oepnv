@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Sun, 26 Apr 2026 05:40:37 +0200</lastBuildDate>
+<lastBuildDate>Sun, 26 Apr 2026 08:13:01 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
+      <pubDate>Sun, 26 Apr 2026 05:02:00 +0200</pubDate>
+      <ext:first_seen>Sun, 26 Apr 2026 08:13:01 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 26 Apr 2026 05:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 26 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 26.04.2026]</description>
+      <content:encoded><![CDATA[Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 26.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Sun, 26 Apr 2026 04:45:03 +0200</pubDate>
+      <ext:first_seen>Sun, 26 Apr 2026 08:13:01 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 26 Apr 2026 04:45:03 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 27 Apr 2026 00:35:00 +0200</ext:ends_at>
+      <description>Bauarbeiten Busse halten Breitenfurter Straße 236-238 [26.04.2026 – 27.04.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[26.04.2026 – 27.04.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62: Umleitung zum Stefan-Fadinger-Platz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -94,28 +116,6 @@
       <ext:ends_at>Sun, 26 Apr 2026 23:59:59 +0200</ext:ends_at>
       <description>Bauarbeiten Busse halten bei Linie 77 A [22.04.2026 – 26.04.2026]</description>
       <content:encoded><![CDATA[Bauarbeiten Busse halten bei Linie 77 A<br/>[22.04.2026 – 26.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N54: Umleitung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">21ef5abe097a2c77b25109f5fa20dd6ab37e72f86e06c574a7fbef2ed879a704</guid>
-      <pubDate>Wed, 22 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 22 Apr 2026 22:10:05 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 30 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 31 May 2026 21:00:00 +0200</ext:ends_at>
-      <description>Umleitung wegen einer Veranstaltung: Wegen einer Veranstaltung in der Mariahilfer Straße im Bereich des Technischen Museums wird die Linie N54 umgeleitet. [30.05.2026 – 31.05.2026]</description>
-      <content:encoded><![CDATA[Umleitung wegen einer Veranstaltung: Wegen einer Veranstaltung in der Mariahilfer Straße im Bereich des Technischen Museums wird die Linie N54 umgeleitet.<br/>[30.05.2026 – 31.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[93A/98A: Umleitung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b48c6bade87bed3e7579f74a1d74ed6b4906fee88d5ada7e19b6b3324f45738</guid>
-      <pubDate>Wed, 22 Apr 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 22 Apr 2026 22:10:05 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Apr 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 22 Apr 2027 11:11:00 +0200</ext:ends_at>
-      <description>Straßenbauarbeiten Wegen Straßenbauarbeiten im Bereich Langobardenstraße und der damit einhergehenden provisorischen Einbahnführung von Biberhaufenweg bis Oberdorfstraße … [Ab 27.04.2026]</description>
-      <content:encoded><![CDATA[Straßenbauarbeiten Wegen Straßenbauarbeiten im Bereich Langobardenstraße und der damit einhergehenden provisorischen Einbahnführung von Biberhaufenweg bis Oberdorfstraße …<br/>[Ab 27.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
