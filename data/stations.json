@@ -54,44 +54,68 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 47.5475,
+      "longitude": 7.5896,
+      "country": "CH"
     },
     {
-      "aliases": [],
+      "aliases": [
+        "Berlin Hbf",
+        "Berlin Hauptbahnhof"
+      ],
       "bst_id": 900017,
       "in_vienna": false,
       "name": "Berlin",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 52.5251,
+      "longitude": 13.3694,
+      "country": "DE"
     },
     {
       "name": "Bischofshofen",
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 47.4144,
+      "longitude": 13.2205,
+      "country": "AT"
     },
     {
       "name": "Bludenz",
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 47.1517,
+      "longitude": 9.8142,
+      "country": "AT"
     },
     {
       "name": "Bologna",
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 44.5058,
+      "longitude": 11.3431,
+      "country": "IT"
     },
     {
-      "aliases": [],
+      "aliases": [
+        "Pressburg",
+        "Bratislava hl.st."
+      ],
       "bst_id": 900018,
       "in_vienna": false,
       "name": "Bratislava",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 48.1585,
+      "longitude": 17.1061,
+      "country": "SK"
     },
     {
       "aliases": [],
@@ -99,7 +123,10 @@
       "in_vienna": false,
       "name": "Bregenz",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 47.5042,
+      "longitude": 9.7428,
+      "country": "AT"
     },
     {
       "name": "Brenner",
@@ -108,7 +135,10 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 47.0049,
+      "longitude": 11.505,
+      "country": "IT"
     },
     {
       "name": "Brno",
@@ -117,7 +147,10 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 49.1906,
+      "longitude": 16.6128,
+      "country": "CZ"
     },
     {
       "aliases": [
@@ -183,7 +216,10 @@
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 47.1685,
+      "longitude": 9.4795,
+      "country": "CH"
     },
     {
       "aliases": [],
@@ -191,7 +227,10 @@
       "in_vienna": false,
       "name": "Budapest",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 47.5004,
+      "longitude": 19.0839,
+      "country": "HU"
     },
     {
       "aliases": [
@@ -224,7 +263,10 @@
       "in_vienna": false,
       "name": "Dornbirn",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 47.4168,
+      "longitude": 9.738,
+      "country": "AT"
     },
     {
       "aliases": [
@@ -299,7 +341,10 @@
       "in_vienna": false,
       "name": "Feldkirch",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 47.2407,
+      "longitude": 9.596,
+      "country": "AT"
     },
     {
       "name": "Firenze",
@@ -308,7 +353,10 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 43.7766,
+      "longitude": 11.2478,
+      "country": "IT"
     },
     {
       "aliases": [
@@ -351,12 +399,18 @@
       "vor_id": "430470800"
     },
     {
-      "aliases": [],
+      "aliases": [
+        "Frankfurt am Main",
+        "Frankfurt Hbf"
+      ],
       "bst_id": 900016,
       "in_vienna": false,
       "name": "Frankfurt",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 50.1071,
+      "longitude": 8.6638,
+      "country": "DE"
     },
     {
       "_google_place_id": "ChIJcw5fA7YHbUcR9uqSCCBND2k",
@@ -370,11 +424,12 @@
         "establishment"
       ],
       "aliases": [],
-      "in_vienna": false,
+      "in_vienna": true,
       "name": "Franz-Josefs",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "train_station"
     },
     {
       "name": "Genf",
@@ -383,7 +438,10 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 46.2104,
+      "longitude": 6.1424,
+      "country": "CH"
     },
     {
       "aliases": [
@@ -419,14 +477,20 @@
       "in_vienna": false,
       "name": "Graz",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 47.0722,
+      "longitude": 15.4172,
+      "country": "AT"
     },
     {
       "name": "Győr",
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 47.6823,
+      "longitude": 17.6339,
+      "country": "HU"
     },
     {
       "aliases": [
@@ -496,14 +560,20 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 53.5528,
+      "longitude": 10.0064,
+      "country": "DE"
     },
     {
       "name": "Hannover",
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 52.3768,
+      "longitude": 9.741,
+      "country": "DE"
     },
     {
       "_google_place_id": "ChIJBa9sJZgHbUcRrekncb64g2M",
@@ -516,12 +586,15 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U3 Herrengasse"
+      ],
+      "in_vienna": true,
       "name": "Herrengasse",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "aliases": [
@@ -549,7 +622,10 @@
       "in_vienna": false,
       "name": "Innsbruck",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 47.2636,
+      "longitude": 11.401,
+      "country": "AT"
     },
     {
       "_google_place_id": "ChIJAejOLIMHbUcRqGaIKFIrOSs",
@@ -562,12 +638,16 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U1 Karlsplatz",
+        "U4 Karlsplatz"
+      ],
+      "in_vienna": true,
       "name": "Karlsplatz",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "_google_place_id": "ChIJKev0BYYHbUcRJCw8HjiV7KQ",
@@ -580,12 +660,15 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U4 Kettenbrückengasse"
+      ],
+      "in_vienna": true,
       "name": "Kettenbrückengasse",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "aliases": [
@@ -613,7 +696,10 @@
       "in_vienna": false,
       "name": "Klagenfurt",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 46.6156,
+      "longitude": 14.3142,
+      "country": "AT"
     },
     {
       "aliases": [
@@ -717,21 +803,30 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 50.0683,
+      "longitude": 19.9478,
+      "country": "PL"
     },
     {
       "name": "Kufstein",
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 47.5857,
+      "longitude": 12.1678,
+      "country": "AT"
     },
     {
       "name": "Köln",
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 50.9432,
+      "longitude": 6.9586,
+      "country": "DE"
     },
     {
       "aliases": [],
@@ -739,7 +834,10 @@
       "in_vienna": false,
       "name": "Leoben",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 47.382,
+      "longitude": 15.1011,
+      "country": "AT"
     },
     {
       "aliases": [
@@ -772,7 +870,10 @@
       "in_vienna": false,
       "name": "Linz",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 48.2905,
+      "longitude": 14.2908,
+      "country": "AT"
     },
     {
       "name": "Ljubljana",
@@ -781,7 +882,10 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 46.0583,
+      "longitude": 14.5064,
+      "country": "SI"
     },
     {
       "aliases": [
@@ -814,12 +918,15 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U2 Messe-Prater"
+      ],
+      "in_vienna": true,
       "name": "Messe - Prater",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "name": "Milano",
@@ -828,7 +935,10 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 45.4849,
+      "longitude": 9.2035,
+      "country": "IT"
     },
     {
       "aliases": [
@@ -885,12 +995,18 @@
       "vor_id": "430423900"
     },
     {
-      "aliases": [],
+      "aliases": [
+        "München Hbf",
+        "Munich"
+      ],
       "bst_id": 900014,
       "in_vienna": false,
       "name": "München",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 48.1402,
+      "longitude": 11.5583,
+      "country": "DE"
     },
     {
       "_google_place_id": "ChIJ9zkxBIwHbUcRJYN0SNOPjgo",
@@ -903,12 +1019,15 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U3 Neubaugasse"
+      ],
+      "in_vienna": true,
       "name": "Neubaugasse",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "aliases": [
@@ -957,21 +1076,30 @@
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 49.4456,
+      "longitude": 11.0828,
+      "country": "DE"
     },
     {
       "name": "Ostrava",
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 49.8361,
+      "longitude": 18.2678,
+      "country": "CZ"
     },
     {
       "name": "Paris",
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 48.8767,
+      "longitude": 2.3592,
+      "country": "FR"
     },
     {
       "aliases": [
@@ -1019,7 +1147,10 @@
       "in_vienna": false,
       "name": "Passau",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 48.5746,
+      "longitude": 13.4517,
+      "country": "DE"
     },
     {
       "aliases": [
@@ -1055,20 +1186,30 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U4 Pilgramgasse"
+      ],
+      "in_vienna": true,
       "name": "Pilgramgasse",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
-      "aliases": [],
+      "aliases": [
+        "Praha",
+        "Prague",
+        "Praha hl.n."
+      ],
       "bst_id": 900019,
       "in_vienna": false,
       "name": "Prag",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 50.0832,
+      "longitude": 14.435,
+      "country": "CZ"
     },
     {
       "aliases": [
@@ -1142,7 +1283,10 @@
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 49.0116,
+      "longitude": 12.0991,
+      "country": "DE"
     },
     {
       "_google_place_id": "ChIJGZJ3hXsHbUcRoSEOdidtTe8",
@@ -1156,11 +1300,12 @@
         "establishment"
       ],
       "aliases": [],
-      "in_vienna": false,
+      "in_vienna": true,
       "name": "Rennweg",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "train_station"
     },
     {
       "name": "Roma",
@@ -1170,7 +1315,10 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 41.9014,
+      "longitude": 12.5009,
+      "country": "IT"
     },
     {
       "aliases": [],
@@ -1178,7 +1326,10 @@
       "in_vienna": false,
       "name": "Salzburg",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 47.813,
+      "longitude": 13.0456,
+      "country": "AT"
     },
     {
       "_google_place_id": "ChIJP12J6aQHbUcRMDvO2qPS6bg",
@@ -1191,12 +1342,16 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U2 Schottenring",
+        "U4 Schottenring"
+      ],
+      "in_vienna": true,
       "name": "Schottenring",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "_google_place_id": "ChIJtXUcR7wHbUcR4C9kP_yXVMY",
@@ -1209,12 +1364,15 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U2 Schottentor"
+      ],
+      "in_vienna": true,
       "name": "Schottentor",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "aliases": [
@@ -1249,19 +1407,26 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U1 Schwedenplatz",
+        "U4 Schwedenplatz"
+      ],
+      "in_vienna": true,
       "name": "Schwedenplatz",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "name": "St. Anton am Arlberg",
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 47.1306,
+      "longitude": 10.2687,
+      "country": "AT"
     },
     {
       "aliases": [],
@@ -1269,7 +1434,10 @@
       "in_vienna": false,
       "name": "St. Pölten",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 48.2082,
+      "longitude": 15.624,
+      "country": "AT"
     },
     {
       "aliases": [
@@ -1386,12 +1554,15 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U4 Stadtpark"
+      ],
+      "in_vienna": true,
       "name": "Stadtpark",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "_google_place_id": "ChIJQ-lZKZ8HbUcRLnHPUlkyNqE",
@@ -1404,12 +1575,16 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U1 Stephansplatz",
+        "U3 Stephansplatz"
+      ],
+      "in_vienna": true,
       "name": "Stephansplatz",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "aliases": [],
@@ -1417,7 +1592,10 @@
       "in_vienna": false,
       "name": "Steyr",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 48.0463,
+      "longitude": 14.4253,
+      "country": "AT"
     },
     {
       "aliases": [
@@ -1480,19 +1658,25 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U3 Stubentor"
+      ],
+      "in_vienna": true,
       "name": "Stubentor",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "name": "Stuttgart",
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 48.7831,
+      "longitude": 9.1816,
+      "country": "DE"
     },
     {
       "_google_place_id": "ChIJZ1D-htapbUcROoi_2Jg_fcg",
@@ -1505,12 +1689,15 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U1 Südtiroler Platz"
+      ],
+      "in_vienna": true,
       "name": "Südtiroler Platz",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "name": "Tarvis",
@@ -1519,7 +1706,10 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 46.5054,
+      "longitude": 13.567,
+      "country": "IT"
     },
     {
       "aliases": [
@@ -1621,7 +1811,10 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 45.4411,
+      "longitude": 12.3211,
+      "country": "IT"
     },
     {
       "name": "Verona",
@@ -1630,7 +1823,10 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 45.4286,
+      "longitude": 10.9822,
+      "country": "IT"
     },
     {
       "aliases": [],
@@ -1638,7 +1834,10 @@
       "in_vienna": false,
       "name": "Villach",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 46.6186,
+      "longitude": 13.8486,
+      "country": "AT"
     },
     {
       "_google_place_id": "ChIJua204ZAHbUcRnAuRn1kblgM",
@@ -1651,12 +1850,17 @@
         "point_of_interest",
         "establishment"
       ],
-      "aliases": [],
-      "in_vienna": false,
+      "aliases": [
+        "U2 Volkstheater",
+        "U3 Volkstheater",
+        "U5 Volkstheater"
+      ],
+      "in_vienna": true,
       "name": "Volkstheater",
       "source": [
         "google_places"
-      ]
+      ],
+      "type": "subway_station"
     },
     {
       "name": "Warschau",
@@ -1665,7 +1869,10 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 52.2288,
+      "longitude": 21.0031,
+      "country": "PL"
     },
     {
       "aliases": [],
@@ -1673,7 +1880,10 @@
       "in_vienna": false,
       "name": "Wels",
       "pendler": false,
-      "source": "manual_foreign_city"
+      "source": "manual_foreign_city",
+      "latitude": 48.1643,
+      "longitude": 14.0264,
+      "country": "AT"
     },
     {
       "aliases": [
@@ -2859,7 +3069,16 @@
         "vor",
         "google_places"
       ],
-      "vor_id": "490074300"
+      "vor_id": "490074300",
+      "wl_diva": "60200743",
+      "wl_stops": [
+        {
+          "latitude": 48.2064,
+          "longitude": 16.3854,
+          "name": "Wien Mitte-Landstraße",
+          "stop_id": "60200743"
+        }
+      ]
     },
     {
       "aliases": [
@@ -3044,7 +3263,16 @@
         "oebb",
         "google_places"
       ],
-      "vor_id": "490104000"
+      "vor_id": "490104000",
+      "wl_diva": "60201040",
+      "wl_stops": [
+        {
+          "latitude": 48.2185,
+          "longitude": 16.3925,
+          "name": "Praterstern",
+          "stop_id": "60201040"
+        }
+      ]
     },
     {
       "aliases": [
@@ -3763,14 +3991,20 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 45.8051,
+      "longitude": 15.9788,
+      "country": "HR"
     },
     {
       "name": "Zell am See",
       "aliases": [],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 47.3256,
+      "longitude": 12.7967,
+      "country": "AT"
     },
     {
       "name": "Zürich",
@@ -3779,7 +4013,10 @@
       ],
       "type": "manual_foreign_city",
       "in_vienna": false,
-      "pendler": false
+      "pendler": false,
+      "latitude": 47.3782,
+      "longitude": 8.5402,
+      "country": "CH"
     }
   ]
 }
