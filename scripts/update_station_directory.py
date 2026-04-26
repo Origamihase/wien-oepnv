@@ -188,7 +188,7 @@ def _refresh_provider_caches(*, script_dir: Path | None = None) -> None:
 class Station:
     """Representation of a single station entry."""
 
-    bst_id: int
+    bst_id: str
     bst_code: str
     name: str
     in_vienna: bool = False
@@ -198,7 +198,7 @@ class Station:
 
     def as_dict(self) -> dict[str, object]:
         payload: dict[str, object] = {
-            "bst_id": self.bst_id,
+            "bst_id": str(self.bst_id),
             "bst_code": self.bst_code,
             "name": self.name,
             "in_vienna": self.in_vienna,
@@ -208,7 +208,7 @@ class Station:
             payload["vor_id"] = self.vor_id
 
         for key, value in self.extras.items():
-            if key in {"bst_id", "bst_code", "name", "in_vienna", "pendler", "vor_id"}:
+            if key in {"bst_id", "bst_code", "name", "in_vienna", "pendler", "vor_id", "_lat", "_lng", "_types", "_google_place_id"}:
                 continue
             payload[key] = value
         return payload
@@ -224,15 +224,13 @@ class Station:
                 continue
             self.extras[key] = deepcopy(value)
 
-        lat = entry.get("_lat")
-        lng = entry.get("_lng")
+        lat = entry.get("latitude") or entry.get("_lat")
+        lng = entry.get("longitude") or entry.get("_lng")
         if isinstance(lat, (int, float)):
             latitude = float(lat)
-            self.extras["_lat"] = latitude
             self.extras["latitude"] = latitude
         if isinstance(lng, (int, float)):
             longitude = float(lng)
-            self.extras["_lng"] = longitude
             self.extras["longitude"] = longitude
 
 
@@ -413,7 +411,7 @@ def _build_location_index(
     return locations
 
 
-def _load_existing_station_entries(path: Path) -> dict[int, Mapping[str, object]]:
+def _load_existing_station_entries(path: Path) -> dict[str, Mapping[str, object]]:
     try:
         with path.open("r", encoding="utf-8") as handle:
             payload = json.load(handle)
@@ -426,19 +424,19 @@ def _load_existing_station_entries(path: Path) -> dict[int, Mapping[str, object]
     if isinstance(payload, dict):
         payload = payload.get("stations", [])
 
-    mapping: dict[int, Mapping[str, object]] = {}
+    mapping: dict[str, Mapping[str, object]] = {}
     if isinstance(payload, list):
         for entry in payload:
             if not isinstance(entry, dict):
                 continue
             bst_id = entry.get("bst_id")
-            if isinstance(bst_id, int):
-                mapping[bst_id] = entry
+            if bst_id is not None:
+                mapping[str(bst_id)] = entry
     return mapping
 
 
 def _restore_existing_metadata(
-    stations: Iterable[Station], existing_entries: Mapping[int, Mapping[str, object]]
+    stations: Iterable[Station], existing_entries: Mapping[str, Mapping[str, object]]
 ) -> None:
     for station in stations:
         existing = existing_entries.get(station.bst_id)
@@ -587,11 +585,11 @@ def _merge_google_metadata(
     existing_entries = cast(List[StationEntry], [station.as_dict() for station in stations])
     outcome = merge_places(existing_entries, places, merge_config)
 
-    by_id: dict[int, Mapping[str, object]] = {}
+    by_id: dict[str, Mapping[str, object]] = {}
     for entry in outcome.stations:
         bst_id = entry.get("bst_id")
-        if isinstance(bst_id, int):
-            by_id[bst_id] = entry
+        if bst_id is not None:
+            by_id[str(bst_id)] = entry
 
     for station in stations:
         merged = by_id.get(station.bst_id)
@@ -830,7 +828,7 @@ def _assign_vor_ids(stations: list[Station], vor_stops: list[VORStop]) -> None:
 
 def _harmonize_station_names(
     stations: list[Station],
-    existing_entries: Mapping[int, Mapping[str, object]],
+    existing_entries: Mapping[str, Mapping[str, object]],
 ) -> None:
     if not existing_entries:
         for station in stations:
@@ -963,16 +961,16 @@ def _find_header_row(rows: Iterable[tuple[object, ...]]) -> tuple[int, dict[str,
     raise ValueError("Could not identify the header row in the workbook")
 
 
-def _coerce_bst_id(value: object | None) -> int | None:
+def _coerce_bst_id(value: object | None) -> str | None:
     if value is None:
         return None
     if isinstance(value, str):
         digits = value.strip()
         if not digits.isdigit():
             return None
-        return int(digits)
+        return digits
     if isinstance(value, (int, float)):
-        return int(value)
+        return str(int(value))
     return None
 
 
@@ -1033,7 +1031,7 @@ def _is_vienna_station(name: str) -> bool:
 
 def _annotate_station_flags(
     stations: list[Station],
-    pendler_ids: set[int],
+    pendler_ids: set[str],
     locations: Mapping[str, LocationInfo],
 ) -> None:
     for station in stations:
@@ -1060,7 +1058,7 @@ def _filter_relevant_stations(stations: list[Station]) -> list[Station]:
     return filtered
 
 
-def load_pendler_station_ids(path: Path) -> set[int]:
+def load_pendler_station_ids(path: Path) -> set[str]:
     try:
         with path.open("r", encoding="utf-8") as handle:
             data = json.load(handle)
@@ -1073,19 +1071,19 @@ def load_pendler_station_ids(path: Path) -> set[int]:
     if not isinstance(data, list):
         raise ValueError(f"Pendler station list must be a JSON array: {path}")
 
-    pendler_ids: set[int] = set()
+    pendler_ids: set[str] = set()
     for entry in data:
         if isinstance(entry, bool):
             raise ValueError(
                 f"Invalid pendler station identifier (boolean) in {path}: {entry!r}"
             )
         if isinstance(entry, int):
-            pendler_ids.add(entry)
+            pendler_ids.add(str(entry))
             continue
         if isinstance(entry, str):
             token = entry.strip()
             if token.isdigit():
-                pendler_ids.add(int(token))
+                pendler_ids.add(token)
                 continue
         raise ValueError(f"Invalid pendler station identifier in {path}: {entry!r}")
 
