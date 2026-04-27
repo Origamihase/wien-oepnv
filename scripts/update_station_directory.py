@@ -411,7 +411,7 @@ def _build_location_index(
     return locations
 
 
-def _load_existing_station_entries(path: Path) -> dict[str, Mapping[str, object]]:
+def _load_existing_station_entries(path: Path) -> dict[str, dict[str, object]]:
     try:
         with path.open("r", encoding="utf-8") as handle:
             payload = json.load(handle)
@@ -424,19 +424,19 @@ def _load_existing_station_entries(path: Path) -> dict[str, Mapping[str, object]
     if isinstance(payload, dict):
         payload = payload.get("stations", [])
 
-    mapping: dict[str, Mapping[str, object]] = {}
+    mapping: dict[str, dict[str, object]] = {}
     if isinstance(payload, list):
         for entry in payload:
             if not isinstance(entry, dict):
                 continue
             bst_id = entry.get("bst_id")
-            if bst_id is not None:
-                mapping[str(bst_id)] = entry
+            if isinstance(bst_id, str) and bst_id:
+                mapping[bst_id] = entry
     return mapping
 
 
 def _restore_existing_metadata(
-    stations: Iterable[Station], existing_entries: Mapping[str, Mapping[str, object]]
+    stations: Iterable[Station], existing_entries: dict[str, dict[str, object]]
 ) -> None:
     for station in stations:
         existing = existing_entries.get(station.bst_id)
@@ -588,7 +588,7 @@ def _merge_google_metadata(
     by_id: dict[str, Mapping[str, object]] = {}
     for entry in outcome.stations:
         bst_id = entry.get("bst_id")
-        if bst_id is not None:
+        if isinstance(bst_id, str) and bst_id:
             by_id[str(bst_id)] = entry
 
     for station in stations:
@@ -828,7 +828,7 @@ def _assign_vor_ids(stations: list[Station], vor_stops: list[VORStop]) -> None:
 
 def _harmonize_station_names(
     stations: list[Station],
-    existing_entries: Mapping[str, Mapping[str, object]],
+    existing_entries: dict[str, dict[str, object]],
 ) -> None:
     if not existing_entries:
         for station in stations:
@@ -994,7 +994,7 @@ def extract_stations(workbook_stream: BytesIO) -> list[Station]:
         )
         logger.debug("Detected header row at index %s", header_row_index)
         stations: list[Station] = []
-        seen_ids: set[int] = set()
+        seen_ids: set[str] = set()
         for row in worksheet.iter_rows(min_row=header_row_index + 1, values_only=True):
             if not row:
                 continue
