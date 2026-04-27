@@ -411,25 +411,47 @@ def _build_location_index(
     return locations
 
 
-def _load_existing_station_entries(path: Path) -> dict[str, dict[str, object]]:
+def _load_existing_station_entries(
+    path: Path,
+) -> tuple[dict[str, dict[str, object]], list[dict[str, object]]]:
     try:
         with path.open("r", encoding="utf-8") as handle:
             payload = json.load(handle)
     except FileNotFoundError:
-        return {}
+        return {}, []
     except json.JSONDecodeError as exc:  # pragma: no cover - defensive
         logger.warning("Could not parse existing station directory %s: %s", path, exc)
-        return {}
+        return {}, []
 
     if isinstance(payload, dict):
         payload = payload.get("stations", [])
 
     mapping: dict[str, dict[str, object]] = {}
+    manual_stations: list[dict[str, object]] = []
+
     if isinstance(payload, list):
         for entry in payload:
             if not isinstance(entry, dict):
                 continue
+
             bst_id = entry.get("bst_id")
+            source = entry.get("source", "")
+
+            is_manual = False
+            if bst_id is None:
+                is_manual = True
+            elif source != "oebb":
+                if isinstance(source, str) and "oebb" in source:
+                    is_manual = False
+                elif isinstance(source, list) and "oebb" in source:
+                    is_manual = False
+                else:
+                    is_manual = True
+
+            if is_manual:
+                manual_stations.append(entry)
+                continue
+
             if bst_id is not None:
                 try:
                     lookup_id = str(int(float(bst_id)))  # type: ignore
@@ -437,7 +459,8 @@ def _load_existing_station_entries(path: Path) -> dict[str, dict[str, object]]:
                     lookup_id = str(bst_id)
                 if lookup_id:
                     mapping[lookup_id] = entry
-    return mapping
+
+    return mapping, manual_stations
 
 
 def _restore_existing_metadata(
@@ -1104,8 +1127,7 @@ def load_pendler_station_ids(path: Path) -> set[str]:
     return pendler_ids
 
 
-def write_json(stations: list[Station], output_path: Path) -> None:
-    stations_list = [station.as_dict() for station in stations]
+def write_json(stations_list: list[dict[str, object]], output_path: Path) -> None:
     payload = {"stations": stations_list}
     # Use atomic_write to prevent partial writes and reduce race conditions.
     with atomic_write(output_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
@@ -1118,7 +1140,7 @@ def main() -> None:
     args = parse_args()
     configure_logging(args.verbose)
     _refresh_provider_caches()
-    existing_entries = _load_existing_station_entries(args.output)
+    existing_entries, manual_stations = _load_existing_station_entries(args.output)
     workbook_stream = download_workbook(args.source_url)
     stations = extract_stations(workbook_stream)
     _harmonize_station_names(stations, existing_entries)
@@ -1136,7 +1158,10 @@ def main() -> None:
         _enrich_with_google_places(stations, tiles_file=args.places_tiles_file)
     else:
         logger.info("Skipping Google Places enrichment (--no-google-enrich)")
-    write_json(stations, args.output)
+
+    final_stations = [station.as_dict() for station in stations]
+    final_stations.extend(manual_stations)
+    write_json(final_stations, args.output)
 
 
 if __name__ == "__main__":
