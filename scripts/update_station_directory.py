@@ -430,8 +430,13 @@ def _load_existing_station_entries(path: Path) -> dict[str, dict[str, object]]:
             if not isinstance(entry, dict):
                 continue
             bst_id = entry.get("bst_id")
-            if isinstance(bst_id, str) and bst_id:
-                mapping[bst_id] = entry
+            if bst_id is not None:
+                try:
+                    lookup_id = str(int(float(bst_id)))  # type: ignore
+                except (ValueError, TypeError):
+                    lookup_id = str(bst_id)
+                if lookup_id:
+                    mapping[lookup_id] = entry
     return mapping
 
 
@@ -439,7 +444,11 @@ def _restore_existing_metadata(
     stations: Iterable[Station], existing_entries: dict[str, dict[str, object]]
 ) -> None:
     for station in stations:
-        existing = existing_entries.get(station.bst_id)
+        try:
+            lookup_id = str(int(float(station.bst_id)))  # type: ignore
+        except (ValueError, TypeError):
+            lookup_id = str(station.bst_id)
+        existing = existing_entries.get(lookup_id)
         if not existing:
             continue
         vor_id_raw = existing.get("vor_id")
@@ -836,7 +845,11 @@ def _harmonize_station_names(
         return
 
     for station in stations:
-        existing = existing_entries.get(station.bst_id)
+        try:
+            lookup_id = str(int(float(station.bst_id)))  # type: ignore
+        except (ValueError, TypeError):
+            lookup_id = str(station.bst_id)
+        existing = existing_entries.get(lookup_id)
         if existing:
             name_raw = existing.get("name")
             if isinstance(name_raw, str) and name_raw.strip():

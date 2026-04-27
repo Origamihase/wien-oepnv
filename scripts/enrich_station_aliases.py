@@ -274,7 +274,10 @@ def _load_vor_mapping(path: Path) -> dict[int, str]:
         if not isinstance(item, dict):
             continue
         try:
-            bst_id = int(item.get("bst_id"))
+            bst_id_raw = item.get("bst_id")
+            if bst_id_raw is None:
+                continue
+            bst_id = int(bst_id_raw)  # type: ignore
         except (TypeError, ValueError):
             continue
         resolved_name = (item.get("resolved_name") or "").strip()
@@ -340,7 +343,8 @@ def _alias_candidates(
         push(vor_names.get(vor_id))
 
     try:
-        bst_id = int(station.get("bst_id"))
+        bst_id_raw = station.get("bst_id")
+        bst_id = int(bst_id_raw) if bst_id_raw is not None else None  # type: ignore
     except (TypeError, ValueError):
         bst_id = None
     if bst_id is not None:
