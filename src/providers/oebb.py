@@ -257,6 +257,25 @@ def _is_relevant(title: str, description: str) -> bool:
        generischen Text-Check zurück.
     """
     text = f"{title} {description}"
+    text_lower = text.lower()
+
+    # Check 0: Globales Fernverkehrs-Veto
+    stations_in_text = _find_stations_in_text(text)
+    has_distant_station = False
+    has_pendler_station = False
+
+    for s in stations_in_text:
+        info = station_info(s)
+        if info:
+            if not info.in_vienna and not info.pendler:
+                has_distant_station = True
+            if info.pendler:
+                has_pendler_station = True
+
+    if has_distant_station:
+        has_local_train = bool(re.search(r"\b(rex|s-bahn|s\s*\d+|u\s*\d+|cjx|r\s+\d+)\b", text_lower))
+        if not has_pendler_station and not has_local_train:
+            return False
 
     # Check 0: Strecken-Filter für explizite Routen A ↔ B
     if "↔" in title:
