@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Mon, 27 Apr 2026 05:46:28 +0200</lastBuildDate>
+<lastBuildDate>Mon, 27 Apr 2026 08:34:37 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Mon, 27 Apr 2026 04:45:27 +0200</pubDate>
+      <ext:first_seen>Mon, 27 Apr 2026 08:34:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Apr 2026 04:45:27 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 28 Apr 2026 00:35:00 +0200</ext:ends_at>
+      <description>Bauarbeiten Busse halten Breitenfurter Straße 236-238 [27.04.2026 – 28.04.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[27.04.2026 – 28.04.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -105,17 +116,6 @@
       <ext:starts_at>Wed, 22 Apr 2026 15:44:12 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten werden von 22.08.2026 bis 20.09.2026 die NJ-Züge 40233 und 40294 über Salzburg/Kufstein und die NJ-Züge 294 und 295 über Brennero/Brenner umgeleitet. [Seit 22.04.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten werden von 22.08.2026 bis 20.09.2026 die NJ-Züge 40233 und 40294 über Salzburg/Kufstein und die NJ-Züge 294 und 295 über Brennero/Brenner umgeleitet.<br/>[Seit 22.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Fahrtbehinderung wegen Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2639d7b2d94d4901035d7c61133924bb9496ef6e2842bec3772eec92ab785076</guid>
-      <pubDate>Wed, 22 Apr 2026 00:00:20 +0200</pubDate>
-      <ext:first_seen>Mon, 27 Apr 2026 05:46:28 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Apr 2026 00:00:27 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 27 Apr 2026 23:59:59 +0200</ext:ends_at>
-      <description>Fahrtbehinderung wegen Bauarbeiten [Am 27.04.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung wegen Bauarbeiten<br/>[Am 27.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
