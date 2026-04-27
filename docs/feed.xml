@@ -7,18 +7,73 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Mon, 27 Apr 2026 15:06:34 +0200</lastBuildDate>
+<lastBuildDate>Mon, 27 Apr 2026 17:24:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[25/26/27: Verkehrsunfall]]></title>
+      <title><![CDATA[3A: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ed60133baf408131b29a498f71283e442b4a9dad05b4f346051a7de28c3e4bab</guid>
-      <pubDate>Mon, 27 Apr 2026 13:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 27 Apr 2026 13:23:15 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Apr 2026 13:15:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">c34f5e5dd3ff7a1d65b4e242f1c7a2485ba1574fc241002cd83197071facd200</guid>
+      <pubDate>Mon, 27 Apr 2026 17:10:00 +0200</pubDate>
+      <ext:first_seen>Mon, 27 Apr 2026 17:24:53 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Apr 2026 17:10:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 27 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 25: Fahrtbehinderung in beiden Richtungen. Linie 26: Fahrtbehinderung in beiden Richtungen. [Am 27.04.2026]</description>
-      <content:encoded><![CDATA[Linie 25: Fahrtbehinderung in beiden Richtungen. Linie 26: Fahrtbehinderung in beiden Richtungen.<br/>[Am 27.04.2026]]]></content:encoded>
+      <description>Linie 3 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 27.04.2026]</description>
+      <content:encoded><![CDATA[Linie 3 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 27.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">eb95adf873b18dcc90582141fd8b881d6f58540f5e3144fe72be528eb86b24d6</guid>
+      <pubDate>Mon, 27 Apr 2026 16:44:00 +0200</pubDate>
+      <ext:first_seen>Mon, 27 Apr 2026 17:24:53 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Apr 2026 16:44:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 27 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 27.04.2026]</description>
+      <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 27.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
+      <pubDate>Mon, 27 Apr 2026 16:35:00 +0200</pubDate>
+      <ext:first_seen>Mon, 27 Apr 2026 17:24:53 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Apr 2026 16:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 27 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 27.04.2026]</description>
+      <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 27.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0db792f9373b33394ac9cbd54fe89c56f58770700c324d59539bd75f7e841cff</guid>
+      <pubDate>Mon, 27 Apr 2026 16:08:00 +0200</pubDate>
+      <ext:first_seen>Mon, 27 Apr 2026 17:24:53 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Apr 2026 16:08:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 27 Apr 2026 17:30:00 +0200</ext:ends_at>
+      <description>Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 27.04.2026]</description>
+      <content:encoded><![CDATA[Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 27.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/71/D: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91ebc3b5050bbbb9657e50e948c7b2ee4417a57aaeb4f80d5c81fba9d5a4ee48</guid>
+      <pubDate>Mon, 27 Apr 2026 15:47:00 +0200</pubDate>
+      <ext:first_seen>Mon, 27 Apr 2026 17:24:53 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Apr 2026 15:47:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 27 Apr 2026 17:20:00 +0200</ext:ends_at>
+      <description>Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. [Am 27.04.2026]</description>
+      <content:encoded><![CDATA[Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 27.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Rettungseinsatz Einstieg in der Wipplingerstr. bei Linie 40A]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0dad447e1a2d21d0e9c43c5e4aeb6bc994fa524bc67a12b3727d48d66fe8e90b</guid>
+      <pubDate>Mon, 27 Apr 2026 15:40:57 +0200</pubDate>
+      <ext:first_seen>Mon, 27 Apr 2026 11:06:33 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Apr 2026 15:40:57 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 27 Apr 2026 18:00:00 +0200</ext:ends_at>
+      <description>Rettungseinsatz Einstieg in der Wipplingerstr. bei Linie 40 A [Am 27.04.2026]</description>
+      <content:encoded><![CDATA[Rettungseinsatz Einstieg in der Wipplingerstr. bei Linie 40 A<br/>[Am 27.04.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/10A/11A/12/12A/13A/18/2/20A/31/40A/47A/4A/51A/56A/56B/58A/58B/59A/6/60/71/80A/92A/92B/D: Wings for Life Run 2026 am 10.05.2026]]></title>
@@ -30,39 +85,6 @@
       <ext:ends_at>Sun, 10 May 2026 17:00:00 +0200</ext:ends_at>
       <description>Laufsportveranstaltung Wegen des Wings for Life World Run 2026 kommt es zu Verkehrseinschränkungen. [27.04.2026 – 10.05.2026]</description>
       <content:encoded><![CDATA[Laufsportveranstaltung Wegen des Wings for Life World Run 2026 kommt es zu Verkehrseinschränkungen.<br/>[27.04.2026 – 10.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Vandalismus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4334be1a202ed548df58497f8b783703be22c53319af886ac759d24ad3eaea35</guid>
-      <pubDate>Mon, 27 Apr 2026 12:54:00 +0200</pubDate>
-      <ext:first_seen>Mon, 27 Apr 2026 11:06:33 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Apr 2026 12:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 27 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus. [Am 27.04.2026]</description>
-      <content:encoded><![CDATA[Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.<br/>[Am 27.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: Fahrtbehinderung wegen Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">42fd134123a418e9ad9efe9206b8aec78f4828e1289887cd32b9a179ab2ed7cd</guid>
-      <pubDate>Mon, 27 Apr 2026 12:34:00 +0200</pubDate>
-      <ext:first_seen>Mon, 27 Apr 2026 13:23:15 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Apr 2026 12:36:13 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 27 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 11 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 27.04.2026]</description>
-      <content:encoded><![CDATA[Linie 11 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 27.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f0dde5821d03cb68c45830addd54ee8545c302f1154e3c7d1144448feb5546bd</guid>
-      <pubDate>Mon, 27 Apr 2026 11:55:00 +0200</pubDate>
-      <ext:first_seen>Mon, 27 Apr 2026 13:23:15 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Apr 2026 11:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 27 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie D: Umleitung in beiden Richtungen zwischen Quartier Belvedere S und Schwarzenbergplatz über St. [Am 27.04.2026]</description>
-      <content:encoded><![CDATA[Linie D: Umleitung in beiden Richtungen zwischen Quartier Belvedere S und Schwarzenbergplatz über St.<br/>[Am 27.04.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S 50: Bauarbeiten: Wien Westbf Wien Hütteldorf/Tullnerbach-Pressbaum]]></title>
@@ -94,28 +116,6 @@
       <ext:ends_at>Tue, 28 Apr 2026 00:35:00 +0200</ext:ends_at>
       <description>Bauarbeiten Busse halten Breitenfurter Straße 236-238 [27.04.2026 – 28.04.2026]</description>
       <content:encoded><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[27.04.2026 – 28.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
-      <pubDate>Mon, 27 Apr 2026 00:00:28 +0200</pubDate>
-      <ext:first_seen>Mon, 27 Apr 2026 01:49:30 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Apr 2026 00:00:28 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 27 Apr 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85 [Am 27.04.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85<br/>[Am 27.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Betrieb ab Thaliastraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18</guid>
-      <pubDate>Mon, 27 Apr 2026 00:00:28 +0200</pubDate>
-      <ext:first_seen>Mon, 27 Apr 2026 01:49:30 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 27 Apr 2026 00:00:28 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 27 Apr 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Betrieb ab Thaliastraße &gt; [Am 27.04.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Betrieb ab Thaliastraße ><br/>[Am 27.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
