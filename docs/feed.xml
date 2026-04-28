@@ -7,39 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Tue, 28 Apr 2026 09:34:48 +0200</lastBuildDate>
+<lastBuildDate>Tue, 28 Apr 2026 11:58:13 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[Ausfall Bahnsteig 2 in Wien Haidestraße]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;873224</guid>
-      <pubDate>Tue, 28 Apr 2026 06:57:37 +0200</pubDate>
+      <title><![CDATA[U3: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
+      <pubDate>Tue, 28 Apr 2026 09:26:00 +0200</pubDate>
       <ext:first_seen>Tue, 28 Apr 2026 09:34:48 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 28 Apr 2026 06:57:37 +0200</ext:starts_at>
-      <description>Wegen einer Weichenstörung können die Züge derzeit in Wien Haidestraße Bahnhst auf Bahnsteig 2 nicht halten. [Seit 28.04.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Weichenstörung können die Züge derzeit in Wien Haidestraße Bahnhst auf Bahnsteig 2 nicht halten.<br/>[Seit 28.04.2026]]]></content:encoded>
+      <ext:starts_at>Tue, 28 Apr 2026 09:26:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 28 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 28.04.2026]</description>
+      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 28.04.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[15A: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9bf5343b39ded7dc7ca142844f951a241fc0e1d681fa0c0e2ed28db2ac8efe38</guid>
-      <pubDate>Tue, 28 Apr 2026 06:45:00 +0200</pubDate>
-      <ext:first_seen>Tue, 28 Apr 2026 09:34:48 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 28 Apr 2026 06:45:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">326012c534ff017c0b30f7bdaa3900fb28e44bfd3ab2d7d63b2deeff5f4f6cb7</guid>
+      <pubDate>Tue, 28 Apr 2026 08:59:00 +0200</pubDate>
+      <ext:first_seen>Tue, 28 Apr 2026 11:58:13 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 28 Apr 2026 08:59:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 28 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 40 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 28.04.2026]</description>
-      <content:encoded><![CDATA[Linie 40 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 28.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Verunreinigung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6</guid>
-      <pubDate>Tue, 28 Apr 2026 06:05:00 +0200</pubDate>
-      <ext:first_seen>Tue, 28 Apr 2026 09:34:48 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 28 Apr 2026 06:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 28 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 28.04.2026]</description>
-      <content:encoded><![CDATA[Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 28.04.2026]]]></content:encoded>
+      <description>Linie 15 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 28.04.2026]</description>
+      <content:encoded><![CDATA[Linie 15 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 28.04.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -115,6 +105,17 @@
       <ext:starts_at>Mon, 27 Apr 2026 08:56:32 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge IC 1110, IC 1113, IC … [Seit 27.04.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge IC 1110, IC 1113, IC …<br/>[Seit 27.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: Umleitung bis Quellenplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">17a5c68b3f1413105176d3bd3197a07898779b47a4d2b06ecc8093e73f67cbf3</guid>
+      <pubDate>Mon, 27 Apr 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Tue, 28 Apr 2026 07:00:42 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 27 Apr 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 28 Apr 2026 23:59:59 +0200</ext:ends_at>
+      <description>Bauarbeiten Umleitung bis Quellenplatz [27.04.2026 – 28.04.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Umleitung bis Quellenplatz<br/>[27.04.2026 – 28.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
