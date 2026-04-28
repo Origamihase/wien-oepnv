@@ -302,6 +302,54 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "WLB: Betrieb ab Aßmayergasse",
+    "description": "Bauarbeiten Betrieb ab Aßmayergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f029c4630ea1f8f4ea4d747e9328314d6983a3ff1f9ba681a7612c143c5b42b8",
+    "pubDate": "2026-04-26T00:00:18+02:00",
+    "starts_at": "2026-04-28T00:00:26+02:00",
+    "ends_at": "2026-04-28T23:59:59+02:00",
+    "_identity": "wl|störung|L=WLB|D=2026-04-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "WLB: Fahrtbehinderung wegen Bauarbeiten",
+    "description": "Fahrtbehinderung wegen Bauarbeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6fee19c499a5f520c36516c0820525cc40b363d84d02b1f4c910027af27decdb",
+    "pubDate": "2026-04-26T00:00:18+02:00",
+    "starts_at": "2026-04-28T00:00:26+02:00",
+    "ends_at": "2026-04-28T23:59:59+02:00",
+    "_identity": "wl|störung|L=WLB|D=2026-04-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Umleitung zum Stefan-Fadinger-Platz",
+    "description": "Bauarbeiten Umleitung zum Stefan-Fadinger-Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3bd22726420279ab2026e70b351fc7fcb5ca5e75a7964b14725381471569f673",
+    "pubDate": "2026-04-26T00:00:18+02:00",
+    "starts_at": "2026-04-26T00:00:18+02:00",
+    "ends_at": "2026-04-28T23:59:59+02:00",
+    "_identity": "wl|störung|L=62|D=2026-04-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Betrieb ab Hauptbahnhof",
+    "description": "Bauarbeiten Betrieb ab Hauptbahnhof",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8e7f0abb6d5f5921591d875860db04d1ca9e2919461bcb830fdfe184442ebe17",
+    "pubDate": "2026-04-26T00:00:18+02:00",
+    "starts_at": "2026-04-27T00:00:18+02:00",
+    "ends_at": "2026-04-28T23:59:59+02:00",
+    "_identity": "wl|störung|L=18|D=2026-04-26"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Fahrtbehinderung wegen Baurbeiten",
     "description": "Fahrtbehinderung wegen Baurbeiten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -337,54 +385,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "WLB: Betrieb ab Aßmayergasse",
-    "description": "Bauarbeiten Betrieb ab Aßmayergasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f029c4630ea1f8f4ea4d747e9328314d6983a3ff1f9ba681a7612c143c5b42b8",
-    "pubDate": "2026-04-26T00:00:18+02:00",
-    "starts_at": "2026-04-28T00:00:26+02:00",
-    "ends_at": "2026-04-28T23:59:59+02:00",
-    "_identity": "wl|störung|L=WLB|D=2026-04-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Betrieb ab Hauptbahnhof",
-    "description": "Bauarbeiten Betrieb ab Hauptbahnhof",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e7f0abb6d5f5921591d875860db04d1ca9e2919461bcb830fdfe184442ebe17",
-    "pubDate": "2026-04-26T00:00:18+02:00",
-    "starts_at": "2026-04-27T00:00:18+02:00",
-    "ends_at": "2026-04-28T23:59:59+02:00",
-    "_identity": "wl|störung|L=18|D=2026-04-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "WLB: Fahrtbehinderung wegen Bauarbeiten",
-    "description": "Fahrtbehinderung wegen Bauarbeiten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6fee19c499a5f520c36516c0820525cc40b363d84d02b1f4c910027af27decdb",
-    "pubDate": "2026-04-26T00:00:18+02:00",
-    "starts_at": "2026-04-28T00:00:26+02:00",
-    "ends_at": "2026-04-28T23:59:59+02:00",
-    "_identity": "wl|störung|L=WLB|D=2026-04-26"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Umleitung zum Stefan-Fadinger-Platz",
-    "description": "Bauarbeiten Umleitung zum Stefan-Fadinger-Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3bd22726420279ab2026e70b351fc7fcb5ca5e75a7964b14725381471569f673",
-    "pubDate": "2026-04-26T00:00:18+02:00",
-    "starts_at": "2026-04-26T00:00:18+02:00",
-    "ends_at": "2026-04-28T23:59:59+02:00",
-    "_identity": "wl|störung|L=62|D=2026-04-26"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "63A: Kranarbeiten ab 04. Mai 2026",
     "description": "<h2>Kranarbeiten</h2> <p>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstra&szlig;e und L&auml;ngenfeldgasse wird die Linie 63A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Von Montag, 04. Mai 2026 bis Donnerstag 14. Mai 2026 , t&auml;glich von 22:00 Uhr bis 05:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 63A in Richtung Am Rosenh&uuml;gel:<br /></strong>Umleitung ab Eibesbrunnergasse # Unter-Meidlinger-Stra&szlig;e &uuml;ber Eibesbrunnergasse &ndash; Kerschensteinergasse &ndash; L&auml;ngenfeldgasse.</p> <p><span style=\"text-decoration: underline;\">Ersatzlos aufgelassene Haltestellen:<br /></span>Kastanienallee (Unter-Meidlinger-Stra&szlig;e vor Kastanienallee)<br />Unfallkrankenhaus Meidling (Kundratstra&szlig;e 39 vor K&ouml;glergasse)</p> <p><strong>Linie 63A in Richtung Gesundheitszentrum S&uuml;d:<br /></strong>Umleitung ab L&auml;ngenfeldgasse # Kerschensteinergasse &uuml;ber Kerschensteinergasse &ndash; Eibesbrunnergasse &ndash; Unter-Meidlinger-Stra&szlig;e &ndash; Kundratstra&szlig;e &ndash; K&ouml;glergasse.</p>",
@@ -406,6 +406,18 @@
     "starts_at": "2026-04-27T00:00:15+02:00",
     "ends_at": "2026-04-28T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-04-27"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Umleitung bis Quellenplatz",
+    "description": "Bauarbeiten Umleitung bis Quellenplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "17a5c68b3f1413105176d3bd3197a07898779b47a4d2b06ecc8093e73f67cbf3",
+    "pubDate": "2026-04-27T00:00:18+02:00",
+    "starts_at": "2026-04-27T00:00:18+02:00",
+    "ends_at": "2026-04-28T23:59:59+02:00",
+    "_identity": "wl|störung|L=18|D=2026-04-27"
   },
   {
     "source": "Wiener Linien",
@@ -433,18 +445,6 @@
   },
   {
     "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Umleitung bis Quellenplatz",
-    "description": "Bauarbeiten Umleitung bis Quellenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17a5c68b3f1413105176d3bd3197a07898779b47a4d2b06ecc8093e73f67cbf3",
-    "pubDate": "2026-04-27T00:00:18+02:00",
-    "starts_at": "2026-04-27T00:00:18+02:00",
-    "ends_at": "2026-04-28T23:59:59+02:00",
-    "_identity": "wl|störung|L=18|D=2026-04-27"
-  },
-  {
-    "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "1/10A/11A/12/12A/13A/18/2/20A/31/40A/47A/4A/51A/56A/56B/58A/58B/59A/6/60/71/80A/92A/92B/D: Wings for Life Run 2026 am 10.05.2026",
     "description": "<h2>Laufsportveranstaltung</h2> <p>Wegen des Wings for Life World Run 2026 kommt es zu Verkehrseinschr&auml;nkungen.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Sonntag, 10. Mai 2026 ab etwa 09:00 (Ausnahme Linie 71) bis etwa 16:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen (in chronologischer Reihenfolge):</strong></span><br /><strong>Linie 71:</strong><br />Ab Betriebsbeginn Kurzf&uuml;hrung:<br />Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Schwarzenbergplatz.</p> <p><strong>Linie 10A:</strong><br />Ab ca. 09:15 Uhr Kurzf&uuml;hrung:<br />Betrieb nur zwischen Heiligenstadt und Johnstra&szlig;e.</p> <p><strong>Linie 2:</strong><br />Ab ca. 11:30 Uhr Linienteilung:<br />Kein Betrieb zwsichen Heinestra&szlig;e und Ring, Volkstheater.</p> <p><strong>Linie 1:</strong><br />Ab ca. 11:30 Uhr Umleitung:<br />Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstra&szlig;e &uuml;ber die Strecke der Linien 18 und O (Hauptbahnhof, Rennweg).</p> <p><strong>Linie D:</strong><br />Ab ca. 11:30 Uhr Linienteilung:<br />Kein Betrieb zwischen Schwarzenbergplatz und Augasse.</p> <p><strong>Linien 56A, 56B, 58A und 58B:</strong><br />Ab. ca. 12:15 Kurzf&uuml;hrung:<br />Kein Betrieb zwischen Am Platz und Hietzing.</p> <p><strong>Linie 47A:</strong><br />Ab ca. 12:15 Uhr Kurzf&uuml;hrung:<br />Betrieb nur zwischen Klink Penzing und Gruschaplatz, bzw. ab Zehetnergasse.</p> <p><strong>Linie 51A:</strong><br />Ab ca. 12:15 Uhr:<br />Die Haltestelle Hietzing wird in der Penzinger Stra&szlig;e 94-96 eingehalten.</p> <p><strong>Linie 60:</strong><br />Ab ca. 12:15 Uhr Kurzf&uuml;hrung:<br />Kein Betrieb zwischen Hietzing und Westbahnhof.</p> <p><strong>Linie 12A:</strong><br />Ab ca. 12:15 Uhr Kurzf&uuml;hrung:<br />Betrieb nur zwischen Schmelz, Gablenzgasse und Geibelgasse.</p> <p><strong>Linie 13A:</strong><br />Ab ca. 12:15 Uhr Linienteilung:<br />Kein Betrieb zwischen Burggasse, Neubaugasse und Margaretenplatz, Sch&ouml;nbrunner Stra&szlig;e</p> <p><strong>Linien 6 und 18:</strong><br />Ab ca. 12:15 Uhr Kurzf&uuml;hrung:<br />Kein Betrieb zwischen Eichenstra&szlig;e und Burggasse, Stadthalle. Die Z&uuml;ge werden zum Bhf. Meidling, D&ouml;rfelstra&szlig;e umgeleitet.</p> <p><strong>Linie 59A:</strong><br />Ab ca. 12:30 Uhr Kurzf&uuml;hrung:<br />Betrieb nur zwischen Bhf. Meidling und B&auml;renm&uuml;hldurchgang.</p> <p><strong>Linie 31:</strong><br />Ab ca. 12:30 Uhr Kurzf&uuml;hrung:<br />Kein Betrieb zwischen Klosterneuburger Stra&szlig;e, Wallensteinstra&szlig;e und Schottenring.</p> <p><strong>Linie 40A:</strong><br />Ab ca. 12:30 Uhr Kurzf&uuml;hrung:<br />Kein Betrieb zwischen W&auml;hringer Stra&szlig;e, Volksoper und Schottentor.</p> <p><strong>Linie 12:</strong><br />Ab ca. 12:30 Uhr Kurzf&uuml;hrung:<br />Kein Betrieb zwischen Bruno-Marek-Allee und Hillerstra&szlig;e.</p> <p><strong>Linie 80A:</strong><br />Ab ca. 13:00 Uhr Kurzf&uuml;hrung:<br />Betrieb nur zwsichen Praterstern und Wittelsbachstra&szlig;e.</p> <p><strong>Linie 4A:</strong><br />Ab ca. 13:00 Uhr Kurzf&uuml;hrung:<br />Kein Betrieb zwisschen Rasumofskygasse und Wittelsbachstra&szlig;e.</p> <p><strong>Linie 11A:</strong><br />Ab ca. 13:00 Uhr Kurzf&uuml;hrung:<br />Kein Betrieb zwischen Vorgartenstra&szlig;e und Stadion.</p> <p><strong>Linien 92A und 92B:</strong><br />Ab ca. 13:00 Uhr Kurzf&uuml;hrung:<br />Kein Betrieb zwischen Sch&uuml;ttaustra&szlig;e und Kaiserm&uuml;hlen, VIC.</p> <p><strong>Linie 20A:</strong><br />Ab ca. 13:00 Uhr Einstellung:<br />Kein Betrieb.</p> <p><span style=\"text-decoration: underline;\"><strong>Hinweis:</strong></span><br />Durch die Art der Veranstaltung kann nicht abgesehen werden, wann welche Streckenabschnitte wieder frei sein werden. Die betroffenen Linien werden sofort wieder nach Freiwerden der Streckenabschnitte wieder normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen und unsere Echtzeitinformation unter <a href=\"https://www.wienmobil.at\">WienMobil</a>. Weichen Sie ersatzweise auf die U-Bahn Linien aus.</p> <p>Am Nachmittag des 10. Mai kommt es dar&uuml;ber hinaus zu weiteren Einschr&auml;nkungen auf der Ringstra&szlig;e (siehe gesonderten Artikel).</p>",
@@ -454,18 +454,6 @@
     "starts_at": "2026-04-27T13:00:00+02:00",
     "ends_at": "2026-05-10T17:00:00+02:00",
     "_identity": "wl|hinweis|L=1,10A,11A,12,12A,13A,18,2,20A,31,40A,47A,4A,51A,56A,56B,58A,58B,59A,6,60,71,80A,92A,92B,D|D=2026-04-27"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "46: Betrieb ab Thaliastraße",
-    "description": "Gleisbauarbeiten Betrieb ab Thaliastraße >",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18",
-    "pubDate": "2026-04-28T00:00:24+02:00",
-    "starts_at": "2026-04-28T00:00:24+02:00",
-    "ends_at": "2026-04-28T23:59:59+02:00",
-    "_identity": "wl|störung|L=46|D=2026-04-28"
   },
   {
     "source": "Wiener Linien",
@@ -490,6 +478,18 @@
     "starts_at": "2026-04-28T00:00:24+02:00",
     "ends_at": "2026-04-28T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-04-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Betrieb ab Thaliastraße",
+    "description": "Gleisbauarbeiten Betrieb ab Thaliastraße >",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18",
+    "pubDate": "2026-04-28T00:00:24+02:00",
+    "starts_at": "2026-04-28T00:00:24+02:00",
+    "ends_at": "2026-04-28T23:59:59+02:00",
+    "_identity": "wl|störung|L=46|D=2026-04-28"
   },
   {
     "source": "Wiener Linien",
@@ -546,21 +546,45 @@
     "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
-    "pubDate": "2026-04-28T06:05:00+02:00",
-    "starts_at": "2026-04-28T06:05:00+02:00",
-    "ends_at": "2026-04-28T23:55:00+02:00",
+    "pubDate": "2026-04-28T08:49:00+02:00",
+    "starts_at": "2026-04-28T08:49:00+02:00",
+    "ends_at": "2026-04-28T09:34:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-04-28"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40A: Verkehrsüberlastung",
-    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "15A: Bauarbeiten",
+    "description": "Linie 15A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9bf5343b39ded7dc7ca142844f951a241fc0e1d681fa0c0e2ed28db2ac8efe38",
-    "pubDate": "2026-04-28T06:45:00+02:00",
-    "starts_at": "2026-04-28T06:45:00+02:00",
+    "guid": "326012c534ff017c0b30f7bdaa3900fb28e44bfd3ab2d7d63b2deeff5f4f6cb7",
+    "pubDate": "2026-04-28T08:59:00+02:00",
+    "starts_at": "2026-04-28T08:59:00+02:00",
     "ends_at": "2026-04-28T23:55:00+02:00",
-    "_identity": "wl|störung|L=40A|D=2026-04-28"
+    "_identity": "wl|störung|L=15A|D=2026-04-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "15A: Fahrtbehinderung wegen Betriebsstörung",
+    "description": "Fahrtbehinderung wegen Betriebsstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "44e2ba550a826ef3123284112ce012cc66566b009845e4326438cade3dc9e5c9",
+    "pubDate": "2026-04-28T08:59:54+02:00",
+    "starts_at": "2026-04-28T08:59:54+02:00",
+    "ends_at": "2026-04-28T09:59:00+02:00",
+    "_identity": "wl|störung|L=15A|D=2026-04-28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-04-28T09:26:00+02:00",
+    "starts_at": "2026-04-28T09:26:00+02:00",
+    "ends_at": "2026-04-28T23:55:00+02:00",
+    "_identity": "wl|störung|L=U3|D=2026-04-28"
   }
 ]
