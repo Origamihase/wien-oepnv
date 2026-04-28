@@ -19,7 +19,7 @@ import base64
 import json
 import logging
 import os
-import secrets
+import random
 import re
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -920,7 +920,7 @@ def _select_stations_round_robin(
     # 1. Shuffle daily to ensure fairness over long term but stability within day
     today = datetime.now(ZONE_VIENNA).strftime("%Y-%m-%d")
     # Use local Random instance to avoid side effects on global random state
-    rng = secrets.SystemRandom(today)
+    rng = random.Random(today)  # noqa: S311 # nosec B311
     shuffled_ids = list(ids)
     rng.shuffle(shuffled_ids)
 

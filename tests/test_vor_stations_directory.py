@@ -49,7 +49,6 @@ def test_vor_bst_code_prefers_directory_entry(monkeypatch):
                     "Wien Aspern Nord",
                     "490091000",
                     "Sty",
-                    "900100",
                     "Aspern Nord",
                 ],
                 "latitude": 48.234567,
