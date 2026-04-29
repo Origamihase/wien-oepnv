@@ -127,3 +127,8 @@
 **Vulnerability:** Upstream provider API integrations (`src/providers/vor.py` and `src/providers/wl_fetch.py`) parsed JSON directly via `json.loads` without validating the returned data type. A compromised or misconfigured API returning unexpected JSON structures (like a list instead of a dict) could cause runtime crashes or inject malformed data into downstream parsing logic that assumes dictionary methods (like `.get()`).
 **Learning:** Even "trusted" official external APIs must be treated as untrusted boundaries in a Zero Trust architecture. Just because data parses successfully as JSON doesn't mean it conforms to the expected shape or type for the application state.
 **Prevention:** Always follow up `json.loads` with explicit type and schema validation (e.g., `if not isinstance(data, dict): return safe_fallback`) before passing the deserialized payload to application logic, ensuring the application fails securely and drops malformed data at the network boundary.
+
+## 2026-04-29 - Security Theater: Cryptography vs. Determinism
+**Vulnerability:** Using `secrets.SystemRandom` instead of `random.Random` when a predictable, seeded state is required.
+**Learning:** Applying cryptographic security libraries where a predictable, seeded state is required constitutes "Security Theater" and actively breaks the intended application logic. It highlights the conceptual difference between true cryptographic randomness and functional determinism.
+**Prevention:** Distinguish between true cryptographic needs and deterministic randomness, using inline comments (`# noqa: S311 # nosec B311`) to suppress security linter warnings where pseudo-randomness is intentionally required.
