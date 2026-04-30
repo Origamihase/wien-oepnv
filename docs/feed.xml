@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Thu, 30 Apr 2026 10:40:25 +0200</lastBuildDate>
+<lastBuildDate>Thu, 30 Apr 2026 12:59:37 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
+      <pubDate>Thu, 30 Apr 2026 09:24:00 +0200</pubDate>
+      <ext:first_seen>Thu, 30 Apr 2026 12:59:37 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Apr 2026 09:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 30 Apr 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.04.2026]</description>
+      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.04.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Bauarbeiten: Wien Hauptbahnhof Graz]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -18,28 +29,6 @@
       <ext:starts_at>Thu, 30 Apr 2026 09:12:44 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Hbf und Bruck/Mur Bahnhof/Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an einigen Tagen) die Züge EC 206, EC 207, EC … [Seit 30.04.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf und Bruck/Mur Bahnhof/Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an einigen Tagen) die Züge EC 206, EC 207, EC …<br/>[Seit 30.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a</guid>
-      <pubDate>Thu, 30 Apr 2026 08:34:00 +0200</pubDate>
-      <ext:first_seen>Thu, 30 Apr 2026 10:40:25 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Apr 2026 08:34:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 30 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. [Am 30.04.2026]</description>
-      <content:encoded><![CDATA[Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U.<br/>[Am 30.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b22dfbbf389bb0a8ea03be177b6fa20b16f32c05b0828f6ae785106649e64f7b</guid>
-      <pubDate>Thu, 30 Apr 2026 07:40:00 +0200</pubDate>
-      <ext:first_seen>Thu, 30 Apr 2026 10:40:25 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Apr 2026 07:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 30 Apr 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 15 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 30.04.2026]</description>
-      <content:encoded><![CDATA[Linie 15 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 30.04.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Thu, 30 Apr 2026 23:59:59 +0200</ext:ends_at>
       <description>Fahrtbehinderung wegen Bauarbeiten [Am 30.04.2026]</description>
       <content:encoded><![CDATA[Fahrtbehinderung wegen Bauarbeiten<br/>[Am 30.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: Betrieb ab Hauptbahnhof]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8e7f0abb6d5f5921591d875860db04d1ca9e2919461bcb830fdfe184442ebe17</guid>
+      <pubDate>Thu, 30 Apr 2026 00:00:08 +0200</pubDate>
+      <ext:first_seen>Thu, 30 Apr 2026 05:57:24 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Apr 2026 00:00:15 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 30 Apr 2026 23:59:59 +0200</ext:ends_at>
+      <description>Bauarbeiten Betrieb ab Hauptbahnhof [Am 30.04.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Betrieb ab Hauptbahnhof<br/>[Am 30.04.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
