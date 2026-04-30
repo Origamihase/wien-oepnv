@@ -434,18 +434,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Fahrtbehinderung wegen Bauarbeiten",
-    "description": "Fahrtbehinderung wegen Bauarbeiten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2639d7b2d94d4901035d7c61133924bb9496ef6e2842bec3772eec92ab785076",
-    "pubDate": "2026-04-30T00:00:09+02:00",
-    "starts_at": "2026-04-30T00:00:27+02:00",
-    "ends_at": "2026-04-30T23:59:59+02:00",
-    "_identity": "wl|störung|L=1|D=2026-04-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "46: Kein Betrieb",
     "description": "Gleisbauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -466,6 +454,18 @@
     "starts_at": "2026-04-30T00:00:23+02:00",
     "ends_at": "2026-04-30T23:59:59+02:00",
     "_identity": "wl|störung|L=WLB|D=2026-04-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung wegen Bauarbeiten",
+    "description": "Fahrtbehinderung wegen Bauarbeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2639d7b2d94d4901035d7c61133924bb9496ef6e2842bec3772eec92ab785076",
+    "pubDate": "2026-04-30T00:00:09+02:00",
+    "starts_at": "2026-04-30T00:00:27+02:00",
+    "ends_at": "2026-04-30T23:59:59+02:00",
+    "_identity": "wl|störung|L=1|D=2026-04-30"
   },
   {
     "source": "Wiener Linien",
@@ -578,49 +578,25 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Rettungseinsatz",
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "60: Polizeieinsatz",
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
-    "pubDate": "2026-04-30T09:24:00+02:00",
-    "starts_at": "2026-04-30T09:24:00+02:00",
-    "ends_at": "2026-04-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-04-30"
+    "guid": "adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9",
+    "pubDate": "2026-04-30T13:11:00+02:00",
+    "starts_at": "2026-04-30T13:11:00+02:00",
+    "ends_at": "2026-04-30T14:43:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-04-30"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Betriebsstörung",
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "42A: Verkehrsüberlastung",
+    "description": "Linie 42A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
-    "pubDate": "2026-04-30T12:16:00+02:00",
-    "starts_at": "2026-04-30T12:16:00+02:00",
+    "guid": "24b7f073ffca285b33ccebb2bc825af4085ed24b56d73941acd54399a17b25d9",
+    "pubDate": "2026-04-30T14:01:00+02:00",
+    "starts_at": "2026-04-30T14:01:00+02:00",
     "ends_at": "2026-04-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-04-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "22A: Verkehrsüberlastung",
-    "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea",
-    "pubDate": "2026-04-30T12:44:00+02:00",
-    "starts_at": "2026-04-30T12:44:00+02:00",
-    "ends_at": "2026-04-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=22A|D=2026-04-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Falschparker Betrieb ab Josefstädter Straße",
-    "description": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: 13:20 Uhr. Grund: Falschparker im Bereich Kaiserstraße 26.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
-    "pubDate": "2026-04-30T12:55:00+02:00",
-    "starts_at": "2026-04-30T13:02:39+02:00",
-    "ends_at": "2026-04-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-04-30"
+    "_identity": "wl|störung|L=42A|D=2026-04-30"
   }
 ]
