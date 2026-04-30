@@ -51,7 +51,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "N62: Bauarbeiten",
-    "description": "<h2>Rohrleitungsarbeiten</h2> <p>Wegen Bauarbeiten im Bereich der Wiedner Hauptstra&szlig;e wird die Linie N62 umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Donnerstag, 08. J&auml;nner 2026 (Nacht von 07.01 auf 08.01) bis voraussichtlich Ende April 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie N62 in Richtung Oper, Karlsplatz U<br /></strong>Umleitung ab Wiedner Hauptstra&szlig;e # Kriehubergasse &uuml;ber Kriehubergasse &ndash; Rainergasse &ndash; Sch&ouml;nburggasse &ndash; Wiedner Hauptstra&szlig;e zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:<br /></span>Johann-Strau&szlig;-Gasse (Wiedner Hauptstra&szlig;e 71)</p> <p><span style=\"text-decoration: underline;\">Ersatz Haltestelle:<br /></span>Johann-Strau&szlig;-Gasse (Sch&ouml;nburgstra&szlig;e vor Wiedner Hauptstra&szlig;e)</p>",
+    "description": "<h2>Rohrleitungsarbeiten</h2> <p>Wegen Bauarbeiten im Bereich der Wiedner Hauptstra&szlig;e wird die Linie N62 umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Donnerstag, 08. J&auml;nner 2026 (Nacht von 07.01 auf 08.01) bis voraussichtlich Mitte Juni 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie N62 in Richtung Oper, Karlsplatz U<br /></strong>Umleitung ab Wiedner Hauptstra&szlig;e # Kriehubergasse &uuml;ber Kriehubergasse &ndash; Rainergasse &ndash; Sch&ouml;nburggasse &ndash; Wiedner Hauptstra&szlig;e zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:<br /></span>Johann-Strau&szlig;-Gasse (Wiedner Hauptstra&szlig;e 71)</p> <p><span style=\"text-decoration: underline;\">Ersatz Haltestelle:<br /></span>Johann-Strau&szlig;-Gasse (Sch&ouml;nburgstra&szlig;e vor Wiedner Hauptstra&szlig;e)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "9b78cb17c7f10542a781aad38274a2d200429d0c67a2ba90e0ebfce3846836bb",
     "pubDate": "2025-12-12T13:12:00+01:00",
@@ -338,14 +338,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Fahrtbehinderung wegen Baurbeiten",
-    "description": "Fahrtbehinderung wegen Baurbeiten",
+    "title": "1: Betrieb ab Karlsplatz",
+    "description": "Bauarbeiten Betrieb ab Karlsplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ae1049c561a178f9f21e2a37e250f49887f66bd0cb796caa17258503579ca24b",
+    "guid": "ddabcdce58aa8e7e4aaa5afb883b07ff703821a25708e30baa1e35f07bcea7f4",
     "pubDate": "2026-04-30T00:00:07+02:00",
     "starts_at": "2026-04-30T00:00:27+02:00",
     "ends_at": "2026-04-30T23:59:59+02:00",
-    "_identity": "wl|störung|L=62|D=2026-04-30"
+    "_identity": "wl|störung|L=1|D=2026-04-30"
   },
   {
     "source": "Wiener Linien",
@@ -362,14 +362,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Betrieb ab Karlsplatz",
-    "description": "Bauarbeiten Betrieb ab Karlsplatz",
+    "title": "62: Fahrtbehinderung wegen Baurbeiten",
+    "description": "Fahrtbehinderung wegen Baurbeiten",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ddabcdce58aa8e7e4aaa5afb883b07ff703821a25708e30baa1e35f07bcea7f4",
+    "guid": "ae1049c561a178f9f21e2a37e250f49887f66bd0cb796caa17258503579ca24b",
     "pubDate": "2026-04-30T00:00:07+02:00",
     "starts_at": "2026-04-30T00:00:27+02:00",
     "ends_at": "2026-04-30T23:59:59+02:00",
-    "_identity": "wl|störung|L=1|D=2026-04-30"
+    "_identity": "wl|störung|L=62|D=2026-04-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung wegen Bauarbeiten",
+    "description": "Fahrtbehinderung wegen Bauarbeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6eb642acd3bedb7a7b974b2a1a0b9abfb054aba170d39e00306fd353aa68b762",
+    "pubDate": "2026-04-30T00:00:08+02:00",
+    "starts_at": "2026-04-30T00:00:15+02:00",
+    "ends_at": "2026-04-30T23:59:59+02:00",
+    "_identity": "wl|störung|L=18|D=2026-04-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Umleitung bis Quellenplatz",
+    "description": "Bauarbeiten Umleitung bis Quellenplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "17a5c68b3f1413105176d3bd3197a07898779b47a4d2b06ecc8093e73f67cbf3",
+    "pubDate": "2026-04-30T00:00:08+02:00",
+    "starts_at": "2026-04-30T00:00:08+02:00",
+    "ends_at": "2026-04-30T23:59:59+02:00",
+    "_identity": "wl|störung|L=18|D=2026-04-30"
   },
   {
     "source": "Wiener Linien",
@@ -398,26 +422,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Fahrtbehinderung wegen Baurbeiten",
-    "description": "Fahrtbehinderung wegen Baurbeiten",
+    "title": "62: Betrieb ab Matzleinsdorfer Platz",
+    "description": "Bauarbeiten Betrieb ab Matzleinsdorfer Platz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f9680950cc69e14b013cbd0571a26d2543d0dd3b74db88f0d8299ab1faaeb0b1",
-    "pubDate": "2026-04-30T00:00:08+02:00",
-    "starts_at": "2026-04-30T00:00:15+02:00",
+    "guid": "8e2bdfd1e1b61ff8919b7029b136594b2b0695ab70741d284db0c586a0479637",
+    "pubDate": "2026-04-30T00:00:09+02:00",
+    "starts_at": "2026-04-30T00:00:09+02:00",
     "ends_at": "2026-04-30T23:59:59+02:00",
-    "_identity": "wl|störung|L=18|D=2026-04-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Umleitung bis Quellenplatz",
-    "description": "Bauarbeiten Umleitung bis Quellenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17a5c68b3f1413105176d3bd3197a07898779b47a4d2b06ecc8093e73f67cbf3",
-    "pubDate": "2026-04-30T00:00:08+02:00",
-    "starts_at": "2026-04-30T00:00:08+02:00",
-    "ends_at": "2026-04-30T23:59:59+02:00",
-    "_identity": "wl|störung|L=18|D=2026-04-30"
+    "_identity": "wl|störung|L=62|D=2026-04-30"
   },
   {
     "source": "Wiener Linien",
@@ -434,14 +446,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Betrieb ab Matzleinsdorfer Platz",
-    "description": "Bauarbeiten Betrieb ab Matzleinsdorfer Platz",
+    "title": "46: Kein Betrieb",
+    "description": "Gleisbauarbeiten Kein Betrieb",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8e2bdfd1e1b61ff8919b7029b136594b2b0695ab70741d284db0c586a0479637",
+    "guid": "ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b",
     "pubDate": "2026-04-30T00:00:09+02:00",
     "starts_at": "2026-04-30T00:00:09+02:00",
     "ends_at": "2026-04-30T23:59:59+02:00",
-    "_identity": "wl|störung|L=62|D=2026-04-30"
+    "_identity": "wl|störung|L=46|D=2026-04-30"
   },
   {
     "source": "Wiener Linien",
@@ -454,18 +466,6 @@
     "starts_at": "2026-04-30T00:00:23+02:00",
     "ends_at": "2026-04-30T23:59:59+02:00",
     "_identity": "wl|störung|L=WLB|D=2026-04-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "46: Kein Betrieb",
-    "description": "Gleisbauarbeiten Kein Betrieb",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b",
-    "pubDate": "2026-04-30T00:00:09+02:00",
-    "starts_at": "2026-04-30T00:00:09+02:00",
-    "ends_at": "2026-04-30T23:59:59+02:00",
-    "_identity": "wl|störung|L=46|D=2026-04-30"
   },
   {
     "source": "Wiener Linien",
@@ -506,18 +506,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Benutzen Sie die Linie 43A - Alszeile 93",
-    "description": "Gleisbauarbeiten Benutzen Sie die Linie 43A - Alszeile 93",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d69dbcd381e73ff23979749766d0ce677cb151b10269f6f878240d11cec54c8f",
-    "pubDate": "2026-04-30T00:00:17+02:00",
-    "starts_at": "2026-04-30T00:00:17+02:00",
-    "ends_at": "2026-04-30T23:59:59+02:00",
-    "_identity": "wl|störung|L=43|D=2026-04-30"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "43: Benutzen Sie die Linie 43A - Dornbacher Straße 85",
     "description": "Gleisbauarbeiten Benutzen Sie die Linie 43A - Dornbacher Straße 85",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -534,6 +522,18 @@
     "description": "Gleisbauarbeiten Benutzen Sie die Linie 43A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "46ae3a2d2382092f60c8fcccc65d43dbd7b4d4a0912d5b132508027ee5065181",
+    "pubDate": "2026-04-30T00:00:17+02:00",
+    "starts_at": "2026-04-30T00:00:17+02:00",
+    "ends_at": "2026-04-30T23:59:59+02:00",
+    "_identity": "wl|störung|L=43|D=2026-04-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Benutzen Sie die Linie 43A - Alszeile 93",
+    "description": "Gleisbauarbeiten Benutzen Sie die Linie 43A - Alszeile 93",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d69dbcd381e73ff23979749766d0ce677cb151b10269f6f878240d11cec54c8f",
     "pubDate": "2026-04-30T00:00:17+02:00",
     "starts_at": "2026-04-30T00:00:17+02:00",
     "ends_at": "2026-04-30T23:59:59+02:00",
@@ -590,13 +590,37 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Fahrtbehinderung Falschparker",
-    "description": "Die Linie 1 fährt derzeit nur zwischen Oper, Karlsplatz U und Radetzkyplatz. Züge werden ab Radetzkyplatz zum Praterstern geführt. Weichen Sie ersatzweise auf die Linie 80A aus. Voraussichtliche Dauer: 11.00 Uhr. Grund: Falschparker im Bereich Löwengasse.",
+    "title": "U1: Betriebsstörung",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
-    "pubDate": "2026-04-30T10:35:00+02:00",
-    "starts_at": "2026-04-30T10:36:09+02:00",
+    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
+    "pubDate": "2026-04-30T12:16:00+02:00",
+    "starts_at": "2026-04-30T12:16:00+02:00",
     "ends_at": "2026-04-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-04-30"
+    "_identity": "wl|störung|L=U1|D=2026-04-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "22A: Verkehrsüberlastung",
+    "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea",
+    "pubDate": "2026-04-30T12:44:00+02:00",
+    "starts_at": "2026-04-30T12:44:00+02:00",
+    "ends_at": "2026-04-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=22A|D=2026-04-30"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Falschparker Betrieb ab Josefstädter Straße",
+    "description": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: 13:20 Uhr. Grund: Falschparker im Bereich Kaiserstraße 26.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
+    "pubDate": "2026-04-30T12:55:00+02:00",
+    "starts_at": "2026-04-30T13:02:39+02:00",
+    "ends_at": "2026-04-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-04-30"
   }
 ]
