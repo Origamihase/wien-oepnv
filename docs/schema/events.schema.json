@@ -32,7 +32,6 @@
     },
     "description": {
       "type": "string",
-      "minLength": 1,
       "description": "Ausführliche Beschreibung, inklusive Umleitungen und Zusatzinformationen."
     },
     "link": {
