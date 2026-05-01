@@ -567,40 +567,40 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
 def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] = None) -> None:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     path.parent.mkdir(parents=True, exist_ok=True)
-    # Windows-fix: Use a separate lock file to avoid permission errors when atomic_write replaces the target
+    # Separate Lock-Datei vermeidet Permission-Fehler unter Windows, wenn
+    # atomic_write die Zieldatei austauscht. Die Lock-Datei wird bewusst NICHT
+    # nach Gebrauch entfernt: andernfalls entstünde eine Race, in der Prozess A
+    # die Datei nach dem Lock-Release unlinkt, während die parallel laufenden
+    # Prozesse B und C den Pfad bereits geöffnet haben und auf separaten Inodes
+    # locken — wodurch flock sich gegenseitig nicht mehr sieht. Eine persistente
+    # Lock-Datei (~0 Bytes) kostet nichts und ist zwischen Läufen wiederverwendbar.
     lock_path = path.with_suffix(".lock")
-    try:
-        with lock_path.open("a+", encoding="utf-8") as lock_file:
-            with file_lock(lock_file, exclusive=True):
-                # Safe merge: read existing state to avoid overwriting parallel updates
-                merged_state = {}
-                try:
-                    with path.open("r", encoding="utf-8") as f:
-                        existing = json.load(f)
-                        if isinstance(existing, dict):
-                            merged_state = existing
-                except FileNotFoundError:
-                    pass
-                except Exception as exc:
-                    log.warning(
-                        "State-Merge fehlgeschlagen (Lesefehler: %s) – überschreibe State.",
-                        exc,
-                    )
+    with lock_path.open("a+", encoding="utf-8") as lock_file:
+        with file_lock(lock_file, exclusive=True):
+            # Safe merge: read existing state to avoid overwriting parallel updates
+            merged_state = {}
+            try:
+                with path.open("r", encoding="utf-8") as f:
+                    existing = json.load(f)
+                    if isinstance(existing, dict):
+                        merged_state = existing
+            except FileNotFoundError:
+                pass
+            except Exception as exc:
+                log.warning(
+                    "State-Merge fehlgeschlagen (Lesefehler: %s) – überschreibe State.",
+                    exc,
+                )
 
-                merged_state.update(state)
-                if deletions:
-                    for k in deletions:
-                        merged_state.pop(k, None)
+            merged_state.update(state)
+            if deletions:
+                for k in deletions:
+                    merged_state.pop(k, None)
 
-                with atomic_write(
-                    path, mode="w", encoding="utf-8", permissions=0o600
-                ) as f:
-                    json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True)
-    finally:
-        try:
-            lock_path.unlink(missing_ok=True)
-        except OSError as e:
-            log.debug("Konnte Lock-Datei nicht löschen (Windows-Lock): %s", e)
+            with atomic_write(
+                path, mode="w", encoding="utf-8", permissions=0o600
+            ) as f:
+                json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True)
 
 
 def _identity_for_item(item: FeedItem) -> str:

@@ -193,6 +193,24 @@ def _pretty_print_enabled(explicit: Optional[bool]) -> bool:
     return get_bool_env("WIEN_OEPNV_CACHE_PRETTY", True)
 
 
+def _stable_sort_key(item: Any) -> tuple[str, str, str, str]:
+    """Stabiler Sortierschlüssel für Cache-Items.
+
+    Verwendet ``_identity`` als primäres Kriterium (vom Provider explizit gesetzt
+    und bewusst gegen Titel-Kosmetik invariant), dann ``guid``, danach ``title``
+    und ``source`` als Tie-Breaker für Items, denen die Hauptfelder fehlen. Items,
+    die keine Dicts sind, sortieren konsistent auf den leeren Tupel.
+    """
+    if not isinstance(item, dict):
+        return ("", "", "", "")
+    return (
+        str(item.get("_identity") or ""),
+        str(item.get("guid") or ""),
+        str(item.get("title") or ""),
+        str(item.get("source") or ""),
+    )
+
+
 def write_cache(provider: str, items: List[Any], *, pretty: Optional[bool] = None) -> None:
     """Write *items* to the cache for *provider* atomically.
 
@@ -239,8 +257,13 @@ def write_cache(provider: str, items: List[Any], *, pretty: Optional[bool] = Non
                 indent = None
                 separators = (",", ":")
 
+            # Deterministische Sortierung gegen Diff-Reshuffle bei jedem Cache-Update.
+            # Reduziert die History-Bloat erheblich, ohne dass sich Inhalt oder
+            # Reihenfolge im Feed ändern (Items werden im Builder ohnehin neu sortiert).
+            sorted_items = sorted(items, key=_stable_sort_key)
+
             json.dump(
-                items,
+                sorted_items,
                 fh,
                 ensure_ascii=False,
                 indent=indent,
