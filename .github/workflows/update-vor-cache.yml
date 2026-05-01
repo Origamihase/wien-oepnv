@@ -29,7 +29,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
       - name: Ensure pip cache directory exists
         run: mkdir -p "$PIP_CACHE_DIR"
@@ -44,7 +44,7 @@ jobs:
           fi
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.11'
           cache: 'pip'
@@ -85,7 +85,7 @@ jobs:
 
       - name: Commit and push changes
         if: ${{ github.ref_type == 'branch' }}
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
           commit_message: 'chore: update VOR cache [skip ci]'
           file_pattern: 'cache/vor*/events.json data/vor_request_count.json'

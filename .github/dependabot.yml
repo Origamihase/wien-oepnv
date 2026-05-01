@@ -1,0 +1,19 @@
+# Configuration for Dependabot version updates.
+# Docs: https://docs.github.com/code-security/dependabot/dependabot-version-updates
+
+version: 2
+updates:
+  # GitHub Actions: SHA-gepinnte Actions werden mit jedem neuen Tag-Release
+  # automatisch als PR aktualisiert. Tag-Kommentar (z.B. "# v4") bleibt durch
+  # Dependabot erhalten.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Vienna"
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"
+    open-pull-requests-limit: 5
