@@ -11,6 +11,7 @@ __all__ = [
     "DEFAULT_FEED_TITLE",
     "DEFAULT_FEED_DESCRIPTION",
     "DEFAULT_FEED_LINK",
+    "DEFAULT_PAGES_BASE_URL",
     "DEFAULT_FEED_TTL_MINUTES",
     "DEFAULT_TITLE_CHAR_LIMIT",
     "DEFAULT_DESCRIPTION_CHAR_LIMIT",
@@ -33,6 +34,7 @@ DEFAULT_FEED_HEALTH_JSON_PATH = Path("docs/feed-health.json")
 DEFAULT_FEED_TITLE = "ÖPNV Störungen Wien & Pendler"
 DEFAULT_FEED_DESCRIPTION = "Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen"
 DEFAULT_FEED_LINK = "https://github.com/Origamihase/wien-oepnv"
+DEFAULT_PAGES_BASE_URL = "https://origamihase.github.io/wien-oepnv"
 DEFAULT_FEED_TTL_MINUTES = 15
 DEFAULT_TITLE_CHAR_LIMIT = 256
 DEFAULT_DESCRIPTION_CHAR_LIMIT = 4000

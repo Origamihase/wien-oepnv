@@ -23,6 +23,7 @@ try:  # pragma: no cover - support package and script execution
         DEFAULT_MAX_ITEMS,
         DEFAULT_MAX_ITEM_AGE_DAYS,
         DEFAULT_OUT_PATH,
+        DEFAULT_PAGES_BASE_URL,
         DEFAULT_CACHE_MAX_AGE_HOURS,
         DEFAULT_PROVIDER_MAX_WORKERS,
         DEFAULT_PROVIDER_TIMEOUT,
@@ -47,6 +48,7 @@ except ModuleNotFoundError:  # pragma: no cover
         DEFAULT_MAX_ITEMS,
         DEFAULT_MAX_ITEM_AGE_DAYS,
         DEFAULT_OUT_PATH,
+        DEFAULT_PAGES_BASE_URL,
         DEFAULT_CACHE_MAX_AGE_HOURS,
         DEFAULT_PROVIDER_MAX_WORKERS,
         DEFAULT_PROVIDER_TIMEOUT,
@@ -157,6 +159,7 @@ FEED_HEALTH_PATH: Path = DEFAULT_FEED_HEALTH_PATH
 FEED_HEALTH_JSON_PATH: Path = DEFAULT_FEED_HEALTH_JSON_PATH
 FEED_TITLE: str = DEFAULT_FEED_TITLE
 FEED_LINK: str = DEFAULT_FEED_LINK
+PAGES_BASE_URL: str = DEFAULT_PAGES_BASE_URL
 FEED_DESC: str = DEFAULT_FEED_DESCRIPTION
 FEED_TTL: int = DEFAULT_FEED_TTL_MINUTES
 TITLE_CHAR_LIMIT: int = DEFAULT_TITLE_CHAR_LIMIT
@@ -175,7 +178,7 @@ STATE_RETENTION_DAYS: int = DEFAULT_STATE_RETENTION_DAYS
 
 def _load_from_env() -> None:
     global LOG_LEVEL, LOG_FORMAT, LOG_DIR_PATH, LOG_MAX_BYTES, LOG_BACKUP_COUNT
-    global OUT_PATH, FEED_HEALTH_PATH, FEED_HEALTH_JSON_PATH, FEED_TITLE, FEED_LINK, FEED_DESC, FEED_TTL
+    global OUT_PATH, FEED_HEALTH_PATH, FEED_HEALTH_JSON_PATH, FEED_TITLE, FEED_LINK, PAGES_BASE_URL, FEED_DESC, FEED_TTL
     global TITLE_CHAR_LIMIT, DESCRIPTION_CHAR_LIMIT, FRESH_PUBDATE_WINDOW_MIN, MAX_ITEMS
     global MAX_ITEM_AGE_DAYS, ABSOLUTE_MAX_AGE_DAYS, ENDS_AT_GRACE_MINUTES
     global PROVIDER_TIMEOUT, PROVIDER_MAX_WORKERS, STATE_FILE, STATE_RETENTION_DAYS
@@ -203,6 +206,13 @@ def _load_from_env() -> None:
         if raw_feed_link.strip() and raw_feed_link.strip() != DEFAULT_FEED_LINK:
             log.warning("Invalid FEED_LINK provided; falling back to default.")
     FEED_LINK = validated_feed_link
+    raw_pages_base = os.getenv("PAGES_BASE_URL", DEFAULT_PAGES_BASE_URL)
+    validated_pages_base = validate_http_url(raw_pages_base)
+    if not validated_pages_base:
+        validated_pages_base = validate_http_url(DEFAULT_PAGES_BASE_URL) or DEFAULT_PAGES_BASE_URL
+        if raw_pages_base.strip() and raw_pages_base.strip() != DEFAULT_PAGES_BASE_URL:
+            log.warning("Invalid PAGES_BASE_URL provided; falling back to default.")
+    PAGES_BASE_URL = validated_pages_base.rstrip("/")
     FEED_DESC = os.getenv("FEED_DESC", DEFAULT_FEED_DESCRIPTION)
     FEED_TTL = max(get_int_env("FEED_TTL", DEFAULT_FEED_TTL_MINUTES), 0)
     TITLE_CHAR_LIMIT = max(
@@ -302,6 +312,7 @@ __all__ = [
     "MAX_ITEM_AGE_DAYS",
     "MAX_ITEMS",
     "OUT_PATH",
+    "PAGES_BASE_URL",
     "PROVIDER_MAX_WORKERS",
     "PROVIDER_TIMEOUT",
     "RFC",

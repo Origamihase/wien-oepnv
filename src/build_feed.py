@@ -61,6 +61,8 @@ from utils.text import html_to_text, truncate_html
 
 
 # Register namespaces globally for thread-safe XML generation
+ATOM_NS = "http://www.w3.org/2005/Atom"
+ET.register_namespace("atom", ATOM_NS)
 ET.register_namespace("ext", "https://wien-oepnv.example/schema")
 ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
 
@@ -1438,6 +1440,23 @@ def _make_rss(
     ET.SubElement(channel, "title").text = feed_config.FEED_TITLE
     ET.SubElement(channel, "link").text = feed_config.FEED_LINK
     ET.SubElement(channel, "description").text = feed_config.FEED_DESC
+
+    # Atom self/alternate-Links + Sprache. Diese drei Tags wurden früher
+    # vom Perl-basierten "Normalize feed metadata (SEO)"-Step in
+    # .github/workflows/build-feed.yml nachträglich injiziert. Generierung
+    # direkt im Python-Builder hält das XML strukturell wohlgeformt und
+    # entfernt den Sprachen-Mix in CI.
+    pages_base = feed_config.PAGES_BASE_URL.rstrip("/")
+    atom_alternate = ET.SubElement(channel, f"{{{ATOM_NS}}}link")
+    atom_alternate.set("rel", "alternate")
+    atom_alternate.set("type", "text/html")
+    atom_alternate.set("href", f"{pages_base}/")
+    atom_self = ET.SubElement(channel, f"{{{ATOM_NS}}}link")
+    atom_self.set("rel", "self")
+    atom_self.set("type", "application/rss+xml")
+    atom_self.set("href", f"{pages_base}/feed.xml")
+    ET.SubElement(channel, "language").text = "de"
+
     ET.SubElement(channel, "lastBuildDate").text = _fmt_rfc2822(now)
     ET.SubElement(channel, "ttl").text = str(feed_config.FEED_TTL)
 
