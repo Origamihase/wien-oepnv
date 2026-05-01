@@ -4,10 +4,10 @@
     <title>ÖPNV Störungen Wien &amp; Pendler</title>
     <link>https://github.com/Origamihase/wien-oepnv</link>
     <description>Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen</description>
-    <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
-    <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
-    <language>de</language>
-<lastBuildDate>Fri, 01 May 2026 16:19:11 +0200</lastBuildDate>
+  <atom:link rel="alternate" type="text/html" href="https://Origamihase.github.io/wien-oepnv/"/>
+  <atom:link rel="self" type="application/rss+xml" href="https://Origamihase.github.io/wien-oepnv/feed.xml"/>
+  <language>de</language>
+<lastBuildDate>Fri, 01 May 2026 16:55:57 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[37: Schadhaftes Fahrzeug]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Fri, 01 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.05.2026]</description>
       <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: Fahrtbehinderung Weichenschaden]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5ce5e68326c1067e1a30c6625e41e1027f6ef3ac85100c13982c32e3d69e6088</guid>
-      <pubDate>Fri, 01 May 2026 15:12:42 +0200</pubDate>
-      <ext:first_seen>Fri, 01 May 2026 16:19:11 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 01 May 2026 15:12:42 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 01 May 2026 16:12:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung Weichenschaden [Am 01.05.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung Weichenschaden<br/>[Am 01.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[59A: Veranstaltung Betrieb ab Bärenmühldurchgang]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sat, 02 May 2026 00:35:00 +0200</ext:ends_at>
       <description>Bauarbeiten Busse halten Breitenfurter Straße 236-238 [01.05.2026 – 02.05.2026]</description>
       <content:encoded><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[01.05.2026 – 02.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
+      <pubDate>Fri, 01 May 2026 00:00:26 +0200</pubDate>
+      <ext:first_seen>Fri, 01 May 2026 01:28:44 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 01 May 2026 00:00:26 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 01 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A) [Am 01.05.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A)<br/>[Am 01.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
