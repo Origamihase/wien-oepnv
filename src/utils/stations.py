@@ -7,6 +7,7 @@ import logging
 import math
 import re
 import unicodedata
+from enum import IntEnum
 from functools import lru_cache
 from pathlib import Path
 from typing import Iterable, NamedTuple
@@ -246,45 +247,101 @@ def _vienna_polygons() -> tuple[Polygon, ...]:
     return tuple(polygons)
 
 
-def _iter_aliases(
-    name: str, code: str | None, extras: Iterable[str] | None = None
-) -> Iterable[str]:
-    """Yield alias strings for a station entry (canonical name first)."""
+class _MatchStrength(IntEnum):
+    """Strength of a match between an alias token and a station record.
 
-    variants: list[str] = []
+    Higher values win in tie-breaking. ``IDENTITY``-class tokens come from
+    fields that uniquely identify a station (``bst_code``, ``bst_id``,
+    ``vor_id``, ``wl_diva``, ``stop_id``). ``TEXT``-class tokens come from
+    the canonical name, its textual variations, and the freeform
+    ``aliases`` list. An IDENTITY match by one station outranks a TEXT
+    match by another station for the same token, which is what prevents a
+    foreign station's ``aliases`` entry from shadowing the rightful
+    ID-bearing station (the root cause of the '900100' bug, see #1082).
+    """
+
+    TEXT = 1
+    IDENTITY = 2
+
+
+def _iter_aliases_with_strength(
+    name: str,
+    code: str | None,
+    identity_extras: Iterable[str] | None = None,
+    text_extras: Iterable[str] | None = None,
+) -> list[tuple[str, _MatchStrength]]:
+    """Yield ``(alias, strength)`` pairs for a station entry.
+
+    The canonical *name* and its variations (bracket-stripped, hyphen and
+    slash flattened, St./Sankt forms) are emitted as
+    :attr:`_MatchStrength.TEXT`. The *code* (a station's ``bst_code``) and
+    any *identity_extras* (``vor_id``, ``wl_diva``, stop IDs) are emitted
+    as :attr:`_MatchStrength.IDENTITY`. Entries in *text_extras*
+    (``aliases`` array, stop names) are emitted as TEXT.
+
+    Order is preserved from the legacy :func:`_iter_aliases`: first the
+    name and its variations, then identity_extras, then text_extras. The
+    first occurrence of a candidate string wins, so identity-class wins
+    over text-class on duplicates within a single station entry.
+    """
+
     seen: set[str] = set()
+    variants: list[tuple[str, _MatchStrength]] = []
 
-    def add(raw: str) -> None:
+    def add(raw: str, strength: _MatchStrength) -> None:
         candidate = re.sub(r"\s{2,}", " ", raw.strip())
         if candidate and candidate not in seen:
             seen.add(candidate)
-            variants.append(candidate)
+            variants.append((candidate, strength))
 
-    add(name)
+    add(name, _MatchStrength.TEXT)
     if code:
-        add(code)
+        add(code, _MatchStrength.IDENTITY)
 
     no_paren = re.sub(r"\s*\([^)]*\)\s*", " ", name)
-    add(no_paren)
-    add(no_paren.replace("-", " "))
-    add(no_paren.replace("/", " "))
-    add(name.replace("-", " "))
-    add(name.replace("/", " "))
+    add(no_paren, _MatchStrength.TEXT)
+    add(no_paren.replace("-", " "), _MatchStrength.TEXT)
+    add(no_paren.replace("/", " "), _MatchStrength.TEXT)
+    add(name.replace("-", " "), _MatchStrength.TEXT)
+    add(name.replace("/", " "), _MatchStrength.TEXT)
 
     if re.search(r"\bSt\.?\b", name):
-        add(re.sub(r"\bSt\.?\b", "St", name))
-        add(re.sub(r"\bSt\.?\b", "St ", name))
-        add(re.sub(r"\bSt\.?\b", "Sankt ", name))
+        add(re.sub(r"\bSt\.?\b", "St", name), _MatchStrength.TEXT)
+        add(re.sub(r"\bSt\.?\b", "St ", name), _MatchStrength.TEXT)
+        add(re.sub(r"\bSt\.?\b", "Sankt ", name), _MatchStrength.TEXT)
     if re.search(r"\bSankt\b", name):
-        add(re.sub(r"\bSankt\b", "St.", name))
-        add(re.sub(r"\bSankt\b", "St ", name))
-        add(re.sub(r"\bSankt\b", "St", name))
+        add(re.sub(r"\bSankt\b", "St.", name), _MatchStrength.TEXT)
+        add(re.sub(r"\bSankt\b", "St ", name), _MatchStrength.TEXT)
+        add(re.sub(r"\bSankt\b", "St", name), _MatchStrength.TEXT)
 
-    if extras:
-        for extra in extras:
-            add(str(extra))
+    if identity_extras:
+        for extra in identity_extras:
+            add(str(extra), _MatchStrength.IDENTITY)
+
+    if text_extras:
+        for extra in text_extras:
+            add(str(extra), _MatchStrength.TEXT)
 
     return variants
+
+
+def _iter_aliases(
+    name: str, code: str | None, extras: Iterable[str] | None = None
+) -> Iterable[str]:
+    """Yield alias strings for a station entry (canonical name first).
+
+    Backward-compatible wrapper around :func:`_iter_aliases_with_strength`
+    that drops the strength annotation. Treats *extras* as TEXT-class.
+    Existing external callers (diagnostic scripts, validators) keep
+    working unchanged.
+    """
+
+    return [
+        alias
+        for alias, _ in _iter_aliases_with_strength(
+            name, code, identity_extras=None, text_extras=extras
+        )
+    ]
 
 
 @lru_cache(maxsize=1)
@@ -312,9 +369,16 @@ def _station_entries() -> tuple[dict, ...]:
 
 @lru_cache(maxsize=1)
 def _station_lookup() -> dict[str, StationInfo]:
-    """Return a mapping from normalized aliases to :class:`StationInfo` records."""
+    """Return a mapping from normalized aliases to :class:`StationInfo` records.
 
-    mapping: dict[str, StationInfo] = {}
+    The internal mapping carries match-strength alongside each record so
+    that a later entry whose alias matches via a stronger class
+    (:attr:`_MatchStrength.IDENTITY`) can evict an earlier weaker match
+    (:attr:`_MatchStrength.TEXT`). The strength annotation is dropped from
+    the returned mapping; only :class:`StationInfo` is exposed.
+    """
+
+    mapping: dict[str, tuple[StationInfo, _MatchStrength]] = {}
 
     for entry in _station_entries():
         name = str(entry.get("name", "")).strip()
@@ -326,11 +390,19 @@ def _station_lookup() -> dict[str, StationInfo]:
         wl_diva = str(wl_diva_raw).strip() if wl_diva_raw is not None else ""
         vor_id_raw = entry.get("vor_id") or entry.get("id")
         vor_id = str(vor_id_raw).strip() if vor_id_raw is not None else ""
-        extra_aliases: set[str] = set()
+
+        # Identity-class aliases: authoritative IDs that uniquely identify
+        # this station. A match against any of these outranks any text alias.
+        identity_aliases: set[str] = set()
         if wl_diva:
-            extra_aliases.add(wl_diva)
+            identity_aliases.add(wl_diva)
         if vor_id:
-            extra_aliases.add(vor_id)
+            identity_aliases.add(vor_id)
+
+        # Text-class aliases: the explicit ``aliases`` list and stop names.
+        # Conflicts between two text matches fall through to the historical
+        # source-based tie-break below.
+        text_aliases: set[str] = set()
         aliases_field = entry.get("aliases")
         if isinstance(aliases_field, list):
             for alias in aliases_field:
@@ -338,7 +410,8 @@ def _station_lookup() -> dict[str, StationInfo]:
                     continue
                 alias_text = str(alias).strip()
                 if alias_text:
-                    extra_aliases.add(alias_text)
+                    text_aliases.add(alias_text)
+
         stop_records: list[WLStop] = []
         stops_field = entry.get("wl_stops")
         if isinstance(stops_field, list):
@@ -352,9 +425,10 @@ def _station_lookup() -> dict[str, StationInfo]:
                 latitude = _coerce_lat(stop.get("latitude"))
                 longitude = _coerce_lon(stop.get("longitude"))
                 if stop_id:
-                    extra_aliases.add(stop_id)
+                    # Stop IDs are authoritative and rank as IDENTITY.
+                    identity_aliases.add(stop_id)
                 if stop_name:
-                    extra_aliases.add(stop_name)
+                    text_aliases.add(stop_name)
                 stop_records.append(
                     WLStop(
                         stop_id=stop_id,
@@ -379,8 +453,12 @@ def _station_lookup() -> dict[str, StationInfo]:
         )
         vor_name_raw = entry.get("vor_name")
         vor_name = str(vor_name_raw).strip() if isinstance(vor_name_raw, str) else ""
-        for alias in _iter_aliases(name, code or None, extra_aliases):
-            alias_text = str(alias)
+        for alias_text, strength in _iter_aliases_with_strength(
+            name,
+            code or None,
+            identity_extras=identity_aliases,
+            text_extras=text_aliases,
+        ):
             alias_lower = alias_text.casefold()
             alias_is_numeric = alias_text.isdigit()
             alias_mentions_vor = "vor" in alias_lower
@@ -406,12 +484,29 @@ def _station_lookup() -> dict[str, StationInfo]:
                 continue
             existing = mapping.get(key)
             if existing is None:
-                mapping[key] = alias_record
+                mapping[key] = (alias_record, strength)
                 continue
-            if existing == alias_record or existing.name == alias_record.name:
+            existing_record, existing_strength = existing
+
+            if existing_record == alias_record or existing_record.name == alias_record.name:
                 continue
 
-            existing_source = existing.source or ""
+            # Match-strength precedence: an IDENTITY-class match by one
+            # station outranks a TEXT-class match by another station for
+            # the same token. This prevents a foreign station's aliases
+            # entry from shadowing the rightful ID-bearing station (the
+            # root cause of the '900100' bug, see #1082).
+            if strength > existing_strength:
+                mapping[key] = (alias_record, strength)
+                continue
+            if strength < existing_strength:
+                continue
+
+            # Equal strength: fall back to the historical source-based and
+            # name-token-based tie-break. The branches below are wordwise
+            # identical to the pre-refactor logic; only the mapping value
+            # type carries the strength annotation now.
+            existing_source = existing_record.source or ""
             record_source = alias_record.source or ""
             if existing_source == "combined":
                 existing_source = "wl"
@@ -420,36 +515,38 @@ def _station_lookup() -> dict[str, StationInfo]:
 
             alias_token = _normalize_token(alias_text)
             record_token = _normalize_token(alias_record.name)
-            existing_token = _normalize_token(existing.name)
+            existing_token = _normalize_token(existing_record.name)
 
             if alias_token and alias_token == record_token and alias_token != existing_token:
-                mapping[key] = alias_record
+                mapping[key] = (alias_record, strength)
                 continue
             if alias_token and alias_token == existing_token and alias_token != record_token:
                 continue
 
-            if existing.vor_id and alias_record.vor_id and existing.vor_id == alias_record.vor_id:
+            if existing_record.vor_id and alias_record.vor_id and existing_record.vor_id == alias_record.vor_id:
                 if alias_is_numeric or alias_mentions_vor:
                     if record_source == "vor" and existing_source != "vor":
-                        mapping[key] = alias_record
+                        mapping[key] = (alias_record, strength)
                 else:
                     if record_source == "wl" and existing_source != "wl":
-                        mapping[key] = alias_record
+                        mapping[key] = (alias_record, strength)
                 continue
 
             if existing_source == "vor" and record_source != "vor":
-                mapping[key] = alias_record
+                mapping[key] = (alias_record, strength)
                 continue
             if record_source == "vor" and existing_source != "vor":
                 continue
             logger.warning(
                 "Duplicate station alias %r normalized to %r for %s conflicts with %s",
-                alias,
+                alias_text,
                 key,
                 alias_record.name,
-                existing.name,
+                existing_record.name,
             )
-    return mapping
+
+    # Drop the strength annotation from the public mapping.
+    return {key: record for key, (record, _) in mapping.items()}
 
 
 def _candidate_values(value: str) -> list[str]:

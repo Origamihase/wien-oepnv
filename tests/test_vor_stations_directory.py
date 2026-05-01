@@ -69,6 +69,72 @@ def test_vor_bst_code_prefers_directory_entry(monkeypatch):
         stations.station_info.cache_clear()
 
 
+def test_bst_code_identity_outranks_foreign_alias(monkeypatch):
+    """Regression for the '900100' bug class.
+
+    Reconstructs the exact configuration that triggered #1082: Wien
+    Aspern Nord listed '900100' in its ``aliases`` array (TEXT match),
+    while '900100' is in fact Wien Hauptbahnhof's ``bst_code`` (IDENTITY
+    match). Aspern Nord is intentionally placed FIRST in the entries
+    list — under the pre-refactor logic it would claim the mapping key
+    before Hauptbahnhof's ``bst_code`` is ever processed, and the
+    source-based tie-break would let it keep the slot. With
+    match-strength precedence in place, IDENTITY > TEXT must let Wien
+    Hauptbahnhof win regardless of iteration order.
+    """
+
+    import src.utils.stations as stations
+
+    stations._station_lookup.cache_clear()
+    stations.station_info.cache_clear()
+
+    def fake_entries():
+        return (
+            {
+                "bst_id": "4773541",
+                "bst_code": "Sty",
+                "name": "Wien Aspern Nord",
+                "in_vienna": True,
+                "pendler": False,
+                "vor_id": "490091000",
+                "aliases": [
+                    "Wien Aspern Nord",
+                    "490091000",
+                    "Sty",
+                    "900100",
+                    "Aspern Nord",
+                ],
+                "latitude": 48.234567,
+                "longitude": 16.520123,
+                "source": "oebb",
+            },
+            {
+                "name": "Wien Hauptbahnhof",
+                "in_vienna": True,
+                "pendler": False,
+                "vor_id": "490134900",
+                "aliases": ["490134900", "Wien Hauptbahnhof"],
+                "latitude": 48.185184,
+                "longitude": 16.376413,
+                "source": "vor",
+                "bst_id": "900100",
+                "bst_code": "900100",
+            },
+        )
+
+    monkeypatch.setattr(stations, "_station_entries", fake_entries)
+    try:
+        info = stations.station_info("900100")
+        assert info is not None
+        assert info.name == "Wien Hauptbahnhof", (
+            "bst_code IDENTITY match must outrank a foreign aliases TEXT "
+            "match, regardless of iteration order"
+        )
+    finally:
+        stations._station_lookup.cache_clear()
+        stations.station_info.cache_clear()
+
+
 def test_vor_lookup_by_alias():
     info = station_info("Vienna Airport")
     assert info is not None
