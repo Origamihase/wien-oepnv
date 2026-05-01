@@ -7,18 +7,29 @@
   <atom:link rel="alternate" type="text/html" href="https://Origamihase.github.io/wien-oepnv/"/>
   <atom:link rel="self" type="application/rss+xml" href="https://Origamihase.github.io/wien-oepnv/feed.xml"/>
   <language>de</language>
-<lastBuildDate>Fri, 01 May 2026 20:25:38 +0200</lastBuildDate>
+<lastBuildDate>Fri, 01 May 2026 21:21:08 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U3: Polizeieinsatz]]></title>
+      <title><![CDATA[32A: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
-      <pubDate>Fri, 01 May 2026 19:16:00 +0200</pubDate>
-      <ext:first_seen>Fri, 01 May 2026 20:25:38 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 01 May 2026 19:16:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">e7c83441f75a4e79213dc74497d534a0ae14537b1901e683b8c8c96c12038205</guid>
+      <pubDate>Fri, 01 May 2026 20:06:00 +0200</pubDate>
+      <ext:first_seen>Fri, 01 May 2026 21:21:08 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 01 May 2026 20:06:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 01 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.05.2026]</description>
-      <content:encoded><![CDATA[Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.05.2026]]]></content:encoded>
+      <description>Linie 32 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 01.05.2026]</description>
+      <content:encoded><![CDATA[Linie 32 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 01.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5: Signalstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9c191328eb58a2f785cd9c72657837ba679fa1600e545584da7f0c49bda979c3</guid>
+      <pubDate>Fri, 01 May 2026 19:58:00 +0200</pubDate>
+      <ext:first_seen>Fri, 01 May 2026 21:21:08 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 01 May 2026 19:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 01 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung. [Am 01.05.2026]</description>
+      <content:encoded><![CDATA[Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.<br/>[Am 01.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
@@ -30,28 +41,6 @@
       <ext:ends_at>Fri, 01 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.05.2026]</description>
       <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107</guid>
-      <pubDate>Fri, 01 May 2026 17:43:00 +0200</pubDate>
-      <ext:first_seen>Fri, 01 May 2026 18:46:36 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 01 May 2026 17:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 01 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 66 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 01.05.2026]</description>
-      <content:encoded><![CDATA[Linie 66 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 01.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">40abe8015540dc340a7006b7131e0f8abed33a83dfde5af7bcbdf50c13a4eeb9</guid>
-      <pubDate>Fri, 01 May 2026 17:39:00 +0200</pubDate>
-      <ext:first_seen>Fri, 01 May 2026 18:46:36 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 01 May 2026 17:39:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 01 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 48 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 01.05.2026]</description>
-      <content:encoded><![CDATA[Linie 48 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 01.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[89A: Ablenkung Richtung Aspern Nord]]></title>
@@ -117,6 +106,17 @@
       <ext:ends_at>Fri, 01 May 2026 23:59:59 +0200</ext:ends_at>
       <description>Fahrtbehinderung wegen Baurbeiten [Am 01.05.2026]</description>
       <content:encoded><![CDATA[Fahrtbehinderung wegen Baurbeiten<br/>[Am 01.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
+      <pubDate>Thu, 30 Apr 2026 00:00:17 +0200</pubDate>
+      <ext:first_seen>Fri, 01 May 2026 01:28:44 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Apr 2026 00:00:17 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 01 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85 [30.04.2026 – 01.05.2026]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85<br/>[30.04.2026 – 01.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
