@@ -7,41 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Fri, 01 May 2026 11:53:12 +0200</lastBuildDate>
+<lastBuildDate>Fri, 01 May 2026 13:13:58 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[74A: Veranstaltung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8c89ce47c01e9d4f99f82e0c3bf1bd3e8d167bdf46e8397ef95d5942fd0cec2b</guid>
-      <pubDate>Fri, 01 May 2026 09:48:00 +0200</pubDate>
-      <ext:first_seen>Fri, 01 May 2026 11:53:12 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 01 May 2026 09:48:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 01 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 74 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Veranstaltung. [Am 01.05.2026]</description>
-      <content:encoded><![CDATA[Linie 74 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Veranstaltung.<br/>[Am 01.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">67cf05ce8846177e4f3d143c88b0e0c7b91c475498b9731a9668e78e4fae4a88</guid>
-      <pubDate>Fri, 01 May 2026 09:41:00 +0200</pubDate>
-      <ext:first_seen>Fri, 01 May 2026 11:53:12 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 01 May 2026 09:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 01 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 38 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 01.05.2026]</description>
-      <content:encoded><![CDATA[Linie 38 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 01.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37/38/40/41/42: Veranstaltung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">381954c94f6ac396ba6f63c11ccff9dbf9ae04c46a97220940e598c1849895e0</guid>
-      <pubDate>Fri, 01 May 2026 08:41:00 +0200</pubDate>
-      <ext:first_seen>Fri, 01 May 2026 11:53:12 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 01 May 2026 08:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 01 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 37: Unregelmäßige Intervalle in beiden Richtungen. Linie 38: Unregelmäßige Intervalle in beiden Richtungen. [Am 01.05.2026]</description>
-      <content:encoded><![CDATA[Linie 37: Unregelmäßige Intervalle in beiden Richtungen. Linie 38: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 01.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[59A: Veranstaltung Betrieb ab Bärenmühldurchgang]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -63,6 +30,17 @@
       <ext:ends_at>Fri, 01 May 2026 20:00:00 +0200</ext:ends_at>
       <description>Veranstaltung Betrieb ab Ring, Volkstheater [Am 01.05.2026]</description>
       <content:encoded><![CDATA[Veranstaltung Betrieb ab Ring, Volkstheater<br/>[Am 01.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Veranstaltung Betrieb ab Landstraße S U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">624869dce498a76c2a8b33e5e6855dd0942201d2cac0bf4403b053a8cdb1e9c3</guid>
+      <pubDate>Fri, 01 May 2026 07:32:05 +0200</pubDate>
+      <ext:first_seen>Fri, 01 May 2026 11:53:12 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 01 May 2026 07:32:05 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 01 May 2026 14:00:00 +0200</ext:ends_at>
+      <description>Veranstaltung Betrieb ab Landstraße S U [Am 01.05.2026]</description>
+      <content:encoded><![CDATA[Veranstaltung Betrieb ab Landstraße S U<br/>[Am 01.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Veranstaltung Betrieb ab Börsegasse, Wipplingerstraße]]></title>
@@ -109,15 +87,37 @@
       <content:encoded><![CDATA[Veranstaltung Betrieb ab Schwarzenbergplatz<br/>[Am 01.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[57A: Veranstaltung]]></title>
+      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b664986b70e17f93fa72a280cb7db075700ff059a95fd949e0a263d36ea639b9</guid>
-      <pubDate>Fri, 01 May 2026 06:28:00 +0200</pubDate>
-      <ext:first_seen>Fri, 01 May 2026 11:53:12 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 01 May 2026 06:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 01 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 57 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.05.2026]</description>
-      <content:encoded><![CDATA[Linie 57 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
+      <pubDate>Fri, 01 May 2026 04:45:25 +0200</pubDate>
+      <ext:first_seen>Fri, 01 May 2026 07:11:30 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 01 May 2026 04:45:25 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 02 May 2026 00:35:00 +0200</ext:ends_at>
+      <description>Bauarbeiten Busse halten Breitenfurter Straße 236-238 [01.05.2026 – 02.05.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[01.05.2026 – 02.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
+      <pubDate>Fri, 01 May 2026 00:00:26 +0200</pubDate>
+      <ext:first_seen>Fri, 01 May 2026 01:28:44 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 01 May 2026 00:00:26 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 01 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A) [Am 01.05.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A)<br/>[Am 01.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: Busse halten bei Linie 77A]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fb74db181b90bde27b9f33e1d83eec4c055a789a7df482ac12f9e4f7c22640ea</guid>
+      <pubDate>Fri, 01 May 2026 00:00:10 +0200</pubDate>
+      <ext:first_seen>Fri, 01 May 2026 01:28:44 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 01 May 2026 00:00:10 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 01 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Bauarbeiten Busse halten bei Linie 77 A [Am 01.05.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Busse halten bei Linie 77 A<br/>[Am 01.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
