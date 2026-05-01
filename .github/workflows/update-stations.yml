@@ -30,6 +30,10 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # Pin pip<26 vorsorglich gegen unerwartete Breaking Changes in pip 26.x.
+          # pip 26.0 ist seit 2026-01 released, 26.1 seit 2026-04 — Kompatibilität
+          # mit unseren Deps (defusedxml, openpyxl, dnspython) noch nicht durchgetestet.
+          # Re-evaluate als eigener Followup-PR. Letzte Prüfung: 2026-05-01.
           python -m pip install "pip<26"
           pip install -r requirements.txt
 
