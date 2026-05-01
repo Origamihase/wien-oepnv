@@ -23,6 +23,7 @@ def test_vor_bst_code_prefers_directory_entry(monkeypatch):
     import src.utils.stations as stations
 
     stations._station_lookup.cache_clear()
+    stations.station_info.cache_clear()
 
     def fake_entries():
         return (
@@ -61,10 +62,11 @@ def test_vor_bst_code_prefers_directory_entry(monkeypatch):
     try:
         info = stations.station_info("900100")
         assert info is not None
-        assert info.name == "Wien Hauptbahnhof"
+        assert info.name == "Wien Hauptbahnhof (VOR)"
         assert info.source == "vor"
     finally:
         stations._station_lookup.cache_clear()
+        stations.station_info.cache_clear()
 
 
 def test_vor_lookup_by_alias():

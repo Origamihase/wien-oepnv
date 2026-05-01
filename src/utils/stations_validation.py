@@ -15,6 +15,8 @@ import math
 import re
 from typing import Iterable, Iterator, Mapping, Sequence
 
+from src.utils.stations import _normalize_token
+
 
 @dataclass(frozen=True)
 class DuplicateGroup:
@@ -63,6 +65,18 @@ class SecurityIssue:
 
 
 @dataclass(frozen=True)
+class CrossStationIDIssue:
+    """Aliases that collide with identity fields of other stations."""
+
+    identifier: str
+    name: str
+    alias: str
+    colliding_identifier: str
+    colliding_name: str
+    colliding_field: str
+
+
+@dataclass(frozen=True)
 class ValidationReport:
     """Summary returned by :func:`validate_stations`."""
 
@@ -72,6 +86,7 @@ class ValidationReport:
     coordinate_issues: tuple[CoordinateIssue, ...]
     gtfs_issues: tuple[GTFSIssue, ...]
     security_issues: tuple[SecurityIssue, ...]
+    cross_station_id_issues: tuple[CrossStationIDIssue, ...]
     gtfs_stop_count: int
 
     @property
@@ -82,6 +97,7 @@ class ValidationReport:
             or self.coordinate_issues
             or self.gtfs_issues
             or self.security_issues
+            or self.cross_station_id_issues
         )
 
     def to_markdown(self) -> str:
@@ -167,6 +183,7 @@ def validate_stations(
     )
     gtfs_issues = tuple(_find_gtfs_issues(stations, gtfs_stop_ids))
     security_issues = tuple(_find_security_issues(stations))
+    cross_station_id_issues = tuple(_find_cross_station_id_conflicts(stations))
 
     return ValidationReport(
         total_stations=len(stations),
@@ -175,6 +192,7 @@ def validate_stations(
         coordinate_issues=coordinate_issues,
         gtfs_issues=gtfs_issues,
         security_issues=security_issues,
+        cross_station_id_issues=cross_station_id_issues,
         gtfs_stop_count=gtfs_count,
     )
 
@@ -403,6 +421,45 @@ def _find_gtfs_issues(
 
 
 _UNSAFE_CHARS_RE = re.compile(r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\u2028-\u202e\u2066-\u2069]")
+
+
+def _find_cross_station_id_conflicts(
+    stations: Sequence[Mapping[str, object]]
+) -> Iterator[CrossStationIDIssue]:
+    id_map: dict[str, list[tuple[Mapping[str, object], str]]] = defaultdict(list)
+
+    for entry in stations:
+        for field in ("bst_id", "bst_code", "vor_id", "wl_diva"):
+            val = entry.get(field)
+            if isinstance(val, (str, int)):
+                norm_val = _normalize_token(str(val))
+                if norm_val:
+                    id_map[norm_val].append((entry, field))
+
+    for entry in stations:
+        aliases_obj = entry.get("aliases")
+        if not isinstance(aliases_obj, Sequence) or isinstance(aliases_obj, (str, bytes)):
+            continue
+
+        for alias in aliases_obj:
+            if not isinstance(alias, str):
+                continue
+
+            norm_alias = _normalize_token(alias)
+            if not norm_alias:
+                continue
+
+            if norm_alias in id_map:
+                for colliding_entry, field in id_map[norm_alias]:
+                    if colliding_entry is not entry:
+                        yield CrossStationIDIssue(
+                            identifier=_format_identifier(entry),
+                            name=str(entry.get("name", "")).strip() or "<unknown>",
+                            alias=alias.strip(),
+                            colliding_identifier=_format_identifier(colliding_entry),
+                            colliding_name=str(colliding_entry.get("name", "")).strip() or "<unknown>",
+                            colliding_field=field,
+                        )
 
 
 def _find_security_issues(
