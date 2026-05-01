@@ -8,6 +8,10 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+from src.utils.stations_validation import validate_stations
+
 
 def main() -> int:
     stations_path = Path("data/stations.json")
@@ -77,6 +81,17 @@ def main() -> int:
     conflicts = [station for station in vor_entries if station.get("bst_code") in oebb_codes]
     if conflicts:
         print("VOR bst_code collides with OEBB", file=sys.stderr)
+        return 1
+
+    report = validate_stations(stations_path)
+    if report.cross_station_id_issues:
+        for issue in report.cross_station_id_issues:
+            print(
+                f"Cross-station alias conflict: Alias '{issue.alias}' in '{issue.name}' "
+                f"({issue.identifier}) collides with {issue.colliding_field} of "
+                f"'{issue.colliding_name}' ({issue.colliding_identifier})",
+                file=sys.stderr,
+            )
         return 1
 
     return 0
