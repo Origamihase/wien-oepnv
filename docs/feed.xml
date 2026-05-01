@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/"/>
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml"/>
     <language>de</language>
-<lastBuildDate>Fri, 01 May 2026 01:28:44 +0200</lastBuildDate>
+<lastBuildDate>Fri, 01 May 2026 03:21:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N31: Busse halten in 5B Haltestelle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">99c0f0d91bebb27b44d688aa64a7f76e32acd8e71ce8e2fb023d1dcc8992f5fa</guid>
+      <pubDate>Fri, 01 May 2026 00:55:22 +0200</pubDate>
+      <ext:first_seen>Fri, 01 May 2026 03:21:52 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 01 May 2026 00:55:22 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 01 May 2026 05:00:00 +0200</ext:ends_at>
+      <description>Bauarbeiten Busse halten in 5 B Haltestelle [Am 01.05.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Busse halten in 5 B Haltestelle<br/>[Am 01.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N46: Busse halten bei Linie 48A in Burggasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -106,17 +117,6 @@
       <ext:ends_at>Fri, 01 May 2026 23:59:59 +0200</ext:ends_at>
       <description>Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85 [30.04.2026 – 01.05.2026]</description>
       <content:encoded><![CDATA[Gleisbauarbeiten Benutzen Sie die Linie 43 A - Dornbacher Straße 85<br/>[30.04.2026 – 01.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[44A: Busse halten Alszeile gegenüber 93]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">05f43b3cc6e7fc469b2327c420ffd938743c80bae8e543e6b1266ae3efe72301</guid>
-      <pubDate>Thu, 30 Apr 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Fri, 01 May 2026 01:28:44 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Apr 2026 00:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 01 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Bauarbeiten Busse halten Alszeile gegenüber 93 [30.04.2026 – 01.05.2026]</description>
-      <content:encoded><![CDATA[Bauarbeiten Busse halten Alszeile gegenüber 93<br/>[30.04.2026 – 01.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
