@@ -7,17 +7,25 @@ on:
   push:
     paths:
       - 'src/**'
+      - 'requirements.txt'
+      - 'pyproject.toml'
       - '.github/workflows/build-feed.yml'
 
 permissions:
   contents: read
+
+# Verhindert, dass sich Cron-, Push- und manuell ausgelöste Läufe gegenseitig
+# beim `git push` blockieren oder fehlschlagen lassen.
+concurrency:
+  group: build-feed-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       PYTHONPATH: src
@@ -25,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -36,7 +44,7 @@ jobs:
         run: |
           python -m pip install "pip<26"
           pip install -r requirements.txt
-          
+
       - name: Build feed
         run: python src/build_feed.py
         env:
@@ -46,20 +54,22 @@ jobs:
         run: |
           set -euo pipefail
           perl -0777 -i -pe '
-            my $base = $ENV{"BASE"} // "https://origamihase.github.io/wien-oepnv";
+            my $base = $ENV{"BASE"};
             my $s = $_;
 
             $s =~ s{<rss\b(?![^>]*\bxmlns:atom=)}{<rss xmlns:atom="http://www.w3.org/2005/Atom" }s;
             $s =~ s{(?:\r?\n)?[ \t]*<atom:link\b[^>]*?/>}{}gs;
             $s =~ s{(<channel>.*?<description>.*?</description>)(?:\s*<language>.*?</language>)?\s*}{
               my $prefix = $1;
-              "$prefix\n    <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n    <language>de</language>\n"
+              "$prefix\n  <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n  <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n  <language>de</language>\n"
             }es;
 
             $_ = $s;
           ' docs/feed.xml
         env:
-          BASE: https://origamihase.github.io/wien-oepnv
+          # Wird aus dem aktuellen Repo abgeleitet, damit Forks korrekte
+          # atom:link-URLs schreiben statt auf das Original-Repo zu zeigen.
+          BASE: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
       - name: Configure Git
         if: github.ref == 'refs/heads/main'

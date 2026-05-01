@@ -1,10 +1,9 @@
 # Wien ÖPNV Feed – Projektdokumentation
 
 ### Status Badges
-![Update VOR Cache](https://github.com/origamihase/wien-oepnv/actions/workflows/update-vor-cache.yml/badge.svg)
-![Update ÖBB Cache](https://github.com/origamihase/wien-oepnv/actions/workflows/update-oebb-cache.yml/badge.svg)
-![Test VOR API](https://github.com/origamihase/wien-oepnv/actions/workflows/test-vor-api.yml/badge.svg)
-![Run Tests](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml/badge.svg)
+[![Update VOR Cache](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-vor-cache.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-vor-cache.yml)
+[![Update ÖBB Cache](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-oebb-cache.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-oebb-cache.yml)
+[![Test VOR API](https://github.com/Origamihase/wien-oepnv/actions/workflows/test-vor-api.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/test-vor-api.yml)
 
 [![Feed Build](https://github.com/origamihase/wien-oepnv/actions/workflows/build-feed.yml/badge.svg?branch=main)](https://github.com/origamihase/wien-oepnv/actions/workflows/build-feed.yml)
 [![Tests](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml/badge.svg)](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml)
@@ -335,7 +334,7 @@ Die wichtigsten GitHub Actions:
 - `build-feed.yml` – erzeugt `docs/feed.xml` auf Basis der aktuellen Caches.
 - `test.yml` & `test-vor-api.yml` – führen die vollständige Test-Suite bzw. VOR-spezifische Integrationstests aus; `test.yml` läuft bei jedem Push sowie Pull Request und stellt die kontinuierliche Testabdeckung sicher.
 
-Alle Feed-Builds warten auf die Cache-Jobs (`needs`-Abhängigkeit), damit stets konsistente Daten verwendet werden.
+Cache-Update-Workflows committen ihre Ergebnisse in den Branch; der Feed-Build liest beim nächsten Lauf den jeweils aktuellen Stand. Eine direkte `needs:`-Abhängigkeit zwischen Workflows ist in GitHub Actions nicht vorgesehen — bei zeitkritischer Konsistenz lässt sich stattdessen ein `workflow_run`-Trigger ergänzen.
 
 ## Entwicklung & Qualitätssicherung
 
@@ -363,7 +362,7 @@ Die neue Kommandozeile (`python -m src.cli`) bündelt bisher verstreute Skripte.
 
 ### Logging & Beobachtbarkeit
 
-Die CLI respektiert die vorhandene Logging-Konfiguration (`log/errors.log`, `log/diagnostics.log`). Für Ad-hoc-Audits lassen sich Berichte und Skriptausgaben über `--output`-Parameter in nachvollziehbaren Pfaden versionieren. Jeder Feed-Build erzeugt zusätzlich einen aktuellen Gesundheitsbericht unter [`docs/feed-health.md`](docs/feed-health.md).
+Die CLI respektiert die vorhandene Logging-Konfiguration (`log/errors.log`, `log/diagnostics.log`). Für Ad-hoc-Audits lassen sich Berichte und Skriptausgaben über `--output`-Parameter in nachvollziehbaren Pfaden versionieren. Jeder Feed-Build erzeugt zusätzlich einen aktuellen Gesundheitsbericht unter `docs/feed-health.md` (lokal nach jedem Build, nicht im Repository versioniert).
 
 ## Authentifizierung & Sicherheit
 
