@@ -52,23 +52,6 @@ STATIC_VOR_ENTRIES: tuple[dict[str, object], ...] = (
         "bst_code": "900300",
         "source": "vor",
     },
-    {
-        "vor_id": "490091000",
-        "name": "Wien Aspern Nord",
-        "in_vienna": True,
-        "pendler": False,
-        "latitude": 48.234567,
-        "longitude": 16.520123,
-        "aliases": [
-            "Wien Aspern Nord",
-            "Aspern Nord",
-            "900100",
-            "490091000",
-        ],
-        "bst_id": "900100",
-        "bst_code": "900100",
-        "source": "vor",
-    },
 )
 
 
