@@ -11,6 +11,7 @@ import tempfile
 from pathlib import Path
 from typing import Sequence
 
+from src.utils.files import atomic_write
 from src.utils.stations_validation import (
     StationValidationError,
     validate_stations,
@@ -125,8 +126,15 @@ def main(argv: Sequence[str] | None = None) -> int:
             )
             return 1
 
-        # Copy back to target on success
-        shutil.copy(tmp_stations_path, target_stations_json)
+        # Atomic copy-back: atomic_write writes a temp file inside
+        # target_stations_json.parent (same filesystem as the target —
+        # sidesteps the cross-FS issue with tempfile.TemporaryDirectory
+        # which lives on /tmp), fsyncs, then os.replace's into position.
+        # No partial-file window on data/stations.json.
+        with open(tmp_stations_path, "rb") as src, atomic_write(
+            target_stations_json, mode="wb"
+        ) as dst:
+            shutil.copyfileobj(src, dst)
         logging.info("stations.json successfully updated and validated.")
 
     logging.info("All station update scripts completed successfully.")

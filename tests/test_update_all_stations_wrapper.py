@@ -80,6 +80,65 @@ def test_wrapper_preserves_stations_json_on_validation_failure(
     )
 
 
+def test_wrapper_preserves_stations_json_on_atomic_write_failure(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """Bei Fehler im finalen atomic_write bleibt data/stations.json bytewise unverändert.
+
+    Verfahren: sub-scripts werden zu no-ops gemockt, validate_stations liefert
+    einen sauberen (issue-freien) Report — der Wrapper erreicht also den
+    finalen copy-back-Block. atomic_write wird zum Fehlschlagen gebracht
+    (OSError beim Aufruf). Erwartung: die Exception propagiert hoch und das
+    Original ist bytewise unverändert. Pinst die Atomicity-Garantie der
+    Migration von shutil.copy zu atomic_write.
+    """
+    from src.utils.stations_validation import ValidationReport
+    from scripts import update_all_stations as wrapper
+
+    real_stations = REPO_ROOT / "data" / "stations.json"
+    original_bytes = real_stations.read_bytes()
+
+    # Sub-scripts as no-ops.
+    monkeypatch.setattr(
+        "scripts.update_all_stations.subprocess.run", lambda *a, **kw: None
+    )
+
+    # Validation passes with a clean report — the wrapper proceeds to the
+    # final copy-back block.
+    clean_report = ValidationReport(
+        total_stations=0,
+        duplicates=(),
+        alias_issues=(),
+        coordinate_issues=(),
+        gtfs_issues=(),
+        security_issues=(),
+        cross_station_id_issues=(),
+        provider_issues=(),
+        gtfs_stop_count=0,
+    )
+    monkeypatch.setattr(wrapper, "validate_stations", lambda *a, **kw: clean_report)
+
+    # Force atomic_write to raise immediately on call.
+    def failing_atomic_write(*args: object, **kwargs: object) -> None:
+        raise OSError("Simulated atomic_write failure for regression test")
+
+    monkeypatch.setattr(
+        "scripts.update_all_stations.atomic_write", failing_atomic_write
+    )
+
+    # The wrapper has no try/except around the final copy-back block, so the
+    # OSError propagates. That's intentional and consistent with shutil.copy's
+    # historical behaviour — atomic_write failure is exceptional (disk full,
+    # permission, etc.), not a "validation failed" condition.
+    with pytest.raises(OSError, match="Simulated atomic_write failure"):
+        wrapper.main([])
+
+    assert real_stations.read_bytes() == original_bytes, (
+        "Wrapper modified data/stations.json on atomic_write failure — "
+        "atomicity contract violated"
+    )
+
+
 def test_wrapper_atomic_on_success(tmp_path: Path) -> None:
     """Bei Erfolg ist data/stations.json nach dem Lauf valide."""
     # Run the wrapper without modifications — should succeed if main is clean.
