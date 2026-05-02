@@ -402,6 +402,121 @@ def _handle_security_scan(args: argparse.Namespace) -> int:
     return _run_script("scan_secrets.py", extra_args=extra)
 
 
+
+def _configure_seo_commands(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
+    seo_parser = subparsers.add_parser("seo", help="SEO generation and formatting tools")
+    seo_subparsers = seo_parser.add_subparsers(dest="seo_command", required=True)
+
+    guard_parser = seo_subparsers.add_parser("guard", help="Apply idempotent SEO fixes to docs")
+    guard_parser.add_argument(
+        "--site-base",
+        default=os.environ.get("SITE_BASE", "https://origamihase.github.io/wien-oepnv/"),
+        help="Base URL for SEO canonical links",
+    )
+    guard_parser.add_argument(
+        "--feed",
+        type=Path,
+        default=Path("docs/feed.xml"),
+        help="Path to feed.xml",
+    )
+    guard_parser.add_argument(
+        "--robots",
+        type=Path,
+        default=Path("docs/robots.txt"),
+        help="Path to robots.txt",
+    )
+    guard_parser.add_argument(
+        "--sitemap",
+        type=Path,
+        default=Path("docs/sitemap.xml"),
+        help="Path to sitemap.xml",
+    )
+    guard_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Output changes to stdout without writing",
+    )
+    guard_parser.set_defaults(func=_handle_seo_guard)
+
+def _handle_seo_guard(args: argparse.Namespace) -> int:
+    from src.seo.atom_links import apply_atom_links
+    from src.seo.robots import format_robots
+    from src.seo.sitemap import apply_to_path
+
+    # Check if atomic write exists
+    try:
+        from src.utils.files import atomic_write
+        def _write(path: Path, content: str) -> None:
+            atomic_write(path, content)
+    except ImportError:
+        def _write(path: Path, content: str) -> None:
+            path.write_text(content, encoding="utf-8")
+
+    # 1. feed.xml
+    feed_path: Path = args.feed
+    if feed_path.exists():
+        try:
+            feed_content = feed_path.read_text(encoding="utf-8")
+        except Exception as e:
+            print(f"Internal Error processing {feed_path}: {e}", file=sys.stderr)
+            return 2
+
+        try:
+            new_feed = apply_atom_links(feed_content, args.site_base)
+        except ValueError as e: # Custom exception for Parse errors
+            print(f"Input Error processing {feed_path}: {e}", file=sys.stderr)
+            return 1
+        except Exception as e:
+            print(f"Internal Error processing {feed_path}: {e}", file=sys.stderr)
+            return 2
+
+        if feed_content != new_feed:
+            if args.dry_run:
+                print(f"Would update {feed_path}")
+            else:
+                try:
+                    _write(feed_path, new_feed)
+                except Exception as e:
+                    print(f"Internal Error writing {feed_path}: {e}", file=sys.stderr)
+                    return 2
+
+    # 2. robots.txt
+    robots_path: Path = args.robots
+    if robots_path.exists():
+        try:
+            robots_content = robots_path.read_text(encoding="utf-8")
+            new_robots = format_robots(robots_content, args.site_base)
+            if robots_content != new_robots:
+                if args.dry_run:
+                    print(f"Would update {robots_path}")
+                else:
+                    _write(robots_path, new_robots)
+        except Exception as e:
+            print(f"Internal Error processing {robots_path}: {e}", file=sys.stderr)
+            return 2
+
+    # 3. sitemap.xml
+    sitemap_path: Path = args.sitemap
+    if not args.dry_run:
+        try:
+            apply_to_path(sitemap_path, args.site_base)
+        except Exception as e:
+            print(f"Internal Error processing {sitemap_path}: {e}", file=sys.stderr)
+            return 2
+    else:
+        if sitemap_path.exists():
+            from src.seo.sitemap import rewrite_canonicals
+            try:
+                content = sitemap_path.read_text(encoding="utf-8")
+                if content != rewrite_canonicals(content, args.site_base):
+                    print(f"Would update {sitemap_path}")
+            except Exception as e:
+                print(f"Internal Error processing {sitemap_path}: {e}", file=sys.stderr)
+                return 2
+
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="wien-oepnv",
@@ -415,6 +530,7 @@ def build_parser() -> argparse.ArgumentParser:
     _configure_checks_commands(subparsers)
     _configure_config_commands(subparsers)
     _configure_security_commands(subparsers)
+    _configure_seo_commands(subparsers)
     return parser
 
 

@@ -30,67 +30,15 @@ jobs:
 
       - name: Apply idempotent SEO fixes
         id: seo
-        shell: bash
+        env:
+          SITE_BASE: https://origamihase.github.io/wien-oepnv/
         run: |
-          set -euo pipefail
-          changed=false
-
-          # --- sitemap.xml: Canonicals ---
-          if [[ -f docs/sitemap.xml ]]; then
-            before="$(sha1sum docs/sitemap.xml | awk '{print $1}')"
-            sed -E -i \
-              -e 's#<loc>https://wien-oepnv\.github\.io/?</loc>#<loc>'"$SITE_BASE"'/</loc>#g' \
-              -e 's#<loc>https://origamihase\.github\.io/wien-oepnv/?</loc>#<loc>'"$SITE_BASE"'/</loc>#g' \
-              -e 's#<loc>https://wien-oepnv\.github\.io/feed\.xml</loc>#<loc>'"$SITE_BASE"'/feed.xml</loc>#g' \
-              -e 's#<loc>https://origamihase\.github\.io/wien-oepnv/feed\.xml</loc>#<loc>'"$SITE_BASE"'/feed.xml</loc>#g' \
-              -e 's#<loc>https://wien-oepnv\.github\.io/docs/how-to/?</loc>#<loc>'"$SITE_BASE"'/docs/how-to/</loc>#g' \
-              -e 's#<loc>https://origamihase\.github\.io/wien-oepnv/docs/how-to/?</loc>#<loc>'"$SITE_BASE"'/docs/how-to/</loc>#g' \
-              -e 's#<loc>https://wien-oepnv\.github\.io/docs/reference/?</loc>#<loc>'"$SITE_BASE"'/docs/reference/</loc>#g' \
-              -e 's#<loc>https://origamihase\.github\.io/wien-oepnv/docs/reference/?</loc>#<loc>'"$SITE_BASE"'/docs/reference/</loc>#g' \
-              docs/sitemap.xml
-            after="$(sha1sum docs/sitemap.xml | awk '{print $1}')"
-            [[ "$before" != "$after" ]] && changed=true
+          python -m src.cli seo guard --site-base "$SITE_BASE"
+          if [ -n "$(git status --porcelain docs/feed.xml docs/robots.txt docs/sitemap.xml 2>/dev/null)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
-
-          # --- robots.txt: Einrückungen entfernen & genau EINE Sitemap-Zeile ---
-          if [[ -f docs/robots.txt ]]; then
-            before="$(sha1sum docs/robots.txt | awk '{print $1}')"
-            # führende Leerzeichen in jeder Zeile entfernen
-            sed -E -i 's/^[[:space:]]+//g' docs/robots.txt
-            # alle vorhandenen Sitemap-Zeilen entfernen und eine normierte Zeile setzen
-            sed -E -i '/^[[:space:]]*Sitemap:/d' docs/robots.txt
-            printf 'Sitemap: %s/sitemap.xml\n' "$SITE_BASE" >> docs/robots.txt
-            after="$(sha1sum docs/robots.txt | awk '{print $1}')"
-            [[ "$before" != "$after" ]] && changed=true
-          fi
-
-          # --- feed.xml: global dedupe & SEO-Tags ---
-          if [[ -f docs/feed.xml ]]; then
-            before="$(sha1sum docs/feed.xml | awk '{print $1}')"
-
-            perl -0777 -i -pe '
-              my $base = $ENV{"SITE_BASE"} // "https://origamihase.github.io/wien-oepnv";
-              my $s = $_;
-              # Atom-Namespace ergänzen (nur wenn fehlt)
-              $s =~ s{<rss\b(?![^>]*\bxmlns:atom=)}{<rss xmlns:atom="http://www.w3.org/2005/Atom" }s;
-              # Alle bestehenden atom:link-Tags global entfernen
-              $s =~ s{(?:\r?\n)?[ \t]*<atom:link\b[^>]*?/>}{}gs;
-              # Channel-Links & Sprache normieren
-              $s =~ s{(<description>.*?</description>)(?:\s*<language>.*?</language>)?}{
-                my $desc = $1;
-                "$desc\n    <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n    <language>de</language>"
-              }es;
-              $_ = $s;
-            ' docs/feed.xml
-
-            after="$(sha1sum docs/feed.xml | awk '{print $1}')"
-            [[ "$before" != "$after" ]] && changed=true
-          fi
-
-          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "changed<<$EOF" >> "$GITHUB_OUTPUT"
-          echo "${changed}" >> "$GITHUB_OUTPUT"
-          echo "$EOF" >> "$GITHUB_OUTPUT"
 
       - name: Commit & push, or open PR if branch protected
         if: steps.seo.outputs.changed == 'true'
