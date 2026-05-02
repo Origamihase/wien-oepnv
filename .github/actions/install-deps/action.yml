@@ -1,0 +1,22 @@
+name: Install Python dependencies
+description: Install pip (capped at <27) followed by the project's requirements file.
+
+inputs:
+  requirements:
+    description: Path to the requirements file relative to the repository root.
+    required: false
+    default: requirements.txt
+
+runs:
+  using: composite
+  steps:
+    - name: Install pip and project dependencies
+      shell: bash
+      run: |
+        # pip cap raised to <27 (was <26). Background:
+        # - pip 26.0 released 2026-01-30, pip 26.1 released 2026-04-26.
+        # - Both versions stable in production for our dependency stack.
+        # Re-evaluate at pip 27 announcement; consider removing the cap
+        # entirely once 27.x is also confirmed stable.
+        python -m pip install "pip<27"
+        pip install -r "${{ inputs.requirements }}"
