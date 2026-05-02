@@ -10,7 +10,7 @@ import os
 import re
 import time
 from datetime import datetime, timedelta, timezone
-from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Optional, Sequence, Tuple, cast
 
 import requests
 from dateutil import parser as dtparser
@@ -101,7 +101,7 @@ def _iso(s: Optional[str]) -> Optional[datetime]:
     dt = dtparser.isoparse(s)
     if not dt.tzinfo:
         dt = dt.replace(tzinfo=timezone.utc)
-    return dt
+    return cast('Optional[datetime]', dt)
 
 
 def _best_ts(obj: Dict[str, Any]) -> Optional[datetime]:
@@ -141,7 +141,7 @@ def _intervals_overlap(
 
     return s_a <= e_b and s_b <= e_a
 
-def _as_list(val) -> List[Any]:
+def _as_list(val: Any) -> List[Any]:
     if val is None:
         return []
     return list(val) if isinstance(val, (list, tuple, set)) else [val]
@@ -336,7 +336,7 @@ def _build_context_suffix(
 
 def _get_json(
     path: str,
-    params: Optional[List[tuple]] = None,
+    params: Optional[List[tuple[Any, ...]]] = None,
     timeout: int = 20,
     session: Optional[requests.Session] = None,
 ) -> Dict[str, Any]:

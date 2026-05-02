@@ -10,7 +10,7 @@ import unicodedata
 from enum import IntEnum
 from functools import lru_cache
 from pathlib import Path
-from typing import Iterable, NamedTuple
+from typing import Any, Iterable, NamedTuple
 
 __all__ = [
     "canonical_name",
@@ -345,7 +345,7 @@ def _iter_aliases(
 
 
 @lru_cache(maxsize=1)
-def _station_entries() -> tuple[dict, ...]:
+def _station_entries() -> tuple[dict[str, Any], ...]:
     """Return the raw station entries from :mod:`data/stations.json`."""
 
     try:
@@ -360,7 +360,7 @@ def _station_entries() -> tuple[dict, ...]:
     if not isinstance(entries, list):
         return ()
 
-    result: list[dict] = []
+    result: list[dict[str, Any]] = []
     for entry in entries:
         if isinstance(entry, dict):
             result.append(entry)
@@ -593,8 +593,6 @@ def _candidate_values(value: str) -> list[str]:
 @lru_cache(maxsize=1024)
 def station_by_oebb_id(bst_id: int | str) -> str | None:
     """Return the station name for a given ÖBB station ID (bst_id)."""
-    if bst_id is None:
-        return None
     target_id = str(bst_id).strip()
 
     for entry in _station_entries():
@@ -615,9 +613,6 @@ def canonical_name(name: str) -> str | None:
 @lru_cache(maxsize=2048)
 def station_info(name: str) -> StationInfo | None:
     """Return :class:`StationInfo` for *name* or ``None`` if the station is unknown."""
-
-    if not isinstance(name, str):  # pragma: no cover - defensive
-        return None
 
     lookup = _station_lookup()
     if not lookup:
@@ -700,9 +695,9 @@ def vor_station_ids() -> tuple[str, ...]:
 
 
 @lru_cache(maxsize=1)
-def _non_vienna_stations_regex() -> re.Pattern | None:
+def _non_vienna_stations_regex() -> 're.Pattern[str] | None':
     """Kompiliert einen Regex-Ausdruck mit allen bekannten Nicht-Wien/Nicht-Pendler Stationen."""
-    non_vienna = set()
+    non_vienna: set[str] = set()
     for entry in _station_entries():
         if entry.get("in_vienna") or entry.get("pendler"):
             continue
@@ -741,9 +736,9 @@ def _mask_non_vienna_stations(text: str) -> str:
 
 
 @lru_cache(maxsize=1)
-def _vienna_stations_regex() -> re.Pattern:
+def _vienna_stations_regex() -> 're.Pattern[str]':
     """Kompiliert einen Regex-Ausdruck mit allen bekannten Wiener Stationen."""
-    vienna = set()
+    vienna: set[str] = set()
     for entry in _station_entries():
         if entry.get("in_vienna"):
             name = str(entry.get("name", "")).strip().lower()
