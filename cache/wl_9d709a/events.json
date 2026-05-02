@@ -314,6 +314,54 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "39A: Rettungseinsatz",
+    "description": "Linie 39A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1df516d27848be5432f6a767976faa1435ee6b8d4cda2e54bf6f90ddfbeff55a",
+    "pubDate": "2026-05-02T10:14:00+02:00",
+    "starts_at": "2026-05-02T10:14:00+02:00",
+    "ends_at": "2026-05-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=39A|D=2026-05-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5092aa3e16264a54729d619c0073938e9a20bc79adf99a5a51f89ef26c9055eb",
+    "pubDate": "2026-05-02T10:01:31+02:00",
+    "starts_at": "2026-05-02T10:01:31+02:00",
+    "ends_at": "2026-05-02T11:00:00+02:00",
+    "_identity": "wl|störung|L=40|D=2026-05-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung wegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8",
+    "pubDate": "2026-05-02T10:02:00+02:00",
+    "starts_at": "2026-05-02T10:02:00+02:00",
+    "ends_at": "2026-05-02T11:01:00+02:00",
+    "_identity": "wl|störung|L=41|D=2026-05-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9/42: Rettungseinsatz Umleitung über Linien 9 und 42",
+    "description": "Rettungseinsatz Umleitung über Linien 9 und 42",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "5383ddb539841c7b32fc22d43150a379d79888ebb98db91eb162853b051c13ca",
+    "pubDate": "2026-05-02T10:05:23+02:00",
+    "starts_at": "2026-05-02T10:05:23+02:00",
+    "ends_at": "2026-05-02T11:04:00+02:00",
+    "_identity": "wl|störung|L=42,9|D=2026-05-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "43: Gleisbauarbeiten",
     "description": "Linie 43: Betrieb nur zwischen Schottentor U und Dornbach. Weichen Sie ersatzweise auf die Linie 43A aus. Voraussichtliche Dauer: 31.07.2026. Grund: Gleisbauarbeiten im Bereich Dornbacher Straße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -430,5 +478,17 @@
     "starts_at": "2025-11-10T06:00:00+01:00",
     "ends_at": "2026-06-01T00:56:00+02:00",
     "_identity": "wl|störung|L=80A|D=2025-11-10"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Rettungseinsatz Betrieb ab Währinger Straße, Volksoper",
+    "description": "Rettungseinsatz Betrieb ab Währinger Straße, Volksoper",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
+    "pubDate": "2026-05-02T10:03:56+02:00",
+    "starts_at": "2026-05-02T10:03:56+02:00",
+    "ends_at": "2026-05-02T11:02:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-05-02"
   }
 ]
