@@ -17,3 +17,18 @@ updates:
       prefix: "chore(ci)"
       include: "scope"
     open-pull-requests-limit: 5
+
+  # pip: aktualisiert Python-Dependencies (requirements.txt, requirements-dev.txt,
+  # pyproject.toml) im selben monatlichen Schedule wie github-actions.
+  # Sicherheitsupdates fließen separat über Dependabot Security Advisories.
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Vienna"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    open-pull-requests-limit: 5
