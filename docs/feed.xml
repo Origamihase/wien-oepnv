@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 02 May 2026 12:03:54 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2026 12:57:30 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[39A: Rettungseinsatz]]></title>
+      <title><![CDATA[5: Fahrtbehinderung Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1df516d27848be5432f6a767976faa1435ee6b8d4cda2e54bf6f90ddfbeff55a</guid>
-      <pubDate>Sat, 02 May 2026 10:14:00 +0200</pubDate>
-      <ext:first_seen>Sat, 02 May 2026 12:03:54 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 02 May 2026 10:14:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5</guid>
+      <pubDate>Sat, 02 May 2026 11:49:00 +0200</pubDate>
+      <ext:first_seen>Sat, 02 May 2026 12:57:30 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 02 May 2026 11:56:02 +0200</ext:starts_at>
       <ext:ends_at>Sat, 02 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 39 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 02.05.2026]</description>
-      <content:encoded><![CDATA[Linie 39 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 02.05.2026]]]></content:encoded>
+      <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 02.05.2026]</description>
+      <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 02.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91d669c1fbe32bfc275e4e4defa8ceccd4bb34a47aefba98017f28a1c74921ba</guid>
+      <pubDate>Sat, 02 May 2026 11:17:00 +0200</pubDate>
+      <ext:first_seen>Sat, 02 May 2026 12:57:30 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 02 May 2026 11:17:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 02 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 63 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 02.05.2026]</description>
+      <content:encoded><![CDATA[Linie 63 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 02.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -106,17 +117,6 @@
       <ext:starts_at>Thu, 30 Apr 2026 09:12:44 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Hbf und Bruck/Mur Bahnhof/Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an einigen Tagen) die Züge EC 206, EC 207, EC … [Seit 30.04.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf und Bruck/Mur Bahnhof/Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an einigen Tagen) die Züge EC 206, EC 207, EC …<br/>[Seit 30.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
-      <pubDate>Thu, 30 Apr 2026 00:00:09 +0200</pubDate>
-      <ext:first_seen>Sat, 02 May 2026 06:44:45 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Apr 2026 00:00:09 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 02 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Kein Betrieb [30.04.2026 – 02.05.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[30.04.2026 – 02.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
