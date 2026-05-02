@@ -43,8 +43,13 @@ def test_wrapper_preserves_stations_json_on_validation_failure(
     real_stations = REPO_ROOT / "data" / "stations.json"
     original_bytes = real_stations.read_bytes()
 
-    # Replace sub-script subprocess invocations with no-ops.
-    monkeypatch.setattr(wrapper.subprocess, "run", lambda *a, **kw: None)
+    # Replace sub-script subprocess invocations with no-ops. String target form
+    # keeps mypy --no-implicit-reexport happy without broadening the mock — the
+    # patch still applies only to subprocess.run as accessed through
+    # scripts.update_all_stations, not globally.
+    monkeypatch.setattr(
+        "scripts.update_all_stations.subprocess.run", lambda *a, **kw: None
+    )
 
     # Force validation to fail with a provider_issue.
     failing_report = ValidationReport(
@@ -77,9 +82,6 @@ def test_wrapper_preserves_stations_json_on_validation_failure(
 
 def test_wrapper_atomic_on_success(tmp_path: Path) -> None:
     """Bei Erfolg ist data/stations.json nach dem Lauf valide."""
-    # Setup: aktueller Stand
-    stations_before = (REPO_ROOT / "data" / "stations.json").read_text(encoding="utf-8")
-
     # Run the wrapper without modifications — should succeed if main is clean.
     result = subprocess.run(
         [sys.executable, str(REPO_ROOT / "scripts" / "update_all_stations.py")],  # noqa: S603
