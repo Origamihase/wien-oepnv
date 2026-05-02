@@ -144,7 +144,8 @@ class ValidationReport:
             lines.append("## Cross station ID issues")
             for cross_issue in self.cross_station_id_issues:
                 lines.append(
-                    f"- {cross_issue.identifier} ({cross_issue.name}): alias {cross_issue.alias!r} collides with {cross_issue.colliding_field} of {cross_issue.colliding_identifier} ({cross_issue.colliding_name})"
+                    f"- {cross_issue.identifier} ({cross_issue.name}): alias {cross_issue.alias!r} collides with "
+                    f"{cross_issue.colliding_field} of {cross_issue.colliding_identifier} ({cross_issue.colliding_name})"
                 )
             lines.append("")
 
