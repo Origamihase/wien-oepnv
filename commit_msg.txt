@@ -1,0 +1,20 @@
+chore(ci): refresh action pin tag comments after Dependabot major bumps
+
+Dependabot updates the pinned SHA but leaves the # vN tag annotation
+unchanged on major bumps (upstream behavior). After PRs #1089/#1091/#1092
+this left several `uses:` lines with SHAs from v6/v7 but # v4/# v5
+comments — misleading for code review.
+
+This restores consistency by setting the major-version tag comment
+on all four affected pin SHAs:
+
+  actions/checkout       de0fac2e -> # v6
+  actions/setup-python   a309ff8b -> # v6
+  actions/upload-artifact 043fb46d -> # v7
+  github/codeql-action   e46ed2cb -> # v4
+
+No version changes, no logic changes — only tag comments. The major-tag
+style (# vN) was already the repo convention and stays stable across
+future patch-level bumps.
+
+Closes followup from the May 2026 Dependabot wave.
