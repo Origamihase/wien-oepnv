@@ -476,7 +476,7 @@ def refresh_access_credentials() -> str:
 refresh_access_credentials()
 
 
-class VorAuth(AuthBase):
+class VorAuth(AuthBase):  # type: ignore[misc]
     """
     Injects VOR access credentials into the request via query parameter,
     only if not already authenticated via header.
@@ -790,6 +790,8 @@ def _parse_dt(date_str: Any, time_str: Any) -> datetime | None:
 
 
 def _format_date_range(start: datetime | None, end: datetime | None) -> str:
+    start_local: datetime | None = None
+    end_local: datetime | None = None
     if not start and not end:
         return ""
     if start:
@@ -797,15 +799,18 @@ def _format_date_range(start: datetime | None, end: datetime | None) -> str:
     if end:
         end_local = end.astimezone(ZONE_VIENNA)
     if start and not end:
+        assert start_local is not None  # noqa: S101  # nosec B101
         return f"Seit {start_local.strftime('%d.%m.%Y')}"
     if start and end:
         if end < start:
             end = None
             return _format_date_range(start, None)
+        assert start_local is not None and end_local is not None  # noqa: S101  # nosec B101
         if start_local.date() == end_local.date():
             return f"{start_local.strftime('%d.%m.%Y')} {start_local.strftime('%H:%M')}–{end_local.strftime('%H:%M')}"
         return f"{start_local.strftime('%d.%m.%Y')}–{end_local.strftime('%d.%m.%Y')}"
     if end:
+        assert end_local is not None  # noqa: S101  # nosec B101
         return f"Bis {end_local.strftime('%d.%m.%Y')}"
     return ""
 
@@ -1091,8 +1096,6 @@ def resolve_station_ids(names: Iterable[str]) -> List[str]:
                         stops = location_list.get("Stop") or []
             if isinstance(stops, Mapping):
                 stops = [stops]
-            if not isinstance(stops, list):
-                continue
             for stop in stops:
                 if not isinstance(stop, Mapping):
                     continue
@@ -1151,7 +1154,7 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
     with _QUOTA_LOCK:
         # Fail-fast check using memory cache
         if _QUOTA_CACHE["date"] == date_iso and _QUOTA_CACHE["count"] + _QUOTA_CACHE["unsaved_delta"] >= MAX_REQUESTS_PER_DAY:
-            return _QUOTA_CACHE["count"] + _QUOTA_CACHE["unsaved_delta"]
+            return cast(int, _QUOTA_CACHE["count"] + _QUOTA_CACHE["unsaved_delta"])
 
         # Fast path: update memory cache and defer file writes to reduce I/O bottleneck
         if _QUOTA_CACHE["date"] != date_iso:
@@ -1223,9 +1226,9 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
                 log.warning("Failed to save request count (lock error): %s", e)
                 return MAX_REQUESTS_PER_DAY + 1
 
-            return new_total
+            return cast(int, new_total)
 
-        return current_total
+        return cast(int, current_total)
 
 
 def _parse_retry_after(response: requests.Response) -> float | None:
@@ -1248,7 +1251,7 @@ def _parse_retry_after(response: requests.Response) -> float | None:
         parsed = parsed.replace(tzinfo=timezone.utc)
     now = datetime.now(timezone.utc)
     delay = (parsed - now).total_seconds()
-    return max(delay, 0.0)
+    return cast('float | None', max(delay, 0.0))
 
 
 def _log_retry_after_warning(response: requests.Response, station_id: str) -> None:

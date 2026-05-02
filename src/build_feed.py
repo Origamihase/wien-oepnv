@@ -53,7 +53,7 @@ from utils.cache import (
     cache_modified_at,
     read_cache as _core_read_cache,
     register_cache_alert_hook,
-)  # type: ignore
+)
 from utils.files import atomic_write
 from utils.http import validate_http_url
 from utils.locking import file_lock
@@ -134,7 +134,7 @@ def init_providers() -> None:
 
 def _provider_display_name(fetch: Any, env: Optional[str] = None) -> str:
     """Resolve the display name for a provider based on its loader or env var."""
-    return resolve_provider_name(fetch, env)
+    return cast(str, resolve_provider_name(fetch, env))
 
 
 def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
@@ -176,7 +176,7 @@ def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
 
 def _provider_statuses() -> List[Tuple[str, bool]]:
     """Return a list of (name, enabled) tuples for all registered providers."""
-    return provider_statuses()
+    return cast(list[tuple[str, bool]], provider_statuses())
 
 
 def _log_startup_summary(statuses: List[Tuple[str, bool]]) -> None:
@@ -478,7 +478,7 @@ def _parse_datetime(value: Any) -> Optional[datetime]:
             if parsed.tzinfo is None:
                 # Assume Vienna time for naive strings (e.g. from legacy cache)
                 parsed = parsed.replace(tzinfo=_VIENNA_TZ)
-            return parsed
+            return cast('datetime | None', parsed)
         except (ValueError, parser.ParserError) as exc:
             log.debug("Datetime-Parsing fehlgeschlagen für %r (%s)", value, exc)
 
@@ -729,7 +729,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                 return
             # Cast raw dicts to FeedItem for typing compliance after normalization
             _normalize_item_datetimes(result)
-            typed_result = cast(List[FeedItem], result)
+            typed_result = result
             items.extend(typed_result)
             count = len(result)
             if count == 0:
@@ -759,13 +759,15 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
             name = getattr(fetch, "__name__", str(fetch))
             provider_name = provider_names.get(fetch, _provider_display_name(fetch))
             report.provider_started(provider_name)
+            result: list[FeedItem] | None = None
             try:
                 result = fetch()
             except Exception as exc:
                 log.exception("%s fetch fehlgeschlagen: %s", name, exc)
                 report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
                 continue
-            _merge_result(fetch, result, provider_name)
+            if result is not None:
+                _merge_result(fetch, result, provider_name)
 
         if not network_fetchers:
             return items
@@ -1092,7 +1094,7 @@ def _dedupe_items(items: List[FeedItem]) -> List[FeedItem]:
 
         candidates: List[datetime] = []
         for field_name in ("pubDate", "first_seen", "starts_at"):
-            value = it.get(field_name)  # type: ignore
+            value = it.get(field_name)
             if isinstance(value, datetime):
                 candidates.append(_to_utc(value))
             else:
@@ -1484,7 +1486,7 @@ def _make_rss(
     for placeholder, cdata in item_replacements.items():
         xml_str = xml_str.replace(placeholder, cdata)
 
-    return xml_str
+    return cast(str, xml_str)
 
 
 def lint() -> int:

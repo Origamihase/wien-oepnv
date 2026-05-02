@@ -11,14 +11,14 @@ from contextlib import contextmanager
 from typing import Any, Iterator, MutableMapping
 
 try:  # pragma: no cover - platform dependent
-    import fcntl  # type: ignore
+    import fcntl
 except ModuleNotFoundError:  # pragma: no cover
-    fcntl = None  # type: ignore
+    fcntl = None  # type: ignore[assignment]
 
 try:  # pragma: no cover - platform dependent
-    import msvcrt  # type: ignore
+    import msvcrt
 except ModuleNotFoundError:  # pragma: no cover
-    msvcrt = None  # type: ignore
+    msvcrt = None  # type: ignore[assignment]
 
 log = logging.getLogger(__name__)
 
@@ -84,7 +84,7 @@ def _acquire_file_lock(fileobj: Any, exclusive: bool, timeout: float = 15.0) -> 
                     time.sleep(0.1)
                 elif exc.errno != errno.EINTR:
                     raise
-    elif msvcrt is not None:  # pragma: no cover - Windows fallback
+    elif getattr(os, "name", "") == "nt" and msvcrt is not None:  # type: ignore[unreachable]
         length = _lock_length(fileobj)
         mode = msvcrt.LK_NBLCK if exclusive else getattr(msvcrt, 'LK_NBRLCK', msvcrt.LK_NBLCK)
         current = None
@@ -121,7 +121,7 @@ def _release_file_lock(fileobj: Any) -> None:
             except OSError as exc:  # pragma: no cover - rare EINTR handling
                 if exc.errno != errno.EINTR:
                     raise
-    elif msvcrt is not None:  # pragma: no cover - Windows fallback
+    elif getattr(os, "name", "") == "nt" and msvcrt is not None:  # type: ignore[unreachable]
         length = _lock_length(fileobj)
         unlock_flag = getattr(msvcrt, "LK_UNLCK", getattr(msvcrt, "LK_UNLOCK", None))
         if unlock_flag is None:  # pragma: no cover - extremely unlikely

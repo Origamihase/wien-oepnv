@@ -166,11 +166,8 @@ def _ensure_source_set(station: StationEntry) -> set[str]:
     source = station.get("source")
     if source is None:
         return set()
-    if isinstance(source, list):
-        return set(source)
-    if isinstance(source, str):
-        return {s.strip() for s in source.split(",") if s.strip()}
-    return {str(source)}
+
+    return {s.strip() for s in str(source).split(",") if s.strip()}
 
 
 def _update_station(

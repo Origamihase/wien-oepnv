@@ -7,7 +7,7 @@ import logging
 import os
 from dataclasses import dataclass
 from types import ModuleType
-from typing import Any, Callable, Dict, Iterable, List, Tuple
+from typing import Any, Callable, Dict, Iterable, List, Tuple, cast
 
 try:  # pragma: no cover - allow running as script or package
     from utils.cache import read_cache
@@ -92,7 +92,7 @@ def resolve_provider_name(loader: ProviderLoader, env: str | None) -> str:
                 return spec.cache_key
     name = getattr(loader, "__name__", None)
     if name:
-        return name
+        return cast(str, name)
     return str(loader)
 
 

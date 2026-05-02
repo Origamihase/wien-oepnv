@@ -239,7 +239,7 @@ class _HTMLToTextParser(HTMLParser):
         self.parts: list[str] = []
         self._ignore_depth = 0
 
-    def handle_starttag(self, tag: str, attrs) -> None:  # noqa: D401, ANN001
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:  # noqa: D401, ANN001
         tag = tag.lower()
         if tag in self._IGNORE_TAGS:
             self._ignore_depth += 1
@@ -269,7 +269,7 @@ class _HTMLToTextParser(HTMLParser):
         elif tag in self._BLOCK_TAGS or tag in {"ul", "ol"}:
             self.parts.append("\n")
 
-    def handle_startendtag(self, tag: str, attrs) -> None:  # noqa: D401, ANN001
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:  # noqa: D401, ANN001
         tag = tag.lower()
         if self._ignore_depth > 0:
             return

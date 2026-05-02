@@ -17,7 +17,7 @@ import types
 import unicodedata
 import secrets
 import queue
-from typing import Any, Container, Mapping, MutableMapping, TypeGuard, Union
+from typing import Any, Container, Mapping, MutableMapping, TypeGuard, Union, cast
 from urllib.parse import parse_qsl, urlencode, urljoin, urlparse
 
 import requests
@@ -283,7 +283,7 @@ def _strip_sensitive_params(url: str) -> str:
         return url
 
 
-def _replace_auth(match: re.Match) -> str:
+def _replace_auth(match: 're.Match[Any]') -> str:
     """Callback for explicit auth sanitization."""
     scheme = match.group("scheme")
     # Handle optional slash group which might be None or empty
@@ -354,7 +354,7 @@ def _sanitize_url_for_error(url: str) -> str:
         return "invalid_url"
 
 
-class TimeoutHTTPAdapter(HTTPAdapter):
+class TimeoutHTTPAdapter(HTTPAdapter):  # type: ignore[misc]
     """HTTPAdapter that enforces a default timeout."""
 
     def __init__(self, *args: Any, timeout: int | float | tuple[float, float] | None = None, **kwargs: Any) -> None:
@@ -696,7 +696,7 @@ def _get_port(parsed: Any) -> int | None:
     """Get the port from a parsed URL, handling default ports."""
     try:
         if parsed.port is not None:
-            return parsed.port
+            return cast('int | None', parsed.port)
     except ValueError:
         pass
     if parsed.scheme == "http":
@@ -765,7 +765,7 @@ def session_with_retries(
     session = requests.Session()
 
     # Security: Strip sensitive headers on cross-origin redirects
-    session.rebuild_auth = types.MethodType(_safe_rebuild_auth, session)  # type: ignore
+    session.rebuild_auth = types.MethodType(_safe_rebuild_auth, session)
 
     # Security: Limit redirects to prevent infinite loops and resource exhaustion (DoS)
     session.max_redirects = 10
@@ -933,7 +933,7 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
         try:
             answers_v6 = resolver.resolve(hostname, "AAAA")
             for rdata in answers_v6:
-                results.append((socket.AF_INET6, socket.SOCK_STREAM, 6, "", (rdata.address, 0, 0, 0)))  # type: ignore
+                results.append((socket.AF_INET6, socket.SOCK_STREAM, 6, "", (rdata.address, 0, 0, 0)))  # type: ignore[arg-type]
         except (dns.resolver.NoAnswer, dns.resolver.NXDOMAIN, dns.resolver.NoNameservers):
             pass
 
@@ -1423,7 +1423,7 @@ def request_safe(
             else:
                 if isinstance(timeout, (int, float)):
                     # Scalar timeout logic remains similar (using remaining_time)
-                    current_timeout = remaining_time # type: ignore
+                    current_timeout = remaining_time
                 else:
                     # Tuple case: (connect, read).
                     # We should adjust the tuple? The requirement says:
@@ -1452,8 +1452,7 @@ def request_safe(
                          # Cap read timeout
                          new_read = min(timeout[1], remaining_time)
                          current_timeout = (new_connect, new_read)
-                    else:
-                         current_timeout = timeout
+
 
             # 1. Validate and Pin
             safe_url = validate_http_url(current_url, check_dns=False)
@@ -1743,7 +1742,7 @@ def fetch_content_safe(
         raise_for_status=True,
         **kwargs,
     )
-    return response.content
+    return cast(bytes, response.content)
 
 
 def cleanup_http_sessions() -> None:

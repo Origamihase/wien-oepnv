@@ -8,7 +8,7 @@ import secrets
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Iterable, Iterator, List, Optional, Sequence, Set, cast
+from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Set, cast
 
 import requests
 
@@ -17,9 +17,9 @@ try:
     from utils.http import read_response_safe, session_with_retries, verify_response_ip
     from utils.logging import sanitize_log_arg, sanitize_log_message
 except ModuleNotFoundError:
-    from ..utils.env import read_secret  # type: ignore
-    from ..utils.http import read_response_safe, session_with_retries, verify_response_ip  # type: ignore
-    from ..utils.logging import sanitize_log_arg, sanitize_log_message  # type: ignore
+    from ..utils.env import read_secret
+    from ..utils.http import read_response_safe, session_with_retries, verify_response_ip
+    from ..utils.logging import sanitize_log_arg, sanitize_log_message
 
 from .quota import MonthlyQuota, QuotaConfig
 from .tiling import Tile
@@ -42,7 +42,7 @@ _MAX_ERROR_DETAIL = 200
 def _sanitize_error_detail(detail: str, secrets: Optional[List[str]] = None) -> str:
     # Security: Mask secrets and strip control characters to avoid log injection.
     cleaned = sanitize_log_message(detail, secrets=secrets)
-    return cleaned[:_MAX_ERROR_DETAIL]
+    return cast(str, cleaned[:_MAX_ERROR_DETAIL])
 
 
 def _env_int(name: str, default: int, min_v: int | None = None, max_v: int | None = None) -> int:
@@ -376,7 +376,7 @@ class GooglePlacesClient:
                             ) from exc
                         if quota_kind and self._quota_active:
                             self._record_successful_request(quota_kind)
-                        return payload
+                        return cast(Dict[str, object], payload)
 
                     if response.status_code in {429, 500, 502, 503, 504}:
                         if response.status_code != 429:
@@ -420,6 +420,7 @@ class GooglePlacesClient:
 
             # If we can access response, let's extract Retry-After
             retry_after_val = None
+            header: str | None = None
             try:
                 if isinstance(last_error, requests.RequestException) and last_error.response is not None:
                     header = last_error.response.headers.get("Retry-After")
@@ -466,13 +467,14 @@ class GooglePlacesClient:
 
         details = payload.get("details")
         if isinstance(details, list):
-            for detail in details:
-                if not isinstance(detail, dict):
+            for detail_item in details:
+                if not isinstance(detail_item, dict):
                     continue
-                detail_type = detail.get("@type")
+                detail_dict = cast('Dict[str, Any]', detail_item)
+                detail_type = detail_dict.get("@type")
                 if not isinstance(detail_type, str) or not detail_type.endswith("BadRequest"):
                     continue
-                violations = detail.get("fieldViolations")
+                violations = detail_dict.get("fieldViolations")
                 if not isinstance(violations, list) or not violations:
                     continue
                 parts = []
@@ -509,8 +511,6 @@ class GooglePlacesClient:
         seen: Set[str] = set()
         sanitized: List[str] = []
         for item in raw_types:
-            if not isinstance(item, str):
-                continue
             candidate = item.strip().lower()
             if not candidate:
                 continue
@@ -528,7 +528,7 @@ class GooglePlacesClient:
     def _backoff(self, attempt: int) -> float:
         base = 0.5 * (2 ** (attempt - 1))
         jitter = secrets.SystemRandom().uniform(0, 0.5)
-        return base + jitter
+        return cast(float, base + jitter)
 
     @property
     def _quota_active(self) -> bool:
@@ -577,14 +577,14 @@ def get_places_api_key() -> str:
 
     access_id = read_secret("GOOGLE_ACCESS_ID")
     if access_id:
-        return access_id
+        return cast(str, access_id)
 
     legacy_key = read_secret("GOOGLE_MAPS_API_KEY")
     if legacy_key:
         LOGGER.warning(
             "DEPRECATED: use GOOGLE_ACCESS_ID instead of GOOGLE_MAPS_API_KEY"
         )
-        return legacy_key
+        return cast(str, legacy_key)
 
     message = "Missing GOOGLE_ACCESS_ID (preferred) or GOOGLE_MAPS_API_KEY."
     LOGGER.error(message)
