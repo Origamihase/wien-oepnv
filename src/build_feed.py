@@ -29,7 +29,7 @@ from typing import Any, Dict, List, Optional, Sequence, Set, Tuple, Union, cast,
 from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
 
-from .feed_types import FeedItem
+from feed_types import FeedItem
 from feed import config as feed_config
 from feed.merge import deduplicate_fuzzy
 from feed.logging import configure_logging

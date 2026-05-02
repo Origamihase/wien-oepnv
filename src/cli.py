@@ -5,11 +5,14 @@ import argparse
 import os
 import runpy
 import sys
-
 from collections.abc import Mapping, Sequence, Iterator
 from contextlib import contextmanager
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
+
+_src_path = str(Path(__file__).resolve().parent)
+if _src_path not in sys.path:
+    sys.path.insert(0, _src_path)
 
 if TYPE_CHECKING:
     # mypy handling: assume package context or explicit import
