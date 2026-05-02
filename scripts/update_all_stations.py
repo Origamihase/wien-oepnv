@@ -11,6 +11,11 @@ import tempfile
 from pathlib import Path
 from typing import Sequence
 
+from src.utils.stations_validation import (
+    StationValidationError,
+    validate_stations,
+)
+
 _SCRIPT_ORDER = (
     "update_station_directory.py",
     "update_vor_stations.py",
@@ -91,16 +96,34 @@ def main(argv: Sequence[str] | None = None) -> int:
                 return exc.returncode or 1
 
         # Run validation
-        validate_script = script_dir / "validate_stations.py"
-        validate_cmd = [args.python, str(validate_script), "--stations", str(tmp_stations_path)]
         logging.info("Validating merged %s", tmp_stations_path)
         try:
-            subprocess.run(validate_cmd, check=True, shell=False, timeout=300)  # nosec B603
-        except subprocess.CalledProcessError as exc:
+            report = validate_stations(tmp_stations_path)
+        except StationValidationError as exc:
+            logging.error("Validation could not be completed: %s", exc)
             logging.error(
                 "Validation failed on the new stations data. Working tree left unmodified."
             )
-            return exc.returncode or 1
+            return 1
+
+        if report.provider_issues or report.cross_station_id_issues:
+            for p_issue in report.provider_issues:
+                logging.error("Provider issue: %s", p_issue.reason)
+            for c_issue in report.cross_station_id_issues:
+                logging.error(
+                    "Cross-station alias conflict: alias '%s' in '%s' (%s) "
+                    "collides with %s of '%s' (%s)",
+                    c_issue.alias,
+                    c_issue.name,
+                    c_issue.identifier,
+                    c_issue.colliding_field,
+                    c_issue.colliding_name,
+                    c_issue.colliding_identifier,
+                )
+            logging.error(
+                "Validation failed on the new stations data. Working tree left unmodified."
+            )
+            return 1
 
         # Copy back to target on success
         shutil.copy(tmp_stations_path, target_stations_json)

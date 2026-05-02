@@ -24,30 +24,54 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_wrapper_preserves_stations_json_on_validation_failure(tmp_path: Path) -> None:
-    """Bei Validation-Fehler wird data/stations.json NICHT modifiziert."""
-    # Setup: kopiere echte data/stations.json als Backup
+def test_wrapper_preserves_stations_json_on_validation_failure(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """Bei Validation-Fehler bleibt data/stations.json bytewise unverändert.
+
+    Verfahren: sub-scripts werden zu no-ops gemockt (subprocess.run gibt
+    None zurück), validate_stations liefert einen Report mit einem
+    provider_issue. Wrapper.main() läuft in-process, damit die Mocks
+    greifen. Der initiale shutil.copy2 hat tmp_stations_path bereits
+    mit dem unveränderten Original gefüllt; ohne erfolgreiche Validation
+    findet das abschließende shutil.copy zurück nie statt, das Original
+    bleibt bytewise erhalten.
+    """
+    from src.utils.stations_validation import ProviderIssue, ValidationReport
+    from scripts import update_all_stations as wrapper
+
     real_stations = REPO_ROOT / "data" / "stations.json"
-    backup = tmp_path / "stations.json.backup"
-    backup.write_text(real_stations.read_text(encoding="utf-8"), encoding="utf-8")
+    original_bytes = real_stations.read_bytes()
 
-    # Inject einen Fehler in einer der Sub-Skript-Quellen, sodass
-    # der Lauf einen Validation-Fehler produziert.
-    # Konkret: monkey-patch STATIC_VOR_ENTRIES um einen 900100-Konflikt
-    # einzuführen — dieser sollte vom Validator gefangen werden.
-    # ALTERNATIVE: einen kontrollierten Validation-Fehler via Test-Fixture
-    # erzeugen, ohne echte Sub-Skripte zu modifizieren.
+    # Replace sub-script subprocess invocations with no-ops.
+    monkeypatch.setattr(wrapper.subprocess, "run", lambda *a, **kw: None)
 
-    # Strategy: Run the wrapper with a known-bad input by mocking the
-    # subprocess.run for one sub-script to inject a conflict. If that
-    # is too invasive for this test, use a separate fixture.
+    # Force validation to fail with a provider_issue.
+    failing_report = ValidationReport(
+        total_stations=0,
+        duplicates=(),
+        alias_issues=(),
+        coordinate_issues=(),
+        gtfs_issues=(),
+        security_issues=(),
+        cross_station_id_issues=(),
+        provider_issues=(
+            ProviderIssue(
+                identifier="<test>",
+                name="<test>",
+                reason="forced validation failure for regression test",
+            ),
+        ),
+        gtfs_stop_count=0,
+    )
+    monkeypatch.setattr(wrapper, "validate_stations", lambda *a, **kw: failing_report)
 
-    # Erwartung: Wrapper exited non-zero, data/stations.json unverändert
-    # (gleicher Inhalt wie backup).
-    pytest.skip(
-        "Test-Strategy für Validation-Failure-Injection muss noch finalisiert werden — "
-        "siehe Wrapper-Implementierung. Test als Skeleton angelegt, eigentliche Logik "
-        "kommt im Folge-PR oder bei finaler Wrapper-Form."
+    exit_code = wrapper.main([])
+
+    assert exit_code == 1, f"Wrapper should return 1 on validation failure, got {exit_code}"
+    assert real_stations.read_bytes() == original_bytes, (
+        "Wrapper modified data/stations.json on validation failure — "
+        "copy-on-write contract violated"
     )
 
 
