@@ -77,6 +77,15 @@ class CrossStationIDIssue:
 
 
 @dataclass(frozen=True)
+class ProviderIssue:
+    """VOR/OEBB consistency issue (e.g. invalid VOR identifier, OEBB collision)."""
+
+    identifier: str
+    name: str
+    reason: str
+
+
+@dataclass(frozen=True)
 class ValidationReport:
     """Summary returned by :func:`validate_stations`."""
 
@@ -87,6 +96,7 @@ class ValidationReport:
     gtfs_issues: tuple[GTFSIssue, ...]
     security_issues: tuple[SecurityIssue, ...]
     cross_station_id_issues: tuple[CrossStationIDIssue, ...]
+    provider_issues: tuple[ProviderIssue, ...]
     gtfs_stop_count: int
 
     @property
@@ -98,6 +108,7 @@ class ValidationReport:
             or self.gtfs_issues
             or self.security_issues
             or self.cross_station_id_issues
+            or self.provider_issues
         )
 
     def to_markdown(self) -> str:
@@ -109,6 +120,7 @@ class ValidationReport:
         lines.append(f"*Coordinate anomalies*: {len(self.coordinate_issues)}")
         lines.append(f"*GTFS mismatches*: {len(self.gtfs_issues)}")
         lines.append(f"*Security warnings*: {len(self.security_issues)}")
+        lines.append(f"*Provider issues*: {len(self.provider_issues)}")
         lines.append("")
 
         if self.security_issues:
@@ -116,6 +128,14 @@ class ValidationReport:
             for sec_issue in self.security_issues:
                 lines.append(
                     f"- {sec_issue.identifier} ({sec_issue.name}): {sec_issue.reason}"
+                )
+            lines.append("")
+
+        if self.provider_issues:
+            lines.append("## Provider issues (VOR/OEBB)")
+            for provider_issue in self.provider_issues:
+                lines.append(
+                    f"- {provider_issue.identifier} ({provider_issue.name}): {provider_issue.reason}"
                 )
             lines.append("")
 
@@ -184,6 +204,7 @@ def validate_stations(
     gtfs_issues = tuple(_find_gtfs_issues(stations, gtfs_stop_ids))
     security_issues = tuple(_find_security_issues(stations))
     cross_station_id_issues = tuple(_find_cross_station_id_conflicts(stations))
+    provider_issues = tuple(_find_provider_issues(stations))
 
     return ValidationReport(
         total_stations=len(stations),
@@ -193,6 +214,7 @@ def validate_stations(
         gtfs_issues=gtfs_issues,
         security_issues=security_issues,
         cross_station_id_issues=cross_station_id_issues,
+        provider_issues=provider_issues,
         gtfs_stop_count=gtfs_count,
     )
 
@@ -422,6 +444,10 @@ def _find_gtfs_issues(
 
 _UNSAFE_CHARS_RE = re.compile(r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\u2028-\u202e\u2066-\u2069]")
 
+# Historically VOR identifiers were six digits starting with "9". In practice some
+# legitimate identifiers are five digits (e.g. "93010"), so we accept either.
+_VOR_ID_PATTERN = re.compile(r"9\d{4,5}")
+
 
 def _find_cross_station_id_conflicts(
     stations: Sequence[Mapping[str, object]]
@@ -460,6 +486,75 @@ def _find_cross_station_id_conflicts(
                             colliding_name=str(colliding_entry.get("name", "")).strip() or "<unknown>",
                             colliding_field=field,
                         )
+
+
+def _extract_source_tokens(value: object) -> set[str]:
+    """Return the set of provider source tokens for a stations entry.
+
+    Mirrors the behaviour of the inline logic that previously lived in
+    ``scripts/validate_stations.py``: comma-separated strings are split and
+    stripped, lists are taken as-is (filtered to strings).
+    """
+    if isinstance(value, str):
+        return {token.strip() for token in value.split(",") if token.strip()}
+    if isinstance(value, list):
+        return {item for item in value if isinstance(item, str)}
+    return set()
+
+
+def _find_provider_issues(
+    stations: Sequence[Mapping[str, object]]
+) -> Iterator[ProviderIssue]:
+    """Find VOR/OEBB consistency issues.
+
+    Replicates the checks from the previous inline implementation in
+    ``scripts/validate_stations.py``:
+
+    1. At least two stations must declare VOR as a source.
+    2. Each VOR station's ``bst_id`` and ``bst_code`` must match the VOR id
+       pattern (``_VOR_ID_PATTERN``).
+    3. No VOR station's ``bst_code`` may collide with the ``bst_code`` of any
+       OEBB-sourced station.
+    """
+    vor_entries: list[Mapping[str, object]] = []
+    oebb_codes: set[object] = set()
+
+    for entry in stations:
+        sources = _extract_source_tokens(entry.get("source"))
+        if "vor" in sources:
+            vor_entries.append(entry)
+        if "oebb" in sources:
+            bst_code = entry.get("bst_code")
+            if bst_code:
+                oebb_codes.add(bst_code)
+
+    if len(vor_entries) < 2:
+        yield ProviderIssue(
+            identifier="<global>",
+            name="<global>",
+            reason="Need at least two VOR entries",
+        )
+        return
+
+    for entry in vor_entries:
+        identifier = _format_identifier(entry)
+        name = str(entry.get("name", "")).strip() or "<unknown>"
+        for key in ("bst_id", "bst_code"):
+            value = entry.get(key)
+            if not isinstance(value, str) or not _VOR_ID_PATTERN.fullmatch(value):
+                yield ProviderIssue(
+                    identifier=identifier,
+                    name=name,
+                    reason=f"Invalid {key} for VOR: {value}",
+                )
+
+    for entry in vor_entries:
+        if entry.get("bst_code") in oebb_codes:
+            yield ProviderIssue(
+                identifier=_format_identifier(entry),
+                name=str(entry.get("name", "")).strip() or "<unknown>",
+                reason="VOR bst_code collides with OEBB",
+            )
 
 
 def _find_security_issues(

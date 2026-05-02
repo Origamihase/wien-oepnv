@@ -1,17 +1,26 @@
 #!/usr/bin/env python3
-"""Validate station directory entries for VOR metadata."""
+"""Validate station directory entries for VOR metadata.
+
+Thin CLI wrapper around :func:`src.utils.stations_validation.validate_stations`.
+Exit code semantics are preserved from the previous inline implementation:
+only ``provider_issues`` and ``cross_station_id_issues`` trigger a non-zero
+exit. Other issue categories (alias, coordinate, GTFS, security, duplicate)
+are tolerated to match historical CLI behaviour and to keep the
+``scripts/update_all_stations.py`` wrapper's strictness contract unchanged.
+"""
 
 from __future__ import annotations
 
 import argparse
-import json
-import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from src.utils.stations_validation import validate_stations
+from src.utils.stations_validation import (  # noqa: E402
+    StationValidationError,
+    validate_stations,
+)
 
 
 def main() -> int:
@@ -25,87 +34,31 @@ def main() -> int:
         help="Path to stations.json to validate (default: data/stations.json)",
     )
     args = parser.parse_args()
-    stations_path = args.stations
 
     try:
-        data = json.loads(stations_path.read_text(encoding="utf-8"))
-        if isinstance(data, dict):
-            stations = data.get("stations", [])
-        elif isinstance(data, list):
-            stations = data
-        else:
-            stations = []
-    except FileNotFoundError:
-        print("data/stations.json not found", file=sys.stderr)
-        return 1
-    except json.JSONDecodeError as exc:
-        print(f"Invalid JSON in data/stations.json: {exc}", file=sys.stderr)
+        report = validate_stations(args.stations)
+    except StationValidationError as exc:
+        print(str(exc), file=sys.stderr)
         return 1
 
-    vor_entries = []
-    for station in stations:
-        source = station.get("source")
-        is_vor = False
-        if isinstance(source, str):
-            parts = [s.strip() for s in source.split(",")]
-            if "vor" in parts:
-                is_vor = True
-        elif isinstance(source, list):
-            if "vor" in source:
-                is_vor = True
+    has_error = False
 
-        if is_vor:
-            vor_entries.append(station)
+    if report.provider_issues:
+        for p_issue in report.provider_issues:
+            print(p_issue.reason, file=sys.stderr)
+        has_error = True
 
-    if len(vor_entries) < 2:
-        print("Need at least two VOR entries", file=sys.stderr)
-        return 1
-
-    # Historically, we expected all VOR identifiers to start with "900" and be six
-    # digits long. In practice there are legitimate five digit identifiers such as
-    # "93010" which caused the validation to reject otherwise valid data. Allow
-    # either five or six digit numeric identifiers starting with "9".
-    pattern = re.compile(r"9\d{4,5}")
-    for station in vor_entries:
-        for key in ("bst_id", "bst_code"):
-            value = station.get(key)
-            if not isinstance(value, str) or not pattern.fullmatch(value):
-                print(f"Invalid {key} for VOR: {value}", file=sys.stderr)
-                return 1
-
-    oebb_codes = set()
-    for station in stations:
-        source = station.get("source")
-        is_oebb = False
-        if isinstance(source, str):
-            parts = [s.strip() for s in source.split(",")]
-            if "oebb" in parts:
-                is_oebb = True
-        elif isinstance(source, list):
-            if "oebb" in source:
-                is_oebb = True
-
-        if is_oebb:
-            bst_code = station.get("bst_code")
-            if bst_code:
-                oebb_codes.add(bst_code)
-    conflicts = [station for station in vor_entries if station.get("bst_code") in oebb_codes]
-    if conflicts:
-        print("VOR bst_code collides with OEBB", file=sys.stderr)
-        return 1
-
-    report = validate_stations(stations_path)
     if report.cross_station_id_issues:
-        for issue in report.cross_station_id_issues:
+        for c_issue in report.cross_station_id_issues:
             print(
-                f"Cross-station alias conflict: Alias '{issue.alias}' in '{issue.name}' "
-                f"({issue.identifier}) collides with {issue.colliding_field} of "
-                f"'{issue.colliding_name}' ({issue.colliding_identifier})",
+                f"Cross-station alias conflict: Alias '{c_issue.alias}' in '{c_issue.name}' "
+                f"({c_issue.identifier}) collides with {c_issue.colliding_field} of "
+                f"'{c_issue.colliding_name}' ({c_issue.colliding_identifier})",
                 file=sys.stderr,
             )
-        return 1
+        has_error = True
 
-    return 0
+    return 1 if has_error else 0
 
 
 if __name__ == "__main__":
