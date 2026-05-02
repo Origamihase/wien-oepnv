@@ -121,6 +121,7 @@ class ValidationReport:
         lines.append(f"*GTFS mismatches*: {len(self.gtfs_issues)}")
         lines.append(f"*Security warnings*: {len(self.security_issues)}")
         lines.append(f"*Provider issues*: {len(self.provider_issues)}")
+        lines.append(f"*Cross station ID issues*: {len(self.cross_station_id_issues)}")
         lines.append("")
 
         if self.security_issues:
@@ -136,6 +137,14 @@ class ValidationReport:
             for provider_issue in self.provider_issues:
                 lines.append(
                     f"- {provider_issue.identifier} ({provider_issue.name}): {provider_issue.reason}"
+                )
+            lines.append("")
+
+        if self.cross_station_id_issues:
+            lines.append("## Cross station ID issues")
+            for cross_issue in self.cross_station_id_issues:
+                lines.append(
+                    f"- {cross_issue.identifier} ({cross_issue.name}): alias {cross_issue.alias!r} collides with {cross_issue.colliding_field} of {cross_issue.colliding_identifier} ({cross_issue.colliding_name})"
                 )
             lines.append("")
 

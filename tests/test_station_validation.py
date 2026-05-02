@@ -8,7 +8,9 @@ import pytest
 from src.utils.stations_validation import (
     AliasIssue,
     CoordinateIssue,
+    CrossStationIDIssue,
     DuplicateGroup,
+    ValidationReport,
     validate_stations,
 )
 
@@ -159,3 +161,36 @@ def test_coordinate_validation_detects_missing_and_out_of_bounds(tmp_path: Path)
             reason="coordinates look swapped (lat=16.6, lon=48.2)",
         ),
     )
+
+
+def test_markdown_rendering_contains_cross_station_id_section() -> None:
+    """to_markdown() must render cross_station_id_issues in counts and detail."""
+    issue = CrossStationIDIssue(
+        identifier="bst:1234",
+        name="Wien Mitte",
+        alias="Mitte",
+        colliding_identifier="bst:5678",
+        colliding_name="Praterstern",
+        colliding_field="bst_code",
+    )
+    report = ValidationReport(
+        total_stations=2,
+        duplicates=(),
+        alias_issues=(),
+        coordinate_issues=(),
+        gtfs_issues=(),
+        security_issues=(),
+        cross_station_id_issues=(issue,),
+        provider_issues=(),
+        gtfs_stop_count=0,
+    )
+
+    markdown = report.to_markdown()
+
+    assert "*Cross station ID issues*: 1" in markdown
+    assert "## Cross station ID issues" in markdown
+    assert "bst:1234" in markdown
+    assert "'Mitte'" in markdown
+    assert "bst_code" in markdown
+    assert "bst:5678" in markdown
+    assert "No issues detected." not in markdown
