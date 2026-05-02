@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -14,7 +15,17 @@ from src.utils.stations_validation import validate_stations
 
 
 def main() -> int:
-    stations_path = Path("data/stations.json")
+    parser = argparse.ArgumentParser(
+        description="Validate station directory entries for VOR metadata."
+    )
+    parser.add_argument(
+        "--stations",
+        type=Path,
+        default=Path("data/stations.json"),
+        help="Path to stations.json to validate (default: data/stations.json)",
+    )
+    args = parser.parse_args()
+    stations_path = args.stations
 
     try:
         data = json.loads(stations_path.read_text(encoding="utf-8"))
