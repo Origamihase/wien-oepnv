@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 02 May 2026 01:28:58 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2026 03:10:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N31: Busse halten in 5B Haltestelle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">99c0f0d91bebb27b44d688aa64a7f76e32acd8e71ce8e2fb023d1dcc8992f5fa</guid>
+      <pubDate>Sat, 02 May 2026 00:55:20 +0200</pubDate>
+      <ext:first_seen>Sat, 02 May 2026 03:10:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 02 May 2026 00:55:20 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 02 May 2026 05:00:00 +0200</ext:ends_at>
+      <description>Bauarbeiten Busse halten in 5 B Haltestelle [Am 02.05.2026]</description>
+      <content:encoded><![CDATA[Bauarbeiten Busse halten in 5 B Haltestelle<br/>[Am 02.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N46: Busse halten bei Linie 48A in Burggasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 02 May 2026 05:30:00 +0200</ext:ends_at>
       <description>Busse halten auf der Hauptfahrbahn [01.05.2026 – 02.05.2026]</description>
       <content:encoded><![CDATA[Busse halten auf der Hauptfahrbahn<br/>[01.05.2026 – 02.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[89A: Ablenkung Richtung Aspern Nord]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">24fe4ed32b42d766433487de29c162cec4e3ea89e4e416666a4a7c0597da0da5</guid>
-      <pubDate>Fri, 01 May 2026 07:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 01 May 2026 09:42:16 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 01 May 2026 07:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 08 May 2026 08:00:00 +0200</ext:ends_at>
-      <description>Bauarbeiten Wegen Straßenbausarbeiten am Hauswurzweg werden die Linien 89 A sowie Rufbuslinie 89 A umgeleitet. [01.05.2026 – 08.05.2026]</description>
-      <content:encoded><![CDATA[Bauarbeiten Wegen Straßenbausarbeiten am Hauswurzweg werden die Linien 89 A sowie Rufbuslinie 89 A umgeleitet.<br/>[01.05.2026 – 08.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
