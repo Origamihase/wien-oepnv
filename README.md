@@ -5,9 +5,9 @@
 [![Update ÖBB Cache](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-oebb-cache.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-oebb-cache.yml)
 [![Test VOR API](https://github.com/Origamihase/wien-oepnv/actions/workflows/test-vor-api.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/test-vor-api.yml)
 
-[![Feed Build](https://github.com/origamihase/wien-oepnv/actions/workflows/build-feed.yml/badge.svg?branch=main)](https://github.com/origamihase/wien-oepnv/actions/workflows/build-feed.yml)
-[![Tests](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml/badge.svg)](https://github.com/origamihase/wien-oepnv/actions/workflows/test.yml)
-[![SEO-Checks](https://github.com/origamihase/wien-oepnv/actions/workflows/seo-guard.yml/badge.svg)](https://github.com/origamihase/wien-oepnv/actions/workflows/seo-guard.yml)
+[![Feed Build](https://github.com/Origamihase/wien-oepnv/actions/workflows/build-feed.yml/badge.svg?branch=main)](https://github.com/Origamihase/wien-oepnv/actions/workflows/build-feed.yml)
+[![Tests](https://github.com/Origamihase/wien-oepnv/actions/workflows/test.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/test.yml)
+[![SEO-Checks](https://github.com/Origamihase/wien-oepnv/actions/workflows/seo-guard.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/seo-guard.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Subscribe to Feed](https://img.shields.io/badge/RSS-Subscribe_to_Feed-orange?style=flat&logo=rss)](https://origamihase.github.io/wien-oepnv/feed.xml)
 
@@ -52,6 +52,9 @@ Der Feed-Bau folgt einem klaren Ablauf:
 | `docs/`               | Audit-Berichte, Referenzen, Beispiel-Feeds und das offizielle VAO/VOR-API-Handbuch.              |
 | `.github/workflows/`  | Automatisierte Jobs für Cache-Updates, Stationspflege, Feed-Erzeugung und Tests.                |
 | `tests/`              | Umfangreiche Pytest-Suite (>250 Tests) für Feed-Logik, Provider-Adapter und Utility-Funktionen.  |
+
+
+> **Hinweis zu Cache-Pfaden:** Die tatsächlichen Verzeichnisse unter `cache/` tragen einen Hash-Suffix zur Cache-Versionierung (Stand Mai 2026: `cache/wl_9d709a/`, `cache/oebb_c40d21/`, `cache/vor_929f1c/`). In dieser Dokumentation werden aus Lesbarkeitsgründen verkürzte Schreibweisen wie `cache/wl/events.json` verwendet — sie verweisen jeweils auf das aktuelle Provider-Verzeichnis.
 
 ## Repository-SEO & Promotion
 
