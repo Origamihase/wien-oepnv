@@ -23,6 +23,13 @@ _SCRIPT_ORDER = (
     "enrich_station_aliases.py",
 )
 
+_SCRIPT_OUTPUT_FLAG = {
+    "update_station_directory.py": "--output",
+    "update_vor_stations.py": "--stations",
+    "update_wl_stations.py": "--stations",
+    "enrich_station_aliases.py": "--stations",
+}
+
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -62,13 +69,6 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     script_dir = Path(__file__).resolve().parent
     target_stations_json = Path("data/stations.json").resolve()
-
-    _SCRIPT_OUTPUT_FLAG = {
-        "update_station_directory.py": "--output",
-        "update_vor_stations.py": "--stations",
-        "update_wl_stations.py": "--stations",
-        "enrich_station_aliases.py": "--stations",
-    }
 
     with tempfile.TemporaryDirectory() as tmp_dir:
         tmp_stations_path = Path(tmp_dir) / "stations.json"
