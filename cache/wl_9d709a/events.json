@@ -290,18 +290,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Schadhaftes Fahrzeug",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "be42581f83b2d228e63e72c97e3d73ea8aae9984df8e515fea08422bf818bdf7",
-    "pubDate": "2026-05-02T18:15:00+02:00",
-    "starts_at": "2026-05-02T18:15:00+02:00",
-    "ends_at": "2026-05-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-05-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Busse halten bei Linie 77A",
     "description": "Bauarbeiten Busse halten bei Linie 77A",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -434,38 +422,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Fahrtbehinderung wegen Feuerwehreinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "18e21c18dfc9a0e6df49bd46e1fa3a31a4b968e7008d0927359620c50dd246a8",
-    "pubDate": "2026-05-02T21:55:27+02:00",
-    "starts_at": "2026-05-02T21:55:33+02:00",
-    "ends_at": "2026-05-02T22:54:00+02:00",
-    "_identity": "wl|störung|L=63A|D=2026-05-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "63A: Feuerwehreinsatz Betrieb ab Niederhofstraße",
-    "description": "Feuerwehreinsatz Betrieb ab Niederhofstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2a6bb606cca3b5457a94bdefbc1370e53e873b95230510f0a8c19703e5687363",
-    "pubDate": "2026-05-02T21:55:40+02:00",
-    "starts_at": "2026-05-02T21:56:02+02:00",
-    "ends_at": "2026-05-02T22:54:00+02:00",
-    "_identity": "wl|störung|L=63A|D=2026-05-02"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "63A: Feuerwehreinsatz",
-    "description": "Linie 63A: Betrieb nur zwischen Am Rosenhügel und Niederhofstraße U. Voraussichtliche Dauer: 23:00 Uhr. Grund: Feuerwehreinsatz im Bereich Längenfeldgasse.",
+    "description": "Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "76c136b71818fd0dc187c8a2cb730e46d3b85dcc71301c791f1c311c1245376a",
     "pubDate": "2026-05-02T21:52:00+02:00",
     "starts_at": "2026-05-02T21:52:00+02:00",
     "ends_at": "2026-05-02T23:55:00+02:00",
     "_identity": "wl|störung|L=63A|D=2026-05-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Fremder Verkehrsunfall",
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "05a8cb727ca73bb01df781f7ab67a47f7452b75e040b6b9029c8a1839f707cc2",
+    "pubDate": "2026-05-02T22:18:00+02:00",
+    "starts_at": "2026-05-02T22:18:00+02:00",
+    "ends_at": "2026-05-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-05-02"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung Fremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "780fd447a88a91c51ac3c46c185e1b858fe23e32d2b8bb27ada606517750290a",
+    "pubDate": "2026-05-02T22:18:07+02:00",
+    "starts_at": "2026-05-02T22:18:07+02:00",
+    "ends_at": "2026-05-02T23:17:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-05-02"
   },
   {
     "source": "Wiener Linien",
@@ -482,13 +470,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Betriebsstörung",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "U1: Betriebsstörung",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
-    "pubDate": "2026-05-02T21:30:00+02:00",
-    "starts_at": "2026-05-02T21:30:00+02:00",
+    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
+    "pubDate": "2026-05-02T22:24:00+02:00",
+    "starts_at": "2026-05-02T22:24:00+02:00",
     "ends_at": "2026-05-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-05-02"
+    "_identity": "wl|störung|L=U1|D=2026-05-02"
   }
 ]
