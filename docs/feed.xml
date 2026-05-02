@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 02 May 2026 22:52:07 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2026 23:51:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
+      <pubDate>Sat, 02 May 2026 22:24:00 +0200</pubDate>
+      <ext:first_seen>Sat, 02 May 2026 23:51:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 02 May 2026 22:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 02 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 02.05.2026]</description>
+      <content:encoded><![CDATA[Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 02.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">05a8cb727ca73bb01df781f7ab67a47f7452b75e040b6b9029c8a1839f707cc2</guid>
+      <pubDate>Sat, 02 May 2026 22:18:00 +0200</pubDate>
+      <ext:first_seen>Sat, 02 May 2026 23:51:43 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 02 May 2026 22:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 02 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 66 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 02.05.2026]</description>
+      <content:encoded><![CDATA[Linie 66 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 02.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,30 +39,8 @@
       <ext:first_seen>Sat, 02 May 2026 12:57:30 +0200</ext:first_seen>
       <ext:starts_at>Sat, 02 May 2026 21:52:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 02 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 63 A: Betrieb nur zwischen Am Rosenhügel und Niederhofstraße U. [Am 02.05.2026]</description>
-      <content:encoded><![CDATA[Linie 63 A: Betrieb nur zwischen Am Rosenhügel und Niederhofstraße U.<br/>[Am 02.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22</guid>
-      <pubDate>Sat, 02 May 2026 21:30:00 +0200</pubDate>
-      <ext:first_seen>Sat, 02 May 2026 17:24:46 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 02 May 2026 21:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 02 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 02.05.2026]</description>
-      <content:encoded><![CDATA[Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 02.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">be42581f83b2d228e63e72c97e3d73ea8aae9984df8e515fea08422bf818bdf7</guid>
-      <pubDate>Sat, 02 May 2026 18:15:00 +0200</pubDate>
-      <ext:first_seen>Sat, 02 May 2026 19:25:25 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 02 May 2026 18:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 02 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 10 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 02.05.2026]</description>
-      <content:encoded><![CDATA[Linie 10 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 02.05.2026]]]></content:encoded>
+      <description>Linie 63 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 02.05.2026]</description>
+      <content:encoded><![CDATA[Linie 63 A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 02.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
