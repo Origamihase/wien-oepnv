@@ -53,9 +53,23 @@ def test_validation_passes_safe_chars(tmp_path):
         "stations": [
             {
                 "name": "Safe Station (Hbf)",
+                "bst_id": "900100",
+                "bst_code": "900100",
+                "vor_id": "900100",
+                "aliases": ["Safe Station (Hbf)", "Safe / Alias", "St. Pölten", "900100"],
                 "latitude": 48.0,
                 "longitude": 16.0,
-                "aliases": ["Safe Station (Hbf)", "Safe / Alias", "St. Pölten"]
+                "source": "vor"
+            },
+            {
+                "name": "Safe Station 2",
+                "bst_id": "900200",
+                "bst_code": "900200",
+                "vor_id": "900200",
+                "aliases": ["Safe Station 2", "900200"],
+                "latitude": 48.1,
+                "longitude": 16.1,
+                "source": "vor"
             }
         ]
     }
