@@ -1,4 +1,4 @@
-name: SEO Guard
+name: SEO Verify
 
 on:
   workflow_dispatch:
@@ -13,11 +13,8 @@ permissions:
   contents: read
 
 jobs:
-  guard:
+  verify:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       SITE_BASE: https://origamihase.github.io/wien-oepnv
@@ -27,127 +24,6 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           fetch-depth: 0
-
-      - name: Apply idempotent SEO fixes
-        id: seo
-        shell: bash
-        run: |
-          set -euo pipefail
-          changed=false
-
-          # --- sitemap.xml: Canonicals ---
-          if [[ -f docs/sitemap.xml ]]; then
-            before="$(sha1sum docs/sitemap.xml | awk '{print $1}')"
-            sed -E -i \
-              -e 's#<loc>https://wien-oepnv\.github\.io/?</loc>#<loc>'"$SITE_BASE"'/</loc>#g' \
-              -e 's#<loc>https://origamihase\.github\.io/wien-oepnv/?</loc>#<loc>'"$SITE_BASE"'/</loc>#g' \
-              -e 's#<loc>https://wien-oepnv\.github\.io/feed\.xml</loc>#<loc>'"$SITE_BASE"'/feed.xml</loc>#g' \
-              -e 's#<loc>https://origamihase\.github\.io/wien-oepnv/feed\.xml</loc>#<loc>'"$SITE_BASE"'/feed.xml</loc>#g' \
-              -e 's#<loc>https://wien-oepnv\.github\.io/docs/how-to/?</loc>#<loc>'"$SITE_BASE"'/docs/how-to/</loc>#g' \
-              -e 's#<loc>https://origamihase\.github\.io/wien-oepnv/docs/how-to/?</loc>#<loc>'"$SITE_BASE"'/docs/how-to/</loc>#g' \
-              -e 's#<loc>https://wien-oepnv\.github\.io/docs/reference/?</loc>#<loc>'"$SITE_BASE"'/docs/reference/</loc>#g' \
-              -e 's#<loc>https://origamihase\.github\.io/wien-oepnv/docs/reference/?</loc>#<loc>'"$SITE_BASE"'/docs/reference/</loc>#g' \
-              docs/sitemap.xml
-            after="$(sha1sum docs/sitemap.xml | awk '{print $1}')"
-            [[ "$before" != "$after" ]] && changed=true
-          fi
-
-          # --- robots.txt: Einrückungen entfernen & genau EINE Sitemap-Zeile ---
-          if [[ -f docs/robots.txt ]]; then
-            before="$(sha1sum docs/robots.txt | awk '{print $1}')"
-            # führende Leerzeichen in jeder Zeile entfernen
-            sed -E -i 's/^[[:space:]]+//g' docs/robots.txt
-            # alle vorhandenen Sitemap-Zeilen entfernen und eine normierte Zeile setzen
-            sed -E -i '/^[[:space:]]*Sitemap:/d' docs/robots.txt
-            printf 'Sitemap: %s/sitemap.xml\n' "$SITE_BASE" >> docs/robots.txt
-            after="$(sha1sum docs/robots.txt | awk '{print $1}')"
-            [[ "$before" != "$after" ]] && changed=true
-          fi
-
-          # --- feed.xml: global dedupe & SEO-Tags ---
-          if [[ -f docs/feed.xml ]]; then
-            before="$(sha1sum docs/feed.xml | awk '{print $1}')"
-
-            perl -0777 -i -pe '
-              my $base = $ENV{"SITE_BASE"} // "https://origamihase.github.io/wien-oepnv";
-              my $s = $_;
-              # Atom-Namespace ergänzen (nur wenn fehlt)
-              $s =~ s{<rss\b(?![^>]*\bxmlns:atom=)}{<rss xmlns:atom="http://www.w3.org/2005/Atom" }s;
-              # Alle bestehenden atom:link-Tags global entfernen
-              $s =~ s{(?:\r?\n)?[ \t]*<atom:link\b[^>]*?/>}{}gs;
-              # Channel-Links & Sprache normieren
-              $s =~ s{(<description>.*?</description>)(?:\s*<language>.*?</language>)?}{
-                my $desc = $1;
-                "$desc\n    <atom:link rel=\"alternate\" type=\"text/html\" href=\"$base/\"/>\n    <atom:link rel=\"self\" type=\"application/rss+xml\" href=\"$base/feed.xml\"/>\n    <language>de</language>"
-              }es;
-              $_ = $s;
-            ' docs/feed.xml
-
-            after="$(sha1sum docs/feed.xml | awk '{print $1}')"
-            [[ "$before" != "$after" ]] && changed=true
-          fi
-
-          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "changed<<$EOF" >> "$GITHUB_OUTPUT"
-          echo "${changed}" >> "$GITHUB_OUTPUT"
-          echo "$EOF" >> "$GITHUB_OUTPUT"
-
-      - name: Commit & push, or open PR if branch protected
-        if: steps.seo.outputs.changed == 'true'
-        id: publish
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name  "seo-bot"
-          git config user.email "seo-bot@users.noreply.github.com"
-          DEF="$(git remote show origin | awk '/HEAD branch/ {print $NF}')"
-          CUR="$(git rev-parse --abbrev-ref HEAD || true)"
-          BRANCH="${CUR:-$DEF}"
-          git add -A
-          git commit -m "chore(seo): robots formatting & single sitemap; global dedupe in feed; canonical URLs"
-          if git push origin "HEAD:${BRANCH}"; then
-            EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-            echo "mode<<$EOF" >> "$GITHUB_OUTPUT"
-            echo "direct" >> "$GITHUB_OUTPUT"
-            echo "$EOF" >> "$GITHUB_OUTPUT"
-          else
-            echo "Branch protection active, creating PR..."
-            PRB="seo/fix-robots-feed-canonicals"
-            git checkout -b "$PRB"
-            git push origin "HEAD:$PRB"
-            OWNER_REPO="${{ github.repository }}"
-            BASE="$DEF"
-            BODY=$'Fix: robots.txt ohne Einrückungen, exakte Sitemap-Zeile; Feed: global dedupe und Atom-Tags; Canonicals in sitemap.'
-            curl -sS -H "Authorization: Bearer ${GH_TOKEN}" \
-                 -H "Accept: application/vnd.github+json" \
-                 -X POST "https://api.github.com/repos/${OWNER_REPO}/pulls" \
-                 -d "$(printf '{ "title": %q, "head": %q, "base": %q, "body": %q }' \
-                          "SEO: Robots & Feed Dedupe + Canonical Fixes" "$PRB" "$BASE" "$BODY")" >/dev/null
-            EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-            echo "mode<<$EOF" >> "$GITHUB_OUTPUT"
-            echo "pr" >> "$GITHUB_OUTPUT"
-            echo "$EOF" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Update repository metadata via PAT (description & homepage)
-        env:
-          ADMIN_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
-          SITE_BASE: ${{ env.SITE_BASE }}
-          DESC: ${{ env.DESC }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [[ -z "${ADMIN_TOKEN:-}" ]]; then
-            echo "REPO_ADMIN_TOKEN fehlt – Metadaten können nicht gesetzt werden." >&2
-            exit 0
-          fi
-          OWNER_REPO="${{ github.repository }}"
-          curl -sS -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-               -H "Accept: application/vnd.github+json" \
-               -X PATCH "https://api.github.com/repos/${OWNER_REPO}" \
-               -d "$(printf '{"description":%q,"homepage":%q}' "${DESC}" "${SITE_BASE}/")" >/dev/null
 
       - name: Verify feed file (repo) – exactly one self & one alternate
         shell: bash
@@ -182,6 +58,56 @@ jobs:
             exit 1
           fi
           echo "Feed verification passed."
+
+      - name: Verify robots.txt format and content
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! -s docs/robots.txt ]]; then
+            echo "Error: docs/robots.txt missing or empty"
+            exit 1
+          fi
+
+          # Genau eine Sitemap-Direktive:
+          sitemap_count="$(grep -c '^Sitemap:' docs/robots.txt || true)"
+          if [[ "$sitemap_count" -ne 1 ]]; then
+            echo "Error: Expected exactly 1 Sitemap directive, found $sitemap_count"
+            cat docs/robots.txt
+            exit 1
+          fi
+
+          # Sitemap-Direktive zeigt auf SITE_BASE:
+          if ! grep -qF "Sitemap: ${SITE_BASE}/sitemap.xml" docs/robots.txt; then
+            echo "Error: Sitemap directive does not match expected: Sitemap: ${SITE_BASE}/sitemap.xml"
+            cat docs/robots.txt
+            exit 1
+          fi
+
+          # Keine führenden Whitespaces auf nicht-leeren Zeilen:
+          if grep -qE '^[[:space:]]+[^[:space:]]' docs/robots.txt; then
+            echo "Error: Found lines with leading whitespace"
+            grep -nE '^[[:space:]]+[^[:space:]]' docs/robots.txt
+            exit 1
+          fi
+          echo "robots.txt verification passed."
+
+      - name: Update repository metadata via PAT (description & homepage)
+        env:
+          ADMIN_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
+          SITE_BASE: ${{ env.SITE_BASE }}
+          DESC: ${{ env.DESC }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "${ADMIN_TOKEN:-}" ]]; then
+            echo "REPO_ADMIN_TOKEN fehlt – Metadaten können nicht gesetzt werden." >&2
+            exit 0
+          fi
+          OWNER_REPO="${{ github.repository }}"
+          curl -sS -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+               -H "Accept: application/vnd.github+json" \
+               -X PATCH "https://api.github.com/repos/${OWNER_REPO}" \
+               -d "$(printf '{"description":%q,"homepage":%q}' "${DESC}" "${SITE_BASE}/")" >/dev/null
 
       - name: Verify published feed (best-effort; allow Pages delay)
         shell: bash
