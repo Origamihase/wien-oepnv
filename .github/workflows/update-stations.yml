@@ -8,6 +8,12 @@ on:
 permissions:
   contents: read
 
+# Verhindert, dass sich Cron- und manuell ausgelöste Läufe gegenseitig
+# beim `git push` blockieren oder fehlschlagen lassen.
+concurrency:
+  group: update-stations-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
