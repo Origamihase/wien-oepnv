@@ -1,11 +1,12 @@
 import sys
 import json
 import importlib
+import pytest
 import types
 from pathlib import Path
 from contextlib import contextmanager
 
-def _import_build_feed(monkeypatch):
+def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     module_name = "src.build_feed"
     # Ensure we can import src modules
     root = Path(__file__).resolve().parents[1]

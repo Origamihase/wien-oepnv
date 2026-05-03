@@ -2,10 +2,11 @@ import importlib
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+import pytest
 import types
 
 
-def _import_build_feed(monkeypatch, env=None):
+def _import_build_feed(monkeypatch: pytest.MonkeyPatch, env: dict[str, str] | None = None) -> types.ModuleType:
     module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
