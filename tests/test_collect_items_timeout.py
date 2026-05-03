@@ -29,7 +29,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return module
 
 
-def test_slow_provider_does_not_block(monkeypatch):
+def test_slow_provider_does_not_block(monkeypatch: pytest.MonkeyPatch) -> None:
     # Use 1s timeout
     monkeypatch.setenv("PROVIDER_TIMEOUT", "1")
     build_feed = _import_build_feed(monkeypatch)
@@ -61,7 +61,7 @@ def test_slow_provider_does_not_block(monkeypatch):
     assert items == [{"guid": "fast"}]
 
 
-def test_provider_specific_timeout_override(monkeypatch):
+def test_provider_specific_timeout_override(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("PROVIDER_TIMEOUT", "2")
     build_feed = _import_build_feed(monkeypatch)
 
@@ -99,7 +99,7 @@ def test_provider_specific_timeout_override(monkeypatch):
     assert items == [{"guid": "fast"}]
 
 
-def test_cache_providers_run_sequentially(monkeypatch):
+def test_cache_providers_run_sequentially(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     calls = []
@@ -139,7 +139,7 @@ def test_cache_providers_run_sequentially(monkeypatch):
     assert calls == ["wl", "oebb"]
 
 
-def test_provider_worker_limit(monkeypatch):
+def test_provider_worker_limit(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
     monkeypatch.setenv("PROVIDER_MAX_WORKERS", "4")
     monkeypatch.setenv("PROVIDER_MAX_WORKERS_GROUP", "1")
