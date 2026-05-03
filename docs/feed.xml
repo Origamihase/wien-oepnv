@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 03 May 2026 08:32:48 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2026 10:21:20 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Floridsdorf ↔ Wien Leopoldau]]></title>
@@ -18,16 +18,6 @@
       <ext:starts_at>Sun, 03 May 2026 06:01:50 +0200</ext:starts_at>
       <description>Wegen Verlängerung der Bauarbeiten waren zwischen Wien Floridsdorf Bahnhof (U) und Wien Leopoldau Bahnhst (U) bis 05:53 Uhr keine Fahrten möglich. [Seit 03.05.2026]</description>
       <content:encoded><![CDATA[Wegen Verlängerung der Bauarbeiten waren zwischen Wien Floridsdorf Bahnhof (U) und Wien Leopoldau Bahnhst (U) bis 05:53 Uhr keine Fahrten möglich.<br/>[Seit 03.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Liesing ↔ Bad Vöslau]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;874045</guid>
-      <pubDate>Sun, 03 May 2026 05:37:31 +0200</pubDate>
-      <ext:first_seen>Sun, 03 May 2026 01:53:47 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 03 May 2026 05:37:31 +0200</ext:starts_at>
-      <description>Wegen einer Oberleitungsstörung sind zwischen Wien Liesing Bahnhof und Mödling Bahnhof Zugfahrten bis voraussichtlich 07:00 Uhr nur eingeschränkt möglich. [Seit 03.05.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Oberleitungsstörung sind zwischen Wien Liesing Bahnhof und Mödling Bahnhof Zugfahrten bis voraussichtlich 07:00 Uhr nur eingeschränkt möglich.<br/>[Seit 03.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -115,6 +105,17 @@
       <ext:starts_at>Thu, 30 Apr 2026 09:12:44 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Hbf und Bruck/Mur Bahnhof/Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an einigen Tagen) die Züge EC 206, EC 207, EC … [Seit 30.04.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf und Bruck/Mur Bahnhof/Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an einigen Tagen) die Züge EC 206, EC 207, EC …<br/>[Seit 30.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: Kein Betrieb]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
+      <pubDate>Thu, 30 Apr 2026 00:00:09 +0200</pubDate>
+      <ext:first_seen>Sun, 03 May 2026 10:21:20 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Apr 2026 00:00:09 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 03 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten Kein Betrieb [30.04.2026 – 03.05.2026]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[30.04.2026 – 03.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
