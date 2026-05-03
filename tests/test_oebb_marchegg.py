@@ -27,7 +27,7 @@ class TestOebbMarchegg:
     Reproduces the issue with 'Marchegg < ↔ > Bratislava hl.st.'.
     """
 
-    def test_fetch_events_formatting_and_filtering(self):
+    def test_fetch_events_formatting_and_filtering(self) -> None:
         # Verify that fetch_events processes the item
         # Current behavior (buggy): Title has < >, and it might NOT be filtered (per user report).
         # Expected behavior (fixed): Title matches "Marchegg" (Outer) so it should be filtered.
@@ -54,7 +54,7 @@ class TestOebbMarchegg:
                 assert "&lt;" not in title, "Title contains encoded entity"
                 assert "Marchegg ↔ Bratislava hl.st." in title or "Marchegg ↔ Bratislava" in title
 
-    def test_filtering_logic_marchegg(self):
+    def test_filtering_logic_marchegg(self) -> None:
         # Verify that _is_relevant correctly identifies this as irrelevant (Outer)
         # "Marchegg" is in data/stations.json as "in_vienna": false.
 
