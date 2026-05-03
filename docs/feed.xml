@@ -7,18 +7,51 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 03 May 2026 18:11:24 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2026 19:27:18 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[5: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <title><![CDATA[24A: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2de760181a65c454c954cecfd6900e8ee65cf9734b8542a79d3db454877da735</guid>
+      <pubDate>Sun, 03 May 2026 18:39:00 +0200</pubDate>
+      <ext:first_seen>Sun, 03 May 2026 19:27:18 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 03 May 2026 18:39:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 03 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 24 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 03.05.2026]</description>
+      <content:encoded><![CDATA[Linie 24 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 03.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[39A: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5523edb695136c871e830c4ac9ba6db2fa3aeb4d1d0ae34e1a20abfc3c75fdac</guid>
+      <pubDate>Sun, 03 May 2026 18:39:00 +0200</pubDate>
+      <ext:first_seen>Sun, 03 May 2026 19:27:18 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 03 May 2026 18:39:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 03 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 39 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 03.05.2026]</description>
+      <content:encoded><![CDATA[Linie 39 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 03.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">594c762e1862c2f127c0ccf6fe0a4ab3ce8896fc67b8d91c5680d55db8bffd0a</guid>
+      <pubDate>Sun, 03 May 2026 18:11:00 +0200</pubDate>
+      <ext:first_seen>Sun, 03 May 2026 19:27:18 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 03 May 2026 18:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 03 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 11 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 03.05.2026]</description>
+      <content:encoded><![CDATA[Linie 11 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 03.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5</guid>
       <pubDate>Sun, 03 May 2026 17:48:00 +0200</pubDate>
       <ext:first_seen>Sun, 03 May 2026 18:11:24 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 03 May 2026 17:49:32 +0200</ext:starts_at>
+      <ext:starts_at>Sun, 03 May 2026 17:48:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 03 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 18:10 Uhr. [Am 03.05.2026]</description>
-      <content:encoded><![CDATA[Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 18:10 Uhr.<br/>[Am 03.05.2026]]]></content:encoded>
+      <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.05.2026]</description>
+      <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -85,38 +118,6 @@
       <ext:ends_at>Sun, 03 May 2026 23:59:59 +0200</ext:ends_at>
       <description>Bauarbeiten Busse halten bei Linie 77 A [02.05.2026 – 03.05.2026]</description>
       <content:encoded><![CDATA[Bauarbeiten Busse halten bei Linie 77 A<br/>[02.05.2026 – 03.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[89A: Ablenkung Richtung Aspern Nord]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">24fe4ed32b42d766433487de29c162cec4e3ea89e4e416666a4a7c0597da0da5</guid>
-      <pubDate>Fri, 01 May 2026 07:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 01 May 2026 09:42:16 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 01 May 2026 07:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 08 May 2026 08:00:00 +0200</ext:ends_at>
-      <description>Bauarbeiten Wegen Straßenbausarbeiten am Hauswurzweg werden die Linien 89 A sowie Rufbuslinie 89 A umgeleitet. [01.05.2026 – 08.05.2026]</description>
-      <content:encoded><![CDATA[Bauarbeiten Wegen Straßenbausarbeiten am Hauswurzweg werden die Linien 89 A sowie Rufbuslinie 89 A umgeleitet.<br/>[01.05.2026 – 08.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Bauarbeiten: Wien Hauptbahnhof Graz]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;853249</guid>
-      <pubDate>Thu, 30 Apr 2026 09:12:44 +0200</pubDate>
-      <ext:first_seen>Thu, 30 Apr 2026 10:40:25 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Apr 2026 09:12:44 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Wien Hbf und Bruck/Mur Bahnhof/Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an einigen Tagen) die Züge EC 206, EC 207, EC … [Seit 30.04.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf und Bruck/Mur Bahnhof/Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an einigen Tagen) die Züge EC 206, EC 207, EC …<br/>[Seit 30.04.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Kein Betrieb]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
-      <pubDate>Thu, 30 Apr 2026 00:00:09 +0200</pubDate>
-      <ext:first_seen>Sun, 03 May 2026 10:21:20 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 30 Apr 2026 00:00:09 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 03 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Kein Betrieb [30.04.2026 – 03.05.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[30.04.2026 – 03.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
