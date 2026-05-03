@@ -24,7 +24,10 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return importlib.import_module(module_name)
 
 
-def test_make_rss_logs_warning_when_state_readonly(monkeypatch, caplog):
+def test_make_rss_logs_warning_when_state_readonly(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     def fail_save(_):
@@ -47,7 +50,10 @@ def test_make_rss_logs_warning_when_state_readonly(monkeypatch, caplog):
 
 
 
-def test_make_rss_saves_empty_state_when_no_identities(monkeypatch, caplog):
+def test_make_rss_saves_empty_state_when_no_identities(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     captured = {"state": None}

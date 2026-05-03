@@ -23,7 +23,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return importlib.import_module(module_name)
 
 
-def test_to_utc_converts_timezone(monkeypatch):
+def test_to_utc_converts_timezone(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
     cet = timezone(timedelta(hours=2))
     dt = datetime(2025, 1, 1, 12, 0, tzinfo=cet)
@@ -32,7 +32,7 @@ def test_to_utc_converts_timezone(monkeypatch):
     assert result.hour == 10
 
 
-def test_fmt_rfc2822_outputs_vienna(monkeypatch):
+def test_fmt_rfc2822_outputs_vienna(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
     cet = timezone(timedelta(hours=2))
     dt = datetime(2025, 1, 1, 12, 0, tzinfo=cet)
@@ -42,7 +42,7 @@ def test_fmt_rfc2822_outputs_vienna(monkeypatch):
     assert "11:00:00" in formatted
 
 
-def test_fmt_rfc2822_fallback_locale_independent(monkeypatch):
+def test_fmt_rfc2822_fallback_locale_independent(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     # Force the fallback by breaking format_datetime

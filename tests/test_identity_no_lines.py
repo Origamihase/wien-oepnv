@@ -26,7 +26,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return importlib.import_module(module_name)
 
 
-def test_identity_distinguishes_items_without_lines(monkeypatch):
+def test_identity_distinguishes_items_without_lines(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     day = datetime(2024, 1, 1, tzinfo=timezone.utc)
@@ -41,7 +41,7 @@ def test_identity_distinguishes_items_without_lines(monkeypatch):
     assert ident2.startswith("wl|störung|L=|D=2024-01-01|T=")
 
 
-def test_identity_includes_line_tokens_and_is_cosmetic_stable(monkeypatch):
+def test_identity_includes_line_tokens_and_is_cosmetic_stable(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     day = datetime(2024, 1, 1, tzinfo=timezone.utc)

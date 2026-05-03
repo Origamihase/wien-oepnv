@@ -28,7 +28,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return importlib.import_module(module_name)
 
 
-def test_prefers_later_ends_at(monkeypatch):
+def test_prefers_later_ends_at(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     earlier = {
@@ -46,7 +46,7 @@ def test_prefers_later_ends_at(monkeypatch):
     assert out == [later]
 
 
-def test_prefers_newer_even_if_ends_at_shorter(monkeypatch):
+def test_prefers_newer_even_if_ends_at_shorter(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     previous = {
@@ -67,7 +67,7 @@ def test_prefers_newer_even_if_ends_at_shorter(monkeypatch):
     assert out == [previous]
 
 
-def test_prefers_newer_when_starts_at_changes(monkeypatch):
+def test_prefers_newer_when_starts_at_changes(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     base = {

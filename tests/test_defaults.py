@@ -33,7 +33,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
         ("ABSOLUTE_MAX_AGE_DAYS", 540),
     ],
 )
-def test_default_age_and_ttl(monkeypatch, attr, expected):
+def test_default_age_and_ttl(monkeypatch: pytest.MonkeyPatch, attr: str, expected: int) -> None:
     monkeypatch.delenv("FEED_TTL", raising=False)
     monkeypatch.delenv("MAX_ITEM_AGE_DAYS", raising=False)
     monkeypatch.delenv("ABSOLUTE_MAX_AGE_DAYS", raising=False)

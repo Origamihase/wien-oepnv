@@ -32,7 +32,7 @@ def _emit_item_str(build_feed, item, now, state):
     return ident, xml_str
 
 
-def test_pubdate_added_for_fresh_item(monkeypatch):
+def test_pubdate_added_for_fresh_item(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
     now = datetime(2025, 1, 1, 12, 0, tzinfo=timezone.utc)
     state = {}
@@ -42,7 +42,7 @@ def test_pubdate_added_for_fresh_item(monkeypatch):
     assert build_feed._fmt_rfc2822(now) in xml
 
 
-def test_pubdate_not_added_after_window(monkeypatch):
+def test_pubdate_not_added_after_window(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
     now = datetime(2025, 1, 1, 12, 0, tzinfo=timezone.utc)
     old = now - timedelta(minutes=build_feed.feed_config.FRESH_PUBDATE_WINDOW_MIN + 1)
@@ -52,7 +52,7 @@ def test_pubdate_not_added_after_window(monkeypatch):
     assert "<pubDate>" not in xml
 
 
-def test_fresh_pubdate_window_min_rejects_negative_values(monkeypatch):
+def test_fresh_pubdate_window_min_rejects_negative_values(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("FRESH_PUBDATE_WINDOW_MIN", "-10")
     # Need to reload config to pick up the env var change
     from src.feed import config
