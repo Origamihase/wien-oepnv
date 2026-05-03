@@ -11,7 +11,6 @@ class TestSSRFRedirect(unittest.TestCase):
         with patch('requests.adapters.HTTPAdapter.send') as mock_send:
             # Helper to create a mock socket with a safe IP
             def get_safe_socket() -> MagicMock:
-MagicMock
                 mock_sock = MagicMock()
                 mock_sock.getpeername.return_value = ('8.8.8.8', 80)
                 return mock_sock
