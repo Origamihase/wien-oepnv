@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Betriebsstörung",
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "594c762e1862c2f127c0ccf6fe0a4ab3ce8896fc67b8d91c5680d55db8bffd0a",
-    "pubDate": "2026-05-03T18:11:00+02:00",
-    "starts_at": "2026-05-03T18:11:00+02:00",
-    "ends_at": "2026-05-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=11A|D=2026-05-03"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "24A: Betriebsstörung",
     "description": "Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -465,6 +453,18 @@
     "pubDate": "2026-05-03T19:55:00+02:00",
     "starts_at": "2026-05-03T19:55:00+02:00",
     "ends_at": "2026-05-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=48A|D=2026-05-03"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d5de43fa164490d094ac66bb07fe6668ccd8e82e980e34eb6ccbbf006f8f0e7e",
+    "pubDate": "2026-05-03T20:28:54+02:00",
+    "starts_at": "2026-05-03T20:29:07+02:00",
+    "ends_at": "2026-05-03T21:28:00+02:00",
     "_identity": "wl|störung|L=48A|D=2026-05-03"
   },
   {
