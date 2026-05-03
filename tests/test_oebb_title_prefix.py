@@ -1,6 +1,6 @@
 from src.providers.oebb import _is_relevant
 
-def test_rex_51_multiple_colons():
+def test_rex_51_multiple_colons() -> None:
     # REX 51: Störung: Wien Meidling ↔ Mödling
     title = "REX 51: Störung: Wien Meidling ↔ Mödling"
     description = "Wegen einer Störung..."

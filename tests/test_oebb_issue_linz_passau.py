@@ -1,6 +1,6 @@
 from src.providers.oebb import _clean_title_keep_places, _is_relevant
 
-def test_clean_title_db_bauarbeiten():
+def test_clean_title_db_bauarbeiten() -> None:
     title = "DB-Bauarbeiten ↔ Umleitung/Haltausfall: Linz/Donau Passau"
     cleaned = _clean_title_keep_places(title)
     # With the new iterative prefix stripping, "DB-Bauarbeiten" is kept as a part,
@@ -8,7 +8,7 @@ def test_clean_title_db_bauarbeiten():
     # The output is joined as category: rest.
     assert cleaned == "DB-Bauarbeiten: Linz/Donau Passau"
 
-def test_is_relevant_db_bauarbeiten():
+def test_is_relevant_db_bauarbeiten() -> None:
     title = "DB-Bauarbeiten ↔ Umleitung/Haltausfall: Linz/Donau Passau"
     desc = (
         "Wegen Bauarbeiten der Deutschen Bahn (DB) wird von 22.04. auf 23.04.2026 der Zug NJ 498 "
@@ -20,7 +20,7 @@ def test_is_relevant_db_bauarbeiten():
     # Linz/Donau and Passau do not have vienna connections and aren't in pendler range
     assert _is_relevant(cleaned, desc) is False
 
-def test_clean_title_compound_category():
+def test_clean_title_compound_category() -> None:
     title = "ÖBB-Verspätung ↔ Zugausfall: Wien Hbf ↔ St. Pölten"
     cleaned = _clean_title_keep_places(title)
     # "ÖBB-Verspätung" is kept as the first part (category).

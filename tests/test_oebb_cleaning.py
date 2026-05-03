@@ -1,7 +1,7 @@
 from src.providers.oebb import _clean_description, _clean_title_keep_places
 from src.utils.text import html_to_text
 
-def test_clean_description_arrow_brackets():
+def test_clean_description_arrow_brackets() -> None:
     # Input simulating what comes from _get_text (unescaped)
     # Case 1: Brackets around arrow
     desc = "Wien < ↔ > Salzburg"
@@ -23,7 +23,7 @@ def test_clean_description_arrow_brackets():
     final = html_to_text(cleaned)
     assert final == "Wien ↔ Salzburg"
 
-def test_reproduce_issue_if_input_is_different():
+def test_reproduce_issue_if_input_is_different() -> None:
     # Maybe the input is actually like this?
     desc = "Wien &lt; ↔ &gt; Salzburg"
     # _clean_description should handle entities in the regex
@@ -39,24 +39,24 @@ def test_reproduce_issue_if_input_is_different():
     cleaned = _clean_description(desc)
     assert cleaned == "Wien ↔ Salzburg"
 
-def test_html_tag_arrow():
+def test_html_tag_arrow() -> None:
     # What if it's like a tag?
     desc = "Wien <-> Salzburg"
     cleaned = _clean_description(desc)
     assert cleaned == "Wien ↔ Salzburg"
 
-def test_double_escaped_entities():
+def test_double_escaped_entities() -> None:
     # This currently FAILS with the existing regex
     desc = "Wien &amp;lt; ↔ &amp;gt; Salzburg"
     cleaned = _clean_description(desc)
     assert cleaned == "Wien ↔ Salzburg"
 
-def test_clean_description_numeric_entities():
+def test_clean_description_numeric_entities() -> None:
     desc = "Wien &#60; ↔ &#62; Salzburg"
     cleaned = _clean_description(desc)
     assert cleaned == "Wien ↔ Salzburg"
 
-def test_clean_title_numeric_entities():
+def test_clean_title_numeric_entities() -> None:
     # "Wien" might be canonicalized to "Wien Hauptbahnhof"
     title = "Wien &#60; ↔ &#62; Salzburg"
     cleaned = _clean_title_keep_places(title)
@@ -67,7 +67,7 @@ def test_clean_title_numeric_entities():
     assert "<" not in cleaned
     assert ">" not in cleaned
 
-def test_clean_title_unknown_entities():
+def test_clean_title_unknown_entities() -> None:
     # If stations are unknown, it should still clean the arrow
     title = "FooBar &#60; ↔ &#62; BazQux"
     cleaned = _clean_title_keep_places(title)
