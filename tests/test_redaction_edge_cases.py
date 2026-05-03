@@ -6,7 +6,7 @@ from src.utils.env import sanitize_log_message as sanitize_env_log_message
 class TestRedactionEdgeCases:
     """Test suite for edge cases in secret redaction (dots, spaces, mixed casing)."""
 
-    def test_sanitize_url_dots_and_spaces(self):
+    def test_sanitize_url_dots_and_spaces(self) -> None:
         """Test URL parameter sanitization with dots and spaces in keys."""
         cases = [
             ("https://example.com/api?api.key=secret", "https://example.com/api?api.key=%2A%2A%2A"),
@@ -18,7 +18,7 @@ class TestRedactionEdgeCases:
         for url, expected in cases:
             assert _sanitize_url_for_error(url) == expected
 
-    def test_sanitize_log_message_dots_and_spaces(self):
+    def test_sanitize_log_message_dots_and_spaces(self) -> None:
         """Test log message sanitization with dots and spaces in keys."""
         cases = [
             # Query params in string
@@ -41,7 +41,7 @@ class TestRedactionEdgeCases:
             # Also test the fallback implementation in env.py
             assert sanitize_env_log_message(msg) == expected
 
-    def test_sanitize_log_message_complex_separators(self):
+    def test_sanitize_log_message_complex_separators(self) -> None:
         """Test keys with mixed separators."""
         cases = [
             ('{"access.token": "secret"}', '{"access.token": "***"}'),

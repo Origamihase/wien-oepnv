@@ -68,7 +68,7 @@ def test_secret_scanner_detects_webhook_without_underscore(tmp_path: Path) -> No
     assert secret not in [f.match for f in findings]
 
 
-def test_secret_scanner_detects_multiline_assignment():
+def test_secret_scanner_detects_multiline_assignment() -> None:
     """Test that a secret assigned across multiple lines is detected."""
     content = """
     my_secret =
@@ -79,7 +79,7 @@ def test_secret_scanner_detects_multiline_assignment():
     assert findings[0][1] == "super_secret_value_that_should_be_detected"
     assert "Verdächtige Zuweisung eines potentiellen Secrets" in findings[0][2]
 
-def test_secret_scanner_detects_triple_quoted_string():
+def test_secret_scanner_detects_triple_quoted_string() -> None:
     """Test that a secret in triple quotes is detected."""
     content = """
     my_secret = \"\"\"
@@ -92,7 +92,7 @@ def test_secret_scanner_detects_triple_quoted_string():
     assert "super_secret_value_in_triple_quotes" in findings[0][1]
     assert "Verdächtige Zuweisung eines potentiellen Secrets" in findings[0][2]
 
-def test_secret_scanner_detects_triple_single_quoted_string():
+def test_secret_scanner_detects_triple_single_quoted_string() -> None:
     """Test that a secret in triple single quotes is detected."""
     content = """
     my_secret = '''
@@ -103,7 +103,7 @@ def test_secret_scanner_detects_triple_single_quoted_string():
     assert len(findings) == 1
     assert "another_secret_value_in_triple_quotes" in findings[0][1]
 
-def test_secret_scanner_detects_mixed_newlines_and_spaces():
+def test_secret_scanner_detects_mixed_newlines_and_spaces() -> None:
     """Test flexible whitespace around assignment."""
     content = """
     api_key
@@ -114,7 +114,7 @@ def test_secret_scanner_detects_mixed_newlines_and_spaces():
     assert len(findings) == 1
     assert findings[0][1] == "my_api_key_value_12345"
 
-def test_secret_scanner_ignores_short_values_in_triple_quotes():
+def test_secret_scanner_ignores_short_values_in_triple_quotes() -> None:
     """Test that short/low entropy values in triple quotes are ignored."""
     content = """
     description = \"\"\"
@@ -126,7 +126,7 @@ def test_secret_scanner_ignores_short_values_in_triple_quotes():
     # Should be 0 because it doesn't look like a secret (low entropy/too short per line logic?)
     assert len(findings) == 0
 
-def test_secret_scanner_detects_multiline_with_keyword():
+def test_secret_scanner_detects_multiline_with_keyword() -> None:
     """Test that a keyword variable with multiline text is flagged if it looks like a secret."""
     content = """
     private_key = \"\"\"

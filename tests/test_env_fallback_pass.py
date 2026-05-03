@@ -2,7 +2,7 @@
 import sys
 from unittest.mock import patch
 
-def test_env_fallback_pass_sanitization():
+def test_env_fallback_pass_sanitization() -> None:
     # Save original modules to restore later
     original_env = sys.modules.get('src.utils.env')
     original_logging = sys.modules.get('src.utils.logging')

@@ -3,7 +3,7 @@ from unittest.mock import MagicMock, patch
 from src.utils.http import verify_response_ip, request_safe, _is_sensitive_header, _sanitize_url_for_error
 
 # 1. Socket Access Tests
-def test_verify_response_ip_new_urllib3():
+def test_verify_response_ip_new_urllib3() -> None:
     """Test verify_response_ip with newer urllib3 using _connection."""
     response = MagicMock(spec=requests.Response)
     response.url = "http://example.com"
@@ -25,7 +25,7 @@ def test_verify_response_ip_new_urllib3():
     # This should pass without raising ValueError or AttributeError
     verify_response_ip(response)
 
-def test_verify_response_ip_old_urllib3():
+def test_verify_response_ip_old_urllib3() -> None:
     """Test verify_response_ip with older urllib3 using connection."""
     response = MagicMock(spec=requests.Response)
     response.url = "http://example.com"
@@ -45,7 +45,7 @@ def test_verify_response_ip_old_urllib3():
     verify_response_ip(response)
 
 # 2. Case-sensitivity Tests
-def test_request_safe_headers_case_sensitivity():
+def test_request_safe_headers_case_sensitivity() -> None:
     """Test that request_safe handles case-insensitive headers correctly."""
     session = requests.Session()
 
@@ -114,7 +114,7 @@ def test_request_safe_headers_case_sensitivity():
             assert "content-type" not in sent_keys
             assert "content-length" not in sent_keys
 
-def test_is_sensitive_header_case_sensitivity_explicit():
+def test_is_sensitive_header_case_sensitivity_explicit() -> None:
     """Test that _is_sensitive_header is case-insensitive for explicit headers."""
     # We pick a header from _SENSITIVE_HEADERS and test mixed case.
     # "X-CSRF-Token" is in _SENSITIVE_HEADERS.
@@ -130,7 +130,7 @@ def test_is_sensitive_header_case_sensitivity_explicit():
     assert _is_sensitive_header("X-Csrf-Token")
 
 # 3. Regex Robustness Tests
-def test_sanitize_url_missing_slash_group():
+def test_sanitize_url_missing_slash_group() -> None:
     """Test _sanitize_url_for_error with URL missing slashes (https:user:pass@...)."""
     url = "https:user:password@example.com/foo"
     sanitized = _sanitize_url_for_error(url)
@@ -144,7 +144,7 @@ def test_sanitize_url_missing_slash_group():
     assert "password" not in sanitized
     assert "user" not in sanitized # Should be stripped too
 
-def test_sanitize_url_standard():
+def test_sanitize_url_standard() -> None:
     url = "https://user:password@example.com/foo"
     sanitized = _sanitize_url_for_error(url)
     assert "password" not in sanitized

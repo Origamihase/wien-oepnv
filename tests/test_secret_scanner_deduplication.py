@@ -1,7 +1,7 @@
 
 from src.utils.secret_scanner import _scan_content
 
-def test_deduplication_high_entropy_assignment():
+def test_deduplication_high_entropy_assignment() -> None:
     """
     Verify that a high-entropy secret in a sensitive assignment
     is reported only once (by the assignment scanner).
@@ -18,7 +18,7 @@ def test_deduplication_high_entropy_assignment():
     assert match == secret
     assert "Verdächtige Zuweisung" in reason
 
-def test_deduplication_bearer_token():
+def test_deduplication_bearer_token() -> None:
     """
     Verify that a high-entropy Bearer token is reported only once
     (by the Bearer scanner).
@@ -35,7 +35,7 @@ def test_deduplication_bearer_token():
     assert match == token
     assert "Bearer-Token" in reason
 
-def test_distinct_secrets_same_line():
+def test_distinct_secrets_same_line() -> None:
     """
     Verify that two distinct secrets on the same line are both reported.
     """
@@ -52,7 +52,7 @@ def test_distinct_secrets_same_line():
     assert secret1 in matches
     assert secret2 in matches
 
-def test_aws_key_assignment_deduplication():
+def test_aws_key_assignment_deduplication() -> None:
     """
     Verify that an AWS key in an assignment is reported once
     (likely by assignment scanner if variable name matches, or AWS scanner if not).
@@ -82,7 +82,7 @@ def test_aws_key_assignment_deduplication():
     assert findings2[0][1] == aws_id
     assert "AWS Access Key ID" in findings2[0][2]
 
-def test_overlapping_matches():
+def test_overlapping_matches() -> None:
     """
     Test complex overlap scenarios.
     """

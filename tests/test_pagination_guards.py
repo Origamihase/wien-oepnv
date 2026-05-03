@@ -3,7 +3,7 @@ from src.places.tiling import Tile
 import requests
 from unittest.mock import MagicMock
 
-def test_infinite_pagination_guard():
+def test_infinite_pagination_guard() -> None:
     config = GooglePlacesConfig(
         api_key="TEST_KEY",
         included_types=["train_station"],

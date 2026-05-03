@@ -2,7 +2,7 @@
 import pytest
 from src.utils.http import fetch_content_safe, session_with_retries
 
-def test_fetch_content_safe_returns_sanitized_error_url():
+def test_fetch_content_safe_returns_sanitized_error_url() -> None:
     """Verify that fetch_content_safe includes the sanitized URL in the error message."""
     session = session_with_retries("test-agent")
 
@@ -24,7 +24,7 @@ def test_fetch_content_safe_returns_sanitized_error_url():
     assert "token=%2A%2A%2A" in error_msg or "token=***" in error_msg
     assert "tenant_id=%2A%2A%2A" in error_msg or "tenant_id=***" in error_msg
 
-def test_fetch_content_safe_malformed_url():
+def test_fetch_content_safe_malformed_url() -> None:
     """Verify handling of malformed URLs."""
     session = session_with_retries("test-agent")
     malformed_url = "http://["

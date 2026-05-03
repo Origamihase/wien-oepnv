@@ -3,7 +3,7 @@ import sys
 from unittest.mock import patch
 import importlib
 
-def test_fallback_sanitization_missing_keys():
+def test_fallback_sanitization_missing_keys() -> None:
     # Save original modules to restore later
     original_logging = sys.modules.get('src.utils.logging')
     original_env = sys.modules.get('src.utils.env')
