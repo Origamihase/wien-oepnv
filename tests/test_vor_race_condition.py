@@ -5,7 +5,7 @@ from zoneinfo import ZoneInfo
 import src.providers.vor as vor
 
 class TestVorRaceCondition(unittest.TestCase):
-    def test_fetch_aborts_if_limit_reached_concurrently(self):
+    def test_fetch_aborts_if_limit_reached_concurrently(self) -> None:
         """
         Verify that _fetch_departure_board_for_station checks the request limit
         (via load_request_count) BEFORE making the network request.

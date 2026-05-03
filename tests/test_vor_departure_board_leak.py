@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from src.providers import vor
 
 @responses.activate
-def test_leak():
+def test_leak() -> None:
     os.environ["VOR_ACCESS_ID"] = "secret_token"
     # Set a valid URL to pass validation
     os.environ["VOR_BASE_URL"] = "https://example.com/"

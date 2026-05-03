@@ -9,7 +9,7 @@ import pytest
 from src.utils.stations import station_info, vor_station_ids
 
 
-def test_vor_lookup_by_id():
+def test_vor_lookup_by_id() -> None:
     info = station_info("900100")
     assert info is not None
     assert info.name == "Wien Hauptbahnhof"
@@ -135,7 +135,7 @@ def test_bst_code_identity_outranks_foreign_alias(monkeypatch):
         stations.station_info.cache_clear()
 
 
-def test_vor_lookup_by_alias():
+def test_vor_lookup_by_alias() -> None:
     info = station_info("Vienna Airport")
     assert info is not None
     assert info.name == "Flughafen Wien"
@@ -149,7 +149,7 @@ def test_vor_lookup_by_alias():
     assert info.longitude == pytest.approx(16.563659)
 
 
-def test_vor_alias_with_municipality_prefix():
+def test_vor_alias_with_municipality_prefix() -> None:
     info = station_info("Schwechat Flughafen Wien Bahnhof")
     assert info is not None
     assert info.name == "Flughafen Wien"
@@ -159,14 +159,14 @@ def test_vor_alias_with_municipality_prefix():
     )
 
 
-def test_vor_does_not_override_station_directory():
+def test_vor_does_not_override_station_directory() -> None:
     info = station_info("Wiener Neustadt Hbf")
     assert info is not None
     assert info.vor_id == "900300"
     assert info.name == "Wiener Neustadt Hbf"
 
 
-def test_vor_station_ids_only_cover_vienna_or_pendler():
+def test_vor_station_ids_only_cover_vienna_or_pendler() -> None:
     ids = vor_station_ids()
     assert ids, "expected VOR station ids"
 
@@ -186,7 +186,7 @@ def test_vor_station_ids_default_prefers_directory(monkeypatch):
     assert ids == ["430470800", "490091000"]
 
 
-def test_vor_entries_have_bst_id_and_code():
+def test_vor_entries_have_bst_id_and_code() -> None:
     with Path("data/stations.json").open(encoding="utf-8") as handle:
         data = json.load(handle)
         stations = data.get("stations", []) if isinstance(data, dict) else data
@@ -199,7 +199,7 @@ def test_vor_entries_have_bst_id_and_code():
         assert "bst_code" in entry and entry["bst_code"], f"missing bst_code for {entry['name']}"
 
 
-def test_wl_aliases_take_precedence_over_vor_text_aliases():
+def test_wl_aliases_take_precedence_over_vor_text_aliases() -> None:
     info = station_info("Wien Karlsplatz U")
     assert info is not None
     assert info.name == "Wien Karlsplatz"

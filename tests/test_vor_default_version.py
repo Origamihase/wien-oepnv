@@ -11,7 +11,7 @@ def _restore_env(original: dict[str, str | None]) -> None:
             os.environ[key] = value
 
 
-def test_default_vor_version():
+def test_default_vor_version() -> None:
     module = importlib.import_module("src.providers.vor")
     original = {key: os.environ.get(key) for key in ("VOR_BASE_URL", "VOR_BASE", "VOR_VERSION")}
     try:

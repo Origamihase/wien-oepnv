@@ -9,7 +9,7 @@ class TestVorRedirectLeak(unittest.TestCase):
         vor.VOR_ACCESS_ID = "SECRET_TOKEN"
         vor._VOR_AUTHORIZATION_HEADER = ""
 
-    def test_redirect_leaks_credentials(self):
+    def test_redirect_leaks_credentials(self) -> None:
         """
         Verify that VorAuth injects credentials only for VOR URLs and not for external URLs.
         Using VorAuth directly avoids mocking session internals which can be fragile.
