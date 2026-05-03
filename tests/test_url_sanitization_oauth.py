@@ -1,6 +1,6 @@
 from src.utils.http import _sanitize_url_for_error
 
-def test_sanitize_oauth_params():
+def test_sanitize_oauth_params() -> None:
     # These parameters are critical for OAuth/OIDC flows and often contain sensitive data
     # or should be protected to prevent leakage (e.g. session correlation via state).
     url = "https://example.com/callback?state=sensitive_state_value&nonce=sensitive_nonce&client_assertion=JWT_TOKEN&response_mode=form_post"
@@ -19,7 +19,7 @@ def test_sanitize_oauth_params():
     # Response mode itself isn't secret, but often accompanies sensitive flows.
     # It is debatable if it needs redaction, but client_assertion definitely does.
 
-def test_sanitize_saml_params():
+def test_sanitize_saml_params() -> None:
     url = "https://example.com/sso?SAMLRequest=base64_request&SAMLResponse=base64_response"
     sanitized = _sanitize_url_for_error(url)
 
