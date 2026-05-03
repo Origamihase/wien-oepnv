@@ -1,7 +1,7 @@
 from src.utils.http import _sanitize_url_for_error
 from urllib.parse import urlparse
 
-def test_sanitize_malformed_url_with_at_in_password():
+def test_sanitize_malformed_url_with_at_in_password() -> None:
     # Vulnerability: If regex stops at first @, 'ss' leaks.
     # Original: https:user:p@ss@host.com/path
     url = "https:user:p@ss@host.com/path"
@@ -23,7 +23,7 @@ def test_sanitize_malformed_url_with_at_in_password():
     ]
     assert sanitized in valid_outputs, f"Unexpected sanitized URL: {sanitized}"
 
-def test_sanitize_url_with_multiple_ats_complex():
+def test_sanitize_url_with_multiple_ats_complex() -> None:
     # Case with more complex password
     url = "https://user:secret@part@host.com"
     sanitized = _sanitize_url_for_error(url)
@@ -32,7 +32,7 @@ def test_sanitize_url_with_multiple_ats_complex():
     parsed = urlparse(sanitized)
     assert parsed.hostname == "host.com"
 
-def test_sanitize_url_with_at_in_password_standard_scheme():
+def test_sanitize_url_with_at_in_password_standard_scheme() -> None:
     # Even if scheme is standard, if urlparse fails or regex matches first, it should be safe.
     # Note: Standard `https://user:p@ss@host.com` might be parsed by urlparse differently depending on implementation.
     # But our regex should handle it safely regardless.

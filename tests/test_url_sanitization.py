@@ -1,7 +1,7 @@
 from urllib.parse import urlparse
 from src.utils.http import _sanitize_url_for_error
 
-def test_sanitize_url_basic_auth():
+def test_sanitize_url_basic_auth() -> None:
     url = "https://user:pass@example.com/foo"
     sanitized = _sanitize_url_for_error(url)
     assert "user" not in sanitized
@@ -9,21 +9,21 @@ def test_sanitize_url_basic_auth():
     assert urlparse(sanitized).hostname == "example.com"
     assert sanitized == "https://example.com/foo"
 
-def test_sanitize_url_query_params():
+def test_sanitize_url_query_params() -> None:
     url = "https://example.com/api?accessId=SECRET&foo=bar"
     sanitized = _sanitize_url_for_error(url)
     assert "SECRET" not in sanitized
     assert "accessId=***" in sanitized or "accessId=REDACTED" in sanitized or "accessId" in sanitized # Depending on implementation
     assert "foo=bar" in sanitized
 
-def test_sanitize_url_multiple_sensitive():
+def test_sanitize_url_multiple_sensitive() -> None:
     url = "https://example.com/api?token=123&key=abc&public=yes"
     sanitized = _sanitize_url_for_error(url)
     assert "123" not in sanitized
     assert "abc" not in sanitized
     assert "yes" in sanitized
 
-def test_sanitize_url_mixed_auth_and_query():
+def test_sanitize_url_mixed_auth_and_query() -> None:
     url = "https://user:pass@example.com/api?accessId=SECRET"
     sanitized = _sanitize_url_for_error(url)
     assert "user" not in sanitized
@@ -31,12 +31,12 @@ def test_sanitize_url_mixed_auth_and_query():
     assert "SECRET" not in sanitized
     assert urlparse(sanitized).hostname == "example.com"
 
-def test_sanitize_url_malformed():
+def test_sanitize_url_malformed() -> None:
     url = "http://["
     sanitized = _sanitize_url_for_error(url)
     assert sanitized == "invalid_url"
 
-def test_sanitize_url_enhanced_keys():
+def test_sanitize_url_enhanced_keys() -> None:
     # Verify that new keys are redacted
     # jsessionid is case-insensitive in check
     url = "https://example.com/api?jsessionid=SECRET&auth_token=TOKEN123&api_key=KEY456"
@@ -57,7 +57,7 @@ def test_sanitize_url_enhanced_keys():
     assert "asp.net_sessionid=%2A%2A%2A" in sanitized2 or "asp.net_sessionid=***" in sanitized2
     assert "bearer_token=%2A%2A%2A" in sanitized2 or "bearer_token=***" in sanitized2
 
-def test_sanitize_url_subscription_keys():
+def test_sanitize_url_subscription_keys() -> None:
     # Verify new keys added in fix
     url = "https://example.com/api?Ocp-Apim-Subscription-Key=SECRET1&x-api-key=SECRET2&subscription-key=SECRET3"
     sanitized = _sanitize_url_for_error(url)

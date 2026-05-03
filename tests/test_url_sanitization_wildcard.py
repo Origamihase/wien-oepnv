@@ -48,7 +48,7 @@ from src.utils.http import _sanitize_url_for_error
         ("secretary", "john", True), # Contains "secret"
     ],
 )
-def test_sanitize_url_wildcard(key, value, should_redact):
+def test_sanitize_url_wildcard(key: str, value: str, should_redact: bool) -> None:
     url = f"https://example.com/?{key}={value}"
     sanitized = _sanitize_url_for_error(url)
 
@@ -59,7 +59,7 @@ def test_sanitize_url_wildcard(key, value, should_redact):
     else:
         assert f"{key}={value}" in sanitized
 
-def test_sanitize_fragment_wildcard():
+def test_sanitize_fragment_wildcard() -> None:
     url = "https://example.com/#my_token=secret123&other=safe"
     sanitized = _sanitize_url_for_error(url)
     assert "my_token" not in sanitized
@@ -67,7 +67,7 @@ def test_sanitize_fragment_wildcard():
     assert "#" not in sanitized
     assert "other=safe" not in sanitized
 
-def test_sanitize_mixed_params():
+def test_sanitize_mixed_params() -> None:
     url = "https://example.com/?safe=1&my_token=secret&also_safe=2"
     sanitized = _sanitize_url_for_error(url)
     assert "safe=1" in sanitized

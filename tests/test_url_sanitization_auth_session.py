@@ -1,6 +1,6 @@
 from src.utils.http import _sanitize_url_for_error
 
-def test_sanitize_url_auth_variations():
+def test_sanitize_url_auth_variations() -> None:
     """Test that 'auth' related substrings trigger redaction."""
     # 'auth' itself is not in substrings due to false positives (author),
     # but 'authorization' and 'token' are.
@@ -16,7 +16,7 @@ def test_sanitize_url_auth_variations():
         assert "VALUE123" not in sanitized, f"Failed to redact {url}"
         assert "***" in sanitized or "%2A%2A%2A" in sanitized
 
-def test_sanitize_url_session_variations():
+def test_sanitize_url_session_variations() -> None:
     """Test that 'session' substring triggers redaction."""
     urls = [
         "https://example.com?user_session=VALUE123",
@@ -27,7 +27,7 @@ def test_sanitize_url_session_variations():
         sanitized = _sanitize_url_for_error(url)
         assert "VALUE123" not in sanitized, f"Failed to redact {url}"
 
-def test_sanitize_url_cookie_variations():
+def test_sanitize_url_cookie_variations() -> None:
     """Test that 'cookie' substring triggers redaction."""
     urls = [
         "https://example.com?my_cookie=VALUE123",
@@ -38,7 +38,7 @@ def test_sanitize_url_cookie_variations():
         sanitized = _sanitize_url_for_error(url)
         assert "VALUE123" not in sanitized, f"Failed to redact {url}"
 
-def test_sanitize_url_client_variations():
+def test_sanitize_url_client_variations() -> None:
     """Test that 'clientid' and 'clientsecret' substrings trigger redaction."""
     urls = [
         "https://example.com?my_client_id=VALUE123",
@@ -49,7 +49,7 @@ def test_sanitize_url_client_variations():
         sanitized = _sanitize_url_for_error(url)
         assert "VALUE123" not in sanitized, f"Failed to redact {url}"
 
-def test_sanitize_url_authorization_variations():
+def test_sanitize_url_authorization_variations() -> None:
     """Test that 'authorization' substring triggers redaction."""
     urls = [
         "https://example.com?my_authorization=VALUE123",
