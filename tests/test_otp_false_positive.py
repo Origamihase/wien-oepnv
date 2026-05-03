@@ -1,7 +1,7 @@
 
 from src.utils.logging import sanitize_log_message
 
-def test_otp_false_positive():
+def test_otp_false_positive() -> None:
     msg = "hotpot=delicious"
     sanitized = sanitize_log_message(msg)
     print(f"'{msg}' -> '{sanitized}'")

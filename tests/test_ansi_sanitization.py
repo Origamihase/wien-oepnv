@@ -37,7 +37,7 @@ ANSI_TEST_CASES = [
     ("Line1\nLine2", "Line1\\nLine2", "Line1\nLine2"),
 ]
 
-def test_logging_sanitize_ansi():
+def test_logging_sanitize_ansi() -> None:
     """Verify that src.utils.logging.sanitize_log_message strips ANSI codes."""
     for inp, exp_stripped, exp_no_strip in ANSI_TEST_CASES:
         # Test with default strip_control_chars=True
@@ -47,7 +47,7 @@ def test_logging_sanitize_ansi():
         # This confirms that ANSI stripping happens independently of control char stripping
         assert log_sanitize(inp, strip_control_chars=False) == exp_no_strip
 
-def test_env_sanitize_ansi():
+def test_env_sanitize_ansi() -> None:
     """Verify that src.utils.env.sanitize_log_message (fallback) strips ANSI codes."""
     for inp, exp_stripped, exp_no_strip in ANSI_TEST_CASES:
         # Test with default strip_control_chars=True
@@ -56,7 +56,7 @@ def test_env_sanitize_ansi():
         # Test with strip_control_chars=False
         assert env_sanitize(inp, strip_control_chars=False) == exp_no_strip
 
-def test_complex_osc_injection():
+def test_complex_osc_injection() -> None:
     """Specific test for complex OSC injection attempts."""
     # Attempt to inject a window title change
     attack = "\x1b]2;Malicious Title\x07Log Message"
@@ -66,7 +66,7 @@ def test_complex_osc_injection():
     attack = "\x1b]8;;http://malicious.com\x07Click Me\x1b]8;;\x07"
     assert log_sanitize(attack) == "Click Me"
 
-def test_fe_sequences_exclusion():
+def test_fe_sequences_exclusion() -> None:
     """Verify that Fe sequences are stripped correctly, but [ and ] are handled by CSI/OSC logic."""
     # ESC [ is CSI, handled by CSI regex part
     # ESC ] is OSC, handled by OSC regex part

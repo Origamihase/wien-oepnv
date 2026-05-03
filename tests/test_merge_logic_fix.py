@@ -2,7 +2,7 @@ import unittest
 from src.feed.merge import _has_significant_overlap
 
 class TestMergeLogic(unittest.TestCase):
-    def test_single_token_overlap_false_positive(self):
+    def test_single_token_overlap_false_positive(self) -> None:
         # "Zug" matches, but "fällt aus" vs "verspätet" are different contexts (though arguably similar event).
         # Better example: "U1: Störung" vs "U1: Bauarbeiten" -> "Störung" and "Bauarbeiten" are disjoint.
         # But "Störung in Station X" vs "Aufzug in Station X defekt".
@@ -18,7 +18,7 @@ class TestMergeLogic(unittest.TestCase):
         self.assertFalse(_has_significant_overlap(name1, name2),
                          f"Should not merge '{name1}' and '{name2}' just because of 'Zug'")
 
-    def test_significant_overlap_true(self):
+    def test_significant_overlap_true(self) -> None:
         # "Störung Wien Mitte" vs "Störung in Wien Mitte"
         # T1: {störung, wien, mitte}
         # T2: {störung, in, wien, mitte}

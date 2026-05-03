@@ -1,7 +1,7 @@
 
 from src.utils.logging import sanitize_log_message
 
-def test_sanitize_log_message_new_keys():
+def test_sanitize_log_message_new_keys() -> None:
     # Test cases for new sensitive keys
     test_cases = [
         ("https://example.com?token=SECRET123", "https://example.com?token=***"),
@@ -21,12 +21,12 @@ def test_sanitize_log_message_new_keys():
         assert "***" in sanitized, f"Secret not masked in '{input_str}'"
         assert "SECRET123" not in sanitized, f"Secret leaked in '{input_str}'"
 
-def test_sanitize_log_message_existing_functionality():
+def test_sanitize_log_message_existing_functionality() -> None:
     # Ensure regressions are not introduced
     assert sanitize_log_message("Authorization: Bearer SECRET") == "Authorization: ***"
     assert sanitize_log_message("accessId=12345") == "accessId=***"
 
-def test_sanitize_log_message_enhanced_keys():
+def test_sanitize_log_message_enhanced_keys() -> None:
     # Verify that new keys are redacted in query parameters
     test_cases = [
         ("https://example.com?bearer_token=SECRET123", "https://example.com?bearer_token=***"),
@@ -45,7 +45,7 @@ def test_sanitize_log_message_enhanced_keys():
         assert key in sanitized
 
 
-def test_sanitize_log_message_extended_identity_keys():
+def test_sanitize_log_message_extended_identity_keys() -> None:
     # Verify that extended identity keys (tenant, oid, etc) are redacted
     test_cases = [
         ("https://example.com?tenant=SECRET123", "tenant"),
@@ -64,7 +64,7 @@ def test_sanitize_log_message_extended_identity_keys():
         assert "SECRET123" not in sanitized, f"Secret leaked in '{input_str}'"
         assert key in sanitized, f"Key '{key}' should remain visible"
 
-def test_sanitize_log_message_quoted_spaces():
+def test_sanitize_log_message_quoted_spaces() -> None:
     """Verify that secrets with spaces in quotes are fully masked."""
     test_cases = [
         # Double quotes with space

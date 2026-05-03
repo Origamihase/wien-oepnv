@@ -5,7 +5,7 @@ import socket
 from src.utils.http import session_with_retries, request_safe
 
 class TestHTTPRequestSafe(unittest.TestCase):
-    def test_request_safe_post_redirect_method_handling(self):
+    def test_request_safe_post_redirect_method_handling(self) -> None:
         """
         Verify that request_safe handles POST redirects correctly (switching to GET for 302, staying POST for 307).
         And ensures data is dropped when switching to GET.
@@ -74,7 +74,7 @@ class TestHTTPRequestSafe(unittest.TestCase):
                 self.assertIsNone(kwargs2.get('json')) # Data dropped
                 self.assertFalse(kwargs2['allow_redirects']) # Explicitly disabled
 
-    def test_request_safe_post_redirect_307_preserves_method(self):
+    def test_request_safe_post_redirect_307_preserves_method(self) -> None:
         """
         Verify that 307 Temporary Redirect preserves POST method and data.
         """

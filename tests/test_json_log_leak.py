@@ -3,7 +3,7 @@ import unittest
 from src.utils.logging import sanitize_log_message
 
 class TestJsonLogLeak(unittest.TestCase):
-    def test_json_newline_leak(self):
+    def test_json_newline_leak(self) -> None:
         # This case fails if newlines are escaped before redaction
         # because \s* in regex doesn't match literal \n
         msg = '{"password":\n"secret"}'
@@ -15,7 +15,7 @@ class TestJsonLogLeak(unittest.TestCase):
         self.assertNotIn("secret", sanitized)
         self.assertIn("***", sanitized)
 
-    def test_json_escaped_newline_leak(self):
+    def test_json_escaped_newline_leak(self) -> None:
         # Case where the input already has escaped newlines (e.g. from another logger)
         # This might be tricky, but let's see.
         # If input is '{"password":\\n"secret"}', then \\n is literal backslash n.

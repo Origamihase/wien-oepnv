@@ -1,6 +1,6 @@
 from src.feed.merge import _parse_title
 
-def test_parse_title_whitespace_tolerance():
+def test_parse_title_whitespace_tolerance() -> None:
     title = "U1 / U2 : Störung am Schottentor"
     lines, name = _parse_title(title)
 

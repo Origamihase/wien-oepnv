@@ -1,6 +1,6 @@
 from src.feed.merge import _has_significant_overlap
 
-def test_has_significant_overlap_stopwords():
+def test_has_significant_overlap_stopwords() -> None:
     # Only stopwords in both, they SHOULD merge because there's nothing else to distinguish them.
     # The requirement is to avoid false-positive merge on single generic tokens when they refer to different things.
     # i.e., "Störung" shouldn't merge with "Störung am Schottentor".

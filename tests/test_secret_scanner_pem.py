@@ -3,7 +3,7 @@ import unittest
 from src.utils.secret_scanner import _scan_content
 
 class TestSecretScannerPEM(unittest.TestCase):
-    def test_pem_private_key_detection(self):
+    def test_pem_private_key_detection(self) -> None:
         pem_content = """-----BEGIN RSA PRIVATE KEY-----
 MIIEpQIBAAKCAQEA3Tz2mr7SZiAMfQyuvBjM9Oi..
 ... (lots of base64) ...
@@ -17,7 +17,7 @@ MIIEpQIBAAKCAQEA3Tz2mr7SZiAMfQyuvBjM9Oi..
         # Verify deduplication: should not also detect as High Entropy
         self.assertEqual(len(findings), 1, "Should detect PEM as a single finding")
 
-    def test_pem_with_newlines(self):
+    def test_pem_with_newlines(self) -> None:
         # A real-looking PEM with 64-char lines
         pem_content = """-----BEGIN RSA PRIVATE KEY-----
 MIIEpQIBAAKCAQEA3Tz2mr7SZiAMfQyuvBjM9OiMIIEpQIBAAKCAQEA3Tz2mr7SZ

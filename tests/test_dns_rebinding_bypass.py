@@ -5,7 +5,7 @@ import requests
 from src.utils.http import session_with_retries
 
 class TestDNSRebindingBypass(unittest.TestCase):
-    def test_dns_rebinding_bypass_prevented(self):
+    def test_dns_rebinding_bypass_prevented(self) -> None:
         """
         Verify that session.get() verifies the connected IP for the final response,
         preventing a DNS rebinding attack even if initial validation passes.
