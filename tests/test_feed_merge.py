@@ -1,6 +1,6 @@
 from src.feed.merge import deduplicate_fuzzy
 
-def test_fuzzy_merge_silvester():
+def test_fuzzy_merge_silvester() -> None:
     items = [
         {
             "title": "1/2/71/74A/D: Wiener Silvesterlauf Event",
@@ -35,7 +35,7 @@ def test_fuzzy_merge_silvester():
     assert item["guid"] != "guid1"
     assert item["guid"] != "guid2"
 
-def test_fuzzy_merge_pubdate_update():
+def test_fuzzy_merge_pubdate_update() -> None:
     items = [
         {
             "title": "U1: Störung",
@@ -61,7 +61,7 @@ def test_fuzzy_merge_pubdate_update():
     assert "Zweite Meldung." in item["description"]
 
 
-def test_fuzzy_no_merge_different_events():
+def test_fuzzy_no_merge_different_events() -> None:
     items = [
         {
             "title": "1/2: Demo Ring",
@@ -78,7 +78,7 @@ def test_fuzzy_no_merge_different_events():
     merged = deduplicate_fuzzy(items)
     assert len(merged) == 2
 
-def test_fuzzy_no_merge_lines_disjoint():
+def test_fuzzy_no_merge_lines_disjoint() -> None:
     items = [
         {
             "title": "1: Silvesterlauf",
@@ -95,7 +95,7 @@ def test_fuzzy_no_merge_lines_disjoint():
     merged = deduplicate_fuzzy(items)
     assert len(merged) == 2
 
-def test_fuzzy_merge_lines_overlap_threshold():
+def test_fuzzy_merge_lines_overlap_threshold() -> None:
     # Overlap must be > 0.3
     # Items: A={1,2,3,4}, B={4,5,6,7}. Intersection={4}. Union={1..7} (7 items). 1/7 = 0.14. No merge.
     items = [
@@ -126,7 +126,7 @@ def test_fuzzy_merge_lines_overlap_threshold():
     assert len(merged2) == 1
     assert "1/2/3" in merged2[0]["title"]
 
-def test_fuzzy_merge_description_containment():
+def test_fuzzy_merge_description_containment() -> None:
     items = [
         {
             "title": "1/2: Event",
@@ -145,7 +145,7 @@ def test_fuzzy_merge_description_containment():
     assert merged[0]["description"] == "This is a Long desc containing Short desc inside it."
     assert "Short desc\n\n" not in merged[0]["description"]
 
-def test_fuzzy_merge_name_combining():
+def test_fuzzy_merge_name_combining() -> None:
     items = [
         {
             "title": "1/2: Event Special Run",
@@ -161,7 +161,7 @@ def test_fuzzy_merge_name_combining():
     assert len(merged) == 1
     assert "Event Special Run & Event Special Walk" in merged[0]["title"] or "Event Special Walk & Event Special Run" in merged[0]["title"]
 
-def test_fuzzy_merge_recursive():
+def test_fuzzy_merge_recursive() -> None:
     # A merges with B, result merges with C?
     # Current implementation is iterative.
     # If list is [A, B, C].
@@ -192,7 +192,7 @@ def test_fuzzy_merge_recursive():
     assert "1/2/3/4/5" in merged[0]["title"]
 
 
-def test_fuzzy_merge_provider_priority_vor_over_oebb():
+def test_fuzzy_merge_provider_priority_vor_over_oebb() -> None:
     """Verify that VOR data is prioritized over ÖBB data."""
     items = [
         {
@@ -224,7 +224,7 @@ def test_fuzzy_merge_provider_priority_vor_over_oebb():
     assert "VOR Details." in item["description"]
     assert "ÖBB Details." in item["description"]
 
-def test_fuzzy_merge_provider_priority_oebb_over_vor_order():
+def test_fuzzy_merge_provider_priority_oebb_over_vor_order() -> None:
     """Verify that even if ÖBB comes first, VOR wins the merge but keeps VOR data."""
     items = [
         {

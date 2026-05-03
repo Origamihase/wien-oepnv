@@ -2,7 +2,7 @@
 import time
 from src.providers.wl_lines import LINES_COMPLEX_PREFIX_RE
 
-def test_lines_complex_prefix_correctness():
+def test_lines_complex_prefix_correctness() -> None:
     """Verify that the regex matches valid complex line prefixes."""
     valid_inputs = [
         "L1, L2: Message",
@@ -19,7 +19,7 @@ def test_lines_complex_prefix_correctness():
         # Ensure it captured the prefix including the colon
         assert match.group(0).strip().endswith(":")
 
-def test_lines_complex_prefix_redos_performance():
+def test_lines_complex_prefix_redos_performance() -> None:
     """Verify that the regex is not vulnerable to ReDoS."""
     # Construct an attack string that triggers catastrophic backtracking in the vulnerable regex
     # The vulnerable regex had nested quantifiers around optional spaces and 'und'
@@ -36,7 +36,7 @@ def test_lines_complex_prefix_redos_performance():
     # This string is length ~8000.
     assert duration < 0.5, f"Regex took too long: {duration:.4f}s"
 
-def test_lines_complex_prefix_no_match():
+def test_lines_complex_prefix_no_match() -> None:
     """Verify non-matching inputs."""
     invalid_inputs = [
         "Simple Prefix: Text", # Doesn't start with multiple comma separated parts

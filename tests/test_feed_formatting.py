@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 
 from src.build_feed import _emit_item
 
-def test_emit_item_formatting_html_stripping():
+def test_emit_item_formatting_html_stripping() -> None:
     # Setup
     now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
     state = {}
@@ -58,7 +58,7 @@ def test_emit_item_formatting_html_stripping():
     # Check that HTML layout exists in content:encoded
     assert "<br/>" in content_html
 
-def test_emit_item_formatting_plain_text():
+def test_emit_item_formatting_plain_text() -> None:
     # Setup
     now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
     state = {}
@@ -84,7 +84,7 @@ def test_emit_item_formatting_plain_text():
     # No time line -> No <br/>
     assert "<br/>" not in inner_content
 
-def test_emit_item_formatting_multiline_collapsed():
+def test_emit_item_formatting_multiline_collapsed() -> None:
     # Setup
     now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
     state = {}
@@ -112,7 +112,7 @@ def test_emit_item_formatting_multiline_collapsed():
 
     assert "Line 1. • Line 2." in inner_content or "Line 1. Line 2." in inner_content
 
-def test_emit_item_timeframe_formatting():
+def test_emit_item_timeframe_formatting() -> None:
     # Setup
     now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
     state = {}
