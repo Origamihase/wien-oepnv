@@ -26,7 +26,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return importlib.import_module(module_name)
 
 
-def test_main_dedupes_items(monkeypatch, tmp_path):
+def test_main_dedupes_items(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     sample_items = [
@@ -67,7 +67,7 @@ def test_main_dedupes_items(monkeypatch, tmp_path):
     ]
 
 
-def test_items_without_identifier_are_unique(monkeypatch):
+def test_items_without_identifier_are_unique(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     items = [
@@ -78,7 +78,7 @@ def test_items_without_identifier_are_unique(monkeypatch):
     assert build_feed._dedupe_items(items) == items
 
 
-def test_items_with_same_text_but_different_source(monkeypatch):
+def test_items_with_same_text_but_different_source(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     items = [

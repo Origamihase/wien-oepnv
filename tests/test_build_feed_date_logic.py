@@ -25,7 +25,10 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return importlib.import_module(module_name)
 
 
-def test_format_local_times_end_before_start_future(monkeypatch, caplog):
+def test_format_local_times_end_before_start_future(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     # Mock datetime.now inside build_feed to have a fixed "today"
@@ -52,7 +55,10 @@ def test_format_local_times_end_before_start_future(monkeypatch, caplog):
     assert "Enddatum liegt vor Startdatum" in warnings
 
 
-def test_format_local_times_end_before_start_past(monkeypatch, caplog):
+def test_format_local_times_end_before_start_past(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     # Mock datetime.now inside build_feed to have a fixed "today"

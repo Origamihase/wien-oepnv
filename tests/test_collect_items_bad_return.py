@@ -24,7 +24,10 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return importlib.import_module(module_name)
 
 
-def test_collect_items_logs_and_skips_invalid_return(monkeypatch, caplog):
+def test_collect_items_logs_and_skips_invalid_return(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     def good_provider(timeout=None):

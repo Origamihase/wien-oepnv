@@ -33,7 +33,11 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
         ("VOR_ENABLE", [{"p": "wl"}, {"p": "oebb"}]),
     ],
 )
-def test_disabling_provider_suppresses_items(monkeypatch, disabled_env, expected):
+def test_disabling_provider_suppresses_items(
+    monkeypatch: pytest.MonkeyPatch,
+    disabled_env: str,
+    expected: list[dict[str, str]],
+) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     monkeypatch.setattr(
@@ -59,7 +63,10 @@ def test_disabling_provider_suppresses_items(monkeypatch, disabled_env, expected
     "value",
     ["0", " 0 ", "false", " False ", "FALSE", "\t0\n", "\nfalse\t"],
 )
-def test_env_disabling_ignores_whitespace_and_case(monkeypatch, value):
+def test_env_disabling_ignores_whitespace_and_case(
+    monkeypatch: pytest.MonkeyPatch,
+    value: str,
+) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     monkeypatch.setattr(
@@ -78,7 +85,7 @@ def test_env_disabling_ignores_whitespace_and_case(monkeypatch, value):
     assert items == [{"p": "oebb"}]
 
 
-def test_enabling_vor_yields_items(monkeypatch):
+def test_enabling_vor_yields_items(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     monkeypatch.setattr(

@@ -27,7 +27,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     module.refresh_from_env()
     return module
 
-def test_sort_key_handles_none_guid(monkeypatch, tmp_path):
+def test_sort_key_handles_none_guid(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     """
     Verify that _sort_key handles cases where 'guid' is explicitly None in the item dict.
     """
@@ -76,7 +76,7 @@ def test_sort_key_handles_none_guid(monkeypatch, tmp_path):
     assert isinstance(key3[2], str)
     assert key3[2] == "some-guid"
 
-def test_deterministic_sorting_fallback(monkeypatch, tmp_path):
+def test_deterministic_sorting_fallback(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
 
     build_feed = _import_build_feed(monkeypatch)
 

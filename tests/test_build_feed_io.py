@@ -27,7 +27,11 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return importlib.import_module(module_name)
 
 
-def test_main_does_not_save_state_on_io_error(monkeypatch, tmp_path, caplog):
+def test_main_does_not_save_state_on_io_error(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     monkeypatch.chdir(tmp_path)

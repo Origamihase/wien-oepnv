@@ -28,7 +28,10 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     module.refresh_from_env()
     return module
 
-def test_save_state_uses_separate_lock_file(monkeypatch, tmp_path):
+def test_save_state_uses_separate_lock_file(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     """
     Verify that _save_state creates a .lock file instead of locking the target file directly.
     """
