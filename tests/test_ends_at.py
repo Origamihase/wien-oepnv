@@ -23,7 +23,10 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return importlib.import_module(module_name)
 
 
-def test_item_with_past_ends_at_is_dropped(monkeypatch, tmp_path):
+def test_item_with_past_ends_at_is_dropped(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     build_feed = _import_build_feed(monkeypatch)
     now = datetime.now(timezone.utc)
     future = {"title": "future", "ends_at": now + timedelta(hours=1)}

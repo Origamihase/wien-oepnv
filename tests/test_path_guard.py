@@ -24,7 +24,10 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return module
 
 
-def test_out_path_rejects_outside_whitelist(monkeypatch, tmp_path):
+def test_out_path_rejects_outside_whitelist(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     build_feed = _import_build_feed(monkeypatch)
     monkeypatch.chdir(tmp_path)
     # Set env var so refresh_from_env picks it up and validation fails
@@ -38,14 +41,20 @@ def test_out_path_rejects_outside_whitelist(monkeypatch, tmp_path):
         build_feed.main()
 
 
-def test_state_path_rejects_outside_whitelist(monkeypatch, tmp_path):
+def test_state_path_rejects_outside_whitelist(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("STATE_PATH", "../evil.json")
     with pytest.raises(ValueError):
         _import_build_feed(monkeypatch)
 
 
-def test_log_dir_outside_whitelist_falls_back(monkeypatch, tmp_path):
+def test_log_dir_outside_whitelist_falls_back(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("LOG_DIR", "../evil")
     build_feed = _import_build_feed(monkeypatch)
