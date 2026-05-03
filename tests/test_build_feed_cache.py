@@ -2,10 +2,12 @@ import builtins
 import importlib
 import logging
 import sys
+import types
+import pytest
 from pathlib import Path
 from datetime import datetime, timezone
 
-def _import_build_feed_without_providers(monkeypatch):
+def _import_build_feed_without_providers(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
