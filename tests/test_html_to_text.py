@@ -15,7 +15,7 @@ from src.utils.text import html_to_text
     ("<th>Head1</th><th>Head2</th>End", "Head1\nHead2\nEnd"),
     ("Zeitraum:<br>Ab Montag", "Zeitraum:\nAb Montag"),
 ])
-def test_html_to_text_examples(html, expected):
+def test_html_to_text_examples(html: str, expected: str) -> None:
     assert html_to_text(html) == expected
 
 
@@ -26,7 +26,7 @@ def test_html_to_text_examples(html, expected):
     ("<div>&nbsp; A &nbsp; &amp; B  </div>End", "A & B\nEnd"),
     ("• foo • • bar •", "foo • bar"),
 ])
-def test_html_to_text_edge_cases(html, expected):
+def test_html_to_text_edge_cases(html: str, expected: str) -> None:
     assert html_to_text(html) == expected
 
 
@@ -41,7 +41,7 @@ def test_html_to_text_edge_cases(html, expected):
     ("Zum<br>• Ausgang", "Zum\nAusgang"),
     ("Nach<br>• Wien", "Nach\nWien"),
 ])
-def test_preposition_bullet_stripping(html, expected):
+def test_preposition_bullet_stripping(html: str, expected: str) -> None:
     assert html_to_text(html) == expected
 
 
@@ -51,5 +51,5 @@ def test_preposition_bullet_stripping(html, expected):
     ("U6", "U6"),
     ("2m", "2 m"),
 ])
-def test_line_codes_and_units(html, expected):
+def test_line_codes_and_units(html: str, expected: str) -> None:
     assert html_to_text(html) == expected

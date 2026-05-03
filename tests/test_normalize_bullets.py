@@ -29,5 +29,5 @@ from src.utils.text import normalize_bullets
         ("In •\n der Station", "In\nder Station"),
     ],
 )
-def test_normalize_bullets_prepositions(text, expected):
+def test_normalize_bullets_prepositions(text: str, expected: str) -> None:
     assert normalize_bullets(text) == expected
