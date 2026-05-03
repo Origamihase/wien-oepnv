@@ -2,6 +2,8 @@ import sys
 import logging
 import pytest
 from unittest.mock import patch
+from pathlib import Path
+from typing import Any, Iterator
 
 from src.utils.logging import sanitize_log_message
 from src.utils.secret_scanner import scan_repository
@@ -11,7 +13,7 @@ from src.utils.secret_scanner import scan_repository
 # -----------------------------------------------------------------------------
 
 @pytest.fixture
-def fallback_env_module():
+def fallback_env_module() -> Iterator[Any]:
     """
     Fixture that forces src.utils.env to be imported in fallback mode
     (simulating missing src.utils.logging).
@@ -47,7 +49,7 @@ def fallback_env_module():
 # Tests for Logging (Main)
 # -----------------------------------------------------------------------------
 
-def test_sanitize_log_message_escaped_quotes():
+def test_sanitize_log_message_escaped_quotes() -> None:
     """Verify that sanitize_log_message handles escaped quotes correctly."""
     # We use spaces to ensure the regex relies on the quoted part, not the fallback [^&\s]+
     secret = 'token="secret \\" leak"'
@@ -59,7 +61,7 @@ def test_sanitize_log_message_escaped_quotes():
     assert "token=***" in sanitized
 
 
-def test_sanitize_log_message_single_escaped_quotes():
+def test_sanitize_log_message_single_escaped_quotes() -> None:
     """Verify that sanitize_log_message handles escaped single quotes correctly."""
     secret = "token='secret \\' leak'"
     sanitized = sanitize_log_message(secret)
@@ -73,7 +75,7 @@ def test_sanitize_log_message_single_escaped_quotes():
 # Tests for Env Fallback
 # -----------------------------------------------------------------------------
 
-def test_fallback_env_escaped_quotes(fallback_env_module, caplog):
+def test_fallback_env_escaped_quotes(fallback_env_module: Any, caplog: pytest.LogCaptureFixture) -> None:
     """Verify that env fallback logging handles escaped quotes correctly."""
     caplog.set_level(logging.WARNING, logger="build_feed")
 
@@ -94,7 +96,7 @@ def test_fallback_env_escaped_quotes(fallback_env_module, caplog):
 # Tests for Secret Scanner
 # -----------------------------------------------------------------------------
 
-def test_secret_scanner_escaped_quotes(tmp_path):
+def test_secret_scanner_escaped_quotes(tmp_path: Path) -> None:
     """Verify that secret scanner captures the FULL secret including escaped quotes."""
     file_path = tmp_path / "config.py"
     # A long secret with escaped quotes
