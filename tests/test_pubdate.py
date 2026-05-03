@@ -2,11 +2,12 @@ import importlib
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+import pytest
 import types
 from defusedxml import ElementTree as ET
 
 
-def _import_build_feed(monkeypatch):
+def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
