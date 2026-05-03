@@ -1,6 +1,6 @@
 from src.build_feed import _identity_for_item
 
-def test_oebb_identity_uses_guid():
+def test_oebb_identity_uses_guid() -> None:
     item = {
         "source": "öbb",
         "guid": "oebb-guid-1234",
@@ -9,7 +9,7 @@ def test_oebb_identity_uses_guid():
     identity = _identity_for_item(item)
     assert identity == "oebb|oebb-guid-1234"
 
-def test_oebb_identity_uses_link_if_no_guid():
+def test_oebb_identity_uses_link_if_no_guid() -> None:
     item = {
         "source": "oebb",
         "link": "https://example.com/oebb/1234",
@@ -18,7 +18,7 @@ def test_oebb_identity_uses_link_if_no_guid():
     identity = _identity_for_item(item)
     assert identity == "oebb|https://example.com/oebb/1234"
 
-def test_oebb_identity_uses_hash_if_neither():
+def test_oebb_identity_uses_hash_if_neither() -> None:
     item = {
         "source": "öbb",
         "title": "Test Title",

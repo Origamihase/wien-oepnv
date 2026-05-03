@@ -28,7 +28,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return module
 
 
-def test_state_path_override(monkeypatch, tmp_path):
+def test_state_path_override(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     state_file = tmp_path / "data" / "custom_state.json"
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("STATE_PATH", "data/custom_state.json")
@@ -39,7 +39,7 @@ def test_state_path_override(monkeypatch, tmp_path):
     assert build_feed._load_state() == {"id": {"first_seen": now}}
 
 
-def test_state_repairs_malformed_entries(monkeypatch, tmp_path):
+def test_state_repairs_malformed_entries(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     state_file = tmp_path / "data" / "state.json"
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("STATE_PATH", "data/state.json")
@@ -82,7 +82,10 @@ def test_state_repairs_malformed_entries(monkeypatch, tmp_path):
         assert dt.tzinfo is not None, "Repaired datetime should be timezone-aware"
 
 
-def test_state_retention_discards_old_entries(monkeypatch, tmp_path):
+def test_state_retention_discards_old_entries(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     state_file = tmp_path / "data" / "state.json"
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("STATE_PATH", "data/state.json")
@@ -107,7 +110,7 @@ def test_state_retention_discards_old_entries(monkeypatch, tmp_path):
     assert state == {"fresh": {"first_seen": fresh_dt.isoformat()}}
 
 
-def test_state_cleared_when_feed_empty(monkeypatch, tmp_path):
+def test_state_cleared_when_feed_empty(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     state_file = tmp_path / "data" / "state.json"
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("STATE_PATH", "data/state.json")

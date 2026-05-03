@@ -28,7 +28,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch, env: dict[str, str] | No
     return module
 
 
-def test_future_ends_at_skips_max_age(monkeypatch):
+def test_future_ends_at_skips_max_age(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(
         monkeypatch,
         {"MAX_ITEM_AGE_DAYS": "365", "ABSOLUTE_MAX_AGE_DAYS": "540"},
@@ -49,7 +49,7 @@ def test_future_ends_at_skips_max_age(monkeypatch):
     assert res == [future]
 
 
-def test_first_seen_used_when_no_dates(monkeypatch):
+def test_first_seen_used_when_no_dates(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(
         monkeypatch,
         {"MAX_ITEM_AGE_DAYS": "2", "ABSOLUTE_MAX_AGE_DAYS": "10"},
