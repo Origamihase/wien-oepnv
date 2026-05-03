@@ -1,9 +1,10 @@
 import json
+from pathlib import Path
 import pytest
 from unittest.mock import patch
 from src.utils.cache import write_cache, DataDegradationError
 
-def test_cache_degradation_guard_bypass_on_new_cache(tmp_path):
+def test_cache_degradation_guard_bypass_on_new_cache(tmp_path: Path) -> None:
     """Verify that writing to a non-existent cache works normally."""
     provider = "test_new"
     cache_dir = tmp_path / "cache"
@@ -20,7 +21,7 @@ def test_cache_degradation_guard_bypass_on_new_cache(tmp_path):
             saved_data = json.load(f)
         assert len(saved_data) == 1
 
-def test_cache_degradation_guard_bypass_on_empty_existing(tmp_path):
+def test_cache_degradation_guard_bypass_on_empty_existing(tmp_path: Path) -> None:
     """Verify that writing empty items to an empty existing cache works."""
     provider = "test_empty_existing"
     cache_dir = tmp_path / "cache"
@@ -41,7 +42,7 @@ def test_cache_degradation_guard_bypass_on_empty_existing(tmp_path):
             saved_data = json.load(f)
         assert len(saved_data) == 0
 
-def test_cache_degradation_guard_raises_on_empty_payload(tmp_path):
+def test_cache_degradation_guard_raises_on_empty_payload(tmp_path: Path) -> None:
     """Verify that writing empty items to a populated cache raises DataDegradationError."""
     provider = "test_empty_payload"
     cache_dir = tmp_path / "cache"
@@ -58,7 +59,7 @@ def test_cache_degradation_guard_raises_on_empty_payload(tmp_path):
         with pytest.raises(DataDegradationError, match="Empty payload rejected"):
             write_cache(provider, items)
 
-def test_cache_degradation_guard_raises_on_drastic_drop(tmp_path):
+def test_cache_degradation_guard_raises_on_drastic_drop(tmp_path: Path) -> None:
     """Verify that writing drastically fewer items raises DataDegradationError."""
     provider = "test_drastic_drop"
     cache_dir = tmp_path / "cache"
@@ -76,7 +77,7 @@ def test_cache_degradation_guard_raises_on_drastic_drop(tmp_path):
         with pytest.raises(DataDegradationError, match="Degraded payload rejected"):
             write_cache(provider, items)
 
-def test_cache_degradation_guard_bypass_on_slight_drop(tmp_path):
+def test_cache_degradation_guard_bypass_on_slight_drop(tmp_path: Path) -> None:
     """Verify that a drop < 80% bypasses the degradation guard."""
     provider = "test_slight_drop"
     cache_dir = tmp_path / "cache"
@@ -97,7 +98,7 @@ def test_cache_degradation_guard_bypass_on_slight_drop(tmp_path):
             saved_data = json.load(f)
         assert len(saved_data) == 50
 
-def test_cache_degradation_guard_bypass_on_corrupt_cache(tmp_path):
+def test_cache_degradation_guard_bypass_on_corrupt_cache(tmp_path: Path) -> None:
     """Verify that if the existing cache is corrupt, it's bypassed and overwritten."""
     provider = "test_corrupt"
     cache_dir = tmp_path / "cache"
