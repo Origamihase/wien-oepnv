@@ -1,7 +1,7 @@
 
 from src.utils.logging import sanitize_log_message
 
-def test_sanitization_multiword_unquoted_secret():
+def test_sanitization_multiword_unquoted_secret() -> None:
     """
     Test that multi-word unquoted secrets (e.g. passphrase) are fully redacted.
     This was previously leaking words after the first space.
@@ -16,7 +16,7 @@ def test_sanitization_multiword_unquoted_secret():
     assert "staple" not in sanitized
     assert sanitized == "passphrase=***"
 
-def test_sanitization_multiword_followed_by_key():
+def test_sanitization_multiword_followed_by_key() -> None:
     """
     Test that unquoted value followed by a new key assignment stops correctly.
     """
@@ -35,7 +35,7 @@ def test_sanitization_multiword_followed_by_key():
     assert "foo" not in sanitized2
     assert sanitized2 == "password=*** token=***"
 
-def test_sanitization_multiword_followed_by_non_key_text():
+def test_sanitization_multiword_followed_by_non_key_text() -> None:
     """
     Test behavior when unquoted value is followed by text that is NOT a key assignment.
     With the new stricter regex, this text is considered part of the value and redacted.
@@ -50,7 +50,7 @@ def test_sanitization_multiword_followed_by_non_key_text():
     assert "(expired)" not in sanitized
     assert sanitized == "token=***"
 
-def test_sanitization_separators():
+def test_sanitization_separators() -> None:
     """Test that standard separators still work correctly."""
     msg = "password=secret, user=me"
     sanitized = sanitize_log_message(msg)
@@ -64,7 +64,7 @@ def test_sanitization_separators():
     assert "user=me" in sanitized2
     assert sanitized2 == "password=***&user=me"
 
-def test_sanitization_newline():
+def test_sanitization_newline() -> None:
     """Test that newline stops unquoted value matching."""
     msg = "password=secret\nuser=me"
     sanitized = sanitize_log_message(msg)

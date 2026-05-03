@@ -3,7 +3,7 @@ import sys
 from unittest.mock import patch
 from src.utils.logging import sanitize_log_message
 
-def test_multiline_leak():
+def test_multiline_leak() -> None:
     msg = "Token: \n harmless \n SUPER_SECRET_VALUE"
     sanitized = sanitize_log_message(msg)
     print(f"Original: {repr(msg)}")
@@ -11,7 +11,7 @@ def test_multiline_leak():
     assert "SUPER_SECRET_VALUE" not in sanitized
     assert "Token: ***" in sanitized or "Token: \\n ***" in sanitized or "Token: \\n harmless \\n ***" in sanitized
 
-def test_multiline_header_leak():
+def test_multiline_header_leak() -> None:
     # Multiline headers must be indented (folding) to be treated as part of the value
     msg = "Authorization: Bearer\n  token"
     sanitized = sanitize_log_message(msg)
@@ -19,7 +19,7 @@ def test_multiline_header_leak():
     assert "token" not in sanitized
     assert "Authorization: ***" in sanitized
 
-def test_env_fallback_multiline():
+def test_env_fallback_multiline() -> None:
     # Save original modules
     original_env = sys.modules.get('src.utils.env')
     original_logging = sys.modules.get('src.utils.logging')
