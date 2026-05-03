@@ -1,7 +1,7 @@
 
 from src.utils.http import validate_http_url
 
-def test_validate_http_url_rebinding_domains():
+def test_validate_http_url_rebinding_domains() -> None:
     """Test that known DNS rebinding domains are blocked even without DNS resolution."""
     unsafe_domains = [
         "http://127.0.0.1.nip.io",
@@ -27,7 +27,7 @@ def test_validate_http_url_rebinding_domains():
         # Note: If DNS fails, it returns None anyway.
         assert validate_http_url(url, check_dns=True) is None, f"Should block {url} (with DNS)"
 
-def test_validate_http_url_valid_domains():
+def test_validate_http_url_valid_domains() -> None:
     """Test that valid public domains are still allowed."""
     safe_domains = [
         "https://google.com",
@@ -44,12 +44,12 @@ def test_validate_http_url_valid_domains():
     for url in safe_domains:
         assert validate_http_url(url, check_dns=False) == url, f"Should allow {url} (no DNS)"
 
-def test_validate_http_url_mixed_case():
+def test_validate_http_url_mixed_case() -> None:
     """Test that domain blocking is case-insensitive."""
     assert validate_http_url("http://127.0.0.1.NIP.IO", check_dns=False) is None
     assert validate_http_url("http://LoCaLtEsT.Me", check_dns=False) is None
 
-def test_validate_http_url_suffix_match():
+def test_validate_http_url_suffix_match() -> None:
     """Test that we match suffixes correctly (dot-prefixed)."""
     # nip.io is blocked
     assert validate_http_url("http://nip.io", check_dns=False) is None

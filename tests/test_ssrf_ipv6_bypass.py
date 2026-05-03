@@ -1,7 +1,7 @@
 import ipaddress
 from src.utils.http import is_ip_safe
 
-def test_nat64_bypass_detected():
+def test_nat64_bypass_detected() -> None:
     # NAT64 Well-Known Prefix (WKP) 64:ff9b::/96
     # This prefix is used to translate IPv4 addresses to IPv6.
     # If an attacker uses this prefix with a private IPv4 address (e.g. 127.0.0.1),
@@ -28,13 +28,13 @@ def test_nat64_bypass_detected():
         # So we assert is_ip_safe returns False, expecting it to fail until fixed.
         assert is_ip_safe(ip) is False, f"Vulnerability: {ip_str} was accepted as safe!"
 
-def test_other_translation_prefixes():
+def test_other_translation_prefixes() -> None:
     # 6to4 (2002::/16) - Should be blocked by is_global=False
     assert is_ip_safe(ipaddress.ip_address("2002:7f00:0001::")) is False
 
     # Teredo (2001::/32) - Should be blocked by is_global=False
     assert is_ip_safe(ipaddress.ip_address("2001:0000:7f00:0001::")) is False
 
-def test_ipv4_mapped():
+def test_ipv4_mapped() -> None:
     # IPv4-mapped (::ffff:0:0/96) - Should be blocked
     assert is_ip_safe(ipaddress.ip_address("::ffff:127.0.0.1")) is False
