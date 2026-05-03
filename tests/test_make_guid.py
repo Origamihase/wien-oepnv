@@ -8,7 +8,7 @@ import hashlib
 from src.utils.ids import make_guid
 
 
-def test_make_guid_matches_sha256_digest_for_parts():
+def test_make_guid_matches_sha256_digest_for_parts() -> None:
     """The GUID uses the SHA256 digest of the pipe-joined parts."""
 
     parts = ("line", "station", "direction")
@@ -17,14 +17,14 @@ def test_make_guid_matches_sha256_digest_for_parts():
     assert make_guid(*parts) == expected
 
 
-def test_make_guid_treats_falsy_values_as_empty_strings():
+def test_make_guid_treats_falsy_values_as_empty_strings() -> None:
     """Falsy values are coerced to empty strings before hashing."""
 
     assert make_guid("line", None, "station") == make_guid("line", "", "station")
     assert make_guid("", "", "") == make_guid(None, None, None)
 
 
-def test_make_guid_is_stable_for_unicode_content():
+def test_make_guid_is_stable_for_unicode_content() -> None:
     """Unicode input is supported and results in stable GUIDs."""
 
     unicode_parts = ("ßtraße", "🚉", "向东")

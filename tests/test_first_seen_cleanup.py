@@ -37,7 +37,10 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> types
     return importlib.import_module(module_name)
 
 
-def test_state_cleanup_keeps_only_current_identities(monkeypatch, tmp_path):
+def test_state_cleanup_keeps_only_current_identities(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     build_feed = _import_build_feed(monkeypatch, tmp_path)
     now = datetime.now(timezone.utc)
 

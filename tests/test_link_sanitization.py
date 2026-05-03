@@ -11,7 +11,7 @@ def _emit_item_str(item, now, state):
         xml_str = xml_str.replace(ph, content)
     return ident, xml_str
 
-def test_javascript_link_sanitization():
+def test_javascript_link_sanitization() -> None:
     # Mock date and state
     now = datetime.datetime(2025, 1, 1, 12, 0, 0, tzinfo=datetime.timezone.utc)
     state = {}
@@ -39,7 +39,7 @@ def test_javascript_link_sanitization():
     if FEED_LINK:
         assert f"<link>{FEED_LINK}</link>" in xml
 
-def test_valid_http_link_preserved():
+def test_valid_http_link_preserved() -> None:
     now = datetime.datetime(2025, 1, 1, 12, 0, 0, tzinfo=datetime.timezone.utc)
     state = {}
 

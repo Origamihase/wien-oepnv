@@ -26,7 +26,10 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch, env: dict[str, str]) -> 
     return importlib.import_module(module_name)
 
 
-def test_main_filters_items_older_than_max(monkeypatch, tmp_path):
+def test_main_filters_items_older_than_max(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     build_feed = _import_build_feed(
         monkeypatch,
         {"MAX_ITEM_AGE_DAYS": "2", "ABSOLUTE_MAX_AGE_DAYS": "10"},
@@ -55,7 +58,10 @@ def test_main_filters_items_older_than_max(monkeypatch, tmp_path):
     assert captured["items"] == [recent]
 
 
-def test_main_filters_items_older_than_absolute(monkeypatch, tmp_path):
+def test_main_filters_items_older_than_absolute(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     build_feed = _import_build_feed(
         monkeypatch,
         {"MAX_ITEM_AGE_DAYS": "1000", "ABSOLUTE_MAX_AGE_DAYS": "2"},

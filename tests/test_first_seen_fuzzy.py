@@ -33,7 +33,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> types
     return importlib.import_module(module_name)
 
 
-def test_first_seen_fuzzy_identity(monkeypatch, tmp_path):
+def test_first_seen_fuzzy_identity(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     build_feed = _import_build_feed(monkeypatch, tmp_path)
     now = datetime.now(timezone.utc)
     item_a = {

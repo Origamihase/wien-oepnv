@@ -2,9 +2,10 @@ import importlib
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+import pytest
 
 
-def test_max_items_non_negative(monkeypatch):
+def test_max_items_non_negative(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("MAX_ITEMS", "-5")
     module_name = "src.build_feed"
     # Ensure 'providers' package can be found
@@ -16,7 +17,7 @@ def test_max_items_non_negative(monkeypatch):
     assert build_feed.feed_config.MAX_ITEMS == 0
 
 
-def test_make_rss_ignores_items_when_max_is_zero(monkeypatch):
+def test_make_rss_ignores_items_when_max_is_zero(monkeypatch: pytest.MonkeyPatch) -> None:
     module_name = "src.build_feed"
     monkeypatch.setenv("MAX_ITEMS", "0")
     monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1] / "src"))
