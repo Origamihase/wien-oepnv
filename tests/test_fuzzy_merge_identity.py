@@ -1,6 +1,6 @@
 from src.feed.merge import deduplicate_fuzzy
 
-def test_fuzzy_merge_identity():
+def test_fuzzy_merge_identity() -> None:
     # Two items with significant overlap
     items = [
         {

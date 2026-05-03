@@ -4,7 +4,7 @@ from urllib.parse import unquote
 from src.utils.http import _sanitize_url_for_error
 
 class TestHttpSanitizationNewKeys(unittest.TestCase):
-    def test_new_keys_redaction(self):
+    def test_new_keys_redaction(self) -> None:
         # Test that glpat and ghp are redacted in query params
         url = "https://example.com/api?glpat=glpat-123456&ghp=ghp_abcdef&otp=123456&token=secret"
         sanitized = _sanitize_url_for_error(url)

@@ -1,7 +1,7 @@
 import hashlib
 from src.utils.ids import make_guid
 
-def test_guid_collision_vulnerability():
+def test_guid_collision_vulnerability() -> None:
     """Verify that current implementation PREVENTS GUID collisions via pipe injection."""
     guid1 = make_guid("a|b", "c")
     guid2 = make_guid("a", "b|c")
@@ -9,7 +9,7 @@ def test_guid_collision_vulnerability():
     # After fix, these should be different
     assert guid1 != guid2, "Collision detected! Pipe injection vulnerability persists."
 
-def test_guid_backward_compatibility():
+def test_guid_backward_compatibility() -> None:
     """Verify that safe inputs produce the expected hash (compatibility check)."""
     # "foo|bar" -> sha256
     # If inputs contain no special chars, the behavior should be the same as simple join

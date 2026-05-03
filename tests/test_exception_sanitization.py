@@ -5,7 +5,7 @@ import socket
 from src.utils.http import session_with_retries, request_safe
 
 class TestExceptionSanitization(unittest.TestCase):
-    def test_request_safe_sanitizes_exception_message(self):
+    def test_request_safe_sanitizes_exception_message(self) -> None:
         """
         Verify that request_safe sanitizes secrets from exception messages.
         """

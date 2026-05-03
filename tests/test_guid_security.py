@@ -1,6 +1,6 @@
 from src.providers.vor import _build_guid
 
-def test_vor_guid_dos_protection():
+def test_vor_guid_dos_protection() -> None:
     """
     Verify that _build_guid bounds the length of external IDs to prevent DoS.
     """

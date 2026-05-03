@@ -2,7 +2,7 @@ import unittest
 from src.utils.http import _sanitize_url_for_error, MAX_URL_LENGTH
 
 class TestHttpDoS(unittest.TestCase):
-    def test_sanitize_url_truncation(self):
+    def test_sanitize_url_truncation(self) -> None:
         # Create a URL that is definitely longer than MAX_URL_LENGTH
         long_url = "https://example.com/" + "a" * (MAX_URL_LENGTH + 100)
 

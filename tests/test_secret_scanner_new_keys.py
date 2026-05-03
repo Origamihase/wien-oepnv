@@ -3,7 +3,7 @@ import unittest
 from src.utils.secret_scanner import _SENSITIVE_ASSIGN_RE, _looks_like_secret
 
 class TestSecretScannerNewKeys(unittest.TestCase):
-    def test_new_keys_detection(self):
+    def test_new_keys_detection(self) -> None:
         # We want to detect these new patterns
         test_cases = [
             'webhook_url = "https://discord.com/api/webhooks/123/abc"',
@@ -23,7 +23,7 @@ class TestSecretScannerNewKeys(unittest.TestCase):
             is_secret = _looks_like_secret(candidate, is_assignment=True)
             self.assertTrue(is_secret, f"Candidate {candidate} rejected by _looks_like_secret")
 
-    def test_specific_keywords(self):
+    def test_specific_keywords(self) -> None:
         # These should match the regex
         keywords = ["glpat", "ghp"]
         for kw in keywords:
