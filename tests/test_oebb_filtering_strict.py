@@ -42,7 +42,7 @@ Details finden Sie hier... ]]>
 """
 
 @responses.activate
-def test_oebb_filtering_strict_route():
+def test_oebb_filtering_strict_route() -> None:
     """
     Ensures that a route between two Outer stations (Gmünd NÖ <-> Ceske Velenice) is filtered out.
     This requires 'Gmünd NÖ' and 'Ceske Velenice' to be in stations.json (as non-Vienna, non-Pendler).

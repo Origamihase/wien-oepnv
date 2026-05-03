@@ -6,7 +6,7 @@ class TestOebbFiltering:
     Ensures that irrelevant messages (far from Vienna) are excluded.
     """
 
-    def test_irrelevant_routes_excluded(self):
+    def test_irrelevant_routes_excluded(self) -> None:
         # Case 1: Route between unknown foreign/remote stations (Ljubljana -> Schwarzach)
         # Should be excluded because neither station is known, and title has arrow (Route Heuristic).
         assert _is_relevant(
@@ -14,7 +14,7 @@ class TestOebbFiltering:
             "Wegen Bauarbeiten der Slowenischen Eisenbahnen (SZ) werden von 24.01.2026 bis 25.01.2026 ..."
         ) is False
 
-    def test_irrelevant_generic_title_with_remote_stations(self):
+    def test_irrelevant_generic_title_with_remote_stations(self) -> None:
         # Case 2: Generic title with arrow, stations in description (Innsbruck -> Feldkirch)
         # "Innsbruck Hbf" should NOT match "Hbf" (generic alias excluded).
         assert _is_relevant(
@@ -22,7 +22,7 @@ class TestOebbFiltering:
             "Wegen Bauarbeiten werden zwischen Innsbruck Hbf und Feldkirch Bahnhof von 07.01.2026 ..."
         ) is False
 
-    def test_irrelevant_badly_formatted_title(self):
+    def test_irrelevant_badly_formatted_title(self) -> None:
         # Case 3: Badly formatted title with extra angle brackets (Villach -> Jesenice)
         # "Villach Hbf" should NOT match "Hbf".
         assert _is_relevant(
@@ -30,28 +30,28 @@ class TestOebbFiltering:
             "Wegen Bauarbeiten der Slowenischen Eisenbahnen (SZ) können zwischen Villach Hbf und Jesenice(SL)..."
         ) is False
 
-    def test_irrelevant_vorarlberg_route(self):
+    def test_irrelevant_vorarlberg_route(self) -> None:
         # Case 4: Bregenz -> Dornbirn (Vorarlberg)
         assert _is_relevant(
             "Bregenz < ↔ > Dornbirn",
             "Wegen Bauarbeiten fährt zwischen Bregenz Bahnhof und Dornbirn Bahnhof..."
         ) is False
 
-    def test_relevant_vienna_explicit(self):
+    def test_relevant_vienna_explicit(self) -> None:
         # Explicit Vienna mention
         assert _is_relevant(
             "Wien Hauptbahnhof ↔ St. Pölten",
             "Zugausfall wegen technischer Störung."
         ) is True
 
-    def test_relevant_vienna_alias(self):
+    def test_relevant_vienna_alias(self) -> None:
         # "Meidling" is a known alias for "Wien Meidling"
         assert _is_relevant(
             "Meidling ↔ Mödling",
             "Verzögerungen."
         ) is True
 
-    def test_relevant_general_disruption(self):
+    def test_relevant_general_disruption(self) -> None:
         # General disruption without station or arrow
         # Strict Mode: Excluded unless explicitly mentioning Vienna.
         assert _is_relevant(
@@ -59,14 +59,14 @@ class TestOebbFiltering:
             "Es kommt zu Verzögerungen im gesamten Netz."
         ) is False
 
-    def test_relevant_general_disruption_with_vienna(self):
+    def test_relevant_general_disruption_with_vienna(self) -> None:
         # General disruption WITH Vienna reference -> Keep
         assert _is_relevant(
             "Sturm im Raum Wien",
             "Verzögerungen bei der S-Bahn Wien."
         ) is True
 
-    def test_irrelevant_outer_only(self):
+    def test_irrelevant_outer_only(self) -> None:
         # Route strictly within Outer region (e.g. Baden -> Wr. Neustadt)
         # Should be excluded by Check C (Ausschluss Umland)
         # Assuming Baden and Wr. Neustadt are in Outer set.
@@ -75,7 +75,7 @@ class TestOebbFiltering:
             "Zugausfall."
         ) is False
 
-    def test_hbf_alias_exclusion(self):
+    def test_hbf_alias_exclusion(self) -> None:
         # Ensure "Hbf" alone does not trigger Vienna relevance
         # "Hbf" is in excluded generic aliases.
         # "Innsbruck Hbf" -> should be excluded (unless Innsbruck is in Vienna/Outer, which it isn't).
@@ -92,7 +92,7 @@ class TestOebbFiltering:
             "Verspätung."
         ) is False
 
-    def test_marchegg_bratislava_excluded(self):
+    def test_marchegg_bratislava_excluded(self) -> None:
         # Regression test for user report: "Marchegg ↔ Bratislava hl.st."
         # Marchegg is in Outer region (pendler=True).
         # Bratislava is foreign (not Vienna).
@@ -104,7 +104,7 @@ class TestOebbFiltering:
             "von 04.05.2026 (07:50 Uhr) bis 08.05.2026 (16:00 Uhr) keine REX8-Züge …[04.05.2026 – 08.05.2026]"
         ) is False
 
-    def test_irrelevant_st_margrethen_sg(self):
+    def test_irrelevant_st_margrethen_sg(self) -> None:
         # Regression test for "Lindau (Bodensee) Reutin ↔ ST. MARGRETHEN SG"
         # "SG" (St. Gallen) used to match "Sg" (alias for Wien Grillgasse).
         # We now filter out 2-letter aliases to prevent this.
@@ -113,7 +113,7 @@ class TestOebbFiltering:
             "Wegen Bauarbeiten der Deutschen Bahn (DB) können zwischen Lindau (Bodensee) Reutin Bahnhof und ST. MARGRETHEN SG..."
         ) is False
 
-    def test_neulengbach_tullnerbach_excluded(self):
+    def test_neulengbach_tullnerbach_excluded(self) -> None:
         # Regression test for "Neulengbach ↔ Tullnerbach-Pressbaum"
         # User reported this as irrelevant (neither Vienna nor commuter stations).
         # We updated metadata to set pendler=False for these stations.
@@ -131,7 +131,7 @@ class TestSigmundsherbergRegression:
     Previously, 'Hadersdorf am Kamp' triggered a false positive for 'Wien Hadersdorf'.
     """
 
-    def test_sigmundsherberg_hadersdorf_excluded(self):
+    def test_sigmundsherberg_hadersdorf_excluded(self) -> None:
         title = "Sigmundsherberg ↔ Hadersdorf am Kamp"
         description = (
             "Wegen Bauarbeiten können zwischen Sigmundsherberg Bahnhof und Hadersdorf am Kamp "
@@ -141,7 +141,7 @@ class TestSigmundsherbergRegression:
         # Should be False (excluded)
         assert _is_relevant(title, description) is False
 
-    def test_irrelevant_outer_to_outer_neulengbach_kledering(self):
+    def test_irrelevant_outer_to_outer_neulengbach_kledering(self) -> None:
         # Regression test for disruption between two outer stations
         # Even if the description mentions "Wien", it should be rejected
         # because neither station is physically inside Vienna.
