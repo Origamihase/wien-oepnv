@@ -1,7 +1,7 @@
 import src.providers.vor as vor
 
 
-def test_iter_messages_handles_nested_containers():
+def test_iter_messages_handles_nested_containers() -> None:
     payload = {
         "DepartureBoard": {
             "Messages": {

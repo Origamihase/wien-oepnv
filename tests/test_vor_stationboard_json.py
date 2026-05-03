@@ -1,7 +1,7 @@
 import src.providers.vor as vor
 
 
-def test_iter_messages_returns_dict():
+def test_iter_messages_returns_dict() -> None:
     payload = {
         "DepartureBoard": {
             "Messages": {

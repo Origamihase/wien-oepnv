@@ -32,7 +32,7 @@ def test_log_warning_sanitizes_newlines(monkeypatch):
     assert "station_id" in sanitized
     assert "Fake Log Entry" in sanitized
 
-def test_sanitize_message_strips_control_chars():
+def test_sanitize_message_strips_control_chars() -> None:
     # Direct test of _sanitize_message
     text = "Line 1\nLine 2\rLine 3\tTabbed"
     sanitized = vor._sanitize_message(text)
@@ -42,7 +42,7 @@ def test_sanitize_message_strips_control_chars():
     assert "\t" not in sanitized
     assert "Line 1\\nLine 2\\rLine 3\\tTabbed" in sanitized
 
-def test_sanitize_message_strips_ansi_codes():
+def test_sanitize_message_strips_ansi_codes() -> None:
     # Test for ANSI escape codes (e.g. colors)
     red = "\x1b[31m"
     reset = "\x1b[0m"

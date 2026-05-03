@@ -3,7 +3,7 @@ from datetime import timezone
 import src.providers.vor as vor
 
 
-def test_parse_dt_converts_vienna_to_utc():
+def test_parse_dt_converts_vienna_to_utc() -> None:
     dt = vor._parse_dt("2024-07-01", "12:00")
     assert dt is not None
     assert dt.tzinfo == timezone.utc

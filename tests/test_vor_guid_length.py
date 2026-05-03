@@ -1,6 +1,6 @@
 from src.providers.vor import _build_guid
 
-def test_vor_guid_bounded_length():
+def test_vor_guid_bounded_length() -> None:
     """
     Verify that the fallback GUID generation produces fixed-length IDs
     even with large input content (using SHA256).

@@ -5,7 +5,7 @@ import src.providers.vor as vor
 
 
 @responses.activate
-def test_location_name_contains_stoplocation():
+def test_location_name_contains_stoplocation() -> None:
     url = f"{vor.VOR_BASE_URL}location.name"
     payload = {"StopLocation": [{"id": "1", "name": "Wien"}]}
     responses.add(responses.GET, url, json=payload, status=200)

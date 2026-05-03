@@ -8,7 +8,7 @@ from src.providers.vor import (
 )
 
 class TestVorAuth:
-    def test_vor_auth_init_and_call(self):
+    def test_vor_auth_init_and_call(self) -> None:
         """
         Test that VorAuth:
         1. Accepts access_id, auth_header, base_url.
