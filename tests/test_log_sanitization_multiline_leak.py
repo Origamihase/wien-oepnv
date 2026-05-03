@@ -1,6 +1,6 @@
 from src.utils.logging import sanitize_log_message
 
-def test_space_leakage_unquoted():
+def test_space_leakage_unquoted() -> None:
     """Test handling of unquoted secrets with spaces."""
     # "password=my secret user=1"
     # New behavior consumes spaces until the next key assignment.
@@ -16,7 +16,7 @@ def test_space_leakage_unquoted():
 
     assert sanitized == "password=*** user=1"
 
-def test_pem_block_redaction():
+def test_pem_block_redaction() -> None:
     """Test that PEM blocks (keys/certs) are fully redacted."""
     pem = """-----BEGIN PRIVATE KEY-----
 MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQD
@@ -31,7 +31,7 @@ MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQD
     assert "-----END PRIVATE KEY-----" in sanitized
     assert "***" in sanitized
 
-def test_multiline_header_leak():
+def test_multiline_header_leak() -> None:
     """Test that multiline headers (not indented) don't leak subsequent lines."""
     # Using 'Private-Key' which matches 'key' or 'private' in _header_keys
     pem = """-----BEGIN PRIVATE KEY-----
@@ -42,19 +42,19 @@ MIIEvg...
 
     assert "MIIEvg" not in sanitized, "PEM content in header leaked!"
 
-def test_ampersand_separation():
+def test_ampersand_separation() -> None:
     """Test that & acts as separator."""
     msg = "password=val&user=1"
     sanitized = sanitize_log_message(msg)
     assert sanitized == "password=***&user=1"
 
-def test_comma_separation():
+def test_comma_separation() -> None:
     """Test that comma acts as separator (common in repr)."""
     msg = "password=val,user=1"
     sanitized = sanitize_log_message(msg)
     assert sanitized == "password=***,user=1"
 
-def test_space_separated_keys():
+def test_space_separated_keys() -> None:
     """Test multiple space separated keys."""
     # usage of api_key (matches [a-z0-9_.\-]*api[-_.\s]*key)
     # usage of client_secret (matches client[-_.\s]*secret)
@@ -65,7 +65,7 @@ def test_space_separated_keys():
     assert "secret2" not in sanitized
     assert "user_id=123" in sanitized # user_id is not sensitive, should be preserved.
 
-def test_over_redaction_space_followed_by_text():
+def test_over_redaction_space_followed_by_text() -> None:
     """Test that text following a key-value pair IS redacted if it doesn't look like a key."""
     msg = "password=secret123 and some other text"
     sanitized = sanitize_log_message(msg)
@@ -74,14 +74,14 @@ def test_over_redaction_space_followed_by_text():
     expected = "password=***"
     assert sanitized == expected
 
-def test_over_redaction_space_followed_by_key_lookalike():
+def test_over_redaction_space_followed_by_key_lookalike() -> None:
     """Test that text that looks like a key but is not (no '=') IS consumed."""
     msg = "api_key=secret foo bar"
     sanitized = sanitize_log_message(msg)
     expected = "api_key=***"
     assert sanitized == expected
 
-def test_crlf_log_injection_formatters():
+def test_crlf_log_injection_formatters() -> None:
     import logging
     from src.feed.logging_safe import SafeFormatter, SafeJSONFormatter
 
