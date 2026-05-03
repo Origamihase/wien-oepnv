@@ -10,7 +10,7 @@ from src.utils.logging import sanitize_log_message
     "customer.e-mail",
     "contact_e_mail"
 ])
-def test_email_variants_redaction(key):
+def test_email_variants_redaction(key: str) -> None:
     secret = "user@example.com"
     # Test query param style
     msg = f"User logged in with {key}={secret}"

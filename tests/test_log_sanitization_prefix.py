@@ -36,6 +36,6 @@ from src.utils.logging import sanitize_log_message
         ('{"primary_key": "123"}', '{"primary_key": "123"}'),
     ]
 )
-def test_log_sanitization_prefix(input_text, expected_redacted):
+def test_log_sanitization_prefix(input_text: str, expected_redacted: str) -> None:
     sanitized = sanitize_log_message(input_text)
     assert sanitized == expected_redacted

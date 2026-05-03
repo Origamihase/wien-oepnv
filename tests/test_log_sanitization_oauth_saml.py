@@ -11,7 +11,7 @@ from src.utils.logging import sanitize_log_message
     "nonce",
     "state",
 ])
-def test_sensitive_oauth_saml_keys_redaction(key):
+def test_sensitive_oauth_saml_keys_redaction(key: str) -> None:
     secret = "supersecretvalue"
     # Test query param style
     msg = f"Request failed with {key}={secret}"
@@ -31,7 +31,7 @@ def test_sensitive_oauth_saml_keys_redaction(key):
     assert secret not in sanitized_header
     assert "***" in sanitized_header
 
-def test_nonce_state_redaction():
+def test_nonce_state_redaction() -> None:
     # Specific test for short keys to ensure no false positives or negatives
     # Note: current implementation is aggressive (substring matching), so we expect redaction.
 
