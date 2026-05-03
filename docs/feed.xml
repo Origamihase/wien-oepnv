@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 03 May 2026 11:50:01 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2026 12:58:48 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[71: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d</guid>
-      <pubDate>Sun, 03 May 2026 10:14:00 +0200</pubDate>
-      <ext:first_seen>Sun, 03 May 2026 11:50:01 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 03 May 2026 10:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 03 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.05.2026]</description>
-      <content:encoded><![CDATA[Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Fahrtbehinderung wegen Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6</guid>
-      <pubDate>Sun, 03 May 2026 10:14:00 +0200</pubDate>
-      <ext:first_seen>Sun, 03 May 2026 11:50:01 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 03 May 2026 10:16:11 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 03 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 03.05.2026]</description>
-      <content:encoded><![CDATA[Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 03.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -117,6 +95,28 @@
       <ext:starts_at>Thu, 30 Apr 2026 09:12:44 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Hbf und Bruck/Mur Bahnhof/Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an einigen Tagen) die Züge EC 206, EC 207, EC … [Seit 30.04.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf und Bruck/Mur Bahnhof/Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an einigen Tagen) die Züge EC 206, EC 207, EC …<br/>[Seit 30.04.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: Kein Betrieb]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
+      <pubDate>Thu, 30 Apr 2026 00:00:09 +0200</pubDate>
+      <ext:first_seen>Sun, 03 May 2026 10:21:20 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 30 Apr 2026 00:00:09 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 03 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten Kein Betrieb [30.04.2026 – 03.05.2026]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Kein Betrieb<br/>[30.04.2026 – 03.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N65: Umleitung wegen Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">79a0971c16a30cdc645e2434c98c90e3e8c9dbfb4e247d926809ca5081ee567d</guid>
+      <pubDate>Wed, 29 Apr 2026 16:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 29 Apr 2026 17:33:12 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 11 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 22 May 2026 06:00:00 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten Wegen Gleisbauarbeiten im Bereich Otto-Probst-Straße müssen die Busse der Linie N65 umgeleitet werden. [11.05.2026 – 22.05.2026]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Wegen Gleisbauarbeiten im Bereich Otto-Probst-Straße müssen die Busse der Linie N65 umgeleitet werden.<br/>[11.05.2026 – 22.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
