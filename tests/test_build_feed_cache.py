@@ -29,12 +29,16 @@ def _import_build_feed_without_providers(monkeypatch: pytest.MonkeyPatch) -> typ
     return importlib.import_module(module_name)
 
 
-def _patch_empty_cache(monkeypatch, tmp_path):
+def _patch_empty_cache(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     cache_mod = importlib.import_module("utils.cache")
     monkeypatch.setattr(cache_mod, "_CACHE_DIR", tmp_path / "cache", raising=False)
 
 
-def test_collect_items_missing_cache_logs_warning(monkeypatch, tmp_path, caplog):
+def test_collect_items_missing_cache_logs_warning(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     build_feed = _import_build_feed_without_providers(monkeypatch)
     _patch_empty_cache(monkeypatch, tmp_path)
 
@@ -58,7 +62,7 @@ def test_collect_items_missing_cache_logs_warning(monkeypatch, tmp_path, caplog)
     }
 
 
-def test_collect_items_reports_cache_alerts(monkeypatch, tmp_path):
+def test_collect_items_reports_cache_alerts(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     build_feed = _import_build_feed_without_providers(monkeypatch)
     _patch_empty_cache(monkeypatch, tmp_path)
 
@@ -70,7 +74,11 @@ def test_collect_items_reports_cache_alerts(monkeypatch, tmp_path):
     assert any(warning.startswith("Provider wl") for warning in report.warnings)
 
 
-def test_main_runs_without_network(monkeypatch, tmp_path, caplog):
+def test_main_runs_without_network(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     build_feed = _import_build_feed_without_providers(monkeypatch)
     _patch_empty_cache(monkeypatch, tmp_path)
 
@@ -107,7 +115,7 @@ def test_main_runs_without_network(monkeypatch, tmp_path, caplog):
     }
 
 
-def test_collect_items_reads_from_cache(monkeypatch):
+def test_collect_items_reads_from_cache(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed_without_providers(monkeypatch)
 
     calls = []
@@ -135,7 +143,10 @@ def test_collect_items_reads_from_cache(monkeypatch):
     ]
 
 
-def test_fmt_rfc2822_logs_and_uses_fallback(monkeypatch, caplog):
+def test_fmt_rfc2822_logs_and_uses_fallback(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     build_feed = _import_build_feed_without_providers(monkeypatch)
 
     def broken_formatter(_):
@@ -161,7 +172,7 @@ def test_fmt_rfc2822_logs_and_uses_fallback(monkeypatch, caplog):
     assert log_records, "Fehlender Logeintrag für strftime-Fallback"
 
 
-def test_cache_iso_items_sorted_and_emit_pubdate(monkeypatch):
+def test_cache_iso_items_sorted_and_emit_pubdate(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed_without_providers(monkeypatch)
 
     now = datetime(2024, 1, 2, 9, 0, tzinfo=timezone.utc)
