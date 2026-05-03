@@ -6,7 +6,7 @@ import sys
 from src.feed.logging_safe import SafeJSONFormatter, SafeFormatter
 
 class TestSafeJSONFormatter(unittest.TestCase):
-    def test_format_exception_does_not_clear_frames(self):
+    def test_format_exception_does_not_clear_frames(self) -> None:
         try:
             1 / 0
         except ZeroDivisionError:
@@ -22,7 +22,7 @@ class TestSafeJSONFormatter(unittest.TestCase):
         self.assertIsNotNone(tb.tb_frame.f_locals)
         self.assertTrue(len(tb.tb_frame.f_locals) > 0)
 
-    def test_safe_formatter_format_does_not_mutate_record(self):
+    def test_safe_formatter_format_does_not_mutate_record(self) -> None:
         record = logging.LogRecord(
             name="test",
             level=logging.INFO,
@@ -39,7 +39,7 @@ class TestSafeJSONFormatter(unittest.TestCase):
         self.assertEqual(record.msg, "Hello %s")
         self.assertEqual(record.args, ("world",))
 
-    def test_extra_dict_leak(self):
+    def test_extra_dict_leak(self) -> None:
         """Test that secrets in nested dictionaries in 'extra' are redacted."""
         logger = logging.getLogger("test_json_leak")
         logger.setLevel(logging.INFO)
@@ -72,7 +72,7 @@ class TestSafeJSONFormatter(unittest.TestCase):
         self.assertIn("api_key", log_record["extra"]["data"]["context"])
         self.assertEqual(log_record["extra"]["data"]["context"]["api_key"], "***")
 
-    def test_value_redaction_in_json(self):
+    def test_value_redaction_in_json(self) -> None:
         """Test that values looking like secrets (e.g. key=value pattern) are redacted even in JSON strings."""
         logger = logging.getLogger("test_json_value")
         logger.setLevel(logging.INFO)

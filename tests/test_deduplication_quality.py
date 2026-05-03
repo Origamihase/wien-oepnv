@@ -17,7 +17,7 @@ class TestDeduplicationQuality(unittest.TestCase):
     3. 'Better' items (longer description, more recent) are preferred.
     """
 
-    def test_exact_duplicates(self):
+    def test_exact_duplicates(self) -> None:
         """Scenario: Two identical items."""
         item1 = {
             "guid": "123",
@@ -30,7 +30,7 @@ class TestDeduplicationQuality(unittest.TestCase):
         result = _dedupe_items([item1, item2])
         self.assertEqual(len(result), 1, "Should reduce exact duplicates to 1")
 
-    def test_update_behavior_same_guid(self):
+    def test_update_behavior_same_guid(self) -> None:
         """Scenario: Item updates with same GUID. New item has longer description."""
         item_old = {
             "guid": "123",
@@ -58,7 +58,7 @@ class TestDeduplicationQuality(unittest.TestCase):
         self.assertEqual(len(result2), 1)
         self.assertEqual(result2[0]["description"], "Kurz aber länger", "Should keep the 'better' item regardless of order")
 
-    def test_update_behavior_later_end_date(self):
+    def test_update_behavior_later_end_date(self) -> None:
         """Scenario: Item updates with extended end time."""
         item_short = {
             "guid": "123",
@@ -75,7 +75,7 @@ class TestDeduplicationQuality(unittest.TestCase):
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0]["ends_at"], item_long["ends_at"], "Should prefer item with later end date")
 
-    def test_fallback_identity_collision(self):
+    def test_fallback_identity_collision(self) -> None:
         """Scenario: No GUID, same content -> Deduplication (Good)."""
         item1 = {
             "source": "Src",
@@ -96,7 +96,7 @@ class TestDeduplicationQuality(unittest.TestCase):
         result = _dedupe_items([item1, item2])
         self.assertEqual(len(result), 1)
 
-    def test_fallback_identity_failure(self):
+    def test_fallback_identity_failure(self) -> None:
         """Scenario: No GUID, content update -> Duplication (Expected limitation)."""
         item1 = {
             "source": "Src",

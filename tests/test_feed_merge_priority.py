@@ -1,6 +1,6 @@
 from src.feed.merge import deduplicate_fuzzy
 
-def test_fuzzy_merge_provider_priority_vor_wins_over_oebb():
+def test_fuzzy_merge_provider_priority_vor_wins_over_oebb() -> None:
     """
     Test that a VOR event overrides an ÖBB event when they are duplicates.
     The VOR metadata (start time, etc.) should be preserved.
@@ -48,7 +48,7 @@ def test_fuzzy_merge_provider_priority_vor_wins_over_oebb():
     assert item["_identity"] == "vor_guid_1"
     assert "_calculated_identity" not in item
 
-def test_fuzzy_merge_provider_priority_vor_wins_reverse_order():
+def test_fuzzy_merge_provider_priority_vor_wins_reverse_order() -> None:
     """
     Same as above, but items are processed in reverse order (VOR exists, ÖBB comes later).
     """
@@ -83,7 +83,7 @@ def test_fuzzy_merge_provider_priority_vor_wins_reverse_order():
     assert item["_identity"] == "vor_guid_1"
     assert "_calculated_identity" not in item
 
-def test_fuzzy_merge_provider_priority_no_provider_field():
+def test_fuzzy_merge_provider_priority_no_provider_field() -> None:
     """
     Ensure no crash if 'provider' field is missing, falls back to normal merge.
     """

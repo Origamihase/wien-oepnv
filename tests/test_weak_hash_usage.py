@@ -1,7 +1,7 @@
 
 from src.build_feed import _identity_for_item, _dedupe_key_for_item
 
-def test_identity_for_item_uses_strong_hash():
+def test_identity_for_item_uses_strong_hash() -> None:
     item = {
         "title": "Test Title",
         "starts_at": "2023-01-01T12:00:00Z",
@@ -30,7 +30,7 @@ def test_identity_for_item_uses_strong_hash():
     # Assert it is SHA256 (64 chars) and NOT SHA1 (40 chars)
     assert len(hash_val) == 64, f"Hash length is {len(hash_val)}, expected 64 (SHA256). Likely still using SHA1."
 
-def test_dedupe_key_for_item_uses_strong_hash():
+def test_dedupe_key_for_item_uses_strong_hash() -> None:
     item = {
         "title": "Test Title",
         "description": "Test Description",
