@@ -37,7 +37,7 @@ from src.utils.logging import sanitize_log_message
         ("client_id_extra=val", "client_id_extra=***"),
     ]
 )
-def test_log_sanitization_variations(input_text, expected_redacted):
+def test_log_sanitization_variations(input_text: str, expected_redacted: str) -> None:
     sanitized = sanitize_log_message(input_text)
     # Handle the aggressive matching of 'secret' in 'not_a_secret'
     if "not_a_secret" in input_text and expected_redacted == input_text:
@@ -49,14 +49,14 @@ def test_log_sanitization_variations(input_text, expected_redacted):
 
     assert sanitized == expected_redacted
 
-def test_json_escaped_quotes_with_variations():
+def test_json_escaped_quotes_with_variations() -> None:
     # Test that variations work even with complex JSON quoting
     # This exposes the bug in existing regex
     input_json = '{"Client-ID": "secret \\" value"}'
     expected = '{"Client-ID": "***"}'
     assert sanitize_log_message(input_json) == expected
 
-def test_accessId_escaped_quotes_bug():
+def test_accessId_escaped_quotes_bug() -> None:
     # This tests the EXISTING key "accessId" which has a dedicated regex in logging.py
     # If this fails, it confirms the bug is pre-existing.
     input_json = '{"accessId": "secret \\" value"}'

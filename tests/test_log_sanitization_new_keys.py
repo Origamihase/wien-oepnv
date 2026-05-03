@@ -3,7 +3,7 @@ import unittest
 from src.utils.logging import sanitize_log_message
 
 class TestLogSanitizationNewKeys(unittest.TestCase):
-    def test_new_keys_redaction(self):
+    def test_new_keys_redaction(self) -> None:
         # otp
         msg = "my_otp_code=123456"
         self.assertEqual(sanitize_log_message(msg), "my_otp_code=***")
@@ -20,7 +20,7 @@ class TestLogSanitizationNewKeys(unittest.TestCase):
         msg = "github_ghp_token=ghp_123"
         self.assertEqual(sanitize_log_message(msg), "github_ghp_token=***")
 
-    def test_false_positives(self):
+    def test_false_positives(self) -> None:
         # hotpot (contains otp but not at boundary)
         # Should NOT be redacted
         msg = "hotpot=delicious"

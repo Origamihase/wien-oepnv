@@ -25,6 +25,6 @@ from src.utils.logging import sanitize_log_message
         ('{"api_key": "abc"}', '{"api_key": "***"}'),
     ]
 )
-def test_log_sanitization_broad(input_text, expected_redacted):
+def test_log_sanitization_broad(input_text: str, expected_redacted: str) -> None:
     sanitized = sanitize_log_message(input_text)
     assert sanitized == expected_redacted

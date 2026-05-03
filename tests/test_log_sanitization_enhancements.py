@@ -10,7 +10,7 @@ from src.utils.logging import sanitize_log_message
     "authorization_code",
     "auth_code",
 ])
-def test_sensitive_keys_redaction(key):
+def test_sensitive_keys_redaction(key: str) -> None:
     secret = "supersecretvalue"
     # Test query param style
     msg = f"Request failed with {key}={secret}"
@@ -30,7 +30,7 @@ def test_sensitive_keys_redaction(key):
     assert secret not in sanitized_header
     assert "***" in sanitized_header
 
-def test_passphrase_redaction_header():
+def test_passphrase_redaction_header() -> None:
     key = "Passphrase"
     secret = "secret123"
     msg = f"{key}: {secret}"
@@ -46,7 +46,7 @@ def test_passphrase_redaction_header():
     "email_address",
     "customer.email"
 ])
-def test_email_redaction(key):
+def test_email_redaction(key: str) -> None:
     secret = "user@example.com"
     # Test query param style
     msg = f"User logged in with {key}={secret}"
