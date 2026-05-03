@@ -4,7 +4,7 @@ import requests
 from unittest.mock import MagicMock, patch
 from src.utils.http import fetch_content_safe
 
-def test_fetch_content_safe_ssrf_bypass_on_error():
+def test_fetch_content_safe_ssrf_bypass_on_error() -> None:
     # Setup
     url = "http://evil.com/secret"
 
@@ -24,7 +24,7 @@ def test_fetch_content_safe_ssrf_bypass_on_error():
         mock_response.headers = {}
         mock_response.is_redirect = False
         # Make raise_for_status raise HTTPError
-        def raise_for_status_side_effect():
+        def raise_for_status_side_effect() -> None:
             raise requests.exceptions.HTTPError("404 Client Error", response=mock_response)
         mock_response.raise_for_status.side_effect = raise_for_status_side_effect
 

@@ -2,7 +2,7 @@
 import ipaddress
 from src.utils.http import validate_http_url, is_ip_safe
 
-def test_validate_http_url_blocks_localhost_variants():
+def test_validate_http_url_blocks_localhost_variants() -> None:
     # Standard localhost
     assert validate_http_url("http://localhost/foo", check_dns=False) is None
     assert validate_http_url("http://localhost", check_dns=False) is None
@@ -15,20 +15,20 @@ def test_validate_http_url_blocks_localhost_variants():
     assert validate_http_url("http://localhost.", check_dns=False) is None
     assert validate_http_url("http://LoCaLhOsT./foo", check_dns=False) is None
 
-def test_is_ip_safe_blocks_site_local():
+def test_is_ip_safe_blocks_site_local() -> None:
     # Site local (deprecated but often routed internally)
     # Python ipaddress.is_global returns True for these, so we must explicitly block them
-    site_local = ipaddress.ip_address("fec0::1")
+    site_local = ipaddress.IPv6Address("fec0::1")
     assert site_local.is_site_local
     assert is_ip_safe(site_local) is False
 
     # Check string variant
     assert is_ip_safe("fec0::1") is False
 
-def test_is_ip_safe_allows_public_ips():
+def test_is_ip_safe_allows_public_ips() -> None:
     assert is_ip_safe("8.8.8.8") is True
     assert is_ip_safe("2001:4860:4860::8888") is True
 
-def test_validate_http_url_blocks_site_local_literals():
+def test_validate_http_url_blocks_site_local_literals() -> None:
     # Even with check_dns=False, literals are checked against is_ip_safe
     assert validate_http_url("http://[fec0::1]/foo", check_dns=False) is None

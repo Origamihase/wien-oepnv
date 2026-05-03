@@ -1,11 +1,11 @@
-
+from typing import Any
 import unittest
 from unittest.mock import MagicMock, patch
 import requests
 from src.utils.http import session_with_retries, fetch_content_safe
 
 class TestSSRFRedirectRebinding(unittest.TestCase):
-    def test_dns_rebinding_on_redirect_pinned_to_safe_ip(self):
+    def test_dns_rebinding_on_redirect_pinned_to_safe_ip(self) -> None:
         """
         Verify that if a redirect target resolves to an unsafe IP (DNS Rebinding) in a TOCTOU scenario,
         the request is pinned to the SAFE IP resolved during the check, preventing connection to the unsafe IP.
@@ -27,7 +27,7 @@ class TestSSRFRedirectRebinding(unittest.TestCase):
 
         import dns.exception
 
-        def mock_resolve_logic(host, record_type, *args, **kwargs):
+        def mock_resolve_logic(host: Any, record_type: Any, *args: Any, **kwargs: Any) -> Any:
             if record_type == 'A':
                 ans1 = MagicMock()
                 ans1.address = safe_ip

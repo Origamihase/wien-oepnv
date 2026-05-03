@@ -5,12 +5,13 @@ import requests
 from src.utils.http import session_with_retries, fetch_content_safe
 
 class TestSSRFRedirect(unittest.TestCase):
-    def test_redirect_to_private_ip_is_blocked(self):
+    def test_redirect_to_private_ip_is_blocked(self) -> None:
         """Ensure that redirects to private IPs (e.g. localhost) are blocked by the security hook."""
 
         with patch('requests.adapters.HTTPAdapter.send') as mock_send:
             # Helper to create a mock socket with a safe IP
-            def get_safe_socket():
+            def get_safe_socket() -> MagicMock:
+MagicMock
                 mock_sock = MagicMock()
                 mock_sock.getpeername.return_value = ('8.8.8.8', 80)
                 return mock_sock
