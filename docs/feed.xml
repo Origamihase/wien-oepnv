@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 03 May 2026 19:27:18 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2026 20:30:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[48A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">584b780c705893abccb0f9e3d19ebad07f2cba26b26701abee1825aa97b2522b</guid>
+      <pubDate>Sun, 03 May 2026 19:55:00 +0200</pubDate>
+      <ext:first_seen>Sun, 03 May 2026 20:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 03 May 2026 19:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 03 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 48 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 03.05.2026]</description>
+      <content:encoded><![CDATA[Linie 48 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 03.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a47f9fa6aa5dc023902618b82cd58f0159061f19c7fef5f64da9f064236be44e</guid>
+      <pubDate>Sun, 03 May 2026 19:22:00 +0200</pubDate>
+      <ext:first_seen>Sun, 03 May 2026 20:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 03 May 2026 19:22:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 03 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 26: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 03.05.2026]</description>
+      <content:encoded><![CDATA[Linie 26: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 03.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[24A: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sun, 03 May 2026 23:59:59 +0200</ext:ends_at>
       <description>Gleisbauarbeiten Betrieb ab Thaliastraße &gt; [02.05.2026 – 03.05.2026]</description>
       <content:encoded><![CDATA[Gleisbauarbeiten Betrieb ab Thaliastraße ><br/>[02.05.2026 – 03.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
-      <pubDate>Sat, 02 May 2026 00:00:10 +0200</pubDate>
-      <ext:first_seen>Sun, 03 May 2026 05:55:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 02 May 2026 00:00:10 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 03 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A) [02.05.2026 – 03.05.2026]</description>
-      <content:encoded><![CDATA[Bauarbeiten Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5 A)<br/>[02.05.2026 – 03.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: Busse halten bei Linie 77A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fb74db181b90bde27b9f33e1d83eec4c055a789a7df482ac12f9e4f7c22640ea</guid>
-      <pubDate>Sat, 02 May 2026 00:00:08 +0200</pubDate>
-      <ext:first_seen>Sun, 03 May 2026 05:55:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 02 May 2026 00:00:08 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 03 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Bauarbeiten Busse halten bei Linie 77 A [02.05.2026 – 03.05.2026]</description>
-      <content:encoded><![CDATA[Bauarbeiten Busse halten bei Linie 77 A<br/>[02.05.2026 – 03.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
