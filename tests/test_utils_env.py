@@ -7,7 +7,7 @@ import pytest
 from src.utils.env import get_bool_env, load_default_env_files
 
 
-def test_get_bool_env_default(monkeypatch):
+def test_get_bool_env_default(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv("BOOL_TEST", raising=False)
     assert get_bool_env("BOOL_TEST", True) is True
     assert get_bool_env("BOOL_TEST", False) is False
@@ -17,7 +17,7 @@ def test_get_bool_env_default(monkeypatch):
     "value",
     ["1", "true", "True", " YES ", "on", "Y", "t"],
 )
-def test_get_bool_env_truthy(monkeypatch, value):
+def test_get_bool_env_truthy(monkeypatch: pytest.MonkeyPatch, value: str) -> None:
     monkeypatch.setenv("BOOL_TEST", value)
     assert get_bool_env("BOOL_TEST", False) is True
 
@@ -26,25 +26,28 @@ def test_get_bool_env_truthy(monkeypatch, value):
     "value",
     ["0", "false", "False", " no ", "OFF", "n", "F"],
 )
-def test_get_bool_env_falsy(monkeypatch, value):
+def test_get_bool_env_falsy(monkeypatch: pytest.MonkeyPatch, value: str) -> None:
     monkeypatch.setenv("BOOL_TEST", value)
     assert get_bool_env("BOOL_TEST", True) is False
 
 
-def test_get_bool_env_empty_uses_default(monkeypatch):
+def test_get_bool_env_empty_uses_default(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("BOOL_TEST", "   ")
     assert get_bool_env("BOOL_TEST", True) is True
     assert get_bool_env("BOOL_TEST", False) is False
 
 
-def test_get_bool_env_invalid_logs_warning(monkeypatch, caplog):
+def test_get_bool_env_invalid_logs_warning(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     monkeypatch.setenv("BOOL_TEST", "maybe")
     with caplog.at_level(logging.WARNING, logger="build_feed"):
         assert get_bool_env("BOOL_TEST", False) is False
     assert "Ungültiger boolescher Wert" in caplog.text
 
 
-def test_load_default_env_files_uses_repo_root(monkeypatch):
+def test_load_default_env_files_uses_repo_root(monkeypatch: pytest.MonkeyPatch) -> None:
     repo_root = Path(__file__).resolve().parents[1]
     temp_env = repo_root / "temp_test_env.env"
     temp_env.write_text("FOO=bar\n", encoding="utf-8")

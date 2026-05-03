@@ -12,7 +12,7 @@ def _restore_env(monkeypatch):
     monkeypatch.delenv("CUSTOM_PATH", raising=False)
 
 
-def test_resolve_env_path_uses_default_for_whitespace(monkeypatch):
+def test_resolve_env_path_uses_default_for_whitespace(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("CUSTOM_PATH", "   \t   ")
     default = Path("log/fallback.log")
 
@@ -22,7 +22,7 @@ def test_resolve_env_path_uses_default_for_whitespace(monkeypatch):
     assert os.getenv("CUSTOM_PATH") == "   \t   "
 
 
-def test_resolve_env_path_normalizes_valid_input(monkeypatch):
+def test_resolve_env_path_normalizes_valid_input(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("CUSTOM_PATH", "  log/custom.log  ")
     default = Path("log/default.log")
 
@@ -33,7 +33,9 @@ def test_resolve_env_path_normalizes_valid_input(monkeypatch):
     assert os.getenv("CUSTOM_PATH") == "  log/custom.log  "
 
 
-def test_resolve_env_path_does_not_overwrite_env_on_refresh(monkeypatch):
+def test_resolve_env_path_does_not_overwrite_env_on_refresh(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     monkeypatch.setenv("CUSTOM_PATH", "data/feed.rss")
     default = Path("data/default.rss")
 
@@ -49,7 +51,9 @@ def test_resolve_env_path_does_not_overwrite_env_on_refresh(monkeypatch):
     assert os.getenv("CUSTOM_PATH") == "data/feed.rss"
 
 
-def test_resolve_env_path_raises_for_invalid_without_fallback(monkeypatch):
+def test_resolve_env_path_raises_for_invalid_without_fallback(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     monkeypatch.setenv("CUSTOM_PATH", "../evil/outside.log")
     default = Path("log/default.log")
 
@@ -60,7 +64,9 @@ def test_resolve_env_path_raises_for_invalid_without_fallback(monkeypatch):
     assert os.getenv("CUSTOM_PATH") == "../evil/outside.log"
 
 
-def test_resolve_env_path_suffix_collision_requires_fallback(monkeypatch):
+def test_resolve_env_path_suffix_collision_requires_fallback(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     monkeypatch.setenv("CUSTOM_PATH", "/tmp/docs/feed.xml")
     default = Path("docs/feed.xml")
 
@@ -70,7 +76,7 @@ def test_resolve_env_path_suffix_collision_requires_fallback(monkeypatch):
     assert os.getenv("CUSTOM_PATH") == "/tmp/docs/feed.xml"
 
 
-def test_resolve_env_path_falls_back_when_allowed(monkeypatch):
+def test_resolve_env_path_falls_back_when_allowed(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("CUSTOM_PATH", "../evil/outside.log")
     default = Path("log/default.log")
 

@@ -1,8 +1,9 @@
 import os
+from pathlib import Path
 import pytest
 from src.utils.files import atomic_write
 
-def test_atomic_write_creates_file(tmp_path):
+def test_atomic_write_creates_file(tmp_path: Path) -> None:
     target = tmp_path / "test.txt"
     with atomic_write(target, mode="w", encoding="utf-8") as f:
         f.write("Hello")
@@ -10,7 +11,7 @@ def test_atomic_write_creates_file(tmp_path):
     assert target.exists()
     assert target.read_text(encoding="utf-8") == "Hello"
 
-def test_atomic_write_overwrites_existing(tmp_path):
+def test_atomic_write_overwrites_existing(tmp_path: Path) -> None:
     target = tmp_path / "overwrite.txt"
     target.write_text("Old", encoding="utf-8")
 
@@ -19,7 +20,7 @@ def test_atomic_write_overwrites_existing(tmp_path):
 
     assert target.read_text(encoding="utf-8") == "New"
 
-def test_atomic_write_no_overwrite(tmp_path):
+def test_atomic_write_no_overwrite(tmp_path: Path) -> None:
     target = tmp_path / "protected.txt"
     target.write_text("Old", encoding="utf-8")
 
@@ -29,7 +30,7 @@ def test_atomic_write_no_overwrite(tmp_path):
 
     assert target.read_text(encoding="utf-8") == "Old"
 
-def test_atomic_write_cleanup_on_error(tmp_path):
+def test_atomic_write_cleanup_on_error(tmp_path: Path) -> None:
     target = tmp_path / "fail.txt"
 
     with pytest.raises(RuntimeError):
@@ -41,7 +42,7 @@ def test_atomic_write_cleanup_on_error(tmp_path):
     # Check that no temp files are left
     assert len(list(tmp_path.glob("fail.txt.*.tmp"))) == 0
 
-def test_atomic_write_binary(tmp_path):
+def test_atomic_write_binary(tmp_path: Path) -> None:
     target = tmp_path / "binary.bin"
     data = b"\x00\x01\x02"
 
@@ -50,7 +51,7 @@ def test_atomic_write_binary(tmp_path):
 
     assert target.read_bytes() == data
 
-def test_atomic_write_permissions(tmp_path):
+def test_atomic_write_permissions(tmp_path: Path) -> None:
     if os.name == 'nt':
         pytest.skip("Permissions not fully supported on Windows")
 

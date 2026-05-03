@@ -16,14 +16,18 @@ def _prepare_cache(tmp_path: Path, monkeypatch, provider: str) -> Path:
     return target / "events.json"
 
 
-def test_read_cache_returns_list(tmp_path, monkeypatch):
+def test_read_cache_returns_list(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     cache_file = _prepare_cache(tmp_path, monkeypatch, "provider")
     cache_file.write_text(json.dumps([{"id": 1}]), encoding="utf-8")
 
     assert cache.read_cache("provider") == [{"id": 1}]
 
 
-def test_read_cache_warns_on_non_list(tmp_path, monkeypatch, caplog):
+def test_read_cache_warns_on_non_list(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     cache_file = _prepare_cache(tmp_path, monkeypatch, "provider")
     cache_file.write_text(json.dumps({"id": 1}), encoding="utf-8")
 
@@ -35,7 +39,11 @@ def test_read_cache_warns_on_non_list(tmp_path, monkeypatch, caplog):
 
 
 @pytest.mark.parametrize("pretty", [False, True])
-def test_write_cache_explicit_pretty_flag(tmp_path, monkeypatch, pretty):
+def test_write_cache_explicit_pretty_flag(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    pretty: bool,
+) -> None:
     cache_file = _prepare_cache(tmp_path, monkeypatch, f"provider-{pretty}")
 
     cache.write_cache(f"provider-{pretty}", [{"id": 1}], pretty=pretty)
@@ -49,7 +57,7 @@ def test_write_cache_explicit_pretty_flag(tmp_path, monkeypatch, pretty):
     assert cache_file.read_text(encoding="utf-8") == expected
 
 
-def test_write_cache_env_compact(tmp_path, monkeypatch):
+def test_write_cache_env_compact(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     cache_file = _prepare_cache(tmp_path, monkeypatch, "env-provider")
     monkeypatch.setenv("WIEN_OEPNV_CACHE_PRETTY", "0")
 

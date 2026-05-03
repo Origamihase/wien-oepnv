@@ -2,7 +2,7 @@ import pytest
 from pathlib import Path
 from src.feed.config import validate_path, InvalidPathError, REPO_ROOT
 
-def test_validate_path_foreign_cwd(tmp_path, monkeypatch):
+def test_validate_path_foreign_cwd(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     # Change cwd to a temporary directory outside the repo root
     monkeypatch.chdir(tmp_path)
 
@@ -19,7 +19,7 @@ def test_validate_path_foreign_cwd(tmp_path, monkeypatch):
     with pytest.raises(InvalidPathError):
         validate_path(foreign_path, "TEST_PATH")
 
-def test_validate_path_repo_root():
+def test_validate_path_repo_root() -> None:
     # A path inside the REPO_ROOT's allowed dirs should succeed
     repo_docs = REPO_ROOT / "docs" / "feed.xml"
     resolved = validate_path(repo_docs, "TEST_PATH")
