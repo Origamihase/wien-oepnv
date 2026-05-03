@@ -3,7 +3,7 @@ import time
 from unittest.mock import patch
 from src.utils.http import validate_http_url, DNS_TIMEOUT
 
-def test_validate_http_url_timeout():
+def test_validate_http_url_timeout() -> None:
     """Verify that validate_http_url returns None when DNS resolution times out."""
 
     # We simulate a sleep longer than DNS_TIMEOUT
@@ -36,7 +36,7 @@ def test_validate_http_url_timeout():
         # If I set slow_duration to 10s and DNS_TIMEOUT is 5s, it should return in ~5s.
 
 
-def test_validate_http_url_fast_enough():
+def test_validate_http_url_fast_enough() -> None:
     """Verify that fast DNS resolution still works."""
 
     def mock_resolve_fast(host, record_type, *args, **kwargs):

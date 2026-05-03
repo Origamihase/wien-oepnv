@@ -3,7 +3,7 @@ from typing import get_type_hints, List
 from src.providers import vor, oebb
 from src.feed_types import FeedItem
 
-def test_vor_provider_interface():
+def test_vor_provider_interface() -> None:
     """Verify that vor module exposes fetch_events matching the Provider protocol."""
     assert hasattr(vor, "fetch_events")
     hints = get_type_hints(vor.fetch_events)
@@ -11,7 +11,7 @@ def test_vor_provider_interface():
     # Note: Depending on how FeedItem is imported/defined, we check equality
     assert hints['return'] == List[FeedItem]
 
-def test_oebb_provider_interface():
+def test_oebb_provider_interface() -> None:
     """Verify that oebb module exposes fetch_events matching the Provider protocol."""
     assert hasattr(oebb, "fetch_events")
     hints = get_type_hints(oebb.fetch_events)

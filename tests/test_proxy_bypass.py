@@ -3,7 +3,7 @@ import pytest
 from unittest.mock import Mock, patch
 from src.utils.http import verify_response_ip
 
-def test_verify_response_ip_normal_fail():
+def test_verify_response_ip_normal_fail() -> None:
     """Verify that private IPs raise error normally."""
     response = Mock()
     # Mock the connection/socket structure
@@ -14,7 +14,7 @@ def test_verify_response_ip_normal_fail():
         with pytest.raises(ValueError, match="Connected to unsafe IP"):
             verify_response_ip(response)
 
-def test_verify_response_ip_proxy_bypass():
+def test_verify_response_ip_proxy_bypass() -> None:
     """Verify that private IPs are allowed when proxy envs are set."""
     response = Mock()
     response.raw._connection.sock.getpeername.return_value = ('192.168.1.1', 80)

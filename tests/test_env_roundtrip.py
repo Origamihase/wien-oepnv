@@ -2,7 +2,7 @@
 from src.utils.env import _parse_value
 from src.utils.configuration_wizard import _escape_env_value
 
-def test_env_roundtrip_multiline():
+def test_env_roundtrip_multiline() -> None:
     """Verify that multiline values survive the roundtrip via .env escaping."""
     original = "first line\nsecond line"
 
@@ -16,7 +16,7 @@ def test_env_roundtrip_multiline():
 
     assert parsed == original, f"Expected {repr(original)}, got {repr(parsed)}"
 
-def test_env_roundtrip_control_chars():
+def test_env_roundtrip_control_chars() -> None:
     """Verify that control characters survive the roundtrip."""
     original = "tab\tcr\r"
     escaped = _escape_env_value(original)
@@ -26,19 +26,19 @@ def test_env_roundtrip_control_chars():
     # But it escapes \r to \\r.
     assert parsed == original, f"Expected {repr(original)}, got {repr(parsed)}"
 
-def test_env_unescape_standard():
+def test_env_unescape_standard() -> None:
     """Verify standard escape sequences in double quotes."""
     # "foo\nbar" -> foo followed by newline followed by bar
     input_str = '"foo\\nbar"'
     expected = "foo\nbar"
     assert _parse_value(input_str) == expected
 
-def test_env_unescape_cr():
+def test_env_unescape_cr() -> None:
     input_str = '"foo\\rbar"'
     expected = "foo\rbar"
     assert _parse_value(input_str) == expected
 
-def test_env_unescape_tab():
+def test_env_unescape_tab() -> None:
     input_str = '"foo\\tbar"'
     expected = "foo\tbar"
     assert _parse_value(input_str) == expected

@@ -1,7 +1,7 @@
 
 from unittest.mock import patch
 
-def test_thread_pool_cleanup():
+def test_thread_pool_cleanup() -> None:
     # Import build_feed here to ensure we get the current module from sys.modules
     # This guards against other tests (like test_collect_items_timeout) reloading the module
     from src import build_feed
