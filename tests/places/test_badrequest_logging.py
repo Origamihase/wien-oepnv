@@ -12,7 +12,7 @@ from src.places.client import FIELD_MASK_NEARBY, GooglePlacesClient, GooglePlace
 
 
 class _ErrorResponse:
-    def __init__(self, status_code: int, payload: Dict[str, Any]):
+    def __init__(self, status_code: int, payload: Dict[str, Any]) -> None:
         self.status_code = status_code
         self._payload = payload
         self.text = json.dumps(payload)
@@ -40,7 +40,7 @@ class _ErrorResponse:
 
 
 class _ErrorSession:
-    def __init__(self, response: Union[_ErrorResponse, _TextErrorResponse]):
+    def __init__(self, response: Union[_ErrorResponse, _TextErrorResponse]) -> None:
         self._response = response
 
     def post(
@@ -56,7 +56,7 @@ class _ErrorSession:
 
 
 class _TextErrorResponse:
-    def __init__(self, status_code: int, text: str):
+    def __init__(self, status_code: int, text: str) -> None:
         self.status_code = status_code
         self.text = text
         self.headers: Dict[str, str] = {}

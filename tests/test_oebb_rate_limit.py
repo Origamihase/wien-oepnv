@@ -1,14 +1,22 @@
 import logging
+from types import TracebackType
+from typing import Any, Iterator
 from unittest.mock import MagicMock
 
 import pytest
+import requests
 
 import src.providers.oebb as oebb
 from tests.mock_utils import get_mock_socket_structure
 
 
 class DummyResponse:
-    def __init__(self, status_code, headers=None, content=b""):
+    def __init__(
+        self,
+        status_code: int,
+        headers: dict[str, str] | None = None,
+        content: bytes = b"",
+    ) -> None:
         self.status_code = status_code
         self.headers = headers or {}
         self.content = content
@@ -19,34 +27,44 @@ class DummyResponse:
         self.raw.connection = conn
         self.raw._connection = conn
 
-    def raise_for_status(self):
+    def raise_for_status(self) -> None:
         if self.status_code >= 400:
             import requests
             raise requests.HTTPError(response=self)
 
-    def iter_content(self, chunk_size=8192):
+    def iter_content(self, chunk_size: int = 8192) -> Iterator[bytes]:
         yield self.content
 
-    def __enter__(self):
+    def __enter__(self) -> "DummyResponse":
         return self
 
-    def __exit__(self, exc_type, exc, tb):
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc: BaseException | None,
+        tb: TracebackType | None,
+    ) -> None:
         pass
 
 
 class DummySession:
-    def __init__(self, responses, calls):
+    def __init__(self, responses: list["DummyResponse"], calls: list[tuple[str, Any]]) -> None:
         self._responses = iter(responses)
         self._calls = calls
         self.headers: dict[str, str] = {}
 
-    def __enter__(self):
+    def __enter__(self) -> "DummySession":
         return self
 
-    def __exit__(self, exc_type, exc, tb):
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc: BaseException | None,
+        tb: TracebackType | None,
+    ) -> None:
         pass
 
-    def prepare_request(self, request):
+    def prepare_request(self, request: requests.Request) -> requests.PreparedRequest:
         from requests.models import PreparedRequest
         p = PreparedRequest()
         p.prepare(
@@ -63,14 +81,28 @@ class DummySession:
         )
         return p
 
-    def merge_environment_settings(self, url, proxies, stream, verify, cert):
+    def merge_environment_settings(
+        self,
+        url: Any,
+        proxies: Any,
+        stream: Any,
+        verify: Any,
+        cert: Any,
+    ) -> dict[str, Any]:
         return {}
 
-    def get(self, url, timeout, stream=False, **kwargs):
+    def get(self, url: str, timeout: Any, stream: bool = False, **kwargs: Any) -> "DummyResponse":
         self._calls.append((url, timeout))
         return next(self._responses)
 
-    def request(self, method, url, timeout=None, stream=False, **kwargs):
+    def request(
+        self,
+        method: str,
+        url: str,
+        timeout: Any = None,
+        stream: bool = False,
+        **kwargs: Any,
+    ) -> "DummyResponse":
         return self.get(url, timeout=timeout, stream=stream, **kwargs)
 
 

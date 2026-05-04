@@ -13,7 +13,7 @@ from src.places.client import GooglePlacesClient, GooglePlacesConfig
 from src.places.tiling import Tile
 
 class _MockResponse:
-    def __init__(self, status_code: int, payload: Dict[str, Any]):
+    def __init__(self, status_code: int, payload: Dict[str, Any]) -> None:
         self.status_code = status_code
         self._payload = payload
         self.headers: Dict[str, str] = {}
@@ -42,7 +42,7 @@ class _MockResponse:
 
 
 class _MockSession:
-    def __init__(self, response: _MockResponse):
+    def __init__(self, response: _MockResponse) -> None:
         self._response = response
 
     def post(

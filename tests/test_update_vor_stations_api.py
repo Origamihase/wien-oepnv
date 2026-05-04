@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from types import TracebackType
 
 import pytest
 
@@ -45,7 +46,7 @@ class _FakeResponse:
 
 
 class _FakeSession:
-    def __init__(self, payloads: dict[str, tuple[int, dict]]):
+    def __init__(self, payloads: dict[str, tuple[int, dict]]) -> None:
         self.payloads = payloads
         self.headers: dict[str, str] = {}
         self.calls: list[tuple[str, dict[str, str]]] = []
@@ -71,7 +72,12 @@ class _FakeSession:
     def __enter__(self) -> "_FakeSession":  # pragma: no cover - context management helper
         return self
 
-    def __exit__(self, exc_type, exc, tb) -> None:  # pragma: no cover - context management helper
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc: BaseException | None,
+        tb: TracebackType | None,
+    ) -> None:  # pragma: no cover - context management helper
         return None
 
 
