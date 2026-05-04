@@ -38,7 +38,7 @@ def test_collect_events_from_sample_payload() -> None:
     assert "location" in first
 
 
-def test_main_uses_fallback_when_remote_fails(monkeypatch) -> None:
+def test_main_uses_fallback_when_remote_fails(monkeypatch: pytest.MonkeyPatch) -> None:
     calls: list[tuple[str, list[dict[str, Any]]]] = []
 
     def fake_fetch_remote(url: str, timeout: int) -> None:
