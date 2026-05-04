@@ -1,4 +1,5 @@
 import logging
+from types import TracebackType
 from datetime import datetime, timedelta, timezone
 
 import requests
@@ -6,16 +7,21 @@ import src.providers.vor as vor
 
 
 class DummySession:
-    def __init__(self):
-        self.headers = {}
+    def __init__(self) -> None:
+        self.headers: dict[str, str] = {}
 
-    def __enter__(self):
+    def __enter__(self) -> "DummySession":
         return self
 
-    def __exit__(self, exc_type, exc, tb):
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc: BaseException | None,
+        tb: TracebackType | None,
+    ) -> None:
         pass
 
-    def close(self):
+    def close(self) -> None:
         pass
 
 

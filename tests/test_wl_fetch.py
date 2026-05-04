@@ -1,5 +1,7 @@
 import logging
 from datetime import datetime, timezone
+from types import TracebackType
+from typing import Literal
 
 import pytest
 
@@ -104,13 +106,18 @@ def test_fetch_events_handles_invalid_json(
 
 
 class DummySession:
-    def __init__(self):
+    def __init__(self) -> None:
         self.headers: dict[str, str] = {}
 
-    def __enter__(self):
+    def __enter__(self) -> "DummySession":
         return self
 
-    def __exit__(self, exc_type, exc, tb):
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc: BaseException | None,
+        tb: TracebackType | None,
+    ) -> Literal[False]:
         return False
 
 
