@@ -7,7 +7,7 @@ from src.feed import config as feed_config
 
 
 @pytest.fixture(autouse=True)
-def _restore_env(monkeypatch):
+def _restore_env(monkeypatch: pytest.MonkeyPatch) -> None:
     # Ensure custom environment variable is always removed after a test
     monkeypatch.delenv("CUSTOM_PATH", raising=False)
 

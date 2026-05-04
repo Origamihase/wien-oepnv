@@ -214,7 +214,7 @@ def _ensure_streckendaten(streckendaten_dataset: Path) -> Iterator[None]:  # noq
 
 
 @pytest.fixture(autouse=True)
-def reset_vor_request_count(tmp_path, monkeypatch):
+def reset_vor_request_count(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
     import src.providers.vor as vor
 
     path = tmp_path / "vor_request_count.json"
@@ -229,7 +229,7 @@ def reset_vor_request_count(tmp_path, monkeypatch):
         path.unlink()
 
 @pytest.fixture(autouse=True)
-def reset_build_feed_state():
+def reset_build_feed_state() -> None:
     import src.build_feed as build_feed
     from src.feed.providers import reset_registry
     build_feed.reset_module_state()

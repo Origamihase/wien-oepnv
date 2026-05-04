@@ -1,4 +1,5 @@
 
+from typing import Iterator
 from unittest.mock import patch
 import pytest
 
@@ -10,7 +11,7 @@ from src.utils.http import validate_http_url
 SAFE_IP_INFO = [(2, 1, 6, '', ('8.8.8.8', 80))]
 
 @pytest.fixture
-def mock_dns_safe():
+def mock_dns_safe() -> Iterator[None]:
     with patch("src.utils.http._resolve_hostname_safe", return_value=SAFE_IP_INFO):
         yield
 

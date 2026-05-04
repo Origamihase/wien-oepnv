@@ -10,7 +10,7 @@ def _today_vienna_iso() -> str:
 
 
 @pytest.fixture(autouse=True)
-def _reset_station_ids(monkeypatch):
+def _reset_station_ids(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "token")
     monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token", raising=False)
     # Clear the whitelist to force usage of VOR_STATION_IDS

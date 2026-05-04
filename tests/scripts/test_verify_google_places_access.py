@@ -13,7 +13,7 @@ from src.places.client import GooglePlacesError, GooglePlacesPermissionError, Pl
 
 
 @pytest.fixture(autouse=True)
-def _reset_logging():
+def _reset_logging() -> Iterator[None]:
     logging.getLogger(verify.LOGGER.name).handlers.clear()
     yield
     logging.getLogger(verify.LOGGER.name).handlers.clear()

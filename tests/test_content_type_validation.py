@@ -4,12 +4,12 @@ import requests
 from src.utils.http import fetch_content_safe
 
 @pytest.fixture
-def mock_session():
+def mock_session() -> MagicMock:
     session = MagicMock(spec=requests.Session)
     return session
 
 @pytest.fixture
-def mock_response():
+def mock_response() -> requests.Response:
     response = requests.Response()
     response.url = "http://example.com"
     response.status_code = 200

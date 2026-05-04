@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 
+from typing import Any
 import pytest
 
 import src.providers.oebb as oebb
@@ -10,7 +11,7 @@ _STATIONS_PATH = Path(__file__).resolve().parents[1] / "data" / "stations.json"
 
 
 @pytest.fixture(scope="module")
-def station_entries():
+def station_entries() -> Any:  # JSON-derived list of dicts; full typing requires body refactor
     with _STATIONS_PATH.open("r", encoding="utf-8") as handle:
         data = json.load(handle)
     if isinstance(data, dict):
@@ -30,7 +31,7 @@ def station_entries():
 
 
 @pytest.fixture(scope="module")
-def pendler_station(station_entries):
+def pendler_station(station_entries: Any) -> Any:  # entry["name"] narrowing to str needs cast
     for entry in station_entries:
         if entry.get("pendler") and not entry.get("in_vienna"):
             return entry["name"]
@@ -38,7 +39,7 @@ def pendler_station(station_entries):
 
 
 @pytest.fixture(scope="module")
-def vienna_station(station_entries):
+def vienna_station(station_entries: Any) -> Any:  # entry["name"] narrowing to str needs cast
     for entry in station_entries:
         if entry.get("in_vienna"):
             return entry["name"]

@@ -4,7 +4,7 @@ import requests
 from src.places.client import GooglePlacesClient, GooglePlacesConfig
 
 @pytest.fixture
-def client_config():
+def client_config() -> GooglePlacesConfig:
     return GooglePlacesConfig(
         api_key="test-key",
         included_types=["train_station"],

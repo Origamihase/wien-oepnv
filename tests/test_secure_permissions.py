@@ -2,11 +2,12 @@ import json
 from pathlib import Path
 from unittest.mock import patch
 
+from typing import Iterator
 import pytest
 import src.build_feed
 
 @pytest.fixture
-def mock_feed_config(monkeypatch):
+def mock_feed_config(monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
     """Mock the feed config to avoid environment validation issues."""
     with patch("src.feed.config.validate_path", side_effect=lambda p, n: Path(p).resolve()):
         yield
