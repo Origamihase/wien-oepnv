@@ -18,7 +18,11 @@ def client_config():
 
 @patch("src.places.client.verify_response_ip")
 @patch("src.places.client.read_response_safe")
-def test_post_passes_read_timeout(mock_read_response_safe, mock_verify_ip, client_config):
+def test_post_passes_read_timeout(
+    mock_read_response_safe: MagicMock,
+    mock_verify_ip: MagicMock,
+    client_config: GooglePlacesConfig,
+) -> None:
     """Verify that _post calculates and passes a read timeout to read_response_safe."""
     # Setup mock session and response
     mock_session = MagicMock(spec=requests.Session)

@@ -1,5 +1,5 @@
 
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 from src.providers.oebb import fetch_events
 from defusedxml import ElementTree as ET
 
@@ -33,7 +33,12 @@ def mock_xml_response(items):
 @patch("src.providers.oebb.station_by_oebb_id")
 @patch("src.providers.oebb.canonical_name")
 @patch("src.providers.oebb.station_info")
-def test_oebb_title_fallback_id(mock_station_info, mock_canon, mock_station_lookup, mock_fetch):
+def test_oebb_title_fallback_id(
+    mock_station_info: MagicMock,
+    mock_canon: MagicMock,
+    mock_station_lookup: MagicMock,
+    mock_fetch: MagicMock,
+) -> None:
     mock_station_info.return_value.in_vienna = True
     # Setup
     mock_station_lookup.return_value = "Wien ID-Station"
@@ -66,7 +71,12 @@ def test_oebb_title_fallback_id(mock_station_info, mock_canon, mock_station_look
 @patch("src.providers.oebb.station_by_oebb_id")
 @patch("src.providers.oebb.canonical_name")
 @patch("src.providers.oebb.station_info")
-def test_oebb_title_fallback_text(mock_station_info, mock_canon, mock_station_lookup, mock_fetch):
+def test_oebb_title_fallback_text(
+    mock_station_info: MagicMock,
+    mock_canon: MagicMock,
+    mock_station_lookup: MagicMock,
+    mock_fetch: MagicMock,
+) -> None:
     mock_station_info.return_value.in_vienna = True
     # Setup
     mock_station_lookup.return_value = None # No ID match
@@ -99,7 +109,12 @@ def test_oebb_title_fallback_text(mock_station_info, mock_canon, mock_station_lo
 @patch("src.providers.oebb.station_by_oebb_id")
 @patch("src.providers.oebb.canonical_name")
 @patch("src.providers.oebb.station_info")
-def test_oebb_title_fallback_truncation(mock_station_info, mock_canon, mock_station_lookup, mock_fetch):
+def test_oebb_title_fallback_truncation(
+    mock_station_info: MagicMock,
+    mock_canon: MagicMock,
+    mock_station_lookup: MagicMock,
+    mock_fetch: MagicMock,
+) -> None:
     pass
     mock_station_lookup.return_value = None
     mock_canon.return_value = None # No stations found in text
