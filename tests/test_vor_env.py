@@ -1,12 +1,14 @@
 import base64
 import importlib
 import logging
+import pytest
 import requests
+from pathlib import Path
 
 import src.providers.vor as vor
 
 
-def test_access_id_env_normalization(monkeypatch):
+def test_access_id_env_normalization(monkeypatch: pytest.MonkeyPatch) -> None:
     # VOR_ACCESS_ID mit Leerzeichen wird entfernt und deaktiviert den Provider
     monkeypatch.setenv("VOR_ACCESS_ID", "   ")
     importlib.reload(vor)
@@ -29,7 +31,10 @@ def test_access_id_env_normalization(monkeypatch):
     assert vor.VOR_ACCESS_ID == ""
 
 
-def test_invalid_int_env_uses_defaults(monkeypatch, caplog):
+def test_invalid_int_env_uses_defaults(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     monkeypatch.setenv("VOR_BOARD_DURATION_MIN", "foo")
     monkeypatch.setenv("VOR_HTTP_TIMEOUT", "bar")
     monkeypatch.setenv("VOR_MAX_STATIONS_PER_RUN", "baz")
@@ -62,7 +67,10 @@ def test_invalid_int_env_uses_defaults(monkeypatch, caplog):
     importlib.reload(vor)
 
 
-def test_invalid_bus_regex_falls_back_to_defaults(monkeypatch, caplog):
+def test_invalid_bus_regex_falls_back_to_defaults(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     monkeypatch.setenv("VOR_BUS_INCLUDE_REGEX", "(")
     monkeypatch.setenv("VOR_BUS_EXCLUDE_REGEX", "(")
 
@@ -80,7 +88,7 @@ def test_invalid_bus_regex_falls_back_to_defaults(monkeypatch, caplog):
     importlib.reload(vor)
 
 
-def test_station_ids_fallback_from_file(monkeypatch, tmp_path):
+def test_station_ids_fallback_from_file(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     monkeypatch.delenv("VOR_STATION_IDS", raising=False)
     monkeypatch.delenv("VOR_STATION_NAMES", raising=False)
 
@@ -102,7 +110,7 @@ def test_station_ids_fallback_from_file(monkeypatch, tmp_path):
     importlib.reload(vor)
 
 
-def test_station_ids_fallback_from_directory(monkeypatch):
+def test_station_ids_fallback_from_directory(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv("VOR_STATION_IDS", raising=False)
     monkeypatch.delenv("VOR_STATION_NAMES", raising=False)
     monkeypatch.delenv("VOR_STATION_IDS_FILE", raising=False)
@@ -114,7 +122,7 @@ def test_station_ids_fallback_from_directory(monkeypatch):
     assert {"490009400", "430310100", "430470800"}.issubset(ids)
 
 
-def test_refresh_access_credentials_reloads_from_env(monkeypatch):
+def test_refresh_access_credentials_reloads_from_env(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("VOR_ACCESS_ID", "first")
     importlib.reload(vor)
     assert vor.VOR_ACCESS_ID == "first"
@@ -129,7 +137,7 @@ def test_refresh_access_credentials_reloads_from_env(monkeypatch):
     importlib.reload(vor)
 
 
-def test_base_url_prefers_secret(monkeypatch):
+def test_base_url_prefers_secret(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 
@@ -173,7 +181,7 @@ def test_base_url_prefers_secret(monkeypatch):
     )
 
 
-def test_apply_authentication_sets_header(monkeypatch):
+def test_apply_authentication_sets_header(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("VOR_ACCESS_ID", "secret")
     importlib.reload(vor)
 
@@ -204,7 +212,7 @@ def test_apply_authentication_sets_header(monkeypatch):
     importlib.reload(vor)
 
 
-def test_apply_authentication_basic_auth(monkeypatch):
+def test_apply_authentication_basic_auth(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("VOR_ACCESS_ID", "user:secret")
     importlib.reload(vor)
 
@@ -228,7 +236,7 @@ def test_apply_authentication_basic_auth(monkeypatch):
     importlib.reload(vor)
 
 
-def test_apply_authentication_basic_with_prefix(monkeypatch):
+def test_apply_authentication_basic_with_prefix(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("VOR_ACCESS_ID", "Basic user:secret")
     importlib.reload(vor)
 
