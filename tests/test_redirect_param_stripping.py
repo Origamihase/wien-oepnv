@@ -7,7 +7,11 @@ from src.utils.http import request_safe
 class TestRedirectParamStripping(unittest.TestCase):
     @patch("src.utils.http._resolve_hostname_safe")
     @patch("src.utils.http.is_ip_safe")
-    def test_sensitive_param_stripping_on_redirect(self, mock_is_ip_safe, mock_resolve):
+    def test_sensitive_param_stripping_on_redirect(
+        self,
+        mock_is_ip_safe: MagicMock,
+        mock_resolve: MagicMock,
+    ) -> None:
         # Mock DNS resolution to be safe
         mock_resolve.return_value = [(2, 1, 6, '', ('93.184.216.34', 443))]
         mock_is_ip_safe.return_value = True

@@ -1,11 +1,11 @@
 import unittest
-from unittest.mock import patch, mock_open
+from unittest.mock import MagicMock, mock_open, patch
 from pathlib import Path
 import pytest
 from src.utils.files import atomic_write
 
 class TestAtomicWriteSecurity(unittest.TestCase):
-    def setUp(self):
+    def setUp(self) -> None:
         self.tmp_path = Path("/tmp/test_dir")
         self.target = self.tmp_path / "target.txt"
         # We will mock uuid to return a fixed value
@@ -22,15 +22,15 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.unlink")
     def test_overwrite_false_uses_link(
         self,
-        mock_unlink,
-        mock_link,
-        mock_fsync,
-        mock_replace,
-        mock_chmod,
-        mock_file,
-        mock_token_hex,
-        mock_os_open,
-    ):
+        mock_unlink: MagicMock,
+        mock_link: MagicMock,
+        mock_fsync: MagicMock,
+        mock_replace: MagicMock,
+        mock_chmod: MagicMock,
+        mock_file: MagicMock,
+        mock_token_hex: MagicMock,
+        mock_os_open: MagicMock,
+    ) -> None:
         # Setup secrets mock
         mock_token_hex.return_value = self.fixed_uuid_hex
 
@@ -72,15 +72,15 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.unlink")
     def test_overwrite_true_uses_replace(
         self,
-        mock_unlink,
-        mock_link,
-        mock_fsync,
-        mock_replace,
-        mock_chmod,
-        mock_file,
-        mock_token_hex,
-        mock_os_open,
-    ):
+        mock_unlink: MagicMock,
+        mock_link: MagicMock,
+        mock_fsync: MagicMock,
+        mock_replace: MagicMock,
+        mock_chmod: MagicMock,
+        mock_file: MagicMock,
+        mock_token_hex: MagicMock,
+        mock_os_open: MagicMock,
+    ) -> None:
         mock_token_hex.return_value = self.fixed_uuid_hex
         mock_file.return_value.fileno.return_value = 123
         mock_os_open.return_value = 123
@@ -107,15 +107,15 @@ class TestAtomicWriteSecurity(unittest.TestCase):
     @patch("src.utils.files.os.unlink")
     def test_overwrite_false_race_condition(
         self,
-        mock_unlink,
-        mock_link,
-        mock_fsync,
-        mock_replace,
-        mock_chmod,
-        mock_file,
-        mock_token_hex,
-        mock_os_open,
-    ):
+        mock_unlink: MagicMock,
+        mock_link: MagicMock,
+        mock_fsync: MagicMock,
+        mock_replace: MagicMock,
+        mock_chmod: MagicMock,
+        mock_file: MagicMock,
+        mock_token_hex: MagicMock,
+        mock_os_open: MagicMock,
+    ) -> None:
         mock_token_hex.return_value = self.fixed_uuid_hex
         mock_file.return_value.fileno.return_value = 123
         mock_os_open.return_value = 123

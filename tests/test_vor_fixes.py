@@ -69,7 +69,11 @@ class TestApplyAuthentication:
     @patch("src.providers.vor.VOR_ACCESS_ID", "global_id")
     @patch("src.providers.vor.VOR_BASE_URL", "https://global.com/")
     @patch("src.providers.vor.refresh_access_credentials")
-    def test_apply_authentication(self, mock_refresh, mock_vor_auth_cls):
+    def test_apply_authentication(
+        self,
+        mock_refresh: MagicMock,
+        mock_vor_auth_cls: MagicMock,
+    ) -> None:
         """
         Test that apply_authentication:
         1. Does NOT set Authorization in session.headers.
@@ -101,7 +105,13 @@ class TestFetchDepartureBoard:
     @patch("src.providers.vor.save_request_count")
     @patch("src.providers.vor.load_request_count")
     @patch("src.providers.vor._QUOTA_LOCK")
-    def test_fetch_departure_board_calls(self, mock_lock, mock_load, mock_save, mock_fetch):
+    def test_fetch_departure_board_calls(
+        self,
+        mock_lock: MagicMock,
+        mock_load: MagicMock,
+        mock_save: MagicMock,
+        mock_fetch: MagicMock,
+    ) -> None:
         """
         Test _fetch_departure_board_for_station:
         1. Calls save_request_count exactly once.
