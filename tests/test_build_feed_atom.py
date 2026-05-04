@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
+from typing import Callable, Iterator
 from defusedxml import ElementTree as ET
 import pytest
 
@@ -21,7 +22,7 @@ _ATOM_NS = "http://www.w3.org/2005/Atom"
 
 
 @pytest.fixture
-def pages_base_url(monkeypatch):
+def pages_base_url(monkeypatch: pytest.MonkeyPatch) -> Iterator[Callable[[str], None]]:
     """Set PAGES_BASE_URL via env and refresh feed config; restore on teardown."""
 
     import src.build_feed

@@ -1,10 +1,11 @@
 import sys
 import logging
+from typing import Any, Iterator
 import pytest
 from unittest.mock import patch
 
 @pytest.fixture
-def fallback_env():
+def fallback_env() -> Iterator[Any]:  # yields a dynamically-imported module
     """
     Fixture that forces src.utils.env to be imported in fallback mode
     (simulating missing src.utils.logging).

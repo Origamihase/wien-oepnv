@@ -1,4 +1,6 @@
 import os
+from pathlib import Path
+from typing import Iterator
 from defusedxml import ElementTree as ET
 from unittest.mock import patch
 import pytest
@@ -6,7 +8,7 @@ from scripts import generate_sitemap
 
 # Mock data directory for tests
 @pytest.fixture
-def mock_docs_dir(tmp_path):
+def mock_docs_dir(tmp_path: Path) -> Iterator[Path]:
     docs_dir = tmp_path / "docs"
     docs_dir.mkdir()
     (docs_dir / "index.md").touch()
