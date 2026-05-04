@@ -1,7 +1,8 @@
+import pytest
 import src.providers.vor as vor
 
 
-def test_fetch_events_passes_local_timezone(monkeypatch):
+def test_fetch_events_passes_local_timezone(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "test")
     vor.VOR_ACCESS_ID = "test"
     vor.VOR_STATION_IDS = ["123"]

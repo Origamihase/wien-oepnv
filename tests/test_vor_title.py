@@ -1,10 +1,11 @@
 from collections import namedtuple
 
+import pytest
 from src.providers import vor
 
 StationInfo = namedtuple("StationInfo", ["name", "in_vienna"])
 
-def test_collect_from_board_adds_station_context(monkeypatch):
+def test_collect_from_board_adds_station_context(monkeypatch: pytest.MonkeyPatch) -> None:
     # Mock station_info
     monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="Mödling", in_vienna=False))
 
@@ -25,7 +26,9 @@ def test_collect_from_board_adds_station_context(monkeypatch):
     # Expect: "Mödling: Zugausfall" (since no lines)
     assert title == "Mödling: Zugausfall"
 
-def test_collect_from_board_adds_station_context_with_lines(monkeypatch):
+def test_collect_from_board_adds_station_context_with_lines(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="Baden", in_vienna=False))
 
     root = {
@@ -44,7 +47,7 @@ def test_collect_from_board_adds_station_context_with_lines(monkeypatch):
     # Expect: "S3: Verspätung (Baden)"
     assert title == "S3: Verspätung (Baden)"
 
-def test_collect_from_board_skips_context_if_present(monkeypatch):
+def test_collect_from_board_skips_context_if_present(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="Wien Mitte", in_vienna=True))
 
     root = {

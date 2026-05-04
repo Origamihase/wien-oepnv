@@ -1,9 +1,10 @@
 import threading
+import pytest
 
 import src.providers.vor as vor
 
 
-def test_fetch_events_parallel(monkeypatch):
+def test_fetch_events_parallel(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "test")
     monkeypatch.setenv("VOR_MONITOR_STATIONS_WHITELIST", "")
     vor.VOR_ACCESS_ID = "test"
@@ -34,7 +35,10 @@ def test_fetch_events_parallel(monkeypatch):
     assert {it["guid"] for it in items} == {"1", "2"}
 
 
-def test_fetch_events_logs_and_continues(monkeypatch, caplog):
+def test_fetch_events_logs_and_continues(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "test")
     monkeypatch.setenv("VOR_MONITOR_STATIONS_WHITELIST", "")
     vor.VOR_ACCESS_ID = "test"

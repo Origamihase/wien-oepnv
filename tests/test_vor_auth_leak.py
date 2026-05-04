@@ -1,8 +1,9 @@
 import importlib
+import pytest
 import src.providers.vor as vor
 from typing import Any
 
-def test_vor_sends_param_when_header_present(monkeypatch):
+def test_vor_sends_param_when_header_present(monkeypatch: pytest.MonkeyPatch) -> None:
     """
     Verify that currently VOR provider sends BOTH header and query param.
     This test serves as a reproduction of the "leak" behavior (param injection).

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import pytest
 from pathlib import Path
 
 
@@ -13,21 +14,21 @@ def _load_module() -> object:
     return module
 
 
-def test_base_url_rejects_invalid_scheme(monkeypatch) -> None:
+def test_base_url_rejects_invalid_scheme(monkeypatch: pytest.MonkeyPatch) -> None:
     from typing import cast, Any
     module = _load_module()
     monkeypatch.setenv("SITE_BASE_URL", "javascript:alert(1)")
     assert cast(Any, module)._base_url() == cast(Any, module).DEFAULT_BASE_URL.rstrip("/")
 
 
-def test_base_url_rejects_control_characters(monkeypatch) -> None:
+def test_base_url_rejects_control_characters(monkeypatch: pytest.MonkeyPatch) -> None:
     from typing import cast, Any
     module = _load_module()
     monkeypatch.setenv("SITE_BASE_URL", "https://example.com\n/inject")
     assert cast(Any, module)._base_url() == cast(Any, module).DEFAULT_BASE_URL.rstrip("/")
 
 
-def test_base_url_accepts_valid_https(monkeypatch) -> None:
+def test_base_url_accepts_valid_https(monkeypatch: pytest.MonkeyPatch) -> None:
     from typing import cast, Any
     module = _load_module()
     monkeypatch.setenv("SITE_BASE_URL", "https://example.com/base/")

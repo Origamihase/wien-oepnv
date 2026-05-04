@@ -1,13 +1,14 @@
 import json
 import logging
 
+import pytest
 import responses
 
 from feed.reporting import RunReport
 
 
-@responses.activate
-def test_run_report_creates_github_issue(monkeypatch):
+@responses.activate  # type: ignore[untyped-decorator]
+def test_run_report_creates_github_issue(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("FEED_GITHUB_CREATE_ISSUES", "1")
     monkeypatch.setenv("FEED_GITHUB_REPOSITORY", "demo/repo")
     monkeypatch.setenv("FEED_GITHUB_TOKEN", "secret-token")
@@ -44,8 +45,11 @@ def test_run_report_creates_github_issue(monkeypatch):
     assert "Unbekannter Fehler im Test" in payload["body"]
 
 
-@responses.activate
-def test_run_report_logs_warning_when_credentials_missing(monkeypatch, caplog):
+@responses.activate  # type: ignore[untyped-decorator]
+def test_run_report_logs_warning_when_credentials_missing(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     monkeypatch.setenv("FEED_GITHUB_CREATE_ISSUES", "1")
     monkeypatch.delenv("FEED_GITHUB_TOKEN", raising=False)
     monkeypatch.delenv("GITHUB_TOKEN", raising=False)
@@ -66,8 +70,11 @@ def test_run_report_logs_warning_when_credentials_missing(monkeypatch, caplog):
     assert any("Token oder Repository fehlen" in message for message in warning_messages)
 
 
-@responses.activate
-def test_run_report_sanitizes_github_error_details(monkeypatch, caplog):
+@responses.activate  # type: ignore[untyped-decorator]
+def test_run_report_sanitizes_github_error_details(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     monkeypatch.setenv("FEED_GITHUB_CREATE_ISSUES", "1")
     monkeypatch.setenv("FEED_GITHUB_REPOSITORY", "demo/repo")
     monkeypatch.setenv("FEED_GITHUB_TOKEN", "secret-token")
