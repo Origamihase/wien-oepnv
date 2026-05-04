@@ -12,7 +12,7 @@ def mock_feed_config(monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
     with patch("src.feed.config.validate_path", side_effect=lambda p, n: Path(p).resolve()):
         yield
 
-def test_save_state_secure_permissions(tmp_path, mock_feed_config):
+def test_save_state_secure_permissions(tmp_path: Path, mock_feed_config: None) -> None:
     """Verify that _save_state creates files with secure permissions (0600)."""
     # Import inside the test to ensure patches are active
     from src.build_feed import _save_state

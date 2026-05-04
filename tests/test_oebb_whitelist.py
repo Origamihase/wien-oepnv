@@ -46,24 +46,32 @@ def vienna_station(station_entries: Any) -> Any:  # entry["name"] narrowing to s
     pytest.fail("No Vienna station found in stations.json")
 
 
-def test_station_flags_match_utils(pendler_station, vienna_station):
+def test_station_flags_match_utils(pendler_station: Any, vienna_station: Any) -> None:
     assert station_utils.is_pendler(pendler_station)
     assert not station_utils.is_in_vienna(pendler_station)
     assert station_utils.is_in_vienna(vienna_station)
 
 
 @pytest.mark.parametrize("arrow", ["↔", "<->", "->", "—", "–", "→"])
-def test_pendler_station_is_whitelisted(arrow: str, pendler_station, vienna_station) -> None:
+def test_pendler_station_is_whitelisted(
+    arrow: str,
+    pendler_station: Any,
+    vienna_station: Any,
+) -> None:
     # "Pendler" logic is now: If it has ANY Vienna station, it's kept.
     # So matching "Wien" -> Keep.
     assert oebb._is_relevant(f"{vienna_station} {arrow} {pendler_station}", "")
 
 
-def test_vienna_station_is_whitelisted(vienna_station):
+def test_vienna_station_is_whitelisted(vienna_station: Any) -> None:
     assert oebb._is_relevant(f"{vienna_station} ↔ {vienna_station}", "")
 
 
-def test_only_vienna_env(monkeypatch, pendler_station, vienna_station):
+def test_only_vienna_env(
+    monkeypatch: pytest.MonkeyPatch,
+    pendler_station: Any,
+    vienna_station: Any,
+) -> None:
     # Test that setting OEBB_ONLY_VIENNA correctly filters out connections
     # that are not strictly inside Vienna.
     monkeypatch.setattr(oebb, "OEBB_ONLY_VIENNA", True)

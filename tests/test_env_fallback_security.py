@@ -36,7 +36,7 @@ def fallback_env() -> Iterator[Any]:  # yields a dynamically-imported module
     elif "src.utils.logging" in sys.modules:
         del sys.modules["src.utils.logging"]
 
-def test_secure_fallback(caplog, fallback_env):
+def test_secure_fallback(caplog: pytest.LogCaptureFixture, fallback_env: Any) -> None:
     """Verify that env.py fallback logging masks basic secrets."""
     caplog.set_level(logging.WARNING, logger="build_feed")
 
@@ -52,7 +52,7 @@ def test_secure_fallback(caplog, fallback_env):
     assert "accessId=***" in caplog.text
     assert "accessId=SuperSecretKey123" not in caplog.text
 
-def test_fallback_extended_keys(caplog, fallback_env):
+def test_fallback_extended_keys(caplog: pytest.LogCaptureFixture, fallback_env: Any) -> None:
     """
     Verify that env.py fallback logging masks vendor-specific and extended secrets.
     This protects against cloud provider keys (AWS, Azure, etc).

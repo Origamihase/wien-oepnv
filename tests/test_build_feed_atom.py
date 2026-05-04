@@ -36,13 +36,15 @@ def pages_base_url(monkeypatch: pytest.MonkeyPatch) -> Iterator[Callable[[str], 
     src.build_feed.feed_config.refresh_from_env()
 
 
-def test_make_rss_declares_atom_namespace(pages_base_url):
+def test_make_rss_declares_atom_namespace(pages_base_url: Callable[[str], None]) -> None:
     pages_base_url("https://example.github.io/test-repo")
     rss_str = _make_rss([], _NOW, {})
     assert 'xmlns:atom="http://www.w3.org/2005/Atom"' in rss_str
 
 
-def test_make_rss_emits_self_and_alternate_atom_links(pages_base_url):
+def test_make_rss_emits_self_and_alternate_atom_links(
+    pages_base_url: Callable[[str], None],
+) -> None:
     pages_base_url("https://example.github.io/test-repo")
     rss_str = _make_rss([], _NOW, {})
 
@@ -65,7 +67,7 @@ def test_make_rss_emits_self_and_alternate_atom_links(pages_base_url):
     assert self_link.get("href") == "https://example.github.io/test-repo/feed.xml"
 
 
-def test_make_rss_emits_language_de(pages_base_url):
+def test_make_rss_emits_language_de(pages_base_url: Callable[[str], None]) -> None:
     pages_base_url("https://example.github.io/test-repo")
     rss_str = _make_rss([], _NOW, {})
 
@@ -78,7 +80,9 @@ def test_make_rss_emits_language_de(pages_base_url):
     assert language.text == "de"
 
 
-def test_make_rss_strips_trailing_slash_from_pages_base_url(pages_base_url):
+def test_make_rss_strips_trailing_slash_from_pages_base_url(
+    pages_base_url: Callable[[str], None],
+) -> None:
     """A trailing slash in PAGES_BASE_URL must not produce a double slash in href."""
 
     pages_base_url("https://example.github.io/test-repo/")
