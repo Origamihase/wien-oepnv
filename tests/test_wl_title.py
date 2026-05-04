@@ -1,5 +1,7 @@
 from datetime import datetime, timezone
 
+import pytest
+
 from src.providers.wl_fetch import fetch_events
 from src.providers.wl_lines import (
     _detect_line_pairs_from_text,
@@ -8,7 +10,9 @@ from src.providers.wl_lines import (
 from src.providers.wl_text import _tidy_title_wl
 
 
-def test_bucket_merge_prefers_informative_title_and_description(monkeypatch):
+def test_bucket_merge_prefers_informative_title_and_description(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     now_iso = datetime.now(timezone.utc).isoformat()
     detailed_desc = (
         "Störung zwischen Siebenhirten und Perfektastraße. Ersatzverkehr im Einsatz."
@@ -69,16 +73,16 @@ def test_bucket_merge_prefers_informative_title_and_description(monkeypatch):
     assert len(event["description"]) > len("Störung")
 
 
-def test_line_prefix_and_house_number_false_positive():
+def test_line_prefix_and_house_number_false_positive() -> None:
     assert _ensure_line_prefix("Falschparker", ["5"]) == "5: Falschparker"
     assert _detect_line_pairs_from_text("Neubaugasse 69") == []
 
 
-def test_line_prefix_empty_title():
+def test_line_prefix_empty_title() -> None:
     assert _ensure_line_prefix("5:", ["5"]) == "5"
     assert _ensure_line_prefix("5: ", ["5"]) == "5"
 
 
-def test_tidy_title_wl_strips_label():
+def test_tidy_title_wl_strips_label() -> None:
     assert _tidy_title_wl("Störung: U1 steht") == "U1 steht"
 

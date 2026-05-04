@@ -1,10 +1,12 @@
 import logging
 from datetime import datetime, timezone
 
+import pytest
+
 from src.providers.wl_fetch import _stop_names_from_related, fetch_events
 
 
-def test_stop_names_from_related_uses_canonical_names():
+def test_stop_names_from_related_uses_canonical_names() -> None:
     rel_stops = [
         {"name": "Wien Franz Josefs Bahnhof"},
         {"stopName": "Wien Franz-Josefs-Bf"},
@@ -16,7 +18,10 @@ def test_stop_names_from_related_uses_canonical_names():
     assert names == ["Wien Franz-Josefs-Bf"]
 
 
-def test_fetch_events_handles_invalid_json(monkeypatch, caplog):
+def test_fetch_events_handles_invalid_json(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     class DummyResponse:
         headers = {"Content-Type": "application/json"}
         def raise_for_status(self):
@@ -136,7 +141,7 @@ def _base_event(**overrides):
     return base
 
 
-def test_fetch_events_adds_stop_context_when_no_lines(monkeypatch):
+def test_fetch_events_adds_stop_context_when_no_lines(monkeypatch: pytest.MonkeyPatch) -> None:
     rel_stops = [
         {"name": "Karlsplatz"},
         {"name": "Museumsquartier"},
@@ -162,7 +167,7 @@ def test_fetch_events_adds_stop_context_when_no_lines(monkeypatch):
     assert events[0]["description"] == "Testbeschreibung | Haltestelle: Museumsquartier, Wien Karlsplatz"
 
 
-def test_fetch_events_uses_extra_context_when_no_stops(monkeypatch):
+def test_fetch_events_uses_extra_context_when_no_stops(monkeypatch: pytest.MonkeyPatch) -> None:
     traffic_info = _base_event(
         attributes={
             "station": "Karlsplatz",

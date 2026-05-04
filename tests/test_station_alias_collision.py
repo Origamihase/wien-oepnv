@@ -1,10 +1,17 @@
 import json
 import logging
+from pathlib import Path
+
+import pytest
 
 from src.utils import stations
 
 
-def test_station_alias_collision_logs_warning(tmp_path, caplog, monkeypatch):
+def test_station_alias_collision_logs_warning(
+    tmp_path: Path,
+    caplog: pytest.LogCaptureFixture,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     data = [
         {
             "name": "First Station",

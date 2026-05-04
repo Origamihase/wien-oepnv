@@ -3,7 +3,10 @@ import pytest
 from unittest.mock import MagicMock
 from src.providers import wl_fetch
 
-def test_fetch_events_response_too_large(monkeypatch, caplog):
+def test_fetch_events_response_too_large(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     """Test that fetch_events handles oversized responses gracefully (using fetch_content_safe)."""
 
     # Create a mock session that returns a huge response
@@ -25,7 +28,7 @@ def test_fetch_events_response_too_large(monkeypatch, caplog):
             return HugeResponse()
 
     class MockSessionContext:
-        headers = {}
+        headers: dict[str, str] = {}
         def __enter__(self):
             return HugeSession()
         def __exit__(self, *args):
@@ -51,7 +54,10 @@ def test_fetch_events_response_too_large(monkeypatch, caplog):
     # Check logs
     assert "ungültig oder kein JSON" in caplog.text
 
-def test_wl_fetch_uses_fetch_content_safe(monkeypatch, caplog):
+def test_wl_fetch_uses_fetch_content_safe(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     """Verify that wl_fetch calls fetch_content_safe."""
 
     # Mock fetch_content_safe to track calls
@@ -60,7 +66,7 @@ def test_wl_fetch_uses_fetch_content_safe(monkeypatch, caplog):
 
     # Mock session
     class DummySession:
-        headers = {}
+        headers: dict[str, str] = {}
         def mount(self, *args): pass
         def get(self, *args, **kwargs): return MagicMock()
         def request(self, *args, **kwargs): pass
