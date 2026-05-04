@@ -4,7 +4,7 @@ import requests
 from src.providers import vor
 
 class TestVorRedirectLeak(unittest.TestCase):
-    def setUp(self):
+    def setUp(self) -> None:
         # Reset VOR_ACCESS_ID for testing
         vor.VOR_ACCESS_ID = "SECRET_TOKEN"
         vor._VOR_AUTHORIZATION_HEADER = ""

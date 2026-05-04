@@ -7,7 +7,7 @@ from unittest.mock import MagicMock
 from src.places.client import GooglePlacesClient, GooglePlacesConfig
 
 class TestClientErrorSanitization(unittest.TestCase):
-    def test_format_error_message_sanitization(self):
+    def test_format_error_message_sanitization(self) -> None:
         config = GooglePlacesConfig(
             api_key="TEST_KEY",
             included_types=[],
