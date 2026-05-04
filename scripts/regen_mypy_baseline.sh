@@ -25,7 +25,11 @@ CURRENT="$(mktemp)"
 trap 'rm -f "$CURRENT"' EXIT
 
 # `--no-pretty` flattens each error to a single line for parseable diffs.
-PYTHONPATH=src mypy --no-pretty src tests > "$CURRENT" 2>&1 || true
+# `python3 -m mypy` (not bare `mypy`) ensures we run the pip-installed
+# version, not a PATH-earlier copy from uv/pipx that may be a different
+# version. CI is unaffected (fresh runner has no shadow), but local dev
+# environments often do.
+PYTHONPATH=src python3 -m mypy --no-pretty src tests > "$CURRENT" 2>&1 || true
 
 grep -E " error:" "$CURRENT" \
   | sed -E 's/^([^:]+):[0-9]+(:[0-9]+)?: /\1: /' \
