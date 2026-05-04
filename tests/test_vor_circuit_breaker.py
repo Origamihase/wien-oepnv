@@ -1,7 +1,8 @@
 import time
+import pytest
 from src.providers import vor
 
-def test_fetch_events_graceful_shutdown_on_emergency_stop(monkeypatch):
+def test_fetch_events_graceful_shutdown_on_emergency_stop(monkeypatch: pytest.MonkeyPatch) -> None:
     """
     Verify that if one thread triggers an 'Emergency Stop', the executor shuts down,
     the loop breaks, and partial results are returned (graceful degradation),

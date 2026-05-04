@@ -1,8 +1,12 @@
 import logging
+import pytest
 from unittest.mock import MagicMock
 from src.providers import vor
 
-def test_vor_warns_on_insecure_http_with_credentials(monkeypatch, caplog):
+def test_vor_warns_on_insecure_http_with_credentials(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     """
     Test that a warning is logged when VOR credentials are sent over an insecure HTTP connection.
     """
@@ -23,7 +27,10 @@ def test_vor_warns_on_insecure_http_with_credentials(monkeypatch, caplog):
     assert "Sending VOR credentials over insecure HTTP connection!" in caplog.text
 
 
-def test_vor_does_not_warn_on_secure_https(monkeypatch, caplog):
+def test_vor_does_not_warn_on_secure_https(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     """
     Test that NO warning is logged when using HTTPS.
     """

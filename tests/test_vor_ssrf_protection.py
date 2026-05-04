@@ -1,9 +1,10 @@
 import json
 from unittest.mock import MagicMock
+import pytest
 
 from src.providers import vor
 
-def test_resolve_station_ids_uses_fetch_content_safe(monkeypatch):
+def test_resolve_station_ids_uses_fetch_content_safe(monkeypatch: pytest.MonkeyPatch) -> None:
     """
     Test that resolve_station_ids uses fetch_content_safe to prevent SSRF.
     This ensures that we don't regress to using session.get() directly.
@@ -40,7 +41,7 @@ def test_resolve_station_ids_uses_fetch_content_safe(monkeypatch):
     assert "location.name" in args[1]
     assert kwargs['params']['input'] == "PhantasiaHauptbahnhof"
 
-def test_resolve_station_ids_handles_unsafe_url_error(monkeypatch):
+def test_resolve_station_ids_handles_unsafe_url_error(monkeypatch: pytest.MonkeyPatch) -> None:
     """
     Test that ValueError (from fetch_content_safe for unsafe URLs) is caught and handled.
     """

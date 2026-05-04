@@ -1,8 +1,12 @@
+import pytest
 import src.providers.vor as vor
 
 # --- Test Case ---
 
-def test_fetch_events_uses_whitelist_by_default(monkeypatch, caplog):
+def test_fetch_events_uses_whitelist_by_default(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     """
     Verify that fetch_events uses the default whitelist (Hbf, Airport)
     when no env var is set, and resolves their IDs properly.
@@ -54,7 +58,7 @@ def test_fetch_events_uses_whitelist_by_default(monkeypatch, caplog):
     assert "99999" not in captured_ids
 
 
-def test_fetch_events_uses_configured_whitelist(monkeypatch):
+def test_fetch_events_uses_configured_whitelist(monkeypatch: pytest.MonkeyPatch) -> None:
     """
     Verify that setting VOR_MONITOR_STATIONS_WHITELIST overrides default.
     """
@@ -85,7 +89,7 @@ def test_fetch_events_uses_configured_whitelist(monkeypatch):
     assert "Wien Hauptbahnhof" not in resolved_names
 
 
-def test_fetch_events_disabled_whitelist_fallback(monkeypatch):
+def test_fetch_events_disabled_whitelist_fallback(monkeypatch: pytest.MonkeyPatch) -> None:
     """
     Verify that setting VOR_MONITOR_STATIONS_WHITELIST to empty string
     disables the whitelist and falls back to VOR_STATION_IDS.
@@ -116,7 +120,10 @@ def test_fetch_events_disabled_whitelist_fallback(monkeypatch):
     assert "12345" in fetched_ids
 
 
-def test_whitelist_respects_request_limits(monkeypatch, caplog):
+def test_whitelist_respects_request_limits(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     """
     Verify request limits apply even when using whitelist.
     """
