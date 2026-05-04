@@ -2,6 +2,7 @@ import importlib
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import Any
 import pytest
 import types
 from defusedxml import ElementTree as ET
@@ -24,7 +25,8 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     return importlib.import_module(module_name)
 
 
-def _emit_item_str(build_feed, item, now, state):
+# Any: build_feed is dynamically-loaded module; item/state shapes vary per test
+def _emit_item_str(build_feed: Any, item: Any, now: datetime, state: dict[str, Any]) -> Any:
     ident, elem, replacements = build_feed._emit_item(item, now, state)
     xml_str = ET.tostring(elem, encoding="unicode")
     for ph, content in replacements.items():

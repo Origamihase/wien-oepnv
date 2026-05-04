@@ -1,10 +1,11 @@
 
+from typing import Any
 from unittest.mock import MagicMock, patch
 from src.providers.oebb import fetch_events
 from defusedxml import ElementTree as ET
 
 # Mock XML structure
-def mock_xml_response(items):
+def mock_xml_response(items: list[dict[str, Any]]) -> str:
     xml = """<?xml version="1.0" encoding="UTF-8"?>
     <rss version="2.0">
         <channel>

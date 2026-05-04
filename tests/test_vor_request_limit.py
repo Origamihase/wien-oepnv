@@ -12,7 +12,12 @@ from zoneinfo import ZoneInfo
 import src.providers.vor as vor
 
 
-def _save_request_count_in_process(count_file: str, iso_timestamp: str, iterations: int, start_event) -> None:
+def _save_request_count_in_process(
+    count_file: str,
+    iso_timestamp: str,
+    iterations: int,
+    start_event: threading.Event,
+) -> None:
     from datetime import datetime
     from pathlib import Path
 

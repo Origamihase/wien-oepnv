@@ -3,12 +3,14 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+from typing import Any
 import pytest
 
 from src import build_feed
 
 
-def _make_loader(name: str):
+# Any: returns closure with dynamically-set attribute (_provider_cache_name)
+def _make_loader(name: str) -> Any:
     def _loader() -> list[object]:
         return []
 

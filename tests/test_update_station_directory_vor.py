@@ -6,7 +6,7 @@ import pytest
 from scripts import update_station_directory as usd
 
 
-def _write_text(path, content: str) -> None:
+def _write_text(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 

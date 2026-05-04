@@ -8,17 +8,20 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+from types import ModuleType
+from typing import Any
 import pytest
 
 
-def _load_build_feed(monkeypatch):
+def _load_build_feed(monkeypatch: pytest.MonkeyPatch) -> ModuleType:
     module_name = "src.build_feed"
     monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1] / "src"))
     sys.modules.pop(module_name, None)
     return importlib.import_module(module_name)
 
 
-def _emit_item_str(bf, item, now, state):
+# Any: bf is dynamically-loaded build_feed module; item/state shapes vary per test
+def _emit_item_str(bf: Any, item: Any, now: datetime, state: dict[str, Any]) -> Any:
     ident, elem, replacements = bf._emit_item(item, now, state)
     xml_str = bf.ET.tostring(elem, encoding="unicode")
     for ph, content in replacements.items():
