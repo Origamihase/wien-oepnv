@@ -32,7 +32,10 @@ def mock_response() -> requests.Response:
 
     return response
 
-def test_fetch_content_safe_no_validation(mock_session, mock_response):
+def test_fetch_content_safe_no_validation(
+    mock_session: MagicMock,
+    mock_response: requests.Response,
+) -> None:
     """Test that without allowed_content_types, safe content types are accepted but text/html is blocked."""
     mock_response.headers = {"Content-Type": "application/json"}
     mock_session.request.return_value.__enter__.return_value = mock_response
@@ -40,7 +43,10 @@ def test_fetch_content_safe_no_validation(mock_session, mock_response):
     content = fetch_content_safe(mock_session, "http://example.com")
     assert content == b"content"
 
-def test_fetch_content_safe_blocks_html_implicitly(mock_session, mock_response):
+def test_fetch_content_safe_blocks_html_implicitly(
+    mock_session: MagicMock,
+    mock_response: requests.Response,
+) -> None:
     """Test that without allowed_content_types, text/html is blocked to prevent proxy/WAF parsing issues."""
     mock_response.headers = {"Content-Type": "text/html"}
     mock_session.request.return_value.__enter__.return_value = mock_response
@@ -49,7 +55,10 @@ def test_fetch_content_safe_blocks_html_implicitly(mock_session, mock_response):
         fetch_content_safe(mock_session, "http://example.com")
 
 
-def test_fetch_content_safe_valid_json(mock_session, mock_response):
+def test_fetch_content_safe_valid_json(
+    mock_session: MagicMock,
+    mock_response: requests.Response,
+) -> None:
     """Test that matching content type is accepted."""
     mock_response.headers = {"Content-Type": "application/json"}
     mock_session.request.return_value.__enter__.return_value = mock_response
@@ -61,7 +70,10 @@ def test_fetch_content_safe_valid_json(mock_session, mock_response):
     )
     assert content == b"content"
 
-def test_fetch_content_safe_invalid_type(mock_session, mock_response):
+def test_fetch_content_safe_invalid_type(
+    mock_session: MagicMock,
+    mock_response: requests.Response,
+) -> None:
     """Test that mismatching content type raises ValueError."""
     mock_response.headers = {"Content-Type": "text/html"}
     mock_session.request.return_value.__enter__.return_value = mock_response
@@ -73,7 +85,10 @@ def test_fetch_content_safe_invalid_type(mock_session, mock_response):
             allowed_content_types=["application/json"]
         )
 
-def test_fetch_content_safe_charset(mock_session, mock_response):
+def test_fetch_content_safe_charset(
+    mock_session: MagicMock,
+    mock_response: requests.Response,
+) -> None:
     """Test that content type with charset is parsed correctly."""
     mock_response.headers = {"Content-Type": "application/json; charset=utf-8"}
     mock_session.request.return_value.__enter__.return_value = mock_response
@@ -85,7 +100,10 @@ def test_fetch_content_safe_charset(mock_session, mock_response):
     )
     assert content == b"content"
 
-def test_fetch_content_safe_missing_header(mock_session, mock_response):
+def test_fetch_content_safe_missing_header(
+    mock_session: MagicMock,
+    mock_response: requests.Response,
+) -> None:
     """Test that missing header raises ValueError when validation is requested."""
     mock_response.headers = {}
     mock_session.request.return_value.__enter__.return_value = mock_response
@@ -97,7 +115,10 @@ def test_fetch_content_safe_missing_header(mock_session, mock_response):
             allowed_content_types=["application/json"]
         )
 
-def test_fetch_content_safe_ignore_validation(mock_session, mock_response):
+def test_fetch_content_safe_ignore_validation(
+    mock_session: MagicMock,
+    mock_response: requests.Response,
+) -> None:
     """Test that missing header is ignored if no validation requested."""
     mock_response.headers = {}
     mock_session.request.return_value.__enter__.return_value = mock_response

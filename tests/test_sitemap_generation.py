@@ -25,7 +25,7 @@ def mock_docs_dir(tmp_path: Path) -> Iterator[Path]:
     with patch("scripts.generate_sitemap.DOCS_DIR", docs_dir):
         yield docs_dir
 
-def test_sitemap_xml_validity(mock_docs_dir):
+def test_sitemap_xml_validity(mock_docs_dir: Path) -> None:
     """Test that the generated sitemap is valid XML and contains expected URLs."""
     with patch.dict(os.environ, {"SITE_BASE_URL": "https://example.com/base"}):
         generate_sitemap.main()
@@ -47,7 +47,7 @@ def test_sitemap_xml_validity(mock_docs_dir):
     # Ensure excluded files are not present
     assert not any("_includes" in url for url in urls)
 
-def test_sitemap_escaping(mock_docs_dir):
+def test_sitemap_escaping(mock_docs_dir: Path) -> None:
     """Test that special characters in base URL are escaped."""
     # This URL triggers invalid XML if not escaped
     risky_url = "https://example.com/foo&bar"
