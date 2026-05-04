@@ -1,0 +1,96 @@
+name: Mypy strict (allowlist gate)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions: read-all
+
+concurrency:
+  group: mypy-strict-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  mypy-strict:
+    name: mypy --strict (src/ + tests/) vs allowlist
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      PYTHONPATH: src
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+        with:
+          requirements: requirements-dev.txt
+
+      - name: Run mypy --strict (src/ + tests/, flat output)
+        id: mypy
+        shell: bash
+        run: |
+          # `--no-pretty` overrides pyproject's `pretty = true` so each
+          # error is one parseable line. We don't care about mypy's exit
+          # code here — the gate evaluates the diff against the baseline.
+          set -uo pipefail
+          mypy --no-pretty src tests > /tmp/mypy-current.txt 2>&1 || true
+
+          echo "===== mypy summary ====="
+          tail -3 /tmp/mypy-current.txt
+
+      - name: Compare to allowlist baseline
+        shell: bash
+        run: |
+          set -uo pipefail
+
+          BASELINE=.mypy-baseline.txt
+          if [ ! -f "$BASELINE" ]; then
+            echo "::error::Baseline file $BASELINE is missing"
+            exit 1
+          fi
+
+          # Normalize current mypy output: error lines only,
+          # line/column numbers stripped, sorted (matches baseline
+          # generation in scripts/regen_mypy_baseline.sh).
+          grep -E " error:" /tmp/mypy-current.txt \
+            | sed -E 's/^([^:]+):[0-9]+(:[0-9]+)?: /\1: /' \
+            | sort > /tmp/current-normalized.txt
+
+          new_count=$(comm -13 "$BASELINE" /tmp/current-normalized.txt | wc -l)
+          fixed_count=$(comm -23 "$BASELINE" /tmp/current-normalized.txt | wc -l)
+
+          echo "===== gate summary ====="
+          echo "baseline lines : $(wc -l < "$BASELINE")"
+          echo "current  lines : $(wc -l < /tmp/current-normalized.txt)"
+          echo "new errors     : $new_count"
+          echo "fixed errors   : $fixed_count"
+
+          if [ "$new_count" -gt 0 ]; then
+            echo ""
+            echo "===== NEW MYPY ERRORS (not in baseline) ====="
+            comm -13 "$BASELINE" /tmp/current-normalized.txt
+            echo ""
+            echo "::error::$new_count new mypy error(s) introduced. Either fix them, or — if the new state is intentional — regenerate .mypy-baseline.txt via scripts/regen_mypy_baseline.sh and commit."
+            exit 1
+          fi
+
+          if [ "$fixed_count" -gt 0 ]; then
+            echo ""
+            echo "===== PRE-EXISTING ERRORS NO LONGER REPORTED ====="
+            comm -23 "$BASELINE" /tmp/current-normalized.txt
+            echo ""
+            echo "::notice::$fixed_count pre-existing error(s) are no longer reported. Consider regenerating .mypy-baseline.txt to lock in the improvement."
+          fi
+
+          echo ""
+          echo "::notice::mypy strict allowlist gate passed (0 new errors)"
