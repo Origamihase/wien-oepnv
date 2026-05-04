@@ -8,6 +8,8 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+import pytest
+
 
 def _load_build_feed(monkeypatch):
     module_name = "src.build_feed"
@@ -24,7 +26,9 @@ def _emit_item_str(bf, item, now, state):
     return ident, xml_str
 
 
-def test_emit_item_generates_stable_anchor_when_link_missing(monkeypatch):
+def test_emit_item_generates_stable_anchor_when_link_missing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     bf = _load_build_feed(monkeypatch)
     monkeypatch.setattr(bf.feed_config, "FEED_LINK", "https://example.com/wien-oepnv/")
     now = datetime(2025, 1, 1, tzinfo=timezone.utc)
@@ -41,7 +45,9 @@ def test_emit_item_generates_stable_anchor_when_link_missing(monkeypatch):
     assert 'isPermaLink="false"' in guid_match.group(1)
 
 
-def test_emit_item_keeps_permalink_guid_when_matching_link(monkeypatch):
+def test_emit_item_keeps_permalink_guid_when_matching_link(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     bf = _load_build_feed(monkeypatch)
     now = datetime(2025, 1, 1, tzinfo=timezone.utc)
 

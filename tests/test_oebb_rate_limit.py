@@ -1,6 +1,8 @@
 import logging
 from unittest.mock import MagicMock
 
+import pytest
+
 import src.providers.oebb as oebb
 from tests.mock_utils import get_mock_socket_structure
 
@@ -72,7 +74,10 @@ class DummySession:
         return self.get(url, timeout=timeout, stream=stream, **kwargs)
 
 
-def test_rate_limit_retries_once_after_wait(monkeypatch, caplog):
+def test_rate_limit_retries_once_after_wait(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     responses = [
         DummyResponse(429, {"Retry-After": "1.5"}),
         DummyResponse(200, {"Content-Type": "application/xml"}, b"<root></root>"),
@@ -107,7 +112,7 @@ def test_rate_limit_retries_once_after_wait(monkeypatch, caplog):
     assert "Rate-Limit" in log_text
 
 
-def test_rate_limit_raises_http_error_after_retry(monkeypatch):
+def test_rate_limit_raises_http_error_after_retry(monkeypatch: pytest.MonkeyPatch) -> None:
 
     responses = [
         DummyResponse(429, {"Retry-After": "1.5"}),

@@ -10,6 +10,8 @@ from pathlib import Path
 from types import ModuleType
 from typing import Any, cast
 
+import pytest
+
 
 def _make_plugin_module(name: str, *, register_callable=None, providers=None) -> ModuleType:
     module = ModuleType(name)
@@ -20,7 +22,7 @@ def _make_plugin_module(name: str, *, register_callable=None, providers=None) ->
     return module
 
 
-def test_load_provider_plugins_not_called_on_import():
+def test_load_provider_plugins_not_called_on_import() -> None:
     # To properly test that importing doesn't call load_provider_plugins,
     # we launch a subprocess that imports the module and exits without failure.
     # We can inspect what it did by mocking it or checking side effects,
@@ -52,7 +54,7 @@ def test_load_provider_plugins_not_called_on_import():
             assert False, "Found top-level call to load_provider_plugins()"
 
 
-def test_load_provider_plugins_via_callable(monkeypatch):
+def test_load_provider_plugins_via_callable(monkeypatch: pytest.MonkeyPatch) -> None:
     from src.feed import providers as provider_mod
 
     def loader() -> list[str]:
@@ -80,7 +82,7 @@ def test_load_provider_plugins_via_callable(monkeypatch):
         sys.modules.pop(module_name, None)
 
 
-def test_collect_items_uses_plugin_provider(monkeypatch):
+def test_collect_items_uses_plugin_provider(monkeypatch: pytest.MonkeyPatch) -> None:
     from src.feed import providers as provider_mod
 
     module_name = "tests.fake_plugin_list"
@@ -132,7 +134,10 @@ def test_collect_items_uses_plugin_provider(monkeypatch):
         importlib.reload(build_feed)
 
 
-def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
+def test_main_generates_feed_and_health_with_plugin(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     from src.feed import providers as provider_mod
 
     module_name = "tests.fake_plugin_e2e"
@@ -239,7 +244,7 @@ def test_main_generates_feed_and_health_with_plugin(monkeypatch, tmp_path):
         sys.modules.pop(module_name, None)
         importlib.reload(build_feed)
 
-def test_full_build_loads_plugins_subprocess(tmp_path):
+def test_full_build_loads_plugins_subprocess(tmp_path: Path) -> None:
     import subprocess
     import sys
     import os

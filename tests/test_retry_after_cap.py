@@ -1,4 +1,5 @@
 import logging
+import pytest
 import requests
 import src.providers.vor as vor
 import src.providers.oebb as oebb
@@ -15,7 +16,10 @@ class DummySession:
     def close(self):
         pass
 
-def test_vor_retry_after_capped(monkeypatch, caplog):
+def test_vor_retry_after_capped(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     """Verify that VOR provider caps the Retry-After delay."""
 
     # Mock response with extremely large Retry-After
@@ -39,7 +43,10 @@ def test_vor_retry_after_capped(monkeypatch, caplog):
     assert any("Retry-After: 99999.0s" in message for message in caplog.messages)
     assert any("Überspringe Station (Fail-Fast)" in message for message in caplog.messages)
 
-def test_oebb_retry_after_capped(monkeypatch, caplog):
+def test_oebb_retry_after_capped(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     """Verify that OEBB provider caps the Retry-After delay."""
 
     def fake_fetch_safe(session, url, **kwargs):
