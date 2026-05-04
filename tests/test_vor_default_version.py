@@ -2,6 +2,8 @@ import importlib
 import os
 import socket
 
+import pytest
+
 
 def _restore_env(original: dict[str, str | None]) -> None:
     for key, value in original.items():
@@ -25,7 +27,7 @@ def test_default_vor_version() -> None:
         importlib.reload(module)
 
 
-def test_base_url_infers_version(monkeypatch):
+def test_base_url_infers_version(monkeypatch: pytest.MonkeyPatch) -> None:
     # Mock DNS resolution to ensure example.com is accepted
     monkeypatch.setattr(
         socket,

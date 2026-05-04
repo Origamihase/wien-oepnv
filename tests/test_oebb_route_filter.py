@@ -1,4 +1,6 @@
 
+import pytest
+
 from src.providers.oebb import _is_relevant
 
 def test_venezia_is_excluded() -> None:
@@ -94,7 +96,7 @@ def test_wien_bezug_im_zweiten_teil() -> None:
     description = ""
     assert _is_relevant(title, description) is True
 
-def test_stationsname_enthaelt_selbst_doppelpunkt(monkeypatch):
+def test_stationsname_enthaelt_selbst_doppelpunkt(monkeypatch: pytest.MonkeyPatch) -> None:
     title = "RJ 123: Wien 10.: Favoriten ↔ Graz Hbf"
     description = ""
 

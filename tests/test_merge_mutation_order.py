@@ -2,7 +2,7 @@ import sys
 import threading
 from src.feed.merge import deduplicate_fuzzy
 
-def test_mutation_order_in_deduplicate_fuzzy():
+def test_mutation_order_in_deduplicate_fuzzy() -> None:
     """
     Asserts the correct order of operations in deduplicate_fuzzy
     by tracing the execution to ensure `_identity` is set and

@@ -1,9 +1,11 @@
 import xml.etree.ElementTree as ET
 
+import pytest
+
 import src.providers.oebb as oebb
 
 
-def test_fetch_events_passes_timeout(monkeypatch):
+def test_fetch_events_passes_timeout(monkeypatch: pytest.MonkeyPatch) -> None:
     recorded = {}
 
     def fake_fetch_xml(url, timeout):
@@ -19,7 +21,7 @@ def test_fetch_events_passes_timeout(monkeypatch):
     assert recorded["timeout"] == 7
 
 
-def test_fetch_xml_passes_timeout_to_session(monkeypatch):
+def test_fetch_xml_passes_timeout_to_session(monkeypatch: pytest.MonkeyPatch) -> None:
     recorded = {}
 
     class DummyResponse:

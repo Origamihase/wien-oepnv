@@ -1,7 +1,7 @@
 
 from src.feed.reporting import RunReport, FeedHealthMetrics, render_feed_health_markdown, DuplicateSummary
 
-def test_markdown_injection():
+def test_markdown_injection() -> None:
     # Setup
     report = RunReport(statuses=[("test_provider", True), ("Malicious|Provider", True)])
     # Inject various markdown characters

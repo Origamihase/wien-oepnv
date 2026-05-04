@@ -1,7 +1,7 @@
 
 from src.feed.reporting import RunReport, FeedHealthMetrics, render_feed_health_markdown
 
-def test_markdown_injection_in_table_cells():
+def test_markdown_injection_in_table_cells() -> None:
     # Setup
     report = RunReport(statuses=[])
     report.register_provider("Malicious[Link]", True, "test")

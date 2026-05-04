@@ -2,7 +2,7 @@
 from unittest.mock import patch
 import src.utils.stations as stations_module
 
-def test_vienna_stations_regex_excludes_digits():
+def test_vienna_stations_regex_excludes_digits() -> None:
     # Mock data with a numeric alias
     mock_data = (
         {

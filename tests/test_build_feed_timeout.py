@@ -2,7 +2,7 @@ from unittest.mock import MagicMock, patch
 import src.build_feed as bf
 from src.build_feed import _collect_items, RunReport
 
-def test_collect_items_timeout_zero():
+def test_collect_items_timeout_zero() -> None:
     mock_feed_config = MagicMock()
     mock_feed_config.PROVIDER_TIMEOUT = 0
     mock_feed_config.PROVIDER_MAX_WORKERS = 1
@@ -26,7 +26,7 @@ def test_collect_items_timeout_zero():
         assert "Timeout nach 0s" in args[1]
         mock_executor.submit.assert_not_called()
 
-def test_collect_items_timeout_underflow():
+def test_collect_items_timeout_underflow() -> None:
     # If timeout logic works properly, _call_fetch_with_timeout shouldn't be executed
     # when timeout reaches exactly 0
 
@@ -61,7 +61,7 @@ def test_collect_items_timeout_underflow():
         # Let's extract the exact _run_fetch manually without running _collect_items!
 
 # Let's just create a test that directly tests the condition.
-def test_run_fetch_timeout_exactly_zero():
+def test_run_fetch_timeout_exactly_zero() -> None:
     # We will simulate exactly what _run_fetch does
     import threading
     semaphore = threading.BoundedSemaphore(1)

@@ -3,7 +3,7 @@ from unittest.mock import patch
 from src.utils.http import request_safe, session_with_retries
 
 @responses.activate
-def test_request_safe_strips_session_headers_on_redirect():
+def test_request_safe_strips_session_headers_on_redirect() -> None:
     # Setup
     s = session_with_retries("test-agent")
     s.headers["Authorization"] = "Bearer session-secret"

@@ -5,7 +5,7 @@ from unittest.mock import MagicMock, patch
 from src.providers import vor, wl_fetch
 from src.places import client
 
-def test_wl_fetch_json_error_handling():
+def test_wl_fetch_json_error_handling() -> None:
     # Mock requests session
     mock_session = MagicMock()
 
@@ -19,7 +19,7 @@ def test_wl_fetch_json_error_handling():
             args, _ = mock_log.call_args
             assert "ungültig oder kein JSON" in args[0]
 
-def test_vor_json_error_handling():
+def test_vor_json_error_handling() -> None:
     # Mock requests session
     mock_session = MagicMock()
     mock_response = MagicMock()
@@ -40,7 +40,7 @@ def test_vor_json_error_handling():
                     args, _ = mock_log.call_args
                     assert "ungültig/zu groß" in args[0]
 
-def test_places_client_json_error_handling():
+def test_places_client_json_error_handling() -> None:
     config = client.GooglePlacesConfig(
         api_key="key", included_types=[], language="en", region="US",
         radius_m=1000, timeout_s=5, max_retries=0, max_result_count=1
