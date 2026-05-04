@@ -1,7 +1,7 @@
 import logging
 from datetime import datetime, timezone
 from types import TracebackType
-from typing import Literal
+from typing import Any, Literal
 
 import pytest
 
@@ -121,7 +121,11 @@ class DummySession:
         return False
 
 
-def _setup_fetch(monkeypatch, traffic_infos=None, news=None):
+def _setup_fetch(
+    monkeypatch: pytest.MonkeyPatch,
+    traffic_infos: list[dict[str, Any]] | None = None,
+    news: list[dict[str, Any]] | None = None,
+) -> None:
     monkeypatch.setattr(
         "src.providers.wl_fetch._fetch_traffic_infos",
         lambda *a, **kw: traffic_infos or [],
@@ -136,7 +140,8 @@ def _setup_fetch(monkeypatch, traffic_infos=None, news=None):
     )
 
 
-def _base_event(**overrides):
+# Any: overrides accepts arbitrary kwargs; values vary per test
+def _base_event(**overrides: Any) -> dict[str, Any]:
     now = datetime.now(timezone.utc).isoformat()
     base = {
         "title": "Sperre Museumsquartier",

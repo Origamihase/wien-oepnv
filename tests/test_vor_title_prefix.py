@@ -2,12 +2,14 @@ import re
 from datetime import datetime, timezone
 import xml.etree.ElementTree as ET
 
+from typing import Any
 import pytest
 import src.build_feed as build_feed
 import src.providers.vor as vor
 
 
-def _emit_item_str(item, now, state):
+# Any: item/state shapes vary per test; build_feed._emit_item return not narrowed here
+def _emit_item_str(item: Any, now: datetime, state: dict[str, Any]) -> Any:
     ident, elem, replacements = build_feed._emit_item(item, now, state)
     ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
     xml_str = ET.tostring(elem, encoding="unicode")

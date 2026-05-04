@@ -8,7 +8,7 @@ from src.utils import cache
 from src.utils.files import sanitize_filename
 
 
-def _prepare_cache(tmp_path: Path, monkeypatch, provider: str) -> Path:
+def _prepare_cache(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, provider: str) -> Path:
     base = tmp_path / "cache-root"
     monkeypatch.setattr(cache, "_CACHE_DIR", base, raising=False)
     target = base / sanitize_filename(provider)

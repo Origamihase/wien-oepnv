@@ -1,12 +1,14 @@
 """Integration tests for Wiener Linien entries in stations.json."""
 from __future__ import annotations
 
+from typing import Any
 import pytest
 
 from src.utils.stations import StationInfo, station_info, canonical_name
 
 
-def _stop(info: StationInfo, stop_id: str):
+# Any: returns element of info.wl_stops; element type not imported here
+def _stop(info: StationInfo, stop_id: str) -> Any:
     for stop in info.wl_stops:
         if stop.stop_id == stop_id:
             return stop

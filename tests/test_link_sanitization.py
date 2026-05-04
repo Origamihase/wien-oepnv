@@ -1,10 +1,12 @@
 
 import datetime
+from typing import Any
 from defusedxml import ElementTree as ET
 from src import build_feed
 from src.feed.config import FEED_LINK
 
-def _emit_item_str(item, now, state):
+# Any: item/state shapes vary per test; build_feed._emit_item return not narrowed here
+def _emit_item_str(item: Any, now: datetime.datetime, state: dict[str, Any]) -> Any:
     ident, elem, replacements = build_feed._emit_item(item, now, state)
     xml_str = ET.tostring(elem, encoding="unicode")
     for ph, content in replacements.items():

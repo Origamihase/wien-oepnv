@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock
 
-def get_mock_socket_structure():
+def get_mock_socket_structure() -> MagicMock:
     """
     Returns a mock connection object structure (r.raw.connection.sock)
     that passes fetch_content_safe security checks.
