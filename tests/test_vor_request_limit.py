@@ -4,6 +4,7 @@ import multiprocessing
 import os
 import threading
 from datetime import datetime, timezone
+from pathlib import Path
 
 import pytest
 from zoneinfo import ZoneInfo
@@ -32,7 +33,10 @@ def _save_request_count_in_process(count_file: str, iso_timestamp: str, iteratio
         vor_module._QUOTA_CACHE["date"] = None
 
 
-def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
+def test_fetch_events_respects_daily_limit(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "test")
     monkeypatch.setattr(vor, "VOR_ACCESS_ID", "test", raising=False)
     monkeypatch.setattr(vor, "VOR_STATION_IDS", ["1"])
@@ -70,7 +74,10 @@ def test_fetch_events_respects_daily_limit(monkeypatch, caplog):
     assert any("Tageslimit" in record.getMessage() for record in caplog.records)
 
 
-def test_save_request_count_flushes_and_fsyncs(monkeypatch, tmp_path):
+def test_save_request_count_flushes_and_fsyncs(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     # Reset cache to ensure we hit the write path
     monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
     monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
@@ -122,7 +129,10 @@ def test_save_request_count_flushes_and_fsyncs(monkeypatch, tmp_path):
     assert fsync_called
 
 
-def test_save_request_count_returns_previous_on_lock_failure(monkeypatch, tmp_path):
+def test_save_request_count_returns_previous_on_lock_failure(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     # Reset cache to ensure we try to acquire lock
     monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
     monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
@@ -158,7 +168,10 @@ def test_save_request_count_returns_previous_on_lock_failure(monkeypatch, tmp_pa
     assert stored["requests"] == 7
 
 
-def test_save_request_count_returns_previous_on_replace_failure(monkeypatch, tmp_path):
+def test_save_request_count_returns_previous_on_replace_failure(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     # Reset cache to ensure we try to replace file
     monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
     monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
@@ -185,7 +198,10 @@ def test_save_request_count_returns_previous_on_replace_failure(monkeypatch, tmp
     assert stored["requests"] == 3
 
 
-def test_save_request_count_is_safe_across_processes(monkeypatch, tmp_path):
+def test_save_request_count_is_safe_across_processes(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     count_file = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", count_file)
 
@@ -221,13 +237,16 @@ def test_save_request_count_is_safe_across_processes(monkeypatch, tmp_path):
 
 
 @pytest.fixture(autouse=True)
-def reset_vor_quota_cache(monkeypatch):
+def reset_vor_quota_cache(monkeypatch: pytest.MonkeyPatch) -> None:
     """Ensure memory cache is reset before every test."""
     monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
     monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
 
 
-def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path):
+def test_fetch_events_stops_submitting_when_limit_reached(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "test")
     monkeypatch.setattr(vor, "VOR_ACCESS_ID", "test", raising=False)
     monkeypatch.setattr(vor, "VOR_STATION_IDS", ["1", "2", "3"])
@@ -271,7 +290,11 @@ def test_fetch_events_stops_submitting_when_limit_reached(monkeypatch, tmp_path)
 
 
 @pytest.mark.parametrize("status_code, headers", [(429, {"Retry-After": "0"}), (503, {})])
-def test_fetch_departure_board_for_station_counts_unsuccessful_requests(monkeypatch, status_code, headers):
+def test_fetch_departure_board_for_station_counts_unsuccessful_requests(
+    monkeypatch: pytest.MonkeyPatch,
+    status_code: int,
+    headers: dict[str, str],
+) -> None:
     called = 0
 
     def fake_save(now_local):
@@ -316,7 +339,7 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(monkeypa
     assert called == 1
 
 
-def test_fetch_departure_board_fails_gracefully_on_error(monkeypatch):
+def test_fetch_departure_board_fails_gracefully_on_error(monkeypatch: pytest.MonkeyPatch) -> None:
     from requests import ConnectionError
 
     call_count = 0
@@ -359,7 +382,10 @@ def test_fetch_departure_board_fails_gracefully_on_error(monkeypatch):
     assert call_count == 1
 
 
-def test_load_request_count_resets_on_legacy_integer(monkeypatch, tmp_path):
+def test_load_request_count_resets_on_legacy_integer(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     target_file = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
 
@@ -371,7 +397,10 @@ def test_load_request_count_resets_on_legacy_integer(monkeypatch, tmp_path):
     assert count == 0
 
 
-def test_load_request_count_resets_on_legacy_dict(monkeypatch, tmp_path):
+def test_load_request_count_resets_on_legacy_dict(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
     target_file = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", target_file)
 
