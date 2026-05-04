@@ -6,11 +6,13 @@ from datetime import datetime
 from unittest.mock import Mock
 from zoneinfo import ZoneInfo
 
+import pytest
+
 from scripts import update_vor_cache
 from requests.exceptions import RequestException
 
 
-def test_cache_written_when_limit_reached(monkeypatch) -> None:
+def test_cache_written_when_limit_reached(monkeypatch: pytest.MonkeyPatch) -> None:
     """Ensure the cache is written even if the final request hits the limit."""
 
     now = datetime(2024, 1, 1, 12, tzinfo=ZoneInfo("Europe/Vienna"))
@@ -29,7 +31,7 @@ def test_cache_written_when_limit_reached(monkeypatch) -> None:
 
     calls: list[int] = []
 
-    def fake_fetch_events(*args, **kwargs) -> list[dict[str, str]]:
+    def fake_fetch_events(*args: object, **kwargs: object) -> list[dict[str, str]]:
         remaining_state["count"] += 1
         calls.append(remaining_state["count"])
         return [{"id": "event"}]
@@ -57,7 +59,7 @@ def test_cache_written_when_limit_reached(monkeypatch) -> None:
     save_request_count_mock.assert_not_called()
 
 
-def test_main_returns_success_when_fetch_fails(monkeypatch) -> None:
+def test_main_returns_success_when_fetch_fails(monkeypatch: pytest.MonkeyPatch) -> None:
     """Network failures must not cause a non-zero exit status."""
 
     # Mock safety check dependencies to ensure it passes
@@ -76,7 +78,7 @@ def test_main_returns_success_when_fetch_fails(monkeypatch) -> None:
     assert exit_code == 0
 
 
-def test_cache_written_when_empty_list_returned(monkeypatch) -> None:
+def test_cache_written_when_empty_list_returned(monkeypatch: pytest.MonkeyPatch) -> None:
     """Ensure an empty list is cached and returns success."""
 
     # Mock safety check dependencies to ensure it passes
