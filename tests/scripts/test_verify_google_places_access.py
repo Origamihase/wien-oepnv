@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import logging
 import os
-from typing import Iterable, Iterator
+from typing import Any, Iterable, Iterator
 
 import pytest
 
@@ -27,7 +27,7 @@ def _set_default_env(monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
 
 
 class _SuccessClient:
-    def __init__(self, config):
+    def __init__(self, config: Any) -> None:
         self.config = config
         self.request_count = 0
 
@@ -44,7 +44,7 @@ class _SuccessClient:
 
 
 class _PermissionDeniedClient:
-    def __init__(self, config):
+    def __init__(self, config: Any) -> None:
         self.config = config
         self.request_count = 0
 
@@ -55,7 +55,7 @@ class _PermissionDeniedClient:
 
 
 class _ErrorClient:
-    def __init__(self, config):
+    def __init__(self, config: Any) -> None:
         self.config = config
         self.request_count = 0
 

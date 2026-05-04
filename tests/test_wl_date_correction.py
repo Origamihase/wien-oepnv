@@ -1,16 +1,23 @@
+from types import TracebackType
+from typing import Literal
 
 import pytest
 
 from src.providers.wl_fetch import fetch_events
 
 class DummySession:
-    def __init__(self):
+    def __init__(self) -> None:
         self.headers: dict[str, str] = {}
 
-    def __enter__(self):
+    def __enter__(self) -> "DummySession":
         return self
 
-    def __exit__(self, exc_type, exc, tb):
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc: BaseException | None,
+        tb: TracebackType | None,
+    ) -> Literal[False]:
         return False
 
 def _setup_fetch(monkeypatch, traffic_infos=None, news=None):
