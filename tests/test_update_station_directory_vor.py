@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from pathlib import Path
 import pytest
 
 from scripts import update_station_directory as usd
@@ -76,7 +77,7 @@ def test_restore_existing_metadata_preserves_additional_fields() -> None:
     assert payload["source"] == "google_places"
 
 
-def test_build_location_index_prefers_wl_coordinates(tmp_path) -> None:
+def test_build_location_index_prefers_wl_coordinates(tmp_path: Path) -> None:
     gtfs_path = tmp_path / "stops.txt"
     wl_path = tmp_path / "wl.csv"
 

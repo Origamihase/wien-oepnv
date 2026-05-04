@@ -2,6 +2,7 @@ import re
 from datetime import datetime, timezone
 import xml.etree.ElementTree as ET
 
+import pytest
 import src.build_feed as build_feed
 import src.providers.vor as vor
 
@@ -15,7 +16,7 @@ def _emit_item_str(item, now, state):
     return ident, xml_str
 
 
-def test_title_has_line_prefix(monkeypatch):
+def test_title_has_line_prefix(monkeypatch: pytest.MonkeyPatch) -> None:
     # Mock station info so it doesn't get filtered out
     from src.utils.stations import StationInfo
     monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name=None, in_vienna=True, pendler=False))
@@ -46,7 +47,7 @@ def test_title_has_line_prefix(monkeypatch):
     assert items[0]["title"] == "S1: Baustelle …"
 
 
-def test_vor_description_keeps_extra_lines(monkeypatch):
+def test_vor_description_keeps_extra_lines(monkeypatch: pytest.MonkeyPatch) -> None:
     # Mock station info
     from src.utils.stations import StationInfo
     monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="Wien", in_vienna=True, pendler=False))

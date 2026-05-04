@@ -2,6 +2,7 @@ import logging
 from types import TracebackType
 from datetime import datetime, timedelta, timezone
 
+import pytest
 import requests
 import src.providers.vor as vor
 
@@ -25,7 +26,10 @@ class DummySession:
         pass
 
 
-def test_retry_after_invalid_value(monkeypatch, caplog):
+def test_retry_after_invalid_value(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     def fake_fetch(session, url, **kwargs):
         resp = requests.Response()
         resp.status_code = 429
@@ -46,7 +50,10 @@ def test_retry_after_invalid_value(monkeypatch, caplog):
     assert any("Überspringe Station (Fail-Fast)" in message for message in caplog.messages)
 
 
-def test_retry_after_missing_header(monkeypatch, caplog):
+def test_retry_after_missing_header(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     def fake_fetch(session, url, **kwargs):
         resp = requests.Response()
         resp.status_code = 429
@@ -66,7 +73,10 @@ def test_retry_after_missing_header(monkeypatch, caplog):
     assert any("Überspringe Station (Fail-Fast)" in message for message in caplog.messages)
 
 
-def test_retry_after_numeric_value(monkeypatch, caplog):
+def test_retry_after_numeric_value(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     def fake_fetch(session, url, **kwargs):
         resp = requests.Response()
         resp.status_code = 429
@@ -85,7 +95,10 @@ def test_retry_after_numeric_value(monkeypatch, caplog):
     assert any("Retry-After: 3.5s" in message for message in caplog.messages)
 
 
-def test_retry_after_http_date(monkeypatch, caplog):
+def test_retry_after_http_date(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     fixed_now = datetime(2024, 1, 1, 12, 0, tzinfo=timezone.utc)
     delay = timedelta(seconds=7)
     retry_dt = fixed_now + delay
