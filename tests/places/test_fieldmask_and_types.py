@@ -16,7 +16,7 @@ from src.places.tiling import Tile
 
 
 class _RecordingResponse:
-    def __init__(self, status_code: int, payload: Dict[str, Any]):
+    def __init__(self, status_code: int, payload: Dict[str, Any]) -> None:
         self.status_code = status_code
         self._payload = payload
         self.text = json.dumps(payload)
@@ -44,7 +44,7 @@ class _RecordingResponse:
 
 
 class _RecordingSession:
-    def __init__(self, response: _RecordingResponse):
+    def __init__(self, response: _RecordingResponse) -> None:
         self._response = response
         self.headers: Dict[str, str] | None = None
         self.body: Dict[str, Any] | None = None

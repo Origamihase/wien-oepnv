@@ -1,4 +1,5 @@
 import logging
+from types import TracebackType
 import pytest
 import requests
 import src.providers.vor as vor
@@ -6,14 +7,19 @@ import src.providers.oebb as oebb
 from datetime import datetime
 
 class DummySession:
-    def __init__(self):
-        self.headers = {}
-    def __enter__(self):
+    def __init__(self) -> None:
+        self.headers: dict[str, str] = {}
+    def __enter__(self) -> "DummySession":
         return self
-    def __exit__(self, exc_type, exc, tb):
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc: BaseException | None,
+        tb: TracebackType | None,
+    ) -> None:
         pass
 
-    def close(self):
+    def close(self) -> None:
         pass
 
 def test_vor_retry_after_capped(

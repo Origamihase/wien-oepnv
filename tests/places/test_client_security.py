@@ -22,24 +22,24 @@ _CONFIG = GooglePlacesConfig(
 )
 
 class MockSocket:
-    def __init__(self, ip: str):
+    def __init__(self, ip: str) -> None:
         self._ip = ip
 
     def getpeername(self) -> tuple[str, int]:
         return (self._ip, 443)
 
 class SimulatedConnection:
-    def __init__(self, ip: str):
+    def __init__(self, ip: str) -> None:
         self.sock = MockSocket(ip)
 
 class MockRaw:
-    def __init__(self, ip: str):
+    def __init__(self, ip: str) -> None:
         self.connection = SimulatedConnection(ip)
         self._connection = self.connection
 
 class InfiniteStreamResponse:
     """A mock response that yields an infinite stream of data."""
-    def __init__(self, ip: str = "1.1.1.1"):
+    def __init__(self, ip: str = "1.1.1.1") -> None:
         self.status_code = 200
         self.headers: Dict[str, str] = {}
         self.raw = MockRaw(ip)
@@ -68,7 +68,7 @@ class InfiniteStreamResponse:
 
 class PrivateIPResponse:
     """A mock response that comes from a private IP."""
-    def __init__(self, ip: str = "127.0.0.1"):
+    def __init__(self, ip: str = "127.0.0.1") -> None:
         self.status_code = 200
         self.headers: Dict[str, str] = {"Content-Length": "2"}
         self.raw = MockRaw(ip)
@@ -92,7 +92,7 @@ class PrivateIPResponse:
 
 class LargeHeaderResponse:
     """A mock response with a Content-Length header exceeding the limit."""
-    def __init__(self, size: int):
+    def __init__(self, size: int) -> None:
         self.status_code = 200
         self.headers = {"Content-Length": str(size)}
         self.raw = MockRaw("1.1.1.1")
