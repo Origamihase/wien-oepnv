@@ -2,7 +2,7 @@ import pytest
 from unittest.mock import patch
 from src.feed.reporting import RunReport
 
-def test_provider_error_unbound_local_error_avoided():
+def test_provider_error_unbound_local_error_avoided() -> None:
     report = RunReport([])
 
     with patch("src.feed.reporting.clean_message", side_effect=Exception("Clean failed")):

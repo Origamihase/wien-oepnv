@@ -4,7 +4,7 @@ import requests
 from unittest.mock import patch, MagicMock
 from src.utils.http import request_safe, session_with_retries
 
-def test_auth_kwargs_leak_on_redirect():
+def test_auth_kwargs_leak_on_redirect() -> None:
     # Setup session
     s = session_with_retries("test-agent")
 

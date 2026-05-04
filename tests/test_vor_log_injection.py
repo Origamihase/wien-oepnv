@@ -1,8 +1,11 @@
 
 from unittest.mock import MagicMock
+
+import pytest
+
 from src.providers import vor
 
-def test_log_warning_sanitizes_newlines(monkeypatch):
+def test_log_warning_sanitizes_newlines(monkeypatch: pytest.MonkeyPatch) -> None:
     mock_logger = MagicMock()
     monkeypatch.setattr(vor, "log", mock_logger)
 

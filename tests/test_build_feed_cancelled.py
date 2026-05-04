@@ -3,7 +3,7 @@ from unittest.mock import MagicMock, patch
 import src.build_feed as bf
 from src.build_feed import _collect_items, RunReport
 
-def test_collect_items_cancelled_future():
+def test_collect_items_cancelled_future() -> None:
     # Setup configuration
     mock_feed_config = MagicMock()
     mock_feed_config.PROVIDER_TIMEOUT = 0.05  # very short timeout

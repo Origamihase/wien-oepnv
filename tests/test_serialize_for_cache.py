@@ -4,13 +4,13 @@ import pytest
 from src.utils.serialize import serialize_for_cache
 
 
-def test_serialize_datetime_to_iso_string():
+def test_serialize_datetime_to_iso_string() -> None:
     dt = datetime(2024, 2, 29, 23, 59, 59)
 
     assert serialize_for_cache(dt) == "2024-02-29T23:59:59"
 
 
-def test_serialize_nested_collections_are_json_friendly():
+def test_serialize_nested_collections_are_json_friendly() -> None:
     payload = {
         "created": datetime(2023, 12, 31, 0, 0, 0),
         "items": (
@@ -41,21 +41,21 @@ def test_serialize_nested_collections_are_json_friendly():
     assert all(isinstance(item["tags"], list) for item in result["items"])
     assert isinstance(result["metadata"], list)
 
-def test_serialize_circular_reference_raises_value_error():
+def test_serialize_circular_reference_raises_value_error() -> None:
     circular_dict = {"a": 1}
     circular_dict["b"] = circular_dict
 
     with pytest.raises(ValueError, match="Circular reference detected"):
         serialize_for_cache(circular_dict)
 
-def test_serialize_circular_list_raises_value_error():
+def test_serialize_circular_list_raises_value_error() -> None:
     circular_list = [1, 2]
     circular_list.append(circular_list)
 
     with pytest.raises(ValueError, match="Circular reference detected"):
         serialize_for_cache(circular_list)
 
-def test_serialize_tuple_recursion_check():
+def test_serialize_tuple_recursion_check() -> None:
     # Tuples are immutable but can contain mutable items that recurse
     data = []
     t = (data,)

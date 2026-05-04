@@ -1,9 +1,11 @@
 import importlib
 
+import pytest
+
 import src.providers.oebb as oebb
 
 
-def test_oebb_only_vienna_env_var(monkeypatch):
+def test_oebb_only_vienna_env_var(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("OEBB_ONLY_VIENNA", "FaLsE")
     importlib.reload(oebb)
     assert oebb.OEBB_ONLY_VIENNA is False

@@ -19,7 +19,7 @@ def test_vor_lookup_by_id() -> None:
     assert info.longitude == pytest.approx(16.376413)
 
 
-def test_vor_bst_code_prefers_directory_entry(monkeypatch):
+def test_vor_bst_code_prefers_directory_entry(monkeypatch: pytest.MonkeyPatch) -> None:
     import src.utils.stations as stations
 
     stations._station_lookup.cache_clear()
@@ -69,7 +69,7 @@ def test_vor_bst_code_prefers_directory_entry(monkeypatch):
         stations.station_info.cache_clear()
 
 
-def test_bst_code_identity_outranks_foreign_alias(monkeypatch):
+def test_bst_code_identity_outranks_foreign_alias(monkeypatch: pytest.MonkeyPatch) -> None:
     """Regression for the '900100' bug class.
 
     Reconstructs the exact configuration that triggered #1082: Wien
@@ -176,7 +176,7 @@ def test_vor_station_ids_only_cover_vienna_or_pendler() -> None:
         assert info.in_vienna or info.pendler, f"unexpected non-pendler VOR id {vor_id}"
 
 
-def test_vor_station_ids_default_prefers_directory(monkeypatch):
+def test_vor_station_ids_default_prefers_directory(monkeypatch: pytest.MonkeyPatch) -> None:
     import src.providers.vor as vor
 
     monkeypatch.setattr(vor, "vor_station_ids", lambda: ("430470800", "490091000"))

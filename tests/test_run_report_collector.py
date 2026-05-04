@@ -1,7 +1,10 @@
 import logging
+
+import pytest
+
 from src.feed.reporting import RunReport
 
-def test_run_error_collector_emits_error():
+def test_run_error_collector_emits_error() -> None:
     report = RunReport([])
     report.attach_error_collector()
 
@@ -15,7 +18,7 @@ def test_run_error_collector_emits_error():
     report.detach_error_collector()
 
 
-def test_run_error_collector_no_op_when_detached():
+def test_run_error_collector_no_op_when_detached() -> None:
     report = RunReport([])
     report.attach_error_collector()
 
@@ -33,7 +36,7 @@ def test_run_error_collector_no_op_when_detached():
     assert not any("Test error message after detach" in msg for msg in errors)
 
 
-def test_run_report_log_results_concurrent_submission(monkeypatch):
+def test_run_report_log_results_concurrent_submission(monkeypatch: pytest.MonkeyPatch) -> None:
     import threading
     import time
     from src.feed import reporting

@@ -1,7 +1,7 @@
 from unittest.mock import MagicMock, patch
 import src.build_feed as bf
 
-def test_build_feed_mutation():
+def test_build_feed_mutation() -> None:
     items = [{"title": "original", "guid": "123"}]
 
     with patch.object(bf, "_invoke_collect_items", return_value=items), \

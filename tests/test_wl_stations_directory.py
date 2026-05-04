@@ -13,7 +13,7 @@ def _stop(info: StationInfo, stop_id: str):
     raise AssertionError(f"Stop {stop_id} not found in {info.wl_stops!r}")
 
 
-def test_wl_stop_lookup_by_stop_id():
+def test_wl_stop_lookup_by_stop_id() -> None:
     info = station_info("60201076")
     assert info is not None
     assert info.name == "Wien Karlsplatz"
@@ -25,7 +25,7 @@ def test_wl_stop_lookup_by_stop_id():
     assert any(s.stop_id == "60201077" for s in info.wl_stops)
 
 
-def test_wl_alias_matching_by_name():
+def test_wl_alias_matching_by_name() -> None:
     info = station_info("Schottentor U (Richtung Karlsplatz)")
     assert info is not None
     assert info.name == "Wien Schottentor"
@@ -35,5 +35,5 @@ def test_wl_alias_matching_by_name():
     assert any("Heiligenstadt" in (stop.name or "") for stop in info.wl_stops)
 
 
-def test_wl_canonical_name_for_diva():
+def test_wl_canonical_name_for_diva() -> None:
     assert canonical_name("Stephansplatz U") == "Wien Stephansplatz"

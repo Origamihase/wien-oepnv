@@ -1,8 +1,11 @@
 import os
 from unittest import mock
+
+import pytest
+
 from src.utils.env import read_secret
 
-def test_read_secret_from_env():
+def test_read_secret_from_env() -> None:
     with mock.patch("src.utils.env.Path", new_callable=mock.MagicMock) as MockPath:
         mock_instance = MockPath.return_value
         mock_instance.resolve.return_value = mock_instance
@@ -17,7 +20,7 @@ def test_read_secret_from_env():
             ):
                 assert read_secret("MY_SECRET") == "env_value"
 
-def test_read_secret_default():
+def test_read_secret_default() -> None:
     with mock.patch("src.utils.env.Path", new_callable=mock.MagicMock) as MockPath:
         mock_instance = MockPath.return_value
         mock_instance.resolve.return_value = mock_instance
@@ -28,7 +31,7 @@ def test_read_secret_default():
             assert read_secret("MISSING_SECRET", "default") == "default"
             assert read_secret("MISSING_SECRET") == ""
 
-def test_read_secret_docker_priority(monkeypatch):
+def test_read_secret_docker_priority(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv("CREDENTIALS_DIRECTORY", raising=False)
     monkeypatch.setenv("MY_SECRET", "env_value")
 
@@ -56,7 +59,7 @@ def test_read_secret_docker_priority(monkeypatch):
 
         assert read_secret("MY_SECRET") == "docker_value"
 
-def test_read_secret_systemd_priority(monkeypatch):
+def test_read_secret_systemd_priority(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("CREDENTIALS_DIRECTORY", "/custom/creds")
     monkeypatch.setenv("MY_SECRET", "env_value")
 
@@ -85,7 +88,7 @@ def test_read_secret_systemd_priority(monkeypatch):
 
         assert read_secret("MY_SECRET") == "systemd_value"
 
-def test_read_secret_path_traversal(monkeypatch):
+def test_read_secret_path_traversal(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("CREDENTIALS_DIRECTORY", "/custom/creds")
 
     with mock.patch("src.utils.env.Path", new_callable=mock.MagicMock) as MockPath:
