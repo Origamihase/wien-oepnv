@@ -1,6 +1,6 @@
 
 import responses
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 from src.utils.http import session_with_retries, validate_http_url
 
 def test_redirect_limit_enforcement() -> None:
@@ -86,7 +86,10 @@ def test_unsafe_tlds_blocked_with_dns_check() -> None:
 
 @patch("src.utils.http.verify_response_ip")
 @patch("src.utils.http.validate_http_url")
-def test_strip_headers_on_scheme_downgrade(mock_validate_url, mock_verify_ip):
+def test_strip_headers_on_scheme_downgrade(
+    mock_validate_url: MagicMock,
+    mock_verify_ip: MagicMock,
+) -> None:
     """Verify that sensitive headers are stripped when redirecting from HTTPS to HTTP (Downgrade Attack)."""
     # Allow any URL for this test
     mock_validate_url.side_effect = lambda url, **kwargs: url
@@ -128,7 +131,10 @@ def test_strip_headers_on_scheme_downgrade(mock_validate_url, mock_verify_ip):
 
 @patch("src.utils.http.verify_response_ip")
 @patch("src.utils.http.validate_http_url")
-def test_strip_headers_on_port_change(mock_validate_url, mock_verify_ip):
+def test_strip_headers_on_port_change(
+    mock_validate_url: MagicMock,
+    mock_verify_ip: MagicMock,
+) -> None:
     """Verify that sensitive headers are stripped when redirecting to a different port on the same host."""
     # Allow any URL for this test
     mock_validate_url.side_effect = lambda url, **kwargs: url

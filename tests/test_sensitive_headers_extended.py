@@ -1,10 +1,13 @@
 import responses
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 from src.utils.http import session_with_retries
 
 @patch("src.utils.http.verify_response_ip")
 @patch("src.utils.http.validate_http_url")
-def test_strip_extended_sensitive_headers(mock_validate_url, mock_verify_ip):
+def test_strip_extended_sensitive_headers(
+    mock_validate_url: MagicMock,
+    mock_verify_ip: MagicMock,
+) -> None:
     """Verify that an extended list of sensitive headers are stripped on cross-origin redirects."""
     # Allow any URL for this test
     mock_validate_url.side_effect = lambda url, **kwargs: url

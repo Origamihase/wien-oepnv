@@ -28,7 +28,10 @@ def test_read_response_safe_timeout() -> None:
 
 @patch("src.utils.http.validate_http_url")
 @patch("src.utils.http.verify_response_ip")
-def test_fetch_content_safe_slowloris(mock_verify_ip, mock_validate_url):
+def test_fetch_content_safe_slowloris(
+    mock_verify_ip: MagicMock,
+    mock_validate_url: MagicMock,
+) -> None:
     """Test that fetch_content_safe handles total timeout correctly."""
 
     # Setup mocks
@@ -100,7 +103,10 @@ def test_content_length_malformed() -> None:
 
 @patch("src.utils.http.validate_http_url")
 @patch("src.utils.http.verify_response_ip")
-def test_fetch_content_safe_default_timeout(mock_verify_ip, mock_validate_url):
+def test_fetch_content_safe_default_timeout(
+    mock_verify_ip: MagicMock,
+    mock_validate_url: MagicMock,
+) -> None:
     """Test that fetch_content_safe uses default timeout if None provided."""
 
     # Setup mocks

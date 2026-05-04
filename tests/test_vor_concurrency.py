@@ -9,7 +9,15 @@ from src.providers.vor import fetch_vor_disruptions, VOR_MAX_WORKERS
 @patch("src.providers.vor.get_configured_stations", return_value=["id_" + str(i) for i in range(50)])
 @patch("src.providers.vor.select_stations_for_run", side_effect=lambda x: x) # Return all
 @patch("src.providers.vor.session_with_retries")
-def test_vor_concurrency_limit(mock_session, mock_select, mock_get_stations, mock_load, mock_refresh, mock_executor, mock_as_completed):
+def test_vor_concurrency_limit(
+    mock_session: MagicMock,
+    mock_select: MagicMock,
+    mock_get_stations: MagicMock,
+    mock_load: MagicMock,
+    mock_refresh: MagicMock,
+    mock_executor: MagicMock,
+    mock_as_completed: MagicMock,
+) -> None:
     """Verify that VOR fetch limits the number of threads even with many stations."""
 
     # Mock context manager for executor
@@ -37,8 +45,14 @@ def test_vor_concurrency_limit(mock_session, mock_select, mock_get_stations, moc
 @patch("src.providers.vor.select_stations_for_run", side_effect=lambda x: x)
 @patch("src.providers.vor.session_with_retries")
 def test_vor_concurrency_small_list(
-    mock_session, mock_select, mock_get_stations, mock_load, mock_refresh, mock_executor, mock_as_completed
-):
+    mock_session: MagicMock,
+    mock_select: MagicMock,
+    mock_get_stations: MagicMock,
+    mock_load: MagicMock,
+    mock_refresh: MagicMock,
+    mock_executor: MagicMock,
+    mock_as_completed: MagicMock,
+) -> None:
     """Verify that VOR fetch uses fewer threads for small station lists."""
 
     mock_executor_instance = MagicMock()

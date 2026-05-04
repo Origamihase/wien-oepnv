@@ -1,11 +1,14 @@
 
 import responses
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 from src.utils.http import session_with_retries
 
 @patch("src.utils.http.verify_response_ip")
 @patch("src.utils.http.validate_http_url")
-def test_strip_session_headers_on_scheme_downgrade(mock_validate_url, mock_verify_ip):
+def test_strip_session_headers_on_scheme_downgrade(
+    mock_validate_url: MagicMock,
+    mock_verify_ip: MagicMock,
+) -> None:
     """Verify that sensitive headers set on the SESSION are stripped when redirecting to insecure scheme."""
     mock_validate_url.side_effect = lambda url, **kwargs: url
     mock_verify_ip.return_value = None
