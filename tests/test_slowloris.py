@@ -4,7 +4,7 @@ import time
 from unittest.mock import MagicMock, patch
 from src.utils.http import fetch_content_safe, read_response_safe
 
-def test_read_response_safe_timeout():
+def test_read_response_safe_timeout() -> None:
     """Test that read_response_safe raises Timeout if reading takes too long."""
 
     # Create a mock response with a slow iterator
@@ -79,7 +79,7 @@ def test_fetch_content_safe_slowloris(mock_verify_ip, mock_validate_url):
 
     assert "Read timed out" in str(excinfo.value)
 
-def test_read_response_safe_no_timeout():
+def test_read_response_safe_no_timeout() -> None:
     """Test that read_response_safe works fine without timeout."""
     response = MagicMock(spec=requests.Response)
     response.headers = {}
@@ -88,7 +88,7 @@ def test_read_response_safe_no_timeout():
     content = read_response_safe(response, timeout=None)
     assert content == b"chunk1chunk2"
 
-def test_content_length_malformed():
+def test_content_length_malformed() -> None:
     """Test that malformed Content-Length is ignored."""
     response = MagicMock(spec=requests.Response)
     response.headers = {"Content-Length": "invalid"}

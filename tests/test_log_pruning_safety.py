@@ -6,7 +6,7 @@ from pathlib import Path
 
 from src.feed.logging import prune_log_file
 
-def test_prune_log_file_preserves_logging_handle(tmp_path: Path):
+def test_prune_log_file_preserves_logging_handle(tmp_path: Path) -> None:
     """
     Verify that prune_log_file modifies the file in-place, allowing
     RotatingFileHandler to continue writing to it.
@@ -59,7 +59,7 @@ def test_prune_log_file_preserves_logging_handle(tmp_path: Path):
         handler.close()
         logger.removeHandler(handler)
 
-def test_prune_log_file_actually_prunes(tmp_path: Path):
+def test_prune_log_file_actually_prunes(tmp_path: Path) -> None:
     """
     Verify that prune_log_file actually removes old lines.
     """

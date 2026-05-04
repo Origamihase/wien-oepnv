@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
+
+import pytest
 
 from src import build_feed
 
@@ -13,7 +16,7 @@ def _make_loader(name: str):
     return _loader
 
 
-def test_detect_stale_caches_records_warning(monkeypatch):
+def test_detect_stale_caches_records_warning(monkeypatch: pytest.MonkeyPatch) -> None:
     loader = _make_loader("demo")
 
     class DummySpec:
@@ -38,7 +41,7 @@ def test_detect_stale_caches_records_warning(monkeypatch):
     assert any("demo" in warning.lower() for warning in report.warnings)
 
 
-def test_detect_stale_caches_skips_recent(monkeypatch):
+def test_detect_stale_caches_skips_recent(monkeypatch: pytest.MonkeyPatch) -> None:
     loader = _make_loader("demo")
 
     class DummySpec:
@@ -61,7 +64,7 @@ def test_detect_stale_caches_skips_recent(monkeypatch):
     assert messages == []
     assert not report.warnings
 
-def test_cache_freshness_guard_future(monkeypatch, tmp_path):
+def test_cache_freshness_guard_future(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     import os
     from src.utils.cache import cache_modified_at
 

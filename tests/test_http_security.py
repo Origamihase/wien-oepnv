@@ -3,13 +3,13 @@ import responses
 from unittest.mock import patch
 from src.utils.http import session_with_retries, validate_http_url
 
-def test_redirect_limit_enforcement():
+def test_redirect_limit_enforcement() -> None:
     """Verify that the session redirect limit is securely configured."""
     session = session_with_retries("test-agent")
     # Should be limited to 10 (down from default 30) to mitigate ReDoS/resource exhaustion
     assert session.max_redirects == 10
 
-def test_unsafe_tlds_blocked():
+def test_unsafe_tlds_blocked() -> None:
     """Verify that infrastructure TLDs are blocked."""
     # .arpa (Infrastructure TLD)
     url_arpa = "http://infra.arpa"
@@ -43,7 +43,7 @@ def test_unsafe_tlds_blocked():
     url_consul = "http://db.consul"
     assert validate_http_url(url_consul, check_dns=False) is None
 
-def test_extended_unsafe_tlds_blocked():
+def test_extended_unsafe_tlds_blocked() -> None:
     """Verify that newly added infrastructure TLDs are blocked."""
     # .prod
     assert validate_http_url("http://api.prod", check_dns=False) is None
@@ -68,7 +68,7 @@ def test_extended_unsafe_tlds_blocked():
     # .intra
     assert validate_http_url("http://portal.intra", check_dns=False) is None
 
-def test_unsafe_tlds_blocked_with_dns_check():
+def test_unsafe_tlds_blocked_with_dns_check() -> None:
     """Verify that infrastructure TLDs are blocked even if DNS check is enabled and resolves."""
 
     with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:

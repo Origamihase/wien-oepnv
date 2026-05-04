@@ -7,7 +7,7 @@ import pytest
 from scripts.gtfs import DEFAULT_GTFS_STOP_PATH, GTFSStop, read_gtfs_stops
 
 
-def test_read_gtfs_stops_reads_sample_file():
+def test_read_gtfs_stops_reads_sample_file() -> None:
     stops = read_gtfs_stops()
 
     assert DEFAULT_GTFS_STOP_PATH.exists()
@@ -31,7 +31,7 @@ def test_read_gtfs_stops_reads_sample_file():
     assert child_without_location.platform_code == "1"
 
 
-def test_read_gtfs_stops_handles_custom_path(tmp_path: Path):
+def test_read_gtfs_stops_handles_custom_path(tmp_path: Path) -> None:
     sample = tmp_path / "stops.txt"
     sample.write_text(
         "stop_id,stop_name,stop_lat,stop_lon,location_type,parent_station,platform_code\n"
@@ -49,7 +49,7 @@ def test_read_gtfs_stops_handles_custom_path(tmp_path: Path):
     assert stops["child"].platform_code is None
 
 
-def test_read_gtfs_stops_requires_stop_id_column(tmp_path: Path):
+def test_read_gtfs_stops_requires_stop_id_column(tmp_path: Path) -> None:
     sample = tmp_path / "stops.txt"
     sample.write_text("stop_name\nFoo\n", encoding="utf-8")
 

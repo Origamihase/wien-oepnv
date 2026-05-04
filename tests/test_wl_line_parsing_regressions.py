@@ -14,7 +14,7 @@ from src.providers.wl_lines import _detect_line_pairs_from_text
     ("Verspätung Linie 13A", ["13A"]),
     ("Währinger Gürtel 164", ["164"]),          # Current limitation: Space in "Währinger Gürtel" not handled
 ])
-def test_address_masking(text, expected_lines):
+def test_address_masking(text: str, expected_lines: list[str]) -> None:
     pairs = _detect_line_pairs_from_text(text)
     lines = [p[0] for p in pairs]
     # We expect exact match of lines found

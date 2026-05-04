@@ -19,7 +19,7 @@ html_text = st.text(
 
 @given(text=html_text, limit=st.integers(min_value=10, max_value=500))
 @settings(max_examples=200, suppress_health_check=[HealthCheck.too_slow])
-def test_truncate_html_validity(text: str, limit: int):
+def test_truncate_html_validity(text: str, limit: int) -> None:
     """Ensure truncate_html always produces valid HTML with balanced tags."""
     # We construct a complex HTML string by wrapping text in tags
     complex_html = f"<div><p><b>{text}</b></p></div>"
@@ -67,7 +67,7 @@ url_text = st.text()
 
 @given(url=url_text)
 @settings(max_examples=200)
-def test_validate_http_url_security(url: str):
+def test_validate_http_url_security(url: str) -> None:
     """Fuzz validate_http_url to ensure it rejects dangerous inputs."""
 
     # We are testing the validator, so we don't expect it to crash.

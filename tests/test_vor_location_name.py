@@ -1,3 +1,4 @@
+import pytest
 import requests
 import responses
 
@@ -18,7 +19,7 @@ def test_location_name_contains_stoplocation() -> None:
 
 
 @responses.activate
-def test_resolve_station_ids_looks_up_stop_ids(monkeypatch):
+def test_resolve_station_ids_looks_up_stop_ids(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "token")
     monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token", raising=False)
 
@@ -56,7 +57,7 @@ def test_resolve_station_ids_looks_up_stop_ids(monkeypatch):
     assert ids == ["42"]
 
 
-def test_fetch_events_prefers_configured_station_ids(monkeypatch):
+def test_fetch_events_prefers_configured_station_ids(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "token")
     monkeypatch.setenv("VOR_MONITOR_STATIONS_WHITELIST", "")
     monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token", raising=False)
@@ -80,7 +81,7 @@ def test_fetch_events_prefers_configured_station_ids(monkeypatch):
     assert called == []
 
 
-def test_fetch_events_uses_station_names_when_ids_missing(monkeypatch):
+def test_fetch_events_uses_station_names_when_ids_missing(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "token")
     monkeypatch.setenv("VOR_MONITOR_STATIONS_WHITELIST", "")
     monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token", raising=False)
@@ -104,7 +105,7 @@ def test_fetch_events_uses_station_names_when_ids_missing(monkeypatch):
     assert calls == [["Wien"]]
 
 
-def test_collect_from_board_canonicalizes_stop_names(monkeypatch):
+def test_collect_from_board_canonicalizes_stop_names(monkeypatch: pytest.MonkeyPatch) -> None:
     # Mock station info to avoid filter because "Test text" is not "Wien" related.
     # If in_vienna=True, filtering is skipped.
     from src.utils.stations import StationInfo
