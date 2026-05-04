@@ -1,4 +1,6 @@
 
+import pytest
+
 from src.providers.wl_fetch import fetch_events
 
 class DummySession:
@@ -41,7 +43,7 @@ def _base_event(**overrides):
     base.update(overrides)
     return base
 
-def test_reproduction_linie_4a_date_mismatch(monkeypatch):
+def test_reproduction_linie_4a_date_mismatch(monkeypatch: pytest.MonkeyPatch) -> None:
     # Case 1: Linie 4A: Titel sagt "ab 12.01.2026", API "starts_at" is "2025-12-20"
     # The API start date is in the past/present (Dec 2025), so it's active.
     traffic_info = _base_event(
@@ -67,7 +69,7 @@ def test_reproduction_linie_4a_date_mismatch(monkeypatch):
     assert ev["pubDate"].month == 12
     assert ev["pubDate"].day == 20
 
-def test_reproduction_linie_n62_date_mismatch(monkeypatch):
+def test_reproduction_linie_n62_date_mismatch(monkeypatch: pytest.MonkeyPatch) -> None:
     # Case 2: Linie N62: Titel "ab 08.01.2026", API "start" "2025-12-12"
     traffic_info = _base_event(
         title="Linie N62: Umleitung ab 08.01.2026",

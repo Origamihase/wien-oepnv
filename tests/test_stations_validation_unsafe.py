@@ -1,7 +1,9 @@
 import json
+from pathlib import Path
+
 from src.utils.stations_validation import validate_stations
 
-def test_validation_flags_unsafe_chars(tmp_path):
+def test_validation_flags_unsafe_chars(tmp_path: Path) -> None:
     stations_file = tmp_path / "stations.json"
     data = {
         "stations": [
@@ -47,7 +49,7 @@ def test_validation_flags_unsafe_chars(tmp_path):
     ]
     assert len(bidi_issues) >= 3, f"Expected Bidi issues not found. Found: {bidi_issues}"
 
-def test_validation_passes_safe_chars(tmp_path):
+def test_validation_passes_safe_chars(tmp_path: Path) -> None:
     stations_file = tmp_path / "stations.json"
     data = {
         "stations": [

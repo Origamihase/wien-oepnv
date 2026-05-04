@@ -1,5 +1,7 @@
 from datetime import datetime, timedelta, timezone
 
+import pytest
+
 from src.providers import wl_fetch
 
 
@@ -17,7 +19,7 @@ def _make_event(title: str, lines: list[str]) -> dict:
     }
 
 
-def test_aggregate_removed_when_all_singles_present(monkeypatch):
+def test_aggregate_removed_when_all_singles_present(monkeypatch: pytest.MonkeyPatch) -> None:
     aggregate = _make_event("Aggregate", ["U1", "U2"])
     single1 = _make_event("Single1", ["U1"])
     single2 = _make_event("Single2", ["U2"])
@@ -39,7 +41,7 @@ def test_aggregate_removed_when_all_singles_present(monkeypatch):
     assert "U1/U2: Aggregate" not in titles
 
 
-def test_aggregate_retained_when_single_missing(monkeypatch):
+def test_aggregate_retained_when_single_missing(monkeypatch: pytest.MonkeyPatch) -> None:
     # This test checks behavior when NOT all singles are present.
     # Previously, it expected both Aggregate and Single1 to be present.
     # With the new subset removal logic, Single1 (subset of Aggregate) is considered redundant and removed.

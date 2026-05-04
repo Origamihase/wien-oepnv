@@ -1,7 +1,9 @@
 import hashlib
+from pathlib import Path
+
 from src.utils.files import get_file_hash
 
-def test_get_file_hash_uses_chunking(tmp_path):
+def test_get_file_hash_uses_chunking(tmp_path: Path) -> None:
     test_file = tmp_path / "test.txt"
     test_content = b"test content " * 1000
     test_file.write_bytes(test_content)

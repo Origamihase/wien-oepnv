@@ -1,6 +1,8 @@
+from pathlib import Path
+
 from src.utils.secret_scanner import scan_repository
 
-def test_secret_scanner_priority(tmp_path):
+def test_secret_scanner_priority(tmp_path: Path) -> None:
     # Create a file with a known token assigned to a variable
     # expected: should detect "GitHub Personal Access Token gefunden"
     # actual (before fix): "Verdächtige Zuweisung eines potentiellen Secrets"

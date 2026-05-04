@@ -1,9 +1,11 @@
 
+from pathlib import Path
 from unittest.mock import patch
+
 from src.utils.cache import write_cache
 from src.places.quota import MonthlyQuota
 
-def test_cache_file_secure_permissions(tmp_path):
+def test_cache_file_secure_permissions(tmp_path: Path) -> None:
     """Verify that write_cache creates files with secure permissions (0600)."""
     # Setup
     cache_dir = tmp_path / "cache"
@@ -28,7 +30,7 @@ def test_cache_file_secure_permissions(tmp_path):
         perms = mode & 0o077
         assert perms == 0, f"Cache file permissions {oct(mode)} are too loose (expected 0o600)"
 
-def test_quota_file_secure_permissions(tmp_path):
+def test_quota_file_secure_permissions(tmp_path: Path) -> None:
     """Verify that MonthlyQuota.save_atomic creates files with secure permissions (0600)."""
     quota_file = tmp_path / "quota.json"
 
