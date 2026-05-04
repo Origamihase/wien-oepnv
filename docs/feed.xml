@@ -7,29 +7,51 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 04 May 2026 18:53:37 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 04 May 2026 20:21:07 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[65A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[10A/39A: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b297f7d65f9814b6aa243d2cc9947029b27b8a88d07f038b56c8e3b2dbac2c71</guid>
-      <pubDate>Mon, 04 May 2026 16:46:00 +0200</pubDate>
-      <ext:first_seen>Mon, 04 May 2026 18:53:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 16:46:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">eb9bf16dcc6ca71a7230181e5fcb1a9f02ae8db8241c2657178fdaa7e689540f</guid>
+      <pubDate>Mon, 04 May 2026 18:43:00 +0200</pubDate>
+      <ext:first_seen>Mon, 04 May 2026 20:21:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 04 May 2026 18:43:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 04 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Derzeit kommt es bei der Linie 65 A in beiden Richtungen zu unterschiedlichen Intervallen. [Am 04.05.2026]</description>
-      <content:encoded><![CDATA[Derzeit kommt es bei der Linie 65 A in beiden Richtungen zu unterschiedlichen Intervallen.<br/>[Am 04.05.2026]]]></content:encoded>
+      <description>Linie 10 A: Unregelmäßige Intervalle in beiden Richtungen. Linie 39 A: Unregelmäßige Intervalle in beiden Richtungen. [Am 04.05.2026]</description>
+      <content:encoded><![CDATA[Linie 10 A: Unregelmäßige Intervalle in beiden Richtungen. Linie 39 A: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 04.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[O: Schadhaftes Fahrzeug]]></title>
+      <title><![CDATA[18: Gasrohrgebrechen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a3ccf7c2ad3270af3ce0b5bff574b7e68e073f01c1a9bf875ba6186e69760114</guid>
-      <pubDate>Mon, 04 May 2026 16:31:00 +0200</pubDate>
+      <guid isPermaLink="false">126b38ad017e6af0dfb44f0d489447f62e6aeed63b33206347d9078f92342c9a</guid>
+      <pubDate>Mon, 04 May 2026 17:28:00 +0200</pubDate>
       <ext:first_seen>Mon, 04 May 2026 18:53:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 16:31:00 +0200</ext:starts_at>
+      <ext:starts_at>Mon, 04 May 2026 17:28:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 04 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 04.05.2026]</description>
-      <content:encoded><![CDATA[Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 04.05.2026]]]></content:encoded>
+      <description>Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Die Haltestelle Kliebergasse in Fahrtrichtung Burggasse kann nicht eingehalten werden. [Am 04.05.2026]</description>
+      <content:encoded><![CDATA[Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Die Haltestelle Kliebergasse in Fahrtrichtung Burggasse kann nicht eingehalten werden.<br/>[Am 04.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc</guid>
+      <pubDate>Mon, 04 May 2026 17:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 04 May 2026 20:21:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 04 May 2026 17:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 04 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 04.05.2026]</description>
+      <content:encoded><![CDATA[Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 04.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e5660a0ab66e8052c66ac62caa273ee692ce56758d8e16e3324e16b86881f37a</guid>
+      <pubDate>Mon, 04 May 2026 17:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 04 May 2026 20:21:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 04 May 2026 17:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 04 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 04.05.2026]</description>
+      <content:encoded><![CDATA[Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 04.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[WLB: Gasrohrgebr. Betrieb ab Aßmayergasse]]></title>
@@ -43,48 +65,37 @@
       <content:encoded><![CDATA[Gasrohrgebr. Betrieb ab Aßmayergasse<br/>[Am 04.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[62: Gasrohrgebr. Betrieb ab Matzleinsdorfer Platz]]></title>
+      <title><![CDATA[6: Stromstörung Betrieb ab Arbeitergasse, Gürtel]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3d66c306c49410ac1969b4219767fca1e303db1169ad65e5b5b6393643dd0a7c</guid>
-      <pubDate>Mon, 04 May 2026 14:43:19 +0200</pubDate>
+      <guid isPermaLink="false">6de390580635dfb73a401ea96eef982e595fe81cbe92b88dab2245c98e99dc88</guid>
+      <pubDate>Mon, 04 May 2026 14:38:46 +0200</pubDate>
       <ext:first_seen>Mon, 04 May 2026 18:53:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 14:43:19 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 04 May 2026 23:45:00 +0200</ext:ends_at>
-      <description>Gasrohrgebr. Betrieb ab Matzleinsdorfer Platz [Am 04.05.2026]</description>
-      <content:encoded><![CDATA[Gasrohrgebr. Betrieb ab Matzleinsdorfer Platz<br/>[Am 04.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Stromstörung Betrieb ab Arbeitergasse, Gürtel]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c0ab8660f6c225a41424102ddeeb5d8c41075b83f6eb8068875786f87f7563d7</guid>
-      <pubDate>Mon, 04 May 2026 14:41:11 +0200</pubDate>
-      <ext:first_seen>Mon, 04 May 2026 18:53:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 14:41:21 +0200</ext:starts_at>
+      <ext:starts_at>Mon, 04 May 2026 14:38:46 +0200</ext:starts_at>
       <ext:ends_at>Mon, 04 May 2026 23:45:00 +0200</ext:ends_at>
       <description>Stromstörung Betrieb ab Arbeitergasse, Gürtel [Am 04.05.2026]</description>
       <content:encoded><![CDATA[Stromstörung Betrieb ab Arbeitergasse, Gürtel<br/>[Am 04.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1: Gasrohrgebr. Betrieb ab Knöllgasse]]></title>
+      <title><![CDATA[62: Gasrohrgebrechen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">529f2059adadb9f5d05a9adea2739585c666efdc5bcbb76a380a1c1d05447e33</guid>
-      <pubDate>Mon, 04 May 2026 14:35:34 +0200</pubDate>
-      <ext:first_seen>Mon, 04 May 2026 18:53:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 14:35:34 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 04 May 2026 23:45:00 +0200</ext:ends_at>
-      <description>Gasrohrgebr. Betrieb ab Knöllgasse [Am 04.05.2026]</description>
-      <content:encoded><![CDATA[Gasrohrgebr. Betrieb ab Knöllgasse<br/>[Am 04.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[6: Stromstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2bef0822285cf8779f9d1eb139a1cf793d764d760d6745537e2aecbb253c50c2</guid>
+      <guid isPermaLink="false">a2d433037e01cbe8c9f28c68cb3343acae867a9edb1dc33c0269aea66e353436</guid>
       <pubDate>Mon, 04 May 2026 14:31:00 +0200</pubDate>
       <ext:first_seen>Mon, 04 May 2026 18:53:37 +0200</ext:first_seen>
       <ext:starts_at>Mon, 04 May 2026 14:31:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 04 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 04.05.2026]</description>
-      <content:encoded><![CDATA[Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 04.05.2026]]]></content:encoded>
+      <description>Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 04.05.2026]</description>
+      <content:encoded><![CDATA[Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 04.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Gasrohrgebrechen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ad10201012979e0b87376e0497a5cb88ddd25ef485d3e00b5c97f7292fb04565</guid>
+      <pubDate>Mon, 04 May 2026 14:31:00 +0200</pubDate>
+      <ext:first_seen>Mon, 04 May 2026 18:53:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 04 May 2026 14:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 04 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 04.05.2026]</description>
+      <content:encoded><![CDATA[Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 04.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Schadhaftes Fahrzeug]]></title>
@@ -106,17 +117,6 @@
       <ext:starts_at>Mon, 04 May 2026 08:09:49 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten der Deutschen Bahn (DB) fährt zwischen Passau Hbf und Wien Hbf in der Nacht von 18.05. [Seit 04.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten der Deutschen Bahn (DB) fährt zwischen Passau Hbf und Wien Hbf in der Nacht von 18.05.<br/>[Seit 04.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
-      <pubDate>Mon, 04 May 2026 04:45:18 +0200</pubDate>
-      <ext:first_seen>Mon, 04 May 2026 09:51:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 04:45:18 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 05 May 2026 00:35:00 +0200</ext:ends_at>
-      <description>Bauarbeiten Busse halten Breitenfurter Straße 236-238 [04.05.2026 – 05.05.2026]</description>
-      <content:encoded><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[04.05.2026 – 05.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
