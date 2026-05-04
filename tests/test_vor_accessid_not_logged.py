@@ -21,7 +21,12 @@ import src.providers.vor as vor
         ('boom {"Authorization": "Basic secret"}', '"Authorization": "***"'),
     ],
 )
-def test_accessid_not_logged(monkeypatch, caplog, raw_message, expected_fragment):
+def test_accessid_not_logged(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+    raw_message: str,
+    expected_fragment: str,
+) -> None:
     monkeypatch.setenv("VOR_ACCESS_ID", "secret")
     importlib.reload(vor)
 

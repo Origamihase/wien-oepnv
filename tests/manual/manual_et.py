@@ -1,7 +1,7 @@
 
 from defusedxml import ElementTree as ET
 
-def test_et_generation():
+def test_et_generation() -> None:
     NS_EXT = "https://wien-oepnv.example/schema"
     NS_CONTENT = "http://purl.org/rss/1.0/modules/content/"
 

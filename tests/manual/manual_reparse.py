@@ -1,7 +1,7 @@
 
 from defusedxml import ElementTree as ET
 
-def test_reparse():
+def test_reparse() -> None:
     NS_EXT = "https://wien-oepnv.example/schema"
     ET.register_namespace('ext', NS_EXT)
 
