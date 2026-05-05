@@ -26,5 +26,6 @@ docs/feed-health.md
 
 # Runtime State
 data/vor_request_count.json
+data/*.lock
 .hypothesis/
 patch_lines.patch
