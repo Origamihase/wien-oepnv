@@ -17,7 +17,7 @@
 
     {"name": "Kottingbrunn", "line": "S-Bahn Südbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Wiener Neustadt Nord", "line": "Südbahn (Stadtteilbahnhof)", "priority": 2, "added": "2026-05-05"},
-    {"name": "Neunkirchen NÖ", "line": "CJX9/REX1 Südbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Neunkirchen NÖ", "alternative_names": ["Neunkirchen", "Neunkirchen (NÖ)"], "line": "CJX9/REX1 Südbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Pottschach", "line": "CJX9 Südbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Gloggnitz", "line": "CJX9/REX Südbahn (Endpunkt vor Semmering)", "priority": 2, "added": "2026-05-05"},
     {"name": "Payerbach-Reichenau", "line": "CJX9/REX/R Südbahn", "priority": 2, "added": "2026-05-05"},
@@ -28,7 +28,7 @@
 
     {"name": "Maria Lanzendorf", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Laxenburg-Biedermannsdorf", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
-    {"name": "Guntramsdorf-Kaiserau", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Guntramsdorf-Kaiserau", "alternative_names": ["Guntramsdorf Kaiserau"], "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Möllersdorf Aspangbahn", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Trumau", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Oberwaltersdorf", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
@@ -36,20 +36,20 @@
     {"name": "Teesdorf", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
 
     {"name": "Lanzendorf-Rannersdorf", "line": "S60/REX Ostbahn", "priority": 2, "added": "2026-05-05"},
-    {"name": "Trautmannsdorf an der Leitha", "line": "S60 Ostbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Trautmannsdorf an der Leitha", "alternative_names": ["Trautmannsdorf/Leitha", "Trautmannsdorf Leitha"], "line": "S60 Ostbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Wilfleinsdorf", "line": "S60 Ostbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Sarasdorf", "line": "S60 Ostbahn", "priority": 2, "added": "2026-05-05"},
 
     {"name": "Mannswörth", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Fischamend", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
-    {"name": "Maria Ellend an der Donau", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
-    {"name": "Haslau an der Donau", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Maria Ellend an der Donau", "alternative_names": ["Maria Ellend"], "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Haslau an der Donau", "alternative_names": ["Haslau"], "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Regelsbrunn", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Wildungsmauer", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Petronell-Carnuntum", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
-    {"name": "Bad Deutsch-Altenburg", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
-    {"name": "Hainburg Kulturfabrik", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
-    {"name": "Hainburg Ungartor", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Bad Deutsch-Altenburg", "alternative_names": ["Bad Deutsch Altenburg", "Bad Deutsch-Altenburg/Donau"], "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Hainburg Kulturfabrik", "alternative_names": ["Hainburg/Donau Kulturfabrik"], "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Hainburg Ungartor", "alternative_names": ["Hainburg/Donau Ungartor"], "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
 
     {"name": "Raasdorf", "line": "S80/R81/REX8 Marchegger Ostbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Glinzendorf", "line": "R81/REX8 Marchegger Ostbahn", "priority": 2, "added": "2026-05-05"},
@@ -62,10 +62,10 @@
     {"name": "Hohenau", "line": "REX/R Nordbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Drösing", "line": "REX/R Nordbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Dürnkrut", "line": "R Nordbahn", "priority": 2, "added": "2026-05-05"},
-    {"name": "Angern an der March", "line": "R Nordbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Angern an der March", "alternative_names": ["Angern (March)", "Angern March"], "line": "R Nordbahn", "priority": 2, "added": "2026-05-05"},
 
-    {"name": "Mistelbach Stadt", "line": "REX2 Laaer Ostbahn", "priority": 2, "added": "2026-05-05"},
-    {"name": "Laa an der Thaya", "line": "REX2 Laaer Ostbahn (Endbahnhof)", "priority": 2, "added": "2026-05-05"},
+    {"name": "Mistelbach Stadt", "alternative_names": ["Mistelbach (NÖ)"], "line": "REX2 Laaer Ostbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Laa an der Thaya", "alternative_names": ["Laa a.d.Thaya", "Laa Thaya"], "line": "REX2 Laaer Ostbahn (Endbahnhof)", "priority": 2, "added": "2026-05-05"},
 
     {"name": "Langenzersdorf", "line": "S3/R3 Nordwestbahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Bisamberg", "line": "S3/R3 Nordwestbahn", "priority": 2, "added": "2026-05-05"},
@@ -73,9 +73,9 @@
     {"name": "Absdorf-Hippersdorf", "line": "S5/REX41 (Knoten FJB/Stockerau)", "priority": 2, "added": "2026-05-05"},
 
     {"name": "Kritzendorf", "line": "S40/R40 Franz-Josefs-Bahn", "priority": 2, "added": "2026-05-05"},
-    {"name": "St. Andrä-Wördern", "line": "S40/R40 Franz-Josefs-Bahn (P&R)", "priority": 2, "added": "2026-05-05"},
+    {"name": "St. Andrä-Wördern", "alternative_names": ["St.Andrä-Wördern", "Sankt Andrä-Wördern", "St Andrä-Wördern"], "line": "S40/R40 Franz-Josefs-Bahn (P&R)", "priority": 2, "added": "2026-05-05"},
     {"name": "Tulln Stadt", "line": "S40 Franz-Josefs-Bahn (zentrumsnah)", "priority": 2, "added": "2026-05-05"},
-    {"name": "Krems an der Donau", "line": "REX4/R44 Franz-Josefs-Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Krems an der Donau", "alternative_names": ["Krems a.d.Donau", "Krems Donau"], "line": "REX4/R44 Franz-Josefs-Bahn", "priority": 2, "added": "2026-05-05"},
     {"name": "Hadersdorf am Kamp", "line": "REX4/R44 Franz-Josefs-Bahn", "priority": 2, "added": "2026-05-05"},
 
     {"name": "Rekawinkel", "line": "S50 Westbahn", "priority": 2, "added": "2026-05-05"},
