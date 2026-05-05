@@ -15,7 +15,7 @@ def test_strip_dynamic_sensitive_headers(
     session = session_with_retries("test-agent")
 
     @responses.activate
-    def run():
+    def run() -> None:
         # Setup redirect: host1 -> host2
         responses.add(responses.GET, "https://api.example.com/", status=302, headers={"Location": "https://malicious.example.com/log"})
         responses.add(responses.GET, "https://malicious.example.com/log", status=200)

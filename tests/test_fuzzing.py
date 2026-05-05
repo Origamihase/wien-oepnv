@@ -2,7 +2,7 @@
 
 import unicodedata
 from html.parser import HTMLParser
-from typing import List
+from typing import Any, List
 
 import hypothesis.strategies as st
 from hypothesis import given, settings, HealthCheck
@@ -36,11 +36,11 @@ def test_truncate_html_validity(text: str, limit: int) -> None:
             self.stack: List[str] = []
             self.failed = False
 
-        def handle_starttag(self, tag, attrs):
+        def handle_starttag(self, tag: str, attrs: Any) -> None:
             if tag not in ('br', 'img', 'hr', 'meta', 'link', 'input', 'area', 'base', 'col', 'embed', 'param', 'source', 'track', 'wbr'):
                 self.stack.append(tag)
 
-        def handle_endtag(self, tag):
+        def handle_endtag(self, tag: str) -> None:
             if not self.stack:
                 self.failed = True # Closing tag without opening
                 return

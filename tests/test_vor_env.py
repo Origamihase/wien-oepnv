@@ -4,6 +4,7 @@ import logging
 import pytest
 import requests
 from pathlib import Path
+from typing import Any
 
 import src.providers.vor as vor
 
@@ -142,7 +143,7 @@ def test_base_url_prefers_secret(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
     # Mock DNS to ensure secret.example.com is accepted
-    def mock_resolve_env(self, host, record_type, *args, **kwargs):
+    def mock_resolve_env(self: Any, host: Any, record_type: Any, *args: Any, **kwargs: Any) -> Any:
         if record_type == 'A':
             from unittest.mock import MagicMock
             ans = MagicMock()

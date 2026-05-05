@@ -2,6 +2,7 @@ import importlib
 import sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+from typing import Any
 import pytest
 import types
 
@@ -46,7 +47,7 @@ def test_fmt_rfc2822_fallback_locale_independent(monkeypatch: pytest.MonkeyPatch
     build_feed = _import_build_feed(monkeypatch)
 
     # Force the fallback by breaking format_datetime
-    def broken_formatter(_):
+    def broken_formatter(_: Any) -> None:
         raise RuntimeError("simulated failure")
     monkeypatch.setattr(build_feed, "format_datetime", broken_formatter)
 

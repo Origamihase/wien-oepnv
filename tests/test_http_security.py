@@ -98,7 +98,7 @@ def test_strip_headers_on_scheme_downgrade(
     session = session_with_retries("test-agent")
 
     @responses.activate
-    def run():
+    def run() -> None:
         # Setup redirect: HTTPS -> HTTP (same domain)
         responses.add(responses.GET, "https://secure.example.com/", status=302, headers={"Location": "http://secure.example.com/login"})
         responses.add(responses.GET, "http://secure.example.com/login", status=200)
@@ -143,7 +143,7 @@ def test_strip_headers_on_port_change(
     session = session_with_retries("test-agent")
 
     @responses.activate
-    def run():
+    def run() -> None:
         # Setup redirect: 8443 -> 9443 (same domain, different port)
         responses.add(responses.GET, "https://example.com:8443/", status=302, headers={"Location": "https://example.com:9443/resource"})
         responses.add(responses.GET, "https://example.com:9443/resource", status=200)

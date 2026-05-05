@@ -1,4 +1,5 @@
 import time
+from typing import Any
 from unittest.mock import MagicMock, patch
 import src.build_feed as bf
 from src.build_feed import _collect_items, RunReport
@@ -12,7 +13,7 @@ def test_collect_items_cancelled_future() -> None:
     mock_feed_config.get_bool_env.return_value = True
 
     # Define a slow network fetch function
-    def mock_fetch(timeout=None):
+    def mock_fetch(timeout: Any = None) -> list[Any]:
         time.sleep(0.2)  # sleep longer than timeout
         return []
 

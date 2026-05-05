@@ -83,7 +83,7 @@ def test_oebb_title_fallback_text(
     mock_station_lookup.return_value = None # No ID match
 
     # Mock canonical_name to recognize "Text-Station"
-    def fake_canon(name):
+    def fake_canon(name: str) -> str | None:
         if "Text-Station" in name:
             return "Text-Station"
         return None

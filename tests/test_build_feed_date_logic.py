@@ -1,10 +1,11 @@
 import importlib
 import logging
 import sys
+from typing import Any
 import pytest
 import types
 import datetime as dt_module
-from datetime import timezone
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -34,7 +35,7 @@ def test_format_local_times_end_before_start_future(
     # Mock datetime.now inside build_feed to have a fixed "today"
     class MockDatetime(dt_module.datetime):
         @classmethod
-        def now(cls, tz=None):
+        def now(cls, tz: Any = None) -> datetime:  # type: ignore[override]
             return cls(2023, 1, 1, 12, 0, tzinfo=tz)
 
     monkeypatch.setattr(build_feed, "datetime", MockDatetime)
@@ -64,7 +65,7 @@ def test_format_local_times_end_before_start_past(
     # Mock datetime.now inside build_feed to have a fixed "today"
     class MockDatetime(dt_module.datetime):
         @classmethod
-        def now(cls, tz=None):
+        def now(cls, tz: Any = None) -> datetime:  # type: ignore[override]
             return cls(2023, 1, 10, 12, 0, tzinfo=tz)
 
     monkeypatch.setattr(build_feed, "datetime", MockDatetime)

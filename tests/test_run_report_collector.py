@@ -1,4 +1,5 @@
 import logging
+from typing import Any
 
 import pytest
 
@@ -46,7 +47,7 @@ def test_run_report_log_results_concurrent_submission(monkeypatch: pytest.Monkey
 
     submission_count = 0
 
-    def mock_submit_github_issue(rep):
+    def mock_submit_github_issue(rep: Any) -> Any:
         nonlocal submission_count
         # Simulate network delay to encourage race conditions
         time.sleep(0.05)

@@ -1,4 +1,5 @@
 
+from typing import Any
 from unittest.mock import patch
 
 def test_thread_pool_cleanup() -> None:
@@ -8,7 +9,7 @@ def test_thread_pool_cleanup() -> None:
 
     # Use a callable object to strictly control attributes
     class MockLoader:
-        def __call__(self, timeout=None):
+        def __call__(self, timeout: Any = None) -> list[Any]:
             return []
 
     mock_loader = MockLoader()

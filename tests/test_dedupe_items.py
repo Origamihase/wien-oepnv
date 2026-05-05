@@ -1,6 +1,7 @@
 import importlib
 import sys
 from pathlib import Path
+from typing import Any
 import pytest
 import types
 
@@ -37,12 +38,12 @@ def test_main_dedupes_items(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> 
         {"guid": "gc", "title": "C"},
     ]
 
-    def fake_collect(report=None):
+    def fake_collect(report: Any = None) -> list[dict[str, Any]]:
         return list(sample_items)
 
     captured = {}
 
-    def fake_make_rss(items, now, state, deletions=None):
+    def fake_make_rss(items: Any, now: Any, state: Any, deletions: Any = None) -> str:
         captured["items"] = items
         return ""
 
