@@ -15,6 +15,7 @@ select = [
   "E",
   "F",
   "S",
+  "B",
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -29,7 +30,14 @@ select = [
 "scripts/run_static_checks.py" = ["S603"]
 "scripts/update_all_stations.py" = ["S603"]
 "scripts/update_station_directory.py" = ["S603"]
-"tests/**/*.py" = ["S101", "S113", "S314", "S105", "S108", "S110", "S310", "F841"]
+"tests/**/*.py" = [
+  "S101", "S113", "S314", "S105", "S108", "S110", "S310", "F841",
+  # bugbear rules deliberately allowed in tests:
+  "B007",  # parametrize-style loops where one variable is intentionally unused
+  "B010",  # Module mocks: setattr(mock_module, "fetch_events", ...) is the natural form
+  "B011",  # `assert False` is fine in tests; it never runs under `python -O`
+  "B018",  # bare-expression style is sometimes used to assert no exception
+]
 
 [tool.mypy]
 python_version = "3.11"

@@ -1389,7 +1389,7 @@ def _fetch_departure_board_for_station(
                     with counter["lock"]:
                         counter["consecutive_5xx"] = counter.get("consecutive_5xx", 0) + 1
                         if counter["consecutive_5xx"] >= 5:
-                            raise RuntimeError("Emergency Stop: Circuit Breaker Open (too many consecutive 5xx errors)!")
+                            raise RuntimeError("Emergency Stop: Circuit Breaker Open (too many consecutive 5xx errors)!") from exc
 
             if response is not None:
                 _log_warning(

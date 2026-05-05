@@ -49,7 +49,7 @@ def register_provider(env_var: str, loader: ProviderLoader, *, cache_key: str) -
     except (AttributeError, TypeError):  # pragma: no cover - defensive only
         pass
     try:
-        setattr(loader, "_provider_cache_name", cache_key)
+        loader._provider_cache_name = cache_key  # type: ignore[attr-defined]
     except (AttributeError, TypeError):  # pragma: no cover - defensive only
         pass
 

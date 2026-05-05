@@ -192,20 +192,19 @@ def streckendaten_dataset() -> Iterator[Path]:
     try:
         yield archive_path
     finally:
-        if keep_created:
-            return
-        if not archive_existed and archive_path.exists():
-            archive_path.unlink()
-        if not geojson_existed:
-            _cleanup_created_paths(extracted_paths)
-        if not dir_existed and _STRECKENDATEN_DIR.exists():
-            shutil.rmtree(_STRECKENDATEN_DIR, ignore_errors=True)
-        elif _STRECKENDATEN_DIR.exists():
-            try:
-                next(_STRECKENDATEN_DIR.iterdir())
-            except StopIteration:
-                with contextlib.suppress(OSError):
-                    _STRECKENDATEN_DIR.rmdir()
+        if not keep_created:
+            if not archive_existed and archive_path.exists():
+                archive_path.unlink()
+            if not geojson_existed:
+                _cleanup_created_paths(extracted_paths)
+            if not dir_existed and _STRECKENDATEN_DIR.exists():
+                shutil.rmtree(_STRECKENDATEN_DIR, ignore_errors=True)
+            elif _STRECKENDATEN_DIR.exists():
+                try:
+                    next(_STRECKENDATEN_DIR.iterdir())
+                except StopIteration:
+                    with contextlib.suppress(OSError):
+                        _STRECKENDATEN_DIR.rmdir()
 
 
 @pytest.fixture(scope="session", autouse=True)
