@@ -285,7 +285,7 @@ def write_cache(provider: str, items: List[Any], *, pretty: Optional[bool] = Non
         raise
 
 
-def write_status(provider: str, status: dict) -> None:
+def write_status(provider: str, status: dict[str, Any]) -> None:
     """Persist a heartbeat record for ``provider`` next to its events cache.
 
     The status file lives at ``cache/<sanitized provider>/last_run.json`` and
@@ -314,7 +314,7 @@ def write_status(provider: str, status: dict) -> None:
         raise
 
 
-def read_status(provider: str) -> Optional[dict]:
+def read_status(provider: str) -> Optional[dict[str, Any]]:
     """Return the persisted heartbeat for ``provider`` or ``None``."""
 
     status_file = _status_file(provider)

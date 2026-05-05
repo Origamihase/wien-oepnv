@@ -8,6 +8,7 @@ import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 from zoneinfo import ZoneInfo
 
 from requests.exceptions import RequestException
@@ -108,7 +109,7 @@ def _record_status(
     """
 
     todays_count = _todays_request_count(now_local)
-    payload: dict = {
+    payload: dict[str, Any] = {
         "last_run_at": now_local.astimezone(timezone.utc).isoformat(),
         "last_run_at_local": now_local.isoformat(),
         "status": status,
