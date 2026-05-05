@@ -27,6 +27,8 @@ else:
         import build_feed as build_feed_module  # type: ignore
         from utils.stations_validation import validate_stations  # type: ignore
 
+__all__ = ["build_feed_module"]
+
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS_DIR = PROJECT_ROOT / "scripts"
 DATA_DIR = PROJECT_ROOT / "data"

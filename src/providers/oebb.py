@@ -518,4 +518,4 @@ def fetch_events(timeout: int = 25) -> List[FeedItem]:
     return out
 
 
-__all__ = ["fetch_events"]
+__all__ = ["fetch_events", "station_info"]
