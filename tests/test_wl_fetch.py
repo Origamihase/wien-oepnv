@@ -26,36 +26,36 @@ def test_fetch_events_handles_invalid_json(
 ) -> None:
     class DummyResponse:
         headers = {"Content-Type": "application/json"}
-        def raise_for_status(self):
+        def raise_for_status(self) -> None:
             return None
 
-        def json(self):
+        def json(self) -> Any:
             raise ValueError("invalid JSON")
 
-        def iter_content(self, chunk_size=8192):
+        def iter_content(self, chunk_size: int = 8192) -> list[bytes]:
             return [b"invalid"]
 
         @property
-        def content(self):
+        def content(self) -> bytes:
             return b"invalid"
 
-        def __enter__(self):
+        def __enter__(self) -> "DummyResponse":
             return self
 
-        def __exit__(self, *args):
+        def __exit__(self, *args: Any) -> None:
             pass
 
     class DummySession:
         def __init__(self) -> None:
             self.headers: dict[str, str] = {}
 
-        def __enter__(self):
+        def __enter__(self) -> "DummySession":
             return self
 
-        def __exit__(self, exc_type, exc, tb):
+        def __exit__(self, exc_type: Any, exc: Any, tb: Any) -> Literal[False]:
             return False
 
-        def prepare_request(self, request):
+        def prepare_request(self, request: Any) -> Any:
             from requests.models import PreparedRequest
             p = PreparedRequest()
             p.prepare(
@@ -72,19 +72,19 @@ def test_fetch_events_handles_invalid_json(
             )
             return p
 
-        def merge_environment_settings(self, url, proxies, stream, verify, cert):
+        def merge_environment_settings(self, url: Any, proxies: Any, stream: Any, verify: Any, cert: Any) -> dict[str, Any]:
             return {}
 
         def get(self, url: str, params: Any = None, timeout: Any = None, stream: bool = False, **kwargs: Any) -> Any:
             return DummyResponse()
 
-        def request(self, method, url, **kwargs):
+        def request(self, method: str, url: str, **kwargs: Any) -> Any:
             return self.get(url, **kwargs)
 
     monkeypatch.setattr("src.providers.wl_fetch.session_with_retries", lambda *a, **kw: DummySession())
 
     # Mock fetch_content_safe to avoid real network/pinned adapter logic which fails with timeout=0
-    def fake_fetch_content_safe(*args, **kwargs):
+    def fake_fetch_content_safe(*args: Any, **kwargs: Any) -> None:
         raise ValueError("Ungültige JSON-Antwort")
 
     monkeypatch.setattr("src.providers.wl_fetch.fetch_content_safe", fake_fetch_content_safe)
