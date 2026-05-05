@@ -143,14 +143,6 @@ def main() -> int:
         )
         return 1
 
-    if not isinstance(items, list):
-        logger.error(
-            "VOR: Unerwarteter Rückgabetyp %s – behalte bestehenden Cache bei.",
-            type(items).__name__,
-        )
-        return 1
-
-
     serialized_items = [serialize_for_cache(item) for item in items]
     write_cache("vor", serialized_items)
     logger.info("VOR: Cache mit %d Einträgen aktualisiert.", len(serialized_items))

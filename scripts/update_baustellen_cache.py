@@ -195,8 +195,6 @@ def _load_fallback(path: Path) -> Optional[Dict[str, Any]]:
 
 
 def _iter_features(payload: Dict[str, Any]) -> Iterable[Dict[str, Any]]:
-    if not isinstance(payload, dict):
-        return []
     if payload.get("type") == "FeatureCollection":
         features = payload.get("features") or []
     elif "features" in payload:
@@ -232,8 +230,7 @@ def _parse_datetime(value: Union[str, float, int, None]) -> Optional[datetime]:
             return datetime.fromtimestamp(float(value), tz=VIENNA_TZ)
         except (ValueError, OSError):
             return None
-    if not isinstance(value, str):
-        return None
+    # value is narrowed to str here by the type annotation and prior branches
     candidate = value.strip()
     if not candidate:
         return None
