@@ -21,14 +21,14 @@ komplette Referenzdokumentation für die VOR/VAO-ReST-API enthalten.
 
 - **Zentrale Datenaufbereitung** – Störungsmeldungen, Baustellen und Hinweise mehrerer Provider werden vereinheitlicht,
   dedupliziert und mit konsistenten Metadaten versehen.
-- **Reproduzierbarer Feed-Bau** – Sämtliche Schritte (Cache-Aktualisierung, Feed-Generierung, Tests) lassen sich lokal oder in
+- **Reproduzierbarer Feed-Build** – Sämtliche Schritte (Cache-Aktualisierung, Feed-Generierung, Tests) lassen sich lokal oder in
   CI/CD-Workflows reproduzieren.
 - **Nachvollziehbare Datenbasis** – Alle externen Datenquellen, Lizenzen und Skripte zur Pflege des Stationsverzeichnisses sind
   dokumentiert und versioniert.
 
 ## Systemüberblick
 
-Der Feed-Bau folgt einem klaren Ablauf:
+Der Feed-Build folgt einem klaren Ablauf:
 
 1. **Provider-Caches** – Je Provider existiert ein Update-Kommando (`python -m src.cli cache update <provider>`) sowie eine GitHub Action, die den
    Cache regelmäßig aktualisiert (`cache/<provider>/events.json`). Die Provider lassen sich über Umgebungsvariablen deaktivieren,
@@ -45,7 +45,7 @@ Der Feed-Bau folgt einem klaren Ablauf:
 
 | Pfad/Datei            | Inhalt                                                                                          |
 | --------------------- | ------------------------------------------------------------------------------------------------ |
-| `src/`                | Feed-Bau, Provider-Adapter, Utilities (Caching, Logging, Textaufbereitung, Stationslogik).       |
+| `src/`                | Feed-Build, Provider-Adapter, Utilities (Caching, Logging, Textaufbereitung, Stationslogik).     |
 | `scripts/`            | Kommandozeilen-Werkzeuge für Cache-Updates, Stationspflege sowie API-Hilfsfunktionen.            |
 | `cache/`              | Versionierte Provider-Zwischenspeicher (`wl`, `oebb`, `vor`, `baustellen`) für reproduzierbare Feed-Builds. |
 | `data/`               | Stationsverzeichnis, GTFS-Testdaten und Hilfslisten (z. B. Pendler-Whitelist).                   |
@@ -306,12 +306,12 @@ verhindert Drift.
 | ---- | ------- | ------------ |
 | `name` | ✓ | Kanonischer Anzeige-Name (eindeutig, wird im Feed verwendet). |
 | `in_vienna` | ✓ | `true` wenn die Koordinaten innerhalb des LANDESGRENZEOGD-Polygons liegen. |
-| `pendler` | ✓ | `true` für Pendler-Knoten **außerhalb** Wiens (siehe `data/pendler_bst_ids.json`). **Mutual exclusive zu `in_vienna`**: jede Station ist entweder Wien-Station ODER Pendler, niemals beides. Einzige Ausnahme: `type: manual_foreign_city` (München, Roma) — beide Flags `false`. Verstöße werden vom Validator als NamingIssue gemeldet und vom Updater automatisch korrigiert (in_vienna gewinnt). |
+| `pendler` | ✓ | `true` für Pendler-Knoten **außerhalb** Wiens (siehe `data/pendler_bst_ids.json`). **Exklusiv zu `in_vienna`**: jede Station ist entweder Wien-Station ODER Pendler, niemals beides. Einzige Ausnahme: `type: manual_foreign_city` (München, Roma) — beide Flags `false`. Verstöße werden vom Validator als NamingIssue gemeldet und vom Updater automatisch korrigiert (in_vienna gewinnt). |
 | `aliases` | ✓ | Schreibvarianten und IDs zur Erkennung in Provider-Texten. |
 | `latitude` / `longitude` | ✓ | WGS84-Koordinaten (validiert gegen das Wien-Polygon für `in_vienna`-Einträge). |
 | `source` | ✓ | Komma-getrennte Provider-Tokens (kein Whitespace) aus `oebb,vor,wl,google_places,manual`. |
 | `bst_id`, `bst_code` | ÖBB | ÖBB-Stellen-ID und -Stellencode aus dem Excel-Verzeichnis (data.oebb.at). |
-| `vor_id` | ÖBB/VOR | VOR/VAO-Stop-ID (numerisch oder volles HAFAS-Token); matcht typischerweise GTFS-`stop_id`. |
+| `vor_id` | ÖBB/VOR | VOR/VAO-Stop-ID (numerisch oder volles HAFAS-Token); entspricht typischerweise GTFS-`stop_id`. |
 | `wl_diva` | WL | Wiener-Linien-DIVA aus `wienerlinien-ogd-haltestellen.csv`. |
 | `wl_stops` | WL | Einzelhaltepunkte (Bahnsteige/Richtungen) inkl. eigener `stop_id`. |
 | `type` | – | `manual_foreign_city` für die Auslandsknoten München Hauptbahnhof und Roma Termini. |
@@ -336,7 +336,7 @@ damit kurze Stellencodes wie `Sue`/`Su` distinkt bleiben).
 | ------ | -------- |
 | `python -m src.cli stations update all --verbose` | Führt alle Teilaktualisierungen (ÖBB, WL, VOR) in einem Lauf aus. |
 | `python -m src.cli stations update directory --verbose` | Aktualisiert das ÖBB-Basisverzeichnis und setzt `in_vienna`/`pendler`. |
-| `python scripts/update_wl_stations.py [--no-download] -v` | Lädt die WL-OGD-CSVs von `data.wien.gv.at` und merged sie. `--no-download` nutzt die lokalen Dateien (Sandbox/Offline-Modus). |
+| `python scripts/update_wl_stations.py [--no-download] -v` | Lädt die WL-OGD-CSVs von `data.wien.gv.at` und führt sie zusammen. `--no-download` nutzt die lokalen Dateien (Sandbox/Offline-Modus). |
 | `python -m src.cli stations update vor --verbose` | Importiert VOR-Daten aus CSV oder API und reichert Stationen an. |
 
 
@@ -352,8 +352,8 @@ acht Issue-Kategorien: **geographic duplicates**, **alias issues**,
 **provider issues** (VOR-/OEBB-Konsistenz), **cross-station ID
 collisions** und **naming issues** (kanonische Namens-Eindeutigkeit +
 no-space-Source-Format). Über `--output docs/stations_validation_report.md`
-wird der Bericht persistiert; mit `--fail-on-issues` exit-codet die CLI
-bei jedem Befund. In CI läuft der Validator als Pflicht-Gate (siehe
+wird der Bericht persistiert; mit `--fail-on-issues` bricht die CLI
+bei jedem Befund mit einem Fehlercode ab. In CI läuft der Validator als Pflicht-Gate (siehe
 `.github/workflows/test.yml`); zusätzlich regeneriert
 `update-stations.yml` den persistenten Report im monatlichen Daten-Refresh.
 
@@ -377,8 +377,10 @@ Die wichtigsten GitHub Actions:
 
 - `update-wl-cache.yml`, `update-oebb-cache.yml`, `update-vor-cache.yml`, `update-baustellen-cache.yml` – füllen die Provider-Caches.
 - `update-stations.yml` – pflegt monatlich `data/stations.json`.
+- `update-google-places-stations.yml` – reichert das Stationsverzeichnis optional mit Google-Places-Metadaten an.
 - `build-feed.yml` – erzeugt `docs/feed.xml` auf Basis der aktuellen Caches.
 - `test.yml` & `test-vor-api.yml` – führen die vollständige Test-Suite bzw. VOR-spezifische Integrationstests aus; `test.yml` läuft bei jedem Push sowie Pull Request und stellt die kontinuierliche Testabdeckung sicher.
+- `mypy-strict.yml`, `bandit.yml`, `codeql.yml`, `seo-guard.yml` – ergänzende Qualitäts-Gates (strikte Typprüfung, Security-Lint, CodeQL-Scan, SEO/Sitemap-Pflege).
 
 Cache-Update-Workflows committen ihre Ergebnisse in den Branch; der Feed-Build liest beim nächsten Lauf den jeweils aktuellen Stand. Eine direkte `needs:`-Abhängigkeit zwischen Workflows ist in GitHub Actions nicht vorgesehen — bei zeitkritischer Konsistenz lässt sich stattdessen ein `workflow_run`-Trigger ergänzen.
 
@@ -438,6 +440,7 @@ Der Abschnitt „VOR ergänzen“ im Stationskapitel erläutert, wie API-basiert
 
 ---
 
-Für vertiefende Audits, technische Reviews und historische Entscheidungen liegen zahlreiche Berichte in `docs/` (z. B.
-`system_review.md`, `code_quality_review.md`). Diese Dokumente erleichtern die Einordnung vergangener Änderungen und liefern
-Kontext für Weiterentwicklungen des Wien-ÖPNV-Feeds.
+Für vertiefende Audits, technische Reviews und historische Entscheidungen liegen zahlreiche Berichte in `docs/archive/audits/`
+(z. B. [`system_review.md`](docs/archive/audits/system_review.md), [`code_quality_review.md`](docs/archive/audits/code_quality_review.md);
+ein Index steht unter [`docs/archive/audits/INDEX.md`](docs/archive/audits/INDEX.md)). Diese Dokumente erleichtern die
+Einordnung vergangener Änderungen und liefern Kontext für Weiterentwicklungen des Wien-ÖPNV-Feeds.
