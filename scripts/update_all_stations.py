@@ -11,8 +11,12 @@ import tempfile
 from pathlib import Path
 from typing import Sequence
 
-from src.utils.files import atomic_write
-from src.utils.stations_validation import (
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from src.utils.files import atomic_write  # noqa: E402  (import after path setup)
+from src.utils.stations_validation import (  # noqa: E402
     StationValidationError,
     validate_stations,
 )
