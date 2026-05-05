@@ -37,6 +37,12 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-deps
 
+      - name: Refresh VOR stop list (best-effort)
+        run: |
+          python scripts/fetch_vor_haltestellen.py --verbose \
+            || echo "::warning::VOR refresh failed; using pinned data/vor-haltestellen.csv"
+        continue-on-error: true
+
       - name: Refresh station directory
         run: python scripts/update_all_stations.py --verbose
 

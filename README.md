@@ -341,8 +341,35 @@ damit kurze Stellencodes wie `Sue`/`Su` distinkt bleiben).
 
 
 Die GitHub Action `.github/workflows/update-stations.yml` aktualisiert
-`data/stations.json` monatlich automatisch und schreibt im selben Lauf
-den Validation-Report nach `docs/stations_validation_report.md`.
+`data/stations.json` monatlich automatisch (Cron `0 1 1 * *`). Pipeline-Schritte:
+
+1. **VOR-Stop-Liste auffrischen** – `scripts/fetch_vor_haltestellen.py`
+   holt die aktuelle Liste vom HAFAS-Endpoint `anachb.vor.at` und
+   überschreibt `data/vor-haltestellen.csv`. Best-effort: bei Netzwerk-
+   oder Rate-Limit-Fehler wird die gepinnte CSV weitergenutzt
+   (`continue-on-error: true`, mit GitHub-`::warning::`).
+2. **Sub-Skripte** (`scripts/update_all_stations.py`) – `update_station_directory.py` →
+   `update_vor_stations.py` → `update_wl_stations.py` → `enrich_station_aliases.py`,
+   alle gegen ein Temp-File. Erst nach erfolgreicher Validierung wird per
+   `atomic_write` ins Repo zurückkopiert.
+3. **Validation-Gate** – die Sub-Skript-Ausgabe wird vom selben Wrapper
+   validiert. Vier Kategorien blockieren den Commit (Working Tree bleibt
+   bytewise unverändert): `provider_issues`, `cross_station_id_issues`,
+   `naming_issues` (Mutual-Exclusivity, Source-Format, Namens-
+   Eindeutigkeit) und `security_issues`. Andere Kategorien
+   (`alias_issues`, `coordinate_issues` mit `manual_foreign_city`-
+   Exemption) sind tolerant.
+4. **Beobachtbarkeit** – nach erfolgreichem Atomic-Write schreibt der
+   Wrapper zwei Artefakte:
+   - `data/stations_last_run.json` – Heartbeat mit Timestamp,
+     Sub-Skript-Laufzeiten und Exit-Codes, Validation-Summary nach
+     Kategorie, Diff-Summary und aktuelle Polygon-Vertex-Zahl.
+   - `docs/stations_diff.md` – menschenlesbarer Diff (added / removed /
+     renamed / Koordinaten-Drift ≥ 100 m) gegen den Pre-Update-Snapshot.
+     Ein leerer Bericht bestätigt den No-Change-Lauf (Heartbeat-Funktion).
+5. **Validation-Report regenerieren** – `python -m src.cli stations validate
+   --output docs/stations_validation_report.md` schreibt die Markdown-
+   Variante des Validation-Reports (alle 8 Kategorien) für Review-Zwecke.
 
 #### Automatisierte Qualitätsberichte
 
@@ -351,9 +378,10 @@ acht Issue-Kategorien: **geographic duplicates**, **alias issues**,
 **coordinate anomalies**, **GTFS mismatches**, **security warnings**,
 **provider issues** (VOR-/OEBB-Konsistenz), **cross-station ID
 collisions** und **naming issues** (kanonische Namens-Eindeutigkeit +
-no-space-Source-Format). Über `--output docs/stations_validation_report.md`
-wird der Bericht persistiert; mit `--fail-on-issues` bricht die CLI
-bei jedem Befund mit einem Fehlercode ab. In CI läuft der Validator als Pflicht-Gate (siehe
+no-space-Source-Format + Vienna/Pendler Mutual-Exclusivity).
+Über `--output docs/stations_validation_report.md` wird der Bericht
+persistiert; mit `--fail-on-issues` bricht die CLI bei jedem Befund mit
+einem Fehlercode ab. In CI läuft der Validator als Pflicht-Gate (siehe
 `.github/workflows/test.yml`); zusätzlich regeneriert
 `update-stations.yml` den persistenten Report im monatlichen Daten-Refresh.
 
