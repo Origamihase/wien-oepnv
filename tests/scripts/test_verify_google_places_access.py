@@ -10,7 +10,6 @@ import pytest
 
 from scripts import verify_google_places_access as verify
 from src.places.client import GooglePlacesError, GooglePlacesPermissionError, Place
-from src.places.tiling import Tile
 
 
 @pytest.fixture(autouse=True)
@@ -32,7 +31,7 @@ class _SuccessClient:
         self.config = config
         self.request_count = 0
 
-    def iter_nearby(self, tiles: Iterable[Tile]) -> Iterator[Place]:
+    def iter_nearby(self, tiles: Iterable[verify.Tile]) -> Iterator[Place]:
         self.request_count += 1
         yield Place(
             place_id="test-place",
@@ -49,7 +48,7 @@ class _PermissionDeniedClient:
         self.config = config
         self.request_count = 0
 
-    def iter_nearby(self, tiles: Iterable[Tile]) -> Iterator[Place]:
+    def iter_nearby(self, tiles: Iterable[verify.Tile]) -> Iterator[Place]:
         raise GooglePlacesPermissionError(
             "PERMISSION_DENIED: Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchNearby are blocked."
         )
@@ -60,7 +59,7 @@ class _ErrorClient:
         self.config = config
         self.request_count = 0
 
-    def iter_nearby(self, tiles: Iterable[Tile]) -> Iterator[Place]:
+    def iter_nearby(self, tiles: Iterable[verify.Tile]) -> Iterator[Place]:
         raise GooglePlacesError("internal server error")
 
 

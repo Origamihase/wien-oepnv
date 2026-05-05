@@ -733,7 +733,7 @@ def _iter_vor_rows(path: Path) -> Iterable[_NormalizedCSVRow]:
         reader = csv.DictReader(handle, delimiter=delimiter)
         for row in reader:
             if not isinstance(row, dict):
-                continue  # type: ignore[unreachable]
+                continue
             yield _NormalizedCSVRow({key or "": value for key, value in row.items()})
 
 

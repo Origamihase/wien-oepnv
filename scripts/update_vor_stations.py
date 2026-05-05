@@ -736,7 +736,7 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
 
     for vor_entry in vor_entries:
         if not isinstance(vor_entry, dict):
-            continue  # type: ignore[unreachable]
+            continue
         vor_id = _normalize_id(vor_entry.get("vor_id"))
         if not vor_id:
             continue

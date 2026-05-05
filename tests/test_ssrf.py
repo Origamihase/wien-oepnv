@@ -51,7 +51,7 @@ def test_fetch_content_safe_validates_url(monkeypatch: pytest.MonkeyPatch) -> No
     # But just in case, let's mock it to fail
     monkeypatch.setattr(session, "get", lambda *args, **kwargs: pytest.fail("Should not have called get"))
 
-    with pytest.raises(ValueError, match="Unsafe or invalid URL"):  # type: ignore[unreachable]
+    with pytest.raises(ValueError, match="Unsafe or invalid URL"):
         fetch_content_safe(session, "http://localhost")
 
     with pytest.raises(ValueError, match="Unsafe or invalid URL"):

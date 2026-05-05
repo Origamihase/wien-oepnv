@@ -144,7 +144,7 @@ def main() -> int:
         return 1
 
     if not isinstance(items, list):
-        logger.error(  # type: ignore[unreachable]
+        logger.error(
             "VOR: Unerwarteter Rückgabetyp %s – behalte bestehenden Cache bei.",
             type(items).__name__,
         )

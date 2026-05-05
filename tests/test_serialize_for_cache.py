@@ -44,7 +44,7 @@ def test_serialize_nested_collections_are_json_friendly() -> None:
     assert isinstance(result["metadata"], list)
 
 def test_serialize_circular_reference_raises_value_error() -> None:
-    circular_dict: dict[str, Any] = {"a": 1}
+    circular_dict = {"a": 1}
     circular_dict["b"] = circular_dict
 
     with pytest.raises(ValueError, match="Circular reference detected"):

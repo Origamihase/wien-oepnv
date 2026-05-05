@@ -121,7 +121,7 @@ def test_rate_limit_retries_once_after_wait(
             import requests
             raise requests.HTTPError(response=self)
 
-    setattr(DummyResponse, "raise_for_status", mock_raise_for_status)
+    DummyResponse.raise_for_status = mock_raise_for_status
 
     calls: list[tuple[str, Any]] = []
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession(responses, calls))
@@ -156,7 +156,7 @@ def test_rate_limit_raises_http_error_after_retry(monkeypatch: pytest.MonkeyPatc
             import requests
             raise requests.HTTPError(response=self)
 
-    setattr(DummyResponse, "raise_for_status", mock_raise_for_status)
+    DummyResponse.raise_for_status = mock_raise_for_status
 
     calls: list[tuple[str, Any]] = []
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession(responses, calls))

@@ -32,7 +32,6 @@ def test_emit_item_formatting_html_stripping() -> None:
     encoded_elem = elem.find("{http://purl.org/rss/1.0/modules/content/}encoded")
     assert encoded_elem is not None
     content_placeholder = encoded_elem.text
-    assert content_placeholder is not None
     content_html = replacements[content_placeholder]
 
     # Check for strict 2-line layout
