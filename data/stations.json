@@ -1,6 +1,71 @@
 {
   "stations": [
     {
+      "bst_id": "100",
+      "bst_code": "Aw",
+      "name": "St.Andrä-Wördern",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "St.Andrä-Wördern",
+        "Bahnhof Sankt Andrae Woerdern",
+        "Bahnhof Sankt Andrae-Woerdern",
+        "Bahnhof Sankt Andrä Wördern",
+        "Bahnhof Sankt Andrä-Wördern",
+        "Bahnhof St.Andrae Woerdern",
+        "Bahnhof St.Andrae-Woerdern",
+        "Bahnhof St.Andrä Wördern",
+        "Bahnhof St.Andrä-Wördern",
+        "Bf Sankt Andrae Woerdern",
+        "bf Sankt Andrae Woerdern",
+        "Bf Sankt Andrae-Woerdern",
+        "bf Sankt Andrae-Woerdern",
+        "Bf Sankt Andrä Wördern",
+        "bf Sankt Andrä Wördern",
+        "Bf Sankt Andrä-Wördern",
+        "bf Sankt Andrä-Wördern",
+        "Bf St.Andrae Woerdern",
+        "bf St.Andrae Woerdern",
+        "Bf St.Andrae-Woerdern",
+        "bf St.Andrae-Woerdern",
+        "Bf St.Andrä Wördern",
+        "bf St.Andrä Wördern",
+        "Bf St.Andrä-Wördern",
+        "bf St.Andrä-Wördern",
+        "Sankt Andrae Woerdern",
+        "Sankt Andrae Woerdern Bahnhof",
+        "Sankt Andrae Woerdern Bf",
+        "Sankt Andrae Woerdern bf",
+        "Sankt Andrae-Woerdern",
+        "Sankt Andrae-Woerdern Bahnhof",
+        "Sankt Andrae-Woerdern Bf",
+        "Sankt Andrae-Woerdern bf",
+        "Sankt Andrä Wördern",
+        "Sankt Andrä Wördern Bahnhof",
+        "Sankt Andrä Wördern Bf",
+        "Sankt Andrä Wördern bf",
+        "Sankt Andrä-Wördern",
+        "Sankt Andrä-Wördern Bahnhof",
+        "Sankt Andrä-Wördern Bf",
+        "Sankt Andrä-Wördern bf",
+        "St.Andrae Woerdern",
+        "St.Andrae Woerdern Bahnhof",
+        "St.Andrae Woerdern Bf",
+        "St.Andrae Woerdern bf",
+        "St.Andrae-Woerdern",
+        "St.Andrae-Woerdern Bahnhof",
+        "St.Andrae-Woerdern Bf",
+        "St.Andrae-Woerdern bf",
+        "St.Andrä Wördern",
+        "St.Andrä Wördern Bahnhof",
+        "St.Andrä Wördern Bf",
+        "St.Andrä Wördern bf",
+        "St.Andrä-Wördern Bahnhof",
+        "St.Andrä-Wördern Bf",
+        "St.Andrä-Wördern bf"
+      ]
+    },
+    {
       "bst_id": "1019",
       "bst_code": "Ken",
       "name": "Klosterneuburg-Weidling",
@@ -78,6 +143,38 @@
       "source": "oebb"
     },
     {
+      "bst_id": "1074",
+      "bst_code": "Ko  H2",
+      "name": "Spillern",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Spillern",
+        "Bahnhof Spillern",
+        "Bf Spillern",
+        "bf Spillern",
+        "Spillern Bahnhof",
+        "Spillern Bf",
+        "Spillern bf"
+      ]
+    },
+    {
+      "bst_id": "11",
+      "bst_code": "Ach",
+      "name": "Achau",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Achau",
+        "Achau Bahnhof",
+        "Achau Bf",
+        "Achau bf",
+        "Bahnhof Achau",
+        "Bf Achau",
+        "bf Achau"
+      ]
+    },
+    {
       "bst_id": "1103",
       "bst_code": "Ktt",
       "name": "Kittsee",
@@ -97,6 +194,22 @@
       "latitude": 48.081322,
       "longitude": 17.071369,
       "source": "oebb"
+    },
+    {
+      "bst_id": "1113",
+      "bst_code": "Kz",
+      "name": "Kritzendorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Kritzendorf",
+        "Bahnhof Kritzendorf",
+        "Bf Kritzendorf",
+        "bf Kritzendorf",
+        "Kritzendorf Bahnhof",
+        "Kritzendorf Bf",
+        "Kritzendorf bf"
+      ]
     },
     {
       "bst_id": "115",
@@ -189,6 +302,22 @@
       "latitude": 48.123023,
       "longitude": 16.285559,
       "source": "oebb"
+    },
+    {
+      "bst_id": "1240760",
+      "bst_code": "Lb  H1",
+      "name": "Sollenau",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Sollenau",
+        "Bahnhof Sollenau",
+        "Bf Sollenau",
+        "bf Sollenau",
+        "Sollenau Bahnhof",
+        "Sollenau Bf",
+        "Sollenau bf"
+      ]
     },
     {
       "bst_id": "1240762",
@@ -320,6 +449,29 @@
       "source": "oebb"
     },
     {
+      "bst_id": "1290",
+      "bst_code": "Lx",
+      "name": "Laxenburg-Biedermannsdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Laxenburg-Biedermannsdorf",
+        "Bahnhof Laxenburg Biedermannsdorf",
+        "Bahnhof Laxenburg-Biedermannsdorf",
+        "Bf Laxenburg Biedermannsdorf",
+        "bf Laxenburg Biedermannsdorf",
+        "Bf Laxenburg-Biedermannsdorf",
+        "bf Laxenburg-Biedermannsdorf",
+        "Laxenburg Biedermannsdorf",
+        "Laxenburg Biedermannsdorf Bahnhof",
+        "Laxenburg Biedermannsdorf Bf",
+        "Laxenburg Biedermannsdorf bf",
+        "Laxenburg-Biedermannsdorf Bahnhof",
+        "Laxenburg-Biedermannsdorf Bf",
+        "Laxenburg-Biedermannsdorf bf"
+      ]
+    },
+    {
       "bst_id": "1318",
       "bst_code": "Mac",
       "name": "Marchegg",
@@ -339,6 +491,22 @@
       "latitude": 48.249798,
       "longitude": 16.917519,
       "source": "oebb"
+    },
+    {
+      "bst_id": "1341",
+      "bst_code": "Mar",
+      "name": "Maria Lanzendorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Maria Lanzendorf",
+        "Bahnhof Maria Lanzendorf",
+        "Bf Maria Lanzendorf",
+        "bf Maria Lanzendorf",
+        "Maria Lanzendorf Bahnhof",
+        "Maria Lanzendorf Bf",
+        "Maria Lanzendorf bf"
+      ]
     },
     {
       "bst_id": "1348",
@@ -518,6 +686,22 @@
       "source": "oebb"
     },
     {
+      "bst_id": "1379",
+      "bst_code": "Md  H2",
+      "name": "Gumpoldskirchen",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Gumpoldskirchen",
+        "Bahnhof Gumpoldskirchen",
+        "Bf Gumpoldskirchen",
+        "bf Gumpoldskirchen",
+        "Gumpoldskirchen Bahnhof",
+        "Gumpoldskirchen Bf",
+        "Gumpoldskirchen bf"
+      ]
+    },
+    {
       "bst_id": "1410",
       "bst_code": "Mi",
       "name": "Wien Meidling",
@@ -541,6 +725,84 @@
       "latitude": 48.174271,
       "longitude": 16.331899,
       "source": "oebb"
+    },
+    {
+      "bst_id": "143",
+      "bst_code": "Bde",
+      "name": "Bad Deutsch Altenburg",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Bad Deutsch Altenburg",
+        "Bad Deutsch Altenburg Bahnhof",
+        "Bad Deutsch Altenburg Bf",
+        "Bad Deutsch Altenburg bf",
+        "Bahnhof Bad Deutsch Altenburg",
+        "Bf Bad Deutsch Altenburg",
+        "bf Bad Deutsch Altenburg"
+      ]
+    },
+    {
+      "bst_id": "145",
+      "bst_code": "Beh",
+      "name": "Bernhardsthal",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Bernhardsthal",
+        "Bahnhof Bernhardsthal",
+        "Bernhardsthal Bahnhof",
+        "Bernhardsthal Bf",
+        "Bernhardsthal bf",
+        "Bf Bernhardsthal",
+        "bf Bernhardsthal"
+      ]
+    },
+    {
+      "bst_id": "1469",
+      "bst_code": "Mue",
+      "name": "Münchendorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Münchendorf",
+        "Bahnhof Muenchendorf",
+        "Bahnhof Münchendorf",
+        "Bf Muenchendorf",
+        "bf Muenchendorf",
+        "Bf Münchendorf",
+        "bf Münchendorf",
+        "Muenchendorf",
+        "Muenchendorf Bahnhof",
+        "Muenchendorf Bf",
+        "Muenchendorf bf",
+        "Münchendorf Bahnhof",
+        "Münchendorf Bf",
+        "Münchendorf bf"
+      ]
+    },
+    {
+      "bst_id": "148",
+      "bst_code": "Bf",
+      "name": "Pfaffstätten",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Pfaffstätten",
+        "Bahnhof Pfaffstaetten",
+        "Bahnhof Pfaffstätten",
+        "Bf Pfaffstaetten",
+        "bf Pfaffstaetten",
+        "Bf Pfaffstätten",
+        "bf Pfaffstätten",
+        "Pfaffstaetten",
+        "Pfaffstaetten Bahnhof",
+        "Pfaffstaetten Bf",
+        "Pfaffstaetten bf",
+        "Pfaffstätten Bahnhof",
+        "Pfaffstätten Bf",
+        "Pfaffstätten bf"
+      ]
     },
     {
       "bst_id": "149",
@@ -644,6 +906,22 @@
       "latitude": 48.260217,
       "longitude": 16.367658,
       "source": "oebb"
+    },
+    {
+      "bst_id": "1543",
+      "bst_code": "Nh",
+      "name": "Hohenau",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Hohenau",
+        "Bahnhof Hohenau",
+        "Bf Hohenau",
+        "bf Hohenau",
+        "Hohenau Bahnhof",
+        "Hohenau Bf",
+        "Hohenau bf"
+      ]
     },
     {
       "bst_id": "1558",
@@ -994,6 +1272,52 @@
       "source": "oebb"
     },
     {
+      "bst_id": "1685",
+      "bst_code": "Pet",
+      "name": "Petronell-Carnuntum",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Petronell-Carnuntum",
+        "Bahnhof Petronell Carnuntum",
+        "Bahnhof Petronell-Carnuntum",
+        "Bf Petronell Carnuntum",
+        "bf Petronell Carnuntum",
+        "Bf Petronell-Carnuntum",
+        "bf Petronell-Carnuntum",
+        "Petronell Carnuntum",
+        "Petronell Carnuntum Bahnhof",
+        "Petronell Carnuntum Bf",
+        "Petronell Carnuntum bf",
+        "Petronell-Carnuntum Bahnhof",
+        "Petronell-Carnuntum Bf",
+        "Petronell-Carnuntum bf"
+      ]
+    },
+    {
+      "bst_id": "17",
+      "bst_code": "Ah",
+      "name": "Absdorf-Hippersdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Absdorf-Hippersdorf",
+        "Absdorf Hippersdorf",
+        "Absdorf Hippersdorf Bahnhof",
+        "Absdorf Hippersdorf Bf",
+        "Absdorf Hippersdorf bf",
+        "Absdorf-Hippersdorf Bahnhof",
+        "Absdorf-Hippersdorf Bf",
+        "Absdorf-Hippersdorf bf",
+        "Bahnhof Absdorf Hippersdorf",
+        "Bahnhof Absdorf-Hippersdorf",
+        "Bf Absdorf Hippersdorf",
+        "bf Absdorf Hippersdorf",
+        "Bf Absdorf-Hippersdorf",
+        "bf Absdorf-Hippersdorf"
+      ]
+    },
+    {
       "bst_id": "1718",
       "bst_code": "Pm",
       "name": "Tullnerbach-Pressbaum",
@@ -1064,6 +1388,45 @@
       "source": "oebb"
     },
     {
+      "bst_id": "1741",
+      "bst_code": "Pr",
+      "name": "Payerbach-Reichenau",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Payerbach-Reichenau",
+        "Bahnhof Payerbach Reichenau",
+        "Bahnhof Payerbach-Reichenau",
+        "Bf Payerbach Reichenau",
+        "bf Payerbach Reichenau",
+        "Bf Payerbach-Reichenau",
+        "bf Payerbach-Reichenau",
+        "Payerbach Reichenau",
+        "Payerbach Reichenau Bahnhof",
+        "Payerbach Reichenau Bf",
+        "Payerbach Reichenau bf",
+        "Payerbach-Reichenau Bahnhof",
+        "Payerbach-Reichenau Bf",
+        "Payerbach-Reichenau bf"
+      ]
+    },
+    {
+      "bst_id": "1762",
+      "bst_code": "Wgm",
+      "name": "Pottenbrunn",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Pottenbrunn",
+        "Bahnhof Pottenbrunn",
+        "Bf Pottenbrunn",
+        "bf Pottenbrunn",
+        "Pottenbrunn Bahnhof",
+        "Pottenbrunn Bf",
+        "Pottenbrunn bf"
+      ]
+    },
+    {
       "bst_id": "1797",
       "bst_code": "Pz",
       "name": "Wien Penzing",
@@ -1087,6 +1450,86 @@
       "latitude": 48.192654,
       "longitude": 16.305327,
       "source": "oebb"
+    },
+    {
+      "bst_id": "1811",
+      "bst_code": "Raf",
+      "name": "Raasdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Raasdorf",
+        "Bahnhof Raasdorf",
+        "Bf Raasdorf",
+        "bf Raasdorf",
+        "Raasdorf Bahnhof",
+        "Raasdorf Bf",
+        "Raasdorf bf"
+      ]
+    },
+    {
+      "bst_id": "1813",
+      "bst_code": "Raf H1",
+      "name": "Glinzendorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Glinzendorf",
+        "Bahnhof Glinzendorf",
+        "Bf Glinzendorf",
+        "bf Glinzendorf",
+        "Glinzendorf Bahnhof",
+        "Glinzendorf Bf",
+        "Glinzendorf bf"
+      ]
+    },
+    {
+      "bst_id": "1832",
+      "bst_code": "Reg",
+      "name": "Regelsbrunn",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Regelsbrunn",
+        "Bahnhof Regelsbrunn",
+        "Bf Regelsbrunn",
+        "bf Regelsbrunn",
+        "Regelsbrunn Bahnhof",
+        "Regelsbrunn Bf",
+        "Regelsbrunn bf"
+      ]
+    },
+    {
+      "bst_id": "1833",
+      "bst_code": "Reg H1",
+      "name": "Wildungsmauer",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Wildungsmauer",
+        "Bahnhof Wildungsmauer",
+        "Bf Wildungsmauer",
+        "bf Wildungsmauer",
+        "Wildungsmauer Bahnhof",
+        "Wildungsmauer Bf",
+        "Wildungsmauer bf"
+      ]
+    },
+    {
+      "bst_id": "1904",
+      "bst_code": "Rw",
+      "name": "Rekawinkel",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Rekawinkel",
+        "Bahnhof Rekawinkel",
+        "Bf Rekawinkel",
+        "bf Rekawinkel",
+        "Rekawinkel Bahnhof",
+        "Rekawinkel Bf",
+        "Rekawinkel bf"
+      ]
     },
     {
       "bst_id": "1905",
@@ -1117,6 +1560,61 @@
       "source": "oebb"
     },
     {
+      "bst_id": "1945177",
+      "bst_code": "Mb  H1H",
+      "name": "Mistelbach Stadt",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Mistelbach Stadt",
+        "Bahnhof Mistelbach Stadt",
+        "Bf Mistelbach Stadt",
+        "bf Mistelbach Stadt",
+        "Mistelbach Stadt Bahnhof",
+        "Mistelbach Stadt Bf",
+        "Mistelbach Stadt bf"
+      ]
+    },
+    {
+      "bst_id": "1950",
+      "bst_code": "Sbl",
+      "name": "Siebenbrunn-Leopoldsdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Siebenbrunn-Leopoldsdorf",
+        "Bahnhof Siebenbrunn Leopoldsdorf",
+        "Bahnhof Siebenbrunn-Leopoldsdorf",
+        "Bf Siebenbrunn Leopoldsdorf",
+        "bf Siebenbrunn Leopoldsdorf",
+        "Bf Siebenbrunn-Leopoldsdorf",
+        "bf Siebenbrunn-Leopoldsdorf",
+        "Siebenbrunn Leopoldsdorf",
+        "Siebenbrunn Leopoldsdorf Bahnhof",
+        "Siebenbrunn Leopoldsdorf Bf",
+        "Siebenbrunn Leopoldsdorf bf",
+        "Siebenbrunn-Leopoldsdorf Bahnhof",
+        "Siebenbrunn-Leopoldsdorf Bf",
+        "Siebenbrunn-Leopoldsdorf bf"
+      ]
+    },
+    {
+      "bst_id": "1952",
+      "bst_code": "Sbl H1",
+      "name": "Untersiebenbrunn",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Untersiebenbrunn",
+        "Bahnhof Untersiebenbrunn",
+        "Bf Untersiebenbrunn",
+        "bf Untersiebenbrunn",
+        "Untersiebenbrunn Bahnhof",
+        "Untersiebenbrunn Bf",
+        "Untersiebenbrunn bf"
+      ]
+    },
+    {
       "bst_id": "1969",
       "bst_code": "Sdf",
       "name": "Wien Strebersdorf",
@@ -1140,6 +1638,43 @@
       "latitude": 48.286061,
       "longitude": 16.381079,
       "source": "oebb"
+    },
+    {
+      "bst_id": "1995",
+      "bst_code": "Sfl",
+      "name": "Schönfeld-Lassee",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Schönfeld-Lassee",
+        "Bahnhof Schoenfeld Lassee",
+        "Bahnhof Schoenfeld-Lassee",
+        "Bahnhof Schönfeld Lassee",
+        "Bahnhof Schönfeld-Lassee",
+        "Bf Schoenfeld Lassee",
+        "bf Schoenfeld Lassee",
+        "Bf Schoenfeld-Lassee",
+        "bf Schoenfeld-Lassee",
+        "Bf Schönfeld Lassee",
+        "bf Schönfeld Lassee",
+        "Bf Schönfeld-Lassee",
+        "bf Schönfeld-Lassee",
+        "Schoenfeld Lassee",
+        "Schoenfeld Lassee Bahnhof",
+        "Schoenfeld Lassee Bf",
+        "Schoenfeld Lassee bf",
+        "Schoenfeld-Lassee",
+        "Schoenfeld-Lassee Bahnhof",
+        "Schoenfeld-Lassee Bf",
+        "Schoenfeld-Lassee bf",
+        "Schönfeld Lassee",
+        "Schönfeld Lassee Bahnhof",
+        "Schönfeld Lassee Bf",
+        "Schönfeld Lassee bf",
+        "Schönfeld-Lassee Bahnhof",
+        "Schönfeld-Lassee Bf",
+        "Schönfeld-Lassee bf"
+      ]
     },
     {
       "bst_id": "1998",
@@ -1406,6 +1941,70 @@
       "source": "oebb"
     },
     {
+      "bst_id": "2199",
+      "bst_code": "Tat",
+      "name": "Tattendorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Tattendorf",
+        "Bahnhof Tattendorf",
+        "Bf Tattendorf",
+        "bf Tattendorf",
+        "Tattendorf Bahnhof",
+        "Tattendorf Bf",
+        "Tattendorf bf"
+      ]
+    },
+    {
+      "bst_id": "2208",
+      "bst_code": "Tat H1",
+      "name": "Teesdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Teesdorf",
+        "Bahnhof Teesdorf",
+        "Bf Teesdorf",
+        "bf Teesdorf",
+        "Teesdorf Bahnhof",
+        "Teesdorf Bf",
+        "Teesdorf bf"
+      ]
+    },
+    {
+      "bst_id": "2218",
+      "bst_code": "Ti",
+      "name": "Traiskirchen Aspangbahn",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Traiskirchen Aspangbahn",
+        "Bahnhof Traiskirchen Aspangbahn",
+        "Bf Traiskirchen Aspangbahn",
+        "bf Traiskirchen Aspangbahn",
+        "Traiskirchen Aspangbahn Bahnhof",
+        "Traiskirchen Aspangbahn Bf",
+        "Traiskirchen Aspangbahn bf"
+      ]
+    },
+    {
+      "bst_id": "2220",
+      "bst_code": "Ti  K1",
+      "name": "Trumau",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Trumau",
+        "Bahnhof Trumau",
+        "Bf Trumau",
+        "bf Trumau",
+        "Trumau Bahnhof",
+        "Trumau Bf",
+        "Trumau bf"
+      ]
+    },
+    {
       "bst_id": "2232",
       "bst_code": "Tn",
       "name": "Ternitz",
@@ -1425,6 +2024,22 @@
       "latitude": 47.713753,
       "longitude": 16.033385,
       "source": "oebb"
+    },
+    {
+      "bst_id": "2233",
+      "bst_code": "Tn  H1",
+      "name": "Pottschach",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Pottschach",
+        "Bahnhof Pottschach",
+        "Bf Pottschach",
+        "bf Pottschach",
+        "Pottschach Bahnhof",
+        "Pottschach Bf",
+        "Pottschach bf"
+      ]
     },
     {
       "bst_id": "2262",
@@ -1447,6 +2062,22 @@
       "latitude": 48.32733,
       "longitude": 16.064362,
       "source": "oebb"
+    },
+    {
+      "bst_id": "2269",
+      "bst_code": "Tus",
+      "name": "Tulln Stadt",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Tulln Stadt",
+        "Bahnhof Tulln Stadt",
+        "Bf Tulln Stadt",
+        "bf Tulln Stadt",
+        "Tulln Stadt Bahnhof",
+        "Tulln Stadt Bf",
+        "Tulln Stadt bf"
+      ]
     },
     {
       "bst_id": "2290",
@@ -1593,6 +2224,22 @@
       "source": "oebb"
     },
     {
+      "bst_id": "2448",
+      "bst_code": "Wg  H1",
+      "name": "Helmahof",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Helmahof",
+        "Bahnhof Helmahof",
+        "Bf Helmahof",
+        "bf Helmahof",
+        "Helmahof Bahnhof",
+        "Helmahof Bf",
+        "Helmahof bf"
+      ]
+    },
+    {
       "bst_id": "2449",
       "bst_code": "Wg  H2",
       "name": "Strasshof an der Nordbahn",
@@ -1655,6 +2302,45 @@
       "latitude": 48.378434,
       "longitude": 16.512672,
       "source": "oebb"
+    },
+    {
+      "bst_id": "2499",
+      "bst_code": "Wp",
+      "name": "Wampersdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Wampersdorf",
+        "Bahnhof Wampersdorf",
+        "Bf Wampersdorf",
+        "bf Wampersdorf",
+        "Wampersdorf Bahnhof",
+        "Wampersdorf Bf",
+        "Wampersdorf bf"
+      ]
+    },
+    {
+      "bst_id": "2501",
+      "bst_code": "Wp  H1",
+      "name": "Pottendorf-Landegg",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Pottendorf-Landegg",
+        "Bahnhof Pottendorf Landegg",
+        "Bahnhof Pottendorf-Landegg",
+        "Bf Pottendorf Landegg",
+        "bf Pottendorf Landegg",
+        "Bf Pottendorf-Landegg",
+        "bf Pottendorf-Landegg",
+        "Pottendorf Landegg",
+        "Pottendorf Landegg Bahnhof",
+        "Pottendorf Landegg Bf",
+        "Pottendorf Landegg bf",
+        "Pottendorf-Landegg Bahnhof",
+        "Pottendorf-Landegg Bf",
+        "Pottendorf-Landegg bf"
+      ]
     },
     {
       "bst_id": "2511",
@@ -1742,6 +2428,22 @@
       "source": "oebb"
     },
     {
+      "bst_id": "254",
+      "bst_code": "Bvs H1",
+      "name": "Kottingbrunn",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Kottingbrunn",
+        "Bahnhof Kottingbrunn",
+        "Bf Kottingbrunn",
+        "bf Kottingbrunn",
+        "Kottingbrunn Bahnhof",
+        "Kottingbrunn Bf",
+        "Kottingbrunn bf"
+      ]
+    },
+    {
       "bst_id": "2548",
       "bst_code": "Za",
       "name": "Kledering",
@@ -1764,6 +2466,29 @@
       "latitude": 48.132453,
       "longitude": 16.439724,
       "source": "oebb"
+    },
+    {
+      "bst_id": "2578",
+      "bst_code": "Zs",
+      "name": "Lanzendorf-Rannersdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Lanzendorf-Rannersdorf",
+        "Bahnhof Lanzendorf Rannersdorf",
+        "Bahnhof Lanzendorf-Rannersdorf",
+        "Bf Lanzendorf Rannersdorf",
+        "bf Lanzendorf Rannersdorf",
+        "Bf Lanzendorf-Rannersdorf",
+        "bf Lanzendorf-Rannersdorf",
+        "Lanzendorf Rannersdorf",
+        "Lanzendorf Rannersdorf Bahnhof",
+        "Lanzendorf Rannersdorf Bf",
+        "Lanzendorf Rannersdorf bf",
+        "Lanzendorf-Rannersdorf Bahnhof",
+        "Lanzendorf-Rannersdorf Bf",
+        "Lanzendorf-Rannersdorf bf"
+      ]
     },
     {
       "bst_id": "263",
@@ -1816,6 +2541,52 @@
       "source": "oebb"
     },
     {
+      "bst_id": "299",
+      "bst_code": "Drg",
+      "name": "Drösing",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Drösing",
+        "Bahnhof Droesing",
+        "Bahnhof Drösing",
+        "Bf Droesing",
+        "bf Droesing",
+        "Bf Drösing",
+        "bf Drösing",
+        "Droesing",
+        "Droesing Bahnhof",
+        "Droesing Bf",
+        "Droesing bf",
+        "Drösing Bahnhof",
+        "Drösing Bf",
+        "Drösing bf"
+      ]
+    },
+    {
+      "bst_id": "301",
+      "bst_code": "Due",
+      "name": "Dürnkrut",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Dürnkrut",
+        "Bahnhof Duernkrut",
+        "Bahnhof Dürnkrut",
+        "Bf Duernkrut",
+        "bf Duernkrut",
+        "Bf Dürnkrut",
+        "bf Dürnkrut",
+        "Duernkrut",
+        "Duernkrut Bahnhof",
+        "Duernkrut Bf",
+        "Duernkrut bf",
+        "Dürnkrut Bahnhof",
+        "Dürnkrut Bf",
+        "Dürnkrut bf"
+      ]
+    },
+    {
       "bst_id": "309",
       "bst_code": "Ebr",
       "name": "Ebreichsdorf",
@@ -1835,6 +2606,22 @@
       "latitude": 47.964148,
       "longitude": 16.419319,
       "source": "oebb"
+    },
+    {
+      "bst_id": "310",
+      "bst_code": "Ebr H1",
+      "name": "Weigelsdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Weigelsdorf",
+        "Bahnhof Weigelsdorf",
+        "Bf Weigelsdorf",
+        "bf Weigelsdorf",
+        "Weigelsdorf Bahnhof",
+        "Weigelsdorf Bf",
+        "Weigelsdorf bf"
+      ]
     },
     {
       "bst_id": "325",
@@ -2035,6 +2822,22 @@
       "source": "oebb"
     },
     {
+      "bst_id": "402",
+      "bst_code": "Fam",
+      "name": "Fischamend",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Fischamend",
+        "Bahnhof Fischamend",
+        "Bf Fischamend",
+        "bf Fischamend",
+        "Fischamend Bahnhof",
+        "Fischamend Bf",
+        "Fischamend bf"
+      ]
+    },
+    {
       "bst_id": "4384321",
       "bst_code": "Tfd",
       "name": "Tullnerfeld",
@@ -2079,6 +2882,38 @@
       "latitude": 48.219298,
       "longitude": 16.448534,
       "source": "oebb"
+    },
+    {
+      "bst_id": "462",
+      "bst_code": "Fld",
+      "name": "Felixdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Felixdorf",
+        "Bahnhof Felixdorf",
+        "Bf Felixdorf",
+        "bf Felixdorf",
+        "Felixdorf Bahnhof",
+        "Felixdorf Bf",
+        "Felixdorf bf"
+      ]
+    },
+    {
+      "bst_id": "468",
+      "bst_code": "Fld H2",
+      "name": "Wiener Neustadt Nord",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Wiener Neustadt Nord",
+        "Bahnhof Wiener Neustadt Nord",
+        "Bf Wiener Neustadt Nord",
+        "bf Wiener Neustadt Nord",
+        "Wiener Neustadt Nord Bahnhof",
+        "Wiener Neustadt Nord Bf",
+        "Wiener Neustadt Nord bf"
+      ]
     },
     {
       "bst_id": "4741048",
@@ -2206,6 +3041,70 @@
       "source": "oebb"
     },
     {
+      "bst_id": "626",
+      "bst_code": "Glo",
+      "name": "Gloggnitz",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Gloggnitz",
+        "Bahnhof Gloggnitz",
+        "Bf Gloggnitz",
+        "bf Gloggnitz",
+        "Gloggnitz Bahnhof",
+        "Gloggnitz Bf",
+        "Gloggnitz bf"
+      ]
+    },
+    {
+      "bst_id": "642",
+      "bst_code": "Gn",
+      "name": "Gramatneusiedl",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Gramatneusiedl",
+        "Bahnhof Gramatneusiedl",
+        "Bf Gramatneusiedl",
+        "bf Gramatneusiedl",
+        "Gramatneusiedl Bahnhof",
+        "Gramatneusiedl Bf",
+        "Gramatneusiedl bf"
+      ]
+    },
+    {
+      "bst_id": "655",
+      "bst_code": "Goe H1",
+      "name": "Sarasdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Sarasdorf",
+        "Bahnhof Sarasdorf",
+        "Bf Sarasdorf",
+        "bf Sarasdorf",
+        "Sarasdorf Bahnhof",
+        "Sarasdorf Bf",
+        "Sarasdorf bf"
+      ]
+    },
+    {
+      "bst_id": "656",
+      "bst_code": "Goe H2",
+      "name": "Wilfleinsdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Wilfleinsdorf",
+        "Bahnhof Wilfleinsdorf",
+        "Bf Wilfleinsdorf",
+        "bf Wilfleinsdorf",
+        "Wilfleinsdorf Bahnhof",
+        "Wilfleinsdorf Bf",
+        "Wilfleinsdorf bf"
+      ]
+    },
+    {
       "bst_id": "711",
       "bst_code": "Gs",
       "name": "Schwechat",
@@ -2228,6 +3127,52 @@
       "latitude": 48.143195,
       "longitude": 16.482055,
       "source": "oebb"
+    },
+    {
+      "bst_id": "713",
+      "bst_code": "Msw",
+      "name": "Mannswörth",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Mannswörth",
+        "Bahnhof Mannswoerth",
+        "Bahnhof Mannswörth",
+        "Bf Mannswoerth",
+        "bf Mannswoerth",
+        "Bf Mannswörth",
+        "bf Mannswörth",
+        "Mannswoerth",
+        "Mannswoerth Bahnhof",
+        "Mannswoerth Bf",
+        "Mannswoerth bf",
+        "Mannswörth Bahnhof",
+        "Mannswörth Bf",
+        "Mannswörth bf"
+      ]
+    },
+    {
+      "bst_id": "741",
+      "bst_code": "Guk H2",
+      "name": "Möllersdorf Aspangbahn",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Möllersdorf Aspangbahn",
+        "Bahnhof Moellersdorf Aspangbahn",
+        "Bahnhof Möllersdorf Aspangbahn",
+        "Bf Moellersdorf Aspangbahn",
+        "bf Moellersdorf Aspangbahn",
+        "Bf Möllersdorf Aspangbahn",
+        "bf Möllersdorf Aspangbahn",
+        "Moellersdorf Aspangbahn",
+        "Moellersdorf Aspangbahn Bahnhof",
+        "Moellersdorf Aspangbahn Bf",
+        "Moellersdorf Aspangbahn bf",
+        "Möllersdorf Aspangbahn Bahnhof",
+        "Möllersdorf Aspangbahn Bf",
+        "Möllersdorf Aspangbahn bf"
+      ]
     },
     {
       "bst_id": "777",
@@ -2418,6 +3363,54 @@
       "source": "oebb"
     },
     {
+      "bst_id": "820",
+      "bst_code": "Hfa",
+      "name": "Hadersdorf am Kamp",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Hadersdorf am Kamp",
+        "Bahnhof Hadersdorf am Kamp",
+        "Bf Hadersdorf am Kamp",
+        "bf Hadersdorf am Kamp",
+        "Hadersdorf am Kamp Bahnhof",
+        "Hadersdorf am Kamp Bf",
+        "Hadersdorf am Kamp bf"
+      ]
+    },
+    {
+      "bst_id": "850",
+      "bst_code": "Hlu",
+      "name": "Haslau an der Donau",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Haslau an der Donau",
+        "Bahnhof Haslau an der Donau",
+        "Bf Haslau an der Donau",
+        "bf Haslau an der Donau",
+        "Haslau an der Donau Bahnhof",
+        "Haslau an der Donau Bf",
+        "Haslau an der Donau bf"
+      ]
+    },
+    {
+      "bst_id": "856",
+      "bst_code": "Hnd",
+      "name": "Hennersdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Hennersdorf",
+        "Bahnhof Hennersdorf",
+        "Bf Hennersdorf",
+        "bf Hennersdorf",
+        "Hennersdorf Bahnhof",
+        "Hennersdorf Bf",
+        "Hennersdorf bf"
+      ]
+    },
+    {
       "bst_id": "857",
       "bst_code": "Hns",
       "name": "Wien Hernals",
@@ -2576,6 +3569,38 @@
       "source": "oebb"
     },
     {
+      "bst_id": "912",
+      "bst_code": "Hu  H2",
+      "name": "Maria Anzbach",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Maria Anzbach",
+        "Bahnhof Maria Anzbach",
+        "Bf Maria Anzbach",
+        "bf Maria Anzbach",
+        "Maria Anzbach Bahnhof",
+        "Maria Anzbach Bf",
+        "Maria Anzbach bf"
+      ]
+    },
+    {
+      "bst_id": "914",
+      "bst_code": "Hu  H4",
+      "name": "Neulengbach Stadt",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Neulengbach Stadt",
+        "Bahnhof Neulengbach Stadt",
+        "Bf Neulengbach Stadt",
+        "bf Neulengbach Stadt",
+        "Neulengbach Stadt Bahnhof",
+        "Neulengbach Stadt Bf",
+        "Neulengbach Stadt bf"
+      ]
+    },
+    {
       "bst_id": "934",
       "bst_code": "Id",
       "name": "Wien Blumental",
@@ -2624,6 +3649,38 @@
       "latitude": 48.273197,
       "longitude": 16.396927,
       "source": "oebb"
+    },
+    {
+      "bst_id": "959",
+      "bst_code": "F   H2S",
+      "name": "Langenzersdorf",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Langenzersdorf",
+        "Bahnhof Langenzersdorf",
+        "Bf Langenzersdorf",
+        "bf Langenzersdorf",
+        "Langenzersdorf Bahnhof",
+        "Langenzersdorf Bf",
+        "Langenzersdorf bf"
+      ]
+    },
+    {
+      "bst_id": "960",
+      "bst_code": "F   H3S",
+      "name": "Bisamberg",
+      "in_vienna": false,
+      "pendler": true,
+      "aliases": [
+        "Bisamberg",
+        "Bahnhof Bisamberg",
+        "Bf Bisamberg",
+        "bf Bisamberg",
+        "Bisamberg Bahnhof",
+        "Bisamberg Bf",
+        "Bisamberg bf"
+      ]
     },
     {
       "_google_place_id": "ChIJBa9sJZgHbUcRrekncb64g2M",

@@ -1,22 +1,42 @@
 {
   "diff": {
-    "added": 0,
+    "added": 56,
     "coord_shifted": 0,
     "removed": 0,
     "renamed": 0
   },
-  "note": "initial baseline; first real run by update-stations.yml will overwrite",
   "polygon_vertices": 5637,
   "stations": {
-    "after": 107,
+    "after": 163,
     "before": 107,
-    "delta": 0
+    "delta": 56
   },
-  "sub_scripts": [],
-  "timestamp": "2026-05-05T19:48:08+00:00",
+  "sub_scripts": [
+    {
+      "duration_s": 5.88,
+      "exit_code": 0,
+      "name": "update_station_directory.py"
+    },
+    {
+      "duration_s": 0.57,
+      "exit_code": 0,
+      "name": "update_vor_stations.py"
+    },
+    {
+      "duration_s": 2.02,
+      "exit_code": 0,
+      "name": "update_wl_stations.py"
+    },
+    {
+      "duration_s": 0.47,
+      "exit_code": 0,
+      "name": "enrich_station_aliases.py"
+    }
+  ],
+  "timestamp": "2026-05-05T20:23:13+00:00",
   "validation": {
-    "alias_issues": 93,
-    "coordinate_issues": 2,
+    "alias_issues": 149,
+    "coordinate_issues": 58,
     "cross_station_id_issues": 0,
     "duplicates": 0,
     "gtfs_issues": 0,
