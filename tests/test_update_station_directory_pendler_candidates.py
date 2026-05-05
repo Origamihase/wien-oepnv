@@ -40,6 +40,36 @@ def test_load_pendler_name_candidates_returns_normalized_keys(tmp_path: Path) ->
     assert "spillern" in keys
 
 
+def test_load_pendler_name_candidates_includes_alternative_names(tmp_path: Path) -> None:
+    """alternative_names broaden coverage when ÖBB Excel uses a different
+    spelling than the canonical research name."""
+    path = tmp_path / "pendler_candidates.json"
+    path.write_text(
+        json.dumps(
+            {
+                "candidates": [
+                    {
+                        "name": "Guntramsdorf Südbahn",
+                        "alternative_names": ["Guntramsdorf"],
+                    },
+                    {
+                        "name": "Götzendorf an der Leitha",
+                        "alternative_names": ["Götzendorf"],
+                    },
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    keys = usd.load_pendler_name_candidates(path)
+    # Both canonical and alternative spellings must produce match keys.
+    assert "guntramsdorf sudbahn" in keys
+    assert "guntramsdorf" in keys
+    assert "gotzendorf an der leitha" in keys
+    assert "gotzendorf" in keys
+
+
 def test_load_pendler_name_candidates_handles_missing_file(tmp_path: Path) -> None:
     """Absent file degrades to an empty set; bst_id whitelist remains primary."""
     keys = usd.load_pendler_name_candidates(tmp_path / "absent.json")
@@ -149,3 +179,67 @@ def test_pendler_candidates_top_12_present() -> None:
     }
     missing = top_12 - names
     assert not missing, f"Top-12 pendler stations missing from candidates: {missing}"
+
+
+def test_load_vor_locations_picks_up_coords(tmp_path: Path) -> None:
+    """VOR CSV must populate the location index so pendler stations missing
+    from the GTFS snapshot still get coordinates assigned."""
+    vor_path = tmp_path / "vor-haltestellen.csv"
+    vor_path.write_text(
+        "StopPointId;StopPointName;Latitude;Longitude\n"
+        "490009999;Pfaffstätten;48.0185;16.2596\n"
+        "490009998;Gumpoldskirchen;48.0416;16.2851\n",
+        encoding="utf-8",
+    )
+
+    locations = usd._load_vor_locations(vor_path)
+    keys = set(locations.keys())
+    assert "pfaffstatten" in keys
+    assert "gumpoldskirchen" in keys
+    pfaff = locations[next(k for k in keys if k == "pfaffstatten")]
+    assert pfaff.latitude == pytest.approx(48.0185)
+    assert pfaff.longitude == pytest.approx(16.2596)
+    assert "vor" in pfaff.sources
+
+
+def test_build_location_index_merges_three_sources(tmp_path: Path) -> None:
+    """When GTFS, WL and VOR all provide a name, GTFS/WL take precedence —
+    VOR fills only the gaps. This preserves the higher-precision authoritative
+    sources while still resolving the long tail of pendler-only stations."""
+    gtfs = tmp_path / "stops.txt"
+    gtfs.write_text(
+        "stop_id,stop_code,stop_name,stop_lat,stop_lon,location_type,parent_station,platform_code\n"
+        "490104000,Nw,Wien Praterstern,48.218767,16.392171,1,,\n",
+        encoding="utf-8",
+    )
+    wl = tmp_path / "wl.csv"
+    wl.write_text(
+        '"HALTEPUNKT_ID";"HALTESTELLEN_ID";"STOP_ID";"NAME";"Municipality";"RBL_NUMMER";"WGS84_LAT";"WGS84_LON"\n'
+        '"1";"1001";"60201076";"Karlsplatz";"Wien";"60201076";"48.198680";"16.369450"\n',
+        encoding="utf-8",
+    )
+    vor = tmp_path / "vor.csv"
+    vor.write_text(
+        # Pfaffstätten is only in VOR — GTFS/WL don't have it (the typical
+        # pendler-station gap).
+        "StopPointId;StopPointName;Latitude;Longitude\n"
+        "490009999;Pfaffstätten;48.0185;16.2596\n"
+        # Wien Praterstern is also in VOR but with slightly different coords —
+        # GTFS must win (verifies precedence).
+        "490104000;Wien Praterstern;48.220000;16.395000\n",
+        encoding="utf-8",
+    )
+
+    index = usd._build_location_index(gtfs, wl, vor_path=vor)
+
+    # Pfaffstätten resolves only via VOR.
+    assert "pfaffstatten" in index
+    assert index["pfaffstatten"].latitude == pytest.approx(48.0185)
+
+    # Praterstern keeps the GTFS value (precedence).
+    praterstern = index["wien praterstern"]
+    assert praterstern.latitude == pytest.approx(48.218767)
+    assert "gtfs" in praterstern.sources
+    assert "vor" not in praterstern.sources, (
+        "GTFS-precedence broken: VOR overwrote a GTFS-resolved location"
+    )

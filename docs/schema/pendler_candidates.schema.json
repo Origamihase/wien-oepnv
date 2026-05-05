@@ -29,6 +29,11 @@
           "minLength": 1,
           "description": "Station name as it appears in the ÖBB Excel-Verzeichnis 'Verkehrsstation' column. Whitespace is harmonized in the matcher; case-insensitive comparison."
         },
+        "alternative_names": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "description": "Optional alternative spellings the ÖBB Excel may use (e.g. 'Guntramsdorf' alongside the canonical 'Guntramsdorf Südbahn'). Each is normalized via the same logic as 'name'. Useful when ÖBB and external research use different conventions for the same station."
+        },
         "line": {
           "type": "string",
           "description": "Free-text annotation: which S-Bahn/REX/R lines serve this stop. Documentation only — does not influence matching."

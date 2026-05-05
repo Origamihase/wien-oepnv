@@ -26,6 +26,7 @@ from src.utils.http import session_with_retries  # noqa: E402
 
 
 DEFAULT_STATIONS_PATH = BASE_DIR / "data" / "stations.json"
+DEFAULT_PENDLER_CANDIDATES_PATH = BASE_DIR / "data" / "pendler_candidates.json"
 DEFAULT_OUTPUT_PATH = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_CONFIG_URL = "https://anachb.vor.at/webapp/js/hafas_webapp_config.js"
 DEFAULT_MGATE_URL = "https://anachb.vor.at/hamm/gate"
@@ -53,6 +54,17 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--stations", type=Path, default=DEFAULT_STATIONS_PATH, help="stations.json source")
     parser.add_argument(
+        "--pendler-candidates",
+        type=Path,
+        default=DEFAULT_PENDLER_CANDIDATES_PATH,
+        help=(
+            "Optional pendler_candidates.json source. Stations listed here "
+            "are resolved alongside those in stations.json so the next "
+            "update_all_stations.py pass already has a complete vor-haltestellen.csv "
+            "(closes the chicken-and-egg gap where new pendler-candidate names had no VOR ID yet)."
+        ),
+    )
+    parser.add_argument(
         "--output", type=Path, default=DEFAULT_OUTPUT_PATH, help="CSV output path for resolved VOR stops"
     )
     parser.add_argument(
@@ -69,8 +81,14 @@ def configure_logging(verbose: bool) -> None:
 
 def load_stations(path: Path) -> list[Station]:
     data = json.loads(path.read_text(encoding="utf-8"))
+    if isinstance(data, Mapping):
+        entries = data.get("stations", [])
+    else:
+        entries = data
     stations: list[Station] = []
-    for entry in data:
+    if not isinstance(entries, list):
+        return stations
+    for entry in entries:
         if not isinstance(entry, Mapping):
             continue
         name = str(entry.get("name") or "").strip()
@@ -81,6 +99,40 @@ def load_stations(path: Path) -> list[Station]:
             bst_id = str(bst_id).strip()
         stations.append(Station(name=name, bst_id=bst_id))
     return stations
+
+
+def load_pendler_candidate_names(path: Path) -> list[str]:
+    """Return all canonical + alternative names from pendler_candidates.json.
+
+    Missing or malformed file degrades to an empty list — callers continue
+    with the names from stations.json only.
+    """
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        log.info("Pendler candidates file not found: %s", path)
+        return []
+    except json.JSONDecodeError as exc:
+        log.warning("Invalid JSON in pendler candidates file %s: %s", path, exc)
+        return []
+    if not isinstance(data, Mapping):
+        return []
+    raw = data.get("candidates")
+    if not isinstance(raw, list):
+        return []
+    names: list[str] = []
+    for entry in raw:
+        if not isinstance(entry, Mapping):
+            continue
+        name = entry.get("name")
+        if isinstance(name, str) and name.strip():
+            names.append(name.strip())
+        alternative = entry.get("alternative_names")
+        if isinstance(alternative, list):
+            for alt in alternative:
+                if isinstance(alt, str) and alt.strip():
+                    names.append(alt.strip())
+    return names
 
 
 def fetch_access_id(session: requests.Session, config_url: str = DEFAULT_CONFIG_URL) -> str:
@@ -259,6 +311,27 @@ def main(argv: Sequence[str] | None = None) -> int:
     if not stations:
         log.error("No stations loaded from %s", args.stations)
         return 1
+
+    # Augment with pendler-candidate names so the next update_all_stations
+    # pass already has VOR IDs for the station names that aren't yet in
+    # stations.json. The matcher dedupes by station name, so listing a
+    # candidate twice is a no-op.
+    if args.pendler_candidates and args.pendler_candidates.exists():
+        existing_names = {s.name.casefold() for s in stations}
+        candidate_names = load_pendler_candidate_names(args.pendler_candidates)
+        added = 0
+        for name in candidate_names:
+            if name.casefold() in existing_names:
+                continue
+            stations.append(Station(name=name, bst_id=None))
+            existing_names.add(name.casefold())
+            added += 1
+        if added:
+            log.info(
+                "Added %d names from pendler candidates (%s) to the resolution queue",
+                added,
+                args.pendler_candidates.name,
+            )
 
     resolved_unique: dict[str, VORCandidate] = {}
     resolved_pairs: list[tuple[Station, VORCandidate]] = []
