@@ -1,5 +1,7 @@
 import json
 from pathlib import Path
+from typing import Any
+
 import pytest
 from unittest.mock import patch
 from src.utils.cache import write_cache, DataDegradationError
@@ -34,7 +36,7 @@ def test_cache_degradation_guard_bypass_on_empty_existing(tmp_path: Path) -> Non
 
         mock_cache_file.return_value = target_file
 
-        items = []
+        items: list[Any] = []
         write_cache(provider, items)
 
         assert target_file.exists()
@@ -55,7 +57,7 @@ def test_cache_degradation_guard_raises_on_empty_payload(tmp_path: Path) -> None
 
         mock_cache_file.return_value = target_file
 
-        items = []
+        items: list[Any] = []
         with pytest.raises(DataDegradationError, match="Empty payload rejected"):
             write_cache(provider, items)
 

@@ -123,7 +123,7 @@ def test_rate_limit_retries_once_after_wait(
 
     DummyResponse.raise_for_status = mock_raise_for_status
 
-    calls = []
+    calls: list[tuple[str, Any]] = []
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession(responses, calls))
 
     caplog.set_level(logging.WARNING, logger=oebb.log.name)
@@ -158,7 +158,7 @@ def test_rate_limit_raises_http_error_after_retry(monkeypatch: pytest.MonkeyPatc
 
     DummyResponse.raise_for_status = mock_raise_for_status
 
-    calls = []
+    calls: list[tuple[str, Any]] = []
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession(responses, calls))
 
     # Mock DNS resolution to return a known IP

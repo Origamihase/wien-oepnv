@@ -18,7 +18,7 @@ def test_infinite_pagination_guard() -> None:
 
     class InfiniteResponse:
         status_code = 200
-        headers = {}
+        headers: dict[str, str] = {}
         _content_consumed = True
         _content = (
             b'{"places": [{"id": "1", "displayName": {"text": "A"}, "location": '
