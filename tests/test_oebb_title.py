@@ -8,7 +8,7 @@ def test_wien_und_arrow_and_clean() -> None:
 
 def test_clean_title_canonicalizes_endpoints() -> None:
     t = "Verkehrsmeldung: Wien Franz Josefs Bahnhof - St Poelten Hbf"
-    assert _clean_title_keep_places(t) == "Wien Franz-Josefs-Bf ↔ St.Pölten Hbf"
+    assert _clean_title_keep_places(t) == "Wien Franz-Josefs-Bahnhof ↔ St. Pölten Hauptbahnhof"
 
 
 def test_clean_title_expands_wien_hbf_abbreviation() -> None:

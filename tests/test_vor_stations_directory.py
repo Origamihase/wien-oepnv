@@ -164,7 +164,10 @@ def test_vor_does_not_override_station_directory() -> None:
     info = station_info("Wiener Neustadt Hbf")
     assert info is not None
     assert info.vor_id == "900300"
-    assert info.name == "Wiener Neustadt Hbf"
+    # The canonical name now uses the full "Hauptbahnhof" form; the
+    # abbreviated "Wiener Neustadt Hbf" remains a recognized alias that
+    # resolves to this canonical record.
+    assert info.name == "Wiener Neustadt Hauptbahnhof"
 
 
 def test_vor_station_ids_only_cover_vienna_or_pendler() -> None:

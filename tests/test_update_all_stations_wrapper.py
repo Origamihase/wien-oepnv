@@ -67,6 +67,7 @@ def test_wrapper_preserves_stations_json_on_validation_failure(
                 reason="forced validation failure for regression test",
             ),
         ),
+        naming_issues=(),
         gtfs_stop_count=0,
     )
     monkeypatch.setattr(wrapper, "validate_stations", lambda *a, **kw: failing_report)
@@ -114,6 +115,7 @@ def test_wrapper_preserves_stations_json_on_atomic_write_failure(
         security_issues=(),
         cross_station_id_issues=(),
         provider_issues=(),
+        naming_issues=(),
         gtfs_stop_count=0,
     )
     monkeypatch.setattr(wrapper, "validate_stations", lambda *a, **kw: clean_report)

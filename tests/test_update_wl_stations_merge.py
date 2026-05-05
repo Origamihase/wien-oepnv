@@ -62,7 +62,7 @@ def test_merge_wl_data_into_existing_vor_entry(stations_path: Path) -> None:
     merged = _read_entries(stations_path)
     assert len(merged) == 1
     entry = merged[0]
-    assert entry["source"] == "vor, wl"
+    assert entry["source"] == "vor,wl"
     assert entry["wl_diva"] == "60201076"
     assert entry["wl_stops"] == wl_entries[0]["wl_stops"]
     from typing import cast
