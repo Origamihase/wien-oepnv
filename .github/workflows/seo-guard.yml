@@ -8,13 +8,20 @@ on:
     paths:
       - "docs/**"
       - ".github/workflows/seo-guard.yml"
+      - "scripts/generate_sitemap.py"
 
 permissions:
   contents: read
 
+concurrency:
+  group: seo-guard-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   verify:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       SITE_BASE: https://origamihase.github.io/wien-oepnv
@@ -24,6 +31,47 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+
+      - name: Refresh sitemap.xml
+        run: python scripts/generate_sitemap.py
+
+      - name: Verify sitemap.xml
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! -s docs/sitemap.xml ]]; then
+            echo "Error: docs/sitemap.xml missing or empty after generation"
+            exit 1
+          fi
+
+          if ! grep -q '<urlset' docs/sitemap.xml; then
+            echo "Error: docs/sitemap.xml is missing the <urlset> root element"
+            exit 1
+          fi
+
+          url_count="$(grep -c '<loc>' docs/sitemap.xml || true)"
+          if [[ "$url_count" -lt 1 ]]; then
+            echo "Error: docs/sitemap.xml contains no <loc> entries"
+            exit 1
+          fi
+
+          if ! grep -qF "<loc>${SITE_BASE}/" docs/sitemap.xml; then
+            echo "Error: docs/sitemap.xml does not reference SITE_BASE (${SITE_BASE})"
+            exit 1
+          fi
+          echo "sitemap.xml verification passed (${url_count} URLs)."
+
+      - name: Commit sitemap changes
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
+        with:
+          commit_message: 'chore(seo): refresh sitemap.xml [skip ci]'
+          file_pattern: 'docs/sitemap.xml'
 
       - name: Verify feed file (repo) – exactly one self & one alternate
         shell: bash
