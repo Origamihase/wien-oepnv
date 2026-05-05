@@ -138,10 +138,10 @@
   {
     "station_name": "Laxenburg-Biedermannsdorf",
     "bst_id": "1290",
-    "vor_id": "430316500",
-    "resolved_name": "Biedermannsdorf HLW",
-    "latitude": 48.084532,
-    "longitude": 16.346111
+    "vor_id": "900022021",
+    "resolved_name": "BIEDERMANNSDORF",
+    "latitude": 48.083381,
+    "longitude": 16.345643
   },
   {
     "station_name": "Marchegg",
@@ -600,14 +600,6 @@
     "longitude": 16.005968
   },
   {
-    "station_name": "Tulln an der Donau",
-    "bst_id": "2262",
-    "vor_id": "430380000",
-    "resolved_name": "Höflein an der Donau Bahnhof",
-    "latitude": 48.350055,
-    "longitude": 16.272031
-  },
-  {
     "station_name": "Tulln Stadt",
     "bst_id": "2269",
     "vor_id": "430505700",
@@ -794,10 +786,10 @@
   {
     "station_name": "Weigelsdorf",
     "bst_id": "310",
-    "vor_id": "430518600",
-    "resolved_name": "Weigelsdorf Grenzweg",
-    "latitude": 47.936794,
-    "longitude": 16.417395
+    "vor_id": "430518500",
+    "resolved_name": "Weigelsdorf Kienergasse",
+    "latitude": 47.948776,
+    "longitude": 16.408406
   },
   {
     "station_name": "Ebenfurth",
@@ -936,6 +928,14 @@
     "longitude": 16.490388
   },
   {
+    "station_name": "Götzendorf",
+    "bst_id": "654",
+    "vor_id": "430365500",
+    "resolved_name": "Götzendorf/Leitha Bahnhof",
+    "latitude": 48.025688,
+    "longitude": 16.587561
+  },
+  {
     "station_name": "Sarasdorf",
     "bst_id": "655",
     "vor_id": "430468800",
@@ -1040,12 +1040,20 @@
     "longitude": 15.714879
   },
   {
+    "station_name": "Himberg",
+    "bst_id": "835",
+    "vor_id": "430373800",
+    "resolved_name": "Himberg (bei Wien) Hauptplatz",
+    "latitude": 48.081979,
+    "longitude": 16.440255
+  },
+  {
     "station_name": "Haslau an der Donau",
     "bst_id": "850",
-    "vor_id": "430380000",
-    "resolved_name": "Höflein an der Donau Bahnhof",
-    "latitude": 48.350055,
-    "longitude": 16.272031
+    "vor_id": "430370600",
+    "resolved_name": "Haslau (Donau) Bahnhof",
+    "latitude": 48.109683,
+    "longitude": 16.710192
   },
   {
     "station_name": "Hennersdorf",
@@ -1216,28 +1224,12 @@
     "longitude": 16.587561
   },
   {
-    "station_name": "Götzendorf",
-    "bst_id": null,
-    "vor_id": "430365500",
-    "resolved_name": "Götzendorf/Leitha Bahnhof",
-    "latitude": 48.025688,
-    "longitude": 16.587561
-  },
-  {
     "station_name": "Himberg bei Wien",
     "bst_id": null,
-    "vor_id": "430373600",
-    "resolved_name": "Himberg (bei Wien) Friedhof",
-    "latitude": 48.077259,
-    "longitude": 16.444686
-  },
-  {
-    "station_name": "Himberg",
-    "bst_id": null,
-    "vor_id": "460034600",
-    "resolved_name": "Himberg (Deutschfeistritz) Haltestelle Bahnhof",
-    "latitude": 47.218304,
-    "longitude": 15.273994
+    "vor_id": "430373800",
+    "resolved_name": "Himberg (bei Wien) Hauptplatz",
+    "latitude": 48.081979,
+    "longitude": 16.440255
   },
   {
     "station_name": "Neunkirchen NÖ",
@@ -1248,7 +1240,31 @@
     "longitude": 16.085118
   },
   {
+    "station_name": "Neunkirchen",
+    "bst_id": null,
+    "vor_id": "430875800",
+    "resolved_name": "Neunkirchen (NÖ) Bahnhof",
+    "latitude": 47.731615,
+    "longitude": 16.085118
+  },
+  {
+    "station_name": "Neunkirchen (NÖ)",
+    "bst_id": null,
+    "vor_id": "430875800",
+    "resolved_name": "Neunkirchen (NÖ) Bahnhof",
+    "latitude": 47.731615,
+    "longitude": 16.085118
+  },
+  {
     "station_name": "Guntramsdorf-Kaiserau",
+    "bst_id": null,
+    "vor_id": "430361700",
+    "resolved_name": "Guntramsdorf Kaiserau Bf",
+    "latitude": 48.044494,
+    "longitude": 16.325274
+  },
+  {
+    "station_name": "Guntramsdorf Kaiserau",
     "bst_id": null,
     "vor_id": "430361700",
     "resolved_name": "Guntramsdorf Kaiserau Bf",
@@ -1272,6 +1288,22 @@
     "longitude": 16.642305
   },
   {
+    "station_name": "Trautmannsdorf/Leitha",
+    "bst_id": null,
+    "vor_id": "430501300",
+    "resolved_name": "Trautmannsdorf/Leitha Bahnhof",
+    "latitude": 48.024079,
+    "longitude": 16.642305
+  },
+  {
+    "station_name": "Trautmannsdorf Leitha",
+    "bst_id": null,
+    "vor_id": "430501300",
+    "resolved_name": "Trautmannsdorf/Leitha Bahnhof",
+    "latitude": 48.024079,
+    "longitude": 16.642305
+  },
+  {
     "station_name": "Maria Ellend an der Donau",
     "bst_id": null,
     "vor_id": "430414200",
@@ -1280,7 +1312,31 @@
     "longitude": 16.687728
   },
   {
+    "station_name": "Maria Ellend",
+    "bst_id": null,
+    "vor_id": "430414200",
+    "resolved_name": "Maria Ellend Bahnhof",
+    "latitude": 48.109692,
+    "longitude": 16.687728
+  },
+  {
+    "station_name": "Haslau",
+    "bst_id": null,
+    "vor_id": "430370600",
+    "resolved_name": "Haslau (Donau) Bahnhof",
+    "latitude": 48.109683,
+    "longitude": 16.710192
+  },
+  {
     "station_name": "Bad Deutsch-Altenburg",
+    "bst_id": null,
+    "vor_id": "430307900",
+    "resolved_name": "Bad Deutsch-Altenburg Bahnhof",
+    "latitude": 48.132489,
+    "longitude": 16.910669
+  },
+  {
+    "station_name": "Bad Deutsch-Altenburg/Donau",
     "bst_id": null,
     "vor_id": "430307900",
     "resolved_name": "Bad Deutsch-Altenburg Bahnhof",
@@ -1296,7 +1352,23 @@
     "longitude": 16.932019
   },
   {
+    "station_name": "Hainburg/Donau Kulturfabrik",
+    "bst_id": null,
+    "vor_id": "430368100",
+    "resolved_name": "Hainburg/Donau Kulturfabrik",
+    "latitude": 48.14484,
+    "longitude": 16.932019
+  },
+  {
     "station_name": "Hainburg Ungartor",
+    "bst_id": null,
+    "vor_id": "430367700",
+    "resolved_name": "Hainburg/Donau Ungartor/B9",
+    "latitude": 48.148355,
+    "longitude": 16.948145
+  },
+  {
+    "station_name": "Hainburg/Donau Ungartor",
     "bst_id": null,
     "vor_id": "430367700",
     "resolved_name": "Hainburg/Donau Ungartor/B9",
@@ -1312,12 +1384,36 @@
     "longitude": 16.826467
   },
   {
-    "station_name": "Laa an der Thaya",
+    "station_name": "Angern (March)",
     "bst_id": null,
-    "vor_id": "430596700",
-    "resolved_name": "Waidhofen an der Thaya Busbahnhof",
-    "latitude": 48.812631,
-    "longitude": 15.28266
+    "vor_id": "430304600",
+    "resolved_name": "Angern (March) Bahnhof",
+    "latitude": 48.384735,
+    "longitude": 16.826467
+  },
+  {
+    "station_name": "Angern March",
+    "bst_id": null,
+    "vor_id": "430304600",
+    "resolved_name": "Angern (March) Bahnhof",
+    "latitude": 48.384735,
+    "longitude": 16.826467
+  },
+  {
+    "station_name": "Laa a.d.Thaya",
+    "bst_id": null,
+    "vor_id": "430401500",
+    "resolved_name": "Laa/Thaya Bahnhof",
+    "latitude": 48.723287,
+    "longitude": 16.403021
+  },
+  {
+    "station_name": "Laa Thaya",
+    "bst_id": null,
+    "vor_id": "430401500",
+    "resolved_name": "Laa/Thaya Bahnhof",
+    "latitude": 48.723287,
+    "longitude": 16.403021
   },
   {
     "station_name": "St. Andrä-Wördern",
@@ -1328,7 +1424,31 @@
     "longitude": 16.20898
   },
   {
+    "station_name": "St Andrä-Wördern",
+    "bst_id": null,
+    "vor_id": "430482400",
+    "resolved_name": "St. Andrä-Wördern Bahnhof",
+    "latitude": 48.333865,
+    "longitude": 16.20898
+  },
+  {
     "station_name": "Krems an der Donau",
+    "bst_id": null,
+    "vor_id": "430399300",
+    "resolved_name": "Krems an der Donau Bahnhof",
+    "latitude": 48.409078,
+    "longitude": 15.604995
+  },
+  {
+    "station_name": "Krems a.d.Donau",
+    "bst_id": null,
+    "vor_id": "430399300",
+    "resolved_name": "Krems an der Donau Bahnhof",
+    "latitude": 48.409078,
+    "longitude": 15.604995
+  },
+  {
+    "station_name": "Krems Donau",
     "bst_id": null,
     "vor_id": "430399300",
     "resolved_name": "Krems an der Donau Bahnhof",

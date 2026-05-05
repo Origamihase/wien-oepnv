@@ -1,11 +1,11 @@
 # Stations Validation Report
 
-*Total stations analysed*: 165
+*Total stations analysed*: 169
 *GTFS stops loaded*: 99
 *Geographic duplicates*: 0
-*Alias issues*: 151
-*Coordinate anomalies*: 10
-*GTFS mismatches*: 50
+*Alias issues*: 155
+*Coordinate anomalies*: 3
+*GTFS mismatches*: 61
 *Security warnings*: 0
 *Provider issues*: 0
 *Cross station ID issues*: 0
@@ -17,9 +17,11 @@
 - code:Ken H1 / source:oebb (Klosterneuburg-Kierling): missing required aliases: Ken H1
 - code:Ko / source:oebb (Korneuburg): missing required aliases: Ko
 - code:Ko  H2 / source:oebb (Spillern): missing required aliases: Ko  H2
+- code:Kr / source:oebb (Krems a.d.Donau): missing required aliases: Kr
 - code:Ach / source:oebb (Achau): missing required aliases: Ach
 - code:Ktt / source:oebb (Kittsee): missing required aliases: Ktt
 - code:Kz / source:oebb (Kritzendorf): missing required aliases: Kz
+- code:Laa / source:oebb (Laa a.d.Thaya): missing required aliases: Laa
 - code:Lga / source:oebb (Wien Atzgersdorf): missing required aliases: Lga
 - code:Lb / source:oebb (Leobersdorf): missing required aliases: Lb
 - code:Lg / source:oebb (Wien Liesing): missing required aliases: Lg
@@ -31,6 +33,7 @@
 - code:Lp / source:oebb (Wien Leopoldau): missing required aliases: Lp
 - code:Lx / source:oebb (Laxenburg-Biedermannsdorf): missing required aliases: Lx
 - code:Mac / source:oebb (Marchegg): missing required aliases: Mac
+- code:Mae / source:oebb (Maria Ellend): missing required aliases: Mae
 - code:Mar / source:oebb (Maria Lanzendorf): missing required aliases: Mar
 - code:Het / source:oebb (Wien Hetzendorf): missing required aliases: Het
 - code:Wbf H1S / source:oebb (Wien Matzleinsdorfer Platz): missing required aliases: Wbf H1S
@@ -46,6 +49,7 @@
 - code:Bf / source:oebb (Pfaffstätten): missing required aliases: Bf
 - code:Bf  H1 / source:oebb (Baden): missing required aliases: Bf  H1
 - code:Nb / source:oebb (Wiener Neustadt Hauptbahnhof): missing required aliases: Nb
+- code:Ag / source:oebb (Angern): missing required aliases: Ag
 - code:Nf / source:oebb (Wien Nußdorf): missing required aliases: Nf
 - code:Nh / source:oebb (Hohenau): missing required aliases: Nh
 - code:Nl / source:oebb (Neulengbach): missing required aliases: Nl
@@ -165,29 +169,28 @@
 - code:900105 / source:vor (Wien Kaiserebersdorf): missing required aliases: 900105
 
 ## Coordinate anomalies
-- code:Lx / source:oebb (Laxenburg-Biedermannsdorf): missing latitude, missing longitude
-- code:Nh / source:oebb (Hohenau): missing latitude, missing longitude
 - code:Mb  H1H / source:oebb (Mistelbach Stadt): missing latitude, missing longitude
-- code:Ebr H1 / source:oebb (Weigelsdorf): missing latitude, missing longitude
-- code:Goe / source:oebb (Götzendorf): missing latitude, missing longitude
-- code:Him / source:oebb (Himberg): missing latitude, missing longitude
-- code:Hlu / source:oebb (Haslau an der Donau): missing latitude, missing longitude
-- code:Hnd / source:oebb (Hennersdorf): missing latitude, missing longitude
 - source:manual (München Hauptbahnhof): coordinates out of bounds (lat=48.140228, lon=11.558339)
 - source:manual (Roma Termini): coordinates out of bounds (lat=41.901002, lon=12.500253)
 
 ## GTFS mismatches
 - code:Aw / source:oebb (St.Andrä-Wördern) → missing stop_id 430482400
 - code:Ko  H2 / source:oebb (Spillern) → missing stop_id 430481400
+- code:Kr / source:oebb (Krems a.d.Donau) → missing stop_id 430399300
 - code:Ach / source:oebb (Achau) → missing stop_id 430300800
 - code:Kz / source:oebb (Kritzendorf) → missing stop_id 430399500
+- code:Laa / source:oebb (Laa a.d.Thaya) → missing stop_id 430401500
 - code:Lb  H1 / source:oebb (Sollenau) → missing stop_id 430480100
+- code:Lx / source:oebb (Laxenburg-Biedermannsdorf) → missing stop_id 900022021
+- code:Mae / source:oebb (Maria Ellend) → missing stop_id 430414200
 - code:Mar / source:oebb (Maria Lanzendorf) → missing stop_id 430416500
 - code:Md  H2 / source:oebb (Gumpoldskirchen) → missing stop_id 430360200
 - code:Bde / source:oebb (Bad Deutsch Altenburg) → missing stop_id 430307900
 - code:Beh / source:oebb (Bernhardsthal) → missing stop_id 430316200
 - code:Mue / source:oebb (Münchendorf) → missing stop_id 430423100
 - code:Bf / source:oebb (Pfaffstätten) → missing stop_id 430453300
+- code:Ag / source:oebb (Angern) → missing stop_id 430304600
+- code:Nh / source:oebb (Hohenau) → missing stop_id 430377800
 - code:Pet / source:oebb (Petronell-Carnuntum) → missing stop_id 430453100
 - code:Ah / source:oebb (Absdorf-Hippersdorf) → missing stop_id 430300400
 - code:Pr / source:oebb (Payerbach-Reichenau) → missing stop_id 430876300
@@ -213,16 +216,21 @@
 - code:Zs / source:oebb (Lanzendorf-Rannersdorf) → missing stop_id 430405400
 - code:Drg / source:oebb (Drösing) → missing stop_id 430330900
 - code:Due / source:oebb (Dürnkrut) → missing stop_id 430331000
+- code:Ebr H1 / source:oebb (Weigelsdorf) → missing stop_id 430518500
 - code:Fam / source:oebb (Fischamend) → missing stop_id 430343000
 - code:Fld / source:oebb (Felixdorf) → missing stop_id 430341500
 - code:Fld H2 / source:oebb (Wiener Neustadt Nord) → missing stop_id 430522300
 - code:Glo / source:oebb (Gloggnitz) → missing stop_id 430876100
 - code:Gn / source:oebb (Gramatneusiedl) → missing stop_id 430353800
+- code:Goe / source:oebb (Götzendorf) → missing stop_id 430365500
 - code:Goe H1 / source:oebb (Sarasdorf) → missing stop_id 430468800
 - code:Goe H2 / source:oebb (Wilfleinsdorf) → missing stop_id 430523900
 - code:Msw / source:oebb (Mannswörth) → missing stop_id 430487500
 - code:Guk H2 / source:oebb (Möllersdorf Aspangbahn) → missing stop_id 430430100
 - code:Hfa / source:oebb (Hadersdorf am Kamp) → missing stop_id 430366000
+- code:Him / source:oebb (Himberg) → missing stop_id 430373800
+- code:Hlu / source:oebb (Haslau an der Donau) → missing stop_id 430370600
+- code:Hnd / source:oebb (Hennersdorf) → missing stop_id 430372300
 - code:Hu  H2 / source:oebb (Maria Anzbach) → missing stop_id 430414000
 - code:Hu  H4 / source:oebb (Neulengbach Stadt) → missing stop_id 430433800
 - code:F   H2S / source:oebb (Langenzersdorf) → missing stop_id 430404500

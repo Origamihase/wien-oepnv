@@ -175,6 +175,28 @@
       "longitude": 16.256299
     },
     {
+      "bst_id": "1076",
+      "bst_code": "Kr",
+      "name": "Krems a.d.Donau",
+      "in_vienna": false,
+      "pendler": true,
+      "vor_id": "430399300",
+      "source": "oebb",
+      "latitude": 48.409078,
+      "longitude": 15.604995,
+      "aliases": [
+        "430399300",
+        "Krems a.d.Donau",
+        "Bahnhof Krems a.d.Donau",
+        "Bf Krems a.d.Donau",
+        "bf Krems a.d.Donau",
+        "Krems a.d.Donau Bahnhof",
+        "Krems a.d.Donau Bf",
+        "Krems a.d.Donau bf",
+        "Krems an der Donau Bahnhof"
+      ]
+    },
+    {
       "bst_id": "11",
       "bst_code": "Ach",
       "name": "Achau",
@@ -236,6 +258,28 @@
       "source": "oebb",
       "latitude": 48.335906,
       "longitude": 16.299115
+    },
+    {
+      "bst_id": "1131",
+      "bst_code": "Laa",
+      "name": "Laa a.d.Thaya",
+      "in_vienna": false,
+      "pendler": true,
+      "vor_id": "430401500",
+      "source": "oebb",
+      "latitude": 48.723287,
+      "longitude": 16.403021,
+      "aliases": [
+        "430401500",
+        "Laa a.d.Thaya",
+        "Bahnhof Laa a.d.Thaya",
+        "Bf Laa a.d.Thaya",
+        "bf Laa a.d.Thaya",
+        "Laa a.d.Thaya Bahnhof",
+        "Laa a.d.Thaya Bf",
+        "Laa a.d.Thaya bf",
+        "Laa/Thaya Bahnhof"
+      ]
     },
     {
       "bst_id": "115",
@@ -485,7 +529,9 @@
       "name": "Laxenburg-Biedermannsdorf",
       "in_vienna": false,
       "pendler": true,
+      "vor_id": "900022021",
       "aliases": [
+        "900022021",
         "Laxenburg-Biedermannsdorf",
         "Bahnhof Laxenburg Biedermannsdorf",
         "Bahnhof Laxenburg-Biedermannsdorf",
@@ -493,6 +539,7 @@
         "bf Laxenburg Biedermannsdorf",
         "Bf Laxenburg-Biedermannsdorf",
         "bf Laxenburg-Biedermannsdorf",
+        "BIEDERMANNSDORF",
         "Biedermannsdorf HLW",
         "Laxenburg Biedermannsdorf",
         "Laxenburg Biedermannsdorf Bahnhof",
@@ -502,7 +549,9 @@
         "Laxenburg-Biedermannsdorf Bf",
         "Laxenburg-Biedermannsdorf bf"
       ],
-      "source": "oebb"
+      "source": "oebb",
+      "latitude": 48.083381,
+      "longitude": 16.345643
     },
     {
       "bst_id": "1318",
@@ -524,6 +573,27 @@
       "latitude": 48.249798,
       "longitude": 16.917519,
       "source": "oebb"
+    },
+    {
+      "bst_id": "1319",
+      "bst_code": "Mae",
+      "name": "Maria Ellend",
+      "in_vienna": false,
+      "pendler": true,
+      "vor_id": "430414200",
+      "source": "oebb",
+      "latitude": 48.109692,
+      "longitude": 16.687728,
+      "aliases": [
+        "430414200",
+        "Maria Ellend",
+        "Bahnhof Maria Ellend",
+        "Bf Maria Ellend",
+        "bf Maria Ellend",
+        "Maria Ellend Bahnhof",
+        "Maria Ellend Bf",
+        "Maria Ellend bf"
+      ]
     },
     {
       "bst_id": "1341",
@@ -938,6 +1008,30 @@
       "source": "oebb"
     },
     {
+      "bst_id": "15",
+      "bst_code": "Ag",
+      "name": "Angern",
+      "in_vienna": false,
+      "pendler": true,
+      "vor_id": "430304600",
+      "source": "oebb",
+      "latitude": 48.384735,
+      "longitude": 16.826467,
+      "aliases": [
+        "430304600",
+        "Angern",
+        "Angern (March) Bahnhof",
+        "Angern (March) Bf",
+        "Angern (March) bf",
+        "Angern Bahnhof",
+        "Angern Bf",
+        "Angern bf",
+        "Bahnhof Angern",
+        "Bf Angern",
+        "bf Angern"
+      ]
+    },
+    {
       "bst_id": "1534",
       "bst_code": "Nf",
       "name": "Wien Nußdorf",
@@ -979,7 +1073,9 @@
       "name": "Hohenau",
       "in_vienna": false,
       "pendler": true,
+      "vor_id": "430377800",
       "aliases": [
+        "430377800",
         "Hohenau",
         "Bahnhof Hohenau",
         "Bf Hohenau",
@@ -989,7 +1085,9 @@
         "Hohenau Bf",
         "Hohenau bf"
       ],
-      "source": "oebb"
+      "source": "oebb",
+      "latitude": 48.598256,
+      "longitude": 16.900853
     },
     {
       "bst_id": "1558",
@@ -2816,7 +2914,9 @@
       "name": "Weigelsdorf",
       "in_vienna": false,
       "pendler": true,
+      "vor_id": "430518500",
       "aliases": [
+        "430518500",
         "Weigelsdorf",
         "Bahnhof Weigelsdorf",
         "Bf Weigelsdorf",
@@ -2824,9 +2924,12 @@
         "Weigelsdorf Bahnhof",
         "Weigelsdorf Bf",
         "Weigelsdorf bf",
-        "Weigelsdorf Grenzweg"
+        "Weigelsdorf Grenzweg",
+        "Weigelsdorf Kienergasse"
       ],
-      "source": "oebb"
+      "source": "oebb",
+      "latitude": 47.948776,
+      "longitude": 16.408406
     },
     {
       "bst_id": "325",
@@ -3308,8 +3411,10 @@
       "name": "Götzendorf",
       "in_vienna": false,
       "pendler": true,
+      "vor_id": "430365500",
       "source": "oebb",
       "aliases": [
+        "430365500",
         "Götzendorf",
         "Bahnhof Goetzendorf",
         "Bahnhof Götzendorf",
@@ -3323,8 +3428,11 @@
         "Goetzendorf bf",
         "Götzendorf Bahnhof",
         "Götzendorf Bf",
-        "Götzendorf bf"
-      ]
+        "Götzendorf bf",
+        "Götzendorf/Leitha Bahnhof"
+      ],
+      "latitude": 48.025688,
+      "longitude": 16.587561
     },
     {
       "bst_id": "655",
@@ -3663,16 +3771,21 @@
       "name": "Himberg",
       "in_vienna": false,
       "pendler": true,
+      "vor_id": "430373800",
       "source": "oebb",
       "aliases": [
+        "430373800",
         "Himberg",
         "Bahnhof Himberg",
         "Bf Himberg",
         "bf Himberg",
+        "Himberg (bei Wien) Hauptplatz",
         "Himberg Bahnhof",
         "Himberg Bf",
         "Himberg bf"
-      ]
+      ],
+      "latitude": 48.081979,
+      "longitude": 16.440255
     },
     {
       "bst_id": "850",
@@ -3680,17 +3793,22 @@
       "name": "Haslau an der Donau",
       "in_vienna": false,
       "pendler": true,
+      "vor_id": "430370600",
       "aliases": [
+        "430370600",
         "Haslau an der Donau",
         "Bahnhof Haslau an der Donau",
         "Bf Haslau an der Donau",
         "bf Haslau an der Donau",
+        "Haslau (Donau) Bahnhof",
         "Haslau an der Donau Bahnhof",
         "Haslau an der Donau Bf",
         "Haslau an der Donau bf",
         "Höflein an der Donau Bahnhof"
       ],
-      "source": "oebb"
+      "source": "oebb",
+      "latitude": 48.109683,
+      "longitude": 16.710192
     },
     {
       "bst_id": "856",
@@ -3698,7 +3816,9 @@
       "name": "Hennersdorf",
       "in_vienna": false,
       "pendler": true,
+      "vor_id": "430372300",
       "aliases": [
+        "430372300",
         "Hennersdorf",
         "Bahnhof Hennersdorf",
         "Bf Hennersdorf",
@@ -3708,7 +3828,9 @@
         "Hennersdorf Bf",
         "Hennersdorf bf"
       ],
-      "source": "oebb"
+      "source": "oebb",
+      "latitude": 48.112344,
+      "longitude": 16.358201
     },
     {
       "bst_id": "857",

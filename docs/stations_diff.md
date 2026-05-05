@@ -1,13 +1,15 @@
 # stations.json Diff Report
 
-_Generated: 2026-05-05T21:20:02+00:00_
+_Generated: 2026-05-05T22:07:09+00:00_
 
-**Stations: 163 → 165 (Δ +2)**
+**Stations: 165 → 169 (Δ +4)**
 
-## Added (2)
+## Added (4)
 
-- `bst:654` — Götzendorf
-- `bst:835` — Himberg
+- `bst:1076` — Krems a.d.Donau
+- `bst:1131` — Laa a.d.Thaya
+- `bst:1319` — Maria Ellend
+- `bst:15` — Angern
 
 ## Removed (0)
 

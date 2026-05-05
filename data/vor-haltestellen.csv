@@ -10,7 +10,6 @@ StopPointId;StopPointName;Latitude;Longitude
 430309000;Bad Vöslau Bahnhof;47.969533;16.223929
 430310100;Baden bei Wien Bahnhof;48.004060;16.242735
 430316200;Bernhardsthal Bahnhof;48.687995;16.879036
-430316500;Biedermannsdorf HLW;48.084532;16.346111
 430317000;Bisamberg Bahnhof;48.316390;16.347252
 430320900;Bruck an der Leitha Bahnhof;48.019036;16.780721
 430325500;Brunn am Gebirge Bahnhof;48.105090;16.288094
@@ -35,11 +34,11 @@ StopPointId;StopPointName;Latitude;Longitude
 430367700;Hainburg/Donau Ungartor/B9;48.148355;16.948145
 430368100;Hainburg/Donau Kulturfabrik;48.144840;16.932019
 430368600;Hainburg/Donau Personenbhf.;48.148930;16.939866
+430370600;Haslau (Donau) Bahnhof;48.109683;16.710192
 430372300;Hennersdorf bei Wien Bahnhof;48.112344;16.358201
-430373600;Himberg (bei Wien) Friedhof;48.077259;16.444686
+430373800;Himberg (bei Wien) Hauptplatz;48.081979;16.440255
 430377800;Hohenau an der March Bahnhof;48.598256;16.900853
 430378000;Hollabrunn Bahnhof;48.562964;16.072290
-430380000;Höflein an der Donau Bahnhof;48.350055;16.272031
 430389500;Kledering Bahnhof;48.132453;16.439724
 430395200;Klosterneuburg Kierling Bahnhof;48.309738;16.326316
 430395300;Klosterneuburg Weidling Bahnhof;48.297585;16.334586
@@ -47,6 +46,7 @@ StopPointId;StopPointName;Latitude;Longitude
 430398900;Kottingbrunn Bahnhof;47.950493;16.226968
 430399300;Krems an der Donau Bahnhof;48.409078;15.604995
 430399500;Kritzendorf Bahnhof;48.335906;16.299115
+430401500;Laa/Thaya Bahnhof;48.723287;16.403021
 430404500;Langenzersdorf Bahnhof;48.306880;16.355468
 430405400;Lanzendorf-Rannersdorf Bahnhof;48.113486;16.447482
 430408400;Leobersdorf Bahnhof;47.937864;16.231300
@@ -93,7 +93,7 @@ StopPointId;StopPointName;Latitude;Longitude
 430506800;Tullnerbach-Pressbaum Bahnhof;48.186083;16.093271
 430509000;Untersiebenbrunn Bahnhof;48.247982;16.748558
 430514700;Wampersdorf Bahnhof;47.931535;16.417305
-430518600;Weigelsdorf Grenzweg;47.936794;16.417395
+430518500;Weigelsdorf Kienergasse;47.948776;16.408406
 430521000;Wiener Neustadt Hauptbahnhof;47.811304;16.233620
 430522300;Wiener Neustadt Nord;47.834524;16.238690
 430523500;Wildungsmauer Bahnhof;48.108029;16.802493
@@ -101,13 +101,11 @@ StopPointId;StopPointName;Latitude;Longitude
 430527100;Wolfsthal Bahnhof;48.135554;17.006063
 430527400;Wolkersdorf Bahnhof;48.378434;16.512672
 430575900;Tullnerfeld Bahnhof;48.295140;15.996736
-430596700;Waidhofen an der Thaya Busbahnhof;48.812631;15.282660
 430875800;Neunkirchen (NÖ) Bahnhof;47.731615;16.085118
 430875900;Ternitz Bahnhof;47.713753;16.033385
 430876000;Pottschach Bahnhof;47.696899;16.005968
 430876100;Gloggnitz Bahnhof;47.677581;15.945974
 430876300;Payerbach-Reichenau;47.696063;15.863210
-460034600;Himberg (Deutschfeistritz) Haltestelle Bahnhof;47.218304;15.273994
 490009400;Wien Atzgersdorf;48.147141;16.288634
 490016600;Wien Breitensee;48.198236;16.306333
 490017600;Wien Brünner Straße;48.267777;16.403588
@@ -160,3 +158,4 @@ StopPointId;StopPointName;Latitude;Longitude
 490151900;Wien Zentralfriedhof;48.153811;16.426285
 490170500;Wien Handelskai;48.241798;16.385223
 490178000;Wien Kaiserebersdorf;48.146413;16.465739
+900022021;BIEDERMANNSDORF;48.083381;16.345643
