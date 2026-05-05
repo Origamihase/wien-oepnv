@@ -12,14 +12,9 @@ from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Set,
 
 import requests
 
-try:
-    from utils.env import read_secret
-    from utils.http import read_response_safe, session_with_retries, verify_response_ip
-    from utils.logging import sanitize_log_arg, sanitize_log_message
-except ModuleNotFoundError:
-    from ..utils.env import read_secret
-    from ..utils.http import read_response_safe, session_with_retries, verify_response_ip
-    from ..utils.logging import sanitize_log_arg, sanitize_log_message
+from ..utils.env import read_secret
+from ..utils.http import read_response_safe, session_with_retries, verify_response_ip
+from ..utils.logging import sanitize_log_arg, sanitize_log_message
 
 from .quota import MonthlyQuota, QuotaConfig
 from .tiling import Tile
@@ -42,7 +37,7 @@ _MAX_ERROR_DETAIL = 200
 def _sanitize_error_detail(detail: str, secrets: Optional[List[str]] = None) -> str:
     # Security: Mask secrets and strip control characters to avoid log injection.
     cleaned = sanitize_log_message(detail, secrets=secrets)
-    return cast(str, cleaned[:_MAX_ERROR_DETAIL])
+    return cleaned[:_MAX_ERROR_DETAIL]
 
 
 def _env_int(name: str, default: int, min_v: int | None = None, max_v: int | None = None) -> int:
@@ -577,14 +572,14 @@ def get_places_api_key() -> str:
 
     access_id = read_secret("GOOGLE_ACCESS_ID")
     if access_id:
-        return cast(str, access_id)
+        return access_id
 
     legacy_key = read_secret("GOOGLE_MAPS_API_KEY")
     if legacy_key:
         LOGGER.warning(
             "DEPRECATED: use GOOGLE_ACCESS_ID instead of GOOGLE_MAPS_API_KEY"
         )
-        return cast(str, legacy_key)
+        return legacy_key
 
     message = "Missing GOOGLE_ACCESS_ID (preferred) or GOOGLE_MAPS_API_KEY."
     LOGGER.error(message)

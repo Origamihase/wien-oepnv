@@ -9,14 +9,9 @@ from dataclasses import dataclass
 from types import ModuleType
 from typing import Any, Callable, Dict, Iterable, List, Tuple, cast
 
-try:  # pragma: no cover - allow running as script or package
-    from utils.cache import read_cache
-    from feed.config import get_bool_env
-    from feed_types import FeedItem
-except ModuleNotFoundError:  # pragma: no cover
-    from ..utils.cache import read_cache
-    from .config import get_bool_env
-    from ..feed_types import FeedItem
+from ..utils.cache import read_cache
+from .config import get_bool_env
+from ..feed_types import FeedItem
 
 log = logging.getLogger(__name__)
 

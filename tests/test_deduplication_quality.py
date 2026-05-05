@@ -1,12 +1,7 @@
 import unittest
 from datetime import datetime, timezone
-import sys
-import os
 
-# Adjust path to import src
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
-
-from build_feed import _dedupe_items, _dedupe_key_for_item
+from src.build_feed import _dedupe_items, _dedupe_key_for_item
 
 class TestDeduplicationQuality(unittest.TestCase):
     """

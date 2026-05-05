@@ -17,18 +17,11 @@ import requests
 from .config import LOG_TIMEZONE
 from .logging import diagnostics_log_path, error_log_path, prune_log_file
 
-try:  # pragma: no cover - support package and script execution
-    from utils.env import get_bool_env, read_secret
-    from utils.files import atomic_write
-    from utils.http import request_safe, session_with_retries, validate_http_url
-    from utils.logging import sanitize_log_message
-    from utils.text import escape_markdown, escape_markdown_cell
-except ModuleNotFoundError:  # pragma: no cover
-    from ..utils.env import get_bool_env, read_secret
-    from ..utils.files import atomic_write
-    from ..utils.http import request_safe, session_with_retries, validate_http_url
-    from ..utils.logging import sanitize_log_message
-    from ..utils.text import escape_markdown, escape_markdown_cell
+from ..utils.env import get_bool_env, read_secret
+from ..utils.files import atomic_write
+from ..utils.http import request_safe, session_with_retries, validate_http_url
+from ..utils.logging import sanitize_log_message
+from ..utils.text import escape_markdown, escape_markdown_cell
 
 log = logging.getLogger("build_feed")
 

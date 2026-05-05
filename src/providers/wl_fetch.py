@@ -10,45 +10,16 @@ import os
 import re
 import time
 from datetime import datetime, timedelta, timezone
-from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Optional, Sequence, Tuple, cast
+from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple, cast
 
 import requests
 from dateutil import parser as dtparser
 
-if TYPE_CHECKING:  # pragma: no cover - prefer package imports during type checks
-    from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
-    from ..utils.ids import make_guid
-    from ..utils.logging import sanitize_log_arg
-    from ..utils.stations import canonical_name
-else:  # pragma: no cover - support both package layouts at runtime
-    try:
-        from utils.http import session_with_retries, validate_http_url, fetch_content_safe
-    except ModuleNotFoundError:
-        from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe  # type: ignore
-
-    try:
-        from utils.logging import sanitize_log_arg
-    except ModuleNotFoundError:
-        from ..utils.logging import sanitize_log_arg  # type: ignore
-
-    try:
-        from utils.ids import make_guid
-    except ModuleNotFoundError:
-        from ..utils.ids import make_guid  # type: ignore
-
-    try:
-        from utils.stations import canonical_name
-    except ModuleNotFoundError:
-        from ..utils.stations import canonical_name  # type: ignore
-
-try:
-    from feed.config import ENDS_AT_GRACE_MINUTES
-except ModuleNotFoundError:
-    try:
-        from ..feed.config import ENDS_AT_GRACE_MINUTES
-    except ModuleNotFoundError:
-        # Fallback if config is unreachable (e.g. tests)
-        ENDS_AT_GRACE_MINUTES = 10
+from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
+from ..utils.ids import make_guid
+from ..utils.logging import sanitize_log_arg
+from ..utils.stations import canonical_name
+from ..feed.config import ENDS_AT_GRACE_MINUTES
 
 from .wl_lines import (
     _detect_line_pairs_from_text,
