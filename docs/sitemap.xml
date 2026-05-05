@@ -101,6 +101,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://origamihase.github.io/wien-oepnv/archive/audits/stations_coverage_2026-05.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://origamihase.github.io/wien-oepnv/archive/audits/stations_data_audit_2026-05-05.html</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -232,6 +237,10 @@
   <url>
     <loc>https://origamihase.github.io/wien-oepnv/schema/events.schema.json</loc>
     <lastmod>2026-05-01</lastmod>
+  </url>
+  <url>
+    <loc>https://origamihase.github.io/wien-oepnv/schema/pendler_candidates.schema.json</loc>
+    <lastmod>2026-05-05</lastmod>
   </url>
   <url>
     <loc>https://origamihase.github.io/wien-oepnv/schema/stations.schema.json</loc>
