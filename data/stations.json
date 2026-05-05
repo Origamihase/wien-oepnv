@@ -2908,16 +2908,21 @@
       "name": "Weigelsdorf",
       "in_vienna": false,
       "pendler": true,
+      "vor_id": "430543200",
       "aliases": [
+        "430543200",
         "Weigelsdorf",
         "Bahnhof Weigelsdorf",
         "Bf Weigelsdorf",
         "bf Weigelsdorf",
+        "Weigelsdorf B60/Boschansiedlung",
         "Weigelsdorf Bahnhof",
         "Weigelsdorf Bf",
         "Weigelsdorf bf"
       ],
-      "source": "oebb"
+      "source": "oebb",
+      "latitude": 47.940533,
+      "longitude": 16.400693
     },
     {
       "bst_id": "325",
