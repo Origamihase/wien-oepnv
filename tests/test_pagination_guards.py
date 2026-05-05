@@ -1,6 +1,9 @@
+from typing import Any, Iterator
+
+import requests
+
 from src.places.client import GooglePlacesClient, GooglePlacesConfig
 from src.places.tiling import Tile
-import requests
 from unittest.mock import MagicMock
 
 def test_infinite_pagination_guard() -> None:
@@ -32,14 +35,14 @@ def test_infinite_pagination_guard() -> None:
         raw._connection = MagicMock()
         raw._connection.__class__.__name__ = "MockConnection"
 
-        def json(self):
+        def json(self) -> Any:
             import json
             return json.loads(self._content.decode())
 
-        def iter_content(self, chunk_size):
+        def iter_content(self, chunk_size: int) -> Iterator[bytes]:
             yield self._content
 
-        def close(self):
+        def close(self) -> None:
             pass
 
     mock_session.post.return_value.__enter__.return_value = InfiniteResponse()

@@ -9,7 +9,7 @@ def test_collect_items_timeout_zero() -> None:
     mock_feed_config.PROVIDER_MAX_WORKERS = 1
     mock_feed_config.get_bool_env.return_value = True
 
-    def mock_fetch(timeout=None): return []
+    def mock_fetch(timeout: Any = None) -> list[dict[str, Any]]: return []
     mock_fetch.__name__ = "dummy_provider"
     report = MagicMock(spec=RunReport)
 
@@ -36,7 +36,7 @@ def test_collect_items_timeout_underflow() -> None:
     mock_feed_config.PROVIDER_MAX_WORKERS = 1
     mock_feed_config.get_bool_env.return_value = True
 
-    def mock_fetch(timeout=None): return []
+    def mock_fetch(timeout: Any = None) -> list[dict[str, Any]]: return []
     mock_fetch.__name__ = "dummy_provider"
     report = MagicMock(spec=RunReport)
 
@@ -48,7 +48,7 @@ def test_collect_items_timeout_underflow() -> None:
         original_submit = bf.ThreadPoolExecutor.submit
 
         captured_run_fetch = []
-        def mock_submit(self, fn, *args, **kwargs):
+        def mock_submit(self: Any, fn: Any, *args: Any, **kwargs: Any) -> Any:
             captured_run_fetch.append(fn)
             return original_submit(self, fn, *args, **kwargs)
 
@@ -68,7 +68,7 @@ def test_run_fetch_timeout_exactly_zero() -> None:
     semaphore = threading.BoundedSemaphore(1)
 
     # define the function just like in _build_feed
-    def mock_fetch(timeout=None):
+    def mock_fetch(timeout: Any = None) -> list[dict[str, Any]]:
         return []
 
     def _run_fetch(
