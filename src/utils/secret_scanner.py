@@ -72,6 +72,15 @@ _KNOWN_TOKENS = [
     (re.compile(r"(?<![A-Za-z0-9])glpat-[0-9a-zA-Z_\-]{20}(?![A-Za-z0-9])"), "GitLab Personal Access Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])ghp_[0-9a-zA-Z]{36}(?![A-Za-z0-9])"), "GitHub Personal Access Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])github_pat_[0-9a-zA-Z_]{22,}(?![A-Za-z0-9])"), "GitHub Fine-Grained Token gefunden"),
+    # GitHub OAuth-App access token (issued via the OAuth web flow).
+    (re.compile(r"(?<![A-Za-z0-9])gho_[0-9a-zA-Z]{36}(?![A-Za-z0-9])"), "GitHub OAuth Access Token gefunden"),
+    # GitHub App user-to-server token (App acting on behalf of an authenticated user).
+    (re.compile(r"(?<![A-Za-z0-9])ghu_[0-9a-zA-Z]{36}(?![A-Za-z0-9])"), "GitHub App User-to-Server Token gefunden"),
+    # GitHub App server-to-server token. This is the format of `GITHUB_TOKEN`
+    # auto-injected by GitHub Actions, so leakage is high-impact.
+    (re.compile(r"(?<![A-Za-z0-9])ghs_[0-9a-zA-Z]{36}(?![A-Za-z0-9])"), "GitHub App Server-to-Server Token gefunden"),
+    # GitHub refresh token (issued alongside gho_/ghu_ during token rotation).
+    (re.compile(r"(?<![A-Za-z0-9])ghr_[0-9a-zA-Z]{36}(?![A-Za-z0-9])"), "GitHub Refresh Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])AIza[0-9A-Za-z\-_]{35}(?![A-Za-z0-9])"), "Google API Key gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])[0-9]{3,14}:[a-zA-Z0-9_-]{35}(?![A-Za-z0-9])"), "Telegram Bot Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])sk_live_[0-9a-zA-Z]{24}(?![A-Za-z0-9])"), "Stripe Live Secret Key gefunden"),
