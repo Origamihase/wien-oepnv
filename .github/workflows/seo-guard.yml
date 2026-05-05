@@ -36,21 +36,13 @@ jobs:
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
 
       - name: Refresh sitemap.xml
-        shell: bash
-        run: |
-          set -uxo pipefail
-          python --version
-          python -c "import sys; print('sys.path:', sys.path)"
-          echo "--- docs/ contents ---"
-          ls -la docs/ || true
-          echo "--- generate_sitemap.py run ---"
-          python scripts/generate_sitemap.py
-          rc=$?
-          echo "--- exit rc=$rc ---"
-          ls -la docs/sitemap.xml || true
-          exit $rc
+        run: python scripts/generate_sitemap.py
 
       - name: Verify sitemap.xml
         shell: bash
