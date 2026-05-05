@@ -11,6 +11,71 @@ import pytest
 from scripts import update_wl_stations
 
 
+def test_download_ogd_csv_returns_false_on_network_failure(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """When the WL OGD endpoint is unreachable the helper degrades gracefully.
+
+    Sandboxed environments may not have network access; the download must
+    return ``False`` (without raising) so that the existing local CSV
+    files keep the pipeline functional.
+    """
+    target = tmp_path / "wienerlinien-ogd-haltestellen.csv"
+
+    def fake_session_with_retries(_user_agent):  # type: ignore[no-untyped-def]
+        class _DummySession:
+            def __enter__(self):  # type: ignore[no-untyped-def]
+                return self
+
+            def __exit__(self, *_args):  # type: ignore[no-untyped-def]
+                return False
+
+        return _DummySession()
+
+    def fake_fetch(_session, _url, *, timeout):  # type: ignore[no-untyped-def]
+        raise OSError("simulated network failure")
+
+    import src.utils.http as http_utils
+    monkeypatch.setattr(http_utils, "session_with_retries", fake_session_with_retries)
+    monkeypatch.setattr(http_utils, "fetch_content_safe", fake_fetch)
+
+    ok = update_wl_stations._download_ogd_csv(
+        "https://example.invalid/wl.csv", target
+    )
+    assert ok is False
+    assert not target.exists()
+
+
+def test_download_ogd_csv_writes_target_on_success(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    target = tmp_path / "wienerlinien-ogd-haltestellen.csv"
+    payload = b'"HALTESTELLEN_ID";"NAME";"DIVA"\n"1001";"Karlsplatz";"60201076"\n'
+
+    def fake_session_with_retries(_user_agent):  # type: ignore[no-untyped-def]
+        class _DummySession:
+            def __enter__(self):  # type: ignore[no-untyped-def]
+                return self
+
+            def __exit__(self, *_args):  # type: ignore[no-untyped-def]
+                return False
+
+        return _DummySession()
+
+    def fake_fetch(_session, _url, *, timeout):  # type: ignore[no-untyped-def]
+        return payload
+
+    import src.utils.http as http_utils
+    monkeypatch.setattr(http_utils, "session_with_retries", fake_session_with_retries)
+    monkeypatch.setattr(http_utils, "fetch_content_safe", fake_fetch)
+
+    ok = update_wl_stations._download_ogd_csv(
+        "https://example.test/wl.csv", target
+    )
+    assert ok is True
+    assert target.read_bytes() == payload
+
+
 @pytest.fixture()
 def stations_path(tmp_path: Path) -> Path:
     path = tmp_path / "stations.json"

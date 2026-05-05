@@ -65,7 +65,14 @@ def _strip_accents(value: str) -> str:
 
 
 def _normalize_token(value: str) -> str:
-    """Produce a canonical lookup token for a station alias."""
+    """Produce a canonical lookup token for a station alias.
+
+    The umlaut transliteration fold (``ae→a``, ``oe→o``, ``ue→u``) handles
+    ASCII-style spellings of German names like ``Mueller`` matching ``Müller``.
+    Skipping it for tokens of length ≤ 3 keeps short ÖBB Stellencodes
+    distinct after normalization — e.g. ``Sue`` (Wien Süßenbrunn) and ``Su``
+    (Stockerau) must not both collapse to ``su``.
+    """
 
     if not value:
         return ""
@@ -74,7 +81,8 @@ def _normalize_token(value: str) -> str:
     text = text.replace("ß", "ss")
     text = text.casefold()
     text = re.sub(r"\ba\s*(?:[./]\s*)?d(?:[./]\s*)?\b", "an der ", text)
-    text = text.replace("ae", "a").replace("oe", "o").replace("ue", "u")
+    if len(text) > 3:
+        text = text.replace("ae", "a").replace("oe", "o").replace("ue", "u")
     text = re.sub(r"\bst[. ]?\b", "sankt ", text)
     text = re.sub(r"\b(?:bahnhof|bahnhst|bhf|hbf|bf)\b", "", text)
     text = re.sub(r"[^a-z0-9]+", " ", text)

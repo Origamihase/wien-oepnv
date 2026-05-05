@@ -51,6 +51,14 @@ DEFAULT_HALTESTELLEN = BASE_DIR / "data" / "wienerlinien-ogd-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 DEFAULT_VOR_MAPPING = BASE_DIR / "data" / "vor-haltestellen.mapping.json"
 
+OGD_HALTESTELLEN_URL = "https://data.wien.gv.at/csv/wienerlinien-ogd-haltestellen.csv"
+OGD_HALTEPUNKTE_URL = "https://data.wien.gv.at/csv/wienerlinien-ogd-haltepunkte.csv"
+OGD_DOWNLOAD_TIMEOUT_SECONDS = 30
+USER_AGENT = (
+    "wien-oepnv station updater "
+    "(https://github.com/Origamihase/wien-oepnv)"
+)
+
 log = logging.getLogger("update_wl_stations")
 
 
@@ -83,12 +91,59 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         help="Optional vor-haltestellen mapping to enrich WL stations with VOR identifiers",
     )
     parser.add_argument(
+        "--download",
+        dest="download",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help=(
+            "Download the latest WL OGD haltestellen/haltepunkte CSVs from "
+            "data.wien.gv.at before merging (default: enabled). On failure, "
+            "the existing local files are used as a fallback."
+        ),
+    )
+    parser.add_argument(
         "-v",
         "--verbose",
         action="store_true",
         help="Enable verbose logging output",
     )
     return parser.parse_args(argv)
+
+
+def _download_ogd_csv(url: str, target: Path) -> bool:
+    """Download a Wiener Linien OGD CSV and write it to *target* atomically.
+
+    Returns ``True`` on success, ``False`` on any error. Errors are logged
+    but not raised, so callers can fall back to existing local files.
+    """
+    base_dir = _project_root()
+    if str(base_dir) not in sys.path:  # pragma: no cover - defensive
+        sys.path.insert(0, str(base_dir))
+    try:
+        from src.utils.http import fetch_content_safe, session_with_retries
+    except ImportError:  # pragma: no cover - defensive
+        log.warning("HTTP utilities unavailable; cannot download %s", url)
+        return False
+
+    log.info("Downloading WL OGD: %s", url)
+    try:
+        with session_with_retries(USER_AGENT) as session:
+            content = fetch_content_safe(
+                session, url, timeout=OGD_DOWNLOAD_TIMEOUT_SECONDS
+            )
+    except Exception as exc:  # pragma: no cover - network-dependent
+        log.warning("Failed to download %s (%s); using local file if present", url, exc)
+        return False
+
+    if not content:
+        log.warning("Empty response from %s; using local file if present", url)
+        return False
+
+    target.parent.mkdir(parents=True, exist_ok=True)
+    with atomic_write(target, mode="wb", permissions=0o644) as handle:
+        handle.write(content)
+    log.info("Saved %s (%d bytes)", target, len(content))
+    return True
 
 
 def configure_logging(verbose: bool) -> None:
@@ -602,6 +657,10 @@ def merge_into_stations(
 def main(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
     configure_logging(args.verbose)
+
+    if args.download:
+        _download_ogd_csv(OGD_HALTESTELLEN_URL, args.haltestellen)
+        _download_ogd_csv(OGD_HALTEPUNKTE_URL, args.haltepunkte)
 
     log.info("Reading haltestellen: %s", args.haltestellen)
     haltestellen = load_haltestellen(args.haltestellen)
