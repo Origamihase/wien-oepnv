@@ -3,6 +3,7 @@ from __future__ import annotations
 import subprocess
 import sys
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -24,7 +25,7 @@ def test_refresh_provider_caches_timeout(monkeypatch: pytest.MonkeyPatch, caplog
     monkeypatch.setattr(Path, "exists", mock_exists)
 
     # Mock subprocess.run to raise TimeoutExpired
-    def mock_run(*args, **kwargs):
+    def mock_run(*args: Any, **kwargs: Any) -> None:
         assert kwargs.get("timeout") == 300
         raise subprocess.TimeoutExpired(cmd=args[0], timeout=300)
 

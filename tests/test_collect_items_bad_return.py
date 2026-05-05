@@ -1,6 +1,7 @@
 import importlib
 import sys
 from pathlib import Path
+from typing import Any
 import pytest
 import types
 
@@ -30,10 +31,10 @@ def test_collect_items_logs_and_skips_invalid_return(
 ) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
-    def good_provider(timeout=None):
+    def good_provider(timeout: Any = None) -> list[dict[str, str]]:
         return [{"p": "good"}]
 
-    def bad_provider(timeout=None):
+    def bad_provider(timeout: Any = None) -> dict[str, str]:
         return {"p": "bad"}
 
     monkeypatch.setattr(

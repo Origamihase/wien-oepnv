@@ -1,6 +1,7 @@
 import sys
 import json
 import importlib
+from typing import Any, Iterator
 import pytest
 import types
 from pathlib import Path
@@ -47,7 +48,7 @@ def test_save_state_uses_separate_lock_file(
     locked_files = []
 
     @contextmanager
-    def spy_file_lock(fileobj, exclusive):
+    def spy_file_lock(fileobj: Any, exclusive: bool) -> Iterator[None]:
         locked_files.append(fileobj.name)
         with original_file_lock(fileobj, exclusive=exclusive):
             yield

@@ -2,6 +2,7 @@ import importlib
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import Any
 import pytest
 import types
 
@@ -32,12 +33,12 @@ def test_item_with_past_ends_at_is_dropped(
     future = {"title": "future", "ends_at": now + timedelta(hours=1)}
     past = {"title": "past", "ends_at": now - timedelta(minutes=11)}
 
-    def fake_collect(report=None):
+    def fake_collect(report: Any = None) -> list[dict[str, Any]]:
         return [future, past]
 
     captured = {}
 
-    def fake_make_rss(items, now_param, state, deletions=None):
+    def fake_make_rss(items: Any, now_param: Any, state: Any, deletions: Any = None) -> str:
         captured["items"] = items
         return ""
 

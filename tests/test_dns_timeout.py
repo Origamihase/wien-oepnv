@@ -1,5 +1,6 @@
 
 import time
+from typing import Any
 from unittest.mock import patch
 from src.utils.http import validate_http_url, DNS_TIMEOUT
 
@@ -9,7 +10,7 @@ def test_validate_http_url_timeout() -> None:
     # We simulate a sleep longer than DNS_TIMEOUT
     slow_duration = DNS_TIMEOUT + 1.0
 
-    def mock_resolve_slow(host, *args, **kwargs):
+    def mock_resolve_slow(host: Any, *args: Any, **kwargs: Any) -> None:
         import dns.exception
         raise dns.exception.Timeout()  # type: ignore[no-untyped-call]
 
@@ -39,7 +40,7 @@ def test_validate_http_url_timeout() -> None:
 def test_validate_http_url_fast_enough() -> None:
     """Verify that fast DNS resolution still works."""
 
-    def mock_resolve_fast(host, record_type, *args, **kwargs):
+    def mock_resolve_fast(host: Any, record_type: Any, *args: Any, **kwargs: Any) -> Any:
         from unittest.mock import MagicMock
         if record_type == 'A':
             mock_answer = MagicMock()

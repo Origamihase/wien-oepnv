@@ -1,5 +1,6 @@
 
 import unittest
+from typing import Any
 from unittest.mock import MagicMock, patch
 import requests
 from src.utils.http import request_safe
@@ -61,7 +62,7 @@ class TestRedirectParamStripping(unittest.TestCase):
 
             # session.prepare_request is also called
             # We need to return a valid PreparedRequest object that has .url
-            def fake_prepare(req):
+            def fake_prepare(req: Any) -> Any:
                 # We return the request object itself as a duck-typed PreparedRequest
                 # because the code reads prepped.url
                 return req

@@ -1,3 +1,4 @@
+from typing import Any
 from unittest.mock import MagicMock, patch
 import src.build_feed as bf
 
@@ -17,7 +18,7 @@ def test_build_feed_mutation() -> None:
         # Make a hook to capture pre_dedupe_items before it goes to dedupe functions
         original_summarize = bf._summarize_duplicates
         captured_pre_dedupe = []
-        def mock_summarize(items_arg):
+        def mock_summarize(items_arg: Any) -> Any:
             captured_pre_dedupe.extend(items_arg)
             return original_summarize(items_arg)
 

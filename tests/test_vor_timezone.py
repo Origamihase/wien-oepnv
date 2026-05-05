@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 import src.providers.vor as vor
 
@@ -9,7 +11,13 @@ def test_fetch_events_passes_local_timezone(monkeypatch: pytest.MonkeyPatch) -> 
 
     recorded = {}
 
-    def fake_fetch_departure_board_for_station(station_id, now_local, counter=None, session=None, timeout=None):
+    def fake_fetch_departure_board_for_station(
+        station_id: str,
+        now_local: Any,
+        counter: Any = None,
+        session: Any = None,
+        timeout: Any = None,
+    ) -> dict[str, Any]:
         recorded["tz"] = now_local.tzinfo
         return {}
 

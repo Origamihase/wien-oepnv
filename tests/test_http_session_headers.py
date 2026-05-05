@@ -21,7 +21,7 @@ def test_strip_session_headers_on_scheme_downgrade(
     })
 
     @responses.activate
-    def run():
+    def run() -> None:
         responses.add(responses.GET, "https://secure.example.com/", status=302, headers={"Location": "http://secure.example.com/login"})
         responses.add(responses.GET, "http://secure.example.com/login", status=200)
 

@@ -56,7 +56,7 @@ def test_mutation_order_in_deduplicate_fuzzy() -> None:
         violation_detected = []
         assignment_found = []
 
-        def trace_lines(frame, event, arg):
+        def trace_lines(frame: Any, event: str, arg: Any) -> Any:
             if event == 'line' and frame.f_code.co_name == 'deduplicate_fuzzy':
                 # Check if this line is an assignment to merged_items
                 source_line = frame.f_globals.get('__file__')

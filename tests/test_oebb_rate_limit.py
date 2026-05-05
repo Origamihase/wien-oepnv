@@ -116,7 +116,7 @@ def test_rate_limit_retries_once_after_wait(
     ]
 
     # Mock raise_for_status to simulate what fetch_content_safe does
-    def mock_raise_for_status(self):
+    def mock_raise_for_status(self: Any) -> None:
         if self.status_code >= 400:
             import requests
             raise requests.HTTPError(response=self)
@@ -151,7 +151,7 @@ def test_rate_limit_raises_http_error_after_retry(monkeypatch: pytest.MonkeyPatc
         DummyResponse(429, {"Retry-After": "2"}),
     ]
 
-    def mock_raise_for_status(self):
+    def mock_raise_for_status(self: Any) -> None:
         if self.status_code >= 400:
             import requests
             raise requests.HTTPError(response=self)

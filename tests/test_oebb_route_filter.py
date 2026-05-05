@@ -1,4 +1,6 @@
 
+from typing import Any
+
 import pytest
 
 from src.providers.oebb import _is_relevant
@@ -105,7 +107,7 @@ def test_stationsname_enthaelt_selbst_doppelpunkt(monkeypatch: pytest.MonkeyPatc
     from src.providers.oebb import station_info
     original_station_info = station_info
 
-    def mock_station_info(name):
+    def mock_station_info(name: str) -> Any:
         if name == "Wien 10.: Favoriten":
             from src.utils.stations import StationInfo
             return StationInfo(
