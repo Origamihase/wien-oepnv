@@ -6,7 +6,7 @@ import types
 import pytest
 from pathlib import Path
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, cast
 
 
 def _import_build_feed_without_providers(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
@@ -218,8 +218,9 @@ def test_cache_iso_items_sorted_and_emit_pubdate(monkeypatch: pytest.MonkeyPatch
 
     for idx in (0, 1):
         for field in ("pubDate", "starts_at", "ends_at"):
-            assert isinstance(cache_items[idx][field], datetime)
-            assert cache_items[idx][field].tzinfo is not None
+            value = cast(datetime, cache_items[idx][field])
+            assert isinstance(value, datetime)
+            assert value.tzinfo is not None
 
     state: dict[str, dict[str, Any]] = {}
     filtered, _ = build_feed._drop_old_items(cache_items, now, state)

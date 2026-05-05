@@ -12,6 +12,8 @@ def test_vor_sends_param_when_header_present(monkeypatch: pytest.MonkeyPatch) ->
     importlib.reload(vor)
 
     class DummySession:
+        auth: Any = None
+
         def __init__(self) -> None:
             self.headers: dict[str, str] = {}
             self.calls: list[tuple[str, str, Any]] = []

@@ -53,7 +53,7 @@ def test_main_filters_items_older_than_max(
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)
     monkeypatch.setattr(build_feed, "_make_rss", fake_make_rss)
     monkeypatch.chdir(tmp_path)
-    build_feed.OUT_PATH = "docs/feed.xml"
+    setattr(build_feed, "OUT_PATH", "docs/feed.xml")
 
     build_feed.main()
 
@@ -91,7 +91,7 @@ def test_main_filters_items_older_than_absolute(
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)
     monkeypatch.setattr(build_feed, "_make_rss", fake_make_rss)
     monkeypatch.chdir(tmp_path)
-    build_feed.OUT_PATH = "docs/feed.xml"
+    setattr(build_feed, "OUT_PATH", "docs/feed.xml")
 
     build_feed.main()
 

@@ -60,7 +60,7 @@ from utils.locking import file_lock
 from utils.text import html_to_text, truncate_html
 
 
-__all__ = ["RunReport", "feed_config"]
+__all__ = ["RunReport", "ThreadPoolExecutor", "feed_config"]
 
 
 # Register namespaces globally for thread-safe XML generation
