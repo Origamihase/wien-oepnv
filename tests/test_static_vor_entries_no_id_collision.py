@@ -19,12 +19,13 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
+from typing import Any
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
-def _load_stations() -> list[dict]:
+def _load_stations() -> list[dict[str, Any]]:
     raw = (REPO_ROOT / "data" / "stations.json").read_text(encoding="utf-8")
     data = json.loads(raw)
     if isinstance(data, dict):
@@ -34,7 +35,7 @@ def _load_stations() -> list[dict]:
     return []
 
 
-def _load_static_vor_entries() -> list[dict]:
+def _load_static_vor_entries() -> list[dict[str, Any]]:
     if str(REPO_ROOT) not in sys.path:
         sys.path.insert(0, str(REPO_ROOT))
     from scripts.update_vor_stations import STATIC_VOR_ENTRIES

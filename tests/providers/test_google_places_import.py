@@ -129,18 +129,18 @@ def test_merge_infers_in_vienna_from_address_and_bounds() -> None:
 
 
 class DummyResponse:
-    def __init__(self, status: int, payload: dict | None = None) -> None:
+    def __init__(self, status: int, payload: dict[str, Any] | None = None) -> None:
         self.status_code = status
         self._payload = payload or {}
         self.text = json.dumps(self._payload)
-        self.headers: dict = {}
+        self.headers: dict[str, str] = {}
         self.raw = MagicMock()
         conn = MagicMock()
         conn.sock.getpeername.return_value = ("8.8.8.8", 443)
         self.raw.connection = conn
         self.raw._connection = conn
 
-    def json(self) -> dict:
+    def json(self) -> dict[str, Any]:
         return self._payload
 
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
@@ -159,9 +159,9 @@ class DummyResponse:
 class DummySession:
     def __init__(self, responses: List[DummyResponse]) -> None:
         self._responses = responses
-        self.calls: List[dict] = []
+        self.calls: List[dict[str, Any]] = []
 
-    def post(self, url: str, *, headers: dict, json: dict, timeout: float, **kwargs: Any) -> DummyResponse:
+    def post(self, url: str, *, headers: dict[str, str], json: dict[str, Any], timeout: float, **kwargs: Any) -> DummyResponse:
         if not self._responses:
             raise AssertionError("No more responses queued")
         self.calls.append({"url": url, "json": json, "headers": headers, "timeout": timeout})
