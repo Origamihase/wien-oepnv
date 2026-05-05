@@ -1,6 +1,7 @@
 import importlib
 import logging
 from datetime import datetime
+from typing import Any
 from zoneinfo import ZoneInfo
 
 import pytest
@@ -34,14 +35,14 @@ def test_accessid_not_logged(
     class DummySession:
         def __init__(self) -> None:
             self.headers: dict[str, str] = {}
-        def __enter__(self): return self
-        def __exit__(self, *args): pass
-        def close(self): pass
+        def __enter__(self) -> "DummySession": return self
+        def __exit__(self, *args: Any) -> None: pass
+        def close(self) -> None: pass
 
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
     # Mock fetch_content_safe to raise the exception directly
-    def fake_fetch(*args, **kwargs):
+    def fake_fetch(*args: Any, **kwargs: Any) -> None:
         raise requests.RequestException(raw_message)
 
     monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch)

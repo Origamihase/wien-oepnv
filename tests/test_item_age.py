@@ -1,6 +1,8 @@
 import importlib
 import sys
 from pathlib import Path
+from typing import Any
+
 import pytest
 import types
 from datetime import datetime, timedelta, timezone
@@ -39,12 +41,12 @@ def test_main_filters_items_older_than_max(
     recent = {"title": "recent", "pubDate": now - timedelta(days=2) + timedelta(minutes=1)}
     old = {"title": "old", "pubDate": now - timedelta(days=2) - timedelta(minutes=1)}
 
-    def fake_collect(report=None):
+    def fake_collect(report: Any = None) -> list[dict[str, Any]]:
         return [recent, old]
 
     captured = {}
 
-    def fake_make_rss(items, now_param, state, deletions=None):
+    def fake_make_rss(items: Any, now_param: Any, state: Any, deletions: Any = None) -> str:
         captured["items"] = items
         return ""
 
@@ -77,12 +79,12 @@ def test_main_filters_items_older_than_absolute(
         "starts_at": now - timedelta(days=2) - timedelta(minutes=1),
     }
 
-    def fake_collect(report=None):
+    def fake_collect(report: Any = None) -> list[dict[str, Any]]:
         return [within, too_old]
 
     captured = {}
 
-    def fake_make_rss(items, now_param, state, deletions=None):
+    def fake_make_rss(items: Any, now_param: Any, state: Any, deletions: Any = None) -> str:
         captured["items"] = items
         return ""
 

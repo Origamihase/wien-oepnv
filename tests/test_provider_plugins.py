@@ -13,7 +13,7 @@ from typing import Any, cast
 import pytest
 
 
-def _make_plugin_module(name: str, *, register_callable=None, providers=None) -> ModuleType:
+def _make_plugin_module(name: str, *, register_callable: Any = None, providers: Any = None) -> ModuleType:
     module = ModuleType(name)
     if register_callable is not None:
         cast(Any, module).register_providers = register_callable
@@ -60,7 +60,7 @@ def test_load_provider_plugins_via_callable(monkeypatch: pytest.MonkeyPatch) -> 
     def loader() -> list[str]:
         return []
 
-    def register(register_provider):
+    def register(register_provider: Any) -> None:
         register_provider("PLUGIN_ENABLE", loader, cache_key="plugin")
 
     module_name = "tests.fake_plugin_callable"
@@ -88,7 +88,7 @@ def test_collect_items_uses_plugin_provider(monkeypatch: pytest.MonkeyPatch) -> 
     module_name = "tests.fake_plugin_list"
     plugin_calls: list[str] = []
 
-    def plugin_loader(*_args, **_kwargs):
+    def plugin_loader(*_args: Any, **_kwargs: Any) -> list[dict[str, Any]]:
         plugin_calls.append("invoked")
         return []
 
@@ -143,7 +143,7 @@ def test_main_generates_feed_and_health_with_plugin(
     module_name = "tests.fake_plugin_e2e"
     now = datetime.now(timezone.utc)
 
-    def plugin_loader(*_args, **_kwargs):
+    def plugin_loader(*_args: Any, **_kwargs: Any) -> list[dict[str, Any]]:
         return [
             {
                 "_identity": "plugin|event",

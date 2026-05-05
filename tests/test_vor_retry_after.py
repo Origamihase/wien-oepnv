@@ -1,6 +1,7 @@
 import logging
 from types import TracebackType
 from datetime import datetime, timedelta, timezone
+from typing import Any
 
 import pytest
 import requests
@@ -30,7 +31,7 @@ def test_retry_after_invalid_value(
     monkeypatch: pytest.MonkeyPatch,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
-    def fake_fetch(session, url, **kwargs):
+    def fake_fetch(session: Any, url: str, **kwargs: Any) -> None:
         resp = requests.Response()
         resp.status_code = 429
         resp.headers["Retry-After"] = "not-a-number"
@@ -54,7 +55,7 @@ def test_retry_after_missing_header(
     monkeypatch: pytest.MonkeyPatch,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
-    def fake_fetch(session, url, **kwargs):
+    def fake_fetch(session: Any, url: str, **kwargs: Any) -> None:
         resp = requests.Response()
         resp.status_code = 429
         # No Retry-After header
@@ -77,7 +78,7 @@ def test_retry_after_numeric_value(
     monkeypatch: pytest.MonkeyPatch,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
-    def fake_fetch(session, url, **kwargs):
+    def fake_fetch(session: Any, url: str, **kwargs: Any) -> None:
         resp = requests.Response()
         resp.status_code = 429
         resp.headers["Retry-After"] = "3.5"
@@ -103,7 +104,7 @@ def test_retry_after_http_date(
     delay = timedelta(seconds=7)
     retry_dt = fixed_now + delay
 
-    def fake_fetch(session, url, **kwargs):
+    def fake_fetch(session: Any, url: str, **kwargs: Any) -> None:
         resp = requests.Response()
         resp.status_code = 429
         resp.headers["Retry-After"] = retry_dt.strftime("%a, %d %b %Y %H:%M:%S GMT")
@@ -115,7 +116,7 @@ def test_retry_after_http_date(
 
     class FixedDateTime(datetime):
         @classmethod
-        def now(cls, tz=None):
+        def now(cls, tz: Any = None) -> datetime:  # type: ignore[override]
             # Allow UTC or Vienna
             if tz is not None:
                 return fixed_now.astimezone(tz)
