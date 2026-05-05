@@ -1,53 +1,53 @@
 # Stations Validation Report
 
-*Total stations analysed*: 163
+*Total stations analysed*: 165
 *GTFS stops loaded*: 99
 *Geographic duplicates*: 0
-*Alias issues*: 149
-*Coordinate anomalies*: 58
-*GTFS mismatches*: 0
+*Alias issues*: 151
+*Coordinate anomalies*: 10
+*GTFS mismatches*: 50
 *Security warnings*: 0
 *Provider issues*: 0
 *Cross station ID issues*: 0
 *Naming issues*: 0
 
 ## Alias issues
-- code:Aw (St.Andrä-Wördern): missing required aliases: Aw
+- code:Aw / source:oebb (St.Andrä-Wördern): missing required aliases: Aw
 - code:Ken / source:oebb (Klosterneuburg-Weidling): missing required aliases: Ken
 - code:Ken H1 / source:oebb (Klosterneuburg-Kierling): missing required aliases: Ken H1
 - code:Ko / source:oebb (Korneuburg): missing required aliases: Ko
-- code:Ko  H2 (Spillern): missing required aliases: Ko  H2
-- code:Ach (Achau): missing required aliases: Ach
+- code:Ko  H2 / source:oebb (Spillern): missing required aliases: Ko  H2
+- code:Ach / source:oebb (Achau): missing required aliases: Ach
 - code:Ktt / source:oebb (Kittsee): missing required aliases: Ktt
-- code:Kz (Kritzendorf): missing required aliases: Kz
+- code:Kz / source:oebb (Kritzendorf): missing required aliases: Kz
 - code:Lga / source:oebb (Wien Atzgersdorf): missing required aliases: Lga
 - code:Lb / source:oebb (Leobersdorf): missing required aliases: Lb
 - code:Lg / source:oebb (Wien Liesing): missing required aliases: Lg
 - code:Lg  H1 / source:oebb (Perchtoldsdorf): missing required aliases: Lg  H1
-- code:Lb  H1 (Sollenau): missing required aliases: Lb  H1
+- code:Lb  H1 / source:oebb (Sollenau): missing required aliases: Lb  H1
 - code:Apo H1 / source:oebb (Parndorf Ort): missing required aliases: Apo H1
 - code:Nw  H1H / source:oebb (Wien St. Marx): missing required aliases: Nw  H1H
 - code:Sah H1 / source:oebb (Wien Geiselbergstraße): missing required aliases: Sah H1
 - code:Lp / source:oebb (Wien Leopoldau): missing required aliases: Lp
-- code:Lx (Laxenburg-Biedermannsdorf): missing required aliases: Lx
+- code:Lx / source:oebb (Laxenburg-Biedermannsdorf): missing required aliases: Lx
 - code:Mac / source:oebb (Marchegg): missing required aliases: Mac
-- code:Mar (Maria Lanzendorf): missing required aliases: Mar
+- code:Mar / source:oebb (Maria Lanzendorf): missing required aliases: Mar
 - code:Het / source:oebb (Wien Hetzendorf): missing required aliases: Het
 - code:Wbf H1S / source:oebb (Wien Matzleinsdorfer Platz): missing required aliases: Wbf H1S
 - code:Wwb / source:oebb (Wien Quartier Belvedere): missing required aliases: Wwb
 - code:Ren / source:oebb (Wien Rennweg): missing required aliases: Ren
 - code:Mb / source:oebb (Mistelbach): missing required aliases: Mb
 - code:Md / source:oebb (Mödling): missing required aliases: Md
-- code:Md  H2 (Gumpoldskirchen): missing required aliases: Md  H2
+- code:Md  H2 / source:oebb (Gumpoldskirchen): missing required aliases: Md  H2
 - code:Mi / source:oebb (Wien Meidling): missing required aliases: Mi
-- code:Bde (Bad Deutsch Altenburg): missing required aliases: Bde
-- code:Beh (Bernhardsthal): missing required aliases: Beh
-- code:Mue (Münchendorf): missing required aliases: Mue
-- code:Bf (Pfaffstätten): missing required aliases: Bf
+- code:Bde / source:oebb (Bad Deutsch Altenburg): missing required aliases: Bde
+- code:Beh / source:oebb (Bernhardsthal): missing required aliases: Beh
+- code:Mue / source:oebb (Münchendorf): missing required aliases: Mue
+- code:Bf / source:oebb (Pfaffstätten): missing required aliases: Bf
 - code:Bf  H1 / source:oebb (Baden): missing required aliases: Bf  H1
 - code:Nb / source:oebb (Wiener Neustadt Hauptbahnhof): missing required aliases: Nb
 - code:Nf / source:oebb (Wien Nußdorf): missing required aliases: Nf
-- code:Nh (Hohenau): missing required aliases: Nh
+- code:Nh / source:oebb (Hohenau): missing required aliases: Nh
 - code:Nl / source:oebb (Neulengbach): missing required aliases: Nl
 - code:Ns / source:oebb (Neusiedl am See): missing required aliases: Ns
 - code:Nw / source:google_places,oebb (Wien Praterstern): missing required aliases: Nw
@@ -57,83 +57,84 @@
 - code:Ok  H1 / source:oebb (Wien Breitensee): missing required aliases: Ok  H1
 - code:Par / source:oebb (Parndorf): missing required aliases: Par
 - code:Pb / source:oebb (St. Pölten Hauptbahnhof): missing required aliases: Pb
-- code:Pet (Petronell-Carnuntum): missing required aliases: Pet
-- code:Ah (Absdorf-Hippersdorf): missing required aliases: Ah
+- code:Pet / source:oebb (Petronell-Carnuntum): missing required aliases: Pet
+- code:Ah / source:oebb (Absdorf-Hippersdorf): missing required aliases: Ah
 - code:Pm / source:oebb (Tullnerbach-Pressbaum): missing required aliases: Pm
 - code:Pm  H1 / source:oebb (Pressbaum): missing required aliases: Pm  H1
 - code:Bl / source:oebb (Bruck an der Leitha): missing required aliases: Bl
-- code:Pr (Payerbach-Reichenau): missing required aliases: Pr
-- code:Wgm (Pottenbrunn): missing required aliases: Wgm
+- code:Pr / source:oebb (Payerbach-Reichenau): missing required aliases: Pr
+- code:Wgm / source:oebb (Pottenbrunn): missing required aliases: Wgm
 - code:Pz / source:oebb (Wien Penzing): missing required aliases: Pz
-- code:Raf (Raasdorf): missing required aliases: Raf
-- code:Raf H1 (Glinzendorf): missing required aliases: Raf H1
-- code:Reg (Regelsbrunn): missing required aliases: Reg
-- code:Reg H1 (Wildungsmauer): missing required aliases: Reg H1
-- code:Rw (Rekawinkel): missing required aliases: Rw
+- code:Raf / source:oebb (Raasdorf): missing required aliases: Raf
+- code:Raf H1 / source:oebb (Glinzendorf): missing required aliases: Raf H1
+- code:Reg / source:oebb (Regelsbrunn): missing required aliases: Reg
+- code:Reg H1 / source:oebb (Wildungsmauer): missing required aliases: Reg H1
+- code:Rw / source:oebb (Rekawinkel): missing required aliases: Rw
 - code:Rw  H1 / source:oebb (Eichgraben-Altlengbach): missing required aliases: Rw  H1
-- code:Mb  H1H (Mistelbach Stadt): missing required aliases: Mb  H1H
-- code:Sbl (Siebenbrunn-Leopoldsdorf): missing required aliases: Sbl
-- code:Sbl H1 (Untersiebenbrunn): missing required aliases: Sbl H1
+- code:Mb  H1H / source:oebb (Mistelbach Stadt): missing required aliases: Mb  H1H
+- code:Sbl / source:oebb (Siebenbrunn-Leopoldsdorf): missing required aliases: Sbl
+- code:Sbl H1 / source:oebb (Untersiebenbrunn): missing required aliases: Sbl H1
 - code:Sdf / source:oebb (Wien Strebersdorf): missing required aliases: Sdf
-- code:Sfl (Schönfeld-Lassee): missing required aliases: Sfl
+- code:Sfl / source:oebb (Schönfeld-Lassee): missing required aliases: Sfl
 - code:Sg / source:oebb (Wien Grillgasse): missing required aliases: Sg
 - code:Stk / source:oebb (Wien Erzherzog Karl-Straße): missing required aliases: Stk
 - code:Stc / source:oebb (Wien Hirschstetten): missing required aliases: Stc
 - code:Su / source:oebb (Stockerau): missing required aliases: Su
 - code:Sue / source:oebb (Wien Süßenbrunn): missing required aliases: Sue
-- code:Tat (Tattendorf): missing required aliases: Tat
-- code:Tat H1 (Teesdorf): missing required aliases: Tat H1
-- code:Ti (Traiskirchen Aspangbahn): missing required aliases: Ti
-- code:Ti  K1 (Trumau): missing required aliases: Ti  K1
+- code:Tat / source:oebb (Tattendorf): missing required aliases: Tat
+- code:Tat H1 / source:oebb (Teesdorf): missing required aliases: Tat H1
+- code:Ti / source:oebb (Traiskirchen Aspangbahn): missing required aliases: Ti
+- code:Ti  K1 / source:oebb (Trumau): missing required aliases: Ti  K1
 - code:Tn / source:oebb (Ternitz): missing required aliases: Tn
-- code:Tn  H1 (Pottschach): missing required aliases: Tn  H1
+- code:Tn  H1 / source:oebb (Pottschach): missing required aliases: Tn  H1
 - code:Tu / source:oebb (Tulln an der Donau): missing required aliases: Tu
-- code:Tus (Tulln Stadt): missing required aliases: Tus
+- code:Tus / source:oebb (Tulln Stadt): missing required aliases: Tus
 - code:Upz / source:oebb (Purkersdorf Zentrum): missing required aliases: Upz
 - code:Wbf H2 / source:oebb (Wien Haidestraße): missing required aliases: Wbf H2
 - code:Wf / source:google_places,oebb (Wien Franz-Josefs-Bahnhof): missing required aliases: Wf
 - code:Wf  H1 / source:oebb (Wien Spittelau): missing required aliases: Wf  H1
 - code:Wg / source:oebb (Deutsch Wagram): missing required aliases: Wg
-- code:Wg  H1 (Helmahof): missing required aliases: Wg  H1
+- code:Wg  H1 / source:oebb (Helmahof): missing required aliases: Wg  H1
 - code:Wg  H2 / source:oebb (Strasshof an der Nordbahn): missing required aliases: Wg  H2
 - code:Wof / source:oebb (Wolfsthal): missing required aliases: Wof
 - code:Wol / source:oebb (Wolkersdorf): missing required aliases: Wol
-- code:Wp (Wampersdorf): missing required aliases: Wp
-- code:Wp  H1 (Pottendorf-Landegg): missing required aliases: Wp  H1
+- code:Wp / source:oebb (Wampersdorf): missing required aliases: Wp
+- code:Wp  H1 / source:oebb (Pottendorf-Landegg): missing required aliases: Wp  H1
 - code:Ws / source:oebb (Wien Westbahnhof): missing required aliases: Ws
 - code:Bu / source:oebb (Brunn am Gebirge): missing required aliases: Bu
 - code:Bvs / source:oebb (Bad Vöslau): missing required aliases: Bvs
-- code:Bvs H1 (Kottingbrunn): missing required aliases: Bvs H1
+- code:Bvs H1 / source:oebb (Kottingbrunn): missing required aliases: Bvs H1
 - code:Za / source:oebb (Kledering): missing required aliases: Za
-- code:Zs (Lanzendorf-Rannersdorf): missing required aliases: Zs
+- code:Zs / source:oebb (Lanzendorf-Rannersdorf): missing required aliases: Zs
 - code:Cf / source:oebb (Wien Zentralfriedhof): missing required aliases: Cf
 - code:Hf  H1 / source:oebb (Wien Wolf in der Au): missing required aliases: Hf  H1
-- code:Drg (Drösing): missing required aliases: Drg
-- code:Due (Dürnkrut): missing required aliases: Due
+- code:Drg / source:oebb (Drösing): missing required aliases: Drg
+- code:Due / source:oebb (Dürnkrut): missing required aliases: Due
 - code:Ebr / source:oebb (Ebreichsdorf): missing required aliases: Ebr
-- code:Ebr H1 (Weigelsdorf): missing required aliases: Ebr H1
+- code:Ebr H1 / source:oebb (Weigelsdorf): missing required aliases: Ebr H1
 - code:Ef / source:oebb (Ebenfurth): missing required aliases: Ef
 - code:El  H1 / source:oebb (Wien Praterkai): missing required aliases: El  H1
 - code:F / source:oebb (Wien Floridsdorf): missing required aliases: F
 - code:F   H1 / source:oebb (Wien Siemensstraße): missing required aliases: F   H1
 - code:Bse / source:oebb (Wien Brünner Straße): missing required aliases: Bse
-- code:Fam (Fischamend): missing required aliases: Fam
+- code:Fam / source:oebb (Fischamend): missing required aliases: Fam
 - code:Tfd / source:oebb (Tullnerfeld): missing required aliases: Tfd
 - code:El  H3 / source:oebb (Wien Stadlau): missing required aliases: El  H3
-- code:Fld (Felixdorf): missing required aliases: Fld
-- code:Fld H2 (Wiener Neustadt Nord): missing required aliases: Fld H2
+- code:Fld / source:oebb (Felixdorf): missing required aliases: Fld
+- code:Fld H2 / source:oebb (Wiener Neustadt Nord): missing required aliases: Fld H2
 - code:Wbf H1 / source:oebb (Wien Simmering): missing required aliases: Wbf H1
 - code:Sty / source:oebb (Wien Aspern Nord): missing required aliases: Sty
 - code:Fws / source:oebb (Flughafen Wien): missing required aliases: Fws
 - code:Gae / source:oebb (Gänserndorf): missing required aliases: Gae
 - code:Gef / source:oebb (Gerasdorf): missing required aliases: Gef
-- code:Glo (Gloggnitz): missing required aliases: Glo
-- code:Gn (Gramatneusiedl): missing required aliases: Gn
-- code:Goe H1 (Sarasdorf): missing required aliases: Goe H1
-- code:Goe H2 (Wilfleinsdorf): missing required aliases: Goe H2
+- code:Glo / source:oebb (Gloggnitz): missing required aliases: Glo
+- code:Gn / source:oebb (Gramatneusiedl): missing required aliases: Gn
+- code:Goe / source:oebb (Götzendorf): missing required aliases: Goe
+- code:Goe H1 / source:oebb (Sarasdorf): missing required aliases: Goe H1
+- code:Goe H2 / source:oebb (Wilfleinsdorf): missing required aliases: Goe H2
 - code:Gs / source:oebb (Schwechat): missing required aliases: Gs
-- code:Msw (Mannswörth): missing required aliases: Msw
-- code:Guk H2 (Möllersdorf Aspangbahn): missing required aliases: Guk H2
+- code:Msw / source:oebb (Mannswörth): missing required aliases: Msw
+- code:Guk H2 / source:oebb (Möllersdorf Aspangbahn): missing required aliases: Guk H2
 - code:Hai H1 / source:oebb (Hainburg an der Donau Personenbahnhof): missing required aliases: Hai H1
 - code:Hak / source:oebb (Wien Handelskai): missing required aliases: Hak
 - code:Hf / source:oebb (Wien Hütteldorf): missing required aliases: Hf
@@ -141,20 +142,21 @@
 - code:Hf  H1A / source:oebb (Wien Speising): missing required aliases: Hf  H1A
 - code:Hf  H3 / source:oebb (Wien Weidlingau): missing required aliases: Hf  H3
 - code:Hf  H4 / source:oebb (Purkersdorf Sanatorium): missing required aliases: Hf  H4
-- code:Hfa (Hadersdorf am Kamp): missing required aliases: Hfa
-- code:Hlu (Haslau an der Donau): missing required aliases: Hlu
-- code:Hnd (Hennersdorf): missing required aliases: Hnd
+- code:Hfa / source:oebb (Hadersdorf am Kamp): missing required aliases: Hfa
+- code:Him / source:oebb (Himberg): missing required aliases: Him
+- code:Hlu / source:oebb (Haslau an der Donau): missing required aliases: Hlu
+- code:Hnd / source:oebb (Hennersdorf): missing required aliases: Hnd
 - code:Hns / source:oebb (Wien Hernals): missing required aliases: Hns
 - code:Ht / source:oebb (Wien Heiligenstadt): missing required aliases: Ht
 - code:Ht  H1 / source:oebb (Wien Oberdöbling): missing required aliases: Ht  H1
 - code:Ht  H2 / source:oebb (Wien Krottenbachstraße): missing required aliases: Ht  H2
 - code:Ht  H3 / source:oebb (Wien Gersthof): missing required aliases: Ht  H3
-- code:Hu  H2 (Maria Anzbach): missing required aliases: Hu  H2
-- code:Hu  H4 (Neulengbach Stadt): missing required aliases: Hu  H4
+- code:Hu  H2 / source:oebb (Maria Anzbach): missing required aliases: Hu  H2
+- code:Hu  H4 / source:oebb (Neulengbach Stadt): missing required aliases: Hu  H4
 - code:Id / source:oebb (Wien Blumental): missing required aliases: Id
 - code:J / source:oebb (Wien Jedlersdorf): missing required aliases: J
-- code:F   H2S (Langenzersdorf): missing required aliases: F   H2S
-- code:F   H3S (Bisamberg): missing required aliases: F   H3S
+- code:F   H2S / source:oebb (Langenzersdorf): missing required aliases: F   H2S
+- code:F   H3S / source:oebb (Bisamberg): missing required aliases: F   H3S
 - code:900100 / source:vor (Wien Hauptbahnhof): missing required aliases: 900100
 - code:900101 / source:google_places,vor,wl (Wien Karlsplatz): missing required aliases: 900101
 - code:900102 / source:google_places,vor (Wien Mitte-Landstraße): missing required aliases: 900102
@@ -163,61 +165,65 @@
 - code:900105 / source:vor (Wien Kaiserebersdorf): missing required aliases: 900105
 
 ## Coordinate anomalies
-- code:Aw (St.Andrä-Wördern): missing latitude, missing longitude
-- code:Ko  H2 (Spillern): missing latitude, missing longitude
-- code:Ach (Achau): missing latitude, missing longitude
-- code:Kz (Kritzendorf): missing latitude, missing longitude
-- code:Lb  H1 (Sollenau): missing latitude, missing longitude
-- code:Lx (Laxenburg-Biedermannsdorf): missing latitude, missing longitude
-- code:Mar (Maria Lanzendorf): missing latitude, missing longitude
-- code:Md  H2 (Gumpoldskirchen): missing latitude, missing longitude
-- code:Bde (Bad Deutsch Altenburg): missing latitude, missing longitude
-- code:Beh (Bernhardsthal): missing latitude, missing longitude
-- code:Mue (Münchendorf): missing latitude, missing longitude
-- code:Bf (Pfaffstätten): missing latitude, missing longitude
-- code:Nh (Hohenau): missing latitude, missing longitude
-- code:Pet (Petronell-Carnuntum): missing latitude, missing longitude
-- code:Ah (Absdorf-Hippersdorf): missing latitude, missing longitude
-- code:Pr (Payerbach-Reichenau): missing latitude, missing longitude
-- code:Wgm (Pottenbrunn): missing latitude, missing longitude
-- code:Raf (Raasdorf): missing latitude, missing longitude
-- code:Raf H1 (Glinzendorf): missing latitude, missing longitude
-- code:Reg (Regelsbrunn): missing latitude, missing longitude
-- code:Reg H1 (Wildungsmauer): missing latitude, missing longitude
-- code:Rw (Rekawinkel): missing latitude, missing longitude
-- code:Mb  H1H (Mistelbach Stadt): missing latitude, missing longitude
-- code:Sbl (Siebenbrunn-Leopoldsdorf): missing latitude, missing longitude
-- code:Sbl H1 (Untersiebenbrunn): missing latitude, missing longitude
-- code:Sfl (Schönfeld-Lassee): missing latitude, missing longitude
-- code:Tat (Tattendorf): missing latitude, missing longitude
-- code:Tat H1 (Teesdorf): missing latitude, missing longitude
-- code:Ti (Traiskirchen Aspangbahn): missing latitude, missing longitude
-- code:Ti  K1 (Trumau): missing latitude, missing longitude
-- code:Tn  H1 (Pottschach): missing latitude, missing longitude
-- code:Tus (Tulln Stadt): missing latitude, missing longitude
-- code:Wg  H1 (Helmahof): missing latitude, missing longitude
-- code:Wp (Wampersdorf): missing latitude, missing longitude
-- code:Wp  H1 (Pottendorf-Landegg): missing latitude, missing longitude
-- code:Bvs H1 (Kottingbrunn): missing latitude, missing longitude
-- code:Zs (Lanzendorf-Rannersdorf): missing latitude, missing longitude
-- code:Drg (Drösing): missing latitude, missing longitude
-- code:Due (Dürnkrut): missing latitude, missing longitude
-- code:Ebr H1 (Weigelsdorf): missing latitude, missing longitude
-- code:Fam (Fischamend): missing latitude, missing longitude
-- code:Fld (Felixdorf): missing latitude, missing longitude
-- code:Fld H2 (Wiener Neustadt Nord): missing latitude, missing longitude
-- code:Glo (Gloggnitz): missing latitude, missing longitude
-- code:Gn (Gramatneusiedl): missing latitude, missing longitude
-- code:Goe H1 (Sarasdorf): missing latitude, missing longitude
-- code:Goe H2 (Wilfleinsdorf): missing latitude, missing longitude
-- code:Msw (Mannswörth): missing latitude, missing longitude
-- code:Guk H2 (Möllersdorf Aspangbahn): missing latitude, missing longitude
-- code:Hfa (Hadersdorf am Kamp): missing latitude, missing longitude
-- code:Hlu (Haslau an der Donau): missing latitude, missing longitude
-- code:Hnd (Hennersdorf): missing latitude, missing longitude
-- code:Hu  H2 (Maria Anzbach): missing latitude, missing longitude
-- code:Hu  H4 (Neulengbach Stadt): missing latitude, missing longitude
-- code:F   H2S (Langenzersdorf): missing latitude, missing longitude
-- code:F   H3S (Bisamberg): missing latitude, missing longitude
+- code:Lx / source:oebb (Laxenburg-Biedermannsdorf): missing latitude, missing longitude
+- code:Nh / source:oebb (Hohenau): missing latitude, missing longitude
+- code:Mb  H1H / source:oebb (Mistelbach Stadt): missing latitude, missing longitude
+- code:Ebr H1 / source:oebb (Weigelsdorf): missing latitude, missing longitude
+- code:Goe / source:oebb (Götzendorf): missing latitude, missing longitude
+- code:Him / source:oebb (Himberg): missing latitude, missing longitude
+- code:Hlu / source:oebb (Haslau an der Donau): missing latitude, missing longitude
+- code:Hnd / source:oebb (Hennersdorf): missing latitude, missing longitude
 - source:manual (München Hauptbahnhof): coordinates out of bounds (lat=48.140228, lon=11.558339)
 - source:manual (Roma Termini): coordinates out of bounds (lat=41.901002, lon=12.500253)
+
+## GTFS mismatches
+- code:Aw / source:oebb (St.Andrä-Wördern) → missing stop_id 430482400
+- code:Ko  H2 / source:oebb (Spillern) → missing stop_id 430481400
+- code:Ach / source:oebb (Achau) → missing stop_id 430300800
+- code:Kz / source:oebb (Kritzendorf) → missing stop_id 430399500
+- code:Lb  H1 / source:oebb (Sollenau) → missing stop_id 430480100
+- code:Mar / source:oebb (Maria Lanzendorf) → missing stop_id 430416500
+- code:Md  H2 / source:oebb (Gumpoldskirchen) → missing stop_id 430360200
+- code:Bde / source:oebb (Bad Deutsch Altenburg) → missing stop_id 430307900
+- code:Beh / source:oebb (Bernhardsthal) → missing stop_id 430316200
+- code:Mue / source:oebb (Münchendorf) → missing stop_id 430423100
+- code:Bf / source:oebb (Pfaffstätten) → missing stop_id 430453300
+- code:Pet / source:oebb (Petronell-Carnuntum) → missing stop_id 430453100
+- code:Ah / source:oebb (Absdorf-Hippersdorf) → missing stop_id 430300400
+- code:Pr / source:oebb (Payerbach-Reichenau) → missing stop_id 430876300
+- code:Wgm / source:oebb (Pottenbrunn) → missing stop_id 430455600
+- code:Raf / source:oebb (Raasdorf) → missing stop_id 430461300
+- code:Raf H1 / source:oebb (Glinzendorf) → missing stop_id 430352700
+- code:Reg / source:oebb (Regelsbrunn) → missing stop_id 430463900
+- code:Reg H1 / source:oebb (Wildungsmauer) → missing stop_id 430523500
+- code:Rw / source:oebb (Rekawinkel) → missing stop_id 430465100
+- code:Sbl / source:oebb (Siebenbrunn-Leopoldsdorf) → missing stop_id 430476400
+- code:Sbl H1 / source:oebb (Untersiebenbrunn) → missing stop_id 430509000
+- code:Sfl / source:oebb (Schönfeld-Lassee) → missing stop_id 430474500
+- code:Tat / source:oebb (Tattendorf) → missing stop_id 430497800
+- code:Tat H1 / source:oebb (Teesdorf) → missing stop_id 430498300
+- code:Ti / source:oebb (Traiskirchen Aspangbahn) → missing stop_id 430499500
+- code:Ti  K1 / source:oebb (Trumau) → missing stop_id 430502300
+- code:Tn  H1 / source:oebb (Pottschach) → missing stop_id 430876000
+- code:Tus / source:oebb (Tulln Stadt) → missing stop_id 430505700
+- code:Wg  H1 / source:oebb (Helmahof) → missing stop_id 430329200
+- code:Wp / source:oebb (Wampersdorf) → missing stop_id 430514700
+- code:Wp  H1 / source:oebb (Pottendorf-Landegg) → missing stop_id 430456200
+- code:Bvs H1 / source:oebb (Kottingbrunn) → missing stop_id 430398900
+- code:Zs / source:oebb (Lanzendorf-Rannersdorf) → missing stop_id 430405400
+- code:Drg / source:oebb (Drösing) → missing stop_id 430330900
+- code:Due / source:oebb (Dürnkrut) → missing stop_id 430331000
+- code:Fam / source:oebb (Fischamend) → missing stop_id 430343000
+- code:Fld / source:oebb (Felixdorf) → missing stop_id 430341500
+- code:Fld H2 / source:oebb (Wiener Neustadt Nord) → missing stop_id 430522300
+- code:Glo / source:oebb (Gloggnitz) → missing stop_id 430876100
+- code:Gn / source:oebb (Gramatneusiedl) → missing stop_id 430353800
+- code:Goe H1 / source:oebb (Sarasdorf) → missing stop_id 430468800
+- code:Goe H2 / source:oebb (Wilfleinsdorf) → missing stop_id 430523900
+- code:Msw / source:oebb (Mannswörth) → missing stop_id 430487500
+- code:Guk H2 / source:oebb (Möllersdorf Aspangbahn) → missing stop_id 430430100
+- code:Hfa / source:oebb (Hadersdorf am Kamp) → missing stop_id 430366000
+- code:Hu  H2 / source:oebb (Maria Anzbach) → missing stop_id 430414000
+- code:Hu  H4 / source:oebb (Neulengbach Stadt) → missing stop_id 430433800
+- code:F   H2S / source:oebb (Langenzersdorf) → missing stop_id 430404500
+- code:F   H3S / source:oebb (Bisamberg) → missing stop_id 430317000
