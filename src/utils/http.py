@@ -1563,7 +1563,7 @@ def request_safe(
                     # Duck-typing check for mocks that might lack is_redirect
                     # Some mocks implement is_redirect as a MagicMock, which evaluates to True. We explicitly check bool.
                     is_redirect = getattr(r, "is_redirect", False)
-                    if hasattr(is_redirect, "__call__") or type(is_redirect).__name__ == "MagicMock":
+                    if callable(is_redirect) or type(is_redirect).__name__ == "MagicMock":
                         is_redirect = False
 
                     if is_redirect:

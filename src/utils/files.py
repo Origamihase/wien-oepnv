@@ -88,8 +88,8 @@ def atomic_write(
                 os.link(tmp_path, target)
                 # Hard link successful, now remove the temp file
                 os.unlink(tmp_path)
-            except FileExistsError:
-                raise FileExistsError(f"File {target} already exists")
+            except FileExistsError as exc:
+                raise FileExistsError(f"File {target} already exists") from exc
 
     except Exception:
         # Close if still open (e.g. exception during yield)

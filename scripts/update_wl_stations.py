@@ -325,7 +325,7 @@ def build_wl_entries(
         grouped.setdefault(key, []).append(halt)
 
     entries: list[dict[str, object]] = []
-    for diva, stops in grouped.items():
+    for stops in grouped.values():
         if not stops:
             continue
         station = haltestellen.get(stops[0].station_id)

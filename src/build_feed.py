@@ -1469,7 +1469,7 @@ def _make_rss(
     item_replacements: Dict[str, str] = {}
     identities_in_feed: List[str] = []
     emitted = 0
-    for i, it in enumerate(items):
+    for it in items:
         if emitted >= feed_config.MAX_ITEMS:
             break
         ident, elem, repl = _emit_item(it, now, state)
