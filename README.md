@@ -294,13 +294,41 @@ Der Feed liegt anschließend unter `docs/feed.xml`. Bei Bedarf lässt sich `OUT_
 
 ## Stationsverzeichnis
 
-`data/stations.json` vereint ÖBB-, Wiener-Linien- und VOR-Haltestellen mit den Feldern `bst_id`, `bst_code`, `name`,
-`in_vienna`, `pendler`, `source` sowie optionalen Aliasen. Die Datenbasis stammt aus folgenden Quellen:
+`data/stations.json` vereint ÖBB-, Wiener-Linien-, VOR- und manuell
+gepflegte Auslandsknoten in einer Datei. Das Format ist als JSON Schema
+unter [`docs/schema/stations.schema.json`](docs/schema/stations.schema.json)
+formal definiert; ein Pin-Test (`tests/test_stations_schema.py`)
+verhindert Drift.
 
-- **ÖBB-Verkehrsstationen** (Download von `data.oebb.at`, Lizenz [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/)).
-- **Wiener Linien OGD** (`wienerlinien-ogd-haltestellen.csv`, `wienerlinien-ogd-haltepunkte.csv`, Lizenz [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
-- **VOR**: GTFS- oder CSV-Exporte unter [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-- **Google**: Ergänzende Abgleiche via Google Maps Platform (Places API) zur Validierung von Geokoordinaten und Aliasen, Nutzung gemäß den [Google Maps Platform Nutzungsbedingungen](https://cloud.google.com/maps-platform/terms/).
+### Felder pro Eintrag
+
+| Feld | Pflicht | Beschreibung |
+| ---- | ------- | ------------ |
+| `name` | ✓ | Kanonischer Anzeige-Name (eindeutig, wird im Feed verwendet). |
+| `in_vienna` | ✓ | `true` wenn die Koordinaten innerhalb des LANDESGRENZEOGD-Polygons liegen. |
+| `pendler` | ✓ | `true` für Pendler-Knoten außerhalb Wiens (siehe `data/pendler_bst_ids.json`). |
+| `aliases` | ✓ | Schreibvarianten und IDs zur Erkennung in Provider-Texten. |
+| `latitude` / `longitude` | ✓ | WGS84-Koordinaten (validiert gegen das Wien-Polygon für `in_vienna`-Einträge). |
+| `source` | ✓ | Komma-getrennte Provider-Tokens (kein Whitespace) aus `oebb,vor,wl,google_places,manual`. |
+| `bst_id`, `bst_code` | ÖBB | ÖBB-Stellen-ID und -Stellencode aus dem Excel-Verzeichnis (data.oebb.at). |
+| `vor_id` | ÖBB/VOR | VOR/VAO-Stop-ID (numerisch oder volles HAFAS-Token); matcht typischerweise GTFS-`stop_id`. |
+| `wl_diva` | WL | Wiener-Linien-DIVA aus `wienerlinien-ogd-haltestellen.csv`. |
+| `wl_stops` | WL | Einzelhaltepunkte (Bahnsteige/Richtungen) inkl. eigener `stop_id`. |
+| `type` | – | `manual_foreign_city` für die Auslandsknoten München Hauptbahnhof und Roma Termini. |
+
+Lookups laufen über `src/utils/stations.py:station_info(name)` mit
+diakritik-tolerantem Token-Normalizer (Umlaut-Faltung erst ab Token-Länge 4,
+damit kurze Stellencodes wie `Sue`/`Su` distinkt bleiben).
+
+### Datenquellen und Lizenzen
+
+| Quelle | Datei(en) | Lizenz | Pflicht-Attribution |
+|---|---|---|---|
+| **ÖBB-Verkehrsstationen** (`data.oebb.at`) | extrahiert aus dem Excel „Verzeichnis der Verkehrsstationen" + `data/gtfs/stops.txt` | [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/) | „Datenquelle: ÖBB-Infrastruktur AG" |
+| **Wiener Linien OGD** | `data/wienerlinien-ogd-haltestellen.csv`, `data/wienerlinien-ogd-haltepunkte.csv` | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | „Datenquelle: Stadt Wien – data.wien.gv.at" |
+| **VOR (Verkehrsverbund Ost-Region)** | `data/vor-haltestellen.csv`, `data/vor-haltestellen.mapping.json` | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | „Datenquelle: VOR Verkehrsverbund Ost-Region" |
+| **Wien-Stadtgrenzen-Polygon** | `data/LANDESGRENZEOGD.json` (Layer `ogdwien:LANDESGRENZEOGD` der MA 41 – Stadtvermessung, WFS-API von data.wien.gv.at, `srsName=EPSG:4326`, `outputFormat=json`) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | **„Datenquelle: Stadt Wien – data.wien.gv.at"** |
+| **Google Places** (optional) | Enrichment | [Maps Platform-AGB](https://cloud.google.com/maps-platform/terms/) | – |
 
 ### Aktualisierungsskripte
 
@@ -308,20 +336,34 @@ Der Feed liegt anschließend unter `docs/feed.xml`. Bei Bedarf lässt sich `OUT_
 | ------ | -------- |
 | `python -m src.cli stations update all --verbose` | Führt alle Teilaktualisierungen (ÖBB, WL, VOR) in einem Lauf aus. |
 | `python -m src.cli stations update directory --verbose` | Aktualisiert das ÖBB-Basisverzeichnis und setzt `in_vienna`/`pendler`. |
-| `python -m src.cli stations update wl --verbose` | Ergänzt WL-spezifische Haltestelleninformationen. |
+| `python scripts/update_wl_stations.py [--no-download] -v` | Lädt die WL-OGD-CSVs von `data.wien.gv.at` und merged sie. `--no-download` nutzt die lokalen Dateien (Sandbox/Offline-Modus). |
 | `python -m src.cli stations update vor --verbose` | Importiert VOR-Daten aus CSV oder API und reichert Stationen an. |
 
 
-Die GitHub Action `.github/workflows/update-stations.yml` aktualisiert `data/stations.json` monatlich automatisch.
+Die GitHub Action `.github/workflows/update-stations.yml` aktualisiert
+`data/stations.json` monatlich automatisch und schreibt im selben Lauf
+den Validation-Report nach `docs/stations_validation_report.md`.
 
 #### Automatisierte Qualitätsberichte
 
-Nutze `python -m src.cli stations validate`, um einen Markdown-Bericht zum Stationsverzeichnis zu erzeugen. Der Standardlauf prüft Dubletten anhand der Geokoordinaten, meldet fehlende Alias-Einträge, erkennt Koordinaten-Anomalien (z. B. vertauschte Werte oder fehlende Angaben) und gleicht `vor_id`-Werte mit `data/gtfs/stops.txt` ab. Über `--output docs/stations_validation_report.md` wird der Bericht persistiert und kann in CI-Pipelines mit `--fail-on-issues` als Guardrail dienen.
+`python -m src.cli stations validate` erzeugt einen Markdown-Bericht mit
+acht Issue-Kategorien: **geographic duplicates**, **alias issues**,
+**coordinate anomalies**, **GTFS mismatches**, **security warnings**,
+**provider issues** (VOR-/OEBB-Konsistenz), **cross-station ID
+collisions** und **naming issues** (kanonische Namens-Eindeutigkeit +
+no-space-Source-Format). Über `--output docs/stations_validation_report.md`
+wird der Bericht persistiert; mit `--fail-on-issues` exit-codet die CLI
+bei jedem Befund. In CI läuft der Validator als Pflicht-Gate (siehe
+`.github/workflows/test.yml`); zusätzlich regeneriert
+`update-stations.yml` den persistenten Report im monatlichen Daten-Refresh.
 
 ### Pendler-Whitelist
 
-`data/pendler_bst_ids.json` listet Stationen außerhalb der Stadtgrenze, die dennoch als Pendler:innen-Knoten im Verzeichnis
-verbleiben sollen. Änderungen an dieser Liste wirken sich beim nächsten Lauf von `python -m src.cli stations update directory` aus.
+`data/pendler_bst_ids.json` listet Stationen außerhalb der Stadtgrenze,
+die als Pendler-Knoten im Verzeichnis verbleiben. Die Auswahl ist
+**redaktionell kuratiert** und priorisiert die für Wien-Pendler:innen
+relevantesten Bahnhöfe, nicht algorithmisch bestimmt. Änderungen wirken
+beim nächsten Lauf von `python -m src.cli stations update directory`.
 
 ### Zusätzliche Datenquellen
 

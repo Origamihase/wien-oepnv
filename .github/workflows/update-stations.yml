@@ -40,6 +40,9 @@ jobs:
       - name: Refresh station directory
         run: python scripts/update_all_stations.py --verbose
 
+      - name: Regenerate validation report
+        run: python -m src.cli stations validate --output docs/stations_validation_report.md
+
       - name: Prepare repository (rebase main)
         run: |
           git config user.name "github-actions[bot]"

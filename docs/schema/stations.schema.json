@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://origamihase.github.io/wien-oepnv/schema/stations.schema.json",
+  "title": "Wien ÖPNV Stationsverzeichnis",
+  "description": "Schema für data/stations.json. Vereinheitlicht ÖBB-Verkehrsstationen, Wiener-Linien-Haltestellen und VOR-Departure-Board-Stationen sowie manuell gepflegte Auslandsknoten und Google-Places-U-Bahn-Stationen.",
+  "type": "object",
+  "required": ["stations"],
+  "properties": {
+    "stations": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Station"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "Station": {
+      "type": "object",
+      "required": [
+        "name",
+        "in_vienna",
+        "pendler",
+        "aliases",
+        "latitude",
+        "longitude",
+        "source"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Kanonischer, eindeutiger Anzeige-Name. Wird im Feed verwendet. Muss über alle Einträge unique sein (validator-erzwungen)."
+        },
+        "in_vienna": {
+          "type": "boolean",
+          "description": "True wenn die Stations-Koordinaten innerhalb des LANDESGRENZEOGD-Polygons liegen."
+        },
+        "pendler": {
+          "type": "boolean",
+          "description": "True wenn die Station als Pendler-Knoten konfiguriert ist (siehe data/pendler_bst_ids.json)."
+        },
+        "aliases": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "description": "Frei wählbare Schreibvarianten und IDs, die auf den canonical name auflösen sollen. Inhalts-IDs (vor_id, wl_diva, stop_id) werden als IDENTITY-Klasse behandelt; Textvarianten als TEXT-Klasse (siehe stations.py)."
+        },
+        "latitude": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 50.0,
+          "description": "WGS84 Breitengrad."
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": 9.0,
+          "maximum": 18.0,
+          "description": "WGS84 Längengrad."
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^[a-z_]+(?:,[a-z_]+)*$",
+          "description": "Komma-getrennte Provider-Token ohne Whitespace. Erlaubte Tokens: oebb, vor, wl, google_places, manual. Reihenfolge alphabetisch (places/merge.py:182). Whitespace innerhalb wird vom NamingIssue-Validator gemeldet."
+        },
+        "bst_id": {
+          "type": "string",
+          "pattern": "^[0-9]+$",
+          "description": "ÖBB Stellen-ID aus dem Excel-Verzeichnis (data.oebb.at). Pflicht für oebb-Einträge. Für VOR-Synthetic-Einträge 900100–900104 (Wien Hauptbahnhof, Karlsplatz, Mitte-Landstraße, Schottentor, Stephansplatz)."
+        },
+        "bst_code": {
+          "type": "string",
+          "minLength": 1,
+          "description": "ÖBB Stellencode (z. B. 'Wbf', 'Hf', 'Mi'). Bei den 5 VOR-Synthetic-Einträgen identisch zur synthetischen bst_id (900100–900104)."
+        },
+        "vor_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9=@×.:×]+$",
+          "description": "VOR/VAO-Stop-ID. Numerische Form (z. B. '490134900') oder volles HAFAS-Token (z. B. 'A=1@O=...'). Stimmt typischerweise mit der GTFS stop_id in data/gtfs/stops.txt überein."
+        },
+        "wl_diva": {
+          "type": "string",
+          "pattern": "^[0-9]+$",
+          "description": "Wiener Linien DIVA-Nummer aus data/wienerlinien-ogd-haltestellen.csv (data.wien.gv.at, CC BY 4.0). Wird für WL-Provider-Lookups als IDENTITY-Alias geführt."
+        },
+        "wl_stops": {
+          "type": "array",
+          "description": "WL-Einzelhaltepunkte (Bahnsteige/Richtungen) aus data/wienerlinien-ogd-haltepunkte.csv.",
+          "items": {
+            "type": "object",
+            "required": ["stop_id"],
+            "properties": {
+              "stop_id": {
+                "type": "string",
+                "pattern": "^[0-9]+$",
+                "description": "WL stop_id (= DIVA-Subcode pro Bahnsteig)."
+              },
+              "name": {
+                "type": ["string", "null"],
+                "description": "Anzeigename des Haltepunkts."
+              },
+              "latitude": {
+                "type": ["number", "null"],
+                "minimum": 41.0,
+                "maximum": 50.0
+              },
+              "longitude": {
+                "type": ["number", "null"],
+                "minimum": 9.0,
+                "maximum": 18.0
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": ["manual_foreign_city"],
+          "description": "Sondertyp für manuell gepflegte Auslandsknoten (München Hauptbahnhof, Roma Termini). Diese Einträge haben kein bst_id/vor_id und werden im Coordinate-Validator als out-of-bounds toleriert."
+        },
+        "_google_place_id": {
+          "type": "string",
+          "description": "Internes Feld aus dem Google-Places-Enrichment. Read-only."
+        },
+        "_types": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Interne Google-Places-Kategorisierung. Read-only."
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "description": "VOR-Synthetic-Einträge müssen ein vor_id haben.",
+          "if": {"properties": {"source": {"const": "vor"}}},
+          "then": {"required": ["vor_id"]}
+        },
+        {
+          "description": "ÖBB-Einträge müssen bst_id und bst_code tragen.",
+          "if": {"properties": {"source": {"pattern": "(?:^|,)oebb(?:,|$)"}}},
+          "then": {"required": ["bst_id", "bst_code"]}
+        }
+      ]
+    }
+  }
+}
