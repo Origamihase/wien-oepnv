@@ -1,3 +1,6 @@
+from typing import cast
+
+from src.feed_types import VorMessage
 from src.providers.vor import _build_guid
 
 def test_vor_guid_bounded_length() -> None:
@@ -9,7 +12,7 @@ def test_vor_guid_bounded_length() -> None:
     large_text = "A" * 10000
     message = {"head": "Some Title", "text": large_text}
 
-    guid = _build_guid(station_id, message)
+    guid = _build_guid(station_id, cast(VorMessage, message))
 
     # SHA256 hex digest is 64 chars.
     # Format is vor:{station_id}:{hash}

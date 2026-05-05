@@ -34,7 +34,7 @@ def test_vor_json_error_handling() -> None:
             with patch("src.providers.vor.save_request_count"):
                 # And mock log warning to verify it's called
                 with patch("src.providers.vor._log_warning") as mock_log:
-                    result = vor._fetch_departure_board_for_station("123", None, session=mock_session)
+                    result = vor._fetch_departure_board_for_station("123", None, session=mock_session)  # type: ignore[arg-type]
                     assert result is None
                     assert mock_log.called
                     args, _ = mock_log.call_args

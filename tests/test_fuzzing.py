@@ -12,7 +12,7 @@ from src.utils.text import truncate_html
 
 # Strategy for generating text content (excluding HTML tags to avoid structure invalidation)
 html_text = st.text(
-    alphabet=st.characters(blacklist_categories=("Cs",), blacklist_characters="<>"),
+    alphabet=st.characters(blacklist_categories=("Cs",), blacklist_characters="<>"),  # type: ignore[arg-type]
     min_size=0,
     max_size=1000
 )

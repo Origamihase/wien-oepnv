@@ -39,7 +39,7 @@ def test_restore_existing_metadata_rehydrates_full_station_entries() -> None:
             continue
 
         station = Station(
-            bst_id=bst_id,
+            bst_id=bst_id,  # type: ignore[arg-type]
             bst_code=bst_code,
             name=name,
             in_vienna=bool(entry.get("in_vienna", False)),
@@ -49,7 +49,7 @@ def test_restore_existing_metadata_rehydrates_full_station_entries() -> None:
         station.vor_id = None
         stations.append(station)
 
-    _restore_existing_metadata(stations, existing_entries)
+    _restore_existing_metadata(stations, existing_entries)  # type: ignore[arg-type]
 
     for station in stations:
         restored = station.as_dict()
@@ -75,7 +75,7 @@ def test_restore_existing_metadata_preserves_all_aliases() -> None:
 
         stations.append(
             Station(
-                bst_id=bst_id,
+                bst_id=bst_id,  # type: ignore[arg-type]
                 bst_code=bst_code,
                 name=name,
                 in_vienna=bool(entry.get("in_vienna", False)),
@@ -83,7 +83,7 @@ def test_restore_existing_metadata_preserves_all_aliases() -> None:
             )
         )
 
-    _restore_existing_metadata(stations, existing_entries)
+    _restore_existing_metadata(stations, existing_entries)  # type: ignore[arg-type]
 
     for station in stations:
         restored_aliases = station.as_dict().get("aliases")

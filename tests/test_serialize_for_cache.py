@@ -52,7 +52,7 @@ def test_serialize_circular_reference_raises_value_error() -> None:
 
 def test_serialize_circular_list_raises_value_error() -> None:
     circular_list = [1, 2]
-    circular_list.append(circular_list)
+    circular_list.append(circular_list)  # type: ignore[arg-type]
 
     with pytest.raises(ValueError, match="Circular reference detected"):
         serialize_for_cache(circular_list)

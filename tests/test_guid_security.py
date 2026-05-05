@@ -1,3 +1,6 @@
+from typing import cast
+
+from src.feed_types import VorMessage
 from src.providers.vor import _build_guid
 
 def test_vor_guid_dos_protection() -> None:
@@ -9,7 +12,7 @@ def test_vor_guid_dos_protection() -> None:
     huge_id = "A" * 100000
     message = {"id": huge_id}
 
-    guid = _build_guid(station_id, message)
+    guid = _build_guid(station_id, cast(VorMessage, message))
 
     # Assert the GUID is reasonably short (e.g. < 200 chars).
     # The expected behavior after fix is a hashed ID or truncated ID.

@@ -88,7 +88,7 @@ def test_mutation_order_in_deduplicate_fuzzy() -> None:
             merged = deduplicate_fuzzy(items_to_test)
         finally:
             sys.settrace(old_trace)
-            threading.settrace(old_trace)
+            threading.settrace(old_trace)  # type: ignore[arg-type]
 
         assert assignment_found, "Assignment line 'merged_items[idx] = new_existing' was never hit during trace"
         assert not violation_detected, f"Violations found: {violation_detected}"

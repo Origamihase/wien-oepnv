@@ -1,7 +1,9 @@
+from typing import Any
+
 from src.feed.merge import deduplicate_fuzzy
 
 def test_fuzzy_merge_silvester() -> None:
-    items = [
+    items: list[dict[str, Any]] = [
         {
             "title": "1/2/71/74A/D: Wiener Silvesterlauf Event",
             "description": "Details about Lauf.",
