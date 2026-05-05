@@ -62,8 +62,13 @@ jobs:
           # Normalize current mypy output: error lines only,
           # line/column numbers stripped, sorted (matches baseline
           # generation in scripts/regen_mypy_baseline.sh).
-          grep -E " error:" /tmp/mypy-current.txt \
-            | sed -E 's/^([^:]+):[0-9]+(:[0-9]+)?: /\1: /' \
+          # `grep` exits 1 when there are no matches; with the runner's
+          # default `set -e` + pipefail this would abort the step before
+          # we even reach the comparison. The trailing `|| true` keeps
+          # the empty-output case (clean mypy run) on the success path.
+          {
+            grep -E " error:" /tmp/mypy-current.txt || true
+          } | sed -E 's/^([^:]+):[0-9]+(:[0-9]+)?: /\1: /' \
             | sort > /tmp/current-normalized.txt
 
           new_count=$(comm -13 "$BASELINE" /tmp/current-normalized.txt | wc -l)
