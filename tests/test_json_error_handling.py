@@ -62,3 +62,44 @@ def test_places_client_json_error_handling() -> None:
         with pytest.raises(client.GooglePlacesError) as exc:
             c._post("endpoint", {})
         assert "Invalid JSON payload" in str(exc.value)
+
+
+@pytest.mark.parametrize(
+    "non_dict_payload",
+    [
+        [],
+        [{"id": "x"}],
+        None,
+        "string",
+        42,
+    ],
+)
+def test_places_client_rejects_non_dict_payload(non_dict_payload: object) -> None:
+    """Zero Trust: a 200 OK with a non-dict JSON body must not be silently passed through.
+
+    Without this check, ``cast(Dict[str, object], payload)`` would lie to the type checker
+    and the caller (e.g. ``response.get("places", [])`` in ``_iter_tile``) would crash with
+    AttributeError when the upstream returns a list/scalar/null instead of an object.
+    """
+    config = client.GooglePlacesConfig(
+        api_key="key", included_types=[], language="en", region="US",
+        radius_m=1000, timeout_s=5, max_retries=0, max_result_count=1
+    )
+
+    mock_session = MagicMock()
+    mock_post = MagicMock()
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = non_dict_payload
+    mock_response.iter_content.return_value = [json.dumps(non_dict_payload).encode("utf-8")]
+
+    mock_post.return_value.__enter__.return_value = mock_response
+    mock_session.post = mock_post
+
+    with patch("src.places.client.verify_response_ip"):
+        c = client.GooglePlacesClient(config, session=mock_session)
+        with pytest.raises(client.GooglePlacesError) as exc:
+            c._post("endpoint", {})
+        assert "Unexpected JSON payload type" in str(exc.value)
+        # Type name leaks the bare class only, never the value contents.
+        assert type(non_dict_payload).__name__ in str(exc.value)

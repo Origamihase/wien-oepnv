@@ -388,6 +388,14 @@ class GooglePlacesClient:
                             raise GooglePlacesError(
                                 "Invalid JSON payload received from Places API"
                             ) from exc
+                        # Zero Trust: a 200 status from an upstream API does not guarantee
+                        # the body is a JSON object. A list / null / scalar would slip past
+                        # the cast() below (it lies to the type checker) and crash later
+                        # when callers invoke .get() on the result. Reject explicitly.
+                        if not isinstance(payload, dict):
+                            raise GooglePlacesError(
+                                f"Unexpected JSON payload type from Places API: {type(payload).__name__}"
+                            )
                         return cast(Dict[str, object], payload)
 
                     if response.status_code in {429, 500, 502, 503, 504}:
