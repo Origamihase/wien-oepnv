@@ -49,7 +49,7 @@ class StationInfo(NamedTuple):
     source: str | None = None
 
 _STATIONS_PATH = Path(__file__).resolve().parents[2] / "data" / "stations.json"
-_VIENNA_POLYGON_PATH = Path(__file__).resolve().parents[2] / "data" / "vienna_boundary.geojson"
+_VIENNA_POLYGON_PATH = Path(__file__).resolve().parents[2] / "data" / "LANDESGRENZEOGD.json"
 
 Coordinate = tuple[float, float]
 Ring = tuple[Coordinate, ...]
