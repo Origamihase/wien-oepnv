@@ -14,7 +14,6 @@
 ## Alias issues
 - code:Ken / source:oebb (Klosterneuburg-Weidling): missing required aliases: Ken
 - code:Ken H1 / source:oebb (Klosterneuburg-Kierling): missing required aliases: Ken H1
-- code:Kls / source:oebb (Wien Kaiserebersdorf): missing required aliases: Kls
 - code:Ko / source:oebb (Korneuburg): missing required aliases: Ko
 - code:Ktt / source:oebb (Kittsee): missing required aliases: Ktt
 - code:Lga / source:oebb (Wien Atzgersdorf): missing required aliases: Lga
@@ -105,6 +104,7 @@
 - code:900102 / source:google_places,vor (Wien Mitte-Landstraße): missing required aliases: 900102
 - code:900103 / source:google_places,vor,wl (Wien Schottentor): missing required aliases: 900103
 - code:900104 / source:google_places,vor,wl (Wien Stephansplatz): missing required aliases: 900104
+- code:900105 / source:vor (Wien Kaiserebersdorf): missing required aliases: 900105
 
 ## Coordinate anomalies
 - source:manual (München Hauptbahnhof): coordinates out of bounds (lat=48.140228, lon=11.558339)
