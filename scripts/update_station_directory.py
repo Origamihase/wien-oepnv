@@ -499,6 +499,16 @@ def _load_existing_station_entries(
                     is_manual = False
                 elif isinstance(source, list) and "oebb" in source:
                     is_manual = False
+                elif not source:
+                    # Backward-compat: entries written before the
+                    # `as_dict` source-default fix lack a source field
+                    # entirely. If they carry the typical ÖBB Excel
+                    # fields (bst_id + bst_code), treat them as ÖBB —
+                    # otherwise the next Excel pull would create a
+                    # duplicate and trip the canonical-name uniqueness
+                    # gate (see PR #1203 cron failure post-mortem).
+                    bst_code = entry.get("bst_code")
+                    is_manual = not (isinstance(bst_code, str) and bst_code.strip())
                 else:
                     is_manual = True
 

@@ -8,6 +8,7 @@ in ``data/pendler_bst_ids.json``.
 from __future__ import annotations
 
 import logging
+from pathlib import Path
 
 import pytest
 
@@ -78,3 +79,43 @@ def test_wl_vienna_station_does_not_become_pendler() -> None:
 
     assert station.in_vienna is True
     assert station.pendler is False
+
+
+def test_load_existing_treats_legacy_bst_id_entry_without_source_as_oebb(
+    tmp_path: Path,
+) -> None:
+    """Entries written before PR #1203's source-default fix lack a source
+    field entirely. The loader must treat them as ÖBB (not as manual)
+    when bst_id + bst_code are present, otherwise the next Excel pull
+    creates a duplicate and trips the naming-uniqueness gate."""
+    import json
+
+    legacy_payload = [
+        {
+            "bst_id": "100",
+            "bst_code": "Aw",
+            "name": "St.Andrä-Wördern",
+            "in_vienna": False,
+            "pendler": True,
+            "aliases": ["St.Andrä-Wördern"],
+            # No `source` field — characteristic of pre-#1203 entries
+        },
+        {
+            # A genuinely manual entry — no bst_code → still manual
+            "name": "Roma Termini",
+            "in_vienna": False,
+            "pendler": False,
+            "aliases": ["Roma Termini"],
+            "type": "manual_foreign_city",
+        },
+    ]
+    path = tmp_path / "stations.json"
+    path.write_text(json.dumps(legacy_payload), encoding="utf-8")
+
+    by_bst, manual = usd._load_existing_station_entries(path)
+    assert "100" in by_bst, (
+        "legacy ÖBB entry without source must be loaded by bst_id, not parked as manual"
+    )
+    assert {entry.get("name") for entry in manual} == {"Roma Termini"}, (
+        "true manual entries (no bst_code) stay parked as manual"
+    )
