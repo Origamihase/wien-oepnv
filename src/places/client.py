@@ -332,6 +332,25 @@ class GooglePlacesClient:
 
         while attempt <= self._config.max_retries:
             attempt += 1
+            # Quota: count each HTTP attempt up-front. Google bills per request
+            # regardless of HTTP status, so we must not wait for a 200 before
+            # incrementing — otherwise retries on 429/5xx would silently eat
+            # additional quota that we never tracked. On retries we re-check
+            # the cap so the second attempt is skipped if the first one
+            # exhausted the budget.
+            if quota_kind and self._quota_active:
+                quota = cast(MonthlyQuota, self._quota)
+                cfg = cast(QuotaConfig, self._quota_config)
+                if not quota.can_consume(quota_kind, cfg):
+                    if quota_kind not in self._quota_skipped_kinds:
+                        LOGGER.warning(
+                            "Places free cap reached for %s during retries; aborting further attempts.",
+                            quota_kind,
+                        )
+                    self._quota_skipped_kinds.add(quota_kind)
+                    return {"places": [], "skipped_due_to_quota": True}
+                self._record_successful_request(quota_kind)
+
             start_time = time.monotonic()
             try:
                 with self._session.post(
@@ -369,8 +388,6 @@ class GooglePlacesClient:
                             raise GooglePlacesError(
                                 "Invalid JSON payload received from Places API"
                             ) from exc
-                        if quota_kind and self._quota_active:
-                            self._record_successful_request(quota_kind)
                         return cast(Dict[str, object], payload)
 
                     if response.status_code in {429, 500, 502, 503, 504}:
@@ -539,6 +556,13 @@ class GooglePlacesClient:
         return set(self._quota_skipped_kinds)
 
     def _record_successful_request(self, kind: str) -> None:
+        """Increment and persist the quota counter for *kind*.
+
+        Despite the legacy name, this is now invoked for every HTTP attempt
+        (not only on 200 responses) so that retries on 429/5xx don't silently
+        exceed the configured Places budget. Google bills per request, not
+        per success.
+        """
         if not self._quota_active:
             return
         try:
