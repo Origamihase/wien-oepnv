@@ -16,6 +16,7 @@ def test_fallback_sanitization_missing_keys() -> None:
             del sys.modules['src.utils.env']
 
         # Mock ImportError for src.utils.logging
+        env_module = None
         with patch.dict(sys.modules, {'src.utils.logging': None}):
             # Now import src.utils.env
             try:
@@ -25,6 +26,7 @@ def test_fallback_sanitization_missing_keys() -> None:
                 pass
 
             # Check sanitize_log_message from the fresh module
+            assert env_module is not None
             sanitize_log_message = env_module.sanitize_log_message
 
             # Test cases that are currently missing in env.py but present in logging.py

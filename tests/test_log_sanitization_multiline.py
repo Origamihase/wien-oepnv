@@ -33,8 +33,8 @@ def test_env_fallback_multiline() -> None:
     try:
         # Mock src.utils.logging to appear missing
         with patch.dict(sys.modules):
-            sys.modules['src.utils.logging'] = None
-            sys.modules['utils.logging'] = None # Also block the fallback import attempt
+            sys.modules['src.utils.logging'] = None  # type: ignore[assignment]
+            sys.modules['utils.logging'] = None  # type: ignore[assignment]  # Also block the fallback import attempt
 
             # Import src.utils.env
             # It handles ImportError by defining sanitize_log_message locally

@@ -87,7 +87,7 @@ def test_restore_existing_metadata_preserves_all_aliases() -> None:
 
     for station in stations:
         restored_aliases = station.as_dict().get("aliases")
-        original_aliases = existing_entries[station.bst_id].get("aliases")
+        original_aliases = existing_entries[station.bst_id].get("aliases")  # type: ignore[union-attr,call-overload]
 
         if original_aliases is None:
             assert restored_aliases is None

@@ -7,12 +7,14 @@ from src.feed.logging_safe import SafeJSONFormatter, SafeFormatter
 
 class TestSafeJSONFormatter(unittest.TestCase):
     def test_format_exception_does_not_clear_frames(self) -> None:
+        ei = sys.exc_info()
         try:
             1 / 0
         except ZeroDivisionError:
             ei = sys.exc_info()
 
         tb = ei[2]
+        assert tb is not None
         self.assertIsNotNone(tb.tb_frame.f_locals)
 
         formatter = SafeJSONFormatter()
