@@ -12,14 +12,9 @@ from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Set,
 
 import requests
 
-try:
-    from utils.env import read_secret
-    from utils.http import read_response_safe, session_with_retries, verify_response_ip
-    from utils.logging import sanitize_log_arg, sanitize_log_message
-except ModuleNotFoundError:
-    from ..utils.env import read_secret
-    from ..utils.http import read_response_safe, session_with_retries, verify_response_ip
-    from ..utils.logging import sanitize_log_arg, sanitize_log_message
+from ..utils.env import read_secret
+from ..utils.http import read_response_safe, session_with_retries, verify_response_ip
+from ..utils.logging import sanitize_log_arg, sanitize_log_message
 
 from .quota import MonthlyQuota, QuotaConfig
 from .tiling import Tile

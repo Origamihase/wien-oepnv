@@ -32,8 +32,9 @@ def test_load_provider_plugins_not_called_on_import() -> None:
     import sys
 
     # Run the import in a clean environment to ensure no caching tricks us.
+    repo_root = Path(__file__).resolve().parent.parent
     result = subprocess.run(
-        [sys.executable, "-c", "import sys; sys.path.insert(0, 'src'); import feed.providers; print('IMPORT SUCCESS')"],  # noqa: S603
+        [sys.executable, "-c", f"import sys; sys.path.insert(0, {str(repo_root)!r}); import src.feed.providers; print('IMPORT SUCCESS')"],  # noqa: S603
         capture_output=True,
         text=True,
         check=True
@@ -267,13 +268,12 @@ def register_providers(register_provider):
     # It must have the temp directory in PYTHONPATH to find the plugin.
     test_script = tmp_path / "run_build.py"
     test_script.write_text("""
-import sys
-sys.path.insert(0, 'src')
-import build_feed
+from src import build_feed  # noqa: F401
 """)
 
+    repo_root = Path(__file__).resolve().parent.parent
     env = os.environ.copy()
-    env["PYTHONPATH"] = f"src{os.pathsep}{str(tmp_path)}"
+    env["PYTHONPATH"] = f"{repo_root}{os.pathsep}{tmp_path}"
     env["WIEN_OEPNV_PROVIDER_PLUGINS"] = "mock_plugin_entrypoint"
 
     result = subprocess.run(

@@ -11,12 +11,8 @@ from zoneinfo import ZoneInfo
 from pathlib import Path
 from typing import Callable, Dict, Mapping, cast
 
-try:  # pragma: no cover
-    from utils.files import atomic_write
-    from feed.config import validate_path
-except ModuleNotFoundError:  # pragma: no cover
-    from ..utils.files import atomic_write
-    from ..feed.config import validate_path
+from ..utils.files import atomic_write
+from ..feed.config import validate_path
 
 LOGGER = logging.getLogger("places.quota")
 

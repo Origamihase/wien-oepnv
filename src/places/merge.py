@@ -8,10 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, List, MutableMapping, Optional, Sequence, Tuple, TypedDict, cast
 
-try:  # pragma: no cover
-    from utils.files import atomic_write
-except ModuleNotFoundError:  # pragma: no cover
-    from ..utils.files import atomic_write
+from ..utils.files import atomic_write
 
 from .client import Place
 from .normalize import haversine_m, normalize_name

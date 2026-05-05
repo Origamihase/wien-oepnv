@@ -29,18 +29,18 @@ from typing import Any, Dict, List, Optional, Sequence, Set, Tuple, Union, cast,
 from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
 
-from feed_types import FeedItem
-from feed import config as feed_config
-from feed.merge import deduplicate_fuzzy
-from feed.logging import configure_logging
-from feed.providers import (
+from .feed_types import FeedItem
+from .feed import config as feed_config
+from .feed.merge import deduplicate_fuzzy
+from .feed.logging import configure_logging
+from .feed.providers import (
     iter_providers,
     load_provider_plugins,
     provider_statuses,
     register_provider,
     resolve_provider_name,
 )
-from feed.reporting import (
+from .feed.reporting import (
     DuplicateSummary,
     FeedHealthMetrics,
     RunReport,
@@ -49,15 +49,15 @@ from feed.reporting import (
     write_feed_health_json,
 )
 
-from utils.cache import (
+from .utils.cache import (
     cache_modified_at,
     read_cache as _core_read_cache,
     register_cache_alert_hook,
 )
-from utils.files import atomic_write
-from utils.http import validate_http_url
-from utils.locking import file_lock
-from utils.text import html_to_text, truncate_html
+from .utils.files import atomic_write
+from .utils.http import validate_http_url
+from .utils.locking import file_lock
+from .utils.text import html_to_text, truncate_html
 
 
 __all__ = ["RunReport", "ThreadPoolExecutor", "feed_config"]

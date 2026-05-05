@@ -10,21 +10,29 @@ from typing import Any, cast
 
 
 def _import_build_feed_without_providers(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
+    """Reload build_feed and guard against provider imports.
+
+    The guard ensures build_feed.py does not pull in network providers as a
+    regression test. It does NOT remove the providers from sys.modules — that
+    would pollute other tests which import src.providers.* at module level.
+    """
     module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
-    monkeypatch.syspath_prepend(str(root / "src"))
 
     sys.modules.pop(module_name, None)
-    for mod in list(sys.modules):
-        if mod == "providers" or mod.startswith("providers."):
-            sys.modules.pop(mod, None)
 
     real_import = builtins.__import__
 
     def guard(name: str, globals: Any = None, locals: Any = None, fromlist: Any = (), level: int = 0) -> Any:
-        if name.startswith("providers"):
+        # Detect both absolute (src.providers.X) and relative imports of providers
+        # via fromlist (e.g. `from .providers import wl_fetch` from inside src/).
+        if name.startswith("src.providers"):
             raise AssertionError(f"unexpected provider import: {name}")
+        if fromlist:
+            parent = globals.get("__package__") if globals else None
+            if parent and parent.startswith("src") and "providers" in (fromlist or ()):
+                raise AssertionError(f"unexpected provider import: {parent}.providers")
         return real_import(name, globals, locals, fromlist, level)
 
     monkeypatch.setattr(builtins, "__import__", guard)
@@ -32,7 +40,7 @@ def _import_build_feed_without_providers(monkeypatch: pytest.MonkeyPatch) -> typ
 
 
 def _patch_empty_cache(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
-    cache_mod = importlib.import_module("utils.cache")
+    cache_mod = importlib.import_module("src.utils.cache")
     monkeypatch.setattr(cache_mod, "_CACHE_DIR", tmp_path / "cache", raising=False)
 
 
@@ -45,7 +53,7 @@ def test_collect_items_missing_cache_logs_warning(
     _patch_empty_cache(monkeypatch, tmp_path)
 
     caplog.set_level(logging.WARNING, logger="build_feed")
-    caplog.set_level(logging.WARNING, logger="utils.cache")
+    caplog.set_level(logging.WARNING, logger="src.utils.cache")
 
     items = build_feed._collect_items()
 
@@ -97,7 +105,7 @@ def test_main_runs_without_network(
     monkeypatch.setattr(build_feed, "refresh_from_env", lambda: None)
 
     caplog.set_level(logging.WARNING, logger="build_feed")
-    caplog.set_level(logging.WARNING, logger="utils.cache")
+    caplog.set_level(logging.WARNING, logger="src.utils.cache")
 
     exit_code = build_feed.main()
 

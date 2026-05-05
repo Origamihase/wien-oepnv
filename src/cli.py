@@ -11,21 +11,11 @@ from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 if TYPE_CHECKING:
-    # mypy handling: assume package context or explicit import
-    from src import build_feed as build_feed_module
-    from src.utils.stations_validation import validate_stations
-elif __package__:
     from . import build_feed as build_feed_module
     from .utils.stations_validation import validate_stations
 else:
-    # Fallback for script execution or if package context is missing
-    try:
-        from src import build_feed as build_feed_module
-        from src.utils.stations_validation import validate_stations
-    except ImportError:
-        # If running from src directory directly
-        import build_feed as build_feed_module  # type: ignore
-        from utils.stations_validation import validate_stations  # type: ignore
+    from . import build_feed as build_feed_module
+    from .utils.stations_validation import validate_stations
 
 __all__ = ["build_feed_module"]
 

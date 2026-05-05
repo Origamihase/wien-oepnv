@@ -6,19 +6,7 @@ from datetime import datetime
 from typing import Any, Dict
 
 from .config import LOG_FORMAT, LOG_TIMEZONE
-try:
-    from ..utils.logging import sanitize_log_message
-except ImportError:
-    try:
-        from utils.logging import sanitize_log_message  # type: ignore[no-redef]
-    except ImportError:
-        # Fallback to simple replacement if utils not available (e.g. running script directly)
-        def sanitize_log_message(
-            text: str, secrets: list[str] | None = None, strip_control_chars: bool = True
-        ) -> str:
-            if strip_control_chars:
-                return text.replace("\n", "\\n").replace("\r", "\\r")
-            return text
+from ..utils.logging import sanitize_log_message
 
 class SafeFormatter(logging.Formatter):
     """

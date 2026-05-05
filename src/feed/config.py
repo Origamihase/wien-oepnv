@@ -7,56 +7,30 @@ import logging
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-try:  # pragma: no cover - support package and script execution
-    from config.defaults import (
-        DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
-        DEFAULT_DESCRIPTION_CHAR_LIMIT,
-        DEFAULT_ENDS_AT_GRACE_MINUTES,
-        DEFAULT_FEED_DESCRIPTION,
-        DEFAULT_FEED_LINK,
-        DEFAULT_FEED_HEALTH_PATH,
-        DEFAULT_FEED_HEALTH_JSON_PATH,
-        DEFAULT_FEED_TITLE,
-        DEFAULT_FEED_TTL_MINUTES,
-        DEFAULT_TITLE_CHAR_LIMIT,
-        DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
-        DEFAULT_MAX_ITEMS,
-        DEFAULT_MAX_ITEM_AGE_DAYS,
-        DEFAULT_OUT_PATH,
-        DEFAULT_PAGES_BASE_URL,
-        DEFAULT_CACHE_MAX_AGE_HOURS,
-        DEFAULT_PROVIDER_MAX_WORKERS,
-        DEFAULT_PROVIDER_TIMEOUT,
-        DEFAULT_STATE_PATH,
-        DEFAULT_STATE_RETENTION_DAYS,
-    )
-    from utils.env import get_bool_env, get_int_env
-    from utils.http import validate_http_url
-except ModuleNotFoundError:  # pragma: no cover
-    from ..config.defaults import (
-        DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
-        DEFAULT_DESCRIPTION_CHAR_LIMIT,
-        DEFAULT_ENDS_AT_GRACE_MINUTES,
-        DEFAULT_FEED_DESCRIPTION,
-        DEFAULT_FEED_LINK,
-        DEFAULT_FEED_HEALTH_PATH,
-        DEFAULT_FEED_HEALTH_JSON_PATH,
-        DEFAULT_FEED_TITLE,
-        DEFAULT_FEED_TTL_MINUTES,
-        DEFAULT_TITLE_CHAR_LIMIT,
-        DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
-        DEFAULT_MAX_ITEMS,
-        DEFAULT_MAX_ITEM_AGE_DAYS,
-        DEFAULT_OUT_PATH,
-        DEFAULT_PAGES_BASE_URL,
-        DEFAULT_CACHE_MAX_AGE_HOURS,
-        DEFAULT_PROVIDER_MAX_WORKERS,
-        DEFAULT_PROVIDER_TIMEOUT,
-        DEFAULT_STATE_PATH,
-        DEFAULT_STATE_RETENTION_DAYS,
-    )
-    from ..utils.env import get_bool_env, get_int_env
-    from ..utils.http import validate_http_url
+from ..config.defaults import (
+    DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS,
+    DEFAULT_DESCRIPTION_CHAR_LIMIT,
+    DEFAULT_ENDS_AT_GRACE_MINUTES,
+    DEFAULT_FEED_DESCRIPTION,
+    DEFAULT_FEED_LINK,
+    DEFAULT_FEED_HEALTH_PATH,
+    DEFAULT_FEED_HEALTH_JSON_PATH,
+    DEFAULT_FEED_TITLE,
+    DEFAULT_FEED_TTL_MINUTES,
+    DEFAULT_TITLE_CHAR_LIMIT,
+    DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
+    DEFAULT_MAX_ITEMS,
+    DEFAULT_MAX_ITEM_AGE_DAYS,
+    DEFAULT_OUT_PATH,
+    DEFAULT_PAGES_BASE_URL,
+    DEFAULT_CACHE_MAX_AGE_HOURS,
+    DEFAULT_PROVIDER_MAX_WORKERS,
+    DEFAULT_PROVIDER_TIMEOUT,
+    DEFAULT_STATE_PATH,
+    DEFAULT_STATE_RETENTION_DAYS,
+)
+from ..utils.env import get_bool_env, get_int_env
+from ..utils.http import validate_http_url
 
 ALLOWED_ROOTS = {"docs", "data", "log"}
 REPO_ROOT = Path(__file__).resolve().parents[2]

@@ -4,7 +4,7 @@ import logging
 import pytest
 import responses
 
-from feed.reporting import RunReport
+from src.feed.reporting import RunReport
 
 
 @responses.activate

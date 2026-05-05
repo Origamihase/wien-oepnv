@@ -44,7 +44,7 @@ jobs:
         uses: ./.github/actions/install-deps
 
       - name: Build feed
-        run: python src/build_feed.py
+        run: python -m src.cli feed build
         env:
           # Atom self/alternate-Links werden direkt im Python-Builder geschrieben.
           # Aus dem aktuellen Repo abgeleitet, damit Forks korrekte atom:link-URLs
