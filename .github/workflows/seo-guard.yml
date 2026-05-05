@@ -40,13 +40,17 @@ jobs:
       - name: Refresh sitemap.xml
         shell: bash
         run: |
-          set -euxo pipefail
+          set -uxo pipefail
           python --version
           python -c "import sys; print('sys.path:', sys.path)"
-          ls -la docs/ | head -5
+          echo "--- docs/ contents ---"
+          ls -la docs/ || true
+          echo "--- generate_sitemap.py run ---"
           python scripts/generate_sitemap.py
-          echo "After generate_sitemap.py:"
-          ls -la docs/sitemap.xml
+          rc=$?
+          echo "--- exit rc=$rc ---"
+          ls -la docs/sitemap.xml || true
+          exit $rc
 
       - name: Verify sitemap.xml
         shell: bash
