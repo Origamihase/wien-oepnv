@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Any
 
 import pytest
 
@@ -34,10 +35,10 @@ def test_fetch_events_returns_results_when_some_stationboards_succeed(
 ) -> None:
     payloads = {"430470800": object(), "490091000": None}
 
-    def fake_fetch(station_id: str, now, counter=None, session=None, timeout=None):
+    def fake_fetch(station_id: str, now: Any, counter: Any = None, session: Any = None, timeout: Any = None) -> Any:
         return payloads.get(station_id)
 
-    def fake_collect(station_id: str, payload):
+    def fake_collect(station_id: str, payload: Any) -> list[dict[str, Any]]:
         return [
             {
                 "guid": f"guid-{station_id}",
