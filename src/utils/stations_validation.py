@@ -86,6 +86,15 @@ class ProviderIssue:
 
 
 @dataclass(frozen=True)
+class NamingIssue:
+    """Station whose canonical ``name`` field violates the uniqueness or formatting policy."""
+
+    identifier: str
+    name: str
+    reason: str
+
+
+@dataclass(frozen=True)
 class ValidationReport:
     """Summary returned by :func:`validate_stations`."""
 
@@ -97,6 +106,7 @@ class ValidationReport:
     security_issues: tuple[SecurityIssue, ...]
     cross_station_id_issues: tuple[CrossStationIDIssue, ...]
     provider_issues: tuple[ProviderIssue, ...]
+    naming_issues: tuple[NamingIssue, ...]
     gtfs_stop_count: int
 
     @property
@@ -109,6 +119,7 @@ class ValidationReport:
             or self.security_issues
             or self.cross_station_id_issues
             or self.provider_issues
+            or self.naming_issues
         )
 
     def to_markdown(self) -> str:
@@ -122,6 +133,7 @@ class ValidationReport:
         lines.append(f"*Security warnings*: {len(self.security_issues)}")
         lines.append(f"*Provider issues*: {len(self.provider_issues)}")
         lines.append(f"*Cross station ID issues*: {len(self.cross_station_id_issues)}")
+        lines.append(f"*Naming issues*: {len(self.naming_issues)}")
         lines.append("")
 
         if self.security_issues:
@@ -182,6 +194,14 @@ class ValidationReport:
                 )
             lines.append("")
 
+        if self.naming_issues:
+            lines.append("## Naming issues")
+            for naming_issue in self.naming_issues:
+                lines.append(
+                    f"- {naming_issue.identifier} ({naming_issue.name}): {naming_issue.reason}"
+                )
+            lines.append("")
+
         if not self.has_issues:
             lines.append("No issues detected.")
 
@@ -215,6 +235,7 @@ def validate_stations(
     security_issues = tuple(_find_security_issues(stations))
     cross_station_id_issues = tuple(_find_cross_station_id_conflicts(stations))
     provider_issues = tuple(_find_provider_issues(stations))
+    naming_issues = tuple(_find_naming_issues(stations))
 
     return ValidationReport(
         total_stations=len(stations),
@@ -225,6 +246,7 @@ def validate_stations(
         security_issues=security_issues,
         cross_station_id_issues=cross_station_id_issues,
         provider_issues=provider_issues,
+        naming_issues=naming_issues,
         gtfs_stop_count=gtfs_count,
     )
 
@@ -564,6 +586,60 @@ def _find_provider_issues(
                 identifier=_format_identifier(entry),
                 name=str(entry.get("name", "")).strip() or "<unknown>",
                 reason="VOR bst_code collides with OEBB",
+            )
+
+
+def _find_naming_issues(
+    stations: Sequence[Mapping[str, object]]
+) -> Iterator[NamingIssue]:
+    """Validate canonical-name policy.
+
+    Two checks:
+
+    1. **Uniqueness** – the ``name`` field is the canonical display label
+       for a station and must not be shared between two distinct entries.
+    2. **Source-field formatting** – the comma-separated provider source
+       string must not contain whitespace inside tokens (e.g.
+       ``"google_places, vor"``). Whitespace breaks naive ``==``-based
+       lookup branches and signals an unnormalized write path.
+    """
+    name_to_identifiers: dict[str, list[str]] = defaultdict(list)
+    for entry in stations:
+        name_obj = entry.get("name")
+        if not isinstance(name_obj, str):
+            continue
+        name = name_obj.strip()
+        if not name:
+            continue
+        name_to_identifiers[name].append(_format_identifier(entry))
+
+    for name, identifiers in name_to_identifiers.items():
+        if len(identifiers) > 1:
+            for identifier in identifiers:
+                yield NamingIssue(
+                    identifier=identifier,
+                    name=name,
+                    reason=(
+                        f"canonical name {name!r} is not unique "
+                        f"(also used by {', '.join(other for other in identifiers if other != identifier)})"
+                    ),
+                )
+
+    for entry in stations:
+        source = entry.get("source")
+        if not isinstance(source, str) or not source:
+            continue
+        # The format is comma-separated tokens; only the comma is a valid
+        # delimiter. Any internal whitespace (including the leading or
+        # trailing whitespace around a token) signals inconsistent
+        # serialisation.
+        if any(part.strip() != part for part in source.split(",")) or " " in source:
+            identifier = _format_identifier(entry)
+            name = str(entry.get("name", "")).strip() or "<unknown>"
+            yield NamingIssue(
+                identifier=identifier,
+                name=name,
+                reason=f"source field has whitespace: {source!r} (expected comma-separated, no spaces)",
             )
 
 

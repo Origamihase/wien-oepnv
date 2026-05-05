@@ -457,7 +457,7 @@ def _merge_sources(*values: object | None) -> str:
                 continue
             seen.add(item)
             merged.append(item)
-    return ", ".join(merged)
+    return ",".join(merged)
 
 
 def _ensure_sorted_aliases(entry: dict[str, object]) -> None:

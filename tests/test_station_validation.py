@@ -10,6 +10,7 @@ from src.utils.stations_validation import (
     CoordinateIssue,
     CrossStationIDIssue,
     DuplicateGroup,
+    NamingIssue,
     ValidationReport,
     validate_stations,
 )
@@ -182,6 +183,7 @@ def test_markdown_rendering_contains_cross_station_id_section() -> None:
         security_issues=(),
         cross_station_id_issues=(issue,),
         provider_issues=(),
+        naming_issues=(),
         gtfs_stop_count=0,
     )
 
@@ -194,3 +196,90 @@ def test_markdown_rendering_contains_cross_station_id_section() -> None:
     assert "bst_code" in markdown
     assert "bst:5678" in markdown
     assert "No issues detected." not in markdown
+
+
+def test_naming_validation_detects_duplicate_canonical_names(tmp_path: Path) -> None:
+    """Two entries with the same ``name`` field must trigger a NamingIssue."""
+    stations = [
+        {
+            "bst_id": 100,
+            "bst_code": "X1",
+            "name": "Wien Beispiel",
+            "aliases": ["Wien Beispiel"],
+            "latitude": 48.2,
+            "longitude": 16.4,
+            "source": "oebb",
+        },
+        {
+            "bst_id": 200,
+            "bst_code": "X2",
+            "name": "Wien Beispiel",
+            "aliases": ["Wien Beispiel"],
+            "latitude": 48.21,
+            "longitude": 16.41,
+            "source": "wl",
+        },
+    ]
+    path = tmp_path / "stations.json"
+    path.write_text(json.dumps(stations), encoding="utf-8")
+
+    report = validate_stations(path)
+    naming_reasons = {issue.reason for issue in report.naming_issues}
+    assert any("not unique" in reason for reason in naming_reasons)
+    assert {issue.identifier for issue in report.naming_issues} == {
+        "bst:100 / code:X1 / source:oebb",
+        "bst:200 / code:X2 / source:wl",
+    }
+
+
+def test_naming_validation_detects_whitespace_in_source(tmp_path: Path) -> None:
+    """Comma-separated source tokens must not carry whitespace."""
+    stations = [
+        {
+            "bst_id": 300,
+            "bst_code": "Y1",
+            "name": "Wien Sauber",
+            "aliases": ["Wien Sauber"],
+            "latitude": 48.2,
+            "longitude": 16.4,
+            "source": "google_places, vor",
+        },
+        {
+            "bst_id": 301,
+            "bst_code": "Y2",
+            "name": "Wien Ohne",
+            "aliases": ["Wien Ohne"],
+            "latitude": 48.21,
+            "longitude": 16.41,
+            "source": "google_places,vor",
+        },
+    ]
+    path = tmp_path / "stations.json"
+    path.write_text(json.dumps(stations), encoding="utf-8")
+
+    report = validate_stations(path)
+    whitespace_issues = [
+        issue for issue in report.naming_issues if "whitespace" in issue.reason
+    ]
+    assert len(whitespace_issues) == 1
+    assert whitespace_issues[0].identifier == "bst:300 / code:Y1 / source:google_places, vor"
+
+
+def test_naming_validation_clean_data_yields_no_issues(tmp_path: Path) -> None:
+    stations = [
+        {
+            "bst_id": 400,
+            "bst_code": "Z1",
+            "name": "Wien Eindeutig",
+            "aliases": ["Wien Eindeutig"],
+            "latitude": 48.2,
+            "longitude": 16.4,
+            "source": "oebb",
+        },
+    ]
+    path = tmp_path / "stations.json"
+    path.write_text(json.dumps(stations), encoding="utf-8")
+
+    report = validate_stations(path)
+    assert report.naming_issues == ()
+    assert isinstance(NamingIssue("x", "y", "z"), NamingIssue)

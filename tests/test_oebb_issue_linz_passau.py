@@ -27,4 +27,4 @@ def test_clean_title_compound_category() -> None:
     # "Zugausfall: " is stripped from "Wien Hbf".
     # Remaining parts: ["ÖBB-Verspätung", "Wien Hauptbahnhof", "St. Pölten"]
     # Formatted as category: part1 part2...
-    assert cleaned == "ÖBB-Verspätung: Wien Hauptbahnhof St. Pölten" or cleaned == "ÖBB-Verspätung: Wien Hauptbahnhof St.Pölten Hbf"
+    assert cleaned == "ÖBB-Verspätung: Wien Hauptbahnhof St. Pölten" or cleaned == "ÖBB-Verspätung: Wien Hauptbahnhof St. Pölten Hauptbahnhof"

@@ -8,5 +8,5 @@ def test_verkehrseinschaenkung_title() -> None:
 def test_verkehrseinschaenkung_with_other_stations() -> None:
     t = "Wien Hbf und St. Pölten Hbf"
     res = _clean_title_keep_places(t)
-    # The clean title keep places canonicalizes "Wien Hbf" to "Wien Hauptbahnhof" and "St. Pölten Hbf" to "St.Pölten Hbf"
-    assert res == "Wien Hauptbahnhof ↔ St.Pölten Hbf"
+    # Canonical names use the full "Hauptbahnhof" form for both stations.
+    assert res == "Wien Hauptbahnhof ↔ St. Pölten Hauptbahnhof"

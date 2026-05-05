@@ -77,8 +77,8 @@
         "Wien Kaiserebersdorf Bf",
         "Wien Kaiserebersdorf bf"
       ],
-      "latitude": 48.1436,
-      "longitude": 16.4649,
+      "latitude": 48.146413,
+      "longitude": 16.465739,
       "source": "oebb"
     },
     {
@@ -483,8 +483,8 @@
         "Wien Rennweg Bf",
         "Wien Rennweg bf"
       ],
-      "latitude": 48.1989,
-      "longitude": 16.3896,
+      "latitude": 48.194766,
+      "longitude": 16.386274,
       "source": "oebb"
     },
     {
@@ -592,7 +592,7 @@
     {
       "bst_id": "1499",
       "bst_code": "Nb",
-      "name": "Wiener Neustadt Hbf",
+      "name": "Wiener Neustadt Hauptbahnhof",
       "in_vienna": false,
       "pendler": true,
       "vor_id": "900300",
@@ -825,8 +825,8 @@
         "Wien Breitensee Bf",
         "Wien Breitensee bf"
       ],
-      "latitude": 48.1968,
-      "longitude": 16.3126,
+      "latitude": 48.198236,
+      "longitude": 16.306333,
       "source": "oebb"
     },
     {
@@ -853,7 +853,7 @@
     {
       "bst_id": "1669",
       "bst_code": "Pb",
-      "name": "St.Pölten Hbf",
+      "name": "St. Pölten Hauptbahnhof",
       "in_vienna": false,
       "pendler": true,
       "vor_id": "430484800",
@@ -1409,7 +1409,7 @@
     {
       "bst_id": "2444",
       "bst_code": "Wf",
-      "name": "Wien Franz-Josefs-Bf",
+      "name": "Wien Franz-Josefs-Bahnhof",
       "in_vienna": true,
       "pendler": false,
       "vor_id": "490034500",
@@ -1548,7 +1548,7 @@
     {
       "bst_id": "2511",
       "bst_code": "Ws",
-      "name": "Wien Westbf",
+      "name": "Wien Westbahnhof",
       "in_vienna": true,
       "pendler": false,
       "vor_id": "490146800",
@@ -1792,8 +1792,8 @@
         "Wien Floridsdorf Bf",
         "Wien Floridsdorf bf"
       ],
-      "latitude": 48.2576,
-      "longitude": 16.4039,
+      "latitude": 48.256648,
+      "longitude": 16.400208,
       "source": "oebb"
     },
     {
@@ -2015,8 +2015,8 @@
         "Wien Aspern Nord Bf",
         "Wien Aspern Nord bf"
       ],
-      "latitude": 48.234567,
-      "longitude": 16.520123,
+      "latitude": 48.234669,
+      "longitude": 16.504456,
       "source": "oebb"
     },
     {
@@ -2168,8 +2168,8 @@
         "Wien Handelskai Bf",
         "Wien Handelskai bf"
       ],
-      "latitude": 48.2465,
-      "longitude": 16.3872,
+      "latitude": 48.241798,
+      "longitude": 16.385223,
       "source": "oebb"
     },
     {
@@ -2460,8 +2460,8 @@
         "Wien Gersthof Bf",
         "Wien Gersthof bf"
       ],
-      "latitude": 48.2307,
-      "longitude": 16.3062,
+      "latitude": 48.231146,
+      "longitude": 16.329067,
       "source": "oebb"
     },
     {
@@ -2510,8 +2510,8 @@
         "Wien Jedlersdorf Bf",
         "Wien Jedlersdorf bf"
       ],
-      "latitude": 48.2779,
-      "longitude": 16.4118,
+      "latitude": 48.273197,
+      "longitude": 16.396927,
       "source": "oebb"
     },
     {
@@ -2639,7 +2639,7 @@
       "in_vienna": false,
       "latitude": 48.140228,
       "longitude": 11.558339,
-      "name": "München Hbf",
+      "name": "München Hauptbahnhof",
       "pendler": false,
       "source": "manual",
       "type": "manual_foreign_city"
@@ -2718,13 +2718,7 @@
         "establishment"
       ],
       "aliases": [
-        "Rennweg",
-        "Bahnhof Rennweg",
-        "Bf Rennweg",
-        "bf Rennweg",
-        "Rennweg Bahnhof",
-        "Rennweg Bf",
-        "Rennweg bf"
+        "Rennweg"
       ],
       "in_vienna": true,
       "latitude": 48.195590700000004,
@@ -3199,7 +3193,7 @@
       "longitude": 16.3694019,
       "name": "Wien Karlsplatz",
       "pendler": false,
-      "source": "google_places, vor, wl",
+      "source": "google_places,vor,wl",
       "vor_id": "490065700",
       "wl_diva": "60201076",
       "wl_stops": [
@@ -3333,8 +3327,8 @@
       "bst_code": "900102",
       "bst_id": "900102",
       "in_vienna": true,
-      "latitude": 48.207316999999996,
-      "longitude": 16.385641,
+      "latitude": 48.206048,
+      "longitude": 16.384584,
       "name": "Wien Mitte-Landstraße",
       "pendler": false,
       "source": "google_places,vor",
@@ -3431,7 +3425,7 @@
       "longitude": 16.3621954,
       "name": "Wien Schottentor",
       "pendler": false,
-      "source": "google_places, vor, wl",
+      "source": "google_places,vor,wl",
       "vor_id": "490118400",
       "wl_diva": "60201002",
       "wl_stops": [
@@ -3599,7 +3593,7 @@
       "longitude": 16.371245899999998,
       "name": "Wien Stephansplatz",
       "pendler": false,
-      "source": "google_places, vor, wl",
+      "source": "google_places,vor,wl",
       "vor_id": "490132000",
       "wl_diva": "60201001",
       "wl_stops": [

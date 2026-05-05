@@ -69,7 +69,7 @@ def test_merge_wl_data_into_existing_wrapped_entry(stations_path_wrapped: Path) 
     merged = raw["stations"]
     assert len(merged) == 1
     entry = merged[0]
-    assert entry["source"] == "vor, wl"
+    assert entry["source"] == "vor,wl"
     assert entry["wl_diva"] == "60201076"
     assert entry["wl_stops"] == wl_entries[0]["wl_stops"]
     assert set(entry["aliases"]) == {"Karlsplatz", "Wien Karlsplatz"}

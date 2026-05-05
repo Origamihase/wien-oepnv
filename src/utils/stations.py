@@ -82,6 +82,30 @@ def _normalize_token(value: str) -> str:
     return text.strip()
 
 
+def _source_token_set(value: object) -> frozenset[str]:
+    """Return the canonical set of provider source tokens for a station entry.
+
+    Tolerates either a comma-separated string (with or without spaces) or a
+    list of strings. The legacy value ``"combined"`` is normalized to ``"wl"``
+    for backwards compatibility with older cache entries.
+    """
+
+    if isinstance(value, str):
+        tokens = {tok.strip() for tok in value.split(",") if tok.strip()}
+    elif isinstance(value, (list, tuple, set, frozenset)):
+        tokens = {
+            str(tok).strip()
+            for tok in value
+            if isinstance(tok, str) and tok.strip()
+        }
+    else:
+        tokens = set()
+    if "combined" in tokens:
+        tokens.discard("combined")
+        tokens.add("wl")
+    return frozenset(tokens)
+
+
 def _coerce_float(value: object | None) -> float | None:
     """Return *value* as float if possible (accepting comma decimal separators)."""
 
@@ -503,15 +527,16 @@ def _station_lookup() -> dict[str, StationInfo]:
                 continue
 
             # Equal strength: fall back to the historical source-based and
-            # name-token-based tie-break. The branches below are wordwise
-            # identical to the pre-refactor logic; only the mapping value
-            # type carries the strength annotation now.
-            existing_source = existing_record.source or ""
-            record_source = alias_record.source or ""
-            if existing_source == "combined":
-                existing_source = "wl"
-            if record_source == "combined":
-                record_source = "wl"
+            # name-token-based tie-break. Source comparisons go through
+            # _source_token_set so that combined values like "google_places,vor"
+            # don't accidentally match the pure-"vor" branch — a record only
+            # counts as "VOR" when VOR is its sole declared source.
+            existing_tokens = _source_token_set(existing_record.source)
+            record_tokens = _source_token_set(alias_record.source)
+            existing_is_vor = existing_tokens == frozenset({"vor"})
+            record_is_vor = record_tokens == frozenset({"vor"})
+            existing_is_wl = existing_tokens == frozenset({"wl"})
+            record_is_wl = record_tokens == frozenset({"wl"})
 
             alias_token = _normalize_token(alias_text)
             record_token = _normalize_token(alias_record.name)
@@ -525,17 +550,17 @@ def _station_lookup() -> dict[str, StationInfo]:
 
             if existing_record.vor_id and alias_record.vor_id and existing_record.vor_id == alias_record.vor_id:
                 if alias_is_numeric or alias_mentions_vor:
-                    if record_source == "vor" and existing_source != "vor":
+                    if record_is_vor and not existing_is_vor:
                         mapping[key] = (alias_record, strength)
                 else:
-                    if record_source == "wl" and existing_source != "wl":
+                    if record_is_wl and not existing_is_wl:
                         mapping[key] = (alias_record, strength)
                 continue
 
-            if existing_source == "vor" and record_source != "vor":
+            if existing_is_vor and not record_is_vor:
                 mapping[key] = (alias_record, strength)
                 continue
-            if record_source == "vor" and existing_source != "vor":
+            if record_is_vor and not existing_is_vor:
                 continue
             logger.warning(
                 "Duplicate station alias %r normalized to %r for %s conflicts with %s",

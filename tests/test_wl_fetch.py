@@ -17,7 +17,7 @@ def test_stop_names_from_related_uses_canonical_names() -> None:
 
     names = _stop_names_from_related(rel_stops)
 
-    assert names == ["Wien Franz-Josefs-Bf"]
+    assert names == ["Wien Franz-Josefs-Bahnhof"]
 
 
 def test_fetch_events_handles_invalid_json(
