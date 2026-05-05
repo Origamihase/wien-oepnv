@@ -46,7 +46,7 @@ def test_fetch_events_handles_invalid_json(
             pass
 
     class DummySession:
-        def __init__(self):
+        def __init__(self) -> None:
             self.headers: dict[str, str] = {}
 
         def __enter__(self):
@@ -75,7 +75,7 @@ def test_fetch_events_handles_invalid_json(
         def merge_environment_settings(self, url, proxies, stream, verify, cert):
             return {}
 
-        def get(self, url, params=None, timeout=None, stream=False, **kwargs):
+        def get(self, url: str, params: Any = None, timeout: Any = None, stream: bool = False, **kwargs: Any) -> Any:
             return DummyResponse()
 
         def request(self, method, url, **kwargs):

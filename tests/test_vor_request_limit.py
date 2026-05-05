@@ -5,6 +5,7 @@ import os
 import threading
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 import pytest
 from zoneinfo import ZoneInfo
@@ -100,7 +101,7 @@ def test_save_request_count_flushes_and_fsyncs(
         file_obj = original_open(*args, **kwargs)
 
         class TrackingFile:
-            def __init__(self, wrapped):
+            def __init__(self, wrapped: Any) -> None:
                 self._wrapped = wrapped
 
             def flush(self):
@@ -311,7 +312,7 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(
 
     # Mock session to avoid real creation, but we will mock fetch_content_safe
     class DummySession:
-        def __init__(self):
+        def __init__(self) -> None:
             self.headers: dict[str, str] = {}
         def __enter__(self): return self
         def __exit__(self, *args): pass
@@ -358,7 +359,7 @@ def test_fetch_departure_board_fails_gracefully_on_error(monkeypatch: pytest.Mon
 
     # Mock session
     class DummySession:
-        def __init__(self):
+        def __init__(self) -> None:
             self.headers: dict[str, str] = {}
         def __enter__(self): return self
         def __exit__(self, *args): pass

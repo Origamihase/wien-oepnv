@@ -32,7 +32,7 @@ class TestSSRFRedirectRebinding(unittest.TestCase):
                 ans1 = MagicMock()
                 ans1.address = safe_ip
                 return [ans1]
-            raise dns.resolver.NoAnswer()
+            raise dns.resolver.NoAnswer()  # type: ignore[no-untyped-call]
 
 
 

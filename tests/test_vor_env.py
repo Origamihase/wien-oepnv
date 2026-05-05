@@ -149,7 +149,7 @@ def test_base_url_prefers_secret(monkeypatch: pytest.MonkeyPatch) -> None:
             ans.address = "93.184.216.34"
             return [ans]
         import dns.resolver
-        raise dns.resolver.NoAnswer()
+        raise dns.resolver.NoAnswer()  # type: ignore[no-untyped-call]
 
     monkeypatch.setattr(
         "dns.resolver.Resolver.resolve",

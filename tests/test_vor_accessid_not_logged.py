@@ -32,7 +32,7 @@ def test_accessid_not_logged(
 
     # Mock session just to be present (fetch_content_safe requires it as arg)
     class DummySession:
-        def __init__(self):
+        def __init__(self) -> None:
             self.headers: dict[str, str] = {}
         def __enter__(self): return self
         def __exit__(self, *args): pass

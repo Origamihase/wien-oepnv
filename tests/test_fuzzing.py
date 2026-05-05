@@ -31,7 +31,7 @@ def test_truncate_html_validity(text: str, limit: int) -> None:
 
     # Verify tag balancing using standard HTMLParser
     class TagBalancer(HTMLParser):
-        def __init__(self):
+        def __init__(self) -> None:
             super().__init__()
             self.stack: List[str] = []
             self.failed = False

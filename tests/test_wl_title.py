@@ -41,8 +41,8 @@ def test_bucket_merge_prefers_informative_title_and_description(
     }
 
     class DummySession:
-        def __init__(self):
-            self.headers = {}
+        def __init__(self) -> None:
+            self.headers: dict[str, str] = {}
 
         def __enter__(self):
             return self

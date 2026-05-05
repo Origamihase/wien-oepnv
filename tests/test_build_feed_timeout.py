@@ -1,3 +1,4 @@
+from typing import Any
 from unittest.mock import MagicMock, patch
 import src.build_feed as bf
 from src.build_feed import _collect_items, RunReport
@@ -71,12 +72,12 @@ def test_run_fetch_timeout_exactly_zero() -> None:
         return []
 
     def _run_fetch(
-        fetch = mock_fetch,
-        timeout_value = 1.0,
-        supports = True,
-        semaphore = semaphore,
-        provider_name = "test"
-    ):
+        fetch: Any = mock_fetch,
+        timeout_value: float = 1.0,
+        supports: bool = True,
+        semaphore: Any = semaphore,
+        provider_name: str = "test",
+    ) -> list[Any]:
         timeout_arg = timeout_value if timeout_value >= 0 else None
 
         if semaphore is None:
