@@ -21,7 +21,7 @@ def _emit_item_str(item: Any, now: datetime, state: dict[str, Any]) -> Any:
 def test_title_has_line_prefix(monkeypatch: pytest.MonkeyPatch) -> None:
     # Mock station info so it doesn't get filtered out
     from src.utils.stations import StationInfo
-    monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name=None, in_vienna=True, pendler=False))
+    monkeypatch.setattr("src.providers.vor.station_info", lambda x: StationInfo(name="", in_vienna=True, pendler=False))
 
     payload = {
         "DepartureBoard": {
