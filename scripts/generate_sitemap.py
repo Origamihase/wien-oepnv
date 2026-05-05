@@ -23,7 +23,7 @@ try:
     from src.utils.files import atomic_write
 except ModuleNotFoundError:
     # Fallback if src is not a package or run differently
-    from utils.files import atomic_write  # type: ignore
+    from utils.files import atomic_write  # type: ignore[no-redef]
 
 DOCS_DIR = REPO_ROOT / "docs"
 DEFAULT_BASE_URL = "https://origamihase.github.io/wien-oepnv"

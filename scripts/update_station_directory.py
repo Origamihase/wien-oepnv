@@ -40,9 +40,9 @@ try:  # pragma: no cover - convenience for module execution
     from src.utils.http import fetch_content_safe, session_with_retries
     from src.utils.stations import is_in_vienna as _is_point_in_vienna
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
-    from utils.files import atomic_write  # type: ignore
-    from utils.http import fetch_content_safe, session_with_retries  # type: ignore
-    from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore
+    from utils.files import atomic_write  # type: ignore[no-redef]
+    from utils.http import fetch_content_safe, session_with_retries  # type: ignore[no-redef]
+    from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore[no-redef]
 
 try:  # pragma: no cover - convenience for module execution
     from src.places.client import (
@@ -60,7 +60,7 @@ try:  # pragma: no cover - convenience for module execution
     from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
     from src.utils.env import load_default_env_files
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
-    from places.client import (  # type: ignore
+    from places.client import (  # type: ignore[no-redef]
         DEFAULT_INCLUDED_TYPES,
         GooglePlacesClient,
         GooglePlacesConfig,
@@ -70,10 +70,10 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
         Place,
         get_places_api_key,
     )
-    from places.diagnostics import permission_hint  # type: ignore
-    from places.merge import BoundingBox, MergeConfig, merge_places, StationEntry  # type: ignore
-    from places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file  # type: ignore
-    from utils.env import load_default_env_files  # type: ignore
+    from places.diagnostics import permission_hint  # type: ignore[no-redef]
+    from places.merge import BoundingBox, MergeConfig, merge_places, StationEntry  # type: ignore[no-redef]
+    from places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file  # type: ignore[no-redef]
+    from utils.env import load_default_env_files  # type: ignore[no-redef]
 
 DEFAULT_OUTPUT_PATH = _ROOT / "data" / "stations.json"
 DEFAULT_PENDLER_PATH = _ROOT / "data" / "pendler_bst_ids.json"
