@@ -787,6 +787,13 @@ def _parse_dt(date_str: Any, time_str: Any) -> datetime | None:
         naive = datetime.strptime(f"{date_txt} {time_txt}", "%Y-%m-%d %H:%M")
     except ValueError:
         return None
+    # fold=0 resolves the once-a-year ambiguity at the CEST→CET transition
+    # (last Sunday of October, 02:00–02:59 local) to the *earlier* (CEST)
+    # interpretation. The VOR API delivers naive local timestamps without
+    # disambiguation, so we have to pick one consistently. Picking the
+    # earlier reading keeps event start/end ordering monotonic across the
+    # transition; the alternative (fold=1) would shift events one hour
+    # later for that single window each year.
     local_dt = naive.replace(tzinfo=ZONE_VIENNA, fold=0)
     return local_dt.astimezone(timezone.utc)
 
