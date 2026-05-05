@@ -37,6 +37,12 @@ from scripts.fetch_vor_haltestellen import (
         # First-word mismatch + same disambiguation suffix
         ("Tulln an der Donau", "Höflein an der Donau Bahnhof", "430380000"),
         ("Haslau an der Donau", "Höflein an der Donau Bahnhof", "430380000"),
+        # New 2026-05 cron false positives caught by bus-suffix filter
+        ("Tulln an der Donau", "Tulln An der Wehr", "738031699"),
+        ("Weigelsdorf", "Weigelsdorf Judenweg", "430586900"),
+        ("Laxenburg-Biedermannsdorf", "Laxenburg Guntramsdorfer Straße", "430615800"),
+        ("Himberg", "Himberg (bei Wien) Gutenhof", "430361800"),
+        ("Himberg bei Wien", "Himberg (bei Wien) Gutenhof", "430361800"),
     ],
     ids=[
         "laxenburg→hlw",
@@ -49,6 +55,11 @@ from scripts.fetch_vor_haltestellen import (
         "laa→busbahnhof",
         "tulln→hoeflein",
         "haslau→hoeflein",
+        "tulln→an-der-wehr",
+        "weigelsdorf→judenweg",
+        "laxenburg→guntramsdorfer-straße",
+        "himberg→gutenhof",
+        "himberg-bei-wien→gutenhof",
     ],
 )
 def test_score_rejects_bad_match(station: str, candidate: str, ext_id: str) -> None:
@@ -74,6 +85,13 @@ def test_score_rejects_bad_match(station: str, candidate: str, ext_id: str) -> N
         # are real train stations. Must not be rejected.
         ("Hainburg Kulturfabrik", "Hainburg/Donau Kulturfabrik", "430368100"),
         ("Hainburg Ungartor", "Hainburg/Donau Ungartor/B9", "430367700"),
+        # Wien stations that have "Straße" in the name — legitimate rail
+        # stops. The bus-suffix filter must not reject them when the
+        # candidate is essentially identical (ratio >= 0.85).
+        ("Wien Brünner Straße", "Wien Brünner Straße", "490017600"),
+        ("Wien Krottenbachstraße", "Wien Krottenbachstraße", "490072300"),
+        ("Wien Geiselbergstraße", "Wien Geiselbergstraße", "490048400"),
+        ("Wien Erzherzog Karl-Straße", "Wien Erzherzog-Karl-Straße", "490028800"),
     ],
     ids=[
         "karlsplatz",
@@ -83,6 +101,10 @@ def test_score_rejects_bad_match(station: str, candidate: str, ext_id: str) -> N
         "hennersdorf+bei-wien",
         "hainburg-kulturfabrik-S7",
         "hainburg-ungartor-S7",
+        "wien-brünner-straße",
+        "wien-krottenbachstraße",
+        "wien-geiselbergstraße",
+        "wien-erzherzog-karl-straße",
     ],
 )
 def test_score_accepts_good_match(station: str, candidate: str, ext_id: str) -> None:

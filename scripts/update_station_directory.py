@@ -941,6 +941,29 @@ def _assign_vor_ids(
     if not vor_stops and not name_map:
         return
     index = _build_vor_index(vor_stops) if vor_stops else {}
+    # Track which vor_ids are already claimed by another station so we
+    # never assign the same VOR id twice — that produces the
+    # cross_station_id_issues collision the 2026-05 cron exposed
+    # (Mistelbach + Mistelbach Stadt both ending up with 430420200).
+    # Pre-load existing assignments from `vor_id` already on the
+    # stations (bypasses idempotency on re-runs).
+    used_vor_ids: set[str] = {
+        station.vor_id for station in stations if station.vor_id
+    }
+
+    def _try_claim(station: Station, vor_id: str) -> bool:
+        if vor_id in used_vor_ids:
+            logger.warning(
+                "Refusing to assign vor_id=%s to %s (bst_id=%s) — already "
+                "claimed by another station; the fetcher resolved both "
+                "names to the same VOR stop",
+                vor_id, station.name, station.bst_id,
+            )
+            return False
+        station.vor_id = vor_id
+        used_vor_ids.add(vor_id)
+        return True
+
     for station in stations:
         if station.vor_id:
             continue
@@ -949,7 +972,7 @@ def _assign_vor_ids(
         # from the station name (e.g. Hohenau → Hohenau an der March Bahnhof).
         direct = name_map.get(station.name)
         if direct:
-            station.vor_id = direct
+            _try_claim(station, direct)
             continue
         if not index:
             continue
@@ -963,7 +986,7 @@ def _assign_vor_ids(
             continue
         selected = _select_vor_stop(station, candidates)
         if selected:
-            station.vor_id = selected.vor_id
+            _try_claim(station, selected.vor_id)
         else:
             logger.debug(
                 "Ambiguous VOR stop candidates for %s (%s)", station.name, station.bst_id

@@ -193,6 +193,22 @@ _WRONG_REGION_PATTERN = re.compile(
 # "Mödlinger Friedhofs-Markt" wouldn't trip this.
 _VILLAGE_SUFFIX_PATTERN = re.compile(r"\s+(?:ort|markt)\s*$", re.IGNORECASE)
 
+# Tokens that indicate the candidate is a *rail* stop. If absent, and a
+# probable bus-stop suffix is present, the candidate is rejected.
+_RAIL_TOKENS = frozenset({"bahnhof", "bahnhst", "bhf", "hbf", "bf"})
+
+# Common street-name fragments and village quarters that, when present in a
+# candidate *without* any of the rail tokens above, indicate a bus stop.
+# Both word-boundary and end-of-word matches: "Wehr" (separate word) and
+# "Judenweg"/"Gutenhof" (compound) all trigger.
+_BUS_LIKE_SUFFIX_PATTERN = re.compile(
+    r"(?:\b(?:strasse|str|gasse|platz|wehr|grenz|siedlung|kreuzung|"
+    r"kreisverkehr|zentrum|abzw|abzweigung)\b"
+    r"|(?:weg|hof|markt)$"
+    r"|\s(?:weg|hof)$)",
+    re.IGNORECASE,
+)
+
 
 # Below this score a candidate is considered too weak to accept. Empirically
 # tuned: legit matches sit above 100 (full SequenceMatcher ratio + bahnhof
@@ -246,6 +262,25 @@ def _score_candidate(station_name: str, candidate_name: str, ext_id: str | None)
     # centre of a Salzburg town — not the Wiener U-Bahn-Halt with the
     # same name we asked for.
     if _VILLAGE_SUFFIX_PATTERN.search(candidate_name):
+        return -100.0
+
+    # Probable bus-stop heuristic: candidate has no rail token *and* a
+    # street/quarter descriptor *and* is not just the station name with
+    # a Bahnhof suffix. The ratio threshold (0.85) ensures legitimate
+    # Wien stations with "Straße" in the name (Wien Brünner Straße,
+    # Wien Erzherzog Karl-Straße, Wien Krottenbachstraße) still pass —
+    # there the candidate is essentially identical to the station.
+    # Triggers e.g.
+    # "Tulln An der Wehr" (738031699 — a mill weir, not a station)
+    # "Weigelsdorf Judenweg" (a footpath)
+    # "Laxenburg Guntramsdorfer Straße" (a street)
+    # "Himberg (bei Wien) Gutenhof" (a village quarter)
+    candidate_tokens = set(candidate_norm.split())
+    if (
+        ratio < 0.85
+        and not (_RAIL_TOKENS & candidate_tokens)
+        and _BUS_LIKE_SUFFIX_PATTERN.search(candidate_norm)
+    ):
         return -100.0
 
     # First-word-mismatch: the input "Tulln an der Donau" must not match

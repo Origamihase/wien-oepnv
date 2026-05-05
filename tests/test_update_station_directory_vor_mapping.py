@@ -79,3 +79,38 @@ def test_assign_vor_ids_falls_back_to_fuzzy_matcher_when_name_not_in_map() -> No
     ]
     usd._assign_vor_ids([station], vor_stops, name_to_vor_id={})  # empty map
     assert station.vor_id == "490091000"
+
+
+def test_assign_vor_ids_refuses_duplicate_assignment() -> None:
+    """Two different stations resolving to the same VOR id must not both
+    receive that id — the second assignment is refused with a warning.
+    Regression for the 2026-05 cron Mistelbach-collision: 'Mistelbach'
+    and 'Mistelbach Stadt' both got mapped to vor_id 430420200, tripping
+    the cross_station_id_issues gate."""
+    station_a = _make_station("Mistelbach", bst_id="1370")
+    station_b = _make_station("Mistelbach Stadt", bst_id="1945177")
+    name_map = {
+        "Mistelbach": "430420200",
+        "Mistelbach Stadt": "430420200",  # same vor_id — must not be claimed twice
+    }
+
+    usd._assign_vor_ids([station_a, station_b], vor_stops=[], name_to_vor_id=name_map)
+
+    assert station_a.vor_id == "430420200"
+    assert station_b.vor_id is None, (
+        "second station must not claim the already-assigned vor_id"
+    )
+
+
+def test_assign_vor_ids_respects_pre_existing_vor_ids() -> None:
+    """If a station already has a vor_id at function entry, that id is
+    treated as claimed for the duplicate-guard check."""
+    station_a = _make_station("Existing", bst_id="1")
+    station_a.vor_id = "430420200"
+    station_b = _make_station("New", bst_id="2")
+    name_map = {"New": "430420200"}
+
+    usd._assign_vor_ids([station_a, station_b], vor_stops=[], name_to_vor_id=name_map)
+
+    assert station_a.vor_id == "430420200"
+    assert station_b.vor_id is None
