@@ -38,7 +38,15 @@ jobs:
           python-version: '3.11'
 
       - name: Refresh sitemap.xml
-        run: python scripts/generate_sitemap.py
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python --version
+          python -c "import sys; print('sys.path:', sys.path)"
+          ls -la docs/ | head -5
+          python scripts/generate_sitemap.py
+          echo "After generate_sitemap.py:"
+          ls -la docs/sitemap.xml
 
       - name: Verify sitemap.xml
         shell: bash
