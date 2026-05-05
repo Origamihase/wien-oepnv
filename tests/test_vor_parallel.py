@@ -1,4 +1,6 @@
 import threading
+from typing import Any
+
 import pytest
 
 import src.providers.vor as vor
@@ -16,7 +18,7 @@ def test_fetch_events_parallel(monkeypatch: pytest.MonkeyPatch) -> None:
 
     barrier = threading.Barrier(2)
 
-    def blocking_fetch(station_id, now_local, counter=None, session=None, timeout=None):
+    def blocking_fetch(station_id: str, now_local: Any, counter: Any = None, session: Any = None, timeout: Any = None) -> dict[str, Any]:
         try:
             barrier.wait(timeout=1)
         except threading.BrokenBarrierError as e:
@@ -47,7 +49,7 @@ def test_fetch_events_logs_and_continues(
 
     monkeypatch.setattr(vor, "_select_stations_round_robin", lambda ids, chunk: ids[:chunk])
 
-    def failing_fetch(station_id, now_local, counter=None, session=None, timeout=None):
+    def failing_fetch(station_id: str, now_local: Any, counter: Any = None, session: Any = None, timeout: Any = None) -> dict[str, Any]:
         if station_id == "1":
             raise RuntimeError("boom")
         return {}

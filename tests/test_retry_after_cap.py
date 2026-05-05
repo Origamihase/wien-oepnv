@@ -1,10 +1,12 @@
 import logging
+from datetime import datetime
 from types import TracebackType
+from typing import Any
+
 import pytest
 import requests
 import src.providers.vor as vor
 import src.providers.oebb as oebb
-from datetime import datetime
 
 class DummySession:
     def __init__(self) -> None:
@@ -29,7 +31,7 @@ def test_vor_retry_after_capped(
     """Verify that VOR provider caps the Retry-After delay."""
 
     # Mock response with extremely large Retry-After
-    def fake_fetch(session, url, **kwargs):
+    def fake_fetch(session: Any, url: str, **kwargs: Any) -> None:
         resp = requests.Response()
         resp.status_code = 429
         resp.headers["Retry-After"] = "99999"
@@ -55,7 +57,7 @@ def test_oebb_retry_after_capped(
 ) -> None:
     """Verify that OEBB provider caps the Retry-After delay."""
 
-    def fake_fetch_safe(session, url, **kwargs):
+    def fake_fetch_safe(session: Any, url: str, **kwargs: Any) -> None:
         resp = requests.Response()
         resp.status_code = 429
         resp.headers["Retry-After"] = "99999"

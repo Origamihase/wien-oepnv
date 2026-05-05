@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 import requests
 import responses
@@ -28,7 +30,7 @@ def test_resolve_station_ids_looks_up_stop_ids(monkeypatch: pytest.MonkeyPatch) 
     # We return the JSON bytes directly.
     import json
 
-    def fake_fetch_safe(session, url, params=None, timeout=None, allowed_content_types=None):
+    def fake_fetch_safe(session: Any, url: str, params: Any = None, timeout: Any = None, allowed_content_types: Any = None) -> bytes:
         # Verify params
         assert params["input"] == "UnknownStation"
         # accessId is injected via apply_authentication, which modifies the request or session,
@@ -66,7 +68,7 @@ def test_fetch_events_prefers_configured_station_ids(monkeypatch: pytest.MonkeyP
 
     called: list[list[str]] = []
 
-    def fail_if_called(names):
+    def fail_if_called(names: list[str]) -> list[str]:
         called.append(names)
         return []
 

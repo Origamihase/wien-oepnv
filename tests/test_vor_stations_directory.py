@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -25,7 +26,7 @@ def test_vor_bst_code_prefers_directory_entry(monkeypatch: pytest.MonkeyPatch) -
     stations._station_lookup.cache_clear()
     stations.station_info.cache_clear()
 
-    def fake_entries():
+    def fake_entries() -> tuple[dict[str, Any], ...]:
         return (
             {
                 "name": "Wien Hauptbahnhof (VOR)",
@@ -88,7 +89,7 @@ def test_bst_code_identity_outranks_foreign_alias(monkeypatch: pytest.MonkeyPatc
     stations._station_lookup.cache_clear()
     stations.station_info.cache_clear()
 
-    def fake_entries():
+    def fake_entries() -> tuple[dict[str, Any], ...]:
         return (
             {
                 "bst_id": "4773541",

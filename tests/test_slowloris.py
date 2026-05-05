@@ -1,7 +1,10 @@
+import time
+from typing import Iterator
+from unittest.mock import MagicMock, patch
+
 import pytest
 import requests
-import time
-from unittest.mock import MagicMock, patch
+
 from src.utils.http import fetch_content_safe, read_response_safe
 
 def test_read_response_safe_timeout() -> None:
@@ -11,7 +14,7 @@ def test_read_response_safe_timeout() -> None:
     response = MagicMock(spec=requests.Response)
     response.headers = {}
 
-    def slow_iterator(chunk_size=1):
+    def slow_iterator(chunk_size: int = 1) -> Iterator[bytes]:
         yield b"chunk1"
         time.sleep(0.2)
         yield b"chunk2"
@@ -44,7 +47,7 @@ def test_fetch_content_safe_slowloris(
     response.headers = {}
 
     # Setup slow iterator for response content
-    def slow_iterator(chunk_size=8192):
+    def slow_iterator(chunk_size: int = 8192) -> Iterator[bytes]:
         # Initial chunk
         yield b"data"
         # Sleep to simulate slow transfer

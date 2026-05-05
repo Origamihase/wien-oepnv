@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from typing import Any, Literal
 
 import pytest
 
@@ -44,10 +45,10 @@ def test_bucket_merge_prefers_informative_title_and_description(
         def __init__(self) -> None:
             self.headers: dict[str, str] = {}
 
-        def __enter__(self):
+        def __enter__(self) -> "DummySession":
             return self
 
-        def __exit__(self, exc_type, exc, tb):
+        def __exit__(self, exc_type: Any, exc: Any, tb: Any) -> Literal[False]:
             return False
 
     monkeypatch.setattr(
