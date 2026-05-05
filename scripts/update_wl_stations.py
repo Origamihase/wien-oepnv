@@ -20,7 +20,7 @@ import sys
 from dataclasses import dataclass
 from importlib import import_module
 from pathlib import Path
-from typing import Any, Callable, Iterable, Iterator, List, Mapping, Sequence
+from typing import Any, Callable, Iterable, Iterator, List, Mapping, Sequence, cast
 
 
 def _project_root() -> Path:
@@ -32,7 +32,7 @@ def _load_is_in_vienna() -> Callable[..., bool]:
     if str(base_dir) not in sys.path:
         sys.path.insert(0, str(base_dir))
     module = import_module("src.utils.stations")
-    return module.is_in_vienna
+    return cast(Callable[..., bool], module.is_in_vienna)
 
 
 def _load_atomic_write() -> Callable[..., Any]:
@@ -40,7 +40,7 @@ def _load_atomic_write() -> Callable[..., Any]:
     if str(base_dir) not in sys.path:
         sys.path.insert(0, str(base_dir))
     module = import_module("src.utils.files")
-    return module.atomic_write
+    return cast(Callable[..., Any], module.atomic_write)
 
 
 BASE_DIR = _project_root()

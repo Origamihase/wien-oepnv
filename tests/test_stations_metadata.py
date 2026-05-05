@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import cast
 
 import pytest
 
@@ -23,7 +24,7 @@ def _load_metadata() -> dict[str, object]:
 
     metadata_path = Path(__file__).resolve().parents[1] / "data" / "stations_metadata.json"
     with metadata_path.open("r", encoding="utf-8") as handle:
-        return json.load(handle)
+        return cast(dict[str, object], json.load(handle))
 
 
 def test_vzg_sections_have_expected_kilometres() -> None:
