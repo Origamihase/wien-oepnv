@@ -1,7 +1,6 @@
 from src.places.client import GooglePlacesClient, GooglePlacesConfig
 from src.places.tiling import Tile
 import requests
-from typing import Any
 from unittest.mock import MagicMock
 
 def test_infinite_pagination_guard() -> None:
