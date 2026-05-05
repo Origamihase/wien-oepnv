@@ -5,7 +5,7 @@ import os
 import threading
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterator
 
 import pytest
 from zoneinfo import ZoneInfo
@@ -58,7 +58,7 @@ def test_fetch_events_respects_daily_limit(
     )
     monkeypatch.setattr(vor, "_collect_from_board", lambda sid, root: [])
 
-    def fail_fetch(*args, **kwargs):
+    def fail_fetch(*args: Any, **kwargs: Any) -> None:
         raise AssertionError("StationBoard request should not be triggered when limit reached")
 
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", fail_fetch)
@@ -97,31 +97,31 @@ def test_save_request_count_flushes_and_fsyncs(
     original_open = builtins.open
     original_fsync = os.fsync
 
-    def tracking_open(*args, **kwargs):
+    def tracking_open(*args: Any, **kwargs: Any) -> Any:
         file_obj = original_open(*args, **kwargs)
 
         class TrackingFile:
             def __init__(self, wrapped: Any) -> None:
                 self._wrapped = wrapped
 
-            def flush(self):
+            def flush(self) -> Any:
                 nonlocal flush_called
                 flush_called = True
                 return self._wrapped.flush()
 
-            def __getattr__(self, name):
+            def __getattr__(self, name: str) -> Any:
                 return getattr(self._wrapped, name)
 
-            def __enter__(self):
+            def __enter__(self) -> "TrackingFile":
                 self._wrapped.__enter__()
                 return self
 
-            def __exit__(self, exc_type, exc, tb):
+            def __exit__(self, exc_type: Any, exc: Any, tb: Any) -> Any:
                 return self._wrapped.__exit__(exc_type, exc, tb)
 
         return TrackingFile(file_obj)
 
-    def tracking_fsync(fd):
+    def tracking_fsync(fd: int) -> None:
         nonlocal fsync_called
         fsync_called = True
         return original_fsync(fd)
@@ -160,7 +160,7 @@ def test_save_request_count_returns_previous_on_lock_failure(
 
     from contextlib import contextmanager
     @contextmanager
-    def failing_lock(*args, **kwargs):
+    def failing_lock(*args: Any, **kwargs: Any) -> Iterator[None]:
         raise OSError("boom")
         yield
 
@@ -191,7 +191,7 @@ def test_save_request_count_returns_previous_on_replace_failure(
         encoding="utf-8",
     )
 
-    def failing_replace(src, dst):
+    def failing_replace(src: Any, dst: Any) -> None:
         raise OSError("replace failed")
 
     monkeypatch.setattr(vor.os, "replace", failing_replace)
@@ -277,7 +277,13 @@ def test_fetch_events_stops_submitting_when_limit_reached(
     call_count = 0
     call_lock = threading.Lock()
 
-    def fake_fetch(station_id, now_local, counter=None, session=None, timeout=None):
+    def fake_fetch(
+        station_id: str,
+        now_local: datetime,
+        counter: Any = None,
+        session: Any = None,
+        timeout: Any = None,
+    ) -> dict[str, Any]:
         nonlocal call_count
         with call_lock:
             call_count += 1
@@ -303,7 +309,7 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(
 ) -> None:
     called = 0
 
-    def fake_save(now_local):
+    def fake_save(now_local: datetime) -> int:
         nonlocal called
         called += 1
         return called
@@ -314,19 +320,19 @@ def test_fetch_departure_board_for_station_counts_unsuccessful_requests(
     class DummySession:
         def __init__(self) -> None:
             self.headers: dict[str, str] = {}
-        def __enter__(self): return self
-        def __exit__(self, *args): pass
-        def close(self): pass
-        def prepare_request(self, request):
+        def __enter__(self) -> "DummySession": return self
+        def __exit__(self, *args: Any) -> None: pass
+        def close(self) -> None: pass
+        def prepare_request(self, request: Any) -> Any:
             from requests.models import PreparedRequest
             p = PreparedRequest()
             p.prepare(method=request.method, url=request.url, headers=request.headers)
             return p
-        def merge_environment_settings(self, *args, **kwargs): return {}
+        def merge_environment_settings(self, *args: Any, **kwargs: Any) -> dict[str, Any]: return {}
 
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
-    def fake_fetch_content_safe(*args, **kwargs):
+    def fake_fetch_content_safe(*args: Any, **kwargs: Any) -> None:
         import requests
         resp = requests.Response()
         resp.status_code = status_code
@@ -350,7 +356,7 @@ def test_fetch_departure_board_fails_gracefully_on_error(monkeypatch: pytest.Mon
 
     call_count = 0
 
-    def fake_save(now_local):
+    def fake_save(now_local: datetime) -> int:
         nonlocal call_count
         call_count += 1
         return call_count
@@ -361,20 +367,20 @@ def test_fetch_departure_board_fails_gracefully_on_error(monkeypatch: pytest.Mon
     class DummySession:
         def __init__(self) -> None:
             self.headers: dict[str, str] = {}
-        def __enter__(self): return self
-        def __exit__(self, *args): pass
-        def close(self): pass
-        def prepare_request(self, request):
+        def __enter__(self) -> "DummySession": return self
+        def __exit__(self, *args: Any) -> None: pass
+        def close(self) -> None: pass
+        def prepare_request(self, request: Any) -> Any:
             from requests.models import PreparedRequest
             p = PreparedRequest()
             p.prepare(method=request.method, url=request.url, headers=request.headers)
             return p
-        def merge_environment_settings(self, *args, **kwargs): return {}
+        def merge_environment_settings(self, *args: Any, **kwargs: Any) -> dict[str, Any]: return {}
 
     monkeypatch.setattr(vor, "session_with_retries", lambda *a, **kw: DummySession())
 
     # Mock fetch_content_safe to simulate failure
-    def fake_fetch_content_safe(*args, **kwargs):
+    def fake_fetch_content_safe(*args: Any, **kwargs: Any) -> None:
         raise ConnectionError("boom")
 
     monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch_content_safe)
