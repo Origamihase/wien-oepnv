@@ -306,7 +306,7 @@ verhindert Drift.
 | ---- | ------- | ------------ |
 | `name` | ✓ | Kanonischer Anzeige-Name (eindeutig, wird im Feed verwendet). |
 | `in_vienna` | ✓ | `true` wenn die Koordinaten innerhalb des LANDESGRENZEOGD-Polygons liegen. |
-| `pendler` | ✓ | `true` für Pendler-Knoten außerhalb Wiens (siehe `data/pendler_bst_ids.json`). |
+| `pendler` | ✓ | `true` für Pendler-Knoten **außerhalb** Wiens (siehe `data/pendler_bst_ids.json`). **Mutual exclusive zu `in_vienna`**: jede Station ist entweder Wien-Station ODER Pendler, niemals beides. Einzige Ausnahme: `type: manual_foreign_city` (München, Roma) — beide Flags `false`. Verstöße werden vom Validator als NamingIssue gemeldet und vom Updater automatisch korrigiert (in_vienna gewinnt). |
 | `aliases` | ✓ | Schreibvarianten und IDs zur Erkennung in Provider-Texten. |
 | `latitude` / `longitude` | ✓ | WGS84-Koordinaten (validiert gegen das Wien-Polygon für `in_vienna`-Einträge). |
 | `source` | ✓ | Komma-getrennte Provider-Tokens (kein Whitespace) aus `oebb,vor,wl,google_places,manual`. |

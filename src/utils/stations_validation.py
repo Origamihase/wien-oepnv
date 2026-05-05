@@ -592,9 +592,9 @@ def _find_provider_issues(
 def _find_naming_issues(
     stations: Sequence[Mapping[str, object]]
 ) -> Iterator[NamingIssue]:
-    """Validate canonical-name policy.
+    """Validate canonical-name policy and flag-consistency invariants.
 
-    Two checks:
+    Three checks:
 
     1. **Uniqueness** – the ``name`` field is the canonical display label
        for a station and must not be shared between two distinct entries.
@@ -602,6 +602,11 @@ def _find_naming_issues(
        string must not contain whitespace inside tokens (e.g.
        ``"google_places, vor"``). Whitespace breaks naive ``==``-based
        lookup branches and signals an unnormalized write path.
+    3. **Vienna/pendler mutual exclusivity** – ``in_vienna`` and ``pendler``
+       partition the directory: every entry is *either* inside the city
+       limits *or* a commuter-belt station outside, never both. The single
+       exception is ``type: manual_foreign_city`` (München, Roma) where
+       both flags may legitimately be ``false``.
     """
     name_to_identifiers: dict[str, list[str]] = defaultdict(list)
     for entry in stations:
@@ -640,6 +645,34 @@ def _find_naming_issues(
                 identifier=identifier,
                 name=name,
                 reason=f"source field has whitespace: {source!r} (expected comma-separated, no spaces)",
+            )
+
+    for entry in stations:
+        in_vienna = bool(entry.get("in_vienna"))
+        pendler = bool(entry.get("pendler"))
+        identifier = _format_identifier(entry)
+        name = str(entry.get("name", "")).strip() or "<unknown>"
+        entry_type = entry.get("type")
+
+        if in_vienna and pendler:
+            yield NamingIssue(
+                identifier=identifier,
+                name=name,
+                reason=(
+                    "in_vienna and pendler are both true — flags must be "
+                    "mutually exclusive (a Vienna station cannot also be a "
+                    "commuter-belt station)"
+                ),
+            )
+        elif not in_vienna and not pendler and entry_type != "manual_foreign_city":
+            yield NamingIssue(
+                identifier=identifier,
+                name=name,
+                reason=(
+                    "in_vienna and pendler are both false — entry should "
+                    "either be classified as a Vienna station, a commuter "
+                    "station, or marked with type='manual_foreign_city'"
+                ),
             )
 
 

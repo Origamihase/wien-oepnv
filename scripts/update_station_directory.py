@@ -1070,6 +1070,14 @@ def _annotate_station_flags(
     pendler_ids: set[str],
     locations: Mapping[str, LocationInfo],
 ) -> None:
+    """Set ``in_vienna`` and ``pendler`` mutually exclusively.
+
+    A station is either inside the Vienna city limits *or* a commuter-belt
+    station outside; never both. If a Vienna station's bst_id is mistakenly
+    listed in ``data/pendler_bst_ids.json``, the ``in_vienna`` flag wins and
+    the pendler flag stays ``False`` — a warning is logged so the entry can
+    be removed from the whitelist.
+    """
     for station in stations:
         info: LocationInfo | None = None
         for key in _normalize_location_keys(station.name):
@@ -1080,10 +1088,18 @@ def _annotate_station_flags(
             station.in_vienna = _is_point_in_vienna(info.latitude, info.longitude)
         else:
             station.in_vienna = _is_vienna_station(station.name)
-        pendler = station.bst_id in pendler_ids
+        pendler_candidate = station.bst_id in pendler_ids
         if info and not station.in_vienna and "wl" in info.sources:
-            pendler = True
-        station.pendler = pendler
+            pendler_candidate = True
+        if station.in_vienna and pendler_candidate:
+            logger.warning(
+                "Station %s (bst_id=%s) is inside Vienna; ignoring pendler "
+                "marker — remove the entry from data/pendler_bst_ids.json",
+                station.name,
+                station.bst_id,
+            )
+            pendler_candidate = False
+        station.pendler = pendler_candidate
 
 
 def _filter_relevant_stations(stations: list[Station]) -> list[Station]:
