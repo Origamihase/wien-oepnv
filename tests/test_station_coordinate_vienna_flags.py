@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any
 
 from src.utils import stations as station_utils
 
@@ -11,7 +12,7 @@ from src.utils import stations as station_utils
 STATIONS_PATH = Path("data/stations.json")
 
 
-def _load_station_entries() -> list[dict]:
+def _load_station_entries() -> list[dict[str, Any]]:
     with STATIONS_PATH.open("r", encoding="utf-8") as handle:
         data = json.load(handle)
         if isinstance(data, dict):

@@ -15,18 +15,18 @@ from src.places.tiling import Tile
 
 
 class DummyResponse:
-    def __init__(self, status_code: int, payload: dict | None = None) -> None:
+    def __init__(self, status_code: int, payload: dict[str, Any] | None = None) -> None:
         self.status_code = status_code
         self._payload = payload or {}
         self.text = json.dumps(self._payload)
-        self.headers: dict = {}
+        self.headers: dict[str, str] = {}
         self.raw = MagicMock()
         conn = MagicMock()
         conn.sock.getpeername.return_value = ("8.8.8.8", 443)
         self.raw.connection = conn
         self.raw._connection = conn
 
-    def json(self) -> dict:
+    def json(self) -> dict[str, Any]:
         return self._payload
 
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
@@ -45,9 +45,9 @@ class DummyResponse:
 class DummySession:
     def __init__(self, responses: Iterable[DummyResponse]) -> None:
         self._queue = list(responses)
-        self.calls: List[dict] = []
-        self.headers: dict = {}
-        self.hooks: dict = {"response": []}
+        self.calls: List[dict[str, Any]] = []
+        self.headers: dict[str, str] = {}
+        self.hooks: dict[str, Any] = {"response": []}
         self.trust_env: bool = True
 
     def mount(self, prefix: str, adapter: object) -> None:
@@ -56,7 +56,7 @@ class DummySession:
     def close(self) -> None:
         pass
 
-    def post(self, url: str, *, headers: dict, json: dict, timeout: float, **kwargs: Any) -> DummyResponse:
+    def post(self, url: str, *, headers: dict[str, str], json: dict[str, Any], timeout: float, **kwargs: Any) -> DummyResponse:
         if not self._queue:
             raise AssertionError("Unexpected HTTP call: no responses queued")
         self.calls.append({"url": url, "json": json, "headers": headers, "timeout": timeout})

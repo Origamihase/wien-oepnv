@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from types import TracebackType
+from typing import Any
 
 import pytest
 
@@ -39,14 +40,14 @@ def test_parse_api_stop_with_properties() -> None:
 @dataclass
 class _FakeResponse:
     status_code: int
-    payload: dict
+    payload: dict[str, Any]
 
-    def json(self) -> dict:
+    def json(self) -> dict[str, Any]:
         return self.payload
 
 
 class _FakeSession:
-    def __init__(self, payloads: dict[str, tuple[int, dict]]) -> None:
+    def __init__(self, payloads: dict[str, tuple[int, dict[str, Any]]]) -> None:
         self.payloads = payloads
         self.headers: dict[str, str] = {}
         self.calls: list[tuple[str, dict[str, str]]] = []
@@ -63,9 +64,9 @@ class _FakeSession:
         self,
         url: str,
         *,
-        params: dict,
+        params: dict[str, str],
         timeout: object,
-        headers: dict,
+        headers: dict[str, str],
     ) -> _FakeResponse:
         return self.request("GET", url, params=params, timeout=timeout, headers=headers)
 
