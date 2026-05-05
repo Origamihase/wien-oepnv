@@ -41,7 +41,23 @@ def test_cli_cache_update_defaults_to_all(monkeypatch: pytest.MonkeyPatch) -> No
         "update_wl_cache.py",
         "update_oebb_cache.py",
         "update_vor_cache.py",
+        "update_baustellen_cache.py",
     ]
+
+
+def test_cli_cache_update_baustellen(monkeypatch: pytest.MonkeyPatch) -> None:
+    calls: list[tuple[str, list[str]]] = []
+
+    def fake_run_script(script_name: str, *, extra_args: list[str] | None = None) -> int:
+        calls.append((script_name, list(extra_args or [])))
+        return 0
+
+    monkeypatch.setattr(cli, "_run_script", fake_run_script)
+
+    exit_code = cli.main(["cache", "update", "baustellen"])
+
+    assert exit_code == 0
+    assert calls == [("update_baustellen_cache.py", [])]
 
 
 def test_cli_cache_update_rejects_mixed_all(monkeypatch: pytest.MonkeyPatch) -> None:
