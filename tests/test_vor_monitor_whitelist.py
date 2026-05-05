@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 import src.providers.vor as vor
 
@@ -24,8 +26,8 @@ def test_fetch_events_uses_whitelist_by_default(
     monkeypatch.setattr(vor, "VOR_STATION_IDS", ["99999", "88888"])
 
     # Mock resolve_station_ids to track what's being resolved
-    resolved_ids = []
-    def mock_resolve(names):
+    resolved_ids: list[str] = []
+    def mock_resolve(names: list[str]) -> list[str]:
         nonlocal resolved_ids
         resolved_ids.extend(names)
         return ["490134900", "430470800"] # Mock IDs for Hbf and Airport
@@ -33,8 +35,8 @@ def test_fetch_events_uses_whitelist_by_default(
     monkeypatch.setattr(vor, "resolve_station_ids", mock_resolve)
 
     # Mock fetching to avoid network
-    captured_ids = []
-    def mock_fetch(station_id, now_local, counter=None, session=None, timeout=None):
+    captured_ids: list[str] = []
+    def mock_fetch(station_id: str, now_local: Any, counter: Any = None, session: Any = None, timeout: Any = None) -> dict[str, Any]:
         captured_ids.append(station_id)
         return {} # Return empty dict to simulate success
 
@@ -69,15 +71,15 @@ def test_fetch_events_uses_configured_whitelist(monkeypatch: pytest.MonkeyPatch)
 
     monkeypatch.setenv("VOR_MONITOR_STATIONS_WHITELIST", "Westbahnhof, Meidling")
 
-    resolved_names = []
-    def mock_resolve(names):
+    resolved_names: list[str] = []
+    def mock_resolve(names: list[str]) -> list[str]:
         resolved_names.extend(names)
         return ["111", "222"]
 
     monkeypatch.setattr(vor, "resolve_station_ids", mock_resolve)
 
-    fetched_ids = []
-    def mock_fetch(sid, now, counter=None, session=None, timeout=None):
+    fetched_ids: list[str] = []
+    def mock_fetch(sid: str, now: Any, counter: Any = None, session: Any = None, timeout: Any = None) -> dict[str, Any]:
         fetched_ids.append(sid)
         return {}
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", mock_fetch)
@@ -104,14 +106,14 @@ def test_fetch_events_disabled_whitelist_fallback(monkeypatch: pytest.MonkeyPatc
     # Setup legacy VOR_STATION_IDS
     monkeypatch.setattr(vor, "VOR_STATION_IDS", ["12345"])
 
-    fetched_ids = []
-    def mock_fetch(sid, now, counter=None, session=None, timeout=None):
+    fetched_ids: list[str] = []
+    def mock_fetch(sid: str, now: Any, counter: Any = None, session: Any = None, timeout: Any = None) -> dict[str, Any]:
         fetched_ids.append(sid)
         return {}
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", mock_fetch)
 
     # Mock resolve_station_ids to assert it's NOT called for whitelist
-    def mock_resolve(names):
+    def mock_resolve(names: list[str]) -> None:
         assert False, "Should not be resolving names when whitelist is empty"
     monkeypatch.setattr(vor, "resolve_station_ids", mock_resolve)
 
@@ -134,8 +136,8 @@ def test_whitelist_respects_request_limits(
     # Simulate limit reached
     monkeypatch.setattr(vor, "load_request_count", lambda: (None, 100))
 
-    captured_ids = []
-    def mock_fetch(sid, now, counter=None, session=None, timeout=None):
+    captured_ids: list[str] = []
+    def mock_fetch(sid: str, now: Any, counter: Any = None, session: Any = None, timeout: Any = None) -> dict[str, Any]:
         captured_ids.append(sid)
         return {}
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", mock_fetch)

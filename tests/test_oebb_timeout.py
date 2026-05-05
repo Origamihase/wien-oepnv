@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from typing import Any
+from typing import Any, Iterator
 
 import pytest
 
@@ -9,7 +9,7 @@ import src.providers.oebb as oebb
 def test_fetch_events_passes_timeout(monkeypatch: pytest.MonkeyPatch) -> None:
     recorded = {}
 
-    def fake_fetch_xml(url, timeout):
+    def fake_fetch_xml(url: str, timeout: Any) -> ET.Element:
         recorded["timeout"] = timeout
         root = ET.Element("rss")
         ET.SubElement(root, "channel")
@@ -30,26 +30,26 @@ def test_fetch_xml_passes_timeout_to_session(monkeypatch: pytest.MonkeyPatch) ->
         status_code = 200
         headers: dict[str, str] = {}
 
-        def raise_for_status(self):
+        def raise_for_status(self) -> None:
             pass
 
-        def iter_content(self, chunk_size=8192):
+        def iter_content(self, chunk_size: int = 8192) -> Iterator[bytes]:
             yield self.content
 
-        def __enter__(self):
+        def __enter__(self) -> "DummyResponse":
             return self
 
-        def __exit__(self, exc_type, exc, tb):
+        def __exit__(self, exc_type: Any, exc: Any, tb: Any) -> None:
             pass
 
     class DummySession:
         def __init__(self) -> None:
             self.headers: dict[str, str] = {}
 
-        def __enter__(self):
+        def __enter__(self) -> "DummySession":
             return self
 
-        def __exit__(self, exc_type, exc, tb):
+        def __exit__(self, exc_type: Any, exc: Any, tb: Any) -> None:
             pass
 
         def get(self, url: str, timeout: Any, stream: bool = False, **kwargs: Any) -> Any:
@@ -57,7 +57,7 @@ def test_fetch_xml_passes_timeout_to_session(monkeypatch: pytest.MonkeyPatch) ->
             recorded["stream"] = stream
             return DummyResponse()
 
-        def request(self, method, url, timeout=None, stream=False, **kwargs):
+        def request(self, method: str, url: str, timeout: Any = None, stream: bool = False, **kwargs: Any) -> Any:
             return self.get(url, timeout=timeout, stream=stream, **kwargs)
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession())
 

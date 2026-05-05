@@ -36,12 +36,12 @@ def test_slow_provider_does_not_block(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("PROVIDER_TIMEOUT", "1")
     build_feed = _import_build_feed(monkeypatch)
 
-    def slow_fetch(timeout=None):
+    def slow_fetch(timeout: Any = None) -> list[dict[str, str]]:
         # Sleep 1.2s to trigger timeout
         time.sleep(1.2)
         return [{"guid": "slow"}]
 
-    def fast_fetch(timeout=None):
+    def fast_fetch(timeout: Any = None) -> list[dict[str, str]]:
         return [{"guid": "fast"}]
 
     monkeypatch.setattr(
@@ -67,13 +67,13 @@ def test_provider_specific_timeout_override(monkeypatch: pytest.MonkeyPatch) -> 
     monkeypatch.setenv("PROVIDER_TIMEOUT", "2")
     build_feed = _import_build_feed(monkeypatch)
 
-    def slow_fetch(timeout=None):
+    def slow_fetch(timeout: Any = None) -> list[dict[str, str]]:
         time.sleep(1.2)
         return [{"guid": "slow"}]
 
     slow_fetch.__name__ = "slow"
 
-    def fast_fetch(timeout=None):
+    def fast_fetch(timeout: Any = None) -> list[dict[str, str]]:
         return [{"guid": "fast"}]
 
     fast_fetch.__name__ = "fast"
@@ -107,7 +107,7 @@ def test_cache_providers_run_sequentially(monkeypatch: pytest.MonkeyPatch) -> No
     calls = []
 
     def make_cache_provider(name: str) -> Any:  # closure with dynamic _provider_cache_name attr
-        def _provider(timeout=None):
+        def _provider(timeout: Any = None) -> list[dict[str, str]]:
             calls.append(name)
             return [{"provider": name}]
 
@@ -130,7 +130,7 @@ def test_cache_providers_run_sequentially(monkeypatch: pytest.MonkeyPatch) -> No
     monkeypatch.setenv("WL_ENABLE", "1")
     monkeypatch.setenv("OEBB_ENABLE", "1")
 
-    def fail_executor(*args, **kwargs):
+    def fail_executor(*args: Any, **kwargs: Any) -> None:
         raise AssertionError("ThreadPoolExecutor should not be used for cache providers")
 
     monkeypatch.setattr(build_feed, "ThreadPoolExecutor", fail_executor)
@@ -152,7 +152,7 @@ def test_provider_worker_limit(monkeypatch: pytest.MonkeyPatch) -> None:
     lock = threading.Lock()
 
     def make_fetch(name: str) -> Any:  # closure with dynamic _provider_concurrency_key attr
-        def _fetch(timeout=None):
+        def _fetch(timeout: Any = None) -> list[dict[str, str]]:
             nonlocal active, max_active
             with lock:
                 active += 1
@@ -166,7 +166,7 @@ def test_provider_worker_limit(monkeypatch: pytest.MonkeyPatch) -> None:
             return [{"name": name}]
 
         _fetch.__name__ = name
-        _fetch._provider_concurrency_key = "group"
+        _fetch._provider_concurrency_key = "group"  # type: ignore[attr-defined]
         return _fetch
 
     first = make_fetch("first")
