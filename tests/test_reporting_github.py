@@ -7,7 +7,7 @@ import responses
 from feed.reporting import RunReport
 
 
-@responses.activate  # type: ignore[untyped-decorator]
+@responses.activate
 def test_run_report_creates_github_issue(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("FEED_GITHUB_CREATE_ISSUES", "1")
     monkeypatch.setenv("FEED_GITHUB_REPOSITORY", "demo/repo")
@@ -45,7 +45,7 @@ def test_run_report_creates_github_issue(monkeypatch: pytest.MonkeyPatch) -> Non
     assert "Unbekannter Fehler im Test" in payload["body"]
 
 
-@responses.activate  # type: ignore[untyped-decorator]
+@responses.activate
 def test_run_report_logs_warning_when_credentials_missing(
     monkeypatch: pytest.MonkeyPatch,
     caplog: pytest.LogCaptureFixture,
@@ -70,7 +70,7 @@ def test_run_report_logs_warning_when_credentials_missing(
     assert any("Token oder Repository fehlen" in message for message in warning_messages)
 
 
-@responses.activate  # type: ignore[untyped-decorator]
+@responses.activate
 def test_run_report_sanitizes_github_error_details(
     monkeypatch: pytest.MonkeyPatch,
     caplog: pytest.LogCaptureFixture,
