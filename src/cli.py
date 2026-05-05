@@ -29,6 +29,7 @@ _PROVIDER_CACHE_SCRIPTS = {
     "wl": "update_wl_cache.py",
     "oebb": "update_oebb_cache.py",
     "vor": "update_vor_cache.py",
+    "baustellen": "update_baustellen_cache.py",
 }
 
 _STATION_UPDATE_SCRIPTS = {
@@ -138,7 +139,7 @@ def _configure_cache_commands(subparsers: argparse._SubParsersAction[argparse.Ar
         "providers",
         nargs="*",
         metavar="PROVIDER",
-        help="Provider identifiers (wl, oebb, vor). Ohne Angabe werden alle Caches aktualisiert.",
+        help="Provider identifiers (wl, oebb, vor, baustellen). Ohne Angabe werden alle Caches aktualisiert.",
     )
     update_parser.add_argument(
         "--all",

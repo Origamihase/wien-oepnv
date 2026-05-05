@@ -332,7 +332,7 @@ Nachnutzung zu gewährleisten.
 
 Die wichtigsten GitHub Actions:
 
-- `update-wl-cache.yml`, `update-oebb-cache.yml`, `update-vor-cache.yml` – füllen die Provider-Caches.
+- `update-wl-cache.yml`, `update-oebb-cache.yml`, `update-vor-cache.yml`, `update-baustellen-cache.yml` – füllen die Provider-Caches.
 - `update-stations.yml` – pflegt monatlich `data/stations.json`.
 - `build-feed.yml` – erzeugt `docs/feed.xml` auf Basis der aktuellen Caches.
 - `test.yml` & `test-vor-api.yml` – führen die vollständige Test-Suite bzw. VOR-spezifische Integrationstests aus; `test.yml` läuft bei jedem Push sowie Pull Request und stellt die kontinuierliche Testabdeckung sicher.
@@ -352,7 +352,7 @@ Cache-Update-Workflows committen ihre Ergebnisse in den Branch; der Feed-Build l
 
 Die neue Kommandozeile (`python -m src.cli`) bündelt bisher verstreute Skripte. Wichtige Unterbefehle:
 
-- `python -m src.cli cache update <wl|oebb|vor>` – aktualisiert den jeweiligen Provider-Cache.
+- `python -m src.cli cache update <wl|oebb|vor|baustellen>` – aktualisiert den jeweiligen Provider-Cache.
 - `python -m src.cli stations update <all|directory|vor|wl>` – führt die bestehenden Stations-Skripte mit optionalem `--verbose` aus.
 - `python -m src.cli feed build` – startet den Feed-Build mit der aktuellen Umgebung.
 - `python -m src.cli feed lint` – prüft die aggregierten Items auf fehlende GUIDs oder unerwartete Duplikate.
