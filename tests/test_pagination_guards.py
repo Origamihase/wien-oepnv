@@ -30,7 +30,7 @@ def test_infinite_pagination_guard() -> None:
         )
 
         class RawMock:
-            pass
+            _connection: Any = None
         raw = RawMock()
         raw._connection = MagicMock()
         raw._connection.__class__.__name__ = "MockConnection"

@@ -1,9 +1,9 @@
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 from src.utils.http import validate_http_url
 
 
 @patch("src.utils.http._resolve_hostname_safe")
-def test_validate_http_url_valid(mock_resolve: object) -> None:
+def test_validate_http_url_valid(mock_resolve: MagicMock) -> None:
     # Mock successful DNS resolution for example.com and google.com
     # Return a safe IP (e.g. 93.184.216.34)
     mock_resolve.return_value = [(2, 1, 6, "", ("93.184.216.34", 80))]

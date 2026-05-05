@@ -53,7 +53,7 @@ def test_restore_existing_metadata_rehydrates_full_station_entries() -> None:
 
     for station in stations:
         restored = station.as_dict()
-        original = existing_entries.get(station.bst_id)
+        original = existing_entries.get(station.bst_id)  # type: ignore[attr-defined]
         assert original is not None
         assert restored == original
 

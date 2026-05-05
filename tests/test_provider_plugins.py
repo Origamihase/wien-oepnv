@@ -109,8 +109,8 @@ def test_collect_items_uses_plugin_provider(monkeypatch: pytest.MonkeyPatch) -> 
         # Explicitly initialize config/plugins because import no longer does it
         build_feed.refresh_from_env()
         # Explicitly set false to not get side effects of the previous runs inside the current interpreter
-        build_feed.PROVIDERS = []
-        build_feed.DEFAULT_PROVIDERS = tuple()
+        setattr(build_feed, "PROVIDERS", [])
+        setattr(build_feed, "DEFAULT_PROVIDERS", tuple())
         provider_mod.reset_registry(with_defaults=False)
 
         # We need to manually register the plugin for this test now since we cleared it!

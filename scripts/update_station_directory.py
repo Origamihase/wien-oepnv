@@ -27,6 +27,8 @@ from typing import Callable, Iterable, Mapping, MutableMapping, Sequence, cast, 
 
 import openpyxl
 
+__all__ = ["subprocess"]
+
 DEFAULT_SOURCE_URL = (
     "https://data.oebb.at/dam/jcr:fce22daf-0dd8-4a15-80b4-dbca6e80ce38/"
     "Verzeichnis%20der%20Verkehrsstationen.xlsx"
