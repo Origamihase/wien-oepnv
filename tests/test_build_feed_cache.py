@@ -22,7 +22,7 @@ def _import_build_feed_without_providers(monkeypatch: pytest.MonkeyPatch) -> typ
 
     real_import = builtins.__import__
 
-    def guard(name, globals=None, locals=None, fromlist=(), level=0):
+    def guard(name: str, globals: Any = None, locals: Any = None, fromlist: Any = (), level: int = 0) -> Any:
         if name.startswith("providers"):
             raise AssertionError(f"unexpected provider import: {name}")
         return real_import(name, globals, locals, fromlist, level)
@@ -122,7 +122,7 @@ def test_collect_items_reads_from_cache(monkeypatch: pytest.MonkeyPatch) -> None
 
     calls = []
 
-    def fake_read_cache(provider):
+    def fake_read_cache(provider: str) -> list[dict[str, str]]:
         calls.append(provider)
         return [{"provider": provider}]
 
@@ -151,7 +151,7 @@ def test_fmt_rfc2822_logs_and_uses_fallback(
 ) -> None:
     build_feed = _import_build_feed_without_providers(monkeypatch)
 
-    def broken_formatter(_):
+    def broken_formatter(_: Any) -> None:
         raise RuntimeError("kaputtes Datum")
 
     monkeypatch.setattr(build_feed, "format_datetime", broken_formatter)

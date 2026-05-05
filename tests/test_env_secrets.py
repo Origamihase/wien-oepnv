@@ -1,4 +1,5 @@
 import os
+from typing import Any
 from unittest import mock
 
 import pytest
@@ -50,7 +51,7 @@ def test_read_secret_docker_priority(monkeypatch: pytest.MonkeyPatch) -> None:
         docker_secret_resolved.is_file.return_value = True
         docker_secret_resolved.read_text.return_value = "docker_value\n"
 
-        def path_side_effect(arg):
+        def path_side_effect(arg: Any) -> mock.MagicMock:
             if str(arg) == "/run/secrets":
                 return docker_base_mock
             return mock.MagicMock()
@@ -77,7 +78,7 @@ def test_read_secret_systemd_priority(monkeypatch: pytest.MonkeyPatch) -> None:
         cred_secret_resolved.is_file.return_value = True
         cred_secret_resolved.read_text.return_value = "systemd_value"
 
-        def path_side_effect(arg):
+        def path_side_effect(arg: Any) -> mock.MagicMock:
             if str(arg) == "/custom/creds":
                 return cred_base_mock
             if str(arg) == "/run/secrets":
@@ -113,7 +114,7 @@ def test_read_secret_path_traversal(monkeypatch: pytest.MonkeyPatch) -> None:
         # Actually my code does try..except ValueError around relative_to, so raising ValueError is fine.
         # But if we just make exists() return False, it won't read.
 
-        def path_side_effect(arg):
+        def path_side_effect(arg: Any) -> mock.MagicMock:
             if str(arg) == "/custom/creds":
                 return cred_base_mock
             if str(arg) == "/run/secrets":
