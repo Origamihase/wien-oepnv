@@ -6,6 +6,11 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>https://origamihase.github.io/wien-oepnv/archive/audits/INDEX.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://origamihase.github.io/wien-oepnv/archive/audits/audit-2024-12-31.html</loc>
     <lastmod>2026-02-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -96,8 +101,18 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://origamihase.github.io/wien-oepnv/archive/audits/stations_validation_report.html</loc>
-    <lastmod>2026-02-22</lastmod>
+    <loc>https://origamihase.github.io/wien-oepnv/archive/audits/stations_data_audit_2026-05-05.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://origamihase.github.io/wien-oepnv/archive/audits/stations_data_audit_2026-05-05_followup.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://origamihase.github.io/wien-oepnv/archive/audits/stations_data_audit_2026-05-05_official_polygon.html</loc>
+    <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -217,6 +232,15 @@
   <url>
     <loc>https://origamihase.github.io/wien-oepnv/schema/events.schema.json</loc>
     <lastmod>2026-05-01</lastmod>
+  </url>
+  <url>
+    <loc>https://origamihase.github.io/wien-oepnv/schema/stations.schema.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://origamihase.github.io/wien-oepnv/stations_validation_report.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://origamihase.github.io/wien-oepnv/strict-typing-attr-defined-investigation.html</loc>
