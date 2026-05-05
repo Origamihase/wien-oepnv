@@ -359,11 +359,25 @@ bei jedem Befund mit einem Fehlercode ab. In CI läuft der Validator als Pflicht
 
 ### Pendler-Whitelist
 
-`data/pendler_bst_ids.json` listet Stationen außerhalb der Stadtgrenze,
-die als Pendler-Knoten im Verzeichnis verbleiben. Die Auswahl ist
-**redaktionell kuratiert** und priorisiert die für Wien-Pendler:innen
-relevantesten Bahnhöfe, nicht algorithmisch bestimmt. Änderungen wirken
-beim nächsten Lauf von `python -m src.cli stations update directory`.
+Zwei komplementäre Dateien legen fest, welche Bahnhöfe außerhalb der
+Stadtgrenze als Pendler-Knoten ins Verzeichnis aufgenommen werden:
+
+- **`data/pendler_bst_ids.json`** – Liste von ÖBB-`bst_id`-Werten.
+  Eintrag wirkt sofort: ist die ID im ÖBB-Excel-Verzeichnis vorhanden,
+  wird die Station mit `pendler=true` übernommen.
+- **`data/pendler_candidates.json`** – name-basierte Wishlist (siehe
+  [`docs/schema/pendler_candidates.schema.json`](docs/schema/pendler_candidates.schema.json)).
+  Sinnvoll, wenn der `bst_id` der gewünschten Station unbekannt ist —
+  der Updater matcht den Stationsnamen aus dem ÖBB-Excel gegen diese
+  Liste und ergänzt die fehlende ID automatisch.
+
+Die Auswahl ist in beiden Dateien **redaktionell kuratiert** und
+priorisiert die für Wien-Pendler:innen relevantesten Bahnhöfe.
+Änderungen wirken beim nächsten Lauf von
+`python -m src.cli stations update directory`. Die Mutual-Exclusivity
+zu `in_vienna` (Vienna-Station vs. Pendler) wird sowohl vom Updater als
+auch vom Validator und JSON-Schema erzwungen — Verstöße führen zu einer
+WARNING bzw. blockieren den Atomic-Write.
 
 ### Zusätzliche Datenquellen
 

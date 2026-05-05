@@ -1,0 +1,92 @@
+{
+  "$schema": "../docs/schema/pendler_candidates.schema.json",
+  "description": "Name-based pendler whitelist for the station directory updater. Stations listed here are marked pendler=true on the next ÖBB Excel refresh, regardless of their bst_id. The complementary file data/pendler_bst_ids.json is the legacy bst_id-based whitelist; the updater honors both and the union is the effective pendler set.",
+  "candidates": [
+    {"name": "Pfaffstätten", "line": "S-Bahn Südbahn", "priority": 1, "added": "2026-05-05"},
+    {"name": "Gumpoldskirchen", "line": "S-Bahn Südbahn", "priority": 1, "added": "2026-05-05"},
+    {"name": "Guntramsdorf Südbahn", "line": "S-Bahn Südbahn", "priority": 1, "added": "2026-05-05"},
+    {"name": "Hennersdorf", "line": "S60-Verstärker Pottendorfer Linie", "priority": 1, "added": "2026-05-05"},
+    {"name": "Achau", "line": "S60-Verstärker Pottendorfer Linie", "priority": 1, "added": "2026-05-05"},
+    {"name": "Münchendorf", "line": "S60-Verstärker Pottendorfer Linie", "priority": 1, "added": "2026-05-05"},
+    {"name": "Gramatneusiedl", "line": "S60/REX6/REX64 Ostbahn", "priority": 1, "added": "2026-05-05"},
+    {"name": "Götzendorf an der Leitha", "line": "S60/REX6 Ostbahn", "priority": 1, "added": "2026-05-05"},
+    {"name": "Himberg bei Wien", "line": "S60/REX6 Ostbahn (gesperrt bis Ende 2026)", "priority": 1, "added": "2026-05-05"},
+    {"name": "Felixdorf", "line": "S3/S4/REX Südbahn-Aspangbahn-Verzweigung", "priority": 1, "added": "2026-05-05"},
+    {"name": "Sollenau", "line": "S-Bahn Südbahn / Aspangbahn-Verzweigung", "priority": 1, "added": "2026-05-05"},
+    {"name": "Traiskirchen Aspangbahn", "line": "R95 Innere Aspangbahn", "priority": 1, "added": "2026-05-05"},
+
+    {"name": "Kottingbrunn", "line": "S-Bahn Südbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Wiener Neustadt Nord", "line": "Südbahn (Stadtteilbahnhof)", "priority": 2, "added": "2026-05-05"},
+    {"name": "Neunkirchen NÖ", "line": "CJX9/REX1 Südbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Pottschach", "line": "CJX9 Südbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Gloggnitz", "line": "CJX9/REX Südbahn (Endpunkt vor Semmering)", "priority": 2, "added": "2026-05-05"},
+    {"name": "Payerbach-Reichenau", "line": "CJX9/REX/R Südbahn", "priority": 2, "added": "2026-05-05"},
+
+    {"name": "Weigelsdorf", "line": "R/REX Pottendorfer Linie", "priority": 2, "added": "2026-05-05"},
+    {"name": "Wampersdorf", "line": "R/REX Pottendorfer Linie (Abzweigung)", "priority": 2, "added": "2026-05-05"},
+    {"name": "Pottendorf-Landegg", "line": "R/REX Pottendorfer Linie (namensgebend)", "priority": 2, "added": "2026-05-05"},
+
+    {"name": "Maria Lanzendorf", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Laxenburg-Biedermannsdorf", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Guntramsdorf-Kaiserau", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Möllersdorf Aspangbahn", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Trumau", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Oberwaltersdorf", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Tattendorf", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Teesdorf", "line": "R95 Innere Aspangbahn", "priority": 2, "added": "2026-05-05"},
+
+    {"name": "Lanzendorf-Rannersdorf", "line": "S60/REX Ostbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Trautmannsdorf an der Leitha", "line": "S60 Ostbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Wilfleinsdorf", "line": "S60 Ostbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Sarasdorf", "line": "S60 Ostbahn", "priority": 2, "added": "2026-05-05"},
+
+    {"name": "Mannswörth", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Fischamend", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Maria Ellend an der Donau", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Haslau an der Donau", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Regelsbrunn", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Wildungsmauer", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Petronell-Carnuntum", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Bad Deutsch-Altenburg", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Hainburg Kulturfabrik", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Hainburg Ungartor", "line": "S7 Pressburger Bahn", "priority": 2, "added": "2026-05-05"},
+
+    {"name": "Raasdorf", "line": "S80/R81/REX8 Marchegger Ostbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Glinzendorf", "line": "R81/REX8 Marchegger Ostbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Siebenbrunn-Leopoldsdorf", "line": "R81/REX8 Marchegger Ostbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Untersiebenbrunn", "line": "R81/REX8 Marchegger Ostbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Schönfeld-Lassee", "line": "R81/REX8 Marchegger Ostbahn", "priority": 2, "added": "2026-05-05"},
+
+    {"name": "Helmahof", "line": "S1/REX2 Nordbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Bernhardsthal", "line": "REX Nordbahn (Inland-Endbahnhof)", "priority": 2, "added": "2026-05-05"},
+    {"name": "Hohenau", "line": "REX/R Nordbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Drösing", "line": "REX/R Nordbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Dürnkrut", "line": "R Nordbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Angern an der March", "line": "R Nordbahn", "priority": 2, "added": "2026-05-05"},
+
+    {"name": "Mistelbach Stadt", "line": "REX2 Laaer Ostbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Laa an der Thaya", "line": "REX2 Laaer Ostbahn (Endbahnhof)", "priority": 2, "added": "2026-05-05"},
+
+    {"name": "Langenzersdorf", "line": "S3/R3 Nordwestbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Bisamberg", "line": "S3/R3 Nordwestbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Spillern", "line": "S3/R3/REX3 Nordwestbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Absdorf-Hippersdorf", "line": "S5/REX41 (Knoten FJB/Stockerau)", "priority": 2, "added": "2026-05-05"},
+
+    {"name": "Kritzendorf", "line": "S40/R40 Franz-Josefs-Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "St. Andrä-Wördern", "line": "S40/R40 Franz-Josefs-Bahn (P&R)", "priority": 2, "added": "2026-05-05"},
+    {"name": "Tulln Stadt", "line": "S40 Franz-Josefs-Bahn (zentrumsnah)", "priority": 2, "added": "2026-05-05"},
+    {"name": "Krems an der Donau", "line": "REX4/R44 Franz-Josefs-Bahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Hadersdorf am Kamp", "line": "REX4/R44 Franz-Josefs-Bahn", "priority": 2, "added": "2026-05-05"},
+
+    {"name": "Rekawinkel", "line": "S50 Westbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Maria Anzbach", "line": "S50 Westbahn", "priority": 2, "added": "2026-05-05"},
+    {"name": "Neulengbach Stadt", "line": "S50 Westbahn (Stadtbahnhof)", "priority": 2, "added": "2026-05-05"},
+    {"name": "Pottenbrunn", "line": "REX51/R Westbahn (St. Pölten Vorort)", "priority": 2, "added": "2026-05-05"}
+  ],
+  "notes": [
+    "Excerpt from the 2026-05 stations-coverage research; see docs/archive/audits/stations_coverage_2026-05.md for the full picture and rationale.",
+    "Priority 1 = 'critical missing for Wien-pendler use case' (Top-12 of the research).",
+    "Priority 2 = 'important' (additional commuter stations identified in the same research).",
+    "Future planned stations (Wien Hietzinger Hauptstraße, Wien Stranzenbergbrücke, possible Wien Lobau reactivation) are intentionally not listed — they are documented in the audit file under 'Beobachten / nach Inbetriebnahme nachpflegen'."
+  ]
+}
