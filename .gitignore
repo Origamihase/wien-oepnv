@@ -6,6 +6,7 @@ data/*.txt
 data/secrets.env
 data/*.env
 *.log
+*.log.*
 *.tmp
 .DS_Store
 streckendaten_notfallmanagement.zip

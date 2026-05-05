@@ -26,6 +26,16 @@ Das Projekt benötigt **Python 3.11+**.
    python -m pip install -r requirements-dev.txt
    ```
 
+4. **Pre-Commit-Hooks aktivieren** (empfohlen):
+   ```bash
+   pre-commit install
+   ```
+   Das aktiviert lokale Checks bei jedem `git commit` (ruff, mypy `--strict`,
+   Secret-Scan, Whitespace-Hygiene). Manuell für alle Dateien ausführen:
+   ```bash
+   pre-commit run --all-files
+   ```
+
 ## Workflow für Entwickler
 
 Wir nutzen eine vereinheitlichte CLI (`src.cli`) für die wichtigsten Aufgaben.
