@@ -51,7 +51,7 @@ Der Feed-Bau folgt einem klaren Ablauf:
 | `data/`               | Stationsverzeichnis, GTFS-Testdaten und Hilfslisten (z. B. Pendler-Whitelist).                   |
 | `docs/`               | Audit-Berichte, Referenzen, Beispiel-Feeds und das offizielle VAO/VOR-API-Handbuch.              |
 | `.github/workflows/`  | Automatisierte Jobs für Cache-Updates, Stationspflege, Feed-Erzeugung und Tests.                |
-| `tests/`              | Umfangreiche Pytest-Suite (>250 Tests) für Feed-Logik, Provider-Adapter und Utility-Funktionen.  |
+| `tests/`              | Umfangreiche Pytest-Suite (~1000 Tests) für Feed-Logik, Provider-Adapter und Utility-Funktionen.  |
 
 
 > **Hinweis zu Cache-Pfaden:** Die tatsächlichen Verzeichnisse unter `cache/` tragen einen Hash-Suffix zur Cache-Versionierung (Stand Mai 2026: `cache/wl_9d709a/`, `cache/oebb_c40d21/`, `cache/vor_929f1c/`). In dieser Dokumentation werden aus Lesbarkeitsgründen verkürzte Schreibweisen wie `cache/wl/events.json` verwendet — sie verweisen jeweils auf das aktuelle Provider-Verzeichnis.
@@ -342,9 +342,10 @@ Cache-Update-Workflows committen ihre Ergebnisse in den Branch; der Feed-Build l
 
 ## Entwicklung & Qualitätssicherung
 
-- **Tests**: `python -m pytest` führt sämtliche Unit- und Integrationstests aus (`tests/`).
+- **Tests**: `python -m pytest` führt rund 1000 Unit- und Integrationstests aus (`tests/`).
 - **Kontinuierliche Tests**: Die GitHub Action `test.yml` automatisiert die im Audit empfohlene regelmäßige Testausführung und bricht Builds bei fehlschlagender Test-Suite ab.
-- **Statische Analyse & Typprüfung**: `ruff check` (Stil/Konsistenz) und `mypy` (vollständige Typabdeckung über das gesamte Paket `src/`) laufen identisch zur CI via `python -m src.cli checks`. Optional lassen sich über `--fix` Ruff-Autofixes aktivieren oder zusätzliche Argumente an Ruff durchreichen.
+- **Statische Analyse & Typprüfung**: `ruff check` (Stil/Konsistenz, Regelgruppen `E`, `F`, `S`, `B`) und `mypy --strict` (vollständige Typabdeckung über `src/` und `tests/`, derzeit 0 Errors) laufen identisch zur CI via `python -m src.cli checks`. Optional lassen sich über `--fix` Ruff-Autofixes aktivieren oder zusätzliche Argumente an Ruff durchreichen. Ein zusätzlicher `mypy-strict.yml`-Workflow setzt das Allowlist-Gate auf Pull Requests durch.
+- **Pre-Commit-Hooks**: `.pre-commit-config.yaml` aktiviert lokale Checks (Ruff, mypy, Secret-Scan, Whitespace-Hygiene) bei jedem `git commit`. Einmalig nach dem Klonen `pre-commit install` ausführen — Details in [`CONTRIBUTING.md`](CONTRIBUTING.md).
 - **Logging**: Zur Laufzeit entsteht `log/errors.log` mit rotierenden Dateien; Größe und Anzahl sind konfigurierbar.
 
 ## Developer Experience & Observability
