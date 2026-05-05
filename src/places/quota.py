@@ -9,7 +9,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 from pathlib import Path
-from typing import Callable, Dict, Mapping, cast
+from typing import Callable, Dict, Mapping
 
 from ..utils.files import atomic_write
 from ..feed.config import validate_path
@@ -224,9 +224,9 @@ def resolve_quota_state_path(env: Mapping[str, str] | None = None) -> Path:
     override = environment.get("PLACES_QUOTA_STATE")
     if override:
         # Security: validate configured paths to prevent path traversal outside allowed roots.
-        return cast(Path, validate_path(Path(override), "PLACES_QUOTA_STATE"))
+        return validate_path(Path(override), "PLACES_QUOTA_STATE")
     base = environment.get("STATE_PATH")
     if base:
         base_path = validate_path(Path(base), "STATE_PATH")
-        return cast(Path, validate_path(base_path / "places_quota.json", "PLACES_QUOTA_STATE"))
-    return cast(Path, validate_path(Path("data/places_quota.json"), "PLACES_QUOTA_STATE"))
+        return validate_path(base_path / "places_quota.json", "PLACES_QUOTA_STATE")
+    return validate_path(Path("data/places_quota.json"), "PLACES_QUOTA_STATE")

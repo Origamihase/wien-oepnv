@@ -137,7 +137,7 @@ def init_providers() -> None:
 
 def _provider_display_name(fetch: Any, env: Optional[str] = None) -> str:
     """Resolve the display name for a provider based on its loader or env var."""
-    return cast(str, resolve_provider_name(fetch, env))
+    return resolve_provider_name(fetch, env)
 
 
 def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
@@ -179,7 +179,7 @@ def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
 
 def _provider_statuses() -> List[Tuple[str, bool]]:
     """Return a list of (name, enabled) tuples for all registered providers."""
-    return cast(list[tuple[str, bool]], provider_statuses())
+    return provider_statuses()
 
 
 def _log_startup_summary(statuses: List[Tuple[str, bool]]) -> None:
@@ -619,7 +619,7 @@ def _identity_for_item(item: FeedItem) -> str:
         return str(item["_identity"])
 
     if "_calculated_identity" in item:
-        return cast(str, item["_calculated_identity"])
+        return item["_calculated_identity"]
 
     title = item.get("title") or ""
     sa = item.get("starts_at")
@@ -965,7 +965,7 @@ def _drop_old_items(
     now_utc = _to_utc(now)
     for it in items:
         if not isinstance(it, dict):
-            continue
+            continue  # type: ignore[unreachable]
 
         ident = _identity_for_item(it)
         state_entry = state.get(ident) if isinstance(state, dict) else None
@@ -1042,7 +1042,7 @@ def _summarize_duplicates(items: Sequence[FeedItem]) -> List[DuplicateSummary]:
     groups: Dict[str, List[FeedItem]] = {}
     for it in items:
         if not isinstance(it, dict):
-            continue
+            continue  # type: ignore[unreachable]
         key, _ = _dedupe_key_for_item(it, warn_on_missing=False)
         groups.setdefault(key, []).append(it)
 
@@ -1066,7 +1066,7 @@ def _count_new_items(
     count = 0
     for it in items:
         if not isinstance(it, dict):
-            continue
+            continue  # type: ignore[unreachable]
         ident = _identity_for_item(it)
         if ident not in existing:
             count += 1
@@ -1093,7 +1093,7 @@ def _dedupe_items(items: List[FeedItem]) -> List[FeedItem]:
     def _recency_value(it: FeedItem) -> datetime:
         """Return a comparable timestamp describing how recent ``it`` is."""
         if "_calculated_recency" in it:
-            return cast(datetime, it["_calculated_recency"])
+            return it["_calculated_recency"]
 
         candidates: List[datetime] = []
         for field_name in ("pubDate", "first_seen", "starts_at"):
@@ -1115,7 +1115,7 @@ def _dedupe_items(items: List[FeedItem]) -> List[FeedItem]:
 
     def _end_value(it: FeedItem) -> datetime:
         if "_calculated_end" in it:
-            return cast(datetime, it["_calculated_end"])
+            return it["_calculated_end"]
 
         ends = it.get("ends_at")
         if isinstance(ends, datetime):
@@ -1244,7 +1244,7 @@ def _format_item_content(
         )
         link = ""
     else:
-        link = sanitized_link
+        link = sanitized_link or ""
 
     if not link:
         link = feed_config.FEED_LINK
@@ -1340,9 +1340,10 @@ def _emit_item(
          - The generated ElementTree.Element
          - A dictionary mapping placeholder strings to their CDATA-wrapped content.
     """
-    pubDate = _coerce_datetime_field(it, "pubDate")
-    starts_at = _coerce_datetime_field(it, "starts_at")
-    ends_at = _coerce_datetime_field(it, "ends_at")
+    it_dict = cast(Dict[str, Any], it)
+    pubDate = _coerce_datetime_field(it_dict, "pubDate")
+    starts_at = _coerce_datetime_field(it_dict, "starts_at")
+    ends_at = _coerce_datetime_field(it_dict, "ends_at")
 
     ident, fs_dt = _update_item_state(it, now, state)
 
@@ -1522,7 +1523,10 @@ def lint() -> int:
         duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
 
         deduped_items = _dedupe_items(list(filtered_items))
-        deduped_items = deduplicate_fuzzy(deduped_items)
+        deduped_items = cast(
+            List[FeedItem],
+            deduplicate_fuzzy(cast(List[Dict[str, Any]], deduped_items)),
+        )
         deduped_count = len(deduped_items)
         new_items_count = _count_new_items(deduped_items, state)
         missing_guid_items = [it for it in filtered_items if not it.get("guid")]
@@ -1688,7 +1692,10 @@ def main() -> int:
         )
 
         fuzzy_start = perf_counter()
-        fuzzy_deduped = deduplicate_fuzzy(deduped)
+        fuzzy_deduped = cast(
+            List[FeedItem],
+            deduplicate_fuzzy(cast(List[Dict[str, Any]], deduped)),
+        )
         fuzzy_duration = perf_counter() - fuzzy_start
         if len(fuzzy_deduped) < len(deduped):
             log.info(
