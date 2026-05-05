@@ -12,11 +12,11 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     monkeypatch.syspath_prepend(str(root / "src"))
     providers = types.ModuleType("providers")
     wl = types.ModuleType("providers.wiener_linien")
-    wl.fetch_events = lambda timeout=None: []
+    setattr(wl, "fetch_events", lambda timeout=None: [])
     oebb = types.ModuleType("providers.oebb")
-    oebb.fetch_events = lambda timeout=None: []
+    setattr(oebb, "fetch_events", lambda timeout=None: [])
     vor = types.ModuleType("providers.vor")
-    vor.fetch_events = lambda timeout=None: []
+    setattr(vor, "fetch_events", lambda timeout=None: [])
     monkeypatch.setitem(sys.modules, "providers", providers)
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)

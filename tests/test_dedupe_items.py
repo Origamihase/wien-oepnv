@@ -14,11 +14,11 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     # Provide lightweight provider stubs to avoid heavy deps during import
     providers = types.ModuleType("providers")
     wl = types.ModuleType("providers.wiener_linien")
-    wl.fetch_events = lambda: []
+    setattr(wl, "fetch_events", lambda: [])
     oebb = types.ModuleType("providers.oebb")
-    oebb.fetch_events = lambda: []
+    setattr(oebb, "fetch_events", lambda: [])
     vor = types.ModuleType("providers.vor")
-    vor.fetch_events = lambda: []
+    setattr(vor, "fetch_events", lambda: [])
     monkeypatch.setitem(sys.modules, "providers", providers)
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
