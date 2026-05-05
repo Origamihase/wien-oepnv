@@ -19,10 +19,7 @@
         "name",
         "in_vienna",
         "pendler",
-        "aliases",
-        "latitude",
-        "longitude",
-        "source"
+        "aliases"
       ],
       "properties": {
         "name": {
@@ -128,13 +125,18 @@
       "additionalProperties": false,
       "allOf": [
         {
+          "description": "Vienna stations always carry coordinates and a source tag (in_vienna=true is only set after the polygon check, which requires lat/lon).",
+          "if": {"properties": {"in_vienna": {"const": true}}, "required": ["in_vienna"]},
+          "then": {"required": ["latitude", "longitude", "source"]}
+        },
+        {
           "description": "VOR-Synthetic-Einträge müssen ein vor_id haben.",
-          "if": {"properties": {"source": {"const": "vor"}}},
+          "if": {"properties": {"source": {"const": "vor"}}, "required": ["source"]},
           "then": {"required": ["vor_id"]}
         },
         {
           "description": "ÖBB-Einträge müssen bst_id und bst_code tragen.",
-          "if": {"properties": {"source": {"pattern": "(?:^|,)oebb(?:,|$)"}}},
+          "if": {"properties": {"source": {"pattern": "(?:^|,)oebb(?:,|$)"}}, "required": ["source"]},
           "then": {"required": ["bst_id", "bst_code"]}
         },
         {

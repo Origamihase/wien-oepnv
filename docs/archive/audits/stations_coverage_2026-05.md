@@ -121,6 +121,39 @@ Stationen, die im Excel nicht auftauchen (z.B. weil ÖBB sie
 zwischenzeitlich umbenannt hat), bleiben in `pendler_candidates.json`
 stehen, ohne den Lauf zu blockieren.
 
+## Nachbesserung nach dem ersten Cron-Lauf (Mai 2026)
+
+Der erste Lauf nach Einführung von `pendler_candidates.json` hat 56 neue
+Pendlerstationen reingeholt — aber **alle ohne Koordinaten und ohne
+vor_id**. Drei Ursachen, in einer Folge-Iteration adressiert:
+
+1. **Henne-Ei zwischen `fetch_vor_haltestellen.py` und neuen Pendler-Namen.**
+   Das Fetch-Skript las nur `data/stations.json` als Quelle der
+   aufzulösenden Namen — die Pendler-Kandidaten waren zu dem Zeitpunkt
+   noch nicht in stations.json (kommen erst im nachfolgenden Schritt
+   `update_station_directory.py` rein). Behoben: Fetcher liest jetzt
+   zusätzlich `data/pendler_candidates.json` (`name` + `alternative_names`)
+   und resolviert sie vorab. Beim nächsten Lauf landen ihre VOR-IDs
+   schon in `vor-haltestellen.csv`, bevor `update_station_directory.py`
+   startet.
+2. **`_build_location_index` nutzte VOR-CSV nicht.** Lokales GTFS deckt
+   nur die ~99 bereits ingestierten Halte ab; WL nur U-Bahn-Knoten;
+   die Pendler-Lücke fand keine Coords. Behoben: `_build_location_index`
+   nimmt jetzt `data/vor-haltestellen.csv` als dritte Quelle (mit
+   Präzedenz GTFS > WL > VOR — Vienna-Halte behalten ihre
+   höher-präzisen GTFS-Coords).
+3. **3 von 12 Top-Pendlern fehlten** (Guntramsdorf Südbahn, Götzendorf
+   an der Leitha, Himberg bei Wien). ÖBB-Excel verwendet kürzere Namen.
+   Behoben: `pendler_candidates.json`-Schema bekommt ein optionales
+   `alternative_names`-Feld; die drei Einträge listen jetzt auch
+   `Guntramsdorf`, `Götzendorf`, `Himberg` als Match-Alternativen.
+
+Außerdem: Schema lockert die unbedingten Pflichtfelder
+`latitude`/`longitude`/`source` zu **bedingt erforderlich** für
+`in_vienna=true`-Einträge. Pendler-Einträge dürfen vorübergehend
+ohne Coords leben (bis der nächste Cron-Lauf sie über VOR-CSV ergänzt) —
+Wien-Einträge müssen sie weiterhin zwingend tragen.
+
 ## Nicht in diesem Audit
 
 - **Perchtoldsdorf**: laut Recherche kein aktiver ÖBB-Personenverkehr (Kalten­

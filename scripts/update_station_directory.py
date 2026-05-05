@@ -400,9 +400,45 @@ def _load_wienerlinien_locations(path: Path) -> dict[str, LocationInfo]:
     return locations
 
 
+def _load_vor_locations(path: Path) -> dict[str, LocationInfo]:
+    """Load name → (lat, lon) from the VOR haltestellen CSV.
+
+    Provides a third coordinate source after GTFS and WL haltepunkte.
+    The VOR CSV uses ``StopPointName;Latitude;Longitude`` columns.
+    """
+    locations: dict[str, LocationInfo] = {}
+    try:
+        with path.open("r", encoding="utf-8-sig", newline="") as handle:
+            sample = handle.read(4096)
+            handle.seek(0)
+            delimiter = _detect_csv_delimiter(sample)
+            reader = csv.DictReader(handle, delimiter=delimiter)
+            for row in reader:
+                name = row.get("StopPointName") or row.get("Name") or row.get("StopName")
+                if name:
+                    name = _harmonize_station_name(name)
+                lat = _coerce_float_value(row.get("Latitude") or row.get("WGS84_LAT"))
+                lon = _coerce_float_value(row.get("Longitude") or row.get("WGS84_LON"))
+                if not name or lat is None or lon is None:
+                    continue
+                for key in _normalize_location_keys(name):
+                    if not key:
+                        continue
+                    _store_location(locations, key, lat, lon, source="vor")
+    except FileNotFoundError:
+        logger.warning("VOR stops file not found: %s", path)
+    except csv.Error as exc:
+        logger.warning("Could not parse VOR stops file %s: %s", path, exc)
+    else:
+        if locations:
+            logger.info("Loaded %d VOR coordinates", len(locations))
+    return locations
+
+
 def _build_location_index(
     gtfs_path: Path | None,
     wl_path: Path | None,
+    vor_path: Path | None = None,
 ) -> dict[str, LocationInfo]:
     locations: dict[str, LocationInfo] = {}
     if gtfs_path:
@@ -411,6 +447,14 @@ def _build_location_index(
         wl_locations = _load_wienerlinien_locations(wl_path)
         for key, value in wl_locations.items():
             _store_location(locations, key, value.latitude, value.longitude, source="wl")
+    if vor_path:
+        vor_locations = _load_vor_locations(vor_path)
+        for key, value in vor_locations.items():
+            # GTFS/WL already populated entries take precedence (more authoritative
+            # for transit-platform coords); VOR fills gaps for stations that are
+            # neither in the local GTFS snapshot nor in the WL haltepunkte CSV.
+            if key not in locations:
+                _store_location(locations, key, value.latitude, value.longitude, source="vor")
     return locations
 
 
@@ -1177,6 +1221,11 @@ def load_pendler_name_candidates(path: Path) -> set[str]:
     so the caller can do an O(1) ``key in candidates`` check while iterating
     the ÖBB Excel rows. A missing or malformed file degrades to an empty set
     with a warning — the bst_id-based whitelist remains the primary path.
+
+    Both ``name`` and the optional ``alternative_names`` array contribute to
+    the key set; this lets the file declare the canonical research-name plus
+    the spellings ÖBB itself uses (e.g. "Guntramsdorf Südbahn" canonical with
+    "Guntramsdorf" as alternative).
     """
     try:
         with path.open("r", encoding="utf-8") as handle:
@@ -1207,11 +1256,18 @@ def load_pendler_name_candidates(path: Path) -> set[str]:
         if not isinstance(entry, dict):
             continue
         name = entry.get("name")
-        if not isinstance(name, str) or not name.strip():
-            continue
-        for key in _normalize_location_keys(name):
-            if key:
-                keys.add(key)
+        names: list[str] = []
+        if isinstance(name, str) and name.strip():
+            names.append(name)
+        alternative = entry.get("alternative_names")
+        if isinstance(alternative, list):
+            for alt in alternative:
+                if isinstance(alt, str) and alt.strip():
+                    names.append(alt)
+        for variant in names:
+            for key in _normalize_location_keys(variant):
+                if key:
+                    keys.add(key)
     logger.info(
         "Loaded %d pendler name-keys from %d candidates",
         len(keys),
@@ -1242,7 +1298,11 @@ def main() -> None:
     pendler_name_candidates = load_pendler_name_candidates(
         path=args.pendler_candidates
     )
-    location_index = _build_location_index(args.gtfs_stops, args.wl_haltepunkte)
+    location_index = _build_location_index(
+        args.gtfs_stops,
+        args.wl_haltepunkte,
+        vor_path=args.vor_stops,
+    )
     if not location_index:
         logger.warning("No coordinate data available; falling back to name heuristic")
     _annotate_station_flags(
