@@ -23,6 +23,9 @@ from src.providers import vor as vor_provider  # noqa: E402
 from src.utils.files import atomic_write  # noqa: E402
 from src.utils.http import session_with_retries  # noqa: E402
 from src.utils.stations import is_in_vienna, is_pendler  # noqa: E402
+
+__all__ = ["vor_provider"]
+
 DEFAULT_SOURCE = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 

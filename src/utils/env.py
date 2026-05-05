@@ -124,6 +124,7 @@ __all__ = [
     "read_secret",
     "load_env_file",
     "load_default_env_files",
+    "sanitize_log_message",
 ]
 
 _TRUE_VALUES = {"1", "true", "t", "yes", "y", "on"}

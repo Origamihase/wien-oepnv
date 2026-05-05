@@ -60,6 +60,9 @@ from utils.locking import file_lock
 from utils.text import html_to_text, truncate_html
 
 
+__all__ = ["RunReport", "feed_config"]
+
+
 # Register namespaces globally for thread-safe XML generation
 ATOM_NS = "http://www.w3.org/2005/Atom"
 ET.register_namespace("atom", ATOM_NS)
