@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://origamihase.github.io/wien-oepnv/schema/pendler_candidates.schema.json",
+  "title": "Wien ÖPNV Pendler Candidates",
+  "description": "Name-based pendler whitelist consumed by scripts/update_station_directory.py. Stations whose ÖBB Excel-Verzeichnis name matches a candidate here are marked pendler=true on the next refresh, regardless of whether their bst_id is in data/pendler_bst_ids.json. Use this file when the station's bst_id is unknown — common for new commuter stations not yet in the editor's local cache.",
+  "type": "object",
+  "required": ["candidates"],
+  "additionalProperties": true,
+  "properties": {
+    "$schema": {"type": "string"},
+    "description": {"type": "string"},
+    "notes": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "candidates": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Candidate"}
+    }
+  },
+  "$defs": {
+    "Candidate": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Station name as it appears in the ÖBB Excel-Verzeichnis 'Verkehrsstation' column. Whitespace is harmonized in the matcher; case-insensitive comparison."
+        },
+        "line": {
+          "type": "string",
+          "description": "Free-text annotation: which S-Bahn/REX/R lines serve this stop. Documentation only — does not influence matching."
+        },
+        "priority": {
+          "type": "integer",
+          "enum": [1, 2, 3],
+          "description": "1 = critical, 2 = important, 3 = nice-to-have. Used by the audit report to sort/group; not relevant for the matcher."
+        },
+        "added": {
+          "type": "string",
+          "format": "date",
+          "description": "When this candidate was first added — useful for tracking how long an entry has been waiting for ÖBB-Excel coverage."
+        }
+      }
+    }
+  }
+}

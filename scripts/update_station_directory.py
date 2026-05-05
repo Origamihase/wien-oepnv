@@ -79,6 +79,7 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
 
 DEFAULT_OUTPUT_PATH = _ROOT / "data" / "stations.json"
 DEFAULT_PENDLER_PATH = _ROOT / "data" / "pendler_bst_ids.json"
+DEFAULT_PENDLER_CANDIDATES_PATH = _ROOT / "data" / "pendler_candidates.json"
 DEFAULT_GTFS_STOPS_PATH = _ROOT / "data" / "gtfs" / "stops.txt"
 DEFAULT_WL_HALTEPUNKTE_PATH = _ROOT / "data" / "wienerlinien-ogd-haltepunkte.csv"
 DEFAULT_VOR_STOPS_PATH = _ROOT / "data" / "vor-haltestellen.csv"
@@ -912,6 +913,17 @@ def parse_args() -> argparse.Namespace:
         help="Path to the JSON file containing pendler station IDs",
     )
     parser.add_argument(
+        "--pendler-candidates",
+        type=Path,
+        metavar="PATH",
+        default=DEFAULT_PENDLER_CANDIDATES_PATH,
+        help=(
+            "Path to the name-based pendler whitelist "
+            "(default: data/pendler_candidates.json). Stations whose ÖBB name "
+            "matches a candidate here are also marked pendler=true."
+        ),
+    )
+    parser.add_argument(
         "--vor-stops",
         type=Path,
         metavar="PATH",
@@ -1069,6 +1081,7 @@ def _annotate_station_flags(
     stations: list[Station],
     pendler_ids: set[str],
     locations: Mapping[str, LocationInfo],
+    pendler_name_candidates: set[str] | None = None,
 ) -> None:
     """Set ``in_vienna`` and ``pendler`` mutually exclusively.
 
@@ -1077,7 +1090,15 @@ def _annotate_station_flags(
     listed in ``data/pendler_bst_ids.json``, the ``in_vienna`` flag wins and
     the pendler flag stays ``False`` — a warning is logged so the entry can
     be removed from the whitelist.
+
+    Pendler classification sources (any of them is sufficient):
+      1. ``bst_id in pendler_ids`` — legacy bst_id whitelist (`data/pendler_bst_ids.json`).
+      2. ``normalized name in pendler_name_candidates`` — name-based wishlist
+         (`data/pendler_candidates.json`). Lets the user nominate stations
+         without knowing the bst_id; the next ÖBB Excel pull resolves it.
+      3. WL-sourced location outside Vienna — auto-promoted (legacy heuristic).
     """
+    name_candidates = pendler_name_candidates or set()
     for station in stations:
         info: LocationInfo | None = None
         for key in _normalize_location_keys(station.name):
@@ -1089,12 +1110,18 @@ def _annotate_station_flags(
         else:
             station.in_vienna = _is_vienna_station(station.name)
         pendler_candidate = station.bst_id in pendler_ids
+        if not pendler_candidate and name_candidates:
+            for key in _normalize_location_keys(station.name):
+                if key and key in name_candidates:
+                    pendler_candidate = True
+                    break
         if info and not station.in_vienna and "wl" in info.sources:
             pendler_candidate = True
         if station.in_vienna and pendler_candidate:
             logger.warning(
                 "Station %s (bst_id=%s) is inside Vienna; ignoring pendler "
-                "marker — remove the entry from data/pendler_bst_ids.json",
+                "marker — remove the entry from data/pendler_bst_ids.json "
+                "or data/pendler_candidates.json",
                 station.name,
                 station.bst_id,
             )
@@ -1143,6 +1170,56 @@ def load_pendler_station_ids(path: Path) -> set[str]:
     return pendler_ids
 
 
+def load_pendler_name_candidates(path: Path) -> set[str]:
+    """Load the name-based pendler whitelist (`data/pendler_candidates.json`).
+
+    Returns a set of normalized name keys (via :func:`_normalize_location_keys`)
+    so the caller can do an O(1) ``key in candidates`` check while iterating
+    the ÖBB Excel rows. A missing or malformed file degrades to an empty set
+    with a warning — the bst_id-based whitelist remains the primary path.
+    """
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except FileNotFoundError:
+        logger.info(
+            "Pendler candidates file not found: %s (using bst_id whitelist only)",
+            path,
+        )
+        return set()
+    except json.JSONDecodeError as exc:
+        logger.warning("Invalid JSON in pendler candidates file %s: %s", path, exc)
+        return set()
+
+    if not isinstance(data, dict):
+        logger.warning("Pendler candidates file %s must be a JSON object", path)
+        return set()
+
+    raw = data.get("candidates", [])
+    if not isinstance(raw, list):
+        logger.warning(
+            "Pendler candidates file %s: 'candidates' must be a list", path
+        )
+        return set()
+
+    keys: set[str] = set()
+    for entry in raw:
+        if not isinstance(entry, dict):
+            continue
+        name = entry.get("name")
+        if not isinstance(name, str) or not name.strip():
+            continue
+        for key in _normalize_location_keys(name):
+            if key:
+                keys.add(key)
+    logger.info(
+        "Loaded %d pendler name-keys from %d candidates",
+        len(keys),
+        len(raw),
+    )
+    return keys
+
+
 def write_json(stations_list: list[dict[str, object]], output_path: Path) -> None:
     payload = {"stations": stations_list}
     # Use atomic_write to prevent partial writes and reduce race conditions.
@@ -1162,10 +1239,18 @@ def main() -> None:
     _harmonize_station_names(stations, existing_entries)
     _restore_existing_metadata(stations, existing_entries)
     pendler_ids = load_pendler_station_ids(path=args.pendler)
+    pendler_name_candidates = load_pendler_name_candidates(
+        path=args.pendler_candidates
+    )
     location_index = _build_location_index(args.gtfs_stops, args.wl_haltepunkte)
     if not location_index:
         logger.warning("No coordinate data available; falling back to name heuristic")
-    _annotate_station_flags(stations, pendler_ids, location_index)
+    _annotate_station_flags(
+        stations,
+        pendler_ids,
+        location_index,
+        pendler_name_candidates=pendler_name_candidates,
+    )
     vor_stops = load_vor_stops(args.vor_stops) if args.vor_stops else []
     if vor_stops:
         _assign_vor_ids(stations, vor_stops)
