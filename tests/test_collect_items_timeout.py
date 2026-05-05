@@ -3,6 +3,8 @@ import sys
 import threading
 import time
 from pathlib import Path
+from typing import Any
+
 import pytest
 import types
 
@@ -104,7 +106,7 @@ def test_cache_providers_run_sequentially(monkeypatch: pytest.MonkeyPatch) -> No
 
     calls = []
 
-    def make_cache_provider(name):
+    def make_cache_provider(name: str) -> Any:  # closure with dynamic _provider_cache_name attr
         def _provider(timeout=None):
             calls.append(name)
             return [{"provider": name}]
@@ -149,7 +151,7 @@ def test_provider_worker_limit(monkeypatch: pytest.MonkeyPatch) -> None:
     max_active = 0
     lock = threading.Lock()
 
-    def make_fetch(name):
+    def make_fetch(name: str) -> Any:  # closure with dynamic _provider_concurrency_key attr
         def _fetch(timeout=None):
             nonlocal active, max_active
             with lock:

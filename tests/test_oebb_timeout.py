@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+from typing import Any
 
 import pytest
 
@@ -42,7 +43,7 @@ def test_fetch_xml_passes_timeout_to_session(monkeypatch: pytest.MonkeyPatch) ->
             pass
 
     class DummySession:
-        def __init__(self):
+        def __init__(self) -> None:
             self.headers: dict[str, str] = {}
 
         def __enter__(self):
@@ -51,7 +52,7 @@ def test_fetch_xml_passes_timeout_to_session(monkeypatch: pytest.MonkeyPatch) ->
         def __exit__(self, exc_type, exc, tb):
             pass
 
-        def get(self, url, timeout, stream=False, **kwargs):
+        def get(self, url: str, timeout: Any, stream: bool = False, **kwargs: Any) -> Any:
             recorded["timeout"] = timeout
             recorded["stream"] = stream
             return DummyResponse()

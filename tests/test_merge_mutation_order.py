@@ -1,5 +1,7 @@
 import sys
 import threading
+from typing import Any
+
 from src.feed.merge import deduplicate_fuzzy
 
 def test_mutation_order_in_deduplicate_fuzzy() -> None:
@@ -50,7 +52,7 @@ def test_mutation_order_in_deduplicate_fuzzy() -> None:
     # We will trace the execution and intercept the moment `merged_items[idx] = new_existing`
     # is executed, verifying the state of `new_existing` right before.
 
-    def trace_case(items_to_test):
+    def trace_case(items_to_test: list[dict[str, Any]]) -> None:
         violation_detected = []
         assignment_found = []
 

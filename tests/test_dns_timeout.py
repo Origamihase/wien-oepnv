@@ -11,7 +11,7 @@ def test_validate_http_url_timeout() -> None:
 
     def mock_resolve_slow(host, *args, **kwargs):
         import dns.exception
-        raise dns.exception.Timeout()
+        raise dns.exception.Timeout()  # type: ignore[no-untyped-call]
 
     with patch("dns.resolver.Resolver.resolve", side_effect=mock_resolve_slow):
         start_time = time.time()
@@ -47,7 +47,7 @@ def test_validate_http_url_fast_enough() -> None:
             return [mock_answer]
         else:
             import dns.resolver
-            raise dns.resolver.NoAnswer()
+            raise dns.resolver.NoAnswer()  # type: ignore[no-untyped-call]
 
     with patch("dns.resolver.Resolver.resolve", side_effect=mock_resolve_fast):
         result = validate_http_url("http://fast.example.com")
