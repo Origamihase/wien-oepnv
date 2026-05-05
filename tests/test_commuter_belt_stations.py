@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import cast
 
 
 COMMUTER_STATIONS = {
@@ -18,8 +19,8 @@ def _load_station_directory() -> list[dict[str, object]]:
     with stations_path.open("r", encoding="utf-8") as handle:
         data = json.load(handle)
         if isinstance(data, dict):
-            return data.get("stations", [])
-        return data
+            return cast(list[dict[str, object]], data.get("stations", []))
+        return cast(list[dict[str, object]], data)
 
 
 def _lookup_station(entries: list[dict[str, object]], name: str) -> dict[str, object]:

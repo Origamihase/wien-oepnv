@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 import types
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, cast
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
@@ -54,7 +54,7 @@ def test_identity_includes_line_tokens_and_is_cosmetic_stable(monkeypatch: pytes
 
     def _identity_base(item: dict[str, Any]) -> str:
         ident = build_feed._identity_for_item(item)
-        return ident.split("|F=", 1)[0]
+        return cast(str, ident.split("|F=", 1)[0])
 
     assert _identity_base(s45) == _identity_base({**base_item, "title": "s45: Baustelle"})
     assert _identity_base(s45) == _identity_base({**base_item, "title": "S45: Baustelle (Update)"})

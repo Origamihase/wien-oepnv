@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from src.utils import stations as station_utils
 
@@ -16,8 +16,8 @@ def _load_station_entries() -> list[dict[str, Any]]:
     with STATIONS_PATH.open("r", encoding="utf-8") as handle:
         data = json.load(handle)
         if isinstance(data, dict):
-            return data.get("stations", [])
-        return data
+            return cast(list[dict[str, Any]], data.get("stations", []))
+        return cast(list[dict[str, Any]], data)
 
 
 def test_coordinates_match_in_vienna_flag() -> None:

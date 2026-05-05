@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import cast
 
 import pytest
 
@@ -20,8 +21,8 @@ def stations_path(tmp_path: Path) -> Path:
 def _read_entries(path: Path) -> list[dict[str, object]]:
     data = json.loads(path.read_text(encoding="utf-8"))
     if isinstance(data, dict):
-        return data.get("stations", [])
-    return data
+        return cast(list[dict[str, object]], data.get("stations", []))
+    return cast(list[dict[str, object]], data)
 
 
 def test_merge_wl_data_into_existing_vor_entry(stations_path: Path) -> None:

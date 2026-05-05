@@ -11,7 +11,7 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple, Union
+from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple, Union, cast
 
 from dateutil import parser as dtparser
 from requests.exceptions import RequestException
@@ -142,7 +142,7 @@ def configure_logging() -> None:
 
 def _load_json_from_content(content: bytes) -> Dict[str, Any]:
     try:
-        return json.loads(content.decode("utf-8"))
+        return cast(Dict[str, Any], json.loads(content.decode("utf-8")))
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:  # pragma: no cover - defensive
         raise ValueError(f"Invalid JSON payload: {exc}") from exc
 
@@ -183,7 +183,7 @@ def _load_fallback(path: Path) -> Optional[Dict[str, Any]]:
         LOGGER.error("Baustellen: Fallback-Datei %s nicht lesbar (%s)", path, exc)
         return None
     try:
-        return json.loads(raw)
+        return cast(Dict[str, Any], json.loads(raw))
     except json.JSONDecodeError as exc:
         LOGGER.error("Baustellen: Fallback-Datei %s enthält ungültiges JSON (%s)", path, exc)
         return None
@@ -240,7 +240,7 @@ def _parse_datetime(value: Union[str, float, int, None]) -> Optional[datetime]:
         parsed = parsed.replace(tzinfo=VIENNA_TZ)
     else:
         parsed = parsed.astimezone(VIENNA_TZ)
-    return parsed
+    return cast(datetime, parsed)
 
 
 def _parse_range(properties: Dict[str, Any]) -> Tuple[Optional[datetime], Optional[datetime]]:
