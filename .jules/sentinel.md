@@ -132,3 +132,8 @@
 **Vulnerability:** Using `secrets.SystemRandom` instead of `random.Random` when a predictable, seeded state is required.
 **Learning:** Applying cryptographic security libraries where a predictable, seeded state is required constitutes "Security Theater" and actively breaks the intended application logic. It highlights the conceptual difference between true cryptographic randomness and functional determinism.
 **Prevention:** Distinguish between true cryptographic needs and deterministic randomness, using inline comments (`# noqa: S311 # nosec B311`) to suppress security linter warnings where pseudo-randomness is intentionally required.
+
+## 2026-05-05 - AI Provider Tokens Missed by Scanner
+**Vulnerability:** `_KNOWN_TOKENS` in `secret_scanner.py` lacked patterns for Anthropic (`sk-ant-…`) and OpenAI (`sk-proj-…`, `sk-svcacct-…`, legacy `sk-<48 alnum>`) keys, even though this project itself runs on Claude. A leaked key would have been caught only by the generic high-entropy fallback (which is silenced by `is_covered` if any specific token already matches the same span) and would not be reported with a precise reason.
+**Learning:** Secret scanners must include patterns for the AI/cloud services the project itself depends on — those credentials are exactly the ones most likely to end up in this codebase. The legacy OpenAI `sk-<48>` pattern is benign next to `sk-ant-` / `sk-proj-` because the latter contain a hyphen after `sk-`, which is excluded from `[A-Za-z0-9]{48}`.
+**Prevention:** When introducing a new external API integration, also extend `_KNOWN_TOKENS` with the issuer's documented key prefix and length. Order strict patterns before looser ones so `is_covered` correctly attributes findings.
