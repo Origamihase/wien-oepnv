@@ -73,10 +73,11 @@ Der Feed-Bau folgt einem klaren Ablauf:
    source .venv/bin/activate
    python -m pip install --upgrade pip
    python -m pip install -r requirements.txt
+   # Für lokale Entwicklung (Tests, mypy, ruff, bandit, pip-audit):
+   python -m pip install -r requirements-dev.txt
    ```
 3. **Statische Analysen**: Die CI führt `ruff check` und `mypy` aus; lokal spiegelst du das Verhalten mit
    ```bash
-   python -m pip install -r requirements-dev.txt
    python -m src.cli checks
    ```
 4. **Umgebungsvariablen**: Sensible Daten (Tokens, Basis-URLs) werden ausschließlich über die Umgebung gesetzt.
@@ -180,10 +181,10 @@ Für Python-Anwendungen existieren zwei bequeme Zugriffspfade:
 
 - **Direkter Cache-Zugriff** – `src.utils.cache.read_cache()` liest die zwischengespeicherten Provider-Events als Python-Liste
   von Dictionaries ein (Wrapper wie `src.build_feed.read_cache_wl()` sind bereits vorkonfiguriert für „wl“, „oebb“, „vor“ und
-  „baustellen“).【F:src/utils/cache.py†L38-L90】【F:src/build_feed.py†L706-L724】
+  „baustellen“).
 - **Live-Abruf der Provider** – Die Module `src.providers.wl_fetch`, `src.providers.oebb` und `src.providers.vor` stellen
   jeweils eine Funktion `fetch_events()` bereit, die die Rohdaten der Wiener Linien, ÖBB bzw. der VOR/VAO-API direkt
-  normalisiert. Authentifizierung und Ratenlimits der VOR-API werden dabei automatisch behandelt.【F:src/providers/wl_fetch.py†L520-L618】【F:src/providers/oebb.py†L109-L168】【F:src/providers/vor.py†L520-L677】
+  normalisiert. Authentifizierung und Ratenlimits der VOR-API werden dabei automatisch behandelt.
 
 Minimalbeispiel für den Cache-Zugriff:
 
@@ -217,7 +218,7 @@ Eine formale Beschreibung steht als [JSON-Schema](docs/schema/events.schema.json
 bereit und eignet sich für Validierungen in Drittprojekten. Alle Felder sind als
 Unicode-Strings hinterlegt, zusätzliche provider-spezifische Hilfsfelder werden
 vor dem JSON-Export entfernt, sodass die Datensätze stabil und schema-konform
-bleiben.【F:src/providers/wl_fetch.py†L568-L618】【F:src/providers/oebb.py†L143-L168】【F:src/providers/vor.py†L548-L677】
+bleiben.
 
 ## Provider-spezifische Workflows
 

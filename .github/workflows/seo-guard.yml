@@ -156,10 +156,18 @@ jobs:
             exit 0
           fi
           OWNER_REPO="${{ github.repository }}"
+          # Build the JSON body with jq so values containing quotes,
+          # backslashes or other special characters are escaped according
+          # to JSON rules (printf %q produces shell-quoted output, not
+          # JSON-quoted, and would break on values like O'Reilly).
+          body="$(jq -nc \
+            --arg description "${DESC}" \
+            --arg homepage "${SITE_BASE}/" \
+            '{description: $description, homepage: $homepage}')"
           curl -sS -H "Authorization: Bearer ${ADMIN_TOKEN}" \
                -H "Accept: application/vnd.github+json" \
                -X PATCH "https://api.github.com/repos/${OWNER_REPO}" \
-               -d "$(printf '{"description":%q,"homepage":%q}' "${DESC}" "${SITE_BASE}/")" >/dev/null
+               -d "$body" >/dev/null
 
       - name: Verify published feed (best-effort; allow Pages delay)
         shell: bash
