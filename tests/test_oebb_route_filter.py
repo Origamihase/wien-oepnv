@@ -6,11 +6,12 @@ import pytest
 from src.providers.oebb import _is_relevant
 
 def test_venezia_is_excluded() -> None:
-    # Long distance train to unknown station (Venezia)
-    # RELAXED: This route mentions "Wien", so it is now RELEVANT for Vienna commuters.
+    # Per spec: routes between a Wiener Bahnhof and a foreign/unknown
+    # destination (Vienna ↔ Distant) are NOT relevant — only Wien-Wien and
+    # Wien-Pendler routes belong in the feed.
     title = "Wien Hauptbahnhof ↔ Venezia Santa Lucia"
     description = "Wegen Bauarbeiten..."
-    assert _is_relevant(title, description) is True
+    assert _is_relevant(title, description) is False
 
 def test_wien_st_poelten_included() -> None:
     # St. Pölten is in the Pendler list
@@ -31,11 +32,12 @@ def test_unknown_route_excluded() -> None:
     assert _is_relevant(title, description) is False
 
 def test_one_end_unknown_excluded() -> None:
-    # One end unknown (but mentions Wien in text)
+    # Per spec: one endpoint unknown means we cannot verify the connection
+    # ends at a Wiener Bahnhof or Pendlerbahnhof — drop it. A loose Wien
+    # mention in the body must not override the strict route check.
     title = "Wien Hbf ↔ Unknown City"
     description = "Wien Hauptbahnhof ist betroffen."
-    # RELAXED: Because "Wien" is in text, it is now RELEVANT.
-    assert _is_relevant(title, description) is True
+    assert _is_relevant(title, description) is False
 
 def test_bauarbeiten_category_included() -> None:
     # Not a route "A ↔ B" but a category "Category: Detail"
@@ -89,9 +91,11 @@ def test_fernverkehr_mit_prefix_negativ() -> None:
     assert _is_relevant(title, description) is False
 
 def test_einseitiger_wien_bezug_mit_prefix() -> None:
+    # Per strict spec: Wien ↔ Distant (Budapest-Keleti is foreign, not Pendler)
+    # is NOT relevant. The feed targets Wien-Wien and Wien-Pendler routes only.
     title = "REX 51: Störung: Wien Meidling ↔ Budapest-Keleti"
     description = ""
-    assert _is_relevant(title, description) is True
+    assert _is_relevant(title, description) is False
 
 def test_wien_bezug_im_zweiten_teil() -> None:
     title = "Störung: Verspätung: Mödling ↔ Wien Hbf"
@@ -99,11 +103,14 @@ def test_wien_bezug_im_zweiten_teil() -> None:
     assert _is_relevant(title, description) is True
 
 def test_stationsname_enthaelt_selbst_doppelpunkt(monkeypatch: pytest.MonkeyPatch) -> None:
-    title = "RJ 123: Wien 10.: Favoriten ↔ Graz Hbf"
+    # Verifies that a station name containing a colon (e.g. "Wien 10.: Favoriten")
+    # is preserved through prefix stripping and recognised as Vienna.
+    # Paired with a Pendler endpoint (Mödling) so that the strict route filter
+    # keeps the message — the focus of this test is the colon handling, not
+    # the destination classification.
+    title = "RJ 123: Wien 10.: Favoriten ↔ Mödling"
     description = ""
 
-    # Wir mocken station_info, um zu beweisen, dass der gesamte String "Wien 10.: Favoriten"
-    # intakt übergeben wird und nicht mehr fälschlicherweise durch split(":") zerstört wird.
     from src.providers.oebb import station_info
     original_station_info = station_info
 

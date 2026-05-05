@@ -149,7 +149,13 @@ def test_successful_request_updates_quota_state(tmp_path: Path) -> None:
     assert updated["total"] == 1
 
 
-def test_rate_limit_does_not_consume_quota(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_rate_limited_attempts_consume_quota(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Each HTTP attempt consumes one unit of quota — retries included.
+
+    Google bills per request regardless of HTTP status, so the client must
+    pre-charge every attempt against the budget. This guards against silent
+    over-consumption when 429/5xx responses trigger retries.
+    """
     quota_path = tmp_path / "quota.json"
     quota = MonthlyQuota(month_key="2024-05")
     _save_quota(quota_path, quota)
@@ -178,8 +184,9 @@ def test_rate_limit_does_not_consume_quota(tmp_path: Path, monkeypatch: pytest.M
     list(client.iter_nearby([Tile(latitude=48.2, longitude=16.3)]))
 
     data = json.loads(quota_path.read_text(encoding="utf-8"))
-    assert data["counts"]["nearby"] == 1
-    assert data["total"] == 1
+    # Two HTTP attempts (429 then 200) → two units of quota recorded.
+    assert data["counts"]["nearby"] == 2
+    assert data["total"] == 2
 
 
 def _configure_env(monkeypatch: pytest.MonkeyPatch, base_dir: Path, quota_path: Path) -> None:
