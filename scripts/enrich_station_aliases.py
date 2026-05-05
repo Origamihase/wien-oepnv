@@ -29,7 +29,7 @@ import re
 import sys
 from collections import defaultdict, deque
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, Mapping
 
 # Ensure the project root is in sys.path to allow imports from src
 BASE_DIR = Path(__file__).resolve().parents[1]
@@ -39,7 +39,7 @@ if str(BASE_DIR) not in sys.path:
 try:
     from src.utils.files import atomic_write
 except ModuleNotFoundError:
-    from utils.files import atomic_write  # type: ignore
+    from utils.files import atomic_write  # type: ignore[no-redef]
 
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 DEFAULT_VOR_STOPS = BASE_DIR / "data" / "vor-haltestellen.csv"
@@ -89,6 +89,26 @@ def parse_args() -> argparse.Namespace:
 def configure_logging(verbose: bool) -> None:
     level = logging.DEBUG if verbose else logging.INFO
     logging.basicConfig(level=level, format="%(levelname)s %(name)s: %(message)s")
+
+
+# Generic single-token aliases that match too broadly in feed text and
+# must never be added as aliases for any station. The keys are the
+# normalized form (lowercase, accent-free, ß→ss). "mitte" matches a
+# Bezirk in Berlin/Frankfurt and the noun "in der Mitte"; "flughafen"
+# is the generic word for any airport; "stadt"/"zentrum"/cardinal
+# directions are equally ambiguous; bare rail vocabulary (hbf, bf,
+# bahnhof) and city names (wien, vienna) are too broad to disambiguate
+# specific stations from feed text.
+_GENERIC_ALIAS_BLOCKLIST = frozenset({
+    # Cities (already enforced; kept for completeness)
+    "wien", "vienna",
+    # Generic city quarters / cardinal directions
+    "mitte", "nord", "sud", "ost", "west", "zentrum", "stadt",
+    # Generic transport vocabulary (when alone)
+    "flughafen", "bahnhof", "hauptbahnhof", "hbf", "bf", "bhf", "bahnhst",
+    # Generic place words
+    "markt", "ort", "platz",
+})
 
 
 def _strip_accents(value: str) -> str:
@@ -277,7 +297,7 @@ def _load_vor_mapping(path: Path) -> dict[int, str]:
             bst_id_raw = item.get("bst_id")
             if bst_id_raw is None:
                 continue
-            bst_id = int(bst_id_raw)  # type: ignore
+            bst_id = int(bst_id_raw)
         except (TypeError, ValueError):
             continue
         resolved_name = (item.get("resolved_name") or "").strip()
@@ -311,10 +331,11 @@ def _add_alias(container: list[str], alias: str) -> None:
 
 
 def _alias_candidates(
-    station: dict,
-    vor_names: dict[str, str],
-    vor_mapping: dict[int, str],
-    gtfs_index: dict[str, set[str]],
+    station: Mapping[str, object],
+    vor_names: Mapping[str, str],
+    vor_mapping: Mapping[int, str],
+    gtfs_index: Mapping[str, set[str]],
+    other_canonical_keys: frozenset[str] = frozenset(),
 ) -> list[str]:
     aliases: set[str] = set()
 
@@ -327,24 +348,32 @@ def _alias_candidates(
     existing_aliases = station.get("aliases")
     if isinstance(existing_aliases, list):
         for alias in existing_aliases:
-            push(alias)
+            push(str(alias) if alias is not None else None)
 
-    push(station.get("name"))
-    push(station.get("vor_id"))
+    name_value = station.get("name")
+    push(str(name_value) if isinstance(name_value, str) else None)
+    vor_id_value = station.get("vor_id")
+    push(str(vor_id_value) if vor_id_value is not None else None)
 
-    name = str(station.get("name", "")).strip()
+    name = str(name_value if isinstance(name_value, str) else "").strip()
     no_paren = re.sub(r"\s*\([^)]*\)\s*", " ", name)
     push(no_paren)
     push(re.sub(r"\s{2,}", " ", no_paren.replace("-", " ")))
     push(re.sub(r"\s{2,}", " ", no_paren.replace("/", " ")))
 
-    vor_id = str(station.get("vor_id") or "").strip()
+    vor_id = str(vor_id_value or "").strip()
     if vor_id:
         push(vor_names.get(vor_id))
 
     try:
         bst_id_raw = station.get("bst_id")
-        bst_id = int(bst_id_raw) if bst_id_raw is not None else None  # type: ignore
+        bst_id: int | None
+        if bst_id_raw is None:
+            bst_id = None
+        elif isinstance(bst_id_raw, (int, str)):
+            bst_id = int(bst_id_raw)
+        else:
+            bst_id = None
     except (TypeError, ValueError):
         bst_id = None
     if bst_id is not None:
@@ -435,10 +464,10 @@ def _alias_candidates(
     # OPTIMIZATION: Manually add specific missing colloquial aliases
     # -------------------------------------------------------------------------
     missing_map = {
-        r"^Flughafen Wien$": ["Vienna Airport", "Flughafen", "Schwechat Flughafen Wien Bahnhof"],
+        r"^Flughafen Wien$": ["Vienna Airport", "Schwechat Flughafen Wien Bahnhof"],
         r"Wien Meidling$": ["Meidling"],
         r"Wien Westbahnhof$": ["Westbahnhof"],
-        r"Wien Mitte-Landstraße$": ["Wien Mitte", "Mitte"],
+        r"Wien Mitte-Landstraße$": ["Wien Mitte"],
         r"Wien Praterstern$": ["Praterstern"],
         r"Wien Floridsdorf$": ["Floridsdorf"],
         r"Wien Handelskai$": ["Handelskai"],
@@ -464,17 +493,31 @@ def _alias_candidates(
     # -------------------------------------------------------------------------
     final_aliases = sorted(alias for alias in aliases if alias)
 
-    # Filter dangerous aliases that normalize to empty or generic city names
-    # Examples: "Hbf", "Bf", "Bahnhof", "Wien Hbf" (norms to "wien")
+    own_canonical_key = _normalize_key(name)
+
     safe_aliases = []
     for a in final_aliases:
         norm = _normalize_key(a)
         if not norm:
-            # Skip if it normalizes to nothing (e.g. just "Hbf")
+            # Skip if it normalizes to nothing (e.g. just "Hbf" alone)
             continue
 
-        # Explicit blacklist of generic terms if they appear alone
-        if norm in {"wien", "vienna"}:
+        # Explicit blacklist of generic single-word aliases that match
+        # too broadly in feed text. "Mitte" is a Bezirk in Berlin /
+        # Frankfurt / many cities and a common German noun ("in der
+        # Mitte"); "Flughafen" is the generic word for any airport.
+        # Direction tokens and bare rail-vocabulary are equally
+        # ambiguous.
+        if norm in _GENERIC_ALIAS_BLOCKLIST:
+            continue
+
+        # Cross-station-collision: an alias that normalizes to the
+        # exact canonical name of *another* station in the directory
+        # is almost always a leftover from a wrong VOR resolve or an
+        # over-aggressive prefix-strip ("Wien Rennweg" → "Rennweg"
+        # collides with the U3 station "Rennweg"; "Mistelbach Stadt"
+        # → "Mistelbach" collides with the separate Mistelbach Hbf).
+        if norm in other_canonical_keys and norm != own_canonical_key:
             continue
 
         # Filter out platform-specific aliases to prevent bloat
@@ -486,7 +529,7 @@ def _alias_candidates(
     return safe_aliases
 
 
-def _order_aliases(station: dict, aliases: Iterable[str]) -> list[str]:
+def _order_aliases(station: Mapping[str, object], aliases: Iterable[str]) -> list[str]:
     ordered: list[str] = []
 
     def add(value: str | None) -> None:
@@ -533,11 +576,25 @@ def main() -> int:
     vor_mapping = _load_vor_mapping(args.vor_mapping)
     gtfs_index = _load_gtfs_index(args.gtfs_stops)
 
+    canonical_keys: set[str] = set()
+    for entry in stations:
+        if isinstance(entry, dict):
+            key = _normalize_key(str(entry.get("name") or ""))
+            if key:
+                canonical_keys.add(key)
+    other_canonical_keys = frozenset(canonical_keys)
+
     updated = 0
     for entry in stations:
         if not isinstance(entry, dict):
             continue
-        aliases = _alias_candidates(entry, vor_names, vor_mapping, gtfs_index)
+        aliases = _alias_candidates(
+            entry,
+            vor_names,
+            vor_mapping,
+            gtfs_index,
+            other_canonical_keys=other_canonical_keys,
+        )
         ordered = _order_aliases(entry, aliases)
         if ordered != entry.get("aliases"):
             updated += 1
