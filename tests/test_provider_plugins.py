@@ -12,6 +12,8 @@ from typing import Any, cast
 
 import pytest
 
+from src.feed_types import FeedItem
+
 
 def _make_plugin_module(name: str, *, register_callable: Any = None, providers: Any = None) -> ModuleType:
     module = ModuleType(name)
@@ -89,7 +91,7 @@ def test_collect_items_uses_plugin_provider(monkeypatch: pytest.MonkeyPatch) -> 
     module_name = "tests.fake_plugin_list"
     plugin_calls: list[str] = []
 
-    def plugin_loader(*_args: Any, **_kwargs: Any) -> list[dict[str, Any]]:
+    def plugin_loader(*_args: Any, **_kwargs: Any) -> list[FeedItem]:
         plugin_calls.append("invoked")
         return []
 
@@ -144,20 +146,19 @@ def test_main_generates_feed_and_health_with_plugin(
     module_name = "tests.fake_plugin_e2e"
     now = datetime.now(timezone.utc)
 
-    def plugin_loader(*_args: Any, **_kwargs: Any) -> list[dict[str, Any]]:
-        return [
-            {
-                "_identity": "plugin|event",
-                "guid": "plugin-1",
-                "title": "Plugin Ereignis",
-                "description": "Ereignis aus Plugin",
-                "link": "https://example.com/plugin",
-                "source": "Plugin",
-                "category": "Info",
-                "pubDate": now.isoformat(),
-                "starts_at": now.isoformat(),
-            }
-        ]
+    def plugin_loader(*_args: Any, **_kwargs: Any) -> list[FeedItem]:
+        item: FeedItem = {
+            "_identity": "plugin|event",
+            "guid": "plugin-1",
+            "title": "Plugin Ereignis",
+            "description": "Ereignis aus Plugin",
+            "link": "https://example.com/plugin",
+            "source": "Plugin",
+            "category": "Info",
+            "pubDate": now,
+            "starts_at": now,
+        }
+        return [item]
 
     plugin_module = _make_plugin_module(
         module_name,

@@ -1,7 +1,21 @@
 import unittest
 from datetime import datetime, timezone
+from typing import Any, List, cast
 
 from src.build_feed import _dedupe_items, _dedupe_key_for_item
+from src.feed_types import FeedItem
+
+
+def _as_items(*items: dict[str, Any]) -> List[FeedItem]:
+    """Cast a list of test fixture dicts to List[FeedItem] for mypy.
+
+    The actual runtime behaviour does not depend on the FeedItem TypedDict
+    keys being complete — _dedupe_items just reads .get() values."""
+    return cast(List[FeedItem], list(items))
+
+
+def _as_item(item: dict[str, Any]) -> FeedItem:
+    return cast(FeedItem, item)
 
 class TestDeduplicationQuality(unittest.TestCase):
     """
@@ -22,7 +36,7 @@ class TestDeduplicationQuality(unittest.TestCase):
         }
         item2 = item1.copy()
 
-        result = _dedupe_items([item1, item2])
+        result = _dedupe_items(_as_items(item1, item2))
         self.assertEqual(len(result), 1, "Should reduce exact duplicates to 1")
 
     def test_update_behavior_same_guid(self) -> None:
@@ -44,12 +58,12 @@ class TestDeduplicationQuality(unittest.TestCase):
 
         # Order shouldn't matter for correctness, but _dedupe_items iterates sequentially.
         # Case 1: Old then New
-        result1 = _dedupe_items([item_old, item_new])
+        result1 = _dedupe_items(_as_items(item_old, item_new))
         self.assertEqual(len(result1), 1)
         self.assertEqual(result1[0]["description"], "Kurz aber länger", "Should keep the 'better' item (longer desc)")
 
         # Case 2: New then Old
-        result2 = _dedupe_items([item_new, item_old])
+        result2 = _dedupe_items(_as_items(item_new, item_old))
         self.assertEqual(len(result2), 1)
         self.assertEqual(result2[0]["description"], "Kurz aber länger", "Should keep the 'better' item regardless of order")
 
@@ -66,7 +80,7 @@ class TestDeduplicationQuality(unittest.TestCase):
             "ends_at": datetime(2023, 1, 1, 14, 0, tzinfo=timezone.utc) # Later end -> Better
         }
 
-        result = _dedupe_items([item_short, item_long])
+        result = _dedupe_items(_as_items(item_short, item_long))
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0]["ends_at"], item_long["ends_at"], "Should prefer item with later end date")
 
@@ -84,11 +98,11 @@ class TestDeduplicationQuality(unittest.TestCase):
         }
 
         # Verify keys are same
-        k1, _ = _dedupe_key_for_item(item1)
-        k2, _ = _dedupe_key_for_item(item2)
+        k1, _ = _dedupe_key_for_item(_as_item(item1))
+        k2, _ = _dedupe_key_for_item(_as_item(item2))
         self.assertEqual(k1, k2)
 
-        result = _dedupe_items([item1, item2])
+        result = _dedupe_items(_as_items(item1, item2))
         self.assertEqual(len(result), 1)
 
     def test_fallback_identity_failure(self) -> None:
@@ -107,7 +121,7 @@ class TestDeduplicationQuality(unittest.TestCase):
         # With the new unified fallback logic, if they share the same title, start/end dates, source and category,
         # they will have the exact same _identity_for_item and thus deduplicate down to 1.
         # Previously they were treated as different items because description was factored into the fallback hash.
-        result = _dedupe_items([item1, item2])
+        result = _dedupe_items(_as_items(item1, item2))
         self.assertEqual(len(result), 1, "Updates without stable ID but same title/time/source now deduplicate via unified identity")
 
 if __name__ == '__main__':

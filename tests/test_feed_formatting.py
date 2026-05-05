@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from src.build_feed import _emit_item
+from src.feed_types import FeedItem
 
 def test_emit_item_formatting_html_stripping() -> None:
     # Setup
@@ -11,9 +12,10 @@ def test_emit_item_formatting_html_stripping() -> None:
     # Input with HTML and potential artifacts
     # "h2Kranarbeiten/h2" artifact comes from bad regex stripping.
     # Here we test that our new logic handles <h2> correctly.
-    item = {
+    item: FeedItem = {
         "title": "Title",
         "description": "<h2>Kranarbeiten</h2><p>Details here.</p>",
+        "link": "",
         "guid": "guid1",
         "starts_at": datetime(2023, 1, 1, 10, 0, 0, tzinfo=timezone.utc),
         "ends_at": datetime(2023, 1, 1, 14, 0, 0, tzinfo=timezone.utc),
@@ -65,9 +67,10 @@ def test_emit_item_formatting_plain_text() -> None:
     now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
     state: dict[str, dict[str, Any]] = {}
 
-    item = {
+    item: FeedItem = {
         "title": "Title",
         "description": "Just plain text.",
+        "link": "",
         "guid": "guid2",
         "starts_at": None,
         "ends_at": None,
@@ -91,9 +94,10 @@ def test_emit_item_formatting_multiline_collapsed() -> None:
     now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
     state: dict[str, dict[str, Any]] = {}
 
-    item = {
+    item: FeedItem = {
         "title": "Title",
         "description": "Line 1.\nLine 2.",
+        "link": "",
         "guid": "guid3",
         "starts_at": None,
         "ends_at": None,
@@ -120,9 +124,10 @@ def test_emit_item_timeframe_formatting() -> None:
     state: dict[str, dict[str, Any]] = {}
 
     # Start and End known
-    item = {
+    item: FeedItem = {
         "title": "Title",
         "description": "Desc",
+        "link": "",
         "guid": "guid4",
         "starts_at": datetime(2023, 1, 1, 8, 0, 0, tzinfo=timezone.utc),
         "ends_at": datetime(2023, 1, 2, 8, 0, 0, tzinfo=timezone.utc),

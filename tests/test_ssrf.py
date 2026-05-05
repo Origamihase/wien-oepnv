@@ -49,7 +49,10 @@ def test_fetch_content_safe_validates_url(monkeypatch: pytest.MonkeyPatch) -> No
 
     # We shouldn't need to mock session.get because it should raise before calling it
     # But just in case, let's mock it to fail
-    monkeypatch.setattr(session, "get", lambda *args, **kwargs: pytest.fail("Should not have called get"))
+    def _fail_get(*args: object, **kwargs: object) -> object:
+        pytest.fail("Should not have called get")
+
+    monkeypatch.setattr(session, "get", _fail_get)
 
     with pytest.raises(ValueError, match="Unsafe or invalid URL"):
         fetch_content_safe(session, "http://localhost")

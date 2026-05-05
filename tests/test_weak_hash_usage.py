@@ -1,13 +1,18 @@
 
+from datetime import datetime, timezone
+
 from src.build_feed import _identity_for_item, _dedupe_key_for_item
+from src.feed_types import FeedItem
 
 def test_identity_for_item_uses_strong_hash() -> None:
-    item = {
+    item: FeedItem = {
         "title": "Test Title",
-        "starts_at": "2023-01-01T12:00:00Z",
-        "ends_at": "2023-01-01T13:00:00Z",
+        "starts_at": datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc),
+        "ends_at": datetime(2023, 1, 1, 13, 0, 0, tzinfo=timezone.utc),
         "source": "test_source",
-        "category": "test_category"
+        "category": "test_category",
+        "link": "",
+        "description": "",
     }
 
     # This function uses hashing internally if no ID is present
@@ -31,10 +36,11 @@ def test_identity_for_item_uses_strong_hash() -> None:
     assert len(hash_val) == 64, f"Hash length is {len(hash_val)}, expected 64 (SHA256). Likely still using SHA1."
 
 def test_dedupe_key_for_item_uses_strong_hash() -> None:
-    item = {
+    item: FeedItem = {
         "title": "Test Title",
         "description": "Test Description",
-        "source": "test_source"
+        "source": "test_source",
+        "link": "",
     }
 
     # This uses fallback hashing which now delegates to _identity_for_item

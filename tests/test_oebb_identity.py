@@ -1,27 +1,34 @@
 from src.build_feed import _identity_for_item
+from src.feed_types import FeedItem
+
 
 def test_oebb_identity_uses_guid() -> None:
-    item = {
+    item: FeedItem = {
         "source": "öbb",
         "guid": "oebb-guid-1234",
         "title": "Test Title",
+        "link": "",
+        "description": "",
     }
     identity = _identity_for_item(item)
     assert identity == "oebb|oebb-guid-1234"
 
 def test_oebb_identity_uses_link_if_no_guid() -> None:
-    item = {
+    item: FeedItem = {
         "source": "oebb",
         "link": "https://example.com/oebb/1234",
         "title": "Test Title",
+        "description": "",
     }
     identity = _identity_for_item(item)
     assert identity == "oebb|https://example.com/oebb/1234"
 
 def test_oebb_identity_uses_hash_if_neither() -> None:
-    item = {
+    item: FeedItem = {
         "source": "öbb",
         "title": "Test Title",
+        "link": "",
+        "description": "",
     }
     identity = _identity_for_item(item)
     assert identity.startswith("oebb|F=")

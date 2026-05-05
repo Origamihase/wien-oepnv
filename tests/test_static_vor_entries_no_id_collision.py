@@ -58,8 +58,6 @@ def test_static_vor_entries_aliases_no_collision_with_other_station_bst_id() -> 
     # seine eigene vor_id als Alias führen darf.
     vor_id_to_canonical_ids: dict[str, set[str]] = {}
     for station in stations:
-        if not isinstance(station, dict):
-            continue
         vor_id = str(station.get("vor_id") or "").strip()
         if not vor_id:
             continue

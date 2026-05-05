@@ -162,7 +162,7 @@ def test_save_request_count_returns_previous_on_lock_failure(
     @contextmanager
     def failing_lock(*args: Any, **kwargs: Any) -> Iterator[None]:
         raise OSError("boom")
-        yield
+        yield  # type: ignore[unreachable]  # contextmanager decorator requires a yield even after raise
 
     monkeypatch.setattr(vor, "file_lock", failing_lock)
 
