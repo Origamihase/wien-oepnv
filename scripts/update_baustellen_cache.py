@@ -142,9 +142,14 @@ def configure_logging() -> None:
 
 def _load_json_from_content(content: bytes) -> Dict[str, Any]:
     try:
-        return cast(Dict[str, Any], json.loads(content.decode("utf-8")))
+        payload = json.loads(content.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:  # pragma: no cover - defensive
         raise ValueError(f"Invalid JSON payload: {exc}") from exc
+    if not isinstance(payload, dict):
+        raise ValueError(
+            f"Invalid JSON payload: expected object, got {type(payload).__name__}"
+        )
+    return payload
 
 
 def _fetch_remote(url: str, timeout: int) -> Optional[Dict[str, Any]]:

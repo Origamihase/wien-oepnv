@@ -11,8 +11,11 @@ class TestSafeJSONFormatter(unittest.TestCase):
             1 / 0
         except ZeroDivisionError:
             ei = sys.exc_info()
+        else:
+            self.fail("expected ZeroDivisionError")
 
         tb = ei[2]
+        assert tb is not None  # narrows TracebackType | None for mypy
         self.assertIsNotNone(tb.tb_frame.f_locals)
 
         formatter = SafeJSONFormatter()

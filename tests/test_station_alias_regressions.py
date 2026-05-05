@@ -28,7 +28,7 @@ def test_restore_existing_metadata_rehydrates_full_station_entries() -> None:
 
     stations_path = Path("data/stations.json")
     payload = _load_station_payload(stations_path)
-    existing_entries = _load_existing_station_entries(stations_path)
+    existing_entries, _ = _load_existing_station_entries(stations_path)
 
     stations: list[Station] = []
     for entry in payload:
@@ -49,11 +49,11 @@ def test_restore_existing_metadata_rehydrates_full_station_entries() -> None:
         station.vor_id = None
         stations.append(station)
 
-    _restore_existing_metadata(stations, existing_entries)  # type: ignore[arg-type]
+    _restore_existing_metadata(stations, existing_entries)
 
     for station in stations:
         restored = station.as_dict()
-        original = existing_entries.get(station.bst_id)  # type: ignore[attr-defined]
+        original = existing_entries.get(station.bst_id)
         assert original is not None
         assert restored == original
 
@@ -63,7 +63,7 @@ def test_restore_existing_metadata_preserves_all_aliases() -> None:
 
     stations_path = Path("data/stations.json")
     payload = _load_station_payload(stations_path)
-    existing_entries = _load_existing_station_entries(stations_path)
+    existing_entries, _ = _load_existing_station_entries(stations_path)
 
     stations: list[Station] = []
     for entry in payload:
@@ -83,7 +83,7 @@ def test_restore_existing_metadata_preserves_all_aliases() -> None:
             )
         )
 
-    _restore_existing_metadata(stations, existing_entries)  # type: ignore[arg-type]
+    _restore_existing_metadata(stations, existing_entries)
 
     for station in stations:
         restored_aliases = station.as_dict().get("aliases")
