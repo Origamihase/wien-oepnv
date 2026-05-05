@@ -29,6 +29,9 @@ def test_post_passes_read_timeout(
     mock_response = MagicMock(spec=requests.Response)
     mock_response.status_code = 200
     mock_response.headers = {"Content-Type": "application/json"}
+    # _post now enforces a Zero-Trust isinstance check on the parsed JSON payload,
+    # so .json() must return an actual dict — a bare MagicMock would (correctly) fail.
+    mock_response.json.return_value = {"places": []}
 
     # Context manager mock for session.post
     mock_post_cm = MagicMock()
