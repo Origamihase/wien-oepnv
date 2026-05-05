@@ -733,6 +733,7 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
 
     new_vor_entries: list[dict[str, object]] = []
     seen_vor_ids: set[str] = set()
+    skipped_unmerged_count = 0
 
     for vor_entry in vor_entries:
         vor_id = _normalize_id(vor_entry.get("vor_id"))
@@ -781,14 +782,14 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
         # or a Pendler-Bahnhof outside the Wien-relevant scope. Either way,
         # creating a synthetic entry is harmful: it pollutes the directory
         # with false-positive matches and trips the in_vienna/pendler
-        # mutual-exclusivity gate (#1192). We log and skip; the static
+        # mutual-exclusivity gate (#1192). Count and skip; the static
         # `STATIC_VOR_ENTRIES` block below still creates entries for the
         # explicitly curated VOR-only stations (e.g. Wiener Neustadt Hbf).
-        log.info(
-            "Skipping VOR-only stop %s (%s): no ÖBB merge target — keeping out of stations.json",
-            vor_entry.get("name") or "<unnamed>",
-            vor_id,
-        )
+        # We aggregate to a single count instead of per-entry logging so
+        # untrusted VOR payload fields (name, vor_id) never reach the log
+        # stream — keeps CodeQL "clear-text logging of sensitive
+        # information" rules happy and avoids leaking provider-side data.
+        skipped_unmerged_count += 1
         continue
 
     for vor_id, static_entry in static_map.items():
@@ -827,6 +828,11 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
         output = {"stations": merged_entries}
         json.dump(output, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
+    if skipped_unmerged_count:
+        log.info(
+            "Skipped %d VOR stops without ÖBB merge target (kept out of stations.json)",
+            skipped_unmerged_count,
+        )
     log.info(
         "Wrote %d total stations (%d merged, %d added VOR entries)",
         len(merged_entries),
