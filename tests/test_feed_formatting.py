@@ -1,11 +1,12 @@
 from datetime import datetime, timezone
+from typing import Any
 
 from src.build_feed import _emit_item
 
 def test_emit_item_formatting_html_stripping() -> None:
     # Setup
     now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
-    state = {}
+    state: dict[str, dict[str, Any]] = {}
 
     # Input with HTML and potential artifacts
     # "h2Kranarbeiten/h2" artifact comes from bad regex stripping.
@@ -61,7 +62,7 @@ def test_emit_item_formatting_html_stripping() -> None:
 def test_emit_item_formatting_plain_text() -> None:
     # Setup
     now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
-    state = {}
+    state: dict[str, dict[str, Any]] = {}
 
     item = {
         "title": "Title",
@@ -87,7 +88,7 @@ def test_emit_item_formatting_plain_text() -> None:
 def test_emit_item_formatting_multiline_collapsed() -> None:
     # Setup
     now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
-    state = {}
+    state: dict[str, dict[str, Any]] = {}
 
     item = {
         "title": "Title",
@@ -115,7 +116,7 @@ def test_emit_item_formatting_multiline_collapsed() -> None:
 def test_emit_item_timeframe_formatting() -> None:
     # Setup
     now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
-    state = {}
+    state: dict[str, dict[str, Any]] = {}
 
     # Start and End known
     item = {

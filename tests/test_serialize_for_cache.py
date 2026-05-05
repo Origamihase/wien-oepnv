@@ -1,4 +1,6 @@
 from datetime import datetime
+from typing import Any
+
 import pytest
 
 from src.utils.serialize import serialize_for_cache
@@ -57,7 +59,7 @@ def test_serialize_circular_list_raises_value_error() -> None:
 
 def test_serialize_tuple_recursion_check() -> None:
     # Tuples are immutable but can contain mutable items that recurse
-    data = []
+    data: list[Any] = []
     t = (data,)
     data.append(t)
 

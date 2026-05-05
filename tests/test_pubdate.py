@@ -37,7 +37,7 @@ def _emit_item_str(build_feed: Any, item: Any, now: datetime, state: dict[str, A
 def test_pubdate_added_for_fresh_item(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
     now = datetime(2025, 1, 1, 12, 0, tzinfo=timezone.utc)
-    state = {}
+    state: dict[str, dict[str, Any]] = {}
     item = {"title": "A"}
     _, xml = _emit_item_str(build_feed, item, now, state)
     assert "<pubDate>" in xml

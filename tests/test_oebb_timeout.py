@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+from typing import Any
 
 import pytest
 
@@ -27,7 +28,7 @@ def test_fetch_xml_passes_timeout_to_session(monkeypatch: pytest.MonkeyPatch) ->
     class DummyResponse:
         content = b"<rss/>"
         status_code = 200
-        headers = {}
+        headers: dict[str, str] = {}
 
         def raise_for_status(self):
             pass
