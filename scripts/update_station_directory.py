@@ -454,7 +454,7 @@ def _load_existing_station_entries(
 
             if bst_id is not None:
                 try:
-                    lookup_id = str(int(float(bst_id)))  # type: ignore
+                    lookup_id = str(int(float(bst_id)))
                 except (ValueError, TypeError):
                     lookup_id = str(bst_id)
                 if lookup_id:
@@ -468,7 +468,7 @@ def _restore_existing_metadata(
 ) -> None:
     for station in stations:
         try:
-            lookup_id = str(int(float(station.bst_id)))  # type: ignore
+            lookup_id = str(int(float(station.bst_id)))
         except (ValueError, TypeError):
             lookup_id = str(station.bst_id)
         existing = existing_entries.get(lookup_id)
@@ -869,7 +869,7 @@ def _harmonize_station_names(
 
     for station in stations:
         try:
-            lookup_id = str(int(float(station.bst_id)))  # type: ignore
+            lookup_id = str(int(float(station.bst_id)))
         except (ValueError, TypeError):
             lookup_id = str(station.bst_id)
         existing = existing_entries.get(lookup_id)

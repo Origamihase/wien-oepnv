@@ -9,7 +9,7 @@ def _load_module() -> object:
     spec = importlib.util.spec_from_file_location("scaffold_provider_plugin", script_path)
     assert spec and spec.loader
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)  # type: ignore[assignment]
+    spec.loader.exec_module(module)
     return module
 
 

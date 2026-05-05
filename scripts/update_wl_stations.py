@@ -531,7 +531,7 @@ def merge_into_stations(
     if isinstance(raw_data, list):
         existing = raw_data
     elif isinstance(raw_data, dict) and isinstance(raw_data.get("stations"), list):
-        existing = raw_data["stations"]  # type: ignore[assignment]
+        existing = raw_data["stations"]
     else:
         raise ValueError("stations.json must contain a JSON array or a dict with a 'stations' array")
 

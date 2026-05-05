@@ -192,7 +192,7 @@ def test_apply_authentication_sets_header(monkeypatch: pytest.MonkeyPatch) -> No
     if "Accept" in session.headers:
         del session.headers["Accept"]
 
-    vor.apply_authentication(session)  # type: ignore[arg-type]
+    vor.apply_authentication(session)
 
     assert session.headers["Accept"] == "application/json"
     assert "Authorization" not in session.headers
@@ -220,7 +220,7 @@ def test_apply_authentication_basic_auth(monkeypatch: pytest.MonkeyPatch) -> Non
     if "Authorization" in session.headers:
         del session.headers["Authorization"]
 
-    vor.apply_authentication(session)  # type: ignore[arg-type]
+    vor.apply_authentication(session)
 
     expected = base64.b64encode(b"user:secret").decode("ascii")
     # Verify auth object
@@ -244,7 +244,7 @@ def test_apply_authentication_basic_with_prefix(monkeypatch: pytest.MonkeyPatch)
     if "Authorization" in session.headers:
         del session.headers["Authorization"]
 
-    vor.apply_authentication(session)  # type: ignore[arg-type]
+    vor.apply_authentication(session)
 
     expected = base64.b64encode(b"user:secret").decode("ascii")
 

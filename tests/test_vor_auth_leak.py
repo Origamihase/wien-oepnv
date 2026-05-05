@@ -21,7 +21,7 @@ def test_vor_sends_param_when_header_present(monkeypatch: pytest.MonkeyPatch) ->
             return {"method": method, "url": url, "params": params, **kwargs}
 
     session = DummySession()
-    vor.apply_authentication(session)  # type: ignore[arg-type]
+    vor.apply_authentication(session)
 
     # Confirm header is NOT set on session directly (Task 1 fix)
     assert "Authorization" not in session.headers
