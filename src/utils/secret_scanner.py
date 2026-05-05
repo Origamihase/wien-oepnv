@@ -79,6 +79,17 @@ _KNOWN_TOKENS = [
     (re.compile(r"(?<![A-Za-z0-9])xoxp-[0-9]{10,}-[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{32}(?![A-Za-z0-9])"), "Slack User Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])npm_[0-9a-zA-Z]{36}(?![A-Za-z0-9])"), "NPM Access Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])pypi-[0-9a-zA-Z_\-]{20,}(?![A-Za-z0-9])"), "PyPI API Token gefunden"),
+    # Anthropic API keys: sk-ant-api{NN}-... and sk-ant-admin{NN}-...
+    # Standard format: sk-ant-api03-<93 chars>AA. Pattern stays loose to also catch
+    # forthcoming version suffixes (api04, admin02, …) without missing real leaks.
+    (re.compile(r"(?<![A-Za-z0-9])sk-ant-(?:api|admin)[0-9]{2}-[A-Za-z0-9_\-]{32,}(?![A-Za-z0-9])"), "Anthropic API Key gefunden"),
+    # OpenAI Project API keys: sk-proj-...
+    (re.compile(r"(?<![A-Za-z0-9])sk-proj-[A-Za-z0-9_\-]{40,}(?![A-Za-z0-9])"), "OpenAI Project API Key gefunden"),
+    # OpenAI Service Account keys: sk-svcacct-...
+    (re.compile(r"(?<![A-Za-z0-9])sk-svcacct-[A-Za-z0-9_\-]{40,}(?![A-Za-z0-9])"), "OpenAI Service Account Key gefunden"),
+    # OpenAI legacy/user API keys: sk- followed by exactly 48 alphanumeric chars.
+    # The strict 48-char alphanumeric body avoids overlap with sk-ant-/sk-proj-/sk-svcacct- (all contain '-').
+    (re.compile(r"(?<![A-Za-z0-9])sk-[A-Za-z0-9]{48}(?![A-Za-z0-9])"), "OpenAI API Key gefunden"),
 ]
 
 
