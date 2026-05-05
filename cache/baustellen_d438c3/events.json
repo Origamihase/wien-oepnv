@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Arbeiten Mariahilfer Straße",
+    "description": "Fahrbahnverengung, Verzögerungen möglich. \nBeginn: 01.10.2025 06:00 Uhr \nGeplant bis: 15.10.2025 22:00 Uhr \nMaßnahme: Fahrbahnverengung \nBezirk: 06",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "010687013508b2b01bd842bfe41cb7eed190730dd4fb8dc5b85ff354d291f03c",
+    "pubDate": "2025-10-01T06:00:00+02:00",
+    "starts_at": "2025-10-01T06:00:00+02:00",
+    "ends_at": "2025-10-15T22:00:00+02:00",
+    "context": {
+      "district": "06",
+      "measure": "Fahrbahnverengung"
+    },
+    "location": {
+      "address": "Mariahilfer Straße, zwischen Kirchengasse und Zieglergasse",
+      "coordinates": {
+        "lat": 48.1981,
+        "lon": 16.3505
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Leitungsbau Gürtel",
+    "description": "Tempo 30, Einspurigkeit stadteinwärts. \nBeginn: 05.11.2025 00:00 Uhr \nGeplant bis: 20.11.2025 00:00 Uhr \nMaßnahme: Straßenbahn \nBezirk: 09",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "c358f3d664fce16bb30b2d9627c372ddd065a69fb2ef5ba547d1b28abddad3ff",
+    "pubDate": "2025-11-05T00:00:00+01:00",
+    "starts_at": "2025-11-05T00:00:00+01:00",
+    "ends_at": "2025-11-20T00:00:00+01:00",
+    "context": {
+      "district": "09",
+      "measure": "Straßenbahn"
+    },
+    "location": {
+      "address": "Währinger Gürtel, zwischen Spitalgasse und Nußdorfer Straße"
+    }
+  }
+]
