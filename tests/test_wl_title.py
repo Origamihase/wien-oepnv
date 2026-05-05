@@ -86,4 +86,3 @@ def test_line_prefix_empty_title() -> None:
 
 def test_tidy_title_wl_strips_label() -> None:
     assert _tidy_title_wl("Störung: U1 steht") == "U1 steht"
-

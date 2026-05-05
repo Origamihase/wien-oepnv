@@ -50,4 +50,3 @@ def test_item_with_past_ends_at_is_dropped(
     build_feed.main()
 
     assert captured["items"] == [future]
-

@@ -131,7 +131,7 @@ def test_coordinate_validation_detects_missing_and_out_of_bounds(tmp_path: Path)
         {
             "bst_id": 20,
             "bst_code": "Y20",
-            "name": "Missing", 
+            "name": "Missing",
             "longitude": 16.5,
             "aliases": ["Missing"],
         },

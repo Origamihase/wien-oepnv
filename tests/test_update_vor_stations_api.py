@@ -134,4 +134,3 @@ def test_canonical_vor_name_strips_suffixes(monkeypatch: pytest.MonkeyPatch) -> 
     monkeypatch.setattr(module.vor_provider, "STATION_NAME_MAP", mapping, raising=False)
     assert module._canonical_vor_name("Vienna Karlsplatz U (WL)") == "Wien Karlsplatz"
     assert module._canonical_vor_name("Vienna Karlsplatz") == "Wien Karlsplatz"
-

@@ -77,4 +77,3 @@ def test_make_rss_saves_empty_state_when_no_identities(
 
 
     assert not any("State speichern fehlgeschlagen" in r.message for r in caplog.records)
-

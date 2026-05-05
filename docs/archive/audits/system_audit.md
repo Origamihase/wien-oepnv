@@ -17,4 +17,3 @@
 
 ## Tests & Checks
 - ✅ `pytest` – komplette Testsuite (267 Tests).【fa60a0†L1-L38】
-

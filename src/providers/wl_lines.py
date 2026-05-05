@@ -154,4 +154,3 @@ __all__ = [
     "_line_display_from_pairs",
     "_ensure_line_prefix",
 ]
-

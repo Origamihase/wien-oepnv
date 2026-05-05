@@ -37,4 +37,3 @@ def test_text_has_vienna_connection_false(text: str) -> None:
 )
 def test_text_has_vienna_connection_true(text: str) -> None:
     assert text_has_vienna_connection(text) is True
-

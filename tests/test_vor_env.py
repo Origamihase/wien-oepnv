@@ -258,4 +258,3 @@ def test_apply_authentication_basic_with_prefix(monkeypatch: pytest.MonkeyPatch)
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)
-
