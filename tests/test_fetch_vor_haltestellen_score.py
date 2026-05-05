@@ -52,6 +52,16 @@ from scripts.fetch_vor_haltestellen import (
         ("Himberg", "Himberg (bei Wien) Hauptplatz", "430373800"),
         ("Himberg bei Wien", "Himberg (bei Wien) Hauptplatz", "430373800"),
         ("Laxenburg-Biedermannsdorf", "BIEDERMANNSDORF", "900022021"),
+        # 2026-05-06 cron survivors: VOR returned a *different* bad
+        # candidate after the previous filter round closed. "Hauptstraße"
+        # uses the same compound problem as "Hauptplatz" but with
+        # 'strasse' (\bstrasse\b doesn't match inside "Hauptstrasse").
+        # "Volksschule" is a school stop — the existing _NON_RAIL_SUFFIXES
+        # entry "schule" only matches with a leading space (" schule"),
+        # not the compound "Volksschule".
+        ("Himberg", "Himberg (bei Wien) Hauptstraße", "430373900"),
+        ("Himberg bei Wien", "Himberg (bei Wien) Hauptstraße", "430373900"),
+        ("Weigelsdorf", "Weigelsdorf Volksschule", "430586500"),
     ],
     ids=[
         "laxenburg→hlw",
@@ -73,6 +83,9 @@ from scripts.fetch_vor_haltestellen import (
         "himberg→hauptplatz-compound",
         "himberg-bei-wien→hauptplatz-compound",
         "laxenburg→BIEDERMANNSDORF-9xx",
+        "himberg→hauptstrasse-compound",
+        "himberg-bei-wien→hauptstrasse-compound",
+        "weigelsdorf→volksschule-compound",
     ],
 )
 def test_score_rejects_bad_match(station: str, candidate: str, ext_id: str) -> None:

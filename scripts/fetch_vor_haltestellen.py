@@ -200,14 +200,15 @@ _RAIL_TOKENS = frozenset({"bahnhof", "bahnhst", "bhf", "hbf", "bf"})
 # Common street-name fragments and village quarters that, when present in a
 # candidate *without* any of the rail tokens above, indicate a bus stop.
 # Both word-boundary and end-of-word matches: "Wehr" (separate word) and
-# "Judenweg"/"Gutenhof"/"Kienergasse"/"Hauptplatz" (compound) all trigger.
-# Compound "gasse"/"platz" need the end-of-word form because \bgasse\b would
-# not match inside "Kienergasse" (no word boundary between letters).
+# "Judenweg"/"Gutenhof"/"Kienergasse"/"Hauptplatz"/"Hauptstraße"/"Volksschule"
+# (compound) all trigger. Compound "strasse"/"schule"/"gasse"/"platz" need the
+# end-of-word form because \bstrasse\b would not match inside "Hauptstrasse"
+# (no word boundary between letters).
 _BUS_LIKE_SUFFIX_PATTERN = re.compile(
     r"(?:\b(?:strasse|str|gasse|platz|wehr|grenz|siedlung|kreuzung|"
     r"kreisverkehr|zentrum|abzw|abzweigung)\b"
-    r"|(?:weg|hof|markt|gasse|platz)$"
-    r"|\s(?:weg|hof|gasse|platz)$)",
+    r"|(?:weg|hof|markt|gasse|platz|strasse|schule)$"
+    r"|\s(?:weg|hof|gasse|platz|strasse|schule)$)",
     re.IGNORECASE,
 )
 
