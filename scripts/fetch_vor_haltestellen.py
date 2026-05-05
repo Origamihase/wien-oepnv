@@ -201,14 +201,14 @@ _RAIL_TOKENS = frozenset({"bahnhof", "bahnhst", "bhf", "hbf", "bf"})
 # candidate *without* any of the rail tokens above, indicate a bus stop.
 # Both word-boundary and end-of-word matches: "Wehr" (separate word) and
 # "Judenweg"/"Gutenhof"/"Kienergasse"/"Hauptplatz"/"Hauptstraße"/"Volksschule"
-# (compound) all trigger. Compound "strasse"/"schule"/"gasse"/"platz" need the
-# end-of-word form because \bstrasse\b would not match inside "Hauptstrasse"
-# (no word boundary between letters).
+# /"Neubachbrücke" (compound) all trigger. Compound "strasse"/"schule"/
+# "gasse"/"platz"/"brucke" need the end-of-word form because \bstrasse\b
+# would not match inside "Hauptstrasse" (no word boundary between letters).
 _BUS_LIKE_SUFFIX_PATTERN = re.compile(
     r"(?:\b(?:strasse|str|gasse|platz|wehr|grenz|siedlung|kreuzung|"
     r"kreisverkehr|zentrum|abzw|abzweigung)\b"
-    r"|(?:weg|hof|markt|gasse|platz|strasse|schule)$"
-    r"|\s(?:weg|hof|gasse|platz|strasse|schule)$)",
+    r"|(?:weg|hof|markt|gasse|platz|strasse|schule|brucke)$"
+    r"|\s(?:weg|hof|gasse|platz|strasse|schule|brucke)$)",
     re.IGNORECASE,
 )
 
@@ -298,6 +298,31 @@ def _score_candidate(station_name: str, candidate_name: str, ext_id: str | None)
     # first-word check lets candidates like "BIEDERMANNSDORF" survive
     # with a score around 55 (just over the 50 acceptance floor).
     if ext_id_str.startswith("9") and not (_RAIL_TOKENS & candidate_tokens):
+        return -100.0
+
+    # General rule for single-token pendler stops: when the canonical
+    # name is a single word ("Weigelsdorf", "Himberg") and VOR returns
+    # a multi-token candidate without any rail token, the candidate is
+    # almost always a different stop in the same town (a bus stop, a
+    # bridge, a residential quarter etc.). The 0.85 ratio guard keeps
+    # identity-ish matches working; the rail-token check keeps the
+    # legit "<station> Bahnhof" suffixes; the station-token-in-candidate
+    # check makes sure we only reject when the candidate is plausibly
+    # in the same town (not a different station that just happens to
+    # be 2-token). Subsumes the _BUS_LIKE_SUFFIX_PATTERN end-of-word
+    # whack-a-mole rounds for "gasse"/"platz"/"strasse"/"schule" /
+    # "siedlung"/"brucke" — VOR keeps returning new compound suffixes
+    # (Weigelsdorf B60/Boschansiedlung, Himberg Neubachbrücke etc.)
+    # that the hand-coded list can't keep up with.
+    station_tokens_list = station_norm.split()
+    candidate_tokens_list = candidate_norm.split()
+    if (
+        len(station_tokens_list) == 1
+        and len(candidate_tokens_list) >= 2
+        and station_tokens_list[0] in candidate_tokens
+        and not (_RAIL_TOKENS & candidate_tokens)
+        and ratio < 0.85
+    ):
         return -100.0
 
     # First-word-mismatch: the input "Tulln an der Donau" must not match

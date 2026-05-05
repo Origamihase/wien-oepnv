@@ -62,6 +62,22 @@ from scripts.fetch_vor_haltestellen import (
         ("Himberg", "Himberg (bei Wien) Hauptstraße", "430373900"),
         ("Himberg bei Wien", "Himberg (bei Wien) Hauptstraße", "430373900"),
         ("Weigelsdorf", "Weigelsdorf Volksschule", "430586500"),
+        # 2026-05-06 second-cron survivors: after the strasse/schule
+        # filter, VOR returned yet another bad pair. The single-token
+        # case ("Weigelsdorf B60/Boschansiedlung") is now caught by
+        # the general single-token-station rule (1-token station + 2+
+        # token candidate without rail token + ratio < 0.85). The
+        # multi-token case ("Himberg (bei Wien) Neubachbrücke") needs
+        # the new 'brucke' end-of-word entry in _BUS_LIKE_SUFFIX_PATTERN.
+        ("Weigelsdorf", "Weigelsdorf B60/Boschansiedlung", "430543200"),
+        ("Himberg bei Wien", "Himberg (bei Wien) Neubachbrücke", "430374100"),
+        ("Himberg", "Himberg (bei Wien) Neubachbrücke", "430374100"),
+        # Defensive: the single-token rule must reject any added
+        # non-rail descriptor, even when the bus-suffix pattern
+        # doesn't recognize the suffix word. This locks in the rule
+        # itself against future VOR-returned compounds we haven't
+        # seen yet (e.g. "Weigelsdorf Stadion", "Achau Friedhofweg").
+        ("Achau", "Achau Stadtsaal", "430000000"),
     ],
     ids=[
         "laxenburg→hlw",
@@ -86,6 +102,10 @@ from scripts.fetch_vor_haltestellen import (
         "himberg→hauptstrasse-compound",
         "himberg-bei-wien→hauptstrasse-compound",
         "weigelsdorf→volksschule-compound",
+        "weigelsdorf→boschansiedlung-1token-rule",
+        "himberg-bei-wien→neubachbruecke-compound",
+        "himberg→neubachbruecke-1token-rule",
+        "achau→stadtsaal-1token-rule-defensive",
     ],
 )
 def test_score_rejects_bad_match(station: str, candidate: str, ext_id: str) -> None:
