@@ -81,7 +81,7 @@ def test_compute_diff_handles_no_bst_id_via_name_key() -> None:
 
 def test_render_diff_markdown_clean_run_signals_no_change() -> None:
     """An empty diff should still produce a non-empty report — that's the heartbeat."""
-    diff = {"added": [], "removed": [], "renamed": [], "coord_shifted": []}
+    diff: wrapper._DiffResult = {"added": [], "removed": [], "renamed": [], "coord_shifted": []}
     rendered = wrapper._render_diff_markdown(diff, before_count=107, after_count=107, timestamp="2026-05-05T18:00:00+00:00")
 
     assert "stations.json Diff Report" in rendered
@@ -91,7 +91,7 @@ def test_render_diff_markdown_clean_run_signals_no_change() -> None:
 
 
 def test_render_diff_markdown_lists_renames() -> None:
-    diff = {
+    diff: wrapper._DiffResult = {
         "added": [],
         "removed": [],
         "renamed": [("bst:2511", "Wien Westbf", "Wien Westbahnhof")],

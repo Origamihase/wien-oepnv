@@ -26,7 +26,7 @@ import tempfile
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Mapping, Sequence
+from typing import Any, Mapping, Sequence, TypedDict
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
@@ -123,10 +123,25 @@ def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return 2 * radius * math.asin(math.sqrt(a))
 
 
+class _DiffResult(TypedDict):
+    added: list[tuple[str, str]]
+    removed: list[tuple[str, str]]
+    renamed: list[tuple[str, str, str]]
+    coord_shifted: list[tuple[str, str, int]]
+
+
+def _coerce_coord(value: object) -> float | None:
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    return None
+
+
 def _compute_diff(
-    before: list[Mapping[str, Any]],
-    after: list[Mapping[str, Any]],
-) -> dict[str, list[Any]]:
+    before: Sequence[Mapping[str, Any]],
+    after: Sequence[Mapping[str, Any]],
+) -> _DiffResult:
     """Compute additions/removals/renames/coord-shifts between two snapshots."""
     by_key_before = {_station_key(s): s for s in before}
     by_key_after = {_station_key(s): s for s in after}
@@ -146,31 +161,34 @@ def _compute_diff(
         if before_name != after_name:
             renamed.append((key, before_name, after_name))
 
-        before_lat = before_entry.get("latitude")
-        before_lon = before_entry.get("longitude")
-        after_lat = after_entry.get("latitude")
-        after_lon = after_entry.get("longitude")
-        if all(isinstance(v, (int, float)) for v in (before_lat, before_lon, after_lat, after_lon)):
-            try:
-                distance = _haversine_m(
-                    float(before_lat), float(before_lon),
-                    float(after_lat), float(after_lon),
-                )
-            except (TypeError, ValueError):
-                continue
-            if distance >= _COORD_SHIFT_THRESHOLD_M:
-                coord_shifted.append((key, after_name or before_name, round(distance)))
+        before_lat = _coerce_coord(before_entry.get("latitude"))
+        before_lon = _coerce_coord(before_entry.get("longitude"))
+        after_lat = _coerce_coord(after_entry.get("latitude"))
+        after_lon = _coerce_coord(after_entry.get("longitude"))
+        if (
+            before_lat is None
+            or before_lon is None
+            or after_lat is None
+            or after_lon is None
+        ):
+            continue
+        try:
+            distance = _haversine_m(before_lat, before_lon, after_lat, after_lon)
+        except (TypeError, ValueError):
+            continue
+        if distance >= _COORD_SHIFT_THRESHOLD_M:
+            coord_shifted.append((key, after_name or before_name, round(distance)))
 
-    return {
-        "added": [(k, str(by_key_after[k].get("name") or "")) for k in added_keys],
-        "removed": [(k, str(by_key_before[k].get("name") or "")) for k in removed_keys],
-        "renamed": renamed,
-        "coord_shifted": coord_shifted,
-    }
+    return _DiffResult(
+        added=[(k, str(by_key_after[k].get("name") or "")) for k in added_keys],
+        removed=[(k, str(by_key_before[k].get("name") or "")) for k in removed_keys],
+        renamed=renamed,
+        coord_shifted=coord_shifted,
+    )
 
 
 def _render_diff_markdown(
-    diff: Mapping[str, list[Any]],
+    diff: _DiffResult,
     before_count: int,
     after_count: int,
     timestamp: str,
@@ -242,8 +260,8 @@ def _count_polygon_vertices(path: Path) -> int | None:
 
 def _build_heartbeat(
     report: ValidationReport,
-    diff: Mapping[str, list[Any]],
-    sub_scripts: list[Mapping[str, Any]],
+    diff: _DiffResult,
+    sub_scripts: Sequence[Mapping[str, Any]],
     before_count: int,
     after_count: int,
     polygon_vertices: int | None,
@@ -280,24 +298,24 @@ def _build_heartbeat(
 def _collect_blocking_issues(report: ValidationReport) -> list[tuple[str, str]]:
     """Return (category, message) tuples for issues that must block the commit."""
     blocking: list[tuple[str, str]] = []
-    for issue in report.provider_issues:
-        blocking.append(("provider", issue.reason))
-    for issue in report.cross_station_id_issues:
+    for provider in report.provider_issues:
+        blocking.append(("provider", provider.reason))
+    for cross in report.cross_station_id_issues:
         blocking.append((
             "cross-station",
-            f"alias '{issue.alias}' in '{issue.name}' ({issue.identifier}) "
-            f"collides with {issue.colliding_field} of "
-            f"'{issue.colliding_name}' ({issue.colliding_identifier})",
+            f"alias '{cross.alias}' in '{cross.name}' ({cross.identifier}) "
+            f"collides with {cross.colliding_field} of "
+            f"'{cross.colliding_name}' ({cross.colliding_identifier})",
         ))
-    for issue in report.naming_issues:
+    for naming in report.naming_issues:
         blocking.append((
             "naming",
-            f"{issue.name} ({issue.identifier}): {issue.reason}",
+            f"{naming.name} ({naming.identifier}): {naming.reason}",
         ))
-    for issue in report.security_issues:
+    for security in report.security_issues:
         blocking.append((
             "security",
-            f"{issue.name} ({issue.identifier}): {issue.reason}",
+            f"{security.name} ({security.identifier}): {security.reason}",
         ))
     return blocking
 
