@@ -98,7 +98,10 @@ def configure_logging(verbose: bool) -> None:
 # is the generic word for any airport; "stadt"/"zentrum"/cardinal
 # directions are equally ambiguous; bare rail vocabulary (hbf, bf,
 # bahnhof) and city names (wien, vienna) are too broad to disambiguate
-# specific stations from feed text.
+# specific stations from feed text. "munchen"/"muenchen" alone is also
+# a substring of "Münchendorf" (a separate NÖ pendler station) — only
+# the disambiguated forms ("München Hbf", "München Hauptbahnhof") are
+# safe.
 _GENERIC_ALIAS_BLOCKLIST = frozenset({
     # Cities (already enforced; kept for completeness)
     "wien", "vienna",
@@ -108,6 +111,10 @@ _GENERIC_ALIAS_BLOCKLIST = frozenset({
     "flughafen", "bahnhof", "hauptbahnhof", "hbf", "bf", "bhf", "bahnhst",
     # Generic place words
     "markt", "ort", "platz",
+    # Bare city names that overlap with NÖ pendler stops by substring.
+    # "München" is a prefix of "Münchendorf"; the disambiguated forms
+    # ("München Hbf", "München Hauptbahnhof") are kept as aliases.
+    "munchen", "muenchen",
 })
 
 

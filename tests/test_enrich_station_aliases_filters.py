@@ -43,6 +43,31 @@ def test_generic_blocklist_drops_bare_flughafen() -> None:
     assert "Vienna Airport" in aliases
 
 
+def test_generic_blocklist_drops_bare_muenchen_substring_of_muenchendorf() -> None:
+    """``München`` alone is a *substring* of the canonical name
+    "Münchendorf" (a NÖ pendler station). When both stations live in
+    the same directory, the bare alias would match Münchendorf-related
+    feed text against München Hbf. Only the disambiguated forms
+    ("München Hbf", "München Hauptbahnhof") survive the blocklist."""
+    station = {
+        "name": "München Hauptbahnhof",
+        "aliases": [
+            "München Hauptbahnhof",
+            "München",
+            "Muenchen",
+            "München Hbf",
+            "Muenchen Hbf",
+        ],
+    }
+    aliases = _alias_candidates(station, vor_names={}, vor_mapping={}, gtfs_index={})
+    assert "München" not in aliases
+    assert "Muenchen" not in aliases
+    # The disambiguated forms remain — they pin the entry to "Hbf".
+    assert "München Hauptbahnhof" in aliases
+    assert "München Hbf" in aliases
+    assert "Muenchen Hbf" in aliases
+
+
 def test_generic_blocklist_covers_directions_and_rail_vocab() -> None:
     """A defensive set: cardinal directions ("Nord", "Süd"), generic
     transport vocabulary ("Bahnhof", "Hbf") and quarter words ("Stadt",
@@ -67,6 +92,8 @@ def test_generic_blocklist_covers_directions_and_rail_vocab() -> None:
         "markt",
         "ort",
         "platz",
+        "munchen",
+        "muenchen",
     }
     assert expected <= _GENERIC_ALIAS_BLOCKLIST
 
