@@ -16,7 +16,7 @@ class TestSecretScannerNewKeys(unittest.TestCase):
 
         for case in test_cases:
             match = _SENSITIVE_ASSIGN_RE.search(case)
-            self.assertIsNotNone(match, f"Failed to match regex: {case}")
+            assert match is not None, f"Failed to match regex: {case}"
             candidate = match.group(2).strip().strip('"')
 
             # Check if it passes _looks_like_secret

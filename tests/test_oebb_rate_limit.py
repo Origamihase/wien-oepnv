@@ -115,14 +115,6 @@ def test_rate_limit_retries_once_after_wait(
         DummyResponse(200, {"Content-Type": "application/xml"}, b"<root></root>"),
     ]
 
-    # Mock raise_for_status to simulate what fetch_content_safe does
-    def mock_raise_for_status(self: Any) -> None:
-        if self.status_code >= 400:
-            import requests
-            raise requests.HTTPError(response=self)
-
-    DummyResponse.raise_for_status = mock_raise_for_status
-
     calls: list[tuple[str, Any]] = []
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession(responses, calls))
 
@@ -156,7 +148,9 @@ def test_rate_limit_raises_http_error_after_retry(monkeypatch: pytest.MonkeyPatc
             import requests
             raise requests.HTTPError(response=self)
 
-    DummyResponse.raise_for_status = mock_raise_for_status
+    # Patch the dummy class instead of an instance: tests need this method
+    # on every DummyResponse the mock session will produce.
+    DummyResponse.raise_for_status = mock_raise_for_status  # type: ignore[method-assign]
 
     calls: list[tuple[str, Any]] = []
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession(responses, calls))
