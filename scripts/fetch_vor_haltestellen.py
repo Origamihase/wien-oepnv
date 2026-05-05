@@ -156,6 +156,52 @@ def _normalize(text: str) -> str:
     return normalized
 
 
+# Suffixes that mark the candidate as a non-rail stop (bus, school,
+# cemetery, park & ride). Matches are scored as a hard reject in
+# _score_candidate. Note: "kulturfabrik" and "ungartor" look like
+# bus-stop names but are *real* S7 train stops in Hainburg/Donau
+# (opened 2017) — they are deliberately *not* on this list. Likewise
+# "ort" was rejected as too aggressive: "Rennweg am Katschberg Ort"
+# is filtered out via the region check below, not via the suffix list.
+_NON_RAIL_SUFFIXES = frozenset({
+    "hlw",
+    "friedhof",
+    "grenzweg",
+    "busbahnhof",
+    "bushaltestelle",
+    "busterminal",
+    "schule",
+    "kindergarten",
+    "park ride",
+    "spielplatz",
+})
+
+# Parenthetical region/state tags that point outside the VOR-Wien orbit.
+# When present in a candidate name they indicate a near-namesake station in
+# a different region (Himberg/Steiermark, München/Bayern, Wels/Oberösterreich).
+_WRONG_REGION_PATTERN = re.compile(
+    r"\(\s*(?:steiermark|stmk|kärnten|ktn|tirol|tir|vorarlberg|vbg|salzburg|sbg|"
+    r"oberösterreich|oö|deutschfeistritz|bayern|bay|bw|hessen|sachsen|"
+    r"brandenburg|nrw)\s*\)",
+    re.IGNORECASE,
+)
+
+# A trailing "Ort" or "Markt" without leading rail context indicates a
+# settlement-centre bus stop, not a rail station. Also catches
+# "Rennweg am Katschberg Ort" (a Salzburg-area village). The candidate
+# name must end with " Ort" / " Markt" — embedded usage like
+# "Mödlinger Friedhofs-Markt" wouldn't trip this.
+_VILLAGE_SUFFIX_PATTERN = re.compile(r"\s+(?:ort|markt)\s*$", re.IGNORECASE)
+
+
+# Below this score a candidate is considered too weak to accept. Empirically
+# tuned: legit matches sit above 100 (full SequenceMatcher ratio + bahnhof
+# bonus + 4xx ext_id bonus); the worst observed rejects in the 2026-05 cron
+# (Roma Termini → Wels, Rennweg → Katschberg) hovered around 30-50 *without*
+# the new hard-reject filters above. This threshold is the second guard.
+_MIN_ACCEPTABLE_SCORE = 50.0
+
+
 def _score_candidate(station_name: str, candidate_name: str, ext_id: str | None) -> float:
     station_norm = _normalize(station_name)
     candidate_norm = _normalize(candidate_name)
@@ -178,6 +224,49 @@ def _score_candidate(station_name: str, candidate_name: str, ext_id: str | None)
         score += 40.0
     if ext_id_str.startswith("9"):
         score -= 20.0
+
+    # Hard rejects: candidate suffixes that are clearly *not* a railway
+    # station (bus stops, school stops, cemeteries) cause false matches
+    # like "Laxenburg-Biedermannsdorf → Biedermannsdorf HLW",
+    # "Weigelsdorf → Weigelsdorf Grenzweg",
+    # "Himberg bei Wien → Himberg (bei Wien) Friedhof".
+    for suffix in _NON_RAIL_SUFFIXES:
+        if candidate_norm.endswith(" " + suffix) or candidate_norm == suffix:
+            return -100.0
+
+    # Region mismatch: a parenthetical region tag pointing to a non-VOR
+    # area is a strong false-positive signal. Examples:
+    # "Himberg (Deutschfeistritz)" — Steiermark, not Wien;
+    # "München Hauptbahnhof Süd (Bayern)" — different country;
+    # "Wels (OÖ) Hbf (Busterminal)" — Upper Austria.
+    if _WRONG_REGION_PATTERN.search(candidate_name):
+        return -100.0
+
+    # Village-centre suffix: "Rennweg am Katschberg Ort" is the village
+    # centre of a Salzburg town — not the Wiener U-Bahn-Halt with the
+    # same name we asked for.
+    if _VILLAGE_SUFFIX_PATTERN.search(candidate_name):
+        return -100.0
+
+    # First-word-mismatch: the input "Tulln an der Donau" must not match
+    # "Höflein an der Donau" — sharing only the disambiguation suffix is
+    # not a match. The station-norm and candidate-norm share zero
+    # leading-token overlap, *and* the candidate doesn't contain the
+    # station-norm as a substring → reject. (Substring escape hatch
+    # preserves matches like "Tulln" → "Tullnerfeld Bahnhof".)
+    station_first = station_norm.split(" ", 1)[0] if station_norm else ""
+    candidate_first = candidate_norm.split(" ", 1)[0] if candidate_norm else ""
+    if (
+        station_first
+        and candidate_first
+        and station_first[:3] != candidate_first[:3]
+        and not station_first.startswith(candidate_first)
+        and not candidate_first.startswith(station_first)
+        and station_norm not in candidate_norm
+        and candidate_norm not in station_norm
+    ):
+        return -100.0
+
     return score
 
 
@@ -242,6 +331,14 @@ def select_candidate(name: str, candidates: Iterable[Mapping[str, object]]) -> V
         if best is None or score > best[0]:
             best = (score, entry)
     if not best:
+        return None
+    if best[0] < _MIN_ACCEPTABLE_SCORE:
+        log.info(
+            "No confident VOR match for %s (best score %.1f < %.1f) — skipping",
+            name,
+            best[0],
+            _MIN_ACCEPTABLE_SCORE,
+        )
         return None
     _, entry = best
     ext_id = str(entry.get("extId") or "").strip()

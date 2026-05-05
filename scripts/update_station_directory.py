@@ -896,12 +896,62 @@ def _select_vor_stop(station: Station, candidates: list[VORStop]) -> VORStop | N
     return None
 
 
-def _assign_vor_ids(stations: list[Station], vor_stops: list[VORStop]) -> None:
-    if not vor_stops:
+def _load_vor_name_to_id_map(path: Path | None) -> dict[str, str]:
+    """Read ``vor-haltestellen.mapping.json`` produced by fetch_vor_haltestellen.
+
+    Returns a dict from the *exact* station name we asked for (i.e. the
+    ÖBB Excel-name) to the resolved VOR id. Lets us short-circuit the
+    fuzzy `_select_vor_stop` matcher: if the fetcher already determined
+    `Hohenau` resolves to `430377800`, we reuse that mapping instead of
+    re-deriving it from the candidate list (which can yield ambiguous
+    or empty results when the resolved name carries a heavy disambiguation
+    suffix like `Hohenau an der March Bahnhof`).
+    """
+    if path is None or not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        logger.warning("Could not read VOR mapping %s: %s", path, exc)
+        return {}
+    if not isinstance(payload, list):
+        return {}
+    mapping: dict[str, str] = {}
+    for entry in payload:
+        if not isinstance(entry, dict):
+            continue
+        name = entry.get("station_name")
+        vor_id = entry.get("vor_id")
+        if isinstance(name, str) and isinstance(vor_id, str):
+            text_name = name.strip()
+            text_id = vor_id.strip()
+            if text_name and text_id:
+                mapping[text_name] = text_id
+    if mapping:
+        logger.info("Loaded %d direct name→vor_id mappings", len(mapping))
+    return mapping
+
+
+def _assign_vor_ids(
+    stations: list[Station],
+    vor_stops: list[VORStop],
+    name_to_vor_id: Mapping[str, str] | None = None,
+) -> None:
+    name_map = name_to_vor_id or {}
+    if not vor_stops and not name_map:
         return
-    index = _build_vor_index(vor_stops)
+    index = _build_vor_index(vor_stops) if vor_stops else {}
     for station in stations:
         if station.vor_id:
+            continue
+        # Direct lookup via the fetcher-produced mapping.json wins —
+        # avoids fuzzy-matching ambiguity when the resolved name differs
+        # from the station name (e.g. Hohenau → Hohenau an der March Bahnhof).
+        direct = name_map.get(station.name)
+        if direct:
+            station.vor_id = direct
+            continue
+        if not index:
             continue
         tokens = _normalize_location_keys(station.name)
         if not tokens:
@@ -1329,8 +1379,14 @@ def main() -> None:
         pendler_name_candidates=pendler_name_candidates,
     )
     vor_stops = load_vor_stops(args.vor_stops) if args.vor_stops else []
-    if vor_stops:
-        _assign_vor_ids(stations, vor_stops)
+    vor_name_map: dict[str, str] = {}
+    if args.vor_stops:
+        # vor-haltestellen.mapping.json sits next to the .csv (same stem,
+        # ``.mapping.json`` suffix) and is produced by fetch_vor_haltestellen.
+        mapping_candidate = args.vor_stops.with_suffix(".mapping.json")
+        vor_name_map = _load_vor_name_to_id_map(mapping_candidate)
+    if vor_stops or vor_name_map:
+        _assign_vor_ids(stations, vor_stops, name_to_vor_id=vor_name_map)
     stations = _filter_relevant_stations(stations)
     if getattr(args, "google_enrich", False):
         _enrich_with_google_places(stations, tiles_file=args.places_tiles_file)
