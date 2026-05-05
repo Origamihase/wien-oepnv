@@ -4,8 +4,8 @@
 *GTFS stops loaded*: 99
 *Geographic duplicates*: 0
 *Alias issues*: 155
-*Coordinate anomalies*: 3
-*GTFS mismatches*: 61
+*Coordinate anomalies*: 4
+*GTFS mismatches*: 60
 *Security warnings*: 0
 *Provider issues*: 0
 *Cross station ID issues*: 0
@@ -169,6 +169,7 @@
 - code:900105 / source:vor (Wien Kaiserebersdorf): missing required aliases: 900105
 
 ## Coordinate anomalies
+- code:Lx / source:oebb (Laxenburg-Biedermannsdorf): missing latitude, missing longitude
 - code:Mb  H1H / source:oebb (Mistelbach Stadt): missing latitude, missing longitude
 - source:manual (München Hauptbahnhof): coordinates out of bounds (lat=48.140228, lon=11.558339)
 - source:manual (Roma Termini): coordinates out of bounds (lat=41.901002, lon=12.500253)
@@ -181,7 +182,6 @@
 - code:Kz / source:oebb (Kritzendorf) → missing stop_id 430399500
 - code:Laa / source:oebb (Laa a.d.Thaya) → missing stop_id 430401500
 - code:Lb  H1 / source:oebb (Sollenau) → missing stop_id 430480100
-- code:Lx / source:oebb (Laxenburg-Biedermannsdorf) → missing stop_id 900022021
 - code:Mae / source:oebb (Maria Ellend) → missing stop_id 430414200
 - code:Mar / source:oebb (Maria Lanzendorf) → missing stop_id 430416500
 - code:Md  H2 / source:oebb (Gumpoldskirchen) → missing stop_id 430360200
@@ -216,7 +216,7 @@
 - code:Zs / source:oebb (Lanzendorf-Rannersdorf) → missing stop_id 430405400
 - code:Drg / source:oebb (Drösing) → missing stop_id 430330900
 - code:Due / source:oebb (Dürnkrut) → missing stop_id 430331000
-- code:Ebr H1 / source:oebb (Weigelsdorf) → missing stop_id 430518500
+- code:Ebr H1 / source:oebb (Weigelsdorf) → missing stop_id 430586500
 - code:Fam / source:oebb (Fischamend) → missing stop_id 430343000
 - code:Fld / source:oebb (Felixdorf) → missing stop_id 430341500
 - code:Fld H2 / source:oebb (Wiener Neustadt Nord) → missing stop_id 430522300
@@ -228,7 +228,7 @@
 - code:Msw / source:oebb (Mannswörth) → missing stop_id 430487500
 - code:Guk H2 / source:oebb (Möllersdorf Aspangbahn) → missing stop_id 430430100
 - code:Hfa / source:oebb (Hadersdorf am Kamp) → missing stop_id 430366000
-- code:Him / source:oebb (Himberg) → missing stop_id 430373800
+- code:Him / source:oebb (Himberg) → missing stop_id 430373900
 - code:Hlu / source:oebb (Haslau an der Donau) → missing stop_id 430370600
 - code:Hnd / source:oebb (Hennersdorf) → missing stop_id 430372300
 - code:Hu  H2 / source:oebb (Maria Anzbach) → missing stop_id 430414000

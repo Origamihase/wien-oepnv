@@ -1,15 +1,12 @@
 # stations.json Diff Report
 
-_Generated: 2026-05-05T22:07:09+00:00_
+_Generated: 2026-05-05T22:35:54+00:00_
 
-**Stations: 165 → 169 (Δ +4)**
+**Stations: 169 → 169 (Δ +0)**
 
-## Added (4)
+## Added (0)
 
-- `bst:1076` — Krems a.d.Donau
-- `bst:1131` — Laa a.d.Thaya
-- `bst:1319` — Maria Ellend
-- `bst:15` — Angern
+_None._
 
 ## Removed (0)
 

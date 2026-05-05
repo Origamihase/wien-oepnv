@@ -2908,16 +2908,21 @@
       "name": "Weigelsdorf",
       "in_vienna": false,
       "pendler": true,
+      "vor_id": "430586500",
       "aliases": [
+        "430586500",
         "Weigelsdorf",
         "Bahnhof Weigelsdorf",
         "Bf Weigelsdorf",
         "bf Weigelsdorf",
         "Weigelsdorf Bahnhof",
         "Weigelsdorf Bf",
-        "Weigelsdorf bf"
+        "Weigelsdorf bf",
+        "Weigelsdorf Volksschule"
       ],
-      "source": "oebb"
+      "source": "oebb",
+      "latitude": 47.948471,
+      "longitude": 16.405484
     },
     {
       "bst_id": "325",
@@ -3759,16 +3764,21 @@
       "name": "Himberg",
       "in_vienna": false,
       "pendler": true,
+      "vor_id": "430373900",
       "source": "oebb",
       "aliases": [
+        "430373900",
         "Himberg",
         "Bahnhof Himberg",
         "Bf Himberg",
         "bf Himberg",
+        "Himberg (bei Wien) Hauptstraße",
         "Himberg Bahnhof",
         "Himberg Bf",
         "Himberg bf"
-      ]
+      ],
+      "latitude": 48.086491,
+      "longitude": 16.43994
     },
     {
       "bst_id": "850",
