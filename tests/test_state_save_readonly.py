@@ -1,9 +1,11 @@
 import importlib
+import logging
 import sys
+from pathlib import Path
+from typing import Any
+
 import pytest
 import types
-import logging
-from pathlib import Path
 from datetime import datetime, timezone
 
 
@@ -30,7 +32,7 @@ def test_make_rss_logs_warning_when_state_readonly(
 ) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
-    def fail_save(_):
+    def fail_save(_: Any) -> None:
         raise PermissionError("read-only file system")
 
 
@@ -58,7 +60,7 @@ def test_make_rss_saves_empty_state_when_no_identities(
 
     captured = {"state": None}
 
-    def marker(state, deletions=None):  # pragma: no cover - trivial
+    def marker(state: Any, deletions: Any = None) -> None:  # pragma: no cover - trivial
         captured["state"] = state
 
 

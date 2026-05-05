@@ -1,4 +1,6 @@
 import time
+from typing import Any
+
 import pytest
 from src.providers import vor
 
@@ -27,7 +29,7 @@ def test_fetch_events_graceful_shutdown_on_emergency_stop(monkeypatch: pytest.Mo
     monkeypatch.setattr(vor, "load_request_count", lambda: ("2023-01-01", 0))
 
     # 2. Mock _fetch_departure_board_for_station
-    def fake_fetch(station_id, now, counter=None, session=None, timeout=None):
+    def fake_fetch(station_id: str, now: Any, counter: Any = None, session: Any = None, timeout: Any = None) -> dict[str, Any] | None:
         if station_id == "SUCCESS_STATION":
             # Return a valid payload
             return {
@@ -51,7 +53,7 @@ def test_fetch_events_graceful_shutdown_on_emergency_stop(monkeypatch: pytest.Mo
 
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", fake_fetch)
 
-    def fake_collect(station_id, payload):
+    def fake_collect(station_id: str, payload: Any) -> list[dict[str, str]]:
         return [{
             "title": "Success",
             "description": "All good",
