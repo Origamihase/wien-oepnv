@@ -529,9 +529,7 @@
       "name": "Laxenburg-Biedermannsdorf",
       "in_vienna": false,
       "pendler": true,
-      "vor_id": "900022021",
       "aliases": [
-        "900022021",
         "Laxenburg-Biedermannsdorf",
         "Bahnhof Laxenburg Biedermannsdorf",
         "Bahnhof Laxenburg-Biedermannsdorf",
@@ -539,8 +537,6 @@
         "bf Laxenburg Biedermannsdorf",
         "Bf Laxenburg-Biedermannsdorf",
         "bf Laxenburg-Biedermannsdorf",
-        "BIEDERMANNSDORF",
-        "Biedermannsdorf HLW",
         "Laxenburg Biedermannsdorf",
         "Laxenburg Biedermannsdorf Bahnhof",
         "Laxenburg Biedermannsdorf Bf",
@@ -549,9 +545,7 @@
         "Laxenburg-Biedermannsdorf Bf",
         "Laxenburg-Biedermannsdorf bf"
       ],
-      "source": "oebb",
-      "latitude": 48.083381,
-      "longitude": 16.345643
+      "source": "oebb"
     },
     {
       "bst_id": "1318",
@@ -2914,22 +2908,16 @@
       "name": "Weigelsdorf",
       "in_vienna": false,
       "pendler": true,
-      "vor_id": "430518500",
       "aliases": [
-        "430518500",
         "Weigelsdorf",
         "Bahnhof Weigelsdorf",
         "Bf Weigelsdorf",
         "bf Weigelsdorf",
         "Weigelsdorf Bahnhof",
         "Weigelsdorf Bf",
-        "Weigelsdorf bf",
-        "Weigelsdorf Grenzweg",
-        "Weigelsdorf Kienergasse"
+        "Weigelsdorf bf"
       ],
-      "source": "oebb",
-      "latitude": 47.948776,
-      "longitude": 16.408406
+      "source": "oebb"
     },
     {
       "bst_id": "325",
@@ -3771,21 +3759,16 @@
       "name": "Himberg",
       "in_vienna": false,
       "pendler": true,
-      "vor_id": "430373800",
       "source": "oebb",
       "aliases": [
-        "430373800",
         "Himberg",
         "Bahnhof Himberg",
         "Bf Himberg",
         "bf Himberg",
-        "Himberg (bei Wien) Hauptplatz",
         "Himberg Bahnhof",
         "Himberg Bf",
         "Himberg bf"
-      ],
-      "latitude": 48.081979,
-      "longitude": 16.440255
+      ]
     },
     {
       "bst_id": "850",
