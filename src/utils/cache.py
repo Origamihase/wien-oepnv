@@ -15,6 +15,7 @@ from .files import atomic_write, safe_path_join, sanitize_filename
 
 _CACHE_DIR = Path("cache")
 _CACHE_FILENAME = "events.json"
+_STATUS_FILENAME = "last_run.json"
 
 log = logging.getLogger(__name__)
 
@@ -69,6 +70,12 @@ def _cache_file(provider: str) -> Path:
     if not re.match(r"^[a-zA-Z0-9_-]+$", provider):
         raise ValueError(f"Invalid cache key format: {provider}")
     return safe_path_join(_CACHE_DIR, sanitize_filename(provider), _CACHE_FILENAME)
+
+
+def _status_file(provider: str) -> Path:
+    if not re.match(r"^[a-zA-Z0-9_-]+$", provider):
+        raise ValueError(f"Invalid cache key format: {provider}")
+    return safe_path_join(_CACHE_DIR, sanitize_filename(provider), _STATUS_FILENAME)
 
 
 def cache_modified_at(provider: str) -> Optional[datetime]:
@@ -276,3 +283,55 @@ def write_cache(provider: str, items: List[Any], *, pretty: Optional[bool] = Non
             cache_file,
         )
         raise
+
+
+def write_status(provider: str, status: dict) -> None:
+    """Persist a heartbeat record for ``provider`` next to its events cache.
+
+    The status file lives at ``cache/<sanitized provider>/last_run.json`` and
+    is intended to make workflow runs visible in git even when the events
+    payload is unchanged (e.g. an empty provider response collapsing into the
+    same ``[]`` cache file commit after commit).
+    """
+
+    if not isinstance(status, dict):
+        raise TypeError("status must be a dict")
+
+    status_file = _status_file(provider)
+
+    try:
+        with atomic_write(
+            status_file, mode="w", encoding="utf-8", permissions=0o600
+        ) as fh:
+            json.dump(status, fh, ensure_ascii=False, indent=2, sort_keys=True)
+            fh.write("\n")
+    except Exception:
+        log.exception(
+            "Failed to write status for provider '%s' to %s",
+            provider,
+            status_file,
+        )
+        raise
+
+
+def read_status(provider: str) -> Optional[dict]:
+    """Return the persisted heartbeat for ``provider`` or ``None``."""
+
+    status_file = _status_file(provider)
+    try:
+        with status_file.open("r", encoding="utf-8") as fh:
+            payload = json.load(fh)
+    except FileNotFoundError:
+        return None
+    except (json.JSONDecodeError, OSError) as exc:
+        log.warning(
+            "Could not read status for provider '%s' at %s: %s",
+            provider,
+            status_file,
+            exc,
+        )
+        return None
+
+    if not isinstance(payload, dict):
+        return None
+    return payload

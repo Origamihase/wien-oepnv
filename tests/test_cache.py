@@ -67,3 +67,62 @@ def test_write_cache_env_compact(tmp_path: Path, monkeypatch: pytest.MonkeyPatch
         [{"id": 2}], ensure_ascii=False, indent=None, separators=(",", ":")
     )
     assert cache_file.read_text(encoding="utf-8") == expected
+
+
+def test_write_status_round_trip(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    base = tmp_path / "cache-root"
+    monkeypatch.setattr(cache, "_CACHE_DIR", base, raising=False)
+
+    payload = {
+        "last_run_at": "2026-05-05T17:30:00+00:00",
+        "status": "ok",
+        "events_collected": 0,
+        "stations_queried": 2,
+    }
+    cache.write_status("vor", payload)
+
+    status_path = base / sanitize_filename("vor") / "last_run.json"
+    assert status_path.exists()
+    assert json.loads(status_path.read_text(encoding="utf-8")) == payload
+    assert cache.read_status("vor") == payload
+
+
+def test_read_status_returns_none_when_missing(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    base = tmp_path / "cache-root"
+    monkeypatch.setattr(cache, "_CACHE_DIR", base, raising=False)
+
+    assert cache.read_status("vor") is None
+
+
+def test_read_status_returns_none_on_invalid_json(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    base = tmp_path / "cache-root"
+    monkeypatch.setattr(cache, "_CACHE_DIR", base, raising=False)
+    target = base / sanitize_filename("vor")
+    target.mkdir(parents=True, exist_ok=True)
+    (target / "last_run.json").write_text("{not json", encoding="utf-8")
+
+    assert cache.read_status("vor") is None
+
+
+def test_write_status_rejects_non_dict(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    base = tmp_path / "cache-root"
+    monkeypatch.setattr(cache, "_CACHE_DIR", base, raising=False)
+
+    with pytest.raises(TypeError):
+        cache.write_status("vor", [1, 2, 3])  # type: ignore[arg-type]
+
+
+def test_write_status_rejects_invalid_provider_key(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    base = tmp_path / "cache-root"
+    monkeypatch.setattr(cache, "_CACHE_DIR", base, raising=False)
+
+    with pytest.raises(ValueError):
+        cache.write_status("../escape", {"status": "ok"})

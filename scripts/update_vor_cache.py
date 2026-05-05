@@ -55,7 +55,7 @@ from src.providers.vor import (  # noqa: E402  (import after path setup)
     get_configured_stations,
     select_stations_for_run,
 )
-from src.utils.cache import write_cache  # noqa: E402
+from src.utils.cache import write_cache, write_status  # noqa: E402
 from src.utils.serialize import serialize_for_cache  # noqa: E402
 
 
@@ -93,6 +93,37 @@ def _limit_reached(now_local: datetime) -> bool:
     return False
 
 
+def _record_status(
+    *,
+    status: str,
+    stations_queried: int,
+    events_collected: int | None,
+    now_local: datetime,
+) -> None:
+    """Persist a heartbeat for the VOR cache run.
+
+    The marker is committed even when ``events.json`` would otherwise stay
+    byte-identical (e.g. a stretch of empty provider responses), so the most
+    recent successful run stays visible in git history.
+    """
+
+    todays_count = _todays_request_count(now_local)
+    payload: dict = {
+        "last_run_at": now_local.astimezone(timezone.utc).isoformat(),
+        "last_run_at_local": now_local.isoformat(),
+        "status": status,
+        "stations_queried": stations_queried,
+        "requests_used_today": todays_count,
+        "daily_limit": MAX_REQUESTS_PER_DAY,
+    }
+    if events_collected is not None:
+        payload["events_collected"] = events_collected
+    try:
+        write_status("vor", payload)
+    except Exception:  # pragma: no cover - defensive
+        logger.exception("VOR: Status-Marker konnte nicht geschrieben werden.")
+
+
 def main() -> int:
     """Entry point for refreshing the VOR cache."""
 
@@ -126,6 +157,12 @@ def main() -> int:
 
     now_local = _now_local()
     if _limit_reached(now_local):
+        _record_status(
+            status="skipped_quota",
+            stations_queried=0,
+            events_collected=None,
+            now_local=now_local,
+        )
         return 0
 
     try:
@@ -136,16 +173,34 @@ def main() -> int:
             "VOR: API nicht erreichbar – behalte bestehenden Cache bei.",
             exc_info=True,
         )
+        _record_status(
+            status="api_unreachable",
+            stations_queried=STATIONS_COUNT,
+            events_collected=None,
+            now_local=now_local,
+        )
         return 0
     except Exception:  # pragma: no cover - defensive
         logger.exception(
             "VOR: Fehler beim Abrufen der Daten – behalte bestehenden Cache bei.",
+        )
+        _record_status(
+            status="error",
+            stations_queried=STATIONS_COUNT,
+            events_collected=None,
+            now_local=now_local,
         )
         return 1
 
     serialized_items = [serialize_for_cache(item) for item in items]
     write_cache("vor", serialized_items)
     logger.info("VOR: Cache mit %d Einträgen aktualisiert.", len(serialized_items))
+    _record_status(
+        status="ok",
+        stations_queried=STATIONS_COUNT,
+        events_collected=len(serialized_items),
+        now_local=now_local,
+    )
     return 0
 
 
