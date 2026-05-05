@@ -200,12 +200,14 @@ _RAIL_TOKENS = frozenset({"bahnhof", "bahnhst", "bhf", "hbf", "bf"})
 # Common street-name fragments and village quarters that, when present in a
 # candidate *without* any of the rail tokens above, indicate a bus stop.
 # Both word-boundary and end-of-word matches: "Wehr" (separate word) and
-# "Judenweg"/"Gutenhof" (compound) all trigger.
+# "Judenweg"/"Gutenhof"/"Kienergasse"/"Hauptplatz" (compound) all trigger.
+# Compound "gasse"/"platz" need the end-of-word form because \bgasse\b would
+# not match inside "Kienergasse" (no word boundary between letters).
 _BUS_LIKE_SUFFIX_PATTERN = re.compile(
     r"(?:\b(?:strasse|str|gasse|platz|wehr|grenz|siedlung|kreuzung|"
     r"kreisverkehr|zentrum|abzw|abzweigung)\b"
-    r"|(?:weg|hof|markt)$"
-    r"|\s(?:weg|hof)$)",
+    r"|(?:weg|hof|markt|gasse|platz)$"
+    r"|\s(?:weg|hof|gasse|platz)$)",
     re.IGNORECASE,
 )
 
@@ -275,12 +277,26 @@ def _score_candidate(station_name: str, candidate_name: str, ext_id: str | None)
     # "Weigelsdorf Judenweg" (a footpath)
     # "Laxenburg Guntramsdorfer Straße" (a street)
     # "Himberg (bei Wien) Gutenhof" (a village quarter)
+    # "Weigelsdorf Kienergasse" (compound 'gasse')
+    # "Himberg (bei Wien) Hauptplatz" (compound 'platz')
     candidate_tokens = set(candidate_norm.split())
     if (
         ratio < 0.85
         and not (_RAIL_TOKENS & candidate_tokens)
         and _BUS_LIKE_SUFFIX_PATTERN.search(candidate_norm)
     ):
+        return -100.0
+
+    # Synthetic ext_id range: VOR ids starting with "9" are typically
+    # park-and-ride / transfer-point pseudo-stops with no real platform.
+    # Hand-curated 9xx entries (STATIC_VOR_ENTRIES) carry an explicit
+    # rail token like "Hauptbahnhof" and pass through; bare names like
+    # "BIEDERMANNSDORF" (ext_id 900022021) without any rail context are
+    # rejected. The ext_id 9xx penalty above (-20) is no longer enough
+    # for high-ratio cases, since the substring-escape-hatch in the
+    # first-word check lets candidates like "BIEDERMANNSDORF" survive
+    # with a score around 55 (just over the 50 acceptance floor).
+    if ext_id_str.startswith("9") and not (_RAIL_TOKENS & candidate_tokens):
         return -100.0
 
     # First-word-mismatch: the input "Tulln an der Donau" must not match

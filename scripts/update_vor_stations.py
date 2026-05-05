@@ -55,6 +55,31 @@ STATIC_VOR_ENTRIES: tuple[dict[str, object], ...] = (
         "bst_code": "900300",
         "source": "vor",
     },
+    # Guntramsdorf Bahnhof — Südbahn S-Bahn pendler stop. Closes the
+    # Top-12 priority-1 gap from the 2026-05 stations-coverage research:
+    # the ÖBB Excel "Verzeichnis der Verkehrsstationen" has no row for
+    # Guntramsdorf, so the name-based pendler whitelist alone cannot
+    # produce an entry — only the synthetic VOR pathway does.
+    {
+        "vor_id": "430361600",
+        "name": "Guntramsdorf Bahnhof",
+        "in_vienna": False,
+        "pendler": True,
+        "latitude": 48.051964,
+        "longitude": 16.297551,
+        "aliases": [
+            "Guntramsdorf Bahnhof",
+            "Guntramsdorf Bf",
+            "Guntramsdorf",
+            "Guntramsdorf Südbahn",
+            "Bahnhof Guntramsdorf",
+            "Bf Guntramsdorf",
+            "430361600",
+        ],
+        "bst_id": "430361600",
+        "bst_code": "430361600",
+        "source": "vor",
+    },
 )
 
 

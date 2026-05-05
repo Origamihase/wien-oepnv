@@ -43,6 +43,15 @@ from scripts.fetch_vor_haltestellen import (
         ("Laxenburg-Biedermannsdorf", "Laxenburg Guntramsdorfer Straße", "430615800"),
         ("Himberg", "Himberg (bei Wien) Gutenhof", "430361800"),
         ("Himberg bei Wien", "Himberg (bei Wien) Gutenhof", "430361800"),
+        # 2026-05-05 cron survivors: compound 'gasse'/'platz' suffix and
+        # 9xx synthetic ext_id without rail token. Without the extended
+        # bus-suffix end-anchor and the new 9xx-no-rail check these
+        # candidates land in stations.json with a wrong vor_id (the cron
+        # of 2026-05-05 22:07 published exactly these three).
+        ("Weigelsdorf", "Weigelsdorf Kienergasse", "430518500"),
+        ("Himberg", "Himberg (bei Wien) Hauptplatz", "430373800"),
+        ("Himberg bei Wien", "Himberg (bei Wien) Hauptplatz", "430373800"),
+        ("Laxenburg-Biedermannsdorf", "BIEDERMANNSDORF", "900022021"),
     ],
     ids=[
         "laxenburg→hlw",
@@ -60,6 +69,10 @@ from scripts.fetch_vor_haltestellen import (
         "laxenburg→guntramsdorfer-straße",
         "himberg→gutenhof",
         "himberg-bei-wien→gutenhof",
+        "weigelsdorf→kienergasse-compound",
+        "himberg→hauptplatz-compound",
+        "himberg-bei-wien→hauptplatz-compound",
+        "laxenburg→BIEDERMANNSDORF-9xx",
     ],
 )
 def test_score_rejects_bad_match(station: str, candidate: str, ext_id: str) -> None:
@@ -92,6 +105,18 @@ def test_score_rejects_bad_match(station: str, candidate: str, ext_id: str) -> N
         ("Wien Krottenbachstraße", "Wien Krottenbachstraße", "490072300"),
         ("Wien Geiselbergstraße", "Wien Geiselbergstraße", "490048400"),
         ("Wien Erzherzog Karl-Straße", "Wien Erzherzog-Karl-Straße", "490028800"),
+        # Closes the Top-12 priority-1 gap: Guntramsdorf Bahnhof must
+        # remain a high-confidence match (4xx ext_id, "Bahnhof" rail
+        # token, candidate is canonical name + suffix). Regression guard
+        # for the new 9xx-no-rail-token reject — Guntramsdorf is 4xx,
+        # so the new rule must not apply.
+        ("Guntramsdorf Südbahn", "Guntramsdorf Bahnhof", "430361600"),
+        # The Karlsplatz identity match also exercises the extended
+        # end-of-word "platz" rule: with the old pattern "platz" only
+        # matched as a standalone token (\bplatz\b) and never on
+        # "Karlsplatz". The new pattern matches it but the 0.85 ratio
+        # guard saves identity matches like this one.
+        ("Wien Stephansplatz", "Wien Stephansplatz", "490085600"),
     ],
     ids=[
         "karlsplatz",
@@ -105,6 +130,8 @@ def test_score_rejects_bad_match(station: str, candidate: str, ext_id: str) -> N
         "wien-krottenbachstraße",
         "wien-geiselbergstraße",
         "wien-erzherzog-karl-straße",
+        "guntramsdorf-südbahn→bahnhof",
+        "wien-stephansplatz-identity",
     ],
 )
 def test_score_accepts_good_match(station: str, candidate: str, ext_id: str) -> None:
