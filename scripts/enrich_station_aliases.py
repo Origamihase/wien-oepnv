@@ -488,6 +488,25 @@ def _alias_candidates(
         r"St. Pölten Hbf$": ["St. Pölten", "Sankt Pölten"],
         r"Wiener Neustadt Hbf$": ["Wr. Neustadt", "Wiener Neustadt"],
         r"Bratislava hl\.st\.$": ["Bratislava"],
+        # Wien U-Bahn stations from Google Places that lack the
+        # canonical "Wien " prefix. Adding the Wien-prefixed form as
+        # an alias (the bare form remains the canonical) makes them
+        # discoverable when feed text uses the full "Wien <Name>" form.
+        # "Rennweg" is intentionally omitted: a "Wien Rennweg" alias
+        # would collide with the separate S-Bahn station "Wien
+        # Rennweg" — the cross-station-collision filter blocks it
+        # anyway, so the omission keeps the missing_map intent clean.
+        r"^Herrengasse$": ["Wien Herrengasse"],
+        r"^Kettenbrückengasse$": ["Wien Kettenbrückengasse"],
+        r"^Messe - Prater$": ["Wien Messe-Prater", "Wien Messe Prater"],
+        r"^Neubaugasse$": ["Wien Neubaugasse"],
+        r"^Pilgramgasse$": ["Wien Pilgramgasse"],
+        r"^Schottenring$": ["Wien Schottenring"],
+        r"^Schwedenplatz$": ["Wien Schwedenplatz"],
+        r"^Stadtpark$": ["Wien Stadtpark"],
+        r"^Stubentor$": ["Wien Stubentor"],
+        r"^Südtiroler Platz$": ["Wien Südtiroler Platz"],
+        r"^Volkstheater$": ["Wien Volkstheater"],
     }
 
     for pattern, add_list in missing_map.items():

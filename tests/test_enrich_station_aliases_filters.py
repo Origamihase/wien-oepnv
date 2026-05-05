@@ -145,6 +145,34 @@ def test_cross_station_collision_drops_mistelbach_phantom() -> None:
     assert "Mistelbach Stadt" in aliases
 
 
+def test_missing_map_adds_wien_prefix_to_ubahn_stations() -> None:
+    """The 12 bare-named Wien U-Bahn stations from Google Places get a
+    "Wien <Name>" alias added via missing_map so feed-text matching
+    against the colloquial "Wien Stadtpark" form still resolves."""
+    station = {"name": "Stadtpark", "aliases": ["Stadtpark"]}
+    aliases = _alias_candidates(station, vor_names={}, vor_mapping={}, gtfs_index={})
+    assert "Wien Stadtpark" in aliases
+    assert "Stadtpark" in aliases  # canonical preserved
+
+
+def test_missing_map_does_not_collide_with_wien_rennweg_sbahn() -> None:
+    """The U3 station "Rennweg" must NOT pick up "Wien Rennweg" as an
+    alias because that's the canonical name of the separate S-Bahn
+    station. The cross-station-collision filter enforces this even
+    if a missing_map entry tried to add it."""
+    rennweg_u3 = {"name": "Rennweg", "aliases": ["Rennweg"]}
+    other_keys = frozenset({"wien rennweg"})  # canonical of the S-Bahn station
+    aliases = _alias_candidates(
+        rennweg_u3,
+        vor_names={},
+        vor_mapping={},
+        gtfs_index={},
+        other_canonical_keys=other_keys,
+    )
+    assert "Wien Rennweg" not in aliases
+    assert "Rennweg" in aliases
+
+
 def test_cross_station_collision_does_not_drop_own_canonical() -> None:
     """The station's own canonical name normalizes to a key that is in
     other_canonical_keys (passed in as the full canonical-name set);
