@@ -96,4 +96,3 @@ def test_main_filters_items_older_than_absolute(
     build_feed.main()
 
     assert captured["items"] == [within]
-

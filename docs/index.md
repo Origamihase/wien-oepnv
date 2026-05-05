@@ -35,7 +35,7 @@ Weitere Details findest du in der [ausführlichen Projektdokumentation](../READM
 
 | Datenquelle | Inhalt | Aktualisierung |
 |-------------|--------|----------------|
-| Wiener Linien (WL) | Störungs- und Echtzeitmeldungen für U-Bahn, Straßenbahn und Bus | Mehrmals täglich | 
+| Wiener Linien (WL) | Störungs- und Echtzeitmeldungen für U-Bahn, Straßenbahn und Bus | Mehrmals täglich |
 | ÖBB | Informationen zum regionalen und nationalen Bahnverkehr im Großraum Wien | Nach Fahrplanänderungen und Ereignissen |
 | Verkehrsverbund Ost-Region (VOR) | Verbundweite Meldungen und VAO/VAO-API-Dokumentation | Kontinuierlich |
 | Stadt Wien (OGD) | Baustellen- und Ereignisdaten als Fallback | Täglich |

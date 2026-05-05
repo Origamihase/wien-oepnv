@@ -7,4 +7,3 @@ This module keeps the original public API intact by exposing the
 from .wl_fetch import fetch_events
 
 __all__ = ["fetch_events"]
-

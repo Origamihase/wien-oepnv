@@ -1,0 +1,61 @@
+# Run `pre-commit install` once after cloning to enable these hooks.
+# Run `pre-commit run --all-files` to check the whole repo manually.
+#
+# Mypy and the local secret scanner use language: system so they pick
+# up the exact versions installed in the contributor's venv (matching
+# what runs on CI). All other hooks pin upstream tool revisions to
+# reproducible SHAs.
+default_language_version:
+  python: python3.11
+
+repos:
+  # ── basic hygiene ────────────────────────────────────────────────
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        # docs/feed.xml is regenerated programmatically; let the
+        # builder own its own whitespace.
+        exclude: ^(docs/feed\.xml|docs/sitemap\.xml|cache/.*\.json|data/.*\.json|tests/fixtures/.*)$
+      - id: end-of-file-fixer
+        exclude: ^(docs/feed\.xml|docs/sitemap\.xml|cache/.*\.json|data/.*\.json|tests/fixtures/.*)$
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+        exclude: ^(cache/.*|data/.*\.json)$
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
+
+  # ── ruff (linter, includes the bugbear / security rules already
+  #    selected via pyproject.toml: E, F, S, B) ─────────────────────
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.7
+    hooks:
+      - id: ruff
+        args: [--fix]
+
+  # ── mypy --strict (uses the venv installation so the version and
+  #    plugins match exactly what CI runs) ──────────────────────────
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy --strict
+        entry: python -m mypy
+        language: system
+        types: [python]
+        # mypy's pyproject.toml config drives file selection; we let
+        # mypy itself walk src/ rather than pass each staged file
+        # individually (which would miss cross-module type errors).
+        pass_filenames: false
+        require_serial: true
+
+  # ── scan for accidentally committed secrets ──────────────────────
+  - repo: local
+    hooks:
+      - id: scan-secrets
+        name: scan for accidentally committed secrets
+        entry: python scripts/scan_secrets.py
+        language: system
+        pass_filenames: false
+        require_serial: true

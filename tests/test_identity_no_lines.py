@@ -65,4 +65,3 @@ def test_identity_includes_line_tokens_and_is_cosmetic_stable(monkeypatch: pytes
 
     assert _identity_base(rjx) == _identity_base({**base_item, "title": "rjx/rj: Hinweis"})
     assert _identity_base(rjx) == _identity_base({**base_item, "title": "RJX/RJ: Hinweis (Update)"})
-

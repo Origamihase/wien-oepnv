@@ -21,4 +21,3 @@ def test_oebb_only_vienna_env_var(monkeypatch: pytest.MonkeyPatch) -> None:
     assert bool(oebb.OEBB_ONLY_VIENNA) is True
     monkeypatch.delenv("OEBB_ONLY_VIENNA", raising=False)
     importlib.reload(oebb)
-

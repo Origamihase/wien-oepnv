@@ -16,4 +16,3 @@ def test_multiline_header_leak() -> None:
     print(f"Sanitized: {repr(sanitized)}")
     assert "token" not in sanitized
     assert "Authorization: ***" in sanitized
-

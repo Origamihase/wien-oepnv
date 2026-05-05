@@ -30,9 +30,9 @@ jobs:
     steps:
       - name: Call API
         run: |
-          curl --fail --silent --show-error \ 
-            --header "Authorization: Bearer ${API_KEY}" \ 
-            --header "Accept: application/json" \ 
+          curl --fail --silent --show-error \
+            --header "Authorization: Bearer ${API_KEY}" \
+            --header "Accept: application/json" \
             "${API_URL}${{ github.event.inputs.resource || '' }}"
 ```
 
