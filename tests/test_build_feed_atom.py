@@ -97,3 +97,40 @@ def test_make_rss_strips_trailing_slash_from_pages_base_url(
         href = link.get("href") or ""
         assert "//feed.xml" not in href
         assert not href.endswith("//"), f"unexpected double slash in {href!r}"
+
+
+def test_make_rss_lowercases_pages_base_hostname(
+    pages_base_url: Callable[[str], None],
+) -> None:
+    """Forks owned by users with mixed-case logins (e.g. ``Origamihase``)
+    must still emit canonical lowercase hostnames so GitHub Pages serves
+    them without redirect (regression test for diagnostic §3.3)."""
+    pages_base_url("https://Origamihase.github.io/wien-oepnv")
+    rss_str = _make_rss([], _NOW, {})
+
+    root = ET.fromstring(rss_str)
+    channel = root.find("channel")
+    assert channel is not None
+    atom_links = channel.findall(f"{{{_ATOM_NS}}}link")
+    assert atom_links, "expected at least one atom:link"
+
+    for link in atom_links:
+        href = link.get("href") or ""
+        # The hostname must have been lowercased; the path is preserved.
+        assert "origamihase.github.io" in href
+        assert "Origamihase" not in href
+
+
+def test_make_rss_preserves_pages_base_path_case(
+    pages_base_url: Callable[[str], None],
+) -> None:
+    """Only the hostname is lowercased; the path stays case-sensitive
+    so a fork at ``github.io/My-Repo`` keeps its original path."""
+    pages_base_url("https://Example.github.io/My-Repo")
+    rss_str = _make_rss([], _NOW, {})
+
+    root = ET.fromstring(rss_str)
+    channel = root.find("channel")
+    assert channel is not None
+    atom_links = channel.findall(f"{{{_ATOM_NS}}}link")
+    assert any("/My-Repo" in (link.get("href") or "") for link in atom_links)

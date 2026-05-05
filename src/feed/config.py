@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
+from urllib.parse import urlparse, urlunparse
 import logging
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -186,6 +187,17 @@ def _load_from_env() -> None:
         validated_pages_base = validate_http_url(DEFAULT_PAGES_BASE_URL) or DEFAULT_PAGES_BASE_URL
         if raw_pages_base.strip() and raw_pages_base.strip() != DEFAULT_PAGES_BASE_URL:
             log.warning("Invalid PAGES_BASE_URL provided; falling back to default.")
+    # Normalise the hostname to lowercase so feeds built on forks with
+    # mixed-case repository owners (e.g. ``Origamihase``) emit canonical
+    # URLs that GitHub Pages serves without redirect. The path component
+    # is preserved verbatim because GitHub Pages treats paths as
+    # case-sensitive.
+    parsed_pages_base = urlparse(validated_pages_base)
+    if parsed_pages_base.hostname:
+        new_netloc = parsed_pages_base.hostname.lower()
+        if parsed_pages_base.port is not None:
+            new_netloc = f"{new_netloc}:{parsed_pages_base.port}"
+        validated_pages_base = urlunparse(parsed_pages_base._replace(netloc=new_netloc))
     PAGES_BASE_URL = validated_pages_base.rstrip("/")
     FEED_DESC = os.getenv("FEED_DESC", DEFAULT_FEED_DESCRIPTION)
     FEED_TTL = max(get_int_env("FEED_TTL", DEFAULT_FEED_TTL_MINUTES), 0)
