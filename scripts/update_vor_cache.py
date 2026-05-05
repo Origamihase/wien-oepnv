@@ -27,7 +27,7 @@ def _seed_station_ids_from_file() -> None:
     try:
         from src.utils.stations import vor_station_ids
     except ModuleNotFoundError:  # pragma: no cover - fallback for src layout
-        from utils.stations import vor_station_ids  # type: ignore
+        from utils.stations import vor_station_ids  # type: ignore[no-redef]
 
     ids_from_directory = ",".join(vor_station_ids())
     if ids_from_directory:
