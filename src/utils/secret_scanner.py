@@ -88,6 +88,11 @@ _KNOWN_TOKENS = [
     (re.compile(r"(?<![A-Za-z0-9])xoxp-[0-9]{10,}-[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{32}(?![A-Za-z0-9])"), "Slack User Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])npm_[0-9a-zA-Z]{36}(?![A-Za-z0-9])"), "NPM Access Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])pypi-[0-9a-zA-Z_\-]{20,}(?![A-Za-z0-9])"), "PyPI API Token gefunden"),
+    # SendGrid API keys: SG.<22 chars>.<43 chars>. The two dots split the token into segments
+    # that the generic [A-Za-z0-9+/=_-] entropy regex cannot match across, so without this
+    # specific pattern only the trailing 43-char segment is flagged (as a generic high-entropy
+    # string) and the SG. prefix plus the 22-char identifier are silently dropped.
+    (re.compile(r"(?<![A-Za-z0-9])SG\.[A-Za-z0-9_\-]{22}\.[A-Za-z0-9_\-]{43}(?![A-Za-z0-9])"), "SendGrid API Key gefunden"),
     # Anthropic API keys: sk-ant-api{NN}-... and sk-ant-admin{NN}-...
     # Standard format: sk-ant-api03-<93 chars>AA. Pattern stays loose to also catch
     # forthcoming version suffixes (api04, admin02, …) without missing real leaks.
