@@ -105,6 +105,8 @@ def test_make_rss_lowercases_pages_base_hostname(
     """Forks owned by users with mixed-case logins (e.g. ``Origamihase``)
     must still emit canonical lowercase hostnames so GitHub Pages serves
     them without redirect (regression test for diagnostic §3.3)."""
+    from urllib.parse import urlparse
+
     pages_base_url("https://Origamihase.github.io/wien-oepnv")
     rss_str = _make_rss([], _NOW, {})
 
@@ -116,9 +118,11 @@ def test_make_rss_lowercases_pages_base_hostname(
 
     for link in atom_links:
         href = link.get("href") or ""
-        # The hostname must have been lowercased; the path is preserved.
-        assert "origamihase.github.io" in href
-        assert "Origamihase" not in href
+        # Parse the URL so we check the actual hostname, not just any
+        # substring (urlparse.hostname is the authoritative host segment
+        # and is normalised to lowercase by the stdlib).
+        parsed = urlparse(href)
+        assert parsed.hostname == "origamihase.github.io"
 
 
 def test_make_rss_preserves_pages_base_path_case(
@@ -126,6 +130,8 @@ def test_make_rss_preserves_pages_base_path_case(
 ) -> None:
     """Only the hostname is lowercased; the path stays case-sensitive
     so a fork at ``github.io/My-Repo`` keeps its original path."""
+    from urllib.parse import urlparse
+
     pages_base_url("https://Example.github.io/My-Repo")
     rss_str = _make_rss([], _NOW, {})
 
@@ -133,4 +139,7 @@ def test_make_rss_preserves_pages_base_path_case(
     channel = root.find("channel")
     assert channel is not None
     atom_links = channel.findall(f"{{{_ATOM_NS}}}link")
-    assert any("/My-Repo" in (link.get("href") or "") for link in atom_links)
+    assert any(
+        urlparse(link.get("href") or "").path.startswith("/My-Repo")
+        for link in atom_links
+    )
