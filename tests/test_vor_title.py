@@ -65,3 +65,32 @@ def test_collect_from_board_skips_context_if_present(monkeypatch: pytest.MonkeyP
     # Expect no double addition
     assert title == "Wien Mitte: Aufzug defekt"
     assert title.count("Wien Mitte") == 1
+
+
+def test_collect_from_board_skips_message_without_head_or_text(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A message with neither ``head`` nor ``text`` would surface as a
+    silent "Hinweis" item with an empty description. Such messages must
+    be dropped, not emitted (regression test for diagnostic §4.4)."""
+    monkeypatch.setattr(
+        "src.providers.vor.station_info",
+        lambda x: StationInfo(name="Wien Mitte", in_vienna=True),
+    )
+
+    root = {
+        "DepartureBoard": {
+            "Message": [
+                # Empty: should be skipped
+                {"id": "empty-1"},
+                # head/text both whitespace-only: should also be skipped
+                {"head": "   ", "text": "", "id": "empty-2"},
+                # Valid: should be kept
+                {"head": "Aufzug defekt", "id": "valid-1"},
+            ]
+        }
+    }
+
+    items = vor._collect_from_board("111", root)
+    assert len(items) == 1
+    assert items[0]["title"] == "Wien Mitte: Aufzug defekt"

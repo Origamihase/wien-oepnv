@@ -862,6 +862,19 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[FeedIt
         head = str(message.get("head") or message.get("name") or "").strip()
         text = str(message.get("text") or message.get("description") or "").strip()
 
+        # Skip messages without any human-readable substance. Without head
+        # AND text, the only data we could expose are line/station tags,
+        # which on their own would surface as a generic "Hinweis" item with
+        # an empty description. That is never useful in the feed and would
+        # only add noise.
+        if not head and not text:
+            log.debug(
+                "VOR-Meldung ohne head/text übersprungen (station=%s id=%s)",
+                station_id,
+                message.get("id"),
+            )
+            continue
+
         # FILTER: Bei Pendlerbahnhöfen muss die konkrete Meldung Wien betreffen
         if not is_vienna_station:
             full_text = f"{head} {text}"
