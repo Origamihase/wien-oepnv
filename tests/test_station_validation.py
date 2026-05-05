@@ -275,6 +275,8 @@ def test_naming_validation_clean_data_yields_no_issues(tmp_path: Path) -> None:
             "latitude": 48.2,
             "longitude": 16.4,
             "source": "oebb",
+            "in_vienna": True,
+            "pendler": False,
         },
     ]
     path = tmp_path / "stations.json"
@@ -283,3 +285,88 @@ def test_naming_validation_clean_data_yields_no_issues(tmp_path: Path) -> None:
     report = validate_stations(path)
     assert report.naming_issues == ()
     assert isinstance(NamingIssue("x", "y", "z"), NamingIssue)
+
+
+def test_naming_validation_flags_in_vienna_and_pendler_combination(tmp_path: Path) -> None:
+    """A station classified both as in_vienna and pendler is invalid.
+
+    The two flags partition the directory: every entry is either inside
+    the Vienna city limits (in_vienna=true) or a commuter-belt station
+    outside (pendler=true), never both.
+    """
+    stations = [
+        {
+            "bst_id": 500,
+            "bst_code": "Q1",
+            "name": "Wien Verwirrt",
+            "aliases": ["Wien Verwirrt"],
+            "latitude": 48.2,
+            "longitude": 16.4,
+            "source": "oebb",
+            "in_vienna": True,
+            "pendler": True,
+        },
+    ]
+    path = tmp_path / "stations.json"
+    path.write_text(json.dumps(stations), encoding="utf-8")
+
+    report = validate_stations(path)
+    flag_issues = [i for i in report.naming_issues if "mutually exclusive" in i.reason]
+    assert len(flag_issues) == 1
+    assert flag_issues[0].name == "Wien Verwirrt"
+
+
+def test_naming_validation_flags_neither_vienna_nor_pendler(tmp_path: Path) -> None:
+    """A regular station with neither flag is invalid; only manual_foreign_city is exempt."""
+    stations = [
+        {
+            "bst_id": 600,
+            "bst_code": "Q2",
+            "name": "Niemandsland",
+            "aliases": ["Niemandsland"],
+            "latitude": 48.5,
+            "longitude": 16.7,
+            "source": "oebb",
+            "in_vienna": False,
+            "pendler": False,
+        },
+        {
+            "name": "Roma Termini",
+            "aliases": ["Roma Termini"],
+            "latitude": 41.901,
+            "longitude": 12.500,
+            "source": "manual",
+            "type": "manual_foreign_city",
+            "in_vienna": False,
+            "pendler": False,
+        },
+    ]
+    path = tmp_path / "stations.json"
+    path.write_text(json.dumps(stations), encoding="utf-8")
+
+    report = validate_stations(path)
+    issues = [i for i in report.naming_issues if "both false" in i.reason]
+    assert len(issues) == 1
+    assert issues[0].name == "Niemandsland", "manual_foreign_city must be exempt"
+
+
+def test_stations_json_has_mutually_exclusive_flags() -> None:
+    """Lock the live data: no entry has both flags or none (except foreign cities)."""
+    repo_root = Path(__file__).resolve().parent.parent
+    with (repo_root / "data" / "stations.json").open(encoding="utf-8") as handle:
+        data = json.load(handle)
+    stations = data["stations"] if isinstance(data, dict) else data
+
+    both = [s for s in stations if s.get("in_vienna") and s.get("pendler")]
+    assert not both, (
+        "Stations with both in_vienna and pendler are invalid: "
+        + ", ".join(s.get("name", "<unnamed>") for s in both)
+    )
+    neither = [
+        s for s in stations
+        if not s.get("in_vienna") and not s.get("pendler") and s.get("type") != "manual_foreign_city"
+    ]
+    assert not neither, (
+        "Stations with neither flag (and not manual_foreign_city) are invalid: "
+        + ", ".join(s.get("name", "<unnamed>") for s in neither)
+    )

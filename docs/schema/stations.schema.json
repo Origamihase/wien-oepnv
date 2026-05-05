@@ -32,11 +32,11 @@
         },
         "in_vienna": {
           "type": "boolean",
-          "description": "True wenn die Stations-Koordinaten innerhalb des LANDESGRENZEOGD-Polygons liegen."
+          "description": "True wenn die Stations-Koordinaten innerhalb des LANDESGRENZEOGD-Polygons liegen. Mutual exclusive zu 'pendler' — siehe allOf-Constraint."
         },
         "pendler": {
           "type": "boolean",
-          "description": "True wenn die Station als Pendler-Knoten konfiguriert ist (siehe data/pendler_bst_ids.json)."
+          "description": "True wenn die Station als Pendler-Knoten konfiguriert ist (siehe data/pendler_bst_ids.json). Mutual exclusive zu 'in_vienna' — siehe allOf-Constraint."
         },
         "aliases": {
           "type": "array",
@@ -136,6 +136,30 @@
           "description": "ÖBB-Einträge müssen bst_id und bst_code tragen.",
           "if": {"properties": {"source": {"pattern": "(?:^|,)oebb(?:,|$)"}}},
           "then": {"required": ["bst_id", "bst_code"]}
+        },
+        {
+          "description": "in_vienna und pendler dürfen nicht beide true sein. Eine Station ist entweder Wien-Station oder Pendler-Knoten, niemals beides.",
+          "not": {
+            "properties": {
+              "in_vienna": {"const": true},
+              "pendler": {"const": true}
+            },
+            "required": ["in_vienna", "pendler"]
+          }
+        },
+        {
+          "description": "Mindestens eines von in_vienna oder pendler muss true sein, außer bei manuell gepflegten Auslandsknoten (type: manual_foreign_city).",
+          "if": {
+            "properties": {
+              "in_vienna": {"const": false},
+              "pendler": {"const": false}
+            },
+            "required": ["in_vienna", "pendler"]
+          },
+          "then": {
+            "properties": {"type": {"const": "manual_foreign_city"}},
+            "required": ["type"]
+          }
         }
       ]
     }
