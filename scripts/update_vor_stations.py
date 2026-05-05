@@ -775,19 +775,21 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
                 target["vor_id"] = vor_id
             continue
 
-        new_entry = dict(vor_entry)
-        bst_id = _normalize_id(new_entry.get("bst_id"))
-        if not bst_id:
-            bst_id = _allocate_identifier()
-        new_entry["bst_id"] = bst_id
-        used_bst_ids.add(bst_id)
-        bst_code = _normalize_id(new_entry.get("bst_code"))
-        if not bst_code:
-            bst_code = bst_id
-        new_entry["bst_code"] = bst_code
-        used_bst_codes.add(bst_code)
-        new_entry["source"] = "vor"
-        new_vor_entries.append(new_entry)
+        # A VOR-stop that did not merge into an existing entry is most often
+        # a "lost in translation" mismatch produced by fetch_vor_haltestellen
+        # (e.g. "Roma Termini" → "Wels Hbf", "Rennweg" → "Rennweg am Katschberg")
+        # or a Pendler-Bahnhof outside the Wien-relevant scope. Either way,
+        # creating a synthetic entry is harmful: it pollutes the directory
+        # with false-positive matches and trips the in_vienna/pendler
+        # mutual-exclusivity gate (#1192). We log and skip; the static
+        # `STATIC_VOR_ENTRIES` block below still creates entries for the
+        # explicitly curated VOR-only stations (e.g. Wiener Neustadt Hbf).
+        log.info(
+            "Skipping VOR-only stop %s (%s): no ÖBB merge target — keeping out of stations.json",
+            vor_entry.get("name") or "<unnamed>",
+            vor_id,
+        )
+        continue
 
     for vor_id, static_entry in static_map.items():
         if vor_id in handled_static:

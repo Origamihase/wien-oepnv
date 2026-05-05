@@ -214,6 +214,13 @@ class Station:
             if key in {"bst_id", "bst_code", "name", "in_vienna", "pendler", "vor_id", "_lat", "_lng", "_types", "_google_place_id"}:
                 continue
             payload[key] = value
+        # Tag every Excel-imported entry with source="oebb" if no other
+        # source has been merged in. Without this, the next run treats the
+        # entry as `manual` (see _load_existing_station_entries) and appends
+        # it on top of a fresh Excel import — producing the duplicate-name
+        # NamingIssues seen in the 2026-05 cron after PR #1201.
+        if "source" not in payload:
+            payload["source"] = "oebb"
         return payload
 
     def update_from_entry(self, entry: Mapping[str, object]) -> None:

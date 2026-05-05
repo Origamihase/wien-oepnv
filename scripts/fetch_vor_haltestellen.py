@@ -38,6 +38,7 @@ log = logging.getLogger("fetch_vor_haltestellen")
 class Station:
     name: str
     bst_id: str | None = None
+    is_pendler_candidate: bool = False
 
 
 @dataclass
@@ -315,15 +316,18 @@ def main(argv: Sequence[str] | None = None) -> int:
     # Augment with pendler-candidate names so the next update_all_stations
     # pass already has VOR IDs for the station names that aren't yet in
     # stations.json. The matcher dedupes by station name, so listing a
-    # candidate twice is a no-op.
+    # candidate twice is a no-op. Pendler candidates set is_pendler_candidate=True
+    # so the resolver doesn't skip them via the "no bst_id" filter below.
+    candidate_names_lookup: set[str] = set()
     if args.pendler_candidates and args.pendler_candidates.exists():
         existing_names = {s.name.casefold() for s in stations}
         candidate_names = load_pendler_candidate_names(args.pendler_candidates)
+        candidate_names_lookup = {n.casefold() for n in candidate_names}
         added = 0
         for name in candidate_names:
             if name.casefold() in existing_names:
                 continue
-            stations.append(Station(name=name, bst_id=None))
+            stations.append(Station(name=name, bst_id=None, is_pendler_candidate=True))
             existing_names.add(name.casefold())
             added += 1
         if added:
@@ -332,6 +336,14 @@ def main(argv: Sequence[str] | None = None) -> int:
                 added,
                 args.pendler_candidates.name,
             )
+
+    # Tag pre-existing stations.json entries that match a pendler candidate
+    # by name, so they bypass the "no bst_id" skip filter even if their
+    # bst_id is unknown (e.g. fresh entries from the previous Excel pull).
+    if candidate_names_lookup:
+        for station in stations:
+            if station.name.casefold() in candidate_names_lookup:
+                station.is_pendler_candidate = True
 
     resolved_unique: dict[str, VORCandidate] = {}
     resolved_pairs: list[tuple[Station, VORCandidate]] = []
@@ -345,6 +357,19 @@ def main(argv: Sequence[str] | None = None) -> int:
             return 1
 
         for station in stations:
+            # Skip stations that have no ÖBB bst_id and aren't a pendler
+            # candidate. These are typically Google-Places-only U-Bahn stops
+            # (Stadtpark, Schwedenplatz) or manual_foreign_city entries
+            # (Roma Termini, München Hauptbahnhof). The HAFAS resolver
+            # accepts almost any input and produces wrong matches for them
+            # — e.g. "Roma Termini" → "Wels (OÖ) Hbf (Busterminal)" — which
+            # then pollute the merge step in update_vor_stations.py.
+            if station.bst_id is None and not station.is_pendler_candidate:
+                log.debug(
+                    "Skipping VOR resolution for %s (no bst_id, not a pendler candidate)",
+                    station.name,
+                )
+                continue
             candidate = resolve_station(session, DEFAULT_MGATE_URL, access_id, station, args.sleep)
             if not candidate:
                 continue
