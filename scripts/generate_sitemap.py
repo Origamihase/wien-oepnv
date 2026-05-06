@@ -11,7 +11,7 @@ import subprocess  # nosec B404 - used for running git internally
 import sys
 import xml.etree.ElementTree as ET  # nosec B405 - used for XML generation, not parsing untrusted input
 from pathlib import Path
-from typing import Iterable, List, Optional, Tuple
+from collections.abc import Iterable
 from urllib.parse import urlparse
 
 
@@ -102,9 +102,9 @@ def _last_modified(path: Path) -> str:
         try:
             timestamp = _dt.datetime.fromisoformat(output.replace("Z", "+00:00"))
         except ValueError:
-            timestamp = _dt.datetime.fromtimestamp(path.stat().st_mtime, tz=_dt.timezone.utc)
+            timestamp = _dt.datetime.fromtimestamp(path.stat().st_mtime, tz=_dt.UTC)
     else:
-        timestamp = _dt.datetime.fromtimestamp(path.stat().st_mtime, tz=_dt.timezone.utc)
+        timestamp = _dt.datetime.fromtimestamp(path.stat().st_mtime, tz=_dt.UTC)
     lastmod_date = timestamp.date()
     today = _dt.date.today()
     if lastmod_date > today:
@@ -112,7 +112,7 @@ def _last_modified(path: Path) -> str:
     return lastmod_date.isoformat()
 
 
-def _changefreq(path: Path) -> Optional[str]:
+def _changefreq(path: Path) -> str | None:
     if path.name == "feed.xml":
         return "hourly"
     if path.suffix.lower() == ".md":
@@ -130,8 +130,8 @@ def _iter_paths() -> Iterable[Path]:
             yield file_path
 
 
-def _collect_entries(base_url: str) -> List[Tuple[str, str, Optional[str]]]:
-    entries: List[Tuple[str, str, Optional[str]]] = []
+def _collect_entries(base_url: str) -> list[tuple[str, str, str | None]]:
+    entries: list[tuple[str, str, str | None]] = []
     for path in _iter_paths():
         url = _to_url(path, base_url)
         lastmod = _last_modified(path)
@@ -141,7 +141,7 @@ def _collect_entries(base_url: str) -> List[Tuple[str, str, Optional[str]]]:
     return entries
 
 
-def _build_xml(entries: Iterable[Tuple[str, str, Optional[str]]]) -> str:
+def _build_xml(entries: Iterable[tuple[str, str, str | None]]) -> str:
     ET.register_namespace("", "http://www.sitemaps.org/schemas/sitemap/0.9")
     urlset = ET.Element("{http://www.sitemaps.org/schemas/sitemap/0.9}urlset")
 

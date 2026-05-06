@@ -14,7 +14,7 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 import sys
-from typing import Iterable, List, Mapping, MutableMapping, Optional, Sequence
+from collections.abc import Iterable, Mapping, MutableMapping, Sequence
 
 # When executed as ``python scripts/fetch_google_places_stations.py`` the parent
 # directory (repository root) is not on ``sys.path`` which prevents importing
@@ -55,8 +55,8 @@ class RuntimeConfig:
     client_config: GooglePlacesConfig
     merge_config: MergeConfig
     output_path: Path
-    tiles: List[Tile]
-    dump_path: Optional[Path]
+    tiles: list[Tile]
+    dump_path: Path | None
     dry_run: bool
     write: bool
     quota_config: QuotaConfig
@@ -98,7 +98,7 @@ def _parse_args(argv: Sequence[str] | None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def _parse_included_types(raw: str | None) -> List[str]:
+def _parse_included_types(raw: str | None) -> list[str]:
     if raw is None:
         return list(DEFAULT_INCLUDED_TYPES)
     items = [part.strip() for part in raw.split(",") if part.strip()]
@@ -107,13 +107,13 @@ def _parse_included_types(raw: str | None) -> List[str]:
     return items
 
 
-def _parse_tiles(args: argparse.Namespace, env: MutableMapping[str, str]) -> List[Tile]:
+def _parse_tiles(args: argparse.Namespace, env: MutableMapping[str, str]) -> list[Tile]:
     if args.tiles_file is not None:
         return load_tiles_from_file(args.tiles_file)
     return load_tiles_from_env(env.get("PLACES_TILES"))
 
 
-def _parse_bounding_box(raw: str | None) -> Optional[BoundingBox]:
+def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
     if not raw:
         return None
     data = json.loads(raw)
@@ -177,7 +177,7 @@ def _build_runtime_config(args: argparse.Namespace) -> RuntimeConfig:
     )
 
 
-def _fetch_places(client: GooglePlacesClient, tiles: Iterable[Tile]) -> List[Place]:
+def _fetch_places(client: GooglePlacesClient, tiles: Iterable[Tile]) -> list[Place]:
     places_by_id: dict[str, Place] = {}
     for idx, tile in enumerate(iter_tiles(tiles), start=1):
         LOGGER.info("Fetching tile #%d", idx)
@@ -207,7 +207,7 @@ def _print_diff(
         LOGGER.info("Skipped places already covered (%d)", len(skipped))
 
 
-def _permission_hint(details: str) -> Optional[str]:
+def _permission_hint(details: str) -> str | None:
     message = details.lower()
 
     if "are blocked" in message or "blocked" in message:

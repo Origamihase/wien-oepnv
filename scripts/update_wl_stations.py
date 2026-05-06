@@ -20,7 +20,8 @@ import sys
 from dataclasses import dataclass
 from importlib import import_module
 from pathlib import Path
-from typing import Any, Callable, Iterable, Iterator, List, Mapping, Sequence, cast
+from typing import Any, cast
+from collections.abc import Callable, Iterable, Iterator, Mapping, Sequence
 
 
 def _project_root() -> Path:
@@ -227,8 +228,8 @@ def load_haltestellen(path: Path) -> dict[str, Haltestelle]:
     return mapping
 
 
-def load_haltepunkte(path: Path) -> List[Haltepunkt]:
-    haltepunkt_records: List[Haltepunkt] = []
+def load_haltepunkte(path: Path) -> list[Haltepunkt]:
+    haltepunkt_records: list[Haltepunkt] = []
     for row in _dict_reader(path):
         station_id = row.get("HALTESTELLEN_ID", "ID")
         stop_id = row.get("STOP_ID", "STOPID", "RBL_NUMMER", "RBLNR")
@@ -445,7 +446,7 @@ def build_wl_entries(
             if latitude is None or longitude is None:
                 lat_val = vor_entry.get("latitude")
                 lon_val = vor_entry.get("longitude")
-                if isinstance(lat_val, (int, float)) and isinstance(lon_val, (int, float)):
+                if isinstance(lat_val, int | float) and isinstance(lon_val, int | float):
                     latitude = round(float(lat_val), 6)
                     longitude = round(float(lon_val), 6)
         aliases.update(_alias_variants(station.name, canonical, resolved_name or None))
@@ -550,12 +551,12 @@ def _merge_wl_payload(target: dict[str, object], payload: Mapping[str, object]) 
     existing_aliases: list[str] = []
     raw_target_aliases = target.get("aliases")
     if isinstance(raw_target_aliases, list):
-        existing_aliases = cast(List[str], list(raw_target_aliases))
+        existing_aliases = cast(list[str], list(raw_target_aliases))
 
     incoming_aliases: list[str] = []
     raw_payload_aliases = payload.get("aliases")
     if isinstance(raw_payload_aliases, list):
-        incoming_aliases = cast(List[str], list(raw_payload_aliases))
+        incoming_aliases = cast(list[str], list(raw_payload_aliases))
     target["aliases"] = existing_aliases + incoming_aliases
     _ensure_sorted_aliases(target)
 

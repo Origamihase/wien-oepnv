@@ -11,7 +11,7 @@ import sys
 from dataclasses import dataclass
 from itertools import count
 from pathlib import Path
-from typing import Callable, Iterable, Iterator, Mapping, Sequence
+from collections.abc import Callable, Iterable, Iterator, Mapping, Sequence
 
 import requests
 
@@ -801,7 +801,7 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
         raise ValueError("stations list must be a JSON array")
 
     def _normalize_id(value: object | None) -> str:
-        if isinstance(value, (int, float)):
+        if isinstance(value, int | float):
             return str(int(value))
         if isinstance(value, str):
             return value.strip()

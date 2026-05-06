@@ -6,7 +6,7 @@ from __future__ import annotations
 import logging
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -74,7 +74,7 @@ def configure_logging() -> None:
 
 
 def _now_local() -> datetime:
-    return datetime.now(timezone.utc).astimezone(ZoneInfo("Europe/Vienna"))
+    return datetime.now(UTC).astimezone(ZoneInfo("Europe/Vienna"))
 
 
 def _todays_request_count(now_local: datetime) -> int:
@@ -110,7 +110,7 @@ def _record_status(
 
     todays_count = _todays_request_count(now_local)
     payload: dict[str, Any] = {
-        "last_run_at": now_local.astimezone(timezone.utc).isoformat(),
+        "last_run_at": now_local.astimezone(UTC).isoformat(),
         "last_run_at_local": now_local.isoformat(),
         "status": status,
         "stations_queried": stations_queried,

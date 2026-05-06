@@ -7,7 +7,7 @@ import logging
 import os
 import sys
 from pathlib import Path
-from typing import MutableMapping, Optional, Sequence, Tuple
+from collections.abc import MutableMapping, Sequence
 
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -39,7 +39,7 @@ def _parse_included_types(raw: str | None) -> list[str]:
     return items
 
 
-def _build_config(env: MutableMapping[str, str]) -> Tuple[GooglePlacesConfig, Tile]:
+def _build_config(env: MutableMapping[str, str]) -> tuple[GooglePlacesConfig, Tile]:
     api_key = get_places_api_key()
     included_types = _parse_included_types(env.get("PLACES_INCLUDED_TYPES"))
     language = env.get("PLACES_LANGUAGE", "de")
@@ -69,8 +69,8 @@ def _verify_access(
     config: GooglePlacesConfig,
     tile: Tile,
     *,
-    client: Optional[GooglePlacesClient] = None,
-) -> Tuple[Optional[Place], int]:
+    client: GooglePlacesClient | None = None,
+) -> tuple[Place | None, int]:
     probe_client = client or GooglePlacesClient(config)
     iterator = probe_client.iter_nearby([tile])
     try:

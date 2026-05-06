@@ -24,9 +24,10 @@ import subprocess  # nosec B404 - utility script to run internal scripts
 import sys
 import tempfile
 import time
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from pathlib import Path
-from typing import Any, Mapping, Sequence, TypedDict
+from typing import Any, TypedDict
+from collections.abc import Mapping, Sequence
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
@@ -133,7 +134,7 @@ class _DiffResult(TypedDict):
 def _coerce_coord(value: object) -> float | None:
     if isinstance(value, bool):
         return None
-    if isinstance(value, (int, float)):
+    if isinstance(value, int | float):
         return float(value)
     return None
 
@@ -393,7 +394,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         # before atomic copy-back so the heartbeat reflects what is about to land.
         after_snapshot = _load_stations(tmp_stations_path)
         diff = _compute_diff(before_snapshot, after_snapshot)
-        timestamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        timestamp = datetime.now(UTC).isoformat(timespec="seconds")
         polygon_vertices = _count_polygon_vertices(_DEFAULT_POLYGON_PATH)
         heartbeat = _build_heartbeat(
             report=report,

@@ -8,7 +8,6 @@ import sys
 import textwrap
 from getpass import getpass
 from pathlib import Path
-from typing import Dict
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 SRC_DIR = BASE_DIR / "src"
@@ -42,7 +41,7 @@ except ImportError:  # pragma: no cover - allow python scripts/configure_feed.py
     from src.utils.env import load_env_file  # type: ignore
     from src.utils.files import atomic_write  # type: ignore
 
-_OPTION_BY_KEY: Dict[str, ConfigOption] = {option.key: option for option in CONFIG_OPTIONS}
+_OPTION_BY_KEY: dict[str, ConfigOption] = {option.key: option for option in CONFIG_OPTIONS}
 
 
 def _parse_overrides(values: list[str]) -> dict[str, str]:
