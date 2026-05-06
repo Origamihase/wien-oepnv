@@ -12,6 +12,7 @@ import time
 from datetime import datetime, timedelta, UTC
 from typing import Any, cast
 from collections.abc import Iterable, Sequence
+from urllib.parse import urlparse
 
 import requests
 from dateutil import parser as dtparser
@@ -41,11 +42,35 @@ from .wl_text import (
 )
 
 # Basis-URL aus Secret/ENV, Fallback: OGD-Endpoint
+_WL_DEFAULT_BASE = "https://www.wienerlinien.at/ogd_realtime"
+
+# Security: only accept env overrides that point at the official Wiener Linien
+# OGD host. Without this, ``WL_RSS_URL=https://evil.com`` would (a) inject
+# attacker-controlled JSON into the cached feed items and (b) put
+# ``https://evil.com`` into every WL item's ``<link>`` element, weaponising the
+# public RSS feed as a phishing redirector. ``validate_http_url()`` only
+# checks SSRF/DNS-rebinding properties, not host identity.
+_WL_TRUSTED_HOSTS = frozenset({"www.wienerlinien.at"})
+
+
+def _validated_wl_base(raw: str) -> str | None:
+    safe = validate_http_url(raw)
+    if not safe:
+        return None
+    host = (urlparse(safe).hostname or "").lower()
+    if host not in _WL_TRUSTED_HOSTS:
+        return None
+    return safe
+
+
 _WL_BASE_ENV = os.getenv("WL_RSS_URL", "").strip()
-WL_BASE = (
-    validate_http_url(_WL_BASE_ENV)
-    or "https://www.wienerlinien.at/ogd_realtime"
-).rstrip("/")
+_WL_BASE_OVERRIDE = _validated_wl_base(_WL_BASE_ENV) if _WL_BASE_ENV else None
+if _WL_BASE_ENV and _WL_BASE_OVERRIDE is None:
+    logging.getLogger(__name__).warning(
+        "WL_RSS_URL %r ist kein bekannter Wiener-Linien-Host; verwende Standard.",
+        _WL_BASE_ENV,
+    )
+WL_BASE = (_WL_BASE_OVERRIDE or _WL_DEFAULT_BASE).rstrip("/")
 
 log = logging.getLogger(__name__)
 
