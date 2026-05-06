@@ -148,6 +148,14 @@ jobs:
           ADMIN_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
           SITE_BASE: ${{ env.SITE_BASE }}
           DESC: ${{ env.DESC }}
+          # Security: pipe github.repository through env, not direct
+          # ``${{ … }}`` interpolation, so the value can never escape
+          # the shell context as a metacharacter (defence-in-depth — the
+          # GitHub-provided slug is grammar-constrained, but every
+          # template expansion in a shell ``run:`` block is a latent
+          # injection vector if a future change ever hands user input to
+          # this step).
+          OWNER_REPO: ${{ github.repository }}
         shell: bash
         run: |
           set -euo pipefail
@@ -155,7 +163,6 @@ jobs:
             echo "REPO_ADMIN_TOKEN fehlt – Metadaten können nicht gesetzt werden." >&2
             exit 0
           fi
-          OWNER_REPO="${{ github.repository }}"
           # Build the JSON body with jq so values containing quotes,
           # backslashes or other special characters are escaped according
           # to JSON rules (printf %q produces shell-quoted output, not
@@ -170,11 +177,19 @@ jobs:
                -d "$body" >/dev/null
 
       - name: Verify published feed (best-effort; allow Pages delay)
+        # Security: re-export the workflow-level SITE_BASE into a step env
+        # so the shell below can dereference ``$SITE_BASE`` instead of
+        # ``${{ env.SITE_BASE }}``. Same rationale as the PATCH step above:
+        # template expansion runs before bash parses the script, so a
+        # future user-influenced value would otherwise become a shell
+        # injection primitive.
+        env:
+          SITE_BASE: ${{ env.SITE_BASE }}
         shell: bash
         run: |
           set -euo pipefail
           for i in {1..6}; do
-            if curl -fsSL "${{ env.SITE_BASE }}/feed.xml" -o /tmp/pub.xml; then
+            if curl -fsSL "${SITE_BASE}/feed.xml" -o /tmp/pub.xml; then
               if grep -q '<language>de</language>' /tmp/pub.xml \
                  && [ "$(grep -c 'atom:link[^>]*rel=\"self\"' /tmp/pub.xml)" -eq 1 ] \
                  && [ "$(grep -c 'atom:link[^>]*rel=\"alternate\"' /tmp/pub.xml)" -eq 1 ]; then
