@@ -350,6 +350,35 @@ def test_naming_validation_flags_neither_vienna_nor_pendler(tmp_path: Path) -> N
     assert issues[0].name == "Niemandsland", "manual_foreign_city must be exempt"
 
 
+def test_naming_validation_exempts_manual_distant_at(tmp_path: Path) -> None:
+    """Distant Austrian Hauptbahnhöfe (Salzburg, Graz, Linz etc.) carry
+    type='manual_distant_at' for the same reason München/Roma carry
+    type='manual_foreign_city' — they're outside Vienna and not commuter
+    stations, but they're legitimate manual entries for cross-country
+    routing references. Both type values must exempt from the strict
+    "in_vienna xor pendler" rule."""
+    stations = [
+        {
+            "name": "Salzburg Hbf",
+            "aliases": ["Salzburg Hbf"],
+            "latitude": 47.81,
+            "longitude": 13.04,
+            "source": "manual",
+            "type": "manual_distant_at",
+            "in_vienna": False,
+            "pendler": False,
+        },
+    ]
+    path = tmp_path / "stations.json"
+    path.write_text(json.dumps(stations), encoding="utf-8")
+
+    report = validate_stations(path)
+    flag_issues = [i for i in report.naming_issues if "both false" in i.reason]
+    assert flag_issues == [], (
+        "manual_distant_at must be exempt from the in_vienna/pendler rule"
+    )
+
+
 def test_stations_json_has_mutually_exclusive_flags() -> None:
     """Lock the live data: no entry has both flags or none (except foreign cities)."""
     repo_root = Path(__file__).resolve().parent.parent

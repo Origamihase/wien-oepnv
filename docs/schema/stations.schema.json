@@ -43,14 +43,14 @@
         "latitude": {
           "type": "number",
           "minimum": 41.0,
-          "maximum": 50.0,
-          "description": "WGS84 Breitengrad."
+          "maximum": 55.0,
+          "description": "WGS84 Breitengrad. Hauptbereich Wien/NÖ (~47.7-48.6°); obere Grenze 55° lässt manuell gepflegte Knoten Richtung Berlin (52.5°) und Hamburg zu (manual_foreign_city)."
         },
         "longitude": {
           "type": "number",
           "minimum": 9.0,
-          "maximum": 18.0,
-          "description": "WGS84 Längengrad."
+          "maximum": 20.0,
+          "description": "WGS84 Längengrad. Reicht von Bregenz (9.7°) bis Budapest-Ost (19.1°)."
         },
         "source": {
           "type": "string",
@@ -96,12 +96,12 @@
               "latitude": {
                 "type": ["number", "null"],
                 "minimum": 41.0,
-                "maximum": 50.0
+                "maximum": 55.0
               },
               "longitude": {
                 "type": ["number", "null"],
                 "minimum": 9.0,
-                "maximum": 18.0
+                "maximum": 20.0
               }
             },
             "additionalProperties": false
@@ -109,8 +109,8 @@
         },
         "type": {
           "type": "string",
-          "enum": ["manual_foreign_city"],
-          "description": "Sondertyp für manuell gepflegte Auslandsknoten (München Hauptbahnhof, Roma Termini). Diese Einträge haben kein bst_id/vor_id und werden im Coordinate-Validator als out-of-bounds toleriert."
+          "enum": ["manual_foreign_city", "manual_distant_at"],
+          "description": "Sondertyp für manuell gepflegte Knotenpunkte außerhalb des Wien/NÖ-Pendlergürtels. 'manual_foreign_city' für Auslandsknoten (München Hauptbahnhof, Roma Termini, Bratislava hl.st.); 'manual_distant_at' für distante österreichische Hauptbahnhöfe außerhalb der Pendler-Reichweite (Salzburg, Graz, Linz, Innsbruck etc.). Beide haben kein bst_id/vor_id und werden im Coordinate-Validator als out-of-bounds toleriert."
         },
         "_google_place_id": {
           "type": "string",
@@ -150,7 +150,7 @@
           }
         },
         {
-          "description": "Mindestens eines von in_vienna oder pendler muss true sein, außer bei manuell gepflegten Auslandsknoten (type: manual_foreign_city).",
+          "description": "Mindestens eines von in_vienna oder pendler muss true sein, außer bei manuell gepflegten Knotenpunkten außerhalb des Pendlergürtels (type: manual_foreign_city ODER manual_distant_at).",
           "if": {
             "properties": {
               "in_vienna": {"const": false},
@@ -159,7 +159,9 @@
             "required": ["in_vienna", "pendler"]
           },
           "then": {
-            "properties": {"type": {"const": "manual_foreign_city"}},
+            "properties": {
+              "type": {"enum": ["manual_foreign_city", "manual_distant_at"]}
+            },
             "required": ["type"]
           }
         }
