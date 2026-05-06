@@ -197,9 +197,33 @@ def _clean_description(text: str) -> str:
     return text.strip()
 
 
+# Recognises an ÖBB line marker at the very start of a title. The
+# prefix is split off before the segment iteration runs and re-attached
+# afterwards — without this, ``S40: Wien Franz-Josefs-Bahnhof ↔ Wien
+# Heiligenstadt`` produced ``Wien Heiligenstadt ↔ S40: Wien
+# Franz-Josefs-…`` because the Vienna-first reorder logic mistakenly
+# classifies ``S40: Wien Franz-Josefs-Bahnhof`` (with the line prefix
+# still glued on) as "not in Vienna" — the prefix breaks the
+# station_info lookup — and swaps the endpoints.
+_LEADING_LINE_PREFIX_RE = re.compile(
+    r"^\s*((?:REX|RJX|RJ|EC|ICE|IC|WB|NJ|CJX|S-Bahn|S|U-Bahn|U|R|D)\s*\d+[A-Za-z]?)\s*:\s*",
+    re.IGNORECASE,
+)
+
+
 def _clean_title_keep_places(t: str) -> str:
     t = (t or "").strip()
     t = html.unescape(t)
+
+    # Preserve a leading line marker (S40:, REX 7:, …) through the
+    # cleanup. The endpoint-reordering logic below would otherwise
+    # treat the prefix as part of the first endpoint and silently
+    # swap A↔B when only one side resolves to a Vienna station.
+    line_prefix = ""
+    line_match = _LEADING_LINE_PREFIX_RE.match(t)
+    if line_match:
+        line_prefix = line_match.group(1).strip()
+        t = t[line_match.end():]
 
     # Redundanz-Check: Wenn Titel „Text: Station“ ist und Station im Text vorkommt,
     # dann nur Text nehmen (z.B. "Aufzug in X defekt: X").
@@ -289,7 +313,14 @@ def _clean_title_keep_places(t: str) -> str:
     t = MULTI_ARROW_RE.sub(" ↔ ", t)
     t = re.sub(r"\s{2,}", " ", t)
     t = re.sub(r"&lt;|&gt;|&#60;|&#x3C;|&#62;|&#x3E;|[<>«»‹›]+", "", t)
-    return t.strip()
+    t = t.strip()
+    # Re-attach the leading line prefix that was split off above so
+    # downstream consumers (``_extract_line_prefix``) still recognise it.
+    if line_prefix and t:
+        t = f"{line_prefix}: {t}"
+    elif line_prefix:
+        t = line_prefix
+    return t
 
 # ---------------- Region / Filter Logic ----------------
 
