@@ -1370,22 +1370,47 @@ def _format_item_content(
         #   e.g. "Uhr -" leaves "Uhr" exposed only after the dash is
         #   stripped.
         _PUNCT_STRIP = ' ,;:-)/'
-        for _ in range(4):
+        # Known short German unit tokens that, on their own, look like a
+        # mid-stream cut ("Uhr" without its number, "min", "km", …). We
+        # treat them like line markers and drop them even when the case
+        # rule below would otherwise classify them as content words.
+        _UNIT_TOKENS = {"Uhr", "min", "sec", "h", "km", "kg", "m", "cm", "s", "ms"}
+        # Iteration cap large enough to unwind chained "IC 1110, IC 1113,
+        # IC 1115, …" patterns without over-stripping into real content
+        # words. The break-on-content-word rule below is what ultimately
+        # terminates the loop.
+        for _ in range(8):
             truncated = truncated.rstrip(_PUNCT_STRIP)
             last_space = truncated.rfind(' ')
             if last_space <= 0:
                 break
             tail = truncated[last_space + 1:]
             tail_stripped = tail.rstrip('.')
-            if (
-                len(tail) <= 5
-                and tail_stripped
-                and (tail_stripped.isalpha() or tail_stripped.isdigit())
-            ):
-                # Drop short alpha-only tokens (line markers, units, German
-                # abbreviations) AND short digit-only ordinals like ``3.`` /
-                # ``10.`` that German date phrasing leaves dangling
-                # ("Ab Dienstag, 3. …" → "Ab Dienstag …").
+            ends_with_period = tail.endswith('.')
+            should_drop = False
+            if not tail_stripped:
+                should_drop = True
+            elif len(tail) > 5:
+                should_drop = False
+            elif ends_with_period and tail_stripped.isalpha():
+                # German abbreviations ("bzw.", "ca.", "z.B.", "ggf.").
+                should_drop = True
+            elif ends_with_period and tail_stripped.isdigit():
+                # German date ordinals ("3.", "10.", "31.").
+                should_drop = True
+            elif tail_stripped.isdigit():
+                # Standalone numbers in a list ("IC 1110, IC 1113, …").
+                should_drop = True
+            elif tail_stripped.isalpha() and tail_stripped.isupper():
+                # All-uppercase line markers ("IC", "REX", "RJX", "EC").
+                should_drop = True
+            elif tail in _UNIT_TOKENS or tail_stripped in _UNIT_TOKENS:
+                # Known unit tokens ("Uhr", "min", …) that look isolated
+                # without their number partner.
+                should_drop = True
+            # Real German content words (mixed-case, ≥4 chars, or in
+            # neither the marker nor unit set) terminate the loop.
+            if should_drop:
                 truncated = truncated[:last_space]
             else:
                 break
