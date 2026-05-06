@@ -76,8 +76,17 @@ VOR_MAX_WORKERS = 10
 ZONE_VIENNA = ZoneInfo("Europe/Vienna")
 
 VOR_USER_AGENT = os.getenv("VOR_USER_AGENT", DEFAULT_USER_AGENT)
+# urllib3 retries are disabled here on purpose: every actual HTTP call to
+# VOR counts against the strict 100/day quota, but quota is only
+# incremented once per ``fetch_content_safe`` call (see the lock-protected
+# ``save_request_count`` site below). With ``total>0`` urllib3 silently
+# repeats the request on 429/5xx, so a single counted call could consume
+# up to ``total+1`` real quota slots — a hard violation of the spec
+# requirement that the budget must NEVER be exceeded. Application-level
+# scheduling re-runs the job on the next interval, which is the correct
+# place to recover from transient errors.
 VOR_RETRY_OPTIONS: Dict[str, Any] = {
-    "total": 3,
+    "total": 0,
     "backoff_factor": 0.5,
     "raise_on_status": False,
 }

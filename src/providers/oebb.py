@@ -348,6 +348,11 @@ _ZWISCHEN_PLAIN_RE = re.compile(
     r"verz[öo]gert|aufgehoben|freigegeben|"
     # Connectors that introduce a side clause / next "zwischen X und Y"
     r"sowie|sondern|sowie\s+zwischen|und\s+zwischen|,\s*und|"
+    # Quantifiers that introduce a noun phrase about affected trains
+    # ("…Bruck/Leitha Bahnhof einige Nahverkehrszüge ausgefallen"). Without
+    # these, the non-greedy ``b`` over-extended into the entire affected-
+    # train clause and produced frankenstring endpoints.
+    r"einige|keine|kein|alle|mehrere|wenige|s[äa]mtliche|"
     # Intermediate-via marker — ends the captured endpoint at the via stop
     # so "Mödling über Wiener Neudorf" yields b="Mödling".
     r"[üu]ber|via"
@@ -548,22 +553,34 @@ def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
 
     # 1. Parse title — split on ↔
     if title and "↔" in title:
-        parts = [p.strip() for p in title.split("↔")]
-        for i in range(len(parts) - 1):
-            a_raw = _strip_oebb_prefixes(parts[i])
-            b_raw = _strip_oebb_prefixes(parts[i + 1])
-            if _is_category(a_raw) or _is_category(b_raw):
+        # Multi-route titles like "A ↔ B / C ↔ D" must be split on " / "
+        # before pairing, otherwise the inner endpoints fuse into
+        # frankenstrings ("B / C" and "C / D") and the strict route check
+        # never sees the real (A,B) and (C,D) pairs. We restrict the split
+        # to whitespace-bounded slashes so compound names like "Linz/Donau"
+        # or "Bruck/Leitha" stay intact.
+        title_segments = [
+            seg.strip() for seg in re.split(r"\s+/\s+", title) if seg.strip()
+        ]
+        for segment in title_segments:
+            if "↔" not in segment:
                 continue
-            a_norm = _normalize_endpoint_name(a_raw)
-            b_norm = _normalize_endpoint_name(b_raw)
-            if not _looks_like_station_name(a_norm) or not _looks_like_station_name(b_norm):
-                continue
-            sorted_pair = sorted([a_norm.casefold(), b_norm.casefold()])
-            key: Tuple[str, str] = (sorted_pair[0], sorted_pair[1])
-            if key in seen:
-                continue
-            seen.add(key)
-            candidates.append((a_norm, b_norm))
+            parts = [p.strip() for p in segment.split("↔")]
+            for i in range(len(parts) - 1):
+                a_raw = _strip_oebb_prefixes(parts[i])
+                b_raw = _strip_oebb_prefixes(parts[i + 1])
+                if _is_category(a_raw) or _is_category(b_raw):
+                    continue
+                a_norm = _normalize_endpoint_name(a_raw)
+                b_norm = _normalize_endpoint_name(b_raw)
+                if not _looks_like_station_name(a_norm) or not _looks_like_station_name(b_norm):
+                    continue
+                sorted_pair = sorted([a_norm.casefold(), b_norm.casefold()])
+                key: Tuple[str, str] = (sorted_pair[0], sorted_pair[1])
+                if key in seen:
+                    continue
+                seen.add(key)
+                candidates.append((a_norm, b_norm))
 
     # 2. Parse description — "zwischen X und Y" patterns
     for raw_a, raw_b in _extract_zwischen_routes(description):
