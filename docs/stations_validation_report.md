@@ -1,19 +1,38 @@
 # Stations Validation Report
 
-*Total stations analysed*: 174
+*Total stations analysed*: 196
 *GTFS stops loaded*: 99
 *Geographic duplicates*: 0
 *Alias issues*: 0
-*Coordinate anomalies*: 2
-*GTFS mismatches*: 65
+*Coordinate anomalies*: 21
+*GTFS mismatches*: 69
 *Security warnings*: 0
 *Provider issues*: 0
 *Cross station ID issues*: 0
 *Naming issues*: 0
 
 ## Coordinate anomalies
+- source:manual (Berlin Hbf): coordinates out of bounds (lat=52.525, lon=13.369)
+- source:manual (Bischofshofen): coordinates out of bounds (lat=47.4167, lon=13.2167)
+- source:manual (Bregenz): coordinates out of bounds (lat=47.503056, lon=9.741667)
+- source:manual (Bruck an der Mur): coordinates out of bounds (lat=47.412222, lon=15.272222)
+- source:manual (Budapest-Keleti): coordinates out of bounds (lat=47.5006, lon=19.0833)
+- source:manual (Innsbruck Hbf): coordinates out of bounds (lat=47.263083, lon=11.401111)
+- source:manual (Klagenfurt Hbf): coordinates out of bounds (lat=46.617222, lon=14.314444)
+- source:manual (Leoben Hbf): coordinates out of bounds (lat=47.379, lon=15.094)
+- source:manual (Linz Hbf): coordinates out of bounds (lat=48.290275, lon=14.291694)
+- source:manual (Ljubljana): coordinates out of bounds (lat=46.058, lon=14.51)
 - source:manual (München Hauptbahnhof): coordinates out of bounds (lat=48.140228, lon=11.558339)
+- source:manual (Passau Hbf): coordinates out of bounds (lat=48.572222, lon=13.452778)
+- source:manual (Praha hl.n.): coordinates out of bounds (lat=50.0833, lon=14.4358)
 - source:manual (Roma Termini): coordinates out of bounds (lat=41.901002, lon=12.500253)
+- source:manual (Salzburg Hbf): coordinates out of bounds (lat=47.812778, lon=13.045583)
+- source:manual (Venezia Santa Lucia): coordinates out of bounds (lat=45.4419, lon=12.3214)
+- source:manual (Villach Hbf): coordinates out of bounds (lat=46.617778, lon=13.847778)
+- source:manual (Vöcklabruck): coordinates out of bounds (lat=48.0017, lon=13.65)
+- source:manual (Wels Hbf): coordinates out of bounds (lat=48.165, lon=14.017778)
+- source:manual (Wörgl Hbf): coordinates out of bounds (lat=47.484, lon=12.067)
+- source:manual (Zagreb Glavni kolodvor): coordinates out of bounds (lat=45.804, lon=15.978)
 
 ## GTFS mismatches
 - code:Aw / source:oebb (St.Andrä-Wördern) → missing stop_id 430482400
@@ -23,6 +42,7 @@
 - code:Kz / source:oebb (Kritzendorf) → missing stop_id 430399500
 - code:Laa / source:oebb (Laa a.d.Thaya) → missing stop_id 430401500
 - code:Lb  H1 / source:oebb (Sollenau) → missing stop_id 430480100
+- code:Lx / source:oebb (Laxenburg-Biedermannsdorf) → missing stop_id 430406200
 - code:Mae / source:oebb (Maria Ellend) → missing stop_id 430414200
 - code:Mar / source:oebb (Maria Lanzendorf) → missing stop_id 430416500
 - code:Md  H2 / source:oebb (Gumpoldskirchen) → missing stop_id 430360200
@@ -41,6 +61,7 @@
 - code:Reg / source:oebb (Regelsbrunn) → missing stop_id 430463900
 - code:Reg H1 / source:oebb (Wildungsmauer) → missing stop_id 430523500
 - code:Rw / source:oebb (Rekawinkel) → missing stop_id 430465100
+- code:Mb  H1H / source:oebb (Mistelbach Stadt) → missing stop_id 430420400
 - code:Sbl / source:oebb (Siebenbrunn-Leopoldsdorf) → missing stop_id 430476400
 - code:Sbl H1 / source:oebb (Untersiebenbrunn) → missing stop_id 430509000
 - code:Sfl / source:oebb (Schönfeld-Lassee) → missing stop_id 430474500
@@ -57,6 +78,7 @@
 - code:Zs / source:oebb (Lanzendorf-Rannersdorf) → missing stop_id 430405400
 - code:Drg / source:oebb (Drösing) → missing stop_id 430330900
 - code:Due / source:oebb (Dürnkrut) → missing stop_id 430331000
+- code:Ebr H1 / source:oebb (Weigelsdorf) → missing stop_id 430515600
 - code:Fam / source:oebb (Fischamend) → missing stop_id 430343000
 - code:Fld / source:oebb (Felixdorf) → missing stop_id 430341500
 - code:Fld H2 / source:oebb (Wiener Neustadt Nord) → missing stop_id 430522300
@@ -68,6 +90,7 @@
 - code:Msw / source:oebb (Mannswörth) → missing stop_id 430487500
 - code:Guk H2 / source:oebb (Möllersdorf Aspangbahn) → missing stop_id 430430100
 - code:Hfa / source:oebb (Hadersdorf am Kamp) → missing stop_id 430366000
+- code:Him / source:oebb (Himberg) → missing stop_id 430374600
 - code:Hlu / source:oebb (Haslau an der Donau) → missing stop_id 430370600
 - code:Hnd / source:oebb (Hennersdorf) → missing stop_id 430372300
 - code:Hu  H2 / source:oebb (Maria Anzbach) → missing stop_id 430414000
