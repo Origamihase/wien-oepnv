@@ -485,8 +485,11 @@ def _find_gtfs_issues(
 
 _UNSAFE_CHARS_RE = re.compile(r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\u2028-\u202e\u2066-\u2069]")
 
-# Historically VOR identifiers were six digits starting with "9". In practice some
-# legitimate identifiers are five digits (e.g. "93010"), so we accept either.
+# Pattern for the synthetic ``bst_id``/``bst_code`` values assigned to
+# VOR-sourced station entries (e.g. ``900100``–``900112`` for the Wien
+# departure-board stops). Real VOR/HAFAS stop IDs are 9 digits and live in the
+# ``vor_id`` field — they are not validated here. The 5-digit form is kept as
+# a tolerated fallback for legacy synthetic ids such as ``93010``.
 _VOR_ID_PATTERN = re.compile(r"9\d{4,5}")
 
 

@@ -163,7 +163,9 @@ def test_vor_alias_with_municipality_prefix() -> None:
 def test_vor_does_not_override_station_directory() -> None:
     info = station_info("Wiener Neustadt Hbf")
     assert info is not None
-    assert info.vor_id == "900300"
+    # vor_id holds the real HAFAS/VOR stop ID; the synthetic 900300 token
+    # remains available as an alias for legacy lookups.
+    assert info.vor_id == "430521000"
     # The canonical name now uses the full "Hauptbahnhof" form; the
     # abbreviated "Wiener Neustadt Hbf" remains a recognized alias that
     # resolves to this canonical record.
