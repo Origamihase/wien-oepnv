@@ -7,7 +7,143 @@ from typing import Any, Dict, List, Set, Tuple, Union
 _LINE_PREFIX_RE = re.compile(r"^\s*([A-Za-z0-9]+\s*(?:/\s*[A-Za-z0-9]+){0,20})\s*:\s*")
 _LINE_TOKEN_RE = re.compile(r"^(?:\d{1,3}[A-Z]?|[A-Z]{1,4}\d{0,3})$")
 
-_STOP_WORDS = {"störung", "ausfall", "einschränkung", "betrieb", "info", "meldung", "hinweis"}
+# Tokens that must not by themselves drive a fuzzy merge. The baseline list
+# covers generic disruption verbs ("Störung", "Ausfall", …) that show up in
+# nearly every title; the extended list adds German articles, prepositions
+# and connector words ("im", "am", "bereich", …) so that two titles which
+# only share these fillers do NOT get merged.
+#
+# Why this matters: without prepositions in the stop list, "U1: Störung im
+# Bereich Praterstern" and "U1: Störung im Bereich Karlsplatz" share the
+# tokens {"störung", "im", "bereich"} and exceed the 0.4 overlap threshold
+# despite referring to two completely different stations.
+_STOP_WORDS = {
+    # Generic disruption nouns
+    "störung",
+    "stoerung",
+    "ausfall",
+    "ausfälle",
+    "ausfaelle",
+    "einschränkung",
+    "einschraenkung",
+    "betrieb",
+    "verkehr",
+    "verkehrsbehinderung",
+    "fahrtbehinderung",
+    "behinderung",
+    "verspätung",
+    "verspaetung",
+    "verspätungen",
+    "verspaetungen",
+    "info",
+    "information",
+    "meldung",
+    "hinweis",
+    "sperre",
+    "sperrung",
+    "gesperrt",
+    "umleitung",
+    "ersatzverkehr",
+    "kurzführung",
+    "kurzfuehrung",
+    "fahrt",
+    "fahrten",
+    "linie",
+    "linien",
+    "bauarbeiten",
+    # Equipment/state words that recur across unrelated incidents
+    "aufzug",
+    "aufzüge",
+    "aufzuege",
+    "aufzugsinfo",
+    "lift",
+    "fahrstuhl",
+    "fahrtreppe",
+    "fahrtreppen",
+    "fahrtreppeninfo",
+    "rolltreppe",
+    "rolltreppen",
+    "defekt",
+    "kaputt",
+    "gestört",
+    "gestoert",
+    "blockiert",
+    "weichenstörung",
+    "weichenstoerung",
+    "signalstörung",
+    "signalstoerung",
+    "polizeieinsatz",
+    "rettungseinsatz",
+    "feuerwehreinsatz",
+    "notarzteinsatz",
+    "personenschaden",
+    "fahrzeugschaden",
+    # German articles
+    "der",
+    "die",
+    "das",
+    "des",
+    "den",
+    "dem",
+    "ein",
+    "eine",
+    "einer",
+    "einem",
+    "eines",
+    # German prepositions
+    "in",
+    "im",
+    "an",
+    "am",
+    "auf",
+    "aus",
+    "bei",
+    "mit",
+    "von",
+    "vom",
+    "zu",
+    "zum",
+    "zur",
+    "nach",
+    "durch",
+    "für",
+    "fuer",
+    "gegen",
+    "ohne",
+    "um",
+    "unter",
+    "über",
+    "ueber",
+    "wegen",
+    "während",
+    "waehrend",
+    "zwischen",
+    "vor",
+    "hinter",
+    "neben",
+    "ab",
+    "bis",
+    # German conjunctions
+    "und",
+    "oder",
+    "aber",
+    "sowie",
+    "sondern",
+    # Generic place-fillers
+    "bereich",
+    "höhe",
+    "hoehe",
+    "richtung",
+    "fahrtrichtung",
+    "station",
+    "haltestelle",
+    "haltestellen",
+    "bahnhof",
+    "bahnhst",
+    "hbf",
+    "bf",
+    "bhf",
+}
 
 
 def _parse_title(title: str) -> Tuple[Set[str], str]:
@@ -55,29 +191,33 @@ def _has_significant_overlap(name1: str, name2: str) -> bool:
     t2 = _get_tokens(name2)
 
     # 1. Token Overlap
-    # Filter out very short tokens (e.g. "a", "of") if necessary?
-    # Prompt says: "ignoring numbers/years" (already done in normalize)
     intersection = t1 & t2
     union = t1 | t2
     if not union:
         return False
-    # Ignore matches that consist solely of generic stop-words
-    meaningful = intersection - _STOP_WORDS
-    if not meaningful and intersection:
-        # Wait, if both strings are literally ONLY stop words (e.g. "Störung" and "Störung"),
-        # they SHOULD merge because they are essentially the same generic event type!
-        # The bug "False-positive merge on single generic tokens" typically applies when
-        # matching "Störung" with "Störung am Schottentor" -> meaningful intersection is empty for intersection = {"störung"}.
-        # Let's fix this properly: only reject if the UNION contains meaningful words
-        # but the INTERSECTION doesn't.
-        # If the entire UNION is just stop words, it's perfectly fine to merge them!
-        meaningful_union = union - _STOP_WORDS
-        if meaningful_union:
-            return False
-        else:
-            return True
 
-    if len(intersection) / len(union) >= 0.4:
+    # Compare only meaningful (non-stop-word) tokens. The intent: two
+    # disruption titles must share something distinctive (typically a
+    # station/place token) — sharing only "Störung" or "im Bereich" is not
+    # enough.
+    meaningful_intersection = intersection - _STOP_WORDS
+    meaningful_union = union - _STOP_WORDS
+
+    if not meaningful_union:
+        # Both titles consist solely of stop words. Only merge if they are
+        # token-identical — otherwise different stop-word combinations like
+        # "Sperre wegen Bauarbeiten" and "Sperre wegen Polizeieinsatz"
+        # would be falsely lumped together.
+        return t1 == t2
+
+    if not meaningful_intersection:
+        # Distinguishing tokens exist somewhere, but none are shared. The
+        # titles describe different events at the same generic level.
+        return False
+
+    # Token overlap threshold — measured against the meaningful tokens so
+    # that sharing many fillers does not inflate the score.
+    if len(meaningful_intersection) / len(meaningful_union) >= 0.4:
         return True
 
     return False
