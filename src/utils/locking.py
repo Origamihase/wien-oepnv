@@ -69,12 +69,15 @@ def _lock_length(fileobj: Any) -> int:
 
 
 def _acquire_file_lock(fileobj: Any, exclusive: bool, timeout: float = 15.0) -> None:
-    start_time = time.time()
+    # ``time.monotonic`` is immune to wall-clock jumps (NTP correction,
+    # manual reset). ``time.time`` could let a backwards jump extend the
+    # timeout indefinitely or trigger a premature TimeoutError.
+    start_time = time.monotonic()
 
     if fcntl is not None:  # pragma: no branch - simple POSIX case
         flag = (fcntl.LOCK_EX | fcntl.LOCK_NB) if exclusive else (fcntl.LOCK_SH | fcntl.LOCK_NB)
         while True:
-            if time.time() - start_time >= timeout:
+            if time.monotonic() - start_time >= timeout:
                 raise TimeoutError(f"Could not acquire file lock within {timeout} seconds.")
             try:
                 fcntl.flock(fileobj.fileno(), flag)
@@ -94,7 +97,7 @@ def _acquire_file_lock(fileobj: Any, exclusive: bool, timeout: float = 15.0) -> 
             current = None
         fileobj.seek(0)
         while True:
-            if time.time() - start_time >= timeout:
+            if time.monotonic() - start_time >= timeout:
                 if current is not None:
                     fileobj.seek(current)
                 raise TimeoutError(f"Could not acquire file lock within {timeout} seconds.")
