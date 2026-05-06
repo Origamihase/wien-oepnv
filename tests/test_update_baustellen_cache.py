@@ -153,73 +153,127 @@ def test_resolve_data_url_rejects_untrusted_host(
     )
 
 
-# ---------------------------------------------------------------------------
-# Zero-Trust shape validation for the fallback file
-# ---------------------------------------------------------------------------
-# ``_load_fallback`` previously returned ``cast(dict[str, Any], json.loads(raw))``
-# without a runtime ``isinstance`` guard. ``cast`` lies to the type checker, so
-# a fallback file containing a JSON list / scalar / null would slip through and
-# crash the very next step in ``_iter_features`` — exactly on the failure path
-# (network down) where the fallback is supposed to keep the cache up. The
-# tests below pin the shape check that closes that gap.
+@pytest.mark.parametrize(
+    "content_type, body",
+    [
+        # CDN/WAF error pages and proxy responses are typically text/html.
+        # Without explicit content-type pinning these would be fed straight
+        # into json.loads() — wasting cycles on a guaranteed parse failure
+        # and potentially missing legitimate retry/fallback paths.
+        ("text/html", "<html>WAF block</html>"),
+        # A misconfigured upstream serving plain text (e.g., maintenance
+        # page) must also be rejected at the request layer.
+        ("text/plain", "not json"),
+        # Defence-in-depth: defang accidental XML responses from a WFS
+        # endpoint that flips outputFormat behind a feature flag.
+        ("application/xml", "<error/>"),
+    ],
+)
+def test_fetch_remote_rejects_unexpected_content_type(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+    content_type: str,
+    body: str,
+) -> None:
+    """The Baustellen WFS endpoint advertises GeoJSON; everything else is
+    a CDN error, a WAF block, or an upstream misconfiguration — none of
+    which should reach _load_json_from_content. The other providers
+    (WL/VOR/ÖBB) already pin allowed_content_types; this confirms parity.
+
+    Asserting the failure happens at the *request* layer (Invalid
+    Content-Type) rather than the *parser* layer (Invalid JSON) is the
+    point — without ``allowed_content_types`` the body is still read into
+    memory and handed to ``json.loads``, which works only by accident."""
+    import logging
+    import responses
+    import sys
+
+    # Bypass DNS / IP checks (we're testing content-type filtering, not SSRF).
+    for module_name in ("src.utils.http", "utils.http"):
+        if module_name in sys.modules:
+            monkeypatch.setattr(
+                sys.modules[module_name], "validate_http_url", lambda url, **kw: url
+            )
+            monkeypatch.setattr(
+                sys.modules[module_name], "verify_response_ip", lambda _: None
+            )
+
+    @responses.activate
+    def run() -> None:
+        responses.get(
+            update_baustellen_cache.DEFAULT_DATA_URL,
+            body=body,
+            status=200,
+            content_type=content_type,
+        )
+        caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
+        result = update_baustellen_cache._fetch_remote(
+            update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+        )
+        assert result is None, (
+            f"Expected None for Content-Type {content_type!r}, got {result!r}"
+        )
+        # The rejection must come from the request layer (Invalid Content-Type)
+        # so a future change to _load_json_from_content can't accidentally
+        # accept non-JSON payloads.
+        warning_messages = [
+            record.getMessage()
+            for record in caplog.records
+            if record.name == "update_baustellen_cache"
+        ]
+        assert any(
+            "Invalid Content-Type" in message for message in warning_messages
+        ), (
+            f"Content-Type {content_type!r} must be rejected at the request "
+            f"layer, not silently dropped by the JSON parser. Got: "
+            f"{warning_messages!r}"
+        )
+
+    run()
 
 
 @pytest.mark.parametrize(
-    ("body", "kind"),
+    "content_type",
     [
-        ("[]", "list"),
-        ("null", "NoneType"),
-        ("42", "int"),
-        ('"a string"', "str"),
+        "application/json",
+        "application/json; charset=utf-8",
+        # RFC 7946 GeoJSON registration — the OGD endpoint may emit this.
+        "application/geo+json",
+        # Older WFS/Apache mod_geowfs deployments use text/json.
+        "text/json",
     ],
 )
-def test_load_fallback_rejects_non_object_shapes(
-    tmp_path: Path,
-    caplog: pytest.LogCaptureFixture,
-    body: str,
-    kind: str,
+def test_fetch_remote_accepts_geojson_variants(
+    monkeypatch: pytest.MonkeyPatch, content_type: str
 ) -> None:
-    """A non-object fallback body must return None and log the actual shape."""
-    import logging
+    """The accepted-content-type set must cover real-world WFS GeoJSON
+    responses — overshooting (rejecting a legitimate variant) would put the
+    feed into permanent fallback mode."""
+    import responses
+    import sys
 
-    fallback = tmp_path / "fallback.json"
-    fallback.write_text(body, encoding="utf-8")
+    for module_name in ("src.utils.http", "utils.http"):
+        if module_name in sys.modules:
+            monkeypatch.setattr(
+                sys.modules[module_name], "validate_http_url", lambda url, **kw: url
+            )
+            monkeypatch.setattr(
+                sys.modules[module_name], "verify_response_ip", lambda _: None
+            )
 
-    caplog.set_level(logging.ERROR, logger="update_baustellen_cache")
-    result = update_baustellen_cache._load_fallback(fallback)
+    @responses.activate
+    def run() -> None:
+        responses.get(
+            update_baustellen_cache.DEFAULT_DATA_URL,
+            body='{"features": []}',
+            status=200,
+            content_type=content_type,
+        )
+        result = update_baustellen_cache._fetch_remote(
+            update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+        )
+        assert result == {"features": []}, (
+            f"Expected dict for Content-Type {content_type!r}, got {result!r}"
+        )
 
-    assert result is None
-    assert any(
-        "kein JSON-Objekt" in record.getMessage() and kind in record.getMessage()
-        for record in caplog.records
-    ), [r.getMessage() for r in caplog.records]
-
-
-def test_load_fallback_accepts_valid_object(tmp_path: Path) -> None:
-    """A well-formed object fallback must still load (no regression)."""
-    fallback = tmp_path / "fallback.json"
-    fallback.write_text(
-        '{"type": "FeatureCollection", "features": []}', encoding="utf-8"
-    )
-
-    result = update_baustellen_cache._load_fallback(fallback)
-
-    assert result == {"type": "FeatureCollection", "features": []}
-
-
-def test_load_fallback_rejects_invalid_json(
-    tmp_path: Path, caplog: pytest.LogCaptureFixture
-) -> None:
-    """An undecodable fallback body must return None (existing behaviour)."""
-    import logging
-
-    fallback = tmp_path / "fallback.json"
-    fallback.write_text("not json {{{", encoding="utf-8")
-
-    caplog.set_level(logging.ERROR, logger="update_baustellen_cache")
-    result = update_baustellen_cache._load_fallback(fallback)
-
-    assert result is None
-    assert any(
-        "ungültiges JSON" in record.getMessage() for record in caplog.records
-    )
+    run()

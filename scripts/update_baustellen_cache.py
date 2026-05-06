@@ -166,6 +166,18 @@ def _fetch_remote(url: str, timeout: int) -> dict[str, Any] | None:
                 url,
                 timeout=timeout,
                 headers={"Accept": "application/json"},
+                # Security: pin the response Content-Type to JSON shapes the OGD
+                # WFS endpoint actually emits. Without this, a CDN/WAF error page
+                # (text/html) or a misconfigured upstream would feed non-JSON
+                # bytes into _load_json_from_content. The other providers
+                # (WL/VOR/ÖBB) already enforce this at the request layer; this
+                # closes the last gap. text/json covers older Apache mod_geowfs
+                # variants; application/geo+json is the RFC 7946 registration.
+                allowed_content_types=(
+                    "application/json",
+                    "application/geo+json",
+                    "text/json",
+                ),
             )
     except (RequestException, ValueError) as exc:
         LOGGER.warning("Baustellen: Abruf fehlgeschlagen (%s)", exc)
