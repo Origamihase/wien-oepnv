@@ -294,6 +294,28 @@ _ZWISCHEN_PLAIN_RE = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 
+
+# Alternative route-phrasing some descriptions use instead of "zwischen X und Y":
+# "Strecke X — Y", "Verbindung X-Y", "Linie X bis Y". The hyphen / en-dash /
+# em-dash separator is required to be surrounded by whitespace so we don't
+# split compound station names like "Wien Mitte-Landstraße".
+_STRECKE_PLAIN_RE = re.compile(
+    r"(?:strecke|verbindung|linie|abschnitt)\s+(?P<a>.+?)\s+[-—–]\s+(?P<b>.+?)"
+    r"(?="
+    r"\s+(?:gesperrt|geschlossen|unterbrochen|eingestellt|"
+    r"betroffen|beeintr[äa]chtigt|gest[öo]rt|eingeschr[äa]nkt|"
+    r"auf|au[ßs]er\s+betrieb|nicht|kein|von|bis|am|im|in\s+der|"
+    r"f[üu]r|wegen|aufgrund|durch|infolge|"
+    r"ist|sind|war|waren|wird|werden|kann|k[öo]nnen)\b"
+    r"|[,;!?]"
+    r"|[—–]"
+    r"|<"
+    r"|\.\s*$"
+    r"|\s*$"
+    r")",
+    re.IGNORECASE | re.DOTALL,
+)
+
 # Suffixes that should be stripped before looking up a station name.
 _BAHNHOF_TRAILING_RE = re.compile(
     r"\s*\b(?:Hauptbahnhof|Bahnhof|Bahnhst|Hbf|Bhf|Bf)\b\.?",
@@ -341,10 +363,12 @@ def _looks_like_station_name(text: str) -> bool:
 
 
 def _extract_zwischen_routes(description: str) -> List[Tuple[str, str]]:
-    """Find all 'zwischen X und Y' route mentions in *description*.
+    """Find all route mentions in *description*.
 
-    Returns a list of normalised ``(name_a, name_b)`` tuples. Names are
-    deduplicated regardless of order (so ``A ↔ B`` and ``B ↔ A`` count once).
+    Recognises both the dominant ``zwischen X und Y`` phrasing and the
+    alternative ``Strecke|Verbindung|Linie|Abschnitt X — Y`` form. Returns a
+    list of normalised ``(name_a, name_b)`` tuples, deduplicated regardless
+    of A/B order (so ``A ↔ B`` and ``B ↔ A`` count once).
     """
     if not description:
         return []
@@ -357,18 +381,19 @@ def _extract_zwischen_routes(description: str) -> List[Tuple[str, str]]:
     routes: List[Tuple[str, str]] = []
     seen: set[Tuple[str, str]] = set()
 
-    for match in _ZWISCHEN_PLAIN_RE.finditer(plain):
-        a_norm = _normalize_endpoint_name(match.group("a"))
-        b_norm = _normalize_endpoint_name(match.group("b"))
-        if not _looks_like_station_name(a_norm) or not _looks_like_station_name(b_norm):
-            continue
-        # Deduplicate regardless of A/B order
-        sorted_pair = sorted([a_norm.casefold(), b_norm.casefold()])
-        key: Tuple[str, str] = (sorted_pair[0], sorted_pair[1])
-        if key in seen:
-            continue
-        seen.add(key)
-        routes.append((a_norm, b_norm))
+    for regex in (_ZWISCHEN_PLAIN_RE, _STRECKE_PLAIN_RE):
+        for match in regex.finditer(plain):
+            a_norm = _normalize_endpoint_name(match.group("a"))
+            b_norm = _normalize_endpoint_name(match.group("b"))
+            if not _looks_like_station_name(a_norm) or not _looks_like_station_name(b_norm):
+                continue
+            # Deduplicate regardless of A/B order
+            sorted_pair = sorted([a_norm.casefold(), b_norm.casefold()])
+            key: Tuple[str, str] = (sorted_pair[0], sorted_pair[1])
+            if key in seen:
+                continue
+            seen.add(key)
+            routes.append((a_norm, b_norm))
 
     return routes
 

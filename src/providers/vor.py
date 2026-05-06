@@ -854,7 +854,20 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[FeedIt
     """
     info = station_info(station_id)
     station_name = info.name if info else None
-    is_vienna_station = info.in_vienna if info else False
+    # Stations explicitly chosen for monitoring (Wien Hbf and Pendler nodes
+    # like Flughafen Wien) are inherently relevant — every disruption at
+    # the platform itself matters for Wien-Pendler. Only fall back to the
+    # text-based Wien check for stations that the directory classifies as
+    # neither in Vienna nor as a commuter hub. ``getattr`` keeps the check
+    # defensive against test fixtures that mock ``station_info`` with a
+    # narrower record type.
+    station_is_relevant = bool(
+        info
+        and (
+            getattr(info, "in_vienna", False)
+            or getattr(info, "pendler", False)
+        )
+    )
 
     items: List[FeedItem] = []
     for raw_msg in _iter_messages(root):
@@ -875,8 +888,13 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[FeedIt
             )
             continue
 
-        # FILTER: Bei Pendlerbahnhöfen muss die konkrete Meldung Wien betreffen
-        if not is_vienna_station:
+        # FILTER: For stations not classified as in-Vienna or Pendler the
+        # message must explicitly mention a Wien station — otherwise we
+        # cannot tell whether a disruption at a randomly configured station
+        # affects Wien commuters. Whitelisted Pendler nodes (Flughafen Wien
+        # etc.) bypass this check; their disruptions are already considered
+        # relevant by the project specification.
+        if not station_is_relevant:
             full_text = f"{head} {text}"
             if not text_has_vienna_connection(full_text):
                 continue
