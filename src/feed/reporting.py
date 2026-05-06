@@ -679,6 +679,22 @@ class _GithubIssueConfig:
         )
 
 
+# GitHub repository slug grammar: ``owner/name``. Owner: 1-39 alphanumeric/hyphen
+# (cannot start with hyphen). Name: 1-100 chars allowing alphanumerics, hyphen,
+# underscore, dot. Anything outside this lets ``FEED_GITHUB_REPOSITORY`` inject
+# query strings, fragments or path traversals into the request URL — the host
+# is already pinned to GitHub by ``_is_trusted_github_api`` but the path
+# component still has authority over which endpoint receives the token.
+_GITHUB_REPO_SLUG_RE = re.compile(
+    r"\A[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9._-]{1,100}\Z"
+)
+
+
+def _is_valid_github_repo_slug(repo: str) -> bool:
+    """Validate ``owner/name`` matches GitHub's published slug grammar."""
+    return bool(_GITHUB_REPO_SLUG_RE.fullmatch(repo))
+
+
 def _is_trusted_github_api(api_url: str) -> bool:
     """Return ``True`` only if ``api_url`` looks like a GitHub API endpoint.
 
@@ -729,6 +745,19 @@ class _GithubIssueReporter:
                 "Automatisches GitHub-Issue abgebrochen: API-URL %s ist kein "
                 "bekannter GitHub-Endpunkt; Token wird nicht gesendet.",
                 self._config.api_url,
+            )
+            return
+
+        # Security: refuse to interpolate an untrusted slug into the request
+        # path. Without this, ``owner/repo?injected=1`` or ``owner/../endpoint``
+        # rewrites the URL to a different GitHub endpoint (still an authorised
+        # one for the token) and would let an env-var override redirect the
+        # auto-issue post to an arbitrary repo or API surface.
+        if not _is_valid_github_repo_slug(self._config.repository):
+            log.warning(
+                "Automatisches GitHub-Issue abgebrochen: Repository %r entspricht "
+                "nicht dem owner/name-Schema; Anfrage wird nicht gesendet.",
+                self._config.repository,
             )
             return
 
