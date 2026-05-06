@@ -406,11 +406,15 @@ def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
 
     Pure category words like "Bauarbeiten ↔ Umleitung" are filtered out so
     they don't drag a real station-mention message into the strict-route path
-    incorrectly. Likewise "fake routes" where both endpoints fail to resolve
-    against the station directory (e.g. "Aufzug zwischen Bahnsteig 1 und
-    Bahnsteig 5 in Wien Mitte defekt") are dropped — they describe internal
-    layout, not transit connections, and would otherwise mask the real
-    Wien-Mitte station mention from the fall-through filter.
+    incorrectly. Likewise candidates whose endpoints are obviously
+    non-station references (``Bahnsteig 1`` / ``Bahnsteig 5``, ``Gleis 3``,
+    ``Aufzug``-etc.) are discarded so the single-station fall-through can
+    pick up the real station mention.
+
+    Real distant routes between two unknown stations (e.g. ``Mürzzuschlag
+    ↔ Payerbach-Reichenau``) are *kept* — they look like real station
+    names, and the strict route classifier in :func:`_route_is_wien_relevant`
+    is then responsible for rejecting them.
     """
     candidates: List[Tuple[str, str]] = []
     seen: set[Tuple[str, str]] = set()
@@ -443,13 +447,13 @@ def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
         seen.add(desc_key)
         candidates.append((raw_a, raw_b))
 
-    # 3. Drop candidates where both endpoints are unresolvable. These are
-    #    almost always false positives from regex over-extraction (platform
-    #    numbers, generic phrases) — keeping them would force the strict
-    #    route path to reject otherwise-relevant single-station messages.
+    # 3. Drop candidates that describe a station-internal element rather
+    #    than a transit connection. This is what allows "Aufzug zwischen
+    #    Bahnsteig 1 und Bahnsteig 5 in Wien Mitte defekt" to fall through
+    #    to the single-station path and pick up the Wien-Mitte mention.
     routes: List[Tuple[str, str]] = []
     for a, b in candidates:
-        if station_info(a) is None and station_info(b) is None:
+        if _looks_like_facility_endpoint(a) or _looks_like_facility_endpoint(b):
             continue
         routes.append((a, b))
 
@@ -579,7 +583,49 @@ _GENERIC_STATION_TOKENS = frozenset({
     "nordbahnhof",
     "nordbf",
     "station",
+    # German preposition that aliases to "Wien Hauptbahnhof" via several
+    # "(VOR)"-suffixed entries in stations.json. Without skipping it, words
+    # like "vor Reiseantritt" inside an ÖBB description silently classify
+    # the message as Wien-relevant.
+    "vor",
 })
+
+
+# Endpoint candidates whose first word matches one of these never describe
+# a real transit connection — they're typical inside-station references
+# ("Bahnsteig 1 und Bahnsteig 5", "Gleis 3 und Gleis 7"). Routes built from
+# such candidates are dropped so the message can fall through to the
+# single-station path and pick up the real station mention.
+_NON_STATION_FIRST_WORDS = frozenset({
+    "bahnsteig",
+    "gleis",
+    "steig",
+    "wagen",
+    "waggon",
+    "abteil",
+    "ausgang",
+    "eingang",
+    "tor",
+    "tür",
+    "tuer",
+    "sektor",
+    "zone",
+    "halle",
+    "platz",
+    "lift",
+    "aufzug",
+    "rolltreppe",
+    "fahrtreppe",
+})
+
+
+def _looks_like_facility_endpoint(name: str) -> bool:
+    """Return True if *name* describes a non-station element (platform,
+    track, exit, …) rather than a transit station."""
+    if not name:
+        return False
+    first = name.strip().split(maxsplit=1)[0].casefold().rstrip(".:,;")
+    return first in _NON_STATION_FIRST_WORDS
 
 
 def _find_stations_in_text(blob: str) -> List[str]:
