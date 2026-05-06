@@ -46,6 +46,7 @@ from src.places.merge import BoundingBox, MergeConfig, merge_places, load_statio
 from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
 from src.utils.env import load_default_env_files
 from src.utils.files import atomic_write
+from src.feed.config import InvalidPathError, validate_path
 
 LOGGER = logging.getLogger("places.cli")
 
@@ -113,6 +114,38 @@ def _parse_tiles(args: argparse.Namespace, env: MutableMapping[str, str]) -> lis
     return load_tiles_from_env(env.get("PLACES_TILES"))
 
 
+_DEFAULT_STATIONS_PATH = Path("data/stations.json")
+
+
+def _resolve_stations_out_path(candidate: str | None) -> Path:
+    """Resolve OUT_PATH_STATIONS through the project's path validator.
+
+    Security: ``OUT_PATH_STATIONS`` is read from the environment and used
+    as the write target for the (large, JSON-shaped) stations payload.
+    Without containment, an env-var-controlled path could be redirected
+    to write outside the repo's allowed roots (``docs/``, ``data/``,
+    ``log/``) — and ``atomic_write`` happily creates parent directories,
+    so an attacker controlling the env on a runner could clobber any
+    writable file or seed new directory trees. We therefore route the
+    value through ``validate_path`` (the same gate used by ``OUT_PATH``,
+    ``STATE_PATH``, ``PLACES_QUOTA_STATE`` etc.), falling back to the
+    default with a warning if the override resolves outside the
+    allowlist.
+    """
+    text = (candidate or "").strip()
+    if not text:
+        return validate_path(_DEFAULT_STATIONS_PATH, "OUT_PATH_STATIONS")
+    try:
+        return validate_path(Path(text), "OUT_PATH_STATIONS")
+    except InvalidPathError:
+        LOGGER.warning(
+            "OUT_PATH_STATIONS %s is outside the allowed roots; using default %s.",
+            text,
+            _DEFAULT_STATIONS_PATH,
+        )
+        return validate_path(_DEFAULT_STATIONS_PATH, "OUT_PATH_STATIONS")
+
+
 def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
     if not raw:
         return None
@@ -147,7 +180,7 @@ def _build_runtime_config(args: argparse.Namespace) -> RuntimeConfig:
     merge_distance = float(env.get("MERGE_MAX_DIST_M", "150"))
     bounding_box = _parse_bounding_box(env.get("BOUNDINGBOX_VIENNA"))
 
-    out_path = Path(env.get("OUT_PATH_STATIONS", "data/stations.json"))
+    out_path = _resolve_stations_out_path(env.get("OUT_PATH_STATIONS"))
 
     client_config = GooglePlacesConfig(
         api_key=api_key,
