@@ -34,6 +34,7 @@ from ..utils.ids import make_guid
 from ..utils.stations import (
     StationInfo,
     canonical_name,
+    display_name,
     is_in_vienna,
     station_by_oebb_id,
     station_info,
@@ -310,7 +311,7 @@ def _clean_title_keep_places(t: str) -> str:
                             cl = _clean_endpoint(s)
                             c = canonical_name(cl) or cl
                         if c:
-                            c = re.sub(r"\s+\(VOR\)$", "", c)
+                            c = display_name(c)
                         processed_subs.append(c)
                     canon = " / ".join(processed_subs)
 
@@ -318,7 +319,7 @@ def _clean_title_keep_places(t: str) -> str:
                 canon = cleaned
 
         if canon:
-            canon = re.sub(r"\s+\(VOR\)$", "", canon)
+            canon = display_name(canon)
         canonical_parts.append(canon)
     parts = canonical_parts
     if len(parts) >= 2:
@@ -1357,10 +1358,10 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
         info_b = station_info(raw_b)
         name_a = info_a.name if info_a else raw_a
         name_b = info_b.name if info_b else raw_b
-        # Canonical names from the directory may carry a "(VOR)" suffix that
-        # is irrelevant for the user-facing title.
-        name_a = re.sub(r"\s+\(VOR\)$", "", name_a).strip()
-        name_b = re.sub(r"\s+\(VOR\)$", "", name_b).strip()
+        # Apply feed-display overrides (also strips a trailing "(VOR)"
+        # provenance suffix that is irrelevant for the user-facing title).
+        name_a = display_name(name_a)
+        name_b = display_name(name_b)
         name_a = _expand_station_abbreviations(name_a)
         name_b = _expand_station_abbreviations(name_b)
 
@@ -1440,15 +1441,18 @@ def fetch_events(timeout: int = 25) -> list[FeedItem]:
             if station_id:
                 found_name = station_by_oebb_id(station_id)
                 if found_name:
-                    title = found_name
+                    title = display_name(found_name)
 
             # Attempt 2: Text extraction (if still poor)
             if _is_poor_title(title):
                 stations_found = _find_stations_in_text(desc)
                 if len(stations_found) == 1:
-                    title = stations_found[0]
+                    title = display_name(stations_found[0])
                 elif len(stations_found) >= 2:
-                    title = f"{stations_found[0]} ↔ {stations_found[1]}"
+                    title = (
+                        f"{display_name(stations_found[0])} ↔ "
+                        f"{display_name(stations_found[1])}"
+                    )
 
             # Attempt 3: Truncation
             if _is_poor_title(title):

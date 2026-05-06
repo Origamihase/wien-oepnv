@@ -90,7 +90,9 @@ class TestUserReportedKeepExamples:
         cleaned = _clean_title_keep_places(title)
         assert _is_relevant(cleaned, desc) is True
         # Vienna endpoint comes first; Pendler endpoint after the arrow.
-        assert _build_title(title, desc) == "Wien Mitte-Landstraße ↔ Flughafen Wien"
+        # The canonical "Wien Mitte-Landstraße" is rendered as "Wien Mitte"
+        # in the user-facing feed (display override).
+        assert _build_title(title, desc) == "Wien Mitte ↔ Flughafen Wien"
 
     def test_wien_westbf_huetteldorf_kept_with_expanded_title(self) -> None:
         title = "Bauarbeiten: Wien Westbf Wien Hütteldorf"

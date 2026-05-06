@@ -47,7 +47,12 @@ from ..utils.http import (
 from ..utils.ids import make_guid
 from ..utils.locking import file_lock
 from ..utils.logging import sanitize_log_arg, sanitize_log_message
-from ..utils.stations import vor_station_ids, station_info, text_has_vienna_connection
+from ..utils.stations import (
+    display_name,
+    station_info,
+    text_has_vienna_connection,
+    vor_station_ids,
+)
 
 log = logging.getLogger(__name__)
 
@@ -875,7 +880,7 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> list[FeedIt
     Extracts title, lines, affected stops, and time ranges.
     """
     info = station_info(station_id)
-    station_name = info.name if info else None
+    station_name = display_name(info.name) if info else None
     # Stations explicitly chosen for monitoring (Wien Hbf and Pendler nodes
     # like Flughafen Wien) are inherently relevant — every disruption at
     # the platform itself matters for Wien-Pendler. Only fall back to the
