@@ -189,3 +189,91 @@ def test_cross_station_collision_does_not_drop_own_canonical() -> None:
     )
     # Own canonical must be preserved
     assert "Pfaffstätten" in aliases
+
+
+def test_pendler_alt_names_propagated_to_aliases() -> None:
+    """Pendler_candidates.json's alternative_names should land in the
+    matching station's aliases. Closes the gap that "Angern" station
+    didn't list "Angern an der March", "Angern (March)", "Angern March"
+    even though those forms are explicitly named in the candidates list
+    for the resolver.
+
+    The loader keys the alternative_names by every variant's normalized
+    form. ``_normalize_key`` strips parenthetical groups including
+    their content, so "Angern (March)" → "angern". That's how the
+    propagation finds the bare-named "Angern" station entry: its
+    canonical "Angern" → "angern" → matches the loader-generated
+    "angern" key.
+    """
+    angern = {"name": "Angern", "aliases": ["Angern", "Angern Bahnhof"]}
+    pendler_alt_names = {
+        # Loader output: normalized canonical → all variant strings
+        "angern an der march": [
+            "Angern an der March", "Angern (March)", "Angern March",
+        ],
+        "angern": [
+            "Angern an der March", "Angern (March)", "Angern March",
+        ],
+        "angern march": [
+            "Angern an der March", "Angern (March)", "Angern March",
+        ],
+    }
+    aliases = _alias_candidates(
+        angern,
+        vor_names={},
+        vor_mapping={},
+        gtfs_index={},
+        pendler_alt_names=pendler_alt_names,
+    )
+    assert "Angern an der March" in aliases
+    assert "Angern (March)" in aliases
+    assert "Angern March" in aliases
+
+
+def test_pendler_alt_names_loader_keys_strip_parens() -> None:
+    """The loader normalizes via ``_normalize_key`` which strips paren
+    groups along with their content. Pin that "Angern (March)" → key
+    "angern" so the bare-named station entry actually matches."""
+    from scripts.enrich_station_aliases import (
+        _load_pendler_alternative_names,
+    )
+    import json
+    import tempfile
+    from pathlib import Path
+
+    payload = {
+        "candidates": [
+            {
+                "name": "Angern an der March",
+                "alternative_names": ["Angern (March)", "Angern March"],
+            }
+        ]
+    }
+    with tempfile.NamedTemporaryFile(
+        "w", suffix=".json", delete=False, encoding="utf-8"
+    ) as fh:
+        json.dump(payload, fh)
+        path = Path(fh.name)
+
+    try:
+        result = _load_pendler_alternative_names(path)
+    finally:
+        path.unlink(missing_ok=True)
+
+    # Each variant produces a key entry; the value is the full list
+    assert "angern an der march" in result
+    assert "angern" in result  # from "Angern (March)" via paren-strip
+    assert "angern march" in result
+    expected = {"Angern an der March", "Angern (March)", "Angern March"}
+    for key in ("angern an der march", "angern", "angern march"):
+        assert set(result[key]) == expected, f"variants for {key!r}: {result[key]}"
+
+
+def test_pendler_alt_names_skipped_if_dict_is_empty_or_none() -> None:
+    """The propagation must be a no-op when no pendler-candidate data
+    is supplied (back-compat with callers that don't pass it)."""
+    station = {"name": "Angern", "aliases": ["Angern"]}
+    aliases = _alias_candidates(
+        station, vor_names={}, vor_mapping={}, gtfs_index={}, pendler_alt_names=None
+    )
+    assert "Angern an der March" not in aliases
