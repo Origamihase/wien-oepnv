@@ -1,3 +1,8 @@
+## 2026-05-06 - .env Files Inherit Umask Permissions
+**Vulnerability:** `scripts/configure_feed.py` wrote the `.env` file via `Path.write_text()`, which respects the process umask. With the typical 0o022 umask the file landed at 0o644 — so `VOR_ACCESS_ID` and any other custom secrets were group/world-readable on shared systems. Worse, re-running the wizard on an existing 0o644 file kept those loose permissions because `write_text` does not change permissions on overwrite.
+**Learning:** The codebase already had `atomic_write(..., permissions=0o600)` for caches in `src/utils/files.py`, but the wizard — the canonical entry point that *creates* secrets — was the one place that bypassed it. Files holding secrets must be *created* with restrictive permissions (via `os.open(..., 0o600)` or `atomic_write`), not just chmod'd later, because there is always a race window where another process can read them.
+**Prevention:** Any code that writes a file containing credentials must go through `atomic_write` with `permissions=0o600`. Grep for `write_text\|write_bytes` in scripts/ when adding a new credential-handling flow; if the path is `.env`, a credentials file, or a token cache, the call must use atomic_write instead.
+
 ## 2025-02-12 - Custom .env Parsing Pitfalls
 **Vulnerability:** Incomplete escaping logic in custom `.env` parser allowing secrets with quotes to be corrupted.
 **Learning:** Reimplementing standard formats (like shell variable assignment) often misses edge cases like escaped quotes.
