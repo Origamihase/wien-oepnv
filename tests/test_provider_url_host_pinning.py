@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import importlib
 import logging
+from types import ModuleType
 
 import pytest
 
@@ -12,7 +13,7 @@ import pytest
 # ─────────────────────────────────────────
 
 
-def _reload_wl(monkeypatch: pytest.MonkeyPatch, value: str | None) -> object:
+def _reload_wl(monkeypatch: pytest.MonkeyPatch, value: str | None) -> ModuleType:
     """Re-import wl_fetch with a controlled WL_RSS_URL value."""
     if value is None:
         monkeypatch.delenv("WL_RSS_URL", raising=False)
@@ -61,7 +62,7 @@ def test_wl_rejects_untrusted_host(
 # ─────────────────────────────────────
 
 
-def _reload_oebb(monkeypatch: pytest.MonkeyPatch, value: str | None) -> object:
+def _reload_oebb(monkeypatch: pytest.MonkeyPatch, value: str | None) -> ModuleType:
     """Re-import oebb with a controlled OEBB_RSS_URL value."""
     if value is None:
         monkeypatch.delenv("OEBB_RSS_URL", raising=False)
