@@ -116,6 +116,49 @@ class TestStreckePattern:
         assert _is_relevant("", text) is True
 
 
+class TestUeberViaBoundary:
+    """Bug I: ``zwischen X und Y über Z`` extended Y into "Y über Z" because
+    the via marker was not in the lookahead. The actual disrupted route is
+    X↔Y; Z is just the intermediate stop on the line."""
+
+    def test_ueber_terminates_route_endpoint(self) -> None:
+        routes = _extract_routes(
+            "",
+            "Bauarbeiten zwischen Wien Hbf und Mödling über Wiener Neudorf",
+        )
+        assert routes == [("Wien", "Mödling")]
+
+    def test_ueber_keeps_wien_pendler_relevant(self) -> None:
+        # Without the fix this returned False because endpoint b was
+        # "Mödling über Wiener Neudorf", which fails station_info lookup.
+        assert (
+            _is_relevant(
+                "",
+                "Bauarbeiten zwischen Wien Hbf und Mödling über Wiener Neudorf",
+            )
+            is True
+        )
+
+    def test_ueber_still_drops_wien_distant(self) -> None:
+        # End-to-end: Wien-Salzburg via St. Pölten is still rejected as
+        # Wien-Distant — extracting the right Y just exposes the strict
+        # classification rule.
+        assert (
+            _is_relevant(
+                "",
+                "Bauarbeiten zwischen Wien Hbf und Salzburg über St. Pölten",
+            )
+            is False
+        )
+
+    def test_via_english_terminator_works(self) -> None:
+        routes = _extract_routes(
+            "",
+            "Bauarbeiten zwischen Wien Hbf und Mödling via Wiener Neudorf",
+        )
+        assert routes == [("Wien", "Mödling")]
+
+
 # ---------------- Bug H: pubDate case-sensitivity ----------------
 
 class TestPubDateMerge:

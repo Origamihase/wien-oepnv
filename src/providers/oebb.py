@@ -283,7 +283,10 @@ _ZWISCHEN_PLAIN_RE = re.compile(
     r"unterbrochen|gestört|gestoert|ausgefallen|verspätet|verspaetet|"
     r"verz[öo]gert|aufgehoben|freigegeben|"
     # Connectors that introduce a side clause
-    r"sowie|sondern|sowie\s+zwischen"
+    r"sowie|sondern|sowie\s+zwischen|"
+    # Intermediate-via marker — ends the captured endpoint at the via stop
+    # so "Mödling über Wiener Neudorf" yields b="Mödling".
+    r"[üu]ber|via"
     r")\b"
     r"|[,;!?]"  # Plain sentence punctuation (period excluded — see above)
     r"|[—–]"  # German em-/en-dash often introduces a side remark
