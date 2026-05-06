@@ -505,10 +505,19 @@ def _is_relevant(title: str, description: str) -> bool:
        message describes routes but none of them is Wien-relevant (e.g.
        Pendler ↔ Pendler, Wien ↔ Distant, or unknown endpoints), the message
        is dropped.
-    2. **Single-station / general messages** – if no route can be parsed, the
-       message must mention at least one Vienna or Pendler station. If only
-       distant stations are mentioned, drop. Otherwise fall back to the
-       generic Vienna-text heuristic for U-Bahn references.
+    2. **Single-station / general messages** – if no explicit route can be
+       parsed:
+
+       a. When at least one *known* distant station (in stations.json with
+          ``in_vienna=False`` and ``pendler=False``) is mentioned alongside
+          relevant stations, the message almost always describes a
+          Wien↔Distant or Pendler↔Distant route — drop it. Standalone
+          "Aufzug defekt am Wien Hbf" messages never drag in München names,
+          so this rule is safe in practice.
+       b. Otherwise, the message must mention at least one Vienna or
+          Pendler station. If only distant stations are mentioned, drop.
+       c. As a final fall-back, use the generic Vienna-text heuristic for
+          U-Bahn references and the like.
     """
     routes = _extract_routes(title, description)
 
@@ -533,10 +542,15 @@ def _is_relevant(title: str, description: str) -> bool:
         else:
             has_distant = True
 
-    if has_relevant:
-        return True
+    # Step 2a: a known-distant station mention together with anything else
+    # almost always implies a route into the distant station. Wien↔Distant,
+    # Pendler↔Distant and Distant↔Distant routes are all not relevant per
+    # spec, so drop the message even when a Wien station is co-mentioned.
     if has_distant:
         return False
+
+    if has_relevant:
+        return True
 
     # OEBB_ONLY_VIENNA narrows the fallback to text-detected Vienna references.
     if OEBB_ONLY_VIENNA:

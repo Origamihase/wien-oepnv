@@ -1,0 +1,80 @@
+"""Audit-Round-4 regression tests.
+
+Bug L: a Wien station mentioned alongside a known-distant station in the
+single-station fall-through used to KEEP the message even though the
+described route is almost certainly Wien↔Distant. The user reported
+
+    Bauarbeiten: Wien/München Roma Termini
+    Wegen Bauarbeiten werden … die NJ-Züge … via Salzburg/Kufstein … umgeleitet
+
+as an obvious leak: the actual disrupted route is Wien↔Rom, not a
+Wien-internal or Wien↔Pendler trip.
+
+The fix: in the single-station path, drop any message that mentions a
+known-distant station (``in_vienna=False`` and ``pendler=False`` in
+stations.json) — even if a Wien station is co-mentioned. Standalone Wien
+disruptions don't drag in München / Roma names; route-style messages
+do.
+
+Two further audit findings are *data* issues that this PR cannot fix in
+code:
+
+- **Bug M**: many real Wien commuter stations (Felixdorf, Traiskirchen
+  Aspangbahn, Gramatneusiedl, Götzendorf, Bruck/Leitha, Semmering,
+  Payerbach-Reichenau, Krems, Eisenstadt, Pamhagen, …) are absent from
+  ``data/stations.json``. Wien↔<missing-Pendler> routes are therefore
+  misclassified as Wien↔Unknown and dropped — a false negative the
+  filter cannot recover from without directory updates.
+
+- **Bug N**: when a title carries multiple proper-noun-shaped tokens but
+  only one resolves (because the others are missing from the directory,
+  see bug M), the single-station path keeps the message. Example:
+  ``Bauarbeiten: Wiener Neustadt Hauptbahnhof Semmering`` with no
+  zwischen pattern in the description — a Pendler↔Distant Fernverkehr
+  route stays in the feed because Semmering is unknown to the directory.
+  Resolving this generally requires more data (Bug M) or a stricter
+  text-based heuristic that risks false positives for legitimate
+  Pendler-only messages.
+"""
+
+from __future__ import annotations
+
+from src.providers.oebb import _is_relevant
+
+
+class TestSingleStationDropsOnDistant:
+    """Bug L: a known-distant mention next to a Wien mention drops."""
+
+    def test_wien_muenchen_rome_dropped(self) -> None:
+        # Exact failing payload from the live cache.
+        title = "Bauarbeiten: Wien/München Roma Termini"
+        desc = (
+            "Wegen Bauarbeiten werden von 22.08.2026 bis 20.09.2026 die "
+            "NJ-Züge 40233 und 40294 über Salzburg/Kufstein und die "
+            "NJ-Züge 294 und 295 über Brennero/Brenner umgeleitet."
+        )
+        assert _is_relevant(title, desc) is False
+
+    def test_wien_only_message_still_kept(self) -> None:
+        # Sanity: a real Wien-only facility notice must keep working.
+        title = "Aufzug defekt: Wien Hauptbahnhof"
+        desc = "Aufzug am Bahnsteig 12 außer Betrieb."
+        assert _is_relevant(title, desc) is True
+
+    def test_wien_pendler_mention_kept(self) -> None:
+        # Sanity: Wien + Pendler mentions (no distant) stay relevant.
+        title = "Verspätungen Wien Hauptbahnhof Mödling"
+        desc = "Wegen Sturm Verspätungen im Raum Wien und Mödling."
+        assert _is_relevant(title, desc) is True
+
+    def test_pendler_with_distant_dropped(self) -> None:
+        # Pendler + Distant mentions imply Pendler↔Distant route → drop.
+        title = "Sturm Mödling München"
+        desc = "Wegen Sturm einige Verspätungen."
+        assert _is_relevant(title, desc) is False
+
+    def test_distant_only_dropped(self) -> None:
+        # Sanity: a distant-only message stays rejected.
+        title = "Bauarbeiten München Hbf"
+        desc = "Im Raum München Verspätungen."
+        assert _is_relevant(title, desc) is False
