@@ -355,6 +355,13 @@ _ZWISCHEN_PLAIN_RE = re.compile(
     r"|[,;!?]"  # Plain sentence punctuation (period excluded — see above)
     r"|[—–]"  # German em-/en-dash often introduces a side remark
     r"|<"  # HTML tag start (defensive: we strip HTML, but stay safe)
+    # Period followed by a German sentence-starter word — typical ÖBB
+    # closers like "Mödling. Auch Auswirkung …" or "Mödling. Wir bitten
+    # …". Listed words cannot be the second part of a station name, so
+    # "St. Pölten" stays intact while sentence boundaries are recognised.
+    r"|\.\s+(?:Auch|Bitte|Wir|Es|Hier|Hinweis|Achtung|Wegen|Aufgrund|"
+    r"Heute|Morgen|Reisende|Details|Diese|Dieser|Bei|Im|Aus|Mit|"
+    r"Fahrgäste|Fahrgaeste|Beachten|ACHTUNG|HINWEIS)"
     r"|\.\s*$"  # Period only when it terminates the description
     r"|\s*$"
     r")",
@@ -413,6 +420,17 @@ def _normalize_endpoint_name(name: str) -> str:
     # — which is actually what we want for lookup).
     cleaned = re.sub(_BAHNHOF_TRAILING_RE.pattern + r"\s*$", "", cleaned, flags=re.IGNORECASE).strip()
     cleaned = re.sub(r"\s{2,}", " ", cleaned).strip()
+
+    # If the endpoint absorbed a sentence boundary ("Mödling. Auch ..."),
+    # truncate to the part before the period when *that* part resolves
+    # against the directory. Abbreviations like "St. Pölten" stay intact
+    # because "St" alone doesn't resolve.
+    if ". " in cleaned:
+        head, _, _tail = cleaned.partition(". ")
+        head_clean = head.strip()
+        if head_clean and station_info(head_clean) is not None:
+            cleaned = head_clean
+
     return cleaned
 
 
