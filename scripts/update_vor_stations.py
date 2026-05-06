@@ -11,7 +11,7 @@ import sys
 from dataclasses import dataclass
 from itertools import count
 from pathlib import Path
-from typing import Iterable, Iterator, Mapping, Sequence
+from typing import Callable, Iterable, Iterator, Mapping, Sequence
 
 import requests
 
@@ -60,6 +60,11 @@ STATIC_VOR_ENTRIES: tuple[dict[str, object], ...] = (
     # the ÖBB Excel "Verzeichnis der Verkehrsstationen" has no row for
     # Guntramsdorf, so the name-based pendler whitelist alone cannot
     # produce an entry — only the synthetic VOR pathway does.
+    # bst_id/bst_code intentionally omitted: _new_entry_from_static
+    # allocates a "900xxx" identifier from the synthetic VOR pool, so
+    # the entry passes the validator's "bst_id matches VOR pattern"
+    # check (\\d{4,5} starting with 9). A 4xx VOR id is a fine vor_id
+    # value but is the wrong shape for bst_id.
     {
         "vor_id": "430361600",
         "name": "Guntramsdorf Bahnhof",
@@ -76,8 +81,119 @@ STATIC_VOR_ENTRIES: tuple[dict[str, object], ...] = (
             "Bf Guntramsdorf",
             "430361600",
         ],
-        "bst_id": "430361600",
-        "bst_code": "430361600",
+        "source": "vor",
+    },
+    # Guntramsdorf-Kaiserau — secondary Aspangbahn-station for the
+    # same town, distinct VOR id from the Südbahn-Bahnhof above.
+    {
+        "vor_id": "430361700",
+        "name": "Guntramsdorf-Kaiserau",
+        "in_vienna": False,
+        "pendler": True,
+        "latitude": 48.044494,
+        "longitude": 16.325274,
+        "aliases": [
+            "Guntramsdorf-Kaiserau",
+            "Guntramsdorf Kaiserau",
+            "Guntramsdorf Kaiserau Bf",
+            "Guntramsdorf Kaiserau Bahnhof",
+            "Bahnhof Guntramsdorf-Kaiserau",
+            "Bf Guntramsdorf-Kaiserau",
+            "430361700",
+        ],
+        "source": "vor",
+    },
+    # Neunkirchen NÖ — CJX9/REX1 Südbahn pendler stop. The ÖBB Excel
+    # has no "Neunkirchen" row, so a STATIC entry is needed.
+    {
+        "vor_id": "430875800",
+        "name": "Neunkirchen NÖ",
+        "in_vienna": False,
+        "pendler": True,
+        "latitude": 47.731615,
+        "longitude": 16.085118,
+        "aliases": [
+            "Neunkirchen NÖ",
+            "Neunkirchen (NÖ)",
+            "Neunkirchen",
+            "Neunkirchen (NÖ) Bahnhof",
+            "Neunkirchen (NOe) Bahnhof",
+            "Bahnhof Neunkirchen",
+            "Bf Neunkirchen",
+            "430875800",
+        ],
+        "source": "vor",
+    },
+    # Oberwaltersdorf — R95 Innere Aspangbahn pendler stop.
+    {
+        "vor_id": "430442300",
+        "name": "Oberwaltersdorf",
+        "in_vienna": False,
+        "pendler": True,
+        "latitude": 47.975169,
+        "longitude": 16.328402,
+        "aliases": [
+            "Oberwaltersdorf",
+            "Oberwaltersdorf Bahnhof",
+            "Oberwaltersdorf Bf",
+            "Bahnhof Oberwaltersdorf",
+            "Bf Oberwaltersdorf",
+            "430442300",
+        ],
+        "source": "vor",
+    },
+    # Trautmannsdorf an der Leitha — S60 Ostbahn pendler stop.
+    {
+        "vor_id": "430501300",
+        "name": "Trautmannsdorf an der Leitha",
+        "in_vienna": False,
+        "pendler": True,
+        "latitude": 48.024079,
+        "longitude": 16.642305,
+        "aliases": [
+            "Trautmannsdorf an der Leitha",
+            "Trautmannsdorf/Leitha",
+            "Trautmannsdorf Leitha",
+            "Trautmannsdorf/Leitha Bahnhof",
+            "Trautmannsdorf an der Leitha Bahnhof",
+            "Bahnhof Trautmannsdorf",
+            "Bf Trautmannsdorf",
+            "430501300",
+        ],
+        "source": "vor",
+    },
+    # Hainburg Kulturfabrik — S7 Pressburger Bahn (opened 2017).
+    # No ÖBB Excel row, but a real S-Bahn stop.
+    {
+        "vor_id": "430368100",
+        "name": "Hainburg Kulturfabrik",
+        "in_vienna": False,
+        "pendler": True,
+        "latitude": 48.144840,
+        "longitude": 16.932019,
+        "aliases": [
+            "Hainburg Kulturfabrik",
+            "Hainburg/Donau Kulturfabrik",
+            "Hainburg an der Donau Kulturfabrik",
+            "430368100",
+        ],
+        "source": "vor",
+    },
+    # Hainburg Ungartor — S7 Pressburger Bahn (opened 2017).
+    {
+        "vor_id": "430367700",
+        "name": "Hainburg Ungartor",
+        "in_vienna": False,
+        "pendler": True,
+        "latitude": 48.148355,
+        "longitude": 16.948145,
+        "aliases": [
+            "Hainburg Ungartor",
+            "Hainburg/Donau Ungartor",
+            "Hainburg/Donau Ungartor/B9",
+            "Hainburg an der Donau Ungartor",
+            "430367700",
+        ],
         "source": "vor",
     },
 )
@@ -756,6 +872,34 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
             used_bst_codes.add(candidate)
             return candidate
 
+    def _new_entry_from_static(
+        static_entry: dict[str, object],
+        used_bst_ids_set: set[str],
+        used_bst_codes_set: set[str],
+        allocate: Callable[[], str],
+    ) -> dict[str, object]:
+        new_entry = dict(static_entry)
+        bst_id = _normalize_id(new_entry.get("bst_id")) or allocate()
+        new_entry["bst_id"] = bst_id
+        used_bst_ids_set.add(bst_id)
+        bst_code = _normalize_id(new_entry.get("bst_code")) or bst_id
+        new_entry["bst_code"] = bst_code
+        used_bst_codes_set.add(bst_code)
+        aliases = new_entry.get("aliases")
+        if isinstance(aliases, list):
+            unique_aliases: list[str] = []
+            seen_aliases: set[str] = set()
+            for alias in aliases:
+                text = str(alias).strip()
+                if text and text not in seen_aliases:
+                    unique_aliases.append(text)
+                    seen_aliases.add(text)
+            new_entry["aliases"] = unique_aliases
+        else:
+            new_entry["aliases"] = []
+        new_entry.setdefault("source", "vor")
+        return new_entry
+
     new_vor_entries: list[dict[str, object]] = []
     seen_vor_ids: set[str] = set()
     skipped_unmerged_count = 0
@@ -801,6 +945,26 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
                 target["vor_id"] = vor_id
             continue
 
+        if static_override is not None:
+            # The vor_id is in STATIC_VOR_ENTRIES *and* in the fresh VOR
+            # CSV but no existing station matches it. This is the exact
+            # case "Guntramsdorf Bahnhof" hits: vor_id 430361600 is in
+            # the CSV (because the resolver writes successful resolves
+            # there), and pendler_candidates.json/STATIC_VOR_ENTRIES
+            # both want to introduce it as a new entry — but ÖBB has no
+            # "Guntramsdorf" Excel row, so vor_id_to_entry has no match
+            # by bst_id either. Without this fallback, the static
+            # template was silently dropped on every run (the merge
+            # loop at line 837 below skips it because seen_vor_ids
+            # already contains the id from this iteration). Fall back
+            # to creating a new entry from the static template so the
+            # directory keeps the curated pendler stop.
+            new_entry = _new_entry_from_static(
+                static_override, used_bst_ids, used_bst_codes, _allocate_identifier
+            )
+            new_vor_entries.append(new_entry)
+            continue
+
         # A VOR-stop that did not merge into an existing entry is most often
         # a "lost in translation" mismatch produced by fetch_vor_haltestellen
         # (e.g. "Roma Termini" → "Wels Hbf", "Rennweg" → "Rennweg am Katschberg")
@@ -824,26 +988,9 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
             continue
         if vor_id in vor_id_to_entry:
             continue
-        new_entry = dict(static_entry)
-        bst_id = _normalize_id(new_entry.get("bst_id")) or _allocate_identifier()
-        new_entry["bst_id"] = bst_id
-        used_bst_ids.add(bst_id)
-        bst_code = _normalize_id(new_entry.get("bst_code")) or bst_id
-        new_entry["bst_code"] = bst_code
-        used_bst_codes.add(bst_code)
-        aliases = new_entry.get("aliases")
-        if isinstance(aliases, list):
-            unique_aliases: list[str] = []
-            seen_aliases: set[str] = set()
-            for alias in aliases:
-                text = str(alias).strip()
-                if text and text not in seen_aliases:
-                    unique_aliases.append(text)
-                    seen_aliases.add(text)
-            new_entry["aliases"] = unique_aliases
-        else:
-            new_entry["aliases"] = []
-        new_entry.setdefault("source", "vor")
+        new_entry = _new_entry_from_static(
+            static_entry, used_bst_ids, used_bst_codes, _allocate_identifier
+        )
         new_vor_entries.append(new_entry)
 
     new_vor_entries.sort(key=lambda item: (str(item.get("name")), str(item.get("vor_id"))))

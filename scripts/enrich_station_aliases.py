@@ -45,6 +45,7 @@ DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 DEFAULT_VOR_STOPS = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_VOR_MAPPING = BASE_DIR / "data" / "vor-haltestellen.mapping.json"
 DEFAULT_GTFS_STOPS = BASE_DIR / "data" / "gtfs" / "stops.txt"
+DEFAULT_PENDLER_CANDIDATES = BASE_DIR / "data" / "pendler_candidates.json"
 
 log = logging.getLogger("enrich_station_aliases")
 
@@ -76,6 +77,15 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=DEFAULT_GTFS_STOPS,
         help="GTFS stops.txt source for platform level names",
+    )
+    parser.add_argument(
+        "--pendler-candidates",
+        type=Path,
+        default=DEFAULT_PENDLER_CANDIDATES,
+        help=(
+            "pendler_candidates.json source — alternative_names entries get "
+            "added to the matching station's aliases"
+        ),
     )
     parser.add_argument(
         "--dry-run",
@@ -332,6 +342,56 @@ def _load_gtfs_index(path: Path) -> dict[str, set[str]]:
     return index
 
 
+def _load_pendler_alternative_names(path: Path) -> dict[str, list[str]]:
+    """Map normalized canonical / alternative-name keys → list of all
+    name variants from one ``pendler_candidates.json`` entry.
+
+    The fetcher already uses these alternatives to resolve VOR ids; the
+    alias enrichment uses them so feed text containing the colloquial
+    spelling ("Angern (March)" or "Trautmannsdorf/Leitha") matches the
+    canonical station entry. Each candidate's normalized canonical
+    name and its normalized alternative_names all key into the same
+    list so the lookup hits regardless of which form the station was
+    stored under.
+    """
+    if not path.exists():
+        log.info("Pendler candidates file %s not found", path)
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        log.warning("Invalid JSON in pendler candidates %s: %s", path, exc)
+        return {}
+    if not isinstance(data, Mapping):
+        return {}
+    raw = data.get("candidates")
+    if not isinstance(raw, list):
+        return {}
+    name_map: dict[str, list[str]] = {}
+    for entry in raw:
+        if not isinstance(entry, Mapping):
+            continue
+        canonical = entry.get("name")
+        alternatives = entry.get("alternative_names")
+        names: list[str] = []
+        if isinstance(canonical, str) and canonical.strip():
+            names.append(canonical.strip())
+        if isinstance(alternatives, list):
+            for alt in alternatives:
+                if isinstance(alt, str) and alt.strip():
+                    names.append(alt.strip())
+        if not names:
+            continue
+        for variant in names:
+            key = _normalize_key(variant)
+            if key:
+                name_map.setdefault(key, []).extend(
+                    n for n in names if n not in name_map.get(key, [])
+                )
+    log.info("Loaded %d pendler-candidate name keys", len(name_map))
+    return name_map
+
+
 def _add_alias(container: list[str], alias: str) -> None:
     if alias and alias not in container:
         container.append(alias)
@@ -343,6 +403,7 @@ def _alias_candidates(
     vor_mapping: Mapping[int, str],
     gtfs_index: Mapping[str, set[str]],
     other_canonical_keys: frozenset[str] = frozenset(),
+    pendler_alt_names: Mapping[str, list[str]] | None = None,
 ) -> list[str]:
     aliases: set[str] = set()
 
@@ -515,6 +576,35 @@ def _alias_candidates(
                 push(new_a)
 
     # -------------------------------------------------------------------------
+    # OPTIMIZATION: Inject pendler_candidates.json alternative_names
+    # -------------------------------------------------------------------------
+    # If the station's canonical name (or any alias collected so far)
+    # matches a pendler-candidate by normalized key, add ALL of that
+    # candidate's name variants as aliases. Solves the "Angern" station
+    # not having "Angern an der March" / "Angern (March)" / "Angern
+    # March" as aliases — those alternatives only existed in
+    # pendler_candidates.json for the resolver, and never made it into
+    # stations.json itself. The cross-station-collision and generic-
+    # blocklist filters below still apply, so dangerous additions are
+    # rejected.
+    if pendler_alt_names:
+        match_keys: set[str] = set()
+        own_key = _normalize_key(name)
+        if own_key:
+            match_keys.add(own_key)
+        for alias in list(aliases):
+            key = _normalize_key(alias)
+            if key:
+                match_keys.add(key)
+        added_from_pendler: set[str] = set()
+        for key in match_keys:
+            for variant in pendler_alt_names.get(key, ()):
+                if variant in added_from_pendler:
+                    continue
+                added_from_pendler.add(variant)
+                push(variant)
+
+    # -------------------------------------------------------------------------
     # OPTIMIZATION: Filter out dangerous aliases
     # -------------------------------------------------------------------------
     final_aliases = sorted(alias for alias in aliases if alias)
@@ -601,6 +691,7 @@ def main() -> int:
     vor_names = _load_vor_names(args.vor_stops)
     vor_mapping = _load_vor_mapping(args.vor_mapping)
     gtfs_index = _load_gtfs_index(args.gtfs_stops)
+    pendler_alt_names = _load_pendler_alternative_names(args.pendler_candidates)
 
     canonical_keys: set[str] = set()
     for entry in stations:
@@ -620,6 +711,7 @@ def main() -> int:
             vor_mapping,
             gtfs_index,
             other_canonical_keys=other_canonical_keys,
+            pendler_alt_names=pendler_alt_names,
         )
         ordered = _order_aliases(entry, aliases)
         if ordered != entry.get("aliases"):
