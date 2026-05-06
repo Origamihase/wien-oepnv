@@ -1356,7 +1356,18 @@ def _format_item_content(
 
     # Harte Begrenzung für den TV-Screen (max. 180 Zeichen)
     if len(summary) > 180:
-        summary = summary[:175].rsplit(' ', 1)[0] + " …"
+        truncated = summary[:175].rsplit(' ', 1)[0]
+        # If truncation lands on a short German abbreviation token like
+        # "bzw.", "ca.", "z.B.", "u.a.", drop it — the visual result
+        # "Word bzw. …" looks more like a glitch than an intentional
+        # ellipsis. We treat any token of <=5 chars ending in a period
+        # as an abbreviation.
+        last_space = truncated.rfind(' ')
+        if last_space > 0:
+            tail = truncated[last_space + 1:]
+            if tail.endswith('.') and len(tail) <= 5:
+                truncated = truncated[:last_space]
+        summary = truncated.rstrip(' ,;:-') + " …"
 
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(raw_title)
