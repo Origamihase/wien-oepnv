@@ -68,6 +68,28 @@ def test_invalid_int_env_uses_defaults(
     importlib.reload(vor)
 
 
+def test_max_requests_per_day_capped_at_contract_limit(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # Security: VOR_MAX_REQUESTS_PER_DAY must never exceed the hard contract
+    # cap of 100/day, regardless of an env override (intentional misconfig,
+    # leaked CI env, or compromised secret store). Disabling this cap would
+    # let the daily quota gate be bypassed in 8+ call sites that read
+    # MAX_REQUESTS_PER_DAY, risking suspension of the access ID by VAO.
+    monkeypatch.setenv("VOR_MAX_REQUESTS_PER_DAY", "99999")
+    importlib.reload(vor)
+    assert vor.MAX_REQUESTS_PER_DAY == vor.DEFAULT_MAX_REQUESTS_PER_DAY == 100
+
+    # The env var may still *tighten* the budget below the contract cap.
+    monkeypatch.setenv("VOR_MAX_REQUESTS_PER_DAY", "50")
+    importlib.reload(vor)
+    assert vor.MAX_REQUESTS_PER_DAY == 50
+
+    monkeypatch.delenv("VOR_MAX_REQUESTS_PER_DAY", raising=False)
+    importlib.reload(vor)
+    assert vor.MAX_REQUESTS_PER_DAY == vor.DEFAULT_MAX_REQUESTS_PER_DAY
+
+
 def test_invalid_bus_regex_falls_back_to_defaults(
     monkeypatch: pytest.MonkeyPatch,
     caplog: pytest.LogCaptureFixture,
