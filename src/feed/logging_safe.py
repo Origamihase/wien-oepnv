@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 import json
 from datetime import datetime
-from typing import Any, Dict
+from typing import Any
 
 from .config import LOG_FORMAT, LOG_TIMEZONE
 from ..utils.logging import sanitize_log_message
@@ -65,7 +65,7 @@ class SafeJSONFormatter(logging.Formatter):
         sanitized_msg = sanitize_log_message(original_msg)
 
         timestamp = datetime.fromtimestamp(record.created, LOG_TIMEZONE)
-        payload: Dict[str, Any] = {
+        payload: dict[str, Any] = {
             "timestamp": timestamp.isoformat(),
             "level": record.levelname,
             "logger": record.name,
@@ -76,7 +76,7 @@ class SafeJSONFormatter(logging.Formatter):
         if record.stack_info:
             payload["stack"] = self.formatStack(record.stack_info)
 
-        extras: Dict[str, Any] = {}
+        extras: dict[str, Any] = {}
         for key, value in record.__dict__.items():
             if key in self._DEFAULT_FIELDS:
                 continue

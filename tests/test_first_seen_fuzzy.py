@@ -3,7 +3,7 @@ import sys
 import pytest
 import types
 from pathlib import Path
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, UTC
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> types.ModuleType:
@@ -35,7 +35,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> types
 
 def test_first_seen_fuzzy_identity(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     build_feed = _import_build_feed(monkeypatch, tmp_path)
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     item_a = {
         "source": "oebb",
         "category": "test",

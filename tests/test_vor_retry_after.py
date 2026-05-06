@@ -1,6 +1,6 @@
 import logging
 from types import TracebackType
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, UTC
 from typing import Any
 
 import pytest
@@ -100,7 +100,7 @@ def test_retry_after_http_date(
     monkeypatch: pytest.MonkeyPatch,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
-    fixed_now = datetime(2024, 1, 1, 12, 0, tzinfo=timezone.utc)
+    fixed_now = datetime(2024, 1, 1, 12, 0, tzinfo=UTC)
     delay = timedelta(seconds=7)
     retry_dt = fixed_now + delay
 

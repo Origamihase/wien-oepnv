@@ -3,7 +3,7 @@ import importlib
 import pytest
 import types
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     module_name = "src.build_feed"
@@ -45,20 +45,20 @@ def test_sort_key_handles_none_guid(monkeypatch: pytest.MonkeyPatch, tmp_path: P
     item_none_guid = {
         "title": "None Guid",
         "guid": None,
-        "pubDate": datetime.now(timezone.utc)
+        "pubDate": datetime.now(UTC)
     }
 
     # Create an item with no guid key
     item_missing_guid = {
         "title": "Missing Guid",
-        "pubDate": datetime.now(timezone.utc)
+        "pubDate": datetime.now(UTC)
     }
 
     # Create an item with string guid
     item_str_guid = {
         "title": "String Guid",
         "guid": "some-guid",
-        "pubDate": datetime.now(timezone.utc)
+        "pubDate": datetime.now(UTC)
     }
 
     # This should not raise TypeError
@@ -80,7 +80,7 @@ def test_deterministic_sorting_fallback(monkeypatch: pytest.MonkeyPatch, tmp_pat
 
     build_feed = _import_build_feed(monkeypatch)
 
-    now = datetime(2024, 1, 1, 12, 0, tzinfo=timezone.utc)
+    now = datetime(2024, 1, 1, 12, 0, tzinfo=UTC)
     # Identical pubDates, but no guids
     items = [
         {"title": "Item C", "pubDate": now},

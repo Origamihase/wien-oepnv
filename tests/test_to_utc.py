@@ -1,6 +1,6 @@
 import importlib
 import sys
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone, timedelta, UTC
 from pathlib import Path
 from typing import Any
 import pytest
@@ -29,7 +29,7 @@ def test_to_utc_converts_timezone(monkeypatch: pytest.MonkeyPatch) -> None:
     cet = timezone(timedelta(hours=2))
     dt = datetime(2025, 1, 1, 12, 0, tzinfo=cet)
     result = build_feed._to_utc(dt)
-    assert result.tzinfo == timezone.utc
+    assert result.tzinfo == UTC
     assert result.hour == 10
 
 
@@ -52,7 +52,7 @@ def test_fmt_rfc2822_fallback_locale_independent(monkeypatch: pytest.MonkeyPatch
     monkeypatch.setattr(build_feed, "format_datetime", broken_formatter)
 
     # Create a specific datetime: March 1, 2023, 12:00:00 UTC
-    dt = datetime(2023, 3, 1, 12, 0, 0, tzinfo=timezone.utc)
+    dt = datetime(2023, 3, 1, 12, 0, 0, tzinfo=UTC)
 
     formatted = build_feed._fmt_rfc2822(dt)
 
@@ -62,7 +62,7 @@ def test_fmt_rfc2822_fallback_locale_independent(monkeypatch: pytest.MonkeyPatch
     assert formatted == "Wed, 01 Mar 2023 13:00:00 +0100"
 
     # Another test for daylight saving time (August 15, 2023)
-    dt2 = datetime(2023, 8, 15, 12, 0, 0, tzinfo=timezone.utc)
+    dt2 = datetime(2023, 8, 15, 12, 0, 0, tzinfo=UTC)
     formatted2 = build_feed._fmt_rfc2822(dt2)
 
     # 12:00 UTC -> 14:00 CEST (+0200)

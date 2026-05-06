@@ -5,7 +5,7 @@ from typing import Any
 
 import pytest
 import types
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, UTC
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch, env: dict[str, str]) -> types.ModuleType:
@@ -37,7 +37,7 @@ def test_main_filters_items_older_than_max(
         {"MAX_ITEM_AGE_DAYS": "2", "ABSOLUTE_MAX_AGE_DAYS": "10"},
     )
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     recent = {"title": "recent", "pubDate": now - timedelta(days=2) + timedelta(minutes=1)}
     old = {"title": "old", "pubDate": now - timedelta(days=2) - timedelta(minutes=1)}
 
@@ -69,7 +69,7 @@ def test_main_filters_items_older_than_absolute(
         {"MAX_ITEM_AGE_DAYS": "1000", "ABSOLUTE_MAX_AGE_DAYS": "2"},
     )
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     within = {
         "title": "within_abs",
         "starts_at": now - timedelta(days=2) + timedelta(minutes=1),

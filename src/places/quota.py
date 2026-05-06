@@ -6,10 +6,10 @@ import json
 import logging
 import os
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from zoneinfo import ZoneInfo
 from pathlib import Path
-from typing import Callable, Dict, Mapping
+from collections.abc import Callable, Mapping
 
 from ..utils.files import atomic_write
 from ..feed.config import validate_path
@@ -20,10 +20,10 @@ _KIND_KEYS = ("nearby", "text", "details")
 
 
 def _utc_now() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
-def _empty_counts() -> Dict[str, int]:
+def _empty_counts() -> dict[str, int]:
     return {key: 0 for key in _KIND_KEYS}
 
 
@@ -52,7 +52,7 @@ class MonthlyQuota:
     """Persisted request counters scoped to the current UTC month."""
 
     month_key: str
-    counts: Dict[str, int] = field(default_factory=_empty_counts)
+    counts: dict[str, int] = field(default_factory=_empty_counts)
     total: int = 0
     daily_key: str = ""
     daily_total: int = 0
@@ -75,7 +75,7 @@ class MonthlyQuota:
         path: Path,
         *,
         now_func: Callable[[], datetime] | None = None,
-    ) -> "MonthlyQuota":
+    ) -> MonthlyQuota:
         now_callable = now_func or _utc_now
         if not path.exists():
             return cls(
@@ -98,7 +98,7 @@ class MonthlyQuota:
         counts_raw = raw.get("counts", {})
         if not isinstance(counts_raw, dict):
             raise ValueError("Quota state field 'counts' must be an object")
-        counts: Dict[str, int] = _empty_counts()
+        counts: dict[str, int] = _empty_counts()
         for key in _KIND_KEYS:
             value = counts_raw.get(key, 0)
             if isinstance(value, int) and value >= 0:
@@ -202,7 +202,7 @@ def load_quota_config_from_env(env: Mapping[str, str] | None = None) -> QuotaCon
         "PLACES_LIMIT_DAILY": 200,
     }
 
-    limits: Dict[str, int | None] = {}
+    limits: dict[str, int | None] = {}
     for key, default in defaults.items():
         try:
             value = _parse_limit(environment.get(key))

@@ -5,7 +5,7 @@ from __future__ import annotations
 import importlib
 import json
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from pathlib import Path
 from types import ModuleType
 from typing import Any, cast
@@ -144,7 +144,7 @@ def test_main_generates_feed_and_health_with_plugin(
     from src.feed import providers as provider_mod
 
     module_name = "tests.fake_plugin_e2e"
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
 
     def plugin_loader(*_args: Any, **_kwargs: Any) -> list[FeedItem]:
         item: FeedItem = {

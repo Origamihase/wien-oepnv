@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from unittest.mock import patch
 
-from typing import Iterator
+from collections.abc import Iterator
 import pytest
 import src.build_feed
 
@@ -41,6 +41,6 @@ def test_save_state_secure_permissions(tmp_path: Path, mock_feed_config: None) -
         assert perms == 0, f"File permissions {oct(mode)} are too loose (expected 0o600)"
 
         # Also verify content to ensure it was written correctly
-        with open(state_file, "r") as f:
+        with open(state_file) as f:
             saved_data = json.load(f)
         assert saved_data == test_state

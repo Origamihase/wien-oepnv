@@ -8,7 +8,8 @@ import secrets
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Set, cast
+from typing import Any, cast
+from collections.abc import Iterable, Iterator, Sequence
 
 import requests
 
@@ -34,7 +35,7 @@ LOGGER = logging.getLogger("places.google")
 _MAX_ERROR_DETAIL = 200
 
 
-def _sanitize_error_detail(detail: str, secrets: Optional[List[str]] = None) -> str:
+def _sanitize_error_detail(detail: str, secrets: list[str] | None = None) -> str:
     # Security: Mask secrets and strip control characters to avoid log injection.
     cleaned = sanitize_log_message(detail, secrets=secrets)
     return cleaned[:_MAX_ERROR_DETAIL]
@@ -82,7 +83,7 @@ DEFAULT_INCLUDED_TYPES: Sequence[str] = (
     "subway_station",
     "bus_station",
 )
-VALID_TYPES: Set[str] = set(DEFAULT_INCLUDED_TYPES)
+VALID_TYPES: set[str] = set(DEFAULT_INCLUDED_TYPES)
 _API_BASE = "https://places.googleapis.com/v1"
 _NEARBY_CONFIG_LOGGED = False
 
@@ -107,14 +108,14 @@ class Place:
     name: str
     latitude: float
     longitude: float
-    types: List[str]
-    formatted_address: Optional[str]
+    types: list[str]
+    formatted_address: str | None
 
 
 @dataclass(frozen=True)
 class GooglePlacesConfig:
     api_key: str
-    included_types: List[str]
+    included_types: list[str]
     language: str
     region: str
     radius_m: int
@@ -130,10 +131,10 @@ class GooglePlacesClient:
         self,
         config: GooglePlacesConfig,
         *,
-        session: Optional[requests.Session] = None,
-        quota: Optional[MonthlyQuota] = None,
-        quota_config: Optional[QuotaConfig] = None,
-        quota_state_path: Optional[Path] = None,
+        session: requests.Session | None = None,
+        quota: MonthlyQuota | None = None,
+        quota_config: QuotaConfig | None = None,
+        quota_state_path: Path | None = None,
         enforce_quota: bool = False,
     ) -> None:
         self._config = config
@@ -149,14 +150,14 @@ class GooglePlacesClient:
         self._quota_config = quota_config
         self._quota_state_path = quota_state_path
         self._enforce_quota = enforce_quota
-        self._quota_skipped_kinds: Set[str] = set()
+        self._quota_skipped_kinds: set[str] = set()
         self._included_types = self._sanitize_included_types(config.included_types)
         self._radius_m = RADIUS_M
         self._max_result_count = MAX_RESULTS
         self._rank_preference = RANK_PREF
         self._consecutive_5xx_errors = 0
 
-    def __enter__(self) -> "GooglePlacesClient":
+    def __enter__(self) -> GooglePlacesClient:
         return self
 
     def __exit__(self, exc_type: object, exc_val: object, exc_tb: object) -> None:
@@ -190,7 +191,7 @@ class GooglePlacesClient:
             )
             _NEARBY_CONFIG_LOGGED = True
 
-        base_body: Dict[str, object] = {
+        base_body: dict[str, object] = {
             "languageCode": self._config.language,
             "includedTypes": self._included_types,
             "rankPreference": self._rank_preference,
@@ -208,7 +209,7 @@ class GooglePlacesClient:
         if self._config.region:
             base_body["regionCode"] = self._config.region
 
-        page_token: Optional[str] = None
+        page_token: str | None = None
         page_count = 0
         MAX_PAGES = 50
         while True:
@@ -251,7 +252,7 @@ class GooglePlacesClient:
             if not page_token:
                 break
 
-    def _parse_place(self, raw: object) -> Optional[Place]:
+    def _parse_place(self, raw: object) -> Place | None:
         if not isinstance(raw, dict):
             LOGGER.warning("Ignoring unexpected place payload: %s", self._sanitize_arg(raw))
             return None
@@ -273,11 +274,11 @@ class GooglePlacesClient:
             return None
         latitude = location.get("latitude")
         longitude = location.get("longitude")
-        if not isinstance(latitude, (float, int)) or not isinstance(longitude, (float, int)):
+        if not isinstance(latitude, float | int) or not isinstance(longitude, float | int):
             LOGGER.warning("Skipping place with invalid coordinates: %s", self._sanitize_arg(place_id))
             return None
         types_raw = raw.get("types")
-        types: List[str]
+        types: list[str]
         if isinstance(types_raw, list):
             types = [str(item) for item in types_raw if isinstance(item, str)]
         else:
@@ -297,11 +298,11 @@ class GooglePlacesClient:
     def _post(
         self,
         endpoint: str,
-        body: Dict[str, object],
+        body: dict[str, object],
         *,
-        quota_kind: Optional[str] = None,
+        quota_kind: str | None = None,
         field_mask: str = FIELD_MASK_NEARBY,
-    ) -> Dict[str, object]:
+    ) -> dict[str, object]:
         if quota_kind and self._quota_active:
             quota = cast(MonthlyQuota, self._quota)
             cfg = cast(QuotaConfig, self._quota_config)
@@ -324,7 +325,7 @@ class GooglePlacesClient:
             "X-Goog-FieldMask": field_mask,
         }
         attempt = 0
-        last_error: Optional[Exception] = None
+        last_error: Exception | None = None
 
         # Check circuit breaker before starting requests
         if self._consecutive_5xx_errors >= 5:
@@ -396,7 +397,7 @@ class GooglePlacesClient:
                             raise GooglePlacesError(
                                 f"Unexpected JSON payload type from Places API: {type(payload).__name__}"
                             )
-                        return cast(Dict[str, object], payload)
+                        return cast(dict[str, object], payload)
 
                     if response.status_code in {429, 500, 502, 503, 504}:
                         if response.status_code != 429:
@@ -483,14 +484,14 @@ class GooglePlacesClient:
 
         message = payload.get("message")
         status = payload.get("status")
-        formatted: Optional[str] = None
+        formatted: str | None = None
 
         details = payload.get("details")
         if isinstance(details, list):
             for detail_item in details:
                 if not isinstance(detail_item, dict):
                     continue
-                detail_dict = cast('Dict[str, Any]', detail_item)
+                detail_dict = cast('dict[str, Any]', detail_item)
                 detail_type = detail_dict.get("@type")
                 if not isinstance(detail_type, str) or not detail_type.endswith("BadRequest"):
                     continue
@@ -527,9 +528,9 @@ class GooglePlacesClient:
 
         return formatted or default
 
-    def _sanitize_included_types(self, raw_types: Iterable[str]) -> List[str]:
-        seen: Set[str] = set()
-        sanitized: List[str] = []
+    def _sanitize_included_types(self, raw_types: Iterable[str]) -> list[str]:
+        seen: set[str] = set()
+        sanitized: list[str] = []
         for item in raw_types:
             candidate = item.strip().lower()
             if not candidate:
@@ -560,7 +561,7 @@ class GooglePlacesClient:
         )
 
     @property
-    def quota_skipped_kinds(self) -> Set[str]:
+    def quota_skipped_kinds(self) -> set[str]:
         return set(self._quota_skipped_kinds)
 
     def _record_successful_request(self, kind: str) -> None:

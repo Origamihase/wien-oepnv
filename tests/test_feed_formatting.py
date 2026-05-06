@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from typing import Any
 
 from src.build_feed import _emit_item
@@ -6,7 +6,7 @@ from src.feed_types import FeedItem
 
 def test_emit_item_formatting_html_stripping() -> None:
     # Setup
-    now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
+    now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=UTC)
     state: dict[str, dict[str, Any]] = {}
 
     # Input with HTML and potential artifacts
@@ -17,8 +17,8 @@ def test_emit_item_formatting_html_stripping() -> None:
         "description": "<h2>Kranarbeiten</h2><p>Details here.</p>",
         "link": "",
         "guid": "guid1",
-        "starts_at": datetime(2023, 1, 1, 10, 0, 0, tzinfo=timezone.utc),
-        "ends_at": datetime(2023, 1, 1, 14, 0, 0, tzinfo=timezone.utc),
+        "starts_at": datetime(2023, 1, 1, 10, 0, 0, tzinfo=UTC),
+        "ends_at": datetime(2023, 1, 1, 14, 0, 0, tzinfo=UTC),
     }
 
     # Execute
@@ -64,7 +64,7 @@ def test_emit_item_formatting_html_stripping() -> None:
 
 def test_emit_item_formatting_plain_text() -> None:
     # Setup
-    now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
+    now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=UTC)
     state: dict[str, dict[str, Any]] = {}
 
     item: FeedItem = {
@@ -91,7 +91,7 @@ def test_emit_item_formatting_plain_text() -> None:
 
 def test_emit_item_formatting_multiline_collapsed() -> None:
     # Setup
-    now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
+    now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=UTC)
     state: dict[str, dict[str, Any]] = {}
 
     item: FeedItem = {
@@ -120,7 +120,7 @@ def test_emit_item_formatting_multiline_collapsed() -> None:
 
 def test_emit_item_timeframe_formatting() -> None:
     # Setup
-    now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
+    now = datetime(2023, 1, 1, 12, 0, 0, tzinfo=UTC)
     state: dict[str, dict[str, Any]] = {}
 
     # Start and End known
@@ -129,8 +129,8 @@ def test_emit_item_timeframe_formatting() -> None:
         "description": "Desc",
         "link": "",
         "guid": "guid4",
-        "starts_at": datetime(2023, 1, 1, 8, 0, 0, tzinfo=timezone.utc),
-        "ends_at": datetime(2023, 1, 2, 8, 0, 0, tzinfo=timezone.utc),
+        "starts_at": datetime(2023, 1, 1, 8, 0, 0, tzinfo=UTC),
+        "ends_at": datetime(2023, 1, 2, 8, 0, 0, tzinfo=UTC),
     }
 
     ident, elem, replacements = _emit_item(item, now, state)

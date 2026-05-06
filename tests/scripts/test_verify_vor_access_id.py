@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import json
 import logging
-from typing import Any, Iterator
+from typing import Any
+from collections.abc import Iterator
 
 import pytest
 
@@ -47,7 +48,7 @@ def test_main_succeeds_on_valid_payload(
         headers: dict[str, str] = {}
         auth = None
 
-        def __enter__(self) -> "DummySession":
+        def __enter__(self) -> DummySession:
             return self
 
         def __exit__(self, *exc: object) -> None:
@@ -85,7 +86,7 @@ def test_main_returns_1_on_request_failure(
         headers: dict[str, str] = {}
         auth = None
 
-        def __enter__(self) -> "DummySession":
+        def __enter__(self) -> DummySession:
             return self
 
         def __exit__(self, *exc: object) -> None:
@@ -112,7 +113,7 @@ def test_main_returns_1_on_unexpected_payload(
         headers: dict[str, str] = {}
         auth = None
 
-        def __enter__(self) -> "DummySession":
+        def __enter__(self) -> DummySession:
             return self
 
         def __exit__(self, *exc: object) -> None:

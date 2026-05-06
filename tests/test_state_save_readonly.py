@@ -6,7 +6,7 @@ from typing import Any
 
 import pytest
 import types
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
@@ -37,7 +37,7 @@ def test_make_rss_logs_warning_when_state_readonly(
 
 
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     item = {
         "source": "test",
         "category": "cat",
@@ -68,8 +68,8 @@ def test_make_rss_saves_empty_state_when_no_identities(
     with caplog.at_level(logging.WARNING):
         rss = build_feed._make_rss(
             [],
-            datetime.now(timezone.utc),
-            {"old": {"first_seen": datetime.now(timezone.utc).isoformat()}},
+            datetime.now(UTC),
+            {"old": {"first_seen": datetime.now(UTC).isoformat()}},
         )
 
     assert "</rss>" in rss

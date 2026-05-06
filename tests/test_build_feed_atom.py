@@ -8,16 +8,16 @@ emission, and the <language>de</language> tag.
 """
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 
-from typing import Callable, Iterator
+from collections.abc import Callable, Iterator
 from defusedxml import ElementTree as ET
 import pytest
 
 from src.build_feed import _make_rss
 
 
-_NOW = datetime(2026, 5, 1, 18, 0, 0, tzinfo=timezone.utc)
+_NOW = datetime(2026, 5, 1, 18, 0, 0, tzinfo=UTC)
 _ATOM_NS = "http://www.w3.org/2005/Atom"
 
 

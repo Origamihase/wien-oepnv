@@ -15,7 +15,7 @@ def _emit_item_str(item: Any, now: datetime.datetime, state: dict[str, Any]) -> 
 
 def test_javascript_link_sanitization() -> None:
     # Mock date and state
-    now = datetime.datetime(2025, 1, 1, 12, 0, 0, tzinfo=datetime.timezone.utc)
+    now = datetime.datetime(2025, 1, 1, 12, 0, 0, tzinfo=datetime.UTC)
     state: dict[str, dict[str, Any]] = {}
 
     # Item with malicious javascript link
@@ -42,7 +42,7 @@ def test_javascript_link_sanitization() -> None:
         assert f"<link>{FEED_LINK}</link>" in xml
 
 def test_valid_http_link_preserved() -> None:
-    now = datetime.datetime(2025, 1, 1, 12, 0, 0, tzinfo=datetime.timezone.utc)
+    now = datetime.datetime(2025, 1, 1, 12, 0, 0, tzinfo=datetime.UTC)
     state: dict[str, dict[str, Any]] = {}
 
     valid_link = "https://example.com/article"

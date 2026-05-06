@@ -14,6 +14,6 @@ def test_guid_backward_compatibility() -> None:
     # "foo|bar" -> sha256
     # If inputs contain no special chars, the behavior should be the same as simple join
     # because replace() won't change anything.
-    expected = hashlib.sha256("foo|bar".encode("utf-8")).hexdigest()
+    expected = hashlib.sha256(b"foo|bar").hexdigest()
     actual = make_guid("foo", "bar")
     assert actual == expected, "Safe input should match simple join behavior"

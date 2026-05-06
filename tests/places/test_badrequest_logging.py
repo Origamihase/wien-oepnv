@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Dict, Iterator, Union
+from typing import Any
+from collections.abc import Iterator
 from unittest.mock import MagicMock
 
 import pytest
@@ -12,18 +13,18 @@ from src.places.client import FIELD_MASK_NEARBY, GooglePlacesClient, GooglePlace
 
 
 class _ErrorResponse:
-    def __init__(self, status_code: int, payload: Dict[str, Any]) -> None:
+    def __init__(self, status_code: int, payload: dict[str, Any]) -> None:
         self.status_code = status_code
         self._payload = payload
         self.text = json.dumps(payload)
-        self.headers: Dict[str, str] = {}
+        self.headers: dict[str, str] = {}
         self.raw = MagicMock()
         conn = MagicMock()
         conn.sock.getpeername.return_value = ("8.8.8.8", 443)
         self.raw.connection = conn
         self.raw._connection = conn
 
-    def json(self) -> Dict[str, Any]:
+    def json(self) -> dict[str, Any]:
         return self._payload
 
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
@@ -40,18 +41,18 @@ class _ErrorResponse:
 
 
 class _ErrorSession:
-    def __init__(self, response: Union[_ErrorResponse, _TextErrorResponse]) -> None:
+    def __init__(self, response: _ErrorResponse | _TextErrorResponse) -> None:
         self._response = response
 
     def post(
         self,
         url: str,
         *,
-        headers: Dict[str, str],
-        json: Dict[str, Any],
+        headers: dict[str, str],
+        json: dict[str, Any],
         timeout: float,
         **kwargs: Any,
-    ) -> Union[_ErrorResponse, _TextErrorResponse]:
+    ) -> _ErrorResponse | _TextErrorResponse:
         return self._response
 
 
@@ -59,14 +60,14 @@ class _TextErrorResponse:
     def __init__(self, status_code: int, text: str) -> None:
         self.status_code = status_code
         self.text = text
-        self.headers: Dict[str, str] = {}
+        self.headers: dict[str, str] = {}
         self.raw = MagicMock()
         conn = MagicMock()
         conn.sock.getpeername.return_value = ("8.8.8.8", 443)
         self.raw.connection = conn
         self.raw._connection = conn
 
-    def json(self) -> Dict[str, Any]:
+    def json(self) -> dict[str, Any]:
         raise ValueError("invalid json")
 
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:

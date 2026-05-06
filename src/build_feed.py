@@ -18,14 +18,15 @@ from concurrent.futures import (
     TimeoutError,
     wait,
 )
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, UTC
 import requests
 from dateutil import parser
 from email.utils import format_datetime
 from pathlib import Path
 from threading import BoundedSemaphore, Lock
 from time import perf_counter
-from typing import Any, Dict, List, Optional, Sequence, Set, Tuple, Union, cast, NamedTuple
+from typing import Any, cast, NamedTuple
+from collections.abc import Sequence
 from urllib.parse import quote, urlparse
 from zoneinfo import ZoneInfo
 
@@ -98,7 +99,7 @@ _INCOMPLETE_TITLE_TAIL_RE = re.compile(
 )
 
 
-def _post_filter_wl(items: List[Any]) -> List[Any]:
+def _post_filter_wl(items: list[Any]) -> list[Any]:
     """Defence-in-depth: normalise / drop bad WL items loaded from cache.
 
     The WL cache is only refreshed periodically, so:
@@ -109,7 +110,7 @@ def _post_filter_wl(items: List[Any]) -> List[Any]:
        ``Ersatzbus 41E hält gegenüber`` (with no location after
        ``gegenüber``) is meaningless. Such items are dropped.
     """
-    out: List[Any] = []
+    out: list[Any] = []
     for item in items:
         if not isinstance(item, dict):
             out.append(item)
@@ -130,11 +131,11 @@ def _post_filter_wl(items: List[Any]) -> List[Any]:
     return out
 
 
-def read_cache_wl() -> List[Any]:
+def read_cache_wl() -> list[Any]:
     return _post_filter_wl(list(read_cache("wl") or []))
 
 
-def _post_filter_oebb(items: List[Any]) -> List[Any]:
+def _post_filter_oebb(items: list[Any]) -> list[Any]:
     """Re-apply the ÖBB relevance filter to cached items.
 
     The cache is only refreshed by `update_oebb_cache.py`, so a filter
@@ -148,7 +149,7 @@ def _post_filter_oebb(items: List[Any]) -> List[Any]:
     """
     from .providers.oebb import _is_relevant  # local import: avoids circular at module load
 
-    out: List[Any] = []
+    out: list[Any] = []
     for item in items:
         if not isinstance(item, dict):
             out.append(item)
@@ -164,26 +165,26 @@ def _post_filter_oebb(items: List[Any]) -> List[Any]:
     return out
 
 
-def read_cache_oebb() -> List[Any]:
+def read_cache_oebb() -> list[Any]:
     return _post_filter_oebb(list(read_cache("oebb") or []))
 
 
-def read_cache_vor() -> List[Any]:
+def read_cache_vor() -> list[Any]:
     return list(read_cache("vor") or [])
 
 
-def read_cache_baustellen() -> List[Any]:
+def read_cache_baustellen() -> list[Any]:
     return list(read_cache("baustellen") or [])
 
 
-DEFAULT_PROVIDERS: Tuple[Tuple[str, Any], ...] = (
+DEFAULT_PROVIDERS: tuple[tuple[str, Any], ...] = (
     ("WL_ENABLE", read_cache_wl),
     ("OEBB_ENABLE", read_cache_oebb),
     ("VOR_ENABLE", read_cache_vor),
     ("BAUSTELLEN_ENABLE", read_cache_baustellen),
 )
 
-PROVIDERS: List[Tuple[str, Any]] = list(DEFAULT_PROVIDERS)
+PROVIDERS: list[tuple[str, Any]] = list(DEFAULT_PROVIDERS)
 
 _PROVIDERS_INITIALIZED = False
 
@@ -208,19 +209,19 @@ def init_providers() -> None:
     _PROVIDERS_INITIALIZED = True
 
 
-def _provider_display_name(fetch: Any, env: Optional[str] = None) -> str:
+def _provider_display_name(fetch: Any, env: str | None = None) -> str:
     """Resolve the display name for a provider based on its loader or env var."""
     return resolve_provider_name(fetch, env)
 
 
-def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
+def _detect_stale_caches(report: RunReport, now: datetime) -> list[str]:
     """Record warnings for provider caches older than the configured threshold."""
 
     if feed_config.CACHE_MAX_AGE_HOURS <= 0:
         return []
 
     threshold = timedelta(hours=feed_config.CACHE_MAX_AGE_HOURS)
-    stale_messages: List[str] = []
+    stale_messages: list[str] = []
 
     for spec in iter_providers():
         loader = spec.loader
@@ -233,7 +234,7 @@ def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
             continue
 
         if modified_at.tzinfo is None:
-            modified_at = modified_at.replace(tzinfo=timezone.utc)
+            modified_at = modified_at.replace(tzinfo=UTC)
 
         age = now - modified_at
         if age <= threshold:
@@ -250,12 +251,12 @@ def _detect_stale_caches(report: RunReport, now: datetime) -> List[str]:
     return stale_messages
 
 
-def _provider_statuses() -> List[Tuple[str, bool]]:
+def _provider_statuses() -> list[tuple[str, bool]]:
     """Return a list of (name, enabled) tuples for all registered providers."""
     return provider_statuses()
 
 
-def _log_startup_summary(statuses: List[Tuple[str, bool]]) -> None:
+def _log_startup_summary(statuses: list[tuple[str, bool]]) -> None:
     """Log the active configuration and enabled providers at startup."""
     enabled = sorted(name for name, is_enabled in statuses if is_enabled)
     disabled = sorted(name for name, is_enabled in statuses if not is_enabled)
@@ -272,7 +273,7 @@ def _log_startup_summary(statuses: List[Tuple[str, bool]]) -> None:
         log.info("Deaktivierte Provider: %s", ", ".join(disabled))
 
 
-def _validate_configuration(statuses: List[Tuple[str, bool]]) -> None:
+def _validate_configuration(statuses: list[tuple[str, bool]]) -> None:
     """Check the runtime configuration for common issues (e.g. no providers active)."""
     enabled_count = sum(1 for _, is_enabled in statuses if is_enabled)
     if not statuses:
@@ -308,7 +309,7 @@ def _provider_env_slug(name: str) -> str:
     return slug or "PROVIDER"
 
 
-def _read_optional_non_negative_int(env_name: str) -> Optional[int]:
+def _read_optional_non_negative_int(env_name: str) -> int | None:
     """Read a non-negative integer from an environment variable."""
     raw = os.getenv(env_name)
     if raw is None:
@@ -333,7 +334,7 @@ def _read_optional_non_negative_int(env_name: str) -> Optional[int]:
     return value
 
 
-def _resolve_provider_override(candidates: List[str]) -> Optional[int]:
+def _resolve_provider_override(candidates: list[str]) -> int | None:
     """Helper to resolve the first valid integer from a list of env var candidates."""
     seen: set[str] = set()
     for candidate in candidates:
@@ -347,10 +348,10 @@ def _resolve_provider_override(candidates: List[str]) -> Optional[int]:
 
 
 def _provider_timeout_override(
-    fetch: Any, env: Optional[str], provider_name: str
-) -> Optional[int]:
+    fetch: Any, env: str | None, provider_name: str
+) -> int | None:
     """Determine if a specific timeout override exists for this provider."""
-    candidates: List[str] = []
+    candidates: list[str] = []
     custom_env = getattr(fetch, "_provider_timeout_env", None)
     if isinstance(custom_env, str) and custom_env.strip():
         candidates.append(custom_env.strip())
@@ -375,10 +376,10 @@ def _provider_concurrency_key(fetch: Any, provider_name: str) -> str:
 
 
 def _provider_worker_limit(
-    fetch: Any, env: Optional[str], provider_name: str, concurrency_key: str
-) -> Optional[int]:
+    fetch: Any, env: str | None, provider_name: str, concurrency_key: str
+) -> int | None:
     """Determine the maximum number of concurrent workers for this provider group."""
-    candidates: List[str] = []
+    candidates: list[str] = []
     custom_env = getattr(fetch, "_provider_max_workers_env", None)
     if isinstance(custom_env, str) and custom_env.strip():
         candidates.append(custom_env.strip())
@@ -408,7 +409,7 @@ def _fetch_supports_timeout(fetch: Any) -> bool:
 
 
 def _call_fetch_with_timeout(
-    fetch: Any, timeout: Union[int, float, None], supports_timeout: bool
+    fetch: Any, timeout: int | float | None, supports_timeout: bool
 ) -> Any:
     """Invoke the fetch callable, passing the timeout if supported."""
     if supports_timeout:
@@ -428,10 +429,10 @@ def _to_utc(dt: datetime) -> datetime:
     if dt.tzinfo is None:
         raise ValueError("Naive datetimes are banned. Must be timezone-aware.")
 
-    if dt.tzinfo is timezone.utc:
+    if dt.tzinfo is UTC:
         return dt
 
-    return dt.astimezone(timezone.utc)
+    return dt.astimezone(UTC)
 
 def _fmt_rfc2822(dt: datetime) -> str:
     """Format datetime as RFC-2822 string with Vienna offset."""
@@ -450,17 +451,17 @@ def _fmt_rfc2822(dt: datetime) -> str:
         try:
             local_dt = dt.astimezone(_VIENNA_TZ)
         except Exception:
-            local_dt = dt.astimezone(timezone.utc)
+            local_dt = dt.astimezone(UTC)
 
         return local_dt.strftime("%a, %d %b %Y %H:%M:%S %z")
 
 
 def format_local_times(
-    start: Optional[datetime], end: Optional[datetime]
+    start: datetime | None, end: datetime | None
 ) -> str:
     """Format a time range (start, end) into a localized string (e.g. 'Seit 01.01.2023')."""
-    start_local: Optional[datetime] = None
-    end_local: Optional[datetime] = None
+    start_local: datetime | None = None
+    end_local: datetime | None = None
 
     if isinstance(start, datetime):
         start_local = _to_utc(start).astimezone(_VIENNA_TZ)
@@ -512,12 +513,12 @@ _WHITESPACE_CLEANUP_RE = re.compile(r"[ \t\r\f\v]+")
 def _sanitize_text(s: str) -> str:
     return _CONTROL_RE.sub("", s or "")
 
-def _parse_lines_from_title(title: str) -> List[str]:
+def _parse_lines_from_title(title: str) -> list[str]:
     m = _LINE_PREFIX_RE.match(title or "")
     if not m:
         return []
 
-    tokens: List[str] = []
+    tokens: list[str] = []
     for raw in m.group(1).split("/"):
         token = raw.strip()
         if not token:
@@ -527,13 +528,13 @@ def _parse_lines_from_title(title: str) -> List[str]:
             tokens.append(normalized)
     return tokens
 
-def _ymd_or_none(dt: Optional[datetime]) -> str:
+def _ymd_or_none(dt: datetime | None) -> str:
     if isinstance(dt, datetime):
         return _to_utc(dt).date().isoformat()
     return ""
 
 
-def _parse_datetime(value: Any) -> Optional[datetime]:
+def _parse_datetime(value: Any) -> datetime | None:
     """Parse ISO8601 timestamps (incl. ``Z`` suffix and compact offsets).
 
     Treats naive timestamps as Vienna local time.
@@ -561,7 +562,7 @@ def _parse_datetime(value: Any) -> Optional[datetime]:
     return None
 
 
-def _coerce_datetime_field(it: Dict[str, Any], field: str) -> Optional[datetime]:
+def _coerce_datetime_field(it: dict[str, Any], field: str) -> datetime | None:
     value = it.get(field)
     if value is None:
         return None
@@ -578,9 +579,9 @@ def _coerce_datetime_field(it: Dict[str, Any], field: str) -> Optional[datetime]
 
 
 def _normalize_item_datetimes(
-    items: List[Any],
-    fields: Tuple[str, ...] = ("pubDate", "starts_at", "ends_at"),
-) -> List[Any]:
+    items: list[Any],
+    fields: tuple[str, ...] = ("pubDate", "starts_at", "ends_at"),
+) -> list[Any]:
     for item in items:
         if not isinstance(item, dict):
             continue
@@ -591,7 +592,7 @@ def _normalize_item_datetimes(
 
 # ---------------- State (first_seen) ----------------
 
-def _load_state() -> Dict[str, Dict[str, Any]]:
+def _load_state() -> dict[str, dict[str, Any]]:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     try:
         lock_path = path.with_suffix(".lock")
@@ -606,12 +607,12 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
         log.warning("State laden fehlgeschlagen (%s) – starte leer.", e)
         return {}
 
-    retention_cutoff: Optional[datetime] = None
+    retention_cutoff: datetime | None = None
     if feed_config.STATE_RETENTION_DAYS > 0:
-        now_utc = _to_utc(datetime.now(timezone.utc))
+        now_utc = _to_utc(datetime.now(UTC))
         retention_cutoff = now_utc - timedelta(days=feed_config.STATE_RETENTION_DAYS)
 
-    out: Dict[str, Dict[str, Any]] = {}
+    out: dict[str, dict[str, Any]] = {}
     for ident, entry in data.items():
         if not isinstance(entry, dict):
             continue
@@ -619,13 +620,13 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
             raw_first_seen = entry.get("first_seen", "")
             fs_dt = datetime.fromisoformat(str(raw_first_seen))
             if fs_dt.tzinfo is None:
-                fs_dt = fs_dt.replace(tzinfo=timezone.utc)
+                fs_dt = fs_dt.replace(tzinfo=UTC)
             fs_utc = _to_utc(fs_dt)
         except Exception:
             log.warning(
                 "State-Eintrag %s hat unparsebares first_seen: %r", ident, entry.get("first_seen")
             )
-            fs_dt = datetime.now(timezone.utc)
+            fs_dt = datetime.now(UTC)
             fs_utc = _to_utc(fs_dt)
 
         if retention_cutoff and fs_utc < retention_cutoff:
@@ -642,7 +643,7 @@ def _load_state() -> Dict[str, Dict[str, Any]]:
     return out
 
 
-def _save_state(state: Dict[str, Dict[str, Any]], deletions: Optional[Set[str]] = None) -> None:
+def _save_state(state: dict[str, dict[str, Any]], deletions: set[str] | None = None) -> None:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     path.parent.mkdir(parents=True, exist_ok=True)
     # Separate Lock-Datei vermeidet Permission-Fehler unter Windows, wenn
@@ -739,14 +740,14 @@ def _identity_for_item(item: FeedItem) -> str:
 
 # ---------------- Pipeline ----------------
 
-def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
+def _collect_items(report: RunReport | None = None) -> list[FeedItem]:
     init_providers()
     if report is None:
         report = RunReport(provider_statuses())
-    items: List[FeedItem] = []
+    items: list[FeedItem] = []
 
-    cache_alerts: defaultdict[str, List[str]] = defaultdict(list)
-    seen_cache_alerts: set[Tuple[str, str]] = set()
+    cache_alerts: defaultdict[str, list[str]] = defaultdict(list)
+    seen_cache_alerts: set[tuple[str, str]] = set()
     alert_lock = Lock()
 
     def _cache_alert_handler(provider_key: str, message: str) -> None:
@@ -764,10 +765,10 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
 
     unregister_cache_alert = register_cache_alert_hook(_cache_alert_handler)
     try:
-        cache_fetchers: List[Any] = []
-        network_fetchers: List[Any] = []
-        provider_names: Dict[Any, str] = {}
-        provider_envs: Dict[Any, Optional[str]] = {}
+        cache_fetchers: list[Any] = []
+        network_fetchers: list[Any] = []
+        provider_names: dict[Any, str] = {}
+        provider_envs: dict[Any, str | None] = {}
 
         provider_entries = list(PROVIDERS)
         providers_overridden = list(PROVIDERS) != list(DEFAULT_PROVIDERS)
@@ -859,11 +860,11 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
             desired_workers = min(desired_workers, feed_config.PROVIDER_MAX_WORKERS)
         with ThreadPoolExecutor(max_workers=max(1, desired_workers)) as executor:
             try:
-                futures: Dict[Any, Tuple[Any, str, int]] = {}
-                deadlines: Dict[Any, Optional[float]] = {}
+                futures: dict[Any, tuple[Any, str, int]] = {}
+                deadlines: dict[Any, float | None] = {}
                 pending: set[Any] = set()
                 cancelled_futures: set[Any] = set()
-                semaphores: Dict[str, BoundedSemaphore] = {}
+                semaphores: dict[str, BoundedSemaphore] = {}
 
                 for fetch in network_fetchers:
                     provider_name = provider_names.get(fetch, _provider_display_name(fetch))
@@ -876,7 +877,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     worker_limit = _provider_worker_limit(
                         fetch, env_name, provider_name, concurrency_key
                     )
-                    semaphore: Optional[BoundedSemaphore] = None
+                    semaphore: BoundedSemaphore | None = None
                     if worker_limit is not None and worker_limit > 0:
                         semaphore = semaphores.get(concurrency_key)
                         if semaphore is None:
@@ -906,9 +907,9 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
 
                     def _run_fetch(
                         fetch: Any = fetch,
-                        timeout_value: Union[int, float] = effective_timeout,
+                        timeout_value: int | float = effective_timeout,
                         supports: bool = supports_timeout,
-                        semaphore: Optional[BoundedSemaphore] = semaphore,
+                        semaphore: BoundedSemaphore | None = semaphore,
                         provider_name: str = provider_name,
                     ) -> Any:
                         timeout_arg = timeout_value if timeout_value >= 0 else None
@@ -974,7 +975,7 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
                     if not pending:
                         break
 
-                    wait_timeout: Optional[float] = None
+                    wait_timeout: float | None = None
                     remaining = []
                     for fut in pending:
                         deadline = deadlines.get(fut)
@@ -1017,15 +1018,15 @@ def _collect_items(report: Optional[RunReport] = None) -> List[FeedItem]:
         unregister_cache_alert()
 
 
-def _invoke_collect_items(report: RunReport) -> List[FeedItem]:
+def _invoke_collect_items(report: RunReport) -> list[FeedItem]:
     return _collect_items(report=report)
 
 
 def _drop_old_items(
-    items: List[FeedItem],
+    items: list[FeedItem],
     now: datetime,
-    state: Dict[str, Dict[str, Any]],
-) -> Tuple[List[FeedItem], Set[str]]:
+    state: dict[str, dict[str, Any]],
+) -> tuple[list[FeedItem], set[str]]:
     """Entferne Items, die zu alt sind oder bereits beendet wurden.
 
     Neben ``pubDate``/``starts_at`` wird – falls vorhanden – ``first_seen`` aus dem
@@ -1033,8 +1034,8 @@ def _drop_old_items(
     Datumsangaben, die andernfalls ewig im Feed verbleiben würden.
     """
 
-    out: List[FeedItem] = []
-    dropped: Set[str] = set()
+    out: list[FeedItem] = []
+    dropped: set[str] = set()
     now_utc = _to_utc(now)
     for it in items:
         if not isinstance(it, dict):
@@ -1050,7 +1051,7 @@ def _drop_old_items(
                 continue
 
         dt = it.get("pubDate") or it.get("starts_at")
-        age_days: Optional[float] = None
+        age_days: float | None = None
         if isinstance(dt, datetime):
             age_days = (now_utc - _to_utc(dt)).total_seconds() / 86400.0
         elif isinstance(state_entry, dict):
@@ -1066,7 +1067,7 @@ def _drop_old_items(
                     )
                 else:
                     if first_seen_dt.tzinfo is None:
-                        first_seen_dt = first_seen_dt.replace(tzinfo=timezone.utc)
+                        first_seen_dt = first_seen_dt.replace(tzinfo=UTC)
                     age_days = (now_utc - _to_utc(first_seen_dt)).total_seconds() / 86400.0
 
         if age_days is not None:
@@ -1084,7 +1085,7 @@ def _drop_old_items(
 
 def _dedupe_key_for_item(
     it: FeedItem, *, warn_on_missing: bool = True
-) -> Tuple[str, bool]:
+) -> tuple[str, bool]:
     """Return the deduplication key used for ``it`` and indicate fallback usage."""
     # Use explicit _identity if present
     if it.get("_identity"):
@@ -1111,15 +1112,15 @@ def _dedupe_key_for_item(
     return key, True
 
 
-def _summarize_duplicates(items: Sequence[FeedItem]) -> List[DuplicateSummary]:
-    groups: Dict[str, List[FeedItem]] = {}
+def _summarize_duplicates(items: Sequence[FeedItem]) -> list[DuplicateSummary]:
+    groups: dict[str, list[FeedItem]] = {}
     for it in items:
         if not isinstance(it, dict):
             continue  # type: ignore[unreachable]
         key, _ = _dedupe_key_for_item(it, warn_on_missing=False)
         groups.setdefault(key, []).append(it)
 
-    summaries: List[DuplicateSummary] = []
+    summaries: list[DuplicateSummary] = []
     for key, group in groups.items():
         if len(group) <= 1:
             continue
@@ -1133,7 +1134,7 @@ def _summarize_duplicates(items: Sequence[FeedItem]) -> List[DuplicateSummary]:
 
 def _count_new_items(
     items: Sequence[FeedItem],
-    state: Dict[str, Dict[str, Any]],
+    state: dict[str, dict[str, Any]],
 ) -> int:
     existing = set(state.keys()) if isinstance(state, dict) else set()
     count = 0
@@ -1146,7 +1147,7 @@ def _count_new_items(
     return count
 
 
-def _dedupe_items(items: List[FeedItem]) -> List[FeedItem]:
+def _dedupe_items(items: list[FeedItem]) -> list[FeedItem]:
     """
     Deduplicate items by identity/guid.
 
@@ -1168,7 +1169,7 @@ def _dedupe_items(items: List[FeedItem]) -> List[FeedItem]:
         if "_calculated_recency" in it:
             return it["_calculated_recency"]
 
-        candidates: List[datetime] = []
+        candidates: list[datetime] = []
         for field_name in ("pubDate", "first_seen", "starts_at"):
             value = it.get(field_name)
             if isinstance(value, datetime):
@@ -1181,7 +1182,7 @@ def _dedupe_items(items: List[FeedItem]) -> List[FeedItem]:
         if candidates:
             res = max(candidates)
         else:
-            res = datetime.min.replace(tzinfo=timezone.utc)
+            res = datetime.min.replace(tzinfo=UTC)
 
         it["_calculated_recency"] = res
         return res
@@ -1194,7 +1195,7 @@ def _dedupe_items(items: List[FeedItem]) -> List[FeedItem]:
         if isinstance(ends, datetime):
             res = _to_utc(ends)
         else:
-            res = datetime.min.replace(tzinfo=timezone.utc)
+            res = datetime.min.replace(tzinfo=UTC)
 
         it["_calculated_end"] = res
         return res
@@ -1219,8 +1220,8 @@ def _dedupe_items(items: List[FeedItem]) -> List[FeedItem]:
         b_len = len(b.get("description") or "")
         return a_len > b_len
 
-    seen: Dict[str, int] = {}
-    out: List[FeedItem] = []
+    seen: dict[str, int] = {}
+    out: list[FeedItem] = []
     for it in items:
         key, _ = _dedupe_key_for_item(it)
         if key in seen:
@@ -1232,7 +1233,7 @@ def _dedupe_items(items: List[FeedItem]) -> List[FeedItem]:
             out.append(it)
     return out
 
-def _sort_key(item: FeedItem) -> Tuple[int, float, str]:
+def _sort_key(item: FeedItem) -> tuple[int, float, str]:
     pd = item.get("pubDate")
     # Fix TypeError: Ensure guid is always a string, even if explicitly None
     guid_val = item.get("guid")
@@ -1283,7 +1284,7 @@ class FormattedContent(NamedTuple):
     desc_html: str
 
 
-def _update_item_state(it: FeedItem, now: datetime, state: Dict[str, Dict[str, Any]]) -> Tuple[str, datetime]:
+def _update_item_state(it: FeedItem, now: datetime, state: dict[str, dict[str, Any]]) -> tuple[str, datetime]:
     ident = _identity_for_item(it)
     st = state.get(ident)
     # Fallback: check guid as secondary key
@@ -1303,7 +1304,7 @@ def _update_item_state(it: FeedItem, now: datetime, state: Dict[str, Dict[str, A
 
 
 def _format_item_content(
-    it: FeedItem, ident: str, starts_at: Optional[datetime], ends_at: Optional[datetime]
+    it: FeedItem, ident: str, starts_at: datetime | None, ends_at: datetime | None
 ) -> FormattedContent:
     raw_title = it.get("title") or "Mitteilung"
     raw_desc  = it.get("description") or ""
@@ -1577,8 +1578,8 @@ def _format_item_content(
 
 
 def _emit_item(
-    it: FeedItem, now: datetime, state: Dict[str, Dict[str, Any]]
-) -> Tuple[str, ET.Element, Dict[str, str]]:
+    it: FeedItem, now: datetime, state: dict[str, dict[str, Any]]
+) -> tuple[str, ET.Element, dict[str, str]]:
     """Convert a normalized item dictionary into an RSS <item> element and CDATA replacements.
 
     Args:
@@ -1592,7 +1593,7 @@ def _emit_item(
          - The generated ElementTree.Element
          - A dictionary mapping placeholder strings to their CDATA-wrapped content.
     """
-    it_dict = cast(Dict[str, Any], it)
+    it_dict = cast(dict[str, Any], it)
     pubDate = _coerce_datetime_field(it_dict, "pubDate")
     starts_at = _coerce_datetime_field(it_dict, "starts_at")
     ends_at = _coerce_datetime_field(it_dict, "ends_at")
@@ -1672,10 +1673,10 @@ def _emit_item(
 
 
 def _make_rss(
-    items: List[FeedItem],
+    items: list[FeedItem],
     now: datetime,
-    state: Dict[str, Dict[str, Any]],
-    deletions: Optional[Set[str]] = None,
+    state: dict[str, dict[str, Any]],
+    deletions: set[str] | None = None,
 ) -> str:
     """
     Generate the full RSS XML document from a list of items using ElementTree.
@@ -1718,8 +1719,8 @@ def _make_rss(
     ET.SubElement(channel, "lastBuildDate").text = _fmt_rfc2822(now)
     ET.SubElement(channel, "ttl").text = str(feed_config.FEED_TTL)
 
-    item_replacements: Dict[str, str] = {}
-    identities_in_feed: List[str] = []
+    item_replacements: dict[str, str] = {}
+    identities_in_feed: list[str] = []
     emitted = 0
     for it in items:
         if emitted >= feed_config.MAX_ITEMS:
@@ -1758,7 +1759,7 @@ def lint() -> int:
     _log_startup_summary(statuses)
     _validate_configuration(statuses)
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     state = _load_state()
     stale_cache_messages = _detect_stale_caches(report, now)
     if stale_cache_messages:
@@ -1776,8 +1777,8 @@ def lint() -> int:
 
         deduped_items = _dedupe_items(list(filtered_items))
         deduped_items = cast(
-            List[FeedItem],
-            deduplicate_fuzzy(cast(List[Dict[str, Any]], deduped_items)),
+            list[FeedItem],
+            deduplicate_fuzzy(cast(list[dict[str, Any]], deduped_items)),
         )
         deduped_count = len(deduped_items)
         new_items_count = _count_new_items(deduped_items, state)
@@ -1868,20 +1869,20 @@ def main() -> int:
     _validate_configuration(statuses)
 
     job_start = perf_counter()
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     state = _load_state()
     stale_cache_messages = _detect_stale_caches(report, now)
     if stale_cache_messages:
         log.warning("Veraltete Caches erkannt: %s", "; ".join(stale_cache_messages))
-    health_metrics: Optional[FeedHealthMetrics] = None
-    duplicate_summaries: List[DuplicateSummary] = []
+    health_metrics: FeedHealthMetrics | None = None
+    duplicate_summaries: list[DuplicateSummary] = []
     # Initialize counters to 0 to avoid redundant checks later (Task 3A)
     raw_count: int = 0
     filtered_count: int = 0
     deduped_count: int = 0
     duplicates_removed: int = 0
     new_items_count: int = 0
-    items: List[FeedItem] = []
+    items: list[FeedItem] = []
     health_path = validate_path(Path(feed_config.FEED_HEALTH_PATH), "FEED_HEALTH_PATH")
     health_json_path = validate_path(
         Path(feed_config.FEED_HEALTH_JSON_PATH), "FEED_HEALTH_JSON_PATH"
@@ -1945,8 +1946,8 @@ def main() -> int:
 
         fuzzy_start = perf_counter()
         fuzzy_deduped = cast(
-            List[FeedItem],
-            deduplicate_fuzzy(cast(List[Dict[str, Any]], deduped)),
+            list[FeedItem],
+            deduplicate_fuzzy(cast(list[dict[str, Any]], deduped)),
         )
         fuzzy_duration = perf_counter() - fuzzy_start
         if len(fuzzy_deduped) < len(deduped):

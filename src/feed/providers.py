@@ -7,7 +7,8 @@ import logging
 import os
 from dataclasses import dataclass
 from types import ModuleType
-from typing import Any, Callable, Dict, Iterable, List, Tuple, cast
+from typing import Any, cast
+from collections.abc import Callable, Iterable
 
 from ..utils.cache import read_cache
 from .config import get_bool_env
@@ -15,7 +16,7 @@ from ..feed_types import FeedItem
 
 log = logging.getLogger(__name__)
 
-ProviderLoader = Callable[..., List[FeedItem]]
+ProviderLoader = Callable[..., list[FeedItem]]
 
 _PLUGINS_ENV_VAR = "WIEN_OEPNV_PROVIDER_PLUGINS"
 
@@ -35,7 +36,7 @@ def cache_display_name(cache_key: str) -> str:
     return str(cache_key)
 
 
-_REGISTRY: Dict[str, ProviderSpec] = {}
+_REGISTRY: dict[str, ProviderSpec] = {}
 _LOADED_PLUGINS: set[str] = set()
 
 
@@ -64,8 +65,8 @@ def iter_providers() -> Iterable[ProviderSpec]:
     return list(_REGISTRY.values())
 
 
-def provider_statuses() -> List[Tuple[str, bool]]:
-    statuses: List[Tuple[str, bool]] = []
+def provider_statuses() -> list[tuple[str, bool]]:
+    statuses: list[tuple[str, bool]] = []
     seen_envs: set[str] = set()
     for spec in iter_providers():
         env = spec.env_var
@@ -105,7 +106,7 @@ def _derive_cache_key(env_var: str) -> str:
     return base or "provider"
 
 
-def _iter_plugin_specs(raw_value: str | None) -> List[str]:
+def _iter_plugin_specs(raw_value: str | None) -> list[str]:
     if not raw_value:
         return []
     candidates = [chunk.strip() for chunk in raw_value.split(",")]
@@ -134,7 +135,7 @@ def _register_plugin_providers(module: ModuleType, module_name: str) -> None:
             )
         return
 
-    if not isinstance(providers_attr, (list, tuple)):
+    if not isinstance(providers_attr, list | tuple):
         log.error(
             "Provider-Plugin %s.PROVIDERS ist kein Sequenz-Typ: %r",
             module_name,
@@ -143,7 +144,7 @@ def _register_plugin_providers(module: ModuleType, module_name: str) -> None:
         return
 
     for entry in providers_attr:
-        if not isinstance(entry, (list, tuple)) or len(entry) not in (2, 3):
+        if not isinstance(entry, list | tuple) or len(entry) not in (2, 3):
             log.error(
                 "Provider-Plugin %s.PROVIDERS enthält ungültigen Eintrag: %r",
                 module_name,
@@ -170,7 +171,7 @@ def _register_plugin_providers(module: ModuleType, module_name: str) -> None:
         register_provider(env_var, loader, cache_key=str(cache_key))
 
 
-def load_provider_plugins(*, force: bool = False) -> List[str]:
+def load_provider_plugins(*, force: bool = False) -> list[str]:
     """Load provider plugins defined via :envvar:`WIEN_OEPNV_PROVIDER_PLUGINS`."""
 
     if force:
@@ -178,7 +179,7 @@ def load_provider_plugins(*, force: bool = False) -> List[str]:
 
     raw_value = os.getenv(_PLUGINS_ENV_VAR)
     requested = _iter_plugin_specs(raw_value)
-    loaded: List[str] = []
+    loaded: list[str] = []
     for module_name in requested:
         if not force and module_name in _LOADED_PLUGINS:
             continue
@@ -207,19 +208,19 @@ def reset_registry(*, with_defaults: bool = True) -> None:
         register_default_providers()
 
 
-def read_cache_wl() -> List[Any]:
+def read_cache_wl() -> list[Any]:
     return list(read_cache("wl"))
 
 
-def read_cache_oebb() -> List[Any]:
+def read_cache_oebb() -> list[Any]:
     return list(read_cache("oebb"))
 
 
-def read_cache_vor() -> List[Any]:
+def read_cache_vor() -> list[Any]:
     return list(read_cache("vor"))
 
 
-def read_cache_baustellen() -> List[Any]:
+def read_cache_baustellen() -> list[Any]:
     return list(read_cache("baustellen"))
 
 

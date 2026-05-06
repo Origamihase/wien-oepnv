@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 import pytest
 import types
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from typing import Any, cast
 
 
@@ -30,7 +30,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
 def test_identity_distinguishes_items_without_lines(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
-    day = datetime(2024, 1, 1, tzinfo=timezone.utc)
+    day = datetime(2024, 1, 1, tzinfo=UTC)
     item1 = {"source": "wl", "category": "störung", "title": "A", "starts_at": day}
     item2 = {"source": "wl", "category": "störung", "title": "B", "starts_at": day}
 
@@ -45,7 +45,7 @@ def test_identity_distinguishes_items_without_lines(monkeypatch: pytest.MonkeyPa
 def test_identity_includes_line_tokens_and_is_cosmetic_stable(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
-    day = datetime(2024, 1, 1, tzinfo=timezone.utc)
+    day = datetime(2024, 1, 1, tzinfo=UTC)
     base_item = {"source": "wl", "category": "störung", "starts_at": day}
 
     s45 = {**base_item, "title": "S45: Baustelle"}

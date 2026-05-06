@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from pathlib import Path
-from typing import Iterable, List, Iterator, Any
+from typing import Any
+from collections.abc import Iterable, Iterator
 from unittest.mock import MagicMock
 
 import pytest
@@ -45,7 +46,7 @@ class DummyResponse:
 class DummySession:
     def __init__(self, responses: Iterable[DummyResponse]) -> None:
         self._queue = list(responses)
-        self.calls: List[dict[str, Any]] = []
+        self.calls: list[dict[str, Any]] = []
         self.headers: dict[str, str] = {}
         self.hooks: dict[str, Any] = {"response": []}
         self.trust_env: bool = True
@@ -94,7 +95,7 @@ def test_client_short_circuits_when_quota_reached(tmp_path: Path, caplog: pytest
     client = GooglePlacesClient(
         config,
         session=session,
-        quota=MonthlyQuota.load(quota_path, now_func=lambda: datetime(2024, 5, 1, tzinfo=timezone.utc)),
+        quota=MonthlyQuota.load(quota_path, now_func=lambda: datetime(2024, 5, 1, tzinfo=UTC)),
         quota_config=quota_limits,
         quota_state_path=quota_path,
         enforce_quota=True,
@@ -206,8 +207,8 @@ def test_cli_short_circuits_on_quota(monkeypatch: pytest.MonkeyPatch, tmp_path: 
     quota.total = 1500
     _save_quota(quota_path, quota)
 
-    responses: List[DummyResponse] = []
-    sessions: List[DummySession] = []
+    responses: list[DummyResponse] = []
+    sessions: list[DummySession] = []
 
     def factory() -> DummySession:
         session = DummySession(list(responses))
@@ -244,7 +245,7 @@ def test_cli_dry_run_reports_quota(monkeypatch: pytest.MonkeyPatch, tmp_path: Pa
     quota = MonthlyQuota(month_key=MonthlyQuota.current_month_key())
     _save_quota(quota_path, quota)
 
-    sessions: List[DummySession] = []
+    sessions: list[DummySession] = []
 
     def factory() -> DummySession:
         session = DummySession(list(responses))

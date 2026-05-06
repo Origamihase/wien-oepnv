@@ -1,16 +1,16 @@
 
 import unittest
 from defusedxml import ElementTree as ET
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from src.build_feed import _make_rss
 from src.feed_types import FeedItem
 
 class TestXmlEndsAt(unittest.TestCase):
     def test_ends_at_xml_generation(self) -> None:
         # Setup
-        now = datetime(2023, 10, 27, 10, 0, 0, tzinfo=timezone.utc)
-        start = datetime(2023, 10, 27, 12, 0, 0, tzinfo=timezone.utc)
-        end = datetime(2023, 10, 27, 14, 0, 0, tzinfo=timezone.utc)
+        now = datetime(2023, 10, 27, 10, 0, 0, tzinfo=UTC)
+        start = datetime(2023, 10, 27, 12, 0, 0, tzinfo=UTC)
+        end = datetime(2023, 10, 27, 14, 0, 0, tzinfo=UTC)
 
         item: FeedItem = {
             "title": "Test Event",
@@ -48,7 +48,7 @@ class TestXmlEndsAt(unittest.TestCase):
         self.assertEqual(ends_at_elem.text, expected_end)
 
     def test_ends_at_missing_in_xml_when_none(self) -> None:
-        now = datetime(2023, 10, 27, 10, 0, 0, tzinfo=timezone.utc)
+        now = datetime(2023, 10, 27, 10, 0, 0, tzinfo=UTC)
         item: FeedItem = {
             "title": "Test Event No Ends",
             "description": "Test Description",

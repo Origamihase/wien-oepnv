@@ -3,7 +3,7 @@ import sys
 import pytest
 import types
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> types.ModuleType:
@@ -42,7 +42,7 @@ def test_state_cleanup_keeps_only_current_identities(
     tmp_path: Path,
 ) -> None:
     build_feed = _import_build_feed(monkeypatch, tmp_path)
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
 
     item_a = {"guid": "guid-a", "_identity": "guid-a"}
     item_b = {"guid": "guid-b", "_identity": "guid-b"}

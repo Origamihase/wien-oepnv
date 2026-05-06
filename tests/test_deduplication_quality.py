@@ -1,17 +1,17 @@
 import unittest
-from datetime import datetime, timezone
-from typing import Any, List, cast
+from datetime import datetime, UTC
+from typing import Any, cast
 
 from src.build_feed import _dedupe_items, _dedupe_key_for_item
 from src.feed_types import FeedItem
 
 
-def _as_items(*items: dict[str, Any]) -> List[FeedItem]:
+def _as_items(*items: dict[str, Any]) -> list[FeedItem]:
     """Cast a list of test fixture dicts to List[FeedItem] for mypy.
 
     The actual runtime behaviour does not depend on the FeedItem TypedDict
     keys being complete — _dedupe_items just reads .get() values."""
-    return cast(List[FeedItem], list(items))
+    return cast(list[FeedItem], list(items))
 
 
 def _as_item(item: dict[str, Any]) -> FeedItem:
@@ -32,7 +32,7 @@ class TestDeduplicationQuality(unittest.TestCase):
             "guid": "123",
             "title": "A",
             "description": "Desc",
-            "pubDate": datetime(2023, 1, 1, tzinfo=timezone.utc)
+            "pubDate": datetime(2023, 1, 1, tzinfo=UTC)
         }
         item2 = item1.copy()
 
@@ -45,15 +45,15 @@ class TestDeduplicationQuality(unittest.TestCase):
             "guid": "123",
             "title": "Störung",
             "description": "Kurz",
-            "pubDate": datetime(2023, 1, 1, 10, 0, tzinfo=timezone.utc),
-            "_calculated_recency": datetime(2023, 1, 1, 10, 0, tzinfo=timezone.utc)
+            "pubDate": datetime(2023, 1, 1, 10, 0, tzinfo=UTC),
+            "_calculated_recency": datetime(2023, 1, 1, 10, 0, tzinfo=UTC)
         }
         item_new = {
             "guid": "123",
             "title": "Störung Update",
             "description": "Kurz aber länger", # Longer description -> Better
-            "pubDate": datetime(2023, 1, 1, 11, 0, tzinfo=timezone.utc),
-            "_calculated_recency": datetime(2023, 1, 1, 11, 0, tzinfo=timezone.utc)
+            "pubDate": datetime(2023, 1, 1, 11, 0, tzinfo=UTC),
+            "_calculated_recency": datetime(2023, 1, 1, 11, 0, tzinfo=UTC)
         }
 
         # Order shouldn't matter for correctness, but _dedupe_items iterates sequentially.
@@ -72,12 +72,12 @@ class TestDeduplicationQuality(unittest.TestCase):
         item_short = {
             "guid": "123",
             "title": "Störung",
-            "ends_at": datetime(2023, 1, 1, 12, 0, tzinfo=timezone.utc)
+            "ends_at": datetime(2023, 1, 1, 12, 0, tzinfo=UTC)
         }
         item_long = {
             "guid": "123",
             "title": "Störung",
-            "ends_at": datetime(2023, 1, 1, 14, 0, tzinfo=timezone.utc) # Later end -> Better
+            "ends_at": datetime(2023, 1, 1, 14, 0, tzinfo=UTC) # Later end -> Better
         }
 
         result = _dedupe_items(_as_items(item_short, item_long))

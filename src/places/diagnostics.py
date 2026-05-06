@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Optional
 
 __all__ = ["permission_hint"]
 
 
-def permission_hint(details: str) -> Optional[str]:
+def permission_hint(details: str) -> str | None:
     """Return a remediation hint for common permission error messages."""
 
     message = details.lower()

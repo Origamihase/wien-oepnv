@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Dict, List, Iterator
+from typing import Any
+from collections.abc import Iterator
 from unittest.mock import MagicMock
 
 from src.places.client import (
@@ -16,18 +17,18 @@ from src.places.tiling import Tile
 
 
 class _RecordingResponse:
-    def __init__(self, status_code: int, payload: Dict[str, Any]) -> None:
+    def __init__(self, status_code: int, payload: dict[str, Any]) -> None:
         self.status_code = status_code
         self._payload = payload
         self.text = json.dumps(payload)
-        self.headers: Dict[str, str] = {}
+        self.headers: dict[str, str] = {}
         self.raw = MagicMock()
         conn = MagicMock()
         conn.sock.getpeername.return_value = ("8.8.8.8", 443)
         self.raw.connection = conn
         self.raw._connection = conn
 
-    def json(self) -> Dict[str, Any]:
+    def json(self) -> dict[str, Any]:
         return self._payload
 
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
@@ -46,16 +47,16 @@ class _RecordingResponse:
 class _RecordingSession:
     def __init__(self, response: _RecordingResponse) -> None:
         self._response = response
-        self.headers: Dict[str, str] | None = None
-        self.body: Dict[str, Any] | None = None
+        self.headers: dict[str, str] | None = None
+        self.body: dict[str, Any] | None = None
         self.calls = 0
 
     def post(
         self,
         url: str,
         *,
-        headers: Dict[str, str],
-        json: Dict[str, Any],
+        headers: dict[str, str],
+        json: dict[str, Any],
         timeout: float,
         **kwargs: Any,
     ) -> _RecordingResponse:
@@ -67,7 +68,7 @@ class _RecordingSession:
 
 def _make_client(
     *,
-    included_types: List[str],
+    included_types: list[str],
 ) -> tuple[GooglePlacesClient, _RecordingSession]:
     config = GooglePlacesConfig(
         api_key="dummy",

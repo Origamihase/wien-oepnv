@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 """Helpers for reading environment variables in a safe way.
 
@@ -24,7 +23,7 @@ import logging
 import os
 import re
 from pathlib import Path
-from typing import Dict, Iterable, Mapping, MutableMapping
+from collections.abc import Iterable, Mapping, MutableMapping
 
 from .logging import sanitize_log_message
 
@@ -212,9 +211,9 @@ def _parse_value(value: str) -> str:
         return value.split("#", 1)[0].strip()
 
 
-def _parse_env_file(content: str) -> Dict[str, str]:
+def _parse_env_file(content: str) -> dict[str, str]:
     """Parse the given env file ``content`` into a mapping."""
-    parsed: Dict[str, str] = {}
+    parsed: dict[str, str] = {}
 
     idx = 0
     length = len(content)
@@ -322,7 +321,7 @@ def load_env_file(
     *,
     override: bool = False,
     environ: MutableMapping[str, str] | None = None,
-) -> Dict[str, str]:
+) -> dict[str, str]:
     """Load environment variables from ``path`` into ``environ``.
 
     Returns a mapping containing the parsed assignments. Existing variables are
@@ -393,12 +392,12 @@ def load_default_env_files(
     *,
     override: bool = False,
     environ: MutableMapping[str, str] | None = None,
-) -> Mapping[Path, Dict[str, str]]:
+) -> Mapping[Path, dict[str, str]]:
     """Load standard env files relative to the project root."""
 
     base_dir = Path(__file__).resolve().parents[2]
 
-    loaded: Dict[Path, Dict[str, str]] = {}
+    loaded: dict[Path, dict[str, str]] = {}
     for candidate in _default_env_file_candidates(base_dir):
         parsed = load_env_file(candidate, override=override, environ=environ)
         if parsed:

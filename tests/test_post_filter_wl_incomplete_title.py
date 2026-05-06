@@ -20,49 +20,49 @@ preposition has an object after it (``halten gegenüber 93``,
 
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any
 
 from src.build_feed import _post_filter_wl
 
 
 class TestIncompleteTitleDropped:
     def test_haelt_gegenueber_alone_dropped(self) -> None:
-        items: List[Dict[str, Any]] = [
+        items: list[dict[str, Any]] = [
             {"title": "41E: Ersatzbus 41E hält gegenüber"}
         ]
         out = _post_filter_wl(items)
         assert out == []
 
     def test_haelt_gegenueber_with_object_kept(self) -> None:
-        items: List[Dict[str, Any]] = [
+        items: list[dict[str, Any]] = [
             {"title": "44A: Busse halten Alszeile gegenüber 93"}
         ]
         out = _post_filter_wl(items)
         assert len(out) == 1
 
     def test_halten_bei_alone_dropped(self) -> None:
-        items: List[Dict[str, Any]] = [
+        items: list[dict[str, Any]] = [
             {"title": "10A: Busse halten bei"}
         ]
         out = _post_filter_wl(items)
         assert out == []
 
     def test_halten_bei_with_object_kept(self) -> None:
-        items: List[Dict[str, Any]] = [
+        items: list[dict[str, Any]] = [
             {"title": "41E: Ersatzbus 41E halten bei Währinger Str 200"}
         ]
         out = _post_filter_wl(items)
         assert len(out) == 1
 
     def test_normal_title_kept(self) -> None:
-        items: List[Dict[str, Any]] = [
+        items: list[dict[str, Any]] = [
             {"title": "U6: Verspätung wegen Schadhaftem Fahrzeug"}
         ]
         out = _post_filter_wl(items)
         assert len(out) == 1
 
     def test_title_ending_in_an_dropped(self) -> None:
-        items: List[Dict[str, Any]] = [
+        items: list[dict[str, Any]] = [
             {"title": "10A: Bus hält an"}
         ]
         out = _post_filter_wl(items)
@@ -70,7 +70,7 @@ class TestIncompleteTitleDropped:
 
     def test_existing_newline_normalisation_still_works(self) -> None:
         # Round 13's whitespace fix must continue to work alongside.
-        items: List[Dict[str, Any]] = [
+        items: list[dict[str, Any]] = [
             {"title": "41E/10A: Ersatzbus 41E\nhält beim 10A"}
         ]
         out = _post_filter_wl(items)

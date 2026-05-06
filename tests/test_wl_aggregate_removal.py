@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, UTC
 from typing import Any
 
 import pytest
@@ -7,7 +7,7 @@ from src.providers import wl_fetch
 
 
 def _make_event(title: str, lines: list[str]) -> dict[str, Any]:
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     start = (now - timedelta(hours=1)).isoformat()
     end = (now + timedelta(hours=1)).isoformat()
     return {

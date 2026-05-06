@@ -43,5 +43,5 @@ def test_vzg_sections_have_expected_kilometres() -> None:
         assert isinstance(entry, dict), f"{section_id} must map to an object"
         kilometre = entry.get("kilometre")
         assert kilometre is not None, f"{section_id} is missing the kilometre attribute"
-        assert isinstance(kilometre, (int, float)), f"{section_id} kilometre must be numeric"
+        assert isinstance(kilometre, int | float), f"{section_id} kilometre must be numeric"
         assert kilometre == pytest.approx(expected_kilometre)

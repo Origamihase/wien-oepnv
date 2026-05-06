@@ -70,7 +70,7 @@ class _FakeSession:
     ) -> _FakeResponse:
         return self.request("GET", url, params=params, timeout=timeout, headers=headers)
 
-    def __enter__(self) -> "_FakeSession":  # pragma: no cover - context management helper
+    def __enter__(self) -> _FakeSession:  # pragma: no cover - context management helper
         return self
 
     def __exit__(

@@ -1,5 +1,5 @@
 
-from typing import Iterator
+from collections.abc import Iterator
 from unittest.mock import patch
 import pytest
 

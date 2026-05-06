@@ -5,10 +5,11 @@ from __future__ import annotations
 import json
 import logging
 import re
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from pathlib import Path
 from threading import RLock
-from typing import Any, Callable, List, Optional
+from typing import Any
+from collections.abc import Callable
 
 from .env import get_bool_env
 from .files import atomic_write, safe_path_join, sanitize_filename
@@ -26,7 +27,7 @@ class DataDegradationError(Exception):
 
 
 _CacheAlertHook = Callable[[str, str], None]
-_CACHE_ALERT_HOOKS: List[_CacheAlertHook] = []
+_CACHE_ALERT_HOOKS: list[_CacheAlertHook] = []
 _CACHE_ALERT_LOCK = RLock()
 
 
@@ -78,7 +79,7 @@ def _status_file(provider: str) -> Path:
     return safe_path_join(_CACHE_DIR, sanitize_filename(provider), _STATUS_FILENAME)
 
 
-def cache_modified_at(provider: str) -> Optional[datetime]:
+def cache_modified_at(provider: str) -> datetime | None:
     """Return the last modification timestamp for ``provider``'s cache.
 
     ``None`` is returned if the cache file does not exist or cannot be read.
@@ -100,9 +101,9 @@ def cache_modified_at(provider: str) -> Optional[datetime]:
         return None
 
     from datetime import timedelta
-    mtime = datetime.fromtimestamp(stat_result.st_mtime, tz=timezone.utc)
+    mtime = datetime.fromtimestamp(stat_result.st_mtime, tz=UTC)
     # Reject cache if it is more than 24 hours in the future
-    if mtime > datetime.now(timezone.utc) + timedelta(hours=24):
+    if mtime > datetime.now(UTC) + timedelta(hours=24):
         log.warning(
             "Cache for provider '%s' at %s is suspiciously far in the future (%s). Treating as missing.",
             provider, cache_file, mtime
@@ -111,7 +112,7 @@ def cache_modified_at(provider: str) -> Optional[datetime]:
     return mtime
 
 
-def read_cache(provider: str) -> List[Any]:
+def read_cache(provider: str) -> list[Any]:
     """Return cached events for *provider*.
 
     If the cache is missing or cannot be read, an empty list is returned and a
@@ -165,7 +166,7 @@ def prune_cache(max_age_hours: int = 48) -> None:
     if not _CACHE_DIR.is_dir():
         return
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     from datetime import timedelta
     cutoff = now - timedelta(hours=max_age_hours)
 
@@ -176,7 +177,7 @@ def prune_cache(max_age_hours: int = 48) -> None:
         cache_file = provider_dir / _CACHE_FILENAME
         if cache_file.exists():
             try:
-                mtime = datetime.fromtimestamp(cache_file.stat().st_mtime, tz=timezone.utc)
+                mtime = datetime.fromtimestamp(cache_file.stat().st_mtime, tz=UTC)
                 if mtime < cutoff:
                     cache_file.unlink()
                     log.info("Evicted old cache file: %s", cache_file)
@@ -192,7 +193,7 @@ def prune_cache(max_age_hours: int = 48) -> None:
             pass
 
 
-def _pretty_print_enabled(explicit: Optional[bool]) -> bool:
+def _pretty_print_enabled(explicit: bool | None) -> bool:
     """Return whether cache files should be pretty printed."""
 
     if explicit is not None:
@@ -218,7 +219,7 @@ def _stable_sort_key(item: Any) -> tuple[str, str, str, str]:
     )
 
 
-def write_cache(provider: str, items: List[Any], *, pretty: Optional[bool] = None) -> None:
+def write_cache(provider: str, items: list[Any], *, pretty: bool | None = None) -> None:
     """Write *items* to the cache for *provider* atomically.
 
     Pretty printing is enabled by default to keep JSON files human readable. To
@@ -314,7 +315,7 @@ def write_status(provider: str, status: dict[str, Any]) -> None:
         raise
 
 
-def read_status(provider: str) -> Optional[dict[str, Any]]:
+def read_status(provider: str) -> dict[str, Any] | None:
     """Return the persisted heartbeat for ``provider`` or ``None``."""
 
     status_file = _status_file(provider)

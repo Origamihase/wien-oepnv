@@ -65,7 +65,7 @@ class TestTextHasViennaConnection:
 
 class TestIsInViennaWienTokenNormalisation:
     def test_default_wien_lowercase_token(
-        self, monkeypatch: "pytest.MonkeyPatch"
+        self, monkeypatch: pytest.MonkeyPatch
     ) -> None:
         # Default WIEN_TOKEN ("wien") still works for variations of the
         # incoming station name.
@@ -73,7 +73,7 @@ class TestIsInViennaWienTokenNormalisation:
         assert is_in_vienna("Wien Mitte-Landstraße") is True
 
     def test_wien_token_capitalised_env_still_matches(
-        self, monkeypatch: "pytest.MonkeyPatch"
+        self, monkeypatch: pytest.MonkeyPatch
     ) -> None:
         # A deployer setting WIEN_TOKEN="Wien" (capital W) used to
         # silently break the fallback because the env value was
@@ -83,7 +83,7 @@ class TestIsInViennaWienTokenNormalisation:
         assert is_in_vienna("Wien Foobarbaz") is True
 
     def test_wien_token_uppercase_env_still_matches(
-        self, monkeypatch: "pytest.MonkeyPatch"
+        self, monkeypatch: pytest.MonkeyPatch
     ) -> None:
         monkeypatch.setenv("WIEN_TOKEN", "WIEN")
         assert is_in_vienna("Wien Foobarbaz") is True

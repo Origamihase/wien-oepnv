@@ -20,7 +20,7 @@ truncation lands on a clean word boundary.
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from typing import cast
 
 from src import build_feed
@@ -39,7 +39,7 @@ def _format(raw_desc: str) -> str:
             "link": "https://example.test/",
         },
     )
-    now = datetime(2026, 5, 6, 12, 0, tzinfo=timezone.utc)
+    now = datetime(2026, 5, 6, 12, 0, tzinfo=UTC)
     formatted = build_feed._format_item_content(
         item, ident="t", starts_at=now, ends_at=None
     )

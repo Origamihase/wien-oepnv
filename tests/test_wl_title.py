@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from typing import Any, Literal
 
 import pytest
@@ -14,7 +14,7 @@ from src.providers.wl_text import _tidy_title_wl
 def test_bucket_merge_prefers_informative_title_and_description(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    now_iso = datetime.now(timezone.utc).isoformat()
+    now_iso = datetime.now(UTC).isoformat()
     detailed_desc = (
         "Störung zwischen Siebenhirten und Perfektastraße. Ersatzverkehr im Einsatz."
     )

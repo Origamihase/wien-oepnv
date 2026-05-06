@@ -1,7 +1,7 @@
 
 import os
 import responses
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 
 from src.providers import vor
 
@@ -26,7 +26,7 @@ def test_leak() -> None:
     )
 
     # We need a timezone aware datetime for the function signature
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
 
     vor._fetch_departure_board_for_station("12345", now)
 

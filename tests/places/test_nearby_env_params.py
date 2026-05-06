@@ -6,7 +6,8 @@ import importlib
 import os
 from contextlib import contextmanager
 from types import ModuleType
-from typing import Any, Dict, Iterator
+from typing import Any
+from collections.abc import Iterator
 from unittest.mock import MagicMock
 
 from src.places.tiling import Tile
@@ -18,7 +19,7 @@ class _DummyResponse:
     def __init__(self) -> None:
         self.status_code = 200
         self.text = "{}"
-        self.headers: Dict[str, str] = {}
+        self.headers: dict[str, str] = {}
         self.raw = MagicMock()
         conn = MagicMock()
         # Use a public IP to pass verify_response_ip
@@ -26,7 +27,7 @@ class _DummyResponse:
         self.raw.connection = conn
         self.raw._connection = conn
 
-    def json(self) -> Dict[str, Any]:
+    def json(self) -> dict[str, Any]:
         return {"places": []}
 
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
@@ -44,15 +45,15 @@ class _DummyResponse:
 
 class _RecordingSession:
     def __init__(self) -> None:
-        self.last_json: Dict[str, Any] | None = None
+        self.last_json: dict[str, Any] | None = None
         self.calls = 0
 
     def post(
         self,
         url: str,
         *,
-        headers: Dict[str, str],
-        json: Dict[str, Any],
+        headers: dict[str, str],
+        json: dict[str, Any],
         timeout: float,
         **kwargs: Any,
     ) -> _DummyResponse:
@@ -62,7 +63,7 @@ class _RecordingSession:
 
 
 @contextmanager
-def _client_module_with_env(env: Dict[str, str] | None) -> Iterator[ModuleType]:
+def _client_module_with_env(env: dict[str, str] | None) -> Iterator[ModuleType]:
     module = importlib.import_module("src.places.client")
     previous = {key: os.environ.get(key) for key in _ENV_KEYS}
     try:
@@ -83,7 +84,7 @@ def _client_module_with_env(env: Dict[str, str] | None) -> Iterator[ModuleType]:
         importlib.reload(module)
 
 
-def _exercise_client(module: ModuleType) -> Dict[str, Any]:
+def _exercise_client(module: ModuleType) -> dict[str, Any]:
     config = module.GooglePlacesConfig(
         api_key="dummy",
         included_types=list(module.DEFAULT_INCLUDED_TYPES),

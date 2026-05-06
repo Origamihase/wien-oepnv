@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, UTC
 from pathlib import Path
 
 from typing import Any
@@ -29,7 +29,7 @@ def test_detect_stale_caches_records_warning(monkeypatch: pytest.MonkeyPatch) ->
 
     monkeypatch.setattr(build_feed, "iter_providers", lambda: [spec])
     monkeypatch.setattr(build_feed.feed_config, "CACHE_MAX_AGE_HOURS", 1)
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     report = build_feed.RunReport([(loader._provider_cache_name, True)])
 
     monkeypatch.setattr(
@@ -54,7 +54,7 @@ def test_detect_stale_caches_skips_recent(monkeypatch: pytest.MonkeyPatch) -> No
 
     monkeypatch.setattr(build_feed, "iter_providers", lambda: [spec])
     monkeypatch.setattr(build_feed.feed_config, "CACHE_MAX_AGE_HOURS", 2)
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     report = build_feed.RunReport([(loader._provider_cache_name, True)])
 
     monkeypatch.setattr(
@@ -80,7 +80,7 @@ def test_cache_freshness_guard_future(monkeypatch: pytest.MonkeyPatch, tmp_path:
     cache_file.write_text("[]")
 
     # Set mtime to 48 hours in the future
-    future_time = datetime.now(timezone.utc) + timedelta(hours=48)
+    future_time = datetime.now(UTC) + timedelta(hours=48)
     os.utime(cache_file, (future_time.timestamp(), future_time.timestamp()))
 
     # Calling cache_modified_at should return None because it's too far in the future

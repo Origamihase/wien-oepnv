@@ -8,7 +8,8 @@ import os
 import time
 import threading
 from contextlib import contextmanager
-from typing import Any, Iterator, MutableMapping
+from typing import Any
+from collections.abc import Iterator, MutableMapping
 
 try:  # pragma: no cover - platform dependent
     import fcntl

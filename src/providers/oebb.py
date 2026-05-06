@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 """
 ÖBB/VOR-RSS (Fahrplan-Portal) – Meldungen für Wien & nahe Pendelstrecken.
@@ -22,9 +21,9 @@ import logging
 import os
 import re
 import time
-from datetime import datetime, timezone
-from typing import List, Optional, Tuple
+from datetime import datetime, UTC
 from email.utils import parsedate_to_datetime
+from itertools import pairwise
 
 import requests
 
@@ -39,7 +38,12 @@ from ..utils.stations import (
     station_info,
     text_has_vienna_connection,
 )
-from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
+from ..utils.http import (
+    fetch_content_safe,
+    parse_retry_after,
+    session_with_retries,
+    validate_http_url,
+)
 from ..utils.logging import sanitize_log_arg
 
 from defusedxml import ElementTree as ET # XXE Mitigation applied
@@ -238,7 +242,7 @@ def _clean_title_keep_places(t: str) -> str:
     t = re.sub(r"\b([^,;|]+?)\s+und\s+([^,;|]+?)\b", r"\1 ↔ \2", t)
     # Pfeile/Bindestriche und Trennzeichen normalisieren
     raw_parts = [p for p in ARROW_ANY_RE.split(t) if p.strip()]
-    canonical_parts: List[str] = []
+    canonical_parts: list[str] = []
     for part in raw_parts:
         segment = part.strip()
         if not segment:
@@ -542,7 +546,7 @@ def _looks_like_station_name(text: str) -> bool:
     return True
 
 
-def _extract_zwischen_routes(description: str) -> List[Tuple[str, str]]:
+def _extract_zwischen_routes(description: str) -> list[tuple[str, str]]:
     """Find all route mentions in *description*.
 
     Recognises both the dominant ``zwischen X und Y`` phrasing and the
@@ -558,8 +562,8 @@ def _extract_zwischen_routes(description: str) -> List[Tuple[str, str]]:
     plain = html.unescape(plain)
     plain = re.sub(r"\s+", " ", plain).strip()
 
-    routes: List[Tuple[str, str]] = []
-    seen: set[Tuple[str, str]] = set()
+    routes: list[tuple[str, str]] = []
+    seen: set[tuple[str, str]] = set()
 
     for regex in (_ZWISCHEN_PLAIN_RE, _STRECKE_PLAIN_RE, _VON_NACH_PLAIN_RE):
         for match in regex.finditer(plain):
@@ -569,7 +573,7 @@ def _extract_zwischen_routes(description: str) -> List[Tuple[str, str]]:
                 continue
             # Deduplicate regardless of A/B order
             sorted_pair = sorted([a_norm.casefold(), b_norm.casefold()])
-            key: Tuple[str, str] = (sorted_pair[0], sorted_pair[1])
+            key: tuple[str, str] = (sorted_pair[0], sorted_pair[1])
             if key in seen:
                 continue
             seen.add(key)
@@ -578,7 +582,7 @@ def _extract_zwischen_routes(description: str) -> List[Tuple[str, str]]:
     return routes
 
 
-def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
+def _extract_routes(title: str, description: str) -> list[tuple[str, str]]:
     """Collect route endpoint pairs from title (split on ↔) and description.
 
     Pure category words like "Bauarbeiten ↔ Umleitung" are filtered out so
@@ -593,8 +597,8 @@ def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
     names, and the strict route classifier in :func:`_route_is_wien_relevant`
     is then responsible for rejecting them.
     """
-    candidates: List[Tuple[str, str]] = []
-    seen: set[Tuple[str, str]] = set()
+    candidates: list[tuple[str, str]] = []
+    seen: set[tuple[str, str]] = set()
 
     # 1. Parse title — split on ↔
     if title and "↔" in title:
@@ -611,9 +615,9 @@ def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
             if "↔" not in segment:
                 continue
             parts = [p.strip() for p in segment.split("↔")]
-            for i in range(len(parts) - 1):
-                a_raw = _strip_oebb_prefixes(parts[i])
-                b_raw = _strip_oebb_prefixes(parts[i + 1])
+            for left, right in pairwise(parts):
+                a_raw = _strip_oebb_prefixes(left)
+                b_raw = _strip_oebb_prefixes(right)
                 if _is_category(a_raw) or _is_category(b_raw):
                     continue
                 a_norm = _normalize_endpoint_name(a_raw)
@@ -621,7 +625,7 @@ def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
                 if not _looks_like_station_name(a_norm) or not _looks_like_station_name(b_norm):
                     continue
                 sorted_pair = sorted([a_norm.casefold(), b_norm.casefold()])
-                key: Tuple[str, str] = (sorted_pair[0], sorted_pair[1])
+                key: tuple[str, str] = (sorted_pair[0], sorted_pair[1])
                 if key in seen:
                     continue
                 seen.add(key)
@@ -630,7 +634,7 @@ def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
     # 2. Parse description — "zwischen X und Y" patterns
     for raw_a, raw_b in _extract_zwischen_routes(description):
         sorted_pair = sorted([raw_a.casefold(), raw_b.casefold()])
-        desc_key: Tuple[str, str] = (sorted_pair[0], sorted_pair[1])
+        desc_key: tuple[str, str] = (sorted_pair[0], sorted_pair[1])
         if desc_key in seen:
             continue
         seen.add(desc_key)
@@ -640,7 +644,7 @@ def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
     #    than a transit connection. This is what allows "Aufzug zwischen
     #    Bahnsteig 1 und Bahnsteig 5 in Wien Mitte defekt" to fall through
     #    to the single-station path and pick up the Wien-Mitte mention.
-    routes: List[Tuple[str, str]] = []
+    routes: list[tuple[str, str]] = []
     for a, b in candidates:
         if _looks_like_facility_endpoint(a) or _looks_like_facility_endpoint(b):
             continue
@@ -649,7 +653,7 @@ def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
     return routes
 
 
-def _classify_endpoint(name: str) -> Tuple[Optional[StationInfo], str]:
+def _classify_endpoint(name: str) -> tuple[StationInfo | None, str]:
     """Look up *name* and return ``(info, category)``.
 
     Categories are one of ``vienna``, ``pendler``, ``distant`` (known but not
@@ -1064,7 +1068,7 @@ def _is_relevant(title: str, description: str) -> bool:
 _MAX_STATION_WINDOW = 4
 
 # ---------------- Fallback Helpers ----------------
-def _extract_id_from_url(url: str) -> Optional[int]:
+def _extract_id_from_url(url: str) -> int | None:
     """
     Extracts a numeric ID (e.g., station ID) from the end of a URL/GUID.
     Matches ...&123456 or ...?123456.
@@ -1144,7 +1148,7 @@ def _looks_like_facility_endpoint(name: str) -> bool:
     return first in _NON_STATION_FIRST_WORDS
 
 
-def _find_stations_in_text(blob: str) -> List[str]:
+def _find_stations_in_text(blob: str) -> list[str]:
     """
     Scans text for known station names using a sliding window.
     Returns a list of unique canonical station names found.
@@ -1195,7 +1199,7 @@ def _find_stations_in_text(blob: str) -> List[str]:
 
     # Filter out shorter overlapping matches
     sorted_found = sorted(list(found), key=len, reverse=True)
-    filtered: List[str] = []
+    filtered: list[str] = []
     for station in sorted_found:
         if not any(station in longer_station for longer_station in filtered):
             filtered.append(station)
@@ -1203,7 +1207,7 @@ def _find_stations_in_text(blob: str) -> List[str]:
     return sorted(filtered)
 
 # ---------------- Fetch/Parse ----------------
-def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
+def _fetch_xml(url: str, timeout: int = 25) -> ET.Element | None:
     with session_with_retries(USER_AGENT) as s:
         for attempt in range(2):
             try:
@@ -1226,20 +1230,10 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
 
                 wait_seconds = 0.0
                 if e.response is not None and e.response.status_code == 429:
-                    wait_seconds = 1.0  # Default for 429 if no valid Retry-After is found
                     header = e.response.headers.get("Retry-After")
-                    if header:
-                        try:
-                            wait_seconds = float(header)
-                        except (TypeError, ValueError):
-                            try:
-                                retry_dt = parsedate_to_datetime(header)
-                                if retry_dt.tzinfo is None:
-                                    retry_dt = retry_dt.replace(tzinfo=timezone.utc)
-                                delta = (retry_dt - datetime.now(timezone.utc)).total_seconds()
-                                wait_seconds = max(0.0, delta)
-                            except Exception as parse_exc:
-                                log.warning("Failed to parse Retry-After header", exc_info=parse_exc)
+                    parsed_delay = parse_retry_after(header)
+                    # Default to 1.0s if header is missing or unparseable.
+                    wait_seconds = parsed_delay if parsed_delay is not None else 1.0
                     log.warning("ÖBB RSS Rate-Limit (Retry-After: %s)", header)
 
                 if attempt == 0:
@@ -1254,14 +1248,14 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
 
     return None
 
-def _get_text(elem: Optional[ET.Element], tag: str) -> str:
+def _get_text(elem: ET.Element | None, tag: str) -> str:
     e = elem.find(tag) if elem is not None else None
     return (e.text or "") if e is not None else ""
 
-def _parse_dt_rfc2822(s: str) -> Optional[datetime]:
+def _parse_dt_rfc2822(s: str) -> datetime | None:
     try:
         dt = parsedate_to_datetime(s)
-        return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+        return dt if dt.tzinfo else dt.replace(tzinfo=UTC)
     except Exception:
         return None
 
@@ -1279,7 +1273,7 @@ _LINE_PREFIX_RE = re.compile(
 )
 
 
-def _extract_line_prefix(title: str) -> Tuple[str, str]:
+def _extract_line_prefix(title: str) -> tuple[str, str]:
     """Split off a leading line marker from *title*.
 
     Returns ``(line_prefix, remaining_title)``. The line prefix is empty when
@@ -1295,7 +1289,7 @@ def _extract_line_prefix(title: str) -> Tuple[str, str]:
 
 # Compact directory names sometimes use abbreviations (Westbf, Hbf, …) that
 # look truncated in the feed. We expand them only for the user-facing title.
-_STATION_NAME_EXPANSIONS: Tuple[Tuple[re.Pattern[str], str], ...] = (
+_STATION_NAME_EXPANSIONS: tuple[tuple[re.Pattern[str], str], ...] = (
     (re.compile(r"\bWestbf\b"), "Westbahnhof"),
     (re.compile(r"\bOstbf\b"), "Ostbahnhof"),
     (re.compile(r"\bNordbf\b"), "Nordbahnhof"),
@@ -1312,7 +1306,7 @@ def _expand_station_abbreviations(name: str) -> str:
     return name
 
 
-def _format_route_title(routes: List[Tuple[str, str]], line_prefix: str = "") -> str:
+def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") -> str:
     """Build a clean ``A ↔ B`` title from extracted route(s).
 
     For each route we use the canonical station name from the directory when
@@ -1329,8 +1323,8 @@ def _format_route_title(routes: List[Tuple[str, str]], line_prefix: str = "") ->
     if not routes:
         return ""
 
-    formatted: List[str] = []
-    seen_canon: set[Tuple[str, str]] = set()
+    formatted: list[str] = []
+    seen_canon: set[tuple[str, str]] = set()
     for raw_a, raw_b in routes:
         info_a = station_info(raw_a)
         info_b = station_info(raw_b)
@@ -1350,7 +1344,7 @@ def _format_route_title(routes: List[Tuple[str, str]], line_prefix: str = "") ->
             name_a, name_b = name_b, name_a
 
         # Dedup against already-rendered routes after canonical resolution.
-        canon_key: Tuple[str, str] = tuple(  # type: ignore[assignment]
+        canon_key: tuple[str, str] = tuple(  # type: ignore[assignment]
             sorted((name_a.casefold(), name_b.casefold()))
         )
         if canon_key in seen_canon:
@@ -1366,7 +1360,7 @@ def _format_route_title(routes: List[Tuple[str, str]], line_prefix: str = "") ->
 
 
 # ---------------- Public ----------------
-def fetch_events(timeout: int = 25) -> List[FeedItem]:
+def fetch_events(timeout: int = 25) -> list[FeedItem]:
     root = _fetch_xml(OEBB_URL, timeout=timeout)
 
     if root is None:
@@ -1376,7 +1370,7 @@ def fetch_events(timeout: int = 25) -> List[FeedItem]:
     if channel is None:
         return []
 
-    out: List[FeedItem] = []
+    out: list[FeedItem] = []
     for item in channel.findall("item"):
         raw_title = _get_text(item, "title")
         title = _clean_title_keep_places(raw_title)

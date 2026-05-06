@@ -13,7 +13,7 @@ import csv
 import json
 import math
 import re
-from typing import Iterable, Iterator, Mapping, Sequence
+from collections.abc import Iterable, Iterator, Mapping, Sequence
 
 from src.utils.stations import _normalize_token
 
@@ -315,7 +315,7 @@ def _find_duplicate_coordinate_groups(
 
 def _extract_float(value: object) -> float | None:
     val: float
-    if isinstance(value, (int, float)):
+    if isinstance(value, int | float):
         val = float(value)
     elif isinstance(value, str):
         token = value.strip()
@@ -375,7 +375,7 @@ def _find_alias_issues(
         name = str(entry.get("name", "")).strip()
         identifier = _format_identifier(entry)
 
-        if not isinstance(aliases_obj, Sequence) or isinstance(aliases_obj, (str, bytes)):
+        if not isinstance(aliases_obj, Sequence) or isinstance(aliases_obj, str | bytes):
             yield AliasIssue(identifier=identifier, name=name or "<unknown>", reason="missing aliases list")
             continue
 
@@ -498,14 +498,14 @@ def _find_cross_station_id_conflicts(
     for entry in stations:
         for field in ("bst_id", "bst_code", "vor_id", "wl_diva"):
             val = entry.get(field)
-            if isinstance(val, (str, int)):
+            if isinstance(val, str | int):
                 norm_val = _normalize_token(str(val))
                 if norm_val:
                     id_map[norm_val].append((entry, field))
 
     for entry in stations:
         aliases_obj = entry.get("aliases")
-        if not isinstance(aliases_obj, Sequence) or isinstance(aliases_obj, (str, bytes)):
+        if not isinstance(aliases_obj, Sequence) or isinstance(aliases_obj, str | bytes):
             continue
 
         for alias in aliases_obj:
@@ -726,7 +726,7 @@ def _find_security_issues(
 
         # Check aliases
         aliases_obj = entry.get("aliases")
-        if isinstance(aliases_obj, Sequence) and not isinstance(aliases_obj, (str, bytes)):
+        if isinstance(aliases_obj, Sequence) and not isinstance(aliases_obj, str | bytes):
             for alias in aliases_obj:
                 if isinstance(alias, str) and _UNSAFE_CHARS_RE.search(alias):
                     yield SecurityIssue(

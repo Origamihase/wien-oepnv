@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from pathlib import Path
-from typing import Dict, Mapping
+from collections.abc import Mapping
 import re
 
 from ..config.defaults import (
@@ -242,7 +242,7 @@ CONFIG_OPTIONS: tuple[ConfigOption, ...] = (
     ),
 )
 
-_OPTION_BY_KEY: Dict[str, ConfigOption] = {option.key: option for option in CONFIG_OPTIONS}
+_OPTION_BY_KEY: dict[str, ConfigOption] = {option.key: option for option in CONFIG_OPTIONS}
 
 
 def normalize_existing_values(existing: Mapping[str, str]) -> tuple[dict[str, str], list[str]]:
@@ -356,7 +356,7 @@ def format_env_document(
 ) -> str:
     lines: list[str] = []
     if include_header:
-        timestamp = datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
+        timestamp = datetime.now(UTC).astimezone().isoformat(timespec="seconds")
         lines.append("# Konfigurationsdatei für den Wien-ÖPNV-Feed")
         lines.append(f"# Erstellt am {timestamp}")
         lines.append("")

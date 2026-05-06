@@ -64,7 +64,7 @@ def test_main_does_not_save_state_on_io_error(
     def failing_atomic_write(path: Any, mode: str = "w", encoding: str = "utf-8", permissions: int = 0o644) -> Any:
         class FailingContextManager:
             def __enter__(self) -> None:
-                raise IOError("Simulated IO Error during write")
+                raise OSError("Simulated IO Error during write")
             def __exit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:
                 pass
         return FailingContextManager()
@@ -75,7 +75,7 @@ def test_main_does_not_save_state_on_io_error(
     try:
         build_feed.main()
         assert False, "Expected IOError to be raised"
-    except IOError as e:
+    except OSError as e:
         assert "Simulated IO Error" in str(e)
 
     # Verify that state was NOT saved because the write failed

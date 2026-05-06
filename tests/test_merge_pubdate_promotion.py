@@ -15,8 +15,8 @@ standard merge already had.
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
-from typing import Any, Dict, List
+from datetime import datetime, UTC
+from typing import Any
 
 from src.feed.merge import deduplicate_fuzzy
 
@@ -24,9 +24,9 @@ from src.feed.merge import deduplicate_fuzzy
 class TestVorOebbPubDatePromotion:
     def test_oebb_newer_pubdate_promoted_into_vor_master(self) -> None:
         # VOR is master (existing); OEBB report (item) is newer.
-        old = datetime(2026, 5, 1, 12, 0, tzinfo=timezone.utc)
-        new = datetime(2026, 5, 5, 12, 0, tzinfo=timezone.utc)
-        items: List[Dict[str, Any]] = [
+        old = datetime(2026, 5, 1, 12, 0, tzinfo=UTC)
+        new = datetime(2026, 5, 5, 12, 0, tzinfo=UTC)
+        items: list[dict[str, Any]] = [
             {
                 "title": "S1: Weichenstörung Wien Praterstern",
                 "description": "VOR text.",
@@ -55,9 +55,9 @@ class TestVorOebbPubDatePromotion:
         # OEBB is master (existing); VOR report (item) is newer. The
         # branch replaces with VOR but must promote dates from the prior
         # OEBB record only when *they* are newer (defence in depth).
-        old = datetime(2026, 5, 1, 12, 0, tzinfo=timezone.utc)
-        new = datetime(2026, 5, 5, 12, 0, tzinfo=timezone.utc)
-        items: List[Dict[str, Any]] = [
+        old = datetime(2026, 5, 1, 12, 0, tzinfo=UTC)
+        new = datetime(2026, 5, 5, 12, 0, tzinfo=UTC)
+        items: list[dict[str, Any]] = [
             {
                 "title": "S1: Weichenstörung Wien Praterstern",
                 "description": "OEBB text first.",
@@ -87,9 +87,9 @@ class TestVorOebbPubDatePromotion:
         # OEBB existing has the newer date; VOR arrives older. The Case 2
         # branch replaces OEBB with VOR but must not lose the newer
         # OEBB date.
-        new = datetime(2026, 5, 5, 12, 0, tzinfo=timezone.utc)
-        old = datetime(2026, 5, 1, 12, 0, tzinfo=timezone.utc)
-        items: List[Dict[str, Any]] = [
+        new = datetime(2026, 5, 5, 12, 0, tzinfo=UTC)
+        old = datetime(2026, 5, 1, 12, 0, tzinfo=UTC)
+        items: list[dict[str, Any]] = [
             {
                 "title": "S1: Weichenstörung Wien Praterstern",
                 "description": "OEBB text fresh.",
@@ -115,8 +115,8 @@ class TestVorOebbPubDatePromotion:
 
     def test_missing_pubdate_in_one_side_does_not_break(self) -> None:
         # Defence in depth: one side has no pubDate at all.
-        new = datetime(2026, 5, 5, 12, 0, tzinfo=timezone.utc)
-        items: List[Dict[str, Any]] = [
+        new = datetime(2026, 5, 5, 12, 0, tzinfo=UTC)
+        items: list[dict[str, Any]] = [
             {
                 "title": "S1: Weichenstörung Wien Praterstern",
                 "description": "VOR text.",

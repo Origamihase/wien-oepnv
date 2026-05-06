@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """Text utilities."""
 
 import html
 import re
 from html.parser import HTMLParser
-from typing import Match
+from re import Match
 
 
 _WS_RE = re.compile(r"[ \t\r\f\v]+")
