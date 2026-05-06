@@ -87,8 +87,34 @@ def refresh_from_env() -> None:
 read_cache = _core_read_cache
 
 
+def _post_filter_wl(items: List[Any]) -> List[Any]:
+    """Defence-in-depth: normalise WL titles loaded from cache.
+
+    The WL cache is only refreshed periodically. Title-formatting fixes
+    (e.g. collapsing newlines per Bug 12A) therefore don't reach the
+    feed until the next refresh — cached items can carry titles with
+    embedded ``\\n``/``\\t`` characters that violate RSS/Atom single-
+    line conventions. We re-run the same whitespace normalisation that
+    ``_tidy_title_wl`` applies so cached titles stay single-line even
+    before the cache turns over.
+    """
+    out: List[Any] = []
+    for item in items:
+        if not isinstance(item, dict):
+            out.append(item)
+            continue
+        title = item.get("title")
+        if isinstance(title, str) and title:
+            cleaned = re.sub(r"\s+", " ", title).strip()
+            if cleaned != title:
+                item = dict(item)
+                item["title"] = cleaned
+        out.append(item)
+    return out
+
+
 def read_cache_wl() -> List[Any]:
-    return list(read_cache("wl") or [])
+    return _post_filter_wl(list(read_cache("wl") or []))
 
 
 def _post_filter_oebb(items: List[Any]) -> List[Any]:

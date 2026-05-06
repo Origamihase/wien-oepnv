@@ -524,7 +524,13 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             ):
                 continue
 
-            title_raw = (poi.get("title") or "Hinweis").strip()
+            # Mirror the TrafficInfo branch's title fallback so a POI
+            # with empty ``title`` but a populated ``name`` (real WL
+            # News payload shape) doesn't collapse to the literal
+            # placeholder "Hinweis".
+            title_raw = (
+                poi.get("title") or poi.get("name") or "Hinweis"
+            ).strip()
             title = _tidy_title_wl(title_raw)
             desc_raw = (poi.get("description") or "").strip()
             # Do NOT strip HTML here, we need to preserve links (Task 3)
