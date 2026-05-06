@@ -355,7 +355,41 @@ _ZWISCHEN_PLAIN_RE = re.compile(
     r"|[,;!?]"  # Plain sentence punctuation (period excluded — see above)
     r"|[—–]"  # German em-/en-dash often introduces a side remark
     r"|<"  # HTML tag start (defensive: we strip HTML, but stay safe)
+    # Period followed by a German sentence-starter word — typical ÖBB
+    # closers like "Mödling. Auch Auswirkung …" or "Mödling. Wir bitten
+    # …". Listed words cannot be the second part of a station name, so
+    # "St. Pölten" stays intact while sentence boundaries are recognised.
+    r"|\.\s+(?:Auch|Bitte|Wir|Es|Hier|Hinweis|Achtung|Wegen|Aufgrund|"
+    r"Heute|Morgen|Reisende|Details|Diese|Dieser|Bei|Im|Aus|Mit|"
+    r"Fahrgäste|Fahrgaeste|Beachten|ACHTUNG|HINWEIS)"
     r"|\.\s*$"  # Period only when it terminates the description
+    r"|\s*$"
+    r")",
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+# Alternative route-phrasing — "von X nach Y", "ab X bis Y" — used in
+# ÖBB descriptions when a relation is described directionally rather
+# than as a connection. Captures both endpoints so the strict route
+# check can reject Wien↔Distant variants (e.g. "ab Wien Hbf bis Graz
+# Hbf").
+_VON_NACH_PLAIN_RE = re.compile(
+    r"\b(?:von|ab)\s+(?P<a>.+?)\s+(?:nach|bis)\s+(?P<b>.+?)"
+    r"(?="
+    r"\s+(?:gesperrt|geschlossen|unterbrochen|eingestellt|"
+    r"betroffen|beeintr[äa]chtigt|gest[öo]rt|eingeschr[äa]nkt|"
+    r"auf|au[ßs]er\s+betrieb|nicht|kein|von|bis|am|im|in\s+der|"
+    r"f[üu]r|wegen|aufgrund|durch|infolge|"
+    r"ist|sind|war|waren|wird|werden|kann|k[öo]nnen|"
+    r"f[äa]hrt|fahren|kommt|fallen|halten|halten\s+nicht)\b"
+    r"|[,;!?]"
+    r"|[—–]"
+    r"|<"
+    r"|\.\s+(?:Auch|Bitte|Wir|Es|Hier|Hinweis|Achtung|Wegen|Aufgrund|"
+    r"Heute|Morgen|Reisende|Details|Diese|Dieser|Bei|Im|Aus|Mit|"
+    r"Fahrgäste|Fahrgaeste|Beachten|ACHTUNG|HINWEIS)"
+    r"|\.\s*$"
     r"|\s*$"
     r")",
     re.IGNORECASE | re.DOTALL,
@@ -413,6 +447,17 @@ def _normalize_endpoint_name(name: str) -> str:
     # — which is actually what we want for lookup).
     cleaned = re.sub(_BAHNHOF_TRAILING_RE.pattern + r"\s*$", "", cleaned, flags=re.IGNORECASE).strip()
     cleaned = re.sub(r"\s{2,}", " ", cleaned).strip()
+
+    # If the endpoint absorbed a sentence boundary ("Mödling. Auch ..."),
+    # truncate to the part before the period when *that* part resolves
+    # against the directory. Abbreviations like "St. Pölten" stay intact
+    # because "St" alone doesn't resolve.
+    if ". " in cleaned:
+        head, _, _tail = cleaned.partition(". ")
+        head_clean = head.strip()
+        if head_clean and station_info(head_clean) is not None:
+            cleaned = head_clean
+
     return cleaned
 
 
@@ -448,7 +493,7 @@ def _extract_zwischen_routes(description: str) -> List[Tuple[str, str]]:
     routes: List[Tuple[str, str]] = []
     seen: set[Tuple[str, str]] = set()
 
-    for regex in (_ZWISCHEN_PLAIN_RE, _STRECKE_PLAIN_RE):
+    for regex in (_ZWISCHEN_PLAIN_RE, _STRECKE_PLAIN_RE, _VON_NACH_PLAIN_RE):
         for match in regex.finditer(plain):
             a_norm = _normalize_endpoint_name(match.group("a"))
             b_norm = _normalize_endpoint_name(match.group("b"))
@@ -711,6 +756,38 @@ _TITLE_NOISE_WORDS = frozenset({
     "b",
     "u",
     "s",
+    # Generic transit-meta words that shouldn't be misread as endpoints
+    "linie",
+    "linien",
+    "strecke",
+    "strecken",
+    "verbindung",
+    "verbindungen",
+    "abschnitt",
+    "abschnitte",
+    "bereich",
+    "bereiche",
+    "richtung",
+    "fahrtrichtung",
+    "haltestelle",
+    "haltestellen",
+    "station",
+    "stationen",
+    "betrieb",
+    "verkehr",
+    "fahrgäste",
+    "fahrgaeste",
+    "fahrt",
+    "fahrten",
+    "zug",
+    "zuege",
+    "züge",
+    "fernverkehr",
+    "fernverkehrszüge",
+    "fernverkehrszuege",
+    "nahverkehr",
+    "nahverkehrszüge",
+    "nahverkehrszuege",
 })
 
 
@@ -992,8 +1069,16 @@ def _find_stations_in_text(blob: str) -> List[str]:
     Scans text for known station names using a sliding window.
     Returns a list of unique canonical station names found.
     """
+    if not blob:
+        return []
+    # Strip HTML tags and unescape entities — otherwise tokens like
+    # "Hbf<" (left over from "<b>Graz Hbf</b>") slip through the
+    # _GENERIC_STATION_TOKENS filter and canonicalise to flagship
+    # stations through their alias rules.
+    cleaned = re.sub(r"<[^>]+>", " ", blob)
+    cleaned = html.unescape(cleaned)
     # Use whitespace splitting to preserve punctuation like '.' in 'St. Pölten'
-    tokens = [t for t in re.split(r"[\s/]+", blob) if t]
+    tokens = [t for t in re.split(r"[\s/]+", cleaned) if t]
     if not tokens:
         return []
 
