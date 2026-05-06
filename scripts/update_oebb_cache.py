@@ -55,8 +55,8 @@ def main() -> int:
         return 1
 
     if not items:
-        logger.error(
-            "Fetched 0 events (unexpected empty list); keeping existing cache."
+        logger.warning(
+            "Fetched 0 events; keeping existing cache."
         )
         return 1
 

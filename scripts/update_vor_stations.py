@@ -33,7 +33,7 @@ log = logging.getLogger("update_vor_stations")
 
 STATIC_VOR_ENTRIES: tuple[dict[str, object], ...] = (
     {
-        "vor_id": "900300",
+        "vor_id": "430521000",
         "name": "Wiener Neustadt Hauptbahnhof",
         "in_vienna": False,
         "pendler": True,
