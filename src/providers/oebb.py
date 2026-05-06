@@ -495,6 +495,244 @@ def _route_is_wien_relevant(name_a: str, name_b: str) -> bool:
     return cat_a == "vienna" or cat_b == "vienna"
 
 
+# Word tokens that may legitimately appear in an ÖBB title alongside
+# station names without indicating a second endpoint. Anything not in this
+# set AND not part of a known station is treated as a suspect unknown
+# station mention.
+_TITLE_NOISE_WORDS = frozenset({
+    # Categories / event types (also covered by NON_LOCATION_PREFIXES, kept
+    # explicit for clarity)
+    "bauarbeiten",
+    "bauarbeit",
+    "störung",
+    "stoerung",
+    "verspätung",
+    "verspaetung",
+    "verspätungen",
+    "verspaetungen",
+    "ausfall",
+    "ausfälle",
+    "ausfaelle",
+    "zugausfall",
+    "umleitung",
+    "haltausfall",
+    "schienenersatzverkehr",
+    "ersatzverkehr",
+    "sev",
+    "polizeieinsatz",
+    "rettungseinsatz",
+    "personenschaden",
+    "fahrzeugschaden",
+    "weichenstörung",
+    "weichenstoerung",
+    "signalstörung",
+    "signalstoerung",
+    "info",
+    "information",
+    "hinweis",
+    "achtung",
+    # Bahnhof-Suffixe
+    "hbf",
+    "bf",
+    "bhf",
+    "bahnhof",
+    "bahnhst",
+    "hauptbahnhof",
+    "westbahnhof",
+    "westbf",
+    "ostbahnhof",
+    "ostbf",
+    "südbahnhof",
+    "suedbahnhof",
+    "südbf",
+    "suedbf",
+    "nordbahnhof",
+    "nordbf",
+    # German articles / prepositions / conjunctions
+    "der",
+    "die",
+    "das",
+    "den",
+    "dem",
+    "des",
+    "ein",
+    "eine",
+    "einer",
+    "einem",
+    "eines",
+    "und",
+    "oder",
+    "aber",
+    "sowie",
+    "in",
+    "im",
+    "an",
+    "am",
+    "auf",
+    "aus",
+    "bei",
+    "mit",
+    "von",
+    "vom",
+    "zu",
+    "zum",
+    "zur",
+    "nach",
+    "vor",
+    "über",
+    "ueber",
+    "via",
+    "ab",
+    "bis",
+    "wegen",
+    "aufgrund",
+    "während",
+    "waehrend",
+    "zwischen",
+    "neue",
+    "neuer",
+    "neues",
+    "alle",
+    "alle.",
+    "kein",
+    "keine",
+    "halt",
+    # Time/calendar words that occasionally surface in titles
+    "heute",
+    "morgen",
+    "wochenende",
+    "wochenenden",
+    "feiertag",
+    "feiertage",
+    # Facility / generic location words (already in _NON_STATION_FIRST_WORDS
+    # but we list them here too for the title-residual check)
+    "aufzug",
+    "lift",
+    "fahrtreppe",
+    "rolltreppe",
+    "bahnsteig",
+    "gleis",
+    "wagen",
+    "ausgang",
+    "eingang",
+    "halle",
+    "platz",
+    "sektor",
+    "zone",
+    # German short forms
+    "b",
+    "u",
+    "s",
+})
+
+
+def _title_has_unknown_endpoint(title: str) -> bool:
+    """Heuristic: detect titles like ``Wiener Neustadt Hauptbahnhof Semmering``
+    that pair a known Wien/Pendler station with a station-name-shaped token
+    that doesn't resolve against the directory.
+
+    Real ÖBB titles list disrupted endpoints directly (``<Station1>
+    <Station2>``); when one of those stations is missing from
+    stations.json the strict route check never sees the connection and the
+    single-station fall-through used to keep the message even though the
+    real route is Pendler↔Distant or Wien↔Distant.
+
+    Returns ``True`` when the title likely encodes such an implicit route
+    so the caller can drop the message. Conservative: only fires when at
+    least one Wien/Pendler station is present in the title AND the
+    remaining content has at least one capitalized, non-stop-word token of
+    three or more letters.
+    """
+    if not title:
+        return False
+    if "↔" in title:
+        # Explicit-route titles are handled by _extract_routes; do not
+        # second-guess them here.
+        return False
+
+    stripped = _strip_oebb_prefixes(title)
+    # Remove any leading category prefix like "Bauarbeiten:" / "Hinweis:".
+    while True:
+        match = re.match(r"^\s*([^:]+):\s*", stripped)
+        if not match:
+            break
+        prefix = match.group(1).strip()
+        if not _is_category(prefix):
+            break
+        stripped = stripped[match.end():]
+
+    if not stripped:
+        return False
+
+    # Collect every textual span that resolves to a known station so we
+    # can subtract it from the title. We use a sliding-window approach
+    # similar to _find_stations_in_text but record start/end offsets.
+    tokens_re = re.finditer(r"\S+", stripped)
+    tokens = [(m.start(), m.end(), m.group(0)) for m in tokens_re]
+    if not tokens:
+        return False
+
+    used = [False] * len(tokens)
+    has_relevant_station = False
+    window = min(_MAX_STATION_WINDOW, len(tokens))
+    for size in range(window, 0, -1):
+        for idx in range(len(tokens) - size + 1):
+            if any(used[idx : idx + size]):
+                continue
+            chunk = " ".join(t[2] for t in tokens[idx : idx + size])
+            chunk_clean = chunk.strip(" ,.;:()[]")
+            if size == 1:
+                token_norm = chunk_clean.casefold().rstrip(".:,;")
+                if token_norm in _GENERIC_STATION_TOKENS:
+                    continue
+            canon = canonical_name(chunk_clean)
+            if not canon:
+                continue
+            info = station_info(chunk_clean)
+            if info and (info.in_vienna or info.pendler):
+                has_relevant_station = True
+            for j in range(idx, idx + size):
+                used[j] = True
+
+    if not has_relevant_station:
+        return False
+
+    # The implicit second endpoint can only sit AFTER the last known
+    # station match — otherwise we'd flag tokens that are clearly part of
+    # the message preamble (e.g. "Sturm im Raum Wien" has "Sturm" before
+    # the known "Wien" and is just a generic Vienna weather notice, not a
+    # Sturm-↔-Wien route).
+    last_known_idx = -1
+    for idx, flag in enumerate(used):
+        if flag:
+            last_known_idx = idx
+
+    for idx in range(last_known_idx + 1, len(tokens)):
+        if used[idx]:
+            continue
+        raw = tokens[idx][2]
+        clean = raw.strip(" .,;:()[]/")
+        if not clean:
+            continue
+        norm = clean.casefold()
+        if norm in _TITLE_NOISE_WORDS:
+            continue
+        if norm in _GENERIC_STATION_TOKENS:
+            continue
+        if norm in _NON_STATION_FIRST_WORDS:
+            continue
+        alpha = re.sub(r"[^A-Za-zÄÖÜäöüß]", "", clean)
+        if len(alpha) < 3:
+            continue
+        if not clean[0:1].isupper():
+            continue
+        # Found a station-name-shaped token after the last known match —
+        # treat as an implicit second endpoint of an unknown station.
+        return True
+
+    return False
+
+
 def _is_relevant(title: str, description: str) -> bool:
     """Decide whether an ÖBB message is relevant for Wien-Pendler.
 
@@ -547,6 +785,16 @@ def _is_relevant(title: str, description: str) -> bool:
     # Pendler↔Distant and Distant↔Distant routes are all not relevant per
     # spec, so drop the message even when a Wien station is co-mentioned.
     if has_distant:
+        return False
+
+    # Step 2b: same idea for stations that the directory doesn't carry yet —
+    # if the title pairs a known Wien/Pendler station with a capitalized
+    # token that isn't a stop word and isn't part of a known station name,
+    # treat the pairing as an implicit Pendler↔Unknown / Wien↔Unknown
+    # route. This catches Pendler↔Distant Fernverkehr items like
+    # "Bauarbeiten: Wiener Neustadt Hauptbahnhof Semmering" until the
+    # missing stations are added to data/stations.json (bug M).
+    if has_relevant and _title_has_unknown_endpoint(title):
         return False
 
     if has_relevant:

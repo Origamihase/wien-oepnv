@@ -78,3 +78,58 @@ class TestSingleStationDropsOnDistant:
         title = "Bauarbeiten München Hbf"
         desc = "Im Raum München Verspätungen."
         assert _is_relevant(title, desc) is False
+
+
+class TestImplicitRouteToUnknown:
+    """Bug N: titles like ``Wiener Neustadt Hauptbahnhof Semmering`` (Pendler
+    + unknown second endpoint, no zwischen-pattern in description) used to
+    slip through the single-station path. The title-residual heuristic now
+    treats a capitalized non-stop-word token *after* a known station as an
+    implicit second endpoint and drops the message.
+    """
+
+    def test_pendler_unknown_route_dropped(self) -> None:
+        # User-reported case: Wiener Neustadt is Pendler, Semmering is
+        # absent from the directory but clearly the second endpoint of a
+        # Fernverkehr route.
+        title = "Bauarbeiten: Wiener Neustadt Hauptbahnhof Semmering"
+        desc = (
+            "Wegen Bauarbeiten werden von 07.09.2026 bis 12.12.2026 "
+            "(04:30 Uhr) einige Fernverkehrszüge umgeleitet."
+        )
+        assert _is_relevant(title, desc) is False
+
+    def test_wien_unknown_route_dropped(self) -> None:
+        # Same shape, with Wien instead of a Pendler station.
+        assert _is_relevant("Bauarbeiten: Wien Hauptbahnhof Brixlegg", "x") is False
+
+    def test_wien_only_kept(self) -> None:
+        # Sanity: a real Wien-only facility notice must keep working.
+        assert _is_relevant("Bauarbeiten: Wien Hauptbahnhof", "Aufzug defekt.") is True
+
+    def test_wien_pendler_pair_kept(self) -> None:
+        # Pendler is a known station — the residual check must not fire.
+        assert (
+            _is_relevant("Bauarbeiten: Wien Hauptbahnhof Mödling", "x") is True
+        )
+
+    def test_explicit_arrow_route_kept(self) -> None:
+        # ↔-titles are handled by _extract_routes, not by this heuristic.
+        assert _is_relevant("Wien Hauptbahnhof ↔ Mödling", "") is True
+
+    def test_weather_word_before_wien_kept(self) -> None:
+        # Tokens that sit BEFORE the last known station (e.g. "Sturm im
+        # Raum Wien") are sentence preamble, not implicit endpoints.
+        assert (
+            _is_relevant("Sturm im Raum Wien", "Verzögerungen bei der S-Bahn Wien.")
+            is True
+        )
+
+    def test_time_word_after_wien_kept(self) -> None:
+        # "Wochenende" is a German common noun in our stop list.
+        assert (
+            _is_relevant(
+                "Bauarbeiten Wien Hauptbahnhof am Wochenende", "Hinweis"
+            )
+            is True
+        )
