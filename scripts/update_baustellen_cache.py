@@ -189,10 +189,23 @@ def _load_fallback(path: Path) -> dict[str, Any] | None:
         LOGGER.error("Baustellen: Fallback-Datei %s nicht lesbar (%s)", path, exc)
         return None
     try:
-        return cast(dict[str, Any], json.loads(raw))
+        payload = json.loads(raw)
     except json.JSONDecodeError as exc:
         LOGGER.error("Baustellen: Fallback-Datei %s enthält ungültiges JSON (%s)", path, exc)
         return None
+    # Zero Trust: a successfully decoded JSON document is not necessarily a
+    # dict. Without this guard the previous ``cast(dict, ...)`` lied to the
+    # type checker, and a list/null/scalar payload (e.g. a corrupted or
+    # swapped fallback file) would crash later in ``_iter_features`` with
+    # ``AttributeError`` when ``payload.get("type")`` is invoked.
+    if not isinstance(payload, dict):
+        LOGGER.error(
+            "Baustellen: Fallback-Datei %s muss ein JSON-Objekt sein (got %s)",
+            path,
+            type(payload).__name__,
+        )
+        return None
+    return payload
 
 
 # Security: only accept env overrides that point at the official Stadt Wien
