@@ -277,3 +277,42 @@ def test_pendler_alt_names_skipped_if_dict_is_empty_or_none() -> None:
         station, vor_names={}, vor_mapping={}, gtfs_index={}, pendler_alt_names=None
     )
     assert "Angern an der March" not in aliases
+
+
+def test_bst_code_pushed_into_aliases() -> None:
+    """The validator's "missing required aliases" rule expects the
+    station's own bst_code (ÖBB Stellencode) to be present in the
+    aliases array. Closes the legacy 155-entry alias_issues backlog
+    where the ÖBB-Excel import flow wrote bst_code to its own field
+    but never to aliases."""
+    station = {
+        "name": "St.Andrä-Wördern",
+        "bst_id": "100",
+        "bst_code": "Aw",
+        "aliases": ["St.Andrä-Wördern"],
+    }
+    aliases = _alias_candidates(
+        station, vor_names={}, vor_mapping={}, gtfs_index={}
+    )
+    assert "Aw" in aliases
+
+
+def test_bst_code_bypasses_generic_blocklist() -> None:
+    """Pfaffstätten's bst_code happens to be "Bf" — the generic-
+    blocklist suppresses "Bf" coming from arbitrary alias generation,
+    but the *own* bst_code must always survive. Otherwise the
+    validator's missing-alias check fires for a code the station
+    actually has."""
+    station = {
+        "name": "Pfaffstätten",
+        "bst_id": "148",
+        "bst_code": "Bf",
+        "aliases": ["Pfaffstätten"],
+    }
+    aliases = _alias_candidates(
+        station, vor_names={}, vor_mapping={}, gtfs_index={}
+    )
+    assert "Bf" in aliases, (
+        "the station's own bst_code must bypass the generic-blocklist "
+        "so the JSON aliases stay aligned with the bst_code field"
+    )
