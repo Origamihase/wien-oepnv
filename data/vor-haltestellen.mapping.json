@@ -784,6 +784,22 @@
     "longitude": 16.236406
   },
   {
+    "station_name": "Drösing",
+    "bst_id": "299",
+    "vor_id": "430330900",
+    "resolved_name": "Drösing Bahnhof",
+    "latitude": 48.539898,
+    "longitude": 16.89608
+  },
+  {
+    "station_name": "Dürnkrut",
+    "bst_id": "301",
+    "vor_id": "430331000",
+    "resolved_name": "Dürnkrut Bahnhof",
+    "latitude": 48.469674,
+    "longitude": 16.860393
+  },
+  {
     "station_name": "Ebreichsdorf",
     "bst_id": "309",
     "vor_id": "430365300",
@@ -808,6 +824,14 @@
     "longitude": 16.441226
   },
   {
+    "station_name": "Wien Floridsdorf",
+    "bst_id": "398",
+    "vor_id": "490033400",
+    "resolved_name": "Wien Floridsdorf",
+    "latitude": 48.256648,
+    "longitude": 16.400208
+  },
+  {
     "station_name": "Wien Siemensstraße",
     "bst_id": "399",
     "vor_id": "490124800",
@@ -816,12 +840,28 @@
     "longitude": 16.420748
   },
   {
+    "station_name": "Wien Brünner Straße",
+    "bst_id": "400",
+    "vor_id": "490017600",
+    "resolved_name": "Wien Brünner Straße",
+    "latitude": 48.267777,
+    "longitude": 16.403588
+  },
+  {
     "station_name": "Fischamend",
     "bst_id": "402",
     "vor_id": "430343000",
     "resolved_name": "Fischamend Bahnhof",
     "latitude": 48.116605,
     "longitude": 16.614978
+  },
+  {
+    "station_name": "Tullnerfeld",
+    "bst_id": "4384321",
+    "vor_id": "430575900",
+    "resolved_name": "Tullnerfeld Bahnhof",
+    "latitude": 48.29514,
+    "longitude": 15.996736
   },
   {
     "station_name": "Wien Stadlau",
@@ -848,6 +888,30 @@
     "longitude": 16.23869
   },
   {
+    "station_name": "Wien Simmering",
+    "bst_id": "4741048",
+    "vor_id": "490126000",
+    "resolved_name": "Wien Simmering",
+    "latitude": 48.170253,
+    "longitude": 16.419867
+  },
+  {
+    "station_name": "Wien Aspern Nord",
+    "bst_id": "4773541",
+    "vor_id": "490091000",
+    "resolved_name": "Wien Aspern Nord",
+    "latitude": 48.234669,
+    "longitude": 16.504456
+  },
+  {
+    "station_name": "Flughafen Wien",
+    "bst_id": "528",
+    "vor_id": "430470800",
+    "resolved_name": "Flughafen Wien Bahnhof",
+    "latitude": 48.12056,
+    "longitude": 16.563659
+  },
+  {
     "station_name": "Gänserndorf",
     "bst_id": "547",
     "vor_id": "430362200",
@@ -862,6 +926,54 @@
     "resolved_name": "Gerasdorf bei Wien Bahnhof",
     "latitude": 48.293315,
     "longitude": 16.483736
+  },
+  {
+    "station_name": "Gloggnitz",
+    "bst_id": "626",
+    "vor_id": "430876100",
+    "resolved_name": "Gloggnitz Bahnhof",
+    "latitude": 47.677581,
+    "longitude": 15.945974
+  },
+  {
+    "station_name": "Gramatneusiedl",
+    "bst_id": "642",
+    "vor_id": "430353800",
+    "resolved_name": "Gramatneusiedl Bahnhof",
+    "latitude": 48.035495,
+    "longitude": 16.490388
+  },
+  {
+    "station_name": "Götzendorf",
+    "bst_id": "654",
+    "vor_id": "430365500",
+    "resolved_name": "Götzendorf/Leitha Bahnhof",
+    "latitude": 48.025688,
+    "longitude": 16.587561
+  },
+  {
+    "station_name": "Sarasdorf",
+    "bst_id": "655",
+    "vor_id": "430468800",
+    "resolved_name": "Sarasdorf Bahnhof",
+    "latitude": 48.023207,
+    "longitude": 16.677237
+  },
+  {
+    "station_name": "Wilfleinsdorf",
+    "bst_id": "656",
+    "vor_id": "430523900",
+    "resolved_name": "Wilfleinsdorf Bahnhof",
+    "latitude": 48.02194,
+    "longitude": 16.719774
+  },
+  {
+    "station_name": "Schwechat",
+    "bst_id": "711",
+    "vor_id": "430471000",
+    "resolved_name": "Schwechat Bahnhof",
+    "latitude": 48.143195,
+    "longitude": 16.482055
   },
   {
     "station_name": "Mannswörth",
@@ -902,6 +1014,14 @@
     "resolved_name": "Wien Hütteldorf",
     "latitude": 48.197391,
     "longitude": 16.261073
+  },
+  {
+    "station_name": "Wien Hadersdorf",
+    "bst_id": "805",
+    "vor_id": "490046000",
+    "resolved_name": "Wien Hadersdorf",
+    "latitude": 48.210345,
+    "longitude": 16.223552
   },
   {
     "station_name": "Wien Speising",
@@ -952,6 +1072,22 @@
     "longitude": 16.358201
   },
   {
+    "station_name": "Wien Hernals",
+    "bst_id": "857",
+    "vor_id": "490050500",
+    "resolved_name": "Wien Hernals",
+    "latitude": 48.223253,
+    "longitude": 16.314855
+  },
+  {
+    "station_name": "Wien Heiligenstadt",
+    "bst_id": "901",
+    "vor_id": "490049100",
+    "resolved_name": "Wien Heiligenstadt",
+    "latitude": 48.24907,
+    "longitude": 16.365716
+  },
+  {
     "station_name": "Wien Oberdöbling",
     "bst_id": "902",
     "vor_id": "490095900",
@@ -992,6 +1128,14 @@
     "longitude": 15.906385
   },
   {
+    "station_name": "Wien Blumental",
+    "bst_id": "934",
+    "vor_id": "490058200",
+    "resolved_name": "Wien Blumental",
+    "latitude": 48.138934,
+    "longitude": 16.369285
+  },
+  {
     "station_name": "Wien Jedlersdorf",
     "bst_id": "956",
     "vor_id": "490059100",
@@ -1016,12 +1160,28 @@
     "longitude": 16.347252
   },
   {
+    "station_name": "Wien Hauptbahnhof",
+    "bst_id": "900100",
+    "vor_id": "490134900",
+    "resolved_name": "Wien Hauptbahnhof",
+    "latitude": 48.185184,
+    "longitude": 16.376413
+  },
+  {
     "station_name": "Wien Karlsplatz",
     "bst_id": "900101",
     "vor_id": "490065700",
     "resolved_name": "Wien Karlsplatz",
     "latitude": 48.200888,
     "longitude": 16.368907
+  },
+  {
+    "station_name": "Wien Mitte-Landstraße",
+    "bst_id": "900102",
+    "vor_id": "490074300",
+    "resolved_name": "Wien Mitte-Landstraße",
+    "latitude": 48.206048,
+    "longitude": 16.384584
   },
   {
     "station_name": "Wien Schottentor",
@@ -1048,6 +1208,62 @@
     "longitude": 16.465739
   },
   {
+    "station_name": "Guntramsdorf Bahnhof",
+    "bst_id": "900106",
+    "vor_id": "430361600",
+    "resolved_name": "Guntramsdorf Bahnhof",
+    "latitude": 48.051964,
+    "longitude": 16.297551
+  },
+  {
+    "station_name": "Guntramsdorf-Kaiserau",
+    "bst_id": "900107",
+    "vor_id": "430361700",
+    "resolved_name": "Guntramsdorf Kaiserau Bf",
+    "latitude": 48.044494,
+    "longitude": 16.325274
+  },
+  {
+    "station_name": "Hainburg Kulturfabrik",
+    "bst_id": "900108",
+    "vor_id": "430368100",
+    "resolved_name": "Hainburg/Donau Kulturfabrik",
+    "latitude": 48.14484,
+    "longitude": 16.932019
+  },
+  {
+    "station_name": "Hainburg Ungartor",
+    "bst_id": "900109",
+    "vor_id": "430367700",
+    "resolved_name": "Hainburg/Donau Ungartor/B9",
+    "latitude": 48.148355,
+    "longitude": 16.948145
+  },
+  {
+    "station_name": "Neunkirchen NÖ",
+    "bst_id": "900110",
+    "vor_id": "430875800",
+    "resolved_name": "Neunkirchen (NÖ) Bahnhof",
+    "latitude": 47.731615,
+    "longitude": 16.085118
+  },
+  {
+    "station_name": "Oberwaltersdorf",
+    "bst_id": "900111",
+    "vor_id": "430442300",
+    "resolved_name": "Oberwaltersdorf Bahnhof",
+    "latitude": 47.975169,
+    "longitude": 16.328402
+  },
+  {
+    "station_name": "Trautmannsdorf an der Leitha",
+    "bst_id": "900112",
+    "vor_id": "430501300",
+    "resolved_name": "Trautmannsdorf/Leitha Bahnhof",
+    "latitude": 48.024079,
+    "longitude": 16.642305
+  },
+  {
     "station_name": "Guntramsdorf Südbahn",
     "bst_id": null,
     "vor_id": "430361600",
@@ -1072,14 +1288,6 @@
     "longitude": 16.587561
   },
   {
-    "station_name": "Neunkirchen NÖ",
-    "bst_id": null,
-    "vor_id": "430875800",
-    "resolved_name": "Neunkirchen (NÖ) Bahnhof",
-    "latitude": 47.731615,
-    "longitude": 16.085118
-  },
-  {
     "station_name": "Neunkirchen",
     "bst_id": null,
     "vor_id": "430875800",
@@ -1096,7 +1304,7 @@
     "longitude": 16.085118
   },
   {
-    "station_name": "Guntramsdorf-Kaiserau",
+    "station_name": "Guntramsdorf Kaiserau",
     "bst_id": null,
     "vor_id": "430361700",
     "resolved_name": "Guntramsdorf Kaiserau Bf",
@@ -1104,15 +1312,7 @@
     "longitude": 16.325274
   },
   {
-    "station_name": "Oberwaltersdorf",
-    "bst_id": null,
-    "vor_id": "430442300",
-    "resolved_name": "Oberwaltersdorf Bahnhof",
-    "latitude": 47.975169,
-    "longitude": 16.328402
-  },
-  {
-    "station_name": "Trautmannsdorf an der Leitha",
+    "station_name": "Trautmannsdorf/Leitha",
     "bst_id": null,
     "vor_id": "430501300",
     "resolved_name": "Trautmannsdorf/Leitha Bahnhof",
@@ -1134,6 +1334,14 @@
     "resolved_name": "Maria Ellend Bahnhof",
     "latitude": 48.109692,
     "longitude": 16.687728
+  },
+  {
+    "station_name": "Haslau",
+    "bst_id": null,
+    "vor_id": "430370600",
+    "resolved_name": "Haslau (Donau) Bahnhof",
+    "latitude": 48.109683,
+    "longitude": 16.710192
   },
   {
     "station_name": "Bad Deutsch-Altenburg",
@@ -1168,7 +1376,23 @@
     "longitude": 16.948145
   },
   {
+    "station_name": "Angern an der March",
+    "bst_id": null,
+    "vor_id": "430304600",
+    "resolved_name": "Angern (March) Bahnhof",
+    "latitude": 48.384735,
+    "longitude": 16.826467
+  },
+  {
     "station_name": "Angern (March)",
+    "bst_id": null,
+    "vor_id": "430304600",
+    "resolved_name": "Angern (March) Bahnhof",
+    "latitude": 48.384735,
+    "longitude": 16.826467
+  },
+  {
+    "station_name": "Angern March",
     "bst_id": null,
     "vor_id": "430304600",
     "resolved_name": "Angern (March) Bahnhof",
@@ -1184,11 +1408,35 @@
     "longitude": 16.403021
   },
   {
+    "station_name": "St. Andrä-Wördern",
+    "bst_id": null,
+    "vor_id": "430482400",
+    "resolved_name": "St. Andrä-Wördern Bahnhof",
+    "latitude": 48.333865,
+    "longitude": 16.20898
+  },
+  {
     "station_name": "St Andrä-Wördern",
     "bst_id": null,
     "vor_id": "430482400",
     "resolved_name": "St. Andrä-Wördern Bahnhof",
     "latitude": 48.333865,
     "longitude": 16.20898
+  },
+  {
+    "station_name": "Krems an der Donau",
+    "bst_id": null,
+    "vor_id": "430399300",
+    "resolved_name": "Krems an der Donau Bahnhof",
+    "latitude": 48.409078,
+    "longitude": 15.604995
+  },
+  {
+    "station_name": "Krems Donau",
+    "bst_id": null,
+    "vor_id": "430399300",
+    "resolved_name": "Krems an der Donau Bahnhof",
+    "latitude": 48.409078,
+    "longitude": 15.604995
   }
 ]

@@ -1,11 +1,11 @@
 # Stations Validation Report
 
-*Total stations analysed*: 169
+*Total stations analysed*: 176
 *GTFS stops loaded*: 99
 *Geographic duplicates*: 0
 *Alias issues*: 155
 *Coordinate anomalies*: 6
-*GTFS mismatches*: 58
+*GTFS mismatches*: 65
 *Security warnings*: 0
 *Provider issues*: 0
 *Cross station ID issues*: 0
@@ -235,3 +235,10 @@
 - code:Hu  H4 / source:oebb (Neulengbach Stadt) → missing stop_id 430433800
 - code:F   H2S / source:oebb (Langenzersdorf) → missing stop_id 430404500
 - code:F   H3S / source:oebb (Bisamberg) → missing stop_id 430317000
+- code:900106 / source:vor (Guntramsdorf Bahnhof) → missing stop_id 430361600
+- code:900107 / source:vor (Guntramsdorf-Kaiserau) → missing stop_id 430361700
+- code:900108 / source:vor (Hainburg Kulturfabrik) → missing stop_id 430368100
+- code:900109 / source:vor (Hainburg Ungartor) → missing stop_id 430367700
+- code:900110 / source:vor (Neunkirchen NÖ) → missing stop_id 430875800
+- code:900111 / source:vor (Oberwaltersdorf) → missing stop_id 430442300
+- code:900112 / source:vor (Trautmannsdorf an der Leitha) → missing stop_id 430501300
