@@ -27,7 +27,8 @@ try:  # pragma: no cover - allow execution via package and script
         normalize_existing_values,
     )
     from utils.env import load_env_file
-except ModuleNotFoundError:  # pragma: no cover - allow python scripts/configure_feed.py
+    from utils.files import atomic_write
+except ImportError:  # pragma: no cover - allow python scripts/configure_feed.py
     from src.utils.configuration_wizard import (  # type: ignore
         ConfigOption,
         CONFIG_OPTIONS,
@@ -39,6 +40,7 @@ except ModuleNotFoundError:  # pragma: no cover - allow python scripts/configure
         normalize_existing_values,
     )
     from src.utils.env import load_env_file  # type: ignore
+    from src.utils.files import atomic_write  # type: ignore
 
 _OPTION_BY_KEY: Dict[str, ConfigOption] = {option.key: option for option in CONFIG_OPTIONS}
 
@@ -141,6 +143,14 @@ def _load_existing(path: Path) -> dict[str, str]:
     return env
 
 
+def _write_env_document(path: Path, document: str) -> None:
+    # Security: .env may carry secrets (e.g. VOR_ACCESS_ID). Force 0o600 so
+    # the file is not group-/world-readable under the typical umask 022.
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with atomic_write(path, mode="w", encoding="utf-8", permissions=0o600) as fh:
+        fh.write(document)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -189,8 +199,7 @@ def main(argv: list[str] | None = None) -> int:
             print()
             print(document)
             return 0
-        env_path.parent.mkdir(parents=True, exist_ok=True)
-        env_path.write_text(document, encoding="utf-8")
+        _write_env_document(env_path, document)
         print(f"Konfiguration wurde nach {env_path} geschrieben.")
         return 0
 
@@ -238,8 +247,7 @@ def main(argv: list[str] | None = None) -> int:
         print(document)
         return 0
 
-    env_path.parent.mkdir(parents=True, exist_ok=True)
-    env_path.write_text(document, encoding="utf-8")
+    _write_env_document(env_path, document)
     print(f"Konfiguration wurde nach {env_path} geschrieben.")
     return 0
 
