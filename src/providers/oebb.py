@@ -462,13 +462,31 @@ def _normalize_endpoint_name(name: str) -> str:
 
 
 def _looks_like_station_name(text: str) -> bool:
-    """Reject pure dates/numbers; require at least one alphabetic character."""
+    """Reject pure dates/numbers and date/time fragments.
+
+    Real station names start with a letter (typically capitalised) and
+    contain at least three consecutive alphabetic characters. Dates,
+    times and number-prefixed phrases like ``03.10.2026 (23:15 Uhr)``
+    are rejected up-front so the route extractor never treats them as
+    endpoints.
+    """
     if not text:
+        return False
+    text = text.strip()
+    if not text:
+        return False
+    # Reject if starts with a digit — almost always a date/time fragment
+    # ("03.10.2026 (23:15 Uhr) einige …").
+    if text[0].isdigit():
         return False
     if not re.search(r"[A-Za-zÄÖÜäöüß]", text):
         return False
-    # Reject things like "13.04.2026" (pure date) — they have no letters anyway,
-    # but this guard is here for defence in depth.
+    # Reject if no run of three or more alphabetic characters survives
+    # — guards against "Hbf (U)" residue after stripping.
+    if not re.search(r"[A-Za-zÄÖÜäöüß]{3,}", text):
+        return False
+    # Defence in depth: reject if the entire string is dates / numbers
+    # interleaved with punctuation.
     if re.fullmatch(r"[\d.\-/\s]+", text):
         return False
     return True
