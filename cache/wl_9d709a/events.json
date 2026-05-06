@@ -302,18 +302,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Feuerwehreinsatz",
-    "description": "Die Linie 12A fährt derzeit nur zwischen Schmelz, Gablenzgasse und Stiegergasse. Voraussichtliche Dauer: 21:00 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Längenfeldgasse U.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "326066bd4681c0785c5a1209c139e7d53faad9485ca545bc4a14759ff89bddf0",
-    "pubDate": "2026-05-06T20:19:00+02:00",
-    "starts_at": "2026-05-06T20:19:00+02:00",
-    "ends_at": "2026-05-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-05-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -458,25 +446,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Polizeieinsatz",
-    "description": "Linie U1: Unregelmäßige Intervalle in Richtung Oberlaa. Grund: Polizeieinsatz.",
+    "title": "O: Verunreinigung",
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
-    "pubDate": "2026-05-06T20:40:00+02:00",
-    "starts_at": "2026-05-06T20:40:00+02:00",
+    "guid": "dc7342a90fe1d05d98efc9491edf8888b79ca9c35e7d9cbc57a2361ba1a35f43",
+    "pubDate": "2026-05-06T22:23:00+02:00",
+    "starts_at": "2026-05-06T22:23:00+02:00",
     "ends_at": "2026-05-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-05-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Polizeieinsatz",
-    "description": "Linie U4: Unregelmäßige Intervalle in Richtung Heiligenstadt. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
-    "pubDate": "2026-05-06T20:55:00+02:00",
-    "starts_at": "2026-05-06T20:55:00+02:00",
-    "ends_at": "2026-05-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-05-06"
+    "_identity": "wl|störung|L=O|D=2026-05-06"
   }
 ]
