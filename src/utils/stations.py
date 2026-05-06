@@ -141,17 +141,27 @@ def _coerce_float(value: object | None) -> float | None:
 
 
 def _coerce_lat(value: object | None) -> float | None:
-    """Coerce value to a valid latitude."""
+    """Coerce value to a valid latitude.
+
+    Bounds span Europe so the directory can store distant terminus
+    stations (Berlin, Roma, Praha, Venezia, Zagreb, Budapest-Keleti).
+    The Wien containment decision lives in :func:`is_in_vienna`'s
+    polygon test, not in these bounds.
+    """
     val = _coerce_float(value)
-    if val is not None and (46.0 <= val <= 49.5):
+    if val is not None and (35.0 <= val <= 65.0):
         return val
     return None
 
 
 def _coerce_lon(value: object | None) -> float | None:
-    """Coerce value to a valid longitude."""
+    """Coerce value to a valid longitude.
+
+    See :func:`_coerce_lat` for the rationale behind the European
+    bounds.
+    """
     val = _coerce_float(value)
-    if val is not None and (9.0 <= val <= 17.5):
+    if val is not None and (-10.0 <= val <= 30.0):
         return val
     return None
 
