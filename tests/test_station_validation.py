@@ -364,7 +364,8 @@ def test_stations_json_has_mutually_exclusive_flags() -> None:
     )
     neither = [
         s for s in stations
-        if not s.get("in_vienna") and not s.get("pendler") and s.get("type") != "manual_foreign_city"
+        if not s.get("in_vienna") and not s.get("pendler")
+        and s.get("type") not in ("manual_foreign_city", "manual_distant_at")
     ]
     assert not neither, (
         "Stations with neither flag (and not manual_foreign_city) are invalid: "
