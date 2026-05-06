@@ -670,9 +670,13 @@ def is_in_vienna(lat: object, lon: object | None = None) -> bool:
             if info:
                 return bool(info.in_vienna)
             import os
-            city_token = os.getenv("WIEN_TOKEN", "wien")
+            # _normalize_token casefolds and strips noise — apply the same
+            # normalisation to the env-derived city token so a deployer
+            # setting WIEN_TOKEN="Wien" (or any cased variant) still
+            # matches against the casefolded incoming station name.
+            city_token = _normalize_token(os.getenv("WIEN_TOKEN", "wien"))
             token = _normalize_token(lat)
-            if token == city_token or token.startswith(city_token + " "):
+            if city_token and (token == city_token or token.startswith(city_token + " ")):
                 return True
         return False
 
@@ -819,8 +823,13 @@ def text_has_vienna_connection(text: str) -> bool:
     if re.search(r"\b(flughafen wien|airport vienna|vienna airport)\b", text_for_matching, re.IGNORECASE):
         return True
 
-    # 2. Prüfe auf das eigenständige Wort "Wien" (z.B. als Richtungshinweis) oder U-Bahn
-    if re.search(r"\b(wien|vienna|u-bahn)\b", cleaned, re.IGNORECASE):
+    # 2. Prüfe auf das eigenständige Wort "Wien" / "Vienna".
+    # Achtung: ein nacktes "U-Bahn" allein ist NICHT spezifisch genug —
+    # "Berliner U-Bahn", "Münchner U-Bahn-Linie U4" oder "Hamburger U-Bahn"
+    # würden sonst als Wien-Bezug gewertet und als ÖBB-Item ins Feed
+    # rutschen, obwohl die Meldung eine fremde Stadt betrifft. Daher: für
+    # U-Bahn-Mention zusätzlich Wien-Wort fordern.
+    if re.search(r"\b(wien|vienna)\b", cleaned, re.IGNORECASE):
         return True
 
     # 3. Kontextsensitive Erkennung für U1-U6:
