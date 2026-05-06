@@ -679,6 +679,35 @@ class _GithubIssueConfig:
         )
 
 
+def _is_trusted_github_api(api_url: str) -> bool:
+    """Return ``True`` only if ``api_url`` looks like a GitHub API endpoint.
+
+    Defense-in-depth against the ``FEED_GITHUB_API_URL`` / ``GITHUB_API_URL``
+    env vars being set to an attacker-controlled host (typo squat,
+    CI-pipeline injection, mistaken Enterprise URL). Without this check
+    ``submit()`` would happily POST the configured GitHub token to any
+    syntactically-valid public URL — ``validate_http_url()`` only verifies
+    SSRF/DNS-rebinding properties, not host identity.
+
+    Allowed:
+    - ``https://api.github.com`` (the public github.com REST API; exact host, no path)
+    - ``https://<host>/api/v3`` or ``/api/graphql`` (GitHub Enterprise Server canonical bases)
+    Anything else is rejected so the token never leaves the process.
+    """
+    parsed = urlparse(api_url)
+    if parsed.scheme.lower() not in ("http", "https"):
+        return False
+    hostname = (parsed.hostname or "").lower()
+    if not hostname:
+        return False
+    path = parsed.path.rstrip("/")
+    if hostname == "api.github.com" and path == "":
+        return True
+    if path in ("/api/v3", "/api/graphql"):
+        return True
+    return False
+
+
 class _GithubIssueReporter:
     def __init__(self, config: _GithubIssueConfig) -> None:
         self._config = config
@@ -689,6 +718,17 @@ class _GithubIssueReporter:
         if not self._config.repository or not self._config.token:
             log.warning(
                 "Automatisches GitHub-Issue kann nicht erstellt werden – Token oder Repository fehlen."
+            )
+            return
+
+        # Security: refuse to send the token to non-GitHub hosts. Must be
+        # checked BEFORE constructing the request URL or attaching the
+        # Authorization header so an env-var override can't leak credentials.
+        if not _is_trusted_github_api(self._config.api_url):
+            log.warning(
+                "Automatisches GitHub-Issue abgebrochen: API-URL %s ist kein "
+                "bekannter GitHub-Endpunkt; Token wird nicht gesendet.",
+                self._config.api_url,
             )
             return
 
