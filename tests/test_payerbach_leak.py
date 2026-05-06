@@ -108,13 +108,16 @@ class TestFacilityHeuristic:
     fake routes (platform/track references) while letting real station
     routes through to the strict classifier."""
 
-    def test_aufzug_between_platforms_drops_route_candidate(self) -> None:
-        # Bug D regression: the message must still pick up Wien Mitte
-        # via the single-station fall-through.
+    def test_facility_route_candidate_dropped(self) -> None:
+        # Bug D regression: the fake "zwischen Bahnsteig 1 und Bahnsteig
+        # 5" route must be dropped from the candidate list. The new
+        # facility/weather filter then drops the message itself because
+        # an "Aufzug"-titled notice without a transit keyword is
+        # facility-only per project spec.
         title = "Aufzug Wien Mitte"
         desc = "Aufzug zwischen Bahnsteig 1 und Bahnsteig 5 in Wien Mitte defekt"
         assert _extract_routes(title, desc) == []
-        assert _is_relevant(title, desc) is True
+        assert _is_relevant(title, desc) is False
 
     def test_facility_endpoint_detection(self) -> None:
         # Single-word and "<word> <number>" forms both classify as facility.

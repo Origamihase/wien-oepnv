@@ -60,9 +60,13 @@ class TestOebbFiltering:
         ) is False
 
     def test_relevant_general_disruption_with_vienna(self) -> None:
-        # General disruption WITH Vienna reference -> Keep
+        # General disruption WITH Vienna reference -> Keep.
+        # NOTE: per project spec ("die Wetterlage hat im Feed nichts zu
+        # suchen") a pure weather warning is dropped — use a real
+        # disruption word as title primary subject so this test exercises
+        # the Vienna-context path rather than the facility/weather filter.
         assert _is_relevant(
-            "Sturm im Raum Wien",
+            "Verspätungen im Raum Wien",
             "Verzögerungen bei der S-Bahn Wien."
         ) is True
 
