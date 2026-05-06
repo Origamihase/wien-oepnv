@@ -427,6 +427,16 @@ _BAHNHOF_TRAILING_RE = re.compile(
     r"\s*\b(?:Hauptbahnhof|Bahnhof|Bahnhst|Hbf|Bhf|Bf)\b\.?",
     re.IGNORECASE,
 )
+# Variant that anchors at end-of-string AND rejects a leading hyphen so
+# compound proper nouns like ``Wien Franz-Josefs-Bahnhof`` keep the
+# trailing ``-Bahnhof`` intact. Stripping it produced a dangling
+# ``Wien Franz-Josefs-`` that leaked into dedup keys (and into visible
+# titles whenever the alias resolution in :func:`station_info` failed to
+# bridge the truncation).
+_BAHNHOF_TRAILING_END_RE = re.compile(
+    r"(?<![\-‐-―])\s+\b(?:Hauptbahnhof|Bahnhof|Bahnhst|Hbf|Bhf|Bf)\b\.?\s*$",
+    re.IGNORECASE,
+)
 _PARENS_TRAILING_RE = re.compile(r"\s*\(\s*[A-Za-z]\d*\s*\)\s*$")
 
 
@@ -450,7 +460,7 @@ def _normalize_endpoint_name(name: str) -> str:
     # Strip a single trailing Bahnhof/Hbf/Bf suffix (only at the end, so we
     # don't mangle names like "Wiener Neustadt Hauptbahnhof" → "Wiener Neustadt"
     # — which is actually what we want for lookup).
-    cleaned = re.sub(_BAHNHOF_TRAILING_RE.pattern + r"\s*$", "", cleaned, flags=re.IGNORECASE).strip()
+    cleaned = _BAHNHOF_TRAILING_END_RE.sub("", cleaned).strip()
     cleaned = re.sub(r"\s{2,}", " ", cleaned).strip()
 
     # If the endpoint absorbed a sentence boundary ("Mödling. Auch ..."),
@@ -1274,11 +1284,18 @@ def _format_route_title(routes: List[Tuple[str, str]], line_prefix: str = "") ->
     available (so ``Wien Westbf`` → ``Wien Westbahnhof``). The Vienna endpoint
     is placed first to keep the feed visually consistent. Multiple routes are
     joined with ``" / "`` to indicate that several segments are affected.
+
+    Routes that resolve to the same canonical endpoint pair (e.g. one
+    description writes ``St. Pölten`` while another writes ``St.Pölten``)
+    are deduplicated here — the upstream extraction keys on raw casefold
+    text so whitespace variants both survive. Without this pass the
+    formatted title repeats the same route twice.
     """
     if not routes:
         return ""
 
     formatted: List[str] = []
+    seen_canon: set[Tuple[str, str]] = set()
     for raw_a, raw_b in routes:
         info_a = station_info(raw_a)
         info_b = station_info(raw_b)
@@ -1296,6 +1313,14 @@ def _format_route_title(routes: List[Tuple[str, str]], line_prefix: str = "") ->
         b_in_vienna = bool(info_b and info_b.in_vienna)
         if b_in_vienna and not a_in_vienna:
             name_a, name_b = name_b, name_a
+
+        # Dedup against already-rendered routes after canonical resolution.
+        canon_key: Tuple[str, str] = tuple(  # type: ignore[assignment]
+            sorted((name_a.casefold(), name_b.casefold()))
+        )
+        if canon_key in seen_canon:
+            continue
+        seen_canon.add(canon_key)
 
         formatted.append(f"{name_a} ↔ {name_b}")
 
