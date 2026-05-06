@@ -28,6 +28,11 @@ def test_strip_dynamic_sensitive_headers(
             "Auth-Info": "creds000",
             "Cookie": "session=abc",
             "X-Custom-Password": "password1",
+            # SAML 2.0 / JWT bearer assertions can travel in headers as well.
+            # Without "assertion" in _SENSITIVE_HEADER_PARTIALS these would
+            # follow the redirect to the third-party host.
+            "Saml-Assertion": "<saml:Assertion>...</saml:Assertion>",
+            "X-Subject-Assertion": "eyJTAMLencodedClaims",
         }
 
         # Headers that should NOT be stripped (safe headers)

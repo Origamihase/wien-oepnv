@@ -197,6 +197,13 @@ _SENSITIVE_QUERY_KEYS = frozenset({
     "clientassertiontype",
     "samlrequest",
     "samlresponse",
+    # OAuth 2.0 Device Authorization Grant (RFC 8628). `device_code` is a
+    # bearer-style secret that the client polls with; `user_code` is short-lived
+    # but still pairs the user with an in-flight grant. Neither is caught by
+    # the substring list (no "token"/"secret"/etc. in the normalized form),
+    # so they need an exact entry here.
+    "devicecode",
+    "usercode",
     # Additional sensitive tokens
     "bearer",
     # AWS and other cloud tokens
@@ -221,6 +228,11 @@ _SENSITIVE_KEY_SUBSTRINGS = frozenset({
     "email",
     "webhook",
     "glpat",
+    # SAML 2.0 / JWT Bearer Authorization Grant (RFC 7521/7522/7523):
+    # the `assertion` parameter carries a signed identity assertion (SAML XML
+    # or JWT). `client_assertion` is already an exact match above, but plain
+    # `assertion`, `saml_assertion`, etc. would otherwise slip past redaction.
+    "assertion",
     # Additional broad matching
     "session",
     "cookie",
@@ -282,6 +294,9 @@ _SENSITIVE_HEADER_PARTIALS = frozenset({
     "access-token",
     "access-key",
     "access-id",
+    # SAML/JWT bearer assertions are sometimes carried in headers (e.g.
+    # `Saml-Assertion`, `X-Subject-Assertion`); strip on cross-origin redirect.
+    "assertion",
 })
 
 

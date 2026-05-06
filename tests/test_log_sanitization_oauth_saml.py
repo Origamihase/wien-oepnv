@@ -44,3 +44,30 @@ def test_nonce_state_redaction() -> None:
     msg = "state=xyz-123"
     assert "***" in sanitize_log_message(msg)
     assert "xyz-123" not in sanitize_log_message(msg)
+
+
+@pytest.mark.parametrize("key", [
+    # Plain assertion (RFC 7521/7522/7523 — SAML 2.0 / JWT Bearer Auth Grant)
+    "assertion",
+    "Assertion",
+    "ASSERTION",
+    # SAML assertion in non-OAuth contexts
+    "saml_assertion",
+    "SAML-Assertion",
+    "SamlAssertion",
+    # JWT-bearer assertion variants
+    "jwt_assertion",
+    "subject_assertion",
+])
+def test_assertion_key_redaction(key: str) -> None:
+    """RFC 7521-7523 `assertion` parameter carries a signed identity credential.
+
+    Without this redaction, a SAML 2.0 / JWT bearer assertion logged as part of
+    a request URL or error trace would expose the entire signed payload (user
+    identity claims, attribute statements, replayable within validity window).
+    """
+    secret = "eyJraWQiOiJzaWctMTIzIn0.signedSamlOrJwtAssertionPayload.signature"
+    msg = f"POST /token grant_type=urn:bearer {key}={secret}"
+    sanitized = sanitize_log_message(msg)
+    assert secret not in sanitized, f"{key} value leaked: {sanitized!r}"
+    assert "***" in sanitized

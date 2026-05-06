@@ -25,3 +25,36 @@ def test_sanitize_saml_params() -> None:
 
     assert "base64_request" not in sanitized, "SAMLRequest leaked"
     assert "base64_response" not in sanitized, "SAMLResponse leaked"
+
+
+def test_sanitize_bearer_assertion_param() -> None:
+    """RFC 7521/7522/7523 — plain `assertion` param carries a signed credential.
+
+    The token endpoint of a SAML/JWT bearer flow receives the entire assertion
+    via the `assertion` query/body parameter. Without redaction, the signed
+    payload (with user identity claims) leaks into URL-bearing error logs.
+    """
+    secret = "eyJraWQiOiJzaWcifQ.signedAssertionPayload.signature"
+    url = (
+        "https://idp.example.com/token?grant_type=urn:ietf:params:oauth:grant-type:saml2-bearer"
+        f"&assertion={secret}"
+    )
+    sanitized = _sanitize_url_for_error(url)
+    assert secret not in sanitized, "assertion parameter leaked"
+
+
+def test_sanitize_device_flow_codes() -> None:
+    """RFC 8628 — `device_code` is a polling secret; `user_code` pairs the user.
+
+    Both parameters were previously not caught by URL-level redaction because
+    their normalized form (`devicecode` / `usercode`) does not contain any
+    sensitive substring (`token`, `secret`, etc.). They now have explicit
+    entries in the sensitive query-key set.
+    """
+    url = (
+        "https://example.com/oauth/token?grant_type=urn:ietf:params:oauth:grant-type:device_code"
+        "&device_code=secret-device-code-value&user_code=ABCD-EFGH"
+    )
+    sanitized = _sanitize_url_for_error(url)
+    assert "secret-device-code-value" not in sanitized, "device_code leaked"
+    assert "ABCD-EFGH" not in sanitized, "user_code leaked"
