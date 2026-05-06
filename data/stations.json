@@ -14,6 +14,10 @@
         "Bahnhof Sankt Andrae-Woerdern",
         "Bahnhof Sankt Andrä Wördern",
         "Bahnhof Sankt Andrä-Wördern",
+        "Bahnhof St Andrae-Woerdern",
+        "Bahnhof St Andrä-Wördern",
+        "Bahnhof St. Andrae-Woerdern",
+        "Bahnhof St. Andrä-Wördern",
         "Bahnhof St.Andrae Woerdern",
         "Bahnhof St.Andrae-Woerdern",
         "Bahnhof St.Andrä Wördern",
@@ -26,6 +30,14 @@
         "bf Sankt Andrä Wördern",
         "Bf Sankt Andrä-Wördern",
         "bf Sankt Andrä-Wördern",
+        "Bf St Andrae-Woerdern",
+        "bf St Andrae-Woerdern",
+        "Bf St Andrä-Wördern",
+        "bf St Andrä-Wördern",
+        "Bf St. Andrae-Woerdern",
+        "bf St. Andrae-Woerdern",
+        "Bf St. Andrä-Wördern",
+        "bf St. Andrä-Wördern",
         "Bf St.Andrae Woerdern",
         "bf St.Andrae Woerdern",
         "Bf St.Andrae-Woerdern",
@@ -50,7 +62,15 @@
         "Sankt Andrä-Wördern Bahnhof",
         "Sankt Andrä-Wördern Bf",
         "Sankt Andrä-Wördern bf",
+        "St Andrae-Woerdern",
+        "St Andrae-Woerdern Bahnhof",
+        "St Andrae-Woerdern Bf",
+        "St Andrae-Woerdern bf",
         "St Andrä-Wördern",
+        "St Andrä-Wördern Bahnhof",
+        "St Andrä-Wördern Bf",
+        "St Andrä-Wördern bf",
+        "St. Andrae-Woerdern",
         "St. Andrae-Woerdern Bahnhof",
         "St. Andrae-Woerdern Bf",
         "St. Andrae-Woerdern bf",
@@ -852,8 +872,11 @@
         "Bad Deutsch-Altenburg bf",
         "Bad Deutsch-Altenburg/Donau",
         "Bahnhof Bad Deutsch Altenburg",
+        "Bahnhof Bad Deutsch-Altenburg",
         "Bf Bad Deutsch Altenburg",
-        "bf Bad Deutsch Altenburg"
+        "bf Bad Deutsch Altenburg",
+        "Bf Bad Deutsch-Altenburg",
+        "bf Bad Deutsch-Altenburg"
       ],
       "source": "oebb",
       "latitude": 48.132489,
@@ -1026,8 +1049,11 @@
         "Angern bf",
         "Angern March",
         "Bahnhof Angern",
+        "Bahnhof Angern (March)",
         "Bf Angern",
-        "bf Angern"
+        "bf Angern",
+        "Bf Angern (March)",
+        "bf Angern (March)"
       ]
     },
     {
@@ -5266,6 +5292,7 @@
       "aliases": [
         "430361600",
         "Guntramsdorf Bahnhof",
+        "900106",
         "Bahnhof Guntramsdorf",
         "Bf Guntramsdorf",
         "bf Guntramsdorf",
@@ -5288,6 +5315,7 @@
       "aliases": [
         "430361700",
         "Guntramsdorf-Kaiserau",
+        "900107",
         "Bahnhof Guntramsdorf Kaiserau",
         "Bahnhof Guntramsdorf-Kaiserau",
         "Bf Guntramsdorf Kaiserau",
@@ -5316,6 +5344,7 @@
       "aliases": [
         "430368100",
         "Hainburg Kulturfabrik",
+        "900108",
         "Bahnhof Hainburg Kulturfabrik",
         "Bf Hainburg Kulturfabrik",
         "bf Hainburg Kulturfabrik",
@@ -5339,6 +5368,7 @@
       "aliases": [
         "430367700",
         "Hainburg Ungartor",
+        "900109",
         "Bahnhof Hainburg Ungartor",
         "Bf Hainburg Ungartor",
         "bf Hainburg Ungartor",
@@ -5363,6 +5393,7 @@
       "aliases": [
         "430875800",
         "Neunkirchen NÖ",
+        "900110",
         "Bahnhof Neunkirchen",
         "Bahnhof Neunkirchen NOe",
         "Bahnhof Neunkirchen NÖ",
@@ -5397,6 +5428,7 @@
       "aliases": [
         "430442300",
         "Oberwaltersdorf",
+        "900111",
         "Bahnhof Oberwaltersdorf",
         "Bf Oberwaltersdorf",
         "bf Oberwaltersdorf",
@@ -5418,6 +5450,7 @@
       "aliases": [
         "430501300",
         "Trautmannsdorf an der Leitha",
+        "900112",
         "Bahnhof Trautmannsdorf",
         "Bahnhof Trautmannsdorf an der Leitha",
         "Bf Trautmannsdorf",

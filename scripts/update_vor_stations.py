@@ -897,6 +897,17 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
             new_entry["aliases"] = unique_aliases
         else:
             new_entry["aliases"] = []
+        # The validator's "missing required aliases" rule expects each
+        # station's bst_code (and bst_id) to be discoverable as an
+        # alias. For STATIC entries that omit explicit bst_id/bst_code
+        # (so the allocator picks the next free 900xxx), the values
+        # were only populated above — push them onto the alias list
+        # now so the validator's per-source code-as-alias check passes.
+        normalized_aliases = new_entry["aliases"]
+        if isinstance(normalized_aliases, list):
+            for synthetic_id in (bst_id, bst_code):
+                if synthetic_id and synthetic_id not in normalized_aliases:
+                    normalized_aliases.append(synthetic_id)
         new_entry.setdefault("source", "vor")
         return new_entry
 
