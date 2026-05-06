@@ -55,10 +55,18 @@ class TestSingleStationDropsOnDistant:
         )
         assert _is_relevant(title, desc) is False
 
-    def test_wien_only_message_still_kept(self) -> None:
-        # Sanity: a real Wien-only facility notice must keep working.
+    def test_wien_only_facility_notice_dropped(self) -> None:
+        # Per project spec ("Defekte Aufzüge ... haben im Feed nichts
+        # zu suchen") a facility-only notice must drop even when it
+        # mentions a Wien station.
         title = "Aufzug defekt: Wien Hauptbahnhof"
         desc = "Aufzug am Bahnsteig 12 außer Betrieb."
+        assert _is_relevant(title, desc) is False
+
+    def test_wien_only_real_disruption_kept(self) -> None:
+        # A real transit disruption at a single Wien station still keeps.
+        title = "Bauarbeiten Wien Hauptbahnhof"
+        desc = "Wegen Bauarbeiten kein Verkehr."
         assert _is_relevant(title, desc) is True
 
     def test_wien_pendler_mention_kept(self) -> None:
@@ -104,8 +112,8 @@ class TestImplicitRouteToUnknown:
         assert _is_relevant("Bauarbeiten: Wien Hauptbahnhof Brixlegg", "x") is False
 
     def test_wien_only_kept(self) -> None:
-        # Sanity: a real Wien-only facility notice must keep working.
-        assert _is_relevant("Bauarbeiten: Wien Hauptbahnhof", "Aufzug defekt.") is True
+        # A real transit disruption at a single Wien station must keep.
+        assert _is_relevant("Bauarbeiten: Wien Hauptbahnhof", "Wegen Bauarbeiten gesperrt.") is True
 
     def test_wien_pendler_pair_kept(self) -> None:
         # Pendler is a known station — the residual check must not fire.
@@ -117,11 +125,16 @@ class TestImplicitRouteToUnknown:
         # ↔-titles are handled by _extract_routes, not by this heuristic.
         assert _is_relevant("Wien Hauptbahnhof ↔ Mödling", "") is True
 
-    def test_weather_word_before_wien_kept(self) -> None:
-        # Tokens that sit BEFORE the last known station (e.g. "Sturm im
-        # Raum Wien") are sentence preamble, not implicit endpoints.
+    def test_token_before_wien_does_not_imply_route(self) -> None:
+        # Position-Constraint: tokens BEFORE the last known station are
+        # sentence preamble, not implicit second endpoints. Use a
+        # transit-like preamble word so the new facility/weather filter
+        # doesn't intercept the message before this heuristic runs.
         assert (
-            _is_relevant("Sturm im Raum Wien", "Verzögerungen bei der S-Bahn Wien.")
+            _is_relevant(
+                "Bauarbeiten im Bereich Wien Hauptbahnhof",
+                "Verzögerungen bei der S-Bahn Wien.",
+            )
             is True
         )
 

@@ -87,6 +87,57 @@ MULTI_ARROW_RE  = re.compile(r"(?:\s*↔\s*){2,}")
 _MULTI_SLASH_RE = re.compile(r"\s*/{2,}\s*")
 _MULTI_COMMA_RE = re.compile(r"\s*,{2,}\s*")
 
+# Topics the user explicitly excludes from the feed: facility-only
+# notices (broken elevators, escalators) and standalone weather warnings.
+# A message is treated as such when its title carries one of these
+# keywords AND none of the "real" transit-disruption keywords below.
+_FACILITY_KEYWORD_RE = re.compile(
+    r"\b(aufzug|aufzüge|aufzuege|aufzugsinfo|lift|fahrstuhl|fahrtreppe|"
+    r"fahrtreppen|fahrtreppeninfo|rolltreppe|rolltreppen)\b",
+    re.IGNORECASE,
+)
+_WEATHER_KEYWORD_RE = re.compile(
+    r"\b(sturm|sturmwarnung|unwetter|gewitter|hochwasser|wetter|wetterlage|"
+    r"glatteis|schneefall|schneefälle|murenabgang|lawinengefahr)\b",
+    re.IGNORECASE,
+)
+_TRANSIT_KEYWORD_RE = re.compile(
+    r"\b(bauarbeiten|störung|stoerung|verspätung|verspaetung|sperre|sperrung|"
+    r"umleitung|ersatzverkehr|haltausfall|zugausfall|streckenunterbrechung|"
+    r"unterbrechung|teilausfall|baustelle|baustellen|gleisbauarbeiten|"
+    r"schienenersatzverkehr|sev|fahrplanänderung|fahrplanaenderung|"
+    r"verkehrseinschränkung|verkehrseinschraenkung|einschränkung|einschraenkung)\b",
+    re.IGNORECASE,
+)
+
+
+def _is_facility_or_weather_only(title: str, description: str) -> bool:
+    """Decide whether the message's primary topic is facility/weather.
+
+    Per project spec elevator/escalator notices and standalone weather
+    warnings have nothing to do in the Wien-ÖPNV feed — they don't
+    describe a transit disruption that affects Wiener or Pendler-to-Wien
+    travellers. The heuristic flags those messages so the caller can
+    drop them before the relevance check.
+
+    A message is considered facility/weather-only when its title carries
+    one of the facility/weather keywords above AND no real
+    disruption keyword (Bauarbeiten, Störung, Verspätung, …). Mixed
+    messages like "Bauarbeiten zwischen Wien und Mödling — auch Aufzug
+    betroffen" therefore pass through and are evaluated normally.
+    """
+    if not title:
+        return False
+    title_low = title.lower()
+    has_facility = bool(_FACILITY_KEYWORD_RE.search(title_low))
+    has_weather = bool(_WEATHER_KEYWORD_RE.search(title_low))
+    if not (has_facility or has_weather):
+        return False
+    if _TRANSIT_KEYWORD_RE.search(title_low):
+        return False
+    return True
+
+
 NON_LOCATION_PREFIXES = {
     "bauarbeiten", "störung", "störungen", "ausfall", "ausfälle", "verspätung", "verspätungen", "sperre",
     "einschränkung", "verkehrsunfall", "feuerwehreinsatz", "rettungseinsatz",
@@ -756,7 +807,16 @@ def _is_relevant(title: str, description: str) -> bool:
           Pendler station. If only distant stations are mentioned, drop.
        c. As a final fall-back, use the generic Vienna-text heuristic for
           U-Bahn references and the like.
+
+    Before any of the above runs, messages whose primary topic is a
+    broken facility (Aufzug, Lift, Fahrtreppe, …) or a standalone weather
+    warning (Sturm, Wetterlage, …) are dropped: they are explicitly out
+    of scope per project spec. Mixed transit messages that merely mention
+    weather/facility as cause or side-effect still go through.
     """
+    if _is_facility_or_weather_only(title, description):
+        return False
+
     routes = _extract_routes(title, description)
 
     if routes:

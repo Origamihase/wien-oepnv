@@ -77,13 +77,16 @@ class TestFakeRouteFilter:
     """Bug D: a regex match between two non-station phrases must not block
     the single-station fall-through path."""
 
-    def test_aufzug_zwischen_bahnsteig_falls_through_to_station_match(self) -> None:
+    def test_zwischen_bahnsteig_falls_through_to_station_match(self) -> None:
         # The "zwischen Bahnsteig 1 und Bahnsteig 5" reads like a route
         # but actually describes a facility-internal segment. Both
         # endpoints fail to resolve, so the route is discarded and
         # the single-station path picks up "Wien Mitte" → relevant.
-        title = "Aufzug Wien Mitte"
-        desc = "Aufzug zwischen Bahnsteig 1 und Bahnsteig 5 in Wien Mitte defekt"
+        # NOTE: title is a Bauarbeiten notice (not facility-only) so the
+        # facility-or-weather filter doesn't intercept this case before
+        # the fake-route heuristic runs.
+        title = "Bauarbeiten Wien Mitte"
+        desc = "Bauarbeiten zwischen Bahnsteig 1 und Bahnsteig 5 in Wien Mitte"
         assert _extract_routes(title, desc) == []
         assert _is_relevant(title, desc) is True
 
