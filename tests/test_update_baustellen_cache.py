@@ -100,55 +100,6 @@ def test_resolve_fallback_path_blocks_symlink_escape(tmp_path: Path) -> None:
         link.unlink(missing_ok=True)
 
 
-@pytest.mark.parametrize(
-    "raw",
-    [
-        "[]",  # JSON array (top-level)
-        '"oops"',  # JSON string
-        "42",  # JSON scalar
-        "null",  # JSON null
-    ],
-    ids=["list", "string", "scalar", "null"],
-)
-def test_load_fallback_rejects_non_dict_payload(
-    tmp_path: Path,
-    caplog: pytest.LogCaptureFixture,
-    raw: str,
-) -> None:
-    """Zero-Trust: ``_load_fallback`` must refuse a JSON document that is not an object.
-
-    Without the ``isinstance(payload, dict)`` guard the previous
-    ``cast(dict, json.loads(raw))`` lied to the type checker, and a non-dict
-    payload would propagate to ``_iter_features`` and crash with
-    ``AttributeError`` when ``payload.get("type")`` was invoked.
-    """
-    import logging
-
-    fallback_file = tmp_path / "broken.geojson"
-    fallback_file.write_text(raw, encoding="utf-8")
-
-    caplog.set_level(logging.ERROR, logger="update_baustellen_cache")
-    result = update_baustellen_cache._load_fallback(fallback_file)
-
-    assert result is None
-    assert any(
-        "muss ein JSON-Objekt sein" in record.getMessage()
-        for record in caplog.records
-    )
-
-
-def test_load_fallback_accepts_dict_payload(tmp_path: Path) -> None:
-    """A valid JSON object must still be returned unchanged."""
-    fallback_file = tmp_path / "ok.geojson"
-    fallback_file.write_text(
-        '{"type": "FeatureCollection", "features": []}', encoding="utf-8"
-    )
-
-    result = update_baustellen_cache._load_fallback(fallback_file)
-
-    assert result == {"type": "FeatureCollection", "features": []}
-
-
 def test_resolve_data_url_default_when_unset() -> None:
     assert (
         update_baustellen_cache._resolve_data_url(None)

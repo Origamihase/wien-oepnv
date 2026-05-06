@@ -200,7 +200,7 @@ def _load_fallback(path: Path) -> dict[str, Any] | None:
     # ``AttributeError`` when ``payload.get("type")`` is invoked.
     if not isinstance(payload, dict):
         LOGGER.error(
-            "Baustellen: Fallback-Datei %s muss ein JSON-Objekt sein (got %s)",
+            "Baustellen: Fallback-Datei %s ist kein JSON-Objekt (got %s)",
             path,
             type(payload).__name__,
         )
