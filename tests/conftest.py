@@ -5,7 +5,7 @@ import shutil
 import sys
 import zipfile
 from pathlib import Path
-from typing import Iterator
+from collections.abc import Iterator
 
 from urllib import error as urllib_error
 from urllib import request as urllib_request

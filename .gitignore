@@ -21,6 +21,12 @@ docs/feed-health.md
 *-output.txt
 .mypy_cache/
 
+# Coverage reports
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
 # Virtual Environment
 .venv/
 

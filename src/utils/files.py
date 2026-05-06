@@ -7,16 +7,17 @@ import re
 import secrets
 from contextlib import contextmanager
 from pathlib import Path
-from typing import IO, Any, Iterator, Optional, Union
+from typing import IO, Any
+from collections.abc import Iterator
 
 
 @contextmanager
 def atomic_write(
-    path: Union[str, Path],
+    path: str | Path,
     mode: str = "w",
-    encoding: Optional[str] = "utf-8",
+    encoding: str | None = "utf-8",
     permissions: int = 0o644,
-    newline: Optional[str] = None,
+    newline: str | None = None,
     overwrite: bool = True,
 ) -> Iterator[IO[Any]]:
     """Safe atomic file write using a temporary file.
@@ -46,7 +47,7 @@ def atomic_write(
     unique_id = secrets.token_hex(16)
     tmp_path = target.with_name(f"{target.name}.{unique_id}.tmp")
 
-    f: Optional[IO[Any]] = None
+    f: IO[Any] | None = None
     try:
         flags = os.O_CREAT | os.O_EXCL
         if "a" in mode:
@@ -109,7 +110,7 @@ def atomic_write(
         raise
 
 
-def safe_path_join(base: Union[str, Path], *paths: Union[str, Path]) -> Path:
+def safe_path_join(base: str | Path, *paths: str | Path) -> Path:
     """Safely join paths, ensuring the result is within the base directory."""
     base_abs = os.path.abspath(base)
 
@@ -145,7 +146,7 @@ def sanitize_filename(filename_id: str) -> str:
     return f"{safe_base}_{id_hash}"
 
 
-def get_file_hash(filepath: Union[str, Path], chunk_size: int = 4096) -> str:
+def get_file_hash(filepath: str | Path, chunk_size: int = 4096) -> str:
     """Calculate the SHA256 hash of a file using chunked reading to minimize memory footprint."""
     hasher = hashlib.sha256()
     with open(filepath, "rb") as f:

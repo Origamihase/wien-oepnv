@@ -23,7 +23,8 @@ from dataclasses import dataclass, field
 import zipfile
 from io import BytesIO
 from pathlib import Path
-from typing import Callable, Iterable, Mapping, MutableMapping, Sequence, cast, List
+from typing import cast
+from collections.abc import Callable, Iterable, Mapping, MutableMapping, Sequence
 
 import openpyxl
 
@@ -236,10 +237,10 @@ class Station:
 
         lat = entry.get("latitude") or entry.get("_lat")
         lng = entry.get("longitude") or entry.get("_lng")
-        if isinstance(lat, (int, float)):
+        if isinstance(lat, int | float):
             latitude = float(lat)
             self.extras["latitude"] = latitude
-        if isinstance(lng, (int, float)):
+        if isinstance(lng, int | float):
             longitude = float(lng)
             self.extras["longitude"] = longitude
 
@@ -319,7 +320,7 @@ def _harmonize_station_name(name: str) -> str:
 def _coerce_float_value(value: object | None) -> float | None:
     if value is None:
         return None
-    if isinstance(value, (int, float)):
+    if isinstance(value, int | float):
         return float(value)
     text = str(value).strip()
     if not text:
@@ -678,7 +679,7 @@ def _merge_google_metadata(
         logger.info("Google Places enrichment returned no places")
         return
 
-    existing_entries = cast(List[StationEntry], [station.as_dict() for station in stations])
+    existing_entries = cast(list[StationEntry], [station.as_dict() for station in stations])
     outcome = merge_places(existing_entries, places, merge_config)
 
     by_id: dict[str, Mapping[str, object]] = {}
@@ -1151,7 +1152,7 @@ def _coerce_bst_id(value: object | None) -> str | None:
         if not digits.isdigit():
             return None
         return digits
-    if isinstance(value, (int, float)):
+    if isinstance(value, int | float):
         return str(int(value))
     return None
 

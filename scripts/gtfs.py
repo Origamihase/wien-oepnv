@@ -4,7 +4,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 import csv
 from pathlib import Path
-from typing import Dict
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 DEFAULT_GTFS_STOP_PATH = BASE_DIR / "data" / "gtfs" / "stops.txt"
@@ -55,7 +54,7 @@ def _coerce_int(text: str | None) -> int | None:
         return None
 
 
-def read_gtfs_stops(path: Path | None = None) -> Dict[str, GTFSStop]:
+def read_gtfs_stops(path: Path | None = None) -> dict[str, GTFSStop]:
     """Read GTFS stop entries from ``stops.txt``.
 
     Parameters
@@ -83,7 +82,7 @@ def read_gtfs_stops(path: Path | None = None) -> Dict[str, GTFSStop]:
         if reader.fieldnames is None or "stop_id" not in reader.fieldnames:
             raise ValueError("GTFS stops.txt file is missing the 'stop_id' column")
 
-        stops: Dict[str, GTFSStop] = {}
+        stops: dict[str, GTFSStop] = {}
         for row in reader:
             stop_id = _strip(row.get("stop_id"))
             if not stop_id:

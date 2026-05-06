@@ -29,7 +29,7 @@ import re
 import sys
 from collections import defaultdict, deque
 from pathlib import Path
-from typing import Iterable, Mapping
+from collections.abc import Iterable, Mapping
 
 # Ensure the project root is in sys.path to allow imports from src
 BASE_DIR = Path(__file__).resolve().parents[1]
@@ -449,7 +449,7 @@ def _alias_candidates(
         bst_id: int | None
         if bst_id_raw is None:
             bst_id = None
-        elif isinstance(bst_id_raw, (int, str)):
+        elif isinstance(bst_id_raw, int | str):
             bst_id = int(bst_id_raw)
         else:
             bst_id = None

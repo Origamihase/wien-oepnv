@@ -1,6 +1,6 @@
 import importlib
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, UTC
 from pathlib import Path
 from typing import Any
 import pytest
@@ -29,7 +29,7 @@ def test_item_with_past_ends_at_is_dropped(
     tmp_path: Path,
 ) -> None:
     build_feed = _import_build_feed(monkeypatch)
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     future = {"title": "future", "ends_at": now + timedelta(hours=1)}
     past = {"title": "past", "ends_at": now - timedelta(minutes=11)}
 

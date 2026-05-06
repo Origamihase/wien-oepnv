@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """Refresh the cache with construction work information for Vienna."""
 
 from __future__ import annotations
@@ -11,7 +10,8 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple, Union, cast
+from typing import Any, cast
+from collections.abc import Iterable, Sequence
 
 from dateutil import parser as dtparser
 from requests.exceptions import RequestException
@@ -40,7 +40,7 @@ DEFAULT_FALLBACK_PATH = REPO_ROOT / "data" / "samples" / "baustellen_sample.geoj
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"
 
-TITLE_KEYS: Tuple[str, ...] = (
+TITLE_KEYS: tuple[str, ...] = (
     "BEZEICHNUNG",
     "MASSNAHME",
     "MASSNAHME_TEXT",
@@ -48,25 +48,25 @@ TITLE_KEYS: Tuple[str, ...] = (
     "TITLE",
     "NAME",
 )
-STREET_KEYS: Tuple[str, ...] = (
+STREET_KEYS: tuple[str, ...] = (
     "STRASSE",
     "STRASSENNAME",
     "STRASSEN",
     "STR",
 )
-FROM_KEYS: Tuple[str, ...] = (
+FROM_KEYS: tuple[str, ...] = (
     "VON",
     "ABSCHNITT_VON",
     "VON_NR",
     "VON_KM",
 )
-TO_KEYS: Tuple[str, ...] = (
+TO_KEYS: tuple[str, ...] = (
     "BIS",
     "ABSCHNITT_BIS",
     "BIS_NR",
     "BIS_KM",
 )
-INFO_KEYS: Tuple[str, ...] = (
+INFO_KEYS: tuple[str, ...] = (
     "HINWEIS",
     "INFO",
     "BESCHREIBUNG",
@@ -75,7 +75,7 @@ INFO_KEYS: Tuple[str, ...] = (
     "DETAILS",
     "ANMERKUNG",
 )
-START_KEYS: Tuple[str, ...] = (
+START_KEYS: tuple[str, ...] = (
     "ANFANGSZEIT",
     "BEGINN",
     "BEGINN_DATUM",
@@ -86,7 +86,7 @@ START_KEYS: Tuple[str, ...] = (
     "DATUM_VON",
     "VON_DATUM",
 )
-END_KEYS: Tuple[str, ...] = (
+END_KEYS: tuple[str, ...] = (
     "ENDEZEIT",
     "ENDE",
     "END_DATUM",
@@ -105,17 +105,17 @@ class ConstructionEvent:
     guid: str
     title: str
     description: str
-    starts_at: Optional[datetime]
-    ends_at: Optional[datetime]
+    starts_at: datetime | None
+    ends_at: datetime | None
     pub_date: datetime
     source: str = "Stadt Wien – Baustellen"
     category: str = "Baustelle"
     link: str = DEFAULT_INFO_URL
-    context: Dict[str, Any] | None = None
-    location: Dict[str, Any] | None = None
+    context: dict[str, Any] | None = None
+    location: dict[str, Any] | None = None
 
-    def to_item(self) -> Dict[str, Any]:
-        item: Dict[str, Any] = {
+    def to_item(self) -> dict[str, Any]:
+        item: dict[str, Any] = {
             "source": self.source,
             "category": self.category,
             "title": self.title,
@@ -140,7 +140,7 @@ def configure_logging() -> None:
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
-def _load_json_from_content(content: bytes) -> Dict[str, Any]:
+def _load_json_from_content(content: bytes) -> dict[str, Any]:
     try:
         payload = json.loads(content.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:  # pragma: no cover - defensive
@@ -152,7 +152,7 @@ def _load_json_from_content(content: bytes) -> Dict[str, Any]:
     return payload
 
 
-def _fetch_remote(url: str, timeout: int) -> Optional[Dict[str, Any]]:
+def _fetch_remote(url: str, timeout: int) -> dict[str, Any] | None:
     # Security: validate remote URL before fetching (SSRF/DNS rebinding protection).
     if not validate_http_url(url):
         LOGGER.warning("Baustellen: Unsichere oder ungültige URL: %s", url)
@@ -177,7 +177,7 @@ def _fetch_remote(url: str, timeout: int) -> Optional[Dict[str, Any]]:
     return payload
 
 
-def _load_fallback(path: Path) -> Optional[Dict[str, Any]]:
+def _load_fallback(path: Path) -> dict[str, Any] | None:
     try:
         LOGGER.info("Baustellen: Verwende Fallback-Datei %s", path)
         raw = path.read_text(encoding="utf-8")
@@ -188,7 +188,7 @@ def _load_fallback(path: Path) -> Optional[Dict[str, Any]]:
         LOGGER.error("Baustellen: Fallback-Datei %s nicht lesbar (%s)", path, exc)
         return None
     try:
-        return cast(Dict[str, Any], json.loads(raw))
+        return cast(dict[str, Any], json.loads(raw))
     except json.JSONDecodeError as exc:
         LOGGER.error("Baustellen: Fallback-Datei %s enthält ungültiges JSON (%s)", path, exc)
         return None
@@ -225,7 +225,7 @@ def _resolve_fallback_path(candidate: str | None) -> Path:
     return resolved
 
 
-def _iter_features(payload: Dict[str, Any]) -> Iterable[Dict[str, Any]]:
+def _iter_features(payload: dict[str, Any]) -> Iterable[dict[str, Any]]:
     if payload.get("type") == "FeatureCollection":
         features = payload.get("features") or []
     elif "features" in payload:
@@ -237,7 +237,7 @@ def _iter_features(payload: Dict[str, Any]) -> Iterable[Dict[str, Any]]:
     return [f for f in features if isinstance(f, dict)]
 
 
-def _first_match(properties: Dict[str, Any], keys: Sequence[str]) -> Optional[str]:
+def _first_match(properties: dict[str, Any], keys: Sequence[str]) -> str | None:
     for key in keys:
         value = properties.get(key)
         if isinstance(value, str) and value.strip():
@@ -245,18 +245,18 @@ def _first_match(properties: Dict[str, Any], keys: Sequence[str]) -> Optional[st
     return None
 
 
-def _combine_parts(properties: Dict[str, Any], keys: Sequence[str]) -> Optional[str]:
+def _combine_parts(properties: dict[str, Any], keys: Sequence[str]) -> str | None:
     parts = [properties.get(key) for key in keys]
-    text_parts = [str(p).strip() for p in parts if isinstance(p, (str, int, float)) and str(p).strip()]
+    text_parts = [str(p).strip() for p in parts if isinstance(p, str | int | float) and str(p).strip()]
     if text_parts:
         return " ".join(text_parts)
     return None
 
 
-def _parse_datetime(value: Union[str, float, int, None]) -> Optional[datetime]:
+def _parse_datetime(value: str | float | int | None) -> datetime | None:
     if value is None:
         return None
-    if isinstance(value, (int, float)):
+    if isinstance(value, int | float):
         try:
             return datetime.fromtimestamp(float(value), tz=VIENNA_TZ)
         except (ValueError, OSError):
@@ -276,7 +276,7 @@ def _parse_datetime(value: Union[str, float, int, None]) -> Optional[datetime]:
     return cast(datetime, parsed)
 
 
-def _parse_range(properties: Dict[str, Any]) -> Tuple[Optional[datetime], Optional[datetime]]:
+def _parse_range(properties: dict[str, Any]) -> tuple[datetime | None, datetime | None]:
     start = None
     end = None
     for key in START_KEYS:
@@ -297,7 +297,7 @@ def _parse_range(properties: Dict[str, Any]) -> Tuple[Optional[datetime], Option
     return start, end
 
 
-def _normalize_datetime(value: Optional[datetime]) -> Optional[datetime]:
+def _normalize_datetime(value: datetime | None) -> datetime | None:
     if value is None:
         return None
     if value.tzinfo is None:
@@ -305,8 +305,8 @@ def _normalize_datetime(value: Optional[datetime]) -> Optional[datetime]:
     return value.astimezone(VIENNA_TZ)
 
 
-def _build_context(properties: Dict[str, Any]) -> Dict[str, Any]:
-    context: Dict[str, Any] = {}
+def _build_context(properties: dict[str, Any]) -> dict[str, Any]:
+    context: dict[str, Any] = {}
     district = properties.get("BEZIRK") or properties.get("BZR")
     if district:
         context["district"] = str(district).strip()
@@ -319,9 +319,9 @@ def _build_context(properties: Dict[str, Any]) -> Dict[str, Any]:
     return context
 
 
-def _build_location(properties: Dict[str, Any], geometry: Dict[str, Any]) -> Dict[str, Any]:
-    location: Dict[str, Any] = {}
-    address_parts: List[str] = []
+def _build_location(properties: dict[str, Any], geometry: dict[str, Any]) -> dict[str, Any]:
+    location: dict[str, Any] = {}
+    address_parts: list[str] = []
     street = _first_match(properties, STREET_KEYS)
     if street:
         address_parts.append(street)
@@ -335,7 +335,7 @@ def _build_location(properties: Dict[str, Any], geometry: Dict[str, Any]) -> Dic
         location["address"] = ", ".join(address_parts)
     if isinstance(geometry, dict):
         coordinates = geometry.get("coordinates")
-        if isinstance(coordinates, (list, tuple)) and len(coordinates) >= 2:
+        if isinstance(coordinates, list | tuple) and len(coordinates) >= 2:
             try:
                 lon, lat = float(coordinates[0]), float(coordinates[1])
             except (TypeError, ValueError):
@@ -345,9 +345,9 @@ def _build_location(properties: Dict[str, Any], geometry: Dict[str, Any]) -> Dic
     return location
 
 
-def _format_description(properties: Dict[str, Any], start: Optional[datetime], end: Optional[datetime]) -> str:
+def _format_description(properties: dict[str, Any], start: datetime | None, end: datetime | None) -> str:
     info = _first_match(properties, INFO_KEYS)
-    segments: List[str] = []
+    segments: list[str] = []
     if info:
         segments.append(info)
     if start:
@@ -362,7 +362,7 @@ def _format_description(properties: Dict[str, Any], start: Optional[datetime], e
     return " \n".join(segments) if segments else "Baustelle ohne weitere Angaben"
 
 
-def _feature_to_event(feature: Dict[str, Any]) -> Optional[ConstructionEvent]:
+def _feature_to_event(feature: dict[str, Any]) -> ConstructionEvent | None:
     properties = feature.get("properties") or {}
     geometry = feature.get("geometry") or {}
     if not isinstance(properties, dict):
@@ -400,8 +400,8 @@ def _feature_to_event(feature: Dict[str, Any]) -> Optional[ConstructionEvent]:
     )
 
 
-def _collect_events(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
-    events: List[Dict[str, Any]] = []
+def _collect_events(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    events: list[dict[str, Any]] = []
     for feature in _iter_features(payload):
         event = _feature_to_event(feature)
         if not event:

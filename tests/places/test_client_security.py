@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import pytest
 import requests
-from typing import Iterator, Any, Dict
+from typing import Any
+from collections.abc import Iterator
 from unittest.mock import MagicMock
 
 from src.places.client import GooglePlacesClient, GooglePlacesConfig, GooglePlacesError
@@ -41,7 +42,7 @@ class InfiniteStreamResponse:
     """A mock response that yields an infinite stream of data."""
     def __init__(self, ip: str = "1.1.1.1") -> None:
         self.status_code = 200
-        self.headers: Dict[str, str] = {}
+        self.headers: dict[str, str] = {}
         self.raw = MockRaw(ip)
         self.url = "https://places.googleapis.com/v1/places:searchNearby"
 
@@ -70,7 +71,7 @@ class PrivateIPResponse:
     """A mock response that comes from a private IP."""
     def __init__(self, ip: str = "127.0.0.1") -> None:
         self.status_code = 200
-        self.headers: Dict[str, str] = {"Content-Length": "2"}
+        self.headers: dict[str, str] = {"Content-Length": "2"}
         self.raw = MockRaw(ip)
         self.url = "https://places.googleapis.com/v1/places:searchNearby"
         self._content = b"{}"

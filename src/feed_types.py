@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Dict, List, NotRequired, Protocol, TypedDict, runtime_checkable
+from typing import Any, NotRequired, Protocol, TypedDict, runtime_checkable
 
 
 class FeedItem(TypedDict):
@@ -35,7 +35,7 @@ class FeedItem(TypedDict):
 @runtime_checkable
 class Provider(Protocol):
     """Protocol for disruption providers."""
-    def fetch_events(self, *args: Any, **kwargs: Any) -> List[FeedItem]:
+    def fetch_events(self, *args: Any, **kwargs: Any) -> list[FeedItem]:
         ...
 
 
@@ -51,7 +51,7 @@ class VorMessage(TypedDict):
     eDate: NotRequired[str]
     eTime: NotRequired[str]
 
-    products: NotRequired[Dict[str, Any] | List[Any]]
+    products: NotRequired[dict[str, Any] | list[Any]]
     id: NotRequired[str]
     act: NotRequired[str | bool]
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 
 import pytest
 
@@ -21,14 +21,14 @@ def _make_item(
         "description": description,
         "source": "Test",
         "category": "Info",
-        "pubDate": datetime.now(timezone.utc),
+        "pubDate": datetime.now(UTC),
     }
 
 
 def test_feed_lint_reports_duplicates_and_missing_guid(
     monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     items = [
         _make_item("foo", guid="foo-guid", title="Foo A"),
         _make_item("foo", guid="foo-guid-2", title="Foo B"),

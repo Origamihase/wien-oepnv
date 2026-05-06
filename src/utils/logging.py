@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from typing import Any, List, Tuple
+from typing import Any
 
 # Precompiled regexes for sanitization
 # Extended to include BiDi control characters (Trojan Source) and Zero-Width characters
@@ -21,7 +21,7 @@ _ANSI_ESCAPE_RE = re.compile(r'\x1b(?:\[[0-?]*[ -/]*[@-~]|\][^\x07\x1b]*(?:\x07|
 
 
 def sanitize_log_message(
-    text: str, secrets: List[str] | None = None, strip_control_chars: bool = True
+    text: str, secrets: list[str] | None = None, strip_control_chars: bool = True
 ) -> str:
     """
     Sanitize log messages by masking secrets and removing control characters.
@@ -78,7 +78,7 @@ def sanitize_log_message(
     )
 
     # Common patterns for secrets in URLs/Headers
-    patterns: List[Tuple[str, str]] = [
+    patterns: list[tuple[str, str]] = [
         # PEM blocks (keys/certs) - MUST be first to prevent partial redaction by other patterns
         (r"(-----BEGIN [A-Z ]+-----)(?:.|\n)*?(-----END [A-Z ]+-----)", r"\1***\2"),
         # Explicitly mask accessId (Requirement) to ensure robust redaction in tracebacks
@@ -129,7 +129,7 @@ def sanitize_log_message(
     return sanitized
 
 
-def sanitize_log_arg(arg: Any, secrets: List[str] | None = None) -> Any:
+def sanitize_log_arg(arg: Any, secrets: list[str] | None = None) -> Any:
     """
     Helper to sanitize arguments passed to logging functions.
 
@@ -137,7 +137,7 @@ def sanitize_log_arg(arg: Any, secrets: List[str] | None = None) -> Any:
     and then sanitized (to ensure objects with sensitive __str__ are caught, though
     primary use case is string arguments).
     """
-    if isinstance(arg, (int, float)):
+    if isinstance(arg, int | float):
         return arg
     if isinstance(arg, str):
         return sanitize_log_message(arg, secrets)

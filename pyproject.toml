@@ -16,6 +16,16 @@ select = [
   "F",
   "S",
   "B",
+  "UP",
+]
+ignore = [
+  # PEP 604 union types (X | Y) can change runtime behaviour for code
+  # that introspects annotations (e.g. NamedTuple, TypedDict, custom
+  # validators). We modernise the generic containers via UP006 but keep
+  # the typing.Union form, the typing.Optional form, and tuple-style
+  # isinstance checks as-is for safety.
+  "UP007",
+  "UP038",
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -63,3 +73,22 @@ ignore_errors = false
 [tool.pytest.ini_options]
 addopts = "--timeout=60"
 pythonpath = ["."]
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+omit = [
+  "src/__init__.py",
+  "src/*/__init__.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+precision = 1
+exclude_also = [
+  "raise NotImplementedError",
+  "if TYPE_CHECKING:",
+  "if __name__ == .__main__.:",
+  "\\.\\.\\.",
+]

@@ -1,5 +1,5 @@
 import re
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 import xml.etree.ElementTree as ET
 
 from typing import Any
@@ -89,7 +89,7 @@ def test_vor_description_keeps_extra_lines(monkeypatch: pytest.MonkeyPatch) -> N
 
     items = vor._collect_from_board("123", payload)
     assert len(items) == 1
-    now = datetime(2023, 7, 20, 12, 0, tzinfo=timezone.utc)
+    now = datetime(2023, 7, 20, 12, 0, tzinfo=UTC)
     _, xml_item = _emit_item_str(items[0], now, {})
 
     desc_match = re.search(

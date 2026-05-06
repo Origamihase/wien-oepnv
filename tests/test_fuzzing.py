@@ -2,7 +2,7 @@
 
 import unicodedata
 from html.parser import HTMLParser
-from typing import Any, List
+from typing import Any
 
 import hypothesis.strategies as st
 from hypothesis import given, settings, HealthCheck
@@ -33,7 +33,7 @@ def test_truncate_html_validity(text: str, limit: int) -> None:
     class TagBalancer(HTMLParser):
         def __init__(self) -> None:
             super().__init__()
-            self.stack: List[str] = []
+            self.stack: list[str] = []
             self.failed = False
 
         def handle_starttag(self, tag: str, attrs: Any) -> None:

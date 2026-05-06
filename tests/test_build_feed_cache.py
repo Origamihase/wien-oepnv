@@ -5,7 +5,7 @@ import sys
 import types
 import pytest
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from typing import Any, cast
 
 
@@ -166,7 +166,7 @@ def test_fmt_rfc2822_logs_and_uses_fallback(
 
     caplog.set_level(logging.WARNING, logger="build_feed")
 
-    dt = datetime(2023, 1, 1, tzinfo=timezone.utc)
+    dt = datetime(2023, 1, 1, tzinfo=UTC)
 
     result = build_feed._fmt_rfc2822(dt)
 
@@ -185,7 +185,7 @@ def test_fmt_rfc2822_logs_and_uses_fallback(
 def test_cache_iso_items_sorted_and_emit_pubdate(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed_without_providers(monkeypatch)
 
-    now = datetime(2024, 1, 2, 9, 0, tzinfo=timezone.utc)
+    now = datetime(2024, 1, 2, 9, 0, tzinfo=UTC)
     cache_items = [
         {
             "title": "Ältere Meldung",

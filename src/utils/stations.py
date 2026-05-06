@@ -9,8 +9,10 @@ import re
 import unicodedata
 from enum import IntEnum
 from functools import lru_cache
+from itertools import pairwise
 from pathlib import Path
-from typing import Any, Iterable, NamedTuple
+from typing import Any, NamedTuple
+from collections.abc import Iterable
 
 __all__ = [
     "canonical_name",
@@ -100,7 +102,7 @@ def _source_token_set(value: object) -> frozenset[str]:
 
     if isinstance(value, str):
         tokens = {tok.strip() for tok in value.split(",") if tok.strip()}
-    elif isinstance(value, (list, tuple, set, frozenset)):
+    elif isinstance(value, list | tuple | set | frozenset):
         tokens = {
             str(tok).strip()
             for tok in value
@@ -121,7 +123,7 @@ def _coerce_float(value: object | None) -> float | None:
         return None
 
     val: float
-    if isinstance(value, (int, float)):
+    if isinstance(value, int | float):
         val = float(value)
     else:
         text = str(value).strip()
@@ -202,9 +204,7 @@ def _point_in_ring(lat: float, lon: float, ring: Ring) -> bool:
     if len(ring) < 3:
         return False
     inside = False
-    for index in range(len(ring)):
-        start = ring[index]
-        end = ring[(index + 1) % len(ring)]
+    for start, end in pairwise((*ring, ring[0])):
         if _point_on_segment(lat, lon, start, end):
             return True
         lat1, lon1 = start
@@ -249,7 +249,7 @@ def _vienna_polygons() -> tuple[Polygon, ...]:
         for raw_ring in coords:
             ring_points: list[Coordinate] = []
             for pair in raw_ring:
-                if not isinstance(pair, (list, tuple)) or len(pair) < 2:
+                if not isinstance(pair, list | tuple) or len(pair) < 2:
                     continue
                 lon = _coerce_lon(pair[0])
                 lat = _coerce_lat(pair[1])
@@ -742,7 +742,7 @@ def vor_station_ids() -> tuple[str, ...]:
 
 
 @lru_cache(maxsize=1)
-def _non_vienna_stations_regex() -> 're.Pattern[str] | None':
+def _non_vienna_stations_regex() -> re.Pattern[str] | None:
     """Kompiliert einen Regex-Ausdruck mit allen bekannten Nicht-Wien/Nicht-Pendler Stationen."""
     non_vienna: set[str] = set()
     for entry in _station_entries():
@@ -783,7 +783,7 @@ def _mask_non_vienna_stations(text: str) -> str:
 
 
 @lru_cache(maxsize=1)
-def _vienna_stations_regex() -> 're.Pattern[str]':
+def _vienna_stations_regex() -> re.Pattern[str]:
     """Kompiliert einen Regex-Ausdruck mit allen bekannten Wiener Stationen."""
     vienna: set[str] = set()
     for entry in _station_entries():

@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Iterable, List, Iterator, Any, cast
+from typing import Any, cast
+from collections.abc import Iterable, Iterator
 from unittest.mock import MagicMock
 
 import pytest
@@ -36,14 +37,14 @@ def _data_path(name: str) -> Path:
     return Path(__file__).resolve().parent / "data" / name
 
 
-def load_existing() -> List[StationEntry]:
+def load_existing() -> list[StationEntry]:
     path = _data_path("stations_existing.json")
-    return cast(List[StationEntry], json.loads(path.read_text(encoding="utf-8")))
+    return cast(list[StationEntry], json.loads(path.read_text(encoding="utf-8")))
 
 
-def load_expected() -> List[StationEntry]:
+def load_expected() -> list[StationEntry]:
     path = _data_path("stations_expected.json")
-    return cast(List[StationEntry], json.loads(path.read_text(encoding="utf-8")))
+    return cast(list[StationEntry], json.loads(path.read_text(encoding="utf-8")))
 
 
 def test_normalize_name_handles_accents_and_spacing() -> None:
@@ -96,7 +97,7 @@ def test_merge_matches_by_distance() -> None:
 
 
 def test_merge_infers_in_vienna_from_address_and_bounds() -> None:
-    existing: List[StationEntry] = []
+    existing: list[StationEntry] = []
     places = [
         make_place(
             "vienna-place",
@@ -157,9 +158,9 @@ class DummyResponse:
 
 
 class DummySession:
-    def __init__(self, responses: List[DummyResponse]) -> None:
+    def __init__(self, responses: list[DummyResponse]) -> None:
         self._responses = responses
-        self.calls: List[dict[str, Any]] = []
+        self.calls: list[dict[str, Any]] = []
 
     def post(self, url: str, *, headers: dict[str, str], json: dict[str, Any], timeout: float, **kwargs: Any) -> DummyResponse:
         if not self._responses:

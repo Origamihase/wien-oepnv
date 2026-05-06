@@ -1,5 +1,5 @@
 
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 
 from src.build_feed import _identity_for_item, _dedupe_key_for_item
 from src.feed_types import FeedItem
@@ -7,8 +7,8 @@ from src.feed_types import FeedItem
 def test_identity_for_item_uses_strong_hash() -> None:
     item: FeedItem = {
         "title": "Test Title",
-        "starts_at": datetime(2023, 1, 1, 12, 0, 0, tzinfo=timezone.utc),
-        "ends_at": datetime(2023, 1, 1, 13, 0, 0, tzinfo=timezone.utc),
+        "starts_at": datetime(2023, 1, 1, 12, 0, 0, tzinfo=UTC),
+        "ends_at": datetime(2023, 1, 1, 13, 0, 0, tzinfo=UTC),
         "source": "test_source",
         "category": "test_category",
         "link": "",

@@ -6,11 +6,12 @@ import logging
 import os
 import re
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from pathlib import Path
 from threading import RLock
 from time import perf_counter
-from typing import Any, Dict, Iterator, List, Optional, Tuple
+from typing import Any
+from collections.abc import Iterator
 from urllib.parse import urlparse
 
 import requests
@@ -29,7 +30,7 @@ log = logging.getLogger("build_feed")
 _CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f]")
 
 
-def clean_message(message: Optional[str]) -> str:
+def clean_message(message: str | None) -> str:
     """Normalize log and status messages for human consumption."""
 
     if not message:
@@ -62,10 +63,10 @@ class ProviderReport:
     enabled: bool
     fetch_type: str = "unknown"
     status: str = "pending"  # ok, empty, error, disabled, skipped
-    detail: Optional[str] = None
-    items: Optional[int] = None
-    duration: Optional[float] = None
-    _started_at: Optional[float] = None
+    detail: str | None = None
+    items: int | None = None
+    duration: float | None = None
+    _started_at: float | None = None
 
     def mark_disabled(self) -> None:
         """Explicitly mark the provider as disabled."""
@@ -83,9 +84,9 @@ class ProviderReport:
         self,
         status: str,
         *,
-        items: Optional[int] = None,
-        detail: Optional[str] = None,
-        duration: Optional[float] = None,
+        items: int | None = None,
+        detail: str | None = None,
+        duration: float | None = None,
     ) -> None:
         """Finalize the provider execution with a status, item count, and optional details."""
         if duration is None and self._started_at is not None:
@@ -97,7 +98,7 @@ class ProviderReport:
 
 
 class _RunErrorCollector(logging.Handler):
-    def __init__(self, report: "RunReport") -> None:
+    def __init__(self, report: RunReport) -> None:
         super().__init__(level=logging.ERROR)
         self.report = report
         self._formatter = logging.Formatter()
@@ -125,21 +126,21 @@ class _RunErrorCollector(logging.Handler):
 @dataclass
 class RunReport:
     """Collects all metrics, errors, and status updates for a complete feed build run."""
-    statuses: List[Tuple[str, bool]]
-    started_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
-    providers: Dict[str, ProviderReport] = field(default_factory=dict)
-    raw_item_count: Optional[int] = None
-    final_item_count: Optional[int] = None
-    durations: Dict[str, float] = field(default_factory=dict)
-    feed_path: Optional[str] = None
+    statuses: list[tuple[str, bool]]
+    started_at: datetime = field(default_factory=lambda: datetime.now(UTC))
+    providers: dict[str, ProviderReport] = field(default_factory=dict)
+    raw_item_count: int | None = None
+    final_item_count: int | None = None
+    durations: dict[str, float] = field(default_factory=dict)
+    feed_path: str | None = None
     build_successful: bool = False
-    exception_message: Optional[str] = None
-    warnings: List[str] = field(default_factory=list)
-    _error_messages: List[str] = field(default_factory=list)
+    exception_message: str | None = None
+    warnings: list[str] = field(default_factory=list)
+    _error_messages: list[str] = field(default_factory=list)
     _seen_errors: set[str] = field(default_factory=set)
     _seen_warnings: set[str] = field(default_factory=set)
-    finished_at: Optional[datetime] = None
-    _error_collector: Optional[_RunErrorCollector] = None
+    finished_at: datetime | None = None
+    _error_collector: _RunErrorCollector | None = None
     _lock: RLock = field(default_factory=RLock)
     _issue_submitted: bool = False
 
@@ -187,7 +188,7 @@ class RunReport:
         *,
         items: int,
         status: str = "ok",
-        detail: Optional[str] = None,
+        detail: str | None = None,
     ) -> None:
         """Record a successful provider run with the number of collected items."""
         with self._lock:
@@ -283,10 +284,10 @@ class RunReport:
         self,
         *,
         build_successful: bool,
-        raw_items: Optional[int] = None,
-        final_items: Optional[int] = None,
-        durations: Optional[Dict[str, float]] = None,
-        feed_path: Optional[Path] = None,
+        raw_items: int | None = None,
+        final_items: int | None = None,
+        durations: dict[str, float] | None = None,
+        feed_path: Path | None = None,
     ) -> None:
         self.build_successful = build_successful
         if raw_items is not None:
@@ -297,7 +298,7 @@ class RunReport:
             self.durations.update(durations)
         if feed_path is not None:
             self.feed_path = feed_path.as_posix()
-        self.finished_at = datetime.now(timezone.utc)
+        self.finished_at = datetime.now(UTC)
 
     def record_exception(self, exc: Exception) -> None:
         message = f"{exc.__class__.__name__}: {exc}"
@@ -310,10 +311,10 @@ class RunReport:
         prune_log_file(error_log_path, now=now)
 
     def _provider_summary(self) -> str:
-        summaries: List[str] = []
+        summaries: list[str] = []
         for name in sorted(self.providers):
             entry = self.providers[name]
-            details: List[str] = []
+            details: list[str] = []
             if entry.items is not None and entry.status in {"ok", "empty"}:
                 details.append(f"{entry.items} Items")
             if entry.detail:
@@ -349,7 +350,7 @@ class RunReport:
         return "; ".join(summaries)
 
     def diagnostics_message(self) -> str:
-        components: List[str] = [f"Run={self.run_id}"]
+        components: list[str] = [f"Run={self.run_id}"]
         if self.build_successful:
             components.append("Status=success")
         else:
@@ -401,7 +402,7 @@ class DuplicateSummary:
 
     dedupe_key: str
     count: int
-    titles: Tuple[str, ...]
+    titles: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -413,10 +414,10 @@ class FeedHealthMetrics:
     deduped_items: int
     new_items: int
     duplicate_count: int
-    duplicates: Tuple[DuplicateSummary, ...]
+    duplicates: tuple[DuplicateSummary, ...]
 
 
-def _format_timestamp(dt: Optional[datetime]) -> str:
+def _format_timestamp(dt: datetime | None) -> str:
     if dt is None:
         return "—"
     try:
@@ -426,7 +427,7 @@ def _format_timestamp(dt: Optional[datetime]) -> str:
     return localized.strftime("%Y-%m-%d %H:%M:%S %Z")
 
 
-def _format_timestamp_iso(dt: Optional[datetime]) -> Optional[str]:
+def _format_timestamp_iso(dt: datetime | None) -> str | None:
     if dt is None:
         return None
     try:
@@ -442,7 +443,7 @@ def render_feed_health_markdown(
 ) -> str:
     """Render a human-readable Markdown summary of the latest feed build."""
 
-    lines: List[str] = []
+    lines: list[str] = []
     lines.append("# Feed Health Report")
     lines.append("")
     status = "✅ Erfolgreich" if report.build_successful else "❌ Fehlerhaft"
@@ -546,7 +547,7 @@ def write_feed_health_report(
 def build_feed_health_payload(
     report: RunReport,
     metrics: FeedHealthMetrics,
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """Create a JSON-serialisable structure summarising the feed build."""
 
     duplicate_entries = [
@@ -634,7 +635,7 @@ __all__ = [
 ]
 
 
-def _split_csv(value: str | None) -> Tuple[str, ...]:
+def _split_csv(value: str | None) -> tuple[str, ...]:
     if not value:
         return ()
     parts = [item.strip() for item in value.split(",")]
@@ -644,15 +645,15 @@ def _split_csv(value: str | None) -> Tuple[str, ...]:
 @dataclass(frozen=True)
 class _GithubIssueConfig:
     enabled: bool
-    repository: Optional[str]
-    token: Optional[str]
+    repository: str | None
+    token: str | None
     api_url: str
-    labels: Tuple[str, ...]
-    assignees: Tuple[str, ...]
+    labels: tuple[str, ...]
+    assignees: tuple[str, ...]
     title_prefix: str
 
     @classmethod
-    def from_env(cls) -> "_GithubIssueConfig":
+    def from_env(cls) -> _GithubIssueConfig:
         enabled = get_bool_env("FEED_GITHUB_CREATE_ISSUES", False)
         repository = (
             os.getenv("FEED_GITHUB_REPOSITORY")
@@ -772,7 +773,7 @@ class _GithubIssueReporter:
             )
             return
 
-        payload: Dict[str, Any] = {
+        payload: dict[str, Any] = {
             "title": self._build_title(report),
             "body": self._build_body(report),
         }
@@ -830,7 +831,7 @@ class _GithubIssueReporter:
             )
             return
 
-        issue_url: Optional[str] = None
+        issue_url: str | None = None
         try:
             data = response.json()
             issue_url = data.get("html_url")
@@ -852,7 +853,7 @@ class _GithubIssueReporter:
         if report.exception_message and report.exception_message not in errors:
             errors.append(report.exception_message)
 
-        lines: List[str] = []
+        lines: list[str] = []
         lines.append(
             "Dieser Issue wurde automatisch erstellt, weil der Feed-Lauf Fehler gemeldet hat."
         )

@@ -5,7 +5,7 @@ from __future__ import annotations
 import importlib
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from pathlib import Path
 
 from types import ModuleType
@@ -34,7 +34,7 @@ def test_emit_item_generates_stable_anchor_when_link_missing(
 ) -> None:
     bf = _load_build_feed(monkeypatch)
     monkeypatch.setattr(bf.feed_config, "FEED_LINK", "https://example.com/wien-oepnv/")
-    now = datetime(2025, 1, 1, tzinfo=timezone.utc)
+    now = datetime(2025, 1, 1, tzinfo=UTC)
 
     ident, xml = _emit_item_str(bf, {"title": "Info", "description": "Hinweis"}, now, {})
 
@@ -52,7 +52,7 @@ def test_emit_item_keeps_permalink_guid_when_matching_link(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     bf = _load_build_feed(monkeypatch)
-    now = datetime(2025, 1, 1, tzinfo=timezone.utc)
+    now = datetime(2025, 1, 1, tzinfo=UTC)
 
     item = {
         "title": "Störung",

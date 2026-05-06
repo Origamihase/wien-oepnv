@@ -2,7 +2,7 @@ import importlib
 import sys
 import json
 from pathlib import Path
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, UTC
 import pytest
 import types
 
@@ -33,7 +33,7 @@ def test_state_path_override(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) ->
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("STATE_PATH", "data/custom_state.json")
     build_feed = _import_build_feed(monkeypatch)
-    now = datetime.now(timezone.utc).isoformat()
+    now = datetime.now(UTC).isoformat()
     build_feed._save_state({"id": {"first_seen": now}})
     assert state_file.exists()
     assert build_feed._load_state() == {"id": {"first_seen": now}}
@@ -46,8 +46,8 @@ def test_state_repairs_malformed_entries(monkeypatch: pytest.MonkeyPatch, tmp_pa
     monkeypatch.setenv("STATE_RETENTION_DAYS", "0")
     build_feed = _import_build_feed(monkeypatch)
 
-    old_dt = datetime.now(timezone.utc) - timedelta(days=2)
-    new_dt = datetime.now(timezone.utc)
+    old_dt = datetime.now(UTC) - timedelta(days=2)
+    new_dt = datetime.now(UTC)
     state_payload = {
         "old": {"first_seen": old_dt.isoformat()},
         "new": {"first_seen": new_dt.isoformat()},
@@ -92,8 +92,8 @@ def test_state_retention_discards_old_entries(
     monkeypatch.setenv("STATE_RETENTION_DAYS", "1")
     build_feed = _import_build_feed(monkeypatch)
 
-    old_dt = datetime.now(timezone.utc) - timedelta(days=2)
-    fresh_dt = datetime.now(timezone.utc)
+    old_dt = datetime.now(UTC) - timedelta(days=2)
+    fresh_dt = datetime.now(UTC)
     state_file.parent.mkdir(parents=True, exist_ok=True)
     with state_file.open("w", encoding="utf-8") as handle:
         json.dump(
@@ -115,7 +115,7 @@ def test_state_cleared_when_feed_empty(monkeypatch: pytest.MonkeyPatch, tmp_path
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("STATE_PATH", "data/state.json")
     build_feed = _import_build_feed(monkeypatch)
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     build_feed._save_state({"id": {"first_seen": now.isoformat()}})
 
     # ensure state file has content before running

@@ -6,7 +6,8 @@ import json
 from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, List, MutableMapping, Optional, Sequence, Tuple, TypedDict, cast
+from typing import TypedDict, cast
+from collections.abc import Iterable, MutableMapping, Sequence
 
 from ..utils.files import atomic_write
 
@@ -30,11 +31,11 @@ class StationEntry(TypedDict, total=False):
     in_vienna: bool
     pendler: bool
     source: str
-    aliases: List[str]
+    aliases: list[str]
     latitude: float
     longitude: float
     _google_place_id: str
-    _types: List[str]
+    _types: list[str]
     _formatted_address: str
 
 
@@ -52,18 +53,18 @@ class BoundingBox:
 @dataclass(frozen=True)
 class MergeConfig:
     max_distance_m: float
-    bounding_box: Optional[BoundingBox]
+    bounding_box: BoundingBox | None
 
 
 @dataclass
 class MergeOutcome:
-    stations: List[StationEntry]
-    new_entries: List[StationEntry]
-    updated_entries: List[StationEntry]
-    skipped_places: List[Place]
+    stations: list[StationEntry]
+    new_entries: list[StationEntry]
+    updated_entries: list[StationEntry]
+    skipped_places: list[Place]
 
 
-def load_stations(path: Path) -> List[StationEntry]:
+def load_stations(path: Path) -> list[StationEntry]:
     if not path.exists():
         return []
     content = path.read_text(encoding="utf-8")
@@ -76,7 +77,7 @@ def load_stations(path: Path) -> List[StationEntry]:
     else:
         raise ValueError("stations file must contain a list or wrapped object")
 
-    stations: List[StationEntry] = []
+    stations: list[StationEntry] = []
     for raw in data:
         if not isinstance(raw, MutableMapping):
             raise ValueError("stations entries must be objects")
@@ -98,9 +99,9 @@ def merge_places(
     config: MergeConfig,
 ) -> MergeOutcome:
     stations = [deepcopy(entry) for entry in existing]
-    new_entries: List[StationEntry] = []
-    updated_entries: List[StationEntry] = []
-    skipped_places: List[Place] = []
+    new_entries: list[StationEntry] = []
+    updated_entries: list[StationEntry] = []
+    skipped_places: list[Place] = []
 
     for station in stations:
         if "aliases" not in station:
@@ -128,7 +129,7 @@ def merge_places(
     )
 
 
-def _sorted_stations(stations: Sequence[StationEntry]) -> List[StationEntry]:
+def _sorted_stations(stations: Sequence[StationEntry]) -> list[StationEntry]:
     return sorted(
         stations,
         key=lambda entry: (
@@ -142,7 +143,7 @@ def _find_matching_station(
     stations: Sequence[StationEntry],
     place: Place,
     max_distance_m: float,
-) -> Optional[Tuple[StationEntry, bool]]:
+) -> tuple[StationEntry, bool] | None:
     norm = normalize_name(place.name)
     for station in stations:
         name = station.get("name")
@@ -152,7 +153,7 @@ def _find_matching_station(
     for station in stations:
         lat = station.get("latitude")
         lng = station.get("longitude")
-        if isinstance(lat, (float, int)) and isinstance(lng, (float, int)):
+        if isinstance(lat, float | int) and isinstance(lng, float | int):
             distance = haversine_m(float(lat), float(lng), place.latitude, place.longitude)
             if distance <= max_distance_m:
                 return station, False
@@ -244,7 +245,7 @@ def _create_station(place: Place, config: MergeConfig) -> StationEntry:
     return station
 
 
-def _infer_in_vienna(place: Place, bounding_box: Optional[BoundingBox]) -> bool:
+def _infer_in_vienna(place: Place, bounding_box: BoundingBox | None) -> bool:
     address = place.formatted_address
     if isinstance(address, str):
         lowered = address.casefold()

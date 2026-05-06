@@ -30,14 +30,14 @@ def serialize_for_cache(
         raise RecursionError(f"Maximum recursion depth {max_depth} exceeded")
 
     # Simple types - return immediately
-    if value is None or isinstance(value, (str, int, float, bool)):
+    if value is None or isinstance(value, str | int | float | bool):
         return value
 
     if isinstance(value, datetime):
         return value.isoformat()
 
     # Container types - check for cycles
-    if isinstance(value, (dict, list, tuple, set)):
+    if isinstance(value, dict | list | tuple | set):
         if _stack is None:
             _stack = set()
 
@@ -52,7 +52,7 @@ def serialize_for_cache(
                     key: serialize_for_cache(val, _stack, _depth + 1, max_depth)
                     for key, val in value.items()
                 }
-            if isinstance(value, (list, tuple)):
+            if isinstance(value, list | tuple):
                 return [
                     serialize_for_cache(item, _stack, _depth + 1, max_depth)
                     for item in value

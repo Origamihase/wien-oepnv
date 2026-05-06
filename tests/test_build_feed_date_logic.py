@@ -5,7 +5,7 @@ from typing import Any
 import pytest
 import types
 import datetime as dt_module
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
 
 
@@ -41,9 +41,9 @@ def test_format_local_times_end_before_start_future(
     monkeypatch.setattr(build_feed, "datetime", MockDatetime)
 
     # Start date in the future
-    start = MockDatetime(2023, 1, 5, 12, 0, tzinfo=timezone.utc)
+    start = MockDatetime(2023, 1, 5, 12, 0, tzinfo=dt_module.UTC)
     # End date before start date
-    end = MockDatetime(2023, 1, 4, 12, 0, tzinfo=timezone.utc)
+    end = MockDatetime(2023, 1, 4, 12, 0, tzinfo=dt_module.UTC)
 
     with caplog.at_level(logging.WARNING):
         result = build_feed.format_local_times(start, end)
@@ -71,9 +71,9 @@ def test_format_local_times_end_before_start_past(
     monkeypatch.setattr(build_feed, "datetime", MockDatetime)
 
     # Start date in the past
-    start = MockDatetime(2023, 1, 5, 12, 0, tzinfo=timezone.utc)
+    start = MockDatetime(2023, 1, 5, 12, 0, tzinfo=dt_module.UTC)
     # End date before start date
-    end = MockDatetime(2023, 1, 4, 12, 0, tzinfo=timezone.utc)
+    end = MockDatetime(2023, 1, 4, 12, 0, tzinfo=dt_module.UTC)
 
     with caplog.at_level(logging.WARNING):
         result = build_feed.format_local_times(start, end)

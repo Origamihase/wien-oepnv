@@ -8,7 +8,8 @@ client must therefore consume budget BEFORE each HTTP attempt — otherwise a
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Dict, Iterator
+from typing import Any
+from collections.abc import Iterator
 from unittest.mock import MagicMock
 
 import pytest
@@ -44,7 +45,7 @@ class _MockRaw:
 class _MockResponse:
     def __init__(self, status: int, body: bytes = b"{}") -> None:
         self.status_code = status
-        self.headers: Dict[str, str] = {}
+        self.headers: dict[str, str] = {}
         self.raw = _MockRaw()
         self.url = "https://places.googleapis.com/v1/places:searchNearby"
         self._content = body
@@ -62,7 +63,7 @@ class _MockResponse:
     def close(self) -> None:
         pass
 
-    def __enter__(self) -> "_MockResponse":
+    def __enter__(self) -> _MockResponse:
         return self
 
     def __exit__(self, *args: Any) -> None:

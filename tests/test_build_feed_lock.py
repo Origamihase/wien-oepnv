@@ -1,7 +1,8 @@
 import sys
 import json
 import importlib
-from typing import Any, Iterator
+from typing import Any
+from collections.abc import Iterator
 import pytest
 import types
 from pathlib import Path

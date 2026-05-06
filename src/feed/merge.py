@@ -1,7 +1,7 @@
 import copy
 import hashlib
 import re
-from typing import Any, Dict, List, Set, Tuple, Union
+from typing import Any
 
 # Line-prefix grammar tolerant of two real-world spellings:
 #
@@ -166,7 +166,7 @@ _STOP_WORDS = {
 }
 
 
-def _parse_title(title: str) -> Tuple[Set[str], str]:
+def _parse_title(title: str) -> tuple[set[str], str]:
     """
     Parses a title into a set of lines and the event name.
     Example: "1/2: Event Name" -> ({"1", "2"}, "Event Name")
@@ -199,7 +199,7 @@ def _normalize_name(name: str) -> str:
     return re.sub(r"\d+", "", name).lower().strip()
 
 
-def _get_tokens(name: str) -> Set[str]:
+def _get_tokens(name: str) -> set[str]:
     """Splits name into tokens by non-alphanumeric characters."""
     return set(x for x in re.split(r"\W+", _normalize_name(name)) if x)
 
@@ -250,12 +250,12 @@ def _has_significant_overlap(name1: str, name2: str) -> bool:
     return False
 
 
-def _natural_keys(text: str) -> List[Union[str, int]]:
+def _natural_keys(text: str) -> list[str | int]:
     """Helper for natural sorting of line numbers (e.g. U1, U2, U10)."""
     return [int(c) if c.isdigit() else c for c in re.split(r'(\d+)', text)]
 
 
-def _calculate_line_overlap(lines1: Set[str], lines2: Set[str]) -> float:
+def _calculate_line_overlap(lines1: set[str], lines2: set[str]) -> float:
     if not lines1 or not lines2:
         return 0.0
     intersection = len(lines1 & lines2)
@@ -263,7 +263,7 @@ def _calculate_line_overlap(lines1: Set[str], lines2: Set[str]) -> float:
     return intersection / union
 
 
-def _promote_newer_dates(target: Dict[str, Any], source: Dict[str, Any]) -> None:
+def _promote_newer_dates(target: dict[str, Any], source: dict[str, Any]) -> None:
     """Copy any date field from *source* into *target* when it is newer.
 
     The dedup loop tolerates four spellings of the publication date for
@@ -286,7 +286,7 @@ def _promote_newer_dates(target: Dict[str, Any], source: Dict[str, Any]) -> None
             target[date_key] = source_date
 
 
-def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """
     Merges items that are likely the same event affecting overlapping lines.
 
@@ -294,7 +294,7 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     1. Significant name overlap (tokens or substring).
     2. > 30% line overlap.
     """
-    merged_items: List[Dict[str, Any]] = []
+    merged_items: list[dict[str, Any]] = []
 
     for item in items:
         merged = False

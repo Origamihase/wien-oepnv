@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from typing import Iterator
+from collections.abc import Iterator
 from defusedxml import ElementTree as ET
 from unittest.mock import patch
 import pytest

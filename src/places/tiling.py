@@ -5,7 +5,8 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Iterator, List, Mapping, cast
+from typing import cast
+from collections.abc import Iterable, Iterator, Mapping
 
 __all__ = ["Tile", "load_tiles_from_env", "load_tiles_from_file", "iter_tiles"]
 
@@ -32,15 +33,15 @@ def _validate_tile_count(count: int) -> None:
 
 def _coerce_coordinate(raw: Mapping[str, object], key: str) -> float:
     value = raw.get(key)
-    if isinstance(value, (float, int)):
+    if isinstance(value, float | int):
         return float(value)
     if isinstance(value, str):
         return float(value)
     raise TypeError(f"Invalid {key!r} value in tile specification: {value!r}")
 
 
-def _parse_tiles(raw_tiles: Iterable[Mapping[str, object]]) -> List[Tile]:
-    tiles: List[Tile] = []
+def _parse_tiles(raw_tiles: Iterable[Mapping[str, object]]) -> list[Tile]:
+    tiles: list[Tile] = []
     for raw in raw_tiles:
         try:
             lat = _coerce_coordinate(raw, "lat")
@@ -51,7 +52,7 @@ def _parse_tiles(raw_tiles: Iterable[Mapping[str, object]]) -> List[Tile]:
     return tiles
 
 
-def load_tiles_from_env(raw_value: str | None) -> List[Tile]:
+def load_tiles_from_env(raw_value: str | None) -> list[Tile]:
     """Parse ``raw_value`` from ``PLACES_TILES`` into :class:`Tile` objects."""
 
     if not raw_value:
@@ -64,7 +65,7 @@ def load_tiles_from_env(raw_value: str | None) -> List[Tile]:
     return _parse_tiles(cast(Iterable[Mapping[str, object]], data))
 
 
-def load_tiles_from_file(path: Path) -> List[Tile]:
+def load_tiles_from_file(path: Path) -> list[Tile]:
     """Load tile configuration from ``path``."""
 
     data = json.loads(path.read_text(encoding="utf-8"))

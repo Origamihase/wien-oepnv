@@ -1,6 +1,6 @@
 import importlib
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from pathlib import Path
 from typing import Any
 
@@ -39,7 +39,7 @@ def test_make_rss_ignores_items_when_max_is_zero(monkeypatch: pytest.MonkeyPatch
 
         monkeypatch.setattr(build_feed, "_emit_item", fail_emit)
 
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
         state: dict[str, dict[str, Any]] = {}
         rss = build_feed._make_rss(
             [

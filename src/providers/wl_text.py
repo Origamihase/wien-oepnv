@@ -3,9 +3,8 @@
 from __future__ import annotations
 
 import re
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, UTC
 from zoneinfo import ZoneInfo
-from typing import Optional
 
 # ---------------- Relevanz-/Ausschluss-Filter ----------------
 
@@ -110,7 +109,7 @@ def _tidy_title_wl(title: str) -> str:
 
 _DATE_FROM_TITLE_RE = re.compile(r"ab\s+(\d{1,2})\.(\d{1,2})\.(\d{4})?", re.IGNORECASE)
 
-def extract_date_from_title(title: str, reference_date: Optional[datetime] = None) -> Optional[datetime]:
+def extract_date_from_title(title: str, reference_date: datetime | None = None) -> datetime | None:
     """
     Extrahierte ein Datum der Form 'ab DD.MM.[YYYY]' aus dem Titel.
     Falls das Jahr fehlt, wird versucht, es anhand von reference_date zu raten.
@@ -128,7 +127,7 @@ def extract_date_from_title(title: str, reference_date: Optional[datetime] = Non
     day, month = int(day_str), int(month_str)
 
     if reference_date is None:
-        reference_date = datetime.now(timezone.utc)
+        reference_date = datetime.now(UTC)
 
     if year_str:
         year = int(year_str)

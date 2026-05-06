@@ -9,8 +9,9 @@ import logging
 import os
 import re
 import time
-from datetime import datetime, timedelta, timezone
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple, cast
+from datetime import datetime, timedelta, UTC
+from typing import Any, cast
+from collections.abc import Iterable, Sequence
 
 import requests
 from dateutil import parser as dtparser
@@ -61,7 +62,7 @@ WL_SESSION_HEADERS = {"Accept": "application/json"}
 
 # ---------------- Zeit & Utils ----------------
 
-def _iso(s: Optional[str]) -> Optional[datetime]:
+def _iso(s: str | None) -> datetime | None:
     """Parst ISO (inkl. 'Z' / TZ ohne Doppelpunkt) robust zu aware datetime."""
 
     if not s:
@@ -71,11 +72,11 @@ def _iso(s: Optional[str]) -> Optional[datetime]:
         s = s[:-2] + ":" + s[-2:]
     dt = dtparser.isoparse(s)
     if not dt.tzinfo:
-        dt = dt.replace(tzinfo=timezone.utc)
-    return cast('Optional[datetime]', dt)
+        dt = dt.replace(tzinfo=UTC)
+    return cast('datetime | None', dt)
 
 
-def _best_ts(obj: Dict[str, Any]) -> Optional[datetime]:
+def _best_ts(obj: dict[str, Any]) -> datetime | None:
     t = obj.get("time") or {}
     for cand in (
         _iso(t.get("start")),
@@ -90,7 +91,7 @@ def _best_ts(obj: Dict[str, Any]) -> Optional[datetime]:
     return None
 
 
-def _is_active(start: Optional[datetime], end: Optional[datetime], now: datetime) -> bool:
+def _is_active(start: datetime | None, end: datetime | None, now: datetime) -> bool:
     if start and start > now:
         return False
     if end and end < (now - timedelta(minutes=ENDS_AT_GRACE_MINUTES)):
@@ -98,30 +99,30 @@ def _is_active(start: Optional[datetime], end: Optional[datetime], now: datetime
     return True
 
 def _intervals_overlap(
-    start_a: Optional[datetime],
-    end_a: Optional[datetime],
-    start_b: Optional[datetime],
-    end_b: Optional[datetime],
+    start_a: datetime | None,
+    end_a: datetime | None,
+    start_b: datetime | None,
+    end_b: datetime | None,
 ) -> bool:
     """Return True if the time intervals [start_a, end_a] and [start_b, end_b] overlap."""
 
-    s_a = start_a or datetime.min.replace(tzinfo=timezone.utc)
-    s_b = start_b or datetime.min.replace(tzinfo=timezone.utc)
-    e_a = end_a or datetime.max.replace(tzinfo=timezone.utc)
-    e_b = end_b or datetime.max.replace(tzinfo=timezone.utc)
+    s_a = start_a or datetime.min.replace(tzinfo=UTC)
+    s_b = start_b or datetime.min.replace(tzinfo=UTC)
+    e_a = end_a or datetime.max.replace(tzinfo=UTC)
+    e_b = end_b or datetime.max.replace(tzinfo=UTC)
 
     return s_a <= e_b and s_b <= e_a
 
-def _as_list(val: Any) -> List[Any]:
+def _as_list(val: Any) -> list[Any]:
     if val is None:
         return []
-    return list(val) if isinstance(val, (list, tuple, set)) else [val]
+    return list(val) if isinstance(val, list | tuple | set) else [val]
 
 
 # ---------------- Stop-Namen extrahieren ----------------
 
-def _stop_names_from_related(rel_stops: List[Any]) -> List[str]:
-    dedup: Dict[str, str] = {}
+def _stop_names_from_related(rel_stops: list[Any]) -> list[str]:
+    dedup: dict[str, str] = {}
     for s in rel_stops:
         raw: str | None = None
         if isinstance(s, dict):
@@ -152,7 +153,7 @@ def _normalize_whitespace(value: str) -> str:
     return re.sub(r"\s+", " ", value or "").strip()
 
 
-def _split_extra(extra: str) -> Optional[Tuple[str, str]]:
+def _split_extra(extra: str) -> tuple[str, str] | None:
     if not extra or ":" not in extra:
         return None
     head, tail = extra.split(":", 1)
@@ -165,10 +166,10 @@ def _split_extra(extra: str) -> Optional[Tuple[str, str]]:
 
 def _context_values_from_stop_names(
     stop_names: Iterable[str], base_title: str
-) -> List[str]:
+) -> list[str]:
     base_cf = base_title.casefold()
     seen: set[str] = set()
-    values: List[str] = []
+    values: list[str] = []
     for name in sorted(stop_names, key=lambda x: x.casefold()):
         clean = _normalize_whitespace(str(name))
         if not clean:
@@ -185,10 +186,10 @@ def _context_values_from_stop_names(
 
 def _context_values_from_extras(
     extras: Sequence[str], base_title: str
-) -> Tuple[List[str], List[str]]:
+) -> tuple[list[str], list[str]]:
     base_cf = base_title.casefold()
-    values: List[str] = []
-    used: List[str] = []
+    values: list[str] = []
+    used: list[str] = []
     seen: set[str] = set()
     for extra in extras:
         parsed = _split_extra(extra)
@@ -206,7 +207,7 @@ def _context_values_from_extras(
     return values, used
 
 
-def _title_quality_key(title: str, title_core: str) -> Tuple[int, int, int]:
+def _title_quality_key(title: str, title_core: str) -> tuple[int, int, int]:
     """Score titles so that informative variants win over short generics."""
 
     normalized_title = _normalize_whitespace(title)
@@ -226,7 +227,7 @@ def _description_info_score(
     title: str,
     stop_names: Iterable[str],
     extras: Sequence[str],
-) -> Tuple[int, int, int, int]:
+) -> tuple[int, int, int, int]:
     """Return a tuple describing how informative a description is."""
 
     normalized = _normalize_whitespace(desc)
@@ -268,7 +269,7 @@ def _description_info_score(
     return (non_title, info_hits, length, word_count)
 
 
-def _format_context(values: Sequence[str], limit: int = 2) -> Tuple[str, int]:
+def _format_context(values: Sequence[str], limit: int = 2) -> tuple[str, int]:
     if not values:
         return "", 0
     trimmed = list(values[:limit])
@@ -281,8 +282,8 @@ def _format_context(values: Sequence[str], limit: int = 2) -> Tuple[str, int]:
 
 
 def _build_context_suffix(
-    bucket: Dict[str, Any], base_title: str, lines_disp: Sequence[str]
-) -> Tuple[Optional[str], List[str]]:
+    bucket: dict[str, Any], base_title: str, lines_disp: Sequence[str]
+) -> tuple[str | None, list[str]]:
     if lines_disp:
         return None, []
 
@@ -309,13 +310,13 @@ def _build_context_suffix(
 
 def _get_json(
     path: str,
-    params: Optional[List[tuple[Any, ...]]] = None,
+    params: list[tuple[Any, ...]] | None = None,
     timeout: int = 20,
-    session: Optional[requests.Session] = None,
-) -> Dict[str, Any]:
+    session: requests.Session | None = None,
+) -> dict[str, Any]:
     url = f"{WL_BASE.rstrip('/')}/{path.lstrip('/')}"
 
-    def _fetch(s: requests.Session) -> Dict[str, Any]:
+    def _fetch(s: requests.Session) -> dict[str, Any]:
         max_retries = 3
         for attempt in range(1, max_retries + 1):
             try:
@@ -373,8 +374,8 @@ def _get_json(
 
 
 def _fetch_traffic_infos(
-    timeout: int = 20, session: Optional[requests.Session] = None
-) -> Iterable[Dict[str, Any]]:
+    timeout: int = 20, session: requests.Session | None = None
+) -> Iterable[dict[str, Any]]:
     # explizit KEINE Facility-Feeds
     params = [("name", "stoerunglang"), ("name", "stoerungkurz")]
     data = _get_json("trafficInfoList", params=params, timeout=timeout, session=session)
@@ -382,17 +383,17 @@ def _fetch_traffic_infos(
 
 
 def _fetch_news(
-    timeout: int = 20, session: Optional[requests.Session] = None
-) -> Iterable[Dict[str, Any]]:
+    timeout: int = 20, session: requests.Session | None = None
+) -> Iterable[dict[str, Any]]:
     data = _get_json("newsList", timeout=timeout, session=session)
     return (data.get("data", {}) or {}).get("pois", []) or []
 
 
 # ---------------- Public API ----------------
 
-def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
-    now = datetime.now(timezone.utc)
-    raw: List[Dict[str, Any]] = []
+def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
+    now = datetime.now(UTC)
+    raw: list[dict[str, Any]] = []
 
     with session_with_retries(WL_USER_AGENT, raise_on_status=False) as session:
         session.headers.update(WL_SESSION_HEADERS)
@@ -603,7 +604,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
             )
 
     # C) Bündelung: LINIEN-SET + TOPIC
-    buckets: Dict[str, Dict[str, Any]] = {}
+    buckets: dict[str, dict[str, Any]] = {}
     for ev in raw:
         line_toks_sorted = ",".join(sorted(_line_tokens_from_pairs(ev["lines_pairs"])))
         key = make_guid(
@@ -688,7 +689,7 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
                     b["extras"].append(x)
 
     # D) Finale Items mit Linien-Präfix im Titel
-    items: List[Dict[str, Any]] = []
+    items: list[dict[str, Any]] = []
     for b in buckets.values():
         lines_disp = _line_display_from_pairs(b["lines_pairs"])
         lines_tok = set(_line_tokens_from_pairs(b["lines_pairs"]))
@@ -752,14 +753,14 @@ def fetch_events(timeout: int = 20) -> List[Dict[str, Any]]:
         )
 
     # E) Sammel-vs.-Einzel: Aggregat entfernen, wenn *alle* Linien als Einzel vorliegen
-    single_line_coverage: Dict[str, int] = {}
+    single_line_coverage: dict[str, int] = {}
     for it in items:
         ls = it.get("_lines_set") or set()
         if len(ls) == 1:
             ln = next(iter(ls))
             single_line_coverage[ln] = single_line_coverage.get(ln, 0) + 1
 
-    filtered: List[Dict[str, Any]] = []
+    filtered: list[dict[str, Any]] = []
     for it in items:
         ls = it.get("_lines_set") or set()
         if len(ls) >= 2 and all(single_line_coverage.get(ln, 0) > 0 for ln in ls):

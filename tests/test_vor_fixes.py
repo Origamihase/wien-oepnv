@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock, patch, ANY, call
 import requests
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from src.providers.vor import (
     VorAuth,
     apply_authentication,
@@ -127,7 +127,7 @@ class TestFetchDepartureBoard:
         manager.attach_mock(mock_save, 'save_request_count')
         manager.attach_mock(mock_fetch, 'fetch_content_safe')
 
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
 
         _fetch_departure_board_for_station("station_id", now)
 

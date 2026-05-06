@@ -23,10 +23,10 @@ import random
 import re
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timezone
-from email.utils import parsedate_to_datetime
+from datetime import datetime, UTC
 from pathlib import Path
-from typing import Any, Dict, Iterable, Iterator, List, Mapping, Sequence, cast
+from typing import Any, cast
+from collections.abc import Iterable, Iterator, Mapping, Sequence
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
 import requests
@@ -38,7 +38,12 @@ from zoneinfo import ZoneInfo
 from ..feed_types import FeedItem, VorMessage
 from ..utils.env import read_secret
 from ..utils.files import atomic_write
-from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
+from ..utils.http import (
+    fetch_content_safe,
+    parse_retry_after,
+    session_with_retries,
+    validate_http_url,
+)
 from ..utils.ids import make_guid
 from ..utils.locking import file_lock
 from ..utils.logging import sanitize_log_arg, sanitize_log_message
@@ -83,7 +88,7 @@ VOR_USER_AGENT = os.getenv("VOR_USER_AGENT", DEFAULT_USER_AGENT)
 # requirement that the budget must NEVER be exceeded. Application-level
 # scheduling re-runs the job on the next interval, which is the correct
 # place to recover from transient errors.
-VOR_RETRY_OPTIONS: Dict[str, Any] = {
+VOR_RETRY_OPTIONS: dict[str, Any] = {
     "total": 0,
     "backoff_factor": 0.5,
     "raise_on_status": False,
@@ -96,7 +101,7 @@ _VOR_AUTHORIZATION_HEADER = ""  # nosec B105
 # Global lock for thread-safe quota management within the process
 _QUOTA_LOCK = threading.RLock()
 # Local cache to optimize quota checks (fail-fast)
-_QUOTA_CACHE: Dict[str, Any] = {"date": None, "count": 0, "unsaved_delta": 0}
+_QUOTA_CACHE: dict[str, Any] = {"date": None, "count": 0, "unsaved_delta": 0}
 
 
 def _flush_quota_cache() -> None:
@@ -116,7 +121,7 @@ def _flush_quota_cache() -> None:
 atexit.register(_flush_quota_cache)
 
 
-def _get_secrets() -> List[str]:
+def _get_secrets() -> list[str]:
     secrets = [s for s in [VOR_ACCESS_ID, _VOR_ACCESS_TOKEN_RAW] if s]
     return secrets
 
@@ -220,6 +225,16 @@ MAX_REQUESTS_PER_DAY = _load_int_env(
     "VOR_MAX_REQUESTS_PER_DAY", DEFAULT_MAX_REQUESTS_PER_DAY
 )
 
+# How many in-memory increments to accumulate before flushing the quota
+# counter to disk. The default of 10 keeps file I/O low (~10x per build)
+# while bounding the loss window to 9 requests if the process is killed
+# mid-batch. Tests force a flush per call via WIEN_OEPNV_TEST_QUOTA_BATCH.
+DEFAULT_QUOTA_FLUSH_BATCH_SIZE = 10
+QUOTA_FLUSH_BATCH_SIZE = max(
+    1,
+    _load_int_env("VOR_QUOTA_FLUSH_BATCH_SIZE", DEFAULT_QUOTA_FLUSH_BATCH_SIZE),
+)
+
 ALLOW_BUS = _get_env("VOR_ALLOW_BUS").lower() in {"1", "true", "yes"}
 BUS_INCLUDE_RE = _compile_regex("VOR_BUS_INCLUDE_REGEX", DEFAULT_BUS_INCLUDE_PATTERN)
 BUS_EXCLUDE_RE = _compile_regex("VOR_BUS_EXCLUDE_REGEX", DEFAULT_BUS_EXCLUDE_PATTERN)
@@ -265,7 +280,7 @@ DEFAULT_STATION_ID_FILE = _resolve_path(
 )
 
 
-def _load_station_name_map() -> Dict[str, str]:
+def _load_station_name_map() -> dict[str, str]:
     try:
         data = json.loads(MAPPING_FILE.read_text(encoding="utf-8"))
     except FileNotFoundError:
@@ -273,7 +288,7 @@ def _load_station_name_map() -> Dict[str, str]:
     except json.JSONDecodeError as exc:  # pragma: no cover - defensive
         _log_warning("Konnte Stations-Mapping nicht laden (%s)", exc)
         return {}
-    mapping: Dict[str, str] = {}
+    mapping: dict[str, str] = {}
     for entry in data:
         if not isinstance(entry, dict):
             continue
@@ -287,13 +302,13 @@ def _load_station_name_map() -> Dict[str, str]:
 STATION_NAME_MAP = _load_station_name_map()
 
 
-def _load_station_ids_from_file(path: Path) -> List[str]:
+def _load_station_ids_from_file(path: Path) -> list[str]:
     try:
         content = path.read_text(encoding="utf-8")
     except FileNotFoundError:
         return []
     entries = re.split(r"[\s,;]+", content)
-    result: List[str] = []
+    result: list[str] = []
     for entry in entries:
         token = entry.strip()
         if token and token not in result:
@@ -301,8 +316,8 @@ def _load_station_ids_from_file(path: Path) -> List[str]:
     return result
 
 
-def _load_station_ids_default() -> List[str]:
-    ids: List[str] = []
+def _load_station_ids_default() -> list[str]:
+    ids: list[str] = []
     try:
         ids = list(vor_station_ids())
     except Exception as exc:  # pragma: no cover - defensive guard
@@ -314,7 +329,7 @@ def _load_station_ids_default() -> List[str]:
         lines = DEFAULT_STATION_ID_FILE.read_text(encoding="utf-8").splitlines()
     except FileNotFoundError:
         return []
-    result: List[str] = []
+    result: list[str] = []
     for line in lines[1:]:
         parts = line.split(";")
         if not parts:
@@ -325,7 +340,7 @@ def _load_station_ids_default() -> List[str]:
     return result
 
 
-def _load_station_ids_from_env() -> List[str]:
+def _load_station_ids_from_env() -> list[str]:
     direct = _get_env("VOR_STATION_IDS")
     if direct:
         return [item.strip() for item in re.split(r",|\n", direct) if item.strip()]
@@ -339,8 +354,8 @@ def _load_station_ids_from_env() -> List[str]:
     return _load_station_ids_default()
 
 
-VOR_STATION_IDS: List[str] = _load_station_ids_from_env()
-VOR_STATION_NAMES: List[str] = [
+VOR_STATION_IDS: list[str] = _load_station_ids_from_env()
+VOR_STATION_NAMES: list[str] = [
     name.strip()
     for name in re.split(r",|\n", _get_env("VOR_STATION_NAMES"))
     if name.strip()
@@ -575,8 +590,8 @@ def _name_score(name: str) -> tuple[int, int]:
     return score, -len(name)
 
 
-def _canonical_stop_names(names: Iterable[str]) -> List[str]:
-    seen: Dict[str, str] = {}
+def _canonical_stop_names(names: Iterable[str]) -> list[str]:
+    seen: dict[str, str] = {}
     for name in names:
         text = (name or "").strip()
         if not text:
@@ -613,8 +628,8 @@ def _iter_products(message: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
             yield entry
 
 
-def _extract_lines(message: Mapping[str, Any]) -> List[str]:
-    lines: List[str] = []
+def _extract_lines(message: Mapping[str, Any]) -> list[str]:
+    lines: list[str] = []
     for product in _iter_products(message):
         cat = str(product.get("catOutS") or product.get("catOutL") or "").strip()
         number = str(
@@ -697,7 +712,7 @@ def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
                     yield entry
 
     # 3. Departures (Detailed check for cancellations and embedded messages)
-    departures: List[Any] = []
+    departures: list[Any] = []
     if isinstance(payload, Mapping) and "DepartureBoard" in payload and isinstance(payload["DepartureBoard"], Mapping):
         board = payload["DepartureBoard"]
         if "Departure" in board:
@@ -753,7 +768,7 @@ def _iter_messages(payload: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
         for key in ["rtMessages", "warnings", "infos"]:
             if key in dep:
                 dep_container = dep[key]
-                msg_iterable: List[Any] = []
+                msg_iterable: list[Any] = []
                 if isinstance(dep_container, list):
                     msg_iterable = dep_container
                 elif isinstance(dep_container, Mapping):
@@ -802,7 +817,7 @@ def _parse_dt(date_str: Any, time_str: Any) -> datetime | None:
     # transition; the alternative (fold=1) would shift events one hour
     # later for that single window each year.
     local_dt = naive.replace(tzinfo=ZONE_VIENNA, fold=0)
-    return local_dt.astimezone(timezone.utc)
+    return local_dt.astimezone(UTC)
 
 
 def _format_date_range(start: datetime | None, end: datetime | None) -> str:
@@ -852,7 +867,7 @@ def _build_guid(station_id: str, message: VorMessage) -> str:
     return f"vor:{station_id}:{fallback}"
 
 
-def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[FeedItem]:
+def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> list[FeedItem]:
     """
     Parse a StationBoard/TrafficInfo JSON response and extract event items.
 
@@ -876,7 +891,7 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[FeedIt
         )
     )
 
-    items: List[FeedItem] = []
+    items: list[FeedItem] = []
     for raw_msg in _iter_messages(root):
         message = cast(VorMessage, raw_msg)
         head = str(message.get("head") or message.get("name") or "").strip()
@@ -913,7 +928,7 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[FeedIt
         if end_dt and start_dt and end_dt < start_dt:
             end_dt = None
 
-        description_lines: List[str] = []
+        description_lines: list[str] = []
         if text:
             description_lines.append(text)
         elif head:
@@ -948,7 +963,7 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> List[FeedIt
     return items
 
 
-def _desired_product_classes() -> List[int]:
+def _desired_product_classes() -> list[int]:
     rail = [0, 1, 2, 3, 4]
     bus = [7]
     return rail + (bus if ALLOW_BUS else [])
@@ -964,7 +979,7 @@ def _product_class_bitmask(classes: Sequence[int]) -> int:
 
 def _select_stations_round_robin(
     ids: Sequence[str], chunk_size: int
-) -> List[str]:
+) -> list[str]:
     if not ids or chunk_size <= 0:
         return []
 
@@ -983,7 +998,7 @@ def _select_stations_round_robin(
     ordered = shuffled_ids[start_index:] + shuffled_ids[:start_index]
 
     chunk = min(len(ids), chunk_size)
-    selected: List[str] = []
+    selected: list[str] = []
     seen: set[str] = set()
     for sid in ordered:
         if sid in seen:
@@ -995,7 +1010,7 @@ def _select_stations_round_robin(
     return selected
 
 
-def get_configured_stations() -> List[str]:
+def get_configured_stations() -> list[str]:
     """
     Retrieve the list of configured station IDs.
 
@@ -1023,7 +1038,7 @@ def get_configured_stations() -> List[str]:
     return station_ids
 
 
-def select_stations_for_run(available_stations: List[str]) -> List[str]:
+def select_stations_for_run(available_stations: list[str]) -> list[str]:
     """
     Select a subset of stations for the current run based on round-robin logic
     and MAX_STATIONS_PER_RUN limit.
@@ -1042,15 +1057,15 @@ def select_stations_for_run(available_stations: List[str]) -> List[str]:
     return selected_ids
 
 
-def resolve_station_ids(names: Iterable[str]) -> List[str]:
+def resolve_station_ids(names: Iterable[str]) -> list[str]:
     """
     Resolve station names to VOR station IDs (EVA-IDs).
 
     Prioritizes local static data to save API quota ("VAO Start" limit).
     Falls back to ``location.name`` API only if necessary and allowed.
     """
-    resolved: List[str] = []
-    to_lookup: List[str] = []
+    resolved: list[str] = []
+    to_lookup: list[str] = []
     seen: set[str] = set()
 
     for raw in names:
@@ -1212,10 +1227,8 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
         _QUOTA_CACHE["unsaved_delta"] += 1
         current_total = _QUOTA_CACHE["count"] + _QUOTA_CACHE["unsaved_delta"]
 
-        # For testing, we can check an environment variable to lower the batch size
-        batch_limit = 10
-        if os.getenv("WIEN_OEPNV_TEST_QUOTA_BATCH") == "1":
-            batch_limit = 1
+        # Tests set WIEN_OEPNV_TEST_QUOTA_BATCH=1 to force a flush per call.
+        batch_limit = 1 if os.getenv("WIEN_OEPNV_TEST_QUOTA_BATCH") == "1" else QUOTA_FLUSH_BATCH_SIZE
 
         # Only perform expensive file I/O periodically (every X requests) or on the first request
         if current_total == 1 or _QUOTA_CACHE["unsaved_delta"] >= batch_limit or current_total >= MAX_REQUESTS_PER_DAY:
@@ -1226,8 +1239,10 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
             lock_path = REQUEST_COUNT_FILE.with_suffix(".lock")
 
             try:
-                with lock_path.open("a+", encoding="utf-8") as lock_file:
-                    with file_lock(lock_file, exclusive=True):
+                with (
+                    lock_path.open("a+", encoding="utf-8") as lock_file,
+                    file_lock(lock_file, exclusive=True),
+                ):
                         # Use file read directly to get latest disk count safely under lock
                         disk_date = None
                         disk_count = 0
@@ -1269,7 +1284,7 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
                             _QUOTA_CACHE["count"] = MAX_REQUESTS_PER_DAY + 1
                             _QUOTA_CACHE["unsaved_delta"] = 0
                             return MAX_REQUESTS_PER_DAY + 1
-            except Exception as e:
+            except (OSError, TimeoutError) as e:
                 log.warning("Failed to save request count (lock error): %s", e)
                 return MAX_REQUESTS_PER_DAY + 1
 
@@ -1279,26 +1294,14 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
 
 
 def _parse_retry_after(response: requests.Response) -> float | None:
-    header = response.headers.get("Retry-After")
-    if not header:
+    raw = response.headers.get("Retry-After")
+    if raw is None or not raw.strip():
         _log_warning("Retry-After fehlt, verwende Fallback-Verzögerung")
         return None
-    header = header.strip()
-    if not header:
-        _log_warning("Retry-After leer, verwende Fallback-Verzögerung")
-        return None
-    if re.fullmatch(r"\d+(?:\.\d+)?", header):
-        return float(header)
-    try:
-        parsed = parsedate_to_datetime(header)
-    except (TypeError, ValueError):
-        _log_warning("VOR lieferte ungültiges Retry-After: %s", header)
-        return None
-    if parsed.tzinfo is None:
-        parsed = parsed.replace(tzinfo=timezone.utc)
-    now = datetime.now(timezone.utc)
-    delay = (parsed - now).total_seconds()
-    return cast('float | None', max(delay, 0.0))
+    delay = parse_retry_after(raw, now=datetime.now(UTC))
+    if delay is None:
+        _log_warning("VOR lieferte ungültiges Retry-After: %s", raw.strip())
+    return delay
 
 
 def _log_retry_after_warning(response: requests.Response, station_id: str) -> None:
@@ -1452,7 +1455,7 @@ def _fetch_departure_board_for_station(
             local_session.close()
 
 
-def fetch_vor_disruptions(station_ids: List[str] | None = None, timeout: int | None = None) -> List[FeedItem]:
+def fetch_vor_disruptions(station_ids: list[str] | None = None, timeout: int | None = None) -> list[FeedItem]:
     """
     Fetch disruptions for the given stations using the departureBoard endpoint.
     Iterates over the configured or provided stations and extracts warnings/infos.
@@ -1504,7 +1507,7 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None, timeout: int | N
         len(selected_ids),
     )
 
-    results: List[FeedItem] = []
+    results: list[FeedItem] = []
     failures = 0
     successes = 0
 
@@ -1596,7 +1599,7 @@ def fetch_vor_disruptions(station_ids: List[str] | None = None, timeout: int | N
     return results
 
 
-def fetch_events(station_ids: List[str] | None = None, timeout: int | None = None) -> List[FeedItem]:
+def fetch_events(station_ids: list[str] | None = None, timeout: int | None = None) -> list[FeedItem]:
     """
     Main entry point for VOR provider.
     Delegates to fetch_vor_disruptions.

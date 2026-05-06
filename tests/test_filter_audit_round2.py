@@ -15,7 +15,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 
 from src.feed.merge import deduplicate_fuzzy
 from src.providers.oebb import _extract_routes, _is_relevant
@@ -173,7 +173,7 @@ class TestPubDateMerge:
                 "source": "Wiener Linien",
                 "title": "U6: Signalstörung Spittelau",
                 "description": "Erste Meldung",
-                "pubDate": datetime(2026, 5, 6, 10, 0, tzinfo=timezone.utc),
+                "pubDate": datetime(2026, 5, 6, 10, 0, tzinfo=UTC),
             },
             {
                 "guid": "wl-2",
@@ -181,13 +181,13 @@ class TestPubDateMerge:
                 "source": "Wiener Linien",
                 "title": "U6: Signalstörung Spittelau",
                 "description": "Spätere Meldung mit Updates",
-                "pubDate": datetime(2026, 5, 6, 11, 0, tzinfo=timezone.utc),
+                "pubDate": datetime(2026, 5, 6, 11, 0, tzinfo=UTC),
             },
         ]
         result = deduplicate_fuzzy(items)
         assert len(result) == 1
         assert result[0]["pubDate"] == datetime(
-            2026, 5, 6, 11, 0, tzinfo=timezone.utc
+            2026, 5, 6, 11, 0, tzinfo=UTC
         )
 
     def test_existing_pubdate_kept_when_newer(self) -> None:
@@ -200,7 +200,7 @@ class TestPubDateMerge:
                 "source": "Wiener Linien",
                 "title": "U6: Signalstörung Spittelau",
                 "description": "Aktuelle Meldung",
-                "pubDate": datetime(2026, 5, 6, 12, 0, tzinfo=timezone.utc),
+                "pubDate": datetime(2026, 5, 6, 12, 0, tzinfo=UTC),
             },
             {
                 "guid": "wl-b",
@@ -208,11 +208,11 @@ class TestPubDateMerge:
                 "source": "Wiener Linien",
                 "title": "U6: Signalstörung Spittelau",
                 "description": "Frühere Meldung",
-                "pubDate": datetime(2026, 5, 6, 10, 0, tzinfo=timezone.utc),
+                "pubDate": datetime(2026, 5, 6, 10, 0, tzinfo=UTC),
             },
         ]
         result = deduplicate_fuzzy(items)
         assert len(result) == 1
         assert result[0]["pubDate"] == datetime(
-            2026, 5, 6, 12, 0, tzinfo=timezone.utc
+            2026, 5, 6, 12, 0, tzinfo=UTC
         )

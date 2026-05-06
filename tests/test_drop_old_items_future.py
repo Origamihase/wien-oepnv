@@ -1,6 +1,6 @@
 import importlib
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, UTC
 from pathlib import Path
 import pytest
 import types
@@ -33,7 +33,7 @@ def test_future_ends_at_skips_max_age(monkeypatch: pytest.MonkeyPatch) -> None:
         monkeypatch,
         {"MAX_ITEM_AGE_DAYS": "365", "ABSOLUTE_MAX_AGE_DAYS": "540"},
     )
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     future = {
         "title": "future",
         "pubDate": now - timedelta(days=400),
@@ -55,7 +55,7 @@ def test_first_seen_used_when_no_dates(monkeypatch: pytest.MonkeyPatch) -> None:
         {"MAX_ITEM_AGE_DAYS": "2", "ABSOLUTE_MAX_AGE_DAYS": "10"},
     )
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
 
     old = {"title": "old", "source": "Test", "category": "Info"}
     keep = {"title": "keep", "source": "Test", "category": "Info"}

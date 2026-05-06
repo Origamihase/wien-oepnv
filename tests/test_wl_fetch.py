@@ -1,5 +1,5 @@
 import logging
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from types import TracebackType
 from typing import Any, Literal
 
@@ -142,7 +142,7 @@ def _setup_fetch(
 
 # Any: overrides accepts arbitrary kwargs; values vary per test
 def _base_event(**overrides: Any) -> dict[str, Any]:
-    now = datetime.now(timezone.utc).isoformat()
+    now = datetime.now(UTC).isoformat()
     base = {
         "title": "Sperre Museumsquartier",
         "description": "Testbeschreibung",

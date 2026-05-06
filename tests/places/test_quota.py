@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from pathlib import Path
 
 import pytest
@@ -15,7 +15,7 @@ from src.places.quota import (
 
 
 def _utc(year: int, month: int, day: int = 1) -> datetime:
-    return datetime(year, month, day, tzinfo=timezone.utc)
+    return datetime(year, month, day, tzinfo=UTC)
 
 
 def test_maybe_reset_month_resets_counts(caplog: pytest.LogCaptureFixture) -> None:

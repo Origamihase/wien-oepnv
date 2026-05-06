@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, Iterator
+from typing import Any
+from collections.abc import Iterator
 from unittest.mock import MagicMock
 
 import pytest
@@ -13,10 +14,10 @@ from src.places.client import GooglePlacesClient, GooglePlacesConfig
 from src.places.tiling import Tile
 
 class _MockResponse:
-    def __init__(self, status_code: int, payload: Dict[str, Any]) -> None:
+    def __init__(self, status_code: int, payload: dict[str, Any]) -> None:
         self.status_code = status_code
         self._payload = payload
-        self.headers: Dict[str, str] = {}
+        self.headers: dict[str, str] = {}
         self.raw = MagicMock()
         conn = MagicMock()
         conn.sock.getpeername.return_value = ("8.8.8.8", 443)
@@ -25,7 +26,7 @@ class _MockResponse:
         self._content_consumed = True
         self._content = b""
 
-    def json(self) -> Dict[str, Any]:
+    def json(self) -> dict[str, Any]:
         return self._payload
 
     def iter_content(self, chunk_size: int = 1) -> Iterator[bytes]:
@@ -49,8 +50,8 @@ class _MockSession:
         self,
         url: str,
         *,
-        headers: Dict[str, str],
-        json: Dict[str, Any],
+        headers: dict[str, str],
+        json: dict[str, Any],
         timeout: float,
         **kwargs: Any,
     ) -> _MockResponse:

@@ -1,6 +1,6 @@
 
 import logging
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, UTC
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
@@ -43,7 +43,7 @@ def test_prune_log_file_preserves_logging_handle(tmp_path: Path) -> None:
         # If we want to verify it rewrites, we can check mtime?
         # Or just trust that we call it.
 
-        prune_log_file(log_file, now=datetime.now(timezone.utc), keep_days=1)
+        prune_log_file(log_file, now=datetime.now(UTC), keep_days=1)
 
         # 4. Write second log
         logger.info("Line 2: After Prune")
@@ -68,8 +68,8 @@ def test_prune_log_file_actually_prunes(tmp_path: Path) -> None:
     # Create a log file with old and new entries
     # Format matches _LOG_TIMESTAMP_RE: YYYY-MM-DD HH:MM:SS,mmm
 
-    old_date = datetime.now(timezone.utc) - timedelta(days=10)
-    new_date = datetime.now(timezone.utc)
+    old_date = datetime.now(UTC) - timedelta(days=10)
+    new_date = datetime.now(UTC)
 
     old_line = f"{old_date.strftime('%Y-%m-%d %H:%M:%S,000')} Old Message\n"
     new_line = f"{new_date.strftime('%Y-%m-%d %H:%M:%S,000')} New Message\n"

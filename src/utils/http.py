@@ -17,7 +17,10 @@ import types
 import unicodedata
 import secrets
 import queue
-from typing import Any, Container, Mapping, MutableMapping, TypeGuard, Union, cast
+from datetime import UTC, datetime
+from email.utils import parsedate_to_datetime
+from typing import Any, TypeGuard, cast
+from collections.abc import Container, Mapping, MutableMapping
 from urllib.parse import parse_qsl, urlencode, urljoin, urlparse
 
 import requests
@@ -30,6 +33,42 @@ from urllib3.poolmanager import PoolManager
 from urllib3.util.retry import Retry
 
 from .logging import sanitize_log_message
+
+_RETRY_AFTER_NUMERIC_RE = re.compile(r"\d+(?:\.\d+)?")
+
+
+def parse_retry_after(
+    header_value: str | None,
+    *,
+    now: datetime | None = None,
+) -> float | None:
+    """Parse an HTTP ``Retry-After`` header value into seconds.
+
+    Accepts both numeric forms (``"3.5"``) and HTTP-date forms
+    (``"Wed, 21 Oct 2015 07:28:00 GMT"``). Returns ``None`` when the
+    header is missing, empty, or unparseable. Returned delays are
+    clamped to ``>= 0``.
+
+    The optional *now* parameter lets callers inject a fixed reference
+    time for deterministic testing of the HTTP-date branch.
+    """
+
+    if header_value is None:
+        return None
+    header = header_value.strip()
+    if not header:
+        return None
+    if _RETRY_AFTER_NUMERIC_RE.fullmatch(header):
+        return max(0.0, float(header))
+    try:
+        parsed = parsedate_to_datetime(header)
+    except (TypeError, ValueError):
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=UTC)
+    reference = now if now is not None else datetime.now(UTC)
+    return max(0.0, (parsed - reference).total_seconds())
+
 
 _DEFAULT_RETRY_OPTIONS: dict[str, Any] = {
     "total": 4,
@@ -283,7 +322,7 @@ def _strip_sensitive_params(url: str) -> str:
         return url
 
 
-def _replace_auth(match: 're.Match[Any]') -> str:
+def _replace_auth(match: re.Match[Any]) -> str:
     """Callback for explicit auth sanitization."""
     scheme = match.group("scheme")
     # Handle optional slash group which might be None or empty
@@ -867,13 +906,13 @@ _NAT64_PREFIX = ipaddress.IPv6Network("64:ff9b::/96")
 
 def is_ip_safe(
     ip_addr: Any
-) -> TypeGuard[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+) -> TypeGuard[ipaddress.IPv4Address | ipaddress.IPv6Address]:
     """Check if an IP address is globally reachable and safe."""
     try:
         if isinstance(ip_addr, str):
             # Handle IPv6 scope ids if present
             ip = ipaddress.ip_address(ip_addr.split("%")[0])
-        elif isinstance(ip_addr, (ipaddress.IPv4Address, ipaddress.IPv6Address)):
+        elif isinstance(ip_addr, ipaddress.IPv4Address | ipaddress.IPv6Address):
             ip = ip_addr
         else:
             return False
@@ -1366,7 +1405,7 @@ def request_safe(
     try:
         # Determine total allowed time (Task 3)
         total_allowed_time: float | None = None
-        if isinstance(timeout, (int, float)):
+        if isinstance(timeout, int | float):
             total_allowed_time = float(timeout)
         elif isinstance(timeout, tuple):
              # For tuple (connect, read), we sum them as the absolute upper bound for the whole chain?
@@ -1421,7 +1460,7 @@ def request_safe(
             if total_allowed_time == 0:
                 current_timeout = timeout
             else:
-                if isinstance(timeout, (int, float)):
+                if isinstance(timeout, int | float):
                     # Scalar timeout logic remains similar (using remaining_time)
                     current_timeout = remaining_time
                 else:

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from typing import Any, List, Tuple
+from typing import Any
 
 
 def _clean_line_token(s: str) -> str:
@@ -48,7 +48,7 @@ def _strip_existing_line_block(title: str) -> str:
     return t
 
 
-def _ensure_line_prefix(title: str, lines_disp: List[str]) -> str:
+def _ensure_line_prefix(title: str, lines_disp: list[str]) -> str:
     """Sorgt für „L1/L2: …“. Entfernt vorhandene Präfixe zuerst."""
     if len(title) > 500:
         title = title[:500]
@@ -112,11 +112,11 @@ def _mask_dates_times_addresses(t: str) -> str:
     return t
 
 
-def _detect_line_pairs_from_text(text: str) -> List[Tuple[str, str]]:
+def _detect_line_pairs_from_text(text: str) -> list[tuple[str, str]]:
     if text and len(text) > 500:
         text = text[:500]
     t = _mask_dates_times_addresses(text or "")
-    pairs: List[Tuple[str, str]] = []
+    pairs: list[tuple[str, str]] = []
     seen: set[str] = set()
     # „Rufbus Nxx“ zuerst
     for m in RUF_BUS_RE.findall(t):
@@ -133,8 +133,8 @@ def _detect_line_pairs_from_text(text: str) -> List[Tuple[str, str]]:
     return pairs
 
 
-def _make_line_pairs_from_related(rel_lines: List[Any]) -> List[Tuple[str, str]]:
-    pairs: List[Tuple[str, str]] = []
+def _make_line_pairs_from_related(rel_lines: list[Any]) -> list[tuple[str, str]]:
+    pairs: list[tuple[str, str]] = []
     seen: set[str] = set()
     for x in rel_lines:
         tok = _tok(x)
@@ -146,8 +146,8 @@ def _make_line_pairs_from_related(rel_lines: List[Any]) -> List[Tuple[str, str]]
 
 
 def _merge_line_pairs(
-    base_pairs: List[Tuple[str, str]], add_pairs: List[Tuple[str, str]]
-) -> List[Tuple[str, str]]:
+    base_pairs: list[tuple[str, str]], add_pairs: list[tuple[str, str]]
+) -> list[tuple[str, str]]:
     existing = {tok for tok, _ in base_pairs}
     out = list(base_pairs)
     for tok, disp in add_pairs:
@@ -157,11 +157,11 @@ def _merge_line_pairs(
     return out
 
 
-def _line_tokens_from_pairs(pairs: List[Tuple[str, str]]) -> List[str]:
+def _line_tokens_from_pairs(pairs: list[tuple[str, str]]) -> list[str]:
     return [tok for tok, _ in pairs]
 
 
-def _line_display_from_pairs(pairs: List[Tuple[str, str]]) -> List[str]:
+def _line_display_from_pairs(pairs: list[tuple[str, str]]) -> list[str]:
     return [disp for _, disp in pairs]
 
 
