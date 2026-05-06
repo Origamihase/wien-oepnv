@@ -226,8 +226,19 @@ if MAX_STATIONS_PER_RUN <= 0:
 ROTATION_INTERVAL_SEC = _load_int_env(
     "VOR_ROTATION_INTERVAL_SEC", DEFAULT_ROTATION_INTERVAL_SEC
 )
-MAX_REQUESTS_PER_DAY = _load_int_env(
-    "VOR_MAX_REQUESTS_PER_DAY", DEFAULT_MAX_REQUESTS_PER_DAY
+# Security: ``DEFAULT_MAX_REQUESTS_PER_DAY`` (100) is the *contractual* hard
+# cap of the "VAO Start" tier — exceeding it risks suspension of the access
+# ID by the upstream provider. ``_load_int_env`` itself only enforces a
+# lower bound (``value > 0``), so a benign-looking env override such as
+# ``VOR_MAX_REQUESTS_PER_DAY=99999`` (intentional misconfig, leaked CI env,
+# or compromised secret store) would silently disable every quota gate that
+# reads this constant (8 sites in this module, plus ``_limit_reached`` in
+# ``scripts/update_vor_cache.py``). The env var stays useful for *tightening*
+# the budget (e.g. set to 50 during testing), but can never raise it above
+# the documented contract limit.
+MAX_REQUESTS_PER_DAY = min(
+    _load_int_env("VOR_MAX_REQUESTS_PER_DAY", DEFAULT_MAX_REQUESTS_PER_DAY),
+    DEFAULT_MAX_REQUESTS_PER_DAY,
 )
 
 # How many in-memory increments to accumulate before flushing the quota
