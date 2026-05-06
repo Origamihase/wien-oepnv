@@ -1327,9 +1327,17 @@ def _format_item_content(
     sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+', summary) if s.strip()]
     if sentences:
         short_summary = sentences[0]
-        # Falls der erste Satz sehr kurz ist, nimm den zweiten noch dazu
-        if len(short_summary) < 60 and len(sentences) > 1:
-            short_summary += " " + sentences[1]
+        # Append the second sentence whenever the combined length still
+        # fits below the 180-char hard limit applied below. Without this
+        # WL items like ``Linie 62: … Karlsplatz U. Grund: Rettungseinsatz.``
+        # silently lost the cause clause whenever the first sentence
+        # exceeded the older 60-char threshold (the abbreviation period
+        # after ``Karlsplatz U`` artificially terminates sentence 1, so
+        # sentence 2 carrying the actual disruption reason was dropped).
+        if len(sentences) > 1:
+            candidate = f"{short_summary} {sentences[1]}"
+            if len(candidate) <= 180:
+                short_summary = candidate
         summary = short_summary
 
     # Harte Begrenzung für den TV-Screen (max. 180 Zeichen)
