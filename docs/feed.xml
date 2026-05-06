@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 06 May 2026 19:24:34 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2026 19:28:10 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[49: Fahrtbehinderung wegen Rettungseinsatz]]></title>
@@ -16,7 +16,7 @@
       <pubDate>Wed, 06 May 2026 18:44:00 +0200</pubDate>
       <ext:first_seen>Wed, 06 May 2026 19:12:49 +0200</ext:first_seen>
       <ext:starts_at>Wed, 06 May 2026 18:51:56 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Wed, 06 May 2026 19:51:00 +0200</ext:ends_at>
       <description>Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.05.2026]</description>
       <content:encoded><![CDATA[Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.05.2026]]]></content:encoded>
     </item>
@@ -30,17 +30,6 @@
       <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 06.05.2026]</description>
       <content:encoded><![CDATA[Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 06.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a</guid>
-      <pubDate>Wed, 06 May 2026 18:13:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 15:11:20 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 18:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hauptbahnhof]]></title>
@@ -113,6 +102,17 @@
       <ext:ends_at>Wed, 06 May 2026 23:59:59 +0200</ext:ends_at>
       <description>Gleisbauarbeiten Ersatzbus 41E hält gegenüber [04.05.2026 – 06.05.2026]</description>
       <content:encoded><![CDATA[Gleisbauarbeiten Ersatzbus 41E hält gegenüber<br/>[04.05.2026 – 06.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9/40/41/42: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8d766003c3ff0681ce82ed31d19c99624f047547c4c41bb3cf4def4b566e56d7</guid>
+      <pubDate>Mon, 04 May 2026 04:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 06 May 2026 06:58:26 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 04 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 27 Jun 2026 04:00:00 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten Wegen umfangreicher Gleisbauarbeiten im Bereich Aumannplatz kommt es zu Änderungen im Liniennetz. [04.05.2026 – 27.06.2026]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Wegen umfangreicher Gleisbauarbeiten im Bereich Aumannplatz kommt es zu Änderungen im Liniennetz.<br/>[04.05.2026 – 27.06.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
