@@ -254,10 +254,43 @@ def _strip_oebb_prefixes(text: str) -> str:
 # HTML-tolerant: a description usually contains entries like
 # "zwischen <b>Flughafen Wien Bahnhof</b> und <b>Wien Mitte-Landstraße Bahnhof</b>".
 # We strip HTML before matching so we only need a single plain-text pattern.
+#
+# The lookahead is the tricky part. Two real-world failure modes drove the
+# current shape:
+#
+# 1. A bare "." in the boundary class truncated abbreviated station names:
+#    "und St. Pölten ist …" was captured as endpoint "St". The fix accepts
+#    a period as a boundary only when it ends a sentence (end-of-string,
+#    closing tag, or followed by whitespace + a lowercase German word) —
+#    not when it sits inside an abbreviation like "St.".
+# 2. Several common follow-up words ("aufgrund", "wegen", em-dash, …) were
+#    not in the boundary list, so the regex over-extended into them
+#    ("Mödling aufgrund Sturm" became the second endpoint). The list below
+#    covers the recurring ÖBB phrasings.
 _ZWISCHEN_PLAIN_RE = re.compile(
     r"zwischen\s+(?P<a>.+?)\s+und\s+(?P<b>.+?)"
-    r"(?=\s+(?:von|bis|am|im|in\s+der|jeweils|nicht|der\s+Zug|halten|fahren|"
-    r"kommt|f[äa]hrt|fallen|k[öo]nnen|sowie|werden|ab|seit|um|gegen)\b|[,;.!?]|\s*$)",
+    r"(?="
+    r"\s+(?:"
+    # Time/date prepositions
+    r"von|bis|am|im|in\s+der|jeweils|ab|seit|um|gegen|nach|vor|"
+    # Causal/circumstantial
+    r"aufgrund|wegen|durch|f[üu]r|infolge|trotz|während|waehrend|"
+    # Verbs typical for the predicate that follows the route phrase
+    r"nicht|der\s+Zug|halten|fahren|kommt|f[äa]hrt|fallen|k[öo]nnen|"
+    r"werden|wird|kann|d[üu]rfen|sollen|soll|m[üu]ssen|"
+    # State / past-participle endings of the sentence
+    r"ist|sind|war|waren|gesperrt|geschlossen|blockiert|eingestellt|"
+    r"unterbrochen|gestört|gestoert|ausgefallen|verspätet|verspaetet|"
+    r"verz[öo]gert|aufgehoben|freigegeben|"
+    # Connectors that introduce a side clause
+    r"sowie|sondern|sowie\s+zwischen"
+    r")\b"
+    r"|[,;!?]"  # Plain sentence punctuation (period excluded — see above)
+    r"|[—–]"  # German em-/en-dash often introduces a side remark
+    r"|<"  # HTML tag start (defensive: we strip HTML, but stay safe)
+    r"|\.\s*$"  # Period only when it terminates the description
+    r"|\s*$"
+    r")",
     re.IGNORECASE | re.DOTALL,
 )
 
@@ -345,9 +378,13 @@ def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
 
     Pure category words like "Bauarbeiten ↔ Umleitung" are filtered out so
     they don't drag a real station-mention message into the strict-route path
-    incorrectly.
+    incorrectly. Likewise "fake routes" where both endpoints fail to resolve
+    against the station directory (e.g. "Aufzug zwischen Bahnsteig 1 und
+    Bahnsteig 5 in Wien Mitte defekt") are dropped — they describe internal
+    layout, not transit connections, and would otherwise mask the real
+    Wien-Mitte station mention from the fall-through filter.
     """
-    routes: List[Tuple[str, str]] = []
+    candidates: List[Tuple[str, str]] = []
     seen: set[Tuple[str, str]] = set()
 
     # 1. Parse title — split on ↔
@@ -367,7 +404,7 @@ def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
             if key in seen:
                 continue
             seen.add(key)
-            routes.append((a_norm, b_norm))
+            candidates.append((a_norm, b_norm))
 
     # 2. Parse description — "zwischen X und Y" patterns
     for raw_a, raw_b in _extract_zwischen_routes(description):
@@ -376,7 +413,17 @@ def _extract_routes(title: str, description: str) -> List[Tuple[str, str]]:
         if desc_key in seen:
             continue
         seen.add(desc_key)
-        routes.append((raw_a, raw_b))
+        candidates.append((raw_a, raw_b))
+
+    # 3. Drop candidates where both endpoints are unresolvable. These are
+    #    almost always false positives from regex over-extraction (platform
+    #    numbers, generic phrases) — keeping them would force the strict
+    #    route path to reject otherwise-relevant single-station messages.
+    routes: List[Tuple[str, str]] = []
+    for a, b in candidates:
+        if station_info(a) is None and station_info(b) is None:
+            continue
+        routes.append((a, b))
 
     return routes
 
@@ -517,15 +564,33 @@ def _find_stations_in_text(blob: str) -> List[str]:
     if not tokens:
         return []
 
+    # Drop tokens that can never be part of a station name. The arrow
+    # characters appear in route titles ("A ↔ B"), and including them in
+    # sliding-window chunks let canonical_name silently expand "Hbf ↔"
+    # into "Wien Hauptbahnhof" via the directory's alias-expansion rules.
+    _NOISE_TOKEN_RE = re.compile(r"^[↔→←↗↘↙↖<>=–—\-«»‹›]+$")
+    tokens = [t for t in tokens if not _NOISE_TOKEN_RE.match(t)]
+    if not tokens:
+        return []
+
     found = set()
     window = min(_MAX_STATION_WINDOW, len(tokens))
     for size in range(window, 0, -1):
         for idx in range(len(tokens) - size + 1):
-            chunk = " ".join(tokens[idx : idx + size])
-            # Skip generic single-token aliases ("Hbf", "Bahnhof", …) that
-            # would otherwise spuriously canonicalise to a flagship station.
-            if size == 1 and chunk.casefold().rstrip(".:,;") in _GENERIC_STATION_TOKENS:
-                continue
+            chunk_tokens = tokens[idx : idx + size]
+            chunk = " ".join(chunk_tokens)
+            chunk_alpha = re.sub(r"[^A-Za-zÄÖÜäöüß]", "", chunk)
+            if size == 1:
+                # Skip single-token chunks that are either generic
+                # aliases ("Hbf", "Bahnhof", …) or two-letter
+                # abbreviations like "SG"/"NÖ" — these falsely match
+                # flagship stations through the directory's alias
+                # expansions.
+                token_norm = chunk.casefold().rstrip(".:,;")
+                if token_norm in _GENERIC_STATION_TOKENS:
+                    continue
+                if len(chunk_alpha) < 3:
+                    continue
             canon = canonical_name(chunk)
             if canon:
                 found.add(canon)

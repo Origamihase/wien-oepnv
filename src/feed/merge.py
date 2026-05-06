@@ -3,9 +3,25 @@ import hashlib
 import re
 from typing import Any, Dict, List, Set, Tuple, Union
 
-# Regex adapted from build_feed.py
-_LINE_PREFIX_RE = re.compile(r"^\s*([A-Za-z0-9]+\s*(?:/\s*[A-Za-z0-9]+){0,20})\s*:\s*")
-_LINE_TOKEN_RE = re.compile(r"^(?:\d{1,3}[A-Z]?|[A-Z]{1,4}\d{0,3})$")
+# Line-prefix grammar tolerant of two real-world spellings:
+#
+#   "U6: …", "1/2: …", "13A/14A: …"   (WL-style — no internal whitespace)
+#   "REX 7: …", "S 50: …", "REX 7/REX 8: …"  (ÖBB-style — letters and digits
+#   separated by whitespace)
+#
+# Without the optional inner space the ÖBB tokens silently fell through, so a
+# disruption surfaced once via VOR ("REX7") and once via ÖBB ("REX 7") — two
+# items in the feed for the exact same incident. Internal whitespace inside a
+# token is normalised away in :func:`_parse_title` before the line set is
+# compared.
+_LINE_PREFIX_RE = re.compile(
+    r"^\s*("
+    r"[A-Za-z]+\s*\d{1,3}[A-Za-z]?"  # ÖBB style: REX 7, S 50, RJX 12
+    r"(?:\s*/\s*[A-Za-z]+\s*\d{1,3}[A-Za-z]?)*"
+    r"|[A-Za-z0-9]+(?:\s*/\s*[A-Za-z0-9]+){0,20}"  # WL style: 1/2, U6, 13A
+    r")\s*:\s*"
+)
+_LINE_TOKEN_RE = re.compile(r"^(?:\d{1,3}[A-Z]?|[A-Z]{1,4}\d{0,3}[A-Z]?)$")
 
 # Tokens that must not by themselves drive a fuzzy merge. The baseline list
 # covers generic disruption verbs ("Störung", "Ausfall", …) that show up in
@@ -150,6 +166,8 @@ def _parse_title(title: str) -> Tuple[Set[str], str]:
     """
     Parses a title into a set of lines and the event name.
     Example: "1/2: Event Name" -> ({"1", "2"}, "Event Name")
+    Whitespace inside a token is collapsed so "REX 7" matches "REX7" across
+    providers.
     """
     m = _LINE_PREFIX_RE.match(title or "")
     if not m:
@@ -160,7 +178,8 @@ def _parse_title(title: str) -> Tuple[Set[str], str]:
 
     lines = set()
     for raw in lines_str.split("/"):
-        token = raw.strip().upper()
+        # Drop inner whitespace so "REX 7" and "REX7" become the same token.
+        token = re.sub(r"\s+", "", raw).upper()
         if _LINE_TOKEN_RE.match(token):
             lines.add(token)
 
