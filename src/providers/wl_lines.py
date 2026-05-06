@@ -73,7 +73,26 @@ DATE_FULL_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\.(?:\d{2}|\d{4})\b")
 DATE_SHORT_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\b")
 TIME_RE = re.compile(r"\b\d{1,2}:\d{2}\b")
 ADDRESS_NO_RE = re.compile(
-    r"\b([A-Za-zÄÖÜäöüß\-]+(?:gasse|straße|strasse|platz|allee|weg|steig|ufer|brücke|kai|ring|gürtel|lände|damm|markt))\s+\d+\b",
+    # Two shapes covered:
+    #   1) Compound street names where the suffix is glued onto the prefix
+    #      ("Wienerstraße 12", "Pasettistraße 200"). Suffix list is the
+    #      common Wien street terminology.
+    #   2) Two-word forms with a space and an abbreviation
+    #      ("Währinger Str 200", "Mariahilfer Str. 12", "Dornbacher
+    #      Straße 85"). Without this branch the trailing number was
+    #      picked up as a transit-line code by ``LINE_CODE_RE`` and
+    #      surfaced in the cached title prefix as ``41E/200``.
+    r"\b("
+    r"[A-Za-zÄÖÜäöüß\-]+"
+    r"(?:gasse|straße|strasse|platz|allee|weg|steig|ufer|brücke|kai|ring|gürtel|lände|damm|markt)"
+    r"|"
+    r"[A-Za-zÄÖÜäöüß\-]+\s+(?:Straße|Strasse|Str\.?|Gasse|Platz|Allee|Weg|Steig|Ufer|Brücke|Kai|Ring|Gürtel|Lände|Damm|Markt)"
+    r")"
+    # Numeric tail: house number, optional range ("236-238"), and optional
+    # alpha suffix ("12a"). Without the range, "Breitenfurter Straße
+    # 236-238" leaves "-238" behind which then matches LINE_CODE_RE as
+    # a phantom line.
+    r"\s+\d+(?:\s*[-–—/]\s*\d+)?[A-Za-z]?\b",
     re.IGNORECASE,
 )
 ADDRESS_NO_PRE_RE = re.compile(

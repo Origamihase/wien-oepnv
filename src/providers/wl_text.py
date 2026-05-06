@@ -83,7 +83,15 @@ def _is_informative(rest: str) -> bool:
 
 
 def _tidy_title_wl(title: str) -> str:
-    """Entfernt generische Label am Anfang, wenn danach informativer Text steht."""
+    """Entfernt generische Label am Anfang, wenn danach informativer Text steht.
+
+    Real WL feed titles sometimes carry embedded newlines (``"Ersatzbus
+    41E\\nhält beim 10A"``) that survived the previous ``\\s{2,}``
+    collapse — a single newline matches ``\\s`` exactly once and so was
+    preserved verbatim. RSS/Atom titles are single-line by convention,
+    so we now collapse ANY whitespace run (including isolated newlines
+    or tabs) to a single space.
+    """
 
     t = (title or "").strip()
     if len(t) > 500:
@@ -95,7 +103,7 @@ def _tidy_title_wl(title: str) -> str:
         t = stripped
     t = re.sub(r"[<>«»‹›]+", "", t)  # spitze Klammern/Anführungen
     t = re.sub(r"\s+ab\s+\d{1,2}\.\d{1,2}\.(?:\d{4})?", "", t, flags=re.IGNORECASE)
-    return re.sub(r"\s{2,}", " ", t).strip(" -–—:/\t")
+    return re.sub(r"\s+", " ", t).strip(" -–—:/\t")
 
 
 # ---------------- Datum aus Titel extrahieren ----------------
