@@ -1323,8 +1323,22 @@ def _format_item_content(
     summary = summary.replace(" • ", " ").replace("•", " ")
     summary = _WHITESPACE_CLEANUP_RE.sub(" ", summary).strip()
 
-    # Extrahiere maximal die ersten zwei Sätze
-    sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+', summary) if s.strip()]
+    # Extrahiere maximal die ersten zwei Sätze.
+    # Boundary regex: a real sentence end is a period after a letter (not a
+    # digit — German dates use ``17. Februar``) followed by whitespace and
+    # an uppercase German letter. This avoids two false splits seen in the
+    # live cache:
+    #   * ``bzw. vorverlegten`` (abbreviation; lowercase follower → keep)
+    #   * ``17. Februar 2026`` (date; digit before period → keep)
+    # while still cutting at genuine sentence boundaries like
+    # ``Richtungen. Grund: …`` and ``Karlsplatz U. Grund: …``.
+    sentences = [
+        s.strip()
+        for s in re.split(
+            r'(?<=[A-Za-zÄÖÜäöüß][.!?])\s+(?=[A-ZÄÖÜ])', summary
+        )
+        if s.strip()
+    ]
     if sentences:
         short_summary = sentences[0]
         # Append the second sentence whenever the combined length still
