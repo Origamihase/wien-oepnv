@@ -40,8 +40,6 @@ from ..utils.env import read_secret
 from ..utils.files import atomic_write
 from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
 from ..utils.ids import make_guid
-
-__all__ = ["os"]
 from ..utils.locking import file_lock
 from ..utils.logging import sanitize_log_arg, sanitize_log_message
 from ..utils.stations import vor_station_ids, station_info, text_has_vienna_connection

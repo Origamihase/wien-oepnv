@@ -127,7 +127,10 @@ def test_save_request_count_flushes_and_fsyncs(
         return original_fsync(fd)
 
     monkeypatch.setattr("builtins.open", tracking_open)
-    monkeypatch.setattr(vor.os, "fsync", tracking_fsync)
+    # ``vor.os`` is the same singleton as the local ``os``; patch the
+    # canonical reference so mypy --strict (no implicit reexport) is
+    # happy without re-exporting the module from ``providers/vor.py``.
+    monkeypatch.setattr(os, "fsync", tracking_fsync)
 
     vor.save_request_count(datetime(2023, 1, 2, tzinfo=ZoneInfo("Europe/Vienna")))
 
@@ -194,7 +197,7 @@ def test_save_request_count_returns_previous_on_replace_failure(
     def failing_replace(src: Any, dst: Any) -> None:
         raise OSError("replace failed")
 
-    monkeypatch.setattr(vor.os, "replace", failing_replace)
+    monkeypatch.setattr(os, "replace", failing_replace)
 
     result = vor.save_request_count()
 

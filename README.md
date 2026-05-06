@@ -306,7 +306,7 @@ verhindert Drift.
 | ---- | ------- | ------------ |
 | `name` | ✓ | Kanonischer Anzeige-Name (eindeutig, wird im Feed verwendet). |
 | `in_vienna` | ✓ | `true` wenn die Koordinaten innerhalb des LANDESGRENZEOGD-Polygons liegen. |
-| `pendler` | ✓ | `true` für Pendler-Knoten **außerhalb** Wiens (siehe `data/pendler_bst_ids.json`). **Exklusiv zu `in_vienna`**: jede Station ist entweder Wien-Station ODER Pendler, niemals beides. Einzige Ausnahme: `type: manual_foreign_city` (München, Roma) — beide Flags `false`. Verstöße werden vom Validator als NamingIssue gemeldet und vom Updater automatisch korrigiert (in_vienna gewinnt). |
+| `pendler` | ✓ | `true` für Pendler-Knoten **außerhalb** Wiens (siehe `data/pendler_bst_ids.json`). **Exklusiv zu `in_vienna`**: jede Station ist entweder Wien-Station ODER Pendler, niemals beides. Ausnahmen sind manuell gepflegte Knoten außerhalb des Pendlergürtels: `type: manual_foreign_city` (z. B. München Hauptbahnhof, Roma Termini, Bratislava hl.st.) und `type: manual_distant_at` (z. B. Salzburg Hbf, Graz Hbf, Linz Hbf, Innsbruck Hbf) — bei beiden Sondertypen sind beide Flags `false`. Verstöße werden vom Validator als NamingIssue gemeldet und vom Updater automatisch korrigiert (in_vienna gewinnt). |
 | `aliases` | ✓ | Schreibvarianten und IDs zur Erkennung in Provider-Texten. |
 | `latitude` / `longitude` | ✓ | WGS84-Koordinaten (validiert gegen das Wien-Polygon für `in_vienna`-Einträge). |
 | `source` | ✓ | Komma-getrennte Provider-Tokens (kein Whitespace) aus `oebb,vor,wl,google_places,manual`. |
@@ -314,7 +314,7 @@ verhindert Drift.
 | `vor_id` | ÖBB/VOR | VOR/VAO-Stop-ID (numerisch oder volles HAFAS-Token); entspricht typischerweise GTFS-`stop_id`. |
 | `wl_diva` | WL | Wiener-Linien-DIVA aus `wienerlinien-ogd-haltestellen.csv`. |
 | `wl_stops` | WL | Einzelhaltepunkte (Bahnsteige/Richtungen) inkl. eigener `stop_id`. |
-| `type` | – | `manual_foreign_city` für die Auslandsknoten München Hauptbahnhof und Roma Termini. |
+| `type` | – | Sondertyp für manuell gepflegte Knoten außerhalb des Pendlergürtels: `manual_foreign_city` für Auslandsknoten (München, Roma, Bratislava) und `manual_distant_at` für distante österreichische Hauptbahnhöfe (Salzburg, Graz, Linz, Innsbruck etc.). Bei beiden ist die Coordinate-Bounds-Prüfung tolerant. |
 
 Lookups laufen über `src/utils/stations.py:station_info(name)` mit
 diakritik-tolerantem Token-Normalizer (Umlaut-Faltung erst ab Token-Länge 4,
@@ -357,8 +357,9 @@ Die GitHub Action `.github/workflows/update-stations.yml` aktualisiert
    bytewise unverändert): `provider_issues`, `cross_station_id_issues`,
    `naming_issues` (Mutual-Exclusivity, Source-Format, Namens-
    Eindeutigkeit) und `security_issues`. Andere Kategorien
-   (`alias_issues`, `coordinate_issues` mit `manual_foreign_city`-
-   Exemption) sind tolerant.
+   (`alias_issues`, `coordinate_issues` mit Exemption für die
+   Sondertypen `manual_foreign_city` und `manual_distant_at`) sind
+   tolerant.
 4. **Beobachtbarkeit** – nach erfolgreichem Atomic-Write schreibt der
    Wrapper zwei Artefakte:
    - `data/stations_last_run.json` – Heartbeat mit Timestamp,
