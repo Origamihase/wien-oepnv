@@ -24,6 +24,7 @@ import time
 from datetime import datetime, UTC
 from email.utils import parsedate_to_datetime
 from itertools import pairwise
+from urllib.parse import urlparse
 
 import requests
 
@@ -50,11 +51,37 @@ from defusedxml import ElementTree as ET # XXE Mitigation applied
 
 log = logging.getLogger(__name__)
 
-_OEBB_URL_ENV = os.getenv("OEBB_RSS_URL", "").strip()
-OEBB_URL = (
-    validate_http_url(_OEBB_URL_ENV)
-    or "https://fahrplan.oebb.at/bin/help.exe/dnl?protocol=https:&tpl=rss_WI_oebb&"
+_OEBB_DEFAULT_URL = (
+    "https://fahrplan.oebb.at/bin/help.exe/dnl?protocol=https:&tpl=rss_WI_oebb&"
 )
+
+# Security: only accept env overrides that point at the official ÖBB Fahrplan
+# host. ``OEBB_URL`` ends up as the per-item ``<link>`` fallback (and the XML
+# fetched from it can set per-item links directly), so an env override to an
+# attacker host weaponises the public RSS feed as a phishing redirector and
+# lets the attacker inject arbitrary feed content. ``validate_http_url()``
+# only checks SSRF/DNS-rebinding properties, not host identity.
+_OEBB_TRUSTED_HOSTS = frozenset({"fahrplan.oebb.at"})
+
+
+def _validated_oebb_url(raw: str) -> str | None:
+    safe = validate_http_url(raw)
+    if not safe:
+        return None
+    host = (urlparse(safe).hostname or "").lower()
+    if host not in _OEBB_TRUSTED_HOSTS:
+        return None
+    return safe
+
+
+_OEBB_URL_ENV = os.getenv("OEBB_RSS_URL", "").strip()
+_OEBB_URL_OVERRIDE = _validated_oebb_url(_OEBB_URL_ENV) if _OEBB_URL_ENV else None
+if _OEBB_URL_ENV and _OEBB_URL_OVERRIDE is None:
+    log.warning(
+        "OEBB_RSS_URL %r ist kein bekannter ÖBB-Fahrplan-Host; verwende Standard.",
+        _OEBB_URL_ENV,
+    )
+OEBB_URL = _OEBB_URL_OVERRIDE or _OEBB_DEFAULT_URL
 
 # Optional strenger Filter: Nur Meldungen mit Endpunkten in Wien behalten.
 # Aktiviert durch Umgebungsvariable ``OEBB_ONLY_VIENNA`` ("1"/"true" vs "0"/"false", case-insens).
