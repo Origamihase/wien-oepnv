@@ -200,3 +200,75 @@ def test_resolve_data_url_rejects_untrusted_host(
         "kein bekannter Stadt-Wien-OGD-Host" in record.getMessage()
         for record in caplog.records
     )
+
+
+# ---------------------------------------------------------------------------
+# Zero-Trust shape validation for the fallback file
+# ---------------------------------------------------------------------------
+# ``_load_fallback`` previously returned ``cast(dict[str, Any], json.loads(raw))``
+# without a runtime ``isinstance`` guard. ``cast`` lies to the type checker, so
+# a fallback file containing a JSON list / scalar / null would slip through and
+# crash the very next step in ``_iter_features`` — exactly on the failure path
+# (network down) where the fallback is supposed to keep the cache up. The
+# tests below pin the shape check that closes that gap.
+
+
+@pytest.mark.parametrize(
+    ("body", "kind"),
+    [
+        ("[]", "list"),
+        ("null", "NoneType"),
+        ("42", "int"),
+        ('"a string"', "str"),
+    ],
+)
+def test_load_fallback_rejects_non_object_shapes(
+    tmp_path: Path,
+    caplog: pytest.LogCaptureFixture,
+    body: str,
+    kind: str,
+) -> None:
+    """A non-object fallback body must return None and log the actual shape."""
+    import logging
+
+    fallback = tmp_path / "fallback.json"
+    fallback.write_text(body, encoding="utf-8")
+
+    caplog.set_level(logging.ERROR, logger="update_baustellen_cache")
+    result = update_baustellen_cache._load_fallback(fallback)
+
+    assert result is None
+    assert any(
+        "kein JSON-Objekt" in record.getMessage() and kind in record.getMessage()
+        for record in caplog.records
+    ), [r.getMessage() for r in caplog.records]
+
+
+def test_load_fallback_accepts_valid_object(tmp_path: Path) -> None:
+    """A well-formed object fallback must still load (no regression)."""
+    fallback = tmp_path / "fallback.json"
+    fallback.write_text(
+        '{"type": "FeatureCollection", "features": []}', encoding="utf-8"
+    )
+
+    result = update_baustellen_cache._load_fallback(fallback)
+
+    assert result == {"type": "FeatureCollection", "features": []}
+
+
+def test_load_fallback_rejects_invalid_json(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    """An undecodable fallback body must return None (existing behaviour)."""
+    import logging
+
+    fallback = tmp_path / "fallback.json"
+    fallback.write_text("not json {{{", encoding="utf-8")
+
+    caplog.set_level(logging.ERROR, logger="update_baustellen_cache")
+    result = update_baustellen_cache._load_fallback(fallback)
+
+    assert result is None
+    assert any(
+        "ungültiges JSON" in record.getMessage() for record in caplog.records
+    )
