@@ -147,7 +147,9 @@ def _stop_names_from_related(rel_stops: List[Any]) -> List[str]:
 # ---------------- Kontext für Titel ----------------
 
 def _normalize_whitespace(value: str) -> str:
-    return re.sub(r"\s{2,}", " ", value or "").strip()
+    # Collapse any whitespace run (incl. isolated newlines and tabs) to a
+    # single space so titles and labels stay single-line for RSS/Atom.
+    return re.sub(r"\s+", " ", value or "").strip()
 
 
 def _split_extra(extra: str) -> Optional[Tuple[str, str]]:
