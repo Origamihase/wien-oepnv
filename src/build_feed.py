@@ -1364,6 +1364,33 @@ def _format_item_content(
             )
             if leading:
                 summary = summary[leading.end():].strip()
+        elif (
+            first_summary_word
+            and first_summary_word.casefold() in _CATEGORY_PREFIX_WORDS
+            and first_title_word
+            and first_title_word.casefold() != first_summary_word.casefold()
+        ):
+            # Second pattern: description starts with a category word
+            # (``Bauarbeiten`` / ``Gleisbauarbeiten``) but the title body
+            # does NOT start with the same category — instead the title
+            # body's first word matches the SECOND word of the
+            # description::
+            #
+            #   T: "62A: Busse halten Breitenfurter Straße 236-238"
+            #   D: "Bauarbeiten Busse halten Breitenfurter Straße 236-238"
+            #
+            # The description prepends a category H2 in front of what's
+            # otherwise identical to the title body. Strip the leading
+            # category word in that case as well.
+            words = summary.split(maxsplit=2)
+            if len(words) >= 2 and words[1].casefold() == first_title_word.casefold():
+                leading = re.match(
+                    rf"^{re.escape(first_summary_word)}\s*[:.,;–—-]?\s+",
+                    summary,
+                    re.IGNORECASE,
+                )
+                if leading:
+                    summary = summary[leading.end():].strip()
 
     # Extrahiere maximal die ersten zwei Sätze.
     # Boundary regex: a real sentence end is a period after a letter (not a
