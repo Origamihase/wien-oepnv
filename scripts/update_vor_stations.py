@@ -608,6 +608,23 @@ def fetch_vor_stops_from_api(
                     stops.append(stop)
                 continue
 
+            # Zero Trust: a 200 status from the VOR API does not guarantee the
+            # body is a JSON object. A list / null / scalar would slip past
+            # ``payload.get("StopLocation")`` below and raise AttributeError,
+            # propagating out of the per-station loop and taking every
+            # subsequent station's update down with it. Treat shape failures
+            # the same way we treat decode failures: log, fall back, continue.
+            if not isinstance(payload, Mapping):
+                log.warning(
+                    "VOR API returned non-object JSON (%s) for station %s",
+                    type(payload).__name__,
+                    station_id,
+                )
+                stop = fallback_map.get(station_id)
+                if stop:
+                    stops.append(stop)
+                continue
+
             raw_stops = payload.get("StopLocation")
             if isinstance(raw_stops, Mapping):
                 candidates = [raw_stops]

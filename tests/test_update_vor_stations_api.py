@@ -120,6 +120,91 @@ def test_fetch_vor_stops_from_api_uses_fallback(monkeypatch: pytest.MonkeyPatch)
     assert module.vor_provider.refresh_access_credentials() == "token"
 
 
+@dataclass
+class _FakeAnyResponse:
+    """Like _FakeResponse but lets us return non-dict payloads from .json()."""
+
+    status_code: int
+    payload: Any
+
+    def json(self) -> Any:
+        return self.payload
+
+
+class _FakeAnySession:
+    def __init__(self, payloads: dict[str, tuple[int, Any]]) -> None:
+        self.payloads = payloads
+        self.headers: dict[str, str] = {}
+        self.calls: list[tuple[str, dict[str, str]]] = []
+
+    def get(
+        self,
+        url: str,
+        *,
+        params: dict[str, str],
+        timeout: object,
+        headers: dict[str, str],
+    ) -> _FakeAnyResponse:
+        station_id = params["input"]
+        self.calls.append((url, params))
+        status, payload = self.payloads[station_id]
+        return _FakeAnyResponse(status_code=status, payload=payload)
+
+    def __enter__(self) -> _FakeAnySession:  # pragma: no cover - context helper
+        return self
+
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc: BaseException | None,
+        tb: TracebackType | None,
+    ) -> None:  # pragma: no cover - context helper
+        return None
+
+
+@pytest.mark.parametrize(
+    "non_object_payload",
+    [
+        # A successfully-decoded but non-dict body (list / null / scalar) used
+        # to crash ``payload.get("StopLocation")`` with AttributeError, taking
+        # the entire per-station loop down with it. The Zero-Trust shape guard
+        # makes this fall back through the same path as a HTTP error or a
+        # decode failure.
+        [],
+        None,
+        42,
+        "Service Unavailable",
+    ],
+)
+def test_fetch_vor_stops_from_api_falls_back_on_non_object_payload(
+    monkeypatch: pytest.MonkeyPatch, non_object_payload: Any
+) -> None:
+    payloads: dict[str, tuple[int, Any]] = {
+        "490091000": (200, non_object_payload),
+    }
+    fake_session = _FakeAnySession(payloads)
+
+    monkeypatch.setattr(module, "session_with_retries", lambda *args, **kwargs: fake_session)
+    monkeypatch.setattr(module.vor_provider, "refresh_access_credentials", lambda: "token")
+    monkeypatch.setattr(module.vor_provider, "VOR_ACCESS_ID", "token", raising=False)
+
+    fallback = {
+        "490091000": module.VORStop(
+            vor_id="490091000",
+            name="Fallback Stop",
+            latitude=None,
+            longitude=None,
+        )
+    }
+
+    stops = module.fetch_vor_stops_from_api(["490091000"], fallback=fallback)
+
+    # The fallback must be used because the malformed payload is treated
+    # like a decode failure, not propagated as AttributeError.
+    assert [stop.vor_id for stop in stops] == ["490091000"]
+    assert [stop.name for stop in stops] == ["Fallback Stop"]
+
+
 def test_canonical_vor_name_strips_suffixes(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(module.vor_provider, "STATION_NAME_MAP", {}, raising=False)
 
