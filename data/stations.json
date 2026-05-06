@@ -788,7 +788,7 @@
       ],
       "latitude": 48.194766,
       "longitude": 16.386274,
-      "source": "oebb,google_places",
+      "source": "google_places,oebb",
       "wl_diva": "60201091",
       "wl_stops": [
         {
@@ -5784,7 +5784,7 @@
       "longitude": 16.376413,
       "name": "Wien Hauptbahnhof",
       "pendler": false,
-      "source": "vor,google_places",
+      "source": "google_places,vor",
       "vor_id": "490134900",
       "wl_diva": "60201349",
       "wl_stops": [

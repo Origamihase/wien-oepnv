@@ -504,15 +504,18 @@ def _normalize_sources(value: object | None) -> list[str]:
 
 
 def _merge_sources(*values: object | None) -> str:
-    merged: list[str] = []
-    seen: set[str] = set()
+    """Merge multiple source-token lists into a single comma-separated string.
+
+    Output is alphabetically sorted so that two callers that emit the same
+    set of providers in different orders produce identical strings —
+    e.g. "google_places,oebb" instead of "oebb,google_places". The sort
+    matches the convention already used by ``src/places/merge.py:182``.
+    """
+    merged: set[str] = set()
     for value in values:
         for item in _normalize_sources(value):
-            if item in seen:
-                continue
-            seen.add(item)
-            merged.append(item)
-    return ",".join(merged)
+            merged.add(item)
+    return ",".join(sorted(merged))
 
 
 def _ensure_sorted_aliases(entry: dict[str, object]) -> None:
