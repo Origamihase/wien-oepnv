@@ -870,7 +870,16 @@
       "longitude": 16.36638,
       "name": "Herrengasse",
       "pendler": false,
-      "source": "google_places"
+      "source": "google_places",
+      "wl_diva": "60200506",
+      "wl_stops": [
+        {
+          "stop_id": "60200506",
+          "name": "Herrengasse",
+          "latitude": 48.209487,
+          "longitude": 16.365849
+        }
+      ]
     },
     {
       "aliases": [
@@ -888,7 +897,9 @@
       "in_vienna": false,
       "name": "Himberg",
       "pendler": true,
-      "source": "oebb"
+      "source": "oebb",
+      "latitude": 48.0828,
+      "longitude": 16.4392
     },
     {
       "aliases": [
@@ -978,7 +989,16 @@
       "longitude": 16.358950999999998,
       "name": "Kettenbrückengasse",
       "pendler": false,
-      "source": "google_places"
+      "source": "google_places",
+      "wl_diva": "60200670",
+      "wl_stops": [
+        {
+          "stop_id": "60200670",
+          "name": "Kettenbrückengasse",
+          "latitude": 48.1968178,
+          "longitude": 16.358995
+        }
+      ]
     },
     {
       "aliases": [
@@ -1263,7 +1283,9 @@
       "in_vienna": false,
       "name": "Laxenburg-Biedermannsdorf",
       "pendler": true,
-      "source": "oebb"
+      "source": "oebb",
+      "latitude": 47.9893,
+      "longitude": 16.364
     },
     {
       "aliases": [
@@ -1431,7 +1453,16 @@
       "longitude": 16.4037766,
       "name": "Messe - Prater",
       "pendler": false,
-      "source": "google_places"
+      "source": "google_places",
+      "wl_diva": "60201892",
+      "wl_stops": [
+        {
+          "stop_id": "60201892",
+          "name": "Messe-Prater",
+          "latitude": 48.217789,
+          "longitude": 16.405698
+        }
+      ]
     },
     {
       "aliases": [
@@ -1475,7 +1506,9 @@
       "in_vienna": false,
       "name": "Mistelbach Stadt",
       "pendler": true,
-      "source": "oebb"
+      "source": "oebb",
+      "latitude": 48.5754,
+      "longitude": 16.5821
     },
     {
       "aliases": [
@@ -1653,7 +1686,16 @@
       "longitude": 16.3520877,
       "name": "Neubaugasse",
       "pendler": false,
-      "source": "google_places"
+      "source": "google_places",
+      "wl_diva": "60200056",
+      "wl_stops": [
+        {
+          "stop_id": "60200056",
+          "name": "Neubaugasse",
+          "latitude": 48.1982908,
+          "longitude": 16.3502005
+        }
+      ]
     },
     {
       "aliases": [
@@ -1953,7 +1995,16 @@
       "longitude": 16.354467,
       "name": "Pilgramgasse",
       "pendler": false,
-      "source": "google_places"
+      "source": "google_places",
+      "wl_diva": "60201018",
+      "wl_stops": [
+        {
+          "stop_id": "60201018",
+          "name": "Pilgramgasse",
+          "latitude": 48.1926261,
+          "longitude": 16.3544765
+        }
+      ]
     },
     {
       "aliases": [
@@ -2182,7 +2233,16 @@
       "longitude": 16.3861494,
       "name": "Rennweg",
       "pendler": false,
-      "source": "google_places"
+      "source": "google_places",
+      "wl_diva": "60201091",
+      "wl_stops": [
+        {
+          "stop_id": "60201091",
+          "name": "Rennweg",
+          "latitude": 48.194764,
+          "longitude": 16.386277
+        }
+      ]
     },
     {
       "aliases": [
@@ -2291,7 +2351,16 @@
       "longitude": 16.37128,
       "name": "Schottenring",
       "pendler": false,
-      "source": "google_places"
+      "source": "google_places",
+      "wl_diva": "60201182",
+      "wl_stops": [
+        {
+          "stop_id": "60201182",
+          "name": "Schottenring",
+          "latitude": 48.216921,
+          "longitude": 16.371131
+        }
+      ]
     },
     {
       "aliases": [
@@ -2348,7 +2417,16 @@
       "longitude": 16.3780646,
       "name": "Schwedenplatz",
       "pendler": false,
-      "source": "google_places"
+      "source": "google_places",
+      "wl_diva": "60201198",
+      "wl_stops": [
+        {
+          "stop_id": "60201198",
+          "name": "Schwedenplatz",
+          "latitude": 48.21175,
+          "longitude": 16.377896
+        }
+      ]
     },
     {
       "aliases": [
@@ -2686,7 +2764,16 @@
       "longitude": 16.3790822,
       "name": "Stadtpark",
       "pendler": false,
-      "source": "google_places"
+      "source": "google_places",
+      "wl_diva": "60201305",
+      "wl_stops": [
+        {
+          "stop_id": "60201305",
+          "name": "Stadtpark",
+          "latitude": 48.202512,
+          "longitude": 16.3791083
+        }
+      ]
     },
     {
       "aliases": [
@@ -2755,7 +2842,16 @@
       "longitude": 16.3796274,
       "name": "Stubentor",
       "pendler": false,
-      "source": "google_places"
+      "source": "google_places",
+      "wl_diva": "60200245",
+      "wl_stops": [
+        {
+          "stop_id": "60200245",
+          "name": "Stubentor",
+          "latitude": 48.2070681,
+          "longitude": 16.3802761
+        }
+      ]
     },
     {
       "_google_place_id": "ChIJZ1D-htapbUcROoi_2Jg_fcg",
@@ -3087,7 +3183,16 @@
       "longitude": 16.3575922,
       "name": "Volkstheater",
       "pendler": false,
-      "source": "google_places"
+      "source": "google_places",
+      "wl_diva": "60201430",
+      "wl_stops": [
+        {
+          "stop_id": "60201430",
+          "name": "Volkstheater",
+          "latitude": 48.20514,
+          "longitude": 16.357971
+        }
+      ]
     },
     {
       "aliases": [
@@ -3125,7 +3230,9 @@
       "in_vienna": false,
       "name": "Weigelsdorf",
       "pendler": true,
-      "source": "oebb"
+      "source": "oebb",
+      "latitude": 47.9484,
+      "longitude": 16.4082
     },
     {
       "aliases": [
