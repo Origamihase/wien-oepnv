@@ -772,14 +772,30 @@
       "aliases": [
         "490109100",
         "Wien Rennweg",
+        "Bahnhof Rennweg",
+        "Bf Rennweg",
+        "bf Rennweg",
         "Ren",
+        "Rennweg",
+        "Rennweg Bahnhof",
+        "Rennweg Bf",
+        "Rennweg bf",
         "Wien Rennweg Bahnhof",
         "Wien Rennweg Bf",
         "Wien Rennweg bf"
       ],
       "latitude": 48.194766,
       "longitude": 16.386274,
-      "source": "oebb"
+      "source": "oebb",
+      "wl_diva": "60201091",
+      "wl_stops": [
+        {
+          "stop_id": "60201091",
+          "name": "Rennweg",
+          "latitude": 48.194764,
+          "longitude": 16.386277
+        }
+      ]
     },
     {
       "bst_id": "1370",
@@ -2548,7 +2564,16 @@
       ],
       "latitude": 48.226647,
       "longitude": 16.360997299999998,
-      "source": "google_places,oebb"
+      "source": "google_places,oebb",
+      "wl_diva": "60200345",
+      "wl_stops": [
+        {
+          "stop_id": "60200345",
+          "name": "Franz-Josefs-Bahnhof",
+          "latitude": 48.225989,
+          "longitude": 16.361151
+        }
+      ]
     },
     {
       "bst_id": "2446",
@@ -2574,7 +2599,16 @@
       ],
       "latitude": 48.235604,
       "longitude": 16.358201,
-      "source": "oebb"
+      "source": "oebb",
+      "wl_diva": "60201062",
+      "wl_stops": [
+        {
+          "stop_id": "60201062",
+          "name": "Spittelau",
+          "latitude": 48.2356109,
+          "longitude": 16.3583662
+        }
+      ]
     },
     {
       "bst_id": "2447",
@@ -2776,7 +2810,16 @@
       ],
       "latitude": 48.196654,
       "longitude": 16.337652,
-      "source": "oebb"
+      "source": "oebb",
+      "wl_diva": "60201468",
+      "wl_stops": [
+        {
+          "stop_id": "60201468",
+          "name": "Westbahnhof",
+          "latitude": 48.196656,
+          "longitude": 16.337651
+        }
+      ]
     },
     {
       "bst_id": "252",
@@ -4738,40 +4781,6 @@
       ]
     },
     {
-      "_google_place_id": "ChIJGZJ3hXsHbUcRoSEOdidtTe8",
-      "_types": [
-        "train_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "aliases": [
-        "Rennweg",
-        "Bahnhof Rennweg",
-        "Bf Rennweg",
-        "bf Rennweg",
-        "Rennweg Bahnhof",
-        "Rennweg Bf",
-        "Rennweg bf"
-      ],
-      "in_vienna": true,
-      "latitude": 48.195590700000004,
-      "longitude": 16.3861494,
-      "name": "Rennweg",
-      "pendler": false,
-      "source": "google_places",
-      "wl_diva": "60201091",
-      "wl_stops": [
-        {
-          "stop_id": "60201091",
-          "name": "Rennweg",
-          "latitude": 48.194764,
-          "longitude": 16.386277
-        }
-      ]
-    },
-    {
       "aliases": [
         "Roma Termini",
         "Bahnhof Roma Termini",
@@ -4939,67 +4948,6 @@
       ]
     },
     {
-      "_google_place_id": "ChIJZ1D-htapbUcROoi_2Jg_fcg",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "aliases": [
-        "Südtiroler Platz",
-        "Bahnhof Suedtiroler Pl.",
-        "Bahnhof Suedtiroler pl.",
-        "Bahnhof Suedtiroler Platz",
-        "Bahnhof Südtiroler Pl.",
-        "Bahnhof Südtiroler pl.",
-        "Bahnhof Südtiroler Platz",
-        "Bf Suedtiroler Pl.",
-        "Bf Suedtiroler pl.",
-        "bf Suedtiroler Pl.",
-        "bf Suedtiroler pl.",
-        "Bf Suedtiroler Platz",
-        "bf Suedtiroler Platz",
-        "Bf Südtiroler Pl.",
-        "Bf Südtiroler pl.",
-        "bf Südtiroler Pl.",
-        "bf Südtiroler pl.",
-        "Bf Südtiroler Platz",
-        "bf Südtiroler Platz",
-        "Suedtiroler Pl.",
-        "Suedtiroler pl.",
-        "Suedtiroler Pl. Bahnhof",
-        "Suedtiroler pl. Bahnhof",
-        "Suedtiroler Pl. Bf",
-        "Suedtiroler Pl. bf",
-        "Suedtiroler pl. Bf",
-        "Suedtiroler pl. bf",
-        "Suedtiroler Platz",
-        "Suedtiroler Platz Bahnhof",
-        "Suedtiroler Platz Bf",
-        "Suedtiroler Platz bf",
-        "Südtiroler Pl.",
-        "Südtiroler pl.",
-        "Südtiroler Pl. Bahnhof",
-        "Südtiroler pl. Bahnhof",
-        "Südtiroler Pl. Bf",
-        "Südtiroler Pl. bf",
-        "Südtiroler pl. Bf",
-        "Südtiroler pl. bf",
-        "Südtiroler Platz Bahnhof",
-        "Südtiroler Platz Bf",
-        "Südtiroler Platz bf",
-        "Wien Südtiroler Platz"
-      ],
-      "in_vienna": true,
-      "latitude": 48.186496999999996,
-      "longitude": 16.373117,
-      "name": "Südtiroler Platz",
-      "pendler": false,
-      "source": "google_places"
-    },
-    {
       "aliases": [
         "430501300",
         "Trautmannsdorf an der Leitha",
@@ -5070,6 +5018,12 @@
         "Bahnhof Hauptbf (VOR)",
         "Bahnhof Hbahnhof",
         "Bahnhof Hbahnhof (VOR)",
+        "Bahnhof Suedtiroler Pl.",
+        "Bahnhof Suedtiroler pl.",
+        "Bahnhof Suedtiroler Platz",
+        "Bahnhof Südtiroler Pl.",
+        "Bahnhof Südtiroler pl.",
+        "Bahnhof Südtiroler Platz",
         "Bf Hauptbf",
         "bf Hauptbf",
         "Bf Hauptbf (VOR)",
@@ -5078,6 +5032,18 @@
         "bf Hbahnhof",
         "Bf Hbahnhof (VOR)",
         "bf Hbahnhof (VOR)",
+        "Bf Suedtiroler Pl.",
+        "Bf Suedtiroler pl.",
+        "bf Suedtiroler Pl.",
+        "bf Suedtiroler pl.",
+        "Bf Suedtiroler Platz",
+        "bf Suedtiroler Platz",
+        "Bf Südtiroler Pl.",
+        "Bf Südtiroler pl.",
+        "bf Südtiroler Pl.",
+        "bf Südtiroler pl.",
+        "Bf Südtiroler Platz",
+        "bf Südtiroler Platz",
         "Hauptbf",
         "Hauptbf (VOR)",
         "Hauptbf (VOR) Bahnhof",
@@ -5094,6 +5060,30 @@
         "Hbahnhof Bahnhof",
         "Hbahnhof Bf",
         "Hbahnhof bf",
+        "Suedtiroler Pl.",
+        "Suedtiroler pl.",
+        "Suedtiroler Pl. Bahnhof",
+        "Suedtiroler pl. Bahnhof",
+        "Suedtiroler Pl. Bf",
+        "Suedtiroler Pl. bf",
+        "Suedtiroler pl. Bf",
+        "Suedtiroler pl. bf",
+        "Suedtiroler Platz",
+        "Suedtiroler Platz Bahnhof",
+        "Suedtiroler Platz Bf",
+        "Suedtiroler Platz bf",
+        "Südtiroler Pl.",
+        "Südtiroler pl.",
+        "Südtiroler Pl. Bahnhof",
+        "Südtiroler pl. Bahnhof",
+        "Südtiroler Pl. Bf",
+        "Südtiroler Pl. bf",
+        "Südtiroler pl. Bf",
+        "Südtiroler pl. bf",
+        "Südtiroler Platz",
+        "Südtiroler Platz Bahnhof",
+        "Südtiroler Platz Bf",
+        "Südtiroler Platz bf",
         "Wien Hauptbahnhof (VOR)",
         "Wien Hauptbahnhof (VOR) Bahnhof",
         "Wien Hauptbahnhof (VOR) Bf",
@@ -5124,7 +5114,8 @@
         "Wien Hbf (VOR) bf",
         "Wien Hbf Bahnhof",
         "Wien Hbf Bf",
-        "Wien Hbf bf"
+        "Wien Hbf bf",
+        "Wien Südtiroler Platz"
       ],
       "bst_code": "900100",
       "bst_id": "900100",
@@ -5134,7 +5125,16 @@
       "name": "Wien Hauptbahnhof",
       "pendler": false,
       "source": "vor",
-      "vor_id": "490134900"
+      "vor_id": "490134900",
+      "wl_diva": "60201349",
+      "wl_stops": [
+        {
+          "stop_id": "60201349",
+          "name": "Hauptbahnhof",
+          "latitude": 48.185188,
+          "longitude": 16.376413
+        }
+      ]
     },
     {
       "aliases": [
@@ -5454,7 +5454,16 @@
       "name": "Wien Mitte-Landstraße",
       "pendler": false,
       "source": "google_places,vor",
-      "vor_id": "490074300"
+      "vor_id": "490074300",
+      "wl_diva": "60200743",
+      "wl_stops": [
+        {
+          "stop_id": "60200743",
+          "name": "Wien Mitte-Landstraße",
+          "latitude": 48.206044,
+          "longitude": 16.384588
+        }
+      ]
     },
     {
       "_google_place_id": "ChIJtXUcR7wHbUcR4C9kP_yXVMY",
