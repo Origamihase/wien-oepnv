@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 06 May 2026 20:16:17 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2026 20:39:10 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[10A: Rettungseinsatz]]></title>
@@ -58,8 +58,8 @@
       <ext:first_seen>Wed, 06 May 2026 09:38:38 +0200</ext:first_seen>
       <ext:starts_at>Wed, 06 May 2026 04:45:05 +0200</ext:starts_at>
       <ext:ends_at>Thu, 07 May 2026 00:35:00 +0200</ext:ends_at>
-      <description>Busse halten Breitenfurter Straße 236-238 [06.05.2026 – 07.05.2026]</description>
-      <content:encoded><![CDATA[Busse halten Breitenfurter Straße 236-238<br/>[06.05.2026 – 07.05.2026]]]></content:encoded>
+      <description>[06.05.2026 – 07.05.2026]</description>
+      <content:encoded><![CDATA[[06.05.2026 – 07.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -82,15 +82,15 @@
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge …<br/>[Seit 05.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[41E: Ersatzbus 41E hält gegenüber]]></title>
+      <title><![CDATA[41E: Ersatzbus 41E halten bei Währinger Str 200]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c9580bfbc912cf09b6eeeee12be0aa373079f5da155cdf44b1021f1b946414ec</guid>
-      <pubDate>Mon, 04 May 2026 08:49:59 +0200</pubDate>
+      <guid isPermaLink="false">6ba0bae6a68768907c14045ca96ddc1c51347bec7722644905e849c3f33b7ed0</guid>
+      <pubDate>Mon, 04 May 2026 04:00:01 +0200</pubDate>
       <ext:first_seen>Wed, 06 May 2026 18:03:08 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 08:49:59 +0200</ext:starts_at>
+      <ext:starts_at>Mon, 04 May 2026 04:00:01 +0200</ext:starts_at>
       <ext:ends_at>Wed, 06 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Ersatzbus 41E hält gegenüber [04.05.2026 – 06.05.2026]</description>
-      <content:encoded><![CDATA[Ersatzbus 41E hält gegenüber<br/>[04.05.2026 – 06.05.2026]]]></content:encoded>
+      <description>[04.05.2026 – 06.05.2026]</description>
+      <content:encoded><![CDATA[[04.05.2026 – 06.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9/40/41/42: Gleisbauarbeiten]]></title>
@@ -111,8 +111,8 @@
       <ext:first_seen>Tue, 05 May 2026 01:29:59 +0200</ext:first_seen>
       <ext:starts_at>Sat, 02 May 2026 00:00:24 +0200</ext:starts_at>
       <ext:ends_at>Wed, 06 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Benutzen Sie die Linie 43A - Dornbacher Straße 85 [02.05.2026 – 06.05.2026]</description>
-      <content:encoded><![CDATA[Benutzen Sie die Linie 43A - Dornbacher Straße 85<br/>[02.05.2026 – 06.05.2026]]]></content:encoded>
+      <description>[02.05.2026 – 06.05.2026]</description>
+      <content:encoded><![CDATA[[02.05.2026 – 06.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
