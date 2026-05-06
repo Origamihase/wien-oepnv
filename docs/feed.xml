@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 06 May 2026 17:42:13 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2026 18:03:08 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Liesing ↔ Wien Hetzendorf]]></title>
@@ -40,28 +40,6 @@
       <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 60: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 17:30 Uhr. [Am 06.05.2026]</description>
       <content:encoded><![CDATA[Linie 60: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 17:30 Uhr.<br/>[Am 06.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405</guid>
-      <pubDate>Wed, 06 May 2026 16:08:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 17:20:05 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 16:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 17:40:00 +0200</ext:ends_at>
-      <description>Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 06.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9d0a7e4b9b87021faced5a5e0994d1adbea3b271fc48868ad2b14e038ee2871b</guid>
-      <pubDate>Wed, 06 May 2026 15:27:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 15:31:43 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 15:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 17:35:00 +0200</ext:ends_at>
-      <description>Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 06.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hauptbahnhof]]></title>
@@ -113,6 +91,27 @@
       <ext:starts_at>Tue, 05 May 2026 13:05:07 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 03.10.2026 (23:15 Uhr) bis 05.10.2026 (04:40 Uhr) einige Nahverkehrszüge nicht fahren. [Seit 05.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 03.10.2026 (23:15 Uhr) bis 05.10.2026 (04:40 Uhr) einige Nahverkehrszüge nicht fahren.<br/>[Seit 05.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Westbahnhof ↔ Wien Hütteldorf]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;872912</guid>
+      <pubDate>Tue, 05 May 2026 12:09:13 +0200</pubDate>
+      <ext:first_seen>Mon, 27 Apr 2026 11:06:33 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 05 May 2026 12:09:13 +0200</ext:starts_at>
+      <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge IC 1110, IC 1113, IC … [Seit 05.05.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge IC 1110, IC 1113, IC …<br/>[Seit 05.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[41E: Ersatzbus 41E hält gegenüber]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c9580bfbc912cf09b6eeeee12be0aa373079f5da155cdf44b1021f1b946414ec</guid>
+      <pubDate>Mon, 04 May 2026 08:49:59 +0200</pubDate>
+      <ext:first_seen>Wed, 06 May 2026 18:03:08 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 04 May 2026 08:49:59 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 06 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten Ersatzbus 41E hält gegenüber [04.05.2026 – 06.05.2026]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Ersatzbus 41E hält gegenüber<br/>[04.05.2026 – 06.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
