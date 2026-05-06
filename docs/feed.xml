@@ -7,40 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 06 May 2026 22:31:56 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2026 22:53:15 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U4: Polizeieinsatz]]></title>
+      <title><![CDATA[O: Verunreinigung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a</guid>
-      <pubDate>Wed, 06 May 2026 20:55:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 15:11:20 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 20:55:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">dc7342a90fe1d05d98efc9491edf8888b79ca9c35e7d9cbc57a2361ba1a35f43</guid>
+      <pubDate>Wed, 06 May 2026 22:23:00 +0200</pubDate>
+      <ext:first_seen>Wed, 06 May 2026 22:53:15 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 06 May 2026 22:23:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U4: Unregelmäßige Intervalle in Richtung Heiligenstadt. Grund: Polizeieinsatz. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie U4: Unregelmäßige Intervalle in Richtung Heiligenstadt. Grund: Polizeieinsatz.<br/>[Am 06.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49</guid>
-      <pubDate>Wed, 06 May 2026 20:40:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 15:11:20 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 20:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U1: Unregelmäßige Intervalle in Richtung Oberlaa. Grund: Polizeieinsatz. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie U1: Unregelmäßige Intervalle in Richtung Oberlaa. Grund: Polizeieinsatz.<br/>[Am 06.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">326066bd4681c0785c5a1209c139e7d53faad9485ca545bc4a14759ff89bddf0</guid>
-      <pubDate>Wed, 06 May 2026 20:19:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 21:11:09 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 20:19:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie 12A fährt derzeit nur zwischen Schmelz, Gablenzgasse und Stiegergasse. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Die Linie 12A fährt derzeit nur zwischen Schmelz, Gablenzgasse und Stiegergasse.<br/>[Am 06.05.2026]]]></content:encoded>
+      <description>Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 06.05.2026]</description>
+      <content:encoded><![CDATA[Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 06.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hauptbahnhof]]></title>
@@ -113,6 +91,28 @@
       <ext:ends_at>Wed, 06 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[04.05.2026 – 06.05.2026]</description>
       <content:encoded><![CDATA[[04.05.2026 – 06.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9/40/41/42: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8d766003c3ff0681ce82ed31d19c99624f047547c4c41bb3cf4def4b566e56d7</guid>
+      <pubDate>Mon, 04 May 2026 04:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 06 May 2026 06:58:26 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 04 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 27 Jun 2026 04:00:00 +0200</ext:ends_at>
+      <description>Wegen umfangreicher Gleisbauarbeiten im Bereich Aumannplatz kommt es zu Änderungen im Liniennetz. [04.05.2026 – 27.06.2026]</description>
+      <content:encoded><![CDATA[Wegen umfangreicher Gleisbauarbeiten im Bereich Aumannplatz kommt es zu Änderungen im Liniennetz.<br/>[04.05.2026 – 27.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
+      <pubDate>Sat, 02 May 2026 00:00:24 +0200</pubDate>
+      <ext:first_seen>Tue, 05 May 2026 01:29:59 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 02 May 2026 00:00:24 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 06 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[02.05.2026 – 06.05.2026]</description>
+      <content:encoded><![CDATA[[02.05.2026 – 06.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
