@@ -12,6 +12,15 @@ runs:
   steps:
     - name: Install pip and project dependencies
       shell: bash
+      env:
+        # Security: pull the action input through an env var instead of
+        # interpolating ``${{ inputs.requirements }}`` directly into the
+        # shell. Direct ``${{ … }}`` expansion is rendered before the
+        # shell parses the script, so any quote / ``;`` / ``$()`` in the
+        # caller-supplied value would execute as a command. Env vars
+        # avoid that — the value reaches bash through the process
+        # environment and is dereferenced safely with ``"$REQUIREMENTS"``.
+        REQUIREMENTS: ${{ inputs.requirements }}
       run: |
         # pip cap raised to <27 (was <26). Background:
         # - pip 26.0 released 2026-01-30, pip 26.1 released 2026-04-26.
@@ -19,4 +28,4 @@ runs:
         # Re-evaluate at pip 27 announcement; consider removing the cap
         # entirely once 27.x is also confirmed stable.
         python -m pip install "pip<27"
-        pip install -r "${{ inputs.requirements }}"
+        pip install -r "$REQUIREMENTS"

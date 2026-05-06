@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 07 May 2026 00:03:08 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2026 00:11:07 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[O: Verunreinigung]]></title>
+      <title><![CDATA[71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dc7342a90fe1d05d98efc9491edf8888b79ca9c35e7d9cbc57a2361ba1a35f43</guid>
-      <pubDate>Wed, 06 May 2026 22:23:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 22:53:15 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 22:23:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 06.05.2026]]]></content:encoded>
+      <guid isPermaLink="false">c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45</guid>
+      <pubDate>Wed, 06 May 2026 23:08:35 +0200</pubDate>
+      <ext:first_seen>Thu, 07 May 2026 00:09:15 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 07 May 2026 00:00:13 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 07 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 07.05.2026]</description>
+      <content:encoded><![CDATA[[Am 07.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a</guid>
+      <pubDate>Wed, 06 May 2026 23:00:10 +0200</pubDate>
+      <ext:first_seen>Thu, 07 May 2026 00:09:15 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 06 May 2026 23:00:10 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 07 May 2026 05:30:00 +0200</ext:ends_at>
+      <description>[06.05.2026 – 07.05.2026]</description>
+      <content:encoded><![CDATA[[06.05.2026 – 07.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hauptbahnhof]]></title>
@@ -88,9 +99,9 @@
       <pubDate>Mon, 04 May 2026 04:00:01 +0200</pubDate>
       <ext:first_seen>Tue, 05 May 2026 01:29:59 +0200</ext:first_seen>
       <ext:starts_at>Mon, 04 May 2026 04:00:01 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[04.05.2026 – 06.05.2026]</description>
-      <content:encoded><![CDATA[[04.05.2026 – 06.05.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 07 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[04.05.2026 – 07.05.2026]</description>
+      <content:encoded><![CDATA[[04.05.2026 – 07.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9/40/41/42: Gleisbauarbeiten]]></title>
@@ -102,17 +113,6 @@
       <ext:ends_at>Sat, 27 Jun 2026 04:00:00 +0200</ext:ends_at>
       <description>Wegen umfangreicher Gleisbauarbeiten im Bereich Aumannplatz kommt es zu Änderungen im Liniennetz. [04.05.2026 – 27.06.2026]</description>
       <content:encoded><![CDATA[Wegen umfangreicher Gleisbauarbeiten im Bereich Aumannplatz kommt es zu Änderungen im Liniennetz.<br/>[04.05.2026 – 27.06.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
-      <pubDate>Sat, 02 May 2026 00:00:24 +0200</pubDate>
-      <ext:first_seen>Tue, 05 May 2026 01:29:59 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 02 May 2026 00:00:24 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[02.05.2026 – 06.05.2026]</description>
-      <content:encoded><![CDATA[[02.05.2026 – 06.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
