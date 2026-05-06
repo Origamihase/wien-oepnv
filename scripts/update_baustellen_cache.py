@@ -194,6 +194,37 @@ def _load_fallback(path: Path) -> Optional[Dict[str, Any]]:
         return None
 
 
+def _resolve_fallback_path(candidate: str | None) -> Path:
+    """Resolve the fallback-path env override against ``REPO_ROOT``.
+
+    Security: ``BAUSTELLEN_FALLBACK_PATH`` is read from the environment and
+    later passed to ``Path.read_text()``. Without containment, an env-var-
+    controlled path (or a symlink it points at, since ``resolve()`` follows
+    symlinks) could read any file the process can access — exposing JSON-
+    shaped local files via the generated feed. We mirror the
+    ``_resolve_path`` pattern used by ``src/providers/vor.py`` to keep the
+    fallback strictly inside the repository tree.
+    """
+    text = (candidate or "").strip()
+    if not text:
+        return DEFAULT_FALLBACK_PATH
+    raw_path = Path(text)
+    if raw_path.is_absolute():
+        resolved = raw_path.resolve()
+    else:
+        resolved = (REPO_ROOT / raw_path).resolve()
+    try:
+        resolved.relative_to(REPO_ROOT)
+    except ValueError:
+        LOGGER.warning(
+            "Baustellen: Pfad-Traversal erkannt oder Pfad außerhalb von %s: %s. Nutze Standard.",
+            REPO_ROOT,
+            text,
+        )
+        return DEFAULT_FALLBACK_PATH
+    return resolved
+
+
 def _iter_features(payload: Dict[str, Any]) -> Iterable[Dict[str, Any]]:
     if payload.get("type") == "FeatureCollection":
         features = payload.get("features") or []
@@ -382,7 +413,7 @@ def _collect_events(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
 def main() -> int:
     configure_logging()
     data_url = os.getenv("BAUSTELLEN_DATA_URL", DEFAULT_DATA_URL).strip() or DEFAULT_DATA_URL
-    fallback_path = Path(os.getenv("BAUSTELLEN_FALLBACK_PATH", str(DEFAULT_FALLBACK_PATH))).resolve()
+    fallback_path = _resolve_fallback_path(os.getenv("BAUSTELLEN_FALLBACK_PATH"))
     timeout_raw = os.getenv("BAUSTELLEN_TIMEOUT", "")
     timeout = 20
     if timeout_raw.strip():
