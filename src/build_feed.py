@@ -1370,7 +1370,7 @@ def _format_item_content(
         #   e.g. "Uhr -" leaves "Uhr" exposed only after the dash is
         #   stripped.
         _PUNCT_STRIP = ' ,;:-)/'
-        for _ in range(3):
+        for _ in range(4):
             truncated = truncated.rstrip(_PUNCT_STRIP)
             last_space = truncated.rfind(' ')
             if last_space <= 0:
@@ -1380,8 +1380,12 @@ def _format_item_content(
             if (
                 len(tail) <= 5
                 and tail_stripped
-                and tail_stripped.isalpha()
+                and (tail_stripped.isalpha() or tail_stripped.isdigit())
             ):
+                # Drop short alpha-only tokens (line markers, units, German
+                # abbreviations) AND short digit-only ordinals like ``3.`` /
+                # ``10.`` that German date phrasing leaves dangling
+                # ("Ab Dienstag, 3. …" → "Ab Dienstag …").
                 truncated = truncated[:last_space]
             else:
                 break
