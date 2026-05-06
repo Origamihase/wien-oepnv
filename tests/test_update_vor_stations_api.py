@@ -145,11 +145,8 @@ class _FakeAnySession:
         timeout: object,
         headers: dict[str, str],
     ) -> _FakeAnyResponse:
-        from typing import cast
-
-        params_typed = cast(dict[str, str], params)
-        station_id = params_typed["input"]
-        self.calls.append((url, params_typed))
+        station_id = params["input"]
+        self.calls.append((url, params))
         status, payload = self.payloads[station_id]
         return _FakeAnyResponse(status_code=status, payload=payload)
 
