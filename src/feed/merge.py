@@ -390,7 +390,7 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                         elif desc2:
                             existing_copy["description"] = desc2
 
-                    for date_key in ("pubdate", "pub_date", "updated"):
+                    for date_key in ("pubDate", "pubdate", "pub_date", "updated"):
                         existing_date = existing_copy.get(date_key)
                         item_date = item.get(date_key)
                         if existing_date and item_date:
