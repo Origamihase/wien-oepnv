@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 06 May 2026 19:40:32 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2026 20:03:05 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[49: Fahrtbehinderung wegen Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a</guid>
-      <pubDate>Wed, 06 May 2026 18:44:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 19:12:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 18:51:56 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 19:51:00 +0200</ext:ends_at>
-      <description>Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.05.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[10A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -69,8 +58,8 @@
       <ext:first_seen>Wed, 06 May 2026 09:38:38 +0200</ext:first_seen>
       <ext:starts_at>Wed, 06 May 2026 04:45:05 +0200</ext:starts_at>
       <ext:ends_at>Thu, 07 May 2026 00:35:00 +0200</ext:ends_at>
-      <description>Bauarbeiten Busse halten Breitenfurter Straße 236-238 [06.05.2026 – 07.05.2026]</description>
-      <content:encoded><![CDATA[Bauarbeiten Busse halten Breitenfurter Straße 236-238<br/>[06.05.2026 – 07.05.2026]]]></content:encoded>
+      <description>Busse halten Breitenfurter Straße 236-238 [06.05.2026 – 07.05.2026]</description>
+      <content:encoded><![CDATA[Busse halten Breitenfurter Straße 236-238<br/>[06.05.2026 – 07.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -100,8 +89,8 @@
       <ext:first_seen>Wed, 06 May 2026 18:03:08 +0200</ext:first_seen>
       <ext:starts_at>Mon, 04 May 2026 08:49:59 +0200</ext:starts_at>
       <ext:ends_at>Wed, 06 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Ersatzbus 41E hält gegenüber [04.05.2026 – 06.05.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Ersatzbus 41E hält gegenüber<br/>[04.05.2026 – 06.05.2026]]]></content:encoded>
+      <description>Ersatzbus 41E hält gegenüber [04.05.2026 – 06.05.2026]</description>
+      <content:encoded><![CDATA[Ersatzbus 41E hält gegenüber<br/>[04.05.2026 – 06.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9/40/41/42: Gleisbauarbeiten]]></title>
@@ -113,6 +102,17 @@
       <ext:ends_at>Sat, 27 Jun 2026 04:00:00 +0200</ext:ends_at>
       <description>Wegen umfangreicher Gleisbauarbeiten im Bereich Aumannplatz kommt es zu Änderungen im Liniennetz. Zeitraum: Montag, 04. Mai 2026, 04:30 Uhr - Samstag, 27. Juni 2026, 04:00 Uhr. [04.05.2026 – 27.06.2026]</description>
       <content:encoded><![CDATA[Wegen umfangreicher Gleisbauarbeiten im Bereich Aumannplatz kommt es zu Änderungen im Liniennetz. Zeitraum: Montag, 04. Mai 2026, 04:30 Uhr - Samstag, 27. Juni 2026, 04:00 Uhr.<br/>[04.05.2026 – 27.06.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Benutzen Sie die Linie 43A - Dornbacher Straße 85]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12</guid>
+      <pubDate>Sat, 02 May 2026 00:00:24 +0200</pubDate>
+      <ext:first_seen>Tue, 05 May 2026 01:29:59 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 02 May 2026 00:00:24 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 06 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Benutzen Sie die Linie 43A - Dornbacher Straße 85 [02.05.2026 – 06.05.2026]</description>
+      <content:encoded><![CDATA[Benutzen Sie die Linie 43A - Dornbacher Straße 85<br/>[02.05.2026 – 06.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
