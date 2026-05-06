@@ -29,6 +29,30 @@ log = logging.getLogger("build_feed")
 
 _CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f]")
 
+# Defence-in-depth bounds for error / warning collection. A misbehaving
+# upstream that returns malformed payloads in a tight loop, or a flapping
+# DNS rebinding scenario, can append a unique error per request. Without a
+# cap this:
+#  • blows past GitHub's ~65 KB issue-body limit (Auto-Issue submission
+#    silently 422s, defeating the alerting purpose),
+#  • bloats ``feed_health.json`` (a public artefact),
+#  • grows the in-memory state of every long-running build process.
+# 2000 chars per message keeps even a Python traceback fully readable;
+# 100 unique messages is a generous ceiling well above the typical
+# single-digit count and still leaves ~200 KB headroom for the rest of
+# the report payload.
+_MAX_REPORT_MESSAGE_LENGTH = 2000
+_MAX_REPORT_MESSAGE_COUNT = 100
+_REPORT_TRUNCATION_MARKER = "… [gekürzt]"
+
+
+def _bounded_message(message: str) -> str:
+    """Truncate ``message`` to the per-report length cap with a marker."""
+    if len(message) <= _MAX_REPORT_MESSAGE_LENGTH:
+        return message
+    keep = _MAX_REPORT_MESSAGE_LENGTH - len(_REPORT_TRUNCATION_MARKER)
+    return message[:keep] + _REPORT_TRUNCATION_MARKER
+
 
 def clean_message(message: str | None) -> str:
     """Normalize log and status messages for human consumption."""
@@ -231,22 +255,26 @@ class RunReport:
 
     def add_warning(self, message: str) -> None:
         """Add a global warning to the report."""
-        cleaned = clean_message(message)
+        cleaned = _bounded_message(clean_message(message))
         if not cleaned:
             return
         with self._lock:
             if cleaned in self._seen_warnings:
+                return
+            if len(self.warnings) >= _MAX_REPORT_MESSAGE_COUNT:
                 return
             self._seen_warnings.add(cleaned)
             self.warnings.append(cleaned)
 
     def add_error_message(self, message: str) -> None:
         """Add a global error message to the report."""
-        cleaned = clean_message(message)
+        cleaned = _bounded_message(clean_message(message))
         if not cleaned:
             return
         with self._lock:
             if cleaned in self._seen_errors:
+                return
+            if len(self._error_messages) >= _MAX_REPORT_MESSAGE_COUNT:
                 return
             self._seen_errors.add(cleaned)
             self._error_messages.append(cleaned)
