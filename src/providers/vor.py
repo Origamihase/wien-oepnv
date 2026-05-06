@@ -205,9 +205,43 @@ def _load_int_env(name: str, default: int) -> int:
     return value
 
 
+# Security: env-supplied regexes (``VOR_BUS_INCLUDE_REGEX`` /
+# ``VOR_BUS_EXCLUDE_REGEX``) are compiled here and matched against every
+# bus-line token during feed building. An operator typo or compromised
+# config store could supply a ReDoS-vulnerable pattern (e.g. ``(a+)+$``,
+# ``(.*)*``) that locks the build process at 100% CPU on certain inputs.
+# We defend with two cheap, stdlib-only layers before ``re.compile``:
+# (1) bound the pattern length so an oversized input cannot exhaust
+# memory during compilation, and (2) heuristically reject the most
+# common ReDoS construction — nested unbounded quantifiers around a
+# group, i.e. ``(...+)+`` / ``(...*)*`` / ``(...?)+`` etc. The default
+# bus filter patterns above contain no such constructions, so the
+# fallback path stays safe. Detection is intentionally heuristic; it
+# does not catch every ReDoS shape (alternation overlap such as
+# ``(a|aa)+`` slips through), but it blocks the patterns that have
+# historically caused real outages and falls back to the project's
+# pre-vetted defaults whenever a check fires.
+MAX_REGEX_PATTERN_LEN = 200
+_REDOS_NESTED_QUANTIFIER_RE = re.compile(r"[+*?][+*?]?\s*\)\s*[+*]")
+
+
 def _compile_regex(name: str, default_pattern: str) -> re.Pattern[Any]:
     raw = _get_env(name)
     if not raw:
+        return re.compile(default_pattern)
+    if len(raw) > MAX_REGEX_PATTERN_LEN:
+        _log_warning(
+            "Regex für %s ist zu lang (%d Zeichen, Limit %d) – verwende Standard",
+            name,
+            len(raw),
+            MAX_REGEX_PATTERN_LEN,
+        )
+        return re.compile(default_pattern)
+    if _REDOS_NESTED_QUANTIFIER_RE.search(raw):
+        _log_warning(
+            "Regex für %s enthält ein verschachteltes Quantor-Muster (ReDoS-Risiko) – verwende Standard",
+            name,
+        )
         return re.compile(default_pattern)
     try:
         return re.compile(raw)
