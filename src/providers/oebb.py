@@ -160,8 +160,8 @@ NON_LOCATION_PREFIXES = {
     "lawinengefahr", "streik", "demonstration", "veranstaltung", "wartungsarbeiten",
     "update", "info", "information", "hinweis", "achtung", "verkehrsmeldung",
     "umleitung", "haltausfall", "schienenersatzverkehr", "sev", "ersatzverkehr",
-        "streckenunterbrechung", "unterbrechung", "teilausfall", "zugausfall",
-        "verkehrseinschränkung"
+    "streckenunterbrechung", "unterbrechung", "teilausfall", "zugausfall",
+    "verkehrseinschränkung"
 }
 
 def _is_category(text: str) -> bool:
@@ -176,7 +176,7 @@ def _is_category(text: str) -> bool:
 
     for k in NON_LOCATION_PREFIXES:
         if t == k or t.startswith(k + " "):
-             return True
+            return True
 
     return False
 
@@ -293,15 +293,15 @@ def _clean_title_keep_places(t: str) -> str:
     if len(parts) >= 2:
         # Check if first part is a category keyword -> use colon
         if _is_category(parts[0]):
-             t = f"{parts[0]}: {parts[1]}"
-             if len(parts) > 2:
+            t = f"{parts[0]}: {parts[1]}"
+            if len(parts) > 2:
                 rest = " ".join(parts[2:]).strip()
                 if rest:
                     t += f" {rest}"
         else:
             # Check ordering: if part[1] is Vienna and part[0] is not, swap
             if len(parts) == 2 and is_in_vienna(parts[1]) and not is_in_vienna(parts[0]):
-                 parts[0], parts[1] = parts[1], parts[0]
+                parts[0], parts[1] = parts[1], parts[0]
 
             # Multi-part titles arise from chains like ``A ↔ B / C ↔ D``
             # where ``ARROW_ANY_RE`` split off three parts (``A``, ``B / C``,
