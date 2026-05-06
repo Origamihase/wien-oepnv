@@ -255,6 +255,29 @@ def _calculate_line_overlap(lines1: Set[str], lines2: Set[str]) -> float:
     return intersection / union
 
 
+def _promote_newer_dates(target: Dict[str, Any], source: Dict[str, Any]) -> None:
+    """Copy any date field from *source* into *target* when it is newer.
+
+    The dedup loop tolerates four spellings of the publication date for
+    historic compatibility (``pubDate`` / ``pubdate`` / ``pub_date`` /
+    ``updated``); the VOR↔ÖBB merge branches must use the same set so an
+    incoming item with a newer ÖBB report bumps the merged item forward
+    rather than keeping the older VOR timestamp.
+    """
+    for date_key in ("pubDate", "pubdate", "pub_date", "updated"):
+        target_date = target.get(date_key)
+        source_date = source.get(date_key)
+        if target_date and source_date:
+            try:
+                if source_date > target_date:
+                    target[date_key] = source_date
+            except TypeError:
+                # Mixed datetime / str types — leave the target unchanged.
+                pass
+        elif source_date and not target_date:
+            target[date_key] = source_date
+
+
 def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
     Merges items that are likely the same event affecting overlapping lines.
@@ -310,6 +333,11 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                         if desc_oebb and " ".join(desc_oebb.split()) not in " ".join(desc_vor.split()):
                             new_existing["description"] = f"{desc_vor}\n\n{desc_oebb}".strip()
 
+                        # Promote the newer pubDate so feed ordering reflects
+                        # the latest report regardless of which provider
+                        # currently owns the master record.
+                        _promote_newer_dates(new_existing, item)
+
                         new_existing["_identity"] = new_existing.get("guid", "")
                         new_existing.pop("_calculated_identity", None)
                         # Update the list with the modified copy
@@ -331,6 +359,11 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                         # Append ÖBB desc if not present
                         if desc_oebb and " ".join(desc_oebb.split()) not in " ".join(desc_vor.split()):
                             new_existing["description"] = f"{desc_vor}\n\n{desc_oebb}".strip()
+
+                        # Same pubDate promotion as Case 1: take whichever
+                        # report is newer (the master record may have been
+                        # the older one).
+                        _promote_newer_dates(new_existing, existing)
 
                         new_existing["_identity"] = new_existing.get("guid", "")
                         new_existing.pop("_calculated_identity", None)
