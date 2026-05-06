@@ -12,6 +12,7 @@ from threading import RLock
 from time import perf_counter
 from typing import Any
 from collections.abc import Iterator
+from urllib.parse import urlparse
 
 import requests
 
