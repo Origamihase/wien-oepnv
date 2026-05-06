@@ -1240,7 +1240,7 @@ def _fetch_xml(url: str, timeout: int = 25) -> Optional[ET.Element]:
                                 wait_seconds = max(0.0, delta)
                             except Exception as parse_exc:
                                 log.warning("Failed to parse Retry-After header", exc_info=parse_exc)
-                    log.warning("ÖBB RSS Rate-Limit (Retry-After: %s)", header)
+                    log.warning("ÖBB RSS Rate-Limit (Retry-After: %s)", sanitize_log_arg(header))
 
                 if attempt == 0:
                      if wait_seconds > 0:

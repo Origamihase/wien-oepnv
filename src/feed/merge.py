@@ -431,17 +431,7 @@ def deduplicate_fuzzy(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                         elif desc2:
                             existing_copy["description"] = desc2
 
-                    for date_key in ("pubDate", "pubdate", "pub_date", "updated"):
-                        existing_date = existing_copy.get(date_key)
-                        item_date = item.get(date_key)
-                        if existing_date and item_date:
-                            try:
-                                if item_date > existing_date:
-                                    existing_copy[date_key] = item_date
-                            except TypeError:
-                                pass  # non-comparable types — leave existing unchanged
-                        elif item_date and not existing_date:
-                            existing_copy[date_key] = item_date
+                    _promote_newer_dates(existing_copy, item)
 
                     # 4. Update GUID
                     # We create a new deterministic GUID based on the new title.
