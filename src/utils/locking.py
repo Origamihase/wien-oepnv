@@ -151,12 +151,23 @@ def file_lock(fileobj: Any, *, exclusive: bool, timeout: float = 15.0) -> Iterat
     """
     # Step 1: Thread-level locking
     thread_lock = None
+    thread_lock_held = False
     path = None
     try:
         if hasattr(fileobj, "name"):
             path = os.path.abspath(fileobj.name)
             thread_lock = _acquire_thread_lock_ref(path)
-            thread_lock.acquire()
+            try:
+                thread_lock.acquire()
+                thread_lock_held = True
+            except BaseException:
+                # acquire() failed (e.g. KeyboardInterrupt). Roll the
+                # reference counter back so subsequent callers don't see a
+                # phantom holder; callers expect ``_acquire_thread_lock_ref``
+                # / ``_release_thread_lock_ref`` to be balanced.
+                _release_thread_lock_ref(path)
+                thread_lock = None
+                raise
     except Exception as exc:
         log.warning("Could not acquire thread lock for file %s: %s", getattr(fileobj, "name", "unknown"), exc)
 
@@ -176,9 +187,11 @@ def file_lock(fileobj: Any, *, exclusive: bool, timeout: float = 15.0) -> Iterat
             except Exception as exc:  # pragma: no cover - release failures are rare
                 log.debug("Dateisperre konnte nicht gelöst werden: %s", exc)
 
-        if thread_lock:
-            thread_lock.release()
-            if path:
-                _release_thread_lock_ref(path)
+        if thread_lock_held and thread_lock is not None:
+            try:
+                thread_lock.release()
+            finally:
+                if path:
+                    _release_thread_lock_ref(path)
 
 __all__ = ["file_lock"]
