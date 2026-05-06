@@ -12,7 +12,6 @@ import sys
 import xml.etree.ElementTree as ET  # nosec B405 - used for XML generation, not parsing untrusted input
 from pathlib import Path
 from collections.abc import Iterable
-from urllib.parse import urlparse
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -21,9 +20,11 @@ if str(REPO_ROOT) not in sys.path:
 
 try:
     from src.utils.files import atomic_write
+    from src.utils.http import validate_http_url
 except ModuleNotFoundError:
     # Fallback if src is not a package or run differently
     from utils.files import atomic_write  # type: ignore[no-redef]
+    from utils.http import validate_http_url  # type: ignore[no-redef]
 
 DOCS_DIR = REPO_ROOT / "docs"
 DEFAULT_BASE_URL = "https://origamihase.github.io/wien-oepnv"
@@ -37,18 +38,27 @@ logger = logging.getLogger(__name__)
 
 
 def _is_valid_base_url(candidate: str) -> bool:
-    """Validate the base URL to prevent sitemap injection via env overrides."""
+    """Validate the base URL to prevent sitemap injection via env overrides.
+
+    Security: ``SITE_BASE_URL`` is interpolated into every ``<loc>`` element
+    of the published sitemap (and into ``robots.txt``'s ``Sitemap:``
+    directive). Any host that survives this check is taken as authoritative
+    by every search engine that crawls the site, so the validation must
+    reject the same classes of values that ``validate_http_url`` rejects
+    elsewhere in the project: IP literals, reserved/internal TLDs
+    (``.local``, ``.internal``, ``.test``, ``.example``, ``.localhost`` …),
+    DNS-rebinding wildcards (``nip.io`` and friends), embedded credentials,
+    and non-http(s) schemes. ``check_dns=False`` because we don't talk to
+    the URL, we embed it — DNS state at sitemap generation time is
+    irrelevant to whether the URL is a safe target for embedding.
+    """
     if _UNSAFE_URL_CHARS.search(candidate):
         return False
-    parsed = urlparse(candidate)
-    if parsed.scheme.lower() not in {"http", "https"}:
-        return False
-    if not parsed.hostname:
-        return False
-    # Disallow embedded credentials to avoid leaking secrets into sitemap URLs.
-    if parsed.username or parsed.password:
-        return False
-    return True
+    # Delegating to validate_http_url consolidates the URL-safety policy
+    # (TLDs, IP literals, credentials, scheme, length cap) with the
+    # provider/HTTP layers; previously a localhost/internal-TLD override
+    # would silently land in the published sitemap.
+    return validate_http_url(candidate, check_dns=False) is not None
 
 
 def _base_url() -> str:
