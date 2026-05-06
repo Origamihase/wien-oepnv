@@ -87,16 +87,27 @@ def refresh_from_env() -> None:
 read_cache = _core_read_cache
 
 
-def _post_filter_wl(items: List[Any]) -> List[Any]:
-    """Defence-in-depth: normalise WL titles loaded from cache.
+# German prepositions/connectors that *require* a following object —
+# when a WL title ends with one of these alone (no object), the WL
+# source data was truncated mid-sentence and the meldung is useless.
+# Real cache item ``41E: Ersatzbus 41E hält gegenüber`` is the
+# canonical example — the user reads "stops opposite [nothing]".
+_INCOMPLETE_TITLE_TAIL_RE = re.compile(
+    r"\b(?:bei|gegen[üu]ber|an|in|vor|nach|zu|über|ueber|am|im|zur|zum)\s*$",
+    re.IGNORECASE,
+)
 
-    The WL cache is only refreshed periodically. Title-formatting fixes
-    (e.g. collapsing newlines per Bug 12A) therefore don't reach the
-    feed until the next refresh — cached items can carry titles with
-    embedded ``\\n``/``\\t`` characters that violate RSS/Atom single-
-    line conventions. We re-run the same whitespace normalisation that
-    ``_tidy_title_wl`` applies so cached titles stay single-line even
-    before the cache turns over.
+
+def _post_filter_wl(items: List[Any]) -> List[Any]:
+    """Defence-in-depth: normalise / drop bad WL items loaded from cache.
+
+    The WL cache is only refreshed periodically, so:
+
+    1. Title-formatting fixes (e.g. newline collapse per Bug 12A) need
+       to be re-applied at cache-read time.
+    2. WL itself sometimes serves data that's truncated mid-sentence —
+       ``Ersatzbus 41E hält gegenüber`` (with no location after
+       ``gegenüber``) is meaningless. Such items are dropped.
     """
     out: List[Any] = []
     for item in items:
@@ -109,6 +120,12 @@ def _post_filter_wl(items: List[Any]) -> List[Any]:
             if cleaned != title:
                 item = dict(item)
                 item["title"] = cleaned
+            # Drop items whose visible title ends with a preposition
+            # that demands an object — the WL source is clearly
+            # incomplete and the user gets no useful information.
+            title_body = cleaned.split(":", 1)[-1].strip() if ":" in cleaned else cleaned
+            if _INCOMPLETE_TITLE_TAIL_RE.search(title_body):
+                continue
         out.append(item)
     return out
 
@@ -1518,6 +1535,21 @@ def _format_item_content(
     time_line = _WHITESPACE_CLEANUP_RE.sub(" ", time_line).strip()
     if time_line:
         time_line = f"[{time_line.strip('[]')}]"
+
+    # Skip the summary entirely when it would just repeat the title
+    # body verbatim. WL Störung items like ``41E: Ersatzbus 41E halten
+    # bei Währinger Str 200`` produce a description that's identical
+    # to the title body after the line-prefix is stripped — surfacing
+    # both gives the user the same text twice. We compare casefold so
+    # ``Linie 11A: Verspätung.`` and ``Verspätung`` are not flagged
+    # as duplicates (different content).
+    if summary and title_out:
+        title_body_match = re.match(r"^[A-Za-z0-9/]+:\s*(\S.*)$", title_out)
+        title_body_compare = (
+            title_body_match.group(1).strip() if title_body_match else title_out
+        )
+        if title_body_compare and summary.casefold() == title_body_compare.casefold():
+            summary = ""
 
     # Combine
     desc_parts = []
