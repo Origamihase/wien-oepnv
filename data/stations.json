@@ -575,6 +575,7 @@
       "in_vienna": false,
       "pendler": true,
       "aliases": [
+        "430406200",
         "Laxenburg-Biedermannsdorf",
         "Bahnhof Laxenburg Biedermannsdorf",
         "Bahnhof Laxenburg-Biedermannsdorf",
@@ -593,7 +594,8 @@
       ],
       "source": "oebb",
       "latitude": 47.9893,
-      "longitude": 16.364
+      "longitude": 16.364,
+      "vor_id": "430406200"
     },
     {
       "bst_id": "1318",
@@ -786,7 +788,7 @@
       ],
       "latitude": 48.194766,
       "longitude": 16.386274,
-      "source": "oebb",
+      "source": "oebb,google_places",
       "wl_diva": "60201091",
       "wl_stops": [
         {
@@ -795,6 +797,14 @@
           "latitude": 48.194764,
           "longitude": 16.386277
         }
+      ],
+      "_google_place_id": "ChIJGZJ3hXsHbUcRoSEOdidtTe8",
+      "_types": [
+        "train_station",
+        "transit_station",
+        "transportation_service",
+        "point_of_interest",
+        "establishment"
       ]
     },
     {
@@ -1889,6 +1899,7 @@
       "in_vienna": false,
       "pendler": true,
       "aliases": [
+        "430420400",
         "Mistelbach Stadt",
         "Bahnhof Mistelbach Stadt",
         "Bf Mistelbach Stadt",
@@ -1900,7 +1911,8 @@
       ],
       "source": "oebb",
       "latitude": 48.5754,
-      "longitude": 16.5821
+      "longitude": 16.5821,
+      "vor_id": "430420400"
     },
     {
       "bst_id": "1950",
@@ -3087,6 +3099,7 @@
       "in_vienna": false,
       "pendler": true,
       "aliases": [
+        "430515600",
         "Weigelsdorf",
         "Bahnhof Weigelsdorf",
         "Bf Weigelsdorf",
@@ -3098,7 +3111,8 @@
       ],
       "source": "oebb",
       "latitude": 47.9484,
-      "longitude": 16.4082
+      "longitude": 16.4082,
+      "vor_id": "430515600"
     },
     {
       "bst_id": "325",
@@ -3972,6 +3986,7 @@
       "in_vienna": false,
       "pendler": true,
       "aliases": [
+        "430374600",
         "Himberg",
         "Bahnhof Himberg",
         "Bf Himberg",
@@ -3984,7 +3999,8 @@
       ],
       "source": "oebb",
       "latitude": 48.0828,
-      "longitude": 16.4392
+      "longitude": 16.4392,
+      "vor_id": "430374600"
     },
     {
       "bst_id": "850",
@@ -5124,7 +5140,7 @@
       "longitude": 16.376413,
       "name": "Wien Hauptbahnhof",
       "pendler": false,
-      "source": "vor",
+      "source": "vor,google_places",
       "vor_id": "490134900",
       "wl_diva": "60201349",
       "wl_stops": [
@@ -5134,6 +5150,14 @@
           "latitude": 48.185188,
           "longitude": 16.376413
         }
+      ],
+      "_google_place_id": "ChIJZ1D-htapbUcROoi_2Jg_fcg",
+      "_types": [
+        "subway_station",
+        "transit_station",
+        "transportation_service",
+        "point_of_interest",
+        "establishment"
       ]
     },
     {
