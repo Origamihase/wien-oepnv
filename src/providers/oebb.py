@@ -281,7 +281,7 @@ def _clean_title_keep_places(t: str) -> str:
                         if c:
                             c = re.sub(r"\s+\(VOR\)$", "", c)
                         processed_subs.append(c)
-                    canon = "/ ".join(processed_subs)
+                    canon = " / ".join(processed_subs)
 
             if not canon:
                 canon = cleaned
@@ -303,11 +303,15 @@ def _clean_title_keep_places(t: str) -> str:
             if len(parts) == 2 and is_in_vienna(parts[1]) and not is_in_vienna(parts[0]):
                  parts[0], parts[1] = parts[1], parts[0]
 
-            t = f"{parts[0]} ↔ {parts[1]}"
-            if len(parts) > 2:
-                rest = " ".join(parts[2:]).strip()
-                if rest:
-                    t += f" {rest}"
+            # Multi-part titles arise from chains like ``A ↔ B / C ↔ D``
+            # where ``ARROW_ANY_RE`` split off three parts (``A``, ``B / C``,
+            # ``D``). Joining the tail with a plain space silently drops
+            # the inner ``↔`` separators so the latent intermediate read
+            # ``A ↔ B / C  D`` — only ``_format_route_title`` later
+            # rebuilt a clean title. Joining everything with `` ↔ ``
+            # keeps the inter-route arrows so the cleaner can be relied
+            # on as a stand-alone pre-processor too.
+            t = " ↔ ".join(parts)
     elif parts:
         t = parts[0]
     t = MULTI_ARROW_RE.sub(" ↔ ", t)
