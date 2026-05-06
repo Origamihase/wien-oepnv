@@ -201,10 +201,26 @@ def _load_fallback(path: Path) -> dict[str, Any] | None:
         LOGGER.error("Baustellen: Fallback-Datei %s nicht lesbar (%s)", path, exc)
         return None
     try:
-        return cast(dict[str, Any], json.loads(raw))
+        payload = json.loads(raw)
     except json.JSONDecodeError as exc:
         LOGGER.error("Baustellen: Fallback-Datei %s enthält ungültiges JSON (%s)", path, exc)
         return None
+    # Zero Trust: a JSON-decodable file does not guarantee a JSON object.
+    # ``_iter_features`` calls ``payload.get("type")`` / ``payload.get("features")``
+    # which would raise ``AttributeError`` on a list / scalar / null body. The
+    # previous ``cast(dict[str, Any], json.loads(raw))`` lied to the type
+    # checker without enforcing the shape at runtime, so a malformed (or
+    # tampered) on-disk fallback would crash the cache update on the very
+    # path we use when the network is unreachable. Mirror the
+    # ``_load_json_from_content`` guard above and fail securely instead.
+    if not isinstance(payload, dict):
+        LOGGER.error(
+            "Baustellen: Fallback-Datei %s enthält kein JSON-Objekt (got %s)",
+            path,
+            type(payload).__name__,
+        )
+        return None
+    return payload
 
 
 # Security: only accept env overrides that point at the official Stadt Wien

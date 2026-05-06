@@ -20,9 +20,12 @@ import pytest
 
 from src.feed.reporting import (
     RunReport,
+    _BODY_TRUNCATION_MARKER,
+    _MAX_GITHUB_BODY_LENGTH,
     _MAX_REPORT_MESSAGE_COUNT,
     _MAX_REPORT_MESSAGE_LENGTH,
     _REPORT_TRUNCATION_MARKER,
+    _bounded_github_body,
     _bounded_message,
 )
 
@@ -54,7 +57,9 @@ def test_bounded_message_truncates_with_marker() -> None:
 
 def test_error_messages_truncate_oversized_entries() -> None:
     report = _new_report()
-    huge = "stack trace " * 1000  # >> _MAX_REPORT_MESSAGE_LENGTH
+    # Just over the cap — small enough that regex-based sanitisation stays
+    # cheap, large enough that truncation must engage.
+    huge = "stack trace " * 200  # ~2400 chars > _MAX_REPORT_MESSAGE_LENGTH
     report.add_error_message(huge)
     collected = list(report.iter_error_messages())
     assert len(collected) == 1
@@ -84,7 +89,9 @@ def test_error_messages_keep_dedup_inside_the_cap() -> None:
 
 def test_warnings_truncate_oversized_entries() -> None:
     report = _new_report()
-    huge = "x" * (_MAX_REPORT_MESSAGE_LENGTH + 500)
+    # Same sizing rationale as the error-truncation test above: keep just
+    # over the cap so regex-based sanitisation stays fast.
+    huge = "warning! " * 300  # ~2700 chars > _MAX_REPORT_MESSAGE_LENGTH
     report.add_warning(huge)
     assert len(report.warnings) == 1
     assert len(report.warnings[0]) <= _MAX_REPORT_MESSAGE_LENGTH
@@ -123,3 +130,50 @@ def test_falsy_messages_are_dropped(falsy: str | None) -> None:
     report.add_warning(falsy or "")
     assert list(report.iter_error_messages()) == []
     assert report.warnings == []
+
+
+# ─────────────────────── _bounded_github_body ─────────────────────────────
+
+
+def test_github_body_passes_short_input_unchanged() -> None:
+    body = "## Header\n- one\n- two\n"
+    assert _bounded_github_body(body) == body
+
+
+def test_github_body_truncates_to_below_api_limit() -> None:
+    """A body that exceeds GitHub's 65 KB limit must be cut, with marker."""
+    # Each line is exactly 100 chars + newline; build a body well past the cap.
+    line = "- " + "x" * 98 + "\n"
+    body = line * (_MAX_GITHUB_BODY_LENGTH // len(line) + 50)
+    bounded = _bounded_github_body(body)
+
+    # Critical: under GitHub's hard limit (the 65 536-char API ceiling).
+    assert len(bounded) <= _MAX_GITHUB_BODY_LENGTH
+    # And the truncation is *visible* — not silent — so operators know.
+    assert bounded.endswith(_BODY_TRUNCATION_MARKER)
+
+
+def test_github_body_truncates_at_line_boundary() -> None:
+    """Truncation must NOT cut mid-line — half-formed Markdown breaks rendering.
+
+    Build a body where the cap falls inside a long unbroken padding line.
+    A naïve slice would chop the padding mid-x, leaving e.g. an unterminated
+    table cell or fenced code block. The helper must walk backwards to the
+    nearest preceding newline so each retained line is intact.
+    """
+    padding = "x" * (_MAX_GITHUB_BODY_LENGTH + 1000)
+    body = "header line one\n" + padding + "\ntrailer line\n"
+    bounded = _bounded_github_body(body)
+
+    assert bounded.endswith(_BODY_TRUNCATION_MARKER)
+    assert len(bounded) <= _MAX_GITHUB_BODY_LENGTH
+
+    # The head must not contain any of the padding chars — that would mean
+    # we cut mid-line through the all-x line. With a proper line-boundary
+    # cut, only the header (which precedes the padding's leading newline)
+    # survives.
+    head = bounded[: -len(_BODY_TRUNCATION_MARKER)]
+    assert "x" not in head, (
+        "Truncation landed inside the padding line — should have walked "
+        "back to the previous newline boundary"
+    )
