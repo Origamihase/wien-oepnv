@@ -40,7 +40,14 @@ _PREP_BULLET_RE = re.compile(
 _NEWLINE_CLEANUP_RE = re.compile(r"[ \t\r\f\v]*\n[ \t\r\f\v]*")
 _COLON_BULLET_RE = re.compile(r":\s*•\s*")
 _COLON_NEWLINE_RE = re.compile(r":\s*\n")
-_DIGIT_ALPHA_RE = re.compile(r"(\d)([A-Za-zÄÖÜäöüß])")
+# Insert a space between a digit and a following letter so concatenated
+# unit-style tokens like ``12Uhr`` render as ``12 Uhr``. A single trailing
+# uppercase letter, however, is a Wiener-Linien line-code suffix (``11A``,
+# ``27A``, ``5B``) and must stay glued — splitting produced visibly wrong
+# descriptions like ``Linie 11 A: …``.
+_DIGIT_ALPHA_RE = re.compile(
+    r"(\d)([A-Za-zÄÖÜäöüß][a-zäöüß]+|[a-zäöüß])"
+)
 _MULTI_BULLET_RE = re.compile(r"(?:\s*•\s*){2,}")
 _LEADING_BULLET_RE = re.compile(r"^\s*•\s*")
 _TRAILING_BULLET_RE = re.compile(r"\s*•\s*$")

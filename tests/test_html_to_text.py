@@ -46,9 +46,18 @@ def test_preposition_bullet_stripping(html: str, expected: str) -> None:
 
 
 @pytest.mark.parametrize("html,expected", [
-    ("10A", "10 A"),
-    ("12A", "12 A"),
+    # Wiener-Linien line codes are conventionally written compact —
+    # ``11A``, ``5B``, ``27A`` — and must NOT be split. The previous
+    # behaviour ``11A → 11 A`` produced visibly wrong feed descriptions
+    # like ``Linie 11 A: Unregelmäßige Intervalle …``. (Bug 14A)
+    ("10A", "10A"),
+    ("12A", "12A"),
+    ("11A", "11A"),
+    ("5B", "5B"),
     ("U6", "U6"),
+    # Multi-character unit words still get split off for readability.
+    ("12Uhr", "12 Uhr"),
+    ("20kg", "20 kg"),
     ("2m", "2 m"),
 ])
 def test_line_codes_and_units(html: str, expected: str) -> None:
