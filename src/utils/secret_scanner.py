@@ -84,8 +84,23 @@ _KNOWN_TOKENS = [
     (re.compile(r"(?<![A-Za-z0-9])AIza[0-9A-Za-z\-_]{35}(?![A-Za-z0-9])"), "Google API Key gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])[0-9]{3,14}:[a-zA-Z0-9_-]{35}(?![A-Za-z0-9])"), "Telegram Bot Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])sk_live_[0-9a-zA-Z]{24}(?![A-Za-z0-9])"), "Stripe Live Secret Key gefunden"),
+    # Stripe test secret key. Less catastrophic than the live counterpart but still
+    # grants access to the project's test-mode dashboard, customer/PaymentIntent
+    # objects and webhooks — and a leaked test key strongly signals that a live
+    # key exists somewhere in the same repo. Treated as a distinct finding so the
+    # report calls out *which* environment leaked.
+    (re.compile(r"(?<![A-Za-z0-9])sk_test_[0-9a-zA-Z]{24}(?![A-Za-z0-9])"), "Stripe Test Secret Key gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])xoxb-[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{24}(?![A-Za-z0-9])"), "Slack Bot Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])xoxp-[0-9]{10,}-[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{32}(?![A-Za-z0-9])"), "Slack User Token gefunden"),
+    # Slack OAuth-app access token (configuration token issued via the OAuth flow,
+    # ``xoxa-`` prefix). Format mirrors the bot/user variants but is sometimes
+    # shorter, so the body length is permissive while the unique prefix keeps
+    # false positives essentially impossible.
+    (re.compile(r"(?<![A-Za-z0-9])xoxa-[0-9a-zA-Z-]{20,}(?![A-Za-z0-9])"), "Slack OAuth Access Token gefunden"),
+    # Slack refresh token (``xoxr-`` prefix), issued alongside rotating bot/user
+    # tokens. Leakage grants the ability to mint fresh xoxb-/xoxp- tokens until
+    # the refresh token itself is revoked.
+    (re.compile(r"(?<![A-Za-z0-9])xoxr-[0-9a-zA-Z-]{20,}(?![A-Za-z0-9])"), "Slack Refresh Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])npm_[0-9a-zA-Z]{36}(?![A-Za-z0-9])"), "NPM Access Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])pypi-[0-9a-zA-Z_\-]{20,}(?![A-Za-z0-9])"), "PyPI API Token gefunden"),
     # SendGrid API keys: SG.<22 chars>.<43 chars>. The two dots split the token into segments
