@@ -25,13 +25,20 @@ from src.providers.oebb import _find_stations_in_text, _is_relevant
 
 
 class TestHtmlResidueDoesNotMatchWien:
-    def test_hbf_with_closing_tag_does_not_match(self) -> None:
+    def test_hbf_with_closing_tag_does_not_match_wien(self) -> None:
+        # Bug S: "<b>Graz Hbf</b>" used to leave "Hbf<" as a token that
+        # canonicalised to "Wien Hauptbahnhof" via the directory's
+        # alias-expansion rules. After the HTML strip the token is
+        # clean "Graz Hbf" — which DOES resolve to the now-registered
+        # distant Graz station, but never to a Wien station.
         text = "nach <b>Graz Hbf</b> in der Nacht"
-        assert _find_stations_in_text(text) == []
+        found = _find_stations_in_text(text)
+        assert "Wien Hauptbahnhof" not in found
 
-    def test_bahnhof_with_closing_tag_does_not_match(self) -> None:
+    def test_bahnhof_with_closing_tag_does_not_match_wien(self) -> None:
         text = "von <b>Bruck/Mur Bahnhof</b> nach Graz"
-        assert _find_stations_in_text(text) == []
+        found = _find_stations_in_text(text)
+        assert "Wien Hauptbahnhof" not in found
 
     def test_html_entity_does_not_break_match(self) -> None:
         text = "Wien&nbsp;Hauptbahnhof gesperrt"

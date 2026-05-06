@@ -1,25 +1,22 @@
 from src.providers.oebb import _clean_title_keep_places
 
 def test_title_reordering_vienna_first() -> None:
-    # Case 1: Vienna station second -> should swap
-    # "Linz/Donau" (unknown/outer) <-> "Wien Hauptbahnhof" (known/vienna)
-    # Note: "Linz/Donau" is not in stations.json, so it's treated as raw string (non-Vienna)
+    # Case 1: Vienna station second -> should swap.
+    # "Linz/Donau" canonicalises to "Linz Hbf" via the directory.
     t = "Linz/Donau ↔ Wien Hauptbahnhof"
-    # Current behavior (before fix): Keeps order "Linz/Donau ↔ Wien Hauptbahnhof"
-    # Desired behavior: "Wien Hauptbahnhof ↔ Linz/Donau"
-    assert _clean_title_keep_places(t) == "Wien Hauptbahnhof ↔ Linz/Donau"
+    assert _clean_title_keep_places(t) == "Wien Hauptbahnhof ↔ Linz Hbf"
 
 def test_title_reordering_vienna_first_salzburg() -> None:
-    # Case 2: Vienna station second
+    # Case 2: Vienna station second; "Salzburg" canonicalises to
+    # "Salzburg Hbf" via the directory.
     t = "Salzburg ↔ Wien Hauptbahnhof"
-    assert _clean_title_keep_places(t) == "Wien Hauptbahnhof ↔ Salzburg"
+    assert _clean_title_keep_places(t) == "Wien Hauptbahnhof ↔ Salzburg Hbf"
 
 def test_title_ordering_preserved_if_vienna_first() -> None:
-    # Case 3: Vienna station first -> keep
+    # Case 3: Vienna station first -> keep order; "Bruck/Mur"
+    # canonicalises to "Bruck an der Mur".
     t = "Wien Hauptbahnhof ↔ Bruck/Mur"
-    # Bruck/Mur might be "Bruck an der Mur" or just unknown.
-    # Assuming "Wien Hauptbahnhof" is Vienna.
-    assert _clean_title_keep_places(t) == "Wien Hauptbahnhof ↔ Bruck/Mur"
+    assert _clean_title_keep_places(t) == "Wien Hauptbahnhof ↔ Bruck an der Mur"
 
 def test_title_ordering_preserved_if_both_vienna() -> None:
     # Case 4: Both Vienna -> keep order
@@ -27,6 +24,6 @@ def test_title_ordering_preserved_if_both_vienna() -> None:
     assert _clean_title_keep_places(t) == "Wien Floridsdorf ↔ Wien Meidling"
 
 def test_title_ordering_preserved_if_neither_vienna() -> None:
-    # Case 5: Neither Vienna -> keep order
+    # Case 5: Neither Vienna -> keep order; both canonicalise now.
     t = "Linz/Donau ↔ Salzburg"
-    assert _clean_title_keep_places(t) == "Linz/Donau ↔ Salzburg"
+    assert _clean_title_keep_places(t) == "Linz Hbf ↔ Salzburg Hbf"
