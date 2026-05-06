@@ -251,7 +251,23 @@ def _compile_regex(name: str, default_pattern: str) -> re.Pattern[Any]:
 
 
 BOARD_DURATION_MIN = _load_int_env("VOR_BOARD_DURATION_MIN", DEFAULT_BOARD_DURATION_MIN)
-HTTP_TIMEOUT = _load_int_env("VOR_HTTP_TIMEOUT", DEFAULT_HTTP_TIMEOUT)
+# Security: ``DEFAULT_HTTP_TIMEOUT`` (15s) is the Slowloris-defence ceiling for
+# every VOR request — both the connect and read budget for ``fetch_content_safe``
+# at lines 1173 and 1436, plus the cache-update script at
+# ``scripts/update_vor_stations.py``. ``_load_int_env`` only enforces a lower
+# bound (``value > 0``), so a benign-looking env override such as
+# ``VOR_HTTP_TIMEOUT=99999`` (intentional misconfig, leaked CI env, or
+# compromised secret store) would silently let a single sluggish or attacker-
+# controlled upstream peer hold a worker for ~28 hours. Combined with
+# ``VOR_MAX_WORKERS=10`` and the per-run station fan-out, a handful of
+# slow-drip responses would exhaust the thread pool and stall the whole feed
+# build. The env var stays useful for *tightening* the timeout (e.g. 5s in
+# tests with a stub server) but can never raise it above the documented
+# Slowloris ceiling.
+HTTP_TIMEOUT = min(
+    _load_int_env("VOR_HTTP_TIMEOUT", DEFAULT_HTTP_TIMEOUT),
+    DEFAULT_HTTP_TIMEOUT,
+)
 MAX_STATIONS_PER_RUN = _load_int_env(
     "VOR_MAX_STATIONS_PER_RUN", DEFAULT_MAX_STATIONS_PER_RUN
 )

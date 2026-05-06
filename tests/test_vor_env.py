@@ -68,6 +68,29 @@ def test_invalid_int_env_uses_defaults(
     importlib.reload(vor)
 
 
+def test_http_timeout_capped_at_slowloris_ceiling(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # Security: VOR_HTTP_TIMEOUT must never exceed DEFAULT_HTTP_TIMEOUT (15s),
+    # which is the Slowloris-defence ceiling for both connect and read
+    # budgets. An env override (intentional misconfig, leaked CI env, or
+    # compromised secret store) that raised the timeout would let a single
+    # sluggish or attacker-controlled upstream peer hold a worker for hours,
+    # exhausting the thread pool (VOR_MAX_WORKERS=10) and stalling the feed
+    # build. The env var may still *tighten* the timeout below the ceiling.
+    monkeypatch.setenv("VOR_HTTP_TIMEOUT", "99999")
+    importlib.reload(vor)
+    assert vor.HTTP_TIMEOUT == vor.DEFAULT_HTTP_TIMEOUT == 15
+
+    monkeypatch.setenv("VOR_HTTP_TIMEOUT", "5")
+    importlib.reload(vor)
+    assert vor.HTTP_TIMEOUT == 5
+
+    monkeypatch.delenv("VOR_HTTP_TIMEOUT", raising=False)
+    importlib.reload(vor)
+    assert vor.HTTP_TIMEOUT == vor.DEFAULT_HTTP_TIMEOUT
+
+
 def test_max_requests_per_day_capped_at_contract_limit(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
