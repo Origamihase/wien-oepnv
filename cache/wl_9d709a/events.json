@@ -296,7 +296,7 @@
     "guid": "b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5",
     "pubDate": "2026-05-04T04:00:01+02:00",
     "starts_at": "2026-05-04T04:00:01+02:00",
-    "ends_at": "2026-05-06T23:59:59+02:00",
+    "ends_at": "2026-05-07T23:59:59+02:00",
     "_identity": "wl|störung|L=10A,41E|D=2026-05-04"
   },
   {
@@ -308,7 +308,7 @@
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
     "pubDate": "2026-05-02T00:00:10+02:00",
     "starts_at": "2026-05-02T00:00:10+02:00",
-    "ends_at": "2026-05-06T23:59:59+02:00",
+    "ends_at": "2026-05-07T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-05-02"
   },
   {
@@ -344,7 +344,7 @@
     "guid": "00ff6d6f3f45a1da51d50f38ff411880802ea2b3eff44739ccc6d8e21f003d12",
     "pubDate": "2026-05-02T00:00:24+02:00",
     "starts_at": "2026-05-02T00:00:24+02:00",
-    "ends_at": "2026-05-06T23:59:59+02:00",
+    "ends_at": "2026-05-07T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-05-02"
   },
   {
@@ -356,7 +356,7 @@
     "guid": "46ae3a2d2382092f60c8fcccc65d43dbd7b4d4a0912d5b132508027ee5065181",
     "pubDate": "2026-05-02T00:00:24+02:00",
     "starts_at": "2026-05-02T00:00:24+02:00",
-    "ends_at": "2026-05-06T23:59:59+02:00",
+    "ends_at": "2026-05-07T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-05-02"
   },
   {
@@ -368,7 +368,7 @@
     "guid": "d69dbcd381e73ff23979749766d0ce677cb151b10269f6f878240d11cec54c8f",
     "pubDate": "2026-05-02T00:00:24+02:00",
     "starts_at": "2026-05-02T00:00:24+02:00",
-    "ends_at": "2026-05-06T23:59:59+02:00",
+    "ends_at": "2026-05-07T23:59:59+02:00",
     "_identity": "wl|störung|L=43|D=2026-05-02"
   },
   {
@@ -380,7 +380,7 @@
     "guid": "05f43b3cc6e7fc469b2327c420ffd938743c80bae8e543e6b1266ae3efe72301",
     "pubDate": "2026-05-02T00:00:24+02:00",
     "starts_at": "2026-05-02T00:00:24+02:00",
-    "ends_at": "2026-05-06T23:59:59+02:00",
+    "ends_at": "2026-05-07T23:59:59+02:00",
     "_identity": "wl|störung|L=44A|D=2026-05-02"
   },
   {
@@ -404,7 +404,7 @@
     "guid": "ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b",
     "pubDate": "2026-04-30T00:00:09+02:00",
     "starts_at": "2026-04-30T00:00:09+02:00",
-    "ends_at": "2026-05-06T23:59:59+02:00",
+    "ends_at": "2026-05-07T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-04-30"
   },
   {
@@ -416,7 +416,7 @@
     "guid": "2e81664b466c3dc8fb25f01cb7f94db53c7c1809ddad9da725eab40d51d19c18",
     "pubDate": "2026-05-02T00:00:24+02:00",
     "starts_at": "2026-05-02T00:00:24+02:00",
-    "ends_at": "2026-05-06T23:59:59+02:00",
+    "ends_at": "2026-05-07T23:59:59+02:00",
     "_identity": "wl|störung|L=46|D=2026-05-02"
   },
   {
@@ -434,6 +434,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
+    "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45",
+    "pubDate": "2026-05-06T23:08:35+02:00",
+    "starts_at": "2026-05-07T00:00:13+02:00",
+    "ends_at": "2026-05-07T23:59:59+02:00",
+    "_identity": "wl|störung|L=71E|D=2026-05-06"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "80A: Bauarbeiten",
     "description": "Die Linie 80A wird in Richtung Neu Marx zwischen Friedensgasse und Stadionbrücke über die Wittelsbachstraße, Erdberger Lände und Schlachthausgasse umgeleitet. Die Haltestellen Friedensgasse, Lukschgasse, Rustenschacherallee, Klaschkaweg und Stadionbrücke können dadurch nicht eingehalten werden. Voraussichtliche Dauer: Ende Mai 2026. Grund: Bauarbeiten im Bereich Stadionallee.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -446,13 +458,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Verunreinigung",
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "title": "N29: Busse halten auf der Hauptfahrbahn",
+    "description": "Busse halten auf\nder Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "dc7342a90fe1d05d98efc9491edf8888b79ca9c35e7d9cbc57a2361ba1a35f43",
-    "pubDate": "2026-05-06T22:23:00+02:00",
-    "starts_at": "2026-05-06T22:23:00+02:00",
-    "ends_at": "2026-05-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-05-06"
+    "guid": "daf75fcf3a17c93435d15224c0efec4834fd4ae91a3bc042613a20326620f98a",
+    "pubDate": "2026-05-06T23:00:10+02:00",
+    "starts_at": "2026-05-06T23:00:10+02:00",
+    "ends_at": "2026-05-07T05:30:00+02:00",
+    "_identity": "wl|störung|L=N29|D=2026-05-06"
   }
 ]
