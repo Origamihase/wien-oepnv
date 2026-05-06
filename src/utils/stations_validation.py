@@ -604,8 +604,9 @@ def _find_naming_issues(
        lookup branches and signals an unnormalized write path.
     3. **Vienna/pendler mutual exclusivity** – ``in_vienna`` and ``pendler``
        partition the directory: every entry is *either* inside the city
-       limits *or* a commuter-belt station outside, never both. The single
-       exception is ``type: manual_foreign_city`` (München, Roma) where
+       limits *or* a commuter-belt station outside, never both. The
+       exceptions are ``type: manual_foreign_city`` (München, Roma) and
+       ``type: manual_distant_at`` (Salzburg, Graz, Linz etc.) where
        both flags may legitimately be ``false``.
     """
     name_to_identifiers: dict[str, list[str]] = defaultdict(list)
@@ -664,14 +665,19 @@ def _find_naming_issues(
                     "commuter-belt station)"
                 ),
             )
-        elif not in_vienna and not pendler and entry_type != "manual_foreign_city":
+        elif (
+            not in_vienna
+            and not pendler
+            and entry_type not in ("manual_foreign_city", "manual_distant_at")
+        ):
             yield NamingIssue(
                 identifier=identifier,
                 name=name,
                 reason=(
                     "in_vienna and pendler are both false — entry should "
                     "either be classified as a Vienna station, a commuter "
-                    "station, or marked with type='manual_foreign_city'"
+                    "station, or marked with type='manual_foreign_city' "
+                    "or type='manual_distant_at'"
                 ),
             )
 
