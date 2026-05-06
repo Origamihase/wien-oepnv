@@ -1,0 +1,106 @@
+name: Manual full refresh
+
+# Manueller Sammel-Workflow: aktualisiert in einem Lauf saemtliche Caches,
+# anschliessend das Stationsverzeichnis und zuletzt den Feed. Gedacht als
+# einfacher "alles neu"-Trigger – die regulaer geplanten Einzel-Workflows
+# bleiben unveraendert bestehen.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Teilt sich die Sperre mit den einzelnen Cache-Workflows, damit nicht
+# parallel auf die gleichen externen APIs zugegriffen wird.
+concurrency:
+  group: external-api-fetch
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      PYTHONPATH: src
+      PIP_CACHE_DIR: /tmp/pip-cache
+      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
+      VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
+      VOR_BASE: ${{ secrets.VOR_BASE }}
+      VOR_VERSION: ${{ secrets.VOR_VERSION }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 0
+
+      - name: Ensure pip cache directory exists
+        run: mkdir -p "$PIP_CACHE_DIR"
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      # ----- 1) Caches der Quellsysteme aktualisieren -----
+      - name: Refresh Baustellen cache
+        run: python scripts/update_baustellen_cache.py
+
+      - name: Refresh Wiener Linien cache
+        run: python scripts/update_wl_cache.py
+
+      - name: Refresh ÖBB cache
+        run: python scripts/update_oebb_cache.py
+
+      - name: Validate VOR secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "${VOR_ACCESS_ID:-}" || -z "${VOR_BASE_URL:-}" ]]; then
+            echo "Secrets fehlen (VOR_ACCESS_ID/VOR_BASE_URL)." >&2
+            exit 1
+          fi
+
+      - name: Refresh VOR cache
+        run: python scripts/update_vor_cache.py
+
+      # ----- 2) Stationsverzeichnis aktualisieren -----
+      - name: Refresh VOR stop list (best-effort)
+        run: |
+          python scripts/fetch_vor_haltestellen.py --verbose \
+            || echo "::warning::VOR refresh failed; using pinned data/vor-haltestellen.csv"
+        continue-on-error: true
+
+      - name: Refresh station directory
+        run: python scripts/update_all_stations.py --verbose
+
+      - name: Regenerate validation report
+        run: python -m src.cli stations validate --output docs/stations_validation_report.md
+
+      # ----- 3) Feed bauen -----
+      - name: Build feed
+        run: python -m src.cli feed build
+        env:
+          # Atom self/alternate-Links werden direkt im Python-Builder geschrieben.
+          # Aus dem aktuellen Repo abgeleitet, damit Forks korrekte atom:link-URLs
+          # schreiben statt auf das Original-Repo zu zeigen.
+          PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+
+      # ----- 4) Aenderungen committen und pushen -----
+      - name: Pull concurrent remote changes
+        run: git pull --rebase --autostash
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
+        with:
+          commit_message: 'chore: full project refresh (manual trigger) [skip ci]'
+          add_options: '-A'
+          push_options: '--force-with-lease'
