@@ -91,8 +91,38 @@ def read_cache_wl() -> List[Any]:
     return list(read_cache("wl") or [])
 
 
+def _post_filter_oebb(items: List[Any]) -> List[Any]:
+    """Re-apply the ÖBB relevance filter to cached items.
+
+    The cache is only refreshed by `update_oebb_cache.py`, so a filter
+    update doesn't reach the feed until the next cache refresh. Without
+    this defence-in-depth re-check the feed can carry items that the
+    *current* spec considers irrelevant (e.g. Wien↔Distant routes that
+    slipped through an older filter version).
+
+    Items without a title are passed through unchanged so test fixtures
+    and other generic dictionaries aren't accidentally dropped.
+    """
+    from .providers.oebb import _is_relevant  # local import: avoids circular at module load
+
+    out: List[Any] = []
+    for item in items:
+        if not isinstance(item, dict):
+            out.append(item)
+            continue
+        title = str(item.get("title") or "")
+        description = str(item.get("description") or "")
+        if not title and not description:
+            # Stub / metadata item — leave it alone.
+            out.append(item)
+            continue
+        if _is_relevant(title, description):
+            out.append(item)
+    return out
+
+
 def read_cache_oebb() -> List[Any]:
-    return list(read_cache("oebb") or [])
+    return _post_filter_oebb(list(read_cache("oebb") or []))
 
 
 def read_cache_vor() -> List[Any]:

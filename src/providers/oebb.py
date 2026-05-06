@@ -102,11 +102,20 @@ _WEATHER_KEYWORD_RE = re.compile(
     re.IGNORECASE,
 )
 _TRANSIT_KEYWORD_RE = re.compile(
-    r"\b(bauarbeiten|störung|stoerung|verspätung|verspaetung|sperre|sperrung|"
-    r"umleitung|ersatzverkehr|haltausfall|zugausfall|streckenunterbrechung|"
-    r"unterbrechung|teilausfall|baustelle|baustellen|gleisbauarbeiten|"
-    r"schienenersatzverkehr|sev|fahrplanänderung|fahrplanaenderung|"
-    r"verkehrseinschränkung|verkehrseinschraenkung|einschränkung|einschraenkung)\b",
+    # Match common stems and accept trailing inflection (Verspätung →
+    # Verspätungen, Sperrung → Sperrungen, etc.). The trailing
+    # ``\w{0,4}`` keeps the regex bounded but covers German plural and
+    # genitive forms without enumerating every variant.
+    r"\b(bauarbeit\w{0,4}|störung\w{0,4}|stoerung\w{0,4}|"
+    r"verspätung\w{0,4}|verspaetung\w{0,4}|sperre\w{0,4}|sperrung\w{0,4}|"
+    r"gesperrt|geschlossen|unterbrochen|eingestellt|"
+    r"umleitung\w{0,4}|ersatzverkehr|haltausfall\w{0,4}|zugausfall\w{0,4}|"
+    r"streckenunterbrechung\w{0,4}|unterbrechung\w{0,4}|teilausfall\w{0,4}|"
+    r"baustelle\w{0,4}|gleisbauarbeit\w{0,4}|"
+    r"schienenersatzverkehr|sev|fahrplanänderung\w{0,4}|"
+    r"fahrplanaenderung\w{0,4}|"
+    r"verkehrseinschränkung\w{0,4}|verkehrseinschraenkung\w{0,4}|"
+    r"einschränkung\w{0,4}|einschraenkung\w{0,4})\b",
     re.IGNORECASE,
 )
 
@@ -659,6 +668,30 @@ _TITLE_NOISE_WORDS = frozenset({
     "wochenenden",
     "feiertag",
     "feiertage",
+    # Weather words (Sturm/Wetter etc.) — not station names; mentioning
+    # them after a known Vienna station shouldn't drag the message into
+    # the implicit-route heuristic.
+    "sturm",
+    "sturmschaden",
+    "sturmwarnung",
+    "unwetter",
+    "gewitter",
+    "hochwasser",
+    "wetter",
+    "wetterlage",
+    "wettersituation",
+    "glatteis",
+    "schnee",
+    "schneefall",
+    "schneefälle",
+    "schneefaelle",
+    "regen",
+    "wind",
+    "hagel",
+    "frost",
+    "murenabgang",
+    "lawinengefahr",
+    "lawine",
     # Facility / generic location words (already in _NON_STATION_FIRST_WORDS
     # but we list them here too for the title-residual check)
     "aufzug",
