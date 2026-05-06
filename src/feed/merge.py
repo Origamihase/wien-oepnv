@@ -16,8 +16,12 @@ from typing import Any, Dict, List, Set, Tuple, Union
 # compared.
 _LINE_PREFIX_RE = re.compile(
     r"^\s*("
-    r"[A-Za-z]+\s*\d{1,3}[A-Za-z]?"  # ÖBB style: REX 7, S 50, RJX 12
-    r"(?:\s*/\s*[A-Za-z]+\s*\d{1,3}[A-Za-z]?)*"
+    # ÖBB style: REX 7, S 50, RJX 12. The optional ``-Bahn`` segment
+    # tolerates verbose spellings like ``S-Bahn 50`` and ``U-Bahn 6``
+    # so they can fuzzy-merge with the compact ``S 50`` / ``U6``
+    # variants from another provider.
+    r"[A-Za-z]+(?:-[Bb]ahn)?\s*\d{1,3}[A-Za-z]?"
+    r"(?:\s*/\s*[A-Za-z]+(?:-[Bb]ahn)?\s*\d{1,3}[A-Za-z]?)*"
     r"|[A-Za-z0-9]+(?:\s*/\s*[A-Za-z0-9]+){0,20}"  # WL style: 1/2, U6, 13A
     r")\s*:\s*"
 )
@@ -178,8 +182,12 @@ def _parse_title(title: str) -> Tuple[Set[str], str]:
 
     lines = set()
     for raw in lines_str.split("/"):
+        # Strip a verbose ``-Bahn`` suffix so "S-Bahn 50" and "S 50"
+        # produce the same canonical token "S50" — without this both
+        # would coexist in the feed for the same incident.
+        cleaned = re.sub(r"-bahn", "", raw, flags=re.IGNORECASE)
         # Drop inner whitespace so "REX 7" and "REX7" become the same token.
-        token = re.sub(r"\s+", "", raw).upper()
+        token = re.sub(r"\s+", "", cleaned).upper()
         if _LINE_TOKEN_RE.match(token):
             lines.add(token)
 
