@@ -1393,18 +1393,24 @@ def _format_item_content(
                     summary = summary[leading.end():].strip()
 
     # Extrahiere maximal die ersten zwei Sätze.
-    # Boundary regex: a real sentence end is a period after a letter (not a
-    # digit — German dates use ``17. Februar``) followed by whitespace and
-    # an uppercase German letter. This avoids two false splits seen in the
-    # live cache:
-    #   * ``bzw. vorverlegten`` (abbreviation; lowercase follower → keep)
+    # Boundary regex: a real sentence end is a period after at least
+    # FOUR letters (not a digit — German dates use ``17. Februar``,
+    # not a 1-3 letter abbreviation either — German loves ``Gerasdorf
+    # b. Wien``, ``Wien Hbf.``, ``Karlsplatz U.``, ``Bahnhst bzw.``
+    # — all of these would otherwise be misread as sentence ends),
+    # followed by whitespace and an uppercase German letter. This
+    # avoids four false splits seen in the live cache:
     #   * ``17. Februar 2026`` (date; digit before period → keep)
+    #   * ``Gerasdorf b. Wien`` (single-letter abbrev → keep)
+    #   * ``Karlsplatz U. (Bereich)`` (single-letter U-Bahn marker → keep)
+    #   * ``Bahnhst bzw. Gerasdorf`` (3-letter abbrev → keep)
     # while still cutting at genuine sentence boundaries like
-    # ``Richtungen. Grund: …`` and ``Karlsplatz U. Grund: …``.
+    # ``Richtungen. Grund: …``, ``möglich. Reisende …`` and
+    # ``ausgefallen. Wir bitten …``.
     sentences = [
         s.strip()
         for s in re.split(
-            r'(?<=[A-Za-zÄÖÜäöüß][.!?])\s+(?=[A-ZÄÖÜ])', summary
+            r'(?<=[A-Za-zÄÖÜäöüß]{4}[.!?])\s+(?=[A-ZÄÖÜ])', summary
         )
         if s.strip()
     ]
