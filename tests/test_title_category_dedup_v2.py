@@ -48,20 +48,27 @@ def _format(raw_title: str, raw_desc: str) -> tuple[str, str]:
 
 class TestCategoryPrefixSecondPattern:
     def test_bauarbeiten_busse_halten_stripped(self) -> None:
-        # Cache item #38.
+        # Cache item #38. After Round 25 strips the leading
+        # "Bauarbeiten", the remaining summary equals the title body
+        # exactly. Round 27 then drops the whole summary so the user
+        # doesn't see the same text twice — desc becomes just the
+        # timeframe.
         title = "62A: Busse halten Breitenfurter Straße 236-238"
         desc = "Bauarbeiten Busse halten Breitenfurter Straße 236-238"
         _, out = _format(title, desc)
-        assert not out.startswith("Bauarbeiten")
-        assert out.startswith("Busse halten")
+        # Either the leading category was stripped (Round 25) and the
+        # title-body duplicate was then dropped (Round 27) — verify
+        # the awkward "Bauarbeiten" prefix is gone.
+        assert "Bauarbeiten" not in out
 
     def test_gleisbauarbeiten_ersatzbus_stripped(self) -> None:
-        # Cache item #28.
+        # Cache item #28. Round 25 strips "Gleisbauarbeiten", the
+        # remaining text equals the title body, Round 27 drops the
+        # duplicate.
         title = "41E: Ersatzbus 41E hält gegenüber"
         desc = "Gleisbauarbeiten Ersatzbus 41E hält gegenüber"
         _, out = _format(title, desc)
-        assert not out.startswith("Gleisbauarbeiten")
-        assert out.startswith("Ersatzbus 41E")
+        assert "Gleisbauarbeiten" not in out
 
     def test_no_match_no_strip(self) -> None:
         # Description starts with a category word but the title body's

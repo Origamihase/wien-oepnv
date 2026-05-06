@@ -1519,6 +1519,21 @@ def _format_item_content(
     if time_line:
         time_line = f"[{time_line.strip('[]')}]"
 
+    # Skip the summary entirely when it would just repeat the title
+    # body verbatim. WL Störung items like ``41E: Ersatzbus 41E halten
+    # bei Währinger Str 200`` produce a description that's identical
+    # to the title body after the line-prefix is stripped — surfacing
+    # both gives the user the same text twice. We compare casefold so
+    # ``Linie 11A: Verspätung.`` and ``Verspätung`` are not flagged
+    # as duplicates (different content).
+    if summary and title_out:
+        title_body_match = re.match(r"^[A-Za-z0-9/]+:\s*(\S.*)$", title_out)
+        title_body_compare = (
+            title_body_match.group(1).strip() if title_body_match else title_out
+        )
+        if title_body_compare and summary.casefold() == title_body_compare.casefold():
+            summary = ""
+
     # Combine
     desc_parts = []
     if summary:
