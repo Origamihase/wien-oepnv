@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 06 May 2026 14:16:18 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2026 15:11:20 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U2: Verspätungen]]></title>
+      <title><![CDATA[26A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1</guid>
-      <pubDate>Wed, 06 May 2026 13:19:00 +0200</pubDate>
+      <guid isPermaLink="false">ccb49ecd7b5e4fd97d1b9d1a06c7dac25eed876e72b21077b01136c445d90099</guid>
+      <pubDate>Wed, 06 May 2026 14:12:00 +0200</pubDate>
       <ext:first_seen>Wed, 06 May 2026 13:24:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 13:19:00 +0200</ext:starts_at>
+      <ext:starts_at>Wed, 06 May 2026 14:12:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 06.05.2026]]]></content:encoded>
+      <description>Linie 26 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 06.05.2026]</description>
+      <content:encoded><![CDATA[Linie 26 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 06.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4</guid>
+      <pubDate>Wed, 06 May 2026 14:10:00 +0200</pubDate>
+      <ext:first_seen>Wed, 06 May 2026 15:11:20 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 06 May 2026 14:10:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 06.05.2026]</description>
+      <content:encoded><![CDATA[Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 06.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
+      <pubDate>Wed, 06 May 2026 13:56:00 +0200</pubDate>
+      <ext:first_seen>Wed, 06 May 2026 15:11:20 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 06 May 2026 13:56:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 06.05.2026]</description>
+      <content:encoded><![CDATA[Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 06.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Mitte-Landstraße ↔ Wien Floridsdorf]]></title>
@@ -51,39 +73,6 @@
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Wien Hütteldorf (U) von 04.07.2026 (ca.<br/>[Seit 06.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[38: Fahrtbehinderung wegen Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">14b787061b8e077e79d48423bff586516bd1c55ab89e303fd510de9c03ccc6d9</guid>
-      <pubDate>Wed, 06 May 2026 12:35:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 13:24:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 12:55:33 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0245b6164e8aeaf5bf219cd1cff1358fe2406e2c522e5ac88f5e5fc5c5e87abe</guid>
-      <pubDate>Wed, 06 May 2026 11:29:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 13:24:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 11:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 26 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie 26 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 06.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f00bcae17764f62582458ff81855410216ab3b96f1a4443be49d05c1dcfefa76</guid>
-      <pubDate>Wed, 06 May 2026 11:20:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 13:24:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 11:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 2 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie 2 A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 06.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">156d90f1fcb0c74f4bce3fbf47a7aa6473974e0501109186dc9f43f15805f3c3</guid>
@@ -113,6 +102,17 @@
       <ext:starts_at>Tue, 05 May 2026 12:09:13 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge IC 1110, IC 1113, IC … [Seit 05.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge IC 1110, IC 1113, IC …<br/>[Seit 05.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[41E/200: Ersatzbus 41E halten bei Währinger Str 200]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a657e92e137287df0f77ce5ceb73ea71a9fd7955f6c1ce5c4c0510151ba14a3e</guid>
+      <pubDate>Mon, 04 May 2026 04:00:01 +0200</pubDate>
+      <ext:first_seen>Tue, 05 May 2026 01:29:59 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 04 May 2026 04:00:01 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 06 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten Ersatzbus 41 E halten bei Währinger Str 200 [04.05.2026 – 06.05.2026]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten Ersatzbus 41 E halten bei Währinger Str 200<br/>[04.05.2026 – 06.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
