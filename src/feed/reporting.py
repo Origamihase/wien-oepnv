@@ -45,6 +45,18 @@ _MAX_REPORT_MESSAGE_LENGTH = 2000
 _MAX_REPORT_MESSAGE_COUNT = 100
 _REPORT_TRUNCATION_MARKER = "… [gekürzt]"
 
+# GitHub's REST API rejects an issue body longer than 65 536 characters with
+# a 422 ("Validation Failed: body is too long"). The auto-issue submitter is
+# the project's *primary alert channel for failed feed runs*; if it goes
+# silent, operators don't notice that builds are broken until the cached
+# feed staleness becomes apparent (a much slower signal). Cap the rendered
+# body to leave headroom for protocol overhead and the truncation marker
+# itself.
+_MAX_GITHUB_BODY_LENGTH = 60_000
+_BODY_TRUNCATION_MARKER = (
+    "\n\n— Body wegen GitHub-API-Limit gekürzt; siehe Logdatei für vollständige Details —\n"
+)
+
 
 def _bounded_message(message: str) -> str:
     """Truncate ``message`` to the per-report length cap with a marker."""
@@ -52,6 +64,24 @@ def _bounded_message(message: str) -> str:
         return message
     keep = _MAX_REPORT_MESSAGE_LENGTH - len(_REPORT_TRUNCATION_MARKER)
     return message[:keep] + _REPORT_TRUNCATION_MARKER
+
+
+def _bounded_github_body(body: str) -> str:
+    """Truncate ``body`` to GitHub's per-issue body limit at a line boundary.
+
+    Cutting mid-line could leave the rendered Markdown half-formed (a
+    half-open table cell, an unterminated fenced code block) which ugly-
+    fails GitHub's renderer. Truncating at the last newline before the
+    cap keeps each line atomic, then appends a visible marker.
+    """
+    if len(body) <= _MAX_GITHUB_BODY_LENGTH:
+        return body
+    keep = _MAX_GITHUB_BODY_LENGTH - len(_BODY_TRUNCATION_MARKER)
+    head = body[:keep]
+    last_newline = head.rfind("\n")
+    if last_newline > 0:
+        head = head[:last_newline]
+    return head + _BODY_TRUNCATION_MARKER
 
 
 def clean_message(message: str | None) -> str:
@@ -803,7 +833,10 @@ class _GithubIssueReporter:
 
         payload: dict[str, Any] = {
             "title": self._build_title(report),
-            "body": self._build_body(report),
+            # Security/availability: cap the body BEFORE the POST so a flood
+            # of unique provider errors can't push the request past GitHub's
+            # ~65 KB body limit (see _MAX_GITHUB_BODY_LENGTH for rationale).
+            "body": _bounded_github_body(self._build_body(report)),
         }
         if self._config.labels:
             payload["labels"] = list(self._config.labels)
