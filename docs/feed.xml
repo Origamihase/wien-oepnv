@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 06 May 2026 19:05:48 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2026 19:12:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[49: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a</guid>
+      <pubDate>Wed, 06 May 2026 18:44:00 +0200</pubDate>
+      <ext:first_seen>Wed, 06 May 2026 19:12:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 06 May 2026 18:51:56 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.05.2026]</description>
+      <content:encoded><![CDATA[Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">219e547df2be869f9c5e196043c5ef1b5d356073d50ea5347540dd618f54101f</guid>
+      <pubDate>Wed, 06 May 2026 18:24:00 +0200</pubDate>
+      <ext:first_seen>Wed, 06 May 2026 19:12:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 06 May 2026 18:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 06.05.2026]</description>
+      <content:encoded><![CDATA[Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 06.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a</guid>
+      <pubDate>Wed, 06 May 2026 18:13:00 +0200</pubDate>
+      <ext:first_seen>Wed, 06 May 2026 15:11:20 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 06 May 2026 18:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 06.05.2026]</description>
+      <content:encoded><![CDATA[Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 06.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Liesing ↔ Wien Hetzendorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -18,28 +51,6 @@
       <ext:starts_at>Wed, 06 May 2026 17:25:16 +0200</ext:starts_at>
       <description>Wegen Personen im Gleisbereich waren zwischen Wien Liesing Bahnhof und Wien Hetzendorf Bahnhst bis 17:19 Uhr keine Fahrten möglich. [Seit 06.05.2026]</description>
       <content:encoded><![CDATA[Wegen Personen im Gleisbereich waren zwischen Wien Liesing Bahnhof und Wien Hetzendorf Bahnhst bis 17:19 Uhr keine Fahrten möglich.<br/>[Seit 06.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e</guid>
-      <pubDate>Wed, 06 May 2026 17:10:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 15:31:43 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 17:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 06.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Fahrtbehinderung wegen Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789</guid>
-      <pubDate>Wed, 06 May 2026 17:06:00 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 17:20:05 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 06 May 2026 17:08:18 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 60: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 17:30 Uhr. [Am 06.05.2026]</description>
-      <content:encoded><![CDATA[Linie 60: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 17:30 Uhr.<br/>[Am 06.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hauptbahnhof]]></title>
@@ -99,19 +110,8 @@
       <pubDate>Tue, 05 May 2026 12:09:13 +0200</pubDate>
       <ext:first_seen>Mon, 27 Apr 2026 11:06:33 +0200</ext:first_seen>
       <ext:starts_at>Tue, 05 May 2026 12:09:13 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge IC 1110, IC 1113 … [Seit 05.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge IC 1110, IC 1113 …<br/>[Seit 05.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41E: Ersatzbus 41E hält gegenüber]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c9580bfbc912cf09b6eeeee12be0aa373079f5da155cdf44b1021f1b946414ec</guid>
-      <pubDate>Mon, 04 May 2026 08:49:59 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 18:03:08 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 08:49:59 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 06 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten Ersatzbus 41E hält gegenüber [04.05.2026 – 06.05.2026]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten Ersatzbus 41E hält gegenüber<br/>[04.05.2026 – 06.05.2026]]]></content:encoded>
+      <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge IC … [Seit 05.05.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge IC …<br/>[Seit 05.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
