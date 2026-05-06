@@ -104,6 +104,62 @@ def test_static_entry_creates_new_directory_entry_when_csv_has_vor_id(
     assert "Guntramsdorf Südbahn" in guntramsdorf["aliases"]
 
 
+def test_static_entry_includes_allocated_bst_id_in_aliases(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The validator's "missing required aliases" rule expects each
+    station's bst_code to be present in its aliases list. STATIC
+    entries that omit explicit bst_id/bst_code rely on the synthetic
+    900xxx allocator — and the resulting bst_id must end up in the
+    aliases list, otherwise validate_stations reports an alias_issue.
+    Regression for the +7 alias_issues introduced by the original
+    PR #1213 add of seven new STATIC entries.
+    """
+    static_template = {
+        "vor_id": "430361600",
+        "name": "Guntramsdorf Bahnhof",
+        "in_vienna": False,
+        "pendler": True,
+        "latitude": 48.051964,
+        "longitude": 16.297551,
+        "aliases": ["Guntramsdorf Bahnhof", "430361600"],
+        "source": "vor",
+        # bst_id/bst_code intentionally omitted — allocator picks
+    }
+    monkeypatch.setattr(
+        update_vor_stations,
+        "STATIC_VOR_ENTRIES",
+        (static_template,),
+    )
+
+    stations_path = tmp_path / "stations.json"
+    stations_path.write_text(json.dumps({"stations": []}), encoding="utf-8")
+
+    update_vor_stations.merge_into_stations(
+        stations_path,
+        [
+            {
+                "vor_id": "430361600",
+                "name": "Guntramsdorf Bahnhof",
+                "latitude": 48.051964,
+                "longitude": 16.297551,
+                "aliases": ["Guntramsdorf Bahnhof"],
+            }
+        ],
+    )
+
+    payload = json.loads(stations_path.read_text(encoding="utf-8"))
+    entry = next(
+        e for e in payload["stations"] if e["name"] == "Guntramsdorf Bahnhof"
+    )
+    bst_id = entry["bst_id"]
+    assert bst_id, "allocator must populate bst_id"
+    assert bst_id in entry["aliases"], (
+        f"bst_id {bst_id!r} must be present as alias to satisfy the "
+        f"validator's per-source code-as-alias rule"
+    )
+
+
 def test_static_entry_merges_when_existing_station_matches_by_bst_id(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
