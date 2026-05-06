@@ -157,3 +157,22 @@ def test_unmatched_wl_entry_is_appended(stations_path: Path) -> None:
     assert entry["source"] == "wl"
     assert entry["wl_diva"] == "60209999"
     assert entry["aliases"] == ["Neue Station"]
+
+
+def test_merge_sources_emits_alphabetical_order() -> None:
+    """``_merge_sources`` must produce a deterministic alphabetical
+    ordering so two callers with the same set of providers (in any
+    order) yield identical strings. Regression for the inconsistent
+    "google_places,oebb" vs "oebb,google_places" duplication that
+    snuck into stations.json across PRs."""
+    assert update_wl_stations._merge_sources("oebb", "google_places") == "google_places,oebb"
+    assert update_wl_stations._merge_sources("google_places", "oebb") == "google_places,oebb"
+    assert (
+        update_wl_stations._merge_sources("vor", "google_places", "wl")
+        == "google_places,vor,wl"
+    )
+    # idempotent: pre-sorted input stays sorted, dedup wins
+    assert (
+        update_wl_stations._merge_sources("google_places,vor", "vor", "wl")
+        == "google_places,vor,wl"
+    )

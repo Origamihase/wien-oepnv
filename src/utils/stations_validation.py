@@ -445,6 +445,15 @@ def _find_coordinate_issues(
             continue
 
         if not (min_lat <= latitude <= max_lat) or not (min_lon <= longitude <= max_lon):
+            entry_type_raw = entry.get("type")
+            entry_type = entry_type_raw.strip() if isinstance(entry_type_raw, str) else None
+            if entry_type in ("manual_foreign_city", "manual_distant_at"):
+                # Manual cross-country entries (München, Roma, Berlin Hbf,
+                # Salzburg Hbf etc.) carry coordinates that are by design
+                # outside the Wien-Region bounding box. The schema docstring
+                # explicitly tolerates this — skip the bounds check and
+                # don't pollute the report with 21 false positives.
+                continue
             swapped_hint = min_lat <= longitude <= max_lat and min_lon <= latitude <= max_lon
             if swapped_hint:
                 reason = f"coordinates look swapped (lat={latitude}, lon={longitude})"

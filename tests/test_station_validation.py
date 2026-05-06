@@ -164,6 +164,61 @@ def test_coordinate_validation_detects_missing_and_out_of_bounds(tmp_path: Path)
     )
 
 
+def test_coordinate_validation_exempts_manual_distant_types(tmp_path: Path) -> None:
+    """Manual cross-country entries (München Hauptbahnhof, Salzburg Hbf,
+    Berlin Hbf) carry coordinates that lie by design outside the Wien-
+    Region default bounding box. The schema docstring explicitly tolerates
+    out-of-bounds for type='manual_foreign_city' and
+    type='manual_distant_at' — the validator must not report them as
+    coordinate_issues."""
+    stations = [
+        {
+            "name": "Berlin Hbf",
+            "aliases": ["Berlin Hbf"],
+            "latitude": 52.525,
+            "longitude": 13.369,
+            "source": "manual",
+            "type": "manual_foreign_city",
+            "in_vienna": False,
+            "pendler": False,
+        },
+        {
+            "name": "Salzburg Hbf",
+            "aliases": ["Salzburg Hbf"],
+            "latitude": 47.8131,
+            "longitude": 13.0454,
+            "source": "manual",
+            "type": "manual_distant_at",
+            "in_vienna": False,
+            "pendler": False,
+        },
+        # A regular OEBB station with out-of-bounds coordinates must
+        # still trigger an issue — the exemption applies only to manual
+        # cross-country entries.
+        {
+            "bst_id": 99,
+            "bst_code": "X99",
+            "name": "Regular OOB",
+            "aliases": ["Regular OOB"],
+            "latitude": 60.0,
+            "longitude": 25.0,
+            "source": "oebb",
+            "in_vienna": False,
+            "pendler": True,
+        },
+    ]
+    path = tmp_path / "stations.json"
+    path.write_text(json.dumps(stations), encoding="utf-8")
+
+    report = validate_stations(path)
+
+    issue_names = sorted(i.name for i in report.coordinate_issues)
+    assert issue_names == ["Regular OOB"], (
+        f"manual_foreign_city/manual_distant_at must be exempt from "
+        f"the bounds check; got issues for: {issue_names}"
+    )
+
+
 def test_markdown_rendering_contains_cross_station_id_section() -> None:
     """to_markdown() must render cross_station_id_issues in counts and detail."""
     issue = CrossStationIDIssue(
