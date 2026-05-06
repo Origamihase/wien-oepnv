@@ -1323,6 +1323,48 @@ def _format_item_content(
     summary = summary.replace(" • ", " ").replace("•", " ")
     summary = _WHITESPACE_CLEANUP_RE.sub(" ", summary).strip()
 
+    # Strip a leading category word that just repeats the title body.
+    # Real WL Hinweis items render with an H2 like ``Gleisbauarbeiten``
+    # which becomes the title body and *also* the first word of the
+    # description. The user sees::
+    #
+    #   T: "9/40/41/42: Gleisbauarbeiten"
+    #   D: "Gleisbauarbeiten Wegen umfangreicher Gleisbauarbeiten …"
+    #
+    # which reads as a duplicated word at the start of the description.
+    # We only strip when the duplicated leading word is one of the
+    # well-known WL/ÖBB construction-category nouns; this avoids
+    # collapsing e.g. ``Ersatzverkehr zwischen X und Y`` (which is a
+    # complete clause, not a category prefix) when the title also says
+    # ``Ersatzverkehr``.
+    _CATEGORY_PREFIX_WORDS = {
+        "bauarbeiten",
+        "gleisbauarbeiten",
+        "straßenbauarbeiten",
+        "strassenbauarbeiten",
+        "rohrleitungsarbeiten",
+        "kranarbeiten",
+        "veranstaltung",
+    }
+    title_match = re.match(r"^[A-Za-z0-9/]+:\s*(\S.*)$", raw_title or "")
+    title_body = title_match.group(1).strip() if title_match else (raw_title or "").strip()
+    if title_body and summary:
+        first_title_word = title_body.split()[0]
+        first_summary_word = summary.split()[0] if summary else ""
+        if (
+            first_title_word
+            and first_summary_word
+            and first_title_word.casefold() == first_summary_word.casefold()
+            and first_title_word.casefold() in _CATEGORY_PREFIX_WORDS
+        ):
+            leading = re.match(
+                rf"^{re.escape(first_summary_word)}\s*[:.,;–—-]?\s+",
+                summary,
+                re.IGNORECASE,
+            )
+            if leading:
+                summary = summary[leading.end():].strip()
+
     # Extrahiere maximal die ersten zwei Sätze.
     # Boundary regex: a real sentence end is a period after a letter (not a
     # digit — German dates use ``17. Februar``) followed by whitespace and
