@@ -1385,6 +1385,15 @@ def _format_item_content(
                 truncated = truncated[:last_space]
             else:
                 break
+        # Drop a trailing unbalanced opening paren: real ÖBB clauses
+        # like "(jeweils 08:45 Uhr - 14:45 Uhr)" frequently land just
+        # past the opening "(" so the truncated form ended with
+        # "(jeweils 08:45 …" / "(22:00 …" — a dangling paren reads
+        # like a stray glyph before the ellipsis.
+        if truncated.count("(") > truncated.count(")"):
+            last_open = truncated.rfind("(")
+            if last_open >= 0:
+                truncated = truncated[:last_open].rstrip(_PUNCT_STRIP)
         summary = truncated.rstrip(_PUNCT_STRIP) + " …"
 
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
