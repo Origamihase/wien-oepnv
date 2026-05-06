@@ -19,7 +19,7 @@ from dateutil import parser as dtparser
 from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
 from ..utils.ids import make_guid
 from ..utils.logging import sanitize_log_arg
-from ..utils.stations import canonical_name
+from ..utils.stations import canonical_name, display_name
 from ..feed.config import ENDS_AT_GRACE_MINUTES
 
 from .wl_lines import (
@@ -137,7 +137,10 @@ def _stop_names_from_related(rel_stops: list[Any]) -> list[str]:
         if not raw:
             continue
         canonical = canonical_name(raw)
-        final = re.sub(r"\s{2,}", " ", (canonical or raw)).strip()
+        if canonical:
+            final = display_name(canonical)
+        else:
+            final = re.sub(r"\s{2,}", " ", raw).strip()
         if not final:
             continue
         key = final.casefold()

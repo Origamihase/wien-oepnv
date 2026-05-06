@@ -16,6 +16,7 @@ from collections.abc import Iterable
 
 __all__ = [
     "canonical_name",
+    "display_name",
     "is_in_vienna",
     "is_pendler",
     "station_by_oebb_id",
@@ -23,6 +24,16 @@ __all__ = [
     "text_has_vienna_connection",
     "vor_station_ids",
 ]
+
+
+# Canonical station names that should appear under a different label in the
+# user-facing feed output.  ÖBB lists ``Wien Mitte-Landstraße`` as the official
+# station name, but the colloquial ``Wien Mitte`` reads cleaner in a 2-line TV
+# layout — keep the directory entry authoritative and only override at render
+# time.
+_FEED_DISPLAY_OVERRIDES: dict[str, str] = {
+    "Wien Mitte-Landstraße": "Wien Mitte",
+}
 
 
 logger = logging.getLogger(__name__)
@@ -651,6 +662,21 @@ def canonical_name(name: str) -> str | None:
 
     info = station_info(name)
     return info.name if info else None
+
+
+def display_name(name: str | None) -> str:
+    """Return the user-facing display name for a station name.
+
+    Strips the ``(VOR)`` provenance suffix and applies feed-display
+    overrides (e.g. ``Wien Mitte-Landstraße`` → ``Wien Mitte``).  Falls back
+    to the input — trimmed, with any trailing ``(VOR)`` removed — when the
+    name is not in the override map.
+    """
+
+    if not name:
+        return ""
+    cleaned = re.sub(r"\s+\(VOR\)$", "", name).strip()
+    return _FEED_DISPLAY_OVERRIDES.get(cleaned, cleaned)
 
 
 @lru_cache(maxsize=2048)
