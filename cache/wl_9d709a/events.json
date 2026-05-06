@@ -290,14 +290,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "41E/10A: Ersatzbus 41E\nhält beim 10A",
-    "description": "Gleisbauarbeiten\nErsatzbus 41E\nhält beim 10A",
+    "title": "10A: Verkehrsüberlastung",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5",
-    "pubDate": "2026-05-04T04:00:01+02:00",
-    "starts_at": "2026-05-04T04:00:01+02:00",
-    "ends_at": "2026-05-06T23:59:59+02:00",
-    "_identity": "wl|störung|L=10A,41E|D=2026-05-04"
+    "guid": "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405",
+    "pubDate": "2026-05-06T16:08:00+02:00",
+    "starts_at": "2026-05-06T16:08:00+02:00",
+    "ends_at": "2026-05-06T17:40:00+02:00",
+    "_identity": "wl|störung|L=10A|D=2026-05-06"
   },
   {
     "source": "Wiener Linien",
@@ -308,20 +308,8 @@
     "guid": "9d0a7e4b9b87021faced5a5e0994d1adbea3b271fc48868ad2b14e038ee2871b",
     "pubDate": "2026-05-06T15:27:00+02:00",
     "starts_at": "2026-05-06T15:27:00+02:00",
-    "ends_at": "2026-05-06T23:55:00+02:00",
+    "ends_at": "2026-05-06T17:35:00+02:00",
     "_identity": "wl|störung|L=11A|D=2026-05-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41E/200: Ersatzbus 41E\nhalten bei\nWähringer Str 200",
-    "description": "Gleisbauarbeiten\nErsatzbus 41E\nhalten bei\nWähringer Str 200",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a657e92e137287df0f77ce5ceb73ea71a9fd7955f6c1ce5c4c0510151ba14a3e",
-    "pubDate": "2026-05-04T04:00:01+02:00",
-    "starts_at": "2026-05-04T04:00:01+02:00",
-    "ends_at": "2026-05-06T23:59:59+02:00",
-    "_identity": "wl|störung|L=200,41E|D=2026-05-04"
   },
   {
     "source": "Wiener Linien",
@@ -332,32 +320,8 @@
     "guid": "ccb49ecd7b5e4fd97d1b9d1a06c7dac25eed876e72b21077b01136c445d90099",
     "pubDate": "2026-05-06T14:12:00+02:00",
     "starts_at": "2026-05-06T14:12:00+02:00",
-    "ends_at": "2026-05-06T23:55:00+02:00",
+    "ends_at": "2026-05-06T17:20:00+02:00",
     "_identity": "wl|störung|L=26A|D=2026-05-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27A: Verkehrsunfall",
-    "description": "Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bbacca51ff9cf622b759026e12c7e7bed2f062b110dcb62f80436d02cfc94e77",
-    "pubDate": "2026-05-06T15:19:00+02:00",
-    "starts_at": "2026-05-06T15:19:00+02:00",
-    "ends_at": "2026-05-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=27A|D=2026-05-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31: Verspätungen",
-    "description": "Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6c21c74cc84894b7e65fe8ea51db3f5b61d9d4579ddbc08da82f7d12c6a3810c",
-    "pubDate": "2026-05-06T14:29:00+02:00",
-    "starts_at": "2026-05-06T14:29:00+02:00",
-    "ends_at": "2026-05-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=31|D=2026-05-06"
   },
   {
     "source": "Wiener Linien",
@@ -382,6 +346,30 @@
     "starts_at": "2026-05-04T04:00:00+02:00",
     "ends_at": "2026-06-27T04:00:00+02:00",
     "_identity": "wl|störung|L=40,41,42,9|D=2026-05-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41E: Ersatzbus 41E halten bei Währinger Str 200",
+    "description": "Gleisbauarbeiten\nErsatzbus 41E\nhalten bei\nWähringer Str 200",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6ba0bae6a68768907c14045ca96ddc1c51347bec7722644905e849c3f33b7ed0",
+    "pubDate": "2026-05-04T04:00:01+02:00",
+    "starts_at": "2026-05-04T04:00:01+02:00",
+    "ends_at": "2026-05-06T23:59:59+02:00",
+    "_identity": "wl|störung|L=41E|D=2026-05-04"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41E: Ersatzbus 41E hält gegenüber",
+    "description": "Gleisbauarbeiten\nErsatzbus 41E\nhält gegenüber",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c9580bfbc912cf09b6eeeee12be0aa373079f5da155cdf44b1021f1b946414ec",
+    "pubDate": "2026-05-04T08:49:59+02:00",
+    "starts_at": "2026-05-04T08:49:59+02:00",
+    "ends_at": "2026-05-06T23:59:59+02:00",
+    "_identity": "wl|störung|L=41E|D=2026-05-04"
   },
   {
     "source": "Wiener Linien",
@@ -482,14 +470,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5B: Polizeieinsatz",
-    "description": "Linie 5B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "title": "60: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 60: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 17:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Riedelgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "39560f7575227cd6c066bacb0d9de0f9614bcda3ef477da90eecc1047acb83ed",
-    "pubDate": "2026-05-06T15:19:00+02:00",
-    "starts_at": "2026-05-06T15:19:00+02:00",
+    "guid": "911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789",
+    "pubDate": "2026-05-06T17:06:00+02:00",
+    "starts_at": "2026-05-06T17:08:18+02:00",
     "ends_at": "2026-05-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=5B|D=2026-05-06"
+    "_identity": "wl|störung|L=60|D=2026-05-06"
   },
   {
     "source": "Wiener Linien",
@@ -506,18 +494,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Rettungseinsatz",
-    "description": "Linie 62: Unregelmäßige Intervalle in Richtung Oper, Karlsplatz U. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
-    "pubDate": "2026-05-06T14:52:00+02:00",
-    "starts_at": "2026-05-06T14:52:00+02:00",
-    "ends_at": "2026-05-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=62|D=2026-05-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "80A: Bauarbeiten",
     "description": "Die Linie 80A wird in Richtung Neu Marx zwischen Friedensgasse und Stadionbrücke über die Wittelsbachstraße, Erdberger Lände und Schlachthausgasse umgeleitet. Die Haltestellen Friedensgasse, Lukschgasse, Rustenschacherallee, Klaschkaweg und Stadionbrücke können dadurch nicht eingehalten werden. Voraussichtliche Dauer: Ende Mai 2026. Grund: Bauarbeiten im Bereich Stadionallee.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -530,24 +506,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Rettungseinsatz",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
-    "pubDate": "2026-05-06T14:52:00+02:00",
-    "starts_at": "2026-05-06T14:52:00+02:00",
-    "ends_at": "2026-05-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-05-06"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 15:35 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Josefstädter Straße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-05-06T15:27:00+02:00",
-    "starts_at": "2026-05-06T15:27:00+02:00",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-05-06T17:10:00+02:00",
+    "starts_at": "2026-05-06T17:10:00+02:00",
     "ends_at": "2026-05-06T23:55:00+02:00",
     "_identity": "wl|störung|L=U6|D=2026-05-06"
   }
