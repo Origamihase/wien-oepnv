@@ -1,8 +1,8 @@
 # stations.json Diff Report
 
-_Generated: 2026-05-06T10:35:08+00:00_
+_Generated: 2026-05-06T11:24:46+00:00_
 
-**Stations: 176 → 176 (Δ +0)**
+**Stations: 174 → 174 (Δ +0)**
 
 ## Added (0)
 
