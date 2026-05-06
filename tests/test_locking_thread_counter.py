@@ -12,7 +12,11 @@ of the process.
 
 from __future__ import annotations
 
+import threading
+from pathlib import Path
 from typing import Any
+
+import pytest
 
 from src.utils import locking
 
@@ -49,7 +53,7 @@ def _snapshot_state() -> tuple[dict[str, Any], dict[str, int]]:
 
 
 def test_thread_lock_counter_balanced_when_acquire_raises(
-    tmp_path, monkeypatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     """If ``threading.Lock.acquire`` raises, the reference counter must reset."""
 
@@ -60,7 +64,7 @@ def test_thread_lock_counter_balanced_when_acquire_raises(
 
     bad_lock = _BadLock(RuntimeError("simulated acquire failure"))
 
-    def fake_acquire_ref(path: str):
+    def fake_acquire_ref(path: str) -> threading.Lock:
         # Reproduce the side effects that the production helper has: bump the
         # counter and register the lock so we can verify the cleanup path.
         with locking._THREAD_LOCKS_GUARD:
@@ -68,7 +72,7 @@ def test_thread_lock_counter_balanced_when_acquire_raises(
             locking._LOCK_COUNTS[path] = (
                 locking._LOCK_COUNTS.get(path, 0) + 1
             )
-        return bad_lock
+        return bad_lock  # type: ignore[return-value]
 
     monkeypatch.setattr(locking, "_acquire_thread_lock_ref", fake_acquire_ref)
 
@@ -90,7 +94,7 @@ def test_thread_lock_counter_balanced_when_acquire_raises(
 
 
 def test_thread_lock_counter_balanced_when_acquire_raises_baseexception(
-    tmp_path, monkeypatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     """``KeyboardInterrupt`` during acquire must not leak the reference counter."""
 
@@ -101,13 +105,13 @@ def test_thread_lock_counter_balanced_when_acquire_raises_baseexception(
 
     bad_lock = _BadLock(KeyboardInterrupt())
 
-    def fake_acquire_ref(path: str):
+    def fake_acquire_ref(path: str) -> threading.Lock:
         with locking._THREAD_LOCKS_GUARD:
             locking._THREAD_LOCKS[path] = bad_lock  # type: ignore[assignment]
             locking._LOCK_COUNTS[path] = (
                 locking._LOCK_COUNTS.get(path, 0) + 1
             )
-        return bad_lock
+        return bad_lock  # type: ignore[return-value]
 
     monkeypatch.setattr(locking, "_acquire_thread_lock_ref", fake_acquire_ref)
 
@@ -123,7 +127,7 @@ def test_thread_lock_counter_balanced_when_acquire_raises_baseexception(
     assert not bad_lock.released
 
 
-def test_thread_lock_counter_balanced_on_success(tmp_path) -> None:
+def test_thread_lock_counter_balanced_on_success(tmp_path: Path) -> None:
     """The happy path must continue to balance acquire/release."""
 
     target = tmp_path / "ok.lock"
