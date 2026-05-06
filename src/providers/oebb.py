@@ -346,8 +346,8 @@ _ZWISCHEN_PLAIN_RE = re.compile(
     r"ist|sind|war|waren|gesperrt|geschlossen|blockiert|eingestellt|"
     r"unterbrochen|gestört|gestoert|ausgefallen|verspätet|verspaetet|"
     r"verz[öo]gert|aufgehoben|freigegeben|"
-    # Connectors that introduce a side clause
-    r"sowie|sondern|sowie\s+zwischen|"
+    # Connectors that introduce a side clause / next "zwischen X und Y"
+    r"sowie|sondern|sowie\s+zwischen|und\s+zwischen|,\s*und|"
     # Intermediate-via marker — ends the captured endpoint at the via stop
     # so "Mödling über Wiener Neudorf" yields b="Mödling".
     r"[üu]ber|via"
