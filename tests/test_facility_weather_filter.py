@@ -95,3 +95,41 @@ class TestFacilityWeatherFunctionDirectly:
 
     def test_empty_title(self) -> None:
         assert not _is_facility_or_weather_only("", "")
+
+
+class TestPluralFormsAndWeatherCause:
+    """Bug Q: the transit-keyword regex used \\b...\\b which missed German
+    plural / inflected forms (Verspätung → Verspätungen, Sperrung →
+    Sperrungen, …). Combined with the title-residual heuristic that
+    treated the German weather noun "Sturm" as an unknown second
+    endpoint, weather-caused real disruptions were dropped.
+    """
+
+    def test_verspaetungen_plural_keeps_with_weather_cause(self) -> None:
+        assert _is_relevant("Verspätungen Wien Hbf wegen Sturm", "x") is True
+
+    def test_sperrungen_plural_keeps(self) -> None:
+        assert (
+            _is_relevant(
+                "Sperrungen zwischen Wien Hbf und Mödling am Wochenende",
+                "Wegen Sturm.",
+            )
+            is True
+        )
+
+    def test_stoerungen_plural_keeps(self) -> None:
+        assert _is_relevant("Störungen wegen Sturm in Wien Hbf", "x") is True
+
+    def test_gesperrt_keeps(self) -> None:
+        assert (
+            _is_relevant(
+                "Sturmschaden zwischen Wien und Mödling — Strecke gesperrt",
+                "Wegen Sturm gesperrt zwischen Wien Hbf und Mödling.",
+            )
+            is True
+        )
+
+    def test_weather_only_still_drops(self) -> None:
+        # Sanity: pure weather (no transit keyword) still drops.
+        assert _is_relevant("Sturm im Raum Wien", "x") is False
+        assert _is_relevant("Wetterlage Wien", "x") is False
