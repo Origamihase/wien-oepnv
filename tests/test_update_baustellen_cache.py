@@ -98,3 +98,56 @@ def test_resolve_fallback_path_blocks_symlink_escape(tmp_path: Path) -> None:
         assert resolved == update_baustellen_cache.DEFAULT_FALLBACK_PATH
     finally:
         link.unlink(missing_ok=True)
+
+
+def test_resolve_data_url_default_when_unset() -> None:
+    assert (
+        update_baustellen_cache._resolve_data_url(None)
+        == update_baustellen_cache.DEFAULT_DATA_URL
+    )
+    assert (
+        update_baustellen_cache._resolve_data_url("")
+        == update_baustellen_cache.DEFAULT_DATA_URL
+    )
+    assert (
+        update_baustellen_cache._resolve_data_url("   ")
+        == update_baustellen_cache.DEFAULT_DATA_URL
+    )
+
+
+def test_resolve_data_url_accepts_official_host() -> None:
+    """The Stadt Wien OGD host is the only legitimate override target."""
+    candidate = (
+        "https://data.wien.gv.at/daten/geo?service=WFS&typeName=ogdwien:BAUSTELLEOGD"
+    )
+    resolved = update_baustellen_cache._resolve_data_url(candidate)
+    assert resolved == candidate
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        # Arbitrary attacker-controlled host
+        "https://evil.example.com/baustellen.json",
+        # Suffix attack: looks like the official host but isn't
+        "https://data.wien.gv.at.evil.com/baustellen.json",
+        # Different Vienna subdomain (e.g., not OGD)
+        "https://www.wien.gv.at/baustellen.json",
+        # Different OGD provider
+        "https://data.gv.at/baustellen.json",
+    ],
+)
+def test_resolve_data_url_rejects_untrusted_host(
+    caplog: pytest.LogCaptureFixture, url: str
+) -> None:
+    """An env-controlled URL pointing outside the OGD allowlist must NOT be used."""
+    import logging
+
+    caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
+    resolved = update_baustellen_cache._resolve_data_url(url)
+    # Must fall back to the default — no fetch goes to the attacker.
+    assert resolved == update_baustellen_cache.DEFAULT_DATA_URL
+    assert any(
+        "kein bekannter Stadt-Wien-OGD-Host" in record.getMessage()
+        for record in caplog.records
+    )

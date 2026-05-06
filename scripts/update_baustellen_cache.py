@@ -12,6 +12,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, cast
 from collections.abc import Iterable, Sequence
+from urllib.parse import urlparse
 
 from dateutil import parser as dtparser
 from requests.exceptions import RequestException
@@ -192,6 +193,41 @@ def _load_fallback(path: Path) -> dict[str, Any] | None:
     except json.JSONDecodeError as exc:
         LOGGER.error("Baustellen: Fallback-Datei %s enthält ungültiges JSON (%s)", path, exc)
         return None
+
+
+# Security: only accept env overrides that point at the official Stadt Wien
+# Open-Data host. ``data_url`` content is parsed and merged into the public
+# Baustellen feed cache (titles, descriptions, item links). An env-var
+# override to ``https://evil.com`` therefore lets an attacker inject arbitrary
+# construction notices into the public feed and (via JSON ``properties.HINWEIS``
+# fields and similar) attach attacker-controlled text under the project's
+# brand. ``validate_http_url()`` only checks SSRF/DNS-rebinding properties,
+# not host identity.
+_BAUSTELLEN_TRUSTED_HOSTS = frozenset({"data.wien.gv.at"})
+
+
+def _validated_baustellen_data_url(raw: str) -> str | None:
+    safe = validate_http_url(raw)
+    if not safe:
+        return None
+    host = (urlparse(safe).hostname or "").lower()
+    if host not in _BAUSTELLEN_TRUSTED_HOSTS:
+        return None
+    return cast(str, safe)
+
+
+def _resolve_data_url(candidate: str | None) -> str:
+    text = (candidate or "").strip()
+    if not text:
+        return DEFAULT_DATA_URL
+    validated = _validated_baustellen_data_url(text)
+    if validated is None:
+        LOGGER.warning(
+            "Baustellen: BAUSTELLEN_DATA_URL %r ist kein bekannter Stadt-Wien-OGD-Host; verwende Standard.",
+            text,
+        )
+        return DEFAULT_DATA_URL
+    return validated
 
 
 def _resolve_fallback_path(candidate: str | None) -> Path:
@@ -412,7 +448,7 @@ def _collect_events(payload: dict[str, Any]) -> list[dict[str, Any]]:
 
 def main() -> int:
     configure_logging()
-    data_url = os.getenv("BAUSTELLEN_DATA_URL", DEFAULT_DATA_URL).strip() or DEFAULT_DATA_URL
+    data_url = _resolve_data_url(os.getenv("BAUSTELLEN_DATA_URL"))
     fallback_path = _resolve_fallback_path(os.getenv("BAUSTELLEN_FALLBACK_PATH"))
     timeout_raw = os.getenv("BAUSTELLEN_TIMEOUT", "")
     timeout = 20
