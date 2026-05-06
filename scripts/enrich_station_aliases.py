@@ -422,6 +422,17 @@ def _alias_candidates(
     push(str(name_value) if isinstance(name_value, str) else None)
     vor_id_value = station.get("vor_id")
     push(str(vor_id_value) if vor_id_value is not None else None)
+    # Push bst_code so the JSON aliases array carries the ÖBB Stellencode
+    # explicitly. The runtime lookup in src/utils/stations.py already
+    # treats bst_code as IDENTITY-class via _iter_aliases_with_strength,
+    # but the validator's "missing required aliases" rule expects the
+    # code to also appear in the persisted aliases list. Closes the
+    # 155-entry alias_issues backlog inherited from the legacy ÖBB-Excel
+    # import flow that wrote bst_code to its own field but never to
+    # aliases. STATIC_VOR_ENTRIES already include their bst_code in
+    # aliases (via PR #1214's _new_entry_from_static helper).
+    bst_code_value = station.get("bst_code")
+    push(str(bst_code_value) if bst_code_value is not None else None)
 
     name = str(name_value if isinstance(name_value, str) else "").strip()
     no_paren = re.sub(r"\s*\([^)]*\)\s*", " ", name)
@@ -641,6 +652,17 @@ def _alias_candidates(
             continue
 
         safe_aliases.append(a)
+
+    # The station's own bst_code is its operational identity (ÖBB
+    # Stellencode like "Aw", "Ken H1") and must not be filtered by
+    # the generic-blocklist or any other rule. Pfaffstätten happens
+    # to have bst_code "Bf" — the blocklist correctly suppresses
+    # "Bf" coming from arbitrary alias generation, but the validator
+    # and runtime lookup expect the *own* bst_code to be present.
+    # Append unconditionally (deduplicated).
+    own_bst_code = str(station.get("bst_code") or "").strip()
+    if own_bst_code and own_bst_code not in safe_aliases:
+        safe_aliases.append(own_bst_code)
 
     return safe_aliases
 
