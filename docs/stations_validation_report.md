@@ -4,7 +4,7 @@
 *GTFS stops loaded*: 99
 *Geographic duplicates*: 0
 *Alias issues*: 155
-*Coordinate anomalies*: 6
+*Coordinate anomalies*: 2
 *GTFS mismatches*: 65
 *Security warnings*: 0
 *Provider issues*: 0
@@ -162,17 +162,13 @@
 - code:F   H2S / source:oebb (Langenzersdorf): missing required aliases: F   H2S
 - code:F   H3S / source:oebb (Bisamberg): missing required aliases: F   H3S
 - code:900100 / source:vor (Wien Hauptbahnhof): missing required aliases: 900100
+- code:900105 / source:vor (Wien Kaiserebersdorf): missing required aliases: 900105
 - code:900101 / source:google_places,vor,wl (Wien Karlsplatz): missing required aliases: 900101
 - code:900102 / source:google_places,vor (Wien Mitte-Landstraße): missing required aliases: 900102
 - code:900103 / source:google_places,vor,wl (Wien Schottentor): missing required aliases: 900103
 - code:900104 / source:google_places,vor,wl (Wien Stephansplatz): missing required aliases: 900104
-- code:900105 / source:vor (Wien Kaiserebersdorf): missing required aliases: 900105
 
 ## Coordinate anomalies
-- code:Lx / source:oebb (Laxenburg-Biedermannsdorf): missing latitude, missing longitude
-- code:Mb  H1H / source:oebb (Mistelbach Stadt): missing latitude, missing longitude
-- code:Ebr H1 / source:oebb (Weigelsdorf): missing latitude, missing longitude
-- code:Him / source:oebb (Himberg): missing latitude, missing longitude
 - source:manual (München Hauptbahnhof): coordinates out of bounds (lat=48.140228, lon=11.558339)
 - source:manual (Roma Termini): coordinates out of bounds (lat=41.901002, lon=12.500253)
 
