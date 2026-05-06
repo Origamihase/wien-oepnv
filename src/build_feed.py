@@ -1357,17 +1357,35 @@ def _format_item_content(
     # Harte Begrenzung für den TV-Screen (max. 180 Zeichen)
     if len(summary) > 180:
         truncated = summary[:175].rsplit(' ', 1)[0]
-        # If truncation lands on a short German abbreviation token like
-        # "bzw.", "ca.", "z.B.", "u.a.", drop it — the visual result
-        # "Word bzw. …" looks more like a glitch than an intentional
-        # ellipsis. We treat any token of <=5 chars ending in a period
-        # as an abbreviation.
-        last_space = truncated.rfind(' ')
-        if last_space > 0:
+        # Strip trailing artifacts left behind by the partial-word drop:
+        # • short German abbreviation tokens ("bzw.", "ca.", "z.B.",
+        #   "u.a.", "ggf.") — visually "Word bzw. …" looks like a
+        #   glitch instead of an intentional ellipsis.
+        # • short letter-only line markers ("IC", "RJX", "REX", "S",
+        #   "U") that the rsplit isolated after dropping the partial
+        #   number — "IC 1110, IC 1113, IC …" should become
+        #   "IC 1110, IC 1113 …".
+        # • interleaved stray punctuation (",", ";", ")", "-") that
+        #   would otherwise hold the tail open across iterations,
+        #   e.g. "Uhr -" leaves "Uhr" exposed only after the dash is
+        #   stripped.
+        _PUNCT_STRIP = ' ,;:-)/'
+        for _ in range(3):
+            truncated = truncated.rstrip(_PUNCT_STRIP)
+            last_space = truncated.rfind(' ')
+            if last_space <= 0:
+                break
             tail = truncated[last_space + 1:]
-            if tail.endswith('.') and len(tail) <= 5:
+            tail_stripped = tail.rstrip('.')
+            if (
+                len(tail) <= 5
+                and tail_stripped
+                and tail_stripped.isalpha()
+            ):
                 truncated = truncated[:last_space]
-        summary = truncated.rstrip(' ,;:-') + " …"
+            else:
+                break
+        summary = truncated.rstrip(_PUNCT_STRIP) + " …"
 
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(raw_title)
