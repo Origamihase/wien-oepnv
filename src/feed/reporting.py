@@ -817,11 +817,20 @@ class _GithubIssueReporter:
             return
 
         if response.status_code >= 400:
-            detail: str
+            detail: str = response.text
             try:
-                detail = response.json().get("message", response.text)
+                error_payload: object = response.json()
             except ValueError:
-                detail = response.text
+                pass
+            else:
+                # Zero Trust: GitHub normally returns an object on errors, but
+                # a GHE proxy or unexpected upstream could yield a list/scalar/
+                # null. Calling .get() on those raises AttributeError, which
+                # the surrounding `except ValueError` would not catch.
+                if isinstance(error_payload, dict):
+                    message = error_payload.get("message")
+                    if isinstance(message, str) and message:
+                        detail = message
             # Security: avoid log injection by stripping control characters.
             detail = _sanitize_log_detail(detail)
             log.warning(
@@ -833,10 +842,16 @@ class _GithubIssueReporter:
 
         issue_url: str | None = None
         try:
-            data = response.json()
-            issue_url = data.get("html_url")
+            data: object = response.json()
         except ValueError:
-            issue_url = None
+            data = None
+        # Zero Trust: only trust html_url when the payload is an object that
+        # actually contains a string at that key. Defends against AttributeError
+        # crashes from non-dict JSON bodies (list/scalar/null).
+        if isinstance(data, dict):
+            raw_url = data.get("html_url")
+            if isinstance(raw_url, str):
+                issue_url = raw_url
 
         if issue_url:
             log.info("Automatisches GitHub-Issue erstellt: %s", issue_url)
