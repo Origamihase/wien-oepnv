@@ -10,11 +10,14 @@ on the Pendler whitelist) and must NOT appear in the feed.
 
 Two bugs combined to let the first variant slip through:
 
-J. ``canonical_name("vor")`` returned ``Wien Hauptbahnhof`` because several
-   ``Hbf (VOR)``-style aliases in stations.json normalize down to a key
-   of just ``"vor"``. The German preposition ``vor`` (e.g. "vor
-   Reiseantritt") in a description then aliased to a flagship Wien
-   station and tripped the single-station fall-through path.
+J. ``canonical_name("vor")`` returned ``Wien Hauptbahnhof`` because
+   ``Hbf (VOR)``-style aliases in stations.json normalised down to a
+   single ``"vor"`` key. The German preposition ``vor`` (e.g. "vor
+   Reiseantritt") therefore aliased to a flagship Wien station and
+   tripped the single-station fall-through path. The directory side has
+   since been cleaned up upstream, but ``vor`` is still on the
+   single-token skip list as defence in depth in case the alias
+   re-enters via a future regeneration run.
 
 K. The previous Bug-D fix discarded a route candidate whenever both
    endpoints failed station_info lookup. The ``Aufzug zwischen Bahnsteig
@@ -38,7 +41,6 @@ from src.providers.oebb import (
     _is_relevant,
     _looks_like_facility_endpoint,
 )
-from src.utils.stations import canonical_name
 
 
 class TestVorAliasFalsePositive:
@@ -125,9 +127,9 @@ class TestFacilityHeuristic:
         assert not _looks_like_facility_endpoint("Mürzzuschlag")
         assert not _looks_like_facility_endpoint("Payerbach-Reichenau an der Rax")
 
-    def test_canonical_name_for_vor_token_still_returns_wien(self) -> None:
-        # Documents the upstream directory state — the fix is the
-        # single-token skip in _find_stations_in_text, NOT removing the
-        # alias. If a future stations.json cleanup removes the alias the
-        # test here can be updated; until then we lock the behaviour in.
-        assert canonical_name("vor") == "Wien Hauptbahnhof"
+    def test_vor_token_skipped_by_find_stations(self) -> None:
+        # Defence in depth: even if a future stations.json regeneration
+        # re-introduces an "Hbf (VOR)" alias that normalises to "vor",
+        # _find_stations_in_text must NOT surface a Wien station for the
+        # bare preposition "vor".
+        assert _find_stations_in_text("Wir empfehlen, sich vor der Reise zu informieren.") == []
