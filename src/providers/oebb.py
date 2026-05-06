@@ -112,30 +112,34 @@ _TRANSIT_KEYWORD_RE = re.compile(
 
 
 def _is_facility_or_weather_only(title: str, description: str) -> bool:
-    """Decide whether the message's primary topic is facility/weather.
+    """Decide whether the message has no place in the Wien-ÖPNV feed.
 
-    Per project spec elevator/escalator notices and standalone weather
-    warnings have nothing to do in the Wien-ÖPNV feed — they don't
-    describe a transit disruption that affects Wiener or Pendler-to-Wien
-    travellers. The heuristic flags those messages so the caller can
-    drop them before the relevance check.
+    Per project spec elevator/escalator notices have nothing to do in
+    the feed — including titles that combine "Bauarbeiten" with
+    "Aufzug betroffen", because the actual subject is still the broken
+    elevator and not a service-affecting track disruption. Any mention
+    of a facility keyword in the title therefore drops the message.
 
-    A message is considered facility/weather-only when its title carries
-    one of the facility/weather keywords above AND no real
-    disruption keyword (Bauarbeiten, Störung, Verspätung, …). Mixed
-    messages like "Bauarbeiten zwischen Wien und Mödling — auch Aufzug
-    betroffen" therefore pass through and are evaluated normally.
+    Weather titles are dropped only when the title doesn't also carry a
+    real disruption keyword: ``Sturmschaden: Strecke Wien-Mödling
+    gesperrt`` describes a genuine transit interruption (cause: Sturm)
+    and stays in the feed, while ``Sturm im Raum Wien`` / ``Wetterlage
+    Wien`` are pure weather warnings and drop.
     """
     if not title:
         return False
     title_low = title.lower()
     has_facility = bool(_FACILITY_KEYWORD_RE.search(title_low))
+    if has_facility:
+        # Strict: any facility-keyword title drops, with or without an
+        # accompanying transit keyword. Side-mentions of "Aufzug" should
+        # never reach the feed per user spec.
+        return True
     has_weather = bool(_WEATHER_KEYWORD_RE.search(title_low))
-    if not (has_facility or has_weather):
+    if not has_weather:
         return False
-    if _TRANSIT_KEYWORD_RE.search(title_low):
-        return False
-    return True
+    # Weather: drop only when the title has no real disruption signal.
+    return not _TRANSIT_KEYWORD_RE.search(title_low)
 
 
 NON_LOCATION_PREFIXES = {

@@ -59,11 +59,13 @@ class TestRealDisruptionsStillKept:
             is True
         )
 
-    def test_aufzug_betroffen_with_bauarbeiten_kept(self) -> None:
-        # Mixed: title primary subject is Bauarbeiten, Aufzug is collateral.
+    def test_aufzug_betroffen_with_bauarbeiten_dropped(self) -> None:
+        # Per spec the ANY mention of a facility keyword in the title
+        # drops the message — even when "Bauarbeiten" is also present,
+        # because the affected facility is still the actual subject.
         assert _is_relevant(
             "Bauarbeiten Wien Hbf - Aufzug betroffen", "x"
-        ) is True
+        ) is False
 
 
 class TestFacilityWeatherFunctionDirectly:
@@ -73,10 +75,17 @@ class TestFacilityWeatherFunctionDirectly:
     def test_pure_weather_title(self) -> None:
         assert _is_facility_or_weather_only("Sturmwarnung im Raum Wien", "")
 
-    def test_mixed_with_bauarbeiten(self) -> None:
-        # "Bauarbeiten" is a real transit keyword → not facility-only.
-        assert not _is_facility_or_weather_only(
+    def test_mixed_facility_with_bauarbeiten_still_drops(self) -> None:
+        # Strict facility rule: any title mention of "Aufzug" drops.
+        assert _is_facility_or_weather_only(
             "Bauarbeiten Wien Hbf - Aufzug betroffen", ""
+        )
+
+    def test_mixed_weather_with_bauarbeiten_kept(self) -> None:
+        # Weather is more lenient: a transit keyword in the title
+        # rescues a Sturm-caused service disruption.
+        assert not _is_facility_or_weather_only(
+            "Sturmschaden: Strecke Wien-Mödling gesperrt", ""
         )
 
     def test_no_facility_no_weather(self) -> None:
