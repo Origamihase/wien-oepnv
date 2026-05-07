@@ -305,13 +305,29 @@ def _resolve_fallback_path(candidate: str | None) -> Path:
 
 def _iter_features(payload: dict[str, Any]) -> Iterable[dict[str, Any]]:
     if payload.get("type") == "FeatureCollection":
-        features = payload.get("features") or []
+        features: Any = payload.get("features")
     elif "features" in payload:
-        features = payload.get("features") or []
+        features = payload.get("features")
     elif "data" in payload and isinstance(payload["data"], dict):
-        features = payload["data"].get("features") or []
+        features = payload["data"].get("features")
     else:
-        features = []
+        features = None
+    # Zero Trust: ``payload`` is verified as a dict by ``_load_json_from_content``
+    # / ``_load_fallback`` (top-level shape), but the ``features`` value extracted
+    # from it is still ``Any`` — a misbehaving / compromised upstream peer (or a
+    # tampered local fallback file) could ship a truthy non-list shape such as
+    # ``42``, ``True``, ``{"a":"b"}`` or ``"abc"``. The existing ``or []``
+    # collapses falsy values but lets truthy non-lists through; the resulting
+    # ``for f in features`` then either raises ``TypeError`` (int/bool) — which
+    # is not caught by ``_collect_events`` and crashes the whole cache update —
+    # or silently iterates dict keys / string characters and emits zero events
+    # (looking like an empty upstream). Mirror the ``for entry in payload`` /
+    # ``for item in payload`` shape guards landed for the sibling VOR mapping
+    # loaders (``_load_vor_mapping`` in ``scripts/enrich_station_aliases.py``,
+    # ``scripts/update_wl_stations.py``, ``src/providers/vor.py``) so the
+    # documented ``return None`` / ``return []`` fallback runs instead.
+    if not isinstance(features, list):
+        return []
     return [f for f in features if isinstance(f, dict)]
 
 
