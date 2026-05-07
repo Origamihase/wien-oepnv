@@ -102,15 +102,17 @@ def _to_url(path: Path, base_url: str) -> str:
 
 
 def _last_modified(path: Path) -> str:
+    # Bandit B603/B607: git executes on a trusted internal path; the
+    # command list is fully static (no user input flows in).
     try:
-        output = subprocess.check_output(
+        output = subprocess.check_output(  # nosec B603, B607
             ["git", "log", "-1", "--format=%cI", "--", str(path)],
             cwd=REPO_ROOT,
             shell=False,
             stderr=subprocess.DEVNULL,
             text=True,
             timeout=10,
-        ).strip()  # nosec B603, B607
+        ).strip()
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
         output = ""
     if output:
