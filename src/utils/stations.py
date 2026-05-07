@@ -250,7 +250,13 @@ def _vienna_polygons() -> tuple[Polygon, ...]:
     try:
         with _VIENNA_POLYGON_PATH.open("r", encoding="utf-8") as handle:
             data = json.load(handle)
-    except (OSError, json.JSONDecodeError):
+    except (OSError, json.JSONDecodeError, RecursionError):
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in
+        # ``data/vienna_polygon.json`` (corrupted previous run, malicious
+        # file injection, planted by a compromised CI runner). Without
+        # this catch ``json.load`` propagates ``RecursionError`` out of
+        # the ``@lru_cache``-decorated loader and crashes every Vienna
+        # geo-fence check downstream.
         return ()
 
     polygons: list[Polygon] = []
@@ -404,7 +410,12 @@ def _station_entries() -> tuple[dict[str, Any], ...]:
     try:
         with _STATIONS_PATH.open("r", encoding="utf-8") as handle:
             entries = json.load(handle)
-    except (OSError, json.JSONDecodeError):  # pragma: no cover - defensive
+    except (OSError, json.JSONDecodeError, RecursionError):
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in
+        # ``data/stations.json`` (corrupted previous run, malicious file
+        # injection, planted by a compromised CI runner). Without this
+        # catch the depth-bomb propagates out of the ``@lru_cache``
+        # loader and crashes station enrichment / lookup helpers feed-wide.
         return ()
 
     if isinstance(entries, dict):

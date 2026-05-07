@@ -87,7 +87,18 @@ class MonthlyQuota:
                 _now_func=now_callable,
             )
 
-        raw = json.loads(path.read_text(encoding="utf-8"))
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in
+        # the on-disk quota state file (planted by a compromised runner /
+        # corrupted previous write). Without this catch the depth-bomb
+        # propagates out of ``MonthlyQuota.load`` — the public caller in
+        # ``fetch_google_places_stations.py`` happens to wrap this in
+        # ``except Exception``, but a future caller without that broad
+        # catch would crash. Same canonical defence as the network-sourced
+        # parsers in ``src/places/client.py``.
+        try:
+            raw = json.loads(path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, RecursionError) as exc:
+            raise ValueError("Quota state is not valid JSON") from exc
         if not isinstance(raw, dict):
             raise ValueError("Quota state must be a JSON object")
 

@@ -62,7 +62,20 @@ def load_tiles_from_env(raw_value: str | None) -> list[Tile]:
     if not raw_value:
         return [_DEFAULT_TILE]
 
-    data = json.loads(raw_value)
+    # Security: ``RecursionError`` covers JSON depth-bomb attacks via
+    # operator-controlled env / leaked CI env. ``json.loads`` raises
+    # ``RecursionError`` (NOT a subclass of ``json.JSONDecodeError`` and
+    # NOT caught by ``except ValueError``) on a deeply-nested but
+    # well-formed payload. Without this catch the unhandled
+    # ``RecursionError`` propagates out of ``_load_tiles_configuration``
+    # in ``update_station_directory.py`` (caller's
+    # ``except (OSError, ValueError)`` does NOT catch ``RecursionError``)
+    # and crashes the cron pipeline. Same canonical defence as the
+    # network-sourced parsers in ``src/places/client.py``.
+    try:
+        data = json.loads(raw_value)
+    except (json.JSONDecodeError, RecursionError) as exc:
+        raise ValueError("PLACES_TILES is not valid JSON") from exc
     if not isinstance(data, list):
         raise ValueError("PLACES_TILES must encode a list of objects")
     _validate_tile_count(len(data))
@@ -72,7 +85,15 @@ def load_tiles_from_env(raw_value: str | None) -> list[Tile]:
 def load_tiles_from_file(path: Path) -> list[Tile]:
     """Load tile configuration from ``path``."""
 
-    data = json.loads(path.read_text(encoding="utf-8"))
+    # Security: same depth-bomb defence as ``load_tiles_from_env`` above.
+    # The on-disk path mirrors the env-source threat model — a depth-bomb
+    # in an operator-supplied tiles file (or a corrupted previous output)
+    # would otherwise propagate ``RecursionError`` past the caller's
+    # ``except (OSError, ValueError)`` and crash the surrounding cron.
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, RecursionError) as exc:
+        raise ValueError("Tile file is not valid JSON") from exc
     if not isinstance(data, list):
         raise ValueError("Tile file must contain a list of tile objects")
     _validate_tile_count(len(data))

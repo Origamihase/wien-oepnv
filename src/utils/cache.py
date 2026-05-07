@@ -154,7 +154,15 @@ def read_cache(provider: str) -> list[Any]:
     except FileNotFoundError:
         log.warning("Cache for provider '%s' not found at %s", provider, cache_file)
         _emit_cache_alert(provider, f"Cache-Datei fehlt ({cache_file})")
-    except json.JSONDecodeError as exc:
+    except (json.JSONDecodeError, RecursionError) as exc:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks via a
+        # poisoned cache file (left by a corrupted previous run, planted by
+        # a compromised CI runner, or written during a partial flush
+        # followed by power loss). ``json.load`` raises ``RecursionError``
+        # (NOT a subclass of ``json.JSONDecodeError``) on a deeply-nested
+        # but well-formed payload — without this catch the unhandled error
+        # propagates out of the orchestrator's main ``try`` block and
+        # crashes the entire feed build.
         log.warning(
             "Cache for provider '%s' at %s contains invalid JSON: %s",
             provider,
@@ -282,8 +290,13 @@ def write_cache(provider: str, items: list[Any], *, pretty: bool | None = None) 
                         f"Degraded payload rejected: '{provider}' items dropped drastically "
                         f"from {len(existing_data)} to {len(items)}."
                     )
-        except (json.JSONDecodeError, OSError):
-            # Ignore read errors to allow corrupt caches to be overwritten
+        except (json.JSONDecodeError, OSError, RecursionError):
+            # Security: ``RecursionError`` covers JSON depth-bomb attacks
+            # in the EXISTING on-disk cache (planted by a compromised
+            # runner / corrupted previous run). Without the catch the
+            # data-degradation guard would crash the cron mid-write
+            # instead of treating the unparseable cache as overwriteable.
+            # Ignore read errors to allow corrupt caches to be overwritten.
             pass
 
     # atomic_write creates parents if needed
@@ -359,7 +372,11 @@ def read_status(provider: str) -> dict[str, Any] | None:
             payload = json.load(fh)
     except FileNotFoundError:
         return None
-    except (json.JSONDecodeError, OSError) as exc:
+    except (json.JSONDecodeError, OSError, RecursionError) as exc:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in
+        # the on-disk status file. See ``read_cache`` above for the full
+        # threat model — same canonical defence pattern applied here so
+        # a poisoned ``last_run.json`` does not crash heartbeat reads.
         log.warning(
             "Could not read status for provider '%s' at %s: %s",
             provider,
