@@ -2,7 +2,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import logging
 import os
+import stat
 
 import pytest
 
@@ -115,3 +117,41 @@ def test_parse_value_escapes(input_val: str, expected: str) -> None:
     """Test that quoted values are correctly unescaped."""
     # access private _parse_value for direct unit testing
     assert env_utils._parse_value(input_val) == expected
+
+
+@pytest.mark.skipif(os.name != "posix", reason="POSIX permission semantics required")
+def test_load_env_file_warns_on_world_readable_secrets(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    env_file = tmp_path / "leaky.env"
+    env_file.write_text("VOR_ACCESS_ID=secret\n", encoding="utf-8")
+    os.chmod(env_file, 0o644)
+
+    monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    caplog.set_level(logging.WARNING, logger="build_feed")
+
+    loaded = env_utils.load_env_file(env_file)
+
+    assert loaded == {"VOR_ACCESS_ID": "secret"}
+    assert "gruppen-/welt-lesbar" in caplog.text
+    assert "0o644" in caplog.text
+
+
+@pytest.mark.skipif(os.name != "posix", reason="POSIX permission semantics required")
+def test_load_env_file_silent_on_owner_only_permissions(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    env_file = tmp_path / "tight.env"
+    env_file.write_text("VOR_ACCESS_ID=secret\n", encoding="utf-8")
+    os.chmod(env_file, stat.S_IRUSR | stat.S_IWUSR)
+
+    monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
+    caplog.set_level(logging.WARNING, logger="build_feed")
+
+    env_utils.load_env_file(env_file)
+
+    assert "gruppen-/welt-lesbar" not in caplog.text
