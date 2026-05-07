@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import re
-from datetime import datetime, UTC
+from datetime import datetime, timedelta, UTC
 from pathlib import Path
 from threading import RLock
 from typing import Any
@@ -19,6 +19,34 @@ _CACHE_FILENAME = "events.json"
 _STATUS_FILENAME = "last_run.json"
 
 log = logging.getLogger(__name__)
+
+# Security: ``MAX_PRUNE_CACHE_MAX_AGE_HOURS`` is the eviction-window ceiling for
+# the on-disk cache pruner. ``prune_cache`` consumes ``max_age_hours`` as
+# ``cutoff = now - timedelta(hours=max_age_hours)`` (direct ``datetime - timedelta``
+# arithmetic). The default caller in ``write_cache`` uses the hardcoded 48-hour
+# default, but the function is exported as a public API and a future caller
+# passing an env-controlled or user-controlled value (e.g. a hypothetical
+# ``CACHE_PRUNE_MAX_AGE_HOURS`` env var) would otherwise inherit the unbounded
+# shape — a benign-looking value such as ``max_age_hours=999999999999`` raises
+# ``OverflowError: Python int too large to convert to C int`` from the
+# ``timedelta`` constructor (the C-level normalisation packs days into a signed
+# 32-bit int, ~10**11 hours overflows that bound), and even at non-overflow
+# values around ~17M hours the subsequent ``now - timedelta(hours=N)``
+# subtraction underflows past Python's year-1 datetime boundary and raises
+# ``OverflowError: date value out of range``. Both errors propagate out of
+# ``prune_cache`` past the surrounding ``OSError`` handlers and crash the
+# ``write_cache`` callers that wrap it. At non-overflow but unreasonably large
+# values (e.g. 10000 hours ≈ 14 months) the pruner never evicts anything, the
+# ``cache/`` directory grows unboundedly, and the repo-bloat purpose of the
+# function is silently defeated. Capping inside the function (defense-in-depth)
+# means every caller — current and future — inherits the ceiling without having
+# to remember to add it. 8760 hours (1 year) is generous (~182x default) and
+# bounds ``now - timedelta(hours=N)`` safely within Python's datetime range.
+# TIGHTEN-only contract mirrors ``MAX_LOG_PRUNE_KEEP_DAYS`` in
+# ``src/feed/logging.py`` and ``MAX_CACHE_MAX_AGE_HOURS`` in
+# ``src/feed/config.py`` — same env-cap drift family (env-derived integer
+# feeding ``timedelta(unit=N)`` into ``datetime - timedelta`` arithmetic).
+MAX_PRUNE_CACHE_MAX_AGE_HOURS = 8760
 
 
 class DataDegradationError(Exception):
@@ -100,7 +128,6 @@ def cache_modified_at(provider: str) -> datetime | None:
         )
         return None
 
-    from datetime import timedelta
     mtime = datetime.fromtimestamp(stat_result.st_mtime, tz=UTC)
     # Reject cache if it is more than 24 hours in the future
     if mtime > datetime.now(UTC) + timedelta(hours=24):
@@ -163,11 +190,19 @@ def prune_cache(max_age_hours: int = 48) -> None:
     Iterates through the cache directory and deletes `events.json` files that
     are older than the specified age. Removes the provider directory if empty.
     """
+    if max_age_hours <= 0:
+        return
+    # Security: clamp ``max_age_hours`` to ``MAX_PRUNE_CACHE_MAX_AGE_HOURS`` to
+    # defeat the ``timedelta`` constructor / ``datetime - timedelta`` underflow
+    # vector documented at the constant declaration above. Without the cap a
+    # caller passing ``max_age_hours=99999999`` would crash the cron job via
+    # OverflowError.
+    if max_age_hours > MAX_PRUNE_CACHE_MAX_AGE_HOURS:
+        max_age_hours = MAX_PRUNE_CACHE_MAX_AGE_HOURS
     if not _CACHE_DIR.is_dir():
         return
 
     now = datetime.now(UTC)
-    from datetime import timedelta
     cutoff = now - timedelta(hours=max_age_hours)
 
     for provider_dir in _CACHE_DIR.iterdir():
