@@ -41,6 +41,20 @@ DEFAULT_FALLBACK_PATH = REPO_ROOT / "data" / "samples" / "baustellen_sample.geoj
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"
 
+# Security: ``MAX_BAUSTELLEN_TIMEOUT`` is the Slowloris-defence ceiling for the
+# OGD WFS fetch budget. ``BAUSTELLEN_TIMEOUT`` is consumed by ``_fetch_remote``
+# as both connect and read budget for ``fetch_content_safe``; without an upper
+# bound an env override such as ``BAUSTELLEN_TIMEOUT=99999`` (intentional
+# misconfig, leaked CI env, or compromised secret store) would let a sluggish
+# or attacker-controlled upstream peer hold the cron job for ~28 hours,
+# stalling the whole feed-build pipeline. The cap can only TIGHTEN — env
+# overrides may lower the timeout (tests use 1–5s) but never raise it above
+# the documented ceiling. Mirrors the ``MAX_PROVIDER_TIMEOUT`` cap in
+# ``src/feed/config.py`` and the ``MAX_TIMEOUT_S`` cap in
+# ``src/places/client.py``.
+DEFAULT_BAUSTELLEN_TIMEOUT = 20
+MAX_BAUSTELLEN_TIMEOUT = DEFAULT_BAUSTELLEN_TIMEOUT
+
 TITLE_KEYS: tuple[str, ...] = (
     "BEZEICHNUNG",
     "MASSNAHME",
@@ -479,10 +493,14 @@ def main() -> int:
     data_url = _resolve_data_url(os.getenv("BAUSTELLEN_DATA_URL"))
     fallback_path = _resolve_fallback_path(os.getenv("BAUSTELLEN_FALLBACK_PATH"))
     timeout_raw = os.getenv("BAUSTELLEN_TIMEOUT", "")
-    timeout = 20
+    timeout = DEFAULT_BAUSTELLEN_TIMEOUT
     if timeout_raw.strip():
         try:
-            timeout = max(int(timeout_raw), 1)
+            # Security: clamp the env override to ``MAX_BAUSTELLEN_TIMEOUT`` to
+            # defeat the Slowloris vector documented at the constant declaration
+            # above. The lower bound keeps the timeout finite and positive so
+            # ``fetch_content_safe`` never falls back to "no read deadline".
+            timeout = min(max(int(timeout_raw), 1), MAX_BAUSTELLEN_TIMEOUT)
         except ValueError:
             LOGGER.warning("Baustellen: Ungültiger Timeout-Wert %r – verwende Standard", timeout_raw)
     payload = _fetch_remote(data_url, timeout)

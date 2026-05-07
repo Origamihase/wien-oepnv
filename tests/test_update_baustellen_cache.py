@@ -85,6 +85,44 @@ def test_resolve_fallback_path_blocks_traversal_via_dotdot() -> None:
     assert resolved == update_baustellen_cache.DEFAULT_FALLBACK_PATH
 
 
+@pytest.mark.parametrize(
+    "raw,expected",
+    [
+        ("99999", update_baustellen_cache.MAX_BAUSTELLEN_TIMEOUT),
+        ("21", update_baustellen_cache.MAX_BAUSTELLEN_TIMEOUT),
+        ("0", 1),
+        ("-5", 1),
+        ("5", 5),
+        ("", update_baustellen_cache.DEFAULT_BAUSTELLEN_TIMEOUT),
+        ("garbage", update_baustellen_cache.DEFAULT_BAUSTELLEN_TIMEOUT),
+    ],
+)
+def test_baustellen_timeout_env_is_clamped(
+    monkeypatch: pytest.MonkeyPatch, raw: str, expected: int
+) -> None:
+    """``BAUSTELLEN_TIMEOUT`` must never exceed ``MAX_BAUSTELLEN_TIMEOUT``.
+
+    Without the cap a sluggish or attacker-controlled upstream peer could hold
+    the fetch for ~28 hours via ``BAUSTELLEN_TIMEOUT=99999``, stalling the
+    feed-build cron pipeline (Slowloris vector mirrored from
+    ``MAX_PROVIDER_TIMEOUT`` and ``MAX_TIMEOUT_S``).
+    """
+    captured: list[int] = []
+
+    def fake_fetch_remote(url: str, timeout: int) -> None:
+        captured.append(timeout)
+        return None
+
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
+    monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda *args, **kwargs: None)
+    monkeypatch.setenv("BAUSTELLEN_FALLBACK_PATH", str(SAMPLE_PATH))
+    monkeypatch.setenv("BAUSTELLEN_TIMEOUT", raw)
+
+    update_baustellen_cache.main()
+
+    assert captured == [expected]
+
+
 def test_resolve_fallback_path_blocks_symlink_escape(tmp_path: Path) -> None:
     """A symlink inside the repo pointing outside must be rejected by resolve()."""
     target = tmp_path / "outside.json"
