@@ -7,29 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 07 May 2026 08:44:08 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2026 10:39:30 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U1: Betriebsstörung]]></title>
+      <title><![CDATA[63A: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
-      <pubDate>Thu, 07 May 2026 05:46:00 +0200</pubDate>
-      <ext:first_seen>Thu, 07 May 2026 08:44:08 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 07 May 2026 05:46:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">76c136b71818fd0dc187c8a2cb730e46d3b85dcc71301c791f1c311c1245376a</guid>
+      <pubDate>Thu, 07 May 2026 07:41:00 +0200</pubDate>
+      <ext:first_seen>Thu, 07 May 2026 10:39:30 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 07 May 2026 07:41:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 07 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 07.05.2026]</description>
-      <content:encoded><![CDATA[Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 07.05.2026]]]></content:encoded>
+      <description>Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 07.05.2026]</description>
+      <content:encoded><![CDATA[Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 07.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[O: Verspätungen]]></title>
+      <title><![CDATA[U6: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">178cf2e06d6bf9e3207e789e31504019ebfed19bf91191929c7996b4b8b6d1a7</guid>
-      <pubDate>Thu, 07 May 2026 05:08:00 +0200</pubDate>
-      <ext:first_seen>Thu, 07 May 2026 08:44:08 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 07 May 2026 05:08:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">5187d22b726578e7d3ef26f8dfc44dea5d147ba226bc2248251f4a7a40696ab9</guid>
+      <pubDate>Thu, 07 May 2026 07:03:00 +0200</pubDate>
+      <ext:first_seen>Thu, 07 May 2026 10:39:30 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 07 May 2026 07:03:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 07 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 07.05.2026]</description>
-      <content:encoded><![CDATA[Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 07.05.2026]]]></content:encoded>
+      <description>Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 07.05.2026]</description>
+      <content:encoded><![CDATA[Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 07.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -41,6 +41,17 @@
       <ext:ends_at>Fri, 08 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[07.05.2026 – 08.05.2026]</description>
       <content:encoded><![CDATA[[07.05.2026 – 08.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/1A/2/2A/57A/71/D: Demonstration am 09.05.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8eeff4590030f418e4da157d8c1641cc9808c73dbde272d70c86df5651b02543</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 07 May 2026 10:39:30 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 07 May 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 18:00:00 +0200</ext:ends_at>
+      <description>Demonstration Wegen einer Demonstration im Bereich Innenstadt und Alsergrund kommt es zu Verkehrsmaßnahmen. [07.05.2026 – 09.05.2026]</description>
+      <content:encoded><![CDATA[Demonstration Wegen einer Demonstration im Bereich Innenstadt und Alsergrund kommt es zu Verkehrsmaßnahmen.<br/>[07.05.2026 – 09.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197]]></title>
@@ -102,17 +113,6 @@
       <ext:starts_at>Tue, 05 May 2026 12:09:13 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge … [Seit 05.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr) die Züge …<br/>[Seit 05.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41E/10A: Ersatzbus 41E hält beim 10A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b33f66a093e05c3570bd64d1f71eb57a9e284e1755e4f82e6c1eddcfd8a421b5</guid>
-      <pubDate>Mon, 04 May 2026 04:00:01 +0200</pubDate>
-      <ext:first_seen>Tue, 05 May 2026 01:29:59 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 May 2026 04:00:01 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 07 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[04.05.2026 – 07.05.2026]</description>
-      <content:encoded><![CDATA[[04.05.2026 – 07.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
