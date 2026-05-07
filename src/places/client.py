@@ -76,6 +76,21 @@ RADIUS_M = _env_int("PLACES_RADIUS_M", 2500, 1, 50000)
 MAX_RESULTS = _env_int("PLACES_MAX_RESULTS", 20, 1, 20)
 RANK_PREF = _env_rank_preference()
 
+# Security: ``MAX_TIMEOUT_S`` is the Slowloris-defence ceiling for every
+# Places API request. ``GooglePlacesConfig.timeout_s`` is consumed by
+# ``_post()`` as both the connect and read budget (lines using
+# ``self._config.timeout_s`` and the ``read_response_safe`` deadline). The
+# three callers that build a config — ``scripts/fetch_google_places_stations.py``,
+# ``scripts/verify_google_places_access.py`` and ``scripts/update_station_directory.py``
+# — read ``REQUEST_TIMEOUT_S`` from the environment without an upper bound,
+# so a benign-looking override such as ``REQUEST_TIMEOUT_S=99999`` (intentional
+# misconfig, leaked CI env, or compromised secret store) would silently let a
+# sluggish or attacker-controlled upstream peer hold the Places refresh job
+# for hours, stalling the whole cron pipeline. Capping at the dataclass
+# layer enforces the ceiling for every caller (defense-in-depth) and mirrors
+# the cap pattern in ``src/providers/vor.py:HTTP_TIMEOUT``.
+MAX_TIMEOUT_S = 25.0
+
 FIELD_MASK_NEARBY = "places.id,places.displayName,places.location,places.types"
 FIELD_MASK_TEXT = "places.id,places.displayName,places.location,places.types"
 DEFAULT_INCLUDED_TYPES: Sequence[str] = (
@@ -122,6 +137,15 @@ class GooglePlacesConfig:
     timeout_s: float
     max_retries: int
     max_result_count: int = 20
+
+    def __post_init__(self) -> None:
+        # Security: enforce the Slowloris ceiling described in the
+        # ``MAX_TIMEOUT_S`` block above. The cap can only TIGHTEN — callers
+        # may pass a smaller value (tests use 1.0–5.0s) but never raise
+        # above ``MAX_TIMEOUT_S``. ``object.__setattr__`` is required
+        # because the dataclass is frozen.
+        if self.timeout_s > MAX_TIMEOUT_S:
+            object.__setattr__(self, "timeout_s", MAX_TIMEOUT_S)
 
 
 class GooglePlacesClient:

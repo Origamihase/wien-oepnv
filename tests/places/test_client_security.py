@@ -8,7 +8,12 @@ from typing import Any
 from collections.abc import Iterator
 from unittest.mock import MagicMock
 
-from src.places.client import GooglePlacesClient, GooglePlacesConfig, GooglePlacesError
+from src.places.client import (
+    MAX_TIMEOUT_S,
+    GooglePlacesClient,
+    GooglePlacesConfig,
+    GooglePlacesError,
+)
 
 # Dummy config for tests
 _CONFIG = GooglePlacesConfig(
@@ -153,3 +158,45 @@ def test_client_ssrf_protection() -> None:
         client._post("endpoint", {})
 
     assert "Connected to unsafe IP" in str(exc_info.value)
+
+
+def test_timeout_capped_at_slowloris_ceiling() -> None:
+    """Oversized REQUEST_TIMEOUT_S overrides cannot raise the Slowloris ceiling.
+
+    Three call sites build the dataclass from the env var ``REQUEST_TIMEOUT_S``
+    without their own upper bound. Without the cap below, an override such as
+    ``REQUEST_TIMEOUT_S=99999`` would silently disable the per-request
+    Slowloris defence and let a sluggish or attacker-controlled upstream
+    peer hold the Places refresh job for hours.
+    """
+    config = GooglePlacesConfig(
+        api_key="dummy",
+        included_types=["bus_station"],
+        language="de",
+        region="AT",
+        radius_m=1000,
+        timeout_s=99999.0,
+        max_retries=0,
+        max_result_count=20,
+    )
+    assert config.timeout_s == MAX_TIMEOUT_S
+
+
+def test_timeout_below_ceiling_is_preserved() -> None:
+    """Smaller (tighter) timeouts pass through unchanged.
+
+    The cap intentionally only lowers an oversized value — tests and
+    operators can still configure a 5s or 1s deadline for stub servers
+    or aggressive failure modes.
+    """
+    config = GooglePlacesConfig(
+        api_key="dummy",
+        included_types=["bus_station"],
+        language="de",
+        region="AT",
+        radius_m=1000,
+        timeout_s=5.0,
+        max_retries=0,
+        max_result_count=20,
+    )
+    assert config.timeout_s == 5.0
