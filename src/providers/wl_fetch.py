@@ -101,15 +101,33 @@ def _iso(s: str | None) -> datetime | None:
     return cast('datetime | None', dt)
 
 
+def _coerce_dict(value: Any) -> dict[str, Any]:
+    """Return ``value`` if it is a dict, otherwise an empty dict.
+
+    Zero Trust: ``_extract_wl_items`` filters non-dict elements at the list
+    boundary, but per-item lookups like ``ti.get("attributes")`` and
+    ``ti.get("time")`` still return ``Any``. The previous ``... or {}`` shape
+    only collapses *falsy* values (``None``, ``0``, ``""``); a misbehaving /
+    compromised upstream peer could ship a truthy non-dict (``[1, 2]``,
+    ``"abc"``, ``42``, ``True``) which then raises ``AttributeError`` on the
+    very next ``.get(...)`` and propagates out of ``fetch_events``, silently
+    disabling the WL cache refresh (``update_wl_cache.py`` swallows it via
+    ``except Exception:``). Same drift shape as the documented ``or [] /
+    or {}`` rounds for the outer collection.
+    """
+    return value if isinstance(value, dict) else {}
+
+
 def _best_ts(obj: dict[str, Any]) -> datetime | None:
-    t = obj.get("time") or {}
+    t = _coerce_dict(obj.get("time"))
+    attrs = _coerce_dict(obj.get("attributes"))
     for cand in (
         _iso(t.get("start")),
         _iso(t.get("end")),
         _iso(obj.get("updated")),
         _iso(obj.get("timestamp")),
-        _iso((obj.get("attributes") or {}).get("lastUpdate")),
-        _iso((obj.get("attributes") or {}).get("created")),
+        _iso(attrs.get("lastUpdate")),
+        _iso(attrs.get("created")),
     ):
         if cand:
             return cand
@@ -459,7 +477,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
         session.headers.update(WL_SESSION_HEADERS)
         # A) TrafficInfos (Störungen)
         for ti in _fetch_traffic_infos(timeout=timeout, session=session):
-            attrs = ti.get("attributes") or {}
+            attrs = _coerce_dict(ti.get("attributes"))
             status_blob = " ".join(
                 [
                     str(ti.get("status") or ""),
@@ -493,7 +511,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             if _is_facility_only(title_raw, desc_raw):
                 continue
 
-            tinfo = ti.get("time") or {}
+            tinfo = _coerce_dict(ti.get("time"))
             start = _iso(tinfo.get("start")) or _best_ts(ti)
             end = _iso(tinfo.get("end"))
 
@@ -559,7 +577,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
 
         # B) News/Hinweise
         for poi in _fetch_news(timeout=timeout, session=session):
-            attrs = poi.get("attributes") or {}
+            attrs = _coerce_dict(poi.get("attributes"))
             status_blob = " ".join(
                 [
                     str(poi.get("status") or ""),
@@ -599,7 +617,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             if _is_facility_only(title_raw, desc_raw, poi.get("subtitle") or ""):
                 continue
 
-            tinfo = poi.get("time") or {}
+            tinfo = _coerce_dict(poi.get("time"))
             start = _iso(tinfo.get("start")) or _best_ts(poi)
             end = _iso(tinfo.get("end"))
 
