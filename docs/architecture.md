@@ -1,0 +1,284 @@
+# Architecture Map — Wien ÖPNV Feed
+
+This document is the visual companion to the README and the `.jules/`
+journals. It is written for a developer joining the project six months
+from now: someone who needs to understand **how the system fits
+together** before diving into any one file.
+
+The diagrams below are rendered automatically by GitHub. If you are
+reading this in a non-Mermaid-aware viewer, the same information is
+also expressed prose-first under each diagram.
+
+---
+
+## 1. The Transit Data Fetching Pipeline
+
+The headline workflow: a cron job (or GitHub Action) launches
+`python -m src.build_feed`, which orchestrates 4–5 transit-data
+providers in parallel, deduplicates the merged events, and writes a
+single RSS feed.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Cron as cron / GH Action
+    participant Build as build_feed.main
+    participant Collect as _collect_items
+    participant Cache as Cache fetchers<br/>(WL+ÖBB cache)
+    participant Pool as ThreadPoolExecutor
+    participant WL as WL.fetch_events
+    participant OEBB as ÖBB.fetch_events
+    participant VOR as VOR.fetch_events
+    participant Safe as request_safe
+    participant Up as Upstream API
+    participant Merge as _merge_result
+    participant Dedupe as _dedupe_items + deduplicate_fuzzy
+    participant RSS as _make_rss + atomic_write
+
+    Cron->>Build: invoke
+    Build->>Collect: _collect_items(report)
+    Collect->>Collect: _categorize_providers
+    Note over Collect: split into cache_fetchers<br/>(sync, disk-bound) and<br/>network_fetchers (async)
+
+    Collect->>Cache: sequential read
+    Cache-->>Merge: list[FeedItem]
+    Merge->>Collect: items.extend(...)
+
+    Collect->>Pool: _run_network_fetchers
+    par WL
+        Pool->>WL: submit fetch
+        WL->>Safe: request_safe(session, url, ...)
+        Safe->>Up: HTTPS GET (pinned IP)
+        Up-->>Safe: response
+        Safe-->>WL: validated body
+        WL-->>Merge: list[FeedItem]
+    and ÖBB
+        Pool->>OEBB: submit fetch
+        OEBB->>Safe: request_safe(session, url, ...)
+        Safe->>Up: HTTPS GET (pinned IP)
+        Up-->>Safe: response
+        Safe-->>OEBB: validated body
+        OEBB-->>Merge: list[FeedItem]
+    and VOR
+        Pool->>VOR: submit fetch
+        VOR->>Safe: request_safe (per station)
+        Safe->>Up: HTTPS GET (pinned IP)
+        Up-->>Safe: response
+        Safe-->>VOR: validated body
+        VOR-->>Merge: list[FeedItem]
+    end
+
+    Note over Pool: Apex-Phase-1 deadline-eviction loop:<br/>per-future timeout vs perf_counter()<br/>cancels stragglers
+
+    Merge->>Collect: items list
+    Collect-->>Build: combined items
+    Build->>Dedupe: strict identity dedupe
+    Dedupe->>Dedupe: deduplicate_fuzzy
+    Note over Dedupe: Apex-Phase-2 parallel<br/>token-cache O(n) regex
+    Dedupe-->>Build: deduped items
+    Build->>RSS: _make_rss + atomic_write
+    RSS-->>Cron: docs/feed.xml
+```
+
+**Why each step matters:**
+
+- **`_categorize_providers`** decides which providers can run synchronously (their loader has a `_provider_cache_name` attribute → reads from disk) vs. asynchronously (real network fetch). Separating them up front keeps the executor pool focused on I/O-bound work.
+- **The `par … and …` block** is the **bulkhead**: a crash in any one provider's `fetch_events` is caught by `_drain_completed_futures` and recorded as that provider's error, while the others continue. This is what makes the system never "all-down on one bad upstream."
+- **The Apex-Phase-1 callout** is critical: without bounded `wait()` timeouts the loop would busy-spin against `perf_counter()` (see `.jules/apex.md` 2026-05-07 entry).
+- **`request_safe`** is the security state machine — see diagram §2 below.
+- **`deduplicate_fuzzy`** is Apex-Phase-2 territory: the parallel `merged_cache` reduces O(n²) regex re-parsing to O(n) (see `.jules/apex.md`).
+
+---
+
+## 2. The `request_safe` Security State Machine
+
+`request_safe` is a single 75-line orchestrator that calls 14 cohesive
+security helpers in a strict order. Each helper documents the attack
+vector it mitigates. The flowchart below shows the order; the prose
+beneath summarizes why each gate exists.
+
+```mermaid
+flowchart TD
+    A[request_safe entry] --> B{timeout is None?}
+    B -- yes --> C[timeout = DEFAULT_TIMEOUT<br/>Slowloris default]
+    B -- no --> D[strip allow_redirects<br/>+ stream from kwargs]
+    C --> D
+    D --> E[init headers as<br/>CaseInsensitiveDict]
+    E --> F[_merge_request_hooks<br/><i>attaches _check_response_security</i>]
+    F --> G[_compute_total_time_budget<br/><i>tuple → sum</i>]
+    G --> H[for attempt in 0..max_redirects]
+
+    H --> I[_check_total_budget_or_raise<br/><i>Slowloris across redirects</i>]
+    I --> J[_per_request_timeout<br/><i>cap to remaining</i>]
+    J --> K[validate_http_url<br/><i>SSRF guard</i>]
+    K --> L{scheme}
+
+    L -- http --> M[_send_http_pinned<br/><i>DNS-rebinding TOCTOU</i>]
+    L -- https --> N[_resolve_target_ip<br/><i>private-IP guard</i>]
+    N --> O[_send_https_pinned<br/><i>SNI/Host pin via adapter</i>]
+
+    M --> P[with ctx as r:]
+    O --> P
+    P --> Q{_is_redirect?<br/>MagicMock-safe}
+
+    Q -- yes --> R[_process_redirect:<br/>1. cap check<br/>2. _strip_redirect_secrets<br/>3. _apply_method_downgrade<br/>4. _drop_host_header]
+    R --> H
+
+    Q -- no --> S{raise_for_status?}
+    S -- yes --> T[r.raise_for_status]
+    S -- no --> U
+    T --> U[_validate_content_type<br/><i>WAF/proxy block</i>]
+    U --> V[_compute_read_timeout<br/><i>Slowloris on read</i>]
+    V --> W[read_response_safe<br/><i>MAX_PAYLOAD_SIZE cap</i>]
+    W --> X[r._content = content<br/>return r]
+
+    H -. exception .-> Y[catch RequestException]
+    Y --> Z[_sanitize_exception_msg<br/><i>strip URLs from error</i>]
+    Z -.-> AA([raise sanitized])
+```
+
+**Why each gate exists** (also in helper docstrings):
+
+| Gate | Mitigates |
+|---|---|
+| Slowloris default timeout | Caller forgetting to pass timeout → indefinite hang |
+| Disable auto-redirects | DNS-rebinding TOCTOU between safety check and connect |
+| `_merge_request_hooks` | Silent skip of `_check_response_security` IP-verification |
+| `_compute_total_time_budget` (tuple sum) | Adversary chaining redirects to stretch wall-clock budget |
+| `_check_total_budget_or_raise` | Slowloris across redirects |
+| `_per_request_timeout` | Per-step timeout decay across the chain |
+| `validate_http_url` | SSRF via internal/private hostnames |
+| `_resolve_target_ip` | SSRF via DNS resolution returning a private IP |
+| `_send_http_pinned` | DNS-rebinding TOCTOU on plain HTTP |
+| `_send_https_pinned` | DNS-rebinding TOCTOU on HTTPS + SNI/Host mismatch |
+| `_is_redirect` (MagicMock guard) | False-positive redirects in mock-based tests |
+| `_strip_redirect_secrets` | Token / credential leak across origins |
+| `_apply_method_downgrade` | RFC-7231 method preservation/downgrade compliance |
+| `_drop_host_header` | SNI/Host mismatch on the redirected request |
+| `_validate_content_type` | WAF/proxy block-page misinterpretation (text/html attack) |
+| `_compute_read_timeout` | Slowloris on the body-read side |
+| `read_response_safe` | Payload-size cap (MAX_PAYLOAD_SIZE = 10 MB) |
+| `_sanitize_exception_msg` | Sensitive URLs leaking into error messages and logs |
+
+The full audit lives in `.jules/omega.md` (2026-05-07 entry).
+
+---
+
+## 3. Resilience-Layer Stack
+
+The system has five layered defences against a hostile network or
+upstream. Each layer has its own scope; together they form
+defence-in-depth.
+
+```mermaid
+flowchart LR
+    subgraph "Process level"
+        A[build_feed.main]
+    end
+    subgraph "Provider level (bulkhead)"
+        B[_collect_items<br/>per-provider try/except]
+        C[ThreadPoolExecutor<br/>+ deadline eviction]
+    end
+    subgraph "Call level (Saboteur + Sentinel)"
+        D[CircuitBreaker<br/><i>opt-in primitive</i>]
+        E[request_safe<br/><i>14 security helpers</i>]
+    end
+    subgraph "Transport level (Sentinel)"
+        F[urllib3 JitterRetry<br/>±20% backoff]
+        G[PinnedHTTPSAdapter<br/>per-IP TLS pin]
+    end
+    subgraph "Payload level (Saboteur)"
+        H[isinstance type check]
+        I[RecursionError catch]
+        J[MAX_PAYLOAD_SIZE 10MB]
+    end
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> A
+```
+
+**Layer-by-layer rationale:**
+
+- **Process level** — the cron entry point. If `main()` raises, the cron run is the failure unit; this is intentional so a corrupt write doesn't ship a half-built feed.
+- **Provider level** — `_collect_items` wraps each provider's loader in a try/except so one provider's exception cannot drop the others' items. The ThreadPoolExecutor + Apex-Phase-1 deadline-eviction loop bounds wall-clock for unresponsive providers.
+- **Call level** — `request_safe` is the per-call security state machine (§2). `CircuitBreaker` is a Saboteur-pass primitive available for adoption (currently used by Google Places and as a pattern reference for future providers).
+- **Transport level** — `JitterRetry` (in `session_with_retries`) handles transient 5xx / connection-reset with jittered exponential backoff. `PinnedHTTPSAdapter` keeps the TLS handshake's SNI on the original hostname while the TCP connect targets the resolved (vetted) IP.
+- **Payload level** — once bytes arrive, every provider validates the top-level type (Zero-Trust shape), handles `RecursionError` from JSON depth-bombs, and operates within the 10 MB body cap.
+
+---
+
+## 4. Provider Plugin Contract
+
+Adding a new provider takes three steps. The diagram shows what your
+new module must export and how `_collect_items` discovers it.
+
+```mermaid
+flowchart TB
+    A[Your new module:<br/>src/providers/yourapi.py] --> B[def fetch_events<br/>timeout: int = 25<br/>-&gt; list[FeedItem]]
+    A --> C[Optional:<br/>fetch_events._provider_cache_name<br/><i>marks as disk-bound</i>]
+
+    D[Registration:<br/>register_provider env_var, loader<br/>cache_key=...] --> E[ProviderSpec stored in registry]
+    E --> F[iter_providers] --> G[_collect_items.<br/>_categorize_providers]
+    G --> H{_provider_cache_name<br/>set?}
+    H -- yes --> I[cache_fetchers<br/><i>sync</i>]
+    H -- no --> J[network_fetchers<br/><i>async via executor</i>]
+```
+
+**Required contract:**
+
+```python
+# src/providers/yourapi.py
+from src.feed_types import FeedItem
+
+def fetch_events(timeout: int = 25) -> list[FeedItem]:
+    """Return a list of typed feed items for this provider.
+
+    Must NOT raise on network errors — log and return an empty list.
+    Must NOT block longer than ``timeout`` seconds total.
+    Must validate top-level payload shape before parsing (Zero-Trust).
+    """
+    ...
+```
+
+**Recommended adoption pattern (Saboteur's CircuitBreaker):**
+
+```python
+from src.utils.circuit_breaker import CircuitBreaker, CircuitBreakerOpen
+
+_BREAKER = CircuitBreaker("yourapi", failure_threshold=5, recovery_timeout=120.0)
+
+def fetch_events(timeout: int = 25) -> list[FeedItem]:
+    try:
+        return _BREAKER.call(_actual_fetch, timeout=timeout)
+    except CircuitBreakerOpen:
+        log.warning("yourapi breaker open; returning empty list")
+        return []
+```
+
+The breaker logs its own state transitions, so operators see
+`CircuitBreaker[yourapi]: CLOSED → OPEN after 5 consecutive failures`
+in the build log without any extra wiring.
+
+---
+
+## 5. Cross-references
+
+- **Security audit history** → `.jules/sentinel.md`
+- **Performance optimisations** → `.jules/apex.md`
+- **Static-analysis hygiene** → `.jules/purist.md`
+- **Complexity refactors** → `.jules/surgeon.md`
+- **`request_safe` joint refactor** → `.jules/omega.md`
+- **Chaos audit + RecursionError fix** → `.jules/saboteur.md`
+- **DX / docs / cartography** → `.jules/scribe.md` (this document's companion)
+
+The `.jules/` journals are the project's institutional memory. When
+adding a new defence, optimisation, or refactor, append an entry there
+and (if the change is architecturally visible) update this map.

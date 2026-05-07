@@ -1813,24 +1813,96 @@ def request_safe(
     raise_for_status: bool = True,
     **kwargs: Any,
 ) -> requests.Response:
-    """Perform an HTTP request with DNS pinning and size limits to prevent DoS/SSRF.
+    """Perform an HTTP request through the project's security state machine.
+
+    This function is the *only* place in the codebase that issues real
+    HTTP requests to untrusted upstreams. Every transit-API call,
+    every cache-refresh fetch, and every health-check goes through
+    here. As such, it is the load-bearing pillar for the project's
+    defence-in-depth posture.
+
+    The pipeline runs each call through 14 cohesive security helpers
+    in a strict order. Each helper has its own docstring naming the
+    attack vector it mitigates; the high-level sequence is:
+
+    1. Default a missing timeout (Slowloris baseline).
+    2. Disable automatic redirects (we handle them manually to defeat
+       DNS-rebinding TOCTOU between safety check and connect).
+    3. Merge caller hooks with the response-IP-verification security
+       hook (:func:`_check_response_security`).
+    4. Compute the total time budget across the redirect chain
+       (tuple ``(connect, read)`` is summed to defeat budget-stretch
+       attacks).
+    5. For each redirect step (capped by ``session.max_redirects``):
+       a. Enforce the cumulative time budget.
+       b. Compute a per-request timeout decay.
+       c. Validate the URL (SSRF guard).
+       d. Pin the connection: HTTP via :func:`_pin_url_to_ip`; HTTPS
+          via the cached :class:`PinnedHTTPSAdapter`. The TLS handshake
+          uses the original hostname for SNI; the TCP connect targets
+          the resolved (vetted) IP.
+       e. Inspect the response: redirect → :func:`_process_redirect`
+          (strips secrets, downgrades method per RFC-7231, drops Host
+          header) and continue; otherwise validate Content-Type and
+          stream the body via :func:`read_response_safe` under the
+          ``MAX_PAYLOAD_SIZE`` cap.
+    6. Sanitize any leaked URLs in error messages before re-raising.
+
+    See ``docs/architecture.md`` §2 for the rendered flowchart and
+    ``.jules/omega.md`` for the joint Sentinel+Surgeon refactor that
+    extracted these 14 helpers from the original 280-line monolith.
 
     Args:
-        session: The requests session to use.
-        url: The URL to fetch.
-        method: HTTP method (default: "GET").
-        max_bytes: Maximum allowed response body size in bytes (default: 10MB).
-        timeout: Request timeout in seconds.
-        allowed_content_types: Optional list of allowed MIME types.
-        raise_for_status: If True, call raise_for_status() on the response (default: True).
-        **kwargs: Additional arguments passed to session.request().
+        session: The :class:`requests.Session` to use. The session's
+            adapters supply retry / jitter / pool-management; only the
+            request itself routes through this function's pinned
+            adapter.
+        url: The URL to fetch. Must pass :func:`validate_http_url`'s
+            SSRF guard (no internal/private hostnames, no
+            unsupported schemes).
+        method: HTTP method (default ``"GET"``). 303 redirects always
+            downgrade to GET; 301/302 downgrade POST→GET; 307/308
+            preserve the method.
+        max_bytes: Maximum allowed response body size (default
+            ``MAX_PAYLOAD_SIZE`` = 10 MB). Enforced both via the
+            ``Content-Length`` header pre-check and via streaming in
+            :func:`read_response_safe`.
+        timeout: Request timeout in seconds. Accepts ``int``,
+            ``float``, ``(connect, read)`` tuple, or ``None`` (which
+            is replaced by :data:`DEFAULT_TIMEOUT` to defend against
+            Slowloris). For tuples, the SUM is used as the total
+            budget across the entire redirect chain.
+        allowed_content_types: Optional MIME-type allow-list. When
+            ``None``, ``text/html`` is implicitly blocked (defends
+            against WAF / proxy block-page misinterpretation). When
+            a list/set is given, the response's MIME must match
+            exactly; missing ``Content-Type`` raises :class:`ValueError`.
+        raise_for_status: If ``True`` (default), invoke
+            :meth:`Response.raise_for_status` on the final response.
+            Set ``False`` only when the caller needs to inspect 4xx/5xx
+            payloads (e.g. ``Retry-After`` parsing).
+        **kwargs: Additional keyword arguments forwarded to
+            :meth:`Session.request`. The ``allow_redirects``, ``stream``,
+            and ``hooks`` keys are stripped/managed by this function
+            and must not be supplied by the caller.
 
     Returns:
-        The requests.Response object with content consumed and attached to ._content.
+        The :class:`requests.Response` with its body consumed and
+        attached to ``._content``. The response context manager has
+        already been closed; the caller can read ``.content`` /
+        ``.text`` / ``.json()`` freely.
 
     Raises:
-        ValueError: If URL is unsafe, Content-Type is invalid, or body size exceeds max_bytes.
-        requests.RequestException: For network errors.
+        ValueError: If the URL fails SSRF validation, the
+            ``Content-Type`` is invalid/missing/disallowed, or the
+            body exceeds ``max_bytes``.
+        requests.Timeout: If the cumulative time budget is exceeded
+            (either pre-flight or during body streaming).
+        requests.TooManyRedirects: If the redirect chain exceeds
+            ``session.max_redirects`` (default 10).
+        requests.RequestException: For network errors. The ``args``
+            of the exception are sanitized to strip any URLs that
+            might have contained query-string secrets.
     """
     # Security: Enforce default timeout to prevent Slowloris attacks if caller forgets it
     if timeout is None:

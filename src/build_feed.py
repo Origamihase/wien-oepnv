@@ -1076,6 +1076,55 @@ def _run_network_fetchers(
 
 
 def _collect_items(report: RunReport | None = None) -> list[FeedItem]:
+    """Run all enabled providers and merge their items into a single list.
+
+    This is the central data-collection orchestrator of the build. It:
+
+    1. Initialises the provider registry (lazy-loads plugins on first call).
+    2. Categorises providers via :func:`_categorize_providers` into:
+       - **cache fetchers** — loaders whose ``_provider_cache_name``
+         attribute marks them as disk-bound (read from a local cache);
+         run sequentially since the bottleneck is disk I/O, not network.
+       - **network fetchers** — real upstream HTTP fetches; run
+         concurrently in a :class:`ThreadPoolExecutor`.
+    3. Wires up a :func:`register_cache_alert_hook` so that warnings
+       emitted by the cache layer (e.g. "cache for VOR is 6h stale")
+       attach to the run report instead of just logging.
+    4. Runs cache fetchers via :func:`_run_cache_fetchers` (synchronous).
+    5. Runs network fetchers via :func:`_run_network_fetchers`, which
+       wraps each loader in a per-future timeout, evicts stragglers via
+       a deadline-eviction loop (Apex Phase 1), and merges results
+       through :func:`_merge_result`.
+    6. Provides per-provider exception isolation — a crash in one
+       loader becomes an error entry on the run report, not an abort.
+       This is the project's primary bulkhead: a hostile or unhealthy
+       upstream cannot bring down the other providers' data.
+
+    The function intentionally accepts a ``RunReport`` to keep the
+    health-reporting side-effect explicit. Tests inject a fresh report
+    per call; production paths receive one from
+    :func:`_invoke_collect_items`.
+
+    Args:
+        report: Optional :class:`RunReport` to record provider
+            successes, errors, and cache alerts into. If ``None``, a
+            fresh report is constructed from
+            :func:`provider_statuses` so the function is safe to call
+            standalone (tests, ad-hoc invocations).
+
+    Returns:
+        A list of :class:`FeedItem` dictionaries, concatenated from
+        every successful provider in the order they completed. The
+        result is **not** deduplicated; callers (typically
+        :func:`main`) run :func:`_dedupe_items` and
+        :func:`deduplicate_fuzzy` afterwards.
+
+    See Also:
+        - ``docs/architecture.md`` §1 for the full sequence diagram.
+        - ``.jules/surgeon.md`` for the seven-phase extraction history.
+        - ``.jules/apex.md`` for the deadline-eviction-loop performance
+          fix this orchestrator depends on.
+    """
     init_providers()
     if report is None:
         report = RunReport(provider_statuses())
