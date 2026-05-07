@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from src.utils import configuration_wizard as wizard
 
 
@@ -85,3 +87,30 @@ def test_calculate_changes_handles_add_and_remove() -> None:
     assert diff["FEED_TITLE"] == ("Alt", "Neu")
     assert diff["OLD_KEY"] == ("value", None)
     assert diff["NEW_KEY"] == (None, "value")
+
+
+@pytest.mark.parametrize(
+    "value, expected",
+    [
+        # Empty marker is preserved.
+        ("", "<leer>"),
+        # Short secrets (≤8 chars) reveal nothing — previously a 5-char value
+        # leaked 4/5 ≈ 80% of its content via the ``ab***de`` shape.
+        ("a", "***"),
+        ("abcd", "***"),
+        ("abcde", "***"),
+        ("abcdefgh", "***"),
+        # 9-20 chars: only 2 chars at each end so a 16-char access ID exposes
+        # 4/16 = 25% (was 25% before; boundary unchanged).
+        ("abcdefghi", "ab***hi"),
+        ("abcdefghijklmnop", "ab***op"),
+        ("abcdefghijklmnopqrst", "ab***st"),
+        # >20 chars: 4 chars at each end is acceptable because the relative
+        # leak is small (e.g. 8/40 = 20% for a 40-char token).
+        ("abcdefghijklmnopqrstu", "abcd***rstu"),
+        ("abcdefghijklmnopqrstuvwxyz0123456789", "abcd***6789"),
+    ],
+)
+def test_mask_value_tiered_redaction(value: str, expected: str) -> None:
+    """Tiered masking prevents 50% leak on short secrets; mirrors `_mask_secret`."""
+    assert wizard.mask_value(value) == expected

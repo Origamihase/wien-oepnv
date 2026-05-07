@@ -379,11 +379,23 @@ def format_env_document(
 
 
 def mask_value(value: str) -> str:
+    # Security: tiered redaction so short secrets do not leak a
+    # disproportionate fraction of their content. The previous fixed
+    # ``ab***yz`` shape exposed 4/8 = 50% of an 8-char access ID and 4/16 =
+    # 25% of a typical access ID — enough for partial brute-force or
+    # correlation against a leaked screenshot / terminal recording. Tiers
+    # mirror ``_mask_secret`` in ``src/utils/secret_scanner.py`` (journaled
+    # 2026-03-25) so the codebase has one canonical masking contract:
+    # secrets of 8 chars or fewer are fully masked, mid-length secrets show
+    # 2+2 chars, only secrets longer than 20 chars expose 4+4 chars.
     if not value:
         return "<leer>"
-    if len(value) <= 4:
-        return "*" * len(value)
-    return f"{value[:2]}***{value[-2:]}"
+    length = len(value)
+    if length <= 8:
+        return "***"
+    if length <= 20:
+        return f"{value[:2]}***{value[-2:]}"
+    return f"{value[:4]}***{value[-4:]}"
 
 
 def calculate_changes(
