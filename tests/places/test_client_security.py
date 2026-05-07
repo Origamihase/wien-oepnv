@@ -9,6 +9,7 @@ from collections.abc import Iterator
 from unittest.mock import MagicMock
 
 from src.places.client import (
+    MAX_REQUEST_RETRIES,
     MAX_TIMEOUT_S,
     GooglePlacesClient,
     GooglePlacesConfig,
@@ -200,3 +201,47 @@ def test_timeout_below_ceiling_is_preserved() -> None:
         max_result_count=20,
     )
     assert config.timeout_s == 5.0
+
+
+def test_max_retries_capped_at_ceiling() -> None:
+    """Oversized REQUEST_MAX_RETRIES overrides cannot raise the retry ceiling.
+
+    The same three call sites that read REQUEST_TIMEOUT_S also read
+    REQUEST_MAX_RETRIES from env without an upper bound. Without the cap
+    below, an override such as ``REQUEST_MAX_RETRIES=99999`` would (a) stall
+    the cron pipeline for days because ``_post()``'s retry loop sleeps up
+    to 60s per attempt, and (b) burn the entire monthly Places free-tier
+    quota in a single botched run because Google bills per attempt.
+    """
+    config = GooglePlacesConfig(
+        api_key="dummy",
+        included_types=["bus_station"],
+        language="de",
+        region="AT",
+        radius_m=1000,
+        timeout_s=1.0,
+        max_retries=99999,
+        max_result_count=20,
+    )
+    assert config.max_retries == MAX_REQUEST_RETRIES
+
+
+def test_max_retries_below_ceiling_is_preserved() -> None:
+    """Smaller (tighter) retry counts pass through unchanged.
+
+    The cap only truncates oversized values — operators can still configure
+    fewer retries (0–4) for stub servers or aggressive failure modes, and
+    the existing default of 4 (used by all three call sites) sits well
+    below the cap.
+    """
+    config = GooglePlacesConfig(
+        api_key="dummy",
+        included_types=["bus_station"],
+        language="de",
+        region="AT",
+        radius_m=1000,
+        timeout_s=1.0,
+        max_retries=4,
+        max_result_count=20,
+    )
+    assert config.max_retries == 4
