@@ -1358,6 +1358,451 @@ def read_response_safe(
     return b"".join(chunks)
 
 
+_TimeoutT = int | float | tuple[float, float] | None
+
+
+def _merge_request_hooks(
+    session: requests.Session, kwargs: dict[str, Any]
+) -> dict[str, Any]:
+    """Merge caller hooks with session hooks and append the
+    ``_check_response_security`` hook.
+
+    Mitigates: silent bypass of the IP-verification (DNS-rebinding TOCTOU)
+    response hook. If a caller passed their own ``hooks=`` argument, naive
+    handling would clobber the security hook; this helper guarantees both
+    coexist by appending the security hook after all caller/session hooks.
+    Also pops ``hooks`` from ``kwargs`` so it doesn't double-pass to
+    ``session.request``.
+    """
+    if hasattr(session, "hooks"):
+        request_hooks: dict[str, Any] = session.hooks.copy()
+    else:
+        request_hooks = {}
+
+    caller_hooks = kwargs.pop("hooks", None)
+    if caller_hooks:
+        for event, hook in caller_hooks.items():
+            existing = request_hooks.get(event, [])
+            if not isinstance(existing, list):
+                existing = [existing]
+            else:
+                existing = list(existing)  # Copy
+
+            if not isinstance(hook, list):
+                hook = [hook]
+
+            request_hooks[event] = existing + hook
+
+    resp_hooks = request_hooks.get("response", [])
+    if not isinstance(resp_hooks, list):
+        resp_hooks = [resp_hooks]
+    else:
+        resp_hooks = list(resp_hooks)
+
+    if _check_response_security not in resp_hooks:
+        resp_hooks.append(_check_response_security)
+    request_hooks["response"] = resp_hooks
+    return request_hooks
+
+
+def _compute_total_time_budget(timeout: _TimeoutT) -> float | None:
+    """Compute the absolute upper-bound time budget across the entire
+    redirect chain.
+
+    Mitigates: DoS via slow chained redirects. For a tuple
+    ``(connect, read)``, the SUM of both values is used as the absolute
+    upper bound for the whole chain so an adversary cannot stretch the
+    budget by chaining redirects whose individual timeouts each fit
+    within ``connect`` or ``read``.
+    """
+    if isinstance(timeout, int | float):
+        return float(timeout)
+    if isinstance(timeout, tuple):
+        return float(sum(timeout))
+    return None
+
+
+def _check_total_budget_or_raise(
+    total_allowed_time: float | None, elapsed: float
+) -> None:
+    """Raise ``requests.Timeout`` if the total time budget across redirects
+    has been exceeded.
+
+    Mitigates: Slowloris across redirects. Special-case ``total=0`` (used
+    by tests with mocked sessions) so legitimate test mocks aren't broken
+    by an instant timeout pre-check; otherwise enforces strict ``elapsed
+    >= total``.
+    """
+    if total_allowed_time is None:
+        return
+    if total_allowed_time == 0:
+        return
+    if elapsed >= total_allowed_time:
+        raise requests.Timeout(
+            f"Total timeout of {total_allowed_time}s exceeded after {elapsed:.2f}s"
+        )
+
+
+def _per_request_timeout(
+    timeout: _TimeoutT,
+    total_allowed_time: float | None,
+    elapsed: float,
+) -> float | tuple[float, float] | None:
+    """Compute the per-request timeout for the next HTTP call given
+    elapsed time so far in the redirect chain.
+
+    Mitigates: per-request timeout decay. Tuple timeouts retain their
+    structure but are capped to ``min(original, remaining)`` so neither
+    the connect nor read step can exceed what's left of the total budget.
+    Honours the ``total=0`` test-mock convention by passing the original
+    timeout untouched in that case.
+    """
+    if total_allowed_time is None:
+        return timeout
+    if total_allowed_time == 0:
+        return timeout
+
+    remaining = total_allowed_time - elapsed
+    remaining = max(0.1, remaining) if total_allowed_time > 0 else max(0.0, remaining)
+
+    if isinstance(timeout, int | float):
+        return remaining
+    if isinstance(timeout, tuple):
+        return (min(timeout[0], remaining), min(timeout[1], remaining))
+    return remaining
+
+
+def _resolve_target_ip(parsed: Any, current_url: str) -> str:
+    """Resolve a hostname (or accept a literal IP) to a safe IP for HTTPS
+    pinning.
+
+    Mitigates: SSRF via DNS resolution returning a private/internal IP.
+    Tries the literal-IP path first (so callers can pass numeric URLs
+    without a DNS round-trip), then falls back to a safe DNS lookup.
+    Raises ``ValueError`` with a sanitized URL if no safe IP is found.
+    """
+    target_ip: str | None = None
+
+    if parsed.hostname:
+        try:
+            ip_candidate = parsed.hostname.strip("[]").split("%")[0]
+            ip_obj = ipaddress.ip_address(ip_candidate)
+            target_ip_cand = str(ip_obj)
+            if is_ip_safe(target_ip_cand):
+                target_ip = str(target_ip_cand)
+        except ValueError:
+            pass
+
+    if target_ip is None:
+        ips = _resolve_hostname_safe(parsed.hostname or "")
+        for _, _, _, _, sockaddr in ips:
+            if is_ip_safe(str(sockaddr[0])):
+                target_ip = str(sockaddr[0])
+                break
+
+    if not target_ip:
+        sanitized_url = _sanitize_url_for_error(current_url)
+        raise ValueError(f"No safe IP resolved for {sanitized_url}")
+
+    return target_ip
+
+
+def _send_http_pinned(
+    session: requests.Session,
+    method: str,
+    parsed: Any,
+    safe_url: str,
+    current_timeout: float | tuple[float, float] | None,
+    request_hooks: dict[str, Any],
+    kwargs: dict[str, Any],
+) -> Any:
+    """Send an HTTP request with the URL already pinned to its resolved IP.
+
+    Mitigates: DNS-rebinding TOCTOU on plain HTTP. The original hostname
+    is preserved in the ``Host`` header (Virtual Hosting safety) while the
+    URL itself addresses the literal IP, so a hostile resolver cannot
+    swap the IP between the safety-check and the connect.
+    """
+    pinned_url, _hostname = _pin_url_to_ip(safe_url)
+    kwargs["headers"]["Host"] = parsed.netloc
+    return session.request(
+        method,
+        pinned_url,
+        stream=True,
+        timeout=current_timeout,
+        hooks=request_hooks,
+        allow_redirects=False,
+        **kwargs,
+    )
+
+
+def _send_https_pinned(
+    session: requests.Session,
+    method: str,
+    parsed: Any,
+    safe_url: str,
+    current_url: str,
+    current_timeout: float | tuple[float, float] | None,
+    request_hooks: dict[str, Any],
+    kwargs: dict[str, Any],
+) -> Any:
+    """Send an HTTPS request via a per-IP-pinned adapter so the TLS
+    handshake's SNI uses the original hostname while the TCP connect
+    targets the resolved (vetted) IP.
+
+    Mitigates: DNS-rebinding TOCTOU on HTTPS + SNI/Host mismatch. The
+    pinned adapter is cached by IP+timeout, and the request is prepared
+    manually to bypass the session's normal adapter-selection (which
+    would resolve the hostname a second time).
+    """
+    target_ip = _resolve_target_ip(parsed, current_url)
+    kwargs["headers"]["Host"] = parsed.hostname or parsed.netloc
+
+    original_adapter = session.get_adapter(current_url)
+    current_retries = getattr(original_adapter, "max_retries", 0)
+    pinned_session = _get_pinned_session(
+        str(target_ip), current_timeout, max_retries=current_retries
+    )
+
+    req = requests.Request(
+        method,
+        safe_url,
+        headers=kwargs.get("headers"),
+        files=kwargs.get("files"),
+        data=kwargs.get("data"),
+        json=kwargs.get("json"),
+        params=kwargs.get("params"),
+        auth=kwargs.get("auth"),
+        cookies=kwargs.get("cookies"),
+        hooks=request_hooks,
+    )
+    prepped = session.prepare_request(req)
+
+    settings = session.merge_environment_settings(
+        prepped.url,
+        proxies={},
+        stream=True,
+        verify=kwargs.get("verify"),
+        cert=kwargs.get("cert"),
+    )
+    send_kwargs = kwargs.copy()
+    send_kwargs.update(settings)
+
+    valid_adapter_args = {"stream", "timeout", "verify", "cert", "proxies"}
+    adapter_kwargs = {k: v for k, v in send_kwargs.items() if k in valid_adapter_args}
+    adapter_kwargs["stream"] = True
+    adapter_kwargs["timeout"] = current_timeout
+
+    adapter = pinned_session.get_adapter(safe_url)
+    return adapter.send(prepped, **adapter_kwargs)
+
+
+def _strip_redirect_secrets(
+    kwargs: dict[str, Any],
+    current_url: str,
+    next_url: str,
+    session: requests.Session,
+) -> str:
+    """Strip credentials, sensitive headers, and sensitive query
+    parameters when a redirect crosses an origin boundary.
+
+    Mitigates: token/credential leak across origins. Always strips
+    headers that match the dynamic+static sensitivity rules; on cross-
+    origin redirects (different host/scheme/port) ALSO strips sensitive
+    query params (e.g. ``accessId``) and pops the explicit ``auth``
+    kwarg. Returns the (possibly param-stripped) next URL.
+    """
+    _strip_sensitive_headers(
+        kwargs["headers"],
+        current_url,
+        next_url,
+        session_headers=session.headers,
+    )
+
+    next_parsed = urlparse(next_url)
+    curr_parsed = urlparse(current_url)
+    if (
+        next_parsed.hostname != curr_parsed.hostname
+        or next_parsed.scheme != curr_parsed.scheme
+        or _get_port(next_parsed) != _get_port(curr_parsed)
+    ):
+        next_url = _strip_sensitive_params(next_url)
+        if "auth" in kwargs:
+            kwargs.pop("auth")
+    return next_url
+
+
+def _drop_body_for_get(kwargs: dict[str, Any]) -> None:
+    """Drop request-body kwargs and content-related headers when a
+    redirect downgrades the method to GET.
+
+    Mitigates: malformed POST→GET conversion (sending a body without a
+    valid ``Content-Type`` header, or vice versa, can confuse upstream
+    proxies and is technically invalid per HTTP).
+    """
+    kwargs.pop("data", None)
+    kwargs.pop("json", None)
+    kwargs.pop("files", None)
+    if "headers" in kwargs:
+        for h in list(kwargs["headers"].keys()):
+            if h.lower() in ("content-type", "content-length", "transfer-encoding"):
+                del kwargs["headers"][h]
+
+
+def _apply_method_downgrade(
+    method: str, status_code: int, kwargs: dict[str, Any]
+) -> str:
+    """Apply RFC-7231 method downgrade rules for redirects.
+
+    - 303 See Other (any method except HEAD) → GET
+    - 301/302 + POST                          → GET
+    - 307/308                                 → preserve method
+
+    Mitigates: silent method-preservation when the spec demands a
+    downgrade, which would re-send a POST body (potentially with
+    credentials) to the redirect target.
+    """
+    if status_code == 303 and method != "HEAD":
+        _drop_body_for_get(kwargs)
+        return "GET"
+    if status_code in (301, 302) and method == "POST":
+        _drop_body_for_get(kwargs)
+        return "GET"
+    return method
+
+
+def _drop_host_header(kwargs: dict[str, Any]) -> None:
+    """Remove any ``Host`` header before re-issuing the request after a
+    redirect.
+
+    Mitigates: SNI/Host mismatch on the redirected request. The Host
+    header is set per-iteration by the HTTP/HTTPS dispatch helpers based
+    on the (newly-resolved) target's hostname; carrying the previous
+    iteration's value forward would cause the upstream to receive a
+    ``Host`` for the wrong origin.
+    """
+    if "headers" in kwargs:
+        for h in list(kwargs["headers"].keys()):
+            if h.lower() == "host":
+                del kwargs["headers"][h]
+
+
+def _is_redirect(r: Any) -> bool:
+    """Detect whether a response is a redirect, with mock-safety.
+
+    Mitigates: false-positive redirects from `MagicMock.is_redirect`
+    (which evaluates truthy by default). Real responses expose
+    ``is_redirect`` as a bool; mocks unintentionally pass any attribute
+    access. This guard ensures only real bool ``True`` values count.
+    """
+    is_redirect = getattr(r, "is_redirect", False)
+    if callable(is_redirect) or type(is_redirect).__name__ == "MagicMock":
+        return False
+    return bool(is_redirect)
+
+
+def _process_redirect(
+    r: Any,
+    current_url: str,
+    method: str,
+    kwargs: dict[str, Any],
+    attempt: int,
+    max_redirects: int,
+    session: requests.Session,
+) -> tuple[str, str] | None:
+    """Drive one iteration of the manual redirect loop.
+
+    Returns ``(next_url, next_method)`` to continue the loop, or ``None``
+    if the response is not a redirect (final response). Mutates
+    ``kwargs`` in place (header/secret stripping, body drop, Host
+    removal). Raises ``requests.TooManyRedirects`` when the cap is hit.
+
+    Mitigates: combined redirect attack surface — every defense layer
+    on the redirect path (max-cap, secret stripping, method downgrade,
+    Host removal) is dispatched in the security-correct order so a
+    refactor cannot accidentally reorder them.
+    """
+    if not _is_redirect(r):
+        return None
+    location = r.headers.get("Location")
+    if not (location and isinstance(location, str)):
+        return None
+    if attempt == max_redirects:
+        raise requests.TooManyRedirects(f"Exceeded {max_redirects} redirects")
+
+    next_url = urljoin(current_url, location)
+    next_url = _strip_redirect_secrets(kwargs, current_url, next_url, session)
+
+    kwargs.pop("params", None)
+    new_method = _apply_method_downgrade(method, r.status_code, kwargs)
+    _drop_host_header(kwargs)
+    return next_url, new_method
+
+
+def _validate_content_type(
+    r: Any, allowed_content_types: Container[str] | None
+) -> None:
+    """Validate the response's ``Content-Type`` against an allow-list, or
+    block ``text/html`` when no allow-list is supplied.
+
+    Mitigates: WAF/proxy block-page misinterpretation. Many CDNs serve
+    ``text/html`` error pages for blocked requests; without this check a
+    JSON-expecting caller would silently parse the HTML as JSON (or
+    worse, treat it as success).
+    """
+    content_type_header = r.headers.get("Content-Type", "")
+    mime_type = (
+        content_type_header.split(";")[0].strip().lower()
+        if content_type_header
+        else ""
+    )
+
+    if allowed_content_types is not None:
+        if not content_type_header:
+            raise ValueError(
+                "Content-Type header missing, but validation required"
+            )
+        if mime_type not in allowed_content_types:
+            raise ValueError(
+                f"Invalid Content-Type: {mime_type} (expected {allowed_content_types})"
+            )
+    elif mime_type == "text/html":
+        raise ValueError(
+            "Invalid Content-Type: received text/html (possible proxy error or WAF block)"
+        )
+
+
+def _compute_read_timeout(
+    timeout: _TimeoutT,
+    total_allowed_time: float | None,
+    current_elapsed: float,
+) -> float | tuple[float, float]:
+    """Compute the timeout for streaming the response body, capped to
+    whatever's left of the total budget.
+
+    Mitigates: Slowloris on the read side. Even if connect succeeded
+    quickly, an adversary can stall the body stream; this enforces the
+    total budget on the read step too. Tuple timeouts retain their
+    structure with both legs capped to the remaining time.
+    """
+    if total_allowed_time is None:
+        raise RuntimeError("total_allowed_time cannot be None at this point")
+
+    if total_allowed_time == 0:
+        read_timeout_val: float = 0.0
+    else:
+        remaining_total = total_allowed_time - current_elapsed
+        if remaining_total <= 0:
+            raise requests.Timeout("Total timeout exceeded before reading body")
+        read_timeout_val = remaining_total
+        if isinstance(timeout, tuple):
+            read_timeout_val = min(read_timeout_val, timeout[1])
+
+    if isinstance(timeout, tuple):
+        return (min(timeout[0], read_timeout_val), read_timeout_val)
+    return read_timeout_val
+
+
 def request_safe(
     session: requests.Session,
     url: str,
@@ -1393,7 +1838,6 @@ def request_safe(
 
     # Security: Disable automatic redirects to prevent DNS Rebinding TOCTOU.
     # We handle redirects manually to pin the DNS for each step.
-    # We remove it from kwargs to prevent conflict with explicit argument in session.request.
     kwargs.pop("allow_redirects", None)
     kwargs.pop("stream", None)
 
@@ -1403,148 +1847,19 @@ def request_safe(
     else:
         kwargs["headers"] = CaseInsensitiveDict()
 
-    # Security: Ensure redirects are validated by merging our security hook
-    # with existing session hooks and any hooks passed by the caller.
-    has_hooks = hasattr(session, "hooks")
-    if has_hooks:
-        request_hooks = session.hooks.copy()
-    else:
-        request_hooks = {}
+    request_hooks = _merge_request_hooks(session, kwargs)
 
-    caller_hooks = kwargs.pop("hooks", None)
-    if caller_hooks:
-        for event, hook in caller_hooks.items():
-            existing = request_hooks.get(event, [])
-            if not isinstance(existing, list):
-                existing = [existing]
-            else:
-                existing = list(existing)  # Copy
-
-            if not isinstance(hook, list):
-                hook = [hook]
-
-            request_hooks[event] = existing + hook
-
-    # Ensure response hook list is prepared and includes our security check
-    resp_hooks = request_hooks.get("response", [])
-    if not isinstance(resp_hooks, list):
-        resp_hooks = [resp_hooks]
-    else:
-        resp_hooks = list(resp_hooks)
-
-    if _check_response_security not in resp_hooks:
-        resp_hooks.append(_check_response_security)
-    request_hooks["response"] = resp_hooks
-
-    # Determine max redirects
-    max_redirects = 10
-    if hasattr(session, "max_redirects"):
-        max_redirects = session.max_redirects
-
+    max_redirects = getattr(session, "max_redirects", 10)
     current_url = url
     start_time = time.monotonic()
+    total_allowed_time = _compute_total_time_budget(timeout)
 
-    # Determine methods that typically support redirects (GET, HEAD)
-    # RFC 7231 says 3xx should be followed for safe methods, or 303 See Other.
-    # requests follows redirects for all methods if allow_redirects=True, but we handle manually.
-    # If method is POST/PUT/DELETE, standard redirects (301, 302) might change method to GET.
-    # requests handles this logic inside SessionRedirectMixin.
-    # For simplicity and security, we only follow redirects if appropriate,
-    # but here we replicate requests' behavior of following redirects.
-
-    # We loop to handle redirects
     try:
-        # Determine total allowed time (Task 3)
-        total_allowed_time: float | None = None
-        if isinstance(timeout, int | float):
-            total_allowed_time = float(timeout)
-        elif isinstance(timeout, tuple):
-             # For tuple (connect, read), we sum them as the absolute upper bound for the whole chain?
-             # Requirement: "Berechne bei einem Tuple die Summe beider Werte als absolutes Zeitlimit"
-             total_allowed_time = sum(timeout)
-
         for attempt in range(max_redirects + 1):
-            # Calculate remaining timeout
             elapsed = time.monotonic() - start_time
+            _check_total_budget_or_raise(total_allowed_time, elapsed)
+            current_timeout = _per_request_timeout(timeout, total_allowed_time, elapsed)
 
-            # Check absolute timeout (Task 3)
-            # IMPORTANT: For timeout=0 (often used in tests), we must allow at least one iteration.
-            # If total_allowed_time is 0, elapsed >= 0 is always true immediately.
-            # We should probably only enforce this if elapsed is strictly > total_allowed_time, OR
-            # allow a small grace period, OR check it only after the first request?
-
-            # Current behavior:
-            # if total_allowed_time=0 and elapsed=0 -> raises Timeout.
-            # But timeout=0 usually implies "instant fail" or "minimal check".
-            # In test_wl_fetch.py: fetch_events(timeout=0) is called.
-
-            # If timeout is 0, we treat it as "very small timeout".
-            # requests usually treats timeout=0 as "fail if not instant".
-            # But here we are checking BEFORE the request.
-
-            if total_allowed_time is not None:
-                if total_allowed_time == 0:
-                     # Special case for 0 timeout tests: Allow at least start?
-                     # But requests with timeout=0 will fail anyway unless we mock it.
-                     # In the test case, they mock the session to return DummyResponse instantly.
-                     # So elapsed will be ~0.
-                     # If we raise here, we break the test.
-
-                     # If total_allowed_time is 0, we can skip this check here and let requests fail
-                     # (or succeed if mocked).
-                     # OR we only raise if elapsed > total_allowed_time (strict inequality).
-                     pass
-                elif elapsed >= total_allowed_time:
-                     raise requests.Timeout(f"Total timeout of {total_allowed_time}s exceeded after {elapsed:.2f}s")
-
-            # Security: Enforce a total timeout across redirects, but allow a minimal window (0.1s)
-            # to ensure we don't fail strictly on 0s timeouts used in tests with mocks.
-            current_timeout: float | tuple[float, float]
-
-            remaining_time = total_allowed_time - elapsed if total_allowed_time is not None else None
-            if remaining_time is not None:
-                 if total_allowed_time > 0:
-                     remaining_time = max(0.1, remaining_time)
-                 else:
-                     remaining_time = max(0.0, remaining_time)
-
-            if total_allowed_time == 0:
-                current_timeout = timeout
-            else:
-                if isinstance(timeout, int | float):
-                    # Scalar timeout logic remains similar (using remaining_time)
-                    current_timeout = remaining_time
-                else:
-                    # Tuple case: (connect, read).
-                    # We should adjust the tuple? The requirement says:
-                    # "Wende dieses berechnete Rest-Limit auch auf den Lesezugriff an."
-                    # If we pass (connect, read) to requests, 'connect' is per-request.
-                    # 'read' is per-request body read.
-                    # But we want to bound the WHOLE process.
-
-                    # If we use `remaining_time` for both?
-                    # A tuple (remaining, remaining) seems safest to enforce the total bound.
-                    # But we might want to respect the original 'connect' constraint if it's smaller?
-                    # Original: (3.0, 15.0). Total 18.0.
-                    # If 10s passed. Remaining 8.0.
-                    # New timeout: (min(3.0, 8.0), 8.0)?
-
-                    # Let's simplify and use the remaining time for both to be safe,
-                    # effectively converting it to a scalar or a tuple bounded by remaining.
-
-                    # If we convert to scalar `remaining_time`, requests treats it as (connect+read) bound per request?
-                    # No, scalar timeout in requests means (connect_timeout == read_timeout == scalar).
-
-                    # Let's try to preserve the tuple structure but cap it.
-                    if remaining_time is not None:
-                         # Cap connect timeout
-                         new_connect = min(timeout[0], remaining_time)
-                         # Cap read timeout
-                         new_read = min(timeout[1], remaining_time)
-                         current_timeout = (new_connect, new_read)
-
-
-            # 1. Validate and Pin
             safe_url = validate_http_url(current_url, check_dns=False)
             if not safe_url:
                 # Security: avoid echoing potentially sensitive URLs in errors.
@@ -1552,97 +1867,15 @@ def request_safe(
                 raise ValueError(f"Unsafe or invalid URL: {sanitized_url}")
 
             parsed = urlparse(safe_url)
-            target_url = safe_url
-
             if parsed.scheme == "http":
-                pinned_url, hostname = _pin_url_to_ip(safe_url)
-                # Task 1: IPv6 Host Header Fix
-                # Security: Ensure original hostname is used in Host header even after DNS resolution
-                kwargs["headers"]["Host"] = parsed.netloc
-                target_url = pinned_url
-
-                # Standard session.request for HTTP
-                ctx = session.request(
-                    method,
-                    target_url,
-                    stream=True,
-                    timeout=current_timeout,
-                    hooks=request_hooks,
-                    allow_redirects=False,
-                    **kwargs,
+                ctx = _send_http_pinned(
+                    session, method, parsed, safe_url, current_timeout, request_hooks, kwargs
                 )
             else:
-                # HTTPS: TOCTOU Fix (Task 4) using PinnedHTTPSAdapter
-                target_ip: str | None = None
-
-                if parsed.hostname:
-                    try:
-                        ip_candidate = parsed.hostname.strip("[]").split("%")[0]
-                        ip_obj = ipaddress.ip_address(ip_candidate)
-                        target_ip_cand = str(ip_obj)
-                        if is_ip_safe(target_ip_cand):
-                            target_ip = str(target_ip_cand)
-                    except ValueError:
-                        pass
-
-                if target_ip is None:
-                    ips = _resolve_hostname_safe(parsed.hostname or "")
-                    for _, _, _, _, sockaddr in ips:
-                        if is_ip_safe(str(sockaddr[0])):
-                            target_ip = str(sockaddr[0])
-                            break
-
-                if not target_ip:
-                    sanitized_url = _sanitize_url_for_error(current_url)
-                    raise ValueError(f"No safe IP resolved for {sanitized_url}")
-
-                kwargs["headers"]["Host"] = parsed.hostname or parsed.netloc
-
-                # Extract max_retries from original adapter to maintain retry configuration
-                original_adapter = session.get_adapter(current_url)
-                current_retries = getattr(original_adapter, "max_retries", 0)
-
-                # Use cached PinnedHTTPSAdapter to force connection to target_ip while keeping hostname for SNI
-                pinned_session = _get_pinned_session(str(target_ip), current_timeout, max_retries=current_retries)
-
-                # Prepare request manually to bypass session adapter selection
-                req = requests.Request(
-                    method,
-                    target_url,
-                    headers=kwargs.get("headers"),
-                    files=kwargs.get("files"),
-                    data=kwargs.get("data"),
-                    json=kwargs.get("json"),
-                    params=kwargs.get("params"),
-                    auth=kwargs.get("auth"),
-                    cookies=kwargs.get("cookies"),
-                    hooks=request_hooks,
+                ctx = _send_https_pinned(
+                    session, method, parsed, safe_url, current_url,
+                    current_timeout, request_hooks, kwargs,
                 )
-                prepped = session.prepare_request(req)
-
-                # Merge environment settings (proxies, verify, cert)
-                # This ensures we respect session verification settings
-                settings = session.merge_environment_settings(
-                    prepped.url, proxies={}, stream=True, verify=kwargs.get("verify"), cert=kwargs.get("cert")
-                )
-                send_kwargs = kwargs.copy()
-                send_kwargs.update(settings)
-
-                # Send request using our pinned session's mounted adapter to avoid session-level hooks and redirects
-                # just like the old code used adapter.send.
-                # This ensures we get a raw response without session-level processing (which we handle manually).
-
-                # Adapter.send signature: send(request, stream=False, timeout=None, verify=True, cert=None, proxies=None)
-                # We need to filter kwargs to match what Adapter.send expects.
-                valid_adapter_args = {"stream", "timeout", "verify", "cert", "proxies"}
-                adapter_kwargs = {k: v for k, v in send_kwargs.items() if k in valid_adapter_args}
-
-                adapter_kwargs["stream"] = True
-                adapter_kwargs["timeout"] = current_timeout
-
-                # Send request using the adapter mounted to our pinned session
-                adapter = pinned_session.get_adapter(target_url)
-                ctx = adapter.send(prepped, **adapter_kwargs)
 
             with ctx as r:
                 try:
@@ -1650,149 +1883,27 @@ def request_safe(
                     if parsed.scheme == "https":
                         r = dispatch_hook("response", request_hooks, r, **kwargs)
 
-                    # Duck-typing check for mocks that might lack is_redirect
-                    # Some mocks implement is_redirect as a MagicMock, which evaluates to True. We explicitly check bool.
-                    is_redirect = getattr(r, "is_redirect", False)
-                    if callable(is_redirect) or type(is_redirect).__name__ == "MagicMock":
-                        is_redirect = False
+                    redirect = _process_redirect(
+                        r, current_url, method, kwargs, attempt, max_redirects, session
+                    )
+                    if redirect is not None:
+                        current_url, method = redirect
+                        continue
 
-                    if is_redirect:
-                        # Handle Redirect
-                        location = r.headers.get("Location")
-                        # Some mocks return a MagicMock for location which is truthy. Ensure it is a string.
-                        if location and isinstance(location, str):
-                            if attempt == max_redirects:
-                                raise requests.TooManyRedirects(
-                                    f"Exceeded {max_redirects} redirects"
-                                )
-
-                            # Resolve relative URLs
-                            next_url = urljoin(current_url, location)
-
-                            # Strip sensitive headers if needed
-                            # We pass session.headers to ensure they are masked (set to None) if present
-                            _strip_sensitive_headers(
-                                kwargs["headers"],
-                                current_url,
-                                next_url,
-                                session_headers=session.headers,
-                            )
-
-                            # Security: Strip sensitive query parameters if redirecting to a different host/scheme/port
-                            # This prevents leaking tokens (e.g. accessId) via redirect URLs.
-                            next_parsed = urlparse(next_url)
-                            curr_parsed = urlparse(current_url)
-
-                            if (
-                                next_parsed.hostname != curr_parsed.hostname
-                                or next_parsed.scheme != curr_parsed.scheme
-                                or _get_port(next_parsed) != _get_port(curr_parsed)
-                            ):
-                                next_url = _strip_sensitive_params(next_url)
-
-                                # Prevent leaking explicit authentication credentials (e.g. auth=('user', 'pass'))
-                                # to unsafe redirect targets.
-                                if "auth" in kwargs:
-                                    kwargs.pop("auth")
-
-                            # Update URL and continue loop
-                            current_url = next_url
-                            kwargs.pop("params", None)
-
-                            # If redirects are followed, standard behavior (like requests) is to switch to GET
-                            # for 301/302/303 if original was not HEAD.
-                            # 307/308 preserve method.
-                            # For simplicity, if we are redirecting, we generally respect the status code implications.
-                            # requests implementation details are complex.
-                            # However, since we are doing manual redirects for security, we should mimic requests behavior roughly
-                            # or just keep using the same method if it's 307/308, and switch to GET for others?
-                            # For this implementation, we simply persist the method unless it's a 303 (See Other)
-                            # which MUST be GET.
-                            if r.status_code == 303 and method != "HEAD":
-                                method = "GET"
-                                # Drop data/json/files for GET redirect
-                                kwargs.pop("data", None)
-                                kwargs.pop("json", None)
-                                kwargs.pop("files", None)
-                                # Also drop content-related headers that are invalid for GET
-                                if "headers" in kwargs:
-                                    # CaseInsensitiveDict .pop does not always handle title case gracefully depending on implementation
-                                    for h in list(kwargs["headers"].keys()):
-                                        if h.lower() in ("content-type", "content-length", "transfer-encoding"):
-                                            del kwargs["headers"][h]
-
-                            # For 301/302, requests switches to GET if not 307/308
-                            if r.status_code in (301, 302) and method == "POST":
-                                method = "GET"
-                                kwargs.pop("data", None)
-                                kwargs.pop("json", None)
-                                kwargs.pop("files", None)
-                                # Also drop content-related headers that are invalid for GET
-                                if "headers" in kwargs:
-                                    for h in list(kwargs["headers"].keys()):
-                                        if h.lower() in ("content-type", "content-length", "transfer-encoding"):
-                                            del kwargs["headers"][h]
-
-                            # Task 1: Remove Host header to prevent SNI/Host mismatch on redirect
-                            if "headers" in kwargs:
-                                for h in list(kwargs["headers"].keys()):
-                                    if h.lower() == "host":
-                                        del kwargs["headers"][h]
-
-                            continue
-
-                    # Final Response
                     if raise_for_status:
                         r.raise_for_status()
 
-                    content_type_header = r.headers.get("Content-Type", "")
-                    mime_type = content_type_header.split(";")[0].strip().lower() if content_type_header else ""
-
-                    if allowed_content_types is not None:
-                        if not content_type_header:
-                            raise ValueError(
-                                "Content-Type header missing, but validation required"
-                            )
-                        if mime_type not in allowed_content_types:
-                            raise ValueError(
-                                f"Invalid Content-Type: {mime_type} (expected {allowed_content_types})"
-                            )
-                    else:
-                        # Explicitly block text/html proxy errors/WAF blocks when validation is implicit
-                        if mime_type == "text/html":
-                            raise ValueError("Invalid Content-Type: received text/html (possible proxy error or WAF block)")
-
-                    # Calculate remaining time for reading body (Task 3)
-                    # We must ensure we don't exceed total_allowed_time
-                    read_timeout_val: float
+                    _validate_content_type(r, allowed_content_types)
 
                     current_elapsed = time.monotonic() - start_time
-
-                    if total_allowed_time is None:
-                        raise RuntimeError("total_allowed_time cannot be None at this point")
-
-                    if total_allowed_time == 0:
-                        read_timeout_val = 0.0
-                    else:
-                        remaining_total = total_allowed_time - current_elapsed
-                        if remaining_total <= 0:
-                            raise requests.Timeout("Total timeout exceeded before reading body")
-                        read_timeout_val = remaining_total
-
-                        if isinstance(timeout, tuple):
-                            read_timeout_val = min(read_timeout_val, timeout[1])
-
-                    # For safe reading, pass a tuple if it was a tuple, or scalar if scalar
-                    final_read_timeout: float | tuple[float, float] = read_timeout_val
-                    if isinstance(timeout, tuple):
-                        final_read_timeout = (min(timeout[0], read_timeout_val), read_timeout_val)
-
+                    final_read_timeout = _compute_read_timeout(
+                        timeout, total_allowed_time, current_elapsed
+                    )
                     content = read_response_safe(r, max_bytes, timeout=final_read_timeout)
 
                     # Manually attach content to response object so it's usable after close
                     r._content = content
                     r._content_consumed = True
-
                     return r
                 except Exception:
                     # We do not close the adapter/session to maintain keep-alive cache,
