@@ -68,12 +68,30 @@ MAX_PROVIDER_TIMEOUT = DEFAULT_PROVIDER_TIMEOUT
 # the failure path). The cap is intentionally generous (100x default) so
 # operators can absorb verbose-debug runs without raising the ceiling, but
 # the absolute upper bound bounds the worst-case disk footprint at
-# ``2 * MAX_LOG_BYTES * (LOG_BACKUP_COUNT + 1)`` (two log files share the
-# threshold). Mirrors the TIGHTEN-only contract of ``MAX_PROVIDER_TIMEOUT``
+# ``2 * MAX_LOG_BYTES * (MAX_LOG_BACKUP_COUNT + 1)`` (two log files share
+# the threshold). Mirrors the TIGHTEN-only contract of ``MAX_PROVIDER_TIMEOUT``
 # above and ``MAX_TIMEOUT_S`` / ``MAX_REQUEST_RETRIES`` in
 # ``src/places/client.py``.
 DEFAULT_LOG_MAX_BYTES = 1_000_000
 MAX_LOG_BYTES = 100 * 1024 * 1024
+
+# Security: ``MAX_LOG_BACKUP_COUNT`` is the disk-exhaustion-defence ceiling for
+# the number of rotated log files retained per ``RotatingFileHandler`` (one for
+# ``errors.log``, one for ``diagnostics.log``). ``LOG_BACKUP_COUNT`` was the
+# uncapped sibling of ``LOG_MAX_BYTES`` — Round 6 capped per-file size at
+# ``MAX_LOG_BYTES`` but left the *multiplier* in the worst-case formula
+# ``2 * MAX_LOG_BYTES * (LOG_BACKUP_COUNT + 1)`` unbounded. A benign-looking
+# env override such as ``LOG_BACKUP_COUNT=999999`` (intentional misconfig,
+# leaked CI env, compromised secret store) would let one operator override
+# defeat Round 6's per-file ceiling: with the 100MB cap and a million backups
+# the worst-case disk footprint is ~190 TB regardless of the ``LOG_MAX_BYTES``
+# clamp. The cap is intentionally generous (100x default) so operators can
+# extend retention for forensics without raising the ceiling, but the upper
+# bound keeps the worst-case footprint at ``2 * 100 MiB * 501 ≈ 100 GiB`` even
+# with both env overrides at their post-clamp maxima — bounded for any CI
+# runner volume. TIGHTEN-only contract mirrors ``MAX_LOG_BYTES`` above.
+DEFAULT_LOG_BACKUP_COUNT = 5
+MAX_LOG_BACKUP_COUNT = 500
 
 
 class InvalidPathError(ValueError):
@@ -175,8 +193,8 @@ class FeedSettings:
 LOG_LEVEL: str = "INFO"
 LOG_FORMAT: str = "plain"
 LOG_DIR_PATH: Path = Path("log")
-LOG_MAX_BYTES: int = 1_000_000
-LOG_BACKUP_COUNT: int = 5
+LOG_MAX_BYTES: int = DEFAULT_LOG_MAX_BYTES
+LOG_BACKUP_COUNT: int = DEFAULT_LOG_BACKUP_COUNT
 OUT_PATH: Path = DEFAULT_OUT_PATH
 FEED_HEALTH_PATH: Path = DEFAULT_FEED_HEALTH_PATH
 FEED_HEALTH_JSON_PATH: Path = DEFAULT_FEED_HEALTH_JSON_PATH
@@ -216,7 +234,15 @@ def _load_from_env() -> None:
         max(get_int_env("LOG_MAX_BYTES", DEFAULT_LOG_MAX_BYTES), 0),
         MAX_LOG_BYTES,
     )
-    LOG_BACKUP_COUNT = max(get_int_env("LOG_BACKUP_COUNT", 5), 0)
+    # Security: clamp the env override to ``MAX_LOG_BACKUP_COUNT`` to defeat
+    # the disk-exhaustion vector documented at the constant declaration above.
+    # Without the cap a single ``LOG_BACKUP_COUNT=999999`` would multiply the
+    # per-file ``MAX_LOG_BYTES`` ceiling by an unbounded factor and re-enable
+    # the disk-fill scenario Round 6 fixed for ``LOG_MAX_BYTES``.
+    LOG_BACKUP_COUNT = min(
+        max(get_int_env("LOG_BACKUP_COUNT", DEFAULT_LOG_BACKUP_COUNT), 0),
+        MAX_LOG_BACKUP_COUNT,
+    )
 
     OUT_PATH = resolve_env_path("OUT_PATH", DEFAULT_OUT_PATH)
     FEED_HEALTH_PATH = resolve_env_path(
@@ -364,6 +390,7 @@ __all__ = [
     "LOG_TIMEZONE",
     "MAX_ITEM_AGE_DAYS",
     "MAX_ITEMS",
+    "MAX_LOG_BACKUP_COUNT",
     "MAX_LOG_BYTES",
     "MAX_PROVIDER_TIMEOUT",
     "OUT_PATH",
