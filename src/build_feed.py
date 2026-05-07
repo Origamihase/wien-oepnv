@@ -364,7 +364,15 @@ def _provider_timeout_override(
         candidates.append(f"{base}_TIMEOUT")
         candidates.append(f"PROVIDER_TIMEOUT_{base}")
 
-    return _resolve_provider_override(candidates)
+    value = _resolve_provider_override(candidates)
+    if value is None:
+        return None
+    # Security: clamp the per-provider override at the same Slowloris-defence
+    # ceiling as the global PROVIDER_TIMEOUT. Without this cap an env override
+    # such as PROVIDER_TIMEOUT_VOR=99999 would bypass feed_config.PROVIDER_TIMEOUT
+    # (which is itself capped at MAX_PROVIDER_TIMEOUT) and let a sluggish or
+    # attacker-controlled upstream peer stall a fetch for ~28 hours.
+    return min(value, feed_config.MAX_PROVIDER_TIMEOUT)
 
 
 def _provider_concurrency_key(fetch: Any, provider_name: str) -> str:
