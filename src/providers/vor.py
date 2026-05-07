@@ -445,12 +445,38 @@ VOR_STATION_NAMES: list[str] = [
 ]
 
 
+# Security: ``VOR_BASE_URL`` (and the legacy ``VOR_BASE`` alias) is the prefix
+# that ``VorAuth`` matches with ``r.url.startswith(self.base_url)`` to decide
+# whether to attach the VAO ``accessId`` query parameter and the
+# ``Authorization: Bearer/Basic <VOR_ACCESS_ID>`` header. ``validate_http_url``
+# only checks SSRF/DNS-rebinding properties, not host identity — so an env
+# override such as ``VOR_BASE_URL=https://evil.com/api/`` would (a) point all
+# VOR fetches at the attacker, and (b) make ``VorAuth`` happily inject the
+# access-ID into every one of those requests (URLs starting with the override
+# match by definition). Pin the host to the official VAO endpoint, identical
+# in shape to ``_validated_oebb_url`` / ``_validated_wl_base`` for the
+# corresponding provider env vars. Forks that need a different upstream must
+# update this allowlist deliberately rather than via an env override.
+_VOR_TRUSTED_HOSTS = frozenset({"routenplaner.verkehrsauskunft.at"})
+
+
+def _validated_vor_base_url(raw: str) -> str | None:
+    safe = validate_http_url(raw)
+    if not safe:
+        return None
+    host = (urlparse(safe).hostname or "").lower()
+    if host not in _VOR_TRUSTED_HOSTS:
+        return None
+    return safe
+
+
 def refresh_base_configuration() -> str:
     """
     Refresh VOR base URL and version from environment variables.
 
     Allows overriding ``VOR_BASE_URL`` and ``VOR_VERSION`` dynamically.
-    Sanitizes inputs using ``validate_http_url``.
+    Sanitizes inputs using ``validate_http_url`` and pins the host to
+    the official VAO endpoint via ``_validated_vor_base_url``.
     """
     base_url_env = _get_env("VOR_BASE_URL")
     base_env = _get_env("VOR_BASE")
@@ -461,9 +487,20 @@ def refresh_base_configuration() -> str:
 
     version = version_env or DEFAULT_VERSION
 
-    # Pre-validate base env vars to avoid injection risks
-    validated_base_url_env = validate_http_url(base_url_env)
-    validated_base_env = validate_http_url(base_env)
+    # Pre-validate base env vars to avoid injection risks AND pin to the
+    # official VAO host so an env override cannot redirect credentials.
+    validated_base_url_env = _validated_vor_base_url(base_url_env)
+    validated_base_env = _validated_vor_base_url(base_env)
+    if base_url_env and not validated_base_url_env:
+        _log_warning(
+            "VOR_BASE_URL %r ist kein bekannter VAO-Host; verwende Standard.",
+            base_url_env,
+        )
+    if base_env and not validated_base_env:
+        _log_warning(
+            "VOR_BASE %r ist kein bekannter VAO-Host; verwende Standard.",
+            base_env,
+        )
 
     base_url = DEFAULT_BASE_URL
 

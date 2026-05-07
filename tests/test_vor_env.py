@@ -4,7 +4,6 @@ import logging
 import pytest
 import requests
 from pathlib import Path
-from typing import Any
 
 import src.providers.vor as vor
 
@@ -276,39 +275,24 @@ def test_refresh_access_credentials_reloads_from_env(monkeypatch: pytest.MonkeyP
 
 
 def test_base_url_prefers_secret(monkeypatch: pytest.MonkeyPatch) -> None:
-
-
-
-    # Mock DNS to ensure secret.example.com is accepted
-    def mock_resolve_env(self: Any, host: Any, record_type: Any, *args: Any, **kwargs: Any) -> Any:
-        if record_type == 'A':
-            from unittest.mock import MagicMock
-            ans = MagicMock()
-            ans.address = "93.184.216.34"
-            return [ans]
-        import dns.resolver
-        raise dns.resolver.NoAnswer()  # type: ignore[no-untyped-call]
-
-    monkeypatch.setattr(
-        "dns.resolver.Resolver.resolve",
-        mock_resolve_env
+    # Both VOR_BASE_URL and VOR_BASE are pinned to the official VAO host
+    # (``routenplaner.verkehrsauskunft.at``); see ``_VOR_TRUSTED_HOSTS`` for
+    # the rationale. ``VOR_BASE_URL`` wins over ``VOR_BASE`` when both are set.
+    monkeypatch.setenv("VOR_BASE", "https://routenplaner.verkehrsauskunft.at/vao/restproxy")
+    monkeypatch.setenv(
+        "VOR_BASE_URL", "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v2.0.0"
     )
-
-
-
-    monkeypatch.setenv("VOR_BASE", "https://example.com/base")
-    monkeypatch.setenv("VOR_BASE_URL", "https://secret.example.com/base")
 
     importlib.reload(vor)
 
-    assert vor.VOR_BASE_URL == "https://secret.example.com/base/"
-    assert vor.VOR_VERSION == "v1.11.0"
+    assert vor.VOR_BASE_URL == "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v2.0.0/"
+    assert vor.VOR_VERSION == "v2.0.0"
 
     monkeypatch.delenv("VOR_BASE_URL", raising=False)
     importlib.reload(vor)
     assert (
         vor.VOR_BASE_URL
-        == "https://example.com/base/v1.11.0/"
+        == "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"
     )
 
     monkeypatch.delenv("VOR_BASE", raising=False)
@@ -317,6 +301,42 @@ def test_base_url_prefers_secret(monkeypatch: pytest.MonkeyPatch) -> None:
         vor.VOR_BASE_URL
         == "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"
     )
+
+
+def test_base_url_rejects_untrusted_host(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """An env override pointing at a non-VAO host must fall back to the default
+    so ``VorAuth`` cannot redirect ``VOR_ACCESS_ID`` to an attacker."""
+
+    monkeypatch.setenv("VOR_BASE_URL", "https://attacker.example.com/api/")
+
+    with caplog.at_level(logging.WARNING):
+        importlib.reload(vor)
+
+    assert (
+        vor.VOR_BASE_URL
+        == "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"
+    )
+    assert "VOR_BASE_URL" in caplog.text
+    assert "VAO-Host" in caplog.text
+
+    monkeypatch.delenv("VOR_BASE_URL", raising=False)
+    monkeypatch.setenv("VOR_BASE", "https://attacker.example.com/api/")
+    caplog.clear()
+    with caplog.at_level(logging.WARNING):
+        importlib.reload(vor)
+
+    assert (
+        vor.VOR_BASE_URL
+        == "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"
+    )
+    assert "VOR_BASE" in caplog.text
+    assert "VAO-Host" in caplog.text
+
+    monkeypatch.delenv("VOR_BASE", raising=False)
+    importlib.reload(vor)
 
 
 def test_apply_authentication_sets_header(monkeypatch: pytest.MonkeyPatch) -> None:
