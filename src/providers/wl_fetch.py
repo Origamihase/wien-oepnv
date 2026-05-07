@@ -74,6 +74,31 @@ WL_BASE = (_WL_BASE_OVERRIDE or _WL_DEFAULT_BASE).rstrip("/")
 
 log = logging.getLogger(__name__)
 
+# Security: ``MAX_WL_FETCH_TIMEOUT`` is the Slowloris-defence ceiling for the
+# public ``fetch_events`` API. The ``timeout`` parameter flows through
+# ``_fetch_traffic_infos`` / ``_fetch_news`` -> ``_get_json`` ->
+# ``fetch_content_safe`` as both the connect and read budget for every Wiener
+# Linien OGD request. The current call site in ``build_feed.py`` uses
+# ``effective_timeout`` (already capped at ``feed_config.MAX_PROVIDER_TIMEOUT``)
+# and ``scripts/update_wl_cache.py`` uses the 20-second default, so the
+# production blast radius is currently zero. But ``fetch_events`` is exported
+# as a public API (``__all__``) and a future caller passing an env-controlled
+# or user-controlled value (e.g. a hypothetical ``WL_FETCH_TIMEOUT`` env var
+# or a CLI flag wired into a maintenance script) would otherwise inherit the
+# unbounded shape — ``timeout=99999`` (intentional misconfig, leaked CI env,
+# compromised secret store) lets a sluggish or attacker-controlled upstream
+# peer hold the worker for ~28 hours per fetch, stalling the cron pipeline.
+# Capping inside the function (defense-in-depth) means every caller — current
+# and future — inherits the ceiling without having to remember to add it.
+# 25 seconds matches ``feed_config.MAX_PROVIDER_TIMEOUT`` (the orchestrator-
+# level Slowloris ceiling) so no orchestrator-capped value is ever rejected,
+# while the 20-second default (a conservative WL-OGD response budget) is
+# preserved unchanged. TIGHTEN-only contract mirrors ``MAX_OEBB_FETCH_TIMEOUT``
+# (``src/providers/oebb.py``) — same parameter-boundary defense-in-depth
+# pattern documented in the 2026-05-07 Slowloris-Cap Drift Round 4 journal
+# entry, applied to the WL sibling that round explicitly named as still-open.
+MAX_WL_FETCH_TIMEOUT = 25
+
 # Precompiled regex patterns
 _ALPHA_RE = re.compile(r"[A-Za-zÄÖÜäöüß]")
 _HALT_SUFFIX_RE = re.compile(r"\(\d+\s+Halt(?:e)?\)$")
@@ -475,6 +500,15 @@ def _fetch_news(
 # ---------------- Public API ----------------
 
 def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
+    # Security: clamp ``timeout`` to ``MAX_WL_FETCH_TIMEOUT`` to defeat the
+    # Slowloris vector documented at the constant declaration above. Without
+    # the cap a caller passing ``timeout=99999`` would let a sluggish or
+    # attacker-controlled upstream peer stall the cron for ~28 hours per fetch.
+    # ``min(...)`` instead of ``if ...:`` to avoid bumping the McCabe complexity
+    # of this already-baselined function (``.c901-baseline.txt``: ``fetch_events
+    # 51``). Same TIGHTEN-only contract as the ``if`` form: legitimate values
+    # below the cap pass through unchanged.
+    timeout = min(timeout, MAX_WL_FETCH_TIMEOUT)
     now = datetime.now(UTC)
     raw: list[dict[str, Any]] = []
 
