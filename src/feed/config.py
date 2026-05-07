@@ -55,6 +55,26 @@ log = logging.getLogger(__name__)
 # ``GooglePlacesConfig.__post_init__`` (``src/places/client.py``).
 MAX_PROVIDER_TIMEOUT = DEFAULT_PROVIDER_TIMEOUT
 
+# Security: ``MAX_LOG_BYTES`` is the disk-exhaustion-defence ceiling for the
+# rotating-log size. ``LOG_MAX_BYTES`` is consumed by the two
+# ``RotatingFileHandler`` instances in ``src/feed/logging.py`` (``errors.log``
+# and ``diagnostics.log``) as the size threshold that triggers rotation;
+# ``get_int_env`` only enforced a non-negative lower bound, so a benign-
+# looking env override such as ``LOG_MAX_BYTES=999999999999`` (intentional
+# misconfig, leaked CI env, compromised secret store) would prevent
+# rotation entirely and let the active log file grow until the volume
+# fills, stalling the cron pipeline (write failures crash subsequent
+# ``configure_logging`` calls and any provider that emits a log line on
+# the failure path). The cap is intentionally generous (100x default) so
+# operators can absorb verbose-debug runs without raising the ceiling, but
+# the absolute upper bound bounds the worst-case disk footprint at
+# ``2 * MAX_LOG_BYTES * (LOG_BACKUP_COUNT + 1)`` (two log files share the
+# threshold). Mirrors the TIGHTEN-only contract of ``MAX_PROVIDER_TIMEOUT``
+# above and ``MAX_TIMEOUT_S`` / ``MAX_REQUEST_RETRIES`` in
+# ``src/places/client.py``.
+DEFAULT_LOG_MAX_BYTES = 1_000_000
+MAX_LOG_BYTES = 100 * 1024 * 1024
+
 
 class InvalidPathError(ValueError):
     """Raised when a configured path is outside the permitted directories."""
@@ -190,7 +210,12 @@ def _load_from_env() -> None:
     LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").strip().upper()
     LOG_FORMAT = os.getenv("LOG_FORMAT", "plain").strip().lower()
     LOG_DIR_PATH = resolve_env_path("LOG_DIR", Path("log"), allow_fallback=True)
-    LOG_MAX_BYTES = max(get_int_env("LOG_MAX_BYTES", 1_000_000), 0)
+    # Security: clamp the env override to ``MAX_LOG_BYTES`` to defeat the
+    # disk-exhaustion vector documented at the constant declaration above.
+    LOG_MAX_BYTES = min(
+        max(get_int_env("LOG_MAX_BYTES", DEFAULT_LOG_MAX_BYTES), 0),
+        MAX_LOG_BYTES,
+    )
     LOG_BACKUP_COUNT = max(get_int_env("LOG_BACKUP_COUNT", 5), 0)
 
     OUT_PATH = resolve_env_path("OUT_PATH", DEFAULT_OUT_PATH)
@@ -339,6 +364,7 @@ __all__ = [
     "LOG_TIMEZONE",
     "MAX_ITEM_AGE_DAYS",
     "MAX_ITEMS",
+    "MAX_LOG_BYTES",
     "MAX_PROVIDER_TIMEOUT",
     "OUT_PATH",
     "PAGES_BASE_URL",
