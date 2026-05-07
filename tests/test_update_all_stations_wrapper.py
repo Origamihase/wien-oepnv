@@ -144,13 +144,13 @@ def test_wrapper_preserves_stations_json_on_atomic_write_failure(
 def test_wrapper_atomic_on_success(tmp_path: Path) -> None:
     """Bei Erfolg ist data/stations.json nach dem Lauf valide."""
     # Run the wrapper without modifications — should succeed if main is clean.
-    result = subprocess.run(
-        [sys.executable, str(REPO_ROOT / "scripts" / "update_all_stations.py")],  # noqa: S603
+    result = subprocess.run(  # noqa: S603  # nosec B603
+        [sys.executable, str(REPO_ROOT / "scripts" / "update_all_stations.py")],
         capture_output=True,
         text=True,
         cwd=REPO_ROOT,
         timeout=600,
-    )  # nosec B603
+    )
 
     # Note: this test requires network access for some sub-scripts.
     # In Sandbox without network, it will likely fail at sub-script level.
