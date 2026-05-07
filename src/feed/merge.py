@@ -1,4 +1,3 @@
-import copy
 import hashlib
 import re
 from typing import Any
@@ -326,15 +325,26 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     1. Significant name overlap (tokens or substring).
     2. > 30% line overlap.
 
-    Performance: maintains a parallel ``merged_cache`` list of pre-computed
-    ``(lines, name, normalized_name, tokens)`` tuples mirroring
-    ``merged_items``. Without it, every inner-loop iteration recomputed
-    ``_parse_title`` + ``_normalize_name`` × 2 + ``_get_tokens`` × 2 (each
-    with its own internal ``_normalize_name``) for the same ``existing``
-    entry, giving an O(n²) regex workload for what is fundamentally an
-    O(n) parse problem. The cache reduces total parse work from O(n²) to
-    O(n); set-comparison work in the inner loop stays O(n²) but operates
-    on already-built sets, which is purely arithmetic and far cheaper.
+    Performance:
+
+    * **Parse cache (Apex pillar).** Maintains a parallel ``merged_cache``
+      list of pre-computed ``(lines, name, normalized_name, tokens)``
+      tuples mirroring ``merged_items``. Without it, every inner-loop
+      iteration recomputed ``_parse_title`` + ``_normalize_name`` × 2 +
+      ``_get_tokens`` × 2 (each with its own internal ``_normalize_name``)
+      for the same ``existing`` entry, giving an O(n²) regex workload for
+      what is fundamentally an O(n) parse problem. The cache reduces
+      total parse work from O(n²) to O(n); set-comparison work in the
+      inner loop stays O(n²) but operates on already-built sets, which
+      is purely arithmetic and far cheaper.
+    * **Shallow merge copy.** The merge branches use ``dict(existing)`` /
+      ``dict(item)`` instead of ``copy.deepcopy`` because every mutation
+      below targets a top-level scalar key (``description``, ``title``,
+      ``guid``, ``_identity``, ``_calculated_identity``, the four date
+      keys handled by ``_promote_newer_dates``). No nested structure is
+      mutated in place — assignments replace the whole value — so the
+      original dict's nested references stay untouched. Drops the
+      per-merge cost from O(item-size) deep traversal to O(top-level-keys).
     """
     merged_items: list[dict[str, Any]] = []
     # Parallel cache mirroring merged_items[idx] — same length, same order.
@@ -387,9 +397,16 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
                     # Case 1: Existing is VOR, Item is ÖBB -> Keep Existing, merge ÖBB desc if useful
                     if is_vor_existing and is_oebb_item:
-                        # Create a copy to avoid mutating the original 'existing' reference
-                        # if it came from the input list or was already modified.
-                        new_existing = copy.deepcopy(existing)
+                        # Shallow copy is sufficient and intentional: every
+                        # mutation below targets a top-level scalar key
+                        # (``description``, ``_identity``, ``_calculated_identity``,
+                        # the four date fields handled by ``_promote_newer_dates``).
+                        # No nested structure is mutated in place — assignments
+                        # replace the whole value — so the original dict's
+                        # nested references stay untouched. Replaces a former
+                        # ``copy.deepcopy(existing)`` call that was an O(item-size)
+                        # allocation on every merge in an O(n²) loop.
+                        new_existing = dict(existing)
 
                         desc_vor = new_existing.get("description", "") or ""
                         desc_oebb = item.get("description", "") or ""
@@ -417,10 +434,11 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
                     # Case 2: Existing is ÖBB, Item is VOR -> Replace Existing with Item
                     if is_oebb_existing and is_vor_item:
-                        # We replace the existing item content with the new item (VOR)
-                        # We create a new object to avoid mutating the original 'existing' reference
-                        # if it came from the input list.
-                        new_existing = copy.deepcopy(item)
+                        # Shallow copy of ``item`` for the same reason as Case 1:
+                        # only top-level keys are mutated. The deep-copy here was
+                        # paying for nested datetime / list traversal that no
+                        # subsequent code touches.
+                        new_existing = dict(item)
 
                         desc_oebb = existing.get("description", "") or ""
                         desc_vor = item.get("description", "") or ""
@@ -447,7 +465,12 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
                     # Standard Merge Logic (Peers)
 
-                    existing_copy = copy.deepcopy(existing)
+                    # Same shallow-copy rationale as the VOR/ÖBB branches above —
+                    # the peer-merge mutates ``title``, ``description``, ``guid``,
+                    # ``_identity``, ``_calculated_identity`` and the date fields,
+                    # all top-level scalars. The previous ``copy.deepcopy`` was
+                    # the dominant allocator inside the O(n²) merge loop.
+                    existing_copy = dict(existing)
 
                     # 1. Combine Lines
                     all_lines = sorted(list(lines | ex_lines))
