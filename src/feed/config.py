@@ -31,7 +31,7 @@ from ..config.defaults import (
     DEFAULT_STATE_RETENTION_DAYS,
 )
 from ..utils.env import get_bool_env, get_int_env
-from ..utils.http import validate_http_url
+from ..utils.http import validate_public_feed_url
 
 ALLOWED_ROOTS = {"docs", "data", "log"}
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -45,28 +45,13 @@ class InvalidPathError(ValueError):
 
 # Security: pin ``FEED_LINK`` and ``PAGES_BASE_URL`` to GitHub-hosted domains.
 # Both env vars are interpolated into the public RSS feed (channel ``<link>``,
-# per-item ``<link>`` fallback, atom self/alternate hrefs). Without this pin,
-# an env override (intentional misconfig, leaked CI env, compromised secret
-# store) would put an attacker-controlled URL into every published item —
-# turning the feed into a phishing/redirect amplifier for every subscriber.
-# ``validate_http_url()`` only checks SSRF/DNS-rebinding properties, not host
-# identity. Mirrors the ``_validated_oebb_url`` / ``_validated_baustellen_data_url``
-# helpers fixed in 2026-05. Allowed: ``github.com`` (canonical repo URL) and
-# any subdomain of ``github.io`` (the natural GitHub Pages target for forks).
-_FEED_PUBLIC_URL_TRUSTED_HOSTS = frozenset({"github.com"})
-_FEED_PUBLIC_URL_TRUSTED_SUFFIXES = (".github.io",)
-
-
-def _validated_feed_public_url(raw: str) -> str | None:
-    safe = validate_http_url(raw)
-    if not safe:
-        return None
-    host = (urlparse(safe).hostname or "").lower()
-    if host in _FEED_PUBLIC_URL_TRUSTED_HOSTS:
-        return safe
-    if any(host.endswith(suffix) for suffix in _FEED_PUBLIC_URL_TRUSTED_SUFFIXES):
-        return safe
-    return None
+# per-item ``<link>`` fallback, atom self/alternate hrefs). The host pin is
+# implemented by ``validate_public_feed_url`` (in ``src.utils.http``) so the
+# same allowlist is shared with other publishing surfaces (e.g. the sitemap
+# generator) and a future fourth feed-output URL inherits the pin without
+# anyone having to remember to add it. Module-local alias preserves the
+# historical test surface (``feed_config._validated_feed_public_url``).
+_validated_feed_public_url = validate_public_feed_url
 
 
 def validate_path(path: Path, name: str) -> Path:

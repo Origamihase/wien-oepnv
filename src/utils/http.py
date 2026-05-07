@@ -1191,6 +1191,42 @@ def validate_http_url(
         return None
 
 
+# Security: pin env-controlled URLs that land in PUBLISHED artefacts (RSS feed
+# ``<link>`` / atom hrefs / sitemap ``<loc>``) to GitHub-hosted hosts. Without
+# this pin, an env override (intentional misconfig, leaked CI env, compromised
+# secret store) would let an attacker substitute the canonical project URL in
+# every published item — turning the feed and sitemap into a phishing/SEO
+# redirect amplifier for every consumer (subscriber, search-engine crawler).
+# ``validate_http_url`` only checks SSRF/DNS-rebinding properties, not host
+# identity. Allowed: ``github.com`` (canonical repo URL) and any subdomain of
+# ``github.io`` (the natural GitHub Pages target for forks).
+_PUBLIC_FEED_URL_TRUSTED_HOSTS = frozenset({"github.com"})
+_PUBLIC_FEED_URL_TRUSTED_SUFFIXES = (".github.io",)
+
+
+def validate_public_feed_url(
+    url: str | None, *, check_dns: bool = True
+) -> str | None:
+    """Validate a URL that will be embedded in a publicly-served artefact.
+
+    Mirrors :func:`validate_http_url` but additionally pins the hostname to
+    the GitHub-hosted allowlist so an env override cannot weaponise the feed
+    or sitemap as a redirect/phishing primitive. Use ``check_dns=False`` for
+    URLs that are only embedded (never fetched), since DNS state at build
+    time is irrelevant to whether the URL is a safe target for embedding.
+    """
+
+    safe = validate_http_url(url, check_dns=check_dns)
+    if not safe:
+        return None
+    host = (urlparse(safe).hostname or "").lower()
+    if host in _PUBLIC_FEED_URL_TRUSTED_HOSTS:
+        return safe
+    if any(host.endswith(suffix) for suffix in _PUBLIC_FEED_URL_TRUSTED_SUFFIXES):
+        return safe
+    return None
+
+
 def verify_response_ip(response: requests.Response) -> None:
     """Verify that the response connection was made to a safe IP (DNS Rebinding protection)."""
     # Guard Clause for Mocks (Task 4)
