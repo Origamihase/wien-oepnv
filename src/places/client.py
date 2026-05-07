@@ -91,6 +91,24 @@ RANK_PREF = _env_rank_preference()
 # the cap pattern in ``src/providers/vor.py:HTTP_TIMEOUT``.
 MAX_TIMEOUT_S = 25.0
 
+# Security: ``MAX_REQUEST_RETRIES`` is the per-request retry ceiling for
+# every Places API call. ``GooglePlacesConfig.max_retries`` is consumed by
+# ``_post()`` in ``while attempt <= self._config.max_retries`` and gates
+# both the retry-sleep loop (``_backoff`` capped at 60s/attempt) AND the
+# per-attempt Places quota debit (``_record_successful_request`` runs on
+# every attempt because Google bills per request, not per success). The
+# same three callers that build the config read ``REQUEST_MAX_RETRIES``
+# from the environment without an upper bound (``int(env.get(...))`` /
+# ``_parse_int(...)``), so an override such as ``REQUEST_MAX_RETRIES=99999``
+# (intentional misconfig, leaked CI env, or compromised secret store)
+# would (a) stall the cron pipeline for days as the loop sleeps up to 60s
+# between every retry, and (b) burn the entire monthly Places free-tier
+# quota in a single botched run before the per-call cap kicks in. The cap
+# is intentionally generous (10 ≫ default 4) so that operators can still
+# absorb transient upstream blips without raising the ceiling, mirroring
+# the ``MAX_TIMEOUT_S`` cap pattern above.
+MAX_REQUEST_RETRIES = 10
+
 FIELD_MASK_NEARBY = "places.id,places.displayName,places.location,places.types"
 FIELD_MASK_TEXT = "places.id,places.displayName,places.location,places.types"
 DEFAULT_INCLUDED_TYPES: Sequence[str] = (
@@ -146,6 +164,13 @@ class GooglePlacesConfig:
         # because the dataclass is frozen.
         if self.timeout_s > MAX_TIMEOUT_S:
             object.__setattr__(self, "timeout_s", MAX_TIMEOUT_S)
+        # Security: enforce the retry ceiling described in the
+        # ``MAX_REQUEST_RETRIES`` block above. Same TIGHTEN-only contract
+        # as ``timeout_s``: tests use 0–3, default is 4, the cap only
+        # truncates oversized env overrides that would otherwise stall
+        # the cron job and exhaust the monthly Places quota.
+        if self.max_retries > MAX_REQUEST_RETRIES:
+            object.__setattr__(self, "max_retries", MAX_REQUEST_RETRIES)
 
 
 class GooglePlacesClient:
