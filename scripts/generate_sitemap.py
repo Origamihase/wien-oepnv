@@ -7,9 +7,13 @@ import datetime as _dt
 import logging
 import os
 import re
-import subprocess  # nosec B404 - used for running git internally
+# Bandit B404: subprocess is used to run ``git log`` against the repo on
+# a trusted internal path. No user input flows into the command.
+import subprocess  # nosec B404
 import sys
-import xml.etree.ElementTree as ET  # nosec B405 - used for XML generation, not parsing untrusted input
+# Bandit B405: ElementTree is used for XML *generation* (sitemap output),
+# not for parsing untrusted input.
+import xml.etree.ElementTree as ET  # nosec B405
 from pathlib import Path
 from collections.abc import Iterable
 
@@ -106,7 +110,7 @@ def _last_modified(path: Path) -> str:
             stderr=subprocess.DEVNULL,
             text=True,
             timeout=10,
-        ).strip()  # nosec B603, B607 - git execution on trusted internal path
+        ).strip()  # nosec B603, B607
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
         output = ""
     if output:

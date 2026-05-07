@@ -162,6 +162,8 @@ def load_ignore_file(base_dir: Path, filename: str = ".secret-scan-ignore") -> l
 
 def _tracked_files(base_dir: Path) -> list[Path]:
     try:
+        # Bandit B603/B607: ``git ls-files`` runs on a trusted local path,
+        # command list is fully static (no user input).
         completed = subprocess.run(  # nosec B603, B607
             ["git", "ls-files", "-z"],
             cwd=base_dir,
