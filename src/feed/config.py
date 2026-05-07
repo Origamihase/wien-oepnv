@@ -138,6 +138,32 @@ MAX_STATE_RETENTION_DAYS = 3650
 # arithmetic).
 MAX_ENDS_AT_GRACE_MINUTES = 10080
 
+# Security: ``MAX_CACHE_MAX_AGE_HOURS`` is the staleness-warning ceiling for
+# the per-provider cache freshness check. ``CACHE_MAX_AGE_HOURS`` is consumed
+# by ``build_feed._detect_stale_caches`` as
+# ``threshold = timedelta(hours=CACHE_MAX_AGE_HOURS)`` (line 223) — direct
+# ``timedelta(hours=N)`` construction. ``get_int_env`` only enforced a
+# non-negative lower bound, so a benign-looking env override such as
+# ``CACHE_MAX_AGE_HOURS=999999999999`` (intentional misconfig, leaked CI env,
+# compromised secret store) would raise ``OverflowError: Python int too large
+# to convert to C int`` from the ``timedelta`` constructor — the C-level
+# normalisation step packs days into a signed 32-bit int, and ~10**11 hours
+# overflows that bound. The error propagates out of ``_detect_stale_caches``,
+# which is invoked at ``build_feed.py:1772`` BEFORE the main ``try`` block at
+# line 1777, so the exception escapes the orchestrator entirely and crashes
+# the feed-build pipeline before a single item is written. At non-overflow
+# but unreasonably large values (e.g. 10**8 hours ≈ 11000 years), the
+# staleness warning is effectively suppressed forever, defeating the cron's
+# early-warning signal that a provider's update workflow has stopped. The cap
+# is intentionally generous (365x default) so operators can extend the
+# threshold during long planned pauses (e.g. a multi-month deployment freeze)
+# without raising the ceiling; one year is well within ``timedelta``'s safe
+# range and bounds the worst-case warning-suppression window to a sensible
+# maximum. TIGHTEN-only contract mirrors ``MAX_ENDS_AT_GRACE_MINUTES`` above
+# — same env-cap drift family (env-derived integer feeding ``timedelta(unit=N)``
+# whose constructor overflows at large magnitudes).
+MAX_CACHE_MAX_AGE_HOURS = 8760
+
 
 class InvalidPathError(ValueError):
     """Raised when a configured path is outside the permitted directories."""
@@ -359,8 +385,14 @@ def _load_from_env() -> None:
         max(get_int_env("ENDS_AT_GRACE_MINUTES", DEFAULT_ENDS_AT_GRACE_MINUTES), 0),
         MAX_ENDS_AT_GRACE_MINUTES,
     )
-    CACHE_MAX_AGE_HOURS = max(
-        get_int_env("CACHE_MAX_AGE_HOURS", DEFAULT_CACHE_MAX_AGE_HOURS), 0
+    # Security: clamp the env override to ``MAX_CACHE_MAX_AGE_HOURS`` to defeat
+    # the OverflowError vector documented at the constant declaration above.
+    # Without the cap a single ``CACHE_MAX_AGE_HOURS=999999999999`` would crash
+    # ``_detect_stale_caches`` via ``timedelta(hours=N)`` C-int overflow before
+    # the main ``try`` block in ``build_feed.main`` and halt the pipeline.
+    CACHE_MAX_AGE_HOURS = min(
+        max(get_int_env("CACHE_MAX_AGE_HOURS", DEFAULT_CACHE_MAX_AGE_HOURS), 0),
+        MAX_CACHE_MAX_AGE_HOURS,
     )
     # Security: clamp the env override to ``MAX_PROVIDER_TIMEOUT`` to defeat
     # the Slowloris vector documented at the constant declaration above.
@@ -445,6 +477,7 @@ __all__ = [
     "LOG_LEVEL",
     "LOG_MAX_BYTES",
     "LOG_TIMEZONE",
+    "MAX_CACHE_MAX_AGE_HOURS",
     "MAX_ENDS_AT_GRACE_MINUTES",
     "MAX_ITEM_AGE_DAYS",
     "MAX_ITEMS",
