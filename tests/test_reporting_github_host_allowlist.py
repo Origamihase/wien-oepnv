@@ -15,12 +15,33 @@ from src.feed.reporting import RunReport, _is_trusted_github_api
     [
         "https://api.github.com",
         "https://api.github.com/",
-        "https://github.example.com/api/v3",
-        "https://github.example.com/api/v3/",
-        "https://ghe.corp.local/api/graphql",
     ],
 )
-def test_is_trusted_github_api_accepts_known_endpoints(url: str) -> None:
+def test_is_trusted_github_api_accepts_public_github(url: str) -> None:
+    """Public api.github.com is trusted without any operator opt-in."""
+    assert _is_trusted_github_api(url) is True
+
+
+@pytest.mark.parametrize(
+    "url,allowlist",
+    [
+        ("https://github.example.com/api/v3", "github.example.com"),
+        ("https://github.example.com/api/v3/", "github.example.com"),
+        ("https://ghe.corp.local/api/graphql", "ghe.corp.local"),
+        # Allowlist is case-insensitive on the hostname.
+        ("https://GHE.Corp.Local/api/v3", "ghe.corp.local"),
+        # Multiple GHE hosts can coexist via CSV.
+        (
+            "https://ghe2.corp.local/api/v3",
+            "ghe1.corp.local,ghe2.corp.local",
+        ),
+    ],
+)
+def test_is_trusted_github_api_accepts_ghe_with_allowlist(
+    monkeypatch: pytest.MonkeyPatch, url: str, allowlist: str
+) -> None:
+    """GHE hosts are trusted only when explicitly opted-in via the env var."""
+    monkeypatch.setenv("FEED_GITHUB_ENTERPRISE_HOSTS", allowlist)
     assert _is_trusted_github_api(url) is True
 
 
@@ -40,10 +61,32 @@ def test_is_trusted_github_api_accepts_known_endpoints(url: str) -> None:
         "ftp://api.github.com",
         "",
         "not-a-url",
+        # Token-leak vector: attacker host with GHE-shaped path. Without
+        # FEED_GITHUB_ENTERPRISE_HOSTS, the path alone must NOT validate.
+        "https://evil.com/api/v3",
+        "https://attacker.example.com/api/graphql",
+        "https://github.example.com/api/v3",
+        "https://ghe.corp.local/api/graphql",
     ],
 )
-def test_is_trusted_github_api_rejects_untrusted_endpoints(url: str) -> None:
+def test_is_trusted_github_api_rejects_untrusted_endpoints(
+    monkeypatch: pytest.MonkeyPatch, url: str
+) -> None:
+    """Without the GHE allowlist, no non-public-GitHub host is trusted."""
+    monkeypatch.delenv("FEED_GITHUB_ENTERPRISE_HOSTS", raising=False)
     assert _is_trusted_github_api(url) is False
+
+
+def test_is_trusted_github_api_rejects_attacker_host_even_with_allowlist(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """An allowlisted GHE host does not transitively trust other GHE-shaped URLs."""
+    monkeypatch.setenv("FEED_GITHUB_ENTERPRISE_HOSTS", "github.example.com")
+    # Allowlisted host: trusted.
+    assert _is_trusted_github_api("https://github.example.com/api/v3") is True
+    # Different host, still GHE-shaped path: rejected.
+    assert _is_trusted_github_api("https://evil.com/api/v3") is False
+    assert _is_trusted_github_api("https://attacker.example.com/api/graphql") is False
 
 
 @responses.activate

@@ -766,7 +766,15 @@ def _is_trusted_github_api(api_url: str) -> bool:
 
     Allowed:
     - ``https://api.github.com`` (the public github.com REST API; exact host, no path)
-    - ``https://<host>/api/v3`` or ``/api/graphql`` (GitHub Enterprise Server canonical bases)
+    - ``https://<host>/api/v3`` or ``/api/graphql`` where ``<host>`` is in the
+      operator-declared ``FEED_GITHUB_ENTERPRISE_HOSTS`` allowlist (GitHub
+      Enterprise Server canonical bases). Without this allowlist the GHE
+      branch would accept *any* host with a GHE-shaped path — letting an
+      attacker who injects ``FEED_GITHUB_API_URL=https://evil.com/api/v3``
+      receive the project's GitHub token. GHE hostnames are operator-chosen
+      (no fixed pattern), so there is no safe fallback: an empty allowlist
+      means the public ``api.github.com`` endpoint is the only trusted one.
+
     Anything else is rejected so the token never leaves the process.
     """
     parsed = urlparse(api_url)
@@ -779,7 +787,17 @@ def _is_trusted_github_api(api_url: str) -> bool:
     if hostname == "api.github.com" and path == "":
         return True
     if path in ("/api/v3", "/api/graphql"):
-        return True
+        # Security: require explicit operator opt-in for non-public-GitHub
+        # hosts. GHE installations use any operator-chosen domain, so the
+        # path alone (``/api/v3``) is not host identity. The allowlist must
+        # be exact hostnames (case-insensitive); a path match without an
+        # allowlist entry rejects the URL.
+        trusted_ghe_hosts = {
+            host.lower()
+            for host in _split_csv(os.getenv("FEED_GITHUB_ENTERPRISE_HOSTS"))
+        }
+        if hostname in trusted_ghe_hosts:
+            return True
     return False
 
 
