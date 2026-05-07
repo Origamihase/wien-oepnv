@@ -94,12 +94,39 @@ def configure_logging() -> None:
 
 _LOG_TIMESTAMP_RE = re.compile(r"^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2}),(\d{3})")
 
+# Security: ``MAX_LOG_PRUNE_KEEP_DAYS`` is the retention-window ceiling for the
+# in-place log-pruning helper. ``prune_log_file`` consumes ``keep_days`` as
+# ``cutoff = now - timedelta(days=keep_days)`` (direct ``datetime - timedelta``
+# arithmetic). The default callers in ``src/feed/reporting.py`` use the
+# hardcoded 7-day default, but the function is exported as a public API and a
+# future caller passing an env-controlled or user-controlled value (e.g. a
+# hypothetical ``LOG_RETENTION_DAYS`` env var) would otherwise inherit the
+# unbounded shape — at very large values the subtraction underflows past
+# Python's year-1 datetime boundary and raises ``OverflowError: date value out
+# of range``, propagating out of ``prune_log_file`` past the surrounding
+# ``OSError`` handlers and crashing the cron job that owns the call. Capping
+# inside the function (defense-in-depth) means every caller — current and
+# future — inherits the ceiling without having to remember to add it.
+# 365 days is generous (~52x default) and bounds ``now - timedelta(days=N)``
+# safely within Python's datetime range. TIGHTEN-only contract mirrors
+# ``MAX_STATE_RETENTION_DAYS`` / ``MAX_ENDS_AT_GRACE_MINUTES`` /
+# ``MAX_CACHE_MAX_AGE_HOURS`` / ``MAX_FRESH_PUBDATE_WINDOW_MIN`` in
+# ``src/feed/config.py`` — same env-cap drift family (env-derived integer
+# feeding ``timedelta(unit=N)`` into ``datetime - timedelta`` arithmetic).
+MAX_LOG_PRUNE_KEEP_DAYS = 365
+
 
 def prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
     """Remove log records older than ``keep_days`` from ``path``."""
 
     if keep_days <= 0:
         return
+    # Security: clamp ``keep_days`` to ``MAX_LOG_PRUNE_KEEP_DAYS`` to defeat the
+    # ``datetime - timedelta`` underflow vector documented at the constant
+    # declaration above. Without the cap a caller passing
+    # ``keep_days=99999999`` would crash the cron job via OverflowError.
+    if keep_days > MAX_LOG_PRUNE_KEEP_DAYS:
+        keep_days = MAX_LOG_PRUNE_KEEP_DAYS
     if not path.exists():
         return
 
@@ -163,6 +190,7 @@ def prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
 
 
 __all__ = [
+    "MAX_LOG_PRUNE_KEEP_DAYS",
     "MaxLevelFilter",
     "SafeFormatter",
     "SafeJSONFormatter",
