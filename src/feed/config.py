@@ -93,6 +93,28 @@ MAX_LOG_BYTES = 100 * 1024 * 1024
 DEFAULT_LOG_BACKUP_COUNT = 5
 MAX_LOG_BACKUP_COUNT = 500
 
+# Security: ``MAX_STATE_RETENTION_DAYS`` is the retention-window ceiling for
+# the ``first_seen`` state file. ``STATE_RETENTION_DAYS`` is consumed in
+# ``build_feed._load_state`` as ``now_utc - timedelta(days=STATE_RETENTION_DAYS)``
+# to discard entries older than the window. ``get_int_env`` only enforces a
+# non-negative lower bound, so a benign-looking env override such as
+# ``STATE_RETENTION_DAYS=99999999`` (intentional misconfig, leaked CI env,
+# compromised secret store) would (a) raise ``OverflowError: date value out
+# of range`` from the ``datetime - timedelta`` arithmetic — Python's datetime
+# is bounded at year 1, so subtracting 99999999 days underflows — propagating
+# out of ``_load_state`` past the ``except FileNotFoundError, JSONDecodeError``
+# / generic ``except Exception`` handlers and crashing the entire feed-build
+# pipeline; and (b) at non-overflow values (e.g. 10000 days ≈ 27 years),
+# disable the retention cutoff so the on-disk state file grows unboundedly
+# with every new RSS item the providers emit, eventually exhausting the disk
+# and stalling the cron job that writes it. The cap is intentionally generous
+# (~60x default) so operators can extend retention for long-running RSS
+# subscribers without raising the ceiling; ten years is well within Python's
+# datetime range and bounds the on-disk state file size to a finite multiple
+# of the per-day item-emission rate. TIGHTEN-only contract mirrors
+# ``MAX_LOG_BYTES`` and ``MAX_LOG_BACKUP_COUNT`` above.
+MAX_STATE_RETENTION_DAYS = 3650
+
 
 class InvalidPathError(ValueError):
     """Raised when a configured path is outside the permitted directories."""
@@ -321,8 +343,14 @@ def _load_from_env() -> None:
         get_int_env("PROVIDER_MAX_WORKERS", DEFAULT_PROVIDER_MAX_WORKERS), 0
     )
     STATE_FILE = resolve_env_path("STATE_PATH", DEFAULT_STATE_PATH)
-    STATE_RETENTION_DAYS = max(
-        get_int_env("STATE_RETENTION_DAYS", DEFAULT_STATE_RETENTION_DAYS), 0
+    # Security: clamp the env override to ``MAX_STATE_RETENTION_DAYS`` to defeat
+    # the OverflowError / disk-exhaustion vector documented at the constant
+    # declaration above. Without the cap a single ``STATE_RETENTION_DAYS=99999999``
+    # would crash ``_load_state`` via ``datetime - timedelta`` underflow and
+    # halt the feed-build pipeline.
+    STATE_RETENTION_DAYS = min(
+        max(get_int_env("STATE_RETENTION_DAYS", DEFAULT_STATE_RETENTION_DAYS), 0),
+        MAX_STATE_RETENTION_DAYS,
     )
 
 
@@ -393,6 +421,7 @@ __all__ = [
     "MAX_LOG_BACKUP_COUNT",
     "MAX_LOG_BYTES",
     "MAX_PROVIDER_TIMEOUT",
+    "MAX_STATE_RETENTION_DAYS",
     "OUT_PATH",
     "PAGES_BASE_URL",
     "PROVIDER_MAX_WORKERS",
