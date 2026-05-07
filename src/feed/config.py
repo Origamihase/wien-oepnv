@@ -43,6 +43,32 @@ class InvalidPathError(ValueError):
     """Raised when a configured path is outside the permitted directories."""
 
 
+# Security: pin ``FEED_LINK`` and ``PAGES_BASE_URL`` to GitHub-hosted domains.
+# Both env vars are interpolated into the public RSS feed (channel ``<link>``,
+# per-item ``<link>`` fallback, atom self/alternate hrefs). Without this pin,
+# an env override (intentional misconfig, leaked CI env, compromised secret
+# store) would put an attacker-controlled URL into every published item —
+# turning the feed into a phishing/redirect amplifier for every subscriber.
+# ``validate_http_url()`` only checks SSRF/DNS-rebinding properties, not host
+# identity. Mirrors the ``_validated_oebb_url`` / ``_validated_baustellen_data_url``
+# helpers fixed in 2026-05. Allowed: ``github.com`` (canonical repo URL) and
+# any subdomain of ``github.io`` (the natural GitHub Pages target for forks).
+_FEED_PUBLIC_URL_TRUSTED_HOSTS = frozenset({"github.com"})
+_FEED_PUBLIC_URL_TRUSTED_SUFFIXES = (".github.io",)
+
+
+def _validated_feed_public_url(raw: str) -> str | None:
+    safe = validate_http_url(raw)
+    if not safe:
+        return None
+    host = (urlparse(safe).hostname or "").lower()
+    if host in _FEED_PUBLIC_URL_TRUSTED_HOSTS:
+        return safe
+    if any(host.endswith(suffix) for suffix in _FEED_PUBLIC_URL_TRUSTED_SUFFIXES):
+        return safe
+    return None
+
+
 def validate_path(path: Path, name: str) -> Path:
     """Ensure ``path`` stays within whitelisted directories."""
 
@@ -174,19 +200,28 @@ def _load_from_env() -> None:
     )
     FEED_TITLE = os.getenv("FEED_TITLE", DEFAULT_FEED_TITLE)
     raw_feed_link = os.getenv("FEED_LINK", DEFAULT_FEED_LINK)
-    # Security: only allow safe http/https URLs to avoid unsafe feed links.
-    validated_feed_link = validate_http_url(raw_feed_link)
+    # Security: pin to GitHub-hosted domains (see ``_validated_feed_public_url``)
+    # so an env override cannot weaponise the public feed as a phishing redirect.
+    validated_feed_link = _validated_feed_public_url(raw_feed_link)
     if not validated_feed_link:
-        validated_feed_link = validate_http_url(DEFAULT_FEED_LINK) or DEFAULT_FEED_LINK
+        validated_feed_link = _validated_feed_public_url(DEFAULT_FEED_LINK) or DEFAULT_FEED_LINK
         if raw_feed_link.strip() and raw_feed_link.strip() != DEFAULT_FEED_LINK:
-            log.warning("Invalid FEED_LINK provided; falling back to default.")
+            log.warning(
+                "FEED_LINK %r is not a known GitHub host; falling back to default.",
+                raw_feed_link,
+            )
     FEED_LINK = validated_feed_link
     raw_pages_base = os.getenv("PAGES_BASE_URL", DEFAULT_PAGES_BASE_URL)
-    validated_pages_base = validate_http_url(raw_pages_base)
+    validated_pages_base = _validated_feed_public_url(raw_pages_base)
     if not validated_pages_base:
-        validated_pages_base = validate_http_url(DEFAULT_PAGES_BASE_URL) or DEFAULT_PAGES_BASE_URL
+        validated_pages_base = (
+            _validated_feed_public_url(DEFAULT_PAGES_BASE_URL) or DEFAULT_PAGES_BASE_URL
+        )
         if raw_pages_base.strip() and raw_pages_base.strip() != DEFAULT_PAGES_BASE_URL:
-            log.warning("Invalid PAGES_BASE_URL provided; falling back to default.")
+            log.warning(
+                "PAGES_BASE_URL %r is not a known GitHub host; falling back to default.",
+                raw_pages_base,
+            )
     # Normalise the hostname to lowercase so feeds built on forks with
     # mixed-case repository owners (e.g. ``Origamihase``) emit canonical
     # URLs that GitHub Pages serves without redirect. The path component
