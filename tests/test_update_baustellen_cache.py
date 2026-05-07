@@ -394,3 +394,59 @@ def test_collect_events_survives_malformed_features(
     payload = {"type": "FeatureCollection", "features": 99999}
     events = update_baustellen_cache._collect_events(payload)
     assert events == []
+
+
+def test_fetch_remote_handles_json_depth_bomb(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    """Resilience: a malicious or pathological upstream serving a deeply-
+    nested JSON document must not crash the cron job. ``json.loads`` raises
+    ``RecursionError`` (NOT a subclass of ``JSONDecodeError``) when the
+    body exceeds Python's recursion limit. The previous
+    ``except (UnicodeDecodeError, json.JSONDecodeError)`` clause in
+    ``_load_json_from_content`` would let ``RecursionError`` propagate and
+    terminate the process — the same drift fixed canonically in
+    ``src/providers/wl_fetch.py`` and ``src/providers/vor.py``.
+    Verifying the parity here means a future change to the parser cannot
+    silently regress the depth-bomb defence."""
+    import logging
+
+    deep = b"[" * 5000 + b"]" * 5000
+
+    def fake_fetch(*_args: Any, **_kwargs: Any) -> bytes:
+        return deep
+
+    monkeypatch.setattr(update_baustellen_cache, "fetch_content_safe", fake_fetch)
+    monkeypatch.setattr(
+        update_baustellen_cache, "validate_http_url", lambda url, **_kw: url
+    )
+
+    caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
+    result = update_baustellen_cache._fetch_remote(
+        update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+    )
+    assert result is None
+
+
+def test_load_fallback_handles_json_depth_bomb(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    """Defence-in-depth: a tampered or accidentally committed fallback
+    file containing a deeply-nested JSON document must be rejected with a
+    clear error log instead of crashing the cron job via a propagated
+    ``RecursionError``. The fallback is the documented offline path when
+    the network is unreachable, so a depth-bomb here would deny both
+    fetch *and* fallback simultaneously."""
+    import logging
+
+    poisoned = tmp_path / "poisoned.geojson"
+    poisoned.write_text("[" * 5000 + "]" * 5000, encoding="utf-8")
+
+    caplog.set_level(logging.ERROR, logger="update_baustellen_cache")
+    result = update_baustellen_cache._load_fallback(poisoned)
+    assert result is None
+    assert any(
+        "ungültiges JSON" in record.getMessage()
+        for record in caplog.records
+        if record.name == "update_baustellen_cache"
+    )

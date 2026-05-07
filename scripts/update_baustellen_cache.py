@@ -158,7 +158,13 @@ def configure_logging() -> None:
 def _load_json_from_content(content: bytes) -> dict[str, Any]:
     try:
         payload = json.loads(content.decode("utf-8"))
-    except (UnicodeDecodeError, json.JSONDecodeError) as exc:  # pragma: no cover - defensive
+    except (UnicodeDecodeError, json.JSONDecodeError, RecursionError) as exc:
+        # Resilience: include ``RecursionError`` so a malicious or pathological
+        # upstream serving deeply-nested JSON cannot crash the cron job.
+        # ``json.loads`` on a deeply-nested array/object exceeds Python's
+        # recursion limit and raises ``RecursionError`` (NOT a subclass of
+        # ``JSONDecodeError``). Mirrors the canonical defence already in place
+        # at ``src/providers/wl_fetch.py`` and ``src/providers/vor.py``.
         raise ValueError(f"Invalid JSON payload: {exc}") from exc
     if not isinstance(payload, dict):
         raise ValueError(
@@ -216,7 +222,13 @@ def _load_fallback(path: Path) -> dict[str, Any] | None:
         return None
     try:
         payload = json.loads(raw)
-    except json.JSONDecodeError as exc:
+    except (json.JSONDecodeError, RecursionError) as exc:
+        # Defence-in-depth: the bundled fallback file lives in-tree, but a
+        # compromised contributor (or accidental commit) could replace it
+        # with a depth-bomb document that crashes ``json.loads`` via
+        # ``RecursionError``. Mirror the canonical defence used for the
+        # network parser above so the cron job logs a clear error instead
+        # of terminating the process when the network is unreachable.
         LOGGER.error("Baustellen: Fallback-Datei %s enthält ungültiges JSON (%s)", path, exc)
         return None
     # Zero Trust: a JSON-decodable file does not guarantee a JSON object.
