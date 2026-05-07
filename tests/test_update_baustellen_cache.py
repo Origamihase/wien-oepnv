@@ -315,3 +315,82 @@ def test_fetch_remote_accepts_geojson_variants(
         )
 
     run()
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        # Truthy non-list values that the previous ``or []`` fallback let
+        # through. ``42`` and ``True`` would crash with ``TypeError`` because
+        # ``int`` / ``bool`` are not iterable; ``"abc"`` and the dict shape
+        # would silently iterate characters / keys and pretend the upstream
+        # returned zero features. Every shape must collapse to an empty
+        # iterator instead so ``_collect_events`` stays in its documented
+        # fallback path.
+        {"type": "FeatureCollection", "features": 42},
+        {"type": "FeatureCollection", "features": True},
+        {"type": "FeatureCollection", "features": "abc"},
+        {"type": "FeatureCollection", "features": {"a": "b"}},
+        {"features": 123},
+        {"features": "not-a-list"},
+        {"data": {"features": 1}},
+        {"data": {"features": True}},
+        {"data": {"features": "x"}},
+    ],
+)
+def test_iter_features_rejects_non_list_features(payload: dict[str, Any]) -> None:
+    """Zero Trust: ``_iter_features`` must never iterate a non-list ``features``
+    value extracted from the payload. The previous ``payload.get("features")
+    or []`` only collapsed *falsy* values; truthy non-lists slipped through
+    and either raised ``TypeError`` (int/bool) — propagating out of
+    ``_collect_events`` and crashing the cache update — or silently emitted
+    zero events. The fix must mirror the ``isinstance(raw, list)`` guard
+    landed for the sibling VOR mapping loaders so the documented fallback
+    runs instead.
+    """
+    result = list(update_baustellen_cache._iter_features(payload))
+    assert result == []
+
+
+def test_iter_features_returns_dicts_only() -> None:
+    """Sanity: legitimate FeatureCollection payloads still yield the dict
+    features (regression check that the new shape guard does not over-reject
+    valid GeoJSON)."""
+    payload = {
+        "type": "FeatureCollection",
+        "features": [
+            {"properties": {"BEZEICHNUNG": "Test"}},
+            "not-a-dict",
+            42,
+            None,
+            {"properties": {"BEZEICHNUNG": "Other"}},
+        ],
+    }
+    result = list(update_baustellen_cache._iter_features(payload))
+    assert len(result) == 2
+    assert all(isinstance(f, dict) for f in result)
+
+
+def test_iter_features_handles_data_wrapper_with_non_list_features() -> None:
+    """The ``"data": {...}`` branch must apply the same shape guard — a
+    ``data`` envelope containing a non-list ``features`` field must not
+    crash when iterated."""
+    payload = {"data": {"features": "should-not-iterate-as-chars"}}
+    result = list(update_baustellen_cache._iter_features(payload))
+    assert result == []
+
+
+def test_collect_events_survives_malformed_features(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """End-to-end: a payload whose ``features`` field is a truthy non-list
+    must produce zero events without raising. Without the shape guard,
+    ``int`` / ``bool`` shapes raised ``TypeError`` out of ``_collect_events``
+    and aborted the whole cache update — bypassing the documented
+    fallback path used when the network is unreachable."""
+    import logging
+
+    caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
+    payload = {"type": "FeatureCollection", "features": 99999}
+    events = update_baustellen_cache._collect_events(payload)
+    assert events == []
