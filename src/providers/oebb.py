@@ -91,6 +91,30 @@ OEBB_ONLY_VIENNA = get_bool_env("OEBB_ONLY_VIENNA", False)
 # Max wait time for Retry-After headers to prevent DoS
 RETRY_AFTER_MAX_SEC = 60.0
 
+# Security: ``MAX_OEBB_FETCH_TIMEOUT`` is the Slowloris-defence ceiling for the
+# public ``fetch_events`` API. The ``timeout`` parameter flows through
+# ``_fetch_xml`` -> ``fetch_content_safe`` as both the connect and read budget
+# for every ÖBB Fahrplan request. The current call site in ``build_feed.py``
+# uses ``effective_timeout`` (already capped at ``feed_config.MAX_PROVIDER_TIMEOUT``)
+# and ``scripts/update_oebb_cache.py`` uses the 25-second default, so the
+# production blast radius is currently zero. But ``fetch_events`` is exported
+# as a public API (``__all__``) and a future caller passing an env-controlled
+# or user-controlled value (e.g. a hypothetical ``OEBB_FETCH_TIMEOUT`` env var
+# or a CLI flag wired into a maintenance script) would otherwise inherit the
+# unbounded shape — ``timeout=99999`` (intentional misconfig, leaked CI env,
+# compromised secret store) lets a sluggish or attacker-controlled upstream
+# peer hold the worker for ~28 hours per fetch, stalling the cron pipeline.
+# Capping inside the function (defense-in-depth) means every caller — current
+# and future — inherits the ceiling without having to remember to add it.
+# 25 seconds matches ``feed_config.MAX_PROVIDER_TIMEOUT`` (the orchestrator-
+# level Slowloris ceiling) so no orchestrator-capped value is ever rejected.
+# TIGHTEN-only contract mirrors ``MAX_PRUNE_CACHE_MAX_AGE_HOURS``
+# (``src/utils/cache.py``) and ``MAX_LOG_PRUNE_KEEP_DAYS``
+# (``src/feed/logging.py``) — same parameter-boundary defense-in-depth pattern
+# documented in the 2026-05-07 ``prune_cache`` journal entry, but applied to
+# the Slowloris-cap drift family rather than the ``timedelta`` underflow family.
+MAX_OEBB_FETCH_TIMEOUT = 25
+
 # ---------------- HTTP ----------------
 USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"
 
@@ -1389,6 +1413,12 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
 
 # ---------------- Public ----------------
 def fetch_events(timeout: int = 25) -> list[FeedItem]:
+    # Security: clamp ``timeout`` to ``MAX_OEBB_FETCH_TIMEOUT`` to defeat the
+    # Slowloris vector documented at the constant declaration above. Without
+    # the cap a caller passing ``timeout=99999`` would let a sluggish or
+    # attacker-controlled upstream peer stall the cron for ~28 hours per fetch.
+    if timeout > MAX_OEBB_FETCH_TIMEOUT:
+        timeout = MAX_OEBB_FETCH_TIMEOUT
     root = _fetch_xml(OEBB_URL, timeout=timeout)
 
     if root is None:
@@ -1486,4 +1516,4 @@ def fetch_events(timeout: int = 25) -> list[FeedItem]:
     return out
 
 
-__all__ = ["fetch_events", "station_info"]
+__all__ = ["MAX_OEBB_FETCH_TIMEOUT", "fetch_events", "station_info"]
