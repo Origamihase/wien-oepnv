@@ -38,6 +38,23 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 LOG_TIMEZONE = ZoneInfo("Europe/Vienna")
 log = logging.getLogger(__name__)
 
+# Security: ``MAX_PROVIDER_TIMEOUT`` is the Slowloris-defence ceiling for the
+# orchestrator's per-provider fetch budget. ``feed_config.PROVIDER_TIMEOUT``
+# (and per-provider overrides like ``PROVIDER_TIMEOUT_VOR`` resolved by
+# ``build_feed._provider_timeout_override``) is consumed by ``build_feed.py``
+# as both (a) the per-fetch HTTP timeout passed to provider fetch callables
+# and (b) the deadline on each ``ThreadPoolExecutor`` future. ``get_int_env``
+# only enforced a non-negative lower bound, so a benign-looking env override
+# such as ``PROVIDER_TIMEOUT=99999`` (intentional misconfig, leaked CI env,
+# compromised secret store) would silently let a sluggish or attacker-
+# controlled upstream peer hold a worker for ~28 hours per fetch, stalling
+# the whole feed-build cron. The cap can only TIGHTEN — env overrides may
+# lower the timeout (tests use 1–5s) but never raise it above the documented
+# ceiling. Mirrors the ``min(VOR_HTTP_TIMEOUT, DEFAULT_HTTP_TIMEOUT)`` cap in
+# ``src/providers/vor.py`` and the ``MAX_TIMEOUT_S`` enforcement in
+# ``GooglePlacesConfig.__post_init__`` (``src/places/client.py``).
+MAX_PROVIDER_TIMEOUT = DEFAULT_PROVIDER_TIMEOUT
+
 
 class InvalidPathError(ValueError):
     """Raised when a configured path is outside the permitted directories."""
@@ -243,7 +260,12 @@ def _load_from_env() -> None:
     CACHE_MAX_AGE_HOURS = max(
         get_int_env("CACHE_MAX_AGE_HOURS", DEFAULT_CACHE_MAX_AGE_HOURS), 0
     )
-    PROVIDER_TIMEOUT = max(get_int_env("PROVIDER_TIMEOUT", DEFAULT_PROVIDER_TIMEOUT), 0)
+    # Security: clamp the env override to ``MAX_PROVIDER_TIMEOUT`` to defeat
+    # the Slowloris vector documented at the constant declaration above.
+    PROVIDER_TIMEOUT = min(
+        max(get_int_env("PROVIDER_TIMEOUT", DEFAULT_PROVIDER_TIMEOUT), 0),
+        MAX_PROVIDER_TIMEOUT,
+    )
     PROVIDER_MAX_WORKERS = max(
         get_int_env("PROVIDER_MAX_WORKERS", DEFAULT_PROVIDER_MAX_WORKERS), 0
     )
@@ -317,6 +339,7 @@ __all__ = [
     "LOG_TIMEZONE",
     "MAX_ITEM_AGE_DAYS",
     "MAX_ITEMS",
+    "MAX_PROVIDER_TIMEOUT",
     "OUT_PATH",
     "PAGES_BASE_URL",
     "PROVIDER_MAX_WORKERS",
