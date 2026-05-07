@@ -107,6 +107,93 @@ def test_fetch_events_uses_station_names_when_ids_missing(monkeypatch: pytest.Mo
     assert calls == [["Wien"]]
 
 
+@pytest.mark.parametrize(
+    "stop_payload",
+    [
+        {"StopLocation": 42},
+        {"StopLocation": True},
+        {"StopLocation": "wien"},
+        {"StopLocation": [1, 2, 3]},
+        {"StopLocation": [{"id": "good"}, "bad", 7]},
+        {"LocationList": {"Stop": 99}},
+        {"LocationList": {"Stop": True}},
+        {"LocationList": {"Stop": "x"}},
+        {"LocationList": {"Stop": [True, "y"]}},
+        {"LocationList": "not-a-mapping"},
+    ],
+)
+def test_resolve_station_ids_zero_trust_payload_shapes(
+    monkeypatch: pytest.MonkeyPatch, stop_payload: dict[str, Any]
+) -> None:
+    """A misbehaving / compromised VAO upstream must not crash the batch.
+
+    Truthy non-list, non-Mapping shapes for ``StopLocation`` /
+    ``LocationList.Stop`` previously raised ``TypeError`` from ``for stop in
+    stops:``, propagating out of the per-name loop and silently dropping every
+    subsequent station's resolution after burning quota.
+    """
+
+    monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "token")
+    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token", raising=False)
+
+    import json
+
+    captured: list[str] = []
+
+    def fake_fetch_safe(
+        session: Any,
+        url: str,
+        params: Any = None,
+        timeout: Any = None,
+        allowed_content_types: Any = None,
+    ) -> bytes:
+        captured.append(params["input"])
+        if params["input"] == "BogusZeroTrustStation":
+            return json.dumps(stop_payload).encode("utf-8")
+        return json.dumps(
+            {"StopLocation": [{"id": "42", "name": "RecoveredStation"}]}
+        ).encode("utf-8")
+
+    monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch_safe)
+
+    # The bogus payload comes first to verify subsequent names are still resolved.
+    ids = vor.resolve_station_ids(
+        ["BogusZeroTrustStation", "AnotherUnknownStation"]
+    )
+
+    # The bogus shape must not abort the loop: the API is called for both
+    # names and the recovered station is still resolved. A truthy non-Mapping
+    # / non-list shape previously raised ``TypeError`` here.
+    assert "42" in ids
+    assert captured == ["BogusZeroTrustStation", "AnotherUnknownStation"]
+
+
+def test_resolve_station_ids_filters_non_mapping_stop_entries(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Per-element guard rejects non-Mapping entries inside an otherwise valid list."""
+
+    monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "token")
+    monkeypatch.setattr(vor, "VOR_ACCESS_ID", "token", raising=False)
+
+    import json
+
+    def fake_fetch_safe(
+        session: Any,
+        url: str,
+        params: Any = None,
+        timeout: Any = None,
+        allowed_content_types: Any = None,
+    ) -> bytes:
+        return json.dumps(
+            {"StopLocation": ["scalar", 7, {"id": "42", "name": "Wien"}]}
+        ).encode("utf-8")
+
+    monkeypatch.setattr(vor, "fetch_content_safe", fake_fetch_safe)
+
+    assert vor.resolve_station_ids(["UnknownStation"]) == ["42"]
+
+
 def test_collect_from_board_canonicalizes_stop_names(monkeypatch: pytest.MonkeyPatch) -> None:
     # Mock station info to avoid filter because "Test text" is not "Wien" related.
     # If in_vienna=True, filtering is skipped.

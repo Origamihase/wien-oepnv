@@ -1268,19 +1268,32 @@ def resolve_station_ids(names: Iterable[str]) -> list[str]:
                     )
                 continue
 
-            stops = []
-            if isinstance(payload, Mapping):
-                if "StopLocation" in payload:
-                    stops = payload["StopLocation"]
-                else:
-                    location_list = payload.get("LocationList")
-                    if isinstance(location_list, Mapping):
-                        stops = location_list.get("Stop") or []
-            if isinstance(stops, Mapping):
-                stops = [stops]
+            # Zero Trust: even after the top-level dict guard above, the
+            # ``StopLocation`` / ``LocationList.Stop`` slots are still ``Any`` —
+            # a tampered or misbehaving VAO upstream could ship a truthy
+            # non-list / non-Mapping payload (``42``, ``True``, ``"x"``,
+            # ``[1, 2]``). The previous ``payload["StopLocation"]`` subscript
+            # and the chained ``... or []`` only collapse falsy shapes, so a
+            # truthy non-iterable would raise ``TypeError`` from the ``for stop
+            # in stops:`` loop and propagate out of this whole ``for name in
+            # to_lookup:`` batch — silently dropping every subsequent name's
+            # resolution after burning quota.
+            raw_stops: object = None
+            if "StopLocation" in payload:
+                raw_stops = payload.get("StopLocation")
+            else:
+                location_list = payload.get("LocationList")
+                if isinstance(location_list, Mapping):
+                    raw_stops = location_list.get("Stop")
+
+            if isinstance(raw_stops, Mapping):
+                stops = [raw_stops]
+            elif isinstance(raw_stops, list):
+                stops = [item for item in raw_stops if isinstance(item, Mapping)]
+            else:
+                stops = []
+
             for stop in stops:
-                if not isinstance(stop, Mapping):
-                    continue
                 sid = str(stop.get("id") or stop.get("extId") or "").strip()
                 if sid and sid not in resolved:
                     resolved.append(sid)
