@@ -99,3 +99,70 @@ def test_secret_scanner_slack_xoxa_does_not_overlap_with_xoxb(tmp_path: Path) ->
 
     assert "Slack Bot Token gefunden" in reasons
     assert "Slack Refresh Token gefunden" in reasons
+
+
+@pytest.mark.parametrize(
+    ("prefix", "expected_reason"),
+    [
+        ("rk_live_", "Stripe Restricted Live Key gefunden"),
+        ("rk_test_", "Stripe Restricted Test Key gefunden"),
+    ],
+)
+def test_secret_scanner_detects_stripe_restricted_keys(
+    tmp_path: Path, prefix: str, expected_reason: str
+) -> None:
+    file_path = tmp_path / f"stripe_{prefix.rstrip('_')}.py"
+    secret = prefix + "A1b2C3d4E5f6G7h8I9j0K1l2"  # 24-char body
+    file_path.write_text(f'STRIPE_RESTRICTED = "{secret}"\n', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, f"Should detect Stripe {prefix} key"
+    assert secret not in [f.match for f in findings]
+    reasons = [f.reason for f in findings]
+    assert expected_reason in reasons, reasons
+
+
+def test_secret_scanner_distinguishes_all_stripe_variants(tmp_path: Path) -> None:
+    """Live/test secret, restricted, and webhook secret all produce distinct findings."""
+    file_path = tmp_path / "stripe_all.py"
+    sk_live = "sk_live_" + "L" * 24
+    sk_test = "sk_test_" + "T" * 24
+    rk_live = "rk_live_" + "R" * 24
+    rk_test = "rk_test_" + "Q" * 24
+    file_path.write_text(
+        "\n".join(
+            [
+                f'STRIPE_SK_LIVE = "{sk_live}"',
+                f'STRIPE_SK_TEST = "{sk_test}"',
+                f'STRIPE_RK_LIVE = "{rk_live}"',
+                f'STRIPE_RK_TEST = "{rk_test}"',
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+    reasons = {f.reason for f in findings}
+
+    assert "Stripe Live Secret Key gefunden" in reasons
+    assert "Stripe Test Secret Key gefunden" in reasons
+    assert "Stripe Restricted Live Key gefunden" in reasons
+    assert "Stripe Restricted Test Key gefunden" in reasons
+
+
+def test_secret_scanner_detects_stripe_webhook_signing_secret(tmp_path: Path) -> None:
+    """Webhook signing secrets enable forged webhook events; must be detected."""
+    file_path = tmp_path / "stripe_webhook.py"
+    # Real Stripe webhook secrets are typically 32+ alphanumeric characters
+    # after the prefix; use 38 here to exercise the {32,} body bound.
+    secret = "whsec_" + "Ab1Cd2Ef3Gh4Ij5Kl6Mn7Op8Qr9St0Uv1Wx2Yz"
+    file_path.write_text(f'STRIPE_WEBHOOK_SECRET = "{secret}"\n', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, "Should detect Stripe webhook signing secret"
+    assert secret not in [f.match for f in findings]
+    reasons = [f.reason for f in findings]
+    assert "Stripe Webhook Signing Secret gefunden" in reasons, reasons
