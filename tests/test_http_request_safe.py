@@ -126,5 +126,128 @@ class TestHTTPRequestSafe(unittest.TestCase):
                 self.assertEqual(args2[0], "POST")
                 self.assertEqual(kwargs2['json'], {"user": "admin"}) # Data preserved
 
+    def test_request_safe_security_hook_always_attached(self) -> None:
+        """
+        Regression: ``_check_response_security`` MUST always be present in the
+        response hooks for every outgoing request. If accidentally dropped,
+        IP-verification (DNS-rebinding TOCTOU defense) would silently no-op.
+        """
+        from src.utils.http import _check_response_security
+        safe_ip = "8.8.8.8"
+        mock_addr_info = [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))]
+
+        with patch('src.utils.http._resolve_hostname_safe', return_value=mock_addr_info):
+            with patch('requests.Session.request') as mock_request:
+                resp = requests.Response()
+                resp.status_code = 200
+                resp._content = b"ok"
+                resp.iter_content = MagicMock(return_value=[b"ok"])
+                resp.url = 'http://example.com/'
+                resp.headers['Content-Type'] = 'text/plain'
+                resp.raw = MagicMock()
+                conn = MagicMock()
+                conn.sock.getpeername.return_value = (safe_ip, 80)
+                resp.raw.connection = conn
+                resp.raw._connection = conn
+
+                mock_request.return_value = resp
+
+                session = session_with_retries("TestAgent")
+                request_safe(session, "http://example.com/")
+
+                _, kwargs = mock_request.call_args
+                hooks = kwargs.get("hooks", {})
+                response_hooks = hooks.get("response", [])
+                if not isinstance(response_hooks, list):
+                    response_hooks = [response_hooks]
+                self.assertIn(
+                    _check_response_security,
+                    response_hooks,
+                    "_check_response_security MUST always be in response hooks",
+                )
+
+    def test_request_safe_caller_hooks_preserved(self) -> None:
+        """
+        Regression: caller-passed hooks MUST coexist with the security hook;
+        merging must not drop or replace either side. Verifies a custom
+        response hook supplied by the caller still fires AND the security
+        hook is still present.
+        """
+        from src.utils.http import _check_response_security
+        safe_ip = "8.8.8.8"
+        mock_addr_info = [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))]
+
+        custom_hook_calls: list[str] = []
+        def custom_hook(response: requests.Response, *args: object, **kwargs: object) -> None:
+            custom_hook_calls.append("called")
+
+        with patch('src.utils.http._resolve_hostname_safe', return_value=mock_addr_info):
+            with patch('requests.Session.request') as mock_request:
+                resp = requests.Response()
+                resp.status_code = 200
+                resp._content = b"ok"
+                resp.iter_content = MagicMock(return_value=[b"ok"])
+                resp.url = 'http://example.com/'
+                resp.headers['Content-Type'] = 'text/plain'
+                resp.raw = MagicMock()
+                conn = MagicMock()
+                conn.sock.getpeername.return_value = (safe_ip, 80)
+                resp.raw.connection = conn
+                resp.raw._connection = conn
+
+                mock_request.return_value = resp
+
+                session = session_with_retries("TestAgent")
+                request_safe(
+                    session,
+                    "http://example.com/",
+                    hooks={"response": custom_hook},
+                )
+
+                _, kwargs = mock_request.call_args
+                hooks = kwargs.get("hooks", {})
+                response_hooks = hooks.get("response", [])
+                if not isinstance(response_hooks, list):
+                    response_hooks = [response_hooks]
+                self.assertIn(custom_hook, response_hooks, "Caller hook must survive merge")
+                self.assertIn(
+                    _check_response_security,
+                    response_hooks,
+                    "Security hook must coexist with caller hooks",
+                )
+
+    def test_request_safe_tuple_timeout_total_budget_sums(self) -> None:
+        """
+        Regression: when ``timeout=(connect, read)`` is given, the total time
+        budget across redirects MUST be the SUM of both values (not just
+        ``connect`` or just ``read``). If summing is dropped, a slow
+        adversary could chain redirects and stretch the budget unboundedly.
+        """
+        safe_ip = "8.8.8.8"
+        mock_addr_info = [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))]
+
+        with patch('src.utils.http._resolve_hostname_safe', return_value=mock_addr_info):
+            # We freeze monotonic so we can control elapsed time precisely.
+            # Sequence of monotonic reads inside request_safe:
+            #   (1) start_time = time.monotonic()           — t=0
+            #   (2) elapsed = time.monotonic() - start_time — first iter, after 25s
+            # Total budget for tuple (3, 15) is 18; elapsed=25 > 18 -> Timeout.
+            with patch('src.utils.http.time.monotonic') as mock_monotonic:
+                mock_monotonic.side_effect = [0.0, 25.0, 25.0, 25.0, 25.0]
+
+                with patch('requests.Session.request') as mock_request:
+                    session = session_with_retries("TestAgent")
+                    with self.assertRaises(requests.Timeout) as cm:
+                        request_safe(
+                            session,
+                            "http://example.com/",
+                            timeout=(3.0, 15.0),
+                        )
+                    # The error should reference the SUMMED budget (18s), not 3s or 15s.
+                    self.assertIn("18", str(cm.exception))
+                    # And no actual HTTP request was made because the budget tripped first.
+                    self.assertEqual(mock_request.call_count, 0)
+
+
 if __name__ == "__main__":
     unittest.main()
