@@ -401,20 +401,52 @@ def _get_json(
         return _fetch(s)
 
 
+def _extract_wl_items(data: dict[str, Any], key: str) -> list[dict[str, Any]]:
+    """Extract a list-of-dicts collection from a WL API response.
+
+    Zero Trust: ``_get_json`` validates the top-level shape is a dict, but
+    the ``data["data"]`` value and the inner ``data["data"][key]`` value
+    extracted from it are still ``Any``. The previous one-liner
+    ``(data.get("data", {}) or {}).get(key, []) or []`` collapses *falsy*
+    JSON shapes (``None``, ``0``, ``""``, ``[]``, ``{}``) to a safe empty
+    container, but lets *truthy non-Mapping* / *truthy non-list* shapes
+    through. A misbehaving / compromised upstream peer (or a tampered
+    proxy response) could ship ``{"data": [1, 2]}``, ``{"data": "abc"}``,
+    ``{"data": True}``, or ``{"data": {"trafficInfos": "abc"}}``; the
+    resulting ``.get(key, [])`` then raises ``AttributeError`` (lists,
+    strings, bools have no ``.get``) or the iteration in ``fetch_events``
+    raises ``AttributeError`` / ``TypeError`` on each non-dict element.
+    Both failure modes propagate out of ``fetch_events`` and disable the
+    cache refresh entirely (``update_wl_cache.py`` falls into the
+    ``except Exception:`` defensive branch). Mirror the
+    ``isinstance(payload, list)`` shape guard already landed for the
+    sibling Baustellen / VOR loaders so the documented empty-list
+    fallback runs instead, and additionally drop non-dict elements so
+    downstream ``.get(...)`` calls in ``fetch_events`` are safe.
+    """
+    inner = data.get("data")
+    if not isinstance(inner, dict):
+        return []
+    items = inner.get(key)
+    if not isinstance(items, list):
+        return []
+    return [item for item in items if isinstance(item, dict)]
+
+
 def _fetch_traffic_infos(
     timeout: int = 20, session: requests.Session | None = None
 ) -> Iterable[dict[str, Any]]:
     # explizit KEINE Facility-Feeds
     params = [("name", "stoerunglang"), ("name", "stoerungkurz")]
     data = _get_json("trafficInfoList", params=params, timeout=timeout, session=session)
-    return (data.get("data", {}) or {}).get("trafficInfos", []) or []
+    return _extract_wl_items(data, "trafficInfos")
 
 
 def _fetch_news(
     timeout: int = 20, session: requests.Session | None = None
 ) -> Iterable[dict[str, Any]]:
     data = _get_json("newsList", timeout=timeout, session=session)
-    return (data.get("data", {}) or {}).get("pois", []) or []
+    return _extract_wl_items(data, "pois")
 
 
 # ---------------- Public API ----------------
