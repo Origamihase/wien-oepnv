@@ -1412,6 +1412,130 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
 
 
 # ---------------- Public ----------------
+
+
+_LINE_TOKEN_RE = re.compile(r"\b((?:REX|S(?:-Bahn)?|U)\s*\d+)\b")
+
+
+def _derive_guid(raw_guid: str, title: str, link: str) -> str:
+    """Generate a stable GUID for an XML <item>. Hashes oversized GUIDs
+    (security: 128-byte cap to prevent feed-bloat amplification) and falls
+    back to a title+link hash when the upstream omits a GUID entirely.
+    """
+    if raw_guid and len(raw_guid) > 128:
+        # Security: Prevent huge GUIDs from external feed
+        return make_guid(raw_guid)
+    return raw_guid or make_guid(title, link)
+
+
+def _apply_route_title(title: str, desc: str) -> str:
+    """Reconstruct a clean ``A ↔ B`` title from the authoritative endpoints
+    parsed out of the description ("zwischen X und Y") whenever the route is
+    Wien-relevant. Also injects a recognised line token (REX/S/U + number)
+    from the description when not already present in the title. Supersedes
+    messy raw titles like "Bauarbeiten: Flughafen Wien Wien Mitte-Landstraße"
+    with canonical station names and drops the category prefix.
+    """
+    existing_line_prefix, _ = _extract_line_prefix(title)
+    routes = _extract_routes(title, desc)
+    relevant_routes = [
+        (a, b) for (a, b) in routes if _route_is_wien_relevant(a, b)
+    ]
+    if relevant_routes:
+        title = _format_route_title(relevant_routes, existing_line_prefix)
+
+    line_match = _LINE_TOKEN_RE.search(desc)
+    if line_match:
+        line_str = line_match.group(1)
+        if line_str not in title:
+            title = f"{line_str}: {title}"
+    return title
+
+
+def _resolve_poor_title(title: str, link: str, guid: str, desc: str) -> str:
+    """Three-attempt fallback ladder for unhelpful titles:
+
+    1. Look up the station name from an OEBB ID embedded in the link or guid.
+    2. Extract station names from the description text.
+    3. Truncate the description as a last resort.
+
+    Each attempt only fires if the prior result is still classified as poor
+    by ``_is_poor_title``, preserving the original short-circuit behaviour.
+    """
+    if not _is_poor_title(title):
+        return title
+
+    # Attempt 1: ID from Link/GUID
+    station_id = _extract_id_from_url(link) or _extract_id_from_url(guid)
+    if station_id:
+        found_name = station_by_oebb_id(station_id)
+        if found_name:
+            title = display_name(found_name)
+
+    # Attempt 2: Text extraction (if still poor)
+    if _is_poor_title(title):
+        stations_found = _find_stations_in_text(desc)
+        if len(stations_found) == 1:
+            title = display_name(stations_found[0])
+        elif len(stations_found) >= 2:
+            title = (
+                f"{display_name(stations_found[0])} ↔ "
+                f"{display_name(stations_found[1])}"
+            )
+
+    # Attempt 3: Truncation
+    if _is_poor_title(title):
+        snippet = desc.strip()
+        if len(snippet) > 40:
+            snippet = snippet[:40] + "..."
+        if snippet:
+            title = snippet
+
+    return title
+
+
+def _build_item_from_xml(item: ET.Element) -> FeedItem | None:
+    """Convert one ``<item>`` XML element into a normalised ``FeedItem``,
+    or return ``None`` when the item is dropped by the Wien-relevance
+    filter. Pure ETL: no shared state, no I/O.
+
+    The pipeline is:
+        clean title → derive guid → clean description → parse pubDate
+        → reconstruct route title → apply poor-title fallback
+        → drop if not Wien-relevant.
+    """
+    raw_title = _get_text(item, "title")
+    title = _clean_title_keep_places(raw_title)
+    link = _get_text(item, "link").strip() or OEBB_URL
+    raw_guid = _get_text(item, "guid").strip()
+    desc = _clean_description(_get_text(item, "description"))
+    pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
+
+    guid = _derive_guid(raw_guid, title, link)
+    title = _apply_route_title(title, desc)
+    title = _resolve_poor_title(title, link, guid, desc)
+
+    # Region-Filter: Strict — drop messages that don't describe a
+    # Wien-relevant connection or station. Run AFTER title fallback so
+    # that fallback-derived titles (e.g. resolved via OEBB station ID)
+    # contribute to the relevance check.
+    if not _is_relevant(title, desc):
+        return None
+
+    return {
+        "source": "ÖBB",
+        "category": "Störung",
+        "title": title,          # bereits kurz & ohne Bahnhof/Hbf
+        "description": desc,     # plain
+        "link": link,
+        "guid": guid,
+        "pubDate": pub,
+        "starts_at": pub,
+        "ends_at": None,
+        "_identity": f"oebb|{guid}",
+    }
+
+
 def fetch_events(timeout: int = 25) -> list[FeedItem]:
     # Security: clamp ``timeout`` to ``MAX_OEBB_FETCH_TIMEOUT`` to defeat the
     # Slowloris vector documented at the constant declaration above. Without
@@ -1430,87 +1554,9 @@ def fetch_events(timeout: int = 25) -> list[FeedItem]:
 
     out: list[FeedItem] = []
     for item in channel.findall("item"):
-        raw_title = _get_text(item, "title")
-        title = _clean_title_keep_places(raw_title)
-        link  = _get_text(item, "link").strip() or OEBB_URL
-        raw_guid = _get_text(item, "guid").strip()
-        if raw_guid and len(raw_guid) > 128:
-            # Security: Prevent huge GUIDs from external feed
-            guid = make_guid(raw_guid)
-        else:
-            guid = raw_guid or make_guid(title, link)
-        desc_html = _get_text(item, "description")
-        desc = _clean_description(desc_html)
-        pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))
-
-        # Reconstruct a clean "A ↔ B" title from the authoritative endpoints
-        # in the description ("zwischen X und Y") whenever possible. This
-        # supersedes the messy raw title (e.g. "Bauarbeiten: Flughafen Wien
-        # Wien Mitte-Landstraße") with canonical station names and drops
-        # category prefixes such as "Bauarbeiten:" or "DB-Bauarbeiten:".
-        existing_line_prefix, _ = _extract_line_prefix(title)
-        routes = _extract_routes(title, desc)
-        relevant_routes = [
-            (a, b) for (a, b) in routes if _route_is_wien_relevant(a, b)
-        ]
-        if relevant_routes:
-            title = _format_route_title(relevant_routes, existing_line_prefix)
-
-        # Append affected line from description (e.g. "REX 1", "S 50", "U1")
-        # if not already present in the title.
-        line_match = re.search(r"\b((?:REX|S(?:-Bahn)?|U)\s*\d+)\b", desc)
-        if line_match:
-            line_str = line_match.group(1)
-            if line_str not in title:
-                title = f"{line_str}: {title}"
-
-        # Title Fallback for "poor" titles
-        if _is_poor_title(title):
-            # Attempt 1: ID from Link/GUID
-            station_id = _extract_id_from_url(link) or _extract_id_from_url(guid)
-            if station_id:
-                found_name = station_by_oebb_id(station_id)
-                if found_name:
-                    title = display_name(found_name)
-
-            # Attempt 2: Text extraction (if still poor)
-            if _is_poor_title(title):
-                stations_found = _find_stations_in_text(desc)
-                if len(stations_found) == 1:
-                    title = display_name(stations_found[0])
-                elif len(stations_found) >= 2:
-                    title = (
-                        f"{display_name(stations_found[0])} ↔ "
-                        f"{display_name(stations_found[1])}"
-                    )
-
-            # Attempt 3: Truncation
-            if _is_poor_title(title):
-                snippet = desc.strip()
-                if len(snippet) > 40:
-                    snippet = snippet[:40] + "..."
-                if snippet:
-                    title = snippet
-
-        # Region-Filter: Strict — drop messages that don't describe a
-        # Wien-relevant connection or station. Run AFTER title fallback so
-        # that fallback-derived titles (e.g. resolved via OEBB station ID)
-        # contribute to the relevance check.
-        if not _is_relevant(title, desc):
-            continue
-
-        out.append({
-            "source": "ÖBB",
-            "category": "Störung",
-            "title": title,          # bereits kurz & ohne Bahnhof/Hbf
-            "description": desc,     # plain
-            "link": link,
-            "guid": guid,
-            "pubDate": pub,
-            "starts_at": pub,
-            "ends_at": None,
-            "_identity": f"oebb|{guid}",
-        })
+        feed_item = _build_item_from_xml(item)
+        if feed_item is not None:
+            out.append(feed_item)
 
     log.info("ÖBB: %d Items nach Region/Titel-Kosmetik", len(out))
     return out

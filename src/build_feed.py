@@ -763,6 +763,318 @@ def _identity_for_item(item: FeedItem) -> str:
 
 # ---------------- Pipeline ----------------
 
+
+class _ProviderBuckets(NamedTuple):
+    cache_fetchers: list[Any]
+    network_fetchers: list[Any]
+    provider_names: dict[Any, str]
+    provider_envs: dict[Any, str | None]
+
+
+def _categorize_providers(report: RunReport) -> _ProviderBuckets:
+    """Walk PROVIDERS + plugin entrypoints and split enabled fetchers into
+    cache-backed (sync) and network-backed (async) buckets, registering each
+    with the report so disabled providers still appear in the health output.
+    """
+    cache_fetchers: list[Any] = []
+    network_fetchers: list[Any] = []
+    provider_names: dict[Any, str] = {}
+    provider_envs: dict[Any, str | None] = {}
+
+    provider_entries = list(PROVIDERS)
+    providers_overridden = list(PROVIDERS) != list(DEFAULT_PROVIDERS)
+    if provider_entries:
+        if not providers_overridden:
+            known_envs = {env for env, _ in provider_entries}
+            for spec in iter_providers():
+                if spec.env_var not in known_envs:
+                    provider_entries.append((spec.env_var, spec.loader))
+    else:
+        provider_entries = [(spec.env_var, spec.loader) for spec in iter_providers()]
+
+    for env, fetch in provider_entries:
+        provider_name = _provider_display_name(fetch, env)
+        enabled = bool(feed_config.get_bool_env(env, True))
+        fetch_type = "cache" if getattr(fetch, "_provider_cache_name", None) else "network"
+        report.register_provider(provider_name, enabled, fetch_type)
+        if not enabled:
+            continue
+        provider_names[fetch] = provider_name
+        provider_envs[fetch] = env
+        if getattr(fetch, "_provider_cache_name", None):
+            cache_fetchers.append(fetch)
+        else:
+            network_fetchers.append(fetch)
+
+    return _ProviderBuckets(cache_fetchers, network_fetchers, provider_names, provider_envs)
+
+
+def _run_cache_fetchers(
+    cache_fetchers: list[Any],
+    provider_names: dict[Any, str],
+    items: list[FeedItem],
+    report: RunReport,
+    merge_result: Any,
+) -> None:
+    """Sequentially invoke each cache-backed fetcher and feed its result through
+    ``merge_result``. Cache fetchers are sync because they read from disk; no
+    timeout / executor machinery applies."""
+    for fetch in cache_fetchers:
+        name = getattr(fetch, "__name__", str(fetch))
+        provider_name = provider_names.get(fetch, _provider_display_name(fetch))
+        report.provider_started(provider_name)
+        result: list[FeedItem] | None = None
+        try:
+            result = fetch()
+        except Exception as exc:
+            log.exception("%s fetch fehlgeschlagen: %s", name, exc)
+            report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
+            continue
+        if result is not None:
+            merge_result(fetch, result, provider_name)
+
+
+def _build_run_fetch(
+    fetch: Any,
+    effective_timeout: int | float,
+    supports_timeout: bool,
+    semaphore: BoundedSemaphore | None,
+    provider_name: str,
+) -> Any:
+    """Wrap a network fetcher with semaphore-aware timeout accounting. The
+    returned closure is what gets submitted to the ThreadPoolExecutor; it
+    enforces both the per-call timeout and (when a concurrency limit applies)
+    a semaphore acquisition timeout that subtracts wait time from the budget,
+    preventing thread starvation under provider deadlock.
+    """
+    def _run_fetch() -> Any:
+        timeout_arg = effective_timeout if effective_timeout >= 0 else None
+
+        if semaphore is None:
+            return _call_fetch_with_timeout(fetch, timeout_arg, supports_timeout)
+
+        # Prevent thread starvation by enforcing timeout on semaphore acquisition.
+        # If the provider is deadlocked/overloaded, we don't block the executor
+        # worker forever.
+        start_wait = perf_counter()
+
+        # If effective_timeout < 0, fallback to global timeout + buffer to avoid infinite block
+        sem_timeout = effective_timeout if effective_timeout >= 0 else (feed_config.PROVIDER_TIMEOUT + 5.0)
+
+        acquired = semaphore.acquire(timeout=sem_timeout)
+        if not acquired:
+            raise TimeoutError(f"Semaphore acquisition timed out after {sem_timeout}s")
+
+        # Subtract wait time from timeout
+        try:
+            elapsed = perf_counter() - start_wait
+            remaining_timeout = timeout_arg - elapsed if timeout_arg is not None else None
+
+            if remaining_timeout is not None and remaining_timeout <= 0:
+                raise TimeoutError(
+                    f"Semaphore acquisition took {elapsed:.2f}s, no realistic time left for fetch (threshold: <= 0s)"
+                )
+
+            return _call_fetch_with_timeout(fetch, remaining_timeout, supports_timeout)
+        finally:
+            semaphore.release()
+
+    return _run_fetch
+
+
+def _submit_network_fetches(
+    executor: ThreadPoolExecutor,
+    network_fetchers: list[Any],
+    provider_names: dict[Any, str],
+    provider_envs: dict[Any, str | None],
+    report: RunReport,
+) -> tuple[
+    dict[Any, tuple[Any, str, int]],
+    dict[Any, float | None],
+    set[Any],
+]:
+    """Submit each network fetcher to the executor with its timeout/semaphore
+    config, returning (futures-meta, deadlines, pending-set)."""
+    futures: dict[Any, tuple[Any, str, int]] = {}
+    deadlines: dict[Any, float | None] = {}
+    pending: set[Any] = set()
+    semaphores: dict[str, BoundedSemaphore] = {}
+
+    for fetch in network_fetchers:
+        provider_name = provider_names.get(fetch, _provider_display_name(fetch))
+        env_name = provider_envs.get(fetch)
+        timeout_override = _provider_timeout_override(fetch, env_name, provider_name)
+        effective_timeout = (
+            timeout_override if timeout_override is not None else feed_config.PROVIDER_TIMEOUT
+        )
+        concurrency_key = _provider_concurrency_key(fetch, provider_name)
+        worker_limit = _provider_worker_limit(
+            fetch, env_name, provider_name, concurrency_key
+        )
+        semaphore: BoundedSemaphore | None = None
+        if worker_limit is not None and worker_limit > 0:
+            semaphore = semaphores.get(concurrency_key)
+            if semaphore is None:
+                semaphore = BoundedSemaphore(worker_limit)
+                semaphores[concurrency_key] = semaphore
+        if timeout_override is not None:
+            log.debug(
+                "Provider %s nutzt Timeout-Override von %ss",
+                provider_name,
+                timeout_override,
+            )
+        if worker_limit is not None and worker_limit > 0:
+            log.debug(
+                "Provider %s begrenzt Worker auf %s (Schlüssel %s)",
+                provider_name,
+                worker_limit,
+                concurrency_key,
+            )
+        supports_timeout = _fetch_supports_timeout(fetch)
+
+        if effective_timeout == 0:
+            report.provider_started(provider_name)
+            name = getattr(fetch, "__name__", str(fetch))
+            log.error("%s fetch Timeout nach 0s", name)
+            report.provider_error(provider_name, "Timeout nach 0s")
+            continue
+
+        run_fetch = _build_run_fetch(
+            fetch, effective_timeout, supports_timeout, semaphore, provider_name
+        )
+
+        report.provider_started(provider_name)
+        future = executor.submit(run_fetch)
+        futures[future] = (fetch, provider_name, effective_timeout)
+        pending.add(future)
+        start_time = perf_counter()
+        if effective_timeout > 0:
+            deadlines[future] = start_time + effective_timeout
+        else:
+            deadlines[future] = None
+
+    return futures, deadlines, pending
+
+
+def _evict_expired_futures(
+    pending: set[Any],
+    futures: dict[Any, tuple[Any, str, int]],
+    deadlines: dict[Any, float | None],
+    cancelled_futures: set[Any],
+    report: RunReport,
+    now: float,
+) -> None:
+    """Per Apex Phase 1: poll deadlines on every loop turn so the busy-spin
+    against real-time `perf_counter()` is bounded by the smallest remaining
+    timeout. Mutates ``pending`` and ``cancelled_futures`` in place.
+    """
+    expired = [
+        future for future in list(pending)
+        if (deadline := deadlines.get(future)) is not None and now >= deadline
+    ]
+    for future in expired:
+        pending.discard(future)
+        fetch, provider_name, timeout_value = futures[future]
+        name = getattr(fetch, "__name__", str(fetch))
+        log.error("%s fetch Timeout nach %ss", name, timeout_value)
+        report.provider_error(
+            provider_name,
+            f"Timeout nach {timeout_value}s",
+        )
+        future.cancel()
+        cancelled_futures.add(future)
+
+
+def _drain_completed_futures(
+    futures: dict[Any, tuple[Any, str, int]],
+    deadlines: dict[Any, float | None],
+    pending: set[Any],
+    report: RunReport,
+    merge_result: Any,
+) -> None:
+    """Apex-Phase-1 deadline-eviction loop: alternate eviction sweep + bounded
+    `wait()` until ``pending`` drains. Result handling distinguishes Timeout,
+    CancelledError, and generic Exception so the report has accurate per-
+    provider error categories.
+    """
+    cancelled_futures: set[Any] = set()
+    while pending:
+        now = perf_counter()
+        _evict_expired_futures(pending, futures, deadlines, cancelled_futures, report, now)
+
+        if not pending:
+            break
+
+        wait_timeout: float | None = None
+        remaining = [
+            deadline - now
+            for fut in pending
+            if (deadline := deadlines.get(fut)) is not None
+        ]
+        if remaining:
+            wait_timeout = max(min(remaining), 0.1)
+
+        done, _ = wait(pending, timeout=wait_timeout, return_when=FIRST_COMPLETED)
+        if not done:
+            continue
+
+        for future in done:
+            pending.discard(future)
+            if future in cancelled_futures:
+                continue
+            fetch, provider_name, timeout_value = futures[future]
+            name = getattr(fetch, "__name__", str(fetch))
+            try:
+                result = future.result()
+            except (TimeoutError, requests.exceptions.Timeout) as exc:
+                log.error("%s fetch Timeout: %s", name, exc)
+                report.provider_error(provider_name, f"Timeout: {exc}")
+            except CancelledError:
+                report.provider_error(provider_name, "Fetch abgebrochen")
+            except Exception as exc:
+                log.exception("%s fetch fehlgeschlagen: %s", name, exc)
+                report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
+            else:
+                merge_result(fetch, result, provider_name)
+
+
+def _run_network_fetchers(
+    network_fetchers: list[Any],
+    provider_names: dict[Any, str],
+    provider_envs: dict[Any, str | None],
+    report: RunReport,
+    merge_result: Any,
+) -> None:
+    """Run all network fetchers concurrently in a ThreadPoolExecutor with
+    deadline-eviction-style timeout enforcement (Apex Phase 1). Pending
+    futures are cancelled on early exit to free worker threads immediately.
+    """
+    desired_workers = len(network_fetchers)
+    if feed_config.PROVIDER_MAX_WORKERS > 0:
+        if desired_workers > feed_config.PROVIDER_MAX_WORKERS:
+            log.debug(
+                "Begrenze Provider-Threads von %s auf %s",
+                desired_workers,
+                feed_config.PROVIDER_MAX_WORKERS,
+            )
+        desired_workers = min(desired_workers, feed_config.PROVIDER_MAX_WORKERS)
+
+    pending: set[Any] = set()
+    with ThreadPoolExecutor(max_workers=max(1, desired_workers)) as executor:
+        try:
+            futures, deadlines, pending = _submit_network_fetches(
+                executor, network_fetchers, provider_names, provider_envs, report
+            )
+            _drain_completed_futures(futures, deadlines, pending, report, merge_result)
+        finally:
+            # Cancel remaining futures if we exit early or with exceptions.
+            # executor.shutdown(wait=False, cancel_futures=True) is automatically called
+            # by the context manager's __exit__, but we explicitly cancel pending futures
+            # to free resources immediately.
+            for future in pending:
+                future.cancel()
+
+
 def _collect_items(report: RunReport | None = None) -> list[FeedItem]:
     init_providers()
     if report is None:
@@ -788,37 +1100,9 @@ def _collect_items(report: RunReport | None = None) -> list[FeedItem]:
 
     unregister_cache_alert = register_cache_alert_hook(_cache_alert_handler)
     try:
-        cache_fetchers: list[Any] = []
-        network_fetchers: list[Any] = []
-        provider_names: dict[Any, str] = {}
-        provider_envs: dict[Any, str | None] = {}
+        buckets = _categorize_providers(report)
 
-        provider_entries = list(PROVIDERS)
-        providers_overridden = list(PROVIDERS) != list(DEFAULT_PROVIDERS)
-        if provider_entries:
-            if not providers_overridden:
-                known_envs = {env for env, _ in provider_entries}
-                for spec in iter_providers():
-                    if spec.env_var not in known_envs:
-                        provider_entries.append((spec.env_var, spec.loader))
-        else:
-            provider_entries = [(spec.env_var, spec.loader) for spec in iter_providers()]
-
-        for env, fetch in provider_entries:
-            provider_name = _provider_display_name(fetch, env)
-            enabled = bool(feed_config.get_bool_env(env, True))
-            fetch_type = "cache" if getattr(fetch, "_provider_cache_name", None) else "network"
-            report.register_provider(provider_name, enabled, fetch_type)
-            if not enabled:
-                continue
-            provider_names[fetch] = provider_name
-            provider_envs[fetch] = env
-            if getattr(fetch, "_provider_cache_name", None):
-                cache_fetchers.append(fetch)
-            else:
-                network_fetchers.append(fetch)
-
-        if not cache_fetchers and not network_fetchers:
+        if not buckets.cache_fetchers and not buckets.network_fetchers:
             return []
 
         def _merge_result(fetch: Any, result: Any, provider_name: str) -> None:
@@ -855,186 +1139,18 @@ def _collect_items(report: RunReport | None = None) -> list[FeedItem]:
             else:
                 report.provider_success(provider_name, items=count)
 
-        for fetch in cache_fetchers:
-            name = getattr(fetch, "__name__", str(fetch))
-            provider_name = provider_names.get(fetch, _provider_display_name(fetch))
-            report.provider_started(provider_name)
-            result: list[FeedItem] | None = None
-            try:
-                result = fetch()
-            except Exception as exc:
-                log.exception("%s fetch fehlgeschlagen: %s", name, exc)
-                report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
-                continue
-            if result is not None:
-                _merge_result(fetch, result, provider_name)
+        _run_cache_fetchers(
+            buckets.cache_fetchers, buckets.provider_names, items, report, _merge_result
+        )
 
-        if not network_fetchers:
-            return items
-
-        desired_workers = len(network_fetchers)
-        if feed_config.PROVIDER_MAX_WORKERS > 0:
-            if desired_workers > feed_config.PROVIDER_MAX_WORKERS:
-                log.debug(
-                    "Begrenze Provider-Threads von %s auf %s",
-                    desired_workers,
-                    feed_config.PROVIDER_MAX_WORKERS,
-                )
-            desired_workers = min(desired_workers, feed_config.PROVIDER_MAX_WORKERS)
-        with ThreadPoolExecutor(max_workers=max(1, desired_workers)) as executor:
-            try:
-                futures: dict[Any, tuple[Any, str, int]] = {}
-                deadlines: dict[Any, float | None] = {}
-                pending: set[Any] = set()
-                cancelled_futures: set[Any] = set()
-                semaphores: dict[str, BoundedSemaphore] = {}
-
-                for fetch in network_fetchers:
-                    provider_name = provider_names.get(fetch, _provider_display_name(fetch))
-                    env_name = provider_envs.get(fetch)
-                    timeout_override = _provider_timeout_override(fetch, env_name, provider_name)
-                    effective_timeout = (
-                        timeout_override if timeout_override is not None else feed_config.PROVIDER_TIMEOUT
-                    )
-                    concurrency_key = _provider_concurrency_key(fetch, provider_name)
-                    worker_limit = _provider_worker_limit(
-                        fetch, env_name, provider_name, concurrency_key
-                    )
-                    semaphore: BoundedSemaphore | None = None
-                    if worker_limit is not None and worker_limit > 0:
-                        semaphore = semaphores.get(concurrency_key)
-                        if semaphore is None:
-                            semaphore = BoundedSemaphore(worker_limit)
-                            semaphores[concurrency_key] = semaphore
-                    if timeout_override is not None:
-                        log.debug(
-                            "Provider %s nutzt Timeout-Override von %ss",
-                            provider_name,
-                            timeout_override,
-                        )
-                    if worker_limit is not None and worker_limit > 0:
-                        log.debug(
-                            "Provider %s begrenzt Worker auf %s (Schlüssel %s)",
-                            provider_name,
-                            worker_limit,
-                            concurrency_key,
-                        )
-                    supports_timeout = _fetch_supports_timeout(fetch)
-
-                    if effective_timeout == 0:
-                        report.provider_started(provider_name)
-                        name = getattr(fetch, "__name__", str(fetch))
-                        log.error("%s fetch Timeout nach 0s", name)
-                        report.provider_error(provider_name, "Timeout nach 0s")
-                        continue
-
-                    def _run_fetch(
-                        fetch: Any = fetch,
-                        timeout_value: int | float = effective_timeout,
-                        supports: bool = supports_timeout,
-                        semaphore: BoundedSemaphore | None = semaphore,
-                        provider_name: str = provider_name,
-                    ) -> Any:
-                        timeout_arg = timeout_value if timeout_value >= 0 else None
-
-                        if semaphore is None:
-                            return _call_fetch_with_timeout(fetch, timeout_arg, supports)
-
-                        # Prevent thread starvation by enforcing timeout on semaphore acquisition
-                        # This ensures that if the provider is deadlocked/overloaded, we don't block
-                        # the executor worker forever.
-                        start_wait = perf_counter()
-
-                        # If timeout_value < 0, fallback to global timeout + buffer to avoid infinite block
-                        sem_timeout = timeout_value if timeout_value >= 0 else (feed_config.PROVIDER_TIMEOUT + 5.0)
-
-                        acquired = semaphore.acquire(timeout=sem_timeout)
-                        if not acquired:
-                            raise TimeoutError(f"Semaphore acquisition timed out after {sem_timeout}s")
-
-                        # Task 3: Subtract wait time from timeout
-                        try:
-                            elapsed = perf_counter() - start_wait
-                            remaining_timeout = timeout_arg - elapsed if timeout_arg is not None else None
-
-                            if remaining_timeout is not None and remaining_timeout <= 0:
-                                raise TimeoutError(
-                                    f"Semaphore acquisition took {elapsed:.2f}s, no realistic time left for fetch (threshold: <= 0s)"
-                                )
-
-                            return _call_fetch_with_timeout(fetch, remaining_timeout, supports)
-                        finally:
-                            semaphore.release()
-
-                    report.provider_started(provider_name)
-                    future = executor.submit(_run_fetch)
-                    futures[future] = (fetch, provider_name, effective_timeout)
-                    pending.add(future)
-                    start_time = perf_counter()
-                    if effective_timeout > 0:
-                        deadlines[future] = start_time + effective_timeout
-                    else:
-                        deadlines[future] = None
-
-                while pending:
-                    now = perf_counter()
-                    expired = []
-                    for future in list(pending):
-                        deadline = deadlines.get(future)
-                        if deadline is not None and now >= deadline:
-                            expired.append(future)
-                    for future in expired:
-                        pending.discard(future)
-                        fetch, provider_name, timeout_value = futures[future]
-                        name = getattr(fetch, "__name__", str(fetch))
-                        log.error("%s fetch Timeout nach %ss", name, timeout_value)
-                        report.provider_error(
-                            provider_name,
-                            f"Timeout nach {timeout_value}s",
-                        )
-                        future.cancel()
-                        cancelled_futures.add(future)
-
-                    if not pending:
-                        break
-
-                    wait_timeout: float | None = None
-                    remaining = []
-                    for fut in pending:
-                        deadline = deadlines.get(fut)
-                        if deadline is not None:
-                            remaining.append(deadline - now)
-                    if remaining:
-                        wait_timeout = max(min(remaining), 0.1)
-
-                    done, _ = wait(pending, timeout=wait_timeout, return_when=FIRST_COMPLETED)
-                    if not done:
-                        continue
-
-                    for future in done:
-                        pending.discard(future)
-                        if future in cancelled_futures:
-                            continue
-                        fetch, provider_name, timeout_value = futures[future]
-                        name = getattr(fetch, "__name__", str(fetch))
-                        try:
-                            result = future.result()
-                        except (TimeoutError, requests.exceptions.Timeout) as exc:
-                            log.error("%s fetch Timeout: %s", name, exc)
-                            report.provider_error(provider_name, f"Timeout: {exc}")
-                        except CancelledError:
-                            report.provider_error(provider_name, "Fetch abgebrochen")
-                        except Exception as exc:
-                            log.exception("%s fetch fehlgeschlagen: %s", name, exc)
-                            report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
-                        else:
-                            _merge_result(fetch, result, provider_name)
-            finally:
-                # Cancel remaining futures if we exit early or with exceptions.
-                # executor.shutdown(wait=False, cancel_futures=True) is automatically called by the context manager's __exit__,
-                # but we explicitly cancel pending futures to free resources immediately.
-                for future in pending:
-                    future.cancel()
+        if buckets.network_fetchers:
+            _run_network_fetchers(
+                buckets.network_fetchers,
+                buckets.provider_names,
+                buckets.provider_envs,
+                report,
+                _merge_result,
+            )
 
         return items
     finally:
