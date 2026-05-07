@@ -268,6 +268,29 @@ HTTP_TIMEOUT = min(
     _load_int_env("VOR_HTTP_TIMEOUT", DEFAULT_HTTP_TIMEOUT),
     DEFAULT_HTTP_TIMEOUT,
 )
+# Security: ``MAX_VOR_FETCH_TIMEOUT`` is the parameter-boundary Slowloris-defence
+# ceiling for the public ``fetch_events`` / ``fetch_vor_disruptions`` APIs. The
+# env-source clamp on ``HTTP_TIMEOUT`` above bounds operator-controlled config,
+# but the public ``timeout`` parameter bypassed it via
+# ``timeout or HTTP_TIMEOUT`` at ``_fetch_departure_board_for_station`` — a
+# caller passing ``timeout=99999`` (intentional misconfig, leaked CI env,
+# compromised secret store, or a hypothetical future ``VOR_FETCH_TIMEOUT`` env
+# var wired into a maintenance script) would let a sluggish or attacker-
+# controlled VAO peer hold a worker for ~28 hours per fetch, stalling the cron
+# pipeline. Capping at the public API entry point (defense-in-depth) means
+# every caller — current and future — inherits the ceiling. Same TIGHTEN-only
+# contract as ``MAX_OEBB_FETCH_TIMEOUT`` (``src/providers/oebb.py``) and
+# ``MAX_WL_FETCH_TIMEOUT`` (``src/providers/wl_fetch.py``) — the parameter-
+# boundary defense-in-depth pattern documented in the 2026-05-07 Slowloris-Cap
+# Drift Round 4 journal entry, applied to the VOR sibling that round
+# explicitly named as still-open ("VOR has env-source cap via
+# ``min(VOR_HTTP_TIMEOUT, DEFAULT_HTTP_TIMEOUT)`` but the public
+# ``fetch_events(timeout=99999)`` bypasses it via ``timeout or HTTP_TIMEOUT``").
+# Cap value matches the VOR-specific 15s ceiling (``DEFAULT_HTTP_TIMEOUT``)
+# rather than ``feed_config.MAX_PROVIDER_TIMEOUT`` (25s) because VOR has chosen
+# a tighter local Slowloris contract — orchestrator overrides at 25s are
+# already documented as needing to be tightened to VOR's 15s ceiling.
+MAX_VOR_FETCH_TIMEOUT = DEFAULT_HTTP_TIMEOUT
 # Security: ``MAX_STATIONS_PER_RUN`` controls the per-run fan-out of station
 # fetches. Each selected station consumes one VOR API quota slot, so a
 # benign-looking env override such as ``VOR_MAX_STATIONS_PER_RUN=99999``
@@ -1640,6 +1663,16 @@ def fetch_vor_disruptions(station_ids: list[str] | None = None, timeout: int | N
     Fetch disruptions for the given stations using the departureBoard endpoint.
     Iterates over the configured or provided stations and extracts warnings/infos.
     """
+    # Security: clamp ``timeout`` at MAX_VOR_FETCH_TIMEOUT to defeat the
+    # Slowloris vector documented at the constant declaration above.
+    # ``min(timeout or MAX_VOR_FETCH_TIMEOUT, MAX_VOR_FETCH_TIMEOUT)`` preserves
+    # the existing ``timeout or HTTP_TIMEOUT`` fallback semantics for None/0 and
+    # additionally clamps any caller-provided value above the ceiling.
+    # ``min(...)`` instead of ``if ...:`` to avoid bumping the McCabe complexity
+    # of this baselined function (``.c901-baseline.txt``: ``fetch_vor_disruptions
+    # 17``). Covers the public ``fetch_events`` entry point too, since
+    # ``fetch_events`` delegates to ``fetch_vor_disruptions``.
+    timeout = min(timeout or MAX_VOR_FETCH_TIMEOUT, MAX_VOR_FETCH_TIMEOUT)
     token = refresh_access_credentials()
     if not token:
         log.warning("Kein VOR Access Token konfiguriert – überspringe Abruf.")
