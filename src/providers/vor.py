@@ -413,7 +413,13 @@ def _load_station_name_map() -> dict[str, str]:
         data = json.loads(MAPPING_FILE.read_text(encoding="utf-8"))
     except FileNotFoundError:
         return {}
-    except json.JSONDecodeError as exc:  # pragma: no cover - defensive
+    except (json.JSONDecodeError, RecursionError) as exc:  # pragma: no cover - defensive
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # on-disk mapping file (corrupted previous run, planted by a
+        # compromised CI runner). The call site at module scope
+        # (``STATION_NAME_MAP = _load_station_name_map()``) runs at import
+        # time, so an uncaught ``RecursionError`` would crash the WHOLE
+        # VOR provider import and the feed-build pipeline that imports it.
         _log_warning("Konnte Stations-Mapping nicht laden (%s)", exc)
         return {}
     # Zero Trust: a successfully-decoded payload from disk may still be the wrong
@@ -1379,7 +1385,12 @@ def load_request_count(bypass_cache: bool = False) -> tuple[str | None, int]:
 
     try:
         data = json.loads(REQUEST_COUNT_FILE.read_text(encoding="utf-8"))
-    except (FileNotFoundError, OSError, json.JSONDecodeError):
+    except (FileNotFoundError, OSError, json.JSONDecodeError, RecursionError):
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # on-disk quota counter file (planted by a compromised CI runner or
+        # left over from a partial flush + power loss). Without this catch
+        # the error propagates out of every quota-check call site, crashing
+        # the VOR fetch pipeline mid-run.
         return (None, 0)
 
     if not isinstance(data, dict):
@@ -1454,7 +1465,15 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
                                         disk_count = int(data["requests"])
                                     except (ValueError, TypeError):
                                         pass
-                        except (FileNotFoundError, OSError, json.JSONDecodeError):
+                        except (FileNotFoundError, OSError, json.JSONDecodeError, RecursionError):
+                            # Security: ``RecursionError`` covers JSON
+                            # depth-bomb attacks in the on-disk counter
+                            # (planted by a compromised CI runner or left
+                            # over from a partial flush). Treating it as
+                            # unreadable is the fail-safe choice — the new
+                            # in-memory delta gets written over the
+                            # poisoned file, restoring the canonical
+                            # schema for the next reader.
                             pass
 
                         if disk_date != date_iso:

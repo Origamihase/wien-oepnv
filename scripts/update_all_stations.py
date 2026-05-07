@@ -97,7 +97,12 @@ def run_script(python: str, script_path: Path, verbose: bool, output_flag: str, 
 def _load_stations(path: Path) -> list[Mapping[str, Any]]:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
+    except (OSError, json.JSONDecodeError, RecursionError):
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # post-merge stations file. The orchestrator uses this loader for
+        # diff detection — without the catch a depth-bomb would propagate
+        # past ``main()`` and crash the run after the merged file is
+        # already written, masking the real cause.
         return []
     if isinstance(data, dict):
         entries = data.get("stations", [])

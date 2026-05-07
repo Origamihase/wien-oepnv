@@ -149,7 +149,17 @@ def _resolve_stations_out_path(candidate: str | None) -> Path:
 def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
     if not raw:
         return None
-    data = json.loads(raw)
+    # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+    # ``BOUNDINGBOX_VIENNA`` env override (intentional misconfig, leaked CI
+    # env, compromised secret store). ``json.loads`` raises ``RecursionError``
+    # (NOT a subclass of ``json.JSONDecodeError`` and NOT caught by the
+    # outer ``except Exception`` in ``_build_runtime_config``'s caller as
+    # a clean "Configuration error"). Mirrors the canonical contract from
+    # the sibling ``update_station_directory.py:_parse_bounding_box``.
+    try:
+        data = json.loads(raw)
+    except (json.JSONDecodeError, RecursionError) as exc:
+        raise ValueError("BOUNDINGBOX_VIENNA must be valid JSON") from exc
     try:
         return BoundingBox(
             min_lat=float(data["min_lat"]),

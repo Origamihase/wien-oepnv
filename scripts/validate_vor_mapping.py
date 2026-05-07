@@ -14,7 +14,10 @@ def main() -> int:
 
     try:
         data = json.loads(mapping_path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as e:
+    except (json.JSONDecodeError, RecursionError) as e:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # mapping file. Closes the canonical "every json.loads site catches
+        # RecursionError" contract repo-wide.
         print(f"JSON decode error: {e}", file=sys.stderr)
         return 1
 

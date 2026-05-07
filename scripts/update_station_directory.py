@@ -476,7 +476,10 @@ def _load_existing_station_entries(
             payload = json.load(handle)
     except FileNotFoundError:
         return {}, []
-    except json.JSONDecodeError as exc:  # pragma: no cover - defensive
+    except (json.JSONDecodeError, RecursionError) as exc:  # pragma: no cover - defensive
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # existing-state file. Same cron-pipeline blast radius as the other
+        # loaders in this script.
         logger.warning("Could not parse existing station directory %s: %s", path, exc)
         return {}, []
 
@@ -922,7 +925,10 @@ def _load_vor_name_to_id_map(path: Path | None) -> dict[str, str]:
         return {}
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+    except (OSError, json.JSONDecodeError, RecursionError) as exc:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # VOR mapping file. Same cron-pipeline blast radius as the other
+        # loaders in this script.
         logger.warning("Could not read VOR mapping %s: %s", path, exc)
         return {}
     if not isinstance(payload, list):
@@ -1289,7 +1295,10 @@ def load_pendler_station_ids(path: Path) -> set[str]:
     except FileNotFoundError:
         logger.warning("Pendler station list not found: %s", path)
         return set()
-    except json.JSONDecodeError as exc:
+    except (json.JSONDecodeError, RecursionError) as exc:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # pendler station list. Surfacing as ``ValueError`` keeps the
+        # canonical exit-1 contract documented for malformed JSON.
         raise ValueError(f"Invalid JSON in pendler station list: {path}") from exc
 
     if not isinstance(data, list):
@@ -1337,7 +1346,10 @@ def load_pendler_name_candidates(path: Path) -> set[str]:
             path,
         )
         return set()
-    except json.JSONDecodeError as exc:
+    except (json.JSONDecodeError, RecursionError) as exc:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # pendler-candidates file. Same cron-pipeline blast radius as the
+        # other loaders in this script.
         logger.warning("Invalid JSON in pendler candidates file %s: %s", path, exc)
         return set()
 

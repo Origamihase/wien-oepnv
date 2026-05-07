@@ -303,7 +303,11 @@ def _load_vor_mapping(path: Path) -> dict[int, str]:
         return {}
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as exc:
+    except (json.JSONDecodeError, RecursionError) as exc:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # on-disk mapping file. The script runs in ``update_all_stations.py``
+        # via ``subprocess.run(check=True)``, so any unhandled exception
+        # raises ``CalledProcessError`` and aborts the whole cron pipeline.
         log.warning("Could not parse %s: %s", path, exc)
         return {}
     # Zero-trust: a successfully-decoded payload from disk may still be the wrong shape
@@ -376,7 +380,10 @@ def _load_pendler_alternative_names(path: Path) -> dict[str, list[str]]:
         return {}
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as exc:
+    except (json.JSONDecodeError, RecursionError) as exc:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # pendler-candidates file. Same cron-pipeline blast radius as
+        # ``_load_vor_mapping`` above.
         log.warning("Invalid JSON in pendler candidates %s: %s", path, exc)
         return {}
     if not isinstance(data, Mapping):
@@ -715,7 +722,11 @@ def main() -> int:
 
     try:
         raw_data = json.loads(args.stations.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as exc:
+    except (json.JSONDecodeError, RecursionError) as exc:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # stations file (planted by a compromised CI runner or a corrupted
+        # previous run). Same cron-pipeline blast radius as the loaders
+        # above; the canonical exit-1 path keeps downstream scripts running.
         log.error("Could not parse %s: %s", args.stations, exc)
         return 1
 
