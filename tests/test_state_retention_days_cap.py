@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import pytest
 
+from src.config.defaults import DEFAULT_STATE_RETENTION_DAYS
 from src.feed import config as feed_config
 
 
@@ -28,7 +29,7 @@ def test_max_state_retention_days_is_generous_relative_to_default() -> None:
     # extend retention for long-running RSS subscribers without raising the
     # ceiling, but the absolute upper bound stays well within Python's
     # ``datetime`` range and bounds the on-disk state file size.
-    assert feed_config.MAX_STATE_RETENTION_DAYS >= feed_config.DEFAULT_STATE_RETENTION_DAYS
+    assert feed_config.MAX_STATE_RETENTION_DAYS >= DEFAULT_STATE_RETENTION_DAYS
     assert feed_config.MAX_STATE_RETENTION_DAYS == 3650
 
 
@@ -83,7 +84,7 @@ def test_state_retention_days_garbage_falls_back_to_default(
     # is itself well within the cap.
     monkeypatch.setenv("STATE_RETENTION_DAYS", "garbage")
     feed_config.refresh_from_env()
-    assert feed_config.STATE_RETENTION_DAYS == feed_config.DEFAULT_STATE_RETENTION_DAYS
+    assert feed_config.STATE_RETENTION_DAYS == DEFAULT_STATE_RETENTION_DAYS
 
 
 def test_state_retention_days_unset_uses_default(
@@ -91,4 +92,4 @@ def test_state_retention_days_unset_uses_default(
 ) -> None:
     monkeypatch.delenv("STATE_RETENTION_DAYS", raising=False)
     feed_config.refresh_from_env()
-    assert feed_config.STATE_RETENTION_DAYS == feed_config.DEFAULT_STATE_RETENTION_DAYS
+    assert feed_config.STATE_RETENTION_DAYS == DEFAULT_STATE_RETENTION_DAYS
