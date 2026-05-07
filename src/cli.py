@@ -198,6 +198,25 @@ def _configure_stations_commands(subparsers: argparse._SubParsersAction[argparse
     )
     validate_parser.set_defaults(func=_handle_stations_validate)
 
+    _configure_pendler_audit_command(stations_subparsers)
+
+
+def _configure_pendler_audit_command(
+    stations_subparsers: argparse._SubParsersAction[argparse.ArgumentParser],
+) -> None:
+    """Register the ``stations pendler-audit`` subcommand."""
+    audit_parser = stations_subparsers.add_parser(
+        "pendler-audit",
+        help="Cross-reference pendler_candidates.json against stations.json",
+    )
+    audit_parser.add_argument("--candidates", type=Path, default=None)
+    audit_parser.add_argument("--stations", type=Path, default=None)
+    audit_parser.add_argument("--output", type=Path, default=None)
+    audit_parser.add_argument("--max-stale-days", type=int, default=None)
+    audit_parser.add_argument("--reference-date", type=str, default=None)
+    audit_parser.add_argument("--fail-on-orphan", action="store_true")
+    audit_parser.set_defaults(func=_handle_stations_pendler_audit)
+
 
 def _configure_feed_commands(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
     feed_parser = subparsers.add_parser("feed", help="Feed generation helpers")
@@ -337,6 +356,24 @@ def _handle_stations_validate(args: argparse.Namespace) -> int:
     if args.fail_on_issues and report.has_issues:
         return 1
     return 0
+
+
+def _handle_stations_pendler_audit(args: argparse.Namespace) -> int:
+    """Forwards the pendler-audit invocation to ``scripts/audit_pendler_candidates.py``."""
+    extra: list[str] = []
+    if args.candidates is not None:
+        extra.extend(["--candidates", str(args.candidates)])
+    if args.stations is not None:
+        extra.extend(["--stations", str(args.stations)])
+    if args.output is not None:
+        extra.extend(["--output", str(args.output)])
+    if args.max_stale_days is not None:
+        extra.extend(["--max-stale-days", str(args.max_stale_days)])
+    if args.reference_date is not None:
+        extra.extend(["--reference-date", args.reference_date])
+    if args.fail_on_orphan:
+        extra.append("--fail-on-orphan")
+    return _run_script("audit_pendler_candidates.py", extra_args=extra)
 
 
 def _handle_feed_build(args: argparse.Namespace) -> int:
