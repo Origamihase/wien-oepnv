@@ -27,3 +27,21 @@ def test_load_tiles_from_file_limits_entries() -> None:
             tiling.load_tiles_from_file(data_path)
     finally:
         data_path.unlink(missing_ok=True)
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        "[1, 2, 3]",
+        "[null]",
+        '["just a string"]',
+        "[[48.2, 16.3]]",
+        "[true]",
+    ],
+)
+def test_load_tiles_from_env_rejects_non_object_entries(payload: str) -> None:
+    # Zero-Trust: env-supplied JSON must not crash with AttributeError when
+    # entries are scalars/lists/null. The loader must surface a clean
+    # ValueError instead so callers can handle the misconfiguration.
+    with pytest.raises(ValueError, match="Invalid tile specification"):
+        tiling.load_tiles_from_env(payload)

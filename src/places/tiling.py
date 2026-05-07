@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import cast
 from collections.abc import Iterable, Iterator, Mapping
 
 __all__ = ["Tile", "load_tiles_from_env", "load_tiles_from_file", "iter_tiles"]
@@ -40,9 +39,14 @@ def _coerce_coordinate(raw: Mapping[str, object], key: str) -> float:
     raise TypeError(f"Invalid {key!r} value in tile specification: {value!r}")
 
 
-def _parse_tiles(raw_tiles: Iterable[Mapping[str, object]]) -> list[Tile]:
+def _parse_tiles(raw_tiles: Iterable[object]) -> list[Tile]:
     tiles: list[Tile] = []
     for raw in raw_tiles:
+        # Zero-Trust: env- and file-supplied JSON may contain non-object
+        # entries (scalars, lists, null). Reject them with a clean ValueError
+        # before invoking ``raw.get`` would raise AttributeError.
+        if not isinstance(raw, Mapping):
+            raise ValueError(f"Invalid tile specification: {raw!r}")
         try:
             lat = _coerce_coordinate(raw, "lat")
             lng = _coerce_coordinate(raw, "lng")
@@ -62,7 +66,7 @@ def load_tiles_from_env(raw_value: str | None) -> list[Tile]:
     if not isinstance(data, list):
         raise ValueError("PLACES_TILES must encode a list of objects")
     _validate_tile_count(len(data))
-    return _parse_tiles(cast(Iterable[Mapping[str, object]], data))
+    return _parse_tiles(data)
 
 
 def load_tiles_from_file(path: Path) -> list[Tile]:
@@ -72,7 +76,7 @@ def load_tiles_from_file(path: Path) -> list[Tile]:
     if not isinstance(data, list):
         raise ValueError("Tile file must contain a list of tile objects")
     _validate_tile_count(len(data))
-    return _parse_tiles(cast(Iterable[Mapping[str, object]], data))
+    return _parse_tiles(data)
 
 
 def iter_tiles(tiles: Iterable[Tile]) -> Iterator[Tile]:
