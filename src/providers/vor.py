@@ -354,6 +354,23 @@ def _load_station_name_map() -> dict[str, str]:
     except json.JSONDecodeError as exc:  # pragma: no cover - defensive
         _log_warning("Konnte Stations-Mapping nicht laden (%s)", exc)
         return {}
+    # Zero Trust: a successfully-decoded payload from disk may still be the wrong
+    # shape (corrupted file, hand-edited mapping, or upstream contract change).
+    # Without this guard, ``for entry in data`` raises ``TypeError`` on non-iterable
+    # JSON values (null, int, bool) at *module import time* — the call site below
+    # (``STATION_NAME_MAP = _load_station_name_map()``) runs unconditionally on
+    # ``import src.providers.vor``, so any uncaught exception kills the whole VOR
+    # provider and the feed-build pipeline that imports it. The sibling
+    # ``_load_vor_mapping`` in ``scripts/enrich_station_aliases.py`` and
+    # ``_load_vor_name_to_id_map`` in ``scripts/update_station_directory.py``
+    # both apply the same shape guard for the same on-disk file.
+    if not isinstance(data, list):
+        _log_warning(
+            "Stations-Mapping in %s ist kein JSON-Array (got %s); ignoriere",
+            MAPPING_FILE,
+            type(data).__name__,
+        )
+        return {}
     mapping: dict[str, str] = {}
     for entry in data:
         if not isinstance(entry, dict):
