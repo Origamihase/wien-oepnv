@@ -68,22 +68,93 @@ class CircuitState(Enum):
 class CircuitBreaker:
     """Three-state circuit breaker with auto-recovery.
 
+    State machine (see ``docs/architecture.md`` §3 for the rendered
+    component diagram)::
+
+        CLOSED ── failure_threshold consecutive failures ──▶ OPEN
+           ▲                                                   │
+           │ probe-call success            recovery_timeout    │
+           │                                       elapses     │
+           │                                                   ▼
+           │                                              HALF_OPEN
+           │                                                   │
+           └──────── probe-call failure ──────────▶ OPEN ──────┘
+
+    The breaker is reentrant (``threading.RLock``) and lazy: the
+    ``OPEN → HALF_OPEN`` transition is evaluated on every read of the
+    :attr:`state` property, so the auto-recovery does not require a
+    background thread.
+
+    When to use this vs. ``urllib3`` retries
+    ----------------------------------------
+
+    The two primitives solve different problems and stack
+    complementarily:
+
+    - **urllib3 retries** (configured via :func:`session_with_retries`,
+      using ``JitterRetry`` with ±20% jitter) are *per-call* — they
+      handle transient errors within a single request attempt
+      (connection reset, 429, 503). They do not remember failures
+      across calls; a fully-down upstream gets retried on every call.
+
+    - **CircuitBreaker** is *per-process, per-upstream* — it remembers
+      a streak of failures across calls. After ``failure_threshold``
+      consecutive failures, every subsequent call short-circuits with
+      :class:`CircuitBreakerOpen` for ``recovery_timeout`` seconds.
+      This prevents self-DDoS against a known-down upstream.
+
+    The recommended adoption pattern for a new provider (and the only
+    pattern in use today by Google Places) is to *wrap* the
+    network-fetcher entry point with the breaker, leaving the
+    underlying ``session_with_retries`` retry policy unchanged::
+
+        _BREAKER = CircuitBreaker("yourapi", failure_threshold=5,
+                                   recovery_timeout=300.0)
+
+        def fetch_events(timeout: int = 25) -> list[FeedItem]:
+            try:
+                return _BREAKER.call(_actual_fetch, timeout=timeout)
+            except CircuitBreakerOpen:
+                log.warning("yourapi breaker open; returning empty list")
+                return []
+
     Args:
-        name: Human-readable identifier for log messages.
-        failure_threshold: Number of consecutive failures in CLOSED that
-            trip the breaker to OPEN. Default 5.
+        name: Human-readable identifier used in log messages
+            (``CircuitBreaker[name]: …``). Choose a name that uniquely
+            identifies the protected upstream so operators can grep
+            for it in build logs.
+        failure_threshold: Number of consecutive failures while
+            CLOSED that trip the breaker to OPEN. Defaults to 5,
+            which matches the existing ``places/client.py`` and
+            ``vor.py`` Emergency-Stop thresholds.
         recovery_timeout: Seconds the breaker stays OPEN before
-            transitioning to HALF_OPEN. Default 60.
-        clock: Override the time source (used in tests). Must return a
-            monotonic float. Default ``time.monotonic``.
+            transitioning to HALF_OPEN. Defaults to 60. Tune higher
+            (e.g. 300) for upstreams that take a long time to
+            recover from outages, lower for upstreams where a
+            transient blip is the more common failure mode.
+        clock: Override the monotonic time source. Used by tests to
+            drive the recovery-timeout transition deterministically.
+            Defaults to :func:`time.monotonic`.
+
+    Raises:
+        ValueError: If ``failure_threshold`` is non-positive or
+            ``recovery_timeout`` is negative.
 
     Example:
-        >>> breaker = CircuitBreaker("vor", failure_threshold=5, recovery_timeout=300)
+        >>> breaker = CircuitBreaker("vor", failure_threshold=5,
+        ...                          recovery_timeout=300.0)
         >>> try:
         ...     result = breaker.call(lambda: requests.get(api_url))
         ... except CircuitBreakerOpen:
         ...     log.warning("VOR breaker open; skipping fetch")
         ...     result = None
+
+    See Also:
+        - ``docs/architecture.md`` §3 (resilience-layer stack) and §4
+          (provider plugin contract) for visual context.
+        - ``.jules/saboteur.md`` for the design-rationale entry that
+          motivated this primitive over the three pre-existing
+          ad-hoc resilience implementations.
     """
 
     def __init__(

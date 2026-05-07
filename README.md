@@ -28,6 +28,11 @@ komplette Referenzdokumentation für die VOR/VAO-ReST-API enthalten.
 
 ## Systemüberblick
 
+> **🪶 Architektur-Karte für neue Mitwirkende:** Eine visuelle
+> Erklärung des Fetch-Pipelines, der `request_safe`-Sicherheitskette
+> und der Resilience-Schichten findet sich in
+> [`docs/architecture.md`](docs/architecture.md) (mit Mermaid-Diagrammen).
+
 Der Feed-Build folgt einem klaren Ablauf:
 
 1. **Provider-Caches** – Je Provider existiert ein Update-Kommando (`python -m src.cli cache update <provider>`) sowie eine GitHub Action, die den
