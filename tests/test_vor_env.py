@@ -112,6 +112,30 @@ def test_max_requests_per_day_capped_at_contract_limit(
     assert vor.MAX_REQUESTS_PER_DAY == vor.DEFAULT_MAX_REQUESTS_PER_DAY
 
 
+def test_quota_flush_batch_size_capped_at_daily_quota(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # Security: VOR_QUOTA_FLUSH_BATCH_SIZE controls the in-memory loss
+    # window for the request-count quota. The atexit flush does NOT run on
+    # SIGKILL / OOM kill / kernel panic, so an env override that raises the
+    # batch size above MAX_REQUESTS_PER_DAY would let a single run accumulate
+    # the entire daily quota in memory — and a single abnormal kill then
+    # loses the count, letting the next run breach the 100/day VAO contract
+    # cap. The env var may still *tighten* the batch size for tighter
+    # durability, but never raise the loss window above the daily quota.
+    monkeypatch.setenv("VOR_QUOTA_FLUSH_BATCH_SIZE", "99999")
+    importlib.reload(vor)
+    assert vor.QUOTA_FLUSH_BATCH_SIZE == vor.MAX_REQUESTS_PER_DAY == 100
+
+    monkeypatch.setenv("VOR_QUOTA_FLUSH_BATCH_SIZE", "5")
+    importlib.reload(vor)
+    assert vor.QUOTA_FLUSH_BATCH_SIZE == 5
+
+    monkeypatch.delenv("VOR_QUOTA_FLUSH_BATCH_SIZE", raising=False)
+    importlib.reload(vor)
+    assert vor.QUOTA_FLUSH_BATCH_SIZE == vor.DEFAULT_QUOTA_FLUSH_BATCH_SIZE
+
+
 def test_max_stations_per_run_capped_at_daily_budget(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:

@@ -313,9 +313,31 @@ MAX_REQUESTS_PER_DAY = min(
 # while bounding the loss window to 9 requests if the process is killed
 # mid-batch. Tests force a flush per call via WIEN_OEPNV_TEST_QUOTA_BATCH.
 DEFAULT_QUOTA_FLUSH_BATCH_SIZE = 10
+# Security: cap ``VOR_QUOTA_FLUSH_BATCH_SIZE`` at ``MAX_REQUESTS_PER_DAY``
+# (the contractual hard cap of 100/day for the VAO Start tier). The batch
+# size is the *loss window* if the process is killed abnormally — the
+# ``atexit``-registered flush at line 126 does NOT run on SIGKILL / OOM
+# kill / kernel panic / container reaper, so any unflushed delta is
+# silently dropped. A benign-looking env override such as
+# ``VOR_QUOTA_FLUSH_BATCH_SIZE=99999`` (intentional misconfig, leaked CI
+# env, or compromised secret store) lets a single run accumulate the
+# entire daily quota in memory; one abnormal kill then loses the whole
+# count and the next run reads a stale (or zero) on-disk total, allowing
+# it to make another 100 requests before the quota gate kicks in — a
+# direct breach of the 100/day VAO contract that mirrors the same
+# threat model as the previously-fixed ``VOR_MAX_REQUESTS_PER_DAY`` and
+# ``VOR_MAX_STATIONS_PER_RUN`` caps. Buffering more than the daily cap
+# in memory is by definition wasteful (the per-call fail-fast at
+# ``save_request_count`` already blocks at ``MAX_REQUESTS_PER_DAY``), so
+# capping at ``MAX_REQUESTS_PER_DAY`` keeps the env useful for tuning
+# (operators can lower it for tighter durability) without ever raising
+# the loss window above the contract limit.
 QUOTA_FLUSH_BATCH_SIZE = max(
     1,
-    _load_int_env("VOR_QUOTA_FLUSH_BATCH_SIZE", DEFAULT_QUOTA_FLUSH_BATCH_SIZE),
+    min(
+        _load_int_env("VOR_QUOTA_FLUSH_BATCH_SIZE", DEFAULT_QUOTA_FLUSH_BATCH_SIZE),
+        MAX_REQUESTS_PER_DAY,
+    ),
 )
 
 ALLOW_BUS = _get_env("VOR_ALLOW_BUS").lower() in {"1", "true", "yes"}
