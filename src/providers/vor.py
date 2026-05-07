@@ -99,9 +99,9 @@ VOR_RETRY_OPTIONS: dict[str, Any] = {
     "raise_on_status": False,
 }
 
-VOR_ACCESS_ID = ""
-_VOR_ACCESS_TOKEN_RAW = ""
-_VOR_AUTHORIZATION_HEADER = ""
+VOR_ACCESS_ID = ""  # nosec B105
+_VOR_ACCESS_TOKEN_RAW = ""  # nosec B105
+_VOR_AUTHORIZATION_HEADER = ""  # nosec B105
 
 # Global lock for thread-safe quota management within the process
 _QUOTA_LOCK = threading.RLock()
