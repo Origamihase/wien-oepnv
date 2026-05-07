@@ -29,6 +29,23 @@ def main() -> int:
 
     errors = 0
     for i, entry in enumerate(data):
+        # Zero Trust: a JSON-decoded list does not guarantee object elements.
+        # A tampered or hand-edited mapping could contain scalars / nulls /
+        # nested lists that would crash the validator with AttributeError on
+        # ``.get()`` and bypass the documented "Found N errors" exit path.
+        # Mirror the per-entry guard already applied to every other reader of
+        # ``vor-haltestellen.mapping.json`` (``src/providers/vor.py``,
+        # ``scripts/enrich_station_aliases.py``,
+        # ``scripts/update_station_directory.py``,
+        # ``scripts/update_wl_stations.py``).
+        if not isinstance(entry, dict):
+            print(
+                f"Entry {i} is not a JSON object (got {type(entry).__name__})",
+                file=sys.stderr,
+            )
+            errors += 1
+            continue
+
         vor_id = entry.get("vor_id")
         name = entry.get("station_name") or "Unknown"
 
