@@ -68,7 +68,16 @@ def load_stations(path: Path) -> list[StationEntry]:
     if not path.exists():
         return []
     content = path.read_text(encoding="utf-8")
-    raw_data = json.loads(content)
+    # Security: ``RecursionError`` covers JSON depth-bomb attacks in an
+    # operator-supplied stations file. ``json.loads`` raises
+    # ``RecursionError`` (NOT a subclass of ``json.JSONDecodeError``) on a
+    # deeply-nested but well-formed payload. Without this catch the error
+    # propagates out of ``load_stations`` and crashes the Google Places
+    # merge step in ``update_station_directory.py``.
+    try:
+        raw_data = json.loads(content)
+    except (json.JSONDecodeError, RecursionError) as exc:
+        raise ValueError("stations file is not valid JSON") from exc
 
     if isinstance(raw_data, list):
         data = raw_data

@@ -633,9 +633,17 @@ def _parse_int(raw: str | None, *, key: str, default: int) -> int:
 def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
     if not raw:
         return None
+    # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+    # ``BOUNDINGBOX_VIENNA`` env override (intentional misconfig, leaked
+    # CI env, compromised secret store). ``json.loads`` raises
+    # ``RecursionError`` (NOT a subclass of ``json.JSONDecodeError`` and
+    # NOT caught by the outer ``except ValueError`` in
+    # ``_enrich_with_google_places``) on a deeply-nested payload. Without
+    # this catch the unhandled error crashes the entire
+    # ``update_station_directory.py`` cron pipeline.
     try:
         data = json.loads(raw)
-    except json.JSONDecodeError as exc:
+    except (json.JSONDecodeError, RecursionError) as exc:
         raise ValueError("BOUNDINGBOX_VIENNA must be valid JSON") from exc
     try:
         return BoundingBox(
