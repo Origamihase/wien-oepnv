@@ -149,6 +149,23 @@ def file_lock(fileobj: Any, *, exclusive: bool, timeout: float = 15.0) -> Iterat
     Context manager for acquiring a cross-platform file lock.
     Relies on the OS kernel to automatically release locks if a process terminates or crashes.
     Note: This is highly reliable on local file systems but may lack strict guarantees on certain Network File Systems (NFS).
+
+    Security: ``exclusive=True`` callers (e.g. VOR's contractually-strict
+    quota counter at ``providers/vor.py:save_request_count``) need a real
+    cross-process write lock — silently proceeding when the lock cannot be
+    acquired would let two processes read-modify-write the same counter
+    file and double-spend quota. We therefore re-raise on acquisition
+    failure for exclusive locks; the caller's existing
+    ``except (OSError, TimeoutError)`` clauses are the right place to
+    fail-closed (return MAX+1, log critical, etc.).
+
+    For ``exclusive=False`` (shared/reader) locks, we keep the historical
+    "log and continue" behaviour: concurrent reads of an
+    ``atomic_write``-produced file see either the pre- or post-write inode
+    in its entirety (never a partial write), so a missing reader lock only
+    relaxes ordering, never integrity. The state file in
+    ``build_feed._load_state`` relies on this to keep startup robust under
+    contention with the periodic save.
     """
     # Step 1: Thread-level locking
     thread_lock = None
@@ -175,19 +192,31 @@ def file_lock(fileobj: Any, *, exclusive: bool, timeout: float = 15.0) -> Iterat
     # Step 2: OS-level locking
     locked = False
     try:
-        _acquire_file_lock(fileobj, exclusive, timeout)
-        locked = True
-    except Exception as exc:  # pragma: no cover - lock failures are rare
-        log.debug("Dateisperre fehlgeschlagen (%s) – fahre ohne Lock fort.", exc)
-    try:
-        yield
+        try:
+            _acquire_file_lock(fileobj, exclusive, timeout)
+            locked = True
+        except Exception as exc:
+            if exclusive:
+                # Re-raise — see docstring. The exclusive-lock contract is
+                # binary (held vs. not), so silently degrading would
+                # invalidate every cross-process invariant the caller is
+                # protecting.
+                log.warning(
+                    "Exclusive file-lock acquisition failed on %s; aborting critical section: %s",
+                    getattr(fileobj, "name", "unknown"),
+                    exc,
+                )
+                raise
+            log.debug("Dateisperre fehlgeschlagen (%s) – fahre ohne Lock fort.", exc)
+        try:
+            yield
+        finally:
+            if locked:
+                try:
+                    _release_file_lock(fileobj)
+                except Exception as exc:  # pragma: no cover - release failures are rare
+                    log.debug("Dateisperre konnte nicht gelöst werden: %s", exc)
     finally:
-        if locked:
-            try:
-                _release_file_lock(fileobj)
-            except Exception as exc:  # pragma: no cover - release failures are rare
-                log.debug("Dateisperre konnte nicht gelöst werden: %s", exc)
-
         if thread_lock_held and thread_lock is not None:
             try:
                 thread_lock.release()

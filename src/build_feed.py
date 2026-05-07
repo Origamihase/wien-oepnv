@@ -662,32 +662,48 @@ def _save_state(state: dict[str, dict[str, Any]], deletions: set[str] | None = N
     # locken — wodurch flock sich gegenseitig nicht mehr sieht. Eine persistente
     # Lock-Datei (~0 Bytes) kostet nichts und ist zwischen Läufen wiederverwendbar.
     lock_path = path.with_suffix(".lock")
-    with lock_path.open("a+", encoding="utf-8") as lock_file:
-        with file_lock(lock_file, exclusive=True):
-            # Safe merge: read existing state to avoid overwriting parallel updates
-            merged_state = {}
-            try:
-                with path.open("r", encoding="utf-8") as f:
-                    existing = json.load(f)
-                    if isinstance(existing, dict):
-                        merged_state = existing
-            except FileNotFoundError:
-                pass
-            except Exception as exc:
-                log.warning(
-                    "State-Merge fehlgeschlagen (Lesefehler: %s) – überschreibe State.",
-                    exc,
-                )
+    try:
+        with lock_path.open("a+", encoding="utf-8") as lock_file:
+            with file_lock(lock_file, exclusive=True):
+                # Safe merge: read existing state to avoid overwriting parallel updates
+                merged_state = {}
+                try:
+                    with path.open("r", encoding="utf-8") as f:
+                        existing = json.load(f)
+                        if isinstance(existing, dict):
+                            merged_state = existing
+                except FileNotFoundError:
+                    pass
+                except Exception as exc:
+                    log.warning(
+                        "State-Merge fehlgeschlagen (Lesefehler: %s) – überschreibe State.",
+                        exc,
+                    )
 
-            merged_state.update(state)
-            if deletions:
-                for k in deletions:
-                    merged_state.pop(k, None)
+                merged_state.update(state)
+                if deletions:
+                    for k in deletions:
+                        merged_state.pop(k, None)
 
-            with atomic_write(
-                path, mode="w", encoding="utf-8", permissions=0o600
-            ) as f:
-                json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True)
+                with atomic_write(
+                    path, mode="w", encoding="utf-8", permissions=0o600
+                ) as f:
+                    json.dump(merged_state, f, ensure_ascii=False, indent=2, sort_keys=True)
+    except (OSError, TimeoutError) as exc:
+        # Security: ``file_lock(..., exclusive=True)`` re-raises on
+        # acquisition failure (timeout under contention, fcntl ENOLCK,
+        # NFS hiccup, …). Skipping the state save here is the
+        # fail-closed-but-recoverable choice: losing one update means
+        # newly-arrived items get a stale ``first_seen`` next run, but
+        # *overwriting* a parallel writer's update would corrupt the
+        # cross-run dedup invariant for *every* item they tracked. The
+        # next successful run reconciles via the merge step above.
+        log.warning(
+            "State-Datei %s konnte nicht gesperrt werden (%s) – "
+            "Update wird übersprungen, nächster Lauf merged frisch.",
+            path,
+            exc,
+        )
 
 
 def _identity_for_item(item: FeedItem) -> str:

@@ -55,7 +55,14 @@ def _snapshot_state() -> tuple[dict[str, Any], dict[str, int]]:
 def test_thread_lock_counter_balanced_when_acquire_raises(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """If ``threading.Lock.acquire`` raises, the reference counter must reset."""
+    """If ``threading.Lock.acquire`` raises, the reference counter must reset.
+
+    The fake file's ``fileno()`` also raises, so the OS-level lock acquisition
+    fails on top of the thread-lock failure. With the ``exclusive=True``
+    fail-closed contract, ``file_lock`` propagates that OSError to the caller
+    — but the per-path reference counter must still be balanced so a future
+    successful caller doesn't see a phantom holder.
+    """
 
     target = tmp_path / "leaky.lock"
     fake_file = _Fakefile(str(target))
@@ -76,10 +83,13 @@ def test_thread_lock_counter_balanced_when_acquire_raises(
 
     monkeypatch.setattr(locking, "_acquire_thread_lock_ref", fake_acquire_ref)
 
-    # ``file_lock`` should still enter and exit cleanly even when the thread
-    # lock acquire fails.
-    with locking.file_lock(fake_file, exclusive=True, timeout=0.1):
-        pass
+    # The exclusive-lock fail-closed contract means ``file_lock`` re-raises
+    # the OS-level acquisition error rather than silently degrading. The
+    # critical property under test is that the reference counter still
+    # balances even on the exception path.
+    with pytest.raises(OSError, match="no real file descriptor"):
+        with locking.file_lock(fake_file, exclusive=True, timeout=0.1):
+            pass  # pragma: no cover - never entered when acquisition fails
 
     locks_after, counts_after = _snapshot_state()
     assert locks_after == locks_before, (
