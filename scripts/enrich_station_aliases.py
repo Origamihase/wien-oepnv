@@ -306,6 +306,20 @@ def _load_vor_mapping(path: Path) -> dict[int, str]:
     except json.JSONDecodeError as exc:
         log.warning("Could not parse %s: %s", path, exc)
         return {}
+    # Zero-trust: a successfully-decoded payload from disk may still be the wrong shape
+    # (corrupted file, hand-edited mapping, or upstream contract change). Without this
+    # guard, `for item in payload` raises TypeError on non-iterable JSON values (null,
+    # int, bool) and bypasses the documented `return {}` fallback, taking down the cron
+    # pipeline (run via subprocess.run check=True from update_all_stations.py). The
+    # sibling `_load_vor_name_to_id_map` in scripts/update_station_directory.py and
+    # `_load_pendler_alternative_names` above both apply the same shape guard.
+    if not isinstance(payload, list):
+        log.warning(
+            "VOR mapping %s must contain a JSON array; got %s",
+            path,
+            type(payload).__name__,
+        )
+        return {}
     mapping: dict[int, str] = {}
     for item in payload:
         if not isinstance(item, dict):
@@ -317,7 +331,10 @@ def _load_vor_mapping(path: Path) -> dict[int, str]:
             bst_id = int(bst_id_raw)
         except (TypeError, ValueError):
             continue
-        resolved_name = (item.get("resolved_name") or "").strip()
+        resolved_name_raw = item.get("resolved_name")
+        if not isinstance(resolved_name_raw, str):
+            continue
+        resolved_name = resolved_name_raw.strip()
         if resolved_name:
             mapping[bst_id] = resolved_name
     log.info("Loaded %d VOR resolved names", len(mapping))
