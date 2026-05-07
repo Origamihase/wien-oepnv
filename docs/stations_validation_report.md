@@ -4,35 +4,12 @@
 *GTFS stops loaded*: 99
 *Geographic duplicates*: 0
 *Alias issues*: 0
-*Coordinate anomalies*: 21
+*Coordinate anomalies*: 0
 *GTFS mismatches*: 69
 *Security warnings*: 0
 *Provider issues*: 0
 *Cross station ID issues*: 0
 *Naming issues*: 0
-
-## Coordinate anomalies
-- source:manual (Berlin Hbf): coordinates out of bounds (lat=52.525, lon=13.369)
-- source:manual (Bischofshofen): coordinates out of bounds (lat=47.4167, lon=13.2167)
-- source:manual (Bregenz): coordinates out of bounds (lat=47.503056, lon=9.741667)
-- source:manual (Bruck an der Mur): coordinates out of bounds (lat=47.412222, lon=15.272222)
-- source:manual (Budapest-Keleti): coordinates out of bounds (lat=47.5006, lon=19.0833)
-- source:manual (Innsbruck Hbf): coordinates out of bounds (lat=47.263083, lon=11.401111)
-- source:manual (Klagenfurt Hbf): coordinates out of bounds (lat=46.617222, lon=14.314444)
-- source:manual (Leoben Hbf): coordinates out of bounds (lat=47.379, lon=15.094)
-- source:manual (Linz Hbf): coordinates out of bounds (lat=48.290275, lon=14.291694)
-- source:manual (Ljubljana): coordinates out of bounds (lat=46.058, lon=14.51)
-- source:manual (München Hauptbahnhof): coordinates out of bounds (lat=48.140228, lon=11.558339)
-- source:manual (Passau Hbf): coordinates out of bounds (lat=48.572222, lon=13.452778)
-- source:manual (Praha hl.n.): coordinates out of bounds (lat=50.0833, lon=14.4358)
-- source:manual (Roma Termini): coordinates out of bounds (lat=41.901002, lon=12.500253)
-- source:manual (Salzburg Hbf): coordinates out of bounds (lat=47.812778, lon=13.045583)
-- source:manual (Venezia Santa Lucia): coordinates out of bounds (lat=45.4419, lon=12.3214)
-- source:manual (Villach Hbf): coordinates out of bounds (lat=46.617778, lon=13.847778)
-- source:manual (Vöcklabruck): coordinates out of bounds (lat=48.0017, lon=13.65)
-- source:manual (Wels Hbf): coordinates out of bounds (lat=48.165, lon=14.017778)
-- source:manual (Wörgl Hbf): coordinates out of bounds (lat=47.484, lon=12.067)
-- source:manual (Zagreb Glavni kolodvor): coordinates out of bounds (lat=45.804, lon=15.978)
 
 ## GTFS mismatches
 - code:Aw / source:oebb (St.Andrä-Wördern) → missing stop_id 430482400
