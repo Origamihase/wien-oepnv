@@ -90,6 +90,23 @@ _KNOWN_TOKENS = [
     # key exists somewhere in the same repo. Treated as a distinct finding so the
     # report calls out *which* environment leaked.
     (re.compile(r"(?<![A-Za-z0-9])sk_test_[0-9a-zA-Z]{24}(?![A-Za-z0-9])"), "Stripe Test Secret Key gefunden"),
+    # Stripe restricted API keys (``rk_live_`` / ``rk_test_``). Restricted keys
+    # carry a scoped subset of permissions, but a leak still grants the API
+    # access defined by that scope (charges, customers, payouts, …) and is
+    # high-impact for the affected resource. Format mirrors ``sk_*``: prefix
+    # plus a 24-char alphanumeric body. Distinct reasons per environment so
+    # the report identifies which key tier leaked.
+    (re.compile(r"(?<![A-Za-z0-9])rk_live_[0-9a-zA-Z]{24}(?![A-Za-z0-9])"), "Stripe Restricted Live Key gefunden"),
+    (re.compile(r"(?<![A-Za-z0-9])rk_test_[0-9a-zA-Z]{24}(?![A-Za-z0-9])"), "Stripe Restricted Test Key gefunden"),
+    # Stripe webhook signing secret (``whsec_``). Leakage is not an API
+    # credential but lets an attacker forge webhook payloads that the
+    # application's signature verification will accept — so any
+    # webhook-driven business logic (refunds, account upgrades, fulfilment)
+    # can be triggered by a network adversary. Body is base64-ish, ``32+``
+    # chars in practice; pattern stays alphanumeric to match Stripe's
+    # current format and avoid colliding with the ``[A-Za-z0-9+/=_-]``
+    # entropy fallback's character class.
+    (re.compile(r"(?<![A-Za-z0-9])whsec_[A-Za-z0-9]{32,}(?![A-Za-z0-9])"), "Stripe Webhook Signing Secret gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])xoxb-[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{24}(?![A-Za-z0-9])"), "Slack Bot Token gefunden"),
     (re.compile(r"(?<![A-Za-z0-9])xoxp-[0-9]{10,}-[0-9]{10,}-[0-9]{10,}-[a-zA-Z0-9]{32}(?![A-Za-z0-9])"), "Slack User Token gefunden"),
     # Slack OAuth-app access token (configuration token issued via the OAuth flow,
