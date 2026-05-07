@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 import textwrap
 from getpass import getpass
@@ -43,6 +44,17 @@ except ImportError:  # pragma: no cover - allow python scripts/configure_feed.py
 
 _OPTION_BY_KEY: dict[str, ConfigOption] = {option.key: option for option in CONFIG_OPTIONS}
 
+# Security: same grammar `_parse_env_file` enforces when reading .env back in
+# (``^(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*$``). Without re-validating
+# here, a ``--set $'EVIL\nINJECT=val=foo'`` invocation would slip an
+# embedded newline straight into the generated .env via
+# ``f"{key}={_escape_env_value(value)}"`` — the writer escapes the *value*'s
+# control chars but interpolates the *key* raw. The next reader's strict
+# parser would then split that into two distinct assignments. Constrain the
+# key here so the wizard's writer can never produce a document its own
+# reader couldn't be used to ingest safely.
+_OVERRIDE_KEY_RE = re.compile(r"\A[A-Za-z_][A-Za-z0-9_]*\Z")
+
 
 def _parse_overrides(values: list[str]) -> dict[str, str]:
     overrides: dict[str, str] = {}
@@ -53,6 +65,12 @@ def _parse_overrides(values: list[str]) -> dict[str, str]:
         key = key.strip()
         if not key:
             raise SystemExit("Schlüssel in --set darf nicht leer sein.")
+        if not _OVERRIDE_KEY_RE.fullmatch(key):
+            raise SystemExit(
+                f"Ungültiger Schlüssel in --set: {key!r}. "
+                "Erlaubt sind nur Buchstaben, Ziffern und Unterstriche; "
+                "der Schlüssel muss mit einem Buchstaben oder Unterstrich beginnen."
+            )
         overrides[key] = value
     return overrides
 
