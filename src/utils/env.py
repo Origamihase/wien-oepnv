@@ -316,6 +316,36 @@ def _parse_env_file(content: str) -> dict[str, str]:
     return parsed
 
 
+def _warn_if_world_readable(path: Path) -> None:
+    """Emit a security warning if ``path`` has group/world-accessible bits.
+
+    Defense-in-depth: env files routinely carry secrets (``VOR_ACCESS_ID``,
+    ``FEED_GITHUB_TOKEN``, ``GOOGLE_MAPS_API_KEY``). ``configure_feed.py``
+    creates them with ``0o600`` via :func:`atomic_write`, but a file produced
+    outside the wizard (manual ``vi``/``scp``, copy from another host, default
+    ``umask 0o022``) lands at ``0o644`` and silently exposes its contents to
+    every local user. Match the SSH ``StrictModes`` heuristic: warn (not
+    refuse) when any group/other bit is set so misconfiguration is surfaced
+    without breaking existing setups. Skipped on non-POSIX systems where the
+    mode bits don't carry the same meaning.
+    """
+
+    if os.name != "posix":
+        return
+    try:
+        mode = path.stat().st_mode & 0o777
+    except OSError:
+        return
+    if mode & 0o077:
+        logging.getLogger("build_feed").warning(
+            ".env-Datei %s ist gruppen-/welt-lesbar (Modus 0o%03o); "
+            "Secrets können geleakt werden – `chmod 600 %s` empfohlen.",
+            path,
+            mode,
+            path,
+        )
+
+
 def load_env_file(
     path: Path,
     *,
@@ -337,6 +367,8 @@ def load_env_file(
 
     if not path.exists() or not path.is_file():
         return {}
+
+    _warn_if_world_readable(path)
 
     try:
         content = path.read_text(encoding="utf-8")
