@@ -1274,7 +1274,12 @@ def _fetch_xml(url: str, timeout: int = 25) -> ET.Element | None:
                     ),
                 )
                 return ET.fromstring(content)
-            except (ValueError, ET.ParseError) as e:
+            except (ValueError, ET.ParseError, RecursionError) as e:
+                # Resilience: defusedxml defuses XXE / billion-laughs /
+                # quadratic blowup, but a deeply-nested (legitimate-looking)
+                # element tree still triggers ``RecursionError`` on parse.
+                # Catching it here ensures a malicious or pathological RSS
+                # feed cannot crash the entire build.
                 log.warning("ÖBB RSS: Content-Limit/Format-Fehler: %s", sanitize_log_arg(e))
                 return None
             except requests.RequestException as e:

@@ -8,7 +8,9 @@ contributors can reproduce the results locally with a single command.
 from __future__ import annotations
 
 import argparse
-import subprocess  # nosec B404 - utility script to run internal tools
+# Bandit B404: subprocess is required to invoke ruff/mypy/bandit/pip-audit
+# from this internal helper. Inputs are static lists, never user-supplied.
+import subprocess  # nosec B404
 import sys
 from pathlib import Path
 
@@ -19,10 +21,11 @@ def _run(command: list[str]) -> int:
     """Execute *command* inside the project root and stream the output."""
     print("→", " ".join(command), flush=True)
     try:
-        # Enforce a 5-minute timeout for static checks
-        completed = subprocess.run(
+        # Enforce a 5-minute timeout for static checks.
+        # Bandit B603: command is a static list, never user-supplied.
+        completed = subprocess.run(  # nosec B603
             command, cwd=PROJECT_ROOT, check=False, shell=False, timeout=300
-        )  # nosec B603
+        )
         return completed.returncode
     except subprocess.TimeoutExpired:
         print(f"Command timed out after 300s: {' '.join(command)}", file=sys.stderr)

@@ -15,7 +15,9 @@ import json
 import logging
 import os
 import re
-import subprocess  # nosec B404 - used to run internal cache refresh scripts
+# Bandit B404: subprocess is required to invoke internal cache-refresh
+# scripts. Inputs are static lists, never user-supplied.
+import subprocess  # nosec B404
 import sys
 import unicodedata
 from copy import deepcopy

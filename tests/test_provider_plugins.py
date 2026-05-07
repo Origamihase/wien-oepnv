@@ -1,4 +1,12 @@
-"""Tests for the dynamic provider plugin loader."""
+# ruff: noqa: S603
+"""Tests for the dynamic provider plugin loader.
+
+Janitor PR #1321: file-level S603 suppression. Per-line markers on
+multi-line subprocess.run(...) calls are reliable in some Ruff
+versions but not in CI's. The subprocess invocations in this file
+are all safe (sys.executable + a hard-coded test-script path), so a
+file-level suppression is the bulletproof choice.
+"""
 
 from __future__ import annotations
 

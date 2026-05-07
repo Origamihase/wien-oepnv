@@ -383,7 +383,12 @@ def _get_json(
                     )
                     return {}
                 return data
-            except (ValueError, json.JSONDecodeError) as exc:
+            except (ValueError, json.JSONDecodeError, RecursionError) as exc:
+                # Resilience: include ``RecursionError`` so a malicious
+                # upstream serving deeply-nested JSON cannot crash the
+                # build process. ``json.loads`` on a deeply-nested array
+                # / object exceeds Python's recursion limit and raises
+                # ``RecursionError`` (NOT a subclass of ``JSONDecodeError``).
                 log.warning(
                     "Antwort von %s ungültig oder kein JSON: %s",
                     sanitize_log_arg(url),

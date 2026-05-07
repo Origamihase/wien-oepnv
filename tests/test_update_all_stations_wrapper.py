@@ -1,3 +1,4 @@
+# ruff: noqa: S603
 """Regression-Test für den Copy-on-Write-Wrapper in update_all_stations.py.
 
 Stellt sicher, dass:
@@ -10,6 +11,10 @@ Validator-Step bemerkte den Fehler erst nach dem Schreiben (siehe
 PR #1102, 900100-Aspern-Nord-Regression). Der Wrapper schreibt
 gegen ein Temp-File und kopiert nur bei erfolgreicher Validation
 zurück.
+
+Janitor PR #1321: file-level S603 suppression. The single
+subprocess.run(...) in this file invokes sys.executable against a
+hard-coded path under REPO_ROOT, so the call is safe.
 """
 from __future__ import annotations
 
