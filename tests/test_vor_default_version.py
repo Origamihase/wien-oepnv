@@ -1,6 +1,5 @@
 import importlib
 import os
-import socket
 
 import pytest
 
@@ -28,23 +27,24 @@ def test_default_vor_version() -> None:
 
 
 def test_base_url_infers_version(monkeypatch: pytest.MonkeyPatch) -> None:
-    # Mock DNS resolution to ensure example.com is accepted
-    monkeypatch.setattr(
-        socket,
-        "getaddrinfo",
-        lambda *args, **kwargs: [
-            (socket.AF_INET, socket.SOCK_STREAM, 6, "", ("93.184.216.34", 80))
-        ],
-    )
+    del monkeypatch  # No external DNS needed; trusted host is real.
 
     module = importlib.import_module("src.providers.vor")
     original = {key: os.environ.get(key) for key in ("VOR_BASE_URL", "VOR_BASE", "VOR_VERSION")}
     try:
         for key in original:
             os.environ.pop(key, None)
-        os.environ["VOR_BASE_URL"] = "https://example.com/vao/restproxy/v9.9.9/"
+        # ``VOR_BASE_URL`` is host-pinned to the official VAO endpoint so the
+        # access ID cannot be redirected via env override; see
+        # ``_VOR_TRUSTED_HOSTS`` in ``src.providers.vor``.
+        os.environ["VOR_BASE_URL"] = (
+            "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v9.9.9/"
+        )
         reloaded = importlib.reload(module)
-        assert reloaded.VOR_BASE_URL == "https://example.com/vao/restproxy/v9.9.9/"
+        assert (
+            reloaded.VOR_BASE_URL
+            == "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v9.9.9/"
+        )
         assert reloaded.VOR_VERSION == "v9.9.9"
     finally:
         _restore_env(original)

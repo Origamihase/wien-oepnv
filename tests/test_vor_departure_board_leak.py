@@ -8,8 +8,12 @@ from src.providers import vor
 @responses.activate
 def test_leak() -> None:
     os.environ["VOR_ACCESS_ID"] = "secret_token"
-    # Set a valid URL to pass validation
-    os.environ["VOR_BASE_URL"] = "https://example.com/"
+    # Use the official VAO host so the host pin in ``_validated_vor_base_url``
+    # accepts the override. ``example.com`` would fall back to the default,
+    # which is also fine for this test, but explicit beats implicit.
+    os.environ["VOR_BASE_URL"] = (
+        "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"
+    )
 
     vor.refresh_access_credentials()
     vor.refresh_base_configuration()
