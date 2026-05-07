@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 07 May 2026 01:57:18 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2026 02:06:05 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N8: Fahrtbehinderung wegen Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6c974967da518882609007a1fe052da514b6b8570c2d08aacca8c047b0fb3f94</guid>
+      <pubDate>Thu, 07 May 2026 01:45:00 +0200</pubDate>
+      <ext:first_seen>Thu, 07 May 2026 02:06:05 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 07 May 2026 01:45:27 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 07 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie N8: Fahrtbehinderung in Richtung Handelskai S U. Voraussichtliche Dauer: 02:15 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Alterlaa U. [Am 07.05.2026]</description>
+      <content:encoded><![CDATA[Linie N8: Fahrtbehinderung in Richtung Handelskai S U. Voraussichtliche Dauer: 02:15 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Alterlaa U.<br/>[Am 07.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N31: Busse halten in 5B Haltestelle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -104,16 +115,6 @@
       <ext:starts_at>Wed, 06 May 2026 13:09:34 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten fahren zwischen Wien Hbf (U) und Flughafen Wien Bahnhof von 10.07.2026 (09:00 Uhr) bis 27.07.2026 (18:00 Uhr) die IC-Züge mit geänderten Fahrzeiten … [Seit 06.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten fahren zwischen Wien Hbf (U) und Flughafen Wien Bahnhof von 10.07.2026 (09:00 Uhr) bis 27.07.2026 (18:00 Uhr) die IC-Züge mit geänderten Fahrzeiten …<br/>[Seit 06.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;874890</guid>
-      <pubDate>Tue, 05 May 2026 13:05:07 +0200</pubDate>
-      <ext:first_seen>Tue, 05 May 2026 13:14:51 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 05 May 2026 13:05:07 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 03.10.2026 (23:15 Uhr) bis 05.10.2026 (04:40 Uhr) einige Nahverkehrszüge nicht fahren. [Seit 05.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 03.10.2026 (23:15 Uhr) bis 05.10.2026 (04:40 Uhr) einige Nahverkehrszüge nicht fahren.<br/>[Seit 05.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
