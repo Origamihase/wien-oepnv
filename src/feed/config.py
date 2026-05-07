@@ -115,6 +115,29 @@ MAX_LOG_BACKUP_COUNT = 500
 # ``MAX_LOG_BYTES`` and ``MAX_LOG_BACKUP_COUNT`` above.
 MAX_STATE_RETENTION_DAYS = 3650
 
+# Security: ``MAX_ENDS_AT_GRACE_MINUTES`` is the grace-window ceiling for the
+# "drop expired item" filter. ``ENDS_AT_GRACE_MINUTES`` is consumed by
+# ``build_feed._drop_old_items`` as ``now_utc - timedelta(minutes=N)`` (line
+# 1057) and by ``providers.wl_fetch._is_active`` as ``now - timedelta(minutes=N)``
+# (line 140) — both direct ``datetime - timedelta`` arithmetic. ``get_int_env``
+# only enforced a non-negative lower bound, so a benign-looking env override
+# such as ``ENDS_AT_GRACE_MINUTES=99999999999`` (intentional misconfig, leaked
+# CI env, compromised secret store) would underflow Python's ``datetime``
+# range (~2025 years before year 1) and raise ``OverflowError: date value out
+# of range``. The error propagates out of ``_drop_old_items`` past the
+# per-loop fallback and crashes the entire feed-build pipeline. At non-overflow
+# values (e.g. 525600 minutes ≈ 1 year) the cap is effectively absent: every
+# already-expired item stays in the feed forever, defeating the
+# "drop obsolete disruption" filter. The cap is intentionally generous
+# (~1000x default) so operators can keep recently-expired items visible for
+# weekly-poll RSS subscribers without raising the ceiling; one week (10080
+# minutes) is well within Python's datetime range and bounds the feed's
+# expired-item retention to a sensible maximum. TIGHTEN-only contract mirrors
+# ``MAX_STATE_RETENTION_DAYS`` above — same env-cap drift family
+# (env-derived integer feeding ``timedelta(unit=N)`` into ``datetime - timedelta``
+# arithmetic).
+MAX_ENDS_AT_GRACE_MINUTES = 10080
+
 
 class InvalidPathError(ValueError):
     """Raised when a configured path is outside the permitted directories."""
@@ -327,8 +350,14 @@ def _load_from_env() -> None:
     ABSOLUTE_MAX_AGE_DAYS = max(
         get_int_env("ABSOLUTE_MAX_AGE_DAYS", DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS), 0
     )
-    ENDS_AT_GRACE_MINUTES = max(
-        get_int_env("ENDS_AT_GRACE_MINUTES", DEFAULT_ENDS_AT_GRACE_MINUTES), 0
+    # Security: clamp the env override to ``MAX_ENDS_AT_GRACE_MINUTES`` to
+    # defeat the OverflowError vector documented at the constant declaration
+    # above. Without the cap a single ``ENDS_AT_GRACE_MINUTES=99999999999``
+    # would crash ``_drop_old_items`` (and ``wl_fetch._is_active``) via
+    # ``datetime - timedelta`` underflow and halt the feed-build pipeline.
+    ENDS_AT_GRACE_MINUTES = min(
+        max(get_int_env("ENDS_AT_GRACE_MINUTES", DEFAULT_ENDS_AT_GRACE_MINUTES), 0),
+        MAX_ENDS_AT_GRACE_MINUTES,
     )
     CACHE_MAX_AGE_HOURS = max(
         get_int_env("CACHE_MAX_AGE_HOURS", DEFAULT_CACHE_MAX_AGE_HOURS), 0
@@ -416,6 +445,7 @@ __all__ = [
     "LOG_LEVEL",
     "LOG_MAX_BYTES",
     "LOG_TIMEZONE",
+    "MAX_ENDS_AT_GRACE_MINUTES",
     "MAX_ITEM_AGE_DAYS",
     "MAX_ITEMS",
     "MAX_LOG_BACKUP_COUNT",
