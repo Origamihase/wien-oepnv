@@ -268,8 +268,25 @@ HTTP_TIMEOUT = min(
     _load_int_env("VOR_HTTP_TIMEOUT", DEFAULT_HTTP_TIMEOUT),
     DEFAULT_HTTP_TIMEOUT,
 )
-MAX_STATIONS_PER_RUN = _load_int_env(
-    "VOR_MAX_STATIONS_PER_RUN", DEFAULT_MAX_STATIONS_PER_RUN
+# Security: ``MAX_STATIONS_PER_RUN`` controls the per-run fan-out of station
+# fetches. Each selected station consumes one VOR API quota slot, so a
+# benign-looking env override such as ``VOR_MAX_STATIONS_PER_RUN=99999``
+# (intentional misconfig, leaked CI env, or compromised secret store) would
+# let a single run blow through the entire daily quota
+# (``DEFAULT_MAX_REQUESTS_PER_DAY``, the contractual hard cap of 100/day for
+# the VAO Start tier) and then DoS the thread pool (``VOR_MAX_WORKERS=10``)
+# with pending station-fetch tasks while the round-robin distribution
+# collapses (every run picks the same large slice rather than rotating).
+# The cap can only TIGHTEN — env overrides may lower the fan-out (tests use
+# 1–3) but never raise it above the contract daily budget, since fanning out
+# more stations than the daily budget is by definition wasteful. Mirrors the
+# ``min(VOR_HTTP_TIMEOUT, DEFAULT_HTTP_TIMEOUT)`` and
+# ``min(VOR_MAX_REQUESTS_PER_DAY, DEFAULT_MAX_REQUESTS_PER_DAY)`` caps below;
+# explicitly identified as needing audit by the ``VOR_MAX_REQUESTS_PER_DAY``
+# journal entry on 2026-05-06.
+MAX_STATIONS_PER_RUN = min(
+    _load_int_env("VOR_MAX_STATIONS_PER_RUN", DEFAULT_MAX_STATIONS_PER_RUN),
+    DEFAULT_MAX_REQUESTS_PER_DAY,
 )
 if MAX_STATIONS_PER_RUN <= 0:
     MAX_STATIONS_PER_RUN = DEFAULT_MAX_STATIONS_PER_RUN

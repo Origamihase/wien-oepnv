@@ -112,6 +112,29 @@ def test_max_requests_per_day_capped_at_contract_limit(
     assert vor.MAX_REQUESTS_PER_DAY == vor.DEFAULT_MAX_REQUESTS_PER_DAY
 
 
+def test_max_stations_per_run_capped_at_daily_budget(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # Security: VOR_MAX_STATIONS_PER_RUN controls the per-run fan-out of
+    # station fetches. Each selected station consumes one VOR API quota slot,
+    # so an env override that raises the fan-out above the daily contract
+    # cap (DEFAULT_MAX_REQUESTS_PER_DAY=100) would let a single run blow
+    # through the entire daily budget and DoS the thread pool while the
+    # round-robin distribution collapses. The env var may still *tighten*
+    # the fan-out below the daily budget.
+    monkeypatch.setenv("VOR_MAX_STATIONS_PER_RUN", "99999")
+    importlib.reload(vor)
+    assert vor.MAX_STATIONS_PER_RUN == vor.DEFAULT_MAX_REQUESTS_PER_DAY == 100
+
+    monkeypatch.setenv("VOR_MAX_STATIONS_PER_RUN", "5")
+    importlib.reload(vor)
+    assert vor.MAX_STATIONS_PER_RUN == 5
+
+    monkeypatch.delenv("VOR_MAX_STATIONS_PER_RUN", raising=False)
+    importlib.reload(vor)
+    assert vor.MAX_STATIONS_PER_RUN == vor.DEFAULT_MAX_STATIONS_PER_RUN
+
+
 def test_invalid_bus_regex_falls_back_to_defaults(
     monkeypatch: pytest.MonkeyPatch,
     caplog: pytest.LogCaptureFixture,
