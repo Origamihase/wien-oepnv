@@ -27,7 +27,9 @@ def mock_docs_dir(tmp_path: Path) -> Iterator[Path]:
 
 def test_sitemap_xml_validity(mock_docs_dir: Path) -> None:
     """Test that the generated sitemap is valid XML and contains expected URLs."""
-    with patch.dict(os.environ, {"SITE_BASE_URL": "https://example.com/base"}):
+    # Use a GitHub-hosted base URL since SITE_BASE_URL is now pinned to the
+    # GitHub allowlist (see ``scripts.generate_sitemap._is_valid_base_url``).
+    with patch.dict(os.environ, {"SITE_BASE_URL": "https://forker.github.io/base"}):
         generate_sitemap.main()
 
     sitemap_path = mock_docs_dir / "sitemap.xml"
@@ -39,18 +41,21 @@ def test_sitemap_xml_validity(mock_docs_dir: Path) -> None:
     assert root.tag == "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset"
     urls = [elem.text for elem in root.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
 
-    assert "https://example.com/base/" in urls  # index.md -> /
-    assert "https://example.com/base/page.html" in urls
-    assert "https://example.com/base/feed.xml" in urls
-    assert "https://example.com/base/subdir/nested.html" in urls
+    assert "https://forker.github.io/base/" in urls  # index.md -> /
+    assert "https://forker.github.io/base/page.html" in urls
+    assert "https://forker.github.io/base/feed.xml" in urls
+    assert "https://forker.github.io/base/subdir/nested.html" in urls
 
     # Ensure excluded files are not present
     assert not any("_includes" in url for url in urls)
 
 def test_sitemap_escaping(mock_docs_dir: Path) -> None:
     """Test that special characters in base URL are escaped."""
-    # This URL triggers invalid XML if not escaped
-    risky_url = "https://example.com/foo&bar"
+    # This URL triggers invalid XML if not escaped. ``&`` is a valid path-segment
+    # character per RFC 3986 and survives validate_public_feed_url, so the
+    # GitHub-hosted allowlist still admits it — the test continues to exercise
+    # the XML-escaping path for a hostile-but-trusted-host base URL.
+    risky_url = "https://forker.github.io/foo&bar"
 
     with patch.dict(os.environ, {"SITE_BASE_URL": risky_url}):
         generate_sitemap.main()

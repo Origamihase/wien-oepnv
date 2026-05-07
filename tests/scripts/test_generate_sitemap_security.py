@@ -28,11 +28,50 @@ def test_base_url_rejects_control_characters(monkeypatch: pytest.MonkeyPatch) ->
     assert cast(Any, module)._base_url() == cast(Any, module).DEFAULT_BASE_URL.rstrip("/")
 
 
-def test_base_url_accepts_valid_https(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_base_url_accepts_valid_github_pages(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Forks publish to ``<owner>.github.io`` so any subdomain of github.io
+    must be accepted; trailing slashes are stripped."""
     from typing import cast, Any
     module = _load_module()
-    monkeypatch.setenv("SITE_BASE_URL", "https://example.com/base/")
-    assert cast(Any, module)._base_url() == "https://example.com/base"
+    monkeypatch.setenv("SITE_BASE_URL", "https://forker.github.io/wien-oepnv/")
+    assert cast(Any, module)._base_url() == "https://forker.github.io/wien-oepnv"
+
+
+def test_base_url_accepts_canonical_github_com(monkeypatch: pytest.MonkeyPatch) -> None:
+    from typing import cast, Any
+    module = _load_module()
+    monkeypatch.setenv("SITE_BASE_URL", "https://github.com/Origamihase/wien-oepnv")
+    assert cast(Any, module)._base_url() == "https://github.com/Origamihase/wien-oepnv"
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        # Public hosts that pass validate_http_url's SSRF/syntax checks but are
+        # NOT GitHub-hosted — without the host pin they would land in every
+        # ``<loc>`` element of the published sitemap and let an env override
+        # redirect every search-engine crawler to an attacker-controlled site.
+        "https://example.com/base",
+        "https://evil.example.com/wien-oepnv",
+        "https://gihub.com/foo/bar",  # typosquat
+        "https://github.com.evil.com/foo",  # suffix attack on github.com
+        "https://example.github.io.evil.com/foo",  # suffix attack on github.io
+        "https://evil-github.io/foo",  # missing leading dot
+        "https://github.io/foo",  # bare apex without subdomain
+    ],
+)
+def test_base_url_rejects_non_github_hosts(
+    monkeypatch: pytest.MonkeyPatch, value: str
+) -> None:
+    """Mirrors the FEED_LINK / PAGES_BASE_URL pin in ``src.feed.config``: the
+    same env-override threat shape applies to ``SITE_BASE_URL`` because the
+    sitemap and robots.txt are equally public artefacts."""
+    from typing import cast, Any
+    module = _load_module()
+    monkeypatch.setenv("SITE_BASE_URL", value)
+    assert cast(Any, module)._base_url() == cast(Any, module).DEFAULT_BASE_URL.rstrip(
+        "/"
+    )
 
 
 @pytest.mark.parametrize(

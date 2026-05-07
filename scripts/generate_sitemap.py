@@ -20,11 +20,11 @@ if str(REPO_ROOT) not in sys.path:
 
 try:
     from src.utils.files import atomic_write
-    from src.utils.http import validate_http_url
+    from src.utils.http import validate_public_feed_url
 except ModuleNotFoundError:
     # Fallback if src is not a package or run differently
     from utils.files import atomic_write  # type: ignore[no-redef]
-    from utils.http import validate_http_url  # type: ignore[no-redef]
+    from utils.http import validate_public_feed_url  # type: ignore[no-redef]
 
 DOCS_DIR = REPO_ROOT / "docs"
 DEFAULT_BASE_URL = "https://origamihase.github.io/wien-oepnv"
@@ -42,23 +42,22 @@ def _is_valid_base_url(candidate: str) -> bool:
 
     Security: ``SITE_BASE_URL`` is interpolated into every ``<loc>`` element
     of the published sitemap (and into ``robots.txt``'s ``Sitemap:``
-    directive). Any host that survives this check is taken as authoritative
-    by every search engine that crawls the site, so the validation must
-    reject the same classes of values that ``validate_http_url`` rejects
-    elsewhere in the project: IP literals, reserved/internal TLDs
-    (``.local``, ``.internal``, ``.test``, ``.example``, ``.localhost`` …),
-    DNS-rebinding wildcards (``nip.io`` and friends), embedded credentials,
-    and non-http(s) schemes. ``check_dns=False`` because we don't talk to
-    the URL, we embed it — DNS state at sitemap generation time is
-    irrelevant to whether the URL is a safe target for embedding.
+    directive). Search engines treat any URL that survives this check as
+    authoritative for the site, so an attacker-controlled host (env override
+    via leaked CI env, compromised secret store, intentional misconfig)
+    would let a malicious origin claim canonical ranking for our content
+    and redirect every search-engine click to a phishing target.
+
+    Delegating to ``validate_public_feed_url`` shares the GitHub-host pin
+    with the FEED_LINK / PAGES_BASE_URL surfaces (see ``src.feed.config``)
+    so a future fourth publishing URL inherits the pin without having to
+    remember to add it. ``check_dns=False`` because the URL is embedded,
+    not fetched — DNS state at sitemap generation time is irrelevant to
+    whether the URL is a safe target for embedding.
     """
     if _UNSAFE_URL_CHARS.search(candidate):
         return False
-    # Delegating to validate_http_url consolidates the URL-safety policy
-    # (TLDs, IP literals, credentials, scheme, length cap) with the
-    # provider/HTTP layers; previously a localhost/internal-TLD override
-    # would silently land in the published sitemap.
-    return validate_http_url(candidate, check_dns=False) is not None
+    return validate_public_feed_url(candidate, check_dns=False) is not None
 
 
 def _base_url() -> str:
@@ -67,7 +66,9 @@ def _base_url() -> str:
     if not candidate or not _is_valid_base_url(candidate):
         if raw.strip() and raw.strip() != DEFAULT_BASE_URL:
             logger.warning(
-                "Invalid SITE_BASE_URL provided; falling back to default base URL."
+                "SITE_BASE_URL %r is not a known GitHub host; "
+                "falling back to default base URL.",
+                raw,
             )
         return DEFAULT_BASE_URL.rstrip("/")
     return candidate.rstrip("/")
