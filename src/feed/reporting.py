@@ -899,7 +899,16 @@ class _GithubIssueReporter:
             detail: str = response.text
             try:
                 error_payload: object = response.json()
-            except ValueError:
+            except (ValueError, RecursionError):
+                # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
+                # served by a compromised upstream / DNS-hijack / MITM.
+                # ``response.json()`` calls ``json.loads`` internally, which
+                # raises ``RecursionError`` (NOT a subclass of ``ValueError``)
+                # on a deeply-nested document. The bare ``except ValueError``
+                # would let the depth-bomb propagate out of ``submit()`` →
+                # ``log_results()`` (called inside the build pipeline's
+                # ``finally`` block), masking any prior exception and crashing
+                # the whole feed-build cron with an unhandled traceback.
                 pass
             else:
                 # Zero Trust: GitHub normally returns an object on errors, but
@@ -922,7 +931,12 @@ class _GithubIssueReporter:
         issue_url: str | None = None
         try:
             data: object = response.json()
-        except ValueError:
+        except (ValueError, RecursionError):
+            # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
+            # served by a compromised upstream — see the analogous fix on
+            # the error-status branch above. Treat the depth-bomb as if the
+            # body were undecodable; the downstream ``isinstance(data, dict)``
+            # guard then short-circuits and the URL-less success log fires.
             data = None
         # Zero Trust: only trust html_url when the payload is an object that
         # actually contains a string at that key. Defends against AttributeError

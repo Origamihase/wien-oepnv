@@ -601,7 +601,14 @@ def fetch_vor_stops_from_api(
 
             try:
                 payload = response.json()
-            except ValueError:
+            except (ValueError, RecursionError):
+                # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
+                # served by a compromised upstream / DNS-hijack / MITM.
+                # ``response.json()`` calls ``json.loads`` internally, which
+                # raises ``RecursionError`` (NOT a subclass of ``ValueError``)
+                # on a deeply-nested document. Without this catch one bad
+                # upstream payload would propagate out of the per-station
+                # loop and abort the entire batch refresh.
                 log.warning("VOR API returned invalid JSON for station %s", station_id)
                 stop = fallback_map.get(station_id)
                 if stop:

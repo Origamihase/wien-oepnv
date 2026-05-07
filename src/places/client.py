@@ -434,7 +434,19 @@ class GooglePlacesClient:
                         self._consecutive_5xx_errors = 0
                         try:
                             payload = response.json()
-                        except (ValueError, requests.exceptions.JSONDecodeError) as exc:
+                        except (
+                            ValueError,
+                            requests.exceptions.JSONDecodeError,
+                            RecursionError,
+                        ) as exc:
+                            # Resilience: ``RecursionError`` covers JSON
+                            # depth-bomb attacks served by a compromised
+                            # upstream / MITM. ``response.json()`` calls
+                            # ``json.loads`` internally, which raises
+                            # ``RecursionError`` (NOT a subclass of
+                            # ``JSONDecodeError``) on a deeply-nested
+                            # document. Route it through the same
+                            # decode-failure branch.
                             raise GooglePlacesError(
                                 "Invalid JSON payload received from Places API"
                             ) from exc
@@ -523,7 +535,10 @@ class GooglePlacesClient:
         default = f"Request failed with status {status_code}: {detail}"
         try:
             payload = response.json()
-        except (ValueError, requests.exceptions.JSONDecodeError):
+        except (ValueError, requests.exceptions.JSONDecodeError, RecursionError):
+            # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
+            # — see the analogous catch in the 200-status branch above. The
+            # default formatted string is always safe to log.
             return default
         if not isinstance(payload, dict):
             return default

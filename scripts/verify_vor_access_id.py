@@ -94,7 +94,13 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     try:
         payload = json.loads(content.decode("utf-8"))
-    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+    except (UnicodeDecodeError, json.JSONDecodeError, RecursionError) as exc:
+        # Resilience: include ``RecursionError`` so a malicious or pathological
+        # JSON document of nested arrays/objects (served by a compromised
+        # upstream / DNS-hijack / MITM) exceeds Python's recursion limit and
+        # raises ``RecursionError`` (NOT a subclass of ``JSONDecodeError``).
+        # Without this catch the verification script would crash with an
+        # unhandled traceback instead of returning the documented exit code 1.
         LOGGER.error("VOR response was not valid JSON: %s", exc)
         return 1
 
