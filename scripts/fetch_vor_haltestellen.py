@@ -376,7 +376,26 @@ def fetch_candidates(session: requests.Session, mgate_url: str, access_id: str, 
     payload = _build_request_payload(access_id, name)
     resp = session.post(mgate_url, json=payload, timeout=30)
     resp.raise_for_status()
-    data = resp.json()
+    # Zero Trust: a 200 response from the VAO mgate endpoint does not guarantee
+    # the body is a JSON object. A list / null / scalar would slip past
+    # ``data.get("svcResL")`` below and raise AttributeError, which is not a
+    # requests.RequestException — so resolve_station's exception handler does
+    # not catch it and the error propagates out of the per-station loop in
+    # main(), terminating the whole batch and skipping every subsequent
+    # station's resolution. Route decode and shape failures through the same
+    # branch so the caller keeps iterating.
+    try:
+        data = resp.json()
+    except ValueError:
+        log.warning("VAO mgate returned invalid JSON for %r", name)
+        return []
+    if not isinstance(data, Mapping):
+        log.warning(
+            "VAO mgate returned non-object JSON (%s) for %r",
+            type(data).__name__,
+            name,
+        )
+        return []
     svc = data.get("svcResL") or []
     if not isinstance(svc, list) or not svc:
         return []
