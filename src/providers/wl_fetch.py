@@ -504,8 +504,11 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
     # Slowloris vector documented at the constant declaration above. Without
     # the cap a caller passing ``timeout=99999`` would let a sluggish or
     # attacker-controlled upstream peer stall the cron for ~28 hours per fetch.
-    if timeout > MAX_WL_FETCH_TIMEOUT:
-        timeout = MAX_WL_FETCH_TIMEOUT
+    # ``min(...)`` instead of ``if ...:`` to avoid bumping the McCabe complexity
+    # of this already-baselined function (``.c901-baseline.txt``: ``fetch_events
+    # 51``). Same TIGHTEN-only contract as the ``if`` form: legitimate values
+    # below the cap pass through unchanged.
+    timeout = min(timeout, MAX_WL_FETCH_TIMEOUT)
     now = datetime.now(UTC)
     raw: list[dict[str, Any]] = []
 
