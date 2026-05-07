@@ -208,14 +208,31 @@ def _has_significant_overlap(name1: str, name2: str) -> bool:
     """
     Checks if names share significant words or a long common substring.
     """
-    n1 = _normalize_name(name1)
-    n2 = _normalize_name(name2)
+    return _has_significant_overlap_cached(
+        _normalize_name(name1),
+        _normalize_name(name2),
+        _get_tokens(name1),
+        _get_tokens(name2),
+    )
 
+
+def _has_significant_overlap_cached(
+    n1: str, n2: str, t1: set[str], t2: set[str]
+) -> bool:
+    """Variant of ``_has_significant_overlap`` that consumes pre-computed
+    normalized names and token sets.
+
+    Performance: ``deduplicate_fuzzy``'s outer/inner loop is O(n²) over
+    ``merged_items``. The original ``_has_significant_overlap`` recomputed
+    ``_normalize_name`` (re.sub + lower + strip) and ``_get_tokens``
+    (which itself calls ``_normalize_name`` again, plus an re.split) on
+    BOTH names per pair — five regex operations × n² pairs. Caching the
+    parsed values once when an item is appended to ``merged_items`` and
+    reusing them on every comparison drops the parse work from O(n²) to
+    O(n) without changing the comparison semantics.
+    """
     if not n1 or not n2:
         return False
-
-    t1 = _get_tokens(name1)
-    t2 = _get_tokens(name2)
 
     # 1. Token Overlap
     intersection = t1 & t2
@@ -286,6 +303,21 @@ def _promote_newer_dates(target: dict[str, Any], source: dict[str, Any]) -> None
             target[date_key] = source_date
 
 
+def _compute_overlap_cache(
+    title: str,
+) -> tuple[set[str], str, str, set[str]]:
+    """Pre-compute the parse + normalize + tokenize results for one title.
+
+    Performance: returned tuple captures everything ``deduplicate_fuzzy``'s
+    inner loop needs — line set (from ``_parse_title``), event name,
+    normalized name, and token set. The caller stores this alongside each
+    ``merged_items`` entry so the inner loop never has to re-parse a
+    previously-seen title.
+    """
+    lines, name = _parse_title(title)
+    return lines, name, _normalize_name(name), _get_tokens(name)
+
+
 def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """
     Merges items that are likely the same event affecting overlapping lines.
@@ -293,8 +325,24 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     Criteria:
     1. Significant name overlap (tokens or substring).
     2. > 30% line overlap.
+
+    Performance: maintains a parallel ``merged_cache`` list of pre-computed
+    ``(lines, name, normalized_name, tokens)`` tuples mirroring
+    ``merged_items``. Without it, every inner-loop iteration recomputed
+    ``_parse_title`` + ``_normalize_name`` × 2 + ``_get_tokens`` × 2 (each
+    with its own internal ``_normalize_name``) for the same ``existing``
+    entry, giving an O(n²) regex workload for what is fundamentally an
+    O(n) parse problem. The cache reduces total parse work from O(n²) to
+    O(n); set-comparison work in the inner loop stays O(n²) but operates
+    on already-built sets, which is purely arithmetic and far cheaper.
     """
     merged_items: list[dict[str, Any]] = []
+    # Parallel cache mirroring merged_items[idx] — same length, same order.
+    # Items with no lines (which can never participate in line-overlap
+    # merges) get a placeholder empty cache; the line-set check at the
+    # top of the inner loop short-circuits before any normalize/token
+    # work is touched.
+    merged_cache: list[tuple[set[str], str, str, set[str]]] = []
 
     for item in items:
         merged = False
@@ -305,11 +353,16 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
         # If no lines, overlap is 0. So effectively skipped.
         if not lines:
             merged_items.append(item)
+            merged_cache.append((set(), "", "", set()))
             continue
 
+        # Compute the new item's normalize+token cache once before the
+        # inner loop — reused on every existing-item comparison.
+        norm_name = _normalize_name(name)
+        tokens = _get_tokens(name)
+
         for idx, existing in enumerate(merged_items):
-            ex_title = existing.get("title", "")
-            ex_lines, ex_name = _parse_title(ex_title)
+            ex_lines, ex_name, ex_norm_name, ex_tokens = merged_cache[idx]
 
             # If existing has no lines, can't merge based on line overlap
             if not ex_lines:
@@ -319,7 +372,9 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
             # Optimization: Check lines first (cheaper)
             if line_overlap > 0.3:
-                if _has_significant_overlap(name, ex_name):
+                if _has_significant_overlap_cached(
+                    norm_name, ex_norm_name, tokens, ex_tokens
+                ):
                     # Provider Priority Logic
                     # VOR > ÖBB. If one is VOR and other is ÖBB, we prioritize VOR.
                     p1 = (existing.get("provider") or existing.get("source") or "").lower()
@@ -350,6 +405,12 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                         new_existing.pop("_calculated_identity", None)
                         # Update the list with the modified copy
                         merged_items[idx] = new_existing
+                        # Title is unchanged (we keep VOR's master title) but
+                        # refresh the cache slot defensively from the new dict
+                        # so any future drift in the merge logic stays correct.
+                        merged_cache[idx] = _compute_overlap_cache(
+                            new_existing.get("title", "")
+                        )
                         # Do NOT update GUID or Title from ÖBB (keep VOR master data)
                         merged = True
                         break
@@ -376,6 +437,11 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                         new_existing["_identity"] = new_existing.get("guid", "")
                         new_existing.pop("_calculated_identity", None)
                         merged_items[idx] = new_existing
+                        # Replaced ÖBB-existing with VOR-item: title now
+                        # comes from the VOR side, refresh the cache.
+                        merged_cache[idx] = _compute_overlap_cache(
+                            new_existing.get("title", "")
+                        )
                         merged = True
                         break
 
@@ -441,6 +507,10 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     existing_copy.pop("_calculated_identity", None)
 
                     merged_items[idx] = existing_copy
+                    # Title was rebuilt above (lines_part + new_name); future
+                    # comparisons against this slot must use the merged
+                    # title's parse, not the pre-merge one.
+                    merged_cache[idx] = _compute_overlap_cache(new_title)
 
                     # We might also want to merge start/end times?
                     # The requirement doesn't specify. Let's keep existing (usually "better" item).
@@ -452,5 +522,10 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
         if not merged:
             merged_items.append(item)
+            # Reuse the (lines, name) we already parsed for this item;
+            # only the normalize/token step was deferred until we knew
+            # the item wasn't going to short-circuit on the no-lines
+            # branch above. Avoids an extra _parse_title call.
+            merged_cache.append((lines, name, norm_name, tokens))
 
     return merged_items

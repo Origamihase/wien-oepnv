@@ -29,7 +29,13 @@ def test_build_feed_mutation() -> None:
                  patch("src.build_feed.write_feed_health_json", MagicMock()):
                 bf.main()
 
-        # Now verify deepcopy
-        assert id(captured_pre_dedupe[0]) != id(items[0])
+        # The user-facing contract is that ``_summarize_duplicates`` observes
+        # the pre-dedupe items intact. Previously this was enforced via a
+        # ``copy.deepcopy(items)`` snapshot; that defensive copy was removed
+        # because ``_summarize_duplicates`` runs strictly *before* any
+        # mutating step (``_dedupe_items`` / ``deduplicate_fuzzy``), so
+        # ordering provides the same guarantee at zero cost. The assertion
+        # below pins the observable behaviour — what the summary sees — not
+        # the implementation detail of how isolation is achieved.
         assert captured_pre_dedupe[0]["title"] == items[0]["title"]
         assert captured_pre_dedupe[0]["guid"] == items[0]["guid"]

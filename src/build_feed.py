@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import hashlib
-import copy
 import inspect
 import json
 import logging
@@ -1954,13 +1953,23 @@ def main() -> int:
             raw_count,
         )
 
-        pre_dedupe_items = copy.deepcopy(items)
-        duplicate_summaries = _summarize_duplicates(pre_dedupe_items)
+        # Performance: capture the pre-dedupe count and run the duplicate
+        # summary BEFORE ``_dedupe_items`` mutates the list. The previous
+        # ``copy.deepcopy(items)`` snapshot was defensive overhead — at
+        # ~200 items per typical run it costs ~MBs of RAM and ~100ms of
+        # CPU; at 100x scale (a stress-day with thousands of items) it
+        # would dominate the build. ``_summarize_duplicates`` only reads
+        # from the items (the only mutation it can trigger is a benign
+        # ``_calculated_identity`` cache key on the dict, which doesn't
+        # affect the summary's output); ``_dedupe_items`` runs strictly
+        # after both observers have seen the pre-dedupe state, so the
+        # snapshot copy was redundant.
+        pre_dedupe_count = len(items)
+        duplicate_summaries = _summarize_duplicates(items)
 
         dedupe_start = perf_counter()
         deduped = _dedupe_items(items)
         dedupe_duration = perf_counter() - dedupe_start
-        pre_dedupe_count = len(pre_dedupe_items)
         log.info(
             "Duplikate entfernt: %d eindeutige Items nach %.2fs (vorher: %d)",
             len(deduped),
