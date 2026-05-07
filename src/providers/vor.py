@@ -1288,7 +1288,11 @@ def resolve_station_ids(names: Iterable[str]) -> list[str]:
                         "VOR location.name für '%s' gab unerwartetes Format zurück (Zero Trust)", name
                     )
                     continue
-            except (ValueError, json.JSONDecodeError) as exc:
+            except (ValueError, json.JSONDecodeError, RecursionError) as exc:
+                # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
+                # where the body is parseable up to Python's recursion limit
+                # and then crashes ``json.loads``. Without this catch the
+                # entire VOR fetch would terminate the process.
                 _log_warning(
                     "VOR location.name für '%s' ungültig/zu groß: %s", name, exc
                 )
@@ -1574,7 +1578,11 @@ def _fetch_departure_board_for_station(
                 return None
             return data
 
-        except (ValueError, json.JSONDecodeError) as exc:
+        except (ValueError, json.JSONDecodeError, RecursionError) as exc:
+            # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
+            # where the body is parseable up to Python's recursion limit
+            # and then crashes ``json.loads``. Without this catch the
+            # entire VOR fetch would terminate the process.
             _log_warning(
                 "VOR DepartureBoard %s ungültig/zu groß: %s", station_id, exc
             )
