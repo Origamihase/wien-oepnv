@@ -27,7 +27,19 @@ def test_thread_pool_cleanup() -> None:
 
         mock_iter.return_value = [ProviderSpec(env_var="TEST_ENV", loader=mock_loader, cache_key="")]
 
-        with patch("src.build_feed.feed_config.get_bool_env", return_value=True):
+        # Performance: shrink the deadline-polling window in ``_collect_items``
+        # from the default 25s down to ~50ms. The surrounding loop guards a
+        # ``while pending: ... wait(...) ... if deadline is not None and now
+        # >= deadline:`` polling pattern; with ``wait`` mocked to return
+        # ``(set(), set())`` the call returns instantly but ``perf_counter()``
+        # advances with real wall-clock, so the loop busy-spins until the
+        # deadline arrives. The default PROVIDER_TIMEOUT=25s therefore
+        # dominated the suite runtime (~39% of the entire test wall-clock).
+        # The test only asserts that ThreadPoolExecutor is instantiated and
+        # used as a context manager — the deadline value is irrelevant to
+        # those assertions, so any small positive number works.
+        with patch("src.build_feed.feed_config.get_bool_env", return_value=True), \
+             patch.object(build_feed.feed_config, "PROVIDER_TIMEOUT", 0.05):
             # Mock ThreadPoolExecutor
             with patch("src.build_feed.ThreadPoolExecutor") as MockExecutor:
                 mock_instance = MockExecutor.return_value
