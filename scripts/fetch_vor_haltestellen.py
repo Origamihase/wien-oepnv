@@ -81,7 +81,15 @@ def configure_logging(verbose: bool) -> None:
 
 
 def load_stations(path: Path) -> list[Station]:
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, RecursionError):
+        # Resilience: ``RecursionError`` covers a corrupted on-disk
+        # stations file whose nesting depth exceeds Python's recursion
+        # limit. ``json.loads`` raises ``RecursionError`` (NOT a subclass
+        # of ``JSONDecodeError``) so without this catch a poisoned cache
+        # file would crash the script with an unhandled traceback.
+        return []
     if isinstance(data, Mapping):
         entries = data.get("stations", [])
     else:
@@ -113,7 +121,11 @@ def load_pendler_candidate_names(path: Path) -> list[str]:
     except FileNotFoundError:
         log.info("Pendler candidates file not found: %s", path)
         return []
-    except json.JSONDecodeError as exc:
+    except (json.JSONDecodeError, RecursionError) as exc:
+        # Resilience: ``RecursionError`` covers a corrupted on-disk
+        # candidates file whose nesting depth exceeds Python's recursion
+        # limit (NOT caught by ``JSONDecodeError``). Mirrors the canonical
+        # depth-bomb defence applied to every src/providers parser.
         log.warning("Invalid JSON in pendler candidates file %s: %s", path, exc)
         return []
     if not isinstance(data, Mapping):
@@ -386,7 +398,13 @@ def fetch_candidates(session: requests.Session, mgate_url: str, access_id: str, 
     # branch so the caller keeps iterating.
     try:
         data = resp.json()
-    except ValueError:
+    except (ValueError, RecursionError):
+        # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
+        # served by a compromised upstream / DNS-hijack / MITM.
+        # ``response.json()`` calls ``json.loads`` internally, which raises
+        # ``RecursionError`` (NOT a subclass of ``ValueError``) on a
+        # deeply-nested document. Without this catch one bad upstream
+        # payload would abort the entire VAO mgate batch resolution.
         log.warning("VAO mgate returned invalid JSON for %r", name)
         return []
     if not isinstance(data, Mapping):
