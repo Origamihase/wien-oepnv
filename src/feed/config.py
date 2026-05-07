@@ -164,6 +164,31 @@ MAX_ENDS_AT_GRACE_MINUTES = 10080
 # whose constructor overflows at large magnitudes).
 MAX_CACHE_MAX_AGE_HOURS = 8760
 
+# Security: ``MAX_FRESH_PUBDATE_WINDOW_MIN`` is the freshness-window ceiling for
+# the "use now() as pubDate for newly-arrived items" rule. ``FRESH_PUBDATE_WINDOW_MIN``
+# is consumed by ``build_feed._emit_item`` as
+# ``if age <= timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN): pubDate = now`` (line
+# 1620) — direct ``timedelta(minutes=N)`` construction. ``get_int_env`` only
+# enforced a non-negative lower bound, so a benign-looking env override such as
+# ``FRESH_PUBDATE_WINDOW_MIN=999999999999`` (intentional misconfig, leaked CI
+# env, compromised secret store) would raise ``OverflowError: Python int too
+# large to convert to C int`` from the ``timedelta`` constructor — same C-level
+# normalisation overflow as ``MAX_CACHE_MAX_AGE_HOURS`` above. The error
+# propagates out of ``_emit_item`` past the per-item path and crashes the RSS
+# rendering loop in ``_make_rss``, halting the feed-build pipeline. At
+# non-overflow but unreasonably large values (e.g. 525600 minutes ≈ 1 year),
+# the freshness gate is effectively disabled forever — every item that lacks a
+# pubDate gets ``pubDate = now`` regardless of its actual ``first_seen``
+# timestamp, breaking the staleness signal RSS subscribers rely on to dedupe
+# repeats. The cap is intentionally generous (288x default) so operators can
+# absorb long-running batch backfills without raising the ceiling; one day
+# (1440 minutes) is well within ``timedelta``'s safe range and bounds the
+# freshness window to a value that still semantically means "recently arrived".
+# TIGHTEN-only contract mirrors ``MAX_CACHE_MAX_AGE_HOURS`` above — same
+# env-cap drift family (env-derived integer feeding ``timedelta(unit=N)``
+# whose constructor overflows at large magnitudes).
+MAX_FRESH_PUBDATE_WINDOW_MIN = 1440
+
 
 class InvalidPathError(ValueError):
     """Raised when a configured path is outside the permitted directories."""
@@ -366,8 +391,14 @@ def _load_from_env() -> None:
     DESCRIPTION_CHAR_LIMIT = max(
         get_int_env("DESCRIPTION_CHAR_LIMIT", DEFAULT_DESCRIPTION_CHAR_LIMIT), 0
     )
-    FRESH_PUBDATE_WINDOW_MIN = max(
-        get_int_env("FRESH_PUBDATE_WINDOW_MIN", DEFAULT_FRESH_PUBDATE_WINDOW_MIN), 0
+    # Security: clamp the env override to ``MAX_FRESH_PUBDATE_WINDOW_MIN`` to
+    # defeat the OverflowError vector documented at the constant declaration
+    # above. Without the cap a single ``FRESH_PUBDATE_WINDOW_MIN=999999999999``
+    # would crash ``_emit_item`` via ``timedelta(minutes=N)`` C-int overflow
+    # during RSS rendering and halt the feed-build pipeline.
+    FRESH_PUBDATE_WINDOW_MIN = min(
+        max(get_int_env("FRESH_PUBDATE_WINDOW_MIN", DEFAULT_FRESH_PUBDATE_WINDOW_MIN), 0),
+        MAX_FRESH_PUBDATE_WINDOW_MIN,
     )
     MAX_ITEMS = max(get_int_env("MAX_ITEMS", DEFAULT_MAX_ITEMS), 0)
     MAX_ITEM_AGE_DAYS = max(
@@ -479,6 +510,7 @@ __all__ = [
     "LOG_TIMEZONE",
     "MAX_CACHE_MAX_AGE_HOURS",
     "MAX_ENDS_AT_GRACE_MINUTES",
+    "MAX_FRESH_PUBDATE_WINDOW_MIN",
     "MAX_ITEM_AGE_DAYS",
     "MAX_ITEMS",
     "MAX_LOG_BACKUP_COUNT",
