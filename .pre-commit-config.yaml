@@ -59,3 +59,32 @@ repos:
         language: system
         pass_filenames: false
         require_serial: true
+
+  # ── bandit security SAST (matches CI's bandit job) ──────────────
+  # Shift-left for the bandit gate so contributors catch B-class
+  # issues before pushing instead of discovering them in CI.
+  # ``-q`` suppresses non-error output; ``-r src scripts`` matches
+  # ``run_static_checks.py``'s invocation exactly.
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.9.4
+    hooks:
+      - id: bandit
+        args: ["-r", "src", "scripts", "-q"]
+        pass_filenames: false
+
+  # ── C901 complexity gate (matches CI's complexity-gate workflow) ─
+  # Allowlist-style baseline check: rejects NEW functions whose
+  # McCabe complexity exceeds 15, or existing functions whose
+  # complexity has risen above what's recorded in
+  # ``.c901-baseline.txt``. Reducing complexity below baseline is
+  # always allowed; the baseline ratchets via
+  # ``bash scripts/regen_c901_baseline.sh``.
+  - repo: local
+    hooks:
+      - id: c901-baseline
+        name: C901 complexity gate (max 15 for new code)
+        entry: python scripts/check_complexity.py
+        language: system
+        pass_filenames: false
+        require_serial: true
+        types: [python]
