@@ -71,6 +71,13 @@ def main() -> int:
     # Enforce secret scanning failure
     exit_codes.append(_run([sys.executable, str(scanner)]))
 
+    # C901 complexity gate vs .c901-baseline.txt allowlist. Mirrors the
+    # mypy-strict allowlist pattern: rejects only NEW or worsened
+    # violations, never rejects pre-existing ones (those ratchet down
+    # over time via scripts/regen_c901_baseline.sh).
+    complexity_gate = PROJECT_ROOT / "scripts" / "check_complexity.py"
+    exit_codes.append(_run([sys.executable, str(complexity_gate)]))
+
     # Run pip-audit to check for known vulnerabilities in dependencies
     # We restrict the audit to our explicit dependencies to avoid failing on global toolchain
     # packages (like `pip` itself) over which we have no direct control in the CI runner.
