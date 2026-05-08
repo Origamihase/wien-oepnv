@@ -47,6 +47,7 @@ try:  # pragma: no cover - convenience for module execution
         read_capped_text,
         validate_zip_archive_safe,
     )
+    from src.utils.geo import apply_coordinate_inertia
     from src.utils.http import fetch_content_safe, session_with_retries
     from src.utils.stations import is_in_vienna as _is_point_in_vienna
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
@@ -56,6 +57,7 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
         read_capped_text,
         validate_zip_archive_safe,
     )
+    from utils.geo import apply_coordinate_inertia  # type: ignore[no-redef]
     from utils.http import fetch_content_safe, session_with_retries  # type: ignore[no-redef]
     from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore[no-redef]
 
@@ -261,6 +263,24 @@ class Station:
 
     def update_from_entry(self, entry: Mapping[str, object]) -> None:
         base_keys = {"bst_id", "bst_code", "name", "in_vienna", "pendler", "vor_id"}
+
+        # Coordinate Inertia: capture the existing coords BEFORE the
+        # generic extras-loop (below) overwrites them. We use these
+        # later to decide whether to absorb upstream drift via
+        # ``apply_coordinate_inertia``.
+        existing_lat_raw = self.extras.get("latitude")
+        existing_lon_raw = self.extras.get("longitude")
+        existing_lat = (
+            float(existing_lat_raw)
+            if isinstance(existing_lat_raw, int | float)
+            else None
+        )
+        existing_lon = (
+            float(existing_lon_raw)
+            if isinstance(existing_lon_raw, int | float)
+            else None
+        )
+
         for key, value in entry.items():
             if key == "vor_id":
                 if self.vor_id is None and isinstance(value, str) and value.strip():
@@ -272,12 +292,23 @@ class Station:
 
         lat = entry.get("latitude") or entry.get("_lat")
         lng = entry.get("longitude") or entry.get("_lng")
-        if isinstance(lat, int | float):
-            latitude = float(lat)
-            self.extras["latitude"] = latitude
-        if isinstance(lng, int | float):
-            longitude = float(lng)
-            self.extras["longitude"] = longitude
+        new_lat = float(lat) if isinstance(lat, int | float) else None
+        new_lon = float(lng) if isinstance(lng, int | float) else None
+
+        # Resolve the final coordinate via the inertia helper. Drifts
+        # below ``STATION_DRIFT_TOLERANCE_METERS`` (default 150 m) are
+        # absorbed — the existing coords win, eliminating churn-only
+        # diffs in ``data/stations.json``. Drifts at or above the
+        # threshold are accepted as legitimate relocations. First-time
+        # coords (no existing) and missing-from-upstream cases are
+        # handled by the helper's rules 1+2.
+        merged_lat, merged_lon = apply_coordinate_inertia(
+            existing_lat, existing_lon, new_lat, new_lon
+        )
+        if merged_lat is not None:
+            self.extras["latitude"] = merged_lat
+        if merged_lon is not None:
+            self.extras["longitude"] = merged_lon
 
 
 @dataclass
