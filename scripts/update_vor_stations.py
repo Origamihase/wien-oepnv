@@ -584,7 +584,22 @@ def fetch_vor_stops_from_api(
                     headers={"Accept": "application/json"},
                 )
             except requests.RequestException as exc:
-                log.warning("VOR API request for %s failed: %s", station_id, exc)
+                # Security: ``VorAuth`` injects the VAO ``accessId`` query
+                # parameter into the prepared request URL. When the
+                # network layer fails, ``urllib3`` wraps the underlying
+                # error into a ``MaxRetryError`` whose message embeds the
+                # full URL — including ``accessId=<SECRET>``. Logging the
+                # bare ``exc`` via ``%s`` writes the credential to
+                # errors.log and CI-runner stdout (clear-text-logging
+                # dataflow, mirrors the 2026-05-08 fix in
+                # src/utils/http.py:_resolve_hostname_safe). Logging only
+                # the exception class name suppresses the URL while
+                # preserving the failure-mode diagnostic.
+                log.warning(
+                    "VOR API request for %s failed: %s",
+                    station_id,
+                    type(exc).__name__,
+                )
                 stop = fallback_map.get(station_id)
                 if stop:
                     stops.append(stop)
