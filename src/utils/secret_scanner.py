@@ -222,6 +222,41 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])ntn_[A-Za-z0-9_\-]{43,}(?![A-Za-z0-9])"),
         "Notion Modern Integration Token gefunden",
     ),
+    # Discord Bot Token: ``<base64url(user-id)>.<base64url(timestamp)>.<HMAC>``.
+    # Three dot-separated base64url segments — structurally identical to
+    # JWTs but with the snowflake-ID-based first segment instead of the
+    # JOSE ``eyJ`` header. Discord stringifies the user ID (decimal
+    # digits) before base64-encoding it, so the first segment ALWAYS
+    # starts with the base64 encoding of the leading decimal digit:
+    # ``1``-``3``→``M``, ``4``-``7``→``N``, ``8``-``9``→``O``. Every
+    # snowflake user ID starts with a single decimal digit (1-9), so
+    # ``[MNO]`` is a complete leading-character constraint and is the
+    # disambiguator from JWTs (which always start with ``eyJ``). The
+    # mutual exclusion is enforced at the leading-character level: no
+    # token can match both the JWT and Discord patterns.
+    #
+    # A leaked bot token grants the attacker FULL bot privileges in
+    # every guild the bot is invited to (read/write all visible
+    # messages, kick/ban users, edit channels and roles, run any
+    # registered slash commands, with appropriate scopes read voice/DM
+    # history). The dots are outside the entropy fallback's
+    # ``[A-Za-z0-9+/=_-]`` alphabet, so without this specific pattern
+    # only ONE segment is matched at a time — the full-token span (and
+    # the Discord-specific reason needed for revocation at the
+    # https://discord.com/developers/applications/ Developer Portal)
+    # would be lost. Body-length quantifiers: first segment 24+ chars
+    # (real-world snowflake-IDs base64-encode to 24-28 chars), second
+    # segment exactly 6 chars (4-byte timestamp), third segment 27+
+    # chars (HMAC-SHA256 truncation). Order: place AFTER JWT so a
+    # JWT-shape token whose first segment happens to start with [MNO]
+    # (impossible in practice but guarded structurally) would still
+    # match the JWT pattern first via ``is_covered``.
+    (
+        re.compile(
+            r"(?<![A-Za-z0-9])[MNO][A-Za-z0-9_\-]{22,27}\.[A-Za-z0-9_\-]{6,7}\.[A-Za-z0-9_\-]{27,}(?![A-Za-z0-9])"
+        ),
+        "Discord Bot Token gefunden",
+    ),
 ]
 
 

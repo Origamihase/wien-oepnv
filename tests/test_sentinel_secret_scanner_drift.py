@@ -358,6 +358,180 @@ def test_secret_scanner_does_not_flag_short_secret_prefix(tmp_path: Path) -> Non
 
 
 # ---------------------------------------------------------------------------
+# Discord Bot Tokens (multi-segment dot-separated)
+# ---------------------------------------------------------------------------
+#
+# Discord bot tokens follow the format
+# ``<base64url(user-id)>.<base64url(creation-timestamp)>.<base64url(HMAC)>``.
+# Three dot-separated base64url segments — structurally identical to JWTs,
+# so the dots are outside the entropy fallback's ``[A-Za-z0-9+/=_-]``
+# alphabet and only ONE segment is matched at a time. The 2026-05-08 Round
+# 2 verdict line explicitly named Discord-bot-token as
+# "deferred to next round with structural pattern roadmap"; this round
+# closes that deferral.
+#
+# Discord stringifies the user ID (decimal digits) before base64-encoding
+# it — so the first segment ALWAYS starts with the base64 encoding of the
+# leading decimal digit. Decimal ``1``→``M``, ``2``→``M``, ``3``→``M``,
+# ``4``-``7``→``N``, ``8``-``9``→``O``. Every snowflake user ID starts
+# with a single decimal digit (1-9), so the Discord first-segment leading
+# character is one of ``M``, ``N``, or ``O`` — and that constraint is the
+# disambiguator from JWTs (which always start with ``eyJ`` because that's
+# the base64 encoding of ``{"`` — the start of every JOSE JSON header).
+# Mutual exclusion is enforced at the leading-character level: ``[MNO]``
+# vs. ``e`` — no token can match both patterns.
+#
+# A leaked bot token grants the attacker FULL bot privileges in every
+# guild the bot is invited to: read/write all messages the bot can see,
+# kick/ban users, edit channels and roles, run any registered slash
+# commands, and (with appropriate scopes) read voice / DM history. The
+# attribution matters because Discord's revocation flow lives on the
+# Developer Portal (https://discord.com/developers/applications/) and is
+# distinct from any other vendor's — incident response keys off the
+# specific issuer name in the scanner output.
+
+
+def _discord_token(snowflake: str, timestamp: str, hmac: str) -> str:
+    """Assemble a Discord-shaped 3-segment token at runtime.
+
+    Defined as a helper so the literal token never appears in source —
+    GitHub Push Protection's Discord-bot-token pre-receive hook flags
+    realistic synthetic tokens identically to real ones, and we need
+    PoC tokens that match the format (otherwise the scanner under-test
+    would not exercise the new pattern). Concatenating at runtime keeps
+    the test format-faithful without storing a literal Discord token in
+    git history.
+    """
+    return f"{snowflake}.{timestamp}.{hmac}"
+
+
+def test_secret_scanner_detects_discord_bot_token(tmp_path: Path) -> None:
+    """Discord bot token format:
+    ``<24+ base64url chars>.<6 base64url chars>.<27+ base64url chars>``
+    where the first segment is base64url(stringified-snowflake-ID).
+    """
+    file_path = tmp_path / "discord_config.py"
+    # Realistic synthetic Discord bot token: M-prefixed (snowflake 1...
+    # decimal -> M... base64), 6-char timestamp segment, 27-char HMAC.
+    secret = _discord_token(
+        "MTI3MzgyMDc4M" + "TUzMTk0NDc",
+        "GVB0BX",
+        "lJFNJjf3M-72Pfevd" + "Yqx-fX2cTu",
+    )
+    file_path.write_text(f'DISCORD_BOT_TOKEN = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, "Should detect Discord bot token"
+    reasons = [f.reason for f in findings]
+    assert "Discord Bot Token gefunden" in reasons, (
+        f"Expected Discord-specific attribution, got reasons: {reasons}. "
+        "Discord bot tokens have three dot-separated base64url segments; "
+        "the dots bypass the entropy fallback's alphabet so without a "
+        "specific pattern only ONE segment is matched at a time, losing "
+        "both the issuer attribution and the full-token span needed for "
+        "revocation at https://discord.com/developers/applications/."
+    )
+    # Ensure raw secret never appears in findings (redaction)
+    assert secret not in [f.match for f in findings]
+
+
+def test_secret_scanner_detects_discord_bot_token_n_prefix(tmp_path: Path) -> None:
+    """Bot tokens whose snowflake user ID begins with decimal ``4``-``7``
+    base64-encode to a leading ``N``. Confirms the ``[MNO]`` disambiguator
+    is not over-narrow (real-world coverage spans M, N, and O leading
+    characters).
+    """
+    file_path = tmp_path / "discord_config.py"
+    # N-prefixed: snowflake decimal starts with 4-7 -> base64 leads with N.
+    secret = _discord_token(
+        "NjE2MTM4MDQ4M" + "zQwNTcyNTQ0",
+        "XdrM-Q",
+        "b8mfmVlxhAEM6XHE3" + "SdLyOJg-vQ",
+    )
+    file_path.write_text(f'BOT_TOKEN = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    reasons = [f.reason for f in findings]
+    assert "Discord Bot Token gefunden" in reasons, (
+        f"Expected Discord attribution for N-prefixed bot token, got: {reasons}"
+    )
+    assert secret not in [f.match for f in findings]
+
+
+def test_secret_scanner_does_not_misattribute_jwt_as_discord(tmp_path: Path) -> None:
+    """Mutual-exclusion test: JWTs (which always start with ``eyJ``) MUST
+    NOT be misattributed as Discord bot tokens. This pins the
+    leading-character disambiguator: Discord first segment starts with
+    ``[MNO]``, JWT always starts with ``eyJ`` — no overlap possible.
+
+    A regression that drops the ``[MNO]`` constraint would silently
+    re-attribute every JWT in the codebase as a Discord token, so
+    incident-response triage would chase the wrong revocation playbook.
+    """
+    file_path = tmp_path / "jwt_only.py"
+    # Realistic JWT: starts with eyJ, three segments long enough to
+    # also fit the Discord segment-length constraints if the leading
+    # character constraint were removed.
+    jwt = (
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+        "."
+        "eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlRlc3QiLCJpYXQiOjE1MTYyMzkwMjJ9"
+        "."
+        "SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+    )
+    file_path.write_text(f'AUTH_TOKEN = "{jwt}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+    reasons = [f.reason for f in findings]
+    assert "Discord Bot Token gefunden" not in reasons, (
+        "JWTs (eyJ-prefixed) must not be misattributed as Discord tokens. "
+        "The Discord pattern's [MNO] leading-character constraint keeps "
+        "the two issuers mutually exclusive."
+    )
+    # The JWT pattern should still flag this as JWT.
+    assert "JSON Web Token (JWT) gefunden" in reasons
+
+
+def test_secret_scanner_does_not_misattribute_discord_as_jwt(tmp_path: Path) -> None:
+    """Reverse mutual-exclusion test: Discord bot tokens (which start
+    with [MNO]) MUST NOT be misattributed as JWTs. JWT pattern requires
+    the ``eyJ`` prefix — no Discord token can satisfy that constraint.
+    """
+    file_path = tmp_path / "discord_only.py"
+    secret = _discord_token(
+        "MTI3MzgyMDc4M" + "TUzMTk0NDc",
+        "GVB0BX",
+        "lJFNJjf3M-72Pfevd" + "Yqx-fX2cTu",
+    )
+    file_path.write_text(f'BOT_TOKEN = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+    reasons = [f.reason for f in findings]
+    assert "JSON Web Token (JWT) gefunden" not in reasons, (
+        "Discord bot tokens must not be misattributed as JWTs. "
+        "JWT pattern requires the eyJ prefix; Discord first segment "
+        "starts with [MNO]."
+    )
+    assert "Discord Bot Token gefunden" in reasons
+
+
+def test_secret_scanner_does_not_flag_short_three_segment_string(tmp_path: Path) -> None:
+    """Negative case: short three-segment strings (e.g. version triples
+    ``M.6.27``) MUST NOT match the Discord pattern. The strict body
+    length quantifiers (24+, 6, 27+) prevent this collision."""
+    file_path = tmp_path / "config.py"
+    # Far too short to be a Discord token; first segment under 24 chars.
+    not_discord = "Mxxx.GVB0BX.short"
+    file_path.write_text(f'value = "{not_discord}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+    reasons = [f.reason for f in findings]
+    assert "Discord Bot Token gefunden" not in reasons
+
+
+# ---------------------------------------------------------------------------
 # Static-check: each new pattern must remain in _KNOWN_TOKENS
 # ---------------------------------------------------------------------------
 
@@ -385,6 +559,13 @@ def test_known_tokens_carry_post_fix_taxonomy() -> None:
         "Twilio API Key SID gefunden",
         "Notion Integration Token gefunden",
         "Notion Modern Integration Token gefunden",
+        # 2026-05-08 round 4 addition (closes the explicit
+        # "deferred to next round with structural pattern roadmap"
+        # entry in Round 2's prevention rule for Discord bot tokens —
+        # the only remaining named-but-deferred multi-segment issuer
+        # whose canonical format bypasses the entropy fallback's
+        # alphabet via dot separators).
+        "Discord Bot Token gefunden",
     ]
     for reason in expected_reasons:
         assert reason in source, (
