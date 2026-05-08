@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 09 May 2026 01:30:25 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2026 01:43:13 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Verunreinigung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6</guid>
+      <pubDate>Sat, 09 May 2026 01:15:00 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 01:43:13 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 01:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Am 09.05.2026]</description>
+      <content:encoded><![CDATA[Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 09.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N31: Busse halten in 5B Haltestelle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">99c0f0d91bebb27b44d688aa64a7f76e32acd8e71ce8e2fb023d1dcc8992f5fa</guid>
+      <pubDate>Sat, 09 May 2026 00:55:19 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 01:43:13 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 00:55:19 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 05:00:00 +0200</ext:ends_at>
+      <description>[Am 09.05.2026]</description>
+      <content:encoded><![CDATA[[Am 09.05.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N46: Busse halten bei Linie 48A in Burggasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -63,28 +85,6 @@
       <ext:ends_at>Sat, 09 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 09.05.2026]</description>
       <content:encoded><![CDATA[[Am 09.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">72eb75aa42c7e47445cd50c7115766c40679cb9642b1c117c5e7dcae91dab1e4</guid>
-      <pubDate>Fri, 08 May 2026 23:59:00 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 08 May 2026 23:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [08.05.2026 – 09.05.2026]</description>
-      <content:encoded><![CDATA[Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[08.05.2026 – 09.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f563448e7fb71558e6eef46dca2bf47130d05fc4cbb4ec67d362ce9b66884713</guid>
-      <pubDate>Fri, 08 May 2026 23:59:00 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 08 May 2026 23:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [08.05.2026 – 09.05.2026]</description>
-      <content:encoded><![CDATA[Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[08.05.2026 – 09.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N29: Busse halten auf der Hauptfahrbahn]]></title>
