@@ -45,10 +45,22 @@ from src.places.diagnostics import permission_hint
 from src.places.merge import BoundingBox, MergeConfig, merge_places, load_stations
 from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
 from src.utils.env import load_default_env_files
-from src.utils.files import atomic_write
+from src.utils.files import atomic_write, read_capped_text
 from src.feed.config import InvalidPathError, validate_path
 
 LOGGER = logging.getLogger("places.cli")
+
+# Security: per-loader byte cap. Pre-fix ``_write_if_changed`` read the
+# existing ``stations.json`` via ``path.read_text(encoding="utf-8")``
+# with NO size cap before deciding whether to skip the write — a
+# planted huge file at the target path raised ``MemoryError`` past the
+# surrounding handler and crashed the cron pipeline. Post-fix
+# ``read_capped_text`` returns ``None`` and the function proceeds to
+# overwrite the poisoned state with the freshly-fetched stations
+# (the safe default — the freshly-fetched payload is the source of
+# truth, the on-disk file is a cache that may be corrupted). 50 MiB
+# matches the canonical ``DEFAULT_MAX_TEXT_FILE_BYTES`` ceiling.
+MAX_STATIONS_FILE_BYTES = 50 * 1024 * 1024
 
 
 @dataclass(frozen=True)
@@ -296,8 +308,18 @@ def _dump_changes(
 def _write_if_changed(path: Path, stations: Sequence[Mapping[str, object]]) -> None:
     payload = json.dumps({"stations": list(stations)}, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
     if path.exists():
-        current = path.read_text(encoding="utf-8")
-        if current == payload:
+        # Security: ``read_capped_text`` enforces a TOCTOU-safe size cap
+        # so a planted huge ``stations.json`` cannot exhaust memory and
+        # crash the cron pipeline. ``None`` (oversized / decode error)
+        # falls through to overwrite — treating the poisoned state as
+        # "different" so the freshly-fetched payload always wins.
+        current = read_capped_text(
+            path,
+            MAX_STATIONS_FILE_BYTES,
+            label="existing stations.json",
+            logger=LOGGER,
+        )
+        if current is not None and current == payload:
             LOGGER.info("Stations file already up-to-date")
             return
     path.parent.mkdir(parents=True, exist_ok=True)

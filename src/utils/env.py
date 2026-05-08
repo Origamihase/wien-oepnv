@@ -25,6 +25,7 @@ import re
 from pathlib import Path
 from collections.abc import Iterable, Mapping, MutableMapping
 
+from .files import read_capped_text
 from .logging import sanitize_log_message
 
 __all__ = [
@@ -34,7 +35,30 @@ __all__ = [
     "load_env_file",
     "load_default_env_files",
     "sanitize_log_message",
+    "MAX_ENV_FILE_BYTES",
+    "MAX_SECRET_FILE_BYTES",
+    "DOCKER_SECRETS_DIR",
 ]
+
+# Security: per-loader byte caps for the three on-disk parsers in this
+# module. Pre-fix every site used the unsafe ``Path.read_text(...)``
+# shape with no size cap whatsoever — a planted huge file at the
+# operator-controlled credential / .env path raised ``MemoryError`` at
+# import time and crashed the entire feed-build pipeline. Each cap is
+# sized at >>1000x the largest legitimate shape so the cap does NOT
+# introduce a false-positive rejection of valid state:
+#   - ``.env`` / ``data/secrets.env`` files are typically a few KiB at
+#     most; 1 MiB is ~1000x and accommodates every legitimate
+#     configuration shape.
+#   - Systemd / Docker secrets are typically a single line (token,
+#     password, certificate); 1 MiB is ~10000x legit and matches the
+#     existing ``places/quota.py:MAX_QUOTA_FILE_BYTES`` ceiling.
+MAX_ENV_FILE_BYTES = 1 * 1024 * 1024
+MAX_SECRET_FILE_BYTES = 1 * 1024 * 1024
+
+# Module-level constant so tests can monkeypatch the docker secrets
+# location without spoofing the filesystem.
+DOCKER_SECRETS_DIR = Path("/run/secrets")
 
 _TRUE_VALUES = {"1", "true", "t", "yes", "y", "on"}
 _FALSE_VALUES = {"0", "false", "f", "no", "n", "off"}
@@ -116,6 +140,12 @@ def read_secret(name: str, default: str = "") -> str:
     3. Environment Variable (os.getenv)
     """
     # 1. Systemd Credentials
+    # Security: ``read_capped_text`` enforces a TOCTOU-safe size cap
+    # (open + ``os.fstat`` on the open fd) so a planted huge file at
+    # ``$CREDENTIALS_DIRECTORY/<name>`` cannot exhaust memory at startup.
+    # Pre-fix the unbounded ``read_text`` here would raise ``MemoryError``
+    # past ``except (OSError, ValueError)`` and crash every script that
+    # imports a provider module via ``read_secret``.
     cred_dir = os.getenv("CREDENTIALS_DIRECTORY")
     if cred_dir:
         base_dir = Path(cred_dir).resolve()
@@ -123,24 +153,31 @@ def read_secret(name: str, default: str = "") -> str:
         try:
             path.relative_to(base_dir)
             if path.exists() and path.is_file():
-                try:
+                content = read_capped_text(
+                    path,
+                    MAX_SECRET_FILE_BYTES,
+                    label="systemd credential",
+                )
+                if content is not None:
                     # Secrets are typically single-line, but strip to be safe
-                    return path.read_text(encoding="utf-8").strip()
-                except (OSError, ValueError):
-                    pass
+                    return content.strip()
         except ValueError:
             pass
 
     # 2. Docker Secrets
-    docker_base = Path("/run/secrets").resolve()
+    # Security: same TOCTOU-safe cap as the systemd branch above.
+    docker_base = DOCKER_SECRETS_DIR.resolve()
     docker_secret = (docker_base / name).resolve()
     try:
         docker_secret.relative_to(docker_base)
         if docker_secret.exists() and docker_secret.is_file():
-            try:
-                return docker_secret.read_text(encoding="utf-8").strip()
-            except (OSError, ValueError):
-                pass
+            content = read_capped_text(
+                docker_secret,
+                MAX_SECRET_FILE_BYTES,
+                label="docker secret",
+            )
+            if content is not None:
+                return content.strip()
     except ValueError:
         pass
 
@@ -370,14 +407,27 @@ def load_env_file(
 
     _warn_if_world_readable(path)
 
-    try:
-        content = path.read_text(encoding="utf-8")
-    except (OSError, UnicodeDecodeError) as exc:
-        logging.getLogger("build_feed").warning(
-            "Kann .env-Datei %s nicht lesen – überspringe sie (%s: %s)",
+    # Security: ``read_capped_text`` enforces a TOCTOU-safe size cap so a
+    # planted huge .env file at any of the candidate paths
+    # (``.env``, ``data/secrets.env``, ``config/secrets.env``, plus any
+    # ``WIEN_OEPNV_ENV_FILES`` extras) cannot exhaust memory at startup.
+    # Pre-fix the unbounded ``path.read_text(encoding="utf-8")`` here
+    # would raise ``MemoryError`` past ``except (OSError,
+    # UnicodeDecodeError)`` (``MemoryError`` is rooted at
+    # ``BaseException``, not ``Exception``) and crash every script that
+    # invokes ``load_default_env_files`` BEFORE any provider runs.
+    log = logging.getLogger("build_feed")
+    content = read_capped_text(
+        path,
+        MAX_ENV_FILE_BYTES,
+        label=".env",
+        logger=log,
+    )
+    if content is None:
+        log.warning(
+            "Kann .env-Datei %s nicht lesen – überspringe sie (zu groß / "
+            "ungültiges UTF-8 / I/O-Fehler).",
             path,
-            type(exc).__name__,
-            exc,
         )
         return {}
     parsed = _parse_env_file(content)
