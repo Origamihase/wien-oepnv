@@ -246,7 +246,14 @@ class OSMOverpassClient:
             try:
                 self._session.close()
             except Exception as exc:  # pragma: no cover - defensive
-                LOGGER.debug("Error closing OSM session: %s", exc)
+                # Security (Clear-Text-Logging Drift Round 3): defensive
+                # framework catch-all — sanitize the exception text so any
+                # control characters / ANSI escapes in the underlying
+                # session's error message cannot forge log lines.
+                LOGGER.debug(
+                    "Error closing OSM session: %s",
+                    sanitize_log_arg(str(exc)),
+                )
 
     def fetch_stations(self) -> list[OSMStation]:
         """Query Overpass for Vienna stations with the project's tag set.
@@ -285,7 +292,19 @@ class OSMOverpassClient:
         except requests.RequestException as exc:
             raise OSMOverpassError(f"Overpass request failed: {type(exc).__name__}") from exc
         except ValueError as exc:
-            raise OSMOverpassError(f"Overpass request rejected: {exc}") from exc
+            # Security (Clear-Text-Logging Drift Round 3): ``request_safe``
+            # raises ``ValueError`` for SSRF / size / content-type failures
+            # with a sanitised URL embedded in the message. Embedding the
+            # full ``str(exc)`` here propagates that text upstream via
+            # ``str(OSMOverpassError)`` to ``update_station_directory.py``'s
+            # framework catch-all, where it is logged. Today's
+            # ``request_safe`` ValueErrors do not carry credentials, but
+            # defense-in-depth says we surface only the type name so a
+            # future ValueError shape (with credential-bearing text) cannot
+            # silently re-enable a leak. The chained ``from exc`` keeps
+            # the full context available for ``logging.exception``-style
+            # tracebacks where operators have explicitly opted in.
+            raise OSMOverpassError(f"Overpass request rejected: {type(exc).__name__}") from exc
 
         if response.status_code != 200:
             raise OSMOverpassError(f"Overpass returned HTTP {response.status_code}")

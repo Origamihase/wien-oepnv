@@ -103,6 +103,7 @@ try:  # pragma: no cover - convenience for module execution
     )
     from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
     from src.utils.env import get_bool_env, load_default_env_files
+    from src.utils.logging import sanitize_log_arg
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from places.client import (  # type: ignore[no-redef]
         DEFAULT_INCLUDED_TYPES,
@@ -124,6 +125,7 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
     )
     from places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file  # type: ignore[no-redef]
     from utils.env import get_bool_env, load_default_env_files  # type: ignore[no-redef]
+    from utils.logging import sanitize_log_arg  # type: ignore[no-redef]
 
 DEFAULT_OUTPUT_PATH = _ROOT / "data" / "stations.json"
 DEFAULT_PENDLER_PATH = _ROOT / "data" / "pendler_bst_ids.json"
@@ -834,12 +836,25 @@ def _enrich_with_osm(
     try:
         places = fetch_osm_places()
     except OSMOverpassError as exc:
-        logger.error("OSM Overpass enrichment failed: %s", exc)
+        # Security (Clear-Text-Logging Drift Round 3): the OSMOverpassError
+        # text is itself sanitised at the raise site, but route through
+        # ``sanitize_log_arg`` for defence-in-depth — any future shape that
+        # surfaces attacker-controlled bytes (e.g. raw protobuf parser
+        # excerpts, urllib3 connection-pool stack traces) will be stripped
+        # of control characters before reaching the cron runner's stdout.
+        logger.error(
+            "OSM Overpass enrichment failed: %s",
+            sanitize_log_arg(str(exc)),
+        )
         return False
     except Exception as exc:  # pragma: no cover - defensive logging path
+        # Security (Clear-Text-Logging Drift Round 3): framework catch-all —
+        # the exception text is fully attacker-controlled when an upstream
+        # library raises a custom subclass with a poisoned ``__str__``.
         logger.error(
             "Unexpected error during OSM Overpass enrichment: %s: %s",
-            type(exc).__name__, exc,
+            type(exc).__name__,
+            sanitize_log_arg(str(exc)),
         )
         return False
 

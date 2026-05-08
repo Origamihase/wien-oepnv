@@ -216,7 +216,14 @@ def _read_gtfs_stops(path: Path) -> dict[str, object]:
                 _sys.path.insert(0, str(scripts_dir.parent))
             from scripts.gtfs import read_gtfs_stops
         except (ImportError, OSError) as exc:  # pragma: no cover - defensive
-            log.warning("Could not load scripts.gtfs.read_gtfs_stops: %s", exc)
+            # Security (Clear-Text-Logging Drift Round 3): route the exception
+            # text through ``sanitize_log_arg`` so any control characters /
+            # ANSI escapes / secret-shaped tokens in the underlying loader's
+            # error message are stripped before reaching the cron logger.
+            log.warning(
+                "Could not load scripts.gtfs.read_gtfs_stops: %s",
+                sanitize_log_arg(str(exc)),
+            )
             return {}
     try:
         return cast(dict[str, object], read_gtfs_stops(path))
@@ -224,7 +231,7 @@ def _read_gtfs_stops(path: Path) -> dict[str, object]:
         log.warning(
             "Could not read GTFS stops file %s: %s",
             sanitize_log_arg(str(path)),
-            exc,
+            sanitize_log_arg(str(exc)),
         )
         return {}
 
@@ -358,10 +365,15 @@ def _iter_trip_updates(feed: object) -> Iterable[object]:
                 continue
             out.append(trip_update)
     except Exception as exc:  # pragma: no cover - defensive logging path
+        # Security (Clear-Text-Logging Drift Round 3): the protobuf parser's
+        # exception messages can quote bytes from the failure offset. Route
+        # via ``sanitize_log_arg`` so attacker-controlled bytes in the
+        # response payload cannot forge log lines (\\n / \\r) or terminal
+        # escape sequences (\\x1b[…]).
         log.warning(
             "Unexpected error while iterating GTFS-RT entities: %s: %s",
             type(exc).__name__,
-            exc,
+            sanitize_log_arg(str(exc)),
         )
         return ()
     return out
@@ -393,10 +405,13 @@ def iter_corridor_delays(
         try:
             stop_time_updates = list(getattr(trip_update, "stop_time_update", []))
         except Exception as exc:  # pragma: no cover - defensive
+            # Security (Clear-Text-Logging Drift Round 3): see the parallel
+            # site in ``_iter_trip_updates`` — protobuf parser bytes are
+            # attacker-controlled, sanitize before logging.
             log.warning(
                 "Unexpected error reading stop_time_update list: %s: %s",
                 type(exc).__name__,
-                exc,
+                sanitize_log_arg(str(exc)),
             )
             continue
         for stu in stop_time_updates:
@@ -530,10 +545,12 @@ def fetch_events(
     try:
         stop_index = load_stop_id_index(stops_path)
     except (OSError, ValueError) as exc:
+        # Security (Clear-Text-Logging Drift Round 3): file path components
+        # in the OSError text may contain control characters; sanitize.
         log.warning(
             "Cannot resolve Stammstrecke stop ids: %s: %s",
             type(exc).__name__,
-            exc,
+            sanitize_log_arg(str(exc)),
         )
         return []
 
