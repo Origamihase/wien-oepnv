@@ -311,13 +311,33 @@ def test_update_vor_stations_handles_response_depth_bomb(
     from src.providers import vor as vor_provider
 
     # Build a fake session whose .get() returns a depth-bomb response.
-    fake_response = requests.Response()
-    fake_response.status_code = 200
-    fake_response._content = DEEP_BOMB_BYTES
-    fake_response.headers["Content-Type"] = "application/json"
+    # Post-fix the call site streams the body via ``read_response_safe`` so
+    # the mock has to expose ``iter_content`` and ``Content-Length`` —
+    # ``requests.Response`` with only ``_content`` set is no longer
+    # sufficient because ``iter_content`` needs a real ``raw`` stream.
+    class _DepthBombResponse:
+        def __init__(self, body: bytes) -> None:
+            self.status_code = 200
+            self._body = body
+            self.headers: dict[str, str] = {
+                "Content-Type": "application/json",
+                "Content-Length": str(len(body)),
+            }
+
+        def iter_content(self, chunk_size: int = 8192) -> Any:
+            for i in range(0, len(self._body), chunk_size):
+                yield self._body[i:i + chunk_size]
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def close(self) -> None:
+            return None
+
+    fake_response = _DepthBombResponse(DEEP_BOMB_BYTES)
 
     class FakeSession:
-        def get(self, *args: Any, **kwargs: Any) -> requests.Response:
+        def get(self, *args: Any, **kwargs: Any) -> _DepthBombResponse:
             return fake_response
 
         def __enter__(self) -> FakeSession:

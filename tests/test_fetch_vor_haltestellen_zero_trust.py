@@ -24,10 +24,23 @@ def _make_session(payload: object | None, *, raise_decode: bool = False) -> Magi
     session = MagicMock()
     response = MagicMock()
     response.raise_for_status.return_value = None
+
+    # Post-fix the call site streams the body via ``read_response_safe`` and
+    # decodes from bytes — so the mock has to expose a deterministic
+    # ``iter_content`` and ``Content-Length`` header. ``MagicMock``'s
+    # default ``iter_content`` returns a MagicMock which iterates to nothing,
+    # leaving an empty body that gets misclassified as invalid JSON.
     if raise_decode:
-        response.json.side_effect = json.JSONDecodeError("Expecting value", "x", 0)
+        body = b"<<not valid json>>"
     else:
-        response.json.return_value = payload
+        try:
+            body = json.dumps(payload).encode("utf-8")
+        except (TypeError, ValueError):
+            body = repr(payload).encode("utf-8")
+    response.headers = {"Content-Length": str(len(body))}
+    response.iter_content.return_value = iter([body])
+    response.close.return_value = None
+    response.json.return_value = payload
     session.post.return_value = response
     return session
 

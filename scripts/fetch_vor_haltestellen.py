@@ -22,7 +22,7 @@ if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
 from src.utils.files import atomic_write, read_capped_json  # noqa: E402
-from src.utils.http import session_with_retries  # noqa: E402
+from src.utils.http import read_response_safe, session_with_retries  # noqa: E402
 
 
 DEFAULT_STATIONS_PATH = BASE_DIR / "data" / "stations.json"
@@ -37,6 +37,16 @@ DEFAULT_OUTPUT_PATH = BASE_DIR / "data" / "vor-haltestellen.csv"
 # loader and crashes the script. 50 MiB is ~285x the production
 # stations.json and far below any cron runner's cgroup limit.
 MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
+# Same axis as ``MAX_JSON_FILE_BYTES`` but for the network-response side.
+# The on-disk size-bomb rounds (Round 1/2/3) closed file-based parsers;
+# this constant closes the orthogonal network sibling: a compromised
+# upstream / DNS-hijack / MITM that serves a 1 GiB ``[0,0,…]`` body
+# would otherwise buffer the response into ``response.content`` and OOM
+# the script (``MemoryError`` is ``BaseException``, not caught by the
+# existing ``except (ValueError, RecursionError)`` handler). 10 MiB is
+# ~200x the largest legitimate VAO mgate / location.name response and
+# matches ``src/utils/http.py``'s ``MAX_PAYLOAD_SIZE``.
+MAX_VOR_API_RESPONSE_BYTES = 10 * 1024 * 1024
 DEFAULT_CONFIG_URL = "https://anachb.vor.at/webapp/js/hafas_webapp_config.js"
 DEFAULT_MGATE_URL = "https://anachb.vor.at/hamm/gate"
 
@@ -158,9 +168,20 @@ def load_pendler_candidate_names(path: Path) -> list[str]:
 
 
 def fetch_access_id(session: requests.Session, config_url: str = DEFAULT_CONFIG_URL) -> str:
-    resp = session.get(config_url, timeout=30)
+    # Security: stream the body and cap the byte budget BEFORE buffering.
+    # A compromised upstream / DNS-hijack / MITM that returns a 1 GiB
+    # ``[0,0,…]`` payload would otherwise crash the script via
+    # ``MemoryError`` (a ``BaseException`` subclass that escapes any
+    # surrounding ``except (ValueError, RecursionError)`` handler).
+    # ``read_response_safe`` enforces ``Content-Length`` pre-check AND a
+    # streaming cap on ``iter_content`` so the body is never fully
+    # buffered when oversized. Mirrors the canonical pattern from
+    # ``src/places/client.py:423`` and ``src/utils/http.py:request_safe``.
+    resp = session.get(config_url, timeout=30, stream=True)
     resp.raise_for_status()
-    match = re.search(r'aid:"([A-Za-z0-9]+)"', resp.text)
+    content = read_response_safe(resp, max_bytes=MAX_VOR_API_RESPONSE_BYTES, timeout=30)
+    text = content.decode("utf-8", errors="replace")
+    match = re.search(r'aid:"([A-Za-z0-9]+)"', text)
     if match:
         aid = match.group(1)
         # Security: ``aid`` is the VAO ``accessId`` credential that
@@ -408,7 +429,12 @@ def _build_request_payload(access_id: str, name: str) -> dict[str, object]:
 
 def fetch_candidates(session: requests.Session, mgate_url: str, access_id: str, name: str) -> list[Mapping[str, object]]:
     payload = _build_request_payload(access_id, name)
-    resp = session.post(mgate_url, json=payload, timeout=30)
+    # Security: stream the body and cap the byte budget BEFORE buffering.
+    # See ``fetch_access_id`` above for the full threat-model rationale.
+    # The cap-fire surfaces as ``ValueError`` which the existing
+    # ``except (ValueError, RecursionError)`` handler catches, so the
+    # per-name loop in ``main`` continues uninterrupted.
+    resp = session.post(mgate_url, json=payload, timeout=30, stream=True)
     resp.raise_for_status()
     # Zero Trust: a 200 response from the VAO mgate endpoint does not guarantee
     # the body is a JSON object. A list / null / scalar would slip past
@@ -419,7 +445,8 @@ def fetch_candidates(session: requests.Session, mgate_url: str, access_id: str, 
     # station's resolution. Route decode and shape failures through the same
     # branch so the caller keeps iterating.
     try:
-        data = resp.json()
+        content = read_response_safe(resp, max_bytes=MAX_VOR_API_RESPONSE_BYTES, timeout=30)
+        data = json.loads(content.decode("utf-8"))
     except (ValueError, RecursionError):
         # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
         # served by a compromised upstream / DNS-hijack / MITM.
