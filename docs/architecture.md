@@ -269,7 +269,101 @@ in the build log without any extra wiring.
 
 ---
 
-## 5. Cross-references
+## 5. OSM-First Station-Directory Enrichment
+
+Station coordinates and metadata are populated by a layered enrichment
+pipeline orchestrated by `scripts/update_station_directory.py`. The
+hierarchy is **strictly OSM-first**: OpenStreetMap (Overpass API) is
+the primary directory source, and Google Places is demoted to a
+**secondary fallback** that only ever processes stations OSM could not
+resolve.
+
+```mermaid
+flowchart LR
+    A[ÖBB Verzeichnis<br/>(Excel)] --> B[Station list<br/>without coordinates]
+    B --> C[CI gate:<br/>scripts/check_overpass_status.py]
+    C -- mirror up --> D[OSM Overpass<br/>(src/places/osm_client.py)]
+    C -- mirror down --> E[Skip OSM<br/>via WIEN_OEPNV_OSM_ENRICH=0]
+    D --> F[CircuitBreaker<br/>5 fail / 5 min cool-off]
+    F --> G[merge_places<br/>(name + distance match)]
+    G --> H[Stations missing coords?]
+    E --> H
+    H -- yes --> I[Google Places fallback<br/>(strict missing subset only)]
+    H -- no --> J[stations.json]
+    I --> J
+```
+
+**Why OSM-first:**
+
+- **Open data, no quota.** The Overpass API is publicly reachable
+  without an API key and operates under a fair-use policy. Every
+  Vienna station-directory refresh would otherwise burn the Google
+  Places monthly free-tier quota, which is finite and shared with
+  other ad-hoc verification runs.
+- **Editor-maintained passenger names.** The `_NAME_PRIORITY` ladder
+  in `src/places/osm_client.py:_select_name` selects
+  `name:de` → `name` → `official_name(:de)` → `loc_name(:de)` →
+  `alt_name(:de)` → `short_name(:de)`. Long passenger-friendly forms
+  (`"Wien Hauptbahnhof"`, `"Wien Praterstern"`) consistently win over
+  cryptic ÖBB internal abbreviations while compound structures stay
+  intact because the long-form keys are picked first.
+- **Strict typing.** The Overpass tag bag is exposed as the
+  `OSMTags` TypedDict (see `src/places/osm_client.py`). Every key the
+  project actually consumes (naming, classification, accessibility,
+  operator metadata) is enumerated with `NotRequired[str]`, so
+  `mypy --strict` catches misspelled tag reads at every call site.
+
+**Why Google Places is the fallback only:**
+
+- After the OSM merge runs, `_stations_missing_coordinates` filters
+  the station list to exactly the entries that still lack `latitude`
+  / `longitude`. That subset — and **only** that subset — is passed
+  to `_enrich_with_google_places(..., missing_subset=...)`. Stations
+  OSM already resolved are never re-keyed by the fallback even when
+  a Google Place happens to share their name.
+- When OSM covers every station with coordinates the Google Places
+  call is skipped entirely. The free-tier quota (`PLACES_LIMIT_*`
+  env-vars) is preserved for genuinely missing entries.
+
+**Network resilience layers:**
+
+1. **CI smoke test** (`scripts/check_overpass_status.py`) probes
+   the Overpass endpoint with an `out count` query at the start of
+   the `update-stations.yml` workflow. If Overpass is unreachable the
+   workflow flips `WIEN_OEPNV_OSM_ENRICH=0`, skipping the OSM run
+   entirely instead of waiting on stalled urllib3 retries.
+2. **`urllib3` JitterRetry** (`session_with_retries`) handles
+   transient 5xx / connection-reset within a single OSM call.
+3. **`CircuitBreaker`** (`src/places/osm_client.py:_BREAKER`,
+   `failure_threshold=5`, `recovery_timeout=300s`) remembers failure
+   streaks across calls. Five consecutive failures park the breaker
+   in OPEN for five minutes, short-circuiting every subsequent call
+   to `OSMOverpassError` so the cron pipeline doesn't self-DDoS the
+   public mirror.
+4. **`request_safe`** wraps every OSM call in the security state
+   machine (§2): SSRF, redirect, content-type, slowloris, payload
+   cap.
+5. **Test-isolation** — `tests/conftest.py` registers an autouse
+   `reset_circuit_breakers` fixture that returns every known
+   project-owned breaker to CLOSED before each test. Tests that
+   intentionally trip a breaker (such as
+   `test_fetch_stations_breaker_opens_after_repeated_failures`)
+   no longer leak OPEN state to subsequent tests, eliminating an
+   entire class of order-dependent flakes.
+
+The relevant CLI flags / env vars:
+
+| Flag / env | Default | Purpose |
+|---|---|---|
+| `--osm-enrich` / `--no-osm-enrich` | enabled | CLI toggle for the OSM step |
+| `WIEN_OEPNV_OSM_ENRICH` | `1` | Env override; `0` skips OSM (used by CI when the smoke check fails) |
+| `--google-enrich` / `--no-google-enrich` | enabled | CLI toggle for the Google Places fallback |
+| `OVERPASS_URL` | `overpass-api.de` | Trusted-mirror override; rejected unless on the allow-list |
+| `MERGE_MAX_DIST_M` | `150` | Distance threshold for the dedup match in `merge_places` |
+
+---
+
+## 6. Cross-references
 
 - **Security audit history** → `.jules/sentinel.md`
 - **Performance optimisations** → `.jules/apex.md`

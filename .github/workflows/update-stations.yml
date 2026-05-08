@@ -43,7 +43,19 @@ jobs:
             || echo "::warning::VOR refresh failed; using pinned data/vor-haltestellen.csv"
         continue-on-error: true
 
+      - name: Overpass smoke check (fail-fast / skip-OSM gate)
+        id: overpass-smoke
+        # ``--allow-skip`` downgrades network-failure exits to success so the
+        # job can keep running with the Google Places fallback when the public
+        # Overpass mirror is degraded. The step's outcome is wired into the
+        # next step's ``WIEN_OEPNV_OSM_ENRICH`` env so we don't waste the
+        # urllib3 retry budget on a known-down upstream.
+        run: python scripts/check_overpass_status.py --allow-skip --verbose
+        continue-on-error: true
+
       - name: Refresh station directory
+        env:
+          WIEN_OEPNV_OSM_ENRICH: ${{ steps.overpass-smoke.outcome == 'success' && '1' || '0' }}
         run: python scripts/update_all_stations.py --verbose
 
       - name: Regenerate validation report

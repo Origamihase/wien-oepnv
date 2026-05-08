@@ -29,7 +29,7 @@ import json
 import logging
 import os
 from dataclasses import dataclass
-from typing import Any, cast
+from typing import Any, NotRequired, TypedDict, cast
 from collections.abc import Iterable, Iterator
 from urllib.parse import urlparse
 
@@ -48,11 +48,59 @@ __all__ = [
     "OSMOverpassConfig",
     "OSMOverpassError",
     "OSMStation",
+    "OSMTags",
     "VIENNA_BOUNDING_BOX",
     "build_overpass_query",
     "convert_to_place",
     "get_overpass_endpoint",
 ]
+
+
+# Strictly-typed view of the Overpass tag bag we consume. Overpass
+# elements carry an open tag dictionary so any key is technically valid;
+# this TypedDict pins the keys the project actually inspects (name
+# selection, type derivation, accessibility flags, operator attribution)
+# so mypy --strict catches typos at read sites. Several OSM tag keys are
+# NOT valid Python identifiers (``name:de``, ``ref:IFOPT`` …), so the
+# functional ``TypedDict(...)`` form is used; every field is wrapped in
+# ``NotRequired`` because Overpass payloads almost never carry the full
+# inventory at once and we never want a missing key to be a type error.
+# Unknown keys are tolerated at parse time (see ``_normalize_tags``) but
+# discouraged at consumption sites; the canonical source of truth for
+# the OSM enrichment pipeline is this TypedDict.
+OSMTags = TypedDict(
+    "OSMTags",
+    {
+        # --- Naming hierarchy (consumed by ``_select_name``)
+        # Listed in the priority order the selector applies.
+        "name": NotRequired[str],
+        "name:de": NotRequired[str],
+        "short_name": NotRequired[str],
+        "short_name:de": NotRequired[str],
+        "alt_name": NotRequired[str],
+        "alt_name:de": NotRequired[str],
+        "official_name": NotRequired[str],
+        "official_name:de": NotRequired[str],
+        "loc_name": NotRequired[str],
+        "loc_name:de": NotRequired[str],
+        # --- Public-transport / railway classification
+        "public_transport": NotRequired[str],
+        "railway": NotRequired[str],
+        "train": NotRequired[str],
+        "subway": NotRequired[str],
+        "light_rail": NotRequired[str],
+        "tram": NotRequired[str],
+        "bus": NotRequired[str],
+        "station": NotRequired[str],
+        # --- Accessibility / operator metadata (informational only)
+        "wheelchair": NotRequired[str],
+        "operator": NotRequired[str],
+        "network": NotRequired[str],
+        "ref": NotRequired[str],
+        "ref:IFOPT": NotRequired[str],
+        "uic_ref": NotRequired[str],
+    },
+)
 
 LOGGER = logging.getLogger("places.osm")
 
@@ -114,7 +162,7 @@ class OSMStation:
     name: str
     latitude: float
     longitude: float
-    tags: dict[str, str]
+    tags: OSMTags
 
     @property
     def types(self) -> list[str]:
@@ -355,22 +403,72 @@ def _extract_coordinates(element: dict[str, Any]) -> tuple[float, float] | None:
     return None
 
 
-def _normalize_tags(raw: object) -> dict[str, str]:
+_NAME_PRIORITY: tuple[str, ...] = (
+    # Passenger-friendly German labels rank highest. They carry the
+    # diacritics and full station-name spelling Wiener Linien / OSM
+    # editors actually maintain (e.g. "Wien Hauptbahnhof"), and they
+    # consistently override cryptic ÖBB internal names like
+    # "Wien Hbf" / "Wien Hbf (Tief)".
+    "name:de",
+    "name",
+    # Localised long-form variants come next. They preserve compound
+    # structures ("Hauptbahnhof", "Westbahnhof") that the merger leans
+    # on for fuzzy alignment with the directory.
+    "official_name:de",
+    "official_name",
+    "loc_name:de",
+    "loc_name",
+    # ``alt_name`` is often a passenger-friendly alias that
+    # supplements the canonical ÖBB code; ranked above short_name so
+    # full names beat abbreviations whenever the editor has supplied
+    # both.
+    "alt_name:de",
+    "alt_name",
+    # ``short_name`` is a deliberate abbreviation. Only used when no
+    # full-form name is available — preserves the "Hauptbahnhof" rule
+    # because ``name`` / ``official_name`` will have been picked first
+    # if they exist.
+    "short_name:de",
+    "short_name",
+)
+
+
+def _normalize_tags(raw: object) -> OSMTags:
+    """Validate-and-narrow an Overpass element's ``tags`` mapping.
+
+    Overpass guarantees keys and values are strings, but the JSON
+    decoder returns ``object`` so the loop discards any drift defensively
+    (e.g. a ``null`` value smuggled past a Vespian mirror). The result
+    is cast to :data:`OSMTags` so downstream call sites benefit from
+    strict typing without paying a per-key validation cost; the parser
+    contract is that the returned dict is the project's canonical view
+    of the element's tags, even if it carries keys not enumerated in
+    the TypedDict.
+    """
     if not isinstance(raw, dict):
-        return {}
+        return cast(OSMTags, {})
     out: dict[str, str] = {}
     for key, value in raw.items():
         if isinstance(key, str) and isinstance(value, str):
             out[key] = value
-    return out
+    return cast(OSMTags, out)
 
 
-def _select_name(tags: dict[str, str]) -> str | None:
-    # Prefer the German name tag for Vienna (the project is German-only),
-    # then the canonical ``name`` tag, then the alt_name as a last
-    # resort. A station without any of these is dropped — without a name
-    # it cannot be matched to the directory anyway.
-    for key in ("name:de", "name", "alt_name", "official_name"):
+def _select_name(tags: OSMTags) -> str | None:
+    """Return the most passenger-friendly station label available.
+
+    The hierarchy intentionally promotes Wiener-Linien / OSM editor
+    names ahead of cryptic ÖBB internal abbreviations, while still
+    preserving compound forms like "Wien Hauptbahnhof" — those land in
+    ``name`` / ``official_name`` first, so the long form wins by
+    construction. Localised ``:de`` keys edge out the bare key when
+    both exist so umlauts and full spellings (e.g. "Wien
+    Praterstern" → "Wien Praterstern", not "Praterstern") are
+    preserved verbatim. ``short_name`` is consulted last so a
+    passenger-friendly alias (``alt_name``) beats an editor-supplied
+    abbreviation whenever the OSM record carries both.
+    """
+    for key in _NAME_PRIORITY:
         candidate = _coerce_str(tags.get(key))
         if candidate is not None:
             return candidate

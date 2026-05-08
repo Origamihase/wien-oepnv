@@ -360,3 +360,88 @@ def test_osm_station_types_is_stable() -> None:
     # Order is canonical: public_transport first, then railway, no
     # duplicates even when the values are identical.
     assert station.types == ["station"]
+
+
+# ---------------------------------------------------------------- name selection
+
+
+def test_select_name_prefers_full_passenger_friendly_form() -> None:
+    """Long passenger-friendly forms beat ÖBB internal abbreviations.
+
+    The fix-shape: the priority ladder picks ``name:de`` ahead of
+    ``short_name`` so "Wien Hauptbahnhof" wins over "Wien Hbf".
+    """
+    tags = osm_module._normalize_tags(
+        {
+            "short_name": "Wien Hbf",
+            "name": "Wien Hauptbahnhof",
+            "name:de": "Wien Hauptbahnhof",
+        }
+    )
+    assert osm_module._select_name(tags) == "Wien Hauptbahnhof"
+
+
+def test_select_name_alt_name_beats_short_name() -> None:
+    """``alt_name`` is a passenger-facing alias and ranks above
+    ``short_name``, which is by convention a deliberate abbreviation."""
+    tags = osm_module._normalize_tags(
+        {
+            "short_name": "Hbf",
+            "alt_name": "Wien Hauptbahnhof",
+        }
+    )
+    assert osm_module._select_name(tags) == "Wien Hauptbahnhof"
+
+
+def test_select_name_official_name_preserves_compound_structure() -> None:
+    """When the canonical ``name`` carries an abbreviation but
+    ``official_name`` carries the full compound, the latter should
+    still lose against ``name`` because passenger texts use ``name``.
+    The hierarchy is intentional: the compound-preservation contract
+    relies on editors picking the full form for ``name`` itself.
+    """
+    tags = osm_module._normalize_tags(
+        {
+            "name": "Westbahnhof",
+            "official_name": "Wien Westbahnhof",
+        }
+    )
+    assert osm_module._select_name(tags) == "Westbahnhof"
+    # When ``name`` is missing the compound form wins.
+    tags_only_official = osm_module._normalize_tags({"official_name": "Wien Westbahnhof"})
+    assert osm_module._select_name(tags_only_official) == "Wien Westbahnhof"
+
+
+def test_select_name_returns_none_when_no_known_keys() -> None:
+    tags = osm_module._normalize_tags({"unknown_key": "foo"})
+    assert osm_module._select_name(tags) is None
+
+
+# ---------------------------------------------------------------- TypedDict shape
+
+
+def test_osm_tags_typed_dict_accepts_known_keys() -> None:
+    """OSMTags is consumed only via .get() so the runtime check is the
+    type-check itself. This regression test makes sure the typed dict
+    name + functional construction round-trip is stable for the project's
+    canonical tag set, including the colon-bearing keys that need the
+    functional ``TypedDict(...)`` form.
+    """
+    sample = osm_module._normalize_tags(
+        {
+            "name": "Wien Mitte",
+            "name:de": "Wien Mitte",
+            "public_transport": "station",
+            "railway": "station",
+            "wheelchair": "yes",
+            "ref:IFOPT": "at:9:1234",
+            "uic_ref": "8100009",
+            "operator": "ÖBB",
+        }
+    )
+    assert sample.get("name") == "Wien Mitte"
+    assert sample.get("name:de") == "Wien Mitte"
+    assert sample.get("public_transport") == "station"
+    assert sample.get("ref:IFOPT") == "at:9:1234"
+    assert sample.get("uic_ref") == "8100009"
+    assert sample.get("operator") == "ÖBB"

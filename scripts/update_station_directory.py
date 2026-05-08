@@ -7,6 +7,7 @@ are harmonized with the previous export, geodata is used to flag Vienna
 locations and commuter belt entries, and stations outside this area are omitted.
 The data is obtained from the official ÖBB Open-Data portal.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -16,6 +17,7 @@ import json
 import logging
 import os
 import re
+
 # Bandit B404: subprocess is required to invoke internal cache-refresh
 # scripts. Inputs are static lists, never user-supplied.
 import subprocess  # nosec B404
@@ -33,10 +35,7 @@ import openpyxl
 
 __all__ = ["subprocess"]
 
-DEFAULT_SOURCE_URL = (
-    "https://data.oebb.at/dam/jcr:fce22daf-0dd8-4a15-80b4-dbca6e80ce38/"
-    "Verzeichnis%20der%20Verkehrsstationen.xlsx"
-)
+DEFAULT_SOURCE_URL = "https://data.oebb.at/dam/jcr:fce22daf-0dd8-4a15-80b4-dbca6e80ce38/" "Verzeichnis%20der%20Verkehrsstationen.xlsx"
 _ROOT = Path(__file__).resolve().parents[1]
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
@@ -134,10 +133,7 @@ DEFAULT_GTFS_STOPS_PATH = _ROOT / "data" / "gtfs" / "stops.txt"
 DEFAULT_WL_HALTEPUNKTE_PATH = _ROOT / "data" / "wienerlinien-ogd-haltepunkte.csv"
 DEFAULT_VOR_STOPS_PATH = _ROOT / "data" / "vor-haltestellen.csv"
 REQUEST_TIMEOUT = 30  # seconds
-USER_AGENT = (
-    "wien-oepnv station updater "
-    "(https://github.com/Origamihase/wien-oepnv)"
-)
+USER_AGENT = "wien-oepnv station updater " "(https://github.com/Origamihase/wien-oepnv)"
 
 HEADER_VARIANTS: dict[str, set[str]] = {
     "name": {"verkehrsstation"},
@@ -187,9 +183,7 @@ def _refresh_provider_caches(*, script_dir: Path | None = None) -> None:
     base_dir = script_dir or Path(__file__).resolve().parent
     for target in _CACHE_REFRESH_TARGETS:
         if target.availability_check and not target.availability_check():
-            logger.info(
-                "Skipping %s cache refresh (credentials not available)", target.label
-            )
+            logger.info("Skipping %s cache refresh (credentials not available)", target.label)
             continue
 
         command: list[str] | None = None
@@ -203,11 +197,7 @@ def _refresh_provider_caches(*, script_dir: Path | None = None) -> None:
                 break
 
         if command is None or script_path is None:
-            message = (
-                "No cache refresh script found for %s; skipping"
-                if target.optional
-                else "Cache refresh script missing for %s"
-            )
+            message = "No cache refresh script found for %s; skipping" if target.optional else "Cache refresh script missing for %s"
             log_method = logger.debug if target.optional else logger.warning
             log_method(message, target.label)
             continue
@@ -217,14 +207,10 @@ def _refresh_provider_caches(*, script_dir: Path | None = None) -> None:
             # Enforce a 5-minute timeout to prevent indefinite hangs (DoS protection)
             result = subprocess.run(command, check=False, shell=False, timeout=300)  # nosec B603
         except subprocess.TimeoutExpired:
-            logger.warning(
-                "%s cache refresh timed out after 300s; continuing", target.label
-            )
+            logger.warning("%s cache refresh timed out after 300s; continuing", target.label)
             continue
         except OSError as exc:  # pragma: no cover - execution environment issues
-            logger.warning(
-                "Failed to execute %s cache refresh (%s); continuing", target.label, exc
-            )
+            logger.warning("Failed to execute %s cache refresh (%s); continuing", target.label, exc)
             continue
 
         if result.returncode != 0:
@@ -411,8 +397,11 @@ def _load_gtfs_locations(path: Path) -> dict[str, LocationInfo]:
     # oversized / decode-error so subsequent code receives an empty
     # mapping rather than crashing the cron pipeline.
     content = read_capped_text(
-        path, MAX_CSV_LOCATIONS_BYTES,
-        encoding="utf-8", label="GTFS stops", logger=logger,
+        path,
+        MAX_CSV_LOCATIONS_BYTES,
+        encoding="utf-8",
+        label="GTFS stops",
+        logger=logger,
     )
     if content is None:
         return locations
@@ -450,8 +439,11 @@ def _load_wienerlinien_locations(path: Path) -> dict[str, LocationInfo]:
     # Security: see _load_gtfs_locations for the canonical CSV
     # size-bomb defence shape (read_capped_text + io.StringIO).
     content = read_capped_text(
-        path, MAX_CSV_LOCATIONS_BYTES,
-        encoding="utf-8", label="WL haltepunkte", logger=logger,
+        path,
+        MAX_CSV_LOCATIONS_BYTES,
+        encoding="utf-8",
+        label="WL haltepunkte",
+        logger=logger,
     )
     if content is None:
         return locations
@@ -490,8 +482,11 @@ def _load_vor_locations(path: Path) -> dict[str, LocationInfo]:
     # Security: see _load_gtfs_locations for the canonical CSV
     # size-bomb defence shape (read_capped_text + io.StringIO).
     content = read_capped_text(
-        path, MAX_CSV_LOCATIONS_BYTES,
-        encoding="utf-8-sig", label="VOR stops", logger=logger,
+        path,
+        MAX_CSV_LOCATIONS_BYTES,
+        encoding="utf-8-sig",
+        label="VOR stops",
+        logger=logger,
     )
     if content is None:
         return locations
@@ -552,12 +547,13 @@ def _load_existing_station_entries(
     # the cap a wide-but-flat planted file would propagate
     # ``MemoryError`` past the loader and crash the cron pipeline.
     payload = read_capped_json(
-        path, MAX_JSON_FILE_BYTES, label="Existing station directory",
+        path,
+        MAX_JSON_FILE_BYTES,
+        label="Existing station directory",
     )
     if payload is None:
         logger.warning(
-            "Could not parse existing station directory %s "
-            "(missing/invalid/oversized)",
+            "Could not parse existing station directory %s " "(missing/invalid/oversized)",
             path,
         )
         return {}, []
@@ -612,9 +608,7 @@ def _load_existing_station_entries(
     return mapping, manual_stations
 
 
-def _restore_existing_metadata(
-    stations: Iterable[Station], existing_entries: dict[str, dict[str, object]]
-) -> None:
+def _restore_existing_metadata(stations: Iterable[Station], existing_entries: dict[str, dict[str, object]]) -> None:
     for station in stations:
         try:
             lookup_id = str(int(float(station.bst_id)))
@@ -738,9 +732,7 @@ def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
         raise ValueError("BOUNDINGBOX_VIENNA must define min_lat/min_lng/max_lat/max_lng") from exc
 
 
-def _load_tiles_configuration(
-    tiles_file: Path | None, env: MutableMapping[str, str]
-) -> Sequence[Tile]:
+def _load_tiles_configuration(tiles_file: Path | None, env: MutableMapping[str, str]) -> Sequence[Tile]:
     if tiles_file:
         return load_tiles_from_file(tiles_file)
     return load_tiles_from_env(env.get("PLACES_TILES"))
@@ -861,7 +853,8 @@ def _enrich_with_osm(
     complete = filter_complete_places(places)
     logger.info(
         "OSM Overpass returned %d candidates (%d after completeness filter)",
-        len(places), len(complete),
+        len(places),
+        len(complete),
     )
     if not complete:
         return True
@@ -901,16 +894,37 @@ def _enrich_with_osm(
 
     logger.info(
         "OSM Overpass enrichment updated %d stations; %d candidates already covered",
-        updated, len(outcome.skipped_places),
+        updated,
+        len(outcome.skipped_places),
     )
     return True
 
 
 def _enrich_with_google_places(
-    stations: list[Station], *, tiles_file: Path | None
+    stations: list[Station],
+    *,
+    tiles_file: Path | None,
+    missing_subset: list[Station] | None = None,
 ) -> None:
+    """Enrich stations via the Google Places fallback.
+
+    *missing_subset* — when provided — is the strict subset of stations
+    that the merge step is allowed to touch. The OSM-first / Google-second
+    contract requires Google Places to ONLY backfill entries that the
+    primary OSM run could not resolve; stations that already carry
+    OSM-supplied coordinates must not be re-keyed by the fallback even if
+    a Google Place happens to share their name. When *missing_subset* is
+    ``None`` the function falls back to the legacy whole-list behaviour
+    (used by the no-OSM cron path); callers in the OSM-first flow must
+    always pass an explicit subset.
+    """
     load_default_env_files()
     env = os.environ
+
+    target_stations = missing_subset if missing_subset is not None else stations
+    if not target_stations:
+        logger.info("Skipping Google Places enrichment: no stations are missing coordinates")
+        return
 
     try:
         api_key = get_places_api_key()
@@ -965,7 +979,11 @@ def _enrich_with_google_places(
         logger.error("Google Places enrichment failed: %s", exc)
         return
 
-    _merge_google_metadata(stations, places, MergeConfig(max_distance_m=merge_distance, bounding_box=bounding_box))
+    _merge_google_metadata(
+        target_stations,
+        places,
+        MergeConfig(max_distance_m=merge_distance, bounding_box=bounding_box),
+    )
 
 
 class _NormalizedCSVRow:
@@ -995,8 +1013,11 @@ def _iter_vor_rows(path: Path) -> Iterable[_NormalizedCSVRow]:
     if not path.exists():
         raise FileNotFoundError(str(path))
     content = read_capped_text(
-        path, MAX_CSV_LOCATIONS_BYTES,
-        encoding="utf-8-sig", label="VOR stops", logger=logger,
+        path,
+        MAX_CSV_LOCATIONS_BYTES,
+        encoding="utf-8-sig",
+        label="VOR stops",
+        logger=logger,
     )
     if content is None:
         return
@@ -1098,9 +1119,7 @@ def _select_vor_stop(station: Station, candidates: list[VORStop]) -> VORStop | N
             stops = outside
 
     normalized_station = _harmonize_station_name(station.name).casefold()
-    name_matches = [
-        stop for stop in stops if _harmonize_station_name(stop.name).casefold() == normalized_station
-    ]
+    name_matches = [stop for stop in stops if _harmonize_station_name(stop.name).casefold() == normalized_station]
     if len(name_matches) == 1:
         return name_matches[0]
     return None
@@ -1123,11 +1142,14 @@ def _load_vor_name_to_id_map(path: Path | None) -> dict[str, str]:
     # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). Same
     # cron-pipeline blast radius as the other loaders in this script.
     payload = read_capped_json(
-        path, MAX_JSON_FILE_BYTES, label="VOR mapping",
+        path,
+        MAX_JSON_FILE_BYTES,
+        label="VOR mapping",
     )
     if payload is None:
         logger.warning(
-            "Could not read VOR mapping %s (missing/invalid/oversized)", path,
+            "Could not read VOR mapping %s (missing/invalid/oversized)",
+            path,
         )
         return {}
     if not isinstance(payload, list):
@@ -1163,9 +1185,7 @@ def _assign_vor_ids(
     # (Mistelbach + Mistelbach Stadt both ending up with 430420200).
     # Pre-load existing assignments from `vor_id` already on the
     # stations (bypasses idempotency on re-runs).
-    used_vor_ids: set[str] = {
-        station.vor_id for station in stations if station.vor_id
-    }
+    used_vor_ids: set[str] = {station.vor_id for station in stations if station.vor_id}
 
     def _try_claim(station: Station, vor_id: str) -> bool:
         if vor_id in used_vor_ids:
@@ -1173,7 +1193,9 @@ def _assign_vor_ids(
                 "Refusing to assign vor_id=%s to %s (bst_id=%s) — already "
                 "claimed by another station; the fetcher resolved both "
                 "names to the same VOR stop",
-                vor_id, station.name, station.bst_id,
+                vor_id,
+                station.name,
+                station.bst_id,
             )
             return False
         station.vor_id = vor_id
@@ -1204,9 +1226,7 @@ def _assign_vor_ids(
         if selected:
             _try_claim(station, selected.vor_id)
         else:
-            logger.debug(
-                "Ambiguous VOR stop candidates for %s (%s)", station.name, station.bst_id
-            )
+            logger.debug("Ambiguous VOR stop candidates for %s (%s)", station.name, station.bst_id)
 
 
 def _harmonize_station_names(
@@ -1299,20 +1319,14 @@ def parse_args() -> argparse.Namespace:
         dest="osm_enrich",
         action=argparse.BooleanOptionalAction,
         default=True,
-        help=(
-            "Use OpenStreetMap (Overpass API) as the primary station "
-            "directory source (default: enabled)"
-        ),
+        help=("Use OpenStreetMap (Overpass API) as the primary station " "directory source (default: enabled)"),
     )
     parser.add_argument(
         "--google-enrich",
         dest="google_enrich",
         action=argparse.BooleanOptionalAction,
         default=True,
-        help=(
-            "Use Google Places API as a fallback when OSM data is "
-            "missing for a station (default: enabled)"
-        ),
+        help=("Use Google Places API as a fallback when OSM data is " "missing for a station (default: enabled)"),
     )
     parser.add_argument(
         "--places-tiles-file",
@@ -1407,9 +1421,7 @@ def extract_stations(workbook_stream: BytesIO) -> list[Station]:
     workbook = openpyxl.load_workbook(workbook_stream, data_only=True, read_only=True)
     try:
         worksheet = workbook.active
-        header_row_index, column_map = _find_header_row(
-            worksheet.iter_rows(min_row=1, max_row=25, values_only=True)
-        )
+        header_row_index, column_map = _find_header_row(worksheet.iter_rows(min_row=1, max_row=25, values_only=True))
         logger.debug("Detected header row at index %s", header_row_index)
         stations: list[Station] = []
         seen_ids: set[str] = set()
@@ -1517,7 +1529,9 @@ def load_pendler_station_ids(path: Path) -> set[str]:
     # ``ValueError`` so the canonical exit-1 contract for malformed
     # state is preserved.
     data = read_capped_json(
-        path, MAX_JSON_FILE_BYTES, label="Pendler station list",
+        path,
+        MAX_JSON_FILE_BYTES,
+        label="Pendler station list",
     )
     if data is None:
         raise ValueError(f"Invalid JSON in pendler station list: {path}")
@@ -1528,9 +1542,7 @@ def load_pendler_station_ids(path: Path) -> set[str]:
     pendler_ids: set[str] = set()
     for entry in data:
         if isinstance(entry, bool):
-            raise ValueError(
-                f"Invalid pendler station identifier (boolean) in {path}: {entry!r}"
-            )
+            raise ValueError(f"Invalid pendler station identifier (boolean) in {path}: {entry!r}")
         if isinstance(entry, int):
             pendler_ids.add(str(entry))
             continue
@@ -1568,12 +1580,13 @@ def load_pendler_name_candidates(path: Path) -> set[str]:
     # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). Same
     # cron-pipeline blast radius as the other loaders in this script.
     data = read_capped_json(
-        path, MAX_JSON_FILE_BYTES, label="Pendler candidates",
+        path,
+        MAX_JSON_FILE_BYTES,
+        label="Pendler candidates",
     )
     if data is None:
         logger.warning(
-            "Invalid JSON in pendler candidates file %s "
-            "(missing/invalid/oversized)",
+            "Invalid JSON in pendler candidates file %s " "(missing/invalid/oversized)",
             path,
         )
         return set()
@@ -1584,9 +1597,7 @@ def load_pendler_name_candidates(path: Path) -> set[str]:
 
     raw = data.get("candidates", [])
     if not isinstance(raw, list):
-        logger.warning(
-            "Pendler candidates file %s: 'candidates' must be a list", path
-        )
+        logger.warning("Pendler candidates file %s: 'candidates' must be a list", path)
         return set()
 
     keys: set[str] = set()
@@ -1633,9 +1644,7 @@ def main() -> None:
     _harmonize_station_names(stations, existing_entries)
     _restore_existing_metadata(stations, existing_entries)
     pendler_ids = load_pendler_station_ids(path=args.pendler)
-    pendler_name_candidates = load_pendler_name_candidates(
-        path=args.pendler_candidates
-    )
+    pendler_name_candidates = load_pendler_name_candidates(path=args.pendler_candidates)
     location_index = _build_location_index(
         args.gtfs_stops,
         args.wl_haltepunkte,
@@ -1684,9 +1693,7 @@ def main() -> None:
         except ValueError as exc:
             logger.error("Invalid BOUNDINGBOX_VIENNA configuration: %s", exc)
             bounding_box = None
-        merge_distance = _parse_float(
-            env.get("MERGE_MAX_DIST_M"), key="MERGE_MAX_DIST_M", default=150.0
-        )
+        merge_distance = _parse_float(env.get("MERGE_MAX_DIST_M"), key="MERGE_MAX_DIST_M", default=150.0)
         osm_succeeded = _enrich_with_osm(
             stations,
             bounding_box=bounding_box,
@@ -1695,29 +1702,37 @@ def main() -> None:
     elif not cli_enabled:
         logger.info("Skipping OSM Overpass enrichment (--no-osm-enrich)")
     else:
-        logger.info(
-            "Skipping OSM Overpass enrichment (WIEN_OEPNV_OSM_ENRICH=0)"
-        )
+        logger.info("Skipping OSM Overpass enrichment (WIEN_OEPNV_OSM_ENRICH=0)")
 
     if getattr(args, "google_enrich", False):
         missing = _stations_missing_coordinates(stations)
-        if osm_succeeded and not missing:
+        if not missing:
             logger.info(
-                "Skipping Google Places enrichment: OSM already covered "
-                "all %d stations with coordinates", len(stations),
+                "Skipping Google Places enrichment: %s already covered all " "%d stations with coordinates",
+                "OSM" if osm_succeeded else "the existing directory",
+                len(stations),
             )
         else:
             if osm_succeeded:
                 logger.info(
-                    "Falling back to Google Places for %d stations still "
-                    "missing coordinates after OSM enrichment", len(missing),
+                    "Falling back to Google Places for %d stations still " "missing coordinates after OSM enrichment",
+                    len(missing),
                 )
             else:
                 logger.info(
-                    "Falling back to Google Places enrichment because "
-                    "OSM Overpass was unavailable",
+                    "Falling back to Google Places for %d stations missing " "coordinates (OSM Overpass was unavailable)",
+                    len(missing),
                 )
-            _enrich_with_google_places(stations, tiles_file=args.places_tiles_file)
+            # Pass the strict subset so Google never re-keys stations that
+            # OSM (or any earlier source) already resolved. The merge logic
+            # in src.places.merge would otherwise greedily match Google
+            # Places by name even when the existing entry is complete,
+            # giving the fallback authority it shouldn't have.
+            _enrich_with_google_places(
+                stations,
+                tiles_file=args.places_tiles_file,
+                missing_subset=missing,
+            )
     else:
         logger.info("Skipping Google Places enrichment (--no-google-enrich)")
 

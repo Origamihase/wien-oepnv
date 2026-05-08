@@ -38,6 +38,14 @@ jobs:
       - name: Validate stations
         run: python scripts/validate_stations.py
 
+      - name: Overpass smoke check (advisory)
+        # Probes the upstream Overpass mirror. Tests don't depend on Overpass
+        # — :class:`OSMOverpassClient` is mocked everywhere — so this step
+        # never fails the job; it just surfaces a warning when the mirror is
+        # degraded so flaky integration runs are easier to attribute.
+        run: python scripts/check_overpass_status.py --allow-skip --verbose
+        continue-on-error: true
+
       - name: Run pytest
         run: python -m pytest --cov --cov-report=term --cov-report=xml
 

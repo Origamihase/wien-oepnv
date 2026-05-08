@@ -227,9 +227,63 @@ def reset_vor_request_count(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> 
     if path.exists():
         path.unlink()
 
+
 @pytest.fixture(autouse=True)
 def reset_build_feed_state() -> None:
     import src.build_feed as build_feed
     from src.feed.providers import reset_registry
+
     build_feed.reset_module_state()
     reset_registry(with_defaults=True)
+
+
+# ---------------------------------------------------------------------------
+# CircuitBreaker test-isolation fixture
+#
+# Module-level :class:`src.utils.circuit_breaker.CircuitBreaker` instances
+# remember failure streaks across calls *and* across tests in the same
+# process. A test that intentionally trips a breaker (the OSM Overpass
+# breaker is the canonical example — see
+# ``tests/places/test_osm_client.py::test_fetch_stations_breaker_opens_after_repeated_failures``)
+# leaves the global in OPEN state for the rest of the suite, which then
+# fails any later test that exercises the same call site with a
+# ``CircuitBreakerOpen`` masquerading as the upstream's real failure.
+#
+# The autouse fixture below resets every project-owned CircuitBreaker
+# back to CLOSED + zero failures before each test runs. Adding a new
+# breaker is a single ``_iter_known_breakers`` line — no test boilerplate
+# required.
+# ---------------------------------------------------------------------------
+
+
+def _iter_known_breakers() -> Iterator[object]:
+    """Yield every module-level CircuitBreaker the project owns.
+
+    Imports are inside the function so a partial test environment (e.g.
+    a places-free worktree) never aborts collection. Each entry is
+    yielded as ``object`` because the actual type is an implementation
+    detail of the producing module.
+    """
+    from src.places import osm_client as _osm_module
+
+    yield _osm_module._BREAKER
+
+
+@pytest.fixture(autouse=True)
+def reset_circuit_breakers() -> Iterator[None]:
+    """Force every known CircuitBreaker back to CLOSED before each test.
+
+    Without this guard, a test that opens the breaker (intentionally or
+    by side-effect of a chaos run) would silently fail every later test
+    that touches the same call site, masking real upstream regressions
+    and creating order-dependent test failures.
+    """
+    for breaker in _iter_known_breakers():
+        reset = getattr(breaker, "reset", None)
+        if callable(reset):
+            reset()
+    yield
+    for breaker in _iter_known_breakers():
+        reset = getattr(breaker, "reset", None)
+        if callable(reset):
+            reset()
