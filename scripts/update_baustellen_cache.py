@@ -24,9 +24,20 @@ if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 from utils.cache import write_cache  # noqa: E402
+from utils.files import read_capped_json  # noqa: E402
 from utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
 from utils.ids import make_guid  # noqa: E402
 from utils.serialize import serialize_for_cache  # noqa: E402
+
+# Security cap against wide-but-flat JSON size-bomb attacks on the
+# bundled fallback geojson. The depth-bomb catch alone misses
+# ``MemoryError`` (a ``BaseException`` subclass) so a planted-huge file
+# (~1 GiB of ``[0,0,…]``) buffered via ``path.read_text()`` propagates
+# past the loader and crashes the cache update on the very path used
+# when the network is unreachable. Mirrors the canonical
+# ``MAX_*_FILE_BYTES`` contract from ``src/utils/cache.py`` /
+# ``src/utils/stations.py``.
+MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 
 LOGGER = logging.getLogger("update_baustellen_cache")
 
@@ -211,25 +222,25 @@ def _fetch_remote(url: str, timeout: int) -> dict[str, Any] | None:
 
 
 def _load_fallback(path: Path) -> dict[str, Any] | None:
-    try:
-        LOGGER.info("Baustellen: Verwende Fallback-Datei %s", path)
-        raw = path.read_text(encoding="utf-8")
-    except FileNotFoundError:
+    if not path.exists():
         LOGGER.error("Baustellen: Fallback-Datei %s fehlt", path)
         return None
-    except OSError as exc:
-        LOGGER.error("Baustellen: Fallback-Datei %s nicht lesbar (%s)", path, exc)
-        return None
-    try:
-        payload = json.loads(raw)
-    except (json.JSONDecodeError, RecursionError) as exc:
-        # Defence-in-depth: the bundled fallback file lives in-tree, but a
-        # compromised contributor (or accidental commit) could replace it
-        # with a depth-bomb document that crashes ``json.loads`` via
-        # ``RecursionError``. Mirror the canonical defence used for the
-        # network parser above so the cron job logs a clear error instead
-        # of terminating the process when the network is unreachable.
-        LOGGER.error("Baustellen: Fallback-Datei %s enthält ungültiges JSON (%s)", path, exc)
+    LOGGER.info("Baustellen: Verwende Fallback-Datei %s", path)
+    # Defence-in-depth: the bundled fallback file lives in-tree, but a
+    # compromised contributor (or accidental commit) could replace it
+    # with a depth-bomb document or a wide-but-flat size-bomb that
+    # propagates ``MemoryError`` (``BaseException``) past a depth-only
+    # catch. ``read_capped_json`` enforces both axes; on miss the cron
+    # job logs a clear error instead of terminating the process when
+    # the network is unreachable.
+    payload = read_capped_json(
+        path, MAX_JSON_FILE_BYTES, label="Baustellen Fallback", logger=LOGGER,
+    )
+    if payload is None:
+        LOGGER.error(
+            "Baustellen: Fallback-Datei %s enthält ungültiges JSON oder ist unlesbar",
+            path,
+        )
         return None
     # Zero Trust: a JSON-decodable file does not guarantee a JSON object.
     # ``_iter_features`` calls ``payload.get("type")`` / ``payload.get("features")``

@@ -35,12 +35,20 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from src.utils.files import atomic_write  # noqa: E402  (import after path setup)
+from src.utils.files import atomic_write, read_capped_json  # noqa: E402  (import after path setup)
 from src.utils.stations_validation import (  # noqa: E402
     StationValidationError,
     ValidationReport,
     validate_stations,
 )
+
+# Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
+# canonical ``MAX_*_FILE_BYTES`` contract from ``src/utils/cache.py`` /
+# ``src/utils/stations.py``: depth-bomb catch alone misses ``MemoryError``
+# (a ``BaseException`` subclass) so a planted-huge file would propagate
+# past the loader and crash the orchestrator after the merge has already
+# written. 50 MiB is ~285x the production stations.json.
+MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 
 _SCRIPT_ORDER = (
     "update_station_directory.py",
@@ -95,14 +103,16 @@ def run_script(python: str, script_path: Path, verbose: bool, output_flag: str, 
 
 
 def _load_stations(path: Path) -> list[Mapping[str, Any]]:
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError, RecursionError):
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
-        # post-merge stations file. The orchestrator uses this loader for
-        # diff detection — without the catch a depth-bomb would propagate
-        # past ``main()`` and crash the run after the merged file is
-        # already written, masking the real cause.
+    # Security: ``read_capped_json`` enforces both the depth-bomb catch
+    # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). The
+    # orchestrator uses this loader for diff detection — without the
+    # cap a wide-but-flat planted file would propagate ``MemoryError``
+    # past ``main()`` and crash the run after the merged file is
+    # already written, masking the real cause.
+    data = read_capped_json(
+        path, MAX_JSON_FILE_BYTES, label="Stations",
+    )
+    if data is None:
         return []
     if isinstance(data, dict):
         entries = data.get("stations", [])
@@ -237,19 +247,16 @@ def _render_diff_markdown(
 
 
 def _count_polygon_vertices(path: Path) -> int | None:
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError, RecursionError):
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
-        # on-disk polygon file (corrupted previous run, planted by a
-        # compromised CI runner). The orchestrator calls this at heartbeat-
-        # build time *after* the merged stations.json has already been
-        # atomically written, so an unhandled ``RecursionError`` would crash
-        # ``_build_heartbeat`` → ``main()`` and leave partial state with no
-        # heartbeat record. Returning ``None`` is the canonical fallback —
-        # the heartbeat records the polygon counter as unavailable and the
-        # cron job continues cleanly.
-        return None
+    # Security: ``read_capped_json`` enforces both the depth-bomb catch
+    # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). The
+    # orchestrator calls this at heartbeat-build time *after* the
+    # merged stations.json has already been atomically written, so an
+    # unhandled ``MemoryError`` (from the wide-but-flat axis the
+    # depth-bomb catch does NOT cover) would crash ``_build_heartbeat``
+    # → ``main()`` and leave partial state with no heartbeat record.
+    data = read_capped_json(
+        path, MAX_JSON_FILE_BYTES, label="Polygon",
+    )
     features = data.get("features") if isinstance(data, dict) else None
     if not isinstance(features, list):
         return None
