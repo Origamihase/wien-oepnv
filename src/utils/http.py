@@ -968,6 +968,14 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     """Resolve hostname using dnspython with a timeout to prevent thread exhaustion/DoS."""
     results = []
 
+    # Inline regex barrier for log sinks below. Callers pass
+    # ``urlparse(...).hostname`` which strips userinfo, but CodeQL's
+    # clear-text-logging dataflow tracker conservatively treats any string
+    # derived from a URL as potentially carrying credentials (the
+    # ``user:pass@host`` form). A whitelist over hostname-legal characters
+    # both breaks that flow and is recognised by the analyser as a sanitiser.
+    safe_host = re.sub(r"[^A-Za-z0-9.:_-]", "?", str(hostname))[:255]
+
     resolver = dns.resolver.Resolver()
     resolver.timeout = DNS_TIMEOUT
     resolver.lifetime = DNS_TIMEOUT
@@ -992,12 +1000,12 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
             pass
 
         if not results:
-            log.debug("DNS resolution yielded no A/AAAA records for %s", hostname)
+            log.debug("DNS resolution yielded no A/AAAA records for %s", safe_host)
 
     except dns.exception.Timeout:
-        log.warning("DNS resolution timed out for %s (DoS protection)", hostname)
+        log.warning("DNS resolution timed out for %s (DoS protection)", safe_host)
     except Exception as exc:
-        log.warning("Unexpected error during DNS resolution for %s: %s", hostname, exc)
+        log.warning("Unexpected error during DNS resolution for %s: %s", safe_host, exc)
 
     return results
 

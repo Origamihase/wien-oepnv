@@ -105,6 +105,24 @@ def _sanitize_log_detail(detail: str) -> str:
     return clean_message(sanitized)
 
 
+_GITHUB_ISSUE_URL_RE = re.compile(
+    r"^https://[^/\s]+/[^/\s]+/[^/\s]+/issues/(\d+)$"
+)
+
+
+def _extract_github_issue_number(url: str | None) -> str:
+    """Return the trailing issue number of a GitHub ``html_url``, else "".
+
+    Used as a CodeQL clear-text-logging barrier: ``re.match`` + ``group(1)``
+    is a recognised sanitiser, and the extracted value (digits, capped) is a
+    public identifier that cannot embed credentials.
+    """
+    if not url:
+        return ""
+    match = _GITHUB_ISSUE_URL_RE.match(url)
+    return match.group(1)[:32] if match else ""
+
+
 def _sanitize_code_span(text: str) -> str:
     """Sanitize text intended for inline code spans by replacing backticks."""
     return text.replace("`", "'")
@@ -921,10 +939,19 @@ class _GithubIssueReporter:
                         detail = message
             # Security: avoid log injection by stripping control characters.
             detail = _sanitize_log_detail(detail)
+            # Defence-in-depth + CodeQL barrier: the response object descends
+            # from a request that carried a Bearer token in its headers, so
+            # the dataflow analyser flags any unparsed response data as
+            # clear-text-logging of a secret. The helper above already
+            # performs equivalent regex scrubbing, but CodeQL is conservative
+            # across function boundaries — the inline whitelist below is
+            # recognised as a sanitiser and limits the body to printable
+            # ASCII within a bounded length.
+            safe_detail = re.sub(r"[^\x20-\x7e]", "?", str(detail))[:500]
             log.warning(
                 "GitHub-Antwort %s beim Erstellen des Issues: %s",
                 response.status_code,
-                detail,
+                safe_detail,
             )
             return
 
@@ -946,8 +973,13 @@ class _GithubIssueReporter:
             if isinstance(raw_url, str):
                 issue_url = raw_url
 
-        if issue_url:
-            log.info("Automatisches GitHub-Issue erstellt: %s", issue_url)
+        # The helper applies a regex-extraction barrier so the response-derived
+        # URL is never logged unparsed (the request carried a Bearer token, so
+        # CodeQL marks any direct log of unparsed response data as
+        # clear-text-logging of a secret).
+        issue_number = _extract_github_issue_number(issue_url)
+        if issue_number:
+            log.info("Automatisches GitHub-Issue erstellt: #%s", issue_number)
         else:
             log.info("Automatisches GitHub-Issue erstellt.")
 
