@@ -21,6 +21,7 @@ from collections.abc import Sequence
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from src.feed.logging_safe import setup_script_logging
 from src.providers import vor as vor_module
 from src.utils.env import load_default_env_files
 from src.utils.http import fetch_content_safe, session_with_retries
@@ -31,7 +32,9 @@ PROBE_QUERY = "Wien Hauptbahnhof"
 
 
 def _configure_logging() -> None:
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
+    # Sentinel: route through SafeFormatter so any raw exception text
+    # logged via %s in this script is sanitised at the formatter layer.
+    setup_script_logging(logging.INFO)
 
 
 def _build_probe_url() -> str:

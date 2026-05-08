@@ -42,6 +42,7 @@ import requests
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from src.feed.logging_safe import setup_script_logging
 from src.places.osm_client import (
     DEFAULT_OVERPASS_ENDPOINTS,
     get_overpass_endpoint,
@@ -65,7 +66,9 @@ _DEFAULT_TIMEOUT_S = 8.0
 
 def _configure_logging(verbose: bool) -> None:
     level = logging.DEBUG if verbose else logging.INFO
-    logging.basicConfig(level=level, format="%(levelname)s %(name)s: %(message)s")
+    # Sentinel: route through SafeFormatter so any raw exception text
+    # logged via %s in this script is sanitised at the formatter layer.
+    setup_script_logging(level)
 
 
 def _parse_args(argv: Sequence[str] | None) -> argparse.Namespace:

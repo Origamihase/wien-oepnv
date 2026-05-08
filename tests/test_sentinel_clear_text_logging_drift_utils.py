@@ -385,6 +385,16 @@ WALKER_MODULES: tuple[str, ...] = (
     "src/utils/locking.py",
     "src/utils/http.py",
     "src/build_feed.py",
+    # Extended in the post-Scribe Sentinel sweep (2026-05-08): every
+    # production module whose ``except Exception as exc`` paths log
+    # the bound exception now appears in this list. A regression here
+    # means a future contributor either added a new bare-exc logging
+    # site or removed an existing ``sanitize_log_arg`` wrap.
+    "src/feed/providers.py",
+    "src/feed/reporting.py",
+    "src/providers/vor.py",
+    "src/providers/oebb.py",
+    "src/providers/wl_fetch.py",
 )
 
 

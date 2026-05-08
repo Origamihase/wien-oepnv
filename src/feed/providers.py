@@ -11,6 +11,7 @@ from typing import Any, cast
 from collections.abc import Callable, Iterable
 
 from ..utils.cache import read_cache
+from ..utils.logging import sanitize_log_arg
 from .config import get_bool_env
 from ..feed_types import FeedItem
 
@@ -119,11 +120,15 @@ def _register_plugin_providers(module: ModuleType, module_name: str) -> None:
         try:
             register_callable(register_provider)
         except Exception as exc:  # pragma: no cover - defensive logging path
+            # Sentinel: ``exc`` carries plugin-supplied text that may contain
+            # ANSI/BiDi/control characters; route it through ``sanitize_log_arg``
+            # so log injection cannot leak through the SafeFormatter when a
+            # third-party plugin raises a hostile error message.
             log.error(
                 "Provider plugin %s.register_providers fehlgeschlagen: %s: %s",
                 module_name,
                 type(exc).__name__,
-                exc,
+                sanitize_log_arg(str(exc)),
             )
 
     providers_attr = getattr(module, "PROVIDERS", None)
@@ -186,11 +191,15 @@ def load_provider_plugins(*, force: bool = False) -> list[str]:
         try:
             module = importlib.import_module(module_name)
         except Exception as exc:  # pragma: no cover - defensive logging path
+            # Sentinel: ``exc`` from ``importlib.import_module`` may carry
+            # SyntaxError text from the plugin's source, which an attacker
+            # controlling the plugin file could weaponise with ANSI/BiDi
+            # control characters. Route through ``sanitize_log_arg``.
             log.error(
                 "Provider-Plugin %s konnte nicht importiert werden: %s: %s",
                 module_name,
                 type(exc).__name__,
-                exc,
+                sanitize_log_arg(str(exc)),
             )
             continue
         _LOADED_PLUGINS.add(module_name)

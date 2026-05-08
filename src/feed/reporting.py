@@ -22,7 +22,7 @@ from .logging import diagnostics_log_path, error_log_path, prune_log_file
 from ..utils.env import get_bool_env, read_secret
 from ..utils.files import atomic_write
 from ..utils.http import request_safe, session_with_retries, validate_http_url
-from ..utils.logging import sanitize_log_message
+from ..utils.logging import sanitize_log_arg, sanitize_log_message
 from ..utils.text import escape_markdown, escape_markdown_cell
 
 log = logging.getLogger("build_feed")
@@ -906,10 +906,14 @@ class _GithubIssueReporter:
                 )
 
         except (requests.RequestException, ValueError) as exc:
+            # Sentinel: ``exc`` from a GitHub HTTP error / SSRF guard may
+            # contain attacker-controlled URL fragments or response-body
+            # text. Route through ``sanitize_log_arg`` so ANSI/BiDi/control
+            # characters cannot smuggle past the SafeFormatter.
             log.warning(
                 "Automatisches GitHub-Issue fehlgeschlagen (Netzwerkfehler/Sicherheit %s: %s)",
                 type(exc).__name__,
-                exc,
+                sanitize_log_arg(str(exc)),
             )
             return
 

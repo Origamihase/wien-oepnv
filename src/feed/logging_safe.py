@@ -115,3 +115,47 @@ def _make_formatter() -> logging.Formatter:
     formatter = SafeFormatter(fmt)
     formatter.converter = _vienna_time_converter
     return formatter
+
+
+def setup_script_logging(level: int = logging.INFO) -> None:
+    """Configure root logger with :class:`SafeFormatter` for scripts.
+
+    Replaces the ``logging.basicConfig(...)`` call that scripts in
+    ``scripts/`` historically used. ``basicConfig`` installs a default
+    :class:`logging.Formatter` which does NOT sanitise the formatted
+    message — meaning a hostile exception text or upstream-controlled
+    URL fragment passed via ``%s`` in a log call leaks unmodified into
+    the script's stderr / log file.
+
+    This helper installs a single :class:`StreamHandler` whose formatter
+    is the project's standard :class:`SafeFormatter` (or
+    :class:`SafeJSONFormatter` when ``LOG_FORMAT=json``), giving every
+    script the same clear-text-logging-drift defence that
+    ``src.build_feed.configure_logging`` provides for the production
+    feed builder.
+
+    Idempotency: a SafeFormatter handler is added exactly once per
+    process. Subsequent calls only update the root level. Foreign
+    handlers (most importantly pytest's caplog capture handler) are
+    preserved — they predate our installation and clearing them would
+    invalidate test fixtures that capture log records via the standard
+    pytest mechanism. This matches the original
+    ``logging.basicConfig(level=…, format=…)`` no-op-if-handlers
+    behaviour while still installing the sanitising handler when it's
+    truly absent.
+
+    Args:
+        level: Root-logger log level. Pass ``logging.DEBUG`` for
+            ``--verbose`` script invocations; defaults to
+            ``logging.INFO`` to match the historical script defaults.
+    """
+    logger = logging.getLogger()
+    has_safe_formatter = any(
+        isinstance(h.formatter, (SafeFormatter, SafeJSONFormatter))
+        for h in logger.handlers
+    )
+    if not has_safe_formatter:
+        handler = logging.StreamHandler()
+        handler.setFormatter(_make_formatter())
+        logger.addHandler(handler)
+    logger.setLevel(level)

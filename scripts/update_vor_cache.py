@@ -71,6 +71,7 @@ from src.providers.vor import (  # noqa: E402  (import after path setup)
     get_configured_stations,
     select_stations_for_run,
 )
+from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.utils.cache import write_cache, write_status  # noqa: E402
 from src.utils.serialize import serialize_for_cache  # noqa: E402
 
@@ -82,9 +83,11 @@ logger = logging.getLogger("update_vor_cache")
 
 
 def configure_logging() -> None:
-    """Configure root logging for the update run."""
+    """Configure root logging with the project's SafeFormatter."""
 
-    logging.basicConfig(level=logging.INFO, format="%(message)s")
+    # Sentinel: route through SafeFormatter so any raw exception text
+    # logged via %s in this script is sanitised at the formatter layer.
+    setup_script_logging(logging.INFO)
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 

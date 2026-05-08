@@ -1291,7 +1291,14 @@ def _fetch_xml(url: str, timeout: int = 25) -> ET.Element | None:
                     parsed_delay = parse_retry_after(header)
                     # Default to 1.0s if header is missing or unparseable.
                     wait_seconds = parsed_delay if parsed_delay is not None else 1.0
-                    log.warning("ÖBB RSS Rate-Limit (Retry-After: %s)", header)
+                    # Sentinel: ``header`` is upstream-controlled HTTP header
+                    # text; route through ``sanitize_log_arg`` so a hostile
+                    # ÖBB peer cannot inject ANSI/BiDi/control characters
+                    # into operator log streams via the Retry-After header.
+                    log.warning(
+                        "ÖBB RSS Rate-Limit (Retry-After: %s)",
+                        sanitize_log_arg(str(header)),
+                    )
 
                 if attempt == 0:
                      if wait_seconds > 0:

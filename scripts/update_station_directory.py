@@ -1345,7 +1345,15 @@ def parse_args() -> argparse.Namespace:
 
 def configure_logging(verbose: bool) -> None:
     level = logging.DEBUG if verbose else logging.INFO
-    logging.basicConfig(level=level, format="%(message)s")
+    # Sentinel: route through SafeFormatter so any raw exception text
+    # logged via %s in this script is sanitised at the formatter layer.
+    # Lazy import to mirror the script's existing fallback shape (the
+    # try/except `from src.X import …` block at module top).
+    try:
+        from src.feed.logging_safe import setup_script_logging
+    except ModuleNotFoundError:  # pragma: no cover - fallback for installed-package mode
+        from feed.logging_safe import setup_script_logging  # type: ignore[no-redef]
+    setup_script_logging(level)
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
