@@ -69,6 +69,7 @@ def test_collect_items_missing_cache_logs_warning(
         "Cache für Provider 'oebb' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'vor' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'baustellen' leer – generiere Feed ohne aktuelle Daten.",
+        "Cache für Provider 'gtfs_stammstrecke' leer – generiere Feed ohne aktuelle Daten.",
     }
 
 
@@ -122,6 +123,7 @@ def test_main_runs_without_network(
         "Cache für Provider 'oebb' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'vor' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'baustellen' leer – generiere Feed ohne aktuelle Daten.",
+        "Cache für Provider 'gtfs_stammstrecke' leer – generiere Feed ohne aktuelle Daten.",
     }
 
 

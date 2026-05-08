@@ -6,5 +6,6 @@ __all__ = [
     "client",
     "merge",
     "normalize",
+    "osm_client",
     "tiling",
 ]

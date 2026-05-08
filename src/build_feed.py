@@ -196,11 +196,32 @@ def read_cache_baustellen() -> list[Any]:
     return list(read_cache("baustellen") or [])
 
 
+def fetch_gtfs_stammstrecke_events() -> list[Any]:
+    """Live entry point for the S-Bahn Stammstrecke real-time monitor.
+
+    Imports lazily so the gtfs-realtime-bindings dependency only loads
+    when the provider is actually invoked. Errors collapse to an empty
+    list — the upstream provider already wraps fetch and parse in
+    bounded ``try/except`` blocks, but this top-level guard keeps a
+    truly unexpected import-time failure from aborting the cron build.
+    """
+    try:
+        from .providers.gtfs_stammstrecke import fetch_events as _fetch
+    except Exception as exc:  # pragma: no cover - defensive logging path
+        log.warning(
+            "GTFS-RT Stammstrecke provider unavailable: %s: %s",
+            type(exc).__name__, exc,
+        )
+        return []
+    return list(_fetch())
+
+
 DEFAULT_PROVIDERS: tuple[tuple[str, Any], ...] = (
     ("WL_ENABLE", read_cache_wl),
     ("OEBB_ENABLE", read_cache_oebb),
     ("VOR_ENABLE", read_cache_vor),
     ("BAUSTELLEN_ENABLE", read_cache_baustellen),
+    ("STAMMSTRECKE_ENABLE", fetch_gtfs_stammstrecke_events),
 )
 
 PROVIDERS: list[tuple[str, Any]] = list(DEFAULT_PROVIDERS)

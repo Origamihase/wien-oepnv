@@ -97,6 +97,11 @@ def register_default_providers() -> None:
     register_provider("OEBB_ENABLE", read_cache_oebb, cache_key="oebb")
     register_provider("VOR_ENABLE", read_cache_vor, cache_key="vor")
     register_provider("BAUSTELLEN_ENABLE", read_cache_baustellen, cache_key="baustellen")
+    register_provider(
+        "STAMMSTRECKE_ENABLE",
+        fetch_gtfs_stammstrecke_events,
+        cache_key="gtfs_stammstrecke",
+    )
 
 
 def _derive_cache_key(env_var: str) -> str:
@@ -224,12 +229,34 @@ def read_cache_baustellen() -> list[Any]:
     return list(read_cache("baustellen"))
 
 
+def fetch_gtfs_stammstrecke_events() -> list[Any]:
+    """Live entry point for the S-Bahn Stammstrecke real-time monitor.
+
+    Imports lazily so the gtfs-realtime-bindings dependency only loads
+    when the provider is actually invoked, and so the registry module
+    has no startup-time coupling to the provider's runtime state. The
+    provider already returns an empty list on every error path (fetch /
+    parse / breaker-open); this wrapper additionally guards against an
+    import-time failure (missing optional dependency / packaging skew).
+    """
+    try:
+        from ..providers.gtfs_stammstrecke import fetch_events as _fetch
+    except Exception as exc:  # pragma: no cover - defensive logging path
+        log.warning(
+            "GTFS-RT Stammstrecke provider unavailable: %s: %s",
+            type(exc).__name__, exc,
+        )
+        return []
+    return list(_fetch())
+
+
 register_default_providers()
 
 
 __all__ = [
     "ProviderLoader",
     "ProviderSpec",
+    "fetch_gtfs_stammstrecke_events",
     "iter_providers",
     "load_provider_plugins",
     "provider_statuses",
