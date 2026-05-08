@@ -49,8 +49,6 @@ def test_main_does_not_save_state_on_io_error(
     monkeypatch.setenv("OEBB_ENABLE", "0")
     monkeypatch.setenv("VOR_ENABLE", "0")
     monkeypatch.setenv("BAUSTELLEN_ENABLE", "0")
-    # Disable the live Stammstrecke provider so the test stays offline.
-    monkeypatch.setenv("STAMMSTRECKE_ENABLE", "0")
     build_feed.refresh_from_env()
 
     # Track if save_state was called
