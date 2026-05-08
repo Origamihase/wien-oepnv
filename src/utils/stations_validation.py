@@ -259,7 +259,12 @@ def _load_stations(path: Path) -> list[Mapping[str, object]]:
 
     try:
         raw_data = json.loads(raw)
-    except json.JSONDecodeError as exc:  # pragma: no cover - defensive
+    except (json.JSONDecodeError, RecursionError) as exc:  # pragma: no cover - defensive
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # stations file (planted by a compromised CI runner or a corrupted
+        # previous run). Without this catch the validator script would crash
+        # with an unhandled traceback instead of the canonical exit-1
+        # ``StationValidationError`` path.
         raise StationValidationError(f"Invalid JSON in {path}") from exc
 
     if isinstance(raw_data, list):

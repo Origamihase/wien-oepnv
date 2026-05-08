@@ -344,7 +344,10 @@ def load_vor_mapping(path: Path) -> dict[str, Mapping[str, object]]:
     except FileNotFoundError:
         log.info("No VOR mapping found at %s", path)
         return {}
-    except json.JSONDecodeError as exc:
+    except (json.JSONDecodeError, RecursionError) as exc:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # on-disk VOR mapping file. Same cron-pipeline blast radius as the
+        # sibling loader in ``scripts/enrich_station_aliases.py``.
         log.warning("Could not parse VOR mapping %s: %s", path, exc)
         return {}
     mapping: dict[str, Mapping[str, object]] = {}
@@ -583,6 +586,19 @@ def merge_into_stations(
         with stations_path.open("r", encoding="utf-8") as handle:
             raw_data = json.load(handle)
     except FileNotFoundError:
+        raw_data = []
+    except (json.JSONDecodeError, RecursionError) as exc:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # existing-state file; ``json.JSONDecodeError`` covers a regular
+        # malformed file (this branch was missing entirely pre-fix and a
+        # malformed stations.json crashed the WL merge — let alone a
+        # depth-bomb). Treat as "start fresh" to keep the cron pipeline
+        # running; the merge then writes the empty-merge result over the
+        # poisoned file, restoring the canonical schema for the next run.
+        log.warning(
+            "stations.json could not be parsed (%s) – starting WL merge from empty state",
+            exc,
+        )
         raw_data = []
 
     existing: list[dict[str, object]] = []
