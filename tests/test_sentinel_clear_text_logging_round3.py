@@ -417,32 +417,30 @@ def test_post_fix_osm_client_propagation_drops_attack_bytes() -> None:
 
 
 def test_post_fix_gtfs_stammstrecke_logs_strip_attack_bytes() -> None:
-    """End-to-end: the GTFS-RT provider must not write attacker-controlled
-    bytes from a chained-OSError through to the cron logger.
+    """End-to-end: the GTFS-RT cache update script must not write
+    attacker-controlled bytes from a chained-OSError through to the
+    cron logger.
 
-    We patch the inner ``scripts.gtfs.read_gtfs_stops`` to raise an
-    ``OSError`` whose ``str()`` embeds the marker bytes — exactly the
-    leak shape the file-read catch site (``_read_gtfs_stops`` ->
-    ``log.warning(..., sanitize_log_arg(str(exc)))`` post-fix) handles.
-    Pre-fix the marker bytes were embedded verbatim; post-fix the bytes
-    pass through ``sanitize_log_arg(str(exc))`` and emerge with
-    newlines escaped and ANSI escapes dropped.
+    The catch site moved with the refactor that promoted the
+    Stammstrecke monitor to the standard cache-driven architecture
+    (PR ``claude/refactor-gtfs-rt-cache-7mAbe``): the GTFS reader's
+    OSError is now caught inside ``scripts/update_gtfs_cache.py``
+    rather than the read-side provider. The sanitisation invariant
+    is unchanged — every ``except (OSError, ValueError)`` body that
+    logs the bound name MUST route through ``sanitize_log_arg``.
     """
     import scripts.gtfs  # noqa: F401 — ensure the module is importable
-    from src.providers import gtfs_stammstrecke
+    from scripts import update_gtfs_cache
 
     poisoned = OSError(
         f"sanitised={ATTACK_MARKER_NEWLINE}; injection={ATTACK_MARKER_ANSI}"
     )
 
-    logger, captured, _ = _capture_logger("test_gtfs_stammstrecke_post_fix")
+    logger, captured, _ = _capture_logger("test_update_gtfs_cache_post_fix")
 
-    # Re-route the module-level `log` so we capture its emissions.
-    # Patch the inner ``read_gtfs_stops`` so the OUTER catch in
-    # ``_read_gtfs_stops`` exercises the sanitisation site.
-    with patch.object(gtfs_stammstrecke, "log", logger):
+    with patch.object(update_gtfs_cache, "LOGGER", logger):
         with patch("scripts.gtfs.read_gtfs_stops", side_effect=poisoned):
-            result = gtfs_stammstrecke.load_stop_id_index(
+            result = update_gtfs_cache.load_stop_id_index(
                 stops_path=Path("/nonexistent/stops.txt"),
                 station_names=("Wien Mitte",),
             )
@@ -457,9 +455,6 @@ def test_post_fix_gtfs_stammstrecke_logs_strip_attack_bytes() -> None:
     assert "\x1b" not in full_log, (
         "fix: ANSI escape codes must be stripped from log output"
     )
-    # Real (unescaped) newlines from the exception text must not survive.
-    # Note: `\n` between captured log records is fine — we only care
-    # about newlines INSIDE individual records.
     for record in captured:
         assert "\n" not in record, (
             "fix: real newlines in exception text must be escaped at the "
@@ -486,6 +481,11 @@ def test_no_bare_exc_logging_in_pr1350_modules() -> None:
     targets = [
         "src/providers/gtfs_stammstrecke.py",
         "src/places/osm_client.py",
+        # The Stammstrecke cache-update script inherited the network-fetch
+        # logic when the provider was demoted to cache-only. The
+        # sanitisation invariant follows the catch sites — see
+        # ``test_post_fix_gtfs_stammstrecke_logs_strip_attack_bytes``.
+        "scripts/update_gtfs_cache.py",
     ]
     failures: list[str] = []
     for relpath in targets:
