@@ -47,7 +47,10 @@ try:  # pragma: no cover - convenience for module execution
         read_capped_text,
         validate_zip_archive_safe,
     )
-    from src.utils.geo import apply_coordinate_inertia
+    from src.utils.geo import (
+        apply_coordinate_inertia,
+        use_cached_polygon_result,
+    )
     from src.utils.http import fetch_content_safe, session_with_retries
     from src.utils.stations import is_in_vienna as _is_point_in_vienna
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
@@ -57,7 +60,10 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
         read_capped_text,
         validate_zip_archive_safe,
     )
-    from utils.geo import apply_coordinate_inertia  # type: ignore[no-redef]
+    from utils.geo import (  # type: ignore[no-redef]
+        apply_coordinate_inertia,
+        use_cached_polygon_result,
+    )
     from utils.http import fetch_content_safe, session_with_retries  # type: ignore[no-redef]
     from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore[no-redef]
 
@@ -1498,6 +1504,64 @@ def _is_vienna_station(name: str) -> bool:
     return len(text) > 4 and text[4] in {" ", "-", "/", "("}
 
 
+# Cache key: ``Station.extras["_in_vienna_basis"]`` — list of three
+# elements ``[basis_lat, basis_lon, polygon_result]`` produced by the
+# previous ``_resolve_in_vienna_with_cache`` call. Survives across runs
+# via ``_restore_existing_metadata`` because it lives in ``extras``
+# (not in the base-key skip list). Stored as a JSON-friendly list (not
+# a tuple) so JSON load/save round-trips cleanly.
+_IN_VIENNA_CACHE_KEY = "_in_vienna_basis"
+
+
+def _resolve_in_vienna_with_cache(station: Station, info: LocationInfo) -> bool:
+    """Compute ``in_vienna`` for ``station``, reusing the cached result
+    when the supplied :class:`LocationInfo` coords haven't drifted past
+    :data:`STATION_DRIFT_TOLERANCE_METERS` since the last polygon
+    evaluation.
+
+    Why: ``_is_point_in_vienna`` runs a ray-casting algorithm against
+    the LANDESGRENZEOGD.json multipolygon (~thousands of vertices). At
+    several hundred stations per run the aggregate cost is
+    non-trivial, and the *result* is stable for any drift below 150 m
+    (the city boundary tolerance is much wider than provider drift).
+    Reusing the previous run's result when drift is below threshold
+    eliminates the recomputation entirely.
+
+    The cache is stored in ``station.extras[_IN_VIENNA_CACHE_KEY]`` as
+    ``[basis_lat, basis_lon, polygon_result]`` — JSON-friendly so it
+    survives stations.json round-trips. The drift comparison uses the
+    canonical ``use_cached_polygon_result`` helper from
+    ``src/utils/geo.py``; the basis key is read defensively against
+    schema drift (length checks, type checks) and falls back to a
+    full polygon evaluation on any malformed cache.
+    """
+    cache = station.extras.get(_IN_VIENNA_CACHE_KEY)
+    cached_lat: float | None = None
+    cached_lon: float | None = None
+    cached_result: bool | None = None
+    if isinstance(cache, list) and len(cache) == 3:
+        raw_lat, raw_lon, raw_result = cache
+        if isinstance(raw_lat, int | float):
+            cached_lat = float(raw_lat)
+        if isinstance(raw_lon, int | float):
+            cached_lon = float(raw_lon)
+        if isinstance(raw_result, bool):
+            cached_result = raw_result
+
+    cached = use_cached_polygon_result(
+        cached_lat, cached_lon, cached_result, info.latitude, info.longitude
+    )
+    if cached is not None:
+        return cached
+
+    # Cache miss — run the real polygon check and refresh the cache.
+    result = bool(_is_point_in_vienna(info.latitude, info.longitude))
+    station.extras[_IN_VIENNA_CACHE_KEY] = [
+        info.latitude, info.longitude, result
+    ]
+    return result
+
+
 def _annotate_station_flags(
     stations: list[Station],
     pendler_ids: set[str],
@@ -1527,7 +1591,11 @@ def _annotate_station_flags(
             if info:
                 break
         if info:
-            station.in_vienna = _is_point_in_vienna(info.latitude, info.longitude)
+            # Coordinate Inertia (boundary-check layer): reuse the
+            # previous polygon result when info coords haven't drifted
+            # past STATION_DRIFT_TOLERANCE_METERS. See
+            # ``_resolve_in_vienna_with_cache`` for the full rationale.
+            station.in_vienna = _resolve_in_vienna_with_cache(station, info)
         else:
             station.in_vienna = _is_vienna_station(station.name)
         pendler_candidate = station.bst_id in pendler_ids

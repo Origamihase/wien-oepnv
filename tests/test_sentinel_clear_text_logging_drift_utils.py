@@ -395,6 +395,12 @@ WALKER_MODULES: tuple[str, ...] = (
     "src/providers/vor.py",
     "src/providers/oebb.py",
     "src/providers/wl_fetch.py",
+    # Forward-defensive (2026-05-08): ``geo.py`` currently has no log
+    # calls (it's pure math + ValueError on invalid input), but
+    # locking it into the walker now prevents a future contributor
+    # from adding an unsanitised ``log.warning("bad coords: %s", exc)``
+    # in an ``except`` branch when extending the helper.
+    "src/utils/geo.py",
 )
 
 
