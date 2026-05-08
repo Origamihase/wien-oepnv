@@ -72,6 +72,9 @@ jobs:
       - name: Refresh VOR cache
         run: python scripts/update_vor_cache.py
 
+      - name: Refresh GTFS Stammstrecke cache
+        run: python scripts/update_gtfs_cache.py
+
       # ----- 2) Stationsverzeichnis aktualisieren -----
       - name: Refresh VOR stop list (best-effort)
         run: |
