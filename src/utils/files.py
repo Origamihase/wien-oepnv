@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import hashlib
+import json
+import logging
 import os
 import re
 import secrets
@@ -9,6 +11,14 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import IO, Any
 from collections.abc import Iterator
+
+# Default per-loader byte cap for on-disk JSON files. Sized at ~100x the
+# largest legitimately-written stations.json (~175 KiB) and polygon
+# (~146 KiB) shapes, comfortably below any cron runner's 1 GiB cgroup
+# limit. Callers requiring a different ceiling (e.g. a multi-MiB GTFS
+# manifest) pass an explicit ``max_bytes``; the default keeps the
+# canonical defence available without per-site bikeshedding.
+DEFAULT_MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 
 
 @contextmanager
@@ -153,3 +163,42 @@ def get_file_hash(filepath: str | Path, chunk_size: int = 4096) -> str:
         for chunk in iter(lambda: f.read(chunk_size), b""):
             hasher.update(chunk)
     return hasher.hexdigest()
+
+
+def read_capped_json(
+    path: Path,
+    max_bytes: int = DEFAULT_MAX_JSON_FILE_BYTES,
+    *,
+    label: str = "JSON",
+    logger: logging.Logger | None = None,
+) -> object | None:
+    """Read JSON from *path*, returning ``None`` if missing/invalid/oversized.
+
+    Combines the canonical "stat-then-cap-then-read" size-bomb defence with
+    the depth-bomb catch tuple ``(OSError, json.JSONDecodeError,
+    RecursionError)``. The byte-size cap fires BEFORE ``open()`` so the file
+    content is never buffered into memory when oversized — defeating the
+    wide-but-flat attack shape (``[0,0,…]`` repeated to GiB-scale) that the
+    depth-bomb catch alone does NOT cover (``MemoryError`` is a
+    ``BaseException`` subclass and propagates past the surrounding
+    ``except (OSError, json.JSONDecodeError, RecursionError)`` handler).
+
+    Threat model: a planted-huge JSON file (compromised CI runner / partial
+    flush + power loss / corrupted previous run) buffered into memory via
+    ``json.load(handle)`` allocates O(file_size) bytes plus a multiplier
+    of object overhead, exhausts the runner's cgroup memory limit, and
+    propagates ``MemoryError`` past the loader to crash the cron pipeline.
+    """
+    log = logger if logger is not None else logging.getLogger(__name__)
+    try:
+        if path.stat().st_size > max_bytes:
+            log.warning(
+                "%s file at %s is too large (> %d bytes); treating as missing.",
+                label, path, max_bytes,
+            )
+            return None
+        with path.open("r", encoding="utf-8") as handle:
+            payload: object = json.load(handle)
+            return payload
+    except (OSError, json.JSONDecodeError, RecursionError):
+        return None

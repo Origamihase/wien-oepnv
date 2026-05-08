@@ -21,13 +21,22 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-from src.utils.files import atomic_write  # noqa: E402
+from src.utils.files import atomic_write, read_capped_json  # noqa: E402
 from src.utils.http import session_with_retries  # noqa: E402
 
 
 DEFAULT_STATIONS_PATH = BASE_DIR / "data" / "stations.json"
 DEFAULT_PENDLER_CANDIDATES_PATH = BASE_DIR / "data" / "pendler_candidates.json"
 DEFAULT_OUTPUT_PATH = BASE_DIR / "data" / "vor-haltestellen.csv"
+
+# Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
+# canonical ``MAX_*_FILE_BYTES`` contract from ``src/utils/cache.py`` /
+# ``src/utils/stations.py``: depth-bomb catch alone misses ``MemoryError``
+# (a ``BaseException`` subclass) so a planted-huge file (~1 GiB of
+# ``[0,0,…]``) buffered via ``path.read_text()`` propagates past the
+# loader and crashes the script. 50 MiB is ~285x the production
+# stations.json and far below any cron runner's cgroup limit.
+MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 DEFAULT_CONFIG_URL = "https://anachb.vor.at/webapp/js/hafas_webapp_config.js"
 DEFAULT_MGATE_URL = "https://anachb.vor.at/hamm/gate"
 
@@ -81,14 +90,14 @@ def configure_logging(verbose: bool) -> None:
 
 
 def load_stations(path: Path) -> list[Station]:
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, RecursionError):
-        # Resilience: ``RecursionError`` covers a corrupted on-disk
-        # stations file whose nesting depth exceeds Python's recursion
-        # limit. ``json.loads`` raises ``RecursionError`` (NOT a subclass
-        # of ``JSONDecodeError``) so without this catch a poisoned cache
-        # file would crash the script with an unhandled traceback.
+    # Security: ``read_capped_json`` enforces both the depth-bomb catch
+    # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). A
+    # planted-huge stations file would otherwise propagate
+    # ``MemoryError`` past the loader and crash the script.
+    data = read_capped_json(
+        path, MAX_JSON_FILE_BYTES, label="Stations", logger=log,
+    )
+    if data is None:
         return []
     if isinstance(data, Mapping):
         entries = data.get("stations", [])
@@ -116,17 +125,17 @@ def load_pendler_candidate_names(path: Path) -> list[str]:
     Missing or malformed file degrades to an empty list — callers continue
     with the names from stations.json only.
     """
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except FileNotFoundError:
+    if not path.exists():
         log.info("Pendler candidates file not found: %s", path)
         return []
-    except (json.JSONDecodeError, RecursionError) as exc:
-        # Resilience: ``RecursionError`` covers a corrupted on-disk
-        # candidates file whose nesting depth exceeds Python's recursion
-        # limit (NOT caught by ``JSONDecodeError``). Mirrors the canonical
-        # depth-bomb defence applied to every src/providers parser.
-        log.warning("Invalid JSON in pendler candidates file %s: %s", path, exc)
+    # Security: ``read_capped_json`` enforces both the depth-bomb catch
+    # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). Mirrors the
+    # canonical defence applied to every src/providers parser.
+    data = read_capped_json(
+        path, MAX_JSON_FILE_BYTES, label="Pendler candidates", logger=log,
+    )
+    if data is None:
+        log.warning("Invalid JSON in pendler candidates file %s", path)
         return []
     if not isinstance(data, Mapping):
         return []

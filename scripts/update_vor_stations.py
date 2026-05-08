@@ -20,9 +20,18 @@ if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
 from src.providers import vor as vor_provider  # noqa: E402
-from src.utils.files import atomic_write  # noqa: E402
+from src.utils.files import atomic_write, read_capped_json  # noqa: E402
 from src.utils.http import session_with_retries  # noqa: E402
 from src.utils.stations import is_in_vienna, is_pendler  # noqa: E402
+
+# Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
+# canonical ``MAX_*_FILE_BYTES`` contract from ``src/utils/cache.py`` /
+# ``src/utils/stations.py``: depth-bomb catch alone misses ``MemoryError``
+# (a ``BaseException`` subclass) so a planted-huge stations.json
+# (~1 GiB of ``[0,0,…]``) buffered via ``json.load(handle)`` propagates
+# past the loader and crashes the cron pipeline. 50 MiB is ~285x the
+# production stations.json so legitimate state is never rejected.
+MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 
 __all__ = ["vor_provider"]
 
@@ -823,26 +832,28 @@ def _collect_aliases(entry: Mapping[str, object]) -> list[str]:
 
 
 def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]]) -> None:
-    try:
-        with stations_path.open("r", encoding="utf-8") as handle:
-            existing_raw = json.load(handle)
-    except FileNotFoundError:
-        existing_raw = []
-    except (json.JSONDecodeError, RecursionError) as exc:
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
-        # on-disk stations file (corrupted previous run, planted by a
-        # compromised CI runner). ``json.JSONDecodeError`` covers a regular
-        # malformed file (this branch was missing entirely pre-fix and a
-        # plain malformed stations.json crashed the VOR merge — let alone a
-        # depth-bomb). Treat both as "start fresh" to keep the cron pipeline
-        # running; the merge then writes the merged result over the poisoned
-        # file, restoring the canonical schema for the next run. Mirrors the
-        # canonical contract from the Round-4-fixed sibling
-        # ``scripts/update_wl_stations.py:merge_into_stations``.
-        log.warning(
-            "stations.json could not be parsed (%s) – starting VOR merge from empty state",
-            exc,
+    # Security: ``read_capped_json`` enforces both the depth-bomb catch
+    # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). The
+    # depth-bomb-only catch missed ``MemoryError`` (a ``BaseException``
+    # subclass) — a planted-huge stations.json would propagate past
+    # the loader and crash the VOR merge. On miss we start fresh and
+    # let the merge restore the canonical schema for the next run.
+    # Mirrors the canonical contract from the Round-4-fixed sibling
+    # ``scripts/update_wl_stations.py:merge_into_stations``.
+    existing_raw: object
+    if stations_path.exists():
+        loaded = read_capped_json(
+            stations_path, MAX_JSON_FILE_BYTES, label="Stations", logger=log,
         )
+        if loaded is None:
+            log.warning(
+                "stations.json could not be parsed (missing/invalid/oversized)"
+                " – starting VOR merge from empty state",
+            )
+            existing_raw = []
+        else:
+            existing_raw = loaded
+    else:
         existing_raw = []
 
     if isinstance(existing_raw, dict) and "stations" in existing_raw:

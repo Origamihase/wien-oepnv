@@ -44,9 +44,29 @@ def _load_atomic_write() -> Callable[..., Any]:
     return cast(Callable[..., Any], module.atomic_write)
 
 
+def _load_read_capped_json() -> Callable[..., Any]:
+    base_dir = _project_root()
+    if str(base_dir) not in sys.path:
+        sys.path.insert(0, str(base_dir))
+    module = import_module("src.utils.files")
+    return cast(Callable[..., Any], module.read_capped_json)
+
+
 BASE_DIR = _project_root()
 is_in_vienna = _load_is_in_vienna()
 atomic_write = _load_atomic_write()
+read_capped_json = _load_read_capped_json()
+
+# Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
+# canonical ``MAX_*_FILE_BYTES`` contract from ``src/utils/cache.py`` /
+# ``src/utils/stations.py``: depth-bomb catch alone misses ``MemoryError``
+# (a ``BaseException`` subclass) so a planted-huge stations.json
+# (~1 GiB of ``[0,0,…]``) buffered via ``json.load`` propagates past
+# the loader and crashes the WL merge — running under
+# ``subprocess.run(check=True)`` aborts the whole cron pipeline. 50 MiB
+# is ~285x the production stations.json so legitimate state is never
+# rejected.
+MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 DEFAULT_HALTEPUNKTE = BASE_DIR / "data" / "wienerlinien-ogd-haltepunkte.csv"
 DEFAULT_HALTESTELLEN = BASE_DIR / "data" / "wienerlinien-ogd-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
@@ -339,16 +359,18 @@ def _alias_variants(
 
 
 def load_vor_mapping(path: Path) -> dict[str, Mapping[str, object]]:
-    try:
-        raw = json.loads(path.read_text(encoding="utf-8"))
-    except FileNotFoundError:
+    if not path.exists():
         log.info("No VOR mapping found at %s", path)
         return {}
-    except (json.JSONDecodeError, RecursionError) as exc:
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
-        # on-disk VOR mapping file. Same cron-pipeline blast radius as the
-        # sibling loader in ``scripts/enrich_station_aliases.py``.
-        log.warning("Could not parse VOR mapping %s: %s", path, exc)
+    # Security: ``read_capped_json`` enforces both the depth-bomb catch
+    # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). Same
+    # cron-pipeline blast radius as the sibling loader in
+    # ``scripts/enrich_station_aliases.py``.
+    raw = read_capped_json(
+        path, MAX_JSON_FILE_BYTES, label="VOR mapping", logger=log,
+    )
+    if raw is None:
+        log.warning("Could not parse VOR mapping %s (missing/invalid/oversized)", path)
         return {}
     mapping: dict[str, Mapping[str, object]] = {}
     if not isinstance(raw, list):
@@ -582,23 +604,26 @@ def merge_into_stations(
     stations_path: Path,
     wl_entries: list[dict[str, Any]],
 ) -> None:
-    try:
-        with stations_path.open("r", encoding="utf-8") as handle:
-            raw_data = json.load(handle)
-    except FileNotFoundError:
-        raw_data = []
-    except (json.JSONDecodeError, RecursionError) as exc:
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
-        # existing-state file; ``json.JSONDecodeError`` covers a regular
-        # malformed file (this branch was missing entirely pre-fix and a
-        # malformed stations.json crashed the WL merge — let alone a
-        # depth-bomb). Treat as "start fresh" to keep the cron pipeline
-        # running; the merge then writes the empty-merge result over the
-        # poisoned file, restoring the canonical schema for the next run.
-        log.warning(
-            "stations.json could not be parsed (%s) – starting WL merge from empty state",
-            exc,
+    # Security: ``read_capped_json`` enforces both the depth-bomb catch
+    # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). The
+    # depth-bomb-only catch missed ``MemoryError`` (a ``BaseException``
+    # subclass) — a planted-huge stations.json would propagate past
+    # the loader and crash the WL merge. On miss we start fresh and
+    # let the merge restore the canonical schema for the next run.
+    raw_data: object
+    if stations_path.exists():
+        loaded = read_capped_json(
+            stations_path, MAX_JSON_FILE_BYTES, label="Stations", logger=log,
         )
+        if loaded is None:
+            log.warning(
+                "stations.json could not be parsed (missing/invalid/oversized)"
+                " – starting WL merge from empty state",
+            )
+            raw_data = []
+        else:
+            raw_data = loaded
+    else:
         raw_data = []
 
     existing: list[dict[str, object]] = []

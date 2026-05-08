@@ -37,15 +37,25 @@ if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
 try:
-    from src.utils.files import atomic_write
+    from src.utils.files import atomic_write, read_capped_json
 except ModuleNotFoundError:
-    from utils.files import atomic_write  # type: ignore[no-redef]
+    from utils.files import atomic_write, read_capped_json  # type: ignore[no-redef]
 
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 DEFAULT_VOR_STOPS = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_VOR_MAPPING = BASE_DIR / "data" / "vor-haltestellen.mapping.json"
 DEFAULT_GTFS_STOPS = BASE_DIR / "data" / "gtfs" / "stops.txt"
 DEFAULT_PENDLER_CANDIDATES = BASE_DIR / "data" / "pendler_candidates.json"
+
+# Security cap against wide-but-flat JSON size-bomb attacks. The
+# depth-bomb catch tuple does NOT cover ``MemoryError`` (a
+# ``BaseException`` subclass), so a planted-huge file (~1 GiB of
+# ``[0,0,…]``) buffered via ``path.read_text()`` propagates past the
+# loader and crashes the cron pipeline. Sized at ~285x the production
+# stations.json so no legitimate state is ever rejected. Mirrors the
+# canonical ``MAX_*_FILE_BYTES`` contract from
+# ``src/utils/cache.py`` / ``src/utils/stations.py``.
+MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 
 log = logging.getLogger("enrich_station_aliases")
 
@@ -301,14 +311,17 @@ def _load_vor_mapping(path: Path) -> dict[int, str]:
     if not path.exists():
         log.warning("VOR mapping file %s not found", path)
         return {}
-    try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, RecursionError) as exc:
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
-        # on-disk mapping file. The script runs in ``update_all_stations.py``
-        # via ``subprocess.run(check=True)``, so any unhandled exception
-        # raises ``CalledProcessError`` and aborts the whole cron pipeline.
-        log.warning("Could not parse %s: %s", path, exc)
+    # Security: ``read_capped_json`` enforces the byte-size cap (see
+    # MAX_JSON_FILE_BYTES) BEFORE opening the file plus the depth-bomb
+    # catch tuple. The cron-pipeline blast radius (subprocess.run via
+    # update_all_stations.py) makes the wide-but-flat MemoryError
+    # propagation a defense-in-depth gap that the depth-bomb catch
+    # alone does NOT cover.
+    payload = read_capped_json(
+        path, MAX_JSON_FILE_BYTES, label="VOR mapping", logger=log,
+    )
+    if payload is None:
+        log.warning("Could not parse %s (missing/invalid/oversized)", path)
         return {}
     # Zero-trust: a successfully-decoded payload from disk may still be the wrong shape
     # (corrupted file, hand-edited mapping, or upstream contract change). Without this
@@ -378,13 +391,14 @@ def _load_pendler_alternative_names(path: Path) -> dict[str, list[str]]:
     if not path.exists():
         log.info("Pendler candidates file %s not found", path)
         return {}
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, RecursionError) as exc:
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
-        # pendler-candidates file. Same cron-pipeline blast radius as
-        # ``_load_vor_mapping`` above.
-        log.warning("Invalid JSON in pendler candidates %s: %s", path, exc)
+    # Security: ``read_capped_json`` enforces both the depth-bomb catch
+    # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). Same
+    # cron-pipeline blast radius as ``_load_vor_mapping`` above.
+    data = read_capped_json(
+        path, MAX_JSON_FILE_BYTES, label="Pendler candidates", logger=log,
+    )
+    if data is None:
+        log.warning("Invalid JSON in pendler candidates %s", path)
         return {}
     if not isinstance(data, Mapping):
         return {}
@@ -720,14 +734,14 @@ def main() -> int:
         log.error("Stations file %s not found", args.stations)
         return 1
 
-    try:
-        raw_data = json.loads(args.stations.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, RecursionError) as exc:
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
-        # stations file (planted by a compromised CI runner or a corrupted
-        # previous run). Same cron-pipeline blast radius as the loaders
-        # above; the canonical exit-1 path keeps downstream scripts running.
-        log.error("Could not parse %s: %s", args.stations, exc)
+    # Security: ``read_capped_json`` enforces both the depth-bomb catch
+    # tuple and the byte-size cap (see MAX_JSON_FILE_BYTES). The
+    # canonical exit-1 path keeps downstream scripts running.
+    raw_data = read_capped_json(
+        args.stations, MAX_JSON_FILE_BYTES, label="Stations", logger=log,
+    )
+    if raw_data is None:
+        log.error("Could not parse %s (missing/invalid/oversized)", args.stations)
         return 1
 
     if isinstance(raw_data, list):

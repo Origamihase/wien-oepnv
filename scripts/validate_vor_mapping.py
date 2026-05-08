@@ -1,10 +1,25 @@
 #!/usr/bin/env python3
 """Validate VOR station mapping IDs."""
 
-import json
 import re
 import sys
 from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parents[1]
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+from src.utils.files import read_capped_json  # noqa: E402
+
+# Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
+# canonical ``MAX_*_FILE_BYTES`` contract: the depth-bomb catch alone
+# misses ``MemoryError`` (a ``BaseException`` subclass) so a
+# planted-huge mapping file (~1 GiB of ``[0,0,…]``) buffered via
+# ``path.read_text()`` propagates past the loader and crashes the
+# validator with an unhandled traceback instead of the documented
+# exit-1 contract.
+MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
+
 
 def main() -> int:
     mapping_path = Path("data/vor-haltestellen.mapping.json")
@@ -12,13 +27,14 @@ def main() -> int:
         print(f"File not found: {mapping_path}", file=sys.stderr)
         return 1
 
-    try:
-        data = json.loads(mapping_path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, RecursionError) as e:
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
-        # mapping file. Closes the canonical "every json.loads site catches
-        # RecursionError" contract repo-wide.
-        print(f"JSON decode error: {e}", file=sys.stderr)
+    data = read_capped_json(
+        mapping_path, MAX_JSON_FILE_BYTES, label="VOR mapping",
+    )
+    if data is None:
+        print(
+            f"JSON decode error or file too large: {mapping_path}",
+            file=sys.stderr,
+        )
         return 1
 
     if not isinstance(data, list):
