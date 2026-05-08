@@ -154,7 +154,20 @@ def fetch_access_id(session: requests.Session, config_url: str = DEFAULT_CONFIG_
     match = re.search(r'aid:"([A-Za-z0-9]+)"', resp.text)
     if match:
         aid = match.group(1)
-        log.debug("Discovered access ID %s from webapp config", aid)
+        # Security: ``aid`` is the VAO ``accessId`` credential that
+        # ``VorAuth`` later injects into every authenticated request URL.
+        # Even though it is observable at the public webapp config
+        # endpoint, logging the raw value at any level (debug / info /
+        # error) writes the credential into errors.log, GitHub Actions
+        # build logs, and any tee'd CI artefacts — making it
+        # retroactively available via log archives and the auto-issue
+        # submission path in ``src/feed/reporting.py``. Defense-in-depth
+        # for clear-text-logging: log a length fingerprint instead, so
+        # operators can confirm a token was discovered without writing
+        # the value to disk.
+        log.debug(
+            "Discovered access ID from webapp config (length: %d)", len(aid)
+        )
         return aid
     raise RuntimeError("Could not extract VOR access ID from config")
 

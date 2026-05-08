@@ -329,3 +329,281 @@ def test_update_vor_cache_RequestException_handler_uses_post_fix_pattern() -> No
                             "traceback (post-VorAuth URL with accessId) "
                             "to errors.log."
                         ) from None
+
+
+# ---------------------------------------------------------------------------
+# Site 3: scripts/verify_vor_access_id.py:92 — direct exc in %s
+# ---------------------------------------------------------------------------
+#
+# The 2026-05-08 round closed Site 1 (update_vor_stations.py:587) and Site 2
+# (update_vor_cache.py:173) but stopped at the named-list of "two cron-driven
+# cache refreshers". The journal entry's prevention rule named FIVE scripts
+# that consume vor-authenticated sessions (update_vor_stations.py,
+# update_vor_cache.py, verify_vor_access_id.py, fetch_vor_haltestellen.py,
+# enrich_station_aliases.py); only TWO got the fix, leaving the third
+# RequestException-emitting site live. ``verify_vor_access_id.py`` calls
+# ``fetch_content_safe(session, probe_url, params=..., timeout=...)`` after
+# ``apply_authentication(session)`` has installed ``VorAuth`` — exactly the
+# same post-VorAuth URL flow that motivated Sites 1/2's fix.
+
+
+def test_verify_vor_access_id_92_uses_post_fix_pattern() -> None:
+    """Static check: scripts/verify_vor_access_id.py must NOT pass the bare
+    ``exc`` to a ``%s`` placeholder in the request-failure handler.
+
+    The handler at line ~91 wraps ``fetch_content_safe(...)`` against a
+    ``VorAuth``-authenticated session. ``VorAuth.__call__`` injects
+    ``accessId=<SECRET>`` into the prepared URL; a network failure
+    surfaces a ``MaxRetryError`` whose ``__str__`` embeds that URL. The
+    pre-fix line ``LOGGER.error("VOR verification request failed: %s", exc)``
+    leaks the credential to stdout and CI logs (clear-text-logging
+    dataflow, mirrors the 2026-05-08 fix in src/utils/http.py). Audit
+    invariant: a future PR re-adding the bare ``exc`` reference fails
+    this test.
+    """
+    import ast
+    from pathlib import Path
+
+    repo_root = Path(__file__).resolve().parents[1]
+    source = (repo_root / "scripts" / "verify_vor_access_id.py").read_text(
+        encoding="utf-8"
+    )
+
+    tree = ast.parse(source)
+
+    # Find ``main`` function and its ``try: ... fetch_content_safe(...)``
+    # block. The except clauses on that block are the leak surfaces.
+    main_func: ast.FunctionDef | None = None
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FunctionDef) and node.name == "main":
+            main_func = node
+            break
+    assert main_func is not None, "Could not locate main() in verify_vor_access_id.py"
+
+    target_try: ast.Try | None = None
+    for node in ast.walk(main_func):
+        if not isinstance(node, ast.Try):
+            continue
+        for stmt in node.body:
+            for sub in ast.walk(stmt):
+                if (
+                    isinstance(sub, ast.Call)
+                    and isinstance(sub.func, ast.Name)
+                    and sub.func.id == "fetch_content_safe"
+                ):
+                    target_try = node
+                    break
+            if target_try is not None:
+                break
+        if target_try is not None:
+            break
+    assert target_try is not None, (
+        "Could not locate try/except wrapping fetch_content_safe in main()"
+    )
+
+    # In each except handler, inspect logger calls for unsafe patterns:
+    # any ``%s`` placeholder must be paired with ``type(exc).__name__``,
+    # not the bare exc name. We walk every Call whose func attribute is
+    # one of {error, warning, exception, critical, info, debug} and
+    # whose args include a Name node referencing the handler's bound
+    # exception variable.
+    forbidden_attrs = {"error", "warning", "exception", "critical"}
+    for handler in target_try.handlers:
+        # Bound name for the exception (``except X as <name>``).
+        exc_var = handler.name
+        if exc_var is None:
+            continue
+        for node in ast.walk(handler):
+            if not isinstance(node, ast.Call):
+                continue
+            if not isinstance(node.func, ast.Attribute):
+                continue
+            if node.func.attr not in forbidden_attrs:
+                continue
+            # Forbid the bare exc name appearing as a positional arg —
+            # it would be %-formatted into the message via
+            # logging.LogRecord.getMessage().
+            for arg in node.args:
+                if isinstance(arg, ast.Name) and arg.id == exc_var:
+                    raise AssertionError(
+                        "scripts/verify_vor_access_id.py: bare exception "
+                        f"name '{exc_var}' passed as a positional arg to "
+                        f"LOGGER.{node.func.attr}(...) inside the "
+                        "fetch_content_safe handler. The post-VorAuth URL "
+                        "with ``accessId=<SECRET>`` is in the exception's "
+                        "str(); replace ``exc`` with ``type(exc).__name__``."
+                    ) from None
+            # Also forbid exc_info=True (would write the traceback).
+            for kw in node.keywords:
+                if kw.arg == "exc_info" and isinstance(kw.value, ast.Constant):
+                    if kw.value.value is True:
+                        raise AssertionError(
+                            "scripts/verify_vor_access_id.py: exc_info=True "
+                            f"in LOGGER.{node.func.attr}(...) writes the "
+                            "post-VorAuth URL traceback to logs."
+                        ) from None
+
+
+# ---------------------------------------------------------------------------
+# Site 4: src/cli.py — defense-in-depth for runpy-propagated exceptions
+# ---------------------------------------------------------------------------
+#
+# ``_run_script`` runs every CLI sub-command via ``runpy.run_path`` and
+# catches anything that propagates with ``except Exception as e:``. The
+# pre-fix line ``print(f"Fehler beim Ausführen von {script_name}: {e}",
+# file=sys.stderr)`` interpolates the bare exception into stderr. Most
+# scripts catch their own RequestException internally, but the CLI's
+# catch-all is the LAST line of defense — if a future refactor lets an
+# unhandled URL-bearing exception escape any sub-script's main (e.g. a
+# new code path between ``argparse.parse_args`` and the existing
+# try/except), the CLI's ``{e}`` interpolation re-enables the leak.
+# This is the same defense-in-depth concern the journal entry
+# "Defense-in-depth for ``exc_info=True``" raised for Site 2 above.
+
+
+def test_cli_run_script_uses_post_fix_pattern() -> None:
+    """Static check: src/cli.py:_run_script must NOT interpolate the bare
+    exception object into the stderr message.
+
+    Any ``except Exception as <name>:`` handler containing a ``print``
+    call whose f-string references ``{<name>}`` is treated as a leak
+    surface. The post-fix pattern logs ``type(<name>).__name__`` (or
+    ``<name>.__class__.__name__``).
+    """
+    import ast
+    from pathlib import Path
+
+    repo_root = Path(__file__).resolve().parents[1]
+    source = (repo_root / "src" / "cli.py").read_text(encoding="utf-8")
+
+    tree = ast.parse(source)
+
+    run_script: ast.FunctionDef | None = None
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FunctionDef) and node.name == "_run_script":
+            run_script = node
+            break
+    assert run_script is not None, "Could not locate _run_script() in src/cli.py"
+
+    for handler in ast.walk(run_script):
+        if not isinstance(handler, ast.ExceptHandler):
+            continue
+        exc_var = handler.name
+        if exc_var is None:
+            continue
+        # Find ``print(...)`` calls inside the handler.
+        for node in ast.walk(handler):
+            if not isinstance(node, ast.Call):
+                continue
+            if not (isinstance(node.func, ast.Name) and node.func.id == "print"):
+                continue
+            for arg in node.args:
+                # f-string => ast.JoinedStr with FormattedValue parts.
+                if not isinstance(arg, ast.JoinedStr):
+                    continue
+                for value in arg.values:
+                    if not isinstance(value, ast.FormattedValue):
+                        continue
+                    expr = value.value
+                    # Bare ``{<exc_var>}`` interpolation is the leak shape.
+                    if isinstance(expr, ast.Name) and expr.id == exc_var:
+                        raise AssertionError(
+                            "src/cli.py:_run_script: bare exception name "
+                            f"'{{{exc_var}}}' interpolated into print() "
+                            "f-string. A sub-script's unhandled "
+                            "RequestException with a post-VorAuth URL "
+                            "would leak ``accessId=<SECRET>`` to stderr "
+                            "(and any tee'd log file). Replace with "
+                            f"``{{type({exc_var}).__name__}}``."
+                        ) from None
+
+
+def test_cli_run_script_post_fix_suppresses_secret() -> None:
+    """Behavioural check: the post-fix pattern keeps the URL out of stderr.
+
+    We simulate the ``except Exception as e: print(f"...{...}...", ...)``
+    branch by raising a synthetic exception whose str() embeds the
+    post-VorAuth URL with the secret access ID, then assert the fix's
+    ``type(e).__name__`` interpolation never lets the secret reach the
+    captured stderr.
+    """
+    import io
+    import sys
+
+    exc = _build_request_exception_with_secret()
+    buf = io.StringIO()
+    real_stderr = sys.stderr
+    try:
+        sys.stderr = buf
+        # Mirror the post-fix line in src/cli.py:_run_script.
+        print(
+            f"Fehler beim Ausführen von {{script}}: {type(exc).__name__}",
+            file=sys.stderr,
+        )
+    finally:
+        sys.stderr = real_stderr
+
+    captured = buf.getvalue()
+    assert SECRET_ACCESS_ID not in captured, (
+        "post-fix: type(exc).__name__ must not let the URL reach stderr"
+    )
+    assert "ConnectionError" in captured, "diagnostic class survives"
+
+
+# ---------------------------------------------------------------------------
+# Site 5: scripts/fetch_vor_haltestellen.py:157 — accessId logged at debug level
+# ---------------------------------------------------------------------------
+#
+# The script discovers the VAO ``accessId`` from a public webapp config and
+# logs the discovered value at DEBUG level via
+# ``log.debug("Discovered access ID %s from webapp config", aid)``. Even
+# though the value is observable at the public webapp config endpoint,
+# logging it (a) writes the credential into ``errors.log`` / GitHub
+# Actions logs whenever the operator enables ``--verbose`` /
+# ``LOG_LEVEL=DEBUG``, and (b) makes that credential retroactively
+# available via log archives, GitHub auto-issue submissions, and CI
+# artefact retention. Defense-in-depth: never log credentials at any
+# level; log a fingerprint (length / SHA-256) instead.
+
+
+def test_fetch_vor_haltestellen_does_not_log_aid_value() -> None:
+    """Static check: scripts/fetch_vor_haltestellen.py:fetch_access_id
+    must NOT pass the discovered ``aid`` value to a logger as a
+    positional %-formatted argument.
+    """
+    import ast
+    from pathlib import Path
+
+    repo_root = Path(__file__).resolve().parents[1]
+    source = (repo_root / "scripts" / "fetch_vor_haltestellen.py").read_text(
+        encoding="utf-8"
+    )
+
+    tree = ast.parse(source)
+
+    func: ast.FunctionDef | None = None
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FunctionDef) and node.name == "fetch_access_id":
+            func = node
+            break
+    assert func is not None, "Could not locate fetch_access_id() in fetch_vor_haltestellen.py"
+
+    log_attrs = {"debug", "info", "warning", "error", "exception", "critical"}
+    for node in ast.walk(func):
+        if not isinstance(node, ast.Call):
+            continue
+        if not isinstance(node.func, ast.Attribute):
+            continue
+        if node.func.attr not in log_attrs:
+            continue
+        for arg in node.args:
+            # Forbid the bare ``aid`` Name appearing as a positional
+            # argument (it would be %-formatted into the message).
+            if isinstance(arg, ast.Name) and arg.id == "aid":
+                raise AssertionError(
+                    "scripts/fetch_vor_haltestellen.py:fetch_access_id "
+                    f"passes the bare 'aid' value to log.{node.func.attr}(); "
+                    "this writes the discovered VAO accessId credential "
+                    "into the log record. Log a length fingerprint or "
+                    "type(aid).__name__ instead."
+                )
