@@ -242,6 +242,7 @@ def read_capped_text(
     max_bytes: int = DEFAULT_MAX_TEXT_FILE_BYTES,
     *,
     encoding: str = "utf-8",
+    errors: str = "strict",
     label: str = "text",
     logger: logging.Logger | None = None,
 ) -> str | None:
@@ -261,6 +262,12 @@ def read_capped_text(
     ``MemoryError``. The fix shape mirrors ``read_capped_json``: open
     first, fstat the open file descriptor (TOCTOU-safe), then bound the
     read at ``max_bytes + 1`` (special-file safe).
+
+    The optional *errors* parameter mirrors :func:`bytes.decode` /
+    :func:`Path.read_text` — pass ``errors="ignore"`` for callers that
+    previously consumed lossy text (e.g. the secret scanner walking
+    every tracked file in the repo, where non-UTF-8 fragments must not
+    drop the whole file).
     """
     log = logger if logger is not None else logging.getLogger(__name__)
     try:
@@ -283,6 +290,6 @@ def read_capped_text(
                     label, path, max_bytes,
                 )
                 return None
-            return raw.decode(encoding)
+            return raw.decode(encoding, errors=errors)
     except (OSError, UnicodeDecodeError):
         return None

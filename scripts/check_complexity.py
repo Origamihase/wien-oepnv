@@ -33,9 +33,23 @@ import subprocess  # nosec B404
 import sys
 from pathlib import Path
 
+if str(Path(__file__).resolve().parents[1]) not in sys.path:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from src.utils.files import read_capped_text  # noqa: E402
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 BASELINE = REPO_ROOT / ".c901-baseline.txt"
 THRESHOLD = 15
+
+# Security: per-loader byte cap. Pre-fix ``_parse_baseline`` read the
+# baseline file via ``path.read_text(...).splitlines()`` with NO size
+# cap — a planted huge baseline crashed the C901 CI gate (``MemoryError``
+# propagates past the gate's surrounding ``except`` and aborts the whole
+# static-checks run). ``.c901-baseline.txt`` is a small list of
+# ``<name> <complexity>`` lines, typically a few KiB; 1 MiB is ~500x
+# legit while still rejecting GiB-sized planted attacks.
+MAX_BASELINE_FILE_BYTES = 1 * 1024 * 1024
 
 # ruff C901 lines look like:
 #   C901 `request_safe` is too complex (12 > 10)
@@ -55,7 +69,14 @@ def _parse_baseline(path: Path) -> dict[str, int]:
     if not path.exists():
         return {}
     out: dict[str, int] = {}
-    for raw in path.read_text(encoding="utf-8").splitlines():
+    # Security: ``read_capped_text`` enforces a TOCTOU-safe size cap so
+    # a planted huge baseline cannot exhaust memory and crash the CI
+    # gate. Empty baseline = strictest state, exactly what the
+    # missing-file branch above already returns.
+    content = read_capped_text(path, MAX_BASELINE_FILE_BYTES, label="C901 baseline")
+    if content is None:
+        return {}
+    for raw in content.splitlines():
         line = raw.strip()
         if not line or line.startswith("#"):
             continue

@@ -18,6 +18,18 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from src.utils.files import read_capped_text  # noqa: E402
+
+# Security: per-loader byte cap. Pre-fix ``_seed_station_ids_from_file``
+# read ``data/vor_station_ids_wien.txt`` via ``read_text(encoding=
+# "utf-8")`` with NO size cap — a planted huge file at the seed path
+# raised ``MemoryError`` past the ``except (FileNotFoundError, OSError)``
+# catch and crashed the daily VOR cache update at startup before any
+# network request runs. The seed file is a small CSV/newline list of
+# station IDs, typically <1 KiB; 5 MiB is >>1000x legit while still
+# rejecting GiB-sized planted attacks.
+MAX_VOR_STATION_IDS_FILE_BYTES = 5 * 1024 * 1024
+
 
 def _seed_station_ids_from_file() -> None:
     """Populate ``VOR_STATION_IDS`` from repository defaults if unset."""
@@ -36,9 +48,12 @@ def _seed_station_ids_from_file() -> None:
         return
 
     station_file = REPO_ROOT / "data" / "vor_station_ids_wien.txt"
-    try:
-        raw = station_file.read_text(encoding="utf-8")
-    except (FileNotFoundError, OSError):
+    raw = read_capped_text(
+        station_file,
+        MAX_VOR_STATION_IDS_FILE_BYTES,
+        label="VOR station IDs seed",
+    )
+    if raw is None:
         return
 
     parts = [segment.strip() for segment in raw.replace("\n", ",").split(",")]

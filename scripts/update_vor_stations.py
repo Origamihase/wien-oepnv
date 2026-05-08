@@ -20,7 +20,7 @@ if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
 from src.providers import vor as vor_provider  # noqa: E402
-from src.utils.files import atomic_write, read_capped_json  # noqa: E402
+from src.utils.files import atomic_write, read_capped_json, read_capped_text  # noqa: E402
 from src.utils.http import read_response_safe, session_with_retries  # noqa: E402
 from src.utils.stations import is_in_vienna, is_pendler  # noqa: E402
 
@@ -32,6 +32,13 @@ from src.utils.stations import is_in_vienna, is_pendler  # noqa: E402
 # past the loader and crashes the cron pipeline. 50 MiB is ~285x the
 # production stations.json so legitimate state is never rejected.
 MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
+# Same disk axis but for the operator-supplied station ID file
+# ``_read_station_ids_from_file`` consumes via ``read_text``. Pre-fix the
+# unbounded ``read_text`` here would raise ``MemoryError`` past
+# ``except (FileNotFoundError, OSError)`` and crash the station-directory
+# update before any state is merged. ~5 MiB is >>1000x the legitimate
+# few-KiB CSV size.
+MAX_VOR_STATION_IDS_FILE_BYTES = 5 * 1024 * 1024
 # Same axis as ``MAX_JSON_FILE_BYTES`` but for the network-response side.
 # A compromised VOR upstream / DNS-hijack / MITM that returns a 1 GiB
 # ``[0,0,…]`` body to ``location.name`` would otherwise buffer the
@@ -393,12 +400,16 @@ def load_vor_stops(path: Path) -> list[VORStop]:
 
 
 def _read_station_ids_from_file(path: Path) -> list[str]:
-    try:
-        raw = path.read_text(encoding="utf-8")
-    except FileNotFoundError:
-        return []
-    except OSError as exc:  # pragma: no cover - defensive
-        log.warning("Could not read station ID file %s: %s", path, exc)
+    # Security: ``read_capped_text`` enforces a TOCTOU-safe size cap so
+    # a planted huge file at the operator-supplied path cannot exhaust
+    # memory and crash the station-directory update.
+    raw = read_capped_text(
+        path,
+        MAX_VOR_STATION_IDS_FILE_BYTES,
+        label="VOR station IDs file",
+        logger=log,
+    )
+    if raw is None:
         return []
     ids: list[str] = []
     for segment in raw.replace(",", "\n").splitlines():

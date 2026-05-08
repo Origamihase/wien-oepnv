@@ -2,17 +2,39 @@
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass
 from pathlib import Path
 from collections.abc import Iterable, Sequence
 import re
 import subprocess  # nosec B404
 
+from .files import read_capped_text
+
 __all__ = [
     "Finding",
     "scan_repository",
     "load_ignore_file",
+    "MAX_IGNORE_FILE_BYTES",
+    "MAX_SCAN_FILE_BYTES",
 ]
+
+# Security: per-loader byte caps for the two on-disk parsers in this
+# module. Pre-fix both sites used ``Path.read_text(encoding="utf-8",
+# errors="ignore")`` with NO size cap whatsoever — a planted huge file
+# at the ignore-file path or any tracked file in the repo raised
+# ``MemoryError`` past the surrounding handler and crashed the secret
+# scanner CI gate, bypassing detection on subsequent commits.
+#   - ``.secret-scan-ignore`` is a small list of glob patterns,
+#     typically a few KiB; 1 MiB is ~1000x legit.
+#   - Per-file scan content must accommodate large checked-in data
+#     files (HTML test fixtures, mapping JSONs); 50 MiB matches the
+#     ``DEFAULT_MAX_TEXT_FILE_BYTES`` ceiling for non-JSON disk reads
+#     while still rejecting GiB-sized planted attacks.
+MAX_IGNORE_FILE_BYTES = 1 * 1024 * 1024
+MAX_SCAN_FILE_BYTES = 50 * 1024 * 1024
+
+log = logging.getLogger(__name__)
 
 _HIGH_ENTROPY_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z0-9+/=_-]{24,}(?![A-Za-z0-9])")
 
@@ -272,8 +294,22 @@ def load_ignore_file(base_dir: Path, filename: str = ".secret-scan-ignore") -> l
     path = base_dir / filename
     if not path.exists():
         return []
+    # Security: ``read_capped_text`` enforces a TOCTOU-safe size cap so
+    # a planted huge ``.secret-scan-ignore`` cannot exhaust memory and
+    # crash the CI gate before secrets are detected on the rest of the
+    # repo. ``errors="ignore"`` preserves the legacy lossy-decode
+    # contract for non-UTF-8 fragments.
+    content = read_capped_text(
+        path,
+        MAX_IGNORE_FILE_BYTES,
+        errors="ignore",
+        label="secret-scan-ignore",
+        logger=log,
+    )
+    if content is None:
+        return []
     patterns: list[str] = []
-    for raw_line in path.read_text(encoding="utf-8", errors="ignore").splitlines():
+    for raw_line in content.splitlines():
         line = raw_line.strip()
         if not line or line.startswith("#"):
             continue
@@ -503,9 +539,20 @@ def scan_repository(
             continue
         if _is_binary(file_path):
             continue
-        try:
-            content = file_path.read_text(encoding="utf-8", errors="ignore")
-        except OSError:
+        # Security: ``read_capped_text`` enforces a TOCTOU-safe size cap
+        # so a planted huge tracked file (e.g. an intentionally-corrupt
+        # data dump) cannot exhaust memory and crash the scanner before
+        # planted secrets in sibling files are flagged.
+        # ``errors="ignore"`` preserves the legacy lossy-decode contract
+        # for non-UTF-8 fragments that aren't filtered by ``_is_binary``.
+        content = read_capped_text(
+            file_path,
+            MAX_SCAN_FILE_BYTES,
+            errors="ignore",
+            label="scan target",
+            logger=log,
+        )
+        if content is None:
             continue
 
         for lineno, snippet, reason in _scan_content(content):
