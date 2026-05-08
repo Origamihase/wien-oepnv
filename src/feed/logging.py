@@ -14,8 +14,10 @@ from .config import (
     LOG_LEVEL,
     LOG_MAX_BYTES,
     LOG_TIMEZONE,
+    MAX_LOG_BYTES,
 )
 
+from ..utils.files import read_capped_text
 from .logging_safe import SafeFormatter, SafeJSONFormatter, _make_formatter
 
 LOG_DIR = LOG_DIR_PATH.as_posix()
@@ -115,6 +117,22 @@ _LOG_TIMESTAMP_RE = re.compile(r"^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2}),(\d{3}
 # feeding ``timedelta(unit=N)`` into ``datetime - timedelta`` arithmetic).
 MAX_LOG_PRUNE_KEEP_DAYS = 365
 
+# Security: per-loader byte cap for the active log file consumed by
+# ``prune_log_file``. The ``RotatingFileHandler`` is configured with the
+# env-clamped ``LOG_MAX_BYTES`` (post-Round-6 capped at ``MAX_LOG_BYTES``,
+# 100 MiB), so an active log file should never exceed that ceiling under
+# normal rotation. A planted huge file at the log path (compromised CI
+# runner / partial flush + power loss / parallel orchestrator's atomic
+# state swap / manual operator dump) buffered into memory via the prior
+# ``Path.read_text()`` shape would allocate O(file_size) bytes and
+# propagate ``MemoryError`` (a ``BaseException`` subclass NOT caught by
+# the surrounding ``except OSError``) out of ``prune_log_file`` and crash
+# the cron job that owns the call. Sized at 2x ``MAX_LOG_BYTES`` to
+# accommodate brief growth between rotation triggers (the handler may
+# write past the threshold when a single record exceeds the remaining
+# budget) without rejecting any legitimate active log.
+MAX_LOG_PRUNE_FILE_BYTES = 2 * MAX_LOG_BYTES
+
 
 def prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
     """Remove log records older than ``keep_days`` from ``path``."""
@@ -135,10 +153,23 @@ def prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
     else:
         now = now.astimezone(LOG_TIMEZONE)
     cutoff = now - timedelta(days=keep_days)
-    try:
-        raw_lines = path.read_text(encoding="utf-8").splitlines(keepends=True)
-    except OSError:
+    # Security: ``read_capped_text`` enforces a TOCTOU-safe size cap via
+    # ``os.fstat`` on the open file descriptor + a defensive
+    # ``read(max_bytes + 1)`` budget — closes the
+    # ``Path.read_text()`` -> ``MemoryError`` propagation that would
+    # otherwise escape past the surrounding ``except OSError`` and crash
+    # the cron job. ``None`` is returned for missing / oversized /
+    # decode-error files, in which case we treat the file as unreadable
+    # and skip pruning (matching the prior ``except OSError`` shape).
+    raw_text = read_capped_text(
+        path,
+        MAX_LOG_PRUNE_FILE_BYTES,
+        label="log",
+        logger=logging.getLogger(__name__),
+    )
+    if raw_text is None:
         return
+    raw_lines = raw_text.splitlines(keepends=True)
 
     grouped: list[list[str]] = []
     current: list[str] = []
@@ -190,6 +221,7 @@ def prune_log_file(path: Path, *, now: datetime, keep_days: int = 7) -> None:
 
 
 __all__ = [
+    "MAX_LOG_PRUNE_FILE_BYTES",
     "MAX_LOG_PRUNE_KEEP_DAYS",
     "MaxLevelFilter",
     "SafeFormatter",
