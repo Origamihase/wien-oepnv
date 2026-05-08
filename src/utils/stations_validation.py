@@ -15,7 +15,7 @@ import math
 import re
 from collections.abc import Iterable, Iterator, Mapping, Sequence
 
-from src.utils.stations import _normalize_token
+from src.utils.stations import MAX_STATIONS_FILE_BYTES, _normalize_token
 
 
 @dataclass(frozen=True)
@@ -252,6 +252,25 @@ def validate_stations(
 
 
 def _load_stations(path: Path) -> list[Mapping[str, object]]:
+    # Security: byte-size cap (see MAX_STATIONS_FILE_BYTES) defeats the
+    # wide-but-flat size-bomb attack that the depth-bomb catch below
+    # does NOT cover. ``path.read_text`` buffers the whole file before
+    # ``json.loads`` runs, so a 1 GiB file allocates >1 GiB up-front
+    # and crashes the validator with ``MemoryError`` (a
+    # ``BaseException`` that escapes the surrounding handler). Stat
+    # BEFORE reading so the cap fires before allocation; surface the
+    # cap miss as ``StationValidationError`` to keep the canonical
+    # exit-1 path used by ``scripts/validate_stations.py``.
+    try:
+        file_size = path.stat().st_size
+    except FileNotFoundError as exc:  # pragma: no cover - defensive
+        raise StationValidationError(f"Stations file not found: {path}") from exc
+    except OSError as exc:  # pragma: no cover - defensive
+        raise StationValidationError(f"Stations file not readable: {path}") from exc
+    if file_size > MAX_STATIONS_FILE_BYTES:
+        raise StationValidationError(
+            f"Stations file too large (> {MAX_STATIONS_FILE_BYTES} bytes): {path}"
+        )
     try:
         raw = path.read_text(encoding="utf-8")
     except FileNotFoundError as exc:  # pragma: no cover - defensive

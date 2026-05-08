@@ -619,12 +619,49 @@ def _normalize_item_datetimes(
 
 # ---------------- State (first_seen) ----------------
 
+
+# Security: defense-in-depth byte-size cap on the on-disk state file.
+# The file is a small JSON object (one entry per first_seen item, each
+# ~80 bytes) — production state.json is ~40 KiB. The depth-bomb catch
+# tuple ``except (FileNotFoundError, json.JSONDecodeError)`` covers the
+# deeply-nested attack via ``RecursionError`` (re-raises into the broad
+# ``except Exception`` below), but a wide-but-flat attack such as
+# ``[0]*50_000_000`` slips past both handlers entirely:
+#  * ``json.load`` does NOT raise ``RecursionError`` on a flat list
+#    regardless of length.
+#  * ``handle.read()`` (called internally by ``json.load(handle)``)
+#    buffers the whole file before parsing — a 1 GiB file allocates a
+#    1 GiB string plus ~5 GiB worth of object overhead.
+#  * ``MemoryError`` is a ``BaseException`` subclass — it is NOT caught
+#    by any ``except Exception`` handler, so the orchestrator crashes
+#    BEFORE any provider runs and the feed-build cron leaves partial
+#    state with no recovery path.
+# Threat model mirrors ``MAX_CACHE_FILE_BYTES`` in ``src/utils/cache.py``:
+# compromised CI runner / corrupted previous run / partial flush + power
+# loss plants a multi-MiB-to-multi-GiB file at ``data/first_seen.json``.
+# 50 MiB is ~1200x the production state file and bounds the worst-case
+# parse cost well below any cron runner's standard 1 GiB cgroup limit.
+MAX_STATE_FILE_BYTES = 50 * 1024 * 1024
+
+
 def _load_state() -> dict[str, dict[str, Any]]:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     try:
         lock_path = path.with_suffix(".lock")
         with lock_path.open("a+", encoding="utf-8") as lock_file:
             with file_lock(lock_file, exclusive=False):
+                # Security: byte-size cap (see MAX_STATE_FILE_BYTES)
+                # defeats the wide-but-flat size-bomb attack that the
+                # depth-bomb / json.JSONDecodeError catch below does NOT
+                # cover. Stat BEFORE opening so the cap fires before the
+                # file content is buffered into memory.
+                if path.stat().st_size > MAX_STATE_FILE_BYTES:
+                    log.warning(
+                        "State-Datei %s ist zu groß (> %d Bytes); "
+                        "starte mit leerem State.",
+                        path, MAX_STATE_FILE_BYTES,
+                    )
+                    return {}
                 with path.open("r", encoding="utf-8") as f:
                     data = json.load(f)
         data = data if isinstance(data, dict) else {}
@@ -687,10 +724,24 @@ def _save_state(state: dict[str, dict[str, Any]], deletions: set[str] | None = N
                 # Safe merge: read existing state to avoid overwriting parallel updates
                 merged_state = {}
                 try:
-                    with path.open("r", encoding="utf-8") as f:
-                        existing = json.load(f)
-                        if isinstance(existing, dict):
-                            merged_state = existing
+                    # Security: byte-size cap (see MAX_STATE_FILE_BYTES)
+                    # defeats the wide-but-flat size-bomb attack on the
+                    # EXISTING state file before the merge read. Pre-fix
+                    # a planted-huge state file would crash the save path
+                    # with ``MemoryError`` mid-write — the new payload
+                    # would never atomically replace the planted file.
+                    # Stat BEFORE opening so the cap fires first.
+                    if path.stat().st_size > MAX_STATE_FILE_BYTES:
+                        log.warning(
+                            "State-Datei %s ist zu groß (> %d Bytes); "
+                            "überspringe Merge-Read und überschreibe State.",
+                            path, MAX_STATE_FILE_BYTES,
+                        )
+                    else:
+                        with path.open("r", encoding="utf-8") as f:
+                            existing = json.load(f)
+                            if isinstance(existing, dict):
+                                merged_state = existing
                 except FileNotFoundError:
                     pass
                 except Exception as exc:
