@@ -37,7 +37,7 @@ from zoneinfo import ZoneInfo
 
 from ..feed_types import FeedItem, VorMessage
 from ..utils.env import read_secret
-from ..utils.files import atomic_write
+from ..utils.files import atomic_write, read_capped_json, read_capped_text
 from ..utils.http import (
     fetch_content_safe,
     parse_retry_after,
@@ -407,20 +407,56 @@ DEFAULT_STATION_ID_FILE = _resolve_path(
     _get_env("VOR_STATION_IDS_DEFAULT"), default=DATA_DIR / "vor-haltestellen.csv"
 )
 
+# Security: per-loader byte caps for the four on-disk parsers in this
+# module. Pre-fix every site used the unsafe ``Path.read_text()`` ->
+# ``json.loads()`` shape with no size cap whatsoever. A planted huge file
+# (compromised CI runner / partial flush + power loss / parallel
+# orchestrator's atomic state swap) buffered the entire file into memory
+# and propagated ``MemoryError`` (a ``BaseException`` subclass that is NOT
+# caught by ``except (FileNotFoundError, OSError, json.JSONDecodeError,
+# RecursionError)``) past every catch tuple — crashing the entire VOR
+# provider import chain (``_load_station_name_map`` runs at module-import
+# time via ``STATION_NAME_MAP = _load_station_name_map()``) or the per-
+# request quota debit (``load_request_count`` / ``save_request_count``).
+# Each cap is sized at ~100x the largest legitimately-written shape so
+# the cap does NOT introduce a false-positive rejection of valid state:
+#   - ``vor-haltestellen.mapping.json`` is ~35 KiB at HEAD; 5 MiB is
+#     ~143x and accommodates 4-5x growth in upstream VAO catalogue.
+#   - ``vor_request_count.json`` is a single small object
+#     ``{"date": "...", "requests": N}`` (~50 bytes); 1 MiB matches the
+#     existing ``places/quota.py:MAX_QUOTA_FILE_BYTES`` ceiling.
+#   - ``vor-haltestellen.csv`` is ~8 KiB at HEAD; 5 MiB is ~625x and
+#     accommodates a multi-region catalogue if the VAO scope expands.
+# Mirrors the per-loader cap pattern in ``src/utils/cache.py``
+# (``MAX_CACHE_FILE_BYTES``) / ``src/places/quota.py``
+# (``MAX_QUOTA_FILE_BYTES``) / ``src/places/tiling.py``
+# (``MAX_TILE_FILE_BYTES``) — same threat-model bound applied to the
+# previously-uncapped VOR provider sites.
+MAX_VOR_MAPPING_FILE_BYTES = 5 * 1024 * 1024
+MAX_VOR_QUOTA_FILE_BYTES = 1 * 1024 * 1024
+MAX_VOR_STATIONS_CSV_FILE_BYTES = 5 * 1024 * 1024
+
 
 def _load_station_name_map() -> dict[str, str]:
-    try:
-        data = json.loads(MAPPING_FILE.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        return {}
-    except (json.JSONDecodeError, RecursionError) as exc:  # pragma: no cover - defensive
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
-        # on-disk mapping file (corrupted previous run, planted by a
-        # compromised CI runner). The call site at module scope
-        # (``STATION_NAME_MAP = _load_station_name_map()``) runs at import
-        # time, so an uncaught ``RecursionError`` would crash the WHOLE
-        # VOR provider import and the feed-build pipeline that imports it.
-        _log_warning("Konnte Stations-Mapping nicht laden (%s)", exc)
+    # Security: ``read_capped_json`` enforces a TOCTOU-safe size cap via
+    # ``os.fstat`` on the open file descriptor + a defensive
+    # ``read(max_bytes + 1)`` budget, returning ``None`` for any of:
+    # missing / oversized / depth-bomb (RecursionError) / decode error
+    # (JSONDecodeError) / I/O error (OSError). The previous shape used
+    # ``MAPPING_FILE.read_text()`` -> ``json.loads()`` with no size cap,
+    # so a planted huge JSON file at ``data/vor-haltestellen.mapping.json``
+    # buffered O(file_size) bytes and raised ``MemoryError`` — a
+    # ``BaseException`` subclass NOT caught by the prior catch tuple,
+    # propagating past the import-time call site
+    # (``STATION_NAME_MAP = _load_station_name_map()``) and crashing the
+    # entire VOR provider import + every consumer.
+    data = read_capped_json(
+        MAPPING_FILE,
+        MAX_VOR_MAPPING_FILE_BYTES,
+        label="VOR mapping",
+        logger=log,
+    )
+    if data is None:
         return {}
     # Zero Trust: a successfully-decoded payload from disk may still be the wrong
     # shape (corrupted file, hand-edited mapping, or upstream contract change).
@@ -454,9 +490,18 @@ STATION_NAME_MAP = _load_station_name_map()
 
 
 def _load_station_ids_from_file(path: Path) -> list[str]:
-    try:
-        content = path.read_text(encoding="utf-8")
-    except FileNotFoundError:
+    # Security: ``read_capped_text`` mirrors ``read_capped_json``'s
+    # TOCTOU-safe size cap for non-JSON payloads — closes the same
+    # ``Path.read_text()`` -> ``MemoryError`` propagation that would
+    # otherwise crash the VOR provider startup chain when a planted
+    # multi-MiB / multi-GiB CSV is dropped at the override path.
+    content = read_capped_text(
+        path,
+        MAX_VOR_STATIONS_CSV_FILE_BYTES,
+        label="VOR station IDs",
+        logger=log,
+    )
+    if content is None:
         return []
     entries = re.split(r"[\s,;]+", content)
     result: list[str] = []
@@ -476,10 +521,17 @@ def _load_station_ids_default() -> list[str]:
     if ids:
         return ids
 
-    try:
-        lines = DEFAULT_STATION_ID_FILE.read_text(encoding="utf-8").splitlines()
-    except FileNotFoundError:
+    # Security: see ``_load_station_ids_from_file`` — same TOCTOU-safe
+    # size cap applied to the default catalogue CSV.
+    text = read_capped_text(
+        DEFAULT_STATION_ID_FILE,
+        MAX_VOR_STATIONS_CSV_FILE_BYTES,
+        label="VOR default stations",
+        logger=log,
+    )
+    if text is None:
         return []
+    lines = text.splitlines()
     result: list[str] = []
     for line in lines[1:]:
         parts = line.split(";")
@@ -1395,16 +1447,21 @@ def load_request_count(bypass_cache: bool = False) -> tuple[str | None, int]:
         # However, for accurate reading we fall through to file.
         return (today_local, _QUOTA_CACHE["count"])
 
-    try:
-        data = json.loads(REQUEST_COUNT_FILE.read_text(encoding="utf-8"))
-    except (FileNotFoundError, OSError, json.JSONDecodeError, RecursionError):
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
-        # on-disk quota counter file (planted by a compromised CI runner or
-        # left over from a partial flush + power loss). Without this catch
-        # the error propagates out of every quota-check call site, crashing
-        # the VOR fetch pipeline mid-run.
-        return (None, 0)
-
+    # Security: ``read_capped_json`` enforces a TOCTOU-safe 1 MiB cap and
+    # returns ``None`` for missing / oversized / depth-bombed / corrupt
+    # files — closes the ``Path.read_text()`` -> ``MemoryError``
+    # propagation that would otherwise escape past the prior catch tuple
+    # ``(FileNotFoundError, OSError, json.JSONDecodeError, RecursionError)``
+    # (``MemoryError`` is ``BaseException``-rooted and bypasses every
+    # subclass-of-``Exception`` catch). ``load_request_count`` is invoked
+    # by every VOR fetch in the pipeline; an unbounded read at this site
+    # would crash the entire daily quota debit chain.
+    data = read_capped_json(
+        REQUEST_COUNT_FILE,
+        MAX_VOR_QUOTA_FILE_BYTES,
+        label="VOR quota",
+        logger=log,
+    )
     if not isinstance(data, dict):
         return (None, 0)
 
@@ -1480,28 +1537,22 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
                     lock_path.open("a+", encoding="utf-8") as lock_file,
                     file_lock(lock_file, exclusive=True),
                 ):
-                        # Use file read directly to get latest disk count safely under lock
+                        # Security: TOCTOU-safe size cap via read_capped_json.
                         disk_date = None
                         disk_count = 0
-                        try:
-                            data = json.loads(REQUEST_COUNT_FILE.read_text(encoding="utf-8"))
-                            if isinstance(data, dict):
-                                disk_date = data.get("date")
-                                if "requests" in data:
-                                    try:
-                                        disk_count = int(data["requests"])
-                                    except (ValueError, TypeError):
-                                        pass
-                        except (FileNotFoundError, OSError, json.JSONDecodeError, RecursionError):
-                            # Security: ``RecursionError`` covers JSON
-                            # depth-bomb attacks in the on-disk counter
-                            # (planted by a compromised CI runner or left
-                            # over from a partial flush). Treating it as
-                            # unreadable is the fail-safe choice — the new
-                            # in-memory delta gets written over the
-                            # poisoned file, restoring the canonical
-                            # schema for the next reader.
-                            pass
+                        data = read_capped_json(
+                            REQUEST_COUNT_FILE,
+                            MAX_VOR_QUOTA_FILE_BYTES,
+                            label="VOR quota",
+                            logger=log,
+                        )
+                        if isinstance(data, dict):
+                            disk_date = data.get("date")
+                            if "requests" in data:
+                                try:
+                                    disk_count = int(data["requests"])
+                                except (ValueError, TypeError):
+                                    pass
 
                         # Security: clamp at 0 to defeat negative-count quota-bypass
                         # (mirrors load_request_count's clamp; see its comment block).

@@ -20,6 +20,13 @@ from collections.abc import Iterator
 # canonical defence available without per-site bikeshedding.
 DEFAULT_MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 
+# Canonical default cap for non-JSON text payloads (CSV, .env, log files)
+# read into memory in one shot. Sized identically to the JSON cap so the
+# two helpers share the same threat-model bound. Callers requiring a
+# tighter ceiling (small mapping CSV, single-line secret) pass an explicit
+# ``max_bytes``.
+DEFAULT_MAX_TEXT_FILE_BYTES = 50 * 1024 * 1024
+
 
 @contextmanager
 def atomic_write(
@@ -227,4 +234,55 @@ def read_capped_json(
             payload: object = json.loads(raw)
             return payload
     except (OSError, json.JSONDecodeError, RecursionError, UnicodeDecodeError):
+        return None
+
+
+def read_capped_text(
+    path: Path,
+    max_bytes: int = DEFAULT_MAX_TEXT_FILE_BYTES,
+    *,
+    encoding: str = "utf-8",
+    label: str = "text",
+    logger: logging.Logger | None = None,
+) -> str | None:
+    """Read text from *path*, returning ``None`` if missing/oversized/invalid.
+
+    Mirrors :func:`read_capped_json` for non-JSON text payloads (CSV,
+    log files, .env files) where ``Path.read_text()`` would buffer the
+    entire file before processing — a ``BaseException``-rooted
+    ``MemoryError`` that propagates past surrounding ``except OSError``
+    handlers and crashes the cron pipeline.
+
+    Threat model: identical to :func:`read_capped_json`. A planted-huge
+    file at *path* (compromised CI runner / partial flush + power loss /
+    corrupted previous run / parallel orchestrator process performing an
+    atomic state swap mid-read) buffered into memory via
+    ``Path.read_text()`` allocates O(file_size) bytes and raises
+    ``MemoryError``. The fix shape mirrors ``read_capped_json``: open
+    first, fstat the open file descriptor (TOCTOU-safe), then bound the
+    read at ``max_bytes + 1`` (special-file safe).
+    """
+    log = logger if logger is not None else logging.getLogger(__name__)
+    try:
+        # Open first so the size check is on the actual inode that
+        # ``read()`` will consume — closes the stat/open TOCTOU.
+        with path.open("rb") as handle:
+            if os.fstat(handle.fileno()).st_size > max_bytes:
+                log.warning(
+                    "%s file at %s is too large (> %d bytes); treating as missing.",
+                    label, path, max_bytes,
+                )
+                return None
+            # Defense in depth: bound the read at ``max_bytes + 1`` so a
+            # special file with ``st_size == 0`` (FIFO, ``/dev/zero``,
+            # character device) cannot stream unbounded bytes.
+            raw = handle.read(max_bytes + 1)
+            if len(raw) > max_bytes:
+                log.warning(
+                    "%s file at %s exceeded %d bytes during read; treating as missing.",
+                    label, path, max_bytes,
+                )
+                return None
+            return raw.decode(encoding)
+    except (OSError, UnicodeDecodeError):
         return None
