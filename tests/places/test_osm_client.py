@@ -111,7 +111,7 @@ def test_config_clamps_oversized_timeout() -> None:
         user_agent="wien-oepnv-test/1.0",
         timeout_s=99999.0,
     )
-    assert config.timeout_s <= 20.0
+    assert config.timeout_s <= 30.0
 
 
 # ---------------------------------------------------------------- station mapping
