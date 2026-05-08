@@ -195,6 +195,43 @@ def get_file_hash(filepath: str | Path, chunk_size: int = 4096) -> str:
     return hasher.hexdigest()
 
 
+def write_json_atomic(
+    path: str | Path,
+    payload: object,
+    *,
+    permissions: int = 0o644,
+    indent: int | None = 2,
+    sort_keys: bool = False,
+    ensure_ascii: bool = False,
+) -> None:
+    """Write *payload* as JSON to *path* using :func:`atomic_write`.
+
+    Wrapper around the low-level ``atomic_write`` context manager that
+    encapsulates the common JSON serialisation pattern: open in text
+    mode, ``json.dump`` with deterministic options, append a trailing
+    newline when pretty printing so the file is editor-friendly. The
+    write is atomic at the directory-entry level (``os.replace``); a
+    crash mid-write never leaves a half-written file at *path*.
+
+    Designed for stateful, structured cache files such as
+    ``cache/gtfs_stammstrecke/events.json`` whose top-level shape is
+    a JSON object — the existing ``write_cache`` helper requires a
+    JSON list and is therefore incompatible with stateful caches that
+    persist metadata (e.g. ``first_seen`` timestamps) alongside the
+    event list.
+    """
+    with atomic_write(path, mode="w", encoding="utf-8", permissions=permissions) as fh:
+        json.dump(
+            payload,
+            fh,
+            ensure_ascii=ensure_ascii,
+            indent=indent,
+            sort_keys=sort_keys,
+        )
+        if indent is not None:
+            fh.write("\n")
+
+
 def read_capped_json(
     path: Path,
     max_bytes: int = DEFAULT_MAX_JSON_FILE_BYTES,

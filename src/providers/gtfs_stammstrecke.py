@@ -1,93 +1,83 @@
-"""GTFS-Realtime monitoring of the Vienna S-Bahn Stammstrecke.
+"""GTFS-Realtime monitoring of the Vienna S-Bahn Stammstrecke (cached).
 
-The provider polls the official ÖBB GTFS-Realtime ``TripUpdates`` feed,
-filters trip updates that are *currently* travelling through the
-Stammstrecke corridor, and yields a single consolidated event when the
-average delay across that corridor exceeds nine minutes.
+This module is the *read* half of the standard cache-driven provider
+architecture used by every other ÖBB / WL / VOR / Baustellen source in
+the project. The matching *write* half lives in
+``scripts/update_gtfs_cache.py`` — that script polls the official ÖBB
+GTFS-Realtime ``TripUpdates`` feed every 30 minutes (via the GitHub
+Actions workflow ``update-gtfs-cache.yml``), aggregates the average
+delay across the Stammstrecke corridor, and persists the result as a
+small JSON document at ``cache/gtfs_stammstrecke/events.json``. This
+module simply reads that document and yields zero or one
+:class:`FeedItem` for the merged feed builder.
 
-Why a separate provider rather than another VOR/HAFAS query? The VOR
-endpoint imposes strict per-tenant rate limits that are easy to exhaust
-on a 5-minute polling cadence; ÖBB's GTFS-Realtime feed is a static
-binary endpoint with caching headers that we can poll cheaply. ÖBB
-publishes the feed for free under the open-data licence.
+Cache document shape::
 
-Design contract:
+    {
+      "events": [
+        {
+          "guid": "...",
+          "first_seen": "2026-05-08T10:00:00+02:00",
+          "updated":    "2026-05-08T10:30:00+02:00",
+          "average_delay_minutes": 12,
+          "active_trips": 7
+        }
+      ],
+      "metadata": {"last_run": "...", "version": 1}
+    }
 
-* Returns at most ONE :class:`FeedItem`. The feed builder consumes a
-  list of items per provider; an empty list naturally drops the alert
-  out of the merged feed when the corridor recovers (the "self-heal"
-  property the spec calls for).
-* Stateless: the provider keeps no on-disk state, so when the average
-  drops back to the threshold the next run produces an empty list and
-  the alert disappears with the next merged-feed write.
-* Resilient: every fetch / parse step is wrapped in ``try/except`` and
-  logged. Malformed protobuf, timeouts, and breaker-open errors all
-  collapse to an empty result instead of crashing the cron pipeline.
+State semantics:
 
-Required ÖBB GTFS stop ids are resolved at runtime from
-``data/gtfs/stops.txt`` (the static GTFS feed companion of the
-realtime feed). Each Stammstrecke station maps to a frozen set of
-``stop_id`` values — typically one for the parent station plus one
-per platform.
+* ``"events"`` is a list. An *active* delay event is the FIRST element;
+  any other shape (empty list, no ``"events"`` key, missing file)
+  collapses to a clean state and the provider yields nothing.
+* ``"first_seen"`` is the original timestamp at which the corridor
+  delay first crossed the 9-minute threshold. The update script
+  preserves this across refreshes for as long as the threshold stays
+  exceeded, so the rendered ``[Seit DD.MM.YYYY]`` line in the
+  description matches the user's lived experience of "since when".
+* ``"updated"`` is the most recent refresh timestamp; the provider
+  surfaces it as ``pubDate`` so the merged feed records freshness.
+
+Why a separate cache file shape (object, not list)?  The other
+providers serialise pre-rendered ``FeedItem`` lists with no per-event
+state.  The Stammstrecke threshold contract requires preserving
+``first_seen`` across runs, which is a stateful piece of metadata
+that belongs in the cache file itself, not next to it.  The custom
+shape keeps the state colocated with the events it describes.
 """
 
 from __future__ import annotations
 
 import logging
-import os
-import re
-import unicodedata
-from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, cast
-from collections.abc import Iterable, Sequence
-from urllib.parse import urlparse
-
-import requests
+from datetime import datetime
+from pathlib import Path
+from typing import TYPE_CHECKING, Any
+from zoneinfo import ZoneInfo
 
 from ..feed_types import FeedItem
-from ..utils.circuit_breaker import CircuitBreaker, CircuitBreakerOpen
-from ..utils.http import fetch_content_safe, session_with_retries, validate_http_url
+from ..utils.files import read_capped_json
 from ..utils.ids import make_guid
 from ..utils.logging import sanitize_log_arg
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
-    from pathlib import Path
+    pass
 
 log = logging.getLogger(__name__)
 
 __all__ = [
-    "DEFAULT_GTFS_RT_URL",
+    "CACHE_RELATIVE_PATH",
+    "DEFAULT_CACHE_PATH",
+    "STAMMSTRECKE_CATEGORY",
+    "STAMMSTRECKE_LABEL",
+    "STAMMSTRECKE_LINK",
+    "STAMMSTRECKE_SOURCE",
     "STAMMSTRECKE_STATION_NAMES",
     "STAMMSTRECKE_THRESHOLD_MINUTES",
-    "USER_AGENT",
-    "build_event",
-    "calculate_average_delay_minutes",
+    "build_event_from_state",
     "fetch_events",
-    "iter_corridor_delays",
-    "load_stop_id_index",
-    "parse_feed_message",
+    "load_cache_document",
 ]
-
-
-# ÖBB publishes GTFS-RT TripUpdates at this canonical URL. ``ÖBB_GTFS_RT_URL``
-# may override it but is validated against the trusted host allow-list
-# below so an env override (compromised secret store / leaked CI env)
-# cannot redirect the cron pipeline to an attacker host.
-DEFAULT_GTFS_RT_URL = "https://realtime.oebb.at/gtfs-rt/tripUpdates"
-
-_TRUSTED_GTFS_RT_HOSTS: frozenset[str] = frozenset({"realtime.oebb.at", "data.oebb.at"})
-
-USER_AGENT = "Origamihase-wien-oepnv-stammstrecke/1.0 (+https://github.com/Origamihase/wien-oepnv)"
-
-# Slowloris-defence ceiling. Mirrors ``MAX_OEBB_FETCH_TIMEOUT`` (25s)
-# documented in ``src/providers/oebb.py`` — same parameter-boundary
-# contract, same justification.
-MAX_FETCH_TIMEOUT = 25
-
-# Per-fetch payload cap. The ÖBB GTFS-RT feed sits at ~1-3 MiB
-# (compressed) for the entire Austrian network; 8 MiB is ~3-4x
-# production state and well below the 10 MiB ``MAX_PAYLOAD_SIZE``.
-_MAX_PAYLOAD_BYTES = 8 * 1024 * 1024
 
 # Threshold at which the consolidated event is emitted. The spec
 # requires *strictly greater than* nine minutes — equality MUST NOT
@@ -109,501 +99,154 @@ STAMMSTRECKE_STATION_NAMES: tuple[str, ...] = (
     "Wien Meidling",
 )
 
-_STAMMSTRECKE_LABEL = "S-Bahn Stammstrecke"
-_BREAKER = CircuitBreaker(
-    "gtfs_stammstrecke",
-    failure_threshold=5,
-    recovery_timeout=300.0,
-)
+STAMMSTRECKE_LABEL = "S-Bahn Stammstrecke"
+STAMMSTRECKE_CATEGORY = "Störung"
+STAMMSTRECKE_SOURCE = "ÖBB GTFS-Realtime"
+STAMMSTRECKE_LINK = "https://www.oebb.at/de/fahrplan/stoerungen-baustellen"
+
+CACHE_RELATIVE_PATH = Path("cache") / "gtfs_stammstrecke" / "events.json"
+DEFAULT_CACHE_PATH = Path(__file__).resolve().parents[2] / CACHE_RELATIVE_PATH
+
+_VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
 
-@dataclass(frozen=True)
-class CorridorDelay:
-    """Per-trip delay snapshot used to compute the corridor average."""
+def load_cache_document(path: Path | None = None) -> dict[str, Any] | None:
+    """Return the parsed cache document at *path* or ``None``.
 
-    trip_id: str
-    delay_seconds: int
-    stop_ids: frozenset[str]
-
-
-@dataclass(frozen=True)
-class StammstreckeStateSnapshot:
-    """Aggregated outcome of a single GTFS-RT poll."""
-
-    average_delay_minutes: float
-    active_trips: int
-    sampled_delays: tuple[CorridorDelay, ...] = field(default_factory=tuple)
-
-
-def _validated_gtfs_rt_url(raw: str) -> str | None:
-    safe = validate_http_url(raw)
-    if not safe:
+    A defensive read that survives a missing / unparseable / oversized
+    cache file by returning ``None`` so the caller falls through to an
+    empty result.  The size cap defends against a planted-huge file in
+    a corrupted cache directory; mirrors the canonical defence pattern
+    used by ``read_capped_json`` callers throughout the project.
+    """
+    target = path if path is not None else DEFAULT_CACHE_PATH
+    payload = read_capped_json(target, label="GTFS Stammstrecke Cache", logger=log)
+    if not isinstance(payload, dict):
         return None
-    host = (urlparse(safe).hostname or "").lower()
-    if host not in _TRUSTED_GTFS_RT_HOSTS:
+    return payload
+
+
+def _parse_iso_datetime(value: object) -> datetime | None:
+    if not isinstance(value, str) or not value.strip():
         return None
-    return safe
-
-
-def _resolve_endpoint() -> str:
-    raw = os.getenv("OEBB_GTFS_RT_URL", "").strip()
-    if not raw:
-        return DEFAULT_GTFS_RT_URL
-    safe = _validated_gtfs_rt_url(raw)
-    if safe is None:
-        log.warning(
-            "OEBB_GTFS_RT_URL %s ist kein bekannter ÖBB-GTFS-RT-Host; verwende Standard.",
-            sanitize_log_arg(raw),
-        )
-        return DEFAULT_GTFS_RT_URL
-    return safe
-
-
-# ---------------------------------------------------------------------------
-# Stop id resolution
-# ---------------------------------------------------------------------------
-
-
-def _normalize_station_name(name: str) -> str:
-    """Return *name* in a comparison-friendly form.
-
-    Casefolding + accent stripping + collapsed whitespace + dropped
-    Bahnhof/Bf/Hbf suffixes — matches the project convention used by
-    ``scripts/update_station_directory.py:_normalize_location_keys``.
-    Compound forms (``Hauptbahnhof``, ``Westbahnhof``, ``Südbahnhof``)
-    collapse to the same canonical key so the corridor mapping treats
-    "Wien Hauptbahnhof" / "Wien Hbf" / "Wien Hauptbahnhof Bf" as one
-    station.
-    """
-    text = unicodedata.normalize("NFKD", name)
-    text = "".join(ch for ch in text if not unicodedata.combining(ch))
-    text = text.replace("ß", "ss").casefold()
-    # Strip compound *bahnhof* forms before the standalone variants —
-    # otherwise "hauptbahnhof" stays intact (the trailing ``\b`` of
-    # ``bahnhof`` does not match between two word chars).
-    text = re.sub(
-        r"(?:haupt|west|ost|nord|sued|sud|s-|s)?bahnhof",
-        "",
-        text,
-    )
-    text = re.sub(r"\b(?:bahnhst|bhf|hbf|bf)\b", "", text)
-    text = text.replace("-", " ").replace("/", " ")
-    text = re.sub(r"[^a-z0-9]+", " ", text)
-    return re.sub(r"\s{2,}", " ", text).strip()
-
-
-def _read_gtfs_stops(path: Path) -> dict[str, object]:
-    """Locally-imported wrapper for ``scripts.gtfs.read_gtfs_stops``.
-
-    The GTFS reader lives under ``scripts/`` to keep test-only utilities
-    out of the runtime ``src/`` tree. We import it lazily so importing
-    this module never touches disk and never crashes if the script
-    happens to be missing in a packaging context.
-    """
-    # Import lazily inside the function: scripts/gtfs.py is a
-    # script-package module, not part of ``src/``. Importing it at
-    # module load time would couple the import order of this provider
-    # to the script-package layout.
     try:
-        from scripts.gtfs import read_gtfs_stops
-    except ImportError:
-        try:
-            import sys as _sys
-            from pathlib import Path as _Path
-
-            scripts_dir = _Path(__file__).resolve().parents[2] / "scripts"
-            if str(scripts_dir.parent) not in _sys.path:
-                _sys.path.insert(0, str(scripts_dir.parent))
-            from scripts.gtfs import read_gtfs_stops
-        except (ImportError, OSError) as exc:  # pragma: no cover - defensive
-            # Security (Clear-Text-Logging Drift Round 3): route the exception
-            # text through ``sanitize_log_arg`` so any control characters /
-            # ANSI escapes / secret-shaped tokens in the underlying loader's
-            # error message are stripped before reaching the cron logger.
-            log.warning(
-                "Could not load scripts.gtfs.read_gtfs_stops: %s",
-                sanitize_log_arg(str(exc)),
-            )
-            return {}
-    try:
-        return cast(dict[str, object], read_gtfs_stops(path))
-    except (OSError, ValueError) as exc:
-        log.warning(
-            "Could not read GTFS stops file %s: %s",
-            sanitize_log_arg(str(path)),
-            sanitize_log_arg(str(exc)),
-        )
-        return {}
+        parsed = datetime.fromisoformat(value)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=_VIENNA_TZ)
+    return parsed
 
 
-def load_stop_id_index(
-    stops_path: Path | None = None,
-    *,
-    station_names: Sequence[str] = STAMMSTRECKE_STATION_NAMES,
-) -> dict[str, frozenset[str]]:
-    """Map each Stammstrecke station name to its known GTFS ``stop_id``s.
-
-    Resolution algorithm:
-
-    1. Read ``data/gtfs/stops.txt`` (operator-supplied static GTFS
-       stops file).
-    2. Normalise every ``stop_name`` plus the canonical Stammstrecke
-       names.
-    3. A normalised stop name *equals* or *starts with* the canonical
-       Stammstrecke key → record the stop_id.
-
-    Returns a dict containing every requested name even when no stop
-    matched (the value is then an empty frozenset). Callers can union
-    the values into a single corridor stop-id set.
-    """
-    from pathlib import Path as _PathConcrete  # local alias
-
-    if stops_path is None:
-        stops_path = _PathConcrete(__file__).resolve().parents[2] / "data" / "gtfs" / "stops.txt"
-
-    stops = _read_gtfs_stops(stops_path)
-    canonical = {name: _normalize_station_name(name) for name in station_names}
-    result: dict[str, set[str]] = {name: set() for name in station_names}
-
-    if not stops:
-        return {name: frozenset(values) for name, values in result.items()}
-
-    for stop_id, stop in stops.items():
-        stop_name = getattr(stop, "stop_name", None)
-        if not isinstance(stop_name, str) or not stop_name.strip():
-            continue
-        normalised = _normalize_station_name(stop_name)
-        if not normalised:
-            continue
-        for station_name, key in canonical.items():
-            if not key:
-                continue
-            if normalised == key or normalised.startswith(key + " "):
-                result[station_name].add(str(stop_id))
-                break
-
-    return {name: frozenset(values) for name, values in result.items()}
-
-
-def _flatten_stop_ids(stop_index: dict[str, frozenset[str]]) -> frozenset[str]:
-    flat: set[str] = set()
-    for ids in stop_index.values():
-        flat.update(ids)
-    return frozenset(flat)
-
-
-# ---------------------------------------------------------------------------
-# Protobuf parsing
-# ---------------------------------------------------------------------------
-
-
-def parse_feed_message(blob: bytes) -> object:
-    """Decode a GTFS-Realtime ``FeedMessage`` byte string.
-
-    The function returns the parsed ``FeedMessage`` (typed as
-    ``object`` to keep the gtfs-realtime-bindings dependency optional
-    at type-check time) or raises :class:`ValueError` on any decoding
-    error so the caller can route through a single failure handler.
-    """
-    try:
-        # Local import keeps the dependency optional for environments
-        # that exercise the static fixtures only.
-        from google.transit import gtfs_realtime_pb2
-    except ImportError as exc:
-        raise ValueError("gtfs-realtime-bindings package is unavailable") from exc
-
-    feed = gtfs_realtime_pb2.FeedMessage()
-    try:
-        feed.ParseFromString(blob)
-    except Exception as exc:
-        raise ValueError(f"Could not parse GTFS-RT FeedMessage: {exc}") from exc
-    return feed
-
-
-def _coerce_int(value: object) -> int | None:
+def _coerce_int_minutes(value: object) -> int | None:
     if isinstance(value, bool):
         return None
     if isinstance(value, int):
         return value
-    if isinstance(value, float) and value == value:  # NaN check
-        return int(value)
+    if isinstance(value, float) and value == value:
+        return int(round(value))
     return None
 
 
-def _select_delay_seconds(stop_time_update: object) -> int | None:
-    """Return the most relevant delay in seconds for one stop visit.
-
-    GTFS-RT exposes ``arrival.delay`` and ``departure.delay``. We pick
-    the larger absolute value — the spec interprets "delay on the
-    corridor" as the worst-case effect at the platform.
-    """
-    candidates: list[int] = []
-    for attr in ("arrival", "departure"):
-        sub = getattr(stop_time_update, attr, None)
-        if sub is None:
-            continue
-        delay = _coerce_int(getattr(sub, "delay", None))
-        if delay is None:
-            continue
-        candidates.append(delay)
-    if not candidates:
+def _coerce_int_count(value: object) -> int | None:
+    if isinstance(value, bool):
         return None
-    return max(candidates, key=abs)
+    if isinstance(value, int):
+        return max(0, value)
+    if isinstance(value, float) and value == value:
+        return max(0, int(round(value)))
+    return None
 
 
-def _iter_trip_updates(feed: object) -> Iterable[object]:
-    entities = getattr(feed, "entity", None)
-    if entities is None:
-        return ()
-    out: list[object] = []
-    try:
-        for entity in entities:
-            trip_update = getattr(entity, "trip_update", None)
-            if trip_update is None:
-                continue
-            if not getattr(entity, "HasField", lambda _name: True)("trip_update"):
-                continue
-            out.append(trip_update)
-    except Exception as exc:  # pragma: no cover - defensive logging path
-        # Security (Clear-Text-Logging Drift Round 3): the protobuf parser's
-        # exception messages can quote bytes from the failure offset. Route
-        # via ``sanitize_log_arg`` so attacker-controlled bytes in the
-        # response payload cannot forge log lines (\\n / \\r) or terminal
-        # escape sequences (\\x1b[…]).
-        log.warning(
-            "Unexpected error while iterating GTFS-RT entities: %s: %s",
-            type(exc).__name__,
-            sanitize_log_arg(str(exc)),
-        )
-        return ()
-    return out
+def build_event_from_state(state: dict[str, Any]) -> FeedItem | None:
+    """Render the consolidated alert :class:`FeedItem` from *state*.
 
-
-def iter_corridor_delays(
-    feed: object,
-    corridor_stop_ids: Iterable[str],
-) -> list[CorridorDelay]:
-    """Return per-trip delay snapshots for trips touching the corridor.
-
-    A trip "touches the corridor" when at least one of its
-    ``stop_time_update`` entries names a stop_id from
-    *corridor_stop_ids*. The reported delay for that trip is the
-    maximum (by absolute value) of the per-stop delays observed at the
-    corridor stops only — that is the metric an end-user perceives
-    when riding through the Stammstrecke.
+    *state* is the first entry of the cache document's ``"events"``
+    list.  Returns ``None`` when the state lacks the minimum keys
+    needed to render a meaningful alert (``first_seen`` and either
+    ``average_delay_minutes`` or ``rounded_minutes``).
     """
-    corridor = frozenset(str(s) for s in corridor_stop_ids if s)
-    if not corridor:
-        return []
+    minutes = _coerce_int_minutes(state.get("average_delay_minutes"))
+    if minutes is None:
+        minutes = _coerce_int_minutes(state.get("rounded_minutes"))
+    if minutes is None or minutes <= STAMMSTRECKE_THRESHOLD_MINUTES:
+        return None
 
-    out: list[CorridorDelay] = []
-    for trip_update in _iter_trip_updates(feed):
-        trip = getattr(trip_update, "trip", None)
-        trip_id = getattr(trip, "trip_id", "") if trip is not None else ""
-        delays_in_corridor: list[int] = []
-        touched: set[str] = set()
-        try:
-            stop_time_updates = list(getattr(trip_update, "stop_time_update", []))
-        except Exception as exc:  # pragma: no cover - defensive
-            # Security (Clear-Text-Logging Drift Round 3): see the parallel
-            # site in ``_iter_trip_updates`` — protobuf parser bytes are
-            # attacker-controlled, sanitize before logging.
-            log.warning(
-                "Unexpected error reading stop_time_update list: %s: %s",
-                type(exc).__name__,
-                sanitize_log_arg(str(exc)),
-            )
-            continue
-        for stu in stop_time_updates:
-            stop_id = getattr(stu, "stop_id", "")
-            if not isinstance(stop_id, str) or stop_id not in corridor:
-                continue
-            touched.add(stop_id)
-            delay = _select_delay_seconds(stu)
-            if delay is not None:
-                delays_in_corridor.append(delay)
-        if not touched or not delays_in_corridor:
-            continue
-        worst = max(delays_in_corridor, key=abs)
-        out.append(
-            CorridorDelay(
-                trip_id=str(trip_id) if isinstance(trip_id, str) else "",
-                delay_seconds=worst,
-                stop_ids=frozenset(touched),
-            )
+    first_seen = _parse_iso_datetime(state.get("first_seen"))
+    if first_seen is None:
+        return None
+
+    updated = _parse_iso_datetime(state.get("updated")) or first_seen
+    active_trips = _coerce_int_count(state.get("active_trips")) or 0
+
+    seit = first_seen.astimezone(_VIENNA_TZ).strftime("%d.%m.%Y")
+    title = f"{STAMMSTRECKE_LABEL}: Derzeit durchschnittlich {minutes} Minuten Verspätung"
+
+    if active_trips > 0:
+        body = (
+            f"Aktuell sind <b>{active_trips} Züge</b> auf der Wiener "
+            "S-Bahn-Stammstrecke (<b>Wien Floridsdorf</b> ↔ <b>Wien Meidling</b>) mit "
+            f"einer durchschnittlichen Verspätung von <b>{minutes} Minuten</b> unterwegs."
         )
-    return out
-
-
-def calculate_average_delay_minutes(
-    delays: Sequence[CorridorDelay],
-) -> float:
-    """Return the mean delay across *delays* in minutes.
-
-    Negative delays (early trips) are clamped at zero so a single
-    early arrival cannot mask a real downstream delay. Returns ``0.0``
-    when the input list is empty (the empty-corridor heal path).
-    """
-    if not delays:
-        return 0.0
-    seconds = [max(0, d.delay_seconds) for d in delays]
-    if not seconds:
-        return 0.0
-    return (sum(seconds) / len(seconds)) / 60.0
-
-
-# ---------------------------------------------------------------------------
-# Public API
-# ---------------------------------------------------------------------------
-
-
-def build_event(snapshot: StammstreckeStateSnapshot, link: str) -> FeedItem:
-    """Render the consolidated corridor alert as a :class:`FeedItem`."""
-    rounded = int(round(snapshot.average_delay_minutes))
-    title = f"{_STAMMSTRECKE_LABEL}: Derzeit durchschnittlich {rounded} Minuten Verspätung"
+    else:
+        body = (
+            "Auf der Wiener S-Bahn-Stammstrecke (<b>Wien Floridsdorf</b> ↔ "
+            "<b>Wien Meidling</b>) ist eine durchschnittliche Verspätung von "
+            f"<b>{minutes} Minuten</b> erfasst."
+        )
     description = (
-        f"Aktuell sind {snapshot.active_trips} Züge auf der Wiener "
-        f"S-Bahn-Stammstrecke (Wien Floridsdorf ↔ Wien Meidling) mit "
-        f"einer durchschnittlichen Verspätung von {rounded} Minuten "
-        "unterwegs. Datenquelle: ÖBB GTFS-Realtime."
+        f"[Seit {seit}]<br/><br/>{body}<br/>Datenquelle: ÖBB GTFS-Realtime."
     )
-    guid = make_guid(
-        "gtfs_stammstrecke",
-        "corridor_average_delay",
-        str(rounded),
-    )
-    return FeedItem(
+
+    explicit_guid = state.get("guid")
+    if isinstance(explicit_guid, str) and explicit_guid.strip():
+        guid = explicit_guid
+    else:
+        guid = make_guid(
+            "gtfs_stammstrecke",
+            "stammstrecke_delay",
+            first_seen.astimezone(_VIENNA_TZ).isoformat(),
+        )
+
+    item = FeedItem(
         title=title,
-        link=link,
+        link=STAMMSTRECKE_LINK,
         description=description,
         guid=guid,
-        source="gtfs_stammstrecke",
-        category=_STAMMSTRECKE_LABEL,
+        source=STAMMSTRECKE_SOURCE,
+        category=STAMMSTRECKE_CATEGORY,
+        pubDate=updated,
     )
+    return item
 
 
-def _fetch_blob(url: str, timeout: int) -> bytes | None:
-    """Fetch the GTFS-RT binary payload through ``request_safe``.
-
-    Returns ``None`` on any network or content-type error. The caller
-    propagates that into an empty event list — the cron pipeline must
-    not crash on transient upstream issues.
-    """
-    with session_with_retries(USER_AGENT) as session:
-        try:
-            return fetch_content_safe(
-                session,
-                url,
-                max_bytes=_MAX_PAYLOAD_BYTES,
-                timeout=timeout,
-                allowed_content_types=(
-                    "application/octet-stream",
-                    "application/x-protobuf",
-                    "application/protobuf",
-                ),
-            )
-        except (requests.RequestException, ValueError) as exc:
-            log.warning(
-                "GTFS-RT Stammstrecke fetch fehlgeschlagen: %s: %s",
-                type(exc).__name__,
-                sanitize_log_arg(str(exc)),
-            )
-            return None
-
-
-def _evaluate_corridor(
-    feed: object,
-    corridor_stop_ids: frozenset[str],
-) -> StammstreckeStateSnapshot:
-    delays = iter_corridor_delays(feed, corridor_stop_ids)
-    average = calculate_average_delay_minutes(delays)
-    return StammstreckeStateSnapshot(
-        average_delay_minutes=average,
-        active_trips=len(delays),
-        sampled_delays=tuple(delays),
-    )
-
-
-def fetch_events(
-    timeout: int = 25,
-    *,
-    stops_path: Path | None = None,
-    url: str | None = None,
-) -> list[FeedItem]:
+def fetch_events(*, cache_path: Path | None = None) -> list[FeedItem]:
     """Public provider entry point.
 
-    Returns a list with at most one :class:`FeedItem`. An empty list
-    means the average corridor delay is at or below the threshold (or
-    the upstream feed was unavailable) — either way the merged feed
-    naturally drops any prior alert.
+    Reads the cache document at ``cache/gtfs_stammstrecke/events.json``
+    (or *cache_path* when supplied) and returns at most one
+    :class:`FeedItem`.  The list is empty when the cache is missing,
+    the events list is empty, or the persisted state is below the
+    threshold — the merged feed naturally drops any prior alert in
+    that case (the "self-heal" property the spec calls for).
     """
-    if timeout > MAX_FETCH_TIMEOUT:
-        timeout = MAX_FETCH_TIMEOUT
+    document = load_cache_document(cache_path)
+    if document is None:
+        return []
 
-    endpoint = url or _resolve_endpoint()
+    events_raw = document.get("events")
+    if not isinstance(events_raw, list) or not events_raw:
+        return []
 
-    try:
-        stop_index = load_stop_id_index(stops_path)
-    except (OSError, ValueError) as exc:
-        # Security (Clear-Text-Logging Drift Round 3): file path components
-        # in the OSError text may contain control characters; sanitize.
+    state = events_raw[0]
+    if not isinstance(state, dict):
         log.warning(
-            "Cannot resolve Stammstrecke stop ids: %s: %s",
-            type(exc).__name__,
-            sanitize_log_arg(str(exc)),
+            "GTFS-RT Stammstrecke cache event entry is not an object: %s",
+            sanitize_log_arg(type(state).__name__),
         )
         return []
 
-    corridor = _flatten_stop_ids(stop_index)
-    if not corridor:
-        log.info(
-            "GTFS-RT Stammstrecke: no stop_id mapping resolved from GTFS stops.txt; skipping (no corridor coverage available)",
-        )
+    item = build_event_from_state(state)
+    if item is None:
         return []
-
-    try:
-        blob = _BREAKER.call(_fetch_blob, endpoint, timeout)
-    except CircuitBreakerOpen:
-        log.warning(
-            "GTFS-RT Stammstrecke breaker is OPEN; skipping fetch this run",
-        )
-        return []
-    except Exception as exc:  # pragma: no cover - defensive logging path
-        log.error(
-            "Unexpected error fetching GTFS-RT Stammstrecke: %s: %s",
-            type(exc).__name__,
-            sanitize_log_arg(str(exc)),
-        )
-        return []
-
-    if not blob:
-        return []
-
-    try:
-        feed = parse_feed_message(blob)
-    except ValueError as exc:
-        log.warning(
-            "GTFS-RT Stammstrecke konnte FeedMessage nicht parsen: %s",
-            sanitize_log_arg(str(exc)),
-        )
-        return []
-    except Exception as exc:  # pragma: no cover - defensive logging path
-        log.error(
-            "Unexpected error parsing GTFS-RT FeedMessage: %s: %s",
-            type(exc).__name__,
-            sanitize_log_arg(str(exc)),
-        )
-        return []
-
-    snapshot = _evaluate_corridor(feed, corridor)
-    log.info(
-        "GTFS-RT Stammstrecke: %d aktive Züge, Durchschnittsverspätung %.2f min",
-        snapshot.active_trips,
-        snapshot.average_delay_minutes,
-    )
-
-    if snapshot.average_delay_minutes <= STAMMSTRECKE_THRESHOLD_MINUTES:
-        return []
-
-    link = "https://www.oebb.at/de/fahrplan/stoerungen-baustellen"
-    return [build_event(snapshot, link)]
+    return [item]
