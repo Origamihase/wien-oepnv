@@ -49,6 +49,13 @@ def test_collect_items_missing_cache_logs_warning(
     tmp_path: Path,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
+    # The Stammstrecke provider is *live* (network fetch on every
+    # build_feed run) — disabling it here keeps this offline-cache
+    # regression test from triggering an outbound HTTPS round-trip
+    # to ``realtime.oebb.at``. The provider's own pytest coverage
+    # lives in ``tests/providers/test_gtfs_stammstrecke.py``.
+    monkeypatch.setenv("STAMMSTRECKE_ENABLE", "0")
+
     build_feed = _import_build_feed_without_providers(monkeypatch)
     _patch_empty_cache(monkeypatch, tmp_path)
 
@@ -69,11 +76,14 @@ def test_collect_items_missing_cache_logs_warning(
         "Cache für Provider 'oebb' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'vor' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'baustellen' leer – generiere Feed ohne aktuelle Daten.",
-        "Cache für Provider 'gtfs_stammstrecke' leer – generiere Feed ohne aktuelle Daten.",
     }
 
 
 def test_collect_items_reports_cache_alerts(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    # Disable the live Stammstrecke provider so this test stays
+    # offline. See sibling test for the threat-model rationale.
+    monkeypatch.setenv("STAMMSTRECKE_ENABLE", "0")
+
     build_feed = _import_build_feed_without_providers(monkeypatch)
     _patch_empty_cache(monkeypatch, tmp_path)
 
@@ -90,6 +100,10 @@ def test_main_runs_without_network(
     tmp_path: Path,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
+    # See ``test_collect_items_missing_cache_logs_warning`` above for
+    # why STAMMSTRECKE_ENABLE is forced off here.
+    monkeypatch.setenv("STAMMSTRECKE_ENABLE", "0")
+
     build_feed = _import_build_feed_without_providers(monkeypatch)
     _patch_empty_cache(monkeypatch, tmp_path)
 
@@ -123,11 +137,15 @@ def test_main_runs_without_network(
         "Cache für Provider 'oebb' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'vor' leer – generiere Feed ohne aktuelle Daten.",
         "Cache für Provider 'baustellen' leer – generiere Feed ohne aktuelle Daten.",
-        "Cache für Provider 'gtfs_stammstrecke' leer – generiere Feed ohne aktuelle Daten.",
     }
 
 
 def test_collect_items_reads_from_cache(monkeypatch: pytest.MonkeyPatch) -> None:
+    # Stammstrecke is the only *live*-fetching provider; disable it so
+    # this test stays fully offline and inside its 60-second pytest
+    # budget. See sibling test for the threat-model rationale.
+    monkeypatch.setenv("STAMMSTRECKE_ENABLE", "0")
+
     build_feed = _import_build_feed_without_providers(monkeypatch)
 
     calls = []

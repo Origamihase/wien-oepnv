@@ -1,18 +1,21 @@
 """Tests for the S-Bahn Stammstrecke GTFS-Realtime provider.
 
-The suite drives the provider with hand-built ``FeedMessage`` protobuf
-fixtures (using ``gtfs-realtime-bindings``) so the average-delay
-calculation, threshold logic, and self-heal contract can be verified
-without any real network IO.
+The suite drives the provider with hand-built ``MagicMock``-shaped
+``FeedMessage`` fixtures rather than constructing raw protobuf binary
+strings (per the project's protobuf-testing convention) so the
+average-delay calculation, threshold logic, and self-heal contract can
+be verified without any real network IO and without building real
+protobuf wire bytes.
 """
 
 from __future__ import annotations
 
-from collections.abc import Iterator
+from collections.abc import Iterator, Sequence
 from pathlib import Path
+from typing import Any
+from unittest.mock import MagicMock
 
 import pytest
-from google.transit import gtfs_realtime_pb2
 
 from src.providers import gtfs_stammstrecke as provider
 
@@ -29,30 +32,60 @@ def reset_breaker() -> Iterator[None]:
         provider._BREAKER.reset()
 
 
-def _add_trip_update(
-    feed: gtfs_realtime_pb2.FeedMessage,
+def _make_stop_time_update(
+    stop_id: str,
+    *,
+    arrival_delay: int | None = None,
+    departure_delay: int | None = None,
+) -> MagicMock:
+    """Return a ``stop_time_update`` shaped exactly like the protobuf API.
+
+    ``arrival`` and ``departure`` mirror the GTFS-RT TripDescriptor sub-
+    messages; setting either one to ``None`` matches an unset oneof on
+    the wire and exercises the "missing arrival.delay" branch in
+    :func:`provider._select_delay_seconds`.
+    """
+    stu = MagicMock()
+    stu.stop_id = stop_id
+
+    if arrival_delay is None:
+        stu.arrival = None
+    else:
+        arrival = MagicMock()
+        arrival.delay = arrival_delay
+        stu.arrival = arrival
+
+    if departure_delay is None:
+        stu.departure = None
+    else:
+        departure = MagicMock()
+        departure.delay = departure_delay
+        stu.departure = departure
+
+    return stu
+
+
+def _make_entity(
     *,
     trip_id: str,
-    stop_delays: list[tuple[str, int]],
-) -> None:
-    """Append a TripUpdate entity carrying ``arrival.delay`` per stop."""
-    entity = feed.entity.add()
-    entity.id = trip_id
-    entity.trip_update.trip.trip_id = trip_id
-    for stop_id, delay_seconds in stop_delays:
-        stu = entity.trip_update.stop_time_update.add()
-        stu.stop_id = stop_id
-        stu.arrival.delay = delay_seconds
+    stop_delays: Sequence[tuple[str, int]],
+) -> MagicMock:
+    """Return one ``FeedEntity`` MagicMock with a TripUpdate sub-message."""
+    entity = MagicMock()
+    entity.HasField = lambda _name: True
+    trip_update = MagicMock()
+    trip = MagicMock()
+    trip.trip_id = trip_id
+    trip_update.trip = trip
+    trip_update.stop_time_update = [_make_stop_time_update(stop_id, arrival_delay=delay) for stop_id, delay in stop_delays]
+    entity.trip_update = trip_update
+    return entity
 
 
-def _build_feed(*trips: tuple[str, list[tuple[str, int]]]) -> bytes:
-    feed = gtfs_realtime_pb2.FeedMessage()
-    feed.header.gtfs_realtime_version = "2.0"
-    feed.header.timestamp = 1_700_000_000
-    for trip_id, stop_delays in trips:
-        _add_trip_update(feed, trip_id=trip_id, stop_delays=stop_delays)
-    raw: bytes = feed.SerializeToString()
-    return raw
+def _make_feed(*entities: MagicMock) -> MagicMock:
+    feed = MagicMock()
+    feed.entity = list(entities)
+    return feed
 
 
 _STAMMSTRECKE_STOP_IDS: tuple[str, ...] = (
@@ -93,11 +126,10 @@ def test_average_delay_minutes_clamps_negative_values() -> None:
 
 
 def test_iter_corridor_delays_finds_trips_touching_corridor() -> None:
-    blob = _build_feed(
-        ("trip-1", [("8100008", 720), ("8100050", 600)]),  # corridor; 12 min, 10 min
-        ("trip-2", [("99999", 60)]),  # outside corridor
+    feed = _make_feed(
+        _make_entity(trip_id="trip-1", stop_delays=[("8100008", 720), ("8100050", 600)]),
+        _make_entity(trip_id="trip-2", stop_delays=[("99999", 60)]),
     )
-    feed = provider.parse_feed_message(blob)
     delays = provider.iter_corridor_delays(feed, _STAMMSTRECKE_STOP_IDS)
     assert {d.trip_id for d in delays} == {"trip-1"}
     # Worst delay across corridor stops is 720s.
@@ -105,28 +137,34 @@ def test_iter_corridor_delays_finds_trips_touching_corridor() -> None:
 
 
 def test_iter_corridor_delays_uses_max_abs_arrival_or_departure() -> None:
-    feed = gtfs_realtime_pb2.FeedMessage()
-    entity = feed.entity.add()
-    entity.id = "trip-3"
-    entity.trip_update.trip.trip_id = "trip-3"
-    stu = entity.trip_update.stop_time_update.add()
-    stu.stop_id = "8100050"
-    stu.arrival.delay = 60
-    stu.departure.delay = 540  # this should win
+    entity = MagicMock()
+    entity.HasField = lambda _name: True
+    trip = MagicMock()
+    trip.trip_id = "trip-3"
+    trip_update = MagicMock()
+    trip_update.trip = trip
+    stu = _make_stop_time_update("8100050", arrival_delay=60, departure_delay=540)
+    trip_update.stop_time_update = [stu]
+    entity.trip_update = trip_update
+
+    feed = _make_feed(entity)
     delays = provider.iter_corridor_delays(feed, _STAMMSTRECKE_STOP_IDS)
     assert len(delays) == 1
+    # 540s departure delay wins over 60s arrival delay (larger abs).
     assert delays[0].delay_seconds == 540
 
 
 def test_iter_corridor_delays_skips_trips_with_only_unrelated_stops() -> None:
-    blob = _build_feed(("trip-x", [("99999", 600)]))
-    feed = provider.parse_feed_message(blob)
+    feed = _make_feed(
+        _make_entity(trip_id="trip-x", stop_delays=[("99999", 600)]),
+    )
     assert provider.iter_corridor_delays(feed, _STAMMSTRECKE_STOP_IDS) == []
 
 
 def test_iter_corridor_delays_handles_empty_corridor_set() -> None:
-    blob = _build_feed(("trip-1", [("8100008", 600)]))
-    feed = provider.parse_feed_message(blob)
+    feed = _make_feed(
+        _make_entity(trip_id="trip-1", stop_delays=[("8100008", 600)]),
+    )
     assert provider.iter_corridor_delays(feed, frozenset()) == []
 
 
@@ -136,9 +174,9 @@ def test_iter_corridor_delays_handles_empty_corridor_set() -> None:
 def test_evaluate_corridor_yields_event_when_average_above_threshold(
     monkeypatch: pytest.MonkeyPatch, reset_breaker: None, tmp_path: Path
 ) -> None:
-    blob = _build_feed(
-        ("trip-1", [("8100008", 720)]),  # 12 min
-        ("trip-2", [("8100050", 660)]),  # 11 min  → mean = 11.5 min
+    feed = _make_feed(
+        _make_entity(trip_id="trip-1", stop_delays=[("8100008", 720)]),  # 12 min
+        _make_entity(trip_id="trip-2", stop_delays=[("8100050", 660)]),  # 11 min  → mean = 11.5 min
     )
 
     def _mapping(*_args: object, **_kwargs: object) -> dict[str, frozenset[str]]:
@@ -148,7 +186,9 @@ def test_evaluate_corridor_yields_event_when_average_above_threshold(
         }
 
     monkeypatch.setattr(provider, "load_stop_id_index", _mapping)
-    monkeypatch.setattr(provider, "_fetch_blob", lambda *_a, **_k: blob)
+    monkeypatch.setattr(provider, "_fetch_blob", lambda *_a, **_k: b"opaque-blob")
+    monkeypatch.setattr(provider, "parse_feed_message", lambda blob: feed)
+
     events = provider.fetch_events(stops_path=tmp_path / "stops.txt")
     assert len(events) == 1
     title = events[0]["title"]
@@ -160,35 +200,41 @@ def test_evaluate_corridor_yields_event_when_average_above_threshold(
 def test_evaluate_corridor_returns_empty_at_or_below_threshold(
     monkeypatch: pytest.MonkeyPatch, reset_breaker: None, tmp_path: Path
 ) -> None:
-    blob = _build_feed(
-        ("trip-1", [("8100008", 540)]),  # 9 min — equals threshold, no event
+    feed = _make_feed(
+        _make_entity(trip_id="trip-1", stop_delays=[("8100008", 540)]),  # 9 min — equals threshold
     )
 
     def _mapping(*_args: object, **_kwargs: object) -> dict[str, frozenset[str]]:
         return {"Wien Floridsdorf": frozenset({"8100008"})}
 
     monkeypatch.setattr(provider, "load_stop_id_index", _mapping)
-    monkeypatch.setattr(provider, "_fetch_blob", lambda *_a, **_k: blob)
+    monkeypatch.setattr(provider, "_fetch_blob", lambda *_a, **_k: b"opaque-blob")
+    monkeypatch.setattr(provider, "parse_feed_message", lambda blob: feed)
+
     assert provider.fetch_events(stops_path=tmp_path / "stops.txt") == []
 
 
 def test_evaluate_corridor_returns_empty_when_no_active_trips(monkeypatch: pytest.MonkeyPatch, reset_breaker: None, tmp_path: Path) -> None:
-    blob = _build_feed(("trip-x", [("99999", 600)]))  # outside corridor
+    feed = _make_feed(
+        _make_entity(trip_id="trip-x", stop_delays=[("99999", 600)]),  # outside corridor
+    )
 
     def _mapping(*_args: object, **_kwargs: object) -> dict[str, frozenset[str]]:
         return {"Wien Floridsdorf": frozenset({"8100008"})}
 
     monkeypatch.setattr(provider, "load_stop_id_index", _mapping)
-    monkeypatch.setattr(provider, "_fetch_blob", lambda *_a, **_k: blob)
+    monkeypatch.setattr(provider, "_fetch_blob", lambda *_a, **_k: b"opaque-blob")
+    monkeypatch.setattr(provider, "parse_feed_message", lambda blob: feed)
+
     assert provider.fetch_events(stops_path=tmp_path / "stops.txt") == []
 
 
 def test_evaluate_corridor_self_heals(monkeypatch: pytest.MonkeyPatch, reset_breaker: None, tmp_path: Path) -> None:
     """First call: 11 min avg → emits alert. Second call: 0 min → empty."""
-    blobs = iter(
+    feeds = iter(
         [
-            _build_feed(("trip-1", [("8100008", 660)])),
-            _build_feed(("trip-1", [("8100008", 0)])),
+            _make_feed(_make_entity(trip_id="trip-1", stop_delays=[("8100008", 660)])),
+            _make_feed(_make_entity(trip_id="trip-1", stop_delays=[("8100008", 0)])),
         ]
     )
 
@@ -196,7 +242,9 @@ def test_evaluate_corridor_self_heals(monkeypatch: pytest.MonkeyPatch, reset_bre
         return {"Wien Floridsdorf": frozenset({"8100008"})}
 
     monkeypatch.setattr(provider, "load_stop_id_index", _mapping)
-    monkeypatch.setattr(provider, "_fetch_blob", lambda *_a, **_k: next(blobs))
+    monkeypatch.setattr(provider, "_fetch_blob", lambda *_a, **_k: b"opaque-blob")
+    monkeypatch.setattr(provider, "parse_feed_message", lambda blob: next(feeds))
+
     first = provider.fetch_events(stops_path=tmp_path / "stops.txt")
     assert len(first) == 1
     second = provider.fetch_events(stops_path=tmp_path / "stops.txt")
@@ -210,8 +258,13 @@ def test_fetch_events_returns_empty_on_malformed_payload(monkeypatch: pytest.Mon
     def _mapping(*_args: object, **_kwargs: object) -> dict[str, frozenset[str]]:
         return {"Wien Floridsdorf": frozenset({"8100008"})}
 
+    def _explode(_blob: bytes) -> Any:
+        raise ValueError("Could not parse GTFS-RT FeedMessage: simulated")
+
     monkeypatch.setattr(provider, "load_stop_id_index", _mapping)
-    monkeypatch.setattr(provider, "_fetch_blob", lambda *_a, **_k: b"\x00\xff\x00\xff garbage")
+    monkeypatch.setattr(provider, "_fetch_blob", lambda *_a, **_k: b"\x00\xff garbage")
+    monkeypatch.setattr(provider, "parse_feed_message", _explode)
+
     assert provider.fetch_events(stops_path=tmp_path / "stops.txt") == []
 
 
@@ -302,7 +355,6 @@ def test_build_event_renders_expected_title() -> None:
     item = provider.build_event(snapshot, link="https://example.org")
     assert item["title"] == "S-Bahn Stammstrecke: Derzeit durchschnittlich 11 Minuten Verspätung"
     assert "S-Bahn-Stammstrecke" in item["description"]
-    # Title rounds to nearest int even at the exact half (banker's rounding).
     snapshot2 = provider.StammstreckeStateSnapshot(
         average_delay_minutes=12.6,
         active_trips=2,

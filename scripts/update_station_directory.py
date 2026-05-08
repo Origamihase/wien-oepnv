@@ -102,7 +102,7 @@ try:  # pragma: no cover - convenience for module execution
         filter_complete_places,
     )
     from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
-    from src.utils.env import load_default_env_files
+    from src.utils.env import get_bool_env, load_default_env_files
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from places.client import (  # type: ignore[no-redef]
         DEFAULT_INCLUDED_TYPES,
@@ -123,7 +123,7 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
         filter_complete_places,
     )
     from places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file  # type: ignore[no-redef]
-    from utils.env import load_default_env_files  # type: ignore[no-redef]
+    from utils.env import get_bool_env, load_default_env_files  # type: ignore[no-redef]
 
 DEFAULT_OUTPUT_PATH = _ROOT / "data" / "stations.json"
 DEFAULT_PENDLER_PATH = _ROOT / "data" / "pendler_bst_ids.json"
@@ -1651,10 +1651,19 @@ def main() -> None:
     # failed). This keeps the Google Places monthly free-tier quota
     # untouched when the public Overpass API already covers the entire
     # directory.
+    #
+    # ``WIEN_OEPNV_OSM_ENRICH=0`` env-disables OSM without taking the
+    # CLI flag — used by the wrapper-orchestrator regression test
+    # (``tests/test_update_all_stations_wrapper.py:test_wrapper_atomic_on_success``)
+    # to keep its 60-second pytest-timeout budget free of real Overpass
+    # round-trips. Production cron runs leave the env unset, so OSM
+    # remains the primary source by default.
+    load_default_env_files()
+    env = os.environ
+    cli_enabled = bool(getattr(args, "osm_enrich", False))
+    env_enabled = get_bool_env("WIEN_OEPNV_OSM_ENRICH", True)
     osm_succeeded = False
-    if getattr(args, "osm_enrich", False):
-        load_default_env_files()
-        env = os.environ
+    if cli_enabled and env_enabled:
         try:
             bounding_box = _parse_bounding_box(env.get("BOUNDINGBOX_VIENNA"))
         except ValueError as exc:
@@ -1668,8 +1677,12 @@ def main() -> None:
             bounding_box=bounding_box,
             merge_distance_m=merge_distance,
         )
-    else:
+    elif not cli_enabled:
         logger.info("Skipping OSM Overpass enrichment (--no-osm-enrich)")
+    else:
+        logger.info(
+            "Skipping OSM Overpass enrichment (WIEN_OEPNV_OSM_ENRICH=0)"
+        )
 
     if getattr(args, "google_enrich", False):
         missing = _stations_missing_coordinates(stations)
