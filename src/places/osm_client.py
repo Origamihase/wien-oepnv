@@ -81,10 +81,15 @@ VIENNA_BOUNDING_BOX: BoundingBox = BoundingBox(min_lat=48.1180, min_lng=16.1820,
 # QL header so the upstream aborts if the query plan is too expensive.
 # Mirrors ``MAX_OEBB_FETCH_TIMEOUT`` (25s) and is well below the
 # Overpass operator's free-tier 180s default cap.
-_OVERPASS_QUERY_TIMEOUT_S = 25
+_OVERPASS_QUERY_TIMEOUT_S = 15
 
 # Slowloris-defence ceiling for the whole request (connect + read).
-_MAX_TIMEOUT_S = 30.0
+# Tightened from 30s to 20s after PR #1350 CI run showed the wrapper
+# orchestrator (``test_wrapper_atomic_on_success`` plus the cron
+# pipeline) crowded the 60-second pytest-timeout budget. The breaker
+# already short-circuits across calls; the per-call ceiling only needs
+# to keep one unlucky Overpass response from stalling the runner.
+_MAX_TIMEOUT_S = 20.0
 
 # Per-call response cap. Vienna's full Overpass JSON for the four
 # tag-pairs sits at ~600 KiB; 5 MiB is ~8x production state and well
@@ -148,7 +153,7 @@ class OSMOverpassConfig:
     endpoint: str
     user_agent: str
     bounding_box: BoundingBox = VIENNA_BOUNDING_BOX
-    timeout_s: float = 25.0
+    timeout_s: float = 15.0
     query_timeout_s: int = _OVERPASS_QUERY_TIMEOUT_S
     max_response_bytes: int = _MAX_RESPONSE_BYTES
 
@@ -229,10 +234,20 @@ class OSMOverpassClient:
         session: requests.Session | None = None,
     ) -> None:
         self._config = config
+        # Disable urllib3's per-call retry stack (``total=0``) so the
+        # OSM call always completes in a single round-trip — the
+        # module-level :class:`CircuitBreaker` already provides
+        # cross-call resilience, and stacking urllib3 retries on top
+        # blew the cron orchestrator's per-script time budget on slow
+        # CI runners (PR #1350 CI run, May 2026). 25-second per-attempt
+        # cap keeps the worst-case Overpass call within a single
+        # sub-second budget plus the upstream's own ``[timeout:N]``
+        # contract.
         self._session = session or session_with_retries(
             user_agent=config.user_agent,
             timeout=(min(5.0, config.timeout_s), config.timeout_s),
             allowed_methods=("GET", "POST"),
+            total=0,
         )
 
     def __enter__(self) -> OSMOverpassClient:
