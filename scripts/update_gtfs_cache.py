@@ -58,8 +58,11 @@ if str(REPO_ROOT) not in sys.path:
 from scripts.gtfs import read_gtfs_stops  # noqa: E402  (import after path setup)
 from src.providers.gtfs_stammstrecke import (  # noqa: E402
     CACHE_RELATIVE_PATH,
+    MAX_GTFS_STAMMSTRECKE_CACHE_BYTES,
     STAMMSTRECKE_STATION_NAMES,
     STAMMSTRECKE_THRESHOLD_MINUTES,
+    is_valid_preserved_first_seen,
+    is_valid_preserved_guid,
 )
 from src.utils.circuit_breaker import CircuitBreaker, CircuitBreakerOpen  # noqa: E402
 from src.utils.files import read_capped_json, write_json_atomic  # noqa: E402
@@ -417,7 +420,10 @@ def _now_local() -> datetime:
 def load_existing_state(cache_path: Path) -> dict[str, Any] | None:
     """Read the existing cache document at *cache_path* or ``None``."""
     payload = read_capped_json(
-        cache_path, label="GTFS Stammstrecke Cache", logger=LOGGER,
+        cache_path,
+        max_bytes=MAX_GTFS_STAMMSTRECKE_CACHE_BYTES,
+        label="GTFS Stammstrecke Cache",
+        logger=LOGGER,
     )
     if not isinstance(payload, dict):
         return None
@@ -469,11 +475,17 @@ def compute_next_state(
         first_seen_iso,
     )
     if existing is not None:
+        # Cache fields are operator-controlled bytes (the file is
+        # auto-committed by ``update-gtfs-cache.yml`` every 30 minutes
+        # without human review). Validate the shape of every preserved
+        # field so a one-time poisoned write cannot persist forward
+        # via the cross-refresh preservation loop and amplify resource
+        # consumption indefinitely.
         candidate_first_seen = existing.get("first_seen")
-        if isinstance(candidate_first_seen, str) and candidate_first_seen.strip():
+        if is_valid_preserved_first_seen(candidate_first_seen):
             first_seen_iso = candidate_first_seen
         existing_guid = existing.get("guid")
-        if isinstance(existing_guid, str) and existing_guid.strip():
+        if is_valid_preserved_guid(existing_guid):
             guid = existing_guid
         else:
             guid = make_guid(
