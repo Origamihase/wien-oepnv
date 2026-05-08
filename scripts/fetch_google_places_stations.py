@@ -41,6 +41,7 @@ from src.places.quota import (
     load_quota_config_from_env,
     resolve_quota_state_path,
 )
+from src.feed.logging_safe import setup_script_logging
 from src.places.diagnostics import permission_hint
 from src.places.merge import BoundingBox, MergeConfig, merge_places, load_stations
 from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
@@ -78,7 +79,9 @@ class RuntimeConfig:
 
 
 def _configure_logging() -> None:
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
+    # Sentinel: route through SafeFormatter so any raw exception text
+    # logged via %s in this script is sanitised at the formatter layer.
+    setup_script_logging(logging.INFO)
 
 
 def _parse_args(argv: Sequence[str] | None) -> argparse.Namespace:

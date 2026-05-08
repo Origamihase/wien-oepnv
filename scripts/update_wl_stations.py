@@ -184,7 +184,16 @@ def _download_ogd_csv(url: str, target: Path) -> bool:
 
 def configure_logging(verbose: bool) -> None:
     level = logging.DEBUG if verbose else logging.INFO
-    logging.basicConfig(level=level, format="%(message)s")
+    # Sentinel: route through SafeFormatter so any raw exception text
+    # logged via %s in this script is sanitised at the formatter layer.
+    # Dynamic import matches the script's existing lazy-loading style
+    # (``_load_is_in_vienna`` etc.) so sys.path bootstrapping in
+    # ``_project_root()`` is honoured before resolving ``src.feed.*``.
+    base_dir = _project_root()
+    if str(base_dir) not in sys.path:
+        sys.path.insert(0, str(base_dir))
+    from src.feed.logging_safe import setup_script_logging
+    setup_script_logging(level)
 
 
 def _normalize_key(value: str | None) -> str:

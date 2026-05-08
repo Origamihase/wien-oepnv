@@ -20,6 +20,7 @@ from src.places.client import (
     Place,
     get_places_api_key,
 )
+from src.feed.logging_safe import setup_script_logging
 from src.places.diagnostics import permission_hint
 from src.places.tiling import Tile, load_tiles_from_env
 from src.utils.env import load_default_env_files
@@ -28,7 +29,9 @@ LOGGER = logging.getLogger("places.verify")
 
 
 def _configure_logging() -> None:
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
+    # Sentinel: route through SafeFormatter so any raw exception text
+    # logged via %s in this script is sanitised at the formatter layer.
+    setup_script_logging(logging.INFO)
 
 
 def _parse_included_types(raw: str | None) -> list[str]:

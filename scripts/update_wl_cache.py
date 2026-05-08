@@ -12,6 +12,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.providers.wiener_linien import fetch_events  # noqa: E402  (import after path setup)
 from src.utils.cache import write_cache  # noqa: E402
 from src.utils.serialize import serialize_for_cache  # noqa: E402
@@ -21,9 +22,11 @@ logger = logging.getLogger("update_wl_cache")
 
 
 def configure_logging() -> None:
-    """Configure root logging for the update run."""
+    """Configure root logging with the project's SafeFormatter."""
 
-    logging.basicConfig(level=logging.INFO, format="%(message)s")
+    # Sentinel: route through SafeFormatter so any raw exception text
+    # logged via %s in this script is sanitised at the formatter layer.
+    setup_script_logging(logging.INFO)
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 

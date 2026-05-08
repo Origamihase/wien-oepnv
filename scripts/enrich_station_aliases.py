@@ -114,7 +114,13 @@ def parse_args() -> argparse.Namespace:
 
 def configure_logging(verbose: bool) -> None:
     level = logging.DEBUG if verbose else logging.INFO
-    logging.basicConfig(level=level, format="%(levelname)s %(name)s: %(message)s")
+    # Sentinel: route through SafeFormatter so any raw exception text
+    # logged via %s in this script is sanitised at the formatter layer.
+    # Lazy import: this script doesn't have a top-level `from src.X`
+    # so we delay the import until after sys.path is bootstrapped at
+    # module top.
+    from src.feed.logging_safe import setup_script_logging
+    setup_script_logging(level)
 
 
 # Generic single-token aliases that match too broadly in feed text and

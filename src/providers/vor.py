@@ -1585,7 +1585,13 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
                             _QUOTA_CACHE["unsaved_delta"] = 0
                             return MAX_REQUESTS_PER_DAY + 1
             except (OSError, TimeoutError) as e:
-                log.warning("Failed to save request count (lock error): %s", e)
+                # Sentinel: file/lock errors can carry attacker-controlled
+                # path fragments from a planted lockfile name; sanitise
+                # before logging.
+                log.warning(
+                    "Failed to save request count (lock error): %s",
+                    sanitize_log_arg(str(e)),
+                )
                 return MAX_REQUESTS_PER_DAY + 1
 
             return cast(int, new_total)
@@ -1854,7 +1860,14 @@ def fetch_vor_disruptions(station_ids: list[str] | None = None, timeout: int | N
                 except RuntimeError as rte:
                     # Catch Emergency Stop
                     if "Emergency Stop" in str(rte):
-                        log.critical(f"ABORT: {rte}")
+                        # Sentinel: ``rte`` text originated upstream of the
+                        # circuit breaker and may include hostile content.
+                        # Switch from f-string interpolation (which bypasses
+                        # the lazy %s formatter and cannot be sanitised) to
+                        # the canonical %s + sanitize_log_arg shape.
+                        log.critical(
+                            "ABORT: %s", sanitize_log_arg(str(rte))
+                        )
                         # Cancel other futures if possible
                         executor.shutdown(wait=False, cancel_futures=True)
                         # Graceful Degradation: Do not raise, just break loop and return partial results

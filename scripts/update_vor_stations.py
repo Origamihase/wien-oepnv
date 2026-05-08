@@ -19,6 +19,7 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
+from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.providers import vor as vor_provider  # noqa: E402
 from src.utils.files import atomic_write, read_capped_json, read_capped_text  # noqa: E402
 from src.utils.http import read_response_safe, session_with_retries  # noqa: E402
@@ -277,7 +278,9 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
 
 def configure_logging(verbose: bool) -> None:
     level = logging.DEBUG if verbose else logging.INFO
-    logging.basicConfig(level=level, format="%(message)s")
+    # Sentinel: route through SafeFormatter so any raw exception text
+    # logged via %s in this script is sanitised at the formatter layer.
+    setup_script_logging(level)
 
 
 def _normalize_key(value: str | None) -> str:
