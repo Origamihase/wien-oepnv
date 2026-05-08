@@ -1073,7 +1073,7 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
     new_vor_entries.sort(key=lambda item: (str(item.get("name")), str(item.get("vor_id"))))
     merged_entries = existing + new_vor_entries
 
-    with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:  # type: ignore[assignment]
+    with atomic_write(stations_path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         output = {"stations": merged_entries}
         json.dump(output, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
