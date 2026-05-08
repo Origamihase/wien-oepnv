@@ -419,7 +419,7 @@ def test_run_update_does_not_persist_oversized_guid_across_refresh(
         now = datetime(2026, 5, 8, 12, 0, tzinfo=VIENNA)
         exit_code = updater.run_update(
             cache_path=cache_path,
-            url="https://realtime.oebb.at/gtfs-rt/tripUpdates",
+            url="https://gtfs.oebb.at/gtfs-rt/tripUpdates",
             now=now,
         )
         assert exit_code == 0

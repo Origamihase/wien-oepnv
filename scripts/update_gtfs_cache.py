@@ -80,8 +80,8 @@ LOGGER = logging.getLogger("update_gtfs_cache")
 # may override it but is validated against the trusted host allow-list
 # so an env override (compromised secret store / leaked CI env) cannot
 # redirect the cron pipeline to an attacker host.
-DEFAULT_GTFS_RT_URL = "https://realtime.oebb.at/gtfs-rt/tripUpdates"
-_TRUSTED_GTFS_RT_HOSTS: frozenset[str] = frozenset({"realtime.oebb.at", "data.oebb.at"})
+DEFAULT_GTFS_RT_URL = "https://gtfs.oebb.at/gtfs-rt/tripUpdates"
+_TRUSTED_GTFS_RT_HOSTS: frozenset[str] = frozenset({"gtfs.oebb.at", "data.oebb.at"})
 
 USER_AGENT = "Origamihase-wien-oepnv-stammstrecke/2.0 (+https://github.com/Origamihase/wien-oepnv)"
 
