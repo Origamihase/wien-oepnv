@@ -80,7 +80,23 @@ def _run_script(
                 print(e.code, file=sys.stderr)
                 return 1
         except Exception as e:
-            print(f"Fehler beim Ausführen von {script_name}: {e}", file=sys.stderr)
+            # Security: every CLI sub-command runs through ``runpy.run_path``
+            # so any unhandled exception escaping a script's ``main`` lands
+            # here. Several scripts (``verify_vor_access_id.py``,
+            # ``update_vor_*.py``, …) build VOR-authenticated sessions whose
+            # ``RequestException``s embed the post-VorAuth URL — including
+            # ``accessId=<SECRET>`` — in ``str(exc)``. The scripts catch
+            # those internally today, but this catch-all is the LAST line
+            # of defense; a future refactor that lets a URL-bearing
+            # exception escape any sub-script would silently re-enable the
+            # leak via this print() (clear-text-logging dataflow, same
+            # class as the 2026-05-08 scripts/ fixes). Log only the
+            # exception class name to preserve the failure-mode diagnostic
+            # without the message text.
+            print(
+                f"Fehler beim Ausführen von {script_name}: {type(e).__name__}",
+                file=sys.stderr,
+            )
             return 1
     return 0
 

@@ -89,7 +89,21 @@ def main(argv: Sequence[str] | None = None) -> int:
                 allowed_content_types=("application/json", "text/json"),
             )
     except Exception as exc:
-        LOGGER.error("VOR verification request failed: %s", exc)
+        # Security: ``apply_authentication`` installs ``VorAuth`` on the
+        # session, which injects the VAO ``accessId`` query parameter
+        # into every prepared request whose URL starts with
+        # ``VOR_BASE_URL``. When the network layer fails, ``urllib3``
+        # wraps the underlying error into a ``MaxRetryError`` whose
+        # message embeds the post-VorAuth URL — including
+        # ``accessId=<SECRET>`` — and ``requests`` re-raises it as a
+        # ``RequestException`` subclass. Logging the bare ``exc`` via
+        # ``%s`` would write the credential to stdout / errors.log /
+        # CI-runner output (clear-text-logging dataflow, mirrors the
+        # 2026-05-08 fix in scripts/update_vor_stations.py:587 and
+        # scripts/update_vor_cache.py:173). Logging only the exception
+        # class name suppresses the URL while preserving the
+        # failure-mode diagnostic.
+        LOGGER.error("VOR verification request failed: %s", type(exc).__name__)
         return 1
 
     try:
