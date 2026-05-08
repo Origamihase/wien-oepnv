@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import dataclass
 from pathlib import Path
 from collections.abc import Iterable, Iterator, Mapping
@@ -107,18 +108,27 @@ def load_tiles_from_file(path: Path) -> list[Tile]:
     # ``except (OSError, ValueError)`` and crash the surrounding cron.
     # Security: byte-size cap (see MAX_TILE_FILE_BYTES) defeats the
     # wide-but-flat size-bomb attack that the depth-bomb catch does NOT
-    # cover.
+    # cover. Open first, then ``os.fstat`` — closes the TOCTOU between
+    # ``stat`` and ``read_text`` that lets an attacker swap the inode
+    # between the two syscalls. The ``read(MAX_TILE_FILE_BYTES + 1)``
+    # cap defends against zero-st_size special files.
     try:
-        file_size = path.stat().st_size
+        with path.open("rb") as handle:
+            file_size = os.fstat(handle.fileno()).st_size
+            if file_size > MAX_TILE_FILE_BYTES:
+                raise ValueError(
+                    f"Tile file too large (> {MAX_TILE_FILE_BYTES} bytes)"
+                )
+            raw_bytes = handle.read(MAX_TILE_FILE_BYTES + 1)
+            if len(raw_bytes) > MAX_TILE_FILE_BYTES:
+                raise ValueError(
+                    f"Tile file too large (> {MAX_TILE_FILE_BYTES} bytes)"
+                )
     except OSError as exc:
         raise ValueError("Tile file is not readable") from exc
-    if file_size > MAX_TILE_FILE_BYTES:
-        raise ValueError(
-            f"Tile file too large (> {MAX_TILE_FILE_BYTES} bytes)"
-        )
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, RecursionError) as exc:
+        data = json.loads(raw_bytes)
+    except (json.JSONDecodeError, RecursionError, UnicodeDecodeError) as exc:
         raise ValueError("Tile file is not valid JSON") from exc
     if not isinstance(data, list):
         raise ValueError("Tile file must contain a list of tile objects")

@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import math
+import os
 import re
 import unicodedata
 from enum import IntEnum
@@ -273,26 +274,44 @@ def _read_capped_json(
 ) -> object | None:
     """Read JSON from *path*, returning ``None`` if missing/invalid/oversized.
 
-    Security: combines the canonical "stat-then-cap-then-read"
-    size-bomb defence with the depth-bomb catch tuple
-    ``(OSError, json.JSONDecodeError, RecursionError)``. The byte-size
-    cap fires BEFORE ``open()`` so the file content is never buffered
-    into memory when oversized — defeating the wide-but-flat attack
-    shape (e.g. ``[0]*50_000_000``) that the depth-bomb catch alone
-    does NOT cover (``MemoryError`` is a ``BaseException`` that
-    propagates past the surrounding handler).
+    Security: combines the canonical size-bomb defence with the depth-bomb
+    catch tuple ``(OSError, json.JSONDecodeError, RecursionError)``. The
+    byte-size cap is enforced via ``os.fstat`` on the *open file
+    descriptor* AND a defensive ``read(max_bytes + 1)`` budget — closing
+    the TOCTOU window between ``Path.stat`` and ``Path.open`` that lets
+    an attacker swap the inode (atomic ``os.replace`` of a symlink,
+    parallel writer's ``atomic_write`` rename) under the loader's feet.
+    Pre-fix the size check happened on a separate stat() syscall; an
+    attacker who replaced the symlink target between stat and open made
+    the cap pass on the small target while open() resolved to the big
+    swapped file, propagating ``MemoryError`` past the catch tuple.
+    Post-fix the fstat reports the size of the inode the open() call
+    resolved, immune to any subsequent symlink swap, and the read cap
+    catches the special-file case (``/dev/zero``, FIFOs) where st_size
+    reports 0 but the read returns unbounded bytes. CRITICAL because
+    this helper feeds the two ``@lru_cache`` import-time loaders
+    (``_station_entries``, ``_vienna_polygons``) — a successful bypass
+    crashes every feed-build path that touches a station name or a
+    Vienna geo-fence check.
     """
     try:
-        if path.stat().st_size > max_bytes:
-            logger.warning(
-                "%s file at %s is too large (> %d bytes); treating as missing.",
-                label, path, max_bytes,
-            )
-            return None
-        with path.open("r", encoding="utf-8") as handle:
-            payload: object = json.load(handle)
+        with path.open("rb") as handle:
+            if os.fstat(handle.fileno()).st_size > max_bytes:
+                logger.warning(
+                    "%s file at %s is too large (> %d bytes); treating as missing.",
+                    label, path, max_bytes,
+                )
+                return None
+            raw = handle.read(max_bytes + 1)
+            if len(raw) > max_bytes:
+                logger.warning(
+                    "%s file at %s exceeded %d bytes during read; treating as missing.",
+                    label, path, max_bytes,
+                )
+                return None
+            payload: object = json.loads(raw)
             return payload
-    except (OSError, json.JSONDecodeError, RecursionError):
+    except (OSError, json.JSONDecodeError, RecursionError, UnicodeDecodeError):
         return None
 
 

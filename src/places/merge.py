@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
@@ -74,16 +75,24 @@ def load_stations(path: Path) -> list[StationEntry]:
     # so a 1 GiB stations file would allocate >1 GiB before ``json.loads``
     # ever runs. ``MemoryError`` is a ``BaseException`` that propagates
     # past the ``except (json.JSONDecodeError, RecursionError)`` handler.
-    # Stat BEFORE reading so the cap fires before allocation.
+    # Open first, then ``os.fstat`` the descriptor — closes the TOCTOU
+    # between ``stat`` and ``read_text`` that lets an attacker swap the
+    # inode between the two syscalls. ``read(MAX_STATIONS_FILE_BYTES + 1)``
+    # defends against zero-st_size special files.
     try:
-        file_size = path.stat().st_size
+        with path.open("rb") as handle:
+            file_size = os.fstat(handle.fileno()).st_size
+            if file_size > MAX_STATIONS_FILE_BYTES:
+                raise ValueError(
+                    f"stations file too large (> {MAX_STATIONS_FILE_BYTES} bytes)"
+                )
+            content_bytes = handle.read(MAX_STATIONS_FILE_BYTES + 1)
+            if len(content_bytes) > MAX_STATIONS_FILE_BYTES:
+                raise ValueError(
+                    f"stations file too large (> {MAX_STATIONS_FILE_BYTES} bytes)"
+                )
     except OSError as exc:
         raise ValueError("stations file is not readable") from exc
-    if file_size > MAX_STATIONS_FILE_BYTES:
-        raise ValueError(
-            f"stations file too large (> {MAX_STATIONS_FILE_BYTES} bytes)"
-        )
-    content = path.read_text(encoding="utf-8")
     # Security: ``RecursionError`` covers JSON depth-bomb attacks in an
     # operator-supplied stations file. ``json.loads`` raises
     # ``RecursionError`` (NOT a subclass of ``json.JSONDecodeError``) on a
@@ -91,8 +100,8 @@ def load_stations(path: Path) -> list[StationEntry]:
     # propagates out of ``load_stations`` and crashes the Google Places
     # merge step in ``update_station_directory.py``.
     try:
-        raw_data = json.loads(content)
-    except (json.JSONDecodeError, RecursionError) as exc:
+        raw_data = json.loads(content_bytes)
+    except (json.JSONDecodeError, RecursionError, UnicodeDecodeError) as exc:
         raise ValueError("stations file is not valid JSON") from exc
 
     if isinstance(raw_data, list):
