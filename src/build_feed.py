@@ -57,7 +57,6 @@ from .utils.cache import (
 from .utils.files import atomic_write
 from .utils.http import validate_http_url
 from .utils.locking import file_lock
-from .utils.logging import sanitize_log_arg
 from .utils.text import html_to_text, truncate_html
 
 
@@ -197,33 +196,11 @@ def read_cache_baustellen() -> list[Any]:
     return list(read_cache("baustellen") or [])
 
 
-def fetch_gtfs_stammstrecke_events() -> list[Any]:
-    """Cache-driven entry point for the S-Bahn Stammstrecke monitor.
-
-    Reads ``cache/gtfs_stammstrecke/events.json`` (refreshed every 30
-    minutes by ``scripts/update_gtfs_cache.py``). Errors collapse to
-    an empty list — the upstream provider already returns ``[]`` on
-    every IO error path, but this top-level guard keeps a truly
-    unexpected import-time failure from aborting the cron build.
-    """
-    try:
-        from .providers.gtfs_stammstrecke import fetch_events as _fetch
-    except Exception as exc:  # pragma: no cover - defensive logging path
-        log.warning(
-            "GTFS-RT Stammstrecke provider unavailable: %s: %s",
-            type(exc).__name__,
-            sanitize_log_arg(str(exc)),
-        )
-        return []
-    return list(_fetch())
-
-
 DEFAULT_PROVIDERS: tuple[tuple[str, Any], ...] = (
     ("WL_ENABLE", read_cache_wl),
     ("OEBB_ENABLE", read_cache_oebb),
     ("VOR_ENABLE", read_cache_vor),
     ("BAUSTELLEN_ENABLE", read_cache_baustellen),
-    ("STAMMSTRECKE_ENABLE", fetch_gtfs_stammstrecke_events),
 )
 
 PROVIDERS: list[tuple[str, Any]] = list(DEFAULT_PROVIDERS)

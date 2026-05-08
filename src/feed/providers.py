@@ -11,7 +11,6 @@ from typing import Any, cast
 from collections.abc import Callable, Iterable
 
 from ..utils.cache import read_cache
-from ..utils.logging import sanitize_log_arg
 from .config import get_bool_env
 from ..feed_types import FeedItem
 
@@ -98,11 +97,6 @@ def register_default_providers() -> None:
     register_provider("OEBB_ENABLE", read_cache_oebb, cache_key="oebb")
     register_provider("VOR_ENABLE", read_cache_vor, cache_key="vor")
     register_provider("BAUSTELLEN_ENABLE", read_cache_baustellen, cache_key="baustellen")
-    register_provider(
-        "STAMMSTRECKE_ENABLE",
-        fetch_gtfs_stammstrecke_events,
-        cache_key="gtfs_stammstrecke",
-    )
 
 
 def _derive_cache_key(env_var: str) -> str:
@@ -230,41 +224,12 @@ def read_cache_baustellen() -> list[Any]:
     return list(read_cache("baustellen"))
 
 
-def fetch_gtfs_stammstrecke_events() -> list[Any]:
-    """Cache-driven entry point for the S-Bahn Stammstrecke monitor.
-
-    The provider reads ``cache/gtfs_stammstrecke/events.json`` (refreshed
-    every 30 minutes by ``scripts/update_gtfs_cache.py`` via the
-    ``update-gtfs-cache.yml`` workflow). The cache file uses a custom
-    ``{"events": [...], "metadata": {...}}`` shape rather than the flat
-    list shape the standard ``read_cache`` helper expects, so we keep
-    the dedicated wrapper instead of registering ``read_cache``.
-
-    Imports lazily so the registry module has no startup-time coupling
-    to the provider's read path. The provider already returns an empty
-    list when the cache file is missing or empty; this wrapper
-    additionally guards against an import-time failure (missing
-    optional dependency / packaging skew).
-    """
-    try:
-        from ..providers.gtfs_stammstrecke import fetch_events as _fetch
-    except Exception as exc:  # pragma: no cover - defensive logging path
-        log.warning(
-            "GTFS-RT Stammstrecke provider unavailable: %s: %s",
-            type(exc).__name__,
-            sanitize_log_arg(str(exc)),
-        )
-        return []
-    return list(_fetch())
-
-
 register_default_providers()
 
 
 __all__ = [
     "ProviderLoader",
     "ProviderSpec",
-    "fetch_gtfs_stammstrecke_events",
     "iter_providers",
     "load_provider_plugins",
     "provider_statuses",
