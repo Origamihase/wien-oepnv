@@ -813,6 +813,22 @@ def merge_into_stations(stations_path: Path, vor_entries: list[dict[str, object]
             existing_raw = json.load(handle)
     except FileNotFoundError:
         existing_raw = []
+    except (json.JSONDecodeError, RecursionError) as exc:
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # on-disk stations file (corrupted previous run, planted by a
+        # compromised CI runner). ``json.JSONDecodeError`` covers a regular
+        # malformed file (this branch was missing entirely pre-fix and a
+        # plain malformed stations.json crashed the VOR merge — let alone a
+        # depth-bomb). Treat both as "start fresh" to keep the cron pipeline
+        # running; the merge then writes the merged result over the poisoned
+        # file, restoring the canonical schema for the next run. Mirrors the
+        # canonical contract from the Round-4-fixed sibling
+        # ``scripts/update_wl_stations.py:merge_into_stations``.
+        log.warning(
+            "stations.json could not be parsed (%s) – starting VOR merge from empty state",
+            exc,
+        )
+        existing_raw = []
 
     if isinstance(existing_raw, dict) and "stations" in existing_raw:
         existing_list = existing_raw["stations"]
