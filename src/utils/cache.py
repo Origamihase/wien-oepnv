@@ -48,6 +48,28 @@ log = logging.getLogger(__name__)
 # feeding ``timedelta(unit=N)`` into ``datetime - timedelta`` arithmetic).
 MAX_PRUNE_CACHE_MAX_AGE_HOURS = 8760
 
+# Security: defense-in-depth cap on the byte size of any on-disk cache file
+# that the loaders below feed to ``json.load``. The depth-bomb defence
+# (``except RecursionError`` from the 2026-05-08 round) covers the *deeply-
+# nested* attack shape, but ``json.load`` does NOT raise ``RecursionError``
+# on a wide-but-flat document such as ``[1, 1, … (50 million times) … 1]``
+# — the parser allocates one Python ``int`` (~28 bytes) per element plus
+# list overhead (~8 bytes per slot), so a 50 MiB on-disk file balloons to
+# ~500 MiB resident memory and a multi-GiB file pushes past the cron
+# runner's ulimit / cgroup memory cap and crashes via ``MemoryError``.
+# ``MemoryError`` is a ``BaseException`` — it is NOT caught by the
+# surrounding ``except (json.JSONDecodeError, OSError, RecursionError)``
+# handlers in ``read_cache`` / ``read_status`` / ``write_cache``'s
+# degradation guard, so the unhandled exception escapes the feed
+# orchestrator's main ``try`` block and crashes the whole cron build.
+# Threat model: a compromised CI runner, a partial flush after power
+# loss, or a corrupted previous run plants a multi-MiB-to-multi-GiB
+# file under ``cache/<provider>/``. 50 MiB is ~100x the largest
+# legitimate cache observed in production and bounds the worst-case
+# parse cost at <500 MiB resident memory which fits inside the cron
+# runner's standard 1 GiB cgroup limit.
+MAX_CACHE_FILE_BYTES = 50 * 1024 * 1024
+
 
 class DataDegradationError(Exception):
     """Raised when an operation would severely degrade data quality."""
@@ -149,6 +171,20 @@ def read_cache(provider: str) -> list[Any]:
     cache_file = _cache_file(provider)
 
     try:
+        # Security: cap the on-disk file size BEFORE opening to defeat the
+        # planted-huge-file DoS. See ``MAX_CACHE_FILE_BYTES`` for threat
+        # model. ``stat()`` on a missing file raises ``FileNotFoundError``
+        # which propagates into the existing handler below.
+        if cache_file.stat().st_size > MAX_CACHE_FILE_BYTES:
+            log.warning(
+                "Cache für Provider '%s' bei %s ist zu groß (> %d Bytes); überspringe.",
+                provider, cache_file, MAX_CACHE_FILE_BYTES,
+            )
+            _emit_cache_alert(
+                provider,
+                f"Cache-Datei zu groß (> {MAX_CACHE_FILE_BYTES} Bytes)",
+            )
+            return []
         with cache_file.open("r", encoding="utf-8") as fh:
             payload = json.load(fh)
     except FileNotFoundError:
@@ -277,19 +313,26 @@ def write_cache(provider: str, items: list[Any], *, pretty: bool | None = None) 
     # Data Degradation Guard
     if cache_file.exists():
         try:
-            with cache_file.open("r", encoding="utf-8") as fh:
-                existing_data = json.load(fh)
-            if isinstance(existing_data, list) and len(existing_data) > 0:
-                if len(items) == 0:
-                    raise DataDegradationError(
-                        f"Empty payload rejected: refusing to overwrite cache for '{provider}' "
-                        f"which currently has {len(existing_data)} items."
-                    )
-                if len(items) < len(existing_data) * 0.2:
-                    raise DataDegradationError(
-                        f"Degraded payload rejected: '{provider}' items dropped drastically "
-                        f"from {len(existing_data)} to {len(items)}."
-                    )
+            # Security: cap planted-huge-file DoS — see MAX_CACHE_FILE_BYTES.
+            # An oversized existing cache is treated as unreadable / corrupt
+            # so the new payload overwrites without consulting the planted
+            # state; the degradation guard only runs on reasonable-sized
+            # existing data. ``stat()`` raises ``OSError`` on transient
+            # filesystem errors which lands in the broad except below.
+            if cache_file.stat().st_size <= MAX_CACHE_FILE_BYTES:
+                with cache_file.open("r", encoding="utf-8") as fh:
+                    existing_data = json.load(fh)
+                if isinstance(existing_data, list) and len(existing_data) > 0:
+                    if len(items) == 0:
+                        raise DataDegradationError(
+                            f"Empty payload rejected: refusing to overwrite cache for '{provider}' "
+                            f"which currently has {len(existing_data)} items."
+                        )
+                    if len(items) < len(existing_data) * 0.2:
+                        raise DataDegradationError(
+                            f"Degraded payload rejected: '{provider}' items dropped drastically "
+                            f"from {len(existing_data)} to {len(items)}."
+                        )
         except (json.JSONDecodeError, OSError, RecursionError):
             # Security: ``RecursionError`` covers JSON depth-bomb attacks
             # in the EXISTING on-disk cache (planted by a compromised
@@ -368,6 +411,16 @@ def read_status(provider: str) -> dict[str, Any] | None:
 
     status_file = _status_file(provider)
     try:
+        # Security: cap on-disk file size BEFORE opening — see
+        # ``MAX_CACHE_FILE_BYTES`` for the planted-huge-file threat model.
+        # ``stat()`` on a missing file raises ``FileNotFoundError`` which
+        # propagates into the existing handler below.
+        if status_file.stat().st_size > MAX_CACHE_FILE_BYTES:
+            log.warning(
+                "Status für Provider '%s' bei %s ist zu groß (> %d Bytes); überspringe.",
+                provider, status_file, MAX_CACHE_FILE_BYTES,
+            )
+            return None
         with status_file.open("r", encoding="utf-8") as fh:
             payload = json.load(fh)
     except FileNotFoundError:

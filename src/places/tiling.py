@@ -21,6 +21,21 @@ class Tile:
 _DEFAULT_TILE = Tile(latitude=48.208174, longitude=16.373819)
 MAX_TILE_COUNT = 200
 
+# Security: defense-in-depth byte-size cap on the on-disk tile config
+# file. Tile configs are operator-supplied and bounded by
+# ``MAX_TILE_COUNT`` (200 entries × ~50 bytes each ≈ 10 KiB), so a 1 MiB
+# cap is ~100x the largest legitimate tile config and bounds the
+# worst-case parse cost well below any cron runner's ulimit. The
+# depth-bomb defence above catches the deeply-nested attack via
+# ``RecursionError``, but a wide-but-flat attack (e.g. ``[{}]*1_000_000``
+# or a 1 GiB pretty-printed dump) would slip past the depth check —
+# ``json.loads`` on a flat list does NOT raise ``RecursionError`` and
+# ``MemoryError`` is a ``BaseException`` that propagates past the
+# ``json.JSONDecodeError`` handler. Threat model mirrors
+# ``MAX_QUOTA_FILE_BYTES`` in ``src/places/quota.py``: compromised CI
+# runner / corrupted previous write / partial flush + power loss.
+MAX_TILE_FILE_BYTES = 1024 * 1024
+
 
 def _validate_tile_count(count: int) -> None:
     # Security: prevent unbounded tile lists from triggering excessive API calls/DoS.
@@ -90,6 +105,17 @@ def load_tiles_from_file(path: Path) -> list[Tile]:
     # in an operator-supplied tiles file (or a corrupted previous output)
     # would otherwise propagate ``RecursionError`` past the caller's
     # ``except (OSError, ValueError)`` and crash the surrounding cron.
+    # Security: byte-size cap (see MAX_TILE_FILE_BYTES) defeats the
+    # wide-but-flat size-bomb attack that the depth-bomb catch does NOT
+    # cover.
+    try:
+        file_size = path.stat().st_size
+    except OSError as exc:
+        raise ValueError("Tile file is not readable") from exc
+    if file_size > MAX_TILE_FILE_BYTES:
+        raise ValueError(
+            f"Tile file too large (> {MAX_TILE_FILE_BYTES} bytes)"
+        )
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, RecursionError) as exc:
