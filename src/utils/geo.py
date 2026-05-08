@@ -44,6 +44,7 @@ __all__ = [
     "STATION_DRIFT_TOLERANCE_METERS",
     "apply_coordinate_inertia",
     "calculate_distance_meters",
+    "use_cached_polygon_result",
 ]
 
 _EARTH_RADIUS_M: Final = 6_371_000.0
@@ -107,6 +108,27 @@ def calculate_distance_meters(
     return _EARTH_RADIUS_M * c
 
 
+def _is_valid_coord(lat: float | None, lon: float | None) -> bool:
+    """Return ``True`` iff both inputs are finite numbers within valid
+    lat/lon ranges (-90..90 / -180..180). ``None``, ``NaN``, ``inf``,
+    and out-of-range values all return ``False``.
+
+    This is the same validation :func:`calculate_distance_meters`
+    performs on its inputs, exposed as a predicate so callers can
+    pre-filter pairs without having to invoke (and catch
+    ``ValueError`` from) the distance computation.
+    """
+    if lat is None or lon is None:
+        return False
+    if not (math.isfinite(lat) and math.isfinite(lon)):
+        return False
+    if not -90.0 <= lat <= 90.0:
+        return False
+    if not -180.0 <= lon <= 180.0:
+        return False
+    return True
+
+
 def apply_coordinate_inertia(
     existing_lat: float | None,
     existing_lon: float | None,
@@ -120,18 +142,25 @@ def apply_coordinate_inertia(
     drift below ``tolerance_m`` so ``data/stations.json`` does not
     churn on every refresh cycle. The resolution rules are:
 
-    1. **No new coords** (either component is ``None``) → keep
-       existing. The upstream payload didn't supply usable coords for
-       this station, so there's nothing to merge.
-    2. **No existing coords** → accept new. First-time coords for a
-       station are always taken as authoritative.
-    3. **Both present** → compute Haversine distance.
+    1. **No usable new coords** (either component is ``None``,
+       ``NaN``, ``inf``, or out of range) → keep existing. The
+       upstream payload didn't supply trustworthy coords for this
+       station, so there's nothing to merge — and crucially we
+       refuse to propagate invalid values into the cache.
+    2. **No usable existing coords** (any of the same conditions) →
+       accept new. First-time coords or recovery from a corrupt
+       cached value: trust the upstream now.
+    3. **Both pairs valid** → compute Haversine distance.
        * Below ``tolerance_m`` → keep existing (absorbed drift).
-       * At or above ``tolerance_m`` → accept new (genuine relocation).
-    4. **Invalid coords** (out of range / non-finite) → accept new
-       (ValueError from the distance helper is treated as "no
-       comparable existing coord", same as rule 2). This trusts the
-       upstream over a corrupt local cache.
+       * At or above ``tolerance_m`` → accept new (genuine
+         relocation).
+
+    Note the asymmetry between rules 1 and 2: invalid NEW always
+    falls through to "keep existing" (defence against poisoned
+    upstream payload), while invalid EXISTING falls through to
+    "accept new" (recovery from corrupt local cache). Hardened
+    against ``NaN`` and out-of-range values that an earlier draft
+    would have propagated under rule 4.
 
     Args:
         existing_lat: Existing latitude or ``None``.
@@ -144,26 +173,91 @@ def apply_coordinate_inertia(
 
     Returns:
         ``(latitude, longitude)`` tuple — either the existing pair
-        (when drift was absorbed) or the new pair (when the new
-        coordinates are authoritative). Either component can be
-        ``None`` only when both input pairs were ``None``.
+        (when drift was absorbed or new is invalid) or the new pair
+        (when the new coordinates are authoritative). Either
+        component is ``None`` only when both input pairs were
+        unusable.
     """
-    # Rule 1: no new coords → keep existing.
-    if new_lat is None or new_lon is None:
+    # Rule 1: invalid new coords → keep existing (refuse to propagate
+    # NaN / out-of-range / None into the cache).
+    if not _is_valid_coord(new_lat, new_lon):
         return existing_lat, existing_lon
 
-    # Rule 2: no existing coords → accept new.
-    if existing_lat is None or existing_lon is None:
+    # Rule 2: invalid existing coords → accept (validated) new.
+    if not _is_valid_coord(existing_lat, existing_lon):
         return new_lat, new_lon
 
-    # Rules 3 & 4: compare distance, accept new on invalid input.
+    # Rule 3: both valid → distance-based decision. Both pairs already
+    # passed range/finite validation, so ``calculate_distance_meters``
+    # cannot raise — the inner ``try`` is purely defensive against
+    # future validation changes.
     try:
         drift = calculate_distance_meters(
-            existing_lat, existing_lon, new_lat, new_lon
+            existing_lat, existing_lon, new_lat, new_lon  # type: ignore[arg-type]
         )
-    except ValueError:
+    except ValueError:  # pragma: no cover - validated above
         return new_lat, new_lon
 
     if drift < tolerance_m:
         return existing_lat, existing_lon
     return new_lat, new_lon
+
+
+def use_cached_polygon_result(
+    cached_lat: float | None,
+    cached_lon: float | None,
+    cached_result: bool | None,
+    new_lat: float,
+    new_lon: float,
+    tolerance_m: float = STATION_DRIFT_TOLERANCE_METERS,
+) -> bool | None:
+    """Return ``cached_result`` iff the cache is reusable for ``new_lat`` /
+    ``new_lon``; otherwise return ``None`` to signal "recompute required".
+
+    "Reusable" means:
+
+    1. The cache triple has the right shape — ``cached_result`` is a
+       bool and the cached coords pass :func:`_is_valid_coord`.
+    2. The cached coords are within ``tolerance_m`` of the new coords
+       (Haversine distance below threshold).
+
+    Used by callers that need to skip an expensive boolean lookup
+    (e.g. point-in-polygon against a city boundary) when the input
+    coords haven't drifted far enough to plausibly change the result.
+    Returning ``None`` rather than a bool keeps the "no cache" /
+    "result is False" cases unambiguous at the call site.
+
+    Args:
+        cached_lat: Latitude from the previous evaluation. ``None``,
+            ``NaN``, or out of range → cache miss.
+        cached_lon: Longitude from the previous evaluation. Same
+            invalidation rules as ``cached_lat``.
+        cached_result: Boolean result from the previous evaluation.
+            Anything other than a real ``bool`` (including subclasses
+            and integers like ``0``/``1``) → cache miss.
+        new_lat: Latitude to look up now.
+        new_lon: Longitude to look up now.
+        tolerance_m: Maximum drift in metres for the cache to be
+            considered fresh. Defaults to
+            :data:`STATION_DRIFT_TOLERANCE_METERS`.
+
+    Returns:
+        ``cached_result`` (a bool) if the cache is reusable, else
+        ``None``. Callers that get ``None`` must perform the real
+        computation and update the cache.
+    """
+    if not isinstance(cached_result, bool):
+        return None
+    if not _is_valid_coord(cached_lat, cached_lon):
+        return None
+    if not _is_valid_coord(new_lat, new_lon):
+        return None
+    try:
+        drift = calculate_distance_meters(
+            cached_lat, cached_lon, new_lat, new_lon  # type: ignore[arg-type]
+        )
+    except ValueError:  # pragma: no cover - validated above
+        return None
+    if drift < tolerance_m:
+        return cached_result
+    return None
