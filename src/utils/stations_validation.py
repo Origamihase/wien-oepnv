@@ -12,6 +12,7 @@ from pathlib import Path
 import csv
 import json
 import math
+import os
 import re
 from collections.abc import Iterable, Iterator, Mapping, Sequence
 
@@ -257,28 +258,32 @@ def _load_stations(path: Path) -> list[Mapping[str, object]]:
     # does NOT cover. ``path.read_text`` buffers the whole file before
     # ``json.loads`` runs, so a 1 GiB file allocates >1 GiB up-front
     # and crashes the validator with ``MemoryError`` (a
-    # ``BaseException`` that escapes the surrounding handler). Stat
-    # BEFORE reading so the cap fires before allocation; surface the
-    # cap miss as ``StationValidationError`` to keep the canonical
-    # exit-1 path used by ``scripts/validate_stations.py``.
+    # ``BaseException`` that escapes the surrounding handler).
+    # Open first, then ``os.fstat`` the descriptor — closes the TOCTOU
+    # between ``stat`` and ``read_text``/``open`` that lets an attacker
+    # swap the inode between the two syscalls.
+    # ``read(MAX_STATIONS_FILE_BYTES + 1)`` defends against zero-st_size
+    # special files (FIFOs, ``/dev/zero``).
     try:
-        file_size = path.stat().st_size
+        with path.open("rb") as handle:
+            file_size = os.fstat(handle.fileno()).st_size
+            if file_size > MAX_STATIONS_FILE_BYTES:
+                raise StationValidationError(
+                    f"Stations file too large (> {MAX_STATIONS_FILE_BYTES} bytes): {path}"
+                )
+            raw_bytes = handle.read(MAX_STATIONS_FILE_BYTES + 1)
+            if len(raw_bytes) > MAX_STATIONS_FILE_BYTES:
+                raise StationValidationError(
+                    f"Stations file too large (> {MAX_STATIONS_FILE_BYTES} bytes): {path}"
+                )
     except FileNotFoundError as exc:  # pragma: no cover - defensive
         raise StationValidationError(f"Stations file not found: {path}") from exc
     except OSError as exc:  # pragma: no cover - defensive
         raise StationValidationError(f"Stations file not readable: {path}") from exc
-    if file_size > MAX_STATIONS_FILE_BYTES:
-        raise StationValidationError(
-            f"Stations file too large (> {MAX_STATIONS_FILE_BYTES} bytes): {path}"
-        )
-    try:
-        raw = path.read_text(encoding="utf-8")
-    except FileNotFoundError as exc:  # pragma: no cover - defensive
-        raise StationValidationError(f"Stations file not found: {path}") from exc
 
     try:
-        raw_data = json.loads(raw)
-    except (json.JSONDecodeError, RecursionError) as exc:  # pragma: no cover - defensive
+        raw_data = json.loads(raw_bytes)
+    except (json.JSONDecodeError, RecursionError, UnicodeDecodeError) as exc:  # pragma: no cover - defensive
         # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
         # stations file (planted by a compromised CI runner or a corrupted
         # previous run). Without this catch the validator script would crash

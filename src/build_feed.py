@@ -653,17 +653,29 @@ def _load_state() -> dict[str, dict[str, Any]]:
                 # Security: byte-size cap (see MAX_STATE_FILE_BYTES)
                 # defeats the wide-but-flat size-bomb attack that the
                 # depth-bomb / json.JSONDecodeError catch below does NOT
-                # cover. Stat BEFORE opening so the cap fires before the
-                # file content is buffered into memory.
-                if path.stat().st_size > MAX_STATE_FILE_BYTES:
-                    log.warning(
-                        "State-Datei %s ist zu groß (> %d Bytes); "
-                        "starte mit leerem State.",
-                        path, MAX_STATE_FILE_BYTES,
-                    )
-                    return {}
-                with path.open("r", encoding="utf-8") as f:
-                    data = json.load(f)
+                # cover. Open first, then ``os.fstat`` — closes the
+                # TOCTOU between ``stat`` and ``open`` that lets a
+                # parallel ``_save_state`` (atomic_write rename) or a
+                # symlink swap bypass the cap.
+                # ``read(MAX_STATE_FILE_BYTES + 1)`` defends against
+                # zero-st_size special files.
+                with path.open("rb") as f:
+                    if os.fstat(f.fileno()).st_size > MAX_STATE_FILE_BYTES:
+                        log.warning(
+                            "State-Datei %s ist zu groß (> %d Bytes); "
+                            "starte mit leerem State.",
+                            path, MAX_STATE_FILE_BYTES,
+                        )
+                        return {}
+                    raw_bytes = f.read(MAX_STATE_FILE_BYTES + 1)
+                    if len(raw_bytes) > MAX_STATE_FILE_BYTES:
+                        log.warning(
+                            "State-Datei %s überschreitet %d Bytes beim Lesen; "
+                            "starte mit leerem State.",
+                            path, MAX_STATE_FILE_BYTES,
+                        )
+                        return {}
+                    data = json.loads(raw_bytes)
         data = data if isinstance(data, dict) else {}
     except (FileNotFoundError, json.JSONDecodeError):
         return {}
@@ -707,6 +719,42 @@ def _load_state() -> dict[str, dict[str, Any]]:
     return out
 
 
+def _read_state_capped(path: Path) -> dict[str, dict[str, Any]]:
+    """Read existing state under the byte-size cap, returning ``{}`` on
+    any failure mode (missing/oversized/invalid).
+
+    Security: open-then-fstat closes the TOCTOU between the cap check
+    and ``open()`` that lets a parallel writer (atomic_write rename)
+    or a symlink swap bypass the cap mid-merge. ``read(MAX + 1)``
+    defends against zero-st_size special files (FIFOs, ``/dev/zero``).
+    """
+    try:
+        with path.open("rb") as f:
+            if os.fstat(f.fileno()).st_size > MAX_STATE_FILE_BYTES:
+                log.warning(
+                    "State-Datei %s ist zu groß (> %d Bytes); überschreibe State.",
+                    path, MAX_STATE_FILE_BYTES,
+                )
+                return {}
+            raw_bytes = f.read(MAX_STATE_FILE_BYTES + 1)
+            if len(raw_bytes) > MAX_STATE_FILE_BYTES:
+                log.warning(
+                    "State-Datei %s überschreitet %d Bytes; überschreibe State.",
+                    path, MAX_STATE_FILE_BYTES,
+                )
+                return {}
+            existing = json.loads(raw_bytes)
+            return existing if isinstance(existing, dict) else {}
+    except FileNotFoundError:
+        return {}
+    except Exception as exc:
+        log.warning(
+            "State-Merge fehlgeschlagen (Lesefehler: %s) – überschreibe State.",
+            exc,
+        )
+        return {}
+
+
 def _save_state(state: dict[str, dict[str, Any]], deletions: set[str] | None = None) -> None:
     path = validate_path(feed_config.STATE_FILE, "STATE_PATH")
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -722,33 +770,10 @@ def _save_state(state: dict[str, dict[str, Any]], deletions: set[str] | None = N
         with lock_path.open("a+", encoding="utf-8") as lock_file:
             with file_lock(lock_file, exclusive=True):
                 # Safe merge: read existing state to avoid overwriting parallel updates
-                merged_state = {}
-                try:
-                    # Security: byte-size cap (see MAX_STATE_FILE_BYTES)
-                    # defeats the wide-but-flat size-bomb attack on the
-                    # EXISTING state file before the merge read. Pre-fix
-                    # a planted-huge state file would crash the save path
-                    # with ``MemoryError`` mid-write — the new payload
-                    # would never atomically replace the planted file.
-                    # Stat BEFORE opening so the cap fires first.
-                    if path.stat().st_size > MAX_STATE_FILE_BYTES:
-                        log.warning(
-                            "State-Datei %s ist zu groß (> %d Bytes); "
-                            "überspringe Merge-Read und überschreibe State.",
-                            path, MAX_STATE_FILE_BYTES,
-                        )
-                    else:
-                        with path.open("r", encoding="utf-8") as f:
-                            existing = json.load(f)
-                            if isinstance(existing, dict):
-                                merged_state = existing
-                except FileNotFoundError:
-                    pass
-                except Exception as exc:
-                    log.warning(
-                        "State-Merge fehlgeschlagen (Lesefehler: %s) – überschreibe State.",
-                        exc,
-                    )
+                # Security: open-then-fstat closes the TOCTOU between
+                # the size cap and ``open``. ``read(MAX + 1)`` defends
+                # against zero-st_size special files. See _load_state.
+                merged_state = _read_state_capped(path)
 
                 merged_state.update(state)
                 if deletions:

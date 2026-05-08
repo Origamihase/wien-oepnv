@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import re
 from datetime import datetime, timedelta, UTC
 from pathlib import Path
@@ -171,26 +172,40 @@ def read_cache(provider: str) -> list[Any]:
     cache_file = _cache_file(provider)
 
     try:
-        # Security: cap the on-disk file size BEFORE opening to defeat the
-        # planted-huge-file DoS. See ``MAX_CACHE_FILE_BYTES`` for threat
-        # model. ``stat()`` on a missing file raises ``FileNotFoundError``
-        # which propagates into the existing handler below.
-        if cache_file.stat().st_size > MAX_CACHE_FILE_BYTES:
-            log.warning(
-                "Cache für Provider '%s' bei %s ist zu groß (> %d Bytes); überspringe.",
-                provider, cache_file, MAX_CACHE_FILE_BYTES,
-            )
-            _emit_cache_alert(
-                provider,
-                f"Cache-Datei zu groß (> {MAX_CACHE_FILE_BYTES} Bytes)",
-            )
-            return []
-        with cache_file.open("r", encoding="utf-8") as fh:
-            payload = json.load(fh)
+        # Security: open first, then ``os.fstat`` the file descriptor —
+        # closes the TOCTOU window between ``Path.stat`` and ``Path.open``
+        # that lets a parallel writer / symlink swap bypass the cap. The
+        # defensive ``read(MAX_CACHE_FILE_BYTES + 1)`` defends against
+        # special files (FIFOs, ``/dev/zero``) that report ``st_size == 0``
+        # but yield unbounded bytes on read. See ``MAX_CACHE_FILE_BYTES``
+        # for the planted-huge-file threat model.
+        with cache_file.open("rb") as fh:
+            if os.fstat(fh.fileno()).st_size > MAX_CACHE_FILE_BYTES:
+                log.warning(
+                    "Cache für Provider '%s' bei %s ist zu groß (> %d Bytes); überspringe.",
+                    provider, cache_file, MAX_CACHE_FILE_BYTES,
+                )
+                _emit_cache_alert(
+                    provider,
+                    f"Cache-Datei zu groß (> {MAX_CACHE_FILE_BYTES} Bytes)",
+                )
+                return []
+            raw = fh.read(MAX_CACHE_FILE_BYTES + 1)
+            if len(raw) > MAX_CACHE_FILE_BYTES:
+                log.warning(
+                    "Cache für Provider '%s' bei %s überschreitet %d Bytes beim Lesen; überspringe.",
+                    provider, cache_file, MAX_CACHE_FILE_BYTES,
+                )
+                _emit_cache_alert(
+                    provider,
+                    f"Cache-Datei zu groß (> {MAX_CACHE_FILE_BYTES} Bytes)",
+                )
+                return []
+            payload = json.loads(raw)
     except FileNotFoundError:
         log.warning("Cache for provider '%s' not found at %s", provider, cache_file)
         _emit_cache_alert(provider, f"Cache-Datei fehlt ({cache_file})")
-    except (json.JSONDecodeError, RecursionError) as exc:
+    except (json.JSONDecodeError, RecursionError, UnicodeDecodeError) as exc:
         # Security: ``RecursionError`` covers JSON depth-bomb attacks via a
         # poisoned cache file (left by a corrupted previous run, planted by
         # a compromised CI runner, or written during a partial flush
@@ -313,27 +328,30 @@ def write_cache(provider: str, items: list[Any], *, pretty: bool | None = None) 
     # Data Degradation Guard
     if cache_file.exists():
         try:
-            # Security: cap planted-huge-file DoS — see MAX_CACHE_FILE_BYTES.
-            # An oversized existing cache is treated as unreadable / corrupt
-            # so the new payload overwrites without consulting the planted
-            # state; the degradation guard only runs on reasonable-sized
-            # existing data. ``stat()`` raises ``OSError`` on transient
-            # filesystem errors which lands in the broad except below.
-            if cache_file.stat().st_size <= MAX_CACHE_FILE_BYTES:
-                with cache_file.open("r", encoding="utf-8") as fh:
-                    existing_data = json.load(fh)
-                if isinstance(existing_data, list) and len(existing_data) > 0:
-                    if len(items) == 0:
-                        raise DataDegradationError(
-                            f"Empty payload rejected: refusing to overwrite cache for '{provider}' "
-                            f"which currently has {len(existing_data)} items."
-                        )
-                    if len(items) < len(existing_data) * 0.2:
-                        raise DataDegradationError(
-                            f"Degraded payload rejected: '{provider}' items dropped drastically "
-                            f"from {len(existing_data)} to {len(items)}."
-                        )
-        except (json.JSONDecodeError, OSError, RecursionError):
+            # Security: open-then-fstat closes the TOCTOU between the cap
+            # check and ``open()`` — a parallel writer's atomic_write
+            # rename could otherwise swap the inode between the two
+            # syscalls. ``read(MAX_CACHE_FILE_BYTES + 1)`` defends against
+            # zero-st_size special files. An oversized existing cache is
+            # treated as unreadable/corrupt so the new payload overwrites
+            # without consulting the planted state.
+            with cache_file.open("rb") as fh:
+                if os.fstat(fh.fileno()).st_size <= MAX_CACHE_FILE_BYTES:
+                    raw = fh.read(MAX_CACHE_FILE_BYTES + 1)
+                    if len(raw) <= MAX_CACHE_FILE_BYTES:
+                        existing_data = json.loads(raw)
+                        if isinstance(existing_data, list) and len(existing_data) > 0:
+                            if len(items) == 0:
+                                raise DataDegradationError(
+                                    f"Empty payload rejected: refusing to overwrite cache for '{provider}' "
+                                    f"which currently has {len(existing_data)} items."
+                                )
+                            if len(items) < len(existing_data) * 0.2:
+                                raise DataDegradationError(
+                                    f"Degraded payload rejected: '{provider}' items dropped drastically "
+                                    f"from {len(existing_data)} to {len(items)}."
+                                )
+        except (json.JSONDecodeError, OSError, RecursionError, UnicodeDecodeError):
             # Security: ``RecursionError`` covers JSON depth-bomb attacks
             # in the EXISTING on-disk cache (planted by a compromised
             # runner / corrupted previous run). Without the catch the
@@ -411,21 +429,28 @@ def read_status(provider: str) -> dict[str, Any] | None:
 
     status_file = _status_file(provider)
     try:
-        # Security: cap on-disk file size BEFORE opening — see
-        # ``MAX_CACHE_FILE_BYTES`` for the planted-huge-file threat model.
-        # ``stat()`` on a missing file raises ``FileNotFoundError`` which
-        # propagates into the existing handler below.
-        if status_file.stat().st_size > MAX_CACHE_FILE_BYTES:
-            log.warning(
-                "Status für Provider '%s' bei %s ist zu groß (> %d Bytes); überspringe.",
-                provider, status_file, MAX_CACHE_FILE_BYTES,
-            )
-            return None
-        with status_file.open("r", encoding="utf-8") as fh:
-            payload = json.load(fh)
+        # Security: open-then-fstat closes the TOCTOU between cap check
+        # and ``open()`` — see ``read_cache`` above for the full TOCTOU
+        # threat model. ``read(MAX_CACHE_FILE_BYTES + 1)`` defends against
+        # zero-st_size special files (FIFOs, ``/dev/zero``).
+        with status_file.open("rb") as fh:
+            if os.fstat(fh.fileno()).st_size > MAX_CACHE_FILE_BYTES:
+                log.warning(
+                    "Status für Provider '%s' bei %s ist zu groß (> %d Bytes); überspringe.",
+                    provider, status_file, MAX_CACHE_FILE_BYTES,
+                )
+                return None
+            raw = fh.read(MAX_CACHE_FILE_BYTES + 1)
+            if len(raw) > MAX_CACHE_FILE_BYTES:
+                log.warning(
+                    "Status für Provider '%s' bei %s überschreitet %d Bytes beim Lesen; überspringe.",
+                    provider, status_file, MAX_CACHE_FILE_BYTES,
+                )
+                return None
+            payload = json.loads(raw)
     except FileNotFoundError:
         return None
-    except (json.JSONDecodeError, OSError, RecursionError) as exc:
+    except (json.JSONDecodeError, OSError, RecursionError, UnicodeDecodeError) as exc:
         # Security: ``RecursionError`` covers JSON depth-bomb attacks in
         # the on-disk status file. See ``read_cache`` above for the full
         # threat model — same canonical defence pattern applied here so

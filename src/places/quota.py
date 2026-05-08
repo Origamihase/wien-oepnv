@@ -115,17 +115,29 @@ class MonthlyQuota:
         # does NOT cover (json.loads does not raise RecursionError on a
         # flat-but-huge document; MemoryError is a BaseException that
         # propagates past the json.JSONDecodeError handler).
+        # Open first, then ``os.fstat`` the descriptor — closes the
+        # TOCTOU between ``stat`` and ``open``/``read_text`` that lets
+        # an attacker swap the inode between the two syscalls. The
+        # ``read(MAX_QUOTA_FILE_BYTES + 1)`` cap defends against
+        # special files (FIFOs, ``/dev/zero``) that report
+        # ``st_size == 0`` but yield unbounded bytes on read.
         try:
-            file_size = path.stat().st_size
+            with path.open("rb") as handle:
+                file_size = os.fstat(handle.fileno()).st_size
+                if file_size > MAX_QUOTA_FILE_BYTES:
+                    raise ValueError(
+                        f"Quota state file too large (> {MAX_QUOTA_FILE_BYTES} bytes)"
+                    )
+                raw_bytes = handle.read(MAX_QUOTA_FILE_BYTES + 1)
+                if len(raw_bytes) > MAX_QUOTA_FILE_BYTES:
+                    raise ValueError(
+                        f"Quota state file too large (> {MAX_QUOTA_FILE_BYTES} bytes)"
+                    )
         except OSError as exc:
             raise ValueError("Quota state is not readable") from exc
-        if file_size > MAX_QUOTA_FILE_BYTES:
-            raise ValueError(
-                f"Quota state file too large (> {MAX_QUOTA_FILE_BYTES} bytes)"
-            )
         try:
-            raw = json.loads(path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, RecursionError) as exc:
+            raw = json.loads(raw_bytes)
+        except (json.JSONDecodeError, RecursionError, UnicodeDecodeError) as exc:
             raise ValueError("Quota state is not valid JSON") from exc
         if not isinstance(raw, dict):
             raise ValueError("Quota state must be a JSON object")

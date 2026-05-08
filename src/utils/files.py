@@ -174,31 +174,57 @@ def read_capped_json(
 ) -> object | None:
     """Read JSON from *path*, returning ``None`` if missing/invalid/oversized.
 
-    Combines the canonical "stat-then-cap-then-read" size-bomb defence with
-    the depth-bomb catch tuple ``(OSError, json.JSONDecodeError,
-    RecursionError)``. The byte-size cap fires BEFORE ``open()`` so the file
-    content is never buffered into memory when oversized — defeating the
-    wide-but-flat attack shape (``[0,0,…]`` repeated to GiB-scale) that the
-    depth-bomb catch alone does NOT cover (``MemoryError`` is a
-    ``BaseException`` subclass and propagates past the surrounding
-    ``except (OSError, json.JSONDecodeError, RecursionError)`` handler).
+    Combines the canonical size-bomb defence with the depth-bomb catch tuple
+    ``(OSError, json.JSONDecodeError, RecursionError)``. The byte-size cap is
+    enforced via ``os.fstat`` on the *open file descriptor* AND a defensive
+    ``read(max_bytes + 1)`` budget — closing the TOCTOU window between
+    ``Path.stat`` and ``Path.open`` that lets an attacker swap the inode
+    (atomic ``os.replace`` of a symlink, parallel writer's ``atomic_write``
+    rename) under the loader's feet.
 
     Threat model: a planted-huge JSON file (compromised CI runner / partial
-    flush + power loss / corrupted previous run) buffered into memory via
-    ``json.load(handle)`` allocates O(file_size) bytes plus a multiplier
+    flush + power loss / corrupted previous run / parallel orchestrator
+    process performing an atomic state swap mid-read) buffered into memory
+    via ``json.load(handle)`` allocates O(file_size) bytes plus a multiplier
     of object overhead, exhausts the runner's cgroup memory limit, and
-    propagates ``MemoryError`` past the loader to crash the cron pipeline.
+    propagates ``MemoryError`` (a ``BaseException`` subclass that is NOT
+    caught by ``except (OSError, json.JSONDecodeError, RecursionError)``)
+    past the loader to crash the cron pipeline.
+
+    TOCTOU shape closed: pre-fix ``Path.stat()`` and ``Path.open()`` resolve
+    the path AND follow symlinks INDEPENDENTLY. An attacker who can swap the
+    inode at *path* between those two syscalls (``os.replace`` is atomic at
+    the directory-entry level) bypasses the cap: stat sees the small target,
+    open opens the swapped huge target, and ``json.load`` buffers the huge
+    file. Post-fix ``os.fstat(handle.fileno())`` reports the size of the
+    *opened* inode, immune to subsequent symlink swaps; the additional
+    ``handle.read(max_bytes + 1)`` cap defends against special files
+    (FIFOs, ``/dev/zero``, character devices) that report ``st_size == 0``
+    but yield unbounded bytes on read.
     """
     log = logger if logger is not None else logging.getLogger(__name__)
     try:
-        if path.stat().st_size > max_bytes:
-            log.warning(
-                "%s file at %s is too large (> %d bytes); treating as missing.",
-                label, path, max_bytes,
-            )
-            return None
-        with path.open("r", encoding="utf-8") as handle:
-            payload: object = json.load(handle)
+        # Open first so the size check is on the actual inode that
+        # ``read()`` will consume — closes the stat/open TOCTOU.
+        with path.open("rb") as handle:
+            if os.fstat(handle.fileno()).st_size > max_bytes:
+                log.warning(
+                    "%s file at %s is too large (> %d bytes); treating as missing.",
+                    label, path, max_bytes,
+                )
+                return None
+            # Defense in depth: bound the read at ``max_bytes + 1`` so a
+            # special file with ``st_size == 0`` (FIFO, ``/dev/zero``,
+            # character device) cannot stream unbounded bytes into
+            # ``json.loads``.
+            raw = handle.read(max_bytes + 1)
+            if len(raw) > max_bytes:
+                log.warning(
+                    "%s file at %s exceeded %d bytes during read; treating as missing.",
+                    label, path, max_bytes,
+                )
+                return None
+            payload: object = json.loads(raw)
             return payload
-    except (OSError, json.JSONDecodeError, RecursionError):
+    except (OSError, json.JSONDecodeError, RecursionError, UnicodeDecodeError):
         return None
