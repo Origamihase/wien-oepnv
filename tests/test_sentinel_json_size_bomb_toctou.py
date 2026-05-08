@@ -268,11 +268,11 @@ def test_read_capped_json_resists_zero_size_special_file(tmp_path: Path) -> None
     # Patch os.fstat globally so the helper's check is bypassed; only
     # the defense-in-depth read-cap can save us.
     original_fstat = os.fstat
-    os.fstat = fake_fstat  # type: ignore[assignment]
+    os.fstat = fake_fstat
     try:
         result = read_capped_json(target, max_bytes=1024, label="Test")
     finally:
-        os.fstat = original_fstat  # type: ignore[assignment]
+        os.fstat = original_fstat
 
     assert result is None, (
         "read_capped_json must reject the file when the on-disk byte "
@@ -386,13 +386,17 @@ def test_precondition_canonical_cap_constants_exist() -> None:
     from src.utils import files
     from src.utils import stations
     from src.utils import cache
-    from src.utils import stations_validation
-    from src.places import quota, tiling, merge
+    from src.places import quota, tiling
     from src import build_feed
 
     assert isinstance(files.DEFAULT_MAX_JSON_FILE_BYTES, int)
     assert files.DEFAULT_MAX_JSON_FILE_BYTES > 0
 
+    # ``MAX_STATIONS_FILE_BYTES`` is defined in ``src.utils.stations`` and
+    # re-imported by ``src.places.merge`` and
+    # ``src.utils.stations_validation`` — the canonical home of the
+    # constant is ``stations`` so we pin it there (mypy --strict on the
+    # re-export sites complains about implicit re-export).
     assert isinstance(stations.MAX_STATIONS_FILE_BYTES, int)
     assert stations.MAX_STATIONS_FILE_BYTES > 0
     assert isinstance(stations.MAX_VIENNA_POLYGON_FILE_BYTES, int)
@@ -406,12 +410,6 @@ def test_precondition_canonical_cap_constants_exist() -> None:
 
     assert isinstance(tiling.MAX_TILE_FILE_BYTES, int)
     assert tiling.MAX_TILE_FILE_BYTES > 0
-
-    assert isinstance(merge.MAX_STATIONS_FILE_BYTES, int)
-    assert merge.MAX_STATIONS_FILE_BYTES > 0
-
-    assert isinstance(stations_validation.MAX_STATIONS_FILE_BYTES, int)
-    assert stations_validation.MAX_STATIONS_FILE_BYTES > 0
 
     assert isinstance(build_feed.MAX_STATE_FILE_BYTES, int)
     assert build_feed.MAX_STATE_FILE_BYTES > 0
