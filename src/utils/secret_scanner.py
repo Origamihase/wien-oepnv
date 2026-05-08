@@ -136,6 +136,46 @@ _KNOWN_TOKENS = [
     # OpenAI legacy/user API keys: sk- followed by exactly 48 alphanumeric chars.
     # The strict 48-char alphanumeric body avoids overlap with sk-ant-/sk-proj-/sk-svcacct- (all contain '-').
     (re.compile(r"(?<![A-Za-z0-9])sk-[A-Za-z0-9]{48}(?![A-Za-z0-9])"), "OpenAI API Key gefunden"),
+    # Hugging Face access tokens: ``hf_<32+ alphanumeric chars>``. Issued via
+    # https://huggingface.co/settings/tokens for read/write access to private
+    # models, datasets and Spaces. A leak grants the token's permission scope
+    # for the entire validity window (no automatic expiry on legacy tokens),
+    # so credentials in committed config / notebook outputs / log artefacts
+    # need precise attribution rather than a generic high-entropy hit.
+    (re.compile(r"(?<![A-Za-z0-9])hf_[A-Za-z0-9]{32,}(?![A-Za-z0-9])"), "Hugging Face Access Token gefunden"),
+    # DigitalOcean Personal Access Tokens (``dop_v1_<64 hex>``) and OAuth
+    # refresh tokens (``doo_v1_<64 hex>``). The ``v1`` prefix anchors against
+    # the official format; the strict 64-char lowercase-hex body avoids
+    # overlap with the generic high-entropy fallback's ``[A-Za-z0-9+/=_-]``
+    # alphabet (which would otherwise flag the body without preserving the
+    # ``dop_v1_``/``doo_v1_`` issuer attribution). A leaked dop_v1_ grants
+    # full account API access; a leaked doo_v1_ mints fresh dop_v1_'s until
+    # revocation, so refresh-token leaks have multi-day blast radius.
+    (re.compile(r"(?<![A-Za-z0-9])dop_v1_[a-f0-9]{64}(?![A-Za-z0-9])"), "DigitalOcean Personal Access Token gefunden"),
+    (re.compile(r"(?<![A-Za-z0-9])doo_v1_[a-f0-9]{64}(?![A-Za-z0-9])"), "DigitalOcean OAuth Refresh Token gefunden"),
+    # GitLab Pipeline Trigger Tokens: ``glptt-<40 chars>``. Distinct from
+    # GitLab PATs (``glpat-``) — these tokens are scoped to triggering CI
+    # pipelines via the API. A leaked trigger token lets a network adversary
+    # kick off arbitrary pipeline runs (including any ``protected_branches``
+    # secrets exposed to those pipelines), so the leak surface is the
+    # repository's CI permissions rather than the user's PAT scope.
+    (re.compile(r"(?<![A-Za-z0-9])glptt-[0-9a-zA-Z_\-]{40}(?![A-Za-z0-9])"), "GitLab Pipeline Trigger Token gefunden"),
+    # JSON Web Tokens (JWTs): ``eyJ<header>.<payload>.<signature>`` where
+    # each segment is base64url-encoded ``[A-Za-z0-9_-]+``. The ``eyJ``
+    # prefix is the base64url encoding of ``{"`` (the start of every JOSE
+    # JSON header). Multi-segment dot-separated tokens bypass the generic
+    # high-entropy fallback (which uses ``[A-Za-z0-9+/=_-]`` and stops at
+    # the first dot), so without this specific pattern only one segment
+    # at a time would be flagged — losing the full token attribution and
+    # making revocation harder. Min lengths chosen to cover realistic
+    # HS256/RS256 tokens (~30-char header, ~30-char payload, ~43-char
+    # signature) without flagging short base64url strings that happen to
+    # have the ``eyJ`` prefix purely by collision. Order: place AFTER more
+    # specific issuer-prefixed tokens so ``is_covered`` correctly anchors.
+    (
+        re.compile(r"(?<![A-Za-z0-9])eyJ[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{20,}(?![A-Za-z0-9])"),
+        "JSON Web Token (JWT) gefunden",
+    ),
 ]
 
 

@@ -1416,6 +1416,21 @@ def load_request_count(bypass_cache: bool = False) -> tuple[str | None, int]:
             int_count = int(count)
         except (ValueError, TypeError):
             int_count = 0
+        # Security: a poisoned ``data/vor_request_count.json`` (planted by
+        # a compromised CI runner, partial flush + power loss, or operator
+        # mis-edit) could record a NEGATIVE ``requests`` value. The
+        # downstream ``_limit_reached`` check (``scripts/update_vor_cache.py:87``)
+        # uses ``todays_count >= MAX_REQUESTS_PER_DAY``, which negative
+        # values silently bypass — and ``save_request_count`` perpetuates
+        # the negative offset by adding the run's delta to it and writing
+        # back. The net effect is that legitimate runs continue to fetch
+        # under the projected-usage cap, but the runtime quota counter
+        # stays artificially low for many days, breaching defense-in-depth
+        # for the contractually-strict VAO Start tier 100/day limit.
+        # Clamp at 0 so a tampered file cannot drive the in-memory or
+        # on-disk counter below zero; the next save_request_count() flush
+        # rewrites the canonical [0, MAX] schema and self-heals.
+        int_count = max(0, int_count)
 
         # Update cache
         _QUOTA_CACHE["date"] = stored_date
@@ -1487,6 +1502,10 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
                             # poisoned file, restoring the canonical
                             # schema for the next reader.
                             pass
+
+                        # Security: clamp at 0 to defeat negative-count quota-bypass
+                        # (mirrors load_request_count's clamp; see its comment block).
+                        disk_count = max(0, disk_count)
 
                         if disk_date != date_iso:
                             disk_count = 0
