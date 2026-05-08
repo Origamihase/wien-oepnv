@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import io
 import json
 import logging
 import os
@@ -41,11 +42,11 @@ if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
 try:  # pragma: no cover - convenience for module execution
-    from src.utils.files import atomic_write, read_capped_json
+    from src.utils.files import atomic_write, read_capped_json, read_capped_text
     from src.utils.http import fetch_content_safe, session_with_retries
     from src.utils.stations import is_in_vienna as _is_point_in_vienna
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
-    from utils.files import atomic_write, read_capped_json  # type: ignore[no-redef]
+    from utils.files import atomic_write, read_capped_json, read_capped_text  # type: ignore[no-redef]
     from utils.http import fetch_content_safe, session_with_retries  # type: ignore[no-redef]
     from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore[no-redef]
 
@@ -58,6 +59,18 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
 # update script via ``subprocess.run(check=True)``). 50 MiB is ~285x
 # the production stations.json so legitimate state is never rejected.
 MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
+
+# Security cap against wide-but-flat CSV size-bomb attacks. Routes every
+# operator-controlled CSV file (GTFS stops, WL haltepunkte, VOR
+# haltestellen) through ``read_capped_text`` -> ``io.StringIO`` ->
+# ``csv.DictReader`` so a planted unbounded CSV (single huge line, no
+# newlines) cannot buffer GiB of payload via ``handle.readline()`` and
+# propagate ``MemoryError`` (``BaseException`` subclass NOT caught by
+# ``except (OSError, csv.Error)``) past the cron orchestrator.
+# Same 50 MiB ceiling as ``MAX_JSON_FILE_BYTES`` — comfortably above any
+# legitimate transit-network CSV (Austria-wide GTFS dumps stay well
+# under 50 MiB) and well below the runner's 1 GiB cgroup limit.
+MAX_CSV_LOCATIONS_BYTES = 50 * 1024 * 1024
 
 try:  # pragma: no cover - convenience for module execution
     from src.places.client import (
@@ -364,27 +377,39 @@ def _store_location(
 
 def _load_gtfs_locations(path: Path) -> dict[str, LocationInfo]:
     locations: dict[str, LocationInfo] = {}
-    try:
-        with path.open("r", encoding="utf-8") as handle:
-            reader = csv.DictReader(handle)
-            for row in reader:
-                stop_name = row.get("stop_name")
-                if not stop_name:
-                    continue
-                stop_name = _harmonize_station_name(stop_name)
-                lat = _coerce_float_value(row.get("stop_lat"))
-                lon = _coerce_float_value(row.get("stop_lon"))
-                if lat is None or lon is None:
-                    continue
-                location_type = (row.get("location_type") or "").strip()
-                is_station = location_type == "1"
-                for key in _normalize_location_keys(stop_name):
-                    if not key:
-                        continue
-                    if is_station or key not in locations:
-                        _store_location(locations, key, lat, lon, source="gtfs")
-    except FileNotFoundError:
+    if not path.exists():
         logger.warning("GTFS stops file not found: %s", path)
+        return locations
+    # Security: route through ``read_capped_text`` to bound the
+    # ``csv.DictReader`` -> ``readline()`` allocation against planted
+    # unbounded CSVs. See ``MAX_CSV_LOCATIONS_BYTES`` for the threat
+    # model. ``read_capped_text`` returns ``None`` on missing /
+    # oversized / decode-error so subsequent code receives an empty
+    # mapping rather than crashing the cron pipeline.
+    content = read_capped_text(
+        path, MAX_CSV_LOCATIONS_BYTES,
+        encoding="utf-8", label="GTFS stops", logger=logger,
+    )
+    if content is None:
+        return locations
+    try:
+        reader = csv.DictReader(io.StringIO(content))
+        for row in reader:
+            stop_name = row.get("stop_name")
+            if not stop_name:
+                continue
+            stop_name = _harmonize_station_name(stop_name)
+            lat = _coerce_float_value(row.get("stop_lat"))
+            lon = _coerce_float_value(row.get("stop_lon"))
+            if lat is None or lon is None:
+                continue
+            location_type = (row.get("location_type") or "").strip()
+            is_station = location_type == "1"
+            for key in _normalize_location_keys(stop_name):
+                if not key:
+                    continue
+                if is_station or key not in locations:
+                    _store_location(locations, key, lat, lon, source="gtfs")
     except csv.Error as exc:
         logger.warning("Could not parse GTFS stops file %s: %s", path, exc)
     else:
@@ -395,23 +420,31 @@ def _load_gtfs_locations(path: Path) -> dict[str, LocationInfo]:
 
 def _load_wienerlinien_locations(path: Path) -> dict[str, LocationInfo]:
     locations: dict[str, LocationInfo] = {}
-    try:
-        with path.open("r", encoding="utf-8") as handle:
-            reader = csv.DictReader(handle, delimiter=";")
-            for row in reader:
-                name = row.get("NAME")
-                if name:
-                    name = _harmonize_station_name(name)
-                lat = _coerce_float_value(row.get("WGS84_LAT"))
-                lon = _coerce_float_value(row.get("WGS84_LON"))
-                if not name or lat is None or lon is None:
-                    continue
-                for key in _normalize_location_keys(name):
-                    if not key:
-                        continue
-                    _store_location(locations, key, lat, lon, source="wl")
-    except FileNotFoundError:
+    if not path.exists():
         logger.warning("Wiener Linien haltepunkte file not found: %s", path)
+        return locations
+    # Security: see _load_gtfs_locations for the canonical CSV
+    # size-bomb defence shape (read_capped_text + io.StringIO).
+    content = read_capped_text(
+        path, MAX_CSV_LOCATIONS_BYTES,
+        encoding="utf-8", label="WL haltepunkte", logger=logger,
+    )
+    if content is None:
+        return locations
+    try:
+        reader = csv.DictReader(io.StringIO(content), delimiter=";")
+        for row in reader:
+            name = row.get("NAME")
+            if name:
+                name = _harmonize_station_name(name)
+            lat = _coerce_float_value(row.get("WGS84_LAT"))
+            lon = _coerce_float_value(row.get("WGS84_LON"))
+            if not name or lat is None or lon is None:
+                continue
+            for key in _normalize_location_keys(name):
+                if not key:
+                    continue
+                _store_location(locations, key, lat, lon, source="wl")
     except csv.Error as exc:
         logger.warning("Could not parse Wiener Linien haltepunkte file %s: %s", path, exc)
     else:
@@ -427,26 +460,33 @@ def _load_vor_locations(path: Path) -> dict[str, LocationInfo]:
     The VOR CSV uses ``StopPointName;Latitude;Longitude`` columns.
     """
     locations: dict[str, LocationInfo] = {}
-    try:
-        with path.open("r", encoding="utf-8-sig", newline="") as handle:
-            sample = handle.read(4096)
-            handle.seek(0)
-            delimiter = _detect_csv_delimiter(sample)
-            reader = csv.DictReader(handle, delimiter=delimiter)
-            for row in reader:
-                name = row.get("StopPointName") or row.get("Name") or row.get("StopName")
-                if name:
-                    name = _harmonize_station_name(name)
-                lat = _coerce_float_value(row.get("Latitude") or row.get("WGS84_LAT"))
-                lon = _coerce_float_value(row.get("Longitude") or row.get("WGS84_LON"))
-                if not name or lat is None or lon is None:
-                    continue
-                for key in _normalize_location_keys(name):
-                    if not key:
-                        continue
-                    _store_location(locations, key, lat, lon, source="vor")
-    except FileNotFoundError:
+    if not path.exists():
         logger.warning("VOR stops file not found: %s", path)
+        return locations
+    # Security: see _load_gtfs_locations for the canonical CSV
+    # size-bomb defence shape (read_capped_text + io.StringIO).
+    content = read_capped_text(
+        path, MAX_CSV_LOCATIONS_BYTES,
+        encoding="utf-8-sig", label="VOR stops", logger=logger,
+    )
+    if content is None:
+        return locations
+    try:
+        sample = content[:4096]
+        delimiter = _detect_csv_delimiter(sample)
+        reader = csv.DictReader(io.StringIO(content), delimiter=delimiter)
+        for row in reader:
+            name = row.get("StopPointName") or row.get("Name") or row.get("StopName")
+            if name:
+                name = _harmonize_station_name(name)
+            lat = _coerce_float_value(row.get("Latitude") or row.get("WGS84_LAT"))
+            lon = _coerce_float_value(row.get("Longitude") or row.get("WGS84_LON"))
+            if not name or lat is None or lon is None:
+                continue
+            for key in _normalize_location_keys(name):
+                if not key:
+                    continue
+                _store_location(locations, key, lat, lon, source="vor")
     except csv.Error as exc:
         logger.warning("Could not parse VOR stops file %s: %s", path, exc)
     else:
@@ -817,13 +857,23 @@ class _NormalizedCSVRow:
 
 
 def _iter_vor_rows(path: Path) -> Iterable[_NormalizedCSVRow]:
-    with path.open("r", encoding="utf-8-sig", newline="") as handle:
-        sample = handle.read(4096)
-        handle.seek(0)
-        delimiter = _detect_csv_delimiter(sample)
-        reader = csv.DictReader(handle, delimiter=delimiter)
-        for row in reader:
-            yield _NormalizedCSVRow({key or "": value for key, value in row.items()})
+    # Security: see _load_gtfs_locations / MAX_CSV_LOCATIONS_BYTES for
+    # the canonical CSV size-bomb defence shape (read_capped_text +
+    # io.StringIO). FileNotFoundError is propagated so the caller's
+    # legacy "file not found" log path remains intact.
+    if not path.exists():
+        raise FileNotFoundError(str(path))
+    content = read_capped_text(
+        path, MAX_CSV_LOCATIONS_BYTES,
+        encoding="utf-8-sig", label="VOR stops", logger=logger,
+    )
+    if content is None:
+        return
+    sample = content[:4096]
+    delimiter = _detect_csv_delimiter(sample)
+    reader = csv.DictReader(io.StringIO(content), delimiter=delimiter)
+    for row in reader:
+        yield _NormalizedCSVRow({key or "": value for key, value in row.items()})
 
 
 def load_vor_stops(path: Path) -> list[VORStop]:

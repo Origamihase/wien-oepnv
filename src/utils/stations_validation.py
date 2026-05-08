@@ -10,13 +10,28 @@ from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 import csv
+import io
 import json
+import logging
 import math
 import os
 import re
 from collections.abc import Iterable, Iterator, Mapping, Sequence
 
+from src.utils.files import read_capped_text
 from src.utils.stations import MAX_STATIONS_FILE_BYTES, _normalize_token
+
+# Security: per-loader byte cap for the GTFS ``stops.txt`` CSV consumed
+# by ``_load_gtfs_stop_ids``. Sized at 50 MiB to comfortably cover
+# multi-region GTFS dumps (Vienna is ~6 KiB; an Austrian-wide bundle
+# remains well under 50 MiB) while bounding the wide-but-flat
+# ``readline()`` allocation that ``csv.DictReader`` performs on
+# attacker-planted unbounded files. Mirror of the canonical
+# ``MAX_*_FILE_BYTES`` contract from ``src/utils/cache.py`` /
+# ``src/utils/stations.py``. Module-level so tests can monkeypatch it.
+MAX_GTFS_STOPS_BYTES = 50 * 1024 * 1024
+
+log = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -312,15 +327,27 @@ def _load_gtfs_stop_ids(path: Path | None) -> tuple[set[str], int]:
     if path is None or not path.exists():
         return set(), 0
 
+    # Security: route through ``read_capped_text`` (TOCTOU-safe via
+    # open-then-fstat, special-file-safe via ``read(max_bytes + 1)``)
+    # to bound the ``csv.DictReader`` -> ``readline()`` allocation. A
+    # planted unbounded ``stops.txt`` (single huge line, no newlines)
+    # would otherwise propagate ``MemoryError`` past the validator and
+    # crash the CI gate.
+    content = read_capped_text(
+        path, MAX_GTFS_STOPS_BYTES,
+        encoding="utf-8-sig", label="GTFS stops", logger=log,
+    )
+    if content is None:
+        return set(), 0
+
     stop_ids: set[str] = set()
-    with path.open("r", encoding="utf-8-sig", newline="") as handle:
-        reader = csv.DictReader(handle)
-        for row in reader:
-            stop_id = row.get("stop_id")
-            if isinstance(stop_id, str):
-                token = stop_id.strip()
-                if token:
-                    stop_ids.add(token)
+    reader = csv.DictReader(io.StringIO(content))
+    for row in reader:
+        stop_id = row.get("stop_id")
+        if isinstance(stop_id, str):
+            token = stop_id.strip()
+            if token:
+                stop_ids.add(token)
     return stop_ids, len(stop_ids)
 
 

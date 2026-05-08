@@ -50,6 +50,13 @@ MAX_VOR_STATION_IDS_FILE_BYTES = 5 * 1024 * 1024
 # location.name response and matches ``src/utils/http.py``'s
 # ``MAX_PAYLOAD_SIZE``.
 MAX_VOR_API_RESPONSE_BYTES = 10 * 1024 * 1024
+# CSV size-bomb axis: ``_dict_reader`` previously fed the operator-
+# supplied haltestellen CSV into ``csv.DictReader(handle)`` directly,
+# letting ``handle.readline()`` buffer GiB-sized single-line payloads
+# before any field is parsed. Routes through ``read_capped_text`` ->
+# ``io.StringIO`` to bound the allocation. 50 MiB ceiling matches the
+# canonical ``MAX_*_FILE_BYTES`` contract.
+MAX_VOR_CSV_BYTES = 50 * 1024 * 1024
 
 __all__ = ["vor_provider"]
 
@@ -311,13 +318,30 @@ def _detect_delimiter(sample: str) -> str:
 
 
 def _dict_reader(path: Path) -> Iterator[NormalizedRow]:
-    with path.open("r", encoding="utf-8-sig", newline="") as handle:
-        sample = handle.read(4096)
-        handle.seek(0)
-        delimiter = _detect_delimiter(sample)
-        reader = csv.DictReader(handle, delimiter=delimiter)
-        for row in reader:
-            yield NormalizedRow({key or "": value for key, value in row.items()})
+    # Security: see ``MAX_VOR_CSV_BYTES`` for the canonical CSV size-
+    # bomb defence shape (``read_capped_text`` -> ``io.StringIO`` ->
+    # ``csv.DictReader``). A planted unbounded haltestellen CSV would
+    # otherwise propagate ``MemoryError`` past the caller's ``except
+    # FileNotFoundError`` and crash the cron pipeline.
+    # FileNotFoundError is raised explicitly so the caller's existing
+    # ``except FileNotFoundError`` (load_vor_stops -> main()) keeps
+    # logging the canonical "CSV source not found" message; oversized
+    # files are silently treated as missing (read_capped_text logs a
+    # warning).
+    import io
+    if not path.exists():
+        raise FileNotFoundError(str(path))
+    content = read_capped_text(
+        path, MAX_VOR_CSV_BYTES,
+        encoding="utf-8-sig", label="VOR haltestellen", logger=log,
+    )
+    if content is None:
+        return
+    sample = content[:4096]
+    delimiter = _detect_delimiter(sample)
+    reader = csv.DictReader(io.StringIO(content), delimiter=delimiter)
+    for row in reader:
+        yield NormalizedRow({key or "": value for key, value in row.items()})
 
 
 def _coerce_float(value: str) -> float | None:

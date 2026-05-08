@@ -37,9 +37,9 @@ if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
 try:
-    from src.utils.files import atomic_write, read_capped_json
+    from src.utils.files import atomic_write, read_capped_json, read_capped_text
 except ModuleNotFoundError:
-    from utils.files import atomic_write, read_capped_json  # type: ignore[no-redef]
+    from utils.files import atomic_write, read_capped_json, read_capped_text  # type: ignore[no-redef]
 
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 DEFAULT_VOR_STOPS = BASE_DIR / "data" / "vor-haltestellen.csv"
@@ -56,6 +56,12 @@ DEFAULT_PENDLER_CANDIDATES = BASE_DIR / "data" / "pendler_candidates.json"
 # canonical ``MAX_*_FILE_BYTES`` contract from
 # ``src/utils/cache.py`` / ``src/utils/stations.py``.
 MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
+# CSV size-bomb axis: ``_load_vor_names`` and ``_load_gtfs_index``
+# previously fed operator-supplied CSVs into ``csv.DictReader(handle)``
+# directly, letting ``handle.readline()`` buffer GiB-sized single-line
+# payloads. Routes through ``read_capped_text`` -> ``io.StringIO`` to
+# bound the allocation. 50 MiB matches ``MAX_JSON_FILE_BYTES``.
+MAX_ALIAS_CSV_BYTES = 50 * 1024 * 1024
 
 log = logging.getLogger("enrich_station_aliases")
 
@@ -295,14 +301,25 @@ def _load_vor_names(path: Path) -> dict[str, str]:
     if not path.exists():
         log.warning("VOR stops file %s not found", path)
         return {}
+    # Security: see ``MAX_ALIAS_CSV_BYTES`` for the canonical CSV
+    # size-bomb defence shape (``read_capped_text`` -> ``io.StringIO``
+    # -> ``csv.DictReader``). Pre-fix a planted unbounded VOR CSV would
+    # propagate ``MemoryError`` past the caller and crash the cron
+    # pipeline.
+    import io
+    content = read_capped_text(
+        path, MAX_ALIAS_CSV_BYTES,
+        encoding="utf-8", label="VOR stops", logger=log,
+    )
+    if content is None:
+        return {}
     names: dict[str, str] = {}
-    with path.open("r", encoding="utf-8") as handle:
-        reader = csv.DictReader(handle, delimiter=";")
-        for row in reader:
-            vor_id = (row.get("StopPointId") or "").strip()
-            name = (row.get("StopPointName") or "").strip()
-            if vor_id and name:
-                names[vor_id] = name
+    reader = csv.DictReader(io.StringIO(content), delimiter=";")
+    for row in reader:
+        vor_id = (row.get("StopPointId") or "").strip()
+        name = (row.get("StopPointName") or "").strip()
+        if vor_id and name:
+            names[vor_id] = name
     log.info("Loaded %d VOR stop names", len(names))
     return names
 
@@ -362,16 +379,24 @@ def _load_gtfs_index(path: Path) -> dict[str, set[str]]:
     if not path.exists():
         log.warning("GTFS stops file %s not found", path)
         return {}
+    # Security: see ``_load_vor_names`` / ``MAX_ALIAS_CSV_BYTES`` for
+    # the canonical CSV size-bomb defence shape.
+    import io
+    content = read_capped_text(
+        path, MAX_ALIAS_CSV_BYTES,
+        encoding="utf-8", label="GTFS stops", logger=log,
+    )
+    if content is None:
+        return {}
     index: dict[str, set[str]] = defaultdict(set)
-    with path.open("r", encoding="utf-8") as handle:
-        reader = csv.DictReader(handle)
-        for row in reader:
-            name = (row.get("stop_name") or "").strip()
-            if not name:
-                continue
-            key = _normalize_key(name)
-            if key:
-                index[key].add(name)
+    reader = csv.DictReader(io.StringIO(content))
+    for row in reader:
+        name = (row.get("stop_name") or "").strip()
+        if not name:
+            continue
+        key = _normalize_key(name)
+        if key:
+            index[key].add(name)
     log.info("Indexed %d GTFS stop name variants", len(index))
     return index
 
