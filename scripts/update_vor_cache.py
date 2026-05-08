@@ -169,10 +169,22 @@ def main() -> int:
     try:
         # Pass the pre-selected/calculated stations to avoid re-resolution or discrepancy
         items = fetch_events(station_ids=stations_for_run)
-    except RequestException:
+    except RequestException as exc:
+        # Security: ``VorAuth`` (src/providers/vor.py:701) injects the
+        # VAO ``accessId`` query parameter into every prepared request
+        # whose URL starts with ``VOR_BASE_URL``. When the network layer
+        # fails, the resulting ``RequestException`` (or its
+        # ``__context__`` chain) embeds the post-VorAuth URL — including
+        # ``accessId=<SECRET>`` — in its message. ``exc_info=True`` would
+        # write that traceback (and any chained ``__context__``
+        # exceptions) verbatim to errors.log and CI-runner stdout
+        # (clear-text-logging dataflow, mirrors the 2026-05-08 fix in
+        # src/utils/http.py:_resolve_hostname_safe). Logging only the
+        # exception class suppresses the URL while preserving the
+        # failure-mode diagnostic.
         logger.warning(
-            "VOR: API nicht erreichbar – behalte bestehenden Cache bei.",
-            exc_info=True,
+            "VOR: API nicht erreichbar (%s) – behalte bestehenden Cache bei.",
+            type(exc).__name__,
         )
         _record_status(
             status="api_unreachable",
@@ -181,9 +193,16 @@ def main() -> int:
             now_local=now_local,
         )
         return 0
-    except Exception:  # pragma: no cover - defensive
-        logger.exception(
-            "VOR: Fehler beim Abrufen der Daten – behalte bestehenden Cache bei.",
+    except Exception as exc:  # pragma: no cover - defensive
+        # Same clear-text-logging concern as the RequestException branch
+        # above: an unexpected exception escaping ``fetch_events`` may
+        # carry the post-VorAuth URL (e.g. via a re-raised
+        # ``__context__``). ``logger.exception`` is shorthand for
+        # ``logger.error(..., exc_info=True)``, so it has the same leak
+        # surface. Drop ``exc_info`` and log the class name only.
+        logger.error(
+            "VOR: Fehler beim Abrufen der Daten (%s) – behalte bestehenden Cache bei.",
+            type(exc).__name__,
         )
         _record_status(
             status="error",
