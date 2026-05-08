@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import ipaddress
 import logging
 import atexit
@@ -968,6 +969,17 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
     """Resolve hostname using dnspython with a timeout to prevent thread exhaustion/DoS."""
     results = []
 
+    # Hash hostname for safe logging. CodeQL's clear-text-logging dataflow
+    # tracker conservatively treats any string derived from a URL parameter
+    # as potentially carrying credentials (the ``user:pass@host`` form).
+    # ``hashlib.sha256`` is a recognised barrier where regex whitelists are
+    # not (review feedback on PR #1334). Diagnostic value is preserved:
+    # the same hostname always produces the same 12-char prefix, so log
+    # lines can still be correlated when investigating DNS issues.
+    host_log = hashlib.sha256(
+        str(hostname).encode("utf-8", "replace")
+    ).hexdigest()[:12]
+
     resolver = dns.resolver.Resolver()
     resolver.timeout = DNS_TIMEOUT
     resolver.lifetime = DNS_TIMEOUT
@@ -992,12 +1004,20 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
             pass
 
         if not results:
-            log.debug("DNS resolution yielded no A/AAAA records for %s", hostname)
+            log.debug("DNS resolution yielded no A/AAAA records for host:%s", host_log)
 
     except dns.exception.Timeout:
-        log.warning("DNS resolution timed out for %s (DoS protection)", hostname)
+        log.warning("DNS resolution timed out for host:%s (DoS protection)", host_log)
     except Exception as exc:
-        log.warning("Unexpected error during DNS resolution for %s: %s", hostname, exc)
+        # Log the exception class only — ``str(exc)`` from a DNS resolver
+        # error typically embeds the hostname, which would re-introduce
+        # the clear-text-logging dataflow that ``host_log`` was meant to
+        # break.
+        log.warning(
+            "Unexpected error during DNS resolution for host:%s: %s",
+            host_log,
+            type(exc).__name__,
+        )
 
     return results
 
