@@ -1,6 +1,22 @@
 # CHANGELOG
 
 ## [Unreleased]
+* **Security**: VOR daily-quota counter is now lower-bound clamped at 0
+  inside both `load_request_count` and `save_request_count` (the
+  under-lock disk re-read). Pre-fix, a poisoned `data/vor_request_count.json`
+  with `{"date": "<today>", "requests": -1000}` would silently bypass the
+  runtime quota check (`todays_count >= MAX_REQUESTS_PER_DAY` is False
+  for any negative count) and be perpetuated by the next save. Defense-
+  in-depth against compromised CI runners and partial-flush corruption.
+* **Security**: Secret scanner now detects four additional issuer
+  taxonomies that the entropy fallback misses: JSON Web Tokens
+  (`eyJ<base64url>.<base64url>.<base64url>` — three dot-separated
+  segments bypass the `[A-Za-z0-9+/=_-]` alphabet), Hugging Face Access
+  Tokens (`hf_<32+>`), DigitalOcean PATs (`dop_v1_<64 hex>`) and OAuth
+  Refresh Tokens (`doo_v1_<64 hex>`), and GitLab Pipeline Trigger
+  Tokens (`glptt-<40>`). Each finding now reports the issuer-specific
+  reason instead of a generic high-entropy hit, speeding triage and
+  revocation.
 
 ## [2026-05-05]
 * **Data**: Wien-Stadtgrenzen-Polygon ersetzt — neu: offizielle
