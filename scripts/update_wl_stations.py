@@ -52,10 +52,19 @@ def _load_read_capped_json() -> Callable[..., Any]:
     return cast(Callable[..., Any], module.read_capped_json)
 
 
+def _load_read_capped_text() -> Callable[..., Any]:
+    base_dir = _project_root()
+    if str(base_dir) not in sys.path:
+        sys.path.insert(0, str(base_dir))
+    module = import_module("src.utils.files")
+    return cast(Callable[..., Any], module.read_capped_text)
+
+
 BASE_DIR = _project_root()
 is_in_vienna = _load_is_in_vienna()
 atomic_write = _load_atomic_write()
 read_capped_json = _load_read_capped_json()
+read_capped_text = _load_read_capped_text()
 
 # Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
 # canonical ``MAX_*_FILE_BYTES`` contract from ``src/utils/cache.py`` /
@@ -67,6 +76,12 @@ read_capped_json = _load_read_capped_json()
 # is ~285x the production stations.json so legitimate state is never
 # rejected.
 MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
+# CSV size-bomb axis: ``_dict_reader`` previously fed the operator-
+# supplied haltestellen / haltepunkte CSVs into ``csv.DictReader(handle)``
+# directly, letting ``handle.readline()`` buffer GiB-sized single-line
+# payloads. Routes through ``read_capped_text`` -> ``io.StringIO`` to
+# bound the allocation.
+MAX_WL_CSV_BYTES = 50 * 1024 * 1024
 DEFAULT_HALTEPUNKTE = BASE_DIR / "data" / "wienerlinien-ogd-haltepunkte.csv"
 DEFAULT_HALTESTELLEN = BASE_DIR / "data" / "wienerlinien-ogd-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
@@ -226,10 +241,24 @@ class Haltepunkt:
 
 
 def _dict_reader(path: Path) -> Iterator[NormalizedRow]:
-    with path.open("r", encoding="utf-8-sig", newline="") as handle:
-        reader = csv.DictReader(handle, delimiter=";")
-        for row in reader:
-            yield NormalizedRow({key or "": value for key, value in row.items()})
+    # Security: see ``MAX_WL_CSV_BYTES`` for the canonical CSV size-
+    # bomb defence shape (``read_capped_text`` -> ``io.StringIO`` ->
+    # ``csv.DictReader``). FileNotFoundError is raised explicitly so
+    # downstream callers can keep their existing ``except
+    # FileNotFoundError`` branches; oversized files are silently
+    # treated as missing (read_capped_text logs a warning).
+    import io
+    if not path.exists():
+        raise FileNotFoundError(str(path))
+    content = read_capped_text(
+        path, MAX_WL_CSV_BYTES,
+        encoding="utf-8-sig", label="WL CSV", logger=log,
+    )
+    if content is None:
+        return
+    reader = csv.DictReader(io.StringIO(content), delimiter=";")
+    for row in reader:
+        yield NormalizedRow({key or "": value for key, value in row.items()})
 
 
 def load_haltestellen(path: Path) -> dict[str, Haltestelle]:
