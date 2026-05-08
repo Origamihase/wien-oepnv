@@ -239,7 +239,16 @@ def _render_diff_markdown(
 def _count_polygon_vertices(path: Path) -> int | None:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
+    except (OSError, json.JSONDecodeError, RecursionError):
+        # Security: ``RecursionError`` covers JSON depth-bomb attacks in the
+        # on-disk polygon file (corrupted previous run, planted by a
+        # compromised CI runner). The orchestrator calls this at heartbeat-
+        # build time *after* the merged stations.json has already been
+        # atomically written, so an unhandled ``RecursionError`` would crash
+        # ``_build_heartbeat`` → ``main()`` and leave partial state with no
+        # heartbeat record. Returning ``None`` is the canonical fallback —
+        # the heartbeat records the polygon counter as unavailable and the
+        # cron job continues cleanly.
         return None
     features = data.get("features") if isinstance(data, dict) else None
     if not isinstance(features, list):
