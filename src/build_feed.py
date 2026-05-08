@@ -97,6 +97,14 @@ _INCOMPLETE_TITLE_TAIL_RE = re.compile(
     re.IGNORECASE,
 )
 
+# WL Störung items must carry a line prefix (``U6:``, ``41E:``,
+# ``9/40/41/42:``); without it the user can't tell which line is
+# affected and the meldung is useless. Real cache items
+# ``Verkehrsunfall Betrieb ab Nordbrücke`` and ``Fahrtbehinderung
+# wegen Verkehrsunfall`` carry ``_identity='wl|störung|L=|D=...'``
+# (empty line set) and a title without a leading line marker.
+_WL_LINE_PREFIX_RE = re.compile(r"^[A-Za-z0-9]+(?:/[A-Za-z0-9]+)*\s*:\s+\S")
+
 
 def _post_filter_wl(items: list[Any]) -> list[Any]:
     """Defence-in-depth: normalise / drop bad WL items loaded from cache.
@@ -108,6 +116,12 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
     2. WL itself sometimes serves data that's truncated mid-sentence —
        ``Ersatzbus 41E hält gegenüber`` (with no location after
        ``gegenüber``) is meaningless. Such items are dropped.
+    3. WL Störung items occasionally arrive without any
+       ``relatedLines`` AND without a line code in the title — for
+       example ``Verkehrsunfall Betrieb ab Nordbrücke``. The line
+       prefix is the key signal for transit-line attribution; without
+       it the user can't tell which line is affected, so we drop
+       these too.
     """
     out: list[Any] = []
     for item in items:
@@ -125,6 +139,12 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
             # incomplete and the user gets no useful information.
             title_body = cleaned.split(":", 1)[-1].strip() if ":" in cleaned else cleaned
             if _INCOMPLETE_TITLE_TAIL_RE.search(title_body):
+                continue
+            # Drop WL Störung items without a line prefix — WL didn't
+            # provide a line code and the user can't disambiguate the
+            # affected line from the title alone.
+            category = item.get("category")
+            if category == "Störung" and not _WL_LINE_PREFIX_RE.match(cleaned):
                 continue
         out.append(item)
     return out
