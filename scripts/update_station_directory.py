@@ -42,11 +42,21 @@ if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
 try:  # pragma: no cover - convenience for module execution
-    from src.utils.files import atomic_write, read_capped_json, read_capped_text
+    from src.utils.files import (
+        atomic_write,
+        read_capped_json,
+        read_capped_text,
+        validate_zip_archive_safe,
+    )
     from src.utils.http import fetch_content_safe, session_with_retries
     from src.utils.stations import is_in_vienna as _is_point_in_vienna
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
-    from utils.files import atomic_write, read_capped_json, read_capped_text  # type: ignore[no-redef]
+    from utils.files import (  # type: ignore[no-redef]
+        atomic_write,
+        read_capped_json,
+        read_capped_text,
+        validate_zip_archive_safe,
+    )
     from utils.http import fetch_content_safe, session_with_retries  # type: ignore[no-redef]
     from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore[no-redef]
 
@@ -1242,13 +1252,20 @@ def _coerce_bst_id(value: object | None) -> str | None:
 
 
 def extract_stations(workbook_stream: BytesIO) -> list[Station]:
-    # Prevent zip bomb DoS attacks
-    MAX_UNCOMPRESSED_SIZE = 100 * 1024 * 1024  # 100MB
+    # Security: route through the canonical ``validate_zip_archive_safe``
+    # helper so the four orthogonal axes (total size, per-entry size,
+    # entry count, filename length) are all bounded BEFORE openpyxl
+    # parses the workbook. The prior shape ``sum(info.file_size) > 100
+    # MiB`` only closed the total-size axis: a malicious ZIP with
+    # millions of empty entries (declared ``file_size=0``) trivially
+    # passed the total-sum check while inflating ``infolist()`` to
+    # millions of ZipInfo objects, OOMing the cron pipeline before any
+    # consumer sees a row. The canonical helper closes that gap and
+    # pins the auto-discoverable inventory test
+    # ``test_no_unbounded_zipfile_zipfile_in_src_or_scripts``.
     try:
         with zipfile.ZipFile(workbook_stream) as archive:
-            total_size = sum(info.file_size for info in archive.infolist())
-            if total_size > MAX_UNCOMPRESSED_SIZE:
-                raise ValueError(f"Uncompressed size exceeds threshold: {total_size} bytes")
+            validate_zip_archive_safe(archive, label="ÖBB workbook")
     except zipfile.BadZipFile as exc:
         raise ValueError("Invalid workbook file") from exc
 
