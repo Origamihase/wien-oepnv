@@ -8,6 +8,7 @@ from typing import Any
 import pytest
 
 from src.utils.stations import station_info, vor_station_ids
+from tests.conftest import assert_coords_close
 
 
 def test_vor_lookup_by_id() -> None:
@@ -16,8 +17,9 @@ def test_vor_lookup_by_id() -> None:
     assert info.name == "Wien Hauptbahnhof"
     assert info.vor_id == "490134900"
     assert info.in_vienna is True
-    assert info.latitude == pytest.approx(48.185184)
-    assert info.longitude == pytest.approx(16.376413)
+    # Spatial assertion (Haversine ≤ 150 m) — absorbs upstream
+    # coordinate re-surveys without breaking the test.
+    assert_coords_close(info.latitude, info.longitude, 48.185184, 16.376413)
 
 
 def test_vor_bst_code_prefers_directory_entry(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -146,12 +148,11 @@ def test_vor_lookup_by_alias() -> None:
         "430470800",
     )
     assert info.in_vienna is False
-    # Coordinates are sourced from the upstream VOR/ÖBB station directory
-    # and drift slightly on each refresh. Updated 2026-05-08 after the
-    # upstream re-survey shifted latitude by ~6m. Re-update if station
-    # data refresh shifts these again.
-    assert info.latitude == pytest.approx(48.1200338)
-    assert info.longitude == pytest.approx(16.5640677)
+    # Spatial assertion (Haversine ≤ 150 m) — Flughafen Wien's
+    # coordinates drift between provider re-surveys (entrance vs.
+    # platform-centre reference); drift up to 150 m is absorbed.
+    # See ``src/utils/geo.py`` for the inertia rationale.
+    assert_coords_close(info.latitude, info.longitude, 48.12056, 16.563659)
 
 
 def test_vor_alias_with_municipality_prefix() -> None:
