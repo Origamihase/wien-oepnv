@@ -1,7 +1,7 @@
 {
   "diff": {
     "added": 0,
-    "coord_shifted": 10,
+    "coord_shifted": 0,
     "removed": 0,
     "renamed": 0
   },
@@ -13,27 +13,27 @@
   },
   "sub_scripts": [
     {
-      "duration_s": 19.71,
+      "duration_s": 29.51,
       "exit_code": 0,
       "name": "update_station_directory.py"
     },
     {
-      "duration_s": 0.67,
+      "duration_s": 0.77,
       "exit_code": 0,
       "name": "update_vor_stations.py"
     },
     {
-      "duration_s": 1.57,
+      "duration_s": 2.17,
       "exit_code": 0,
       "name": "update_wl_stations.py"
     },
     {
-      "duration_s": 0.41,
+      "duration_s": 0.52,
       "exit_code": 0,
       "name": "enrich_station_aliases.py"
     }
   ],
-  "timestamp": "2026-05-08T22:13:23+00:00",
+  "timestamp": "2026-05-08T23:48:37+00:00",
   "validation": {
     "alias_issues": 0,
     "coordinate_issues": 0,
