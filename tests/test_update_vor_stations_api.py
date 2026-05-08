@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json as _json
 from dataclasses import dataclass
 from types import TracebackType
 from typing import Any
@@ -42,8 +43,23 @@ class _FakeResponse:
     status_code: int
     payload: dict[str, Any]
 
+    def __post_init__(self) -> None:
+        body = _json.dumps(self.payload).encode("utf-8")
+        self._body = body
+        self.headers: dict[str, str] = {"Content-Length": str(len(body))}
+
     def json(self) -> dict[str, Any]:
         return self.payload
+
+    def iter_content(self, chunk_size: int = 8192) -> Any:
+        for i in range(0, len(self._body), chunk_size):
+            yield self._body[i:i + chunk_size]
+
+    def close(self) -> None:
+        return None
+
+    def raise_for_status(self) -> None:
+        return None
 
 
 class _FakeSession:
@@ -67,6 +83,7 @@ class _FakeSession:
         params: dict[str, str],
         timeout: object,
         headers: dict[str, str],
+        **kwargs: object,
     ) -> _FakeResponse:
         return self.request("GET", url, params=params, timeout=timeout, headers=headers)
 
@@ -127,8 +144,27 @@ class _FakeAnyResponse:
     status_code: int
     payload: Any
 
+    def __post_init__(self) -> None:
+        # Best-effort serialise so the streamed body matches the json() shape.
+        try:
+            body = _json.dumps(self.payload).encode("utf-8")
+        except (TypeError, ValueError):
+            body = repr(self.payload).encode("utf-8")
+        self._body = body
+        self.headers: dict[str, str] = {"Content-Length": str(len(body))}
+
     def json(self) -> Any:
         return self.payload
+
+    def iter_content(self, chunk_size: int = 8192) -> Any:
+        for i in range(0, len(self._body), chunk_size):
+            yield self._body[i:i + chunk_size]
+
+    def close(self) -> None:
+        return None
+
+    def raise_for_status(self) -> None:
+        return None
 
 
 class _FakeAnySession:
@@ -144,6 +180,7 @@ class _FakeAnySession:
         params: dict[str, str],
         timeout: object,
         headers: dict[str, str],
+        **kwargs: object,
     ) -> _FakeAnyResponse:
         station_id = params["input"]
         self.calls.append((url, params))

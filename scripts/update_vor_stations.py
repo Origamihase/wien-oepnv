@@ -21,7 +21,7 @@ if str(BASE_DIR) not in sys.path:
 
 from src.providers import vor as vor_provider  # noqa: E402
 from src.utils.files import atomic_write, read_capped_json  # noqa: E402
-from src.utils.http import session_with_retries  # noqa: E402
+from src.utils.http import read_response_safe, session_with_retries  # noqa: E402
 from src.utils.stations import is_in_vienna, is_pendler  # noqa: E402
 
 # Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
@@ -32,6 +32,17 @@ from src.utils.stations import is_in_vienna, is_pendler  # noqa: E402
 # past the loader and crashes the cron pipeline. 50 MiB is ~285x the
 # production stations.json so legitimate state is never rejected.
 MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
+# Same axis as ``MAX_JSON_FILE_BYTES`` but for the network-response side.
+# A compromised VOR upstream / DNS-hijack / MITM that returns a 1 GiB
+# ``[0,0,…]`` body to ``location.name`` would otherwise buffer the
+# response into ``response.content`` and OOM the script — propagating
+# ``MemoryError`` out of the per-station loop, aborting the whole VOR
+# refresh, and (because the orchestrator runs this script via
+# ``subprocess.run(check=True)``) crashing the entire station-directory
+# cron pipeline. 10 MiB is ~200x the largest legitimate VOR
+# location.name response and matches ``src/utils/http.py``'s
+# ``MAX_PAYLOAD_SIZE``.
+MAX_VOR_API_RESPONSE_BYTES = 10 * 1024 * 1024
 
 __all__ = ["vor_provider"]
 
@@ -586,11 +597,22 @@ def fetch_vor_stops_from_api(
         for station_id in ids:
             params = {"format": "json", "input": station_id, "type": "stop", "maxNo": 8}
             try:
+                # Security: stream the body and cap the byte budget
+                # BEFORE buffering. A compromised VOR upstream that
+                # returns a 1 GiB ``[0,0,…]`` body would otherwise OOM
+                # the script via ``MemoryError`` (a ``BaseException``
+                # subclass that escapes the surrounding
+                # ``except (ValueError, RecursionError)`` handler). The
+                # cap-fire surfaces as ``ValueError`` which IS caught
+                # below, so the per-station loop continues with the
+                # fallback. Mirrors the canonical pattern from
+                # ``src/places/client.py:423``.
                 response = session.get(
                     f"{vor_provider.VOR_BASE_URL}location.name",
                     params=params,
                     timeout=vor_provider.HTTP_TIMEOUT,
                     headers={"Accept": "application/json"},
+                    stream=True,
                 )
             except requests.RequestException as exc:
                 # Security: ``VorAuth`` injects the VAO ``accessId`` query
@@ -624,15 +646,28 @@ def fetch_vor_stops_from_api(
                 continue
 
             try:
-                payload = response.json()
+                # Security: ``read_response_safe`` enforces the byte cap
+                # (Content-Length pre-check + streaming tally on
+                # iter_content) and surfaces oversized payloads as
+                # ``ValueError`` — caught alongside ``RecursionError``
+                # below.
+                content = read_response_safe(
+                    response,
+                    max_bytes=MAX_VOR_API_RESPONSE_BYTES,
+                    timeout=vor_provider.HTTP_TIMEOUT,
+                )
+                payload = json.loads(content.decode("utf-8"))
             except (ValueError, RecursionError):
                 # Resilience: ``RecursionError`` covers JSON depth-bomb attacks
                 # served by a compromised upstream / DNS-hijack / MITM.
                 # ``response.json()`` calls ``json.loads`` internally, which
                 # raises ``RecursionError`` (NOT a subclass of ``ValueError``)
-                # on a deeply-nested document. Without this catch one bad
-                # upstream payload would propagate out of the per-station
-                # loop and abort the entire batch refresh.
+                # on a deeply-nested document. ``ValueError`` covers the
+                # invalid-JSON branch AND the wide-but-flat size-bomb
+                # branch (read_response_safe raises ValueError when the
+                # cap fires). Without these catches one bad upstream
+                # payload would propagate out of the per-station loop
+                # and abort the entire batch refresh.
                 log.warning("VOR API returned invalid JSON for station %s", station_id)
                 stop = fallback_map.get(station_id)
                 if stop:
