@@ -176,6 +176,52 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])eyJ[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{20,}(?![A-Za-z0-9])"),
         "JSON Web Token (JWT) gefunden",
     ),
+    # Twilio Account SID (``AC<32 hex>``) and API Key SID (``SK<32 hex>``).
+    # Twilio uses 34-char SIDs prefixed with a 2-letter resource-type code
+    # followed by 32 lowercase hex chars; the Account SID is the principal
+    # credential for the project and pairs with the Auth Token to make API
+    # calls (call/SMS history, billing, phone-number provisioning), while
+    # the API Key SID pairs with a separate secret for fine-grained scoped
+    # access. Without a specific pattern these tokens fall back to the
+    # generic high-entropy detector which would flag the 32-hex body as a
+    # bare hash-like string, losing the issuer attribution that incident
+    # response keys off (Twilio's revocation flow lives on twilio.com and
+    # is distinct from any other vendor's). NOTE: lowercase ``sk_*``
+    # (Stripe) does NOT collide — Stripe's prefix is ``sk_live_`` /
+    # ``sk_test_`` (lowercase + underscore), Twilio's is uppercase ``SK``
+    # immediately followed by hex, so the patterns are mutually exclusive.
+    (re.compile(r"(?<![A-Za-z0-9])AC[a-f0-9]{32}(?![A-Za-z0-9])"), "Twilio Account SID gefunden"),
+    (re.compile(r"(?<![A-Za-z0-9])SK[a-f0-9]{32}(?![A-Za-z0-9])"), "Twilio API Key SID gefunden"),
+    # Notion Internal Integration Token (``secret_<43 alphanumeric>``).
+    # Notion API tokens are issued via developer integrations at
+    # https://www.notion.so/my-integrations and grant read/write access to
+    # whatever workspace content the integration is shared with — full
+    # database/page contents, including any private collaborator notes.
+    # The ``secret_`` prefix is Notion's canonical issuer tag, but the
+    # underscore separates the prefix from the 43-char alphanumeric body,
+    # so the entropy fallback's ``[A-Za-z0-9+/=_-]`` alphabet WOULD match
+    # the full token as a single span — but only flag it as a generic
+    # high-entropy hit, losing the Notion-specific issuer attribution that
+    # downstream revocation playbooks need. The body length is exactly
+    # 43 alphanumeric chars (no underscores or hyphens) — strict body
+    # match avoids colliding with operator-set ``SECRET_KEY = "..."``
+    # variable assignments captured by the broader ``_SENSITIVE_ASSIGN_RE``.
+    (
+        re.compile(r"(?<![A-Za-z0-9])secret_[A-Za-z0-9]{43}(?![A-Za-z0-9])"),
+        "Notion Integration Token gefunden",
+    ),
+    # Notion Modern Integration Token (``ntn_<43+ chars>``). The newer
+    # token format Notion introduced for the v2024-09-API rollout. Same
+    # blast radius as the legacy ``secret_`` form (workspace read/write
+    # against the integration's shared content), so distinct attribution
+    # matters for revocation. ``ntn_`` is unambiguous (no other major
+    # issuer uses this prefix), and the 43+ alphanumeric/underscore/hyphen
+    # body distinguishes the modern format from the strict-43-alphanumeric
+    # legacy ``secret_`` body above.
+    (
+        re.compile(r"(?<![A-Za-z0-9])ntn_[A-Za-z0-9_\-]{43,}(?![A-Za-z0-9])"),
+        "Notion Modern Integration Token gefunden",
+    ),
 ]
 
 
