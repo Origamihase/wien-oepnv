@@ -213,6 +213,151 @@ def test_secret_scanner_detects_gitlab_pipeline_trigger_token(tmp_path: Path) ->
 
 
 # ---------------------------------------------------------------------------
+# Twilio Account SID and API Key SID
+# ---------------------------------------------------------------------------
+#
+# Twilio's documented SID format is a 2-letter resource-type prefix followed
+# by 32 lowercase hex chars (https://www.twilio.com/docs/glossary/what-is-a-sid).
+# The Account SID (``AC...``) is the principal credential — it pairs with the
+# Auth Token to authenticate every API call (call/SMS history, billing,
+# phone-number provisioning) — and a leak grants the entire blast radius of
+# the project. The API Key SID (``SK...``) pairs with a separate secret for
+# fine-grained scoped access (still substantial: scoped API keys can issue
+# calls/SMSes, charging the account). Both formats bypass the generic
+# high-entropy fallback's issuer attribution: the 32-hex body is matched as
+# a generic high-entropy hit, but the issuer-specific reason is lost — so
+# incident-response triage cannot tell from the scanner output whether to
+# rotate at twilio.com vs. at any other vendor.
+
+
+def test_secret_scanner_detects_twilio_account_sid(tmp_path: Path) -> None:
+    """Twilio Account SID format: ``AC<32 lowercase hex chars>``."""
+    file_path = tmp_path / "twilio_config.py"
+    # Realistic-looking Twilio Account SID (synthetic, all hex zeros are
+    # not a real SID but match the format).
+    secret = "AC" + "0123456789abcdef" * 2  # 32 hex chars total
+    file_path.write_text(f'TWILIO_ACCOUNT_SID = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, "Should detect Twilio Account SID"
+    reasons = [f.reason for f in findings]
+    assert "Twilio Account SID gefunden" in reasons, (
+        f"Expected Twilio-specific attribution, got reasons: {reasons}. "
+        "Twilio Account SIDs pair with the Auth Token to authenticate every "
+        "API call; precise attribution speeds revocation via twilio.com."
+    )
+    # Ensure raw secret never appears in findings (redaction)
+    assert secret not in [f.match for f in findings]
+
+
+def test_secret_scanner_detects_twilio_api_key_sid(tmp_path: Path) -> None:
+    """Twilio API Key SID format: ``SK<32 lowercase hex chars>``.
+
+    Distinct from Stripe ``sk_live_`` / ``sk_test_`` (lowercase + underscore).
+    The case + separator difference makes the two patterns mutually exclusive,
+    but a regression that drops the case-sensitivity guard would silently
+    re-attribute Twilio leaks to Stripe and vice versa.
+    """
+    file_path = tmp_path / "twilio_api_key.py"
+    secret = "SK" + "fedcba9876543210" * 2  # 32 hex chars total
+    file_path.write_text(f'TWILIO_API_KEY_SID = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    reasons = [f.reason for f in findings]
+    assert "Twilio API Key SID gefunden" in reasons, (
+        f"Expected Twilio-specific attribution, got reasons: {reasons}."
+    )
+    assert secret not in [f.match for f in findings]
+
+
+def test_secret_scanner_does_not_confuse_twilio_with_stripe(tmp_path: Path) -> None:
+    """Negative case: lowercase ``sk_live_`` (Stripe) must NOT be flagged
+    as a Twilio API Key SID, and uppercase ``SK<hex>`` (Twilio) must NOT
+    be flagged as a Stripe key. The case + underscore difference between
+    the two patterns is the only thing keeping them apart.
+    """
+    file_path = tmp_path / "stripe_config.py"
+    stripe_secret = "sk_live_" + "0123456789abcdEFghIJklmn"  # 24 chars
+    file_path.write_text(f'STRIPE_KEY = "{stripe_secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+    reasons = [f.reason for f in findings]
+    assert "Twilio API Key SID gefunden" not in reasons, (
+        "Stripe lowercase ``sk_live_`` must not be misattributed as a "
+        "Twilio API Key SID. The patterns differ by case and separator."
+    )
+    # Stripe pattern should still flag this as Stripe.
+    assert "Stripe Live Secret Key gefunden" in reasons
+
+
+# ---------------------------------------------------------------------------
+# Notion Integration Tokens (legacy ``secret_`` and modern ``ntn_``)
+# ---------------------------------------------------------------------------
+#
+# Notion API tokens are issued via developer integrations and grant
+# read/write access to whatever workspace content the integration is shared
+# with (full database/page contents, including any private collaborator
+# notes). The legacy ``secret_<43 alphanumeric>`` format and the modern
+# ``ntn_<43+ chars>`` format have the same blast radius; distinct
+# attribution matters because revocation happens at notion.so and the
+# rotation playbook differs per format.
+
+
+def test_secret_scanner_detects_notion_legacy_token(tmp_path: Path) -> None:
+    """Notion legacy Internal Integration Token: ``secret_<43 alphanumeric>``."""
+    file_path = tmp_path / "notion_integration.py"
+    # Realistic-looking Notion legacy token: secret_ + 43 alphanumeric chars
+    secret = "secret_" + "AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCdEfG"
+    file_path.write_text(f'NOTION_TOKEN = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    reasons = [f.reason for f in findings]
+    assert "Notion Integration Token gefunden" in reasons, (
+        f"Expected Notion-specific attribution, got reasons: {reasons}. "
+        "Notion legacy ``secret_`` tokens grant workspace read/write access; "
+        "precise attribution speeds revocation via notion.so/my-integrations."
+    )
+    assert secret not in [f.match for f in findings]
+
+
+def test_secret_scanner_detects_notion_modern_token(tmp_path: Path) -> None:
+    """Notion modern Integration Token: ``ntn_<43+ chars>`` (post-2024 format).
+
+    Same blast radius as the legacy ``secret_`` form; rolled out alongside
+    the v2024-09 API. Distinct prefix ensures unambiguous attribution.
+    """
+    file_path = tmp_path / "notion_modern.py"
+    # Realistic-looking Notion modern token: ntn_ + 43+ chars
+    secret = "ntn_" + "X1Y2Z3a4B5c6D7e8F9g0H1i2J3k4L5m6N7o8P9q0R1s"
+    file_path.write_text(f'NOTION_TOKEN = "{secret}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    reasons = [f.reason for f in findings]
+    assert "Notion Modern Integration Token gefunden" in reasons, (
+        f"Expected Notion modern-format attribution, got reasons: {reasons}."
+    )
+    assert secret not in [f.match for f in findings]
+
+
+def test_secret_scanner_does_not_flag_short_secret_prefix(tmp_path: Path) -> None:
+    """Negative case: short ``secret_<short>`` strings (e.g. test fixtures
+    or operator-named env keys) MUST NOT match the Notion pattern. The
+    strict 43-char body length guard prevents this collision."""
+    file_path = tmp_path / "config.py"
+    # 10-char body — too short to be a Notion token.
+    not_notion = "secret_abc123def4"
+    file_path.write_text(f'value = "{not_notion}"', encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+    reasons = [f.reason for f in findings]
+    assert "Notion Integration Token gefunden" not in reasons
+
+
+# ---------------------------------------------------------------------------
 # Static-check: each new pattern must remain in _KNOWN_TOKENS
 # ---------------------------------------------------------------------------
 
@@ -235,6 +380,11 @@ def test_known_tokens_carry_post_fix_taxonomy() -> None:
         "DigitalOcean Personal Access Token gefunden",
         "DigitalOcean OAuth Refresh Token gefunden",
         "GitLab Pipeline Trigger Token gefunden",
+        # 2026-05-08 round 3 additions:
+        "Twilio Account SID gefunden",
+        "Twilio API Key SID gefunden",
+        "Notion Integration Token gefunden",
+        "Notion Modern Integration Token gefunden",
     ]
     for reason in expected_reasons:
         assert reason in source, (
