@@ -329,7 +329,7 @@ def test_run_update_persists_active_event_when_threshold_exceeded(
     now = datetime(2026, 5, 8, 12, 0, tzinfo=VIENNA)
     exit_code = updater.run_update(
         cache_path=cache_path,
-        url="https://realtime.oebb.at/gtfs-rt/tripUpdates",
+        url="https://gtfs.oebb.at/gtfs-rt/tripUpdates",
         now=now,
     )
     assert exit_code == 0
@@ -363,14 +363,14 @@ def test_run_update_preserves_first_seen_across_consecutive_runs(
 
     assert updater.run_update(
         cache_path=cache_path,
-        url="https://realtime.oebb.at/gtfs-rt/tripUpdates",
+        url="https://gtfs.oebb.at/gtfs-rt/tripUpdates",
         now=first_run,
     ) == 0
     first_doc = json.loads(cache_path.read_text(encoding="utf-8"))
 
     assert updater.run_update(
         cache_path=cache_path,
-        url="https://realtime.oebb.at/gtfs-rt/tripUpdates",
+        url="https://gtfs.oebb.at/gtfs-rt/tripUpdates",
         now=second_run,
     ) == 0
     second_doc = json.loads(cache_path.read_text(encoding="utf-8"))
@@ -398,14 +398,14 @@ def test_run_update_clears_events_when_recovered(
     cache_path = tmp_path / "cache.json"
     assert updater.run_update(
         cache_path=cache_path,
-        url="https://realtime.oebb.at/gtfs-rt/tripUpdates",
+        url="https://gtfs.oebb.at/gtfs-rt/tripUpdates",
         now=datetime(2026, 5, 8, 8, 0, tzinfo=VIENNA),
     ) == 0
     assert json.loads(cache_path.read_text(encoding="utf-8"))["events"]
 
     assert updater.run_update(
         cache_path=cache_path,
-        url="https://realtime.oebb.at/gtfs-rt/tripUpdates",
+        url="https://gtfs.oebb.at/gtfs-rt/tripUpdates",
         now=datetime(2026, 5, 8, 9, 0, tzinfo=VIENNA),
     ) == 0
     document = json.loads(cache_path.read_text(encoding="utf-8"))
