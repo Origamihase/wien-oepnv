@@ -57,6 +57,7 @@ from .utils.cache import (
 from .utils.files import atomic_write
 from .utils.http import validate_http_url
 from .utils.locking import file_lock
+from .utils.logging import sanitize_log_arg
 from .utils.text import html_to_text, truncate_html
 
 
@@ -339,12 +340,16 @@ def _read_optional_non_negative_int(env_name: str) -> int | None:
     try:
         value = int(stripped)
     except (TypeError, ValueError) as exc:
+        # Security (Clear-Text-Logging Drift, src/utils/* round): the bound
+        # ``exc`` text is rendered raw via ``%s`` — sanitise to defeat a
+        # hostile env-injected value flowing through ``int()``'s error
+        # message into the structured log line.
         log.warning(
             "Ungültiger Wert für %s=%r – ignoriere Override (%s: %s)",
             env_name,
             raw,
             type(exc).__name__,
-            exc,
+            sanitize_log_arg(str(exc)),
         )
         return None
     if value < 0:
@@ -584,7 +589,15 @@ def _parse_datetime(value: Any) -> datetime | None:
                 parsed = parsed.replace(tzinfo=_VIENNA_TZ)
             return cast('datetime | None', parsed)
         except (ValueError, parser.ParserError) as exc:
-            log.debug("Datetime-Parsing fehlgeschlagen für %r (%s)", value, exc)
+            # Security (Clear-Text-Logging Drift): ``parser.ParserError``
+            # embeds the original input string in its message —
+            # upstream-controlled bytes flow into the log line via
+            # ``str(exc)``.  ``%r`` already escapes ``value`` itself.
+            log.debug(
+                "Datetime-Parsing fehlgeschlagen für %r (%s)",
+                value,
+                sanitize_log_arg(str(exc)),
+            )
 
     return None
 
@@ -680,7 +693,13 @@ def _load_state() -> dict[str, dict[str, Any]]:
     except (FileNotFoundError, json.JSONDecodeError):
         return {}
     except Exception as e:
-        log.warning("State laden fehlgeschlagen (%s) – starte leer.", e)
+        # Security (Clear-Text-Logging Drift): broad ``Exception`` catch
+        # may surface third-party / custom-subclass exceptions whose
+        # ``__str__`` carries control bytes.  Sanitise.
+        log.warning(
+            "State laden fehlgeschlagen (%s) – starte leer.",
+            sanitize_log_arg(str(e)),
+        )
         return {}
 
     retention_cutoff: datetime | None = None
@@ -748,9 +767,11 @@ def _read_state_capped(path: Path) -> dict[str, dict[str, Any]]:
     except FileNotFoundError:
         return {}
     except Exception as exc:
+        # Security (Clear-Text-Logging Drift): broad ``Exception`` catch
+        # — sanitise the bound name before WARNING-level emission.
         log.warning(
             "State-Merge fehlgeschlagen (Lesefehler: %s) – überschreibe State.",
-            exc,
+            sanitize_log_arg(str(exc)),
         )
         return {}
 
@@ -793,11 +814,14 @@ def _save_state(state: dict[str, dict[str, Any]], deletions: set[str] | None = N
         # *overwriting* a parallel writer's update would corrupt the
         # cross-run dedup invariant for *every* item they tracked. The
         # next successful run reconciles via the merge step above.
+        # Security (Clear-Text-Logging Drift): the bound exception (an
+        # OSError or TimeoutError from the lock helper) may surface a
+        # custom ``__str__`` carrying control bytes — sanitise.
         log.warning(
             "State-Datei %s konnte nicht gesperrt werden (%s) – "
             "Update wird übersprungen, nächster Lauf merged frisch.",
             path,
-            exc,
+            sanitize_log_arg(str(exc)),
         )
 
 
@@ -1123,13 +1147,29 @@ def _drain_completed_futures(
             try:
                 result = future.result()
             except (TimeoutError, requests.exceptions.Timeout) as exc:
-                log.error("%s fetch Timeout: %s", name, exc)
-                report.provider_error(provider_name, f"Timeout: {exc}")
+                # Security (Clear-Text-Logging Drift): the timeout
+                # exception text may include the upstream URL (sanitised
+                # by ``request_safe`` already) but a non-request_safe
+                # path (e.g. fetch() composing its own timeout) could
+                # still surface raw upstream bytes — sanitise.
+                sanitised = sanitize_log_arg(str(exc))
+                log.error("%s fetch Timeout: %s", name, sanitised)
+                report.provider_error(provider_name, f"Timeout: {sanitised}")
             except CancelledError:
                 report.provider_error(provider_name, "Fetch abgebrochen")
             except Exception as exc:
-                log.exception("%s fetch fehlgeschlagen: %s", name, exc)
-                report.provider_error(provider_name, f"Fetch fehlgeschlagen: {exc}")
+                # Security (Clear-Text-Logging Drift): broad ``Exception``
+                # — sanitise both log emission and the operator-facing
+                # report-error surface.  ``log.exception`` interpolates
+                # the bound exc via ``%s`` for the *message string*; the
+                # traceback itself is rendered by the logging framework
+                # via formatException (a repr-escaping path) and is
+                # therefore safe.
+                sanitised = sanitize_log_arg(str(exc))
+                log.exception("%s fetch fehlgeschlagen: %s", name, sanitised)
+                report.provider_error(
+                    provider_name, f"Fetch fehlgeschlagen: {sanitised}"
+                )
             else:
                 merge_result(fetch, result, provider_name)
 
@@ -2131,7 +2171,9 @@ def lint() -> int:
         )
         return exit_code
     except Exception as exc:  # pragma: no cover - defensive
-        log.exception("Feed-Lint fehlgeschlagen: %s", exc)
+        # Security (Clear-Text-Logging Drift): broad framework catch-all
+        # — sanitise the bound exception name in the message string.
+        log.exception("Feed-Lint fehlgeschlagen: %s", sanitize_log_arg(str(exc)))
         report.record_exception(exc)
         report.finish(build_successful=False)
         return 2
@@ -2178,18 +2220,20 @@ def main() -> int:
                 report, active_metrics, output_path=health_path
             )
         except Exception as exc:  # pragma: no cover - defensive
+            # Security (Clear-Text-Logging Drift): defensive framework catch.
             log.warning(
                 "Feed-Health-Markdown konnte nicht geschrieben werden: %s",
-                exc,
+                sanitize_log_arg(str(exc)),
             )
         try:
             write_feed_health_json(
                 report, active_metrics, output_path=health_json_path
             )
         except Exception as exc:  # pragma: no cover - defensive
+            # Security (Clear-Text-Logging Drift): defensive framework catch.
             log.warning(
                 "Feed-Health-JSON konnte nicht geschrieben werden: %s",
-                exc,
+                sanitize_log_arg(str(exc)),
             )
 
     try:
@@ -2286,9 +2330,10 @@ def main() -> int:
         try:
             _save_state(state, deletions=dropped_ids)
         except Exception as e:
+            # Security (Clear-Text-Logging Drift): broad framework catch.
             log.warning(
                 "State speichern fehlgeschlagen (%s) – Feed wurde geschrieben, State bleibt veraltet.",
-                e,
+                sanitize_log_arg(str(e)),
             )
 
         total_duration = perf_counter() - job_start
@@ -2316,7 +2361,8 @@ def main() -> int:
         report.log_results()
         return 0
     except Exception as exc:  # pragma: no cover - defensive
-        log.exception("Feed-Bau fehlgeschlagen: %s", exc)
+        # Security (Clear-Text-Logging Drift): outer-most pipeline catch.
+        log.exception("Feed-Bau fehlgeschlagen: %s", sanitize_log_arg(str(exc)))
         report.record_exception(exc)
         if health_metrics is None:
             # Simplified fallback using pre-initialized counters (Task 3A).
