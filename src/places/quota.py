@@ -18,6 +18,21 @@ LOGGER = logging.getLogger("places.quota")
 
 _KIND_KEYS = ("nearby", "text", "details")
 
+# Security: defense-in-depth byte-size cap on the on-disk quota state
+# file. The file is a small JSON object (5-10 fields, <1 KiB in
+# practice). The depth-bomb defence catches a deeply-nested attack via
+# ``RecursionError``, but a wide-but-flat attack such as an artificially-
+# inflated ``counts`` map with millions of keys would slip past the
+# depth check and exhaust memory in ``json.loads`` /
+# ``path.read_text`` — both buffer the whole file before parsing, so
+# the loader allocates O(file_size) before any per-key validation runs.
+# 1 MiB is ~1000x the largest legitimate quota state observed in
+# production and bounds the worst-case parse cost well below any cron
+# runner's ulimit. Threat model mirrors ``MAX_CACHE_FILE_BYTES`` in
+# ``src/utils/cache.py``: compromised CI runner / corrupted previous
+# write / partial flush + power loss.
+MAX_QUOTA_FILE_BYTES = 1024 * 1024
+
 
 def _utc_now() -> datetime:
     return datetime.now(UTC)
@@ -95,6 +110,19 @@ class MonthlyQuota:
         # ``except Exception``, but a future caller without that broad
         # catch would crash. Same canonical defence as the network-sourced
         # parsers in ``src/places/client.py``.
+        # Security: byte-size cap (see MAX_QUOTA_FILE_BYTES) defeats the
+        # wide-but-flat size-bomb attack that the depth-bomb catch above
+        # does NOT cover (json.loads does not raise RecursionError on a
+        # flat-but-huge document; MemoryError is a BaseException that
+        # propagates past the json.JSONDecodeError handler).
+        try:
+            file_size = path.stat().st_size
+        except OSError as exc:
+            raise ValueError("Quota state is not readable") from exc
+        if file_size > MAX_QUOTA_FILE_BYTES:
+            raise ValueError(
+                f"Quota state file too large (> {MAX_QUOTA_FILE_BYTES} bytes)"
+            )
         try:
             raw = json.loads(path.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, RecursionError) as exc:
