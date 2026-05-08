@@ -11,6 +11,8 @@ from contextlib import contextmanager
 from typing import Any
 from collections.abc import Iterator, MutableMapping
 
+from .logging import sanitize_log_arg
+
 try:  # pragma: no cover - platform dependent
     import fcntl
 except ModuleNotFoundError:  # pragma: no cover
@@ -187,7 +189,18 @@ def file_lock(fileobj: Any, *, exclusive: bool, timeout: float = 15.0) -> Iterat
                 thread_lock = None
                 raise
     except Exception as exc:
-        log.warning("Could not acquire thread lock for file %s: %s", getattr(fileobj, "name", "unknown"), exc)
+        # Security (Clear-Text-Logging Drift, src/utils/* round): both the
+        # file-object's ``.name`` (a path that the OS permits to carry
+        # control bytes — Linux filesystems accept ``\\x1b``, ``\\n``,
+        # ``\\r``, BiDi overrides, etc.) and the bound exception text
+        # flow into operator-facing logs.  Sanitise both so a planted
+        # lock-file path / hostile ``__str__`` cannot smuggle ANSI / BiDi
+        # / log-forging payloads.
+        log.warning(
+            "Could not acquire thread lock for file %s: %s",
+            sanitize_log_arg(str(getattr(fileobj, "name", "unknown"))),
+            sanitize_log_arg(str(exc)),
+        )
 
     # Step 2: OS-level locking
     locked = False
@@ -201,13 +214,20 @@ def file_lock(fileobj: Any, *, exclusive: bool, timeout: float = 15.0) -> Iterat
                 # binary (held vs. not), so silently degrading would
                 # invalidate every cross-process invariant the caller is
                 # protecting.
+                # Security (Clear-Text-Logging Drift): same threat model
+                # as the thread-lock branch above — sanitise the path
+                # AND the bound exception so neither can carry control
+                # bytes into operator logs.
                 log.warning(
                     "Exclusive file-lock acquisition failed on %s; aborting critical section: %s",
-                    getattr(fileobj, "name", "unknown"),
-                    exc,
+                    sanitize_log_arg(str(getattr(fileobj, "name", "unknown"))),
+                    sanitize_log_arg(str(exc)),
                 )
                 raise
-            log.debug("Dateisperre fehlgeschlagen (%s) – fahre ohne Lock fort.", exc)
+            log.debug(
+                "Dateisperre fehlgeschlagen (%s) – fahre ohne Lock fort.",
+                sanitize_log_arg(str(exc)),
+            )
         try:
             yield
         finally:
@@ -215,7 +235,11 @@ def file_lock(fileobj: Any, *, exclusive: bool, timeout: float = 15.0) -> Iterat
                 try:
                     _release_file_lock(fileobj)
                 except Exception as exc:  # pragma: no cover - release failures are rare
-                    log.debug("Dateisperre konnte nicht gelöst werden: %s", exc)
+                    # Security (Clear-Text-Logging Drift): see acquire branch above.
+                    log.debug(
+                        "Dateisperre konnte nicht gelöst werden: %s",
+                        sanitize_log_arg(str(exc)),
+                    )
     finally:
         if thread_lock_held and thread_lock is not None:
             try:

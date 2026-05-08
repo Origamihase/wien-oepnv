@@ -33,7 +33,7 @@ from urllib3.connectionpool import HTTPSConnectionPool, HTTPConnectionPool
 from urllib3.poolmanager import PoolManager
 from urllib3.util.retry import Retry
 
-from .logging import sanitize_log_message
+from .logging import sanitize_log_arg, sanitize_log_message
 
 _RETRY_AFTER_NUMERIC_RE = re.compile(r"\d+(?:\.\d+)?")
 
@@ -117,11 +117,25 @@ def _cleanup_evicted_sessions_thread() -> None:
             try:
                 session.close()
             except Exception as exc:
-                log.debug("Error closing evicted session: %s", exc)
+                # Security (Clear-Text-Logging Drift, src/utils/* round):
+                # ``requests.Session.close()`` can surface adapter errors
+                # whose ``__str__`` carries upstream-supplied bytes (e.g.
+                # connection-pool errors echoing the URL).  Sanitise the
+                # bound exception so the daemon-thread DEBUG log cannot
+                # carry control / ANSI / BiDi payloads.
+                log.debug(
+                    "Error closing evicted session: %s", sanitize_log_arg(str(exc))
+                )
 
             _EVICTED_SESSIONS_QUEUE.task_done()
         except Exception as exc:
-            log.debug("Error in _cleanup_evicted_sessions_thread: %s", exc)
+            # Security (Clear-Text-Logging Drift): defensive catch-all on
+            # the daemon-thread queue handler — sanitise the bound
+            # exception text for the same reasons as the close path above.
+            log.debug(
+                "Error in _cleanup_evicted_sessions_thread: %s",
+                sanitize_log_arg(str(exc)),
+            )
 
 _cleanup_thread = threading.Thread(target=_cleanup_evicted_sessions_thread, daemon=True)
 _cleanup_thread.start()
@@ -1265,7 +1279,12 @@ def verify_response_ip(response: requests.Response) -> None:
             if cls and getattr(cls, "__name__", "") == "MockConnection":
                 return
     except Exception as exc:
-        log.debug("Validation of mock connection skipped: %s", exc)
+        # Security (Clear-Text-Logging Drift): mock-skip diagnostic — the
+        # underlying adapter's exception text could carry control bytes
+        # via a hostile ``__str__``; sanitise once at the boundary.
+        log.debug(
+            "Validation of mock connection skipped: %s", sanitize_log_arg(str(exc))
+        )
 
     # Proxy Compatibility (Task C): Bypass check if explicit proxy env vars are set
     if any(k in os.environ for k in ("HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "http_proxy", "https_proxy", "all_proxy")):
@@ -1319,8 +1338,18 @@ def verify_response_ip(response: requests.Response) -> None:
         raw_url = getattr(response, "url", "unknown_url")
         url = _sanitize_url_for_error(raw_url)
 
+        # Security (Clear-Text-Logging Drift, src/utils/* round): the
+        # bound ``exc`` here is caught from the broad
+        # ``(AttributeError, OSError, ValueError)`` tuple so a custom
+        # adapter's exception (third-party HTTPS adapter / mocks /
+        # downstream socket layer) can carry arbitrary text.  Route it
+        # through ``sanitize_log_arg`` before WARNING-level emission so
+        # operator-facing logs cannot be log-forged via a crafted
+        # exception string.
         log.warning(
-            "Security: Could not verify peer IP for %s (Fail Closed): %s", url, exc
+            "Security: Could not verify peer IP for %s (Fail Closed): %s",
+            url,
+            sanitize_log_arg(str(exc)),
         )
         raise ValueError(
             f"Security: Could not verify peer IP for {url} (DNS Rebinding protection)"
@@ -2045,7 +2074,14 @@ def cleanup_http_sessions() -> None:
             try:
                 session.close()
             except Exception as exc:
-                log.debug("Error closing HTTP session during cleanup: %s", exc)
+                # Security (Clear-Text-Logging Drift): atexit-time
+                # cleanup — sanitise the bound exception so a hostile
+                # ``__str__`` cannot poison the final log line emitted
+                # before process shutdown.
+                log.debug(
+                    "Error closing HTTP session during cleanup: %s",
+                    sanitize_log_arg(str(exc)),
+                )
         _HTTP_SESSION_CACHE.clear()
 
 atexit.register(cleanup_http_sessions)

@@ -14,6 +14,7 @@ from collections.abc import Callable
 
 from .env import get_bool_env
 from .files import atomic_write, safe_path_join, sanitize_filename
+from .logging import sanitize_log_arg
 
 _CACHE_DIR = Path("cache")
 _CACHE_FILENAME = "events.json"
@@ -143,11 +144,16 @@ def cache_modified_at(provider: str) -> datetime | None:
     except FileNotFoundError:
         return None
     except OSError as exc:
+        # Security (Clear-Text-Logging Drift, src/utils/* round): route the
+        # bound exception text through ``sanitize_log_arg`` so a hostile
+        # ``__str__`` (custom subclass / third-party adapter / planted
+        # filename carrying control bytes via OSError.filename) cannot
+        # smuggle ANSI / BiDi / log-forging payloads into operator logs.
         log.warning(
             "Could not read mtime for cache '%s' at %s: %s",
             provider,
             cache_file,
-            exc,
+            sanitize_log_arg(str(exc)),
         )
         return None
 
@@ -214,21 +220,28 @@ def read_cache(provider: str) -> list[Any]:
         # but well-formed payload — without this catch the unhandled error
         # propagates out of the orchestrator's main ``try`` block and
         # crashes the entire feed build.
+        # Security (Clear-Text-Logging Drift): the bound ``exc`` text is
+        # forwarded both into the WARNING log AND into the cache-alert
+        # callback chain (Slack / PagerDuty / feed-health.json renders).
+        # Sanitise once at the boundary so neither channel can carry
+        # ANSI / BiDi / log-forging payloads from a hostile ``__str__``.
+        sanitized_exc = sanitize_log_arg(str(exc))
         log.warning(
             "Cache for provider '%s' at %s contains invalid JSON: %s",
             provider,
             cache_file,
-            exc,
+            sanitized_exc,
         )
-        _emit_cache_alert(provider, f"Ungültiges JSON ({exc})")
+        _emit_cache_alert(provider, f"Ungültiges JSON ({sanitized_exc})")
     except OSError as exc:
+        sanitized_exc = sanitize_log_arg(str(exc))
         log.warning(
             "Could not read cache for provider '%s' at %s: %s",
             provider,
             cache_file,
-            exc,
+            sanitized_exc,
         )
-        _emit_cache_alert(provider, f"Leseproblem ({exc})")
+        _emit_cache_alert(provider, f"Leseproblem ({sanitized_exc})")
     else:
         if isinstance(payload, list):
             return payload
@@ -276,7 +289,13 @@ def prune_cache(max_age_hours: int = 48) -> None:
                     cache_file.unlink()
                     log.info("Evicted old cache file: %s", cache_file)
             except OSError as exc:
-                log.warning("Failed to check or delete old cache file %s: %s", cache_file, exc)
+                # Security (Clear-Text-Logging Drift): see the read_cache
+                # ``except OSError`` branch above for the full threat model.
+                log.warning(
+                    "Failed to check or delete old cache file %s: %s",
+                    cache_file,
+                    sanitize_log_arg(str(exc)),
+                )
 
         # Remove the directory if it's now empty
         try:
@@ -455,11 +474,12 @@ def read_status(provider: str) -> dict[str, Any] | None:
         # the on-disk status file. See ``read_cache`` above for the full
         # threat model — same canonical defence pattern applied here so
         # a poisoned ``last_run.json`` does not crash heartbeat reads.
+        # Security (Clear-Text-Logging Drift): see the read_cache branch.
         log.warning(
             "Could not read status for provider '%s' at %s: %s",
             provider,
             status_file,
-            exc,
+            sanitize_log_arg(str(exc)),
         )
         return None
 
