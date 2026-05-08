@@ -1,11 +1,19 @@
 ---
 title: "Google Places Stations Import"
-description: "Anleitung zum Abruf und zur Zusammenführung von Bahnhofs- und Haltestellendaten über die Google Places API in den lokalen Stationskatalog."
+description: "Anleitung zum sekundären Fallback-Abruf von Bahnhofs- und Haltestellendaten über die Google Places API in den lokalen Stationskatalog (OSM ist die primäre Quelle)."
 ---
 
 # Google Places Stations Import
 
-Dieses Dokument beschreibt, wie Bahnhofsdatensätze aus der *Google Places API (New)* in `data/stations.json` eingespielt werden.
+> ⚠️ **Status: sekundärer Fallback.** Google Places ist seit der OSM-First-Migration **nicht mehr die primäre Datenquelle** für `data/stations.json`. Die kanonische Anreicherungskette ist:
+>
+> 1. OpenStreetMap (Overpass API) befüllt alle Stationen, die ohne Koordinaten aus dem ÖBB-Verzeichnis ankommen — siehe `docs/architecture.md` §5.
+> 2. Erst danach prüft `scripts/update_station_directory.py:_stations_missing_coordinates`, welche Einträge **noch immer** keine `latitude`/`longitude` tragen.
+> 3. Nur diese strikte Teilmenge wird über `_enrich_with_google_places(..., missing_subset=…)` an die Places API weitergereicht. Wenn OSM alle Stationen abdeckt, wird der Google-Aufruf vollständig übersprungen — das Monatskontingent bleibt unangetastet.
+>
+> Stationen, deren Koordinaten OSM bereits aufgelöst hat, werden **nicht** neu verschlüsselt — selbst wenn ein Google Place denselben Namen trägt. Die Demotion ist absichtlich harsch: Open-Data-Erstanbieter (Overpass) kommt vor kommerziellem Anbieter (Google).
+
+Dieses Dokument beschreibt die *Mechanik* des Imports — den Quota-Manager, die Health-Checks und den Workflow. Wer einen reinen, vollständigen Stationskatalog mit Koordinaten benötigt, sollte zuerst den OSM-Pfad verifizieren (siehe `scripts/check_overpass_status.py`); Google Places wird nur dann ausgelöst, wenn OSM nachweislich Lücken hinterlässt.
 
 ## Voraussetzungen
 
@@ -108,3 +116,14 @@ Zusätzlich validiert ein Nearby-Preflight (`places:searchNearby`) den Request-B
 
 * Neue Setups sollten ausschließlich `GOOGLE_ACCESS_ID` pflegen.
 * Bestehende Installationen mit `GOOGLE_MAPS_API_KEY` funktionieren weiterhin, erzeugen jedoch eine Log-Warnung. Sobald `GOOGLE_ACCESS_ID` gesetzt ist, wird automatisch auf den neuen Schlüssel umgestellt.
+
+## OSM-First Fallback-Reihenfolge
+
+Im Cron-Pfad `scripts/update_station_directory.py` läuft die Anreicherung in genau dieser Reihenfolge:
+
+1. `--osm-enrich` (Default an) ruft `fetch_osm_places()` auf. Ergebnisse werden über `merge_places()` mit Distanzschwelle `MERGE_MAX_DIST_M` (150 m Default) verschmolzen. Stationen erhalten `source="osm"`.
+2. Wenn `--google-enrich` aktiv ist, ermittelt das Skript `_stations_missing_coordinates(stations)`. Nur diese Liste wird an `_enrich_with_google_places(stations, tiles_file=…, missing_subset=missing)` übergeben.
+3. Ist die Liste leer, erscheint im Log `Skipping Google Places enrichment: OSM already covered all <N> stations with coordinates` — kein Outbound-Request, kein Quota-Verbrauch.
+4. Wenn der CI-Workflow den Overpass-Smoke-Check (`scripts/check_overpass_status.py`) als fehlgeschlagen meldet, wird `WIEN_OEPNV_OSM_ENRICH=0` gesetzt; Google Places übernimmt dann die Stationen, die das ÖBB-Excel ohne Koordinaten ausliefert (klassischer Notfall-Pfad).
+
+Damit ist garantiert, dass Google Places nie als „Hauptquelle" arbeitet, sondern ausschließlich Lücken stopft, die der primäre OSM-Pfad nicht schließen konnte.

@@ -424,8 +424,8 @@ Nachnutzung zu gewährleisten.
 Die wichtigsten GitHub Actions:
 
 - `update-wl-cache.yml`, `update-oebb-cache.yml`, `update-vor-cache.yml`, `update-baustellen-cache.yml` – füllen die Provider-Caches.
-- `update-stations.yml` – pflegt monatlich `data/stations.json`.
-- `update-google-places-stations.yml` – reichert das Stationsverzeichnis optional mit Google-Places-Metadaten an.
+- `update-stations.yml` – pflegt monatlich `data/stations.json`. Die Anreicherungs-Hierarchie ist **OSM-first**: OpenStreetMap (Overpass API) liefert die primären Koordinaten, der vorgeschaltete Smoke-Test (`scripts/check_overpass_status.py`) bricht den OSM-Schritt aber kontrolliert ab, falls der Mirror down ist (siehe `docs/architecture.md` §5).
+- `update-google-places-stations.yml` – **sekundärer Fallback**: ergänzt nur Stationen, die nach dem OSM-Lauf noch keine Koordinaten haben. Details und Quota-Verhalten in [`docs/how-to/google_places_stations.md`](docs/how-to/google_places_stations.md).
 - `build-feed.yml` – erzeugt `docs/feed.xml` auf Basis der aktuellen Caches.
 - `test.yml` & `test-vor-api.yml` – führen die vollständige Test-Suite bzw. VOR-spezifische Integrationstests aus; `test.yml` läuft bei jedem Push sowie Pull Request und stellt die kontinuierliche Testabdeckung sicher.
 - `mypy-strict.yml`, `bandit.yml`, `codeql.yml`, `seo-guard.yml` – ergänzende Qualitäts-Gates (strikte Typprüfung, Security-Lint, CodeQL-Scan, SEO/Sitemap-Pflege).
