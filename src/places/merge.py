@@ -10,6 +10,7 @@ from typing import TypedDict, cast
 from collections.abc import Iterable, MutableMapping, Sequence
 
 from ..utils.files import atomic_write
+from ..utils.stations import MAX_STATIONS_FILE_BYTES
 
 from .client import Place
 from .normalize import haversine_m, normalize_name
@@ -67,6 +68,21 @@ class MergeOutcome:
 def load_stations(path: Path) -> list[StationEntry]:
     if not path.exists():
         return []
+    # Security: byte-size cap (see MAX_STATIONS_FILE_BYTES) defeats the
+    # wide-but-flat size-bomb attack that the depth-bomb catch below does
+    # NOT cover. ``path.read_text`` buffers the entire file before parsing,
+    # so a 1 GiB stations file would allocate >1 GiB before ``json.loads``
+    # ever runs. ``MemoryError`` is a ``BaseException`` that propagates
+    # past the ``except (json.JSONDecodeError, RecursionError)`` handler.
+    # Stat BEFORE reading so the cap fires before allocation.
+    try:
+        file_size = path.stat().st_size
+    except OSError as exc:
+        raise ValueError("stations file is not readable") from exc
+    if file_size > MAX_STATIONS_FILE_BYTES:
+        raise ValueError(
+            f"stations file too large (> {MAX_STATIONS_FILE_BYTES} bytes)"
+        )
     content = path.read_text(encoding="utf-8")
     # Security: ``RecursionError`` covers JSON depth-bomb attacks in an
     # operator-supplied stations file. ``json.loads`` raises

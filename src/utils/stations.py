@@ -64,6 +64,28 @@ class StationInfo(NamedTuple):
 _STATIONS_PATH = Path(__file__).resolve().parents[2] / "data" / "stations.json"
 _VIENNA_POLYGON_PATH = Path(__file__).resolve().parents[2] / "data" / "LANDESGRENZEOGD.json"
 
+# Security: defense-in-depth byte-size caps on the on-disk stations and
+# Vienna-polygon files. The depth-bomb catch tuple
+# ``except (OSError, json.JSONDecodeError, RecursionError)`` covers the
+# deeply-nested attack via ``RecursionError``, but a wide-but-flat attack
+# (e.g. ``[0]*50_000_000``) slips past that defence entirely:
+#  * ``json.load`` does NOT raise ``RecursionError`` on a flat list
+#    regardless of length — only nested structures hit the recursion limit.
+#  * ``handle.read()`` (called internally by ``json.load(handle)``) buffers
+#    the whole file before parsing — a 1 GiB file allocates a 1 GiB string
+#    plus ~5 GiB worth of int/list/dict objects after parse.
+#  * ``MemoryError`` is a ``BaseException`` subclass — it is NOT caught by
+#    the surrounding handler, so the exception propagates out of the
+#    ``@lru_cache``-decorated loader and crashes EVERY station-lookup path.
+# Threat model mirrors ``MAX_CACHE_FILE_BYTES`` in ``src/utils/cache.py``:
+# compromised CI runner / corrupted previous run / partial flush + power
+# loss plants a multi-MiB-to-multi-GiB file under ``data/``. 50 MiB is
+# ~285x the production stations.json (~175 KiB) and ~342x the polygon
+# (~146 KiB), bounding the worst-case parse cost well below any cron
+# runner's standard 1 GiB cgroup limit.
+MAX_STATIONS_FILE_BYTES = 50 * 1024 * 1024
+MAX_VIENNA_POLYGON_FILE_BYTES = 50 * 1024 * 1024
+
 Coordinate = tuple[float, float]
 Ring = tuple[Coordinate, ...]
 Polygon = tuple[Ring, ...]
@@ -243,20 +265,47 @@ def _point_in_polygon(lat: float, lon: float, rings: Polygon) -> bool:
     return True
 
 
+def _read_capped_json(
+    path: Path,
+    max_bytes: int,
+    *,
+    label: str,
+) -> object | None:
+    """Read JSON from *path*, returning ``None`` if missing/invalid/oversized.
+
+    Security: combines the canonical "stat-then-cap-then-read"
+    size-bomb defence with the depth-bomb catch tuple
+    ``(OSError, json.JSONDecodeError, RecursionError)``. The byte-size
+    cap fires BEFORE ``open()`` so the file content is never buffered
+    into memory when oversized — defeating the wide-but-flat attack
+    shape (e.g. ``[0]*50_000_000``) that the depth-bomb catch alone
+    does NOT cover (``MemoryError`` is a ``BaseException`` that
+    propagates past the surrounding handler).
+    """
+    try:
+        if path.stat().st_size > max_bytes:
+            logger.warning(
+                "%s file at %s is too large (> %d bytes); treating as missing.",
+                label, path, max_bytes,
+            )
+            return None
+        with path.open("r", encoding="utf-8") as handle:
+            payload: object = json.load(handle)
+            return payload
+    except (OSError, json.JSONDecodeError, RecursionError):
+        return None
+
+
 @lru_cache(maxsize=1)
 def _vienna_polygons() -> tuple[Polygon, ...]:
     """Return a tuple of polygon rings representing Vienna's city limits."""
 
-    try:
-        with _VIENNA_POLYGON_PATH.open("r", encoding="utf-8") as handle:
-            data = json.load(handle)
-    except (OSError, json.JSONDecodeError, RecursionError):
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in
-        # ``data/vienna_polygon.json`` (corrupted previous run, malicious
-        # file injection, planted by a compromised CI runner). Without
-        # this catch ``json.load`` propagates ``RecursionError`` out of
-        # the ``@lru_cache``-decorated loader and crashes every Vienna
-        # geo-fence check downstream.
+    data = _read_capped_json(
+        _VIENNA_POLYGON_PATH,
+        MAX_VIENNA_POLYGON_FILE_BYTES,
+        label="Vienna polygon",
+    )
+    if data is None:
         return ()
 
     polygons: list[Polygon] = []
@@ -407,15 +456,18 @@ def _iter_aliases(
 def _station_entries() -> tuple[dict[str, Any], ...]:
     """Return the raw station entries from :mod:`data/stations.json`."""
 
-    try:
-        with _STATIONS_PATH.open("r", encoding="utf-8") as handle:
-            entries = json.load(handle)
-    except (OSError, json.JSONDecodeError, RecursionError):
-        # Security: ``RecursionError`` covers JSON depth-bomb attacks in
-        # ``data/stations.json`` (corrupted previous run, malicious file
-        # injection, planted by a compromised CI runner). Without this
-        # catch the depth-bomb propagates out of the ``@lru_cache``
-        # loader and crashes station enrichment / lookup helpers feed-wide.
+    # Security: ``_read_capped_json`` enforces the byte-size cap (see
+    # MAX_STATIONS_FILE_BYTES) BEFORE opening the file plus the
+    # depth-bomb catch tuple. Module-import-time blast radius via
+    # ``@lru_cache`` is critical — every station-name lookup
+    # (``canonical_name``, ``station_info``, ``station_by_oebb_id``,
+    # ``vor_station_ids``, …) routes through this loader.
+    entries = _read_capped_json(
+        _STATIONS_PATH,
+        MAX_STATIONS_FILE_BYTES,
+        label="Stations",
+    )
+    if entries is None:
         return ()
 
     if isinstance(entries, dict):
