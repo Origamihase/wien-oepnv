@@ -19,6 +19,7 @@ hard-coded path under REPO_ROOT, so the call is safe.
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -148,6 +149,19 @@ def test_wrapper_preserves_stations_json_on_atomic_write_failure(
 
 def test_wrapper_atomic_on_success(tmp_path: Path) -> None:
     """Bei Erfolg ist data/stations.json nach dem Lauf valide."""
+    # Mock the OSM Overpass call by env-disabling it inside the
+    # subprocess: the wrapper test exists to verify atomicity of the
+    # update pipeline, NOT to exercise real network round-trips. The
+    # surrounding pytest run carries a 60-second per-test timeout
+    # (``pyproject.toml [tool.pytest.ini_options].addopts``); a real
+    # Overpass round-trip from a GitHub-hosted runner regularly burns
+    # 10-30 seconds and tips the whole orchestrator over the budget.
+    # ``WIEN_OEPNV_OSM_ENRICH=0`` is honoured by
+    # ``scripts/update_station_directory.py`` and skips the OSM client
+    # without touching production timeouts or retry counts.
+    env = os.environ.copy()
+    env["WIEN_OEPNV_OSM_ENRICH"] = "0"
+
     # Run the wrapper without modifications — should succeed if main is clean.
     result = subprocess.run(  # noqa: S603  # nosec B603
         [sys.executable, str(REPO_ROOT / "scripts" / "update_all_stations.py")],
@@ -155,6 +169,7 @@ def test_wrapper_atomic_on_success(tmp_path: Path) -> None:
         text=True,
         cwd=REPO_ROOT,
         timeout=600,
+        env=env,
     )
 
     # Note: this test requires network access for some sub-scripts.

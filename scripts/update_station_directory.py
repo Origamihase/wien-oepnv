@@ -95,8 +95,14 @@ try:  # pragma: no cover - convenience for module execution
     )
     from src.places.diagnostics import permission_hint
     from src.places.merge import BoundingBox, MergeConfig, merge_places, StationEntry
+    from src.places.osm_client import (
+        OSMOverpassError,
+        VIENNA_BOUNDING_BOX,
+        fetch_osm_places,
+        filter_complete_places,
+    )
     from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
-    from src.utils.env import load_default_env_files
+    from src.utils.env import get_bool_env, load_default_env_files
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from places.client import (  # type: ignore[no-redef]
         DEFAULT_INCLUDED_TYPES,
@@ -110,8 +116,14 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
     )
     from places.diagnostics import permission_hint  # type: ignore[no-redef]
     from places.merge import BoundingBox, MergeConfig, merge_places, StationEntry  # type: ignore[no-redef]
+    from places.osm_client import (  # type: ignore[no-redef]
+        OSMOverpassError,
+        VIENNA_BOUNDING_BOX,
+        fetch_osm_places,
+        filter_complete_places,
+    )
     from places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file  # type: ignore[no-redef]
-    from utils.env import load_default_env_files  # type: ignore[no-redef]
+    from utils.env import get_bool_env, load_default_env_files  # type: ignore[no-redef]
 
 DEFAULT_OUTPUT_PATH = _ROOT / "data" / "stations.json"
 DEFAULT_PENDLER_PATH = _ROOT / "data" / "pendler_bst_ids.json"
@@ -785,6 +797,100 @@ def _merge_google_metadata(
         )
 
 
+def _stations_missing_coordinates(stations: list[Station]) -> list[Station]:
+    """Return the subset of *stations* that still lack lat/lng metadata.
+
+    The OSM-first / Google-fallback split keys on this set: OSM is the
+    primary directory enrichment source; Google Places is only invoked
+    if at least one station is still missing coordinates after the OSM
+    merge has run. Without this gate every cron tick would burn the
+    Google Places monthly free-tier quota even when OSM already covered
+    the entire directory.
+    """
+    missing: list[Station] = []
+    for station in stations:
+        lat = station.extras.get("latitude")
+        lng = station.extras.get("longitude")
+        if not isinstance(lat, int | float) or not isinstance(lng, int | float):
+            missing.append(station)
+    return missing
+
+
+def _enrich_with_osm(
+    stations: list[Station],
+    *,
+    bounding_box: BoundingBox | None,
+    merge_distance_m: float,
+) -> bool:
+    """Enrich *stations* via the OSM Overpass API.
+
+    Returns ``True`` if the upstream call succeeded (regardless of how
+    many stations actually got updated), ``False`` if OSM failed and
+    the caller should fall through to the Google Places path. The
+    bounding box defaults to Vienna's WGS84 envelope if the caller did
+    not provide a ``BOUNDINGBOX_VIENNA`` override.
+    """
+    bbox = bounding_box or VIENNA_BOUNDING_BOX
+    try:
+        places = fetch_osm_places()
+    except OSMOverpassError as exc:
+        logger.error("OSM Overpass enrichment failed: %s", exc)
+        return False
+    except Exception as exc:  # pragma: no cover - defensive logging path
+        logger.error(
+            "Unexpected error during OSM Overpass enrichment: %s: %s",
+            type(exc).__name__, exc,
+        )
+        return False
+
+    complete = filter_complete_places(places)
+    logger.info(
+        "OSM Overpass returned %d candidates (%d after completeness filter)",
+        len(places), len(complete),
+    )
+    if not complete:
+        return True
+
+    existing_entries = cast(list[StationEntry], [station.as_dict() for station in stations])
+    outcome = merge_places(
+        existing_entries,
+        complete,
+        MergeConfig(max_distance_m=merge_distance_m, bounding_box=bbox),
+    )
+
+    by_id: dict[str, Mapping[str, object]] = {}
+    for entry in outcome.stations:
+        bst_id = entry.get("bst_id")
+        if isinstance(bst_id, str) and bst_id:
+            by_id[str(bst_id)] = entry
+
+    # Tag updated stations with ``source="osm"`` so downstream consumers
+    # can tell which directory feed contributed each entry. The merge
+    # outcome already records ``source="google_places"`` for stations
+    # touched by the Google path; we set ``"osm"`` here without losing
+    # any existing source markers.
+    updated = 0
+    for station in stations:
+        merged = by_id.get(station.bst_id)
+        if not merged:
+            continue
+        existing_source = station.extras.get("source")
+        sources: set[str] = set()
+        if isinstance(existing_source, str):
+            sources.update(s.strip() for s in existing_source.split(",") if s.strip())
+        sources.add("osm")
+        merged_with_source = dict(merged)
+        merged_with_source["source"] = ",".join(sorted(sources))
+        station.update_from_entry(merged_with_source)
+        updated += 1
+
+    logger.info(
+        "OSM Overpass enrichment updated %d stations; %d candidates already covered",
+        updated, len(outcome.skipped_places),
+    )
+    return True
+
+
 def _enrich_with_google_places(
     stations: list[Station], *, tiles_file: Path | None
 ) -> None:
@@ -1174,11 +1280,24 @@ def parse_args() -> argparse.Namespace:
         help="Path to the Wiener Linien haltepunkte CSV for coordinate lookup",
     )
     parser.add_argument(
+        "--osm-enrich",
+        dest="osm_enrich",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help=(
+            "Use OpenStreetMap (Overpass API) as the primary station "
+            "directory source (default: enabled)"
+        ),
+    )
+    parser.add_argument(
         "--google-enrich",
         dest="google_enrich",
         action=argparse.BooleanOptionalAction,
         default=True,
-        help="Use Google Places API to enrich station metadata (default: enabled)",
+        help=(
+            "Use Google Places API as a fallback when OSM data is "
+            "missing for a station (default: enabled)"
+        ),
     )
     parser.add_argument(
         "--places-tiles-file",
@@ -1525,8 +1644,65 @@ def main() -> None:
     if vor_stops or vor_name_map:
         _assign_vor_ids(stations, vor_stops, name_to_vor_id=vor_name_map)
     stations = _filter_relevant_stations(stations)
+
+    # OSM is now the primary directory enrichment source. Google Places
+    # only runs as a *fallback* when at least one station is still
+    # missing coordinates after OSM completed (or when OSM itself
+    # failed). This keeps the Google Places monthly free-tier quota
+    # untouched when the public Overpass API already covers the entire
+    # directory.
+    #
+    # ``WIEN_OEPNV_OSM_ENRICH=0`` env-disables OSM without taking the
+    # CLI flag — used by the wrapper-orchestrator regression test
+    # (``tests/test_update_all_stations_wrapper.py:test_wrapper_atomic_on_success``)
+    # to keep its 60-second pytest-timeout budget free of real Overpass
+    # round-trips. Production cron runs leave the env unset, so OSM
+    # remains the primary source by default.
+    load_default_env_files()
+    env = os.environ
+    cli_enabled = bool(getattr(args, "osm_enrich", False))
+    env_enabled = get_bool_env("WIEN_OEPNV_OSM_ENRICH", True)
+    osm_succeeded = False
+    if cli_enabled and env_enabled:
+        try:
+            bounding_box = _parse_bounding_box(env.get("BOUNDINGBOX_VIENNA"))
+        except ValueError as exc:
+            logger.error("Invalid BOUNDINGBOX_VIENNA configuration: %s", exc)
+            bounding_box = None
+        merge_distance = _parse_float(
+            env.get("MERGE_MAX_DIST_M"), key="MERGE_MAX_DIST_M", default=150.0
+        )
+        osm_succeeded = _enrich_with_osm(
+            stations,
+            bounding_box=bounding_box,
+            merge_distance_m=merge_distance,
+        )
+    elif not cli_enabled:
+        logger.info("Skipping OSM Overpass enrichment (--no-osm-enrich)")
+    else:
+        logger.info(
+            "Skipping OSM Overpass enrichment (WIEN_OEPNV_OSM_ENRICH=0)"
+        )
+
     if getattr(args, "google_enrich", False):
-        _enrich_with_google_places(stations, tiles_file=args.places_tiles_file)
+        missing = _stations_missing_coordinates(stations)
+        if osm_succeeded and not missing:
+            logger.info(
+                "Skipping Google Places enrichment: OSM already covered "
+                "all %d stations with coordinates", len(stations),
+            )
+        else:
+            if osm_succeeded:
+                logger.info(
+                    "Falling back to Google Places for %d stations still "
+                    "missing coordinates after OSM enrichment", len(missing),
+                )
+            else:
+                logger.info(
+                    "Falling back to Google Places enrichment because "
+                    "OSM Overpass was unavailable",
+                )
+            _enrich_with_google_places(stations, tiles_file=args.places_tiles_file)
     else:
         logger.info("Skipping Google Places enrichment (--no-google-enrich)")
 
