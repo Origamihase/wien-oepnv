@@ -55,7 +55,7 @@ Failure-Modes haben.
 | Richtung 1 | Wien Floridsdorf (`8100518`) → Wien Meidling (`8100514`) |
 | Richtung 2 | Wien Meidling (`8100514`) → Wien Floridsdorf (`8100518`) |
 | `max_changes` | `0` (nur direkte S-Bahn-Verbindungen) |
-| `max_journeys` | 12 (≈ eine halbe Stunde Stammstrecken-Takt) |
+| `max_journeys` | `5` (die unmittelbar nächsten 5 S-Bahnen je Richtung — 10 Journey-Objekte pro Cron-Tick gesamt) |
 | Cron | `*/30 * * * *` (alle 30 Minuten) |
 
 **Beide Richtungen werden strikt getrennt ausgewertet.** Eine
@@ -267,6 +267,21 @@ ab:
    `data/stations.json`): exception swallowing + Strip.
 3. `display_name` liefert leer: ebenfalls Seed mit Strip.
 
+### Statistik-Logging (Append-Only CSV)
+
+Nach jeder erfolgreichen Median-Berechnung — *unabhängig* davon, ob
+die Schwelle überschritten wird oder nicht — schreibt das Skript eine
+Zeile in `data/stats/stammstrecke_YYYY.csv` (Spalten `timestamp,
+weekday, hour, direction, delay_minutes`, ISO 8601 `Europe/Vienna`).
+Damit reflektiert das Dashboard (`docs/statistik.md`, regeneriert
+durch `scripts/generate_markdown_stats.py`) die *gesamte* Verteilung
+der Verspätungen und nicht nur die Eskalationen, die als RSS-Event
+emittiert wurden. Der Writer (`src.utils.stats.append_stammstrecke_row`)
+ist **best-effort**: jeder I/O-Fehler wird auf WARNING-Level geloggt
+und geschluckt, damit eine fehlgeschlagene Statistik niemals den
+Cron-Lauf kippt. Architektur-Kontext und Diagramm: siehe Section 6 in
+[`docs/architecture.md`](../architecture.md).
+
 ### Feed-Integration
 
 Der Feed-Builder lädt die Datei beim Build über
@@ -297,8 +312,14 @@ verbessert.
   `MAX_QUERY_TIMEOUT` (oberer Clamp). Wird durch
   `_patch_session_timeout` als Default in `session.request`
   injiziert.
-* **Sample-Größe**: `MAX_JOURNEYS_PER_QUERY` (default 12). Höhere
-  Werte stabilisieren den Median, kosten aber mehr Pyhafas-Calls.
+* **Sample-Größe**: `MAX_JOURNEYS_PER_QUERY` (aktuell `5`). Liefert
+  den Median über die *unmittelbar nächsten 5* anstehenden S-Bahnen
+  pro Richtung — eine ungerade Sample-Größe macht den Median exakt
+  zum mittleren Element (statt Mittel zweier Werte) und liefert
+  dadurch eine Aussage robust gegen Ausreißer und nahe an der
+  Operator-Erwartung „wie ist es *jetzt*?". Höhere Werte glätten,
+  vergrößern aber die HAFAS-Payload und entkoppeln den Median vom
+  aktuellen Betriebszustand.
 * **Regex für S-Bahn-Linien**: `_S_BAHN_LINE_RE`. Erfasst alle ÖBB-
   S-Bahn-Linien (`S\d+`), inklusive zukünftiger Erweiterungen (`S 90`,
   `S 100`).

@@ -365,11 +365,12 @@ The relevant CLI flags / env vars:
 
 ## 6. Statistics & Dashboard Pipeline
 
-Operational metrics live entirely outside the RSS pipeline so the
-hot-path build never blocks on observability I/O. Two append-only CSV
-ledgers under `data/stats/` (one per kind, one file per calendar year)
-capture the raw observations; a daily GitHub Actions job rolls them
-into a static Markdown dashboard at `docs/statistik.md`.
+Operational metrics live entirely outside the RSS pipeline. Two
+append-only CSV ledgers under `data/stats/` capture every relevant
+observation as it happens; a separate daily GitHub Actions job
+aggregates them into a static Markdown dashboard at
+`docs/statistik.md`. The hot-path build never blocks on
+observability I/O.
 
 ```mermaid
 flowchart LR
@@ -395,51 +396,69 @@ flowchart LR
     AGG --> MD
 ```
 
-**Why this shape:**
+### Architectural goals
 
-- **Append-only is crash-safe**: a single `write()` of one CSV row is
-  below `PIPE_BUF` on every supported platform, so concurrent appenders
-  cannot interleave bytes mid-line. No locks needed.
-- **Best-effort writes**: `src/utils/stats.py` swallows `OSError` at
-  WARNING level — full disk, permission denied, or read-only
-  filesystem cannot crash the production pipeline. Statistics are
-  observability, not core functionality.
-- **Strict-new gating**: the disruption writer is hooked into
-  `_update_item_state` *only* on the strict cache miss (no entry by
-  `_identity` *or* `guid`). A long-lived ÖBB Streckeninformation that
-  survives many feed builds is recorded once, not once per regen.
-- **Per-year files**: bounds individual file size even after years of
-  operation; the aggregator only opens the requested year's files.
-- **Zero-dependency aggregator**: `scripts/generate_markdown_stats.py`
-  uses only `csv`, `collections`, `datetime`, `statistics`,
-  `pathlib`, `zoneinfo`, `argparse`. No NumPy / Pandas / Matplotlib.
-  Keeps CI runtime small and the repo's wheel cache trivial.
-- **Bounded reads**: the aggregator routes every CSV through
-  `read_capped_text` (open + `fstat` + capped `read`) and constructs
-  `csv.reader` over an in-memory `StringIO`. Matches the project-wide
-  `tests/test_sentinel_csv_size_bomb.py` invariant against unbounded
-  CSV reads.
-- **Atomic dashboard write**: the rendered Markdown is written via
-  `atomic_write`, so a kill-signal mid-render cannot replace the
-  previous dashboard with a half-written file.
-- **Idempotent + byte-stable**: rendering twice on identical input
-  produces byte-identical Markdown (ties broken by alphabetic
-  secondary sort), so the auto-commit step in
-  `.github/workflows/generate-stats.yml` is a no-op when nothing
-  actually changed.
+| Goal | Embodied by |
+| --- | --- |
+| **CI/CD decoupling** — the daily aggregator job runs on its own cron, never blocks `build-feed.yml` | `.github/workflows/generate-stats.yml` (cron `15 0 * * *`, `concurrency: generate-stats-${{ github.ref }}`) |
+| **Strictly zero data-science dependencies** — no `numpy`, `pandas`, `matplotlib`; CI install stays sub-second | `scripts/generate_markdown_stats.py` imports only `csv`, `collections`, `datetime`, `statistics`, `pathlib`, `zoneinfo`, `argparse` |
+| **Append-only, lock-free producers** — single-line writes on POSIX are atomic below `PIPE_BUF` (4 KiB), so concurrent cron ticks cannot interleave bytes mid-line | `src/utils/stats.py:_append_row` (mode `"a"`, no `flock`) |
+| **Strict-new gating for disruptions** — long-lived events recorded once, not once per build | `src/build_feed.py:_update_item_state` records only on the *strict* state-cache miss (neither `_identity` nor `guid` had a prior entry) |
+| **Idempotent, byte-stable output** — re-running the aggregator on identical input produces byte-identical Markdown so `git-auto-commit-action` is a no-op when nothing changed | Stable secondary sort (alphabetical) breaks every tie in `render_top_locations`; renderer never reads `now()` outside the timestamp shown in the header |
+| **Per-year file rotation** — individual ledger size stays bounded even over multi-year operation | Filename derived from the row's Vienna-local `timestamp.year`, not process clock |
 
-The dashboard answers two operator questions:
+### Resiliency layers
 
-| Question | Section |
+The producers are observability, not core functionality, so every
+failure path is **best-effort, no-throw**: any `OSError` from the
+writer is logged at WARNING and swallowed. Production pipelines never
+crash because the disk filled up.
+
+The aggregator, by contrast, is the choke point that has to read
+*untrusted* on-disk bytes (a planted-huge CSV from a compromised CI
+runner is the canonical threat model). Three layered defences cover
+it:
+
+1. **Bounded reads** — every CSV is loaded through
+   `read_capped_text` (open + `fstat` on the open fd + capped
+   `read(MAX_CSV_BYTES + 1)`) and parsed via `csv.reader` over an
+   in-memory `io.StringIO`. The "no bare `csv.reader(handle)` in
+   `src/` or `scripts/`" invariant is enforced by
+   `tests/test_sentinel_csv_size_bomb.py`.
+2. **Malformed-row tolerance** — `_parse_stammstrecke_rows` /
+   `_parse_stoerung_rows` skip individual rows that fail
+   `fromisoformat` or `float()`. A single fat-fingered manual edit
+   never corrupts the entire dashboard.
+3. **Atomic dashboard write** — the rendered Markdown lands on disk
+   through `src.utils.files.atomic_write`. A kill-signal mid-render
+   cannot replace the previous dashboard with a half-written file.
+
+### Test isolation
+
+The production writers default to `<repo>/data/stats/` via
+`src.utils.stats.DEFAULT_STATS_DIR`. An autouse fixture
+`isolate_stats_writes` in `tests/conftest.py` monkey-patches that
+constant to a per-test `tmp_path` for **every** test in the suite, so
+any test that transitively exercises a hot path which records stats
+(the `_update_item_state` strict-new branch, the Stammstrecke
+processing loop) cannot pollute the committed CSV ledger. Tests that
+explicitly target a different `stats_dir` (the dedicated unit tests in
+`tests/test_utils_stats.py`) are unaffected because the explicit
+keyword always wins inside `stats_path`.
+
+### What the dashboard answers
+
+| Question | Section in `docs/statistik.md` |
 |---|---|
 | **When** do Stammstrecke delays occur? | "Stammstrecke" — weekday + hour distributions of both observation count and average delay |
 | **Where** (and **when**) are disruption hotspots? | "Störungen" — per-provider table, weekday + hour distributions, top-5 hotspots with per-location hourly profile |
 
-The location heuristic in `extract_location_name` tries (in order):
-`zwischen X und Y` → first capture, then `Wien <Name>`, then the first
-capitalised multi-word token outside a small stopword set
-(Bauarbeiten, Verspätung, Linie, …). Falls back to `"unbekannt"` so
-the dashboard always renders even on adversarial provider input.
+The location heuristic in `extract_location_name` tries — in order —
+`zwischen X und Y` (capture group 1), then `Wien <Name>`, then the
+first capitalised multi-word token outside a small stopword set
+(`Bauarbeiten`, `Verspätung`, `Linie`, …). Falls back to
+`"unbekannt"` so the dashboard always renders, even on adversarial
+provider input.
 
 ---
 
