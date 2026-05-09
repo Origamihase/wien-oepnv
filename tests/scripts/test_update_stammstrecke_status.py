@@ -464,18 +464,52 @@ def test_extract_vao_error_code_falls_back_to_error_field() -> None:
     assert script._extract_vao_error_code(err) == "SVC_LOC_INVALID"
 
 
-def test_extract_vao_error_code_caps_oversize_string() -> None:
-    """A planted multi-KiB ``errorCode`` is truncated to the canonical
-    cap so a poisoned upstream cannot pollute structured logs."""
+def test_extract_vao_error_code_rejects_verbose_text_with_secrets() -> None:
+    """A verbose error message that echoes upstream-controlled content
+    (e.g. the supplied ``accessId``) MUST collapse to ``<malformed>``
+    so the diagnostic line never surfaces a secret. The 2026-05-09
+    cron run revealed VAO returning bodies whose ``errorCode`` field
+    carried free-form text that GitHub Actions then masked as
+    ``errorCode=***`` — defeating the purpose of the diagnostic."""
+
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps(
+            {"errorCode": "Invalid accessId: 0123456789abcdef"}
+        ).encode("utf-8"),
+    )
+    assert script._extract_vao_error_code(err) == "<malformed>"
+
+
+def test_extract_vao_error_code_rejects_oversize_canonical_shape() -> None:
+    """A code that exceeds the canonical 32-char short-shape collapses
+    to ``<malformed>`` rather than truncate (truncating could surface
+    a partial secret if the source field was polluted)."""
 
     huge = "X" * 5000
     err = _make_http_error(
         status_code=400,
         body=json.dumps({"errorCode": huge}).encode("utf-8"),
     )
-    code = script._extract_vao_error_code(err)
-    assert len(code) == script._ERROR_CODE_MAX_LEN
-    assert code == "X" * script._ERROR_CODE_MAX_LEN
+    assert script._extract_vao_error_code(err) == "<malformed>"
+
+
+def test_extract_vao_error_code_accepts_canonical_shapes() -> None:
+    """Codes within the canonical regex are returned verbatim."""
+
+    short = "ABC_DEF_GHI_JKL_MNO_PQR_STU"  # 27 chars — within limit
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"errorCode": short}).encode("utf-8"),
+    )
+    assert script._extract_vao_error_code(err) == short
+
+    over = "ABC_DEF_GHI_JKL_MNO_PQR_STU_VWXYZ"  # 33 chars — over limit
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"errorCode": over}).encode("utf-8"),
+    )
+    assert script._extract_vao_error_code(err) == "<malformed>"
 
 
 def test_extract_vao_error_code_caps_oversize_body() -> None:
@@ -503,6 +537,52 @@ def test_extract_vao_error_code_returns_unknown_for_non_dict_body() -> None:
 def test_extract_vao_error_code_returns_unknown_for_no_response() -> None:
     err = requests.HTTPError("network failure", response=None)
     assert script._extract_vao_error_code(err) == "<unknown>"
+
+
+def test_describe_error_body_keys_renders_canonical_envelope() -> None:
+    """Top-level keys are alphabetised and comma-joined for stable diagnostic
+    output across runs."""
+
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps(
+            {"errorCode": "H890", "errorText": "no journey", "Message": []}
+        ).encode("utf-8"),
+    )
+    rendered = script._describe_error_body_keys(err)
+    assert rendered == "Message,errorCode,errorText"
+
+
+def test_describe_error_body_keys_redacts_non_canonical_key_names() -> None:
+    """A top-level key whose name is itself upstream-controlled
+    (unusual but possible) is rendered as ``<???>`` so it cannot
+    smuggle a secret into the diagnostic line."""
+
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps(
+            {"errorCode": "H890", "Invalid accessId: ABC": "leak"}
+        ).encode("utf-8"),
+    )
+    rendered = script._describe_error_body_keys(err)
+    assert "<???>" in rendered
+    assert "Invalid accessId" not in rendered
+    assert "errorCode" in rendered
+
+
+def test_describe_error_body_keys_falls_back_when_no_response() -> None:
+    err = requests.HTTPError("network failure", response=None)
+    assert script._describe_error_body_keys(err) == "<no-body>"
+
+
+def test_describe_error_body_keys_falls_back_for_non_json_body() -> None:
+    err = _make_http_error(status_code=500, body=b"<html>error</html>")
+    assert script._describe_error_body_keys(err) == "<no-body>"
+
+
+def test_describe_error_body_keys_falls_back_for_empty_object() -> None:
+    err = _make_http_error(status_code=400, body=b"{}")
+    assert script._describe_error_body_keys(err) == "<empty>"
 
 
 def test_process_direction_logs_status_and_error_code_on_http_error(
@@ -537,6 +617,9 @@ def test_process_direction_logs_status_and_error_code_on_http_error(
     rendered = "\n".join(record.getMessage() for record in caplog.records)
     assert "HTTP 401" in rendered
     assert "H730" in rendered
+    # Body-keys diagnostic must surface the canonical envelope shape
+    # without leaking any value.
+    assert "body_keys=errorCode" in rendered
 
 
 def test_collect_delays_rejects_multi_ride_leg_trips() -> None:
@@ -694,7 +777,13 @@ def test_query_timeout_bound_below_max() -> None:
 def test_query_trips_passes_canonical_parameters(
     monkeypatch: pytest.MonkeyPatch, _stable_now: datetime
 ) -> None:
-    """Pin the wire-format parameters: originId/destId/numF/maxChange/rtMode."""
+    """Pin the wire-format parameters: originExtId/destExtId/numF/maxChange/rtMode.
+
+    The 2026-05-09 audit established that the bare numeric VOR Stop ID
+    must be passed via the ``ExtId`` parameter family — the
+    HAFAS-internal ``originId``/``destId`` parameters expect the full
+    ``A=1@O=...@L=...`` shape and reject bare numerics with HTTP 400.
+    """
 
     captured: dict[str, Any] = {}
 
@@ -717,13 +806,20 @@ def test_query_trips_passes_canonical_parameters(
     assert captured["endpoint"].endswith("/trip")
     params = captured["params"]
     assert params["format"] == "json"
-    assert params["originId"] == direction.origin_id
-    assert params["destId"] == direction.destination_id
+    # External-ID parameter family is mandatory — see docstring above.
+    assert params["originExtId"] == direction.origin_id
+    assert params["destExtId"] == direction.destination_id
+    assert "originId" not in params  # HAFAS-internal form not used
+    assert "destId" not in params
     assert params["numF"] == "6"  # pinned MAX_TRIPS_PER_QUERY (VAO max)
     assert params["maxChange"] == "0"  # direct-connections-only
     assert params["rtMode"] == "SERVER_DEFAULT"
     assert params["date"] == _stable_now.strftime("%Y-%m-%d")
     assert params["time"] == _stable_now.strftime("%H:%M")
+    # Explicit Accept header for content negotiation in addition to
+    # the ``format=json`` query parameter (belt-and-suspenders so the
+    # negotiation is unambiguous).
+    assert captured["kwargs"]["headers"]["Accept"] == "application/json"
     assert captured["kwargs"]["allowed_content_types"] == ("application/json",)
     # Timeout is bound below MAX_QUERY_TIMEOUT.
     assert captured["kwargs"]["timeout"] <= script.MAX_QUERY_TIMEOUT

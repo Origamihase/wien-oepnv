@@ -364,10 +364,30 @@ def _query_trips(
 
     safe_timeout = max(1, min(timeout, MAX_QUERY_TIMEOUT))
 
+    # Param-naming notes for the VAO ``/trip`` endpoint (Senior-API-
+    # Integration audit, 2026-05-09):
+    #
+    # * ``originExtId`` / ``destExtId`` — the VAO ReST API distinguishes
+    #   between the HAFAS-internal location ID (``originId``, full
+    #   ``A=1@O=...@L=...`` shape returned by ``location.name``) and the
+    #   external station code (``originExtId``, the bare numeric IBNR-
+    #   style ID like ``490033400``). ``data/stations.json`` stores
+    #   ``vor_id`` in the ExtId shape, so we must use the ``ExtId``
+    #   parameter family — passing the bare numeric to ``originId``
+    #   triggers HTTP 400 with the accessId echoed in the error body
+    #   (the strict validator rejects the malformed ``originId`` and
+    #   includes the supplied accessId in its diagnostic).
+    # * ``format=json`` — VAO defaults to XML, which clashes with our
+    #   JSON-parsing code path. Both the query parameter AND the
+    #   ``Accept: application/json`` request header are sent so the
+    #   negotiation is unambiguous.
+    # * ``date`` / ``time`` — explicitly pinned to the current Vienna
+    #   wall clock so the upstream cannot drift to UTC or fail to
+    #   infer "now".
     params: dict[str, str] = {
         "format": "json",
-        "originId": direction.origin_id,
-        "destId": direction.destination_id,
+        "originExtId": direction.origin_id,
+        "destExtId": direction.destination_id,
         "date": when.strftime("%Y-%m-%d"),
         "time": when.strftime("%H:%M"),
         "numF": str(MAX_TRIPS_PER_QUERY),
@@ -388,6 +408,9 @@ def _query_trips(
         session,
         endpoint,
         params=params,
+        # Explicit content negotiation belt-and-suspenders alongside
+        # the ``format=json`` query parameter.
+        headers={"Accept": "application/json"},
         timeout=safe_timeout,
         allowed_content_types=("application/json",),
     )
@@ -818,6 +841,27 @@ _ERROR_CODE_MAX_LEN: Final = 64
 # otherwise materialise the entire (potentially huge) error body.
 _ERROR_BODY_MAX_BYTES: Final = 16 * 1024
 
+# Strict character whitelist for the rendered ``errorCode``. Real VAO
+# codes are ``[A-Za-z][A-Za-z0-9_]*`` shape (``H890``, ``H892``,
+# ``H730``, ``SVC_LOC_INVALID``, ``API_GEN``…). The 2026-05-09 cron
+# run revealed that the upstream sometimes echoes the supplied
+# ``accessId`` into the ``errorCode`` field on bad-request responses
+# (``HTTP 400`` with the accessId verbatim in the body — GitHub
+# Actions then masked the log line as ``errorCode=***``, defeating
+# the purpose of the diagnostic). The strict regex bails to
+# ``"<malformed>"`` whenever the upstream value is not a canonical
+# short code, so the diagnostic CANNOT inadvertently surface
+# user-supplied or upstream-echoed secrets even when GitHub Actions'
+# secret-masker is unavailable.
+_VAO_ERROR_CODE_RE: Final = re.compile(r"^[A-Za-z][A-Za-z0-9_]{0,31}$")
+
+# Hard cap on the rendered body-keys diagnostic. Real VAO error
+# envelopes carry ~3-5 top-level keys (``errorCode``, ``errorText``,
+# ``Message``, ``serverVersion``, ``planRtTs``); 256 chars is generous
+# headroom while bounding the worst case where a planted upstream
+# returns thousands of single-letter top-level keys.
+_BODY_KEYS_MAX_LEN: Final = 256
+
 
 def _extract_http_status(exc: requests.HTTPError) -> str:
     """Return the HTTP status code from *exc* as a stringy diagnostic.
@@ -834,27 +878,45 @@ def _extract_http_status(exc: requests.HTTPError) -> str:
     return str(status)
 
 
-def _extract_vao_error_code(exc: requests.HTTPError) -> str:
-    """Return the ``errorCode`` from a VAO error-envelope JSON body.
+def _decode_error_body(exc: requests.HTTPError) -> Mapping[str, Any] | None:
+    """Decode the response body as a top-level JSON mapping, or return ``None``.
 
-    Falls back to ``"<unknown>"`` for every failure mode (no response,
-    body too large, body not JSON, body not a mapping, errorCode field
-    absent or non-stringy). Bounded by :data:`_ERROR_BODY_MAX_BYTES` on
-    the wire and :data:`_ERROR_CODE_MAX_LEN` on the rendered string.
+    Bounded by :data:`_ERROR_BODY_MAX_BYTES` to prevent a planted
+    upstream from amplifying the diagnostic-logging branch into a
+    memory-pressure DoS.
     """
     response = getattr(exc, "response", None)
     if response is None:
-        return "<unknown>"
+        return None
     raw = getattr(response, "content", None)
     if not isinstance(raw, (bytes, bytearray)):
-        return "<unknown>"
+        return None
     if len(raw) == 0 or len(raw) > _ERROR_BODY_MAX_BYTES:
-        return "<unknown>"
+        return None
     try:
         body = _json_lib.loads(raw)
     except (ValueError, RecursionError, UnicodeDecodeError):
-        return "<unknown>"
+        return None
     if not isinstance(body, Mapping):
+        return None
+    return body
+
+
+def _extract_vao_error_code(exc: requests.HTTPError) -> str:
+    """Return the ``errorCode`` from a VAO error-envelope JSON body.
+
+    Strict-match against :data:`_VAO_ERROR_CODE_RE` (canonical short
+    HAFAS code shape) — a value that does not match (e.g. a free-form
+    error message that happens to echo upstream-controlled content,
+    including the supplied ``accessId``) collapses to ``"<malformed>"``
+    rather than risking a secret leak through the diagnostic line.
+
+    Falls back to ``"<unknown>"`` for every other failure mode (no
+    response, body too large, body not JSON, body not a mapping,
+    errorCode field absent or non-stringy).
+    """
+    body = _decode_error_body(exc)
+    if body is None:
         return "<unknown>"
     raw_code = body.get("errorCode") or body.get("error")
     if not isinstance(raw_code, str):
@@ -862,7 +924,50 @@ def _extract_vao_error_code(exc: requests.HTTPError) -> str:
     code = raw_code.strip()
     if not code:
         return "<unknown>"
+    if not _VAO_ERROR_CODE_RE.match(code):
+        # Defensive bail: the upstream value is NOT a canonical short
+        # code — most plausibly a verbose error message whose contents
+        # cannot be safely surfaced. The body-keys diagnostic from
+        # :func:`_describe_error_body_keys` will still expose enough
+        # structural shape information to triage the failure.
+        return "<malformed>"
     return code[:_ERROR_CODE_MAX_LEN]
+
+
+def _describe_error_body_keys(exc: requests.HTTPError) -> str:
+    """Return a comma-separated list of top-level keys from the JSON body.
+
+    The keys are alphabetised so the diagnostic is stable across
+    runs, capped at :data:`_BODY_KEYS_MAX_LEN` chars to bound a
+    planted-huge-key-set body, and filtered through
+    :func:`_VAO_ERROR_CODE_RE` so a top-level key whose name itself
+    smuggles upstream-controlled content (an unusual but possible
+    shape) does not slip into the log line. Keys that do NOT match
+    the canonical HAFAS field-name pattern are rendered as
+    ``"<???>"`` so the diagnostic still indicates "the body has N
+    fields" without exposing what they are.
+
+    Falls back to ``"<no-body>"`` for non-JSON / non-mapping / oversize
+    payloads, mirroring :func:`_extract_vao_error_code`.
+    """
+    body = _decode_error_body(exc)
+    if body is None:
+        return "<no-body>"
+    keys: list[str] = []
+    # ``Mapping[str, Any]`` from ``_decode_error_body`` guarantees the
+    # iteration yields ``str`` keys; we only need to gate against the
+    # canonical-shape regex.
+    for key in body.keys():
+        stripped = key.strip()
+        if _VAO_ERROR_CODE_RE.match(stripped):
+            keys.append(stripped)
+        else:
+            keys.append("<???>")
+    keys.sort()
+    rendered = ",".join(keys) or "<empty>"
+    if len(rendered) > _BODY_KEYS_MAX_LEN:
+        return rendered[:_BODY_KEYS_MAX_LEN] + "…"
+    return rendered
 
 
 def _process_direction(
@@ -910,22 +1015,25 @@ def _process_direction(
         return None, "quota_exceeded"
     except requests.HTTPError as exc:
         # Diagnostic-rich branch for non-2xx responses. Logs the HTTP
-        # status code and the VAO-supplied ``errorCode`` from the JSON
-        # body when the response is parseable. Both fields are safe to
-        # surface (no URL — therefore no ``accessId`` — and no free-form
-        # text that could echo upstream-controlled secrets). The
-        # ``errorText``/``errorMsg`` fields are deliberately NOT logged
-        # because some HAFAS peers echo the supplied ``accessId`` back
-        # into the human-readable message; the canonical ``errorCode``
-        # plus status code is sufficient to triage every documented
-        # VAO failure shape.
+        # status code, the canonical-short VAO ``errorCode`` from the
+        # JSON body when present, and the body's top-level key set.
+        # All three fields are safe to surface (no URL → no
+        # ``accessId`` leak; ``errorCode`` is regex-validated against
+        # the canonical HAFAS short-code shape; key names go through
+        # the same regex filter). The ``errorText``/``errorMsg``
+        # fields are deliberately NOT logged because some HAFAS peers
+        # echo the supplied ``accessId`` back into the human-readable
+        # message; the structured fields suffice for triage.
         status_code = _extract_http_status(exc)
         error_code = _extract_vao_error_code(exc)
+        body_keys = _describe_error_body_keys(exc)
         LOGGER.warning(
-            "Stammstrecke: Abfrage Richtung %s fehlgeschlagen: HTTP %s (errorCode=%s).",
+            "Stammstrecke: Abfrage Richtung %s fehlgeschlagen: HTTP %s "
+            "(errorCode=%s, body_keys=%s).",
             direction.target_label,
             status_code,
             sanitize_log_arg(error_code),
+            sanitize_log_arg(body_keys),
         )
         return None, "error"
     except Exception as exc:
