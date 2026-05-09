@@ -120,9 +120,11 @@ def _trip(
     *category*: ``"__auto__"`` derives ``"S"`` from a name matching
     ``S\\d+``; pass an explicit string (e.g. ``"REX"``) or ``None`` to
     override.
-    *delay_minutes*: ``None`` → no realtime field set (excluded from
-    median). Numeric → realtime computed by adding *delay_minutes* to
-    the scheduled origin time.
+    *delay_minutes*: ``None`` → no ``rtTime`` field is emitted, which
+    the parser treats as an on-time S-Bahn departure (contributes
+    ``0.0`` to the median per the 2026-05-09 audit fix). Numeric →
+    realtime computed by adding *delay_minutes* to the scheduled
+    origin time.
     """
 
     if category == "__auto__":
@@ -240,9 +242,9 @@ def _low_trips() -> list[dict[str, Any]]:
 
 
 def test_is_sbahn_leg_matches_canonical_category() -> None:
-    """The primary signal is ``leg.category == "S"`` (or "SB")."""
+    """The primary signal is ``leg.category == "S"`` (strict-S only)."""
     assert script._is_sbahn_leg({"category": "S", "name": "S 1"})
-    assert script._is_sbahn_leg({"category": "SB", "name": "S 80"})
+    assert script._is_sbahn_leg({"category": "S", "name": "S 80"})
     # Lowercase / mixed case is still accepted (the matcher upcases).
     assert script._is_sbahn_leg({"category": "s", "name": "S 7"})
 
@@ -262,7 +264,7 @@ def test_is_sbahn_leg_matches_nested_product_field() -> None:
     )
     assert script._is_sbahn_leg({"Product": [{"line": "S 80"}]})
     # Single Product object (not list) — also accepted.
-    assert script._is_sbahn_leg({"Product": {"catOut": "SB"}})
+    assert script._is_sbahn_leg({"Product": {"catOut": "S"}})
 
 
 def test_is_sbahn_leg_rejects_non_sbahn() -> None:
@@ -272,6 +274,22 @@ def test_is_sbahn_leg_rejects_non_sbahn() -> None:
         {"category": "RJ", "name": "Railjet 162"}
     )
     assert not script._is_sbahn_leg({"name": ""})
+
+
+def test_is_sbahn_leg_rejects_ambiguous_sb_category() -> None:
+    """The 2026-05-09 strict-S audit removed ``"SB"`` from the accepted
+    category set: in some VAO/ÖBB regional dialects ``SB`` denotes
+    *Schnellbus* rather than *Schnellbahn*, and there is no SB service
+    on the Stammstrecke either way. A leg whose only S-Bahn signal is
+    ``category == "SB"`` (no matching name / Product fallback) MUST
+    therefore be rejected — preventing a future bus reclassification
+    from leaking into the median.
+    """
+    assert not script._is_sbahn_leg({"category": "SB"})
+    assert not script._is_sbahn_leg({"Product": [{"catOut": "SB"}]})
+    # But if the *name* still matches "S X" the leg is accepted (name
+    # signal trumps a misleading category).
+    assert script._is_sbahn_leg({"category": "SB", "name": "S 7"})
 
 
 def test_is_sbahn_leg_handles_non_mapping_input() -> None:
@@ -286,19 +304,111 @@ def test_is_sbahn_leg_rejects_unrelated_product_categories() -> None:
     assert not script._is_sbahn_leg({"Product": [{"line": "U1"}]})
 
 
-def test_collect_delays_includes_only_sbahn_with_realtime() -> None:
+def test_collect_delays_includes_sbahn_and_treats_missing_rttime_as_on_time() -> None:
+    """End-to-end: S-Bahn ride legs with realtime contribute their
+    delta, S-Bahn legs without ``rtTime`` contribute ``0.0`` (on-time),
+    cancelled legs and non-S-Bahn legs are excluded.
+    """
+
     trips = [
         _trip(leg_name="S 1", delay_minutes=4),
         _trip(leg_name="S 2", delay_minutes=10),
         # Non-S-Bahn — must be ignored.
         _trip(leg_name="REX 7", delay_minutes=20, category="REX"),
-        # S-Bahn but cancelled — ignored (no signal).
+        # S-Bahn but cancelled — ignored (no signal at all).
         _trip(leg_name="S 3", delay_minutes=15, cancelled=True),
-        # S-Bahn but no realtime — ignored.
+        # S-Bahn without rtTime — counts as on-time (0.0) per
+        # 2026-05-09 Senior-API-Integration audit. The previous
+        # implementation skipped these, biasing the median upward.
         _trip(leg_name="S 80", delay_minutes=None),
     ]
     delays = script._collect_sbahn_delays_minutes(trips)
-    assert delays == [4.0, 10.0]
+    assert delays == [4.0, 10.0, 0.0]
+
+
+def test_leg_departure_delay_returns_zero_when_rttime_missing() -> None:
+    """A scheduled-but-no-rtTime leg must yield ``0.0``, not ``None``.
+
+    On the VAO contract, ``rtTime`` is omitted when realtime data
+    confirms an on-time departure (the field would otherwise duplicate
+    ``time``). Skipping such legs would exclude every on-time train
+    from the median, biasing the result high enough that a single
+    delayed train in an off-peak window could trip the 9-minute
+    threshold and emit a spurious feed event.
+    """
+
+    leg = {
+        "type": "JNY",
+        "name": "S 1",
+        "category": "S",
+        "Origin": {
+            "date": "2026-05-09",
+            "time": "08:30:00",
+            # NO rtTime field — VAO's parsimonious "on-time" signal.
+        },
+    }
+    assert script._leg_departure_delay_minutes(leg) == 0.0
+
+
+def test_leg_departure_delay_returns_zero_when_rttime_equals_time() -> None:
+    """An explicitly-on-time leg (``rtTime == time``) yields ``0.0``."""
+
+    leg = {
+        "type": "JNY",
+        "name": "S 1",
+        "category": "S",
+        "Origin": {
+            "date": "2026-05-09",
+            "time": "08:30:00",
+            "rtTime": "08:30:00",  # Exactly on time.
+        },
+    }
+    assert script._leg_departure_delay_minutes(leg) == 0.0
+
+
+def test_leg_departure_delay_skips_cancelled_leg() -> None:
+    """Cancelled legs have no delay signal — they are absent, not late."""
+
+    leg = {
+        "type": "JNY",
+        "name": "S 1",
+        "category": "S",
+        "cancelled": True,
+        "Origin": {"date": "2026-05-09", "time": "08:30:00"},
+    }
+    assert script._leg_departure_delay_minutes(leg) is None
+
+
+def test_leg_departure_delay_skips_unparseable_schedule() -> None:
+    """When the scheduled timestamp is malformed we cannot compute a
+    delta — return ``None`` rather than risk a misleading 0.
+    """
+
+    leg = {
+        "type": "JNY",
+        "name": "S 1",
+        "category": "S",
+        "Origin": {"date": "not-a-date", "time": "not-a-time"},
+    }
+    assert script._leg_departure_delay_minutes(leg) is None
+
+
+def test_leg_departure_delay_skips_unparseable_realtime() -> None:
+    """When ``rtTime`` is present but malformed, return ``None`` —
+    a malformed realtime field should not silently coerce to zero.
+    """
+
+    leg = {
+        "type": "JNY",
+        "name": "S 1",
+        "category": "S",
+        "Origin": {
+            "date": "2026-05-09",
+            "time": "08:30:00",
+            "rtTime": "not-a-time",
+        },
+    }
+    assert script._leg_departure_delay_minutes(leg) is None
 
 
 def test_collect_delays_rejects_multi_ride_leg_trips() -> None:
@@ -428,15 +538,19 @@ def test_breaker_config_aligns_with_outage_budget() -> None:
     assert script.BREAKER_RECOVERY_TIMEOUT == 3600.0
 
 
-def test_max_trips_per_query_is_pinned_to_five() -> None:
-    """Pin ``MAX_TRIPS_PER_QUERY`` so a future drift is caught at PR-review.
+def test_max_trips_per_query_is_pinned_to_six() -> None:
+    """Pin ``MAX_TRIPS_PER_QUERY`` to the VAO contractual maximum.
 
-    Five is the smallest sample that yields a stable median while
-    keeping the VAO ``/trip`` payload (and the per-call quota cost)
-    minimal — VAO caps ``numF`` at 6.
+    The VAO ``/trip`` endpoint accepts ``numF`` in the range 1..6.
+    The 2026-05-09 Senior-API-Integration audit bumped the value from
+    five to six so the median is computed over the largest sample VAO
+    permits in a single quota slot — important because the
+    ``maxChange=0`` filter typically yields 4-6 S-Bahn legs after the
+    strict-S product filter, and one extra data point increases
+    median stability without inflating quota usage.
     """
 
-    assert script.MAX_TRIPS_PER_QUERY == 5
+    assert script.MAX_TRIPS_PER_QUERY == 6
 
 
 def test_query_timeout_bound_below_max() -> None:
@@ -477,7 +591,7 @@ def test_query_trips_passes_canonical_parameters(
     assert params["format"] == "json"
     assert params["originId"] == direction.origin_id
     assert params["destId"] == direction.destination_id
-    assert params["numF"] == "5"  # pinned MAX_TRIPS_PER_QUERY
+    assert params["numF"] == "6"  # pinned MAX_TRIPS_PER_QUERY (VAO max)
     assert params["maxChange"] == "0"  # direct-connections-only
     assert params["rtMode"] == "SERVER_DEFAULT"
     assert params["date"] == _stable_now.strftime("%Y-%m-%d")
