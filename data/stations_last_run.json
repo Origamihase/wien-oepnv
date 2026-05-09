@@ -13,17 +13,17 @@
   },
   "sub_scripts": [
     {
-      "duration_s": 29.51,
+      "duration_s": 16.63,
       "exit_code": 0,
       "name": "update_station_directory.py"
     },
     {
-      "duration_s": 0.77,
+      "duration_s": 0.82,
       "exit_code": 0,
       "name": "update_vor_stations.py"
     },
     {
-      "duration_s": 2.17,
+      "duration_s": 1.22,
       "exit_code": 0,
       "name": "update_wl_stations.py"
     },
@@ -33,7 +33,7 @@
       "name": "enrich_station_aliases.py"
     }
   ],
-  "timestamp": "2026-05-08T23:48:37+00:00",
+  "timestamp": "2026-05-09T13:02:37+00:00",
   "validation": {
     "alias_issues": 0,
     "coordinate_issues": 0,

@@ -41,26 +41,26 @@ Die S-Bahn-Stammstrecke ist das Rückgrat des Pendlerverkehrs. Wir erfassen und 
 ### Aktueller Schnappschuss
 
 <!-- STATS:STAMMSTRECKE:BEGIN -->
-> _Dieser Block wird regelmäßig automatisch aktualisiert._
+> _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`generate-stats.yml`](.github/workflows/generate-stats.yml).
 
 | Kennzahl | Wert |
 | -------- | ---- |
 | Beobachtungen (gesamt) | _wird berechnet…_ |
 | Median-Verspätung | _wird berechnet…_ |
 | Kritische Verspätungen (> 9 min) | _wird berechnet…_ |
-| Letzte Aktualisierung | _wird berechnet…_ |
+| Letzte Aktualisierung | 2026-05-09 15:02 CEST |
 <!-- STATS:STAMMSTRECKE:END -->
 
 ### Häufigste Störungsorte
 
 <!-- STATS:DISRUPTIONS:BEGIN -->
-> _Dieser Block wird regelmäßig automatisch aktualisiert._
+> _Letzte 30 Tage – automatisch aktualisiert vom Workflow_ [`generate-stats.yml`](.github/workflows/generate-stats.yml).
 
 | Rang | Station / Ort | Vorfälle |
 | ---- | ------------- | -------- |
-| 1.   | _wird berechnet…_ | – |
-| 2.   | _wird berechnet…_ | – |
-| 3.   | _wird berechnet…_ | – |
+| 1. | Demonstration Linie | 2 |
+| 2. | Fremder Verkehrsunfall Linie | 2 |
+| 3. | Fahrtbehinderung Falschparker Linie | 1 |
 <!-- STATS:DISRUPTIONS:END -->
 
 > **Hinweis:** Die zugrunde liegenden Roh-Ledger im CSV-Format liegen unter [`data/stats/`](data/stats/) (Zeitstempel in `Europe/Vienna`).
