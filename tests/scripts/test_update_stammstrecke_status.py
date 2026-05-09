@@ -1534,7 +1534,14 @@ def test_build_event_for_meidling_direction(_stable_now: datetime) -> None:
     }
     assert required_keys.issubset(event.keys())
     assert event["title"] == "S-Bahn Stammstrecke Verspätungen"
-    assert event["source"] == "ÖBB"
+    # ``source`` is the project-standard VOR-provider value
+    # (``src/providers/vor.py:1219``) since the 2026-05-09 migration
+    # to the VAO ReST ``/trip`` endpoint. The pre-migration ``"ÖBB"``
+    # value reflected the pyhafas/HAFAS data path and was retained
+    # verbatim during the migration; aligning to ``"VOR/VAO"`` keeps
+    # the publisher attribution consistent with every other
+    # VAO-API-derived item in the feed.
+    assert event["source"] == "VOR/VAO"
     assert event["category"] == "Störung"
     assert (
         event["description"]
