@@ -266,42 +266,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Straßenfest Kein Betrieb bis etwa 22:00 Uhr",
-    "description": "Straßenfest\nKein Betrieb bis etwa 22:00 Uhr",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3e09e8fd1488ed896b08f387d0fcb602c0bf647d6f931acdfa0e7a079c06e031",
-    "pubDate": "2026-05-09T04:57:01+02:00",
-    "starts_at": "2026-05-09T04:57:09+02:00",
-    "ends_at": "2026-05-09T22:00:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-05-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Straßenfest Betrieb ab Neubaugasse U",
-    "description": "Straßenfest\nBetrieb ab Neubaugasse U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4a4384c80f219d70c3407d00352a8e1be029f26a610cc85f5351d3193bcd5245",
-    "pubDate": "2026-05-09T05:00:13+02:00",
-    "starts_at": "2026-05-09T05:00:13+02:00",
-    "ends_at": "2026-05-09T22:00:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-05-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Busse halten Amerlingstraße 8 - 10",
-    "description": "Busse halten\nAmerlingstraße 8 - 10",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8381e1b1e4265708bf3c57beba3a65a07e8c92b6866a27e1af0b6f6afd2dabe2",
-    "pubDate": "2026-05-09T05:00:13+02:00",
-    "starts_at": "2026-05-09T05:00:13+02:00",
-    "ends_at": "2026-05-09T22:00:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-05-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -310,6 +274,18 @@
     "starts_at": "2026-05-09T00:00:20+02:00",
     "ends_at": "2026-05-09T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-05-09"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 37: Fahrtbehinderung in Richtung Hohe Warte. Voraussichtliche Dauer: 23:15 Uhr. Grund: Polizeieinsatz im Bereich Döblinger Hauptstraße 100.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "81435586c2728ac85f64e190f4ce6ba0cbb5e28eca6bb2623414210333c443f5",
+    "pubDate": "2026-05-09T22:55:00+02:00",
+    "starts_at": "2026-05-09T22:55:25+02:00",
+    "ends_at": "2026-05-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=37|D=2026-05-09"
   },
   {
     "source": "Wiener Linien",
@@ -446,18 +422,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "77994cd70c8bd44acc7c6ae28c2d0cee63d1f01a0b2acaf969f56ecb941ab571",
-    "pubDate": "2026-05-09T21:10:32+02:00",
-    "starts_at": "2026-05-09T21:10:38+02:00",
-    "ends_at": "2026-05-09T22:10:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-05-09"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "80A: Bauarbeiten",
     "description": "Die Linie 80A wird in Richtung Neu Marx zwischen Friedensgasse und Stadionbrücke über die Wittelsbachstraße, Erdberger Lände und Schlachthausgasse umgeleitet. Die Haltestellen Friedensgasse, Lukschgasse, Rustenschacherallee, Klaschkaweg und Stadionbrücke können dadurch nicht eingehalten werden. Voraussichtliche Dauer: Ende Mai 2026. Grund: Bauarbeiten im Bereich Stadionallee.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -466,17 +430,5 @@
     "starts_at": "2025-11-10T06:00:00+01:00",
     "ends_at": "2026-06-01T00:56:00+02:00",
     "_identity": "wl|störung|L=80A|D=2025-11-10"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "88B: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3c21d2495a78e4e46aaaee0da58b885b1c3b88c9577171599c8419a3a41f24d6",
-    "pubDate": "2026-05-09T20:57:52+02:00",
-    "starts_at": "2026-05-09T20:57:52+02:00",
-    "ends_at": "2026-05-09T21:57:00+02:00",
-    "_identity": "wl|störung|L=88B|D=2026-05-09"
   }
 ]
