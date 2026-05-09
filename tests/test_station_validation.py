@@ -248,7 +248,12 @@ def test_markdown_rendering_contains_cross_station_id_section() -> None:
     assert "## Cross station ID issues" in markdown
     assert "bst:1234" in markdown
     assert "'Mitte'" in markdown
-    assert "bst_code" in markdown
+    # Underscore is a Markdown emphasis primitive; the canonical
+    # ``escape_markdown`` defence at the renderer boundary backslash-
+    # escapes it so the field name renders literally on github.com.
+    # Rendered output is unchanged (``\\_`` → ``_`` after CommonMark
+    # escape resolution); only the raw Markdown text differs.
+    assert "bst\\_code" in markdown
     assert "bst:5678" in markdown
     assert "No issues detected." not in markdown
 

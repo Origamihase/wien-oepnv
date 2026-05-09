@@ -1,3 +1,467 @@
+## 2026-05-09 - BiDi-Mark Drift Round 4: `_UNSAFE_URL_CHARS` in `src/utils/http.py` Was the Sibling Regex Round 3's Closing-Checklist Named But Did Not Close
+
+**Vulnerability:** The 2026-05-09 BiDi-Mark Drift Round 3 entry
+("Two-Site Drift Closure: OSMOverpassConfig Host-Only Validation +
+`_UNSAFE_CHARS_RE` BiDi/Zero-Width Gap") closed the validator regex
+in `src/utils/stations_validation.py` and laid down the canonical
+**Companion-regex sync rule**:
+
+> Whenever a defence regex grows to cover a new code point, audit
+> every sibling regex in the project (`stations_validation.
+> _UNSAFE_CHARS_RE`, `_UNSAFE_URL_CHARS` in `http.py`, station-name
+> validators in provider modules) and either widen them to match or
+> document the divergence with an explicit deferral note.
+
+Round 3 explicitly enumerated `_UNSAFE_URL_CHARS` in `src/utils/http.py`
+as a sibling regex by NAME — but its commit closed only the
+`stations_validation._UNSAFE_CHARS_RE` site. The URL validator
+inherited the pre-fix character class
+`[\s\x00-\x1f\x7f<>\"\\^`{|}]` which covers ASCII whitespace
+(`\s` — incl. U+2028/U+2029 line/paragraph separators), C0 controls
++ DEL, and the structural URL-injection characters `< > " \ ^ ` { | }`
+— but **explicitly does NOT cover** the canonical
+`src/utils/logging.py:_INVISIBLE_DANGEROUS_RE` set (16 missing code
+points, programmatically enumerated):
+
+  * **U+061C** ARABIC LETTER MARK (ALM, post-Unicode-6.3 BiDi
+    control).
+  * **U+200B-U+200F** ZWSP / ZWNJ / ZWJ / **LRM** / **RLM** —
+    invisible characters that are full BiDi primitives (LRM/RLM)
+    OR cause cache-key / equality-check disagreements (ZWSP/ZWNJ/ZWJ).
+  * **U+202A-U+202E** LRE / RLE / PDF / LRO / **RLO** — the
+    canonical CVE-2021-42574 "Trojan Source" primitives. RLO
+    (U+202E) is the highest-impact: it inverts the visual rendering
+    of subsequent text in any Unicode-aware feed reader.
+  * **U+2066-U+2069** LRI / RLI / FSI / PDI BiDi isolates
+    (CVE-2021-42574 second half).
+  * **U+FEFF** BYTE ORDER MARK / ZWNBSP — visually invisible,
+    causes byte-equality disagreements at downstream consumers.
+
+`validate_http_url` is the canonical URL validator — every URL flowing
+into the project routes through it (build_feed.py:1692 for feed-item
+links, src/feed/reporting.py:875 for the GitHub-Issue auto-submit API
+URL, scripts/generate_sitemap.py via `validate_public_feed_url` for
+the sitemap base URL, every `request_safe` / `fetch_content_safe`
+outbound HTTP call).
+
+**Threat model (highest-impact path):** A compromised upstream /
+DNS-hijack / MITM that returns a feed item with a planted `link`
+field carrying RLO (U+202E):
+
+```json
+{"title": "U6: Verspätung", "link": "https://safe.example.com‮/path/evil"}
+```
+
+The provider stores the item in cache JSON. `_format_item_content`
+(`src/build_feed.py:1692`) calls `validate_http_url(link, check_dns=False)`
+to gate the link before it lands in the RSS `<link>` element. Pre-fix
+the validator returns the URL unchanged — every guard inside
+`validate_http_url` (scheme, port, IDNA NFKC, SSRF, userinfo) passes
+because the BiDi mark is in the path (not the structural-URL
+components). The link lands in `docs/feed.xml` verbatim:
+
+```xml
+<link>https://safe.example.com‮/path/evil</link>
+```
+
+ElementTree XML serialisation does NOT escape U+202E (it is a valid
+Unicode character, not an XML metacharacter). Subscribers reading
+the feed in a Unicode-aware reader see the post-RLO segment reversed
+in the rendered URL — a textbook **Trojan Source URL phishing
+primitive in a public artefact** served from
+`https://origamihase.github.io/wien-oepnv/feed.xml`. The user sees
+one URL but clicking sends the browser to a different URL.
+
+**Fix:** Widen `_UNSAFE_URL_CHARS` to the canonical
+`_INVISIBLE_DANGEROUS_RE` set:
+
+```python
+_UNSAFE_URL_CHARS = re.compile(
+    r"[\s\x00-\x1f\x7f<>\"\\^`{|}"
+    r"؜​-‏‪-‮⁦-⁩﻿]"
+)
+```
+
+Mirrors the canonical `_INVISIBLE_DANGEROUS_RE` shape pinned in
+`src/utils/logging.py:57`. The widening is **additive** — every
+character the pre-fix regex matched still matches post-fix
+(verified by the regression test
+`test_unsafe_url_chars_regex_preserves_existing_coverage`). The Unicode
+escape-sequence form is required because Bandit's B613 Trojan-Source
+plugin flags any source file containing literal BiDi format controls
+— `؜` / `‪-‮` / `﻿` are stored as escapes, not
+literals, so the file passes B613 while the regex still matches the
+runtime characters.
+
+**Test surface (+52 new pytest cases):**
+`tests/test_sentinel_http_url_chars_bidi_gap.py` mirrors the Round 3
+`stations_validation` test file shape:
+  * **Per-code-point regex match** (16 cases × ALM / ZWSP / ZWNJ /
+    ZWJ / LRM / RLM / LRE / RLE / PDF / LRO / RLO / LRI / RLI / FSI
+    / PDI / BOM): `_UNSAFE_URL_CHARS.search(<cp>)` must return a
+    match.
+  * **Per-code-point `validate_http_url` rejection** (16 cases):
+    `validate_http_url(f"https://safe.example.com{cp}/path", check_dns=False)`
+    must return `None`.
+  * **Per-code-point `validate_public_feed_url` rejection** (16
+    cases): the public-feed validator must inherit the rejection
+    via its `validate_http_url` delegation — pinning the contract
+    that fixes at the lower layer transparently propagate to the
+    higher layer.
+  * **Inventory invariant** (1 case):
+    `test_unsafe_url_chars_regex_covers_canonical_invisible_dangerous_set`
+    walks the full 0x110000 Unicode code-space, materialises every
+    code point matched by `_INVISIBLE_DANGEROUS_RE`, and asserts
+    `_UNSAFE_URL_CHARS` matches the same set. A future widening of
+    the canonical regex (e.g. a Unicode 16 BiDi format control)
+    fails this invariant until `_UNSAFE_URL_CHARS` is widened too.
+  * **Coverage-preserving regression** (1 case): every character
+    `_UNSAFE_URL_CHARS` matched pre-fix (whitespace / C0 / DEL /
+    structural URL-injection) still matches post-fix.
+  * **Safe-URL-character regression** (1 case): legitimate URL
+    characters (`/?&=#-_.~%+:@[]:`, ASCII letters/digits)
+    must NOT match the widened regex.
+  * **Clean-URL acceptance** (1 case): `validate_http_url` accepts
+    a clean `https://` URL post-fix — sanity that the widening did
+    not over-reach.
+
+**Learning:** Two reinforcing lessons:
+
+  (a) **Sibling-regex named-list audit closure.** Round 3's verdict
+      *did* enumerate `_UNSAFE_URL_CHARS` as a sibling drift
+      candidate — but the round's actual fix scope was scoped to
+      `stations_validation._UNSAFE_CHARS_RE` only. Same meta-pattern
+      as Round 7 of the env-cap drift family (`LOG_BACKUP_COUNT`
+      named in Round 6's prevention rule but deferred until Round 7),
+      Round 11 of the `timedelta` family (`FRESH_PUBDATE_WINDOW_MIN`
+      named in Round 9/10 but deferred until Round 11), Round 5 of
+      the JSON depth-bomb family (16 sites named in Round 4's
+      enumeration but only 7 fixed). The closing rule: when an audit
+      *names* a sibling site as "needs widening", the next round's
+      PR MUST land the widening AT the named site, not just at the
+      single site the round is actively touching.
+
+  (b) **Inventory-invariant programmatic pinning.** Round 3
+      introduced
+      `test_unsafe_chars_regex_covers_canonical_invisible_dangerous_set`
+      — an inventory test that walks the full 0x110000 code-space
+      and pins the regex sync invariant programmatically. This
+      round adds the URL-validator analog
+      `test_unsafe_url_chars_regex_covers_canonical_invisible_dangerous_set`.
+      Together the two inventory tests pin the
+      companion-regex sync rule for both validation boundaries —
+      any future Unicode-version bump that adds a new BiDi format
+      control fails BOTH tests until BOTH validators are widened.
+      The test pair is the programmatic floor that survives the next
+      contributor who hasn't read the journals.
+
+**Prevention:** The companion-regex sync rule from Round 3 stands
+unchanged. The Round 4 contribution is the inventory-invariant
+**pair** programmatically pinning the rule for both the
+stations-validator boundary AND the URL-validator boundary. Future
+sibling regexes (station-name validators in provider modules per
+Round 3's named list, future provider field validators) MUST adopt
+the same pattern: a per-validator `test_..._covers_canonical_invisible_
+dangerous_set` test at the canonical sanitiser path, run alongside
+the Round-N PoC tests, so the sync invariant fails closed as soon as
+the canonical regex grows.
+
+## 2026-05-09 - Secret Scanner Drift Round 5: Atlassian / Sentry / Linear Issuer Attribution Gap
+**Vulnerability:** `_KNOWN_TOKENS` in `src/utils/secret_scanner.py`
+covered fourteen issuer prefixes after the 2026-05-08 Round 4 round
+(JWT + Discord), but a fresh audit against the modern Python-project
+issuer landscape surfaced three high-impact prefixes whose canonical
+tokens were silently flagged by the `_HIGH_ENTROPY_RE` fallback as a
+generic `Hochentropischer Token-String` (or by `_SENSITIVE_ASSIGN_RE`
+as a generic `Verdächtige Zuweisung`) — losing the specific issuer
+attribution that incident-response triage keys off:
+
+  1. **Atlassian Cloud API Tokens** (`ATATT3xFfGF0<base64 body><CRC32>`)
+     — Jira / Confluence / Trello Cloud REST-API access tokens issued
+     via id.atlassian.com. ~204-char canonical shape (12-char unique
+     prefix + ~184-char base64url body + 8-char CRC32 hex suffix). A
+     leak grants the issuing user's full Cloud-API scope across every
+     accessible workspace.
+  2. **Sentry Auth Tokens** (`sntrys_<base64-with-embedded-JSON>`) —
+     Sentry's modern rotation-aware auth-token format (since 2023).
+     The body encodes embedded JSON metadata (organisation / scope) +
+     a trailing checksum. Used for the org-level API
+     (`/api/0/organizations/<slug>/...`); a leak grants access to
+     every project's issue/event data, releases, debug files, source
+     maps, member list, and webhook configuration.
+  3. **Linear API Keys** (`lin_api_<32+ alphanumeric>`) — Linear
+     (issue tracker / project management) personal API keys issued
+     via linear.app/settings/api. A leak grants the user's full
+     project-management API scope (read/write all visible issues,
+     comments, attachments, projects, team metadata, webhooks).
+
+Each issuer's revocation flow lives at a distinct vendor URL
+(id.atlassian.com / sentry.io / linear.app) so generic-only
+attribution slows IR (operator chases the wrong rotation playbook).
+The PoC in `tests/test_sentinel_secret_scanner_drift_round5.py` plants
+each token into a synthetic file under `KEY = "..."` shape and
+asserts the issuer-specific reason (`Atlassian API Token gefunden` /
+`Sentry Auth Token gefunden` / `Linear API Key gefunden`) appears in
+the scan findings; pre-fix every test failed because either the
+generic entropy / assignment fallback was the only finding, OR the
+prefix interrupted the entropy-alphabet match (the `_` separator
+between `lin_api_` and the alphanumeric body keeps the entropy regex
+running, but the issuer attribution is lost).
+
+**Learning:** The 2026-05-08 Round-4 prevention rule still holds —
+treat `_KNOWN_TOKENS` as an **issuer-keyed table**, not a list. Each
+audit round walks the modern Python-project issuer landscape (config
+files, infra-as-code, observability stacks, project-management
+integrations) and adds every variant whose canonical prefix is
+unambiguous and whose body matches the entropy fallback's alphabet
+(so the body alone would only ever flag generically). Three classes
+of issuers fit that signature post-Round-4:
+  * Cloud SaaS API tokens with byte-exact prefixes
+    (Atlassian `ATATT3xFfGF0`, Sentry `sntrys_`, Linear `lin_api_`).
+  * Multi-segment dot-separated tokens whose dots break the entropy
+    alphabet (Round-4 closed JWT + Discord; nothing remaining in
+    this class as of Round 5).
+  * Strict-format tokens whose body alphabet excludes
+    `[A-Za-z0-9+/=_-]` characters (none observed in the modern
+    landscape that the entropy fallback would miss completely).
+
+**Prevention:** When adding a new entry to `_KNOWN_TOKENS`, the
+checklist is unchanged from Round 4 — pin the issuer-specific reason
+in `tests/test_sentinel_secret_scanner_drift_round5.py` (or a
+sibling Round-N test file) AND in
+`tests/test_sentinel_secret_scanner_drift_round5.py:test_known_tokens_round5_taxonomy`
+so a future PR that drops the pattern fails at PR-review time. The
+ordering rule still applies: place new entries AFTER more specific
+issuer-prefixed tokens so `is_covered` correctly anchors on the most
+specific issuer first (e.g. `sntrys_eyJ...` would also match the JWT
+detector if Sentry came first; the Sentry pattern is more specific
+because the `sntrys_` prefix is unambiguous).
+
+## 2026-05-09 - Markdown Injection Drift Round 3: Eight Bullet-Body Sinks at the `ValidationReport.to_markdown()` Boundary — Stations-Directory Sister of the Feed-Health / Stats-Dashboard Renderer Drifts
+**Vulnerability:** The 2026-05-09 Markdown-injection rounds closed the
+renderer boundary in `scripts/generate_markdown_stats.py` (stats
+dashboard) and `src/feed/reporting.py` (Feed-Health report + GitHub
+Issue body) but their threat-model paragraph on "Markdown rendering is
+the LAST sink in any text-data pipeline that ends in a human-readable
+artefact (dashboard, **issue body**, **README**); always treat it as
+a *defence boundary* even when an upstream sanitiser exists" *implicitly*
+opened a sibling drift round: the third Markdown-emitting renderer in
+the project — `ValidationReport.to_markdown()` in
+`src/utils/stations_validation.py` — interpolated up to fifteen
+operator-controlled string fields (across eight issue-category
+sections) directly into Markdown bullet bodies *without any
+escaping at all*.
+
+The renderer is consumed by the CLI subcommand
+``python -m src.cli stations validate --output
+docs/stations_validation_report.md`` (driven by
+``.github/workflows/update-stations.yml`` on a monthly cron and
+``.github/workflows/manual-full-refresh.yml`` on workflow_dispatch).
+Both workflows then auto-commit the rendered Markdown via
+``stefanzweifel/git-auto-commit-action`` so the file is *publicly
+published* on github.com (and any GitHub Pages site mirroring
+``docs/``). The repo's ``docs/sitemap.xml`` even points to
+``stations_validation_report.html`` — the file is a public,
+search-indexed artefact.
+
+Pre-fix sinks (eight orthogonal Markdown-rendering bullet lines, each
+interpolating two-to-five operator-controlled fields):
+
+  ```python
+  # src/utils/stations_validation.py:to_markdown (pre-fix):
+  # 1. Security warnings:
+  f"- {sec_issue.identifier} ({sec_issue.name}): {sec_issue.reason}"
+  # 2. Provider issues:
+  f"- {provider_issue.identifier} ({provider_issue.name}): {provider_issue.reason}"
+  # 3. Cross station ID issues (FIVE operator-controlled fields):
+  f"- {cross_issue.identifier} ({cross_issue.name}): alias {cross_issue.alias!r} "
+  f"collides with {cross_issue.colliding_field} of "
+  f"{cross_issue.colliding_identifier} ({cross_issue.colliding_name})"
+  # 4. Geographic duplicates (joined identifier list):
+  f"- ({group.latitude:.5f}, {group.longitude:.5f}) → " + ", ".join(group.identifiers)
+  # 5. Alias issues:
+  f"- {alias_issue.identifier} ({alias_issue.name}): {alias_issue.reason}"
+  # 6. Coordinate anomalies:
+  f"- {coordinate_issue.identifier} ({coordinate_issue.name}): {coordinate_issue.reason}"
+  # 7. GTFS mismatches (vor_id is operator-controlled):
+  f"- {gtfs_issue.identifier} ({gtfs_issue.name}) → missing stop_id {gtfs_issue.vor_id}"
+  # 8. Naming issues:
+  f"- {naming_issue.identifier} ({naming_issue.name}): {naming_issue.reason}"
+  ```
+
+Four orthogonal Markdown-injection axes opened up at these sinks:
+
+  (a) **Backtick inline-code-span break-out** — a name like
+      ``Wien Hbf \`<img src=x onerror=alert(1)>\``` opens a CommonMark
+      inline code span that lets the embedded HTML render as a live
+      ``<img>`` tag in the public ``docs/stations_validation_report.md``
+      artefact. CommonMark code spans render their interior verbatim
+      and ``escape_markdown`` is the only defence (backslash-escaping
+      the backtick collapses the code-span entirely).
+
+  (b) **Markdown-link phishing** — a payload like
+      ``[click here](javascript:alert(1))`` or
+      ``[click here](https://evil.example)`` renders as a clickable
+      Markdown link in the published report. An operator skimming the
+      report on github.com sees a normal-looking link that points to
+      an attacker-controlled destination — a usable phishing primitive
+      against every repo watcher.
+
+  (c) **Asterisk emphasis spoof** — ``*spoofed-bold*`` injects italic
+      / bold emphasis the operator did not author. While individually
+      low-impact, combined with semantic injection (e.g. ``*RESOLVED*``,
+      ``*CRITICAL*``) it lets an upstream forge operator-facing
+      visual signals.
+
+  (d) **HTML angle-bracket injection** — although
+      ``_UNSAFE_CHARS_RE`` in ``_find_security_issues`` flags
+      ``<``/``>`` and ``_collect_blocking_issues`` in
+      ``scripts/update_all_stations.py`` aborts the commit when those
+      fire, that gate is **only active in the orchestrator script**.
+      The standalone CLI invocation (``python -m src.cli stations
+      validate``) and the ``manual-full-refresh.yml`` workflow's
+      regenerate-step both bypass the gate entirely — a hostile
+      ``stations.json`` produced by any of those paths flows
+      verbatim into the renderer.
+
+The threat surface at every sink is operator-controlled-but-
+upstream-influenced:
+
+  1. **`stations.json` is populated by cron-driven scripts** —
+     ``scripts/update_all_stations.py`` orchestrates
+     ``update_vor_stations.py`` / ``update_wl_stations.py`` /
+     ``update_oebb_cache.py`` / ``fetch_google_places_stations.py`` /
+     ``enrich_station_aliases.py`` — every one fans out to external
+     API surfaces (VOR / OEBB / Wiener Linien / Google Places /
+     OSM Overpass). A compromised upstream / DNS-hijack / MITM that
+     returns a station with a hostile ``name`` field lands the
+     payload in ``stations.json`` even when the per-fetch SSRF /
+     DNS-rebinding / size-cap defences hold.
+  2. **Cross-cutting** — every prior round's threat-model surface
+     for cron-pipeline poisoning (leaked CI env, compromised
+     secret store, intentional misconfig, partial flush + power
+     loss on cache write) carries here.
+
+The defence-in-depth contract collapses the cartesian product of
+(upstream source × upstream-gate bypass × backtick / link / asterisk
+/ angle-bracket axis × eight renderer sinks) into a single sanitiser
+at the last gate before rendering.
+
+**Fix:** A single canonical defence helper applied per-sink:
+
+  ```python
+  # src/utils/stations_validation.py — module-level helper:
+  def _safe_md(text: object) -> str:
+      """Compose normalise_markdown_text + escape_markdown for the
+      stations validation report renderer."""
+      return escape_markdown(
+          normalise_markdown_text(str(text), max_len=_REPORT_FIELD_MAX_LEN)
+      )
+
+  # to_markdown — every text interpolation routed through _safe_md:
+  f"- {_safe_md(sec.identifier)} ({_safe_md(sec.name)}): {_safe_md(sec.reason)}"
+  # ... 14 more interpolations across the seven other sections
+  ```
+
+The helper is module-level (NOT nested inside ``to_markdown``) so it
+adds zero to the C901 complexity counter — the function stays at its
+baselined 18. The ``_REPORT_FIELD_MAX_LEN = 400`` cap is sized
+generously enough for the longest legitimate ``reason`` (the alias-
+issue ``f"missing required aliases: {…}"`` join can carry several
+station names) while still bounding a planted-huge-field
+amplification shape.
+
+For the cross-station-id alias sink, the legacy ``{alias!r}`` (Python
+repr — quotes the value but does NOT escape Markdown chars) is
+replaced with explicit single-quote wrapping ``'{_safe_md(alias)}'``.
+This preserves the rendered ``'Mitte'`` shape that
+``test_markdown_rendering_contains_cross_station_id_section`` pins
+while ensuring that hostile aliases like ``"Mitte`xss`"`` get the
+backtick backslash-escaped.
+
+For the geographic-duplicates sink, the joined identifier list uses
+a generator expression (``", ".join(_safe_md(ident) for ident in
+group.identifiers)``) so each element is sanitised independently —
+catches a hostile identifier even when other identifiers in the
+group are clean.
+
+The lat/longitude formatting (``:.5f``) is not sanitised because
+``DuplicateGroup.latitude`` / ``longitude`` are typed ``float`` and
+validated by ``_extract_float`` (rejects NaN / inf / non-numeric)
+on construction — numeric formatting is safe by construction.
+
+**Tests:** Ten end-to-end PoC tests in
+``tests/test_sentinel_stations_validation_markdown_injection.py``
+exercise every sink with a layout-breaking payload:
+  * Six per-issue-category backtick / link / emphasis tests
+    (``test_security_issue_backtick_in_name_does_not_break_out_to_html``,
+    ``test_alias_issue_backtick_in_reason_does_not_break_out_to_html``,
+    ``test_naming_issue_markdown_link_in_reason_does_not_render_as_link``,
+    ``test_provider_issue_markdown_link_in_name_does_not_render_as_link``,
+    ``test_coordinate_issue_asterisk_emphasis_does_not_render_as_bold``,
+    ``test_cross_station_id_issue_backtick_in_alias_does_not_break_out``).
+  * Two list-and-aggregate tests
+    (``test_duplicate_group_backtick_in_identifier_does_not_break_out``,
+    ``test_gtfs_issue_backtick_in_vor_id_does_not_break_out``).
+  * One end-to-end test
+    (``test_end_to_end_hostile_stations_json_does_not_inject_markdown``)
+    that builds a real ``stations.json`` with a hostile name, runs
+    the full ``validate_stations`` pipeline, and asserts the rendered
+    output contains no Markdown / HTML break-out primitives.
+  * One inventory invariant
+    (``test_to_markdown_sink_inventory_is_pinned``) that scans the
+    source for the canonical pre-fix interpolation patterns and
+    fails when ANY of the seven text-bearing sinks is reintroduced
+    without the ``_safe_md`` wrapper.
+
+All ten were verified to FAIL on the pre-fix code (the first one
+caught the literal ``\`<img`` substring in the rendered output) and
+to PASS on the post-fix code. The existing
+``test_markdown_rendering_contains_cross_station_id_section`` was
+updated to assert on ``"bst\\_code"`` (the underscore-escaped
+form) rather than the raw ``"bst_code"`` to reflect the new
+escaping contract.
+
+**Learning:** Three reinforcing lessons:
+
+  (a) **Every Markdown-emitting renderer in a project is a
+      sister sink to every other Markdown-emitting renderer.** The
+      2026-05-09 stats-dashboard round closed
+      `scripts/generate_markdown_stats.py`. The 2026-05-09 Round 2
+      closed `src/feed/reporting.py`. This Round 3 closed
+      `src/utils/stations_validation.py`. The drift family is
+      defined by the *output medium* (Markdown rendered on
+      github.com / GitHub Pages / IDE viewers), not by the *source
+      file*. A future round MUST treat any new ``to_markdown``-
+      shaped function as a sister sink and audit the full chain
+      from data source → renderer → published artefact in one
+      sweep, not one renderer at a time.
+
+  (b) **Upstream gates do not substitute for renderer-boundary
+      defences.** ``_collect_blocking_issues`` in
+      ``scripts/update_all_stations.py`` aborts the commit when
+      ``_UNSAFE_CHARS_RE`` fires — a useful belt-and-suspenders
+      check for the orchestrator's *write* path. But the renderer
+      is invoked from THREE other code paths (standalone CLI,
+      ``manual-full-refresh.yml`` regenerate step, any future
+      direct caller) that bypass the gate entirely. The renderer
+      MUST defend itself even when the typical caller has its own
+      defences — the cartesian product of (caller bypass × payload
+      shape) is too large to enumerate at every call site.
+
+  (c) **`!r` repr-formatting is NOT a Markdown sanitiser.**
+      ``f"alias {alias!r}"`` adds quotes around the value (useful
+      for delimiting the alias text) but does not escape Markdown
+      characters. A hostile ``alias = "Mitte\`xss\`"`` renders as
+      ``alias 'Mitte\`xss\`'`` — the backtick still breaks out of
+      any surrounding inline code span. The replacement pattern
+      ``f"alias '{escape_markdown(alias)}'"`` preserves the visual
+      delimiter while applying the canonical defence. The
+      project-wide convention pinned by this round: NEVER use
+      ``!r`` to "safe-quote" a string in a Markdown context;
+      always use explicit quote-wrapping plus ``escape_markdown``
+      (or ``safe_markdown_codespan`` for inline-code-span sinks).
+
 ## 2026-05-09 - Markdown Injection Drift Round 2: Inline-Code-Span and Fenced-Code-Block Break-Out at the Feed-Health / GitHub-Issue Renderer (`feed_path`, `error_log_path`, Diagnostics) — Env-Override Path-Boundary Sibling
 **Vulnerability:** The 2026-05-09 stats-dashboard Markdown-injection
 round (entry below) closed the renderer boundary in
