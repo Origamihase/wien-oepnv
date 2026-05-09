@@ -64,4 +64,16 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
           commit_message: 'chore: update Stammstrecke status'
-          file_pattern: 'cache/stammstrecke/events.json'
+          # ``cache/stammstrecke/events.json`` carries the threshold-
+          # based feed events; ``data/stats/stammstrecke_<YYYY>.csv``
+          # carries the append-only median observations consumed by
+          # the nightly ``generate-stats.yml`` dashboard. Both must be
+          # committed for the README snapshot to reflect real cron
+          # data — the original workflow only committed the cache,
+          # so the CSV row was written by the script but never made
+          # it back to the repo (diagnosed 2026-05-09 in the
+          # successful-run that produced "Erfolg=2, Fehler=0" but
+          # left the working tree clean).
+          file_pattern: |
+            cache/stammstrecke/events.json
+            data/stats/stammstrecke_*.csv
