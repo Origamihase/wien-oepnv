@@ -23,6 +23,20 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       PYTHONPATH: src
       PIP_CACHE_DIR: /tmp/pip-cache
+      # VOR/VAO API credentials — required by ``scripts/update_stammstrecke_
+      # status.py`` since the 2026-05-09 migration from pyhafas to the
+      # VOR ``/trip`` endpoint. Without these env vars,
+      # ``vor_provider.read_secret("VOR_ACCESS_ID")`` returns an empty
+      # string, ``VorAuth.access_id`` is ``""``, the per-request
+      # ``if self.access_id:`` gate skips the injection, and VAO
+      # rejects every request with ``HTTP 400 (errorText="Missing
+      # value for required param accessId")`` — diagnosed in the
+      # 2026-05-09 cron-log triage. Mirrors the env block in
+      # ``update-vor-cache.yml`` and ``manual-full-refresh.yml``.
+      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
+      VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
+      VOR_BASE: ${{ secrets.VOR_BASE }}
+      VOR_VERSION: ${{ secrets.VOR_VERSION }}
 
     steps:
       - name: Check out repository
