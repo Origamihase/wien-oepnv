@@ -6,11 +6,13 @@ import importlib
 import logging
 import os
 from dataclasses import dataclass
+from pathlib import Path
 from types import ModuleType
 from typing import Any, cast
 from collections.abc import Callable, Iterable
 
 from ..utils.cache import read_cache
+from ..utils.files import read_capped_json
 from ..utils.logging import sanitize_log_arg
 from .config import get_bool_env
 from ..feed_types import FeedItem
@@ -98,6 +100,9 @@ def register_default_providers() -> None:
     register_provider("OEBB_ENABLE", read_cache_oebb, cache_key="oebb")
     register_provider("VOR_ENABLE", read_cache_vor, cache_key="vor")
     register_provider("BAUSTELLEN_ENABLE", read_cache_baustellen, cache_key="baustellen")
+    register_provider(
+        "STAMMSTRECKE_ENABLE", read_cache_stammstrecke, cache_key="stammstrecke"
+    )
 
 
 def _derive_cache_key(env_var: str) -> str:
@@ -233,6 +238,35 @@ def read_cache_baustellen() -> list[Any]:
     return list(read_cache("baustellen"))
 
 
+# Stammstrecke uses a fixed-path cache (``cache/stammstrecke/events.json``)
+# instead of the ``cache/<sanitized-provider>/events.json`` layout the
+# default ``read_cache`` resolves to. The monitor in
+# ``scripts/update_stammstrecke_status.py`` writes a single, schema-
+# compliant event when the median S-Bahn departure delay between
+# Wien Floridsdorf and Wien Meidling exceeds the configured threshold.
+_STAMMSTRECKE_CACHE_PATH: Path = Path("cache") / "stammstrecke" / "events.json"
+
+
+def read_cache_stammstrecke() -> list[Any]:
+    """Read ``cache/stammstrecke/events.json`` with the canonical size cap.
+
+    A missing or invalid cache file is treated as "no events" so the
+    feed build never aborts because the monitor has not run yet
+    (e.g. on a fresh clone before the cron job has fired once).
+    """
+
+    if not _STAMMSTRECKE_CACHE_PATH.exists():
+        return []
+    payload = read_capped_json(
+        _STAMMSTRECKE_CACHE_PATH,
+        label="Stammstrecke",
+        logger=log,
+    )
+    if not isinstance(payload, list):
+        return []
+    return list(payload)
+
+
 register_default_providers()
 
 
@@ -244,6 +278,7 @@ __all__ = [
     "provider_statuses",
     "read_cache_baustellen",
     "read_cache_oebb",
+    "read_cache_stammstrecke",
     "read_cache_vor",
     "read_cache_wl",
     "register_provider",

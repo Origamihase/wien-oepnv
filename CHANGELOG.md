@@ -1,6 +1,19 @@
 # CHANGELOG
 
 ## [Unreleased]
+* **Feat**: S-Bahn Stammstrecke Monitoring. Neuer Workflow
+  `.github/workflows/update-stammstrecke-status.yml` (Cron `*/30 * * * *`)
+  ruft via `pyhafas` mit `OEBBProfile` direkte S-Bahn-Verbindungen
+  Wien Floridsdorf (8100518) ↔ Wien Meidling (8100514) ab
+  (`max_changes=0`) und schreibt eine schema-konforme Meldung in
+  `cache/stammstrecke/events.json`, sobald der Median der
+  `departure_delay`-Werte über 9 Minuten liegt. Die Abfrage ist über
+  einen `CircuitBreaker` (5 Fehler / 300 s Recovery) abgesichert,
+  schreibt atomar via `atomic_write` und ist mit dem bestehenden Feed-
+  Build über `read_cache_stammstrecke()` (Provider-Flag
+  `STAMMSTRECKE_ENABLE`) integriert. Dokumentiert in
+  `docs/reference/oebb_provider_logic.md`. Tests mocken `pyhafas`
+  vollständig (`tests/scripts/test_update_stammstrecke_status.py`).
 * **Security**: VOR daily-quota counter is now lower-bound clamped at 0
   inside both `load_request_count` and `save_request_count` (the
   under-lock disk re-read). Pre-fix, a poisoned `data/vor_request_count.json`
