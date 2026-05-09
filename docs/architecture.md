@@ -462,7 +462,57 @@ provider input.
 
 ---
 
-## 7. Cross-references
+## 7. VOR/VAO API Rate-Limit Optimization (2026-05-09)
+
+Die VOR/VAO ReST API erlaubt **100 Requests pro Tag** (`VAO Start`-
+Kontingent). Nach der Migration des Stammstrecken-Monitors von
+`pyhafas` auf die VOR `/trip`-API (siehe
+[`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md))
+ist der Monitor mit 96 Calls/Tag der dominante VOR-Konsument. Drei
+strikt aufeinander abgestimmte Limits halten das Projekt unter dem
+Tagesbudget:
+
+| Konsument | Default-Calls/Tag | Konfigurierbar |
+| :--- | ---: | :--- |
+| **Stammstrecke `/trip`** (`*/30` × 2 Richtungen) | 96 | `cron`-Plan in `update-stammstrecke-status.yml`, `MAX_TRIPS_PER_QUERY` |
+| **Station-Enrichment `location.name`** (monatlich, Stammstrecke-Whitelist) | ~10 (1× pro Monat) | `STAMMSTRECKE_VOR_IDS` in `scripts/update_vor_stations.py` |
+| **Disruption-Polling `departureBoard`** | **0** (default) | `VOR_MONITOR_STATIONS_WHITELIST` env (default: leerer String) |
+| **Tagesbudget gesamt** | **96 / 100** | — |
+
+Drei zusammenwirkende Mechanismen schützen das Budget:
+
+1. **`DEFAULT_MONITOR_WHITELIST = ""`** (`src/providers/vor.py`).
+   Das Disruption-Polling über die VAO API ist standardmäßig
+   deaktiviert. Operatoren, die das Legacy-Verhalten brauchen,
+   setzen `VOR_MONITOR_STATIONS_WHITELIST` als Env-Variable.
+
+2. **`STAMMSTRECKE_VOR_IDS`** (`scripts/update_vor_stations.py`).
+   Live-`location.name`-Enrichment ist auf die 10 Stammstrecke-
+   S-Bahn-Stationen beschränkt; alle anderen Station-IDs fallen
+   beim Stations-Verzeichnis-Update auf die gepinnte
+   `data/vor-haltestellen.csv` zurück.
+
+3. **`_charge_one_request`** (`scripts/update_stammstrecke_status.py`).
+   Vor jedem `/trip`-Call wird ein Quota-Slot via
+   `vor_provider.save_request_count` reserviert; ein Lauf, der das
+   Tagesbudget reißen würde, raised `_QuotaExceeded` *vor* dem
+   Network Call und schreibt einen leeren Cache.
+
+Die monatliche Burst durch das Stations-Enrichment fällt nur auf den
+1. eines Monats (Cron `0 1 1 * *`); selbst mit voller Stammstrecke-
+Aktivität an diesem Tag bleiben 4 Calls Puffer. Sollte das Budget in
+Zukunft enger werden, sind die niedrig-hängenden Hebel:
+
+* Cron `*/30` → `*/60` (halbiert Stammstrecke auf 48 Calls/Tag).
+* `MAX_TRIPS_PER_QUERY = 5` → `3` (kein API-Effekt, da `numF` ein
+  Server-side-Cap ist und VAO mehrere Trips pro Call erlaubt).
+* Operating-Hours-Cron (`0,30 4-23 * * *` statt `*/30 * * * *`) — die
+  Stammstrecke fährt zwischen 00:30 und 04:00 nur ausgedünnt, das
+  Monitoring liefert dort kaum Signal.
+
+---
+
+## 8. Cross-references
 
 - **Security audit history** → `.jules/sentinel.md`
 - **Performance optimisations** → `.jules/apex.md`

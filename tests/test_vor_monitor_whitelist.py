@@ -5,59 +5,57 @@ import src.providers.vor as vor
 
 # --- Test Case ---
 
-def test_fetch_events_uses_whitelist_by_default(
+def test_fetch_events_default_whitelist_is_empty(
     monkeypatch: pytest.MonkeyPatch,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
     """
-    Verify that fetch_events uses the default whitelist (Hbf, Airport)
-    when no env var is set, and resolves their IDs properly.
+    Verify that the default ``DEFAULT_MONITOR_WHITELIST`` is empty as of
+    the 2026-05-09 VOR-quota optimization. Without the env override the
+    departure-board polling MUST NOT make any API calls — the budget
+    is reserved for the Stammstrecke ``/trip`` polling.
+
+    ``VOR_STATION_IDS`` continues to provide the legacy explicit-IDs
+    fallback path; this test asserts the *default* (empty whitelist,
+    empty IDs) produces zero network activity.
     """
-    # Mock credentials and dependencies
     monkeypatch.setattr(vor, "refresh_access_credentials", lambda: "test")
     monkeypatch.setattr(vor, "VOR_ACCESS_ID", "test", raising=False)
-
-    # Mock limits to allow execution
     monkeypatch.setattr(vor, "MAX_REQUESTS_PER_DAY", 100)
     monkeypatch.setattr(vor, "load_request_count", lambda: (None, 0))
     monkeypatch.setattr(vor, "save_request_count", lambda dt: 1)
 
-    # Mock VOR_STATION_IDS to ensure we don't fall back to it or use it if whitelist is active
-    monkeypatch.setattr(vor, "VOR_STATION_IDS", ["99999", "88888"])
+    # No legacy fallback IDs configured.
+    monkeypatch.setattr(vor, "VOR_STATION_IDS", [])
 
-    # Mock resolve_station_ids to track what's being resolved
-    resolved_ids: list[str] = []
+    # ``resolve_station_ids`` must NOT be called when the whitelist is
+    # empty — there are no names to resolve, and a stray call would
+    # consume the VAO Start budget the migration is trying to preserve.
     def mock_resolve(names: list[str]) -> list[str]:
-        nonlocal resolved_ids
-        resolved_ids.extend(names)
-        return ["490134900", "430470800"] # Mock IDs for Hbf and Airport
+        raise AssertionError(
+            f"resolve_station_ids called with default empty whitelist: {names!r}"
+        )
 
     monkeypatch.setattr(vor, "resolve_station_ids", mock_resolve)
 
-    # Mock fetching to avoid network
     captured_ids: list[str] = []
     def mock_fetch(station_id: str, now_local: Any, counter: Any = None, session: Any = None, timeout: Any = None) -> dict[str, Any]:
         captured_ids.append(station_id)
-        return {} # Return empty dict to simulate success
+        return {}
 
     monkeypatch.setattr(vor, "_fetch_departure_board_for_station", mock_fetch)
 
-    # Ensure env var is NOT set (simulating default)
     monkeypatch.delenv("VOR_MONITOR_STATIONS_WHITELIST", raising=False)
+
+    # Pin the constant — a regression that re-introduces a default
+    # whitelist would silently re-enable departure-board polling.
+    assert vor.DEFAULT_MONITOR_WHITELIST == ""
 
     with caplog.at_level("INFO"):
         vor.fetch_events()
 
-    # Verify that we resolved the default whitelist names
-    assert "Wien Hauptbahnhof" in resolved_ids
-    assert "Flughafen Wien" in resolved_ids
-
-    # Verify that we tried to fetch the corresponding IDs
-    assert "490134900" in captured_ids
-    assert "430470800" in captured_ids
-
-    # Verify we did NOT use the fallback IDs
-    assert "99999" not in captured_ids
+    # Default empty whitelist + empty VOR_STATION_IDS → no network call.
+    assert captured_ids == []
 
 
 def test_fetch_events_uses_configured_whitelist(monkeypatch: pytest.MonkeyPatch) -> None:

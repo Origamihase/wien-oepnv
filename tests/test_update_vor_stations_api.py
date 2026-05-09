@@ -100,19 +100,27 @@ class _FakeSession:
 
 
 def test_fetch_vor_stops_from_api_uses_fallback(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Live-fetch happy path + transient HTTP-error fallback path.
+
+    The 2026-05-09 VOR-quota optimization restricted ``location.name``
+    enrichment to the Stammstrecke whitelist, so the test exercises the
+    happy/error pair against two Stammstrecke IDs (Floridsdorf success,
+    Meidling 500). Non-whitelisted IDs are covered by
+    ``test_fetch_vor_stops_from_api_skips_non_stammstrecke_ids`` below.
+    """
     payloads = {
-        "490091000": (
+        "490033400": (
             200,
             {
                 "StopLocation": {
-                    "id": "490091000",
-                    "name": "Wien Aspern Nord",
-                    "coord": {"lat": 48.234567, "lon": 16.520123},
+                    "id": "490033400",
+                    "name": "Wien Floridsdorf",
+                    "coord": {"lat": 48.255, "lon": 16.401},
                     "municipality": "Wien",
                 }
             },
         ),
-        "430470800": (500, {}),
+        "490101500": (500, {}),
     }
 
     fake_session = _FakeSession(payloads)
@@ -122,19 +130,69 @@ def test_fetch_vor_stops_from_api_uses_fallback(monkeypatch: pytest.MonkeyPatch)
     monkeypatch.setattr(module.vor_provider, "VOR_ACCESS_ID", "token", raising=False)
 
     fallback = {
-        "430470800": module.VORStop(
-            vor_id="430470800",
+        "490101500": module.VORStop(
+            vor_id="490101500",
             name="Fallback Stop",
             latitude=None,
             longitude=None,
         )
     }
 
-    stops = module.fetch_vor_stops_from_api(["490091000", "430470800"], fallback=fallback)
+    stops = module.fetch_vor_stops_from_api(["490033400", "490101500"], fallback=fallback)
 
-    assert [stop.vor_id for stop in stops] == ["490091000", "430470800"]
+    # Both IDs are Stammstrecke whitelisted, so the live-fetch loop runs
+    # for both. Floridsdorf returns 200 (parsed); Meidling returns 500
+    # (falls back to the pinned VORStop). Order: skipped fallbacks first
+    # (none in this test), then live-fetch results in input order.
+    returned_ids = [stop.vor_id for stop in stops]
+    assert sorted(returned_ids) == ["490033400", "490101500"]
     assert any("location.name" in call[0] for call in fake_session.calls)
     assert module.vor_provider.refresh_access_credentials() == "token"
+
+
+def test_fetch_vor_stops_from_api_skips_non_stammstrecke_ids(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    """Non-whitelisted IDs must skip the live API call entirely.
+
+    The 2026-05-09 VOR-quota optimization (see ``STAMMSTRECKE_VOR_IDS``
+    in ``scripts/update_vor_stations.py``) restricts live enrichment to
+    the 10 Stammstrecke S-Bahn stations. Any other ID falls through to
+    the pinned-CSV fallback path without consuming a VAO Start request.
+    """
+    fake_session = _FakeSession({})
+
+    monkeypatch.setattr(module, "session_with_retries", lambda *args, **kwargs: fake_session)
+    monkeypatch.setattr(module.vor_provider, "refresh_access_credentials", lambda: "token")
+    monkeypatch.setattr(module.vor_provider, "VOR_ACCESS_ID", "token", raising=False)
+
+    fallback = {
+        "490091000": module.VORStop(
+            vor_id="490091000",
+            name="Wien Aspern Nord (pinned CSV)",
+            latitude=48.234567,
+            longitude=16.520123,
+        ),
+        "430470800": module.VORStop(
+            vor_id="430470800",
+            name="Flughafen Wien (pinned CSV)",
+            latitude=None,
+            longitude=None,
+        ),
+    }
+
+    with caplog.at_level("INFO", logger=module.log.name):
+        stops = module.fetch_vor_stops_from_api(
+            ["490091000", "430470800"], fallback=fallback
+        )
+
+    assert sorted(stop.vor_id for stop in stops) == ["430470800", "490091000"]
+    # Crucially: NO live API calls — both IDs were skipped because
+    # they are outside the Stammstrecke whitelist.
+    assert fake_session.calls == []
+    assert any(
+        "Stammstrecke" in record.getMessage() for record in caplog.records
+    )
 
 
 @dataclass
@@ -216,8 +274,11 @@ class _FakeAnySession:
 def test_fetch_vor_stops_from_api_falls_back_on_non_object_payload(
     monkeypatch: pytest.MonkeyPatch, non_object_payload: Any
 ) -> None:
+    # Use a Stammstrecke-whitelisted ID so the live-fetch path is
+    # exercised (non-whitelisted IDs would short-circuit to the
+    # fallback before reaching the malformed-payload branch).
     payloads: dict[str, tuple[int, Any]] = {
-        "490091000": (200, non_object_payload),
+        "490033400": (200, non_object_payload),
     }
     fake_session = _FakeAnySession(payloads)
 
@@ -226,19 +287,19 @@ def test_fetch_vor_stops_from_api_falls_back_on_non_object_payload(
     monkeypatch.setattr(module.vor_provider, "VOR_ACCESS_ID", "token", raising=False)
 
     fallback = {
-        "490091000": module.VORStop(
-            vor_id="490091000",
+        "490033400": module.VORStop(
+            vor_id="490033400",
             name="Fallback Stop",
             latitude=None,
             longitude=None,
         )
     }
 
-    stops = module.fetch_vor_stops_from_api(["490091000"], fallback=fallback)
+    stops = module.fetch_vor_stops_from_api(["490033400"], fallback=fallback)
 
     # The fallback must be used because the malformed payload is treated
     # like a decode failure, not propagated as AttributeError.
-    assert [stop.vor_id for stop in stops] == ["490091000"]
+    assert [stop.vor_id for stop in stops] == ["490033400"]
     assert [stop.name for stop in stops] == ["Fallback Stop"]
 
 

@@ -358,7 +358,11 @@ def test_update_vor_stations_handles_response_depth_bomb(
     # Pre-fix: this raised RecursionError out of fetch_vor_stops_from_api,
     # aborting the whole station batch.
     # Post-fix: logs a warning and returns the fallback (empty list).
-    result = update_vor_stations.fetch_vor_stops_from_api(["123"])
+    # Use a Stammstrecke-whitelisted ID so the live-fetch path is
+    # exercised — non-whitelisted IDs short-circuit to the pinned-CSV
+    # fallback before reaching ``json.loads`` (see the 2026-05-09 VOR
+    # quota optimization in ``scripts/update_vor_stations.py``).
+    result = update_vor_stations.fetch_vor_stops_from_api(["490033400"])
     assert isinstance(result, list)
     warning_messages = [r.getMessage() for r in caplog.records]
     assert any(

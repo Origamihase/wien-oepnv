@@ -71,7 +71,21 @@ DEFAULT_MAX_STATIONS_PER_RUN = 2
 DEFAULT_ROTATION_INTERVAL_SEC = 1800
 # "VAO Start" contract limit: 100 requests per day (hard limit).
 DEFAULT_MAX_REQUESTS_PER_DAY = 100
-DEFAULT_MONITOR_WHITELIST = "Wien Hauptbahnhof,Flughafen Wien"
+# Default VOR Monitor whitelist — INTENTIONALLY EMPTY since the Stammstrecke
+# migration (2026-05-09): the historical default ``"Wien Hauptbahnhof,
+# Flughafen Wien"`` consumed two VOR DepartureBoard requests per cron tick
+# (every hour) for stations whose disruption coverage is now provided by
+# the WL / OEBB providers. After the Stammstrecke monitor was migrated from
+# pyhafas to the VOR ``/trip`` endpoint (``scripts/update_stammstrecke_status.py``),
+# the per-day budget became dominated by 2 trip requests × 48 cron fires =
+# 96 requests/day, leaving only ~4 requests/day buffer for monthly station
+# enrichment. Keeping the legacy departure-board polling on top of that
+# would push the project over the contractual ``MAX_REQUESTS_PER_DAY`` cap
+# (100/day). An operator who explicitly needs the legacy behaviour can
+# still set ``VOR_MONITOR_STATIONS_WHITELIST`` in the environment to
+# re-enable specific stations — but the project default is now "no
+# departure-board polling".
+DEFAULT_MONITOR_WHITELIST = ""
 RETRY_AFTER_FALLBACK_SEC = 5.0
 RETRY_AFTER_MAX_SEC = 60.0
 
