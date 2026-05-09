@@ -363,7 +363,87 @@ The relevant CLI flags / env vars:
 
 ---
 
-## 6. Cross-references
+## 6. Statistics & Dashboard Pipeline
+
+Operational metrics live entirely outside the RSS pipeline so the
+hot-path build never blocks on observability I/O. Two append-only CSV
+ledgers under `data/stats/` (one per kind, one file per calendar year)
+capture the raw observations; a daily GitHub Actions job rolls them
+into a static Markdown dashboard at `docs/statistik.md`.
+
+```mermaid
+flowchart LR
+    subgraph "Producers (every cron tick)"
+        SS[update_stammstrecke_status.py<br/><i>after median calc</i>]
+        BF[build_feed.main<br/><i>_update_item_state strict-new branch</i>]
+    end
+    subgraph "Append-only ledgers (data/stats/)"
+        SCSV[stammstrecke_YYYY.csv<br/><i>timestamp, weekday, hour, direction, delay_minutes</i>]
+        DCSV[stoerungen_YYYY.csv<br/><i>timestamp, weekday, hour, provider, location_name</i>]
+    end
+    subgraph "Aggregator (daily 00:15 UTC)"
+        AGG[generate_markdown_stats.py<br/><i>stdlib only</i>]
+    end
+    subgraph "Output"
+        MD[docs/statistik.md<br/><i>ASCII / Emoji bars</i>]
+    end
+
+    SS -- append --> SCSV
+    BF -- append --> DCSV
+    SCSV --> AGG
+    DCSV --> AGG
+    AGG --> MD
+```
+
+**Why this shape:**
+
+- **Append-only is crash-safe**: a single `write()` of one CSV row is
+  below `PIPE_BUF` on every supported platform, so concurrent appenders
+  cannot interleave bytes mid-line. No locks needed.
+- **Best-effort writes**: `src/utils/stats.py` swallows `OSError` at
+  WARNING level — full disk, permission denied, or read-only
+  filesystem cannot crash the production pipeline. Statistics are
+  observability, not core functionality.
+- **Strict-new gating**: the disruption writer is hooked into
+  `_update_item_state` *only* on the strict cache miss (no entry by
+  `_identity` *or* `guid`). A long-lived ÖBB Streckeninformation that
+  survives many feed builds is recorded once, not once per regen.
+- **Per-year files**: bounds individual file size even after years of
+  operation; the aggregator only opens the requested year's files.
+- **Zero-dependency aggregator**: `scripts/generate_markdown_stats.py`
+  uses only `csv`, `collections`, `datetime`, `statistics`,
+  `pathlib`, `zoneinfo`, `argparse`. No NumPy / Pandas / Matplotlib.
+  Keeps CI runtime small and the repo's wheel cache trivial.
+- **Bounded reads**: the aggregator routes every CSV through
+  `read_capped_text` (open + `fstat` + capped `read`) and constructs
+  `csv.reader` over an in-memory `StringIO`. Matches the project-wide
+  `tests/test_sentinel_csv_size_bomb.py` invariant against unbounded
+  CSV reads.
+- **Atomic dashboard write**: the rendered Markdown is written via
+  `atomic_write`, so a kill-signal mid-render cannot replace the
+  previous dashboard with a half-written file.
+- **Idempotent + byte-stable**: rendering twice on identical input
+  produces byte-identical Markdown (ties broken by alphabetic
+  secondary sort), so the auto-commit step in
+  `.github/workflows/generate-stats.yml` is a no-op when nothing
+  actually changed.
+
+The dashboard answers two operator questions:
+
+| Question | Section |
+|---|---|
+| **When** do Stammstrecke delays occur? | "Stammstrecke" — weekday + hour distributions of both observation count and average delay |
+| **Where** (and **when**) are disruption hotspots? | "Störungen" — per-provider table, weekday + hour distributions, top-5 hotspots with per-location hourly profile |
+
+The location heuristic in `extract_location_name` tries (in order):
+`zwischen X und Y` → first capture, then `Wien <Name>`, then the first
+capitalised multi-word token outside a small stopword set
+(Bauarbeiten, Verspätung, Linie, …). Falls back to `"unbekannt"` so
+the dashboard always renders even on adversarial provider input.
+
+---
+
+## 7. Cross-references
 
 - **Security audit history** → `.jules/sentinel.md`
 - **Performance optimisations** → `.jules/apex.md`

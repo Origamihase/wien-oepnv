@@ -59,6 +59,7 @@ from .utils.files import atomic_write, read_capped_json
 from .utils.http import validate_http_url
 from .utils.locking import file_lock
 from .utils.logging import sanitize_log_arg
+from .utils.stats import append_disruption_row, extract_location_name
 from .utils.text import html_to_text, truncate_html
 
 
@@ -1647,6 +1648,7 @@ def _update_item_state(it: FeedItem, now: datetime, state: dict[str, dict[str, A
     # Fallback: check guid as secondary key
     if not st and it.get("guid") and it["guid"] != ident:
         st = state.get(str(it["guid"]))
+    is_strictly_new = not st
     if not st:
         st = {"first_seen": _to_utc(now).isoformat()}
     state[ident] = st
@@ -1657,6 +1659,27 @@ def _update_item_state(it: FeedItem, now: datetime, state: dict[str, dict[str, A
         log.warning("first_seen Parsefehler: %r – fallback to now", st.get("first_seen"))
         fs_dt = _to_utc(now)
         st["first_seen"] = fs_dt.isoformat()
+
+    # Stats: log the very first observation of a disruption identity into
+    # ``data/stats/stoerungen_YYYY.csv``. We deliberately key on the
+    # *strict* state-cache miss above (i.e. neither ``ident`` nor ``guid``
+    # had a prior entry) so reruns of the same incident — a long-lived
+    # ÖBB Streckeninformation that survives many feed builds — only
+    # record a single occurrence in the dashboard. Best-effort: any
+    # I/O failure inside ``append_disruption_row`` is logged and
+    # swallowed so the feed build itself never blocks on stats I/O.
+    if is_strictly_new:
+        try:
+            append_disruption_row(
+                timestamp=_to_utc(now),
+                provider=str(it.get("source") or "unbekannt"),
+                location_name=extract_location_name(cast(dict[str, Any], it)),
+            )
+        except Exception as exc:  # pragma: no cover - defensive; writer is no-throw
+            log.warning(
+                "Disruption-Stats konnten nicht geschrieben werden: %s",
+                sanitize_log_arg(str(exc)),
+            )
     return ident, fs_dt
 
 

@@ -98,6 +98,7 @@ from src.utils.files import atomic_write, read_capped_json  # noqa: E402
 from src.utils.ids import make_guid  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
 from src.utils.stations import canonical_name, display_name  # noqa: E402
+from src.utils.stats import append_stammstrecke_row  # noqa: E402
 
 if TYPE_CHECKING:
     from pyhafas.types.fptf import Journey, Leg
@@ -725,6 +726,16 @@ def _process_direction(
         median_minutes,
         DELAY_THRESHOLD_MINUTES,
     )
+    # Stats: persist every successful median observation, regardless of
+    # whether it exceeds the feed-trigger threshold. The dashboard's
+    # value comes from the *full* distribution, not just the events that
+    # made it onto the RSS feed.
+    append_stammstrecke_row(
+        timestamp=when,
+        direction=direction.target_label,
+        delay_minutes=median_minutes,
+    )
+
     if median_minutes <= DELAY_THRESHOLD_MINUTES:
         return None, "no_delays"
 
