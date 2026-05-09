@@ -1,3 +1,166 @@
+## 2026-05-09 - Markdown Injection Sibling Drift (CWE-79 / CWE-1236-adjacent) at the Stats-Dashboard Renderer Boundary: `direction`, `provider`, `location_name` Interpolated Verbatim Into `docs/statistik.md`
+**Vulnerability:** The 2026-05-09 CSV-formula-injection round closed
+the *write* side of `data/stats/*.csv` but explicitly flagged a
+sibling-drift candidate for the next round:
+
+> Markdown rendering of the same fields
+> (`scripts/generate_markdown_stats.py:585,600,511` — Markdown table
+> cells `f"| {direction} | {count} |"` interpolate the *same*
+> upstream-influenced strings without escaping `|` / `*` / `` ` `` /
+> `<` / `>` / `[`) is a sibling drift candidate flagged here for the
+> next round: defanging at the CSV write does NOT cover the
+> markdown-injection axis when the same data is re-rendered into
+> `docs/statistik.md`.
+
+That sibling was open: four CSV-derived sinks in
+`scripts/generate_markdown_stats.py` (pre-fix) interpolated the
+operator-/upstream-influenced ``direction`` / ``provider`` /
+``location_name`` cells *verbatim* into Markdown:
+
+  ```python
+  # _format_directions_section (line 585):
+  lines.append(f"| {direction} | {count} |")          # table cell
+  # _format_providers_section (line 600):
+  lines.append(f"| {provider} | {count} |")           # table cell
+  # render_top_locations (line 491):
+  _bar_line(loc[:30], …)                              # `…` code-span label inside ``` fence
+  # render_top_locations (line 511):
+  lines.append(f"**{loc}**")                          # bold header, no fence
+  ```
+
+Four orthogonal Markdown-injection axes opened up at these sinks:
+
+  (a) **Pipe `|` in a table cell** — adds extra columns, breaks the
+      2-column table layout. A poisoned ``provider`` value
+      ``"ÖBB | INJECTED | extra"`` renders as a 4-column row that
+      mis-aligns every subsequent cell in the operator's
+      observability dashboard.
+  (b) **HTML tags in `**…**` bold context** — the bold header is
+      *outside* any code fence, so GFM-spec-compliant renderers
+      happily process inline HTML there. A poisoned
+      ``location_name`` ``"<img src=x onerror=alert(1)>"`` lands a
+      usable HTML tag in the dashboard. GitHub's own renderer
+      sanitises ``<script>`` but every operator's local IDE /
+      static-site builder has its own policy.
+  (c) **Backtick in `` `…` `` code-span label** — CommonMark code
+      spans render their interior verbatim and *backslashes are not
+      escapes inside them* — the only character that can close the
+      span is a literal backtick. A poisoned ``location_name``
+      ``"Foo`evil`bar"`` prematurely closes the inline code span,
+      leaking the bar-chart separator and glyphs as plain Markdown.
+  (d) **Embedded newlines (``\n`` / ``\r`` / U+2028 LINE SEP / U+2029
+      PARA SEP)** — `csv.reader` happily parses a quoted multi-line
+      cell. A row whose ``direction`` is ``"Foo\n## INJECTED HEADER"``
+      pre-fix split the table row at the embedded ``\n`` and the
+      second line **was rendered as a real H2 Markdown header**
+      ("## INJECTED HEADER | 1 |"), turning operator-supplied data
+      into an arbitrary new section in the public dashboard.
+
+The threat model spans three orthogonal poisoning vectors that
+already bypass the CSV-write defang:
+
+  1. **Cache-poisoning vector**: ``cache/wl/wl_baustellen.json`` and
+     ``cache/wl/events.json`` re-emit ``ev["source"]`` verbatim into
+     ``provider`` (``src/providers/wl_fetch.py:736,858``). The CSV
+     formula-prefix sanitiser strips ``=``/``+``/``-``/``@``/`\t`/`\r`
+     and C0/C1 control bytes — but PRESERVES every Markdown
+     metacharacter (`|` / `*` / `` ` `` / `<` / `>` / `[` / `]` / `(`
+     / `)` / `_` / `#` / `~` / `\\`). A poisoned cache file with
+     ``"source": "ÖBB | INJECTED"`` survives the CSV writer's
+     formula-defang untouched and lands in ``data/stats/
+     stoerungen_*.csv``, then in ``docs/statistik.md``.
+  2. **Stations-directory poisoning vector**: ``data/stations.json``
+     flows through ``display_name`` into ``direction`` (the
+     `update_stammstrecke_status` round). Same Markdown-metachar
+     residue.
+  3. **Historical-row vector**: rows committed before the
+     2026-05-09 formula-write sanitiser landed remain on disk
+     unchanged. Even if the writer were perfect for new rows, the
+     dashboard re-renders the historical CSV every cron tick — the
+     render boundary is the LAST gate.
+
+Each rendered ``docs/statistik.md`` is committed back to the
+repository (the `generate-stats.yml` workflow auto-commits) and
+becomes a public artefact: rendered by GitHub on the public repo
+browser, by every operator's local IDE / Markdown viewer, by any
+static-site builder downstream.
+
+**Fix:** Two sibling helpers in ``src/utils/text.py`` plus
+context-specific application at every sink:
+
+  1. ``normalise_markdown_text(text, *, max_len=200)`` — strips C0/C1
+     controls (except TAB/LF/CR which the whitespace-collapse step
+     replaces with a single space, preserving operator readability),
+     plus the canonical Trojan-Source / line-terminator union pinned
+     in ``src/utils/logging.py``: ALM (`؜`), ZWSP-ZWJ + LRM/RLM
+     (`​-‏`), LINE/PARA SEP + LRE/RLE/PDF/LRO/RLO
+     (` -‮`), LRI/RLI/FSI/PDI (`⁦-⁩`), and BOM
+     (`﻿`). Collapses every whitespace run to a single space and
+     caps length at ``max_len``.
+  2. ``safe_markdown_codespan(text, *, max_len=200)`` — same
+     normalisation, plus replaces literal backticks with apostrophes
+     (the project-wide convention pinned by
+     ``src.feed.reporting._sanitize_code_span``). Used wherever the
+     output flows into a `` `…` `` inline code span where backslash
+     escapes are inert by CommonMark.
+
+  At each sink in ``scripts/generate_markdown_stats.py``:
+
+  ```python
+  # _format_directions_section / _format_providers_section
+  cell = escape_markdown_cell(
+      normalise_markdown_text(direction, max_len=80)
+  )
+  lines.append(f"| {cell} | {count} |")           # \| escaped, HTML defanged
+
+  # render_top_locations bold header
+  safe_loc = escape_markdown(
+      normalise_markdown_text(loc, max_len=80)
+  )
+  lines.append(f"**{safe_loc}**")                  # <script>→&lt;script&gt;, [link]→\[link\]
+
+  # render_top_locations bar-chart label
+  bar_label = safe_markdown_codespan(
+      loc, max_len=30
+  )
+  lines.append(_bar_line(bar_label, …))            # backticks→apostrophes, \n→space
+  ```
+
+Reuses the existing pattern from ``src/feed/reporting.py`` (which
+already routes Feed-Health-report fields through
+``escape_markdown`` / ``escape_markdown_cell``) — the dashboard
+renderer was the only Markdown emitter that skipped the defence.
+
+**Tests:** Seven end-to-end PoC tests in
+``tests/scripts/test_generate_markdown_stats_md_injection.py``
+exercise each sink with a layout-breaking payload (pipe in
+direction / provider table cell, ``<script>``-tag in bold header,
+Markdown-link in bold header, backtick in code-span label,
+newline-injected H2 header, full poisoned-CSV-row → safe-Markdown
+end-to-end). All seven were verified to FAIL on the pre-fix code
+before the fix was applied. Companion unit tests in
+``tests/test_text_markdown_helpers.py`` pin the
+``normalise_markdown_text`` / ``safe_markdown_codespan`` contract
+(BiDi marks, line separators, C1 controls, ZWSP family, length
+cap, legitimate-Unicode preservation).
+
+**Learning:** When the prior round's journal entry explicitly
+flags a *named* sibling-drift candidate ("flagged here for the
+next round" + concrete file/line citations), the next Sentinel
+pass should treat it as the highest-priority hunt — the threat
+analysis is already done, only the boundary application is
+missing. Markdown rendering is the LAST sink in any text-data
+pipeline that ends in a human-readable artefact (dashboard,
+issue body, README); always treat it as a *defence boundary*
+even when an upstream sanitiser exists, because the upstream's
+threat model (formula prefixes, control bytes) is rarely the
+same as the renderer's (HTML, table cells, code spans, BiDi). A
+single ``escape_markdown`` / ``escape_markdown_cell`` /
+``safe_markdown_codespan`` triple, paired with a
+``normalise_markdown_text`` whitespace/control-byte normaliser,
+is the canonical defence shape — the Feed-Health renderer
+already used it; the dashboard's omission was pure drift.
+
 ## 2026-05-09 - CSV Formula Injection (CWE-1236) at the Stats-Writer Boundary: `provider`, `location_name`, `direction` Persisted Verbatim Into `data/stats/*.csv`
 **Vulnerability:** `append_stammstrecke_row` and
 `append_disruption_row` (`src/utils/stats.py:219-273`, pre-fix) — the

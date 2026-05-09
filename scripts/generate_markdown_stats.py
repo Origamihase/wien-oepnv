@@ -65,6 +65,12 @@ from src.utils.stats import (  # noqa: E402
     WEEKDAY_LABELS,
     stats_path,
 )
+from src.utils.text import (  # noqa: E402
+    escape_markdown,
+    escape_markdown_cell,
+    normalise_markdown_text,
+    safe_markdown_codespan,
+)
 
 LOGGER = logging.getLogger("generate_markdown_stats")
 
@@ -83,6 +89,15 @@ MAX_CSV_BYTES: Final = 25 * 1024 * 1024
 # rendered Markdown stays comfortable even on a 96-col terminal viewer.
 MAX_BAR_WIDTH: Final = 24
 TOP_N_LOCATIONS: Final = 5
+
+# Per-cell length cap applied at every CSV-derived Markdown sink. Each
+# CSV writer in :mod:`src.utils.stats` already caps ``provider`` /
+# ``location_name`` / ``direction`` at 200 chars on persistence, but
+# the dashboard renders inside narrow Markdown table columns and
+# 30-char-label bar charts; an additional render-side cap keeps the
+# dashboard layout legible even if a future writer relaxes its own cap.
+_DASHBOARD_FIELD_MAX_LEN: Final = 80
+_DASHBOARD_BAR_LABEL_MAX_LEN: Final = 30
 
 # Visual vocabulary. Different glyphs per chart type so the eye can
 # tell them apart at a glance even when the dashboard is rendered in
@@ -487,9 +502,16 @@ def render_top_locations(
     lines: list[str] = [f"### Top {top_n} Hotspots (Anzahl Störungen)", "", "```"]
     for loc, count in items:
         suffix = f" {count}"
+        # Bar labels are wrapped in `` `…` `` inside a fenced code block.
+        # CommonMark code spans render verbatim — backslash escapes are
+        # NOT active — so the only safe defence against a CSV-derived
+        # backtick / embedded newline closing the span is replacement.
+        bar_label = safe_markdown_codespan(
+            loc, max_len=_DASHBOARD_BAR_LABEL_MAX_LEN
+        )
         lines.append(
             _bar_line(
-                loc[:30],
+                bar_label,
                 count,
                 max_value,
                 BAR_GLYPHS["location"],
@@ -504,11 +526,16 @@ def render_top_locations(
     lines.append(f"### Tageszeit-Profil der Top {top_n} Hotspots")
     lines.append("")
     for loc, _count in items:
+        # The dict lookup must use the raw ``loc`` key (which is what
+        # the aggregator stored). Only the rendered text is sanitised.
         hours = aggregate.by_location_hour.get(loc, {})
         if not hours:
             continue
         max_hour = max(hours.values()) if hours else 0
-        lines.append(f"**{loc}**")
+        safe_loc = escape_markdown(
+            normalise_markdown_text(loc, max_len=_DASHBOARD_FIELD_MAX_LEN)
+        )
+        lines.append(f"**{safe_loc}**")
         lines.append("")
         lines.append("```")
         # Show only the hours that actually carry signal — full 24-row
@@ -573,7 +600,15 @@ def _format_summary_section(
 
 
 def _format_directions_section(stammstrecke: StammstreckeAggregate) -> list[str]:
-    """Render the per-direction breakdown table."""
+    """Render the per-direction breakdown table.
+
+    Routes ``direction`` through :func:`normalise_markdown_text` +
+    :func:`escape_markdown_cell` so a CSV row whose direction field
+    contains a Markdown-meaningful character (``|`` / ``<`` / `` ` ``
+    / ``[`` / embedded newline) cannot break out of the 2-column
+    table cell. See the module-level threat model in the Sentinel
+    journal (2026-05-09 Markdown sibling drift round).
+    """
     if not stammstrecke.by_direction:
         return ["### Beobachtungen je Richtung", "", "_Keine Daten._", ""]
     items = sorted(
@@ -582,13 +617,24 @@ def _format_directions_section(stammstrecke: StammstreckeAggregate) -> list[str]
     )
     lines: list[str] = ["### Beobachtungen je Richtung", "", "| Richtung | Anzahl |", "| --- | ---: |"]
     for direction, count in items:
-        lines.append(f"| {direction} | {count} |")
+        cell = escape_markdown_cell(
+            normalise_markdown_text(direction, max_len=_DASHBOARD_FIELD_MAX_LEN)
+        )
+        lines.append(f"| {cell} | {count} |")
     lines.append("")
     return lines
 
 
 def _format_providers_section(stoerungen: StoerungAggregate) -> list[str]:
-    """Render the per-provider breakdown table."""
+    """Render the per-provider breakdown table.
+
+    See :func:`_format_directions_section` for the threat model.
+    The ``provider`` field flows from
+    :data:`cache/wl/wl_baustellen.json["source"]` (and siblings) which
+    a poisoned cache file can populate verbatim — defending the
+    rendering boundary closes that path even when the upstream cache
+    integrity check is bypassed.
+    """
     if not stoerungen.by_provider:
         return ["### Störungen je Quelle", "", "_Keine Daten._", ""]
     items = sorted(
@@ -597,7 +643,10 @@ def _format_providers_section(stoerungen: StoerungAggregate) -> list[str]:
     )
     lines: list[str] = ["### Störungen je Quelle", "", "| Quelle | Anzahl |", "| --- | ---: |"]
     for provider, count in items:
-        lines.append(f"| {provider} | {count} |")
+        cell = escape_markdown_cell(
+            normalise_markdown_text(provider, max_len=_DASHBOARD_FIELD_MAX_LEN)
+        )
+        lines.append(f"| {cell} | {count} |")
     lines.append("")
     return lines
 
