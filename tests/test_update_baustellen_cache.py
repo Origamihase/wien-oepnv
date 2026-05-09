@@ -17,43 +17,92 @@ def _patch_http_layer_bypass(monkeypatch: pytest.MonkeyPatch) -> None:
     ``responses``-mocked URL can be consumed without hitting the real
     network.
 
-    Three layers need to be patched in concert; missing any one leaks
+    Defense-in-depth: TWO independent safeguards prevent a real
+    network leak if a future test author calls this helper without
+    activating ``responses``:
+
+    1. **TEST-NET-1 fake IP** (``192.0.2.1``, RFC 5737 §3) — IANA-
+       reserved for documentation-only use. Routers MUST NOT forward
+       packets to this range, so a leaked HTTP request times out
+       at the OS networking layer instead of reaching a real host
+       (the previous fake ``8.8.8.8`` was Google Public DNS, which
+       responds to TCP connects on port 443 — polite but still a
+       real network round-trip).
+
+    2. **Runtime guard via ``responses.is_enabled()``** — the
+       patched ``_resolve_hostname_safe`` lambda first checks whether
+       the ``responses`` mocker is currently active. If not, it
+       raises ``RuntimeError`` with a clear message instructing the
+       test author to wrap the HTTP-using code in
+       ``@responses.activate``. This converts the silent-timeout
+       failure mode into a fail-fast diagnostic.
+
+    Combined with the existing test-isolation property of pytest's
+    ``monkeypatch`` (per-test scope, auto-reverted), the helper is
+    safe to use in any test that legitimately mocks HTTP via
+    ``responses``.
+
+    Patches the four layers in concert; missing any one leaks
     through to a real network call:
 
     * ``validate_http_url`` — patched on the **caller's namespace**
       (``update_baustellen_cache``) because the script does
-      ``from utils.http import validate_http_url`` at import time, so
-      patching only ``sys.modules['utils.http'].validate_http_url``
+      ``from utils.http import validate_http_url`` at import time,
+      so patching only ``sys.modules['utils.http'].validate_http_url``
       would leave the script's local binding pointing at the
       original function.
-
-    * ``verify_response_ip`` — patched on the **provider module**
-      because it is called by the request machinery at the HTTP-layer
-      level, not from the script.
-
-    * ``_resolve_hostname_safe`` — patched on the **provider module**
-      with a fake resolver that returns ``127.0.0.1`` so the request
-      layer never times out on DNS even when the runner's namespace
-      forbids name resolution (the 2026-05-09 cron flake —
-      ``responses`` intercepts at the HTTP layer, but our HTTP
-      utility resolves DNS BEFORE handing off to the requests
-      library, so the mock cannot prevent the timeout). The fake
-      mirrors the :func:`socket.getaddrinfo`-shaped tuple the
-      production helper returns so downstream consumers never need
-      an ``isinstance`` check.
+    * ``verify_response_ip`` — patched on the **provider module**.
+    * ``_resolve_hostname_safe`` — patched on the **provider
+      module** with a fake resolver returning the TEST-NET-1 IP
+      (and the runtime guard described above).
+    * ``is_ip_safe`` — patched on the **provider module** to
+      always return ``True`` so the safe-IP allowlist does not
+      reject the TEST-NET-1 fallback (which is correctly classified
+      as a documentation-range IP and would otherwise be rejected).
     """
-    # The fake IP must NOT be one of the SSRF-rejected ranges
-    # (loopback, RFC1918, link-local, multicast, etc.) — the
-    # request layer post-validates each resolved IP via
-    # ``is_ip_safe`` and raises "No safe IP resolved" when every
-    # entry fails. ``8.8.8.8`` (Google Public DNS) is a documented-
-    # safe public IPv4 that survives every gate. We additionally
-    # patch ``is_ip_safe`` to ``True`` as a belt-and-suspenders so
-    # a future tightening of the safe-IP allowlist cannot
-    # silently re-break this fixture.
+    import responses as _responses_lib
+
+    # RFC 5737 §3 TEST-NET-1 — guaranteed unrouteable so a leaked
+    # HTTP request times out instead of reaching a real host.
     fake_addrinfo: list[tuple[Any, ...]] = [
-        (socket.AF_INET, socket.SOCK_STREAM, 6, "", ("8.8.8.8", 0)),
+        (socket.AF_INET, socket.SOCK_STREAM, 6, "", ("192.0.2.1", 0)),
     ]
+
+    def _is_responses_active() -> bool:
+        """Detect whether the ``responses`` mocker has been started.
+
+        ``responses.mock._patcher`` is ``None`` when the mocker is
+        idle and a ``unittest.mock._patch`` instance after
+        ``start()`` (set by both the ``@responses.activate``
+        decorator and the ``responses.RequestsMock`` context
+        manager). ``responses.is_enabled()`` is the public API in
+        newer ``responses`` versions but is not present in the
+        version pinned by this project (see requirements-dev.txt);
+        the internal-attribute check is the documented fallback
+        per the ``responses`` issue tracker.
+        """
+        return getattr(_responses_lib.mock, "_patcher", None) is not None
+
+    def _guarded_resolve(_hostname: str) -> list[tuple[Any, ...]]:
+        """Fail-fast guard: refuse to resolve when ``responses`` is not
+        active. This converts the silent-timeout failure mode (the
+        TEST-NET-1 IP would otherwise produce a 5-second timeout) into
+        an immediate, actionable error pointing at the missing
+        ``@responses.activate`` decorator.
+        """
+        if not _is_responses_active():
+            raise RuntimeError(
+                "_patch_http_layer_bypass was called but the "
+                "``responses`` HTTP mocker is NOT currently active. "
+                "Wrap the HTTP-using code in @responses.activate "
+                "(or use the responses context manager). Refusing to "
+                "let a real HTTP request reach the network — even via "
+                "the TEST-NET-1 fallback IP — because doing so would "
+                "produce a misleading 5-second timeout instead of a "
+                "clear test-setup error."
+            )
+        return fake_addrinfo
+
     # 1) The caller's local binding (the script imports the name
     # directly, so the module-attribute patch below cannot reach it).
     monkeypatch.setattr(
@@ -69,7 +118,7 @@ def _patch_http_layer_bypass(monkeypatch: pytest.MonkeyPatch) -> None:
         monkeypatch.setattr(module, "validate_http_url", lambda url, **kw: url)
         monkeypatch.setattr(module, "verify_response_ip", lambda _: None)
         monkeypatch.setattr(
-            module, "_resolve_hostname_safe", lambda _hostname: fake_addrinfo
+            module, "_resolve_hostname_safe", _guarded_resolve
         )
         monkeypatch.setattr(module, "is_ip_safe", lambda _ip, **_kw: True)
 
@@ -363,6 +412,38 @@ def test_fetch_remote_accepts_geojson_variants(
         )
 
     run()
+
+
+def test_patch_http_layer_bypass_fails_fast_without_responses_active(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """``_patch_http_layer_bypass`` must refuse to let a real HTTP
+    request reach the network.
+
+    Defense-in-depth contract: even if a future test author accidentally
+    calls the helper without wrapping the HTTP-using code in
+    ``@responses.activate``, the patched ``_resolve_hostname_safe`` must
+    detect that the ``responses`` mocker is inactive and raise
+    ``RuntimeError`` with a clear, actionable error message — instead of
+    letting the request silently time out at the OS networking layer
+    (the previous behaviour produced a 5-second hang via the TEST-NET-1
+    fallback IP).
+    """
+    _patch_http_layer_bypass(monkeypatch)
+
+    # ``responses`` is NOT activated here — invoking the production
+    # fetch path therefore exercises the runtime guard inside the
+    # patched ``_resolve_hostname_safe``.
+    with pytest.raises(RuntimeError) as exc_info:
+        update_baustellen_cache._fetch_remote(
+            update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+        )
+    msg = str(exc_info.value)
+    assert "responses" in msg
+    # The error must explicitly point at the missing decorator so the
+    # author doesn't need to spelunk into the helper to understand
+    # the failure.
+    assert "@responses.activate" in msg
 
 
 @pytest.mark.parametrize(
