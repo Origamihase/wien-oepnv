@@ -309,6 +309,45 @@ def test_render_top_locations_handles_empty_aggregate() -> None:
     assert "Noch keine Störungen erfasst" in body
 
 
+def test_render_top_locations_skips_unbekannt_bucket() -> None:
+    """``unbekannt`` (extractor sentinel) must not appear in the ranking.
+
+    Without the filter, periods dominated by line-only disruption
+    mentions ("Demonstration auf Linie 5" / "Polizeieinsatz Linie 13A")
+    would surface ``unbekannt`` as the #1 hotspot — uninformative for
+    operators. The temporal stats (weekday / hour) still see those
+    rows; only the location ranking skips them.
+    """
+    agg = script.StoerungAggregate(
+        by_location=Counter(
+            {script.LOCATION_UNKNOWN: 50, "Wien Karlsplatz": 3, "Volkstheater": 2}
+        ),
+        by_location_hour={
+            script.LOCATION_UNKNOWN: {12: 50},
+            "Wien Karlsplatz": {7: 3},
+            "Volkstheater": {18: 2},
+        },
+        total_disruptions=55,
+    )
+    out = script.render_top_locations(agg, top_n=3)
+    body = "\n".join(out)
+    assert "unbekannt" not in body
+    assert "Wien Karlsplatz" in body
+    assert "Volkstheater" in body
+
+
+def test_render_top_locations_empty_when_only_unbekannt() -> None:
+    """If every disruption has ``unbekannt`` location, ranking is empty."""
+    agg = script.StoerungAggregate(
+        by_location=Counter({script.LOCATION_UNKNOWN: 10}),
+        by_location_hour={script.LOCATION_UNKNOWN: {12: 10}},
+        total_disruptions=10,
+    )
+    out = script.render_top_locations(agg, top_n=5)
+    body = "\n".join(out)
+    assert "Stationszuordnung" in body  # the empty-state placeholder
+
+
 # ---- Full markdown rendering ----------------------------------------------
 
 

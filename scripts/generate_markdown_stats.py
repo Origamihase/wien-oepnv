@@ -101,6 +101,18 @@ README_DISRUPTIONS_TOP_N: Final = 3
 STAMMSTRECKE_THRESHOLD_MINUTES: Final = 9.0
 README_PENDING_PLACEHOLDER: Final = "_wird berechnet…_"
 
+# Sentinel emitted by :func:`src.utils.stats.extract_location_name` when
+# no directory-anchored station can be identified for a disruption (the
+# upstream title/description simply doesn't mention a station name we
+# recognise). The Top-N "Häufigste Störungsorte" / "Hotspots" rankings
+# explicitly skip this bucket — without the filter, every period in
+# which most disruptions are line-only mentions ("Demonstration auf
+# Linie 5") would surface ``unbekannt`` as the #1 hotspot, which is not
+# useful operator information. The bucket is still counted in the
+# overall "Erfasste Störungen" total and in the weekday / hour
+# distributions so the temporal signal is preserved.
+LOCATION_UNKNOWN: Final = "unbekannt"
+
 # Bar-chart geometry. The bar widths are intentionally short so the
 # rendered Markdown stays comfortable even on a 96-col terminal viewer.
 MAX_BAR_WIDTH: Final = 24
@@ -503,6 +515,24 @@ def render_top_locations(
             "_Noch keine Störungen erfasst._",
             "",
         ]
+    # Drop the ``unbekannt`` bucket from the ranking so periods dominated
+    # by line-only disruption mentions ("Demonstration auf Linie 5",
+    # "Polizeieinsatz Linie 13A") do not surface the sentinel as the #1
+    # hotspot. The bucket stays in the underlying aggregate so the
+    # totals and temporal distributions in the rest of the dashboard
+    # are unaffected.
+    ranked_locations = {
+        loc: count
+        for loc, count in aggregate.by_location.items()
+        if loc != LOCATION_UNKNOWN
+    }
+    if not ranked_locations:
+        return [
+            f"### Top {top_n} Hotspots",
+            "",
+            "_Noch keine Störungen mit Stationszuordnung erfasst._",
+            "",
+        ]
 
     # ``Counter.most_common`` is stable across equal counts but ties on
     # *count* alone are random across Python versions — fall through to
@@ -510,7 +540,7 @@ def render_top_locations(
     # byte-deterministic for two locations with identical incident
     # counts.
     items = sorted(
-        aggregate.by_location.items(),
+        ranked_locations.items(),
         key=lambda pair: (-pair[1], pair[0]),
     )[:top_n]
     max_value = items[0][1] if items else 0
@@ -610,7 +640,13 @@ def _format_summary_section(
         f"| Davon über {stammstrecke.threshold_minutes:g}-min-Schwelle | {stammstrecke.threshold_exceedances} |",
         f"| ⌀ Verspätung (alle Tage) | {global_avg:.1f} min |",
         f"| Erfasste Störungen ({year}) | {stoerungen.total_disruptions} |",
-        f"| Verschiedene Hotspots | {len(stoerungen.by_location)} |",
+        # Count distinct *known* hotspots only — the ``unbekannt``
+        # bucket aggregates every disruption whose upstream
+        # title/description didn't mention a directory-known station,
+        # so including it here would inflate the "Verschiedene
+        # Hotspots" cell by exactly +1 (the sentinel) regardless of
+        # how many real station mentions are in the ledger.
+        f"| Verschiedene Hotspots | {sum(1 for loc in stoerungen.by_location if loc != LOCATION_UNKNOWN)} |",
         "",
     ]
 
@@ -860,8 +896,15 @@ def render_readme_disruptions_block(
         for rank in range(1, top_n + 1):
             body_lines.append(f"| {rank}. | {README_PENDING_PLACEHOLDER} | – |")
         return header + "\n".join(body_lines) + "\n"
+    # Skip the ``unbekannt`` bucket so periods dominated by line-only
+    # disruption mentions ("Demonstration auf Linie 5") don't surface
+    # the sentinel as the #1 hotspot in the README. The bucket is still
+    # counted in the dashboard's overall total / temporal distribution
+    # — this filter only affects the operator-visible top-N ranking.
     counter: Counter[str] = Counter()
     for row in rows:
+        if row.location_name == LOCATION_UNKNOWN:
+            continue
         counter[row.location_name] += 1
     ranked = sorted(
         counter.items(),
@@ -1192,6 +1235,7 @@ __all__ = [
     "DEFAULT_OUTPUT_PATH",
     "DEFAULT_README_PATH",
     "DEFAULT_README_WINDOW_DAYS",
+    "LOCATION_UNKNOWN",
     "MAX_CSV_BYTES",
     "README_DISRUPTIONS_TOP_N",
     "README_MAX_BYTES",

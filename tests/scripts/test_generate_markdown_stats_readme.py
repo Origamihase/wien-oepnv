@@ -277,6 +277,44 @@ def test_render_disruptions_block_handles_empty_string_location() -> None:
     assert "| 1. | _(leer)_ | 1 |" in block
 
 
+def test_render_disruptions_block_skips_unbekannt_bucket() -> None:
+    """``unbekannt`` rows must not appear in the README's top-N ranking.
+
+    A line-only WL disruption ("Demonstration auf Linie 5") legitimately
+    has no station mention to extract. Counting those under the
+    ``unbekannt`` sentinel and surfacing it as the top README entry
+    would make the snapshot table useless for operators.
+    """
+    rows = [
+        _make_stoer(script.LOCATION_UNKNOWN, timestamp=NOW),
+        _make_stoer(script.LOCATION_UNKNOWN, timestamp=NOW),
+        _make_stoer(script.LOCATION_UNKNOWN, timestamp=NOW),
+        _make_stoer(script.LOCATION_UNKNOWN, timestamp=NOW),
+        _make_stoer("Wien Karlsplatz", timestamp=NOW),
+        _make_stoer("Wien Karlsplatz", timestamp=NOW),
+        _make_stoer("Volkstheater", timestamp=NOW),
+    ]
+    block = script.render_readme_disruptions_block(rows, window_days=30)
+    assert "unbekannt" not in block
+    assert "| 1. | Wien Karlsplatz | 2 |" in block
+    assert "| 2. | Volkstheater | 1 |" in block
+    # 3rd row pads with the dash placeholder since only 2 known locations
+    # remain after the filter.
+    assert "| 3. | – | – |" in block
+
+
+def test_render_disruptions_block_empty_when_only_unbekannt() -> None:
+    """If every row has ``unbekannt`` location, table pads with placeholder."""
+    rows = [
+        _make_stoer(script.LOCATION_UNKNOWN, timestamp=NOW),
+        _make_stoer(script.LOCATION_UNKNOWN, timestamp=NOW),
+    ]
+    block = script.render_readme_disruptions_block(rows, window_days=30)
+    assert "unbekannt" not in block
+    for rank in (1, 2, 3):
+        assert f"| {rank}. | – | – |" in block
+
+
 # ---- README patcher --------------------------------------------------------
 
 
