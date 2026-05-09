@@ -474,7 +474,7 @@ Tagesbudget:
 
 | Konsument | Default-Calls/Tag | Konfigurierbar |
 | :--- | ---: | :--- |
-| **Stammstrecke `/trip`** (`*/30` × 2 Richtungen) | 96 | `cron`-Plan in `update-stammstrecke-status.yml`, `MAX_TRIPS_PER_QUERY` |
+| **Stammstrecke `/trip`** (`*/30` × 2 Richtungen) | 96 | `cron`-Plan in `build-feed.yml`, `MAX_TRIPS_PER_QUERY` |
 | **Station-Enrichment `location.name`** (monatlich, Stammstrecke-Whitelist) | ~10 (1× pro Monat) | `STAMMSTRECKE_VOR_IDS` in `scripts/update_vor_stations.py` |
 | **Disruption-Polling `departureBoard`** | **0** (default) | `VOR_MONITOR_STATIONS_WHITELIST` env (default: leerer String) |
 | **Tagesbudget gesamt** | **96 / 100** | — |
