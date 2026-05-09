@@ -39,6 +39,24 @@ from typing import Any
 _CONTROL_CHARS_RE = re.compile(
     r"[\x00-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
 )
+# Always-strip set: invisible Unicode characters that have NO readability
+# value and are pure log-injection / Trojan-Source primitives. The 2026-05-09
+# round (PR #1363) added these code points to ``_CONTROL_CHARS_RE`` so the
+# ``strip_control_chars=True`` (default) path strips them. The drift was the
+# ``strip_control_chars=False`` branch \u2014 used by ``clean_message``,
+# ``_sanitize_log_detail`` (``src/feed/reporting.py``),
+# ``_sanitize_exception_msg`` (``src/utils/http.py``),
+# ``SafeFormatter.formatException`` and ``SafeJSONFormatter.formatException``
+# (``src/feed/logging_safe.py``) \u2014 which bypasses ``_CONTROL_CHARS_RE``
+# entirely to preserve readable ``\n``/``\r``/``\t`` in tracebacks. That
+# leaks the BiDi / zero-width / line-terminator family verbatim into the
+# public ``feed_health.json`` artefact and the GitHub Issue body submitted
+# by ``submit_auto_issue``. Stripping unconditionally (independent of the
+# flag) closes every sibling path in one cut while preserving the readable
+# newline contract every ``strip_control_chars=False`` caller relies on.
+_INVISIBLE_DANGEROUS_RE = re.compile(
+    r"[\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+)
 _LOG_INJECTION_RE = re.compile(r"[\n\r\t]")
 # ANSI escape codes: comprehensive matching for CSI, OSC, Fe, and 2-byte sequences
 # Matches:
@@ -154,6 +172,16 @@ def sanitize_log_message(
         for secret in secrets:
             if secret:
                 sanitized = sanitized.replace(secret, "***")
+
+    # Always strip BiDi / zero-width / Unicode line-terminator characters.
+    # These have no readability value but are documented log-injection
+    # (CVE-2021-42574) and Trojan-Source primitives. Stripping unconditionally
+    # closes the ``strip_control_chars=False`` sibling paths
+    # (``clean_message``, ``_sanitize_log_detail``, ``_sanitize_exception_msg``,
+    # ``SafeFormatter.formatException``, ``SafeJSONFormatter.formatException``)
+    # while preserving the readable ``\n``/``\r``/``\t`` contract those
+    # callers rely on for traceback formatting.
+    sanitized = _INVISIBLE_DANGEROUS_RE.sub("", sanitized)
 
     # Prevent log injection by escaping newlines and control characters
     if strip_control_chars:
