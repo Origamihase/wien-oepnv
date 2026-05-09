@@ -19,16 +19,17 @@ Design contract
   output contains 0, 1, or 2 events depending on which direction(s)
   exceeded the threshold.
 - **Resilience**: the network call to HAFAS is wrapped in
-  :class:`src.utils.circuit_breaker.CircuitBreaker`. Configured at
-  ``failure_threshold=10`` and ``recovery_timeout=3600`` seconds
-  (1 hour) — semantically aligning with a documented "≤ 10 requests
-  per hour" API budget for ÖBB. After 10 consecutive failures the
-  breaker stays OPEN for one hour, capping ÖBB-bound traffic in any
-  outage scenario. Combined with the cron schedule (``*/30 * * * *``,
-  2 fires/hour × 2 directions = 4 calls/hour normally) this keeps the
-  script comfortably below the 10/h rate ceiling.
+  :class:`src.utils.circuit_breaker.CircuitBreaker` (`failure_threshold=10`,
+  `recovery_timeout=3600`s — semantically aligning with a documented
+  "≤ 10 requests per hour" API budget for ÖBB). The per-call HTTP
+  timeout is enforced by :func:`_patch_session_timeout` which
+  monkey-patches ``profile.request_session.request`` to inject a
+  default ``timeout`` kwarg. pyhafas itself does *not* pass a timeout
+  to ``session.post``, so without this patch a hung HAFAS endpoint
+  would hang the cron runner until GitHub Actions' 6-hour wallclock
+  kill — DoS via slow upstream.
 - **Atomicity**: writes go through :func:`src.utils.files.atomic_write`
-  with restrictive ``0o644`` permissions; a crash mid-write cannot
+  with permissive ``0o644`` permissions; a crash mid-write cannot
   leave a half-written cache file behind.
 - **Timezone**: GitHub Actions runs in UTC. All timestamps inside the
   emitted events (``pubDate``, ``starts_at``) are localised to
@@ -41,6 +42,15 @@ Design contract
   ``description`` (target station name), ``guid`` and ``_identity``
   (direction-prefixed) so feed readers treat them as separate
   notifications.
+- **Station-name resolution**: target station labels in the description
+  are resolved through :mod:`src.utils.stations` (``canonical_name`` +
+  ``display_name``) instead of being hardcoded. This keeps the
+  Stammstrecke events consistent with the rest of the project: if the
+  station directory's canonical name or display override changes
+  (e.g., a future "Wien Meidling" → "Wien Meidling/Philadelphiabrücke"
+  rename), the script picks it up automatically. The compact "in
+  Richtung Meidling" form is derived by stripping the leading
+  ``Wien `` prefix because the description already implies Vienna.
 - **Logging**: every diagnostic message is routed through
   :func:`src.feed.logging_safe.setup_script_logging` so log injection
   / ANSI / BiDi attacks via upstream-controlled fields are sanitised
@@ -75,6 +85,7 @@ from src.utils.circuit_breaker import (  # noqa: E402
 from src.utils.files import atomic_write  # noqa: E402
 from src.utils.ids import make_guid  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
+from src.utils.stations import canonical_name, display_name  # noqa: E402
 
 if TYPE_CHECKING:
     from pyhafas.types.fptf import Journey, Leg
@@ -87,6 +98,14 @@ LOGGER = logging.getLogger("update_stammstrecke_status")
 FLORIDSDORF_STATION_ID = "8100518"
 MEIDLING_STATION_ID = "8100514"
 
+# Canonical station-directory keys used to look up the user-facing labels
+# via ``src.utils.stations``. These names MUST exist in
+# ``data/stations.json`` (or one of the configured aliases) so the
+# directory lookup succeeds. The fallback path in ``_short_target_label``
+# preserves the literal value if the lookup fails.
+FLORIDSDORF_CANONICAL_SEED = "Wien Floridsdorf"
+MEIDLING_CANONICAL_SEED = "Wien Meidling"
+
 # Threshold above which the median delay of a direction generates a feed
 # entry. The user-facing semantics are "more than 9 minutes" — a median
 # of exactly 9 minutes does NOT trigger the event.
@@ -98,9 +117,11 @@ DELAY_THRESHOLD_MINUTES = 9
 # Stammstrecke.
 MAX_JOURNEYS_PER_QUERY = 12
 
-# Per-call HTTP budget. A pyhafas call without a timeout can hang the
-# cron runner indefinitely if the upstream peer is sluggish; the cap is
-# enforced inside pyhafas via the underlying ``requests`` call.
+# Per-call HTTP budget. Enforced via :func:`_patch_session_timeout` —
+# pyhafas does NOT pass a timeout to its ``session.post`` calls, so
+# without the patch a hung HAFAS endpoint would hang the cron runner
+# indefinitely. ``MAX_QUERY_TIMEOUT`` is the upper clamp; bumping
+# above it requires a deliberate constant change.
 QUERY_TIMEOUT = 20
 MAX_QUERY_TIMEOUT = 30
 
@@ -132,6 +153,37 @@ EVENT_LINK = (
 )
 
 
+def _short_target_label(seed_name: str) -> str:
+    """Return the compact user-facing label for *seed_name*.
+
+    Looks up the canonical station name in the project's station
+    directory (``data/stations.json`` via :mod:`src.utils.stations`),
+    applies ``display_name`` for project-wide overrides (e.g.
+    ``Wien Mitte-Landstraße`` → ``Wien Mitte``), and strips the
+    leading ``Wien `` prefix. The Stammstrecke description text
+    (`"in Richtung Meidling"`) implicitly assumes Vienna, so omitting
+    the prefix produces natural German — but the canonical lookup
+    still drives the suffix portion, so a future rename in the
+    directory propagates automatically.
+
+    The fallback chain — try directory, accept any
+    :class:`Exception`, finally strip ``Wien `` from the seed —
+    keeps the script resilient against a missing/corrupt directory
+    file (fresh clone before stations sync, restricted CI runner
+    without ``data/`` mounted, etc.).
+    """
+
+    try:
+        canonical = canonical_name(seed_name)
+    except Exception:  # pragma: no cover - defensive: directory load failure
+        canonical = None
+
+    name = display_name(canonical) if canonical else seed_name.strip()
+    if name.startswith("Wien "):
+        return name[len("Wien ") :]
+    return name
+
+
 @dataclass(frozen=True)
 class _Direction:
     """A single Stammstrecke query direction.
@@ -140,6 +192,11 @@ class _Direction:
     user-facing target label for the description, identity prefix for
     the deduplication key and GUID) so the main loop can iterate over
     both directions without branching on direction-specific logic.
+
+    ``target_label`` is populated at module import time via
+    :func:`_short_target_label`, which routes through the project's
+    canonical station directory rather than hardcoding the display
+    name.
     """
 
     origin_id: str
@@ -152,13 +209,13 @@ DIRECTIONS: tuple[_Direction, ...] = (
     _Direction(
         origin_id=FLORIDSDORF_STATION_ID,
         destination_id=MEIDLING_STATION_ID,
-        target_label="Meidling",
+        target_label=_short_target_label(MEIDLING_CANONICAL_SEED),
         identity_prefix="stammstrecke_delay_meidling",
     ),
     _Direction(
         origin_id=MEIDLING_STATION_ID,
         destination_id=FLORIDSDORF_STATION_ID,
-        target_label="Floridsdorf",
+        target_label=_short_target_label(FLORIDSDORF_CANONICAL_SEED),
         identity_prefix="stammstrecke_delay_floridsdorf",
     ),
 )
@@ -181,6 +238,57 @@ def configure_logging() -> None:
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
+def _patch_session_timeout(profile: Any, timeout: float) -> None:
+    """Inject a default ``timeout`` kwarg into the profile's HTTP session.
+
+    pyhafas's ``BaseProfile.request`` calls ``self.request_session.post``
+    without a timeout argument, so a hung HAFAS endpoint would block the
+    cron runner forever. ``requests.Session.timeout`` (as an attribute)
+    is *not* honoured by the requests library — only an explicit
+    ``timeout`` kwarg on the per-call method is. Wrapping
+    :meth:`requests.Session.request` (the lower-level method that
+    ``get/post/put/etc.`` all delegate to) lets us inject the default
+    without subclassing requests or modifying pyhafas internals.
+
+    Failing silently when the profile lacks ``request_session`` (e.g.
+    a future pyhafas refactor renaming the attribute) keeps the script
+    resilient — better to run with no timeout enforcement and a clear
+    log line than to crash on construction. The dropped enforcement is
+    bounded by the GitHub Actions wallclock kill anyway; we are not
+    relying on the timeout for correctness, only for liveness.
+
+    Args:
+        profile: A pyhafas profile-like object exposing
+            ``request_session`` (a :class:`requests.Session`).
+        timeout: Default timeout in seconds, applied as the ``timeout``
+            kwarg to every session ``request`` call that does not
+            already specify one.
+    """
+
+    session = getattr(profile, "request_session", None)
+    if session is None or not hasattr(session, "request"):
+        LOGGER.warning(
+            "Stammstrecke: pyhafas-Profil ohne ``request_session`` — "
+            "kein Timeout-Enforcement aktiv (Fallback auf GitHub-Actions-"
+            "Wallclock)."
+        )
+        return
+
+    original_request = session.request
+
+    def _request_with_default_timeout(
+        method: str, url: str, **kwargs: Any
+    ) -> Any:
+        kwargs.setdefault("timeout", timeout)
+        return original_request(method, url, **kwargs)
+
+    # Monkey-patching the bound method on a single session instance is
+    # intentional — the alternative (subclassing requests.Session and
+    # replacing it on the profile) would diverge from pyhafas's
+    # session lifecycle.
+    session.request = _request_with_default_timeout
+
+
 def _build_client() -> Any:
     """Construct a :class:`pyhafas.HafasClient` with the ÖBB profile.
 
@@ -188,12 +296,19 @@ def _build_client() -> Any:
     pyhafas release without ``OEBBProfile`` produces a clean WARNING and
     a no-op cache update instead of a hard import-time crash that would
     abort the cron pipeline.
+
+    The HTTP timeout is enforced at construction time by
+    :func:`_patch_session_timeout` — see that function's docstring for
+    why the patch is required and what semantics it gives.
     """
 
     from pyhafas import HafasClient
     from pyhafas.profile import OEBBProfile
 
-    return HafasClient(OEBBProfile(), ua="wien-oepnv-stammstrecke/1.0")
+    profile = OEBBProfile()
+    timeout = max(1, min(QUERY_TIMEOUT, MAX_QUERY_TIMEOUT))
+    _patch_session_timeout(profile, float(timeout))
+    return HafasClient(profile, ua="wien-oepnv-stammstrecke/1.0")
 
 
 def _query_journeys(
@@ -201,30 +316,14 @@ def _query_journeys(
     direction: _Direction,
     *,
     when: datetime,
-    timeout: int,
 ) -> list[Journey]:
     """Call ``client.journeys`` once for *direction* and return the result.
 
     The call is executed as-is; resilience (retry/back-off, breaker
-    state) is provided by :data:`_BREAKER` at the call site. The
-    ``timeout`` parameter is forwarded into the pyhafas profile via the
-    underlying requests session if the profile honours it.
+    state) is provided by :data:`_BREAKER` at the call site, and the
+    HTTP timeout is enforced via the session-level patch installed in
+    :func:`_build_client`.
     """
-
-    # pyhafas honours a profile-level requests session whose adapters
-    # default to ``timeout=None``. We pin the request timeout via the
-    # session attribute so a sluggish upstream peer cannot hold the
-    # cron job past the documented ``MAX_QUERY_TIMEOUT`` budget.
-    session = getattr(client.profile, "requests", None)
-    if session is not None:
-        # Some pyhafas profiles expose a custom session wrapper; tighten
-        # both attributes if present.
-        for attribute in ("timeout", "request_timeout"):
-            if hasattr(session, attribute):
-                try:
-                    setattr(session, attribute, timeout)
-                except (AttributeError, TypeError):
-                    pass
 
     journeys = client.journeys(
         origin=direction.origin_id,
@@ -309,6 +408,8 @@ def _build_event(
     Per-direction GUIDs and identity strings are derived from
     ``direction.identity_prefix`` (e.g. ``stammstrecke_delay_meidling``)
     so feed readers treat the two directions as separate notifications.
+    The user-facing target name in ``description`` comes from the
+    canonical station directory via :func:`_short_target_label`.
     """
 
     description = (
@@ -361,7 +462,6 @@ def _process_direction(
     direction: _Direction,
     *,
     when: datetime,
-    timeout: int,
 ) -> tuple[dict[str, Any] | None, str]:
     """Query ``direction`` once and return ``(event_or_none, status)``.
 
@@ -378,14 +478,15 @@ def _process_direction(
     """
 
     LOGGER.info(
-        "Stammstrecke: Abfrage Wien %s → Wien %s um %s.",
-        "Floridsdorf" if direction.origin_id == FLORIDSDORF_STATION_ID else "Meidling",
+        "Stammstrecke: Abfrage Richtung %s (%s → %s) um %s.",
         direction.target_label,
+        direction.origin_id,
+        direction.destination_id,
         when.isoformat(),
     )
     try:
         journeys = _BREAKER.call(
-            _query_journeys, client, direction, when=when, timeout=timeout
+            _query_journeys, client, direction, when=when
         )
     except CircuitBreakerOpen:
         # Re-raise so main() can break out of the loop without re-trying
@@ -453,8 +554,6 @@ def main() -> int:
 
     configure_logging()
 
-    timeout = max(1, min(QUERY_TIMEOUT, MAX_QUERY_TIMEOUT))
-
     try:
         client = _build_client()
     except ImportError as exc:
@@ -481,7 +580,7 @@ def main() -> int:
     for direction in DIRECTIONS:
         try:
             event, status = _process_direction(
-                client, direction, when=when, timeout=timeout
+                client, direction, when=when
             )
         except CircuitBreakerOpen:
             LOGGER.warning(

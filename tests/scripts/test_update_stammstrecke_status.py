@@ -203,11 +203,107 @@ def test_directions_table_covers_both_targets() -> None:
     }
 
 
+def test_short_target_label_resolves_via_station_directory() -> None:
+    """``_short_target_label`` must round-trip canonical Vienna stations.
+
+    A ``Wien `` prefix is stripped so the description reads
+    "in Richtung Meidling" / "in Richtung Floridsdorf" — but the
+    suffix portion comes from the canonical directory, so renaming
+    "Wien Meidling" in ``data/stations.json`` propagates here.
+    """
+
+    assert script._short_target_label("Wien Meidling") == "Meidling"
+    assert script._short_target_label("Wien Floridsdorf") == "Floridsdorf"
+    # Aliases also resolve (the directory normalises them to the canonical
+    # entry before the prefix strip happens).
+    assert script._short_target_label("Meidling") == "Meidling"
+    assert script._short_target_label("Floridsdorf") == "Floridsdorf"
+
+
+def test_short_target_label_strips_wien_prefix_on_directory_miss(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Falls back to a literal-with-prefix-stripped form on directory miss."""
+
+    monkeypatch.setattr(script, "canonical_name", lambda _name: None)
+    monkeypatch.setattr(script, "display_name", lambda _name: "")
+    assert script._short_target_label("Wien Meidling") == "Meidling"
+    assert script._short_target_label("Floridsdorf") == "Floridsdorf"
+
+
+def test_short_target_label_handles_directory_exception(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A crash inside the directory lookup must NOT propagate out."""
+
+    def boom(_name: str) -> str | None:
+        raise RuntimeError("stations.json corrupt / unreadable")
+
+    monkeypatch.setattr(script, "canonical_name", boom)
+    monkeypatch.setattr(script, "display_name", lambda _name: "")
+    # We still get a sensible label via the literal-with-prefix-stripped fallback.
+    assert script._short_target_label("Wien Meidling") == "Meidling"
+
+
 def test_breaker_config_aligns_with_10_per_hour_budget() -> None:
     """Pin the rate-limit-aligned breaker constants documented in the script."""
 
     assert script.BREAKER_FAILURE_THRESHOLD == 10
     assert script.BREAKER_RECOVERY_TIMEOUT == 3600.0
+
+
+# ---- _patch_session_timeout tests ----------------------------------------
+
+
+class _FakeSession:
+    """Minimal stand-in for ``requests.Session`` capturing kwargs."""
+
+    def __init__(self) -> None:
+        self.captured_kwargs: dict[str, Any] = {}
+
+    def request(self, method: str, url: str, **kwargs: Any) -> str:
+        self.captured_kwargs = kwargs
+        return f"{method} {url}"
+
+
+def test_patch_session_timeout_injects_default_timeout() -> None:
+    """A request without an explicit ``timeout`` kwarg gets the default."""
+
+    session = _FakeSession()
+    profile = SimpleNamespace(request_session=session)
+    script._patch_session_timeout(profile, 7.5)
+    session.request("POST", "https://example.com/api")
+    assert session.captured_kwargs["timeout"] == 7.5
+
+
+def test_patch_session_timeout_respects_explicit_timeout() -> None:
+    """A request that already specifies ``timeout`` keeps that value."""
+
+    session = _FakeSession()
+    profile = SimpleNamespace(request_session=session)
+    script._patch_session_timeout(profile, 7.5)
+    session.request("POST", "https://example.com/api", timeout=42.0)
+    assert session.captured_kwargs["timeout"] == 42.0
+
+
+def test_patch_session_timeout_handles_missing_session(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """If pyhafas's profile has no ``request_session``, log + degrade silently."""
+
+    profile = SimpleNamespace()  # no request_session
+    caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
+    script._patch_session_timeout(profile, 5.0)  # must not raise
+    assert any(
+        "kein Timeout-Enforcement" in record.getMessage() for record in caplog.records
+    )
+
+
+def test_patch_session_timeout_handles_session_without_request() -> None:
+    """A non-requests-shaped session object is treated like a missing one."""
+
+    profile = SimpleNamespace(request_session=SimpleNamespace())
+    script._patch_session_timeout(profile, 5.0)  # must not raise
 
 
 # ---- _build_event tests ----------------------------------------------------
