@@ -902,10 +902,28 @@ def render_readme_disruptions_block(
     # counted in the dashboard's overall total / temporal distribution
     # — this filter only affects the operator-visible top-N ranking.
     counter: Counter[str] = Counter()
+    unknown_count = 0
     for row in rows:
         if row.location_name == LOCATION_UNKNOWN:
+            unknown_count += 1
             continue
         counter[row.location_name] += 1
+    if not counter:
+        # Window has rows, but every row's ``location_name`` is the
+        # ``unbekannt`` sentinel — typically a period dominated by
+        # line-only WL disruption mentions ("Demonstration auf Linie
+        # 5", "Polizeieinsatz Linie 13A"). Three blank ``– | –`` rows
+        # would read as "no data"; an explanatory cell is more honest:
+        # disruptions exist, they just don't carry station context the
+        # extractor can resolve.
+        body_lines.append(
+            f"| – | _Keine Vorfälle mit Stationszuordnung im Zeitraum "
+            f"({_format_thousands(unknown_count)} ohne Stationsbezug)._"
+            f" | – |"
+        )
+        for rank in range(2, top_n + 1):
+            body_lines.append(f"| {rank}. | – | – |")
+        return header + "\n".join(body_lines) + "\n"
     ranked = sorted(
         counter.items(),
         key=lambda pair: (-pair[1], pair[0]),
@@ -1202,17 +1220,48 @@ def main(argv: list[str] | None = None) -> int:
     st_window = _filter_rows_by_window(
         window_st, days=args.readme_window_days, now=now
     )
-    sections = {
-        "STAMMSTRECKE": render_readme_stammstrecke_block(
+    # Defense-in-depth: a marker block is only patched when its source
+    # window actually carries data. Without this gate, an unrelated
+    # caller of ``main()`` that supplies a stats directory but forgets
+    # to override ``--readme-path`` (or pass ``--skip-readme``) would
+    # silently overwrite the production ``README.md`` with the
+    # ``_wird berechnet…_`` placeholder block — that exact bug bit
+    # ``tests/scripts/test_generate_markdown_stats.py`` and stamped
+    # placeholders into the committed README on 2026-05-09 (audit
+    # trail in PR #1397). Per-block conditional patching also avoids
+    # destroying a populated Disruption snapshot when only the
+    # Stammstrecke ledger has fresh data, and vice versa: each
+    # ``<!-- STATS:* -->`` marker stays at "last good content" until
+    # the corresponding window has rows again.
+    sections: dict[str, str] = {}
+    if sm_window:
+        sections["STAMMSTRECKE"] = render_readme_stammstrecke_block(
             sm_window,
             now=now,
             window_days=args.readme_window_days,
-        ),
-        "DISRUPTIONS": render_readme_disruptions_block(
+        )
+    else:
+        LOGGER.info(
+            "STAMMSTRECKE README block skipped: 0 rows in %d-day window.",
+            args.readme_window_days,
+        )
+    if st_window:
+        sections["DISRUPTIONS"] = render_readme_disruptions_block(
             st_window,
             window_days=args.readme_window_days,
-        ),
-    }
+        )
+    else:
+        LOGGER.info(
+            "DISRUPTIONS README block skipped: 0 rows in %d-day window.",
+            args.readme_window_days,
+        )
+    if not sections:
+        LOGGER.info(
+            "README patch skipped entirely: no data for any marker block in "
+            "the %d-day window — existing README content preserved.",
+            args.readme_window_days,
+        )
+        return 0
     try:
         patch_readme_stats(args.readme_path, sections)
     except OSError as exc:

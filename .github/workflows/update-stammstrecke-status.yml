@@ -1,5 +1,28 @@
-name: Update Stammstrecke status
+name: Stammstrecke + feed build
 
+# 2026-05-09: this workflow is the single auto-running entry point for
+# the entire Stammstrecke-driven feed cadence. Earlier the pipeline
+# was split across two cron schedules (``update-stammstrecke-status.yml``
+# at ``*/30`` and ``build-feed.yml`` at ``5,35``), which assumed
+# minute-accurate cron firing — GitHub Actions schedules are
+# best-effort with multi-minute drift, so the feed could read a stale
+# (or missing) Stammstrecke ledger when build-feed beat the
+# Stammstrecke run on a particular cycle.
+#
+# The new single-workflow flow runs every 30 minutes and goes:
+#
+#   1. VAO quota pre-flight (skip everything below if budget exhausted)
+#   2. Stammstrecke poll → append CSV row(s) to data/stats/
+#      stammstrecke_<YYYY>.csv. NO ``cache/stammstrecke/events.json``
+#      anymore — the CSV is the single source of truth.
+#   3. Feed build → reads the CSV via :mod:`src.feed.stammstrecke`,
+#      folds the 1-hour window into 0..N RSS events, writes
+#      docs/feed.xml.
+#   4. README + dashboard regeneration → reads the same CSV with the
+#      30-day window, patches the README markers + writes
+#      docs/statistik.md.
+#   5. Commit & push everything atomically. No ordering races,
+#      no stale-cache window between writers.
 on:
   schedule:
     - cron: '*/30 * * * *'
@@ -54,23 +77,56 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-deps
 
+      # Defense-in-depth pre-flight: read the persisted VAO daily counter
+      # (``data/vor_request_count.json``) and SKIP the Stammstrecke step
+      # entirely when a fresh run would breach the contractual 100/day
+      # cap. The in-script ``_charge_one_request`` guard
+      # (``update_stammstrecke_status.py:331``) is still active as a
+      # second-layer enforcer; this preflight makes the budget-exhausted
+      # state explicit at the top of the workflow log so operators can
+      # spot it without scraping the script's DEBUG output. The
+      # ``--margin 2`` mirrors the 2 ``/trip`` requests this monitor
+      # makes per run.
+      - name: VAO quota pre-flight
+        id: vor_preflight
+        # ``continue-on-error: true`` — the preflight script intentionally
+        # exits 1 when the budget is exhausted. We do NOT want that to
+        # fail the workflow (operator wouldn't see a clean "skipped"
+        # signal); instead we let it continue so the conditional gate on
+        # ``steps.vor_preflight.outputs.quota_ok`` controls the API
+        # steps below. The remaining steps (commit / push of any prior
+        # CSV state) still run and are no-ops.
+        continue-on-error: true
+        run: python scripts/preflight_quota_check.py --check vor --margin 2
+
       - name: Refresh Stammstrecke status
+        if: ${{ steps.vor_preflight.outputs.quota_ok == 'true' }}
         run: python scripts/update_stammstrecke_status.py
+
+      # Build the RSS feed in the SAME workflow as the Stammstrecke
+      # poll so the two run sequentially in a single runner — no more
+      # cron-schedule races where build-feed reads a stale ledger that
+      # the Stammstrecke step has not yet updated. Reads:
+      #   - cache/baustellen_*/events.json
+      #   - cache/wl_*/events.json
+      #   - cache/oebb_*/events.json
+      #   - cache/vor_*/events.json (read-only; cache is no longer
+      #     auto-refreshed)
+      #   - data/stats/stammstrecke_<YYYY>.csv (NEW: feed events
+      #     derived from the CSV ledger via
+      #     :mod:`src.feed.stammstrecke`, 1-hour window, 9-min
+      #     threshold)
+      # Writes docs/feed.xml + data/first_seen.json.
+      - name: Build feed
+        run: python -m src.cli feed build
+        env:
+          PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
       # Regenerate the statistics dashboard (``docs/statistik.md``)
       # AND patch the README ``<!-- STATS:* -->`` markers with the
-      # 30-day rolling snapshot. Runs in this same workflow so the
-      # README cadence matches the Stammstrecke observation cadence
-      # (every 30 minutes) — without this step, the README snapshot
-      # would only refresh once per day via ``generate-stats.yml``
-      # and the operator-visible "Beobachtungen (gesamt)" /
-      # "Median-Verspätung" / "Letzte Aktualisierung" cells would lag
-      # the underlying CSV ledger by up to 24 hours. The script reads
-      # only ``data/stats/*.csv`` (no network), is idempotent at the
-      # byte level (a no-data-change run re-emits identical bytes
-      # except for the timestamp cell), and writes via
-      # ``atomic_write`` so a kill-signal mid-run cannot corrupt
-      # either output.
+      # 30-day rolling snapshot. Reads only ``data/stats/*.csv``
+      # (no network), idempotent at the byte level, atomic write —
+      # so a kill-signal mid-run cannot corrupt either output.
       - name: Refresh statistics dashboard and README snapshot
         run: python scripts/generate_markdown_stats.py
 
@@ -80,19 +136,23 @@ jobs:
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
-          commit_message: 'chore: update Stammstrecke status'
-          # ``cache/stammstrecke/events.json`` carries the threshold-
-          # based feed events; ``data/stats/stammstrecke_<YYYY>.csv``
-          # carries the append-only median observations; ``docs/
-          # statistik.md`` and ``README.md`` carry the regenerated
-          # human-readable dashboard / snapshot. All four must be
-          # committed for the operator-visible output to stay in sync
-          # with the underlying observation cadence (every 30 min).
-          # The ``generate-stats.yml`` nightly cron remains active as
-          # a belt-and-suspenders refresh in case any 30-minute
-          # update is skipped (concurrency-group pre-emption etc.).
+          commit_message: 'chore: update Stammstrecke status + rebuild feed'
+          # ``data/stats/stammstrecke_<YYYY>.csv`` is now the single
+          # source of truth for both the RSS feed (1-hour window) and
+          # the README snapshot (30-day window). ``docs/feed.xml`` is
+          # regenerated in this workflow too so the feed-state and
+          # CSV-state commit together (no orphan publishes where the
+          # CSV moved but the feed didn't, or vice versa).
+          # ``data/vor_request_count.json`` MUST be committed so the
+          # next runner sees today's quota usage and the contract
+          # 100/day cap stays enforceable across CI invocations.
+          # ``data/first_seen.json`` is the build-feed state file
+          # tracking item ages; it has to commit alongside feed.xml
+          # to keep the merge stable.
           file_pattern: |
-            cache/stammstrecke/events.json
             data/stats/stammstrecke_*.csv
+            data/vor_request_count.json
+            data/first_seen.json
+            docs/feed.xml
             docs/statistik.md
             README.md

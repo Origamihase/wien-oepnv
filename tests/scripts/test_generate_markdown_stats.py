@@ -454,11 +454,20 @@ def test_main_writes_dashboard_for_well_formed_inputs(tmp_path: Path) -> None:
         ],
     )
     output = tmp_path / "statistik.md"
+    # ``--skip-readme`` is critical here: the argparse default for
+    # ``--readme-path`` is ``DEFAULT_README_PATH`` (the production
+    # ``REPO_ROOT/README.md``). A test that omits the flag overwrites
+    # the real repository README with whatever this synthetic stats
+    # window renders — exactly the bug that contaminated the committed
+    # README on 2026-05-09 (PR #1397). Either ``--skip-readme`` or
+    # an explicit ``--readme-path`` pointing at ``tmp_path`` is
+    # mandatory for any ``main()`` test.
     rc = script.main(
         [
             "--year", "2026",
             "--stats-dir", str(tmp_path),
             "--output", str(output),
+            "--skip-readme",
         ]
     )
     assert rc == 0
@@ -475,6 +484,7 @@ def test_main_returns_zero_with_no_input_files(tmp_path: Path) -> None:
             "--year", "2026",
             "--stats-dir", str(tmp_path / "missing"),
             "--output", str(output),
+            "--skip-readme",
         ]
     )
     assert rc == 0

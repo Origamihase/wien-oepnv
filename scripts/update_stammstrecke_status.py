@@ -101,7 +101,7 @@ from contextlib import ExitStack
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Final, TypeGuard
+from typing import Any, Final
 from zoneinfo import ZoneInfo
 
 import requests
@@ -111,15 +111,12 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
-from src.feed.providers import MAX_STAMMSTRECKE_CACHE_BYTES  # noqa: E402
 from src.providers import vor as vor_provider  # noqa: E402
 from src.utils.circuit_breaker import (  # noqa: E402
     CircuitBreaker,
     CircuitBreakerOpen,
 )
-from src.utils.files import atomic_write, read_capped_json  # noqa: E402
 from src.utils.http import request_safe, session_with_retries  # noqa: E402
-from src.utils.ids import make_guid  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
 from src.utils.stations import canonical_name, display_name  # noqa: E402
 from src.utils.stats import append_stammstrecke_row  # noqa: E402
@@ -179,24 +176,13 @@ _S_BAHN_LINE_RE = re.compile(r"^\s*S\s*\d+\s*$", re.IGNORECASE)
 
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
-OUTPUT_PATH = REPO_ROOT / "cache" / "stammstrecke" / "events.json"
-
-# Event metadata: ``source`` mirrors the project-standard VOR-provider
-# value (``src/providers/vor.py:1219``) because the script now polls the
-# VAO ReST ``/trip`` endpoint operated by the Verkehrsverbund Ost-Region.
-# Using ``"VOR/VAO"`` keeps the publisher attribution consistent across
-# all VAO-API-derived items in the feed and makes the data lineage
-# transparent to subscribers (who can filter by source). The pre-2026-
-# 05-09 ``"ÖBB"`` value reflected the original pyhafas/HAFAS data path
-# and was retained verbatim across the migration; this PR aligns the
-# attribution with the actual upstream now that the VAO-based pipeline
-# is producing consistently.
-EVENT_SOURCE = "VOR/VAO"
-EVENT_CATEGORY = "Störung"
-EVENT_TITLE = "S-Bahn Stammstrecke Verspätungen"
-EVENT_LINK = (
-    "https://www.oebb.at/de/fahrplan/fahrplanauskunft-und-stoerungsinformation/aktuelle-stoerungsmeldungen"
-)
+# 2026-05-09: ``OUTPUT_PATH`` (``cache/stammstrecke/events.json``) and
+# the per-event metadata constants (``EVENT_SOURCE``, ``EVENT_CATEGORY``,
+# ``EVENT_TITLE``, ``EVENT_LINK``) used to live here — the script
+# wrote a JSON cache that the feed provider read verbatim. The new
+# pipeline derives feed events from the CSV ledger at feed-build time
+# (see :mod:`src.feed.stammstrecke`), so this script is a pure CSV
+# appender now and the rendering constants belong to the renderer.
 
 
 def _short_target_label(seed_name: str) -> str:
@@ -677,176 +663,13 @@ def _collect_sbahn_delays_minutes(
 # XML 1.0 control characters that have no readability value in a preserved
 # cache field. Mirrors ``src/build_feed.py:_CONTROL_RE`` so the per-field
 # shape validators reject the same control-character set the canonical
-# ``_sanitize_text`` filter strips from the rendered feed output. Defence
-# in depth on the cached ``_identity`` / ``first_seen`` strings before they
-# re-enter the build pipeline through the preserved-first-seen path.
-_PRESERVED_CONTROL_CHAR_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]")
-
-# Max length for the preserved ``first_seen`` field. ISO 8601 timestamps
-# with offset are ~25 bytes (e.g. ``2026-05-09T08:30:00+02:00``); 64 is
-# 2.5x headroom for sub-second precision variants and offset names.
-_MAX_PRESERVED_FIRST_SEEN_LENGTH = 64
-
-# Max length for the preserved ``_identity`` field. The canonical identity
-# is ``<prefix>|<iso>`` where prefix is ~30 chars and iso is ~25 chars; 256
-# is ~4x headroom for any future prefix expansion.
-_MAX_PRESERVED_IDENTITY_LENGTH = 256
-
-
-def _is_valid_preserved_first_seen(value: object) -> TypeGuard[str]:
-    """Return ``True`` when *value* is a safe preserved ``first_seen`` string.
-
-    Validates: (a) ``isinstance(value, str)`` (TypeGuard narrows for mypy),
-    (b) non-empty after strip, (c) length ``<=
-    _MAX_PRESERVED_FIRST_SEEN_LENGTH``, (d) no XML 1.0 control characters,
-    (e) parseable via :func:`datetime.fromisoformat`.
-    """
-    if not isinstance(value, str):
-        return False
-    stripped = value.strip()
-    if not stripped or len(stripped) > _MAX_PRESERVED_FIRST_SEEN_LENGTH:
-        return False
-    if _PRESERVED_CONTROL_CHAR_RE.search(stripped):
-        return False
-    try:
-        datetime.fromisoformat(stripped)
-    except (ValueError, TypeError):
-        return False
-    return True
-
-
-def _is_valid_preserved_identity(value: object) -> TypeGuard[str]:
-    """Return ``True`` when *value* is a safe preserved ``_identity`` string."""
-    if not isinstance(value, str):
-        return False
-    stripped = value.strip()
-    if not stripped or len(stripped) > _MAX_PRESERVED_IDENTITY_LENGTH:
-        return False
-    if _PRESERVED_CONTROL_CHAR_RE.search(stripped):
-        return False
-    return True
-
-
-def _read_existing_first_seen() -> dict[str, str]:
-    """Map ``identity_prefix`` → ``first_seen`` (ISO) from the existing cache.
-
-    See the module docstring for the threat model and defences. All
-    failure modes (missing file, oversized file, malformed JSON,
-    unexpected shape, missing/typed-wrong / oversized / non-ISO fields)
-    collapse to an empty map.
-    """
-
-    if not OUTPUT_PATH.exists():
-        return {}
-    payload = read_capped_json(
-        OUTPUT_PATH,
-        max_bytes=MAX_STAMMSTRECKE_CACHE_BYTES,
-        label="Stammstrecke",
-        logger=LOGGER,
-    )
-    if not isinstance(payload, list):
-        return {}
-
-    result: dict[str, str] = {}
-    for item in payload:
-        if not isinstance(item, dict):
-            continue
-        identity = item.get("_identity")
-        first_seen = item.get("first_seen")
-        if not _is_valid_preserved_identity(identity):
-            continue
-        if not _is_valid_preserved_first_seen(first_seen):
-            continue
-        prefix = identity.split("|", 1)[0]
-        if prefix:
-            result[prefix] = first_seen
-    return result
-
-
-def _resolve_first_seen(
-    prefix: str,
-    previous_first_seen: dict[str, str],
-    now: datetime,
-) -> datetime:
-    """Pick ``first_seen`` for *prefix*: prior value if present, else *now*.
-
-    Parses the prior ISO 8601 string back into a tz-aware
-    :class:`datetime`; on any parse failure falls back to *now* so a
-    corrupt prior cache cannot poison the new event. A naive parsed
-    timestamp is force-localised to ``Europe/Vienna`` to match the
-    project's timezone contract.
-    """
-
-    prev_iso = previous_first_seen.get(prefix)
-    if prev_iso:
-        try:
-            parsed = datetime.fromisoformat(prev_iso)
-        except (ValueError, TypeError):
-            LOGGER.warning(
-                "Stammstrecke: konnte first_seen %r nicht parsen — "
-                "verwende aktuellen Zeitpunkt für %s.",
-                sanitize_log_arg(prev_iso),
-                prefix,
-            )
-        else:
-            if parsed.tzinfo is None:
-                parsed = parsed.replace(tzinfo=VIENNA_TZ)
-            return parsed
-    return now
-
-
-def _build_event(
-    *,
-    direction: _Direction,
-    median_delay_minutes: float,
-    pub_date: datetime,
-    first_seen: datetime,
-) -> dict[str, Any]:
-    """Construct a schema-compliant event dictionary for *direction*."""
-
-    date_str = first_seen.strftime("%d.%m.%Y")
-    description = (
-        f"Durchschnittliche Verspätung von "
-        f"{_format_minutes(median_delay_minutes)} Minuten "
-        f"in Richtung {direction.target_label} "
-        f"[Seit {date_str}]"
-    )
-
-    iso_pub = pub_date.isoformat()
-    iso_first_seen = first_seen.isoformat()
-
-    identity = f"{direction.identity_prefix}|{iso_first_seen}"
-    guid = make_guid(direction.identity_prefix, iso_first_seen)
-
-    return {
-        "source": EVENT_SOURCE,
-        "category": EVENT_CATEGORY,
-        "title": EVENT_TITLE,
-        "description": description,
-        "link": EVENT_LINK,
-        "guid": guid,
-        "pubDate": iso_pub,
-        "starts_at": iso_first_seen,
-        "ends_at": None,
-        "first_seen": iso_first_seen,
-        "_identity": identity,
-    }
-
-
-def _write_cache(payload: list[dict[str, Any]]) -> None:
-    """Atomically write *payload* to :data:`OUTPUT_PATH` as pretty JSON."""
-
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with atomic_write(OUTPUT_PATH, mode="w", encoding="utf-8", permissions=0o644) as fh:
-        _json_lib.dump(
-            payload,
-            fh,
-            ensure_ascii=False,
-            indent=2,
-            sort_keys=False,
-        )
-        fh.write("\n")
-
+# 2026-05-09: the events.json cache has been retired. Feed events are
+# now derived from the CSV ledger by :mod:`src.feed.stammstrecke`, so
+# this script no longer carries any first-seen / identity / event
+# building logic. The previous helpers
+# (``_is_valid_preserved_*``, ``_read_existing_first_seen``,
+# ``_resolve_first_seen``, ``_build_event``, ``_write_cache``) plus
+# the ``OUTPUT_PATH`` constant were removed in the same pass.
 
 # Hard cap on the ``errorCode`` string length. Real VAO codes are
 # ~4-8 chars (``H890``, ``H892``, ``H730``, ``SVC_LOC_INVALID``); the
@@ -1192,15 +1015,17 @@ def _process_direction(
     direction: _Direction,
     *,
     when: datetime,
-    previous_first_seen: dict[str, str],
-) -> tuple[dict[str, Any] | None, str]:
-    """Query ``direction`` once and return ``(event_or_none, status)``.
+) -> str:
+    """Query ``direction`` once and append a CSV observation.
 
-    The return tuple's second element is one of:
+    Returns one of:
 
-    * ``"event"`` — direction exceeded threshold, event was built;
+    * ``"ok"`` — direction succeeded, observation appended to the CSV
+      ledger (regardless of whether the median exceeds the feed
+      threshold; threshold-gating now happens in
+      :mod:`src.feed.stammstrecke` at feed-build time);
     * ``"no_delays"`` — direction succeeded but emitted no S-Bahn legs
-      with delay data, or median ≤ threshold;
+      with delay data (no CSV row written);
     * ``"error"`` — VAO/parse raised an exception (already logged);
     * ``"quota_exceeded"`` — the daily quota cap hit before the call;
       caller treats the same as ``"error"`` for self-healing purposes.
@@ -1208,6 +1033,12 @@ def _process_direction(
     The ``CircuitBreakerOpen`` case is *not* handled here — the caller
     catches it so it can break out of the per-direction loop instead
     of consuming further breaker-protected slots.
+
+    2026-05-09: dropped the in-script event-building branch. The cron
+    script now writes only to the CSV ledger
+    (``data/stats/stammstrecke_<YYYY>.csv``); feed events are computed
+    from that ledger by :mod:`src.feed.stammstrecke` so the README
+    snapshot and the RSS feed share a single source of truth.
     """
 
     LOGGER.info(
@@ -1229,7 +1060,7 @@ def _process_direction(
             direction.target_label,
             sanitize_log_arg(str(exc)),
         )
-        return None, "quota_exceeded"
+        return "quota_exceeded"
     except requests.HTTPError as exc:
         # Diagnostic-rich branch for non-2xx responses. The previous
         # PR (#1389) made the body readable, revealing the canonical
@@ -1280,7 +1111,7 @@ def _process_direction(
             sanitize_log_arg(server),
             sanitize_log_arg(www_auth),
         )
-        return None, "error"
+        return "error"
     except Exception as exc:
         # Security: never log the full exception via ``%s`` / ``exc_info``
         # — ``VorAuth`` injected the ``accessId`` into the prepared
@@ -1292,7 +1123,7 @@ def _process_direction(
             direction.target_label,
             type(exc).__name__,
         )
-        return None, "error"
+        return "error"
 
     delays = _collect_sbahn_delays_minutes(trips)
     LOGGER.info(
@@ -1302,7 +1133,7 @@ def _process_direction(
         len(trips),
     )
     if not delays:
-        return None, "no_delays"
+        return "no_delays"
 
     median_minutes = float(statistics.median(delays))
     LOGGER.info(
@@ -1311,41 +1142,18 @@ def _process_direction(
         median_minutes,
         DELAY_THRESHOLD_MINUTES,
     )
-    # Stats: persist every successful median observation, regardless of
-    # whether it exceeds the feed-trigger threshold. The dashboard's
-    # value comes from the *full* distribution, not just the events that
-    # made it onto the RSS feed.
+    # Persist every successful median observation, regardless of whether
+    # it exceeds the feed-trigger threshold. The dashboard's 30-day
+    # value comes from the *full* distribution, and the feed's 1-hour
+    # window threshold-gates against the same rows at feed-build time
+    # (see :mod:`src.feed.stammstrecke`). Single source of truth = this
+    # CSV ledger.
     append_stammstrecke_row(
         timestamp=when,
         direction=direction.target_label,
         delay_minutes=median_minutes,
     )
-
-    if median_minutes <= DELAY_THRESHOLD_MINUTES:
-        return None, "no_delays"
-
-    first_seen = _resolve_first_seen(
-        direction.identity_prefix, previous_first_seen, when
-    )
-    event = _build_event(
-        direction=direction,
-        median_delay_minutes=median_minutes,
-        pub_date=when,
-        first_seen=first_seen,
-    )
-
-    is_new = first_seen >= when  # tolerant equality for fresh episodes
-    LOGGER.info(
-        "Stammstrecke: Richtung %s — Median %.2f > %d → Event %s "
-        "(guid=%s, first_seen=%s).",
-        direction.target_label,
-        median_minutes,
-        DELAY_THRESHOLD_MINUTES,
-        "neu" if is_new else "fortgeführt",
-        event["guid"][:12],
-        event["first_seen"],
-    )
-    return event, "event"
+    return "ok"
 
 
 def main() -> int:
@@ -1355,22 +1163,20 @@ def main() -> int:
     cron pipeline relies on a clean exit so other cache updates run on
     schedule even when this provider is degraded.
 
-    Self-healing rule: the cache file is *unconditionally* set to ``[]``
-    when (a) every monitored direction fails before producing an
-    observation, OR (b) no direction's median exceeds the threshold.
-    Per-direction error isolation still applies: a single direction's
-    transient failure does not discard a successfully observed
-    disruption from the other direction.
+    The script writes only to the CSV ledger
+    ``data/stats/stammstrecke_<YYYY>.csv``; the feed builder reads from
+    that ledger directly (see :mod:`src.feed.stammstrecke`). A
+    CircuitBreakerOpen short-circuit or all-directions-failed run
+    appends nothing — the feed naturally degrades to "no Stammstrecke
+    entry" because the most-recent observations roll out of the
+    1-hour feed window without replacement.
     """
 
     configure_logging()
 
     when = _now_vienna()
-    previous_first_seen = _read_existing_first_seen()
-    events: list[dict[str, Any]] = []
     successes = 0
     errors = 0
-    breaker_short_circuited = False
 
     with ExitStack() as stack:
         try:
@@ -1380,43 +1186,27 @@ def main() -> int:
                 "Stammstrecke: VOR-Session konnte nicht erstellt werden: %s.",
                 type(exc).__name__,
             )
-            _write_cache([])
             return 1
 
         for direction in DIRECTIONS:
             try:
-                event, status = _process_direction(
-                    session,
-                    direction,
-                    when=when,
-                    previous_first_seen=previous_first_seen,
-                )
+                status = _process_direction(session, direction, when=when)
             except CircuitBreakerOpen:
                 LOGGER.warning(
                     "Stammstrecke: Circuit breaker offen (%d aufeinanderfolgende Fehler) — "
-                    "leere Cache-Datei und überspringe verbleibende Richtungen.",
+                    "weitere Richtungen werden übersprungen.",
                     _BREAKER.consecutive_failures,
                 )
-                breaker_short_circuited = True
-                events = []  # Self-Healing: discard any partial results.
                 break
 
             if status in ("error", "quota_exceeded"):
                 errors += 1
-                continue
-            successes += 1
-            if event is not None:
-                events.append(event)
+            else:
+                successes += 1
 
-    # Self-Healing rule: if every direction errored AND none succeeded,
-    # treat the API as unreachable globally and clear the cache.
-    if not breaker_short_circuited and successes == 0 and errors > 0:
-        events = []
-
-    _write_cache(events)
     LOGGER.info(
-        "Stammstrecke: Cache mit %d Event(s) aktualisiert (Erfolg=%d, Fehler=%d).",
-        len(events),
+        "Stammstrecke: %d Beobachtung(en) angefügt (Erfolg=%d, Fehler=%d).",
+        successes,
         successes,
         errors,
     )

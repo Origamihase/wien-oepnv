@@ -25,14 +25,17 @@ WARNING-level diagnostics. Mypy-strict clean; no third-party calls.
 from __future__ import annotations
 
 import csv
+import io
 import logging
 import os
 import re
-from datetime import datetime
+from dataclasses import dataclass
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Final
 from zoneinfo import ZoneInfo
 
+from src.utils.files import read_capped_text
 from src.utils.logging import sanitize_log_arg
 from src.utils.stations import display_name, station_info
 
@@ -526,15 +529,131 @@ def extract_location_name(item: dict[str, Any]) -> str:
     return "unbekannt"
 
 
+# Hard byte cap on the per-year ``stammstrecke_<YYYY>.csv`` file before
+# the feed-side reader will accept it. The append-only writer produces
+# ~50-byte rows and runs every 30 minutes (≈876 KiB/year worst case).
+# 16 MiB is ~18× the worst-case annual footprint while bounding the
+# memory cost of an adversarial planted file (compromised CI runner /
+# operator mis-edit / partial-flush + power-loss). Mirrors the
+# defense-in-depth size cap on every other JSON cache reader in the
+# project.
+MAX_STAMMSTRECKE_CSV_BYTES: Final = 16 * 1024 * 1024
+
+
+@dataclass(frozen=True)
+class StammstreckeObservation:
+    """A single ``stammstrecke_*.csv`` row, parsed and validated.
+
+    Field shapes mirror :data:`STAMMSTRECKE_HEADER`. The reader below
+    silently drops rows that fail to parse so a single bad row cannot
+    break the entire feed-build (which then would have to operate
+    without the Stammstrecke event entirely).
+    """
+
+    timestamp: datetime
+    direction: str
+    delay_minutes: float
+
+
+def _parse_stammstrecke_row(row: dict[str, str]) -> StammstreckeObservation | None:
+    """Best-effort parser for a CSV row dict — returns ``None`` on shape errors.
+
+    The same row schema the writer guarantees (``timestamp,weekday,hour,
+    direction,delay_minutes``); we only re-validate the fields the
+    reader actually consumes (timestamp + direction + delay_minutes).
+    """
+    raw_ts = (row.get("timestamp") or "").strip()
+    raw_dir = (row.get("direction") or "").strip()
+    raw_delay = (row.get("delay_minutes") or "").strip()
+    if not raw_ts or not raw_dir or not raw_delay:
+        return None
+    try:
+        ts = datetime.fromisoformat(raw_ts)
+    except ValueError:
+        return None
+    if ts.tzinfo is None:
+        # Naive timestamps in the ledger are unexpected — the writer
+        # always emits an offset-aware ISO string. Treat them as
+        # Europe/Vienna defensively rather than dropping the row.
+        ts = ts.replace(tzinfo=VIENNA_TZ)
+    try:
+        delay = float(raw_delay)
+    except ValueError:
+        return None
+    return StammstreckeObservation(
+        timestamp=ts, direction=raw_dir, delay_minutes=delay
+    )
+
+
+def read_recent_stammstrecke_observations(
+    *,
+    now: datetime,
+    window: timedelta,
+    stats_dir: Path | None = None,
+) -> list[StammstreckeObservation]:
+    """Return all Stammstrecke observations whose timestamp is in the last *window*.
+
+    Reads the per-year CSV files spanning the requested window (a window
+    that crosses a year boundary triggers two file reads); rows that
+    fail to parse are silently dropped at WARNING. The result is sorted
+    by timestamp ascending so callers can fold over it deterministically.
+
+    Best-effort: every I/O / parse failure is caught and logged; the
+    function returns whatever rows it could read, which means an empty
+    list when the ledger is missing or unreadable. The caller treats
+    "no observations" as "no event" — the feed naturally degrades to
+    omitting the Stammstrecke entry rather than failing the build.
+
+    Defense-in-depth: every CSV file is size-capped at
+    :data:`MAX_STAMMSTRECKE_CSV_BYTES` before opening.
+    """
+    if window.total_seconds() <= 0:
+        return []
+    cutoff = now - window
+    folder = stats_dir if stats_dir is not None else DEFAULT_STATS_DIR
+    years = sorted({cutoff.year, now.year})
+    observations: list[StammstreckeObservation] = []
+    for year in years:
+        path = folder / f"stammstrecke_{year:04d}.csv"
+        # ``read_capped_text`` enforces the size cap before buffering
+        # the whole file into memory and returns ``None`` on missing /
+        # oversized / unreadable files (incl. ``MemoryError`` defence
+        # via TOCTOU-safe fstat). The ``io.StringIO`` round-trip then
+        # feeds the bounded text into the standard csv module — wrap
+        # mirrors the project-wide pattern enforced by
+        # ``tests/test_sentinel_csv_size_bomb.py``.
+        text = read_capped_text(
+            path,
+            MAX_STAMMSTRECKE_CSV_BYTES,
+            label="Stammstrecke ledger",
+            logger=LOGGER,
+        )
+        if text is None:
+            continue
+        reader = csv.DictReader(io.StringIO(text))
+        for row in reader:
+            parsed = _parse_stammstrecke_row(row)
+            if parsed is None:
+                continue
+            if parsed.timestamp < cutoff:
+                continue
+            observations.append(parsed)
+    observations.sort(key=lambda obs: obs.timestamp)
+    return observations
+
+
 __all__ = [
     "STAMMSTRECKE_HEADER",
     "STOERUNGEN_HEADER",
     "WEEKDAY_LABELS",
     "DEFAULT_STATS_DIR",
+    "MAX_STAMMSTRECKE_CSV_BYTES",
+    "StammstreckeObservation",
     "VIENNA_TZ",
     "append_stammstrecke_row",
     "append_disruption_row",
     "extract_location_name",
+    "read_recent_stammstrecke_observations",
     "stats_path",
     "to_vienna",
 ]
