@@ -123,10 +123,12 @@ MEIDLING_CANONICAL_SEED = "Wien Meidling"
 DELAY_THRESHOLD_MINUTES = 9
 
 # Number of journeys to fetch per direction in a single HAFAS query.
-# Higher values give a more stable median but raise the cost of a single
-# call. 12 covers roughly half an hour of S-Bahn frequency on the
-# Stammstrecke.
-MAX_JOURNEYS_PER_QUERY = 12
+# We pin this to ``5`` so the median is computed from the immediately
+# upcoming five S-Bahn departures per direction — that is the smallest
+# odd-ish window that still yields a stable median while keeping the
+# pyhafas / HAFAS payload minimal (one call per direction × 2
+# directions = 10 journey objects per cron tick).
+MAX_JOURNEYS_PER_QUERY = 5
 
 # Per-call HTTP budget. Enforced via :func:`_patch_session_timeout` —
 # pyhafas does NOT pass a timeout to its ``session.post`` calls, so

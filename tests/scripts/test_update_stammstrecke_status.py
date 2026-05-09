@@ -263,6 +263,45 @@ def test_breaker_config_aligns_with_10_per_hour_budget() -> None:
     assert script.BREAKER_RECOVERY_TIMEOUT == 3600.0
 
 
+def test_max_journeys_per_query_is_pinned_to_five() -> None:
+    """Pin ``MAX_JOURNEYS_PER_QUERY`` so future drift is caught at PR-review.
+
+    Five is the smallest sample that yields a stable median while
+    keeping the HAFAS payload minimal (two directions × five journeys
+    per cron tick = 10 journey objects).
+    """
+
+    assert script.MAX_JOURNEYS_PER_QUERY == 5
+
+
+def test_query_journeys_forwards_max_journeys_kwarg(
+    monkeypatch: pytest.MonkeyPatch, _stable_now: datetime
+) -> None:
+    """``_query_journeys`` must pass ``max_journeys=5`` to the pyhafas client.
+
+    A regression here would silently revert to the pyhafas default
+    (which can range from 5 to ~30 depending on profile) and bloat the
+    HAFAS payload — which is precisely what the cap is meant to
+    prevent.
+    """
+
+    captured: dict[str, Any] = {}
+
+    def journeys(**kwargs: Any) -> list[Any]:
+        captured.update(kwargs)
+        return []
+
+    fake_client = SimpleNamespace(profile=SimpleNamespace(), journeys=journeys)
+    direction = script.DIRECTIONS[0]
+
+    result = script._query_journeys(fake_client, direction, when=_stable_now)
+    assert result == []
+    assert captured["max_journeys"] == 5
+    assert captured["max_changes"] == 0
+    assert captured["origin"] == direction.origin_id
+    assert captured["destination"] == direction.destination_id
+
+
 # ---- _patch_session_timeout tests ----------------------------------------
 
 

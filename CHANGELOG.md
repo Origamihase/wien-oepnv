@@ -1,6 +1,23 @@
 # CHANGELOG
 
 ## [Unreleased]
+* **Audit**: Vollständige Audit-Abnahme des S-Bahn Stammstrecke
+  Monitors mit Bericht unter
+  [`docs/archive/audits/oebb_stammstrecke_audit.md`](docs/archive/audits/oebb_stammstrecke_audit.md).
+  Verifiziert: Mypy-Strict 0 Fehler, Bandit 0 Issues, Circuit Breaker
+  trippt nach 10 Failures auf 1 h Recovery, HTTP-Timeout via
+  Session-Patch, Europe/Vienna an allen 13 datetime-Sites, Schema-
+  Compliance gegen `docs/schema/events.schema.json` (3 / 3 Szenarien
+  grün), 47 Tests + 95.3 % Coverage. Audit-Resultat: **0 Findings**,
+  Feature ist production-ready.
+* **Tuning (Stammstrecke)**: `MAX_JOURNEYS_PER_QUERY` von 12 auf
+  **5** gesenkt. Damit wird der Median nur über die *unmittelbar
+  nächsten 5* anstehenden S-Bahnen pro Richtung gebildet (10 Journeys
+  pro Cron-Tick gesamt) — schärferer Median, kleinere HAFAS-Payload,
+  bessere Operator-Erwartung („wie ist es jetzt?"). Zwei neue
+  Pin-Tests (`test_max_journeys_per_query_is_pinned_to_five` +
+  `test_query_journeys_forwards_max_journeys_kwarg`) verhindern
+  zukünftige Regressionen.
 * **Feat (Stammstrecke)**: Self-Healing + first_seen-Persistenz +
   erweitertes Description-Schema. Konkret:
   - **first_seen-Persistenz**: Jedes Event in
