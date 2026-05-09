@@ -5,6 +5,53 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Changed (Stammstrecke-Monitor → VOR/VAO ReST API)**: Der S-Bahn-
+  Stammstrecken-Verspätungs-Monitor wurde von `pyhafas` (`OEBBProfile`)
+  auf die offizielle VOR/VAO ReST `/trip`-API portiert. Hintergrund:
+  das auf PyPI veröffentlichte `pyhafas` exportiert kein
+  `OEBBProfile`, der Import schlug seit Wochen still fehl und
+  `data/stats/stammstrecke_*.csv` blieb leer (siehe Audit-Bericht
+  zu PR #1378).
+  - **Removed**: `pyhafas` aus `requirements.txt`,
+    `from pyhafas import HafasClient` / `_build_client` /
+    `_query_journeys` / `_patch_session_timeout` aus
+    `scripts/update_stammstrecke_status.py`.
+  - **Replaced**: HAFAS-Aufruf durch `fetch_content_safe` gegen
+    `${VOR_BASE_URL}trip` mit `originId` / `destId` / `numF=5` /
+    `maxChange=0` / `rtMode=SERVER_DEFAULT`. Auth via
+    `vor_provider.VorAuth` (gleicher Stack wie Disruption-Provider).
+    Quota-Slot wird **vor** jedem Network Call via
+    `_charge_one_request` reserviert.
+  - **Stabil**: Event-Schema (`source: "ÖBB"`), `first_seen`-
+    Persistenz, `DELAY_THRESHOLD_MINUTES = 9`, Self-Healing-Regel,
+    Atomic-Write, CSV-Statistik-Logging, Cron-Schedule
+    (`*/30 * * * *`). Feed-Reader-Subscribers bemerken den Wechsel
+    nicht.
+  - **Tests**: Mocks an der `_query_trips`-Boundary statt an einer
+    pyhafas-`HafasClient`-Imitation. 64 Tests in
+    `tests/scripts/test_update_stammstrecke_status.py` decken
+    `_is_sbahn_leg` (3 Signal-Quellen), Direct-Connection-Filter,
+    Realtime-Erkennung, Quota-Charge-vor-Fetch, Threshold-Semantik,
+    `first_seen`-Persistenz, Self-Healing und Schema-Compliance ab.
+  - **Doku**: `docs/reference/oebb_provider_logic.md` enthält jetzt
+    nur noch die ÖBB-RSS-Scraper-Logik (`src/providers/oebb.py`); der
+    Stammstrecke-Monitor ist nach
+    `docs/reference/stammstrecke_provider_logic.md` ausgegliedert.
+* **Changed (VOR API quota optimization)**: `DEFAULT_MONITOR_WHITELIST`
+  in `src/providers/vor.py` ist jetzt **leer** (vorher
+  `"Wien Hauptbahnhof,Flughafen Wien"`). Begründung: das
+  Tagesbudget von 100 VAO-Requests wird nach der Stammstrecke-
+  Migration von 96 Stammstrecken-Calls (`/trip` × 2 × 48) dominiert;
+  parallele Departure-Board-Polls würden das Limit überschreiten.
+  Operatoren, die das Legacy-Verhalten brauchen, setzen
+  `VOR_MONITOR_STATIONS_WHITELIST` explizit per Umgebungsvariable.
+* **Changed (Station-Enrichment-Whitelist)**: `fetch_vor_stops_from_api`
+  in `scripts/update_vor_stations.py` macht Live-API-Calls jetzt nur
+  noch für die 10 Stammstrecke-Stationen (`STAMMSTRECKE_VOR_IDS`).
+  Alle anderen Station-IDs fallen auf die gepinnte
+  `data/vor-haltestellen.csv` zurück. Begründung wie oben — preserves
+  the daily quota for the hot path. Test-Coverage:
+  `test_fetch_vor_stops_from_api_skips_non_stammstrecke_ids`.
 * **Added (Statistik-Dashboard)**: Zero-dependency Append-only-CSV-
   Pipeline und Markdown-Dashboard — Architektur-Kontext in
   [`docs/architecture.md` § 6](docs/architecture.md).

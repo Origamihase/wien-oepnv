@@ -3,5 +3,7 @@ python-dateutil>=2.9,<3
 defusedxml>=0.7.1,<1
 openpyxl>=3.1.5,<4
 dnspython>=2.0.0,<3
-pyhafas>=0.6.1,<1
 # XXE Mitigation applied
+# pyhafas removed 2026-05-09: the released wheel on PyPI does not export
+# ``pyhafas.profile.OEBBProfile`` so the Stammstrecke monitor was migrated
+# to the VOR/VAO ReST ``/trip`` endpoint (see scripts/update_stammstrecke_status.py).

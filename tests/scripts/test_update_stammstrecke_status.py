@@ -1,24 +1,29 @@
-"""Tests for ``scripts/update_stammstrecke_status.py``.
+"""Tests for ``scripts/update_stammstrecke_status.py`` (VOR/VAO migration).
 
-The pyhafas client is mocked end-to-end so the test suite never reaches
-the live ÖBB HAFAS endpoint. Each test exercises a single, isolated
-branch of the script's decision tree: import-time failure, transport
-error, circuit-breaker open, median-below-threshold, median-above-
-threshold, no S-Bahn legs found, ``first_seen`` persistence and
-recovery — for each of the **two** Stammstrecke directions
-independently.
+The 2026-05-09 architecture pivot replaced the pyhafas client with the
+VOR/VAO ReST ``/trip`` endpoint. These tests exercise the same decision
+tree as before — import-time failure, transport error, circuit-breaker
+open, median-below-threshold, median-above-threshold, no S-Bahn legs
+found, ``first_seen`` persistence and recovery — but the upstream is
+mocked at the ``_query_trips`` boundary instead of the pyhafas client.
+
+The HTTP layer is never actually exercised in tests: ``_query_trips`` is
+patched per-test to return synthetic VAO ``Trip`` payloads (a single
+ride leg with controllable name/category/delay/cancelled fields). The
+quota-counter file (``REQUEST_COUNT_FILE``) is redirected to ``tmp_path``
+via the existing module-level convention so a test run never touches the
+real ``data/vor_request_count.json``.
 """
 from __future__ import annotations
 
 import json
 import logging
+import re
 import sys
 from collections.abc import Iterator
 from datetime import datetime, timedelta
 from pathlib import Path
-from types import SimpleNamespace
 from typing import Any
-from zoneinfo import ZoneInfo
 
 import pytest
 
@@ -28,10 +33,11 @@ if str(REPO_ROOT) not in sys.path:
 
 from scripts import update_stammstrecke_status as script  # noqa: E402
 from src.feed.providers import MAX_STAMMSTRECKE_CACHE_BYTES  # noqa: E402
+from src.providers import vor as vor_provider  # noqa: E402
 from src.utils.circuit_breaker import CircuitBreaker  # noqa: E402
 
 
-VIENNA_TZ = ZoneInfo("Europe/Vienna")
+VIENNA_TZ = script.VIENNA_TZ
 
 
 # ---- Fixtures --------------------------------------------------------------
@@ -48,17 +54,13 @@ def _isolated_output(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterato
 
 @pytest.fixture(autouse=True)
 def _fresh_breaker(monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
-    """Replace the module-level breaker so tests don't share state.
-
-    Uses the production breaker config (10 / 3600 s) so the threshold-
-    based behavioural tests reflect what runs in CI.
-    """
+    """Replace the module-level breaker so tests don't share state."""
 
     monkeypatch.setattr(
         script,
         "_BREAKER",
         CircuitBreaker(
-            "stammstrecke-hafas-test",
+            "stammstrecke-vor-test",
             failure_threshold=script.BREAKER_FAILURE_THRESHOLD,
             recovery_timeout=script.BREAKER_RECOVERY_TIMEOUT,
         ),
@@ -75,18 +77,95 @@ def _stable_now(monkeypatch: pytest.MonkeyPatch) -> Iterator[datetime]:
     yield pinned
 
 
+@pytest.fixture(autouse=True)
+def _isolated_quota_counter(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> Iterator[Path]:
+    """Redirect the VOR daily-quota counter to ``tmp_path``.
+
+    The ``_charge_one_request`` helper writes to ``REQUEST_COUNT_FILE``
+    via ``vor_provider.save_request_count`` — without this fixture the
+    bookkeeping side effect would persist into the developer's working
+    copy (``data/vor_request_count.json``). ``_flush_quota_cache`` clears
+    the in-memory cache so a fresh tmp file is read on the next call.
+    """
+
+    count_file = tmp_path / "vor_request_count.json"
+    monkeypatch.setattr(vor_provider, "REQUEST_COUNT_FILE", count_file)
+    vor_provider._flush_quota_cache()
+    yield count_file
+    vor_provider._flush_quota_cache()
+
+
 # ---- Helpers ---------------------------------------------------------------
 
 
-def _leg(*, name: str, delay_minutes: float | None, cancelled: bool = False) -> Any:
-    """Return a duck-typed leg mock matching pyhafas FPTF Leg."""
+def _trip(
+    *,
+    leg_name: str = "S 1",
+    delay_minutes: float | None = 10.0,
+    category: str | None = "__auto__",
+    cancelled: bool = False,
+    type_: str = "JNY",
+    extra_legs: list[dict[str, Any]] | None = None,
+    leg_origin_date: str = "2026-05-09",
+    leg_origin_time: str = "08:00:00",
+) -> dict[str, Any]:
+    """Build a minimal VAO Trip dict with one direct ride leg.
 
-    delay = timedelta(minutes=delay_minutes) if delay_minutes is not None else None
-    return SimpleNamespace(name=name, departure_delay=delay, cancelled=cancelled)
+    The shape mirrors what the project's existing VOR /trip parser
+    expects: ``Trip[].LegList.Leg[]`` with each leg carrying
+    ``Origin{date,time,rtTime}``, ``category``, and ``name``.
 
+    *category*: ``"__auto__"`` derives ``"S"`` from a name matching
+    ``S\\d+``; pass an explicit string (e.g. ``"REX"``) or ``None`` to
+    override.
+    *delay_minutes*: ``None`` → no realtime field set (excluded from
+    median). Numeric → realtime computed by adding *delay_minutes* to
+    the scheduled origin time.
+    """
 
-def _journey(*, legs: list[Any]) -> Any:
-    return SimpleNamespace(legs=legs)
+    if category == "__auto__":
+        if re.match(r"^\s*S\s*\d+\s*$", leg_name, re.IGNORECASE):
+            category = "S"
+        else:
+            category = None
+
+    rt_time: str | None = None
+    if delay_minutes is not None and not cancelled:
+        sched_dt = datetime.strptime(
+            f"{leg_origin_date} {leg_origin_time}", "%Y-%m-%d %H:%M:%S"
+        )
+        rt_dt = sched_dt + timedelta(minutes=float(delay_minutes))
+        rt_time = rt_dt.strftime("%H:%M:%S")
+
+    leg: dict[str, Any] = {
+        "type": type_,
+        "name": leg_name,
+        "Origin": {
+            "name": "Wien Floridsdorf",
+            "extId": "490033400",
+            "date": leg_origin_date,
+            "time": leg_origin_time,
+        },
+        "Destination": {
+            "name": "Wien Meidling",
+            "extId": "490101500",
+            "date": leg_origin_date,
+            "time": "08:30:00",
+        },
+    }
+    if category is not None:
+        leg["category"] = category
+    if rt_time is not None:
+        leg["Origin"]["rtTime"] = rt_time
+    if cancelled:
+        leg["cancelled"] = True
+
+    legs: list[dict[str, Any]] = [leg]
+    if extra_legs:
+        legs.extend(extra_legs)
+    return {"LegList": {"Leg": legs}}
 
 
 def _read_output(path: Path) -> list[dict[str, Any]]:
@@ -96,113 +175,185 @@ def _read_output(path: Path) -> list[dict[str, Any]]:
     return payload
 
 
-def _make_directional_client(
-    floridsdorf_to_meidling: list[Any] | Exception,
-    meidling_to_floridsdorf: list[Any] | Exception,
-) -> Any:
-    """Build a fake HafasClient that returns per-direction mock data.
+def _patch_query_trips(
+    monkeypatch: pytest.MonkeyPatch,
+    floridsdorf_to_meidling: list[dict[str, Any]] | Exception,
+    meidling_to_floridsdorf: list[dict[str, Any]] | Exception,
+) -> None:
+    """Patch ``_query_trips`` to return per-direction synthetic Trip lists.
 
     Each direction can also be an :class:`Exception` instance to
     simulate a per-direction transport error without affecting the
     other direction's outcome.
     """
 
-    def journeys(**kwargs: Any) -> list[Any]:
-        origin = kwargs.get("origin")
-        destination = kwargs.get("destination")
+    def fake_query_trips(
+        session: Any,
+        direction: Any,
+        *,
+        when: datetime,
+        timeout: int = script.QUERY_TIMEOUT,
+    ) -> list[dict[str, Any]]:
+        del session, when, timeout  # not exercised in mocked tests
         if (
-            origin == script.FLORIDSDORF_STATION_ID
-            and destination == script.MEIDLING_STATION_ID
+            direction.origin_id == script.FLORIDSDORF_VOR_ID
+            and direction.destination_id == script.MEIDLING_VOR_ID
         ):
             payload = floridsdorf_to_meidling
         elif (
-            origin == script.MEIDLING_STATION_ID
-            and destination == script.FLORIDSDORF_STATION_ID
+            direction.origin_id == script.MEIDLING_VOR_ID
+            and direction.destination_id == script.FLORIDSDORF_VOR_ID
         ):
             payload = meidling_to_floridsdorf
         else:  # pragma: no cover - defensive: unexpected origin/dest pair
             raise AssertionError(
-                f"Unexpected origin/destination pair: {origin!r} → {destination!r}"
+                f"Unexpected origin/destination pair: "
+                f"{direction.origin_id!r} → {direction.destination_id!r}"
             )
         if isinstance(payload, Exception):
             raise payload
         return payload
 
-    return SimpleNamespace(profile=SimpleNamespace(), journeys=journeys)
-
-
-def _patch_client(monkeypatch: pytest.MonkeyPatch, client: Any) -> None:
-    monkeypatch.setattr(script, "_build_client", lambda: client)
+    monkeypatch.setattr(script, "_query_trips", fake_query_trips)
 
 
 def _set_now(monkeypatch: pytest.MonkeyPatch, when: datetime) -> None:
     monkeypatch.setattr(script, "_now_vienna", lambda: when)
 
 
-def _high_journeys() -> list[Any]:
+def _high_trips() -> list[dict[str, Any]]:
     return [
-        _journey(legs=[_leg(name="S 1", delay_minutes=11)]),
-        _journey(legs=[_leg(name="S 2", delay_minutes=12)]),
-        _journey(legs=[_leg(name="S 3", delay_minutes=10)]),
+        _trip(leg_name="S 1", delay_minutes=11),
+        _trip(leg_name="S 2", delay_minutes=12),
+        _trip(leg_name="S 3", delay_minutes=10),
     ]
 
 
-def _low_journeys() -> list[Any]:
+def _low_trips() -> list[dict[str, Any]]:
     return [
-        _journey(legs=[_leg(name="S 1", delay_minutes=2)]),
-        _journey(legs=[_leg(name="S 2", delay_minutes=3)]),
+        _trip(leg_name="S 1", delay_minutes=2),
+        _trip(leg_name="S 2", delay_minutes=3),
     ]
 
 
 # ---- Helper-level unit tests -----------------------------------------------
 
 
-def test_is_sbahn_leg_matches_canonical_labels() -> None:
-    assert script._is_sbahn_leg(_leg(name="S 1", delay_minutes=0))
-    assert script._is_sbahn_leg(_leg(name="S 7", delay_minutes=0))
-    assert script._is_sbahn_leg(_leg(name="S 80", delay_minutes=0))
-    assert script._is_sbahn_leg(_leg(name="s 2", delay_minutes=0))
+def test_is_sbahn_leg_matches_canonical_category() -> None:
+    """The primary signal is ``leg.category == "S"`` (or "SB")."""
+    assert script._is_sbahn_leg({"category": "S", "name": "S 1"})
+    assert script._is_sbahn_leg({"category": "SB", "name": "S 80"})
+    # Lowercase / mixed case is still accepted (the matcher upcases).
+    assert script._is_sbahn_leg({"category": "s", "name": "S 7"})
+
+
+def test_is_sbahn_leg_matches_name_when_category_missing() -> None:
+    """Fallback signal: ``leg.name`` matches ``S\\d+``."""
+    assert script._is_sbahn_leg({"name": "S 1"})
+    assert script._is_sbahn_leg({"name": "S 7"})
+    assert script._is_sbahn_leg({"name": "S 80"})
+    assert script._is_sbahn_leg({"name": "s 2"})
+
+
+def test_is_sbahn_leg_matches_nested_product_field() -> None:
+    """Tertiary signal: ``leg.Product[].catOut`` or ``Product[].line``."""
+    assert script._is_sbahn_leg(
+        {"Product": [{"catOut": "S", "line": "S 7"}]}
+    )
+    assert script._is_sbahn_leg({"Product": [{"line": "S 80"}]})
+    # Single Product object (not list) — also accepted.
+    assert script._is_sbahn_leg({"Product": {"catOut": "SB"}})
 
 
 def test_is_sbahn_leg_rejects_non_sbahn() -> None:
-    assert not script._is_sbahn_leg(_leg(name="REX 7", delay_minutes=0))
-    assert not script._is_sbahn_leg(_leg(name="IC 533", delay_minutes=0))
-    assert not script._is_sbahn_leg(_leg(name="Railjet 162", delay_minutes=0))
-    assert not script._is_sbahn_leg(_leg(name="", delay_minutes=0))
+    assert not script._is_sbahn_leg({"category": "REX", "name": "REX 7"})
+    assert not script._is_sbahn_leg({"category": "IC", "name": "IC 533"})
+    assert not script._is_sbahn_leg(
+        {"category": "RJ", "name": "Railjet 162"}
+    )
+    assert not script._is_sbahn_leg({"name": ""})
 
 
-def test_is_sbahn_leg_handles_missing_or_non_string_name() -> None:
-    bad = SimpleNamespace(departure_delay=timedelta(minutes=5), cancelled=False)
-    assert not script._is_sbahn_leg(bad)
-    bad_int = SimpleNamespace(name=42, departure_delay=None, cancelled=False)
-    assert not script._is_sbahn_leg(bad_int)
+def test_is_sbahn_leg_handles_non_mapping_input() -> None:
+    """A garbage payload (None, list, string) must not raise."""
+    assert not script._is_sbahn_leg(None)  # type: ignore[arg-type]
+    assert not script._is_sbahn_leg("S 1")  # type: ignore[arg-type]
+    assert not script._is_sbahn_leg([])  # type: ignore[arg-type]
 
 
-def test_collect_delays_includes_only_sbahn_with_delay() -> None:
-    journeys = [
-        _journey(legs=[_leg(name="S 1", delay_minutes=4)]),
-        _journey(legs=[_leg(name="S 2", delay_minutes=10)]),
+def test_is_sbahn_leg_rejects_unrelated_product_categories() -> None:
+    assert not script._is_sbahn_leg({"Product": [{"catOut": "BUS"}]})
+    assert not script._is_sbahn_leg({"Product": [{"line": "U1"}]})
+
+
+def test_collect_delays_includes_only_sbahn_with_realtime() -> None:
+    trips = [
+        _trip(leg_name="S 1", delay_minutes=4),
+        _trip(leg_name="S 2", delay_minutes=10),
         # Non-S-Bahn — must be ignored.
-        _journey(legs=[_leg(name="REX 7", delay_minutes=20)]),
+        _trip(leg_name="REX 7", delay_minutes=20, category="REX"),
         # S-Bahn but cancelled — ignored (no signal).
-        _journey(legs=[_leg(name="S 3", delay_minutes=15, cancelled=True)]),
-        # S-Bahn but no delay value — ignored.
-        _journey(legs=[_leg(name="S 80", delay_minutes=None)]),
+        _trip(leg_name="S 3", delay_minutes=15, cancelled=True),
+        # S-Bahn but no realtime — ignored.
+        _trip(leg_name="S 80", delay_minutes=None),
     ]
-    delays = script._collect_sbahn_delays_minutes(journeys)
+    delays = script._collect_sbahn_delays_minutes(trips)
     assert delays == [4.0, 10.0]
 
 
-def test_collect_delays_handles_missing_legs_attribute() -> None:
-    """A misbehaving HAFAS peer might emit journeys without a ``legs`` attr."""
+def test_collect_delays_rejects_multi_ride_leg_trips() -> None:
+    """Direct connections only: a 2-ride-leg trip must not contribute."""
+    extra = {
+        "type": "JNY",
+        "name": "S 7",
+        "category": "S",
+        "Origin": {
+            "name": "Wien Mitte",
+            "date": "2026-05-09",
+            "time": "08:30:00",
+            "rtTime": "08:35:00",
+        },
+        "Destination": {
+            "name": "Wien Meidling",
+            "date": "2026-05-09",
+            "time": "08:50:00",
+        },
+    }
+    trips = [
+        _trip(leg_name="S 1", delay_minutes=10, extra_legs=[extra]),
+    ]
+    assert script._collect_sbahn_delays_minutes(trips) == []
 
-    journeys = [SimpleNamespace()]  # no legs attribute at all
-    assert script._collect_sbahn_delays_minutes(journeys) == []
+
+def test_collect_delays_tolerates_walk_legs_around_ride() -> None:
+    """A walk leg before/after the single ride leg is OK (still "direct")."""
+    walk_before = {
+        "type": "WALK",
+        "Origin": {"name": "Eingang"},
+        "Destination": {"name": "Bahnsteig"},
+    }
+    walk_after = {
+        "type": "WALK",
+        "Origin": {"name": "Bahnsteig Z"},
+        "Destination": {"name": "Ausgang"},
+    }
+    trips = [
+        _trip(leg_name="S 1", delay_minutes=11, extra_legs=[walk_before, walk_after]),
+    ]
+    assert script._collect_sbahn_delays_minutes(trips) == [11.0]
 
 
-def test_collect_delays_handles_legs_set_to_none() -> None:
-    journeys = [SimpleNamespace(legs=None)]
-    assert script._collect_sbahn_delays_minutes(journeys) == []
+def test_collect_delays_handles_missing_leg_list() -> None:
+    """A misshapen Trip without ``LegList`` must skip silently."""
+    trips: list[dict[str, Any]] = [{}]
+    assert script._collect_sbahn_delays_minutes(trips) == []
+
+
+def test_collect_delays_handles_single_leg_object_payload() -> None:
+    """Some VAO peers serialise ``Leg`` as a single object (not a list)."""
+    leg = _trip(leg_name="S 1", delay_minutes=11)["LegList"]["Leg"][0]
+    trips = [{"LegList": {"Leg": leg}}]  # bare object, not list
+    assert script._collect_sbahn_delays_minutes(trips) == [11.0]
 
 
 def test_format_minutes_strips_trailing_zero() -> None:
@@ -222,6 +373,19 @@ def test_directions_table_covers_both_targets() -> None:
         "stammstrecke_delay_meidling",
         "stammstrecke_delay_floridsdorf",
     }
+
+
+def test_directions_use_pinned_vor_ids() -> None:
+    """A drift in ``data/stations.json`` must NOT silently re-point the
+    monitor at a different stop. The VOR IDs are pinned in the script
+    constants and asserted here so a future rename trips the test."""
+
+    assert script.FLORIDSDORF_VOR_ID == "490033400"
+    assert script.MEIDLING_VOR_ID == "490101500"
+    origins = {d.origin_id for d in script.DIRECTIONS}
+    destinations = {d.destination_id for d in script.DIRECTIONS}
+    assert origins == {"490033400", "490101500"}
+    assert destinations == {"490033400", "490101500"}
 
 
 def test_short_target_label_resolves_via_station_directory() -> None:
@@ -257,104 +421,156 @@ def test_short_target_label_handles_directory_exception(
     assert script._short_target_label("Wien Meidling") == "Meidling"
 
 
-def test_breaker_config_aligns_with_10_per_hour_budget() -> None:
-    """Pin the rate-limit-aligned breaker constants documented in the script."""
+def test_breaker_config_aligns_with_outage_budget() -> None:
+    """Pin the breaker constants documented in the module docstring."""
 
     assert script.BREAKER_FAILURE_THRESHOLD == 10
     assert script.BREAKER_RECOVERY_TIMEOUT == 3600.0
 
 
-def test_max_journeys_per_query_is_pinned_to_five() -> None:
-    """Pin ``MAX_JOURNEYS_PER_QUERY`` so future drift is caught at PR-review.
+def test_max_trips_per_query_is_pinned_to_five() -> None:
+    """Pin ``MAX_TRIPS_PER_QUERY`` so a future drift is caught at PR-review.
 
     Five is the smallest sample that yields a stable median while
-    keeping the HAFAS payload minimal (two directions × five journeys
-    per cron tick = 10 journey objects).
+    keeping the VAO ``/trip`` payload (and the per-call quota cost)
+    minimal — VAO caps ``numF`` at 6.
     """
 
-    assert script.MAX_JOURNEYS_PER_QUERY == 5
+    assert script.MAX_TRIPS_PER_QUERY == 5
 
 
-def test_query_journeys_forwards_max_journeys_kwarg(
+def test_query_timeout_bound_below_max() -> None:
+    """``QUERY_TIMEOUT`` must stay strictly below ``MAX_QUERY_TIMEOUT``
+    so the per-call HTTP budget is finite even after a future tweak."""
+
+    assert 0 < script.QUERY_TIMEOUT <= script.MAX_QUERY_TIMEOUT
+
+
+# ---- _query_trips parameter-shape tests -----------------------------------
+
+
+def test_query_trips_passes_canonical_parameters(
     monkeypatch: pytest.MonkeyPatch, _stable_now: datetime
 ) -> None:
-    """``_query_journeys`` must pass ``max_journeys=5`` to the pyhafas client.
-
-    A regression here would silently revert to the pyhafas default
-    (which can range from 5 to ~30 depending on profile) and bloat the
-    HAFAS payload — which is precisely what the cap is meant to
-    prevent.
-    """
+    """Pin the wire-format parameters: originId/destId/numF/maxChange/rtMode."""
 
     captured: dict[str, Any] = {}
 
-    def journeys(**kwargs: Any) -> list[Any]:
-        captured.update(kwargs)
-        return []
+    def fake_fetch(
+        session: Any, endpoint: str, *, params: dict[str, str], **kwargs: Any
+    ) -> bytes:
+        captured["endpoint"] = endpoint
+        captured["params"] = dict(params)
+        captured["kwargs"] = kwargs
+        return b'{"Trip": []}'
 
-    fake_client = SimpleNamespace(profile=SimpleNamespace(), journeys=journeys)
+    monkeypatch.setattr(script, "fetch_content_safe", fake_fetch)
+    # Bypass the quota gate — the integration of charge → fetch is
+    # tested separately below.
+    monkeypatch.setattr(script, "_charge_one_request", lambda _now: None)
+
     direction = script.DIRECTIONS[0]
-
-    result = script._query_journeys(fake_client, direction, when=_stable_now)
-    assert result == []
-    assert captured["max_journeys"] == 5
-    assert captured["max_changes"] == 0
-    assert captured["origin"] == direction.origin_id
-    assert captured["destination"] == direction.destination_id
-
-
-# ---- _patch_session_timeout tests ----------------------------------------
-
-
-class _FakeSession:
-    """Minimal stand-in for ``requests.Session`` capturing kwargs."""
-
-    def __init__(self) -> None:
-        self.captured_kwargs: dict[str, Any] = {}
-
-    def request(self, method: str, url: str, **kwargs: Any) -> str:
-        self.captured_kwargs = kwargs
-        return f"{method} {url}"
+    trips = script._query_trips(session=object(), direction=direction, when=_stable_now)
+    assert trips == []
+    assert captured["endpoint"].endswith("/trip")
+    params = captured["params"]
+    assert params["format"] == "json"
+    assert params["originId"] == direction.origin_id
+    assert params["destId"] == direction.destination_id
+    assert params["numF"] == "5"  # pinned MAX_TRIPS_PER_QUERY
+    assert params["maxChange"] == "0"  # direct-connections-only
+    assert params["rtMode"] == "SERVER_DEFAULT"
+    assert params["date"] == _stable_now.strftime("%Y-%m-%d")
+    assert params["time"] == _stable_now.strftime("%H:%M")
+    assert captured["kwargs"]["allowed_content_types"] == ("application/json",)
+    # Timeout is bound below MAX_QUERY_TIMEOUT.
+    assert captured["kwargs"]["timeout"] <= script.MAX_QUERY_TIMEOUT
 
 
-def test_patch_session_timeout_injects_default_timeout() -> None:
-    """A request without an explicit ``timeout`` kwarg gets the default."""
-
-    session = _FakeSession()
-    profile = SimpleNamespace(request_session=session)
-    script._patch_session_timeout(profile, 7.5)
-    session.request("POST", "https://example.com/api")
-    assert session.captured_kwargs["timeout"] == 7.5
-
-
-def test_patch_session_timeout_respects_explicit_timeout() -> None:
-    """A request that already specifies ``timeout`` keeps that value."""
-
-    session = _FakeSession()
-    profile = SimpleNamespace(request_session=session)
-    script._patch_session_timeout(profile, 7.5)
-    session.request("POST", "https://example.com/api", timeout=42.0)
-    assert session.captured_kwargs["timeout"] == 42.0
-
-
-def test_patch_session_timeout_handles_missing_session(
-    caplog: pytest.LogCaptureFixture,
+def test_query_trips_normalises_single_trip_payload(
+    monkeypatch: pytest.MonkeyPatch, _stable_now: datetime
 ) -> None:
-    """If pyhafas's profile has no ``request_session``, log + degrade silently."""
+    """A bare-object ``Trip`` field (single-element list collapsed) must
+    still produce a list."""
 
-    profile = SimpleNamespace()  # no request_session
-    caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
-    script._patch_session_timeout(profile, 5.0)  # must not raise
-    assert any(
-        "kein Timeout-Enforcement" in record.getMessage() for record in caplog.records
+    monkeypatch.setattr(script, "_charge_one_request", lambda _now: None)
+    trip_obj = _trip(leg_name="S 1", delay_minutes=10)
+
+    def fake_fetch(*args: Any, **kwargs: Any) -> bytes:
+        return json.dumps({"Trip": trip_obj}).encode("utf-8")
+
+    monkeypatch.setattr(script, "fetch_content_safe", fake_fetch)
+
+    trips = script._query_trips(
+        session=object(), direction=script.DIRECTIONS[0], when=_stable_now
     )
+    assert isinstance(trips, list)
+    assert len(trips) == 1
 
 
-def test_patch_session_timeout_handles_session_without_request() -> None:
-    """A non-requests-shaped session object is treated like a missing one."""
+def test_query_trips_raises_on_non_dict_payload(
+    monkeypatch: pytest.MonkeyPatch, _stable_now: datetime
+) -> None:
+    """Any non-dict top-level payload must raise so the per-direction
+    error-isolation branch runs."""
 
-    profile = SimpleNamespace(request_session=SimpleNamespace())
-    script._patch_session_timeout(profile, 5.0)  # must not raise
+    monkeypatch.setattr(script, "_charge_one_request", lambda _now: None)
+    monkeypatch.setattr(script, "fetch_content_safe", lambda *a, **kw: b'[1,2,3]')
+
+    with pytest.raises(TypeError):
+        script._query_trips(
+            session=object(), direction=script.DIRECTIONS[0], when=_stable_now
+        )
+
+
+def test_query_trips_charges_quota_before_fetching(
+    monkeypatch: pytest.MonkeyPatch, _stable_now: datetime
+) -> None:
+    """Quota is reserved BEFORE the network call, so a quota-exhausted run
+    never sends a request."""
+
+    call_order: list[str] = []
+
+    def fake_charge(_now: datetime) -> None:
+        call_order.append("charge")
+
+    def fake_fetch(*args: Any, **kwargs: Any) -> bytes:
+        call_order.append("fetch")
+        return b'{"Trip": []}'
+
+    monkeypatch.setattr(script, "_charge_one_request", fake_charge)
+    monkeypatch.setattr(script, "fetch_content_safe", fake_fetch)
+
+    script._query_trips(
+        session=object(), direction=script.DIRECTIONS[0], when=_stable_now
+    )
+    assert call_order == ["charge", "fetch"]
+
+
+def test_query_trips_propagates_quota_exceeded_without_fetching(
+    monkeypatch: pytest.MonkeyPatch, _stable_now: datetime
+) -> None:
+    """When the quota gate raises, no network call is made."""
+
+    fetched = {"called": False}
+
+    def raising_charge(_now: datetime) -> None:
+        raise script._QuotaExceeded("daily limit reached")
+
+    def fake_fetch(*args: Any, **kwargs: Any) -> bytes:
+        fetched["called"] = True
+        return b""
+
+    monkeypatch.setattr(script, "_charge_one_request", raising_charge)
+    monkeypatch.setattr(script, "fetch_content_safe", fake_fetch)
+
+    with pytest.raises(script._QuotaExceeded):
+        script._query_trips(
+            session=object(),
+            direction=script.DIRECTIONS[0],
+            when=_stable_now,
+        )
+    assert fetched["called"] is False
 
 
 # ---- _read_existing_first_seen / _resolve_first_seen tests ----------------
@@ -407,8 +623,8 @@ def test_read_existing_first_seen_skips_malformed_items(
         json.dumps(
             [
                 "not-a-dict",
-                {"_identity": 42, "first_seen": "2026-05-09T08:00:00+02:00"},  # bad identity
-                {"_identity": "x|y", "first_seen": 999},  # bad first_seen
+                {"_identity": 42, "first_seen": "2026-05-09T08:00:00+02:00"},
+                {"_identity": "x|y", "first_seen": 999},
                 {
                     "_identity": "good_prefix|2026-05-09T08:00:00+02:00",
                     "first_seen": "2026-05-09T08:00:00+02:00",
@@ -424,36 +640,20 @@ def test_read_existing_first_seen_skips_malformed_items(
 
 # ---- Sentinel: cache-driven provider hardening ----------------------------
 #
-# The four tests below pin the Round 8 hardening of the
-# ``_read_existing_first_seen`` reader. Each test is a Proof-of-Concept that
-# fails pre-fix (the bare ``_json_lib.load(fh)`` site at the script's
-# previous line 426) and passes post-fix (after the swap to
+# These tests pin the Round 8 hardening of the
+# ``_read_existing_first_seen`` reader. Each test is a Proof-of-Concept
+# that fails pre-fix (the bare ``_json_lib.load(fh)`` site at the
+# script's previous read site) and passes post-fix (after the swap to
 # ``read_capped_json`` plus the per-preserved-field shape validators).
-#
-# Threat model: ``cache/stammstrecke/events.json`` is persistent state
-# written by the cron monitor and read by both (a) the build_feed pipeline
-# and (b) the monitor itself on the next tick (via this reader, to
-# preserve ``first_seen`` across runs). A planted-huge / poisoned cache
-# file from any of the documented threat sources (compromised CI runner /
-# partial flush + power loss / corrupted previous run / parallel
-# orchestrator atomic state swap) reaches both consumers; the bare
-# ``json.load`` shape on the writer's read path opened the size-bomb /
-# field-shape gap that the ``read_capped_json`` defence and the
-# per-field validators close. See ``.jules/sentinel.md`` (entry for
-# 2026-05-09) for the full threat-model write-up.
+# The migration from pyhafas to VOR did NOT touch these defences — they
+# operate on the cache file's preserved fields, which are independent of
+# the upstream API.
 
 
 def test_read_existing_first_seen_rejects_oversized_cache_file(
     _isolated_output: Path,
 ) -> None:
-    """PoC: a cache file larger than ``MAX_STAMMSTRECKE_CACHE_BYTES`` must
-    be rejected (pre-fix it was buffered into memory via bare
-    ``_json_lib.load`` with no cap, propagating ``MemoryError`` past the
-    ``except (OSError, JSONDecodeError, UnicodeDecodeError)`` clause)."""
     _isolated_output.parent.mkdir(parents=True, exist_ok=True)
-    # Pad the legitimate-shape entry until the serialised file exceeds
-    # the per-loader cap. The padding is a passive payload field — it has
-    # no effect on the reader's parser other than inflating the file size.
     pad_chars = MAX_STAMMSTRECKE_CACHE_BYTES + 1024
     payload = [
         {
@@ -464,27 +664,13 @@ def test_read_existing_first_seen_rejects_oversized_cache_file(
     ]
     _isolated_output.write_text(json.dumps(payload), encoding="utf-8")
     assert _isolated_output.stat().st_size > MAX_STAMMSTRECKE_CACHE_BYTES
-
-    # Post-fix: the size cap rejects the read; the loader returns an
-    # empty map and the next ``_write_cache`` will overwrite the
-    # corrupted file. Pre-fix: returned ``{"stammstrecke_delay_meidling":
-    # "2026-05-09T08:00:00+02:00"}`` after buffering the entire 256+ KiB
-    # payload into memory.
     assert script._read_existing_first_seen() == {}
 
 
 def test_read_existing_first_seen_rejects_oversized_first_seen_field(
     _isolated_output: Path,
 ) -> None:
-    """PoC: an item with a ``first_seen`` longer than
-    ``_MAX_PRESERVED_FIRST_SEEN_LENGTH`` must be skipped. Pre-fix the
-    field-length check did not exist, so an attacker who could plant a
-    sub-cap-but-large-field cache (e.g. 100 KiB ``first_seen`` string)
-    saw the value flow into ``_resolve_first_seen``, which logs a
-    sanitised version of the failed-parse string via
-    ``sanitize_log_arg`` — amplifying log volume without bound."""
     _isolated_output.parent.mkdir(parents=True, exist_ok=True)
-    # 80 chars > 64-byte cap, well below the file-size cap.
     huge_first_seen = "A" * (script._MAX_PRESERVED_FIRST_SEEN_LENGTH + 16)
     _isolated_output.write_text(
         json.dumps(
@@ -503,11 +689,6 @@ def test_read_existing_first_seen_rejects_oversized_first_seen_field(
 def test_read_existing_first_seen_rejects_oversized_identity_field(
     _isolated_output: Path,
 ) -> None:
-    """PoC: an item with an ``_identity`` longer than
-    ``_MAX_PRESERVED_IDENTITY_LENGTH`` must be skipped. Pre-fix any
-    string was accepted; the prefix derived via
-    ``identity.split("|", 1)[0]`` could grow to file-cap size and pollute
-    the returned map's keys (and any downstream log emission)."""
     _isolated_output.parent.mkdir(parents=True, exist_ok=True)
     huge_identity = ("X" * (script._MAX_PRESERVED_IDENTITY_LENGTH + 8)) + "|2026-05-09T08:00:00+02:00"
     _isolated_output.write_text(
@@ -527,12 +708,6 @@ def test_read_existing_first_seen_rejects_oversized_identity_field(
 def test_read_existing_first_seen_rejects_control_chars_in_fields(
     _isolated_output: Path,
 ) -> None:
-    """PoC: items with XML 1.0 control characters in either preserved
-    field must be skipped. Pre-fix only ``isinstance(..., str)`` was
-    checked; a ``\\x00``/``\\x07``/``\\x1f`` byte in either field flowed
-    through to the build-side cache loader and onward into the rendered
-    feed text without the canonical ``_sanitize_text`` filter applied
-    at the boundary."""
     _isolated_output.parent.mkdir(parents=True, exist_ok=True)
     _isolated_output.write_text(
         json.dumps(
@@ -555,10 +730,6 @@ def test_read_existing_first_seen_rejects_control_chars_in_fields(
 def test_read_existing_first_seen_rejects_non_iso_first_seen(
     _isolated_output: Path,
 ) -> None:
-    """PoC: a ``first_seen`` string that is not parseable via
-    :func:`datetime.fromisoformat` must be rejected at the read site
-    rather than propagating into ``_resolve_first_seen`` and triggering
-    a defensive WARNING log on every cron tick."""
     _isolated_output.parent.mkdir(parents=True, exist_ok=True)
     _isolated_output.write_text(
         json.dumps(
@@ -575,42 +746,26 @@ def test_read_existing_first_seen_rejects_non_iso_first_seen(
 
 
 def test_max_stammstrecke_cache_bytes_imported_constant() -> None:
-    """Pin the per-loader byte cap to the canonical value so a future
-    "tighten further" change is a single search-replace and the import
-    chain (script ↔ ``src/feed/providers.py``) cannot drift."""
-    # Sized at ~128x the largest legitimate state shape (~2 KiB) — see
-    # the inline rationale in ``src/feed/providers.py``.
     assert MAX_STAMMSTRECKE_CACHE_BYTES == 256 * 1024
 
 
 def test_is_valid_preserved_first_seen_accepts_canonical_iso() -> None:
-    """The canonical writer path produces ``datetime.isoformat()`` strings;
-    the validator must accept every shape the writer emits."""
     sample = datetime(2026, 5, 9, 8, 0, 0, tzinfo=VIENNA_TZ).isoformat()
     assert script._is_valid_preserved_first_seen(sample) is True
 
 
 def test_is_valid_preserved_first_seen_rejects_non_string() -> None:
-    """``isinstance(value, str)`` is the first gate of the TypeGuard so
-    non-string values (int, list, None) cannot bypass downstream checks
-    by being implicitly stringified."""
     assert script._is_valid_preserved_first_seen(999) is False
     assert script._is_valid_preserved_first_seen(None) is False
     assert script._is_valid_preserved_first_seen([]) is False
 
 
 def test_is_valid_preserved_identity_accepts_canonical_shape() -> None:
-    """Canonical identity is ``<prefix>|<iso>`` — the validator must
-    accept every shape the writer emits."""
     sample = "stammstrecke_delay_meidling|2026-05-09T08:00:00+02:00"
     assert script._is_valid_preserved_identity(sample) is True
 
 
 def test_is_valid_preserved_identity_rejects_non_string() -> None:
-    """Non-string identity values must be rejected upstream — pre-fix
-    the previous ``isinstance(identity, str)`` check did this; the
-    validator preserves that contract while ALSO bounding length and
-    control characters."""
     assert script._is_valid_preserved_identity(42) is False
     assert script._is_valid_preserved_identity(None) is False
     assert script._is_valid_preserved_identity(["x"]) is False
@@ -639,16 +794,13 @@ def test_resolve_first_seen_handles_unparseable_prior(
 
 
 def test_resolve_first_seen_localises_naive_datetime(_stable_now: datetime) -> None:
-    """A prior ISO without tz info is force-localised to Europe/Vienna."""
-
     naive = "2026-05-01T10:00:00"
     result = script._resolve_first_seen("p", {"p": naive}, _stable_now)
     assert result.tzinfo is not None
-    # Vienna in May → +02:00.
     assert result.utcoffset() == timedelta(hours=2)
 
 
-# ---- _build_event tests ----------------------------------------------------
+# ---- _build_event tests (unchanged from pyhafas era) -----------------------
 
 
 def test_build_event_for_meidling_direction(_stable_now: datetime) -> None:
@@ -678,7 +830,6 @@ def test_build_event_for_meidling_direction(_stable_now: datetime) -> None:
         event["description"]
         == "Durchschnittliche Verspätung von 12.5 Minuten in Richtung Meidling [Seit 09.05.2026]"
     )
-    # Timestamps must be ISO-8601 strings with offset (Europe/Vienna).
     assert event["pubDate"] == _stable_now.isoformat()
     assert event["starts_at"] == _stable_now.isoformat()
     assert event["first_seen"] == _stable_now.isoformat()
@@ -696,7 +847,6 @@ def test_build_event_for_floridsdorf_direction(_stable_now: datetime) -> None:
         first_seen=_stable_now,
     )
     assert event["title"] == "S-Bahn Stammstrecke Verspätungen"
-    # 15.0 must render as "15" (no trailing zero) per ``_format_minutes``.
     assert (
         event["description"]
         == "Durchschnittliche Verspätung von 15 Minuten in Richtung Floridsdorf [Seit 09.05.2026]"
@@ -705,14 +855,8 @@ def test_build_event_for_floridsdorf_direction(_stable_now: datetime) -> None:
 
 
 def test_build_event_uses_first_seen_for_seit_date(_stable_now: datetime) -> None:
-    """The "[Seit DD.MM.YYYY]" date comes from ``first_seen``, NOT pub_date.
-
-    A continuing episode must keep the original first-observed date in
-    the description even when the cron tick advances.
-    """
-
     pub = _stable_now + timedelta(days=2)
-    first = _stable_now  # episode started 2 days ago
+    first = _stable_now
     event = script._build_event(
         direction=script.DIRECTIONS[0],
         median_delay_minutes=12.0,
@@ -721,15 +865,12 @@ def test_build_event_uses_first_seen_for_seit_date(_stable_now: datetime) -> Non
     )
     assert "[Seit 09.05.2026]" in event["description"]
     assert "[Seit 11.05.2026]" not in event["description"]
-    # And the timestamps follow the contract.
     assert event["pubDate"] == pub.isoformat()
     assert event["first_seen"] == first.isoformat()
     assert event["starts_at"] == first.isoformat()
 
 
 def test_build_event_guid_is_stable_for_same_episode(_stable_now: datetime) -> None:
-    """Two ticks of the same episode produce the same GUID."""
-
     pub_t1 = _stable_now
     pub_t2 = _stable_now + timedelta(minutes=30)
     event_t1 = script._build_event(
@@ -752,8 +893,6 @@ def test_build_event_guid_is_stable_for_same_episode(_stable_now: datetime) -> N
 def test_build_event_guid_changes_when_first_seen_changes(
     _stable_now: datetime,
 ) -> None:
-    """Different episodes (different first_seen) produce different GUIDs."""
-
     earlier = _stable_now
     later = _stable_now + timedelta(hours=2)
     event_earlier = script._build_event(
@@ -772,8 +911,6 @@ def test_build_event_guid_changes_when_first_seen_changes(
 
 
 def test_build_event_guids_differ_per_direction(_stable_now: datetime) -> None:
-    """Each direction must produce a distinct GUID for the same timestamp."""
-
     meidling = next(d for d in script.DIRECTIONS if d.target_label == "Meidling")
     floridsdorf = next(d for d in script.DIRECTIONS if d.target_label == "Floridsdorf")
     event_a = script._build_event(
@@ -793,8 +930,6 @@ def test_build_event_guids_differ_per_direction(_stable_now: datetime) -> None:
 
 
 def test_build_event_validates_against_schema(_stable_now: datetime) -> None:
-    """Pin schema compliance against ``docs/schema/events.schema.json``."""
-
     jsonschema = pytest.importorskip("jsonschema")
     schema_path = REPO_ROOT / "docs" / "schema" / "events.schema.json"
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
@@ -816,19 +951,17 @@ def test_build_event_validates_against_schema(_stable_now: datetime) -> None:
 def test_main_writes_two_events_when_both_directions_above_threshold(
     monkeypatch: pytest.MonkeyPatch, _isolated_output: Path
 ) -> None:
-    """Both directions exceed the threshold → one event per direction."""
-
     fwd = [
-        _journey(legs=[_leg(name="S 1", delay_minutes=11)]),
-        _journey(legs=[_leg(name="S 2", delay_minutes=10)]),
-        _journey(legs=[_leg(name="S 3", delay_minutes=12)]),
+        _trip(leg_name="S 1", delay_minutes=11),
+        _trip(leg_name="S 2", delay_minutes=10),
+        _trip(leg_name="S 3", delay_minutes=12),
     ]
     bwd = [
-        _journey(legs=[_leg(name="S 7", delay_minutes=14)]),
-        _journey(legs=[_leg(name="S 80", delay_minutes=15)]),
-        _journey(legs=[_leg(name="S 1", delay_minutes=13)]),
+        _trip(leg_name="S 7", delay_minutes=14),
+        _trip(leg_name="S 80", delay_minutes=15),
+        _trip(leg_name="S 1", delay_minutes=13),
     ]
-    _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
+    _patch_query_trips(monkeypatch, fwd, bwd)
 
     assert script.main() == 0
     payload = _read_output(_isolated_output)
@@ -836,10 +969,8 @@ def test_main_writes_two_events_when_both_directions_above_threshold(
     descriptions = {event["description"] for event in payload}
     assert any("in Richtung Meidling [Seit" in d for d in descriptions)
     assert any("in Richtung Floridsdorf [Seit" in d for d in descriptions)
-    # Both events must have distinct GUIDs.
     guids = {event["guid"] for event in payload}
     assert len(guids) == 2
-    # Each event includes a first_seen field.
     assert all("first_seen" in event for event in payload)
 
 
@@ -847,11 +978,11 @@ def test_main_writes_only_meidling_event_when_only_forward_above_threshold(
     monkeypatch: pytest.MonkeyPatch, _isolated_output: Path
 ) -> None:
     fwd = [
-        _journey(legs=[_leg(name="S 1", delay_minutes=14)]),
-        _journey(legs=[_leg(name="S 2", delay_minutes=13)]),
+        _trip(leg_name="S 1", delay_minutes=14),
+        _trip(leg_name="S 2", delay_minutes=13),
     ]
-    bwd = [_journey(legs=[_leg(name="S 7", delay_minutes=2)])]
-    _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
+    bwd = [_trip(leg_name="S 7", delay_minutes=2)]
+    _patch_query_trips(monkeypatch, fwd, bwd)
 
     assert script.main() == 0
     payload = _read_output(_isolated_output)
@@ -865,7 +996,7 @@ def test_main_writes_empty_when_both_directions_below_threshold(
 ) -> None:
     """Self-Healing: median ≤ threshold for both directions → cache cleared."""
 
-    _patch_client(monkeypatch, _make_directional_client(_low_journeys(), _low_journeys()))
+    _patch_query_trips(monkeypatch, _low_trips(), _low_trips())
 
     assert script.main() == 0
     assert _read_output(_isolated_output) == []
@@ -877,10 +1008,10 @@ def test_main_writes_empty_when_median_equals_threshold(
     """Median exactly equal to threshold must NOT trigger the event."""
 
     nine = [
-        _journey(legs=[_leg(name="S 1", delay_minutes=9)]),
-        _journey(legs=[_leg(name="S 2", delay_minutes=9)]),
+        _trip(leg_name="S 1", delay_minutes=9),
+        _trip(leg_name="S 2", delay_minutes=9),
     ]
-    _patch_client(monkeypatch, _make_directional_client(nine, nine))
+    _patch_query_trips(monkeypatch, nine, nine)
 
     assert script.main() == 0
     assert _read_output(_isolated_output) == []
@@ -891,9 +1022,9 @@ def test_main_writes_empty_when_no_sbahn_legs(
 ) -> None:
     """Only non-S-Bahn legs in either direction → empty cache, exit 0."""
 
-    fwd = [_journey(legs=[_leg(name="REX 7", delay_minutes=20)])]
-    bwd = [_journey(legs=[_leg(name="IC 533", delay_minutes=15)])]
-    _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
+    fwd = [_trip(leg_name="REX 7", delay_minutes=20, category="REX")]
+    bwd = [_trip(leg_name="IC 533", delay_minutes=15, category="IC")]
+    _patch_query_trips(monkeypatch, fwd, bwd)
 
     assert script.main() == 0
     assert _read_output(_isolated_output) == []
@@ -903,17 +1034,12 @@ def test_main_partial_failure_keeps_other_direction_event(
     monkeypatch: pytest.MonkeyPatch,
     _isolated_output: Path,
 ) -> None:
-    """A transient error on one direction must not discard the other.
-
-    Per the per-direction-isolation rule: if one direction succeeds with
-    a high median, that event is persisted even when the other
-    direction's call raised.
-    """
+    """A transient error on one direction must not discard the other."""
 
     fwd_error = RuntimeError("transient connection reset")
-    _patch_client(monkeypatch, _make_directional_client(fwd_error, _high_journeys()))
+    _patch_query_trips(monkeypatch, fwd_error, _high_trips())
 
-    assert script.main() == 0  # at least one direction succeeded
+    assert script.main() == 0
     payload = _read_output(_isolated_output)
     assert len(payload) == 1
     assert "in Richtung Floridsdorf" in payload[0]["description"]
@@ -927,24 +1053,33 @@ def test_main_clears_cache_when_all_directions_fail(
 
     err1 = RuntimeError("connection reset 1")
     err2 = RuntimeError("connection reset 2")
-    _patch_client(monkeypatch, _make_directional_client(err1, err2))
+    _patch_query_trips(monkeypatch, err1, err2)
 
     assert script.main() == 1
     assert _read_output(_isolated_output) == []
 
 
-def test_main_clears_cache_on_import_error(
+def test_main_clears_cache_when_quota_exceeded(
     monkeypatch: pytest.MonkeyPatch,
     _isolated_output: Path,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
-    def raise_import_error() -> Any:
-        raise ImportError("OEBBProfile not available in this pyhafas release")
+    """Self-Healing: VAO daily-quota cap hit → empty cache, exit 1.
 
-    monkeypatch.setattr(script, "_build_client", raise_import_error)
+    The pre-tripped quota gate raises ``_QuotaExceeded`` on every
+    direction's first call. Both directions therefore fail with no
+    successful observation; the script clears the cache and returns 1.
+    """
+
+    quota_err = script._QuotaExceeded("daily limit")
+    _patch_query_trips(monkeypatch, quota_err, quota_err)
+
     caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
-    assert script.main() == 0
+    assert script.main() == 1
     assert _read_output(_isolated_output) == []
+    assert any(
+        "Tageslimit" in r.getMessage() for r in caplog.records
+    )
 
 
 def test_main_clears_cache_when_breaker_is_open(
@@ -952,14 +1087,8 @@ def test_main_clears_cache_when_breaker_is_open(
     _isolated_output: Path,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
-    """Self-Healing: pre-tripped breaker → cache emptied, exit 0.
+    """Self-Healing: pre-tripped breaker → cache emptied, exit 0."""
 
-    Even if a previous run had written events, a tripped breaker on
-    the current run must clear the cache so the RSS feed never carries
-    stale warnings.
-    """
-
-    # Pre-write a non-empty cache to verify it gets cleared.
     _isolated_output.parent.mkdir(parents=True, exist_ok=True)
     _isolated_output.write_text(
         json.dumps(
@@ -983,7 +1112,7 @@ def test_main_clears_cache_when_breaker_is_open(
     )
 
     breaker = CircuitBreaker(
-        "stammstrecke-hafas-pretrip",
+        "stammstrecke-vor-pretrip",
         failure_threshold=2,
         recovery_timeout=600.0,
     )
@@ -991,34 +1120,29 @@ def test_main_clears_cache_when_breaker_is_open(
     breaker.record_failure()
     monkeypatch.setattr(script, "_BREAKER", breaker)
 
-    upstream_calls: list[tuple[str | None, str | None]] = []
+    upstream_calls: list[Any] = []
 
-    def must_not_be_called(**kwargs: Any) -> list[Any]:
-        upstream_calls.append((kwargs.get("origin"), kwargs.get("destination")))
+    def must_not_be_called(*args: Any, **kwargs: Any) -> list[Any]:
+        upstream_calls.append((args, kwargs))
         return []
 
-    fake_client = SimpleNamespace(
-        profile=SimpleNamespace(), journeys=must_not_be_called
-    )
-    _patch_client(monkeypatch, fake_client)
+    monkeypatch.setattr(script, "_query_trips", must_not_be_called)
 
     caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
     assert script.main() == 0
-    assert _read_output(_isolated_output) == []  # stale entry wiped
+    assert _read_output(_isolated_output) == []
     assert upstream_calls == []
     assert any("breaker" in r.getMessage().lower() for r in caplog.records)
 
 
-def test_main_handles_non_list_payload(
+def test_main_handles_typeerror_payload(
     monkeypatch: pytest.MonkeyPatch, _isolated_output: Path
 ) -> None:
-    """Both directions return a non-list value → both fail, exit 1, cache empty."""
+    """A malformed VAO payload (e.g. ``Trip`` is the wrong type) must be
+    treated as a per-direction error, not crash the run."""
 
-    def journeys(**kwargs: Any) -> Any:
-        return "not-a-list"
-
-    fake_client = SimpleNamespace(profile=SimpleNamespace(), journeys=journeys)
-    _patch_client(monkeypatch, fake_client)
+    err = TypeError("VAO /trip Trip field has unexpected type: str")
+    _patch_query_trips(monkeypatch, err, err)
 
     assert script.main() == 1
     assert _read_output(_isolated_output) == []
@@ -1031,15 +1155,14 @@ def test_main_emits_iso8601_with_vienna_offset(
 ) -> None:
     """Verify the timezone contract: pubDate is Europe/Vienna, ISO 8601."""
 
-    _patch_client(monkeypatch, _make_directional_client(_high_journeys(), _high_journeys()))
+    _patch_query_trips(monkeypatch, _high_trips(), _high_trips())
 
     assert script.main() == 0
     payload = _read_output(_isolated_output)
     assert len(payload) == 2
     for event in payload:
         assert event["pubDate"] == _stable_now.isoformat()
-        assert event["pubDate"].endswith("+02:00")  # May → CEST
-        # first_seen also Vienna-anchored.
+        assert event["pubDate"].endswith("+02:00")
         assert event["first_seen"] == _stable_now.isoformat()
 
 
@@ -1051,16 +1174,7 @@ def test_first_seen_persists_across_consecutive_high_runs(
     _isolated_output: Path,
     _stable_now: datetime,
 ) -> None:
-    """Two ticks with the same direction over threshold → SAME first_seen.
-
-    The GUID stays stable, the pubDate updates. The "[Seit DD.MM.YYYY]"
-    in the description shows the original first-observation date.
-    """
-
-    # Tick 1: only Meidling-direction high.
-    _patch_client(
-        monkeypatch, _make_directional_client(_high_journeys(), _low_journeys())
-    )
+    _patch_query_trips(monkeypatch, _high_trips(), _low_trips())
     assert script.main() == 0
     tick1 = _read_output(_isolated_output)
     assert len(tick1) == 1
@@ -1070,21 +1184,17 @@ def test_first_seen_persists_across_consecutive_high_runs(
     assert first_seen_t1 == _stable_now.isoformat()
     assert "[Seit 09.05.2026]" in tick1[0]["description"]
 
-    # Tick 2: 30 minutes later, still high.
     later = _stable_now + timedelta(minutes=30)
     _set_now(monkeypatch, later)
-    _patch_client(
-        monkeypatch, _make_directional_client(_high_journeys(), _low_journeys())
-    )
+    _patch_query_trips(monkeypatch, _high_trips(), _low_trips())
     assert script.main() == 0
     tick2 = _read_output(_isolated_output)
     assert len(tick2) == 1
 
-    assert tick2[0]["first_seen"] == first_seen_t1  # PRESERVED
-    assert tick2[0]["pubDate"] != pub_t1  # advances
+    assert tick2[0]["first_seen"] == first_seen_t1
+    assert tick2[0]["pubDate"] != pub_t1
     assert tick2[0]["pubDate"] == later.isoformat()
-    assert tick2[0]["guid"] == guid_t1  # GUID stable
-    # Description's "Seit"-date is still the original observation day.
+    assert tick2[0]["guid"] == guid_t1
     assert "[Seit 09.05.2026]" in tick2[0]["description"]
 
 
@@ -1093,38 +1203,26 @@ def test_first_seen_regenerates_after_recovery(
     _isolated_output: Path,
     _stable_now: datetime,
 ) -> None:
-    """Recovery (median ≤ 9) clears the cache, the next high-median tick
-    gets a *fresh* ``first_seen`` — a new episode."""
-
-    # Tick 1: high → event written.
-    _patch_client(
-        monkeypatch, _make_directional_client(_high_journeys(), _low_journeys())
-    )
+    _patch_query_trips(monkeypatch, _high_trips(), _low_trips())
     script.main()
     first_seen_t1 = _read_output(_isolated_output)[0]["first_seen"]
     guid_t1 = _read_output(_isolated_output)[0]["guid"]
 
-    # Tick 2: recovery — both directions back to normal.
     later = _stable_now + timedelta(minutes=30)
     _set_now(monkeypatch, later)
-    _patch_client(
-        monkeypatch, _make_directional_client(_low_journeys(), _low_journeys())
-    )
+    _patch_query_trips(monkeypatch, _low_trips(), _low_trips())
     script.main()
-    assert _read_output(_isolated_output) == []  # cache cleared
+    assert _read_output(_isolated_output) == []
 
-    # Tick 3: disruption returns — must get a NEW first_seen and a NEW GUID.
     even_later = _stable_now + timedelta(minutes=60)
     _set_now(monkeypatch, even_later)
-    _patch_client(
-        monkeypatch, _make_directional_client(_high_journeys(), _low_journeys())
-    )
+    _patch_query_trips(monkeypatch, _high_trips(), _low_trips())
     script.main()
     tick3 = _read_output(_isolated_output)
     assert len(tick3) == 1
     assert tick3[0]["first_seen"] == even_later.isoformat()
-    assert tick3[0]["first_seen"] != first_seen_t1  # FRESH first_seen
-    assert tick3[0]["guid"] != guid_t1  # NEW episode → new GUID
+    assert tick3[0]["first_seen"] != first_seen_t1
+    assert tick3[0]["guid"] != guid_t1
 
 
 def test_first_seen_persistence_is_independent_per_direction(
@@ -1132,36 +1230,21 @@ def test_first_seen_persistence_is_independent_per_direction(
     _isolated_output: Path,
     _stable_now: datetime,
 ) -> None:
-    """One direction's persistence must not leak into the other direction.
-
-    Tick 1: only Meidling direction high. Tick 2: only Floridsdorf
-    direction high. Each direction's first_seen must reflect when *that
-    specific direction* first crossed the threshold.
-    """
-
-    # Tick 1: Meidling high, Floridsdorf low.
-    _patch_client(
-        monkeypatch, _make_directional_client(_high_journeys(), _low_journeys())
-    )
+    _patch_query_trips(monkeypatch, _high_trips(), _low_trips())
     script.main()
     tick1 = _read_output(_isolated_output)
     assert len(tick1) == 1
     assert tick1[0]["_identity"].startswith("stammstrecke_delay_meidling|")
     meidling_first_seen = tick1[0]["first_seen"]
 
-    # Tick 2: Floridsdorf high, Meidling low (Meidling recovered).
     later = _stable_now + timedelta(minutes=30)
     _set_now(monkeypatch, later)
-    _patch_client(
-        monkeypatch, _make_directional_client(_low_journeys(), _high_journeys())
-    )
+    _patch_query_trips(monkeypatch, _low_trips(), _high_trips())
     script.main()
     tick2 = _read_output(_isolated_output)
     assert len(tick2) == 1
     assert tick2[0]["_identity"].startswith("stammstrecke_delay_floridsdorf|")
-    # Floridsdorf is a NEW episode → first_seen = `later`.
     assert tick2[0]["first_seen"] == later.isoformat()
-    # Meidling's prior first_seen is gone (no Meidling event in cache).
     assert meidling_first_seen != tick2[0]["first_seen"]
 
 
@@ -1170,13 +1253,7 @@ def test_first_seen_continues_when_only_one_direction_resumes(
     _isolated_output: Path,
     _stable_now: datetime,
 ) -> None:
-    """Both directions over threshold across two ticks → both events
-    keep their original first_seen."""
-
-    # Tick 1: both high.
-    _patch_client(
-        monkeypatch, _make_directional_client(_high_journeys(), _high_journeys())
-    )
+    _patch_query_trips(monkeypatch, _high_trips(), _high_trips())
     script.main()
     tick1 = _read_output(_isolated_output)
     assert len(tick1) == 2
@@ -1184,12 +1261,9 @@ def test_first_seen_continues_when_only_one_direction_resumes(
         item["_identity"].split("|", 1)[0]: item["first_seen"] for item in tick1
     }
 
-    # Tick 2: still both high.
     later = _stable_now + timedelta(minutes=30)
     _set_now(monkeypatch, later)
-    _patch_client(
-        monkeypatch, _make_directional_client(_high_journeys(), _high_journeys())
-    )
+    _patch_query_trips(monkeypatch, _high_trips(), _high_trips())
     script.main()
     tick2 = _read_output(_isolated_output)
     assert len(tick2) == 2

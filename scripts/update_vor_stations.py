@@ -64,6 +64,31 @@ __all__ = ["vor_provider"]
 DEFAULT_SOURCE = BASE_DIR / "data" / "vor-haltestellen.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 
+# VOR API enrichment whitelist (Phase 1 — VAO Start quota optimization,
+# 2026-05-09). Only stations on the S-Bahn Stammstrecke trunk line are
+# eligible for live ``location.name`` enrichment; every other station
+# falls back to the pinned ``data/vor-haltestellen.csv`` snapshot so the
+# 100-requests/day VAO budget stays available for the much hotter
+# Stammstrecke ``/trip`` polling in ``update_stammstrecke_status.py``.
+#
+# IDs sourced from ``data/stations.json`` and pinned here so a future
+# directory drift cannot silently widen the API surface; coverage is
+# verified by ``test_update_vor_stations.py``.
+STAMMSTRECKE_VOR_IDS: frozenset[str] = frozenset(
+    {
+        "490033400",  # Wien Floridsdorf
+        "490170500",  # Wien Handelskai
+        "490138500",  # Wien Traisengasse
+        "490104000",  # Wien Praterstern
+        "490074300",  # Wien Mitte-Landstraße
+        "490109100",  # Wien Rennweg
+        "490134600",  # Wien Quartier Belvedere
+        "490134900",  # Wien Hauptbahnhof
+        "490084900",  # Wien Matzleinsdorfer Platz
+        "490101500",  # Wien Meidling
+    }
+)
+
 log = logging.getLogger("update_vor_stations")
 
 STATIC_VOR_ENTRIES: tuple[dict[str, object], ...] = (
@@ -629,7 +654,41 @@ def fetch_vor_stops_from_api(
     if fallback:
         fallback_map = {key: value for key, value in fallback.items()}
 
+    # Phase 1 — VAO Start quota optimization (2026-05-09). The VOR
+    # ``location.name`` endpoint counts against the same 100/day budget as
+    # the Stammstrecke ``/trip`` polling and the historical departure-board
+    # polling. To keep the budget available for the hot path (Stammstrecke
+    # delay observation, every 30 minutes), live enrichment is restricted
+    # to the 10-station Stammstrecke whitelist; all other IDs fall back to
+    # the pinned CSV via ``fallback_map`` (no behaviour loss — the same
+    # data path triggered when the API was unreachable / rate-limited
+    # already covers it). Skipped IDs are logged once per run so an
+    # operator who genuinely needs to enrich a non-Stammstrecke station
+    # can still see the deliberate drop in the cron logs.
+    eligible_ids = [sid for sid in ids if sid in STAMMSTRECKE_VOR_IDS]
+    skipped_ids = [sid for sid in ids if sid not in STAMMSTRECKE_VOR_IDS]
+    if skipped_ids:
+        preview = ", ".join(skipped_ids[:5])
+        if len(skipped_ids) > 5:
+            preview = f"{preview}, …"
+        log.info(
+            "VOR API enrichment restricted to %d Stammstrecke station(s); "
+            "skipping %d non-whitelisted ID(s) to preserve VAO Start quota: %s",
+            len(eligible_ids),
+            len(skipped_ids),
+            preview,
+        )
+    ids = eligible_ids
+
     stops: list[VORStop] = []
+    # Append the pinned fallback for non-whitelisted IDs FIRST so the
+    # output preserves "every input id has a stop entry where data is
+    # available" — the live-fetch loop below will then append the
+    # whitelisted IDs' enriched stops.
+    for sid in skipped_ids:
+        fallback_stop = fallback_map.get(sid)
+        if fallback_stop:
+            stops.append(fallback_stop)
     with session_with_retries(vor_provider.VOR_USER_AGENT, **vor_provider.VOR_RETRY_OPTIONS) as session:
         vor_provider.apply_authentication(session)
         for station_id in ids:
