@@ -181,10 +181,17 @@ VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
 OUTPUT_PATH = REPO_ROOT / "cache" / "stammstrecke" / "events.json"
 
-# Event metadata: kept verbatim from the original pyhafas-era script so
-# subscribers see the same source/category/title/link strings (i.e. the
-# RSS migration is invisible to feed readers).
-EVENT_SOURCE = "ÖBB"
+# Event metadata: ``source`` mirrors the project-standard VOR-provider
+# value (``src/providers/vor.py:1219``) because the script now polls the
+# VAO ReST ``/trip`` endpoint operated by the Verkehrsverbund Ost-Region.
+# Using ``"VOR/VAO"`` keeps the publisher attribution consistent across
+# all VAO-API-derived items in the feed and makes the data lineage
+# transparent to subscribers (who can filter by source). The pre-2026-
+# 05-09 ``"ÖBB"`` value reflected the original pyhafas/HAFAS data path
+# and was retained verbatim across the migration; this PR aligns the
+# attribution with the actual upstream now that the VAO-based pipeline
+# is producing consistently.
+EVENT_SOURCE = "VOR/VAO"
 EVENT_CATEGORY = "Störung"
 EVENT_TITLE = "S-Bahn Stammstrecke Verspätungen"
 EVENT_LINK = (

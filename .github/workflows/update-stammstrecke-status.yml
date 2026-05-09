@@ -57,6 +57,23 @@ jobs:
       - name: Refresh Stammstrecke status
         run: python scripts/update_stammstrecke_status.py
 
+      # Regenerate the statistics dashboard (``docs/statistik.md``)
+      # AND patch the README ``<!-- STATS:* -->`` markers with the
+      # 30-day rolling snapshot. Runs in this same workflow so the
+      # README cadence matches the Stammstrecke observation cadence
+      # (every 30 minutes) — without this step, the README snapshot
+      # would only refresh once per day via ``generate-stats.yml``
+      # and the operator-visible "Beobachtungen (gesamt)" /
+      # "Median-Verspätung" / "Letzte Aktualisierung" cells would lag
+      # the underlying CSV ledger by up to 24 hours. The script reads
+      # only ``data/stats/*.csv`` (no network), is idempotent at the
+      # byte level (a no-data-change run re-emits identical bytes
+      # except for the timestamp cell), and writes via
+      # ``atomic_write`` so a kill-signal mid-run cannot corrupt
+      # either output.
+      - name: Refresh statistics dashboard and README snapshot
+        run: python scripts/generate_markdown_stats.py
+
       - name: Pull concurrent remote changes
         run: git pull --rebase --autostash
 
@@ -66,14 +83,16 @@ jobs:
           commit_message: 'chore: update Stammstrecke status'
           # ``cache/stammstrecke/events.json`` carries the threshold-
           # based feed events; ``data/stats/stammstrecke_<YYYY>.csv``
-          # carries the append-only median observations consumed by
-          # the nightly ``generate-stats.yml`` dashboard. Both must be
-          # committed for the README snapshot to reflect real cron
-          # data — the original workflow only committed the cache,
-          # so the CSV row was written by the script but never made
-          # it back to the repo (diagnosed 2026-05-09 in the
-          # successful-run that produced "Erfolg=2, Fehler=0" but
-          # left the working tree clean).
+          # carries the append-only median observations; ``docs/
+          # statistik.md`` and ``README.md`` carry the regenerated
+          # human-readable dashboard / snapshot. All four must be
+          # committed for the operator-visible output to stay in sync
+          # with the underlying observation cadence (every 30 min).
+          # The ``generate-stats.yml`` nightly cron remains active as
+          # a belt-and-suspenders refresh in case any 30-minute
+          # update is skipped (concurrency-group pre-emption etc.).
           file_pattern: |
             cache/stammstrecke/events.json
             data/stats/stammstrecke_*.csv
+            docs/statistik.md
+            README.md
