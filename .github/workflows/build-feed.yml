@@ -1,17 +1,32 @@
-name: Build Feed
+name: Build feed
 
-# 2026-05-09: dropped the ``5,35 * * * *`` cron schedule. The feed is
-# now rebuilt at the end of ``update-stammstrecke-status.yml`` (renamed
-# "Stammstrecke + feed build", every 30 minutes) so the Stammstrecke
-# poll → CSV append → feed render pipeline runs sequentially in a
-# single runner. GitHub Actions cron schedules are best-effort with
-# multi-minute drift — running the feed build on a separate cron
-# could read a stale CSV ledger when build-feed beat the Stammstrecke
-# step on a particular cycle, publishing a feed without the latest
-# observation. The push trigger remains so code changes still trigger
-# a rebuild for testing; ``workflow_dispatch`` remains for emergency
-# manual rebuilds.
+# Pure consumer workflow. Reads existing on-disk artefacts, composes
+# the public RSS feed (``docs/feed.xml``), and patches the README
+# stats markers — never calls any upstream API or provider itself.
+# Inputs:
+#   * ``cache/wl_*/events.json``         — owned by ``update-wl-cache.yml``
+#   * ``cache/oebb_*/events.json``       — owned by ``update-oebb-cache.yml``
+#   * ``cache/baustellen_*/events.json`` — owned by ``update-baustellen-cache.yml``
+#   * ``cache/vor_*/events.json``        — owned by ``update-vor-cache.yml``
+#                                          (manual-only since the
+#                                          2026-05-09 quota-conservation pass)
+#   * ``data/stats/stammstrecke_<YYYY>.csv`` — owned by
+#                                          ``update-stammstrecke-status.yml``
+#
+# Outputs:
+#   * ``docs/feed.xml``       — the public RSS feed
+#   * ``data/first_seen.json`` — feed-state for stable item ages
+#   * ``docs/statistik.md``   — the operator-facing dashboard
+#   * ``README.md``           — patched ``<!-- STATS:* -->`` blocks
+#
+# Cron schedule: ``15,45 * * * *`` — 15 minutes after the upstream
+# ``update-stammstrecke-status.yml`` cron at ``0,30`` so the CSV
+# ledger has settled before this workflow reads it. Push trigger
+# rebuilds the feed whenever feed-relevant code changes (no API
+# call, no quota consumption).
 on:
+  schedule:
+    - cron: '15,45 * * * *'
   workflow_dispatch:
   push:
     paths:
@@ -23,8 +38,9 @@ on:
 permissions:
   contents: read
 
-# Verhindert, dass sich Cron-, Push- und manuell ausgelöste Läufe gegenseitig
-# beim `git push` blockieren oder fehlschlagen lassen.
+# Independent concurrency lane — this workflow does no API I/O so
+# it does not need to share the ``external-api-fetch`` lock with the
+# data-fetcher workflows.
 concurrency:
   group: build-feed-${{ github.ref }}
   cancel-in-progress: false
@@ -52,45 +68,44 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-deps
 
+      # Compose the RSS feed from on-disk artefacts only. ``feed build``
+      # reads the provider caches plus the Stammstrecke CSV ledger via
+      # :mod:`src.feed.stammstrecke` (1-hour window, 9-min threshold)
+      # and writes ``docs/feed.xml`` + ``data/first_seen.json``. No
+      # network I/O.
       - name: Build feed
         run: python -m src.cli feed build
         env:
-          # Atom self/alternate-Links werden direkt im Python-Builder geschrieben.
-          # Aus dem aktuellen Repo abgeleitet, damit Forks korrekte atom:link-URLs
-          # schreiben statt auf das Original-Repo zu zeigen.
+          # Atom self/alternate-Links werden direkt im Python-Builder
+          # geschrieben. Aus dem aktuellen Repo abgeleitet, damit Forks
+          # korrekte atom:link-URLs schreiben statt auf das Original-Repo
+          # zu zeigen.
           PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
-      - name: Configure Git
+      # Regenerate the statistics dashboard (``docs/statistik.md``) AND
+      # patch the README ``<!-- STATS:* -->`` markers with the 30-day
+      # rolling snapshot. Reads only ``data/stats/*.csv`` (no network),
+      # idempotent at the byte level, atomic write — so a kill-signal
+      # mid-run cannot corrupt either output.
+      - name: Refresh statistics dashboard and README snapshot
+        run: python scripts/generate_markdown_stats.py
+
+      - name: Pull concurrent remote changes
         if: github.ref == 'refs/heads/main'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Security: pipe github.repository through env (defence-in-depth
-          # against template-in-shell injection — the value is grammar-
-          # constrained today, but ``${{ … }}`` expansion bypasses bash
-          # quoting entirely and any future change that fed user input
-          # through this step would silently become a shell-injection
-          # primitive).
-          REPO_SLUG: ${{ github.repository }}
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO_SLUG}"
+        run: git pull --rebase --autostash
 
       - name: Commit and push changes
         if: github.ref == 'refs/heads/main'
-        run: |
-          # Änderungen stagen
-          git add -f docs/feed.xml || true
-          git add data/first_seen.json || true
-
-          # Prüfen, ob es gestagte Änderungen gibt
-          if ! git diff --staged --quiet; then
-            # Commit erstellen
-            git commit -m "Update feed"
-
-            # Neueste Änderungen vom Server holen (ohne Merge-Commits)
-            git pull --rebase --autostash origin main
-
-            # Änderungen pushen
-            git push origin main
-          fi
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
+        with:
+          commit_message: 'chore: rebuild feed'
+          # ``docs/feed.xml`` is the public output; ``data/first_seen.json``
+          # is the build-feed state file tracking item ages and must
+          # commit alongside the feed to keep the merge stable.
+          # ``docs/statistik.md`` and ``README.md`` carry the regenerated
+          # human-readable dashboard / snapshot from the same CSV ledger.
+          file_pattern: |
+            data/first_seen.json
+            docs/feed.xml
+            docs/statistik.md
+            README.md

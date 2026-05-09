@@ -21,7 +21,7 @@ name: Update station directory
 #
 # VOR is intentionally not invoked from this workflow (the project
 # reserves the VAO 100/day budget for the Stammstrecke monitor — see
-# ``update-stammstrecke-status.yml``). VOR station IDs come from the
+# ``build-feed.yml``). VOR station IDs come from the
 # pinned ``data/vor-haltestellen.csv`` snapshot.
 on:
   schedule:
@@ -81,7 +81,7 @@ jobs:
 
       # VOR stop-list refresh removed 2026-05-09 to keep the project under
       # the VAO Start tier's 100/day quota — the Stammstrecke monitor
-      # (``update-stammstrecke-status.yml``) is the project's only
+      # (``build-feed.yml``) is the project's only
       # auto-running VOR API consumer and already owns 96 reqs/day. The
       # station directory update now relies on the pinned
       # ``data/vor-haltestellen.csv`` snapshot. To refresh the snapshot,

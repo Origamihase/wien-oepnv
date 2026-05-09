@@ -2,11 +2,11 @@
 
 ## Zweck des Monitors
 
-Das Stammstrecken-Verspätungs-Monitoring läuft alle 30 Minuten in einer
-eigenen GitHub-Actions-Pipeline
-(`.github/workflows/update-stammstrecke-status.yml`) und beobachtet
-unabhängig vom RSS-basierten ÖBB-Provider die zwei Hauptachsen der
-Wiener S-Bahn-Stammstrecke. Bei Median-Verspätungen über
+Das Stammstrecken-Verspätungs-Monitoring läuft alle 30 Minuten als
+erster API-Schritt in `.github/workflows/build-feed.yml` (vor der
+eigentlichen Feed-Render-Phase) und beobachtet unabhängig vom
+RSS-basierten ÖBB-Provider die zwei Hauptachsen der Wiener
+S-Bahn-Stammstrecke. Bei Median-Verspätungen über
 `DELAY_THRESHOLD_MINUTES` Minuten emittiert der Monitor schema-konforme
 Events nach `cache/stammstrecke/events.json`, die der Feed-Builder
 beim nächsten Lauf in den RSS-Feed übernimmt.
