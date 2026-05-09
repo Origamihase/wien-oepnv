@@ -3,12 +3,12 @@
 
 Queries direct S-Bahn connections via :mod:`pyhafas` (`OEBBProfile`) for
 **both directions** independently and emits up to two schema-compliant
-events into ``cache/stammstrecke/events.json``: one per direction whose
-**median** ``departure_delay`` exceeds :data:`DELAY_THRESHOLD_MINUTES`
-minutes. Directions are evaluated strictly separately because merging
-both into a single sample dilutes the signal — a station with a major
-incident in one direction often runs normally in the opposite
-direction.
+events into ``cache/stammstrecke/events.json`` — one per direction
+whose **median** ``departure_delay`` exceeds
+:data:`DELAY_THRESHOLD_MINUTES` minutes. Directions are evaluated
+strictly separately because merging both into a single sample dilutes
+the signal — a station with a major incident in one direction often
+runs normally in the opposite direction.
 
 Design contract
 ---------------
@@ -18,39 +18,49 @@ Design contract
   call's medians and events are computed independently. The cache
   output contains 0, 1, or 2 events depending on which direction(s)
   exceeded the threshold.
+- **Self-Healing on degradation**: if either condition holds the
+  events file is *unconditionally* reset to ``[]``:
+
+      * the API is unreachable (any pyhafas exception, ``ImportError``,
+        or :class:`CircuitBreakerOpen`);
+      * the median for *all* monitored directions is ``≤ 9`` minutes.
+
+  This keeps the RSS feed free of stale warnings — a transient blip or
+  recovery becomes invisible to feed readers within at most one cron
+  tick (30 minutes).
+- **First-seen persistence**: when a direction was *already* over the
+  threshold in the previous run, its ``first_seen`` timestamp is
+  carried over so the GUID stays stable for the duration of an
+  episode. RSS readers therefore see one continuously-updated entry
+  per episode rather than a flood of new entries every 30 minutes.
+  Only when the cache contained no event for that direction (recovery
+  followed by re-entry, or fresh start) does ``first_seen`` advance to
+  the current observation time.
 - **Resilience**: the network call to HAFAS is wrapped in
   :class:`src.utils.circuit_breaker.CircuitBreaker` (`failure_threshold=10`,
   `recovery_timeout=3600`s — semantically aligning with a documented
   "≤ 10 requests per hour" API budget for ÖBB). The per-call HTTP
   timeout is enforced by :func:`_patch_session_timeout` which
   monkey-patches ``profile.request_session.request`` to inject a
-  default ``timeout`` kwarg. pyhafas itself does *not* pass a timeout
-  to ``session.post``, so without this patch a hung HAFAS endpoint
-  would hang the cron runner until GitHub Actions' 6-hour wallclock
-  kill — DoS via slow upstream.
+  default ``timeout`` kwarg.
 - **Atomicity**: writes go through :func:`src.utils.files.atomic_write`
   with permissive ``0o644`` permissions; a crash mid-write cannot
   leave a half-written cache file behind.
 - **Timezone**: GitHub Actions runs in UTC. All timestamps inside the
-  emitted events (``pubDate``, ``starts_at``) are localised to
-  ``Europe/Vienna`` via :mod:`zoneinfo` and serialised as ISO 8601
-  strings with offset, matching ``docs/schema/events.schema.json``.
+  emitted events (``pubDate``, ``starts_at``, ``first_seen``) are
+  localised to ``Europe/Vienna`` via :mod:`zoneinfo` and serialised as
+  ISO 8601 strings with offset, matching
+  ``docs/schema/events.schema.json``.
 - **Schema**: each emitted event mirrors the canonical FeedItem shape
   every other provider produces (``source`` / ``category`` / ``title``
   / ``description`` / ``link`` / ``guid`` / ``pubDate`` / ``starts_at``
-  / ``ends_at`` / ``_identity``). Per-direction events differ in
-  ``description`` (target station name), ``guid`` and ``_identity``
-  (direction-prefixed) so feed readers treat them as separate
-  notifications.
+  / ``ends_at`` / ``first_seen`` / ``_identity``). Per-direction
+  events differ in ``description`` (target station name +
+  ``[Seit DD.MM.YYYY]``), ``guid`` and ``_identity`` so feed readers
+  treat them as separate notifications.
 - **Station-name resolution**: target station labels in the description
   are resolved through :mod:`src.utils.stations` (``canonical_name`` +
-  ``display_name``) instead of being hardcoded. This keeps the
-  Stammstrecke events consistent with the rest of the project: if the
-  station directory's canonical name or display override changes
-  (e.g., a future "Wien Meidling" → "Wien Meidling/Philadelphiabrücke"
-  rename), the script picks it up automatically. The compact "in
-  Richtung Meidling" form is derived by stripping the leading
-  ``Wien `` prefix because the description already implies Vienna.
+  ``display_name``) instead of being hardcoded.
 - **Logging**: every diagnostic message is routed through
   :func:`src.feed.logging_safe.setup_script_logging` so log injection
   / ANSI / BiDi attacks via upstream-controlled fields are sanitised
@@ -63,6 +73,7 @@ key; ÖBB's HAFAS endpoint is queried via the publicly documented
 
 from __future__ import annotations
 
+import json as _json_lib
 import logging
 import re
 import statistics
@@ -120,8 +131,7 @@ MAX_JOURNEYS_PER_QUERY = 12
 # Per-call HTTP budget. Enforced via :func:`_patch_session_timeout` —
 # pyhafas does NOT pass a timeout to its ``session.post`` calls, so
 # without the patch a hung HAFAS endpoint would hang the cron runner
-# indefinitely. ``MAX_QUERY_TIMEOUT`` is the upper clamp; bumping
-# above it requires a deliberate constant change.
+# indefinitely.
 QUERY_TIMEOUT = 20
 MAX_QUERY_TIMEOUT = 30
 
@@ -392,35 +402,120 @@ def _format_minutes(value: float) -> str:
     return f"{rounded:g}"
 
 
+def _read_existing_first_seen() -> dict[str, str]:
+    """Map ``identity_prefix`` → ``first_seen`` (ISO) from the existing cache.
+
+    The Stammstrecke cache is the source of truth for "is there a known
+    ongoing episode for this direction?". We parse it once at the start
+    of every run and use the resulting map to decide whether each
+    direction's emitted event should keep its prior ``first_seen``
+    timestamp (continuing episode) or get a fresh one (new episode).
+
+    All failure modes (missing file, malformed JSON, unexpected shape,
+    missing/typed-wrong fields) collapse to an empty map. We log
+    nothing here — the next ``_write_cache`` will overwrite whatever
+    was there, so a corrupt prior cache cannot persist.
+    """
+
+    if not OUTPUT_PATH.exists():
+        return {}
+    try:
+        with OUTPUT_PATH.open("r", encoding="utf-8") as fh:
+            data = _json_lib.load(fh)
+    except (OSError, _json_lib.JSONDecodeError, UnicodeDecodeError):
+        return {}
+    if not isinstance(data, list):
+        return {}
+
+    result: dict[str, str] = {}
+    for item in data:
+        if not isinstance(item, dict):
+            continue
+        identity = item.get("_identity")
+        first_seen = item.get("first_seen")
+        if not isinstance(identity, str) or not isinstance(first_seen, str):
+            continue
+        prefix = identity.split("|", 1)[0]
+        if prefix:
+            result[prefix] = first_seen
+    return result
+
+
+def _resolve_first_seen(
+    prefix: str,
+    previous_first_seen: dict[str, str],
+    now: datetime,
+) -> datetime:
+    """Pick ``first_seen`` for *prefix*: prior value if present, else *now*.
+
+    Parses the prior ISO 8601 string back into a tz-aware
+    :class:`datetime`; on any parse failure falls back to *now* so a
+    corrupt prior cache cannot poison the new event. A naive parsed
+    timestamp is force-localised to ``Europe/Vienna`` to match the
+    project's timezone contract.
+    """
+
+    prev_iso = previous_first_seen.get(prefix)
+    if prev_iso:
+        try:
+            parsed = datetime.fromisoformat(prev_iso)
+        except (ValueError, TypeError):
+            LOGGER.warning(
+                "Stammstrecke: konnte first_seen %r nicht parsen — "
+                "verwende aktuellen Zeitpunkt für %s.",
+                sanitize_log_arg(prev_iso),
+                prefix,
+            )
+        else:
+            if parsed.tzinfo is None:
+                parsed = parsed.replace(tzinfo=VIENNA_TZ)
+            return parsed
+    return now
+
+
 def _build_event(
     *,
     direction: _Direction,
     median_delay_minutes: float,
     pub_date: datetime,
+    first_seen: datetime,
 ) -> dict[str, Any]:
     """Construct a schema-compliant event dictionary for *direction*.
 
-    See ``docs/schema/events.schema.json`` for the contract. ``pubDate``
-    and ``starts_at`` use the same timestamp because the median is a
-    point-in-time observation; ``ends_at`` is left ``null`` because the
-    cause and end of the disruption are not known to this script.
+    See ``docs/schema/events.schema.json`` for the contract:
 
-    Per-direction GUIDs and identity strings are derived from
-    ``direction.identity_prefix`` (e.g. ``stammstrecke_delay_meidling``)
-    so feed readers treat the two directions as separate notifications.
-    The user-facing target name in ``description`` comes from the
-    canonical station directory via :func:`_short_target_label`.
+    * ``pubDate`` is the *current* observation timestamp — updates every
+      cron tick, signalling freshness to feed readers.
+    * ``starts_at`` and ``first_seen`` both carry the *episode-start*
+      timestamp — stable across cron ticks while the disruption
+      persists.
+    * ``guid`` is derived from ``(identity_prefix, iso_first_seen)`` so
+      it remains stable for the lifetime of an episode; feed readers
+      treat re-published events with the same GUID as updates rather
+      than new entries.
+
+    The description follows the spec format::
+
+        Durchschnittliche Verspätung von {X} Minuten in Richtung
+        {Zielbahnhof} [Seit DD.MM.YYYY]
+
+    The date inside the brackets is derived from ``first_seen`` (so a
+    continuous episode keeps the same "Seit"-date).
     """
 
+    date_str = first_seen.strftime("%d.%m.%Y")
     description = (
         f"Durchschnittliche Verspätung von "
         f"{_format_minutes(median_delay_minutes)} Minuten "
-        f"in Richtung {direction.target_label}"
+        f"in Richtung {direction.target_label} "
+        f"[Seit {date_str}]"
     )
 
     iso_pub = pub_date.isoformat()
-    identity = f"{direction.identity_prefix}|{iso_pub}"
-    guid = make_guid(direction.identity_prefix, iso_pub)
+    iso_first_seen = first_seen.isoformat()
+
+    identity = f"{direction.identity_prefix}|{iso_first_seen}"
+    guid = make_guid(direction.identity_prefix, iso_first_seen)
 
     return {
         "source": EVENT_SOURCE,
@@ -430,8 +525,9 @@ def _build_event(
         "link": EVENT_LINK,
         "guid": guid,
         "pubDate": iso_pub,
-        "starts_at": iso_pub,
+        "starts_at": iso_first_seen,
         "ends_at": None,
+        "first_seen": iso_first_seen,
         "_identity": identity,
     }
 
@@ -439,15 +535,13 @@ def _build_event(
 def _write_cache(payload: list[dict[str, Any]]) -> None:
     """Atomically write *payload* to :data:`OUTPUT_PATH` as pretty JSON."""
 
-    import json as _json
-
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     # ``permissions=0o644`` matches the canonical cache file ACL — the
     # build_feed.py reader runs as the same user but pre-commit / git
     # auto-commit also need read access. The non-secret nature of the
     # data (publicly observed delay) makes 0o600 unnecessary here.
     with atomic_write(OUTPUT_PATH, mode="w", encoding="utf-8", permissions=0o644) as fh:
-        _json.dump(
+        _json_lib.dump(
             payload,
             fh,
             ensure_ascii=False,
@@ -462,6 +556,7 @@ def _process_direction(
     direction: _Direction,
     *,
     when: datetime,
+    previous_first_seen: dict[str, str],
 ) -> tuple[dict[str, Any] | None, str]:
     """Query ``direction`` once and return ``(event_or_none, status)``.
 
@@ -521,17 +616,26 @@ def _process_direction(
     if median_minutes <= DELAY_THRESHOLD_MINUTES:
         return None, "no_delays"
 
+    first_seen = _resolve_first_seen(
+        direction.identity_prefix, previous_first_seen, when
+    )
     event = _build_event(
         direction=direction,
         median_delay_minutes=median_minutes,
         pub_date=when,
+        first_seen=first_seen,
     )
+
+    is_new = first_seen >= when  # tolerant equality for fresh episodes
     LOGGER.info(
-        "Stammstrecke: Richtung %s — Median %.2f > %d → Event erzeugt (guid=%s).",
+        "Stammstrecke: Richtung %s — Median %.2f > %d → Event %s "
+        "(guid=%s, first_seen=%s).",
         direction.target_label,
         median_minutes,
         DELAY_THRESHOLD_MINUTES,
+        "neu" if is_new else "fortgeführt",
         event["guid"][:12],
+        event["first_seen"],
     )
     return event, "event"
 
@@ -543,13 +647,12 @@ def main() -> int:
     cron pipeline relies on a clean exit so other cache updates run on
     schedule even when this provider is degraded.
 
-    Per-direction error handling is intentionally permissive: a transient
-    failure on one direction does NOT discard data already collected
-    from the other. ``CircuitBreakerOpen`` is the only exception that
-    short-circuits the loop, because its semantics are "stop hitting
-    the upstream" — the breaker would short-circuit the second call
-    anyway, and an empty events list is the appropriate signal until
-    the recovery window has elapsed.
+    Self-healing rule: the cache file is *unconditionally* set to ``[]``
+    when the API is unreachable (any pyhafas exception, ``ImportError``,
+    or :class:`CircuitBreakerOpen`) **or** when no direction's median
+    exceeds the threshold. Per-direction error isolation still applies:
+    a single direction's transient failure does not discard a
+    successfully observed disruption from the other direction.
     """
 
     configure_logging()
@@ -558,7 +661,7 @@ def main() -> int:
         client = _build_client()
     except ImportError as exc:
         LOGGER.warning(
-            "pyhafas / OEBBProfile nicht verfügbar (%s); schreibe leere Stammstrecke-Cache-Datei.",
+            "pyhafas / OEBBProfile nicht verfügbar (%s); leere Stammstrecke-Cache-Datei.",
             sanitize_log_arg(str(exc)),
         )
         _write_cache([])
@@ -573,21 +676,28 @@ def main() -> int:
         return 1
 
     when = _now_vienna()
+    previous_first_seen = _read_existing_first_seen()
     events: list[dict[str, Any]] = []
     successes = 0
     errors = 0
+    breaker_short_circuited = False
 
     for direction in DIRECTIONS:
         try:
             event, status = _process_direction(
-                client, direction, when=when
+                client,
+                direction,
+                when=when,
+                previous_first_seen=previous_first_seen,
             )
         except CircuitBreakerOpen:
             LOGGER.warning(
                 "Stammstrecke: Circuit breaker offen (%d aufeinanderfolgende Fehler) — "
-                "überspringe verbleibende Richtungen für diese Tick.",
+                "leere Cache-Datei und überspringe verbleibende Richtungen.",
                 _BREAKER.consecutive_failures,
             )
+            breaker_short_circuited = True
+            events = []  # Self-Healing: discard any partial results.
             break
 
         if status == "error":
@@ -596,6 +706,11 @@ def main() -> int:
         successes += 1
         if event is not None:
             events.append(event)
+
+    # Self-Healing rule: if every direction errored AND none succeeded,
+    # treat the API as unreachable globally and clear the cache.
+    if not breaker_short_circuited and successes == 0 and errors > 0:
+        events = []
 
     _write_cache(events)
     LOGGER.info(
