@@ -6,9 +6,38 @@ import re
 from typing import Any
 
 # Precompiled regexes for sanitization
-# Extended to include BiDi control characters (Trojan Source) and Zero-Width characters
+# Strip BiDi control characters (Trojan Source: CVE-2021-42574), zero-width
+# characters, and Unicode line/paragraph separators that downstream consumers
+# treat as record terminators (ECMAScript-pre-2019 ``JSON.parse``/``eval``,
+# the GitHub PR-comment renderer, several YAML parsers, SIEM splitters that
+# key off Unicode whitespace). The character class union covers:
+#   * ``\x00-\x1f`` / ``\x7f-\x9f`` \u2014 ASCII C0 + DEL + C1 controls.
+#   * ``\u061c`` \u2014 Arabic Letter Mark (post-Unicode-6.3 BiDi control; same
+#     display-confusion blast radius as LRM/RLM but missing from every
+#     prior round of this regex).
+#   * ``\u200b-\u200f`` \u2014 ZWSP / ZWNJ / ZWJ / **LRM** / **RLM**. The
+#     ``\u200e``/``\u200f`` BiDi marks are the same Trojan-Source primitive
+#     as the already-stripped ``\u202a-\u202e`` family: a hostile payload
+#     prepends LRM/RLM to invert displayed text in a Unicode-aware terminal
+#     so an operator skimming a log misreads ``user=admin drop=table`` as
+#     the inverse.
+#   * ``\u2028-\u202e`` \u2014 Unicode **LINE SEPARATOR** (``\u2028``) /
+#     **PARAGRAPH SEPARATOR** (``\u2029``) plus the CVE-2021-42574 BiDi
+#     formatting controls (LRE/RLE/PDF/LRO/RLO at ``\u202a-\u202e``).
+#     ``\u2028``/``\u2029`` were the load-bearing gap \u2014 Python's regex
+#     ``\\s`` matches them, but ``_CONTROL_CHARS_RE`` did not. A hostile
+#     upstream JSON payload could therefore embed ``\u2028`` to forge a
+#     second log record in any consumer honouring Unicode line terminators.
+#   * ``\u2066-\u2069`` \u2014 LRI / RLI / FSI / PDI BiDi isolates (the second
+#     half of CVE-2021-42574).
+#   * ``\ufeff`` \u2014 Byte Order Mark (zero-width no-break space).
+# The companion regex in ``src/utils/stations_validation.py`` uses
+# ``\u2028-\u202e``; this file pins the canonical UNION (incl. ALM, LRM,
+# RLM) so every WARNING/ERROR site routed through the audit walker
+# (``test_sentinel_clear_text_logging_drift_utils``) inherits the same
+# defence floor.
 _CONTROL_CHARS_RE = re.compile(
-    r"[\x00-\x1f\x7f-\x9f\u200b-\u200d\u202a-\u202e\u2066-\u2069\ufeff]"
+    r"[\x00-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
 )
 _LOG_INJECTION_RE = re.compile(r"[\n\r\t]")
 # ANSI escape codes: comprehensive matching for CSI, OSC, Fe, and 2-byte sequences
