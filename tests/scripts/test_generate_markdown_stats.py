@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import sys
 from collections import Counter
+from collections.abc import Sequence
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -30,8 +31,18 @@ VIENNA_TZ = ZoneInfo("Europe/Vienna")
 # ---- Helpers ---------------------------------------------------------------
 
 
-def _write_csv(path: Path, header: tuple[str, ...], rows: list[tuple[str, ...]]) -> None:
-    """Helper that writes a small CSV the same way the production writer does."""
+def _write_csv(
+    path: Path,
+    header: tuple[str, ...],
+    rows: Sequence[tuple[str, ...]],
+) -> None:
+    """Helper that writes a small CSV the same way the production writer does.
+
+    *rows* is typed as :class:`Sequence` rather than :class:`list` so
+    callers can pass concrete tuple element types (e.g.
+    ``list[tuple[str, str, str, str, str]]``) without tripping the
+    list-invariance rule mypy enforces under ``--strict``.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
     lines = [",".join(header)]
     for row in rows:
