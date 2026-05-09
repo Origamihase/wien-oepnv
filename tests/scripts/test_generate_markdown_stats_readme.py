@@ -303,16 +303,31 @@ def test_render_disruptions_block_skips_unbekannt_bucket() -> None:
     assert "| 3. | – | – |" in block
 
 
-def test_render_disruptions_block_empty_when_only_unbekannt() -> None:
-    """If every row has ``unbekannt`` location, table pads with placeholder."""
+def test_render_disruptions_block_emits_explanatory_row_when_only_unbekannt() -> None:
+    """All-``unbekannt`` window must explain itself, not pad three blanks.
+
+    Three ``– | –`` placeholder rows would read as "no disruptions
+    happened" — but disruptions DID happen, they just lacked a
+    station mention the directory-anchored extractor could resolve
+    (typical for line-only WL events like "Demonstration auf Linie
+    5"). A single explanatory cell with the count is more honest UX
+    than blanking the whole table.
+    """
     rows = [
+        _make_stoer(script.LOCATION_UNKNOWN, timestamp=NOW),
+        _make_stoer(script.LOCATION_UNKNOWN, timestamp=NOW),
         _make_stoer(script.LOCATION_UNKNOWN, timestamp=NOW),
         _make_stoer(script.LOCATION_UNKNOWN, timestamp=NOW),
     ]
     block = script.render_readme_disruptions_block(rows, window_days=30)
     assert "unbekannt" not in block
-    for rank in (1, 2, 3):
-        assert f"| {rank}. | – | – |" in block
+    assert "Keine Vorfälle mit Stationszuordnung" in block
+    # The explanatory cell must surface the count of unresolved rows
+    # so operators can spot a sudden swing toward unresolved.
+    assert "(4 ohne Stationsbezug)" in block
+    # Remaining rows still pad to top_n for layout stability.
+    assert "| 2. | – | – |" in block
+    assert "| 3. | – | – |" in block
 
 
 # ---- README patcher --------------------------------------------------------
@@ -498,6 +513,118 @@ def test_main_writes_readme_with_30_day_window(tmp_path: Path) -> None:
     # Disruptions: Wien Hbf=2 ranks first.
     assert "| 1. | Wien Hbf | 2 |" in new_text
     assert "| 2. | Floridsdorf | 1 |" in new_text
+
+
+def test_main_skips_readme_when_window_is_empty(
+    tmp_path: Path,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """A run against an empty stats-dir must NOT overwrite the README.
+
+    Defense-in-depth pin: the argparse default for ``--readme-path``
+    is :data:`script.DEFAULT_README_PATH` (the production
+    ``REPO_ROOT/README.md``), so any caller that supplies a stats
+    directory but forgets to override the readme path can
+    accidentally stamp ``_wird berechnet…_`` placeholder rows over
+    real committed README content. Locked-in 2026-05-09 after
+    ``test_main_*`` callers in
+    :mod:`tests.scripts.test_generate_markdown_stats` did exactly
+    that and contaminated the committed README (audit trail in PR
+    #1397).
+
+    Contract: when both windows are empty, the rendered placeholder
+    block is NOT written to *readme_path* — the existing on-disk
+    README content is preserved byte-for-byte.
+    """
+    empty_stats_dir = tmp_path / "missing"
+    readme = tmp_path / "README.md"
+    pre_image = "real README with markers — must survive an empty-window run"
+    readme.write_text(
+        _readme_with_markers(extra=f"\n{pre_image}\n"), encoding="utf-8"
+    )
+    snapshot = readme.read_bytes()
+    output = tmp_path / "statistik.md"
+
+    with caplog.at_level(logging.INFO, logger="generate_markdown_stats"):
+        rc = script.main(
+            [
+                "--year",
+                "2026",
+                "--stats-dir",
+                str(empty_stats_dir),
+                "--output",
+                str(output),
+                "--readme-path",
+                str(readme),
+                "--now-iso",
+                "2026-05-09T12:00:00+02:00",
+            ]
+        )
+    assert rc == 0
+    # README must be byte-identical — placeholder block did NOT land.
+    assert readme.read_bytes() == snapshot
+    # Dashboard still rendered (this branch only gates README writes).
+    assert output.exists()
+    # Audit log clearly explains the skip so operators can trace it.
+    log_messages = " ".join(record.message for record in caplog.records)
+    assert "README patch skipped entirely" in log_messages
+
+
+def test_main_patches_only_block_with_data_when_other_window_is_empty(
+    tmp_path: Path,
+) -> None:
+    """Stammstrecke data + zero disruptions → patch only Stammstrecke.
+
+    A populated Disruption snapshot from a previous run must NOT be
+    overwritten with placeholders just because today happens to have
+    no fresh disruption rows in the window.
+    """
+    stats_dir = tmp_path / "stats"
+    stats_dir.mkdir()
+    # Stammstrecke ledger has two rows; disruption ledger is missing.
+    (stats_dir / "stammstrecke_2026.csv").write_text(
+        ",".join(("timestamp", "weekday", "hour", "direction", "delay_minutes"))
+        + "\n"
+        + "2026-05-09T08:00:00+02:00,Sa,8,Wien Hbf->Floridsdorf,12.0\n"
+        + "2026-05-09T08:30:00+02:00,Sa,8,Wien Hbf->Floridsdorf,5.0\n",
+        encoding="utf-8",
+    )
+    readme = tmp_path / "README.md"
+    pre_existing_disruption_block = (
+        "<!-- STATS:DISRUPTIONS:BEGIN -->\n"
+        "| 1. | Wien Karlsplatz | 99 |\n"
+        "<!-- STATS:DISRUPTIONS:END -->"
+    )
+    readme.write_text(
+        "<!-- STATS:STAMMSTRECKE:BEGIN -->\n"
+        "OLD STAMMSTRECKE\n"
+        "<!-- STATS:STAMMSTRECKE:END -->\n\n"
+        + pre_existing_disruption_block
+        + "\n",
+        encoding="utf-8",
+    )
+    output = tmp_path / "statistik.md"
+    rc = script.main(
+        [
+            "--year",
+            "2026",
+            "--stats-dir",
+            str(stats_dir),
+            "--output",
+            str(output),
+            "--readme-path",
+            str(readme),
+            "--now-iso",
+            "2026-05-09T12:00:00+02:00",
+        ]
+    )
+    assert rc == 0
+    new_text = readme.read_text(encoding="utf-8")
+    # Stammstrecke block patched with real values.
+    assert "OLD STAMMSTRECKE" not in new_text
+    assert "| Beobachtungen (gesamt) | 2 |" in new_text
+    # Disruption block preserved verbatim — placeholder did NOT win.
+    assert "| 1. | Wien Karlsplatz | 99 |" in new_text
 
 
 def test_main_skip_readme_flag_leaves_readme_untouched(
