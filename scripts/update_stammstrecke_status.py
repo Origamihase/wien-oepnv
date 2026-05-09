@@ -365,29 +365,30 @@ def _query_trips(
     safe_timeout = max(1, min(timeout, MAX_QUERY_TIMEOUT))
 
     # Param-naming notes for the VAO ``/trip`` endpoint (Senior-API-
-    # Integration audit, 2026-05-09):
+    # Integration audit, 2026-05-09 — third iteration after PR #1385
+    # diagnostics + PR #1387 originExtId attempt both yielded HTTP 400):
     #
-    # * ``originExtId`` / ``destExtId`` — the VAO ReST API distinguishes
-    #   between the HAFAS-internal location ID (``originId``, full
-    #   ``A=1@O=...@L=...`` shape returned by ``location.name``) and the
-    #   external station code (``originExtId``, the bare numeric IBNR-
-    #   style ID like ``490033400``). ``data/stations.json`` stores
-    #   ``vor_id`` in the ExtId shape, so we must use the ``ExtId``
-    #   parameter family — passing the bare numeric to ``originId``
-    #   triggers HTTP 400 with the accessId echoed in the error body
-    #   (the strict validator rejects the malformed ``originId`` and
-    #   includes the supplied accessId in its diagnostic).
-    # * ``format=json`` — VAO defaults to XML, which clashes with our
-    #   JSON-parsing code path. Both the query parameter AND the
-    #   ``Accept: application/json`` request header are sent so the
-    #   negotiation is unambiguous.
+    # * **ID encoding** — VAO accepts external station IDs (bare-numeric
+    #   IBNR-style codes, e.g. ``490033400`` from ``data/stations.json``)
+    #   in two forms:
+    #     1. ``originExtId=490033400`` — DB Navigator HAFAS convention.
+    #     2. ``originId=extId::490033400`` — VAO/ÖBB convention per
+    #        Kapitel "Identifikationsarten von Ortsobjekten" (S. 19) of
+    #        the Handbuch_VAO_ReST_API_latest.pdf: the ``extId::``
+    #        prefix encodes "treat the value as an external ID". The
+    #        2026-05-09 cron runs revealed that form #1 (PR #1387)
+    #        triggered HTTP 400 with empty body on this VAO instance;
+    #        we now use form #2.
+    # * ``Accept: application/json`` header — replaces the
+    #   ``format=json`` query parameter. The trip.md curl example does
+    #   not include ``format=json``, only the Accept header; the
+    #   ``departureBoard`` endpoint is the outlier that documents both.
     # * ``date`` / ``time`` — explicitly pinned to the current Vienna
     #   wall clock so the upstream cannot drift to UTC or fail to
     #   infer "now".
     params: dict[str, str] = {
-        "format": "json",
-        "originExtId": direction.origin_id,
-        "destExtId": direction.destination_id,
+        "originId": f"extId::{direction.origin_id}",
+        "destId": f"extId::{direction.destination_id}",
         "date": when.strftime("%Y-%m-%d"),
         "time": when.strftime("%H:%M"),
         "numF": str(MAX_TRIPS_PER_QUERY),
@@ -408,8 +409,10 @@ def _query_trips(
         session,
         endpoint,
         params=params,
-        # Explicit content negotiation belt-and-suspenders alongside
-        # the ``format=json`` query parameter.
+        # Content negotiation via Accept header instead of the
+        # ``format=json`` query parameter. The trip.md curl example
+        # uses this exact pattern, and removing the query parameter
+        # eliminates one variable in the iterative HTTP 400 triage.
         headers={"Accept": "application/json"},
         timeout=safe_timeout,
         allowed_content_types=("application/json",),
@@ -863,19 +866,67 @@ _VAO_ERROR_CODE_RE: Final = re.compile(r"^[A-Za-z][A-Za-z0-9_]{0,31}$")
 _BODY_KEYS_MAX_LEN: Final = 256
 
 
+# Sentinel strings for the diagnostic logging branch.
+#
+# Why brackets-and-uppercase-words:
+# The 2026-05-09 cron run revealed that the project's ``SafeFormatter``
+# (or one of its delegated maskers) treats lowercase alphanumeric
+# tokens like ``unknown`` as "potential secret"-shaped and replaces
+# them with ``***``. The original ``<unknown>`` sentinel therefore
+# became ``***`` in the live log line, defeating the purpose of the
+# diagnostic. Switching to ``[BRACKET_TAG]``-shape tokens (uppercase,
+# underscores, hard delimiters) keeps the sentinels safely outside
+# any token-shape heuristic the masker applies.
+_DIAG_NO_RESPONSE: Final = "[NO_RESPONSE]"
+_DIAG_MISSING: Final = "[MISSING]"
+_DIAG_BAD_SHAPE: Final = "[BAD_SHAPE]"
+_DIAG_EMPTY_BODY: Final = "[EMPTY_BODY]"
+_DIAG_NO_KEYS: Final = "[NO_KEYS]"
+_DIAG_REDACTED_KEY: Final = "[REDACTED]"
+
+
 def _extract_http_status(exc: requests.HTTPError) -> str:
     """Return the HTTP status code from *exc* as a stringy diagnostic.
 
-    Falls back to ``"<no-response>"`` when the exception carries no
-    response object (network-level failure, redirect-loop break, etc.).
+    Falls back to :data:`_DIAG_NO_RESPONSE` when the exception carries
+    no response object (network-level failure, redirect-loop break,
+    etc.).
     """
     response = getattr(exc, "response", None)
     if response is None:
-        return "<no-response>"
+        return _DIAG_NO_RESPONSE
     status = getattr(response, "status_code", None)
     if not isinstance(status, int):
-        return "<unknown>"
+        return _DIAG_MISSING
     return str(status)
+
+
+def _extract_response_header(exc: requests.HTTPError, name: str) -> str:
+    """Return the value of the *name* header from *exc.response*, or a sentinel.
+
+    The headers we surface (``Content-Type``, ``Content-Length``,
+    ``Server``, ``WWW-Authenticate``) are server-set and do NOT carry
+    user-controlled content — logging them is leak-free. The value is
+    truncated at :data:`_BODY_KEYS_MAX_LEN` to bound a planted-huge-
+    header poisoning shape (an upstream that returns a multi-KiB
+    ``Server`` header would otherwise pollute the structured log
+    record).
+    """
+    response = getattr(exc, "response", None)
+    if response is None:
+        return _DIAG_NO_RESPONSE
+    headers = getattr(response, "headers", None)
+    if headers is None:
+        return _DIAG_MISSING
+    value = headers.get(name)
+    if not isinstance(value, str):
+        return _DIAG_MISSING
+    stripped = value.strip()
+    if not stripped:
+        return _DIAG_MISSING
+    if len(stripped) > _BODY_KEYS_MAX_LEN:
+        return stripped[:_BODY_KEYS_MAX_LEN] + "…"
+    return stripped
 
 
 def _decode_error_body(exc: requests.HTTPError) -> Mapping[str, Any] | None:
@@ -908,29 +959,30 @@ def _extract_vao_error_code(exc: requests.HTTPError) -> str:
     Strict-match against :data:`_VAO_ERROR_CODE_RE` (canonical short
     HAFAS code shape) — a value that does not match (e.g. a free-form
     error message that happens to echo upstream-controlled content,
-    including the supplied ``accessId``) collapses to ``"<malformed>"``
-    rather than risking a secret leak through the diagnostic line.
+    including the supplied ``accessId``) collapses to
+    :data:`_DIAG_BAD_SHAPE` rather than risking a secret leak through
+    the diagnostic line.
 
-    Falls back to ``"<unknown>"`` for every other failure mode (no
-    response, body too large, body not JSON, body not a mapping,
+    Falls back to :data:`_DIAG_MISSING` for every other failure mode
+    (no response, body too large, body not JSON, body not a mapping,
     errorCode field absent or non-stringy).
     """
     body = _decode_error_body(exc)
     if body is None:
-        return "<unknown>"
+        return _DIAG_MISSING
     raw_code = body.get("errorCode") or body.get("error")
     if not isinstance(raw_code, str):
-        return "<unknown>"
+        return _DIAG_MISSING
     code = raw_code.strip()
     if not code:
-        return "<unknown>"
+        return _DIAG_MISSING
     if not _VAO_ERROR_CODE_RE.match(code):
         # Defensive bail: the upstream value is NOT a canonical short
         # code — most plausibly a verbose error message whose contents
         # cannot be safely surfaced. The body-keys diagnostic from
         # :func:`_describe_error_body_keys` will still expose enough
         # structural shape information to triage the failure.
-        return "<malformed>"
+        return _DIAG_BAD_SHAPE
     return code[:_ERROR_CODE_MAX_LEN]
 
 
@@ -944,15 +996,15 @@ def _describe_error_body_keys(exc: requests.HTTPError) -> str:
     smuggles upstream-controlled content (an unusual but possible
     shape) does not slip into the log line. Keys that do NOT match
     the canonical HAFAS field-name pattern are rendered as
-    ``"<???>"`` so the diagnostic still indicates "the body has N
-    fields" without exposing what they are.
+    :data:`_DIAG_REDACTED_KEY` so the diagnostic still indicates
+    "the body has N fields" without exposing what they are.
 
-    Falls back to ``"<no-body>"`` for non-JSON / non-mapping / oversize
-    payloads, mirroring :func:`_extract_vao_error_code`.
+    Falls back to :data:`_DIAG_EMPTY_BODY` for non-JSON / non-mapping
+    / oversize payloads, mirroring :func:`_extract_vao_error_code`.
     """
     body = _decode_error_body(exc)
     if body is None:
-        return "<no-body>"
+        return _DIAG_EMPTY_BODY
     keys: list[str] = []
     # ``Mapping[str, Any]`` from ``_decode_error_body`` guarantees the
     # iteration yields ``str`` keys; we only need to gate against the
@@ -962,9 +1014,9 @@ def _describe_error_body_keys(exc: requests.HTTPError) -> str:
         if _VAO_ERROR_CODE_RE.match(stripped):
             keys.append(stripped)
         else:
-            keys.append("<???>")
+            keys.append(_DIAG_REDACTED_KEY)
     keys.sort()
-    rendered = ",".join(keys) or "<empty>"
+    rendered = ",".join(keys) or _DIAG_NO_KEYS
     if len(rendered) > _BODY_KEYS_MAX_LEN:
         return rendered[:_BODY_KEYS_MAX_LEN] + "…"
     return rendered
@@ -1016,24 +1068,37 @@ def _process_direction(
     except requests.HTTPError as exc:
         # Diagnostic-rich branch for non-2xx responses. Logs the HTTP
         # status code, the canonical-short VAO ``errorCode`` from the
-        # JSON body when present, and the body's top-level key set.
-        # All three fields are safe to surface (no URL → no
+        # JSON body when present, the body's top-level key set, and
+        # four server-set response headers (Content-Type,
+        # Content-Length, Server, WWW-Authenticate) so the next cron
+        # run reveals whether we are dealing with an auth rejection
+        # (401 + WWW-Authenticate set), a gateway/proxy issue (Server
+        # naming a CDN rather than the VAO origin), or a payload
+        # mismatch (Content-Type=text/html points at an HTML error
+        # page). All fields are safe to surface (no URL → no
         # ``accessId`` leak; ``errorCode`` is regex-validated against
         # the canonical HAFAS short-code shape; key names go through
-        # the same regex filter). The ``errorText``/``errorMsg``
-        # fields are deliberately NOT logged because some HAFAS peers
-        # echo the supplied ``accessId`` back into the human-readable
-        # message; the structured fields suffice for triage.
+        # the same regex filter; response headers are server-set and
+        # do not echo user-controlled content).
         status_code = _extract_http_status(exc)
         error_code = _extract_vao_error_code(exc)
         body_keys = _describe_error_body_keys(exc)
+        content_type = _extract_response_header(exc, "Content-Type")
+        content_length = _extract_response_header(exc, "Content-Length")
+        server = _extract_response_header(exc, "Server")
+        www_auth = _extract_response_header(exc, "WWW-Authenticate")
         LOGGER.warning(
             "Stammstrecke: Abfrage Richtung %s fehlgeschlagen: HTTP %s "
-            "(errorCode=%s, body_keys=%s).",
+            "(errorCode=%s, body_keys=%s, ct=%s, cl=%s, server=%s, "
+            "www_auth=%s).",
             direction.target_label,
             status_code,
             sanitize_log_arg(error_code),
             sanitize_log_arg(body_keys),
+            sanitize_log_arg(content_type),
+            sanitize_log_arg(content_length),
+            sanitize_log_arg(server),
+            sanitize_log_arg(www_auth),
         )
         return None, "error"
     except Exception as exc:
