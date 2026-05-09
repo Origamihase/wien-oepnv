@@ -84,9 +84,53 @@ DEFAULT_TIMEOUT = (3.0, 15.0)
 # DNS resolution timeout in seconds
 DNS_TIMEOUT = 5.0
 
-# Block control characters and whitespace in URLs to prevent log injection
-# Also block unsafe characters (<, >, ", \, ^, `, {, |, }) to prevent XSS/Injection
-_UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f<>\"\\^`{|}]")
+# Block control characters, ASCII whitespace, and structural URL-injection
+# characters in URLs.
+#
+# The character class union covers four orthogonal threat classes — each
+# previously closed by an independent round, now consolidated here so the
+# URL validation boundary mirrors the canonical log-sanitiser
+# ``_INVISIBLE_DANGEROUS_RE`` set:
+#
+# 1. ASCII whitespace (``\s`` — TAB / LF / CR / SPACE plus the Unicode
+#    LINE SEPARATOR U+2028 and PARAGRAPH SEPARATOR U+2029) and ASCII
+#    C0 controls + DEL (``\x00-\x1f\x7f``). Original payload-shape
+#    motivation: log injection via embedded newlines.
+# 2. Structural URL-injection characters (``< > " \ ^ ` { | }``).
+#    Original motivation: XSS / template-injection / shell-injection
+#    when a URL is interpolated into a downstream sink without escaping.
+# 3. **BiDi format controls** (U+061C ALM, U+202A-U+202E
+#    LRE/RLE/PDF/LRO/**RLO**, U+2066-U+2069 LRI/RLI/FSI/PDI). These
+#    are the canonical CVE-2021-42574 "Trojan Source" primitives — the
+#    most impactful is RLO (U+202E), which inverts the visual rendering
+#    of subsequent text. A planted feed-item ``link`` like
+#    ``https://safe.example.com<RLO>/path/evil.exe`` is rendered with
+#    the post-RLO segment reversed in any Unicode-aware feed reader,
+#    so the URL the user *sees* differs from the URL the browser
+#    actually fetches when clicked. Phishing primitive in any public
+#    artefact (RSS feed, sitemap, GitHub Issue body, error logs) that
+#    interpolates the URL.
+# 4. **Zero-width characters** (U+200B-U+200F ZWSP/ZWNJ/ZWJ +
+#    LRM/RLM, U+FEFF BOM). These are visually invisible but cause
+#    cache-key collisions, equality-check disagreements, and the same
+#    Trojan-Source class display-confusion as the BiDi format controls
+#    (LRM/RLM are full BiDi primitives despite being zero-width).
+#
+# The 2026-05-09 "BiDi-Mark Drift Round 3" journal entry (.jules/
+# sentinel.md) explicitly named this regex as a sibling drift candidate
+# that the Round 3 PR did not close — it widened
+# ``stations_validation._UNSAFE_CHARS_RE`` to the canonical
+# ``_INVISIBLE_DANGEROUS_RE`` set but deferred the URL boundary. This
+# entry closes that drift; the inventory test
+# ``test_unsafe_url_chars_regex_covers_canonical_invisible_dangerous_set``
+# in ``tests/test_sentinel_http_url_chars_bidi_gap.py`` pins the
+# invariant programmatically so a future widening of
+# ``_INVISIBLE_DANGEROUS_RE`` (e.g. a Unicode 16 BiDi format control)
+# fails the test until the URL validator is widened too.
+_UNSAFE_URL_CHARS = re.compile(
+    r"[\s\x00-\x1f\x7f<>\"\\^`{|}"
+    r"\u061c\u200b-\u200f\u202a-\u202e\u2066-\u2069\ufeff]"
+)
 
 # Limit URL length to reduce DoS risk from extremely long inputs.
 MAX_URL_LENGTH = 2048
