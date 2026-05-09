@@ -72,6 +72,18 @@ jobs:
       - name: Refresh VOR cache
         run: python scripts/update_vor_cache.py
 
+      # Stammstrecke median-delay monitor: writes cache/stammstrecke/events.json
+      # consumed by the feed builder, AND appends a CSV row to
+      # data/stats/stammstrecke_<YYYY>.csv. After the 2026-05-09 pyhafas->VOR
+      # pivot the script issues 2 VOR /trip requests per run (one per
+      # direction); it shares the ``external-api-fetch`` concurrency lane and
+      # the VAO Start daily quota counter with ``update_vor_cache.py`` above.
+      # MUST run BEFORE the feed build below — the feed reads the cache file
+      # produced here, so a wrong-order full-refresh would publish stale
+      # Stammstrecke data and only converge on the *next* refresh.
+      - name: Refresh Stammstrecke status
+        run: python scripts/update_stammstrecke_status.py
+
       # ----- 2) Stationsverzeichnis aktualisieren -----
       - name: Refresh VOR stop list (best-effort)
         run: |
@@ -94,19 +106,14 @@ jobs:
           # schreiben statt auf das Original-Repo zu zeigen.
           PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
-      # ----- 4) Stammstrecke-Status und Statistiken auffrischen -----
-      # Schreibt cache/stammstrecke/events.json und haengt eine Zeile an
-      # data/stats/stammstrecke_<YYYY>.csv an. Teilt sich die Concurrency-
-      # Gruppe ``external-api-fetch`` mit dem regulaeren 30-Minuten-Cron,
-      # sodass parallele HAFAS-Aufrufe vermieden werden.
-      - name: Refresh Stammstrecke status
-        run: python scripts/update_stammstrecke_status.py
-
+      # ----- 4) Statistik-Dashboard und README-Snapshot -----
       # Regeneriert docs/statistik.md (Dashboard) und patcht zugleich die
       # <!-- STATS:* --> Marker im README mit dem 30-Tage-Schnappschuss.
       # Liest ausschliesslich aus data/stats/*.csv (read-only) und schreibt
       # via atomic_write — ein Lauf ohne neue Daten patcht das README nur,
-      # wenn sich die "Letzte Aktualisierung"-Zelle aendert.
+      # wenn sich die "Letzte Aktualisierung"-Zelle aendert. Muss nach dem
+      # Stammstrecke-Schritt laufen, damit die Auswertung den frischen
+      # CSV-Eintrag enthaelt.
       - name: Refresh statistics dashboard and README snapshot
         run: python scripts/generate_markdown_stats.py
 
