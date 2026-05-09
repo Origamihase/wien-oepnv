@@ -101,7 +101,7 @@ from contextlib import ExitStack
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, TypeGuard
+from typing import Any, Final, TypeGuard
 from zoneinfo import ZoneInfo
 
 import requests
@@ -803,6 +803,68 @@ def _write_cache(payload: list[dict[str, Any]]) -> None:
         fh.write("\n")
 
 
+# Hard cap on the ``errorCode`` string length. Real VAO codes are
+# ~4-8 chars (``H890``, ``H892``, ``H730``, ``SVC_LOC_INVALID``); the
+# 64-char ceiling is generous headroom while preventing a planted
+# upstream from poisoning a structured log record with a multi-KiB
+# blob via the otherwise-trusted error-body extraction path.
+_ERROR_CODE_MAX_LEN: Final = 64
+
+# Hard cap on the JSON body we will load into memory before scanning
+# for ``errorCode``. The legitimate VAO error envelope is <1 KiB; 16
+# KiB is ~16x headroom for any plausible future evolution while still
+# preventing a planted upstream from amplifying the diagnostic-logging
+# branch into a memory-pressure DoS. ``response.content`` would
+# otherwise materialise the entire (potentially huge) error body.
+_ERROR_BODY_MAX_BYTES: Final = 16 * 1024
+
+
+def _extract_http_status(exc: requests.HTTPError) -> str:
+    """Return the HTTP status code from *exc* as a stringy diagnostic.
+
+    Falls back to ``"<no-response>"`` when the exception carries no
+    response object (network-level failure, redirect-loop break, etc.).
+    """
+    response = getattr(exc, "response", None)
+    if response is None:
+        return "<no-response>"
+    status = getattr(response, "status_code", None)
+    if not isinstance(status, int):
+        return "<unknown>"
+    return str(status)
+
+
+def _extract_vao_error_code(exc: requests.HTTPError) -> str:
+    """Return the ``errorCode`` from a VAO error-envelope JSON body.
+
+    Falls back to ``"<unknown>"`` for every failure mode (no response,
+    body too large, body not JSON, body not a mapping, errorCode field
+    absent or non-stringy). Bounded by :data:`_ERROR_BODY_MAX_BYTES` on
+    the wire and :data:`_ERROR_CODE_MAX_LEN` on the rendered string.
+    """
+    response = getattr(exc, "response", None)
+    if response is None:
+        return "<unknown>"
+    raw = getattr(response, "content", None)
+    if not isinstance(raw, (bytes, bytearray)):
+        return "<unknown>"
+    if len(raw) == 0 or len(raw) > _ERROR_BODY_MAX_BYTES:
+        return "<unknown>"
+    try:
+        body = _json_lib.loads(raw)
+    except (ValueError, RecursionError, UnicodeDecodeError):
+        return "<unknown>"
+    if not isinstance(body, Mapping):
+        return "<unknown>"
+    raw_code = body.get("errorCode") or body.get("error")
+    if not isinstance(raw_code, str):
+        return "<unknown>"
+    code = raw_code.strip()
+    if not code:
+        return "<unknown>"
+    return code[:_ERROR_CODE_MAX_LEN]
+
+
 def _process_direction(
     session: requests.Session,
     direction: _Direction,
@@ -846,6 +908,26 @@ def _process_direction(
             sanitize_log_arg(str(exc)),
         )
         return None, "quota_exceeded"
+    except requests.HTTPError as exc:
+        # Diagnostic-rich branch for non-2xx responses. Logs the HTTP
+        # status code and the VAO-supplied ``errorCode`` from the JSON
+        # body when the response is parseable. Both fields are safe to
+        # surface (no URL — therefore no ``accessId`` — and no free-form
+        # text that could echo upstream-controlled secrets). The
+        # ``errorText``/``errorMsg`` fields are deliberately NOT logged
+        # because some HAFAS peers echo the supplied ``accessId`` back
+        # into the human-readable message; the canonical ``errorCode``
+        # plus status code is sufficient to triage every documented
+        # VAO failure shape.
+        status_code = _extract_http_status(exc)
+        error_code = _extract_vao_error_code(exc)
+        LOGGER.warning(
+            "Stammstrecke: Abfrage Richtung %s fehlgeschlagen: HTTP %s (errorCode=%s).",
+            direction.target_label,
+            status_code,
+            sanitize_log_arg(error_code),
+        )
+        return None, "error"
     except Exception as exc:
         # Security: never log the full exception via ``%s`` / ``exc_info``
         # — ``VorAuth`` injected the ``accessId`` into the prepared
