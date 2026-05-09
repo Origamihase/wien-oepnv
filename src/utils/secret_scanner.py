@@ -279,6 +279,74 @@ _KNOWN_TOKENS = [
         ),
         "Discord Bot Token gefunden",
     ),
+    # Atlassian Cloud API Token (``ATATT3xFfGF0<base64 body><CRC32 hex>``).
+    # Issued via id.atlassian.com/manage-profile/security/api-tokens for
+    # Jira / Confluence / Trello Cloud REST-API access. The canonical
+    # format is a 12-char unique prefix (``ATATT3xFfGF0``) followed by
+    # ~184 base64url-alphabet body chars and an 8-char CRC32 hex suffix
+    # — total ~204 chars in observed real tokens. The body alphabet is
+    # ``[A-Za-z0-9_=\-]`` (base64url + ``=`` padding); the prefix is
+    # unambiguous (no other major issuer uses ``ATATT3xFfGF0``) so a
+    # 100+ body length (well below the canonical ~192 chars) provides a
+    # safe lower bound that rejects accidental ``ATATT3``-prefixed
+    # fragments while accepting every legitimate token. A leak grants
+    # the issuing user's full Cloud-API scope across every accessible
+    # workspace (read every Jira issue/page, post comments, transition
+    # tickets, browse Confluence pages, manipulate Trello boards) — the
+    # revocation flow lives at id.atlassian.com and is distinct from
+    # any other vendor's, so issuer-specific attribution accelerates
+    # IR triage. Pre-fix the body matched the entropy fallback as a
+    # generic high-entropy span; the prefix and the CRC32 suffix were
+    # silently lost.
+    (
+        re.compile(r"(?<![A-Za-z0-9])ATATT3xFfGF0[A-Za-z0-9_=\-]{100,}(?![A-Za-z0-9])"),
+        "Atlassian API Token gefunden",
+    ),
+    # Sentry Auth Token (``sntrys_<base64-with-embedded-JSON>``).
+    # Sentry's modern rotation-aware auth-token format (introduced
+    # 2023; replaces the legacy 32/64-hex internal tokens). The body
+    # encodes an embedded JSON payload describing the organisation /
+    # scope plus a trailing checksum guarding against typo-induced
+    # cross-token confusion. Body alphabet is ``[A-Za-z0-9_=\-]``
+    # (base64url + ``=`` padding + the underscore separator between
+    # body and checksum). Total length 60-100+ chars in practice; the
+    # 30+ body lower bound rejects short ``sntrys_``-prefixed
+    # fragments while accepting every legitimate token. A leak grants
+    # access to the Sentry org-level API
+    # (``/api/0/organizations/<slug>/...``) — every project's issue /
+    # event data, releases, debug files, source maps, member list and
+    # webhook configuration — full IR-relevant blast radius. The
+    # revocation flow lives at sentry.io/settings/auth-tokens/ and is
+    # distinct from any other vendor's. Pre-fix the body matched the
+    # entropy fallback as a generic high-entropy span; the
+    # ``sntrys_`` prefix that anchors revocation was silently lost.
+    (
+        re.compile(r"(?<![A-Za-z0-9])sntrys_[A-Za-z0-9_=\-]{30,}(?![A-Za-z0-9])"),
+        "Sentry Auth Token gefunden",
+    ),
+    # Linear API Key (``lin_api_<32+ alphanumeric chars>``). Issued via
+    # linear.app/settings/api for personal API access against the
+    # Linear (issue tracker / project management) GraphQL API. A leak
+    # grants the issuing user's full Linear scope: read/write every
+    # visible issue, comment, attachment, project, team metadata and
+    # webhook configuration. The ``lin_api_`` prefix is unambiguous
+    # (no other major issuer uses it), and the strict alphanumeric
+    # body (no ``_``/``-`` after the prefix in canonical Linear
+    # format) avoids overlap with the hyphenated bodies of other
+    # tokens (``glpat-``, ``ghp_`` family). Body lower bound 32 chars
+    # rejects short ``lin_api_`` fragments while accepting the
+    # canonical 40-char-body shape; the 32-char floor matches the
+    # historic minimum observed in older Linear tokens. The
+    # revocation flow lives at linear.app/settings/api and is distinct
+    # from any other vendor's, so issuer-specific attribution
+    # accelerates IR triage. Pre-fix the entropy fallback flagged the
+    # ``lin_api_<body>`` span generically (the underscore is in the
+    # alphabet) without preserving the Linear-specific issuer name
+    # that incident response keys off.
+    (
+        re.compile(r"(?<![A-Za-z0-9])lin_api_[A-Za-z0-9]{32,}(?![A-Za-z0-9])"),
+        "Linear API Key gefunden",
+    ),
 ]
 
 

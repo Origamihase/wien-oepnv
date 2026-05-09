@@ -1,3 +1,74 @@
+## 2026-05-09 - Secret Scanner Drift Round 5: Atlassian / Sentry / Linear Issuer Attribution Gap
+**Vulnerability:** `_KNOWN_TOKENS` in `src/utils/secret_scanner.py`
+covered fourteen issuer prefixes after the 2026-05-08 Round 4 round
+(JWT + Discord), but a fresh audit against the modern Python-project
+issuer landscape surfaced three high-impact prefixes whose canonical
+tokens were silently flagged by the `_HIGH_ENTROPY_RE` fallback as a
+generic `Hochentropischer Token-String` (or by `_SENSITIVE_ASSIGN_RE`
+as a generic `Verdächtige Zuweisung`) — losing the specific issuer
+attribution that incident-response triage keys off:
+
+  1. **Atlassian Cloud API Tokens** (`ATATT3xFfGF0<base64 body><CRC32>`)
+     — Jira / Confluence / Trello Cloud REST-API access tokens issued
+     via id.atlassian.com. ~204-char canonical shape (12-char unique
+     prefix + ~184-char base64url body + 8-char CRC32 hex suffix). A
+     leak grants the issuing user's full Cloud-API scope across every
+     accessible workspace.
+  2. **Sentry Auth Tokens** (`sntrys_<base64-with-embedded-JSON>`) —
+     Sentry's modern rotation-aware auth-token format (since 2023).
+     The body encodes embedded JSON metadata (organisation / scope) +
+     a trailing checksum. Used for the org-level API
+     (`/api/0/organizations/<slug>/...`); a leak grants access to
+     every project's issue/event data, releases, debug files, source
+     maps, member list, and webhook configuration.
+  3. **Linear API Keys** (`lin_api_<32+ alphanumeric>`) — Linear
+     (issue tracker / project management) personal API keys issued
+     via linear.app/settings/api. A leak grants the user's full
+     project-management API scope (read/write all visible issues,
+     comments, attachments, projects, team metadata, webhooks).
+
+Each issuer's revocation flow lives at a distinct vendor URL
+(id.atlassian.com / sentry.io / linear.app) so generic-only
+attribution slows IR (operator chases the wrong rotation playbook).
+The PoC in `tests/test_sentinel_secret_scanner_drift_round5.py` plants
+each token into a synthetic file under `KEY = "..."` shape and
+asserts the issuer-specific reason (`Atlassian API Token gefunden` /
+`Sentry Auth Token gefunden` / `Linear API Key gefunden`) appears in
+the scan findings; pre-fix every test failed because either the
+generic entropy / assignment fallback was the only finding, OR the
+prefix interrupted the entropy-alphabet match (the `_` separator
+between `lin_api_` and the alphanumeric body keeps the entropy regex
+running, but the issuer attribution is lost).
+
+**Learning:** The 2026-05-08 Round-4 prevention rule still holds —
+treat `_KNOWN_TOKENS` as an **issuer-keyed table**, not a list. Each
+audit round walks the modern Python-project issuer landscape (config
+files, infra-as-code, observability stacks, project-management
+integrations) and adds every variant whose canonical prefix is
+unambiguous and whose body matches the entropy fallback's alphabet
+(so the body alone would only ever flag generically). Three classes
+of issuers fit that signature post-Round-4:
+  * Cloud SaaS API tokens with byte-exact prefixes
+    (Atlassian `ATATT3xFfGF0`, Sentry `sntrys_`, Linear `lin_api_`).
+  * Multi-segment dot-separated tokens whose dots break the entropy
+    alphabet (Round-4 closed JWT + Discord; nothing remaining in
+    this class as of Round 5).
+  * Strict-format tokens whose body alphabet excludes
+    `[A-Za-z0-9+/=_-]` characters (none observed in the modern
+    landscape that the entropy fallback would miss completely).
+
+**Prevention:** When adding a new entry to `_KNOWN_TOKENS`, the
+checklist is unchanged from Round 4 — pin the issuer-specific reason
+in `tests/test_sentinel_secret_scanner_drift_round5.py` (or a
+sibling Round-N test file) AND in
+`tests/test_sentinel_secret_scanner_drift_round5.py:test_known_tokens_round5_taxonomy`
+so a future PR that drops the pattern fails at PR-review time. The
+ordering rule still applies: place new entries AFTER more specific
+issuer-prefixed tokens so `is_covered` correctly anchors on the most
+specific issuer first (e.g. `sntrys_eyJ...` would also match the JWT
+detector if Sentry came first; the Sentry pattern is more specific
+because the `sntrys_` prefix is unambiguous).
+
 ## 2026-05-09 - Markdown Injection Drift Round 3: Eight Bullet-Body Sinks at the `ValidationReport.to_markdown()` Boundary — Stations-Directory Sister of the Feed-Health / Stats-Dashboard Renderer Drifts
 **Vulnerability:** The 2026-05-09 Markdown-injection rounds closed the
 renderer boundary in `scripts/generate_markdown_stats.py` (stats
