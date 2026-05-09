@@ -23,7 +23,7 @@ from ..utils.env import get_bool_env, read_secret
 from ..utils.files import atomic_write
 from ..utils.http import request_safe, session_with_retries, validate_http_url
 from ..utils.logging import sanitize_log_arg, sanitize_log_message
-from ..utils.text import escape_markdown, escape_markdown_cell
+from ..utils.text import escape_markdown, escape_markdown_cell, safe_markdown_codespan
 
 log = logging.getLogger("build_feed")
 
@@ -528,7 +528,19 @@ def render_feed_health_markdown(
     lines.append(f"- **Start:** {_format_timestamp(report.started_at)}")
     lines.append(f"- **Ende:** {_format_timestamp(report.finished_at)}")
     if report.feed_path:
-        lines.append(f"- **RSS-Datei:** `{report.feed_path}`")
+        # Security (Markdown injection at inline-code-span boundary): the
+        # ``feed_path`` string is the POSIX form of ``OUT_PATH`` resolved by
+        # ``src.feed.config.resolve_env_path`` — env-controlled (leaked CI
+        # env, compromised secret store, intentional misconfig). A literal
+        # backtick inside the value closes the inline code span and lets
+        # attacker-controlled Markdown / HTML render in the public
+        # ``docs/feed_health.md`` artefact. ``safe_markdown_codespan``
+        # replaces backticks with apostrophes and strips C0/C1 controls +
+        # Trojan-Source BiDi marks + line / paragraph separators that
+        # would otherwise split the bullet item or smuggle a fake header.
+        lines.append(
+            f"- **RSS-Datei:** `{safe_markdown_codespan(report.feed_path)}`"
+        )
     lines.append("")
 
     lines.append("## Pipeline-Kennzahlen")
@@ -1009,7 +1021,16 @@ class _GithubIssueReporter:
         lines.append(f"- **Start:** {started}")
         lines.append(f"- **Ende:** {finished}")
         if report.feed_path:
-            lines.append(f"- **Feed-Datei:** `{report.feed_path}`")
+            # Security (Markdown injection at inline-code-span boundary):
+            # see ``render_feed_health_markdown`` for the threat model. The
+            # GitHub Issue body is rendered as Markdown by the GitHub web UI
+            # and is visible to every repo watcher, so an env-controlled
+            # backtick lands a usable HTML tag (``<img onerror>`` / ``[link]
+            # (...)``) in a public artefact. ``safe_markdown_codespan``
+            # neutralises every backtick / control byte / BiDi mark.
+            lines.append(
+                f"- **Feed-Datei:** `{safe_markdown_codespan(report.feed_path)}`"
+            )
         if report.raw_item_count is not None:
             lines.append(f"- **Items (roh):** {report.raw_item_count}")
         if report.final_item_count is not None:
@@ -1055,12 +1076,32 @@ class _GithubIssueReporter:
             lines.append("## Diagnosedaten")
             lines.append("")
             lines.append("```text")
-            lines.append(diagnostics)
+            # Security (fenced-code-block break-out): ``diagnostics`` carries
+            # ``feed_path`` (env-controlled via ``OUT_PATH``) verbatim. A
+            # ``\n```\n`` payload in the path would close the open fence
+            # mid-block and let arbitrary Markdown render after the break
+            # in the public GitHub Issue body. ``safe_markdown_codespan``
+            # collapses every whitespace run (including embedded newlines)
+            # to a single space so no triple-backtick can land on its own
+            # line, and replaces backticks with apostrophes as a second
+            # layer of defence. The 50 000-char cap is well above any
+            # realistic diagnostics size and well below ``_MAX_GITHUB_BODY_
+            # LENGTH = 60 000`` which a downstream call to
+            # ``_bounded_github_body`` enforces on the rendered body.
+            lines.append(safe_markdown_codespan(diagnostics, max_len=50_000))
             lines.append("```")
             lines.append("")
 
+        # Security (Markdown injection at inline-code-span boundary):
+        # ``error_log_path`` is ``Path(LOG_DIR) / "errors.log"``;
+        # ``LOG_DIR`` is env-controlled via ``src.feed.config.resolve_env_
+        # path``. A literal backtick in ``LOG_DIR`` closes the inline code
+        # span and lets attacker-controlled Markdown render in the public
+        # GitHub Issue body. ``safe_markdown_codespan`` neutralises every
+        # backtick / control byte / BiDi mark.
         lines.append(
-            f"Weitere Details finden sich in der Logdatei `{error_log_path}`."
+            "Weitere Details finden sich in der Logdatei "
+            f"`{safe_markdown_codespan(str(error_log_path))}`."
         )
 
         return "\n".join(lines).strip() + "\n"

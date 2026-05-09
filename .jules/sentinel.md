@@ -1,3 +1,225 @@
+## 2026-05-09 - Markdown Injection Drift Round 2: Inline-Code-Span and Fenced-Code-Block Break-Out at the Feed-Health / GitHub-Issue Renderer (`feed_path`, `error_log_path`, Diagnostics) — Env-Override Path-Boundary Sibling
+**Vulnerability:** The 2026-05-09 stats-dashboard Markdown-injection
+round (entry below) closed the renderer boundary in
+`scripts/generate_markdown_stats.py` but its threat-model paragraph
+on "Markdown rendering is the LAST sink in any text-data pipeline
+that ends in a human-readable artefact (dashboard, **issue body**,
+README); always treat it as a *defence boundary* even when an
+upstream sanitiser exists" implicitly opened a sibling drift round:
+the *next* Markdown-emitting modules in the project — `render_feed_
+health_markdown` and `_GithubIssueReporter._build_body` in
+`src/feed/reporting.py` — interpolate two operator-controlled file
+paths *verbatim* inside ``\`…\``` inline code spans plus a
+``\`\`\`text … \`\`\``` fenced code block.
+
+Pre-fix sinks (five orthogonal break-out axes across two renderers
+and one issue-body builder):
+
+  ```python
+  # src/feed/reporting.py:render_feed_health_markdown (line 531):
+  lines.append(f"- **RSS-Datei:** `{report.feed_path}`")
+  # src/feed/reporting.py:_GithubIssueReporter._build_body (line 1012):
+  lines.append(f"- **Feed-Datei:** `{report.feed_path}`")
+  # src/feed/reporting.py:_GithubIssueReporter._build_body (line 1063):
+  lines.append(f"Weitere Details finden sich in der Logdatei "
+               f"`{error_log_path}`.")
+  # src/feed/reporting.py:_GithubIssueReporter._build_body (line 1057-1059):
+  lines.append("```text")
+  lines.append(diagnostics)         # ← contains f"Feed={feed_path}"
+  lines.append("```")
+  ```
+
+Three orthogonal Markdown-injection axes opened up at these sinks:
+
+  (a) **Backtick-in-inline-code-span** — CommonMark inline code spans
+      render their interior verbatim and *backslashes are not
+      escapes inside them* — the only character that closes the
+      span is a literal backtick. ``feed_path = "docs/feed`<img src=x
+      onerror=alert(1)>`.xml"`` closes the inline span at line 531 /
+      1012 and lets ``<img src=x onerror=alert(1)>`` render as a
+      live HTML tag in (i) the public ``docs/feed_health.md``
+      artefact (auto-committed by the workflow, rendered by GitHub
+      on the public repo browser, by every operator's IDE / Markdown
+      viewer, by any static-site builder downstream) and (ii) the
+      auto-submitted GitHub Issue body (visible to every repo
+      watcher; the issue is opened on every failed feed run, so
+      every reader of the project's notifications channel sees it).
+      Same primitive at line 1063 with ``error_log_path``.
+  (b) **Newline-injection in inline code span** — embedded ``\n`` /
+      ``\r`` / U+2028 LINE SEP / U+2029 PARA SEP in ``feed_path``
+      split the bullet-list item across multiple lines. A path
+      ``"docs/foo\n## INJECTED HEADER\n.xml"`` rendered the second
+      line as a real Markdown ATX H2 header in the public Feed-
+      Health report — turning operator-supplied path bytes into an
+      arbitrary new section in the dashboard.
+  (c) **Triple-backtick fence-break inside the diagnostics fenced
+      code block** — the ``\`\`\`text … \`\`\``` block at line 1057-
+      1059 wraps `diagnostics_message()` which contains
+      ``f"Feed={self.feed_path}"`` without sanitation. A payload
+      ``feed_path = "docs/feed.xml\n\`\`\`\n# INJECTED H1\n\`\`\`"``
+      lands a ``\`\`\``` on its own line *inside* the fence; CommonMark
+      closes the fence there and the H1 header escapes the block
+      into the public GitHub Issue body. Multi-line + triple-
+      backtick is the canonical CommonMark fence-break primitive.
+
+The threat surface at every sink is operator-controlled:
+
+  1. **`OUT_PATH` env override → `report.feed_path`** —
+     ``out_path = validate_path(Path(feed_config.OUT_PATH), "OUT_PATH")``
+     in `src/build_feed.py:2380` resolves the env-driven path; the
+     resolver only checks the *first path component* against
+     ``ALLOWED_ROOTS = {"docs", "data", "log"}`` (line 36 of
+     `src/feed/config.py`). Backticks, newlines, BiDi marks, and
+     line/paragraph separators in the *rest* of the path survive
+     the validator unchanged. ``OUT_PATH=docs/feed\`xss\`.xml``
+     passes ``validate_path`` and lands in ``RunReport.finish(...)``
+     verbatim via ``out_path.as_posix()``.
+  2. **`LOG_DIR` env override → `error_log_path`** —
+     ``LOG_DIR_PATH = resolve_env_path("LOG_DIR", Path("log"),
+     allow_fallback=True)`` (line 326 of `src/feed/config.py`)
+     applies the same first-component validator; a poisoned
+     ``LOG_DIR=log\`xss\`/sub`` lands in ``error_log_path`` after
+     ``error_log_path = Path(LOG_DIR) / "errors.log"``.
+  3. **Cross-cutting** — every prior round's threat-model surface
+     for env overrides (leaked CI env, compromised secret store,
+     intentional misconfig, partial flush + power loss on `.env`
+     write) carries here. The defence-in-depth contract collapses
+     the cartesian product of (env source × path-validator
+     bypass × backtick / newline / BiDi axis × renderer sink) into
+     a single sanitiser at the last gate before rendering.
+
+The Feed-Health report and the auto-submitted GitHub Issue are the
+project's two highest-visibility human-facing renderers: the
+report is committed back to `docs/` (a public artefact mirrored on
+the GitHub Pages site), and the issue is opened on every failed
+feed run (visible to every repo watcher). Each renderer was missing
+the canonical ``escape_markdown`` / ``safe_markdown_codespan``
+defence the prior round pinned for the stats dashboard.
+
+**Fix:** Five context-specific applications of the canonical
+``safe_markdown_codespan`` helper from
+``src/utils/text.py:412-425`` (the same helper introduced by the
+2026-05-09 Markdown-injection round, which composes
+``normalise_markdown_text`` — strips C0/C1 controls + Trojan-Source
+/ line-terminator union + ZWSP family + BiDi marks, collapses
+whitespace to a single space — and replaces every literal backtick
+with the project-wide apostrophe convention pinned by
+``_sanitize_code_span``):
+
+  ```python
+  # render_feed_health_markdown (line 531):
+  lines.append(
+      f"- **RSS-Datei:** `{safe_markdown_codespan(report.feed_path)}`"
+  )
+
+  # _build_body (line 1012):
+  lines.append(
+      f"- **Feed-Datei:** `{safe_markdown_codespan(report.feed_path)}`"
+  )
+
+  # _build_body fenced code block (line 1057-1059):
+  lines.append("```text")
+  # 50 000-char cap is well above any realistic diagnostics size and
+  # well below _MAX_GITHUB_BODY_LENGTH = 60 000 which the downstream
+  # _bounded_github_body call enforces on the rendered body.
+  lines.append(safe_markdown_codespan(diagnostics, max_len=50_000))
+  lines.append("```")
+
+  # _build_body (line 1063):
+  lines.append(
+      "Weitere Details finden sich in der Logdatei "
+      f"`{safe_markdown_codespan(str(error_log_path))}`."
+  )
+  ```
+
+The helper is applied per-sink (matching the project's existing
+``escape_markdown_cell`` / ``escape_markdown`` / ``_sanitize_code_
+span`` per-sink convention) so a future code path that bypasses
+``RunReport.finish`` (debug fixture, alternate logger handler,
+unit-test stub) inherits the defence at the renderer boundary
+rather than at the boundary that captured the path.
+
+For the fenced code block, the cap is raised from the helper's
+default ``max_len=200`` to ``max_len=50_000`` — well above the
+realistic diagnostics size (each warning capped at 2000 chars,
+100 warnings max) and well below
+``_MAX_REPORT_MESSAGE_LENGTH * _MAX_REPORT_MESSAGE_COUNT`` worst-
+case. The downstream ``_bounded_github_body`` (60 000-char cap with
+line-boundary truncation) already enforces the GitHub Issue API
+limit, so the fenced-code-block sanitiser is layered between the
+diagnostics aggregator and the body cap.
+
+**Tests:** Seven end-to-end PoC tests in
+``tests/test_sentinel_reporting_codespan_injection.py`` exercise
+each sink with a layout-breaking payload:
+  * `test_feed_health_markdown_feed_path_backtick_breaks_inline_code_span`
+    — backtick + ``<script>`` payload in ``feed_path`` → must stay
+    inside one inline code span (exactly two backticks on the
+    bullet line, post-fix).
+  * `test_feed_health_markdown_feed_path_newline_breaks_layout` —
+    newline + ATX H2 payload → must not surface as a real H2.
+  * `test_feed_health_markdown_feed_path_bidi_marks_stripped` —
+    LRO + ZWSP + BOM → must be stripped.
+  * `test_github_issue_body_feed_path_backtick_breaks_inline_code_span`
+    — same backtick primitive at the GitHub Issue sink.
+  * `test_github_issue_body_error_log_path_backtick_breaks_inline_code_span`
+    — same backtick primitive at the ``error_log_path`` sink (uses
+    `monkeypatch.setattr` on the imported reference because
+    ``LOG_DIR`` is captured at module load time).
+  * `test_github_issue_body_feed_path_fence_break_via_newline` —
+    ``\n\`\`\`\n`` payload in ``feed_path`` → fenced code block
+    keeps exactly two ``\`\`\``` fences, no escaped H1.
+  * `test_inline_code_span_sinks_inventory_pinned` — inventory
+    invariant: a future refactor that introduces a fourth ``\`…\```
+    inline code span sourced from an env-controlled string without
+    going through ``safe_markdown_codespan`` re-opens this
+    Markdown-injection vector and trips the inventory test.
+
+All seven were verified to FAIL on the pre-fix code before the fix
+was applied, and to PASS on the post-fix code. The `responses`-
+mocked GitHub Issue submission pattern mirrors the existing
+``test_reporting_github.py`` fixture (monkeypatched SSRF guard +
+single registered POST URL + body capture from `responses.calls[0]`).
+
+**Learning:** Two reinforcing lessons:
+
+  (a) **Inline code spans and fenced code blocks are *separate*
+      defence boundaries from "raw HTML / Markdown links / table
+      cells" — and they require separate defences.** The 2026-05-09
+      stats-dashboard round pinned ``escape_markdown`` /
+      ``escape_markdown_cell`` for the bold-header / table-cell
+      sinks; this round pins ``safe_markdown_codespan`` for the
+      inline-code-span / fenced-code-block sinks. CommonMark's
+      "backslash escapes are not active inside code spans / code
+      blocks" rule means the canonical ``escape_markdown``
+      sanitiser does *nothing* useful inside backticks — a
+      sanitised value still surfaces its embedded backtick and
+      closes the span. The helper-pair canonicalised in
+      ``src/utils/text.py`` (``escape_markdown`` /
+      ``escape_markdown_cell`` / ``safe_markdown_codespan`` /
+      ``normalise_markdown_text``) maps 1-to-1 onto the four
+      Markdown sink contexts (raw text, table cell, inline code,
+      fenced code). Audit every f-string interpolation against the
+      sink's specific defence — the wrong sanitiser is as bad as
+      no sanitiser.
+
+  (b) **The path-validator-only-checks-first-component pattern is
+      a recurring drift surface.** ``validate_path``
+      (`src/feed/config.py:208-224`) checks
+      ``rel.parts[0] in ALLOWED_ROOTS`` — every byte AFTER the
+      first component is unconstrained. This is the right shape
+      for filesystem-traversal defence (it pins the path inside
+      the repo) but the *wrong* shape for Markdown / log /
+      shell-quoting defence at downstream consumers. Every public
+      string that flows out of an env-controlled path consumer —
+      ``OUT_PATH``, ``LOG_DIR``, ``FEED_HEALTH_PATH``,
+      ``FEED_HEALTH_JSON_PATH``, ``STATE_FILE``, future env-driven
+      paths — must be sanitised at every sink that interprets the
+      value as anything other than a filesystem path. The
+      inventory test pins the audited sinks programmatically;
+      future drift trips on the test instead of waiting for the
+      next Sentinel pass.
+
 ## 2026-05-09 - Markdown Injection Sibling Drift (CWE-79 / CWE-1236-adjacent) at the Stats-Dashboard Renderer Boundary: `direction`, `provider`, `location_name` Interpolated Verbatim Into `docs/statistik.md`
 **Vulnerability:** The 2026-05-09 CSV-formula-injection round closed
 the *write* side of `data/stats/*.csv` but explicitly flagged a
