@@ -54,7 +54,7 @@ from .utils.cache import (
     read_cache as _core_read_cache,
     register_cache_alert_hook,
 )
-from .utils.files import atomic_write
+from .utils.files import atomic_write, read_capped_json
 from .utils.http import validate_http_url
 from .utils.locking import file_lock
 from .utils.logging import sanitize_log_arg
@@ -197,11 +197,42 @@ def read_cache_baustellen() -> list[Any]:
     return list(read_cache("baustellen") or [])
 
 
+# Path of the Stammstrecke cache file maintained by
+# ``scripts/update_stammstrecke_status.py``. The Stammstrecke monitor
+# does NOT use the standard ``cache/<sanitized-provider>/events.json``
+# layout (with the SHA256 fragment) because the cache is written with a
+# fixed, schema-compliant single-event payload that operators inspect
+# by hand more often than the auto-generated provider caches.
+_STAMMSTRECKE_CACHE_PATH = Path("cache") / "stammstrecke" / "events.json"
+
+
+def read_cache_stammstrecke() -> list[Any]:
+    """Read ``cache/stammstrecke/events.json`` with the canonical size cap.
+
+    The S-Bahn Stammstrecke monitor writes either an empty list (no
+    notable median delay) or a single event dict (median > 9 minutes).
+    A missing or invalid cache file is treated as "no events" so the
+    feed build never fails because the monitor has not run yet.
+    """
+
+    if not _STAMMSTRECKE_CACHE_PATH.exists():
+        return []
+    payload = read_capped_json(
+        _STAMMSTRECKE_CACHE_PATH,
+        label="Stammstrecke",
+        logger=log,
+    )
+    if not isinstance(payload, list):
+        return []
+    return list(payload)
+
+
 DEFAULT_PROVIDERS: tuple[tuple[str, Any], ...] = (
     ("WL_ENABLE", read_cache_wl),
     ("OEBB_ENABLE", read_cache_oebb),
     ("VOR_ENABLE", read_cache_vor),
     ("BAUSTELLEN_ENABLE", read_cache_baustellen),
+    ("STAMMSTRECKE_ENABLE", read_cache_stammstrecke),
 )
 
 PROVIDERS: list[tuple[str, Any]] = list(DEFAULT_PROVIDERS)
