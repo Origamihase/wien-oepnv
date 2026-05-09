@@ -1,3 +1,240 @@
+## 2026-05-09 - JSON Size-Bomb Drift Round 8: Stammstrecke Cron Monitor Reads Its Own Cache With Bare `_json_lib.load(fh)` (Aliased-Import Bypass Of The Audit Walker)
+**Vulnerability:** PR #1365 (`0520e0d`, *feat: add S-Bahn Stammstrecke
+median-delay monitor*) plus the four follow-up PRs that iterated on the
+feature — #1366 (split-by-direction + 10/h breaker), #1367 (HTTP timeout +
+station-name resolution), #1368 (`first_seen` persistence + self-healing
+cache), #1369 (`max_journeys=5` tune-up) — wired the new
+`scripts/update_stammstrecke_status.py:_read_existing_first_seen`
+helper to read its own previous-tick cache via a bare
+`with OUTPUT_PATH.open("r", ...) as fh: data = _json_lib.load(fh)`
+shape (line 426 pre-fix). Three orthogonal defences were missing
+relative to the canonical `read_capped_json` contract pinned by JSON
+Size-Bomb Round 1-7:
+1. **No size cap** — the canonical 50 MiB
+   `DEFAULT_MAX_JSON_FILE_BYTES` defence-in-depth was unreachable
+   because the call site never routed through `read_capped_json` at
+   all. A planted-huge `cache/stammstrecke/events.json` (compromised
+   CI runner / partial flush + power loss / corrupted previous run /
+   parallel orchestrator process performing an atomic state swap
+   mid-read) buffered into memory via bare `_json_lib.load(fh)`
+   allocates O(file_size) bytes plus a multiplier of object overhead,
+   exhausts the runner's cgroup memory limit, and propagates
+   `MemoryError` (a `BaseException` subclass NOT caught by
+   `except (OSError, _json_lib.JSONDecodeError, UnicodeDecodeError)`)
+   past the loader to crash the cron pipeline. **Worse, a crash before
+   `_write_cache` skips the unconditional self-heal write**, so the
+   corruption persists indefinitely — every subsequent cron tick
+   re-tries and re-crashes, permanently disabling the monitor with no
+   self-recovery path. The only manual recovery is operator
+   intervention to truncate the cache file.
+2. **No TOCTOU defence** — between `OUTPUT_PATH.exists()` and
+   `OUTPUT_PATH.open("r", ...)` an attacker who can `os.replace` the
+   inode (the same TOCTOU primitive documented in the
+   `read_capped_json` docstring at `src/utils/files.py:224-233`)
+   bypasses the `.exists()` check by swapping a small placeholder for
+   a huge planted target between the two syscalls.
+3. **No `RecursionError` catch** — a 5000-deep nested-array document
+   is a few KB on the wire / disk but propagates `RecursionError`
+   (a `RuntimeError → Exception` subclass — NOT a
+   `JSONDecodeError` and NOT an `OSError`) past every
+   `except (OSError, JSONDecodeError, UnicodeDecodeError)` handler.
+   The same drift family that JSON Depth-Bomb Round 1-5 closed across
+   33 sites by walking every `json.loads` / `json.load` /
+   `response.json()` site for `RecursionError`-tolerant exception
+   coverage.
+
+**Walker-drift compounding:** The
+`tests/test_sentinel_json_audit_walker.py:test_every_json_parser_site_catches_recursion_error`
+walker — added in Round 5 specifically to catch this class of drift —
+*missed the call site entirely*. The walker's `_is_json_parser_call`
+predicate matched `<X>.load(...)` only when
+`func.value.id == "json"`, but the script used
+`import json as _json_lib; _json_lib.load(fh)`. Local name
+`_json_lib` did not match the literal `"json"` string, so the walker
+silently skipped the bare-load shape on every run since PR #1365
+shipped. The walker's defence floor was scoped narrower than its
+coverage claim: it only enforced the canonical-name parser shape, not
+the canonical-module shape.
+
+**Per-preserved-field gap:** Even with the file-level cap, individual
+field strings (`_identity`, `first_seen`) inside a sub-cap-but-large-
+field cache document were accepted into the returned map without any
+length / control-character / ISO-shape validation. The pre-fix path
+was a bare `isinstance(value, str)` gate. A 100 KiB `first_seen`
+string under the file cap was accepted, propagated to
+`_resolve_first_seen`, and logged via `sanitize_log_arg(prev_iso)` —
+amplifying log-line size without bound. Mirrors the per-field gap
+documented in the (rolled-back) GTFS-RT entry — which had the same
+write-side preservation contract and the same per-field shape
+ambiguity that the per-channel sanitiser couldn't compensate for.
+
+**Exploit shape:** A threat actor with one-time write access to
+`cache/stammstrecke/events.json` (any of: compromised CI runner;
+partial flush + power loss mid-`atomic_write`; corrupted previous
+run; parallel orchestrator process performing an atomic state swap;
+git history rewrite that lands a poisoned cache via PR) plants:
+  (a) a multi-MiB JSON document — pre-fix `MemoryError` crashes the
+      next cron tick, skips `_write_cache([])`, persists indefinitely;
+  (b) a sub-cap document with a 100 KiB `first_seen` string — pre-fix
+      flows into `_resolve_first_seen`, logs a sanitised but
+      unbounded warning line on every cron tick;
+  (c) a 5000-deep nested-array document — pre-fix `RecursionError`
+      escapes the catch tuple, identical crash shape to (a);
+  (d) a sub-cap document with `\x00`/`\x07`/`\x1f` bytes in
+      `first_seen` or `_identity` — pre-fix accepted, propagated into
+      the build_feed pipeline (the canonical reader at
+      `src/build_feed.py:read_cache_stammstrecke` and
+      `src/feed/providers.py:read_cache_stammstrecke` both forward
+      the entire payload to `deduplicate_fuzzy` / feed item
+      construction without a per-channel `_sanitize_text` filter on
+      the `_identity` axis).
+
+**Fix:** Five reinforcing changes, packaged into a single PR:
+  (i) **Per-loader byte cap** — new `MAX_STAMMSTRECKE_CACHE_BYTES =
+      256 * 1024` constant in `src/feed/providers.py` (sized at ~128x
+      the largest legitimate state shape ~2 KiB; ~50,000x tighter
+      than the canonical 50 MiB default). Mirrors the per-loader cap
+      pattern from JSON Size-Bomb Round 1-7
+      (`MAX_CACHE_FILE_BYTES`, `MAX_QUOTA_FILE_BYTES`,
+      `MAX_TILE_FILE_BYTES`, etc.).
+  (ii) **Tightened canonical readers** — both
+       `src/build_feed.py:read_cache_stammstrecke` and
+       `src/feed/providers.py:read_cache_stammstrecke` now pass
+       `max_bytes=MAX_STAMMSTRECKE_CACHE_BYTES` explicitly to
+       `read_capped_json`. The structural pin
+       (`test_providers_reader_passes_explicit_max_bytes`) patches
+       `read_capped_json` and asserts the call kwargs — a future
+       refactor that removes the explicit keyword fails the test
+       before the change can land.
+  (iii) **Replaced bare `_json_lib.load(fh)` with `read_capped_json`**
+        — the script's `_read_existing_first_seen` now routes through
+        `read_capped_json(OUTPUT_PATH, max_bytes=
+        MAX_STAMMSTRECKE_CACHE_BYTES, label="Stammstrecke",
+        logger=LOGGER)`. The replacement closes the size-cap, TOCTOU,
+        `RecursionError`, and `UnicodeDecodeError` gaps in one cut.
+  (iv) **Per-preserved-field shape validators** — new
+       `_is_valid_preserved_first_seen(value: object) -> TypeGuard[str]`
+       and `_is_valid_preserved_identity(value: object) -> TypeGuard[str]`
+       module-level helpers in
+       `scripts/update_stammstrecke_status.py`. Each validates
+       (a) `isinstance(value, str)` (TypeGuard narrows for mypy
+       strict), (b) non-empty after strip, (c) length ≤ per-field cap
+       (`_MAX_PRESERVED_FIRST_SEEN_LENGTH = 64`,
+       `_MAX_PRESERVED_IDENTITY_LENGTH = 256`), (d) no XML 1.0
+       control characters via `_PRESERVED_CONTROL_CHAR_RE`, and (for
+       `first_seen` only) (e) parseable via
+       `datetime.fromisoformat`. The reader now skips items that
+       fail either validator; pre-fix items with a 100 KiB
+       `first_seen` were accepted into the returned map.
+  (v) **Audit-walker alias resolution** — the canonical
+      walker at
+      `tests/test_sentinel_json_audit_walker.py:_is_json_parser_call`
+      now consumes a `json_aliases: set[str]` parameter populated by
+      a new `_collect_json_module_aliases(tree)` helper that walks
+      every `import json as <alias>` binding in the module under
+      audit. The walker now flags
+      `<alias>.load(...)` / `<alias>.loads(...)` for any
+      alias, not just the literal `"json"` name. Closes the
+      walker-drift axis that let this round's vulnerability slip
+      through every CI run since PR #1365.
+
+**Test surface:** **+15 new pytest cases** across three touched
+modules:
+  * `tests/scripts/test_update_stammstrecke_status.py` — +12 cases
+    (5 PoCs against the vulnerable shapes plus 7 contract pins for
+    the per-field validators and the imported constant).
+  * `tests/test_sentinel_stammstrecke_cache_cap.py` (new) — +4 cases
+    pinning the canonical reader contract: cap value, oversized-file
+    rejection, legitimate-file round-trip, and the structural
+    `read_capped_json(max_bytes=...)` keyword pin.
+  * `tests/test_sentinel_json_audit_walker.py` — +2 cases pinning
+    the alias-resolution walker extension
+    (`test_walker_recognises_aliased_json_module`,
+    `test_collect_json_module_aliases_includes_canonical_and_aliased`).
+
+**Threat-model deltas:**
+  * **Size-bomb amplification window**: pre-fix 50,000x (50 MiB
+    canonical default ÷ ~1 KiB legitimate state); post-fix ~128x
+    (256 KiB per-loader cap ÷ ~2 KiB legitimate state). Mirrors the
+    GTFS-RT cap shape from the rolled-back entry.
+  * **Self-heal contract**: pre-fix a `MemoryError` raised before
+    `_write_cache([])` left the cron permanently disabled; post-fix
+    `read_capped_json` returns `None` on oversized input, the loader
+    returns `{}`, the rest of `main()` runs to completion, and
+    `_write_cache([])` overwrites the corrupted file via
+    `atomic_write`'s `os.replace` rename — fully self-healing on the
+    next cron tick (worst-case 30 minutes).
+  * **Per-channel sanitisation continuity**: the per-field validators
+    enforce the same XML 1.0 control-character set as
+    `src/build_feed.py:_CONTROL_RE` (the canonical
+    `_sanitize_text` filter), so `_identity` strings that bypass
+    the build-side `_sanitize_text` filter (because `_identity`
+    is a structural key, not a rendered text channel) inherit the
+    same defence floor at the read boundary.
+  * **Audit-walker coverage floor**: pre-fix the walker covered
+    only `import json` (canonical-name) bindings; post-fix the walker
+    resolves every `import json as <alias>` binding via AST
+    inspection. The walker's coverage claim now matches its actual
+    behaviour — the docstring assertion *"every json.load[s] /
+    response.json() call"* was technically false pre-fix because the
+    canonical-name predicate excluded aliased imports. The smoke
+    tests (`test_walker_recognises_aliased_json_module`) pin the
+    invariant.
+
+**Learning:** The recursive meta-pattern is identical to every prior
+round in the JSON size-bomb / depth-bomb / clear-text-logging /
+cache-driven-provider families — *a defensive walker that closes one
+structural axis surfaces a sibling axis the walker didn't include
+catches*. Round 5's walker assumed `"json"` was the canonical
+module-binding name; that assumption held for every site Round 5
+audited but failed for the ONE site PR #1365 added with an aliased
+import. The right structural verdict for an "auto-discoverable
+invariant" walker is now: **the walker's predicate must resolve
+every binding shape the language allows, not just the canonical
+name** — `import X` (canonical), `import X as <alias>` (aliased),
+`from X import Y` (callable), `from X import Y as <alias>` (aliased
+callable). Concretely: every existing audit walker in the project
+(`test_sentinel_clear_text_logging_drift_utils`,
+`test_sentinel_json_audit_walker`,
+`test_sentinel_secret_scanner_drift`, etc.) MUST be retroactively
+audited for the same alias-bypass shape. The companion entry below
+(BiDi-Mark Drift Round 2) makes the parallel point for sanitiser
+walkers — sibling helpers that flip the flag in the OPPOSITE
+direction bypass the regex entirely.
+
+**Prevention:** Three reinforcing rules:
+  (a) **Aliased-import resolution rule for parser-coverage walkers**:
+      every walker that pattern-matches `<X>.<method>(...)` calls
+      against a stdlib module name MUST resolve aliased imports via
+      AST inspection of the module under audit. The minimum shape:
+      `_collect_<module>_aliases(tree) -> set[str]` walks every
+      `import <module> [as <alias>]` binding and returns the set
+      of local names; the predicate then checks `func.value.id in
+      aliases` instead of the literal canonical name. Mirrors the
+      per-channel-sanitiser audit-floor pattern (BiDi-Mark Round 2)
+      where the walker enumerated every flag-direction sibling.
+  (b) **Per-loader cap rule for cache-driven providers** (already
+      pinned for JSON Size-Bomb Round 1-7; renewed here): every
+      cache-driven provider MUST expose its own
+      `MAX_<NAME>_CACHE_BYTES` constant sized at 100x-1000x the
+      largest legitimate state shape, and pass it explicitly to
+      `read_capped_json` at every read site (writer-self-read AND
+      consumer-side reader). The structural pin is a sentinel
+      test that patches `read_capped_json` and asserts the call
+      kwargs — a future refactor that removes the explicit keyword
+      fails the test before the change can land.
+  (c) **Per-preserved-field shape-validation rule for cache-driven
+      providers** (already pinned for the GTFS-RT entry below;
+      renewed here): every cache-driven provider whose write-side
+      helper preserves fields from the existing cache document
+      forward into the next document MUST validate the shape of
+      every preserved field BEFORE persisting. Validators use
+      `TypeGuard[<expected-type>]` so static analysers narrow
+      `value: object` correctly in the True branch. Validation
+      MUST cover length, control characters, and field-specific
+      shape (ISO-8601 parseability for timestamps, hex for SHA256
+      guids, etc.).
+
 ## 2026-05-09 - BiDi-Mark Drift Round 2: `strip_control_chars=False` Sibling Paths Bypass `_CONTROL_CHARS_RE` Entirely
 **Vulnerability:** The 2026-05-09 (Round 1, PR #1363) closure of the BiDi /
 Unicode-line-terminator gap landed `؜` ALM, `‎/‏` LRM/RLM,

@@ -27,6 +27,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from scripts import update_stammstrecke_status as script  # noqa: E402
+from src.feed.providers import MAX_STAMMSTRECKE_CACHE_BYTES  # noqa: E402
 from src.utils.circuit_breaker import CircuitBreaker  # noqa: E402
 
 
@@ -419,6 +420,200 @@ def test_read_existing_first_seen_skips_malformed_items(
     assert script._read_existing_first_seen() == {
         "good_prefix": "2026-05-09T08:00:00+02:00"
     }
+
+
+# ---- Sentinel: cache-driven provider hardening ----------------------------
+#
+# The four tests below pin the Round 8 hardening of the
+# ``_read_existing_first_seen`` reader. Each test is a Proof-of-Concept that
+# fails pre-fix (the bare ``_json_lib.load(fh)`` site at the script's
+# previous line 426) and passes post-fix (after the swap to
+# ``read_capped_json`` plus the per-preserved-field shape validators).
+#
+# Threat model: ``cache/stammstrecke/events.json`` is persistent state
+# written by the cron monitor and read by both (a) the build_feed pipeline
+# and (b) the monitor itself on the next tick (via this reader, to
+# preserve ``first_seen`` across runs). A planted-huge / poisoned cache
+# file from any of the documented threat sources (compromised CI runner /
+# partial flush + power loss / corrupted previous run / parallel
+# orchestrator atomic state swap) reaches both consumers; the bare
+# ``json.load`` shape on the writer's read path opened the size-bomb /
+# field-shape gap that the ``read_capped_json`` defence and the
+# per-field validators close. See ``.jules/sentinel.md`` (entry for
+# 2026-05-09) for the full threat-model write-up.
+
+
+def test_read_existing_first_seen_rejects_oversized_cache_file(
+    _isolated_output: Path,
+) -> None:
+    """PoC: a cache file larger than ``MAX_STAMMSTRECKE_CACHE_BYTES`` must
+    be rejected (pre-fix it was buffered into memory via bare
+    ``_json_lib.load`` with no cap, propagating ``MemoryError`` past the
+    ``except (OSError, JSONDecodeError, UnicodeDecodeError)`` clause)."""
+    _isolated_output.parent.mkdir(parents=True, exist_ok=True)
+    # Pad the legitimate-shape entry until the serialised file exceeds
+    # the per-loader cap. The padding is a passive payload field — it has
+    # no effect on the reader's parser other than inflating the file size.
+    pad_chars = MAX_STAMMSTRECKE_CACHE_BYTES + 1024
+    payload = [
+        {
+            "_identity": "stammstrecke_delay_meidling|2026-05-09T08:00:00+02:00",
+            "first_seen": "2026-05-09T08:00:00+02:00",
+            "pad": "A" * pad_chars,
+        }
+    ]
+    _isolated_output.write_text(json.dumps(payload), encoding="utf-8")
+    assert _isolated_output.stat().st_size > MAX_STAMMSTRECKE_CACHE_BYTES
+
+    # Post-fix: the size cap rejects the read; the loader returns an
+    # empty map and the next ``_write_cache`` will overwrite the
+    # corrupted file. Pre-fix: returned ``{"stammstrecke_delay_meidling":
+    # "2026-05-09T08:00:00+02:00"}`` after buffering the entire 256+ KiB
+    # payload into memory.
+    assert script._read_existing_first_seen() == {}
+
+
+def test_read_existing_first_seen_rejects_oversized_first_seen_field(
+    _isolated_output: Path,
+) -> None:
+    """PoC: an item with a ``first_seen`` longer than
+    ``_MAX_PRESERVED_FIRST_SEEN_LENGTH`` must be skipped. Pre-fix the
+    field-length check did not exist, so an attacker who could plant a
+    sub-cap-but-large-field cache (e.g. 100 KiB ``first_seen`` string)
+    saw the value flow into ``_resolve_first_seen``, which logs a
+    sanitised version of the failed-parse string via
+    ``sanitize_log_arg`` — amplifying log volume without bound."""
+    _isolated_output.parent.mkdir(parents=True, exist_ok=True)
+    # 80 chars > 64-byte cap, well below the file-size cap.
+    huge_first_seen = "A" * (script._MAX_PRESERVED_FIRST_SEEN_LENGTH + 16)
+    _isolated_output.write_text(
+        json.dumps(
+            [
+                {
+                    "_identity": "good_prefix|2026-05-09T08:00:00+02:00",
+                    "first_seen": huge_first_seen,
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    assert script._read_existing_first_seen() == {}
+
+
+def test_read_existing_first_seen_rejects_oversized_identity_field(
+    _isolated_output: Path,
+) -> None:
+    """PoC: an item with an ``_identity`` longer than
+    ``_MAX_PRESERVED_IDENTITY_LENGTH`` must be skipped. Pre-fix any
+    string was accepted; the prefix derived via
+    ``identity.split("|", 1)[0]`` could grow to file-cap size and pollute
+    the returned map's keys (and any downstream log emission)."""
+    _isolated_output.parent.mkdir(parents=True, exist_ok=True)
+    huge_identity = ("X" * (script._MAX_PRESERVED_IDENTITY_LENGTH + 8)) + "|2026-05-09T08:00:00+02:00"
+    _isolated_output.write_text(
+        json.dumps(
+            [
+                {
+                    "_identity": huge_identity,
+                    "first_seen": "2026-05-09T08:00:00+02:00",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    assert script._read_existing_first_seen() == {}
+
+
+def test_read_existing_first_seen_rejects_control_chars_in_fields(
+    _isolated_output: Path,
+) -> None:
+    """PoC: items with XML 1.0 control characters in either preserved
+    field must be skipped. Pre-fix only ``isinstance(..., str)`` was
+    checked; a ``\\x00``/``\\x07``/``\\x1f`` byte in either field flowed
+    through to the build-side cache loader and onward into the rendered
+    feed text without the canonical ``_sanitize_text`` filter applied
+    at the boundary."""
+    _isolated_output.parent.mkdir(parents=True, exist_ok=True)
+    _isolated_output.write_text(
+        json.dumps(
+            [
+                {
+                    "_identity": "p\x00bad|2026-05-09T08:00:00+02:00",
+                    "first_seen": "2026-05-09T08:00:00+02:00",
+                },
+                {
+                    "_identity": "good|2026-05-09T08:00:00+02:00",
+                    "first_seen": "2026-05-09T08:00\x07:00+02:00",
+                },
+            ]
+        ),
+        encoding="utf-8",
+    )
+    assert script._read_existing_first_seen() == {}
+
+
+def test_read_existing_first_seen_rejects_non_iso_first_seen(
+    _isolated_output: Path,
+) -> None:
+    """PoC: a ``first_seen`` string that is not parseable via
+    :func:`datetime.fromisoformat` must be rejected at the read site
+    rather than propagating into ``_resolve_first_seen`` and triggering
+    a defensive WARNING log on every cron tick."""
+    _isolated_output.parent.mkdir(parents=True, exist_ok=True)
+    _isolated_output.write_text(
+        json.dumps(
+            [
+                {
+                    "_identity": "good_prefix|definitely-not-iso",
+                    "first_seen": "definitely-not-iso",
+                },
+            ]
+        ),
+        encoding="utf-8",
+    )
+    assert script._read_existing_first_seen() == {}
+
+
+def test_max_stammstrecke_cache_bytes_imported_constant() -> None:
+    """Pin the per-loader byte cap to the canonical value so a future
+    "tighten further" change is a single search-replace and the import
+    chain (script ↔ ``src/feed/providers.py``) cannot drift."""
+    # Sized at ~128x the largest legitimate state shape (~2 KiB) — see
+    # the inline rationale in ``src/feed/providers.py``.
+    assert MAX_STAMMSTRECKE_CACHE_BYTES == 256 * 1024
+
+
+def test_is_valid_preserved_first_seen_accepts_canonical_iso() -> None:
+    """The canonical writer path produces ``datetime.isoformat()`` strings;
+    the validator must accept every shape the writer emits."""
+    sample = datetime(2026, 5, 9, 8, 0, 0, tzinfo=VIENNA_TZ).isoformat()
+    assert script._is_valid_preserved_first_seen(sample) is True
+
+
+def test_is_valid_preserved_first_seen_rejects_non_string() -> None:
+    """``isinstance(value, str)`` is the first gate of the TypeGuard so
+    non-string values (int, list, None) cannot bypass downstream checks
+    by being implicitly stringified."""
+    assert script._is_valid_preserved_first_seen(999) is False
+    assert script._is_valid_preserved_first_seen(None) is False
+    assert script._is_valid_preserved_first_seen([]) is False
+
+
+def test_is_valid_preserved_identity_accepts_canonical_shape() -> None:
+    """Canonical identity is ``<prefix>|<iso>`` — the validator must
+    accept every shape the writer emits."""
+    sample = "stammstrecke_delay_meidling|2026-05-09T08:00:00+02:00"
+    assert script._is_valid_preserved_identity(sample) is True
+
+
+def test_is_valid_preserved_identity_rejects_non_string() -> None:
+    """Non-string identity values must be rejected upstream — pre-fix
+    the previous ``isinstance(identity, str)`` check did this; the
+    validator preserves that contract while ALSO bounding length and
+    control characters."""
+    assert script._is_valid_preserved_identity(42) is False
+    assert script._is_valid_preserved_identity(None) is False
+    assert script._is_valid_preserved_identity(["x"]) is False
 
 
 def test_resolve_first_seen_returns_now_when_no_prior(_stable_now: datetime) -> None:

@@ -246,6 +246,19 @@ def read_cache_baustellen() -> list[Any]:
 # Wien Floridsdorf and Wien Meidling exceeds the configured threshold.
 _STAMMSTRECKE_CACHE_PATH: Path = Path("cache") / "stammstrecke" / "events.json"
 
+# Per-cache size-cap for ``cache/stammstrecke/events.json``. The Stammstrecke
+# monitor writes 0, 1, or 2 events with fixed-format payloads ~1 KiB each, so
+# the largest legitimate state shape is ~2 KiB. The 256 KiB cap is ~128x
+# headroom — enough to absorb future schema growth (additional metadata,
+# longer descriptions) without the canonical 50 MiB ``read_capped_json``
+# default leaving a 50,000x amplification window for an attacker who can
+# plant a single oversized cache file (compromised CI runner / partial
+# flush + power loss / parallel orchestrator process performing an atomic
+# state swap mid-read). Mirrors the per-loader cap pattern from JSON
+# Size-Bomb Round 1-7 and the ``MAX_GTFS_STAMMSTRECKE_CACHE_BYTES`` shape
+# from the (rolled-back) GTFS-RT cache-driven provider.
+MAX_STAMMSTRECKE_CACHE_BYTES = 256 * 1024
+
 
 def read_cache_stammstrecke() -> list[Any]:
     """Read ``cache/stammstrecke/events.json`` with the canonical size cap.
@@ -259,6 +272,7 @@ def read_cache_stammstrecke() -> list[Any]:
         return []
     payload = read_capped_json(
         _STAMMSTRECKE_CACHE_PATH,
+        max_bytes=MAX_STAMMSTRECKE_CACHE_BYTES,
         label="Stammstrecke",
         logger=log,
     )
@@ -271,6 +285,7 @@ register_default_providers()
 
 
 __all__ = [
+    "MAX_STAMMSTRECKE_CACHE_BYTES",
     "ProviderLoader",
     "ProviderSpec",
     "iter_providers",
