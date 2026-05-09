@@ -7,18 +7,84 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 09 May 2026 13:26:33 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2026 13:34:38 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U2: Betriebsstörung]]></title>
+      <title><![CDATA[18: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
-      <pubDate>Sat, 09 May 2026 11:36:00 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 12:45:42 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 11:36:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">804c290a0b74bcd936adf141799148ac8c9ac255cea95b0e4c74817822b74b46</guid>
+      <pubDate>Sat, 09 May 2026 13:26:00 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 13:34:38 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 13:26:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 09.05.2026]</description>
-      <content:encoded><![CDATA[Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.05.2026]]]></content:encoded>
+      <description>Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 09.05.2026]</description>
+      <content:encoded><![CDATA[Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 09.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1</guid>
+      <pubDate>Sat, 09 May 2026 12:53:00 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 12:45:42 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 12:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 09.05.2026]</description>
+      <content:encoded><![CDATA[Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 09.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
+      <pubDate>Sat, 09 May 2026 12:51:00 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 13:34:38 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 12:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 09.05.2026]</description>
+      <content:encoded><![CDATA[Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 09.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e5660a0ab66e8052c66ac62caa273ee692ce56758d8e16e3324e16b86881f37a</guid>
+      <pubDate>Sat, 09 May 2026 12:51:00 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 13:34:38 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 12:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 09.05.2026]</description>
+      <content:encoded><![CDATA[Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">eb95adf873b18dcc90582141fd8b881d6f58540f5e3144fe72be528eb86b24d6</guid>
+      <pubDate>Sat, 09 May 2026 12:51:00 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 13:34:38 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 12:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 09.05.2026]</description>
+      <content:encoded><![CDATA[Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
+      <pubDate>Sat, 09 May 2026 12:45:00 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 09:13:06 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 12:45:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 09.05.2026]</description>
+      <content:encoded><![CDATA[Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 09.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a3ccf7c2ad3270af3ce0b5bff574b7e68e073f01c1a9bf875ba6186e69760114</guid>
+      <pubDate>Sat, 09 May 2026 12:35:00 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 13:34:38 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 12:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 09.05.2026]</description>
+      <content:encoded><![CDATA[Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Straßenfest Betrieb ab Neubaugasse U]]></title>
@@ -52,69 +118,6 @@
       <ext:ends_at>Sat, 09 May 2026 23:59:59 +0200</ext:ends_at>
       <description>[Am 09.05.2026]</description>
       <content:encoded><![CDATA[[Am 09.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
-      <pubDate>Sat, 09 May 2026 00:00:20 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 00:00:20 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 09 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 09.05.2026]</description>
-      <content:encoded><![CDATA[[Am 09.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Westbahnhof ↔ Wien Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;875289</guid>
-      <pubDate>Fri, 08 May 2026 10:58:06 +0200</pubDate>
-      <ext:first_seen>Wed, 06 May 2026 15:26:45 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 08 May 2026 10:58:06 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hbf (U) von 01.06.2026 bis 26.06.2026 die Züge D 347, D 50347 und D 40347 nicht fahren. [Seit 08.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hbf (U) von 01.06.2026 bis 26.06.2026 die Züge D 347, D 50347 und D 40347 nicht fahren.<br/>[Seit 08.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S 50: Wien Westbahnhof ↔ Wien Hütteldorf / Wien Hütteldorf ↔ Tullnerbach-Pressbaum / Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;872100</guid>
-      <pubDate>Thu, 07 May 2026 13:43:23 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Apr 2026 12:07:29 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 07 May 2026 13:43:23 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (03:00 Uhr) zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) keine Nahverkehrszüge fahren. [Seit 07.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (03:00 Uhr) zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) keine Nahverkehrszüge fahren.<br/>[Seit 07.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Mitte ↔ Flughafen Wien / Wien Mitte ↔ Wien Floridsdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;852582</guid>
-      <pubDate>Thu, 07 May 2026 12:45:08 +0200</pubDate>
-      <ext:first_seen>Tue, 05 May 2026 11:26:32 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 07 May 2026 12:45:08 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können von 13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr) zwischen Flughafen Wien Bahnhof und Wien Mitte-Landstraße Bahnhof … [Seit 07.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können von 13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr) zwischen Flughafen Wien Bahnhof und Wien Mitte-Landstraße Bahnhof …<br/>[Seit 07.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45</guid>
-      <pubDate>Thu, 07 May 2026 00:00:13 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 09 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Am 09.05.2026]</description>
-      <content:encoded><![CDATA[[Am 09.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/1A/2/2A/57A/71/D: Demonstration am 09.05.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8eeff4590030f418e4da157d8c1641cc9808c73dbde272d70c86df5651b02543</guid>
-      <pubDate>Thu, 07 May 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 07 May 2026 10:39:30 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 07 May 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 09 May 2026 18:00:00 +0200</ext:ends_at>
-      <description>Demonstration Wegen einer Demonstration im Bereich Innenstadt und Alsergrund kommt es zu Verkehrsmaßnahmen. [07.05.2026 – 09.05.2026]</description>
-      <content:encoded><![CDATA[Demonstration Wegen einer Demonstration im Bereich Innenstadt und Alsergrund kommt es zu Verkehrsmaßnahmen.<br/>[07.05.2026 – 09.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
