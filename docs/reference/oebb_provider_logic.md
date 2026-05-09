@@ -151,6 +151,19 @@ Versuche pro Stunde, bevor eine ganzstündige Pause greift.
 
 Weitere Schutzmechanismen:
 
+* **HTTP-Timeout via Session-Patch** (`_patch_session_timeout`):
+  pyhafas ruft `session.post(url, data=...)` *ohne* `timeout`-Kwarg
+  auf, und `requests.Session` honoriert `session.timeout` als
+  Attribut **nicht**. Ohne die Patch-Logik würde ein hängender
+  HAFAS-Endpoint den Cron-Run bis zur GitHub-Actions-Wallclock
+  (6 Stunden) blockieren (DoS via Slow Upstream). Der Patch
+  überschreibt `profile.request_session.request` (die
+  Low-Level-Methode, an die `get`, `post`, `put`, … delegieren) und
+  injiziert `timeout=QUERY_TIMEOUT` als Default — explizite
+  `timeout`-Kwargs auf der Aufrufseite gewinnen weiterhin. Bei
+  einer pyhafas-Versions-Drift (Attribut umbenannt) degradiert das
+  Skript graceful: WARNING + kein Enforcement, statt Crash auf
+  Construction.
 * **CircuitBreakerOpen** kurzschließt nach erstem Auftreten innerhalb
   einer Iteration: wenn der Breaker während der Abarbeitung der ersten
   Richtung öffnet, wird die zweite Richtung *nicht* mehr versucht
@@ -177,6 +190,34 @@ Weitere Schutzmechanismen:
   der RSS-Feed konsistente Zeitstempel liefert (Sommer-/Winterzeit
   korrekt).
 
+### Stationsnamen-Auflösung
+
+Die in `description` angezeigten Ziel-Stationsnamen ("Meidling" /
+"Floridsdorf") werden **nicht hartcodiert**, sondern über das
+kanonische Stationsverzeichnis (`src.utils.stations`) aufgelöst:
+
+```
+canonical_name("Wien Meidling")  →  "Wien Meidling"  (Verzeichnis-Hit)
+display_name("Wien Meidling")    →  "Wien Meidling"  (kein Override)
+strip "Wien "                    →  "Meidling"       (Kompakt-Form)
+```
+
+Der kompakte `in Richtung Meidling`-Stil entsteht durch Strippen
+des `Wien `-Präfix nach dem Verzeichnis-Lookup — die Beschreibung
+setzt Wien implizit voraus, deshalb wirkt das volle "Wien Meidling"
+in dieser Stelle redundant. Wenn das Verzeichnis später eine
+kanonische Umbenennung (z. B. `Wien Meidling` → `Wien Meidling/
+Philadelphiabrücke`) oder einen `display_name`-Override registriert,
+propagiert das automatisch in den Suffix nach `in Richtung `.
+
+Die Fallback-Kette in `_short_target_label` deckt drei Failure-Modi
+ab:
+1. `canonical_name` liefert `None` (Verzeichnis-Miss): der Seed-Name
+   wird mit Strip verwendet.
+2. `canonical_name` wirft (kaputtes/fehlendes
+   `data/stations.json`): exception swallowing + Strip.
+3. `display_name` liefert leer: ebenfalls Seed mit Strip.
+
 ### Feed-Integration
 
 Der Feed-Builder lädt die Datei beim Build über
@@ -196,9 +237,17 @@ verbessert.
   Standard "deutliche Stammstrecken-Beeinträchtigung").
 * **Stations-IDs**: `FLORIDSDORF_STATION_ID` / `MEIDLING_STATION_ID` —
   HAFAS-IDs aus dem ÖBB-SCOTTY-System.
+* **Stationsnamen-Seeds**: `FLORIDSDORF_CANONICAL_SEED` /
+  `MEIDLING_CANONICAL_SEED` sind die Lookup-Keys, die durch das
+  Stationsverzeichnis kanonisch aufgelöst werden. Eine Umbenennung
+  in `data/stations.json` propagiert automatisch ins Description-Feld.
 * **Richtungs-Tabelle**: `DIRECTIONS` (Tuple aus `_Direction`-Records).
   Jede Richtung trägt Origin, Destination, das im Description-Feld
   angezeigte Ziel-Label und den Identity-Prefix für `guid` / `_identity`.
+* **HTTP-Timeout**: `QUERY_TIMEOUT` (Default-Sekunden) und
+  `MAX_QUERY_TIMEOUT` (oberer Clamp). Wird durch
+  `_patch_session_timeout` als Default in `session.request`
+  injiziert.
 * **Sample-Größe**: `MAX_JOURNEYS_PER_QUERY` (default 12). Höhere
   Werte stabilisieren den Median, kosten aber mehr Pyhafas-Calls.
 * **Regex für S-Bahn-Linien**: `_S_BAHN_LINE_RE`. Erfasst alle ÖBB-

@@ -1,6 +1,24 @@
 # CHANGELOG
 
 ## [Unreleased]
+* **Security/Liveness**: Stammstrecke-Monitor erzwingt jetzt einen
+  echten HTTP-Timeout für pyhafas-Aufrufe. Das vorherige Code-Snippet
+  versuchte, ``client.profile.requests.timeout`` zu setzen — pyhafas
+  kennt diese Attribut-Pfad nicht (``request_session`` heißt das
+  Attribut), und ``requests.Session`` honoriert ``session.timeout``
+  als Attribut ohnehin nicht. Resultat: ein hängender HAFAS-Endpoint
+  hätte den Cron-Run bis zur GitHub-Actions-Wallclock (6 h) blockiert
+  (DoS via Slow Upstream). Neuer ``_patch_session_timeout`` patcht
+  ``session.request`` (die Low-Level-Methode, an die ``post/get/...``
+  delegieren) und injiziert ``timeout=QUERY_TIMEOUT`` als Default.
+* **Consistency**: Stammstrecke-Events nutzen jetzt das kanonische
+  Stationsverzeichnis (``src.utils.stations``) für die Auflösung der
+  Ziel-Stationsnamen statt sie hartzucodieren. Damit propagiert ein
+  Rename in ``data/stations.json`` (z. B. wie zuletzt bei "Wien
+  Hauptbahnhof") automatisch in die Beschreibung. Der kompakte
+  "in Richtung Meidling"-Stil bleibt erhalten — der ``Wien ``-Präfix
+  wird nach der Lookup-Auflösung gestrippt, weil die Beschreibung
+  Wien implizit voraussetzt.
 * **Feat**: S-Bahn Stammstrecke Monitoring jetzt **richtungsgetrennt**.
   `scripts/update_stammstrecke_status.py` wertet beide Fahrtrichtungen
   (Floridsdorf → Meidling und Meidling → Floridsdorf) strikt
