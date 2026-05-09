@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import socket
+import sys
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -8,6 +10,68 @@ from typing import Any
 import pytest
 
 from scripts import update_baustellen_cache
+
+
+def _patch_http_layer_bypass(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Monkeypatch the SSRF / DNS / IP-verification layer so a
+    ``responses``-mocked URL can be consumed without hitting the real
+    network.
+
+    Three layers need to be patched in concert; missing any one leaks
+    through to a real network call:
+
+    * ``validate_http_url`` — patched on the **caller's namespace**
+      (``update_baustellen_cache``) because the script does
+      ``from utils.http import validate_http_url`` at import time, so
+      patching only ``sys.modules['utils.http'].validate_http_url``
+      would leave the script's local binding pointing at the
+      original function.
+
+    * ``verify_response_ip`` — patched on the **provider module**
+      because it is called by the request machinery at the HTTP-layer
+      level, not from the script.
+
+    * ``_resolve_hostname_safe`` — patched on the **provider module**
+      with a fake resolver that returns ``127.0.0.1`` so the request
+      layer never times out on DNS even when the runner's namespace
+      forbids name resolution (the 2026-05-09 cron flake —
+      ``responses`` intercepts at the HTTP layer, but our HTTP
+      utility resolves DNS BEFORE handing off to the requests
+      library, so the mock cannot prevent the timeout). The fake
+      mirrors the :func:`socket.getaddrinfo`-shaped tuple the
+      production helper returns so downstream consumers never need
+      an ``isinstance`` check.
+    """
+    # The fake IP must NOT be one of the SSRF-rejected ranges
+    # (loopback, RFC1918, link-local, multicast, etc.) — the
+    # request layer post-validates each resolved IP via
+    # ``is_ip_safe`` and raises "No safe IP resolved" when every
+    # entry fails. ``8.8.8.8`` (Google Public DNS) is a documented-
+    # safe public IPv4 that survives every gate. We additionally
+    # patch ``is_ip_safe`` to ``True`` as a belt-and-suspenders so
+    # a future tightening of the safe-IP allowlist cannot
+    # silently re-break this fixture.
+    fake_addrinfo: list[tuple[Any, ...]] = [
+        (socket.AF_INET, socket.SOCK_STREAM, 6, "", ("8.8.8.8", 0)),
+    ]
+    # 1) The caller's local binding (the script imports the name
+    # directly, so the module-attribute patch below cannot reach it).
+    monkeypatch.setattr(
+        update_baustellen_cache, "validate_http_url", lambda url, **_kw: url
+    )
+    # 2) The provider-module attributes — these are looked up at call
+    # time by the HTTP machinery itself, so patching the module
+    # attribute is sufficient.
+    for module_name in ("src.utils.http", "utils.http"):
+        if module_name not in sys.modules:
+            continue
+        module = sys.modules[module_name]
+        monkeypatch.setattr(module, "validate_http_url", lambda url, **kw: url)
+        monkeypatch.setattr(module, "verify_response_ip", lambda _: None)
+        monkeypatch.setattr(
+            module, "_resolve_hostname_safe", lambda _hostname: fake_addrinfo
+        )
+        monkeypatch.setattr(module, "is_ip_safe", lambda _ip, **_kw: True)
 
 
 SAMPLE_PATH = Path(__file__).resolve().parents[1] / "data" / "samples" / "baustellen_sample.geojson"
@@ -224,17 +288,9 @@ def test_fetch_remote_rejects_unexpected_content_type(
     memory and handed to ``json.loads``, which works only by accident."""
     import logging
     import responses
-    import sys
 
     # Bypass DNS / IP checks (we're testing content-type filtering, not SSRF).
-    for module_name in ("src.utils.http", "utils.http"):
-        if module_name in sys.modules:
-            monkeypatch.setattr(
-                sys.modules[module_name], "validate_http_url", lambda url, **kw: url
-            )
-            monkeypatch.setattr(
-                sys.modules[module_name], "verify_response_ip", lambda _: None
-            )
+    _patch_http_layer_bypass(monkeypatch)
 
     @responses.activate
     def run() -> None:
@@ -288,16 +344,8 @@ def test_fetch_remote_accepts_geojson_variants(
     responses — overshooting (rejecting a legitimate variant) would put the
     feed into permanent fallback mode."""
     import responses
-    import sys
 
-    for module_name in ("src.utils.http", "utils.http"):
-        if module_name in sys.modules:
-            monkeypatch.setattr(
-                sys.modules[module_name], "validate_http_url", lambda url, **kw: url
-            )
-            monkeypatch.setattr(
-                sys.modules[module_name], "verify_response_ip", lambda _: None
-            )
+    _patch_http_layer_bypass(monkeypatch)
 
     @responses.activate
     def run() -> None:
