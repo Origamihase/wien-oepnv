@@ -725,6 +725,88 @@ def test_extract_vao_request_id_falls_back_for_no_body() -> None:
     assert script._extract_vao_request_id(err) == "[EMPTY_BODY]"
 
 
+# ---- internalErrorCode / internalErrorText diagnostics ----------------------
+
+
+def test_extract_vao_internal_error_text_returns_text() -> None:
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps(
+            {
+                "errorText": "location missing or invalid (LOCATION).",
+                "internalErrorText": (
+                    "Stop ID 'extId::490033400' could not be resolved"
+                ),
+            }
+        ).encode("utf-8"),
+    )
+    assert script._extract_vao_internal_error_text(err) == (
+        "Stop ID 'extId::490033400' could not be resolved"
+    )
+
+
+def test_extract_vao_internal_error_text_falls_back_to_text_out_field() -> None:
+    """Some VAO peers emit ``internalErrorTextOut`` instead of
+    ``internalErrorText``."""
+
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps(
+            {"internalErrorTextOut": "validator: bad station id"}
+        ).encode("utf-8"),
+    )
+    assert (
+        script._extract_vao_internal_error_text(err)
+        == "validator: bad station id"
+    )
+
+
+def test_extract_vao_internal_error_text_truncates_oversize() -> None:
+    huge = "X" * 5000
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"internalErrorText": huge}).encode("utf-8"),
+    )
+    rendered = script._extract_vao_internal_error_text(err)
+    assert len(rendered) == script._ERROR_TEXT_MAX_LEN + 1
+    assert rendered.endswith("…")
+
+
+def test_extract_vao_internal_error_text_falls_back_for_no_body() -> None:
+    err = _make_http_error(status_code=400, body=b"")
+    assert script._extract_vao_internal_error_text(err) == "[EMPTY_BODY]"
+
+
+def test_extract_vao_internal_error_text_falls_back_for_missing_field() -> None:
+    err = _make_http_error(
+        status_code=400, body=json.dumps({"errorText": "X"}).encode("utf-8")
+    )
+    assert script._extract_vao_internal_error_text(err) == "[MISSING]"
+
+
+def test_extract_vao_internal_error_code_returns_canonical() -> None:
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"internalErrorCode": "LOC_INV"}).encode("utf-8"),
+    )
+    assert script._extract_vao_internal_error_code(err) == "LOC_INV"
+
+
+def test_extract_vao_internal_error_code_rejects_non_canonical() -> None:
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps(
+            {"internalErrorCode": "Stop ID not found"}
+        ).encode("utf-8"),
+    )
+    assert script._extract_vao_internal_error_code(err) == "[BAD_SHAPE]"
+
+
+def test_extract_vao_internal_error_code_falls_back_for_no_body() -> None:
+    err = _make_http_error(status_code=400, body=b"")
+    assert script._extract_vao_internal_error_code(err) == "[EMPTY_BODY]"
+
+
 # ---- Response header diagnostics ------------------------------------------
 
 
@@ -785,6 +867,8 @@ def test_process_direction_logs_status_and_error_code_on_http_error(
             {
                 "errorCode": "H730",
                 "errorText": "Authentication failed",
+                "internalErrorCode": "AUTH_INV",
+                "internalErrorText": "validator: bad accessId hash",
                 "requestId": "8e7f2c9b-1234-5678-90ab-cdef12345678",
             }
         ).encode("utf-8"),
@@ -832,6 +916,12 @@ def test_process_direction_logs_status_and_error_code_on_http_error(
     assert "code_len=4" in rendered  # H730 is 4 chars
     assert "err_text=Authentication failed" in rendered
     assert "req_id=8e7f2c9b-1234-5678-90ab-cdef12345678" in rendered
+    # The internalError* diagnostics added on 2026-05-09 (sixth
+    # iteration after VAO's 333-byte body exposed these fields) must
+    # also surface so the next failure shape is one log-line away
+    # from triage instead of another speculation cycle.
+    assert "int_code=AUTH_INV" in rendered
+    assert "int_text=validator: bad accessId hash" in rendered
 
 
 def test_collect_delays_rejects_multi_ride_leg_trips() -> None:
@@ -1028,14 +1118,20 @@ def test_query_trips_passes_canonical_parameters(
     # exactly matches the trip.md curl example shape (which lists no
     # ``format`` parameter).
     assert "format" not in params
-    # External-ID encoding via the ``extId::`` value prefix (NOT via a
-    # separate ``originExtId`` key). The VAO manual states that the
-    # ``extId::`` token tells the upstream to interpret the value as
-    # an external station ID rather than as a HAFAS-internal location.
-    assert params["originId"] == f"extId::{direction.origin_id}"
-    assert params["destId"] == f"extId::{direction.destination_id}"
-    assert "originExtId" not in params  # superseded by the value-prefix form
+    # Bare-numeric station IDs in ``originId``/``destId`` — matches
+    # the ``trip.md`` curl example AND the working
+    # ``_fetch_departure_board_for_station`` shape in
+    # ``src/providers/vor.py``. The 2026-05-09 cron run revealed that
+    # VAO rejects the ``extId::<id>`` value-prefix form (Geminis
+    # hypothesis from the manual) with HTTP 400 ``"location missing
+    # or invalid (LOCATION)"``.
+    assert params["originId"] == direction.origin_id
+    assert params["destId"] == direction.destination_id
+    assert "originExtId" not in params  # not the canonical VAO form
     assert "destExtId" not in params
+    # The ``extId::`` value-prefix is explicitly absent — VAO rejects it.
+    assert "extId::" not in params["originId"]
+    assert "extId::" not in params["destId"]
     assert params["numF"] == "6"  # pinned MAX_TRIPS_PER_QUERY (VAO max)
     assert params["maxChange"] == "0"  # direct-connections-only
     assert params["rtMode"] == "SERVER_DEFAULT"
