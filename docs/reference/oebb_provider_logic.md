@@ -98,25 +98,27 @@ wurde:
     "source": "ÖBB",
     "category": "Störung",
     "title": "S-Bahn Stammstrecke Verspätungen",
-    "description": "Durchschnittliche Verspätung von 12.5 Minuten in Richtung Meidling",
+    "description": "Durchschnittliche Verspätung von 12.5 Minuten in Richtung Meidling [Seit 09.05.2026]",
     "link": "https://www.oebb.at/de/fahrplan/…/aktuelle-stoerungsmeldungen",
-    "guid": "<sha256(stammstrecke_delay_meidling|<iso-pubDate>)>",
+    "guid": "<sha256(stammstrecke_delay_meidling|<iso-first-seen>)>",
     "pubDate": "2026-05-09T08:30:00+02:00",
     "starts_at": "2026-05-09T08:30:00+02:00",
     "ends_at": null,
-    "_identity": "stammstrecke_delay_meidling|<iso-pubDate>"
+    "first_seen": "2026-05-09T08:30:00+02:00",
+    "_identity": "stammstrecke_delay_meidling|<iso-first-seen>"
   },
   {
     "source": "ÖBB",
     "category": "Störung",
     "title": "S-Bahn Stammstrecke Verspätungen",
-    "description": "Durchschnittliche Verspätung von 14 Minuten in Richtung Floridsdorf",
+    "description": "Durchschnittliche Verspätung von 14 Minuten in Richtung Floridsdorf [Seit 09.05.2026]",
     "link": "https://www.oebb.at/de/fahrplan/…/aktuelle-stoerungsmeldungen",
-    "guid": "<sha256(stammstrecke_delay_floridsdorf|<iso-pubDate>)>",
+    "guid": "<sha256(stammstrecke_delay_floridsdorf|<iso-first-seen>)>",
     "pubDate": "2026-05-09T08:30:00+02:00",
     "starts_at": "2026-05-09T08:30:00+02:00",
     "ends_at": null,
-    "_identity": "stammstrecke_delay_floridsdorf|<iso-pubDate>"
+    "first_seen": "2026-05-09T08:30:00+02:00",
+    "_identity": "stammstrecke_delay_floridsdorf|<iso-first-seen>"
   }
 ]
 ```
@@ -125,6 +127,30 @@ Die richtungsspezifischen `guid`- und `_identity`-Werte stellen
 sicher, dass Feed-Reader die beiden Meldungen als **separate**
 Notifications anzeigen.
 
+#### first_seen-Persistenz und Episoden-stabile GUIDs
+
+Beim Aufbau der Events liest das Skript den vorhandenen Cache und
+extrahiert pro Richtung den `first_seen`-Zeitstempel. Solange die
+Verspätungs-Episode anhält (jeder Cron-Tick beobachtet wieder
+Median > 9), wird `first_seen` (und damit `guid` und das
+`Seit DD.MM.YYYY`-Datum in der Beschreibung) **unverändert
+übernommen**. Der `pubDate` rollt auf den aktuellen Beobachtungs-
+Zeitpunkt fort, signalisiert also Frische ohne neue Notification
+auszulösen.
+
+| Feld | Verhalten über mehrere Cron-Ticks |
+| :--- | :--- |
+| `pubDate` | aktualisiert sich bei jedem Tick |
+| `starts_at` | = `first_seen` (stabil pro Episode) |
+| `first_seen` | Persistenz: gleicher Wert solange Episode anhält |
+| `guid` | abgeleitet von `(prefix, first_seen)` → stabil pro Episode |
+| `description` | "[Seit DD.MM.YYYY]" zeigt `first_seen`-Datum |
+
+Erst wenn eine Episode endet (Median ≤ 9 *oder* API-Fehler ⇒ Cache
+geleert), bekommt das nächste high-median-Event eine **frische**
+`first_seen`-Marke und damit eine neue `guid`. Dies modelliert
+"erneute Verspätungsphase" als eigene Notification.
+
 Liegt der Median ≤ 9 Minuten (oder gibt es keine S-Bahn-Legs mit
 Verspätungsdaten), wird **kein** Event für diese Richtung emittiert.
 Liegen für beide Richtungen keine Bedingungen vor, schreibt das
@@ -132,6 +158,29 @@ Skript ein leeres Array `[]`. Die Cache-Datei ist damit zu jedem
 Zeitpunkt entweder eine gültige (möglicherweise leere) Liste — der
 Feed-Builder muss niemals einen "Datei fehlt"-Fall handhaben, sobald
 der erste Cron-Lauf erfolgt ist.
+
+### Self-Healing (Cache zwingend leeren)
+
+Der Cache wird **zwingend** auf `[]` gesetzt, sobald *eine* der
+folgenden Bedingungen eintritt:
+
+| Trigger | Folge |
+| :--- | :--- |
+| `ImportError` beim pyhafas-Client (z. B. `OEBBProfile` fehlt) | Cache `[]`, Exit `0` |
+| Beliebige Exception bei jeder einzelnen Richtung | Cache `[]`, Exit `1` |
+| `CircuitBreakerOpen` (vorgeschalteter Breaker offen) | Cache `[]`, Exit `0` |
+| Median ≤ 9 Minuten in *beiden* Richtungen | Cache `[]`, Exit `0` |
+| Keine S-Bahn-Legs mit Verspätungsdaten in beiden Richtungen | Cache `[]`, Exit `0` |
+
+Damit wird sichergestellt, dass der RSS-Feed **niemals** veraltete
+Stammstrecke-Warnungen aus einem früheren Run trägt — eine Recovery
+oder ein API-Ausfall propagiert innerhalb höchstens eines Cron-Ticks
+(30 Minuten) in den öffentlichen Feed.
+
+Per-Direction-Isolation bleibt erhalten: ein transienter Fehler bei
+*einer* Richtung verwirft nicht das Event der anderen Richtung. Nur
+wenn **alle** Richtungen scheitern (oder der Breaker offen ist) wird
+der Cache vollständig geleert.
 
 ### Resilience und API Rate-Limit
 

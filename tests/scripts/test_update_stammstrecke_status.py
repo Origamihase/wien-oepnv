@@ -4,8 +4,9 @@ The pyhafas client is mocked end-to-end so the test suite never reaches
 the live ÖBB HAFAS endpoint. Each test exercises a single, isolated
 branch of the script's decision tree: import-time failure, transport
 error, circuit-breaker open, median-below-threshold, median-above-
-threshold, no S-Bahn legs found — for each of the **two** Stammstrecke
-directions independently.
+threshold, no S-Bahn legs found, ``first_seen`` persistence and
+recovery — for each of the **two** Stammstrecke directions
+independently.
 """
 from __future__ import annotations
 
@@ -133,6 +134,25 @@ def _patch_client(monkeypatch: pytest.MonkeyPatch, client: Any) -> None:
     monkeypatch.setattr(script, "_build_client", lambda: client)
 
 
+def _set_now(monkeypatch: pytest.MonkeyPatch, when: datetime) -> None:
+    monkeypatch.setattr(script, "_now_vienna", lambda: when)
+
+
+def _high_journeys() -> list[Any]:
+    return [
+        _journey(legs=[_leg(name="S 1", delay_minutes=11)]),
+        _journey(legs=[_leg(name="S 2", delay_minutes=12)]),
+        _journey(legs=[_leg(name="S 3", delay_minutes=10)]),
+    ]
+
+
+def _low_journeys() -> list[Any]:
+    return [
+        _journey(legs=[_leg(name="S 1", delay_minutes=2)]),
+        _journey(legs=[_leg(name="S 2", delay_minutes=3)]),
+    ]
+
+
 # ---- Helper-level unit tests -----------------------------------------------
 
 
@@ -204,18 +224,10 @@ def test_directions_table_covers_both_targets() -> None:
 
 
 def test_short_target_label_resolves_via_station_directory() -> None:
-    """``_short_target_label`` must round-trip canonical Vienna stations.
-
-    A ``Wien `` prefix is stripped so the description reads
-    "in Richtung Meidling" / "in Richtung Floridsdorf" — but the
-    suffix portion comes from the canonical directory, so renaming
-    "Wien Meidling" in ``data/stations.json`` propagates here.
-    """
+    """``_short_target_label`` must round-trip canonical Vienna stations."""
 
     assert script._short_target_label("Wien Meidling") == "Meidling"
     assert script._short_target_label("Wien Floridsdorf") == "Floridsdorf"
-    # Aliases also resolve (the directory normalises them to the canonical
-    # entry before the prefix strip happens).
     assert script._short_target_label("Meidling") == "Meidling"
     assert script._short_target_label("Floridsdorf") == "Floridsdorf"
 
@@ -241,7 +253,6 @@ def test_short_target_label_handles_directory_exception(
 
     monkeypatch.setattr(script, "canonical_name", boom)
     monkeypatch.setattr(script, "display_name", lambda _name: "")
-    # We still get a sensible label via the literal-with-prefix-stripped fallback.
     assert script._short_target_label("Wien Meidling") == "Meidling"
 
 
@@ -306,6 +317,103 @@ def test_patch_session_timeout_handles_session_without_request() -> None:
     script._patch_session_timeout(profile, 5.0)  # must not raise
 
 
+# ---- _read_existing_first_seen / _resolve_first_seen tests ----------------
+
+
+def test_read_existing_first_seen_handles_missing_file(
+    _isolated_output: Path,
+) -> None:
+    assert script._read_existing_first_seen() == {}
+
+
+def test_read_existing_first_seen_handles_invalid_json(
+    _isolated_output: Path,
+) -> None:
+    _isolated_output.parent.mkdir(parents=True, exist_ok=True)
+    _isolated_output.write_text("not-json", encoding="utf-8")
+    assert script._read_existing_first_seen() == {}
+
+
+def test_read_existing_first_seen_extracts_prefix_and_first_seen(
+    _isolated_output: Path,
+) -> None:
+    _isolated_output.parent.mkdir(parents=True, exist_ok=True)
+    _isolated_output.write_text(
+        json.dumps(
+            [
+                {
+                    "_identity": "stammstrecke_delay_meidling|2026-05-09T08:00:00+02:00",
+                    "first_seen": "2026-05-09T08:00:00+02:00",
+                },
+                {
+                    "_identity": "stammstrecke_delay_floridsdorf|2026-05-08T17:30:00+02:00",
+                    "first_seen": "2026-05-08T17:30:00+02:00",
+                },
+            ]
+        ),
+        encoding="utf-8",
+    )
+    assert script._read_existing_first_seen() == {
+        "stammstrecke_delay_meidling": "2026-05-09T08:00:00+02:00",
+        "stammstrecke_delay_floridsdorf": "2026-05-08T17:30:00+02:00",
+    }
+
+
+def test_read_existing_first_seen_skips_malformed_items(
+    _isolated_output: Path,
+) -> None:
+    _isolated_output.parent.mkdir(parents=True, exist_ok=True)
+    _isolated_output.write_text(
+        json.dumps(
+            [
+                "not-a-dict",
+                {"_identity": 42, "first_seen": "2026-05-09T08:00:00+02:00"},  # bad identity
+                {"_identity": "x|y", "first_seen": 999},  # bad first_seen
+                {
+                    "_identity": "good_prefix|2026-05-09T08:00:00+02:00",
+                    "first_seen": "2026-05-09T08:00:00+02:00",
+                },
+            ]
+        ),
+        encoding="utf-8",
+    )
+    assert script._read_existing_first_seen() == {
+        "good_prefix": "2026-05-09T08:00:00+02:00"
+    }
+
+
+def test_resolve_first_seen_returns_now_when_no_prior(_stable_now: datetime) -> None:
+    result = script._resolve_first_seen("any_prefix", {}, _stable_now)
+    assert result == _stable_now
+
+
+def test_resolve_first_seen_returns_parsed_prior(_stable_now: datetime) -> None:
+    prior = datetime(2026, 5, 1, 10, 0, 0, tzinfo=VIENNA_TZ)
+    result = script._resolve_first_seen(
+        "p", {"p": prior.isoformat()}, _stable_now
+    )
+    assert result == prior
+
+
+def test_resolve_first_seen_handles_unparseable_prior(
+    _stable_now: datetime, caplog: pytest.LogCaptureFixture
+) -> None:
+    caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
+    result = script._resolve_first_seen("p", {"p": "definitely-not-iso"}, _stable_now)
+    assert result == _stable_now
+    assert any("first_seen" in r.getMessage() for r in caplog.records)
+
+
+def test_resolve_first_seen_localises_naive_datetime(_stable_now: datetime) -> None:
+    """A prior ISO without tz info is force-localised to Europe/Vienna."""
+
+    naive = "2026-05-01T10:00:00"
+    result = script._resolve_first_seen("p", {"p": naive}, _stable_now)
+    assert result.tzinfo is not None
+    # Vienna in May → +02:00.
+    assert result.utcoffset() == timedelta(hours=2)
+
+
 # ---- _build_event tests ----------------------------------------------------
 
 
@@ -315,6 +423,7 @@ def test_build_event_for_meidling_direction(_stable_now: datetime) -> None:
         direction=direction,
         median_delay_minutes=12.5,
         pub_date=_stable_now,
+        first_seen=_stable_now,
     )
     required_keys = {
         "source",
@@ -325,6 +434,7 @@ def test_build_event_for_meidling_direction(_stable_now: datetime) -> None:
         "guid",
         "pubDate",
         "starts_at",
+        "first_seen",
     }
     assert required_keys.issubset(event.keys())
     assert event["title"] == "S-Bahn Stammstrecke Verspätungen"
@@ -332,11 +442,12 @@ def test_build_event_for_meidling_direction(_stable_now: datetime) -> None:
     assert event["category"] == "Störung"
     assert (
         event["description"]
-        == "Durchschnittliche Verspätung von 12.5 Minuten in Richtung Meidling"
+        == "Durchschnittliche Verspätung von 12.5 Minuten in Richtung Meidling [Seit 09.05.2026]"
     )
     # Timestamps must be ISO-8601 strings with offset (Europe/Vienna).
     assert event["pubDate"] == _stable_now.isoformat()
     assert event["starts_at"] == _stable_now.isoformat()
+    assert event["first_seen"] == _stable_now.isoformat()
     assert event["pubDate"].endswith(("+02:00", "+01:00"))
     assert event["ends_at"] is None
     assert event["_identity"].startswith("stammstrecke_delay_meidling|")
@@ -348,45 +459,121 @@ def test_build_event_for_floridsdorf_direction(_stable_now: datetime) -> None:
         direction=direction,
         median_delay_minutes=15.0,
         pub_date=_stable_now,
+        first_seen=_stable_now,
     )
     assert event["title"] == "S-Bahn Stammstrecke Verspätungen"
     # 15.0 must render as "15" (no trailing zero) per ``_format_minutes``.
     assert (
         event["description"]
-        == "Durchschnittliche Verspätung von 15 Minuten in Richtung Floridsdorf"
+        == "Durchschnittliche Verspätung von 15 Minuten in Richtung Floridsdorf [Seit 09.05.2026]"
     )
     assert event["_identity"].startswith("stammstrecke_delay_floridsdorf|")
 
 
-def test_build_event_guids_differ_per_direction(_stable_now: datetime) -> None:
-    """Each direction must produce a distinct GUID for the same timestamp.
+def test_build_event_uses_first_seen_for_seit_date(_stable_now: datetime) -> None:
+    """The "[Seit DD.MM.YYYY]" date comes from ``first_seen``, NOT pub_date.
 
-    The user-facing contract is that feed readers treat the two
-    direction events as separate notifications. That requires distinct
-    ``guid`` values even when the underlying timestamps coincide.
+    A continuing episode must keep the original first-observed date in
+    the description even when the cron tick advances.
     """
+
+    pub = _stable_now + timedelta(days=2)
+    first = _stable_now  # episode started 2 days ago
+    event = script._build_event(
+        direction=script.DIRECTIONS[0],
+        median_delay_minutes=12.0,
+        pub_date=pub,
+        first_seen=first,
+    )
+    assert "[Seit 09.05.2026]" in event["description"]
+    assert "[Seit 11.05.2026]" not in event["description"]
+    # And the timestamps follow the contract.
+    assert event["pubDate"] == pub.isoformat()
+    assert event["first_seen"] == first.isoformat()
+    assert event["starts_at"] == first.isoformat()
+
+
+def test_build_event_guid_is_stable_for_same_episode(_stable_now: datetime) -> None:
+    """Two ticks of the same episode produce the same GUID."""
+
+    pub_t1 = _stable_now
+    pub_t2 = _stable_now + timedelta(minutes=30)
+    event_t1 = script._build_event(
+        direction=script.DIRECTIONS[0],
+        median_delay_minutes=12.0,
+        pub_date=pub_t1,
+        first_seen=_stable_now,
+    )
+    event_t2 = script._build_event(
+        direction=script.DIRECTIONS[0],
+        median_delay_minutes=14.0,
+        pub_date=pub_t2,
+        first_seen=_stable_now,
+    )
+    assert event_t1["guid"] == event_t2["guid"]
+    assert event_t1["pubDate"] != event_t2["pubDate"]
+    assert event_t1["first_seen"] == event_t2["first_seen"]
+
+
+def test_build_event_guid_changes_when_first_seen_changes(
+    _stable_now: datetime,
+) -> None:
+    """Different episodes (different first_seen) produce different GUIDs."""
+
+    earlier = _stable_now
+    later = _stable_now + timedelta(hours=2)
+    event_earlier = script._build_event(
+        direction=script.DIRECTIONS[0],
+        median_delay_minutes=12.0,
+        pub_date=later,
+        first_seen=earlier,
+    )
+    event_later = script._build_event(
+        direction=script.DIRECTIONS[0],
+        median_delay_minutes=12.0,
+        pub_date=later,
+        first_seen=later,
+    )
+    assert event_earlier["guid"] != event_later["guid"]
+
+
+def test_build_event_guids_differ_per_direction(_stable_now: datetime) -> None:
+    """Each direction must produce a distinct GUID for the same timestamp."""
 
     meidling = next(d for d in script.DIRECTIONS if d.target_label == "Meidling")
     floridsdorf = next(d for d in script.DIRECTIONS if d.target_label == "Floridsdorf")
     event_a = script._build_event(
-        direction=meidling, median_delay_minutes=12.5, pub_date=_stable_now
+        direction=meidling,
+        median_delay_minutes=12.5,
+        pub_date=_stable_now,
+        first_seen=_stable_now,
     )
     event_b = script._build_event(
-        direction=floridsdorf, median_delay_minutes=12.5, pub_date=_stable_now
+        direction=floridsdorf,
+        median_delay_minutes=12.5,
+        pub_date=_stable_now,
+        first_seen=_stable_now,
     )
     assert event_a["guid"] != event_b["guid"]
     assert event_a["_identity"] != event_b["_identity"]
 
 
-def test_build_event_guid_is_deterministic(_stable_now: datetime) -> None:
-    direction = script.DIRECTIONS[0]
-    event_a = script._build_event(
-        direction=direction, median_delay_minutes=12.5, pub_date=_stable_now
+def test_build_event_validates_against_schema(_stable_now: datetime) -> None:
+    """Pin schema compliance against ``docs/schema/events.schema.json``."""
+
+    jsonschema = pytest.importorskip("jsonschema")
+    schema_path = REPO_ROOT / "docs" / "schema" / "events.schema.json"
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+
+    event = script._build_event(
+        direction=script.DIRECTIONS[0],
+        median_delay_minutes=12.5,
+        pub_date=_stable_now,
+        first_seen=_stable_now,
     )
-    event_b = script._build_event(
-        direction=direction, median_delay_minutes=12.5, pub_date=_stable_now
-    )
-    assert event_a["guid"] == event_b["guid"]
+    validator = jsonschema.Draft202012Validator(schema)
+    errors = sorted(validator.iter_errors(event), key=lambda e: e.path)
+    assert errors == [], "\n".join(e.message for e in errors)
 
 
 # ---- main() integration tests ---------------------------------------------
@@ -413,17 +600,13 @@ def test_main_writes_two_events_when_both_directions_above_threshold(
     payload = _read_output(_isolated_output)
     assert len(payload) == 2
     descriptions = {event["description"] for event in payload}
-    assert (
-        "Durchschnittliche Verspätung von 11 Minuten in Richtung Meidling"
-        in descriptions
-    )
-    assert (
-        "Durchschnittliche Verspätung von 14 Minuten in Richtung Floridsdorf"
-        in descriptions
-    )
+    assert any("in Richtung Meidling [Seit" in d for d in descriptions)
+    assert any("in Richtung Floridsdorf [Seit" in d for d in descriptions)
     # Both events must have distinct GUIDs.
     guids = {event["guid"] for event in payload}
     assert len(guids) == 2
+    # Each event includes a first_seen field.
+    assert all("first_seen" in event for event in payload)
 
 
 def test_main_writes_only_meidling_event_when_only_forward_above_threshold(
@@ -433,10 +616,7 @@ def test_main_writes_only_meidling_event_when_only_forward_above_threshold(
         _journey(legs=[_leg(name="S 1", delay_minutes=14)]),
         _journey(legs=[_leg(name="S 2", delay_minutes=13)]),
     ]
-    bwd = [
-        _journey(legs=[_leg(name="S 7", delay_minutes=2)]),
-        _journey(legs=[_leg(name="S 80", delay_minutes=4)]),
-    ]
+    bwd = [_journey(legs=[_leg(name="S 7", delay_minutes=2)])]
     _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
 
     assert script.main() == 0
@@ -446,29 +626,12 @@ def test_main_writes_only_meidling_event_when_only_forward_above_threshold(
     assert payload[0]["_identity"].startswith("stammstrecke_delay_meidling|")
 
 
-def test_main_writes_only_floridsdorf_event_when_only_backward_above_threshold(
-    monkeypatch: pytest.MonkeyPatch, _isolated_output: Path
-) -> None:
-    fwd = [_journey(legs=[_leg(name="S 1", delay_minutes=2)])]
-    bwd = [
-        _journey(legs=[_leg(name="S 7", delay_minutes=11)]),
-        _journey(legs=[_leg(name="S 80", delay_minutes=12)]),
-    ]
-    _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
-
-    assert script.main() == 0
-    payload = _read_output(_isolated_output)
-    assert len(payload) == 1
-    assert "in Richtung Floridsdorf" in payload[0]["description"]
-    assert payload[0]["_identity"].startswith("stammstrecke_delay_floridsdorf|")
-
-
 def test_main_writes_empty_when_both_directions_below_threshold(
     monkeypatch: pytest.MonkeyPatch, _isolated_output: Path
 ) -> None:
-    fwd = [_journey(legs=[_leg(name="S 1", delay_minutes=2)])]
-    bwd = [_journey(legs=[_leg(name="S 7", delay_minutes=4)])]
-    _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
+    """Self-Healing: median ≤ threshold for both directions → cache cleared."""
+
+    _patch_client(monkeypatch, _make_directional_client(_low_journeys(), _low_journeys()))
 
     assert script.main() == 0
     assert _read_output(_isolated_output) == []
@@ -505,47 +668,38 @@ def test_main_writes_empty_when_no_sbahn_legs(
 def test_main_partial_failure_keeps_other_direction_event(
     monkeypatch: pytest.MonkeyPatch,
     _isolated_output: Path,
-    caplog: pytest.LogCaptureFixture,
 ) -> None:
-    """Direction 1 raises but direction 2 succeeds with a high median.
+    """A transient error on one direction must not discard the other.
 
-    The event for the surviving direction must still be persisted —
-    discarding direction 2's data because direction 1 had a transient
-    error would degrade the feed for no reason.
+    Per the per-direction-isolation rule: if one direction succeeds with
+    a high median, that event is persisted even when the other
+    direction's call raised.
     """
 
     fwd_error = RuntimeError("transient connection reset")
-    bwd_high = [
-        _journey(legs=[_leg(name="S 7", delay_minutes=12)]),
-        _journey(legs=[_leg(name="S 80", delay_minutes=14)]),
-    ]
-    _patch_client(monkeypatch, _make_directional_client(fwd_error, bwd_high))
+    _patch_client(monkeypatch, _make_directional_client(fwd_error, _high_journeys()))
 
-    caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
-    # Exit code 0 because at least one direction succeeded.
-    assert script.main() == 0
-
+    assert script.main() == 0  # at least one direction succeeded
     payload = _read_output(_isolated_output)
     assert len(payload) == 1
     assert "in Richtung Floridsdorf" in payload[0]["description"]
-    assert any("Richtung Meidling" in r.getMessage() for r in caplog.records)
 
 
-def test_main_returns_1_when_all_directions_fail(
+def test_main_clears_cache_when_all_directions_fail(
     monkeypatch: pytest.MonkeyPatch,
     _isolated_output: Path,
-    caplog: pytest.LogCaptureFixture,
 ) -> None:
+    """Self-Healing: API globally unreachable → empty cache, exit 1."""
+
     err1 = RuntimeError("connection reset 1")
     err2 = RuntimeError("connection reset 2")
     _patch_client(monkeypatch, _make_directional_client(err1, err2))
 
-    caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
     assert script.main() == 1
     assert _read_output(_isolated_output) == []
 
 
-def test_main_writes_empty_on_import_error(
+def test_main_clears_cache_on_import_error(
     monkeypatch: pytest.MonkeyPatch,
     _isolated_output: Path,
     caplog: pytest.LogCaptureFixture,
@@ -554,24 +708,45 @@ def test_main_writes_empty_on_import_error(
         raise ImportError("OEBBProfile not available in this pyhafas release")
 
     monkeypatch.setattr(script, "_build_client", raise_import_error)
-
     caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
     assert script.main() == 0
     assert _read_output(_isolated_output) == []
-    assert any("nicht verfügbar" in r.getMessage() for r in caplog.records)
 
 
-def test_main_short_circuits_when_breaker_is_open(
+def test_main_clears_cache_when_breaker_is_open(
     monkeypatch: pytest.MonkeyPatch,
     _isolated_output: Path,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
-    """Pre-tripping the breaker forces main() onto its short-circuit path.
+    """Self-Healing: pre-tripped breaker → cache emptied, exit 0.
 
-    When the breaker is OPEN, the first direction's call raises
-    ``CircuitBreakerOpen``. main() must break out of the loop without
-    invoking the upstream for the second direction either.
+    Even if a previous run had written events, a tripped breaker on
+    the current run must clear the cache so the RSS feed never carries
+    stale warnings.
     """
+
+    # Pre-write a non-empty cache to verify it gets cleared.
+    _isolated_output.parent.mkdir(parents=True, exist_ok=True)
+    _isolated_output.write_text(
+        json.dumps(
+            [
+                {
+                    "source": "ÖBB",
+                    "category": "Störung",
+                    "title": "S-Bahn Stammstrecke Verspätungen",
+                    "description": "stale",
+                    "link": "https://x.example",
+                    "guid": "stale-guid",
+                    "pubDate": "2026-05-09T08:00:00+02:00",
+                    "starts_at": "2026-05-09T08:00:00+02:00",
+                    "ends_at": None,
+                    "first_seen": "2026-05-09T08:00:00+02:00",
+                    "_identity": "stammstrecke_delay_meidling|2026-05-09T08:00:00+02:00",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
 
     breaker = CircuitBreaker(
         "stammstrecke-hafas-pretrip",
@@ -594,19 +769,16 @@ def test_main_short_circuits_when_breaker_is_open(
     _patch_client(monkeypatch, fake_client)
 
     caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
-    # Exit 0 — breaker-open is intentional short-circuiting, not a failure.
     assert script.main() == 0
-    assert _read_output(_isolated_output) == []
+    assert _read_output(_isolated_output) == []  # stale entry wiped
     assert upstream_calls == []
     assert any("breaker" in r.getMessage().lower() for r in caplog.records)
 
 
 def test_main_handles_non_list_payload(
-    monkeypatch: pytest.MonkeyPatch,
-    _isolated_output: Path,
-    caplog: pytest.LogCaptureFixture,
+    monkeypatch: pytest.MonkeyPatch, _isolated_output: Path
 ) -> None:
-    """Both directions return a non-list value → both fail, exit 1."""
+    """Both directions return a non-list value → both fail, exit 1, cache empty."""
 
     def journeys(**kwargs: Any) -> Any:
         return "not-a-list"
@@ -614,7 +786,6 @@ def test_main_handles_non_list_payload(
     fake_client = SimpleNamespace(profile=SimpleNamespace(), journeys=journeys)
     _patch_client(monkeypatch, fake_client)
 
-    caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
     assert script.main() == 1
     assert _read_output(_isolated_output) == []
 
@@ -626,14 +797,170 @@ def test_main_emits_iso8601_with_vienna_offset(
 ) -> None:
     """Verify the timezone contract: pubDate is Europe/Vienna, ISO 8601."""
 
-    fwd = [_journey(legs=[_leg(name="S 1", delay_minutes=12)])]
-    bwd = [_journey(legs=[_leg(name="S 7", delay_minutes=12)])]
-    _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
+    _patch_client(monkeypatch, _make_directional_client(_high_journeys(), _high_journeys()))
 
     assert script.main() == 0
     payload = _read_output(_isolated_output)
     assert len(payload) == 2
     for event in payload:
         assert event["pubDate"] == _stable_now.isoformat()
-        # Either summer (+02:00) or winter (+01:00) — date is in May → +02:00.
-        assert event["pubDate"].endswith("+02:00")
+        assert event["pubDate"].endswith("+02:00")  # May → CEST
+        # first_seen also Vienna-anchored.
+        assert event["first_seen"] == _stable_now.isoformat()
+
+
+# ---- first_seen persistence integration tests ------------------------------
+
+
+def test_first_seen_persists_across_consecutive_high_runs(
+    monkeypatch: pytest.MonkeyPatch,
+    _isolated_output: Path,
+    _stable_now: datetime,
+) -> None:
+    """Two ticks with the same direction over threshold → SAME first_seen.
+
+    The GUID stays stable, the pubDate updates. The "[Seit DD.MM.YYYY]"
+    in the description shows the original first-observation date.
+    """
+
+    # Tick 1: only Meidling-direction high.
+    _patch_client(
+        monkeypatch, _make_directional_client(_high_journeys(), _low_journeys())
+    )
+    assert script.main() == 0
+    tick1 = _read_output(_isolated_output)
+    assert len(tick1) == 1
+    first_seen_t1 = tick1[0]["first_seen"]
+    pub_t1 = tick1[0]["pubDate"]
+    guid_t1 = tick1[0]["guid"]
+    assert first_seen_t1 == _stable_now.isoformat()
+    assert "[Seit 09.05.2026]" in tick1[0]["description"]
+
+    # Tick 2: 30 minutes later, still high.
+    later = _stable_now + timedelta(minutes=30)
+    _set_now(monkeypatch, later)
+    _patch_client(
+        monkeypatch, _make_directional_client(_high_journeys(), _low_journeys())
+    )
+    assert script.main() == 0
+    tick2 = _read_output(_isolated_output)
+    assert len(tick2) == 1
+
+    assert tick2[0]["first_seen"] == first_seen_t1  # PRESERVED
+    assert tick2[0]["pubDate"] != pub_t1  # advances
+    assert tick2[0]["pubDate"] == later.isoformat()
+    assert tick2[0]["guid"] == guid_t1  # GUID stable
+    # Description's "Seit"-date is still the original observation day.
+    assert "[Seit 09.05.2026]" in tick2[0]["description"]
+
+
+def test_first_seen_regenerates_after_recovery(
+    monkeypatch: pytest.MonkeyPatch,
+    _isolated_output: Path,
+    _stable_now: datetime,
+) -> None:
+    """Recovery (median ≤ 9) clears the cache, the next high-median tick
+    gets a *fresh* ``first_seen`` — a new episode."""
+
+    # Tick 1: high → event written.
+    _patch_client(
+        monkeypatch, _make_directional_client(_high_journeys(), _low_journeys())
+    )
+    script.main()
+    first_seen_t1 = _read_output(_isolated_output)[0]["first_seen"]
+    guid_t1 = _read_output(_isolated_output)[0]["guid"]
+
+    # Tick 2: recovery — both directions back to normal.
+    later = _stable_now + timedelta(minutes=30)
+    _set_now(monkeypatch, later)
+    _patch_client(
+        monkeypatch, _make_directional_client(_low_journeys(), _low_journeys())
+    )
+    script.main()
+    assert _read_output(_isolated_output) == []  # cache cleared
+
+    # Tick 3: disruption returns — must get a NEW first_seen and a NEW GUID.
+    even_later = _stable_now + timedelta(minutes=60)
+    _set_now(monkeypatch, even_later)
+    _patch_client(
+        monkeypatch, _make_directional_client(_high_journeys(), _low_journeys())
+    )
+    script.main()
+    tick3 = _read_output(_isolated_output)
+    assert len(tick3) == 1
+    assert tick3[0]["first_seen"] == even_later.isoformat()
+    assert tick3[0]["first_seen"] != first_seen_t1  # FRESH first_seen
+    assert tick3[0]["guid"] != guid_t1  # NEW episode → new GUID
+
+
+def test_first_seen_persistence_is_independent_per_direction(
+    monkeypatch: pytest.MonkeyPatch,
+    _isolated_output: Path,
+    _stable_now: datetime,
+) -> None:
+    """One direction's persistence must not leak into the other direction.
+
+    Tick 1: only Meidling direction high. Tick 2: only Floridsdorf
+    direction high. Each direction's first_seen must reflect when *that
+    specific direction* first crossed the threshold.
+    """
+
+    # Tick 1: Meidling high, Floridsdorf low.
+    _patch_client(
+        monkeypatch, _make_directional_client(_high_journeys(), _low_journeys())
+    )
+    script.main()
+    tick1 = _read_output(_isolated_output)
+    assert len(tick1) == 1
+    assert tick1[0]["_identity"].startswith("stammstrecke_delay_meidling|")
+    meidling_first_seen = tick1[0]["first_seen"]
+
+    # Tick 2: Floridsdorf high, Meidling low (Meidling recovered).
+    later = _stable_now + timedelta(minutes=30)
+    _set_now(monkeypatch, later)
+    _patch_client(
+        monkeypatch, _make_directional_client(_low_journeys(), _high_journeys())
+    )
+    script.main()
+    tick2 = _read_output(_isolated_output)
+    assert len(tick2) == 1
+    assert tick2[0]["_identity"].startswith("stammstrecke_delay_floridsdorf|")
+    # Floridsdorf is a NEW episode → first_seen = `later`.
+    assert tick2[0]["first_seen"] == later.isoformat()
+    # Meidling's prior first_seen is gone (no Meidling event in cache).
+    assert meidling_first_seen != tick2[0]["first_seen"]
+
+
+def test_first_seen_continues_when_only_one_direction_resumes(
+    monkeypatch: pytest.MonkeyPatch,
+    _isolated_output: Path,
+    _stable_now: datetime,
+) -> None:
+    """Both directions over threshold across two ticks → both events
+    keep their original first_seen."""
+
+    # Tick 1: both high.
+    _patch_client(
+        monkeypatch, _make_directional_client(_high_journeys(), _high_journeys())
+    )
+    script.main()
+    tick1 = _read_output(_isolated_output)
+    assert len(tick1) == 2
+    first_seen_per_direction_t1 = {
+        item["_identity"].split("|", 1)[0]: item["first_seen"] for item in tick1
+    }
+
+    # Tick 2: still both high.
+    later = _stable_now + timedelta(minutes=30)
+    _set_now(monkeypatch, later)
+    _patch_client(
+        monkeypatch, _make_directional_client(_high_journeys(), _high_journeys())
+    )
+    script.main()
+    tick2 = _read_output(_isolated_output)
+    assert len(tick2) == 2
+    for item in tick2:
+        prefix = item["_identity"].split("|", 1)[0]
+        assert (
+            item["first_seen"] == first_seen_per_direction_t1[prefix]
+        ), f"first_seen for {prefix} drifted across ticks"

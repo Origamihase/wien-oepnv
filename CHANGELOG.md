@@ -1,6 +1,35 @@
 # CHANGELOG
 
 ## [Unreleased]
+* **Feat (Stammstrecke)**: Self-Healing + first_seen-Persistenz +
+  erweitertes Description-Schema. Konkret:
+  - **first_seen-Persistenz**: Jedes Event in
+    `cache/stammstrecke/events.json` trägt nun ein eigenes
+    `first_seen`-Feld (ISO-8601, Europe/Vienna). Beim nächsten
+    Cron-Tick liest das Skript den vorherigen Cache, erkennt für
+    jede Richtung das ursprüngliche `first_seen` und behält es bei,
+    solange die Episode anhält. Damit bleibt die `guid` für die
+    Dauer einer Verspätungs-Episode stabil (Feed-Reader zeigen *eine*
+    fortlaufende Meldung statt einer Flut neuer Einträge alle
+    30 Minuten).
+  - **Description-Format**: `"Durchschnittliche Verspätung von [X]
+    Minuten in Richtung [Zielbahnhof] [Seit DD.MM.YYYY]"` —
+    DD.MM.YYYY ist das `first_seen`-Datum, lokalisiert auf
+    Europe/Vienna.
+  - **Self-Healing**: Die Cache-Datei wird *zwingend* auf `[]`
+    geleert, sobald (a) die Schnittstelle nicht erreichbar ist
+    (jede pyhafas-Exception, ImportError oder offener Circuit
+    Breaker) ODER (b) für *alle* Richtungen der Median ≤ 9 ist.
+    Dies verhindert veraltete Warnungen im RSS-Feed bei einem
+    Recovery oder einem API-Ausfall.
+  - **GUID-Stabilität**: `guid` wird jetzt aus
+    `(identity_prefix, iso_first_seen)` abgeleitet (statt
+    `iso_pubDate`), `starts_at` ist das `first_seen` (statt der
+    aktuellen Beobachtungszeit). `pubDate` bleibt als Freshness-
+    Indikator dynamisch.
+  - **Schema-Pin-Test**: Neuer `test_build_event_validates_against_schema`
+    validiert das emittierte Event-Objekt gegen
+    `docs/schema/events.schema.json` (via `pytest.importorskip("jsonschema")`).
 * **Security/Liveness**: Stammstrecke-Monitor erzwingt jetzt einen
   echten HTTP-Timeout für pyhafas-Aufrufe. Das vorherige Code-Snippet
   versuchte, ``client.profile.requests.timeout`` zu setzen — pyhafas
