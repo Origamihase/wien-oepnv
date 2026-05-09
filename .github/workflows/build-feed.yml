@@ -102,10 +102,20 @@ jobs:
           # ``docs/feed.xml`` is the public output; ``data/first_seen.json``
           # is the build-feed state file tracking item ages and must
           # commit alongside the feed to keep the merge stable.
-          # ``docs/statistik.md`` and ``README.md`` carry the regenerated
-          # human-readable dashboard / snapshot from the same CSV ledger.
+          # ``data/stats/stoerungen_<YYYY>.csv`` is appended by
+          # ``build_feed.py:append_disruption_row`` whenever a strictly-
+          # new disruption identity arrives; without committing it
+          # here every Build-feed run silently drops those rows on the
+          # ephemeral runner and the dashboard never grows past what
+          # ``manual-full-refresh.yml`` happens to commit (audit
+          # finding 2026-05-09 — this was the reason ``Häufigste
+          # Störungsorte`` was sparse in the README until the manual
+          # refresh ran). ``docs/statistik.md`` and ``README.md`` carry
+          # the regenerated human-readable dashboard / snapshot from
+          # the same CSV ledger.
           file_pattern: |
             data/first_seen.json
+            data/stats/stoerungen_*.csv
             docs/feed.xml
             docs/statistik.md
             README.md
