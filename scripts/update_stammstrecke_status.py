@@ -364,31 +364,21 @@ def _query_trips(
 
     safe_timeout = max(1, min(timeout, MAX_QUERY_TIMEOUT))
 
-    # Param-naming notes for the VAO ``/trip`` endpoint (Senior-API-
-    # Integration audit, 2026-05-09 — third iteration after PR #1385
-    # diagnostics + PR #1387 originExtId attempt both yielded HTTP 400):
-    #
-    # * **ID encoding** — VAO accepts external station IDs (bare-numeric
-    #   IBNR-style codes, e.g. ``490033400`` from ``data/stations.json``)
-    #   in two forms:
-    #     1. ``originExtId=490033400`` — DB Navigator HAFAS convention.
-    #     2. ``originId=extId::490033400`` — VAO/ÖBB convention per
-    #        Kapitel "Identifikationsarten von Ortsobjekten" (S. 19) of
-    #        the Handbuch_VAO_ReST_API_latest.pdf: the ``extId::``
-    #        prefix encodes "treat the value as an external ID". The
-    #        2026-05-09 cron runs revealed that form #1 (PR #1387)
-    #        triggered HTTP 400 with empty body on this VAO instance;
-    #        we now use form #2.
-    # * ``Accept: application/json`` header — replaces the
-    #   ``format=json`` query parameter. The trip.md curl example does
-    #   not include ``format=json``, only the Accept header; the
-    #   ``departureBoard`` endpoint is the outlier that documents both.
-    # * ``date`` / ``time`` — explicitly pinned to the current Vienna
-    #   wall clock so the upstream cannot drift to UTC or fail to
-    #   infer "now".
+    # Param-naming notes for the VAO ``/trip`` endpoint (sixth iteration
+    # of the 2026-05-09 triage; see PR #1391's commit log for the
+    # full chain). After the workflow-config fix exposed the accessId,
+    # VAO's response advanced from ``"Missing value for required param
+    # accessId"`` to ``"location missing or invalid (LOCATION)"`` —
+    # confirming auth works but the ``originId=extId::<id>`` form
+    # (Gemini's hypothesis from the manual) is NOT what the live
+    # endpoint accepts. We revert to the form documented in the
+    # ``trip.md`` curl example AND used by the working
+    # ``_fetch_departure_board_for_station`` in
+    # ``src/providers/vor.py``: bare numeric station IDs passed to
+    # ``originId``/``destId`` directly.
     params: dict[str, str] = {
-        "originId": f"extId::{direction.origin_id}",
-        "destId": f"extId::{direction.destination_id}",
+        "originId": direction.origin_id,
+        "destId": direction.destination_id,
         "date": when.strftime("%Y-%m-%d"),
         "time": when.strftime("%H:%M"),
         "numF": str(MAX_TRIPS_PER_QUERY),
@@ -1111,6 +1101,59 @@ def _extract_vao_error_text(exc: requests.HTTPError) -> str:
     return text
 
 
+def _extract_vao_internal_error_text(exc: requests.HTTPError) -> str:
+    """Return the ``internalErrorText`` / ``internalErrorTextOut`` field.
+
+    The 2026-05-09 cron run revealed that VAO's error envelope
+    includes a richer ``internalError*`` family of fields that
+    typically explains the "what went wrong" at the validator level
+    (e.g. ``"Stop ID 'extId::490033400' could not be resolved"``).
+    These fields are server-set diagnostic prose, mirroring the
+    ``errorText`` shape — same masker behaviour, same length cap.
+
+    Falls back to :data:`_DIAG_EMPTY_BODY` / :data:`_DIAG_MISSING`
+    for the same reasons as :func:`_extract_vao_error_text`.
+    """
+    body = _decode_error_body(exc)
+    if body is None:
+        return _DIAG_EMPTY_BODY
+    raw_text = (
+        body.get("internalErrorText")
+        or body.get("internalErrorTextOut")
+    )
+    if not isinstance(raw_text, str):
+        return _DIAG_MISSING
+    text = raw_text.strip()
+    if not text:
+        return _DIAG_MISSING
+    if len(text) > _ERROR_TEXT_MAX_LEN:
+        return text[:_ERROR_TEXT_MAX_LEN] + "…"
+    return text
+
+
+def _extract_vao_internal_error_code(exc: requests.HTTPError) -> str:
+    """Return the ``internalErrorCode`` field's length-only fingerprint.
+
+    VAO's ``internalErrorCode`` is a structured short-code (matches
+    the same canonical regex as ``errorCode``) but the SafeFormatter
+    might mask it for the same false-positive reason. Render the
+    LENGTH (zero-leak) so the operator can correlate it with VAO
+    documentation tables.
+    """
+    body = _decode_error_body(exc)
+    if body is None:
+        return _DIAG_EMPTY_BODY
+    raw_code = body.get("internalErrorCode")
+    if not isinstance(raw_code, str):
+        return _DIAG_MISSING
+    code = raw_code.strip()
+    if not code:
+        return _DIAG_MISSING
+    if not _VAO_ERROR_CODE_RE.match(code):
+        return _DIAG_BAD_SHAPE
+    return code[:_ERROR_CODE_MAX_LEN]
+
+
 def _extract_vao_request_id(exc: requests.HTTPError) -> str:
     """Return the VAO ``requestId`` from the error body, or a sentinel.
 
@@ -1203,6 +1246,8 @@ def _process_direction(
         error_code = _extract_vao_error_code(exc)
         code_len = _extract_vao_error_code_length(exc)
         error_text = _extract_vao_error_text(exc)
+        internal_code = _extract_vao_internal_error_code(exc)
+        internal_text = _extract_vao_internal_error_text(exc)
         request_id = _extract_vao_request_id(exc)
         body_keys = _describe_error_body_keys(exc)
         content_type = _extract_response_header(exc, "Content-Type")
@@ -1211,13 +1256,16 @@ def _process_direction(
         www_auth = _extract_response_header(exc, "WWW-Authenticate")
         LOGGER.warning(
             "Stammstrecke: Abfrage Richtung %s fehlgeschlagen: HTTP %s "
-            "(errorCode=%s, code_len=%s, err_text=%s, req_id=%s, "
+            "(errorCode=%s, code_len=%s, err_text=%s, "
+            "int_code=%s, int_text=%s, req_id=%s, "
             "body_keys=%s, ct=%s, cl=%s, server=%s, www_auth=%s).",
             direction.target_label,
             status_code,
             sanitize_log_arg(error_code),
             sanitize_log_arg(code_len),
             sanitize_log_arg(error_text),
+            sanitize_log_arg(internal_code),
+            sanitize_log_arg(internal_text),
             sanitize_log_arg(request_id),
             sanitize_log_arg(body_keys),
             sanitize_log_arg(content_type),
