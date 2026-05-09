@@ -94,7 +94,23 @@ jobs:
           # schreiben statt auf das Original-Repo zu zeigen.
           PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
-      # ----- 4) Aenderungen committen und pushen -----
+      # ----- 4) Stammstrecke-Status und Statistiken auffrischen -----
+      # Schreibt cache/stammstrecke/events.json und haengt eine Zeile an
+      # data/stats/stammstrecke_<YYYY>.csv an. Teilt sich die Concurrency-
+      # Gruppe ``external-api-fetch`` mit dem regulaeren 30-Minuten-Cron,
+      # sodass parallele HAFAS-Aufrufe vermieden werden.
+      - name: Refresh Stammstrecke status
+        run: python scripts/update_stammstrecke_status.py
+
+      # Regeneriert docs/statistik.md (Dashboard) und patcht zugleich die
+      # <!-- STATS:* --> Marker im README mit dem 30-Tage-Schnappschuss.
+      # Liest ausschliesslich aus data/stats/*.csv (read-only) und schreibt
+      # via atomic_write — ein Lauf ohne neue Daten patcht das README nur,
+      # wenn sich die "Letzte Aktualisierung"-Zelle aendert.
+      - name: Refresh statistics dashboard and README snapshot
+        run: python scripts/generate_markdown_stats.py
+
+      # ----- 5) Aenderungen committen und pushen -----
       - name: Pull concurrent remote changes
         run: git pull --rebase --autostash
 
