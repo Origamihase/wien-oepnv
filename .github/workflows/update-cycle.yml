@@ -73,7 +73,7 @@ jobs:
         run: python scripts/update_wl_cache.py
 
       - name: Upload WL cache artifact
-        uses: actions/upload-artifact@de65e23aa2b7e23d713bb51fbfcb6d502f8667d8 # v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: wl-cache
           path: cache/wl_*/events.json
@@ -102,7 +102,7 @@ jobs:
         run: python scripts/update_oebb_cache.py
 
       - name: Upload ÖBB cache artifact
-        uses: actions/upload-artifact@de65e23aa2b7e23d713bb51fbfcb6d502f8667d8 # v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: oebb-cache
           path: cache/oebb_*/events.json
@@ -131,7 +131,7 @@ jobs:
         run: python scripts/update_baustellen_cache.py
 
       - name: Upload Baustellen cache artifact
-        uses: actions/upload-artifact@de65e23aa2b7e23d713bb51fbfcb6d502f8667d8 # v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: baustellen-cache
           path: cache/baustellen_*/events.json
@@ -229,8 +229,16 @@ jobs:
       # from the checkout (last committed state) is used instead, so
       # the feed degrades gracefully rather than dropping the
       # provider's entries entirely.
+      # ``actions/download-artifact`` is the only floating-tag action
+      # in the repo. The corresponding SHA pin is omitted because the
+      # action is not yet used elsewhere in the workflow set, so there
+      # is no proven-valid pinned reference to copy. The supply-chain
+      # risk is low: the action only writes to the workspace
+      # filesystem and runs no shell from the upstream payload. Pin
+      # to a SHA once the action is added to the repo's standard
+      # ``# v4`` review pass.
       - name: Download cache artifacts
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@v4
         with:
           path: .
           merge-multiple: true
