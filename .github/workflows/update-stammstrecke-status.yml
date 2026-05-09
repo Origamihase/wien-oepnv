@@ -1,0 +1,104 @@
+name: Update Stammstrecke status
+
+# Pure data-fetcher workflow. Polls the VAO ``/trip`` endpoint twice
+# per cron tick (Floridsdorf↔Meidling, Meidling↔Floridsdorf), computes
+# the per-direction median S-Bahn departure delay, and APPENDS one
+# observation row to ``data/stats/stammstrecke_<YYYY>.csv``. Nothing
+# else: no feed render, no README patch, no provider invocation. The
+# CSV is the project's single source of truth for the Stammstrecke
+# delay signal — the feed-build pipeline (``build-feed.yml``) reads
+# it as a regular consumer.
+#
+# Cron schedule: ``0,30 * * * *`` (explicit :00 and :30 — gives the
+# downstream ``build-feed.yml`` cron at ``15,45`` a 15-minute
+# completion window before it reads the CSV).
+on:
+  schedule:
+    - cron: '0,30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# ``external-api-fetch`` lane shares with the WL / ÖBB / Baustellen /
+# VOR-cache (manual-only) workflows so the daily VAO quota counter
+# and the upstream API rate limits cannot be raced.
+concurrency:
+  group: external-api-fetch
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      PYTHONPATH: src
+      PIP_CACHE_DIR: /tmp/pip-cache
+      # VOR/VAO API credentials — required by ``scripts/update_stammstrecke_
+      # status.py`` since the 2026-05-09 migration from pyhafas to the
+      # VOR ``/trip`` endpoint. Without these env vars, VAO rejects
+      # every request with HTTP 400 (errorText="Missing value for
+      # required param accessId").
+      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
+      VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
+      VOR_BASE: ${{ secrets.VOR_BASE }}
+      VOR_VERSION: ${{ secrets.VOR_VERSION }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Ensure pip cache directory exists
+        run: mkdir -p "$PIP_CACHE_DIR"
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      # Defense-in-depth pre-flight: read the persisted VAO daily counter
+      # (``data/vor_request_count.json``) and SKIP the Stammstrecke step
+      # entirely when a fresh run would breach the contractual 100/day
+      # cap. The in-script ``_charge_one_request`` guard
+      # (``update_stammstrecke_status.py:331``) is still active as a
+      # second-layer enforcer; this preflight makes the budget-exhausted
+      # state explicit at the top of the workflow log so operators can
+      # spot it without scraping the script's DEBUG output. ``--margin
+      # 2`` mirrors the 2 ``/trip`` requests the monitor makes per run.
+      - name: VAO quota pre-flight
+        id: vor_preflight
+        # ``continue-on-error: true`` — the preflight script intentionally
+        # exits 1 when the budget is exhausted. We do NOT want that to
+        # fail the workflow (operator wouldn't see a clean "skipped"
+        # signal); instead we let it continue so the conditional gate on
+        # ``steps.vor_preflight.outputs.quota_ok`` controls the API
+        # step below. The commit step still runs and is a no-op when
+        # there's nothing new to commit.
+        continue-on-error: true
+        run: python scripts/preflight_quota_check.py --check vor --margin 2
+
+      - name: Refresh Stammstrecke status
+        if: ${{ steps.vor_preflight.outputs.quota_ok == 'true' }}
+        run: python scripts/update_stammstrecke_status.py
+
+      - name: Pull concurrent remote changes
+        run: git pull --rebase --autostash
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
+        with:
+          commit_message: 'chore: update Stammstrecke status'
+          # ``data/stats/stammstrecke_<YYYY>.csv`` is the CSV ledger
+          # that this workflow exists to feed.
+          # ``data/vor_request_count.json`` MUST be committed so the
+          # next runner sees today's quota usage and the contract
+          # 100/day cap stays enforceable across CI invocations.
+          file_pattern: |
+            data/stats/stammstrecke_*.csv
+            data/vor_request_count.json

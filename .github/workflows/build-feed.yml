@@ -1,35 +1,32 @@
 name: Build feed
 
-# Single workflow that owns the public RSS feed
-# (``docs/feed.xml``). The Stammstrecke median-delay observation is
-# one of the feed's data sources, not a separate concern, so the
-# entire pipeline lives here:
+# Pure consumer workflow. Reads existing on-disk artefacts, composes
+# the public RSS feed (``docs/feed.xml``), and patches the README
+# stats markers — never calls any upstream API or provider itself.
+# Inputs:
+#   * ``cache/wl_*/events.json``         — owned by ``update-wl-cache.yml``
+#   * ``cache/oebb_*/events.json``       — owned by ``update-oebb-cache.yml``
+#   * ``cache/baustellen_*/events.json`` — owned by ``update-baustellen-cache.yml``
+#   * ``cache/vor_*/events.json``        — owned by ``update-vor-cache.yml``
+#                                          (manual-only since the
+#                                          2026-05-09 quota-conservation pass)
+#   * ``data/stats/stammstrecke_<YYYY>.csv`` — owned by
+#                                          ``update-stammstrecke-status.yml``
 #
-#   1. (cron / dispatch only) VAO quota pre-flight — skips the
-#      Stammstrecke poll if the persisted daily counter would be
-#      breached. Push runs (code changes) skip this step entirely
-#      since they don't need fresh upstream data.
-#   2. (cron / dispatch only) Stammstrecke poll → append observation
-#      row(s) to ``data/stats/stammstrecke_<YYYY>.csv``. CSV is the
-#      single source of truth — no JSON cache.
-#   3. (always) Feed build → reads all caches + the Stammstrecke CSV
-#      via :mod:`src.feed.stammstrecke` (1-hour feed window,
-#      9-minute threshold) → writes ``docs/feed.xml`` +
-#      ``data/first_seen.json``.
-#   4. (cron / dispatch only) README + dashboard regeneration —
-#      patches the ``<!-- STATS:* -->`` markers from the same CSV
-#      with the 30-day window, writes ``docs/statistik.md``.
-#   5. (always) Commit & push everything atomically.
+# Outputs:
+#   * ``docs/feed.xml``       — the public RSS feed
+#   * ``data/first_seen.json`` — feed-state for stable item ages
+#   * ``docs/statistik.md``   — the operator-facing dashboard
+#   * ``README.md``           — patched ``<!-- STATS:* -->`` blocks
 #
-# Triggers:
-#   * schedule (every 30 minutes) — full pipeline
-#   * workflow_dispatch — full pipeline (manual rebuild)
-#   * push to ``src/**`` etc. — feed build only (code-change
-#     verification, no API call, no quota consumption)
-
+# Cron schedule: ``15,45 * * * *`` — 15 minutes after the upstream
+# ``update-stammstrecke-status.yml`` cron at ``0,30`` so the CSV
+# ledger has settled before this workflow reads it. Push trigger
+# rebuilds the feed whenever feed-relevant code changes (no API
+# call, no quota consumption).
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '15,45 * * * *'
   workflow_dispatch:
   push:
     paths:
@@ -41,14 +38,11 @@ on:
 permissions:
   contents: read
 
-# ``external-api-fetch`` lane shares with the WL / ÖBB / Baustellen
-# cache-refresh workflows so the daily VAO quota counter and the
-# upstream API rate limits cannot be raced. Push-triggered runs
-# (code changes) also queue here — slightly suboptimal queue depth
-# but pushes are rare and code-change verification is not latency
-# sensitive.
+# Independent concurrency lane — this workflow does no API I/O so
+# it does not need to share the ``external-api-fetch`` lock with the
+# data-fetcher workflows.
 concurrency:
-  group: external-api-fetch
+  group: build-feed-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -56,29 +50,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       PYTHONPATH: src
-      PIP_CACHE_DIR: /tmp/pip-cache
-      # VOR/VAO API credentials — required by ``scripts/update_stammstrecke_
-      # status.py`` since the 2026-05-09 migration from pyhafas to the
-      # VOR ``/trip`` endpoint. Push-triggered runs skip the
-      # Stammstrecke poll (and therefore never use these), but the env
-      # block is set unconditionally so the cron/dispatch flow always
-      # has them.
-      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
-      VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
-      VOR_BASE: ${{ secrets.VOR_BASE }}
-      VOR_VERSION: ${{ secrets.VOR_VERSION }}
-
     steps:
-      - name: Check out repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           fetch-depth: 0
-
-      - name: Ensure pip cache directory exists
-        run: mkdir -p "$PIP_CACHE_DIR"
 
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
@@ -89,43 +68,11 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-deps
 
-      # Defense-in-depth pre-flight: read the persisted VAO daily counter
-      # (``data/vor_request_count.json``) and SKIP the Stammstrecke step
-      # entirely when a fresh run would breach the contractual 100/day
-      # cap. The in-script ``_charge_one_request`` guard
-      # (``update_stammstrecke_status.py:331``) is still active as a
-      # second-layer enforcer; this preflight makes the budget-exhausted
-      # state explicit at the top of the workflow log so operators can
-      # spot it without scraping the script's DEBUG output. ``--margin
-      # 2`` mirrors the 2 ``/trip`` requests the monitor makes per run.
-      # Skipped entirely on push (code-change runs need no fresh data).
-      - name: VAO quota pre-flight
-        id: vor_preflight
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-        # ``continue-on-error: true`` — the preflight script intentionally
-        # exits 1 when the budget is exhausted. We do NOT want that to
-        # fail the workflow (operator wouldn't see a clean "skipped"
-        # signal); instead we let it continue so the conditional gate on
-        # ``steps.vor_preflight.outputs.quota_ok`` controls the API
-        # steps below. The remaining steps (commit / push of any prior
-        # CSV state) still run and are no-ops.
-        continue-on-error: true
-        run: python scripts/preflight_quota_check.py --check vor --margin 2
-
-      - name: Refresh Stammstrecke status
-        if: ${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && steps.vor_preflight.outputs.quota_ok == 'true' }}
-        run: python scripts/update_stammstrecke_status.py
-
-      # Feed build — runs unconditionally on every trigger. Reads:
-      #   - cache/baustellen_*/events.json
-      #   - cache/wl_*/events.json
-      #   - cache/oebb_*/events.json
-      #   - cache/vor_*/events.json (read-only; cache is no longer
-      #     auto-refreshed since the 2026-05-09 quota-conservation pass)
-      #   - data/stats/stammstrecke_<YYYY>.csv (feed events derived
-      #     from the CSV ledger via :mod:`src.feed.stammstrecke`,
-      #     1-hour window, 9-min threshold)
-      # Writes docs/feed.xml + data/first_seen.json.
+      # Compose the RSS feed from on-disk artefacts only. ``feed build``
+      # reads the provider caches plus the Stammstrecke CSV ledger via
+      # :mod:`src.feed.stammstrecke` (1-hour window, 9-min threshold)
+      # and writes ``docs/feed.xml`` + ``data/first_seen.json``. No
+      # network I/O.
       - name: Build feed
         run: python -m src.cli feed build
         env:
@@ -139,11 +86,8 @@ jobs:
       # patch the README ``<!-- STATS:* -->`` markers with the 30-day
       # rolling snapshot. Reads only ``data/stats/*.csv`` (no network),
       # idempotent at the byte level, atomic write — so a kill-signal
-      # mid-run cannot corrupt either output. Push runs skip this:
-      # code-only changes don't add new CSV rows, so the rendered
-      # output is identical to the last cron run.
+      # mid-run cannot corrupt either output.
       - name: Refresh statistics dashboard and README snapshot
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: python scripts/generate_markdown_stats.py
 
       - name: Pull concurrent remote changes
@@ -155,21 +99,12 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
           commit_message: 'chore: rebuild feed'
-          # ``data/stats/stammstrecke_<YYYY>.csv`` is the single source
-          # of truth for both the RSS feed (1-hour window) and the
-          # README snapshot (30-day window). ``docs/feed.xml`` is
-          # regenerated in this workflow too so the feed-state and
-          # CSV-state commit together (no orphan publishes where the
-          # CSV moved but the feed didn't, or vice versa).
-          # ``data/vor_request_count.json`` MUST be committed so the
-          # next runner sees today's quota usage and the contract
-          # 100/day cap stays enforceable across CI invocations.
-          # ``data/first_seen.json`` is the build-feed state file
-          # tracking item ages; it has to commit alongside feed.xml
-          # to keep the merge stable.
+          # ``docs/feed.xml`` is the public output; ``data/first_seen.json``
+          # is the build-feed state file tracking item ages and must
+          # commit alongside the feed to keep the merge stable.
+          # ``docs/statistik.md`` and ``README.md`` carry the regenerated
+          # human-readable dashboard / snapshot from the same CSV ledger.
           file_pattern: |
-            data/stats/stammstrecke_*.csv
-            data/vor_request_count.json
             data/first_seen.json
             docs/feed.xml
             docs/statistik.md
