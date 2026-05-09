@@ -1,8 +1,10 @@
 name: Update ÖBB cache
 
+# DISABLED CRON (2026-05-09): the regular ``20,50`` schedule was
+# replaced by the ``update-cycle.yml`` DAG workflow. This workflow
+# remains as a ``workflow_dispatch``-only escape hatch for manually
+# re-fetching the ÖBB cache between regular cycle runs.
 on:
-  schedule:
-    - cron: '20,50 * * * *'
   workflow_dispatch:
 
 permissions:

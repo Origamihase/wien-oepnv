@@ -1,20 +1,12 @@
 name: Update Stammstrecke status
 
-# Pure data-fetcher workflow. Polls the VAO ``/trip`` endpoint twice
-# per cron tick (Floridsdorf↔Meidling, Meidling↔Floridsdorf), computes
-# the per-direction median S-Bahn departure delay, and APPENDS one
-# observation row to ``data/stats/stammstrecke_<YYYY>.csv``. Nothing
-# else: no feed render, no README patch, no provider invocation. The
-# CSV is the project's single source of truth for the Stammstrecke
-# delay signal — the feed-build pipeline (``build-feed.yml``) reads
-# it as a regular consumer.
-#
-# Cron schedule: ``0,30 * * * *`` (explicit :00 and :30 — gives the
-# downstream ``build-feed.yml`` cron at ``15,45`` a 15-minute
-# completion window before it reads the CSV).
+# DISABLED CRON (2026-05-09): the regular ``0,30`` schedule was
+# replaced by the ``update-cycle.yml`` DAG workflow which now drives
+# the Stammstrecke poll as a job within a single-cron pipeline.
+# This workflow remains as a ``workflow_dispatch``-only escape hatch
+# for manually re-running the Stammstrecke poll between regular
+# cycle runs (e.g. after fixing a transient VAO outage).
 on:
-  schedule:
-    - cron: '0,30 * * * *'
   workflow_dispatch:
 
 permissions:

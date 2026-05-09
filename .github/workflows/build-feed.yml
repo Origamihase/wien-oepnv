@@ -1,32 +1,20 @@
 name: Build feed
 
-# Pure consumer workflow. Reads existing on-disk artefacts, composes
-# the public RSS feed (``docs/feed.xml``), and patches the README
-# stats markers — never calls any upstream API or provider itself.
-# Inputs:
-#   * ``cache/wl_*/events.json``         — owned by ``update-wl-cache.yml``
-#   * ``cache/oebb_*/events.json``       — owned by ``update-oebb-cache.yml``
-#   * ``cache/baustellen_*/events.json`` — owned by ``update-baustellen-cache.yml``
-#   * ``cache/vor_*/events.json``        — owned by ``update-vor-cache.yml``
-#                                          (manual-only since the
-#                                          2026-05-09 quota-conservation pass)
-#   * ``data/stats/stammstrecke_<YYYY>.csv`` — owned by
-#                                          ``update-stammstrecke-status.yml``
+# DISABLED CRON (2026-05-09): the regular ``15,45`` schedule was
+# replaced by the ``update-cycle.yml`` DAG workflow whose
+# ``build_feed`` job depends on every cache fetcher via ``needs:``
+# — the dependency graph (not a staggered cron) drives the timing.
 #
-# Outputs:
-#   * ``docs/feed.xml``       — the public RSS feed
-#   * ``data/first_seen.json`` — feed-state for stable item ages
-#   * ``docs/statistik.md``   — the operator-facing dashboard
-#   * ``README.md``           — patched ``<!-- STATS:* -->`` blocks
+# This workflow remains as the code-change verification path: a push
+# to ``src/**`` etc. rebuilds the feed from whatever caches are
+# currently on main, without firing any upstream API. The
+# ``workflow_dispatch`` trigger lets operators force a rebuild after
+# a manual cache refresh.
 #
-# Cron schedule: ``15,45 * * * *`` — 15 minutes after the upstream
-# ``update-stammstrecke-status.yml`` cron at ``0,30`` so the CSV
-# ledger has settled before this workflow reads it. Push trigger
-# rebuilds the feed whenever feed-relevant code changes (no API
-# call, no quota consumption).
+# Both retained triggers go through the same single job below, which
+# reads only on-disk artefacts (caches + Stammstrecke CSV ledger)
+# and never calls any upstream API or provider itself.
 on:
-  schedule:
-    - cron: '15,45 * * * *'
   workflow_dispatch:
   push:
     paths:
