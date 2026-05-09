@@ -342,6 +342,56 @@ def html_to_text(s: str, *, collapse_newlines: bool = False) -> str:
     return txt
 
 
+# Defence-in-depth control-character allow-list for Markdown sinks. The
+# CSV writer in :mod:`src.utils.stats` already strips C0/DEL bytes at
+# the persistence boundary, but Markdown rendering is the LAST gate
+# before the value reaches a human renderer (GitHub, IDE, static-site
+# builder); historical rows, future writer-siblings, and the Unicode
+# line / paragraph / BiDi separators (which the CSV regex does not
+# cover) all need to be normalised here. The character class mirrors
+# the canonical Trojan-Source / line-terminator union pinned in
+# ``src/utils/logging.py`` minus the readable whitespace bytes that
+# the immediately-following whitespace-collapse step replaces with a
+# single space (TAB \x09, LF \x0a, CR \x0d):
+#   * \x00-\x08 + \x0b-\x0c + \x0e-\x1f — C0 controls except TAB/LF/CR.
+#   * \x7f-\x9f — DEL + C1 controls (incl. U+0085 NEXT LINE which
+#     several Markdown / SIEM splitters honour as a record terminator).
+#   * U+061C — Arabic Letter Mark (post-Unicode-6.3 BiDi control).
+#   * U+200B-U+200F — ZWSP / ZWNJ / ZWJ + LRM / RLM (CVE-2021-42574
+#     Trojan-Source first half + zero-width clutter).
+#   * U+2028-U+202E — LINE SEP / PARA SEP + LRE/RLE/PDF/LRO/RLO BiDi
+#     formatting controls.
+#   * U+2066-U+2069 — LRI / RLI / FSI / PDI BiDi isolates
+#     (CVE-2021-42574 second half).
+#   * U+FEFF — Byte Order Mark / ZWNBSP.
+_MARKDOWN_NORMALISE_UNSAFE_RE = re.compile(
+    r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+)
+_MARKDOWN_WHITESPACE_RE = re.compile(r"\s+")
+
+
+def normalise_markdown_text(text: str, *, max_len: int = 200) -> str:
+    """Normalise *text* before interpolating it into a Markdown sink.
+
+    Strips control bytes / BiDi marks / Unicode line separators (which
+    would otherwise either split a Markdown table row, fool a SIEM
+    splitter consuming the rendered file, or invert displayed text via
+    CVE-2021-42574-style "Trojan Source" payloads), collapses every
+    whitespace run (including embedded TAB / LF / CR) to a single
+    space, and caps length at *max_len*. The output is plain text,
+    free of layout-breaking whitespace and invisible control bytes —
+    pair with :func:`escape_markdown` (or :func:`escape_markdown_cell`
+    for table cells) to apply context-specific escaping.
+    """
+    if not text:
+        return ""
+    cleaned = _MARKDOWN_NORMALISE_UNSAFE_RE.sub("", text)
+    cleaned = _MARKDOWN_WHITESPACE_RE.sub(" ", cleaned).strip()
+    if len(cleaned) > max_len:
+        cleaned = cleaned[:max_len].rstrip()
+    return cleaned
+
+
 def escape_markdown(text: str) -> str:
     """Escape HTML and Markdown characters to prevent injection/XSS."""
     text = html.escape(text)
@@ -357,3 +407,19 @@ def escape_markdown_cell(text: str) -> str:
     escaped = escape_markdown(text)
     # Use HTML entity for pipe to be safe in tables
     return escaped.replace("|", r"\|")
+
+
+def safe_markdown_codespan(text: str, *, max_len: int = 200) -> str:
+    """Return *text* normalised for inclusion inside a `` `…` `` code span.
+
+    CommonMark code spans render their interior verbatim — backslash
+    escapes are NOT active. The only character that can break out is a
+    literal backtick, which closes the span. Replace backticks with the
+    apostrophe ``'`` (the project-wide convention — see
+    :func:`src.feed.reporting._sanitize_code_span`) and apply the same
+    control-byte / whitespace / length normalisation as
+    :func:`normalise_markdown_text` so embedded newlines cannot break
+    out of the surrounding fenced code block by smuggling a closing
+    ``\\n```\\n`` into the label.
+    """
+    return normalise_markdown_text(text, max_len=max_len).replace("`", "'")
