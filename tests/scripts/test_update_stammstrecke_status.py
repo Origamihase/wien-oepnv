@@ -4,7 +4,8 @@ The pyhafas client is mocked end-to-end so the test suite never reaches
 the live ÖBB HAFAS endpoint. Each test exercises a single, isolated
 branch of the script's decision tree: import-time failure, transport
 error, circuit-breaker open, median-below-threshold, median-above-
-threshold, no S-Bahn legs found.
+threshold, no S-Bahn legs found — for each of the **two** Stammstrecke
+directions independently.
 """
 from __future__ import annotations
 
@@ -31,6 +32,9 @@ from src.utils.circuit_breaker import CircuitBreaker  # noqa: E402
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
 
+# ---- Fixtures --------------------------------------------------------------
+
+
 @pytest.fixture(autouse=True)
 def _isolated_output(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[Path]:
     """Redirect cache writes to a per-test directory."""
@@ -42,7 +46,11 @@ def _isolated_output(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterato
 
 @pytest.fixture(autouse=True)
 def _fresh_breaker(monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
-    """Replace the module-level breaker so tests don't share state."""
+    """Replace the module-level breaker so tests don't share state.
+
+    Uses the production breaker config (10 / 3600 s) so the threshold-
+    based behavioural tests reflect what runs in CI.
+    """
 
     monkeypatch.setattr(
         script,
@@ -65,6 +73,9 @@ def _stable_now(monkeypatch: pytest.MonkeyPatch) -> Iterator[datetime]:
     yield pinned
 
 
+# ---- Helpers ---------------------------------------------------------------
+
+
 def _leg(*, name: str, delay_minutes: float | None, cancelled: bool = False) -> Any:
     """Return a duck-typed leg mock matching pyhafas FPTF Leg."""
 
@@ -81,6 +92,45 @@ def _read_output(path: Path) -> list[dict[str, Any]]:
     payload = json.loads(raw)
     assert isinstance(payload, list)
     return payload
+
+
+def _make_directional_client(
+    floridsdorf_to_meidling: list[Any] | Exception,
+    meidling_to_floridsdorf: list[Any] | Exception,
+) -> Any:
+    """Build a fake HafasClient that returns per-direction mock data.
+
+    Each direction can also be an :class:`Exception` instance to
+    simulate a per-direction transport error without affecting the
+    other direction's outcome.
+    """
+
+    def journeys(**kwargs: Any) -> list[Any]:
+        origin = kwargs.get("origin")
+        destination = kwargs.get("destination")
+        if (
+            origin == script.FLORIDSDORF_STATION_ID
+            and destination == script.MEIDLING_STATION_ID
+        ):
+            payload = floridsdorf_to_meidling
+        elif (
+            origin == script.MEIDLING_STATION_ID
+            and destination == script.FLORIDSDORF_STATION_ID
+        ):
+            payload = meidling_to_floridsdorf
+        else:  # pragma: no cover - defensive: unexpected origin/dest pair
+            raise AssertionError(
+                f"Unexpected origin/destination pair: {origin!r} → {destination!r}"
+            )
+        if isinstance(payload, Exception):
+            raise payload
+        return payload
+
+    return SimpleNamespace(profile=SimpleNamespace(), journeys=journeys)
+
+
+def _patch_client(monkeypatch: pytest.MonkeyPatch, client: Any) -> None:
+    monkeypatch.setattr(script, "_build_client", lambda: client)
 
 
 # ---- Helper-level unit tests -----------------------------------------------
@@ -122,10 +172,52 @@ def test_collect_delays_includes_only_sbahn_with_delay() -> None:
     assert delays == [4.0, 10.0]
 
 
-def test_build_event_matches_schema_required_fields(_stable_now: datetime) -> None:
+def test_collect_delays_handles_missing_legs_attribute() -> None:
+    """A misbehaving HAFAS peer might emit journeys without a ``legs`` attr."""
+
+    journeys = [SimpleNamespace()]  # no legs attribute at all
+    assert script._collect_sbahn_delays_minutes(journeys) == []
+
+
+def test_collect_delays_handles_legs_set_to_none() -> None:
+    journeys = [SimpleNamespace(legs=None)]
+    assert script._collect_sbahn_delays_minutes(journeys) == []
+
+
+def test_format_minutes_strips_trailing_zero() -> None:
+    assert script._format_minutes(12.0) == "12"
+    assert script._format_minutes(12.5) == "12.5"
+    assert script._format_minutes(11.04) == "11"  # rounds to 11.0
+    assert script._format_minutes(11.05) == "11.1"
+
+
+def test_directions_table_covers_both_targets() -> None:
+    """Sanity: DIRECTIONS contains exactly the two Stammstrecke directions."""
+
+    targets = {d.target_label for d in script.DIRECTIONS}
+    prefixes = {d.identity_prefix for d in script.DIRECTIONS}
+    assert targets == {"Meidling", "Floridsdorf"}
+    assert prefixes == {
+        "stammstrecke_delay_meidling",
+        "stammstrecke_delay_floridsdorf",
+    }
+
+
+def test_breaker_config_aligns_with_10_per_hour_budget() -> None:
+    """Pin the rate-limit-aligned breaker constants documented in the script."""
+
+    assert script.BREAKER_FAILURE_THRESHOLD == 10
+    assert script.BREAKER_RECOVERY_TIMEOUT == 3600.0
+
+
+# ---- _build_event tests ----------------------------------------------------
+
+
+def test_build_event_for_meidling_direction(_stable_now: datetime) -> None:
+    direction = next(d for d in script.DIRECTIONS if d.target_label == "Meidling")
     event = script._build_event(
+        direction=direction,
         median_delay_minutes=12.5,
-        sample_size=8,
         pub_date=_stable_now,
     )
     required_keys = {
@@ -142,66 +234,148 @@ def test_build_event_matches_schema_required_fields(_stable_now: datetime) -> No
     assert event["title"] == "S-Bahn Stammstrecke Verspätungen"
     assert event["source"] == "ÖBB"
     assert event["category"] == "Störung"
+    assert (
+        event["description"]
+        == "Durchschnittliche Verspätung von 12.5 Minuten in Richtung Meidling"
+    )
     # Timestamps must be ISO-8601 strings with offset (Europe/Vienna).
     assert event["pubDate"] == _stable_now.isoformat()
     assert event["starts_at"] == _stable_now.isoformat()
     assert event["pubDate"].endswith(("+02:00", "+01:00"))
     assert event["ends_at"] is None
-    # GUID must be deterministic for the same timestamp.
-    again = script._build_event(
-        median_delay_minutes=12.5, sample_size=8, pub_date=_stable_now
+    assert event["_identity"].startswith("stammstrecke_delay_meidling|")
+
+
+def test_build_event_for_floridsdorf_direction(_stable_now: datetime) -> None:
+    direction = next(d for d in script.DIRECTIONS if d.target_label == "Floridsdorf")
+    event = script._build_event(
+        direction=direction,
+        median_delay_minutes=15.0,
+        pub_date=_stable_now,
     )
-    assert event["guid"] == again["guid"]
-
-
-# ---- main() integration tests ----------------------------------------------
-
-
-def test_main_writes_event_when_median_above_threshold(
-    monkeypatch: pytest.MonkeyPatch, _isolated_output: Path, _stable_now: datetime
-) -> None:
-    fake_client = SimpleNamespace(
-        profile=SimpleNamespace(),
-        journeys=lambda **kwargs: [
-            _journey(legs=[_leg(name="S 1", delay_minutes=11)]),
-            _journey(legs=[_leg(name="S 2", delay_minutes=10)]),
-            _journey(legs=[_leg(name="S 3", delay_minutes=9)]),
-            _journey(legs=[_leg(name="S 7", delay_minutes=12)]),
-            _journey(legs=[_leg(name="S 80", delay_minutes=15)]),
-        ],
-    )
-    monkeypatch.setattr(script, "_build_client", lambda: fake_client)
-
-    exit_code = script.main()
-    assert exit_code == 0
-
-    payload = _read_output(_isolated_output)
-    assert len(payload) == 1
-    event = payload[0]
     assert event["title"] == "S-Bahn Stammstrecke Verspätungen"
-    assert event["pubDate"] == _stable_now.isoformat()
-    assert "11.0 Minuten" in event["description"]
+    # 15.0 must render as "15" (no trailing zero) per ``_format_minutes``.
+    assert (
+        event["description"]
+        == "Durchschnittliche Verspätung von 15 Minuten in Richtung Floridsdorf"
+    )
+    assert event["_identity"].startswith("stammstrecke_delay_floridsdorf|")
 
 
-def test_main_writes_empty_when_median_below_threshold(
+def test_build_event_guids_differ_per_direction(_stable_now: datetime) -> None:
+    """Each direction must produce a distinct GUID for the same timestamp.
+
+    The user-facing contract is that feed readers treat the two
+    direction events as separate notifications. That requires distinct
+    ``guid`` values even when the underlying timestamps coincide.
+    """
+
+    meidling = next(d for d in script.DIRECTIONS if d.target_label == "Meidling")
+    floridsdorf = next(d for d in script.DIRECTIONS if d.target_label == "Floridsdorf")
+    event_a = script._build_event(
+        direction=meidling, median_delay_minutes=12.5, pub_date=_stable_now
+    )
+    event_b = script._build_event(
+        direction=floridsdorf, median_delay_minutes=12.5, pub_date=_stable_now
+    )
+    assert event_a["guid"] != event_b["guid"]
+    assert event_a["_identity"] != event_b["_identity"]
+
+
+def test_build_event_guid_is_deterministic(_stable_now: datetime) -> None:
+    direction = script.DIRECTIONS[0]
+    event_a = script._build_event(
+        direction=direction, median_delay_minutes=12.5, pub_date=_stable_now
+    )
+    event_b = script._build_event(
+        direction=direction, median_delay_minutes=12.5, pub_date=_stable_now
+    )
+    assert event_a["guid"] == event_b["guid"]
+
+
+# ---- main() integration tests ---------------------------------------------
+
+
+def test_main_writes_two_events_when_both_directions_above_threshold(
     monkeypatch: pytest.MonkeyPatch, _isolated_output: Path
 ) -> None:
-    fake_client = SimpleNamespace(
-        profile=SimpleNamespace(),
-        journeys=lambda **kwargs: [
-            _journey(legs=[_leg(name="S 1", delay_minutes=2)]),
-            _journey(legs=[_leg(name="S 2", delay_minutes=4)]),
-            _journey(legs=[_leg(name="S 3", delay_minutes=9)]),
-            _journey(legs=[_leg(name="S 7", delay_minutes=3)]),
-        ],
-    )
-    monkeypatch.setattr(script, "_build_client", lambda: fake_client)
+    """Both directions exceed the threshold → one event per direction."""
 
-    exit_code = script.main()
-    assert exit_code == 0
+    fwd = [
+        _journey(legs=[_leg(name="S 1", delay_minutes=11)]),
+        _journey(legs=[_leg(name="S 2", delay_minutes=10)]),
+        _journey(legs=[_leg(name="S 3", delay_minutes=12)]),
+    ]
+    bwd = [
+        _journey(legs=[_leg(name="S 7", delay_minutes=14)]),
+        _journey(legs=[_leg(name="S 80", delay_minutes=15)]),
+        _journey(legs=[_leg(name="S 1", delay_minutes=13)]),
+    ]
+    _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
 
+    assert script.main() == 0
     payload = _read_output(_isolated_output)
-    assert payload == []
+    assert len(payload) == 2
+    descriptions = {event["description"] for event in payload}
+    assert (
+        "Durchschnittliche Verspätung von 11 Minuten in Richtung Meidling"
+        in descriptions
+    )
+    assert (
+        "Durchschnittliche Verspätung von 14 Minuten in Richtung Floridsdorf"
+        in descriptions
+    )
+    # Both events must have distinct GUIDs.
+    guids = {event["guid"] for event in payload}
+    assert len(guids) == 2
+
+
+def test_main_writes_only_meidling_event_when_only_forward_above_threshold(
+    monkeypatch: pytest.MonkeyPatch, _isolated_output: Path
+) -> None:
+    fwd = [
+        _journey(legs=[_leg(name="S 1", delay_minutes=14)]),
+        _journey(legs=[_leg(name="S 2", delay_minutes=13)]),
+    ]
+    bwd = [
+        _journey(legs=[_leg(name="S 7", delay_minutes=2)]),
+        _journey(legs=[_leg(name="S 80", delay_minutes=4)]),
+    ]
+    _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
+
+    assert script.main() == 0
+    payload = _read_output(_isolated_output)
+    assert len(payload) == 1
+    assert "in Richtung Meidling" in payload[0]["description"]
+    assert payload[0]["_identity"].startswith("stammstrecke_delay_meidling|")
+
+
+def test_main_writes_only_floridsdorf_event_when_only_backward_above_threshold(
+    monkeypatch: pytest.MonkeyPatch, _isolated_output: Path
+) -> None:
+    fwd = [_journey(legs=[_leg(name="S 1", delay_minutes=2)])]
+    bwd = [
+        _journey(legs=[_leg(name="S 7", delay_minutes=11)]),
+        _journey(legs=[_leg(name="S 80", delay_minutes=12)]),
+    ]
+    _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
+
+    assert script.main() == 0
+    payload = _read_output(_isolated_output)
+    assert len(payload) == 1
+    assert "in Richtung Floridsdorf" in payload[0]["description"]
+    assert payload[0]["_identity"].startswith("stammstrecke_delay_floridsdorf|")
+
+
+def test_main_writes_empty_when_both_directions_below_threshold(
+    monkeypatch: pytest.MonkeyPatch, _isolated_output: Path
+) -> None:
+    fwd = [_journey(legs=[_leg(name="S 1", delay_minutes=2)])]
+    bwd = [_journey(legs=[_leg(name="S 7", delay_minutes=4)])]
+    _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
+
+    assert script.main() == 0
+    assert _read_output(_isolated_output) == []
 
 
 def test_main_writes_empty_when_median_equals_threshold(
@@ -209,15 +383,11 @@ def test_main_writes_empty_when_median_equals_threshold(
 ) -> None:
     """Median exactly equal to threshold must NOT trigger the event."""
 
-    fake_client = SimpleNamespace(
-        profile=SimpleNamespace(),
-        journeys=lambda **kwargs: [
-            _journey(legs=[_leg(name="S 1", delay_minutes=9)]),
-            _journey(legs=[_leg(name="S 2", delay_minutes=9)]),
-            _journey(legs=[_leg(name="S 3", delay_minutes=9)]),
-        ],
-    )
-    monkeypatch.setattr(script, "_build_client", lambda: fake_client)
+    nine = [
+        _journey(legs=[_leg(name="S 1", delay_minutes=9)]),
+        _journey(legs=[_leg(name="S 2", delay_minutes=9)]),
+    ]
+    _patch_client(monkeypatch, _make_directional_client(nine, nine))
 
     assert script.main() == 0
     assert _read_output(_isolated_output) == []
@@ -226,21 +396,62 @@ def test_main_writes_empty_when_median_equals_threshold(
 def test_main_writes_empty_when_no_sbahn_legs(
     monkeypatch: pytest.MonkeyPatch, _isolated_output: Path
 ) -> None:
-    fake_client = SimpleNamespace(
-        profile=SimpleNamespace(),
-        journeys=lambda **kwargs: [
-            _journey(legs=[_leg(name="REX 7", delay_minutes=20)]),
-            _journey(legs=[_leg(name="IC 533", delay_minutes=15)]),
-        ],
-    )
-    monkeypatch.setattr(script, "_build_client", lambda: fake_client)
+    """Only non-S-Bahn legs in either direction → empty cache, exit 0."""
+
+    fwd = [_journey(legs=[_leg(name="REX 7", delay_minutes=20)])]
+    bwd = [_journey(legs=[_leg(name="IC 533", delay_minutes=15)])]
+    _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
 
     assert script.main() == 0
     assert _read_output(_isolated_output) == []
 
 
+def test_main_partial_failure_keeps_other_direction_event(
+    monkeypatch: pytest.MonkeyPatch,
+    _isolated_output: Path,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """Direction 1 raises but direction 2 succeeds with a high median.
+
+    The event for the surviving direction must still be persisted —
+    discarding direction 2's data because direction 1 had a transient
+    error would degrade the feed for no reason.
+    """
+
+    fwd_error = RuntimeError("transient connection reset")
+    bwd_high = [
+        _journey(legs=[_leg(name="S 7", delay_minutes=12)]),
+        _journey(legs=[_leg(name="S 80", delay_minutes=14)]),
+    ]
+    _patch_client(monkeypatch, _make_directional_client(fwd_error, bwd_high))
+
+    caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
+    # Exit code 0 because at least one direction succeeded.
+    assert script.main() == 0
+
+    payload = _read_output(_isolated_output)
+    assert len(payload) == 1
+    assert "in Richtung Floridsdorf" in payload[0]["description"]
+    assert any("Richtung Meidling" in r.getMessage() for r in caplog.records)
+
+
+def test_main_returns_1_when_all_directions_fail(
+    monkeypatch: pytest.MonkeyPatch,
+    _isolated_output: Path,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    err1 = RuntimeError("connection reset 1")
+    err2 = RuntimeError("connection reset 2")
+    _patch_client(monkeypatch, _make_directional_client(err1, err2))
+
+    caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
+    assert script.main() == 1
+    assert _read_output(_isolated_output) == []
+
+
 def test_main_writes_empty_on_import_error(
-    monkeypatch: pytest.MonkeyPatch, _isolated_output: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    _isolated_output: Path,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
     def raise_import_error() -> Any:
@@ -254,27 +465,17 @@ def test_main_writes_empty_on_import_error(
     assert any("nicht verfügbar" in r.getMessage() for r in caplog.records)
 
 
-def test_main_writes_empty_on_query_failure(
-    monkeypatch: pytest.MonkeyPatch, _isolated_output: Path,
-    caplog: pytest.LogCaptureFixture,
-) -> None:
-    def boom(**kwargs: Any) -> list[Any]:
-        raise RuntimeError("connection reset by peer")
-
-    fake_client = SimpleNamespace(profile=SimpleNamespace(), journeys=boom)
-    monkeypatch.setattr(script, "_build_client", lambda: fake_client)
-
-    caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
-    assert script.main() == 1
-    assert _read_output(_isolated_output) == []
-    assert any("fehlgeschlagen" in r.getMessage() for r in caplog.records)
-
-
 def test_main_short_circuits_when_breaker_is_open(
-    monkeypatch: pytest.MonkeyPatch, _isolated_output: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    _isolated_output: Path,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
-    """Pre-tripping the breaker forces main() onto its short-circuit path."""
+    """Pre-tripping the breaker forces main() onto its short-circuit path.
+
+    When the breaker is OPEN, the first direction's call raises
+    ``CircuitBreakerOpen``. main() must break out of the loop without
+    invoking the upstream for the second direction either.
+    """
 
     breaker = CircuitBreaker(
         "stammstrecke-hafas-pretrip",
@@ -285,47 +486,58 @@ def test_main_short_circuits_when_breaker_is_open(
     breaker.record_failure()
     monkeypatch.setattr(script, "_BREAKER", breaker)
 
-    upstream_called = False
+    upstream_calls: list[tuple[str | None, str | None]] = []
 
     def must_not_be_called(**kwargs: Any) -> list[Any]:
-        nonlocal upstream_called
-        upstream_called = True
+        upstream_calls.append((kwargs.get("origin"), kwargs.get("destination")))
         return []
 
     fake_client = SimpleNamespace(
         profile=SimpleNamespace(), journeys=must_not_be_called
     )
-    monkeypatch.setattr(script, "_build_client", lambda: fake_client)
+    _patch_client(monkeypatch, fake_client)
 
     caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
+    # Exit 0 — breaker-open is intentional short-circuiting, not a failure.
     assert script.main() == 0
     assert _read_output(_isolated_output) == []
-    assert upstream_called is False
+    assert upstream_calls == []
     assert any("breaker" in r.getMessage().lower() for r in caplog.records)
 
 
 def test_main_handles_non_list_payload(
-    monkeypatch: pytest.MonkeyPatch, _isolated_output: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    _isolated_output: Path,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
-    fake_client = SimpleNamespace(
-        profile=SimpleNamespace(),
-        journeys=lambda **kwargs: "not-a-list",
-    )
-    monkeypatch.setattr(script, "_build_client", lambda: fake_client)
+    """Both directions return a non-list value → both fail, exit 1."""
+
+    def journeys(**kwargs: Any) -> Any:
+        return "not-a-list"
+
+    fake_client = SimpleNamespace(profile=SimpleNamespace(), journeys=journeys)
+    _patch_client(monkeypatch, fake_client)
 
     caplog.set_level(logging.WARNING, logger=script.LOGGER.name)
     assert script.main() == 1
     assert _read_output(_isolated_output) == []
 
 
-def test_collect_delays_handles_missing_legs_attribute() -> None:
-    """A misbehaving HAFAS peer might emit journeys without a ``legs`` attr."""
+def test_main_emits_iso8601_with_vienna_offset(
+    monkeypatch: pytest.MonkeyPatch,
+    _isolated_output: Path,
+    _stable_now: datetime,
+) -> None:
+    """Verify the timezone contract: pubDate is Europe/Vienna, ISO 8601."""
 
-    journeys = [SimpleNamespace()]  # no legs attribute at all
-    assert script._collect_sbahn_delays_minutes(journeys) == []
+    fwd = [_journey(legs=[_leg(name="S 1", delay_minutes=12)])]
+    bwd = [_journey(legs=[_leg(name="S 7", delay_minutes=12)])]
+    _patch_client(monkeypatch, _make_directional_client(fwd, bwd))
 
-
-def test_collect_delays_handles_legs_set_to_none() -> None:
-    journeys = [SimpleNamespace(legs=None)]
-    assert script._collect_sbahn_delays_minutes(journeys) == []
+    assert script.main() == 0
+    payload = _read_output(_isolated_output)
+    assert len(payload) == 2
+    for event in payload:
+        assert event["pubDate"] == _stable_now.isoformat()
+        # Either summer (+02:00) or winter (+01:00) — date is in May → +02:00.
+        assert event["pubDate"].endswith("+02:00")

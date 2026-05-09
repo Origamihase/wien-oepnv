@@ -1,19 +1,36 @@
 # CHANGELOG
 
 ## [Unreleased]
+* **Feat**: S-Bahn Stammstrecke Monitoring jetzt **richtungsgetrennt**.
+  `scripts/update_stammstrecke_status.py` wertet beide Fahrtrichtungen
+  (Floridsdorf → Meidling und Meidling → Floridsdorf) strikt
+  unabhängig aus und emittiert pro Richtung **separat** ein Event,
+  wenn der Median der `departure_delay`-Werte > 9 Minuten liegt
+  (Liste mit 0/1/2 Events). Eine Zusammenlegung beider Richtungen
+  hatte das Signal verfälscht — eine Störung in eine Richtung läuft
+  oft in der Gegenrichtung normal weiter. Pro Richtung eindeutige
+  `guid`/`_identity` (`stammstrecke_delay_meidling` bzw.
+  `stammstrecke_delay_floridsdorf`) damit Feed-Reader die Meldungen
+  als separate Notifications darstellen. Description-Format jetzt
+  "Durchschnittliche Verspätung von X Minuten in Richtung
+  Meidling/Floridsdorf" (Plain Text, keine HTML-Tags).
+* **Feat**: Circuit-Breaker-Konfiguration auf das documented
+  10-Requests-pro-Stunde-Budget der ÖBB-Abfragen ausgerichtet:
+  `failure_threshold=10`, `recovery_timeout=3600.0` (1 Stunde).
+  Im Normalbetrieb produziert die Pipeline 4 Calls/h
+  (Cron `*/30` × 2 Richtungen) — komfortabel unter der Schwelle;
+  im Fehlermodus deckelt der Breaker zusätzlich auf 10 Versuche/h.
 * **Feat**: S-Bahn Stammstrecke Monitoring. Neuer Workflow
   `.github/workflows/update-stammstrecke-status.yml` (Cron `*/30 * * * *`)
   ruft via `pyhafas` mit `OEBBProfile` direkte S-Bahn-Verbindungen
   Wien Floridsdorf (8100518) ↔ Wien Meidling (8100514) ab
-  (`max_changes=0`) und schreibt eine schema-konforme Meldung in
-  `cache/stammstrecke/events.json`, sobald der Median der
-  `departure_delay`-Werte über 9 Minuten liegt. Die Abfrage ist über
-  einen `CircuitBreaker` (5 Fehler / 300 s Recovery) abgesichert,
-  schreibt atomar via `atomic_write` und ist mit dem bestehenden Feed-
-  Build über `read_cache_stammstrecke()` (Provider-Flag
-  `STAMMSTRECKE_ENABLE`) integriert. Dokumentiert in
-  `docs/reference/oebb_provider_logic.md`. Tests mocken `pyhafas`
-  vollständig (`tests/scripts/test_update_stammstrecke_status.py`).
+  (`max_changes=0`) und schreibt schema-konforme Meldungen in
+  `cache/stammstrecke/events.json`. Schreibt atomar via
+  `atomic_write` und ist mit dem bestehenden Feed-Build über
+  `read_cache_stammstrecke()` (Provider-Flag `STAMMSTRECKE_ENABLE`)
+  integriert. Dokumentiert in `docs/reference/oebb_provider_logic.md`.
+  Tests mocken `pyhafas` vollständig
+  (`tests/scripts/test_update_stammstrecke_status.py`).
 * **Security**: VOR daily-quota counter is now lower-bound clamped at 0
   inside both `load_request_count` and `save_request_count` (the
   under-lock disk re-read). Pre-fix, a poisoned `data/vor_request_count.json`

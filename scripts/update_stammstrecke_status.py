@@ -1,35 +1,50 @@
 #!/usr/bin/env python3
 """Monitor delays on the S-Bahn Stammstrecke (Wien Floridsdorf ↔ Wien Meidling).
 
-Queries direct S-Bahn connections via :mod:`pyhafas` (`OEBBProfile`) and
-emits a schema-compliant event into ``cache/stammstrecke/events.json``
-when the **median** ``departure_delay`` across the queried legs exceeds
-:data:`DELAY_THRESHOLD_MINUTES` minutes. Otherwise the cache is reset to
-``[]`` so the feed builder integrates a clean state.
+Queries direct S-Bahn connections via :mod:`pyhafas` (`OEBBProfile`) for
+**both directions** independently and emits up to two schema-compliant
+events into ``cache/stammstrecke/events.json``: one per direction whose
+**median** ``departure_delay`` exceeds :data:`DELAY_THRESHOLD_MINUTES`
+minutes. Directions are evaluated strictly separately because merging
+both into a single sample dilutes the signal — a station with a major
+incident in one direction often runs normally in the opposite
+direction.
 
 Design contract
 ---------------
 
+- **Two-direction split**: each cron tick runs two HAFAS calls — one
+  ``Floridsdorf → Meidling`` and one ``Meidling → Floridsdorf``. Each
+  call's medians and events are computed independently. The cache
+  output contains 0, 1, or 2 events depending on which direction(s)
+  exceeded the threshold.
 - **Resilience**: the network call to HAFAS is wrapped in
-  :class:`src.utils.circuit_breaker.CircuitBreaker`. Five consecutive
-  failures trip the breaker for 300 s, after which a single probe call
-  is admitted. Each individual call uses a hard ``QUERY_TIMEOUT`` second
-  budget (clamped to ``MAX_QUERY_TIMEOUT``) inside ``pyhafas`` itself.
+  :class:`src.utils.circuit_breaker.CircuitBreaker`. Configured at
+  ``failure_threshold=10`` and ``recovery_timeout=3600`` seconds
+  (1 hour) — semantically aligning with a documented "≤ 10 requests
+  per hour" API budget for ÖBB. After 10 consecutive failures the
+  breaker stays OPEN for one hour, capping ÖBB-bound traffic in any
+  outage scenario. Combined with the cron schedule (``*/30 * * * *``,
+  2 fires/hour × 2 directions = 4 calls/hour normally) this keeps the
+  script comfortably below the 10/h rate ceiling.
 - **Atomicity**: writes go through :func:`src.utils.files.atomic_write`
-  with restrictive 0o600 permissions; a crash mid-write cannot leave a
-  half-written cache file behind.
+  with restrictive ``0o644`` permissions; a crash mid-write cannot
+  leave a half-written cache file behind.
 - **Timezone**: GitHub Actions runs in UTC. All timestamps inside the
-  emitted event (``pubDate``, ``starts_at``) are localised to
+  emitted events (``pubDate``, ``starts_at``) are localised to
   ``Europe/Vienna`` via :mod:`zoneinfo` and serialised as ISO 8601
   strings with offset, matching ``docs/schema/events.schema.json``.
-- **Schema**: the emitted event mirrors the canonical FeedItem shape
-  every other provider produces (``source`` / ``category`` / ``title`` /
-  ``description`` / ``link`` / ``guid`` / ``pubDate`` / ``starts_at`` /
-  ``ends_at`` / ``_identity``).
+- **Schema**: each emitted event mirrors the canonical FeedItem shape
+  every other provider produces (``source`` / ``category`` / ``title``
+  / ``description`` / ``link`` / ``guid`` / ``pubDate`` / ``starts_at``
+  / ``ends_at`` / ``_identity``). Per-direction events differ in
+  ``description`` (target station name), ``guid`` and ``_identity``
+  (direction-prefixed) so feed readers treat them as separate
+  notifications.
 - **Logging**: every diagnostic message is routed through
   :func:`src.feed.logging_safe.setup_script_logging` so log injection
-  / ANSI / BiDi attacks via upstream-controlled fields are sanitised at
-  the formatter layer.
+  / ANSI / BiDi attacks via upstream-controlled fields are sanitised
+  at the formatter layer.
 
 The non-commercial nature of the project means we do not need an API
 key; ÖBB's HAFAS endpoint is queried via the publicly documented
@@ -39,8 +54,10 @@ key; ÖBB's HAFAS endpoint is queried via the publicly documented
 from __future__ import annotations
 
 import logging
+import re
 import statistics
 import sys
+from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
@@ -70,14 +87,15 @@ LOGGER = logging.getLogger("update_stammstrecke_status")
 FLORIDSDORF_STATION_ID = "8100518"
 MEIDLING_STATION_ID = "8100514"
 
-# Threshold above which the median delay generates a feed entry. The user-
-# facing semantics are "more than 9 minutes" — so a median of exactly
-# 9 minutes does NOT trigger the event.
+# Threshold above which the median delay of a direction generates a feed
+# entry. The user-facing semantics are "more than 9 minutes" — a median
+# of exactly 9 minutes does NOT trigger the event.
 DELAY_THRESHOLD_MINUTES = 9
 
-# Number of journeys to fetch in a single HAFAS query. Higher values give
-# a more stable median but raise the cost of a single call. 12 covers
-# roughly half an hour of S-Bahn frequency on the Stammstrecke.
+# Number of journeys to fetch per direction in a single HAFAS query.
+# Higher values give a more stable median but raise the cost of a single
+# call. 12 covers roughly half an hour of S-Bahn frequency on the
+# Stammstrecke.
 MAX_JOURNEYS_PER_QUERY = 12
 
 # Per-call HTTP budget. A pyhafas call without a timeout can hang the
@@ -86,20 +104,20 @@ MAX_JOURNEYS_PER_QUERY = 12
 QUERY_TIMEOUT = 20
 MAX_QUERY_TIMEOUT = 30
 
-# Circuit-breaker policy. Five consecutive failures (network errors,
-# upstream 5xx, parse failures) trip the breaker for 300 seconds. The
-# cron tick is every 30 minutes, so a 5-minute hold-off only ever
-# blocks at most one tick.
-BREAKER_FAILURE_THRESHOLD = 5
-BREAKER_RECOVERY_TIMEOUT = 300.0
+# Circuit-breaker policy aligned with a documented ÖBB API budget of
+# 10 requests per hour. After 10 consecutive failures the breaker
+# stays OPEN for one hour, capping ÖBB-bound traffic at 10 attempts/h
+# in any outage scenario. With the cron schedule (``*/30``, 2 fires/h)
+# and 2 directions per fire, normal operation produces only 4 calls/h —
+# well below the configured ceiling.
+BREAKER_FAILURE_THRESHOLD = 10
+BREAKER_RECOVERY_TIMEOUT = 3600.0
 
 # Pattern that identifies an S-Bahn leg. ÖBB labels Stammstrecke services
 # as ``S 1``, ``S 2``, ``S 3``, ``S 7`` etc. — the ``name`` attribute of
 # a pyhafas ``Leg`` carries this label verbatim. Anything else (REX, R,
 # IC, Railjet) is a long-distance / regional service that uses the same
 # tracks but does not represent the Stammstrecke product.
-import re  # noqa: E402
-
 _S_BAHN_LINE_RE = re.compile(r"^\s*S\s*\d+\s*$", re.IGNORECASE)
 
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
@@ -112,6 +130,39 @@ EVENT_TITLE = "S-Bahn Stammstrecke Verspätungen"
 EVENT_LINK = (
     "https://www.oebb.at/de/fahrplan/fahrplanauskunft-und-stoerungsinformation/aktuelle-stoerungsmeldungen"
 )
+
+
+@dataclass(frozen=True)
+class _Direction:
+    """A single Stammstrecke query direction.
+
+    Carries the per-direction parameters (origin/destination HAFAS IDs,
+    user-facing target label for the description, identity prefix for
+    the deduplication key and GUID) so the main loop can iterate over
+    both directions without branching on direction-specific logic.
+    """
+
+    origin_id: str
+    destination_id: str
+    target_label: str
+    identity_prefix: str
+
+
+DIRECTIONS: tuple[_Direction, ...] = (
+    _Direction(
+        origin_id=FLORIDSDORF_STATION_ID,
+        destination_id=MEIDLING_STATION_ID,
+        target_label="Meidling",
+        identity_prefix="stammstrecke_delay_meidling",
+    ),
+    _Direction(
+        origin_id=MEIDLING_STATION_ID,
+        destination_id=FLORIDSDORF_STATION_ID,
+        target_label="Floridsdorf",
+        identity_prefix="stammstrecke_delay_floridsdorf",
+    ),
+)
+
 
 _BREAKER = CircuitBreaker(
     "stammstrecke-hafas",
@@ -147,11 +198,12 @@ def _build_client() -> Any:
 
 def _query_journeys(
     client: Any,
+    direction: _Direction,
     *,
     when: datetime,
     timeout: int,
 ) -> list[Journey]:
-    """Call ``client.journeys`` once and return the result list.
+    """Call ``client.journeys`` once for *direction* and return the result.
 
     The call is executed as-is; resilience (retry/back-off, breaker
     state) is provided by :data:`_BREAKER` at the call site. The
@@ -175,8 +227,8 @@ def _query_journeys(
                     pass
 
     journeys = client.journeys(
-        origin=FLORIDSDORF_STATION_ID,
-        destination=MEIDLING_STATION_ID,
+        origin=direction.origin_id,
+        destination=direction.destination_id,
         date=when,
         max_changes=0,
         max_journeys=MAX_JOURNEYS_PER_QUERY,
@@ -229,32 +281,45 @@ def _now_vienna() -> datetime:
     return datetime.now(tz=VIENNA_TZ)
 
 
+def _format_minutes(value: float) -> str:
+    """Format *value* as a German-readable minute count.
+
+    ``round(x, 1)`` followed by ``:g`` strips trailing ``.0`` so a
+    whole-minute median renders as ``"12"`` rather than ``"12.0"``,
+    while a fractional median keeps its single decimal (``"12.5"``).
+    """
+
+    rounded = round(value, 1)
+    return f"{rounded:g}"
+
+
 def _build_event(
     *,
+    direction: _Direction,
     median_delay_minutes: float,
-    sample_size: int,
     pub_date: datetime,
 ) -> dict[str, Any]:
-    """Construct the schema-compliant event dictionary.
+    """Construct a schema-compliant event dictionary for *direction*.
 
     See ``docs/schema/events.schema.json`` for the contract. ``pubDate``
     and ``starts_at`` use the same timestamp because the median is a
     point-in-time observation; ``ends_at`` is left ``null`` because the
     cause and end of the disruption are not known to this script.
+
+    Per-direction GUIDs and identity strings are derived from
+    ``direction.identity_prefix`` (e.g. ``stammstrecke_delay_meidling``)
+    so feed readers treat the two directions as separate notifications.
     """
 
-    rounded = round(median_delay_minutes, 1)
     description = (
-        f"Auf der S-Bahn-Stammstrecke (Wien Floridsdorf ↔ Wien Meidling) wurden "
-        f"erhöhte Verspätungen erkannt. Median der Abfahrtsverspätungen über "
-        f"die letzten {sample_size} S-Bahn-Verbindungen: "
-        f"<b>{rounded:.1f} Minuten</b> (Schwellenwert: "
-        f"{DELAY_THRESHOLD_MINUTES} Minuten). Quelle: ÖBB HAFAS via pyhafas."
+        f"Durchschnittliche Verspätung von "
+        f"{_format_minutes(median_delay_minutes)} Minuten "
+        f"in Richtung {direction.target_label}"
     )
 
     iso_pub = pub_date.isoformat()
-    identity = f"stammstrecke|median|{iso_pub}"
-    guid = make_guid("stammstrecke", "median", iso_pub)
+    identity = f"{direction.identity_prefix}|{iso_pub}"
+    guid = make_guid(direction.identity_prefix, iso_pub)
 
     return {
         "source": EVENT_SOURCE,
@@ -291,12 +356,99 @@ def _write_cache(payload: list[dict[str, Any]]) -> None:
         fh.write("\n")
 
 
+def _process_direction(
+    client: Any,
+    direction: _Direction,
+    *,
+    when: datetime,
+    timeout: int,
+) -> tuple[dict[str, Any] | None, str]:
+    """Query ``direction`` once and return ``(event_or_none, status)``.
+
+    The return tuple's second element is one of:
+
+    * ``"event"`` — direction exceeded threshold, event was built;
+    * ``"no_delays"`` — direction succeeded but emitted no S-Bahn legs
+      with delay data, or median ≤ threshold;
+    * ``"error"`` — pyhafas raised an exception (already logged).
+
+    The ``CircuitBreakerOpen`` case is *not* handled here — the caller
+    catches it so it can break out of the per-direction loop instead
+    of consuming further breaker-protected slots.
+    """
+
+    LOGGER.info(
+        "Stammstrecke: Abfrage Wien %s → Wien %s um %s.",
+        "Floridsdorf" if direction.origin_id == FLORIDSDORF_STATION_ID else "Meidling",
+        direction.target_label,
+        when.isoformat(),
+    )
+    try:
+        journeys = _BREAKER.call(
+            _query_journeys, client, direction, when=when, timeout=timeout
+        )
+    except CircuitBreakerOpen:
+        # Re-raise so main() can break out of the loop without re-trying
+        # the next direction (the breaker would short-circuit it anyway).
+        raise
+    except Exception as exc:
+        LOGGER.warning(
+            "Stammstrecke: Abfrage Richtung %s fehlgeschlagen: %s: %s.",
+            direction.target_label,
+            type(exc).__name__,
+            sanitize_log_arg(str(exc)),
+        )
+        return None, "error"
+
+    delays = _collect_sbahn_delays_minutes(journeys)
+    LOGGER.info(
+        "Stammstrecke: Richtung %s — %d S-Bahn-Legs aus %d Journeys analysiert.",
+        direction.target_label,
+        len(delays),
+        len(journeys),
+    )
+    if not delays:
+        return None, "no_delays"
+
+    median_minutes = float(statistics.median(delays))
+    LOGGER.info(
+        "Stammstrecke: Richtung %s — Median: %.2f Minuten (Schwelle: %d).",
+        direction.target_label,
+        median_minutes,
+        DELAY_THRESHOLD_MINUTES,
+    )
+    if median_minutes <= DELAY_THRESHOLD_MINUTES:
+        return None, "no_delays"
+
+    event = _build_event(
+        direction=direction,
+        median_delay_minutes=median_minutes,
+        pub_date=when,
+    )
+    LOGGER.info(
+        "Stammstrecke: Richtung %s — Median %.2f > %d → Event erzeugt (guid=%s).",
+        direction.target_label,
+        median_minutes,
+        DELAY_THRESHOLD_MINUTES,
+        event["guid"][:12],
+    )
+    return event, "event"
+
+
 def main() -> int:
-    """Entry point. Returns ``0`` on success, ``1`` on a controlled error.
+    """Entry point. Returns ``0`` on success (incl. partial), ``1`` on full failure.
 
     The script never raises an unhandled exception out of ``main`` — the
     cron pipeline relies on a clean exit so other cache updates run on
     schedule even when this provider is degraded.
+
+    Per-direction error handling is intentionally permissive: a transient
+    failure on one direction does NOT discard data already collected
+    from the other. ``CircuitBreakerOpen`` is the only exception that
+    short-circuits the loop, because its semantics are "stop hitting
+    the upstream" — the breaker would short-circuit the second call
+    anyway, and an empty events list is the appropriate signal until
+    the recovery window has elapsed.
     """
 
     configure_logging()
@@ -322,74 +474,43 @@ def main() -> int:
         return 1
 
     when = _now_vienna()
+    events: list[dict[str, Any]] = []
+    successes = 0
+    errors = 0
+
+    for direction in DIRECTIONS:
+        try:
+            event, status = _process_direction(
+                client, direction, when=when, timeout=timeout
+            )
+        except CircuitBreakerOpen:
+            LOGGER.warning(
+                "Stammstrecke: Circuit breaker offen (%d aufeinanderfolgende Fehler) — "
+                "überspringe verbleibende Richtungen für diese Tick.",
+                _BREAKER.consecutive_failures,
+            )
+            break
+
+        if status == "error":
+            errors += 1
+            continue
+        successes += 1
+        if event is not None:
+            events.append(event)
+
+    _write_cache(events)
     LOGGER.info(
-        "Stammstrecke: Abfrage Wien Floridsdorf → Wien Meidling um %s (max_changes=0, max_journeys=%d).",
-        when.isoformat(),
-        MAX_JOURNEYS_PER_QUERY,
+        "Stammstrecke: Cache mit %d Event(s) aktualisiert (Erfolg=%d, Fehler=%d).",
+        len(events),
+        successes,
+        errors,
     )
 
-    try:
-        journeys = _BREAKER.call(_query_journeys, client, when=when, timeout=timeout)
-    except CircuitBreakerOpen:
-        LOGGER.warning(
-            "Stammstrecke: Circuit breaker offen (%d aufeinanderfolgende Fehler) — "
-            "schreibe leere Cache-Datei und überspringe diese Tick.",
-            _BREAKER.consecutive_failures,
-        )
-        _write_cache([])
-        return 0
-    except Exception as exc:
-        # Keep the cache file in a known-good state instead of leaving a
-        # stale entry from the previous run when HAFAS is degraded.
-        LOGGER.warning(
-            "Stammstrecke: Abfrage fehlgeschlagen: %s: %s — schreibe leere Cache-Datei.",
-            type(exc).__name__,
-            sanitize_log_arg(str(exc)),
-        )
-        _write_cache([])
+    # Exit 1 only if every direction failed AND at least one was attempted —
+    # a CircuitBreakerOpen-only run (errors=0, successes=0) is intentional
+    # short-circuiting and exits 0.
+    if successes == 0 and errors > 0:
         return 1
-
-    delays = _collect_sbahn_delays_minutes(journeys)
-    LOGGER.info(
-        "Stammstrecke: %d S-Bahn-Legs aus %d Journeys analysiert.",
-        len(delays),
-        len(journeys),
-    )
-
-    if not delays:
-        LOGGER.info(
-            "Stammstrecke: Keine S-Bahn-Legs mit Verspätungsdaten gefunden — schreibe leere Cache-Datei."
-        )
-        _write_cache([])
-        return 0
-
-    median_minutes = float(statistics.median(delays))
-    LOGGER.info(
-        "Stammstrecke: Median der Abfahrtsverspätungen: %.2f Minuten (Schwelle: %d).",
-        median_minutes,
-        DELAY_THRESHOLD_MINUTES,
-    )
-
-    if median_minutes <= DELAY_THRESHOLD_MINUTES:
-        _write_cache([])
-        LOGGER.info(
-            "Stammstrecke: Median ≤ %d Minuten — keine Meldung, Cache geleert.",
-            DELAY_THRESHOLD_MINUTES,
-        )
-        return 0
-
-    event = _build_event(
-        median_delay_minutes=median_minutes,
-        sample_size=len(delays),
-        pub_date=when,
-    )
-    _write_cache([event])
-    LOGGER.info(
-        "Stammstrecke: Median %.2f Min > %d Min — Meldung in Cache geschrieben (guid=%s).",
-        median_minutes,
-        DELAY_THRESHOLD_MINUTES,
-        event["guid"][:12],
-    )
     return 0
 
 

@@ -52,22 +52,29 @@ Failure-Modes haben.
 | :--- | :--- |
 | Bibliothek | [`pyhafas`](https://pypi.org/project/pyhafas/) ≥ 0.6.1 |
 | Profil | `pyhafas.profile.OEBBProfile` |
-| Origin | Wien Floridsdorf (HAFAS-ID `8100518`) |
-| Destination | Wien Meidling (HAFAS-ID `8100514`) |
+| Richtung 1 | Wien Floridsdorf (`8100518`) → Wien Meidling (`8100514`) |
+| Richtung 2 | Wien Meidling (`8100514`) → Wien Floridsdorf (`8100518`) |
 | `max_changes` | `0` (nur direkte S-Bahn-Verbindungen) |
 | `max_journeys` | 12 (≈ eine halbe Stunde Stammstrecken-Takt) |
 | Cron | `*/30 * * * *` (alle 30 Minuten) |
 
-### Filter und Aggregation
+**Beide Richtungen werden strikt getrennt ausgewertet.** Eine
+Zusammenlegung würde die Daten verfälschen — eine Störung in eine
+Richtung läuft häufig in der Gegenrichtung normal weiter, der Median
+über beide Richtungen würde das Signal verdünnen.
 
-Aus den zurückgegebenen `Journey`-Objekten werden alle `Leg`-Objekte
-ausgewählt, deren `name` dem regulären Ausdruck `^\s*S\s*\d+\s*$`
-entspricht (also reine S-Bahn-Linien wie `S 1`, `S 7`, `S 80`). Andere
-Verkehrsmittel auf den gleichen Gleisen (`REX`, `R`, `IC`, `Railjet`)
-werden verworfen — sie sind kein Stammstrecken-Produkt.
+### Filter und Aggregation (pro Richtung)
+
+Aus den zurückgegebenen `Journey`-Objekten werden pro Richtung alle
+`Leg`-Objekte ausgewählt, deren `name` dem regulären Ausdruck
+`^\s*S\s*\d+\s*$` entspricht (also reine S-Bahn-Linien wie `S 1`,
+`S 7`, `S 80`). Andere Verkehrsmittel auf den gleichen Gleisen (`REX`,
+`R`, `IC`, `Railjet`) werden verworfen — sie sind kein Stammstrecken-
+Produkt.
 
 Aus den verbleibenden Legs wird der **Median** der
-`departure_delay`-Werte (in Minuten) gebildet:
+`departure_delay`-Werte (in Minuten) gebildet — separat für jede
+Richtung:
 
 * Stornierte Legs (`leg.cancelled`) werden vom Median ausgeschlossen
   (kein Signal).
@@ -78,39 +85,82 @@ Aus den verbleibenden Legs wird der **Median** der
 
 ### Schwellenwert und Cache-Schreibverhalten
 
-Liegt der Median **strikt über 9 Minuten**, schreibt das Skript ein
-einzelnes, schema-konformes (`docs/schema/events.schema.json`) Event
-nach `cache/stammstrecke/events.json`:
+Liegt der Median für eine Richtung **strikt über 9 Minuten**, wird
+genau ein schema-konformes (`docs/schema/events.schema.json`) Event
+für diese Richtung erzeugt. Pro Cron-Tick entsteht damit eine Liste
+mit `0`, `1` oder `2` Events in `cache/stammstrecke/events.json` —
+abhängig davon, in welcher Richtung der Schwellenwert überschritten
+wurde:
 
 ```json
-{
-  "source": "ÖBB",
-  "category": "Störung",
-  "title": "S-Bahn Stammstrecke Verspätungen",
-  "description": "Auf der S-Bahn-Stammstrecke … Median: <b>X.X Minuten</b> …",
-  "link": "https://www.oebb.at/de/fahrplan/…/aktuelle-stoerungsmeldungen",
-  "guid": "<sha256(stammstrecke|median|<iso-pubDate>)>",
-  "pubDate": "2026-05-09T08:30:00+02:00",
-  "starts_at": "2026-05-09T08:30:00+02:00",
-  "ends_at": null,
-  "_identity": "stammstrecke|median|<iso-pubDate>"
-}
+[
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "S-Bahn Stammstrecke Verspätungen",
+    "description": "Durchschnittliche Verspätung von 12.5 Minuten in Richtung Meidling",
+    "link": "https://www.oebb.at/de/fahrplan/…/aktuelle-stoerungsmeldungen",
+    "guid": "<sha256(stammstrecke_delay_meidling|<iso-pubDate>)>",
+    "pubDate": "2026-05-09T08:30:00+02:00",
+    "starts_at": "2026-05-09T08:30:00+02:00",
+    "ends_at": null,
+    "_identity": "stammstrecke_delay_meidling|<iso-pubDate>"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "S-Bahn Stammstrecke Verspätungen",
+    "description": "Durchschnittliche Verspätung von 14 Minuten in Richtung Floridsdorf",
+    "link": "https://www.oebb.at/de/fahrplan/…/aktuelle-stoerungsmeldungen",
+    "guid": "<sha256(stammstrecke_delay_floridsdorf|<iso-pubDate>)>",
+    "pubDate": "2026-05-09T08:30:00+02:00",
+    "starts_at": "2026-05-09T08:30:00+02:00",
+    "ends_at": null,
+    "_identity": "stammstrecke_delay_floridsdorf|<iso-pubDate>"
+  }
+]
 ```
 
+Die richtungsspezifischen `guid`- und `_identity`-Werte stellen
+sicher, dass Feed-Reader die beiden Meldungen als **separate**
+Notifications anzeigen.
+
 Liegt der Median ≤ 9 Minuten (oder gibt es keine S-Bahn-Legs mit
-Verspätungsdaten), schreibt das Skript stattdessen ein leeres Array
-`[]`. Die Cache-Datei ist damit zu jedem Zeitpunkt entweder eine
-gültige (möglicherweise leere) Liste — der Feed-Builder muss niemals
-einen "Datei fehlt"-Fall handhaben, sobald der erste Cron-Lauf erfolgt
-ist.
+Verspätungsdaten), wird **kein** Event für diese Richtung emittiert.
+Liegen für beide Richtungen keine Bedingungen vor, schreibt das
+Skript ein leeres Array `[]`. Die Cache-Datei ist damit zu jedem
+Zeitpunkt entweder eine gültige (möglicherweise leere) Liste — der
+Feed-Builder muss niemals einen "Datei fehlt"-Fall handhaben, sobald
+der erste Cron-Lauf erfolgt ist.
 
-### Resilience und Sicherheit
+### Resilience und API Rate-Limit
 
-* **CircuitBreaker** (`src.utils.circuit_breaker`): 5 aufeinanderfolgende
-  Fehler trippen den Breaker; in den folgenden 300 Sekunden werden
-  weitere Calls ohne Upstream-Kontakt abgewiesen
-  (`CircuitBreakerOpen`). Damit wird Self-DDoS gegen einen
-  bekannt-defekten HAFAS-Endpoint vermieden.
+Die Circuit-Breaker-Konfiguration spiegelt das documented **API-Limit
+von 10 Requests pro Stunde** für ÖBB-Abfragen wider:
+
+* `failure_threshold = 10` — nach 10 aufeinanderfolgenden Fehlern
+  wechselt der Breaker in den OPEN-Zustand.
+* `recovery_timeout = 3600.0` (1 Stunde) — der Breaker bleibt eine
+  Stunde lang OPEN, bevor ein Probe-Call zugelassen wird.
+
+Im Normalbetrieb produziert die Pipeline durch den Cron-Plan
+(`*/30 * * * *` = 2 Ausführungen pro Stunde) und 2 Richtungen pro
+Ausführung **4 Calls pro Stunde** — komfortabel unter dem Limit.
+Im Fehlermodus deckelt der Breaker zusätzlich auf maximal 10
+Versuche pro Stunde, bevor eine ganzstündige Pause greift.
+
+Weitere Schutzmechanismen:
+
+* **CircuitBreakerOpen** kurzschließt nach erstem Auftreten innerhalb
+  einer Iteration: wenn der Breaker während der Abarbeitung der ersten
+  Richtung öffnet, wird die zweite Richtung *nicht* mehr versucht
+  (sie würde sowieso short-circuiten). Bereits gesammelte Events der
+  ersten Richtung bleiben erhalten und werden geschrieben.
+* **Per-Direction-Fehlerisolation**: ein transienter Fehler bei
+  Richtung 1 (RuntimeError, Connection Reset etc.) wirft Richtung 2
+  *nicht* weg. Der Cache wird mit den Events geschrieben, die wir
+  haben — leere Daten bei kompletter Degradation, partielle Daten bei
+  gemischtem Erfolg.
 * **Atomares Schreiben** (`src.utils.files.atomic_write`): TOCTOU-sicherer
   Pfad mit kryptographisch zufälligem Temp-Dateinamen, `os.fsync` und
   abschließendem `os.replace`. Ein Crash mitten im Write hinterlässt
@@ -146,8 +196,14 @@ verbessert.
   Standard "deutliche Stammstrecken-Beeinträchtigung").
 * **Stations-IDs**: `FLORIDSDORF_STATION_ID` / `MEIDLING_STATION_ID` —
   HAFAS-IDs aus dem ÖBB-SCOTTY-System.
+* **Richtungs-Tabelle**: `DIRECTIONS` (Tuple aus `_Direction`-Records).
+  Jede Richtung trägt Origin, Destination, das im Description-Feld
+  angezeigte Ziel-Label und den Identity-Prefix für `guid` / `_identity`.
 * **Sample-Größe**: `MAX_JOURNEYS_PER_QUERY` (default 12). Höhere
   Werte stabilisieren den Median, kosten aber mehr Pyhafas-Calls.
 * **Regex für S-Bahn-Linien**: `_S_BAHN_LINE_RE`. Erfasst alle ÖBB-
   S-Bahn-Linien (`S\d+`), inklusive zukünftiger Erweiterungen (`S 90`,
   `S 100`).
+* **Rate-Limit**: `BREAKER_FAILURE_THRESHOLD` / `BREAKER_RECOVERY_TIMEOUT`.
+  Aktuell auf 10 / 3600 s gesetzt, um das documented 10/h-API-Budget
+  unter beliebigen Failure-Modi einzuhalten.
