@@ -1,8 +1,12 @@
 name: Update Baustellen cache
 
+# DISABLED CRON (2026-05-09): the regular hourly schedule was
+# replaced by the ``update-cycle.yml`` DAG workflow which now picks
+# up the Baustellen refresh as a parallel job alongside WL/ÖBB/
+# Stammstrecke. This workflow remains as a ``workflow_dispatch``-
+# only escape hatch for manually re-fetching the Baustellen cache
+# between regular cycle runs.
 on:
-  schedule:
-    - cron: '0 * * * *'
   workflow_dispatch:
 
 permissions:

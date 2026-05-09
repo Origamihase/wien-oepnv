@@ -1,0 +1,277 @@
+name: Update cycle
+
+# Single-source-of-timing pipeline. One cron tick (``0,30 * * * *``)
+# triggers ALL data-fetcher jobs in parallel; the feed-composer job
+# depends on every fetcher via ``needs:`` so it runs only AFTER all
+# the fetchers complete (``if: always()`` — even if a fetcher failed,
+# build_feed still publishes the freshest data it has).
+#
+# This replaces the pre-2026-05-09 design that used five separate
+# workflow files with staggered cron schedules (Stammstrecke `0,30`,
+# WL `10,40`, ÖBB `20,50`, Baustellen `0`, build-feed `15,45`).
+# GitHub Actions cron schedules drift 5–15 minutes — under drift the
+# build-feed cron could read a stale cache because the upstream
+# fetcher hadn't committed yet. The DAG eliminates that race
+# entirely: the dependency graph is the timing source.
+#
+# Concurrency: the workflow as a whole holds the
+# ``external-api-fetch`` lock (shared with ``manual-full-refresh.yml``
+# and the legacy single-purpose dispatch-only workflows) so the
+# project never has two parallel API-fetching cycles in flight.
+#
+# Inter-job data passing:
+# * WL / ÖBB / Baustellen — upload their freshly-written
+#   ``cache/<provider>_<hash>/events.json`` as a workflow artifact;
+#   ``build_feed`` downloads all artifacts and overlays them on its
+#   checkout. A fetcher that fails (no artifact uploaded) leaves the
+#   last-committed cache file in place — the feed degrades gracefully.
+#   Single git push at the end of the cycle (build_feed) covers all
+#   four caches plus the rendered output, eliminating the parallel-
+#   pusher race that direct ``git-auto-commit`` would create.
+# * Stammstrecke — commits its CSV ledger and the persisted VAO
+#   counter (``data/vor_request_count.json``) DIRECTLY because the
+#   counter MUST survive a build_feed crash (otherwise the next
+#   cycle would re-spend already-charged API requests). build_feed
+#   pulls the resulting commit before its own ``feed build``.
+on:
+  schedule:
+    - cron: '0,30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: external-api-fetch
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  PYTHONPATH: src
+  PIP_CACHE_DIR: /tmp/pip-cache
+
+jobs:
+  wl_cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Ensure pip cache directory exists
+        run: mkdir -p "$PIP_CACHE_DIR"
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      - name: Refresh Wiener Linien cache
+        run: python scripts/update_wl_cache.py
+
+      - name: Upload WL cache artifact
+        uses: actions/upload-artifact@de65e23aa2b7e23d713bb51fbfcb6d502f8667d8 # v4
+        with:
+          name: wl-cache
+          path: cache/wl_*/events.json
+          retention-days: 1
+          if-no-files-found: ignore
+
+  oebb_cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Ensure pip cache directory exists
+        run: mkdir -p "$PIP_CACHE_DIR"
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      - name: Refresh ÖBB cache
+        run: python scripts/update_oebb_cache.py
+
+      - name: Upload ÖBB cache artifact
+        uses: actions/upload-artifact@de65e23aa2b7e23d713bb51fbfcb6d502f8667d8 # v4
+        with:
+          name: oebb-cache
+          path: cache/oebb_*/events.json
+          retention-days: 1
+          if-no-files-found: ignore
+
+  baustellen_cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Ensure pip cache directory exists
+        run: mkdir -p "$PIP_CACHE_DIR"
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      - name: Refresh Baustellen cache
+        run: python scripts/update_baustellen_cache.py
+
+      - name: Upload Baustellen cache artifact
+        uses: actions/upload-artifact@de65e23aa2b7e23d713bb51fbfcb6d502f8667d8 # v4
+        with:
+          name: baustellen-cache
+          path: cache/baustellen_*/events.json
+          retention-days: 1
+          if-no-files-found: ignore
+
+  stammstrecke:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
+      VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
+      VOR_BASE: ${{ secrets.VOR_BASE }}
+      VOR_VERSION: ${{ secrets.VOR_VERSION }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Ensure pip cache directory exists
+        run: mkdir -p "$PIP_CACHE_DIR"
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      # Defense-in-depth pre-flight: read the persisted VAO daily counter
+      # (``data/vor_request_count.json``) and SKIP the Stammstrecke step
+      # entirely when a fresh run would breach the contractual 100/day
+      # cap. Mirrors the gate from the dispatch-only escape-hatch
+      # workflow at ``update-stammstrecke-status.yml``.
+      - name: VAO quota pre-flight
+        id: vor_preflight
+        continue-on-error: true
+        run: python scripts/preflight_quota_check.py --check vor --margin 2
+
+      - name: Refresh Stammstrecke status
+        if: ${{ steps.vor_preflight.outputs.quota_ok == 'true' }}
+        run: python scripts/update_stammstrecke_status.py
+
+      # Stammstrecke commits its OWN files immediately rather than
+      # uploading them as artifacts because ``data/vor_request_count.
+      # json`` MUST survive a build_feed crash — otherwise the next
+      # cycle would read a stale counter and re-spend the already-
+      # charged 2 reqs, breaching the contractual 100/day cap. The
+      # CSV ledger commits alongside for the same atomicity reason.
+      - name: Pull concurrent remote changes
+        run: git pull --rebase --autostash
+
+      - name: Commit Stammstrecke ledger + quota counter
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
+        with:
+          commit_message: 'chore: update Stammstrecke status'
+          file_pattern: |
+            data/stats/stammstrecke_*.csv
+            data/vor_request_count.json
+
+  build_feed:
+    needs: [wl_cache, oebb_cache, baustellen_cache, stammstrecke]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          # Need full history so ``git pull --rebase --autostash`` can
+          # cleanly stitch the build_feed commit onto whatever the
+          # stammstrecke job (or a parallel ``update-stations.yml``)
+          # pushed since this job's checkout.
+          fetch-depth: 0
+
+      - name: Ensure pip cache directory exists
+        run: mkdir -p "$PIP_CACHE_DIR"
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      # Overlay all upstream cache artifacts onto the workspace so the
+      # subsequent ``feed build`` step reads the freshest events.json
+      # for every provider that succeeded this cycle. A failed
+      # fetcher's artifact is missing — the corresponding cache file
+      # from the checkout (last committed state) is used instead, so
+      # the feed degrades gracefully rather than dropping the
+      # provider's entries entirely.
+      - name: Download cache artifacts
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          path: .
+          merge-multiple: true
+
+      # Build feed reads only on-disk artefacts (caches + Stammstrecke
+      # CSV ledger pulled in by the previous git pull); no API call,
+      # no provider query. Writes ``docs/feed.xml`` and
+      # ``data/first_seen.json``, and appends to
+      # ``data/stats/stoerungen_<YYYY>.csv`` for any strictly-new
+      # disruption identity.
+      - name: Build feed
+        run: python -m src.cli feed build
+        env:
+          PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+
+      # Regenerate ``docs/statistik.md`` and patch the
+      # ``<!-- STATS:* -->`` markers in ``README.md`` from the
+      # ``data/stats/*.csv`` ledger (30-day window for the README
+      # snapshot). Reads only on-disk files; idempotent at the byte
+      # level (a no-data-change run rewrites only the timestamp cell).
+      - name: Refresh statistics dashboard and README snapshot
+        run: python scripts/generate_markdown_stats.py
+
+      - name: Pull concurrent remote changes
+        run: git pull --rebase --autostash
+
+      - name: Commit feed + caches + stats
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
+        with:
+          commit_message: 'chore: rebuild feed'
+          # Single commit covers every output of the cycle EXCEPT the
+          # files the stammstrecke job already committed earlier
+          # (data/stats/stammstrecke_*.csv + data/vor_request_count.json).
+          # Cache files come from the downloaded artifacts; rendered
+          # outputs are produced in-place.
+          file_pattern: |
+            cache/wl_*/events.json
+            cache/oebb_*/events.json
+            cache/baustellen_*/events.json
+            data/first_seen.json
+            data/stats/stoerungen_*.csv
+            docs/feed.xml
+            docs/statistik.md
+            README.md
