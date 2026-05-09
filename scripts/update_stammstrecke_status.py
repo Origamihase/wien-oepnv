@@ -1044,6 +1044,99 @@ def _describe_error_body_keys(exc: requests.HTTPError) -> str:
     return rendered
 
 
+# Hard cap on the rendered ``errorText`` diagnostic. Real VAO error
+# texts are <300 chars (1-2 sentences); 256 char ceiling is generous
+# headroom while bounding a planted-huge-text amplification shape.
+_ERROR_TEXT_MAX_LEN: Final = 256
+
+
+def _extract_vao_error_code_length(exc: requests.HTTPError) -> str:
+    """Return the length of the ``errorCode`` field as a stringy diagnostic.
+
+    The 2026-05-09 cron run revealed that VAO occasionally puts an
+    accessId-shaped value into ``errorCode``; the strict regex in
+    :func:`_extract_vao_error_code` accepts it (alphanumeric, within
+    the 32-char ceiling) and the project's SafeFormatter then masks
+    the literal value as ``***`` — defeating the diagnostic.
+
+    Logging the LENGTH is a leak-free signal: a 4-8 char value is a
+    canonical short code (``H890``, ``API_GEN``); a 16+ char value is
+    almost certainly an accessId-shaped token. The operator can then
+    distinguish "VAO returned its own short code" vs "VAO is echoing
+    our token back" without seeing the value itself.
+
+    Falls back to :data:`_DIAG_EMPTY_BODY` / :data:`_DIAG_MISSING`
+    for the same reasons as :func:`_extract_vao_error_code`.
+    """
+    body = _decode_error_body(exc)
+    if body is None:
+        return _DIAG_EMPTY_BODY
+    raw_code = body.get("errorCode") or body.get("error")
+    if not isinstance(raw_code, str):
+        return _DIAG_MISSING
+    return str(len(raw_code))
+
+
+def _extract_vao_error_text(exc: requests.HTTPError) -> str:
+    """Return the ``errorText`` field, normalised and truncated.
+
+    Unlike :func:`_extract_vao_error_code`, the errorText field is
+    intended to be human-readable diagnostic prose. A typical value is
+    e.g. ``"Invalid origin location"``, ``"Authentication failed"``,
+    ``"No journey found between A and B"``. When VAO echoes a
+    parameter value into the message, the project's SafeFormatter
+    + GitHub Actions secret-masker replace the secret with ``***``
+    while preserving the surrounding text — so an operator sees
+    ``"Invalid accessId: ***"`` rather than ``"Invalid accessId:
+    <ACCESSID>"``.
+
+    Control bytes / line-terminators / whitespace runs are
+    normalised via the project's :func:`sanitize_log_arg` (applied
+    at the call site) on top of the length cap here.
+
+    Falls back to :data:`_DIAG_EMPTY_BODY` / :data:`_DIAG_MISSING`
+    for the same reasons as :func:`_extract_vao_error_code`.
+    """
+    body = _decode_error_body(exc)
+    if body is None:
+        return _DIAG_EMPTY_BODY
+    raw_text = body.get("errorText") or body.get("errorMsg")
+    if not isinstance(raw_text, str):
+        return _DIAG_MISSING
+    text = raw_text.strip()
+    if not text:
+        return _DIAG_MISSING
+    if len(text) > _ERROR_TEXT_MAX_LEN:
+        return text[:_ERROR_TEXT_MAX_LEN] + "…"
+    return text
+
+
+def _extract_vao_request_id(exc: requests.HTTPError) -> str:
+    """Return the VAO ``requestId`` from the error body, or a sentinel.
+
+    VAO assigns each request a server-side trace ID (typically a UUID
+    or a short hex token) that VAO support can use to look up the
+    failure on their end. The value is server-set and does not echo
+    user-controlled content — safe to log fully (with the same
+    canonical-shape regex guard as :func:`_extract_vao_error_code` to
+    defend against an upstream that ever ships free-form text in this
+    field).
+    """
+    body = _decode_error_body(exc)
+    if body is None:
+        return _DIAG_EMPTY_BODY
+    raw_id = body.get("requestId") or body.get("request_id") or body.get("id")
+    if not isinstance(raw_id, str):
+        return _DIAG_MISSING
+    rid = raw_id.strip()
+    if not rid:
+        return _DIAG_MISSING
+    # Allow hex / UUID-like shapes too (digits, hyphens, underscores).
+    if not re.match(r"^[A-Za-z0-9_\-]{1,64}$", rid):
+        return _DIAG_BAD_SHAPE
+    return rid
+
+
 def _process_direction(
     session: requests.Session,
     direction: _Direction,
@@ -1088,22 +1181,29 @@ def _process_direction(
         )
         return None, "quota_exceeded"
     except requests.HTTPError as exc:
-        # Diagnostic-rich branch for non-2xx responses. Logs the HTTP
-        # status code, the canonical-short VAO ``errorCode`` from the
-        # JSON body when present, the body's top-level key set, and
-        # four server-set response headers (Content-Type,
-        # Content-Length, Server, WWW-Authenticate) so the next cron
-        # run reveals whether we are dealing with an auth rejection
-        # (401 + WWW-Authenticate set), a gateway/proxy issue (Server
-        # naming a CDN rather than the VAO origin), or a payload
-        # mismatch (Content-Type=text/html points at an HTML error
-        # page). All fields are safe to surface (no URL → no
-        # ``accessId`` leak; ``errorCode`` is regex-validated against
-        # the canonical HAFAS short-code shape; key names go through
-        # the same regex filter; response headers are server-set and
-        # do not echo user-controlled content).
+        # Diagnostic-rich branch for non-2xx responses. The previous
+        # PR (#1389) made the body readable, revealing the canonical
+        # VAO error envelope shape ``{dialectVersion, errorCode,
+        # errorText, requestId, serverVersion}``. The 2026-05-09 cron
+        # then showed ``errorCode=***`` — VAO echoes the supplied
+        # accessId into the ``errorCode`` field, which the project's
+        # SafeFormatter / GitHub Actions secret-masker then redacts
+        # entirely.
+        #
+        # This iteration adds three more leak-free diagnostics:
+        # * ``code_len`` — the length of ``errorCode`` (4-8 chars =
+        #   canonical short code; 16+ chars = accessId-shaped token);
+        # * ``err_text`` — the human-readable ``errorText`` field
+        #   with the secret-masking applied at the ``sanitize_log_arg``
+        #   layer (preserves surrounding text like "Invalid origin
+        #   location: ***");
+        # * ``req_id`` — the VAO server-side trace ID for support
+        #   triage.
         status_code = _extract_http_status(exc)
         error_code = _extract_vao_error_code(exc)
+        code_len = _extract_vao_error_code_length(exc)
+        error_text = _extract_vao_error_text(exc)
+        request_id = _extract_vao_request_id(exc)
         body_keys = _describe_error_body_keys(exc)
         content_type = _extract_response_header(exc, "Content-Type")
         content_length = _extract_response_header(exc, "Content-Length")
@@ -1111,11 +1211,14 @@ def _process_direction(
         www_auth = _extract_response_header(exc, "WWW-Authenticate")
         LOGGER.warning(
             "Stammstrecke: Abfrage Richtung %s fehlgeschlagen: HTTP %s "
-            "(errorCode=%s, body_keys=%s, ct=%s, cl=%s, server=%s, "
-            "www_auth=%s).",
+            "(errorCode=%s, code_len=%s, err_text=%s, req_id=%s, "
+            "body_keys=%s, ct=%s, cl=%s, server=%s, www_auth=%s).",
             direction.target_label,
             status_code,
             sanitize_log_arg(error_code),
+            sanitize_log_arg(code_len),
+            sanitize_log_arg(error_text),
+            sanitize_log_arg(request_id),
             sanitize_log_arg(body_keys),
             sanitize_log_arg(content_type),
             sanitize_log_arg(content_length),

@@ -604,6 +604,127 @@ def test_describe_error_body_keys_falls_back_for_empty_object() -> None:
     assert script._describe_error_body_keys(err) == "[NO_KEYS]"
 
 
+# ---- errorCode length / errorText / requestId diagnostics -----------------
+
+
+def test_extract_vao_error_code_length_returns_string_length() -> None:
+    """Length is a leak-free signal of whether errorCode is canonical
+    (4-8 chars) or accessId-shaped (16+ chars)."""
+
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"errorCode": "H890"}).encode("utf-8"),
+    )
+    assert script._extract_vao_error_code_length(err) == "4"
+
+
+def test_extract_vao_error_code_length_for_token_shaped_value() -> None:
+    """A 32-char token-shape value (suspiciously accessId-sized)."""
+
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"errorCode": "a" * 32}).encode("utf-8"),
+    )
+    assert script._extract_vao_error_code_length(err) == "32"
+
+
+def test_extract_vao_error_code_length_falls_back_for_no_body() -> None:
+    err = _make_http_error(status_code=400, body=b"")
+    assert script._extract_vao_error_code_length(err) == "[EMPTY_BODY]"
+
+
+def test_extract_vao_error_code_length_falls_back_for_missing_field() -> None:
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"otherField": "x"}).encode("utf-8"),
+    )
+    assert script._extract_vao_error_code_length(err) == "[MISSING]"
+
+
+def test_extract_vao_error_text_returns_text_field() -> None:
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps(
+            {"errorCode": "H890", "errorText": "no journey found"}
+        ).encode("utf-8"),
+    )
+    assert script._extract_vao_error_text(err) == "no journey found"
+
+
+def test_extract_vao_error_text_falls_back_to_error_msg_field() -> None:
+    """Some VAO peers emit ``errorMsg`` instead of ``errorText``."""
+
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"errorMsg": "auth failed"}).encode("utf-8"),
+    )
+    assert script._extract_vao_error_text(err) == "auth failed"
+
+
+def test_extract_vao_error_text_truncates_oversize_value() -> None:
+    huge = "X" * 5000
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"errorText": huge}).encode("utf-8"),
+    )
+    rendered = script._extract_vao_error_text(err)
+    assert len(rendered) == script._ERROR_TEXT_MAX_LEN + 1  # +1 for ellipsis
+    assert rendered.endswith("…")
+
+
+def test_extract_vao_error_text_falls_back_for_empty_value() -> None:
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"errorText": "   "}).encode("utf-8"),
+    )
+    assert script._extract_vao_error_text(err) == "[MISSING]"
+
+
+def test_extract_vao_error_text_falls_back_for_no_body() -> None:
+    err = _make_http_error(status_code=400, body=b"")
+    assert script._extract_vao_error_text(err) == "[EMPTY_BODY]"
+
+
+def test_extract_vao_request_id_returns_uuid_shape() -> None:
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps(
+            {"requestId": "8e7f2c9b-1234-5678-90ab-cdef12345678"}
+        ).encode("utf-8"),
+    )
+    assert (
+        script._extract_vao_request_id(err)
+        == "8e7f2c9b-1234-5678-90ab-cdef12345678"
+    )
+
+
+def test_extract_vao_request_id_returns_short_hex_token() -> None:
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"requestId": "abc123def456"}).encode("utf-8"),
+    )
+    assert script._extract_vao_request_id(err) == "abc123def456"
+
+
+def test_extract_vao_request_id_rejects_text_with_spaces() -> None:
+    """A free-form ``requestId`` (e.g. echoing user input) collapses to
+    the bad-shape sentinel so a planted value cannot leak via this
+    diagnostic."""
+
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps(
+            {"requestId": "Invalid request from <accessId>"}
+        ).encode("utf-8"),
+    )
+    assert script._extract_vao_request_id(err) == "[BAD_SHAPE]"
+
+
+def test_extract_vao_request_id_falls_back_for_no_body() -> None:
+    err = _make_http_error(status_code=400, body=b"")
+    assert script._extract_vao_request_id(err) == "[EMPTY_BODY]"
+
+
 # ---- Response header diagnostics ------------------------------------------
 
 
@@ -660,14 +781,20 @@ def test_process_direction_logs_status_and_error_code_on_http_error(
 
     err = _make_http_error(
         status_code=401,
-        body=json.dumps({"errorCode": "H730"}).encode("utf-8"),
+        body=json.dumps(
+            {
+                "errorCode": "H730",
+                "errorText": "Authentication failed",
+                "requestId": "8e7f2c9b-1234-5678-90ab-cdef12345678",
+            }
+        ).encode("utf-8"),
     )
 
     # Plant a few server-set headers so the new diagnostics surface the
     # gateway/auth/payload shape that triggered the failure.
     assert err.response is not None
     err.response.headers["Content-Type"] = "application/json"
-    err.response.headers["Content-Length"] = "42"
+    err.response.headers["Content-Length"] = "92"
     err.response.headers["Server"] = "VAO-RestProxy/1.11.0"
     err.response.headers["WWW-Authenticate"] = "Bearer realm=\"vao\""
 
@@ -691,13 +818,20 @@ def test_process_direction_logs_status_and_error_code_on_http_error(
     # Body-keys diagnostic must surface the canonical envelope shape
     # without leaking any value.
     assert "body_keys=errorCode" in rendered
-    # The four new server-set header diagnostics must appear so a
-    # future cron failure exposes the gateway / auth / payload shape
+    # The four server-set header diagnostics must appear so a future
+    # cron failure exposes the gateway / auth / payload shape
     # without further code changes.
     assert "ct=application/json" in rendered
-    assert "cl=42" in rendered
+    assert "cl=92" in rendered
     assert "server=VAO-RestProxy/1.11.0" in rendered
     assert "www_auth=Bearer" in rendered
+    # The three new error-body diagnostics from the 2026-05-09
+    # accessId-echoing audit must also appear: errorCode-length
+    # (length-only fingerprint), errorText (human-readable diagnostic
+    # string), and requestId (server-side trace ID for support).
+    assert "code_len=4" in rendered  # H730 is 4 chars
+    assert "err_text=Authentication failed" in rendered
+    assert "req_id=8e7f2c9b-1234-5678-90ab-cdef12345678" in rendered
 
 
 def test_collect_delays_rejects_multi_ride_leg_trips() -> None:
