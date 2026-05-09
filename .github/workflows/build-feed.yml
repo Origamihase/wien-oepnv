@@ -1,8 +1,17 @@
 name: Build Feed
 
+# 2026-05-09: dropped the ``5,35 * * * *`` cron schedule. The feed is
+# now rebuilt at the end of ``update-stammstrecke-status.yml`` (renamed
+# "Stammstrecke + feed build", every 30 minutes) so the Stammstrecke
+# poll → CSV append → feed render pipeline runs sequentially in a
+# single runner. GitHub Actions cron schedules are best-effort with
+# multi-minute drift — running the feed build on a separate cron
+# could read a stale CSV ledger when build-feed beat the Stammstrecke
+# step on a particular cycle, publishing a feed without the latest
+# observation. The push trigger remains so code changes still trigger
+# a rebuild for testing; ``workflow_dispatch`` remains for emergency
+# manual rebuilds.
 on:
-  schedule:
-    - cron: '5,35 * * * *'
   workflow_dispatch:
   push:
     paths:

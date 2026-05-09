@@ -32,7 +32,13 @@ htmlcov/
 .venv/
 
 # Runtime State
-data/vor_request_count.json
+# ``data/vor_request_count.json`` is intentionally NOT ignored — the
+# VAO Start tier's 100/day quota counter must survive across cron runs
+# (each GitHub-Actions runner is ephemeral, so an in-memory or
+# runner-local counter would reset to 0 on every invocation and the
+# script would silently re-spend the entire budget every 30 minutes).
+# The Stammstrecke workflow commits this file alongside the cache and
+# CSV ledger so the next run reads a coherent count.
 data/*.lock
 .hypothesis/
 patch_lines.patch

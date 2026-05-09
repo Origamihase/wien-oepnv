@@ -6,13 +6,11 @@ import importlib
 import logging
 import os
 from dataclasses import dataclass
-from pathlib import Path
 from types import ModuleType
 from typing import Any, cast
 from collections.abc import Callable, Iterable
 
 from ..utils.cache import read_cache
-from ..utils.files import read_capped_json
 from ..utils.logging import sanitize_log_arg
 from .config import get_bool_env
 from ..feed_types import FeedItem
@@ -238,54 +236,40 @@ def read_cache_baustellen() -> list[Any]:
     return list(read_cache("baustellen"))
 
 
-# Stammstrecke uses a fixed-path cache (``cache/stammstrecke/events.json``)
-# instead of the ``cache/<sanitized-provider>/events.json`` layout the
-# default ``read_cache`` resolves to. The monitor in
-# ``scripts/update_stammstrecke_status.py`` writes a single, schema-
-# compliant event when the median S-Bahn departure delay between
-# Wien Floridsdorf and Wien Meidling exceeds the configured threshold.
-_STAMMSTRECKE_CACHE_PATH: Path = Path("cache") / "stammstrecke" / "events.json"
-
-# Per-cache size-cap for ``cache/stammstrecke/events.json``. The Stammstrecke
-# monitor writes 0, 1, or 2 events with fixed-format payloads ~1 KiB each, so
-# the largest legitimate state shape is ~2 KiB. The 256 KiB cap is ~128x
-# headroom — enough to absorb future schema growth (additional metadata,
-# longer descriptions) without the canonical 50 MiB ``read_capped_json``
-# default leaving a 50,000x amplification window for an attacker who can
-# plant a single oversized cache file (compromised CI runner / partial
-# flush + power loss / parallel orchestrator process performing an atomic
-# state swap mid-read). Mirrors the per-loader cap pattern from JSON
-# Size-Bomb Round 1-7 and the ``MAX_GTFS_STAMMSTRECKE_CACHE_BYTES`` shape
-# from the (rolled-back) GTFS-RT cache-driven provider.
-MAX_STAMMSTRECKE_CACHE_BYTES = 256 * 1024
-
-
+# Stammstrecke is the only provider whose feed entries are derived
+# *directly* from the statistics ledger (``data/stats/stammstrecke_<YYYY>.csv``)
+# rather than from a separate provider-fetched JSON cache. The cron
+# script ``scripts/update_stammstrecke_status.py`` appends one
+# observation row per direction per run; this provider folds the rows
+# from the most recent hour into 0..N feed events when the per-
+# direction average delay exceeds the threshold. Single source of
+# truth = the CSV ledger; the README dashboard reads the same file
+# (just with a 30-day window instead of the feed's 1-hour window).
+#
+# Replaced the ``cache/stammstrecke/events.json`` JSON cache 2026-05-09
+# (PR follow-up to #1397). Operational rationale in
+# :mod:`src.feed.stammstrecke`.
 def read_cache_stammstrecke() -> list[Any]:
-    """Read ``cache/stammstrecke/events.json`` with the canonical size cap.
+    """Compute Stammstrecke feed events from the CSV ledger.
 
-    A missing or invalid cache file is treated as "no events" so the
-    feed build never aborts because the monitor has not run yet
-    (e.g. on a fresh clone before the cron job has fired once).
+    Delegates to :func:`src.feed.stammstrecke.compute_stammstrecke_events`
+    which is the canonical entry point — see that module's docstring
+    for the full operational contract (1-hour feed window, 6-hour
+    episode lookback, 9-minute threshold).
+
+    A missing / unreadable / empty ledger naturally yields zero events;
+    the feed build then omits the Stammstrecke entry rather than
+    failing.
     """
+    from . import stammstrecke as stammstrecke_events
 
-    if not _STAMMSTRECKE_CACHE_PATH.exists():
-        return []
-    payload = read_capped_json(
-        _STAMMSTRECKE_CACHE_PATH,
-        max_bytes=MAX_STAMMSTRECKE_CACHE_BYTES,
-        label="Stammstrecke",
-        logger=log,
-    )
-    if not isinstance(payload, list):
-        return []
-    return list(payload)
+    return cast(list[Any], stammstrecke_events.compute_stammstrecke_events())
 
 
 register_default_providers()
 
 
 __all__ = [
-    "MAX_STAMMSTRECKE_CACHE_BYTES",
     "ProviderLoader",
     "ProviderSpec",
     "iter_providers",

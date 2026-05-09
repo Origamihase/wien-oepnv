@@ -48,7 +48,26 @@ jobs:
             echo "Missing GOOGLE_ACCESS_ID"; exit 2;
           fi
 
+      # Defense-in-depth pre-flight: read the persisted Google Places
+      # monthly counter (``data/places_quota.json``) and SKIP every
+      # subsequent API-firing step (smoke preflight + nearby preflight +
+      # full fetch) when a fresh run would breach the contractual
+      # ``PLACES_LIMIT_TOTAL`` cap. The in-script ``MonthlyQuota.consume``
+      # guard (``src/places/quota.py:226``) is still active as a
+      # second-layer enforcer; this preflight prevents the curl-based
+      # smoke / nearby steps from billing requests against the API
+      # *before* the Python client has a chance to enforce its own gate.
+      # ``--margin 2`` mirrors the two curl preflights below; raise it
+      # if more pre-fetch probes are added.
+      - name: Places quota pre-flight
+        id: places_preflight
+        continue-on-error: true
+        run: |
+          python scripts/preflight_quota_check.py --check places \
+            --margin 2 --limit-override "${PLACES_LIMIT_TOTAL:-4000}"
+
       - name: Places preflight
+        if: ${{ steps.places_preflight.outputs.quota_ok == 'true' }}
         run: |
           set -euo pipefail
           body='{"textQuery":"Wien Hauptbahnhof","languageCode":"de","regionCode":"AT"}'
@@ -69,6 +88,7 @@ jobs:
           exit 1
 
       - name: Places nearby preflight
+        if: ${{ steps.places_preflight.outputs.quota_ok == 'true' }}
         run: |
           set -euo pipefail
           body='{
@@ -88,7 +108,7 @@ jobs:
           echo "Nearby preflight OK"
 
       - name: Nearby debug (only if needed)
-        if: failure()
+        if: ${{ failure() && steps.places_preflight.outputs.quota_ok == 'true' }}
         run: |
           set -euo pipefail
           body='{"languageCode":"de","includedTypes":["train_station"],"maxResultCount":1,
@@ -100,6 +120,7 @@ jobs:
             --data "$body" -w "\nHTTP %{http_code}\n"
 
       - name: Fetch Google Places stations
+        if: ${{ steps.places_preflight.outputs.quota_ok == 'true' }}
         run: |
           python scripts/fetch_google_places_stations.py --write --dump-new data/new_places.json
 

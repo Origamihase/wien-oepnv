@@ -34,7 +34,6 @@ from .feed import config as feed_config
 from .feed.merge import deduplicate_fuzzy
 from .feed.logging import configure_logging
 from .feed.providers import (
-    MAX_STAMMSTRECKE_CACHE_BYTES,
     iter_providers,
     load_provider_plugins,
     provider_statuses,
@@ -55,7 +54,7 @@ from .utils.cache import (
     read_cache as _core_read_cache,
     register_cache_alert_hook,
 )
-from .utils.files import atomic_write, read_capped_json
+from .utils.files import atomic_write
 from .utils.http import validate_http_url
 from .utils.locking import file_lock
 from .utils.logging import sanitize_log_arg
@@ -199,35 +198,24 @@ def read_cache_baustellen() -> list[Any]:
     return list(read_cache("baustellen") or [])
 
 
-# Path of the Stammstrecke cache file maintained by
-# ``scripts/update_stammstrecke_status.py``. The Stammstrecke monitor
-# does NOT use the standard ``cache/<sanitized-provider>/events.json``
-# layout (with the SHA256 fragment) because the cache is written with a
-# fixed, schema-compliant single-event payload that operators inspect
-# by hand more often than the auto-generated provider caches.
-_STAMMSTRECKE_CACHE_PATH = Path("cache") / "stammstrecke" / "events.json"
-
-
+# Stammstrecke feed events are now derived from the CSV ledger
+# ``data/stats/stammstrecke_<YYYY>.csv`` rather than a JSON cache —
+# see :mod:`src.feed.stammstrecke` for the operational contract
+# (1-hour feed window, 6-hour episode lookback, 9-minute threshold).
+# Replaced the JSON cache 2026-05-09 (PR follow-up to #1397) so the
+# README dashboard and the RSS feed share a single source of truth.
 def read_cache_stammstrecke() -> list[Any]:
-    """Read ``cache/stammstrecke/events.json`` with the canonical size cap.
+    """Compute Stammstrecke feed events from the CSV ledger.
 
-    The S-Bahn Stammstrecke monitor writes either an empty list (no
-    notable median delay) or a single event dict (median > 9 minutes).
-    A missing or invalid cache file is treated as "no events" so the
-    feed build never fails because the monitor has not run yet.
+    Delegates to :func:`src.feed.stammstrecke.compute_stammstrecke_events`.
+    A missing / unreadable / empty ledger naturally yields zero
+    events; the feed build then omits the Stammstrecke entry rather
+    than failing.
     """
 
-    if not _STAMMSTRECKE_CACHE_PATH.exists():
-        return []
-    payload = read_capped_json(
-        _STAMMSTRECKE_CACHE_PATH,
-        max_bytes=MAX_STAMMSTRECKE_CACHE_BYTES,
-        label="Stammstrecke",
-        logger=log,
-    )
-    if not isinstance(payload, list):
-        return []
-    return list(payload)
+    from .feed import stammstrecke as stammstrecke_events
+
+    return cast(list[Any], stammstrecke_events.compute_stammstrecke_events())
 
 
 DEFAULT_PROVIDERS: tuple[tuple[str, Any], ...] = (
