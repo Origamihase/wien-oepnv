@@ -1,3 +1,228 @@
+## 2026-05-09 - Markdown Injection Drift Round 3: Eight Bullet-Body Sinks at the `ValidationReport.to_markdown()` Boundary — Stations-Directory Sister of the Feed-Health / Stats-Dashboard Renderer Drifts
+**Vulnerability:** The 2026-05-09 Markdown-injection rounds closed the
+renderer boundary in `scripts/generate_markdown_stats.py` (stats
+dashboard) and `src/feed/reporting.py` (Feed-Health report + GitHub
+Issue body) but their threat-model paragraph on "Markdown rendering is
+the LAST sink in any text-data pipeline that ends in a human-readable
+artefact (dashboard, **issue body**, **README**); always treat it as
+a *defence boundary* even when an upstream sanitiser exists" *implicitly*
+opened a sibling drift round: the third Markdown-emitting renderer in
+the project — `ValidationReport.to_markdown()` in
+`src/utils/stations_validation.py` — interpolated up to fifteen
+operator-controlled string fields (across eight issue-category
+sections) directly into Markdown bullet bodies *without any
+escaping at all*.
+
+The renderer is consumed by the CLI subcommand
+``python -m src.cli stations validate --output
+docs/stations_validation_report.md`` (driven by
+``.github/workflows/update-stations.yml`` on a monthly cron and
+``.github/workflows/manual-full-refresh.yml`` on workflow_dispatch).
+Both workflows then auto-commit the rendered Markdown via
+``stefanzweifel/git-auto-commit-action`` so the file is *publicly
+published* on github.com (and any GitHub Pages site mirroring
+``docs/``). The repo's ``docs/sitemap.xml`` even points to
+``stations_validation_report.html`` — the file is a public,
+search-indexed artefact.
+
+Pre-fix sinks (eight orthogonal Markdown-rendering bullet lines, each
+interpolating two-to-five operator-controlled fields):
+
+  ```python
+  # src/utils/stations_validation.py:to_markdown (pre-fix):
+  # 1. Security warnings:
+  f"- {sec_issue.identifier} ({sec_issue.name}): {sec_issue.reason}"
+  # 2. Provider issues:
+  f"- {provider_issue.identifier} ({provider_issue.name}): {provider_issue.reason}"
+  # 3. Cross station ID issues (FIVE operator-controlled fields):
+  f"- {cross_issue.identifier} ({cross_issue.name}): alias {cross_issue.alias!r} "
+  f"collides with {cross_issue.colliding_field} of "
+  f"{cross_issue.colliding_identifier} ({cross_issue.colliding_name})"
+  # 4. Geographic duplicates (joined identifier list):
+  f"- ({group.latitude:.5f}, {group.longitude:.5f}) → " + ", ".join(group.identifiers)
+  # 5. Alias issues:
+  f"- {alias_issue.identifier} ({alias_issue.name}): {alias_issue.reason}"
+  # 6. Coordinate anomalies:
+  f"- {coordinate_issue.identifier} ({coordinate_issue.name}): {coordinate_issue.reason}"
+  # 7. GTFS mismatches (vor_id is operator-controlled):
+  f"- {gtfs_issue.identifier} ({gtfs_issue.name}) → missing stop_id {gtfs_issue.vor_id}"
+  # 8. Naming issues:
+  f"- {naming_issue.identifier} ({naming_issue.name}): {naming_issue.reason}"
+  ```
+
+Four orthogonal Markdown-injection axes opened up at these sinks:
+
+  (a) **Backtick inline-code-span break-out** — a name like
+      ``Wien Hbf \`<img src=x onerror=alert(1)>\``` opens a CommonMark
+      inline code span that lets the embedded HTML render as a live
+      ``<img>`` tag in the public ``docs/stations_validation_report.md``
+      artefact. CommonMark code spans render their interior verbatim
+      and ``escape_markdown`` is the only defence (backslash-escaping
+      the backtick collapses the code-span entirely).
+
+  (b) **Markdown-link phishing** — a payload like
+      ``[click here](javascript:alert(1))`` or
+      ``[click here](https://evil.example)`` renders as a clickable
+      Markdown link in the published report. An operator skimming the
+      report on github.com sees a normal-looking link that points to
+      an attacker-controlled destination — a usable phishing primitive
+      against every repo watcher.
+
+  (c) **Asterisk emphasis spoof** — ``*spoofed-bold*`` injects italic
+      / bold emphasis the operator did not author. While individually
+      low-impact, combined with semantic injection (e.g. ``*RESOLVED*``,
+      ``*CRITICAL*``) it lets an upstream forge operator-facing
+      visual signals.
+
+  (d) **HTML angle-bracket injection** — although
+      ``_UNSAFE_CHARS_RE`` in ``_find_security_issues`` flags
+      ``<``/``>`` and ``_collect_blocking_issues`` in
+      ``scripts/update_all_stations.py`` aborts the commit when those
+      fire, that gate is **only active in the orchestrator script**.
+      The standalone CLI invocation (``python -m src.cli stations
+      validate``) and the ``manual-full-refresh.yml`` workflow's
+      regenerate-step both bypass the gate entirely — a hostile
+      ``stations.json`` produced by any of those paths flows
+      verbatim into the renderer.
+
+The threat surface at every sink is operator-controlled-but-
+upstream-influenced:
+
+  1. **`stations.json` is populated by cron-driven scripts** —
+     ``scripts/update_all_stations.py`` orchestrates
+     ``update_vor_stations.py`` / ``update_wl_stations.py`` /
+     ``update_oebb_cache.py`` / ``fetch_google_places_stations.py`` /
+     ``enrich_station_aliases.py`` — every one fans out to external
+     API surfaces (VOR / OEBB / Wiener Linien / Google Places /
+     OSM Overpass). A compromised upstream / DNS-hijack / MITM that
+     returns a station with a hostile ``name`` field lands the
+     payload in ``stations.json`` even when the per-fetch SSRF /
+     DNS-rebinding / size-cap defences hold.
+  2. **Cross-cutting** — every prior round's threat-model surface
+     for cron-pipeline poisoning (leaked CI env, compromised
+     secret store, intentional misconfig, partial flush + power
+     loss on cache write) carries here.
+
+The defence-in-depth contract collapses the cartesian product of
+(upstream source × upstream-gate bypass × backtick / link / asterisk
+/ angle-bracket axis × eight renderer sinks) into a single sanitiser
+at the last gate before rendering.
+
+**Fix:** A single canonical defence helper applied per-sink:
+
+  ```python
+  # src/utils/stations_validation.py — module-level helper:
+  def _safe_md(text: object) -> str:
+      """Compose normalise_markdown_text + escape_markdown for the
+      stations validation report renderer."""
+      return escape_markdown(
+          normalise_markdown_text(str(text), max_len=_REPORT_FIELD_MAX_LEN)
+      )
+
+  # to_markdown — every text interpolation routed through _safe_md:
+  f"- {_safe_md(sec.identifier)} ({_safe_md(sec.name)}): {_safe_md(sec.reason)}"
+  # ... 14 more interpolations across the seven other sections
+  ```
+
+The helper is module-level (NOT nested inside ``to_markdown``) so it
+adds zero to the C901 complexity counter — the function stays at its
+baselined 18. The ``_REPORT_FIELD_MAX_LEN = 400`` cap is sized
+generously enough for the longest legitimate ``reason`` (the alias-
+issue ``f"missing required aliases: {…}"`` join can carry several
+station names) while still bounding a planted-huge-field
+amplification shape.
+
+For the cross-station-id alias sink, the legacy ``{alias!r}`` (Python
+repr — quotes the value but does NOT escape Markdown chars) is
+replaced with explicit single-quote wrapping ``'{_safe_md(alias)}'``.
+This preserves the rendered ``'Mitte'`` shape that
+``test_markdown_rendering_contains_cross_station_id_section`` pins
+while ensuring that hostile aliases like ``"Mitte`xss`"`` get the
+backtick backslash-escaped.
+
+For the geographic-duplicates sink, the joined identifier list uses
+a generator expression (``", ".join(_safe_md(ident) for ident in
+group.identifiers)``) so each element is sanitised independently —
+catches a hostile identifier even when other identifiers in the
+group are clean.
+
+The lat/longitude formatting (``:.5f``) is not sanitised because
+``DuplicateGroup.latitude`` / ``longitude`` are typed ``float`` and
+validated by ``_extract_float`` (rejects NaN / inf / non-numeric)
+on construction — numeric formatting is safe by construction.
+
+**Tests:** Ten end-to-end PoC tests in
+``tests/test_sentinel_stations_validation_markdown_injection.py``
+exercise every sink with a layout-breaking payload:
+  * Six per-issue-category backtick / link / emphasis tests
+    (``test_security_issue_backtick_in_name_does_not_break_out_to_html``,
+    ``test_alias_issue_backtick_in_reason_does_not_break_out_to_html``,
+    ``test_naming_issue_markdown_link_in_reason_does_not_render_as_link``,
+    ``test_provider_issue_markdown_link_in_name_does_not_render_as_link``,
+    ``test_coordinate_issue_asterisk_emphasis_does_not_render_as_bold``,
+    ``test_cross_station_id_issue_backtick_in_alias_does_not_break_out``).
+  * Two list-and-aggregate tests
+    (``test_duplicate_group_backtick_in_identifier_does_not_break_out``,
+    ``test_gtfs_issue_backtick_in_vor_id_does_not_break_out``).
+  * One end-to-end test
+    (``test_end_to_end_hostile_stations_json_does_not_inject_markdown``)
+    that builds a real ``stations.json`` with a hostile name, runs
+    the full ``validate_stations`` pipeline, and asserts the rendered
+    output contains no Markdown / HTML break-out primitives.
+  * One inventory invariant
+    (``test_to_markdown_sink_inventory_is_pinned``) that scans the
+    source for the canonical pre-fix interpolation patterns and
+    fails when ANY of the seven text-bearing sinks is reintroduced
+    without the ``_safe_md`` wrapper.
+
+All ten were verified to FAIL on the pre-fix code (the first one
+caught the literal ``\`<img`` substring in the rendered output) and
+to PASS on the post-fix code. The existing
+``test_markdown_rendering_contains_cross_station_id_section`` was
+updated to assert on ``"bst\\_code"`` (the underscore-escaped
+form) rather than the raw ``"bst_code"`` to reflect the new
+escaping contract.
+
+**Learning:** Three reinforcing lessons:
+
+  (a) **Every Markdown-emitting renderer in a project is a
+      sister sink to every other Markdown-emitting renderer.** The
+      2026-05-09 stats-dashboard round closed
+      `scripts/generate_markdown_stats.py`. The 2026-05-09 Round 2
+      closed `src/feed/reporting.py`. This Round 3 closed
+      `src/utils/stations_validation.py`. The drift family is
+      defined by the *output medium* (Markdown rendered on
+      github.com / GitHub Pages / IDE viewers), not by the *source
+      file*. A future round MUST treat any new ``to_markdown``-
+      shaped function as a sister sink and audit the full chain
+      from data source → renderer → published artefact in one
+      sweep, not one renderer at a time.
+
+  (b) **Upstream gates do not substitute for renderer-boundary
+      defences.** ``_collect_blocking_issues`` in
+      ``scripts/update_all_stations.py`` aborts the commit when
+      ``_UNSAFE_CHARS_RE`` fires — a useful belt-and-suspenders
+      check for the orchestrator's *write* path. But the renderer
+      is invoked from THREE other code paths (standalone CLI,
+      ``manual-full-refresh.yml`` regenerate step, any future
+      direct caller) that bypass the gate entirely. The renderer
+      MUST defend itself even when the typical caller has its own
+      defences — the cartesian product of (caller bypass × payload
+      shape) is too large to enumerate at every call site.
+
+  (c) **`!r` repr-formatting is NOT a Markdown sanitiser.**
+      ``f"alias {alias!r}"`` adds quotes around the value (useful
+      for delimiting the alias text) but does not escape Markdown
+      characters. A hostile ``alias = "Mitte\`xss\`"`` renders as
+      ``alias 'Mitte\`xss\`'`` — the backtick still breaks out of
+      any surrounding inline code span. The replacement pattern
+      ``f"alias '{escape_markdown(alias)}'"`` preserves the visual
+      delimiter while applying the canonical defence. The
+      project-wide convention pinned by this round: NEVER use
+      ``!r`` to "safe-quote" a string in a Markdown context;
+      always use explicit quote-wrapping plus ``escape_markdown``
+      (or ``safe_markdown_codespan`` for inline-code-span sinks).
+
 ## 2026-05-09 - Markdown Injection Drift Round 2: Inline-Code-Span and Fenced-Code-Block Break-Out at the Feed-Health / GitHub-Issue Renderer (`feed_path`, `error_log_path`, Diagnostics) — Env-Override Path-Boundary Sibling
 **Vulnerability:** The 2026-05-09 stats-dashboard Markdown-injection
 round (entry below) closed the renderer boundary in

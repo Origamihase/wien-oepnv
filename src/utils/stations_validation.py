@@ -20,6 +20,7 @@ from collections.abc import Iterable, Iterator, Mapping, Sequence
 
 from src.utils.files import read_capped_text
 from src.utils.stations import MAX_STATIONS_FILE_BYTES, _normalize_token
+from src.utils.text import escape_markdown, normalise_markdown_text
 
 # Security: per-loader byte cap for the GTFS ``stops.txt`` CSV consumed
 # by ``_load_gtfs_stop_ids``. Sized at 50 MiB to comfortably cover
@@ -110,6 +111,32 @@ class NamingIssue:
     reason: str
 
 
+# Per-cell length cap applied at every ``stations.json``-derived
+# Markdown sink in :meth:`ValidationReport.to_markdown`. Mirrors the
+# canonical ``_DASHBOARD_FIELD_MAX_LEN`` constant in
+# ``scripts/generate_markdown_stats.py``: the report renders bullet
+# lines that already include identifier + name + reason from the same
+# row; an additional render-side cap keeps the layout legible even if
+# a future writer persists multi-KiB blobs to the source field.
+_REPORT_FIELD_MAX_LEN = 400
+
+
+def _safe_md(text: object) -> str:
+    """Render ``text`` for inclusion as bullet body in the validation report.
+
+    Composes :func:`normalise_markdown_text` (strips C0/C1 controls +
+    Trojan-Source / line-terminator union + ZWSP family + BiDi marks,
+    collapses whitespace, caps length) with :func:`escape_markdown`
+    (HTML-escapes + backslash-escapes the CommonMark structural set
+    ``[]()*_`@<>``). Mirrors the canonical defence pattern applied at
+    every other Markdown-renderer boundary in the project — see the
+    module-level threat model in :meth:`ValidationReport.to_markdown`.
+    """
+    return escape_markdown(
+        normalise_markdown_text(str(text), max_len=_REPORT_FIELD_MAX_LEN)
+    )
+
+
 @dataclass(frozen=True)
 class ValidationReport:
     """Summary returned by :func:`validate_stations`."""
@@ -139,6 +166,37 @@ class ValidationReport:
         )
 
     def to_markdown(self) -> str:
+        # Security (Markdown injection at the public-artefact renderer
+        # boundary): every text field interpolated below carries
+        # operator-controlled data sourced from ``stations.json`` — which
+        # is in turn populated by cron-driven scripts that fan out to
+        # external API surfaces (VOR/OEBB/Wiener Linien/Google Places/
+        # OSM Overpass). A compromised upstream / DNS-hijack / MITM (or
+        # any future fetch path that does not pin the host) injects
+        # arbitrary ``name`` / ``bst_code`` / ``vor_id`` / ``alias``
+        # bytes that flow VERBATIM into ``docs/stations_validation_
+        # report.md`` — auto-committed by the ``update-stations.yml``
+        # cron workflow and the ``manual-full-refresh.yml`` workflow,
+        # then rendered on github.com (and every operator's IDE /
+        # Markdown viewer / GitHub Pages mirror). The canonical
+        # ``escape_markdown`` + ``normalise_markdown_text`` defence pair
+        # mirrors the renderer-boundary pattern applied in
+        # ``scripts/generate_markdown_stats.py`` and
+        # ``src/feed/reporting.py`` (2026-05-09 Markdown Injection Drift
+        # rounds). ``_safe_md`` (module-level helper) strips C0/C1 controls
+        # + Trojan-Source / line-terminator union + ZWSP family + BiDi
+        # marks (via ``normalise_markdown_text``), then backslash-
+        # escapes the CommonMark structural set ``[]()*_\`@<>`` and
+        # HTML-escapes ``&<>"'`` (via ``escape_markdown``). Layered
+        # defence: the upstream ``_collect_blocking_issues`` gate aborts
+        # the ``update_all_stations.py`` commit when ``_UNSAFE_CHARS_RE``
+        # fires on ``<>`` / ASCII C0 / BiDi, but that gate is ONLY
+        # active in the orchestrator script — the standalone CLI
+        # invocation (``python -m src.cli stations validate``), the
+        # ``manual-full-refresh.yml`` workflow's regenerate-step, and
+        # any future direct ``to_markdown()`` caller bypass it
+        # entirely. Sanitising at THIS boundary closes every code path
+        # in one cut.
         lines = ["# Stations Validation Report", ""]
         lines.append(f"*Total stations analysed*: {self.total_stations}")
         lines.append(f"*GTFS stops loaded*: {self.gtfs_stop_count}")
@@ -154,67 +212,70 @@ class ValidationReport:
 
         if self.security_issues:
             lines.append("## Security warnings (potential XSS/Injection)")
-            for sec_issue in self.security_issues:
+            for sec in self.security_issues:
                 lines.append(
-                    f"- {sec_issue.identifier} ({sec_issue.name}): {sec_issue.reason}"
+                    f"- {_safe_md(sec.identifier)} ({_safe_md(sec.name)}): {_safe_md(sec.reason)}"
                 )
             lines.append("")
 
         if self.provider_issues:
             lines.append("## Provider issues (VOR/OEBB)")
-            for provider_issue in self.provider_issues:
+            for prov in self.provider_issues:
                 lines.append(
-                    f"- {provider_issue.identifier} ({provider_issue.name}): {provider_issue.reason}"
+                    f"- {_safe_md(prov.identifier)} ({_safe_md(prov.name)}): {_safe_md(prov.reason)}"
                 )
             lines.append("")
 
         if self.cross_station_id_issues:
             lines.append("## Cross station ID issues")
-            for cross_issue in self.cross_station_id_issues:
+            for cross in self.cross_station_id_issues:
                 lines.append(
-                    f"- {cross_issue.identifier} ({cross_issue.name}): alias {cross_issue.alias!r} collides with "
-                    f"{cross_issue.colliding_field} of {cross_issue.colliding_identifier} ({cross_issue.colliding_name})"
+                    f"- {_safe_md(cross.identifier)} ({_safe_md(cross.name)}): "
+                    f"alias '{_safe_md(cross.alias)}' collides with "
+                    f"{_safe_md(cross.colliding_field)} of "
+                    f"{_safe_md(cross.colliding_identifier)} ({_safe_md(cross.colliding_name)})"
                 )
             lines.append("")
 
         if self.duplicates:
             lines.append("## Geographic duplicates")
             for group in self.duplicates:
+                joined_ids = ", ".join(_safe_md(ident) for ident in group.identifiers)
                 lines.append(
-                    f"- ({group.latitude:.5f}, {group.longitude:.5f}) → "
-                    + ", ".join(group.identifiers)
+                    f"- ({group.latitude:.5f}, {group.longitude:.5f}) → {joined_ids}"
                 )
             lines.append("")
 
         if self.alias_issues:
             lines.append("## Alias issues")
-            for alias_issue in self.alias_issues:
+            for ali in self.alias_issues:
                 lines.append(
-                    f"- {alias_issue.identifier} ({alias_issue.name}): {alias_issue.reason}"
+                    f"- {_safe_md(ali.identifier)} ({_safe_md(ali.name)}): {_safe_md(ali.reason)}"
                 )
             lines.append("")
 
         if self.coordinate_issues:
             lines.append("## Coordinate anomalies")
-            for coordinate_issue in self.coordinate_issues:
+            for coord in self.coordinate_issues:
                 lines.append(
-                    f"- {coordinate_issue.identifier} ({coordinate_issue.name}): {coordinate_issue.reason}"
+                    f"- {_safe_md(coord.identifier)} ({_safe_md(coord.name)}): {_safe_md(coord.reason)}"
                 )
             lines.append("")
 
         if self.gtfs_issues:
             lines.append("## GTFS mismatches")
-            for gtfs_issue in self.gtfs_issues:
+            for gtfs in self.gtfs_issues:
                 lines.append(
-                    f"- {gtfs_issue.identifier} ({gtfs_issue.name}) → missing stop_id {gtfs_issue.vor_id}"
+                    f"- {_safe_md(gtfs.identifier)} ({_safe_md(gtfs.name)}) → "
+                    f"missing stop_id {_safe_md(gtfs.vor_id)}"
                 )
             lines.append("")
 
         if self.naming_issues:
             lines.append("## Naming issues")
-            for naming_issue in self.naming_issues:
+            for naming in self.naming_issues:
                 lines.append(
-                    f"- {naming_issue.identifier} ({naming_issue.name}): {naming_issue.reason}"
+                    f"- {_safe_md(naming.identifier)} ({_safe_md(naming.name)}): {_safe_md(naming.reason)}"
                 )
             lines.append("")
 
