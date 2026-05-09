@@ -1,3 +1,42 @@
+## 2026-05-09 - BiDi-Mark / Unicode-Line-Terminator Gap in `sanitize_log_message`
+**Vulnerability:** The canonical log-injection / Trojan-Source defence
+(`src/utils/logging.py:_CONTROL_CHARS_RE`, used by every WARNING/ERROR
+site enforced via `test_sentinel_clear_text_logging_drift_utils`) covered
+ASCII C0/C1, the CVE-2021-42574 BiDi formatting controls
+(`‪-‮` and `⁦-⁩`), the zero-width family
+(`​-‍`), and the BOM (`﻿`) — but left five high-impact
+code points unhandled: `؜` (ARABIC LETTER MARK, ALM), `‎`
+(LRM), `‏` (RLM), ` ` (LINE SEPARATOR), ` ` (PARAGRAPH
+SEPARATOR). A hostile upstream payload routed through the canonical
+sanitiser could therefore (a) **forge log records** by embedding
+` `/` ` so any consumer that honours Unicode line
+terminators (ECMAScript-pre-2019 `JSON.parse`/`eval`, the GitHub
+PR-comment renderer, several YAML parsers, downstream SIEM splitters
+keying off Unicode whitespace) splits the sanitised entry into two
+records — letting the attacker inject fake `level=ERROR` markers,
+ts= prefixes, or whatever the operator triages on; or (b) **invert
+displayed text** in a Unicode-aware terminal via LRM/RLM/ALM, the same
+Trojan-Source primitive as the already-stripped `‪-‮` family
+but missing from every prior round of the regex. The companion regex
+in `src/utils/stations_validation.py:_UNSAFE_CHARS_RE` already covered
+` -‮`, so the codebase had divergent BiDi-defence shapes
+between the station validator and the canonical log sanitiser.
+**Learning:** When tightening BiDi / Unicode-line-terminator defences,
+audit the **union** across every sibling regex in the project — not
+just the one that surfaced the fix. The canonical pin lives in
+`_CONTROL_CHARS_RE` (`src/utils/logging.py`); the station validator's
+`_UNSAFE_CHARS_RE` is the closest sibling. Three follow-on rules: (1)
+Python's regex `\s` matches ` `/` ` (so they're already
+caught by `_UNSAFE_URL_CHARS` via `\s`) but does NOT match `‎`
+/`‏`/`؜`, so a `\s`-based defence is not equivalent to an
+explicit code-point list — the audit walker must enumerate. (2) The
+`_CONTROL_CHARS_RE.sub("")` step runs **after** `\n`/`\r`/`\t` are
+escaped to literal `\\n`/`\\r`/`\\t`, so the fix doesn't touch the
+existing newline-escape contract — only widens the strip set. (3) The
+new code points are byte-shape-similar to existing ones (BiDi marks /
+line terminators), so the regex extension is a single character-class
+union; no behavioural changes elsewhere.
+
 ## 2026-05-08 - Technical Debt Cleanup: Five OSM-First / Google-Fallback Resilience Optimisations + Documentation Sync (CI Smoke Gate, Strict Google Subset, Strict-Typed OSMTags, Passenger-Name Hierarchy, Autouse Breaker Reset)
 **Change:** Five interlocking improvements across the OSM-first directory enrichment pipeline plus a documentation pass that pulls the OSM-first / Google-second contract out of the `.jules/` journals and into the user-facing docs. The optimisations are listed in dependency order — each one closes a structural gap the rollback entry below (the GTFS-RT Stammstrecke removal) left in the surrounding pipeline:
 
