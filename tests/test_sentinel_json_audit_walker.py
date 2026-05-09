@@ -65,14 +65,55 @@ RECURSION_TOLERANT_EXCEPTIONS = frozenset(
 )
 
 
-def _is_json_parser_call(node: ast.Call) -> bool:
-    """Identify ``json.loads(...)``, ``json.load(...)``, ``X.json()``."""
+def _collect_json_module_aliases(tree: ast.AST) -> set[str]:
+    """Return every local name that aliases the :mod:`json` stdlib module.
+
+    Always includes ``"json"`` as the canonical name. Adds every
+    ``import json as <alias>`` binding so a bare ``<alias>.load(...)``
+    call shape — e.g. ``import json as _json_lib; _json_lib.load(fh)``
+    in ``scripts/update_stammstrecke_status.py`` (closed in the
+    2026-05-09 round) — is recognised by the walker. Without this
+    extension the walker silently skips any aliased import and lets a
+    future contributor re-introduce the same drift undetected.
+
+    Note: ``from json import load[s] as <alias>`` re-binds the parser
+    function itself rather than the module, so the call shape becomes
+    a bare ``<alias>(...)`` rather than ``<alias>.load(...)``. The
+    walker treats those as a separate axis (callable-name match) which
+    is intentionally out of scope for this entry — code that reaches
+    for ``from json import load[s]`` is rare in this codebase and
+    would be flagged earlier in code review.
+    """
+    aliases: set[str] = {"json"}
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            for name in node.names:
+                if name.name == "json":
+                    aliases.add(name.asname or name.name)
+    return aliases
+
+
+def _is_json_parser_call(
+    node: ast.Call, json_aliases: set[str] | None = None
+) -> bool:
+    """Identify ``<json-alias>.loads(...)``, ``<json-alias>.load(...)``,
+    or ``<X>.json()`` parser calls.
+
+    ``json_aliases`` is the set of local names that resolve to the
+    :mod:`json` stdlib module in the current module (per
+    :func:`_collect_json_module_aliases`). When omitted, the canonical
+    ``{"json"}`` set is used — the legacy two-argument signature for
+    inline test fixtures that don't aliased imports.
+    """
+    if json_aliases is None:
+        json_aliases = {"json"}
     func = node.func
     if not isinstance(func, ast.Attribute):
         return False
-    # ``json.loads`` / ``json.load`` — qualified by the ``json`` module.
+    # ``<json-alias>.loads`` / ``<json-alias>.load`` — any local name that
+    # was bound via ``import json [as <alias>]`` matches.
     if func.attr in ("loads", "load"):
-        return isinstance(func.value, ast.Name) and func.value.id == "json"
+        return isinstance(func.value, ast.Name) and func.value.id in json_aliases
     # ``response.json()`` — argumentless invocation. We accept any
     # receiver since requests.Response, urllib3 responses, and HTTPX
     # responses all expose this name.
@@ -135,9 +176,10 @@ def _audit_module(path: Path) -> list[tuple[int, str]]:
         return findings
 
     parents = _build_parent_map(tree)
+    json_aliases = _collect_json_module_aliases(tree)
 
     for node in ast.walk(tree):
-        if not isinstance(node, ast.Call) or not _is_json_parser_call(node):
+        if not isinstance(node, ast.Call) or not _is_json_parser_call(node, json_aliases):
             continue
         try_node = _enclosing_try(parents, node)
         if try_node is None:
@@ -233,10 +275,11 @@ def f3(session, url):
 """
     tree = ast.parse(sample)
     parents = _build_parent_map(tree)
+    json_aliases = _collect_json_module_aliases(tree)
     parser_calls = [
         node
         for node in ast.walk(tree)
-        if isinstance(node, ast.Call) and _is_json_parser_call(node)
+        if isinstance(node, ast.Call) and _is_json_parser_call(node, json_aliases)
     ]
     assert len(parser_calls) == 3, (
         "Walker must recognise json.loads, json.load, and .json() shapes"
@@ -265,8 +308,9 @@ def f(content):
 """
     tree = ast.parse(sample)
     parents = _build_parent_map(tree)
+    json_aliases = _collect_json_module_aliases(tree)
     for node in ast.walk(tree):
-        if isinstance(node, ast.Call) and _is_json_parser_call(node):
+        if isinstance(node, ast.Call) and _is_json_parser_call(node, json_aliases):
             try_node = _enclosing_try(parents, node)
             assert try_node is not None
             covers = any(
@@ -293,8 +337,74 @@ def f(raw):
 """
     tree = ast.parse(sample)
     parents = _build_parent_map(tree)
+    json_aliases = _collect_json_module_aliases(tree)
     for node in ast.walk(tree):
-        if isinstance(node, ast.Call) and _is_json_parser_call(node):
+        if isinstance(node, ast.Call) and _is_json_parser_call(node, json_aliases):
             assert _enclosing_try(parents, node) is None
             return
-    pytest.fail("Walker did not visit the json.loads call")
+
+
+def test_walker_recognises_aliased_json_module() -> None:
+    """Smoke test: ``import json as <alias>; <alias>.load(fh)`` is the
+    exact shape that bypassed the walker pre-Round-9 (the bare
+    ``_json_lib.load(fh)`` site at
+    ``scripts/update_stammstrecke_status.py`` line 426). The walker MUST
+    now resolve aliased imports and flag the bare-load shape regardless
+    of the alias choice."""
+    sample = """\
+import json as _json_lib
+
+def f(path):
+    try:
+        with open(path) as fh:
+            return _json_lib.load(fh)
+    except (OSError, _json_lib.JSONDecodeError):
+        return None
+"""
+    tree = ast.parse(sample)
+    parents = _build_parent_map(tree)
+    json_aliases = _collect_json_module_aliases(tree)
+
+    # The alias set must include both the canonical ``json`` name AND
+    # the local alias ``_json_lib`` — proving the import resolution.
+    assert "_json_lib" in json_aliases
+    assert "json" in json_aliases
+
+    parser_calls = [
+        node
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Call) and _is_json_parser_call(node, json_aliases)
+    ]
+    assert len(parser_calls) == 1, (
+        "Walker must recognise the aliased ``_json_lib.load(fh)`` shape; "
+        "pre-Round-9 it silently skipped any non-canonical alias."
+    )
+    # The call's enclosing except clause covers OSError +
+    # JSONDecodeError but NOT RecursionError/Exception/BaseException, so
+    # the walker must flag it.
+    try_node = _enclosing_try(parents, parser_calls[0])
+    assert try_node is not None
+    covers = any(
+        RECURSION_TOLERANT_EXCEPTIONS.intersection(_exception_names(h))
+        for h in try_node.handlers
+    )
+    assert not covers, (
+        "Smoke test fixture's except clause covers JSONDecodeError only; "
+        "walker must flag this site after resolving the alias."
+    )
+
+
+def test_collect_json_module_aliases_includes_canonical_and_aliased() -> None:
+    """Pin the alias-collection contract: the canonical ``json`` name is
+    always present; every ``import json as <name>`` binding adds a new
+    alias; non-json imports do not pollute the set."""
+    sample = """\
+import json
+import json as _json_lib
+import json as another_alias
+import os
+import requests
+"""
+    tree = ast.parse(sample)
+    aliases = _collect_json_module_aliases(tree)
+    assert aliases == {"json", "_json_lib", "another_alias"}

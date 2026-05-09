@@ -81,7 +81,7 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, TypeGuard
 from zoneinfo import ZoneInfo
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -89,11 +89,12 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
+from src.feed.providers import MAX_STAMMSTRECKE_CACHE_BYTES  # noqa: E402
 from src.utils.circuit_breaker import (  # noqa: E402
     CircuitBreaker,
     CircuitBreakerOpen,
 )
-from src.utils.files import atomic_write  # noqa: E402
+from src.utils.files import atomic_write, read_capped_json  # noqa: E402
 from src.utils.ids import make_guid  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
 from src.utils.stations import canonical_name, display_name  # noqa: E402
@@ -404,6 +405,80 @@ def _format_minutes(value: float) -> str:
     return f"{rounded:g}"
 
 
+# XML 1.0 control characters that have no readability value in a preserved
+# cache field. Mirrors ``src/build_feed.py:_CONTROL_RE`` so the per-field
+# shape validators reject the same control-character set the canonical
+# ``_sanitize_text`` filter strips from the rendered feed output. Defence
+# in depth on the cached ``_identity`` / ``first_seen`` strings before they
+# re-enter the build pipeline through the preserved-first-seen path.
+_PRESERVED_CONTROL_CHAR_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]")
+
+# Max length for the preserved ``first_seen`` field. ISO 8601 timestamps
+# with offset are ~25 bytes (e.g. ``2026-05-09T08:30:00+02:00``); 64 is
+# 2.5x headroom for sub-second precision variants and offset names.
+_MAX_PRESERVED_FIRST_SEEN_LENGTH = 64
+
+# Max length for the preserved ``_identity`` field. The canonical identity
+# is ``<prefix>|<iso>`` where prefix is ~30 chars and iso is ~25 chars; 256
+# is ~4x headroom for any future prefix expansion.
+_MAX_PRESERVED_IDENTITY_LENGTH = 256
+
+
+def _is_valid_preserved_first_seen(value: object) -> TypeGuard[str]:
+    """Return ``True`` when *value* is a safe preserved ``first_seen`` string.
+
+    Validates: (a) ``isinstance(value, str)`` (TypeGuard narrows for mypy),
+    (b) non-empty after strip, (c) length ``<=
+    _MAX_PRESERVED_FIRST_SEEN_LENGTH``, (d) no XML 1.0 control characters,
+    (e) parseable via :func:`datetime.fromisoformat`.
+
+    Defence-in-depth pattern from
+    ``.jules/sentinel.md`` (GTFS Stammstrecke Cache Field-Preservation
+    Amplification, 2026-05-08): a planted-huge cache file can carry a
+    multi-MiB string in the ``first_seen`` field; without per-field shape
+    validation the preservation loop perpetuates the corruption forward
+    on every cron tick. The size cap on the file as a whole bounds the
+    individual field sizes too, but the per-field validator is the second
+    layer that explicitly rejects oversized / non-ISO strings before they
+    flow into ``_resolve_first_seen`` or any log emission.
+    """
+    if not isinstance(value, str):
+        return False
+    stripped = value.strip()
+    if not stripped or len(stripped) > _MAX_PRESERVED_FIRST_SEEN_LENGTH:
+        return False
+    if _PRESERVED_CONTROL_CHAR_RE.search(stripped):
+        return False
+    try:
+        datetime.fromisoformat(stripped)
+    except (ValueError, TypeError):
+        return False
+    return True
+
+
+def _is_valid_preserved_identity(value: object) -> TypeGuard[str]:
+    """Return ``True`` when *value* is a safe preserved ``_identity`` string.
+
+    Validates: (a) ``isinstance(value, str)`` (TypeGuard narrows for mypy),
+    (b) non-empty after strip, (c) length ``<=
+    _MAX_PRESERVED_IDENTITY_LENGTH``, (d) no XML 1.0 control characters.
+
+    The shape ``<prefix>|<iso>`` is not pinned here on purpose — only the
+    ``prefix`` portion is consumed (via ``identity.split("|", 1)[0]``), so
+    a malformed identity that happens to lack the separator still
+    contributes the whole string as the prefix. The length and
+    control-character defences bound the worst case.
+    """
+    if not isinstance(value, str):
+        return False
+    stripped = value.strip()
+    if not stripped or len(stripped) > _MAX_PRESERVED_IDENTITY_LENGTH:
+        return False
+    if _PRESERVED_CONTROL_CHAR_RE.search(stripped):
+        return False
+    return True
+
+
 def _read_existing_first_seen() -> dict[str, str]:
     """Map ``identity_prefix`` → ``first_seen`` (ISO) from the existing cache.
 
@@ -413,29 +488,64 @@ def _read_existing_first_seen() -> dict[str, str]:
     direction's emitted event should keep its prior ``first_seen``
     timestamp (continuing episode) or get a fresh one (new episode).
 
-    All failure modes (missing file, malformed JSON, unexpected shape,
-    missing/typed-wrong fields) collapse to an empty map. We log
-    nothing here — the next ``_write_cache`` will overwrite whatever
-    was there, so a corrupt prior cache cannot persist.
+    Threat model: a planted-huge ``cache/stammstrecke/events.json``
+    (compromised CI runner / partial flush + power loss / corrupted
+    previous run / parallel orchestrator process performing an atomic
+    state swap mid-read) buffered into memory via bare
+    :func:`json.load` allocates O(file_size) bytes plus a multiplier of
+    object overhead, exhausts the runner's cgroup memory limit, and
+    propagates :class:`MemoryError` (a :class:`BaseException` subclass
+    that is NOT caught by ``except (OSError, JSONDecodeError,
+    UnicodeDecodeError)``) past the loader to crash the cron pipeline.
+    Worse, a crash before :func:`_write_cache` skips the unconditional
+    self-heal write, so the corruption persists indefinitely — every
+    subsequent cron tick re-tries and re-crashes, permanently disabling
+    the monitor.
+
+    Defences (all routed through :func:`src.utils.files.read_capped_json`):
+    (i) per-loader byte cap :data:`MAX_STAMMSTRECKE_CACHE_BYTES`
+    (~128x the largest legitimate state shape — 50,000x tighter than
+    the canonical 50 MiB :data:`DEFAULT_MAX_JSON_FILE_BYTES`); (ii) TOCTOU
+    defence via ``os.fstat(handle.fileno())`` on the opened file
+    descriptor, immune to symlink swaps between :meth:`Path.stat` and
+    :meth:`Path.open`; (iii) special-file safety via
+    ``handle.read(max_bytes + 1)`` — a FIFO / ``/dev/zero`` / character
+    device with ``st_size == 0`` cannot stream unbounded bytes; (iv)
+    :class:`RecursionError` and :class:`MemoryError` no longer escape
+    (the former via ``read_capped_json`` 's catch tuple, the latter via
+    the size cap that prevents the allocation in the first place); (v)
+    per-preserved-field shape validation rejects oversized / non-ISO /
+    control-character-bearing ``_identity`` and ``first_seen`` strings
+    before they re-enter :func:`_resolve_first_seen` or any
+    log-emission path.
+
+    All failure modes (missing file, oversized file, malformed JSON,
+    unexpected shape, missing/typed-wrong / oversized / non-ISO fields)
+    collapse to an empty map. We log nothing here — the next
+    :func:`_write_cache` will overwrite whatever was there, so a
+    corrupt prior cache cannot persist.
     """
 
     if not OUTPUT_PATH.exists():
         return {}
-    try:
-        with OUTPUT_PATH.open("r", encoding="utf-8") as fh:
-            data = _json_lib.load(fh)
-    except (OSError, _json_lib.JSONDecodeError, UnicodeDecodeError):
-        return {}
-    if not isinstance(data, list):
+    payload = read_capped_json(
+        OUTPUT_PATH,
+        max_bytes=MAX_STAMMSTRECKE_CACHE_BYTES,
+        label="Stammstrecke",
+        logger=LOGGER,
+    )
+    if not isinstance(payload, list):
         return {}
 
     result: dict[str, str] = {}
-    for item in data:
+    for item in payload:
         if not isinstance(item, dict):
             continue
         identity = item.get("_identity")
         first_seen = item.get("first_seen")
-        if not isinstance(identity, str) or not isinstance(first_seen, str):
+        if not _is_valid_preserved_identity(identity):
+            continue
+        if not _is_valid_preserved_first_seen(first_seen):
             continue
         prefix = identity.split("|", 1)[0]
         if prefix:

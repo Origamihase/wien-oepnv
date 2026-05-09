@@ -34,6 +34,7 @@ from .feed import config as feed_config
 from .feed.merge import deduplicate_fuzzy
 from .feed.logging import configure_logging
 from .feed.providers import (
+    MAX_STAMMSTRECKE_CACHE_BYTES,
     iter_providers,
     load_provider_plugins,
     provider_statuses,
@@ -219,6 +220,7 @@ def read_cache_stammstrecke() -> list[Any]:
         return []
     payload = read_capped_json(
         _STAMMSTRECKE_CACHE_PATH,
+        max_bytes=MAX_STAMMSTRECKE_CACHE_BYTES,
         label="Stammstrecke",
         logger=log,
     )
