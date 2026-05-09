@@ -439,7 +439,7 @@ def test_extract_http_status_returns_status_code() -> None:
 
 def test_extract_http_status_falls_back_when_no_response() -> None:
     err = requests.HTTPError("network failure", response=None)
-    assert script._extract_http_status(err) == "<no-response>"
+    assert script._extract_http_status(err) == "[NO_RESPONSE]"
 
 
 def test_extract_vao_error_code_parses_canonical_envelope() -> None:
@@ -478,7 +478,7 @@ def test_extract_vao_error_code_rejects_verbose_text_with_secrets() -> None:
             {"errorCode": "Invalid accessId: 0123456789abcdef"}
         ).encode("utf-8"),
     )
-    assert script._extract_vao_error_code(err) == "<malformed>"
+    assert script._extract_vao_error_code(err) == "[BAD_SHAPE]"
 
 
 def test_extract_vao_error_code_rejects_oversize_canonical_shape() -> None:
@@ -491,7 +491,7 @@ def test_extract_vao_error_code_rejects_oversize_canonical_shape() -> None:
         status_code=400,
         body=json.dumps({"errorCode": huge}).encode("utf-8"),
     )
-    assert script._extract_vao_error_code(err) == "<malformed>"
+    assert script._extract_vao_error_code(err) == "[BAD_SHAPE]"
 
 
 def test_extract_vao_error_code_accepts_canonical_shapes() -> None:
@@ -509,7 +509,7 @@ def test_extract_vao_error_code_accepts_canonical_shapes() -> None:
         status_code=400,
         body=json.dumps({"errorCode": over}).encode("utf-8"),
     )
-    assert script._extract_vao_error_code(err) == "<malformed>"
+    assert script._extract_vao_error_code(err) == "[BAD_SHAPE]"
 
 
 def test_extract_vao_error_code_caps_oversize_body() -> None:
@@ -517,26 +517,26 @@ def test_extract_vao_error_code_caps_oversize_body() -> None:
 
     huge_body = b'{"errorCode": "H890", "padding": "' + b"X" * 65536 + b'"}'
     err = _make_http_error(status_code=400, body=huge_body)
-    assert script._extract_vao_error_code(err) == "<unknown>"
+    assert script._extract_vao_error_code(err) == "[MISSING]"
 
 
 def test_extract_vao_error_code_returns_unknown_for_non_json_body() -> None:
     err = _make_http_error(
         status_code=500, body=b"<html>internal server error</html>"
     )
-    assert script._extract_vao_error_code(err) == "<unknown>"
+    assert script._extract_vao_error_code(err) == "[MISSING]"
 
 
 def test_extract_vao_error_code_returns_unknown_for_non_dict_body() -> None:
     """A list / scalar at the top level is not a VAO error envelope."""
 
     err = _make_http_error(status_code=400, body=b'["H890"]')
-    assert script._extract_vao_error_code(err) == "<unknown>"
+    assert script._extract_vao_error_code(err) == "[MISSING]"
 
 
 def test_extract_vao_error_code_returns_unknown_for_no_response() -> None:
     err = requests.HTTPError("network failure", response=None)
-    assert script._extract_vao_error_code(err) == "<unknown>"
+    assert script._extract_vao_error_code(err) == "[MISSING]"
 
 
 def test_describe_error_body_keys_renders_canonical_envelope() -> None:
@@ -565,24 +565,68 @@ def test_describe_error_body_keys_redacts_non_canonical_key_names() -> None:
         ).encode("utf-8"),
     )
     rendered = script._describe_error_body_keys(err)
-    assert "<???>" in rendered
+    assert "[REDACTED]" in rendered
     assert "Invalid accessId" not in rendered
     assert "errorCode" in rendered
 
 
 def test_describe_error_body_keys_falls_back_when_no_response() -> None:
     err = requests.HTTPError("network failure", response=None)
-    assert script._describe_error_body_keys(err) == "<no-body>"
+    assert script._describe_error_body_keys(err) == "[EMPTY_BODY]"
 
 
 def test_describe_error_body_keys_falls_back_for_non_json_body() -> None:
     err = _make_http_error(status_code=500, body=b"<html>error</html>")
-    assert script._describe_error_body_keys(err) == "<no-body>"
+    assert script._describe_error_body_keys(err) == "[EMPTY_BODY]"
 
 
 def test_describe_error_body_keys_falls_back_for_empty_object() -> None:
     err = _make_http_error(status_code=400, body=b"{}")
-    assert script._describe_error_body_keys(err) == "<empty>"
+    assert script._describe_error_body_keys(err) == "[NO_KEYS]"
+
+
+# ---- Response header diagnostics ------------------------------------------
+
+
+def test_extract_response_header_returns_set_value() -> None:
+    err = _make_http_error(status_code=400, body=b"")
+    assert err.response is not None
+    err.response.headers["Content-Type"] = "application/json; charset=utf-8"
+    assert (
+        script._extract_response_header(err, "Content-Type")
+        == "application/json; charset=utf-8"
+    )
+
+
+def test_extract_response_header_falls_back_when_no_response() -> None:
+    err = requests.HTTPError("network failure", response=None)
+    assert script._extract_response_header(err, "Server") == "[NO_RESPONSE]"
+
+
+def test_extract_response_header_falls_back_when_header_absent() -> None:
+    err = _make_http_error(status_code=400, body=b"")
+    # No headers set — every name should fall back to the missing sentinel.
+    assert script._extract_response_header(err, "WWW-Authenticate") == "[MISSING]"
+
+
+def test_extract_response_header_caps_oversize_value() -> None:
+    """A planted huge ``Server`` header (zero-leak path: server-set, but
+    an attacker-controlled CDN could still inject a multi-KiB string)
+    is truncated at the body-keys cap with an ellipsis suffix."""
+
+    err = _make_http_error(status_code=400, body=b"")
+    assert err.response is not None
+    err.response.headers["Server"] = "A" * 5000
+    rendered = script._extract_response_header(err, "Server")
+    assert len(rendered) == script._BODY_KEYS_MAX_LEN + 1  # +1 for the ellipsis
+    assert rendered.endswith("…")
+
+
+def test_extract_response_header_strips_whitespace_only() -> None:
+    err = _make_http_error(status_code=400, body=b"")
+    assert err.response is not None
+    err.response.headers["Server"] = "   "
+    assert script._extract_response_header(err, "Server") == "[MISSING]"
 
 
 def test_process_direction_logs_status_and_error_code_on_http_error(
@@ -599,6 +643,14 @@ def test_process_direction_logs_status_and_error_code_on_http_error(
         status_code=401,
         body=json.dumps({"errorCode": "H730"}).encode("utf-8"),
     )
+
+    # Plant a few server-set headers so the new diagnostics surface the
+    # gateway/auth/payload shape that triggered the failure.
+    assert err.response is not None
+    err.response.headers["Content-Type"] = "application/json"
+    err.response.headers["Content-Length"] = "42"
+    err.response.headers["Server"] = "VAO-RestProxy/1.11.0"
+    err.response.headers["WWW-Authenticate"] = "Bearer realm=\"vao\""
 
     def boom(*args: object, **kwargs: object) -> object:
         raise err
@@ -620,6 +672,13 @@ def test_process_direction_logs_status_and_error_code_on_http_error(
     # Body-keys diagnostic must surface the canonical envelope shape
     # without leaking any value.
     assert "body_keys=errorCode" in rendered
+    # The four new server-set header diagnostics must appear so a
+    # future cron failure exposes the gateway / auth / payload shape
+    # without further code changes.
+    assert "ct=application/json" in rendered
+    assert "cl=42" in rendered
+    assert "server=VAO-RestProxy/1.11.0" in rendered
+    assert "www_auth=Bearer" in rendered
 
 
 def test_collect_delays_rejects_multi_ride_leg_trips() -> None:
@@ -777,12 +836,18 @@ def test_query_timeout_bound_below_max() -> None:
 def test_query_trips_passes_canonical_parameters(
     monkeypatch: pytest.MonkeyPatch, _stable_now: datetime
 ) -> None:
-    """Pin the wire-format parameters: originExtId/destExtId/numF/maxChange/rtMode.
+    """Pin the wire-format parameters: originId/destId with extId:: prefix
+    in value, no format= query param, Accept header for negotiation.
 
-    The 2026-05-09 audit established that the bare numeric VOR Stop ID
-    must be passed via the ``ExtId`` parameter family — the
-    HAFAS-internal ``originId``/``destId`` parameters expect the full
-    ``A=1@O=...@L=...`` shape and reject bare numerics with HTTP 400.
+    The 2026-05-09 audit (third iteration) established that VAO accepts
+    external station IDs via ``originId=extId::<bare-numeric>`` —
+    encoding the type via the value prefix per the
+    "Identifikationsarten von Ortsobjekten" chapter of the
+    Handbuch_VAO_ReST_API_latest.pdf. The previous attempts
+    (PR #1387 ``originExtId=<bare-numeric>``) yielded HTTP 400 with
+    empty body on this VAO instance; this iteration matches the
+    ``trip.md`` curl example shape exactly minus the ``extId::``
+    prefix that the manual mandates for non-OGD station IDs.
     """
 
     captured: dict[str, Any] = {}
@@ -805,20 +870,25 @@ def test_query_trips_passes_canonical_parameters(
     assert trips == []
     assert captured["endpoint"].endswith("/trip")
     params = captured["params"]
-    assert params["format"] == "json"
-    # External-ID parameter family is mandatory — see docstring above.
-    assert params["originExtId"] == direction.origin_id
-    assert params["destExtId"] == direction.destination_id
-    assert "originId" not in params  # HAFAS-internal form not used
-    assert "destId" not in params
+    # ``format=json`` is intentionally absent — content negotiation is
+    # handled exclusively via the Accept header so the request payload
+    # exactly matches the trip.md curl example shape (which lists no
+    # ``format`` parameter).
+    assert "format" not in params
+    # External-ID encoding via the ``extId::`` value prefix (NOT via a
+    # separate ``originExtId`` key). The VAO manual states that the
+    # ``extId::`` token tells the upstream to interpret the value as
+    # an external station ID rather than as a HAFAS-internal location.
+    assert params["originId"] == f"extId::{direction.origin_id}"
+    assert params["destId"] == f"extId::{direction.destination_id}"
+    assert "originExtId" not in params  # superseded by the value-prefix form
+    assert "destExtId" not in params
     assert params["numF"] == "6"  # pinned MAX_TRIPS_PER_QUERY (VAO max)
     assert params["maxChange"] == "0"  # direct-connections-only
     assert params["rtMode"] == "SERVER_DEFAULT"
     assert params["date"] == _stable_now.strftime("%Y-%m-%d")
     assert params["time"] == _stable_now.strftime("%H:%M")
-    # Explicit Accept header for content negotiation in addition to
-    # the ``format=json`` query parameter (belt-and-suspenders so the
-    # negotiation is unambiguous).
+    # Content negotiation lives entirely in the Accept header now.
     assert captured["kwargs"]["headers"]["Accept"] == "application/json"
     assert captured["kwargs"]["allowed_content_types"] == ("application/json",)
     # Timeout is bound below MAX_QUERY_TIMEOUT.
