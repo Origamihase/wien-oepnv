@@ -415,6 +415,25 @@ def test_leg_departure_delay_skips_unparseable_realtime() -> None:
 # ---- HTTPError diagnostic helpers -----------------------------------------
 
 
+def _make_response(
+    *, status_code: int = 200, body: bytes = b""
+) -> requests.Response:
+    """Construct a :class:`requests.Response` with pre-populated body.
+
+    The ``_content`` attribute is set directly so subsequent
+    ``response.content`` lookups return the bytes verbatim — mirrors
+    the post-fix shape of :func:`src.utils.http.request_safe` when
+    ``raise_for_status=False`` is passed (the helper attaches the
+    body to ``response._content`` before returning, regardless of
+    status).
+    """
+
+    response = requests.Response()
+    response.status_code = status_code
+    response._content = body
+    return response
+
+
 def _make_http_error(
     *, status_code: int | None, body: bytes | None
 ) -> requests.HTTPError:
@@ -852,16 +871,16 @@ def test_query_trips_passes_canonical_parameters(
 
     captured: dict[str, Any] = {}
 
-    def fake_fetch(
+    def fake_request(
         session: Any, endpoint: str, *, params: dict[str, str], **kwargs: Any
-    ) -> bytes:
+    ) -> requests.Response:
         captured["endpoint"] = endpoint
         captured["params"] = dict(params)
         captured["kwargs"] = kwargs
-        return b'{"Trip": []}'
+        return _make_response(status_code=200, body=b'{"Trip": []}')
 
-    monkeypatch.setattr(script, "fetch_content_safe", fake_fetch)
-    # Bypass the quota gate — the integration of charge → fetch is
+    monkeypatch.setattr(script, "request_safe", fake_request)
+    # Bypass the quota gate — the integration of charge → request is
     # tested separately below.
     monkeypatch.setattr(script, "_charge_one_request", lambda _now: None)
 
@@ -891,8 +910,54 @@ def test_query_trips_passes_canonical_parameters(
     # Content negotiation lives entirely in the Accept header now.
     assert captured["kwargs"]["headers"]["Accept"] == "application/json"
     assert captured["kwargs"]["allowed_content_types"] == ("application/json",)
+    # CRITICAL: ``raise_for_status=False`` must be passed so the
+    # request_safe except path does not close the response stream
+    # before the body is read. See the docstring on ``_query_trips``
+    # in the script for the full root-cause analysis.
+    assert captured["kwargs"]["raise_for_status"] is False
+    assert captured["kwargs"]["method"] == "GET"
     # Timeout is bound below MAX_QUERY_TIMEOUT.
     assert captured["kwargs"]["timeout"] <= script.MAX_QUERY_TIMEOUT
+
+
+def test_query_trips_raises_http_error_with_populated_body_on_4xx(
+    monkeypatch: pytest.MonkeyPatch, _stable_now: datetime
+) -> None:
+    """A 4xx response from request_safe must produce an HTTPError whose
+    ``.response.content`` is fully populated — the diagnostic helpers
+    downstream need the body to triage the failure shape.
+
+    This is the regression-defence for the 2026-05-09 cron behaviour
+    where ``fetch_content_safe(raise_for_status=True)`` closed the
+    stream before the body was read, leaving ``response.content``
+    empty even when ``Content-Length`` confirmed bytes were sent.
+    """
+
+    body_bytes = json.dumps({"errorCode": "H890"}).encode("utf-8")
+
+    def fake_request(*args: Any, **kwargs: Any) -> requests.Response:
+        # Mirror the production path: request_safe always returns a
+        # response with ``_content`` already attached, even on 4xx,
+        # because we passed ``raise_for_status=False``.
+        return _make_response(status_code=400, body=body_bytes)
+
+    monkeypatch.setattr(script, "request_safe", fake_request)
+    monkeypatch.setattr(script, "_charge_one_request", lambda _now: None)
+
+    with pytest.raises(requests.HTTPError) as exc_info:
+        script._query_trips(
+            session=object(),
+            direction=script.DIRECTIONS[0],
+            when=_stable_now,
+        )
+    # The exception's response carries the body for downstream
+    # diagnostic-extraction.
+    assert exc_info.value.response is not None
+    assert exc_info.value.response.status_code == 400
+    assert exc_info.value.response.content == body_bytes
+    # And the body is decode-able by the same path the diagnostic
+    # helpers use.
+    assert script._extract_vao_error_code(exc_info.value) == "H890"
 
 
 def test_query_trips_normalises_single_trip_payload(
@@ -904,10 +969,13 @@ def test_query_trips_normalises_single_trip_payload(
     monkeypatch.setattr(script, "_charge_one_request", lambda _now: None)
     trip_obj = _trip(leg_name="S 1", delay_minutes=10)
 
-    def fake_fetch(*args: Any, **kwargs: Any) -> bytes:
-        return json.dumps({"Trip": trip_obj}).encode("utf-8")
+    def fake_request(*args: Any, **kwargs: Any) -> requests.Response:
+        return _make_response(
+            status_code=200,
+            body=json.dumps({"Trip": trip_obj}).encode("utf-8"),
+        )
 
-    monkeypatch.setattr(script, "fetch_content_safe", fake_fetch)
+    monkeypatch.setattr(script, "request_safe", fake_request)
 
     trips = script._query_trips(
         session=object(), direction=script.DIRECTIONS[0], when=_stable_now
@@ -923,7 +991,11 @@ def test_query_trips_raises_on_non_dict_payload(
     error-isolation branch runs."""
 
     monkeypatch.setattr(script, "_charge_one_request", lambda _now: None)
-    monkeypatch.setattr(script, "fetch_content_safe", lambda *a, **kw: b'[1,2,3]')
+    monkeypatch.setattr(
+        script,
+        "request_safe",
+        lambda *a, **kw: _make_response(status_code=200, body=b'[1,2,3]'),
+    )
 
     with pytest.raises(TypeError):
         script._query_trips(
@@ -942,12 +1014,12 @@ def test_query_trips_charges_quota_before_fetching(
     def fake_charge(_now: datetime) -> None:
         call_order.append("charge")
 
-    def fake_fetch(*args: Any, **kwargs: Any) -> bytes:
+    def fake_request(*args: Any, **kwargs: Any) -> requests.Response:
         call_order.append("fetch")
-        return b'{"Trip": []}'
+        return _make_response(status_code=200, body=b'{"Trip": []}')
 
     monkeypatch.setattr(script, "_charge_one_request", fake_charge)
-    monkeypatch.setattr(script, "fetch_content_safe", fake_fetch)
+    monkeypatch.setattr(script, "request_safe", fake_request)
 
     script._query_trips(
         session=object(), direction=script.DIRECTIONS[0], when=_stable_now
@@ -965,12 +1037,12 @@ def test_query_trips_propagates_quota_exceeded_without_fetching(
     def raising_charge(_now: datetime) -> None:
         raise script._QuotaExceeded("daily limit reached")
 
-    def fake_fetch(*args: Any, **kwargs: Any) -> bytes:
+    def fake_request(*args: Any, **kwargs: Any) -> requests.Response:
         fetched["called"] = True
-        return b""
+        return _make_response(status_code=200, body=b"")
 
     monkeypatch.setattr(script, "_charge_one_request", raising_charge)
-    monkeypatch.setattr(script, "fetch_content_safe", fake_fetch)
+    monkeypatch.setattr(script, "request_safe", fake_request)
 
     with pytest.raises(script._QuotaExceeded):
         script._query_trips(

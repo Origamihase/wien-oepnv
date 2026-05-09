@@ -118,7 +118,7 @@ from src.utils.circuit_breaker import (  # noqa: E402
     CircuitBreakerOpen,
 )
 from src.utils.files import atomic_write, read_capped_json  # noqa: E402
-from src.utils.http import fetch_content_safe, session_with_retries  # noqa: E402
+from src.utils.http import request_safe, session_with_retries  # noqa: E402
 from src.utils.ids import make_guid  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
 from src.utils.stations import canonical_name, display_name  # noqa: E402
@@ -405,9 +405,25 @@ def _query_trips(
 
     _charge_one_request(when)
 
-    content = fetch_content_safe(
+    # ``request_safe(raise_for_status=False)`` rather than the
+    # ``fetch_content_safe`` wrapper: the wrapper hardcodes
+    # ``raise_for_status=True``, which means the request_safe ``except``
+    # block runs ``r.close()`` on the response BEFORE the body is read
+    # into ``r._content`` (see ``src/utils/http.py`` lines ~2068-2073).
+    # The diagnostic helpers downstream (``_decode_error_body``,
+    # ``_describe_error_body_keys``) would then see ``response.content
+    # == b""`` and report ``body_keys=[EMPTY_BODY]`` — even though the
+    # ``Content-Length`` header confirms the body has bytes (``cl=163``
+    # in the 2026-05-09 cron run). With ``raise_for_status=False`` the
+    # body is read into ``_content`` before any exception path can
+    # close the stream. We then check status manually and synthesise
+    # the same ``HTTPError`` the wrapper would have raised, but with a
+    # response whose ``.content`` is fully populated.
+    response = request_safe(
         session,
         endpoint,
+        method="GET",
+        raise_for_status=False,
         params=params,
         # Content negotiation via Accept header instead of the
         # ``format=json`` query parameter. The trip.md curl example
@@ -417,6 +433,12 @@ def _query_trips(
         timeout=safe_timeout,
         allowed_content_types=("application/json",),
     )
+    if response.status_code >= 400:
+        raise requests.HTTPError(
+            f"VAO /trip returned HTTP {response.status_code}",
+            response=response,
+        )
+    content = response.content
 
     try:
         payload = _json_lib.loads(content)
