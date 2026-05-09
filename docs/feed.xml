@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 09 May 2026 15:02:37 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2026 15:33:14 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U6: Rettungseinsatz]]></title>
@@ -65,17 +65,6 @@
       <content:encoded><![CDATA[Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[48A: Fahrtbehinderung Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3a290c8967b717bf066ab8b81381927897476efbd1370ad7d9f3c4d7bf64cb22</guid>
-      <pubDate>Sat, 09 May 2026 14:08:10 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 15:02:37 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 14:08:20 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 09 May 2026 15:07:00 +0200</ext:ends_at>
-      <description>[Am 09.05.2026]</description>
-      <content:encoded><![CDATA[[Am 09.05.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[O: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">36ad6a7c30b68d7345880b54bf25d283a433758da75c3a0fa4127d22d410a937</guid>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sun, 10 May 2026 00:35:00 +0200</ext:ends_at>
       <description>[09.05.2026 – 10.05.2026]</description>
       <content:encoded><![CDATA[[09.05.2026 – 10.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: Kein Betrieb]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ad25fc8d30140c2bf0995ff7d552a52e180fbb0b67b80aab8c4844db9d8ae63b</guid>
+      <pubDate>Sat, 09 May 2026 00:00:22 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 00:00:22 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Am 09.05.2026]</description>
+      <content:encoded><![CDATA[[Am 09.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
