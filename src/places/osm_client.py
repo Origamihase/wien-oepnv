@@ -186,11 +186,20 @@ class OSMStation:
 class OSMOverpassConfig:
     """Frozen config for an :class:`OSMOverpassClient` instance.
 
-    ``endpoint`` is validated against :data:`_TRUSTED_OVERPASS_HOSTS`
+    ``endpoint`` is validated against :data:`DEFAULT_OVERPASS_ENDPOINTS`
     inside ``__post_init__`` so an env override pointing at an attacker
-    host is rejected before any network request is made. ``timeout_s``
-    is clamped to :data:`_MAX_TIMEOUT_S` and ``user_agent`` is required
-    to be a descriptive string per the Overpass fair-use policy.
+    host (or a TLS-strip / path-hijack / port-hijack variant of a trusted
+    host) is rejected before any network request is made. The match is
+    intentionally **byte-exact** against the constant tuple — host-only
+    validation accepts ``http://overpass-api.de/api/interpreter``
+    (HTTP downgrade), ``https://overpass-api.de/api/admin`` (path
+    hijack), and ``https://overpass-api.de:8443/api/interpreter``
+    (port hijack), all of which a future caller routing through this
+    constructor without first round-tripping through
+    :func:`get_overpass_endpoint` would otherwise re-enable.
+    ``timeout_s`` is clamped to :data:`_MAX_TIMEOUT_S` and
+    ``user_agent`` is required to be a descriptive string per the
+    Overpass fair-use policy.
     """
 
     endpoint: str
@@ -201,9 +210,20 @@ class OSMOverpassConfig:
     max_response_bytes: int = _MAX_RESPONSE_BYTES
 
     def __post_init__(self) -> None:
-        host = (urlparse(self.endpoint).hostname or "").lower()
-        if host not in _TRUSTED_OVERPASS_HOSTS:
-            raise ValueError(f"Overpass endpoint {self.endpoint!r} is not on the trusted host allow-list {sorted(_TRUSTED_OVERPASS_HOSTS)}")
+        # Strict allow-list: byte-exact match against
+        # ``DEFAULT_OVERPASS_ENDPOINTS``. Mirrors the contract enforced
+        # by ``get_overpass_endpoint`` for the env-driven path.
+        # Host-only validation (the pre-fix shape) accepted HTTP
+        # downgrade / path / port / userinfo variants of a trusted host
+        # — every one of which a future caller bypassing the env
+        # resolver could re-enable. Pin the canonical contract at the
+        # structural boundary so any future config-file / CLI consumer
+        # of this dataclass inherits the same defence floor.
+        if self.endpoint not in DEFAULT_OVERPASS_ENDPOINTS:
+            raise ValueError(
+                f"Overpass endpoint {self.endpoint!r} is not on the trusted "
+                f"endpoint allow-list {list(DEFAULT_OVERPASS_ENDPOINTS)}"
+            )
         if not self.user_agent or not self.user_agent.strip():
             raise ValueError("OSMOverpassConfig.user_agent is required")
         if self.timeout_s <= 0 or self.query_timeout_s <= 0:

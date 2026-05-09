@@ -539,7 +539,25 @@ def _find_gtfs_issues(
             yield GTFSIssue(identifier=identifier, name=name, vor_id=vor_id)
 
 
-_UNSAFE_CHARS_RE = re.compile(r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\u2028-\u202e\u2066-\u2069]")
+# Unsafe character class for ``stations.json`` validation. Sized as the
+# UNION of (a) the legacy structural-injection set (``<``/``>`` for HTML,
+# ASCII C0 controls excluding ``\t``/``\n``/``\r``) and (b) every code
+# point covered by the canonical log sanitiser
+# ``src/utils/logging.py:_INVISIBLE_DANGEROUS_RE``. The 2026-05-09
+# BiDi-Mark Drift Round 2 entry in ``.jules/sentinel.md`` flagged the
+# divergence between the two regexes as the next drift candidate: the
+# canonical sanitiser already strips ``\u061c`` (ALM), ``\u200b-\u200f``
+# (ZWSP/ZWNJ/ZWJ/LRM/RLM), and ``\ufeff`` (BOM), but the validator did
+# not, so a planted ``stations.json`` carrying any of those characters
+# in ``name``/``bst_code``/``vor_id``/``aliases`` slipped past
+# ``_find_security_issues`` and flowed verbatim into the published feed
+# and operator-facing log lines (Trojan-Source / log-forging primitive
+# per CVE-2021-42574). The widened set keeps the two regexes in sync;
+# any future widening of ``_INVISIBLE_DANGEROUS_RE`` MUST be reflected
+# here \u2014 pinned by ``test_unsafe_chars_regex_covers_canonical_invisible_dangerous_set``.
+_UNSAFE_CHARS_RE = re.compile(
+    r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+)
 
 # Pattern for the synthetic ``bst_id``/``bst_code`` values assigned to
 # VOR-sourced station entries (e.g. ``900100``–``900112`` for the Wien
