@@ -1,3 +1,88 @@
+## 2026-05-09 - BiDi-Mark Drift Round 2: `strip_control_chars=False` Sibling Paths Bypass `_CONTROL_CHARS_RE` Entirely
+**Vulnerability:** The 2026-05-09 (Round 1, PR #1363) closure of the BiDi /
+Unicode-line-terminator gap landed `؜` ALM, `‎/‏` LRM/RLM,
+` / ` line/paragraph separators inside
+`src/utils/logging.py:_CONTROL_CHARS_RE`. That regex is gated by the
+`strip_control_chars=True` (default) branch of `sanitize_log_message` —
+the `strip_control_chars=False` branch (which exists to keep readable
+`\n`/`\r`/`\t` in tracebacks) bypasses `_CONTROL_CHARS_RE.sub("")`
+entirely. **Five sibling sanitiser paths** opt out of the strip and
+therefore re-leaked the entire BiDi / zero-width / line-terminator
+family verbatim into the public `feed_health.json` artefact, the
+GitHub Issue body submitted by `submit_auto_issue`, every
+`log.exception(...)` traceback rendered by `SafeFormatter`/
+`SafeJSONFormatter`, and every network-level exception text routed
+through `request_safe`:
+1. `src/feed/reporting.py:clean_message` — canonical sanitiser for every
+   provider success/empty/error/disabled detail, every global warning,
+   every global error message, plus `RunReport.exception_message`.
+   Internally calls `sanitize_log_message(message, strip_control_chars=False)`
+   then collapses `\s+` to a single space; Python's `\s` matches
+   ` `/` ` but NOT the BiDi family
+   (`؜`/`‎`/`‏`/`‪-‮`/`⁦-⁩`) or the
+   zero-width family (`​`/`‌`/`‍`/`﻿`).
+2. `src/feed/reporting.py:_sanitize_log_detail` — same drift via
+   `clean_message` for diagnostic-string scrubbing.
+3. `src/utils/http.py:_sanitize_exception_msg` — rewrites every
+   `RequestException.args[0]` produced by `request_safe`. Pre-fix the
+   sanitised text is then routed through every WARNING/ERROR site that
+   logs `str(exc)` from a network call.
+4. `src/feed/logging_safe.py:SafeFormatter.formatException` — renders the
+   traceback for every `log.exception(...)` call in the production feed
+   builder. Pre-fix the BiDi marks in the bound exception text slip into
+   the final formatted log line (only `\n`/`\r` are escaped at the very
+   end via `.replace`).
+5. `src/feed/logging_safe.py:SafeJSONFormatter.formatException` — same
+   drift for the structured JSON formatter; with `ensure_ascii=False` on
+   the `json.dumps` step, BiDi marks are preserved as raw Unicode in the
+   structured payload ingested by downstream SIEM/observability stacks.
+
+**Exploit shape:** A hostile upstream payload — VOR API response, OSM
+Overpass diagnostic, OEBB error body, station name in `stations.json`,
+malformed JSON HTTP error — embeds `‮` RLO + `‬` PDF (or
+`‎` LRM, or ` ` LINE SEPARATOR). Routed through any of the
+five paths above, the marks reach (a) the public Markdown body of the
+auto-submitted GitHub issue and the SIEM splitting on Unicode line
+terminators (forge a second log record carrying a fake `level=ERROR`,
+`ts=…`, or whatever the operator triages on), or (b) the operator's
+Unicode-aware terminal / GitHub Issue renderer / IDE log viewer
+(invert displayed text à la CVE-2021-42574 so `user=admin drop=table`
+is misread as the inverse).
+
+**Fix:** Promote the BiDi / zero-width / line-terminator family to an
+**unconditional** pre-pass in `sanitize_log_message` — independent of
+the `strip_control_chars` flag. The flag now only gates the ASCII
+control-char escape (`\n`→`\\n`, `\r`→`\\r`, `\t`→`\\t`) and the
+`_CONTROL_CHARS_RE` strip (which still includes the same code points as
+defence in depth). The new `_INVISIBLE_DANGEROUS_RE` covers `؜`,
+`​-‏`, ` -‮`, `⁦-⁩`, `﻿` — the strict
+subset of `_CONTROL_CHARS_RE` that has NO readability value AND is a
+documented log-injection / Trojan-Source primitive. Since the strip
+runs before the `if strip_control_chars:` gate, every one of the five
+sibling paths inherits the defence in a single cut without breaking
+the readable-newline contract those callers rely on for traceback
+formatting.
+
+**Learning:** Round 1's `_CONTROL_CHARS_RE` extension was *necessary
+but not sufficient*. Whenever a sanitiser carries a feature flag that
+gates a defensive strip, audit which other call paths flip the flag in
+the OPPOSITE direction — those paths are still on the pre-fix shape
+and bypass the regex entirely. The CodeQL/sanitiser-walker pattern
+(`test_sentinel_clear_text_logging_drift_utils`) only covers the
+default-True path; sibling helpers that set the flag to False
+(traceback-readable formatters, exception-msg rewriters, the
+`feed_health.json` cleaning pipeline) need their own audit floor.
+Concretely: split a sanitiser's *defensive strip* into two tiers —
+"strip always" (no readability cost — invisible glyphs, BiDi marks,
+zero-width, line/paragraph separators, BOM) and "strip if flag set"
+(`\n`/`\r`/`\t` and ASCII C0/C1 controls that DO carry readability
+weight). Always-strip the first tier. Flag-gate only the second. The
+companion regex in `src/utils/stations_validation.py:_UNSAFE_CHARS_RE`
+is also narrower than `_INVISIBLE_DANGEROUS_RE` — that's a deliberate
+deferral (station-validator scope is structural validation, not log
+sanitisation), but flag it as the next drift candidate if a future
+round audits station-data flow into log emit.
+
 ## 2026-05-09 - BiDi-Mark / Unicode-Line-Terminator Gap in `sanitize_log_message`
 **Vulnerability:** The canonical log-injection / Trojan-Source defence
 (`src/utils/logging.py:_CONTROL_CHARS_RE`, used by every WARNING/ERROR
