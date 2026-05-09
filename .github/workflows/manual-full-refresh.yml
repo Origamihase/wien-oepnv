@@ -4,6 +4,16 @@ name: Manual full refresh
 # anschliessend das Stationsverzeichnis und zuletzt den Feed. Gedacht als
 # einfacher "alles neu"-Trigger – die regulaer geplanten Einzel-Workflows
 # bleiben unveraendert bestehen.
+#
+# 2026-05-09: VOR-Cache und VOR-Haltestellen-Refresh wurden aus diesem
+# Workflow entfernt, damit der projektweite VOR-API-Verbrauch unter der
+# VAO-Start-Tier-Quota (100/Tag) bleibt. Der Stammstrecke-Monitor ist
+# der einzige zugelassene auto-laufende VOR-API-Konsument; das
+# Stationsverzeichnis nutzt die gepinnte ``data/vor-haltestellen.csv``.
+# Bei Bedarf koennen ``update-vor-cache.yml`` und
+# ``scripts/fetch_vor_haltestellen.py`` weiterhin manuell via
+# workflow_dispatch ausgefuehrt werden — der Operator akzeptiert dann
+# bewusst den Quota-Verbrauch.
 
 on:
   workflow_dispatch:
@@ -60,6 +70,12 @@ jobs:
       - name: Refresh ÖBB cache
         run: python scripts/update_oebb_cache.py
 
+      # ``update_vor_cache.py`` was removed from the manual-full-refresh
+      # 2026-05-09 to keep the project under the VAO Start tier's
+      # 100/day quota. Stammstrecke (below) is now the only VOR-API
+      # consumer this workflow triggers; emergency station-disruption
+      # refreshes go through ``update-vor-cache.yml`` (workflow_dispatch).
+
       - name: Validate VOR secrets
         shell: bash
         run: |
@@ -69,15 +85,13 @@ jobs:
             exit 1
           fi
 
-      - name: Refresh VOR cache
-        run: python scripts/update_vor_cache.py
-
       # Stammstrecke median-delay monitor: writes cache/stammstrecke/events.json
       # consumed by the feed builder, AND appends a CSV row to
       # data/stats/stammstrecke_<YYYY>.csv. After the 2026-05-09 pyhafas->VOR
       # pivot the script issues 2 VOR /trip requests per run (one per
-      # direction); it shares the ``external-api-fetch`` concurrency lane and
-      # the VAO Start daily quota counter with ``update_vor_cache.py`` above.
+      # direction); the only auto-running VOR-API consumer in the project
+      # since the 2026-05-09 quota-conservation pass that removed
+      # ``update_vor_cache.py`` from the cron lane.
       # MUST run BEFORE the feed build below — the feed reads the cache file
       # produced here, so a wrong-order full-refresh would publish stale
       # Stammstrecke data and only converge on the *next* refresh.
@@ -85,11 +99,11 @@ jobs:
         run: python scripts/update_stammstrecke_status.py
 
       # ----- 2) Stationsverzeichnis aktualisieren -----
-      - name: Refresh VOR stop list (best-effort)
-        run: |
-          python scripts/fetch_vor_haltestellen.py --verbose \
-            || echo "::warning::VOR refresh failed; using pinned data/vor-haltestellen.csv"
-        continue-on-error: true
+      # ``fetch_vor_haltestellen.py`` was removed 2026-05-09 — the
+      # station directory now uses the pinned ``data/vor-haltestellen.csv``.
+      # VOR station IDs change rarely (years); operator can refresh the
+      # snapshot manually with ``python scripts/fetch_vor_haltestellen.py``
+      # if needed.
 
       - name: Refresh station directory
         run: python scripts/update_all_stations.py --verbose

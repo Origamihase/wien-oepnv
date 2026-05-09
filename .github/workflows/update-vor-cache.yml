@@ -1,9 +1,14 @@
 name: Update VOR cache
 
+# DISABLED CRON (2026-05-09): the regular hourly schedule was removed
+# to keep the project under the VAO Start tier's 100/day quota — the
+# Stammstrecke monitor (``update-stammstrecke-status.yml``, every 30
+# minutes × 2 directions = 96 reqs/day) now owns nearly the entire
+# daily budget and is the project's only auto-running VOR API consumer.
+# This workflow remains available as a manual escape hatch via
+# ``workflow_dispatch`` for emergency station-disruption refreshes; an
+# explicit operator trigger pays the quota cost knowingly.
 on:
-  schedule:
-    - cron: '15 * * * *'
-    # SAFETY: Max 24 runs/day * 2 stations = 48 reqs (Limit: 100)
   workflow_dispatch:
 
 permissions:
