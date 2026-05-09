@@ -148,11 +148,13 @@ MEIDLING_CANONICAL_SEED = "Wien Meidling"
 DELAY_THRESHOLD_MINUTES = 9
 
 # Number of trips to fetch per direction in a single ``/trip`` call.
-# Pinned to ``5`` so the median is computed from the immediately upcoming
-# five S-Bahn departures per direction — the smallest odd-ish window
-# that still yields a stable median while keeping the VAO payload (and
-# the per-call quota cost) minimal. The VAO API caps ``numF`` at 6.
-MAX_TRIPS_PER_QUERY = 5
+# Pinned to ``6`` — the VAO contractual maximum (``numF`` accepts 1..6,
+# see ``docs/reference/trip.md``). The 30-minute cron tick combined
+# with ``maxChange=0`` typically yields 4-6 S-Bahn legs after the
+# product filter; pinning at the API ceiling maximises the median's
+# sample size without inflating the per-day quota cost (the VAO
+# response size is identical between numF=5 and numF=6).
+MAX_TRIPS_PER_QUERY = 6
 
 # Per-call HTTP budget (seconds). Enforced at the ``fetch_content_safe``
 # layer (``src/utils/http.py``) which forwards the kwarg verbatim to
@@ -423,31 +425,43 @@ def _query_trips(
 def _is_sbahn_leg(leg: object) -> bool:
     """Return ``True`` when *leg* represents a Vienna S-Bahn product.
 
+    The filter is **strict-S**: only the literal Vienna S-Bahn product
+    family (``S 1``, ``S 2``, ``S 7``, ``S 80`` …) is accepted.
+    Regional Express (``REX``), Regional (``R``), InterCity (``IC``),
+    Railjet (``RJ``), and any non-rail product is rejected.
+
     Checks (any single signal is sufficient):
 
-    * ``leg.category in {"S","SB"}`` — VAO's preferred field;
-    * ``leg.name`` matching ``S\\d+`` — fallback for older VAO peers
-      that only set the human-readable label;
-    * ``leg.Product[].catOut in {"S","SB"}`` or ``Product[].line``
-      matching ``S\\d+`` — the JSON-RPC nested form some VAO releases
-      use.
+    * ``leg.category == "S"`` — VAO's preferred field;
+    * ``leg.name`` matching ``^\\s*S\\s*\\d+\\s*$`` — fallback for older
+      VAO peers that only set the human-readable label;
+    * ``leg.Product[].catOut == "S"`` or ``Product[].line`` matching
+      ``^\\s*S\\s*\\d+\\s*$`` — the JSON-RPC nested form some VAO
+      releases use.
+
+    The previous-generation matcher also accepted ``"SB"`` as category;
+    the 2026-05-09 Senior-API-Integration audit removed it because
+    ``SB`` is ambiguous in the German-speaking ÖV space (it can denote
+    *Schnellbahn* — a synonym for S-Bahn — but also *Schnellbus* in
+    some VAO/ÖBB regional dialects, and there is no SB service on the
+    Stammstrecke). Strict ``"S"`` keeps the filter aligned with the
+    user-visible Vienna S-Bahn product mapping. A future legitimate
+    ``SB`` line would be picked up by the ``name``/``line`` regex
+    anyway (``"SB 1"`` does not match, but Vienna does not run that
+    line).
 
     Accepts ``object`` (rather than ``Mapping``) so the defensive
     ``isinstance(leg, Mapping)`` gate is reachable at type-check time
     — a non-mapping payload (a planted ``None`` / ``str`` / ``list``
     that slipped past upstream JSON parsing) returns ``False`` cleanly
     instead of triggering an unreachable-statement diagnostic.
-
-    Returns ``False`` for walk legs (no ``category`` / ``name`` /
-    ``Product`` fields), regional trains (``REX``, ``R``,
-    ``Railjet`` …), and any payload shape that is not a mapping.
     """
 
     if not isinstance(leg, Mapping):
         return False
 
     category = (str(leg.get("category") or "")).strip().upper()
-    if category in ("S", "SB"):
+    if category == "S":
         return True
 
     name = str(leg.get("name") or "").strip()
@@ -466,7 +480,7 @@ def _is_sbahn_leg(leg: object) -> bool:
 
     for product in candidates:
         cat_out = str(product.get("catOut") or "").strip().upper()
-        if cat_out in ("S", "SB"):
+        if cat_out == "S":
             return True
         line = str(product.get("line") or "").strip()
         if _S_BAHN_LINE_RE.match(line):
@@ -509,15 +523,31 @@ def _parse_vao_dt(date_str: Any, time_str: Any) -> datetime | None:
 def _leg_departure_delay_minutes(leg: Mapping[str, Any]) -> float | None:
     """Return the leg's departure delay in fractional minutes, or None.
 
-    The VAO Trip-Leg departure delay is ``Origin.rtTime - Origin.time``
-    (resp. ``rtDepTime - depTime`` on legacy peers). Either pair may be
-    absent — when the realtime field is missing the leg has no delay
-    signal and is excluded from the median (rather than counted as
-    zero, which would deflate the median).
+    Computes ``Origin.rtTime - Origin.time`` (resp. ``rtDepTime -
+    depTime`` on legacy peers) in minutes:
 
-    A negative delay (early departure) is possible at the timetable
-    level but contributes a negative value to the median, which is
-    still meaningful — including it.
+    * **On-time (rtTime missing)** — VAO parsimoniously omits
+      ``rtTime`` when realtime data confirms an on-time departure
+      (echoing ``time`` would double the response size for the
+      majority of trips). The 2026-05-09 Senior-API-Integration audit
+      established that *missing* ``rtTime`` MUST be treated as
+      ``0.0`` minutes rather than skipped — skipping it would exclude
+      every on-time train from the median, biasing the result so far
+      upward that an off-peak window with a single delayed train would
+      cross the 9-minute threshold and emit a spurious feed event.
+    * **On-time (rtTime == time)** — falls through the same arithmetic
+      and yields exactly ``0.0`` minutes.
+    * **Cancelled** — returns ``None`` (no signal; cancelled trains
+      are not "delayed", they are "absent").
+    * **Schedule unparseable** — returns ``None`` (the leg cannot
+      contribute a meaningful delay value to the median).
+    * **Realtime field present but unparseable** — returns ``None``
+      (a malformed ``rtTime`` is treated like a missing schedule
+      rather than silently coerced to zero).
+
+    Negative delays (early departure) are possible at the timetable
+    level and contribute negative values to the median, which is
+    still meaningful — keep them.
     """
 
     origin = leg.get("Origin")
@@ -528,15 +558,18 @@ def _leg_departure_delay_minutes(leg: Mapping[str, Any]) -> float | None:
 
     sched_date = origin.get("date") or origin.get("depDate")
     sched_time = origin.get("time") or origin.get("depTime")
-    rt_date = origin.get("rtDate") or origin.get("rtDepDate") or sched_date
-    rt_time = origin.get("rtTime") or origin.get("rtDepTime")
-
-    if not rt_time:
+    scheduled = _parse_vao_dt(sched_date, sched_time)
+    if scheduled is None:
         return None
 
-    scheduled = _parse_vao_dt(sched_date, sched_time)
+    rt_time = origin.get("rtTime") or origin.get("rtDepTime")
+    if not rt_time:
+        # On-time per VAO contract — see docstring.
+        return 0.0
+
+    rt_date = origin.get("rtDate") or origin.get("rtDepDate") or sched_date
     actual = _parse_vao_dt(rt_date, rt_time)
-    if scheduled is None or actual is None:
+    if actual is None:
         return None
 
     return (actual - scheduled).total_seconds() / 60.0
@@ -556,8 +589,10 @@ def _collect_sbahn_delays_minutes(
     * **S-Bahn only** — the single ride leg must pass
       :func:`_is_sbahn_leg`.
     * **Cancellation excluded** — a cancelled leg has no delay signal.
-    * **Realtime present** — a leg without ``rtTime`` is excluded
-      rather than counted as zero (which would deflate the median).
+    * **On-time legs counted** — :func:`_leg_departure_delay_minutes`
+      returns ``0.0`` (not ``None``) when ``rtTime`` is missing, so
+      on-time S-Bahn departures contribute to the median rather than
+      being silently dropped.
     """
 
     delays: list[float] = []
