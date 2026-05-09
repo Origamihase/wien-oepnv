@@ -1,6 +1,54 @@
 # CHANGELOG
 
 ## [Unreleased]
+* **Feat (Statistik-Dashboard)**: Komplett dependenzfreies Statistik-
+  und Logging-System für Verspätungen und Störungen — siehe Section 6
+  in [`docs/architecture.md`](docs/architecture.md). Konkret:
+  - **Append-only CSV-Ledger** unter `data/stats/`:
+    `stammstrecke_YYYY.csv` (Spalten `timestamp, weekday, hour,
+    direction, delay_minutes`) und `stoerungen_YYYY.csv` (Spalten
+    `timestamp, weekday, hour, provider, location_name`). Eine Datei
+    pro Kalenderjahr, alle Zeitstempel als ISO 8601 in
+    `Europe/Vienna`.
+  - **Producer 1**: `scripts/update_stammstrecke_status.py` schreibt
+    nach jeder erfolgreichen Median-Berechnung eine Zeile — auch
+    *unterhalb* der RSS-Trigger-Schwelle, damit das Dashboard die
+    *gesamte* Verteilung zeigt, nicht nur die Eskalationen.
+  - **Producer 2**: `src/build_feed.py` schreibt im
+    `_update_item_state`-Strict-New-Pfad eine Zeile pro *erstmals
+    gesehenem* Identity (über die `data/first_seen.json`-State-Logik
+    erkannt). Rerun-stabil: eine lange ÖBB-Streckeninformation, die
+    viele Builds überlebt, wird genau *einmal* gezählt.
+  - **Aggregator**: Neues Skript `scripts/generate_markdown_stats.py`
+    (nur Standardlibrary — `csv`, `collections`, `datetime`,
+    `statistics`, `pathlib`, `zoneinfo`, `argparse`) erzeugt
+    `docs/statistik.md` mit ASCII/Emoji-Bar-Charts: Beobachtungen je
+    Wochentag und Stunde, ⌀ Verspätung je Wochentag und Stunde,
+    Top-5-Hotspots mit Tageszeit-Profil pro Hotspot, Zusammenfassungs-
+    KPIs.
+  - **Workflow**: Neuer GitHub-Actions-Job
+    `.github/workflows/generate-stats.yml` (Cron `15 0 * * *` +
+    `workflow_dispatch`) führt den Aggregator aus und committet
+    `docs/statistik.md` plus etwaige neue CSV-Dateien via
+    `stefanzweifel/git-auto-commit-action`.
+  - **Resilienz**: Schreiber sind best-effort (jeder I/O-Fehler wird
+    geloggt + geschluckt — Statistik darf nie den Build kippen). Der
+    Aggregator routet jede CSV über `read_capped_text` + `io.StringIO`
+    (entspricht dem CSV-Size-Bomb-Sentinel) und schreibt das Dashboard
+    via `atomic_write`.
+  - **Lokationsheuristik**: `extract_location_name` versucht
+    `zwischen X und Y` → erstes Capture, dann `Wien <Stadtteil>`,
+    dann das erste großgeschriebene Multi-Wort-Token außerhalb einer
+    kleinen Stopword-Liste (Bauarbeiten, Verspätung, Linie, …).
+    Fallback `"unbekannt"`.
+  - **Tests**: 60 neue Tests
+    (`tests/scripts/test_generate_markdown_stats.py`,
+    `tests/test_utils_stats.py`) decken Bar-Skalierung, Aggregation,
+    CSV-Lesepfad inkl. oversized-file-skip, malformed-row-tolerance,
+    Tie-Breaking im Top-N-Ranking, Idempotenz, Year-Boundary-Rollover
+    und Lokations-Heuristik ab.
+  - **Quality**: Mypy-Strict 0 Fehler, Bandit 0 Issues, Ruff 0
+    Issues, alle 2 418 vorherigen Tests grün — keine Regression.
 * **Audit**: Vollständige Audit-Abnahme des S-Bahn Stammstrecke
   Monitors mit Bericht unter
   [`docs/archive/audits/oebb_stammstrecke_audit.md`](docs/archive/audits/oebb_stammstrecke_audit.md).

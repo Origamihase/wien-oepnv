@@ -1,0 +1,63 @@
+name: Generate statistics dashboard
+
+on:
+  schedule:
+    # Run after the last hourly Stammstrecke / build-feed cron has settled
+    # so the daily Markdown roll-up reflects a complete previous day.
+    - cron: '15 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Stay on the same concurrency lane as the other repo-mutating jobs to
+# avoid stomping the auto-commit step. Statistics generation is idempotent;
+# a queued second run that finds nothing changed is a no-op.
+concurrency:
+  group: generate-stats-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      PYTHONPATH: src
+      PIP_CACHE_DIR: /tmp/pip-cache
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          # Need full history so the auto-commit action can rebase
+          # cleanly against any concurrent push to main.
+          fetch-depth: 0
+
+      - name: Ensure pip cache directory exists
+        run: mkdir -p "$PIP_CACHE_DIR"
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      - name: Generate Markdown statistics
+        run: python scripts/generate_markdown_stats.py
+
+      - name: Pull concurrent remote changes
+        run: git pull --rebase --autostash
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
+        with:
+          commit_message: 'chore: refresh statistics dashboard'
+          file_pattern: |
+            docs/statistik.md
+            data/stats/*.csv

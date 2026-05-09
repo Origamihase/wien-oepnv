@@ -237,6 +237,30 @@ def reset_build_feed_state() -> None:
     reset_registry(with_defaults=True)
 
 
+@pytest.fixture(autouse=True)
+def isolate_stats_writes(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
+    """Redirect ``src.utils.stats`` CSV appends to a per-test tmp directory.
+
+    The production writers default to ``data/stats/`` under the repo
+    root. Without this guard, any test that exercises a hot-path which
+    transitively records stats (build_feed.update_item_state's
+    strict-new branch, scripts/update_stammstrecke_status._process_direction)
+    would write into the real on-disk ledger and contaminate the
+    committed history with synthetic test rows.
+
+    The override is monkeypatched on the module attribute, so call
+    sites that did not pass an explicit ``stats_dir`` keyword (which
+    is the common case in production) pick up the test path. Tests
+    that *do* explicitly target a different ``stats_dir`` (e.g.
+    ``test_utils_stats.py``) are unaffected because the explicit
+    keyword wins inside ``stats_path``.
+    """
+    from src.utils import stats as stats_utils
+
+    monkeypatch.setattr(stats_utils, "DEFAULT_STATS_DIR", tmp_path / "stats")
+    yield
+
+
 # ---------------------------------------------------------------------------
 # CircuitBreaker test-isolation fixture
 #
