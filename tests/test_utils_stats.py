@@ -156,15 +156,16 @@ def test_append_disruption_row_normalises_blank_fields(tmp_path: Path) -> None:
 # ---- Location heuristic ---------------------------------------------------
 
 
-def test_extract_location_name_uses_zwischen_pattern() -> None:
+def test_extract_location_name_canonicalises_zwischen_endpoint() -> None:
+    """``zwischen X und Y`` returns the directory-canonical X."""
     item = {
         "title": "S 7: Verspätung",
         "description": "Verspätungen zwischen Floridsdorf und Praterstern wegen Bauarbeiten.",
     }
-    assert stats_utils.extract_location_name(item) == "Floridsdorf"
+    assert stats_utils.extract_location_name(item) == "Wien Floridsdorf"
 
 
-def test_extract_location_name_falls_back_to_wien_prefix() -> None:
+def test_extract_location_name_uses_wien_prefix_when_directory_resolves() -> None:
     item = {
         "title": "ÖBB: Information",
         "description": "Streckensperre rund um Wien Meidling bis Vormittag.",
@@ -177,27 +178,139 @@ def test_extract_location_name_returns_unbekannt_when_nothing_matches() -> None:
     assert stats_utils.extract_location_name(item) == "unbekannt"
 
 
-def test_extract_location_name_skips_stopwords_like_bauarbeiten() -> None:
+def test_extract_location_name_finds_directory_station_in_free_text() -> None:
+    """A station-directory hit in the description returns the canonical name."""
     item = {
         "title": "Bauarbeiten",
         "description": "Bauarbeiten heute, Karlsplatz betroffen.",
     }
     extracted = stats_utils.extract_location_name(item)
-    assert extracted != "Bauarbeiten"
-    assert "Karlsplatz" in extracted
+    assert extracted == "Wien Karlsplatz"
 
 
 def test_extract_location_name_caps_overly_long_strings() -> None:
+    """An unbounded title/description cannot inflate the returned cell."""
     item = {
         "title": "X" * 5000,
         "description": "Wien " + ("a" * 200),
     }
     out = stats_utils.extract_location_name(item)
-    assert len(out) <= 90  # 80-char location cap + small "Wien " prefix slack
+    # No directory hit possible → fallback. The 80-char clamp also still
+    # holds for any structured-pattern branch, hence the relaxed bound.
+    assert len(out) <= 90
 
 
 def test_extract_location_name_handles_non_string_inputs_safely() -> None:
     item: dict[str, object] = {"title": None, "description": 12345}
+    assert stats_utils.extract_location_name(item) == "unbekannt"
+
+
+# ---- Catalogue-anchored extraction: real disruption-type bad cases --------
+#
+# Pre-2026-05-09, the regex-based heuristic accepted any pair of
+# capitalised tokens whose first word was not in a small stopword list,
+# which produced README "Häufigste Störungsorte" entries like
+# ``"Demonstration Linie"`` / ``"Rettungseinsatz Linie"`` /
+# ``"Polizeieinsatz Linie"`` — these are disruption *types* (German
+# nouns are all capitalised), not locations.
+#
+# The pin tests below lock in that the new directory-anchored extractor
+# rejects every shape that used to leak into the CSV. ``"unbekannt"`` is
+# the correct answer because none of these strings contain a station the
+# directory recognises — and we explicitly do NOT want a lower-confidence
+# fallback to backslide into the previous behaviour.
+
+
+@pytest.mark.parametrize(
+    "title,description",
+    [
+        ("13A: Rettungseinsatz", "Rettungseinsatz auf der Linie"),
+        ("5: Demonstration", "Demonstration auf der Linie 5"),
+        ("13A: Polizeieinsatz", "Polizeieinsatz auf der Linie"),
+        ("Signalstörung", "Signalstörung auf der Linie 5"),
+        ("Fahrtbehinderung Falschparker", "Falschparker auf der Linie"),
+        ("Fremder Verkehrsunfall", "Verkehrsunfall, Linie umgeleitet"),
+        ("Fahrtbehinderung Fremder Verkehrsunfall", ""),
+        ("Feuerwehreinsatz", "Feuerwehreinsatz auf der Linie"),
+        # "Demonstration Linie" was the most-frequent leak — explicit pin
+        ("Demonstration Linie", "Demonstration auf Linie 5"),
+        # "Hbf" alone aliases to Wien Hauptbahnhof in the directory but
+        # appearing as a stand-alone word does not signal a Hauptbahnhof
+        # incident — the generic-token filter must keep this a no-match.
+        ("Information", "Verbindungen zum Hbf umgeleitet"),
+    ],
+)
+def test_extract_location_name_rejects_disruption_type_garbage(
+    title: str, description: str
+) -> None:
+    """Disruption-type-prefix titles must never produce a location row."""
+    item = {"title": title, "description": description}
+    assert stats_utils.extract_location_name(item) == "unbekannt"
+
+
+@pytest.mark.parametrize(
+    "description,expected",
+    [
+        # WL "Haltestelle: ..." structured suffix (multiple stops)
+        (
+            "Aufzugstörung | Haltestelle: Stephansplatz, Volkstheater",
+            "Wien Stephansplatz",
+        ),
+        # WL "Station: ..." attribute fallback
+        (
+            "Aufzug außer Betrieb | Station: Westbahnhof",
+            "Wien Westbahnhof",
+        ),
+        # Stammstrecke renderer phrasing
+        (
+            "Durchschnittliche Verspätung von 12 Minuten in Richtung Meidling [Seit 09.05.2026]",
+            "Wien Meidling",
+        ),
+        # Plain free-text mention of a directory-known Vienna station
+        (
+            "Aufzugstörung am Karlsplatz",
+            "Wien Karlsplatz",
+        ),
+    ],
+)
+def test_extract_location_name_picks_up_structured_signals(
+    description: str, expected: str
+) -> None:
+    """Each provider's structured location signal lands on the dashboard."""
+    item = {"title": "Linie U3", "description": description}
+    assert stats_utils.extract_location_name(item) == expected
+
+
+def test_extract_location_name_haltestelle_accepts_unknown_curated_stop() -> None:
+    """A WL stop name we do not have in the directory still passes through.
+
+    The ``relatedStops`` API field is curated upstream, so verbatim
+    pass-through is safe — but only via the explicit ``Haltestelle:``
+    structured prefix, which cannot accidentally fire on free text.
+    """
+    item = {
+        "title": "5A: Aufzug",
+        "description": "Aufzugsdefekt | Haltestelle: Tichtelgasse, Stephansplatz",
+    }
+    out = stats_utils.extract_location_name(item)
+    # "Tichtelgasse" is not in the directory but we still return it
+    # because the structured ``Haltestelle:`` prefix is a curated signal.
+    assert out == "Tichtelgasse"
+
+
+def test_extract_location_name_rejects_hbf_alone_as_generic_alias() -> None:
+    """Standalone ``Hbf`` must not auto-canonicalise to Wien Hauptbahnhof.
+
+    Without the generic-token filter, every text containing ``Hbf``
+    would pin the disruption to the flagship station and skew the
+    dashboard. The filter keeps the single-token alias gate closed.
+    """
+    item = {
+        "title": "Information",
+        "description": "Wegen Bauarbeiten kein Halt am Hbf möglich.",
+    }
+    # "Bauarbeiten" / "Hbf" / "Information" — none resolves through the
+    # directory under the generic-token filter, so the fallback wins.
     assert stats_utils.extract_location_name(item) == "unbekannt"
 
 

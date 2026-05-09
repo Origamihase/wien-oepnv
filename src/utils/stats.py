@@ -34,6 +34,7 @@ from typing import Any, Final
 from zoneinfo import ZoneInfo
 
 from src.utils.logging import sanitize_log_arg
+from src.utils.stations import display_name, station_info
 
 LOGGER = logging.getLogger("utils.stats")
 
@@ -88,7 +89,7 @@ WEEKDAY_LABELS: Final = ("Mo", "Di", "Mi", "Do", "Fr", "Sa", "So")
 # ``provider`` — see ``src/providers/wl_fetch.py`` lines 736 and 858),
 # a poisoned station directory (``data/stations.json`` flows through
 # ``display_name`` into ``direction``), or a future loosening of
-# :func:`extract_location_name`'s anchored-uppercase regex set. The
+# :func:`extract_location_name`'s directory-anchored gate. The
 # OWASP-recommended neutralisation is a leading single quote ``'``,
 # which spreadsheets render as plain text (the apostrophe itself is
 # hidden in display) — defanged but still visible to operators
@@ -145,6 +146,30 @@ def _sanitize_csv_text_field(value: str) -> str:
     return cleaned
 
 
+# Structured-signal patterns. Each captures a *labelled* location segment
+# that the providers already serialise into ``description`` (or ``title``)
+# in a deterministic shape — these are the cleanest signals because the
+# field came out of a curated upstream API field (WL ``relatedStops`` /
+# attrs.station / attrs.location) or out of our own VOR ``in Richtung``
+# render. The capture group is then passed through
+# :func:`_resolve_via_directory`, which only returns a value when
+# :func:`station_info` recognises it — so a poisoned upstream string can
+# never silently land as a "location" cell on the dashboard.
+#
+# All upper bounds are explicit (``{1,80}``) to keep the regex engine
+# bounded on adversarial inputs (ReDoS hardening).
+_HALTESTELLE_RE: Final = re.compile(
+    r"\|\s*Haltestelle:\s*([^|]{1,200})",
+    re.IGNORECASE,
+)
+_LABELED_LOCATION_RE: Final = re.compile(
+    r"\|\s*(?:Station|Location)\s*:\s*([^|]{1,200})",
+    re.IGNORECASE,
+)
+_RICHTUNG_RE: Final = re.compile(
+    r"\bin\s+Richtung\s+([^,\.\[\|]{1,80})",
+    re.IGNORECASE,
+)
 _BETWEEN_RE: Final = re.compile(
     r"\bzwischen\s+([A-ZÄÖÜ][\w\.\-’']{1,80}?(?:\s+[A-ZÄÖÜ][\w\.\-’']{1,80}){0,3})"
     r"\s+und\s+",
@@ -153,63 +178,44 @@ _BETWEEN_RE: Final = re.compile(
 _WIEN_PREFIX_RE: Final = re.compile(
     r"\bWien\s+([A-ZÄÖÜ][\wäöüÄÖÜß\-’']{1,40}(?:\s+[A-ZÄÖÜ][\wäöüÄÖÜß\-’']{1,40})?)"
 )
-_STATION_NAME_RE: Final = re.compile(
-    r"\b([A-ZÄÖÜ][\wäöüÄÖÜß]{2,40}(?:[\-/\s][A-ZÄÖÜ][\wäöüÄÖÜß]{2,40}){0,2})\b"
-)
-# Words that pass _STATION_NAME_RE but are clearly not station names.
-# Intentionally short — only the highest-frequency false positives that
-# survive the location heuristic on real provider feeds.
-_STOPWORD_LOCATIONS: Final = frozenset(
+
+# Sliding-window scan parameters. ``_MAX_STATION_WINDOW`` mirrors the
+# value used in :mod:`src.providers.oebb._find_stations_in_text` so the
+# two scans behave consistently — a station name that resolves there
+# also resolves here. The token-split character class strips arrow /
+# slash / dash punctuation that appears in route titles
+# (``"A ↔ B"`` / ``"A / B"``) and would otherwise corrupt window joins.
+_MAX_STATION_WINDOW: Final = 4
+_TOKEN_SPLIT_RE: Final = re.compile(r"[\s/]+")
+_NOISE_TOKEN_RE: Final = re.compile(r"^[↔→←↗↘↙↖<>=–—\-«»‹›]+$")
+# Single-token chunks that the directory's alias-expansion rules would
+# silently collapse into flagship stations. ``Hbf`` aliases to
+# ``Wien Hauptbahnhof`` even when the surrounding text is talking about
+# a different station ("Verbindungen zum Hbf umgeleitet"); ``Bahnhof`` /
+# ``Bf`` likewise; ``Wien`` alone aliases on its own (and would land
+# every Vienna-related disruption under the same node). Mirrors the
+# ``oebb._GENERIC_STATION_TOKENS`` filter to keep the two scans in sync.
+_GENERIC_DIRECTORY_TOKENS: Final = frozenset(
     {
-        "Bauarbeiten",
-        "Gleisbauarbeiten",
-        "Strassenbauarbeiten",
-        "Straßenbauarbeiten",
-        "Verkehrsunfall",
-        "Verspätung",
-        "Verspaetung",
-        "Verspätungen",
-        "Störung",
-        "Stoerung",
-        "Störungen",
-        "Stoerungen",
-        "Ersatzverkehr",
-        "Schienenersatzverkehr",
-        "Sperre",
-        "Sperrung",
-        "Aufzug",
-        "Rolltreppe",
-        "Linie",
-        "Linien",
-        "Bus",
-        "Strassenbahn",
-        "Straßenbahn",
-        "U-Bahn",
-        "S-Bahn",
-        "Achtung",
-        "Hinweis",
-        "Information",
-        "Mitteilung",
-        "Mo",
-        "Di",
-        "Mi",
-        "Do",
-        "Fr",
-        "Sa",
-        "So",
-        "Januar",
-        "Februar",
-        "März",
-        "Maerz",
-        "April",
-        "Mai",
-        "Juni",
-        "Juli",
-        "August",
-        "September",
-        "Oktober",
-        "November",
-        "Dezember",
+        "hbf",
+        "bhf",
+        "bf",
+        "bahnhof",
+        "bahnhst",
+        "hauptbahnhof",
+        "westbahnhof",
+        "westbf",
+        "ostbahnhof",
+        "ostbf",
+        "südbahnhof",
+        "suedbahnhof",
+        "südbf",
+        "suedbf",
+        "nordbahnhof",
+        "nordbf",
+        "station",
+        "wien",
+        "vor",
     }
 )
 
@@ -343,22 +349,125 @@ def append_disruption_row(
     return _append_row(path, STOERUNGEN_HEADER, row)
 
 
+def _normalise_location(value: str) -> str:
+    """Trim, collapse whitespace, and cap *value* at a sensible length."""
+    cleaned = " ".join(value.split())
+    if len(cleaned) > 80:
+        cleaned = cleaned[:80].rstrip()
+    return cleaned
+
+
+def _resolve_via_directory(candidate: str) -> str | None:
+    """Return the *display* name when *candidate* resolves via the station
+    directory, ``None`` otherwise.
+
+    The directory in ``data/stations.json`` is the project's only
+    curated source of truth for "is this a real Vienna-network
+    station?". A regex-extracted candidate is only accepted as a
+    location when :func:`station_info` recognises it (canonical or
+    alias). The returned string is the user-facing
+    :func:`display_name` (e.g. ``Wien Mitte`` rather than the
+    canonical ``Wien Mitte-Landstraße``) so the dashboard renders the
+    label operators expect to read.
+    """
+    cleaned = _normalise_location(candidate)
+    if not cleaned:
+        return None
+    info = station_info(cleaned)
+    if info is None:
+        return None
+    return display_name(info.name)
+
+
+def _scan_for_directory_station(haystack: str) -> str | None:
+    """Sliding-window scan for a directory-known station in *haystack*.
+
+    Matches longest first within each starting position so that a
+    multi-token name (``Wien Mitte``) wins over the substring match
+    (``Mitte``) when both resolve, and returns the *first* match in
+    source order so the natural reading order of the title/description
+    drives the choice. Mirrors
+    :func:`src.providers.oebb._find_stations_in_text` semantically but
+    is purposefully scoped to the stats-extraction surface (no HTML
+    stripping — the callers already pass plain text).
+
+    ``_GENERIC_DIRECTORY_TOKENS`` filters single-token chunks that the
+    directory's alias rules silently collapse to flagship stations
+    (``Hbf`` → ``Wien Hauptbahnhof`` etc.) — without that filter, every
+    ÖBB description that mentions ``Hbf`` would land all incidents under
+    a single node and skew the dashboard.
+    """
+    if not haystack:
+        return None
+    tokens = [t for t in _TOKEN_SPLIT_RE.split(haystack) if t]
+    tokens = [t for t in tokens if not _NOISE_TOKEN_RE.match(t)]
+    if not tokens:
+        return None
+    n = len(tokens)
+    window = min(_MAX_STATION_WINDOW, n)
+    for start in range(n):
+        max_size = min(window, n - start)
+        for size in range(max_size, 0, -1):
+            chunk_tokens = tokens[start : start + size]
+            chunk = " ".join(chunk_tokens)
+            if size == 1:
+                token_norm = chunk.casefold().rstrip(".:,;")
+                if token_norm in _GENERIC_DIRECTORY_TOKENS:
+                    continue
+                # Drop ultra-short chunks ("S1") to avoid line-token
+                # alias collisions; mirrors the 3-letter floor in the
+                # ÖBB scan.
+                alpha = re.sub(r"[^A-Za-zÄÖÜäöüß]", "", chunk)
+                if len(alpha) < 3:
+                    continue
+            resolved = _resolve_via_directory(chunk.rstrip(".:,;"))
+            if resolved:
+                return resolved
+    return None
+
+
 def extract_location_name(item: dict[str, Any]) -> str:
-    """Best-effort heuristic to pick a representative location for *item*.
+    """Pick a directory-validated location for *item* or ``"unbekannt"``.
 
-    Tries — in order — the most signal-rich shapes seen in the
-    providers' real payloads:
+    The strategy is **catalogue-first**: a candidate string is only
+    returned when it resolves through :func:`station_info` (the curated
+    directory in ``data/stations.json``). Free-form regex matches over
+    capitalised tokens were dropped in 2026-05-09 because German nouns
+    are all capitalised — the heuristic accepted disruption types like
+    ``Demonstration Linie`` / ``Rettungseinsatz Linie`` /
+    ``Polizeieinsatz Linie`` as if they were station names, polluting
+    the README "Häufigste Störungsorte" table with non-locations.
 
-    1. ``zwischen X und Y`` — the X side (canonical ÖBB phrasing for a
-       between-stations disruption).
-    2. ``Wien <Stadtteil>`` — the prefix is the strongest "this is a
-       station name" signal in the corpus.
-    3. The first capitalised multi-word token longer than two letters
-       that is not in :data:`_STOPWORD_LOCATIONS`. Captures e.g.
-       ``Karlsplatz``, ``Floridsdorf``, ``Praterstern``.
+    Pipeline (return on first hit):
 
-    Falls back to ``"unbekannt"`` if nothing matches. The function
-    never raises — a malformed item just returns the fallback string.
+    1. ``" | Haltestelle: ..."`` — WL provider serialises the
+       ``relatedStops`` API field into the description with this
+       prefix; the first comma-separated entry is the primary stop.
+       When the WL stop name is not in the heavy-rail directory we
+       still accept it verbatim (subject to the 80-char clamp) because
+       the stop list comes from a curated upstream source.
+    2. ``" | Station: ..."`` / ``" | Location: ..."`` — WL extras
+       fallback (also curated upstream); only accepted when it
+       resolves through the directory.
+    3. ``"in Richtung X"`` — the Stammstrecke renderer in
+       ``scripts/update_stammstrecke_status.py``; only accepted when
+       it resolves through the directory.
+    4. ``"zwischen X und Y"`` — canonical ÖBB phrasing; only accepted
+       when X resolves through the directory.
+    5. ``"Wien <Stadtteil>"`` — common in ÖBB / VOR descriptions; only
+       accepted when ``"Wien <Stadtteil>"`` resolves through the
+       directory.
+    6. Sliding-window directory scan over the title + description.
+       Filters single-token generic aliases (``Hbf`` etc.) so
+       arbitrary mentions of those words do not auto-canonicalise to
+       flagship stations.
+    7. Final fallback: ``"unbekannt"``. We deliberately do NOT
+       fall back to a free-form regex match here — the previous fix
+       round demonstrated that any such fallback re-pollutes the
+       statistics ledger.
+
+    The function never raises — a malformed item just returns the
+    fallback string.
     """
     title = str(item.get("title") or "")
     description = str(item.get("description") or "")
@@ -371,38 +480,50 @@ def extract_location_name(item: dict[str, Any]) -> str:
     # bounded on adversarial inputs.
     haystack = haystack[:1024]
 
+    halt = _HALTESTELLE_RE.search(haystack)
+    if halt:
+        first_stop = halt.group(1).split(",")[0].strip()
+        resolved = _resolve_via_directory(first_stop)
+        if resolved:
+            return resolved
+        normalised = _normalise_location(first_stop)
+        if normalised:
+            return normalised
+
+    labeled = _LABELED_LOCATION_RE.search(haystack)
+    if labeled:
+        first_label = labeled.group(1).split(",")[0].strip()
+        resolved = _resolve_via_directory(first_label)
+        if resolved:
+            return resolved
+
+    richtung = _RICHTUNG_RE.search(haystack)
+    if richtung:
+        target = richtung.group(1).strip()
+        resolved = _resolve_via_directory(target)
+        if resolved:
+            return resolved
+
     between = _BETWEEN_RE.search(haystack)
     if between:
-        candidate = between.group(1).strip()
-        if candidate:
-            return _normalise_location(candidate)
+        endpoint = _normalise_location(between.group(1).strip())
+        resolved = _resolve_via_directory(endpoint)
+        if resolved:
+            return resolved
 
     wien = _WIEN_PREFIX_RE.search(haystack)
     if wien:
         suffix = wien.group(1).strip()
         if suffix:
-            return f"Wien {suffix}"
+            resolved = _resolve_via_directory(f"Wien {suffix}")
+            if resolved:
+                return resolved
 
-    for match in _STATION_NAME_RE.finditer(haystack):
-        candidate = _normalise_location(match.group(1))
-        if not candidate:
-            continue
-        first_word = candidate.split(maxsplit=1)[0]
-        if first_word in _STOPWORD_LOCATIONS:
-            continue
-        if len(candidate) < 3:
-            continue
-        return candidate
+    scan = _scan_for_directory_station(haystack)
+    if scan:
+        return scan
 
     return "unbekannt"
-
-
-def _normalise_location(value: str) -> str:
-    """Trim, collapse whitespace, and cap *value* at a sensible length."""
-    cleaned = " ".join(value.split())
-    if len(cleaned) > 80:
-        cleaned = cleaned[:80].rstrip()
-    return cleaned
 
 
 __all__ = [

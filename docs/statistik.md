@@ -1,6 +1,6 @@
 # Wien ÖPNV — Statistik 2026
 
-_Automatisch erzeugt am 2026-05-09T16:47+02:00 (Europe/Vienna)._
+_Automatisch erzeugt am 2026-05-09T20:45+02:00 (Europe/Vienna)._
 
 ## Kennzahlen auf einen Blick
 
@@ -10,7 +10,7 @@ _Automatisch erzeugt am 2026-05-09T16:47+02:00 (Europe/Vienna)._
 | Davon über 9-min-Schwelle | 0 |
 | ⌀ Verspätung (alle Tage) | 2.0 min |
 | Erfasste Störungen (2026) | 10 |
-| Verschiedene Hotspots | 8 |
+| Verschiedene Hotspots | 0 |
 
 ## Stammstrecke
 
@@ -151,47 +151,9 @@ _Automatisch erzeugt am 2026-05-09T16:47+02:00 (Europe/Vienna)._
 `23h ` │ ························  0
 ```
 
-### Top 5 Hotspots (Anzahl Störungen)
+### Top 5 Hotspots
 
-```
-`Demonstration Linie           ` │ 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩  2
-`Fremder Verkehrsunfall Linie  ` │ 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩  2
-`Fahrtbehinderung Falschparker ` │ 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩··········  1
-`Fahrtbehinderung Fremder Verke` │ 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩··········  1
-`Feuerwehreinsatz Linie        ` │ 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩··········  1
-```
-
-### Tageszeit-Profil der Top 5 Hotspots
-
-**Demonstration Linie**
-
-```
-`15h ` │ 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪  2
-```
-
-**Fremder Verkehrsunfall Linie**
-
-```
-`15h ` │ 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪  2
-```
-
-**Fahrtbehinderung Falschparker Linie**
-
-```
-`15h ` │ 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪  1
-```
-
-**Fahrtbehinderung Fremder Verkehrsunfall**
-
-```
-`15h ` │ 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪  1
-```
-
-**Feuerwehreinsatz Linie**
-
-```
-`15h ` │ 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪  1
-```
+_Noch keine Störungen mit Stationszuordnung erfasst._
 
 ---
 
