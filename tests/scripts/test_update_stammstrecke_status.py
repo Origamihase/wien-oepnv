@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+import requests
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
@@ -409,6 +410,133 @@ def test_leg_departure_delay_skips_unparseable_realtime() -> None:
         },
     }
     assert script._leg_departure_delay_minutes(leg) is None
+
+
+# ---- HTTPError diagnostic helpers -----------------------------------------
+
+
+def _make_http_error(
+    *, status_code: int | None, body: bytes | None
+) -> requests.HTTPError:
+    """Construct a :class:`requests.HTTPError` whose ``response`` carries
+    *status_code* and *body*. Used to exercise the diagnostic-extraction
+    helpers without standing up a real HTTP roundtrip.
+    """
+
+    response = requests.Response()
+    if status_code is not None:
+        response.status_code = status_code
+    if body is not None:
+        response._content = body
+    err = requests.HTTPError("simulated", response=response)
+    return err
+
+
+def test_extract_http_status_returns_status_code() -> None:
+    err = _make_http_error(status_code=429, body=b"")
+    assert script._extract_http_status(err) == "429"
+
+
+def test_extract_http_status_falls_back_when_no_response() -> None:
+    err = requests.HTTPError("network failure", response=None)
+    assert script._extract_http_status(err) == "<no-response>"
+
+
+def test_extract_vao_error_code_parses_canonical_envelope() -> None:
+    """A documented VAO error envelope is rendered as its ``errorCode``."""
+
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps(
+            {"errorCode": "H890", "errorText": "no journey found"}
+        ).encode("utf-8"),
+    )
+    assert script._extract_vao_error_code(err) == "H890"
+
+
+def test_extract_vao_error_code_falls_back_to_error_field() -> None:
+    """Some VAO peers use ``error`` instead of ``errorCode``."""
+
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"error": "SVC_LOC_INVALID"}).encode("utf-8"),
+    )
+    assert script._extract_vao_error_code(err) == "SVC_LOC_INVALID"
+
+
+def test_extract_vao_error_code_caps_oversize_string() -> None:
+    """A planted multi-KiB ``errorCode`` is truncated to the canonical
+    cap so a poisoned upstream cannot pollute structured logs."""
+
+    huge = "X" * 5000
+    err = _make_http_error(
+        status_code=400,
+        body=json.dumps({"errorCode": huge}).encode("utf-8"),
+    )
+    code = script._extract_vao_error_code(err)
+    assert len(code) == script._ERROR_CODE_MAX_LEN
+    assert code == "X" * script._ERROR_CODE_MAX_LEN
+
+
+def test_extract_vao_error_code_caps_oversize_body() -> None:
+    """A planted multi-MiB body is rejected before JSON parsing."""
+
+    huge_body = b'{"errorCode": "H890", "padding": "' + b"X" * 65536 + b'"}'
+    err = _make_http_error(status_code=400, body=huge_body)
+    assert script._extract_vao_error_code(err) == "<unknown>"
+
+
+def test_extract_vao_error_code_returns_unknown_for_non_json_body() -> None:
+    err = _make_http_error(
+        status_code=500, body=b"<html>internal server error</html>"
+    )
+    assert script._extract_vao_error_code(err) == "<unknown>"
+
+
+def test_extract_vao_error_code_returns_unknown_for_non_dict_body() -> None:
+    """A list / scalar at the top level is not a VAO error envelope."""
+
+    err = _make_http_error(status_code=400, body=b'["H890"]')
+    assert script._extract_vao_error_code(err) == "<unknown>"
+
+
+def test_extract_vao_error_code_returns_unknown_for_no_response() -> None:
+    err = requests.HTTPError("network failure", response=None)
+    assert script._extract_vao_error_code(err) == "<unknown>"
+
+
+def test_process_direction_logs_status_and_error_code_on_http_error(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+    _stable_now: datetime,
+) -> None:
+    """The new HTTPError branch in :func:`_process_direction` must surface
+    BOTH the HTTP status code and the VAO ``errorCode`` so the next
+    workflow run reveals which failure mode tripped the request without
+    leaking the post-VorAuth URL."""
+
+    err = _make_http_error(
+        status_code=401,
+        body=json.dumps({"errorCode": "H730"}).encode("utf-8"),
+    )
+
+    def boom(*args: object, **kwargs: object) -> object:
+        raise err
+
+    monkeypatch.setattr(script, "_query_trips", boom)
+
+    with caplog.at_level(logging.WARNING, logger="update_stammstrecke_status"):
+        event, status = script._process_direction(
+            session=requests.Session(),
+            direction=script.DIRECTIONS[0],
+            when=_stable_now,
+            previous_first_seen={},
+        )
+    assert event is None
+    assert status == "error"
+    rendered = "\n".join(record.getMessage() for record in caplog.records)
+    assert "HTTP 401" in rendered
+    assert "H730" in rendered
 
 
 def test_collect_delays_rejects_multi_ride_leg_trips() -> None:
