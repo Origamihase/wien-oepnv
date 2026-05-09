@@ -27,6 +27,7 @@ Chronologische Übersicht aller archivierten Audits dieses Projekts.
 | Bereich | Berichte |
 |---|---|
 | VOR/VAO API | [vor_api_review.md](vor_api_review.md), [vor_api_test.md](vor_api_test.md) |
+| ÖBB Stammstrecke | [oebb_stammstrecke_audit.md](oebb_stammstrecke_audit.md) (2026-05-09: PRs #1365 – #1368, `max_journeys=5`-Anpassung, vollständige Audit-Abnahme) |
 | Security | [security_report.md](security_report.md) |
 | Performance | [performance_report.md](performance_report.md) |
 | Deduplication | [deduplication_report.md](deduplication_report.md) |
