@@ -1,3 +1,154 @@
+## 2026-05-09 - Two-Site Drift Closure: OSMOverpassConfig Host-Only Validation + `_UNSAFE_CHARS_RE` BiDi/Zero-Width Gap (BiDi-Mark Drift Round 3 + Allow-List Drift)
+**Vulnerability:** Two structural defence-in-depth gaps closed in a
+single PR.
+
+(1) **`OSMOverpassConfig.__post_init__` host-only validation** —
+`src/places/osm_client.py:203-206` (pre-fix) extracted
+`urlparse(self.endpoint).hostname` and checked membership in
+`_TRUSTED_OVERPASS_HOSTS` (a frozenset built from
+`DEFAULT_OVERPASS_ENDPOINTS` hostnames). The check accepted *any* URL
+whose hostname matched, regardless of scheme, port, path, or
+userinfo. Three orthogonal sub-vectors fall out:
+  (a) **TLS-strip** — `http://overpass-api.de/api/interpreter`
+      passes the host-only check; `validate_http_url` (called inside
+      `request_safe`) accepts `http://` by default, so a future
+      caller bypassing `get_overpass_endpoint()` would route the
+      cron pipeline's outbound request over plaintext. A MITM
+      (corporate gateway, hostile ISP, public WiFi) injects a
+      malicious station payload that flows verbatim into
+      `stations.json` and the published feed.
+  (b) **Path / endpoint hijack** —
+      `https://overpass-api.de/api/admin` or any other path on the
+      same host passes the host-only check. The Overpass operator
+      runs other paths on the same host; a future config-file /
+      CLI consumer of `OSMOverpassConfig` could redirect the cron
+      pipeline to an unrelated endpoint without tripping any guard.
+  (c) **Port / userinfo hijack** —
+      `https://overpass-api.de:8443/api/interpreter` and
+      `https://attacker:secret@overpass-api.de/api/interpreter`
+      both pass. `validate_http_url` rejects non-default ports at
+      request time so (c) is partially mitigated, but a future code
+      path bypassing `validate_http_url` (debug client, websocket
+      upgrade, raw urllib3 access) inherits the loose validator.
+      The userinfo variant additionally leaks credentials into log
+      lines that print the full `self.endpoint` string.
+
+The journal pattern across every prior allow-list-drift round is
+exactly this: the boundary that was strict on day one drifted into a
+host-only check after some refactor, and a future caller landed on
+the loose internal validator instead of the strict resolver. Every
+current caller routes through `get_overpass_endpoint()` (which IS
+strict — exact-match against `DEFAULT_OVERPASS_ENDPOINTS`), so the
+gap is defence-in-depth today, but the drift surface is permanent
+once a future contributor instantiates `OSMOverpassConfig` from a
+CLI flag, a config file, a leaked env var, or a unit-test fixture
+that bypasses the env resolver.
+
+(2) **`_UNSAFE_CHARS_RE` BiDi/Zero-Width gap** —
+`src/utils/stations_validation.py:542` (pre-fix) carried a
+character class `[<>\x00-\x08\x0b\x0c\x0e-\x1f -‮⁦-⁩]`
+that covers ASCII C0 controls (minus `\t`/`\n`/`\r`), the
+line/paragraph-separator + LRE/RLE/PDF/LRO/RLO BiDi family, and the
+LRI/RLI/FSI/PDI BiDi-isolate family. The 2026-05-09 BiDi-Mark Drift
+Round 2 entry below explicitly named this regex as the next drift
+candidate: it was narrower than the canonical
+`src/utils/logging.py:_INVISIBLE_DANGEROUS_RE` along seven code points:
+  * `؜` ARABIC LETTER MARK (ALM)
+  * `​-‏` ZWSP / ZWNJ / ZWJ / **LRM** / **RLM**
+  * `﻿` BYTE ORDER MARK (BOM)
+
+A planted `stations.json` (poisoned PR / compromised CI runner /
+partial flush + power loss / parallel orchestrator atomic state
+swap mid-write) carrying any of these code points in `name`,
+`bst_code`, `vor_id`, or `aliases` slipped past
+`_find_security_issues` and flowed verbatim into:
+  * the published RSS feed item titles (Trojan-Source rendering
+    in feed readers — same primitive as CVE-2021-42574 but missing
+    from every prior round of this regex);
+  * operator-facing log lines (post-`SafeFormatter` text is
+    sanitised at format time, but pre-sanitisation flow into
+    `caplog.text` and non-default handlers leaks);
+  * downstream SIEM ingestion (forge a second log record carrying
+    a fake `level=ERROR` via Unicode line terminators).
+
+The companion regex `_INVISIBLE_DANGEROUS_RE` already covers the
+full union as of Round 2's `strip_control_chars=False` sibling-path
+extension; the validator boundary is the last divergent surface.
+
+**Fix:**
+  (1) Tighten `OSMOverpassConfig.__post_init__` to require
+      **byte-exact match** against `DEFAULT_OVERPASS_ENDPOINTS` —
+      mirrors the contract enforced by `get_overpass_endpoint()` for
+      the env-driven path. A single `if self.endpoint not in
+      DEFAULT_OVERPASS_ENDPOINTS: raise ValueError(...)` collapses
+      every host-only sub-vector (a)/(b)/(c) into a single rejection.
+      `_TRUSTED_OVERPASS_HOSTS` is preserved as a documentation
+      constant; it is no longer the validation gate.
+  (2) Widen `_UNSAFE_CHARS_RE` to the union of the legacy
+      structural-injection set AND the canonical
+      `_INVISIBLE_DANGEROUS_RE` set:
+      `[<>\x00-\x08\x0b\x0c\x0e-\x1f؜​-‏ -‮⁦-⁩﻿]`.
+      The two regexes now stay in sync via the new inventory test
+      `test_unsafe_chars_regex_covers_canonical_invisible_dangerous_set`
+      which fails any future regression that narrows the validator
+      regex or widens `_INVISIBLE_DANGEROUS_RE` without a matching
+      validator update.
+
+**Test surface:** **+31 new pytest cases**:
+  * `tests/test_sentinel_overpass_endpoint_strict_validation.py` —
+    7 cases: canonical-endpoint regression + 5 sub-vector PoCs
+    (HTTP downgrade, path hijack, port hijack, trailing slash,
+    userinfo) + unrelated-host regression.
+  * `tests/test_sentinel_stations_validation_bidi_gap.py` — 24
+    cases: per-code-point regex match (7 cases × ALM / ZWSP / ZWNJ
+    / ZWJ / LRM / RLM / BOM), per-code-point end-to-end name flag
+    (7 cases), per-code-point end-to-end alias flag (7 cases),
+    inventory invariant covering the canonical
+    `_INVISIBLE_DANGEROUS_RE` set, existing-coverage regression,
+    and safe-character regression.
+
+**Learning:** Two reinforcing lessons:
+
+  (a) **Allow-list pattern: prefer byte-exact equality at structural
+      boundaries.** Every layer of the cron pipeline that consumes
+      a URL eventually parses + normalises it; if any of those
+      layers extracts a sub-component (hostname, path, port, scheme)
+      and validates only that sub-component, an attacker exploiting
+      the *other* sub-components of the URL is unconstrained at
+      that layer. The strict shape — byte-exact equality against a
+      const tuple — collapses the whole cartesian product of
+      sub-components into a single decision and cannot drift via
+      `urlparse`-quirk bypasses (e.g. Unicode normalisation,
+      trailing-dot host, percent-encoded path). Apply the same
+      rule to every structural boundary that internalises an
+      operator-controlled URL: `OSMOverpassConfig.endpoint`,
+      `OEBB_GTFS_RT_URL` (rolled back, but the lesson stands), any
+      future `provider.endpoint` field. Sibling drift candidates:
+      `validate_public_feed_url` (`src/utils/http.py`) currently
+      accepts a host allow-list with a TLD-suffix wildcard
+      (`.github.io`); audit whether that wildcard is byte-exact at
+      every consumer or if any caller has drifted into a host-only
+      sub-component check.
+
+  (b) **Companion-regex sync rule.** Whenever a defence regex grows
+      to cover a new code point, audit every sibling regex in the
+      project (`stations_validation._UNSAFE_CHARS_RE`,
+      `_UNSAFE_URL_CHARS` in `http.py`, station-name validators in
+      provider modules) and either widen them to match or document
+      the divergence with an explicit deferral note. The Round 2
+      entry below noted the validator's deferral was deliberate
+      (structural-validation scope, not log-sanitisation scope) but
+      flagged it as the next drift candidate; this round closes
+      that drift. The inventory test
+      `test_unsafe_chars_regex_covers_canonical_invisible_dangerous_set`
+      pins the invariant programmatically — if a future round
+      widens `_INVISIBLE_DANGEROUS_RE` to cover (e.g.) a new
+      Unicode 16 BiDi format control, the sync test fails until
+      the validator is widened too. This converts the "deliberate
+      deferral" pattern from a journal-narrative defence into a
+      programmatic audit floor that survives the next contributor
+      who hasn't read the journals.
+
 ## 2026-05-09 - JSON Size-Bomb Drift Round 8: Stammstrecke Cron Monitor Reads Its Own Cache With Bare `_json_lib.load(fh)` (Aliased-Import Bypass Of The Audit Walker)
 **Vulnerability:** PR #1365 (`0520e0d`, *feat: add S-Bahn Stammstrecke
 median-delay monitor*) plus the four follow-up PRs that iterated on the
