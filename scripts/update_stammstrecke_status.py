@@ -96,7 +96,7 @@ import logging
 import re
 import statistics
 import sys
-from collections.abc import Mapping
+from collections.abc import Iterable, Mapping
 from contextlib import ExitStack
 from dataclasses import dataclass
 from datetime import datetime
@@ -420,7 +420,7 @@ def _query_trips(
     return [t for t in raw_trips if isinstance(t, Mapping)]
 
 
-def _is_sbahn_leg(leg: Mapping[str, Any]) -> bool:
+def _is_sbahn_leg(leg: object) -> bool:
     """Return ``True`` when *leg* represents a Vienna S-Bahn product.
 
     Checks (any single signal is sufficient):
@@ -431,6 +431,12 @@ def _is_sbahn_leg(leg: Mapping[str, Any]) -> bool:
     * ``leg.Product[].catOut in {"S","SB"}`` or ``Product[].line``
       matching ``S\\d+`` — the JSON-RPC nested form some VAO releases
       use.
+
+    Accepts ``object`` (rather than ``Mapping``) so the defensive
+    ``isinstance(leg, Mapping)`` gate is reachable at type-check time
+    — a non-mapping payload (a planted ``None`` / ``str`` / ``list``
+    that slipped past upstream JSON parsing) returns ``False`` cleanly
+    instead of triggering an unreachable-statement diagnostic.
 
     Returns ``False`` for walk legs (no ``category`` / ``name`` /
     ``Product`` fields), regional trains (``REX``, ``R``,
@@ -537,7 +543,7 @@ def _leg_departure_delay_minutes(leg: Mapping[str, Any]) -> float | None:
 
 
 def _collect_sbahn_delays_minutes(
-    trips: list[Mapping[str, Any]],
+    trips: Iterable[Mapping[str, Any]],
 ) -> list[float]:
     """Extract S-Bahn departure delays (in minutes) from *trips*.
 

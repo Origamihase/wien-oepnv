@@ -276,9 +276,9 @@ def test_is_sbahn_leg_rejects_non_sbahn() -> None:
 
 def test_is_sbahn_leg_handles_non_mapping_input() -> None:
     """A garbage payload (None, list, string) must not raise."""
-    assert not script._is_sbahn_leg(None)  # type: ignore[arg-type]
-    assert not script._is_sbahn_leg("S 1")  # type: ignore[arg-type]
-    assert not script._is_sbahn_leg([])  # type: ignore[arg-type]
+    assert not script._is_sbahn_leg(None)
+    assert not script._is_sbahn_leg("S 1")
+    assert not script._is_sbahn_leg([])
 
 
 def test_is_sbahn_leg_rejects_unrelated_product_categories() -> None:
