@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 09 May 2026 16:14:50 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2026 16:47:21 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[74A: Demonstration]]></title>
+      <title><![CDATA[37/38: Signalstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b6ea6b1f35ed15d5e91c766202fbe856d89c96d29207729947cb634492e4bfed</guid>
-      <pubDate>Sat, 09 May 2026 15:55:00 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 16:14:50 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 15:55:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">8e75200a3c398eb591fd359752c83c6f55e6fb7f17e43d4c04aca193097b65d6</guid>
+      <pubDate>Sat, 09 May 2026 16:30:00 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 16:47:21 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 16:30:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 74A: Fahrtbehinderung in Richtung Stubentor U. Voraussichtliche Dauer: 16:10 Uhr. Grund: Demonstration im Haltestellenbereich Landstraße S U. [Am 09.05.2026]</description>
-      <content:encoded><![CDATA[Linie 74A: Fahrtbehinderung in Richtung Stubentor U. Voraussichtliche Dauer: 16:10 Uhr. Grund: Demonstration im Haltestellenbereich Landstraße S U.<br/>[Am 09.05.2026]]]></content:encoded>
+      <description>Linie 37: Unregelmäßige Intervalle in beiden Richtungen. Linie 38: Unregelmäßige Intervalle in beiden Richtungen. [Am 09.05.2026]</description>
+      <content:encoded><![CDATA[Linie 37: Unregelmäßige Intervalle in beiden Richtungen. Linie 38: Unregelmäßige Intervalle in beiden Richtungen.<br/>[Am 09.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">331d36bbb863ec81e7a9068122a46d6fce9e155ea6c2871969e8abf56ea81d01</guid>
+      <pubDate>Sat, 09 May 2026 16:07:00 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 16:47:21 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 16:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 09.05.2026]</description>
+      <content:encoded><![CDATA[Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Fahrtbehinderung wegen Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8dc56d928161cbfd19b6981843708a0098d27b8e8248529260befbf1bff03a63</guid>
+      <pubDate>Sat, 09 May 2026 15:56:22 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 16:14:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 15:56:22 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 16:55:00 +0200</ext:ends_at>
+      <description>[Am 09.05.2026]</description>
+      <content:encoded><![CDATA[[Am 09.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38A: Verkehrsüberlastung]]></title>
@@ -43,37 +65,26 @@
       <content:encoded><![CDATA[Demonstration Wegen einer Demonstration im Bereich Innenstadt und Alsergrund kommt es zu Verkehrsmaßnahmen.<br/>[07.05.2026 – 09.05.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[27: Schadhafter Zug Einstieg in der Tokiostraße]]></title>
+      <title><![CDATA[26: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">422c728358557f8d9523835178e987d61988e243fd7259f4fe2a1155b47cc8c7</guid>
-      <pubDate>Sat, 09 May 2026 15:38:11 +0200</pubDate>
+      <guid isPermaLink="false">59e208367d2d4abd51c67734b05d4470604d748bf4d8210aec89186b2434cefa</guid>
+      <pubDate>Sat, 09 May 2026 15:20:00 +0200</pubDate>
       <ext:first_seen>Sat, 09 May 2026 16:14:50 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 15:38:11 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 09 May 2026 16:37:00 +0200</ext:ends_at>
-      <description>[Am 09.05.2026]</description>
-      <content:encoded><![CDATA[[Am 09.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26: Schadhafter Zug Betrieb ab Josef-Baumann-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dd678fa77e110acf19fef6f19b98671a11fbd949be46f80b99550da78e381b9b</guid>
-      <pubDate>Sat, 09 May 2026 15:33:08 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 16:14:50 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 15:33:14 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 09 May 2026 16:48:00 +0200</ext:ends_at>
-      <description>[Am 09.05.2026]</description>
-      <content:encoded><![CDATA[[Am 09.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
-      <pubDate>Sat, 09 May 2026 14:41:00 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 15:02:37 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 14:41:00 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 09 May 2026 15:20:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 09.05.2026]</description>
-      <content:encoded><![CDATA[Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.05.2026]]]></content:encoded>
+      <description>Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 09.05.2026]</description>
+      <content:encoded><![CDATA[Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[27: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8de0171cb5a82c20b0963bf79e2f59c4da0c97e94c58a5fdab5ede435ad86aba</guid>
+      <pubDate>Sat, 09 May 2026 15:20:00 +0200</pubDate>
+      <ext:first_seen>Sat, 09 May 2026 16:14:50 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 09 May 2026 15:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 09.05.2026]</description>
+      <content:encoded><![CDATA[Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Falschparker]]></title>
@@ -82,7 +93,7 @@
       <pubDate>Sat, 09 May 2026 14:38:00 +0200</pubDate>
       <ext:first_seen>Sat, 09 May 2026 15:02:37 +0200</ext:first_seen>
       <ext:starts_at>Sat, 09 May 2026 14:38:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 09 May 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 09 May 2026 16:45:00 +0200</ext:ends_at>
       <description>Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 09.05.2026]</description>
       <content:encoded><![CDATA[Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 09.05.2026]]]></content:encoded>
     </item>
@@ -105,17 +116,6 @@
       <ext:first_seen>Sat, 09 May 2026 15:02:37 +0200</ext:first_seen>
       <ext:starts_at>Sat, 09 May 2026 14:29:11 +0200</ext:starts_at>
       <ext:ends_at>Sat, 09 May 2026 18:28:00 +0200</ext:ends_at>
-      <description>[Am 09.05.2026]</description>
-      <content:encoded><![CDATA[[Am 09.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Straßenfest Betrieb ab Neubaugasse U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4a4384c80f219d70c3407d00352a8e1be029f26a610cc85f5351d3193bcd5245</guid>
-      <pubDate>Sat, 09 May 2026 05:00:13 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 09:13:06 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 05:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 09 May 2026 22:00:00 +0200</ext:ends_at>
       <description>[Am 09.05.2026]</description>
       <content:encoded><![CDATA[[Am 09.05.2026]]]></content:encoded>
     </item>
