@@ -1,3 +1,216 @@
+## 2026-05-09 - Public Feed URL Allow-List Drift: HTTP-Scheme Acceptance + `.github.io` Sub-Subdomain Wildcard + Empty / Dash-Prefixed Subdomain (Allow-List Drift Round, Validator Boundary)
+**Vulnerability:** `validate_public_feed_url`
+(`src/utils/http.py:1241-1261`, pre-fix) — the validator that pins
+every URL flowing into the published RSS feed (`<channel><link>`,
+per-item `<link>` fallback, atom `self`/`alternate` hrefs) and the
+GitHub Pages sitemap (`<urlset><url><loc>`) — accepted three orthogonal
+sub-vectors that the previous round's "Allow-List Pattern: prefer
+byte-exact equality at structural boundaries" learning explicitly
+flagged as the next drift candidate.  The validator delegated to
+`validate_http_url` for SSRF / control-character / port checks and
+then layered a host allow-list on top:
+
+  ```python
+  _PUBLIC_FEED_URL_TRUSTED_HOSTS = frozenset({"github.com"})
+  _PUBLIC_FEED_URL_TRUSTED_SUFFIXES = (".github.io",)
+  ...
+  if host in _PUBLIC_FEED_URL_TRUSTED_HOSTS:
+      return safe
+  if any(host.endswith(suffix) for suffix in
+         _PUBLIC_FEED_URL_TRUSTED_SUFFIXES):
+      return safe
+  ```
+
+That shape mapped exactly onto the three sub-vector axes the prior
+journal entry warned about — scheme-strictness, prefix-shape, and
+empty-label drift — and reproduced 12 distinct exploit shapes when
+exercised:
+
+  (a) **TLS-strip / HTTP downgrade (5 shapes)** — `validate_http_url`
+      accepts both `http` and `https` schemes by default.  The
+      public-feed pin did not constrain scheme, so every `http://`
+      variant of the trusted hosts (`http://github.com/...`,
+      `http://example.github.io/...`, etc.) passed.  An env override
+      (`FEED_LINK=http://...` / `PAGES_BASE_URL=http://...` /
+      `SITE_BASE_URL=http://...` via leaked CI env, compromised secret
+      store, intentional misconfig) lands a plaintext URL inside the
+      published RSS feed `<link>`, atom `self`/`alternate` hrefs, and
+      `sitemap.xml` `<loc>` elements.  Every subscriber's RSS reader
+      fetches the link as-written; many do not consult HSTS preload
+      lists (which `*.github.io` is on for browsers but not for most
+      RSS clients).  A MITM (corporate gateway, hostile ISP, public
+      WiFi, captive portal, ARP-spoofed LAN) downgrades the request,
+      replaces the published artefact contents — turning the entire
+      cron pipeline's published output into an attacker-controlled
+      phishing/SEO redirect amplifier on every subscriber.
+  (b) **Sub-subdomain wildcard (4 shapes)** — `host.endswith(".github.io")`
+      matches any number of labels before `.github.io` (e.g.
+      `a.b.github.io`, `attacker.victim.github.io`,
+      `nested.deep.example.github.io`).  Real GitHub Pages targets
+      are always `<single-owner>.github.io` (or
+      `<single-owner>.github.io/<repo>`); sub-subdomain shapes are
+      not Pages targets.  An attacker who flips an env override to
+      `attacker.victim.github.io/wien-oepnv` lends visual credibility
+      to a phishing destination — the `victim.github.io` substring
+      reads as the canonical project to a casual reader, and the
+      published feed item's `<link>` element carries the deception
+      verbatim into every subscriber's UI.
+  (c) **Empty / dash-prefixed subdomain (3 shapes)** —
+      `urlparse("https://.github.io/foo").hostname` returns the
+      RFC-invalid hostname `.github.io`, and
+      `".github.io".endswith(".github.io")` is True, so the validator
+      accepted a literal `.github.io` hostname.  Same shape applies to
+      `-bad.github.io` and `-.github.io`: GitHub usernames / org names
+      cannot start with a dash (RFC-1123 label rules plus GitHub's
+      stricter handle rules), so a leading-dash subdomain is not a
+      real Pages target.  The empty-prefix shape additionally
+      provides a malformed-URL primitive that some downstream
+      consumers render verbatim while others normalise — a divergent
+      rendering surface that complicates incident triage.
+
+Threat model: today the only consumers of `validate_public_feed_url`
+(`src/feed/config.py:_validated_feed_public_url`,
+`scripts/generate_sitemap.py:_is_valid_base_url`) call the validator
+with operator-supplied env overrides.  An attacker who lands an
+`http://`-scheme override, a sub-subdomain owner-impersonation
+override, or an empty-subdomain override poisons every published
+artefact for every subscriber and search-engine crawler.  The host
+pin is the LAST gate before the URL flows into RSS / sitemap / atom
+output; tightening the pin to byte-strict scheme + label shape
+matches the journal-pinned `OSMOverpassConfig` strict-equality
+pattern (Two-Site Drift Closure entry below) and collapses the
+cartesian product of sub-components into a single decision.
+
+**Fix:** Three reinforcing tightenings layered onto the existing host
+allow-list, packaged into a single PR:
+
+  (i)   **Force HTTPS scheme** — after delegating to
+        `validate_http_url`, parse the safe URL and reject any URL
+        whose `parsed.scheme.lower() != "https"`.  The validator is
+        for URLs that land in *publicly-served* artefacts; HTTP is
+        never legitimate at this boundary.
+  (ii)  **Single non-empty alphanumeric-prefix label** — replace
+        `host.endswith(suffix)` with a two-stage check: confirm the
+        suffix match, then strip the suffix and verify the remaining
+        prefix matches `^[a-z0-9][a-z0-9-]{0,62}$`
+        (`_PUBLIC_FEED_URL_GITHUB_PAGES_OWNER_RE`).  Pinned tighter
+        than RFC because GitHub usernames cannot start with a dash;
+        max length 63 follows the RFC-1123 label limit.  The
+        hostname is already lowercased by `urlparse`/NFKC
+        normalisation in `validate_http_url` before this regex is
+        consulted, so `re.IGNORECASE` is intentionally NOT used.
+  (iii) **Documentation pin** — the module-level comment block at
+        `_PUBLIC_FEED_URL_TRUSTED_HOSTS` now spells out the three
+        sub-vectors the validator closes (scheme, prefix shape,
+        empty label) so a future contributor who relaxes any of
+        them has a written-down record of the threat model rather
+        than relying on the `_PUBLIC_FEED_URL_TRUSTED_*` constant
+        names alone.
+
+**Test surface:** **+25 new pytest cases** in
+`tests/test_sentinel_public_feed_url_drift.py`:
+  * 7 cases pinning the canonical-URL regression
+    (`test_canonical_https_urls_still_accepted`) — every accepted
+    shape that landed in the pre-existing test suite plus three
+    new HTTPS-Pages variants (trailing slash, no trailing slash,
+    no path).
+  * 5 cases pinning HTTP-scheme rejection
+    (`test_http_scheme_rejected`) — every trusted host's `http://`
+    variant.
+  * 4 cases pinning sub-subdomain rejection
+    (`test_sub_subdomain_rejected`) — 2-, 3-, and 4-label prefixes
+    plus an attacker-impersonation shape.
+  * 3 cases pinning malformed-label rejection
+    (`test_invalid_label_shape_rejected`) — empty subdomain,
+    leading-dash subdomain, and just-a-dash subdomain.
+  * 6 cases pinning the pre-existing rejection contract
+    (`test_pre_existing_rejection_contract_preserved`) — every URL
+    in `test_feed_public_url_host_pinning.py`'s parametrize list
+    continues to be rejected post-fix.  Mirrors the
+    "regression-floor" pattern from
+    `test_sentinel_overpass_endpoint_strict_validation.py`.
+  Pre-fix the 12 sub-vector cases all failed (verified before
+  applying the fix); post-fix all 25 cases pass alongside the 11
+  pre-existing cases in
+  `test_feed_public_url_host_pinning.py`.
+
+**Threat-model deltas:**
+  * **TLS-strip blast radius**: pre-fix every subscriber's RSS reader
+    fetched the published `<link>` over HTTP (if env override pointed
+    HTTP), exposing the artefact contents to MITM substitution at
+    every network hop.  Post-fix: HTTPS-only, MITM is constrained to
+    TLS-protocol attacks (which are out-of-scope for this validator
+    — they are mitigated at the TLS / certificate-pinning layer).
+  * **Phishing-impersonation surface**: pre-fix
+    `attacker.victim.github.io` (any 2-label-or-deeper prefix) was
+    accepted as a "trusted GitHub host"; post-fix only
+    `<owner>.github.io` (single label matching the GitHub username
+    regex) is accepted, collapsing the impersonation surface from
+    "any sub-subdomain owner" to "any GitHub Pages owner" — an
+    attacker still needs to register a GitHub account, but cannot
+    leverage a victim's owned subdomain to lend credibility.
+  * **Malformed-URL surface**: pre-fix the validator accepted
+    RFC-invalid hostnames (`.github.io`, `-bad.github.io`); post-fix
+    the validator's output is always RFC-valid, eliminating a class
+    of divergent-rendering-surface bugs that could complicate
+    incident triage.
+
+**Learning:** The recursive meta-pattern — every time a defence
+walker / validator accepts a "wildcard match" against a structural
+component (TLD suffix, hostname suffix, scheme prefix, path prefix),
+the wildcard edge cases (empty prefix, multi-label prefix, dash-
+prefixed prefix) become the next drift surface.  Three reinforcing
+rules:
+
+  (a) **Wildcard-suffix audit rule.** Whenever a validator uses
+      `host.endswith(suffix)` (or any string-suffix wildcard), the
+      audit floor MUST verify the *prefix* shape, not just the
+      suffix match.  Concretely: `_PUBLIC_FEED_URL_GITHUB_PAGES_OWNER_RE`
+      pins a single-label allow-list shape; sibling validators that
+      use `endswith(".something")` MUST be retroactively audited for
+      the same drift.  Sibling candidates: `_UNSAFE_DOMAINS` in
+      `src/utils/http.py` (uses `endswith("." + unsafe_domain)` for
+      blocklist matching — this is the *opposite* polarity, so the
+      empty-prefix shape is favourable here, not adversarial; but
+      the multi-label prefix shape may still over-match), and any
+      future provider URL pin that uses TLD-suffix wildcarding.
+
+  (b) **Scheme-strictness rule for published-artefact validators.**
+      Every validator whose output flows into a publicly-served
+      artefact (RSS feed link, sitemap loc, atom href, OpenGraph
+      meta tag, etc.) MUST pin the scheme to `https` at the
+      validator boundary, not at the consumer boundary.  The
+      consumer-boundary pattern fails open if a future consumer
+      forgets the pin; the validator-boundary pattern is
+      structural and inherits to every consumer automatically.
+      Sibling candidates: any future `validate_atom_*` /
+      `validate_sitemap_*` helper, and the read-side of
+      `_validated_feed_public_url` (currently scheme-agnostic for
+      the env override fallback path).
+
+  (c) **Documentation pin for cartesian-product wildcards.** When
+      a validator accepts a wildcard against any structural axis
+      (host suffix, scheme prefix, path prefix), the module-level
+      docstring / comment MUST enumerate every other axis the
+      wildcard *does not* constrain — explicitly stating "this
+      validator does NOT constrain X / Y / Z" forces a future
+      contributor relaxing the wildcard to confront the entire
+      cartesian product instead of only the axis they were
+      originally tightening.  The pre-fix comment said
+      "validate_http_url only checks SSRF/DNS-rebinding properties,
+      not host identity"; the post-fix comment additionally
+      enumerates "scheme strictness" and "prefix shape" so the
+      next drift surface is named explicitly.
+
+**Prevention:** The
+`tests/test_sentinel_public_feed_url_drift.py` parametrize lists
+form the regression floor.  A future relaxation of any of the three
+sub-vector axes would require either deleting cases from the
+parametrize list or weakening the assertion — both of which fail
+loud in PR review.  Mirrors the
+`test_sentinel_overpass_endpoint_strict_validation.py` pattern from
+the Two-Site Drift Closure entry below.
+
 ## 2026-05-09 - Two-Site Drift Closure: OSMOverpassConfig Host-Only Validation + `_UNSAFE_CHARS_RE` BiDi/Zero-Width Gap (BiDi-Mark Drift Round 3 + Allow-List Drift)
 **Vulnerability:** Two structural defence-in-depth gaps closed in a
 single PR.

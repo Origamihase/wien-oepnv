@@ -1232,10 +1232,28 @@ def validate_http_url(
 # every published item — turning the feed and sitemap into a phishing/SEO
 # redirect amplifier for every consumer (subscriber, search-engine crawler).
 # ``validate_http_url`` only checks SSRF/DNS-rebinding properties, not host
-# identity. Allowed: ``github.com`` (canonical repo URL) and any subdomain of
-# ``github.io`` (the natural GitHub Pages target for forks).
+# identity OR scheme strictness — it accepts both ``http`` and ``https``,
+# any path, and any subdomain shape that survives ``urlparse``. The
+# allow-list pin therefore must additionally constrain:
+#   * the URL scheme to ``https`` (an ``http://`` published feed link is
+#     a TLS-strip primitive against subscribers — many RSS readers do not
+#     consult HSTS preload lists, so the publisher MUST emit HTTPS-only);
+#   * the ``.github.io`` prefix to a single non-empty alphanumeric label
+#     (real GitHub Pages targets are ``<owner>.github.io`` —
+#     sub-subdomains, empty prefixes, and dash-prefixed labels are not
+#     legitimate Pages targets and are rejected at this boundary).
+# Allowed: ``github.com`` (canonical repo URL, byte-exact match) and any
+# single-label ``<owner>.github.io`` Pages target (the natural GitHub Pages
+# target for forks).
 _PUBLIC_FEED_URL_TRUSTED_HOSTS = frozenset({"github.com"})
 _PUBLIC_FEED_URL_TRUSTED_SUFFIXES = (".github.io",)
+# Single-label allow-list contract for the ``.github.io`` suffix prefix:
+# starts with [a-z0-9], optional trailing [a-z0-9-] body, max 63 chars
+# (RFC-1123 label limit). Pinned tighter than RFC because GitHub usernames
+# cannot start with a dash. The hostname is already lowercased by
+# ``urlparse``/NFKC normalisation in ``validate_http_url`` before this
+# regex is consulted, so ``re.IGNORECASE`` is intentionally NOT used.
+_PUBLIC_FEED_URL_GITHUB_PAGES_OWNER_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,62}$")
 
 
 def validate_public_feed_url(
@@ -1248,16 +1266,37 @@ def validate_public_feed_url(
     or sitemap as a redirect/phishing primitive. Use ``check_dns=False`` for
     URLs that are only embedded (never fetched), since DNS state at build
     time is irrelevant to whether the URL is a safe target for embedding.
+
+    Pins three sub-vectors that ``validate_http_url`` does not constrain:
+
+    1. **Scheme** — ``https`` only. ``http://`` published links downgrade
+       to plaintext on every subscriber's RSS reader (many do not honour
+       HSTS preload), exposing the artefact contents to MITM substitution.
+    2. **Host identity** — ``github.com`` (byte-exact) or
+       ``<owner>.github.io`` (single non-empty alphanumeric label).
+       Sub-subdomain shapes (``a.b.github.io``), empty prefixes
+       (``.github.io``), and dash-prefixed labels (``-bad.github.io``)
+       are not legitimate GitHub Pages targets and are rejected.
+    3. **Reuses every check** in ``validate_http_url`` (control chars,
+       userinfo, port whitelist, IDNA NFKC normalisation, SSRF / DNS
+       rebinding when ``check_dns=True``).
     """
 
     safe = validate_http_url(url, check_dns=check_dns)
     if not safe:
         return None
-    host = (urlparse(safe).hostname or "").lower()
+    parsed = urlparse(safe)
+    # Force HTTPS — ``http://`` is a TLS-strip primitive on subscribers.
+    if parsed.scheme.lower() != "https":
+        return None
+    host = (parsed.hostname or "").lower()
     if host in _PUBLIC_FEED_URL_TRUSTED_HOSTS:
         return safe
-    if any(host.endswith(suffix) for suffix in _PUBLIC_FEED_URL_TRUSTED_SUFFIXES):
-        return safe
+    for suffix in _PUBLIC_FEED_URL_TRUSTED_SUFFIXES:
+        if host.endswith(suffix):
+            prefix = host[: -len(suffix)]
+            if _PUBLIC_FEED_URL_GITHUB_PAGES_OWNER_RE.fullmatch(prefix):
+                return safe
     return None
 
 
