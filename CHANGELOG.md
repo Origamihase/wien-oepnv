@@ -1,54 +1,49 @@
-# CHANGELOG
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
-* **Feat (Statistik-Dashboard)**: Komplett dependenzfreies Statistik-
-  und Logging-System für Verspätungen und Störungen — siehe Section 6
-  in [`docs/architecture.md`](docs/architecture.md). Konkret:
-  - **Append-only CSV-Ledger** unter `data/stats/`:
-    `stammstrecke_YYYY.csv` (Spalten `timestamp, weekday, hour,
-    direction, delay_minutes`) und `stoerungen_YYYY.csv` (Spalten
-    `timestamp, weekday, hour, provider, location_name`). Eine Datei
-    pro Kalenderjahr, alle Zeitstempel als ISO 8601 in
-    `Europe/Vienna`.
-  - **Producer 1**: `scripts/update_stammstrecke_status.py` schreibt
-    nach jeder erfolgreichen Median-Berechnung eine Zeile — auch
-    *unterhalb* der RSS-Trigger-Schwelle, damit das Dashboard die
-    *gesamte* Verteilung zeigt, nicht nur die Eskalationen.
-  - **Producer 2**: `src/build_feed.py` schreibt im
-    `_update_item_state`-Strict-New-Pfad eine Zeile pro *erstmals
-    gesehenem* Identity (über die `data/first_seen.json`-State-Logik
-    erkannt). Rerun-stabil: eine lange ÖBB-Streckeninformation, die
-    viele Builds überlebt, wird genau *einmal* gezählt.
-  - **Aggregator**: Neues Skript `scripts/generate_markdown_stats.py`
-    (nur Standardlibrary — `csv`, `collections`, `datetime`,
-    `statistics`, `pathlib`, `zoneinfo`, `argparse`) erzeugt
-    `docs/statistik.md` mit ASCII/Emoji-Bar-Charts: Beobachtungen je
-    Wochentag und Stunde, ⌀ Verspätung je Wochentag und Stunde,
-    Top-5-Hotspots mit Tageszeit-Profil pro Hotspot, Zusammenfassungs-
-    KPIs.
-  - **Workflow**: Neuer GitHub-Actions-Job
-    `.github/workflows/generate-stats.yml` (Cron `15 0 * * *` +
-    `workflow_dispatch`) führt den Aggregator aus und committet
-    `docs/statistik.md` plus etwaige neue CSV-Dateien via
-    `stefanzweifel/git-auto-commit-action`.
-  - **Resilienz**: Schreiber sind best-effort (jeder I/O-Fehler wird
-    geloggt + geschluckt — Statistik darf nie den Build kippen). Der
-    Aggregator routet jede CSV über `read_capped_text` + `io.StringIO`
-    (entspricht dem CSV-Size-Bomb-Sentinel) und schreibt das Dashboard
-    via `atomic_write`.
-  - **Lokationsheuristik**: `extract_location_name` versucht
-    `zwischen X und Y` → erstes Capture, dann `Wien <Stadtteil>`,
-    dann das erste großgeschriebene Multi-Wort-Token außerhalb einer
-    kleinen Stopword-Liste (Bauarbeiten, Verspätung, Linie, …).
-    Fallback `"unbekannt"`.
-  - **Tests**: 60 neue Tests
-    (`tests/scripts/test_generate_markdown_stats.py`,
-    `tests/test_utils_stats.py`) decken Bar-Skalierung, Aggregation,
-    CSV-Lesepfad inkl. oversized-file-skip, malformed-row-tolerance,
-    Tie-Breaking im Top-N-Ranking, Idempotenz, Year-Boundary-Rollover
-    und Lokations-Heuristik ab.
-  - **Quality**: Mypy-Strict 0 Fehler, Bandit 0 Issues, Ruff 0
-    Issues, alle 2 418 vorherigen Tests grün — keine Regression.
+* **Added (Statistik-Dashboard)**: Zero-dependency Append-only-CSV-
+  Pipeline und Markdown-Dashboard — Architektur-Kontext in
+  [`docs/architecture.md` § 6](docs/architecture.md).
+  - Producer — `scripts/update_stammstrecke_status.py` hängt nach
+    jeder Median-Berechnung eine Zeile an
+    `data/stats/stammstrecke_YYYY.csv` an (auch unterhalb der
+    RSS-Schwelle, damit das Dashboard die *gesamte* Verteilung
+    abbildet).
+  - Producer — `src/build_feed.py:_update_item_state` schreibt im
+    Strict-New-Pfad (Cache-Miss auf `_identity` *und* `guid`) eine
+    Zeile in `data/stats/stoerungen_YYYY.csv`. Lange Streckeninformationen
+    werden genau einmal gezählt.
+  - Aggregator — `scripts/generate_markdown_stats.py` (Standardlib
+    only: `csv`, `collections`, `datetime`, `statistics`, `pathlib`,
+    `zoneinfo`, `argparse`) rendert `docs/statistik.md` mit
+    ASCII/Emoji-Bars: Verteilung je Wochentag/Stunde, ⌀ Verspätung,
+    Top-5-Hotspots mit Tageszeit-Profil.
+  - Workflow — `.github/workflows/generate-stats.yml`
+    (Cron `15 0 * * *` + `workflow_dispatch`) committet das Dashboard
+    plus neue CSV-Dateien via `stefanzweifel/git-auto-commit-action`.
+* **Added (Test-Isolation)**: Autouse-Fixture `isolate_stats_writes`
+  in `tests/conftest.py` monkeypatcht `src.utils.stats.DEFAULT_STATS_DIR`
+  pro Test auf `tmp_path` — verhindert, dass Suite-Läufe synthetische
+  Zeilen ins committete Ledger schreiben (PR #1372).
+* **Security (Bounded CSV reads)**: Aggregator routet jede CSV durch
+  `read_capped_text` + `io.StringIO` (entspricht dem
+  `tests/test_sentinel_csv_size_bomb.py`-Sentinel) und schreibt das
+  Dashboard atomar via `atomic_write`. Producer-Writer sind best-effort
+  (jeder `OSError` wird auf WARNING-Level geschluckt) — Statistik
+  kann den Build nie kippen.
+* **Changed (Audit-Report)**: Addendum (§ 14) zum bestehenden
+  [`docs/archive/audits/oebb_stammstrecke_audit.md`](docs/archive/audits/oebb_stammstrecke_audit.md)
+  dokumentiert die Statistik-Pipeline-Integration und bestätigt, dass
+  die Audit-Befunde der Sections 1–13 unverändert bestehen
+  (Verdict bleibt **0 Findings**, production-ready).
+* **Changed (Reference-Doku)**: `docs/reference/oebb_provider_logic.md`
+  korrigiert auf `MAX_JOURNEYS_PER_QUERY = 5` (vormals stale `12`)
+  und enthält jetzt einen Abschnitt zur Statistik-Logging-Integration
+  des Stammstrecke-Skripts.
 * **Audit**: Vollständige Audit-Abnahme des S-Bahn Stammstrecke
   Monitors mit Bericht unter
   [`docs/archive/audits/oebb_stammstrecke_audit.md`](docs/archive/audits/oebb_stammstrecke_audit.md).
