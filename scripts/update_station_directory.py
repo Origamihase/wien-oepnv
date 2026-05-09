@@ -1590,12 +1590,39 @@ def _annotate_station_flags(
             info = locations.get(key)
             if info:
                 break
-        if info:
+        # Resolve in_vienna against the strongest available geo signal.
+        # Priority order:
+        #   (a) Fresh upstream LocationInfo from this run.
+        #   (b) Coords carried forward in ``extras`` by
+        #       ``_restore_existing_metadata`` from the prior
+        #       stations.json — already validated and inertia-merged.
+        #   (c) Name heuristic, last resort.
+        # Without (b), a single failed WL/ÖBB/VOR fetch (info=None) for a
+        # U-Bahn stop like "Stephansplatz" — whose name does NOT start
+        # with "Wien" — would silently flip ``in_vienna`` to False even
+        # though the persisted coords clearly fall inside the LANDESGRENZE
+        # polygon. The synthetic LocationInfo carries ``sources={"extras"}``
+        # so the WL-auto-promote check below remains a no-op for this path.
+        polygon_info: LocationInfo | None = info
+        if polygon_info is None:
+            extras_lat = station.extras.get("latitude")
+            extras_lon = station.extras.get("longitude")
+            if isinstance(extras_lat, int | float) and isinstance(
+                extras_lon, int | float
+            ):
+                polygon_info = LocationInfo(
+                    latitude=float(extras_lat),
+                    longitude=float(extras_lon),
+                    sources={"extras"},
+                )
+        if polygon_info is not None:
             # Coordinate Inertia (boundary-check layer): reuse the
             # previous polygon result when info coords haven't drifted
             # past STATION_DRIFT_TOLERANCE_METERS. See
             # ``_resolve_in_vienna_with_cache`` for the full rationale.
-            station.in_vienna = _resolve_in_vienna_with_cache(station, info)
+            station.in_vienna = _resolve_in_vienna_with_cache(
+                station, polygon_info
+            )
         else:
             station.in_vienna = _is_vienna_station(station.name)
         pendler_candidate = station.bst_id in pendler_ids
