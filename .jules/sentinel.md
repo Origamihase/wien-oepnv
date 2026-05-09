@@ -1,3 +1,171 @@
+## 2026-05-09 - BiDi-Mark Drift Round 4: `_UNSAFE_URL_CHARS` in `src/utils/http.py` Was the Sibling Regex Round 3's Closing-Checklist Named But Did Not Close
+
+**Vulnerability:** The 2026-05-09 BiDi-Mark Drift Round 3 entry
+("Two-Site Drift Closure: OSMOverpassConfig Host-Only Validation +
+`_UNSAFE_CHARS_RE` BiDi/Zero-Width Gap") closed the validator regex
+in `src/utils/stations_validation.py` and laid down the canonical
+**Companion-regex sync rule**:
+
+> Whenever a defence regex grows to cover a new code point, audit
+> every sibling regex in the project (`stations_validation.
+> _UNSAFE_CHARS_RE`, `_UNSAFE_URL_CHARS` in `http.py`, station-name
+> validators in provider modules) and either widen them to match or
+> document the divergence with an explicit deferral note.
+
+Round 3 explicitly enumerated `_UNSAFE_URL_CHARS` in `src/utils/http.py`
+as a sibling regex by NAME — but its commit closed only the
+`stations_validation._UNSAFE_CHARS_RE` site. The URL validator
+inherited the pre-fix character class
+`[\s\x00-\x1f\x7f<>\"\\^`{|}]` which covers ASCII whitespace
+(`\s` — incl. U+2028/U+2029 line/paragraph separators), C0 controls
++ DEL, and the structural URL-injection characters `< > " \ ^ ` { | }`
+— but **explicitly does NOT cover** the canonical
+`src/utils/logging.py:_INVISIBLE_DANGEROUS_RE` set (16 missing code
+points, programmatically enumerated):
+
+  * **U+061C** ARABIC LETTER MARK (ALM, post-Unicode-6.3 BiDi
+    control).
+  * **U+200B-U+200F** ZWSP / ZWNJ / ZWJ / **LRM** / **RLM** —
+    invisible characters that are full BiDi primitives (LRM/RLM)
+    OR cause cache-key / equality-check disagreements (ZWSP/ZWNJ/ZWJ).
+  * **U+202A-U+202E** LRE / RLE / PDF / LRO / **RLO** — the
+    canonical CVE-2021-42574 "Trojan Source" primitives. RLO
+    (U+202E) is the highest-impact: it inverts the visual rendering
+    of subsequent text in any Unicode-aware feed reader.
+  * **U+2066-U+2069** LRI / RLI / FSI / PDI BiDi isolates
+    (CVE-2021-42574 second half).
+  * **U+FEFF** BYTE ORDER MARK / ZWNBSP — visually invisible,
+    causes byte-equality disagreements at downstream consumers.
+
+`validate_http_url` is the canonical URL validator — every URL flowing
+into the project routes through it (build_feed.py:1692 for feed-item
+links, src/feed/reporting.py:875 for the GitHub-Issue auto-submit API
+URL, scripts/generate_sitemap.py via `validate_public_feed_url` for
+the sitemap base URL, every `request_safe` / `fetch_content_safe`
+outbound HTTP call).
+
+**Threat model (highest-impact path):** A compromised upstream /
+DNS-hijack / MITM that returns a feed item with a planted `link`
+field carrying RLO (U+202E):
+
+```json
+{"title": "U6: Verspätung", "link": "https://safe.example.com‮/path/evil"}
+```
+
+The provider stores the item in cache JSON. `_format_item_content`
+(`src/build_feed.py:1692`) calls `validate_http_url(link, check_dns=False)`
+to gate the link before it lands in the RSS `<link>` element. Pre-fix
+the validator returns the URL unchanged — every guard inside
+`validate_http_url` (scheme, port, IDNA NFKC, SSRF, userinfo) passes
+because the BiDi mark is in the path (not the structural-URL
+components). The link lands in `docs/feed.xml` verbatim:
+
+```xml
+<link>https://safe.example.com‮/path/evil</link>
+```
+
+ElementTree XML serialisation does NOT escape U+202E (it is a valid
+Unicode character, not an XML metacharacter). Subscribers reading
+the feed in a Unicode-aware reader see the post-RLO segment reversed
+in the rendered URL — a textbook **Trojan Source URL phishing
+primitive in a public artefact** served from
+`https://origamihase.github.io/wien-oepnv/feed.xml`. The user sees
+one URL but clicking sends the browser to a different URL.
+
+**Fix:** Widen `_UNSAFE_URL_CHARS` to the canonical
+`_INVISIBLE_DANGEROUS_RE` set:
+
+```python
+_UNSAFE_URL_CHARS = re.compile(
+    r"[\s\x00-\x1f\x7f<>\"\\^`{|}"
+    r"؜​-‏‪-‮⁦-⁩﻿]"
+)
+```
+
+Mirrors the canonical `_INVISIBLE_DANGEROUS_RE` shape pinned in
+`src/utils/logging.py:57`. The widening is **additive** — every
+character the pre-fix regex matched still matches post-fix
+(verified by the regression test
+`test_unsafe_url_chars_regex_preserves_existing_coverage`). The Unicode
+escape-sequence form is required because Bandit's B613 Trojan-Source
+plugin flags any source file containing literal BiDi format controls
+— `؜` / `‪-‮` / `﻿` are stored as escapes, not
+literals, so the file passes B613 while the regex still matches the
+runtime characters.
+
+**Test surface (+52 new pytest cases):**
+`tests/test_sentinel_http_url_chars_bidi_gap.py` mirrors the Round 3
+`stations_validation` test file shape:
+  * **Per-code-point regex match** (16 cases × ALM / ZWSP / ZWNJ /
+    ZWJ / LRM / RLM / LRE / RLE / PDF / LRO / RLO / LRI / RLI / FSI
+    / PDI / BOM): `_UNSAFE_URL_CHARS.search(<cp>)` must return a
+    match.
+  * **Per-code-point `validate_http_url` rejection** (16 cases):
+    `validate_http_url(f"https://safe.example.com{cp}/path", check_dns=False)`
+    must return `None`.
+  * **Per-code-point `validate_public_feed_url` rejection** (16
+    cases): the public-feed validator must inherit the rejection
+    via its `validate_http_url` delegation — pinning the contract
+    that fixes at the lower layer transparently propagate to the
+    higher layer.
+  * **Inventory invariant** (1 case):
+    `test_unsafe_url_chars_regex_covers_canonical_invisible_dangerous_set`
+    walks the full 0x110000 Unicode code-space, materialises every
+    code point matched by `_INVISIBLE_DANGEROUS_RE`, and asserts
+    `_UNSAFE_URL_CHARS` matches the same set. A future widening of
+    the canonical regex (e.g. a Unicode 16 BiDi format control)
+    fails this invariant until `_UNSAFE_URL_CHARS` is widened too.
+  * **Coverage-preserving regression** (1 case): every character
+    `_UNSAFE_URL_CHARS` matched pre-fix (whitespace / C0 / DEL /
+    structural URL-injection) still matches post-fix.
+  * **Safe-URL-character regression** (1 case): legitimate URL
+    characters (`/?&=#-_.~%+:@[]:`, ASCII letters/digits)
+    must NOT match the widened regex.
+  * **Clean-URL acceptance** (1 case): `validate_http_url` accepts
+    a clean `https://` URL post-fix — sanity that the widening did
+    not over-reach.
+
+**Learning:** Two reinforcing lessons:
+
+  (a) **Sibling-regex named-list audit closure.** Round 3's verdict
+      *did* enumerate `_UNSAFE_URL_CHARS` as a sibling drift
+      candidate — but the round's actual fix scope was scoped to
+      `stations_validation._UNSAFE_CHARS_RE` only. Same meta-pattern
+      as Round 7 of the env-cap drift family (`LOG_BACKUP_COUNT`
+      named in Round 6's prevention rule but deferred until Round 7),
+      Round 11 of the `timedelta` family (`FRESH_PUBDATE_WINDOW_MIN`
+      named in Round 9/10 but deferred until Round 11), Round 5 of
+      the JSON depth-bomb family (16 sites named in Round 4's
+      enumeration but only 7 fixed). The closing rule: when an audit
+      *names* a sibling site as "needs widening", the next round's
+      PR MUST land the widening AT the named site, not just at the
+      single site the round is actively touching.
+
+  (b) **Inventory-invariant programmatic pinning.** Round 3
+      introduced
+      `test_unsafe_chars_regex_covers_canonical_invisible_dangerous_set`
+      — an inventory test that walks the full 0x110000 code-space
+      and pins the regex sync invariant programmatically. This
+      round adds the URL-validator analog
+      `test_unsafe_url_chars_regex_covers_canonical_invisible_dangerous_set`.
+      Together the two inventory tests pin the
+      companion-regex sync rule for both validation boundaries —
+      any future Unicode-version bump that adds a new BiDi format
+      control fails BOTH tests until BOTH validators are widened.
+      The test pair is the programmatic floor that survives the next
+      contributor who hasn't read the journals.
+
+**Prevention:** The companion-regex sync rule from Round 3 stands
+unchanged. The Round 4 contribution is the inventory-invariant
+**pair** programmatically pinning the rule for both the
+stations-validator boundary AND the URL-validator boundary. Future
+sibling regexes (station-name validators in provider modules per
+Round 3's named list, future provider field validators) MUST adopt
+the same pattern: a per-validator `test_..._covers_canonical_invisible_
+dangerous_set` test at the canonical sanitiser path, run alongside
+the Round-N PoC tests, so the sync invariant fails closed as soon as
+the canonical regex grows.
+
 ## 2026-05-09 - Secret Scanner Drift Round 5: Atlassian / Sentry / Linear Issuer Attribution Gap
 **Vulnerability:** `_KNOWN_TOKENS` in `src/utils/secret_scanner.py`
 covered fourteen issuer prefixes after the 2026-05-08 Round 4 round
