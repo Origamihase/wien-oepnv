@@ -1,4 +1,4 @@
-# Wien ÖPNV Feed – Projektdokumentation
+# Wien ÖPNV Feed
 
 ### Status Badges
 [![Update VOR Cache](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-vor-cache.yml/badge.svg)](https://github.com/Origamihase/wien-oepnv/actions/workflows/update-vor-cache.yml)
@@ -13,106 +13,81 @@
 
 ---
 
-## Was ist der Wien ÖPNV Feed?
+## 🚇 Was ist der Wien ÖPNV Feed?
 
-**Ein Feed. Alle Meldungen. Eine Quelle der Wahrheit für den Wiener ÖPNV.**
+**Ein Feed, alle Meldungen: Die zentrale Info-Quelle für den Wiener ÖPNV.**
 
-Dieses Projekt bündelt offizielle Störungs-, Baustellen- und Hinweismeldungen
-der **Wiener Linien (WL)**, der **ÖBB** und des **Verkehrsverbund Ost-Region (VOR)**
-zu einem konsolidierten, dedupliziertem RSS-Dokument für Wien sowie das
-niederösterreichisch-burgenländische Umland. Ergänzt wird der Feed durch den
-Open-Government-Data-Baustellenkatalog der Stadt Wien.
+Dieses Projekt bündelt Störungs- und Baustellenmeldungen der Wiener Linien (WL), ÖBB und des VOR in einem deduplizierten RSS-Feed für Wien und das Umland. Ergänzt wird dies durch offizielle OGD-Baustellendaten der Stadt Wien.
 
-### Kernfunktionen auf einen Blick
+### 🚀 Kernfunktionen auf einen Blick
 
 | Funktion | Beschreibung |
 | -------- | ------------ |
-| **Konsolidierter RSS-Feed** | Vereinigte, deduplizierte Meldungen aller relevanten Verkehrsträger – sofort einsetzbar in jedem Reader, Widget oder Display. |
-| **Statistik-Dashboard** | Tägliche Aggregation der Verspätungen auf der **S-Bahn-Stammstrecke** sowie der gemeldeten Störungen aus den CSV-Ledgern unter `data/stats/`. |
-| **Baustellen-Layer** | OGD-Baustellendaten der Stadt Wien als zusätzlicher Provider mit Bezirk, Zeitraum und Geo-Information. |
-| **Stabile JSON-API** | Versionierte Cache-Dateien (`cache/<provider>/events.json`) für Drittprojekte – ohne Build-Schritt nutzbar. |
-| **Reproduzierbar & sicher** | Atomare Schreibvorgänge, SSRF-Schutz, Path-Traversal-Schutz und ein vollständiges Stationsverzeichnis (`data/stations.json`). |
+| **Konsolidierter RSS-Feed** | Bereinigte Meldungen aller Verkehrsträger – ideal für Feed-Reader, Dashboards oder Widgets. |
+| **Statistik-Dashboard** | Tägliche Auswertung von Verspätungen und Störungen (Fokus: S-Bahn-Stammstrecke). |
+| **OGD-Baustellen-Layer** | Integration städtischer Baustellendaten (inkl. Bezirk, Zeitraum, Geo-Infos). |
+| **Stabile JSON-API** | Sofort nutzbare Cache-Dateien (`events.json`) für eigene Projekte und Analysen. |
 
-> **Direkt zum Feed:** [`https://origamihase.github.io/wien-oepnv/feed.xml`](https://origamihase.github.io/wien-oepnv/feed.xml)
+> 📡 **Direkt zum Feed:** [`https://origamihase.github.io/wien-oepnv/feed.xml`](https://origamihase.github.io/wien-oepnv/feed.xml)
 
 ---
 
-## Stammstrecke – Störungen & Verspätungen
+## 📈 Stammstrecke – Störungen & Verspätungen
 
-Die S-Bahn-Stammstrecke ist das Rückgrat des Wiener Pendlerverkehrs.
-Halbstündlich misst der Workflow [`update-stammstrecke-status.yml`](.github/workflows/update-stammstrecke-status.yml)
-den HAFAS-Median der Verspätungen und schreibt das Ergebnis in das
-Append-only-Ledger [`data/stats/stammstrecke_YYYY.csv`](data/stats/).
-Parallel protokolliert der Feed-Builder neu erkannte Störungen unter
-[`data/stats/stoerungen_YYYY.csv`](data/stats/). Der nächtliche Workflow
-[`generate-stats.yml`](.github/workflows/generate-stats.yml) aggregiert diese
-Rohdaten zu einem Markdown-Dashboard.
+Die S-Bahn-Stammstrecke ist das Rückgrat des Pendlerverkehrs. Wir erfassen und werten reale Verspätungen und Störungen kontinuierlich aus.
 
-> **Live-Dashboard:** Die vollständige Auswertung mit Wochentags- und Stunden-Heatmaps,
-> Top-Stationen und Trend-Linien wird unter [`docs/statistik.md`](docs/statistik.md) regeneriert.
+**Live-Dashboard:** Die vollständige Auswertung inkl. Heatmaps und Trend-Linien findest du hier: [**📊 Zum detaillierten Dashboard**](docs/statistik.md)
 
 ### Aktueller Schnappschuss
 
 <!-- STATS:STAMMSTRECKE:BEGIN -->
-> _Dieser Block wird vom Workflow [`generate-stats.yml`](.github/workflows/generate-stats.yml) automatisch befüllt.
-> Bis zum ersten Lauf bleibt er als Platzhalter sichtbar._
+> _Dieser Block wird regelmäßig automatisch aktualisiert._
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | _wird beim nächsten Stats-Lauf gesetzt_ |
-| Median-Verspätung | _wird beim nächsten Stats-Lauf gesetzt_ |
-| Schwellwert-Überschreitungen (> 9 min) | _wird beim nächsten Stats-Lauf gesetzt_ |
-| Stand | _wird beim nächsten Stats-Lauf gesetzt_ |
+| Beobachtungen (gesamt) | _wird berechnet…_ |
+| Median-Verspätung | _wird berechnet…_ |
+| Kritische Verspätungen (> 9 min) | _wird berechnet…_ |
+| Letzte Aktualisierung | _wird berechnet…_ |
 <!-- STATS:STAMMSTRECKE:END -->
 
-### Top-Störungsorte
+### Häufigste Störungsorte
 
 <!-- STATS:DISRUPTIONS:BEGIN -->
-> _Dieser Block wird vom Workflow [`generate-stats.yml`](.github/workflows/generate-stats.yml) automatisch befüllt.
-> Bis zum ersten Lauf bleibt er als Platzhalter sichtbar._
+> _Dieser Block wird regelmäßig automatisch aktualisiert._
 
-| Rang | Ort | Anzahl |
-| ---- | --- | ------ |
-| 1.   | _wird beim nächsten Stats-Lauf gesetzt_ | – |
-| 2.   | _wird beim nächsten Stats-Lauf gesetzt_ | – |
-| 3.   | _wird beim nächsten Stats-Lauf gesetzt_ | – |
+| Rang | Station / Ort | Vorfälle |
+| ---- | ------------- | -------- |
+| 1.   | _wird berechnet…_ | – |
+| 2.   | _wird berechnet…_ | – |
+| 3.   | _wird berechnet…_ | – |
 <!-- STATS:DISRUPTIONS:END -->
 
-> Die Roh-Ledger findest du unter [`data/stats/`](data/stats/) – alle Zeitstempel sind in `Europe/Vienna` normalisiert.
+> **Hinweis:** Die zugrunde liegenden Roh-Ledger im CSV-Format liegen unter [`data/stats/`](data/stats/) (Zeitstempel in `Europe/Vienna`).
 
 ---
 
-## Weiterführende Links
+## 🔗 Weiterführende Links
 
-### Feed konsumieren
+### 📥 Feed & Daten nutzen
 
-- **RSS-Feed (live):** [`https://origamihase.github.io/wien-oepnv/feed.xml`](https://origamihase.github.io/wien-oepnv/feed.xml)
-- **Feed-Health-Report:** [`docs/feed-health.md`](docs/feed-health.md) _(nach jedem Build regeneriert)_
-- **JSON-Schema der Events:** [`docs/schema/events.schema.json`](docs/schema/events.schema.json)
+- **RSS-Feed abonnieren:** [`https://origamihase.github.io/wien-oepnv/feed.xml`](https://origamihase.github.io/wien-oepnv/feed.xml)
 - **Projekt-Website:** <https://origamihase.github.io/wien-oepnv/>
+- **JSON-Schema der Events:** [`docs/schema/events.schema.json`](docs/schema/events.schema.json)
+- **Feed-Health-Report:** [`docs/feed-health.md`](docs/feed-health.md) _(automatischer Report nach jedem Build)_
 
-### Mitwirken & Weiterentwickeln
+### 💻 Für Entwickler & Mitwirkende
 
-- **Entwicklerdokumentation (Setup, CLI, Konfiguration, Provider-Logik):** [`docs/development.md`](docs/development.md)
-- **Beitragen (Branches, PRs, Pre-Commit):** [`CONTRIBUTING.md`](CONTRIBUTING.md)
-- **Architektur-Karte mit Mermaid-Diagrammen:** [`docs/architecture.md`](docs/architecture.md)
-- **Sicherheits-Policy & Reporting:** [`SECURITY.md`](SECURITY.md)
-- **Verhaltenskodex:** [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
+Infos zu Installation, Architektur und Provider-Logik finden sich gebündelt in den Entwickler-Docs:
 
-### Hilfe & Community
+- **Entwicklerdokumentation:** [`docs/development.md`](docs/development.md) _(Setup, CLI, Architektur)_
+- **Mitwirken (Contributing):** [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- **Referenzen & API:** [`docs/reference/`](docs/reference/)
+- **Architektur & Diagramme:** [`docs/architecture.md`](docs/architecture.md)
 
-- **Issue-Tracker:** <https://github.com/Origamihase/wien-oepnv/issues>
-- **Feature-Requests & Diskussionen:** <https://github.com/Origamihase/wien-oepnv/issues/new/choose>
+### 🙋 Hilfe & Community
+
+- **Fehler melden (Issues):** [GitHub Issue Tracker](https://github.com/Origamihase/wien-oepnv/issues)
+- **Feature-Requests:** [Neues Feature vorschlagen](https://github.com/Origamihase/wien-oepnv/issues/new/choose)
 - **Changelog:** [`CHANGELOG.md`](CHANGELOG.md)
-
-### Referenz
-
-- **Stationsverzeichnis:** [`data/stations.json`](data/stations.json) · [Schema](docs/schema/stations.schema.json) · [Validation-Report](docs/stations_validation_report.md)
-- **VOR / VAO ReST API:** [`docs/reference/`](docs/reference/) · [How-to-Guides](docs/how-to/) · [Beispiele](docs/examples/)
-- **Statistik-Dashboard:** [`docs/statistik.md`](docs/statistik.md) _(generiert von [`generate-stats.yml`](.github/workflows/generate-stats.yml))_
-- **Audit-Index:** [`docs/archive/audits/INDEX.md`](docs/archive/audits/INDEX.md)
-
----
-
-<sub>Veröffentlicht unter der [MIT-Lizenz](LICENSE) · Datenquellen behalten ihre jeweiligen Lizenzen
-(siehe [Entwicklerdokumentation › Datenquellen und Lizenzen](docs/development.md#datenquellen-und-lizenzen)).</sub>
+- **Sicherheits-Policy:** [`SECURITY.md`](SECURITY.md)
