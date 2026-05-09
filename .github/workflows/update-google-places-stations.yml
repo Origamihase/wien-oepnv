@@ -1,8 +1,22 @@
 name: Update Google Places Stations
 
+# DISABLED CRON (2026-05-09): the regular ``0 6 1,11,21 * *`` schedule
+# (3x/month) was removed per the operator policy "Google Places nur
+# nutzen wenn OSM die Daten nicht liefern kann". The OSM-first /
+# Google-fallback logic in ``update_station_directory.py``
+# (``_enrich_with_osm`` first, then ``_enrich_with_google_places`` only
+# for the ``_stations_missing_coordinates`` strict subset) is invoked
+# from ``update-stations.yml`` (weekly) and covers the legitimate
+# "fill the gap that OSM can't" case automatically.
+#
+# This standalone fetch path remains as a manual escape hatch via
+# ``workflow_dispatch`` for emergency directory rebuilds where the
+# operator explicitly accepts the quota cost. The persistent
+# ``data/places_quota.json`` counter (4000/month free-tier cap) and
+# the pre-flight gate (``scripts/preflight_quota_check.py --check
+# places``) still enforce the contract limit so an accidental burst
+# of manual triggers cannot exhaust the budget.
 on:
-  schedule:
-    - cron: '0 6 1,11,21 * *'
   workflow_dispatch:
 
 permissions:

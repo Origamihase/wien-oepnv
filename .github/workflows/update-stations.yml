@@ -1,8 +1,31 @@
 name: Update station directory
 
+# Refresh the canonical ``data/stations.json`` directory once per week
+# (Sundays 01:00 UTC = 02:00/03:00 Vienna). The script merges four
+# upstream sources:
+#
+# * ÖBB ``Verzeichnis der Verkehrsstationen`` Excel — ``update_station_
+#   directory.py`` downloads the workbook from data.oebb.at on every
+#   run; free open data, no auth.
+# * Wien OGD ``wienerlinien-ogd-haltestellen``/``-haltepunkte`` CSVs —
+#   the "Refresh Wiener Linien OGD CSVs" step below pulls the latest
+#   snapshot from data.wien.gv.at; free open data, no auth.
+# * OSM Overpass — ``_enrich_with_osm`` queries Overpass via the
+#   ``WIEN_OEPNV_OSM_ENRICH=1`` env (toggled below by the Overpass
+#   smoke check); free open data, retried.
+# * Google Places — ``_enrich_with_google_places`` runs ONLY for the
+#   subset of stations still missing coordinates after OSM
+#   (``_stations_missing_coordinates`` strict subset). Persistent
+#   monthly quota in ``data/places_quota.json`` enforces the contract
+#   limit.
+#
+# VOR is intentionally not invoked from this workflow (the project
+# reserves the VAO 100/day budget for the Stammstrecke monitor — see
+# ``update-stammstrecke-status.yml``). VOR station IDs come from the
+# pinned ``data/vor-haltestellen.csv`` snapshot.
 on:
   schedule:
-    - cron: '0 1 1 * *'
+    - cron: '0 1 * * 0'
   workflow_dispatch:
 
 permissions:
@@ -36,6 +59,25 @@ jobs:
 
       - name: Install dependencies
         uses: ./.github/actions/install-deps
+
+      # Wien OGD CSV refresh (free open data, no auth, no quota). The
+      # update_wl_stations.py script reads data/wienerlinien-ogd-
+      # haltestellen.csv + haltepunkte.csv from disk; without this step
+      # the weekly cron would re-merge the same pinned snapshot the
+      # operator last committed manually. The download is idempotent:
+      # ``--download`` overwrites only when the upstream byte-stream
+      # differs.
+      - name: Refresh Wiener Linien OGD CSVs
+        run: |
+          set -euo pipefail
+          curl -fsSL --max-time 60 \
+            -o data/wienerlinien-ogd-haltestellen.csv.tmp \
+            https://data.wien.gv.at/csv/wienerlinien-ogd-haltestellen.csv
+          curl -fsSL --max-time 60 \
+            -o data/wienerlinien-ogd-haltepunkte.csv.tmp \
+            https://data.wien.gv.at/csv/wienerlinien-ogd-haltepunkte.csv
+          mv data/wienerlinien-ogd-haltestellen.csv.tmp data/wienerlinien-ogd-haltestellen.csv
+          mv data/wienerlinien-ogd-haltepunkte.csv.tmp data/wienerlinien-ogd-haltepunkte.csv
 
       # VOR stop-list refresh removed 2026-05-09 to keep the project under
       # the VAO Start tier's 100/day quota — the Stammstrecke monitor
