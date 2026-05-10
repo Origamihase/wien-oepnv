@@ -27,7 +27,28 @@ from ..utils.text import escape_markdown, escape_markdown_cell, safe_markdown_co
 
 log = logging.getLogger("build_feed")
 
-_CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f]")
+# Security (Log-Injection Drift Round 5): byte-exact mirror of
+# ``src/utils/logging.py:_CONTROL_CHARS_RE``. The pre-fix narrow set
+# ``[\x00-\x1f\x7f]`` covered ASCII C0 + DEL only; the canonical floor
+# also covers the 8-bit C1 controls (Round 3 widening), the BiDi /
+# zero-width / line-terminator family (Round 2), and the BOM. The
+# narrow drift was *transitively* closed by the immediate
+# ``clean_message`` delegation in ``_sanitize_log_detail`` (which
+# routes through the canonical ``_INVISIBLE_DANGEROUS_RE`` always-
+# strip floor) but a future caller of the local symbol that bypasses
+# ``clean_message`` would re-open the C1 / BiDi / zero-width hole.
+# This widening pins the canonical-floor coverage at the first layer
+# so the bucket-(b) deferred risk is closed proactively. The
+# replacement semantics (``_CONTROL_CHARS_RE.sub(" ", detail)`` —
+# replace with SPACE to preserve token boundaries) are unchanged;
+# the post-fix regex matches more characters but still replaces
+# them with SPACE, and the downstream ``clean_message`` whitespace-
+# collapse step folds multiple spaces back to one. Inventory
+# invariant pinned by
+# ``tests/test_sentinel_reporting_control_chars_re_canonical_drift.py``.
+_CONTROL_CHARS_RE = re.compile(
+    r"[\x00-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+)
 
 # Defence-in-depth bounds for error / warning collection. A misbehaving
 # upstream that returns malformed payloads in a tight loop, or a flapping
