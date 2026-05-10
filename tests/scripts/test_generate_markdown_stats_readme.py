@@ -424,6 +424,89 @@ def test_main_skip_readme_flag_leaves_readme_untouched(
     assert output.exists()
 
 
+def test_main_skip_dashboard_flag_leaves_dashboard_untouched(
+    tmp_path: Path,
+) -> None:
+    """``--skip-dashboard`` preserves docs/statistik.md byte-stable while
+    still patching the README STATS markers.
+
+    Mirrors the symmetric ``--skip-readme`` contract used by
+    ``update-cycle.yml``: every 30-min cron tick patches the README
+    snapshot, but only the cron tick that lands inside the 00:00
+    Europe/Vienna hour additionally rewrites the yearly dashboard.
+    """
+    stats_dir = tmp_path / "stats"
+    _seed_csvs(stats_dir)
+    readme = tmp_path / "README.md"
+    readme.write_text(_readme_with_markers(), encoding="utf-8")
+    output = tmp_path / "statistik.md"
+    pre_image = "# pre-existing dashboard content — must survive\n"
+    output.write_text(pre_image, encoding="utf-8")
+    output_snapshot = output.read_bytes()
+
+    rc = script.main(
+        [
+            "--year",
+            "2026",
+            "--stats-dir",
+            str(stats_dir),
+            "--output",
+            str(output),
+            "--readme-path",
+            str(readme),
+            "--skip-dashboard",
+            "--now-iso",
+            "2026-05-09T12:00:00+02:00",
+        ]
+    )
+    assert rc == 0
+    # Dashboard file untouched (byte-stable).
+    assert output.read_bytes() == output_snapshot
+    # README markers patched with the real values.
+    new_readme = readme.read_text(encoding="utf-8")
+    assert "Beobachtungen (gesamt)" in new_readme
+    assert "_Platzhalter Stammstrecke._" not in new_readme
+
+
+def test_main_skip_dashboard_and_skip_readme_combined_is_noop(
+    tmp_path: Path,
+) -> None:
+    """Combining ``--skip-dashboard`` with ``--skip-readme`` is a
+    degenerate no-op: neither output is touched. The flags are
+    independent toggles, not mutually exclusive — the script still
+    exits 0 so an operator who passes both by accident gets a clean
+    log instead of an error.
+    """
+    stats_dir = tmp_path / "stats"
+    _seed_csvs(stats_dir)
+    readme = tmp_path / "README.md"
+    readme.write_text(_readme_with_markers(), encoding="utf-8")
+    readme_snapshot = readme.read_bytes()
+    output = tmp_path / "statistik.md"
+    output.write_text("# untouched\n", encoding="utf-8")
+    output_snapshot = output.read_bytes()
+
+    rc = script.main(
+        [
+            "--year",
+            "2026",
+            "--stats-dir",
+            str(stats_dir),
+            "--output",
+            str(output),
+            "--readme-path",
+            str(readme),
+            "--skip-dashboard",
+            "--skip-readme",
+            "--now-iso",
+            "2026-05-09T12:00:00+02:00",
+        ]
+    )
+    assert rc == 0
+    assert readme.read_bytes() == readme_snapshot
+    assert output.read_bytes() == output_snapshot
+
+
 def test_main_invalid_now_iso_returns_error(tmp_path: Path) -> None:
     stats_dir = tmp_path / "stats"
     _seed_csvs(stats_dir)

@@ -350,6 +350,39 @@ def test_render_markdown_handles_empty_aggregates_gracefully() -> None:
     assert "_Keine Daten verfügbar._" in md
 
 
+def test_render_markdown_global_avg_uses_observation_weighted_mean() -> None:
+    """``⌀ Verspätung (alle Tage)`` must equal the README's micro-average,
+    not an unweighted ``fmean`` over the per-weekday means.
+
+    The empirical distribution Sa(3 obs avg 2/3 min) and So(23 obs avg
+    4/23 min) is the regression that motivated the fix on branch
+    ``claude/fix-delay-statistics``: the broken macro-average rendered
+    ``0.4 min`` while the README cell — computed from the raw rows —
+    showed ``0.2 min``. Pinning both rendering paths to the same
+    observation-weighted mean closes that drift.
+    """
+    sm_agg = script.StammstreckeAggregate(
+        by_weekday_count={"Sa": 3, "So": 23},
+        by_weekday_avg={"Sa": 2.0 / 3.0, "So": 4.0 / 23.0},
+        by_hour_count={},
+        by_hour_avg={},
+        by_direction={"Meidling": 15, "Floridsdorf": 11},
+        total_observations=26,
+        threshold_exceedances=0,
+        threshold_minutes=9.0,
+    )
+    md = script.render_markdown(
+        year=2026,
+        generated_at=datetime(2026, 5, 10, 16, 35, tzinfo=VIENNA_TZ),
+        stammstrecke=sm_agg,
+        stoerungen=script.StoerungAggregate(),
+    )
+    # 3*(2/3) + 23*(4/23) = 6.0 → 6.0/26 ≈ 0.231 → "0.2 min"
+    assert "| ⌀ Verspätung (alle Tage) | 0.2 min |" in md
+    # Anti-regression: the previous macro-average rendered "0.4 min".
+    assert "| ⌀ Verspätung (alle Tage) | 0.4 min |" not in md
+
+
 # ---- write_dashboard ------------------------------------------------------
 
 

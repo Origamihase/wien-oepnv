@@ -495,11 +495,19 @@ def _format_summary_section(
 ) -> list[str]:
     """Render the top-of-report key metrics block."""
     if stammstrecke.total_observations:
-        delays = [
-            stammstrecke.by_weekday_avg[wd]
-            for wd in stammstrecke.by_weekday_avg
-        ]
-        global_avg = statistics.fmean(delays) if delays else 0.0
+        # Observation-weighted (micro) average so the headline matches
+        # the README's ``Durchschnittliche Verspätung`` cell. The earlier
+        # implementation took ``fmean`` over the per-weekday averages,
+        # which silently macro-averaged: a Saturday with 3 observations
+        # was weighted as heavily as a Sunday with 23, distorting the
+        # number any time the daily distribution was uneven. Multiplying
+        # each per-weekday mean by its observation count recovers the
+        # original delay sum exactly without re-iterating the raw rows.
+        total = sum(
+            stammstrecke.by_weekday_avg[wd] * stammstrecke.by_weekday_count[wd]
+            for wd in stammstrecke.by_weekday_count
+        )
+        global_avg = total / stammstrecke.total_observations
     else:
         global_avg = 0.0
 
@@ -917,6 +925,17 @@ def main(argv: list[str] | None = None) -> int:
         ),
     )
     parser.add_argument(
+        "--skip-dashboard",
+        action="store_true",
+        help=(
+            "Skip regenerating docs/statistik.md (only the README STATS "
+            "markers are patched). Inverse of ``--skip-readme``; used by "
+            "``update-cycle.yml`` so the dashboard refreshes once daily "
+            "at the 00:00 Europe/Vienna tick while the README snapshot "
+            "continues to update on every 30-min tick."
+        ),
+    )
+    parser.add_argument(
         "--now-iso",
         type=str,
         default=None,
@@ -967,31 +986,43 @@ def main(argv: list[str] | None = None) -> int:
         sanitize_log_arg(str(args.stats_dir)),
     )
 
-    sm_agg = aggregate_stammstrecke(sm_rows)
-    st_agg = aggregate_stoerungen(st_rows)
-
-    markdown = render_markdown(
-        year=args.year,
-        generated_at=now,
-        stammstrecke=sm_agg,
-        stoerungen=st_agg,
-    )
-
-    try:
-        write_dashboard(markdown, output_path=args.output)
-    except OSError as exc:
-        LOGGER.error(
-            "Konnte Dashboard nicht schreiben (%s): %s",
-            sanitize_log_arg(str(args.output)),
-            sanitize_log_arg(str(exc)),
+    if args.skip_dashboard:
+        # ``update-cycle.yml`` passes this flag on every 30-min tick
+        # except the one that lands inside the 00:00 Europe/Vienna hour.
+        # Skipping the aggregation + render avoids the unnecessary
+        # CPU + write work (and prevents the 30-min churn of the
+        # ``_Automatisch erzeugt am ..._`` timestamp leaking into the
+        # commit log).
+        LOGGER.info(
+            "Dashboard-Schritt übersprungen (--skip-dashboard) — "
+            "README wird weiterhin gepatcht."
         )
-        return 1
+    else:
+        sm_agg = aggregate_stammstrecke(sm_rows)
+        st_agg = aggregate_stoerungen(st_rows)
 
-    LOGGER.info(
-        "Dashboard geschrieben: %s (%d Bytes).",
-        sanitize_log_arg(str(args.output)),
-        len(markdown.encode("utf-8")),
-    )
+        markdown = render_markdown(
+            year=args.year,
+            generated_at=now,
+            stammstrecke=sm_agg,
+            stoerungen=st_agg,
+        )
+
+        try:
+            write_dashboard(markdown, output_path=args.output)
+        except OSError as exc:
+            LOGGER.error(
+                "Konnte Dashboard nicht schreiben (%s): %s",
+                sanitize_log_arg(str(args.output)),
+                sanitize_log_arg(str(exc)),
+            )
+            return 1
+
+        LOGGER.info(
+            "Dashboard geschrieben: %s (%d Bytes).",
+            sanitize_log_arg(str(args.output)),
+            len(markdown.encode("utf-8")),
+        )
 
     if args.skip_readme:
         return 0
