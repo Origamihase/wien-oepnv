@@ -1,3 +1,205 @@
+## 2026-05-10 - Secret Scanner Drift Round 7: Doppler / Buildkite / Netlify — Round 6's Named-But-Deferred Secrets-Management + CI/CD Sub-Landscapes
+
+**Vulnerability:** The 2026-05-10 Round 6 entry (PR #1424, Brevo /
+Postman / HCP Vault Secrets) re-stated the prevention rule:
+
+> "Every audit round that adds a new issuer MUST also enumerate THREE
+> adjacent sub-landscapes the round did NOT cover."
+
+Round 6 enumerated **transactional email** (closed Brevo), **API
+testing** (closed Postman) and **secrets management** (closed HCP
+Vault Secrets), and explicitly named four next-round candidates:
+
+* **Secrets management continued** — Doppler (`dp.pt.<token>` /
+  `dp.st.<token>`) — UNAMBIGUOUS prefix, deferred from Round 6.
+* **CI/CD platforms** — Buildkite (`bkat_<UUID>`) — UNAMBIGUOUS
+  prefix, deferred from Round 6.
+* **CI/CD platforms** — Netlify PATs (`nfp_<base64>`) — UNAMBIGUOUS
+  prefix, deferred from Round 6.
+* **CI/CD platforms** — Render (`rnd_<base64>`) / Vercel (no canonical
+  prefix; bucket-(b)) — deferred for a later round.
+
+Closing the three named-and-canonical-prefixed entries (Doppler,
+Buildkite, Netlify) re-establishes the issuer-attribution coverage
+the Round 6 closing checklist guaranteed. Each token's canonical
+format silently bypasses specific attribution in `_KNOWN_TOKENS`:
+
+  1. **Doppler tokens** (`dp.<role>.<43 alphanumeric>` where `<role>`
+     is one of `pt` / `st` / `sa` / `ct` / `scim` / `audit`) — issued
+     via dashboard.doppler.com for Doppler's secrets-management API.
+     Total length 49-52 chars (3-char `dp.` + 2-5 char role + 1 dot
+     + 43-char body). The literal `.` separators are OUTSIDE the
+     entropy fallback's alphabet `[A-Za-z0-9+/=_-]`, so the entropy
+     regex matches only the 43-char body span — losing both the
+     `dp.<role>.` prefix AND the Doppler issuer attribution. A leak
+     grants the issuing principal's full Doppler scope across every
+     project / config they can see — read every secret (database
+     creds, third-party API keys, OAuth client secrets, signing keys
+     are all routinely stored in Doppler environments), modify config
+     branches, exfiltrate the audit log. Doppler is the canonical
+     secrets-management sibling of HCP Vault Secrets (Round 6).
+
+  2. **Buildkite Agent Token** (`bkat_<40+ alphanumeric body>`) —
+     issued via buildkite.com/organizations/<org>/agents for
+     Buildkite agent registration. The `bkat_` prefix is unambiguous
+     (no other major issuer uses it), and the strict alphanumeric
+     body lies entirely inside the entropy fallback's alphabet — so
+     the entropy regex matches the full `bkat_<body>` span as one
+     generic finding, losing the Buildkite-specific attribution. A
+     leak lets a network adversary register a rogue agent that
+     drains the Buildkite job queue: every CI job (with whatever
+     build-secret env vars the pipeline exposes) is delivered to
+     attacker-controlled hardware. Blast radius = the entire CI
+     estate's job-execution surface — the highest leak surface in
+     the modern CI stack.
+
+  3. **Netlify Personal Access Token** (`nfp_<40+ alphanumeric body>`)
+     — issued via app.netlify.com/user/applications for full Netlify
+     REST-API access (the modern post-2023 `nfp_`-prefixed format;
+     the legacy 40-char-hex pre-prefix tokens fall into the
+     bucket-(b) no-prefix landscape). Total length 44+ chars
+     (4-char prefix + 40+ char body). The `nfp_` prefix is
+     unambiguous, and the body lies entirely inside the entropy
+     alphabet — same generic-only attribution gap as Buildkite. A
+     leak grants the issuing user's full Netlify API scope:
+     read/write every site's deploys, redirect rules, environment
+     variables, build-hook URLs, edge-function code, and DNS records.
+     The site-deploy primitive in particular means an attacker can
+     replace the live site with arbitrary HTML / JS, bypassing every
+     downstream content gate.
+
+**Threat model:** Each issuer's revocation flow lives at a distinct
+vendor URL (dashboard.doppler.com / buildkite.com /
+app.netlify.com), so a generic-only attribution slows IR (operator
+chases the wrong rotation playbook, can't estimate blast radius
+without knowing which vendor is involved). The three issuers cover
+two of the three sub-landscapes Round 6 named:
+
+* **Secrets management continued** (Doppler — closes the named
+  candidate after HCP Vault Secrets in Round 6).
+* **CI/CD platforms — execution tier** (Buildkite — opens a new
+  sub-landscape for Round 7).
+* **CI/CD platforms — hosting tier** (Netlify — pairs with
+  Buildkite in the same sub-landscape).
+
+The PoC in `tests/test_sentinel_secret_scanner_drift_round7.py`
+plants each token shape into a synthetic file (Python `KEY = "..."`
+shape plus `.env` `KEY=VALUE` shape) and asserts the issuer-specific
+reason appears in the scan findings. Pre-fix, every test failed
+because either the generic entropy / sensitive-assign fallback was
+the only finding, OR (for Doppler) only the body span after the
+second dot matched generically.
+
+**Severity:** MEDIUM — defense-in-depth + IR-attribution. No
+current vulnerability surface (the entropy / sensitive-assign
+fallbacks already flag the tokens generically) but the issuer-
+specific attribution accelerates the IR rotation playbook for any
+project that ever leaks one of these tokens. Same severity profile
+as Round 6 (Brevo / Postman / HCP Vault Secrets).
+
+**Fix:** Append three new entries to `_KNOWN_TOKENS` in
+`src/utils/secret_scanner.py`, AFTER the Round-6 HCP Vault Secrets
+entry so `is_covered` correctly anchors on more specific
+issuer-prefixed tokens first:
+
+```python
+(
+    re.compile(r"(?<![A-Za-z0-9])dp\.(?:pt|st|sa|ct|scim|audit)\.[A-Za-z0-9]{43}(?![A-Za-z0-9])"),
+    "Doppler Token gefunden",
+),
+(
+    re.compile(r"(?<![A-Za-z0-9])bkat_[A-Za-z0-9]{40,}(?![A-Za-z0-9])"),
+    "Buildkite Agent Token gefunden",
+),
+(
+    re.compile(r"(?<![A-Za-z0-9])nfp_[A-Za-z0-9]{40,}(?![A-Za-z0-9])"),
+    "Netlify Personal Access Token gefunden",
+),
+```
+
+Boundary lookbehind/lookahead `(?<![A-Za-z0-9])` /
+`(?![A-Za-z0-9])` matches the rest of `_KNOWN_TOKENS` so accidental
+sub-string matches (e.g. `mybkat_foo` or `nfp_xyz` in a long
+identifier) cannot trigger false positives. Each pattern's body
+length is strict enough to reject short fragments while accepting
+every legitimate token's documented format. The Doppler role
+alternation `(?:pt|st|sa|ct|scim|audit)` enumerates the six
+documented role tokens that share the `dp.<role>.<43>` shape.
+
+The PoC test file enumerates 12 cases across 3 issuers:
+
+* 4 PoC tests for Doppler (one per role: `pt`, `st`, `sa`, `ct`)
+  planting realistic synthetic tokens and asserting the issuer-
+  specific reason appears.
+* 1 PoC test for Buildkite (`bkat_`).
+* 1 environment-config variant (Buildkite in `.env` `KEY=VALUE`
+  shape) proving the detector works regardless of surrounding
+  context.
+* 1 PoC test for Netlify (`nfp_`).
+* 3 negative-case tests (one per issuer) proving short prefixes
+  with insufficient body length MUST NOT match.
+* 1 mutual-exclusion regression test (Doppler `dp.pt.` MUST NOT
+  misattribute as SendGrid `SG.`).
+* 1 inventory invariant
+  (`test_known_tokens_round7_taxonomy`) pinning the three new
+  issuer reasons against `src/utils/secret_scanner.py` so a future
+  PR that drops one of the patterns fails at PR-review time.
+
+**Learning:** The issuer-keyed taxonomy is recursive — every Round-N
+prevention rule names a SUBSET of the modern Python-project
+credential landscape (Round 6 named four next-round candidates:
+Doppler, Buildkite, Render, Netlify). The right closure shape is
+"every audit round that adds a new issuer MUST also enumerate THREE
+adjacent sub-landscapes the round did NOT cover" so the next round's
+audit walker has a written-down starting point. This Round 7 closes
+three of Round 6's four named candidates (Doppler, Buildkite,
+Netlify) and the next round can pick up:
+
+* **Secrets management continued** — Infisical
+  (`<32 hex>:<32 hex>`-shape, no prefix — bucket-(b)) — already
+  named in Round 6's deferred list.
+* **CI/CD platforms execution tier continued** — CircleCI Personal
+  API tokens (40-char base64-ish, no prefix — bucket-(b)),
+  Buildkite User Access Token (`bkua_<base64>` —
+  UNAMBIGUOUS), GitHub Actions OIDC tokens (JWT-shape — already
+  covered by JWT pattern).
+* **CI/CD platforms hosting tier continued** — Render
+  (`rnd_<base64>` — UNAMBIGUOUS, deferred from Round 6), Vercel
+  (no canonical prefix; bucket-(b)), Fly.io
+  (`FlyV1 <macaroon>` — multi-segment dot/slash separated, needs
+  a new pattern shape), Cloudflare Pages tokens (no prefix —
+  bucket-(b)).
+* **Transactional email continued** — Mailgun (`key-<32 hex>` —
+  ambiguous prefix; needs care), Mailchimp (`<32 hex>-<dc>` —
+  bucket-(b)), Postmark (UUID-format — bucket-(b)) — already
+  named in Round 6's deferred list.
+* **CDN / DNS** — Cloudflare API tokens (40-char `[A-Za-z0-9_-]`
+  no prefix — permanent bucket-(b) per Round 4).
+
+**Prevention:** The auto-discoverable inventory invariant
+`test_known_tokens_round7_taxonomy` pins the three new issuer
+reasons against `src/utils/secret_scanner.py`. Combined with the
+Round-1 through Round-6 invariants (each pins its own subset of
+`_KNOWN_TOKENS`), the closing-checklist grep:
+
+```
+grep -E "Doppler|Buildkite|Netlify|Brevo|Postman|HCP Vault|Atlassian|Sentry|Linear|Twilio|Notion|Discord|JWT|Hugging|DigitalOcean|GitLab Pipeline|SendGrid|Slack|Stripe|GitHub|Google|Telegram|NPM|PyPI|OpenAI|Anthropic|AWS|Bearer" src/utils/secret_scanner.py
+```
+
+— enumerates every issuer-specific reason currently in
+`_KNOWN_TOKENS`. A future PR that drops any of these reasons fails
+the corresponding round's invariant test at PR-review time. Total
+specific-issuer pattern count post-Round-7: **44** (up from 41 at
+end of Round 6) plus the generic high-entropy and bearer fallbacks.
+
+The order rule from Round 4 still applies: each new entry must be
+placed AFTER more specific issuer-prefixed tokens so `is_covered`
+correctly anchors on the more specific match first. The Round-7
+entries are placed AFTER the Round-6 HCP Vault Secrets entry to
+preserve the table's documented insertion order.
+
+---
+
 ## 2026-05-10 - Secret Scanner Drift Round 6: Brevo / Postman / HCP Vault Secrets — Three Sub-Landscapes Round 5's Modern-Python Audit Did Not Enumerate
 
 **Vulnerability:** The 2026-05-09 Round 5 entry (PR #1395, Atlassian /

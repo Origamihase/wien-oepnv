@@ -413,6 +413,75 @@ _KNOWN_TOKENS = [
         re.compile(r"(?<![A-Za-z0-9])hvs\.[A-Za-z0-9_\-]{30,}(?![A-Za-z0-9])"),
         "HCP Vault Secrets Token gefunden",
     ),
+    # Doppler tokens (``dp.<role>.<43 alphanumeric body>`` where
+    # ``<role>`` is one of ``pt`` / ``st`` / ``sa`` / ``ct`` / ``scim``
+    # / ``audit``). Issued via dashboard.doppler.com for Doppler's
+    # secrets-management API. The six roles correspond to:
+    # personal-token (``pt``), service-token (``st``), service-account
+    # token (``sa``), CLI token (``ct``), SCIM provisioning token
+    # (``scim``) and audit-log token (``audit``). Total length 49-52
+    # chars (3-char ``dp.`` prefix + 2-5 char role + 1 dot + 43-char
+    # alphanumeric body). The literal ``.`` separators are OUTSIDE the
+    # entropy fallback's alphabet ``[A-Za-z0-9+/=_-]``, so the entropy
+    # regex matches only the 43-char body span — losing both the
+    # ``dp.<role>.`` prefix AND the Doppler issuer attribution that
+    # incident-response triage keys off. A leak grants the issuing
+    # principal's full Doppler scope across every project / config
+    # they can see — read every secret (database creds, third-party
+    # API keys, OAuth client secrets, signing keys are all routinely
+    # stored in Doppler environments), modify config branches, and
+    # exfiltrate the audit log. The revocation flow lives at
+    # dashboard.doppler.com and is distinct from any other vendor's.
+    # Doppler is the canonical secrets-management sibling of HCP
+    # Vault Secrets (Round 6) and rounds out the secrets-management
+    # sub-landscape Round 6 named but did not enumerate.
+    (
+        re.compile(r"(?<![A-Za-z0-9])dp\.(?:pt|st|sa|ct|scim|audit)\.[A-Za-z0-9]{43}(?![A-Za-z0-9])"),
+        "Doppler Token gefunden",
+    ),
+    # Buildkite Agent Token (``bkat_<40+ alphanumeric body>``). Issued
+    # via buildkite.com/organizations/<org>/agents for Buildkite agent
+    # registration. The ``bkat_`` prefix is unambiguous (no other
+    # major issuer uses it), and the strict alphanumeric body lies
+    # entirely inside the entropy fallback's alphabet — so the
+    # entropy regex matches the full ``bkat_<body>`` span as one
+    # generic finding, losing the Buildkite-specific attribution. A
+    # leak lets a network adversary register a rogue agent that
+    # drains the Buildkite job queue: every CI job (with whatever
+    # build-secret env vars the pipeline exposes) is delivered to
+    # attacker-controlled hardware. Blast radius = the entire CI
+    # estate's job-execution surface — the highest leak surface in
+    # the modern CI stack. Body lower bound 40 chars matches
+    # Buildkite's documented agent-token format and rejects short
+    # ``bkat_``-prefixed fragments while accepting every legitimate
+    # token. The revocation flow lives at
+    # buildkite.com/organizations/<org>/agents and is distinct from
+    # any other vendor's.
+    (
+        re.compile(r"(?<![A-Za-z0-9])bkat_[A-Za-z0-9]{40,}(?![A-Za-z0-9])"),
+        "Buildkite Agent Token gefunden",
+    ),
+    # Netlify Personal Access Token (``nfp_<40+ alphanumeric body>``).
+    # Issued via app.netlify.com/user/applications for full Netlify
+    # REST-API access (the modern post-2023 ``nfp_``-prefixed format;
+    # the legacy 40-char-hex pre-prefix tokens fall into the
+    # bucket-(b) no-prefix landscape). Total length 44+ chars (4-char
+    # prefix + 40+ char body). The ``nfp_`` prefix is unambiguous,
+    # and the body lies entirely inside the entropy alphabet —
+    # same generic-only attribution gap as Buildkite. A leak grants
+    # the issuing user's full Netlify API scope: read/write every
+    # site's deploys, redirect rules, environment variables, build-
+    # hook URLs, edge-function code, and DNS records. The site-deploy
+    # primitive in particular means an attacker can replace the live
+    # site with arbitrary HTML / JS, bypassing every downstream
+    # content gate. The revocation flow lives at
+    # app.netlify.com/user/applications and is distinct from any
+    # other vendor's. Netlify rounds out the CI/CD sub-landscape's
+    # hosting-platform tier alongside Buildkite (CI execution).
+    (
+        re.compile(r"(?<![A-Za-z0-9])nfp_[A-Za-z0-9]{40,}(?![A-Za-z0-9])"),
+        "Netlify Personal Access Token gefunden",
+    ),
 ]
 
 
