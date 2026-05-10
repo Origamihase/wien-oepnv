@@ -826,7 +826,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
         lines_tok = set(_line_tokens_from_pairs(b["lines_pairs"]))
 
         base_title = b["title"]
-        context_suffix, extras_for_context = _build_context_suffix(
+        context_suffix, _extras_for_context = _build_context_suffix(
             b, base_title, lines_disp
         )
         title_with_lines = _ensure_line_prefix(base_title, lines_disp)

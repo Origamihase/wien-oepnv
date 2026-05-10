@@ -1211,7 +1211,7 @@ def _drain_completed_futures(
             pending.discard(future)
             if future in cancelled_futures:
                 continue
-            fetch, provider_name, timeout_value = futures[future]
+            fetch, provider_name, _timeout_value = futures[future]
             name = getattr(fetch, "__name__", str(fetch))
             try:
                 result = future.result()

@@ -110,7 +110,6 @@ MAX_TIMEOUT_S = 25.0
 MAX_REQUEST_RETRIES = 10
 
 FIELD_MASK_NEARBY = "places.id,places.displayName,places.location,places.types"
-FIELD_MASK_TEXT = "places.id,places.displayName,places.location,places.types"
 DEFAULT_INCLUDED_TYPES: Sequence[str] = (
     "train_station",
     "subway_station",

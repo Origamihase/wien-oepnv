@@ -116,7 +116,6 @@ def test_oebb_title_fallback_truncation(
     mock_station_lookup: MagicMock,
     mock_fetch: MagicMock,
 ) -> None:
-    pass
     mock_station_lookup.return_value = None
     mock_canon.return_value = None # No stations found in text
 

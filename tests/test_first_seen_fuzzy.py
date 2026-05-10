@@ -104,7 +104,7 @@ def test_first_seen_fuzzy_identity(monkeypatch: pytest.MonkeyPatch, tmp_path: Pa
     rss = build_feed._make_rss([item_c], now + timedelta(hours=2), state)
     build_feed._save_state(state)
 
-    state_after_third = build_feed._load_state()
+    build_feed._load_state()
 
     # We want to know what ident was added
     ident_c = build_feed._identity_for_item(item_c)

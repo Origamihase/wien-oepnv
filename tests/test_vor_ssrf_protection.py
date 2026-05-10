@@ -31,7 +31,7 @@ def test_resolve_station_ids_uses_fetch_content_safe(monkeypatch: pytest.MonkeyP
 
     # Call the function
     station_names = ["PhantasiaHauptbahnhof"]
-    result = vor.resolve_station_ids(station_names)
+    vor.resolve_station_ids(station_names)
 
     # Verification
     assert mock_fetch_safe.called, "fetch_content_safe was not called"

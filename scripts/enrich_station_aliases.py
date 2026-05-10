@@ -461,11 +461,6 @@ def _load_pendler_alternative_names(path: Path) -> dict[str, list[str]]:
     return name_map
 
 
-def _add_alias(container: list[str], alias: str) -> None:
-    if alias and alias not in container:
-        container.append(alias)
-
-
 def _alias_candidates(
     station: Mapping[str, object],
     vor_names: Mapping[str, str],

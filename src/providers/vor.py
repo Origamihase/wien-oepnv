@@ -86,7 +86,6 @@ DEFAULT_MAX_REQUESTS_PER_DAY = 100
 # re-enable specific stations — but the project default is now "no
 # departure-board polling".
 DEFAULT_MONITOR_WHITELIST = ""
-RETRY_AFTER_FALLBACK_SEC = 5.0
 RETRY_AFTER_MAX_SEC = 60.0
 
 DEFAULT_BUS_INCLUDE_PATTERN = r"(?i)^(?:Regionalbus|Bus|AST)"
@@ -850,61 +849,6 @@ def apply_authentication(session: Session) -> None:
     session.auth = VorAuth(VOR_ACCESS_ID, _VOR_AUTHORIZATION_HEADER, VOR_BASE_URL)
 
 
-def _extract_stop_container(message: Mapping[str, Any]) -> Iterable[Any]:
-    container = message.get("affectedStops") or message.get("Stops")
-    if isinstance(container, Mapping):
-        if "Stop" in container:
-            container = container["Stop"]
-        elif "Stops" in container:
-            container = container["Stops"]
-    if isinstance(container, Mapping) and "Stop" in container:
-        container = container["Stop"]
-    if isinstance(container, list):
-        return container
-    if isinstance(container, Mapping):
-        return [container]
-    return []
-
-
-def _normalize_stop_key(name: str) -> str:
-    normalized = name.lower().replace("bahnhof", "bf")
-    return re.sub(r"[\s-]", "", normalized)
-
-
-def _name_score(name: str) -> tuple[int, int]:
-    score = 0
-    if "-" in name:
-        score += 3
-    if "Bf" in name:
-        score += 2
-    if "Bahnhof" in name:
-        score -= 1
-    return score, -len(name)
-
-
-def _canonical_stop_names(names: Iterable[str]) -> list[str]:
-    seen: dict[str, str] = {}
-    for name in names:
-        text = (name or "").strip()
-        if not text:
-            continue
-        options = [text]
-        mapped = STATION_NAME_MAP.get(text)
-        if mapped and mapped not in options:
-            options.append(mapped)
-        key = _normalize_stop_key(text)
-        current = seen.get(key)
-        for candidate in options:
-            candidate = candidate.strip()
-            if not candidate:
-                continue
-            if current is None or _name_score(candidate) > _name_score(current):
-                current = candidate
-        if current is not None:
-            seen[key] = current
-    return sorted(seen.values(), key=lambda value: value.lower())
-
-
 def _iter_products(message: Mapping[str, Any]) -> Iterator[Mapping[str, Any]]:
     container = message.get("products") or message.get("Products")
     if isinstance(container, Mapping) and "Product" in container:
@@ -1265,20 +1209,6 @@ def _collect_from_board(station_id: str, root: Mapping[str, Any]) -> list[FeedIt
             }
         )
     return items
-
-
-def _desired_product_classes() -> list[int]:
-    rail = [0, 1, 2, 3, 4]
-    bus = [7]
-    return rail + (bus if ALLOW_BUS else [])
-
-
-def _product_class_bitmask(classes: Sequence[int]) -> int:
-    mask = 0
-    for cls in classes:
-        if cls >= 0:
-            mask |= 1 << cls
-    return mask
 
 
 def _select_stations_round_robin(
