@@ -1,3 +1,145 @@
+## 2026-05-10 - Trojan-Source RSS Drift Round 7: Per-Item `<guid>` Element Was the Last RSS Sink Routing Through `str.strip()`-Only
+
+**Vulnerability:** The 2026-05-10 *Trojan-Source RSS via build_feed
+`_CONTROL_RE` drift* round (PR #1413) closed the per-item title /
+description / time-line sinks via `_sanitize_text(s)` (the canonical
+`_CONTROL_RE` strip — C0/C1 controls + DEL + BiDi format controls +
+zero-width chars + line/paragraph separators + BOM). But the
+**per-item `<guid>`** element in `src/build_feed.py:_format_item_content`
+sat on a separate code path:
+
+    raw_guid = it.get("guid") or ident
+    guid = str(raw_guid).strip() if raw_guid is not None else ident
+
+`str.strip()` only removes ASCII whitespace from the EDGES; internal
+control / BiDi / zero-width characters survive verbatim. The guid then
+flows into the published RSS XML's `<guid>...</guid>` element via
+`ET.SubElement(item, "guid").text = formatted.guid` — XML
+serialisation escapes `<>&` but does NOT strip Unicode BiDi marks,
+zero-width chars, U+202E (RLO), U+2028 (LSEP), or U+200B (ZWSP).
+
+The bug bypassed every prior round of the *Trojan-Source RSS Drift*
+family (Rounds 1-6 + the BiDi-Mark Drift family) — the canonical
+`_sanitize_text` helper was applied to title and summary but the
+journal's audit walker had not enumerated the guid as a sibling sink
+because it routed through a separate variable name (`raw_guid` vs
+`raw_title` / `raw_desc`).
+
+**Threat model:** The published `docs/feed.xml` (served from
+`https://origamihase.github.io/wien-oepnv/feed.xml`) is fetched by:
+
+* Every subscriber's RSS reader (Feedly, NetNewsWire, Inoreader,
+  FreshRSS, Vivaldi RSS, …) — many of these display the guid in
+  the item's metadata pane.
+* Every operator-facing forensic tool (XML viewers, IDE inspectors,
+  GitHub's online file viewer, `cat`/`less` on a TTY).
+
+When the upstream-supplied guid contains:
+
+* **U+202E (RLO)** — Right-to-Left Override. A guid like
+  `click-here-‮evil-12345` renders as `click-here-54321-live` in
+  any Unicode-aware viewer — the documented CVE-2021-42574 "Trojan
+  Source" primitive on a public artefact. Every subscriber's RSS
+  reader displays the inverted text. Phishing primitive.
+* **U+200B-U+200D (ZWSP/ZWNJ/ZWJ)** — Zero-width chars create
+  cache-key collisions and equality-check disagreements; an
+  attacker churning the dedup window with visually-identical guids
+  floods the feed.
+* **U+2028 / U+2029 (LSEP/PSEP)** — Line/paragraph separators that
+  several Unicode-aware RSS parsers honour as line breaks, splitting
+  a single guid into two records or breaking the XML element
+  boundary in a SIEM splitter.
+* **U+FEFF (BOM)** — Byte Order Mark inside a guid causes parser
+  divergence; some parsers skip it, others store it, leading to
+  identifier mismatch.
+* **\x00-\x08, \x0B-\x0C, \x0E-\x1F, \x7F-\x9F** — Most are invalid
+  in XML 1.0 and may cause parser exceptions in downstream RSS
+  consumers, breaking feed availability for affected readers.
+
+Per-item guids are *upstream-controlled* — the OEBB provider takes
+`<guid>` directly from the upstream RSS XML
+(`src/providers/oebb.py:_derive_guid`, which uses `raw_guid` if ≤128
+chars), and similarly for WL/VOR/Baustellen which hash upstream-
+controlled fields via `make_guid()`. A compromised upstream / DNS
+hijack / MITM (despite TLS — e.g. compromised CA, compromised CDN
+endpoint, or sidechannel like cache poisoning post-publication) can
+plant a malicious guid that flows verbatim into the public feed.
+
+**Severity:** LOW-MEDIUM — Trojan-Source primitive on a public
+artefact, contingent on upstream behaviour. No current vulnerability
+surface (every upstream-supplied guid in `cache/*/events.json` is
+HTTPS-URL-shaped with no BiDi / control chars) but a structural
+drift candidate that mirrors the exact shape closed by:
+
+* 2026-05-10 *Trojan-Source RSS via _CONTROL_RE drift* (PR #1413) —
+  closed the title / description / time-line sinks.
+* 2026-05-10 *CSV Formula-Injection Bypass* (PR #1412) — closed the
+  CSV writer.
+* 2026-05-10 *8-bit C1 Terminal-Escape Drift* (PR #1414) — widened
+  the canonical floor.
+
+**Fix:** Single-line change — apply `_sanitize_text` to the upstream-
+supplied guid before assignment, mirroring the title /
+description sanitisation that already happens in
+`_format_item_content`. Additive-only: every legitimate guid in the
+live cache (HTTPS-URL-shaped, no BiDi / control chars) is unchanged
+post-fix.
+
+The PoC test
+`tests/test_sentinel_guid_trojan_source.py` enumerates 6 cases:
+
+* 1 per-code-point coverage test parametrised over 26 canonical
+  Trojan-Source / control characters (BiDi + zero-width + line
+  separators + 8-bit C1 + ASCII C0 + DEL).
+* 3 happy-path regression tests (legitimate ASCII / HTTPS URL /
+  Unicode letters preserved).
+* 1 end-to-end Trojan-Source PoC with the classic RLO payload.
+* 1 inventory invariant test that plants every canonical dangerous
+  char in a single guid and asserts the published `<guid>` element
+  carries none of them — fires on any future regression that
+  bypasses `_sanitize_text` for the guid.
+
+**Learning:** The Trojan-Source RSS Drift family closed the title /
+description / time-line sinks via per-sink audit, but the closing-
+checklist grep
+(`grep -rnE '_sanitize_text\\(' src/build_feed.py`) only enumerated
+SITES that already CALL the helper — it did not enumerate sites
+that SHOULD call it but don't. The pattern: **closing-checklist
+greps that enumerate `helper_name` only catch sites that already
+use the helper, not sites that miss it**.
+
+The structural fix-shape pattern: when a canonical sanitiser exists
+(`_sanitize_text`, `escape_markdown`, `escape_markdown_cell`,
+`safe_markdown_codespan`), the closing-checklist must also walk
+**every variable that lands in a public sink** and assert it routes
+through the canonical helper — not just `grep helper_name`. The
+pattern matches the 2026-05-10 *Markdown Injection Drift Round 3*
+(8 bullet-body sinks at the `ValidationReport.to_markdown()`
+boundary) which closed a similar gap by walking every interpolated
+variable and verifying it had `_safe_md` applied.
+
+**Prevention:** The auto-discoverable inventory invariant
+`test_inventory_no_dangerous_chars_in_guid_element` plants every
+canonical dangerous char in a single guid fixture and asserts the
+published `<guid>` element carries none of them. A future PR that
+re-introduces a guid path bypassing `_sanitize_text` (e.g. a new
+provider whose guid generation skips the sanitiser, or a refactor
+that moves the assignment without preserving the helper call)
+fails the test at PR-review time.
+
+The closing-checklist grep is amended for the *Trojan-Source RSS
+Drift* family: walk every per-item RSS element emission in
+`_emit_item` (`title`, `link`, `guid`, `pubDate`, `description`,
+`content:encoded`, `<ext:first_seen>`, `<ext:starts_at>`,
+`<ext:ends_at>`) and assert each upstream-supplied text-typed field
+routes through `_sanitize_text` (or another canonical sanitiser
+documented in the journal). The `pubDate` / `<ext:*>` fields
+parse upstream timestamps via `_fmt_rfc2822` which is already
+control-char-safe; `link` is HTTPS-only-pinned by `_resolve_item_link`
+(PR #1419); `title`, `summary`, and now `guid` route through
+`_sanitize_text`. The family is closed across all six per-item
+sinks.
+
 ## 2026-05-10 - HTTPS-only Provider URL Drift Round 3: Per-Item RSS `<link>` Element Was the Last Publishing Surface Still Accepting `http://`
 
 **Vulnerability:** PRs #1415 / #1416 (HTTPS-only Provider URL Drift
