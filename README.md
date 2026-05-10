@@ -46,7 +46,7 @@ Die S-Bahn-Stammstrecke ist das Rückgrat des Pendlerverkehrs. Wir erfassen und 
 | Kennzahl | Wert |
 | -------- | ---- |
 | Beobachtungen (gesamt) | 11 |
-| Median-Verspätung | 0.0 min |
+| Durchschnittliche Verspätung | 0.2 min |
 | Kritische Verspätungen (> 9 min) | 0 |
 | Letzte Aktualisierung | 2026-05-10 02:11 CEST |
 <!-- STATS:STAMMSTRECKE:END -->

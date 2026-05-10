@@ -35,7 +35,7 @@ import logging
 from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime, timedelta
-from statistics import mean
+from statistics import mean, median
 from typing import Any, Final
 from zoneinfo import ZoneInfo
 
@@ -68,8 +68,10 @@ EVENT_LINK: Final = (
 # 2026-05-09 design directive ("Die Meldung im RSS-Feed soll ganz
 # aktuelle Meldungen der letzten Stunde anzeigen") and follows the
 # observation cadence (one row per direction per 30 minutes → window
-# typically holds 2 rows, exactly the sample size needed for a
-# reasonable rolling average).
+# typically holds 2 rows). The trigger gate uses the *median* across
+# the window (defensive: a single high outlier cannot push the
+# direction past the threshold on its own); the value rendered in the
+# feed item description is the *mean* (more intuitive for end users).
 #
 # ``EPISODE_LOOKBACK`` — when computing ``first_seen`` for the current
 # above-threshold episode, we walk back further: the earliest
@@ -194,8 +196,10 @@ def compute_stammstrecke_events(
     *now* defaults to :func:`datetime.now` in Europe/Vienna. The
     function emits at most one event per direction in
     :data:`DIRECTIONS` and returns an empty list when no direction's
-    rolling average over *feed_window* exceeds
-    :data:`DELAY_THRESHOLD_MINUTES`.
+    *median* delay over *feed_window* exceeds
+    :data:`DELAY_THRESHOLD_MINUTES`. The displayed value in the feed
+    item is the *mean* of the same observations — see the module-
+    level note on the trigger / display split.
 
     Used by :func:`src.feed.providers.read_cache_stammstrecke` as the
     canonical entry point.
@@ -220,13 +224,18 @@ def compute_stammstrecke_events(
         recent = [obs for obs in direction_obs if obs.timestamp >= feed_window_start]
         if not recent:
             continue
-        avg = mean(obs.delay_minutes for obs in recent)
-        if avg <= DELAY_THRESHOLD_MINUTES:
+        delays = [obs.delay_minutes for obs in recent]
+        # Trigger gate: median resists a single outlier (one cycle's
+        # 30-min spike on an otherwise-on-time corridor would not
+        # generate a feed event). Display value: mean — easier for end
+        # users to interpret. See module docstring "Window lengths".
+        if median(delays) <= DELAY_THRESHOLD_MINUTES:
             continue
+        avg_delay = mean(delays)
         episode_start = _episode_start(direction_obs=direction_obs, now=current)
         if episode_start is None:
             # Degenerate case: ``_episode_start`` returned None despite
-            # ``avg > threshold``. Should be unreachable (the recent
+            # the median gate firing. Should be unreachable (the recent
             # subset feeds the same threshold gate), but rather than
             # raise we fall back to the earliest row in *recent* —
             # which is at most ``feed_window`` old.
@@ -234,7 +243,7 @@ def compute_stammstrecke_events(
         events.append(
             _build_event(
                 direction=direction,
-                avg_delay_minutes=avg,
+                avg_delay_minutes=avg_delay,
                 now=current,
                 episode_start=episode_start,
             )

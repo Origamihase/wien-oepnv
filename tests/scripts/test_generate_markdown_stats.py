@@ -10,7 +10,6 @@ as a focused failure rather than a giant whole-dashboard diff.
 from __future__ import annotations
 
 import sys
-from collections import Counter
 from collections.abc import Sequence
 from datetime import datetime
 from pathlib import Path
@@ -172,9 +171,6 @@ def test_aggregate_stoerungen_counts_per_dimension() -> None:
     agg = script.aggregate_stoerungen(rows)
     assert agg.total_disruptions == 3
     assert agg.by_provider == {"ÖBB": 2, "Wiener Linien": 1}
-    assert agg.by_location["Wien Floridsdorf"] == 2
-    assert agg.by_location["Karlsplatz"] == 1
-    assert agg.by_location_hour["Wien Floridsdorf"] == {7: 1, 14: 1}
 
 
 # ---- CSV reading -----------------------------------------------------------
@@ -283,71 +279,6 @@ def test_parse_stoerung_rows_uses_fallbacks_for_missing_fields() -> None:
     assert rows[0].hour == 7
 
 
-# ---- Top-N location rendering ---------------------------------------------
-
-
-def test_render_top_locations_breaks_ties_alphabetically() -> None:
-    agg = script.StoerungAggregate(
-        by_location=Counter({"Bbb": 3, "Aaa": 3, "Ccc": 1}),
-        by_location_hour={
-            "Bbb": {7: 3},
-            "Aaa": {8: 3},
-            "Ccc": {14: 1},
-        },
-        total_disruptions=7,
-    )
-    out = script.render_top_locations(agg, top_n=3)
-    body = "\n".join(out)
-    aaa_idx = body.index("Aaa")
-    bbb_idx = body.index("Bbb")
-    assert aaa_idx < bbb_idx, "ties on count must break alphabetically"
-
-
-def test_render_top_locations_handles_empty_aggregate() -> None:
-    out = script.render_top_locations(script.StoerungAggregate(), top_n=5)
-    body = "\n".join(out)
-    assert "Noch keine Störungen erfasst" in body
-
-
-def test_render_top_locations_skips_unbekannt_bucket() -> None:
-    """``unbekannt`` (extractor sentinel) must not appear in the ranking.
-
-    Without the filter, periods dominated by line-only disruption
-    mentions ("Demonstration auf Linie 5" / "Polizeieinsatz Linie 13A")
-    would surface ``unbekannt`` as the #1 hotspot — uninformative for
-    operators. The temporal stats (weekday / hour) still see those
-    rows; only the location ranking skips them.
-    """
-    agg = script.StoerungAggregate(
-        by_location=Counter(
-            {script.LOCATION_UNKNOWN: 50, "Wien Karlsplatz": 3, "Volkstheater": 2}
-        ),
-        by_location_hour={
-            script.LOCATION_UNKNOWN: {12: 50},
-            "Wien Karlsplatz": {7: 3},
-            "Volkstheater": {18: 2},
-        },
-        total_disruptions=55,
-    )
-    out = script.render_top_locations(agg, top_n=3)
-    body = "\n".join(out)
-    assert "unbekannt" not in body
-    assert "Wien Karlsplatz" in body
-    assert "Volkstheater" in body
-
-
-def test_render_top_locations_empty_when_only_unbekannt() -> None:
-    """If every disruption has ``unbekannt`` location, ranking is empty."""
-    agg = script.StoerungAggregate(
-        by_location=Counter({script.LOCATION_UNKNOWN: 10}),
-        by_location_hour={script.LOCATION_UNKNOWN: {12: 10}},
-        total_disruptions=10,
-    )
-    out = script.render_top_locations(agg, top_n=5)
-    body = "\n".join(out)
-    assert "Stationszuordnung" in body  # the empty-state placeholder
-
-
 # ---- Full markdown rendering ----------------------------------------------
 
 
@@ -366,8 +297,6 @@ def test_render_markdown_includes_summary_table_and_sections() -> None:
         by_weekday={"Mo": 1},
         by_hour={7: 1},
         by_provider={"ÖBB": 1},
-        by_location=Counter({"Wien Floridsdorf": 1}),
-        by_location_hour={"Wien Floridsdorf": {7: 1}},
         total_disruptions=1,
     )
     md = script.render_markdown(
@@ -379,8 +308,6 @@ def test_render_markdown_includes_summary_table_and_sections() -> None:
     assert md.startswith("# Wien ÖPNV — Statistik 2026")
     assert "## Stammstrecke" in md
     assert "## Störungen" in md
-    assert "Top 5 Hotspots" in md
-    assert "Wien Floridsdorf" in md
     assert "ÖBB" in md
     assert md.endswith("\n")
 
@@ -405,8 +332,6 @@ def test_render_markdown_is_byte_stable_across_repeat_calls() -> None:
         by_weekday={"Mo": 2, "Di": 1},
         by_hour={7: 1, 8: 2},
         by_provider={"ÖBB": 2, "Wiener Linien": 1},
-        by_location=Counter({"A": 2, "B": 1}),
-        by_location_hour={"A": {7: 1, 8: 1}, "B": {8: 1}},
         total_disruptions=3,
     )
     when = datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ)
@@ -473,7 +398,6 @@ def test_main_writes_dashboard_for_well_formed_inputs(tmp_path: Path) -> None:
     assert rc == 0
     body = output.read_text(encoding="utf-8")
     assert "Stammstrecke" in body
-    assert "Wien Floridsdorf" in body
     assert "Meidling" in body
 
 

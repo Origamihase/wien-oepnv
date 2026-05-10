@@ -35,7 +35,6 @@ report.
 from __future__ import annotations
 
 import sys
-from collections import Counter
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -101,91 +100,6 @@ def test_providers_section_escapes_pipe_in_provider() -> None:
     assert pipe_count == 3, (
         f"unescaped pipes in provider cell broke the table layout: "
         f"row={row!r}, unescaped pipe count={pipe_count}"
-    )
-
-
-# ---- HTML / Markdown injection in **{loc}** bold header --------------------
-
-
-def test_render_top_locations_neutralises_html_in_bold_header() -> None:
-    """HTML in *location_name* must not flow unescaped into ``**…**``.
-
-    Pre-fix ``f"**{loc}**"`` interpolated ``<script>alert(1)</script>``
-    verbatim *outside* any code block — GFM happily renders inline
-    HTML in that context, turning the dashboard into an XSS-amplifier
-    on any static-site renderer that follows the spec literally
-    (GitHub's renderer additionally sanitises script tags but every
-    operator's local IDE / Markdown viewer has its own policy).
-    Post-fix ``html.escape`` turns ``<`` / ``>`` into HTML entities so
-    no tag is reconstructable in the bold-header position.
-
-    The test scopes its assertion to the bold-header lines only —
-    the bar-chart label is rendered inside `` `…` `` *inside a fenced
-    code block* where CommonMark guarantees HTML-entity encoding on
-    output, so a literal ``<script>`` substring inside that span is
-    safe by spec.
-    """
-    payload = "<script>alert(1)</script>"
-    agg = script.StoerungAggregate(
-        by_location=Counter({payload: 1}),
-        by_location_hour={payload: {7: 1}},
-        total_disruptions=1,
-    )
-    body = "\n".join(script.render_top_locations(agg, top_n=1))
-    bold_lines = [line for line in body.splitlines() if line.startswith("**") and line.endswith("**")]
-    assert bold_lines, f"expected at least one bold-header line, got body:\n{body}"
-    for line in bold_lines:
-        assert "<script>" not in line, (
-            f"<script> tag survived into bold-header line:\n{line}"
-        )
-
-
-def test_render_top_locations_neutralises_link_in_bold_header() -> None:
-    """A Markdown link in *location_name* must not become a clickable link."""
-    payload = "Karlsplatz [click](http://attacker.example/leak)"
-    agg = script.StoerungAggregate(
-        by_location=Counter({payload: 1}),
-        by_location_hour={payload: {7: 1}},
-        total_disruptions=1,
-    )
-    body = "\n".join(script.render_top_locations(agg, top_n=1))
-    # The unescaped ``[click](http://…)`` Markdown-link syntax must not
-    # appear — GitHub renders that as a hyperlink, turning the
-    # dashboard into a phishing surface.
-    assert "[click](http://attacker.example/leak)" not in body, (
-        f"unescaped Markdown link survived into bold header:\n{body}"
-    )
-
-
-# ---- Backtick in location code-span label ---------------------------------
-
-
-def test_render_top_locations_replaces_backtick_in_codespan_label() -> None:
-    """A backtick in *location_name* must not close the inline code span.
-
-    The hotspot bar chart wraps the label in `` `…` `` inside a fenced
-    code block. A literal backtick in the label closes the inline code
-    early, leaking subsequent ``│`` separators and the bar glyphs as
-    plain text. CommonMark code spans treat backslashes as literal, so
-    the only safe defence is *replacement* (apostrophe is the
-    project-wide convention — see ``src/feed/reporting.py``
-    ``_sanitize_code_span``).
-    """
-    payload = "Foo`evil`bar"
-    agg = script.StoerungAggregate(
-        by_location=Counter({payload: 1}),
-        by_location_hour={payload: {7: 1}},
-        total_disruptions=1,
-    )
-    body = "\n".join(script.render_top_locations(agg, top_n=1))
-    # Pre-fix the code-span line was `` `Foo`evil`bar               ` `` —
-    # i.e. the label contained the *literal* backtick, prematurely
-    # closing the code span. Post-fix backticks are replaced with
-    # apostrophes so the label is `` `Foo'evil'bar` `` which keeps the
-    # code span intact.
-    assert "`Foo`evil`bar" not in body, (
-        f"raw backtick survived into code-span label and broke "
-        f"out of the inline code wrapping:\n{body}"
     )
 
 

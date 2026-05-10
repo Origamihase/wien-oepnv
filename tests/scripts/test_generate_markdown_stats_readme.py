@@ -109,7 +109,7 @@ def test_filter_rows_by_window_zero_or_negative_returns_empty() -> None:
 # ---- Stammstrecke render --------------------------------------------------
 
 
-def test_render_stammstrecke_block_with_data_uses_median_and_count() -> None:
+def test_render_stammstrecke_block_with_data_uses_mean_and_count() -> None:
     rows = [
         _make_stam(10.0, timestamp=NOW),
         _make_stam(5.0, timestamp=NOW),
@@ -119,8 +119,10 @@ def test_render_stammstrecke_block_with_data_uses_median_and_count() -> None:
         rows, now=NOW, window_days=30
     )
     assert "| Beobachtungen (gesamt) | 3 |" in block
-    # median of [10, 5, 12] sorted is [5, 10, 12] -> 10
-    assert "| Median-Verspätung | 10.0 min |" in block
+    # mean of [10, 5, 12] is 27/3 = 9.0 — README displays the
+    # arithmetic mean (intuitive for end users); the feed-event
+    # trigger uses the median (defensive against outliers).
+    assert "| Durchschnittliche Verspätung | 9.0 min |" in block
     # threshold 9 min, exceedances = [10, 12] = 2
     assert "| Kritische Verspätungen (> 9 min) | 2 |" in block
     assert "| Letzte Aktualisierung | 2026-05-09 12:00" in block
@@ -330,9 +332,9 @@ def test_main_writes_readme_with_30_day_window(tmp_path: Path) -> None:
     )
     assert rc == 0
     new_text = readme.read_text(encoding="utf-8")
-    # Stammstrecke: 2 observations, median 8.5, 1 exceedance (12 > 9).
+    # Stammstrecke: 2 observations, mean 8.5, 1 exceedance (12 > 9).
     assert "| Beobachtungen (gesamt) | 2 |" in new_text
-    assert "| Median-Verspätung | 8.5 min |" in new_text
+    assert "| Durchschnittliche Verspätung | 8.5 min |" in new_text
     assert "| Kritische Verspätungen (> 9 min) | 1 |" in new_text
 
 
