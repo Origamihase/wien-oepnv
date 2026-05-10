@@ -277,6 +277,20 @@ def _load_fallback(path: Path) -> dict[str, Any] | None:
 # fields and similar) attach attacker-controlled text under the project's
 # brand. ``validate_http_url()`` only checks SSRF/DNS-rebinding properties,
 # not host identity.
+#
+# 2026-05-10 (HTTPS-only Provider URL Drift, Round 2 — ``scripts/`` sibling):
+# the validator additionally pins the scheme to ``https``. ``validate_http_url``
+# accepts both ``http`` and ``https``; without this pin, an env override such
+# as ``BAUSTELLEN_DATA_URL=http://data.wien.gv.at/...`` would be accepted, the
+# fetcher would issue a plaintext request, and an MITM (compromised network,
+# BGP hijack, hostile public WiFi gateway) could substitute arbitrary GeoJSON
+# that flows verbatim into the public ``docs/feed.xml`` artefact. Mirrors the
+# canonical ``validate_public_feed_url`` HTTPS-only pin
+# (``src/utils/http.py``) and the ``_validated_vor_base_url`` /
+# ``_validated_oebb_url`` / ``_validated_wl_base`` siblings closed by
+# PR #1415. The closing-checklist grep for that round was scoped to ``src/``
+# only, missing this ``scripts/`` cousin — see the journal entry of the same
+# date for the full closing-checklist rule update.
 _BAUSTELLEN_TRUSTED_HOSTS = frozenset({"data.wien.gv.at"})
 
 
@@ -284,7 +298,11 @@ def _validated_baustellen_data_url(raw: str) -> str | None:
     safe = validate_http_url(raw)
     if not safe:
         return None
-    host = (urlparse(safe).hostname or "").lower()
+    parsed = urlparse(safe)
+    # Security: refuse plaintext HTTP — see header above.
+    if parsed.scheme.lower() != "https":
+        return None
+    host = (parsed.hostname or "").lower()
     if host not in _BAUSTELLEN_TRUSTED_HOSTS:
         return None
     return cast(str, safe)

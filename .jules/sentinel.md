@@ -1,3 +1,116 @@
+## 2026-05-10 - HTTPS-only Provider URL Drift Round 2: `_validated_baustellen_data_url` in `scripts/` Was the Closing-Checklist's Own Blind Spot
+
+**Vulnerability:** PR #1415 (HTTPS-only Provider URL Drift) closed
+the scheme-pin gap on three sibling validators
+(`_validated_vor_base_url` / `_validated_oebb_url` /
+`_validated_wl_base`) and pinned the closing-checklist grep:
+
+    grep -rn "_validated_.*_url\|_validated_.*_base" src/
+
+The grep was scoped to `src/` only — a deliberate scope-narrowing to
+match the location of the three known siblings, but a one-character
+mistake on the rule that the audit walker should cover EVERY tree
+in the repo where validators can live. Running the same grep with
+`scripts/` added immediately surfaces the fourth sibling:
+
+    scripts/update_baustellen_cache.py:283:def _validated_baustellen_data_url(raw: str) -> str | None:
+
+`_validated_baustellen_data_url` carried the **identical drift
+shape** as the three closed siblings — it accepts both `http` and
+`https` schemes because it delegates to `validate_http_url`, then
+pins the host (`data.wien.gv.at`) without constraining the scheme
+dimension. An env override
+`BAUSTELLEN_DATA_URL=http://data.wien.gv.at/...` (intentional
+misconfig, leaked CI env, copy-paste from old documentation,
+compromised secret store) is accepted verbatim — and
+`update_baustellen_cache.py` is wired into the cron pipeline
+through the `update-cycle.yml` DAG (line 154 fans it out alongside
+WL/ÖBB/Stammstrecke).
+
+**Threat model:** Identical to the OEBB and WL siblings closed by
+PR #1415 — feed-content cache poisoning. An on-path attacker
+(compromised network, BGP hijack, hostile public WiFi gateway,
+MITM proxy on an organisational HTTP gateway) substitutes
+arbitrary GeoJSON. The poisoned content flows through
+`update_baustellen_cache` into `cache/baustellen/events.json`,
+which the build pipeline merges into the public `docs/feed.xml`
+artefact (served from
+`https://origamihase.github.io/wien-oepnv/feed.xml`). Per-item
+`title` / `description` / `properties.HINWEIS` strings are under
+attacker control — the published RSS feed becomes a brand-
+amplifying disinformation channel for any subscriber's reader. No
+credential leak (the WFS endpoint is unauthenticated) but
+identical public-artefact integrity impact.
+
+**Severity:** MEDIUM-HIGH — feed-content cache poisoning. Same
+shape as the OEBB / WL siblings closed by PR #1415.
+
+**Fix:** Mirror the canonical
+`validate_public_feed_url` / `_validated_vor_base_url` /
+`_validated_oebb_url` / `_validated_wl_base` shape: enforce
+`parsed.scheme.lower() == "https"` after delegating to
+`validate_http_url`. An `http://` env override is rejected and
+falls back to the safe HTTPS `DEFAULT_DATA_URL`, matching the
+existing untrusted-host rejection contract.
+
+The PoC test
+`tests/test_sentinel_baustellen_url_https_drift.py` enumerates 14
+cases:
+
+* 3 + 3 per-validator scheme-pin tests (HTTP rejected, HTTPS
+  accepted) covering the OGD WFS path shape and bare-host shape.
+* 2 end-to-end `_resolve_data_url` env-override tests that pin
+  the fallback-to-default contract and the warning-emission
+  contract.
+* 1 cross-validator inventory test that walks every
+  `_validated_*_url` symbol in BOTH `src/` and `scripts/` —
+  including `_validated_baustellen_data_url` — and asserts the
+  HTTPS-only shape.
+* 4 untrusted-host regression cases (preserves the
+  existing host-pin contract post-fix).
+* 1 module-reload smoke test that catches accidental
+  NameError / circular-import regressions on the validator's
+  module-level evaluation path.
+
+**Learning:** The closing-checklist for PR #1415 named the audit
+grep `grep -rn '_validated_.*_url\|_validated_.*_base' src/` and
+described it as "every site that must be widened in lockstep with
+the canonical helper". The grep is correctly shaped (regex
+matches every sibling validator name), but the scope (`src/`) is
+NARROWER than the threat surface — three of the four sibling
+validators live in `src/providers/`, but the cron pipeline reaches
+`scripts/update_baustellen_cache.py` exactly the same way it
+reaches the provider modules. Audit greps that enumerate sibling
+sites must scope to **every tree where the relevant pattern can
+live**: `src/`, `scripts/`, and (if a future site emerges)
+`tests/` for fixtures that mock the contract. The scope-narrowing
+is the audit walker's own blind spot — the same shape as "the
+regex covers BiDi marks but not the 8-bit C1 controls"
+(2026-05-10 round) but in the directory dimension instead of the
+character-class dimension.
+
+The matching PoC sentinel marker `SENTINEL_HTTPS_DRIFT` is shared
+with PR #1415's test file so a future grep for the marker finds
+the full call-graph at once. The cross-validator inventory test
+in this PR's test file is the canonical anchor for future fifth
+siblings — adding a new validator that accepts `http://` will fail
+`test_all_provider_url_validators_reject_http` until the canonical
+shape is restored, regardless of which tree it lives in.
+
+**Prevention:** The closing-checklist grep is amended to:
+
+    grep -rn "_validated_.*_url\|_validated_.*_base" src/ scripts/
+
+Both trees are walked. The cross-validator inventory test
+(`test_all_provider_url_validators_reject_http`) imports
+validators from BOTH `src.providers.*` and
+`scripts.update_baustellen_cache`, so a future sixth validator
+in either tree must be added to the inventory or a sibling
+inventory test must extend it. A future seventh tree (e.g.
+`maintenance/`) for one-off operator scripts would need the
+inventory tuple updated; the `SENTINEL_HTTPS_DRIFT` marker is
+the breadcrumb to find that update site.
+
 ## 2026-05-10 - HTTPS-only Provider URL Drift: `_validated_vor_base_url` / `_validated_oebb_url` / `_validated_wl_base` Accepted `http://` Overrides — VOR Credential Leak via TLS-Strip on Env Override
 
 **Vulnerability:** Three provider URL validators
