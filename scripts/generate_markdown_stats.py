@@ -1122,26 +1122,21 @@ def main(argv: list[str] | None = None) -> int:
     if args.skip_readme:
         return 0
 
-    # Load the cross-year stats window for the README snapshot. The
-    # nightly workflow runs at 00:15 Europe/Vienna, so a 30-day cutoff
-    # in early January legitimately spans the previous calendar year.
-    # ``collect_year_data`` returns empty lists for missing files, so
-    # eagerly loading both years is safe even mid-year.
+    # Load the cross-year Stammstrecke window for the README snapshot.
+    # The nightly workflow runs at 00:15 Europe/Vienna, so a 30-day
+    # cutoff in early January legitimately spans the previous calendar
+    # year. ``collect_year_data`` returns empty lists for missing files,
+    # so eagerly loading both years is safe even mid-year.
     cutoff = now - timedelta(days=args.readme_window_days)
     extra_years = sorted({cutoff.year, now.year} - {args.year})
     window_sm: list[StammstreckeRow] = list(sm_rows)
-    window_st: list[StoerungRow] = list(st_rows)
     for extra_year in extra_years:
-        extra_sm, extra_st = collect_year_data(
+        extra_sm, _ = collect_year_data(
             extra_year, stats_dir=args.stats_dir
         )
         window_sm.extend(extra_sm)
-        window_st.extend(extra_st)
     sm_window = _filter_rows_by_window(
         window_sm, days=args.readme_window_days, now=now
-    )
-    st_window = _filter_rows_by_window(
-        window_st, days=args.readme_window_days, now=now
     )
     # Defense-in-depth: only patch the Stammstrecke marker when the
     # window actually carries rows. Without this gate, an unrelated
