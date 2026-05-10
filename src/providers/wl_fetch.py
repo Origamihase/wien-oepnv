@@ -50,6 +50,16 @@ _WL_DEFAULT_BASE = "https://www.wienerlinien.at/ogd_realtime"
 # ``https://evil.com`` into every WL item's ``<link>`` element, weaponising the
 # public RSS feed as a phishing redirector. ``validate_http_url()`` only
 # checks SSRF/DNS-rebinding properties, not host identity.
+#
+# 2026-05-10 (HTTPS-only Provider URL Drift): the validator additionally
+# pins the scheme to ``https``. ``validate_http_url`` accepts both ``http``
+# and ``https``; without this pin, an env override such as
+# ``WL_RSS_URL=http://www.wienerlinien.at/ogd_realtime`` would be accepted,
+# every ``_fetch_traffic_infos`` / ``_fetch_news`` call would issue a
+# plaintext request, and an MITM could substitute arbitrary alerts that
+# flow verbatim into the public ``docs/feed.xml`` artefact. Mirrors the
+# canonical ``validate_public_feed_url`` HTTPS-only pin
+# (``src/utils/http.py``) and the VOR / OEBB sibling validators.
 _WL_TRUSTED_HOSTS = frozenset({"www.wienerlinien.at"})
 
 
@@ -57,7 +67,11 @@ def _validated_wl_base(raw: str) -> str | None:
     safe = validate_http_url(raw)
     if not safe:
         return None
-    host = (urlparse(safe).hostname or "").lower()
+    parsed = urlparse(safe)
+    # Security: refuse plaintext HTTP — see header above.
+    if parsed.scheme.lower() != "https":
+        return None
+    host = (parsed.hostname or "").lower()
     if host not in _WL_TRUSTED_HOSTS:
         return None
     return safe

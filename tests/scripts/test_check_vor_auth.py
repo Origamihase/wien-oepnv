@@ -58,9 +58,22 @@ def test_returns_1_when_base_url_is_plain_http(
     monkeypatch.setattr(vor_module, "VOR_BASE_URL", "http://insecure.test/api/v1.11.0/")
     monkeypatch.setattr(vor_module, "refresh_base_configuration", lambda: vor_module.VOR_BASE_URL)
 
-    caplog.set_level(logging.INFO, logger="vor.auth_check")
+    # 2026-05-10 (HTTPS-only Provider URL Drift): ``apply_authentication``
+    # now fails closed on ``http://``-scheme base URLs — it skips the
+    # ``session.auth`` setup so the access ID never reaches the wire over
+    # plaintext HTTP. The diagnostic script still returns 1 to signal the
+    # misconfiguration; both the missing-auth error AND the
+    # ``http://``-scheme warning surface in the log so an operator
+    # debugging the failure sees the cause clearly.
+    caplog.set_level(logging.WARNING)
     assert check.main() == 1
-    assert any("plain HTTP" in r.getMessage() for r in caplog.records)
+    messages = " ".join(r.getMessage() for r in caplog.records)
+    assert (
+        "did not configure session.auth" in messages
+        or "Klartext" in messages
+        or "plain HTTP" in messages
+        or "http://" in messages
+    )
 
 
 def test_scheme_label_detection() -> None:

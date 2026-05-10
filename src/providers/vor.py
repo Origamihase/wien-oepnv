@@ -591,6 +591,17 @@ VOR_STATION_NAMES: list[str] = [
 # in shape to ``_validated_oebb_url`` / ``_validated_wl_base`` for the
 # corresponding provider env vars. Forks that need a different upstream must
 # update this allowlist deliberately rather than via an env override.
+#
+# 2026-05-10 (HTTPS-only Provider URL Drift): the validator additionally
+# pins the scheme to ``https``. ``validate_http_url`` accepts both ``http``
+# and ``https``; without this pin, an env override such as
+# ``VOR_BASE_URL=http://routenplaner.verkehrsauskunft.at/api/`` would be
+# accepted, ``apply_authentication`` would still attach the VAO access ID
+# (today only emits a WARNING but proceeds anyway), and every VAO request
+# would carry the long-lived credential over plaintext HTTP — captured by
+# any on-path attacker (compromised network, BGP hijack, MITM proxy).
+# Mirrors the canonical ``validate_public_feed_url`` HTTPS-only pin
+# (``src/utils/http.py``) and the OEBB / WL sibling validators.
 _VOR_TRUSTED_HOSTS = frozenset({"routenplaner.verkehrsauskunft.at"})
 
 
@@ -598,7 +609,13 @@ def _validated_vor_base_url(raw: str) -> str | None:
     safe = validate_http_url(raw)
     if not safe:
         return None
-    host = (urlparse(safe).hostname or "").lower()
+    parsed = urlparse(safe)
+    # Security: refuse plaintext HTTP — the VAO base URL carries the
+    # access ID on every request; an HTTP scheme is a TLS-strip credential
+    # leak. See the regex header above for the full threat model.
+    if parsed.scheme.lower() != "https":
+        return None
+    host = (parsed.hostname or "").lower()
     if host not in _VOR_TRUSTED_HOSTS:
         return None
     return safe
@@ -797,12 +814,33 @@ def apply_authentication(session: Session) -> None:
 
     - Sets the `Authorization` header (if applicable).
     - Assigns VorAuth to session.auth to inject ``accessId`` into query parameters automatically.
+
+    Security (HTTPS-only Provider URL Drift, 2026-05-10): when
+    ``VOR_BASE_URL`` carries an ``http://`` scheme, the auth setup
+    fails closed — credentials are NOT attached to the session. The
+    canonical validator ``_validated_vor_base_url`` already pins the
+    scheme to ``https`` at module-load time, but a future caller that
+    sets ``vor.VOR_BASE_URL`` directly (test fixture, debug knob,
+    refactor regression) could bypass that gate. This second line of
+    defence ensures the access ID never reaches the wire over
+    plaintext HTTP, even when the validator is bypassed.
     """
     refresh_access_credentials()
 
-    # Security check: Warn if sending credentials over plain HTTP
-    if VOR_BASE_URL.lower().startswith("http://") and (VOR_ACCESS_ID or _VOR_AUTHORIZATION_HEADER):
-        _log_warning("Sending VOR credentials over insecure HTTP connection! This is unsafe.")
+    # Security: fail-closed on plaintext HTTP. Pre-fix the code only
+    # logged a WARNING but proceeded to attach credentials, which is a
+    # fail-OPEN posture: an on-path attacker on the HTTP hop captures
+    # the access ID verbatim. Refusing to attach credentials defeats
+    # the TLS-strip primitive even if the validator gate is bypassed.
+    if VOR_BASE_URL.lower().startswith("http://") and (
+        VOR_ACCESS_ID or _VOR_AUTHORIZATION_HEADER
+    ):
+        _log_warning(
+            "VOR_BASE_URL ist http:// — Authentifizierung wird übersprungen, "
+            "um den Zugangsschlüssel nicht im Klartext zu übertragen."
+        )
+        session.headers.setdefault("Accept", "application/json")
+        return
 
     session.headers.setdefault("Accept", "application/json")
     # FIX: Do not set Authorization header directly on session.headers to avoid premature injection

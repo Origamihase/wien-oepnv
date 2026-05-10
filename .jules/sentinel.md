@@ -1,3 +1,146 @@
+## 2026-05-10 - HTTPS-only Provider URL Drift: `_validated_vor_base_url` / `_validated_oebb_url` / `_validated_wl_base` Accepted `http://` Overrides — VOR Credential Leak via TLS-Strip on Env Override
+
+**Vulnerability:** Three provider URL validators
+(`src/providers/vor.py:_validated_vor_base_url`,
+`src/providers/oebb.py:_validated_oebb_url`,
+`src/providers/wl_fetch.py:_validated_wl_base`) delegated scheme
+validation to `src/utils/http.py:validate_http_url`, which accepts
+**both `http` and `https`** by default. Each validator pinned the
+host (`routenplaner.verkehrsauskunft.at` /
+`fahrplan.oebb.at` / `www.wienerlinien.at`) but did NOT pin the
+scheme, so an env override such as
+`VOR_BASE_URL=http://routenplaner.verkehrsauskunft.at/api/`
+(intentional misconfig, leaked CI env, copy-paste from old
+documentation, compromised secret store) was accepted verbatim.
+
+The 2026-05-09 *Public Feed URL Allow-List Drift* round closed the
+analogous shape for `validate_public_feed_url`
+(`src/utils/http.py`) — pinning the scheme to `https` so the public
+feed `<link>` / atom hrefs / sitemap `<loc>` cannot be downgraded to
+plaintext. The provider-side cousins were left at the looser
+`validate_http_url`-only shape.
+
+**Threat model (highest-impact path):** The VOR validator is the
+load-bearing site — the access ID is a long-lived credential.
+
+* **VOR — credential leak (HIGH).** `VorAuth.__call__`
+  (`src/providers/vor.py:768-792`) attaches the VAO `accessId`
+  query parameter AND a `Authorization: Bearer/Basic <VOR_ACCESS_ID>`
+  header to every prepared request whose URL starts with
+  `VOR_BASE_URL`. Pre-fix `apply_authentication` already detected
+  the `http://` shape and emitted a WARNING — but then **proceeded
+  to attach the credentials anyway**, a fail-OPEN posture: an
+  on-path attacker (compromised network, BGP hijack, MITM proxy)
+  on any HTTP hop captures the access ID verbatim. The access ID
+  grants full read access to the VAO API (100 reqs/day under the
+  "VAO Start" tier). An attacker who lifts it can exhaust the
+  project's daily quota, exfiltrate proprietary station /
+  disruption data, or correlate the project's request pattern with
+  operator activity.
+
+* **OEBB — feed-content cache poisoning (MEDIUM-HIGH).**
+  `OEBB_URL` is fetched via `_fetch_xml` and the returned RSS items
+  become per-item `<link>` / `<title>` / `<description>` in the
+  public `docs/feed.xml` artefact (served from
+  `https://origamihase.github.io/wien-oepnv/feed.xml`). An attacker
+  who can MITM the HTTP fetch injects arbitrary RSS items
+  (phishing links, misinformation, malicious OSC sequences) into
+  the published feed.
+
+* **WL — feed-content cache poisoning (MEDIUM-HIGH).** Identical
+  shape to OEBB: `WL_BASE` is the prefix every
+  `_fetch_traffic_infos` / `_fetch_news` call concatenates a path
+  onto, and the returned JSON becomes the per-item body in the
+  public RSS feed.
+
+**Severity:** HIGH for VOR (credential leak), MEDIUM-HIGH for OEBB
+and WL (data integrity / feed-content cache poisoning).
+
+**Fix:** Two-tier defence:
+
+1. **Validator boundary (primary gate).** Each
+   `_validated_*_url` function now checks
+   `parsed.scheme.lower() != "https"` after delegating to
+   `validate_http_url`, mirroring the canonical
+   `validate_public_feed_url` shape. An `http://` env override is
+   rejected and falls back to the safe HTTPS default, matching the
+   existing untrusted-host rejection contract.
+
+2. **`apply_authentication` (defense-in-depth fail-closed).** When
+   `VOR_BASE_URL` somehow carries an `http://` scheme (e.g. a
+   future caller sets `vor.VOR_BASE_URL` directly without going
+   through `_validated_vor_base_url` — test fixture, debug knob,
+   refactor regression), the auth setup now **refuses to attach
+   credentials** to the session. Pre-fix the code only logged a
+   WARNING but proceeded; post-fix `session.auth` is left
+   unmodified so the access ID never reaches the wire. The
+   diagnostic script `scripts/check_vor_auth.py` continues to
+   return exit code 1 in this scenario (the
+   "did not configure session.auth" error fires before the
+   "plain HTTP" check, but the operator-facing exit-code contract
+   is preserved).
+
+The PoC test
+`tests/test_sentinel_provider_url_https_drift.py` enumerates every
+sub-vector across 17 cases:
+
+* 3 + 1 per-validator scheme-pin tests (HTTP rejected, HTTPS
+  accepted) for VOR, OEBB, WL.
+* 3 module-level env-override tests (`importlib.reload` with
+  `VOR_BASE_URL=http://...` / `OEBB_RSS_URL=http://...` /
+  `WL_RSS_URL=http://...`) verifying the safe default takes effect.
+* 1 fail-closed test for `apply_authentication` (no VorAuth
+  attached when base URL is HTTP) + 1 happy-path regression
+  (VorAuth IS attached on HTTPS).
+* 1 cross-provider inventory test that walks every
+  `_validated_*_url` symbol and asserts the same HTTPS-only shape,
+  so a future fourth provider whose validator accepts `http://`
+  fails the test until the canonical shape is restored.
+
+The existing `test_vor_https_warning.py` and
+`tests/scripts/test_check_vor_auth.py` were updated to match the
+new fail-closed warning text and the script's revised log path
+(both still verify the same end-to-end behavioural contract:
+warning + no credentials on HTTP, auth setup on HTTPS, exit 1 on
+HTTP misconfig).
+
+**Learning:** The 2026-05-09 *Public Feed URL Allow-List Drift*
+round explicitly named "scheme pin to `https` is required because
+`validate_http_url` accepts both schemes" — but that round only
+closed the *publishing* surface (`validate_public_feed_url`). The
+*consuming* surface (the three provider validators) sat at the
+looser shape because each `_validated_*_url` was originally added
+for *host-identity* threats (typo squat, CI-pipeline injection,
+mistaken Enterprise URL) and the scheme dimension was implicit in
+the default URL constants. Once an env override comes into play,
+the scheme dimension becomes explicit and must be pinned at the
+validator boundary.
+
+The fail-OPEN warning shape in `apply_authentication`
+("Sending VOR credentials over insecure HTTP connection!") was a
+pre-existing tell — a project that *warns* about credential
+exposure but proceeds to expose them anyway is signalling that
+the security check is incomplete. Operators who set the env
+override with the warning visible in CI logs would still leak the
+credential because the warning was diagnostic, not preventative.
+The fail-CLOSED contract makes the security guarantee match the
+warning.
+
+**Prevention:** The cross-provider inventory test
+`test_provider_url_validators_all_reject_http` enumerates every
+`_validated_*_url` symbol in the `src/providers/` namespace and
+asserts the canonical scheme-pin shape. A future fourth provider
+(e.g. a hypothetical `_validated_postbus_url` for a Postbus AG
+integration) must inherit the same scheme-pin contract by walking
+the validator registry, OR the inventory test fails at PR-review
+time. Closing-checklist grep for future widening of
+`validate_http_url` (e.g. a hypothetical `ws`/`wss` extension):
+`grep -rn "_validated_.*_url\|_validated_.*_base" src/` enumerates
+every site that must be widened in lockstep with the
+canonical helper. The matching PoC sentinel marker
+`SENTINEL_HTTPS_DRIFT` lets a future audit grep the full
+call-graph at once.
+
 ## 2026-05-10 - 8-bit C1 Terminal-Escape Drift: `_INVISIBLE_DANGEROUS_RE` Always-Strip Floor Missed `\x7f-\x9f` (CSI/OSC/DCS 8-bit Primitives) on Every `strip_control_chars=False` Sibling Path
 
 **Vulnerability:** The 2026-05-09 *BiDi-Mark Drift Round 2* round
