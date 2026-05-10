@@ -97,7 +97,6 @@ README_MAX_BYTES: Final = 1 * 1024 * 1024
 # annual dashboard remains at ``docs/statistik.md``; the README block is
 # intentionally short so it stays glanceable.
 DEFAULT_README_WINDOW_DAYS: Final = 30
-README_DISRUPTIONS_TOP_N: Final = 3
 STAMMSTRECKE_THRESHOLD_MINUTES: Final = 9.0
 README_PENDING_PLACEHOLDER: Final = "_wird berechnet…_"
 
@@ -863,82 +862,6 @@ def render_readme_stammstrecke_block(
     )
 
 
-def render_readme_disruptions_block(
-    rows: list[StoerungRow],
-    *,
-    window_days: int = DEFAULT_README_WINDOW_DAYS,
-    top_n: int = README_DISRUPTIONS_TOP_N,
-) -> str:
-    """Render the inner content of the ``STATS:DISRUPTIONS`` README block.
-
-    Sorts incidents per location with a stable secondary sort on the
-    canonical (un-escaped) location name so two locations sharing the
-    same incident count produce a deterministic ranking across runs.
-
-    The location cell flows through
-    :func:`src.utils.text.escape_markdown_cell` (which composes
-    :func:`escape_markdown` and pipe-replacement). A CSV row whose
-    ``location_name`` smuggles a literal pipe / backtick / angle
-    bracket / embedded HTML therefore cannot break out of the 3-column
-    table cell. See the threat model on
-    :func:`_format_directions_section` and the Sentinel journal entry
-    "Markdown sibling drift round" (2026-05-09).
-    """
-    header = (
-        f"> _Letzte {window_days} Tage – automatisch aktualisiert vom Workflow_ "
-        "[`update-cycle.yml`](.github/workflows/update-cycle.yml).\n"
-        "\n"
-        "| Rang | Station / Ort | Vorfälle |\n"
-        "| ---- | ------------- | -------- |\n"
-    )
-    body_lines: list[str] = []
-    if not rows:
-        for rank in range(1, top_n + 1):
-            body_lines.append(f"| {rank}. | {README_PENDING_PLACEHOLDER} | – |")
-        return header + "\n".join(body_lines) + "\n"
-    # Skip the ``unbekannt`` bucket so periods dominated by line-only
-    # disruption mentions ("Demonstration auf Linie 5") don't surface
-    # the sentinel as the #1 hotspot in the README. The bucket is still
-    # counted in the dashboard's overall total / temporal distribution
-    # — this filter only affects the operator-visible top-N ranking.
-    counter: Counter[str] = Counter()
-    unknown_count = 0
-    for row in rows:
-        if row.location_name == LOCATION_UNKNOWN:
-            unknown_count += 1
-            continue
-        counter[row.location_name] += 1
-    if not counter:
-        # Window has rows, but every row's ``location_name`` is the
-        # ``unbekannt`` sentinel — typically a period dominated by
-        # line-only WL disruption mentions ("Demonstration auf Linie
-        # 5", "Polizeieinsatz Linie 13A"). Three blank ``– | –`` rows
-        # would read as "no data"; an explanatory cell is more honest:
-        # disruptions exist, they just don't carry station context the
-        # extractor can resolve.
-        body_lines.append(
-            f"| – | _Keine Vorfälle mit Stationszuordnung im Zeitraum "
-            f"({_format_thousands(unknown_count)} ohne Stationsbezug)._"
-            f" | – |"
-        )
-        for rank in range(2, top_n + 1):
-            body_lines.append(f"| {rank}. | – | – |")
-        return header + "\n".join(body_lines) + "\n"
-    ranked = sorted(
-        counter.items(),
-        key=lambda pair: (-pair[1], pair[0]),
-    )[:top_n]
-    for rank, (loc, count) in enumerate(ranked, start=1):
-        cell = escape_markdown_cell(
-            normalise_markdown_text(loc, max_len=_DASHBOARD_FIELD_MAX_LEN)
-        ) or "_(leer)_"
-        body_lines.append(f"| {rank}. | {cell} | {_format_thousands(count)} |")
-    # Pad the table to *top_n* rows so the layout is stable across runs.
-    for rank in range(len(ranked) + 1, top_n + 1):
-        body_lines.append(f"| {rank}. | – | – |")
-    return header + "\n".join(body_lines) + "\n"
-
-
 # Marker pair contract: the patcher rewrites whatever sits between
 # ``<!-- STATS:<NAME>:BEGIN -->`` and ``<!-- STATS:<NAME>:END -->``.
 # Both markers MUST appear verbatim and on their own logical line in
@@ -1220,19 +1143,15 @@ def main(argv: list[str] | None = None) -> int:
     st_window = _filter_rows_by_window(
         window_st, days=args.readme_window_days, now=now
     )
-    # Defense-in-depth: a marker block is only patched when its source
-    # window actually carries data. Without this gate, an unrelated
+    # Defense-in-depth: only patch the Stammstrecke marker when the
+    # window actually carries rows. Without this gate, an unrelated
     # caller of ``main()`` that supplies a stats directory but forgets
     # to override ``--readme-path`` (or pass ``--skip-readme``) would
     # silently overwrite the production ``README.md`` with the
     # ``_wird berechnet…_`` placeholder block — that exact bug bit
     # ``tests/scripts/test_generate_markdown_stats.py`` and stamped
     # placeholders into the committed README on 2026-05-09 (audit
-    # trail in PR #1397). Per-block conditional patching also avoids
-    # destroying a populated Disruption snapshot when only the
-    # Stammstrecke ledger has fresh data, and vice versa: each
-    # ``<!-- STATS:* -->`` marker stays at "last good content" until
-    # the corresponding window has rows again.
+    # trail in PR #1397).
     sections: dict[str, str] = {}
     if sm_window:
         sections["STAMMSTRECKE"] = render_readme_stammstrecke_block(
@@ -1243,16 +1162,6 @@ def main(argv: list[str] | None = None) -> int:
     else:
         LOGGER.info(
             "STAMMSTRECKE README block skipped: 0 rows in %d-day window.",
-            args.readme_window_days,
-        )
-    if st_window:
-        sections["DISRUPTIONS"] = render_readme_disruptions_block(
-            st_window,
-            window_days=args.readme_window_days,
-        )
-    else:
-        LOGGER.info(
-            "DISRUPTIONS README block skipped: 0 rows in %d-day window.",
             args.readme_window_days,
         )
     if not sections:
@@ -1286,7 +1195,6 @@ __all__ = [
     "DEFAULT_README_WINDOW_DAYS",
     "LOCATION_UNKNOWN",
     "MAX_CSV_BYTES",
-    "README_DISRUPTIONS_TOP_N",
     "README_MAX_BYTES",
     "README_PENDING_PLACEHOLDER",
     "STAMMSTRECKE_THRESHOLD_MINUTES",
@@ -1302,7 +1210,6 @@ __all__ = [
     "patch_readme_stats",
     "render_hour_bars",
     "render_markdown",
-    "render_readme_disruptions_block",
     "render_readme_stammstrecke_block",
     "render_top_locations",
     "render_weekday_bars",
