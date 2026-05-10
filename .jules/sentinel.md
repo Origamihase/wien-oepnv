@@ -1,3 +1,249 @@
+## 2026-05-10 - Secret Scanner Drift Round 8: Render / Buildkite User Access Token / Fly.io — Round 7's Named-But-Deferred Hosting + Execution + PaaS Sub-Landscapes
+
+**Vulnerability:** The 2026-05-10 Round 7 entry (PR for Doppler /
+Buildkite Agent Token / Netlify) re-stated the prevention rule:
+
+> "Every audit round that adds a new issuer MUST also enumerate THREE
+> adjacent sub-landscapes the round did NOT cover."
+
+Round 7 enumerated **secrets management continued** (closed Doppler),
+**CI/CD execution tier** (closed Buildkite Agent Token) and **CI/CD
+hosting tier** (closed Netlify), and explicitly named four next-round
+candidates:
+
+* **CI/CD platforms hosting tier continued** — Render
+  (`rnd_<base64>`) — UNAMBIGUOUS prefix, deferred from Round 6 and
+  re-named in Round 7's deferred list.
+* **CI/CD platforms execution tier continued** — Buildkite User
+  Access Token (`bkua_<base64>`) — UNAMBIGUOUS prefix, sibling of
+  Round 7's Buildkite Agent Token (`bkat_`).
+* **PaaS / edge runtime** — Fly.io (`FlyV1 <macaroon>`) —
+  multi-segment dot/slash separated, needs new pattern shape (the
+  literal space + base64url body crosses the entropy fallback's
+  contiguous-match boundary).
+* **Secrets management continued** — Infisical
+  (`<32 hex>:<32 hex>`-shape, no prefix — bucket-(b)) — deferred
+  for a later round (no canonical prefix; permanent bucket-(b)).
+
+Closing the three named-and-canonical-prefixed entries (Render,
+Buildkite User Access Token, Fly.io) re-establishes the issuer-
+attribution coverage the Round 7 closing checklist guaranteed. Each
+token's canonical format silently bypasses specific attribution in
+`_KNOWN_TOKENS`:
+
+  1. **Render Personal Access Token** (`rnd_<40+ alphanumeric body>`)
+     — issued via dashboard.render.com/u/settings#api-keys for full
+     Render REST-API access. Total length 44+ chars (4-char prefix +
+     40+ char body). The `rnd_` prefix is unambiguous (no other
+     major issuer uses it), and the body lies entirely inside the
+     entropy fallback's `[A-Za-z0-9+/=_-]` alphabet — so the
+     entropy regex matches the full `rnd_<body>` span as one
+     generic finding, losing the Render-specific attribution. A
+     leak grants the issuing user's full Render API scope:
+     read/write every owned service's deploys, environment
+     variables, persistent disks, custom domains, build hooks and
+     webhook configuration; a malicious deploy can replace the live
+     application (web service, static site, cron job, background
+     worker) with arbitrary code. Render is the canonical hosting-
+     platform sibling of Netlify (Round 7) and rounds out the
+     CI/CD hosting tier alongside the deferred Vercel
+     (bucket-(b) no-prefix) and the deferred Cloudflare Pages
+     (bucket-(b) no-prefix).
+
+  2. **Buildkite User Access Token** (`bkua_<40+ alphanumeric body>`)
+     — issued via buildkite.com/user/api-access-tokens for
+     user-scoped REST-API access. Distinct from the Round-7
+     Buildkite Agent Token (`bkat_`): agent tokens register CI
+     workers, user tokens act on behalf of a human user. The two
+     prefixes differ at the FOURTH character (`bkat` vs `bkua`)
+     and are mutually exclusive at the prefix level. The `bkua_`
+     prefix is unambiguous, and the body lies entirely inside the
+     entropy alphabet — same generic-only attribution gap as
+     `bkat_`. A leak grants the issuing user's full Buildkite API
+     scope across every accessible organisation: read pipeline
+     definitions, retry historical builds with attacker-controlled
+     env overrides, manage agents, and exfiltrate access logs.
+     The revocation flow lives at
+     buildkite.com/user/api-access-tokens (distinct from
+     agent-token revocation at
+     buildkite.com/organizations/<org>/agents).
+
+  3. **Fly.io API Token** (`FlyV1 fm[12]_<base64 body>` or
+     `FlyV1 fo1_<base64 body>`) — issued via the `fly auth token`
+     CLI or fly.io/dashboard/<org>/tokens for full Fly.io platform
+     API access (deploy apps, read secrets, manipulate Wireguard
+     peers, manage organisations). Modern macaroon tokens use
+     `fm2_` (current default) or `fm1_` (legacy macaroon), and
+     the oldest opaque tokens use `fo1_`. Total length 200+
+     chars in practice (the macaroon body encodes embedded JSON
+     capability descriptions plus organisation / app scope). The
+     literal SPACE in `FlyV1 ` and the body alphabet
+     `[A-Za-z0-9_=\-]` (base64url + `=` padding) place the prefix
+     OUTSIDE the entropy fallback's contiguous-match span — the
+     space is not in the entropy alphabet, so pre-fix the entropy
+     regex matches only the body span after the underscore,
+     losing both the `FlyV1 fm2_` prefix AND the Fly.io-specific
+     issuer attribution. A leak grants the issuing principal's
+     full Fly.io organisation scope: deploy arbitrary container
+     images (which can exfiltrate every secret in the org's apps),
+     modify networking (Wireguard peers, IP allocations, Anycast
+     routes), and rotate billing credentials. Fly.io is the
+     canonical PaaS / edge-runtime sibling not previously
+     covered. The `(?:fm[12]|fo1)_` alternation enumerates the
+     three documented body-prefix shapes; the 50+ body lower
+     bound rejects short fragments while accepting every
+     legitimate token (real Fly.io macaroons are always >150
+     chars).
+
+**Threat model:** Each issuer's revocation flow lives at a distinct
+vendor URL (dashboard.render.com / buildkite.com /
+fly.io/dashboard), so a generic-only attribution slows IR (operator
+chases the wrong rotation playbook, can't estimate blast radius
+without knowing which vendor is involved). The three issuers cover
+two of the three sub-landscapes Round 7 named:
+
+* **CI/CD platforms hosting tier continued** (Render — closes the
+  named candidate after Netlify in Round 7).
+* **CI/CD platforms execution tier continued** (Buildkite User
+  Access Token — closes the user-scoped sibling of the Round-7
+  Buildkite Agent Token).
+* **PaaS / edge-runtime tier** (Fly.io — opens a NEW
+  sub-landscape for Round 8 with a multi-segment-prefix pattern
+  shape never used in `_KNOWN_TOKENS` before).
+
+The PoC in `tests/test_sentinel_secret_scanner_drift_round8.py`
+plants each token shape into a synthetic file (Python `KEY = "..."`
+shape plus `.env` `KEY=VALUE` shape) and asserts the issuer-specific
+reason appears in the scan findings. Pre-fix, every test failed
+because either the generic entropy fallback was the only finding,
+OR (for Fly.io) only the body span after `fm2_` matched generically.
+
+**Severity:** MEDIUM — defense-in-depth + IR-attribution. No
+current vulnerability surface (the entropy / sensitive-assign
+fallbacks already flag the tokens generically) but the issuer-
+specific attribution accelerates the IR rotation playbook for any
+project that ever leaks one of these tokens. Same severity profile
+as Rounds 5-7.
+
+**Fix:** Append three new entries to `_KNOWN_TOKENS` in
+`src/utils/secret_scanner.py`, AFTER the Round-7 Netlify entry so
+`is_covered` correctly anchors on more specific issuer-prefixed
+tokens first:
+
+```python
+(
+    re.compile(r"(?<![A-Za-z0-9])rnd_[A-Za-z0-9_\-]{40,}(?![A-Za-z0-9])"),
+    "Render API Key gefunden",
+),
+(
+    re.compile(r"(?<![A-Za-z0-9])bkua_[A-Za-z0-9]{40,}(?![A-Za-z0-9])"),
+    "Buildkite User Access Token gefunden",
+),
+(
+    re.compile(r"(?<![A-Za-z0-9])FlyV1 (?:fm[12]|fo1)_[A-Za-z0-9_=\-]{50,}(?![A-Za-z0-9])"),
+    "Fly.io API Token gefunden",
+),
+```
+
+Boundary lookbehind/lookahead `(?<![A-Za-z0-9])` /
+`(?![A-Za-z0-9])` matches the rest of `_KNOWN_TOKENS` so accidental
+sub-string matches (e.g. `myrnd_foo` or `embedded_bkua_xxx` in a
+long identifier) cannot trigger false positives. Each pattern's
+body length is strict enough to reject short fragments while
+accepting every legitimate token's documented format. The Fly.io
+alternation `(?:fm[12]|fo1)` enumerates the three documented body-
+prefix shapes; the literal SPACE in the prefix is the
+disambiguator that anchors against fly.io specifically (no other
+major issuer uses a `<word> <body>` Authorization-header scheme
+with the `FlyV1 ` literal).
+
+The PoC test file enumerates 12 cases across 3 issuers:
+
+* 3 PoC tests for Render (Python `KEY = "..."`, `.env` shape, and
+  a negative short-prefix case).
+* 3 PoC tests for Buildkite User Access Token (Python shape, a
+  short-prefix negative case, and a mutual-exclusion regression
+  vs the Round-7 `bkat_` Agent Token detector).
+* 5 PoC tests for Fly.io (`fm2_` modern macaroon, `fm1_` legacy
+  macaroon, `fo1_` oldest opaque, a short-prefix negative case,
+  and an unrelated-`FlyV1`-prefix negative case proving bare
+  `FlyV1` documentation strings don't false-positive).
+* 1 inventory invariant
+  (`test_known_tokens_round8_taxonomy`) pinning the three new
+  issuer reasons against `src/utils/secret_scanner.py` so a future
+  PR that drops one of the patterns fails at PR-review time.
+
+**Learning:** Multi-segment prefixes with literal-space separators
+(`FlyV1 fm2_`) are a NEW pattern shape in `_KNOWN_TOKENS` — every
+prior pattern used either a single-word prefix (`ghp_`, `glpat-`,
+`xkeysib-`) or a dot-separated multi-segment shape
+(`SG.<>.<>`, `dp.<>.<>`, `hvs.`). The space character is OUTSIDE
+the entropy fallback's `[A-Za-z0-9+/=_-]` alphabet, so the prefix
+literally cannot be detected by the entropy regex even
+generically — pre-fix, only the post-underscore body span gets
+matched, and the Fly.io issuer attribution is COMPLETELY lost
+(not just downgraded to generic). This makes Fly.io a higher-
+priority closure than the underscore-separated siblings: pre-fix
+the operator can't even tell from the scan output that "a Fly.io
+token leaked"; the finding reads like any other generic
+high-entropy string. The Round-1 prevention rule "Every audit
+round that adds a new issuer MUST also enumerate THREE adjacent
+sub-landscapes the round did NOT cover" continues to apply — this
+Round 8 closes three of Round 7's four named candidates and the
+next round can pick up:
+
+* **PaaS / edge runtime continued** — Vercel
+  (no canonical prefix — bucket-(b)), Cloudflare Pages
+  (no prefix — bucket-(b)), Railway
+  (`<32 hex>:<32 hex>`-shape — bucket-(b)).
+* **CI/CD platforms execution tier continued** — CircleCI Personal
+  API tokens (40-char base64-ish, no prefix — bucket-(b)),
+  GitHub Actions OIDC tokens (JWT-shape — already covered by JWT
+  pattern), TeamCity (`Bearer <UUID>` — bearer fallback only).
+* **CI/CD platforms hosting tier continued** — GitHub Pages
+  (uses `gho_`-family — already covered), Surge.sh
+  (no prefix — bucket-(b)).
+* **Transactional email continued** — Mailgun (`key-<32 hex>` —
+  ambiguous prefix; needs care), Mailchimp (`<32 hex>-<dc>` —
+  bucket-(b)), Postmark (UUID-format — bucket-(b)).
+* **Observability continued** — Datadog (`<32 hex>` — bucket-(b)),
+  New Relic (`NRAK-<27 alphanumeric>` or `NRRA-<...>` — UNAMBIGUOUS
+  prefix, candidate for next round), PagerDuty (`<20 alphanumeric>`
+  — bucket-(b)).
+* **Secrets management continued** — Infisical
+  (`<32 hex>:<32 hex>`-shape, no prefix — bucket-(b)) — already
+  named in Round 7's deferred list.
+
+**Prevention:** The auto-discoverable inventory invariant
+`test_known_tokens_round8_taxonomy` pins the three new issuer
+reasons against `src/utils/secret_scanner.py`. Combined with the
+Round-1 through Round-7 invariants, the closing-checklist grep:
+
+```
+grep -E "Render|Buildkite User|Fly.io|Doppler|Buildkite Agent|Netlify|Brevo|Postman|HCP Vault|Atlassian|Sentry|Linear|Twilio|Notion|Discord|JWT|Hugging|DigitalOcean|GitLab Pipeline|SendGrid|Slack|Stripe|GitHub|Google|Telegram|NPM|PyPI|OpenAI|Anthropic|AWS|Bearer" src/utils/secret_scanner.py
+```
+
+— enumerates every issuer-specific reason currently in
+`_KNOWN_TOKENS`. A future PR that drops any of these reasons fails
+the corresponding round's invariant test at PR-review time. Total
+specific-issuer pattern count post-Round-8: **47** (up from 44 at
+end of Round 7) plus the generic high-entropy and bearer fallbacks.
+
+The order rule from Round 4 still applies: each new entry must be
+placed AFTER more specific issuer-prefixed tokens so `is_covered`
+correctly anchors on the more specific match first. The Round-8
+entries are placed AFTER the Round-7 Netlify entry to preserve
+the table's documented insertion order.
+
+The next-round audit walker has explicit starting points across
+five sub-landscapes (PaaS continued, CI/CD execution continued,
+CI/CD hosting continued, transactional email continued,
+observability) per the prevention-rule recursion. Per-issuer
+enumeration above lists the canonical-prefix candidates first
+(NRAK / NRRA / unnamed Vercel-replacement) and the bucket-(b)
+no-prefix candidates last (so the next round's closure checklist
+can prioritise the unambiguous ones).
+
 ## 2026-05-10 - Secret Scanner Drift Round 7: Doppler / Buildkite / Netlify — Round 6's Named-But-Deferred Secrets-Management + CI/CD Sub-Landscapes
 
 **Vulnerability:** The 2026-05-10 Round 6 entry (PR #1424, Brevo /
