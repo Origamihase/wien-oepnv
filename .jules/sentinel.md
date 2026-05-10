@@ -1,3 +1,131 @@
+## 2026-05-10 - HTTPS-only Provider URL Drift Round 3: Per-Item RSS `<link>` Element Was the Last Publishing Surface Still Accepting `http://`
+
+**Vulnerability:** PRs #1415 / #1416 (HTTPS-only Provider URL Drift
+Rounds 1 / 2) closed the env-controlled provider FETCH URLs
+(`VOR_BASE_URL`, `OEBB_RSS_URL`, `WL_RSS_URL`,
+`BAUSTELLEN_DATA_URL`) and the canonical
+`validate_public_feed_url` already enforced HTTPS-only on the
+publishing surfaces (`FEED_LINK`, `PAGES_BASE_URL`,
+`SITE_BASE_URL`). But the **per-item `<link>` element** in the
+published RSS feed (`docs/feed.xml`) sat on a separate code path
+in `src/build_feed.py:_format_item_content`:
+
+    sanitized_link = validate_http_url(link, check_dns=False) if link else ""
+
+`validate_http_url` accepts BOTH `http` and `https` schemes (it
+only verifies SSRF / syntax / scheme presence), so an
+upstream-supplied `http://` link flowed VERBATIM into the
+published RSS `<item><link>...</link></item>` element. Per-item
+links are *upstream-controlled* — they come from the cache
+populated by WL / OEBB / VOR / Baustellen providers; today every
+upstream returns `https://` URLs (verified against the live cache
+under `cache/*/events.json`), but a future upstream regression
+(legitimate or attacker-injected via cache poisoning post-MITM)
+that returned `http://` would propagate plaintext URLs to every
+subscriber.
+
+**Threat model:** The published `docs/feed.xml` artefact is
+fetched by every subscriber's RSS reader (Feedly, NetNewsWire,
+Inoreader, FreshRSS, Vivaldi RSS, …). The `<link>` element is the
+click-through target — when the user clicks it, the reader (or
+the operator's browser when they "open in new tab") fetches the
+URL. If the URL is `http://`:
+
+1. The reader / browser issues a plaintext HTTP request.
+2. An on-path attacker (corporate gateway, hostile public WiFi
+   gateway, ISP-level MITM, BGP hijack, malicious VPN exit) intercepts
+   the connection.
+3. The attacker substitutes the response body with a phishing page,
+   credential-harvesting form, or arbitrary HTML/JS.
+4. Many RSS readers do NOT consult the HSTS preload list before
+   following the click, so the upgrade-to-HTTPS that browsers would
+   get for known-HSTS hosts does not save subscribers.
+
+**Severity:** LOW-MEDIUM — TLS-strip primitive on subscribers,
+contingent on upstream behaviour. No current vulnerability
+surface (every upstream uses HTTPS today) but a structural drift
+candidate with a documented future-regression shape and a
+concrete subscriber-side blast radius.
+
+**Fix:** Mirror the canonical HTTPS-only pin used by every other
+publishing surface. After `validate_http_url` accepts a candidate,
+the new `_resolve_item_link` helper checks
+`sanitized.lower().startswith("https://")` and falls back to the
+HTTPS-pinned `feed_config.FEED_LINK` (already validated by
+`validate_public_feed_url` at module-load time) when the upstream-
+supplied link is plaintext. The fallback is HTTPS-only so the
+published feed never carries `<link>http://...</link>`.
+
+The fix factors out the link-validation block into
+`_resolve_item_link(candidate, ident)` — keeps the `_format_item_content`
+function at its C901 baseline of 33 (the inline conditional
+would have pushed it to 34, and the project's "ratchet down,
+never up" complexity rule forbids that).
+
+The PoC test
+`tests/test_sentinel_per_item_link_https_only.py` enumerates 5
+cases:
+
+* 2 per-shape http://link tests (bare URL + URL with subdomain)
+  asserting the published `<link>` element falls back to FEED_LINK.
+* 1 happy-path regression test for HTTPS link preservation.
+* 1 javascript: link rejection regression test (preserves the
+  existing contract from `test_link_sanitization.py`).
+* 1 inventory invariant test that walks 5 distinct http://
+  URL shapes (covering every provider's host pattern) and
+  asserts the planted plaintext URL never appears in the
+  published RSS XML.
+
+**Learning:** The HTTPS-only Provider URL Drift family closed
+every env-controlled URL surface across two rounds (PRs #1415,
+#1416) and the canonical publishing-surface pin
+(`validate_public_feed_url`) was already in place. But the
+per-item `<link>` element used the LOWER-LEVEL
+`validate_http_url` helper directly, bypassing the canonical
+publishing-surface pin. The structural lesson: **every URL that
+lands in a public artefact needs the publishing-surface pin
+(HTTPS-only + host allow-list where applicable), regardless of
+the URL's source — env override, upstream provider, or
+build-time constant**. A LOWER-LEVEL helper that accepts both
+schemes is appropriate for INTERNAL fetches (where the
+client-side TLS verification of the request itself is the
+defence) but NEVER for URLs destined for a public artefact.
+
+The recursive meta-pattern across the HTTPS-only family is now
+three rounds deep:
+
+1. Round 1 (PR #1415): closed the three provider FETCH validators
+   (`_validated_vor_base_url`, `_validated_oebb_url`,
+   `_validated_wl_base`) — env-controlled credentials surface.
+2. Round 2 (PR #1416): closed the Baustellen FETCH validator
+   (`_validated_baustellen_data_url`) — `scripts/` sibling missed
+   by Round 1's `src/`-only closing-checklist grep.
+3. Round 3 (this PR): closed the per-item `<link>` PUBLISHING
+   surface — the LAST URL site that still routed through the
+   lower-level `validate_http_url` helper instead of the canonical
+   publishing-surface pin.
+
+**Prevention:** The auto-discoverable inventory invariant
+`test_no_plaintext_http_in_per_item_link_published` walks five
+distinct upstream-shaped URL fixtures and asserts the `<link>`
+element never carries `http://`. A future regression (e.g. a
+new provider that bypasses `_resolve_item_link` and emits the link
+directly) fails the test at PR-review time. Combined with the
+existing `test_javascript_link_sanitization` contract from
+`tests/test_link_sanitization.py`, the published `<link>`
+element is now contractually pinned to: HTTPS scheme only,
+SSRF-safe, NFKC-normalised, no embedded credentials, no
+javascript:/data:/file: schemes.
+
+The closing-checklist grep for the HTTPS-only family is now:
+
+    grep -rn 'validate_http_url\b' src/ scripts/ | grep -v 'validate_http_url(' | head
+
+— every site that uses `validate_http_url` for URLs destined for
+a publishing artefact MUST also enforce HTTPS-only at the call
+site (or use the canonical `validate_public_feed_url` helper
+which has the pin built in).
+
 ## 2026-05-10 - BiDi-Mark Drift Round 7: `scripts/generate_sitemap.py:_UNSAFE_URL_CHARS` Was the Documented Bucket-(b) Deferred Sibling From Round 6
 
 **Vulnerability:** The 2026-05-10 *BiDi-Mark Drift Round 6* round
