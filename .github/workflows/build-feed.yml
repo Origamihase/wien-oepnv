@@ -70,13 +70,22 @@ jobs:
           # zu zeigen.
           PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
-      # Regenerate the statistics dashboard (``docs/statistik.md``) AND
-      # patch the README ``<!-- STATS:* -->`` markers with the 30-day
+      # Patch the README ``<!-- STATS:* -->`` markers with the 30-day
       # rolling snapshot. Reads only ``data/stats/*.csv`` (no network),
-      # idempotent at the byte level, atomic write — so a kill-signal
-      # mid-run cannot corrupt either output.
-      - name: Refresh statistics dashboard and README snapshot
-        run: python scripts/generate_markdown_stats.py
+      # idempotent at the byte level, atomic write.
+      #
+      # ``--skip-dashboard`` pins this workflow to README-only output:
+      # ``docs/statistik.md`` is the *yearly* dashboard and is owned by
+      # the once-daily 00:00 Europe/Vienna tick of ``update-cycle.yml``.
+      # Code-push triggers fire at unpredictable times of day and used
+      # to silently move the dashboard's ``_Automatisch erzeugt am ..._``
+      # timestamp every time someone pushed to ``src/**``, breaking the
+      # "exactly one dashboard refresh per Vienna day" contract. Operators
+      # who explicitly want a dashboard regen out-of-band run
+      # ``generate-stats.yml`` (the dedicated ``workflow_dispatch``
+      # escape hatch).
+      - name: Refresh README snapshot (dashboard handled by update-cycle.yml)
+        run: python scripts/generate_markdown_stats.py --skip-dashboard
 
       - name: Pull concurrent remote changes
         if: github.ref == 'refs/heads/main'
@@ -98,12 +107,12 @@ jobs:
           # ``manual-full-refresh.yml`` happens to commit (audit
           # finding 2026-05-09 — this was the reason ``Häufigste
           # Störungsorte`` was sparse in the README until the manual
-          # refresh ran). ``docs/statistik.md`` and ``README.md`` carry
-          # the regenerated human-readable dashboard / snapshot from
-          # the same CSV ledger.
+          # refresh ran). ``README.md`` carries the regenerated 30-day
+          # snapshot from the same CSV ledger.
+          # ``docs/statistik.md`` is intentionally *not* in this
+          # allowlist — see the ``--skip-dashboard`` rationale above.
           file_pattern: |
             data/first_seen.json
             data/stats/stoerungen_*.csv
             docs/feed.xml
-            docs/statistik.md
             README.md

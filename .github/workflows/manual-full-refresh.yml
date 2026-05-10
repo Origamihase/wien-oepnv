@@ -120,16 +120,23 @@ jobs:
           # schreiben statt auf das Original-Repo zu zeigen.
           PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
-      # ----- 4) Statistik-Dashboard und README-Snapshot -----
-      # Regeneriert docs/statistik.md (Dashboard) und patcht zugleich die
-      # <!-- STATS:* --> Marker im README mit dem 30-Tage-Schnappschuss.
-      # Liest ausschliesslich aus data/stats/*.csv (read-only) und schreibt
-      # via atomic_write — ein Lauf ohne neue Daten patcht das README nur,
-      # wenn sich die "Letzte Aktualisierung"-Zelle aendert. Muss nach dem
+      # ----- 4) README-Snapshot -----
+      # Patcht die <!-- STATS:* --> Marker im README mit dem 30-Tage-
+      # Schnappschuss. Liest ausschliesslich aus data/stats/*.csv
+      # (read-only) und schreibt via atomic_write. Muss nach dem
       # Stammstrecke-Schritt laufen, damit die Auswertung den frischen
       # CSV-Eintrag enthaelt.
-      - name: Refresh statistics dashboard and README snapshot
-        run: python scripts/generate_markdown_stats.py
+      #
+      # ``--skip-dashboard``: docs/statistik.md (das Jahres-Dashboard)
+      # gehoert dem 00:00-Vienna-Tick von ``update-cycle.yml``. Manuelle
+      # Voll-Refreshes laufen zu beliebigen Tageszeiten und wuerden den
+      # ``_Automatisch erzeugt am ..._``-Timestamp mehrfach pro Tag
+      # versetzen — das verletzt die Vereinbarung "genau ein Dashboard-
+      # Update pro Vienna-Tag". Operatoren, die eine ausserplanmaessige
+      # Dashboard-Regeneration brauchen, triggern den dedizierten
+      # ``generate-stats.yml``-Workflow.
+      - name: Refresh README snapshot (dashboard handled by update-cycle.yml)
+        run: python scripts/generate_markdown_stats.py --skip-dashboard
 
       # ----- 5) Aenderungen committen und pushen -----
       - name: Pull concurrent remote changes
