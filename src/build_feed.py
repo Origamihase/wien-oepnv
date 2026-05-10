@@ -1661,6 +1661,51 @@ def _build_canonical_link(candidate: Any, ident: str) -> str:
     return base
 
 
+def _resolve_item_link(candidate: Any, ident: str) -> str:
+    """Return the per-item ``<link>`` value, enforcing HTTPS-only.
+
+    Security: ``validate_http_url`` accepts both ``http`` and ``https``.
+    Without an HTTPS-only pin at this boundary a future upstream
+    regression (legitimate or attacker-injected) that returned
+    ``http://`` URLs would publish plaintext ``<link>`` elements into
+    ``docs/feed.xml``. Every subscriber's RSS reader follows the
+    ``<link>`` click via a fresh request and many do NOT consult the
+    HSTS preload list before the click — a plaintext URL is therefore
+    a documented TLS-strip primitive on the subscriber base.
+
+    Three-step resolution mirrors the canonical pattern used by
+    ``validate_public_feed_url`` (which the ``feed_config.FEED_LINK``
+    fallback is itself validated by):
+
+    1. Build canonical link via ``_build_canonical_link``.
+    2. Pass through ``validate_http_url`` (SSRF / syntax / scheme).
+    3. Reject ``http://`` results — fall back to the HTTPS-pinned
+       ``feed_config.FEED_LINK`` so the published feed never carries
+       ``<link>http://...</link>``.
+
+    Mirrors the HTTPS-only pin from the 2026-05-09 *Public Feed URL
+    Allow-List Drift* round and the 2026-05-10 *HTTPS-only Provider
+    URL Drift* rounds (PRs #1415 / #1416) for every other publishing
+    surface.
+    """
+    raw_link = _build_canonical_link(candidate, ident)
+    sanitized = validate_http_url(raw_link, check_dns=False) if raw_link else ""
+    if sanitized and not sanitized.lower().startswith("https://"):
+        log.warning(
+            "Item %s carries plaintext http:// link; falling back to "
+            "feed link to prevent TLS-strip on subscribers.",
+            ident,
+        )
+        sanitized = ""
+    if raw_link and not sanitized:
+        log.warning(
+            "Item %s has potentially unsafe/invalid link %r; falling back to feed link.",
+            ident,
+            raw_link,
+        )
+    return sanitized or feed_config.FEED_LINK
+
+
 def _cdata_content(s: str) -> str:
     """Prepare a string for inclusion in a CDATA block, handling ']]>'."""
     return s.replace("]]>", "]]]]><![CDATA[>")
@@ -1723,20 +1768,7 @@ def _format_item_content(
 ) -> FormattedContent:
     raw_title = it.get("title") or "Mitteilung"
     raw_desc  = it.get("description") or ""
-    link = _build_canonical_link(it.get("link"), ident)
-    sanitized_link = validate_http_url(link, check_dns=False) if link else ""
-    if link and not sanitized_link:
-        log.warning(
-            "Item %s has potentially unsafe/invalid link %r; falling back to feed link.",
-            ident,
-            link,
-        )
-        link = ""
-    else:
-        link = sanitized_link or ""
-
-    if not link:
-        link = feed_config.FEED_LINK
+    link = _resolve_item_link(it.get("link"), ident)
 
     raw_guid = it.get("guid") or ident
     guid = str(raw_guid).strip() if raw_guid is not None else ident
