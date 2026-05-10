@@ -44,7 +44,7 @@ import logging
 import re
 import statistics
 import sys
-from collections import Counter, defaultdict
+from collections import defaultdict
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
@@ -67,10 +67,8 @@ from src.utils.stats import (  # noqa: E402
     stats_path,
 )
 from src.utils.text import (  # noqa: E402
-    escape_markdown,
     escape_markdown_cell,
     normalise_markdown_text,
-    safe_markdown_codespan,
 )
 
 LOGGER = logging.getLogger("generate_markdown_stats")
@@ -97,7 +95,6 @@ README_MAX_BYTES: Final = 1 * 1024 * 1024
 # annual dashboard remains at ``docs/statistik.md``; the README block is
 # intentionally short so it stays glanceable.
 DEFAULT_README_WINDOW_DAYS: Final = 30
-README_DISRUPTIONS_TOP_N: Final = 3
 STAMMSTRECKE_THRESHOLD_MINUTES: Final = 9.0
 README_PENDING_PLACEHOLDER: Final = "_wird berechnet…_"
 
@@ -116,16 +113,14 @@ LOCATION_UNKNOWN: Final = "unbekannt"
 # Bar-chart geometry. The bar widths are intentionally short so the
 # rendered Markdown stays comfortable even on a 96-col terminal viewer.
 MAX_BAR_WIDTH: Final = 24
-TOP_N_LOCATIONS: Final = 5
 
 # Per-cell length cap applied at every CSV-derived Markdown sink. Each
 # CSV writer in :mod:`src.utils.stats` already caps ``provider`` /
 # ``location_name`` / ``direction`` at 200 chars on persistence, but
-# the dashboard renders inside narrow Markdown table columns and
-# 30-char-label bar charts; an additional render-side cap keeps the
-# dashboard layout legible even if a future writer relaxes its own cap.
+# the dashboard renders inside narrow Markdown table columns; an
+# additional render-side cap keeps the layout legible even if a future
+# writer relaxes its own cap.
 _DASHBOARD_FIELD_MAX_LEN: Final = 80
-_DASHBOARD_BAR_LABEL_MAX_LEN: Final = 30
 
 # Visual vocabulary. Different glyphs per chart type so the eye can
 # tell them apart at a glance even when the dashboard is rendered in
@@ -135,8 +130,6 @@ BAR_GLYPHS: Final = {
     "hour": "🟧",
     "delay_weekday": "🟥",
     "delay_hour": "🟨",
-    "location": "🟩",
-    "location_hour": "🟪",
 }
 
 
@@ -186,8 +179,6 @@ class StoerungAggregate:
     by_weekday: dict[str, int] = field(default_factory=dict)
     by_hour: dict[int, int] = field(default_factory=dict)
     by_provider: dict[str, int] = field(default_factory=dict)
-    by_location: Counter[str] = field(default_factory=Counter)
-    by_location_hour: dict[str, dict[int, int]] = field(default_factory=dict)
     total_disruptions: int = 0
 
 
@@ -350,26 +341,16 @@ def aggregate_stoerungen(rows: list[StoerungRow]) -> StoerungAggregate:
     weekday_count: dict[str, int] = defaultdict(int)
     hour_count: dict[int, int] = defaultdict(int)
     provider_count: dict[str, int] = defaultdict(int)
-    location_count: Counter[str] = Counter()
-    location_hour: dict[str, dict[int, int]] = defaultdict(
-        lambda: defaultdict(int)
-    )
 
     for row in rows:
         weekday_count[row.weekday] += 1
         hour_count[row.hour] += 1
         provider_count[row.provider] += 1
-        location_count[row.location_name] += 1
-        location_hour[row.location_name][row.hour] += 1
 
     return StoerungAggregate(
         by_weekday=dict(weekday_count),
         by_hour=dict(hour_count),
         by_provider=dict(provider_count),
-        by_location=location_count,
-        by_location_hour={
-            loc: dict(hours) for loc, hours in location_hour.items()
-        },
         total_disruptions=len(rows),
     )
 
@@ -502,111 +483,6 @@ def render_avg_delay_hour(avgs: dict[int, float], glyph: str) -> list[str]:
     return lines
 
 
-def render_top_locations(
-    aggregate: StoerungAggregate,
-    *,
-    top_n: int = TOP_N_LOCATIONS,
-) -> list[str]:
-    """Render the top-N location hotspots, each with its hourly profile."""
-    if not aggregate.by_location:
-        return [
-            f"### Top {top_n} Hotspots",
-            "",
-            "_Noch keine Störungen erfasst._",
-            "",
-        ]
-    # Drop the ``unbekannt`` bucket from the ranking so periods dominated
-    # by line-only disruption mentions ("Demonstration auf Linie 5",
-    # "Polizeieinsatz Linie 13A") do not surface the sentinel as the #1
-    # hotspot. The bucket stays in the underlying aggregate so the
-    # totals and temporal distributions in the rest of the dashboard
-    # are unaffected.
-    ranked_locations = {
-        loc: count
-        for loc, count in aggregate.by_location.items()
-        if loc != LOCATION_UNKNOWN
-    }
-    if not ranked_locations:
-        return [
-            f"### Top {top_n} Hotspots",
-            "",
-            "_Noch keine Störungen mit Stationszuordnung erfasst._",
-            "",
-        ]
-
-    # ``Counter.most_common`` is stable across equal counts but ties on
-    # *count* alone are random across Python versions — fall through to
-    # an alphabetical secondary sort so dashboard regenerations are
-    # byte-deterministic for two locations with identical incident
-    # counts.
-    items = sorted(
-        ranked_locations.items(),
-        key=lambda pair: (-pair[1], pair[0]),
-    )[:top_n]
-    max_value = items[0][1] if items else 0
-
-    lines: list[str] = [f"### Top {top_n} Hotspots (Anzahl Störungen)", "", "```"]
-    for loc, count in items:
-        suffix = f" {count}"
-        # Bar labels are wrapped in `` `…` `` inside a fenced code block.
-        # CommonMark code spans render verbatim — backslash escapes are
-        # NOT active — so the only safe defence against a CSV-derived
-        # backtick / embedded newline closing the span is replacement.
-        bar_label = safe_markdown_codespan(
-            loc, max_len=_DASHBOARD_BAR_LABEL_MAX_LEN
-        )
-        lines.append(
-            _bar_line(
-                bar_label,
-                count,
-                max_value,
-                BAR_GLYPHS["location"],
-                label_width=30,
-                suffix=suffix,
-                width=20,
-            )
-        )
-    lines.append("```")
-    lines.append("")
-
-    lines.append(f"### Tageszeit-Profil der Top {top_n} Hotspots")
-    lines.append("")
-    for loc, _count in items:
-        # The dict lookup must use the raw ``loc`` key (which is what
-        # the aggregator stored). Only the rendered text is sanitised.
-        hours = aggregate.by_location_hour.get(loc, {})
-        if not hours:
-            continue
-        max_hour = max(hours.values()) if hours else 0
-        safe_loc = escape_markdown(
-            normalise_markdown_text(loc, max_len=_DASHBOARD_FIELD_MAX_LEN)
-        )
-        lines.append(f"**{safe_loc}**")
-        lines.append("")
-        lines.append("```")
-        # Show only the hours that actually carry signal — full 24-row
-        # ASCII bars per hotspot dominate the dashboard for an audience
-        # that mostly cares "when does Karlsplatz break?" not "what
-        # hours are quiet?" (the latter is implicit in a missing row).
-        active_hours = sorted(h for h, v in hours.items() if v > 0)
-        for hour in active_hours:
-            value = hours[hour]
-            lines.append(
-                _bar_line(
-                    f"{hour:02d}h",
-                    value,
-                    max_hour,
-                    BAR_GLYPHS["location_hour"],
-                    label_width=4,
-                    suffix=f" {value}",
-                    width=18,
-                )
-            )
-        lines.append("```")
-        lines.append("")
-    return lines
-
-
 # ---- Markdown assembly -----------------------------------------------------
 
 
@@ -640,13 +516,6 @@ def _format_summary_section(
         f"| Davon über {stammstrecke.threshold_minutes:g}-min-Schwelle | {stammstrecke.threshold_exceedances} |",
         f"| ⌀ Verspätung (alle Tage) | {global_avg:.1f} min |",
         f"| Erfasste Störungen ({year}) | {stoerungen.total_disruptions} |",
-        # Count distinct *known* hotspots only — the ``unbekannt``
-        # bucket aggregates every disruption whose upstream
-        # title/description didn't mention a directory-known station,
-        # so including it here would inflate the "Verschiedene
-        # Hotspots" cell by exactly +1 (the sentinel) regardless of
-        # how many real station mentions are in the ledger.
-        f"| Verschiedene Hotspots | {sum(1 for loc in stoerungen.by_location if loc != LOCATION_UNKNOWN)} |",
         "",
     ]
 
@@ -762,7 +631,6 @@ def render_markdown(
             title="Störungen je Stunde",
         )
     )
-    sections.extend(render_top_locations(stoerungen))
 
     sections.extend(
         [
@@ -828,6 +696,11 @@ def render_readme_stammstrecke_block(
     Empty input renders the canonical ``wird berechnet…`` placeholder so
     a workflow run on a brand-new repo (no CSVs yet) still produces a
     well-formed Markdown table.
+
+    The displayed delay is the *arithmetic mean* across the window —
+    the feed-event trigger uses the median (defensive against single
+    outliers) but the README cell shows the average, which is more
+    intuitive for non-technical readers.
     """
     threshold_label = (
         f"{threshold_minutes:.0f}"
@@ -845,98 +718,22 @@ def render_readme_stammstrecke_block(
         return (
             header
             + f"| Beobachtungen (gesamt) | {README_PENDING_PLACEHOLDER} |\n"
-            + f"| Median-Verspätung | {README_PENDING_PLACEHOLDER} |\n"
+            + f"| Durchschnittliche Verspätung | {README_PENDING_PLACEHOLDER} |\n"
             + f"| Kritische Verspätungen (> {threshold_label} min) | "
             + f"{README_PENDING_PLACEHOLDER} |\n"
             + f"| Letzte Aktualisierung | {_format_window_timestamp(now)} |\n"
         )
     delays = [r.delay_minutes for r in rows]
-    median_delay = statistics.median(delays)
+    avg_delay = statistics.mean(delays)
     exceedances = sum(1 for d in delays if d > threshold_minutes)
     return (
         header
         + f"| Beobachtungen (gesamt) | {_format_thousands(len(rows))} |\n"
-        + f"| Median-Verspätung | {median_delay:.1f} min |\n"
+        + f"| Durchschnittliche Verspätung | {avg_delay:.1f} min |\n"
         + f"| Kritische Verspätungen (> {threshold_label} min) | "
         + f"{_format_thousands(exceedances)} |\n"
         + f"| Letzte Aktualisierung | {_format_window_timestamp(now)} |\n"
     )
-
-
-def render_readme_disruptions_block(
-    rows: list[StoerungRow],
-    *,
-    window_days: int = DEFAULT_README_WINDOW_DAYS,
-    top_n: int = README_DISRUPTIONS_TOP_N,
-) -> str:
-    """Render the inner content of the ``STATS:DISRUPTIONS`` README block.
-
-    Sorts incidents per location with a stable secondary sort on the
-    canonical (un-escaped) location name so two locations sharing the
-    same incident count produce a deterministic ranking across runs.
-
-    The location cell flows through
-    :func:`src.utils.text.escape_markdown_cell` (which composes
-    :func:`escape_markdown` and pipe-replacement). A CSV row whose
-    ``location_name`` smuggles a literal pipe / backtick / angle
-    bracket / embedded HTML therefore cannot break out of the 3-column
-    table cell. See the threat model on
-    :func:`_format_directions_section` and the Sentinel journal entry
-    "Markdown sibling drift round" (2026-05-09).
-    """
-    header = (
-        f"> _Letzte {window_days} Tage – automatisch aktualisiert vom Workflow_ "
-        "[`update-cycle.yml`](.github/workflows/update-cycle.yml).\n"
-        "\n"
-        "| Rang | Station / Ort | Vorfälle |\n"
-        "| ---- | ------------- | -------- |\n"
-    )
-    body_lines: list[str] = []
-    if not rows:
-        for rank in range(1, top_n + 1):
-            body_lines.append(f"| {rank}. | {README_PENDING_PLACEHOLDER} | – |")
-        return header + "\n".join(body_lines) + "\n"
-    # Skip the ``unbekannt`` bucket so periods dominated by line-only
-    # disruption mentions ("Demonstration auf Linie 5") don't surface
-    # the sentinel as the #1 hotspot in the README. The bucket is still
-    # counted in the dashboard's overall total / temporal distribution
-    # — this filter only affects the operator-visible top-N ranking.
-    counter: Counter[str] = Counter()
-    unknown_count = 0
-    for row in rows:
-        if row.location_name == LOCATION_UNKNOWN:
-            unknown_count += 1
-            continue
-        counter[row.location_name] += 1
-    if not counter:
-        # Window has rows, but every row's ``location_name`` is the
-        # ``unbekannt`` sentinel — typically a period dominated by
-        # line-only WL disruption mentions ("Demonstration auf Linie
-        # 5", "Polizeieinsatz Linie 13A"). Three blank ``– | –`` rows
-        # would read as "no data"; an explanatory cell is more honest:
-        # disruptions exist, they just don't carry station context the
-        # extractor can resolve.
-        body_lines.append(
-            f"| – | _Keine Vorfälle mit Stationszuordnung im Zeitraum "
-            f"({_format_thousands(unknown_count)} ohne Stationsbezug)._"
-            f" | – |"
-        )
-        for rank in range(2, top_n + 1):
-            body_lines.append(f"| {rank}. | – | – |")
-        return header + "\n".join(body_lines) + "\n"
-    ranked = sorted(
-        counter.items(),
-        key=lambda pair: (-pair[1], pair[0]),
-    )[:top_n]
-    for rank, (loc, count) in enumerate(ranked, start=1):
-        cell = escape_markdown_cell(
-            normalise_markdown_text(loc, max_len=_DASHBOARD_FIELD_MAX_LEN)
-        ) or "_(leer)_"
-        body_lines.append(f"| {rank}. | {cell} | {_format_thousands(count)} |")
-    # Pad the table to *top_n* rows so the layout is stable across runs.
-    for rank in range(len(ranked) + 1, top_n + 1):
-        body_lines.append(f"| {rank}. | – | – |")
-    return header + "\n".join(body_lines) + "\n"
 
 
 # Marker pair contract: the patcher rewrites whatever sits between
@@ -1199,40 +996,31 @@ def main(argv: list[str] | None = None) -> int:
     if args.skip_readme:
         return 0
 
-    # Load the cross-year stats window for the README snapshot. The
-    # nightly workflow runs at 00:15 Europe/Vienna, so a 30-day cutoff
-    # in early January legitimately spans the previous calendar year.
-    # ``collect_year_data`` returns empty lists for missing files, so
-    # eagerly loading both years is safe even mid-year.
+    # Load the cross-year Stammstrecke window for the README snapshot.
+    # The nightly workflow runs at 00:15 Europe/Vienna, so a 30-day
+    # cutoff in early January legitimately spans the previous calendar
+    # year. ``collect_year_data`` returns empty lists for missing files,
+    # so eagerly loading both years is safe even mid-year.
     cutoff = now - timedelta(days=args.readme_window_days)
     extra_years = sorted({cutoff.year, now.year} - {args.year})
     window_sm: list[StammstreckeRow] = list(sm_rows)
-    window_st: list[StoerungRow] = list(st_rows)
     for extra_year in extra_years:
-        extra_sm, extra_st = collect_year_data(
+        extra_sm, _ = collect_year_data(
             extra_year, stats_dir=args.stats_dir
         )
         window_sm.extend(extra_sm)
-        window_st.extend(extra_st)
     sm_window = _filter_rows_by_window(
         window_sm, days=args.readme_window_days, now=now
     )
-    st_window = _filter_rows_by_window(
-        window_st, days=args.readme_window_days, now=now
-    )
-    # Defense-in-depth: a marker block is only patched when its source
-    # window actually carries data. Without this gate, an unrelated
+    # Defense-in-depth: only patch the Stammstrecke marker when the
+    # window actually carries rows. Without this gate, an unrelated
     # caller of ``main()`` that supplies a stats directory but forgets
     # to override ``--readme-path`` (or pass ``--skip-readme``) would
     # silently overwrite the production ``README.md`` with the
     # ``_wird berechnet…_`` placeholder block — that exact bug bit
     # ``tests/scripts/test_generate_markdown_stats.py`` and stamped
     # placeholders into the committed README on 2026-05-09 (audit
-    # trail in PR #1397). Per-block conditional patching also avoids
-    # destroying a populated Disruption snapshot when only the
-    # Stammstrecke ledger has fresh data, and vice versa: each
-    # ``<!-- STATS:* -->`` marker stays at "last good content" until
-    # the corresponding window has rows again.
+    # trail in PR #1397).
     sections: dict[str, str] = {}
     if sm_window:
         sections["STAMMSTRECKE"] = render_readme_stammstrecke_block(
@@ -1243,16 +1031,6 @@ def main(argv: list[str] | None = None) -> int:
     else:
         LOGGER.info(
             "STAMMSTRECKE README block skipped: 0 rows in %d-day window.",
-            args.readme_window_days,
-        )
-    if st_window:
-        sections["DISRUPTIONS"] = render_readme_disruptions_block(
-            st_window,
-            window_days=args.readme_window_days,
-        )
-    else:
-        LOGGER.info(
-            "DISRUPTIONS README block skipped: 0 rows in %d-day window.",
             args.readme_window_days,
         )
     if not sections:
@@ -1286,11 +1064,9 @@ __all__ = [
     "DEFAULT_README_WINDOW_DAYS",
     "LOCATION_UNKNOWN",
     "MAX_CSV_BYTES",
-    "README_DISRUPTIONS_TOP_N",
     "README_MAX_BYTES",
     "README_PENDING_PLACEHOLDER",
     "STAMMSTRECKE_THRESHOLD_MINUTES",
-    "TOP_N_LOCATIONS",
     "StammstreckeAggregate",
     "StammstreckeRow",
     "StoerungAggregate",
@@ -1302,9 +1078,7 @@ __all__ = [
     "patch_readme_stats",
     "render_hour_bars",
     "render_markdown",
-    "render_readme_disruptions_block",
     "render_readme_stammstrecke_block",
-    "render_top_locations",
     "render_weekday_bars",
     "write_dashboard",
 ]
