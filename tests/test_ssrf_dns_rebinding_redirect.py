@@ -11,7 +11,6 @@ class TestSSRFRedirectRebinding(unittest.TestCase):
         the request is pinned to the SAFE IP resolved during the check, preventing connection to the unsafe IP.
         """
         safe_ip = "8.8.8.8"
-        unsafe_ip = "127.0.0.1"
 
         # Mock dns.resolver.Resolver.resolve
         # 1. Initial validation -> Safe

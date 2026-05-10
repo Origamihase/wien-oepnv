@@ -1,21 +1,16 @@
 
-import time
 from typing import Any
 from unittest.mock import patch
-from src.utils.http import validate_http_url, DNS_TIMEOUT
+from src.utils.http import validate_http_url
 
 def test_validate_http_url_timeout() -> None:
     """Verify that validate_http_url returns None when DNS resolution times out."""
-
-    # We simulate a sleep longer than DNS_TIMEOUT
-    slow_duration = DNS_TIMEOUT + 1.0
 
     def mock_resolve_slow(host: Any, *args: Any, **kwargs: Any) -> None:
         import dns.exception
         raise dns.exception.Timeout()  # type: ignore[no-untyped-call]
 
     with patch("dns.resolver.Resolver.resolve", side_effect=mock_resolve_slow):
-        start_time = time.time()
         # Should return None because it timed out
         result = validate_http_url("http://slow-dns.example.com")
         assert result is None

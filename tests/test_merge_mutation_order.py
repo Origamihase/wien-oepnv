@@ -85,7 +85,7 @@ def test_mutation_order_in_deduplicate_fuzzy() -> None:
         sys.settrace(trace_lines)
         threading.settrace(trace_lines)
         try:
-            merged = deduplicate_fuzzy(items_to_test)
+            deduplicate_fuzzy(items_to_test)
         finally:
             sys.settrace(old_trace)
             threading.settrace(old_trace)  # type: ignore[arg-type]

@@ -389,14 +389,6 @@ def _first_match(properties: dict[str, Any], keys: Sequence[str]) -> str | None:
     return None
 
 
-def _combine_parts(properties: dict[str, Any], keys: Sequence[str]) -> str | None:
-    parts = [properties.get(key) for key in keys]
-    text_parts = [str(p).strip() for p in parts if isinstance(p, str | int | float) and str(p).strip()]
-    if text_parts:
-        return " ".join(text_parts)
-    return None
-
-
 def _parse_datetime(value: str | float | int | None) -> datetime | None:
     if value is None:
         return None
