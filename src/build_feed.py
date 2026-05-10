@@ -544,9 +544,56 @@ def format_local_times(
         return f"Bis {end_local:%d.%m.%Y}"
     return ""
 
-# Entfernt XML-unerlaubte Kontrollzeichen (außer \t, \n, \r)
+# Entfernt XML-unerlaubte Kontrollzeichen (außer \t, \n, \r) PLUS the
+# canonical BiDi / zero-width / Unicode line-terminator family that the
+# project-wide invisible-character floor strips
+# (:data:`src.utils.logging._INVISIBLE_DANGEROUS_RE` /
+# :data:`src.utils.text._MARKDOWN_NORMALISE_UNSAFE_RE` /
+# :data:`src.utils.stats._CSV_CONTROL_CHARS_RE`).
+#
+# This regex is the LAST sanitiser before every feed item title /
+# description / time-line lands inside the public RSS XML at
+# ``docs/feed.xml`` (served from
+# ``https://origamihase.github.io/wien-oepnv/feed.xml``). Pre-2026-05-10
+# the class covered only ASCII C0 (ex-TAB/LF/CR) + DEL — narrower than
+# the canonical Trojan-Source / line-terminator union that the
+# BiDi-Mark Drift family (Rounds 2-5 in ``.jules/sentinel.md``)
+# consolidated as the project-wide floor. The drift opened a
+# *Trojan-Source RSS* primitive on the public feed:
+#
+#  * **U+202E (RLO)** — a planted upstream title with a U+202E
+#    payload survives all three
+#    pre-fix defences (``_CONTROL_RE.sub("")`` does not match RLO,
+#    ``_WHITESPACE_RE.sub(" ")`` only collapses Unicode whitespace
+#    [RLO is not whitespace per :func:`str.isspace`], ``_cdata_content``
+#    only escapes ``]]>`` / ElementTree XML escape only handles
+#    ``<>&"``). The bytes land verbatim inside ``<title>`` of
+#    ``docs/feed.xml`` and Unicode-aware feed readers (Feedly,
+#    NetNewsWire, Inoreader, Vivaldi RSS) render the post-RLO segment
+#    reversed visually. CVE-2021-42574 shape on a public artefact.
+#  * **U+200B-U+200D (ZWSP/ZWNJ/ZWJ) / U+FEFF (BOM)** — invisible byte
+#    insertions that hash to a different identity than the same title
+#    without them. A hostile upstream can churn the dedup window
+#    indefinitely with visually-identical "fresh" items.
+#  * **U+2028 / U+2029 (LINE / PARAGRAPH SEPARATOR)** — some Unicode-
+#    aware readers honour these as line breaks, splitting one title
+#    into multiple visual lines (Feedly mobile honours U+2028 exactly
+#    as ``\n``).
+#  * **U+0085 (NEL)** + **U+0080-U+0084, U+0086-U+009F (C1 controls)**
+#    — record terminators in several SIEM splitters and Markdown
+#    consumers downstream from the published feed.
+#
+# The widening is **additive** — every character the pre-fix regex
+# matched still matches post-fix (verified by
+# ``test_control_re_preserves_existing_coverage``). TAB (``\x09``),
+# LF (``\x0A``), CR (``\x0D``), and SPACE (``\x20``) remain unmatched
+# (RSS allows them and the downstream ``_WHITESPACE_RE`` collapse
+# normalises them). The Unicode escape form keeps Bandit B613 happy
+# and mirrors the regex shape established by the 2026-05-10 CSV writer
+# round in :data:`src.utils.stats._CSV_CONTROL_CHARS_RE`.
 _CONTROL_RE = re.compile(
-    r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]"
+    r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F"
+    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
 )
 
 # Prefix pattern for line identifiers like "U1/U2: "

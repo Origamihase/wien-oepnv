@@ -1,3 +1,200 @@
+## 2026-05-10 - Trojan-Source RSS via `src/build_feed.py:_CONTROL_RE` Narrower Than the Canonical `_INVISIBLE_DANGEROUS_RE` — BiDi-Mark Drift Round 6 (Feed-XML Writer Sibling)
+
+**Vulnerability:** The 2026-05-10 *CSV Formula-Injection Invisible-Prefix
+Bypass* round (Round 5 of the BiDi-Mark Drift family) widened
+`src/utils/stats.py:_CSV_CONTROL_CHARS_RE` to mirror the canonical
+`src/utils/logging.py:_INVISIBLE_DANGEROUS_RE` set so the four
+orthogonal threat classes (C0/C1 controls, BiDi format controls,
+zero-width chars, line/paragraph separators) are stripped at the CSV
+writer boundary. The closing-checklist for the round explicitly
+named the inventory rule "every defence regex sibling that drifts
+narrower than the canonical floor must be widened in the same PR" —
+but the audit walker stopped at the CSV writer and missed the
+**feed-XML writer sibling** in `src/build_feed.py:548-550`:
+
+```python
+# Entfernt XML-unerlaubte Kontrollzeichen (außer \t, \n, \r)
+_CONTROL_RE = re.compile(
+    r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]"
+)
+```
+
+This regex is the **LAST sanitiser** before every feed-item title /
+description / time-line lands inside the published RSS XML at
+`docs/feed.xml` (served from the project's GitHub Pages origin
+`https://origamihase.github.io/wien-oepnv/feed.xml`). It covers ASCII
+C0 (ex-TAB/LF/CR) + DEL — narrower than the canonical Trojan-Source /
+line-terminator union by **all four threat classes**:
+
+1. **C1 controls** (`\x80-\x9f`) — U+0085 NEL is honoured as a
+   record terminator by several SIEM splitters and Markdown
+   consumers downstream from the feed; the other C1 controls are
+   non-printable and would corrupt operator-facing terminal output.
+2. **BiDi format controls** (U+061C ALM, U+202A-U+202E
+   LRE/RLE/PDF/LRO/**RLO**, U+2066-U+2069 LRI/RLI/FSI/PDI). The RLO
+   primitive is the canonical CVE-2021-42574 *Trojan Source* payload
+   in plain-text artefacts.
+3. **Zero-width characters** (U+200B-U+200F ZWSP/ZWNJ/ZWJ + LRM/RLM,
+   U+FEFF BOM). LRM/RLM are full BiDi primitives despite being
+   zero-width.
+4. **Unicode line/paragraph separators** (U+2028 LINE SEPARATOR,
+   U+2029 PARAGRAPH SEPARATOR). Some Unicode-aware feed readers
+   (Feedly mobile, Vivaldi RSS panel) honour these as line breaks,
+   splitting one item title into multiple visual lines.
+
+**Threat model (highest-impact path):** A compromised Wiener-Linien
+upstream (or MITM / DNS-hijack of the WL endpoints, or a poisoned
+`cache/wl/*.json` produced by a different round of supply-chain
+compromise) returns an item with a planted invisible-character
+payload:
+
+```json
+{
+  "title": "Linie U6: Wartung – siehe ‮/path/safe.html",
+  "description": "Information zur Sperre …"
+}
+```
+
+The pipeline path:
+
+* `src/build_feed.py:_format_item_content` retrieves
+  `raw_title = it.get("title")` and routes it through `_sanitize_text`
+  (line 1890).
+* `_sanitize_text` returns the input unchanged because
+  `_CONTROL_RE.sub("")` does not match U+202E (the regex covers
+  `\x00-\x08` + `\x0B-\x0C` + `\x0E-\x1F` + `\x7F` only).
+* The result flows into `_WHITESPACE_RE.sub(" ", title_out).strip()`
+  which collapses ASCII whitespace runs but does NOT strip BiDi /
+  zero-width characters (`"‮".isspace()` is `False`; Python's
+  `\s` matches Unicode whitespace category but not BiDi format
+  controls).
+* The title is wrapped in CDATA via `_cdata_content(title_out)` which
+  only escapes `]]>`; BiDi marks pass through verbatim.
+* `_emit_item` constructs `ET.SubElement(item, "title").text =
+  PH_TITLE` and the placeholder is later substituted with the
+  CDATA-wrapped title in the final XML output.
+* `ET.tostring(...)` does NOT XML-escape U+202E (it is a valid
+  Unicode codepoint, not an XML metacharacter). The bytes land
+  verbatim inside `<title>` of `docs/feed.xml`.
+
+The same pipeline applies to `raw_desc` (sanitised at line 1702 via
+`html_to_text(...).strip()` → `_sanitize_text`) and to the
+`time_line` (line 1903) — three independent feed-output sinks share
+the same drift.
+
+Subscribers reading the feed in any Unicode-aware reader (Feedly,
+NetNewsWire, Inoreader, Vivaldi RSS, kindle-RSS gateways, `rsstail`,
+IDE-embedded readers) see the post-RLO segment reversed in the
+rendered item title — a textbook Trojan-Source RSS attack on a
+public artefact.
+
+The same bypass shape generalises across the canonical invisible-
+character set:
+
+* **U+200E LRM / U+200F RLM** — BiDi inversion in any reader that
+  honours BiDi marks. Identical visual confusion to U+202E without
+  needing a closing PDF.
+* **U+200B ZWSP / U+200C ZWNJ / U+200D ZWJ / U+FEFF BOM** —
+  invisible byte insertions create cache-key disagreements (the WL
+  provider computes `ident` from a hash of the title; an attacker
+  with a fixed ZWSP-injected title and a clean title have different
+  hashes, so the dedup logic accepts both). A hostile upstream can
+  churn the dedup window indefinitely with visually-identical
+  "fresh" items.
+* **U+2028 LINE SEPARATOR / U+2029 PARAGRAPH SEPARATOR** — some feed
+  readers treat these as line breaks, splitting a single item title
+  into multiple visual lines.
+* **U+0085 NEL** — same record-terminator shape; honoured as a line
+  break by several Markdown / SIEM splitters that consume the feed
+  via a downstream pipeline.
+
+**Severity:** HIGH — public artefact (`docs/feed.xml` published to
+GitHub Pages), multiple upstream injection paths (every provider
+contributes to the title / description), defense-in-depth gap on
+the LAST sanitiser before the XML serialiser.
+
+**Fix:** Widen `_CONTROL_RE` from the C0+DEL-only class to the
+canonical `_INVISIBLE_DANGEROUS_RE` set plus C1 controls,
+mirroring `src/utils/stats.py:_CSV_CONTROL_CHARS_RE`:
+
+```python
+_CONTROL_RE = re.compile(
+    r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F"
+    r"؜​-‏ -‮⁦-⁩﻿]"
+)
+```
+
+The widening is **additive** — every character the pre-fix regex
+matched still matches post-fix (verified by
+`test_control_re_preserves_existing_coverage`). TAB (`\x09`),
+LF (`\x0A`), CR (`\x0D`), and SPACE (`\x20`) remain unmatched (RSS
+allows them and the downstream `_WHITESPACE_RE` collapse normalises
+them). Unicode escape form keeps Bandit B613 happy.
+
+**Learning:** The 2026-05-10 CSV writer round's prevention rule
+named "every defence regex sibling that drifts narrower than the
+canonical floor must be widened in the same PR". The audit walker
+that round used (`grep -rn '_UNSAFE.*CHARS\|_CONTROL_CHARS' src/
+scripts/`) reported six sibling regexes — but the round's *fix*
+scoped to only the CSV writer and explicitly deferred two siblings
+(the feed-XML writer regex `src/build_feed.py:_CONTROL_RE` and the
+sitemap writer regex `scripts/generate_sitemap.py:_UNSAFE_URL_CHARS`)
+to a follow-up round. The deferred set turned out to contain the
+HIGHEST-impact sibling — the feed-XML writer is on the LAST
+sanitiser before the public RSS XML, while the CSV writer feeds an
+internal stats dashboard with much lower blast radius.
+
+Same recursive meta-pattern as JSON Size-Bomb Drift Rounds 1-8
+(every round closes one structural axis and surfaces the next):
+Round 5 of BiDi-Mark Drift closed the CSV writer sibling, Round 6
+closes the feed-XML writer sibling — the most-public sink in the
+project. The right closure for the BiDi-Mark Drift family is
+"every defence regex that strips control bytes from text destined
+for a public artefact MUST cover the canonical
+`_INVISIBLE_DANGEROUS_RE` set, regardless of the artefact format
+(CSV / Markdown / RSS XML / sitemap XML / GitHub Issue body)" —
+and the round closes only when the inventory grep returns zero
+remaining sites.
+
+The auto-discoverable invariant lives in
+`tests/test_sentinel_feed_xml_invisible_prefix.py` extended with
+50 tests — 19 per-code-point regex-match tests, 19 per-code-point
+write-path tests via `_sanitize_text`, two end-to-end Trojan-
+Source PoC tests (RLO + ZWSP), one inventory test that pins the
+canonical-set coverage invariant, three regression tests that
+preserve the pre-fix C0/DEL coverage, ASCII whitespace
+passthrough, and legitimate German title round-trip. The
+inventory test mirrors the
+`test_csv_control_chars_regex_covers_canonical_invisible_dangerous_set`
+shape from Round 5 and the
+`test_unsafe_url_chars_regex_covers_canonical_invisible_dangerous_set`
+shape from Round 4 — three identical inventory tests now pin the
+companion-regex sync rule across three independent sanitiser
+boundaries (CSV, URL, RSS XML). Any future widening of the
+canonical `_INVISIBLE_DANGEROUS_RE` (e.g. a Unicode 16 BiDi format
+control) fails all three tests until each writer's regex is
+widened too.
+
+**Prevention:** The deferred-sibling enumeration grep
+(`grep -rn '_CONTROL_RE\b\|_CONTROL_CHARS\b\|_UNSAFE_URL_CHARS\b\|_UNSAFE_CHARS_RE\b' src/ scripts/`) MUST be re-run at the end of
+every BiDi-Mark Drift round, and the verdict line MUST cite the
+*post-fix state* of every sibling — not just the one fixed in this
+round. The remaining sibling after Round 6 is
+`scripts/generate_sitemap.py:39:_UNSAFE_URL_CHARS` which is narrower
+than the canonical `src/utils/http.py:_UNSAFE_URL_CHARS` but is
+**redundant** (the second-layer `validate_public_feed_url` already
+catches the BiDi/zero-width chars via its own canonical regex).
+That sibling is therefore in bucket-(b) "deferred with no-specific-
+exploit-shape because the second-layer gate covers it" — it remains
+a code-quality / defense-in-depth issue but is not currently a
+vulnerability surface. A future PR that adds a callsite of
+`_UNSAFE_URL_CHARS` in `scripts/generate_sitemap.py` without the
+fall-through to `validate_public_feed_url` would re-open the
+exploit shape; the inventory grep above is the closing-checklist
+trigger.
+
+---
+
 ## 2026-05-10 - CSV Formula-Injection Bypass via Leading Invisible / BiDi / Line-Terminator Characters at the `_sanitize_csv_text_field` Boundary — BiDi-Mark Drift Round 5 (CSV Writer Sibling)
 
 **Vulnerability:** The 2026-05-09 *CSV Formula Injection (CWE-1236) at the
