@@ -1,15 +1,15 @@
 # Wien ÖPNV — Statistik 2026
 
-_Automatisch erzeugt am 2026-05-10T06:31+02:00 (Europe/Vienna)._
+_Automatisch erzeugt am 2026-05-10T09:25+02:00 (Europe/Vienna)._
 
 ## Kennzahlen auf einen Blick
 
 | Kennzahl | Wert |
 | --- | ---: |
-| Stammstrecke-Beobachtungen (2026) | 15 |
+| Stammstrecke-Beobachtungen (2026) | 16 |
 | Davon über 9-min-Schwelle | 0 |
 | ⌀ Verspätung (alle Tage) | 0.3 min |
-| Erfasste Störungen (2026) | 20 |
+| Erfasste Störungen (2026) | 25 |
 
 ## Stammstrecke
 
@@ -17,8 +17,8 @@ _Automatisch erzeugt am 2026-05-10T06:31+02:00 (Europe/Vienna)._
 
 | Richtung | Anzahl |
 | --- | ---: |
+| Floridsdorf | 8 |
 | Meidling | 8 |
-| Floridsdorf | 7 |
 
 ### Beobachtungen je Wochentag
 
@@ -29,7 +29,7 @@ _Automatisch erzeugt am 2026-05-10T06:31+02:00 (Europe/Vienna)._
 `Do  ` │ ························  0
 `Fr  ` │ ························  0
 `Sa  ` │ 🟦🟦🟦🟦🟦🟦··················  3
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  12
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  13
 ```
 
 ### Beobachtungen je Stunde
@@ -44,7 +44,7 @@ _Automatisch erzeugt am 2026-05-10T06:31+02:00 (Europe/Vienna)._
 `06h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧················  2
 `07h ` │ ························  0
 `08h ` │ ························  0
-`09h ` │ ························  0
+`09h ` │ 🟧🟧🟧🟧····················  1
 `10h ` │ ························  0
 `11h ` │ ························  0
 `12h ` │ ························  0
@@ -108,7 +108,7 @@ _Automatisch erzeugt am 2026-05-10T06:31+02:00 (Europe/Vienna)._
 
 | Quelle | Anzahl |
 | --- | ---: |
-| Wiener Linien | 20 |
+| Wiener Linien | 25 |
 
 ### Störungen je Wochentag
 
@@ -118,8 +118,8 @@ _Automatisch erzeugt am 2026-05-10T06:31+02:00 (Europe/Vienna)._
 `Mi  ` │ ························  0
 `Do  ` │ ························  0
 `Fr  ` │ ························  0
-`Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  10
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  10
+`Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦········  10
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  15
 ```
 
 ### Störungen je Stunde
@@ -134,7 +134,7 @@ _Automatisch erzeugt am 2026-05-10T06:31+02:00 (Europe/Vienna)._
 `06h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧············  4
 `07h ` │ ························  0
 `08h ` │ ························  0
-`09h ` │ ························  0
+`09h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·········  5
 `10h ` │ ························  0
 `11h ` │ ························  0
 `12h ` │ ························  0

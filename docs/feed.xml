@@ -7,18 +7,62 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 10 May 2026 06:31:25 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2026 09:25:16 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U4: Verspätungen]]></title>
+      <title><![CDATA[10A: WINGS for Life Betrieb ab Johnstraße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
-      <pubDate>Sun, 10 May 2026 06:25:00 +0200</pubDate>
-      <ext:first_seen>Sun, 10 May 2026 06:31:25 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 10 May 2026 06:25:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">89f9ed8e970d4560dfa003eb997c18dcf26f9581adcb8b23468116a8d530f27a</guid>
+      <pubDate>Sun, 10 May 2026 09:15:11 +0200</pubDate>
+      <ext:first_seen>Sun, 10 May 2026 09:25:16 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 10 May 2026 09:15:25 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 10 May 2026 15:00:00 +0200</ext:ends_at>
+      <description>[Am 10.05.2026]</description>
+      <content:encoded><![CDATA[[Am 10.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">899bf6038c3a38ee5193e2d6c7398a8b95520941bd268edc5b6be3fa4cd67f49</guid>
+      <pubDate>Sun, 10 May 2026 09:08:00 +0200</pubDate>
+      <ext:first_seen>Sun, 10 May 2026 09:25:16 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 10 May 2026 09:08:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 10 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 10.05.2026]</description>
-      <content:encoded><![CDATA[Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 10.05.2026]]]></content:encoded>
+      <description>Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 10.05.2026]</description>
+      <content:encoded><![CDATA[Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 10.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: WINGS for Life Betrieb ab Schwarzenbergplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bf277386cea7f92a2b84c486846d17c82658639e5b1b3dfd8d3a465fe1511336</guid>
+      <pubDate>Sun, 10 May 2026 09:00:07 +0200</pubDate>
+      <ext:first_seen>Sun, 10 May 2026 09:25:16 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 10 May 2026 09:00:07 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 10 May 2026 15:00:00 +0200</ext:ends_at>
+      <description>[Am 10.05.2026]</description>
+      <content:encoded><![CDATA[[Am 10.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e</guid>
+      <pubDate>Sun, 10 May 2026 09:00:00 +0200</pubDate>
+      <ext:first_seen>Sun, 10 May 2026 09:25:16 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 10 May 2026 09:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 10 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 10.05.2026]</description>
+      <content:encoded><![CDATA[Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 10.05.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Fahrtbehinderung wegen Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991</guid>
+      <pubDate>Sun, 10 May 2026 08:52:00 +0200</pubDate>
+      <ext:first_seen>Sun, 10 May 2026 09:25:16 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 10 May 2026 08:54:36 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 10 May 2026 23:55:00 +0200</ext:ends_at>
+      <description>Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 10.05.2026]</description>
+      <content:encoded><![CDATA[Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 10.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[49: Rettungseinsatz]]></title>
@@ -30,17 +74,6 @@
       <ext:ends_at>Sun, 10 May 2026 23:55:00 +0200</ext:ends_at>
       <description>Linie 49: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 10.05.2026]</description>
       <content:encoded><![CDATA[Linie 49: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 10.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fa13a977753886fe597c353a144a3e24d7a3675a48c2729c300f9be73e720a96</guid>
-      <pubDate>Sun, 10 May 2026 05:37:00 +0200</pubDate>
-      <ext:first_seen>Sun, 10 May 2026 06:31:25 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 10 May 2026 05:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 10 May 2026 23:55:00 +0200</ext:ends_at>
-      <description>Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 10.05.2026]</description>
-      <content:encoded><![CDATA[Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 10.05.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Busse halten Breitenfurter Straße 236-238]]></title>
@@ -84,37 +117,6 @@
       <ext:starts_at>Fri, 08 May 2026 10:58:06 +0200</ext:starts_at>
       <description>Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hbf (U) von 01.06.2026 bis 26.06.2026 die Züge D 347, D 50347 und D 40347 nicht fahren. [Seit 08.05.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hbf (U) von 01.06.2026 bis 26.06.2026 die Züge D 347, D 50347 und D 40347 nicht fahren.<br/>[Seit 08.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S 50: Wien Westbahnhof ↔ Wien Hütteldorf / Wien Hütteldorf ↔ Tullnerbach-Pressbaum / Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;872100</guid>
-      <pubDate>Thu, 07 May 2026 13:43:23 +0200</pubDate>
-      <ext:first_seen>Thu, 23 Apr 2026 12:07:29 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 07 May 2026 13:43:23 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (03:00 Uhr) zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) keine Nahverkehrszüge fahren. [Seit 07.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (03:00 Uhr) zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) keine Nahverkehrszüge fahren.<br/>[Seit 07.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Mitte ↔ Flughafen Wien / Wien Mitte ↔ Wien Floridsdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;852582</guid>
-      <pubDate>Thu, 07 May 2026 12:45:08 +0200</pubDate>
-      <ext:first_seen>Tue, 05 May 2026 11:26:32 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 07 May 2026 12:45:08 +0200</ext:starts_at>
-      <description>Wegen Bauarbeiten können von 13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr) zwischen Flughafen Wien Bahnhof und Wien Mitte-Landstraße Bahnhof … [Seit 07.05.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können von 13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr) zwischen Flughafen Wien Bahnhof und Wien Mitte-Landstraße Bahnhof …<br/>[Seit 07.05.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45</guid>
-      <pubDate>Thu, 07 May 2026 00:00:13 +0200</pubDate>
-      <ext:first_seen>Sat, 09 May 2026 00:13:24 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 09 May 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 10 May 2026 23:59:59 +0200</ext:ends_at>
-      <description>[09.05.2026 – 10.05.2026]</description>
-      <content:encoded><![CDATA[[09.05.2026 – 10.05.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
