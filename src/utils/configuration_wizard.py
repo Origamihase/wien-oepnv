@@ -338,11 +338,23 @@ def _escape_env_value(value: str) -> str:
         return ""
     if re.fullmatch(r"[A-Za-z0-9_@%+,:./-]+", value):
         return value
-    # Escape control characters to prevent newline injection in generated .env files.
+    # Security: escape both control characters AND shell metacharacters.
+    # The produced ``.env`` is regularly sourced by bash/zsh / Make via
+    # ``set -a; source .env``; inside double-quoted strings bash performs
+    # ``$VAR`` parameter expansion AND ``$(cmd)`` / ```cmd``` command
+    # substitution. Without backslash-escaping the leading ``$`` and the
+    # backticks an operator-supplied value like ``$(rm -rf ~)`` would
+    # execute on the next ``source .env``, escalating an env override into
+    # arbitrary code execution under the sourcing user's shell. The
+    # paired ``_parse_value`` decoder in ``src.utils.env`` recognises the
+    # new ``\\$`` / ```` \\` ```` escape sequences so the project's own
+    # roundtrip stays byte-for-byte stable.
     escaped = (
         value.replace("\\", "\\\\")
         .replace("\r", "\\r")
         .replace("\n", "\\n")
+        .replace("$", "\\$")
+        .replace("`", "\\`")
         .replace('"', '\\"')
     )
     return f'"{escaped}"'
