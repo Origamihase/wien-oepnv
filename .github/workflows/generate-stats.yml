@@ -1,17 +1,21 @@
 name: Generate statistics dashboard
 
-# DISABLED CRON (2026-05-09): the regular nightly schedule was
-# retired because ``update-cycle.yml`` (cron ``0,30 * * * *``)
-# regenerates the same ``docs/statistik.md`` + README markers every
-# 30 minutes from the same CSV ledger via its ``build_feed`` job. A
-# nightly run could only see rows that had already been committed
-# during the day — it cannot recover anything ``update-cycle.yml``
-# missed, so it adds no resilience and just emits redundant
-# no-op commits.
+# DISABLED CRON: ``update-cycle.yml`` regenerates ``docs/statistik.md``
+# once per day at the first cron tick after midnight Europe/Vienna
+# (and patches the README ``<!-- STATS:* -->`` markers on every 30-min
+# tick). The push-triggered ``build-feed.yml`` passes
+# ``--skip-dashboard`` so a code-push during the day cannot move the
+# dashboard timestamp out-of-band. The operator-triggered
+# ``manual-full-refresh.yml`` *does* regenerate the dashboard — it is
+# the explicit ``alles neu`` button and is expected to refresh every
+# project artefact in one go.
 #
-# This workflow remains as a ``workflow_dispatch``-only escape
-# hatch for manually re-rendering the dashboard after editing the
-# CSV ledger by hand.
+# This workflow remains as a dedicated ``workflow_dispatch``-only
+# escape hatch for a dashboard-only regeneration — e.g. after
+# hand-editing the CSV ledger or to verify a change to
+# ``generate_markdown_stats.py`` end-to-end without waiting for the
+# next 00:00 Vienna tick. It calls the script with NO flags, so both
+# ``docs/statistik.md`` and the README markers are written.
 on:
   workflow_dispatch:
 
