@@ -95,8 +95,6 @@ regex family.
 """
 from __future__ import annotations
 
-import re
-
 import pytest
 
 from src.feed.reporting import _CONTROL_CHARS_RE, _sanitize_log_detail
