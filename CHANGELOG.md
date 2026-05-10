@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Changed (Auto-Quarantine für `update_all_stations.py`)**: Blockierende
+  Validation-Issues (`provider_issues`, `cross_station_id_issues`,
+  `naming_issues`, `security_issues`) brechen die Pipeline nicht mehr ab.
+  Stattdessen werden die betroffenen Einträge aus dem gemergten
+  `tmp_stations_path` herausgefiltert, in `data/quarantine.json`
+  persistiert (mit `timestamp` / `count` / pro-Station-Issues) und der
+  Rest des Pipelines (Diff, Heartbeat, Atomic-Copy-Back) läuft mit dem
+  gültigen Subset weiter. Damit überlebt der Feed eine partielle
+  Upstream-Korruption (einzelne kaputte VOR-/OEBB-/WL-Einträge) und
+  exitet mit `0`. Der ``<global>``-Sentinel der Provider-Issue-Liste
+  (z. B. "Need at least two VOR entries") wird übersprungen — er
+  korrespondiert mit keinem einzelnen Eintrag und kann nicht
+  quarantänisiert werden. Tests: 5 neue Cases in
+  `test_update_all_stations_diff_heartbeat.py` /
+  `test_update_all_stations_wrapper.py` decken Identifier-Filterung,
+  Partition-Logik, End-to-End-Quarantine-Schreiben und den
+  ``<global>``-Skip ab. Mypy `--strict` bleibt clean.
 * **Changed (Stammstrecke-Monitor → VOR/VAO ReST API)**: Der S-Bahn-
   Stammstrecken-Verspätungs-Monitor wurde von `pyhafas` (`OEBBProfile`)
   auf die offizielle VOR/VAO ReST `/trip`-API portiert. Hintergrund:

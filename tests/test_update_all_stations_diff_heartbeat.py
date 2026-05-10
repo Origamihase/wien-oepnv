@@ -115,8 +115,7 @@ def test_load_stations_handles_wrapped_and_bare_lists(tmp_path: Path) -> None:
 
 
 def test_collect_blocking_issues_includes_naming_and_security() -> None:
-    """Beyond the original provider/cross-station gates, naming + security
-    issues now also block the commit (added in this PR)."""
+    """All four blocking categories surface in the auto-quarantine list."""
     from src.utils.stations_validation import (
         NamingIssue,
         ProviderIssue,
@@ -139,6 +138,210 @@ def test_collect_blocking_issues_includes_naming_and_security() -> None:
     blocking = wrapper._collect_blocking_issues(report)
     categories = {cat for cat, _ in blocking}
     assert categories == {"provider", "naming", "security"}
+
+
+def test_collect_quarantine_identifiers_filters_global_sentinel() -> None:
+    """The synthetic ``<global>`` identifier emitted for directory-wide
+    provider issues must be filtered out — it does not correspond to a
+    single station and cannot be auto-quarantined."""
+    from src.utils.stations_validation import (
+        CrossStationIDIssue,
+        NamingIssue,
+        ProviderIssue,
+        SecurityIssue,
+        ValidationReport,
+    )
+
+    report = ValidationReport(
+        total_stations=4,
+        duplicates=(),
+        alias_issues=(),
+        coordinate_issues=(),
+        gtfs_issues=(),
+        security_issues=(SecurityIssue(identifier="bst:11", name="S", reason="x"),),
+        cross_station_id_issues=(
+            CrossStationIDIssue(
+                identifier="bst:12",
+                name="C",
+                alias="abc",
+                colliding_identifier="bst:99",
+                colliding_name="D",
+                colliding_field="bst_code",
+            ),
+        ),
+        provider_issues=(
+            ProviderIssue(identifier="<global>", name="<global>", reason="<2 VOR"),
+            ProviderIssue(identifier="bst:13", name="P", reason="bad VOR id"),
+        ),
+        naming_issues=(NamingIssue(identifier="bst:14", name="N", reason="dup"),),
+        gtfs_stop_count=0,
+    )
+
+    ids = wrapper._collect_quarantine_identifiers(report)
+    assert ids == {"bst:11", "bst:12", "bst:13", "bst:14"}
+    assert "<global>" not in ids
+
+
+def test_partition_stations_splits_by_identifier_match() -> None:
+    """_partition_stations honours the same identifier shape the validator
+    emits, so an entry whose ``_format_identifier`` matches a member of
+    the quarantine set is moved to the quarantined bucket."""
+    good = {"bst_id": 1, "bst_code": "A", "name": "Good A", "source": "vor"}
+    bad = {"bst_id": 2, "bst_code": "B", "name": "Bad B", "source": "vor"}
+
+    quarantine_ids = {"bst:2 / code:B / source:vor"}
+    valid, quarantined = wrapper._partition_stations([good, bad], quarantine_ids)
+
+    assert valid == [good]
+    assert quarantined == [bad]
+
+
+def test_wrapper_auto_quarantines_matching_stations(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """End-to-end: a provider_issue with a matching identifier removes
+    the offending entry, writes ``data/quarantine.json``, and exits 0."""
+    from src.utils.stations_validation import (
+        ProviderIssue,
+        ValidationReport,
+        _format_identifier,
+    )
+
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+
+    good_a: dict[str, Any] = {
+        "bst_id": 1, "bst_code": "A", "name": "Good A", "source": "vor",
+    }
+    bad_b: dict[str, Any] = {
+        "bst_id": 2, "bst_code": "B", "name": "Bad B", "source": "vor",
+    }
+    good_c: dict[str, Any] = {
+        "bst_id": 3, "bst_code": "C", "name": "Good C", "source": "vor",
+    }
+
+    stations_path = data_dir / "stations.json"
+    stations_path.write_text(
+        json.dumps({"stations": [good_a, bad_b, good_c]}, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+    bad_identifier = _format_identifier(bad_b)
+    failing_report = ValidationReport(
+        total_stations=3,
+        duplicates=(),
+        alias_issues=(),
+        coordinate_issues=(),
+        gtfs_issues=(),
+        security_issues=(),
+        cross_station_id_issues=(),
+        provider_issues=(
+            ProviderIssue(
+                identifier=bad_identifier,
+                name="Bad B",
+                reason="Invalid bst_code for VOR: B",
+            ),
+        ),
+        naming_issues=(),
+        gtfs_stop_count=0,
+    )
+
+    monkeypatch.setattr(
+        "scripts.update_all_stations.subprocess.run", lambda *a, **kw: None
+    )
+    monkeypatch.setattr(wrapper, "validate_stations", lambda *a, **kw: failing_report)
+
+    quarantine_path = data_dir / "quarantine.json"
+    monkeypatch.setattr(wrapper, "_DEFAULT_HEARTBEAT_PATH", tmp_path / "heartbeat.json")
+    monkeypatch.setattr(wrapper, "_DEFAULT_DIFF_REPORT_PATH", tmp_path / "diff.md")
+    monkeypatch.setattr(wrapper, "_DEFAULT_QUARANTINE_PATH", quarantine_path)
+    monkeypatch.chdir(tmp_path)
+
+    exit_code = wrapper.main([])
+    assert exit_code == 0
+
+    final_payload = json.loads(stations_path.read_text(encoding="utf-8"))
+    assert isinstance(final_payload, dict) and "stations" in final_payload
+    final_names = {entry["name"] for entry in final_payload["stations"]}
+    assert final_names == {"Good A", "Good C"}, (
+        f"Bad B should have been quarantined out of stations.json, got {final_names}"
+    )
+
+    assert quarantine_path.exists(), "quarantine.json should be written"
+    quarantine_payload = json.loads(quarantine_path.read_text(encoding="utf-8"))
+    assert quarantine_payload["count"] == 1
+    assert len(quarantine_payload["stations"]) == 1
+    quarantined_entry = quarantine_payload["stations"][0]
+    assert quarantined_entry["name"] == "Bad B"
+    assert quarantined_entry["identifier"] == bad_identifier
+    assert quarantined_entry["entry"] == bad_b
+    assert quarantined_entry["issues"] == [
+        {"category": "provider", "reason": "Invalid bst_code for VOR: B"}
+    ]
+    assert "timestamp" in quarantine_payload
+
+
+def test_wrapper_skips_quarantine_for_global_only_issue(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """A ``<global>``-only provider_issue cannot quarantine any station;
+    the pipeline still proceeds and writes no quarantine file."""
+    from src.utils.stations_validation import (
+        ProviderIssue,
+        ValidationReport,
+    )
+
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    stations_path = data_dir / "stations.json"
+    stations_path.write_text(
+        json.dumps(
+            {"stations": [{"bst_id": 1, "bst_code": "A", "name": "Good"}]},
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    global_only_report = ValidationReport(
+        total_stations=1,
+        duplicates=(),
+        alias_issues=(),
+        coordinate_issues=(),
+        gtfs_issues=(),
+        security_issues=(),
+        cross_station_id_issues=(),
+        provider_issues=(
+            ProviderIssue(
+                identifier="<global>",
+                name="<global>",
+                reason="Need at least two VOR entries",
+            ),
+        ),
+        naming_issues=(),
+        gtfs_stop_count=0,
+    )
+
+    monkeypatch.setattr(
+        "scripts.update_all_stations.subprocess.run", lambda *a, **kw: None
+    )
+    monkeypatch.setattr(wrapper, "validate_stations", lambda *a, **kw: global_only_report)
+
+    quarantine_path = data_dir / "quarantine.json"
+    monkeypatch.setattr(wrapper, "_DEFAULT_HEARTBEAT_PATH", tmp_path / "heartbeat.json")
+    monkeypatch.setattr(wrapper, "_DEFAULT_DIFF_REPORT_PATH", tmp_path / "diff.md")
+    monkeypatch.setattr(wrapper, "_DEFAULT_QUARANTINE_PATH", quarantine_path)
+    monkeypatch.chdir(tmp_path)
+
+    exit_code = wrapper.main([])
+    assert exit_code == 0
+    assert not quarantine_path.exists(), (
+        "quarantine.json must not be created when the only blocking issue is the "
+        "<global> sentinel — there's no individual station to remove"
+    )
+
+    final_payload = json.loads(stations_path.read_text(encoding="utf-8"))
+    assert final_payload["stations"][0]["name"] == "Good"
 
 
 def test_wrapper_writes_heartbeat_and_diff_on_success(
