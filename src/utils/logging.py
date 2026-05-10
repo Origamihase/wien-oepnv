@@ -40,22 +40,42 @@ _CONTROL_CHARS_RE = re.compile(
     r"[\x00-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
 )
 # Always-strip set: invisible Unicode characters that have NO readability
-# value and are pure log-injection / Trojan-Source primitives. The 2026-05-09
-# round (PR #1363) added these code points to ``_CONTROL_CHARS_RE`` so the
-# ``strip_control_chars=True`` (default) path strips them. The drift was the
-# ``strip_control_chars=False`` branch \u2014 used by ``clean_message``,
+# value and are pure log-injection / Trojan-Source / terminal-escape
+# primitives. The 2026-05-09 round (PR #1363) added the BiDi / zero-width
+# code points to ``_CONTROL_CHARS_RE`` so the ``strip_control_chars=True``
+# (default) path strips them. The drift was the ``strip_control_chars=False``
+# branch \u2014 used by ``clean_message``,
 # ``_sanitize_log_detail`` (``src/feed/reporting.py``),
 # ``_sanitize_exception_msg`` (``src/utils/http.py``),
 # ``SafeFormatter.formatException`` and ``SafeJSONFormatter.formatException``
 # (``src/feed/logging_safe.py``) \u2014 which bypasses ``_CONTROL_CHARS_RE``
-# entirely to preserve readable ``\n``/``\r``/``\t`` in tracebacks. That
-# leaks the BiDi / zero-width / line-terminator family verbatim into the
-# public ``feed_health.json`` artefact and the GitHub Issue body submitted
-# by ``submit_auto_issue``. Stripping unconditionally (independent of the
-# flag) closes every sibling path in one cut while preserving the readable
-# newline contract every ``strip_control_chars=False`` caller relies on.
+# entirely to preserve readable ``\n``/``\r``/``\t`` in tracebacks.
+#
+# 2026-05-10 (8-bit C1 / DEL Drift): the always-strip floor was widened to
+# ``\x7f-\x9f`` (DEL + the 32 ECMA-48 C1 controls). The 7-bit ANSI escape
+# regex ``_ANSI_ESCAPE_RE`` matches ``\x1b``-prefixed CSI/OSC/Fe sequences
+# but NOT their **8-bit** equivalents \u2014 ``\x9b`` (CSI, 8-bit form of
+# ``ESC [``), ``\x9d`` (OSC, 8-bit form of ``ESC ]``), ``\x90`` (DCS),
+# ``\x9e`` (PM), ``\x9f`` (APC). Per ECMA-48 / ISO 6429, terminals that
+# honour 8-bit C1 (xterm with ``eightBitInput``, several BSD consoles,
+# ``rxvt`` in 8-bit mode) interpret ``\x9b31m`` exactly as ``\x1b[31m``.
+# A hostile upstream payload (compromised provider, MITM, DNS hijack,
+# poisoned cache file) carrying ``\x9b...m`` in an exception text reaches
+# the operator-facing log line and the public ``docs/feed_health.json``
+# artefact verbatim pre-fix \u2014 bypassing the ``_ANSI_ESCAPE_RE``
+# defence at the 7-bit boundary entirely. Pinning ``\x7f-\x9f`` into the
+# always-strip floor closes every ``strip_control_chars=False`` sibling
+# path in one cut. ``\n``/``\r``/``\t`` (C0 ``\x09``/``\x0a``/``\x0d``)
+# remain outside the always-strip floor so the readability contract for
+# traceback formatting is preserved.
+#
+# Stripping unconditionally (independent of the flag) leaks the BiDi /
+# zero-width / line-terminator / 8-bit-C1 family out of the public
+# ``feed_health.json`` artefact and the GitHub Issue body submitted by
+# ``submit_auto_issue`` while preserving the readable newline contract
+# every ``strip_control_chars=False`` caller relies on.
 _INVISIBLE_DANGEROUS_RE = re.compile(
-    r"[\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+    r"[\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
 )
 _LOG_INJECTION_RE = re.compile(r"[\n\r\t]")
 # ANSI escape codes: comprehensive matching for CSI, OSC, Fe, and 2-byte sequences

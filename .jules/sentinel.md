@@ -1,3 +1,208 @@
+## 2026-05-10 - 8-bit C1 Terminal-Escape Drift: `_INVISIBLE_DANGEROUS_RE` Always-Strip Floor Missed `\x7f-\x9f` (CSI/OSC/DCS 8-bit Primitives) on Every `strip_control_chars=False` Sibling Path
+
+**Vulnerability:** The 2026-05-09 *BiDi-Mark Drift Round 2* round
+(`.jules/sentinel.md`) lifted the BiDi / zero-width / line-terminator
+union into `src/utils/logging.py:_INVISIBLE_DANGEROUS_RE` so the
+unconditional always-strip step in `sanitize_log_message` closes the
+five `strip_control_chars=False` sibling sinks
+(`clean_message`, `_sanitize_log_detail`, `_sanitize_exception_msg`,
+`SafeFormatter.formatException`, `SafeJSONFormatter.formatException`)
+in one cut, while preserving the readability contract for `\n` /
+`\r` / `\t` (C0 chars at `\x09` / `\x0A` / `\x0D`). The fix shape was
+"every code point with NO readability value AND a documented log-
+injection / Trojan-Source primitive must be in the always-strip
+floor".
+
+The closing audit walker enumerated three threat classes (BiDi
+format controls, zero-width chars, line/paragraph separators) but
+deferred a fourth: the **8-bit C1 controls** at `\x80-\x9F`
+(plus DEL at `\x7F`). Per ECMA-48 / ISO 6429 these 32 + 1 code
+points are the 8-bit equivalents of the 7-bit ANSI escape sequences
+the project's `_ANSI_ESCAPE_RE` already defends against on the
+`\x1b`-prefixed boundary:
+
+* `\x9B` is the **8-bit CSI** (Control Sequence Introducer; same
+  shape as `\x1b[`). A planted `\x9b31m` flips the next-rendered
+  text to red on any terminal that honours 8-bit C1.
+* `\x9D` is the **8-bit OSC** (Operating System Command; same
+  shape as `\x1b]`). A planted `\x9d0;HACKED\x07` rewrites the
+  terminal-window title.
+* `\x90` is the **8-bit DCS** (Device Control String; `\x1bP`).
+* `\x9E` / `\x9F` are PM / APC (Privacy Message / Application
+  Program Command) - rarely interpreted but defined as
+  ESC-prefix-escape primitives.
+* The remaining 27 C1 controls are non-printable invisibles with
+  no readability value (PAD, HOP, BPH, NBH, IND, SSA, ESA, HTS,
+  HTJ, VTS, PLD, PLU, RI, SS2, SS3, PU1, PU2, STS, CCH, MW, SPA,
+  EPA, SOS, SGCI, SCI, ST, …).
+
+The 7-bit `_ANSI_ESCAPE_RE` regex
+(`\x1b(?:\[[0-?]*[ -/]*[@-~]|...)`) is anchored to `\x1b` and does
+NOT match the 8-bit forms. Pre-fix `_INVISIBLE_DANGEROUS_RE` was
+`[؜​-‏ -‮⁦-⁩﻿]` - covers
+the BiDi / zero-width / line-terminator family but NOT
+`\x7f-\x9f`. The narrow `_CONTROL_CHARS_RE.sub("")` step that
+DOES strip them is gated by `strip_control_chars=True` - so the
+five `strip_control_chars=False` sibling sinks let the 8-bit
+terminal-escape primitive through verbatim.
+
+**Threat model (highest-impact path):** A compromised provider
+(Wiener Linien / VOR / OEBB upstream, MITM, DNS hijack, poisoned
+`cache/wl/*.json`) returns an HTTP error body or station-info
+field carrying the 8-bit CSI primitive:
+
+```
+ConnectionError: failed to fetch https://example.com/path?q=\x9b31mFAKE OK\x9b0m
+```
+
+The pipeline path:
+
+* `request_safe` catches the `RequestException`, routes through
+  `_sanitize_exception_msg` -> `sanitize_log_message(strip_control_chars=False)`
+  -> `_INVISIBLE_DANGEROUS_RE.sub("", text)` (no match pre-fix) ->
+  the 8-bit CSI byte is preserved verbatim in `exc.args[0]`.
+* The exception propagates up to `RunReport.record_exception` ->
+  `clean_message(message)` -> same `sanitize_log_message(strip_control_chars=False)`
+  pipeline -> 8-bit CSI byte preserved.
+* `RunReport.exception_message` flows into:
+  - `docs/feed_health.json` (public artefact, served by GitHub
+    Pages from `https://origamihase.github.io/wien-oepnv/feed_health.json`)
+    via `build_feed_health_payload` -> `json.dumps(ensure_ascii=False)`
+    which preserves U+0080-U+009F codepoints verbatim.
+  - GitHub Issue body via `submit_auto_issue` for the auto-issue
+    submitter.
+  - The Markdown `feed_health` report rendered into the issue body.
+
+Subscribers / operators consuming the artefact in any 8-bit-C1
+-honouring renderer trigger interpretation of the CSI / OSC / DCS
+sequence:
+* `cat docs/feed_health.json` on xterm with `eightBitInput`
+  enabled.
+* `less docs/feed_health.json` without `-r`/`-R` configured to
+  strip C1.
+* `tail -f log/diagnostics.log` over an SSH connection to a BSD
+  jump-box (BSD console honours 8-bit C1 by default).
+* `journalctl --no-pager` on a TTY without UTF-8 lock.
+* `rxvt` in 8-bit mode, embedded serial terminals (router /
+  switch CLI), legacy enterprise terminals.
+
+The 8-bit primitive succeeds despite the 7-bit `_ANSI_ESCAPE_RE`
+defence — a textbook **8-bit ANSI-escape forging primitive** on a
+public artefact + operator-facing log surface.
+
+The same shape applies to the URL boundary (`_UNSAFE_URL_CHARS`
+in `src/utils/http.py`) and the stations-validation boundary
+(`_UNSAFE_CHARS_RE` in `src/utils/stations_validation.py`). Both
+were sized to mirror the pre-fix `_INVISIBLE_DANGEROUS_RE` floor
+via the inventory tests
+`test_unsafe_url_chars_regex_covers_canonical_invisible_dangerous_set`
+and `test_unsafe_chars_regex_covers_canonical_invisible_dangerous_set`
+— they would FAIL post-fix unless widened in the same PR.
+
+**Severity:** MEDIUM — real exploit shape against terminal
+renderers that honour 8-bit C1, low against modern UTF-8
+terminals (which treat 0x80-0x9F as continuation bytes). Public
+artefact (`docs/feed_health.json`) plus operator-facing log
+surface (every `log.error("... %s ...", str(exc))` call routed
+through `SafeFormatter`). Defence-in-depth gap on the documented
+"always-strip floor" design contract.
+
+**Fix:** Widen `_INVISIBLE_DANGEROUS_RE` in `src/utils/logging.py`
+from
+```
+[؜​-‏ -‮⁦-⁩﻿]
+```
+to
+```
+[\x7f-\x9f؜​-‏ -‮⁦-⁩﻿]
+```
+so the 8-bit terminal-escape primitive set (DEL + 32 C1 controls)
+is stripped UNCONDITIONALLY, independent of the
+`strip_control_chars` flag. `\n` / `\r` / `\t` (C0 chars at
+`\x09` / `\x0A` / `\x0D`) remain outside the always-strip floor
+so the readability contract for traceback formatting is
+preserved. Companion regexes widened in the same PR to maintain
+the inventory invariants:
+
+* `src/utils/http.py:_UNSAFE_URL_CHARS` — added `\x7f-\x9f` (was
+  `\s\x00-\x1f\x7f<>"\^`{|}` + BiDi / zero-width); now
+  `\s\x00-\x1f\x7f-\x9f<>"\^`{|}` + BiDi / zero-width).
+* `src/utils/stations_validation.py:_UNSAFE_CHARS_RE` — added
+  `\x7f-\x9f` (was `<>\x00-\x08\x0b\x0c\x0e-\x1f` + BiDi /
+  zero-width); now
+  `<>\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f` + BiDi / zero-width).
+
+Sibling regexes already covering `\x7f-\x9f` and unaffected by the
+widening:
+
+* `src/build_feed.py:_CONTROL_RE` (Round 6 widened to canonical).
+* `src/utils/stats.py:_CSV_CONTROL_CHARS_RE` (Round 5 widened
+  to canonical).
+* `src/utils/text.py:_MARKDOWN_NORMALISE_UNSAFE_RE` (always
+  covered the C1 set).
+* `src/utils/logging.py:_CONTROL_CHARS_RE` (the strip_control_chars=True
+  path; pre-fix already covered C1).
+
+**Learning:** The 2026-05-09 BiDi-Mark Drift Round 2 prevention
+rule named "the always-strip floor must cover every invisible
+Unicode character with no readability value that is a documented
+log-injection / Trojan-Source primitive". The C1 controls
+(`\x80-\x9f`) qualify on every axis: they are invisible
+(non-printable), have no readability value, and per ECMA-48 are
+8-bit terminal-escape primitives functionally equivalent to the
+7-bit ANSI escapes. Round 2's audit walker enumerated three
+threat classes (BiDi, zero-width, line-terminator) but did NOT
+enumerate the 8-bit-C1 / DEL fourth axis — the audit walker grep
+was scoped to "characters that have a corresponding 7-bit form
+in `_ANSI_ESCAPE_RE`" rather than "characters that escape the
+7-bit defence by being 8-bit equivalents".
+
+The auto-discoverable invariant lives in
+`tests/test_sentinel_log_injection_c1_terminal_escape.py`:
+
+* 32 per-code-point regex-match tests against
+  `sanitize_log_message(strip_control_chars=False)` (one per
+  C1 / DEL char minus NEL which `\s` already collapses).
+* 32 per-code-point tests against `clean_message` (the public-
+  artefact / GitHub-Issue-body sanitiser).
+* 32 per-code-point tests against `_sanitize_log_detail`.
+* 32 per-code-point tests against `_sanitize_exception_msg`.
+* 32 per-code-point tests against `SafeFormatter.formatException`.
+* 32 per-code-point tests against `SafeJSONFormatter.formatException`.
+* Two end-to-end PoCs (8-bit CSI via `record_exception`, 8-bit
+  OSC via `add_error_message`) verifying the published
+  `docs/feed_health.json` artefact carries no C1 byte.
+* Two inventory invariants:
+  - `_INVISIBLE_DANGEROUS_RE` covers the full `\x7f-\x9f` set.
+  - `_INVISIBLE_DANGEROUS_RE` is a subset of `_CONTROL_CHARS_RE`
+    (the strip_control_chars=True full set) so the two paths
+    cannot drift apart.
+* Two regression tests:
+  - `\n` / `\r` / `\t` survive `strip_control_chars=False`.
+  - The Round 2 BiDi / zero-width / line-terminator family
+    continues to be stripped (additive-only widening).
+
+**Prevention:** The deferred-sibling enumeration grep
+(`grep -rn '_CONTROL_RE\b\|_CONTROL_CHARS\b\|_UNSAFE_URL_CHARS\b\|_UNSAFE_CHARS_RE\b' src/ scripts/`)
+remains the closing-checklist trigger for any future widening of
+`_INVISIBLE_DANGEROUS_RE`. The Round 6 grep pattern misses
+suffixed regex names (`_CONTROL_CHARS_RE` vs `_CONTROL_CHARS`)
+due to `\b` word-boundary semantics; the inventory test
+`test_invisible_dangerous_re_subset_of_control_chars_re` pins
+the canonical-pair sync invariant and would catch any future
+widening of `_INVISIBLE_DANGEROUS_RE` that isn't reflected in
+`_CONTROL_CHARS_RE`. The two existing inventory tests
+(`test_unsafe_url_chars_regex_covers_canonical_invisible_dangerous_set`,
+`test_unsafe_chars_regex_covers_canonical_invisible_dangerous_set`)
+fire on every PR that widens the canonical without widening the
+URL / stations-validation boundary. A future widening (e.g.
+Unicode 17 BiDi controls, or a new ANSI-escape variant added to
+ECMA-48) MUST run all four inventory tests as the closing
+checklist; the round closes only when the inventory grep returns
+zero remaining sites and all inventory tests pass.
+
+---
+
 ## 2026-05-10 - Trojan-Source RSS via `src/build_feed.py:_CONTROL_RE` Narrower Than the Canonical `_INVISIBLE_DANGEROUS_RE` — BiDi-Mark Drift Round 6 (Feed-XML Writer Sibling)
 
 **Vulnerability:** The 2026-05-10 *CSV Formula-Injection Invisible-Prefix

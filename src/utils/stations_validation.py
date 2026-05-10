@@ -616,8 +616,19 @@ def _find_gtfs_issues(
 # per CVE-2021-42574). The widened set keeps the two regexes in sync;
 # any future widening of ``_INVISIBLE_DANGEROUS_RE`` MUST be reflected
 # here \u2014 pinned by ``test_unsafe_chars_regex_covers_canonical_invisible_dangerous_set``.
+#
+# 2026-05-10 "8-bit C1 / DEL Drift": ``_INVISIBLE_DANGEROUS_RE`` was
+# widened to ``\x7f-\x9f`` (DEL + 32 ECMA-48 C1 controls, including
+# the 8-bit terminal-escape primitives ``\x9b`` CSI / ``\x9d`` OSC /
+# ``\x90`` DCS) so the ``strip_control_chars=False`` sibling sinks
+# inherit the defence. The stations validator is widened in the same
+# PR to mirror the new canonical floor \u2014 a planted ``stations.json``
+# carrying ``\x9b...m`` in a ``name`` / ``bst_code`` / ``vor_id`` /
+# ``aliases`` field would otherwise flow through to the GitHub Issue
+# body the directory validator emits and trigger SGR colour
+# interpretation in any 8-bit-C1-honouring terminal that views it.
 _UNSAFE_CHARS_RE = re.compile(
-    r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
+    r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
 )
 
 # Pattern for the synthetic ``bst_id``/``bst_code`` values assigned to

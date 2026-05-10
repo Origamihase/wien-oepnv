@@ -93,9 +93,12 @@ DNS_TIMEOUT = 5.0
 # ``_INVISIBLE_DANGEROUS_RE`` set:
 #
 # 1. ASCII whitespace (``\s`` — TAB / LF / CR / SPACE plus the Unicode
-#    LINE SEPARATOR U+2028 and PARAGRAPH SEPARATOR U+2029) and ASCII
-#    C0 controls + DEL (``\x00-\x1f\x7f``). Original payload-shape
-#    motivation: log injection via embedded newlines.
+#    LINE SEPARATOR U+2028 and PARAGRAPH SEPARATOR U+2029), ASCII
+#    C0 controls + DEL (``\x00-\x1f\x7f``), and the **8-bit C1
+#    controls** (``\x80-\x9f``). Original payload-shape motivation:
+#    log injection via embedded newlines plus the ECMA-48 8-bit
+#    terminal-escape primitives (``\x9b`` CSI, ``\x9d`` OSC, ``\x90``
+#    DCS …) that survive the 7-bit ``_ANSI_ESCAPE_RE`` defence.
 # 2. Structural URL-injection characters (``< > " \ ^ ` { | }``).
 #    Original motivation: XSS / template-injection / shell-injection
 #    when a URL is interpolated into a downstream sink without escaping.
@@ -127,8 +130,18 @@ DNS_TIMEOUT = 5.0
 # invariant programmatically so a future widening of
 # ``_INVISIBLE_DANGEROUS_RE`` (e.g. a Unicode 16 BiDi format control)
 # fails the test until the URL validator is widened too.
+#
+# 2026-05-10 "8-bit C1 / DEL Drift": ``_INVISIBLE_DANGEROUS_RE`` was
+# widened to ``\x7f-\x9f`` (DEL + 32 C1 controls) so the 8-bit
+# terminal-escape primitives (``\x9b`` CSI, ``\x9d`` OSC, ``\x90``
+# DCS, ``\x9e`` PM, ``\x9f`` APC) cannot bypass the
+# ``strip_control_chars=False`` sibling sinks. The URL validator is
+# widened in the same PR to mirror the new canonical floor — a
+# planted feed/redirect URL carrying ``\x9b...m`` would otherwise
+# slip past the validator and trigger SGR colour command interpretation
+# in any 8-bit-C1-honouring terminal that renders the URL.
 _UNSAFE_URL_CHARS = re.compile(
-    r"[\s\x00-\x1f\x7f<>\"\\^`{|}"
+    r"[\s\x00-\x1f\x7f-\x9f<>\"\\^`{|}"
     r"\u061c\u200b-\u200f\u202a-\u202e\u2066-\u2069\ufeff]"
 )
 
