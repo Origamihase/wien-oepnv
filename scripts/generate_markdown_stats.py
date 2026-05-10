@@ -836,7 +836,7 @@ def render_readme_stammstrecke_block(
     )
     header = (
         f"> _Letzte {window_days} Tage – automatisch aktualisiert vom Workflow_ "
-        "[`generate-stats.yml`](.github/workflows/generate-stats.yml).\n"
+        "[`update-cycle.yml`](.github/workflows/update-cycle.yml).\n"
         "\n"
         "| Kennzahl | Wert |\n"
         "| -------- | ---- |\n"
@@ -886,7 +886,7 @@ def render_readme_disruptions_block(
     """
     header = (
         f"> _Letzte {window_days} Tage – automatisch aktualisiert vom Workflow_ "
-        "[`generate-stats.yml`](.github/workflows/generate-stats.yml).\n"
+        "[`update-cycle.yml`](.github/workflows/update-cycle.yml).\n"
         "\n"
         "| Rang | Station / Ort | Vorfälle |\n"
         "| ---- | ------------- | -------- |\n"

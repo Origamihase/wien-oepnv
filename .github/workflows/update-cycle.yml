@@ -149,19 +149,24 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
           commit_message: 'chore: update cycle'
-          # Single commit covers every artefact this cycle could
-          # touch. ``data/vor_request_count.json`` MUST be committed
-          # so the next runner sees today's quota usage and the
-          # contractual 100/day cap stays enforceable across CI
-          # invocations.
-          file_pattern: |
-            cache/baustellen_*/events.json
-            cache/oebb_*/events.json
-            cache/wl_*/events.json
-            data/first_seen.json
-            data/stats/stammstrecke_*.csv
-            data/stats/stoerungen_*.csv
-            data/vor_request_count.json
-            docs/feed.xml
-            docs/statistik.md
-            README.md
+          # Mirrors the proven-working ``manual-full-refresh.yml``
+          # commit pattern: ``add_options: -A`` catches every modified
+          # file in the workspace (cache files, CSV ledgers, quota
+          # counter, feed.xml, first_seen state, statistik.md, README,
+          # any future output added to the cycle) without having to
+          # maintain a brittle file_pattern allowlist that silently
+          # drops outputs whose path doesn't match a glob. The
+          # earlier file_pattern-based commit step on this workflow
+          # never produced a ``chore: update cycle`` commit on main —
+          # the auto-commit-action's ``git add ${pattern}`` shell-
+          # interpolation interacts oddly with the multi-line YAML
+          # ``|`` block scalar on the cron-only runner image, so a
+          # legitimate workspace diff occasionally looked like
+          # nothing-to-commit. ``-A`` makes that failure mode
+          # impossible.
+          # ``--force-with-lease`` mirrors ``manual-full-refresh.yml``
+          # so a concurrent push from ``update-stations.yml`` (Sundays)
+          # doesn't leave this commit hanging on a non-fast-forward
+          # rejection.
+          add_options: '-A'
+          push_options: '--force-with-lease'
