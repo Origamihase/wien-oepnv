@@ -1,15 +1,15 @@
 # Wien ÖPNV — Statistik 2026
 
-_Automatisch erzeugt am 2026-05-10T11:12+02:00 (Europe/Vienna)._
+_Automatisch erzeugt am 2026-05-10T12:21+02:00 (Europe/Vienna)._
 
 ## Kennzahlen auf einen Blick
 
 | Kennzahl | Wert |
 | --- | ---: |
-| Stammstrecke-Beobachtungen (2026) | 19 |
+| Stammstrecke-Beobachtungen (2026) | 21 |
 | Davon über 9-min-Schwelle | 0 |
 | ⌀ Verspätung (alle Tage) | 0.3 min |
-| Erfasste Störungen (2026) | 30 |
+| Erfasste Störungen (2026) | 32 |
 
 ## Stammstrecke
 
@@ -17,8 +17,8 @@ _Automatisch erzeugt am 2026-05-10T11:12+02:00 (Europe/Vienna)._
 
 | Richtung | Anzahl |
 | --- | ---: |
-| Meidling | 10 |
-| Floridsdorf | 9 |
+| Meidling | 11 |
+| Floridsdorf | 10 |
 
 ### Beobachtungen je Wochentag
 
@@ -29,7 +29,7 @@ _Automatisch erzeugt am 2026-05-10T11:12+02:00 (Europe/Vienna)._
 `Do  ` │ ························  0
 `Fr  ` │ ························  0
 `Sa  ` │ 🟦🟦🟦🟦····················  3
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  16
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  18
 ```
 
 ### Beobachtungen je Stunde
@@ -47,7 +47,7 @@ _Automatisch erzeugt am 2026-05-10T11:12+02:00 (Europe/Vienna)._
 `09h ` │ 🟧🟧🟧🟧····················  1
 `10h ` │ 🟧🟧🟧🟧····················  1
 `11h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧················  2
-`12h ` │ ························  0
+`12h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧················  2
 `13h ` │ ························  0
 `14h ` │ ························  0
 `15h ` │ ························  0
@@ -108,7 +108,7 @@ _Automatisch erzeugt am 2026-05-10T11:12+02:00 (Europe/Vienna)._
 
 | Quelle | Anzahl |
 | --- | ---: |
-| Wiener Linien | 30 |
+| Wiener Linien | 32 |
 
 ### Störungen je Wochentag
 
@@ -118,8 +118,8 @@ _Automatisch erzeugt am 2026-05-10T11:12+02:00 (Europe/Vienna)._
 `Mi  ` │ ························  0
 `Do  ` │ ························  0
 `Fr  ` │ ························  0
-`Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦············  10
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  20
+`Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦·············  10
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  22
 ```
 
 ### Störungen je Stunde
@@ -137,7 +137,7 @@ _Automatisch erzeugt am 2026-05-10T11:12+02:00 (Europe/Vienna)._
 `09h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·········  5
 `10h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧·········  5
 `11h ` │ ························  0
-`12h ` │ ························  0
+`12h ` │ 🟧🟧🟧🟧🟧🟧··················  2
 `13h ` │ ························  0
 `14h ` │ ························  0
 `15h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  8
