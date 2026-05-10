@@ -1,12 +1,12 @@
 # Wien ÖPNV — Statistik 2026
 
-_Automatisch erzeugt am 2026-05-10T02:11+02:00 (Europe/Vienna)._
+_Automatisch erzeugt am 2026-05-10T03:39+02:00 (Europe/Vienna)._
 
 ## Kennzahlen auf einen Blick
 
 | Kennzahl | Wert |
 | --- | ---: |
-| Stammstrecke-Beobachtungen (2026) | 11 |
+| Stammstrecke-Beobachtungen (2026) | 13 |
 | Davon über 9-min-Schwelle | 0 |
 | ⌀ Verspätung (alle Tage) | 0.3 min |
 | Erfasste Störungen (2026) | 16 |
@@ -17,8 +17,8 @@ _Automatisch erzeugt am 2026-05-10T02:11+02:00 (Europe/Vienna)._
 
 | Richtung | Anzahl |
 | --- | ---: |
-| Meidling | 6 |
-| Floridsdorf | 5 |
+| Meidling | 7 |
+| Floridsdorf | 6 |
 
 ### Beobachtungen je Wochentag
 
@@ -28,8 +28,8 @@ _Automatisch erzeugt am 2026-05-10T02:11+02:00 (Europe/Vienna)._
 `Mi  ` │ ························  0
 `Do  ` │ ························  0
 `Fr  ` │ ························  0
-`Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦···············  3
-`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  8
+`Sa  ` │ 🟦🟦🟦🟦🟦🟦🟦·················  3
+`So  ` │ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦  10
 ```
 
 ### Beobachtungen je Stunde
@@ -38,7 +38,7 @@ _Automatisch erzeugt am 2026-05-10T02:11+02:00 (Europe/Vienna)._
 `00h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧  6
 `01h ` │ ························  0
 `02h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧················  2
-`03h ` │ ························  0
+`03h ` │ 🟧🟧🟧🟧🟧🟧🟧🟧················  2
 `04h ` │ ························  0
 `05h ` │ ························  0
 `06h ` │ ························  0
