@@ -1,3 +1,212 @@
+## 2026-05-10 - CSV Formula-Injection Bypass via Leading Invisible / BiDi / Line-Terminator Characters at the `_sanitize_csv_text_field` Boundary — BiDi-Mark Drift Round 5 (CSV Writer Sibling)
+
+**Vulnerability:** The 2026-05-09 *CSV Formula Injection (CWE-1236) at the
+Stats-Writer Boundary* round closed the canonical formula-prefix surface
+(`=` / `+` / `-` / `@` / `\t` / `\r`) in
+`src/utils/stats.py:_sanitize_csv_text_field` by prepending a single
+quote (`'`) to any cell beginning with one of `_CSV_FORMULA_PREFIXES`.
+The companion regex `_CSV_CONTROL_CHARS_RE` that strips noise
+**before** the prefix check covered only ASCII C0 controls + DEL
+(`[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]`) — narrower than the canonical
+`src/utils/logging.py:_INVISIBLE_DANGEROUS_RE` set the BiDi-Mark Drift
+family (Rounds 2-4) consolidated as the project-wide invisible /
+Trojan-Source / line-terminator floor.
+
+The drift opened a **formula-injection bypass** because:
+
+1. `_CSV_CONTROL_CHARS_RE.sub("", value)` does NOT strip
+   ZWSP / RLO / BOM / ALM / LRM / line-separator / NEL.
+2. `str.strip()` does NOT consider these whitespace
+   (`"​".isspace() is False`); they survive the strip step.
+3. `cleaned.startswith(_CSV_FORMULA_PREFIXES)` inspects the still-
+   leading invisible character (NOT the residual `=`); the check
+   returns `False` and the apostrophe-defang is **never applied**.
+
+A planted upstream payload such as `"​=cmd|'/c calc'!A1"` lands
+verbatim in `data/stats/stoerungen_<YYYY>.csv`. The ledger is
+committed to the repository by the `generate-stats.yml` workflow; it
+is therefore a **public artefact**.
+
+**Threat model (highest-impact path):** A compromised Wiener-Linien
+upstream (or MITM / DNS-hijack of the WL endpoints, or a poisoned
+`cache/wl/*.json` produced by a different round of supply-chain
+compromise) returns a description with a planted invisible-prefixed
+formula payload:
+
+```json
+{
+  "title": "U6: Verspätung",
+  "description": "… | Haltestelle: ​=cmd|'/c calc'!A1 "
+}
+```
+
+The pipeline path:
+
+* `extract_location_name` (`src/utils/stats.py:432`) matches the
+  `\| Haltestelle:` regex, splits on `,`, strips ASCII whitespace
+  (which leaves the leading ZWSP intact — ZWSP is U+200B and
+  `str.split` / `str.strip` operate on the Unicode `White_Space=yes`
+  category, which excludes ZWSP/ZWNJ/ZWJ/BOM). For an unknown
+  Haltestelle (the regex's curated-upstream branch, see the function
+  docstring) the return is the raw 80-char-clamped string —
+  `​=cmd|'/c calc'!A1`.
+* `src/build_feed.py:_update_item_state` calls
+  `append_disruption_row(provider="ÖBB", location_name="​=cmd…")`
+  on the strictly-new identity branch (`is_strictly_new` gate).
+* `_sanitize_csv_text_field` runs the four-step pipeline; the
+  `_CSV_CONTROL_CHARS_RE.sub("")` step does not match ZWSP, the
+  `.strip()` step does not strip ZWSP, and the
+  `.startswith(_CSV_FORMULA_PREFIXES)` step returns `False` because
+  the leading byte is U+200B, not `=`. The apostrophe-defang is
+  skipped.
+* The CSV writer commits the row `…,​=cmd|'/c calc'!A1` into
+  `data/stats/stoerungen_2026.csv`. The cron pipeline pushes the
+  file to GitHub on the next `generate-stats.yml` tick.
+
+The CSV is now a public artefact carrying a disguised CWE-1236
+payload. An operator opening the file in Excel / LibreOffice Calc /
+Google Sheets to inspect indicators of compromise sees `=cmd|'/c
+calc'!A1` rendered as a cell whose visual content begins with `=`
+(the leading invisible prefix is collapsed by the spreadsheet's
+text renderer). Several spreadsheet engines and locale-specific
+configurations evaluate the residual content as a formula —
+**CWE-1236 RCE in the operator's spreadsheet**, originally landed
+via a compromised-upstream chain of trust.
+
+The same bypass shape generalises across the full canonical
+invisible set: U+202E (RLO) lands a *Trojan-Source CSV* (the cell
+content is visually reversed in the rendering, hiding the formula
+from a reviewing analyst); U+FEFF (BOM) lands a *byte-equality
+disagreement* (`len("﻿=cmd") == 4` but visually identical to
+`"=cmd"` in any consumer that collapses the BOM); U+0085 (NEL) is
+*record terminator* in some CSV / SIEM splitters that breaks a
+single cell into multiple rows downstream — same exfiltration shape
+as an embedded newline.
+
+**Fix:** Widen `_CSV_CONTROL_CHARS_RE` from the C0+DEL-only class
+to the canonical `_INVISIBLE_DANGEROUS_RE` set plus C1 controls,
+mirroring `src/utils/text.py:_MARKDOWN_NORMALISE_UNSAFE_RE`:
+
+```python
+_CSV_CONTROL_CHARS_RE: Final = re.compile(
+    r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F"
+    r"؜​-‏ -‮⁦-⁩﻿]"
+)
+```
+
+The widening is **additive** — every character the pre-fix regex
+matched still matches post-fix (verified by
+`test_csv_control_chars_regex_preserves_existing_coverage`). TAB
+(`\x09`), LF (`\x0A`), CR (`\x0D`), and SPACE (`\x20`) remain
+**unmatched** so legitimate cell content survives (verified by
+`test_csv_control_chars_regex_does_not_match_readable_whitespace`).
+The Unicode escape-sequence form is required because Bandit's B613
+Trojan-Source plugin flags any `src/` file containing literal BiDi
+format controls — `؜` / `​-‏` / `‪-‮` /
+`⁦-⁩` / `﻿` are stored as escapes, not literals, so
+the file passes B613 while the regex still matches the runtime
+characters. (Documentation comments adjacent to the regex were
+edited in the same commit to replace the two literal BiDi
+references with `<U+200B>` / `<U+202E>` placeholders for the same
+reason.)
+
+**Test surface (+84 new pytest cases):**
+`tests/test_sentinel_csv_formula_injection_invisible_prefix.py`
+mirrors the 2026-05-09 BiDi-Mark Drift Round 4 sibling test
+`test_sentinel_http_url_chars_bidi_gap.py`:
+
+* **Per-code-point regex match** (19 cases × ALM / ZWSP / ZWNJ /
+  ZWJ / LRM / RLM / LINE SEP / PARA SEP / LRE / RLE / PDF / LRO /
+  RLO / LRI / RLI / FSI / PDI / BOM / NEL):
+  `_CSV_CONTROL_CHARS_RE.search(<cp>)` must return a match.
+* **Per-code-point write-path PoC** for each of the three
+  operator-/upstream-influenced text fields (provider /
+  location_name / direction): writing `<cp>=cmd|'/c calc'!A1`
+  through the public writer must produce a cell whose content
+  does NOT begin with a formula prefix AND does NOT contain the
+  invisible code point. (3 fields × 19 code points = 57 cases.)
+* **Inventory invariant** (1 case):
+  `test_csv_control_chars_regex_covers_canonical_invisible_dangerous_set`
+  walks the full 0x110000 Unicode code-space, materialises every
+  code point matched by `_INVISIBLE_DANGEROUS_RE`, and asserts
+  `_CSV_CONTROL_CHARS_RE` matches the same set. Mirrors the Round
+  3 / Round 4 inventory tests so the *companion-regex sync rule*
+  is now pinned at THREE defence boundaries (stations validation,
+  URL validation, CSV write).
+* **Coverage-preserving regression** (1 case): every character
+  `_CSV_CONTROL_CHARS_RE` matched pre-fix still matches post-fix.
+* **Whitespace-passthrough regression** (1 case): TAB / LF / CR /
+  SPACE must NOT match (they are required for legitimate cell
+  content; embedded newlines are QUOTE_MINIMAL-wrapped by `csv`
+  and leading TAB / CR are still in `_CSV_FORMULA_PREFIXES`).
+* **Safe-text round-trip regression** (2 cases): legitimate
+  German strings `"ÖBB"` / `"Wien Floridsdorf"` /
+  `"Floridsdorf"` round-trip byte-exactly.
+* **On-disk byte invariant** (1 case): no canonical invisible
+  code point survives into the on-disk CSV bytes.
+* **End-to-end attack-chain PoC** (1 case): a planted upstream
+  description with a ZWSP-prefixed formula payload travels through
+  `extract_location_name` → `append_disruption_row` → CSV file;
+  the resulting cell does NOT begin with a formula prefix.
+* **csv.reader round-trip** (1 case): the defang persists when the
+  file is read back via `csv.reader` (so downstream consumers like
+  `scripts/generate_markdown_stats.py` see the defanged value).
+
+**Learning:** Two reinforcing lessons:
+
+  (a) **Sibling-regex sync at every defence boundary that sees
+      adversarial text — three boundaries down, one canonical
+      sanitiser to rule them all.** Round 3 (`stations_validation
+      ._UNSAFE_CHARS_RE`) and Round 4 (`http._UNSAFE_URL_CHARS`)
+      established the inventory-invariant pattern at the validation
+      boundaries; this round (Round 5) extends the pattern to the
+      **CSV write boundary**. The closing rule:
+
+      > Any sanitiser that runs `regex.sub("", value)` over text
+      > destined for an artefact a human or downstream tool will
+      > read MUST cover at least the canonical
+      > `_INVISIBLE_DANGEROUS_RE` set. The check is mechanical:
+      > programmatic enumeration of every code point matched by
+      > the canonical regex, asserted against the local sibling
+      > regex.
+
+      The remaining unaudited sanitisers (per a fresh `git grep -nE
+      'CONTROL_CHARS|_UNSAFE_CHARS|NORMALISE_UNSAFE|INVISIBLE'`):
+      `_BAD_CONTROL_CHARS_RE` (`scripts/configure_feed.py` —
+      writer for `.env`/secrets, narrower than canonical),
+      `_TITLE_CONTROL_RE` / `_DESCRIPTION_CONTROL_RE` (provider
+      modules — caller-facing rendering, intermediate sinks).
+      Each will be enumerated in a follow-up round if/when the
+      blast radius warrants the closing PR.
+
+  (b) **`str.strip` is not enough for invisible-prefix bypass
+      defence.** Three independent code paths in
+      `_sanitize_csv_text_field` (pre-fix): `_CSV_CONTROL_CHARS_RE
+      .sub`, `.strip()`, `.startswith(_CSV_FORMULA_PREFIXES)`.
+      All three operate on a Unicode-aware definition of "this
+      character is harmless / handled / a formula prefix" — but
+      THE SAME CODE POINT (U+200B et al.) slips through all three:
+      not in the regex's character class, not in
+      `str.isspace`, not in `_CSV_FORMULA_PREFIXES`. The
+      multiplicative effect is a complete bypass of a
+      defence-in-depth chain that *looked* like it covered the
+      surface. The fix is to align step 1 (the strip-noise regex)
+      with the canonical invisible set so step 2 (`.strip`) and
+      step 3 (formula-prefix check) operate on the visible content
+      only — the same `cleaned` value the spreadsheet renderer
+      eventually displays.
+
+**Prevention:** The companion-regex sync rule is now pinned at
+THREE inventory tests (`test_unsafe_chars_regex_covers_canonical
+_invisible_dangerous_set`, `test_unsafe_url_chars_regex_covers_
+canonical_invisible_dangerous_set`,
+`test_csv_control_chars_regex_covers_canonical_invisible_dangerous
+_set`). Any future widening of `_INVISIBLE_DANGEROUS_RE` (e.g. a
+Unicode 16 BiDi format control) fails ALL THREE inventory tests
+until ALL THREE boundaries are widened too. The test triad is the
+programmatic floor that survives the next contributor who has not
+read the journals.
+
 ## 2026-05-09 - BiDi-Mark Drift Round 4: `_UNSAFE_URL_CHARS` in `src/utils/http.py` Was the Sibling Regex Round 3's Closing-Checklist Named But Did Not Close
 
 **Vulnerability:** The 2026-05-09 BiDi-Mark Drift Round 3 entry

@@ -98,15 +98,56 @@ WEEKDAY_LABELS: Final = ("Mo", "Di", "Mi", "Do", "Fr", "Sa", "So")
 # hidden in display) — defanged but still visible to operators
 # scanning the CSV for indicators of compromise.
 _CSV_FORMULA_PREFIXES: Final = ("=", "+", "-", "@", "\t", "\r")
-# C0/C1 control-byte stripper. Excludes TAB (``\x09``), LF (``\x0A``),
-# and CR (``\x0D``) from the body since :mod:`csv` already QUOTE_MINIMAL
-# -wraps fields containing newlines, and embedded TAB is benign for the
-# default ``,`` delimiter; *leading* TAB / CR are still defanged by the
-# formula-prefix branch below. Strips NUL (``\x00``) — a NUL mid-cell
-# silently truncates the field in some downstream CSV reader variants
-# — plus BEL / VT / FF / SI/SO and friends, and DEL (``\x7F``).
+# C0/C1 control-byte + BiDi / zero-width / line-terminator stripper.
+#
+# The character class union mirrors the canonical sanitiser
+# :data:`src.utils.text._MARKDOWN_NORMALISE_UNSAFE_RE` (and its parent
+# :data:`src.utils.logging._INVISIBLE_DANGEROUS_RE`) so the four
+# orthogonal threat classes are closed at the CSV write boundary too:
+#
+# 1. **C0 controls** (``\x00-\x08`` + ``\x0B-\x0C`` + ``\x0E-\x1F``)
+#    plus DEL (``\x7F``). NUL silently truncates fields in some
+#    downstream CSV reader variants; BEL / VT / FF / SI / SO mangle
+#    operator-facing terminal output. Excludes TAB (``\x09``), LF
+#    (``\x0A``), and CR (``\x0D``) from the body since :mod:`csv`
+#    already QUOTE_MINIMAL-wraps fields containing newlines and
+#    embedded TAB is benign for the default ``,`` delimiter — *leading*
+#    TAB / CR are still defanged by the formula-prefix branch below.
+# 2. **C1 controls** (``\x7F-\x9F``). U+0085 NEXT LINE in particular is
+#    treated as a record terminator by several CSV / SIEM splitters
+#    (and by some Excel locales), splitting a single cell into multiple
+#    rows downstream — same exfiltration shape as an embedded newline.
+# 3. **BiDi format controls** (U+061C ALM, U+202A-U+202E
+#    LRE/RLE/PDF/LRO/**RLO**, U+2066-U+2069 LRI/RLI/FSI/PDI). These are
+#    the canonical CVE-2021-42574 Trojan-Source primitives. Stripping
+#    them at the writer also closes a *formula-injection bypass*:
+#    leading invisible characters (``<U+200B>=cmd…`` /
+#    ``<U+202E>=cmd…``) survive ``str.strip()`` (they are not whitespace per
+#    :func:`str.isspace`), so the downstream
+#    ``cleaned.startswith(_CSV_FORMULA_PREFIXES)`` check returns
+#    ``False`` and the apostrophe-defang is never applied. Excel /
+#    LibreOffice Calc / Google Sheets render the cell with the
+#    invisible prefix collapsed and may still evaluate the residual
+#    ``=cmd…`` as a formula. The fix shape — strip the invisible
+#    prefix at sanitiser entry — re-aligns the formula-prefix check
+#    with the visible cell content.
+# 4. **Zero-width characters** (U+200B-U+200F ZWSP/ZWNJ/ZWJ + LRM/RLM,
+#    U+FEFF BOM). Same formula-injection bypass surface as the BiDi
+#    formatting controls; LRM/RLM are full BiDi primitives despite
+#    being zero-width.
+#
+# The pre-fix regex covered only (1); the BiDi-Mark Drift family
+# (Rounds 2-4 in ``.jules/sentinel.md``) widened ``_CONTROL_CHARS_RE``,
+# ``_INVISIBLE_DANGEROUS_RE``, ``_MARKDOWN_NORMALISE_UNSAFE_RE``,
+# ``_UNSAFE_CHARS_RE``, and ``_UNSAFE_URL_CHARS`` to cover (2)-(4) but
+# explicitly deferred this CSV writer's regex. The inventory test
+# ``test_csv_control_chars_regex_covers_canonical_invisible_dangerous_set``
+# in ``tests/test_sentinel_csv_formula_injection_invisible_prefix.py``
+# pins the invariant programmatically — any future widening of the
+# canonical log-sanitiser fails the test until this regex widens too.
 _CSV_CONTROL_CHARS_RE: Final = re.compile(
-    r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]"
+    r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F"
+    r"\u061c\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]"
 )
 # Hard cap on persisted text-field length. Generous enough that any
 # legitimate provider/location/direction string survives untouched;
