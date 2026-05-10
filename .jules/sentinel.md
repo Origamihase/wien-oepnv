@@ -1,3 +1,175 @@
+## 2026-05-10 - Trojan-Source BiDi Drift Round 9 (Auto-Quarantine Sidecar + Stations-Diff Markdown Writers): `scripts/update_all_stations.py` Was the Sibling-Writer Pair the `feat(orchestrator): auto-quarantine failing stations` PR (#1432) Introduced *After* the Existing Trojan-Source Closing-Checklist
+
+**Vulnerability:** the 2026-05-10 PR #1432 (`feat(orchestrator):
+auto-quarantine failing stations instead of hard-fail`) added two new
+operator-/public-facing sinks to `scripts/update_all_stations.py`:
+
+  1. `_write_quarantine_file` → `data/quarantine.json`. Used
+     `json.dump(payload, handle, ensure_ascii=False, indent=2)` with
+     `payload["stations"][*]["entry"]` carrying the *original*
+     pre-quarantine station dict.
+  2. `_render_diff_markdown` → `docs/stations_diff.md`. Used
+     ```python
+     section("Added", diff["added"], lambda it: f"- `{it[0]}` — {it[1]}")
+     section("Removed", diff["removed"], lambda it: f"- `{it[0]}` — {it[1]}")
+     section("Renamed", diff["renamed"],
+             lambda it: f'- `{it[0]}`: "{it[1]}" → "{it[2]}"')
+     section(..., diff["coord_shifted"],
+             lambda it: f"- `{it[0]}` — {it[1]} ({it[2]} m)")
+     ```
+     with `it[0]` (the diff key — `bst:<id>` or `name:<raw name>`)
+     and `it[1]`/`it[2]` (raw station names from the pre-/post-merge
+     snapshots) interpolated verbatim.
+
+The quarantine writer is *specifically* the destination for entries
+that the validator already flagged as carrying `_UNSAFE_CHARS_RE`
+bytes (the canonical CVE-2021-42574 Trojan-Source / zero-width /
+line-terminator / 8-bit C1 union: U+202A-U+202E, U+2066-U+2069,
+U+200B-U+200F, U+2028-U+2029, U+FEFF, `\x9b` CSI, `\x9d` OSC, `\x90`
+DCS) — by definition every primitive sibling round's pinned set lands
+in this file. `ensure_ascii=False` emitted each as its raw UTF-8 byte
+sequence (e.g. `\xe2\x80\xae` for U+202E), so an operator viewing
+`data/quarantine.json` via `cat` / `less` / editor preview / the
+GitHub web UI saw the BiDi-reversed display of the malicious station
+name.
+
+The diff-markdown writer compounded the exposure: a quarantined entry
+was present in `before_snapshot` (the raw merged file) but absent
+from `after_snapshot` (the post-quarantine file), so the malicious
+name landed in `diff["removed"]` and flowed straight into the
+`docs/stations_diff.md` body. That artefact is committed by the
+`update-cycle.yml` cron pipeline and published via GitHub Pages —
+GitHub's Markdown renderer honours BiDi formatting characters in
+rendered text (this is the public CVE-2021-42574 Trojan-Source
+advisory's named example renderer), so every public viewer of the
+diff page saw the attacked text. Same shape was open via
+`diff["added"]` (a malicious entry briefly present in `after_snapshot`
+between merge and quarantine writeout), `diff["renamed"]` (BiDi in
+the rename target), `diff["coord_shifted"]` (BiDi in the
+coordinate-shift annotation), and the codespan-wrapped key
+`name:<raw name>` (the renderer applies BiDi rules inside code spans
+on GitHub too).
+
+**Threat model:**
+
+  1. Attacker compromises an upstream station provider (OEBB / VOR /
+     WL cache poisoning, DNS-hijack of an unpinned upstream,
+     malicious pull request against `data/stations.json` from a fork
+     contributor, leaked CI secret store letting an external write to
+     a provider's response cache).
+  2. Attacker plants a station name carrying `‮` (RIGHT-TO-LEFT
+     OVERRIDE) such that the trailing characters render reversed —
+     e.g. `Westbahnhof‮moc.live` displays as
+     `Westbahnhofevil.com` in any BiDi-honouring viewer.
+  3. `_find_security_issues` flags the BiDi mark under
+     `_UNSAFE_CHARS_RE` and routes the entry into the auto-quarantine
+     bucket. `stations.json` is rewritten without the malicious entry
+     (this part works).
+  4. `_write_quarantine_file` dumps the original `entry` dict via
+     `json.dump(..., ensure_ascii=False)`. U+202E survives as raw
+     UTF-8 in `data/quarantine.json`.
+  5. `_render_diff_markdown` separately observes the malicious entry
+     went away (it was in `before_snapshot` but not in
+     `after_snapshot`) and lands its name in
+     `docs/stations_diff.md` via the removed-section formatter.
+  6. Operator/public viewer opens either artefact:
+     * `cat data/quarantine.json` → BiDi-reversed name visually
+       hides the attack from the reviewing operator.
+     * GitHub web UI rendering of `docs/stations_diff.md` →
+       BiDi-reversed name on the published GitHub Pages site.
+
+**Reproduced:** `tests/test_sentinel_quarantine_trojan_source.py`
+contains 50 PoC tests:
+
+  * 1 test demonstrates the quarantine writer's raw-byte leak
+    (`\xe2\x80\xae` in raw on-disk bytes pre-fix).
+  * 19 parametrised tests pin the full Trojan-Source / zero-width /
+    line-terminator / C1-terminal-escape primitive union for the
+    quarantine writer (every primitive's UTF-8 byte sequence MUST be
+    absent from the file).
+  * 2 tests demonstrate the diff-markdown writer's BiDi leak for the
+    Removed and (Added+Renamed+CoordShifted) sections.
+  * 19 parametrised tests pin the same primitive union for the diff
+    writer.
+  * 1 test pins the renamed-to sink (two interpolations per row).
+  * 1 test pins the codespan-wrapped key sink
+    (`name:<malicious>` form).
+  * 2 regression tests ensure (a) legitimate UTF-8 station names
+    (München / Südtirol / Praterstern) round-trip unchanged through
+    the diff renderer, and (b) `json.loads` recovers the original
+    BiDi-laden string from the escaped quarantine file (forensic data
+    preserved via the literal escape sequence, not discarded).
+
+End-to-end verification: the post-fix `data/quarantine.json` body
+contains the escaped sentinel `‮` (12 ASCII bytes) where the
+pre-fix file held the byte triplet `E2 80 AE` (raw U+202E). Operators
+viewing the file in any terminal or web UI see the inert escape
+sequence rather than the trigger of BiDi rendering.
+
+**Fix:**
+
+  * `_write_quarantine_file`: switch `ensure_ascii=False` →
+    `ensure_ascii=True`. Every non-ASCII code point now lands as a
+    `\uXXXX` literal escape. Forensic intent preserved
+    (`json.loads` recovers the original bytes), no raw BiDi /
+    line-separator / C1-control reaches any byte viewer.
+  * `_render_diff_markdown`: add helper closures
+    `_safe_key = safe_markdown_codespan`,
+    `_safe_name = lambda raw: escape_markdown(normalise_markdown_text(raw))`
+    and route every `it[0]` (codespan-wrapped key) and every
+    `it[1]`/`it[2]` (raw station name) through them.
+    `normalise_markdown_text` strips the canonical
+    `_MARKDOWN_NORMALISE_UNSAFE_RE` union;
+    `escape_markdown` then escapes the surviving Markdown
+    metacharacters; `safe_markdown_codespan` strips the same union
+    inside the codespan boundary and replaces backticks with `'` so a
+    name containing a backtick cannot break out of the code span.
+
+**Learning:** every new operator-/public-facing writer added to the
+codebase MUST be audited against the canonical Trojan-Source /
+zero-width / line-terminator / C1-terminal-escape character union
+before merge. The auto-quarantine path is *especially* high-risk
+because the entries that arrive there are pre-filtered to those
+containing exactly those characters — the canonical writer-sink for
+the canonical attack primitive. The fix-shape pair to mirror in
+future rounds:
+
+  * **JSON writers** that target operator-facing artefacts (logs,
+    diagnostics, sidecar state, error dumps): use `ensure_ascii=True`
+    so every non-ASCII code point is escaped as `\uXXXX`. Forensic
+    data is preserved without exposing raw bytes to any byte viewer.
+    Skip this only when the file is consumed exclusively by machine
+    parsers AND the human-readability gain outweighs the attack
+    surface (rare).
+  * **Markdown writers** that target public-or-operator artefacts:
+    use the canonical sanitiser pair from `src/utils/text.py`:
+    `normalise_markdown_text` (strips the BiDi / zero-width /
+    line-terminator / C1 union) + `escape_markdown` (escapes the
+    surviving Markdown metacharacters). For text inside code spans
+    use `safe_markdown_codespan` instead — code spans render their
+    interior verbatim except for the closing backtick, so the
+    canonical normalisation must be paired with backtick-replacement.
+
+The inventory of "operator-facing writer sinks" the next drift round
+should audit (carrying forward the closing-checklist convention from
+the BiDi-Mark Drift family):
+
+  * **Closed in this round:** `_write_quarantine_file`
+    (`data/quarantine.json`), `_render_diff_markdown`
+    (`docs/stations_diff.md`).
+  * **Already closed:** `ValidationReport.to_markdown()` (Round 3),
+    `render_feed_health_markdown` / GitHub-Issue body (Round 2),
+    `docs/statistik.md` stats dashboard (Round 1),
+    `data/stats/*.csv` CSV writer, RSS XML writers, sitemap writer,
+    `_escape_env_value` `.env` writer.
+  * **Named but deferred** (out of scope for this round, queued for
+    the next drift sweep): `_build_heartbeat` writes only counts /
+    timestamps (no station-controlled strings) but the
+    `sub_scripts` field includes per-script stderr/stdout snippets;
+    `_render_diff_markdown` `(it[2] m)` distance integer is
+    `int()`-coerced so injection-safe, but the legitimate-UTF8
+    regression test pins this.
+
 ## 2026-05-10 - Shell-Metacharacter Injection in `_escape_env_value`: `.env` Sourced via `set -a; source .env` Executes `$(...)` / `` `...` `` From Operator-Supplied Values
 
 **Vulnerability:** `src/utils/configuration_wizard.py:_escape_env_value`

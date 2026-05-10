@@ -47,6 +47,11 @@ from src.utils.stations_validation import (  # noqa: E402
     _format_identifier,
     validate_stations,
 )
+from src.utils.text import (  # noqa: E402
+    escape_markdown,
+    normalise_markdown_text,
+    safe_markdown_codespan,
+)
 
 # Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
 # canonical ``MAX_*_FILE_BYTES`` contract from ``src/utils/cache.py`` /
@@ -227,6 +232,26 @@ def _render_diff_markdown(
     after_count: int,
     timestamp: str,
 ) -> str:
+    # Security (Trojan-Source / BiDi-Mark Drift Round 9): station names
+    # in ``diff["*"]`` come from the unsanitised pre-/post-merge
+    # snapshots. Any name carrying a CVE-2021-42574 BiDi control
+    # (U+202A-U+202E / U+2066-U+2069), a zero-width primitive
+    # (U+200B-U+200F), a Unicode line / paragraph separator
+    # (U+2028-U+2029), the BOM (U+FEFF), or an 8-bit C1 terminal-escape
+    # byte (\\x9b CSI / \\x9d OSC / \\x90 DCS) would otherwise reach the
+    # ``docs/stations_diff.md`` body verbatim. That artefact is
+    # committed by the cron pipeline (``update-cycle.yml``) and
+    # rendered on GitHub Pages — GitHub's Markdown renderer honours
+    # BiDi formatting characters, so a malicious station name turns the
+    # public diff page into a Trojan-Source viewer attack. Route every
+    # interpolated name through the canonical Markdown sanitiser pair
+    # (``normalise_markdown_text`` strips the unsafe union;
+    # ``escape_markdown`` then escapes the surviving Markdown
+    # metacharacters) and route every code-span identifier through
+    # ``safe_markdown_codespan`` so the ``name:<raw>`` key form is
+    # also normalised. Mirrors the canonical pattern pinned by the
+    # 2026-05-09 ``Markdown Injection Drift Round 3`` entry for
+    # ``ValidationReport.to_markdown()``.
     lines = [
         "# stations.json Diff Report",
         "",
@@ -246,17 +271,31 @@ def _render_diff_markdown(
             lines.append("_None._")
         lines.append("")
 
-    section("Added", diff["added"], lambda it: f"- `{it[0]}` — {it[1]}")
-    section("Removed", diff["removed"], lambda it: f"- `{it[0]}` — {it[1]}")
+    def _safe_key(raw: str) -> str:
+        return safe_markdown_codespan(raw)
+
+    def _safe_name(raw: str) -> str:
+        return escape_markdown(normalise_markdown_text(raw))
+
+    section(
+        "Added",
+        diff["added"],
+        lambda it: f"- `{_safe_key(it[0])}` — {_safe_name(it[1])}",
+    )
+    section(
+        "Removed",
+        diff["removed"],
+        lambda it: f"- `{_safe_key(it[0])}` — {_safe_name(it[1])}",
+    )
     section(
         "Renamed",
         diff["renamed"],
-        lambda it: f'- `{it[0]}`: "{it[1]}" → "{it[2]}"',
+        lambda it: f'- `{_safe_key(it[0])}`: "{_safe_name(it[1])}" → "{_safe_name(it[2])}"',
     )
     section(
         f"Coordinates shifted (≥ {int(_COORD_SHIFT_THRESHOLD_M)} m)",
         diff["coord_shifted"],
-        lambda it: f"- `{it[0]}` — {it[1]} ({it[2]} m)",
+        lambda it: f"- `{_safe_key(it[0])}` — {_safe_name(it[1])} ({it[2]} m)",
     )
 
     return "\n".join(lines).rstrip() + "\n"
@@ -479,6 +518,25 @@ def _write_quarantine_file(
     forwards-compatible by emitting a wrapped object with an explicit
     ``count``, the original ``entry`` payload, and the validator's
     ``issues`` so a future drift in either side is auditable.
+
+    Security (Trojan-Source / BiDi-Mark Drift Round 9): the canonical
+    quarantine path is the destination for entries that the validator
+    already flagged as carrying ``_UNSAFE_CHARS_RE`` bytes — every
+    CVE-2021-42574 BiDi formatting control (U+202A-U+202E /
+    U+2066-U+2069), every zero-width primitive (U+200B-U+200F), every
+    Unicode line / paragraph separator (U+2028-U+2029), the BOM
+    (U+FEFF), and the 8-bit C1 terminal-escape primitives (\\x9b CSI /
+    \\x9d OSC / \\x90 DCS) is *by definition* present in the entries
+    written here. ``ensure_ascii=True`` forces ``json.dump`` to emit
+    every non-ASCII code point as a literal ``\\uXXXX`` escape, so the
+    raw UTF-8 bytes of the BiDi controls (e.g. ``\\xe2\\x80\\xae`` for
+    U+202E) never reach the on-disk file. Operators viewing
+    ``data/quarantine.json`` via ``cat`` / ``less`` / editor preview /
+    the GitHub web UI see the escaped sentinel ``\\u202e`` rather than
+    the byte sequence that triggers terminal / Markdown rendering
+    attacks. Forensic intent is preserved: ``json.loads`` decodes the
+    escapes back to the original bytes, so the file remains a complete
+    record of what tried to slip through.
     """
     entries: list[dict[str, Any]] = []
     for entry in quarantined:
@@ -498,7 +556,7 @@ def _write_quarantine_file(
     }
     path.parent.mkdir(parents=True, exist_ok=True)
     with atomic_write(path, mode="w", encoding="utf-8") as handle:
-        json.dump(payload, handle, ensure_ascii=False, indent=2)
+        json.dump(payload, handle, ensure_ascii=True, indent=2)
         handle.write("\n")
 
 
