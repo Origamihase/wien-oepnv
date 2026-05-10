@@ -36,7 +36,21 @@ DEFAULT_BASE_URL = "https://origamihase.github.io/wien-oepnv"
 INCLUDE_EXTENSIONS = {".md", ".html", ".xml", ".json", ".pdf", ".txt"}
 EXCLUDED_FILES = {"sitemap.xml"}
 EXCLUDED_DIRS = {"_includes"}
-_UNSAFE_URL_CHARS = re.compile(r"[\s\x00-\x1f\x7f]")
+# Security: byte-exact mirror of ``src/utils/http.py:_UNSAFE_URL_CHARS``.
+# The pre-fix regex (``[\s\x00-\x1f\x7f]``) was the documented bucket-(b)
+# deferred sibling from the 2026-05-10 BiDi-Mark Drift Round 6 round —
+# functionally redundant because the canonical regex inside
+# ``validate_public_feed_url`` already rejects BiDi / zero-width /
+# structural-injection chars at the second-layer check. The journal
+# explicitly named the structural risk: a future PR that adds a callsite
+# of ``_UNSAFE_URL_CHARS`` in this module without the second-layer gate
+# would re-enable the BiDi/zero-width issue. Widening the regex to the
+# canonical set closes that risk and pins the inventory invariant
+# (``test_sentinel_sitemap_unsafe_chars_canonical_drift.py``).
+_UNSAFE_URL_CHARS = re.compile(
+    r"[\s\x00-\x1f\x7f-\x9f<>\"\\^`{|}"
+    r"\u061c\u200b-\u200f\u202a-\u202e\u2066-\u2069\ufeff]"
+)
 
 logger = logging.getLogger(__name__)
 
